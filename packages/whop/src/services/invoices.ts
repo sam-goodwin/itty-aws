@@ -507,9 +507,7 @@ export type CreateInvoiceRequestBodyCase0PlanPaymentMethodConfigurationEnabledLi
   LegacyPaymentMethodTypes | (string & {})
 >;
 export const CreateInvoiceRequestBodyCase0PlanPaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    LegacyPaymentMethodTypes,
-  ) as any as S.Schema<CreateInvoiceRequestBodyCase0PlanPaymentMethodConfigurationEnabledList>;
+  CreateInvoiceRequestBodyCase0PlanPaymentMethodConfigurationDisabledList as any as S.Schema<CreateInvoiceRequestBodyCase0PlanPaymentMethodConfigurationEnabledList>;
 
 /** The explicit payment method configuration for the plan. If not provided, the platform or company's defaults will apply. */
 export interface CreateInvoiceRequestBodyCase0PlanPaymentMethodConfiguration {
@@ -697,9 +695,8 @@ export const CreateInvoiceRequestBodyCase1LineItemsItem =
 /** Optional line items that break down the invoice total. When provided, the sum of (quantity * unit_price) for all items must equal the plan price. Individual items may be negative to represent a credit, as long as the sum is not negative and clears the currency's minimum charge. */
 export type CreateInvoiceRequestBodyCase1LineItemsList =
   Array<CreateInvoiceRequestBodyCase0LineItemsItem>;
-export const CreateInvoiceRequestBodyCase1LineItemsList = /*@__PURE__*/ S.Array(
-  CreateInvoiceRequestBodyCase0LineItemsItem,
-) as any as S.Schema<CreateInvoiceRequestBodyCase1LineItemsList>;
+export const CreateInvoiceRequestBodyCase1LineItemsList =
+  CreateInvoiceRequestBodyCase0LineItemsList as any as S.Schema<CreateInvoiceRequestBodyCase1LineItemsList>;
 
 export type CreateInvoiceRequestBodyCase1PlanCustomFieldsItem =
   CreateInvoiceRequestBodyCase0PlanCustomFieldsItem;
@@ -709,27 +706,22 @@ export const CreateInvoiceRequestBodyCase1PlanCustomFieldsItem =
 /** An array of custom field objects. */
 export type CreateInvoiceRequestBodyCase1PlanCustomFieldsList =
   Array<CreateInvoiceRequestBodyCase0PlanCustomFieldsItem>;
-export const CreateInvoiceRequestBodyCase1PlanCustomFieldsList = /*@__PURE__*/ S.Array(
-  CreateInvoiceRequestBodyCase0PlanCustomFieldsItem,
-) as any as S.Schema<CreateInvoiceRequestBodyCase1PlanCustomFieldsList>;
+export const CreateInvoiceRequestBodyCase1PlanCustomFieldsList =
+  CreateInvoiceRequestBodyCase0PlanCustomFieldsList as any as S.Schema<CreateInvoiceRequestBodyCase1PlanCustomFieldsList>;
 
 /** An array of payment method identifiers that are explicitly disabled. Only applies if the include_platform_defaults is true. */
 export type CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationDisabledList = Array<
   LegacyPaymentMethodTypes | (string & {})
 >;
 export const CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationDisabledList =
-  /*@__PURE__*/ S.Array(
-    LegacyPaymentMethodTypes,
-  ) as any as S.Schema<CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationDisabledList>;
+  CreateInvoiceRequestBodyCase0PlanPaymentMethodConfigurationDisabledList as any as S.Schema<CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationDisabledList>;
 
 /** An array of payment method identifiers that are explicitly enabled. This means these payment methods will be shown on checkout. Example use case is to only enable a specific payment method like cashapp, or extending the platform defaults with additional methods. */
 export type CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationEnabledList = Array<
   LegacyPaymentMethodTypes | (string & {})
 >;
 export const CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    LegacyPaymentMethodTypes,
-  ) as any as S.Schema<CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationEnabledList>;
+  CreateInvoiceRequestBodyCase0PlanPaymentMethodConfigurationDisabledList as any as S.Schema<CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationEnabledList>;
 
 /** The explicit payment method configuration for the plan. If not provided, the platform or company's defaults will apply. */
 export interface CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration {
@@ -740,16 +732,8 @@ export interface CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration {
   /** Whether Whop's platform default payment method enablement settings are included in this configuration. The full list of default payment methods can be found in the documentation at docs.whop.com/payments. */
   include_platform_defaults?: boolean | null;
 }
-export const CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disabled: CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationDisabledList,
-      enabled: CreateInvoiceRequestBodyCase1PlanPaymentMethodConfigurationEnabledList,
-      include_platform_defaults: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration",
-}) as any as S.Schema<CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration>;
+export const CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration =
+  CreateInvoiceRequestBodyCase0PlanPaymentMethodConfiguration as any as S.Schema<CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration>;
 
 /** The plan attributes defining the price, currency, and billing interval for this invoice. */
 export interface CreateInvoiceRequestBodyCase1Plan {
@@ -788,31 +772,8 @@ export interface CreateInvoiceRequestBodyCase1Plan {
   /** Shows or hides the plan from public/business view. */
   visibility?: Visibility | (string & {}) | null;
 }
-export const CreateInvoiceRequestBodyCase1Plan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptive_pricing_enabled: S.optional(S.NullOr(S.Boolean)),
-    billing_period: S.optional(S.NullOr(S.Number)),
-    currency: S.optional(S.NullOr(LegacyCurrencies)),
-    custom_fields: S.optional(S.NullOr(CreateInvoiceRequestBodyCase1PlanCustomFieldsList)),
-    description: S.optional(S.NullOr(S.String)),
-    expiration_days: S.optional(S.NullOr(S.Number)),
-    initial_price: S.optional(S.NullOr(S.Number)),
-    internal_notes: S.optional(S.NullOr(S.String)),
-    legacy_payment_method_controls: S.optional(S.NullOr(S.Boolean)),
-    payment_method_configuration: S.optional(
-      S.NullOr(CreateInvoiceRequestBodyCase1PlanPaymentMethodConfiguration),
-    ),
-    plan_type: S.optional(S.NullOr(PlanTypes)),
-    release_method: S.optional(S.NullOr(ReleaseMethod)),
-    renewal_price: S.optional(S.NullOr(S.Number)),
-    stock: S.optional(S.NullOr(S.Number)),
-    trial_period_days: S.optional(S.NullOr(S.Number)),
-    unlimited_stock: S.optional(S.NullOr(S.Boolean)),
-    visibility: S.optional(S.NullOr(Visibility)),
-  }),
-).annotate({
-  identifier: "CreateInvoiceRequestBodyCase1Plan",
-}) as any as S.Schema<CreateInvoiceRequestBodyCase1Plan>;
+export const CreateInvoiceRequestBodyCase1Plan =
+  CreateInvoiceRequestBodyCase0Plan as any as S.Schema<CreateInvoiceRequestBodyCase1Plan>;
 
 /** Autogenerated input type of CreateInvoice */
 export interface CreateInvoiceRequestBodyCase1 {
@@ -987,22 +948,14 @@ export interface InvoiceMember {
   /** The unique identifier for the company member. */
   id: string;
 }
-export const InvoiceMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "InvoiceMember" }) as any as S.Schema<InvoiceMember>;
+export const InvoiceMember = InvoiceCompany as any as S.Schema<InvoiceMember>;
 
 /** The payment that settled this invoice. Null while the invoice is unpaid, when the invoice was marked paid manually, and on a subscription renewal invoice, where the settling payment cannot yet be identified. */
 export interface InvoicePayment {
   /** The unique identifier for the payment. */
   id: string;
 }
-export const InvoicePayment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "InvoicePayment" }) as any as S.Schema<InvoicePayment>;
+export const InvoicePayment = InvoiceCompany as any as S.Schema<InvoicePayment>;
 
 /** The product that this invoice was generated for. */
 export interface InvoiceProduct {
@@ -1228,9 +1181,8 @@ export const InvoiceListItemLineItemsItem = InvoiceLineItemsItem;
 
 /** Optional line items that break down the invoice total into individual charges. */
 export type InvoiceListItemLineItemsList = Array<InvoiceLineItemsItem>;
-export const InvoiceListItemLineItemsList = /*@__PURE__*/ S.Array(
-  InvoiceLineItemsItem,
-) as any as S.Schema<InvoiceListItemLineItemsList>;
+export const InvoiceListItemLineItemsList =
+  InvoiceLineItemsList as any as S.Schema<InvoiceListItemLineItemsList>;
 
 /** The user this invoice is addressed to. Null if the user account has been removed. */
 export interface InvoiceListItemUser {
@@ -1340,9 +1292,8 @@ export const MarkPaidInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarkPaidInvoiceRequest" }) as any as S.Schema<MarkPaidInvoiceRequest>;
 
 export type MarkPaidInvoiceResponse = boolean;
-export const MarkPaidInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "MarkPaidInvoiceResponse" }) as any as S.Schema<MarkPaidInvoiceResponse>;
+export const MarkPaidInvoiceResponse =
+  DeleteInvoiceResponse as any as S.Schema<MarkPaidInvoiceResponse>;
 
 export interface MarkUncollectibleInvoiceRequest {
   /** The unique identifier of the invoice to mark as uncollectible. */
@@ -1374,9 +1325,8 @@ export const ResendInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResendInvoiceRequest" }) as any as S.Schema<ResendInvoiceRequest>;
 
 export type ResendInvoiceResponse = boolean;
-export const ResendInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ResendInvoiceResponse" }) as any as S.Schema<ResendInvoiceResponse>;
+export const ResendInvoiceResponse =
+  DeleteInvoiceResponse as any as S.Schema<ResendInvoiceResponse>;
 
 /** Inline billing address to create or update a mailing address for this invoice. */
 export type UpdateInvoiceRequestBillingAddress = CreateInvoiceRequestBodyCase0BillingAddress;
@@ -1388,9 +1338,8 @@ export const UpdateInvoiceRequestLineItemsItem = CreateInvoiceRequestBodyCase0Li
 
 /** Line items that break down the invoice total. When provided, the sum of (quantity * unit_price) for all items must equal the plan price. Individual items may be negative to represent a credit, as long as the sum is not negative and clears the currency's minimum charge. Pass an empty list to remove the breakdown. */
 export type UpdateInvoiceRequestLineItemsList = Array<CreateInvoiceRequestBodyCase0LineItemsItem>;
-export const UpdateInvoiceRequestLineItemsList = /*@__PURE__*/ S.Array(
-  CreateInvoiceRequestBodyCase0LineItemsItem,
-) as any as S.Schema<UpdateInvoiceRequestLineItemsList>;
+export const UpdateInvoiceRequestLineItemsList =
+  CreateInvoiceRequestBodyCase0LineItemsList as any as S.Schema<UpdateInvoiceRequestLineItemsList>;
 
 export type UpdateInvoiceRequestPlanCustomFieldsItem =
   CreateInvoiceRequestBodyCase0PlanCustomFieldsItem;
@@ -1400,9 +1349,8 @@ export const UpdateInvoiceRequestPlanCustomFieldsItem =
 /** An array of custom field objects. */
 export type UpdateInvoiceRequestPlanCustomFieldsList =
   Array<CreateInvoiceRequestBodyCase0PlanCustomFieldsItem>;
-export const UpdateInvoiceRequestPlanCustomFieldsList = /*@__PURE__*/ S.Array(
-  CreateInvoiceRequestBodyCase0PlanCustomFieldsItem,
-) as any as S.Schema<UpdateInvoiceRequestPlanCustomFieldsList>;
+export const UpdateInvoiceRequestPlanCustomFieldsList =
+  CreateInvoiceRequestBodyCase0PlanCustomFieldsList as any as S.Schema<UpdateInvoiceRequestPlanCustomFieldsList>;
 
 /** An array of payment method identifiers that are explicitly disabled. Only applies if the include_platform_defaults is true. */
 export type UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList = Array<
@@ -1416,9 +1364,8 @@ export const UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList = /*
 export type UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList = Array<
   LegacyPaymentMethodTypes | (string & {})
 >;
-export const UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList = /*@__PURE__*/ S.Array(
-  LegacyPaymentMethodTypes,
-) as any as S.Schema<UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList>;
+export const UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList =
+  UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList as any as S.Schema<UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList>;
 
 /** The explicit payment method configuration for the plan. If not provided, the platform or company's defaults will apply. */
 export interface UpdateInvoiceRequestPlanPaymentMethodConfiguration {
@@ -1563,9 +1510,7 @@ export const VoidInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VoidInvoiceRequest" }) as any as S.Schema<VoidInvoiceRequest>;
 
 export type VoidInvoiceResponse = boolean;
-export const VoidInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "VoidInvoiceResponse" }) as any as S.Schema<VoidInvoiceResponse>;
+export const VoidInvoiceResponse = DeleteInvoiceResponse as any as S.Schema<VoidInvoiceResponse>;
 
 export type CreateInvoiceError =
   | BadRequest

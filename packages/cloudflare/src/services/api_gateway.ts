@@ -263,21 +263,15 @@ export const OperationsLabelsBulkCreateRequestManaged = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkCreateRequestManaged>;
 
 export type OperationsLabelsBulkCreateRequestUserLabelsList = Array<string>;
-export const OperationsLabelsBulkCreateRequestUserLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsLabelsBulkCreateRequestUserLabelsList>;
+export const OperationsLabelsBulkCreateRequestUserLabelsList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsBulkCreateRequestUserLabelsList>;
 
 export interface OperationsLabelsBulkCreateRequestUser {
   /** List of user label names. */
   labels?: OperationsLabelsBulkCreateRequestUserLabelsList;
 }
-export const OperationsLabelsBulkCreateRequestUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(OperationsLabelsBulkCreateRequestUserLabelsList),
-  }),
-).annotate({
-  identifier: "OperationsLabelsBulkCreateRequestUser",
-}) as any as S.Schema<OperationsLabelsBulkCreateRequestUser>;
+export const OperationsLabelsBulkCreateRequestUser =
+  OperationsLabelsBulkCreateRequestManaged as any as S.Schema<OperationsLabelsBulkCreateRequestUser>;
 
 export interface BulkCreateOperationLabelsRequest {
   /** Identifier. */
@@ -1121,9 +1115,8 @@ export const BulkPatchDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>;
 
 export type OperationsLabelsBulkUpdateRequestManagedLabelsList = Array<string>;
-export const OperationsLabelsBulkUpdateRequestManagedLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsLabelsBulkUpdateRequestManagedLabelsList>;
+export const OperationsLabelsBulkUpdateRequestManagedLabelsList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsBulkUpdateRequestManagedLabelsList>;
 
 export interface OperationsLabelsBulkUpdateRequestManaged {
   /** List of managed label names. Providing an empty array will result in all managed labels being removed from all affected operations */
@@ -1139,50 +1132,30 @@ export const OperationsLabelsBulkUpdateRequestManaged = /*@__PURE__*/ S.suspend(
 
 export type OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList = Array<string>;
 export const OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList>;
+  OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList as any as S.Schema<OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList>;
 
 export interface OperationsLabelsBulkUpdateRequestSelectorInclude {
   operationIds: OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList;
 }
-export const OperationsLabelsBulkUpdateRequestSelectorInclude = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationIds: OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList.pipe(
-      T.Body("operation_ids"),
-    ),
-  }),
-).annotate({
-  identifier: "OperationsLabelsBulkUpdateRequestSelectorInclude",
-}) as any as S.Schema<OperationsLabelsBulkUpdateRequestSelectorInclude>;
+export const OperationsLabelsBulkUpdateRequestSelectorInclude =
+  OperationsLabelsBulkCreateRequestSelectorInclude as any as S.Schema<OperationsLabelsBulkUpdateRequestSelectorInclude>;
 
 export interface OperationsLabelsBulkUpdateRequestSelector {
   include: OperationsLabelsBulkUpdateRequestSelectorInclude;
 }
-export const OperationsLabelsBulkUpdateRequestSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: OperationsLabelsBulkUpdateRequestSelectorInclude,
-  }),
-).annotate({
-  identifier: "OperationsLabelsBulkUpdateRequestSelector",
-}) as any as S.Schema<OperationsLabelsBulkUpdateRequestSelector>;
+export const OperationsLabelsBulkUpdateRequestSelector =
+  OperationsLabelsBulkCreateRequestSelector as any as S.Schema<OperationsLabelsBulkUpdateRequestSelector>;
 
 export type OperationsLabelsBulkUpdateRequestUserLabelsList = Array<string>;
-export const OperationsLabelsBulkUpdateRequestUserLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsLabelsBulkUpdateRequestUserLabelsList>;
+export const OperationsLabelsBulkUpdateRequestUserLabelsList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsBulkUpdateRequestUserLabelsList>;
 
 export interface OperationsLabelsBulkUpdateRequestUser {
   /** List of user label names. Providing an empty array will result in all user labels being removed from all affected operations */
   labels: OperationsLabelsBulkUpdateRequestUserLabelsList;
 }
-export const OperationsLabelsBulkUpdateRequestUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: OperationsLabelsBulkUpdateRequestUserLabelsList,
-  }),
-).annotate({
-  identifier: "OperationsLabelsBulkUpdateRequestUser",
-}) as any as S.Schema<OperationsLabelsBulkUpdateRequestUser>;
+export const OperationsLabelsBulkUpdateRequestUser =
+  OperationsLabelsBulkUpdateRequestManaged as any as S.Schema<OperationsLabelsBulkUpdateRequestUser>;
 
 export interface BulkUpdateOperationLabelsRequest {
   /** Identifier. */
@@ -1301,9 +1274,8 @@ export const BulkUpdateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkUpdateOperationLabelsResponse>;
 
 export type ExpressionTemplateFallthroughCreateRequestHostsList = Array<string>;
-export const ExpressionTemplateFallthroughCreateRequestHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExpressionTemplateFallthroughCreateRequestHostsList>;
+export const ExpressionTemplateFallthroughCreateRequestHostsList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<ExpressionTemplateFallthroughCreateRequestHostsList>;
 
 export interface CreateExpressionTemplateFallthroughRequest {
   /** Identifier. */
@@ -1404,9 +1376,7 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   Array<unknown>;
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
@@ -1415,19 +1385,7 @@ export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParame
   responses?: unknown | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameters: S.optional(
-        S.NullOr(
-          OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
-        ),
-      ),
-      responses: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string | null;
@@ -1435,34 +1393,13 @@ export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParame
   parameterSchemas?: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-      parameterSchemas: S.optional(
-        S.NullOr(
-          OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
-        ).pipe(T.Body("parameter_schemas")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas {
   parameterSchemas: OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
 }
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameterSchemas:
-        OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
-    }),
-  ).annotate({
-    identifier: "OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas",
-  }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
@@ -1594,10 +1531,8 @@ export const OperationsCreateResponseSchemasLearnedParametersList = /*@__PURE__*
 export type OperationsCreateResponseSchemasLearnedRequestBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const OperationsCreateResponseSchemasLearnedRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsCreateResponseSchemasLearnedRequestBodyMap>;
+export const OperationsCreateResponseSchemasLearnedRequestBodyMap =
+  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsCreateResponseSchemasLearnedRequestBodyMap>;
 
 export interface OperationsCreateResponseSchemasLearned {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
@@ -1617,24 +1552,19 @@ export const OperationsCreateResponseSchemasLearned = /*@__PURE__*/ S.suspend(()
 export type OperationsCreateResponseSchemasUploadedParametersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const OperationsCreateResponseSchemasUploadedParametersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsCreateResponseSchemasUploadedParametersItemMap>;
+export const OperationsCreateResponseSchemasUploadedParametersItemMap =
+  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsCreateResponseSchemasUploadedParametersItemMap>;
 
 export type OperationsCreateResponseSchemasUploadedParametersList =
   Array<OperationsCreateResponseSchemasUploadedParametersItemMap>;
-export const OperationsCreateResponseSchemasUploadedParametersList = /*@__PURE__*/ S.Array(
-  OperationsCreateResponseSchemasUploadedParametersItemMap,
-) as any as S.Schema<OperationsCreateResponseSchemasUploadedParametersList>;
+export const OperationsCreateResponseSchemasUploadedParametersList =
+  OperationsCreateResponseSchemasLearnedParametersList as any as S.Schema<OperationsCreateResponseSchemasUploadedParametersList>;
 
 export type OperationsCreateResponseSchemasUploadedRequestBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const OperationsCreateResponseSchemasUploadedRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsCreateResponseSchemasUploadedRequestBodyMap>;
+export const OperationsCreateResponseSchemasUploadedRequestBodyMap =
+  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsCreateResponseSchemasUploadedRequestBodyMap>;
 
 export interface OperationsCreateResponseSchemasUploaded {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
@@ -1642,14 +1572,8 @@ export interface OperationsCreateResponseSchemasUploaded {
   /** OpenAPI request body object describing the expected request payload. */
   requestBody?: OperationsCreateResponseSchemasUploadedRequestBodyMap | null;
 }
-export const OperationsCreateResponseSchemasUploaded = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(S.NullOr(OperationsCreateResponseSchemasUploadedParametersList)),
-    requestBody: S.optional(S.NullOr(OperationsCreateResponseSchemasUploadedRequestBodyMap)),
-  }),
-).annotate({
-  identifier: "OperationsCreateResponseSchemasUploaded",
-}) as any as S.Schema<OperationsCreateResponseSchemasUploaded>;
+export const OperationsCreateResponseSchemasUploaded =
+  OperationsCreateResponseSchemasLearned as any as S.Schema<OperationsCreateResponseSchemasUploaded>;
 
 export interface OperationsCreateResponseSchemas {
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
@@ -1694,14 +1618,12 @@ export const CreateOperationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateOperationResponse" }) as any as S.Schema<CreateOperationResponse>;
 
 export type OperationsLabelsCreateRequestManagedList = Array<string>;
-export const OperationsLabelsCreateRequestManagedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsLabelsCreateRequestManagedList>;
+export const OperationsLabelsCreateRequestManagedList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsCreateRequestManagedList>;
 
 export type OperationsLabelsCreateRequestUserList = Array<string>;
-export const OperationsLabelsCreateRequestUserList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsLabelsCreateRequestUserList>;
+export const OperationsLabelsCreateRequestUserList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsCreateRequestUserList>;
 
 export interface CreateOperationLabelRequest {
   /** Identifier. */
@@ -1866,9 +1788,7 @@ export const UserSchemasCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 export type UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList = Array<string>;
 export const UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList>;
+  OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList as any as S.Schema<UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList>;
 
 export interface UserSchemasCreateResponseUploadDetailsWarningsItem {
   /** Code that identifies the event that occurred. */
@@ -2112,9 +2032,8 @@ export const DeleteUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserSchemaRequest" }) as any as S.Schema<DeleteUserSchemaRequest>;
 
 export interface DeleteUserSchemaResponse {}
-export const DeleteUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteUserSchemaResponse" }) as any as S.Schema<DeleteUserSchemaResponse>;
+export const DeleteUserSchemaResponse =
+  DeleteOperationResponse as any as S.Schema<DeleteUserSchemaResponse>;
 
 export interface GetConfigurationRequest {
   /** Identifier. */
@@ -2400,9 +2319,7 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds =
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   Array<unknown>;
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
@@ -2411,19 +2328,7 @@ export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameter
   responses?: unknown | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameters: S.optional(
-        S.NullOr(
-          OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
-        ),
-      ),
-      responses: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string | null;
@@ -2431,34 +2336,13 @@ export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameter
   parameterSchemas?: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-      parameterSchemas: S.optional(
-        S.NullOr(
-          OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
-        ).pipe(T.Body("parameter_schemas")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas {
   parameterSchemas: OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
 }
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameterSchemas:
-        OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
-    }),
-  ).annotate({
-    identifier: "OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas",
-  }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
@@ -2576,24 +2460,19 @@ export const OperationsGetResponseFeatures = /*@__PURE__*/ S.Unknown.pipe(
 export type OperationsGetResponseSchemasLearnedParametersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const OperationsGetResponseSchemasLearnedParametersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsGetResponseSchemasLearnedParametersItemMap>;
+export const OperationsGetResponseSchemasLearnedParametersItemMap =
+  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsGetResponseSchemasLearnedParametersItemMap>;
 
 export type OperationsGetResponseSchemasLearnedParametersList =
   Array<OperationsGetResponseSchemasLearnedParametersItemMap>;
-export const OperationsGetResponseSchemasLearnedParametersList = /*@__PURE__*/ S.Array(
-  OperationsGetResponseSchemasLearnedParametersItemMap,
-) as any as S.Schema<OperationsGetResponseSchemasLearnedParametersList>;
+export const OperationsGetResponseSchemasLearnedParametersList =
+  OperationsCreateResponseSchemasLearnedParametersList as any as S.Schema<OperationsGetResponseSchemasLearnedParametersList>;
 
 export type OperationsGetResponseSchemasLearnedRequestBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const OperationsGetResponseSchemasLearnedRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsGetResponseSchemasLearnedRequestBodyMap>;
+export const OperationsGetResponseSchemasLearnedRequestBodyMap =
+  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsGetResponseSchemasLearnedRequestBodyMap>;
 
 export interface OperationsGetResponseSchemasLearned {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
@@ -2601,36 +2480,25 @@ export interface OperationsGetResponseSchemasLearned {
   /** OpenAPI request body object describing the expected request payload. */
   requestBody?: OperationsGetResponseSchemasLearnedRequestBodyMap | null;
 }
-export const OperationsGetResponseSchemasLearned = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(S.NullOr(OperationsGetResponseSchemasLearnedParametersList)),
-    requestBody: S.optional(S.NullOr(OperationsGetResponseSchemasLearnedRequestBodyMap)),
-  }),
-).annotate({
-  identifier: "OperationsGetResponseSchemasLearned",
-}) as any as S.Schema<OperationsGetResponseSchemasLearned>;
+export const OperationsGetResponseSchemasLearned =
+  OperationsCreateResponseSchemasLearned as any as S.Schema<OperationsGetResponseSchemasLearned>;
 
 export type OperationsGetResponseSchemasUploadedParametersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const OperationsGetResponseSchemasUploadedParametersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsGetResponseSchemasUploadedParametersItemMap>;
+export const OperationsGetResponseSchemasUploadedParametersItemMap =
+  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsGetResponseSchemasUploadedParametersItemMap>;
 
 export type OperationsGetResponseSchemasUploadedParametersList =
   Array<OperationsGetResponseSchemasUploadedParametersItemMap>;
-export const OperationsGetResponseSchemasUploadedParametersList = /*@__PURE__*/ S.Array(
-  OperationsGetResponseSchemasUploadedParametersItemMap,
-) as any as S.Schema<OperationsGetResponseSchemasUploadedParametersList>;
+export const OperationsGetResponseSchemasUploadedParametersList =
+  OperationsCreateResponseSchemasLearnedParametersList as any as S.Schema<OperationsGetResponseSchemasUploadedParametersList>;
 
 export type OperationsGetResponseSchemasUploadedRequestBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const OperationsGetResponseSchemasUploadedRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsGetResponseSchemasUploadedRequestBodyMap>;
+export const OperationsGetResponseSchemasUploadedRequestBodyMap =
+  OperationsCreateResponseSchemasLearnedParametersItemMap as any as S.Schema<OperationsGetResponseSchemasUploadedRequestBodyMap>;
 
 export interface OperationsGetResponseSchemasUploaded {
   /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
@@ -2638,14 +2506,8 @@ export interface OperationsGetResponseSchemasUploaded {
   /** OpenAPI request body object describing the expected request payload. */
   requestBody?: OperationsGetResponseSchemasUploadedRequestBodyMap | null;
 }
-export const OperationsGetResponseSchemasUploaded = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(S.NullOr(OperationsGetResponseSchemasUploadedParametersList)),
-    requestBody: S.optional(S.NullOr(OperationsGetResponseSchemasUploadedRequestBodyMap)),
-  }),
-).annotate({
-  identifier: "OperationsGetResponseSchemasUploaded",
-}) as any as S.Schema<OperationsGetResponseSchemasUploaded>;
+export const OperationsGetResponseSchemasUploaded =
+  OperationsCreateResponseSchemasLearned as any as S.Schema<OperationsGetResponseSchemasUploaded>;
 
 export interface OperationsGetResponseSchemas {
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
@@ -2653,14 +2515,8 @@ export interface OperationsGetResponseSchemas {
   /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
   uploaded?: OperationsGetResponseSchemasUploaded | null;
 }
-export const OperationsGetResponseSchemas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    learned: S.optional(S.NullOr(OperationsGetResponseSchemasLearned)),
-    uploaded: S.optional(S.NullOr(OperationsGetResponseSchemasUploaded)),
-  }),
-).annotate({
-  identifier: "OperationsGetResponseSchemas",
-}) as any as S.Schema<OperationsGetResponseSchemas>;
+export const OperationsGetResponseSchemas =
+  OperationsCreateResponseSchemas as any as S.Schema<OperationsGetResponseSchemas>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOperationResponse {
@@ -2757,11 +2613,8 @@ export const GetSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetSettingSchemaValidationResponse {}
-export const GetSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetSettingSchemaValidationResponse",
-}) as any as S.Schema<GetSettingSchemaValidationResponse>;
+export const GetSettingSchemaValidationResponse =
+  BulkDeleteOperationsResponse as any as S.Schema<GetSettingSchemaValidationResponse>;
 
 export interface GetUserSchemaRequest {
   /** Identifier. */
@@ -2818,14 +2671,12 @@ export type DiscoveryOperationsListRequestDirection = "asc" | "desc";
 export const DiscoveryOperationsListRequestDirection = S.String;
 
 export type DiscoveryOperationsListRequestHostList = Array<string>;
-export const DiscoveryOperationsListRequestHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiscoveryOperationsListRequestHostList>;
+export const DiscoveryOperationsListRequestHostList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<DiscoveryOperationsListRequestHostList>;
 
 export type DiscoveryOperationsListRequestMethodList = Array<string>;
-export const DiscoveryOperationsListRequestMethodList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DiscoveryOperationsListRequestMethodList>;
+export const DiscoveryOperationsListRequestMethodList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<DiscoveryOperationsListRequestMethodList>;
 
 export type DiscoveryOperationsListRequestOrder =
   | "host"
@@ -3109,14 +2960,12 @@ export const OperationsListRequestFeatureList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OperationsListRequestFeatureList>;
 
 export type OperationsListRequestHostList = Array<string>;
-export const OperationsListRequestHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsListRequestHostList>;
+export const OperationsListRequestHostList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsListRequestHostList>;
 
 export type OperationsListRequestMethodList = Array<string>;
-export const OperationsListRequestMethodList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsListRequestMethodList>;
+export const OperationsListRequestMethodList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsListRequestMethodList>;
 
 export type OperationsListRequestOrder = "method" | "host" | "endpoint" | "thresholds.$key";
 export const OperationsListRequestOrder = S.String;
@@ -3182,9 +3031,7 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   Array<unknown>;
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
@@ -3193,19 +3040,7 @@ export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParame
   responses?: unknown | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameters: S.optional(
-        S.NullOr(
-          OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
-        ),
-      ),
-      responses: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string | null;
@@ -3213,34 +3048,13 @@ export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParame
   parameterSchemas?: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-      parameterSchemas: S.optional(
-        S.NullOr(
-          OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
-        ).pipe(T.Body("parameter_schemas")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
-  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas {
   parameterSchemas: OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
 }
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameterSchemas:
-        OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
-          T.Body("parameter_schemas"),
-        ),
-    }),
-  ).annotate({
-    identifier: "OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas",
-  }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemas as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
@@ -3409,9 +3223,8 @@ export const SchemasListRequestFeatureList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SchemasListRequestFeatureList>;
 
 export type SchemasListRequestHostList = Array<string>;
-export const SchemasListRequestHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SchemasListRequestHostList>;
+export const SchemasListRequestHostList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<SchemasListRequestHostList>;
 
 export type SchemasListRequestIncludeSchemaKind = "learned";
 export const SchemasListRequestIncludeSchemaKind = S.String;
@@ -3447,9 +3260,8 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSchemasRequest" }) as any as S.Schema<ListSchemasRequest>;
 
 export type SchemasListResponseSchemasList = Array<unknown>;
-export const SchemasListResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SchemasListResponseSchemasList>;
+export const SchemasListResponseSchemasList =
+  DiscoveryGetResponseSchemasList as any as S.Schema<SchemasListResponseSchemasList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListSchemasResponse {
@@ -3486,9 +3298,8 @@ export const ListUserSchemaHostsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserSchemaHostsRequest>;
 
 export type UserSchemasHostsListResultItemHostsList = Array<string>;
-export const UserSchemasHostsListResultItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSchemasHostsListResultItemHostsList>;
+export const UserSchemasHostsListResultItemHostsList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<UserSchemasHostsListResultItemHostsList>;
 
 export interface UserSchemasHostsListResultItem {
   createdAt: string;
@@ -3545,14 +3356,12 @@ export const UserSchemasOperationsListRequestFeatureList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<UserSchemasOperationsListRequestFeatureList>;
 
 export type UserSchemasOperationsListRequestHostList = Array<string>;
-export const UserSchemasOperationsListRequestHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSchemasOperationsListRequestHostList>;
+export const UserSchemasOperationsListRequestHostList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<UserSchemasOperationsListRequestHostList>;
 
 export type UserSchemasOperationsListRequestMethodList = Array<string>;
-export const UserSchemasOperationsListRequestMethodList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSchemasOperationsListRequestMethodList>;
+export const UserSchemasOperationsListRequestMethodList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<UserSchemasOperationsListRequestMethodList>;
 
 export type UserSchemasOperationsListRequestOperationStatus = "new" | "existing";
 export const UserSchemasOperationsListRequestOperationStatus = S.String;
@@ -3627,9 +3436,7 @@ export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShi
 export type UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   Array<unknown>;
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
@@ -3638,19 +3445,7 @@ export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAP
   responses?: unknown | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parameters: S.optional(
-        S.NullOr(
-          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
-        ),
-      ),
-      responses: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string | null;
@@ -3658,19 +3453,7 @@ export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAP
   parameterSchemas?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas | null;
 }
 export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-      parameterSchemas: S.optional(
-        S.NullOr(
-          UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas,
-        ).pipe(T.Body("parameter_schemas")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
+  OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
 export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas {
   parameterSchemas: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
@@ -4136,11 +3919,8 @@ export const PatchSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PatchSettingSchemaValidationResponse {}
-export const PatchSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchSettingSchemaValidationResponse",
-}) as any as S.Schema<PatchSettingSchemaValidationResponse>;
+export const PatchSettingSchemaValidationResponse =
+  BulkDeleteOperationsResponse as any as S.Schema<PatchSettingSchemaValidationResponse>;
 
 export interface PatchUserSchemaRequest {
   /** Identifier. */
@@ -4350,9 +4130,7 @@ export const PutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 export type LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   Array<string>;
 export const LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList>;
+  OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList as any as S.Schema<LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList>;
 
 export interface LabelsManagedResourcesOperationUpdateRequestSelectorInclude {
   operationIds: LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList;
@@ -4491,9 +4269,7 @@ export const PutLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 export type LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   Array<string>;
 export const LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList>;
+  OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList as any as S.Schema<LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList>;
 
 export interface LabelsUserResourcesOperationUpdateRequestSelectorInclude {
   operationIds: LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList;
@@ -4682,21 +4458,16 @@ export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PutSettingSchemaValidationResponse {}
-export const PutSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutSettingSchemaValidationResponse",
-}) as any as S.Schema<PutSettingSchemaValidationResponse>;
+export const PutSettingSchemaValidationResponse =
+  BulkDeleteOperationsResponse as any as S.Schema<PutSettingSchemaValidationResponse>;
 
 export type OperationsLabelsUpdateRequestManagedList = Array<string>;
-export const OperationsLabelsUpdateRequestManagedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsLabelsUpdateRequestManagedList>;
+export const OperationsLabelsUpdateRequestManagedList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsUpdateRequestManagedList>;
 
 export type OperationsLabelsUpdateRequestUserList = Array<string>;
-export const OperationsLabelsUpdateRequestUserList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationsLabelsUpdateRequestUserList>;
+export const OperationsLabelsUpdateRequestUserList =
+  OperationsLabelsBulkCreateRequestManagedLabelsList as any as S.Schema<OperationsLabelsUpdateRequestUserList>;
 
 export interface UpdateOperationLabelRequest {
   /** Identifier. */

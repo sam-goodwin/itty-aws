@@ -2255,11 +2255,7 @@ export interface GcsSource {
   /** Required. Source data URI. (e.g. 'gs://my_bucket/my_object'). */
   uri?: string;
 }
-export const GcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "GcsSource" }) as any as S.Schema<GcsSource>;
+export const GcsSource = GcsDestination as any as S.Schema<GcsSource>;
 
 /** The input content */
 export interface InputConfig {

@@ -102,9 +102,8 @@ export const CreateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionOptionsList = Array<CustomPropertyOption>;
-export const CustomPropertyDefinitionOptionsList = /*@__PURE__*/ S.Array(
-  CustomPropertyOption,
-) as any as S.Schema<CustomPropertyDefinitionOptionsList>;
+export const CustomPropertyDefinitionOptionsList =
+  CreateCustomPropertyDefinitionRequestOptionsList as any as S.Schema<CustomPropertyDefinitionOptionsList>;
 
 /** * `tracked` - tracked * `ignored` - ignored */
 export type SyncSegmentEnum = "tracked" | "ignored";
@@ -475,9 +474,8 @@ export const PaginatedCustomPropertyDefinitionList = /*@__PURE__*/ S.suspend(() 
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type UpdateCustomPropertyDefinitionRequestOptionsList = Array<CustomPropertyOption>;
-export const UpdateCustomPropertyDefinitionRequestOptionsList = /*@__PURE__*/ S.Array(
-  CustomPropertyOption,
-) as any as S.Schema<UpdateCustomPropertyDefinitionRequestOptionsList>;
+export const UpdateCustomPropertyDefinitionRequestOptionsList =
+  CreateCustomPropertyDefinitionRequestOptionsList as any as S.Schema<UpdateCustomPropertyDefinitionRequestOptionsList>;
 
 export interface UpdateCustomPropertyDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -522,9 +520,8 @@ export const UpdateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type UpdateCustomPropertyDefinitionsPartialRequestOptionsList = Array<CustomPropertyOption>;
-export const UpdateCustomPropertyDefinitionsPartialRequestOptionsList = /*@__PURE__*/ S.Array(
-  CustomPropertyOption,
-) as any as S.Schema<UpdateCustomPropertyDefinitionsPartialRequestOptionsList>;
+export const UpdateCustomPropertyDefinitionsPartialRequestOptionsList =
+  CreateCustomPropertyDefinitionRequestOptionsList as any as S.Schema<UpdateCustomPropertyDefinitionsPartialRequestOptionsList>;
 
 export interface UpdateCustomPropertyDefinitionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

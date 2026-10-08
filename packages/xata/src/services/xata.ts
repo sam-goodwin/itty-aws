@@ -190,9 +190,8 @@ export const BranchMetricsRequestMetricsList = /*@__PURE__*/ S.Array(
 
 /** List of instance IDs to query */
 export type BranchMetricsRequestInstancesList = Array<string>;
-export const BranchMetricsRequestInstancesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchMetricsRequestInstancesList>;
+export const BranchMetricsRequestInstancesList =
+  LogFilterValuesList as any as S.Schema<BranchMetricsRequestInstancesList>;
 
 export type BranchMetricsRequestAggregationsItem = "avg" | "max" | "min";
 export const BranchMetricsRequestAggregationsItem = S.String;
@@ -431,13 +430,8 @@ export interface BillingPaymentMethodSessionResponse {
   /** Stripe payment method session URL */
   url: string;
 }
-export const BillingPaymentMethodSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "BillingPaymentMethodSessionResponse",
-}) as any as S.Schema<BillingPaymentMethodSessionResponse>;
+export const BillingPaymentMethodSessionResponse =
+  BillingCheckoutSessionResponse as any as S.Schema<BillingPaymentMethodSessionResponse>;
 
 /** Configuration for scaling branches to zero when not in use */
 export interface ScaleToZeroConfiguration {
@@ -721,21 +715,18 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional scopes assigned to the API key */
 export type CreateOrganizationAPIKeyRequestScopesList = Array<string>;
-export const CreateOrganizationAPIKeyRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationAPIKeyRequestScopesList>;
+export const CreateOrganizationAPIKeyRequestScopesList =
+  LogFilterValuesList as any as S.Schema<CreateOrganizationAPIKeyRequestScopesList>;
 
 /** Limit access to these projects */
 export type CreateOrganizationAPIKeyRequestProjectsList = Array<string>;
-export const CreateOrganizationAPIKeyRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationAPIKeyRequestProjectsList>;
+export const CreateOrganizationAPIKeyRequestProjectsList =
+  LogFilterValuesList as any as S.Schema<CreateOrganizationAPIKeyRequestProjectsList>;
 
 /** Limit access to these branches */
 export type CreateOrganizationAPIKeyRequestBranchesList = Array<string>;
-export const CreateOrganizationAPIKeyRequestBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationAPIKeyRequestBranchesList>;
+export const CreateOrganizationAPIKeyRequestBranchesList =
+  LogFilterValuesList as any as S.Schema<CreateOrganizationAPIKeyRequestBranchesList>;
 
 export interface CreateOrganizationAPIKeyRequest {
   /** Unique identifier for a specific organization */
@@ -764,21 +755,17 @@ export const CreateOrganizationAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrganizationAPIKeyRequest>;
 
 export type FullAPIKeyScopesList = Array<string>;
-export const FullAPIKeyScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FullAPIKeyScopesList>;
+export const FullAPIKeyScopesList = LogFilterValuesList as any as S.Schema<FullAPIKeyScopesList>;
 
 /** Projects this API key has access to */
 export type FullAPIKeyProjectsList = Array<string>;
-export const FullAPIKeyProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FullAPIKeyProjectsList>;
+export const FullAPIKeyProjectsList =
+  LogFilterValuesList as any as S.Schema<FullAPIKeyProjectsList>;
 
 /** Branches this API key has access to */
 export type FullAPIKeyBranchesList = Array<string>;
-export const FullAPIKeyBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FullAPIKeyBranchesList>;
+export const FullAPIKeyBranchesList =
+  LogFilterValuesList as any as S.Schema<FullAPIKeyBranchesList>;
 
 export interface FullAPIKey {
   id: string;
@@ -1016,21 +1003,18 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional scopes assigned to the API key */
 export type CreateUserAPIKeyRequestScopesList = Array<string>;
-export const CreateUserAPIKeyRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserAPIKeyRequestScopesList>;
+export const CreateUserAPIKeyRequestScopesList =
+  LogFilterValuesList as any as S.Schema<CreateUserAPIKeyRequestScopesList>;
 
 /** Limit access to these projects */
 export type CreateUserAPIKeyRequestProjectsList = Array<string>;
-export const CreateUserAPIKeyRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserAPIKeyRequestProjectsList>;
+export const CreateUserAPIKeyRequestProjectsList =
+  LogFilterValuesList as any as S.Schema<CreateUserAPIKeyRequestProjectsList>;
 
 /** Limit access to these branches */
 export type CreateUserAPIKeyRequestBranchesList = Array<string>;
-export const CreateUserAPIKeyRequestBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserAPIKeyRequestBranchesList>;
+export const CreateUserAPIKeyRequestBranchesList =
+  LogFilterValuesList as any as S.Schema<CreateUserAPIKeyRequestBranchesList>;
 
 export interface CreateUserAPIKeyRequest {
   name: string;
@@ -1114,9 +1098,8 @@ export const DeleteGithubRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGithubRepositoryRequest>;
 
 export interface DeleteGithubRepositoryResponse {}
-export const DeleteGithubRepositoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGithubRepositoryResponse",
-}) as any as S.Schema<DeleteGithubRepositoryResponse>;
+export const DeleteGithubRepositoryResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteGithubRepositoryResponse>;
 
 export interface DeleteInstallationRequest {
   /** Vercel installation id (icfg_...). */
@@ -1137,9 +1120,8 @@ export const DeleteInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInstallationRequest>;
 
 export interface DeleteInstallationResponse {}
-export const DeleteInstallationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstallationResponse",
-}) as any as S.Schema<DeleteInstallationResponse>;
+export const DeleteInstallationResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteInstallationResponse>;
 
 export interface DeleteOrganizationRequest {
   /** Unique identifier for a specific organization */
@@ -1154,15 +1136,13 @@ export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationRequest>;
 
 export interface DeleteOrganizationResponse {}
-export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrganizationResponse",
-}) as any as S.Schema<DeleteOrganizationResponse>;
+export const DeleteOrganizationResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteOrganizationResponse>;
 
 /** Array of API key IDs to delete */
 export type DeleteOrganizationAPIKeysRequestIdsList = Array<string>;
-export const DeleteOrganizationAPIKeysRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationAPIKeysRequestIdsList>;
+export const DeleteOrganizationAPIKeysRequestIdsList =
+  LogFilterValuesList as any as S.Schema<DeleteOrganizationAPIKeysRequestIdsList>;
 
 export interface DeleteOrganizationAPIKeysRequest {
   /** Unique identifier for a specific organization */
@@ -1180,11 +1160,8 @@ export const DeleteOrganizationAPIKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationAPIKeysRequest>;
 
 export interface DeleteOrganizationAPIKeysResponse {}
-export const DeleteOrganizationAPIKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationAPIKeysResponse",
-}) as any as S.Schema<DeleteOrganizationAPIKeysResponse>;
+export const DeleteOrganizationAPIKeysResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationAPIKeysResponse>;
 
 export interface DeleteOrganizationInvitationRequest {
   /** Unique identifier for a specific organization */
@@ -1208,11 +1185,8 @@ export const DeleteOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationInvitationRequest>;
 
 export interface DeleteOrganizationInvitationResponse {}
-export const DeleteOrganizationInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationInvitationResponse",
-}) as any as S.Schema<DeleteOrganizationInvitationResponse>;
+export const DeleteOrganizationInvitationResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationInvitationResponse>;
 
 export interface DeleteOrganizationSSODomainRequest {
   /** Unique identifier for a specific organization */
@@ -1236,11 +1210,8 @@ export const DeleteOrganizationSSODomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationSSODomainRequest>;
 
 export interface DeleteOrganizationSSODomainResponse {}
-export const DeleteOrganizationSSODomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationSSODomainResponse",
-}) as any as S.Schema<DeleteOrganizationSSODomainResponse>;
+export const DeleteOrganizationSSODomainResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationSSODomainResponse>;
 
 export interface DeleteOrganizationSSOProviderRequest {
   /** Unique identifier for a specific organization */
@@ -1264,11 +1235,8 @@ export const DeleteOrganizationSSOProviderRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteOrganizationSSOProviderRequest>;
 
 export interface DeleteOrganizationSSOProviderResponse {}
-export const DeleteOrganizationSSOProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationSSOProviderResponse",
-}) as any as S.Schema<DeleteOrganizationSSOProviderResponse>;
+export const DeleteOrganizationSSOProviderResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationSSOProviderResponse>;
 
 export interface DeleteProjectRequest {
   /** Unique identifier of the organization containing the project */
@@ -1290,9 +1258,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse = DeleteBranchResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteResourceRequest {
   /** Vercel installation id (icfg_...). */
@@ -1314,15 +1280,13 @@ export const DeleteResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResourceRequest" }) as any as S.Schema<DeleteResourceRequest>;
 
 export interface DeleteResourceResponse {}
-export const DeleteResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceResponse",
-}) as any as S.Schema<DeleteResourceResponse>;
+export const DeleteResourceResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteResourceResponse>;
 
 /** Array of API key IDs to delete (maximum 50 keys per request) */
 export type DeleteUserAPIKeysRequestIdsList = Array<string>;
-export const DeleteUserAPIKeysRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteUserAPIKeysRequestIdsList>;
+export const DeleteUserAPIKeysRequestIdsList =
+  LogFilterValuesList as any as S.Schema<DeleteUserAPIKeysRequestIdsList>;
 
 export interface DeleteUserAPIKeysRequest {
   /** Array of API key IDs to delete (maximum 50 keys per request) */
@@ -1335,9 +1299,8 @@ export const DeleteUserAPIKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserAPIKeysRequest" }) as any as S.Schema<DeleteUserAPIKeysRequest>;
 
 export interface DeleteUserAPIKeysResponse {}
-export const DeleteUserAPIKeysResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserAPIKeysResponse",
-}) as any as S.Schema<DeleteUserAPIKeysResponse>;
+export const DeleteUserAPIKeysResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteUserAPIKeysResponse>;
 
 export interface DescribeBranchRequest {
   /** Unique identifier of the organization containing the project */
@@ -1456,9 +1419,8 @@ export const ClusterConfigurationPostgresConfigurationParametersMap = /*@__PURE_
 
 /** List of PostgreSQL extensions and libraries to preload */
 export type ClusterConfigurationPreloadLibrariesList = Array<string>;
-export const ClusterConfigurationPreloadLibrariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterConfigurationPreloadLibrariesList>;
+export const ClusterConfigurationPreloadLibrariesList =
+  LogFilterValuesList as any as S.Schema<ClusterConfigurationPreloadLibrariesList>;
 
 /** Configuration details for a database cluster backing a branch */
 export interface ClusterConfiguration {
@@ -1661,9 +1623,8 @@ export const BillingCustomerResponseCreditsList = /*@__PURE__*/ S.Array(
 
 /** Credits with active status, a reached effective date, positive balance, and no past expiry. */
 export type BillingCreditDetailsActiveCreditsList = Array<BillingCredit>;
-export const BillingCreditDetailsActiveCreditsList = /*@__PURE__*/ S.Array(
-  BillingCredit,
-) as any as S.Schema<BillingCreditDetailsActiveCreditsList>;
+export const BillingCreditDetailsActiveCreditsList =
+  BillingCustomerResponseCreditsList as any as S.Schema<BillingCreditDetailsActiveCreditsList>;
 
 export interface BillingCreditDetails {
   total_lifetime_credits: number;
@@ -1921,9 +1882,8 @@ export const PostgresConfigParameterType = S.String;
 
 /** List of allowed enum values (if applicable) */
 export type PostgresConfigParameterAcceptableRangeEnumValuesList = Array<string>;
-export const PostgresConfigParameterAcceptableRangeEnumValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostgresConfigParameterAcceptableRangeEnumValuesList>;
+export const PostgresConfigParameterAcceptableRangeEnumValuesList =
+  LogFilterValuesList as any as S.Schema<PostgresConfigParameterAcceptableRangeEnumValuesList>;
 
 /** Information about the acceptable range of values for this parameter */
 export interface PostgresConfigParameterAcceptableRange {
@@ -2392,10 +2352,8 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 
 /** GitHub webhook event payload */
 export type GithubWebhookRequestBodyMap = { [key: string]: unknown | undefined };
-export const GithubWebhookRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GithubWebhookRequestBodyMap>;
+export const GithubWebhookRequestBodyMap =
+  ResourceMetadataMap as any as S.Schema<GithubWebhookRequestBodyMap>;
 
 export interface GithubWebhookRequest {
   body: GithubWebhookRequestBodyMap;
@@ -2407,9 +2365,7 @@ export const GithubWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GithubWebhookRequest" }) as any as S.Schema<GithubWebhookRequest>;
 
 export interface GithubWebhookResponse {}
-export const GithubWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GithubWebhookResponse",
-}) as any as S.Schema<GithubWebhookResponse>;
+export const GithubWebhookResponse = DeleteBranchResponse as any as S.Schema<GithubWebhookResponse>;
 
 export interface ListBackupsRequest {
   /** Unique identifier of the organization containing the project */
@@ -2478,9 +2434,8 @@ export const BillingPlanDetailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingPlanDetailsList>;
 
 export type BillingPlanHighlightedDetailsList = Array<PlanDetail>;
-export const BillingPlanHighlightedDetailsList = /*@__PURE__*/ S.Array(
-  PlanDetail,
-) as any as S.Schema<BillingPlanHighlightedDetailsList>;
+export const BillingPlanHighlightedDetailsList =
+  BillingPlanDetailsList as any as S.Schema<BillingPlanHighlightedDetailsList>;
 
 export interface PlanQuoteLine {
   line: string;
@@ -2851,21 +2806,18 @@ export const ListOrganizationAPIKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationAPIKeysRequest>;
 
 export type APIKeyPreviewScopesList = Array<string>;
-export const APIKeyPreviewScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<APIKeyPreviewScopesList>;
+export const APIKeyPreviewScopesList =
+  LogFilterValuesList as any as S.Schema<APIKeyPreviewScopesList>;
 
 /** Projects this API key has access to */
 export type APIKeyPreviewProjectsList = Array<string>;
-export const APIKeyPreviewProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<APIKeyPreviewProjectsList>;
+export const APIKeyPreviewProjectsList =
+  LogFilterValuesList as any as S.Schema<APIKeyPreviewProjectsList>;
 
 /** Branches this API key has access to */
 export type APIKeyPreviewBranchesList = Array<string>;
-export const APIKeyPreviewBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<APIKeyPreviewBranchesList>;
+export const APIKeyPreviewBranchesList =
+  LogFilterValuesList as any as S.Schema<APIKeyPreviewBranchesList>;
 
 export interface APIKeyPreview {
   id: string;
@@ -3150,9 +3102,8 @@ export const ListUserAPIKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of API keys for the user */
 export type ListUserAPIKeysResponseKeysList = Array<APIKeyPreview>;
-export const ListUserAPIKeysResponseKeysList = /*@__PURE__*/ S.Array(
-  APIKeyPreview,
-) as any as S.Schema<ListUserAPIKeysResponseKeysList>;
+export const ListUserAPIKeysResponseKeysList =
+  ListOrganizationAPIKeysResponseKeysList as any as S.Schema<ListUserAPIKeysResponseKeysList>;
 
 export interface ListUserAPIKeysResponse {
   /** Array of API keys for the user */
@@ -3166,10 +3117,8 @@ export const ListUserAPIKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Orb webhook event payload */
 export type OrbWebhookRequestBodyMap = { [key: string]: unknown | undefined };
-export const OrbWebhookRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrbWebhookRequestBodyMap>;
+export const OrbWebhookRequestBodyMap =
+  ResourceMetadataMap as any as S.Schema<OrbWebhookRequestBodyMap>;
 
 export interface OrbWebhookRequest {
   body: OrbWebhookRequestBodyMap;
@@ -3181,16 +3130,12 @@ export const OrbWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrbWebhookRequest" }) as any as S.Schema<OrbWebhookRequest>;
 
 export interface OrbWebhookResponse {}
-export const OrbWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrbWebhookResponse",
-}) as any as S.Schema<OrbWebhookResponse>;
+export const OrbWebhookResponse = DeleteBranchResponse as any as S.Schema<OrbWebhookResponse>;
 
 /** User-inputted metadata based on the registered metadata schema. */
 export type ProvisionResourceRequestMetadataMap = { [key: string]: unknown | undefined };
-export const ProvisionResourceRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProvisionResourceRequestMetadataMap>;
+export const ProvisionResourceRequestMetadataMap =
+  ResourceMetadataMap as any as S.Schema<ProvisionResourceRequestMetadataMap>;
 
 export interface ProvisionResourceRequest {
   /** Vercel installation id (icfg_...). */
@@ -3221,10 +3166,8 @@ export const ProvisionResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-inputted metadata based on the registered metadata schema. */
 export type ProvisionedResourceMetadataMap = { [key: string]: unknown | undefined };
-export const ProvisionedResourceMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProvisionedResourceMetadataMap>;
+export const ProvisionedResourceMetadataMap =
+  ResourceMetadataMap as any as S.Schema<ProvisionedResourceMetadataMap>;
 
 /** Per-environment values that override value for that Vercel environment. */
 export interface SecretEnvironmentOverrides {
@@ -3299,9 +3242,7 @@ export const QueryRequestParamsList = /*@__PURE__*/ S.Array(
 
 /** Positional parameters for the query. */
 export type QueryItemParamsList = Array<unknown>;
-export const QueryItemParamsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<QueryItemParamsList>;
+export const QueryItemParamsList = QueryRequestParamsList as any as S.Schema<QueryItemParamsList>;
 
 /** A single query within a batch request. */
 export interface QueryItem {
@@ -3382,9 +3323,7 @@ export const QueryResultFieldsList = /*@__PURE__*/ S.Array(
 
 /** Result rows. Each row is an object (column-name keys) or an array (when array mode is enabled). */
 export type QueryResultRowsList = Array<unknown>;
-export const QueryResultRowsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<QueryResultRowsList>;
+export const QueryResultRowsList = QueryRequestParamsList as any as S.Schema<QueryResultRowsList>;
 
 /** Result of a single SQL query execution. */
 export interface QueryResult {
@@ -3476,9 +3415,8 @@ export const RegisterMarketplaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisterMarketplaceRequest>;
 
 export interface RegisterMarketplaceResponse {}
-export const RegisterMarketplaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegisterMarketplaceResponse",
-}) as any as S.Schema<RegisterMarketplaceResponse>;
+export const RegisterMarketplaceResponse =
+  DeleteBranchResponse as any as S.Schema<RegisterMarketplaceResponse>;
 
 export interface RemoveOrganizationMemberRequest {
   /** Unique identifier for a specific organization */
@@ -3502,11 +3440,8 @@ export const RemoveOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveOrganizationMemberRequest>;
 
 export interface RemoveOrganizationMemberResponse {}
-export const RemoveOrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveOrganizationMemberResponse",
-}) as any as S.Schema<RemoveOrganizationMemberResponse>;
+export const RemoveOrganizationMemberResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<RemoveOrganizationMemberResponse>;
 
 export interface RequestOrganizationDeletionRequest {
   /** Unique identifier for a specific organization */
@@ -3523,11 +3458,8 @@ export const RequestOrganizationDeletionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestOrganizationDeletionRequest>;
 
 export interface RequestOrganizationDeletionResponse {}
-export const RequestOrganizationDeletionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RequestOrganizationDeletionResponse",
-}) as any as S.Schema<RequestOrganizationDeletionResponse>;
+export const RequestOrganizationDeletionResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<RequestOrganizationDeletionResponse>;
 
 export interface ResendOrganizationInvitationRequest {
   /** Unique identifier for a specific organization */
@@ -3551,11 +3483,8 @@ export const ResendOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResendOrganizationInvitationRequest>;
 
 export interface ResendOrganizationInvitationResponse {}
-export const ResendOrganizationInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResendOrganizationInvitationResponse",
-}) as any as S.Schema<ResendOrganizationInvitationResponse>;
+export const ResendOrganizationInvitationResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<ResendOrganizationInvitationResponse>;
 
 export interface RestoreFromBackupRequest {
   /** Unique identifier of the organization containing the project */
@@ -3630,10 +3559,8 @@ export const SendMcpRequestRequestId = S.Unknown as any as S.Schema<SendMcpReque
 
 /** Method parameters as defined by the MCP specification. */
 export type SendMcpRequestRequestParamsMap = { [key: string]: unknown | undefined };
-export const SendMcpRequestRequestParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendMcpRequestRequestParamsMap>;
+export const SendMcpRequestRequestParamsMap =
+  ResourceMetadataMap as any as S.Schema<SendMcpRequestRequestParamsMap>;
 
 export interface SendMcpRequestRequest {
   /** JSON-RPC protocol version. Always `2.0`. */
@@ -3664,10 +3591,8 @@ export const JSONRPCResponseId = S.Unknown as any as S.Schema<JSONRPCResponseId>
 
 /** Method result as defined by the MCP specification. */
 export type JSONRPCResponseResultMap = { [key: string]: unknown | undefined };
-export const JSONRPCResponseResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<JSONRPCResponseResultMap>;
+export const JSONRPCResponseResultMap =
+  ResourceMetadataMap as any as S.Schema<JSONRPCResponseResultMap>;
 
 /** A JSON-RPC 2.0 error. Failures inside a tool are reported in the tool result with `isError`, not here. */
 export interface JSONRPCError {
@@ -3729,11 +3654,8 @@ export const SetOrganizationMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetOrganizationMemberRoleRequest>;
 
 export interface SetOrganizationMemberRoleResponse {}
-export const SetOrganizationMemberRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetOrganizationMemberRoleResponse",
-}) as any as S.Schema<SetOrganizationMemberRoleResponse>;
+export const SetOrganizationMemberRoleResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<SetOrganizationMemberRoleResponse>;
 
 export interface SetOrganizationSSOProviderEnforcementRequest {
   /** Unique identifier for a specific organization */
@@ -3761,10 +3683,8 @@ export const SetOrganizationSSOProviderEnforcementRequest = /*@__PURE__*/ S.susp
 
 /** Stripe webhook event payload */
 export type StripeWebhookRequestBodyMap = { [key: string]: unknown | undefined };
-export const StripeWebhookRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StripeWebhookRequestBodyMap>;
+export const StripeWebhookRequestBodyMap =
+  ResourceMetadataMap as any as S.Schema<StripeWebhookRequestBodyMap>;
 
 export interface StripeWebhookRequest {
   body: StripeWebhookRequestBodyMap;
@@ -3776,9 +3696,7 @@ export const StripeWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StripeWebhookRequest" }) as any as S.Schema<StripeWebhookRequest>;
 
 export interface StripeWebhookResponse {}
-export const StripeWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StripeWebhookResponse",
-}) as any as S.Schema<StripeWebhookResponse>;
+export const StripeWebhookResponse = DeleteBranchResponse as any as S.Schema<StripeWebhookResponse>;
 
 export interface UpdateBillingCustomerRequest {
   /** Unique identifier for a specific organization */
@@ -3800,16 +3718,13 @@ export const UpdateBillingCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateBranchRequestPostgresConfigurationParametersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateBranchRequestPostgresConfigurationParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBranchRequestPostgresConfigurationParametersMap>;
+export const UpdateBranchRequestPostgresConfigurationParametersMap =
+  ClusterConfigurationPostgresConfigurationParametersMap as any as S.Schema<UpdateBranchRequestPostgresConfigurationParametersMap>;
 
 /** List of PostgreSQL extensions and libraries to preload */
 export type UpdateBranchRequestPreloadLibrariesList = Array<string>;
-export const UpdateBranchRequestPreloadLibrariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBranchRequestPreloadLibrariesList>;
+export const UpdateBranchRequestPreloadLibrariesList =
+  LogFilterValuesList as any as S.Schema<UpdateBranchRequestPreloadLibrariesList>;
 
 export interface UpdateBranchRequest {
   /** Unique identifier of the organization containing the project */
@@ -4005,16 +3920,13 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes granted to the installation. */
 export type UpsertInstallationRequestScopesList = Array<string>;
-export const UpsertInstallationRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertInstallationRequestScopesList>;
+export const UpsertInstallationRequestScopesList =
+  LogFilterValuesList as any as S.Schema<UpsertInstallationRequestScopesList>;
 
 /** Map of policy id to the acceptance timestamp (RFC 3339), e.g. {"toc": "2024-02-28T10:00:00Z"}. */
 export type UpsertInstallationRequestAcceptedPoliciesMap = { [key: string]: string | undefined };
-export const UpsertInstallationRequestAcceptedPoliciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpsertInstallationRequestAcceptedPoliciesMap>;
+export const UpsertInstallationRequestAcceptedPoliciesMap =
+  ClusterConfigurationPostgresConfigurationParametersMap as any as S.Schema<UpsertInstallationRequestAcceptedPoliciesMap>;
 
 export interface InstallationCredentials {
   /** Installation access token that authenticates our outbound Partner API calls to Vercel. Stored encrypted at rest. */
@@ -4083,9 +3995,8 @@ export const UpsertInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertInstallationRequest>;
 
 export interface UpsertInstallationResponse {}
-export const UpsertInstallationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpsertInstallationResponse",
-}) as any as S.Schema<UpsertInstallationResponse>;
+export const UpsertInstallationResponse =
+  DeleteBranchResponse as any as S.Schema<UpsertInstallationResponse>;
 
 export interface VerifyOrganizationSSODomainRequest {
   /** Unique identifier for a specific organization */
@@ -4114,9 +4025,7 @@ export const WebsocketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebsocketRequest" }) as any as S.Schema<WebsocketRequest>;
 
 export interface WebsocketResponse {}
-export const WebsocketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WebsocketResponse",
-}) as any as S.Schema<WebsocketResponse>;
+export const WebsocketResponse = DeleteBranchResponse as any as S.Schema<WebsocketResponse>;
 
 export type BranchLogs2Error = BadRequest | NotFound | XataOpError;
 /** Retrieve branch logs */

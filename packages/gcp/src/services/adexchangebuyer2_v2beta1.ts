@@ -1201,9 +1201,7 @@ export const AddNoteAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to cancel an ongoing negotiation. */
 export interface CancelNegotiationRequest {}
-export const CancelNegotiationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelNegotiationRequest",
-}) as any as S.Schema<CancelNegotiationRequest>;
+export const CancelNegotiationRequest = Empty as any as S.Schema<CancelNegotiationRequest>;
 
 export interface CancelNegotiationAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -4442,13 +4440,8 @@ export interface RemoveDealAssociationRequest {
   /** The association between a creative and a deal that should be removed. */
   association?: CreativeDealAssociation;
 }
-export const RemoveDealAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    association: S.optional(CreativeDealAssociation),
-  }),
-).annotate({
-  identifier: "RemoveDealAssociationRequest",
-}) as any as S.Schema<RemoveDealAssociationRequest>;
+export const RemoveDealAssociationRequest =
+  AddDealAssociationRequest as any as S.Schema<RemoveDealAssociationRequest>;
 
 export interface RemoveAccountsCreativesDealAssociationsRequest {
   /** The account the creative belongs to. */

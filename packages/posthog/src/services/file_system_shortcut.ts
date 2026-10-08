@@ -171,9 +171,8 @@ export const FileSystemShortcutBulkUpdateCreateRequestAddList = /*@__PURE__*/ S.
 
 /** IDs of the current user's shortcuts to delete. */
 export type FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList = Array<string>;
-export const FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList>;
+export const FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList =
+  CreateFileSystemShortcutReorderRequestOrderedIdsList as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList>;
 
 export interface FileSystemShortcutBulkUpdateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -200,9 +199,8 @@ export const FileSystemShortcutBulkUpdateCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequest>;
 
 export type FileSystemShortcutBulkUpdateCreateResponseBodyList = Array<FileSystemShortcut2>;
-export const FileSystemShortcutBulkUpdateCreateResponseBodyList = /*@__PURE__*/ S.Array(
-  FileSystemShortcut2,
-) as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponseBodyList>;
+export const FileSystemShortcutBulkUpdateCreateResponseBodyList =
+  PaginatedFileSystemShortcutListResultsList as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponseBodyList>;
 
 export type FileSystemShortcutBulkUpdateCreateResponse =
   FileSystemShortcutBulkUpdateCreateResponseBodyList;

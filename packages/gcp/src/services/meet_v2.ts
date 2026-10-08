@@ -448,9 +448,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 
 /** Request to end an ongoing conference of a space. */
 export interface EndActiveConferenceRequest {}
-export const EndActiveConferenceRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EndActiveConferenceRequest",
-}) as any as S.Schema<EndActiveConferenceRequest>;
+export const EndActiveConferenceRequest = Empty as any as S.Schema<EndActiveConferenceRequest>;
 
 export interface EndActiveConferenceSpacesRequest {
   /** Required. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
@@ -550,11 +548,7 @@ export interface AnonymousUser {
   /** Output only. User provided name when they join a conference anonymously. */
   displayName?: string;
 }
-export const AnonymousUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({ identifier: "AnonymousUser" }) as any as S.Schema<AnonymousUser>;
+export const AnonymousUser = PhoneUser as any as S.Schema<AnonymousUser>;
 
 /** User who attended or is attending a conference. */
 export interface Participant {

@@ -201,10 +201,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkflowResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkflowResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkflowResponseTagsMap>;
+export const GetWorkflowResponseTagsMap =
+  GeneratePreviewArtifactsResponse as any as S.Schema<GetWorkflowResponseTagsMap>;
 
 /** Determines the type of manifests within the repository. */
 export type ManifestType = "helm" | "kube" | "kustomize";
@@ -217,10 +215,8 @@ export const DeploymentPropertiesKubeManifestLocationsList = /*@__PURE__*/ S.Arr
 
 /** Manifest override values. */
 export type DeploymentPropertiesOverridesMap = { [key: string]: string | undefined };
-export const DeploymentPropertiesOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeploymentPropertiesOverridesMap>;
+export const DeploymentPropertiesOverridesMap =
+  GeneratePreviewArtifactsResponse as any as S.Schema<DeploymentPropertiesOverridesMap>;
 
 export interface DeploymentProperties {
   manifestType?: ManifestType | (string & {});
@@ -704,10 +700,7 @@ export const ListWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkflowTagsMap = { [key: string]: string | undefined };
-export const WorkflowTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkflowTagsMap>;
+export const WorkflowTagsMap = GeneratePreviewArtifactsResponse as any as S.Schema<WorkflowTagsMap>;
 
 /** Resource representation of a workflow */
 export interface Workflow {
@@ -726,17 +719,7 @@ export interface Workflow {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-export const Workflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WorkflowTagsMap),
-    location: S.String,
-    properties: S.optional(WorkflowProperties),
-  }),
-).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
+export const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
 
 /** The list of workflows. */
 export type WorkflowListResultValueList = Array<Workflow>;
@@ -784,10 +767,8 @@ export const ListWorkflowByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkflowByResourceGroupRequest>;
 
 export type UpdateWorkflowTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkflowTagsRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkflowTagsRequestTagsMap>;
+export const UpdateWorkflowTagsRequestTagsMap =
+  GeneratePreviewArtifactsResponse as any as S.Schema<UpdateWorkflowTagsRequestTagsMap>;
 
 export interface UpdateWorkflowTagsRequest {
   /** The ID of the target subscription. */
@@ -818,10 +799,8 @@ export const UpdateWorkflowTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkflowTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkflowTagsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkflowTagsResponseTagsMap>;
+export const UpdateWorkflowTagsResponseTagsMap =
+  GeneratePreviewArtifactsResponse as any as S.Schema<UpdateWorkflowTagsResponseTagsMap>;
 
 export interface UpdateWorkflowTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -855,10 +834,8 @@ export const UpdateWorkflowTagsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkflowCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkflowCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkflowCreateOrUpdateRequestTagsMap>;
+export const WorkflowCreateOrUpdateRequestTagsMap =
+  GeneratePreviewArtifactsResponse as any as S.Schema<WorkflowCreateOrUpdateRequestTagsMap>;
 
 /** The fields needed for OIDC with GitHub. */
 export type GitHubWorkflowProfileInputOidcCredentials = GitHubWorkflowProfileOidcCredentials;
@@ -963,10 +940,8 @@ export const WorkflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkflowCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkflowCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkflowCreateOrUpdateResponseTagsMap>;
+export const WorkflowCreateOrUpdateResponseTagsMap =
+  GeneratePreviewArtifactsResponse as any as S.Schema<WorkflowCreateOrUpdateResponseTagsMap>;
 
 export interface WorkflowCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -984,19 +959,8 @@ export interface WorkflowCreateOrUpdateResponse {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-export const WorkflowCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WorkflowCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(WorkflowProperties),
-  }),
-).annotate({
-  identifier: "WorkflowCreateOrUpdateResponse",
-}) as any as S.Schema<WorkflowCreateOrUpdateResponse>;
+export const WorkflowCreateOrUpdateResponse =
+  UpdateWorkflowTagsResponse as any as S.Schema<WorkflowCreateOrUpdateResponse>;
 
 export type DeleteWorkflowError = AzureOpError;
 /** Deletes a workflow */

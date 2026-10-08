@@ -312,9 +312,8 @@ export const IdentityProfileListItemLinkedCompaniesItem = IdentityProfileLinkedC
 
 /** The companies this identity profile is currently linked to. Only populated for direct Whop user sessions; always empty when authenticated via API key, app, or OAuth scope (a single identity can be linked to companies the calling platform is not entitled to see). */
 export type IdentityProfileListItemLinkedCompaniesList = Array<IdentityProfileLinkedCompaniesItem>;
-export const IdentityProfileListItemLinkedCompaniesList = /*@__PURE__*/ S.Array(
-  IdentityProfileLinkedCompaniesItem,
-) as any as S.Schema<IdentityProfileListItemLinkedCompaniesList>;
+export const IdentityProfileListItemLinkedCompaniesList =
+  IdentityProfileLinkedCompaniesList as any as S.Schema<IdentityProfileListItemLinkedCompaniesList>;
 
 /** Residential address reported by the identity provider. Present on `individual` profiles. */
 export type IdentityProfileListItemPersonalAddress = IdentityProfileBusinessAddress;
@@ -326,9 +325,8 @@ export const IdentityProfileListItemVerificationsItem = IdentityProfileVerificat
 
 /** All verification attempts attached to this identity profile, ordered most-recent first. */
 export type IdentityProfileListItemVerificationsList = Array<IdentityProfileVerificationsItem>;
-export const IdentityProfileListItemVerificationsList = /*@__PURE__*/ S.Array(
-  IdentityProfileVerificationsItem,
-) as any as S.Schema<IdentityProfileListItemVerificationsList>;
+export const IdentityProfileListItemVerificationsList =
+  IdentityProfileVerificationsList as any as S.Schema<IdentityProfileListItemVerificationsList>;
 
 /** A consolidated identity or business profile synced from verification provider data. */
 export interface IdentityProfileListItem {
@@ -371,29 +369,7 @@ export interface IdentityProfileListItem {
   /** All verification attempts attached to this identity profile, ordered most-recent first. */
   verifications: IdentityProfileListItemVerificationsList;
 }
-export const IdentityProfileListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    business_address: S.NullOr(IdentityProfileBusinessAddress),
-    business_name: S.NullOr(S.String),
-    business_structure: S.NullOr(S.String),
-    country: S.NullOr(S.String),
-    created_at: S.String,
-    date_of_birth: S.NullOr(S.String),
-    email: S.NullOr(S.String),
-    first_name: S.NullOr(S.String),
-    id: S.String,
-    last_name: S.NullOr(S.String),
-    linked_companies: IdentityProfileListItemLinkedCompaniesList,
-    payout_status: PayoutAccountCalculatedStatuses,
-    payouts_enabled: S.Boolean,
-    personal_address: S.NullOr(IdentityProfileBusinessAddress),
-    phone: S.NullOr(S.String),
-    profile_type: S.String,
-    status: IdentityProfileStatuses,
-    updated_at: S.String,
-    verifications: IdentityProfileListItemVerificationsList,
-  }),
-).annotate({ identifier: "IdentityProfileListItem" }) as any as S.Schema<IdentityProfileListItem>;
+export const IdentityProfileListItem = IdentityProfile as any as S.Schema<IdentityProfileListItem>;
 
 /** A list of nodes. */
 export type ListIdentityProfileResponseDataList = Array<IdentityProfileListItem>;
@@ -463,9 +439,8 @@ export const ListVerificationsIdentityProfileResponseDataItem = IdentityProfileV
 /** A list of nodes. */
 export type ListVerificationsIdentityProfileResponseDataList =
   Array<IdentityProfileVerificationsItem>;
-export const ListVerificationsIdentityProfileResponseDataList = /*@__PURE__*/ S.Array(
-  IdentityProfileVerificationsItem,
-) as any as S.Schema<ListVerificationsIdentityProfileResponseDataList>;
+export const ListVerificationsIdentityProfileResponseDataList =
+  IdentityProfileVerificationsList as any as S.Schema<ListVerificationsIdentityProfileResponseDataList>;
 
 export interface ListVerificationsIdentityProfileResponse {
   /** A list of nodes. */

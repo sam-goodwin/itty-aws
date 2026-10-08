@@ -301,11 +301,8 @@ export const AddContextChildrenProjectsLocationsMetadataStoresContextsRequest =
 
 /** Response message for MetadataService.AddContextChildren. */
 export interface GoogleCloudAiplatformV1AddContextChildrenResponse {}
-export const GoogleCloudAiplatformV1AddContextChildrenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1AddContextChildrenResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1AddContextChildrenResponse>;
+export const GoogleCloudAiplatformV1AddContextChildrenResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1AddContextChildrenResponse>;
 
 export type GoogleCloudAiplatformV1EventTypeEnum = "TYPE_UNSPECIFIED" | "INPUT" | "OUTPUT";
 export const GoogleCloudAiplatformV1EventTypeEnum = S.String;
@@ -380,11 +377,8 @@ export const AddExecutionEventsProjectsLocationsMetadataStoresExecutionsRequest 
 
 /** Response message for MetadataService.AddExecutionEvents. */
 export interface GoogleCloudAiplatformV1AddExecutionEventsResponse {}
-export const GoogleCloudAiplatformV1AddExecutionEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1AddExecutionEventsResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1AddExecutionEventsResponse>;
+export const GoogleCloudAiplatformV1AddExecutionEventsResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1AddExecutionEventsResponse>;
 
 /** A message representing a metric in the measurement. */
 export interface GoogleCloudAiplatformV1MeasurementMetric {
@@ -1278,7 +1272,7 @@ export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** A segment of the content. */
 export interface GoogleCloudAiplatformV1Segment {
@@ -1468,11 +1462,8 @@ export const AppendEventProjectsLocationsReasoningEnginesSessionsRequest = /*@__
 
 /** Response message for SessionService.AppendEvent. */
 export interface GoogleCloudAiplatformV1AppendEventResponse {}
-export const GoogleCloudAiplatformV1AppendEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1AppendEventResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1AppendEventResponse>;
+export const GoogleCloudAiplatformV1AppendEventResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1AppendEventResponse>;
 
 /** Config for LlmRanker. */
 export interface GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker {
@@ -1493,14 +1484,8 @@ export interface GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService {
   /** Optional. The model name of the rank service. Format: `semantic-ranker-512@latest` */
   modelName?: string;
 }
-export const GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      modelName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService",
-}) as any as S.Schema<GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService>;
+export const GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService =
+  GoogleCloudAiplatformV1RagRetrievalConfigRankingLlmRanker as any as S.Schema<GoogleCloudAiplatformV1RagRetrievalConfigRankingRankService>;
 
 /** Config for ranking and reranking. */
 export interface GoogleCloudAiplatformV1RagRetrievalConfigRanking {
@@ -3162,9 +3147,7 @@ export const AuthorizeAccessProjectsLocationsReasoningEnginesSandboxEnvironments
 /** Response message for SandboxEnvironmentExecutionService.AuthorizeSandboxEnvironmentAccess. Intentionally empty: a successful response is the authorization result. */
 export interface GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse {}
 export const GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse>;
+  GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse as any as S.Schema<GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse>;
 
 export interface AuthorizeAccessReasoningEnginesSandboxEnvironmentsRequest {
   /** Required. The resource name of the sandbox environment to authorize access to. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` */
@@ -3687,13 +3670,8 @@ export interface GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest {
   /** Required. The names of the PipelineJobs to delete. A maximum of 32 PipelineJobs can be deleted in a batch. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}` */
   names?: StringList;
 }
-export const GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest>;
+export const GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest =
+  GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest as any as S.Schema<GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest>;
 
 export interface BatchDeleteProjectsLocationsPipelineJobsRequest {
   /** Required. The name of the PipelineJobs' parent resource. Format: `projects/{project}/locations/{location}` */
@@ -4590,9 +4568,7 @@ export const CancelAsyncQueryProjectsLocationsReasoningEnginesRequest = /*@__PUR
 /** Response message for ReasoningEngineExecutionService.CancelAsyncQueryReasoningEngine. */
 export interface GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse {}
 export const GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse>;
+  GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse as any as S.Schema<GoogleCloudAiplatformV1CancelAsyncQueryReasoningEngineResponse>;
 
 export interface CancelAsyncQueryReasoningEnginesRequest {
   /** Required. The name of the ReasoningEngine resource to use. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -8450,20 +8426,13 @@ export interface GoogleCloudAiplatformV1ProbeHttpHeader {
   /** The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header. */
   name?: string;
 }
-export const GoogleCloudAiplatformV1ProbeHttpHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ProbeHttpHeader",
-}) as any as S.Schema<GoogleCloudAiplatformV1ProbeHttpHeader>;
+export const GoogleCloudAiplatformV1ProbeHttpHeader =
+  GoogleCloudAiplatformV1EnvVar as any as S.Schema<GoogleCloudAiplatformV1ProbeHttpHeader>;
 
 export type GoogleCloudAiplatformV1ProbeHttpHeaderList =
   Array<GoogleCloudAiplatformV1ProbeHttpHeader>;
-export const GoogleCloudAiplatformV1ProbeHttpHeaderList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ProbeHttpHeader,
-) as any as S.Schema<GoogleCloudAiplatformV1ProbeHttpHeaderList>;
+export const GoogleCloudAiplatformV1ProbeHttpHeaderList =
+  GoogleCloudAiplatformV1EnvVarList as any as S.Schema<GoogleCloudAiplatformV1ProbeHttpHeaderList>;
 
 /** HttpGetAction describes an action based on HTTP Get requests. */
 export interface GoogleCloudAiplatformV1ProbeHttpGetAction {
@@ -13478,14 +13447,7 @@ export interface GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParamet
   values?: StringList;
 }
 export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      values: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition",
-  }) as any as S.Schema<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition>;
+  GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition as any as S.Schema<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition>;
 
 /** Represents a parameter spec with condition from its parent parameter. */
 export interface GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec {
@@ -14771,13 +14733,8 @@ export interface GoogleCloudAiplatformV1ThresholdConfig {
   /** Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
   value?: number;
 }
-export const GoogleCloudAiplatformV1ThresholdConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ThresholdConfig",
-}) as any as S.Schema<GoogleCloudAiplatformV1ThresholdConfig>;
+export const GoogleCloudAiplatformV1ThresholdConfig =
+  GoogleCloudAiplatformV1Scalar as any as S.Schema<GoogleCloudAiplatformV1ThresholdConfig>;
 
 export type GoogleCloudAiplatformV1ThresholdConfigMap = {
   [key: string]: GoogleCloudAiplatformV1ThresholdConfig | undefined;
@@ -17388,14 +17345,7 @@ export interface GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpecAgentGa
   agentGateway?: string;
 }
 export const GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      agentGateway: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig",
-  }) as any as S.Schema<GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig>;
+  GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig as any as S.Schema<GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig>;
 
 /** Agent Gateway configuration for a Reasoning Engine deployment. */
 export interface GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpecAgentGatewayConfig {
@@ -19685,13 +19635,8 @@ export interface GoogleCloudAiplatformV1OutputConfig {
   /** Cloud storage destination for evaluation output. */
   gcsDestination?: GoogleCloudAiplatformV1GcsDestination;
 }
-export const GoogleCloudAiplatformV1OutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsDestination: S.optional(GoogleCloudAiplatformV1GcsDestination),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1OutputConfig",
-}) as any as S.Schema<GoogleCloudAiplatformV1OutputConfig>;
+export const GoogleCloudAiplatformV1OutputConfig =
+  GoogleCloudAiplatformV1TFRecordDestination as any as S.Schema<GoogleCloudAiplatformV1OutputConfig>;
 
 /** Evaluation Config for Tuning Job. */
 export interface GoogleCloudAiplatformV1EvaluationConfig {
@@ -19850,13 +19795,8 @@ export interface GoogleCloudAiplatformV1ExactMatchMetricValue {
   /** Output only. Exact match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1ExactMatchMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ExactMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1ExactMatchMetricValue>;
+export const GoogleCloudAiplatformV1ExactMatchMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1ExactMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1AggregationResultAggregationMetricEnum =
   | "AGGREGATION_METRIC_UNSPECIFIED"
@@ -19877,13 +19817,8 @@ export interface GoogleCloudAiplatformV1RougeMetricValue {
   /** Output only. Rouge score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1RougeMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1RougeMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1RougeMetricValue>;
+export const GoogleCloudAiplatformV1RougeMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1RougeMetricValue>;
 
 /** Raw output. */
 export interface GoogleCloudAiplatformV1RawOutput {
@@ -19961,13 +19896,8 @@ export interface GoogleCloudAiplatformV1BleuMetricValue {
   /** Output only. Bleu score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1BleuMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1BleuMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1BleuMetricValue>;
+export const GoogleCloudAiplatformV1BleuMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1BleuMetricValue>;
 
 /** The aggregation result for a single metric. */
 export interface GoogleCloudAiplatformV1AggregationResult {
@@ -24081,13 +24011,8 @@ export interface GoogleCloudAiplatformV1StringArray {
   /** A list of string values. */
   values?: StringList;
 }
-export const GoogleCloudAiplatformV1StringArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1StringArray",
-}) as any as S.Schema<GoogleCloudAiplatformV1StringArray>;
+export const GoogleCloudAiplatformV1StringArray =
+  GoogleCloudAiplatformV1Int64Array as any as S.Schema<GoogleCloudAiplatformV1StringArray>;
 
 /** A list of boolean values. */
 export interface GoogleCloudAiplatformV1BoolArray {
@@ -24486,13 +24411,8 @@ export interface GoogleCloudAiplatformV1EmbedContentResponseEmbedding {
   /** Embedding vector values. */
   values?: DoubleList;
 }
-export const GoogleCloudAiplatformV1EmbedContentResponseEmbedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1EmbedContentResponseEmbedding",
-}) as any as S.Schema<GoogleCloudAiplatformV1EmbedContentResponseEmbedding>;
+export const GoogleCloudAiplatformV1EmbedContentResponseEmbedding =
+  GoogleCloudAiplatformV1DoubleArray as any as S.Schema<GoogleCloudAiplatformV1EmbedContentResponseEmbedding>;
 
 /** Response message for PredictionService.EmbedContent. */
 export interface GoogleCloudAiplatformV1EmbedContentResponse {
@@ -25147,14 +25067,8 @@ export interface GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec {
   /** Optional. Which version to use for evaluation. */
   version?: number;
 }
-export const GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    useReference: S.optional(S.Boolean),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec>;
+export const GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec =
+  GoogleCloudAiplatformV1QuestionAnsweringCorrectnessSpec as any as S.Schema<GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessSpec>;
 
 /** Input for question answering helpfulness metric. */
 export interface GoogleCloudAiplatformV1QuestionAnsweringHelpfulnessInput {
@@ -25244,14 +25158,8 @@ export interface GoogleCloudAiplatformV1QuestionAnsweringQualitySpec {
   /** Optional. Which version to use for evaluation. */
   version?: number;
 }
-export const GoogleCloudAiplatformV1QuestionAnsweringQualitySpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    useReference: S.optional(S.Boolean),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1QuestionAnsweringQualitySpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1QuestionAnsweringQualitySpec>;
+export const GoogleCloudAiplatformV1QuestionAnsweringQualitySpec =
+  GoogleCloudAiplatformV1QuestionAnsweringCorrectnessSpec as any as S.Schema<GoogleCloudAiplatformV1QuestionAnsweringQualitySpec>;
 
 /** Input for question answering quality metric. */
 export interface GoogleCloudAiplatformV1QuestionAnsweringQualityInput {
@@ -25283,9 +25191,8 @@ export const GoogleCloudAiplatformV1TrajectoryPrecisionInstance =
 
 export type GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList =
   Array<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
-export const GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList>;
+export const GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList>;
 
 /** Instances and metric spec for TrajectoryPrecision metric. */
 export interface GoogleCloudAiplatformV1TrajectoryPrecisionInput {
@@ -25294,14 +25201,8 @@ export interface GoogleCloudAiplatformV1TrajectoryPrecisionInput {
   /** Required. Repeated TrajectoryPrecision instance. */
   instances?: GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList;
 }
-export const GoogleCloudAiplatformV1TrajectoryPrecisionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryPrecisionInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionInput>;
+export const GoogleCloudAiplatformV1TrajectoryPrecisionInput =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInput as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionInput>;
 
 /** Spec for Comet instance - The fields used for evaluation are dependent on the comet version. */
 export interface GoogleCloudAiplatformV1CometInstance {
@@ -25450,14 +25351,8 @@ export interface GoogleCloudAiplatformV1SummarizationHelpfulnessSpec {
   /** Optional. Whether to use instance.reference to compute summarization helpfulness. */
   useReference?: boolean;
 }
-export const GoogleCloudAiplatformV1SummarizationHelpfulnessSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    useReference: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SummarizationHelpfulnessSpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1SummarizationHelpfulnessSpec>;
+export const GoogleCloudAiplatformV1SummarizationHelpfulnessSpec =
+  GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec as any as S.Schema<GoogleCloudAiplatformV1SummarizationHelpfulnessSpec>;
 
 /** Input for summarization helpfulness metric. */
 export interface GoogleCloudAiplatformV1SummarizationHelpfulnessInput {
@@ -25575,9 +25470,8 @@ export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance =
 
 export type GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList =
   Array<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
-export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList>;
+export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList>;
 
 /** Instances and metric spec for TrajectoryInOrderMatch metric. */
 export interface GoogleCloudAiplatformV1TrajectoryInOrderMatchInput {
@@ -25586,14 +25480,8 @@ export interface GoogleCloudAiplatformV1TrajectoryInOrderMatchInput {
   /** Required. Repeated TrajectoryInOrderMatch instance. */
   instances?: GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList;
 }
-export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryInOrderMatchInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryInOrderMatchInput>;
+export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInput =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInput as any as S.Schema<GoogleCloudAiplatformV1TrajectoryInOrderMatchInput>;
 
 /** Spec for rouge instance. */
 export type GoogleCloudAiplatformV1RougeInstance = GoogleCloudAiplatformV1ExactMatchInstance;
@@ -25601,9 +25489,8 @@ export const GoogleCloudAiplatformV1RougeInstance = GoogleCloudAiplatformV1Exact
 
 export type GoogleCloudAiplatformV1RougeInstanceList =
   Array<GoogleCloudAiplatformV1ExactMatchInstance>;
-export const GoogleCloudAiplatformV1RougeInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1RougeInstanceList>;
+export const GoogleCloudAiplatformV1RougeInstanceList =
+  GoogleCloudAiplatformV1ExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1RougeInstanceList>;
 
 /** Input for rouge metric. */
 export interface GoogleCloudAiplatformV1RougeInput {
@@ -25627,9 +25514,8 @@ export const GoogleCloudAiplatformV1BleuInstance = GoogleCloudAiplatformV1ExactM
 
 export type GoogleCloudAiplatformV1BleuInstanceList =
   Array<GoogleCloudAiplatformV1ExactMatchInstance>;
-export const GoogleCloudAiplatformV1BleuInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1BleuInstanceList>;
+export const GoogleCloudAiplatformV1BleuInstanceList =
+  GoogleCloudAiplatformV1ExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1BleuInstanceList>;
 
 /** Input for bleu metric. */
 export interface GoogleCloudAiplatformV1BleuInput {
@@ -25661,9 +25547,8 @@ export const GoogleCloudAiplatformV1ToolParameterKeyMatchInstance =
 
 export type GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList =
   Array<GoogleCloudAiplatformV1ExactMatchInstance>;
-export const GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList>;
+export const GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList =
+  GoogleCloudAiplatformV1ExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList>;
 
 /** Input for tool parameter key match metric. */
 export interface GoogleCloudAiplatformV1ToolParameterKeyMatchInput {
@@ -25672,14 +25557,8 @@ export interface GoogleCloudAiplatformV1ToolParameterKeyMatchInput {
   /** Required. Repeated tool parameter key match instances. */
   instances?: GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList;
 }
-export const GoogleCloudAiplatformV1ToolParameterKeyMatchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ToolParameterKeyMatchInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchInput>;
+export const GoogleCloudAiplatformV1ToolParameterKeyMatchInput =
+  GoogleCloudAiplatformV1ExactMatchInput as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchInput>;
 
 /** Spec for summarization verbosity score metric. */
 export interface GoogleCloudAiplatformV1SummarizationVerbositySpec {
@@ -25688,14 +25567,8 @@ export interface GoogleCloudAiplatformV1SummarizationVerbositySpec {
   /** Optional. Whether to use instance.reference to compute summarization verbosity. */
   useReference?: boolean;
 }
-export const GoogleCloudAiplatformV1SummarizationVerbositySpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    useReference: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SummarizationVerbositySpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1SummarizationVerbositySpec>;
+export const GoogleCloudAiplatformV1SummarizationVerbositySpec =
+  GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec as any as S.Schema<GoogleCloudAiplatformV1SummarizationVerbositySpec>;
 
 /** Spec for summarization verbosity instance. */
 export interface GoogleCloudAiplatformV1SummarizationVerbosityInstance {
@@ -25793,9 +25666,8 @@ export const GoogleCloudAiplatformV1TrajectoryRecallInstance =
 
 export type GoogleCloudAiplatformV1TrajectoryRecallInstanceList =
   Array<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
-export const GoogleCloudAiplatformV1TrajectoryRecallInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallInstanceList>;
+export const GoogleCloudAiplatformV1TrajectoryRecallInstanceList =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallInstanceList>;
 
 /** Instances and metric spec for TrajectoryRecall metric. */
 export interface GoogleCloudAiplatformV1TrajectoryRecallInput {
@@ -25804,14 +25676,8 @@ export interface GoogleCloudAiplatformV1TrajectoryRecallInput {
   /** Required. Repeated TrajectoryRecall instance. */
   instances?: GoogleCloudAiplatformV1TrajectoryRecallInstanceList;
 }
-export const GoogleCloudAiplatformV1TrajectoryRecallInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1TrajectoryRecallInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryRecallInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallInput>;
+export const GoogleCloudAiplatformV1TrajectoryRecallInput =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInput as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallInput>;
 
 /** Spec for safety metric. */
 export type GoogleCloudAiplatformV1SafetySpec = GoogleCloudAiplatformV1FluencySpec;
@@ -25828,14 +25694,8 @@ export interface GoogleCloudAiplatformV1SafetyInput {
   /** Required. Safety instance. */
   instance?: GoogleCloudAiplatformV1FluencyInstance;
 }
-export const GoogleCloudAiplatformV1SafetyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1FluencySpec),
-    instance: S.optional(GoogleCloudAiplatformV1FluencyInstance),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SafetyInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1SafetyInput>;
+export const GoogleCloudAiplatformV1SafetyInput =
+  GoogleCloudAiplatformV1FluencyInput as any as S.Schema<GoogleCloudAiplatformV1SafetyInput>;
 
 export type GoogleCloudAiplatformV1MetricxSpecVersionEnum =
   | "METRICX_VERSION_UNSPECIFIED"
@@ -25976,14 +25836,8 @@ export interface GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec {
   /** Optional. Which version to use for evaluation. */
   version?: number;
 }
-export const GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    useReference: S.optional(S.Boolean),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec>;
+export const GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec =
+  GoogleCloudAiplatformV1QuestionAnsweringCorrectnessSpec as any as S.Schema<GoogleCloudAiplatformV1QuestionAnsweringRelevanceSpec>;
 
 /** Input for question answering relevance metric. */
 export interface GoogleCloudAiplatformV1QuestionAnsweringRelevanceInput {
@@ -26009,9 +25863,8 @@ export const GoogleCloudAiplatformV1ToolParameterKVMatchInstance =
 
 export type GoogleCloudAiplatformV1ToolParameterKVMatchInstanceList =
   Array<GoogleCloudAiplatformV1ExactMatchInstance>;
-export const GoogleCloudAiplatformV1ToolParameterKVMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchInstanceList>;
+export const GoogleCloudAiplatformV1ToolParameterKVMatchInstanceList =
+  GoogleCloudAiplatformV1ExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchInstanceList>;
 
 /** Spec for tool parameter key value match metric. */
 export interface GoogleCloudAiplatformV1ToolParameterKVMatchSpec {
@@ -26093,14 +25946,8 @@ export interface GoogleCloudAiplatformV1CoherenceInput {
   /** Required. Coherence instance. */
   instance?: GoogleCloudAiplatformV1FluencyInstance;
 }
-export const GoogleCloudAiplatformV1CoherenceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1FluencySpec),
-    instance: S.optional(GoogleCloudAiplatformV1FluencyInstance),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1CoherenceInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1CoherenceInput>;
+export const GoogleCloudAiplatformV1CoherenceInput =
+  GoogleCloudAiplatformV1FluencyInput as any as S.Schema<GoogleCloudAiplatformV1CoherenceInput>;
 
 /** Spec for summarization quality instance. */
 export interface GoogleCloudAiplatformV1SummarizationQualityInstance {
@@ -26131,14 +25978,8 @@ export interface GoogleCloudAiplatformV1SummarizationQualitySpec {
   /** Optional. Whether to use instance.reference to compute summarization quality. */
   useReference?: boolean;
 }
-export const GoogleCloudAiplatformV1SummarizationQualitySpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.Number),
-    useReference: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SummarizationQualitySpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1SummarizationQualitySpec>;
+export const GoogleCloudAiplatformV1SummarizationQualitySpec =
+  GoogleCloudAiplatformV1PairwiseSummarizationQualitySpec as any as S.Schema<GoogleCloudAiplatformV1SummarizationQualitySpec>;
 
 /** Input for summarization quality metric. */
 export interface GoogleCloudAiplatformV1SummarizationQualityInput {
@@ -26170,9 +26011,8 @@ export const GoogleCloudAiplatformV1ToolNameMatchInstance =
 
 export type GoogleCloudAiplatformV1ToolNameMatchInstanceList =
   Array<GoogleCloudAiplatformV1ExactMatchInstance>;
-export const GoogleCloudAiplatformV1ToolNameMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchInstanceList>;
+export const GoogleCloudAiplatformV1ToolNameMatchInstanceList =
+  GoogleCloudAiplatformV1ExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchInstanceList>;
 
 /** Input for tool name match metric. */
 export interface GoogleCloudAiplatformV1ToolNameMatchInput {
@@ -26181,14 +26021,8 @@ export interface GoogleCloudAiplatformV1ToolNameMatchInput {
   /** Required. Repeated tool name match instances. */
   instances?: GoogleCloudAiplatformV1ToolNameMatchInstanceList;
 }
-export const GoogleCloudAiplatformV1ToolNameMatchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1ToolNameMatchInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ToolNameMatchInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchInput>;
+export const GoogleCloudAiplatformV1ToolNameMatchInput =
+  GoogleCloudAiplatformV1ExactMatchInput as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchInput>;
 
 /** Spec for groundedness metric. */
 export type GoogleCloudAiplatformV1GroundednessSpec = GoogleCloudAiplatformV1FluencySpec;
@@ -26240,9 +26074,8 @@ export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance =
 
 export type GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList =
   Array<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
-export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryExactMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList>;
+export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList>;
 
 /** Instances and metric spec for TrajectoryAnyOrderMatch metric. */
 export interface GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput {
@@ -26251,14 +26084,8 @@ export interface GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput {
   /** Required. Repeated TrajectoryAnyOrderMatch instance. */
   instances?: GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList;
 }
-export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput>;
+export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput =
+  GoogleCloudAiplatformV1TrajectoryExactMatchInput as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput>;
 
 /** Request message for EvaluationService.EvaluateInstances. */
 export interface GoogleCloudAiplatformV1EvaluateInstancesRequest {
@@ -26492,19 +26319,13 @@ export interface GoogleCloudAiplatformV1ToolCallValidMetricValue {
   /** Output only. Tool call valid score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1ToolCallValidMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ToolCallValidMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1ToolCallValidMetricValue>;
+export const GoogleCloudAiplatformV1ToolCallValidMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1ToolCallValidMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolCallValidMetricValueList =
   Array<GoogleCloudAiplatformV1ToolCallValidMetricValue>;
-export const GoogleCloudAiplatformV1ToolCallValidMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ToolCallValidMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1ToolCallValidMetricValueList>;
+export const GoogleCloudAiplatformV1ToolCallValidMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1ToolCallValidMetricValueList>;
 
 /** Results for tool call valid metric. */
 export interface GoogleCloudAiplatformV1ToolCallValidResults {
@@ -26551,33 +26372,21 @@ export interface GoogleCloudAiplatformV1MetricxResult {
   /** Output only. MetricX score. Range depends on version. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1MetricxResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1MetricxResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1MetricxResult>;
+export const GoogleCloudAiplatformV1MetricxResult =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1MetricxResult>;
 
 /** TrajectorySingleToolUse metric value for an instance. */
 export interface GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue {
   /** Output only. TrajectorySingleToolUse score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      score: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>;
+export const GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue =
+  GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue as any as S.Schema<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValueList =
   Array<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>;
-export const GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValueList>;
+export const GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValueList =
+  GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValueList as any as S.Schema<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValueList>;
 
 /** Results for TrajectorySingleToolUse metric. */
 export interface GoogleCloudAiplatformV1TrajectorySingleToolUseResults {
@@ -26618,19 +26427,13 @@ export interface GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue {
   /** Output only. TrajectoryPrecision score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>;
+export const GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryPrecisionMetricValueList =
   Array<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>;
-export const GoogleCloudAiplatformV1TrajectoryPrecisionMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValueList>;
+export const GoogleCloudAiplatformV1TrajectoryPrecisionMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValueList>;
 
 /** Results for TrajectoryPrecision metric. */
 export interface GoogleCloudAiplatformV1TrajectoryPrecisionResults {
@@ -26652,19 +26455,13 @@ export interface GoogleCloudAiplatformV1ToolNameMatchMetricValue {
   /** Output only. Tool name match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1ToolNameMatchMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ToolNameMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchMetricValue>;
+export const GoogleCloudAiplatformV1ToolNameMatchMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolNameMatchMetricValueList =
   Array<GoogleCloudAiplatformV1ToolNameMatchMetricValue>;
-export const GoogleCloudAiplatformV1ToolNameMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ToolNameMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchMetricValueList>;
+export const GoogleCloudAiplatformV1ToolNameMatchMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchMetricValueList>;
 
 /** Results for tool name match metric. */
 export interface GoogleCloudAiplatformV1ToolNameMatchResults {
@@ -26830,19 +26627,13 @@ export interface GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue {
   /** Output only. Tool parameter key match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>;
+export const GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValueList =
   Array<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>;
-export const GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValueList>;
+export const GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValueList>;
 
 /** Results for tool parameter key match metric. */
 export interface GoogleCloudAiplatformV1ToolParameterKeyMatchResults {
@@ -26861,9 +26652,8 @@ export const GoogleCloudAiplatformV1ToolParameterKeyMatchResults = /*@__PURE__*/
 
 export type GoogleCloudAiplatformV1BleuMetricValueList =
   Array<GoogleCloudAiplatformV1BleuMetricValue>;
-export const GoogleCloudAiplatformV1BleuMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1BleuMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1BleuMetricValueList>;
+export const GoogleCloudAiplatformV1BleuMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1BleuMetricValueList>;
 
 /** Results for bleu metric. */
 export interface GoogleCloudAiplatformV1BleuResults {
@@ -26883,20 +26673,13 @@ export interface GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue {
   /** Output only. TrajectoryAnyOrderMatch score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      score: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>;
+export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue =
+  GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValueList =
   Array<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>;
-export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValueList>;
+export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValueList =
+  GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValueList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValueList>;
 
 /** Results for TrajectoryAnyOrderMatch metric. */
 export interface GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults {
@@ -26918,19 +26701,13 @@ export interface GoogleCloudAiplatformV1TrajectoryRecallMetricValue {
   /** Output only. TrajectoryRecall score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1TrajectoryRecallMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryRecallMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallMetricValue>;
+export const GoogleCloudAiplatformV1TrajectoryRecallMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryRecallMetricValueList =
   Array<GoogleCloudAiplatformV1TrajectoryRecallMetricValue>;
-export const GoogleCloudAiplatformV1TrajectoryRecallMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryRecallMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallMetricValueList>;
+export const GoogleCloudAiplatformV1TrajectoryRecallMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallMetricValueList>;
 
 /** Results for TrajectoryRecall metric. */
 export interface GoogleCloudAiplatformV1TrajectoryRecallResults {
@@ -26995,15 +26772,8 @@ export interface GoogleCloudAiplatformV1FulfillmentResult {
   /** Output only. Fulfillment score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1FulfillmentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    explanation: S.optional(S.String),
-    confidence: S.optional(S.Number),
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1FulfillmentResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1FulfillmentResult>;
+export const GoogleCloudAiplatformV1FulfillmentResult =
+  GoogleCloudAiplatformV1QuestionAnsweringQualityResult as any as S.Schema<GoogleCloudAiplatformV1FulfillmentResult>;
 
 /** Spec for summarization helpfulness result. */
 export interface GoogleCloudAiplatformV1SummarizationHelpfulnessResult {
@@ -27014,34 +26784,21 @@ export interface GoogleCloudAiplatformV1SummarizationHelpfulnessResult {
   /** Output only. Explanation for summarization helpfulness score. */
   explanation?: string;
 }
-export const GoogleCloudAiplatformV1SummarizationHelpfulnessResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    confidence: S.optional(S.Number),
-    score: S.optional(S.Number),
-    explanation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SummarizationHelpfulnessResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1SummarizationHelpfulnessResult>;
+export const GoogleCloudAiplatformV1SummarizationHelpfulnessResult =
+  GoogleCloudAiplatformV1SafetyResult as any as S.Schema<GoogleCloudAiplatformV1SummarizationHelpfulnessResult>;
 
 /** Tool parameter key value match metric value for an instance. */
 export interface GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue {
   /** Output only. Tool parameter key value match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>;
+export const GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolParameterKVMatchMetricValueList =
   Array<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>;
-export const GoogleCloudAiplatformV1ToolParameterKVMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValueList>;
+export const GoogleCloudAiplatformV1ToolParameterKVMatchMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValueList>;
 
 /** Results for tool parameter key value match metric. */
 export interface GoogleCloudAiplatformV1ToolParameterKVMatchResults {
@@ -27063,19 +26820,13 @@ export interface GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue {
   /** Output only. TrajectoryExactMatch score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>;
+export const GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryExactMatchMetricValueList =
   Array<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>;
-export const GoogleCloudAiplatformV1TrajectoryExactMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValueList>;
+export const GoogleCloudAiplatformV1TrajectoryExactMatchMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValueList>;
 
 /** Results for TrajectoryExactMatch metric. */
 export interface GoogleCloudAiplatformV1TrajectoryExactMatchResults {
@@ -27097,13 +26848,8 @@ export interface GoogleCloudAiplatformV1CometResult {
   /** Output only. Comet score. Range depends on version. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1CometResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1CometResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1CometResult>;
+export const GoogleCloudAiplatformV1CometResult =
+  GoogleCloudAiplatformV1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1CometResult>;
 
 /** Spec for summarization verbosity result. */
 export interface GoogleCloudAiplatformV1SummarizationVerbosityResult {
@@ -27114,15 +26860,8 @@ export interface GoogleCloudAiplatformV1SummarizationVerbosityResult {
   /** Output only. Explanation for summarization verbosity score. */
   explanation?: string;
 }
-export const GoogleCloudAiplatformV1SummarizationVerbosityResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-    confidence: S.optional(S.Number),
-    explanation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SummarizationVerbosityResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1SummarizationVerbosityResult>;
+export const GoogleCloudAiplatformV1SummarizationVerbosityResult =
+  GoogleCloudAiplatformV1FluencyResult as any as S.Schema<GoogleCloudAiplatformV1SummarizationVerbosityResult>;
 
 export type GoogleCloudAiplatformV1PairwiseSummarizationQualityResultPairwiseChoiceEnum =
   | "PAIRWISE_CHOICE_UNSPECIFIED"
@@ -27162,21 +26901,13 @@ export interface GoogleCloudAiplatformV1SummarizationQualityResult {
   /** Output only. Summarization Quality score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1SummarizationQualityResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    confidence: S.optional(S.Number),
-    explanation: S.optional(S.String),
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SummarizationQualityResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1SummarizationQualityResult>;
+export const GoogleCloudAiplatformV1SummarizationQualityResult =
+  GoogleCloudAiplatformV1GroundednessResult as any as S.Schema<GoogleCloudAiplatformV1SummarizationQualityResult>;
 
 export type GoogleCloudAiplatformV1ExactMatchMetricValueList =
   Array<GoogleCloudAiplatformV1ExactMatchMetricValue>;
-export const GoogleCloudAiplatformV1ExactMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1ExactMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1ExactMatchMetricValueList>;
+export const GoogleCloudAiplatformV1ExactMatchMetricValueList =
+  GoogleCloudAiplatformV1RougeMetricValueList as any as S.Schema<GoogleCloudAiplatformV1ExactMatchMetricValueList>;
 
 /** Results for exact match metric. */
 export interface GoogleCloudAiplatformV1ExactMatchResults {
@@ -27448,13 +27179,8 @@ export interface GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest {
   /** Required. The inputs to the sandbox environment. */
   inputs?: GoogleCloudAiplatformV1ChunkList;
 }
-export const GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputs: S.optional(GoogleCloudAiplatformV1ChunkList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest>;
+export const GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest =
+  GoogleCloudAiplatformV1ExecuteCodeRequest as any as S.Schema<GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest>;
 
 export interface ExecuteProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest {
   /** Required. The resource name of the sandbox environment to execute. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` */
@@ -27872,13 +27598,8 @@ export interface GoogleCloudAiplatformV1ContainerRegistryDestination {
   /** Required. Container Registry URI of a container image. Only Google Container Registry and Artifact Registry are supported now. Accepted forms: * Google Container Registry path. For example: `gcr.io/projectId/imageName:tag`. * Artifact Registry path. For example: `us-central1-docker.pkg.dev/projectId/repoName/imageName:tag`. If a tag is not specified, "latest" will be used as the default tag. */
   outputUri?: string;
 }
-export const GoogleCloudAiplatformV1ContainerRegistryDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1ContainerRegistryDestination",
-}) as any as S.Schema<GoogleCloudAiplatformV1ContainerRegistryDestination>;
+export const GoogleCloudAiplatformV1ContainerRegistryDestination =
+  GoogleCloudAiplatformV1BigQueryDestination as any as S.Schema<GoogleCloudAiplatformV1ContainerRegistryDestination>;
 
 /** Output configuration for the Model export. */
 export interface GoogleCloudAiplatformV1ExportModelRequestOutputConfig {
@@ -28050,22 +27771,12 @@ export interface GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameVal
   value?: GoogleCloudAiplatformV1FeatureValue;
 }
 export const GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(GoogleCloudAiplatformV1FeatureValue),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair",
-  }) as any as S.Schema<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>;
+  GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature as any as S.Schema<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>;
 
 export type GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePairList =
   Array<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>;
 export const GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePairList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair,
-  ) as any as S.Schema<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePairList>;
+  GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeatureList as any as S.Schema<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePairList>;
 
 /** Response structure in the format of key (feature name) and (feature) value pair. */
 export interface GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList {
@@ -43811,14 +43522,8 @@ export interface GoogleCloudAiplatformV1PurgeExecutionsRequest {
   /** Optional. Flag to indicate to actually perform the purge. If `force` is set to false, the method will return a sample of Execution names that would be deleted. */
   force?: boolean;
 }
-export const GoogleCloudAiplatformV1PurgeExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String),
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1PurgeExecutionsRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1PurgeExecutionsRequest>;
+export const GoogleCloudAiplatformV1PurgeExecutionsRequest =
+  GoogleCloudAiplatformV1PurgeContextsRequest as any as S.Schema<GoogleCloudAiplatformV1PurgeExecutionsRequest>;
 
 export interface PurgeProjectsLocationsMetadataStoresExecutionsRequest {
   /** Required. The metadata store to purge Executions from. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` */
@@ -44678,11 +44383,8 @@ export const RemoveContextChildrenProjectsLocationsMetadataStoresContextsRequest
 
 /** Response message for MetadataService.RemoveContextChildren. */
 export interface GoogleCloudAiplatformV1RemoveContextChildrenResponse {}
-export const GoogleCloudAiplatformV1RemoveContextChildrenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1RemoveContextChildrenResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1RemoveContextChildrenResponse>;
+export const GoogleCloudAiplatformV1RemoveContextChildrenResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1RemoveContextChildrenResponse>;
 
 /** Request message for IndexService.RemoveDatapoints */
 export interface GoogleCloudAiplatformV1RemoveDatapointsRequest {
@@ -44720,11 +44422,8 @@ export const RemoveDatapointsProjectsLocationsIndexesRequest = /*@__PURE__*/ S.s
 
 /** Response message for IndexService.RemoveDatapoints */
 export interface GoogleCloudAiplatformV1RemoveDatapointsResponse {}
-export const GoogleCloudAiplatformV1RemoveDatapointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1RemoveDatapointsResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1RemoveDatapointsResponse>;
+export const GoogleCloudAiplatformV1RemoveDatapointsResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1RemoveDatapointsResponse>;
 
 export interface ResponsesProjectsLocationsEndpointsOpenapiRequest {
   /** Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
@@ -45273,14 +44972,8 @@ export interface GoogleCloudAiplatformV1SearchFeaturesResponse {
   /** The Features matching the request. Fields returned: * `name` * `description` * `labels` * `create_time` * `update_time` */
   features?: GoogleCloudAiplatformV1FeatureList;
 }
-export const GoogleCloudAiplatformV1SearchFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    features: S.optional(GoogleCloudAiplatformV1FeatureList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1SearchFeaturesResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1SearchFeaturesResponse>;
+export const GoogleCloudAiplatformV1SearchFeaturesResponse =
+  GoogleCloudAiplatformV1ListFeaturesResponse as any as S.Schema<GoogleCloudAiplatformV1SearchFeaturesResponse>;
 
 export type GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjectiveTypeEnum =
   | "MODEL_DEPLOYMENT_MONITORING_OBJECTIVE_TYPE_UNSPECIFIED"
@@ -46530,13 +46223,8 @@ export interface GoogleCloudAiplatformV1StreamRawPredictRequest {
   /** The prediction input. Supports HTTP headers and arbitrary data payload. */
   httpBody?: GoogleApiHttpBody;
 }
-export const GoogleCloudAiplatformV1StreamRawPredictRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    httpBody: S.optional(GoogleApiHttpBody),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1StreamRawPredictRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1StreamRawPredictRequest>;
+export const GoogleCloudAiplatformV1StreamRawPredictRequest =
+  GoogleCloudAiplatformV1RawPredictRequest as any as S.Schema<GoogleCloudAiplatformV1StreamRawPredictRequest>;
 
 export interface StreamRawPredictProjectsLocationsEndpointsRequest {
   /** Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` */
@@ -47307,11 +46995,8 @@ export const UpsertDatapointsProjectsLocationsIndexesRequest = /*@__PURE__*/ S.s
 
 /** Response message for IndexService.UpsertDatapoints */
 export interface GoogleCloudAiplatformV1UpsertDatapointsResponse {}
-export const GoogleCloudAiplatformV1UpsertDatapointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1UpsertDatapointsResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1UpsertDatapointsResponse>;
+export const GoogleCloudAiplatformV1UpsertDatapointsResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1UpsertDatapointsResponse>;
 
 export interface WaitCustomJobsOperationsRequest {
   /** The name of the operation resource to wait on. */
@@ -49889,11 +49574,8 @@ export const WriteFeatureValuesProjectsLocationsFeaturestoresEntityTypesRequest 
 
 /** Response message for FeaturestoreOnlineServingService.WriteFeatureValues. */
 export interface GoogleCloudAiplatformV1WriteFeatureValuesResponse {}
-export const GoogleCloudAiplatformV1WriteFeatureValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1WriteFeatureValuesResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1WriteFeatureValuesResponse>;
+export const GoogleCloudAiplatformV1WriteFeatureValuesResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1WriteFeatureValuesResponse>;
 
 /** Request message for TensorboardService.WriteTensorboardRunData. */
 export interface GoogleCloudAiplatformV1WriteTensorboardRunDataRequest {
@@ -49957,9 +49639,7 @@ export const WriteProjectsLocationsTensorboardsExperimentsRequest = /*@__PURE__*
 /** Response message for TensorboardService.WriteTensorboardExperimentData. */
 export interface GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse {}
 export const GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse>;
+  GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse as any as S.Schema<GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse>;
 
 export interface WriteProjectsLocationsTensorboardsExperimentsRunsRequest {
   /** Required. The resource name of the TensorboardRun to write data to. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` */
@@ -49985,11 +49665,8 @@ export const WriteProjectsLocationsTensorboardsExperimentsRunsRequest = /*@__PUR
 
 /** Response message for TensorboardService.WriteTensorboardRunData. */
 export interface GoogleCloudAiplatformV1WriteTensorboardRunDataResponse {}
-export const GoogleCloudAiplatformV1WriteTensorboardRunDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1WriteTensorboardRunDataResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1WriteTensorboardRunDataResponse>;
+export const GoogleCloudAiplatformV1WriteTensorboardRunDataResponse =
+  GoogleCloudAiplatformV1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1WriteTensorboardRunDataResponse>;
 
 export type ActivateProjectsLocationsOnlineEvaluatorsError =
   | NotFound

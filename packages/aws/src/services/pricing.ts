@@ -261,7 +261,7 @@ export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProductsRequest" }) as any as S.Schema<GetProductsRequest>;
 export type SynthesizedJsonPriceListJsonItem = string;
 export type PriceListJsonItems = string[];
-export const PriceListJsonItems = /*@__PURE__*/ S.Array(S.String);
+export const PriceListJsonItems = AttributeNameList as any as S.Schema<PriceListJsonItems>;
 export interface GetProductsResponse {
   FormatVersion?: string;
   PriceList?: string[];
@@ -298,7 +298,7 @@ export const ListPriceListsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListPriceListsRequest" }) as any as S.Schema<ListPriceListsRequest>;
 export type FileFormats = string[];
-export const FileFormats = /*@__PURE__*/ S.Array(S.String);
+export const FileFormats = AttributeNameList as any as S.Schema<FileFormats>;
 export interface PriceList {
   PriceListArn?: string;
   RegionCode?: string;

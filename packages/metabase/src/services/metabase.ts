@@ -16,9 +16,8 @@ export const MetabaseLibSchemaParameterVariable = /*@__PURE__*/ S.Array(
 
 /** A :text-tag parameter :target applies to parameterized text cards in viz settings */
 export type MetabaseLibSchemaParameterTextTag = Array<unknown>;
-export const MetabaseLibSchemaParameterTextTag = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibSchemaParameterTextTag>;
+export const MetabaseLibSchemaParameterTextTag =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibSchemaParameterTextTag>;
 
 export type MetabaseLibSchemaParameterTarget =
   | unknown
@@ -70,15 +69,13 @@ export const MetabaseParametersSchemaParameterFilteringParametersList = /*@__PUR
 
 export type MetabaseParametersSchemaParameterMappingsCase0List =
   Array<MetabaseParametersSchemaParameterMapping>;
-export const MetabaseParametersSchemaParameterMappingsCase0List = /*@__PURE__*/ S.Array(
-  MetabaseParametersSchemaParameterMapping,
-) as any as S.Schema<MetabaseParametersSchemaParameterMappingsCase0List>;
+export const MetabaseParametersSchemaParameterMappingsCase0List =
+  MetabaseParametersSchemaParameterMappings as any as S.Schema<MetabaseParametersSchemaParameterMappingsCase0List>;
 
 export type MetabaseParametersSchemaParameterMappingsCase1List =
   Array<MetabaseParametersSchemaParameterMapping>;
-export const MetabaseParametersSchemaParameterMappingsCase1List = /*@__PURE__*/ S.Array(
-  MetabaseParametersSchemaParameterMapping,
-) as any as S.Schema<MetabaseParametersSchemaParameterMappingsCase1List>;
+export const MetabaseParametersSchemaParameterMappingsCase1List =
+  MetabaseParametersSchemaParameterMappings as any as S.Schema<MetabaseParametersSchemaParameterMappingsCase1List>;
 
 export type MetabaseParametersSchemaParameterMappings2 =
   | MetabaseParametersSchemaParameterMappingsCase0List
@@ -105,9 +102,8 @@ export const MetabaseParametersSchemaValuesSourceConfig = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<MetabaseParametersSchemaValuesSourceConfig>;
 
 export type MetabaseLibSchemaParameterParameterValueCase1List = Array<unknown>;
-export const MetabaseLibSchemaParameterParameterValueCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibSchemaParameterParameterValueCase1List>;
+export const MetabaseLibSchemaParameterParameterValueCase1List =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibSchemaParameterParameterValueCase1List>;
 
 export type MetabaseLibSchemaParameterParameterValue =
   | unknown
@@ -382,10 +378,8 @@ export const MetabaseLibSchemaConstraintsConstraints = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<MetabaseLibSchemaConstraintsConstraints>;
 
 export type MetabaseLibSchemaInfoInfoPivotOriginalQueryMap = { [key: string]: unknown | undefined };
-export const MetabaseLibSchemaInfoInfoPivotOriginalQueryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseLibSchemaInfoInfoPivotOriginalQueryMap>;
+export const MetabaseLibSchemaInfoInfoPivotOriginalQueryMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseLibSchemaInfoInfoPivotOriginalQueryMap>;
 
 export type MetabaseLibSchemaMetadataColumnVisibilityType =
   | "retired"
@@ -414,10 +408,8 @@ export const MetabaseLibSchemaMetadataColumnRemappingExternal = /*@__PURE__*/ S.
 }) as any as S.Schema<MetabaseLibSchemaMetadataColumnRemappingExternal>;
 
 export type MetabaseLibSchemaMetadataColumnSettingsMap = { [key: string]: unknown | undefined };
-export const MetabaseLibSchemaMetadataColumnSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseLibSchemaMetadataColumnSettingsMap>;
+export const MetabaseLibSchemaMetadataColumnSettingsMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseLibSchemaMetadataColumnSettingsMap>;
 
 export type MetabaseLibSchemaMetadataFingerprintFingerprintExperimentalMap = {
   [key: string]: unknown | undefined;
@@ -558,9 +550,8 @@ export const MetabaseLibSchemaMetadataFingerprintFingerprint = /*@__PURE__*/ S.s
 }) as any as S.Schema<MetabaseLibSchemaMetadataFingerprintFingerprint>;
 
 export type MetabaseLibSchemaMetadataColumnNfcPathList = Array<string>;
-export const MetabaseLibSchemaMetadataColumnNfcPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetabaseLibSchemaMetadataColumnNfcPathList>;
+export const MetabaseLibSchemaMetadataColumnNfcPathList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<MetabaseLibSchemaMetadataColumnNfcPathList>;
 
 export type MetabaseLibSchemaMetadataColumnHasFieldValues =
   | "auto-list"
@@ -577,9 +568,8 @@ export const MetabaseLibSchemaMetadataColumnRemappingInternalHumanReadableValues
   ) as any as S.Schema<MetabaseLibSchemaMetadataColumnRemappingInternalHumanReadableValuesList>;
 
 export type MetabaseLibSchemaMetadataColumnRemappingInternalValuesList = Array<unknown>;
-export const MetabaseLibSchemaMetadataColumnRemappingInternalValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibSchemaMetadataColumnRemappingInternalValuesList>;
+export const MetabaseLibSchemaMetadataColumnRemappingInternalValuesList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibSchemaMetadataColumnRemappingInternalValuesList>;
 
 /** Internal remapping (FieldValues) for a column. From [[metabase.warehouse-schema.models.dimension]] with `type = internal` and the [[metabase.warehouse-schema.models.field-values]] associated with a `Field` in the application database. See [[metabase.query-processor.middleware.add-remaps]] for what this means. */
 export interface MetabaseLibSchemaMetadataColumnRemappingInternal {
@@ -865,23 +855,18 @@ export type MetabaseLibSchemaInfoContext =
 export const MetabaseLibSchemaInfoContext = S.String;
 
 export type MetabaseLibSchemaInfoInfoLensParamsMap = { [key: string]: unknown | undefined };
-export const MetabaseLibSchemaInfoInfoLensParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseLibSchemaInfoInfoLensParamsMap>;
+export const MetabaseLibSchemaInfoInfoLensParamsMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseLibSchemaInfoInfoLensParamsMap>;
 
 export type MetabaseLibSchemaMetadataLibOrLegacyColumnCase0SettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const MetabaseLibSchemaMetadataLibOrLegacyColumnCase0SettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseLibSchemaMetadataLibOrLegacyColumnCase0SettingsMap>;
+export const MetabaseLibSchemaMetadataLibOrLegacyColumnCase0SettingsMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseLibSchemaMetadataLibOrLegacyColumnCase0SettingsMap>;
 
 export type MetabaseLibSchemaMetadataLibOrLegacyColumnCase0NfcPathList = Array<string>;
-export const MetabaseLibSchemaMetadataLibOrLegacyColumnCase0NfcPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetabaseLibSchemaMetadataLibOrLegacyColumnCase0NfcPathList>;
+export const MetabaseLibSchemaMetadataLibOrLegacyColumnCase0NfcPathList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<MetabaseLibSchemaMetadataLibOrLegacyColumnCase0NfcPathList>;
 
 /** Malli schema for a valid map of column metadata, which can mean one of two things: 1. Metadata about a particular Field in the application database. This will always have an `:id` 2. Results metadata from a column in `data.cols` and/or `data.results_metadata.columns` in a Query Processor response, or saved in something like `Card.result_metadata`. These *may* have an `:id`, or may not -- columns coming back from native queries or things like `SELECT count(*)` aren't associated with any particular `Field` and thus will not have an `:id`. Now maybe these should be two different schemas, but `:id` being there or not is the only real difference; besides that they are largely compatible. So they're the same for now. We can revisit this in the future if we actually want to differentiate between the two versions. */
 export interface MetabaseLibSchemaMetadataLibOrLegacyColumnCase0 {
@@ -938,99 +923,8 @@ export interface MetabaseLibSchemaMetadataLibOrLegacyColumnCase0 {
   lib_simple_display_name?: string | null;
   lib_desired_column_alias?: string | null;
 }
-export const MetabaseLibSchemaMetadataLibOrLegacyColumnCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    visibility_type: S.optional(
-      S.NullOr(MetabaseLibSchemaMetadataColumnVisibilityType).pipe(T.Body("visibility-type")),
-    ),
-    fk_join_alias: S.optional(S.NullOr(S.String).pipe(T.Body("fk-join-alias"))),
-    metabase_lib_metadata_result_metadata_field_ref: S.optional(
-      S.NullOr(S.Unknown).pipe(T.Body("metabase.lib.metadata.result-metadata/field-ref")),
-    ),
-    lib_external_remap: S.optional(
-      S.NullOr(MetabaseLibSchemaMetadataColumnRemappingExternal).pipe(T.Body("lib/external-remap")),
-    ),
-    inherited_temporal_unit: S.optional(
-      S.NullOr(MetabaseLibSchemaTemporalBucketingUnit).pipe(T.Body("inherited-temporal-unit")),
-    ),
-    lib_source_column_alias: S.optional(S.NullOr(S.String).pipe(T.Body("lib/source-column-alias"))),
-    database_type: S.optional(S.NullOr(S.String).pipe(T.Body("database-type"))),
-    lib_temporal_unit: S.optional(
-      S.NullOr(MetabaseLibSchemaTemporalBucketingUnit).pipe(T.Body("lib/temporal-unit")),
-    ),
-    lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
-    settings: S.optional(S.NullOr(MetabaseLibSchemaMetadataLibOrLegacyColumnCase0SettingsMap)),
-    fingerprint: S.optional(S.NullOr(MetabaseLibSchemaMetadataFingerprintFingerprint)),
-    display_name: S.optional(S.NullOr(S.String).pipe(T.Body("display-name"))),
-    lib_source_uuid: S.optional(S.NullOr(S.String).pipe(T.Body("lib/source-uuid"))),
-    qp_implicit_field_: S.optional(S.NullOr(S.Boolean).pipe(T.Body("qp/implicit-field?"))),
-    lib_ref_name: S.optional(S.NullOr(S.String).pipe(T.Body("lib/ref-name"))),
-    id: S.optional(S.NullOr(S.Number)),
-    effective_type: S.optional(S.NullOr(S.String).pipe(T.Body("effective-type"))),
-    lib_deduplicated_name: S.optional(S.NullOr(S.String).pipe(T.Body("lib/deduplicated-name"))),
-    base_type: S.optional(S.String.pipe(T.Body("base-type"))),
-    lib_transformation_added_base_type: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("lib/transformation-added-base-type")),
-    ),
-    lib_original_expression_name: S.optional(
-      S.NullOr(S.String).pipe(T.Body("lib/original-expression-name")),
-    ),
-    fk_field_name: S.optional(S.NullOr(S.String).pipe(T.Body("fk-field-name"))),
-    lib_from_model_: S.optional(S.NullOr(S.Boolean).pipe(T.Body("lib/from-model?"))),
-    name: S.String,
-    lib_card_id: S.optional(S.NullOr(S.Number).pipe(T.Body("lib/card-id"))),
-    lib_expression_name: S.optional(S.NullOr(S.String).pipe(T.Body("lib/expression-name"))),
-    lib_breakout_: S.optional(S.NullOr(S.Boolean).pipe(T.Body("lib/breakout?"))),
-    lib_original_effective_type: S.optional(
-      S.NullOr(S.String).pipe(T.Body("lib/original-effective-type")),
-    ),
-    lib_join_alias: S.optional(S.NullOr(S.String).pipe(T.Body("lib/join-alias"))),
-    nfc_path: S.optional(
-      S.NullOr(MetabaseLibSchemaMetadataLibOrLegacyColumnCase0NfcPathList).pipe(T.Body("nfc-path")),
-    ),
-    qp_native_sandbox_column_propagate_coercion_: S.optional(
-      S.Boolean.pipe(T.Body("qp/native-sandbox-column.propagate-coercion?")),
-    ),
-    has_field_values: S.optional(
-      S.NullOr(MetabaseLibSchemaMetadataColumnHasFieldValues).pipe(T.Body("has-field-values")),
-    ),
-    lib_internal_remap: S.optional(
-      S.NullOr(MetabaseLibSchemaMetadataColumnRemappingInternal).pipe(T.Body("lib/internal-remap")),
-    ),
-    selected_: S.optional(S.Boolean.pipe(T.Body("selected?"))),
-    fk_field_id: S.optional(S.NullOr(S.Number).pipe(T.Body("fk-field-id"))),
-    lib_original_binning: S.optional(
-      S.NullOr(MetabaseLibSchemaBinningBinning).pipe(T.Body("lib/original-binning")),
-    ),
-    lib_original_join_alias: S.optional(S.NullOr(S.String).pipe(T.Body("lib/original-join-alias"))),
-    lib_original_display_name: S.optional(
-      S.NullOr(S.String).pipe(T.Body("lib/original-display-name")),
-    ),
-    qp_native_sandbox_column_force_coercion_strategy: S.optional(
-      S.String.pipe(T.Body("qp/native-sandbox-column.force-coercion-strategy")),
-    ),
-    lib_binning: S.optional(S.NullOr(MetabaseLibSchemaBinningBinning).pipe(T.Body("lib/binning"))),
-    metabase_lib_metadata_result_metadata_source: S.optional(
-      S.NullOr(MetabaseLibSchemaMetadataColumnLegacySource).pipe(
-        T.Body("metabase.lib.metadata.result-metadata/source"),
-      ),
-    ),
-    lib_source: S.optional(
-      S.NullOr(MetabaseLibSchemaMetadataColumnSource).pipe(T.Body("lib/source")),
-    ),
-    active: S.optional(S.Boolean),
-    lib_ref_display_name: S.optional(S.NullOr(S.String).pipe(T.Body("lib/ref-display-name"))),
-    lib_original_name: S.optional(S.NullOr(S.String).pipe(T.Body("lib/original-name"))),
-    semantic_type: S.optional(S.NullOr(S.String).pipe(T.Body("semantic-type"))),
-    fk_target_field_id: S.optional(S.NullOr(S.Number).pipe(T.Body("fk-target-field-id"))),
-    lib_simple_display_name: S.optional(S.NullOr(S.String).pipe(T.Body("lib/simple-display-name"))),
-    lib_desired_column_alias: S.optional(
-      S.NullOr(S.String).pipe(T.Body("lib/desired-column-alias")),
-    ),
-  }),
-).annotate({
-  identifier: "MetabaseLibSchemaMetadataLibOrLegacyColumnCase0",
-}) as any as S.Schema<MetabaseLibSchemaMetadataLibOrLegacyColumnCase0>;
+export const MetabaseLibSchemaMetadataLibOrLegacyColumnCase0 =
+  MetabaseLibSchemaMetadataColumn as any as S.Schema<MetabaseLibSchemaMetadataLibOrLegacyColumnCase0>;
 
 export type MetabaseLegacyMbqlSchemaLegacyColumnMetadataLibTemporalUnit =
   | "day"
@@ -1081,9 +975,8 @@ export const MetabaseLegacyMbqlSchemaLegacyColumnMetadataBinningInfo = /*@__PURE
 }) as any as S.Schema<MetabaseLegacyMbqlSchemaLegacyColumnMetadataBinningInfo>;
 
 export type MetabaseLegacyMbqlSchemaLegacyColumnMetadataNfcPathList = Array<string>;
-export const MetabaseLegacyMbqlSchemaLegacyColumnMetadataNfcPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetabaseLegacyMbqlSchemaLegacyColumnMetadataNfcPathList>;
+export const MetabaseLegacyMbqlSchemaLegacyColumnMetadataNfcPathList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<MetabaseLegacyMbqlSchemaLegacyColumnMetadataNfcPathList>;
 
 export type MetabaseLegacyMbqlSchemaLegacyColumnMetadataLibOriginalBinningCase0 =
   MetabaseLibSchemaBinningBinningCase0;
@@ -1410,14 +1303,12 @@ export const MetabaseLibSchemaQueryDatabase =
   S.Unknown as any as S.Schema<MetabaseLibSchemaQueryDatabase>;
 
 export type MetabaseLibSchemaQueryPivotMeasuresList = Array<number>;
-export const MetabaseLibSchemaQueryPivotMeasuresList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MetabaseLibSchemaQueryPivotMeasuresList>;
+export const MetabaseLibSchemaQueryPivotMeasuresList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<MetabaseLibSchemaQueryPivotMeasuresList>;
 
 export type MetabaseLibSchemaQueryPivotColsList = Array<number>;
-export const MetabaseLibSchemaQueryPivotColsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MetabaseLibSchemaQueryPivotColsList>;
+export const MetabaseLibSchemaQueryPivotColsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<MetabaseLibSchemaQueryPivotColsList>;
 
 /** parameter must be a map with a :type key */
 export interface MetabaseLibSchemaParameterParameter {
@@ -1597,10 +1488,8 @@ export const CreateActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).
 
 /** value must map parameter ids to scalar values. */
 export type MetabaseActionsSchemaExecuteParameterValues = { [key: string]: unknown | undefined };
-export const MetabaseActionsSchemaExecuteParameterValues = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseActionsSchemaExecuteParameterValues>;
+export const MetabaseActionsSchemaExecuteParameterValues =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseActionsSchemaExecuteParameterValues>;
 
 export interface CreateActionExecuteRequestBody {
   parameters?: MetabaseActionsSchemaExecuteParameterValues | null;
@@ -1627,9 +1516,8 @@ export const CreateActionExecuteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateActionExecuteRequest>;
 
 export interface CreateActionExecuteResponse {}
-export const CreateActionExecuteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateActionExecuteResponse",
-}) as any as S.Schema<CreateActionExecuteResponse>;
+export const CreateActionExecuteResponse =
+  CreateActionResponse as any as S.Schema<CreateActionExecuteResponse>;
 
 export interface CreateActionExecuteRequest2 {
   /** value must be a valid UUID. */
@@ -1646,9 +1534,8 @@ export const CreateActionExecuteRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateActionExecuteRequest2>;
 
 export interface CreateActionExecute2Response {}
-export const CreateActionExecute2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateActionExecute2Response",
-}) as any as S.Schema<CreateActionExecute2Response>;
+export const CreateActionExecute2Response =
+  CreateActionResponse as any as S.Schema<CreateActionExecute2Response>;
 
 export interface CreateActionPublicLinkRequest {
   id: number;
@@ -1662,9 +1549,8 @@ export const CreateActionPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateActionPublicLinkRequest>;
 
 export interface CreateActionPublicLinkResponse {}
-export const CreateActionPublicLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateActionPublicLinkResponse",
-}) as any as S.Schema<CreateActionPublicLinkResponse>;
+export const CreateActionPublicLinkResponse =
+  CreateActionResponse as any as S.Schema<CreateActionPublicLinkResponse>;
 
 export type CreateActivityRecentRequestContext = "selection";
 export const CreateActivityRecentRequestContext = S.String;
@@ -1696,9 +1582,8 @@ export const CreateActivityRecentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateActivityRecentRequest>;
 
 export interface CreateActivityRecentResponse {}
-export const CreateActivityRecentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateActivityRecentResponse",
-}) as any as S.Schema<CreateActivityRecentResponse>;
+export const CreateActivityRecentResponse =
+  CreateActionResponse as any as S.Schema<CreateActivityRecentResponse>;
 
 export interface CreateAgentCollectionRequest {
   description?: string | null;
@@ -1716,9 +1601,8 @@ export const CreateAgentCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgentCollectionRequest>;
 
 export interface CreateAgentCollectionResponse {}
-export const CreateAgentCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentCollectionResponse",
-}) as any as S.Schema<CreateAgentCollectionResponse>;
+export const CreateAgentCollectionResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentCollectionResponse>;
 
 export interface CreateAgentConstructNativeQueryRequest {
   /** value must be an integer greater than zero. */
@@ -1756,16 +1640,12 @@ export const CreateAgentConstructQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgentConstructQueryRequest>;
 
 export interface CreateAgentConstructQueryResponse {}
-export const CreateAgentConstructQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateAgentConstructQueryResponse",
-}) as any as S.Schema<CreateAgentConstructQueryResponse>;
+export const CreateAgentConstructQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateAgentConstructQueryResponse>;
 
 export type CreateAgentDashboardRequestQuestionIdsList = Array<number>;
-export const CreateAgentDashboardRequestQuestionIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateAgentDashboardRequestQuestionIdsList>;
+export const CreateAgentDashboardRequestQuestionIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateAgentDashboardRequestQuestionIdsList>;
 
 export interface CreateAgentDashboardRequest {
   collection_id?: number | null;
@@ -1785,9 +1665,8 @@ export const CreateAgentDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgentDashboardRequest>;
 
 export interface CreateAgentDashboardResponse {}
-export const CreateAgentDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentDashboardResponse",
-}) as any as S.Schema<CreateAgentDashboardResponse>;
+export const CreateAgentDashboardResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentDashboardResponse>;
 
 export interface CreateAgentExecuteRequest {
   query: string;
@@ -1801,9 +1680,8 @@ export const CreateAgentExecuteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgentExecuteRequest>;
 
 export interface CreateAgentExecuteResponse {}
-export const CreateAgentExecuteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentExecuteResponse",
-}) as any as S.Schema<CreateAgentExecuteResponse>;
+export const CreateAgentExecuteResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentExecuteResponse>;
 
 export interface CreateAgentExecuteSqlRequest {
   /** value must be an integer greater than zero. */
@@ -1820,9 +1698,8 @@ export const CreateAgentExecuteSqlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgentExecuteSqlRequest>;
 
 export interface CreateAgentExecuteSqlResponse {}
-export const CreateAgentExecuteSqlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentExecuteSqlResponse",
-}) as any as S.Schema<CreateAgentExecuteSqlResponse>;
+export const CreateAgentExecuteSqlResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentExecuteSqlResponse>;
 
 /** Display types accepted by Card. Validates LLM-passed values so a bogus value (e.g. `"potato"`) gets a 400 rather than persisting junk. */
 export type MetabaseAgentApiApiCardDisplay =
@@ -1865,9 +1742,8 @@ export const CreateAgentMetricRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAgentMetricRequest" }) as any as S.Schema<CreateAgentMetricRequest>;
 
 export interface CreateAgentMetricResponse {}
-export const CreateAgentMetricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentMetricResponse",
-}) as any as S.Schema<CreateAgentMetricResponse>;
+export const CreateAgentMetricResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentMetricResponse>;
 
 export interface MetabaseAgentApiApiQueryRequestCase0 {
   continuation_token: string;
@@ -1924,9 +1800,8 @@ export const CreateAgentQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAgentQueryRequest" }) as any as S.Schema<CreateAgentQueryRequest>;
 
 export interface CreateAgentQueryResponse {}
-export const CreateAgentQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentQueryResponse",
-}) as any as S.Schema<CreateAgentQueryResponse>;
+export const CreateAgentQueryResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentQueryResponse>;
 
 export interface CreateAgentQuestionRequest {
   collection_id?: number | null;
@@ -1950,9 +1825,8 @@ export const CreateAgentQuestionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgentQuestionRequest>;
 
 export interface CreateAgentQuestionResponse {}
-export const CreateAgentQuestionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentQuestionResponse",
-}) as any as S.Schema<CreateAgentQuestionResponse>;
+export const CreateAgentQuestionResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentQuestionResponse>;
 
 export interface CreateAgentQuestionQueryRequest {
   /** value must be an integer greater than zero. */
@@ -1967,16 +1841,12 @@ export const CreateAgentQuestionQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAgentQuestionQueryRequest>;
 
 export interface CreateAgentQuestionQueryResponse {}
-export const CreateAgentQuestionQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateAgentQuestionQueryResponse",
-}) as any as S.Schema<CreateAgentQuestionQueryResponse>;
+export const CreateAgentQuestionQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateAgentQuestionQueryResponse>;
 
 export type CreateAgentReadResourceRequestUrisList = Array<string>;
-export const CreateAgentReadResourceRequestUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAgentReadResourceRequestUrisList>;
+export const CreateAgentReadResourceRequestUrisList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateAgentReadResourceRequestUrisList>;
 
 export interface CreateAgentReadResourceRequest {
   uris: CreateAgentReadResourceRequestUrisList;
@@ -1995,9 +1865,8 @@ export const CreateAgentReadResourceResponse = /*@__PURE__*/ S.suspend(() => S.S
 ) as any as S.Schema<CreateAgentReadResourceResponse>;
 
 export type CreateAgentSearchRequestSemanticQueriesCase0List = Array<string>;
-export const CreateAgentSearchRequestSemanticQueriesCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAgentSearchRequestSemanticQueriesCase0List>;
+export const CreateAgentSearchRequestSemanticQueriesCase0List =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateAgentSearchRequestSemanticQueriesCase0List>;
 
 export type CreateAgentSearchRequestSemanticQueries =
   | CreateAgentSearchRequestSemanticQueriesCase0List
@@ -2006,9 +1875,8 @@ export const CreateAgentSearchRequestSemanticQueries =
   S.Unknown as any as S.Schema<CreateAgentSearchRequestSemanticQueries>;
 
 export type CreateAgentSearchRequestTermQueriesCase0List = Array<string>;
-export const CreateAgentSearchRequestTermQueriesCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAgentSearchRequestTermQueriesCase0List>;
+export const CreateAgentSearchRequestTermQueriesCase0List =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateAgentSearchRequestTermQueriesCase0List>;
 
 export type CreateAgentSearchRequestTermQueries =
   | CreateAgentSearchRequestTermQueriesCase0List
@@ -2028,9 +1896,8 @@ export const CreateAgentSearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAgentSearchRequest" }) as any as S.Schema<CreateAgentSearchRequest>;
 
 export interface CreateAgentSearchResponse {}
-export const CreateAgentSearchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAgentSearchResponse",
-}) as any as S.Schema<CreateAgentSearchResponse>;
+export const CreateAgentSearchResponse =
+  CreateActionResponse as any as S.Schema<CreateAgentSearchResponse>;
 
 export interface CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem {
   description?: string | null;
@@ -2074,11 +1941,8 @@ export const CreateAiEntityAnalysisAnalyzeChartRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartRequest>;
 
 export interface CreateAiEntityAnalysisAnalyzeChartResponse {}
-export const CreateAiEntityAnalysisAnalyzeChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateAiEntityAnalysisAnalyzeChartResponse",
-}) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartResponse>;
+export const CreateAiEntityAnalysisAnalyzeChartResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartResponse>;
 
 export type CreateAnalyticsInternalRequestEventsItemLabelsMap = {
   [key: string]: string | undefined;
@@ -2131,15 +1995,12 @@ export const CreateAnalyticsInternalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnalyticsInternalRequest>;
 
 export interface CreateAnalyticsInternalResponse {}
-export const CreateAnalyticsInternalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateAnalyticsInternalResponse" },
-) as any as S.Schema<CreateAnalyticsInternalResponse>;
+export const CreateAnalyticsInternalResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateAnalyticsInternalResponse>;
 
 export type CreateAnalyticsProxyRequestDataItemMap = { [key: string]: string | undefined };
-export const CreateAnalyticsProxyRequestDataItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAnalyticsProxyRequestDataItemMap>;
+export const CreateAnalyticsProxyRequestDataItemMap =
+  CreateAnalyticsInternalRequestEventsItemLabelsMap as any as S.Schema<CreateAnalyticsProxyRequestDataItemMap>;
 
 export type CreateAnalyticsProxyRequestDataList = Array<CreateAnalyticsProxyRequestDataItemMap>;
 export const CreateAnalyticsProxyRequestDataList = /*@__PURE__*/ S.Array(
@@ -2160,24 +2021,20 @@ export const CreateAnalyticsProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnalyticsProxyRequest>;
 
 export interface CreateAnalyticsProxyResponse {}
-export const CreateAnalyticsProxyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateAnalyticsProxyResponse",
-}) as any as S.Schema<CreateAnalyticsProxyResponse>;
+export const CreateAnalyticsProxyResponse =
+  CreateActionResponse as any as S.Schema<CreateAnalyticsProxyResponse>;
 
 export type CreateCacheInvalidateRequestDatabaseList = Array<number>;
-export const CreateCacheInvalidateRequestDatabaseList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateCacheInvalidateRequestDatabaseList>;
+export const CreateCacheInvalidateRequestDatabaseList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCacheInvalidateRequestDatabaseList>;
 
 export type CreateCacheInvalidateRequestDashboardList = Array<number>;
-export const CreateCacheInvalidateRequestDashboardList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateCacheInvalidateRequestDashboardList>;
+export const CreateCacheInvalidateRequestDashboardList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCacheInvalidateRequestDashboardList>;
 
 export type CreateCacheInvalidateRequestQuestionList = Array<number>;
-export const CreateCacheInvalidateRequestQuestionList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateCacheInvalidateRequestQuestionList>;
+export const CreateCacheInvalidateRequestQuestionList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCacheInvalidateRequestQuestionList>;
 
 export interface CreateCacheInvalidateRequest {
   /** All cache configuration overrides should invalidate cache too */
@@ -2201,16 +2058,14 @@ export const CreateCacheInvalidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCacheInvalidateRequest>;
 
 export interface CreateCacheInvalidateResponse {}
-export const CreateCacheInvalidateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCacheInvalidateResponse",
-}) as any as S.Schema<CreateCacheInvalidateResponse>;
+export const CreateCacheInvalidateResponse =
+  CreateActionResponse as any as S.Schema<CreateCacheInvalidateResponse>;
 
 /** Schema for the `:result-metadata` for a Card (Saved Question, Model, or v2 Metric). */
 export type MetabaseLibSchemaMetadataCardResultMetadata =
   Array<MetabaseLibSchemaMetadataLibOrLegacyColumn>;
-export const MetabaseLibSchemaMetadataCardResultMetadata = /*@__PURE__*/ S.Array(
-  MetabaseLibSchemaMetadataLibOrLegacyColumn,
-) as any as S.Schema<MetabaseLibSchemaMetadataCardResultMetadata>;
+export const MetabaseLibSchemaMetadataCardResultMetadata =
+  MetabaseLibSchemaInfoInfoMetadataModelMetadataList as any as S.Schema<MetabaseLibSchemaMetadataCardResultMetadata>;
 
 export type CreateCardRequestCollectionId = number | string;
 export const CreateCardRequestCollectionId =
@@ -2274,14 +2129,11 @@ export const CreateCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCardRequest" }) as any as S.Schema<CreateCardRequest>;
 
 export interface CreateCardResponse {}
-export const CreateCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCardResponse",
-}) as any as S.Schema<CreateCardResponse>;
+export const CreateCardResponse = CreateActionResponse as any as S.Schema<CreateCardResponse>;
 
 export type CreateCardCollectionRequestCardIdsList = Array<number>;
-export const CreateCardCollectionRequestCardIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateCardCollectionRequestCardIdsList>;
+export const CreateCardCollectionRequestCardIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCardCollectionRequestCardIdsList>;
 
 export interface CreateCardCollectionRequest {
   card_ids: CreateCardCollectionRequestCardIdsList;
@@ -2297,9 +2149,8 @@ export const CreateCardCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCardCollectionRequest>;
 
 export interface CreateCardCollectionResponse {}
-export const CreateCardCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCardCollectionResponse",
-}) as any as S.Schema<CreateCardCollectionResponse>;
+export const CreateCardCollectionResponse =
+  CreateActionResponse as any as S.Schema<CreateCardCollectionResponse>;
 
 export interface CreateCardCopyRequest {
   /** value must be an integer greater than zero. */
@@ -2312,9 +2163,8 @@ export const CreateCardCopyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCardCopyRequest" }) as any as S.Schema<CreateCardCopyRequest>;
 
 export interface CreateCardCopyResponse {}
-export const CreateCardCopyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCardCopyResponse",
-}) as any as S.Schema<CreateCardCopyResponse>;
+export const CreateCardCopyResponse =
+  CreateActionResponse as any as S.Schema<CreateCardCopyResponse>;
 
 /** parameter must be a map with an :id key */
 export interface MetabaseParametersSchemaParameterWithValue {
@@ -2365,11 +2215,8 @@ export const CreateCardPivotCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCardPivotCardQueryRequest>;
 
 export interface CreateCardPivotCardQueryResponse {}
-export const CreateCardPivotCardQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCardPivotCardQueryResponse",
-}) as any as S.Schema<CreateCardPivotCardQueryResponse>;
+export const CreateCardPivotCardQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateCardPivotCardQueryResponse>;
 
 export interface CreateCardPublicLinkRequest {
   /** value must be an integer greater than zero. */
@@ -2384,9 +2231,8 @@ export const CreateCardPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCardPublicLinkRequest>;
 
 export interface CreateCardPublicLinkResponse {}
-export const CreateCardPublicLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCardPublicLinkResponse",
-}) as any as S.Schema<CreateCardPublicLinkResponse>;
+export const CreateCardPublicLinkResponse =
+  CreateActionResponse as any as S.Schema<CreateCardPublicLinkResponse>;
 
 export interface CreateCardQueryRequest {
   card_id: string;
@@ -2406,14 +2252,12 @@ export const CreateCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCardQueryRequest" }) as any as S.Schema<CreateCardQueryRequest>;
 
 export interface CreateCardQueryResponse {}
-export const CreateCardQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCardQueryResponse",
-}) as any as S.Schema<CreateCardQueryResponse>;
+export const CreateCardQueryResponse =
+  CreateActionResponse as any as S.Schema<CreateCardQueryResponse>;
 
 export type CreateCardsDashboardRequestCardIdsList = Array<number>;
-export const CreateCardsDashboardRequestCardIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateCardsDashboardRequestCardIdsList>;
+export const CreateCardsDashboardRequestCardIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCardsDashboardRequestCardIdsList>;
 
 export interface CreateCardsDashboardRequest {
   card_ids: CreateCardsDashboardRequestCardIdsList;
@@ -2427,14 +2271,12 @@ export const CreateCardsDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCardsDashboardRequest>;
 
 export interface CreateCardsDashboardResponse {}
-export const CreateCardsDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCardsDashboardResponse",
-}) as any as S.Schema<CreateCardsDashboardResponse>;
+export const CreateCardsDashboardResponse =
+  CreateActionResponse as any as S.Schema<CreateCardsDashboardResponse>;
 
 export type CreateCardsMoveRequestCardIdsList = Array<number>;
-export const CreateCardsMoveRequestCardIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateCardsMoveRequestCardIdsList>;
+export const CreateCardsMoveRequestCardIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCardsMoveRequestCardIdsList>;
 
 export interface CreateCardsMoveRequest {
   card_ids: CreateCardsMoveRequestCardIdsList;
@@ -2450,9 +2292,8 @@ export const CreateCardsMoveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCardsMoveRequest" }) as any as S.Schema<CreateCardsMoveRequest>;
 
 export interface CreateCardsMoveResponse {}
-export const CreateCardsMoveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCardsMoveResponse",
-}) as any as S.Schema<CreateCardsMoveResponse>;
+export const CreateCardsMoveResponse =
+  CreateActionResponse as any as S.Schema<CreateCardsMoveResponse>;
 
 export type CreateChannelRequestBodyCase0DetailsAuthMethod =
   | "none"
@@ -2652,9 +2493,7 @@ export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateChannelRequest" }) as any as S.Schema<CreateChannelRequest>;
 
 export interface CreateChannelResponse {}
-export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateChannelResponse",
-}) as any as S.Schema<CreateChannelResponse>;
+export const CreateChannelResponse = CreateActionResponse as any as S.Schema<CreateChannelResponse>;
 
 export type CreateChannelTestRequestBodyCase0DetailsAuthMethod =
   | "none"
@@ -2825,9 +2664,8 @@ export const CreateChannelTestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateChannelTestRequest" }) as any as S.Schema<CreateChannelTestRequest>;
 
 export interface CreateChannelTestResponse {}
-export const CreateChannelTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateChannelTestResponse",
-}) as any as S.Schema<CreateChannelTestResponse>;
+export const CreateChannelTestResponse =
+  CreateActionResponse as any as S.Schema<CreateChannelTestResponse>;
 
 export interface CreateCloudMigrationRequest {}
 export const CreateCloudMigrationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2837,9 +2675,8 @@ export const CreateCloudMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudMigrationRequest>;
 
 export interface CreateCloudMigrationResponse {}
-export const CreateCloudMigrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCloudMigrationResponse",
-}) as any as S.Schema<CreateCloudMigrationResponse>;
+export const CreateCloudMigrationResponse =
+  CreateActionResponse as any as S.Schema<CreateCloudMigrationResponse>;
 
 export type CreateCollectionRequestAuthorityLevel = "official";
 export const CreateCollectionRequestAuthorityLevel = S.String;
@@ -2862,9 +2699,8 @@ export const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCollectionRequest" }) as any as S.Schema<CreateCollectionRequest>;
 
 export interface CreateCollectionResponse {}
-export const CreateCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCollectionResponse",
-}) as any as S.Schema<CreateCollectionResponse>;
+export const CreateCollectionResponse =
+  CreateActionResponse as any as S.Schema<CreateCollectionResponse>;
 
 export type CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList = Array<number>;
 export const CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList =
@@ -2907,18 +2743,13 @@ export const CreateCollectionMoveDashboardQuestionCandidateRequest = /*@__PURE__
 }) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateRequest>;
 
 export interface CreateCollectionMoveDashboardQuestionCandidateResponse {}
-export const CreateCollectionMoveDashboardQuestionCandidateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCollectionMoveDashboardQuestionCandidateResponse",
-}) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateResponse>;
+export const CreateCollectionMoveDashboardQuestionCandidateResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateResponse>;
 
 export type CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList =
   Array<number>;
 export const CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList>;
+  CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList>;
 
 export interface CreateCollectionRootMoveDashboardQuestionCandidateRequestBody {
   card_ids?: CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList;
@@ -2983,9 +2814,7 @@ export const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCommentRequest" }) as any as S.Schema<CreateCommentRequest>;
 
 export interface CreateCommentResponse {}
-export const CreateCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCommentResponse",
-}) as any as S.Schema<CreateCommentResponse>;
+export const CreateCommentResponse = CreateActionResponse as any as S.Schema<CreateCommentResponse>;
 
 export interface CreateCommentReactionRequest {
   /** value must be an integer greater than zero. */
@@ -3002,9 +2831,8 @@ export const CreateCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCommentReactionRequest>;
 
 export interface CreateCommentReactionResponse {}
-export const CreateCommentReactionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCommentReactionResponse",
-}) as any as S.Schema<CreateCommentReactionResponse>;
+export const CreateCommentReactionResponse =
+  CreateActionResponse as any as S.Schema<CreateCommentReactionResponse>;
 
 export interface CreateDashboardRequest {
   cache_ttl?: number | null;
@@ -3026,9 +2854,8 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDashboardRequest" }) as any as S.Schema<CreateDashboardRequest>;
 
 export interface CreateDashboardResponse {}
-export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDashboardResponse",
-}) as any as S.Schema<CreateDashboardResponse>;
+export const CreateDashboardResponse =
+  CreateActionResponse as any as S.Schema<CreateDashboardResponse>;
 
 export interface CreateDashboardCopyRequest {
   /** value must be an integer greater than zero. */
@@ -3053,9 +2880,8 @@ export const CreateDashboardCopyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardCopyRequest>;
 
 export interface CreateDashboardCopyResponse {}
-export const CreateDashboardCopyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDashboardCopyResponse",
-}) as any as S.Schema<CreateDashboardCopyResponse>;
+export const CreateDashboardCopyResponse =
+  CreateActionResponse as any as S.Schema<CreateDashboardCopyResponse>;
 
 export interface CreateDashboardDashcardCardQueryRequest {
   /** value must be an integer greater than zero. */
@@ -3086,20 +2912,15 @@ export const CreateDashboardDashcardCardQueryRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateDashboardDashcardCardQueryRequest>;
 
 export interface CreateDashboardDashcardCardQueryResponse {}
-export const CreateDashboardDashcardCardQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDashboardDashcardCardQueryResponse",
-}) as any as S.Schema<CreateDashboardDashcardCardQueryResponse>;
+export const CreateDashboardDashcardCardQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardDashcardCardQueryResponse>;
 
 /** value must map parameter ids to scalar values. */
 export type MetabaseActionsSchemaExecuteParameterValuesStringKeys = {
   [key: string]: unknown | undefined;
 };
-export const MetabaseActionsSchemaExecuteParameterValuesStringKeys = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseActionsSchemaExecuteParameterValuesStringKeys>;
+export const MetabaseActionsSchemaExecuteParameterValuesStringKeys =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseActionsSchemaExecuteParameterValuesStringKeys>;
 
 export interface CreateDashboardDashcardExecuteRequest {
   /** value must be an integer greater than zero. */
@@ -3125,11 +2946,8 @@ export const CreateDashboardDashcardExecuteRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateDashboardDashcardExecuteRequest>;
 
 export interface CreateDashboardDashcardExecuteResponse {}
-export const CreateDashboardDashcardExecuteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDashboardDashcardExecuteResponse",
-}) as any as S.Schema<CreateDashboardDashcardExecuteResponse>;
+export const CreateDashboardDashcardExecuteResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardDashcardExecuteResponse>;
 
 export interface CreateDashboardDashcardExecuteRequest2 {
   /** value must be a valid UUID. */
@@ -3157,11 +2975,8 @@ export const CreateDashboardDashcardExecuteRequest2 = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateDashboardDashcardExecuteRequest2>;
 
 export interface CreateDashboardDashcardExecute2Response {}
-export const CreateDashboardDashcardExecute2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDashboardDashcardExecute2Response",
-}) as any as S.Schema<CreateDashboardDashcardExecute2Response>;
+export const CreateDashboardDashcardExecute2Response =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardDashcardExecute2Response>;
 
 export type CreateDashboardPdfRequestPaperSize = "a4" | "letter";
 export const CreateDashboardPdfRequestPaperSize = S.String;
@@ -3183,9 +2998,8 @@ export const CreateDashboardPdfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardPdfRequest>;
 
 export interface CreateDashboardPdfResponse {}
-export const CreateDashboardPdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDashboardPdfResponse",
-}) as any as S.Schema<CreateDashboardPdfResponse>;
+export const CreateDashboardPdfResponse =
+  CreateActionResponse as any as S.Schema<CreateDashboardPdfResponse>;
 
 export interface CreateDashboardPivotDashboardDashcardCardQueryRequest {
   /** value must be an integer greater than zero. */
@@ -3214,11 +3028,8 @@ export const CreateDashboardPivotDashboardDashcardCardQueryRequest = /*@__PURE__
 }) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryRequest>;
 
 export interface CreateDashboardPivotDashboardDashcardCardQueryResponse {}
-export const CreateDashboardPivotDashboardDashcardCardQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDashboardPivotDashboardDashcardCardQueryResponse",
-}) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryResponse>;
+export const CreateDashboardPivotDashboardDashcardCardQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryResponse>;
 
 export interface CreateDashboardPublicLinkRequest {
   /** value must be an integer greater than zero. */
@@ -3233,11 +3044,8 @@ export const CreateDashboardPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardPublicLinkRequest>;
 
 export interface CreateDashboardPublicLinkResponse {}
-export const CreateDashboardPublicLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDashboardPublicLinkResponse",
-}) as any as S.Schema<CreateDashboardPublicLinkResponse>;
+export const CreateDashboardPublicLinkResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardPublicLinkResponse>;
 
 export type CreateDashboardSaveRequestDashcardsItemSeriesItemId = number | string;
 export const CreateDashboardSaveRequestDashcardsItemSeriesItemId =
@@ -3377,9 +3185,8 @@ export const CreateDashboardSaveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardSaveRequest>;
 
 export interface CreateDashboardSaveResponse {}
-export const CreateDashboardSaveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDashboardSaveResponse",
-}) as any as S.Schema<CreateDashboardSaveResponse>;
+export const CreateDashboardSaveResponse =
+  CreateActionResponse as any as S.Schema<CreateDashboardSaveResponse>;
 
 export type CreateDatabaseRequestConnectionSource = "admin" | "setup";
 export const CreateDatabaseRequestConnectionSource = S.String;
@@ -3466,9 +3273,8 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 
 export interface CreateDatabaseResponse {}
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseResponse",
-}) as any as S.Schema<CreateDatabaseResponse>;
+export const CreateDatabaseResponse =
+  CreateActionResponse as any as S.Schema<CreateDatabaseResponse>;
 
 export interface CreateDatabaseDiscardValueRequest {
   /** value must be an integer greater than zero. */
@@ -3483,11 +3289,8 @@ export const CreateDatabaseDiscardValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseDiscardValueRequest>;
 
 export interface CreateDatabaseDiscardValueResponse {}
-export const CreateDatabaseDiscardValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatabaseDiscardValueResponse",
-}) as any as S.Schema<CreateDatabaseDiscardValueResponse>;
+export const CreateDatabaseDiscardValueResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseDiscardValueResponse>;
 
 export interface CreateDatabaseDismissSpinnerRequest {
   /** value must be an integer greater than zero. */
@@ -3502,11 +3305,8 @@ export const CreateDatabaseDismissSpinnerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseDismissSpinnerRequest>;
 
 export interface CreateDatabaseDismissSpinnerResponse {}
-export const CreateDatabaseDismissSpinnerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatabaseDismissSpinnerResponse",
-}) as any as S.Schema<CreateDatabaseDismissSpinnerResponse>;
+export const CreateDatabaseDismissSpinnerResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseDismissSpinnerResponse>;
 
 export interface CreateDatabaseRescanValueRequest {
   /** value must be an integer greater than zero. */
@@ -3521,11 +3321,8 @@ export const CreateDatabaseRescanValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseRescanValueRequest>;
 
 export interface CreateDatabaseRescanValueResponse {}
-export const CreateDatabaseRescanValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatabaseRescanValueResponse",
-}) as any as S.Schema<CreateDatabaseRescanValueResponse>;
+export const CreateDatabaseRescanValueResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseRescanValueResponse>;
 
 export interface CreateDatabaseSampleDatabaseRequest {}
 export const CreateDatabaseSampleDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3535,11 +3332,8 @@ export const CreateDatabaseSampleDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseSampleDatabaseRequest>;
 
 export interface CreateDatabaseSampleDatabaseResponse {}
-export const CreateDatabaseSampleDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatabaseSampleDatabaseResponse",
-}) as any as S.Schema<CreateDatabaseSampleDatabaseResponse>;
+export const CreateDatabaseSampleDatabaseResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseSampleDatabaseResponse>;
 
 export interface CreateDatabaseSyncSchemaRequest {
   /** value must be an integer greater than zero. */
@@ -3554,11 +3348,8 @@ export const CreateDatabaseSyncSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseSyncSchemaRequest>;
 
 export interface CreateDatabaseSyncSchemaResponse {}
-export const CreateDatabaseSyncSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatabaseSyncSchemaResponse",
-}) as any as S.Schema<CreateDatabaseSyncSchemaResponse>;
+export const CreateDatabaseSyncSchemaResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseSyncSchemaResponse>;
 
 export interface CreateDatabaseValidateRequestDetails {
   /** Value must be a map. */
@@ -3587,14 +3378,12 @@ export const CreateDatabaseValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseValidateRequest>;
 
 export interface CreateDatabaseValidateResponse {}
-export const CreateDatabaseValidateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseValidateResponse",
-}) as any as S.Schema<CreateDatabaseValidateResponse>;
+export const CreateDatabaseValidateResponse =
+  CreateActionResponse as any as S.Schema<CreateDatabaseValidateResponse>;
 
 export type MetabaseLibBeSchemaInternalQueryArgsList = Array<unknown>;
-export const MetabaseLibBeSchemaInternalQueryArgsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibBeSchemaInternalQueryArgsList>;
+export const MetabaseLibBeSchemaInternalQueryArgsList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibBeSchemaInternalQueryArgsList>;
 
 /** A legacy internal audit query, e.g. `{:type :internal, :fn ...}`. These are not MBQL; the audit-app middleware validates the `:fn` and `:args` against the queries it defines. */
 export interface MetabaseLibBeSchemaInternalQuery {
@@ -3633,9 +3422,7 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatasetRequest" }) as any as S.Schema<CreateDatasetRequest>;
 
 export interface CreateDatasetResponse {}
-export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatasetResponse",
-}) as any as S.Schema<CreateDatasetResponse>;
+export const CreateDatasetResponse = CreateActionResponse as any as S.Schema<CreateDatasetResponse>;
 
 export interface CreateDatasetNativeRequest {
   /** value must be an integer greater than zero. */
@@ -3654,14 +3441,12 @@ export const CreateDatasetNativeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetNativeRequest>;
 
 export interface CreateDatasetNativeResponse {}
-export const CreateDatasetNativeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatasetNativeResponse",
-}) as any as S.Schema<CreateDatasetNativeResponse>;
+export const CreateDatasetNativeResponse =
+  CreateActionResponse as any as S.Schema<CreateDatasetNativeResponse>;
 
 export type CreateDatasetParameterRemappingRequestFieldIdsList = Array<number>;
-export const CreateDatasetParameterRemappingRequestFieldIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetParameterRemappingRequestFieldIdsList>;
+export const CreateDatasetParameterRemappingRequestFieldIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetParameterRemappingRequestFieldIdsList>;
 
 export interface CreateDatasetParameterRemappingRequest {
   field_ids?: CreateDatasetParameterRemappingRequestFieldIdsList | null;
@@ -3679,16 +3464,12 @@ export const CreateDatasetParameterRemappingRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateDatasetParameterRemappingRequest>;
 
 export interface CreateDatasetParameterRemappingResponse {}
-export const CreateDatasetParameterRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatasetParameterRemappingResponse",
-}) as any as S.Schema<CreateDatasetParameterRemappingResponse>;
+export const CreateDatasetParameterRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatasetParameterRemappingResponse>;
 
 export type CreateDatasetParameterValueRequestFieldIdsList = Array<number>;
-export const CreateDatasetParameterValueRequestFieldIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetParameterValueRequestFieldIdsList>;
+export const CreateDatasetParameterValueRequestFieldIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetParameterValueRequestFieldIdsList>;
 
 export interface CreateDatasetParameterValueRequest {
   field_ids?: CreateDatasetParameterValueRequestFieldIdsList | null;
@@ -3704,30 +3485,24 @@ export const CreateDatasetParameterValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetParameterValueRequest>;
 
 export interface CreateDatasetParameterValueResponse {}
-export const CreateDatasetParameterValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatasetParameterValueResponse",
-}) as any as S.Schema<CreateDatasetParameterValueResponse>;
+export const CreateDatasetParameterValueResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatasetParameterValueResponse>;
 
 export type CreateDatasetPivotRequestPivotRowsList = Array<number>;
-export const CreateDatasetPivotRequestPivotRowsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetPivotRequestPivotRowsList>;
+export const CreateDatasetPivotRequestPivotRowsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetPivotRequestPivotRowsList>;
 
 export type CreateDatasetPivotRequestDatabase = unknown | number;
 export const CreateDatasetPivotRequestDatabase =
   S.Unknown as any as S.Schema<CreateDatasetPivotRequestDatabase>;
 
 export type CreateDatasetPivotRequestPivotMeasuresList = Array<number>;
-export const CreateDatasetPivotRequestPivotMeasuresList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetPivotRequestPivotMeasuresList>;
+export const CreateDatasetPivotRequestPivotMeasuresList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetPivotRequestPivotMeasuresList>;
 
 export type CreateDatasetPivotRequestPivotColsList = Array<number>;
-export const CreateDatasetPivotRequestPivotColsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetPivotRequestPivotColsList>;
+export const CreateDatasetPivotRequestPivotColsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetPivotRequestPivotColsList>;
 
 export interface CreateDatasetPivotRequest {
   lib_metadata?: unknown;
@@ -3780,28 +3555,24 @@ export const CreateDatasetPivotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetPivotRequest>;
 
 export interface CreateDatasetPivotResponse {}
-export const CreateDatasetPivotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatasetPivotResponse",
-}) as any as S.Schema<CreateDatasetPivotResponse>;
+export const CreateDatasetPivotResponse =
+  CreateActionResponse as any as S.Schema<CreateDatasetPivotResponse>;
 
 export type CreateDatasetQueryMetadataRequestPivotRowsList = Array<number>;
-export const CreateDatasetQueryMetadataRequestPivotRowsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetQueryMetadataRequestPivotRowsList>;
+export const CreateDatasetQueryMetadataRequestPivotRowsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetQueryMetadataRequestPivotRowsList>;
 
 export type CreateDatasetQueryMetadataRequestDatabase = unknown | number;
 export const CreateDatasetQueryMetadataRequestDatabase =
   S.Unknown as any as S.Schema<CreateDatasetQueryMetadataRequestDatabase>;
 
 export type CreateDatasetQueryMetadataRequestPivotMeasuresList = Array<number>;
-export const CreateDatasetQueryMetadataRequestPivotMeasuresList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetQueryMetadataRequestPivotMeasuresList>;
+export const CreateDatasetQueryMetadataRequestPivotMeasuresList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetQueryMetadataRequestPivotMeasuresList>;
 
 export type CreateDatasetQueryMetadataRequestPivotColsList = Array<number>;
-export const CreateDatasetQueryMetadataRequestPivotColsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDatasetQueryMetadataRequestPivotColsList>;
+export const CreateDatasetQueryMetadataRequestPivotColsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetQueryMetadataRequestPivotColsList>;
 
 export interface CreateDatasetQueryMetadataRequest {
   lib_metadata?: unknown;
@@ -3854,26 +3625,20 @@ export const CreateDatasetQueryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetQueryMetadataRequest>;
 
 export interface CreateDatasetQueryMetadataResponse {}
-export const CreateDatasetQueryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatasetQueryMetadataResponse",
-}) as any as S.Schema<CreateDatasetQueryMetadataResponse>;
+export const CreateDatasetQueryMetadataResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatasetQueryMetadataResponse>;
 
 export type CreateDataStudioTableDiscardValueRequestDatabaseIdsList = Array<number>;
-export const CreateDataStudioTableDiscardValueRequestDatabaseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableDiscardValueRequestDatabaseIdsList>;
+export const CreateDataStudioTableDiscardValueRequestDatabaseIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableDiscardValueRequestDatabaseIdsList>;
 
 export type CreateDataStudioTableDiscardValueRequestSchemaIdsList = Array<string>;
-export const CreateDataStudioTableDiscardValueRequestSchemaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDataStudioTableDiscardValueRequestSchemaIdsList>;
+export const CreateDataStudioTableDiscardValueRequestSchemaIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableDiscardValueRequestSchemaIdsList>;
 
 export type CreateDataStudioTableDiscardValueRequestTableIdsList = Array<number>;
-export const CreateDataStudioTableDiscardValueRequestTableIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableDiscardValueRequestTableIdsList>;
+export const CreateDataStudioTableDiscardValueRequestTableIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableDiscardValueRequestTableIdsList>;
 
 export interface CreateDataStudioTableDiscardValueRequest {
   database_ids?: CreateDataStudioTableDiscardValueRequestDatabaseIdsList;
@@ -3891,11 +3656,8 @@ export const CreateDataStudioTableDiscardValueRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateDataStudioTableDiscardValueRequest>;
 
 export interface CreateDataStudioTableDiscardValueResponse {}
-export const CreateDataStudioTableDiscardValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDataStudioTableDiscardValueResponse",
-}) as any as S.Schema<CreateDataStudioTableDiscardValueResponse>;
+export const CreateDataStudioTableDiscardValueResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableDiscardValueResponse>;
 
 export type MetabaseDataStudioApiTableDataAuthorities =
   | "computed"
@@ -3908,9 +3670,8 @@ export type MetabaseDataStudioApiTableDataLayers = "final" | "internal" | "hidde
 export const MetabaseDataStudioApiTableDataLayers = S.String;
 
 export type CreateDataStudioTableEditRequestTableIdsList = Array<number>;
-export const CreateDataStudioTableEditRequestTableIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableEditRequestTableIdsList>;
+export const CreateDataStudioTableEditRequestTableIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableEditRequestTableIdsList>;
 
 export type MetabaseDataStudioApiTableDataSources =
   | "source-data"
@@ -3922,14 +3683,12 @@ export type MetabaseDataStudioApiTableDataSources =
 export const MetabaseDataStudioApiTableDataSources = S.String;
 
 export type CreateDataStudioTableEditRequestSchemaIdsList = Array<string>;
-export const CreateDataStudioTableEditRequestSchemaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDataStudioTableEditRequestSchemaIdsList>;
+export const CreateDataStudioTableEditRequestSchemaIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableEditRequestSchemaIdsList>;
 
 export type CreateDataStudioTableEditRequestDatabaseIdsList = Array<number>;
-export const CreateDataStudioTableEditRequestDatabaseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableEditRequestDatabaseIdsList>;
+export const CreateDataStudioTableEditRequestDatabaseIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableEditRequestDatabaseIdsList>;
 
 export interface CreateDataStudioTableEditRequest {
   data_authority?: MetabaseDataStudioApiTableDataAuthorities | (string & {}) | null;
@@ -3959,26 +3718,20 @@ export const CreateDataStudioTableEditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDataStudioTableEditRequest>;
 
 export interface CreateDataStudioTableEditResponse {}
-export const CreateDataStudioTableEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDataStudioTableEditResponse",
-}) as any as S.Schema<CreateDataStudioTableEditResponse>;
+export const CreateDataStudioTableEditResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableEditResponse>;
 
 export type CreateDataStudioTableRescanValueRequestDatabaseIdsList = Array<number>;
-export const CreateDataStudioTableRescanValueRequestDatabaseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableRescanValueRequestDatabaseIdsList>;
+export const CreateDataStudioTableRescanValueRequestDatabaseIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableRescanValueRequestDatabaseIdsList>;
 
 export type CreateDataStudioTableRescanValueRequestSchemaIdsList = Array<string>;
-export const CreateDataStudioTableRescanValueRequestSchemaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDataStudioTableRescanValueRequestSchemaIdsList>;
+export const CreateDataStudioTableRescanValueRequestSchemaIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableRescanValueRequestSchemaIdsList>;
 
 export type CreateDataStudioTableRescanValueRequestTableIdsList = Array<number>;
-export const CreateDataStudioTableRescanValueRequestTableIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableRescanValueRequestTableIdsList>;
+export const CreateDataStudioTableRescanValueRequestTableIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableRescanValueRequestTableIdsList>;
 
 export interface CreateDataStudioTableRescanValueRequest {
   database_ids?: CreateDataStudioTableRescanValueRequestDatabaseIdsList;
@@ -3996,26 +3749,20 @@ export const CreateDataStudioTableRescanValueRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateDataStudioTableRescanValueRequest>;
 
 export interface CreateDataStudioTableRescanValueResponse {}
-export const CreateDataStudioTableRescanValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDataStudioTableRescanValueResponse",
-}) as any as S.Schema<CreateDataStudioTableRescanValueResponse>;
+export const CreateDataStudioTableRescanValueResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableRescanValueResponse>;
 
 export type CreateDataStudioTableSelectionRequestDatabaseIdsList = Array<number>;
-export const CreateDataStudioTableSelectionRequestDatabaseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableSelectionRequestDatabaseIdsList>;
+export const CreateDataStudioTableSelectionRequestDatabaseIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSelectionRequestDatabaseIdsList>;
 
 export type CreateDataStudioTableSelectionRequestSchemaIdsList = Array<string>;
-export const CreateDataStudioTableSelectionRequestSchemaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDataStudioTableSelectionRequestSchemaIdsList>;
+export const CreateDataStudioTableSelectionRequestSchemaIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableSelectionRequestSchemaIdsList>;
 
 export type CreateDataStudioTableSelectionRequestTableIdsList = Array<number>;
-export const CreateDataStudioTableSelectionRequestTableIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableSelectionRequestTableIdsList>;
+export const CreateDataStudioTableSelectionRequestTableIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSelectionRequestTableIdsList>;
 
 export interface CreateDataStudioTableSelectionRequest {
   database_ids?: CreateDataStudioTableSelectionRequestDatabaseIdsList;
@@ -4033,26 +3780,20 @@ export const CreateDataStudioTableSelectionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateDataStudioTableSelectionRequest>;
 
 export interface CreateDataStudioTableSelectionResponse {}
-export const CreateDataStudioTableSelectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDataStudioTableSelectionResponse",
-}) as any as S.Schema<CreateDataStudioTableSelectionResponse>;
+export const CreateDataStudioTableSelectionResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableSelectionResponse>;
 
 export type CreateDataStudioTableSyncSchemaRequestDatabaseIdsList = Array<number>;
-export const CreateDataStudioTableSyncSchemaRequestDatabaseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableSyncSchemaRequestDatabaseIdsList>;
+export const CreateDataStudioTableSyncSchemaRequestDatabaseIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSyncSchemaRequestDatabaseIdsList>;
 
 export type CreateDataStudioTableSyncSchemaRequestSchemaIdsList = Array<string>;
-export const CreateDataStudioTableSyncSchemaRequestSchemaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDataStudioTableSyncSchemaRequestSchemaIdsList>;
+export const CreateDataStudioTableSyncSchemaRequestSchemaIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableSyncSchemaRequestSchemaIdsList>;
 
 export type CreateDataStudioTableSyncSchemaRequestTableIdsList = Array<number>;
-export const CreateDataStudioTableSyncSchemaRequestTableIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDataStudioTableSyncSchemaRequestTableIdsList>;
+export const CreateDataStudioTableSyncSchemaRequestTableIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSyncSchemaRequestTableIdsList>;
 
 export interface CreateDataStudioTableSyncSchemaRequest {
   database_ids?: CreateDataStudioTableSyncSchemaRequestDatabaseIdsList;
@@ -4070,21 +3811,16 @@ export const CreateDataStudioTableSyncSchemaRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateDataStudioTableSyncSchemaRequest>;
 
 export interface CreateDataStudioTableSyncSchemaResponse {}
-export const CreateDataStudioTableSyncSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDataStudioTableSyncSchemaResponse",
-}) as any as S.Schema<CreateDataStudioTableSyncSchemaResponse>;
+export const CreateDataStudioTableSyncSchemaResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableSyncSchemaResponse>;
 
 export type CreateDocumentRequestCardsValueParameterMappingsList = Array<unknown>;
-export const CreateDocumentRequestCardsValueParameterMappingsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateDocumentRequestCardsValueParameterMappingsList>;
+export const CreateDocumentRequestCardsValueParameterMappingsList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateDocumentRequestCardsValueParameterMappingsList>;
 
 export type CreateDocumentRequestCardsValueResultMetadataList = Array<unknown>;
-export const CreateDocumentRequestCardsValueResultMetadataList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateDocumentRequestCardsValueResultMetadataList>;
+export const CreateDocumentRequestCardsValueResultMetadataList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateDocumentRequestCardsValueResultMetadataList>;
 
 export interface CreateDocumentRequestCardsValue {
   /** Value must be a map. */
@@ -4154,9 +3890,8 @@ export const CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDocumentRequest" }) as any as S.Schema<CreateDocumentRequest>;
 
 export interface CreateDocumentResponse {}
-export const CreateDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDocumentResponse",
-}) as any as S.Schema<CreateDocumentResponse>;
+export const CreateDocumentResponse =
+  CreateActionResponse as any as S.Schema<CreateDocumentResponse>;
 
 export interface CreateDocumentCopyRequest {
   /** value must be an integer greater than zero. */
@@ -4177,9 +3912,8 @@ export const CreateDocumentCopyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDocumentCopyRequest>;
 
 export interface CreateDocumentCopyResponse {}
-export const CreateDocumentCopyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDocumentCopyResponse",
-}) as any as S.Schema<CreateDocumentCopyResponse>;
+export const CreateDocumentCopyResponse =
+  CreateActionResponse as any as S.Schema<CreateDocumentCopyResponse>;
 
 export interface CreateDocumentPublicLinkRequest {
   /** value must be an integer greater than zero. */
@@ -4194,11 +3928,8 @@ export const CreateDocumentPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDocumentPublicLinkRequest>;
 
 export interface CreateDocumentPublicLinkResponse {}
-export const CreateDocumentPublicLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDocumentPublicLinkResponse",
-}) as any as S.Schema<CreateDocumentPublicLinkResponse>;
+export const CreateDocumentPublicLinkResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDocumentPublicLinkResponse>;
 
 /** Primitive actions, saved actions, and packed encodings from the picker. */
 export type MetabaseEnterpriseActionV2ApiApiActionId = number | string;
@@ -4214,10 +3945,8 @@ export const MetabaseEnterpriseActionV2ApiApiActionIdOrExpression =
 
 /** A map from parameter name / column name to a value. Keys are keywords: the request decoder keywordizes map keys and the handler reads them via `(keyword ...)`, so the FE never sends anything else. Same shape as [[metabase.actions.schema/execute-parameter-values]] and for the same two reasons. Decoding sees a permissive `[:map-of :keyword :any]`, because `:map-of` *drops* an entry whose value fails rather than rejecting it -- a bad cell would silently go missing from the write instead of 400ing. And `parameter.value` must be validated against rather than decoded through: its `:decode/normalize` rewrites a bad value to `nil`, which for an action that writes would store NULL instead of rejecting the request. */
 export type MetabaseEnterpriseActionV2ApiActionValueMap = { [key: string]: unknown | undefined };
-export const MetabaseEnterpriseActionV2ApiActionValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseEnterpriseActionV2ApiActionValueMap>;
+export const MetabaseEnterpriseActionV2ApiActionValueMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseEnterpriseActionV2ApiActionValueMap>;
 
 export interface MetabaseActionsTypesScopeRawCase0 {
   /** value must be an integer greater than zero. */
@@ -4348,9 +4077,8 @@ export const CreateEeActionV2ExecuteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeActionV2ExecuteRequest>;
 
 export interface CreateEeActionV2ExecuteResponse {}
-export const CreateEeActionV2ExecuteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateEeActionV2ExecuteResponse" },
-) as any as S.Schema<CreateEeActionV2ExecuteResponse>;
+export const CreateEeActionV2ExecuteResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateEeActionV2ExecuteResponse>;
 
 export type CreateEeActionV2ExecuteBulkRequestInputsList =
   Array<MetabaseEnterpriseActionV2ApiActionValueMap>;
@@ -4376,11 +4104,8 @@ export const CreateEeActionV2ExecuteBulkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeActionV2ExecuteBulkRequest>;
 
 export interface CreateEeActionV2ExecuteBulkResponse {}
-export const CreateEeActionV2ExecuteBulkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeActionV2ExecuteBulkResponse",
-}) as any as S.Schema<CreateEeActionV2ExecuteBulkResponse>;
+export const CreateEeActionV2ExecuteBulkResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeActionV2ExecuteBulkResponse>;
 
 export interface CreateEeActionV2ExecuteFormRequest {
   action: MetabaseEnterpriseActionV2ApiApiActionIdOrExpression;
@@ -4398,11 +4123,8 @@ export const CreateEeActionV2ExecuteFormRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeActionV2ExecuteFormRequest>;
 
 export interface CreateEeActionV2ExecuteFormResponse {}
-export const CreateEeActionV2ExecuteFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeActionV2ExecuteFormResponse",
-}) as any as S.Schema<CreateEeActionV2ExecuteFormResponse>;
+export const CreateEeActionV2ExecuteFormResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeActionV2ExecuteFormResponse>;
 
 export interface CreateEeAiControlsPermissionsAdvancedRequest {}
 export const CreateEeAiControlsPermissionsAdvancedRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4414,11 +4136,8 @@ export const CreateEeAiControlsPermissionsAdvancedRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedRequest>;
 
 export interface CreateEeAiControlsPermissionsAdvancedResponse {}
-export const CreateEeAiControlsPermissionsAdvancedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeAiControlsPermissionsAdvancedResponse",
-}) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedResponse>;
+export const CreateEeAiControlsPermissionsAdvancedResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeAiControlsPermissionsAdvancedResponse>;
 
 export interface CreateEeAuditAppAnalyticsDevExportRequest {}
 export const CreateEeAuditAppAnalyticsDevExportRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4430,11 +4149,8 @@ export const CreateEeAuditAppAnalyticsDevExportRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportRequest>;
 
 export interface CreateEeAuditAppAnalyticsDevExportResponse {}
-export const CreateEeAuditAppAnalyticsDevExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeAuditAppAnalyticsDevExportResponse",
-}) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportResponse>;
+export const CreateEeAuditAppAnalyticsDevExportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeAuditAppAnalyticsDevExportResponse>;
 
 export interface CreateEeContentTranslationUploadDictionaryRequestFile {
   filename: string;
@@ -4470,11 +4186,8 @@ export const CreateEeContentTranslationUploadDictionaryRequest = /*@__PURE__*/ S
 }) as any as S.Schema<CreateEeContentTranslationUploadDictionaryRequest>;
 
 export interface CreateEeContentTranslationUploadDictionaryResponse {}
-export const CreateEeContentTranslationUploadDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeContentTranslationUploadDictionaryResponse",
-}) as any as S.Schema<CreateEeContentTranslationUploadDictionaryResponse>;
+export const CreateEeContentTranslationUploadDictionaryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeContentTranslationUploadDictionaryResponse>;
 
 export interface CreateEeCustomVizPluginRequestFile {
   filename: string;
@@ -4482,15 +4195,8 @@ export interface CreateEeCustomVizPluginRequestFile {
   size: number;
   tempfile: unknown;
 }
-export const CreateEeCustomVizPluginRequestFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filename: S.String,
-    size: S.Number,
-    tempfile: S.Unknown,
-  }),
-).annotate({
-  identifier: "CreateEeCustomVizPluginRequestFile",
-}) as any as S.Schema<CreateEeCustomVizPluginRequestFile>;
+export const CreateEeCustomVizPluginRequestFile =
+  CreateEeContentTranslationUploadDictionaryRequestFile as any as S.Schema<CreateEeCustomVizPluginRequestFile>;
 
 export interface CreateEeCustomVizPluginRequest {
   file: CreateEeCustomVizPluginRequestFile;
@@ -4511,9 +4217,8 @@ export const CreateEeCustomVizPluginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeCustomVizPluginRequest>;
 
 export interface CreateEeCustomVizPluginResponse {}
-export const CreateEeCustomVizPluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateEeCustomVizPluginResponse" },
-) as any as S.Schema<CreateEeCustomVizPluginResponse>;
+export const CreateEeCustomVizPluginResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateEeCustomVizPluginResponse>;
 
 export interface CreateEeCustomVizPluginDevRequest {
   dev_bundle_url: string;
@@ -4529,11 +4234,8 @@ export const CreateEeCustomVizPluginDevRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeCustomVizPluginDevRequest>;
 
 export interface CreateEeCustomVizPluginDevResponse {}
-export const CreateEeCustomVizPluginDevResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeCustomVizPluginDevResponse",
-}) as any as S.Schema<CreateEeCustomVizPluginDevResponse>;
+export const CreateEeCustomVizPluginDevResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeCustomVizPluginDevResponse>;
 
 export interface CreateEeCustomVizPluginRefreshRequest {
   /** value must be an integer greater than zero. */
@@ -4548,11 +4250,8 @@ export const CreateEeCustomVizPluginRefreshRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateEeCustomVizPluginRefreshRequest>;
 
 export interface CreateEeCustomVizPluginRefreshResponse {}
-export const CreateEeCustomVizPluginRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeCustomVizPluginRefreshResponse",
-}) as any as S.Schema<CreateEeCustomVizPluginRefreshResponse>;
+export const CreateEeCustomVizPluginRefreshResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeCustomVizPluginRefreshResponse>;
 
 export type CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFiltersSchemaFiltersType =
   | "inclusion"
@@ -4605,11 +4304,8 @@ export const CreateEeDatabaseReplicationConnectionDatabasePreviewRequest = /*@__
 }) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewRequest>;
 
 export interface CreateEeDatabaseReplicationConnectionDatabasePreviewResponse {}
-export const CreateEeDatabaseReplicationConnectionDatabasePreviewResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "CreateEeDatabaseReplicationConnectionDatabasePreviewResponse",
-}) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewResponse>;
+export const CreateEeDatabaseReplicationConnectionDatabasePreviewResponse =
+  CreateCollectionRootMoveDashboardQuestionCandidateResponse as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewResponse>;
 
 export interface CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem {
   /** Value must be a map. */
@@ -4652,26 +4348,20 @@ export const CreateEeDatabaseRoutingDestinationDatabaseRequest = /*@__PURE__*/ S
 }) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseRequest>;
 
 export interface CreateEeDatabaseRoutingDestinationDatabaseResponse {}
-export const CreateEeDatabaseRoutingDestinationDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeDatabaseRoutingDestinationDatabaseResponse",
-}) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseResponse>;
+export const CreateEeDatabaseRoutingDestinationDatabaseResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseResponse>;
 
 export type CreateEeDataStudioTablePublishTableRequestDatabaseIdsList = Array<number>;
-export const CreateEeDataStudioTablePublishTableRequestDatabaseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateEeDataStudioTablePublishTableRequestDatabaseIdsList>;
+export const CreateEeDataStudioTablePublishTableRequestDatabaseIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTablePublishTableRequestDatabaseIdsList>;
 
 export type CreateEeDataStudioTablePublishTableRequestSchemaIdsList = Array<string>;
-export const CreateEeDataStudioTablePublishTableRequestSchemaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEeDataStudioTablePublishTableRequestSchemaIdsList>;
+export const CreateEeDataStudioTablePublishTableRequestSchemaIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeDataStudioTablePublishTableRequestSchemaIdsList>;
 
 export type CreateEeDataStudioTablePublishTableRequestTableIdsList = Array<number>;
-export const CreateEeDataStudioTablePublishTableRequestTableIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateEeDataStudioTablePublishTableRequestTableIdsList>;
+export const CreateEeDataStudioTablePublishTableRequestTableIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTablePublishTableRequestTableIdsList>;
 
 export interface CreateEeDataStudioTablePublishTableRequest {
   /** value must be an integer greater than zero. */
@@ -4692,26 +4382,20 @@ export const CreateEeDataStudioTablePublishTableRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateEeDataStudioTablePublishTableRequest>;
 
 export interface CreateEeDataStudioTablePublishTableResponse {}
-export const CreateEeDataStudioTablePublishTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeDataStudioTablePublishTableResponse",
-}) as any as S.Schema<CreateEeDataStudioTablePublishTableResponse>;
+export const CreateEeDataStudioTablePublishTableResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeDataStudioTablePublishTableResponse>;
 
 export type CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList = Array<number>;
-export const CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList>;
+export const CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList>;
 
 export type CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList = Array<string>;
-export const CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList>;
+export const CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList>;
 
 export type CreateEeDataStudioTableUnpublishTableRequestTableIdsList = Array<number>;
-export const CreateEeDataStudioTableUnpublishTableRequestTableIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestTableIdsList>;
+export const CreateEeDataStudioTableUnpublishTableRequestTableIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestTableIdsList>;
 
 export interface CreateEeDataStudioTableUnpublishTableRequest {
   database_ids?: CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList;
@@ -4729,11 +4413,8 @@ export const CreateEeDataStudioTableUnpublishTableRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequest>;
 
 export interface CreateEeDataStudioTableUnpublishTableResponse {}
-export const CreateEeDataStudioTableUnpublishTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeDataStudioTableUnpublishTableResponse",
-}) as any as S.Schema<CreateEeDataStudioTableUnpublishTableResponse>;
+export const CreateEeDataStudioTableUnpublishTableResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeDataStudioTableUnpublishTableResponse>;
 
 export interface CreateEeGsheetsConnectionRequest {
   url: string;
@@ -4747,11 +4428,8 @@ export const CreateEeGsheetsConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeGsheetsConnectionRequest>;
 
 export interface CreateEeGsheetsConnectionResponse {}
-export const CreateEeGsheetsConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeGsheetsConnectionResponse",
-}) as any as S.Schema<CreateEeGsheetsConnectionResponse>;
+export const CreateEeGsheetsConnectionResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeGsheetsConnectionResponse>;
 
 export interface CreateEeGsheetsConnectionSyncRequest {}
 export const CreateEeGsheetsConnectionSyncRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4761,11 +4439,8 @@ export const CreateEeGsheetsConnectionSyncRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateEeGsheetsConnectionSyncRequest>;
 
 export interface CreateEeGsheetsConnectionSyncResponse {}
-export const CreateEeGsheetsConnectionSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeGsheetsConnectionSyncResponse",
-}) as any as S.Schema<CreateEeGsheetsConnectionSyncResponse>;
+export const CreateEeGsheetsConnectionSyncResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeGsheetsConnectionSyncResponse>;
 
 export interface CreateEeLibraryRequest {}
 export const CreateEeLibraryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4773,9 +4448,8 @@ export const CreateEeLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEeLibraryRequest" }) as any as S.Schema<CreateEeLibraryRequest>;
 
 export interface CreateEeLibraryResponse {}
-export const CreateEeLibraryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeLibraryResponse",
-}) as any as S.Schema<CreateEeLibraryResponse>;
+export const CreateEeLibraryResponse =
+  CreateActionResponse as any as S.Schema<CreateEeLibraryResponse>;
 
 export interface CreateEeMfaAdminRemoveRequest {
   /** value must be an integer greater than zero. */
@@ -4790,9 +4464,8 @@ export const CreateEeMfaAdminRemoveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeMfaAdminRemoveRequest>;
 
 export interface CreateEeMfaAdminRemoveResponse {}
-export const CreateEeMfaAdminRemoveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeMfaAdminRemoveResponse",
-}) as any as S.Schema<CreateEeMfaAdminRemoveResponse>;
+export const CreateEeMfaAdminRemoveResponse =
+  CreateActionResponse as any as S.Schema<CreateEeMfaAdminRemoveResponse>;
 
 export interface CreateEeMfaDisableRequest {
   code: string;
@@ -4806,9 +4479,8 @@ export const CreateEeMfaDisableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeMfaDisableRequest>;
 
 export interface CreateEeMfaDisableResponse {}
-export const CreateEeMfaDisableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeMfaDisableResponse",
-}) as any as S.Schema<CreateEeMfaDisableResponse>;
+export const CreateEeMfaDisableResponse =
+  CreateActionResponse as any as S.Schema<CreateEeMfaDisableResponse>;
 
 export interface CreateEeMfaEnrollRequest {
   password: string | Redacted.Redacted<string>;
@@ -4820,9 +4492,8 @@ export const CreateEeMfaEnrollRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEeMfaEnrollRequest" }) as any as S.Schema<CreateEeMfaEnrollRequest>;
 
 export interface CreateEeMfaEnrollResponse {}
-export const CreateEeMfaEnrollResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeMfaEnrollResponse",
-}) as any as S.Schema<CreateEeMfaEnrollResponse>;
+export const CreateEeMfaEnrollResponse =
+  CreateActionResponse as any as S.Schema<CreateEeMfaEnrollResponse>;
 
 export interface CreateEeMfaEnrollConfirmRequest {
   code: string;
@@ -4836,11 +4507,8 @@ export const CreateEeMfaEnrollConfirmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeMfaEnrollConfirmRequest>;
 
 export interface CreateEeMfaEnrollConfirmResponse {}
-export const CreateEeMfaEnrollConfirmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeMfaEnrollConfirmResponse",
-}) as any as S.Schema<CreateEeMfaEnrollConfirmResponse>;
+export const CreateEeMfaEnrollConfirmResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeMfaEnrollConfirmResponse>;
 
 export interface CreateEeMfaRecoveryCodeRequest {
   code: string;
@@ -4854,9 +4522,8 @@ export const CreateEeMfaRecoveryCodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeMfaRecoveryCodeRequest>;
 
 export interface CreateEeMfaRecoveryCodeResponse {}
-export const CreateEeMfaRecoveryCodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateEeMfaRecoveryCodeResponse" },
-) as any as S.Schema<CreateEeMfaRecoveryCodeResponse>;
+export const CreateEeMfaRecoveryCodeResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateEeMfaRecoveryCodeResponse>;
 
 export interface CreateEeRemoteSyncCreateBranchRequest {
   name: string;
@@ -4870,11 +4537,8 @@ export const CreateEeRemoteSyncCreateBranchRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateEeRemoteSyncCreateBranchRequest>;
 
 export interface CreateEeRemoteSyncCreateBranchResponse {}
-export const CreateEeRemoteSyncCreateBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeRemoteSyncCreateBranchResponse",
-}) as any as S.Schema<CreateEeRemoteSyncCreateBranchResponse>;
+export const CreateEeRemoteSyncCreateBranchResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncCreateBranchResponse>;
 
 export interface CreateEeRemoteSyncCurrentTaskCancelRequest {}
 export const CreateEeRemoteSyncCurrentTaskCancelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4886,11 +4550,8 @@ export const CreateEeRemoteSyncCurrentTaskCancelRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelRequest>;
 
 export interface CreateEeRemoteSyncCurrentTaskCancelResponse {}
-export const CreateEeRemoteSyncCurrentTaskCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeRemoteSyncCurrentTaskCancelResponse",
-}) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelResponse>;
+export const CreateEeRemoteSyncCurrentTaskCancelResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelResponse>;
 
 export interface CreateEeRemoteSyncExportRequest {
   branch: string;
@@ -4910,11 +4571,8 @@ export const CreateEeRemoteSyncExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeRemoteSyncExportRequest>;
 
 export interface CreateEeRemoteSyncExportResponse {}
-export const CreateEeRemoteSyncExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeRemoteSyncExportResponse",
-}) as any as S.Schema<CreateEeRemoteSyncExportResponse>;
+export const CreateEeRemoteSyncExportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncExportResponse>;
 
 export interface CreateEeRemoteSyncImportRequest {
   branch?: string;
@@ -4934,11 +4592,8 @@ export const CreateEeRemoteSyncImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeRemoteSyncImportRequest>;
 
 export interface CreateEeRemoteSyncImportResponse {}
-export const CreateEeRemoteSyncImportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeRemoteSyncImportResponse",
-}) as any as S.Schema<CreateEeRemoteSyncImportResponse>;
+export const CreateEeRemoteSyncImportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncImportResponse>;
 
 export interface CreateEeRemoteSyncStashRequest {
   message: string;
@@ -4954,9 +4609,8 @@ export const CreateEeRemoteSyncStashRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeRemoteSyncStashRequest>;
 
 export interface CreateEeRemoteSyncStashResponse {}
-export const CreateEeRemoteSyncStashResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateEeRemoteSyncStashResponse" },
-) as any as S.Schema<CreateEeRemoteSyncStashResponse>;
+export const CreateEeRemoteSyncStashResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateEeRemoteSyncStashResponse>;
 
 export interface CreateEeRemoteSyncTestConnectionRequest {
   remote_sync_token?: string | null;
@@ -4972,11 +4626,8 @@ export const CreateEeRemoteSyncTestConnectionRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateEeRemoteSyncTestConnectionRequest>;
 
 export interface CreateEeRemoteSyncTestConnectionResponse {}
-export const CreateEeRemoteSyncTestConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeRemoteSyncTestConnectionResponse",
-}) as any as S.Schema<CreateEeRemoteSyncTestConnectionResponse>;
+export const CreateEeRemoteSyncTestConnectionResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncTestConnectionResponse>;
 
 export type MetabaseEnterpriseReplacementSchemaSourceEntityType = "card" | "table" | "transform";
 export const MetabaseEnterpriseReplacementSchemaSourceEntityType = S.String;
@@ -4999,11 +4650,8 @@ export const CreateEeReplacementCheckReplaceSourceRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateEeReplacementCheckReplaceSourceRequest>;
 
 export interface CreateEeReplacementCheckReplaceSourceResponse {}
-export const CreateEeReplacementCheckReplaceSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeReplacementCheckReplaceSourceResponse",
-}) as any as S.Schema<CreateEeReplacementCheckReplaceSourceResponse>;
+export const CreateEeReplacementCheckReplaceSourceResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeReplacementCheckReplaceSourceResponse>;
 
 export interface CreateEeReplacementReplaceSourceRequest {
   source_entity_id: number;
@@ -5023,11 +4671,8 @@ export const CreateEeReplacementReplaceSourceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateEeReplacementReplaceSourceRequest>;
 
 export interface CreateEeReplacementReplaceSourceResponse {}
-export const CreateEeReplacementReplaceSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeReplacementReplaceSourceResponse",
-}) as any as S.Schema<CreateEeReplacementReplaceSourceResponse>;
+export const CreateEeReplacementReplaceSourceResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeReplacementReplaceSourceResponse>;
 
 export interface CreateEeReplacementRunCancelRequest {
   id: number;
@@ -5041,11 +4686,8 @@ export const CreateEeReplacementRunCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeReplacementRunCancelRequest>;
 
 export interface CreateEeReplacementRunCancelResponse {}
-export const CreateEeReplacementRunCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeReplacementRunCancelResponse",
-}) as any as S.Schema<CreateEeReplacementRunCancelResponse>;
+export const CreateEeReplacementRunCancelResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeReplacementRunCancelResponse>;
 
 export interface CreateEeScimGroupRequestMembersItem {
   _ref?: string;
@@ -5066,9 +4708,8 @@ export const CreateEeScimGroupRequestMembersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateEeScimGroupRequestMembersList>;
 
 export type CreateEeScimGroupRequestSchemasList = Array<string>;
-export const CreateEeScimGroupRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEeScimGroupRequestSchemasList>;
+export const CreateEeScimGroupRequestSchemasList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeScimGroupRequestSchemasList>;
 
 export interface CreateEeScimGroupRequest {
   displayName: string;
@@ -5086,9 +4727,8 @@ export const CreateEeScimGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEeScimGroupRequest" }) as any as S.Schema<CreateEeScimGroupRequest>;
 
 export interface CreateEeScimGroupResponse {}
-export const CreateEeScimGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeScimGroupResponse",
-}) as any as S.Schema<CreateEeScimGroupResponse>;
+export const CreateEeScimGroupResponse =
+  CreateActionResponse as any as S.Schema<CreateEeScimGroupResponse>;
 
 export interface CreateEeScimKeyRequest {}
 export const CreateEeScimKeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5096,9 +4736,8 @@ export const CreateEeScimKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEeScimKeyRequest" }) as any as S.Schema<CreateEeScimKeyRequest>;
 
 export interface CreateEeScimKeyResponse {}
-export const CreateEeScimKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeScimKeyResponse",
-}) as any as S.Schema<CreateEeScimKeyResponse>;
+export const CreateEeScimKeyResponse =
+  CreateActionResponse as any as S.Schema<CreateEeScimKeyResponse>;
 
 export interface CreateEeScimUserRequestEmailsItem {
   primary?: boolean;
@@ -5154,9 +4793,8 @@ export const CreateEeScimUserRequestName = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeScimUserRequestName>;
 
 export type CreateEeScimUserRequestSchemasList = Array<string>;
-export const CreateEeScimUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEeScimUserRequestSchemasList>;
+export const CreateEeScimUserRequestSchemasList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeScimUserRequestSchemasList>;
 
 export interface CreateEeScimUserRequest {
   active?: boolean;
@@ -5182,14 +4820,12 @@ export const CreateEeScimUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEeScimUserRequest" }) as any as S.Schema<CreateEeScimUserRequest>;
 
 export interface CreateEeScimUserResponse {}
-export const CreateEeScimUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeScimUserResponse",
-}) as any as S.Schema<CreateEeScimUserResponse>;
+export const CreateEeScimUserResponse =
+  CreateActionResponse as any as S.Schema<CreateEeScimUserResponse>;
 
 export type CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList = Array<string>;
-export const CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList>;
+export const CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList>;
 
 export interface CreateEeSecurityCenterAcknowledgeRequest {
   advisory_ids: CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList;
@@ -5203,11 +4839,8 @@ export const CreateEeSecurityCenterAcknowledgeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest>;
 
 export interface CreateEeSecurityCenterAcknowledgeResponse {}
-export const CreateEeSecurityCenterAcknowledgeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSecurityCenterAcknowledgeResponse",
-}) as any as S.Schema<CreateEeSecurityCenterAcknowledgeResponse>;
+export const CreateEeSecurityCenterAcknowledgeResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterAcknowledgeResponse>;
 
 export interface CreateEeSecurityCenterAcknowledgeRequest2 {
   advisory_id: string;
@@ -5223,11 +4856,8 @@ export const CreateEeSecurityCenterAcknowledgeRequest2 = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest2>;
 
 export interface CreateEeSecurityCenterAcknowledge2Response {}
-export const CreateEeSecurityCenterAcknowledge2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSecurityCenterAcknowledge2Response",
-}) as any as S.Schema<CreateEeSecurityCenterAcknowledge2Response>;
+export const CreateEeSecurityCenterAcknowledge2Response =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterAcknowledge2Response>;
 
 export interface CreateEeSecurityCenterSyncRequest {}
 export const CreateEeSecurityCenterSyncRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5237,11 +4867,8 @@ export const CreateEeSecurityCenterSyncRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeSecurityCenterSyncRequest>;
 
 export interface CreateEeSecurityCenterSyncResponse {}
-export const CreateEeSecurityCenterSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSecurityCenterSyncResponse",
-}) as any as S.Schema<CreateEeSecurityCenterSyncResponse>;
+export const CreateEeSecurityCenterSyncResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterSyncResponse>;
 
 export type MetabaseNotificationModelsNotificationRecipientCase0Type =
   | "notification-recipient/raw-value"
@@ -5425,11 +5052,8 @@ export const CreateEeSecurityCenterTestNotificationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateEeSecurityCenterTestNotificationRequest>;
 
 export interface CreateEeSecurityCenterTestNotificationResponse {}
-export const CreateEeSecurityCenterTestNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSecurityCenterTestNotificationResponse",
-}) as any as S.Schema<CreateEeSecurityCenterTestNotificationResponse>;
+export const CreateEeSecurityCenterTestNotificationResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterTestNotificationResponse>;
 
 export type CreateEeSerializationExportRequestCollectionItem = number | string;
 export const CreateEeSerializationExportRequestCollectionItem =
@@ -5469,11 +5093,8 @@ export const CreateEeSerializationExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeSerializationExportRequest>;
 
 export interface CreateEeSerializationExportResponse {}
-export const CreateEeSerializationExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSerializationExportResponse",
-}) as any as S.Schema<CreateEeSerializationExportResponse>;
+export const CreateEeSerializationExportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationExportResponse>;
 
 /** .tgz with serialization data */
 export interface CreateEeSerializationImportRequestFile {
@@ -5519,11 +5140,8 @@ export const CreateEeSerializationImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeSerializationImportRequest>;
 
 export interface CreateEeSerializationImportResponse {}
-export const CreateEeSerializationImportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSerializationImportResponse",
-}) as any as S.Schema<CreateEeSerializationImportResponse>;
+export const CreateEeSerializationImportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationImportResponse>;
 
 export interface CreateEeSerializationMetadataExportRequest {
   with_databases?: boolean;
@@ -5541,11 +5159,8 @@ export const CreateEeSerializationMetadataExportRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateEeSerializationMetadataExportRequest>;
 
 export interface CreateEeSerializationMetadataExportResponse {}
-export const CreateEeSerializationMetadataExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSerializationMetadataExportResponse",
-}) as any as S.Schema<CreateEeSerializationMetadataExportResponse>;
+export const CreateEeSerializationMetadataExportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationMetadataExportResponse>;
 
 export interface CreateEeSerializationMetadataImportRequest {}
 export const CreateEeSerializationMetadataImportRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5557,11 +5172,8 @@ export const CreateEeSerializationMetadataImportRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateEeSerializationMetadataImportRequest>;
 
 export interface CreateEeSerializationMetadataImportResponse {}
-export const CreateEeSerializationMetadataImportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSerializationMetadataImportResponse",
-}) as any as S.Schema<CreateEeSerializationMetadataImportResponse>;
+export const CreateEeSerializationMetadataImportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationMetadataImportResponse>;
 
 export interface CreateEeSupportAccessGrantRequest {
   grant_duration_minutes: number;
@@ -5579,17 +5191,12 @@ export const CreateEeSupportAccessGrantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEeSupportAccessGrantRequest>;
 
 export interface CreateEeSupportAccessGrantResponse {}
-export const CreateEeSupportAccessGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeSupportAccessGrantResponse",
-}) as any as S.Schema<CreateEeSupportAccessGrantResponse>;
+export const CreateEeSupportAccessGrantResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSupportAccessGrantResponse>;
 
 export type CreateEeTenantRequestAttributesMap = { [key: string]: unknown | undefined };
-export const CreateEeTenantRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateEeTenantRequestAttributesMap>;
+export const CreateEeTenantRequestAttributesMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<CreateEeTenantRequestAttributesMap>;
 
 export interface CreateEeTenantRequest {
   attributes?: CreateEeTenantRequestAttributesMap | null;
@@ -5606,9 +5213,8 @@ export const CreateEeTenantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEeTenantRequest" }) as any as S.Schema<CreateEeTenantRequest>;
 
 export interface CreateEeTenantResponse {}
-export const CreateEeTenantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEeTenantResponse",
-}) as any as S.Schema<CreateEeTenantResponse>;
+export const CreateEeTenantResponse =
+  CreateActionResponse as any as S.Schema<CreateEeTenantResponse>;
 
 export type MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue =
   | string
@@ -5648,11 +5254,8 @@ export const CreateEeTransformInspectQueryRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateEeTransformInspectQueryRequest>;
 
 export interface CreateEeTransformInspectQueryResponse {}
-export const CreateEeTransformInspectQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeTransformInspectQueryResponse",
-}) as any as S.Schema<CreateEeTransformInspectQueryResponse>;
+export const CreateEeTransformInspectQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeTransformInspectQueryResponse>;
 
 /** A source table entry in the array format. Combines alias with table reference. */
 export interface MetabaseTransformsBaseUtilSourceTableEntry {
@@ -5698,16 +5301,12 @@ export const CreateEeTransformsPythonTestRunRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateEeTransformsPythonTestRunRequest>;
 
 export interface CreateEeTransformsPythonTestRunResponse {}
-export const CreateEeTransformsPythonTestRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEeTransformsPythonTestRunResponse",
-}) as any as S.Schema<CreateEeTransformsPythonTestRunResponse>;
+export const CreateEeTransformsPythonTestRunResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeTransformsPythonTestRunResponse>;
 
 export type CreateEidTranslationTranslateRequestEntityIdsValueList = Array<string>;
-export const CreateEidTranslationTranslateRequestEntityIdsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEidTranslationTranslateRequestEntityIdsValueList>;
+export const CreateEidTranslationTranslateRequestEntityIdsValueList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEidTranslationTranslateRequestEntityIdsValueList>;
 
 export type CreateEidTranslationTranslateRequestEntityIdsMap = {
   [key: string]: CreateEidTranslationTranslateRequestEntityIdsValueList | undefined;
@@ -5729,11 +5328,8 @@ export const CreateEidTranslationTranslateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateEidTranslationTranslateRequest>;
 
 export interface CreateEidTranslationTranslateResponse {}
-export const CreateEidTranslationTranslateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEidTranslationTranslateResponse",
-}) as any as S.Schema<CreateEidTranslationTranslateResponse>;
+export const CreateEidTranslationTranslateResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEidTranslationTranslateResponse>;
 
 export interface CreateEmailTestRequest {}
 export const CreateEmailTestRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5741,9 +5337,8 @@ export const CreateEmailTestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEmailTestRequest" }) as any as S.Schema<CreateEmailTestRequest>;
 
 export interface CreateEmailTestResponse {}
-export const CreateEmailTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEmailTestResponse",
-}) as any as S.Schema<CreateEmailTestResponse>;
+export const CreateEmailTestResponse =
+  CreateActionResponse as any as S.Schema<CreateEmailTestResponse>;
 
 export interface CreateEmbedMcpDrillRequest {
   encodedQuery: string;
@@ -5757,9 +5352,8 @@ export const CreateEmbedMcpDrillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEmbedMcpDrillRequest>;
 
 export interface CreateEmbedMcpDrillResponse {}
-export const CreateEmbedMcpDrillResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEmbedMcpDrillResponse",
-}) as any as S.Schema<CreateEmbedMcpDrillResponse>;
+export const CreateEmbedMcpDrillResponse =
+  CreateActionResponse as any as S.Schema<CreateEmbedMcpDrillResponse>;
 
 export interface CreateEmbedMcpFeedbackRequestConversationData {
   prompt?: string | null;
@@ -5807,9 +5401,8 @@ export const CreateEmbedMcpFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEmbedMcpFeedbackRequest>;
 
 export interface CreateEmbedMcpFeedbackResponse {}
-export const CreateEmbedMcpFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEmbedMcpFeedbackResponse",
-}) as any as S.Schema<CreateEmbedMcpFeedbackResponse>;
+export const CreateEmbedMcpFeedbackResponse =
+  CreateActionResponse as any as S.Schema<CreateEmbedMcpFeedbackResponse>;
 
 export interface CreateEmbedThemeRequest {
   name: string;
@@ -5824,9 +5417,8 @@ export const CreateEmbedThemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEmbedThemeRequest" }) as any as S.Schema<CreateEmbedThemeRequest>;
 
 export interface CreateEmbedThemeResponse {}
-export const CreateEmbedThemeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEmbedThemeResponse",
-}) as any as S.Schema<CreateEmbedThemeResponse>;
+export const CreateEmbedThemeResponse =
+  CreateActionResponse as any as S.Schema<CreateEmbedThemeResponse>;
 
 export interface CreateEmbedThemeCopyRequest {
   /** value must be an integer greater than zero. */
@@ -5841,9 +5433,8 @@ export const CreateEmbedThemeCopyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEmbedThemeCopyRequest>;
 
 export interface CreateEmbedThemeCopyResponse {}
-export const CreateEmbedThemeCopyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateEmbedThemeCopyResponse",
-}) as any as S.Schema<CreateEmbedThemeCopyResponse>;
+export const CreateEmbedThemeCopyResponse =
+  CreateActionResponse as any as S.Schema<CreateEmbedThemeCopyResponse>;
 
 export interface CreateEmbedThemeSeedDefaultRequestThemesItem {
   name: string;
@@ -5877,11 +5468,8 @@ export const CreateEmbedThemeSeedDefaultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEmbedThemeSeedDefaultRequest>;
 
 export interface CreateEmbedThemeSeedDefaultResponse {}
-export const CreateEmbedThemeSeedDefaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEmbedThemeSeedDefaultResponse",
-}) as any as S.Schema<CreateEmbedThemeSeedDefaultResponse>;
+export const CreateEmbedThemeSeedDefaultResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEmbedThemeSeedDefaultResponse>;
 
 export type CreateFieldDimensionRequestType = "internal" | "external";
 export const CreateFieldDimensionRequestType = S.String;
@@ -5905,9 +5493,8 @@ export const CreateFieldDimensionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFieldDimensionRequest>;
 
 export interface CreateFieldDimensionResponse {}
-export const CreateFieldDimensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateFieldDimensionResponse",
-}) as any as S.Schema<CreateFieldDimensionResponse>;
+export const CreateFieldDimensionResponse =
+  CreateActionResponse as any as S.Schema<CreateFieldDimensionResponse>;
 
 export interface CreateFieldDiscardValueRequest {
   /** value must be an integer greater than zero. */
@@ -5922,9 +5509,8 @@ export const CreateFieldDiscardValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFieldDiscardValueRequest>;
 
 export interface CreateFieldDiscardValueResponse {}
-export const CreateFieldDiscardValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateFieldDiscardValueResponse" },
-) as any as S.Schema<CreateFieldDiscardValueResponse>;
+export const CreateFieldDiscardValueResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateFieldDiscardValueResponse>;
 
 export interface CreateFieldRescanValueRequest {
   /** value must be an integer greater than zero. */
@@ -5939,14 +5525,12 @@ export const CreateFieldRescanValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFieldRescanValueRequest>;
 
 export interface CreateFieldRescanValueResponse {}
-export const CreateFieldRescanValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateFieldRescanValueResponse",
-}) as any as S.Schema<CreateFieldRescanValueResponse>;
+export const CreateFieldRescanValueResponse =
+  CreateActionResponse as any as S.Schema<CreateFieldRescanValueResponse>;
 
 export type CreateFieldTableIdsRequestFieldIdsList = Array<number>;
-export const CreateFieldTableIdsRequestFieldIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateFieldTableIdsRequestFieldIdsList>;
+export const CreateFieldTableIdsRequestFieldIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateFieldTableIdsRequestFieldIdsList>;
 
 export interface CreateFieldTableIdsRequest {
   field_ids: CreateFieldTableIdsRequestFieldIdsList;
@@ -5960,19 +5544,16 @@ export const CreateFieldTableIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFieldTableIdsRequest>;
 
 export interface CreateFieldTableIdsResponse {}
-export const CreateFieldTableIdsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateFieldTableIdsResponse",
-}) as any as S.Schema<CreateFieldTableIdsResponse>;
+export const CreateFieldTableIdsResponse =
+  CreateActionResponse as any as S.Schema<CreateFieldTableIdsResponse>;
 
 export type CreateFieldValueRequestValuesItemCase0List = Array<unknown>;
-export const CreateFieldValueRequestValuesItemCase0List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateFieldValueRequestValuesItemCase0List>;
+export const CreateFieldValueRequestValuesItemCase0List =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateFieldValueRequestValuesItemCase0List>;
 
 export type CreateFieldValueRequestValuesItemCase1List = Array<unknown>;
-export const CreateFieldValueRequestValuesItemCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateFieldValueRequestValuesItemCase1List>;
+export const CreateFieldValueRequestValuesItemCase1List =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateFieldValueRequestValuesItemCase1List>;
 
 export type CreateFieldValueRequestValuesItem =
   | CreateFieldValueRequestValuesItemCase0List
@@ -5998,9 +5579,8 @@ export const CreateFieldValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFieldValueRequest" }) as any as S.Schema<CreateFieldValueRequest>;
 
 export interface CreateFieldValueResponse {}
-export const CreateFieldValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateFieldValueResponse",
-}) as any as S.Schema<CreateFieldValueResponse>;
+export const CreateFieldValueResponse =
+  CreateActionResponse as any as S.Schema<CreateFieldValueResponse>;
 
 export type MetabaseFrontendErrorsApiFrontendErrorType = "component-crash" | "chart-render-error";
 export const MetabaseFrontendErrorsApiFrontendErrorType = S.String;
@@ -6017,9 +5597,8 @@ export const CreateFrontendErrorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFrontendErrorRequest>;
 
 export interface CreateFrontendErrorResponse {}
-export const CreateFrontendErrorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateFrontendErrorResponse",
-}) as any as S.Schema<CreateFrontendErrorResponse>;
+export const CreateFrontendErrorResponse =
+  CreateActionResponse as any as S.Schema<CreateFrontendErrorResponse>;
 
 export interface CreateGlossaryRequest {
   definition: string;
@@ -6033,9 +5612,8 @@ export const CreateGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateGlossaryRequest" }) as any as S.Schema<CreateGlossaryRequest>;
 
 export interface CreateGlossaryResponse {}
-export const CreateGlossaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateGlossaryResponse",
-}) as any as S.Schema<CreateGlossaryResponse>;
+export const CreateGlossaryResponse =
+  CreateActionResponse as any as S.Schema<CreateGlossaryResponse>;
 
 export interface CreateKeyRequest {
   group_id: number;
@@ -6049,9 +5627,7 @@ export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateKeyRequest" }) as any as S.Schema<CreateKeyRequest>;
 
 export interface CreateKeyResponse {}
-export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateKeyResponse",
-}) as any as S.Schema<CreateKeyResponse>;
+export const CreateKeyResponse = CreateActionResponse as any as S.Schema<CreateKeyResponse>;
 
 export interface CreateLlmExtractSourceRequestTemplateTagsValue {
   card_id?: number;
@@ -6090,9 +5666,8 @@ export const CreateLlmExtractSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLlmExtractSourceRequest>;
 
 export interface CreateLlmExtractSourceResponse {}
-export const CreateLlmExtractSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateLlmExtractSourceResponse",
-}) as any as S.Schema<CreateLlmExtractSourceResponse>;
+export const CreateLlmExtractSourceResponse =
+  CreateActionResponse as any as S.Schema<CreateLlmExtractSourceResponse>;
 
 export interface CreateLlmGenerateSqlRequestReferencedEntitiesItem {
   id: number;
@@ -6131,9 +5706,8 @@ export const CreateLlmGenerateSqlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLlmGenerateSqlRequest>;
 
 export interface CreateLlmGenerateSqlResponse {}
-export const CreateLlmGenerateSqlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateLlmGenerateSqlResponse",
-}) as any as S.Schema<CreateLlmGenerateSqlResponse>;
+export const CreateLlmGenerateSqlResponse =
+  CreateActionResponse as any as S.Schema<CreateLlmGenerateSqlResponse>;
 
 export type MetabaseLoggerApiTimeUnit =
   | "days"
@@ -6161,9 +5735,8 @@ export const CreateLoggerAdjustmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLoggerAdjustmentRequest>;
 
 export interface CreateLoggerAdjustmentResponse {}
-export const CreateLoggerAdjustmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateLoggerAdjustmentResponse",
-}) as any as S.Schema<CreateLoggerAdjustmentResponse>;
+export const CreateLoggerAdjustmentResponse =
+  CreateActionResponse as any as S.Schema<CreateLoggerAdjustmentResponse>;
 
 export interface CreateMeasureRequest {
   definition: MetabaseLibSchemaQuery;
@@ -6182,9 +5755,7 @@ export const CreateMeasureRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeasureRequest" }) as any as S.Schema<CreateMeasureRequest>;
 
 export interface CreateMeasureResponse {}
-export const CreateMeasureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeasureResponse",
-}) as any as S.Schema<CreateMeasureResponse>;
+export const CreateMeasureResponse = CreateActionResponse as any as S.Schema<CreateMeasureResponse>;
 
 export interface MetabaseMetabotContextContextUserIsViewingItemCase0ChartConfigsItem {
   /** Value must be a map. */
@@ -6324,39 +5895,28 @@ export const MetabaseMetabotSchemaMessages = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MetabaseMetabotSchemaMessages>;
 
 export type MetabaseMetabotAgentCoreStateChartConfigsMap = { [key: string]: unknown | undefined };
-export const MetabaseMetabotAgentCoreStateChartConfigsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseMetabotAgentCoreStateChartConfigsMap>;
+export const MetabaseMetabotAgentCoreStateChartConfigsMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateChartConfigsMap>;
 
 export type MetabaseMetabotAgentCoreStateChartsMap = { [key: string]: unknown | undefined };
-export const MetabaseMetabotAgentCoreStateChartsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseMetabotAgentCoreStateChartsMap>;
+export const MetabaseMetabotAgentCoreStateChartsMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateChartsMap>;
 
 export type MetabaseMetabotAgentCoreStateLinkRegistryMap = { [key: string]: string | undefined };
-export const MetabaseMetabotAgentCoreStateLinkRegistryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetabaseMetabotAgentCoreStateLinkRegistryMap>;
+export const MetabaseMetabotAgentCoreStateLinkRegistryMap =
+  CreateAnalyticsInternalRequestEventsItemLabelsMap as any as S.Schema<MetabaseMetabotAgentCoreStateLinkRegistryMap>;
 
 export type MetabaseMetabotAgentCoreStateQueriesMap = { [key: string]: unknown | undefined };
-export const MetabaseMetabotAgentCoreStateQueriesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseMetabotAgentCoreStateQueriesMap>;
+export const MetabaseMetabotAgentCoreStateQueriesMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateQueriesMap>;
 
 export type MetabaseMetabotAgentCoreStateTodosList = Array<unknown>;
-export const MetabaseMetabotAgentCoreStateTodosList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseMetabotAgentCoreStateTodosList>;
+export const MetabaseMetabotAgentCoreStateTodosList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseMetabotAgentCoreStateTodosList>;
 
 export type MetabaseMetabotAgentCoreStateTransformsMap = { [key: string]: unknown | undefined };
-export const MetabaseMetabotAgentCoreStateTransformsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseMetabotAgentCoreStateTransformsMap>;
+export const MetabaseMetabotAgentCoreStateTransformsMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateTransformsMap>;
 
 /** Agent state containing queries, charts, chart-configs, todos, transforms, and link-registry. */
 export interface MetabaseMetabotAgentCoreState {
@@ -6411,11 +5971,8 @@ export const CreateMetabotAgentStreamingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMetabotAgentStreamingRequest>;
 
 export interface CreateMetabotAgentStreamingResponse {}
-export const CreateMetabotAgentStreamingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMetabotAgentStreamingResponse",
-}) as any as S.Schema<CreateMetabotAgentStreamingResponse>;
+export const CreateMetabotAgentStreamingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotAgentStreamingResponse>;
 
 export interface CreateMetabotDocumentGenerateContentRequest {
   instructions: string;
@@ -6432,11 +5989,8 @@ export const CreateMetabotDocumentGenerateContentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateMetabotDocumentGenerateContentRequest>;
 
 export interface CreateMetabotDocumentGenerateContentResponse {}
-export const CreateMetabotDocumentGenerateContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMetabotDocumentGenerateContentResponse",
-}) as any as S.Schema<CreateMetabotDocumentGenerateContentResponse>;
+export const CreateMetabotDocumentGenerateContentResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotDocumentGenerateContentResponse>;
 
 export interface CreateMetabotFeedbackRequest {
   freeform_feedback?: string | null;
@@ -6459,9 +6013,8 @@ export const CreateMetabotFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMetabotFeedbackRequest>;
 
 export interface CreateMetabotFeedbackResponse {}
-export const CreateMetabotFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMetabotFeedbackResponse",
-}) as any as S.Schema<CreateMetabotFeedbackResponse>;
+export const CreateMetabotFeedbackResponse =
+  CreateActionResponse as any as S.Schema<CreateMetabotFeedbackResponse>;
 
 export interface CreateMetabotMetabotPromptSuggestionsRegenerateRequest {
   id: number;
@@ -6481,11 +6034,8 @@ export const CreateMetabotMetabotPromptSuggestionsRegenerateRequest = /*@__PURE_
 }) as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateRequest>;
 
 export interface CreateMetabotMetabotPromptSuggestionsRegenerateResponse {}
-export const CreateMetabotMetabotPromptSuggestionsRegenerateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMetabotMetabotPromptSuggestionsRegenerateResponse",
-}) as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateResponse>;
+export const CreateMetabotMetabotPromptSuggestionsRegenerateResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateResponse>;
 
 export interface CreateMetabotSlackEventRequestBodyCase0 {
   challenge: string;
@@ -6631,9 +6181,8 @@ export const CreateMetabotSlackEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMetabotSlackEventRequest>;
 
 export interface CreateMetabotSlackEventResponse {}
-export const CreateMetabotSlackEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateMetabotSlackEventResponse" },
-) as any as S.Schema<CreateMetabotSlackEventResponse>;
+export const CreateMetabotSlackEventResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateMetabotSlackEventResponse>;
 
 export interface CreateMetabotSlackInteractiveRequest {
   payload: string;
@@ -6647,11 +6196,8 @@ export const CreateMetabotSlackInteractiveRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateMetabotSlackInteractiveRequest>;
 
 export interface CreateMetabotSlackInteractiveResponse {}
-export const CreateMetabotSlackInteractiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMetabotSlackInteractiveResponse",
-}) as any as S.Schema<CreateMetabotSlackInteractiveResponse>;
+export const CreateMetabotSlackInteractiveResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotSlackInteractiveResponse>;
 
 export type CreateMetabotSourceFeedbackRequestSourceType = "table" | "card" | "model";
 export const CreateMetabotSourceFeedbackRequestSourceType = S.String;
@@ -6678,23 +6224,18 @@ export const CreateMetabotSourceFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMetabotSourceFeedbackRequest>;
 
 export interface CreateMetabotSourceFeedbackResponse {}
-export const CreateMetabotSourceFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMetabotSourceFeedbackResponse",
-}) as any as S.Schema<CreateMetabotSourceFeedbackResponse>;
+export const CreateMetabotSourceFeedbackResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotSourceFeedbackResponse>;
 
 /** A metric reference in an expression: [:metric {:lib/uuid uuid} card-id]. */
 export type MetabaseLibMetricSchemaMetricExpressionRef = Array<unknown>;
-export const MetabaseLibMetricSchemaMetricExpressionRef = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibMetricSchemaMetricExpressionRef>;
+export const MetabaseLibMetricSchemaMetricExpressionRef =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibMetricSchemaMetricExpressionRef>;
 
 /** A measure reference in an expression: [:measure {:lib/uuid uuid} measure-id]. */
 export type MetabaseLibMetricSchemaMeasureExpressionRef = Array<unknown>;
-export const MetabaseLibMetricSchemaMeasureExpressionRef = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibMetricSchemaMeasureExpressionRef>;
+export const MetabaseLibMetricSchemaMeasureExpressionRef =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibMetricSchemaMeasureExpressionRef>;
 
 /** A leaf node in a metric math expression: either a metric or measure reference. */
 export type MetabaseLibMetricSchemaExpressionLeaf =
@@ -6704,9 +6245,8 @@ export const MetabaseLibMetricSchemaExpressionLeaf =
   S.Unknown as any as S.Schema<MetabaseLibMetricSchemaExpressionLeaf>;
 
 export type MetabaseLibMetricSchemaMetricMathExpressionCase2List = Array<unknown>;
-export const MetabaseLibMetricSchemaMetricMathExpressionCase2List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibMetricSchemaMetricMathExpressionCase2List>;
+export const MetabaseLibMetricSchemaMetricMathExpressionCase2List =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibMetricSchemaMetricMathExpressionCase2List>;
 
 /** A recursive metric math expression tree. Can be a leaf (metric/measure ref) or an arithmetic expression [op opts expr expr ...] with at least 2 operands. Note: uses :fn validator for arithmetic to avoid Malli's recursive seqex limitation. */
 export type MetabaseLibMetricSchemaMetricMathExpression =
@@ -6738,9 +6278,8 @@ export const MetabaseLibMetricSchemaInstanceFilters = /*@__PURE__*/ S.Array(
 
 /** Dimension reference clause [:dimension opts uuid]. Handles normalization from JSON where the tag arrives as a string. */
 export type MetabaseLibMetricSchemaDimensionReference = Array<unknown>;
-export const MetabaseLibMetricSchemaDimensionReference = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MetabaseLibMetricSchemaDimensionReference>;
+export const MetabaseLibMetricSchemaDimensionReference =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibMetricSchemaDimensionReference>;
 
 export type MetabaseLibMetricSchemaTypedProjectionProjectionList =
   Array<MetabaseLibMetricSchemaDimensionReference>;
@@ -6803,11 +6342,8 @@ export const CreateMetricBreakoutValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMetricBreakoutValueRequest>;
 
 export interface CreateMetricBreakoutValueResponse {}
-export const CreateMetricBreakoutValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMetricBreakoutValueResponse",
-}) as any as S.Schema<CreateMetricBreakoutValueResponse>;
+export const CreateMetricBreakoutValueResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetricBreakoutValueResponse>;
 
 export interface CreateMetricDatasetRequest {
   definition: MetabaseMetricsApiDefinition;
@@ -6821,9 +6357,8 @@ export const CreateMetricDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMetricDatasetRequest>;
 
 export interface CreateMetricDatasetResponse {}
-export const CreateMetricDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMetricDatasetResponse",
-}) as any as S.Schema<CreateMetricDatasetResponse>;
+export const CreateMetricDatasetResponse =
+  CreateActionResponse as any as S.Schema<CreateMetricDatasetResponse>;
 
 export interface CreateModelIndexRequest {
   /** value must be an integer greater than zero. */
@@ -6840,9 +6375,8 @@ export const CreateModelIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateModelIndexRequest" }) as any as S.Schema<CreateModelIndexRequest>;
 
 export interface CreateModelIndexResponse {}
-export const CreateModelIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateModelIndexResponse",
-}) as any as S.Schema<CreateModelIndexResponse>;
+export const CreateModelIndexResponse =
+  CreateActionResponse as any as S.Schema<CreateModelIndexResponse>;
 
 export type CreateModerationReviewRequestModeratedItemType =
   | "card"
@@ -6873,9 +6407,8 @@ export const CreateModerationReviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateModerationReviewRequest>;
 
 export interface CreateModerationReviewResponse {}
-export const CreateModerationReviewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateModerationReviewResponse",
-}) as any as S.Schema<CreateModerationReviewResponse>;
+export const CreateModerationReviewResponse =
+  CreateActionResponse as any as S.Schema<CreateModerationReviewResponse>;
 
 export type MetabaseEnterpriseSandboxSchemaAttributeRemappingsValue =
   | string
@@ -6912,9 +6445,7 @@ export const CreateMtGtapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMtGtapRequest" }) as any as S.Schema<CreateMtGtapRequest>;
 
 export interface CreateMtGtapResponse {}
-export const CreateMtGtapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMtGtapResponse",
-}) as any as S.Schema<CreateMtGtapResponse>;
+export const CreateMtGtapResponse = CreateActionResponse as any as S.Schema<CreateMtGtapResponse>;
 
 export interface CreateMtGtapValidateRequest {
   card_id?: number | null;
@@ -6931,9 +6462,8 @@ export const CreateMtGtapValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMtGtapValidateRequest>;
 
 export interface CreateMtGtapValidateResponse {}
-export const CreateMtGtapValidateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMtGtapValidateResponse",
-}) as any as S.Schema<CreateMtGtapValidateResponse>;
+export const CreateMtGtapValidateResponse =
+  CreateActionResponse as any as S.Schema<CreateMtGtapValidateResponse>;
 
 export interface CreateNativeQuerySnippetRequest {
   collection_id?: number | null;
@@ -6954,11 +6484,8 @@ export const CreateNativeQuerySnippetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNativeQuerySnippetRequest>;
 
 export interface CreateNativeQuerySnippetResponse {}
-export const CreateNativeQuerySnippetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNativeQuerySnippetResponse",
-}) as any as S.Schema<CreateNativeQuerySnippetResponse>;
+export const CreateNativeQuerySnippetResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNativeQuerySnippetResponse>;
 
 /** Channel schema. */
 export interface MetabaseChannelModelsChannelChannel {
@@ -7383,9 +6910,7 @@ export const MetabaseNotificationApiNotificationCreateNotificationParamsCase0 =
 export type MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItemRecipientsList =
   Array<MetabaseNotificationModelsCreateNotificationRecipientParams>;
 export const MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItemRecipientsList =
-  /*@__PURE__*/ S.Array(
-    MetabaseNotificationModelsCreateNotificationRecipientParams,
-  ) as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItemRecipientsList>;
+  MetabaseNotificationApiNotificationCreateNotificationParamsCase0HandlersItemRecipientsList as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItemRecipientsList>;
 
 /** [[::NotificationHandler]] on a create request, where the caller does not get to pick the id. */
 export interface MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItem {
@@ -7400,29 +6925,12 @@ export interface MetabaseNotificationApiNotificationCreateNotificationParamsCase
   template_id?: number | null;
 }
 export const MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      active: S.optional(S.NullOr(S.Boolean)),
-      channel: S.optional(S.NullOr(MetabaseChannelModelsChannelChannel)),
-      channel_id: S.optional(S.NullOr(S.Number)),
-      channel_type: S.Unknown,
-      notification_id: S.optional(S.Number),
-      recipients: S.optional(
-        MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItemRecipientsList,
-      ),
-      template: S.optional(S.NullOr(MetabaseChannelModelsChannelChannelTemplateUserProvided)),
-      template_id: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItem",
-  }) as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItem>;
+  MetabaseNotificationApiNotificationCreateNotificationParamsCase0HandlersItem as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItem>;
 
 export type MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersList =
   Array<MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItem>;
 export const MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersList =
-  /*@__PURE__*/ S.Array(
-    MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersItem,
-  ) as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersList>;
+  MetabaseNotificationApiNotificationCreateNotificationParamsCase0HandlersList as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1HandlersList>;
 
 export type MetabaseNotificationApiNotificationCreateNotificationParamsCase1PayloadType =
   | "notification/dashboard"
@@ -7434,9 +6942,7 @@ export const MetabaseNotificationApiNotificationCreateNotificationParamsCase1Pay
 export type MetabaseNotificationApiNotificationCreateNotificationParamsCase1SubscriptionsList =
   Array<MetabaseNotificationModelsCreateNotificationSubscriptionParams>;
 export const MetabaseNotificationApiNotificationCreateNotificationParamsCase1SubscriptionsList =
-  /*@__PURE__*/ S.Array(
-    MetabaseNotificationModelsCreateNotificationSubscriptionParams,
-  ) as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1SubscriptionsList>;
+  MetabaseNotificationApiNotificationCreateNotificationParamsCase0SubscriptionsList as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParamsCase1SubscriptionsList>;
 
 export interface MetabaseNotificationApiNotificationCreateNotificationParamsCase1 {
   active?: boolean | null;
@@ -7487,17 +6993,15 @@ export const CreateNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNotificationRequest>;
 
 export interface CreateNotificationResponse {}
-export const CreateNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateNotificationResponse",
-}) as any as S.Schema<CreateNotificationResponse>;
+export const CreateNotificationResponse =
+  CreateActionResponse as any as S.Schema<CreateNotificationResponse>;
 
 export type CreateNotificationAdminBulkRequestAction = "archive" | "change-creator";
 export const CreateNotificationAdminBulkRequestAction = S.String;
 
 export type CreateNotificationAdminBulkRequestNotificationIdsList = Array<number>;
-export const CreateNotificationAdminBulkRequestNotificationIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNotificationAdminBulkRequestNotificationIdsList>;
+export const CreateNotificationAdminBulkRequestNotificationIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateNotificationAdminBulkRequestNotificationIdsList>;
 
 export interface CreateNotificationAdminBulkRequest {
   action: CreateNotificationAdminBulkRequestAction | (string & {});
@@ -7516,11 +7020,8 @@ export const CreateNotificationAdminBulkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNotificationAdminBulkRequest>;
 
 export interface CreateNotificationAdminBulkResponse {}
-export const CreateNotificationAdminBulkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNotificationAdminBulkResponse",
-}) as any as S.Schema<CreateNotificationAdminBulkResponse>;
+export const CreateNotificationAdminBulkResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationAdminBulkResponse>;
 
 export interface CreateNotificationSendRequest {
   body?: MetabaseNotificationApiNotificationCreateNotificationParams;
@@ -7536,14 +7037,12 @@ export const CreateNotificationSendRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNotificationSendRequest>;
 
 export interface CreateNotificationSendResponse {}
-export const CreateNotificationSendResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateNotificationSendResponse",
-}) as any as S.Schema<CreateNotificationSendResponse>;
+export const CreateNotificationSendResponse =
+  CreateActionResponse as any as S.Schema<CreateNotificationSendResponse>;
 
 export type CreateNotificationSendRequestHandlerIdsList = Array<number>;
-export const CreateNotificationSendRequestHandlerIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNotificationSendRequestHandlerIdsList>;
+export const CreateNotificationSendRequestHandlerIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateNotificationSendRequestHandlerIdsList>;
 
 export interface CreateNotificationSendRequest2 {
   /** value must be an integer greater than zero. */
@@ -7560,9 +7059,8 @@ export const CreateNotificationSendRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNotificationSendRequest2>;
 
 export interface CreateNotificationSend2Response {}
-export const CreateNotificationSend2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateNotificationSend2Response" },
-) as any as S.Schema<CreateNotificationSend2Response>;
+export const CreateNotificationSend2Response =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateNotificationSend2Response>;
 
 export interface CreateNotificationUnsubscribeRequest {
   email: string;
@@ -7581,11 +7079,8 @@ export const CreateNotificationUnsubscribeRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateNotificationUnsubscribeRequest>;
 
 export interface CreateNotificationUnsubscribeResponse {}
-export const CreateNotificationUnsubscribeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNotificationUnsubscribeResponse",
-}) as any as S.Schema<CreateNotificationUnsubscribeResponse>;
+export const CreateNotificationUnsubscribeResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationUnsubscribeResponse>;
 
 export interface CreateNotificationUnsubscribeRequest2 {
   /** value must be an integer greater than zero. */
@@ -7600,11 +7095,8 @@ export const CreateNotificationUnsubscribeRequest2 = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateNotificationUnsubscribeRequest2>;
 
 export interface CreateNotificationUnsubscribe2Response {}
-export const CreateNotificationUnsubscribe2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNotificationUnsubscribe2Response",
-}) as any as S.Schema<CreateNotificationUnsubscribe2Response>;
+export const CreateNotificationUnsubscribe2Response =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationUnsubscribe2Response>;
 
 export interface CreateNotificationUnsubscribeUndoRequest {
   email: string;
@@ -7623,11 +7115,8 @@ export const CreateNotificationUnsubscribeUndoRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateNotificationUnsubscribeUndoRequest>;
 
 export interface CreateNotificationUnsubscribeUndoResponse {}
-export const CreateNotificationUnsubscribeUndoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNotificationUnsubscribeUndoResponse",
-}) as any as S.Schema<CreateNotificationUnsubscribeUndoResponse>;
+export const CreateNotificationUnsubscribeUndoResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationUnsubscribeUndoResponse>;
 
 export interface CreateNotifyDbAttachedDatawarehouseRequest {
   schema_name?: string | null;
@@ -7645,11 +7134,8 @@ export const CreateNotifyDbAttachedDatawarehouseRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseRequest>;
 
 export interface CreateNotifyDbAttachedDatawarehouseResponse {}
-export const CreateNotifyDbAttachedDatawarehouseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateNotifyDbAttachedDatawarehouseResponse",
-}) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseResponse>;
+export const CreateNotifyDbAttachedDatawarehouseResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotifyDbAttachedDatawarehouseResponse>;
 
 export interface CreateNotifyDbNewTableRequest {
   /** value must be an integer greater than zero. */
@@ -7668,9 +7154,8 @@ export const CreateNotifyDbNewTableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNotifyDbNewTableRequest>;
 
 export interface CreateNotifyDbNewTableResponse {}
-export const CreateNotifyDbNewTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateNotifyDbNewTableResponse",
-}) as any as S.Schema<CreateNotifyDbNewTableResponse>;
+export const CreateNotifyDbNewTableResponse =
+  CreateActionResponse as any as S.Schema<CreateNotifyDbNewTableResponse>;
 
 export interface CreateOsiAiContextReconcileRequest {}
 export const CreateOsiAiContextReconcileRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7680,11 +7165,8 @@ export const CreateOsiAiContextReconcileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOsiAiContextReconcileRequest>;
 
 export interface CreateOsiAiContextReconcileResponse {}
-export const CreateOsiAiContextReconcileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateOsiAiContextReconcileResponse",
-}) as any as S.Schema<CreateOsiAiContextReconcileResponse>;
+export const CreateOsiAiContextReconcileResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateOsiAiContextReconcileResponse>;
 
 export interface CreatePermissionsGroupRequest {
   is_tenant_group?: boolean | null;
@@ -7700,9 +7182,8 @@ export const CreatePermissionsGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePermissionsGroupRequest>;
 
 export interface CreatePermissionsGroupResponse {}
-export const CreatePermissionsGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePermissionsGroupResponse",
-}) as any as S.Schema<CreatePermissionsGroupResponse>;
+export const CreatePermissionsGroupResponse =
+  CreateActionResponse as any as S.Schema<CreatePermissionsGroupResponse>;
 
 export interface CreatePermissionsMembershipRequest {
   /** value must be an integer greater than zero. */
@@ -7722,11 +7203,8 @@ export const CreatePermissionsMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePermissionsMembershipRequest>;
 
 export interface CreatePermissionsMembershipResponse {}
-export const CreatePermissionsMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePermissionsMembershipResponse",
-}) as any as S.Schema<CreatePermissionsMembershipResponse>;
+export const CreatePermissionsMembershipResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePermissionsMembershipResponse>;
 
 export interface CreatePersistCardPersistRequest {
   /** value must be an integer greater than zero. */
@@ -7741,11 +7219,8 @@ export const CreatePersistCardPersistRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePersistCardPersistRequest>;
 
 export interface CreatePersistCardPersistResponse {}
-export const CreatePersistCardPersistResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePersistCardPersistResponse",
-}) as any as S.Schema<CreatePersistCardPersistResponse>;
+export const CreatePersistCardPersistResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistCardPersistResponse>;
 
 export interface CreatePersistCardRefreshRequest {
   /** value must be an integer greater than zero. */
@@ -7760,11 +7235,8 @@ export const CreatePersistCardRefreshRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePersistCardRefreshRequest>;
 
 export interface CreatePersistCardRefreshResponse {}
-export const CreatePersistCardRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePersistCardRefreshResponse",
-}) as any as S.Schema<CreatePersistCardRefreshResponse>;
+export const CreatePersistCardRefreshResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistCardRefreshResponse>;
 
 export interface CreatePersistCardUnpersistRequest {
   /** value must be an integer greater than zero. */
@@ -7779,11 +7251,8 @@ export const CreatePersistCardUnpersistRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePersistCardUnpersistRequest>;
 
 export interface CreatePersistCardUnpersistResponse {}
-export const CreatePersistCardUnpersistResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePersistCardUnpersistResponse",
-}) as any as S.Schema<CreatePersistCardUnpersistResponse>;
+export const CreatePersistCardUnpersistResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistCardUnpersistResponse>;
 
 export interface CreatePersistDatabasePersistRequest {
   /** value must be an integer greater than zero. */
@@ -7798,11 +7267,8 @@ export const CreatePersistDatabasePersistRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePersistDatabasePersistRequest>;
 
 export interface CreatePersistDatabasePersistResponse {}
-export const CreatePersistDatabasePersistResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePersistDatabasePersistResponse",
-}) as any as S.Schema<CreatePersistDatabasePersistResponse>;
+export const CreatePersistDatabasePersistResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistDatabasePersistResponse>;
 
 export interface CreatePersistDatabaseUnpersistRequest {
   /** value must be an integer greater than zero. */
@@ -7817,11 +7283,8 @@ export const CreatePersistDatabaseUnpersistRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreatePersistDatabaseUnpersistRequest>;
 
 export interface CreatePersistDatabaseUnpersistResponse {}
-export const CreatePersistDatabaseUnpersistResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePersistDatabaseUnpersistResponse",
-}) as any as S.Schema<CreatePersistDatabaseUnpersistResponse>;
+export const CreatePersistDatabaseUnpersistResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistDatabaseUnpersistResponse>;
 
 export interface CreatePersistDisableRequest {}
 export const CreatePersistDisableRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7831,9 +7294,8 @@ export const CreatePersistDisableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePersistDisableRequest>;
 
 export interface CreatePersistDisableResponse {}
-export const CreatePersistDisableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePersistDisableResponse",
-}) as any as S.Schema<CreatePersistDisableResponse>;
+export const CreatePersistDisableResponse =
+  CreateActionResponse as any as S.Schema<CreatePersistDisableResponse>;
 
 export interface CreatePersistEnableRequest {}
 export const CreatePersistEnableRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7843,9 +7305,8 @@ export const CreatePersistEnableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePersistEnableRequest>;
 
 export interface CreatePersistEnableResponse {}
-export const CreatePersistEnableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePersistEnableResponse",
-}) as any as S.Schema<CreatePersistEnableResponse>;
+export const CreatePersistEnableResponse =
+  CreateActionResponse as any as S.Schema<CreatePersistEnableResponse>;
 
 export interface CreatePersistSetRefreshScheduleRequest {
   /** Value must be a string representing a cron schedule of format <seconds> <minutes> <hours> <day of month> <month> <day of week> <year> */
@@ -7860,11 +7321,8 @@ export const CreatePersistSetRefreshScheduleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreatePersistSetRefreshScheduleRequest>;
 
 export interface CreatePersistSetRefreshScheduleResponse {}
-export const CreatePersistSetRefreshScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePersistSetRefreshScheduleResponse",
-}) as any as S.Schema<CreatePersistSetRefreshScheduleResponse>;
+export const CreatePersistSetRefreshScheduleResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistSetRefreshScheduleResponse>;
 
 export interface CreatePremiumFeaturesTokenRefreshRequest {}
 export const CreatePremiumFeaturesTokenRefreshRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7876,11 +7334,8 @@ export const CreatePremiumFeaturesTokenRefreshRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreatePremiumFeaturesTokenRefreshRequest>;
 
 export interface CreatePremiumFeaturesTokenRefreshResponse {}
-export const CreatePremiumFeaturesTokenRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePremiumFeaturesTokenRefreshResponse",
-}) as any as S.Schema<CreatePremiumFeaturesTokenRefreshResponse>;
+export const CreatePremiumFeaturesTokenRefreshResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePremiumFeaturesTokenRefreshResponse>;
 
 export interface CreateProductFeedbackRequest {
   comments?: string | null;
@@ -7898,14 +7353,12 @@ export const CreateProductFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProductFeedbackRequest>;
 
 export interface CreateProductFeedbackResponse {}
-export const CreateProductFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateProductFeedbackResponse",
-}) as any as S.Schema<CreateProductFeedbackResponse>;
+export const CreateProductFeedbackResponse =
+  CreateActionResponse as any as S.Schema<CreateProductFeedbackResponse>;
 
 export type CreatePulseRequestParametersList = Array<MetabaseParametersSchemaParameter>;
-export const CreatePulseRequestParametersList = /*@__PURE__*/ S.Array(
-  MetabaseParametersSchemaParameter,
-) as any as S.Schema<CreatePulseRequestParametersList>;
+export const CreatePulseRequestParametersList =
+  MetabaseParametersSchemaParameters as any as S.Schema<CreatePulseRequestParametersList>;
 
 export interface CreatePulseRequest {
   cards: unknown;
@@ -7931,9 +7384,7 @@ export const CreatePulseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePulseRequest" }) as any as S.Schema<CreatePulseRequest>;
 
 export interface CreatePulseResponse {}
-export const CreatePulseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePulseResponse",
-}) as any as S.Schema<CreatePulseResponse>;
+export const CreatePulseResponse = CreateActionResponse as any as S.Schema<CreatePulseResponse>;
 
 export type CreatePulseTestRequestAlertCondition = "rows" | "goal";
 export const CreatePulseTestRequestAlertCondition = S.String;
@@ -7972,9 +7423,8 @@ export const CreatePulseTestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePulseTestRequest" }) as any as S.Schema<CreatePulseTestRequest>;
 
 export interface CreatePulseTestResponse {}
-export const CreatePulseTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePulseTestResponse",
-}) as any as S.Schema<CreatePulseTestResponse>;
+export const CreatePulseTestResponse =
+  CreateActionResponse as any as S.Schema<CreatePulseTestResponse>;
 
 export interface CreatePulseUnsubscribeRequest {
   email: string;
@@ -7993,9 +7443,8 @@ export const CreatePulseUnsubscribeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePulseUnsubscribeRequest>;
 
 export interface CreatePulseUnsubscribeResponse {}
-export const CreatePulseUnsubscribeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePulseUnsubscribeResponse",
-}) as any as S.Schema<CreatePulseUnsubscribeResponse>;
+export const CreatePulseUnsubscribeResponse =
+  CreateActionResponse as any as S.Schema<CreatePulseUnsubscribeResponse>;
 
 export interface CreatePulseUnsubscribeUndoRequest {
   email: string;
@@ -8014,11 +7463,8 @@ export const CreatePulseUnsubscribeUndoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePulseUnsubscribeUndoRequest>;
 
 export interface CreatePulseUnsubscribeUndoResponse {}
-export const CreatePulseUnsubscribeUndoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePulseUnsubscribeUndoResponse",
-}) as any as S.Schema<CreatePulseUnsubscribeUndoResponse>;
+export const CreatePulseUnsubscribeUndoResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePulseUnsubscribeUndoResponse>;
 
 export type CreateRevisionRevertRequestEntity =
   | "card"
@@ -8047,9 +7493,8 @@ export const CreateRevisionRevertRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRevisionRevertRequest>;
 
 export interface CreateRevisionRevertResponse {}
-export const CreateRevisionRevertResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateRevisionRevertResponse",
-}) as any as S.Schema<CreateRevisionRevertResponse>;
+export const CreateRevisionRevertResponse =
+  CreateActionResponse as any as S.Schema<CreateRevisionRevertResponse>;
 
 export interface CreateSearchForceReindexRequest {}
 export const CreateSearchForceReindexRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8059,11 +7504,8 @@ export const CreateSearchForceReindexRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSearchForceReindexRequest>;
 
 export interface CreateSearchForceReindexResponse {}
-export const CreateSearchForceReindexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSearchForceReindexResponse",
-}) as any as S.Schema<CreateSearchForceReindexResponse>;
+export const CreateSearchForceReindexResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSearchForceReindexResponse>;
 
 export interface CreateSearchReInitRequest {}
 export const CreateSearchReInitRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8073,9 +7515,8 @@ export const CreateSearchReInitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSearchReInitRequest>;
 
 export interface CreateSearchReInitResponse {}
-export const CreateSearchReInitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSearchReInitResponse",
-}) as any as S.Schema<CreateSearchReInitResponse>;
+export const CreateSearchReInitResponse =
+  CreateActionResponse as any as S.Schema<CreateSearchReInitResponse>;
 
 export interface CreateSegmentRequest {
   definition: MetabaseLibSchemaQuery;
@@ -8094,9 +7535,7 @@ export const CreateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSegmentRequest" }) as any as S.Schema<CreateSegmentRequest>;
 
 export interface CreateSegmentResponse {}
-export const CreateSegmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSegmentResponse",
-}) as any as S.Schema<CreateSegmentResponse>;
+export const CreateSegmentResponse = CreateActionResponse as any as S.Schema<CreateSegmentResponse>;
 
 export interface CreateSessionRequest {
   password: string | Redacted.Redacted<string>;
@@ -8110,9 +7549,7 @@ export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSessionRequest" }) as any as S.Schema<CreateSessionRequest>;
 
 export interface CreateSessionResponse {}
-export const CreateSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSessionResponse",
-}) as any as S.Schema<CreateSessionResponse>;
+export const CreateSessionResponse = CreateActionResponse as any as S.Schema<CreateSessionResponse>;
 
 export interface CreateSessionForgotPasswordRequest {
   /** value must be a valid email address. */
@@ -8127,11 +7564,8 @@ export const CreateSessionForgotPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionForgotPasswordRequest>;
 
 export interface CreateSessionForgotPasswordResponse {}
-export const CreateSessionForgotPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSessionForgotPasswordResponse",
-}) as any as S.Schema<CreateSessionForgotPasswordResponse>;
+export const CreateSessionForgotPasswordResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionForgotPasswordResponse>;
 
 export interface CreateSessionGoogleAuthRequest {
   token: string;
@@ -8145,9 +7579,8 @@ export const CreateSessionGoogleAuthRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionGoogleAuthRequest>;
 
 export interface CreateSessionGoogleAuthResponse {}
-export const CreateSessionGoogleAuthResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateSessionGoogleAuthResponse" },
-) as any as S.Schema<CreateSessionGoogleAuthResponse>;
+export const CreateSessionGoogleAuthResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateSessionGoogleAuthResponse>;
 
 export interface CreateSessionMfaSendEmailOtpRequest {
   challenge_token: string;
@@ -8161,11 +7594,8 @@ export const CreateSessionMfaSendEmailOtpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionMfaSendEmailOtpRequest>;
 
 export interface CreateSessionMfaSendEmailOtpResponse {}
-export const CreateSessionMfaSendEmailOtpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSessionMfaSendEmailOtpResponse",
-}) as any as S.Schema<CreateSessionMfaSendEmailOtpResponse>;
+export const CreateSessionMfaSendEmailOtpResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionMfaSendEmailOtpResponse>;
 
 export interface CreateSessionMfaVerifyRequest {
   challenge_token: string;
@@ -8183,9 +7613,8 @@ export const CreateSessionMfaVerifyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionMfaVerifyRequest>;
 
 export interface CreateSessionMfaVerifyResponse {}
-export const CreateSessionMfaVerifyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSessionMfaVerifyResponse",
-}) as any as S.Schema<CreateSessionMfaVerifyResponse>;
+export const CreateSessionMfaVerifyResponse =
+  CreateActionResponse as any as S.Schema<CreateSessionMfaVerifyResponse>;
 
 export interface CreateSessionPasswordCheckRequest {
   /** password is too common. */
@@ -8200,11 +7629,8 @@ export const CreateSessionPasswordCheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionPasswordCheckRequest>;
 
 export interface CreateSessionPasswordCheckResponse {}
-export const CreateSessionPasswordCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSessionPasswordCheckResponse",
-}) as any as S.Schema<CreateSessionPasswordCheckResponse>;
+export const CreateSessionPasswordCheckResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionPasswordCheckResponse>;
 
 export interface CreateSessionResetPasswordRequest {
   /** password is too common. */
@@ -8221,11 +7647,8 @@ export const CreateSessionResetPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionResetPasswordRequest>;
 
 export interface CreateSessionResetPasswordResponse {}
-export const CreateSessionResetPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSessionResetPasswordResponse",
-}) as any as S.Schema<CreateSessionResetPasswordResponse>;
+export const CreateSessionResetPasswordResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionResetPasswordResponse>;
 
 export interface CreateSetupRequestPrefs {
   site_locale?: string | null;
@@ -8270,14 +7693,11 @@ export const CreateSetupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSetupRequest" }) as any as S.Schema<CreateSetupRequest>;
 
 export interface CreateSetupResponse {}
-export const CreateSetupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSetupResponse",
-}) as any as S.Schema<CreateSetupResponse>;
+export const CreateSetupResponse = CreateActionResponse as any as S.Schema<CreateSetupResponse>;
 
 export type CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList = Array<string>;
-export const CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList>;
+export const CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList>;
 
 export interface CreateSlackBugReportRequestDiagnosticInfoReporterCase0 {
   email: string;
@@ -8299,19 +7719,16 @@ export const CreateSlackBugReportRequestDiagnosticInfoReporter =
   S.Unknown as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoReporter>;
 
 export type CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList = Array<unknown>;
-export const CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList>;
+export const CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList>;
 
 export type CreateSlackBugReportRequestDiagnosticInfoUserLogsList = Array<unknown>;
-export const CreateSlackBugReportRequestDiagnosticInfoUserLogsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoUserLogsList>;
+export const CreateSlackBugReportRequestDiagnosticInfoUserLogsList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoUserLogsList>;
 
 export type CreateSlackBugReportRequestDiagnosticInfoLogsList = Array<unknown>;
-export const CreateSlackBugReportRequestDiagnosticInfoLogsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoLogsList>;
+export const CreateSlackBugReportRequestDiagnosticInfoLogsList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoLogsList>;
 
 export interface CreateSlackBugReportRequestDiagnosticInfo {
   entityName?: string | null;
@@ -8362,9 +7779,8 @@ export const CreateSlackBugReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSlackBugReportRequest>;
 
 export interface CreateSlackBugReportResponse {}
-export const CreateSlackBugReportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSlackBugReportResponse",
-}) as any as S.Schema<CreateSlackBugReportResponse>;
+export const CreateSlackBugReportResponse =
+  CreateActionResponse as any as S.Schema<CreateSlackBugReportResponse>;
 
 export interface CreateTableAppendCsvRequestFile {
   filename: string;
@@ -8403,9 +7819,8 @@ export const CreateTableAppendCsvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTableAppendCsvRequest>;
 
 export interface CreateTableAppendCsvResponse {}
-export const CreateTableAppendCsvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTableAppendCsvResponse",
-}) as any as S.Schema<CreateTableAppendCsvResponse>;
+export const CreateTableAppendCsvResponse =
+  CreateActionResponse as any as S.Schema<CreateTableAppendCsvResponse>;
 
 export interface CreateTableDiscardValueRequest {
   /** value must be an integer greater than zero. */
@@ -8420,9 +7835,8 @@ export const CreateTableDiscardValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTableDiscardValueRequest>;
 
 export interface CreateTableDiscardValueResponse {}
-export const CreateTableDiscardValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateTableDiscardValueResponse" },
-) as any as S.Schema<CreateTableDiscardValueResponse>;
+export const CreateTableDiscardValueResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<CreateTableDiscardValueResponse>;
 
 export type CreateTableReplaceCsvRequestFile = CreateTableAppendCsvRequestFile;
 export const CreateTableReplaceCsvRequestFile = CreateTableAppendCsvRequestFile;
@@ -8451,9 +7865,8 @@ export const CreateTableReplaceCsvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTableReplaceCsvRequest>;
 
 export interface CreateTableReplaceCsvResponse {}
-export const CreateTableReplaceCsvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTableReplaceCsvResponse",
-}) as any as S.Schema<CreateTableReplaceCsvResponse>;
+export const CreateTableReplaceCsvResponse =
+  CreateActionResponse as any as S.Schema<CreateTableReplaceCsvResponse>;
 
 export interface CreateTableRescanValueRequest {
   /** value must be an integer greater than zero. */
@@ -8468,9 +7881,8 @@ export const CreateTableRescanValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTableRescanValueRequest>;
 
 export interface CreateTableRescanValueResponse {}
-export const CreateTableRescanValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTableRescanValueResponse",
-}) as any as S.Schema<CreateTableRescanValueResponse>;
+export const CreateTableRescanValueResponse =
+  CreateActionResponse as any as S.Schema<CreateTableRescanValueResponse>;
 
 export interface CreateTableSyncSchemaRequest {
   /** value must be an integer greater than zero. */
@@ -8485,9 +7897,8 @@ export const CreateTableSyncSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTableSyncSchemaRequest>;
 
 export interface CreateTableSyncSchemaResponse {}
-export const CreateTableSyncSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTableSyncSchemaResponse",
-}) as any as S.Schema<CreateTableSyncSchemaResponse>;
+export const CreateTableSyncSchemaResponse =
+  CreateActionResponse as any as S.Schema<CreateTableSyncSchemaResponse>;
 
 export type CreateTimelineRequestIcon = "star" | "cake" | "mail" | "warning" | "bell" | "cloud";
 export const CreateTimelineRequestIcon = S.String;
@@ -8512,9 +7923,8 @@ export const CreateTimelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTimelineRequest" }) as any as S.Schema<CreateTimelineRequest>;
 
 export interface CreateTimelineResponse {}
-export const CreateTimelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTimelineResponse",
-}) as any as S.Schema<CreateTimelineResponse>;
+export const CreateTimelineResponse =
+  CreateActionResponse as any as S.Schema<CreateTimelineResponse>;
 
 export type CreateTimelineEventRequestSource = "collections" | "question";
 export const CreateTimelineEventRequestSource = S.String;
@@ -8560,14 +7970,12 @@ export const CreateTimelineEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTimelineEventRequest>;
 
 export interface CreateTimelineEventResponse {}
-export const CreateTimelineEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTimelineEventResponse",
-}) as any as S.Schema<CreateTimelineEventResponse>;
+export const CreateTimelineEventResponse =
+  CreateActionResponse as any as S.Schema<CreateTimelineEventResponse>;
 
 export type CreateTransformRequestTagIdsList = Array<number>;
-export const CreateTransformRequestTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateTransformRequestTagIdsList>;
+export const CreateTransformRequestTagIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateTransformRequestTagIdsList>;
 
 export interface MetabaseTransformsSchemaCheckpointStrategy {
   checkpoint_filter_field_id?: number;
@@ -8601,9 +8009,8 @@ export const MetabaseTransformsSchemaTransformSourceCase0 = /*@__PURE__*/ S.susp
 
 export type MetabaseTransformsSchemaTransformSourceCase1SourceTablesList =
   Array<MetabaseTransformsBaseUtilSourceTableEntry>;
-export const MetabaseTransformsSchemaTransformSourceCase1SourceTablesList = /*@__PURE__*/ S.Array(
-  MetabaseTransformsBaseUtilSourceTableEntry,
-) as any as S.Schema<MetabaseTransformsSchemaTransformSourceCase1SourceTablesList>;
+export const MetabaseTransformsSchemaTransformSourceCase1SourceTablesList =
+  CreateEeTransformsPythonTestRunRequestSourceTablesList as any as S.Schema<MetabaseTransformsSchemaTransformSourceCase1SourceTablesList>;
 
 export interface MetabaseTransformsSchemaTransformSourceCase1 {
   body: string;
@@ -8757,9 +8164,8 @@ export const CreateTransformRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTransformRequest" }) as any as S.Schema<CreateTransformRequest>;
 
 export interface CreateTransformResponse {}
-export const CreateTransformResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTransformResponse",
-}) as any as S.Schema<CreateTransformResponse>;
+export const CreateTransformResponse =
+  CreateActionResponse as any as S.Schema<CreateTransformResponse>;
 
 export interface CreateTransformCancelRequest {
   /** value must be an integer greater than zero. */
@@ -8774,14 +8180,12 @@ export const CreateTransformCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTransformCancelRequest>;
 
 export interface CreateTransformCancelResponse {}
-export const CreateTransformCancelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTransformCancelResponse",
-}) as any as S.Schema<CreateTransformCancelResponse>;
+export const CreateTransformCancelResponse =
+  CreateActionResponse as any as S.Schema<CreateTransformCancelResponse>;
 
 export type CreateTransformJobRequestTagIdsList = Array<number>;
-export const CreateTransformJobRequestTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateTransformJobRequestTagIdsList>;
+export const CreateTransformJobRequestTagIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateTransformJobRequestTagIdsList>;
 
 export type CreateTransformJobRequestUiDisplayType = "cron/raw" | "cron/builder";
 export const CreateTransformJobRequestUiDisplayType = S.String;
@@ -8806,9 +8210,8 @@ export const CreateTransformJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTransformJobRequest>;
 
 export interface CreateTransformJobResponse {}
-export const CreateTransformJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTransformJobResponse",
-}) as any as S.Schema<CreateTransformJobResponse>;
+export const CreateTransformJobResponse =
+  CreateActionResponse as any as S.Schema<CreateTransformJobResponse>;
 
 export interface CreateTransformJobRunRequest {
   /** value must be an integer greater than zero. */
@@ -8825,9 +8228,8 @@ export const CreateTransformJobRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTransformJobRunRequest>;
 
 export interface CreateTransformJobRunResponse {}
-export const CreateTransformJobRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTransformJobRunResponse",
-}) as any as S.Schema<CreateTransformJobRunResponse>;
+export const CreateTransformJobRunResponse =
+  CreateActionResponse as any as S.Schema<CreateTransformJobRunResponse>;
 
 export interface CreateTransformResetCheckpointRequest {
   /** value must be an integer greater than zero. */
@@ -8842,11 +8244,8 @@ export const CreateTransformResetCheckpointRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateTransformResetCheckpointRequest>;
 
 export interface CreateTransformResetCheckpointResponse {}
-export const CreateTransformResetCheckpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateTransformResetCheckpointResponse",
-}) as any as S.Schema<CreateTransformResetCheckpointResponse>;
+export const CreateTransformResetCheckpointResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateTransformResetCheckpointResponse>;
 
 export interface CreateTransformRunRequest {
   /** value must be an integer greater than zero. */
@@ -8861,9 +8260,8 @@ export const CreateTransformRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTransformRunRequest>;
 
 export interface CreateTransformRunResponse {}
-export const CreateTransformRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTransformRunResponse",
-}) as any as S.Schema<CreateTransformRunResponse>;
+export const CreateTransformRunResponse =
+  CreateActionResponse as any as S.Schema<CreateTransformRunResponse>;
 
 export interface CreateTransformTagRequest {
   name: string;
@@ -8877,9 +8275,8 @@ export const CreateTransformTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTransformTagRequest>;
 
 export interface CreateTransformTagResponse {}
-export const CreateTransformTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTransformTagResponse",
-}) as any as S.Schema<CreateTransformTagResponse>;
+export const CreateTransformTagResponse =
+  CreateActionResponse as any as S.Schema<CreateTransformTagResponse>;
 
 export type CreateUploadCsvRequestFile = CreateTableAppendCsvRequestFile;
 export const CreateUploadCsvRequestFile = CreateTableAppendCsvRequestFile;
@@ -8896,15 +8293,12 @@ export const CreateUploadCsvRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUploadCsvRequest" }) as any as S.Schema<CreateUploadCsvRequest>;
 
 export interface CreateUploadCsvResponse {}
-export const CreateUploadCsvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateUploadCsvResponse",
-}) as any as S.Schema<CreateUploadCsvResponse>;
+export const CreateUploadCsvResponse =
+  CreateActionResponse as any as S.Schema<CreateUploadCsvResponse>;
 
 export type CreateUserRequestLoginAttributesMap = { [key: string]: unknown | undefined };
-export const CreateUserRequestLoginAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateUserRequestLoginAttributesMap>;
+export const CreateUserRequestLoginAttributesMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<CreateUserRequestLoginAttributesMap>;
 
 /** Group Membership info of a User. In which :is_group_manager is only included if `advanced-permissions` is enabled. */
 export interface MetabaseUsersSchemaUserGroupMembership {
@@ -8974,9 +8368,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 
 export interface CreateUserResponse {}
-export const CreateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateUserResponse",
-}) as any as S.Schema<CreateUserResponse>;
+export const CreateUserResponse = CreateActionResponse as any as S.Schema<CreateUserResponse>;
 
 export interface CreateUserPasswordResetUrlRequest {
   /** value must be an integer greater than zero. */
@@ -8991,11 +8383,8 @@ export const CreateUserPasswordResetUrlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUserPasswordResetUrlRequest>;
 
 export interface CreateUserPasswordResetUrlResponse {}
-export const CreateUserPasswordResetUrlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateUserPasswordResetUrlResponse",
-}) as any as S.Schema<CreateUserPasswordResetUrlResponse>;
+export const CreateUserPasswordResetUrlResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateUserPasswordResetUrlResponse>;
 
 export interface DeleteActionRequest {
   /** value must be an integer greater than zero. */
@@ -9008,9 +8397,7 @@ export const DeleteActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteActionRequest" }) as any as S.Schema<DeleteActionRequest>;
 
 export interface DeleteActionResponse {}
-export const DeleteActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteActionResponse",
-}) as any as S.Schema<DeleteActionResponse>;
+export const DeleteActionResponse = CreateActionResponse as any as S.Schema<DeleteActionResponse>;
 
 export interface DeleteActionPublicLinkRequest {
   id: number;
@@ -9024,9 +8411,8 @@ export const DeleteActionPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteActionPublicLinkRequest>;
 
 export interface DeleteActionPublicLinkResponse {}
-export const DeleteActionPublicLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteActionPublicLinkResponse",
-}) as any as S.Schema<DeleteActionPublicLinkResponse>;
+export const DeleteActionPublicLinkResponse =
+  CreateActionResponse as any as S.Schema<DeleteActionPublicLinkResponse>;
 
 export interface DeleteAlertSubscriptionRequest {
   /** value must be an integer greater than zero. */
@@ -9041,9 +8427,8 @@ export const DeleteAlertSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAlertSubscriptionRequest>;
 
 export interface DeleteAlertSubscriptionResponse {}
-export const DeleteAlertSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAlertSubscriptionResponse" },
-) as any as S.Schema<DeleteAlertSubscriptionResponse>;
+export const DeleteAlertSubscriptionResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<DeleteAlertSubscriptionResponse>;
 
 export type DeleteBookmarkRequestModel = "card" | "dashboard" | "collection" | "document";
 export const DeleteBookmarkRequestModel = S.String;
@@ -9061,17 +8446,15 @@ export const DeleteBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBookmarkRequest" }) as any as S.Schema<DeleteBookmarkRequest>;
 
 export interface DeleteBookmarkResponse {}
-export const DeleteBookmarkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBookmarkResponse",
-}) as any as S.Schema<DeleteBookmarkResponse>;
+export const DeleteBookmarkResponse =
+  CreateActionResponse as any as S.Schema<DeleteBookmarkResponse>;
 
 export type DeleteCacheRequestModel = "root" | "database" | "dashboard" | "question";
 export const DeleteCacheRequestModel = S.String;
 
 export type DeleteCacheRequestModelIdList = Array<number>;
-export const DeleteCacheRequestModelIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DeleteCacheRequestModelIdList>;
+export const DeleteCacheRequestModelIdList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<DeleteCacheRequestModelIdList>;
 
 export interface DeleteCacheRequest {
   model: DeleteCacheRequestModel | (string & {});
@@ -9085,9 +8468,7 @@ export const DeleteCacheRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCacheRequest" }) as any as S.Schema<DeleteCacheRequest>;
 
 export interface DeleteCacheResponse {}
-export const DeleteCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCacheResponse",
-}) as any as S.Schema<DeleteCacheResponse>;
+export const DeleteCacheResponse = CreateActionResponse as any as S.Schema<DeleteCacheResponse>;
 
 export interface DeleteCardRequest {
   /** value must be an integer greater than zero. */
@@ -9100,9 +8481,7 @@ export const DeleteCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCardRequest" }) as any as S.Schema<DeleteCardRequest>;
 
 export interface DeleteCardResponse {}
-export const DeleteCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCardResponse",
-}) as any as S.Schema<DeleteCardResponse>;
+export const DeleteCardResponse = CreateActionResponse as any as S.Schema<DeleteCardResponse>;
 
 export interface DeleteCardPublicLinkRequest {
   /** value must be an integer greater than zero. */
@@ -9117,9 +8496,8 @@ export const DeleteCardPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCardPublicLinkRequest>;
 
 export interface DeleteCardPublicLinkResponse {}
-export const DeleteCardPublicLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCardPublicLinkResponse",
-}) as any as S.Schema<DeleteCardPublicLinkResponse>;
+export const DeleteCardPublicLinkResponse =
+  CreateActionResponse as any as S.Schema<DeleteCardPublicLinkResponse>;
 
 export interface DeleteCollectionRequest {
   /** value must be an integer greater than zero. */
@@ -9132,9 +8510,8 @@ export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCollectionRequest" }) as any as S.Schema<DeleteCollectionRequest>;
 
 export interface DeleteCollectionResponse {}
-export const DeleteCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCollectionResponse",
-}) as any as S.Schema<DeleteCollectionResponse>;
+export const DeleteCollectionResponse =
+  CreateActionResponse as any as S.Schema<DeleteCollectionResponse>;
 
 export interface DeleteCommentRequest {
   /** value must be an integer greater than zero. */
@@ -9147,9 +8524,7 @@ export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommentRequest" }) as any as S.Schema<DeleteCommentRequest>;
 
 export interface DeleteCommentResponse {}
-export const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCommentResponse",
-}) as any as S.Schema<DeleteCommentResponse>;
+export const DeleteCommentResponse = CreateActionResponse as any as S.Schema<DeleteCommentResponse>;
 
 export interface DeleteDashboardRequest {
   /** value must be an integer greater than zero. */
@@ -9162,9 +8537,8 @@ export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDashboardRequest" }) as any as S.Schema<DeleteDashboardRequest>;
 
 export interface DeleteDashboardResponse {}
-export const DeleteDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDashboardResponse",
-}) as any as S.Schema<DeleteDashboardResponse>;
+export const DeleteDashboardResponse =
+  CreateActionResponse as any as S.Schema<DeleteDashboardResponse>;
 
 export interface DeleteDashboardPublicLinkRequest {
   /** value must be an integer greater than zero. */
@@ -9181,11 +8555,8 @@ export const DeleteDashboardPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDashboardPublicLinkRequest>;
 
 export interface DeleteDashboardPublicLinkResponse {}
-export const DeleteDashboardPublicLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDashboardPublicLinkResponse",
-}) as any as S.Schema<DeleteDashboardPublicLinkResponse>;
+export const DeleteDashboardPublicLinkResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteDashboardPublicLinkResponse>;
 
 export interface DeleteDatabaseRequest {
   /** value must be an integer greater than zero. */
@@ -9198,9 +8569,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  CreateActionResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteDocumentRequest {
   /** value must be an integer greater than zero. */
@@ -9213,9 +8583,8 @@ export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDocumentRequest" }) as any as S.Schema<DeleteDocumentRequest>;
 
 export interface DeleteDocumentResponse {}
-export const DeleteDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDocumentResponse",
-}) as any as S.Schema<DeleteDocumentResponse>;
+export const DeleteDocumentResponse =
+  CreateActionResponse as any as S.Schema<DeleteDocumentResponse>;
 
 export interface DeleteDocumentPublicLinkRequest {
   /** value must be an integer greater than zero. */
@@ -9230,11 +8599,8 @@ export const DeleteDocumentPublicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDocumentPublicLinkRequest>;
 
 export interface DeleteDocumentPublicLinkResponse {}
-export const DeleteDocumentPublicLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDocumentPublicLinkResponse",
-}) as any as S.Schema<DeleteDocumentPublicLinkResponse>;
+export const DeleteDocumentPublicLinkResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteDocumentPublicLinkResponse>;
 
 export interface DeleteEeAdvancedPermissionsImpersonationRequest {
   /** value must be an integer greater than zero. */
@@ -9251,11 +8617,8 @@ export const DeleteEeAdvancedPermissionsImpersonationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationRequest>;
 
 export interface DeleteEeAdvancedPermissionsImpersonationResponse {}
-export const DeleteEeAdvancedPermissionsImpersonationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEeAdvancedPermissionsImpersonationResponse",
-}) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationResponse>;
+export const DeleteEeAdvancedPermissionsImpersonationResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationResponse>;
 
 export interface DeleteEeAiControlsPermissionsAdvancedRequest {}
 export const DeleteEeAiControlsPermissionsAdvancedRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9267,11 +8630,8 @@ export const DeleteEeAiControlsPermissionsAdvancedRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedRequest>;
 
 export interface DeleteEeAiControlsPermissionsAdvancedResponse {}
-export const DeleteEeAiControlsPermissionsAdvancedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEeAiControlsPermissionsAdvancedResponse",
-}) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedResponse>;
+export const DeleteEeAiControlsPermissionsAdvancedResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedResponse>;
 
 export interface DeleteEeAuditAppUserSubscriptionsRequest {
   /** value must be an integer greater than zero. */
@@ -9288,11 +8648,8 @@ export const DeleteEeAuditAppUserSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsRequest>;
 
 export interface DeleteEeAuditAppUserSubscriptionsResponse {}
-export const DeleteEeAuditAppUserSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEeAuditAppUserSubscriptionsResponse",
-}) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsResponse>;
+export const DeleteEeAuditAppUserSubscriptionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeAuditAppUserSubscriptionsResponse>;
 
 export type DeleteEeCloudAddOnsRequestProductType =
   | "metabase-ai"
@@ -9320,9 +8677,8 @@ export const DeleteEeCloudAddOnsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEeCloudAddOnsRequest>;
 
 export interface DeleteEeCloudAddOnsResponse {}
-export const DeleteEeCloudAddOnsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEeCloudAddOnsResponse",
-}) as any as S.Schema<DeleteEeCloudAddOnsResponse>;
+export const DeleteEeCloudAddOnsResponse =
+  CreateActionResponse as any as S.Schema<DeleteEeCloudAddOnsResponse>;
 
 export interface DeleteEeCustomVizPluginRequest {
   /** value must be an integer greater than zero. */
@@ -9337,9 +8693,8 @@ export const DeleteEeCustomVizPluginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEeCustomVizPluginRequest>;
 
 export interface DeleteEeCustomVizPluginResponse {}
-export const DeleteEeCustomVizPluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteEeCustomVizPluginResponse" },
-) as any as S.Schema<DeleteEeCustomVizPluginResponse>;
+export const DeleteEeCustomVizPluginResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<DeleteEeCustomVizPluginResponse>;
 
 export interface DeleteEeDatabaseReplicationConnectionDatabaseRequest {
   /** value must be an integer greater than zero. */
@@ -9360,11 +8715,8 @@ export const DeleteEeDatabaseReplicationConnectionDatabaseRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseRequest>;
 
 export interface DeleteEeDatabaseReplicationConnectionDatabaseResponse {}
-export const DeleteEeDatabaseReplicationConnectionDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEeDatabaseReplicationConnectionDatabaseResponse",
-}) as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseResponse>;
+export const DeleteEeDatabaseReplicationConnectionDatabaseResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseResponse>;
 
 export interface DeleteEeEmailOverrideRequest {}
 export const DeleteEeEmailOverrideRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9374,9 +8726,8 @@ export const DeleteEeEmailOverrideRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEeEmailOverrideRequest>;
 
 export interface DeleteEeEmailOverrideResponse {}
-export const DeleteEeEmailOverrideResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEeEmailOverrideResponse",
-}) as any as S.Schema<DeleteEeEmailOverrideResponse>;
+export const DeleteEeEmailOverrideResponse =
+  CreateActionResponse as any as S.Schema<DeleteEeEmailOverrideResponse>;
 
 export interface DeleteEeGsheetsConnectionRequest {}
 export const DeleteEeGsheetsConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9386,11 +8737,8 @@ export const DeleteEeGsheetsConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEeGsheetsConnectionRequest>;
 
 export interface DeleteEeGsheetsConnectionResponse {}
-export const DeleteEeGsheetsConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEeGsheetsConnectionResponse",
-}) as any as S.Schema<DeleteEeGsheetsConnectionResponse>;
+export const DeleteEeGsheetsConnectionResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeGsheetsConnectionResponse>;
 
 export interface DeleteEeScimGroupRequest {
   id: string;
@@ -9402,9 +8750,8 @@ export const DeleteEeScimGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEeScimGroupRequest" }) as any as S.Schema<DeleteEeScimGroupRequest>;
 
 export interface DeleteEeScimGroupResponse {}
-export const DeleteEeScimGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEeScimGroupResponse",
-}) as any as S.Schema<DeleteEeScimGroupResponse>;
+export const DeleteEeScimGroupResponse =
+  CreateActionResponse as any as S.Schema<DeleteEeScimGroupResponse>;
 
 export interface DeleteEeUploadManagementTableRequest {
   /** value must be an integer greater than zero. */
@@ -9421,11 +8768,8 @@ export const DeleteEeUploadManagementTableRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteEeUploadManagementTableRequest>;
 
 export interface DeleteEeUploadManagementTableResponse {}
-export const DeleteEeUploadManagementTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEeUploadManagementTableResponse",
-}) as any as S.Schema<DeleteEeUploadManagementTableResponse>;
+export const DeleteEeUploadManagementTableResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeUploadManagementTableResponse>;
 
 export interface DeleteEmailRequest {}
 export const DeleteEmailRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9433,9 +8777,7 @@ export const DeleteEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmailRequest" }) as any as S.Schema<DeleteEmailRequest>;
 
 export interface DeleteEmailResponse {}
-export const DeleteEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailResponse",
-}) as any as S.Schema<DeleteEmailResponse>;
+export const DeleteEmailResponse = CreateActionResponse as any as S.Schema<DeleteEmailResponse>;
 
 export interface DeleteEmbedThemeRequest {
   /** value must be an integer greater than zero. */
@@ -9448,9 +8790,8 @@ export const DeleteEmbedThemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmbedThemeRequest" }) as any as S.Schema<DeleteEmbedThemeRequest>;
 
 export interface DeleteEmbedThemeResponse {}
-export const DeleteEmbedThemeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmbedThemeResponse",
-}) as any as S.Schema<DeleteEmbedThemeResponse>;
+export const DeleteEmbedThemeResponse =
+  CreateActionResponse as any as S.Schema<DeleteEmbedThemeResponse>;
 
 export interface DeleteFieldDimensionRequest {
   /** value must be an integer greater than zero. */
@@ -9465,9 +8806,8 @@ export const DeleteFieldDimensionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFieldDimensionRequest>;
 
 export interface DeleteFieldDimensionResponse {}
-export const DeleteFieldDimensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFieldDimensionResponse",
-}) as any as S.Schema<DeleteFieldDimensionResponse>;
+export const DeleteFieldDimensionResponse =
+  CreateActionResponse as any as S.Schema<DeleteFieldDimensionResponse>;
 
 export interface DeleteGlossaryRequest {
   /** value must be an integer greater than zero. */
@@ -9480,9 +8820,8 @@ export const DeleteGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGlossaryRequest" }) as any as S.Schema<DeleteGlossaryRequest>;
 
 export interface DeleteGlossaryResponse {}
-export const DeleteGlossaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGlossaryResponse",
-}) as any as S.Schema<DeleteGlossaryResponse>;
+export const DeleteGlossaryResponse =
+  CreateActionResponse as any as S.Schema<DeleteGlossaryResponse>;
 
 export interface DeleteKeyRequest {
   id: number;
@@ -9494,9 +8833,7 @@ export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyRequest" }) as any as S.Schema<DeleteKeyRequest>;
 
 export interface DeleteKeyResponse {}
-export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyResponse",
-}) as any as S.Schema<DeleteKeyResponse>;
+export const DeleteKeyResponse = CreateActionResponse as any as S.Schema<DeleteKeyResponse>;
 
 export interface DeleteLoggerAdjustmentRequest {}
 export const DeleteLoggerAdjustmentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9506,9 +8843,8 @@ export const DeleteLoggerAdjustmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoggerAdjustmentRequest>;
 
 export interface DeleteLoggerAdjustmentResponse {}
-export const DeleteLoggerAdjustmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLoggerAdjustmentResponse",
-}) as any as S.Schema<DeleteLoggerAdjustmentResponse>;
+export const DeleteLoggerAdjustmentResponse =
+  CreateActionResponse as any as S.Schema<DeleteLoggerAdjustmentResponse>;
 
 export interface DeleteMetabotMetabotPromptSuggestionsRequest {
   id: number;
@@ -9524,11 +8860,8 @@ export const DeleteMetabotMetabotPromptSuggestionsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsRequest>;
 
 export interface DeleteMetabotMetabotPromptSuggestionsResponse {}
-export const DeleteMetabotMetabotPromptSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMetabotMetabotPromptSuggestionsResponse",
-}) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsResponse>;
+export const DeleteMetabotMetabotPromptSuggestionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsResponse>;
 
 export interface DeleteMetabotMetabotPromptSuggestionsPromptRequest {
   id: number;
@@ -9550,11 +8883,8 @@ export const DeleteMetabotMetabotPromptSuggestionsPromptRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptRequest>;
 
 export interface DeleteMetabotMetabotPromptSuggestionsPromptResponse {}
-export const DeleteMetabotMetabotPromptSuggestionsPromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMetabotMetabotPromptSuggestionsPromptResponse",
-}) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptResponse>;
+export const DeleteMetabotMetabotPromptSuggestionsPromptResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptResponse>;
 
 export interface DeleteModelIndexRequest {
   /** value must be an integer greater than zero. */
@@ -9567,9 +8897,8 @@ export const DeleteModelIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteModelIndexRequest" }) as any as S.Schema<DeleteModelIndexRequest>;
 
 export interface DeleteModelIndexResponse {}
-export const DeleteModelIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteModelIndexResponse",
-}) as any as S.Schema<DeleteModelIndexResponse>;
+export const DeleteModelIndexResponse =
+  CreateActionResponse as any as S.Schema<DeleteModelIndexResponse>;
 
 export interface DeleteMtGtapRequest {
   /** value must be an integer greater than zero. */
@@ -9582,9 +8911,7 @@ export const DeleteMtGtapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMtGtapRequest" }) as any as S.Schema<DeleteMtGtapRequest>;
 
 export interface DeleteMtGtapResponse {}
-export const DeleteMtGtapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMtGtapResponse",
-}) as any as S.Schema<DeleteMtGtapResponse>;
+export const DeleteMtGtapResponse = CreateActionResponse as any as S.Schema<DeleteMtGtapResponse>;
 
 export interface DeleteOsiAiContextRequest {
   entity_type: string;
@@ -9607,9 +8934,8 @@ export const DeleteOsiAiContextRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOsiAiContextRequest>;
 
 export interface DeleteOsiAiContextResponse {}
-export const DeleteOsiAiContextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOsiAiContextResponse",
-}) as any as S.Schema<DeleteOsiAiContextResponse>;
+export const DeleteOsiAiContextResponse =
+  CreateActionResponse as any as S.Schema<DeleteOsiAiContextResponse>;
 
 export interface DeletePermissionsGroupRequest {
   /** value must be an integer greater than zero. */
@@ -9624,9 +8950,8 @@ export const DeletePermissionsGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePermissionsGroupRequest>;
 
 export interface DeletePermissionsGroupResponse {}
-export const DeletePermissionsGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePermissionsGroupResponse",
-}) as any as S.Schema<DeletePermissionsGroupResponse>;
+export const DeletePermissionsGroupResponse =
+  CreateActionResponse as any as S.Schema<DeletePermissionsGroupResponse>;
 
 export interface DeletePermissionsMembershipRequest {
   /** value must be an integer greater than zero. */
@@ -9641,11 +8966,8 @@ export const DeletePermissionsMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePermissionsMembershipRequest>;
 
 export interface DeletePermissionsMembershipResponse {}
-export const DeletePermissionsMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePermissionsMembershipResponse",
-}) as any as S.Schema<DeletePermissionsMembershipResponse>;
+export const DeletePermissionsMembershipResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeletePermissionsMembershipResponse>;
 
 export interface DeletePulseSubscriptionRequest {
   /** value must be an integer greater than zero. */
@@ -9660,9 +8982,8 @@ export const DeletePulseSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePulseSubscriptionRequest>;
 
 export interface DeletePulseSubscriptionResponse {}
-export const DeletePulseSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeletePulseSubscriptionResponse" },
-) as any as S.Schema<DeletePulseSubscriptionResponse>;
+export const DeletePulseSubscriptionResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<DeletePulseSubscriptionResponse>;
 
 export interface DeleteSegmentRequest {
   /** value must be an integer greater than zero. */
@@ -9677,9 +8998,7 @@ export const DeleteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSegmentRequest" }) as any as S.Schema<DeleteSegmentRequest>;
 
 export interface DeleteSegmentResponse {}
-export const DeleteSegmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSegmentResponse",
-}) as any as S.Schema<DeleteSegmentResponse>;
+export const DeleteSegmentResponse = CreateActionResponse as any as S.Schema<DeleteSegmentResponse>;
 
 export interface DeleteSessionRequest {}
 export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9687,9 +9006,7 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSessionResponse",
-}) as any as S.Schema<DeleteSessionResponse>;
+export const DeleteSessionResponse = CreateActionResponse as any as S.Schema<DeleteSessionResponse>;
 
 export interface DeleteTimelineRequest {
   /** value must be an integer greater than zero. */
@@ -9702,9 +9019,8 @@ export const DeleteTimelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTimelineRequest" }) as any as S.Schema<DeleteTimelineRequest>;
 
 export interface DeleteTimelineResponse {}
-export const DeleteTimelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTimelineResponse",
-}) as any as S.Schema<DeleteTimelineResponse>;
+export const DeleteTimelineResponse =
+  CreateActionResponse as any as S.Schema<DeleteTimelineResponse>;
 
 export interface DeleteTimelineEventRequest {
   /** value must be an integer greater than zero. */
@@ -9719,9 +9035,8 @@ export const DeleteTimelineEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTimelineEventRequest>;
 
 export interface DeleteTimelineEventResponse {}
-export const DeleteTimelineEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTimelineEventResponse",
-}) as any as S.Schema<DeleteTimelineEventResponse>;
+export const DeleteTimelineEventResponse =
+  CreateActionResponse as any as S.Schema<DeleteTimelineEventResponse>;
 
 export interface DeleteTransformRequest {
   /** value must be an integer greater than zero. */
@@ -9734,9 +9049,8 @@ export const DeleteTransformRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTransformRequest" }) as any as S.Schema<DeleteTransformRequest>;
 
 export interface DeleteTransformResponse {}
-export const DeleteTransformResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTransformResponse",
-}) as any as S.Schema<DeleteTransformResponse>;
+export const DeleteTransformResponse =
+  CreateActionResponse as any as S.Schema<DeleteTransformResponse>;
 
 export interface DeleteTransformJobRequest {
   /** value must be an integer greater than zero. */
@@ -9751,9 +9065,8 @@ export const DeleteTransformJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTransformJobRequest>;
 
 export interface DeleteTransformJobResponse {}
-export const DeleteTransformJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTransformJobResponse",
-}) as any as S.Schema<DeleteTransformJobResponse>;
+export const DeleteTransformJobResponse =
+  CreateActionResponse as any as S.Schema<DeleteTransformJobResponse>;
 
 export interface DeleteTransformTableRequest {
   /** value must be an integer greater than zero. */
@@ -9768,9 +9081,8 @@ export const DeleteTransformTableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTransformTableRequest>;
 
 export interface DeleteTransformTableResponse {}
-export const DeleteTransformTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTransformTableResponse",
-}) as any as S.Schema<DeleteTransformTableResponse>;
+export const DeleteTransformTableResponse =
+  CreateActionResponse as any as S.Schema<DeleteTransformTableResponse>;
 
 export interface DeleteTransformTagRequest {
   /** value must be an integer greater than zero. */
@@ -9785,9 +9097,8 @@ export const DeleteTransformTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTransformTagRequest>;
 
 export interface DeleteTransformTagResponse {}
-export const DeleteTransformTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTransformTagResponse",
-}) as any as S.Schema<DeleteTransformTagResponse>;
+export const DeleteTransformTagResponse =
+  CreateActionResponse as any as S.Schema<DeleteTransformTagResponse>;
 
 export interface DeleteUserRequest {
   /** value must be an integer greater than zero. */
@@ -9800,9 +9111,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = CreateActionResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface DeleteUserKeyValueNamespaceKeyRequest {
   namespace: string;
@@ -9824,11 +9133,8 @@ export const DeleteUserKeyValueNamespaceKeyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteUserKeyValueNamespaceKeyRequest>;
 
 export interface DeleteUserKeyValueNamespaceKeyResponse {}
-export const DeleteUserKeyValueNamespaceKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserKeyValueNamespaceKeyResponse",
-}) as any as S.Schema<DeleteUserKeyValueNamespaceKeyResponse>;
+export const DeleteUserKeyValueNamespaceKeyResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteUserKeyValueNamespaceKeyResponse>;
 
 export interface GetActionRequest {
   model_id?: number;
@@ -9840,9 +9146,7 @@ export const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetActionRequest" }) as any as S.Schema<GetActionRequest>;
 
 export interface GetActionResponse {}
-export const GetActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetActionResponse",
-}) as any as S.Schema<GetActionResponse>;
+export const GetActionResponse = CreateActionResponse as any as S.Schema<GetActionResponse>;
 
 export interface GetAction2Request {}
 export const GetAction2Request = /*@__PURE__*/ S.suspend(() =>
@@ -9850,9 +9154,7 @@ export const GetAction2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAction2Request" }) as any as S.Schema<GetAction2Request>;
 
 export interface GetAction2Response {}
-export const GetAction2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAction2Response",
-}) as any as S.Schema<GetAction2Response>;
+export const GetAction2Response = CreateActionResponse as any as S.Schema<GetAction2Response>;
 
 export interface GetActionByActionIdRequest {
   /** value must be an integer greater than zero. */
@@ -9867,9 +9169,8 @@ export const GetActionByActionIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetActionByActionIdRequest>;
 
 export interface GetActionByActionIdResponse {}
-export const GetActionByActionIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetActionByActionIdResponse",
-}) as any as S.Schema<GetActionByActionIdResponse>;
+export const GetActionByActionIdResponse =
+  CreateActionResponse as any as S.Schema<GetActionByActionIdResponse>;
 
 export interface GetActionByUuidRequest {
   /** value must be a valid UUID. */
@@ -9882,16 +9183,13 @@ export const GetActionByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetActionByUuidRequest" }) as any as S.Schema<GetActionByUuidRequest>;
 
 export interface GetActionByUuidResponse {}
-export const GetActionByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetActionByUuidResponse",
-}) as any as S.Schema<GetActionByUuidResponse>;
+export const GetActionByUuidResponse =
+  CreateActionResponse as any as S.Schema<GetActionByUuidResponse>;
 
 /** value must be a JSON object mapping parameter ids to scalar values. */
 export type MetabaseActionsSchemaPrefetchParameterValues = { [key: string]: unknown | undefined };
-export const MetabaseActionsSchemaPrefetchParameterValues = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MetabaseActionsSchemaPrefetchParameterValues>;
+export const MetabaseActionsSchemaPrefetchParameterValues =
+  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseActionsSchemaPrefetchParameterValues>;
 
 export interface GetActionExecuteRequest {
   /** value must be an integer greater than zero. */
@@ -9906,9 +9204,8 @@ export const GetActionExecuteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetActionExecuteRequest" }) as any as S.Schema<GetActionExecuteRequest>;
 
 export interface GetActionExecuteResponse {}
-export const GetActionExecuteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetActionExecuteResponse",
-}) as any as S.Schema<GetActionExecuteResponse>;
+export const GetActionExecuteResponse =
+  CreateActionResponse as any as S.Schema<GetActionExecuteResponse>;
 
 export interface GetActivityMostRecentlyViewedDashboardRequest {}
 export const GetActivityMostRecentlyViewedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9920,11 +9217,8 @@ export const GetActivityMostRecentlyViewedDashboardRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetActivityMostRecentlyViewedDashboardRequest>;
 
 export interface GetActivityMostRecentlyViewedDashboardResponse {}
-export const GetActivityMostRecentlyViewedDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetActivityMostRecentlyViewedDashboardResponse",
-}) as any as S.Schema<GetActivityMostRecentlyViewedDashboardResponse>;
+export const GetActivityMostRecentlyViewedDashboardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetActivityMostRecentlyViewedDashboardResponse>;
 
 export interface GetActivityPopularItemsRequest {}
 export const GetActivityPopularItemsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9934,9 +9228,8 @@ export const GetActivityPopularItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetActivityPopularItemsRequest>;
 
 export interface GetActivityPopularItemsResponse {}
-export const GetActivityPopularItemsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetActivityPopularItemsResponse" },
-) as any as S.Schema<GetActivityPopularItemsResponse>;
+export const GetActivityPopularItemsResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetActivityPopularItemsResponse>;
 
 export type GetActivityRecentsRequestContextItem = "selections" | "views";
 export const GetActivityRecentsRequestContextItem = S.String;
@@ -9962,9 +9255,8 @@ export const GetActivityRecentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetActivityRecentsRequest>;
 
 export interface GetActivityRecentsResponse {}
-export const GetActivityRecentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetActivityRecentsResponse",
-}) as any as S.Schema<GetActivityRecentsResponse>;
+export const GetActivityRecentsResponse =
+  CreateActionResponse as any as S.Schema<GetActivityRecentsResponse>;
 
 export interface GetAgentPingRequest {}
 export const GetAgentPingRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9972,9 +9264,7 @@ export const GetAgentPingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAgentPingRequest" }) as any as S.Schema<GetAgentPingRequest>;
 
 export interface GetAgentPingResponse {}
-export const GetAgentPingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAgentPingResponse",
-}) as any as S.Schema<GetAgentPingResponse>;
+export const GetAgentPingResponse = CreateActionResponse as any as S.Schema<GetAgentPingResponse>;
 
 export interface GetAlertRequest {
   archived?: boolean;
@@ -9988,9 +9278,7 @@ export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAlertRequest" }) as any as S.Schema<GetAlertRequest>;
 
 export interface GetAlertResponse {}
-export const GetAlertResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAlertResponse",
-}) as any as S.Schema<GetAlertResponse>;
+export const GetAlertResponse = CreateActionResponse as any as S.Schema<GetAlertResponse>;
 
 export interface GetAlertByIdRequest {
   /** value must be an integer greater than zero. */
@@ -10003,9 +9291,7 @@ export const GetAlertByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAlertByIdRequest" }) as any as S.Schema<GetAlertByIdRequest>;
 
 export interface GetAlertByIdResponse {}
-export const GetAlertByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAlertByIdResponse",
-}) as any as S.Schema<GetAlertByIdResponse>;
+export const GetAlertByIdResponse = CreateActionResponse as any as S.Schema<GetAlertByIdResponse>;
 
 export interface GetAnalyticsAnonymousStatsRequest {}
 export const GetAnalyticsAnonymousStatsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10015,11 +9301,8 @@ export const GetAnalyticsAnonymousStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticsAnonymousStatsRequest>;
 
 export interface GetAnalyticsAnonymousStatsResponse {}
-export const GetAnalyticsAnonymousStatsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAnalyticsAnonymousStatsResponse",
-}) as any as S.Schema<GetAnalyticsAnonymousStatsResponse>;
+export const GetAnalyticsAnonymousStatsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAnalyticsAnonymousStatsResponse>;
 
 export type GetAutomagicDashboardRequestEntity =
   | "adhoc"
@@ -10057,9 +9340,8 @@ export const GetAutomagicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutomagicDashboardRequest>;
 
 export interface GetAutomagicDashboardResponse {}
-export const GetAutomagicDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAutomagicDashboardResponse",
-}) as any as S.Schema<GetAutomagicDashboardResponse>;
+export const GetAutomagicDashboardResponse =
+  CreateActionResponse as any as S.Schema<GetAutomagicDashboardResponse>;
 
 export type GetAutomagicDashboardCellRequestEntity =
   | "adhoc"
@@ -10105,11 +9387,8 @@ export const GetAutomagicDashboardCellRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutomagicDashboardCellRequest>;
 
 export interface GetAutomagicDashboardCellResponse {}
-export const GetAutomagicDashboardCellResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardCellResponse",
-}) as any as S.Schema<GetAutomagicDashboardCellResponse>;
+export const GetAutomagicDashboardCellResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCellResponse>;
 
 export type GetAutomagicDashboardCellCompareRequestEntity =
   | "adhoc"
@@ -10163,11 +9442,8 @@ export const GetAutomagicDashboardCellCompareRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetAutomagicDashboardCellCompareRequest>;
 
 export interface GetAutomagicDashboardCellCompareResponse {}
-export const GetAutomagicDashboardCellCompareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardCellCompareResponse",
-}) as any as S.Schema<GetAutomagicDashboardCellCompareResponse>;
+export const GetAutomagicDashboardCellCompareResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCellCompareResponse>;
 
 export type GetAutomagicDashboardCellRuleDashboardTemplateRequestEntity =
   | "adhoc"
@@ -10218,11 +9494,8 @@ export const GetAutomagicDashboardCellRuleDashboardTemplateRequest = /*@__PURE__
 }) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateRequest>;
 
 export interface GetAutomagicDashboardCellRuleDashboardTemplateResponse {}
-export const GetAutomagicDashboardCellRuleDashboardTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardCellRuleDashboardTemplateResponse",
-}) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateResponse>;
+export const GetAutomagicDashboardCellRuleDashboardTemplateResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateResponse>;
 
 export type GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestEntity =
   | "adhoc"
@@ -10348,11 +9621,8 @@ export const GetAutomagicDashboardCompareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutomagicDashboardCompareRequest>;
 
 export interface GetAutomagicDashboardCompareResponse {}
-export const GetAutomagicDashboardCompareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardCompareResponse",
-}) as any as S.Schema<GetAutomagicDashboardCompareResponse>;
+export const GetAutomagicDashboardCompareResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCompareResponse>;
 
 export type GetAutomagicDashboardEntityOrQueryQueryMetadataRequestEntity =
   | "adhoc"
@@ -10384,11 +9654,8 @@ export const GetAutomagicDashboardEntityOrQueryQueryMetadataRequest = /*@__PURE_
 }) as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataRequest>;
 
 export interface GetAutomagicDashboardEntityOrQueryQueryMetadataResponse {}
-export const GetAutomagicDashboardEntityOrQueryQueryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardEntityOrQueryQueryMetadataResponse",
-}) as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataResponse>;
+export const GetAutomagicDashboardEntityOrQueryQueryMetadataResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataResponse>;
 
 export type GetAutomagicDashboardRuleDashboardTemplateRequestEntity =
   | "adhoc"
@@ -10437,11 +9704,8 @@ export const GetAutomagicDashboardRuleDashboardTemplateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateRequest>;
 
 export interface GetAutomagicDashboardRuleDashboardTemplateResponse {}
-export const GetAutomagicDashboardRuleDashboardTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardRuleDashboardTemplateResponse",
-}) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateResponse>;
+export const GetAutomagicDashboardRuleDashboardTemplateResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateResponse>;
 
 export type GetAutomagicDashboardRuleDashboardTemplateCompareRequestEntity =
   | "adhoc"
@@ -10507,11 +9771,8 @@ export const GetAutomagicDashboardRuleDashboardTemplateCompareRequest = /*@__PUR
 }) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareRequest>;
 
 export interface GetAutomagicDashboardRuleDashboardTemplateCompareResponse {}
-export const GetAutomagicDashboardRuleDashboardTemplateCompareResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardRuleDashboardTemplateCompareResponse",
-}) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareResponse>;
+export const GetAutomagicDashboardRuleDashboardTemplateCompareResponse =
+  CreateCollectionRootMoveDashboardQuestionCandidateResponse as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareResponse>;
 
 export interface GetAutomagicDashboardsDatabaseCandidatesRequest {
   /** value must be an integer greater than zero. */
@@ -10528,11 +9789,8 @@ export const GetAutomagicDashboardsDatabaseCandidatesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesRequest>;
 
 export interface GetAutomagicDashboardsDatabaseCandidatesResponse {}
-export const GetAutomagicDashboardsDatabaseCandidatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardsDatabaseCandidatesResponse",
-}) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesResponse>;
+export const GetAutomagicDashboardsDatabaseCandidatesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesResponse>;
 
 export interface GetAutomagicDashboardsModelIndexPrimaryKeyRequest {
   model_index_id: number;
@@ -10554,11 +9812,8 @@ export const GetAutomagicDashboardsModelIndexPrimaryKeyRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyRequest>;
 
 export interface GetAutomagicDashboardsModelIndexPrimaryKeyResponse {}
-export const GetAutomagicDashboardsModelIndexPrimaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetAutomagicDashboardsModelIndexPrimaryKeyResponse",
-}) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyResponse>;
+export const GetAutomagicDashboardsModelIndexPrimaryKeyResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyResponse>;
 
 export interface GetBookmarkRequest {}
 export const GetBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10566,9 +9821,7 @@ export const GetBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBookmarkRequest" }) as any as S.Schema<GetBookmarkRequest>;
 
 export interface GetBookmarkResponse {}
-export const GetBookmarkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBookmarkResponse",
-}) as any as S.Schema<GetBookmarkResponse>;
+export const GetBookmarkResponse = CreateActionResponse as any as S.Schema<GetBookmarkResponse>;
 
 export interface GetBugReportingConnectionPoolDetailsRequest {}
 export const GetBugReportingConnectionPoolDetailsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10580,11 +9833,8 @@ export const GetBugReportingConnectionPoolDetailsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetBugReportingConnectionPoolDetailsRequest>;
 
 export interface GetBugReportingConnectionPoolDetailsResponse {}
-export const GetBugReportingConnectionPoolDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetBugReportingConnectionPoolDetailsResponse",
-}) as any as S.Schema<GetBugReportingConnectionPoolDetailsResponse>;
+export const GetBugReportingConnectionPoolDetailsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetBugReportingConnectionPoolDetailsResponse>;
 
 export interface GetBugReportingDetailsRequest {}
 export const GetBugReportingDetailsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10594,9 +9844,8 @@ export const GetBugReportingDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBugReportingDetailsRequest>;
 
 export interface GetBugReportingDetailsResponse {}
-export const GetBugReportingDetailsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBugReportingDetailsResponse",
-}) as any as S.Schema<GetBugReportingDetailsResponse>;
+export const GetBugReportingDetailsResponse =
+  CreateActionResponse as any as S.Schema<GetBugReportingDetailsResponse>;
 
 export type GetCacheRequestModelItem = "root" | "database" | "dashboard" | "question";
 export const GetCacheRequestModelItem = S.String;
@@ -10633,9 +9882,7 @@ export const GetCacheRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCacheRequest" }) as any as S.Schema<GetCacheRequest>;
 
 export interface GetCacheResponse {}
-export const GetCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCacheResponse",
-}) as any as S.Schema<GetCacheResponse>;
+export const GetCacheResponse = CreateActionResponse as any as S.Schema<GetCacheResponse>;
 
 export type GetCardRequestF =
   | "archived"
@@ -10660,9 +9907,7 @@ export const GetCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCardRequest" }) as any as S.Schema<GetCardRequest>;
 
 export interface GetCardResponse {}
-export const GetCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardResponse",
-}) as any as S.Schema<GetCardResponse>;
+export const GetCardResponse = CreateActionResponse as any as S.Schema<GetCardResponse>;
 
 export interface GetCard2Request {}
 export const GetCard2Request = /*@__PURE__*/ S.suspend(() =>
@@ -10670,9 +9915,7 @@ export const GetCard2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCard2Request" }) as any as S.Schema<GetCard2Request>;
 
 export interface GetCard2Response {}
-export const GetCard2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCard2Response",
-}) as any as S.Schema<GetCard2Response>;
+export const GetCard2Response = CreateActionResponse as any as S.Schema<GetCard2Response>;
 
 export interface GetCardByIdRequest {
   id: string;
@@ -10686,9 +9929,7 @@ export const GetCardByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCardByIdRequest" }) as any as S.Schema<GetCardByIdRequest>;
 
 export interface GetCardByIdResponse {}
-export const GetCardByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardByIdResponse",
-}) as any as S.Schema<GetCardByIdResponse>;
+export const GetCardByIdResponse = CreateActionResponse as any as S.Schema<GetCardByIdResponse>;
 
 export interface GetCardByUuidRequest {
   /** value must be a valid UUID. */
@@ -10701,9 +9942,7 @@ export const GetCardByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCardByUuidRequest" }) as any as S.Schema<GetCardByUuidRequest>;
 
 export interface GetCardByUuidResponse {}
-export const GetCardByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardByUuidResponse",
-}) as any as S.Schema<GetCardByUuidResponse>;
+export const GetCardByUuidResponse = CreateActionResponse as any as S.Schema<GetCardByUuidResponse>;
 
 export interface GetCardDashboardsRequest {
   /** value must be an integer greater than zero. */
@@ -10716,9 +9955,8 @@ export const GetCardDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCardDashboardsRequest" }) as any as S.Schema<GetCardDashboardsRequest>;
 
 export interface GetCardDashboardsResponse {}
-export const GetCardDashboardsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardDashboardsResponse",
-}) as any as S.Schema<GetCardDashboardsResponse>;
+export const GetCardDashboardsResponse =
+  CreateActionResponse as any as S.Schema<GetCardDashboardsResponse>;
 
 export interface GetCardEmbeddableRequest {}
 export const GetCardEmbeddableRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10726,9 +9964,8 @@ export const GetCardEmbeddableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCardEmbeddableRequest" }) as any as S.Schema<GetCardEmbeddableRequest>;
 
 export interface GetCardEmbeddableResponse {}
-export const GetCardEmbeddableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardEmbeddableResponse",
-}) as any as S.Schema<GetCardEmbeddableResponse>;
+export const GetCardEmbeddableResponse =
+  CreateActionResponse as any as S.Schema<GetCardEmbeddableResponse>;
 
 export interface GetCardParamRemappingRequest {
   id: number;
@@ -10746,9 +9983,8 @@ export const GetCardParamRemappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardParamRemappingRequest>;
 
 export interface GetCardParamRemappingResponse {}
-export const GetCardParamRemappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardParamRemappingResponse",
-}) as any as S.Schema<GetCardParamRemappingResponse>;
+export const GetCardParamRemappingResponse =
+  CreateActionResponse as any as S.Schema<GetCardParamRemappingResponse>;
 
 export interface GetCardParamRemappingRequest2 {
   /** value must be a valid UUID. */
@@ -10773,9 +10009,8 @@ export const GetCardParamRemappingRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardParamRemappingRequest2>;
 
 export interface GetCardParamRemapping2Response {}
-export const GetCardParamRemapping2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardParamRemapping2Response",
-}) as any as S.Schema<GetCardParamRemapping2Response>;
+export const GetCardParamRemapping2Response =
+  CreateActionResponse as any as S.Schema<GetCardParamRemapping2Response>;
 
 export interface GetCardParamSearchRequest {
   /** value must be an integer greater than zero. */
@@ -10800,9 +10035,8 @@ export const GetCardParamSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardParamSearchRequest>;
 
 export interface GetCardParamSearchResponse {}
-export const GetCardParamSearchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardParamSearchResponse",
-}) as any as S.Schema<GetCardParamSearchResponse>;
+export const GetCardParamSearchResponse =
+  CreateActionResponse as any as S.Schema<GetCardParamSearchResponse>;
 
 export interface GetCardParamSearchByQueryRequest {
   /** value must be a valid UUID. */
@@ -10827,11 +10061,8 @@ export const GetCardParamSearchByQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardParamSearchByQueryRequest>;
 
 export interface GetCardParamSearchByQueryResponse {}
-export const GetCardParamSearchByQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCardParamSearchByQueryResponse",
-}) as any as S.Schema<GetCardParamSearchByQueryResponse>;
+export const GetCardParamSearchByQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCardParamSearchByQueryResponse>;
 
 export interface GetCardParamValuesRequest {
   /** value must be an integer greater than zero. */
@@ -10850,9 +10081,8 @@ export const GetCardParamValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardParamValuesRequest>;
 
 export interface GetCardParamValuesResponse {}
-export const GetCardParamValuesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardParamValuesResponse",
-}) as any as S.Schema<GetCardParamValuesResponse>;
+export const GetCardParamValuesResponse =
+  CreateActionResponse as any as S.Schema<GetCardParamValuesResponse>;
 
 export interface GetCardParamValuesRequest2 {
   /** value must be a valid UUID. */
@@ -10871,9 +10101,8 @@ export const GetCardParamValuesRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardParamValuesRequest2>;
 
 export interface GetCardParamValues2Response {}
-export const GetCardParamValues2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardParamValues2Response",
-}) as any as S.Schema<GetCardParamValues2Response>;
+export const GetCardParamValues2Response =
+  CreateActionResponse as any as S.Schema<GetCardParamValues2Response>;
 
 export interface GetCardQueryRequest {
   /** value must be a valid UUID. */
@@ -10890,9 +10119,7 @@ export const GetCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCardQueryRequest" }) as any as S.Schema<GetCardQueryRequest>;
 
 export interface GetCardQueryResponse {}
-export const GetCardQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardQueryResponse",
-}) as any as S.Schema<GetCardQueryResponse>;
+export const GetCardQueryResponse = CreateActionResponse as any as S.Schema<GetCardQueryResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type GetCardQueryByExportFormatRequestExportFormat = "csv" | "api" | "xlsx" | "json";
@@ -10923,11 +10150,8 @@ export const GetCardQueryByExportFormatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardQueryByExportFormatRequest>;
 
 export interface GetCardQueryByExportFormatResponse {}
-export const GetCardQueryByExportFormatResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCardQueryByExportFormatResponse",
-}) as any as S.Schema<GetCardQueryByExportFormatResponse>;
+export const GetCardQueryByExportFormatResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCardQueryByExportFormatResponse>;
 
 export interface GetCardQueryMetadataRequest {
   id: string;
@@ -10941,9 +10165,8 @@ export const GetCardQueryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCardQueryMetadataRequest>;
 
 export interface GetCardQueryMetadataResponse {}
-export const GetCardQueryMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardQueryMetadataResponse",
-}) as any as S.Schema<GetCardQueryMetadataResponse>;
+export const GetCardQueryMetadataResponse =
+  CreateActionResponse as any as S.Schema<GetCardQueryMetadataResponse>;
 
 export interface GetCardSeriesRequest {
   id: number;
@@ -10961,9 +10184,7 @@ export const GetCardSeriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCardSeriesRequest" }) as any as S.Schema<GetCardSeriesRequest>;
 
 export interface GetCardSeriesResponse {}
-export const GetCardSeriesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCardSeriesResponse",
-}) as any as S.Schema<GetCardSeriesResponse>;
+export const GetCardSeriesResponse = CreateActionResponse as any as S.Schema<GetCardSeriesResponse>;
 
 export interface GetChannelRequest {
   include_inactive?: boolean | null;
@@ -10975,9 +10196,7 @@ export const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetChannelRequest" }) as any as S.Schema<GetChannelRequest>;
 
 export interface GetChannelResponse {}
-export const GetChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetChannelResponse",
-}) as any as S.Schema<GetChannelResponse>;
+export const GetChannelResponse = CreateActionResponse as any as S.Schema<GetChannelResponse>;
 
 export interface GetChannelByIdRequest {
   /** value must be an integer greater than zero. */
@@ -10990,9 +10209,8 @@ export const GetChannelByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetChannelByIdRequest" }) as any as S.Schema<GetChannelByIdRequest>;
 
 export interface GetChannelByIdResponse {}
-export const GetChannelByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetChannelByIdResponse",
-}) as any as S.Schema<GetChannelByIdResponse>;
+export const GetChannelByIdResponse =
+  CreateActionResponse as any as S.Schema<GetChannelByIdResponse>;
 
 export interface GetCloudMigrationRequest {}
 export const GetCloudMigrationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11000,9 +10218,8 @@ export const GetCloudMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCloudMigrationRequest" }) as any as S.Schema<GetCloudMigrationRequest>;
 
 export interface GetCloudMigrationResponse {}
-export const GetCloudMigrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCloudMigrationResponse",
-}) as any as S.Schema<GetCloudMigrationResponse>;
+export const GetCloudMigrationResponse =
+  CreateActionResponse as any as S.Schema<GetCloudMigrationResponse>;
 
 export interface GetCollectionRequest {
   archived?: boolean;
@@ -11022,9 +10239,7 @@ export const GetCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCollectionRequest" }) as any as S.Schema<GetCollectionRequest>;
 
 export interface GetCollectionResponse {}
-export const GetCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionResponse",
-}) as any as S.Schema<GetCollectionResponse>;
+export const GetCollectionResponse = CreateActionResponse as any as S.Schema<GetCollectionResponse>;
 
 export interface GetCollectionByIdRequest {
   id: string;
@@ -11036,9 +10251,8 @@ export const GetCollectionByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCollectionByIdRequest" }) as any as S.Schema<GetCollectionByIdRequest>;
 
 export interface GetCollectionByIdResponse {}
-export const GetCollectionByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionByIdResponse",
-}) as any as S.Schema<GetCollectionByIdResponse>;
+export const GetCollectionByIdResponse =
+  CreateActionResponse as any as S.Schema<GetCollectionByIdResponse>;
 
 export interface GetCollectionDashboardQuestionCandidatesRequest {
   /** value must be an integer greater than zero. */
@@ -11055,11 +10269,8 @@ export const GetCollectionDashboardQuestionCandidatesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetCollectionDashboardQuestionCandidatesRequest>;
 
 export interface GetCollectionDashboardQuestionCandidatesResponse {}
-export const GetCollectionDashboardQuestionCandidatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCollectionDashboardQuestionCandidatesResponse",
-}) as any as S.Schema<GetCollectionDashboardQuestionCandidatesResponse>;
+export const GetCollectionDashboardQuestionCandidatesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCollectionDashboardQuestionCandidatesResponse>;
 
 export interface GetCollectionGraphRequest {
   namespace?: string;
@@ -11073,9 +10284,8 @@ export const GetCollectionGraphRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionGraphRequest>;
 
 export interface GetCollectionGraphResponse {}
-export const GetCollectionGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionGraphResponse",
-}) as any as S.Schema<GetCollectionGraphResponse>;
+export const GetCollectionGraphResponse =
+  CreateActionResponse as any as S.Schema<GetCollectionGraphResponse>;
 
 export type GetCollectionItemsRequestModelsItem =
   | "dashboard"
@@ -11140,9 +10350,8 @@ export const GetCollectionItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionItemsRequest>;
 
 export interface GetCollectionItemsResponse {}
-export const GetCollectionItemsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionItemsResponse",
-}) as any as S.Schema<GetCollectionItemsResponse>;
+export const GetCollectionItemsResponse =
+  CreateActionResponse as any as S.Schema<GetCollectionItemsResponse>;
 
 export interface GetCollectionRootRequest {
   namespace?: string;
@@ -11154,9 +10363,8 @@ export const GetCollectionRootRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCollectionRootRequest" }) as any as S.Schema<GetCollectionRootRequest>;
 
 export interface GetCollectionRootResponse {}
-export const GetCollectionRootResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionRootResponse",
-}) as any as S.Schema<GetCollectionRootResponse>;
+export const GetCollectionRootResponse =
+  CreateActionResponse as any as S.Schema<GetCollectionRootResponse>;
 
 export interface GetCollectionRootDashboardQuestionCandidatesRequest {}
 export const GetCollectionRootDashboardQuestionCandidatesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11168,11 +10376,8 @@ export const GetCollectionRootDashboardQuestionCandidatesRequest = /*@__PURE__*/
 }) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesRequest>;
 
 export interface GetCollectionRootDashboardQuestionCandidatesResponse {}
-export const GetCollectionRootDashboardQuestionCandidatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCollectionRootDashboardQuestionCandidatesResponse",
-}) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesResponse>;
+export const GetCollectionRootDashboardQuestionCandidatesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesResponse>;
 
 export type GetCollectionRootItemsRequestModelsItem =
   | "dashboard"
@@ -11244,9 +10449,8 @@ export const GetCollectionRootItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionRootItemsRequest>;
 
 export interface GetCollectionRootItemsResponse {}
-export const GetCollectionRootItemsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionRootItemsResponse",
-}) as any as S.Schema<GetCollectionRootItemsResponse>;
+export const GetCollectionRootItemsResponse =
+  CreateActionResponse as any as S.Schema<GetCollectionRootItemsResponse>;
 
 export interface GetCollectionTrashRequest {}
 export const GetCollectionTrashRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11256,14 +10460,12 @@ export const GetCollectionTrashRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionTrashRequest>;
 
 export interface GetCollectionTrashResponse {}
-export const GetCollectionTrashResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionTrashResponse",
-}) as any as S.Schema<GetCollectionTrashResponse>;
+export const GetCollectionTrashResponse =
+  CreateActionResponse as any as S.Schema<GetCollectionTrashResponse>;
 
 export type GetCollectionTreeRequestNamespacesList = Array<string>;
-export const GetCollectionTreeRequestNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionTreeRequestNamespacesList>;
+export const GetCollectionTreeRequestNamespacesList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<GetCollectionTreeRequestNamespacesList>;
 
 export interface GetCollectionTreeRequest {
   exclude_archived?: boolean;
@@ -11289,9 +10491,8 @@ export const GetCollectionTreeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCollectionTreeRequest" }) as any as S.Schema<GetCollectionTreeRequest>;
 
 export interface GetCollectionTreeResponse {}
-export const GetCollectionTreeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCollectionTreeResponse",
-}) as any as S.Schema<GetCollectionTreeResponse>;
+export const GetCollectionTreeResponse =
+  CreateActionResponse as any as S.Schema<GetCollectionTreeResponse>;
 
 export type GetCommentRequestTargetType = "document";
 export const GetCommentRequestTargetType = S.String;
@@ -11309,9 +10510,7 @@ export const GetCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCommentRequest" }) as any as S.Schema<GetCommentRequest>;
 
 export interface GetCommentResponse {}
-export const GetCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCommentResponse",
-}) as any as S.Schema<GetCommentResponse>;
+export const GetCommentResponse = CreateActionResponse as any as S.Schema<GetCommentResponse>;
 
 export interface GetCommentMentionsRequest {}
 export const GetCommentMentionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11321,9 +10520,8 @@ export const GetCommentMentionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCommentMentionsRequest>;
 
 export interface GetCommentMentionsResponse {}
-export const GetCommentMentionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCommentMentionsResponse",
-}) as any as S.Schema<GetCommentMentionsResponse>;
+export const GetCommentMentionsResponse =
+  CreateActionResponse as any as S.Schema<GetCommentMentionsResponse>;
 
 export interface GetDashboardRequest {}
 export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11331,9 +10529,7 @@ export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDashboardRequest" }) as any as S.Schema<GetDashboardRequest>;
 
 export interface GetDashboardResponse {}
-export const GetDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDashboardResponse",
-}) as any as S.Schema<GetDashboardResponse>;
+export const GetDashboardResponse = CreateActionResponse as any as S.Schema<GetDashboardResponse>;
 
 export interface GetDashboardByIdRequest {
   id: string;
@@ -11347,9 +10543,8 @@ export const GetDashboardByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDashboardByIdRequest" }) as any as S.Schema<GetDashboardByIdRequest>;
 
 export interface GetDashboardByIdResponse {}
-export const GetDashboardByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDashboardByIdResponse",
-}) as any as S.Schema<GetDashboardByIdResponse>;
+export const GetDashboardByIdResponse =
+  CreateActionResponse as any as S.Schema<GetDashboardByIdResponse>;
 
 export interface GetDashboardByUuidRequest {
   /** value must be a valid UUID. */
@@ -11366,9 +10561,8 @@ export const GetDashboardByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardByUuidRequest>;
 
 export interface GetDashboardByUuidResponse {}
-export const GetDashboardByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDashboardByUuidResponse",
-}) as any as S.Schema<GetDashboardByUuidResponse>;
+export const GetDashboardByUuidResponse =
+  CreateActionResponse as any as S.Schema<GetDashboardByUuidResponse>;
 
 export interface GetDashboardDashcardCardRequest {
   /** value must be a valid UUID. */
@@ -11399,11 +10593,8 @@ export const GetDashboardDashcardCardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardDashcardCardRequest>;
 
 export interface GetDashboardDashcardCardResponse {}
-export const GetDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardDashcardCardResponse",
-}) as any as S.Schema<GetDashboardDashcardCardResponse>;
+export const GetDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardDashcardCardResponse>;
 
 export interface GetDashboardDashcardExecuteRequest {
   /** value must be an integer greater than zero. */
@@ -11429,11 +10620,8 @@ export const GetDashboardDashcardExecuteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardDashcardExecuteRequest>;
 
 export interface GetDashboardDashcardExecuteResponse {}
-export const GetDashboardDashcardExecuteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardDashcardExecuteResponse",
-}) as any as S.Schema<GetDashboardDashcardExecuteResponse>;
+export const GetDashboardDashcardExecuteResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardDashcardExecuteResponse>;
 
 export interface GetDashboardDashcardExecuteRequest2 {
   /** value must be a valid UUID. */
@@ -11459,11 +10647,8 @@ export const GetDashboardDashcardExecuteRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardDashcardExecuteRequest2>;
 
 export interface GetDashboardDashcardExecute2Response {}
-export const GetDashboardDashcardExecute2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardDashcardExecute2Response",
-}) as any as S.Schema<GetDashboardDashcardExecute2Response>;
+export const GetDashboardDashcardExecute2Response =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardDashcardExecute2Response>;
 
 export interface GetDashboardEmbeddableRequest {}
 export const GetDashboardEmbeddableRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11473,9 +10658,8 @@ export const GetDashboardEmbeddableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardEmbeddableRequest>;
 
 export interface GetDashboardEmbeddableResponse {}
-export const GetDashboardEmbeddableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDashboardEmbeddableResponse",
-}) as any as S.Schema<GetDashboardEmbeddableResponse>;
+export const GetDashboardEmbeddableResponse =
+  CreateActionResponse as any as S.Schema<GetDashboardEmbeddableResponse>;
 
 export interface GetDashboardItemsRequest {
   /** value must be an integer greater than zero. */
@@ -11488,9 +10672,8 @@ export const GetDashboardItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDashboardItemsRequest" }) as any as S.Schema<GetDashboardItemsRequest>;
 
 export interface GetDashboardItemsResponse {}
-export const GetDashboardItemsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDashboardItemsResponse",
-}) as any as S.Schema<GetDashboardItemsResponse>;
+export const GetDashboardItemsResponse =
+  CreateActionResponse as any as S.Schema<GetDashboardItemsResponse>;
 
 export interface GetDashboardParamRemappingRequest {
   /** value must be an integer greater than zero. */
@@ -11511,11 +10694,8 @@ export const GetDashboardParamRemappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardParamRemappingRequest>;
 
 export interface GetDashboardParamRemappingResponse {}
-export const GetDashboardParamRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardParamRemappingResponse",
-}) as any as S.Schema<GetDashboardParamRemappingResponse>;
+export const GetDashboardParamRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamRemappingResponse>;
 
 export interface GetDashboardParamRemappingRequest2 {
   /** value must be a valid UUID. */
@@ -11540,11 +10720,8 @@ export const GetDashboardParamRemappingRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardParamRemappingRequest2>;
 
 export interface GetDashboardParamRemapping2Response {}
-export const GetDashboardParamRemapping2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardParamRemapping2Response",
-}) as any as S.Schema<GetDashboardParamRemapping2Response>;
+export const GetDashboardParamRemapping2Response =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamRemapping2Response>;
 
 export interface GetDashboardParamSearchRequest {
   /** value must be an integer greater than zero. */
@@ -11569,9 +10746,8 @@ export const GetDashboardParamSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardParamSearchRequest>;
 
 export interface GetDashboardParamSearchResponse {}
-export const GetDashboardParamSearchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetDashboardParamSearchResponse" },
-) as any as S.Schema<GetDashboardParamSearchResponse>;
+export const GetDashboardParamSearchResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetDashboardParamSearchResponse>;
 
 export interface GetDashboardParamSearchByQueryRequest {
   /** value must be a valid UUID. */
@@ -11596,21 +10772,16 @@ export const GetDashboardParamSearchByQueryRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetDashboardParamSearchByQueryRequest>;
 
 export interface GetDashboardParamSearchByQueryResponse {}
-export const GetDashboardParamSearchByQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardParamSearchByQueryResponse",
-}) as any as S.Schema<GetDashboardParamSearchByQueryResponse>;
+export const GetDashboardParamSearchByQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamSearchByQueryResponse>;
 
 export type GetDashboardParamsValidFilterFieldsRequestFilteredList = Array<number>;
-export const GetDashboardParamsValidFilterFieldsRequestFilteredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetDashboardParamsValidFilterFieldsRequestFilteredList>;
+export const GetDashboardParamsValidFilterFieldsRequestFilteredList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetDashboardParamsValidFilterFieldsRequestFilteredList>;
 
 export type GetDashboardParamsValidFilterFieldsRequestFilteringList = Array<number>;
-export const GetDashboardParamsValidFilterFieldsRequestFilteringList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetDashboardParamsValidFilterFieldsRequestFilteringList>;
+export const GetDashboardParamsValidFilterFieldsRequestFilteringList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetDashboardParamsValidFilterFieldsRequestFilteringList>;
 
 export interface GetDashboardParamsValidFilterFieldsRequest {
   filtered: GetDashboardParamsValidFilterFieldsRequestFilteredList;
@@ -11626,11 +10797,8 @@ export const GetDashboardParamsValidFilterFieldsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetDashboardParamsValidFilterFieldsRequest>;
 
 export interface GetDashboardParamsValidFilterFieldsResponse {}
-export const GetDashboardParamsValidFilterFieldsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardParamsValidFilterFieldsResponse",
-}) as any as S.Schema<GetDashboardParamsValidFilterFieldsResponse>;
+export const GetDashboardParamsValidFilterFieldsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamsValidFilterFieldsResponse>;
 
 export interface GetDashboardParamValuesRequest {
   /** value must be an integer greater than zero. */
@@ -11649,9 +10817,8 @@ export const GetDashboardParamValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardParamValuesRequest>;
 
 export interface GetDashboardParamValuesResponse {}
-export const GetDashboardParamValuesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetDashboardParamValuesResponse" },
-) as any as S.Schema<GetDashboardParamValuesResponse>;
+export const GetDashboardParamValuesResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetDashboardParamValuesResponse>;
 
 export interface GetDashboardParamValuesRequest2 {
   /** value must be a valid UUID. */
@@ -11674,11 +10841,8 @@ export const GetDashboardParamValuesRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardParamValuesRequest2>;
 
 export interface GetDashboardParamValues2Response {}
-export const GetDashboardParamValues2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardParamValues2Response",
-}) as any as S.Schema<GetDashboardParamValues2Response>;
+export const GetDashboardParamValues2Response =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamValues2Response>;
 
 export interface GetDashboardQueryMetadataRequest {
   id: string;
@@ -11694,11 +10858,8 @@ export const GetDashboardQueryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardQueryMetadataRequest>;
 
 export interface GetDashboardQueryMetadataResponse {}
-export const GetDashboardQueryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDashboardQueryMetadataResponse",
-}) as any as S.Schema<GetDashboardQueryMetadataResponse>;
+export const GetDashboardQueryMetadataResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardQueryMetadataResponse>;
 
 export interface GetDashboardRelatedRequest {
   /** value must be an integer greater than zero. */
@@ -11713,9 +10874,8 @@ export const GetDashboardRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardRelatedRequest>;
 
 export interface GetDashboardRelatedResponse {}
-export const GetDashboardRelatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDashboardRelatedResponse",
-}) as any as S.Schema<GetDashboardRelatedResponse>;
+export const GetDashboardRelatedResponse =
+  CreateActionResponse as any as S.Schema<GetDashboardRelatedResponse>;
 
 export type GetDatabaseRequestInclude = "tables" | "schemas";
 export const GetDatabaseRequestInclude = S.String;
@@ -11747,9 +10907,7 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseRequest" }) as any as S.Schema<GetDatabaseRequest>;
 
 export interface GetDatabaseResponse {}
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseResponse",
-}) as any as S.Schema<GetDatabaseResponse>;
+export const GetDatabaseResponse = CreateActionResponse as any as S.Schema<GetDatabaseResponse>;
 
 export interface GetDatabaseAutocompleteSuggestionsRequest {
   /** value must be an integer greater than zero. */
@@ -11768,11 +10926,8 @@ export const GetDatabaseAutocompleteSuggestionsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetDatabaseAutocompleteSuggestionsRequest>;
 
 export interface GetDatabaseAutocompleteSuggestionsResponse {}
-export const GetDatabaseAutocompleteSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDatabaseAutocompleteSuggestionsResponse",
-}) as any as S.Schema<GetDatabaseAutocompleteSuggestionsResponse>;
+export const GetDatabaseAutocompleteSuggestionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseAutocompleteSuggestionsResponse>;
 
 export type GetDatabaseByIdRequestInclude = "tables" | "tables.fields";
 export const GetDatabaseByIdRequestInclude = S.String;
@@ -11794,9 +10949,8 @@ export const GetDatabaseByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseByIdRequest" }) as any as S.Schema<GetDatabaseByIdRequest>;
 
 export interface GetDatabaseByIdResponse {}
-export const GetDatabaseByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseByIdResponse",
-}) as any as S.Schema<GetDatabaseByIdResponse>;
+export const GetDatabaseByIdResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseByIdResponse>;
 
 export interface GetDatabaseCardAutocompleteSuggestionsRequest {
   /** value must be an integer greater than zero. */
@@ -11817,11 +10971,8 @@ export const GetDatabaseCardAutocompleteSuggestionsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsRequest>;
 
 export interface GetDatabaseCardAutocompleteSuggestionsResponse {}
-export const GetDatabaseCardAutocompleteSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDatabaseCardAutocompleteSuggestionsResponse",
-}) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsResponse>;
+export const GetDatabaseCardAutocompleteSuggestionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsResponse>;
 
 export interface GetDatabaseDatasetRequest {
   virtual_db: string;
@@ -11839,9 +10990,8 @@ export const GetDatabaseDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseDatasetRequest>;
 
 export interface GetDatabaseDatasetResponse {}
-export const GetDatabaseDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseDatasetResponse",
-}) as any as S.Schema<GetDatabaseDatasetResponse>;
+export const GetDatabaseDatasetResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseDatasetResponse>;
 
 export interface GetDatabaseDatasetsRequest {
   virtual_db: string;
@@ -11855,9 +11005,8 @@ export const GetDatabaseDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseDatasetsRequest>;
 
 export interface GetDatabaseDatasetsResponse {}
-export const GetDatabaseDatasetsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseDatasetsResponse",
-}) as any as S.Schema<GetDatabaseDatasetsResponse>;
+export const GetDatabaseDatasetsResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseDatasetsResponse>;
 
 export interface GetDatabaseFieldsRequest {
   /** value must be an integer greater than zero. */
@@ -11870,9 +11019,8 @@ export const GetDatabaseFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseFieldsRequest" }) as any as S.Schema<GetDatabaseFieldsRequest>;
 
 export interface GetDatabaseFieldsResponse {}
-export const GetDatabaseFieldsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseFieldsResponse",
-}) as any as S.Schema<GetDatabaseFieldsResponse>;
+export const GetDatabaseFieldsResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseFieldsResponse>;
 
 export type MetabaseDriverConnectionConnectionType =
   | "default"
@@ -11898,9 +11046,8 @@ export const GetDatabaseHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseHealthcheckRequest>;
 
 export interface GetDatabaseHealthcheckResponse {}
-export const GetDatabaseHealthcheckResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseHealthcheckResponse",
-}) as any as S.Schema<GetDatabaseHealthcheckResponse>;
+export const GetDatabaseHealthcheckResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseHealthcheckResponse>;
 
 export interface GetDatabaseIdfieldsRequest {
   /** value must be an integer greater than zero. */
@@ -11917,9 +11064,8 @@ export const GetDatabaseIdfieldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseIdfieldsRequest>;
 
 export interface GetDatabaseIdfieldsResponse {}
-export const GetDatabaseIdfieldsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseIdfieldsResponse",
-}) as any as S.Schema<GetDatabaseIdfieldsResponse>;
+export const GetDatabaseIdfieldsResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseIdfieldsResponse>;
 
 export interface GetDatabaseMetadataRequest {
   /** value must be an integer greater than zero. */
@@ -11942,9 +11088,8 @@ export const GetDatabaseMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseMetadataRequest>;
 
 export interface GetDatabaseMetadataResponse {}
-export const GetDatabaseMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseMetadataResponse",
-}) as any as S.Schema<GetDatabaseMetadataResponse>;
+export const GetDatabaseMetadataResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseMetadataResponse>;
 
 export interface GetDatabaseMetadataRequest2 {
   virtual_db: string;
@@ -11958,9 +11103,8 @@ export const GetDatabaseMetadataRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseMetadataRequest2>;
 
 export interface GetDatabaseMetadata2Response {}
-export const GetDatabaseMetadata2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseMetadata2Response",
-}) as any as S.Schema<GetDatabaseMetadata2Response>;
+export const GetDatabaseMetadata2Response =
+  CreateActionResponse as any as S.Schema<GetDatabaseMetadata2Response>;
 
 export interface GetDatabaseSchemaRequest {
   /** value must be an integer greater than zero. */
@@ -11985,9 +11129,8 @@ export const GetDatabaseSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseSchemaRequest" }) as any as S.Schema<GetDatabaseSchemaRequest>;
 
 export interface GetDatabaseSchemaResponse {}
-export const GetDatabaseSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseSchemaResponse",
-}) as any as S.Schema<GetDatabaseSchemaResponse>;
+export const GetDatabaseSchemaResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseSchemaResponse>;
 
 export interface GetDatabaseSchemaBySchemaRequest {
   /** value must be an integer greater than zero. */
@@ -12014,11 +11157,8 @@ export const GetDatabaseSchemaBySchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseSchemaBySchemaRequest>;
 
 export interface GetDatabaseSchemaBySchemaResponse {}
-export const GetDatabaseSchemaBySchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDatabaseSchemaBySchemaResponse",
-}) as any as S.Schema<GetDatabaseSchemaBySchemaResponse>;
+export const GetDatabaseSchemaBySchemaResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSchemaBySchemaResponse>;
 
 export interface GetDatabaseSchemaBySchemaRequest2 {
   virtual_db: string;
@@ -12034,11 +11174,8 @@ export const GetDatabaseSchemaBySchemaRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseSchemaBySchemaRequest2>;
 
 export interface GetDatabaseSchemaBySchema2Response {}
-export const GetDatabaseSchemaBySchema2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDatabaseSchemaBySchema2Response",
-}) as any as S.Schema<GetDatabaseSchemaBySchema2Response>;
+export const GetDatabaseSchemaBySchema2Response =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSchemaBySchema2Response>;
 
 export interface GetDatabaseSchemasRequest {
   /** value must be an integer greater than zero. */
@@ -12061,9 +11198,8 @@ export const GetDatabaseSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseSchemasRequest>;
 
 export interface GetDatabaseSchemasResponse {}
-export const GetDatabaseSchemasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseSchemasResponse",
-}) as any as S.Schema<GetDatabaseSchemasResponse>;
+export const GetDatabaseSchemasResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseSchemasResponse>;
 
 export interface GetDatabaseSchemasRequest2 {
   virtual_db: string;
@@ -12077,9 +11213,8 @@ export const GetDatabaseSchemasRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseSchemasRequest2>;
 
 export interface GetDatabaseSchemas2Response {}
-export const GetDatabaseSchemas2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseSchemas2Response",
-}) as any as S.Schema<GetDatabaseSchemas2Response>;
+export const GetDatabaseSchemas2Response =
+  CreateActionResponse as any as S.Schema<GetDatabaseSchemas2Response>;
 
 export interface GetDatabaseSettingsAvailableRequest {
   /** value must be an integer greater than zero. */
@@ -12094,11 +11229,8 @@ export const GetDatabaseSettingsAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseSettingsAvailableRequest>;
 
 export interface GetDatabaseSettingsAvailableResponse {}
-export const GetDatabaseSettingsAvailableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDatabaseSettingsAvailableResponse",
-}) as any as S.Schema<GetDatabaseSettingsAvailableResponse>;
+export const GetDatabaseSettingsAvailableResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSettingsAvailableResponse>;
 
 export interface GetDatabaseSyncableSchemasRequest {
   /** value must be an integer greater than zero. */
@@ -12113,11 +11245,8 @@ export const GetDatabaseSyncableSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseSyncableSchemasRequest>;
 
 export interface GetDatabaseSyncableSchemasResponse {}
-export const GetDatabaseSyncableSchemasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDatabaseSyncableSchemasResponse",
-}) as any as S.Schema<GetDatabaseSyncableSchemasResponse>;
+export const GetDatabaseSyncableSchemasResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSyncableSchemasResponse>;
 
 export interface GetDatabaseUsageInfoRequest {
   /** value must be an integer greater than zero. */
@@ -12132,9 +11261,8 @@ export const GetDatabaseUsageInfoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseUsageInfoRequest>;
 
 export interface GetDatabaseUsageInfoResponse {}
-export const GetDatabaseUsageInfoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDatabaseUsageInfoResponse",
-}) as any as S.Schema<GetDatabaseUsageInfoResponse>;
+export const GetDatabaseUsageInfoResponse =
+  CreateActionResponse as any as S.Schema<GetDatabaseUsageInfoResponse>;
 
 export interface GetDocumentRequest {}
 export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12142,9 +11270,7 @@ export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDocumentRequest" }) as any as S.Schema<GetDocumentRequest>;
 
 export interface GetDocumentResponse {}
-export const GetDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDocumentResponse",
-}) as any as S.Schema<GetDocumentResponse>;
+export const GetDocumentResponse = CreateActionResponse as any as S.Schema<GetDocumentResponse>;
 
 export interface GetDocument2Request {}
 export const GetDocument2Request = /*@__PURE__*/ S.suspend(() =>
@@ -12152,9 +11278,7 @@ export const GetDocument2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDocument2Request" }) as any as S.Schema<GetDocument2Request>;
 
 export interface GetDocument2Response {}
-export const GetDocument2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDocument2Response",
-}) as any as S.Schema<GetDocument2Response>;
+export const GetDocument2Response = CreateActionResponse as any as S.Schema<GetDocument2Response>;
 
 export interface GetDocumentByDocumentIdRequest {
   /** value must be an integer greater than zero. */
@@ -12169,9 +11293,8 @@ export const GetDocumentByDocumentIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDocumentByDocumentIdRequest>;
 
 export interface GetDocumentByDocumentIdResponse {}
-export const GetDocumentByDocumentIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetDocumentByDocumentIdResponse" },
-) as any as S.Schema<GetDocumentByDocumentIdResponse>;
+export const GetDocumentByDocumentIdResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetDocumentByDocumentIdResponse>;
 
 export interface GetDocumentByUuidRequest {
   /** value must be a valid UUID. */
@@ -12184,9 +11307,8 @@ export const GetDocumentByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDocumentByUuidRequest" }) as any as S.Schema<GetDocumentByUuidRequest>;
 
 export interface GetDocumentByUuidResponse {}
-export const GetDocumentByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDocumentByUuidResponse",
-}) as any as S.Schema<GetDocumentByUuidResponse>;
+export const GetDocumentByUuidResponse =
+  CreateActionResponse as any as S.Schema<GetDocumentByUuidResponse>;
 
 export interface GetDocumentCardRequest {
   /** value must be a valid UUID. */
@@ -12204,9 +11326,8 @@ export const GetDocumentCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDocumentCardRequest" }) as any as S.Schema<GetDocumentCardRequest>;
 
 export interface GetDocumentCardResponse {}
-export const GetDocumentCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDocumentCardResponse",
-}) as any as S.Schema<GetDocumentCardResponse>;
+export const GetDocumentCardResponse =
+  CreateActionResponse as any as S.Schema<GetDocumentCardResponse>;
 
 export interface GetEeAdvancedPermissionsApplicationGraphRequest {}
 export const GetEeAdvancedPermissionsApplicationGraphRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12218,11 +11339,8 @@ export const GetEeAdvancedPermissionsApplicationGraphRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphRequest>;
 
 export interface GetEeAdvancedPermissionsApplicationGraphResponse {}
-export const GetEeAdvancedPermissionsApplicationGraphResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAdvancedPermissionsApplicationGraphResponse",
-}) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphResponse>;
+export const GetEeAdvancedPermissionsApplicationGraphResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphResponse>;
 
 export interface GetEeAdvancedPermissionsImpersonationRequest {
   group_id?: number;
@@ -12238,11 +11356,8 @@ export const GetEeAdvancedPermissionsImpersonationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetEeAdvancedPermissionsImpersonationRequest>;
 
 export interface GetEeAdvancedPermissionsImpersonationResponse {}
-export const GetEeAdvancedPermissionsImpersonationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAdvancedPermissionsImpersonationResponse",
-}) as any as S.Schema<GetEeAdvancedPermissionsImpersonationResponse>;
+export const GetEeAdvancedPermissionsImpersonationResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAdvancedPermissionsImpersonationResponse>;
 
 export interface GetEeAiControlsPermissionsRequest {}
 export const GetEeAiControlsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12252,11 +11367,8 @@ export const GetEeAiControlsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeAiControlsPermissionsRequest>;
 
 export interface GetEeAiControlsPermissionsResponse {}
-export const GetEeAiControlsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAiControlsPermissionsResponse",
-}) as any as S.Schema<GetEeAiControlsPermissionsResponse>;
+export const GetEeAiControlsPermissionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsPermissionsResponse>;
 
 export interface GetEeAiControlsUsageGroupRequest {}
 export const GetEeAiControlsUsageGroupRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12266,11 +11378,8 @@ export const GetEeAiControlsUsageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeAiControlsUsageGroupRequest>;
 
 export interface GetEeAiControlsUsageGroupResponse {}
-export const GetEeAiControlsUsageGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAiControlsUsageGroupResponse",
-}) as any as S.Schema<GetEeAiControlsUsageGroupResponse>;
+export const GetEeAiControlsUsageGroupResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageGroupResponse>;
 
 export interface GetEeAiControlsUsageGroupByGroupIdRequest {
   group_id: number;
@@ -12284,11 +11393,8 @@ export const GetEeAiControlsUsageGroupByGroupIdRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdRequest>;
 
 export interface GetEeAiControlsUsageGroupByGroupIdResponse {}
-export const GetEeAiControlsUsageGroupByGroupIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAiControlsUsageGroupByGroupIdResponse",
-}) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdResponse>;
+export const GetEeAiControlsUsageGroupByGroupIdResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdResponse>;
 
 export interface GetEeAiControlsUsageInstanceRequest {}
 export const GetEeAiControlsUsageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12300,11 +11406,8 @@ export const GetEeAiControlsUsageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeAiControlsUsageInstanceRequest>;
 
 export interface GetEeAiControlsUsageInstanceResponse {}
-export const GetEeAiControlsUsageInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAiControlsUsageInstanceResponse",
-}) as any as S.Schema<GetEeAiControlsUsageInstanceResponse>;
+export const GetEeAiControlsUsageInstanceResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageInstanceResponse>;
 
 export interface GetEeAiControlsUsageTenantRequest {}
 export const GetEeAiControlsUsageTenantRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12314,11 +11417,8 @@ export const GetEeAiControlsUsageTenantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeAiControlsUsageTenantRequest>;
 
 export interface GetEeAiControlsUsageTenantResponse {}
-export const GetEeAiControlsUsageTenantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAiControlsUsageTenantResponse",
-}) as any as S.Schema<GetEeAiControlsUsageTenantResponse>;
+export const GetEeAiControlsUsageTenantResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageTenantResponse>;
 
 export interface GetEeAiControlsUsageTenantByTenantIdRequest {
   tenant_id: number;
@@ -12334,11 +11434,8 @@ export const GetEeAiControlsUsageTenantByTenantIdRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdRequest>;
 
 export interface GetEeAiControlsUsageTenantByTenantIdResponse {}
-export const GetEeAiControlsUsageTenantByTenantIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAiControlsUsageTenantByTenantIdResponse",
-}) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdResponse>;
+export const GetEeAiControlsUsageTenantByTenantIdResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdResponse>;
 
 export interface GetEeAuditAppUserAuditInfoRequest {}
 export const GetEeAuditAppUserAuditInfoRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12348,11 +11445,8 @@ export const GetEeAuditAppUserAuditInfoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeAuditAppUserAuditInfoRequest>;
 
 export interface GetEeAuditAppUserAuditInfoResponse {}
-export const GetEeAuditAppUserAuditInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeAuditAppUserAuditInfoResponse",
-}) as any as S.Schema<GetEeAuditAppUserAuditInfoResponse>;
+export const GetEeAuditAppUserAuditInfoResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAuditAppUserAuditInfoResponse>;
 
 export interface GetEeBillingRequest {}
 export const GetEeBillingRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12360,9 +11454,7 @@ export const GetEeBillingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeBillingRequest" }) as any as S.Schema<GetEeBillingRequest>;
 
 export interface GetEeBillingResponse {}
-export const GetEeBillingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeBillingResponse",
-}) as any as S.Schema<GetEeBillingResponse>;
+export const GetEeBillingResponse = CreateActionResponse as any as S.Schema<GetEeBillingResponse>;
 
 export interface GetEeCloudAddOnsAddonsRequest {}
 export const GetEeCloudAddOnsAddonsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12372,9 +11464,8 @@ export const GetEeCloudAddOnsAddonsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeCloudAddOnsAddonsRequest>;
 
 export interface GetEeCloudAddOnsAddonsResponse {}
-export const GetEeCloudAddOnsAddonsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeCloudAddOnsAddonsResponse",
-}) as any as S.Schema<GetEeCloudAddOnsAddonsResponse>;
+export const GetEeCloudAddOnsAddonsResponse =
+  CreateActionResponse as any as S.Schema<GetEeCloudAddOnsAddonsResponse>;
 
 export interface GetEeCloudAddOnsPlansRequest {}
 export const GetEeCloudAddOnsPlansRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12384,9 +11475,8 @@ export const GetEeCloudAddOnsPlansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeCloudAddOnsPlansRequest>;
 
 export interface GetEeCloudAddOnsPlansResponse {}
-export const GetEeCloudAddOnsPlansResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeCloudAddOnsPlansResponse",
-}) as any as S.Schema<GetEeCloudAddOnsPlansResponse>;
+export const GetEeCloudAddOnsPlansResponse =
+  CreateActionResponse as any as S.Schema<GetEeCloudAddOnsPlansResponse>;
 
 export interface GetEeContentTranslationCsvRequest {}
 export const GetEeContentTranslationCsvRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12396,11 +11486,8 @@ export const GetEeContentTranslationCsvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeContentTranslationCsvRequest>;
 
 export interface GetEeContentTranslationCsvResponse {}
-export const GetEeContentTranslationCsvResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeContentTranslationCsvResponse",
-}) as any as S.Schema<GetEeContentTranslationCsvResponse>;
+export const GetEeContentTranslationCsvResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeContentTranslationCsvResponse>;
 
 export interface GetEeContentTranslationDictionaryRequest {
   locale: string;
@@ -12414,11 +11501,8 @@ export const GetEeContentTranslationDictionaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetEeContentTranslationDictionaryRequest>;
 
 export interface GetEeContentTranslationDictionaryResponse {}
-export const GetEeContentTranslationDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeContentTranslationDictionaryResponse",
-}) as any as S.Schema<GetEeContentTranslationDictionaryResponse>;
+export const GetEeContentTranslationDictionaryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeContentTranslationDictionaryResponse>;
 
 export interface GetEeContentTranslationDictionaryByTokenRequest {
   token: string;
@@ -12436,11 +11520,8 @@ export const GetEeContentTranslationDictionaryByTokenRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetEeContentTranslationDictionaryByTokenRequest>;
 
 export interface GetEeContentTranslationDictionaryByTokenResponse {}
-export const GetEeContentTranslationDictionaryByTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeContentTranslationDictionaryByTokenResponse",
-}) as any as S.Schema<GetEeContentTranslationDictionaryByTokenResponse>;
+export const GetEeContentTranslationDictionaryByTokenResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeContentTranslationDictionaryByTokenResponse>;
 
 export interface GetEeCustomVizPluginRequest {}
 export const GetEeCustomVizPluginRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12450,9 +11531,8 @@ export const GetEeCustomVizPluginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeCustomVizPluginRequest>;
 
 export interface GetEeCustomVizPluginResponse {}
-export const GetEeCustomVizPluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeCustomVizPluginResponse",
-}) as any as S.Schema<GetEeCustomVizPluginResponse>;
+export const GetEeCustomVizPluginResponse =
+  CreateActionResponse as any as S.Schema<GetEeCustomVizPluginResponse>;
 
 export interface GetEeCustomVizPluginAssetRequest {
   /** value must be an integer greater than zero. */
@@ -12469,11 +11549,8 @@ export const GetEeCustomVizPluginAssetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeCustomVizPluginAssetRequest>;
 
 export interface GetEeCustomVizPluginAssetResponse {}
-export const GetEeCustomVizPluginAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeCustomVizPluginAssetResponse",
-}) as any as S.Schema<GetEeCustomVizPluginAssetResponse>;
+export const GetEeCustomVizPluginAssetResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginAssetResponse>;
 
 export interface GetEeCustomVizPluginBundleRequest {
   /** value must be an integer greater than zero. */
@@ -12488,11 +11565,8 @@ export const GetEeCustomVizPluginBundleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeCustomVizPluginBundleRequest>;
 
 export interface GetEeCustomVizPluginBundleResponse {}
-export const GetEeCustomVizPluginBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeCustomVizPluginBundleResponse",
-}) as any as S.Schema<GetEeCustomVizPluginBundleResponse>;
+export const GetEeCustomVizPluginBundleResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginBundleResponse>;
 
 export interface GetEeCustomVizPluginDevSseRequest {
   /** value must be an integer greater than zero. */
@@ -12507,11 +11581,8 @@ export const GetEeCustomVizPluginDevSseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeCustomVizPluginDevSseRequest>;
 
 export interface GetEeCustomVizPluginDevSseResponse {}
-export const GetEeCustomVizPluginDevSseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeCustomVizPluginDevSseResponse",
-}) as any as S.Schema<GetEeCustomVizPluginDevSseResponse>;
+export const GetEeCustomVizPluginDevSseResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginDevSseResponse>;
 
 export interface GetEeCustomVizPluginListRequest {}
 export const GetEeCustomVizPluginListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12521,11 +11592,8 @@ export const GetEeCustomVizPluginListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeCustomVizPluginListRequest>;
 
 export interface GetEeCustomVizPluginListResponse {}
-export const GetEeCustomVizPluginListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeCustomVizPluginListResponse",
-}) as any as S.Schema<GetEeCustomVizPluginListResponse>;
+export const GetEeCustomVizPluginListResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginListResponse>;
 
 export interface GetEeCustomVizPluginSandboxHostRequest {}
 export const GetEeCustomVizPluginSandboxHostRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12537,11 +11605,8 @@ export const GetEeCustomVizPluginSandboxHostRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetEeCustomVizPluginSandboxHostRequest>;
 
 export interface GetEeCustomVizPluginSandboxHostResponse {}
-export const GetEeCustomVizPluginSandboxHostResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeCustomVizPluginSandboxHostResponse",
-}) as any as S.Schema<GetEeCustomVizPluginSandboxHostResponse>;
+export const GetEeCustomVizPluginSandboxHostResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginSandboxHostResponse>;
 
 export interface GetEeDataComplexityScoreComplexityRequest {
   force_recalculation?: boolean;
@@ -12555,11 +11620,8 @@ export const GetEeDataComplexityScoreComplexityRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetEeDataComplexityScoreComplexityRequest>;
 
 export interface GetEeDataComplexityScoreComplexityResponse {}
-export const GetEeDataComplexityScoreComplexityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeDataComplexityScoreComplexityResponse",
-}) as any as S.Schema<GetEeDataComplexityScoreComplexityResponse>;
+export const GetEeDataComplexityScoreComplexityResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDataComplexityScoreComplexityResponse>;
 
 export interface GetEeDependenciesBackfillStatusRequest {}
 export const GetEeDependenciesBackfillStatusRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12571,11 +11633,8 @@ export const GetEeDependenciesBackfillStatusRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetEeDependenciesBackfillStatusRequest>;
 
 export interface GetEeDependenciesBackfillStatusResponse {}
-export const GetEeDependenciesBackfillStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeDependenciesBackfillStatusResponse",
-}) as any as S.Schema<GetEeDependenciesBackfillStatusResponse>;
+export const GetEeDependenciesBackfillStatusResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesBackfillStatusResponse>;
 
 export type MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes =
   | "transform"
@@ -12604,9 +11663,8 @@ export const GetEeDependenciesGraphRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeDependenciesGraphRequest>;
 
 export interface GetEeDependenciesGraphResponse {}
-export const GetEeDependenciesGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeDependenciesGraphResponse",
-}) as any as S.Schema<GetEeDependenciesGraphResponse>;
+export const GetEeDependenciesGraphResponse =
+  CreateActionResponse as any as S.Schema<GetEeDependenciesGraphResponse>;
 
 export type GetEeDependenciesGraphBreakingRequestTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
@@ -12683,18 +11741,14 @@ export const GetEeDependenciesGraphBreakingRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetEeDependenciesGraphBreakingRequest>;
 
 export interface GetEeDependenciesGraphBreakingResponse {}
-export const GetEeDependenciesGraphBreakingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeDependenciesGraphBreakingResponse",
-}) as any as S.Schema<GetEeDependenciesGraphBreakingResponse>;
+export const GetEeDependenciesGraphBreakingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphBreakingResponse>;
 
 export type GetEeDependenciesGraphBrokenRequestDependentTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
-export const GetEeDependenciesGraphBrokenRequestDependentTypesCase1List = /*@__PURE__*/ S.Array(
-  MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes,
-) as any as S.Schema<GetEeDependenciesGraphBrokenRequestDependentTypesCase1List>;
+export const GetEeDependenciesGraphBrokenRequestDependentTypesCase1List =
+  GetEeDependenciesGraphBreakingRequestTypesCase1List as any as S.Schema<GetEeDependenciesGraphBrokenRequestDependentTypesCase1List>;
 
 export type GetEeDependenciesGraphBrokenRequestDependentTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
@@ -12768,18 +11822,14 @@ export const GetEeDependenciesGraphBrokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeDependenciesGraphBrokenRequest>;
 
 export interface GetEeDependenciesGraphBrokenResponse {}
-export const GetEeDependenciesGraphBrokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeDependenciesGraphBrokenResponse",
-}) as any as S.Schema<GetEeDependenciesGraphBrokenResponse>;
+export const GetEeDependenciesGraphBrokenResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphBrokenResponse>;
 
 export type GetEeDependenciesGraphDependentsRequestDependentTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
-export const GetEeDependenciesGraphDependentsRequestDependentTypesCase1List = /*@__PURE__*/ S.Array(
-  MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes,
-) as any as S.Schema<GetEeDependenciesGraphDependentsRequestDependentTypesCase1List>;
+export const GetEeDependenciesGraphDependentsRequestDependentTypesCase1List =
+  GetEeDependenciesGraphBreakingRequestTypesCase1List as any as S.Schema<GetEeDependenciesGraphDependentsRequestDependentTypesCase1List>;
 
 export type GetEeDependenciesGraphDependentsRequestDependentTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
@@ -12860,18 +11910,14 @@ export const GetEeDependenciesGraphDependentsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetEeDependenciesGraphDependentsRequest>;
 
 export interface GetEeDependenciesGraphDependentsResponse {}
-export const GetEeDependenciesGraphDependentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeDependenciesGraphDependentsResponse",
-}) as any as S.Schema<GetEeDependenciesGraphDependentsResponse>;
+export const GetEeDependenciesGraphDependentsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphDependentsResponse>;
 
 export type GetEeDependenciesGraphUnreferencedRequestTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
-export const GetEeDependenciesGraphUnreferencedRequestTypesCase1List = /*@__PURE__*/ S.Array(
-  MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes,
-) as any as S.Schema<GetEeDependenciesGraphUnreferencedRequestTypesCase1List>;
+export const GetEeDependenciesGraphUnreferencedRequestTypesCase1List =
+  GetEeDependenciesGraphBreakingRequestTypesCase1List as any as S.Schema<GetEeDependenciesGraphUnreferencedRequestTypesCase1List>;
 
 export type GetEeDependenciesGraphUnreferencedRequestTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
@@ -12944,11 +11990,8 @@ export const GetEeDependenciesGraphUnreferencedRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetEeDependenciesGraphUnreferencedRequest>;
 
 export interface GetEeDependenciesGraphUnreferencedResponse {}
-export const GetEeDependenciesGraphUnreferencedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeDependenciesGraphUnreferencedResponse",
-}) as any as S.Schema<GetEeDependenciesGraphUnreferencedResponse>;
+export const GetEeDependenciesGraphUnreferencedResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphUnreferencedResponse>;
 
 export interface GetEeEmbeddingHubChecklistRequest {}
 export const GetEeEmbeddingHubChecklistRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12958,11 +12001,8 @@ export const GetEeEmbeddingHubChecklistRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeEmbeddingHubChecklistRequest>;
 
 export interface GetEeEmbeddingHubChecklistResponse {}
-export const GetEeEmbeddingHubChecklistResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeEmbeddingHubChecklistResponse",
-}) as any as S.Schema<GetEeEmbeddingHubChecklistResponse>;
+export const GetEeEmbeddingHubChecklistResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeEmbeddingHubChecklistResponse>;
 
 export interface GetEeErdRequest {}
 export const GetEeErdRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12970,9 +12010,7 @@ export const GetEeErdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeErdRequest" }) as any as S.Schema<GetEeErdRequest>;
 
 export interface GetEeErdResponse {}
-export const GetEeErdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeErdResponse",
-}) as any as S.Schema<GetEeErdResponse>;
+export const GetEeErdResponse = CreateActionResponse as any as S.Schema<GetEeErdResponse>;
 
 export interface GetEeGsheetsConnectionRequest {}
 export const GetEeGsheetsConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12982,9 +12020,8 @@ export const GetEeGsheetsConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeGsheetsConnectionRequest>;
 
 export interface GetEeGsheetsConnectionResponse {}
-export const GetEeGsheetsConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeGsheetsConnectionResponse",
-}) as any as S.Schema<GetEeGsheetsConnectionResponse>;
+export const GetEeGsheetsConnectionResponse =
+  CreateActionResponse as any as S.Schema<GetEeGsheetsConnectionResponse>;
 
 export interface GetEeGsheetsServiceAccountRequest {}
 export const GetEeGsheetsServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12994,11 +12031,8 @@ export const GetEeGsheetsServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeGsheetsServiceAccountRequest>;
 
 export interface GetEeGsheetsServiceAccountResponse {}
-export const GetEeGsheetsServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeGsheetsServiceAccountResponse",
-}) as any as S.Schema<GetEeGsheetsServiceAccountResponse>;
+export const GetEeGsheetsServiceAccountResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeGsheetsServiceAccountResponse>;
 
 export interface GetEeLibraryRequest {}
 export const GetEeLibraryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13006,9 +12040,7 @@ export const GetEeLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeLibraryRequest" }) as any as S.Schema<GetEeLibraryRequest>;
 
 export interface GetEeLibraryResponse {}
-export const GetEeLibraryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeLibraryResponse",
-}) as any as S.Schema<GetEeLibraryResponse>;
+export const GetEeLibraryResponse = CreateActionResponse as any as S.Schema<GetEeLibraryResponse>;
 
 export interface GetEeLibraryTreeRequest {}
 export const GetEeLibraryTreeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13016,9 +12048,8 @@ export const GetEeLibraryTreeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeLibraryTreeRequest" }) as any as S.Schema<GetEeLibraryTreeRequest>;
 
 export interface GetEeLibraryTreeResponse {}
-export const GetEeLibraryTreeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeLibraryTreeResponse",
-}) as any as S.Schema<GetEeLibraryTreeResponse>;
+export const GetEeLibraryTreeResponse =
+  CreateActionResponse as any as S.Schema<GetEeLibraryTreeResponse>;
 
 export interface GetEeLogsQueryExecutionRequest {
   /** Must be a string like 2020-04 or 2222-11. */
@@ -13033,9 +12064,8 @@ export const GetEeLogsQueryExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeLogsQueryExecutionRequest>;
 
 export interface GetEeLogsQueryExecutionResponse {}
-export const GetEeLogsQueryExecutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetEeLogsQueryExecutionResponse" },
-) as any as S.Schema<GetEeLogsQueryExecutionResponse>;
+export const GetEeLogsQueryExecutionResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetEeLogsQueryExecutionResponse>;
 
 export interface GetEeMetabotAnalyticsConversationRequest {
   /** value must be a valid UUID. */
@@ -13052,11 +12082,8 @@ export const GetEeMetabotAnalyticsConversationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetEeMetabotAnalyticsConversationRequest>;
 
 export interface GetEeMetabotAnalyticsConversationResponse {}
-export const GetEeMetabotAnalyticsConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeMetabotAnalyticsConversationResponse",
-}) as any as S.Schema<GetEeMetabotAnalyticsConversationResponse>;
+export const GetEeMetabotAnalyticsConversationResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeMetabotAnalyticsConversationResponse>;
 
 export type GetEeMetabotAnalyticsConversationsRequestSortBy =
   | "created_at"
@@ -13093,11 +12120,8 @@ export const GetEeMetabotAnalyticsConversationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetEeMetabotAnalyticsConversationsRequest>;
 
 export interface GetEeMetabotAnalyticsConversationsResponse {}
-export const GetEeMetabotAnalyticsConversationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeMetabotAnalyticsConversationsResponse",
-}) as any as S.Schema<GetEeMetabotAnalyticsConversationsResponse>;
+export const GetEeMetabotAnalyticsConversationsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeMetabotAnalyticsConversationsResponse>;
 
 export interface GetEeMetabotUsageRequest {}
 export const GetEeMetabotUsageRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13105,9 +12129,8 @@ export const GetEeMetabotUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeMetabotUsageRequest" }) as any as S.Schema<GetEeMetabotUsageRequest>;
 
 export interface GetEeMetabotUsageResponse {}
-export const GetEeMetabotUsageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeMetabotUsageResponse",
-}) as any as S.Schema<GetEeMetabotUsageResponse>;
+export const GetEeMetabotUsageResponse =
+  CreateActionResponse as any as S.Schema<GetEeMetabotUsageResponse>;
 
 export interface GetEeMfaAdminOverviewRequest {}
 export const GetEeMfaAdminOverviewRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13117,9 +12140,8 @@ export const GetEeMfaAdminOverviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeMfaAdminOverviewRequest>;
 
 export interface GetEeMfaAdminOverviewResponse {}
-export const GetEeMfaAdminOverviewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeMfaAdminOverviewResponse",
-}) as any as S.Schema<GetEeMfaAdminOverviewResponse>;
+export const GetEeMfaAdminOverviewResponse =
+  CreateActionResponse as any as S.Schema<GetEeMfaAdminOverviewResponse>;
 
 export interface GetEeMfaStatusRequest {}
 export const GetEeMfaStatusRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13127,9 +12149,8 @@ export const GetEeMfaStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeMfaStatusRequest" }) as any as S.Schema<GetEeMfaStatusRequest>;
 
 export interface GetEeMfaStatusResponse {}
-export const GetEeMfaStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeMfaStatusResponse",
-}) as any as S.Schema<GetEeMfaStatusResponse>;
+export const GetEeMfaStatusResponse =
+  CreateActionResponse as any as S.Schema<GetEeMfaStatusResponse>;
 
 export type GetEePermissionDebugRequestActionType =
   | "card/read"
@@ -13153,9 +12174,8 @@ export const GetEePermissionDebugRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEePermissionDebugRequest>;
 
 export interface GetEePermissionDebugResponse {}
-export const GetEePermissionDebugResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEePermissionDebugResponse",
-}) as any as S.Schema<GetEePermissionDebugResponse>;
+export const GetEePermissionDebugResponse =
+  CreateActionResponse as any as S.Schema<GetEePermissionDebugResponse>;
 
 export interface GetEeRemoteSyncBranchesRequest {}
 export const GetEeRemoteSyncBranchesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13165,9 +12185,8 @@ export const GetEeRemoteSyncBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeRemoteSyncBranchesRequest>;
 
 export interface GetEeRemoteSyncBranchesResponse {}
-export const GetEeRemoteSyncBranchesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetEeRemoteSyncBranchesResponse" },
-) as any as S.Schema<GetEeRemoteSyncBranchesResponse>;
+export const GetEeRemoteSyncBranchesResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetEeRemoteSyncBranchesResponse>;
 
 export interface GetEeRemoteSyncCurrentTaskRequest {}
 export const GetEeRemoteSyncCurrentTaskRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13177,11 +12196,8 @@ export const GetEeRemoteSyncCurrentTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeRemoteSyncCurrentTaskRequest>;
 
 export interface GetEeRemoteSyncCurrentTaskResponse {}
-export const GetEeRemoteSyncCurrentTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeRemoteSyncCurrentTaskResponse",
-}) as any as S.Schema<GetEeRemoteSyncCurrentTaskResponse>;
+export const GetEeRemoteSyncCurrentTaskResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeRemoteSyncCurrentTaskResponse>;
 
 export interface GetEeRemoteSyncDirtyRequest {}
 export const GetEeRemoteSyncDirtyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13191,9 +12207,8 @@ export const GetEeRemoteSyncDirtyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeRemoteSyncDirtyRequest>;
 
 export interface GetEeRemoteSyncDirtyResponse {}
-export const GetEeRemoteSyncDirtyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeRemoteSyncDirtyResponse",
-}) as any as S.Schema<GetEeRemoteSyncDirtyResponse>;
+export const GetEeRemoteSyncDirtyResponse =
+  CreateActionResponse as any as S.Schema<GetEeRemoteSyncDirtyResponse>;
 
 export interface GetEeRemoteSyncExportPreflightRequest {
   branch: string;
@@ -13207,11 +12222,8 @@ export const GetEeRemoteSyncExportPreflightRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetEeRemoteSyncExportPreflightRequest>;
 
 export interface GetEeRemoteSyncExportPreflightResponse {}
-export const GetEeRemoteSyncExportPreflightResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeRemoteSyncExportPreflightResponse",
-}) as any as S.Schema<GetEeRemoteSyncExportPreflightResponse>;
+export const GetEeRemoteSyncExportPreflightResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeRemoteSyncExportPreflightResponse>;
 
 export interface GetEeRemoteSyncHasRemoteChangesRequest {
   force_refresh?: boolean;
@@ -13225,11 +12237,8 @@ export const GetEeRemoteSyncHasRemoteChangesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesRequest>;
 
 export interface GetEeRemoteSyncHasRemoteChangesResponse {}
-export const GetEeRemoteSyncHasRemoteChangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeRemoteSyncHasRemoteChangesResponse",
-}) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesResponse>;
+export const GetEeRemoteSyncHasRemoteChangesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeRemoteSyncHasRemoteChangesResponse>;
 
 export interface GetEeRemoteSyncIsDirtyRequest {}
 export const GetEeRemoteSyncIsDirtyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13239,9 +12248,8 @@ export const GetEeRemoteSyncIsDirtyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeRemoteSyncIsDirtyRequest>;
 
 export interface GetEeRemoteSyncIsDirtyResponse {}
-export const GetEeRemoteSyncIsDirtyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeRemoteSyncIsDirtyResponse",
-}) as any as S.Schema<GetEeRemoteSyncIsDirtyResponse>;
+export const GetEeRemoteSyncIsDirtyResponse =
+  CreateActionResponse as any as S.Schema<GetEeRemoteSyncIsDirtyResponse>;
 
 export interface GetEeReplacementRunRequest {
   id: number;
@@ -13255,9 +12263,8 @@ export const GetEeReplacementRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeReplacementRunRequest>;
 
 export interface GetEeReplacementRunResponse {}
-export const GetEeReplacementRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeReplacementRunResponse",
-}) as any as S.Schema<GetEeReplacementRunResponse>;
+export const GetEeReplacementRunResponse =
+  CreateActionResponse as any as S.Schema<GetEeReplacementRunResponse>;
 
 export interface GetEeReplacementRunsRequest {
   is_active?: boolean;
@@ -13271,9 +12278,8 @@ export const GetEeReplacementRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeReplacementRunsRequest>;
 
 export interface GetEeReplacementRunsResponse {}
-export const GetEeReplacementRunsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeReplacementRunsResponse",
-}) as any as S.Schema<GetEeReplacementRunsResponse>;
+export const GetEeReplacementRunsResponse =
+  CreateActionResponse as any as S.Schema<GetEeReplacementRunsResponse>;
 
 export interface GetEeScimGroupRequest {
   id: string;
@@ -13285,9 +12291,8 @@ export const GetEeScimGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeScimGroupRequest" }) as any as S.Schema<GetEeScimGroupRequest>;
 
 export interface GetEeScimGroupResponse {}
-export const GetEeScimGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeScimGroupResponse",
-}) as any as S.Schema<GetEeScimGroupResponse>;
+export const GetEeScimGroupResponse =
+  CreateActionResponse as any as S.Schema<GetEeScimGroupResponse>;
 
 export interface GetEeScimGroupsRequest {
   startIndex?: number;
@@ -13303,9 +12308,8 @@ export const GetEeScimGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeScimGroupsRequest" }) as any as S.Schema<GetEeScimGroupsRequest>;
 
 export interface GetEeScimGroupsResponse {}
-export const GetEeScimGroupsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeScimGroupsResponse",
-}) as any as S.Schema<GetEeScimGroupsResponse>;
+export const GetEeScimGroupsResponse =
+  CreateActionResponse as any as S.Schema<GetEeScimGroupsResponse>;
 
 export interface GetEeScimKeyRequest {}
 export const GetEeScimKeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13313,9 +12317,7 @@ export const GetEeScimKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeScimKeyRequest" }) as any as S.Schema<GetEeScimKeyRequest>;
 
 export interface GetEeScimKeyResponse {}
-export const GetEeScimKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeScimKeyResponse",
-}) as any as S.Schema<GetEeScimKeyResponse>;
+export const GetEeScimKeyResponse = CreateActionResponse as any as S.Schema<GetEeScimKeyResponse>;
 
 export interface GetEeScimUserRequest {
   id: string;
@@ -13327,9 +12329,7 @@ export const GetEeScimUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeScimUserRequest" }) as any as S.Schema<GetEeScimUserRequest>;
 
 export interface GetEeScimUserResponse {}
-export const GetEeScimUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeScimUserResponse",
-}) as any as S.Schema<GetEeScimUserResponse>;
+export const GetEeScimUserResponse = CreateActionResponse as any as S.Schema<GetEeScimUserResponse>;
 
 export interface GetEeScimUsersRequest {
   startIndex?: number;
@@ -13345,9 +12345,8 @@ export const GetEeScimUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeScimUsersRequest" }) as any as S.Schema<GetEeScimUsersRequest>;
 
 export interface GetEeScimUsersResponse {}
-export const GetEeScimUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeScimUsersResponse",
-}) as any as S.Schema<GetEeScimUsersResponse>;
+export const GetEeScimUsersResponse =
+  CreateActionResponse as any as S.Schema<GetEeScimUsersResponse>;
 
 export interface GetEeSecurityCenterRequest {}
 export const GetEeSecurityCenterRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13357,9 +12356,8 @@ export const GetEeSecurityCenterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeSecurityCenterRequest>;
 
 export interface GetEeSecurityCenterResponse {}
-export const GetEeSecurityCenterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeSecurityCenterResponse",
-}) as any as S.Schema<GetEeSecurityCenterResponse>;
+export const GetEeSecurityCenterResponse =
+  CreateActionResponse as any as S.Schema<GetEeSecurityCenterResponse>;
 
 export interface GetEeSemanticSearchStatusRequest {}
 export const GetEeSemanticSearchStatusRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13369,11 +12367,8 @@ export const GetEeSemanticSearchStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeSemanticSearchStatusRequest>;
 
 export interface GetEeSemanticSearchStatusResponse {}
-export const GetEeSemanticSearchStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeSemanticSearchStatusResponse",
-}) as any as S.Schema<GetEeSemanticSearchStatusResponse>;
+export const GetEeSemanticSearchStatusResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeSemanticSearchStatusResponse>;
 
 export interface GetEeSerializationMetadataImportRequest {
   /** value must be a valid UUID. */
@@ -13388,11 +12383,8 @@ export const GetEeSerializationMetadataImportRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetEeSerializationMetadataImportRequest>;
 
 export interface GetEeSerializationMetadataImportResponse {}
-export const GetEeSerializationMetadataImportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeSerializationMetadataImportResponse",
-}) as any as S.Schema<GetEeSerializationMetadataImportResponse>;
+export const GetEeSerializationMetadataImportResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeSerializationMetadataImportResponse>;
 
 export type GetEeStaleRequestSortColumn = "name" | "last_used_at";
 export const GetEeStaleRequestSortColumn = S.String;
@@ -13418,9 +12410,7 @@ export const GetEeStaleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeStaleRequest" }) as any as S.Schema<GetEeStaleRequest>;
 
 export interface GetEeStaleResponse {}
-export const GetEeStaleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeStaleResponse",
-}) as any as S.Schema<GetEeStaleResponse>;
+export const GetEeStaleResponse = CreateActionResponse as any as S.Schema<GetEeStaleResponse>;
 
 export interface GetEeSupportAccessGrantRequest {
   ticket_number?: string;
@@ -13438,9 +12428,8 @@ export const GetEeSupportAccessGrantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeSupportAccessGrantRequest>;
 
 export interface GetEeSupportAccessGrantResponse {}
-export const GetEeSupportAccessGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetEeSupportAccessGrantResponse" },
-) as any as S.Schema<GetEeSupportAccessGrantResponse>;
+export const GetEeSupportAccessGrantResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetEeSupportAccessGrantResponse>;
 
 export interface GetEeSupportAccessGrantCurrentRequest {}
 export const GetEeSupportAccessGrantCurrentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13452,11 +12441,8 @@ export const GetEeSupportAccessGrantCurrentRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetEeSupportAccessGrantCurrentRequest>;
 
 export interface GetEeSupportAccessGrantCurrentResponse {}
-export const GetEeSupportAccessGrantCurrentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeSupportAccessGrantCurrentResponse",
-}) as any as S.Schema<GetEeSupportAccessGrantCurrentResponse>;
+export const GetEeSupportAccessGrantCurrentResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeSupportAccessGrantCurrentResponse>;
 
 export type GetEeTenantRequestStatus = "all" | "deactivated" | "active";
 export const GetEeTenantRequestStatus = S.String;
@@ -13471,9 +12457,7 @@ export const GetEeTenantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeTenantRequest" }) as any as S.Schema<GetEeTenantRequest>;
 
 export interface GetEeTenantResponse {}
-export const GetEeTenantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeTenantResponse",
-}) as any as S.Schema<GetEeTenantResponse>;
+export const GetEeTenantResponse = CreateActionResponse as any as S.Schema<GetEeTenantResponse>;
 
 export interface GetEeTenantByIdRequest {
   /** value must be an integer greater than zero. */
@@ -13486,9 +12470,8 @@ export const GetEeTenantByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEeTenantByIdRequest" }) as any as S.Schema<GetEeTenantByIdRequest>;
 
 export interface GetEeTenantByIdResponse {}
-export const GetEeTenantByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeTenantByIdResponse",
-}) as any as S.Schema<GetEeTenantByIdResponse>;
+export const GetEeTenantByIdResponse =
+  CreateActionResponse as any as S.Schema<GetEeTenantByIdResponse>;
 
 export interface GetEeTransformInspectRequest {
   /** value must be an integer greater than zero. */
@@ -13503,9 +12486,8 @@ export const GetEeTransformInspectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeTransformInspectRequest>;
 
 export interface GetEeTransformInspectResponse {}
-export const GetEeTransformInspectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEeTransformInspectResponse",
-}) as any as S.Schema<GetEeTransformInspectResponse>;
+export const GetEeTransformInspectResponse =
+  CreateActionResponse as any as S.Schema<GetEeTransformInspectResponse>;
 
 export interface GetEeTransformInspectByLensIdRequest {
   /** value must be an integer greater than zero. */
@@ -13522,11 +12504,8 @@ export const GetEeTransformInspectByLensIdRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetEeTransformInspectByLensIdRequest>;
 
 export interface GetEeTransformInspectByLensIdResponse {}
-export const GetEeTransformInspectByLensIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeTransformInspectByLensIdResponse",
-}) as any as S.Schema<GetEeTransformInspectByLensIdResponse>;
+export const GetEeTransformInspectByLensIdResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeTransformInspectByLensIdResponse>;
 
 export interface GetEeTransformsPythonLibraryRequest {
   path: string;
@@ -13540,11 +12519,8 @@ export const GetEeTransformsPythonLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeTransformsPythonLibraryRequest>;
 
 export interface GetEeTransformsPythonLibraryResponse {}
-export const GetEeTransformsPythonLibraryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeTransformsPythonLibraryResponse",
-}) as any as S.Schema<GetEeTransformsPythonLibraryResponse>;
+export const GetEeTransformsPythonLibraryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeTransformsPythonLibraryResponse>;
 
 export interface GetEeUploadManagementTablesRequest {}
 export const GetEeUploadManagementTablesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13554,11 +12530,8 @@ export const GetEeUploadManagementTablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEeUploadManagementTablesRequest>;
 
 export interface GetEeUploadManagementTablesResponse {}
-export const GetEeUploadManagementTablesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEeUploadManagementTablesResponse",
-}) as any as S.Schema<GetEeUploadManagementTablesResponse>;
+export const GetEeUploadManagementTablesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeUploadManagementTablesResponse>;
 
 export interface GetEmbedCardRequest {
   token: string;
@@ -13570,9 +12543,7 @@ export const GetEmbedCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedCardRequest" }) as any as S.Schema<GetEmbedCardRequest>;
 
 export interface GetEmbedCardResponse {}
-export const GetEmbedCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEmbedCardResponse",
-}) as any as S.Schema<GetEmbedCardResponse>;
+export const GetEmbedCardResponse = CreateActionResponse as any as S.Schema<GetEmbedCardResponse>;
 
 export interface GetEmbedCardParamRemappingRequest {
   token: string;
@@ -13596,11 +12567,8 @@ export const GetEmbedCardParamRemappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmbedCardParamRemappingRequest>;
 
 export interface GetEmbedCardParamRemappingResponse {}
-export const GetEmbedCardParamRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedCardParamRemappingResponse",
-}) as any as S.Schema<GetEmbedCardParamRemappingResponse>;
+export const GetEmbedCardParamRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedCardParamRemappingResponse>;
 
 export interface GetEmbedCardParamSearchRequest {
   token: string;
@@ -13624,9 +12592,8 @@ export const GetEmbedCardParamSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmbedCardParamSearchRequest>;
 
 export interface GetEmbedCardParamSearchResponse {}
-export const GetEmbedCardParamSearchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetEmbedCardParamSearchResponse" },
-) as any as S.Schema<GetEmbedCardParamSearchResponse>;
+export const GetEmbedCardParamSearchResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetEmbedCardParamSearchResponse>;
 
 export interface GetEmbedCardParamValuesRequest {
   token: string;
@@ -13644,9 +12611,8 @@ export const GetEmbedCardParamValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmbedCardParamValuesRequest>;
 
 export interface GetEmbedCardParamValuesResponse {}
-export const GetEmbedCardParamValuesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetEmbedCardParamValuesResponse" },
-) as any as S.Schema<GetEmbedCardParamValuesResponse>;
+export const GetEmbedCardParamValuesResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetEmbedCardParamValuesResponse>;
 
 export interface GetEmbedCardQueryRequest {
   token: string;
@@ -13658,9 +12624,8 @@ export const GetEmbedCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedCardQueryRequest" }) as any as S.Schema<GetEmbedCardQueryRequest>;
 
 export interface GetEmbedCardQueryResponse {}
-export const GetEmbedCardQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEmbedCardQueryResponse",
-}) as any as S.Schema<GetEmbedCardQueryResponse>;
+export const GetEmbedCardQueryResponse =
+  CreateActionResponse as any as S.Schema<GetEmbedCardQueryResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type GetEmbedCardQueryByExportFormatRequestExportFormat = "csv" | "api" | "xlsx" | "json";
@@ -13686,11 +12651,8 @@ export const GetEmbedCardQueryByExportFormatRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetEmbedCardQueryByExportFormatRequest>;
 
 export interface GetEmbedCardQueryByExportFormatResponse {}
-export const GetEmbedCardQueryByExportFormatResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedCardQueryByExportFormatResponse",
-}) as any as S.Schema<GetEmbedCardQueryByExportFormatResponse>;
+export const GetEmbedCardQueryByExportFormatResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedCardQueryByExportFormatResponse>;
 
 export interface GetEmbedDashboardRequest {
   token: string;
@@ -13702,9 +12664,8 @@ export const GetEmbedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedDashboardRequest" }) as any as S.Schema<GetEmbedDashboardRequest>;
 
 export interface GetEmbedDashboardResponse {}
-export const GetEmbedDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEmbedDashboardResponse",
-}) as any as S.Schema<GetEmbedDashboardResponse>;
+export const GetEmbedDashboardResponse =
+  CreateActionResponse as any as S.Schema<GetEmbedDashboardResponse>;
 
 export interface GetEmbedDashboardDashcardCardRequest {
   token: string;
@@ -13730,11 +12691,8 @@ export const GetEmbedDashboardDashcardCardRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetEmbedDashboardDashcardCardRequest>;
 
 export interface GetEmbedDashboardDashcardCardResponse {}
-export const GetEmbedDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedDashboardDashcardCardResponse",
-}) as any as S.Schema<GetEmbedDashboardDashcardCardResponse>;
+export const GetEmbedDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardDashcardCardResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type GetEmbedDashboardDashcardCardByExportFormatRequestExportFormat =
@@ -13774,11 +12732,8 @@ export const GetEmbedDashboardDashcardCardByExportFormatRequest = /*@__PURE__*/ 
 }) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatRequest>;
 
 export interface GetEmbedDashboardDashcardCardByExportFormatResponse {}
-export const GetEmbedDashboardDashcardCardByExportFormatResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedDashboardDashcardCardByExportFormatResponse",
-}) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatResponse>;
+export const GetEmbedDashboardDashcardCardByExportFormatResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatResponse>;
 
 export interface GetEmbedDashboardParamRemappingRequest {
   token: string;
@@ -13802,11 +12757,8 @@ export const GetEmbedDashboardParamRemappingRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetEmbedDashboardParamRemappingRequest>;
 
 export interface GetEmbedDashboardParamRemappingResponse {}
-export const GetEmbedDashboardParamRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedDashboardParamRemappingResponse",
-}) as any as S.Schema<GetEmbedDashboardParamRemappingResponse>;
+export const GetEmbedDashboardParamRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardParamRemappingResponse>;
 
 export interface GetEmbedDashboardParamSearchRequest {
   token: string;
@@ -13830,11 +12782,8 @@ export const GetEmbedDashboardParamSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmbedDashboardParamSearchRequest>;
 
 export interface GetEmbedDashboardParamSearchResponse {}
-export const GetEmbedDashboardParamSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedDashboardParamSearchResponse",
-}) as any as S.Schema<GetEmbedDashboardParamSearchResponse>;
+export const GetEmbedDashboardParamSearchResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardParamSearchResponse>;
 
 export interface GetEmbedDashboardParamValuesRequest {
   token: string;
@@ -13856,11 +12805,8 @@ export const GetEmbedDashboardParamValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmbedDashboardParamValuesRequest>;
 
 export interface GetEmbedDashboardParamValuesResponse {}
-export const GetEmbedDashboardParamValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedDashboardParamValuesResponse",
-}) as any as S.Schema<GetEmbedDashboardParamValuesResponse>;
+export const GetEmbedDashboardParamValuesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardParamValuesResponse>;
 
 export interface GetEmbedPivotCardQueryRequest {
   token: string;
@@ -13874,9 +12820,8 @@ export const GetEmbedPivotCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmbedPivotCardQueryRequest>;
 
 export interface GetEmbedPivotCardQueryResponse {}
-export const GetEmbedPivotCardQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEmbedPivotCardQueryResponse",
-}) as any as S.Schema<GetEmbedPivotCardQueryResponse>;
+export const GetEmbedPivotCardQueryResponse =
+  CreateActionResponse as any as S.Schema<GetEmbedPivotCardQueryResponse>;
 
 export interface GetEmbedPivotDashboardDashcardCardRequest {
   token: string;
@@ -13902,11 +12847,8 @@ export const GetEmbedPivotDashboardDashcardCardRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetEmbedPivotDashboardDashcardCardRequest>;
 
 export interface GetEmbedPivotDashboardDashcardCardResponse {}
-export const GetEmbedPivotDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedPivotDashboardDashcardCardResponse",
-}) as any as S.Schema<GetEmbedPivotDashboardDashcardCardResponse>;
+export const GetEmbedPivotDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedPivotDashboardDashcardCardResponse>;
 
 export interface GetEmbedThemeRequest {}
 export const GetEmbedThemeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13914,9 +12856,7 @@ export const GetEmbedThemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedThemeRequest" }) as any as S.Schema<GetEmbedThemeRequest>;
 
 export interface GetEmbedThemeResponse {}
-export const GetEmbedThemeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEmbedThemeResponse",
-}) as any as S.Schema<GetEmbedThemeResponse>;
+export const GetEmbedThemeResponse = CreateActionResponse as any as S.Schema<GetEmbedThemeResponse>;
 
 export interface GetEmbedThemeByIdRequest {
   /** value must be an integer greater than zero. */
@@ -13929,9 +12869,8 @@ export const GetEmbedThemeByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedThemeByIdRequest" }) as any as S.Schema<GetEmbedThemeByIdRequest>;
 
 export interface GetEmbedThemeByIdResponse {}
-export const GetEmbedThemeByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEmbedThemeByIdResponse",
-}) as any as S.Schema<GetEmbedThemeByIdResponse>;
+export const GetEmbedThemeByIdResponse =
+  CreateActionResponse as any as S.Schema<GetEmbedThemeByIdResponse>;
 
 export interface GetEmbedTilesCardRequest {
   token: string;
@@ -13960,9 +12899,8 @@ export const GetEmbedTilesCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedTilesCardRequest" }) as any as S.Schema<GetEmbedTilesCardRequest>;
 
 export interface GetEmbedTilesCardResponse {}
-export const GetEmbedTilesCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetEmbedTilesCardResponse",
-}) as any as S.Schema<GetEmbedTilesCardResponse>;
+export const GetEmbedTilesCardResponse =
+  CreateActionResponse as any as S.Schema<GetEmbedTilesCardResponse>;
 
 export interface GetEmbedTilesDashboardDashcardCardRequest {
   token: string;
@@ -14003,11 +12941,8 @@ export const GetEmbedTilesDashboardDashcardCardRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetEmbedTilesDashboardDashcardCardRequest>;
 
 export interface GetEmbedTilesDashboardDashcardCardResponse {}
-export const GetEmbedTilesDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEmbedTilesDashboardDashcardCardResponse",
-}) as any as S.Schema<GetEmbedTilesDashboardDashcardCardResponse>;
+export const GetEmbedTilesDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedTilesDashboardDashcardCardResponse>;
 
 export interface GetFieldRequest {
   /** value must be an integer greater than zero. */
@@ -14022,9 +12957,7 @@ export const GetFieldRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFieldRequest" }) as any as S.Schema<GetFieldRequest>;
 
 export interface GetFieldResponse {}
-export const GetFieldResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetFieldResponse",
-}) as any as S.Schema<GetFieldResponse>;
+export const GetFieldResponse = CreateActionResponse as any as S.Schema<GetFieldResponse>;
 
 export interface GetFieldRelatedRequest {
   /** value must be an integer greater than zero. */
@@ -14037,9 +12970,8 @@ export const GetFieldRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFieldRelatedRequest" }) as any as S.Schema<GetFieldRelatedRequest>;
 
 export interface GetFieldRelatedResponse {}
-export const GetFieldRelatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetFieldRelatedResponse",
-}) as any as S.Schema<GetFieldRelatedResponse>;
+export const GetFieldRelatedResponse =
+  CreateActionResponse as any as S.Schema<GetFieldRelatedResponse>;
 
 export interface GetFieldRemappingRequest {
   /** value must be an integer greater than zero. */
@@ -14057,9 +12989,8 @@ export const GetFieldRemappingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFieldRemappingRequest" }) as any as S.Schema<GetFieldRemappingRequest>;
 
 export interface GetFieldRemappingResponse {}
-export const GetFieldRemappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetFieldRemappingResponse",
-}) as any as S.Schema<GetFieldRemappingResponse>;
+export const GetFieldRemappingResponse =
+  CreateActionResponse as any as S.Schema<GetFieldRemappingResponse>;
 
 export interface GetFieldSearchRequest {
   /** value must be an integer greater than zero. */
@@ -14077,9 +13008,8 @@ export const GetFieldSearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFieldSearchRequest" }) as any as S.Schema<GetFieldSearchRequest>;
 
 export interface GetFieldSearchResponse {}
-export const GetFieldSearchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetFieldSearchResponse",
-}) as any as S.Schema<GetFieldSearchResponse>;
+export const GetFieldSearchResponse =
+  CreateActionResponse as any as S.Schema<GetFieldSearchResponse>;
 
 export interface GetFieldSummaryRequest {
   /** value must be an integer greater than zero. */
@@ -14092,9 +13022,8 @@ export const GetFieldSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFieldSummaryRequest" }) as any as S.Schema<GetFieldSummaryRequest>;
 
 export interface GetFieldSummaryResponse {}
-export const GetFieldSummaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetFieldSummaryResponse",
-}) as any as S.Schema<GetFieldSummaryResponse>;
+export const GetFieldSummaryResponse =
+  CreateActionResponse as any as S.Schema<GetFieldSummaryResponse>;
 
 export interface GetFieldValuesRequest {
   /** value must be an integer greater than zero. */
@@ -14107,9 +13036,8 @@ export const GetFieldValuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFieldValuesRequest" }) as any as S.Schema<GetFieldValuesRequest>;
 
 export interface GetFieldValuesResponse {}
-export const GetFieldValuesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetFieldValuesResponse",
-}) as any as S.Schema<GetFieldValuesResponse>;
+export const GetFieldValuesResponse =
+  CreateActionResponse as any as S.Schema<GetFieldValuesResponse>;
 
 export interface GetGeojsonRequest {
   url: string;
@@ -14121,9 +13049,7 @@ export const GetGeojsonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetGeojsonRequest" }) as any as S.Schema<GetGeojsonRequest>;
 
 export interface GetGeojsonResponse {}
-export const GetGeojsonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetGeojsonResponse",
-}) as any as S.Schema<GetGeojsonResponse>;
+export const GetGeojsonResponse = CreateActionResponse as any as S.Schema<GetGeojsonResponse>;
 
 export interface GetGeojsonByKeyRequest {
   key: string;
@@ -14135,9 +13061,8 @@ export const GetGeojsonByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetGeojsonByKeyRequest" }) as any as S.Schema<GetGeojsonByKeyRequest>;
 
 export interface GetGeojsonByKeyResponse {}
-export const GetGeojsonByKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetGeojsonByKeyResponse",
-}) as any as S.Schema<GetGeojsonByKeyResponse>;
+export const GetGeojsonByKeyResponse =
+  CreateActionResponse as any as S.Schema<GetGeojsonByKeyResponse>;
 
 export interface GetGlossaryRequest {}
 export const GetGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14145,9 +13070,7 @@ export const GetGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetGlossaryRequest" }) as any as S.Schema<GetGlossaryRequest>;
 
 export interface GetGlossaryResponse {}
-export const GetGlossaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetGlossaryResponse",
-}) as any as S.Schema<GetGlossaryResponse>;
+export const GetGlossaryResponse = CreateActionResponse as any as S.Schema<GetGlossaryResponse>;
 
 export interface GetHealthInspectorRequest {
   /** value must be an integer greater than zero. */
@@ -14162,9 +13085,8 @@ export const GetHealthInspectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHealthInspectorRequest>;
 
 export interface GetHealthInspectorResponse {}
-export const GetHealthInspectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetHealthInspectorResponse",
-}) as any as S.Schema<GetHealthInspectorResponse>;
+export const GetHealthInspectorResponse =
+  CreateActionResponse as any as S.Schema<GetHealthInspectorResponse>;
 
 export interface GetKeyRequest {}
 export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14172,9 +13094,7 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
 
 export interface GetKeyResponse {}
-export const GetKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetKeyResponse",
-}) as any as S.Schema<GetKeyResponse>;
+export const GetKeyResponse = CreateActionResponse as any as S.Schema<GetKeyResponse>;
 
 export interface GetKeyCountRequest {}
 export const GetKeyCountRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14182,9 +13102,7 @@ export const GetKeyCountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKeyCountRequest" }) as any as S.Schema<GetKeyCountRequest>;
 
 export interface GetKeyCountResponse {}
-export const GetKeyCountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetKeyCountResponse",
-}) as any as S.Schema<GetKeyCountResponse>;
+export const GetKeyCountResponse = CreateActionResponse as any as S.Schema<GetKeyCountResponse>;
 
 export interface GetLlmListModelsRequest {}
 export const GetLlmListModelsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14192,9 +13110,8 @@ export const GetLlmListModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLlmListModelsRequest" }) as any as S.Schema<GetLlmListModelsRequest>;
 
 export interface GetLlmListModelsResponse {}
-export const GetLlmListModelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetLlmListModelsResponse",
-}) as any as S.Schema<GetLlmListModelsResponse>;
+export const GetLlmListModelsResponse =
+  CreateActionResponse as any as S.Schema<GetLlmListModelsResponse>;
 
 export interface GetLoggerLogsRequest {}
 export const GetLoggerLogsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14202,9 +13119,7 @@ export const GetLoggerLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLoggerLogsRequest" }) as any as S.Schema<GetLoggerLogsRequest>;
 
 export interface GetLoggerLogsResponse {}
-export const GetLoggerLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetLoggerLogsResponse",
-}) as any as S.Schema<GetLoggerLogsResponse>;
+export const GetLoggerLogsResponse = CreateActionResponse as any as S.Schema<GetLoggerLogsResponse>;
 
 export interface GetLoggerPresetsRequest {}
 export const GetLoggerPresetsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14212,9 +13127,8 @@ export const GetLoggerPresetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLoggerPresetsRequest" }) as any as S.Schema<GetLoggerPresetsRequest>;
 
 export interface GetLoggerPresetsResponse {}
-export const GetLoggerPresetsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetLoggerPresetsResponse",
-}) as any as S.Schema<GetLoggerPresetsResponse>;
+export const GetLoggerPresetsResponse =
+  CreateActionResponse as any as S.Schema<GetLoggerPresetsResponse>;
 
 export interface GetLoginHistoryCurrentRequest {}
 export const GetLoginHistoryCurrentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14224,9 +13138,8 @@ export const GetLoginHistoryCurrentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLoginHistoryCurrentRequest>;
 
 export interface GetLoginHistoryCurrentResponse {}
-export const GetLoginHistoryCurrentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetLoginHistoryCurrentResponse",
-}) as any as S.Schema<GetLoginHistoryCurrentResponse>;
+export const GetLoginHistoryCurrentResponse =
+  CreateActionResponse as any as S.Schema<GetLoginHistoryCurrentResponse>;
 
 export interface GetMeasureRequest {}
 export const GetMeasureRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14234,9 +13147,7 @@ export const GetMeasureRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMeasureRequest" }) as any as S.Schema<GetMeasureRequest>;
 
 export interface GetMeasureResponse {}
-export const GetMeasureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMeasureResponse",
-}) as any as S.Schema<GetMeasureResponse>;
+export const GetMeasureResponse = CreateActionResponse as any as S.Schema<GetMeasureResponse>;
 
 export interface GetMeasureByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14249,9 +13160,8 @@ export const GetMeasureByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMeasureByIdRequest" }) as any as S.Schema<GetMeasureByIdRequest>;
 
 export interface GetMeasureByIdResponse {}
-export const GetMeasureByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMeasureByIdResponse",
-}) as any as S.Schema<GetMeasureByIdResponse>;
+export const GetMeasureByIdResponse =
+  CreateActionResponse as any as S.Schema<GetMeasureByIdResponse>;
 
 export interface GetMeasureDimensionRemappingRequest {
   /** value must be an integer greater than zero. */
@@ -14277,11 +13187,8 @@ export const GetMeasureDimensionRemappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeasureDimensionRemappingRequest>;
 
 export interface GetMeasureDimensionRemappingResponse {}
-export const GetMeasureDimensionRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMeasureDimensionRemappingResponse",
-}) as any as S.Schema<GetMeasureDimensionRemappingResponse>;
+export const GetMeasureDimensionRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMeasureDimensionRemappingResponse>;
 
 export interface GetMeasureDimensionSearchRequest {
   /** value must be an integer greater than zero. */
@@ -14303,11 +13210,8 @@ export const GetMeasureDimensionSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeasureDimensionSearchRequest>;
 
 export interface GetMeasureDimensionSearchResponse {}
-export const GetMeasureDimensionSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMeasureDimensionSearchResponse",
-}) as any as S.Schema<GetMeasureDimensionSearchResponse>;
+export const GetMeasureDimensionSearchResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMeasureDimensionSearchResponse>;
 
 export interface GetMeasureDimensionValuesRequest {
   /** value must be an integer greater than zero. */
@@ -14327,11 +13231,8 @@ export const GetMeasureDimensionValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeasureDimensionValuesRequest>;
 
 export interface GetMeasureDimensionValuesResponse {}
-export const GetMeasureDimensionValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMeasureDimensionValuesResponse",
-}) as any as S.Schema<GetMeasureDimensionValuesResponse>;
+export const GetMeasureDimensionValuesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMeasureDimensionValuesResponse>;
 
 export interface GetMetabotConversationRequest {
   /** value must be a valid UUID. */
@@ -14346,9 +13247,8 @@ export const GetMetabotConversationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetabotConversationRequest>;
 
 export interface GetMetabotConversationResponse {}
-export const GetMetabotConversationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMetabotConversationResponse",
-}) as any as S.Schema<GetMetabotConversationResponse>;
+export const GetMetabotConversationResponse =
+  CreateActionResponse as any as S.Schema<GetMetabotConversationResponse>;
 
 export interface GetMetabotConversationsRequest {}
 export const GetMetabotConversationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14358,9 +13258,8 @@ export const GetMetabotConversationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetabotConversationsRequest>;
 
 export interface GetMetabotConversationsResponse {}
-export const GetMetabotConversationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetMetabotConversationsResponse" },
-) as any as S.Schema<GetMetabotConversationsResponse>;
+export const GetMetabotConversationsResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetMetabotConversationsResponse>;
 
 export interface GetMetabotMetabotRequest {}
 export const GetMetabotMetabotRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14368,9 +13267,8 @@ export const GetMetabotMetabotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMetabotMetabotRequest" }) as any as S.Schema<GetMetabotMetabotRequest>;
 
 export interface GetMetabotMetabotResponse {}
-export const GetMetabotMetabotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMetabotMetabotResponse",
-}) as any as S.Schema<GetMetabotMetabotResponse>;
+export const GetMetabotMetabotResponse =
+  CreateActionResponse as any as S.Schema<GetMetabotMetabotResponse>;
 
 export interface GetMetabotMetabotByIdRequest {
   id: number;
@@ -14384,9 +13282,8 @@ export const GetMetabotMetabotByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetabotMetabotByIdRequest>;
 
 export interface GetMetabotMetabotByIdResponse {}
-export const GetMetabotMetabotByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMetabotMetabotByIdResponse",
-}) as any as S.Schema<GetMetabotMetabotByIdResponse>;
+export const GetMetabotMetabotByIdResponse =
+  CreateActionResponse as any as S.Schema<GetMetabotMetabotByIdResponse>;
 
 export type GetMetabotMetabotPromptSuggestionsRequestModel = "metric" | "model";
 export const GetMetabotMetabotPromptSuggestionsRequestModel = S.String;
@@ -14411,11 +13308,8 @@ export const GetMetabotMetabotPromptSuggestionsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetMetabotMetabotPromptSuggestionsRequest>;
 
 export interface GetMetabotMetabotPromptSuggestionsResponse {}
-export const GetMetabotMetabotPromptSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMetabotMetabotPromptSuggestionsResponse",
-}) as any as S.Schema<GetMetabotMetabotPromptSuggestionsResponse>;
+export const GetMetabotMetabotPromptSuggestionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetabotMetabotPromptSuggestionsResponse>;
 
 export interface GetMetabotPermissionsUserPermissionsRequest {}
 export const GetMetabotPermissionsUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14427,11 +13321,8 @@ export const GetMetabotPermissionsUserPermissionsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetMetabotPermissionsUserPermissionsRequest>;
 
 export interface GetMetabotPermissionsUserPermissionsResponse {}
-export const GetMetabotPermissionsUserPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMetabotPermissionsUserPermissionsResponse",
-}) as any as S.Schema<GetMetabotPermissionsUserPermissionsResponse>;
+export const GetMetabotPermissionsUserPermissionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetabotPermissionsUserPermissionsResponse>;
 
 export type GetMetabotSettingsRequestProvider =
   | "anthropic"
@@ -14456,9 +13347,8 @@ export const GetMetabotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetabotSettingsRequest>;
 
 export interface GetMetabotSettingsResponse {}
-export const GetMetabotSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMetabotSettingsResponse",
-}) as any as S.Schema<GetMetabotSettingsResponse>;
+export const GetMetabotSettingsResponse =
+  CreateActionResponse as any as S.Schema<GetMetabotSettingsResponse>;
 
 export interface GetMetricRequest {}
 export const GetMetricRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14466,9 +13356,7 @@ export const GetMetricRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMetricRequest" }) as any as S.Schema<GetMetricRequest>;
 
 export interface GetMetricResponse {}
-export const GetMetricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMetricResponse",
-}) as any as S.Schema<GetMetricResponse>;
+export const GetMetricResponse = CreateActionResponse as any as S.Schema<GetMetricResponse>;
 
 export interface GetMetricByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14481,9 +13369,7 @@ export const GetMetricByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMetricByIdRequest" }) as any as S.Schema<GetMetricByIdRequest>;
 
 export interface GetMetricByIdResponse {}
-export const GetMetricByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMetricByIdResponse",
-}) as any as S.Schema<GetMetricByIdResponse>;
+export const GetMetricByIdResponse = CreateActionResponse as any as S.Schema<GetMetricByIdResponse>;
 
 export interface GetMetricDimensionRemappingRequest {
   /** value must be an integer greater than zero. */
@@ -14509,11 +13395,8 @@ export const GetMetricDimensionRemappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetricDimensionRemappingRequest>;
 
 export interface GetMetricDimensionRemappingResponse {}
-export const GetMetricDimensionRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMetricDimensionRemappingResponse",
-}) as any as S.Schema<GetMetricDimensionRemappingResponse>;
+export const GetMetricDimensionRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetricDimensionRemappingResponse>;
 
 export interface GetMetricDimensionSearchRequest {
   /** value must be an integer greater than zero. */
@@ -14535,11 +13418,8 @@ export const GetMetricDimensionSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetricDimensionSearchRequest>;
 
 export interface GetMetricDimensionSearchResponse {}
-export const GetMetricDimensionSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMetricDimensionSearchResponse",
-}) as any as S.Schema<GetMetricDimensionSearchResponse>;
+export const GetMetricDimensionSearchResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetricDimensionSearchResponse>;
 
 export interface GetMetricDimensionValuesRequest {
   /** value must be an integer greater than zero. */
@@ -14559,11 +13439,8 @@ export const GetMetricDimensionValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetricDimensionValuesRequest>;
 
 export interface GetMetricDimensionValuesResponse {}
-export const GetMetricDimensionValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMetricDimensionValuesResponse",
-}) as any as S.Schema<GetMetricDimensionValuesResponse>;
+export const GetMetricDimensionValuesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetricDimensionValuesResponse>;
 
 export interface GetModelIndexRequest {
   /** value must be an integer greater than zero. */
@@ -14576,9 +13453,7 @@ export const GetModelIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetModelIndexRequest" }) as any as S.Schema<GetModelIndexRequest>;
 
 export interface GetModelIndexResponse {}
-export const GetModelIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetModelIndexResponse",
-}) as any as S.Schema<GetModelIndexResponse>;
+export const GetModelIndexResponse = CreateActionResponse as any as S.Schema<GetModelIndexResponse>;
 
 export interface GetModelIndexByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14591,9 +13466,8 @@ export const GetModelIndexByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetModelIndexByIdRequest" }) as any as S.Schema<GetModelIndexByIdRequest>;
 
 export interface GetModelIndexByIdResponse {}
-export const GetModelIndexByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetModelIndexByIdResponse",
-}) as any as S.Schema<GetModelIndexByIdResponse>;
+export const GetModelIndexByIdResponse =
+  CreateActionResponse as any as S.Schema<GetModelIndexByIdResponse>;
 
 export interface GetMtGtapRequest {
   group_id?: number;
@@ -14607,9 +13481,7 @@ export const GetMtGtapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMtGtapRequest" }) as any as S.Schema<GetMtGtapRequest>;
 
 export interface GetMtGtapResponse {}
-export const GetMtGtapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMtGtapResponse",
-}) as any as S.Schema<GetMtGtapResponse>;
+export const GetMtGtapResponse = CreateActionResponse as any as S.Schema<GetMtGtapResponse>;
 
 export interface GetMtGtapByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14622,9 +13494,7 @@ export const GetMtGtapByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMtGtapByIdRequest" }) as any as S.Schema<GetMtGtapByIdRequest>;
 
 export interface GetMtGtapByIdResponse {}
-export const GetMtGtapByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMtGtapByIdResponse",
-}) as any as S.Schema<GetMtGtapByIdResponse>;
+export const GetMtGtapByIdResponse = CreateActionResponse as any as S.Schema<GetMtGtapByIdResponse>;
 
 export interface GetMtUserAttributesRequest {}
 export const GetMtUserAttributesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14634,9 +13504,8 @@ export const GetMtUserAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMtUserAttributesRequest>;
 
 export interface GetMtUserAttributesResponse {}
-export const GetMtUserAttributesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetMtUserAttributesResponse",
-}) as any as S.Schema<GetMtUserAttributesResponse>;
+export const GetMtUserAttributesResponse =
+  CreateActionResponse as any as S.Schema<GetMtUserAttributesResponse>;
 
 export interface GetNativeQuerySnippetRequest {
   archived?: boolean;
@@ -14650,9 +13519,8 @@ export const GetNativeQuerySnippetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNativeQuerySnippetRequest>;
 
 export interface GetNativeQuerySnippetResponse {}
-export const GetNativeQuerySnippetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetNativeQuerySnippetResponse",
-}) as any as S.Schema<GetNativeQuerySnippetResponse>;
+export const GetNativeQuerySnippetResponse =
+  CreateActionResponse as any as S.Schema<GetNativeQuerySnippetResponse>;
 
 export interface GetNativeQuerySnippetByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14667,11 +13535,8 @@ export const GetNativeQuerySnippetByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNativeQuerySnippetByIdRequest>;
 
 export interface GetNativeQuerySnippetByIdResponse {}
-export const GetNativeQuerySnippetByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetNativeQuerySnippetByIdResponse",
-}) as any as S.Schema<GetNativeQuerySnippetByIdResponse>;
+export const GetNativeQuerySnippetByIdResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetNativeQuerySnippetByIdResponse>;
 
 export type GetNotificationRequestPayloadType =
   | "notification/dashboard"
@@ -14704,14 +13569,12 @@ export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetNotificationRequest" }) as any as S.Schema<GetNotificationRequest>;
 
 export interface GetNotificationResponse {}
-export const GetNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetNotificationResponse",
-}) as any as S.Schema<GetNotificationResponse>;
+export const GetNotificationResponse =
+  CreateActionResponse as any as S.Schema<GetNotificationResponse>;
 
 export type GetNotificationAdminRequestChannelCase1List = Array<string>;
-export const GetNotificationAdminRequestChannelCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetNotificationAdminRequestChannelCase1List>;
+export const GetNotificationAdminRequestChannelCase1List =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<GetNotificationAdminRequestChannelCase1List>;
 
 export type GetNotificationAdminRequestChannel =
   | string
@@ -14770,9 +13633,8 @@ export const GetNotificationAdminRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotificationAdminRequest>;
 
 export interface GetNotificationAdminResponse {}
-export const GetNotificationAdminResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetNotificationAdminResponse",
-}) as any as S.Schema<GetNotificationAdminResponse>;
+export const GetNotificationAdminResponse =
+  CreateActionResponse as any as S.Schema<GetNotificationAdminResponse>;
 
 export interface GetNotificationAdminByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14787,11 +13649,8 @@ export const GetNotificationAdminByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotificationAdminByIdRequest>;
 
 export interface GetNotificationAdminByIdResponse {}
-export const GetNotificationAdminByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetNotificationAdminByIdResponse",
-}) as any as S.Schema<GetNotificationAdminByIdResponse>;
+export const GetNotificationAdminByIdResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetNotificationAdminByIdResponse>;
 
 export interface GetNotificationByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14806,9 +13665,8 @@ export const GetNotificationByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotificationByIdRequest>;
 
 export interface GetNotificationByIdResponse {}
-export const GetNotificationByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetNotificationByIdResponse",
-}) as any as S.Schema<GetNotificationByIdResponse>;
+export const GetNotificationByIdResponse =
+  CreateActionResponse as any as S.Schema<GetNotificationByIdResponse>;
 
 export type GetOauthAuthorizationsRequestEventType = "registered" | "approved" | "denied";
 export const GetOauthAuthorizationsRequestEventType = S.String;
@@ -14827,9 +13685,8 @@ export const GetOauthAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOauthAuthorizationsRequest>;
 
 export interface GetOauthAuthorizationsResponse {}
-export const GetOauthAuthorizationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetOauthAuthorizationsResponse",
-}) as any as S.Schema<GetOauthAuthorizationsResponse>;
+export const GetOauthAuthorizationsResponse =
+  CreateActionResponse as any as S.Schema<GetOauthAuthorizationsResponse>;
 
 export type GetOembedRequestFormat = "json";
 export const GetOembedRequestFormat = S.String;
@@ -14851,9 +13708,7 @@ export const GetOembedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOembedRequest" }) as any as S.Schema<GetOembedRequest>;
 
 export interface GetOembedResponse {}
-export const GetOembedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetOembedResponse",
-}) as any as S.Schema<GetOembedResponse>;
+export const GetOembedResponse = CreateActionResponse as any as S.Schema<GetOembedResponse>;
 
 export interface GetOsiAiContextRequest {}
 export const GetOsiAiContextRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14861,9 +13716,8 @@ export const GetOsiAiContextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOsiAiContextRequest" }) as any as S.Schema<GetOsiAiContextRequest>;
 
 export interface GetOsiAiContextResponse {}
-export const GetOsiAiContextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetOsiAiContextResponse",
-}) as any as S.Schema<GetOsiAiContextResponse>;
+export const GetOsiAiContextResponse =
+  CreateActionResponse as any as S.Schema<GetOsiAiContextResponse>;
 
 export interface GetOsiAiContextByEntityLocalIdRequest {
   entity_type: string;
@@ -14886,11 +13740,8 @@ export const GetOsiAiContextByEntityLocalIdRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetOsiAiContextByEntityLocalIdRequest>;
 
 export interface GetOsiAiContextByEntityLocalIdResponse {}
-export const GetOsiAiContextByEntityLocalIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetOsiAiContextByEntityLocalIdResponse",
-}) as any as S.Schema<GetOsiAiContextByEntityLocalIdResponse>;
+export const GetOsiAiContextByEntityLocalIdResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetOsiAiContextByEntityLocalIdResponse>;
 
 export interface GetPermissionsGraphRequest {}
 export const GetPermissionsGraphRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14900,9 +13751,8 @@ export const GetPermissionsGraphRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPermissionsGraphRequest>;
 
 export interface GetPermissionsGraphResponse {}
-export const GetPermissionsGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPermissionsGraphResponse",
-}) as any as S.Schema<GetPermissionsGraphResponse>;
+export const GetPermissionsGraphResponse =
+  CreateActionResponse as any as S.Schema<GetPermissionsGraphResponse>;
 
 export interface GetPermissionsGraphDbRequest {
   /** value must be an integer greater than zero. */
@@ -14917,9 +13767,8 @@ export const GetPermissionsGraphDbRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPermissionsGraphDbRequest>;
 
 export interface GetPermissionsGraphDbResponse {}
-export const GetPermissionsGraphDbResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPermissionsGraphDbResponse",
-}) as any as S.Schema<GetPermissionsGraphDbResponse>;
+export const GetPermissionsGraphDbResponse =
+  CreateActionResponse as any as S.Schema<GetPermissionsGraphDbResponse>;
 
 export interface GetPermissionsGraphGroupRequest {
   /** value must be an integer greater than zero. */
@@ -14934,11 +13783,8 @@ export const GetPermissionsGraphGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPermissionsGraphGroupRequest>;
 
 export interface GetPermissionsGraphGroupResponse {}
-export const GetPermissionsGraphGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPermissionsGraphGroupResponse",
-}) as any as S.Schema<GetPermissionsGraphGroupResponse>;
+export const GetPermissionsGraphGroupResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPermissionsGraphGroupResponse>;
 
 export type GetPermissionsGroupRequestTenancy = "external" | "internal";
 export const GetPermissionsGroupRequestTenancy = S.String;
@@ -14955,9 +13801,8 @@ export const GetPermissionsGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPermissionsGroupRequest>;
 
 export interface GetPermissionsGroupResponse {}
-export const GetPermissionsGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPermissionsGroupResponse",
-}) as any as S.Schema<GetPermissionsGroupResponse>;
+export const GetPermissionsGroupResponse =
+  CreateActionResponse as any as S.Schema<GetPermissionsGroupResponse>;
 
 export interface GetPermissionsGroupByIdRequest {
   /** value must be an integer greater than zero. */
@@ -14972,9 +13817,8 @@ export const GetPermissionsGroupByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPermissionsGroupByIdRequest>;
 
 export interface GetPermissionsGroupByIdResponse {}
-export const GetPermissionsGroupByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetPermissionsGroupByIdResponse" },
-) as any as S.Schema<GetPermissionsGroupByIdResponse>;
+export const GetPermissionsGroupByIdResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<GetPermissionsGroupByIdResponse>;
 
 export interface GetPermissionsMembershipRequest {}
 export const GetPermissionsMembershipRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14984,11 +13828,8 @@ export const GetPermissionsMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPermissionsMembershipRequest>;
 
 export interface GetPermissionsMembershipResponse {}
-export const GetPermissionsMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPermissionsMembershipResponse",
-}) as any as S.Schema<GetPermissionsMembershipResponse>;
+export const GetPermissionsMembershipResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPermissionsMembershipResponse>;
 
 export interface GetPersistRequest {}
 export const GetPersistRequest = /*@__PURE__*/ S.suspend(() =>
@@ -14996,9 +13837,7 @@ export const GetPersistRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPersistRequest" }) as any as S.Schema<GetPersistRequest>;
 
 export interface GetPersistResponse {}
-export const GetPersistResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPersistResponse",
-}) as any as S.Schema<GetPersistResponse>;
+export const GetPersistResponse = CreateActionResponse as any as S.Schema<GetPersistResponse>;
 
 export interface GetPersistByPersistedInfoIdRequest {
   /** value must be an integer greater than zero. */
@@ -15013,11 +13852,8 @@ export const GetPersistByPersistedInfoIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPersistByPersistedInfoIdRequest>;
 
 export interface GetPersistByPersistedInfoIdResponse {}
-export const GetPersistByPersistedInfoIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPersistByPersistedInfoIdResponse",
-}) as any as S.Schema<GetPersistByPersistedInfoIdResponse>;
+export const GetPersistByPersistedInfoIdResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPersistByPersistedInfoIdResponse>;
 
 export interface GetPersistCardRequest {
   /** value must be an integer greater than zero. */
@@ -15030,9 +13866,8 @@ export const GetPersistCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPersistCardRequest" }) as any as S.Schema<GetPersistCardRequest>;
 
 export interface GetPersistCardResponse {}
-export const GetPersistCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPersistCardResponse",
-}) as any as S.Schema<GetPersistCardResponse>;
+export const GetPersistCardResponse =
+  CreateActionResponse as any as S.Schema<GetPersistCardResponse>;
 
 export interface GetPivotCardQueryRequest {
   /** value must be a valid UUID. */
@@ -15049,9 +13884,8 @@ export const GetPivotCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPivotCardQueryRequest" }) as any as S.Schema<GetPivotCardQueryRequest>;
 
 export interface GetPivotCardQueryResponse {}
-export const GetPivotCardQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPivotCardQueryResponse",
-}) as any as S.Schema<GetPivotCardQueryResponse>;
+export const GetPivotCardQueryResponse =
+  CreateActionResponse as any as S.Schema<GetPivotCardQueryResponse>;
 
 export interface GetPivotDashboardDashcardCardRequest {
   /** value must be a valid UUID. */
@@ -15082,11 +13916,8 @@ export const GetPivotDashboardDashcardCardRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetPivotDashboardDashcardCardRequest>;
 
 export interface GetPivotDashboardDashcardCardResponse {}
-export const GetPivotDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPivotDashboardDashcardCardResponse",
-}) as any as S.Schema<GetPivotDashboardDashcardCardResponse>;
+export const GetPivotDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPivotDashboardDashcardCardResponse>;
 
 export interface GetPremiumFeaturesTokenStatusRequest {}
 export const GetPremiumFeaturesTokenStatusRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15098,11 +13929,8 @@ export const GetPremiumFeaturesTokenStatusRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetPremiumFeaturesTokenStatusRequest>;
 
 export interface GetPremiumFeaturesTokenStatusResponse {}
-export const GetPremiumFeaturesTokenStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPremiumFeaturesTokenStatusResponse",
-}) as any as S.Schema<GetPremiumFeaturesTokenStatusResponse>;
+export const GetPremiumFeaturesTokenStatusResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPremiumFeaturesTokenStatusResponse>;
 
 export interface GetPreviewEmbedCardRequest {
   token: string;
@@ -15116,9 +13944,8 @@ export const GetPreviewEmbedCardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPreviewEmbedCardRequest>;
 
 export interface GetPreviewEmbedCardResponse {}
-export const GetPreviewEmbedCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPreviewEmbedCardResponse",
-}) as any as S.Schema<GetPreviewEmbedCardResponse>;
+export const GetPreviewEmbedCardResponse =
+  CreateActionResponse as any as S.Schema<GetPreviewEmbedCardResponse>;
 
 export interface GetPreviewEmbedCardParamRemappingRequest {
   token: string;
@@ -15142,11 +13969,8 @@ export const GetPreviewEmbedCardParamRemappingRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetPreviewEmbedCardParamRemappingRequest>;
 
 export interface GetPreviewEmbedCardParamRemappingResponse {}
-export const GetPreviewEmbedCardParamRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedCardParamRemappingResponse",
-}) as any as S.Schema<GetPreviewEmbedCardParamRemappingResponse>;
+export const GetPreviewEmbedCardParamRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedCardParamRemappingResponse>;
 
 export interface GetPreviewEmbedCardParamValuesRequest {
   token: string;
@@ -15168,11 +13992,8 @@ export const GetPreviewEmbedCardParamValuesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetPreviewEmbedCardParamValuesRequest>;
 
 export interface GetPreviewEmbedCardParamValuesResponse {}
-export const GetPreviewEmbedCardParamValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedCardParamValuesResponse",
-}) as any as S.Schema<GetPreviewEmbedCardParamValuesResponse>;
+export const GetPreviewEmbedCardParamValuesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedCardParamValuesResponse>;
 
 export interface GetPreviewEmbedCardQueryRequest {
   token: string;
@@ -15186,11 +14007,8 @@ export const GetPreviewEmbedCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPreviewEmbedCardQueryRequest>;
 
 export interface GetPreviewEmbedCardQueryResponse {}
-export const GetPreviewEmbedCardQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedCardQueryResponse",
-}) as any as S.Schema<GetPreviewEmbedCardQueryResponse>;
+export const GetPreviewEmbedCardQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedCardQueryResponse>;
 
 export interface GetPreviewEmbedDashboardRequest {
   token: string;
@@ -15204,11 +14022,8 @@ export const GetPreviewEmbedDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPreviewEmbedDashboardRequest>;
 
 export interface GetPreviewEmbedDashboardResponse {}
-export const GetPreviewEmbedDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedDashboardResponse",
-}) as any as S.Schema<GetPreviewEmbedDashboardResponse>;
+export const GetPreviewEmbedDashboardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardResponse>;
 
 export interface GetPreviewEmbedDashboardDashcardCardRequest {
   token: string;
@@ -15234,11 +14049,8 @@ export const GetPreviewEmbedDashboardDashcardCardRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardRequest>;
 
 export interface GetPreviewEmbedDashboardDashcardCardResponse {}
-export const GetPreviewEmbedDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedDashboardDashcardCardResponse",
-}) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardResponse>;
+export const GetPreviewEmbedDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardDashcardCardResponse>;
 
 export interface GetPreviewEmbedDashboardParamRemappingRequest {
   token: string;
@@ -15262,11 +14074,8 @@ export const GetPreviewEmbedDashboardParamRemappingRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingRequest>;
 
 export interface GetPreviewEmbedDashboardParamRemappingResponse {}
-export const GetPreviewEmbedDashboardParamRemappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedDashboardParamRemappingResponse",
-}) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingResponse>;
+export const GetPreviewEmbedDashboardParamRemappingResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardParamRemappingResponse>;
 
 export interface GetPreviewEmbedDashboardParamSearchRequest {
   token: string;
@@ -15290,11 +14099,8 @@ export const GetPreviewEmbedDashboardParamSearchRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetPreviewEmbedDashboardParamSearchRequest>;
 
 export interface GetPreviewEmbedDashboardParamSearchResponse {}
-export const GetPreviewEmbedDashboardParamSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedDashboardParamSearchResponse",
-}) as any as S.Schema<GetPreviewEmbedDashboardParamSearchResponse>;
+export const GetPreviewEmbedDashboardParamSearchResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardParamSearchResponse>;
 
 export interface GetPreviewEmbedDashboardParamValuesRequest {
   token: string;
@@ -15316,11 +14122,8 @@ export const GetPreviewEmbedDashboardParamValuesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetPreviewEmbedDashboardParamValuesRequest>;
 
 export interface GetPreviewEmbedDashboardParamValuesResponse {}
-export const GetPreviewEmbedDashboardParamValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedDashboardParamValuesResponse",
-}) as any as S.Schema<GetPreviewEmbedDashboardParamValuesResponse>;
+export const GetPreviewEmbedDashboardParamValuesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardParamValuesResponse>;
 
 export interface GetPreviewEmbedPivotCardQueryRequest {
   token: string;
@@ -15334,11 +14137,8 @@ export const GetPreviewEmbedPivotCardQueryRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetPreviewEmbedPivotCardQueryRequest>;
 
 export interface GetPreviewEmbedPivotCardQueryResponse {}
-export const GetPreviewEmbedPivotCardQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedPivotCardQueryResponse",
-}) as any as S.Schema<GetPreviewEmbedPivotCardQueryResponse>;
+export const GetPreviewEmbedPivotCardQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedPivotCardQueryResponse>;
 
 export interface GetPreviewEmbedPivotDashboardDashcardCardRequest {
   token: string;
@@ -15364,11 +14164,8 @@ export const GetPreviewEmbedPivotDashboardDashcardCardRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardRequest>;
 
 export interface GetPreviewEmbedPivotDashboardDashcardCardResponse {}
-export const GetPreviewEmbedPivotDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedPivotDashboardDashcardCardResponse",
-}) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardResponse>;
+export const GetPreviewEmbedPivotDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardResponse>;
 
 export interface GetPreviewEmbedTilesCardRequest {
   token: string;
@@ -15403,11 +14200,8 @@ export const GetPreviewEmbedTilesCardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPreviewEmbedTilesCardRequest>;
 
 export interface GetPreviewEmbedTilesCardResponse {}
-export const GetPreviewEmbedTilesCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedTilesCardResponse",
-}) as any as S.Schema<GetPreviewEmbedTilesCardResponse>;
+export const GetPreviewEmbedTilesCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedTilesCardResponse>;
 
 export interface GetPreviewEmbedTilesDashboardDashcardCardRequest {
   token: string;
@@ -15448,11 +14242,8 @@ export const GetPreviewEmbedTilesDashboardDashcardCardRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardRequest>;
 
 export interface GetPreviewEmbedTilesDashboardDashcardCardResponse {}
-export const GetPreviewEmbedTilesDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetPreviewEmbedTilesDashboardDashcardCardResponse",
-}) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardResponse>;
+export const GetPreviewEmbedTilesDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardResponse>;
 
 export interface GetPulseRequest {
   archived?: boolean;
@@ -15468,9 +14259,7 @@ export const GetPulseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPulseRequest" }) as any as S.Schema<GetPulseRequest>;
 
 export interface GetPulseResponse {}
-export const GetPulseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPulseResponse",
-}) as any as S.Schema<GetPulseResponse>;
+export const GetPulseResponse = CreateActionResponse as any as S.Schema<GetPulseResponse>;
 
 export interface GetPulseByIdRequest {
   /** value must be an integer greater than zero. */
@@ -15483,9 +14272,7 @@ export const GetPulseByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPulseByIdRequest" }) as any as S.Schema<GetPulseByIdRequest>;
 
 export interface GetPulseByIdResponse {}
-export const GetPulseByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPulseByIdResponse",
-}) as any as S.Schema<GetPulseByIdResponse>;
+export const GetPulseByIdResponse = CreateActionResponse as any as S.Schema<GetPulseByIdResponse>;
 
 export interface GetPulseFormInputRequest {}
 export const GetPulseFormInputRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15493,9 +14280,8 @@ export const GetPulseFormInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPulseFormInputRequest" }) as any as S.Schema<GetPulseFormInputRequest>;
 
 export interface GetPulseFormInputResponse {}
-export const GetPulseFormInputResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPulseFormInputResponse",
-}) as any as S.Schema<GetPulseFormInputResponse>;
+export const GetPulseFormInputResponse =
+  CreateActionResponse as any as S.Schema<GetPulseFormInputResponse>;
 
 export type GetRevisionRequestEntity =
   | "card"
@@ -15519,9 +14305,7 @@ export const GetRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRevisionRequest" }) as any as S.Schema<GetRevisionRequest>;
 
 export interface GetRevisionResponse {}
-export const GetRevisionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetRevisionResponse",
-}) as any as S.Schema<GetRevisionResponse>;
+export const GetRevisionResponse = CreateActionResponse as any as S.Schema<GetRevisionResponse>;
 
 export type GetRevisionByIdRequestEntity =
   | "card"
@@ -15545,9 +14329,8 @@ export const GetRevisionByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRevisionByIdRequest" }) as any as S.Schema<GetRevisionByIdRequest>;
 
 export interface GetRevisionByIdResponse {}
-export const GetRevisionByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetRevisionByIdResponse",
-}) as any as S.Schema<GetRevisionByIdResponse>;
+export const GetRevisionByIdResponse =
+  CreateActionResponse as any as S.Schema<GetRevisionByIdResponse>;
 
 export type GetSearchRequestContext =
   | "basic-actions"
@@ -15597,19 +14380,16 @@ export type GetSearchRequestFilterItemsInPersonalCollection =
 export const GetSearchRequestFilterItemsInPersonalCollection = S.String;
 
 export type GetSearchRequestCreatedByList = Array<number>;
-export const GetSearchRequestCreatedByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSearchRequestCreatedByList>;
+export const GetSearchRequestCreatedByList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchRequestCreatedByList>;
 
 export type GetSearchRequestDisplayTypeList = Array<string>;
-export const GetSearchRequestDisplayTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSearchRequestDisplayTypeList>;
+export const GetSearchRequestDisplayTypeList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<GetSearchRequestDisplayTypeList>;
 
 export type GetSearchRequestLastEditedByList = Array<number>;
-export const GetSearchRequestLastEditedByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSearchRequestLastEditedByList>;
+export const GetSearchRequestLastEditedByList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchRequestLastEditedByList>;
 
 export type GetSearchRequestVectorSearchStrategy =
   | "hnsw"
@@ -15619,9 +14399,8 @@ export type GetSearchRequestVectorSearchStrategy =
 export const GetSearchRequestVectorSearchStrategy = S.String;
 
 export type GetSearchRequestIdsList = Array<number>;
-export const GetSearchRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSearchRequestIdsList>;
+export const GetSearchRequestIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchRequestIdsList>;
 
 export interface GetSearchRequest {
   q?: string;
@@ -15683,9 +14462,7 @@ export const GetSearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSearchRequest" }) as any as S.Schema<GetSearchRequest>;
 
 export interface GetSearchResponse {}
-export const GetSearchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSearchResponse",
-}) as any as S.Schema<GetSearchResponse>;
+export const GetSearchResponse = CreateActionResponse as any as S.Schema<GetSearchResponse>;
 
 export type GetSearchDebugRequestContext =
   | "basic-actions"
@@ -15737,19 +14514,16 @@ export type GetSearchDebugRequestFilterItemsInPersonalCollection =
 export const GetSearchDebugRequestFilterItemsInPersonalCollection = S.String;
 
 export type GetSearchDebugRequestCreatedByList = Array<number>;
-export const GetSearchDebugRequestCreatedByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSearchDebugRequestCreatedByList>;
+export const GetSearchDebugRequestCreatedByList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchDebugRequestCreatedByList>;
 
 export type GetSearchDebugRequestDisplayTypeList = Array<string>;
-export const GetSearchDebugRequestDisplayTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSearchDebugRequestDisplayTypeList>;
+export const GetSearchDebugRequestDisplayTypeList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<GetSearchDebugRequestDisplayTypeList>;
 
 export type GetSearchDebugRequestLastEditedByList = Array<number>;
-export const GetSearchDebugRequestLastEditedByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSearchDebugRequestLastEditedByList>;
+export const GetSearchDebugRequestLastEditedByList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchDebugRequestLastEditedByList>;
 
 export type GetSearchDebugRequestVectorSearchStrategy =
   | "hnsw"
@@ -15759,9 +14533,8 @@ export type GetSearchDebugRequestVectorSearchStrategy =
 export const GetSearchDebugRequestVectorSearchStrategy = S.String;
 
 export type GetSearchDebugRequestIdsList = Array<number>;
-export const GetSearchDebugRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSearchDebugRequestIdsList>;
+export const GetSearchDebugRequestIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchDebugRequestIdsList>;
 
 export type GetSearchDebugRequestExpectedResultType =
   | "dashboard"
@@ -15846,9 +14619,8 @@ export const GetSearchDebugRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSearchDebugRequest" }) as any as S.Schema<GetSearchDebugRequest>;
 
 export interface GetSearchDebugResponse {}
-export const GetSearchDebugResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSearchDebugResponse",
-}) as any as S.Schema<GetSearchDebugResponse>;
+export const GetSearchDebugResponse =
+  CreateActionResponse as any as S.Schema<GetSearchDebugResponse>;
 
 export interface GetSearchWeightsRequest {
   context?: string;
@@ -15860,9 +14632,8 @@ export const GetSearchWeightsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSearchWeightsRequest" }) as any as S.Schema<GetSearchWeightsRequest>;
 
 export interface GetSearchWeightsResponse {}
-export const GetSearchWeightsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSearchWeightsResponse",
-}) as any as S.Schema<GetSearchWeightsResponse>;
+export const GetSearchWeightsResponse =
+  CreateActionResponse as any as S.Schema<GetSearchWeightsResponse>;
 
 export interface GetSegmentRequest {}
 export const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15870,9 +14641,7 @@ export const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSegmentRequest" }) as any as S.Schema<GetSegmentRequest>;
 
 export interface GetSegmentResponse {}
-export const GetSegmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSegmentResponse",
-}) as any as S.Schema<GetSegmentResponse>;
+export const GetSegmentResponse = CreateActionResponse as any as S.Schema<GetSegmentResponse>;
 
 export interface GetSegmentByIdRequest {
   /** value must be an integer greater than zero. */
@@ -15885,9 +14654,8 @@ export const GetSegmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSegmentByIdRequest" }) as any as S.Schema<GetSegmentByIdRequest>;
 
 export interface GetSegmentByIdResponse {}
-export const GetSegmentByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSegmentByIdResponse",
-}) as any as S.Schema<GetSegmentByIdResponse>;
+export const GetSegmentByIdResponse =
+  CreateActionResponse as any as S.Schema<GetSegmentByIdResponse>;
 
 export interface GetSegmentRelatedRequest {
   /** value must be an integer greater than zero. */
@@ -15900,9 +14668,8 @@ export const GetSegmentRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSegmentRelatedRequest" }) as any as S.Schema<GetSegmentRelatedRequest>;
 
 export interface GetSegmentRelatedResponse {}
-export const GetSegmentRelatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSegmentRelatedResponse",
-}) as any as S.Schema<GetSegmentRelatedResponse>;
+export const GetSegmentRelatedResponse =
+  CreateActionResponse as any as S.Schema<GetSegmentRelatedResponse>;
 
 export interface GetSessionPasswordResetTokenValidRequest {
   token: string;
@@ -15916,11 +14683,8 @@ export const GetSessionPasswordResetTokenValidRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetSessionPasswordResetTokenValidRequest>;
 
 export interface GetSessionPasswordResetTokenValidResponse {}
-export const GetSessionPasswordResetTokenValidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetSessionPasswordResetTokenValidResponse",
-}) as any as S.Schema<GetSessionPasswordResetTokenValidResponse>;
+export const GetSessionPasswordResetTokenValidResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetSessionPasswordResetTokenValidResponse>;
 
 export interface GetSessionPropertiesRequest {}
 export const GetSessionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15930,9 +14694,8 @@ export const GetSessionPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSessionPropertiesRequest>;
 
 export interface GetSessionPropertiesResponse {}
-export const GetSessionPropertiesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSessionPropertiesResponse",
-}) as any as S.Schema<GetSessionPropertiesResponse>;
+export const GetSessionPropertiesResponse =
+  CreateActionResponse as any as S.Schema<GetSessionPropertiesResponse>;
 
 export interface GetSettingRequest {}
 export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15940,9 +14703,7 @@ export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSettingRequest" }) as any as S.Schema<GetSettingRequest>;
 
 export interface GetSettingResponse {}
-export const GetSettingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSettingResponse",
-}) as any as S.Schema<GetSettingResponse>;
+export const GetSettingResponse = CreateActionResponse as any as S.Schema<GetSettingResponse>;
 
 export interface GetSettingByKeyRequest {
   key: string;
@@ -15954,9 +14715,8 @@ export const GetSettingByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSettingByKeyRequest" }) as any as S.Schema<GetSettingByKeyRequest>;
 
 export interface GetSettingByKeyResponse {}
-export const GetSettingByKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSettingByKeyResponse",
-}) as any as S.Schema<GetSettingByKeyResponse>;
+export const GetSettingByKeyResponse =
+  CreateActionResponse as any as S.Schema<GetSettingByKeyResponse>;
 
 export interface GetSlackAppInfoRequest {}
 export const GetSlackAppInfoRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15964,9 +14724,8 @@ export const GetSlackAppInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSlackAppInfoRequest" }) as any as S.Schema<GetSlackAppInfoRequest>;
 
 export interface GetSlackAppInfoResponse {}
-export const GetSlackAppInfoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSlackAppInfoResponse",
-}) as any as S.Schema<GetSlackAppInfoResponse>;
+export const GetSlackAppInfoResponse =
+  CreateActionResponse as any as S.Schema<GetSlackAppInfoResponse>;
 
 export interface GetSlackManifestRequest {}
 export const GetSlackManifestRequest = /*@__PURE__*/ S.suspend(() =>
@@ -15974,9 +14733,8 @@ export const GetSlackManifestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSlackManifestRequest" }) as any as S.Schema<GetSlackManifestRequest>;
 
 export interface GetSlackManifestResponse {}
-export const GetSlackManifestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSlackManifestResponse",
-}) as any as S.Schema<GetSlackManifestResponse>;
+export const GetSlackManifestResponse =
+  CreateActionResponse as any as S.Schema<GetSlackManifestResponse>;
 
 export type MetabaseWarehouseSchemaRestApiTableDataLayers = "final" | "internal" | "hidden";
 export const MetabaseWarehouseSchemaRestApiTableDataLayers = S.String;
@@ -16026,9 +14784,7 @@ export const GetTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTableRequest" }) as any as S.Schema<GetTableRequest>;
 
 export interface GetTableResponse {}
-export const GetTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTableResponse",
-}) as any as S.Schema<GetTableResponse>;
+export const GetTableResponse = CreateActionResponse as any as S.Schema<GetTableResponse>;
 
 export interface GetTableByIdRequest {
   /** value must be an integer greater than zero. */
@@ -16043,9 +14799,7 @@ export const GetTableByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTableByIdRequest" }) as any as S.Schema<GetTableByIdRequest>;
 
 export interface GetTableByIdResponse {}
-export const GetTableByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTableByIdResponse",
-}) as any as S.Schema<GetTableByIdResponse>;
+export const GetTableByIdResponse = CreateActionResponse as any as S.Schema<GetTableByIdResponse>;
 
 export interface GetTableCardIdFksRequest {}
 export const GetTableCardIdFksRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16053,9 +14807,8 @@ export const GetTableCardIdFksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTableCardIdFksRequest" }) as any as S.Schema<GetTableCardIdFksRequest>;
 
 export interface GetTableCardIdFksResponse {}
-export const GetTableCardIdFksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTableCardIdFksResponse",
-}) as any as S.Schema<GetTableCardIdFksResponse>;
+export const GetTableCardIdFksResponse =
+  CreateActionResponse as any as S.Schema<GetTableCardIdFksResponse>;
 
 export interface GetTableCardIdQueryMetadataRequest {}
 export const GetTableCardIdQueryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16067,11 +14820,8 @@ export const GetTableCardIdQueryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTableCardIdQueryMetadataRequest>;
 
 export interface GetTableCardIdQueryMetadataResponse {}
-export const GetTableCardIdQueryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetTableCardIdQueryMetadataResponse",
-}) as any as S.Schema<GetTableCardIdQueryMetadataResponse>;
+export const GetTableCardIdQueryMetadataResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTableCardIdQueryMetadataResponse>;
 
 export interface GetTableDataRequest {
   /** value must be an integer greater than zero. */
@@ -16084,9 +14834,7 @@ export const GetTableDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTableDataRequest" }) as any as S.Schema<GetTableDataRequest>;
 
 export interface GetTableDataResponse {}
-export const GetTableDataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTableDataResponse",
-}) as any as S.Schema<GetTableDataResponse>;
+export const GetTableDataResponse = CreateActionResponse as any as S.Schema<GetTableDataResponse>;
 
 export interface GetTableFksRequest {
   /** value must be an integer greater than zero. */
@@ -16099,9 +14847,7 @@ export const GetTableFksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTableFksRequest" }) as any as S.Schema<GetTableFksRequest>;
 
 export interface GetTableFksResponse {}
-export const GetTableFksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTableFksResponse",
-}) as any as S.Schema<GetTableFksResponse>;
+export const GetTableFksResponse = CreateActionResponse as any as S.Schema<GetTableFksResponse>;
 
 export interface GetTableQueryMetadataRequest {
   /** value must be an integer greater than zero. */
@@ -16122,9 +14868,8 @@ export const GetTableQueryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTableQueryMetadataRequest>;
 
 export interface GetTableQueryMetadataResponse {}
-export const GetTableQueryMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTableQueryMetadataResponse",
-}) as any as S.Schema<GetTableQueryMetadataResponse>;
+export const GetTableQueryMetadataResponse =
+  CreateActionResponse as any as S.Schema<GetTableQueryMetadataResponse>;
 
 export interface GetTableRelatedRequest {
   /** value must be an integer greater than zero. */
@@ -16137,9 +14882,8 @@ export const GetTableRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTableRelatedRequest" }) as any as S.Schema<GetTableRelatedRequest>;
 
 export interface GetTableRelatedResponse {}
-export const GetTableRelatedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTableRelatedResponse",
-}) as any as S.Schema<GetTableRelatedResponse>;
+export const GetTableRelatedResponse =
+  CreateActionResponse as any as S.Schema<GetTableRelatedResponse>;
 
 export interface GetTaskRequest {}
 export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16147,9 +14891,7 @@ export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaskRequest" }) as any as S.Schema<GetTaskRequest>;
 
 export interface GetTaskResponse {}
-export const GetTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTaskResponse",
-}) as any as S.Schema<GetTaskResponse>;
+export const GetTaskResponse = CreateActionResponse as any as S.Schema<GetTaskResponse>;
 
 export interface GetTaskByIdRequest {
   /** value must be an integer greater than zero. */
@@ -16162,9 +14904,7 @@ export const GetTaskByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaskByIdRequest" }) as any as S.Schema<GetTaskByIdRequest>;
 
 export interface GetTaskByIdResponse {}
-export const GetTaskByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTaskByIdResponse",
-}) as any as S.Schema<GetTaskByIdResponse>;
+export const GetTaskByIdResponse = CreateActionResponse as any as S.Schema<GetTaskByIdResponse>;
 
 export interface GetTaskInfoRequest {}
 export const GetTaskInfoRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16172,9 +14912,7 @@ export const GetTaskInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaskInfoRequest" }) as any as S.Schema<GetTaskInfoRequest>;
 
 export interface GetTaskInfoResponse {}
-export const GetTaskInfoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTaskInfoResponse",
-}) as any as S.Schema<GetTaskInfoResponse>;
+export const GetTaskInfoResponse = CreateActionResponse as any as S.Schema<GetTaskInfoResponse>;
 
 export interface GetTaskRunRequest {
   /** value must be an integer greater than zero. */
@@ -16187,9 +14925,7 @@ export const GetTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaskRunRequest" }) as any as S.Schema<GetTaskRunRequest>;
 
 export interface GetTaskRunResponse {}
-export const GetTaskRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTaskRunResponse",
-}) as any as S.Schema<GetTaskRunResponse>;
+export const GetTaskRunResponse = CreateActionResponse as any as S.Schema<GetTaskRunResponse>;
 
 export interface GetTaskRunsRequest {}
 export const GetTaskRunsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16197,9 +14933,7 @@ export const GetTaskRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaskRunsRequest" }) as any as S.Schema<GetTaskRunsRequest>;
 
 export interface GetTaskRunsResponse {}
-export const GetTaskRunsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTaskRunsResponse",
-}) as any as S.Schema<GetTaskRunsResponse>;
+export const GetTaskRunsResponse = CreateActionResponse as any as S.Schema<GetTaskRunsResponse>;
 
 export type GetTaskRunsEntitiesRequestRunType = "alert" | "sync" | "fingerprint" | "subscription";
 export const GetTaskRunsEntitiesRequestRunType = S.String;
@@ -16218,9 +14952,8 @@ export const GetTaskRunsEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTaskRunsEntitiesRequest>;
 
 export interface GetTaskRunsEntitiesResponse {}
-export const GetTaskRunsEntitiesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTaskRunsEntitiesResponse",
-}) as any as S.Schema<GetTaskRunsEntitiesResponse>;
+export const GetTaskRunsEntitiesResponse =
+  CreateActionResponse as any as S.Schema<GetTaskRunsEntitiesResponse>;
 
 export interface GetTaskUniqueTasksRequest {}
 export const GetTaskUniqueTasksRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16230,9 +14963,8 @@ export const GetTaskUniqueTasksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTaskUniqueTasksRequest>;
 
 export interface GetTaskUniqueTasksResponse {}
-export const GetTaskUniqueTasksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTaskUniqueTasksResponse",
-}) as any as S.Schema<GetTaskUniqueTasksResponse>;
+export const GetTaskUniqueTasksResponse =
+  CreateActionResponse as any as S.Schema<GetTaskUniqueTasksResponse>;
 
 export interface GetTileRequest {
   card_id: number;
@@ -16259,9 +14991,7 @@ export const GetTileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTileRequest" }) as any as S.Schema<GetTileRequest>;
 
 export interface GetTileResponse {}
-export const GetTileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTileResponse",
-}) as any as S.Schema<GetTileResponse>;
+export const GetTileResponse = CreateActionResponse as any as S.Schema<GetTileResponse>;
 
 export interface GetTileByYRequest {
   /** value must be an integer. */
@@ -16286,9 +15016,7 @@ export const GetTileByYRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTileByYRequest" }) as any as S.Schema<GetTileByYRequest>;
 
 export interface GetTileByYResponse {}
-export const GetTileByYResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTileByYResponse",
-}) as any as S.Schema<GetTileByYResponse>;
+export const GetTileByYResponse = CreateActionResponse as any as S.Schema<GetTileByYResponse>;
 
 export interface GetTileDashcardCardRequest {
   dashboard_id: number;
@@ -16327,9 +15055,8 @@ export const GetTileDashcardCardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTileDashcardCardRequest>;
 
 export interface GetTileDashcardCardResponse {}
-export const GetTileDashcardCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTileDashcardCardResponse",
-}) as any as S.Schema<GetTileDashcardCardResponse>;
+export const GetTileDashcardCardResponse =
+  CreateActionResponse as any as S.Schema<GetTileDashcardCardResponse>;
 
 export interface GetTilesCardRequest {
   /** value must be a valid UUID. */
@@ -16359,9 +15086,7 @@ export const GetTilesCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTilesCardRequest" }) as any as S.Schema<GetTilesCardRequest>;
 
 export interface GetTilesCardResponse {}
-export const GetTilesCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTilesCardResponse",
-}) as any as S.Schema<GetTilesCardResponse>;
+export const GetTilesCardResponse = CreateActionResponse as any as S.Schema<GetTilesCardResponse>;
 
 export interface GetTilesDashboardDashcardCardRequest {
   /** value must be a valid UUID. */
@@ -16403,11 +15128,8 @@ export const GetTilesDashboardDashcardCardRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetTilesDashboardDashcardCardRequest>;
 
 export interface GetTilesDashboardDashcardCardResponse {}
-export const GetTilesDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetTilesDashboardDashcardCardResponse",
-}) as any as S.Schema<GetTilesDashboardDashcardCardResponse>;
+export const GetTilesDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTilesDashboardDashcardCardResponse>;
 
 export type MetabaseTimelineApiTimelineInclude = "events";
 export const MetabaseTimelineApiTimelineInclude = S.String;
@@ -16424,9 +15146,7 @@ export const GetTimelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTimelineRequest" }) as any as S.Schema<GetTimelineRequest>;
 
 export interface GetTimelineResponse {}
-export const GetTimelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTimelineResponse",
-}) as any as S.Schema<GetTimelineResponse>;
+export const GetTimelineResponse = CreateActionResponse as any as S.Schema<GetTimelineResponse>;
 
 export interface GetTimelineByIdRequest {
   /** value must be an integer greater than zero. */
@@ -16449,9 +15169,8 @@ export const GetTimelineByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTimelineByIdRequest" }) as any as S.Schema<GetTimelineByIdRequest>;
 
 export interface GetTimelineByIdResponse {}
-export const GetTimelineByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTimelineByIdResponse",
-}) as any as S.Schema<GetTimelineByIdResponse>;
+export const GetTimelineByIdResponse =
+  CreateActionResponse as any as S.Schema<GetTimelineByIdResponse>;
 
 export interface GetTimelineCollectionRequest {
   /** value must be an integer greater than zero. */
@@ -16470,9 +15189,8 @@ export const GetTimelineCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTimelineCollectionRequest>;
 
 export interface GetTimelineCollectionResponse {}
-export const GetTimelineCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTimelineCollectionResponse",
-}) as any as S.Schema<GetTimelineCollectionResponse>;
+export const GetTimelineCollectionResponse =
+  CreateActionResponse as any as S.Schema<GetTimelineCollectionResponse>;
 
 export interface GetTimelineCollectionRootRequest {
   include?: unknown;
@@ -16488,11 +15206,8 @@ export const GetTimelineCollectionRootRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTimelineCollectionRootRequest>;
 
 export interface GetTimelineCollectionRootResponse {}
-export const GetTimelineCollectionRootResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetTimelineCollectionRootResponse",
-}) as any as S.Schema<GetTimelineCollectionRootResponse>;
+export const GetTimelineCollectionRootResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTimelineCollectionRootResponse>;
 
 export interface GetTimelineEventRequest {
   /** value must be an integer greater than zero. */
@@ -16505,9 +15220,8 @@ export const GetTimelineEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTimelineEventRequest" }) as any as S.Schema<GetTimelineEventRequest>;
 
 export interface GetTimelineEventResponse {}
-export const GetTimelineEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTimelineEventResponse",
-}) as any as S.Schema<GetTimelineEventResponse>;
+export const GetTimelineEventResponse =
+  CreateActionResponse as any as S.Schema<GetTimelineEventResponse>;
 
 export type GetTransformRequestLastRunStatusesItem = "started" | "succeeded" | "failed" | "timeout";
 export const GetTransformRequestLastRunStatusesItem = S.String;
@@ -16520,9 +15234,8 @@ export const GetTransformRequestLastRunStatusesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetTransformRequestLastRunStatusesList>;
 
 export type GetTransformRequestTagIdsList = Array<number>;
-export const GetTransformRequestTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetTransformRequestTagIdsList>;
+export const GetTransformRequestTagIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformRequestTagIdsList>;
 
 export interface GetTransformRequest {
   last_run_start_time?: string;
@@ -16542,9 +15255,7 @@ export const GetTransformRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTransformRequest" }) as any as S.Schema<GetTransformRequest>;
 
 export interface GetTransformResponse {}
-export const GetTransformResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformResponse",
-}) as any as S.Schema<GetTransformResponse>;
+export const GetTransformResponse = CreateActionResponse as any as S.Schema<GetTransformResponse>;
 
 export interface GetTransformByIdRequest {
   /** value must be an integer greater than zero. */
@@ -16557,9 +15268,8 @@ export const GetTransformByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTransformByIdRequest" }) as any as S.Schema<GetTransformByIdRequest>;
 
 export interface GetTransformByIdResponse {}
-export const GetTransformByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformByIdResponse",
-}) as any as S.Schema<GetTransformByIdResponse>;
+export const GetTransformByIdResponse =
+  CreateActionResponse as any as S.Schema<GetTransformByIdResponse>;
 
 export interface GetTransformDependenciesRequest {
   /** value must be an integer greater than zero. */
@@ -16574,11 +15284,8 @@ export const GetTransformDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransformDependenciesRequest>;
 
 export interface GetTransformDependenciesResponse {}
-export const GetTransformDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetTransformDependenciesResponse",
-}) as any as S.Schema<GetTransformDependenciesResponse>;
+export const GetTransformDependenciesResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTransformDependenciesResponse>;
 
 export type GetTransformJobRequestLastRunStatusesItem =
   | "started"
@@ -16595,9 +15302,8 @@ export const GetTransformJobRequestLastRunStatusesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetTransformJobRequestLastRunStatusesList>;
 
 export type GetTransformJobRequestTagIdsList = Array<number>;
-export const GetTransformJobRequestTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetTransformJobRequestTagIdsList>;
+export const GetTransformJobRequestTagIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformJobRequestTagIdsList>;
 
 export interface GetTransformJobRequest {
   last_run_start_time?: string;
@@ -16617,9 +15323,8 @@ export const GetTransformJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTransformJobRequest" }) as any as S.Schema<GetTransformJobRequest>;
 
 export interface GetTransformJobResponse {}
-export const GetTransformJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformJobResponse",
-}) as any as S.Schema<GetTransformJobResponse>;
+export const GetTransformJobResponse =
+  CreateActionResponse as any as S.Schema<GetTransformJobResponse>;
 
 export interface GetTransformJobByJobIdRequest {
   /** value must be an integer greater than zero. */
@@ -16634,9 +15339,8 @@ export const GetTransformJobByJobIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransformJobByJobIdRequest>;
 
 export interface GetTransformJobByJobIdResponse {}
-export const GetTransformJobByJobIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformJobByJobIdResponse",
-}) as any as S.Schema<GetTransformJobByJobIdResponse>;
+export const GetTransformJobByJobIdResponse =
+  CreateActionResponse as any as S.Schema<GetTransformJobByJobIdResponse>;
 
 export type GetTransformJobRunsRequestStatus = "started" | "succeeded" | "failed" | "timeout";
 export const GetTransformJobRunsRequestStatus = S.String;
@@ -16675,9 +15379,8 @@ export const GetTransformJobRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransformJobRunsRequest>;
 
 export interface GetTransformJobRunsResponse {}
-export const GetTransformJobRunsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformJobRunsResponse",
-}) as any as S.Schema<GetTransformJobRunsResponse>;
+export const GetTransformJobRunsResponse =
+  CreateActionResponse as any as S.Schema<GetTransformJobRunsResponse>;
 
 export interface GetTransformJobRunTransformRunsRequest {
   /** value must be an integer greater than zero. */
@@ -16701,11 +15404,8 @@ export const GetTransformJobRunTransformRunsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetTransformJobRunTransformRunsRequest>;
 
 export interface GetTransformJobRunTransformRunsResponse {}
-export const GetTransformJobRunTransformRunsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetTransformJobRunTransformRunsResponse",
-}) as any as S.Schema<GetTransformJobRunTransformRunsResponse>;
+export const GetTransformJobRunTransformRunsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTransformJobRunTransformRunsResponse>;
 
 export interface GetTransformJobTransformsRequest {
   /** value must be an integer greater than zero. */
@@ -16720,11 +15420,8 @@ export const GetTransformJobTransformsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransformJobTransformsRequest>;
 
 export interface GetTransformJobTransformsResponse {}
-export const GetTransformJobTransformsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetTransformJobTransformsResponse",
-}) as any as S.Schema<GetTransformJobTransformsResponse>;
+export const GetTransformJobTransformsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTransformJobTransformsResponse>;
 
 export type GetTransformRunRequestSortColumn =
   | "transform-name"
@@ -16740,9 +15437,8 @@ export type GetTransformRunRequestSortDirection = "asc" | "desc";
 export const GetTransformRunRequestSortDirection = S.String;
 
 export type GetTransformRunRequestTransformIdsList = Array<number>;
-export const GetTransformRunRequestTransformIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetTransformRunRequestTransformIdsList>;
+export const GetTransformRunRequestTransformIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformRunRequestTransformIdsList>;
 
 export type GetTransformRunRequestStatusesItem = "started" | "succeeded" | "failed" | "timeout";
 export const GetTransformRunRequestStatusesItem = S.String;
@@ -16755,9 +15451,8 @@ export const GetTransformRunRequestStatusesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetTransformRunRequestStatusesList>;
 
 export type GetTransformRunRequestTransformTagIdsList = Array<number>;
-export const GetTransformRunRequestTransformTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetTransformRunRequestTransformTagIdsList>;
+export const GetTransformRunRequestTransformTagIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformRunRequestTransformTagIdsList>;
 
 export type GetTransformRunRequestRunMethodsItem = "manual" | "cron";
 export const GetTransformRunRequestRunMethodsItem = S.String;
@@ -16799,9 +15494,8 @@ export const GetTransformRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTransformRunRequest" }) as any as S.Schema<GetTransformRunRequest>;
 
 export interface GetTransformRunResponse {}
-export const GetTransformRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformRunResponse",
-}) as any as S.Schema<GetTransformRunResponse>;
+export const GetTransformRunResponse =
+  CreateActionResponse as any as S.Schema<GetTransformRunResponse>;
 
 export interface GetTransformRunByRunIdRequest {
   /** value must be an integer greater than zero. */
@@ -16816,9 +15510,8 @@ export const GetTransformRunByRunIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransformRunByRunIdRequest>;
 
 export interface GetTransformRunByRunIdResponse {}
-export const GetTransformRunByRunIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformRunByRunIdResponse",
-}) as any as S.Schema<GetTransformRunByRunIdResponse>;
+export const GetTransformRunByRunIdResponse =
+  CreateActionResponse as any as S.Schema<GetTransformRunByRunIdResponse>;
 
 export interface GetTransformTagRequest {}
 export const GetTransformTagRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16826,9 +15519,8 @@ export const GetTransformTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTransformTagRequest" }) as any as S.Schema<GetTransformTagRequest>;
 
 export interface GetTransformTagResponse {}
-export const GetTransformTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetTransformTagResponse",
-}) as any as S.Schema<GetTransformTagResponse>;
+export const GetTransformTagResponse =
+  CreateActionResponse as any as S.Schema<GetTransformTagResponse>;
 
 export type GetUserRequestTenancy = "all" | "internal" | "external";
 export const GetUserRequestTenancy = S.String;
@@ -16857,9 +15549,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export interface GetUserResponse {}
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUserResponse",
-}) as any as S.Schema<GetUserResponse>;
+export const GetUserResponse = CreateActionResponse as any as S.Schema<GetUserResponse>;
 
 export interface GetUserByIdRequest {
   /** value must be an integer greater than zero. */
@@ -16872,9 +15562,7 @@ export const GetUserByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserByIdRequest" }) as any as S.Schema<GetUserByIdRequest>;
 
 export interface GetUserByIdResponse {}
-export const GetUserByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUserByIdResponse",
-}) as any as S.Schema<GetUserByIdResponse>;
+export const GetUserByIdResponse = CreateActionResponse as any as S.Schema<GetUserByIdResponse>;
 
 export interface GetUserCurrentRequest {}
 export const GetUserCurrentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16882,9 +15570,8 @@ export const GetUserCurrentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserCurrentRequest" }) as any as S.Schema<GetUserCurrentRequest>;
 
 export interface GetUserCurrentResponse {}
-export const GetUserCurrentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUserCurrentResponse",
-}) as any as S.Schema<GetUserCurrentResponse>;
+export const GetUserCurrentResponse =
+  CreateActionResponse as any as S.Schema<GetUserCurrentResponse>;
 
 export interface GetUserKeyValueNamespaceRequest {
   namespace: string;
@@ -16898,11 +15585,8 @@ export const GetUserKeyValueNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserKeyValueNamespaceRequest>;
 
 export interface GetUserKeyValueNamespaceResponse {}
-export const GetUserKeyValueNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetUserKeyValueNamespaceResponse",
-}) as any as S.Schema<GetUserKeyValueNamespaceResponse>;
+export const GetUserKeyValueNamespaceResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetUserKeyValueNamespaceResponse>;
 
 export interface GetUserKeyValueNamespaceKeyRequest {
   namespace: string;
@@ -16924,11 +15608,8 @@ export const GetUserKeyValueNamespaceKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserKeyValueNamespaceKeyRequest>;
 
 export interface GetUserKeyValueNamespaceKeyResponse {}
-export const GetUserKeyValueNamespaceKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetUserKeyValueNamespaceKeyResponse",
-}) as any as S.Schema<GetUserKeyValueNamespaceKeyResponse>;
+export const GetUserKeyValueNamespaceKeyResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetUserKeyValueNamespaceKeyResponse>;
 
 export interface GetUserRecipientsRequest {}
 export const GetUserRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16936,9 +15617,8 @@ export const GetUserRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRecipientsRequest" }) as any as S.Schema<GetUserRecipientsRequest>;
 
 export interface GetUserRecipientsResponse {}
-export const GetUserRecipientsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUserRecipientsResponse",
-}) as any as S.Schema<GetUserRecipientsResponse>;
+export const GetUserRecipientsResponse =
+  CreateActionResponse as any as S.Schema<GetUserRecipientsResponse>;
 
 export interface GetUtilRandomTokenRequest {}
 export const GetUtilRandomTokenRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16948,15 +15628,12 @@ export const GetUtilRandomTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUtilRandomTokenRequest>;
 
 export interface GetUtilRandomTokenResponse {}
-export const GetUtilRandomTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUtilRandomTokenResponse",
-}) as any as S.Schema<GetUtilRandomTokenResponse>;
+export const GetUtilRandomTokenResponse =
+  CreateActionResponse as any as S.Schema<GetUtilRandomTokenResponse>;
 
 export type PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList = Array<number>;
 export const PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList>;
+  CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList>;
 
 export interface PostApiEeReplacementReplaceModelWithTransformRequest {
   card_id: number;
@@ -16982,11 +15659,8 @@ export const PostApiEeReplacementReplaceModelWithTransformRequest = /*@__PURE__*
 }) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformRequest>;
 
 export interface PostApiEeReplacementReplaceModelWithTransformResponse {}
-export const PostApiEeReplacementReplaceModelWithTransformResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostApiEeReplacementReplaceModelWithTransformResponse",
-}) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformResponse>;
+export const PostApiEeReplacementReplaceModelWithTransformResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformResponse>;
 
 export interface MetabaseActionsSchemaActionForUpdateCase0 {
   visualization_settings?: unknown | null;
@@ -17141,9 +15815,7 @@ export const PutActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutActionRequest" }) as any as S.Schema<PutActionRequest>;
 
 export interface PutActionResponse {}
-export const PutActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutActionResponse",
-}) as any as S.Schema<PutActionResponse>;
+export const PutActionResponse = CreateActionResponse as any as S.Schema<PutActionResponse>;
 
 export type MetabaseAgentApiApiDashcardMutationCase0DisplaySize = "wide" | "tall" | "full";
 export const MetabaseAgentApiApiDashcardMutationCase0DisplaySize = S.String;
@@ -17231,9 +15903,8 @@ export const PutAgentDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAgentDashboardRequest" }) as any as S.Schema<PutAgentDashboardRequest>;
 
 export interface PutAgentDashboardResponse {}
-export const PutAgentDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAgentDashboardResponse",
-}) as any as S.Schema<PutAgentDashboardResponse>;
+export const PutAgentDashboardResponse =
+  CreateActionResponse as any as S.Schema<PutAgentDashboardResponse>;
 
 export interface PutAgentMetricRequest {
   /** value must be an integer greater than zero. */
@@ -17260,9 +15931,8 @@ export const PutAgentMetricRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAgentMetricRequest" }) as any as S.Schema<PutAgentMetricRequest>;
 
 export interface PutAgentMetricResponse {}
-export const PutAgentMetricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAgentMetricResponse",
-}) as any as S.Schema<PutAgentMetricResponse>;
+export const PutAgentMetricResponse =
+  CreateActionResponse as any as S.Schema<PutAgentMetricResponse>;
 
 export interface PutAgentQuestionRequest {
   /** value must be an integer greater than zero. */
@@ -17289,9 +15959,8 @@ export const PutAgentQuestionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAgentQuestionRequest" }) as any as S.Schema<PutAgentQuestionRequest>;
 
 export interface PutAgentQuestionResponse {}
-export const PutAgentQuestionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAgentQuestionResponse",
-}) as any as S.Schema<PutAgentQuestionResponse>;
+export const PutAgentQuestionResponse =
+  CreateActionResponse as any as S.Schema<PutAgentQuestionResponse>;
 
 export type PutBookmarkOrderingRequestOrderingsItemType =
   | "card"
@@ -17332,9 +16001,8 @@ export const PutBookmarkOrderingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutBookmarkOrderingRequest>;
 
 export interface PutBookmarkOrderingResponse {}
-export const PutBookmarkOrderingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutBookmarkOrderingResponse",
-}) as any as S.Schema<PutBookmarkOrderingResponse>;
+export const PutBookmarkOrderingResponse =
+  CreateActionResponse as any as S.Schema<PutBookmarkOrderingResponse>;
 
 export type PutCacheRequestModel = "root" | "database" | "dashboard" | "question";
 export const PutCacheRequestModel = S.String;
@@ -17442,9 +16110,7 @@ export const PutCacheRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutCacheRequest" }) as any as S.Schema<PutCacheRequest>;
 
 export interface PutCacheResponse {}
-export const PutCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCacheResponse",
-}) as any as S.Schema<PutCacheResponse>;
+export const PutCacheResponse = CreateActionResponse as any as S.Schema<PutCacheResponse>;
 
 export type PutCardRequestEmbeddingParamsValue = "disabled" | "enabled" | "locked";
 export const PutCardRequestEmbeddingParamsValue = S.String;
@@ -17508,9 +16174,7 @@ export const PutCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutCardRequest" }) as any as S.Schema<PutCardRequest>;
 
 export interface PutCardResponse {}
-export const PutCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCardResponse",
-}) as any as S.Schema<PutCardResponse>;
+export const PutCardResponse = CreateActionResponse as any as S.Schema<PutCardResponse>;
 
 export type PutChannelRequestBodyCase0DetailsAuthMethod =
   | "none"
@@ -17697,9 +16361,7 @@ export const PutChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutChannelRequest" }) as any as S.Schema<PutChannelRequest>;
 
 export interface PutChannelResponse {}
-export const PutChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutChannelResponse",
-}) as any as S.Schema<PutChannelResponse>;
+export const PutChannelResponse = CreateActionResponse as any as S.Schema<PutChannelResponse>;
 
 export interface PutCloudMigrationCancelRequest {}
 export const PutCloudMigrationCancelRequest = /*@__PURE__*/ S.suspend(() =>
@@ -17709,9 +16371,8 @@ export const PutCloudMigrationCancelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudMigrationCancelRequest>;
 
 export interface PutCloudMigrationCancelResponse {}
-export const PutCloudMigrationCancelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutCloudMigrationCancelResponse" },
-) as any as S.Schema<PutCloudMigrationCancelResponse>;
+export const PutCloudMigrationCancelResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<PutCloudMigrationCancelResponse>;
 
 export type PutCollectionRequestAuthorityLevel = "official";
 export const PutCollectionRequestAuthorityLevel = S.String;
@@ -17737,9 +16398,7 @@ export const PutCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutCollectionRequest" }) as any as S.Schema<PutCollectionRequest>;
 
 export interface PutCollectionResponse {}
-export const PutCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCollectionResponse",
-}) as any as S.Schema<PutCollectionResponse>;
+export const PutCollectionResponse = CreateActionResponse as any as S.Schema<PutCollectionResponse>;
 
 export interface PutCollectionGraphRequest {
   force?: boolean;
@@ -17762,9 +16421,8 @@ export const PutCollectionGraphRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCollectionGraphRequest>;
 
 export interface PutCollectionGraphResponse {}
-export const PutCollectionGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCollectionGraphResponse",
-}) as any as S.Schema<PutCollectionGraphResponse>;
+export const PutCollectionGraphResponse =
+  CreateActionResponse as any as S.Schema<PutCollectionGraphResponse>;
 
 export interface PutCommentRequest {
   /** value must be an integer greater than zero. */
@@ -17781,9 +16439,7 @@ export const PutCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutCommentRequest" }) as any as S.Schema<PutCommentRequest>;
 
 export interface PutCommentResponse {}
-export const PutCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCommentResponse",
-}) as any as S.Schema<PutCommentResponse>;
+export const PutCommentResponse = CreateActionResponse as any as S.Schema<PutCommentResponse>;
 
 export type PutDashboardRequestWidth = "fixed" | "full";
 export const PutDashboardRequestWidth = S.String;
@@ -17804,14 +16460,12 @@ export const PutDashboardRequestTabsItem = CreateDashboardSaveRequestTabsItem;
 
 /** value must be seq of maps in which ids are unique */
 export type PutDashboardRequestTabsList = Array<CreateDashboardSaveRequestTabsItem>;
-export const PutDashboardRequestTabsList = /*@__PURE__*/ S.Array(
-  CreateDashboardSaveRequestTabsItem,
-) as any as S.Schema<PutDashboardRequestTabsList>;
+export const PutDashboardRequestTabsList =
+  CreateDashboardSaveRequestTabsList as any as S.Schema<PutDashboardRequestTabsList>;
 
 export type PutDashboardRequestDashcardsItemInlineParametersList = Array<string>;
-export const PutDashboardRequestDashcardsItemInlineParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutDashboardRequestDashcardsItemInlineParametersList>;
+export const PutDashboardRequestDashcardsItemInlineParametersList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutDashboardRequestDashcardsItemInlineParametersList>;
 
 export interface PutDashboardRequestDashcardsItemSeriesItem {
   /** value must be an integer greater than zero. */
@@ -17921,14 +16575,11 @@ export const PutDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDashboardRequest" }) as any as S.Schema<PutDashboardRequest>;
 
 export interface PutDashboardResponse {}
-export const PutDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDashboardResponse",
-}) as any as S.Schema<PutDashboardResponse>;
+export const PutDashboardResponse = CreateActionResponse as any as S.Schema<PutDashboardResponse>;
 
 export type PutDashboardCardsRequestCardsItemInlineParametersList = Array<string>;
-export const PutDashboardCardsRequestCardsItemInlineParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutDashboardCardsRequestCardsItemInlineParametersList>;
+export const PutDashboardCardsRequestCardsItemInlineParametersList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutDashboardCardsRequestCardsItemInlineParametersList>;
 
 export type PutDashboardCardsRequestCardsItemSeriesItem =
   PutDashboardRequestDashcardsItemSeriesItem;
@@ -17937,9 +16588,8 @@ export const PutDashboardCardsRequestCardsItemSeriesItem =
 
 export type PutDashboardCardsRequestCardsItemSeriesList =
   Array<PutDashboardRequestDashcardsItemSeriesItem>;
-export const PutDashboardCardsRequestCardsItemSeriesList = /*@__PURE__*/ S.Array(
-  PutDashboardRequestDashcardsItemSeriesItem,
-) as any as S.Schema<PutDashboardCardsRequestCardsItemSeriesList>;
+export const PutDashboardCardsRequestCardsItemSeriesList =
+  PutDashboardRequestDashcardsItemSeriesList as any as S.Schema<PutDashboardCardsRequestCardsItemSeriesList>;
 
 export interface PutDashboardCardsRequestCardsItem {
   inline_parameters?: PutDashboardCardsRequestCardsItemInlineParametersList | null;
@@ -17959,39 +16609,21 @@ export interface PutDashboardCardsRequestCardsItem {
   series?: PutDashboardCardsRequestCardsItemSeriesList | null;
   action_id?: number | null;
 }
-export const PutDashboardCardsRequestCardsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inline_parameters: S.optional(S.NullOr(PutDashboardCardsRequestCardsItemInlineParametersList)),
-    visualization_settings: S.optional(S.NullOr(S.Unknown)),
-    dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-    parameter_mappings: S.optional(S.NullOr(MetabaseParametersSchemaParameterMappings)),
-    id: S.Number,
-    card_id: S.optional(S.NullOr(S.Number)),
-    size_x: S.Number,
-    size_y: S.Number,
-    col: S.Number,
-    row: S.Number,
-    series: S.optional(S.NullOr(PutDashboardCardsRequestCardsItemSeriesList)),
-    action_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PutDashboardCardsRequestCardsItem",
-}) as any as S.Schema<PutDashboardCardsRequestCardsItem>;
+export const PutDashboardCardsRequestCardsItem =
+  PutDashboardRequestDashcardsItem as any as S.Schema<PutDashboardCardsRequestCardsItem>;
 
 /** value must be seq of maps in which ids are unique */
 export type PutDashboardCardsRequestCardsList = Array<PutDashboardCardsRequestCardsItem>;
-export const PutDashboardCardsRequestCardsList = /*@__PURE__*/ S.Array(
-  PutDashboardCardsRequestCardsItem,
-) as any as S.Schema<PutDashboardCardsRequestCardsList>;
+export const PutDashboardCardsRequestCardsList =
+  PutDashboardRequestDashcardsList as any as S.Schema<PutDashboardCardsRequestCardsList>;
 
 export type PutDashboardCardsRequestTabsItem = CreateDashboardSaveRequestTabsItem;
 export const PutDashboardCardsRequestTabsItem = CreateDashboardSaveRequestTabsItem;
 
 /** value must be seq of maps in which ids are unique */
 export type PutDashboardCardsRequestTabsList = Array<CreateDashboardSaveRequestTabsItem>;
-export const PutDashboardCardsRequestTabsList = /*@__PURE__*/ S.Array(
-  CreateDashboardSaveRequestTabsItem,
-) as any as S.Schema<PutDashboardCardsRequestTabsList>;
+export const PutDashboardCardsRequestTabsList =
+  CreateDashboardSaveRequestTabsList as any as S.Schema<PutDashboardCardsRequestTabsList>;
 
 export interface PutDashboardCardsRequest {
   /** value must be an integer greater than zero. */
@@ -18009,9 +16641,8 @@ export const PutDashboardCardsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDashboardCardsRequest" }) as any as S.Schema<PutDashboardCardsRequest>;
 
 export interface PutDashboardCardsResponse {}
-export const PutDashboardCardsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDashboardCardsResponse",
-}) as any as S.Schema<PutDashboardCardsResponse>;
+export const PutDashboardCardsResponse =
+  CreateActionResponse as any as S.Schema<PutDashboardCardsResponse>;
 
 export interface PutDatabaseRequest {
   /** value must be an integer greater than zero. */
@@ -18058,19 +16689,15 @@ export const PutDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDatabaseRequest" }) as any as S.Schema<PutDatabaseRequest>;
 
 export interface PutDatabaseResponse {}
-export const PutDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDatabaseResponse",
-}) as any as S.Schema<PutDatabaseResponse>;
+export const PutDatabaseResponse = CreateActionResponse as any as S.Schema<PutDatabaseResponse>;
 
 export type PutDocumentRequestCardsValueParameterMappingsList = Array<unknown>;
-export const PutDocumentRequestCardsValueParameterMappingsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PutDocumentRequestCardsValueParameterMappingsList>;
+export const PutDocumentRequestCardsValueParameterMappingsList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<PutDocumentRequestCardsValueParameterMappingsList>;
 
 export type PutDocumentRequestCardsValueResultMetadataList = Array<unknown>;
-export const PutDocumentRequestCardsValueResultMetadataList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PutDocumentRequestCardsValueResultMetadataList>;
+export const PutDocumentRequestCardsValueResultMetadataList =
+  MetabaseLibSchemaParameterVariable as any as S.Schema<PutDocumentRequestCardsValueResultMetadataList>;
 
 export interface PutDocumentRequestCardsValue {
   /** Value must be a map. */
@@ -18085,30 +16712,14 @@ export interface PutDocumentRequestCardsValue {
   parameters?: MetabaseParametersSchemaParameters | null;
   description?: string | null;
 }
-export const PutDocumentRequestCardsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    visualization_settings: S.Unknown,
-    entity_id: S.optional(S.NullOr(S.String)),
-    dataset_query: MetabaseLibSchemaQuery,
-    parameter_mappings: S.optional(S.NullOr(PutDocumentRequestCardsValueParameterMappingsList)),
-    name: S.String,
-    result_metadata: S.optional(S.NullOr(PutDocumentRequestCardsValueResultMetadataList)),
-    cache_ttl: S.optional(S.NullOr(S.Number)),
-    display: S.String,
-    parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
-    description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PutDocumentRequestCardsValue",
-}) as any as S.Schema<PutDocumentRequestCardsValue>;
+export const PutDocumentRequestCardsValue =
+  CreateDocumentRequestCardsValue as any as S.Schema<PutDocumentRequestCardsValue>;
 
 export type PutDocumentRequestCardsMap = {
   [key: string]: PutDocumentRequestCardsValue | undefined;
 };
-export const PutDocumentRequestCardsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PutDocumentRequestCardsValue,
-) as any as S.Schema<PutDocumentRequestCardsMap>;
+export const PutDocumentRequestCardsMap =
+  CreateDocumentRequestCardsMap as any as S.Schema<PutDocumentRequestCardsMap>;
 
 export interface PutDocumentRequest {
   /** value must be an integer greater than zero. */
@@ -18133,17 +16744,13 @@ export const PutDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDocumentRequest" }) as any as S.Schema<PutDocumentRequest>;
 
 export interface PutDocumentResponse {}
-export const PutDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDocumentResponse",
-}) as any as S.Schema<PutDocumentResponse>;
+export const PutDocumentResponse = CreateActionResponse as any as S.Schema<PutDocumentResponse>;
 
 export type PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap = {
   [key: string]: string | undefined;
 };
-export const PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap>;
+export const PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap =
+  CreateAnalyticsInternalRequestEventsItemLabelsMap as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap>;
 
 export type PutEeAdvancedPermissionsApplicationGraphRequestGroupsMap = {
   [key: string]: PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap | undefined;
@@ -18173,11 +16780,8 @@ export const PutEeAdvancedPermissionsApplicationGraphRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequest>;
 
 export interface PutEeAdvancedPermissionsApplicationGraphResponse {}
-export const PutEeAdvancedPermissionsApplicationGraphResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeAdvancedPermissionsApplicationGraphResponse",
-}) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphResponse>;
+export const PutEeAdvancedPermissionsApplicationGraphResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphResponse>;
 
 export type PutEeAiControlsPermissionsRequestPermissionsItemPermType =
   | "permission/metabot-nlq"
@@ -18222,11 +16826,8 @@ export const PutEeAiControlsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeAiControlsPermissionsRequest>;
 
 export interface PutEeAiControlsPermissionsResponse {}
-export const PutEeAiControlsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeAiControlsPermissionsResponse",
-}) as any as S.Schema<PutEeAiControlsPermissionsResponse>;
+export const PutEeAiControlsPermissionsResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsPermissionsResponse>;
 
 export interface PutEeAiControlsUsageGroupRequest {
   group_id: number;
@@ -18242,11 +16843,8 @@ export const PutEeAiControlsUsageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeAiControlsUsageGroupRequest>;
 
 export interface PutEeAiControlsUsageGroupResponse {}
-export const PutEeAiControlsUsageGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeAiControlsUsageGroupResponse",
-}) as any as S.Schema<PutEeAiControlsUsageGroupResponse>;
+export const PutEeAiControlsUsageGroupResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsUsageGroupResponse>;
 
 export interface PutEeAiControlsUsageInstanceRequest {
   max_usage: number | null;
@@ -18260,11 +16858,8 @@ export const PutEeAiControlsUsageInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeAiControlsUsageInstanceRequest>;
 
 export interface PutEeAiControlsUsageInstanceResponse {}
-export const PutEeAiControlsUsageInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeAiControlsUsageInstanceResponse",
-}) as any as S.Schema<PutEeAiControlsUsageInstanceResponse>;
+export const PutEeAiControlsUsageInstanceResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsUsageInstanceResponse>;
 
 export interface PutEeAiControlsUsageTenantRequest {
   tenant_id: number;
@@ -18282,11 +16877,8 @@ export const PutEeAiControlsUsageTenantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeAiControlsUsageTenantRequest>;
 
 export interface PutEeAiControlsUsageTenantResponse {}
-export const PutEeAiControlsUsageTenantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeAiControlsUsageTenantResponse",
-}) as any as S.Schema<PutEeAiControlsUsageTenantResponse>;
+export const PutEeAiControlsUsageTenantResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsUsageTenantResponse>;
 
 export interface PutEeCustomVizPluginRequest {
   /** value must be an integer greater than zero. */
@@ -18303,9 +16895,8 @@ export const PutEeCustomVizPluginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeCustomVizPluginRequest>;
 
 export interface PutEeCustomVizPluginResponse {}
-export const PutEeCustomVizPluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEeCustomVizPluginResponse",
-}) as any as S.Schema<PutEeCustomVizPluginResponse>;
+export const PutEeCustomVizPluginResponse =
+  CreateActionResponse as any as S.Schema<PutEeCustomVizPluginResponse>;
 
 export type PutEeCustomVizPluginBundleRequestFile = CreateEeCustomVizPluginRequestFile;
 export const PutEeCustomVizPluginBundleRequestFile = CreateEeCustomVizPluginRequestFile;
@@ -18332,11 +16923,8 @@ export const PutEeCustomVizPluginBundleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeCustomVizPluginBundleRequest>;
 
 export interface PutEeCustomVizPluginBundleResponse {}
-export const PutEeCustomVizPluginBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeCustomVizPluginBundleResponse",
-}) as any as S.Schema<PutEeCustomVizPluginBundleResponse>;
+export const PutEeCustomVizPluginBundleResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeCustomVizPluginBundleResponse>;
 
 export interface PutEeCustomVizPluginDevUrlRequest {
   /** value must be an integer greater than zero. */
@@ -18353,11 +16941,8 @@ export const PutEeCustomVizPluginDevUrlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeCustomVizPluginDevUrlRequest>;
 
 export interface PutEeCustomVizPluginDevUrlResponse {}
-export const PutEeCustomVizPluginDevUrlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeCustomVizPluginDevUrlResponse",
-}) as any as S.Schema<PutEeCustomVizPluginDevUrlResponse>;
+export const PutEeCustomVizPluginDevUrlResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeCustomVizPluginDevUrlResponse>;
 
 export interface PutEeDatabaseRoutingRouterDatabaseRequest {
   /** value must be an integer greater than zero. */
@@ -18376,11 +16961,8 @@ export const PutEeDatabaseRoutingRouterDatabaseRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseRequest>;
 
 export interface PutEeDatabaseRoutingRouterDatabaseResponse {}
-export const PutEeDatabaseRoutingRouterDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeDatabaseRoutingRouterDatabaseResponse",
-}) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseResponse>;
+export const PutEeDatabaseRoutingRouterDatabaseResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseResponse>;
 
 export interface PutEeEmailOverrideRequest {
   email_smtp_host_override?: string | null;
@@ -18412,9 +16994,8 @@ export const PutEeEmailOverrideRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeEmailOverrideRequest>;
 
 export interface PutEeEmailOverrideResponse {}
-export const PutEeEmailOverrideResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEeEmailOverrideResponse",
-}) as any as S.Schema<PutEeEmailOverrideResponse>;
+export const PutEeEmailOverrideResponse =
+  CreateActionResponse as any as S.Schema<PutEeEmailOverrideResponse>;
 
 export type PutEeRemoteSyncSettingsRequestCollectionsMap = { [key: string]: boolean | undefined };
 export const PutEeRemoteSyncSettingsRequestCollectionsMap = /*@__PURE__*/ S.Record(
@@ -18453,22 +17034,19 @@ export const PutEeRemoteSyncSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeRemoteSyncSettingsRequest>;
 
 export interface PutEeRemoteSyncSettingsResponse {}
-export const PutEeRemoteSyncSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutEeRemoteSyncSettingsResponse" },
-) as any as S.Schema<PutEeRemoteSyncSettingsResponse>;
+export const PutEeRemoteSyncSettingsResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<PutEeRemoteSyncSettingsResponse>;
 
 export type PutEeScimGroupRequestMembersItem = CreateEeScimGroupRequestMembersItem;
 export const PutEeScimGroupRequestMembersItem = CreateEeScimGroupRequestMembersItem;
 
 export type PutEeScimGroupRequestMembersList = Array<CreateEeScimGroupRequestMembersItem>;
-export const PutEeScimGroupRequestMembersList = /*@__PURE__*/ S.Array(
-  CreateEeScimGroupRequestMembersItem,
-) as any as S.Schema<PutEeScimGroupRequestMembersList>;
+export const PutEeScimGroupRequestMembersList =
+  CreateEeScimGroupRequestMembersList as any as S.Schema<PutEeScimGroupRequestMembersList>;
 
 export type PutEeScimGroupRequestSchemasList = Array<string>;
-export const PutEeScimGroupRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutEeScimGroupRequestSchemasList>;
+export const PutEeScimGroupRequestSchemasList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutEeScimGroupRequestSchemasList>;
 
 export interface PutEeScimGroupRequest {
   id: string;
@@ -18486,33 +17064,29 @@ export const PutEeScimGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEeScimGroupRequest" }) as any as S.Schema<PutEeScimGroupRequest>;
 
 export interface PutEeScimGroupResponse {}
-export const PutEeScimGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEeScimGroupResponse",
-}) as any as S.Schema<PutEeScimGroupResponse>;
+export const PutEeScimGroupResponse =
+  CreateActionResponse as any as S.Schema<PutEeScimGroupResponse>;
 
 export type PutEeScimUserRequestEmailsItem = CreateEeScimUserRequestEmailsItem;
 export const PutEeScimUserRequestEmailsItem = CreateEeScimUserRequestEmailsItem;
 
 export type PutEeScimUserRequestEmailsList = Array<CreateEeScimUserRequestEmailsItem>;
-export const PutEeScimUserRequestEmailsList = /*@__PURE__*/ S.Array(
-  CreateEeScimUserRequestEmailsItem,
-) as any as S.Schema<PutEeScimUserRequestEmailsList>;
+export const PutEeScimUserRequestEmailsList =
+  CreateEeScimUserRequestEmailsList as any as S.Schema<PutEeScimUserRequestEmailsList>;
 
 export type PutEeScimUserRequestGroupsItem = CreateEeScimUserRequestGroupsItem;
 export const PutEeScimUserRequestGroupsItem = CreateEeScimUserRequestGroupsItem;
 
 export type PutEeScimUserRequestGroupsList = Array<CreateEeScimUserRequestGroupsItem>;
-export const PutEeScimUserRequestGroupsList = /*@__PURE__*/ S.Array(
-  CreateEeScimUserRequestGroupsItem,
-) as any as S.Schema<PutEeScimUserRequestGroupsList>;
+export const PutEeScimUserRequestGroupsList =
+  CreateEeScimUserRequestGroupsList as any as S.Schema<PutEeScimUserRequestGroupsList>;
 
 export type PutEeScimUserRequestName = CreateEeScimUserRequestName;
 export const PutEeScimUserRequestName = CreateEeScimUserRequestName;
 
 export type PutEeScimUserRequestSchemasList = Array<string>;
-export const PutEeScimUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutEeScimUserRequestSchemasList>;
+export const PutEeScimUserRequestSchemasList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutEeScimUserRequestSchemasList>;
 
 export interface PutEeScimUserRequest {
   id: string;
@@ -18538,9 +17112,7 @@ export const PutEeScimUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEeScimUserRequest" }) as any as S.Schema<PutEeScimUserRequest>;
 
 export interface PutEeScimUserResponse {}
-export const PutEeScimUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEeScimUserResponse",
-}) as any as S.Schema<PutEeScimUserResponse>;
+export const PutEeScimUserResponse = CreateActionResponse as any as S.Schema<PutEeScimUserResponse>;
 
 export interface PutEeSupportAccessGrantRevokeRequest {
   /** value must be an integer greater than zero. */
@@ -18555,17 +17127,12 @@ export const PutEeSupportAccessGrantRevokeRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutEeSupportAccessGrantRevokeRequest>;
 
 export interface PutEeSupportAccessGrantRevokeResponse {}
-export const PutEeSupportAccessGrantRevokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeSupportAccessGrantRevokeResponse",
-}) as any as S.Schema<PutEeSupportAccessGrantRevokeResponse>;
+export const PutEeSupportAccessGrantRevokeResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeSupportAccessGrantRevokeResponse>;
 
 export type PutEeTenantRequestAttributesMap = { [key: string]: unknown | undefined };
-export const PutEeTenantRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutEeTenantRequestAttributesMap>;
+export const PutEeTenantRequestAttributesMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<PutEeTenantRequestAttributesMap>;
 
 export interface PutEeTenantRequest {
   /** value must be an integer greater than zero. */
@@ -18584,9 +17151,7 @@ export const PutEeTenantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEeTenantRequest" }) as any as S.Schema<PutEeTenantRequest>;
 
 export interface PutEeTenantResponse {}
-export const PutEeTenantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEeTenantResponse",
-}) as any as S.Schema<PutEeTenantResponse>;
+export const PutEeTenantResponse = CreateActionResponse as any as S.Schema<PutEeTenantResponse>;
 
 export interface PutEeTransformsPythonLibraryRequest {
   path: string;
@@ -18602,11 +17167,8 @@ export const PutEeTransformsPythonLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEeTransformsPythonLibraryRequest>;
 
 export interface PutEeTransformsPythonLibraryResponse {}
-export const PutEeTransformsPythonLibraryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEeTransformsPythonLibraryResponse",
-}) as any as S.Schema<PutEeTransformsPythonLibraryResponse>;
+export const PutEeTransformsPythonLibraryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeTransformsPythonLibraryResponse>;
 
 export interface PutEmailRequest {
   email_smtp_host?: string | null;
@@ -18626,9 +17188,7 @@ export const PutEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEmailRequest" }) as any as S.Schema<PutEmailRequest>;
 
 export interface PutEmailResponse {}
-export const PutEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmailResponse",
-}) as any as S.Schema<PutEmailResponse>;
+export const PutEmailResponse = CreateActionResponse as any as S.Schema<PutEmailResponse>;
 
 export interface PutEmbedThemeRequest {
   /** value must be an integer greater than zero. */
@@ -18645,9 +17205,7 @@ export const PutEmbedThemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEmbedThemeRequest" }) as any as S.Schema<PutEmbedThemeRequest>;
 
 export interface PutEmbedThemeResponse {}
-export const PutEmbedThemeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmbedThemeResponse",
-}) as any as S.Schema<PutEmbedThemeResponse>;
+export const PutEmbedThemeResponse = CreateActionResponse as any as S.Schema<PutEmbedThemeResponse>;
 
 export type PutFieldRequestVisibilityType =
   | "retired"
@@ -18658,9 +17216,8 @@ export type PutFieldRequestVisibilityType =
 export const PutFieldRequestVisibilityType = S.String;
 
 export type PutFieldRequestNfcPathList = Array<string>;
-export const PutFieldRequestNfcPathList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutFieldRequestNfcPathList>;
+export const PutFieldRequestNfcPathList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutFieldRequestNfcPathList>;
 
 export interface PutFieldRequest {
   /** value must be an integer greater than zero. */
@@ -18697,9 +17254,7 @@ export const PutFieldRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutFieldRequest" }) as any as S.Schema<PutFieldRequest>;
 
 export interface PutFieldResponse {}
-export const PutFieldResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutFieldResponse",
-}) as any as S.Schema<PutFieldResponse>;
+export const PutFieldResponse = CreateActionResponse as any as S.Schema<PutFieldResponse>;
 
 export interface PutGlossaryRequest {
   /** value must be an integer greater than zero. */
@@ -18716,9 +17271,7 @@ export const PutGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutGlossaryRequest" }) as any as S.Schema<PutGlossaryRequest>;
 
 export interface PutGlossaryResponse {}
-export const PutGlossaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutGlossaryResponse",
-}) as any as S.Schema<PutGlossaryResponse>;
+export const PutGlossaryResponse = CreateActionResponse as any as S.Schema<PutGlossaryResponse>;
 
 export interface PutGoogleSettingsRequest {
   google_auth_auto_create_accounts_domain?: string | null;
@@ -18736,9 +17289,8 @@ export const PutGoogleSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutGoogleSettingsRequest" }) as any as S.Schema<PutGoogleSettingsRequest>;
 
 export interface PutGoogleSettingsResponse {}
-export const PutGoogleSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutGoogleSettingsResponse",
-}) as any as S.Schema<PutGoogleSettingsResponse>;
+export const PutGoogleSettingsResponse =
+  CreateActionResponse as any as S.Schema<PutGoogleSettingsResponse>;
 
 export interface PutKeyRequest {
   /** value must be an integer greater than zero. */
@@ -18755,9 +17307,7 @@ export const PutKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutKeyRequest" }) as any as S.Schema<PutKeyRequest>;
 
 export interface PutKeyResponse {}
-export const PutKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutKeyResponse",
-}) as any as S.Schema<PutKeyResponse>;
+export const PutKeyResponse = CreateActionResponse as any as S.Schema<PutKeyResponse>;
 
 export interface PutKeyRegenerateRequest {
   id: number;
@@ -18769,14 +17319,12 @@ export const PutKeyRegenerateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutKeyRegenerateRequest" }) as any as S.Schema<PutKeyRegenerateRequest>;
 
 export interface PutKeyRegenerateResponse {}
-export const PutKeyRegenerateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutKeyRegenerateResponse",
-}) as any as S.Schema<PutKeyRegenerateResponse>;
+export const PutKeyRegenerateResponse =
+  CreateActionResponse as any as S.Schema<PutKeyRegenerateResponse>;
 
 export type PutLdapSettingsRequestLdapGroupMappingsValueList = Array<number>;
-export const PutLdapSettingsRequestLdapGroupMappingsValueList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PutLdapSettingsRequestLdapGroupMappingsValueList>;
+export const PutLdapSettingsRequestLdapGroupMappingsValueList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutLdapSettingsRequestLdapGroupMappingsValueList>;
 
 export type PutLdapSettingsRequestLdapGroupMappingsMap = {
   [key: string]: PutLdapSettingsRequestLdapGroupMappingsValueList | undefined;
@@ -18835,9 +17383,8 @@ export const PutLdapSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutLdapSettingsRequest" }) as any as S.Schema<PutLdapSettingsRequest>;
 
 export interface PutLdapSettingsResponse {}
-export const PutLdapSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutLdapSettingsResponse",
-}) as any as S.Schema<PutLdapSettingsResponse>;
+export const PutLdapSettingsResponse =
+  CreateActionResponse as any as S.Schema<PutLdapSettingsResponse>;
 
 export interface PutMeasureRequest {
   /** value must be an integer greater than zero. */
@@ -18860,9 +17407,7 @@ export const PutMeasureRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeasureRequest" }) as any as S.Schema<PutMeasureRequest>;
 
 export interface PutMeasureResponse {}
-export const PutMeasureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeasureResponse",
-}) as any as S.Schema<PutMeasureResponse>;
+export const PutMeasureResponse = CreateActionResponse as any as S.Schema<PutMeasureResponse>;
 
 export interface PutMetabotMetabotRequest {
   id: number;
@@ -18878,9 +17423,8 @@ export const PutMetabotMetabotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMetabotMetabotRequest" }) as any as S.Schema<PutMetabotMetabotRequest>;
 
 export interface PutMetabotMetabotResponse {}
-export const PutMetabotMetabotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMetabotMetabotResponse",
-}) as any as S.Schema<PutMetabotMetabotResponse>;
+export const PutMetabotMetabotResponse =
+  CreateActionResponse as any as S.Schema<PutMetabotMetabotResponse>;
 
 export interface PutMetabotSettingsRequestCredentials {
   access_key_id?: string | null;
@@ -18932,9 +17476,8 @@ export const PutMetabotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMetabotSettingsRequest>;
 
 export interface PutMetabotSettingsResponse {}
-export const PutMetabotSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMetabotSettingsResponse",
-}) as any as S.Schema<PutMetabotSettingsResponse>;
+export const PutMetabotSettingsResponse =
+  CreateActionResponse as any as S.Schema<PutMetabotSettingsResponse>;
 
 export interface PutMetabotSlackSettingsRequest {
   metabot_slack_signing_secret: string | null;
@@ -18952,9 +17495,8 @@ export const PutMetabotSlackSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMetabotSlackSettingsRequest>;
 
 export interface PutMetabotSlackSettingsResponse {}
-export const PutMetabotSlackSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutMetabotSlackSettingsResponse" },
-) as any as S.Schema<PutMetabotSlackSettingsResponse>;
+export const PutMetabotSlackSettingsResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<PutMetabotSlackSettingsResponse>;
 
 export interface PutMtGtapRequest {
   /** value must be an integer greater than zero. */
@@ -18973,16 +17515,12 @@ export const PutMtGtapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMtGtapRequest" }) as any as S.Schema<PutMtGtapRequest>;
 
 export interface PutMtGtapResponse {}
-export const PutMtGtapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMtGtapResponse",
-}) as any as S.Schema<PutMtGtapResponse>;
+export const PutMtGtapResponse = CreateActionResponse as any as S.Schema<PutMtGtapResponse>;
 
 /** value must be a valid user attributes map (name -> value) */
 export type PutMtUserAttributesRequestLoginAttributesMap = { [key: string]: unknown | undefined };
-export const PutMtUserAttributesRequestLoginAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutMtUserAttributesRequestLoginAttributesMap>;
+export const PutMtUserAttributesRequestLoginAttributesMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<PutMtUserAttributesRequestLoginAttributesMap>;
 
 export interface PutMtUserAttributesRequest {
   /** value must be an integer greater than zero. */
@@ -18999,9 +17537,8 @@ export const PutMtUserAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMtUserAttributesRequest>;
 
 export interface PutMtUserAttributesResponse {}
-export const PutMtUserAttributesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMtUserAttributesResponse",
-}) as any as S.Schema<PutMtUserAttributesResponse>;
+export const PutMtUserAttributesResponse =
+  CreateActionResponse as any as S.Schema<PutMtUserAttributesResponse>;
 
 export interface PutNativeQuerySnippetRequest {
   /** value must be an integer greater than zero. */
@@ -19026,16 +17563,13 @@ export const PutNativeQuerySnippetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutNativeQuerySnippetRequest>;
 
 export interface PutNativeQuerySnippetResponse {}
-export const PutNativeQuerySnippetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutNativeQuerySnippetResponse",
-}) as any as S.Schema<PutNativeQuerySnippetResponse>;
+export const PutNativeQuerySnippetResponse =
+  CreateActionResponse as any as S.Schema<PutNativeQuerySnippetResponse>;
 
 export type MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItemRecipientsList =
   Array<MetabaseNotificationModelsNotificationRecipient>;
 export const MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItemRecipientsList =
-  /*@__PURE__*/ S.Array(
-    MetabaseNotificationModelsNotificationRecipient,
-  ) as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItemRecipientsList>;
+  CreateEeSecurityCenterTestNotificationRequestEmailRecipientsList as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItemRecipientsList>;
 
 export interface MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItem {
   template_id?: number | null;
@@ -19216,9 +17750,7 @@ export const MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0 
 export type MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItemRecipientsList =
   Array<MetabaseNotificationModelsNotificationRecipient>;
 export const MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItemRecipientsList =
-  /*@__PURE__*/ S.Array(
-    MetabaseNotificationModelsNotificationRecipient,
-  ) as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItemRecipientsList>;
+  CreateEeSecurityCenterTestNotificationRequestEmailRecipientsList as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItemRecipientsList>;
 
 export interface MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItem {
   template_id?: number | null;
@@ -19234,30 +17766,12 @@ export interface MetabaseNotificationApiNotificationNotificationApiUpdateInputCa
   active?: boolean | null;
 }
 export const MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      template_id: S.optional(S.NullOr(S.Number)),
-      channel_id: S.optional(S.NullOr(S.Number)),
-      id: S.optional(S.Number),
-      recipients: S.optional(
-        MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItemRecipientsList,
-      ),
-      template: S.optional(S.NullOr(MetabaseChannelModelsChannelChannelTemplateUserProvided)),
-      channel_type: S.Unknown,
-      channel: S.optional(S.NullOr(MetabaseChannelModelsChannelChannel)),
-      notification_id: S.optional(S.Number),
-      active: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItem",
-  }) as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItem>;
+  MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItem as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItem>;
 
 export type MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersList =
   Array<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItem>;
 export const MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersList =
-  /*@__PURE__*/ S.Array(
-    MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersItem,
-  ) as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersList>;
+  MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersList as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1HandlersList>;
 
 export type MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1PayloadType =
   | "notification/dashboard"
@@ -19270,9 +17784,7 @@ export const MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1P
 export type MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1SubscriptionsList =
   Array<MetabaseNotificationModelsNotificationSubscription>;
 export const MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1SubscriptionsList =
-  /*@__PURE__*/ S.Array(
-    MetabaseNotificationModelsNotificationSubscription,
-  ) as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1SubscriptionsList>;
+  MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0SubscriptionsList as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1SubscriptionsList>;
 
 export interface MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1 {
   active?: boolean | null;
@@ -19324,19 +17836,16 @@ export const PutNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutNotificationRequest" }) as any as S.Schema<PutNotificationRequest>;
 
 export interface PutNotificationResponse {}
-export const PutNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutNotificationResponse",
-}) as any as S.Schema<PutNotificationResponse>;
+export const PutNotificationResponse =
+  CreateActionResponse as any as S.Schema<PutNotificationResponse>;
 
 export type PutOsiAiContextRequestAiContextExamplesList = Array<string>;
-export const PutOsiAiContextRequestAiContextExamplesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutOsiAiContextRequestAiContextExamplesList>;
+export const PutOsiAiContextRequestAiContextExamplesList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutOsiAiContextRequestAiContextExamplesList>;
 
 export type PutOsiAiContextRequestAiContextSynonymsList = Array<string>;
-export const PutOsiAiContextRequestAiContextSynonymsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutOsiAiContextRequestAiContextSynonymsList>;
+export const PutOsiAiContextRequestAiContextSynonymsList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutOsiAiContextRequestAiContextSynonymsList>;
 
 export interface PutOsiAiContextRequestAiContext {
   examples?: PutOsiAiContextRequestAiContextExamplesList;
@@ -19374,9 +17883,8 @@ export const PutOsiAiContextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutOsiAiContextRequest" }) as any as S.Schema<PutOsiAiContextRequest>;
 
 export interface PutOsiAiContextResponse {}
-export const PutOsiAiContextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutOsiAiContextResponse",
-}) as any as S.Schema<PutOsiAiContextResponse>;
+export const PutOsiAiContextResponse =
+  CreateActionResponse as any as S.Schema<PutOsiAiContextResponse>;
 
 export type MetabasePermissionsRestSchemaTablePermsCase0Query = "all" | "none" | "segmented";
 export const MetabasePermissionsRestSchemaTablePermsCase0Query = S.String;
@@ -19653,9 +18161,8 @@ export const PutPermissionsGraphRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutPermissionsGraphRequest>;
 
 export interface PutPermissionsGraphResponse {}
-export const PutPermissionsGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutPermissionsGraphResponse",
-}) as any as S.Schema<PutPermissionsGraphResponse>;
+export const PutPermissionsGraphResponse =
+  CreateActionResponse as any as S.Schema<PutPermissionsGraphResponse>;
 
 export interface PutPermissionsGroupRequest {
   /** value must be an integer greater than zero. */
@@ -19672,9 +18179,8 @@ export const PutPermissionsGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutPermissionsGroupRequest>;
 
 export interface PutPermissionsGroupResponse {}
-export const PutPermissionsGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutPermissionsGroupResponse",
-}) as any as S.Schema<PutPermissionsGroupResponse>;
+export const PutPermissionsGroupResponse =
+  CreateActionResponse as any as S.Schema<PutPermissionsGroupResponse>;
 
 export interface PutPermissionsMembershipRequest {
   /** value must be an integer greater than zero. */
@@ -19691,11 +18197,8 @@ export const PutPermissionsMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutPermissionsMembershipRequest>;
 
 export interface PutPermissionsMembershipResponse {}
-export const PutPermissionsMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutPermissionsMembershipResponse",
-}) as any as S.Schema<PutPermissionsMembershipResponse>;
+export const PutPermissionsMembershipResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutPermissionsMembershipResponse>;
 
 export interface PutPermissionsMembershipClearRequest {
   /** value must be an integer greater than zero. */
@@ -19712,16 +18215,12 @@ export const PutPermissionsMembershipClearRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutPermissionsMembershipClearRequest>;
 
 export interface PutPermissionsMembershipClearResponse {}
-export const PutPermissionsMembershipClearResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutPermissionsMembershipClearResponse",
-}) as any as S.Schema<PutPermissionsMembershipClearResponse>;
+export const PutPermissionsMembershipClearResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutPermissionsMembershipClearResponse>;
 
 export type PutPulseRequestParametersList = Array<MetabaseParametersSchemaParameter>;
-export const PutPulseRequestParametersList = /*@__PURE__*/ S.Array(
-  MetabaseParametersSchemaParameter,
-) as any as S.Schema<PutPulseRequestParametersList>;
+export const PutPulseRequestParametersList =
+  MetabaseParametersSchemaParameters as any as S.Schema<PutPulseRequestParametersList>;
 
 export interface PutPulseRequest {
   /** value must be an integer greater than zero. */
@@ -19750,9 +18249,7 @@ export const PutPulseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutPulseRequest" }) as any as S.Schema<PutPulseRequest>;
 
 export interface PutPulseResponse {}
-export const PutPulseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutPulseResponse",
-}) as any as S.Schema<PutPulseResponse>;
+export const PutPulseResponse = CreateActionResponse as any as S.Schema<PutPulseResponse>;
 
 export interface PutSearchWeightsRequest {
   context?: string;
@@ -19766,9 +18263,8 @@ export const PutSearchWeightsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSearchWeightsRequest" }) as any as S.Schema<PutSearchWeightsRequest>;
 
 export interface PutSearchWeightsResponse {}
-export const PutSearchWeightsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSearchWeightsResponse",
-}) as any as S.Schema<PutSearchWeightsResponse>;
+export const PutSearchWeightsResponse =
+  CreateActionResponse as any as S.Schema<PutSearchWeightsResponse>;
 
 export interface PutSegmentRequest {
   /** value must be an integer greater than zero. */
@@ -19797,15 +18293,11 @@ export const PutSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSegmentRequest" }) as any as S.Schema<PutSegmentRequest>;
 
 export interface PutSegmentResponse {}
-export const PutSegmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSegmentResponse",
-}) as any as S.Schema<PutSegmentResponse>;
+export const PutSegmentResponse = CreateActionResponse as any as S.Schema<PutSegmentResponse>;
 
 export type PutSettingRequestBodyMap = { [key: string]: unknown | undefined };
-export const PutSettingRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutSettingRequestBodyMap>;
+export const PutSettingRequestBodyMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<PutSettingRequestBodyMap>;
 
 export interface PutSettingRequest {
   body?: PutSettingRequestBodyMap;
@@ -19817,9 +18309,7 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSettingRequest" }) as any as S.Schema<PutSettingRequest>;
 
 export interface PutSettingResponse {}
-export const PutSettingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSettingResponse",
-}) as any as S.Schema<PutSettingResponse>;
+export const PutSettingResponse = CreateActionResponse as any as S.Schema<PutSettingResponse>;
 
 export interface PutSettingByKeyRequest {
   key: string;
@@ -19833,9 +18323,8 @@ export const PutSettingByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSettingByKeyRequest" }) as any as S.Schema<PutSettingByKeyRequest>;
 
 export interface PutSettingByKeyResponse {}
-export const PutSettingByKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSettingByKeyResponse",
-}) as any as S.Schema<PutSettingByKeyResponse>;
+export const PutSettingByKeyResponse =
+  CreateActionResponse as any as S.Schema<PutSettingByKeyResponse>;
 
 export interface PutSlackSettingsRequest {
   slack_app_token?: string | null;
@@ -19851,9 +18340,8 @@ export const PutSlackSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSlackSettingsRequest" }) as any as S.Schema<PutSlackSettingsRequest>;
 
 export interface PutSlackSettingsResponse {}
-export const PutSlackSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSlackSettingsResponse",
-}) as any as S.Schema<PutSlackSettingsResponse>;
+export const PutSlackSettingsResponse =
+  CreateActionResponse as any as S.Schema<PutSlackSettingsResponse>;
 
 export type PutTableRequestVisibilityType = "technical" | "hidden" | "cruft";
 export const PutTableRequestVisibilityType = S.String;
@@ -19867,9 +18355,8 @@ export type MetabaseWarehouseSchemaRestApiTableDataAuthorityWrite =
 export const MetabaseWarehouseSchemaRestApiTableDataAuthorityWrite = S.String;
 
 export type PutTableRequestIdsList = Array<number>;
-export const PutTableRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PutTableRequestIdsList>;
+export const PutTableRequestIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTableRequestIdsList>;
 
 export interface PutTableRequest {
   points_of_interest?: string | null;
@@ -19905,9 +18392,7 @@ export const PutTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTableRequest" }) as any as S.Schema<PutTableRequest>;
 
 export interface PutTableResponse {}
-export const PutTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTableResponse",
-}) as any as S.Schema<PutTableResponse>;
+export const PutTableResponse = CreateActionResponse as any as S.Schema<PutTableResponse>;
 
 export type PutTableByIdRequestVisibilityType = "technical" | "hidden" | "cruft";
 export const PutTableByIdRequestVisibilityType = S.String;
@@ -19954,19 +18439,15 @@ export const PutTableByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTableByIdRequest" }) as any as S.Schema<PutTableByIdRequest>;
 
 export interface PutTableByIdResponse {}
-export const PutTableByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTableByIdResponse",
-}) as any as S.Schema<PutTableByIdResponse>;
+export const PutTableByIdResponse = CreateActionResponse as any as S.Schema<PutTableByIdResponse>;
 
 export type PutTableFieldsOrderRequestBodyCase0List = Array<number>;
-export const PutTableFieldsOrderRequestBodyCase0List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PutTableFieldsOrderRequestBodyCase0List>;
+export const PutTableFieldsOrderRequestBodyCase0List =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTableFieldsOrderRequestBodyCase0List>;
 
 export type PutTableFieldsOrderRequestBodyCase1FieldOrderList = Array<number>;
-export const PutTableFieldsOrderRequestBodyCase1FieldOrderList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PutTableFieldsOrderRequestBodyCase1FieldOrderList>;
+export const PutTableFieldsOrderRequestBodyCase1FieldOrderList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTableFieldsOrderRequestBodyCase1FieldOrderList>;
 
 export interface PutTableFieldsOrderRequestBodyCase1 {
   field_order: PutTableFieldsOrderRequestBodyCase1FieldOrderList;
@@ -20000,9 +18481,8 @@ export const PutTableFieldsOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTableFieldsOrderRequest>;
 
 export interface PutTableFieldsOrderResponse {}
-export const PutTableFieldsOrderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTableFieldsOrderResponse",
-}) as any as S.Schema<PutTableFieldsOrderResponse>;
+export const PutTableFieldsOrderResponse =
+  CreateActionResponse as any as S.Schema<PutTableFieldsOrderResponse>;
 
 export type PutTimelineRequestIcon = "star" | "cake" | "mail" | "warning" | "bell" | "cloud";
 export const PutTimelineRequestIcon = S.String;
@@ -20030,9 +18510,7 @@ export const PutTimelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTimelineRequest" }) as any as S.Schema<PutTimelineRequest>;
 
 export interface PutTimelineResponse {}
-export const PutTimelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTimelineResponse",
-}) as any as S.Schema<PutTimelineResponse>;
+export const PutTimelineResponse = CreateActionResponse as any as S.Schema<PutTimelineResponse>;
 
 export type PutTimelineEventRequestIcon = "star" | "cake" | "mail" | "warning" | "bell" | "cloud";
 export const PutTimelineEventRequestIcon = S.String;
@@ -20064,14 +18542,12 @@ export const PutTimelineEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTimelineEventRequest" }) as any as S.Schema<PutTimelineEventRequest>;
 
 export interface PutTimelineEventResponse {}
-export const PutTimelineEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTimelineEventResponse",
-}) as any as S.Schema<PutTimelineEventResponse>;
+export const PutTimelineEventResponse =
+  CreateActionResponse as any as S.Schema<PutTimelineEventResponse>;
 
 export type PutTransformRequestTagIdsList = Array<number>;
-export const PutTransformRequestTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PutTransformRequestTagIdsList>;
+export const PutTransformRequestTagIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTransformRequestTagIdsList>;
 
 export interface PutTransformRequest {
   /** value must be an integer greater than zero. */
@@ -20102,14 +18578,11 @@ export const PutTransformRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTransformRequest" }) as any as S.Schema<PutTransformRequest>;
 
 export interface PutTransformResponse {}
-export const PutTransformResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTransformResponse",
-}) as any as S.Schema<PutTransformResponse>;
+export const PutTransformResponse = CreateActionResponse as any as S.Schema<PutTransformResponse>;
 
 export type PutTransformJobRequestTagIdsList = Array<number>;
-export const PutTransformJobRequestTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PutTransformJobRequestTagIdsList>;
+export const PutTransformJobRequestTagIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTransformJobRequestTagIdsList>;
 
 export type PutTransformJobRequestUiDisplayType = "cron/raw" | "cron/builder";
 export const PutTransformJobRequestUiDisplayType = S.String;
@@ -20137,9 +18610,8 @@ export const PutTransformJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTransformJobRequest" }) as any as S.Schema<PutTransformJobRequest>;
 
 export interface PutTransformJobResponse {}
-export const PutTransformJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTransformJobResponse",
-}) as any as S.Schema<PutTransformJobResponse>;
+export const PutTransformJobResponse =
+  CreateActionResponse as any as S.Schema<PutTransformJobResponse>;
 
 export interface PutTransformJobActiveRequest {
   active: boolean;
@@ -20153,9 +18625,8 @@ export const PutTransformJobActiveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTransformJobActiveRequest>;
 
 export interface PutTransformJobActiveResponse {}
-export const PutTransformJobActiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTransformJobActiveResponse",
-}) as any as S.Schema<PutTransformJobActiveResponse>;
+export const PutTransformJobActiveResponse =
+  CreateActionResponse as any as S.Schema<PutTransformJobActiveResponse>;
 
 export interface PutTransformTagRequest {
   /** value must be an integer greater than zero. */
@@ -20170,20 +18641,16 @@ export const PutTransformTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTransformTagRequest" }) as any as S.Schema<PutTransformTagRequest>;
 
 export interface PutTransformTagResponse {}
-export const PutTransformTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTransformTagResponse",
-}) as any as S.Schema<PutTransformTagResponse>;
+export const PutTransformTagResponse =
+  CreateActionResponse as any as S.Schema<PutTransformTagResponse>;
 
 export type PutUserRequestLoginAttributesMap = { [key: string]: unknown | undefined };
-export const PutUserRequestLoginAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutUserRequestLoginAttributesMap>;
+export const PutUserRequestLoginAttributesMap =
+  MetabaseLibSchemaActionsRow as any as S.Schema<PutUserRequestLoginAttributesMap>;
 
 export type PutUserRequestUserGroupMembershipsList = Array<MetabaseUsersSchemaUserGroupMembership>;
-export const PutUserRequestUserGroupMembershipsList = /*@__PURE__*/ S.Array(
-  MetabaseUsersSchemaUserGroupMembership,
-) as any as S.Schema<PutUserRequestUserGroupMembershipsList>;
+export const PutUserRequestUserGroupMembershipsList =
+  CreateUserRequestUserGroupMembershipsList as any as S.Schema<PutUserRequestUserGroupMembershipsList>;
 
 export interface PutUserRequest {
   /** value must be an integer greater than zero. */
@@ -20216,9 +18683,7 @@ export const PutUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutUserRequest" }) as any as S.Schema<PutUserRequest>;
 
 export interface PutUserResponse {}
-export const PutUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutUserResponse",
-}) as any as S.Schema<PutUserResponse>;
+export const PutUserResponse = CreateActionResponse as any as S.Schema<PutUserResponse>;
 
 export interface PutUserKeyValueNamespaceKeyRequest {
   namespace: string;
@@ -20244,11 +18709,8 @@ export const PutUserKeyValueNamespaceKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutUserKeyValueNamespaceKeyRequest>;
 
 export interface PutUserKeyValueNamespaceKeyResponse {}
-export const PutUserKeyValueNamespaceKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutUserKeyValueNamespaceKeyResponse",
-}) as any as S.Schema<PutUserKeyValueNamespaceKeyResponse>;
+export const PutUserKeyValueNamespaceKeyResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutUserKeyValueNamespaceKeyResponse>;
 
 export type PutUserModalRequestModal = "qbnewb" | "datasetnewb";
 export const PutUserModalRequestModal = S.String;
@@ -20266,9 +18728,7 @@ export const PutUserModalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutUserModalRequest" }) as any as S.Schema<PutUserModalRequest>;
 
 export interface PutUserModalResponse {}
-export const PutUserModalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutUserModalResponse",
-}) as any as S.Schema<PutUserModalResponse>;
+export const PutUserModalResponse = CreateActionResponse as any as S.Schema<PutUserModalResponse>;
 
 export interface PutUserPasswordRequest {
   /** value must be an integer greater than zero. */
@@ -20286,9 +18746,8 @@ export const PutUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutUserPasswordRequest" }) as any as S.Schema<PutUserPasswordRequest>;
 
 export interface PutUserPasswordResponse {}
-export const PutUserPasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutUserPasswordResponse",
-}) as any as S.Schema<PutUserPasswordResponse>;
+export const PutUserPasswordResponse =
+  CreateActionResponse as any as S.Schema<PutUserPasswordResponse>;
 
 export interface PutUserReactivateRequest {
   /** value must be an integer greater than zero. */
@@ -20301,9 +18760,8 @@ export const PutUserReactivateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutUserReactivateRequest" }) as any as S.Schema<PutUserReactivateRequest>;
 
 export interface PutUserReactivateResponse {}
-export const PutUserReactivateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutUserReactivateResponse",
-}) as any as S.Schema<PutUserReactivateResponse>;
+export const PutUserReactivateResponse =
+  CreateActionResponse as any as S.Schema<PutUserReactivateResponse>;
 
 export type UpdateBookmarkRequestModel = "card" | "dashboard" | "collection" | "document";
 export const UpdateBookmarkRequestModel = S.String;
@@ -20321,9 +18779,8 @@ export const UpdateBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateBookmarkRequest" }) as any as S.Schema<UpdateBookmarkRequest>;
 
 export interface UpdateBookmarkResponse {}
-export const UpdateBookmarkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateBookmarkResponse",
-}) as any as S.Schema<UpdateBookmarkResponse>;
+export const UpdateBookmarkResponse =
+  CreateActionResponse as any as S.Schema<UpdateBookmarkResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type UpdateCardQueryRequestExportFormat = "csv" | "api" | "xlsx" | "json";
@@ -20350,9 +18807,8 @@ export const UpdateCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCardQueryRequest" }) as any as S.Schema<UpdateCardQueryRequest>;
 
 export interface UpdateCardQueryResponse {}
-export const UpdateCardQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCardQueryResponse",
-}) as any as S.Schema<UpdateCardQueryResponse>;
+export const UpdateCardQueryResponse =
+  CreateActionResponse as any as S.Schema<UpdateCardQueryResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDashboardDashcardCardRequestExportFormat = "csv" | "api" | "xlsx" | "json";
@@ -20393,11 +18849,8 @@ export const UpdateDashboardDashcardCardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDashboardDashcardCardRequest>;
 
 export interface UpdateDashboardDashcardCardResponse {}
-export const UpdateDashboardDashcardCardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDashboardDashcardCardResponse",
-}) as any as S.Schema<UpdateDashboardDashcardCardResponse>;
+export const UpdateDashboardDashcardCardResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDashboardDashcardCardResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDashboardDashcardCardQueryRequestExportFormat = "csv" | "api" | "xlsx" | "json";
@@ -20436,11 +18889,8 @@ export const UpdateDashboardDashcardCardQueryRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateDashboardDashcardCardQueryRequest>;
 
 export interface UpdateDashboardDashcardCardQueryResponse {}
-export const UpdateDashboardDashcardCardQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDashboardDashcardCardQueryResponse",
-}) as any as S.Schema<UpdateDashboardDashcardCardQueryResponse>;
+export const UpdateDashboardDashcardCardQueryResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDashboardDashcardCardQueryResponse>;
 
 export type UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItemId = number | string;
 export const UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItemId =
@@ -20537,9 +18987,8 @@ export const UpdateDashboardSaveCollectionRequestTabsItem = CreateDashboardSaveR
 
 export type UpdateDashboardSaveCollectionRequestTabsList =
   Array<CreateDashboardSaveRequestTabsItem>;
-export const UpdateDashboardSaveCollectionRequestTabsList = /*@__PURE__*/ S.Array(
-  CreateDashboardSaveRequestTabsItem,
-) as any as S.Schema<UpdateDashboardSaveCollectionRequestTabsList>;
+export const UpdateDashboardSaveCollectionRequestTabsList =
+  CreateDashboardSaveRequestTabsList as any as S.Schema<UpdateDashboardSaveCollectionRequestTabsList>;
 
 export type UpdateDashboardSaveCollectionRequestWidth = "fixed" | "full";
 export const UpdateDashboardSaveCollectionRequestWidth = S.String;
@@ -20577,11 +19026,8 @@ export const UpdateDashboardSaveCollectionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateDashboardSaveCollectionRequest>;
 
 export interface UpdateDashboardSaveCollectionResponse {}
-export const UpdateDashboardSaveCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDashboardSaveCollectionResponse",
-}) as any as S.Schema<UpdateDashboardSaveCollectionResponse>;
+export const UpdateDashboardSaveCollectionResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDashboardSaveCollectionResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDatasetRequestExportFormat = "csv" | "api" | "xlsx" | "json";
@@ -20607,14 +19053,11 @@ export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDatasetRequest" }) as any as S.Schema<UpdateDatasetRequest>;
 
 export interface UpdateDatasetResponse {}
-export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatasetResponse",
-}) as any as S.Schema<UpdateDatasetResponse>;
+export const UpdateDatasetResponse = CreateActionResponse as any as S.Schema<UpdateDatasetResponse>;
 
 export type UpdateDatasetParameterSearchRequestFieldIdsList = Array<number>;
-export const UpdateDatasetParameterSearchRequestFieldIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateDatasetParameterSearchRequestFieldIdsList>;
+export const UpdateDatasetParameterSearchRequestFieldIdsList =
+  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<UpdateDatasetParameterSearchRequestFieldIdsList>;
 
 export interface UpdateDatasetParameterSearchRequest {
   query: string;
@@ -20632,11 +19075,8 @@ export const UpdateDatasetParameterSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatasetParameterSearchRequest>;
 
 export interface UpdateDatasetParameterSearchResponse {}
-export const UpdateDatasetParameterSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatasetParameterSearchResponse",
-}) as any as S.Schema<UpdateDatasetParameterSearchResponse>;
+export const UpdateDatasetParameterSearchResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDatasetParameterSearchResponse>;
 
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDocumentCardRequestExportFormat = "csv" | "api" | "xlsx" | "json";
@@ -20674,9 +19114,8 @@ export const UpdateDocumentCardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDocumentCardRequest>;
 
 export interface UpdateDocumentCardResponse {}
-export const UpdateDocumentCardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDocumentCardResponse",
-}) as any as S.Schema<UpdateDocumentCardResponse>;
+export const UpdateDocumentCardResponse =
+  CreateActionResponse as any as S.Schema<UpdateDocumentCardResponse>;
 
 export interface UpdateDocumentCardQueryRequest {
   /** value must be an integer greater than zero. */
@@ -20708,9 +19147,8 @@ export const UpdateDocumentCardQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDocumentCardQueryRequest>;
 
 export interface UpdateDocumentCardQueryResponse {}
-export const UpdateDocumentCardQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateDocumentCardQueryResponse" },
-) as any as S.Schema<UpdateDocumentCardQueryResponse>;
+export const UpdateDocumentCardQueryResponse =
+  CreateAgentReadResourceResponse as any as S.Schema<UpdateDocumentCardQueryResponse>;
 
 export type UpdateEeCloudAddOnsRequestProductType =
   | "metabase-ai"
@@ -20742,9 +19180,8 @@ export const UpdateEeCloudAddOnsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEeCloudAddOnsRequest>;
 
 export interface UpdateEeCloudAddOnsResponse {}
-export const UpdateEeCloudAddOnsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEeCloudAddOnsResponse",
-}) as any as S.Schema<UpdateEeCloudAddOnsResponse>;
+export const UpdateEeCloudAddOnsResponse =
+  CreateActionResponse as any as S.Schema<UpdateEeCloudAddOnsResponse>;
 
 export interface UpdateEeCloudProxyRequestBody {
   force_end_trial?: boolean;
@@ -20775,9 +19212,8 @@ export const UpdateEeCloudProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEeCloudProxyRequest>;
 
 export interface UpdateEeCloudProxyResponse {}
-export const UpdateEeCloudProxyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEeCloudProxyResponse",
-}) as any as S.Schema<UpdateEeCloudProxyResponse>;
+export const UpdateEeCloudProxyResponse =
+  CreateActionResponse as any as S.Schema<UpdateEeCloudProxyResponse>;
 
 export type UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFiltersSchemaFiltersType =
   | "inclusion"
@@ -20828,19 +19264,14 @@ export const UpdateEeDatabaseReplicationConnectionDatabaseRequest = /*@__PURE__*
 }) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseRequest>;
 
 export interface UpdateEeDatabaseReplicationConnectionDatabaseResponse {}
-export const UpdateEeDatabaseReplicationConnectionDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEeDatabaseReplicationConnectionDatabaseResponse",
-}) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseResponse>;
+export const UpdateEeDatabaseReplicationConnectionDatabaseResponse =
+  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseResponse>;
 
 export type UpdateEeScimUserRequestOperationsItemValueCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const UpdateEeScimUserRequestOperationsItemValueCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateEeScimUserRequestOperationsItemValueCase0Map>;
+export const UpdateEeScimUserRequestOperationsItemValueCase0Map =
+  MetabaseLibSchemaActionsRow as any as S.Schema<UpdateEeScimUserRequestOperationsItemValueCase0Map>;
 
 /** A single attribute value in a PATCH operation. Deliberately *not* `ms/BooleanValue`: its decoder maps everything that isn't `true`/"true" onto `false`, so a blank or junk value would coerce into a deactivation rather than be rejected. The strings clients send for booleans are parsed by the handler instead. */
 export type MetabaseEnterpriseScimV2ApiPatchValue = string | boolean;
@@ -20874,9 +19305,8 @@ export const UpdateEeScimUserRequestOperationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateEeScimUserRequestOperationsList>;
 
 export type UpdateEeScimUserRequestSchemasList = Array<string>;
-export const UpdateEeScimUserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEeScimUserRequestSchemasList>;
+export const UpdateEeScimUserRequestSchemasList =
+  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<UpdateEeScimUserRequestSchemasList>;
 
 export interface UpdateEeScimUserRequest {
   id: string;
@@ -20892,9 +19322,8 @@ export const UpdateEeScimUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateEeScimUserRequest" }) as any as S.Schema<UpdateEeScimUserRequest>;
 
 export interface UpdateEeScimUserResponse {}
-export const UpdateEeScimUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEeScimUserResponse",
-}) as any as S.Schema<UpdateEeScimUserResponse>;
+export const UpdateEeScimUserResponse =
+  CreateActionResponse as any as S.Schema<UpdateEeScimUserResponse>;
 
 export type UpdateNotifyDbRequestScan = "full" | "schema";
 export const UpdateNotifyDbRequestScan = S.String;
@@ -20918,9 +19347,8 @@ export const UpdateNotifyDbRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateNotifyDbRequest" }) as any as S.Schema<UpdateNotifyDbRequest>;
 
 export interface UpdateNotifyDbResponse {}
-export const UpdateNotifyDbResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNotifyDbResponse",
-}) as any as S.Schema<UpdateNotifyDbResponse>;
+export const UpdateNotifyDbResponse =
+  CreateActionResponse as any as S.Schema<UpdateNotifyDbResponse>;
 
 export type CreateActionError = MetabaseOpError;
 /** POST /api/action Create a new action. */

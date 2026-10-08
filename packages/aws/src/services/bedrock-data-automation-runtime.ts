@@ -416,9 +416,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type NonBlankString = string;
 export type GetDataAutomationStatusError =
   | AccessDeniedException

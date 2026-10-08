@@ -163,17 +163,8 @@ export interface GetCopilotSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-export const GetCopilotSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CopilotSettingsProperties),
-  }),
-).annotate({
-  identifier: "GetCopilotSettingsResponse",
-}) as any as S.Schema<GetCopilotSettingsResponse>;
+export const GetCopilotSettingsResponse =
+  CopilotSettingsCreateOrUpdateResponse as any as S.Schema<GetCopilotSettingsResponse>;
 
 export interface ListOperationsRequest {}
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -266,17 +257,13 @@ export const PortalTenantCompilefileRequestContentsMap = /*@__PURE__*/ S.Record(
 
 /** The contents of the string source. */
 export type PortalTenantCompilefileRequestStringSourceMap = { [key: string]: unknown | undefined };
-export const PortalTenantCompilefileRequestStringSourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PortalTenantCompilefileRequestStringSourceMap>;
+export const PortalTenantCompilefileRequestStringSourceMap =
+  PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompilefileRequestStringSourceMap>;
 
 /** The contents of referenced files. The property name is the relative file path and the value is its contents. */
 export type PortalTenantCompilefileRequestFilesMap = { [key: string]: unknown | undefined };
-export const PortalTenantCompilefileRequestFilesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PortalTenantCompilefileRequestFilesMap>;
+export const PortalTenantCompilefileRequestFilesMap =
+  PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompilefileRequestFilesMap>;
 
 export interface PortalTenantCompilefileRequest {
   /** The contents of the file. */
@@ -305,10 +292,8 @@ export const PortalTenantCompilefileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The contents of the file to compile. */
 export type PortalTenantCompileFileResult = { [key: string]: unknown | undefined };
-export const PortalTenantCompileFileResult = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PortalTenantCompileFileResult>;
+export const PortalTenantCompileFileResult =
+  PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompileFileResult>;
 
 export type PortalTenantCompilefileResponse = PortalTenantCompileFileResult;
 export const PortalTenantCompilefileResponse = /*@__PURE__*/ S.suspend(() =>
@@ -361,17 +346,8 @@ export interface UpdateCopilotSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-export const UpdateCopilotSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CopilotSettingsProperties),
-  }),
-).annotate({
-  identifier: "UpdateCopilotSettingsResponse",
-}) as any as S.Schema<UpdateCopilotSettingsResponse>;
+export const UpdateCopilotSettingsResponse =
+  CopilotSettingsCreateOrUpdateResponse as any as S.Schema<UpdateCopilotSettingsResponse>;
 
 export type CopilotSettingsCreateOrUpdateError = AzureOpError;
 /** Create a CopilotSettingsResource */

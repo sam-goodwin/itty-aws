@@ -179,7 +179,7 @@ export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Permission = string;
 export type PermissionList = string[];
-export const PermissionList = /*@__PURE__*/ S.Array(S.String);
+export const PermissionList = ApplicationApprovedOrigins as any as S.Schema<PermissionList>;
 export type InitializationTimeout = number;
 export type ContactHandlingScope = "CROSS_CONTACTS" | "PER_CONTACT" | (string & {});
 export const ContactHandlingScope = S.String;
@@ -198,7 +198,8 @@ export const ApplicationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationConfig" }) as any as S.Schema<ApplicationConfig>;
 export type IframePermission = string;
 export type IframePermissionList = string[];
-export const IframePermissionList = /*@__PURE__*/ S.Array(S.String);
+export const IframePermissionList =
+  ApplicationApprovedOrigins as any as S.Schema<IframePermissionList>;
 export interface IframeConfig {
   Allow?: string[];
   Sandbox?: string[];
@@ -283,10 +284,10 @@ export const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleConfiguration" }) as any as S.Schema<ScheduleConfiguration>;
 export type NonBlankLongString = string;
 export type FolderList = string[];
-export const FolderList = /*@__PURE__*/ S.Array(S.String);
+export const FolderList = ApplicationApprovedOrigins as any as S.Schema<FolderList>;
 export type Fields = string;
 export type FieldsList = string[];
-export const FieldsList = /*@__PURE__*/ S.Array(S.String);
+export const FieldsList = ApplicationApprovedOrigins as any as S.Schema<FieldsList>;
 export type FieldsMap = { [key: string]: string[] | undefined };
 export const FieldsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -512,9 +513,8 @@ export const DeleteDataIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDataIntegrationRequest",
 }) as any as S.Schema<DeleteDataIntegrationRequest>;
 export interface DeleteDataIntegrationResponse {}
-export const DeleteDataIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataIntegrationResponse",
-}) as any as S.Schema<DeleteDataIntegrationResponse>;
+export const DeleteDataIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteDataIntegrationResponse>;
 export interface DeleteEventIntegrationRequest {
   Name: string;
 }
@@ -533,9 +533,8 @@ export const DeleteEventIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEventIntegrationRequest",
 }) as any as S.Schema<DeleteEventIntegrationRequest>;
 export interface DeleteEventIntegrationResponse {}
-export const DeleteEventIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventIntegrationResponse",
-}) as any as S.Schema<DeleteEventIntegrationResponse>;
+export const DeleteEventIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteEventIntegrationResponse>;
 export interface GetApplicationRequest {
   Arn: string;
 }
@@ -1000,11 +999,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ApplicationApprovedOrigins as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1018,9 +1016,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   Arn: string;
   Name?: string;
@@ -1056,9 +1053,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateApplicationRequest" }) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {}
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface UpdateDataIntegrationRequest {
   Identifier: string;
   Name?: string;
@@ -1083,9 +1079,8 @@ export const UpdateDataIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDataIntegrationRequest",
 }) as any as S.Schema<UpdateDataIntegrationRequest>;
 export interface UpdateDataIntegrationResponse {}
-export const UpdateDataIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDataIntegrationResponse",
-}) as any as S.Schema<UpdateDataIntegrationResponse>;
+export const UpdateDataIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateDataIntegrationResponse>;
 export interface UpdateDataIntegrationAssociationRequest {
   DataIntegrationIdentifier: string;
   DataIntegrationAssociationIdentifier: string;
@@ -1139,9 +1134,8 @@ export const UpdateEventIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventIntegrationRequest",
 }) as any as S.Schema<UpdateEventIntegrationRequest>;
 export interface UpdateEventIntegrationResponse {}
-export const UpdateEventIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEventIntegrationResponse",
-}) as any as S.Schema<UpdateEventIntegrationResponse>;
+export const UpdateEventIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateEventIntegrationResponse>;
 export type Message = string;
 export type CreateApplicationError =
   | AccessDeniedException

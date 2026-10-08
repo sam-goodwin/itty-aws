@@ -50,15 +50,13 @@ export const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ S.Array(
 
 /** Site paths authorized for this run. */
 export type ContentAutopilotSnapshotContentBoundariesList = Array<string>;
-export const ContentAutopilotSnapshotContentBoundariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
+export const ContentAutopilotSnapshotContentBoundariesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
 
 /** Editorial rules captured for this run. */
 export type ContentAutopilotSnapshotBrandRulesList = Array<string>;
-export const ContentAutopilotSnapshotBrandRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
+export const ContentAutopilotSnapshotBrandRulesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
 
 export interface ContentAutopilotSnapshot {
   /** Site domain used for the run. */

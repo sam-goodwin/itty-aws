@@ -88,9 +88,8 @@ export const CloudOperationStatusEnum = S.String;
 
 /** Affected regions of the sub-operation */
 export type CloudSubOperationRegionsList = Array<string>;
-export const CloudSubOperationRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudSubOperationRegionsList>;
+export const CloudSubOperationRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudSubOperationRegionsList>;
 
 /** A sub-operation is a child of an operation on your Project */
 export interface CloudSubOperation {
@@ -307,9 +306,8 @@ export const CloudFlavorFlavor = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags about the image */
 export type CloudImageImageTagsList = Array<string>;
-export const CloudImageImageTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudImageImageTagsList>;
+export const CloudImageImageTagsList =
+  CloudOperationRegionsList as any as S.Schema<CloudImageImageTagsList>;
 
 /** Image */
 export interface CloudImageImage {
@@ -412,15 +410,13 @@ export const CloudInstanceMonthlyBilling = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of pending public cloud operations */
 export type CloudInstanceInstanceOperationIdsList = Array<string>;
-export const CloudInstanceInstanceOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudInstanceInstanceOperationIdsList>;
+export const CloudInstanceInstanceOperationIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudInstanceInstanceOperationIdsList>;
 
 /** SSH key regions */
 export type CloudSshkeySshKeyDetailRegionsList = Array<string>;
-export const CloudSshkeySshKeyDetailRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudSshkeySshKeyDetailRegionsList>;
+export const CloudSshkeySshKeyDetailRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudSshkeySshKeyDetailRegionsList>;
 
 /** SshKeyDetail */
 export interface CloudSshkeySshKeyDetail {
@@ -557,9 +553,8 @@ export const ActivateCloudProjectMonthlyBillingResponse = /*@__PURE__*/ S.suspen
 
 /** Receiver of the alert */
 export type AddAlertingRequestEmailsList = Array<string>;
-export const AddAlertingRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddAlertingRequestEmailsList>;
+export const AddAlertingRequestEmailsList =
+  CloudOperationRegionsList as any as S.Schema<AddAlertingRequestEmailsList>;
 
 /** available services to watch */
 export type CloudAlertingServiceEnum =
@@ -605,9 +600,8 @@ export const AddAlertingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Receiver of the alert */
 export type CloudAlertingAlertingEmailsList = Array<string>;
-export const CloudAlertingAlertingEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudAlertingAlertingEmailsList>;
+export const CloudAlertingAlertingEmailsList =
+  CloudOperationRegionsList as any as S.Schema<CloudAlertingAlertingEmailsList>;
 
 /** Currency code */
 export type OrderCurrencyCodeEnum =
@@ -996,9 +990,8 @@ export const CloudProjectLoadbalancerConditionTypeEnum = S.String;
 
 /** The list of values to match */
 export type CloudProjectLoadbalancerConditionValuesList = Array<string>;
-export const CloudProjectLoadbalancerConditionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectLoadbalancerConditionValuesList>;
+export const CloudProjectLoadbalancerConditionValuesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectLoadbalancerConditionValuesList>;
 
 /** A condition */
 export interface CloudProjectLoadbalancerCondition {
@@ -1066,9 +1059,8 @@ export const CloudProjectLoadbalancerEntryPointPortsList = /*@__PURE__*/ S.Array
 
 /** The list of condition to match */
 export type CloudProjectLoadbalancerRuleConditionsList = Array<string>;
-export const CloudProjectLoadbalancerRuleConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectLoadbalancerRuleConditionsList>;
+export const CloudProjectLoadbalancerRuleConditionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectLoadbalancerRuleConditionsList>;
 
 /** A entrypoint rule */
 export interface CloudProjectLoadbalancerRule {
@@ -1703,9 +1695,8 @@ export const CloudProjectLoadbalancerBackendProxyProtocolEnum = S.String;
 
 /** List of server in backend */
 export type CloudProjectLoadbalancerBackendServersList = Array<CloudProjectLoadbalancerServer>;
-export const CloudProjectLoadbalancerBackendServersList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerServer,
-) as any as S.Schema<CloudProjectLoadbalancerBackendServersList>;
+export const CloudProjectLoadbalancerBackendServersList =
+  CloudProjectLoadbalancerTargetServersList as any as S.Schema<CloudProjectLoadbalancerBackendServersList>;
 
 /** A load balancer backend */
 export interface CloudProjectLoadbalancerBackend {
@@ -1741,9 +1732,8 @@ export const CloudProjectLoadbalancerConfigurationBackendsList = /*@__PURE__*/ S
 
 /** List of certificate ID */
 export type CloudProjectLoadbalancerConfigurationCertificatesList = Array<string>;
-export const CloudProjectLoadbalancerConfigurationCertificatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectLoadbalancerConfigurationCertificatesList>;
+export const CloudProjectLoadbalancerConfigurationCertificatesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectLoadbalancerConfigurationCertificatesList>;
 
 /** Select a load balancer backend */
 export interface CloudProjectLoadbalancerBackendSelector {
@@ -1772,21 +1762,18 @@ export const CloudProjectLoadbalancerFrontendModeEnum = S.String;
 /** Port ranges to listen */
 export type CloudProjectLoadbalancerFrontendPortRangesList =
   Array<CloudProjectLoadbalancerPortRange>;
-export const CloudProjectLoadbalancerFrontendPortRangesList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerPortRange,
-) as any as S.Schema<CloudProjectLoadbalancerFrontendPortRangesList>;
+export const CloudProjectLoadbalancerFrontendPortRangesList =
+  CloudProjectLoadbalancerEntryPointPortRangesList as any as S.Schema<CloudProjectLoadbalancerFrontendPortRangesList>;
 
 /** Ports to listen */
 export type CloudProjectLoadbalancerFrontendPortsList = Array<number>;
-export const CloudProjectLoadbalancerFrontendPortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CloudProjectLoadbalancerFrontendPortsList>;
+export const CloudProjectLoadbalancerFrontendPortsList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<CloudProjectLoadbalancerFrontendPortsList>;
 
 /** IP range to whitelist */
 export type CloudProjectLoadbalancerFrontendWhitelistList = Array<string>;
-export const CloudProjectLoadbalancerFrontendWhitelistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectLoadbalancerFrontendWhitelistList>;
+export const CloudProjectLoadbalancerFrontendWhitelistList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectLoadbalancerFrontendWhitelistList>;
 
 /** A load balancer frontend */
 export interface CloudProjectLoadbalancerFrontend {
@@ -1880,9 +1867,8 @@ export const ApplyNetworkLoadBalancerConfigurationRequest = /*@__PURE__*/ S.susp
 /** List of dispatch actions */
 export type CloudProjectNetworkloadbalancerActionsDispatchList =
   Array<CloudProjectLoadbalancerActionDispatch>;
-export const CloudProjectNetworkloadbalancerActionsDispatchList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerActionDispatch,
-) as any as S.Schema<CloudProjectNetworkloadbalancerActionsDispatchList>;
+export const CloudProjectNetworkloadbalancerActionsDispatchList =
+  CloudProjectLoadbalancerActionsDispatchList as any as S.Schema<CloudProjectNetworkloadbalancerActionsDispatchList>;
 
 /** Available type of Reject action */
 export type CloudProjectNetworkloadbalancerActionRejectTypeEnum = "deny" | "drop";
@@ -1933,9 +1919,8 @@ export const CloudProjectNetworkloadbalancerConditionTypeEnum = S.String;
 
 /** The list of values to match */
 export type CloudProjectNetworkloadbalancerConditionValuesList = Array<string>;
-export const CloudProjectNetworkloadbalancerConditionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectNetworkloadbalancerConditionValuesList>;
+export const CloudProjectNetworkloadbalancerConditionValuesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectNetworkloadbalancerConditionValuesList>;
 
 /** A condition */
 export interface CloudProjectNetworkloadbalancerCondition {
@@ -1975,22 +1960,19 @@ export const CloudProjectNetworkloadbalancerConfigurationConditionsList = /*@__P
 /** Port ranges to listen */
 export type CloudProjectNetworkloadbalancerEntryPointPortRangesList =
   Array<CloudProjectLoadbalancerPortRange>;
-export const CloudProjectNetworkloadbalancerEntryPointPortRangesList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerPortRange,
-) as any as S.Schema<CloudProjectNetworkloadbalancerEntryPointPortRangesList>;
+export const CloudProjectNetworkloadbalancerEntryPointPortRangesList =
+  CloudProjectLoadbalancerEntryPointPortRangesList as any as S.Schema<CloudProjectNetworkloadbalancerEntryPointPortRangesList>;
 
 /** Ports to listen */
 export type CloudProjectNetworkloadbalancerEntryPointPortsList = Array<number>;
-export const CloudProjectNetworkloadbalancerEntryPointPortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CloudProjectNetworkloadbalancerEntryPointPortsList>;
+export const CloudProjectNetworkloadbalancerEntryPointPortsList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<CloudProjectNetworkloadbalancerEntryPointPortsList>;
 
 /** List of rules */
 export type CloudProjectNetworkloadbalancerEntryPointRulesList =
   Array<CloudProjectLoadbalancerRule>;
-export const CloudProjectNetworkloadbalancerEntryPointRulesList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerRule,
-) as any as S.Schema<CloudProjectNetworkloadbalancerEntryPointRulesList>;
+export const CloudProjectNetworkloadbalancerEntryPointRulesList =
+  CloudProjectLoadbalancerEntryPointRulesList as any as S.Schema<CloudProjectNetworkloadbalancerEntryPointRulesList>;
 
 /** A network load balancer entryPoint */
 export interface CloudProjectNetworkloadbalancerEntryPoint {
@@ -2027,9 +2009,8 @@ export const CloudProjectNetworkloadbalancerConfigurationEntryPointsList = /*@__
 /** List of targets */
 export type CloudProjectNetworkloadbalancerConfigurationTargetsList =
   Array<CloudProjectLoadbalancerTarget>;
-export const CloudProjectNetworkloadbalancerConfigurationTargetsList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerTarget,
-) as any as S.Schema<CloudProjectNetworkloadbalancerConfigurationTargetsList>;
+export const CloudProjectNetworkloadbalancerConfigurationTargetsList =
+  CloudProjectLoadbalancerApplicationConfigurationTargetsList as any as S.Schema<CloudProjectNetworkloadbalancerConfigurationTargetsList>;
 
 /** A network load balancer configuration */
 export interface CloudProjectNetworkloadbalancerConfiguration {
@@ -2239,9 +2220,8 @@ export const AttachCloudProjectVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Volume attached to instances id */
 export type CloudVolumeVolumeAttachedToList = Array<string>;
-export const CloudVolumeVolumeAttachedToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudVolumeVolumeAttachedToList>;
+export const CloudVolumeVolumeAttachedToList =
+  CloudOperationRegionsList as any as S.Schema<CloudVolumeVolumeAttachedToList>;
 
 /** VolumeStatusEnum */
 export type CloudVolumeVolumeStatusEnum =
@@ -2409,23 +2389,17 @@ export const BulkCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkCloudProjectInstanceRequest>;
 
 export type BulkCloudProjectInstanceResponseBodyList = Array<CloudInstanceInstance>;
-export const BulkCloudProjectInstanceResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudInstanceInstance,
-) as any as S.Schema<BulkCloudProjectInstanceResponseBodyList>;
+export const BulkCloudProjectInstanceResponseBodyList =
+  ActivateCloudProjectMonthlyBillingResponseBodyList as any as S.Schema<BulkCloudProjectInstanceResponseBodyList>;
 
 export type BulkCloudProjectInstanceResponse = BulkCloudProjectInstanceResponseBodyList;
-export const BulkCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  BulkCloudProjectInstanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "BulkCloudProjectInstanceResponse",
-}) as any as S.Schema<BulkCloudProjectInstanceResponse>;
+export const BulkCloudProjectInstanceResponse =
+  ActivateCloudProjectMonthlyBillingResponse as any as S.Schema<BulkCloudProjectInstanceResponse>;
 
 /** Snapshot IDs to delete, cannot be used along side the deleteAll boolean set to true */
 export type BulkCloudProjectRegionVolumeDeleteSnapshotsRequestSnapshotIdsList = Array<string>;
 export const BulkCloudProjectRegionVolumeDeleteSnapshotsRequestSnapshotIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BulkCloudProjectRegionVolumeDeleteSnapshotsRequestSnapshotIdsList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<BulkCloudProjectRegionVolumeDeleteSnapshotsRequestSnapshotIdsList>;
 
 export interface BulkCloudProjectRegionVolumeDeleteSnapshotsRequest {
   /** Service name */
@@ -2932,13 +2906,8 @@ export interface CloudProjectLoadbalancerNetworkingIngressCreation {
   /** networking ingress kind definition */
   kind: CloudProjectLoadbalancerNetworkingIngressKindEnum | (string & {});
 }
-export const CloudProjectLoadbalancerNetworkingIngressCreation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CloudProjectLoadbalancerNetworkingIngressKindEnum,
-  }),
-).annotate({
-  identifier: "CloudProjectLoadbalancerNetworkingIngressCreation",
-}) as any as S.Schema<CloudProjectLoadbalancerNetworkingIngressCreation>;
+export const CloudProjectLoadbalancerNetworkingIngressCreation =
+  CloudProjectLoadbalancerConfigurationNetworkingIngress as any as S.Schema<CloudProjectLoadbalancerNetworkingIngressCreation>;
 
 /** Networking creation object */
 export interface CloudProjectLoadbalancerNetworkingNetworkingCreation {
@@ -3030,15 +2999,13 @@ export const CloudProjectLoadbalancerConfigurationVersion = /*@__PURE__*/ S.susp
 
 /** IP version 4 list */
 export type CloudProjectLoadbalancerAddressesIpv4List = Array<string>;
-export const CloudProjectLoadbalancerAddressesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectLoadbalancerAddressesIpv4List>;
+export const CloudProjectLoadbalancerAddressesIpv4List =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectLoadbalancerAddressesIpv4List>;
 
 /** IP version 6 list */
 export type CloudProjectLoadbalancerAddressesIpv6List = Array<string>;
-export const CloudProjectLoadbalancerAddressesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectLoadbalancerAddressesIpv6List>;
+export const CloudProjectLoadbalancerAddressesIpv6List =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectLoadbalancerAddressesIpv6List>;
 
 /** IP list split in version 4 and 6 */
 export interface CloudProjectLoadbalancerAddresses {
@@ -3112,9 +3079,7 @@ export const CloudProjectApplicationLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 /** List of certificate ID */
 export type CreateApplicationLoadBalancerConfigurationRequestCertificatesList = Array<string>;
 export const CreateApplicationLoadBalancerConfigurationRequestCertificatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateApplicationLoadBalancerConfigurationRequestCertificatesList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CreateApplicationLoadBalancerConfigurationRequestCertificatesList>;
 
 /** List of conditions */
 export type CreateApplicationLoadBalancerConfigurationRequestConditionsList =
@@ -3128,16 +3093,13 @@ export const CreateApplicationLoadBalancerConfigurationRequestConditionsList =
 export type CreateApplicationLoadBalancerConfigurationRequestEntryPointsList =
   Array<CloudProjectLoadbalancerEntryPoint>;
 export const CreateApplicationLoadBalancerConfigurationRequestEntryPointsList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectLoadbalancerEntryPoint,
-  ) as any as S.Schema<CreateApplicationLoadBalancerConfigurationRequestEntryPointsList>;
+  CloudProjectLoadbalancerApplicationConfigurationEntryPointsList as any as S.Schema<CreateApplicationLoadBalancerConfigurationRequestEntryPointsList>;
 
 /** List of targets */
 export type CreateApplicationLoadBalancerConfigurationRequestTargetsList =
   Array<CloudProjectLoadbalancerTarget>;
-export const CreateApplicationLoadBalancerConfigurationRequestTargetsList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerTarget,
-) as any as S.Schema<CreateApplicationLoadBalancerConfigurationRequestTargetsList>;
+export const CreateApplicationLoadBalancerConfigurationRequestTargetsList =
+  CloudProjectLoadbalancerApplicationConfigurationTargetsList as any as S.Schema<CreateApplicationLoadBalancerConfigurationRequestTargetsList>;
 
 export interface CreateApplicationLoadBalancerConfigurationRequest {
   /** Service name */
@@ -3218,9 +3180,8 @@ export const CloudAcl = /*@__PURE__*/ S.suspend(() =>
 
 /** App command */
 export type CreateCloudProjectAiAppRequestCommandList = Array<string>;
-export const CreateCloudProjectAiAppRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiAppRequestCommandList>;
+export const CreateCloudProjectAiAppRequestCommandList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiAppRequestCommandList>;
 
 /** AI Solutions AI App deployment strategy object */
 export interface CloudProjectAiAppDeploymentStrategy {
@@ -3495,13 +3456,8 @@ export interface CloudProjectAiVolumePublicSwift {
   /** URL of the public swift container */
   url: string;
 }
-export const CloudProjectAiVolumePublicSwift = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "CloudProjectAiVolumePublicSwift",
-}) as any as S.Schema<CloudProjectAiVolumePublicSwift>;
+export const CloudProjectAiVolumePublicSwift =
+  CloudProjectAiVolumePublicGit as any as S.Schema<CloudProjectAiVolumePublicSwift>;
 
 /** AI Solutions No Source Volume Object */
 export interface CloudProjectAiVolumeStandalone {
@@ -3668,22 +3624,18 @@ export const CreateCloudProjectAiAppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** App command */
 export type CloudProjectAiAppAppSpecCommandList = Array<string>;
-export const CloudProjectAiAppAppSpecCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiAppAppSpecCommandList>;
+export const CloudProjectAiAppAppSpecCommandList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiAppAppSpecCommandList>;
 
 /** List of environment variable to be set inside the app */
 export type CloudProjectAiAppAppSpecEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CloudProjectAiAppAppSpecEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CloudProjectAiAppAppSpecEnvVarsList>;
+export const CloudProjectAiAppAppSpecEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CloudProjectAiAppAppSpecEnvVarsList>;
 
 /** Labels for the app */
 export type CloudProjectAiAppAppSpecLabelsMap = { [key: string]: string | undefined };
-export const CloudProjectAiAppAppSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudProjectAiAppAppSpecLabelsMap>;
+export const CloudProjectAiAppAppSpecLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudProjectAiAppAppSpecLabelsMap>;
 
 /** AI Solutions App Probe Object */
 export type CloudProjectAiAppProbe = CloudProjectAiAppProbeInput;
@@ -4301,29 +4253,24 @@ export const CloudProjectAiAppApp = /*@__PURE__*/ S.suspend(() =>
 
 /** App command */
 export type CreateCloudProjectAiAppCommandRequestCommandList = Array<string>;
-export const CreateCloudProjectAiAppCommandRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiAppCommandRequestCommandList>;
+export const CreateCloudProjectAiAppCommandRequestCommandList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiAppCommandRequestCommandList>;
 
 /** List of environment variable to be set inside the app */
 export type CreateCloudProjectAiAppCommandRequestEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CreateCloudProjectAiAppCommandRequestEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CreateCloudProjectAiAppCommandRequestEnvVarsList>;
+export const CreateCloudProjectAiAppCommandRequestEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CreateCloudProjectAiAppCommandRequestEnvVarsList>;
 
 /** Labels are used to scope tokens, labels prefixed by 'ovh/' are owned by the platform and overridden */
 export type CreateCloudProjectAiAppCommandRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateCloudProjectAiAppCommandRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiAppCommandRequestLabelsMap>;
+export const CreateCloudProjectAiAppCommandRequestLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateCloudProjectAiAppCommandRequestLabelsMap>;
 
 /** App Data linked */
 export type CreateCloudProjectAiAppCommandRequestVolumesList =
   Array<CloudProjectAiVolumeVolumeInput>;
-export const CreateCloudProjectAiAppCommandRequestVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeInput,
-) as any as S.Schema<CreateCloudProjectAiAppCommandRequestVolumesList>;
+export const CreateCloudProjectAiAppCommandRequestVolumesList =
+  CreateCloudProjectAiAppRequestVolumesList as any as S.Schema<CreateCloudProjectAiAppCommandRequestVolumesList>;
 
 export interface CreateCloudProjectAiAppCommandRequest {
   /** Service name */
@@ -4440,11 +4387,8 @@ export const CreateCloudProjectAiAuthorizationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateCloudProjectAiAuthorizationRequest>;
 
 export interface CreateCloudProjectAiAuthorizationResponse {}
-export const CreateCloudProjectAiAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectAiAuthorizationResponse",
-}) as any as S.Schema<CreateCloudProjectAiAuthorizationResponse>;
+export const CreateCloudProjectAiAuthorizationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectAiAuthorizationResponse>;
 
 /** AI Solutions basic auth credentials input */
 export interface CloudProjectAiBasicAuthCredentialsInput {
@@ -4601,34 +4545,28 @@ export const CloudProjectAiDataStore = /*@__PURE__*/ S.suspend(() =>
 
 /** Job command */
 export type CreateCloudProjectAiJobRequestCommandList = Array<string>;
-export const CreateCloudProjectAiJobRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiJobRequestCommandList>;
+export const CreateCloudProjectAiJobRequestCommandList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiJobRequestCommandList>;
 
 /** List of environment variable to be set inside job */
 export type CreateCloudProjectAiJobRequestEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CreateCloudProjectAiJobRequestEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CreateCloudProjectAiJobRequestEnvVarsList>;
+export const CreateCloudProjectAiJobRequestEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CreateCloudProjectAiJobRequestEnvVarsList>;
 
 /** Labels are used to scope tokens, labels prefixed by 'ovh/' are owned by the platform and overridden */
 export type CreateCloudProjectAiJobRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateCloudProjectAiJobRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiJobRequestLabelsMap>;
+export const CreateCloudProjectAiJobRequestLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateCloudProjectAiJobRequestLabelsMap>;
 
 /** SSH keys authorized to access to the job container */
 export type CreateCloudProjectAiJobRequestSshPublicKeysList = Array<string>;
-export const CreateCloudProjectAiJobRequestSshPublicKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiJobRequestSshPublicKeysList>;
+export const CreateCloudProjectAiJobRequestSshPublicKeysList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiJobRequestSshPublicKeysList>;
 
 /** Job Data linked */
 export type CreateCloudProjectAiJobRequestVolumesList = Array<CloudProjectAiVolumeVolumeInput>;
-export const CreateCloudProjectAiJobRequestVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeInput,
-) as any as S.Schema<CreateCloudProjectAiJobRequestVolumesList>;
+export const CreateCloudProjectAiJobRequestVolumesList =
+  CreateCloudProjectAiAppRequestVolumesList as any as S.Schema<CreateCloudProjectAiJobRequestVolumesList>;
 
 export interface CreateCloudProjectAiJobRequest {
   /** Service name */
@@ -4692,22 +4630,18 @@ export const CreateCloudProjectAiJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Job command */
 export type CloudProjectAiJobJobSpecCommandList = Array<string>;
-export const CloudProjectAiJobJobSpecCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiJobJobSpecCommandList>;
+export const CloudProjectAiJobJobSpecCommandList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiJobJobSpecCommandList>;
 
 /** List of environment variable to be set inside job */
 export type CloudProjectAiJobJobSpecEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CloudProjectAiJobJobSpecEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CloudProjectAiJobJobSpecEnvVarsList>;
+export const CloudProjectAiJobJobSpecEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CloudProjectAiJobJobSpecEnvVarsList>;
 
 /** Labels for the job */
 export type CloudProjectAiJobJobSpecLabelsMap = { [key: string]: string | undefined };
-export const CloudProjectAiJobJobSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudProjectAiJobJobSpecLabelsMap>;
+export const CloudProjectAiJobJobSpecLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudProjectAiJobJobSpecLabelsMap>;
 
 /** Shutdown strategy of an instance */
 export type CloudProjectAiShutdownStrategyEnum = "Restart" | "Stop";
@@ -4715,15 +4649,13 @@ export const CloudProjectAiShutdownStrategyEnum = S.String;
 
 /** SSH keys authorized to access to the job container */
 export type CloudProjectAiJobJobSpecSshPublicKeysList = Array<string>;
-export const CloudProjectAiJobJobSpecSshPublicKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiJobJobSpecSshPublicKeysList>;
+export const CloudProjectAiJobJobSpecSshPublicKeysList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiJobJobSpecSshPublicKeysList>;
 
 /** Job Data linked */
 export type CloudProjectAiJobJobSpecVolumesList = Array<CloudProjectAiVolumeVolume>;
-export const CloudProjectAiJobJobSpecVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolume,
-) as any as S.Schema<CloudProjectAiJobJobSpecVolumesList>;
+export const CloudProjectAiJobJobSpecVolumesList =
+  CloudProjectAiAppAppSpecVolumesList as any as S.Schema<CloudProjectAiJobJobSpecVolumesList>;
 
 /** AI Solutions Job Spec Object to create a job */
 export interface CloudProjectAiJobJobSpec {
@@ -4786,9 +4718,8 @@ export const CloudProjectAiJobJobSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Status about the datasync linked to the job */
 export type CloudProjectAiJobJobStatusDataSyncList = Array<CloudProjectAiVolumeDataSync>;
-export const CloudProjectAiJobJobStatusDataSyncList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeDataSync,
-) as any as S.Schema<CloudProjectAiJobJobStatusDataSyncList>;
+export const CloudProjectAiJobJobStatusDataSyncList =
+  CloudProjectAiAppAppStatusDataSyncList as any as S.Schema<CloudProjectAiJobJobStatusDataSyncList>;
 
 /** State of the job */
 export type CloudProjectAiJobJobStateEnum =
@@ -4831,9 +4762,8 @@ export const CloudProjectAiJobJobStatusHistoryList = /*@__PURE__*/ S.Array(
 
 /** Job Data linked */
 export type CloudProjectAiJobJobStatusVolumesList = Array<CloudProjectAiVolumeVolumeStatus>;
-export const CloudProjectAiJobJobStatusVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeStatus,
-) as any as S.Schema<CloudProjectAiJobJobStatusVolumesList>;
+export const CloudProjectAiJobJobStatusVolumesList =
+  CloudProjectAiAppAppStatusVolumesList as any as S.Schema<CloudProjectAiJobJobStatusVolumesList>;
 
 /** AI Solutions Job Status Object */
 export interface CloudProjectAiJobJobStatus {
@@ -4936,35 +4866,29 @@ export const CloudProjectAiJobJob = /*@__PURE__*/ S.suspend(() =>
 
 /** Job command */
 export type CreateCloudProjectAiJobCommandRequestCommandList = Array<string>;
-export const CreateCloudProjectAiJobCommandRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiJobCommandRequestCommandList>;
+export const CreateCloudProjectAiJobCommandRequestCommandList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiJobCommandRequestCommandList>;
 
 /** List of environment variable to be set inside job */
 export type CreateCloudProjectAiJobCommandRequestEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CreateCloudProjectAiJobCommandRequestEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CreateCloudProjectAiJobCommandRequestEnvVarsList>;
+export const CreateCloudProjectAiJobCommandRequestEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CreateCloudProjectAiJobCommandRequestEnvVarsList>;
 
 /** Labels are used to scope tokens, labels prefixed by 'ovh/' are owned by the platform and overridden */
 export type CreateCloudProjectAiJobCommandRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateCloudProjectAiJobCommandRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiJobCommandRequestLabelsMap>;
+export const CreateCloudProjectAiJobCommandRequestLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateCloudProjectAiJobCommandRequestLabelsMap>;
 
 /** SSH keys authorized to access to the job container */
 export type CreateCloudProjectAiJobCommandRequestSshPublicKeysList = Array<string>;
-export const CreateCloudProjectAiJobCommandRequestSshPublicKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiJobCommandRequestSshPublicKeysList>;
+export const CreateCloudProjectAiJobCommandRequestSshPublicKeysList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiJobCommandRequestSshPublicKeysList>;
 
 /** Job Data linked */
 export type CreateCloudProjectAiJobCommandRequestVolumesList =
   Array<CloudProjectAiVolumeVolumeInput>;
-export const CreateCloudProjectAiJobCommandRequestVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeInput,
-) as any as S.Schema<CreateCloudProjectAiJobCommandRequestVolumesList>;
+export const CreateCloudProjectAiJobCommandRequestVolumesList =
+  CreateCloudProjectAiAppRequestVolumesList as any as S.Schema<CreateCloudProjectAiJobCommandRequestVolumesList>;
 
 export interface CreateCloudProjectAiJobCommandRequest {
   /** Service name */
@@ -5076,16 +5000,13 @@ export const CloudProjectAiNotebookNotebookEnv = /*@__PURE__*/ S.suspend(() =>
 
 /** List of environment variables to be set inside the notebook */
 export type CreateCloudProjectAiNotebookRequestEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CreateCloudProjectAiNotebookRequestEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CreateCloudProjectAiNotebookRequestEnvVarsList>;
+export const CreateCloudProjectAiNotebookRequestEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CreateCloudProjectAiNotebookRequestEnvVarsList>;
 
 /** Labels are used to scope tokens, labels prefixed by 'ovh/' are owned by the platform and overridden */
 export type CreateCloudProjectAiNotebookRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateCloudProjectAiNotebookRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiNotebookRequestLabelsMap>;
+export const CreateCloudProjectAiNotebookRequestLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateCloudProjectAiNotebookRequestLabelsMap>;
 
 /** Quantum Resource Object */
 export interface CloudProjectQuantumQuantumResourcesInput {
@@ -5102,15 +5023,13 @@ export const CloudProjectQuantumQuantumResourcesInput = /*@__PURE__*/ S.suspend(
 
 /** SSH keys authorized to access the notebook */
 export type CreateCloudProjectAiNotebookRequestSshPublicKeysList = Array<string>;
-export const CreateCloudProjectAiNotebookRequestSshPublicKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiNotebookRequestSshPublicKeysList>;
+export const CreateCloudProjectAiNotebookRequestSshPublicKeysList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiNotebookRequestSshPublicKeysList>;
 
 /** Notebook Data linked */
 export type CreateCloudProjectAiNotebookRequestVolumesList = Array<CloudProjectAiVolumeVolumeInput>;
-export const CreateCloudProjectAiNotebookRequestVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeInput,
-) as any as S.Schema<CreateCloudProjectAiNotebookRequestVolumesList>;
+export const CreateCloudProjectAiNotebookRequestVolumesList =
+  CreateCloudProjectAiAppRequestVolumesList as any as S.Schema<CreateCloudProjectAiNotebookRequestVolumesList>;
 
 export interface CreateCloudProjectAiNotebookRequest {
   /** Service name */
@@ -5159,16 +5078,13 @@ export const CreateCloudProjectAiNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of environment variables to be set inside the notebook */
 export type CloudProjectAiNotebookNotebookSpecEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CloudProjectAiNotebookNotebookSpecEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CloudProjectAiNotebookNotebookSpecEnvVarsList>;
+export const CloudProjectAiNotebookNotebookSpecEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CloudProjectAiNotebookNotebookSpecEnvVarsList>;
 
 /** Labels for the notebook */
 export type CloudProjectAiNotebookNotebookSpecLabelsMap = { [key: string]: string | undefined };
-export const CloudProjectAiNotebookNotebookSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudProjectAiNotebookNotebookSpecLabelsMap>;
+export const CloudProjectAiNotebookNotebookSpecLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudProjectAiNotebookNotebookSpecLabelsMap>;
 
 /** Quantum Resource Object */
 export type CloudProjectQuantumQuantumResources = CloudProjectQuantumQuantumResourcesInput;
@@ -5176,15 +5092,13 @@ export const CloudProjectQuantumQuantumResources = CloudProjectQuantumQuantumRes
 
 /** SSH keys authorized to access the notebook */
 export type CloudProjectAiNotebookNotebookSpecSshPublicKeysList = Array<string>;
-export const CloudProjectAiNotebookNotebookSpecSshPublicKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiNotebookNotebookSpecSshPublicKeysList>;
+export const CloudProjectAiNotebookNotebookSpecSshPublicKeysList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiNotebookNotebookSpecSshPublicKeysList>;
 
 /** Notebook Data linked */
 export type CloudProjectAiNotebookNotebookSpecVolumesList = Array<CloudProjectAiVolumeVolume>;
-export const CloudProjectAiNotebookNotebookSpecVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolume,
-) as any as S.Schema<CloudProjectAiNotebookNotebookSpecVolumesList>;
+export const CloudProjectAiNotebookNotebookSpecVolumesList =
+  CloudProjectAiAppAppSpecVolumesList as any as S.Schema<CloudProjectAiNotebookNotebookSpecVolumesList>;
 
 /** AI Solutions Notebook Spec Object to create a notebook */
 export interface CloudProjectAiNotebookNotebookSpec {
@@ -5237,9 +5151,8 @@ export const CloudProjectAiNotebookNotebookSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Status about the datasync linked to the job */
 export type CloudProjectAiNotebookNotebookStatusDataSyncList = Array<CloudProjectAiVolumeDataSync>;
-export const CloudProjectAiNotebookNotebookStatusDataSyncList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeDataSync,
-) as any as S.Schema<CloudProjectAiNotebookNotebookStatusDataSyncList>;
+export const CloudProjectAiNotebookNotebookStatusDataSyncList =
+  CloudProjectAiAppAppStatusDataSyncList as any as S.Schema<CloudProjectAiNotebookNotebookStatusDataSyncList>;
 
 /** State of the notebook */
 export type CloudProjectAiNotebookNotebookStateEnum =
@@ -5257,9 +5170,8 @@ export const CloudProjectAiNotebookNotebookStateEnum = S.String;
 /** Notebook Data linked */
 export type CloudProjectAiNotebookNotebookStatusVolumesList =
   Array<CloudProjectAiVolumeVolumeStatus>;
-export const CloudProjectAiNotebookNotebookStatusVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeStatus,
-) as any as S.Schema<CloudProjectAiNotebookNotebookStatusVolumesList>;
+export const CloudProjectAiNotebookNotebookStatusVolumesList =
+  CloudProjectAiAppAppStatusVolumesList as any as S.Schema<CloudProjectAiNotebookNotebookStatusVolumesList>;
 
 /** AI Solutions Notebook Workspace Object */
 export interface CloudProjectAiNotebookNotebookWorkspace {
@@ -5359,31 +5271,26 @@ export const CloudProjectAiNotebookNotebook = /*@__PURE__*/ S.suspend(() =>
 
 /** List of environment variables to be set inside the notebook */
 export type CreateCloudProjectAiNotebookCommandRequestEnvVarsList = Array<CloudProjectAiJobJobEnv>;
-export const CreateCloudProjectAiNotebookCommandRequestEnvVarsList = /*@__PURE__*/ S.Array(
-  CloudProjectAiJobJobEnv,
-) as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestEnvVarsList>;
+export const CreateCloudProjectAiNotebookCommandRequestEnvVarsList =
+  CreateCloudProjectAiAppRequestEnvVarsList as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestEnvVarsList>;
 
 /** Labels are used to scope tokens, labels prefixed by 'ovh/' are owned by the platform and overridden */
 export type CreateCloudProjectAiNotebookCommandRequestLabelsMap = {
   [key: string]: string | undefined;
 };
-export const CreateCloudProjectAiNotebookCommandRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestLabelsMap>;
+export const CreateCloudProjectAiNotebookCommandRequestLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestLabelsMap>;
 
 /** SSH keys authorized to access the notebook */
 export type CreateCloudProjectAiNotebookCommandRequestSshPublicKeysList = Array<string>;
-export const CreateCloudProjectAiNotebookCommandRequestSshPublicKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestSshPublicKeysList>;
+export const CreateCloudProjectAiNotebookCommandRequestSshPublicKeysList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestSshPublicKeysList>;
 
 /** Notebook Data linked */
 export type CreateCloudProjectAiNotebookCommandRequestVolumesList =
   Array<CloudProjectAiVolumeVolumeInput>;
-export const CreateCloudProjectAiNotebookCommandRequestVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeInput,
-) as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestVolumesList>;
+export const CreateCloudProjectAiNotebookCommandRequestVolumesList =
+  CreateCloudProjectAiAppRequestVolumesList as any as S.Schema<CreateCloudProjectAiNotebookCommandRequestVolumesList>;
 
 export interface CreateCloudProjectAiNotebookCommandRequest {
   /** Service name */
@@ -5634,9 +5541,8 @@ export const CreateCloudProjectChangeContactRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateCloudProjectChangeContactRequest>;
 
 export type CreateCloudProjectChangeContactResponseBodyList = Array<number>;
-export const CreateCloudProjectChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateCloudProjectChangeContactResponseBodyList>;
+export const CreateCloudProjectChangeContactResponseBodyList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<CreateCloudProjectChangeContactResponseBodyList>;
 
 export type CreateCloudProjectChangeContactResponse =
   CreateCloudProjectChangeContactResponseBodyList;
@@ -5750,11 +5656,8 @@ export const CreateCloudProjectContainerRegistryIamRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateCloudProjectContainerRegistryIamRequest>;
 
 export interface CreateCloudProjectContainerRegistryIamResponse {}
-export const CreateCloudProjectContainerRegistryIamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectContainerRegistryIamResponse",
-}) as any as S.Schema<CreateCloudProjectContainerRegistryIamResponse>;
+export const CreateCloudProjectContainerRegistryIamResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectContainerRegistryIamResponse>;
 
 /** Docker registry OIDC Configuration */
 export interface CloudContainerRegistryOIDCConfigurationInput {
@@ -5898,11 +5801,8 @@ export const CreateCloudProjectCreditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudProjectCreditRequest>;
 
 export interface CreateCloudProjectCreditResponse {}
-export const CreateCloudProjectCreditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectCreditResponse",
-}) as any as S.Schema<CreateCloudProjectCreditResponse>;
+export const CreateCloudProjectCreditResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectCreditResponse>;
 
 /** Defines the source to fork a cluster from a backup. DEPRECATED: use forkFrom */
 export interface CloudProjectDatabaseServiceCreationBackupFork {
@@ -5925,9 +5825,8 @@ export const CloudProjectDatabaseServiceCreationBackupFork = /*@__PURE__*/ S.sus
 
 /** Regions on which the backups are stored */
 export type CloudProjectDatabaseServiceBackupInputRegionsList = Array<string>;
-export const CloudProjectDatabaseServiceBackupInputRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseServiceBackupInputRegionsList>;
+export const CloudProjectDatabaseServiceBackupInputRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseServiceBackupInputRegionsList>;
 
 /** Cloud database service backups definition */
 export interface CloudProjectDatabaseServiceBackupInput {
@@ -6107,9 +6006,8 @@ export const CreateCloudProjectDatabaseCassandraRequest = /*@__PURE__*/ S.suspen
 
 /** Regions on which the backups are stored */
 export type CloudProjectDatabaseServiceBackupRegionsList = Array<string>;
-export const CloudProjectDatabaseServiceBackupRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseServiceBackupRegionsList>;
+export const CloudProjectDatabaseServiceBackupRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseServiceBackupRegionsList>;
 
 /** Cloud database service backups definition */
 export interface CloudProjectDatabaseServiceBackup {
@@ -6540,10 +6438,8 @@ export const CreateCloudProjectDatabaseCassandraIntegrationRequest = /*@__PURE__
 export type CloudProjectDatabaseServiceIntegrationParametersMap = {
   [key: string]: string | undefined;
 };
-export const CloudProjectDatabaseServiceIntegrationParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseServiceIntegrationParametersMap>;
+export const CloudProjectDatabaseServiceIntegrationParametersMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudProjectDatabaseServiceIntegrationParametersMap>;
 
 /** Possible state of the integration */
 export type CloudProjectDatabaseServiceIntegrationStatusEnum = "READY";
@@ -6713,16 +6609,14 @@ export const CloudProjectDatabaseServiceUserWithPassword = /*@__PURE__*/ S.suspe
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseClickhouseRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseClickhouseRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseClickhouseRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseClickhouseRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseClickhouseRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseClickhouseRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseClickhouseRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseClickhouseRequestNodesListList>;
+export const CreateCloudProjectDatabaseClickhouseRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseClickhouseRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseClickhouseRequest {
   /** Service name */
@@ -6828,10 +6722,7 @@ export type CreateCloudProjectDatabaseClickhouseIntegrationRequestParametersMap 
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseClickhouseIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseClickhouseIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseClickhouseIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseClickhouseIntegrationRequest {
   /** Service name */
@@ -6922,9 +6813,8 @@ export const CreateCloudProjectDatabaseClickhouseLogUrlRequest = /*@__PURE__*/ S
 
 /** Roles the user belongs to */
 export type CreateCloudProjectDatabaseClickhouseUserRequestRolesList = Array<string>;
-export const CreateCloudProjectDatabaseClickhouseUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseClickhouseUserRequestRolesList>;
+export const CreateCloudProjectDatabaseClickhouseUserRequestRolesList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseClickhouseUserRequestRolesList>;
 
 export interface CreateCloudProjectDatabaseClickhouseUserRequest {
   /** Service name */
@@ -6955,9 +6845,8 @@ export const CreateCloudProjectDatabaseClickhouseUserRequest = /*@__PURE__*/ S.s
 
 /** Roles the user belongs to */
 export type CloudProjectDatabaseServiceUserWithPasswordAndRolesRolesList = Array<string>;
-export const CloudProjectDatabaseServiceUserWithPasswordAndRolesRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseServiceUserWithPasswordAndRolesRolesList>;
+export const CloudProjectDatabaseServiceUserWithPasswordAndRolesRolesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseServiceUserWithPasswordAndRolesRolesList>;
 
 /** User with password definition */
 export interface CloudProjectDatabaseServiceUserWithPasswordAndRoles {
@@ -6990,16 +6879,14 @@ export const CloudProjectDatabaseServiceUserWithPasswordAndRoles = /*@__PURE__*/
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseGrafanaRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseGrafanaRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseGrafanaRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseGrafanaRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseGrafanaRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseGrafanaRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseGrafanaRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseGrafanaRequestNodesListList>;
+export const CreateCloudProjectDatabaseGrafanaRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseGrafanaRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseGrafanaRequest {
   /** Service name */
@@ -7061,31 +6948,26 @@ export const CreateCloudProjectDatabaseGrafanaRequest = /*@__PURE__*/ S.suspend(
 export type CloudProjectDatabaseServiceWithoutPrometheusCapabilitiesMap = {
   [key: string]: CloudProjectDatabaseServiceCapabilityActions | undefined;
 };
-export const CloudProjectDatabaseServiceWithoutPrometheusCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CloudProjectDatabaseServiceCapabilityActions,
-) as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusCapabilitiesMap>;
+export const CloudProjectDatabaseServiceWithoutPrometheusCapabilitiesMap =
+  CloudProjectDatabaseServiceCapabilitiesMap as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusCapabilitiesMap>;
 
 /** List of all endpoints of the service */
 export type CloudProjectDatabaseServiceWithoutPrometheusEndpointsList =
   Array<CloudProjectDatabaseServiceEndpoint>;
-export const CloudProjectDatabaseServiceWithoutPrometheusEndpointsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceEndpoint,
-) as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusEndpointsList>;
+export const CloudProjectDatabaseServiceWithoutPrometheusEndpointsList =
+  CloudProjectDatabaseServiceEndpointsList as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusEndpointsList>;
 
 /** IP Blocks authorized to access to the cluster */
 export type CloudProjectDatabaseServiceWithoutPrometheusIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestriction>;
-export const CloudProjectDatabaseServiceWithoutPrometheusIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestriction,
-) as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusIpRestrictionsList>;
+export const CloudProjectDatabaseServiceWithoutPrometheusIpRestrictionsList =
+  CloudProjectDatabaseServiceIpRestrictionsList as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusIpRestrictionsList>;
 
 /** Nodes of the cluster */
 export type CloudProjectDatabaseServiceWithoutPrometheusNodesList =
   Array<CloudProjectDatabaseServiceNode>;
-export const CloudProjectDatabaseServiceWithoutPrometheusNodesList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNode,
-) as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusNodesList>;
+export const CloudProjectDatabaseServiceWithoutPrometheusNodesList =
+  CloudProjectDatabaseServiceNodesList as any as S.Schema<CloudProjectDatabaseServiceWithoutPrometheusNodesList>;
 
 /** Cloud database service definition without prometheus enabler */
 export interface CloudProjectDatabaseServiceWithoutPrometheus {
@@ -7171,10 +7053,7 @@ export type CreateCloudProjectDatabaseGrafanaIntegrationRequestParametersMap = {
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseGrafanaIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseGrafanaIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseGrafanaIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseGrafanaIntegrationRequest {
   /** Service name */
@@ -7265,16 +7144,14 @@ export const CreateCloudProjectDatabaseGrafanaLogUrlRequest = /*@__PURE__*/ S.su
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseKafkaRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseKafkaRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseKafkaRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseKafkaRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseKafkaRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseKafkaRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseKafkaRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseKafkaRequestNodesListList>;
+export const CreateCloudProjectDatabaseKafkaRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseKafkaRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseKafkaRequest {
   /** Service name */
@@ -7336,30 +7213,25 @@ export const CreateCloudProjectDatabaseKafkaRequest = /*@__PURE__*/ S.suspend(()
 export type CloudProjectDatabaseKafkaServiceCapabilitiesMap = {
   [key: string]: CloudProjectDatabaseServiceCapabilityActions | undefined;
 };
-export const CloudProjectDatabaseKafkaServiceCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CloudProjectDatabaseServiceCapabilityActions,
-) as any as S.Schema<CloudProjectDatabaseKafkaServiceCapabilitiesMap>;
+export const CloudProjectDatabaseKafkaServiceCapabilitiesMap =
+  CloudProjectDatabaseServiceCapabilitiesMap as any as S.Schema<CloudProjectDatabaseKafkaServiceCapabilitiesMap>;
 
 /** List of all endpoints of the service */
 export type CloudProjectDatabaseKafkaServiceEndpointsList =
   Array<CloudProjectDatabaseServiceEndpoint>;
-export const CloudProjectDatabaseKafkaServiceEndpointsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceEndpoint,
-) as any as S.Schema<CloudProjectDatabaseKafkaServiceEndpointsList>;
+export const CloudProjectDatabaseKafkaServiceEndpointsList =
+  CloudProjectDatabaseServiceEndpointsList as any as S.Schema<CloudProjectDatabaseKafkaServiceEndpointsList>;
 
 /** IP Blocks authorized to access to the cluster */
 export type CloudProjectDatabaseKafkaServiceIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestriction>;
-export const CloudProjectDatabaseKafkaServiceIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestriction,
-) as any as S.Schema<CloudProjectDatabaseKafkaServiceIpRestrictionsList>;
+export const CloudProjectDatabaseKafkaServiceIpRestrictionsList =
+  CloudProjectDatabaseServiceIpRestrictionsList as any as S.Schema<CloudProjectDatabaseKafkaServiceIpRestrictionsList>;
 
 /** Nodes of the cluster */
 export type CloudProjectDatabaseKafkaServiceNodesList = Array<CloudProjectDatabaseServiceNode>;
-export const CloudProjectDatabaseKafkaServiceNodesList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNode,
-) as any as S.Schema<CloudProjectDatabaseKafkaServiceNodesList>;
+export const CloudProjectDatabaseKafkaServiceNodesList =
+  CloudProjectDatabaseServiceNodesList as any as S.Schema<CloudProjectDatabaseKafkaServiceNodesList>;
 
 /** Cloud database kafka service definition */
 export interface CloudProjectDatabaseKafkaService {
@@ -7460,9 +7332,8 @@ export const CreateCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList =
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseKafkaConnectRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseKafkaConnectRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseKafkaConnectRequestNodesListList>;
+export const CreateCloudProjectDatabaseKafkaConnectRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseKafkaConnectRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseKafkaConnectRequest {
   /** Service name */
@@ -7529,10 +7400,7 @@ export type CreateCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationM
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationMap>;
 
 export interface CreateCloudProjectDatabaseKafkaConnectConnectorRequest {
   /** Service name */
@@ -7568,10 +7436,8 @@ export const CreateCloudProjectDatabaseKafkaConnectConnectorRequest = /*@__PURE_
 export type CloudProjectDatabaseKafkaConnectConnectorConfigurationMap = {
   [key: string]: string | undefined;
 };
-export const CloudProjectDatabaseKafkaConnectConnectorConfigurationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseKafkaConnectConnectorConfigurationMap>;
+export const CloudProjectDatabaseKafkaConnectConnectorConfigurationMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudProjectDatabaseKafkaConnectConnectorConfigurationMap>;
 
 /** Possible state of connector */
 export type CloudProjectDatabaseKafkaConnectConnectorStatusEnum =
@@ -7612,10 +7478,7 @@ export type CreateCloudProjectDatabaseKafkaConnectIntegrationRequestParametersMa
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseKafkaConnectIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseKafkaConnectIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseKafkaConnectIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseKafkaConnectIntegrationRequest {
   /** Service name */
@@ -7734,10 +7597,7 @@ export type CreateCloudProjectDatabaseKafkaIntegrationRequestParametersMap = {
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseKafkaIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseKafkaIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseKafkaIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseKafkaIntegrationRequest {
   /** Service name */
@@ -7829,16 +7689,13 @@ export const CreateCloudProjectDatabaseKafkaLogUrlRequest = /*@__PURE__*/ S.susp
 export type CreateCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
 export const CreateCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseServiceIpRestrictionInput,
-  ) as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList>;
+  CreateCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseKafkaMirrorMakerRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseKafkaMirrorMakerRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerRequestNodesListList>;
+export const CreateCloudProjectDatabaseKafkaMirrorMakerRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseKafkaMirrorMakerRequest {
   /** Service name */
@@ -7905,10 +7762,7 @@ export type CreateCloudProjectDatabaseKafkaMirrorMakerIntegrationRequestParamete
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseKafkaMirrorMakerIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseKafkaMirrorMakerIntegrationRequest {
   /** Service name */
@@ -8008,16 +7862,12 @@ export const CloudProjectDatabaseServiceReplicationPolicyClassEnum = S.String;
 export type CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList =
   Array<string>;
 export const CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList>;
 
 /** Patterns of the topics to replicate */
 export type CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList = Array<string>;
 export const CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList>;
 
 export interface CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequest {
   /** Service name */
@@ -8072,15 +7922,13 @@ export const CreateCloudProjectDatabaseKafkaMirrorMakerReplicationRequest = /*@_
 
 /** Patterns of the topics to exclude from the replication */
 export type CloudProjectDatabaseServiceReplicationTopicExcludeListList = Array<string>;
-export const CloudProjectDatabaseServiceReplicationTopicExcludeListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseServiceReplicationTopicExcludeListList>;
+export const CloudProjectDatabaseServiceReplicationTopicExcludeListList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseServiceReplicationTopicExcludeListList>;
 
 /** Patterns of the topics to replicate */
 export type CloudProjectDatabaseServiceReplicationTopicsList = Array<string>;
-export const CloudProjectDatabaseServiceReplicationTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseServiceReplicationTopicsList>;
+export const CloudProjectDatabaseServiceReplicationTopicsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseServiceReplicationTopicsList>;
 
 /** Cloud database service replication definition */
 export interface CloudProjectDatabaseServiceReplication {
@@ -8324,16 +8172,13 @@ export const CreateCloudProjectDatabaseKafkaUserRequest = /*@__PURE__*/ S.suspen
 export type CreateCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
 export const CreateCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseServiceIpRestrictionInput,
-  ) as any as S.Schema<CreateCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList>;
+  CreateCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseM3aggregatorRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseM3aggregatorRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseM3aggregatorRequestNodesListList>;
+export const CreateCloudProjectDatabaseM3aggregatorRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseM3aggregatorRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseM3aggregatorRequest {
   /** Service name */
@@ -8400,10 +8245,7 @@ export type CreateCloudProjectDatabaseM3aggregatorIntegrationRequestParametersMa
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseM3aggregatorIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseM3aggregatorIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseM3aggregatorIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseM3aggregatorIntegrationRequest {
   /** Service name */
@@ -8496,16 +8338,14 @@ export const CreateCloudProjectDatabaseM3aggregatorLogUrlRequest = /*@__PURE__*/
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseM3dbRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseM3dbRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseM3dbRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseM3dbRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseM3dbRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseM3dbRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseM3dbRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseM3dbRequestNodesListList>;
+export const CreateCloudProjectDatabaseM3dbRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseM3dbRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseM3dbRequest {
   /** Service name */
@@ -8565,10 +8405,8 @@ export const CreateCloudProjectDatabaseM3dbRequest = /*@__PURE__*/ S.suspend(() 
 export type CreateCloudProjectDatabaseM3dbIntegrationRequestParametersMap = {
   [key: string]: string | undefined;
 };
-export const CreateCloudProjectDatabaseM3dbIntegrationRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseM3dbIntegrationRequestParametersMap>;
+export const CreateCloudProjectDatabaseM3dbIntegrationRequestParametersMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateCloudProjectDatabaseM3dbIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseM3dbIntegrationRequest {
   /** Service name */
@@ -8836,16 +8674,14 @@ export const CloudProjectDatabaseM3dbUserWithPassword = /*@__PURE__*/ S.suspend(
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseMongodbRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseMongodbRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseMongodbRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseMongodbRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseMongodbRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseMongodbRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseMongodbRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseMongodbRequestNodesListList>;
+export const CreateCloudProjectDatabaseMongodbRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseMongodbRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseMongodbRequest {
   /** Service name */
@@ -9076,9 +8912,8 @@ export const CreateCloudProjectDatabaseMongodbNodeRequest = /*@__PURE__*/ S.susp
 
 /** Roles the user belongs to */
 export type CreateCloudProjectDatabaseMongodbUserRequestRolesList = Array<string>;
-export const CreateCloudProjectDatabaseMongodbUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseMongodbUserRequestRolesList>;
+export const CreateCloudProjectDatabaseMongodbUserRequestRolesList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseMongodbUserRequestRolesList>;
 
 export interface CreateCloudProjectDatabaseMongodbUserRequest {
   /** Service name */
@@ -9110,16 +8945,14 @@ export const CreateCloudProjectDatabaseMongodbUserRequest = /*@__PURE__*/ S.susp
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseMysqlRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseMysqlRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseMysqlRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseMysqlRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseMysqlRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseMysqlRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseMysqlRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseMysqlRequestNodesListList>;
+export const CreateCloudProjectDatabaseMysqlRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseMysqlRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseMysqlRequest {
   /** Service name */
@@ -9206,10 +9039,7 @@ export type CreateCloudProjectDatabaseMysqlIntegrationRequestParametersMap = {
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseMysqlIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseMysqlIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseMysqlIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseMysqlIntegrationRequest {
   /** Service name */
@@ -9382,16 +9212,14 @@ export const CreateCloudProjectDatabaseMysqlUserRequest = /*@__PURE__*/ S.suspen
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseOpensearchRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseOpensearchRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseOpensearchRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseOpensearchRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseOpensearchRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseOpensearchRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseOpensearchRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseOpensearchRequestNodesListList>;
+export const CreateCloudProjectDatabaseOpensearchRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseOpensearchRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseOpensearchRequest {
   /** Service name */
@@ -9453,30 +9281,25 @@ export const CreateCloudProjectDatabaseOpensearchRequest = /*@__PURE__*/ S.suspe
 export type CloudProjectDatabaseOpensearchServiceCapabilitiesMap = {
   [key: string]: CloudProjectDatabaseServiceCapabilityActions | undefined;
 };
-export const CloudProjectDatabaseOpensearchServiceCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CloudProjectDatabaseServiceCapabilityActions,
-) as any as S.Schema<CloudProjectDatabaseOpensearchServiceCapabilitiesMap>;
+export const CloudProjectDatabaseOpensearchServiceCapabilitiesMap =
+  CloudProjectDatabaseServiceCapabilitiesMap as any as S.Schema<CloudProjectDatabaseOpensearchServiceCapabilitiesMap>;
 
 /** List of all endpoints of the service */
 export type CloudProjectDatabaseOpensearchServiceEndpointsList =
   Array<CloudProjectDatabaseServiceEndpoint>;
-export const CloudProjectDatabaseOpensearchServiceEndpointsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceEndpoint,
-) as any as S.Schema<CloudProjectDatabaseOpensearchServiceEndpointsList>;
+export const CloudProjectDatabaseOpensearchServiceEndpointsList =
+  CloudProjectDatabaseServiceEndpointsList as any as S.Schema<CloudProjectDatabaseOpensearchServiceEndpointsList>;
 
 /** IP Blocks authorized to access to the cluster */
 export type CloudProjectDatabaseOpensearchServiceIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestriction>;
-export const CloudProjectDatabaseOpensearchServiceIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestriction,
-) as any as S.Schema<CloudProjectDatabaseOpensearchServiceIpRestrictionsList>;
+export const CloudProjectDatabaseOpensearchServiceIpRestrictionsList =
+  CloudProjectDatabaseServiceIpRestrictionsList as any as S.Schema<CloudProjectDatabaseOpensearchServiceIpRestrictionsList>;
 
 /** Nodes of the cluster */
 export type CloudProjectDatabaseOpensearchServiceNodesList = Array<CloudProjectDatabaseServiceNode>;
-export const CloudProjectDatabaseOpensearchServiceNodesList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNode,
-) as any as S.Schema<CloudProjectDatabaseOpensearchServiceNodesList>;
+export const CloudProjectDatabaseOpensearchServiceNodesList =
+  CloudProjectDatabaseServiceNodesList as any as S.Schema<CloudProjectDatabaseOpensearchServiceNodesList>;
 
 /** Cloud database opensearch service definition */
 export interface CloudProjectDatabaseOpensearchService {
@@ -9568,10 +9391,7 @@ export type CreateCloudProjectDatabaseOpensearchIntegrationRequestParametersMap 
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseOpensearchIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseOpensearchIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseOpensearchIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseOpensearchIntegrationRequest {
   /** Service name */
@@ -9759,9 +9579,8 @@ export const CreateCloudProjectDatabaseOpensearchUserRequest = /*@__PURE__*/ S.s
 /** Acls of the user */
 export type CloudProjectDatabaseOpensearchUserWithPasswordAclsList =
   Array<CloudProjectDatabaseOpensearchUserAcl>;
-export const CloudProjectDatabaseOpensearchUserWithPasswordAclsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseOpensearchUserAcl,
-) as any as S.Schema<CloudProjectDatabaseOpensearchUserWithPasswordAclsList>;
+export const CloudProjectDatabaseOpensearchUserWithPasswordAclsList =
+  CreateCloudProjectDatabaseOpensearchUserRequestAclsList as any as S.Schema<CloudProjectDatabaseOpensearchUserWithPasswordAclsList>;
 
 /** Opensearch user definition */
 export interface CloudProjectDatabaseOpensearchUserWithPassword {
@@ -9794,16 +9613,14 @@ export const CloudProjectDatabaseOpensearchUserWithPassword = /*@__PURE__*/ S.su
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabasePostgresqlRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabasePostgresqlRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabasePostgresqlRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabasePostgresqlRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabasePostgresqlRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabasePostgresqlRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabasePostgresqlRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabasePostgresqlRequestNodesListList>;
+export const CreateCloudProjectDatabasePostgresqlRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabasePostgresqlRequestNodesListList>;
 
 export interface CreateCloudProjectDatabasePostgresqlRequest {
   /** Service name */
@@ -9975,10 +9792,7 @@ export type CreateCloudProjectDatabasePostgresqlIntegrationRequestParametersMap 
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabasePostgresqlIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabasePostgresqlIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabasePostgresqlIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabasePostgresqlIntegrationRequest {
   /** Service name */
@@ -10069,9 +9883,8 @@ export const CreateCloudProjectDatabasePostgresqlLogUrlRequest = /*@__PURE__*/ S
 
 /** Roles the user belongs to */
 export type CreateCloudProjectDatabasePostgresqlUserRequestRolesList = Array<string>;
-export const CreateCloudProjectDatabasePostgresqlUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabasePostgresqlUserRequestRolesList>;
+export const CreateCloudProjectDatabasePostgresqlUserRequestRolesList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabasePostgresqlUserRequestRolesList>;
 
 export interface CreateCloudProjectDatabasePostgresqlUserRequest {
   /** Service name */
@@ -10103,16 +9916,14 @@ export const CreateCloudProjectDatabasePostgresqlUserRequest = /*@__PURE__*/ S.s
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseRedisRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseRedisRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseRedisRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseRedisRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseRedisRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseRedisRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseRedisRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseRedisRequestNodesListList>;
+export const CreateCloudProjectDatabaseRedisRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseRedisRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseRedisRequest {
   /** Service name */
@@ -10175,10 +9986,7 @@ export type CreateCloudProjectDatabaseRedisIntegrationRequestParametersMap = {
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseRedisIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseRedisIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseRedisIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseRedisIntegrationRequest {
   /** Service name */
@@ -10268,27 +10076,23 @@ export const CreateCloudProjectDatabaseRedisLogUrlRequest = /*@__PURE__*/ S.susp
 
 /** Categories of the user */
 export type CreateCloudProjectDatabaseRedisUserRequestCategoriesList = Array<string>;
-export const CreateCloudProjectDatabaseRedisUserRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestCategoriesList>;
+export const CreateCloudProjectDatabaseRedisUserRequestCategoriesList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestCategoriesList>;
 
 /** Channels of the user */
 export type CreateCloudProjectDatabaseRedisUserRequestChannelsList = Array<string>;
-export const CreateCloudProjectDatabaseRedisUserRequestChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestChannelsList>;
+export const CreateCloudProjectDatabaseRedisUserRequestChannelsList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestChannelsList>;
 
 /** Commands of the user */
 export type CreateCloudProjectDatabaseRedisUserRequestCommandsList = Array<string>;
-export const CreateCloudProjectDatabaseRedisUserRequestCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestCommandsList>;
+export const CreateCloudProjectDatabaseRedisUserRequestCommandsList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestCommandsList>;
 
 /** Keys of the user */
 export type CreateCloudProjectDatabaseRedisUserRequestKeysList = Array<string>;
-export const CreateCloudProjectDatabaseRedisUserRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestKeysList>;
+export const CreateCloudProjectDatabaseRedisUserRequestKeysList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseRedisUserRequestKeysList>;
 
 export interface CreateCloudProjectDatabaseRedisUserRequest {
   /** Service name */
@@ -10328,27 +10132,23 @@ export const CreateCloudProjectDatabaseRedisUserRequest = /*@__PURE__*/ S.suspen
 
 /** Categories of the user */
 export type CloudProjectDatabaseRedisUserWithPasswordCategoriesList = Array<string>;
-export const CloudProjectDatabaseRedisUserWithPasswordCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordCategoriesList>;
+export const CloudProjectDatabaseRedisUserWithPasswordCategoriesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordCategoriesList>;
 
 /** Channels of the user */
 export type CloudProjectDatabaseRedisUserWithPasswordChannelsList = Array<string>;
-export const CloudProjectDatabaseRedisUserWithPasswordChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordChannelsList>;
+export const CloudProjectDatabaseRedisUserWithPasswordChannelsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordChannelsList>;
 
 /** Commands of the user */
 export type CloudProjectDatabaseRedisUserWithPasswordCommandsList = Array<string>;
-export const CloudProjectDatabaseRedisUserWithPasswordCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordCommandsList>;
+export const CloudProjectDatabaseRedisUserWithPasswordCommandsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordCommandsList>;
 
 /** Keys of the user */
 export type CloudProjectDatabaseRedisUserWithPasswordKeysList = Array<string>;
-export const CloudProjectDatabaseRedisUserWithPasswordKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordKeysList>;
+export const CloudProjectDatabaseRedisUserWithPasswordKeysList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserWithPasswordKeysList>;
 
 /** Redis user with password definition */
 export interface CloudProjectDatabaseRedisUserWithPassword {
@@ -10390,16 +10190,14 @@ export const CloudProjectDatabaseRedisUserWithPassword = /*@__PURE__*/ S.suspend
 /** IP Blocks authorized to access to the cluster */
 export type CreateCloudProjectDatabaseValkeyRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const CreateCloudProjectDatabaseValkeyRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<CreateCloudProjectDatabaseValkeyRequestIpRestrictionsList>;
+export const CreateCloudProjectDatabaseValkeyRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<CreateCloudProjectDatabaseValkeyRequestIpRestrictionsList>;
 
 /** List of nodes in the cluster, not compatible with nodesPattern */
 export type CreateCloudProjectDatabaseValkeyRequestNodesListList =
   Array<CloudProjectDatabaseServiceNodeCreationInput>;
-export const CreateCloudProjectDatabaseValkeyRequestNodesListList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceNodeCreationInput,
-) as any as S.Schema<CreateCloudProjectDatabaseValkeyRequestNodesListList>;
+export const CreateCloudProjectDatabaseValkeyRequestNodesListList =
+  CreateCloudProjectDatabaseCassandraRequestNodesListList as any as S.Schema<CreateCloudProjectDatabaseValkeyRequestNodesListList>;
 
 export interface CreateCloudProjectDatabaseValkeyRequest {
   /** Service name */
@@ -10462,10 +10260,7 @@ export type CreateCloudProjectDatabaseValkeyIntegrationRequestParametersMap = {
   [key: string]: string | undefined;
 };
 export const CreateCloudProjectDatabaseValkeyIntegrationRequestParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectDatabaseValkeyIntegrationRequestParametersMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<CreateCloudProjectDatabaseValkeyIntegrationRequestParametersMap>;
 
 export interface CreateCloudProjectDatabaseValkeyIntegrationRequest {
   /** Service name */
@@ -10555,27 +10350,23 @@ export const CreateCloudProjectDatabaseValkeyLogUrlRequest = /*@__PURE__*/ S.sus
 
 /** Categories of the user */
 export type CreateCloudProjectDatabaseValkeyUserRequestCategoriesList = Array<string>;
-export const CreateCloudProjectDatabaseValkeyUserRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestCategoriesList>;
+export const CreateCloudProjectDatabaseValkeyUserRequestCategoriesList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestCategoriesList>;
 
 /** Channels of the user */
 export type CreateCloudProjectDatabaseValkeyUserRequestChannelsList = Array<string>;
-export const CreateCloudProjectDatabaseValkeyUserRequestChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestChannelsList>;
+export const CreateCloudProjectDatabaseValkeyUserRequestChannelsList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestChannelsList>;
 
 /** Commands of the user */
 export type CreateCloudProjectDatabaseValkeyUserRequestCommandsList = Array<string>;
-export const CreateCloudProjectDatabaseValkeyUserRequestCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestCommandsList>;
+export const CreateCloudProjectDatabaseValkeyUserRequestCommandsList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestCommandsList>;
 
 /** Keys of the user */
 export type CreateCloudProjectDatabaseValkeyUserRequestKeysList = Array<string>;
-export const CreateCloudProjectDatabaseValkeyUserRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestKeysList>;
+export const CreateCloudProjectDatabaseValkeyUserRequestKeysList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectDatabaseValkeyUserRequestKeysList>;
 
 export interface CreateCloudProjectDatabaseValkeyUserRequest {
   /** Service name */
@@ -10800,9 +10591,8 @@ export const CreateCloudProjectInstanceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Instances ids */
 export type CloudInstancegroupInstanceGroupInstanceIdsList = Array<string>;
-export const CloudInstancegroupInstanceGroupInstanceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudInstancegroupInstanceGroupInstanceIdsList>;
+export const CloudInstancegroupInstanceGroupInstanceIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudInstancegroupInstanceGroupInstanceIdsList>;
 
 /** InstanceGroup */
 export interface CloudInstancegroupInstanceGroup {
@@ -10992,11 +10782,8 @@ export const CreateCloudProjectInstanceShelveRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateCloudProjectInstanceShelveRequest>;
 
 export interface CreateCloudProjectInstanceShelveResponse {}
-export const CreateCloudProjectInstanceShelveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectInstanceShelveResponse",
-}) as any as S.Schema<CreateCloudProjectInstanceShelveResponse>;
+export const CreateCloudProjectInstanceShelveResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectInstanceShelveResponse>;
 
 export interface CreateCloudProjectInstanceSnapshotRequest {
   /** Service name */
@@ -11057,11 +10844,8 @@ export const CreateCloudProjectInstanceUnshelveRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateCloudProjectInstanceUnshelveRequest>;
 
 export interface CreateCloudProjectInstanceUnshelveResponse {}
-export const CreateCloudProjectInstanceUnshelveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectInstanceUnshelveResponse",
-}) as any as S.Schema<CreateCloudProjectInstanceUnshelveResponse>;
+export const CreateCloudProjectInstanceUnshelveResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectInstanceUnshelveResponse>;
 
 export interface CreateCloudProjectInstanceVncRequest {
   /** Service name */
@@ -11118,9 +10902,7 @@ export type CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnabledList = 
   CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnum | (string & {})
 >;
 export const CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnabledList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnum,
-  ) as any as S.Schema<CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnabledList>;
+  CloudProjectKubeCustomizationAPIServerAdmissionPluginsDisabledList as any as S.Schema<CloudProjectKubeCustomizationAPIServerAdmissionPluginsEnabledList>;
 
 /** Cluster API server admission plugins customization */
 export interface CloudProjectKubeCustomizationAPIServerAdmissionPlugins {
@@ -11437,29 +11219,23 @@ export const CloudProjectKubeNodePoolAutoscalingParams = /*@__PURE__*/ S.suspend
 
 /** List of availability zones where nodes will be created (only 1 zone is supported for now) */
 export type CloudProjectKubeCreationNodePoolAvailabilityZonesList = Array<string>;
-export const CloudProjectKubeCreationNodePoolAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectKubeCreationNodePoolAvailabilityZonesList>;
+export const CloudProjectKubeCreationNodePoolAvailabilityZonesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectKubeCreationNodePoolAvailabilityZonesList>;
 
 /** Annotations to apply to each nodes */
 export type CloudKubeNodePoolTemplateMetadataAnnotationsMap = { [key: string]: string | undefined };
-export const CloudKubeNodePoolTemplateMetadataAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudKubeNodePoolTemplateMetadataAnnotationsMap>;
+export const CloudKubeNodePoolTemplateMetadataAnnotationsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudKubeNodePoolTemplateMetadataAnnotationsMap>;
 
 /** Finalizers to apply to each nodes */
 export type CloudKubeNodePoolTemplateMetadataFinalizersList = Array<string>;
-export const CloudKubeNodePoolTemplateMetadataFinalizersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudKubeNodePoolTemplateMetadataFinalizersList>;
+export const CloudKubeNodePoolTemplateMetadataFinalizersList =
+  CloudOperationRegionsList as any as S.Schema<CloudKubeNodePoolTemplateMetadataFinalizersList>;
 
 /** Labels to apply to each nodes */
 export type CloudKubeNodePoolTemplateMetadataLabelsMap = { [key: string]: string | undefined };
-export const CloudKubeNodePoolTemplateMetadataLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudKubeNodePoolTemplateMetadataLabelsMap>;
+export const CloudKubeNodePoolTemplateMetadataLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudKubeNodePoolTemplateMetadataLabelsMap>;
 
 /** Metadata of each nodes in the pool */
 export interface CloudKubeNodePoolTemplateMetadata {
@@ -11671,9 +11447,8 @@ export const CreateCloudProjectKubeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Kubernetes versions available for upgrade */
 export type CloudKubeClusterNextUpgradeVersionsList = Array<string>;
-export const CloudKubeClusterNextUpgradeVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudKubeClusterNextUpgradeVersionsList>;
+export const CloudKubeClusterNextUpgradeVersionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudKubeClusterNextUpgradeVersionsList>;
 
 /** Enum values for Status */
 export type CloudKubeClusterStatusEnum =
@@ -11771,9 +11546,8 @@ export const CloudKubeCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ips to add to the cluster api-server restrictions (format with /subnet available) */
 export type CreateCloudProjectKubeIpRestrictionRequestIpsList = Array<string>;
-export const CreateCloudProjectKubeIpRestrictionRequestIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectKubeIpRestrictionRequestIpsList>;
+export const CreateCloudProjectKubeIpRestrictionRequestIpsList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectKubeIpRestrictionRequestIpsList>;
 
 export interface CreateCloudProjectKubeIpRestrictionRequest {
   /** Service name */
@@ -11800,9 +11574,8 @@ export const CreateCloudProjectKubeIpRestrictionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateCloudProjectKubeIpRestrictionRequest>;
 
 export type CreateCloudProjectKubeIpRestrictionResponseBodyList = Array<string>;
-export const CreateCloudProjectKubeIpRestrictionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectKubeIpRestrictionResponseBodyList>;
+export const CreateCloudProjectKubeIpRestrictionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectKubeIpRestrictionResponseBodyList>;
 
 export type CreateCloudProjectKubeIpRestrictionResponse =
   CreateCloudProjectKubeIpRestrictionResponseBodyList;
@@ -11897,9 +11670,8 @@ export const CreateCloudProjectKubeLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of availability zones where nodes will be created (only 1 zone is supported for now) */
 export type CreateCloudProjectKubeNodepoolRequestAvailabilityZonesList = Array<string>;
-export const CreateCloudProjectKubeNodepoolRequestAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectKubeNodepoolRequestAvailabilityZonesList>;
+export const CreateCloudProjectKubeNodepoolRequestAvailabilityZonesList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectKubeNodepoolRequestAvailabilityZonesList>;
 
 export interface CreateCloudProjectKubeNodepoolRequest {
   /** Service name */
@@ -11970,9 +11742,8 @@ export const CloudKubeNodePoolAutoscaling = CloudProjectKubeNodePoolAutoscalingP
 
 /** List of availability zones where nodes will be created (only 1 zone is supported for now) */
 export type CloudKubeNodePoolAvailabilityZonesList = Array<string>;
-export const CloudKubeNodePoolAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudKubeNodePoolAvailabilityZonesList>;
+export const CloudKubeNodePoolAvailabilityZonesList =
+  CloudOperationRegionsList as any as S.Schema<CloudKubeNodePoolAvailabilityZonesList>;
 
 /** Enum values for NodePool size Status */
 export type CloudKubeNodePoolSizeStatusEnum = "CAPACITY_OK" | "OVER_CAPACITY" | "UNDER_CAPACITY";
@@ -12075,15 +11846,13 @@ export const CloudKubeNodePool = /*@__PURE__*/ S.suspend(() =>
 
 /** JWT claim to use as the user's group. If the claim is present it must be an array of strings. */
 export type CreateCloudProjectKubeOpenIdConnectRequestGroupsClaimList = Array<string>;
-export const CreateCloudProjectKubeOpenIdConnectRequestGroupsClaimList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectKubeOpenIdConnectRequestGroupsClaimList>;
+export const CreateCloudProjectKubeOpenIdConnectRequestGroupsClaimList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectKubeOpenIdConnectRequestGroupsClaimList>;
 
 /** key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value. */
 export type CreateCloudProjectKubeOpenIdConnectRequestRequiredClaimList = Array<string>;
-export const CreateCloudProjectKubeOpenIdConnectRequestRequiredClaimList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectKubeOpenIdConnectRequestRequiredClaimList>;
+export const CreateCloudProjectKubeOpenIdConnectRequestRequiredClaimList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectKubeOpenIdConnectRequestRequiredClaimList>;
 
 /** Enum values for OpenIdConnect signing algorithms */
 export type CloudKubeOpenIdConnectSigningAlgorithmsEnum =
@@ -12161,15 +11930,13 @@ export const CreateCloudProjectKubeOpenIdConnectRequest = /*@__PURE__*/ S.suspen
 
 /** JWT claim to use as the user's group. If the claim is present it must be an array of strings. */
 export type CloudKubeOpenIdConnectGroupsClaimList = Array<string>;
-export const CloudKubeOpenIdConnectGroupsClaimList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudKubeOpenIdConnectGroupsClaimList>;
+export const CloudKubeOpenIdConnectGroupsClaimList =
+  CloudOperationRegionsList as any as S.Schema<CloudKubeOpenIdConnectGroupsClaimList>;
 
 /** key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value. */
 export type CloudKubeOpenIdConnectRequiredClaimList = Array<string>;
-export const CloudKubeOpenIdConnectRequiredClaimList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudKubeOpenIdConnectRequiredClaimList>;
+export const CloudKubeOpenIdConnectRequiredClaimList =
+  CloudOperationRegionsList as any as S.Schema<CloudKubeOpenIdConnectRequiredClaimList>;
 
 /** The signing algorithms accepted. Default is "RS256". */
 export type CloudKubeOpenIdConnectSigningAlgorithmsList =
@@ -12215,9 +11982,8 @@ export const CloudKubeOpenIdConnect = /*@__PURE__*/ S.suspend(() =>
 
 /** Region where to activate private network. No parameters means all region */
 export type CreateCloudProjectNetworkPrivateRequestRegionsList = Array<string>;
-export const CreateCloudProjectNetworkPrivateRequestRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectNetworkPrivateRequestRegionsList>;
+export const CreateCloudProjectNetworkPrivateRequestRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectNetworkPrivateRequestRegionsList>;
 
 export interface CreateCloudProjectNetworkPrivateRequest {
   /** Service name */
@@ -12437,9 +12203,8 @@ export const CreateCloudProjectRegionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability zones of the region */
 export type CloudRegionAvailabilityZonesList = Array<string>;
-export const CloudRegionAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudRegionAvailabilityZonesList>;
+export const CloudRegionAvailabilityZonesList =
+  CloudOperationRegionsList as any as S.Schema<CloudRegionAvailabilityZonesList>;
 
 /** Enum values for ContinentCode */
 export type CloudRegionContinentEnum = "AF" | "ASIA" | "EU" | "NA" | "US";
@@ -12822,11 +12587,8 @@ export const CreateCloudProjectRegionColdArchiveDestroyRequest = /*@__PURE__*/ S
 }) as any as S.Schema<CreateCloudProjectRegionColdArchiveDestroyRequest>;
 
 export interface CreateCloudProjectRegionColdArchiveDestroyResponse {}
-export const CreateCloudProjectRegionColdArchiveDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectRegionColdArchiveDestroyResponse",
-}) as any as S.Schema<CreateCloudProjectRegionColdArchiveDestroyResponse>;
+export const CreateCloudProjectRegionColdArchiveDestroyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectRegionColdArchiveDestroyResponse>;
 
 /** AllocationPool */
 export interface CloudProjectAllocationPool {
@@ -12853,9 +12615,8 @@ export const CloudNetworkCreateSubnetForGatewaySummaryAllocationPoolsList = /*@_
 
 /** DNS nameservers */
 export type CloudNetworkCreateSubnetForGatewaySummaryDnsNameServersList = Array<string>;
-export const CloudNetworkCreateSubnetForGatewaySummaryDnsNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudNetworkCreateSubnetForGatewaySummaryDnsNameServersList>;
+export const CloudNetworkCreateSubnetForGatewaySummaryDnsNameServersList =
+  CloudOperationRegionsList as any as S.Schema<CloudNetworkCreateSubnetForGatewaySummaryDnsNameServersList>;
 
 /** HostRoute */
 export interface CloudNetworkHostRoute {
@@ -12994,20 +12755,13 @@ export interface CloudNetworkGatewayIpSubnet {
   /** Subnet ID of the ip */
   subnetId?: string;
 }
-export const CloudNetworkGatewayIpSubnet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ip: S.optional(S.String),
-    subnetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudNetworkGatewayIpSubnet",
-}) as any as S.Schema<CloudNetworkGatewayIpSubnet>;
+export const CloudNetworkGatewayIpSubnet =
+  CloudInstanceInterfaceFixedIp as any as S.Schema<CloudNetworkGatewayIpSubnet>;
 
 /** External ips of the gateway */
 export type CloudNetworkGatewayExternalInformationIpsList = Array<CloudNetworkGatewayIpSubnet>;
-export const CloudNetworkGatewayExternalInformationIpsList = /*@__PURE__*/ S.Array(
-  CloudNetworkGatewayIpSubnet,
-) as any as S.Schema<CloudNetworkGatewayExternalInformationIpsList>;
+export const CloudNetworkGatewayExternalInformationIpsList =
+  CloudInstanceInterfaceInterfaceFixedIpsList as any as S.Schema<CloudNetworkGatewayExternalInformationIpsList>;
 
 /** External information of the gateway */
 export interface CloudNetworkGatewayExternalInformation {
@@ -13222,14 +12976,8 @@ export interface DbaasLogsMetricSubscriptionResponse {
   /** Operation owner's service name */
   serviceName?: string;
 }
-export const DbaasLogsMetricSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-    serviceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DbaasLogsMetricSubscriptionResponse",
-}) as any as S.Schema<DbaasLogsMetricSubscriptionResponse>;
+export const DbaasLogsMetricSubscriptionResponse =
+  DbaasLogsLogSubscriptionResponse as any as S.Schema<DbaasLogsMetricSubscriptionResponse>;
 
 export interface CreateCloudProjectRegionKeymanagerCertificateRequest {
   /** Service name */
@@ -13672,9 +13420,7 @@ export const CloudLoadbalancingL7Rule = /*@__PURE__*/ S.suspend(() =>
 /** The allowed CIDRs */
 export type CreateCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList = Array<string>;
 export const CreateCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CreateCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList>;
 
 /** Loadbalancer listener protocol */
 export type CloudLoadbalancingListenerProtocolEnum =
@@ -13761,15 +13507,13 @@ export const CreateCloudProjectRegionLoadbalancingListenerRequest = /*@__PURE__*
 
 /** The allowed CIDRs */
 export type CloudLoadbalancingListenerAllowedCidrsList = Array<string>;
-export const CloudLoadbalancingListenerAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudLoadbalancingListenerAllowedCidrsList>;
+export const CloudLoadbalancingListenerAllowedCidrsList =
+  CloudOperationRegionsList as any as S.Schema<CloudLoadbalancingListenerAllowedCidrsList>;
 
 /** A list of load balancer IDs */
 export type CloudLoadbalancingListenerLoadBalancerIdsList = Array<string>;
-export const CloudLoadbalancingListenerLoadBalancerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudLoadbalancingListenerLoadBalancerIdsList>;
+export const CloudLoadbalancingListenerLoadBalancerIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudLoadbalancingListenerLoadBalancerIdsList>;
 
 /** TLS versions of the listener */
 export type CloudLoadbalancingListenerTlsVersionsList =
@@ -13833,9 +13577,7 @@ export const CloudLoadbalancingListener = /*@__PURE__*/ S.suspend(() =>
 /** The allowed CIDRs */
 export type CloudLoadbalancingLoadbalancerListenerCreateInputAllowedCidrsList = Array<string>;
 export const CloudLoadbalancingLoadbalancerListenerCreateInputAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudLoadbalancingLoadbalancerListenerCreateInputAllowedCidrsList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CloudLoadbalancingLoadbalancerListenerCreateInputAllowedCidrsList>;
 
 /** Pool algorithm */
 export type CloudLoadbalancingPoolAlgorithmEnum = "leastConnections" | "roundRobin" | "sourceIP";
@@ -13969,9 +13711,7 @@ export type CloudLoadbalancingLoadbalancerListenerCreateInputTlsVersionsList = A
   CloudLoadbalancingListenerTlsVersionEnum | (string & {})
 >;
 export const CloudLoadbalancingLoadbalancerListenerCreateInputTlsVersionsList =
-  /*@__PURE__*/ S.Array(
-    CloudLoadbalancingListenerTlsVersionEnum,
-  ) as any as S.Schema<CloudLoadbalancingLoadbalancerListenerCreateInputTlsVersionsList>;
+  CreateCloudProjectRegionLoadbalancingListenerRequestTlsVersionsList as any as S.Schema<CloudLoadbalancingLoadbalancerListenerCreateInputTlsVersionsList>;
 
 /** Create a listener on loadbalancer creation */
 export interface CloudLoadbalancingLoadbalancerListenerCreateInput {
@@ -14055,13 +13795,7 @@ export interface CloudLoadbalancingLoadbalancerCreateInputNetworkPrivateGateway 
   id: string;
 }
 export const CloudLoadbalancingLoadbalancerCreateInputNetworkPrivateGateway =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudLoadbalancingLoadbalancerCreateInputNetworkPrivateGateway",
-  }) as any as S.Schema<CloudLoadbalancingLoadbalancerCreateInputNetworkPrivateGateway>;
+  CloudLoadbalancingLoadbalancerCreateInputNetworkPrivateFloatingIp as any as S.Schema<CloudLoadbalancingLoadbalancerCreateInputNetworkPrivateGateway>;
 
 /** Information to create a Gateway */
 export interface CloudLoadbalancingLoadbalancerCreateInputNetworkPrivateGatewayCreate {
@@ -14380,16 +14114,8 @@ export interface CloudLoadbalancingPoolMemberInput {
   /** Weight of a member determines the portion of requests or connections it services compared to the other members of the pool */
   weight?: number | null;
 }
-export const CloudLoadbalancingPoolMemberInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.String,
-    name: S.optional(S.String),
-    protocolPort: S.Number,
-    weight: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "CloudLoadbalancingPoolMemberInput",
-}) as any as S.Schema<CloudLoadbalancingPoolMemberInput>;
+export const CloudLoadbalancingPoolMemberInput =
+  CloudLoadbalancingLoadbalancerMemberCreate as any as S.Schema<CloudLoadbalancingPoolMemberInput>;
 
 /** Members of a pool */
 export type CreateCloudProjectRegionLoadbalancingPoolMemberRequestMembersList =
@@ -14525,21 +14251,18 @@ export const CreateCloudProjectRegionLogUrlRequest = /*@__PURE__*/ S.suspend(() 
 
 /** List of ip pools allocated in subnet */
 export type CloudNetworkCreateSubnetSummaryAllocationPoolsList = Array<CloudProjectAllocationPool>;
-export const CloudNetworkCreateSubnetSummaryAllocationPoolsList = /*@__PURE__*/ S.Array(
-  CloudProjectAllocationPool,
-) as any as S.Schema<CloudNetworkCreateSubnetSummaryAllocationPoolsList>;
+export const CloudNetworkCreateSubnetSummaryAllocationPoolsList =
+  CloudNetworkCreateSubnetForGatewaySummaryAllocationPoolsList as any as S.Schema<CloudNetworkCreateSubnetSummaryAllocationPoolsList>;
 
 /** DNS nameservers */
 export type CloudNetworkCreateSubnetSummaryDnsNameServersList = Array<string>;
-export const CloudNetworkCreateSubnetSummaryDnsNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudNetworkCreateSubnetSummaryDnsNameServersList>;
+export const CloudNetworkCreateSubnetSummaryDnsNameServersList =
+  CloudOperationRegionsList as any as S.Schema<CloudNetworkCreateSubnetSummaryDnsNameServersList>;
 
 /** Host routes */
 export type CloudNetworkCreateSubnetSummaryHostRoutesList = Array<CloudNetworkHostRoute>;
-export const CloudNetworkCreateSubnetSummaryHostRoutesList = /*@__PURE__*/ S.Array(
-  CloudNetworkHostRoute,
-) as any as S.Schema<CloudNetworkCreateSubnetSummaryHostRoutesList>;
+export const CloudNetworkCreateSubnetSummaryHostRoutesList =
+  CloudNetworkCreateSubnetForGatewaySummaryHostRoutesList as any as S.Schema<CloudNetworkCreateSubnetSummaryHostRoutesList>;
 
 /** Parameters to create a subnet from another resource creation */
 export interface CloudNetworkCreateSubnetSummary {
@@ -14622,16 +14345,14 @@ export const CreateCloudProjectRegionNetworkSubnetRequestAllocationPoolsList =
 
 /** DNS nameservers */
 export type CreateCloudProjectRegionNetworkSubnetRequestDnsNameServersList = Array<string>;
-export const CreateCloudProjectRegionNetworkSubnetRequestDnsNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCloudProjectRegionNetworkSubnetRequestDnsNameServersList>;
+export const CreateCloudProjectRegionNetworkSubnetRequestDnsNameServersList =
+  CloudOperationRegionsList as any as S.Schema<CreateCloudProjectRegionNetworkSubnetRequestDnsNameServersList>;
 
 /** Host routes */
 export type CreateCloudProjectRegionNetworkSubnetRequestHostRoutesList =
   Array<CloudNetworkHostRoute>;
-export const CreateCloudProjectRegionNetworkSubnetRequestHostRoutesList = /*@__PURE__*/ S.Array(
-  CloudNetworkHostRoute,
-) as any as S.Schema<CreateCloudProjectRegionNetworkSubnetRequestHostRoutesList>;
+export const CreateCloudProjectRegionNetworkSubnetRequestHostRoutesList =
+  CloudNetworkCreateSubnetForGatewaySummaryHostRoutesList as any as S.Schema<CreateCloudProjectRegionNetworkSubnetRequestHostRoutesList>;
 
 export interface CreateCloudProjectRegionNetworkSubnetRequest {
   /** Service name */
@@ -14689,21 +14410,18 @@ export const CreateCloudProjectRegionNetworkSubnetRequest = /*@__PURE__*/ S.susp
 
 /** List of ip pools allocated in subnet */
 export type CloudProjectSubnetAllocationPoolsList = Array<CloudProjectAllocationPool>;
-export const CloudProjectSubnetAllocationPoolsList = /*@__PURE__*/ S.Array(
-  CloudProjectAllocationPool,
-) as any as S.Schema<CloudProjectSubnetAllocationPoolsList>;
+export const CloudProjectSubnetAllocationPoolsList =
+  CloudNetworkCreateSubnetForGatewaySummaryAllocationPoolsList as any as S.Schema<CloudProjectSubnetAllocationPoolsList>;
 
 /** DNS nameservers */
 export type CloudProjectSubnetDnsNameServersList = Array<string>;
-export const CloudProjectSubnetDnsNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectSubnetDnsNameServersList>;
+export const CloudProjectSubnetDnsNameServersList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectSubnetDnsNameServersList>;
 
 /** Subnet host routes */
 export type CloudProjectSubnetHostRoutesList = Array<CloudNetworkHostRoute>;
-export const CloudProjectSubnetHostRoutesList = /*@__PURE__*/ S.Array(
-  CloudNetworkHostRoute,
-) as any as S.Schema<CloudProjectSubnetHostRoutesList>;
+export const CloudProjectSubnetHostRoutesList =
+  CloudNetworkCreateSubnetForGatewaySummaryHostRoutesList as any as S.Schema<CloudProjectSubnetHostRoutesList>;
 
 /** Subnet */
 export interface CloudProjectSubnet {
@@ -15009,9 +14727,8 @@ export const CreateCloudProjectRegionVolumeRequest = /*@__PURE__*/ S.suspend(() 
 
 /** List of regions */
 export type CloudRegionVolumeCreateResponseRegionsList = Array<string>;
-export const CloudRegionVolumeCreateResponseRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudRegionVolumeCreateResponseRegionsList>;
+export const CloudRegionVolumeCreateResponseRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudRegionVolumeCreateResponseRegionsList>;
 
 /** A resource of the volume */
 export interface CloudRegionVolumeCreateResource {
@@ -15296,11 +15013,8 @@ export const CreateCloudProjectRetainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudProjectRetainRequest>;
 
 export interface CreateCloudProjectRetainResponse {}
-export const CreateCloudProjectRetainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectRetainResponse",
-}) as any as S.Schema<CreateCloudProjectRetainResponse>;
+export const CreateCloudProjectRetainResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectRetainResponse>;
 
 export interface CreateCloudProjectSshkeyRequest {
   /** Service name */
@@ -15451,11 +15165,8 @@ export const CreateCloudProjectStorageCorsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateCloudProjectStorageCorsRequest>;
 
 export interface CreateCloudProjectStorageCorsResponse {}
-export const CreateCloudProjectStorageCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectStorageCorsResponse",
-}) as any as S.Schema<CreateCloudProjectStorageCorsResponse>;
+export const CreateCloudProjectStorageCorsResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectStorageCorsResponse>;
 
 export interface CreateCloudProjectStoragePublicUrlRequest {
   /** Service name */
@@ -15522,11 +15233,8 @@ export const CreateCloudProjectStorageStaticRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateCloudProjectStorageStaticRequest>;
 
 export interface CreateCloudProjectStorageStaticResponse {}
-export const CreateCloudProjectStorageStaticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectStorageStaticResponse",
-}) as any as S.Schema<CreateCloudProjectStorageStaticResponse>;
+export const CreateCloudProjectStorageStaticResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectStorageStaticResponse>;
 
 /** RightEnum */
 export type CloudStorageRightEnum = "all" | "read" | "write";
@@ -15561,9 +15269,8 @@ export const CreateCloudProjectStorageUserRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Permissions granted by this role */
 export type CloudRoleRolePermissionsList = Array<string>;
-export const CloudRoleRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudRoleRolePermissionsList>;
+export const CloudRoleRolePermissionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudRoleRolePermissionsList>;
 
 /** Role */
 export interface CloudRoleRole {
@@ -15646,11 +15353,8 @@ export const CreateCloudProjectUnleashRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudProjectUnleashRequest>;
 
 export interface CreateCloudProjectUnleashResponse {}
-export const CreateCloudProjectUnleashResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectUnleashResponse",
-}) as any as S.Schema<CreateCloudProjectUnleashResponse>;
+export const CreateCloudProjectUnleashResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectUnleashResponse>;
 
 /** RoleEnum */
 export type CloudUserRoleEnum =
@@ -15722,11 +15426,8 @@ export const CreateCloudProjectUserPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudProjectUserPolicyRequest>;
 
 export interface CreateCloudProjectUserPolicyResponse {}
-export const CreateCloudProjectUserPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCloudProjectUserPolicyResponse",
-}) as any as S.Schema<CreateCloudProjectUserPolicyResponse>;
+export const CreateCloudProjectUserPolicyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateCloudProjectUserPolicyResponse>;
 
 export interface CreateCloudProjectUserRoleRequest {
   /** Service name */
@@ -15897,21 +15598,15 @@ export const CloudAuthenticationOpenstackTokenCatalogList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<CloudAuthenticationOpenstackTokenCatalogList>;
 
 export type CloudAuthenticationOpenstackTokenMethodsList = Array<string>;
-export const CloudAuthenticationOpenstackTokenMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudAuthenticationOpenstackTokenMethodsList>;
+export const CloudAuthenticationOpenstackTokenMethodsList =
+  CloudOperationRegionsList as any as S.Schema<CloudAuthenticationOpenstackTokenMethodsList>;
 
 /** Domain */
 export interface CloudAuthenticationDomain {
   name?: string;
 }
-export const CloudAuthenticationDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudAuthenticationDomain",
-}) as any as S.Schema<CloudAuthenticationDomain>;
+export const CloudAuthenticationDomain =
+  CloudProjectDatabaseBackupRegion as any as S.Schema<CloudAuthenticationDomain>;
 
 /** TokenProject */
 export interface CloudAuthenticationTokenProject {
@@ -15934,17 +15629,12 @@ export interface CloudAuthenticationRole {
   id?: string;
   name?: string;
 }
-export const CloudAuthenticationRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudAuthenticationRole" }) as any as S.Schema<CloudAuthenticationRole>;
+export const CloudAuthenticationRole =
+  CloudKeymanagerSecretRef as any as S.Schema<CloudAuthenticationRole>;
 
 export type CloudAuthenticationOpenstackTokenRolesList = Array<CloudAuthenticationRole>;
-export const CloudAuthenticationOpenstackTokenRolesList = /*@__PURE__*/ S.Array(
-  CloudAuthenticationRole,
-) as any as S.Schema<CloudAuthenticationOpenstackTokenRolesList>;
+export const CloudAuthenticationOpenstackTokenRolesList =
+  CloudKeymanagerCertificateSecretsList as any as S.Schema<CloudAuthenticationOpenstackTokenRolesList>;
 
 /** UserToken */
 export type CloudAuthenticationUserToken = CloudAuthenticationTokenProject;
@@ -16177,10 +15867,8 @@ export const CloudStorageLifecycleRuleExpiration = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags filter */
 export type CloudStorageLifecycleRuleFilterTagsMap = { [key: string]: string | undefined };
-export const CloudStorageLifecycleRuleFilterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudStorageLifecycleRuleFilterTagsMap>;
+export const CloudStorageLifecycleRuleFilterTagsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudStorageLifecycleRuleFilterTagsMap>;
 
 /** Object Storage replication configuration rule filter */
 export interface CloudStorageLifecycleRuleFilter {
@@ -16419,10 +16107,8 @@ export const CloudStorageReplicationRuleDestinationIn = /*@__PURE__*/ S.suspend(
 
 /** Tags filter. */
 export type CloudStorageReplicationRuleFilterTagsMap = { [key: string]: string | undefined };
-export const CloudStorageReplicationRuleFilterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudStorageReplicationRuleFilterTagsMap>;
+export const CloudStorageReplicationRuleFilterTagsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudStorageReplicationRuleFilterTagsMap>;
 
 /** Object Storage replication configuration rule filter. */
 export interface CloudStorageReplicationRuleFilter {
@@ -16499,10 +16185,8 @@ export const CloudStorageReplicationObjectIn = /*@__PURE__*/ S.suspend(() =>
 export type CreateColdArchiveContainerOnRegionRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateColdArchiveContainerOnRegionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateColdArchiveContainerOnRegionRequestTagsMap>;
+export const CreateColdArchiveContainerOnRegionRequestTagsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateColdArchiveContainerOnRegionRequestTagsMap>;
 
 /** Versioning status */
 export type CloudStorageVersioningStatusEnum = "disabled" | "enabled" | "suspended";
@@ -16774,26 +16458,16 @@ export interface CloudInstanceCreateInputGroup {
   /** Group id */
   id?: string;
 }
-export const CloudInstanceCreateInputGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudInstanceCreateInputGroup",
-}) as any as S.Schema<CloudInstanceCreateInputGroup>;
+export const CloudInstanceCreateInputGroup =
+  CloudInstanceCreateInputFlavor as any as S.Schema<CloudInstanceCreateInputGroup>;
 
 /** Existing floating IP */
 export interface CloudInstanceCreateInputNetworkPrivateFloatingIp {
   /** Floating IP ID */
   id?: string;
 }
-export const CloudInstanceCreateInputNetworkPrivateFloatingIp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudInstanceCreateInputNetworkPrivateFloatingIp",
-}) as any as S.Schema<CloudInstanceCreateInputNetworkPrivateFloatingIp>;
+export const CloudInstanceCreateInputNetworkPrivateFloatingIp =
+  CloudInstanceCreateInputFlavor as any as S.Schema<CloudInstanceCreateInputNetworkPrivateFloatingIp>;
 
 /** Information to create a new floating IP */
 export interface CloudInstanceCreateInputNetworkPrivateFloatingIpCreate {
@@ -16813,13 +16487,8 @@ export interface CloudInstanceCreateInputNetworkPrivateGateway {
   /** Gateway ID */
   id?: string;
 }
-export const CloudInstanceCreateInputNetworkPrivateGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudInstanceCreateInputNetworkPrivateGateway",
-}) as any as S.Schema<CloudInstanceCreateInputNetworkPrivateGateway>;
+export const CloudInstanceCreateInputNetworkPrivateGateway =
+  CloudInstanceCreateInputFlavor as any as S.Schema<CloudInstanceCreateInputNetworkPrivateGateway>;
 
 /** Gateway model */
 export type CloudInstanceCreateInputNetworkPrivateGatewayCreateModelEnum = "l" | "m" | "s";
@@ -16951,13 +16620,8 @@ export interface CloudInstanceCreateInputSshKey {
   /** SSH Keypair name */
   name?: string;
 }
-export const CloudInstanceCreateInputSshKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudInstanceCreateInputSshKey",
-}) as any as S.Schema<CloudInstanceCreateInputSshKey>;
+export const CloudInstanceCreateInputSshKey =
+  CloudProjectDatabaseBackupRegion as any as S.Schema<CloudInstanceCreateInputSshKey>;
 
 /** Information to create a new SSH Keypair */
 export interface CloudInstanceCreateInputSshKeyCreate {
@@ -17069,14 +16733,8 @@ export interface CloudProjectLoadbalancerNetworkingEgress {
   /** networking egress kind definition */
   kind: CloudProjectLoadbalancerNetworkingEgressKindEnum;
 }
-export const CloudProjectLoadbalancerNetworkingEgress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    kind: CloudProjectLoadbalancerNetworkingEgressKindEnum,
-  }),
-).annotate({
-  identifier: "CloudProjectLoadbalancerNetworkingEgress",
-}) as any as S.Schema<CloudProjectLoadbalancerNetworkingEgress>;
+export const CloudProjectLoadbalancerNetworkingEgress =
+  CloudProjectLoadbalancerConfigurationNetworkingEgress as any as S.Schema<CloudProjectLoadbalancerNetworkingEgress>;
 
 /** Networking Ingress definition */
 export interface CloudProjectLoadbalancerNetworkingIngress {
@@ -17154,22 +16812,19 @@ export const CloudProjectLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 /** List of backends */
 export type CreateLoadBalancerConfigurationRequestBackendsList =
   Array<CloudProjectLoadbalancerBackend>;
-export const CreateLoadBalancerConfigurationRequestBackendsList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerBackend,
-) as any as S.Schema<CreateLoadBalancerConfigurationRequestBackendsList>;
+export const CreateLoadBalancerConfigurationRequestBackendsList =
+  CloudProjectLoadbalancerConfigurationBackendsList as any as S.Schema<CreateLoadBalancerConfigurationRequestBackendsList>;
 
 /** List of certificate ID */
 export type CreateLoadBalancerConfigurationRequestCertificatesList = Array<string>;
-export const CreateLoadBalancerConfigurationRequestCertificatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLoadBalancerConfigurationRequestCertificatesList>;
+export const CreateLoadBalancerConfigurationRequestCertificatesList =
+  CloudOperationRegionsList as any as S.Schema<CreateLoadBalancerConfigurationRequestCertificatesList>;
 
 /** List of frontends */
 export type CreateLoadBalancerConfigurationRequestFrontendsList =
   Array<CloudProjectLoadbalancerFrontend>;
-export const CreateLoadBalancerConfigurationRequestFrontendsList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerFrontend,
-) as any as S.Schema<CreateLoadBalancerConfigurationRequestFrontendsList>;
+export const CreateLoadBalancerConfigurationRequestFrontendsList =
+  CloudProjectLoadbalancerConfigurationFrontendsList as any as S.Schema<CreateLoadBalancerConfigurationRequestFrontendsList>;
 
 export interface CreateLoadBalancerConfigurationRequest {
   /** Service name */
@@ -17261,44 +16916,26 @@ export interface CloudProjectNetworkLoadBalancer {
   /** Status of a load balancer */
   status?: CloudProjectLoadbalancerStatusEnum;
 }
-export const CloudProjectNetworkLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(CloudProjectLoadbalancerAddress),
-    configuration: S.optional(CloudProjectLoadbalancerConfigurationVersion),
-    createdAt: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    egressAddress: S.optional(CloudProjectLoadbalancerAddresses),
-    id: S.optional(S.String),
-    name: S.optional(S.NullOr(S.String)),
-    openstackRegion: S.optional(S.String),
-    region: S.optional(S.String),
-    size: S.optional(CloudProjectLoadbalancerSizeEnum),
-    status: S.optional(CloudProjectLoadbalancerStatusEnum),
-  }),
-).annotate({
-  identifier: "CloudProjectNetworkLoadBalancer",
-}) as any as S.Schema<CloudProjectNetworkLoadBalancer>;
+export const CloudProjectNetworkLoadBalancer =
+  CloudProjectApplicationLoadBalancer as any as S.Schema<CloudProjectNetworkLoadBalancer>;
 
 /** List of conditions */
 export type CreateNetworkLoadBalancerConfigurationRequestConditionsList =
   Array<CloudProjectNetworkloadbalancerCondition>;
-export const CreateNetworkLoadBalancerConfigurationRequestConditionsList = /*@__PURE__*/ S.Array(
-  CloudProjectNetworkloadbalancerCondition,
-) as any as S.Schema<CreateNetworkLoadBalancerConfigurationRequestConditionsList>;
+export const CreateNetworkLoadBalancerConfigurationRequestConditionsList =
+  CloudProjectNetworkloadbalancerConfigurationConditionsList as any as S.Schema<CreateNetworkLoadBalancerConfigurationRequestConditionsList>;
 
 /** List of entryPointss */
 export type CreateNetworkLoadBalancerConfigurationRequestEntryPointsList =
   Array<CloudProjectNetworkloadbalancerEntryPoint>;
-export const CreateNetworkLoadBalancerConfigurationRequestEntryPointsList = /*@__PURE__*/ S.Array(
-  CloudProjectNetworkloadbalancerEntryPoint,
-) as any as S.Schema<CreateNetworkLoadBalancerConfigurationRequestEntryPointsList>;
+export const CreateNetworkLoadBalancerConfigurationRequestEntryPointsList =
+  CloudProjectNetworkloadbalancerConfigurationEntryPointsList as any as S.Schema<CreateNetworkLoadBalancerConfigurationRequestEntryPointsList>;
 
 /** List of targets */
 export type CreateNetworkLoadBalancerConfigurationRequestTargetsList =
   Array<CloudProjectLoadbalancerTarget>;
-export const CreateNetworkLoadBalancerConfigurationRequestTargetsList = /*@__PURE__*/ S.Array(
-  CloudProjectLoadbalancerTarget,
-) as any as S.Schema<CreateNetworkLoadBalancerConfigurationRequestTargetsList>;
+export const CreateNetworkLoadBalancerConfigurationRequestTargetsList =
+  CloudProjectLoadbalancerApplicationConfigurationTargetsList as any as S.Schema<CreateNetworkLoadBalancerConfigurationRequestTargetsList>;
 
 export interface CreateNetworkLoadBalancerConfigurationRequest {
   /** Service name */
@@ -17381,10 +17018,8 @@ export const CreatePresignedUrlOnRegionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Signed headers. */
 export type CloudStoragePresignedURLSignedHeadersMap = { [key: string]: string | undefined };
-export const CloudStoragePresignedURLSignedHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudStoragePresignedURLSignedHeadersMap>;
+export const CloudStoragePresignedURLSignedHeadersMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudStoragePresignedURLSignedHeadersMap>;
 
 /** Presigned URL. */
 export interface CloudStoragePresignedURL {
@@ -17469,10 +17104,8 @@ export const CloudStorageJobReplication = /*@__PURE__*/ S.suspend(() =>
 
 /** Container tags. */
 export type CreateStorageContainerOnRegionRequestTagsMap = { [key: string]: string | undefined };
-export const CreateStorageContainerOnRegionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateStorageContainerOnRegionRequestTagsMap>;
+export const CreateStorageContainerOnRegionRequestTagsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CreateStorageContainerOnRegionRequestTagsMap>;
 
 export interface CreateStorageContainerOnRegionRequest {
   /** Service name */
@@ -17521,9 +17154,8 @@ export const CreateStorageContainerOnRegionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Container objects (deprecated). */
 export type CloudStorageContainerObjectsList = Array<CloudStorageObjectList>;
-export const CloudStorageContainerObjectsList = /*@__PURE__*/ S.Array(
-  CloudStorageObjectList,
-) as any as S.Schema<CloudStorageContainerObjectsList>;
+export const CloudStorageContainerObjectsList =
+  CloudColdArchiveContainerObjectsList as any as S.Schema<CloudStorageContainerObjectsList>;
 
 /** Object Storage replication configuration rule destination. */
 export interface CloudStorageReplicationRuleDestination {
@@ -17595,10 +17227,8 @@ export const CloudStorageReplicationObject = /*@__PURE__*/ S.suspend(() =>
 
 /** Container tags. */
 export type CloudStorageContainerTagsMap = { [key: string]: string | undefined };
-export const CloudStorageContainerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloudStorageContainerTagsMap>;
+export const CloudStorageContainerTagsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<CloudStorageContainerTagsMap>;
 
 /** Object storage container. */
 export interface CloudStorageContainer {
@@ -17688,11 +17318,8 @@ export const CreateStorageContainerPolicyOnRegionRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateStorageContainerPolicyOnRegionRequest>;
 
 export interface CreateStorageContainerPolicyOnRegionResponse {}
-export const CreateStorageContainerPolicyOnRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateStorageContainerPolicyOnRegionResponse",
-}) as any as S.Schema<CreateStorageContainerPolicyOnRegionResponse>;
+export const CreateStorageContainerPolicyOnRegionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<CreateStorageContainerPolicyOnRegionResponse>;
 
 export interface DeleteAlertingRequest {
   /** Service name */
@@ -17710,9 +17337,8 @@ export const DeleteAlertingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAlertingRequest" }) as any as S.Schema<DeleteAlertingRequest>;
 
 export interface DeleteAlertingResponse {}
-export const DeleteAlertingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAlertingResponse",
-}) as any as S.Schema<DeleteAlertingResponse>;
+export const DeleteAlertingResponse =
+  CancelCloudProjectResponse as any as S.Schema<DeleteAlertingResponse>;
 
 export interface DeleteApplicationLoadBalancerRequest {
   /** Service name */
@@ -17736,11 +17362,8 @@ export const DeleteApplicationLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteApplicationLoadBalancerRequest>;
 
 export interface DeleteApplicationLoadBalancerResponse {}
-export const DeleteApplicationLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationLoadBalancerResponse",
-}) as any as S.Schema<DeleteApplicationLoadBalancerResponse>;
+export const DeleteApplicationLoadBalancerResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteApplicationLoadBalancerResponse>;
 
 export interface DeleteApplicationLoadBalancerConfigurationRequest {
   /** Service name */
@@ -17767,11 +17390,8 @@ export const DeleteApplicationLoadBalancerConfigurationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteApplicationLoadBalancerConfigurationRequest>;
 
 export interface DeleteApplicationLoadBalancerConfigurationResponse {}
-export const DeleteApplicationLoadBalancerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationLoadBalancerConfigurationResponse",
-}) as any as S.Schema<DeleteApplicationLoadBalancerConfigurationResponse>;
+export const DeleteApplicationLoadBalancerConfigurationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteApplicationLoadBalancerConfigurationResponse>;
 
 export interface DeleteCertificateRequest {
   /** Service name */
@@ -17793,9 +17413,8 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCertificateResponse",
-}) as any as S.Schema<DeleteCertificateResponse>;
+export const DeleteCertificateResponse =
+  CancelCloudProjectResponse as any as S.Schema<DeleteCertificateResponse>;
 
 export interface DeleteCloudProjectAclRequest {
   /** The project id */
@@ -17815,9 +17434,8 @@ export const DeleteCloudProjectAclRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectAclRequest>;
 
 export interface DeleteCloudProjectAclResponse {}
-export const DeleteCloudProjectAclResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCloudProjectAclResponse",
-}) as any as S.Schema<DeleteCloudProjectAclResponse>;
+export const DeleteCloudProjectAclResponse =
+  CancelCloudProjectResponse as any as S.Schema<DeleteCloudProjectAclResponse>;
 
 export interface DeleteCloudProjectAiAppRequest {
   /** Service name */
@@ -17869,11 +17487,8 @@ export const DeleteCloudProjectAiDataRegionAliasRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectAiDataRegionAliasRequest>;
 
 export interface DeleteCloudProjectAiDataRegionAliasResponse {}
-export const DeleteCloudProjectAiDataRegionAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectAiDataRegionAliasResponse",
-}) as any as S.Schema<DeleteCloudProjectAiDataRegionAliasResponse>;
+export const DeleteCloudProjectAiDataRegionAliasResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectAiDataRegionAliasResponse>;
 
 export interface DeleteCloudProjectAiJobRequest {
   /** Service name */
@@ -17896,9 +17511,8 @@ export const DeleteCloudProjectAiJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectAiJobRequest>;
 
 export interface DeleteCloudProjectAiJobResponse {}
-export const DeleteCloudProjectAiJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteCloudProjectAiJobResponse" },
-) as any as S.Schema<DeleteCloudProjectAiJobResponse>;
+export const DeleteCloudProjectAiJobResponse =
+  DeleteCloudProjectAiAppResponse as any as S.Schema<DeleteCloudProjectAiJobResponse>;
 
 export interface DeleteCloudProjectAiNotebookRequest {
   /** Service name */
@@ -17925,11 +17539,8 @@ export const DeleteCloudProjectAiNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectAiNotebookRequest>;
 
 export interface DeleteCloudProjectAiNotebookResponse {}
-export const DeleteCloudProjectAiNotebookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectAiNotebookResponse",
-}) as any as S.Schema<DeleteCloudProjectAiNotebookResponse>;
+export const DeleteCloudProjectAiNotebookResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectAiNotebookResponse>;
 
 export interface DeleteCloudProjectAiRegistryRequest {
   /** Service name */
@@ -17953,11 +17564,8 @@ export const DeleteCloudProjectAiRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectAiRegistryRequest>;
 
 export interface DeleteCloudProjectAiRegistryResponse {}
-export const DeleteCloudProjectAiRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectAiRegistryResponse",
-}) as any as S.Schema<DeleteCloudProjectAiRegistryResponse>;
+export const DeleteCloudProjectAiRegistryResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectAiRegistryResponse>;
 
 export interface DeleteCloudProjectAiTokenRequest {
   /** Service name */
@@ -17977,11 +17585,8 @@ export const DeleteCloudProjectAiTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectAiTokenRequest>;
 
 export interface DeleteCloudProjectAiTokenResponse {}
-export const DeleteCloudProjectAiTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectAiTokenResponse",
-}) as any as S.Schema<DeleteCloudProjectAiTokenResponse>;
+export const DeleteCloudProjectAiTokenResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectAiTokenResponse>;
 
 export interface DeleteCloudProjectContainerRegistryRequest {
   /** Service name */
@@ -18005,11 +17610,8 @@ export const DeleteCloudProjectContainerRegistryRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectContainerRegistryRequest>;
 
 export interface DeleteCloudProjectContainerRegistryResponse {}
-export const DeleteCloudProjectContainerRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectContainerRegistryResponse",
-}) as any as S.Schema<DeleteCloudProjectContainerRegistryResponse>;
+export const DeleteCloudProjectContainerRegistryResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectContainerRegistryResponse>;
 
 export interface DeleteCloudProjectContainerRegistryIamRequest {
   /** Service name */
@@ -18033,11 +17635,8 @@ export const DeleteCloudProjectContainerRegistryIamRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteCloudProjectContainerRegistryIamRequest>;
 
 export interface DeleteCloudProjectContainerRegistryIamResponse {}
-export const DeleteCloudProjectContainerRegistryIamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectContainerRegistryIamResponse",
-}) as any as S.Schema<DeleteCloudProjectContainerRegistryIamResponse>;
+export const DeleteCloudProjectContainerRegistryIamResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectContainerRegistryIamResponse>;
 
 export interface DeleteCloudProjectContainerRegistryOpenIdConnectRequest {
   /** Service name */
@@ -18061,11 +17660,8 @@ export const DeleteCloudProjectContainerRegistryOpenIdConnectRequest = /*@__PURE
 }) as any as S.Schema<DeleteCloudProjectContainerRegistryOpenIdConnectRequest>;
 
 export interface DeleteCloudProjectContainerRegistryOpenIdConnectResponse {}
-export const DeleteCloudProjectContainerRegistryOpenIdConnectResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectContainerRegistryOpenIdConnectResponse",
-}) as any as S.Schema<DeleteCloudProjectContainerRegistryOpenIdConnectResponse>;
+export const DeleteCloudProjectContainerRegistryOpenIdConnectResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectContainerRegistryOpenIdConnectResponse>;
 
 export interface DeleteCloudProjectContainerRegistryUserRequest {
   /** Service name */
@@ -18092,11 +17688,8 @@ export const DeleteCloudProjectContainerRegistryUserRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteCloudProjectContainerRegistryUserRequest>;
 
 export interface DeleteCloudProjectContainerRegistryUserResponse {}
-export const DeleteCloudProjectContainerRegistryUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectContainerRegistryUserResponse",
-}) as any as S.Schema<DeleteCloudProjectContainerRegistryUserResponse>;
+export const DeleteCloudProjectContainerRegistryUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectContainerRegistryUserResponse>;
 
 export interface DeleteCloudProjectDatabaseCassandraRequest {
   /** Service name */
@@ -18120,11 +17713,8 @@ export const DeleteCloudProjectDatabaseCassandraRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectDatabaseCassandraRequest>;
 
 export interface DeleteCloudProjectDatabaseCassandraResponse {}
-export const DeleteCloudProjectDatabaseCassandraResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseCassandraResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseCassandraResponse>;
+export const DeleteCloudProjectDatabaseCassandraResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseCassandraResponse>;
 
 export interface DeleteCloudProjectDatabaseCassandraIntegrationRequest {
   /** Service name */
@@ -18151,11 +17741,8 @@ export const DeleteCloudProjectDatabaseCassandraIntegrationRequest = /*@__PURE__
 }) as any as S.Schema<DeleteCloudProjectDatabaseCassandraIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseCassandraIntegrationResponse {}
-export const DeleteCloudProjectDatabaseCassandraIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseCassandraIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseCassandraIntegrationResponse>;
+export const DeleteCloudProjectDatabaseCassandraIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseCassandraIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseCassandraLogSubscriptionRequest {
   /** Service name */
@@ -18207,11 +17794,8 @@ export const DeleteCloudProjectDatabaseCassandraUserRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteCloudProjectDatabaseCassandraUserRequest>;
 
 export interface DeleteCloudProjectDatabaseCassandraUserResponse {}
-export const DeleteCloudProjectDatabaseCassandraUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseCassandraUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseCassandraUserResponse>;
+export const DeleteCloudProjectDatabaseCassandraUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseCassandraUserResponse>;
 
 export interface DeleteCloudProjectDatabaseClickhouseRequest {
   /** Service name */
@@ -18235,11 +17819,8 @@ export const DeleteCloudProjectDatabaseClickhouseRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseRequest>;
 
 export interface DeleteCloudProjectDatabaseClickhouseResponse {}
-export const DeleteCloudProjectDatabaseClickhouseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseClickhouseResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseResponse>;
+export const DeleteCloudProjectDatabaseClickhouseResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseClickhouseResponse>;
 
 export interface DeleteCloudProjectDatabaseClickhouseDatabaseRequest {
   /** Service name */
@@ -18266,11 +17847,8 @@ export const DeleteCloudProjectDatabaseClickhouseDatabaseRequest = /*@__PURE__*/
 }) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseDatabaseRequest>;
 
 export interface DeleteCloudProjectDatabaseClickhouseDatabaseResponse {}
-export const DeleteCloudProjectDatabaseClickhouseDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseClickhouseDatabaseResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseDatabaseResponse>;
+export const DeleteCloudProjectDatabaseClickhouseDatabaseResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseClickhouseDatabaseResponse>;
 
 export interface DeleteCloudProjectDatabaseClickhouseIntegrationRequest {
   /** Service name */
@@ -18297,11 +17875,8 @@ export const DeleteCloudProjectDatabaseClickhouseIntegrationRequest = /*@__PURE_
 }) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseClickhouseIntegrationResponse {}
-export const DeleteCloudProjectDatabaseClickhouseIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseClickhouseIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseIntegrationResponse>;
+export const DeleteCloudProjectDatabaseClickhouseIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseClickhouseIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseClickhouseLogSubscriptionRequest {
   /** Service name */
@@ -18353,11 +17928,8 @@ export const DeleteCloudProjectDatabaseClickhouseUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseUserRequest>;
 
 export interface DeleteCloudProjectDatabaseClickhouseUserResponse {}
-export const DeleteCloudProjectDatabaseClickhouseUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseClickhouseUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseClickhouseUserResponse>;
+export const DeleteCloudProjectDatabaseClickhouseUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseClickhouseUserResponse>;
 
 export interface DeleteCloudProjectDatabaseGrafanaRequest {
   /** Service name */
@@ -18381,11 +17953,8 @@ export const DeleteCloudProjectDatabaseGrafanaRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteCloudProjectDatabaseGrafanaRequest>;
 
 export interface DeleteCloudProjectDatabaseGrafanaResponse {}
-export const DeleteCloudProjectDatabaseGrafanaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseGrafanaResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseGrafanaResponse>;
+export const DeleteCloudProjectDatabaseGrafanaResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseGrafanaResponse>;
 
 export interface DeleteCloudProjectDatabaseGrafanaIntegrationRequest {
   /** Service name */
@@ -18412,11 +17981,8 @@ export const DeleteCloudProjectDatabaseGrafanaIntegrationRequest = /*@__PURE__*/
 }) as any as S.Schema<DeleteCloudProjectDatabaseGrafanaIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseGrafanaIntegrationResponse {}
-export const DeleteCloudProjectDatabaseGrafanaIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseGrafanaIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseGrafanaIntegrationResponse>;
+export const DeleteCloudProjectDatabaseGrafanaIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseGrafanaIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseGrafanaLogSubscriptionRequest {
   /** Service name */
@@ -18464,11 +18030,8 @@ export const DeleteCloudProjectDatabaseKafkaRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaResponse {}
-export const DeleteCloudProjectDatabaseKafkaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaResponse>;
+export const DeleteCloudProjectDatabaseKafkaResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectRequest {
   /** Service name */
@@ -18492,11 +18055,8 @@ export const DeleteCloudProjectDatabaseKafkaConnectRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectResponse {}
-export const DeleteCloudProjectDatabaseKafkaConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaConnectResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectResponse>;
+export const DeleteCloudProjectDatabaseKafkaConnectResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectConnectorRequest {
   /** Service name */
@@ -18523,11 +18083,8 @@ export const DeleteCloudProjectDatabaseKafkaConnectConnectorRequest = /*@__PURE_
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectConnectorRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectConnectorResponse {}
-export const DeleteCloudProjectDatabaseKafkaConnectConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaConnectConnectorResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectConnectorResponse>;
+export const DeleteCloudProjectDatabaseKafkaConnectConnectorResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectConnectorResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectIntegrationRequest {
   /** Service name */
@@ -18555,11 +18112,8 @@ export const DeleteCloudProjectDatabaseKafkaConnectIntegrationRequest = /*@__PUR
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectIntegrationResponse {}
-export const DeleteCloudProjectDatabaseKafkaConnectIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaConnectIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectIntegrationResponse>;
+export const DeleteCloudProjectDatabaseKafkaConnectIntegrationResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectLogSubscriptionRequest {
   /** Service name */
@@ -18611,11 +18165,8 @@ export const DeleteCloudProjectDatabaseKafkaConnectUserRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectUserRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaConnectUserResponse {}
-export const DeleteCloudProjectDatabaseKafkaConnectUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaConnectUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectUserResponse>;
+export const DeleteCloudProjectDatabaseKafkaConnectUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaConnectUserResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaIntegrationRequest {
   /** Service name */
@@ -18642,11 +18193,8 @@ export const DeleteCloudProjectDatabaseKafkaIntegrationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaIntegrationResponse {}
-export const DeleteCloudProjectDatabaseKafkaIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaIntegrationResponse>;
+export const DeleteCloudProjectDatabaseKafkaIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaLogSubscriptionRequest {
   /** Service name */
@@ -18694,11 +18242,8 @@ export const DeleteCloudProjectDatabaseKafkaMirrorMakerRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaMirrorMakerRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaMirrorMakerResponse {}
-export const DeleteCloudProjectDatabaseKafkaMirrorMakerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaMirrorMakerResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaMirrorMakerResponse>;
+export const DeleteCloudProjectDatabaseKafkaMirrorMakerResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaMirrorMakerResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaMirrorMakerIntegrationRequest {
   /** Service name */
@@ -18783,9 +18328,7 @@ export const DeleteCloudProjectDatabaseKafkaMirrorMakerReplicationRequest = /*@_
 
 export interface DeleteCloudProjectDatabaseKafkaMirrorMakerReplicationResponse {}
 export const DeleteCloudProjectDatabaseKafkaMirrorMakerReplicationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteCloudProjectDatabaseKafkaMirrorMakerReplicationResponse",
-  }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaMirrorMakerReplicationResponse>;
+  DeleteCloudProjectDatabaseKafkaMirrorMakerIntegrationResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaMirrorMakerReplicationResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaSchemaRegistryAclRequest {
   /** Service name */
@@ -18812,11 +18355,8 @@ export const DeleteCloudProjectDatabaseKafkaSchemaRegistryAclRequest = /*@__PURE
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaSchemaRegistryAclRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaSchemaRegistryAclResponse {}
-export const DeleteCloudProjectDatabaseKafkaSchemaRegistryAclResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaSchemaRegistryAclResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaSchemaRegistryAclResponse>;
+export const DeleteCloudProjectDatabaseKafkaSchemaRegistryAclResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaSchemaRegistryAclResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaTopicRequest {
   /** Service name */
@@ -18843,11 +18383,8 @@ export const DeleteCloudProjectDatabaseKafkaTopicRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaTopicRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaTopicResponse {}
-export const DeleteCloudProjectDatabaseKafkaTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaTopicResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaTopicResponse>;
+export const DeleteCloudProjectDatabaseKafkaTopicResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaTopicResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaTopicAclRequest {
   /** Service name */
@@ -18874,11 +18411,8 @@ export const DeleteCloudProjectDatabaseKafkaTopicAclRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaTopicAclRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaTopicAclResponse {}
-export const DeleteCloudProjectDatabaseKafkaTopicAclResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaTopicAclResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaTopicAclResponse>;
+export const DeleteCloudProjectDatabaseKafkaTopicAclResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaTopicAclResponse>;
 
 export interface DeleteCloudProjectDatabaseKafkaUserRequest {
   /** Service name */
@@ -18905,11 +18439,8 @@ export const DeleteCloudProjectDatabaseKafkaUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectDatabaseKafkaUserRequest>;
 
 export interface DeleteCloudProjectDatabaseKafkaUserResponse {}
-export const DeleteCloudProjectDatabaseKafkaUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseKafkaUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseKafkaUserResponse>;
+export const DeleteCloudProjectDatabaseKafkaUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseKafkaUserResponse>;
 
 export interface DeleteCloudProjectDatabaseM3aggregatorRequest {
   /** Service name */
@@ -18933,11 +18464,8 @@ export const DeleteCloudProjectDatabaseM3aggregatorRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteCloudProjectDatabaseM3aggregatorRequest>;
 
 export interface DeleteCloudProjectDatabaseM3aggregatorResponse {}
-export const DeleteCloudProjectDatabaseM3aggregatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseM3aggregatorResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseM3aggregatorResponse>;
+export const DeleteCloudProjectDatabaseM3aggregatorResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseM3aggregatorResponse>;
 
 export interface DeleteCloudProjectDatabaseM3aggregatorIntegrationRequest {
   /** Service name */
@@ -18965,11 +18493,8 @@ export const DeleteCloudProjectDatabaseM3aggregatorIntegrationRequest = /*@__PUR
 }) as any as S.Schema<DeleteCloudProjectDatabaseM3aggregatorIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseM3aggregatorIntegrationResponse {}
-export const DeleteCloudProjectDatabaseM3aggregatorIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseM3aggregatorIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseM3aggregatorIntegrationResponse>;
+export const DeleteCloudProjectDatabaseM3aggregatorIntegrationResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectDatabaseM3aggregatorIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseM3aggregatorLogSubscriptionRequest {
   /** Service name */
@@ -19018,11 +18543,8 @@ export const DeleteCloudProjectDatabaseM3dbRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteCloudProjectDatabaseM3dbRequest>;
 
 export interface DeleteCloudProjectDatabaseM3dbResponse {}
-export const DeleteCloudProjectDatabaseM3dbResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseM3dbResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseM3dbResponse>;
+export const DeleteCloudProjectDatabaseM3dbResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseM3dbResponse>;
 
 export interface DeleteCloudProjectDatabaseM3dbIntegrationRequest {
   /** Service name */
@@ -19049,11 +18571,8 @@ export const DeleteCloudProjectDatabaseM3dbIntegrationRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteCloudProjectDatabaseM3dbIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseM3dbIntegrationResponse {}
-export const DeleteCloudProjectDatabaseM3dbIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseM3dbIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseM3dbIntegrationResponse>;
+export const DeleteCloudProjectDatabaseM3dbIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseM3dbIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseM3dbLogSubscriptionRequest {
   /** Service name */
@@ -19104,11 +18623,8 @@ export const DeleteCloudProjectDatabaseM3dbNamespaceRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteCloudProjectDatabaseM3dbNamespaceRequest>;
 
 export interface DeleteCloudProjectDatabaseM3dbNamespaceResponse {}
-export const DeleteCloudProjectDatabaseM3dbNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseM3dbNamespaceResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseM3dbNamespaceResponse>;
+export const DeleteCloudProjectDatabaseM3dbNamespaceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseM3dbNamespaceResponse>;
 
 export interface DeleteCloudProjectDatabaseM3dbUserRequest {
   /** Service name */
@@ -19135,11 +18651,8 @@ export const DeleteCloudProjectDatabaseM3dbUserRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteCloudProjectDatabaseM3dbUserRequest>;
 
 export interface DeleteCloudProjectDatabaseM3dbUserResponse {}
-export const DeleteCloudProjectDatabaseM3dbUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseM3dbUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseM3dbUserResponse>;
+export const DeleteCloudProjectDatabaseM3dbUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseM3dbUserResponse>;
 
 export interface DeleteCloudProjectDatabaseMongodbRequest {
   /** Service name */
@@ -19163,11 +18676,8 @@ export const DeleteCloudProjectDatabaseMongodbRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteCloudProjectDatabaseMongodbRequest>;
 
 export interface DeleteCloudProjectDatabaseMongodbResponse {}
-export const DeleteCloudProjectDatabaseMongodbResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMongodbResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMongodbResponse>;
+export const DeleteCloudProjectDatabaseMongodbResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMongodbResponse>;
 
 export interface DeleteCloudProjectDatabaseMongodbBackupRequest {
   /** Service name */
@@ -19194,11 +18704,8 @@ export const DeleteCloudProjectDatabaseMongodbBackupRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteCloudProjectDatabaseMongodbBackupRequest>;
 
 export interface DeleteCloudProjectDatabaseMongodbBackupResponse {}
-export const DeleteCloudProjectDatabaseMongodbBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMongodbBackupResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMongodbBackupResponse>;
+export const DeleteCloudProjectDatabaseMongodbBackupResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMongodbBackupResponse>;
 
 export interface DeleteCloudProjectDatabaseMongodbLogSubscriptionRequest {
   /** Service name */
@@ -19249,11 +18756,8 @@ export const DeleteCloudProjectDatabaseMongodbNodeRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteCloudProjectDatabaseMongodbNodeRequest>;
 
 export interface DeleteCloudProjectDatabaseMongodbNodeResponse {}
-export const DeleteCloudProjectDatabaseMongodbNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMongodbNodeResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMongodbNodeResponse>;
+export const DeleteCloudProjectDatabaseMongodbNodeResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMongodbNodeResponse>;
 
 export interface DeleteCloudProjectDatabaseMongodbUserRequest {
   /** Service name */
@@ -19280,11 +18784,8 @@ export const DeleteCloudProjectDatabaseMongodbUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteCloudProjectDatabaseMongodbUserRequest>;
 
 export interface DeleteCloudProjectDatabaseMongodbUserResponse {}
-export const DeleteCloudProjectDatabaseMongodbUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMongodbUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMongodbUserResponse>;
+export const DeleteCloudProjectDatabaseMongodbUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMongodbUserResponse>;
 
 export interface DeleteCloudProjectDatabaseMysqlRequest {
   /** Service name */
@@ -19308,11 +18809,8 @@ export const DeleteCloudProjectDatabaseMysqlRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCloudProjectDatabaseMysqlRequest>;
 
 export interface DeleteCloudProjectDatabaseMysqlResponse {}
-export const DeleteCloudProjectDatabaseMysqlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMysqlResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMysqlResponse>;
+export const DeleteCloudProjectDatabaseMysqlResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMysqlResponse>;
 
 export interface DeleteCloudProjectDatabaseMysqlDatabaseRequest {
   /** Service name */
@@ -19339,11 +18837,8 @@ export const DeleteCloudProjectDatabaseMysqlDatabaseRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteCloudProjectDatabaseMysqlDatabaseRequest>;
 
 export interface DeleteCloudProjectDatabaseMysqlDatabaseResponse {}
-export const DeleteCloudProjectDatabaseMysqlDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMysqlDatabaseResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMysqlDatabaseResponse>;
+export const DeleteCloudProjectDatabaseMysqlDatabaseResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMysqlDatabaseResponse>;
 
 export interface DeleteCloudProjectDatabaseMysqlIntegrationRequest {
   /** Service name */
@@ -19370,11 +18865,8 @@ export const DeleteCloudProjectDatabaseMysqlIntegrationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteCloudProjectDatabaseMysqlIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseMysqlIntegrationResponse {}
-export const DeleteCloudProjectDatabaseMysqlIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMysqlIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMysqlIntegrationResponse>;
+export const DeleteCloudProjectDatabaseMysqlIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMysqlIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseMysqlLogSubscriptionRequest {
   /** Service name */
@@ -19425,11 +18917,8 @@ export const DeleteCloudProjectDatabaseMysqlUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectDatabaseMysqlUserRequest>;
 
 export interface DeleteCloudProjectDatabaseMysqlUserResponse {}
-export const DeleteCloudProjectDatabaseMysqlUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseMysqlUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseMysqlUserResponse>;
+export const DeleteCloudProjectDatabaseMysqlUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseMysqlUserResponse>;
 
 export interface DeleteCloudProjectDatabaseOpensearchRequest {
   /** Service name */
@@ -19453,11 +18942,8 @@ export const DeleteCloudProjectDatabaseOpensearchRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchRequest>;
 
 export interface DeleteCloudProjectDatabaseOpensearchResponse {}
-export const DeleteCloudProjectDatabaseOpensearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseOpensearchResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchResponse>;
+export const DeleteCloudProjectDatabaseOpensearchResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseOpensearchResponse>;
 
 export interface DeleteCloudProjectDatabaseOpensearchIndexRequest {
   /** Service name */
@@ -19484,11 +18970,8 @@ export const DeleteCloudProjectDatabaseOpensearchIndexRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchIndexRequest>;
 
 export interface DeleteCloudProjectDatabaseOpensearchIndexResponse {}
-export const DeleteCloudProjectDatabaseOpensearchIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseOpensearchIndexResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchIndexResponse>;
+export const DeleteCloudProjectDatabaseOpensearchIndexResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseOpensearchIndexResponse>;
 
 export interface DeleteCloudProjectDatabaseOpensearchIntegrationRequest {
   /** Service name */
@@ -19515,11 +18998,8 @@ export const DeleteCloudProjectDatabaseOpensearchIntegrationRequest = /*@__PURE_
 }) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseOpensearchIntegrationResponse {}
-export const DeleteCloudProjectDatabaseOpensearchIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseOpensearchIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchIntegrationResponse>;
+export const DeleteCloudProjectDatabaseOpensearchIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseOpensearchIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseOpensearchLogSubscriptionRequest {
   /** Service name */
@@ -19571,11 +19051,8 @@ export const DeleteCloudProjectDatabaseOpensearchPatternRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchPatternRequest>;
 
 export interface DeleteCloudProjectDatabaseOpensearchPatternResponse {}
-export const DeleteCloudProjectDatabaseOpensearchPatternResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseOpensearchPatternResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchPatternResponse>;
+export const DeleteCloudProjectDatabaseOpensearchPatternResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseOpensearchPatternResponse>;
 
 export interface DeleteCloudProjectDatabaseOpensearchUserRequest {
   /** Service name */
@@ -19602,11 +19079,8 @@ export const DeleteCloudProjectDatabaseOpensearchUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchUserRequest>;
 
 export interface DeleteCloudProjectDatabaseOpensearchUserResponse {}
-export const DeleteCloudProjectDatabaseOpensearchUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseOpensearchUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseOpensearchUserResponse>;
+export const DeleteCloudProjectDatabaseOpensearchUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseOpensearchUserResponse>;
 
 export interface DeleteCloudProjectDatabasePostgresqlRequest {
   /** Service name */
@@ -19630,11 +19104,8 @@ export const DeleteCloudProjectDatabasePostgresqlRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlRequest>;
 
 export interface DeleteCloudProjectDatabasePostgresqlResponse {}
-export const DeleteCloudProjectDatabasePostgresqlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabasePostgresqlResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlResponse>;
+export const DeleteCloudProjectDatabasePostgresqlResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabasePostgresqlResponse>;
 
 export interface DeleteCloudProjectDatabasePostgresqlConnectionPoolRequest {
   /** Service name */
@@ -19662,11 +19133,8 @@ export const DeleteCloudProjectDatabasePostgresqlConnectionPoolRequest = /*@__PU
 }) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlConnectionPoolRequest>;
 
 export interface DeleteCloudProjectDatabasePostgresqlConnectionPoolResponse {}
-export const DeleteCloudProjectDatabasePostgresqlConnectionPoolResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabasePostgresqlConnectionPoolResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlConnectionPoolResponse>;
+export const DeleteCloudProjectDatabasePostgresqlConnectionPoolResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectDatabasePostgresqlConnectionPoolResponse>;
 
 export interface DeleteCloudProjectDatabasePostgresqlDatabaseRequest {
   /** Service name */
@@ -19693,11 +19161,8 @@ export const DeleteCloudProjectDatabasePostgresqlDatabaseRequest = /*@__PURE__*/
 }) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlDatabaseRequest>;
 
 export interface DeleteCloudProjectDatabasePostgresqlDatabaseResponse {}
-export const DeleteCloudProjectDatabasePostgresqlDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabasePostgresqlDatabaseResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlDatabaseResponse>;
+export const DeleteCloudProjectDatabasePostgresqlDatabaseResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabasePostgresqlDatabaseResponse>;
 
 export interface DeleteCloudProjectDatabasePostgresqlIntegrationRequest {
   /** Service name */
@@ -19724,11 +19189,8 @@ export const DeleteCloudProjectDatabasePostgresqlIntegrationRequest = /*@__PURE_
 }) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabasePostgresqlIntegrationResponse {}
-export const DeleteCloudProjectDatabasePostgresqlIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabasePostgresqlIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlIntegrationResponse>;
+export const DeleteCloudProjectDatabasePostgresqlIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabasePostgresqlIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabasePostgresqlLogSubscriptionRequest {
   /** Service name */
@@ -19780,11 +19242,8 @@ export const DeleteCloudProjectDatabasePostgresqlUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlUserRequest>;
 
 export interface DeleteCloudProjectDatabasePostgresqlUserResponse {}
-export const DeleteCloudProjectDatabasePostgresqlUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabasePostgresqlUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabasePostgresqlUserResponse>;
+export const DeleteCloudProjectDatabasePostgresqlUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabasePostgresqlUserResponse>;
 
 export interface DeleteCloudProjectDatabaseRedisRequest {
   /** Service name */
@@ -19808,11 +19267,8 @@ export const DeleteCloudProjectDatabaseRedisRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCloudProjectDatabaseRedisRequest>;
 
 export interface DeleteCloudProjectDatabaseRedisResponse {}
-export const DeleteCloudProjectDatabaseRedisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseRedisResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseRedisResponse>;
+export const DeleteCloudProjectDatabaseRedisResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseRedisResponse>;
 
 export interface DeleteCloudProjectDatabaseRedisIntegrationRequest {
   /** Service name */
@@ -19839,11 +19295,8 @@ export const DeleteCloudProjectDatabaseRedisIntegrationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteCloudProjectDatabaseRedisIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseRedisIntegrationResponse {}
-export const DeleteCloudProjectDatabaseRedisIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseRedisIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseRedisIntegrationResponse>;
+export const DeleteCloudProjectDatabaseRedisIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseRedisIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseRedisLogSubscriptionRequest {
   /** Service name */
@@ -19894,11 +19347,8 @@ export const DeleteCloudProjectDatabaseRedisUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectDatabaseRedisUserRequest>;
 
 export interface DeleteCloudProjectDatabaseRedisUserResponse {}
-export const DeleteCloudProjectDatabaseRedisUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseRedisUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseRedisUserResponse>;
+export const DeleteCloudProjectDatabaseRedisUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseRedisUserResponse>;
 
 export interface DeleteCloudProjectDatabaseValkeyRequest {
   /** Service name */
@@ -19922,11 +19372,8 @@ export const DeleteCloudProjectDatabaseValkeyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteCloudProjectDatabaseValkeyRequest>;
 
 export interface DeleteCloudProjectDatabaseValkeyResponse {}
-export const DeleteCloudProjectDatabaseValkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseValkeyResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseValkeyResponse>;
+export const DeleteCloudProjectDatabaseValkeyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseValkeyResponse>;
 
 export interface DeleteCloudProjectDatabaseValkeyIntegrationRequest {
   /** Service name */
@@ -19953,11 +19400,8 @@ export const DeleteCloudProjectDatabaseValkeyIntegrationRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteCloudProjectDatabaseValkeyIntegrationRequest>;
 
 export interface DeleteCloudProjectDatabaseValkeyIntegrationResponse {}
-export const DeleteCloudProjectDatabaseValkeyIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseValkeyIntegrationResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseValkeyIntegrationResponse>;
+export const DeleteCloudProjectDatabaseValkeyIntegrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseValkeyIntegrationResponse>;
 
 export interface DeleteCloudProjectDatabaseValkeyLogSubscriptionRequest {
   /** Service name */
@@ -20008,11 +19452,8 @@ export const DeleteCloudProjectDatabaseValkeyUserRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteCloudProjectDatabaseValkeyUserRequest>;
 
 export interface DeleteCloudProjectDatabaseValkeyUserResponse {}
-export const DeleteCloudProjectDatabaseValkeyUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectDatabaseValkeyUserResponse",
-}) as any as S.Schema<DeleteCloudProjectDatabaseValkeyUserResponse>;
+export const DeleteCloudProjectDatabaseValkeyUserResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectDatabaseValkeyUserResponse>;
 
 export interface DeleteCloudProjectInstanceRequest {
   /** Service name */
@@ -20036,11 +19477,8 @@ export const DeleteCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectInstanceRequest>;
 
 export interface DeleteCloudProjectInstanceResponse {}
-export const DeleteCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectInstanceResponse",
-}) as any as S.Schema<DeleteCloudProjectInstanceResponse>;
+export const DeleteCloudProjectInstanceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectInstanceResponse>;
 
 export interface DeleteCloudProjectInstanceGroupRequest {
   /** Service name */
@@ -20064,11 +19502,8 @@ export const DeleteCloudProjectInstanceGroupRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCloudProjectInstanceGroupRequest>;
 
 export interface DeleteCloudProjectInstanceGroupResponse {}
-export const DeleteCloudProjectInstanceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectInstanceGroupResponse",
-}) as any as S.Schema<DeleteCloudProjectInstanceGroupResponse>;
+export const DeleteCloudProjectInstanceGroupResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectInstanceGroupResponse>;
 
 export interface DeleteCloudProjectInstanceInterfaceRequest {
   /** Service name */
@@ -20095,11 +19530,8 @@ export const DeleteCloudProjectInstanceInterfaceRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectInstanceInterfaceRequest>;
 
 export interface DeleteCloudProjectInstanceInterfaceResponse {}
-export const DeleteCloudProjectInstanceInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectInstanceInterfaceResponse",
-}) as any as S.Schema<DeleteCloudProjectInstanceInterfaceResponse>;
+export const DeleteCloudProjectInstanceInterfaceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectInstanceInterfaceResponse>;
 
 export interface DeleteCloudProjectKubeRequest {
   /** Service name */
@@ -20119,9 +19551,8 @@ export const DeleteCloudProjectKubeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectKubeRequest>;
 
 export interface DeleteCloudProjectKubeResponse {}
-export const DeleteCloudProjectKubeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCloudProjectKubeResponse",
-}) as any as S.Schema<DeleteCloudProjectKubeResponse>;
+export const DeleteCloudProjectKubeResponse =
+  CancelCloudProjectResponse as any as S.Schema<DeleteCloudProjectKubeResponse>;
 
 export interface DeleteCloudProjectKubeIpRestrictionRequest {
   /** Service name */
@@ -20148,11 +19579,8 @@ export const DeleteCloudProjectKubeIpRestrictionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectKubeIpRestrictionRequest>;
 
 export interface DeleteCloudProjectKubeIpRestrictionResponse {}
-export const DeleteCloudProjectKubeIpRestrictionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectKubeIpRestrictionResponse",
-}) as any as S.Schema<DeleteCloudProjectKubeIpRestrictionResponse>;
+export const DeleteCloudProjectKubeIpRestrictionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectKubeIpRestrictionResponse>;
 
 export interface DeleteCloudProjectKubeLogSubscriptionRequest {
   /** Service name */
@@ -20203,11 +19631,8 @@ export const DeleteCloudProjectKubeNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectKubeNodeRequest>;
 
 export interface DeleteCloudProjectKubeNodeResponse {}
-export const DeleteCloudProjectKubeNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectKubeNodeResponse",
-}) as any as S.Schema<DeleteCloudProjectKubeNodeResponse>;
+export const DeleteCloudProjectKubeNodeResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectKubeNodeResponse>;
 
 export interface DeleteCloudProjectKubeNodepoolRequest {
   /** Service name */
@@ -20234,11 +19659,8 @@ export const DeleteCloudProjectKubeNodepoolRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteCloudProjectKubeNodepoolRequest>;
 
 export interface DeleteCloudProjectKubeNodepoolResponse {}
-export const DeleteCloudProjectKubeNodepoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectKubeNodepoolResponse",
-}) as any as S.Schema<DeleteCloudProjectKubeNodepoolResponse>;
+export const DeleteCloudProjectKubeNodepoolResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectKubeNodepoolResponse>;
 
 export interface DeleteCloudProjectKubeOpenIdConnectRequest {
   /** Service name */
@@ -20262,11 +19684,8 @@ export const DeleteCloudProjectKubeOpenIdConnectRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectKubeOpenIdConnectRequest>;
 
 export interface DeleteCloudProjectKubeOpenIdConnectResponse {}
-export const DeleteCloudProjectKubeOpenIdConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectKubeOpenIdConnectResponse",
-}) as any as S.Schema<DeleteCloudProjectKubeOpenIdConnectResponse>;
+export const DeleteCloudProjectKubeOpenIdConnectResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectKubeOpenIdConnectResponse>;
 
 export interface DeleteCloudProjectNetworkPrivateRequest {
   /** Service name */
@@ -20290,11 +19709,8 @@ export const DeleteCloudProjectNetworkPrivateRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteCloudProjectNetworkPrivateRequest>;
 
 export interface DeleteCloudProjectNetworkPrivateResponse {}
-export const DeleteCloudProjectNetworkPrivateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectNetworkPrivateResponse",
-}) as any as S.Schema<DeleteCloudProjectNetworkPrivateResponse>;
+export const DeleteCloudProjectNetworkPrivateResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectNetworkPrivateResponse>;
 
 export interface DeleteCloudProjectNetworkPrivateRegionRequest {
   /** Service name */
@@ -20321,11 +19737,8 @@ export const DeleteCloudProjectNetworkPrivateRegionRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteCloudProjectNetworkPrivateRegionRequest>;
 
 export interface DeleteCloudProjectNetworkPrivateRegionResponse {}
-export const DeleteCloudProjectNetworkPrivateRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectNetworkPrivateRegionResponse",
-}) as any as S.Schema<DeleteCloudProjectNetworkPrivateRegionResponse>;
+export const DeleteCloudProjectNetworkPrivateRegionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectNetworkPrivateRegionResponse>;
 
 export interface DeleteCloudProjectNetworkPrivateSubnetRequest {
   /** Service name */
@@ -20352,11 +19765,8 @@ export const DeleteCloudProjectNetworkPrivateSubnetRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteCloudProjectNetworkPrivateSubnetRequest>;
 
 export interface DeleteCloudProjectNetworkPrivateSubnetResponse {}
-export const DeleteCloudProjectNetworkPrivateSubnetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectNetworkPrivateSubnetResponse",
-}) as any as S.Schema<DeleteCloudProjectNetworkPrivateSubnetResponse>;
+export const DeleteCloudProjectNetworkPrivateSubnetResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectNetworkPrivateSubnetResponse>;
 
 export interface DeleteCloudProjectRegionColdArchiveObjectRequest {
   /** Service name */
@@ -20386,11 +19796,8 @@ export const DeleteCloudProjectRegionColdArchiveObjectRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteCloudProjectRegionColdArchiveObjectRequest>;
 
 export interface DeleteCloudProjectRegionColdArchiveObjectResponse {}
-export const DeleteCloudProjectRegionColdArchiveObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionColdArchiveObjectResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionColdArchiveObjectResponse>;
+export const DeleteCloudProjectRegionColdArchiveObjectResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionColdArchiveObjectResponse>;
 
 export interface DeleteCloudProjectRegionGatewayRequest {
   /** Service name */
@@ -20444,11 +19851,8 @@ export const DeleteCloudProjectRegionGatewayInterfaceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteCloudProjectRegionGatewayInterfaceRequest>;
 
 export interface DeleteCloudProjectRegionGatewayInterfaceResponse {}
-export const DeleteCloudProjectRegionGatewayInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionGatewayInterfaceResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionGatewayInterfaceResponse>;
+export const DeleteCloudProjectRegionGatewayInterfaceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionGatewayInterfaceResponse>;
 
 export interface DeleteCloudProjectRegionInstanceMetricSubscriptionRequest {
   /** Service name */
@@ -20503,11 +19907,8 @@ export const DeleteCloudProjectRegionKeymanagerCertificateRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteCloudProjectRegionKeymanagerCertificateRequest>;
 
 export interface DeleteCloudProjectRegionKeymanagerCertificateResponse {}
-export const DeleteCloudProjectRegionKeymanagerCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionKeymanagerCertificateResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionKeymanagerCertificateResponse>;
+export const DeleteCloudProjectRegionKeymanagerCertificateResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionKeymanagerCertificateResponse>;
 
 export interface DeleteCloudProjectRegionKeymanagerSecretRequest {
   /** Service name */
@@ -20534,11 +19935,8 @@ export const DeleteCloudProjectRegionKeymanagerSecretRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteCloudProjectRegionKeymanagerSecretRequest>;
 
 export interface DeleteCloudProjectRegionKeymanagerSecretResponse {}
-export const DeleteCloudProjectRegionKeymanagerSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionKeymanagerSecretResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionKeymanagerSecretResponse>;
+export const DeleteCloudProjectRegionKeymanagerSecretResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionKeymanagerSecretResponse>;
 
 export interface DeleteCloudProjectRegionLoadbalancingHealthMonitorRequest {
   /** Service name */
@@ -20566,11 +19964,8 @@ export const DeleteCloudProjectRegionLoadbalancingHealthMonitorRequest = /*@__PU
 }) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingHealthMonitorRequest>;
 
 export interface DeleteCloudProjectRegionLoadbalancingHealthMonitorResponse {}
-export const DeleteCloudProjectRegionLoadbalancingHealthMonitorResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionLoadbalancingHealthMonitorResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingHealthMonitorResponse>;
+export const DeleteCloudProjectRegionLoadbalancingHealthMonitorResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectRegionLoadbalancingHealthMonitorResponse>;
 
 export interface DeleteCloudProjectRegionLoadbalancingL7PolicyRequest {
   /** Service name */
@@ -20597,11 +19992,8 @@ export const DeleteCloudProjectRegionLoadbalancingL7PolicyRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingL7PolicyRequest>;
 
 export interface DeleteCloudProjectRegionLoadbalancingL7PolicyResponse {}
-export const DeleteCloudProjectRegionLoadbalancingL7PolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionLoadbalancingL7PolicyResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingL7PolicyResponse>;
+export const DeleteCloudProjectRegionLoadbalancingL7PolicyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionLoadbalancingL7PolicyResponse>;
 
 export interface DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleRequest {
   /** Service name */
@@ -20632,11 +20024,8 @@ export const DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleRequest = /*@__P
 }) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleRequest>;
 
 export interface DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleResponse {}
-export const DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleResponse>;
+export const DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectRegionLoadbalancingL7PolicyL7RuleResponse>;
 
 export interface DeleteCloudProjectRegionLoadbalancingListenerRequest {
   /** Service name */
@@ -20663,11 +20052,8 @@ export const DeleteCloudProjectRegionLoadbalancingListenerRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingListenerRequest>;
 
 export interface DeleteCloudProjectRegionLoadbalancingListenerResponse {}
-export const DeleteCloudProjectRegionLoadbalancingListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionLoadbalancingListenerResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingListenerResponse>;
+export const DeleteCloudProjectRegionLoadbalancingListenerResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionLoadbalancingListenerResponse>;
 
 export interface DeleteCloudProjectRegionLoadbalancingLoadbalancerRequest {
   /** Service name */
@@ -20695,11 +20081,8 @@ export const DeleteCloudProjectRegionLoadbalancingLoadbalancerRequest = /*@__PUR
 }) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingLoadbalancerRequest>;
 
 export interface DeleteCloudProjectRegionLoadbalancingLoadbalancerResponse {}
-export const DeleteCloudProjectRegionLoadbalancingLoadbalancerResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionLoadbalancingLoadbalancerResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingLoadbalancerResponse>;
+export const DeleteCloudProjectRegionLoadbalancingLoadbalancerResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<DeleteCloudProjectRegionLoadbalancingLoadbalancerResponse>;
 
 export interface DeleteCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionRequest {
   /** Service name */
@@ -20754,11 +20137,8 @@ export const DeleteCloudProjectRegionLoadbalancingPoolRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingPoolRequest>;
 
 export interface DeleteCloudProjectRegionLoadbalancingPoolResponse {}
-export const DeleteCloudProjectRegionLoadbalancingPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionLoadbalancingPoolResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingPoolResponse>;
+export const DeleteCloudProjectRegionLoadbalancingPoolResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionLoadbalancingPoolResponse>;
 
 export interface DeleteCloudProjectRegionLoadbalancingPoolMemberRequest {
   /** Service name */
@@ -20788,11 +20168,8 @@ export const DeleteCloudProjectRegionLoadbalancingPoolMemberRequest = /*@__PURE_
 }) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingPoolMemberRequest>;
 
 export interface DeleteCloudProjectRegionLoadbalancingPoolMemberResponse {}
-export const DeleteCloudProjectRegionLoadbalancingPoolMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionLoadbalancingPoolMemberResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionLoadbalancingPoolMemberResponse>;
+export const DeleteCloudProjectRegionLoadbalancingPoolMemberResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionLoadbalancingPoolMemberResponse>;
 
 export interface DeleteCloudProjectRegionLogSubscriptionRequest {
   /** Service name */
@@ -20843,11 +20220,8 @@ export const DeleteCloudProjectRegionNetworkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCloudProjectRegionNetworkRequest>;
 
 export interface DeleteCloudProjectRegionNetworkResponse {}
-export const DeleteCloudProjectRegionNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionNetworkResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionNetworkResponse>;
+export const DeleteCloudProjectRegionNetworkResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionNetworkResponse>;
 
 export interface DeleteCloudProjectRegionNetworkSubnetRequest {
   /** Service name */
@@ -20877,11 +20251,8 @@ export const DeleteCloudProjectRegionNetworkSubnetRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteCloudProjectRegionNetworkSubnetRequest>;
 
 export interface DeleteCloudProjectRegionNetworkSubnetResponse {}
-export const DeleteCloudProjectRegionNetworkSubnetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionNetworkSubnetResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionNetworkSubnetResponse>;
+export const DeleteCloudProjectRegionNetworkSubnetResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionNetworkSubnetResponse>;
 
 export interface DeleteCloudProjectRegionQuotaStorageRequest {
   /** Service name */
@@ -20905,11 +20276,8 @@ export const DeleteCloudProjectRegionQuotaStorageRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteCloudProjectRegionQuotaStorageRequest>;
 
 export interface DeleteCloudProjectRegionQuotaStorageResponse {}
-export const DeleteCloudProjectRegionQuotaStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionQuotaStorageResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionQuotaStorageResponse>;
+export const DeleteCloudProjectRegionQuotaStorageResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionQuotaStorageResponse>;
 
 export interface DeleteCloudProjectRegionShareRequest {
   /** Service name */
@@ -20963,11 +20331,8 @@ export const DeleteCloudProjectRegionShareAclRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteCloudProjectRegionShareAclRequest>;
 
 export interface DeleteCloudProjectRegionShareAclResponse {}
-export const DeleteCloudProjectRegionShareAclResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionShareAclResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionShareAclResponse>;
+export const DeleteCloudProjectRegionShareAclResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionShareAclResponse>;
 
 export interface DeleteCloudProjectRegionShareSnapshotRequest {
   /** Service name */
@@ -20997,11 +20362,8 @@ export const DeleteCloudProjectRegionShareSnapshotRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteCloudProjectRegionShareSnapshotRequest>;
 
 export interface DeleteCloudProjectRegionShareSnapshotResponse {}
-export const DeleteCloudProjectRegionShareSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionShareSnapshotResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionShareSnapshotResponse>;
+export const DeleteCloudProjectRegionShareSnapshotResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionShareSnapshotResponse>;
 
 export interface DeleteCloudProjectRegionVolumeBackupRequest {
   /** Service name */
@@ -21028,11 +20390,8 @@ export const DeleteCloudProjectRegionVolumeBackupRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteCloudProjectRegionVolumeBackupRequest>;
 
 export interface DeleteCloudProjectRegionVolumeBackupResponse {}
-export const DeleteCloudProjectRegionVolumeBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionVolumeBackupResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionVolumeBackupResponse>;
+export const DeleteCloudProjectRegionVolumeBackupResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionVolumeBackupResponse>;
 
 export interface DeleteCloudProjectRegionWorkflowBackupRequest {
   /** Service name */
@@ -21059,11 +20418,8 @@ export const DeleteCloudProjectRegionWorkflowBackupRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteCloudProjectRegionWorkflowBackupRequest>;
 
 export interface DeleteCloudProjectRegionWorkflowBackupResponse {}
-export const DeleteCloudProjectRegionWorkflowBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectRegionWorkflowBackupResponse",
-}) as any as S.Schema<DeleteCloudProjectRegionWorkflowBackupResponse>;
+export const DeleteCloudProjectRegionWorkflowBackupResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectRegionWorkflowBackupResponse>;
 
 export interface DeleteCloudProjectSnapshotRequest {
   /** Service name */
@@ -21100,11 +20456,8 @@ export const DeleteCloudProjectSshkeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectSshkeyRequest>;
 
 export interface DeleteCloudProjectSshkeyResponse {}
-export const DeleteCloudProjectSshkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectSshkeyResponse",
-}) as any as S.Schema<DeleteCloudProjectSshkeyResponse>;
+export const DeleteCloudProjectSshkeyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectSshkeyResponse>;
 
 export interface DeleteCloudProjectStorageRequest {
   /** Service name */
@@ -21131,11 +20484,8 @@ export const DeleteCloudProjectStorageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectStorageRequest>;
 
 export interface DeleteCloudProjectStorageResponse {}
-export const DeleteCloudProjectStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectStorageResponse",
-}) as any as S.Schema<DeleteCloudProjectStorageResponse>;
+export const DeleteCloudProjectStorageResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectStorageResponse>;
 
 export interface DeleteCloudProjectStorageCorsRequest {
   /** Service name */
@@ -21162,11 +20512,8 @@ export const DeleteCloudProjectStorageCorsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteCloudProjectStorageCorsRequest>;
 
 export interface DeleteCloudProjectStorageCorsResponse {}
-export const DeleteCloudProjectStorageCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectStorageCorsResponse",
-}) as any as S.Schema<DeleteCloudProjectStorageCorsResponse>;
+export const DeleteCloudProjectStorageCorsResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectStorageCorsResponse>;
 
 export interface DeleteCloudProjectUserRequest {
   /** Service name */
@@ -21186,9 +20533,8 @@ export const DeleteCloudProjectUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectUserRequest>;
 
 export interface DeleteCloudProjectUserResponse {}
-export const DeleteCloudProjectUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCloudProjectUserResponse",
-}) as any as S.Schema<DeleteCloudProjectUserResponse>;
+export const DeleteCloudProjectUserResponse =
+  CancelCloudProjectResponse as any as S.Schema<DeleteCloudProjectUserResponse>;
 
 export interface DeleteCloudProjectUserRoleRequest {
   /** Service name */
@@ -21215,11 +20561,8 @@ export const DeleteCloudProjectUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectUserRoleRequest>;
 
 export interface DeleteCloudProjectUserRoleResponse {}
-export const DeleteCloudProjectUserRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectUserRoleResponse",
-}) as any as S.Schema<DeleteCloudProjectUserRoleResponse>;
+export const DeleteCloudProjectUserRoleResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectUserRoleResponse>;
 
 export interface DeleteCloudProjectUserS3CredentialsRequest {
   /** Service name */
@@ -21246,11 +20589,8 @@ export const DeleteCloudProjectUserS3CredentialsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCloudProjectUserS3CredentialsRequest>;
 
 export interface DeleteCloudProjectUserS3CredentialsResponse {}
-export const DeleteCloudProjectUserS3CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectUserS3CredentialsResponse",
-}) as any as S.Schema<DeleteCloudProjectUserS3CredentialsResponse>;
+export const DeleteCloudProjectUserS3CredentialsResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectUserS3CredentialsResponse>;
 
 export interface DeleteCloudProjectVolumeRequest {
   /** Service name */
@@ -21270,11 +20610,8 @@ export const DeleteCloudProjectVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudProjectVolumeRequest>;
 
 export interface DeleteCloudProjectVolumeResponse {}
-export const DeleteCloudProjectVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectVolumeResponse",
-}) as any as S.Schema<DeleteCloudProjectVolumeResponse>;
+export const DeleteCloudProjectVolumeResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectVolumeResponse>;
 
 export interface DeleteCloudProjectVolumeSnapshotRequest {
   /** Service name */
@@ -21298,11 +20635,8 @@ export const DeleteCloudProjectVolumeSnapshotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteCloudProjectVolumeSnapshotRequest>;
 
 export interface DeleteCloudProjectVolumeSnapshotResponse {}
-export const DeleteCloudProjectVolumeSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudProjectVolumeSnapshotResponse",
-}) as any as S.Schema<DeleteCloudProjectVolumeSnapshotResponse>;
+export const DeleteCloudProjectVolumeSnapshotResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteCloudProjectVolumeSnapshotResponse>;
 
 export interface DeleteColdArchiveContainerOnRegionRequest {
   /** Service name */
@@ -21329,11 +20663,8 @@ export const DeleteColdArchiveContainerOnRegionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteColdArchiveContainerOnRegionRequest>;
 
 export interface DeleteColdArchiveContainerOnRegionResponse {}
-export const DeleteColdArchiveContainerOnRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteColdArchiveContainerOnRegionResponse",
-}) as any as S.Schema<DeleteColdArchiveContainerOnRegionResponse>;
+export const DeleteColdArchiveContainerOnRegionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteColdArchiveContainerOnRegionResponse>;
 
 export interface DeleteContainerLifecycleConfigurationRequest {
   /** Service name */
@@ -21360,11 +20691,8 @@ export const DeleteContainerLifecycleConfigurationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteContainerLifecycleConfigurationRequest>;
 
 export interface DeleteContainerLifecycleConfigurationResponse {}
-export const DeleteContainerLifecycleConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContainerLifecycleConfigurationResponse",
-}) as any as S.Schema<DeleteContainerLifecycleConfigurationResponse>;
+export const DeleteContainerLifecycleConfigurationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteContainerLifecycleConfigurationResponse>;
 
 export interface DeleteFloatingIpOnRegionRequest {
   /** Service name */
@@ -21391,11 +20719,8 @@ export const DeleteFloatingIpOnRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFloatingIpOnRegionRequest>;
 
 export interface DeleteFloatingIpOnRegionResponse {}
-export const DeleteFloatingIpOnRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFloatingIpOnRegionResponse",
-}) as any as S.Schema<DeleteFloatingIpOnRegionResponse>;
+export const DeleteFloatingIpOnRegionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteFloatingIpOnRegionResponse>;
 
 export interface DeleteLoadBalancerRequest {
   /** Service name */
@@ -21419,9 +20744,8 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 export interface DeleteLoadBalancerResponse {}
-export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLoadBalancerResponse",
-}) as any as S.Schema<DeleteLoadBalancerResponse>;
+export const DeleteLoadBalancerResponse =
+  CancelCloudProjectResponse as any as S.Schema<DeleteLoadBalancerResponse>;
 
 export interface DeleteLoadBalancerConfigurationRequest {
   /** Service name */
@@ -21448,11 +20772,8 @@ export const DeleteLoadBalancerConfigurationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteLoadBalancerConfigurationRequest>;
 
 export interface DeleteLoadBalancerConfigurationResponse {}
-export const DeleteLoadBalancerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLoadBalancerConfigurationResponse",
-}) as any as S.Schema<DeleteLoadBalancerConfigurationResponse>;
+export const DeleteLoadBalancerConfigurationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteLoadBalancerConfigurationResponse>;
 
 export interface DeleteNetworkLoadBalancerRequest {
   /** Service name */
@@ -21476,11 +20797,8 @@ export const DeleteNetworkLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNetworkLoadBalancerRequest>;
 
 export interface DeleteNetworkLoadBalancerResponse {}
-export const DeleteNetworkLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNetworkLoadBalancerResponse",
-}) as any as S.Schema<DeleteNetworkLoadBalancerResponse>;
+export const DeleteNetworkLoadBalancerResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteNetworkLoadBalancerResponse>;
 
 export interface DeleteNetworkLoadBalancerConfigurationRequest {
   /** Service name */
@@ -21507,11 +20825,8 @@ export const DeleteNetworkLoadBalancerConfigurationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteNetworkLoadBalancerConfigurationRequest>;
 
 export interface DeleteNetworkLoadBalancerConfigurationResponse {}
-export const DeleteNetworkLoadBalancerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNetworkLoadBalancerConfigurationResponse",
-}) as any as S.Schema<DeleteNetworkLoadBalancerConfigurationResponse>;
+export const DeleteNetworkLoadBalancerConfigurationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteNetworkLoadBalancerConfigurationResponse>;
 
 export interface DeleteObjectOnContainerOnRegionRequest {
   /** Service name */
@@ -21541,11 +20856,8 @@ export const DeleteObjectOnContainerOnRegionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteObjectOnContainerOnRegionRequest>;
 
 export interface DeleteObjectOnContainerOnRegionResponse {}
-export const DeleteObjectOnContainerOnRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteObjectOnContainerOnRegionResponse",
-}) as any as S.Schema<DeleteObjectOnContainerOnRegionResponse>;
+export const DeleteObjectOnContainerOnRegionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteObjectOnContainerOnRegionResponse>;
 
 export interface DeleteObjectVersionOnContainerOnRegionRequest {
   /** Service name */
@@ -21578,11 +20890,8 @@ export const DeleteObjectVersionOnContainerOnRegionRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteObjectVersionOnContainerOnRegionRequest>;
 
 export interface DeleteObjectVersionOnContainerOnRegionResponse {}
-export const DeleteObjectVersionOnContainerOnRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteObjectVersionOnContainerOnRegionResponse",
-}) as any as S.Schema<DeleteObjectVersionOnContainerOnRegionResponse>;
+export const DeleteObjectVersionOnContainerOnRegionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeleteObjectVersionOnContainerOnRegionResponse>;
 
 export interface DetachCloudProjectRegionFloatingipRequest {
   /** Service name */
@@ -21609,11 +20918,8 @@ export const DetachCloudProjectRegionFloatingipRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DetachCloudProjectRegionFloatingipRequest>;
 
 export interface DetachCloudProjectRegionFloatingipResponse {}
-export const DetachCloudProjectRegionFloatingipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DetachCloudProjectRegionFloatingipResponse",
-}) as any as S.Schema<DetachCloudProjectRegionFloatingipResponse>;
+export const DetachCloudProjectRegionFloatingipResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DetachCloudProjectRegionFloatingipResponse>;
 
 export interface DetachCloudProjectVolumeRequest {
   /** Service name */
@@ -21664,11 +20970,8 @@ export const DeteteStorageContainerOnRegionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeteteStorageContainerOnRegionRequest>;
 
 export interface DeteteStorageContainerOnRegionResponse {}
-export const DeteteStorageContainerOnRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeteteStorageContainerOnRegionResponse",
-}) as any as S.Schema<DeteteStorageContainerOnRegionResponse>;
+export const DeteteStorageContainerOnRegionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<DeteteStorageContainerOnRegionResponse>;
 
 export interface EnableCloudProjectDatabaseClickhouseWritesRequest {
   /** Service name */
@@ -21797,9 +21100,8 @@ export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Receivers of the alert */
 export type CloudAlertingAlertEmailsList = Array<string>;
-export const CloudAlertingAlertEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudAlertingAlertEmailsList>;
+export const CloudAlertingAlertEmailsList =
+  CloudOperationRegionsList as any as S.Schema<CloudAlertingAlertEmailsList>;
 
 /** Sent Alert to client */
 export interface CloudAlertingAlert {
@@ -21846,16 +21148,12 @@ export const GetAlertingConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAlertingConfigurationsRequest>;
 
 export type GetAlertingConfigurationsResponseBodyList = Array<string>;
-export const GetAlertingConfigurationsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAlertingConfigurationsResponseBodyList>;
+export const GetAlertingConfigurationsResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<GetAlertingConfigurationsResponseBodyList>;
 
 export type GetAlertingConfigurationsResponse = GetAlertingConfigurationsResponseBodyList;
-export const GetAlertingConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetAlertingConfigurationsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetAlertingConfigurationsResponse",
-}) as any as S.Schema<GetAlertingConfigurationsResponse>;
+export const GetAlertingConfigurationsResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<GetAlertingConfigurationsResponse>;
 
 export interface GetAlertsRequest {
   /** Service name */
@@ -21873,9 +21171,8 @@ export const GetAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAlertsRequest" }) as any as S.Schema<GetAlertsRequest>;
 
 export type GetAlertsResponseBodyList = Array<number>;
-export const GetAlertsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetAlertsResponseBodyList>;
+export const GetAlertsResponseBodyList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<GetAlertsResponseBodyList>;
 
 export type GetAlertsResponse = GetAlertsResponseBodyList;
 export const GetAlertsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -22383,9 +21680,8 @@ export const GetCloudProjectAiCapabilityRegionNotebookEditorRequest = /*@__PURE_
 
 /** List of available versions of this editor */
 export type CloudProjectAiCapabilitiesNotebookEditorVersionsList = Array<string>;
-export const CloudProjectAiCapabilitiesNotebookEditorVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiCapabilitiesNotebookEditorVersionsList>;
+export const CloudProjectAiCapabilitiesNotebookEditorVersionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiCapabilitiesNotebookEditorVersionsList>;
 
 /** AI Solutions Notebook editor object */
 export interface CloudProjectAiCapabilitiesNotebookEditor {
@@ -22442,21 +21738,18 @@ export const GetCloudProjectAiCapabilityRegionNotebookFrameworkRequest = /*@__PU
 
 /** List of paths that are automatically saved */
 export type CloudProjectAiCapabilitiesNotebookFrameworkSavedPathsList = Array<string>;
-export const CloudProjectAiCapabilitiesNotebookFrameworkSavedPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiCapabilitiesNotebookFrameworkSavedPathsList>;
+export const CloudProjectAiCapabilitiesNotebookFrameworkSavedPathsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiCapabilitiesNotebookFrameworkSavedPathsList>;
 
 /** List of the QPU flavors that are supported by this framework */
 export type CloudProjectAiCapabilitiesNotebookFrameworkSupportedQpusList = Array<string>;
-export const CloudProjectAiCapabilitiesNotebookFrameworkSupportedQpusList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiCapabilitiesNotebookFrameworkSupportedQpusList>;
+export const CloudProjectAiCapabilitiesNotebookFrameworkSupportedQpusList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiCapabilitiesNotebookFrameworkSupportedQpusList>;
 
 /** List of available versions of this framework */
 export type CloudProjectAiCapabilitiesNotebookFrameworkVersionsList = Array<string>;
-export const CloudProjectAiCapabilitiesNotebookFrameworkVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiCapabilitiesNotebookFrameworkVersionsList>;
+export const CloudProjectAiCapabilitiesNotebookFrameworkVersionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiCapabilitiesNotebookFrameworkVersionsList>;
 
 /** AI Solutions Notebook framework object */
 export interface CloudProjectAiCapabilitiesNotebookFramework {
@@ -22613,9 +21906,8 @@ export const CloudProjectAiCapabilitiesPresetCapabilities = /*@__PURE__*/ S.susp
 
 /** Preset description */
 export type CloudProjectAiCapabilitiesPresetDescriptionsList = Array<string>;
-export const CloudProjectAiCapabilitiesPresetDescriptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiCapabilitiesPresetDescriptionsList>;
+export const CloudProjectAiCapabilitiesPresetDescriptionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiCapabilitiesPresetDescriptionsList>;
 
 /** AI Solutions Preset image */
 export interface CloudProjectAiCapabilitiesPresetDocumentationUrl {
@@ -23150,9 +22442,8 @@ export const GetCloudProjectCapabilityKubeLogKindRequest = /*@__PURE__*/ S.suspe
 
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-export const DbaasLogsLogKindAdditionalReturnedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
+export const DbaasLogsLogKindAdditionalReturnedFieldsList =
+  CloudOperationRegionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
 
 /** Log kind */
 export interface DbaasLogsLogKind {
@@ -23547,9 +22838,8 @@ export const GetCloudProjectCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use credits on following products */
 export type CloudCreditProductsList = Array<string>;
-export const CloudCreditProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudCreditProductsList>;
+export const CloudCreditProductsList =
+  CloudOperationRegionsList as any as S.Schema<CloudCreditProductsList>;
 
 /** Voucher validity range */
 export interface CloudCommonVoucherValidity {
@@ -23649,10 +22939,7 @@ export type GetCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseCassandraAdvancedConfigurationResponse =
   GetCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap;
@@ -24312,9 +23599,8 @@ export const GetCloudProjectDatabaseClickhouseUserRequest = /*@__PURE__*/ S.susp
 
 /** Roles the user belongs to */
 export type CloudProjectDatabaseServiceUserWithRolesRolesList = Array<string>;
-export const CloudProjectDatabaseServiceUserWithRolesRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseServiceUserWithRolesRolesList>;
+export const CloudProjectDatabaseServiceUserWithRolesRolesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseServiceUserWithRolesRolesList>;
 
 /** User definition */
 export interface CloudProjectDatabaseServiceUserWithRoles {
@@ -24388,10 +23674,7 @@ export type GetCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap =
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseGrafanaAdvancedConfigurationResponse =
   GetCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap;
@@ -24644,10 +23927,7 @@ export type GetCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse =
   GetCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap;
@@ -24725,10 +24005,7 @@ export type GetCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBody
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponse =
   GetCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap;
@@ -25747,18 +25024,12 @@ export type GetCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseM3dbAdvancedConfigurationResponse =
   GetCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap;
-export const GetCloudProjectDatabaseM3dbAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => GetCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetCloudProjectDatabaseM3dbAdvancedConfigurationResponse",
-}) as any as S.Schema<GetCloudProjectDatabaseM3dbAdvancedConfigurationResponse>;
+export const GetCloudProjectDatabaseM3dbAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<GetCloudProjectDatabaseM3dbAdvancedConfigurationResponse>;
 
 export interface GetCloudProjectDatabaseM3dbBackupRequest {
   /** Service name */
@@ -26280,18 +25551,12 @@ export type GetCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseMysqlAdvancedConfigurationResponse =
   GetCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap;
-export const GetCloudProjectDatabaseMysqlAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => GetCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetCloudProjectDatabaseMysqlAdvancedConfigurationResponse",
-}) as any as S.Schema<GetCloudProjectDatabaseMysqlAdvancedConfigurationResponse>;
+export const GetCloudProjectDatabaseMysqlAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<GetCloudProjectDatabaseMysqlAdvancedConfigurationResponse>;
 
 export interface GetCloudProjectDatabaseMysqlBackupRequest {
   /** Service name */
@@ -26622,19 +25887,12 @@ export type GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMa
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponse =
   GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap;
 export const GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponse",
-  }) as any as S.Schema<GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponse>;
+  GetCloudProjectDatabaseCassandraAdvancedConfigurationResponse as any as S.Schema<GetCloudProjectDatabaseOpensearchAdvancedConfigurationResponse>;
 
 export interface GetCloudProjectDatabaseOpensearchBackupRequest {
   /** Service name */
@@ -26913,9 +26171,8 @@ export const GetCloudProjectDatabaseOpensearchUserRequest = /*@__PURE__*/ S.susp
 /** Acls of the user */
 export type CloudProjectDatabaseOpensearchUserAclsList =
   Array<CloudProjectDatabaseOpensearchUserAcl>;
-export const CloudProjectDatabaseOpensearchUserAclsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseOpensearchUserAcl,
-) as any as S.Schema<CloudProjectDatabaseOpensearchUserAclsList>;
+export const CloudProjectDatabaseOpensearchUserAclsList =
+  CreateCloudProjectDatabaseOpensearchUserRequestAclsList as any as S.Schema<CloudProjectDatabaseOpensearchUserAclsList>;
 
 /** Opensearch user definition */
 export interface CloudProjectDatabaseOpensearchUser {
@@ -26989,19 +26246,12 @@ export type GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMa
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponse =
   GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap;
 export const GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponse",
-  }) as any as S.Schema<GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponse>;
+  GetCloudProjectDatabaseCassandraAdvancedConfigurationResponse as any as S.Schema<GetCloudProjectDatabasePostgresqlAdvancedConfigurationResponse>;
 
 export interface GetCloudProjectDatabasePostgresqlBackupRequest {
   /** Service name */
@@ -27314,18 +26564,12 @@ export type GetCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseRedisAdvancedConfigurationResponse =
   GetCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap;
-export const GetCloudProjectDatabaseRedisAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => GetCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetCloudProjectDatabaseRedisAdvancedConfigurationResponse",
-}) as any as S.Schema<GetCloudProjectDatabaseRedisAdvancedConfigurationResponse>;
+export const GetCloudProjectDatabaseRedisAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<GetCloudProjectDatabaseRedisAdvancedConfigurationResponse>;
 
 export interface GetCloudProjectDatabaseRedisBackupRequest {
   /** Service name */
@@ -27524,27 +26768,23 @@ export const GetCloudProjectDatabaseRedisUserRequest = /*@__PURE__*/ S.suspend((
 
 /** Categories of the user */
 export type CloudProjectDatabaseRedisUserCategoriesList = Array<string>;
-export const CloudProjectDatabaseRedisUserCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserCategoriesList>;
+export const CloudProjectDatabaseRedisUserCategoriesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserCategoriesList>;
 
 /** Channels of the user */
 export type CloudProjectDatabaseRedisUserChannelsList = Array<string>;
-export const CloudProjectDatabaseRedisUserChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserChannelsList>;
+export const CloudProjectDatabaseRedisUserChannelsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserChannelsList>;
 
 /** Commands of the user */
 export type CloudProjectDatabaseRedisUserCommandsList = Array<string>;
-export const CloudProjectDatabaseRedisUserCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserCommandsList>;
+export const CloudProjectDatabaseRedisUserCommandsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserCommandsList>;
 
 /** Keys of the user */
 export type CloudProjectDatabaseRedisUserKeysList = Array<string>;
-export const CloudProjectDatabaseRedisUserKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseRedisUserKeysList>;
+export const CloudProjectDatabaseRedisUserKeysList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseRedisUserKeysList>;
 
 /** Redis user definition */
 export interface CloudProjectDatabaseRedisUser {
@@ -27648,18 +26888,12 @@ export type GetCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap = 
   [key: string]: string | undefined;
 };
 export const GetCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<GetCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap>;
 
 export type GetCloudProjectDatabaseValkeyAdvancedConfigurationResponse =
   GetCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap;
-export const GetCloudProjectDatabaseValkeyAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => GetCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetCloudProjectDatabaseValkeyAdvancedConfigurationResponse",
-}) as any as S.Schema<GetCloudProjectDatabaseValkeyAdvancedConfigurationResponse>;
+export const GetCloudProjectDatabaseValkeyAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<GetCloudProjectDatabaseValkeyAdvancedConfigurationResponse>;
 
 export interface GetCloudProjectDatabaseValkeyBackupRequest {
   /** Service name */
@@ -28346,17 +27580,8 @@ export interface CloudProjectQuantumCapabilitiesRegion {
   /** Region version */
   version?: string;
 }
-export const CloudProjectQuantumCapabilitiesRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cliInstallUrl: S.optional(S.String),
-    documentationUrl: S.optional(S.String),
-    id: S.optional(S.String),
-    registryUrl: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudProjectQuantumCapabilitiesRegion",
-}) as any as S.Schema<CloudProjectQuantumCapabilitiesRegion>;
+export const CloudProjectQuantumCapabilitiesRegion =
+  CloudProjectAiCapabilitiesRegion as any as S.Schema<CloudProjectQuantumCapabilitiesRegion>;
 
 export interface GetCloudProjectQuantumCapabilityRegionQpuRequest {
   /** Service name */
@@ -28625,13 +27850,8 @@ export interface CloudLoadbalancingFlavor {
   /** Region name */
   region?: string;
 }
-export const CloudLoadbalancingFlavor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    region: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudLoadbalancingFlavor" }) as any as S.Schema<CloudLoadbalancingFlavor>;
+export const CloudLoadbalancingFlavor =
+  CloudKeymanagerSecret as any as S.Schema<CloudLoadbalancingFlavor>;
 
 export interface GetCloudProjectRegionLoadbalancingHealthMonitorRequest {
   /** Service name */
@@ -29045,9 +28265,8 @@ export const GetCloudProjectRegionNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Network subnet ids */
 export type CloudProjectNetworkSubnetIdsList = Array<string>;
-export const CloudProjectNetworkSubnetIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectNetworkSubnetIdsList>;
+export const CloudProjectNetworkSubnetIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectNetworkSubnetIdsList>;
 
 /** NetworkVisibilityEnum */
 export type CloudNetworkNetworkVisibilityEnum = "private" | "public";
@@ -29688,13 +28907,8 @@ export interface CloudRegionVolumeAttachedTo {
   /** Instance ID */
   id?: string;
 }
-export const CloudRegionVolumeAttachedTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudRegionVolumeAttachedTo",
-}) as any as S.Schema<CloudRegionVolumeAttachedTo>;
+export const CloudRegionVolumeAttachedTo =
+  CloudInstanceCreateInputFlavor as any as S.Schema<CloudRegionVolumeAttachedTo>;
 
 /** Volume attached to list */
 export type CloudRegionVolumeAttachedToList = Array<CloudRegionVolumeAttachedTo>;
@@ -29793,9 +29007,8 @@ export const GetCloudProjectServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -29935,9 +29148,8 @@ export const GetCloudProjectStorageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Origins allowed to make Cross Origin Requests */
 export type CloudStorageContainerDetailCorsList = Array<string>;
-export const CloudStorageContainerDetailCorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudStorageContainerDetailCorsList>;
+export const CloudStorageContainerDetailCorsList =
+  CloudOperationRegionsList as any as S.Schema<CloudStorageContainerDetailCorsList>;
 
 /** RetrievalStateEnum */
 export type CloudStorageRetrievalStateEnum = "sealed" | "unsealed" | "unsealing";
@@ -30113,9 +29325,8 @@ export const CloudBillingViewHourlyInstanceDetailsList = /*@__PURE__*/ S.Array(
 
 /** Savings Plan IDs */
 export type CloudBillingViewHourlyInstanceSavingsPlanIdsList = Array<string>;
-export const CloudBillingViewHourlyInstanceSavingsPlanIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudBillingViewHourlyInstanceSavingsPlanIdsList>;
+export const CloudBillingViewHourlyInstanceSavingsPlanIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudBillingViewHourlyInstanceSavingsPlanIdsList>;
 
 /** HourlyInstance */
 export interface CloudBillingViewHourlyInstance {
@@ -30329,9 +29540,8 @@ export const CloudBillingViewHourlyResourcesManagedKubernetesServiceList = /*@__
 
 /** Details about quantums */
 export type CloudBillingViewHourlyQuantumNotebookDetailsList = Array<CloudBillingViewHourlyDetail>;
-export const CloudBillingViewHourlyQuantumNotebookDetailsList = /*@__PURE__*/ S.Array(
-  CloudBillingViewHourlyDetail,
-) as any as S.Schema<CloudBillingViewHourlyQuantumNotebookDetailsList>;
+export const CloudBillingViewHourlyQuantumNotebookDetailsList =
+  CloudBillingViewHourlyManagedKubernetesServiceDetailsList as any as S.Schema<CloudBillingViewHourlyQuantumNotebookDetailsList>;
 
 /** HourlyQuantumNotebook */
 export interface CloudBillingViewHourlyQuantumNotebook {
@@ -30371,9 +29581,8 @@ export const CloudBillingViewHourlyQuantumNotebookList = /*@__PURE__*/ S.Array(
 /** Details about quantums */
 export type CloudBillingViewHourlyQuantumProcessingUnitDetailsList =
   Array<CloudBillingViewHourlyDetail>;
-export const CloudBillingViewHourlyQuantumProcessingUnitDetailsList = /*@__PURE__*/ S.Array(
-  CloudBillingViewHourlyDetail,
-) as any as S.Schema<CloudBillingViewHourlyQuantumProcessingUnitDetailsList>;
+export const CloudBillingViewHourlyQuantumProcessingUnitDetailsList =
+  CloudBillingViewHourlyManagedKubernetesServiceDetailsList as any as S.Schema<CloudBillingViewHourlyQuantumProcessingUnitDetailsList>;
 
 /** HourlyQuantumProcessingUnit */
 export interface CloudBillingViewHourlyQuantumProcessingUnit {
@@ -30390,25 +29599,14 @@ export interface CloudBillingViewHourlyQuantumProcessingUnit {
   /** Total price */
   totalPrice?: OrderPrice;
 }
-export const CloudBillingViewHourlyQuantumProcessingUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentMode: S.optional(S.NullOr(CommonRegionTypeEnum)),
-    details: S.optional(CloudBillingViewHourlyQuantumProcessingUnitDetailsList),
-    quantity: S.optional(CloudBillingViewQuantity),
-    reference: S.optional(S.String),
-    region: S.optional(S.String),
-    totalPrice: S.optional(OrderPrice),
-  }),
-).annotate({
-  identifier: "CloudBillingViewHourlyQuantumProcessingUnit",
-}) as any as S.Schema<CloudBillingViewHourlyQuantumProcessingUnit>;
+export const CloudBillingViewHourlyQuantumProcessingUnit =
+  CloudBillingViewHourlyQuantumNotebook as any as S.Schema<CloudBillingViewHourlyQuantumProcessingUnit>;
 
 /** Details about hourly quantum processing unit */
 export type CloudBillingViewHourlyQuantumProcessingUnitList =
   Array<CloudBillingViewHourlyQuantumProcessingUnit>;
-export const CloudBillingViewHourlyQuantumProcessingUnitList = /*@__PURE__*/ S.Array(
-  CloudBillingViewHourlyQuantumProcessingUnit,
-) as any as S.Schema<CloudBillingViewHourlyQuantumProcessingUnitList>;
+export const CloudBillingViewHourlyQuantumProcessingUnitList =
+  CloudBillingViewHourlyQuantumNotebookList as any as S.Schema<CloudBillingViewHourlyQuantumProcessingUnitList>;
 
 /** HourlyQuantum */
 export interface CloudBillingViewHourlyQuantum {
@@ -30456,9 +29654,8 @@ export const CloudBillingViewHourlyRancherDetailsList = /*@__PURE__*/ S.Array(
 
 /** Savings Plan IDs */
 export type CloudBillingViewHourlyRancherSavingsPlanIdsList = Array<string>;
-export const CloudBillingViewHourlyRancherSavingsPlanIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudBillingViewHourlyRancherSavingsPlanIdsList>;
+export const CloudBillingViewHourlyRancherSavingsPlanIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudBillingViewHourlyRancherSavingsPlanIdsList>;
 
 /** HourlyRancher */
 export interface CloudBillingViewHourlyRancher {
@@ -30504,14 +29701,8 @@ export interface CloudBillingViewInstanceSnapshot {
   /** Total price */
   totalPrice?: number;
 }
-export const CloudBillingViewInstanceSnapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    quantity: S.optional(CloudBillingViewQuantity),
-    totalPrice: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CloudBillingViewInstanceSnapshot",
-}) as any as S.Schema<CloudBillingViewInstanceSnapshot>;
+export const CloudBillingViewInstanceSnapshot =
+  CloudBillingViewBandwidthInstance as any as S.Schema<CloudBillingViewInstanceSnapshot>;
 
 /** VolumeSnapshot */
 export type CloudBillingViewVolumeSnapshot = CloudBillingViewInstanceSnapshot;
@@ -30550,9 +29741,8 @@ export const CloudBillingViewHourlyResourcesSnapshotList = /*@__PURE__*/ S.Array
 
 /** List of resource IDs */
 export type CloudBillingViewBandwidthStorageResourceIdsList = Array<string>;
-export const CloudBillingViewBandwidthStorageResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudBillingViewBandwidthStorageResourceIdsList>;
+export const CloudBillingViewBandwidthStorageResourceIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudBillingViewBandwidthStorageResourceIdsList>;
 
 /** BandwidthStorage */
 export interface CloudBillingViewBandwidthStorage {
@@ -30575,9 +29765,8 @@ export const CloudBillingViewBandwidthStorage = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource IDs */
 export type CloudBillingViewRetrievalFeesResourceIdsList = Array<string>;
-export const CloudBillingViewRetrievalFeesResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudBillingViewRetrievalFeesResourceIdsList>;
+export const CloudBillingViewRetrievalFeesResourceIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudBillingViewRetrievalFeesResourceIdsList>;
 
 /** RetrievalFees */
 export interface CloudBillingViewRetrievalFees {
@@ -30600,9 +29789,8 @@ export const CloudBillingViewRetrievalFees = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource IDs */
 export type CloudBillingViewStoredStorageResourceIdsList = Array<string>;
-export const CloudBillingViewStoredStorageResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudBillingViewStoredStorageResourceIdsList>;
+export const CloudBillingViewStoredStorageResourceIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudBillingViewStoredStorageResourceIdsList>;
 
 /** StoredStorage */
 export interface CloudBillingViewStoredStorage {
@@ -30613,15 +29801,8 @@ export interface CloudBillingViewStoredStorage {
   /** Total price */
   totalPrice?: number;
 }
-export const CloudBillingViewStoredStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    quantity: S.optional(CloudBillingViewQuantity),
-    resourceIds: S.optional(CloudBillingViewStoredStorageResourceIdsList),
-    totalPrice: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CloudBillingViewStoredStorage",
-}) as any as S.Schema<CloudBillingViewStoredStorage>;
+export const CloudBillingViewStoredStorage =
+  CloudBillingViewBandwidthStorage as any as S.Schema<CloudBillingViewStoredStorage>;
 
 /** StorageTypeEnum */
 export type CloudBillingViewStorageTypeEnum =
@@ -31164,9 +30345,8 @@ export const GetCloudProjectUsageForecastRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource usage forecast (billed per hour/minute/second/unit) */
 export type CloudUsageUsageForecastResourcesUsageList = Array<CloudBillingViewTypedResources>;
-export const CloudUsageUsageForecastResourcesUsageList = /*@__PURE__*/ S.Array(
-  CloudBillingViewTypedResources,
-) as any as S.Schema<CloudUsageUsageForecastResourcesUsageList>;
+export const CloudUsageUsageForecastResourcesUsageList =
+  CloudUsageUsageCurrentResourcesUsageList as any as S.Schema<CloudUsageUsageForecastResourcesUsageList>;
 
 /** UsedCredit */
 export interface CloudBillingViewUsedCredit {
@@ -31261,9 +30441,8 @@ export const GetCloudProjectUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource usage (billed per hour/minute/second/unit) */
 export type CloudUsageUsageHistoryDetailResourcesUsageList = Array<CloudBillingViewTypedResources>;
-export const CloudUsageUsageHistoryDetailResourcesUsageList = /*@__PURE__*/ S.Array(
-  CloudBillingViewTypedResources,
-) as any as S.Schema<CloudUsageUsageHistoryDetailResourcesUsageList>;
+export const CloudUsageUsageHistoryDetailResourcesUsageList =
+  CloudUsageUsageCurrentResourcesUsageList as any as S.Schema<CloudUsageUsageHistoryDetailResourcesUsageList>;
 
 /** UsageHistoryDetail */
 export interface CloudUsageUsageHistoryDetail {
@@ -31313,9 +30492,8 @@ export const GetCloudProjectUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User roles */
 export type CloudUserUserRolesList = Array<CloudRoleRole>;
-export const CloudUserUserRolesList = /*@__PURE__*/ S.Array(
-  CloudRoleRole,
-) as any as S.Schema<CloudUserUserRolesList>;
+export const CloudUserUserRolesList =
+  CloudUserUserDetailRolesList as any as S.Schema<CloudUserUserRolesList>;
 
 /** User */
 export interface CloudUserUser {
@@ -31375,11 +30553,8 @@ export interface CloudUserConfiguration {
   /** Client configuration */
   content?: string;
 }
-export const CloudUserConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudUserConfiguration" }) as any as S.Schema<CloudUserConfiguration>;
+export const CloudUserConfiguration =
+  CloudKubeKubeconfig as any as S.Schema<CloudUserConfiguration>;
 
 /** OpenrcVersionEnum */
 export type CloudUserOpenrcVersionEnum = "v2.0" | "v3";
@@ -31413,11 +30588,7 @@ export interface CloudUserOpenrc {
   /** openrc file */
   content?: string;
 }
-export const CloudUserOpenrc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudUserOpenrc" }) as any as S.Schema<CloudUserOpenrc>;
+export const CloudUserOpenrc = CloudKubeKubeconfig as any as S.Schema<CloudUserOpenrc>;
 
 export interface GetCloudProjectUserPolicyRequest {
   /** Service name */
@@ -31479,11 +30650,7 @@ export interface CloudUserRclone {
   /** rclone configuration file */
   content?: string;
 }
-export const CloudUserRclone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudUserRclone" }) as any as S.Schema<CloudUserRclone>;
+export const CloudUserRclone = CloudKubeKubeconfig as any as S.Schema<CloudUserRclone>;
 
 export interface GetCloudProjectUserRoleRequest {
   /** Service name */
@@ -32088,20 +31255,14 @@ export interface CloudInstanceInstanceSummaryVolumeValue {
   /** Volume Id */
   id?: string;
 }
-export const CloudInstanceInstanceSummaryVolumeValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CloudInstanceInstanceSummaryVolumeValue",
-}) as any as S.Schema<CloudInstanceInstanceSummaryVolumeValue>;
+export const CloudInstanceInstanceSummaryVolumeValue =
+  CloudInstanceCreateInputFlavor as any as S.Schema<CloudInstanceInstanceSummaryVolumeValue>;
 
 /** Volumes attached to the instance */
 export type CloudInstanceInstanceListAttachedVolumesList =
   Array<CloudInstanceInstanceSummaryVolumeValue>;
-export const CloudInstanceInstanceListAttachedVolumesList = /*@__PURE__*/ S.Array(
-  CloudInstanceInstanceSummaryVolumeValue,
-) as any as S.Schema<CloudInstanceInstanceListAttachedVolumesList>;
+export const CloudInstanceInstanceListAttachedVolumesList =
+  CloudRegionVolumeAttachedToList as any as S.Schema<CloudInstanceInstanceListAttachedVolumesList>;
 
 /** Backups of the instance */
 export interface CloudInstanceInstanceBackup {
@@ -32138,14 +31299,8 @@ export interface CloudInstanceInstanceFlavorSpecWithUnit {
   /** Spec value */
   value?: number;
 }
-export const CloudInstanceInstanceFlavorSpecWithUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CloudInstanceInstanceFlavorSpecWithUnit",
-}) as any as S.Schema<CloudInstanceInstanceFlavorSpecWithUnit>;
+export const CloudInstanceInstanceFlavorSpecWithUnit =
+  ComplexTypeUnitAndValueWritableLong as any as S.Schema<CloudInstanceInstanceFlavorSpecWithUnit>;
 
 /** Bandwidth of the flavor */
 export interface CloudInstanceInstanceFlavorSpecBandwidth {
@@ -32691,9 +31846,8 @@ export const GetObjectsInformationOnContainerOnRegionRequest = /*@__PURE__*/ S.s
 
 export type GetObjectsInformationOnContainerOnRegionResponseBodyList =
   Array<CloudStorageObjectList>;
-export const GetObjectsInformationOnContainerOnRegionResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudStorageObjectList,
-) as any as S.Schema<GetObjectsInformationOnContainerOnRegionResponseBodyList>;
+export const GetObjectsInformationOnContainerOnRegionResponseBodyList =
+  CloudColdArchiveContainerObjectsList as any as S.Schema<GetObjectsInformationOnContainerOnRegionResponseBodyList>;
 
 export type GetObjectsInformationOnContainerOnRegionResponse =
   GetObjectsInformationOnContainerOnRegionResponseBodyList;
@@ -32842,10 +31996,8 @@ export const IamResourceMetadataStateEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
+export const IamResourceMetadataTagsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<IamResourceMetadataTagsMap>;
 
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
@@ -32925,9 +32077,8 @@ export const CloudProjectWithIAM = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IamResourceTagFilterInput",
-}) as any as S.Schema<IamResourceTagFilterInput>;
+export const IamResourceTagFilterInput =
+  CancelCloudProjectResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type GetProjectsRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export const GetProjectsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
@@ -32953,9 +32104,8 @@ export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectsRequest" }) as any as S.Schema<GetProjectsRequest>;
 
 export type GetProjectsResponseBodyList = Array<string>;
-export const GetProjectsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectsResponseBodyList>;
+export const GetProjectsResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<GetProjectsResponseBodyList>;
 
 export type GetProjectsResponse = GetProjectsResponseBodyList;
 export const GetProjectsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -33098,9 +32248,8 @@ export const GetStorageContainersOnRegionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Container objects (deprecated). */
 export type CloudStorageContainerListObjectsList = Array<CloudStorageObjectList>;
-export const CloudStorageContainerListObjectsList = /*@__PURE__*/ S.Array(
-  CloudStorageObjectList,
-) as any as S.Schema<CloudStorageContainerListObjectsList>;
+export const CloudStorageContainerListObjectsList =
+  CloudColdArchiveContainerObjectsList as any as S.Schema<CloudStorageContainerListObjectsList>;
 
 /** Object storage container. */
 export interface CloudStorageContainerList {
@@ -33170,17 +32319,13 @@ export const ListApplicationLoadBalancerConfigurationsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListApplicationLoadBalancerConfigurationsRequest>;
 
 export type ListApplicationLoadBalancerConfigurationsResponseBodyList = Array<number>;
-export const ListApplicationLoadBalancerConfigurationsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListApplicationLoadBalancerConfigurationsResponseBodyList>;
+export const ListApplicationLoadBalancerConfigurationsResponseBodyList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<ListApplicationLoadBalancerConfigurationsResponseBodyList>;
 
 export type ListApplicationLoadBalancerConfigurationsResponse =
   ListApplicationLoadBalancerConfigurationsResponseBodyList;
-export const ListApplicationLoadBalancerConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListApplicationLoadBalancerConfigurationsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListApplicationLoadBalancerConfigurationsResponse",
-}) as any as S.Schema<ListApplicationLoadBalancerConfigurationsResponse>;
+export const ListApplicationLoadBalancerConfigurationsResponse =
+  CreateCloudProjectChangeContactResponse as any as S.Schema<ListApplicationLoadBalancerConfigurationsResponse>;
 
 export interface ListApplicationLoadBalancersRequest {
   /** Service name */
@@ -33201,16 +32346,12 @@ export const ListApplicationLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApplicationLoadBalancersRequest>;
 
 export type ListApplicationLoadBalancersResponseBodyList = Array<string>;
-export const ListApplicationLoadBalancersResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListApplicationLoadBalancersResponseBodyList>;
+export const ListApplicationLoadBalancersResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListApplicationLoadBalancersResponseBodyList>;
 
 export type ListApplicationLoadBalancersResponse = ListApplicationLoadBalancersResponseBodyList;
-export const ListApplicationLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListApplicationLoadBalancersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListApplicationLoadBalancersResponse",
-}) as any as S.Schema<ListApplicationLoadBalancersResponse>;
+export const ListApplicationLoadBalancersResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListApplicationLoadBalancersResponse>;
 
 export interface ListCertificatesRequest {
   /** Service name */
@@ -33223,14 +32364,12 @@ export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCertificatesRequest" }) as any as S.Schema<ListCertificatesRequest>;
 
 export type ListCertificatesResponseBodyList = Array<string>;
-export const ListCertificatesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCertificatesResponseBodyList>;
+export const ListCertificatesResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCertificatesResponseBodyList>;
 
 export type ListCertificatesResponse = ListCertificatesResponseBodyList;
-export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCertificatesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListCertificatesResponse" }) as any as S.Schema<ListCertificatesResponse>;
+export const ListCertificatesResponse =
+  GetProjectsResponse as any as S.Schema<ListCertificatesResponse>;
 
 /** Possible values for cloud project product name */
 export type CloudProjectProductNameEnum = "registry";
@@ -33250,15 +32389,13 @@ export const ListCloudAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Agreements to validate */
 export type CloudProjectProductAgreementsAgreementsToValidateList = Array<number>;
-export const CloudProjectProductAgreementsAgreementsToValidateList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CloudProjectProductAgreementsAgreementsToValidateList>;
+export const CloudProjectProductAgreementsAgreementsToValidateList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<CloudProjectProductAgreementsAgreementsToValidateList>;
 
 /** Agreements already validated */
 export type CloudProjectProductAgreementsAgreementsValidatedList = Array<number>;
-export const CloudProjectProductAgreementsAgreementsValidatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CloudProjectProductAgreementsAgreementsValidatedList>;
+export const CloudProjectProductAgreementsAgreementsValidatedList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<CloudProjectProductAgreementsAgreementsValidatedList>;
 
 /** Product agreements */
 export interface CloudProjectProductAgreements {
@@ -33447,9 +32584,8 @@ export const ListCloudOrderRuleAvailabilityRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Plan is available on those regions */
 export type CloudOrderRuleAvailabilityPlanRegionsList = Array<string>;
-export const CloudOrderRuleAvailabilityPlanRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudOrderRuleAvailabilityPlanRegionsList>;
+export const CloudOrderRuleAvailabilityPlanRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudOrderRuleAvailabilityPlanRegionsList>;
 
 /** Public Cloud plan availability */
 export interface CloudOrderRuleAvailabilityPlan {
@@ -33475,9 +32611,8 @@ export const CloudOrderRuleAvailabilityPlansList = /*@__PURE__*/ S.Array(
 
 /** Product is available on those regions */
 export type CloudOrderRuleAvailabilityProductRegionsList = Array<string>;
-export const CloudOrderRuleAvailabilityProductRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudOrderRuleAvailabilityProductRegionsList>;
+export const CloudOrderRuleAvailabilityProductRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudOrderRuleAvailabilityProductRegionsList>;
 
 /** Public Cloud product availability */
 export interface CloudOrderRuleAvailabilityProduct {
@@ -33533,16 +32668,12 @@ export const ListCloudProjectAclRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectAclRequest>;
 
 export type ListCloudProjectAclResponseBodyList = Array<string>;
-export const ListCloudProjectAclResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectAclResponseBodyList>;
+export const ListCloudProjectAclResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectAclResponseBodyList>;
 
 export type ListCloudProjectAclResponse = ListCloudProjectAclResponseBodyList;
-export const ListCloudProjectAclResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectAclResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectAclResponse",
-}) as any as S.Schema<ListCloudProjectAclResponse>;
+export const ListCloudProjectAclResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectAclResponse>;
 
 /** Possible value to order result */
 export type CloudProjectAiOrderEnum = "asc" | "desc";
@@ -33729,9 +32860,8 @@ export const CloudProjectAiCapabilitiesLicensingTypeEnum = S.String;
 
 /** List of available versions of this image */
 export type CloudProjectAiCapabilitiesAppImageVersionsList = Array<string>;
-export const CloudProjectAiCapabilitiesAppImageVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiCapabilitiesAppImageVersionsList>;
+export const CloudProjectAiCapabilitiesAppImageVersionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiCapabilitiesAppImageVersionsList>;
 
 /** AI Solutions App image object */
 export interface CloudProjectAiCapabilitiesAppImage {
@@ -33806,17 +32936,13 @@ export const ListCloudProjectAiCapabilityRegionDataRegionRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectAiCapabilityRegionDataRegionRequest>;
 
 export type ListCloudProjectAiCapabilityRegionDataRegionResponseBodyList = Array<string>;
-export const ListCloudProjectAiCapabilityRegionDataRegionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectAiCapabilityRegionDataRegionResponseBodyList>;
+export const ListCloudProjectAiCapabilityRegionDataRegionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectAiCapabilityRegionDataRegionResponseBodyList>;
 
 export type ListCloudProjectAiCapabilityRegionDataRegionResponse =
   ListCloudProjectAiCapabilityRegionDataRegionResponseBodyList;
-export const ListCloudProjectAiCapabilityRegionDataRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectAiCapabilityRegionDataRegionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectAiCapabilityRegionDataRegionResponse",
-}) as any as S.Schema<ListCloudProjectAiCapabilityRegionDataRegionResponse>;
+export const ListCloudProjectAiCapabilityRegionDataRegionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectAiCapabilityRegionDataRegionResponse>;
 
 export interface ListCloudProjectAiCapabilityRegionFlavorRequest {
   /** Service name */
@@ -33876,9 +33002,8 @@ export const ListCloudProjectAiCapabilityRegionJobImageRequest = /*@__PURE__*/ S
 
 /** List of available versions of this image */
 export type CloudProjectAiCapabilitiesJobImageVersionsList = Array<string>;
-export const CloudProjectAiCapabilitiesJobImageVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiCapabilitiesJobImageVersionsList>;
+export const CloudProjectAiCapabilitiesJobImageVersionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiCapabilitiesJobImageVersionsList>;
 
 /** AI Solutions Job image object */
 export interface CloudProjectAiCapabilitiesJobImage {
@@ -33895,18 +33020,8 @@ export interface CloudProjectAiCapabilitiesJobImage {
   /** List of available versions of this image */
   versions?: CloudProjectAiCapabilitiesJobImageVersionsList;
 }
-export const CloudProjectAiCapabilitiesJobImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    docUrl: S.optional(S.String),
-    id: S.optional(S.String),
-    logoUrl: S.optional(S.String),
-    name: S.optional(S.String),
-    versions: S.optional(CloudProjectAiCapabilitiesJobImageVersionsList),
-  }),
-).annotate({
-  identifier: "CloudProjectAiCapabilitiesJobImage",
-}) as any as S.Schema<CloudProjectAiCapabilitiesJobImage>;
+export const CloudProjectAiCapabilitiesJobImage =
+  CloudProjectAiCapabilitiesNotebookEditor as any as S.Schema<CloudProjectAiCapabilitiesJobImage>;
 
 export type ListCloudProjectAiCapabilityRegionJobImageResponseBodyList =
   Array<CloudProjectAiCapabilitiesJobImage>;
@@ -34056,16 +33171,12 @@ export const ListCloudProjectAiDataRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectAiDataRegionRequest>;
 
 export type ListCloudProjectAiDataRegionResponseBodyList = Array<CloudProjectAiCapabilitiesRegion>;
-export const ListCloudProjectAiDataRegionResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectAiCapabilitiesRegion,
-) as any as S.Schema<ListCloudProjectAiDataRegionResponseBodyList>;
+export const ListCloudProjectAiDataRegionResponseBodyList =
+  ListCloudProjectAiCapabilityRegionResponseBodyList as any as S.Schema<ListCloudProjectAiDataRegionResponseBodyList>;
 
 export type ListCloudProjectAiDataRegionResponse = ListCloudProjectAiDataRegionResponseBodyList;
-export const ListCloudProjectAiDataRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectAiDataRegionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectAiDataRegionResponse",
-}) as any as S.Schema<ListCloudProjectAiDataRegionResponse>;
+export const ListCloudProjectAiDataRegionResponse =
+  ListCloudProjectAiCapabilityRegionResponse as any as S.Schema<ListCloudProjectAiDataRegionResponse>;
 
 export interface ListCloudProjectAiDataRegionAliasRequest {
   /** Service name */
@@ -34441,9 +33552,8 @@ export const ListCloudProjectAiNotebookCapabilityFrameworkRequest = /*@__PURE__*
 
 /** Available versions for the framework (default is the first one) */
 export type CloudProjectAiNotebookFrameworkVersionsList = Array<string>;
-export const CloudProjectAiNotebookFrameworkVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectAiNotebookFrameworkVersionsList>;
+export const CloudProjectAiNotebookFrameworkVersionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectAiNotebookFrameworkVersionsList>;
 
 /** AI Solutions Data Object */
 export interface CloudProjectAiNotebookFramework {
@@ -34460,32 +33570,18 @@ export interface CloudProjectAiNotebookFramework {
   /** Available versions for the framework (default is the first one) */
   versions?: CloudProjectAiNotebookFrameworkVersionsList;
 }
-export const CloudProjectAiNotebookFramework = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    docUrl: S.optional(S.String),
-    id: S.optional(S.String),
-    logoUrl: S.optional(S.String),
-    name: S.optional(S.String),
-    versions: S.optional(CloudProjectAiNotebookFrameworkVersionsList),
-  }),
-).annotate({
-  identifier: "CloudProjectAiNotebookFramework",
-}) as any as S.Schema<CloudProjectAiNotebookFramework>;
+export const CloudProjectAiNotebookFramework =
+  CloudProjectAiCapabilitiesNotebookEditor as any as S.Schema<CloudProjectAiNotebookFramework>;
 
 export type ListCloudProjectAiNotebookCapabilityFrameworkResponseBodyList =
   Array<CloudProjectAiNotebookFramework>;
-export const ListCloudProjectAiNotebookCapabilityFrameworkResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectAiNotebookFramework,
-) as any as S.Schema<ListCloudProjectAiNotebookCapabilityFrameworkResponseBodyList>;
+export const ListCloudProjectAiNotebookCapabilityFrameworkResponseBodyList =
+  ListCloudProjectAiCapabilityRegionJobImageResponseBodyList as any as S.Schema<ListCloudProjectAiNotebookCapabilityFrameworkResponseBodyList>;
 
 export type ListCloudProjectAiNotebookCapabilityFrameworkResponse =
   ListCloudProjectAiNotebookCapabilityFrameworkResponseBodyList;
-export const ListCloudProjectAiNotebookCapabilityFrameworkResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectAiNotebookCapabilityFrameworkResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectAiNotebookCapabilityFrameworkResponse",
-}) as any as S.Schema<ListCloudProjectAiNotebookCapabilityFrameworkResponse>;
+export const ListCloudProjectAiNotebookCapabilityFrameworkResponse =
+  ListCloudProjectAiCapabilityRegionJobImageResponse as any as S.Schema<ListCloudProjectAiNotebookCapabilityFrameworkResponse>;
 
 export interface ListCloudProjectAiNotebookLogRequest {
   /** Service name */
@@ -34524,17 +33620,13 @@ export const ListCloudProjectAiPartnerRegionRequest = /*@__PURE__*/ S.suspend(()
 
 export type ListCloudProjectAiPartnerRegionResponseBodyList =
   Array<CloudProjectAiCapabilitiesRegion>;
-export const ListCloudProjectAiPartnerRegionResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectAiCapabilitiesRegion,
-) as any as S.Schema<ListCloudProjectAiPartnerRegionResponseBodyList>;
+export const ListCloudProjectAiPartnerRegionResponseBodyList =
+  ListCloudProjectAiCapabilityRegionResponseBodyList as any as S.Schema<ListCloudProjectAiPartnerRegionResponseBodyList>;
 
 export type ListCloudProjectAiPartnerRegionResponse =
   ListCloudProjectAiPartnerRegionResponseBodyList;
-export const ListCloudProjectAiPartnerRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectAiPartnerRegionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectAiPartnerRegionResponse",
-}) as any as S.Schema<ListCloudProjectAiPartnerRegionResponse>;
+export const ListCloudProjectAiPartnerRegionResponse =
+  ListCloudProjectAiCapabilityRegionResponse as any as S.Schema<ListCloudProjectAiPartnerRegionResponse>;
 
 export interface ListCloudProjectAiPartnerRegionPartnerRequest {
   /** Service name */
@@ -34691,9 +33783,7 @@ export const ListCloudProjectCapabilityApplicationloadbalancerRegionRequest =
 
 export type ListCloudProjectCapabilityApplicationloadbalancerRegionResponseBodyList = Array<string>;
 export const ListCloudProjectCapabilityApplicationloadbalancerRegionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectCapabilityApplicationloadbalancerRegionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectCapabilityApplicationloadbalancerRegionResponseBodyList>;
 
 export type ListCloudProjectCapabilityApplicationloadbalancerRegionResponse =
   ListCloudProjectCapabilityApplicationloadbalancerRegionResponseBodyList;
@@ -34917,17 +34007,13 @@ export const ListCloudProjectCapabilityKubeLogKindRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectCapabilityKubeLogKindRequest>;
 
 export type ListCloudProjectCapabilityKubeLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectCapabilityKubeLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectCapabilityKubeLogKindResponseBodyList>;
+export const ListCloudProjectCapabilityKubeLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectCapabilityKubeLogKindResponseBodyList>;
 
 export type ListCloudProjectCapabilityKubeLogKindResponse =
   ListCloudProjectCapabilityKubeLogKindResponseBodyList;
-export const ListCloudProjectCapabilityKubeLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectCapabilityKubeLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectCapabilityKubeLogKindResponse",
-}) as any as S.Schema<ListCloudProjectCapabilityKubeLogKindResponse>;
+export const ListCloudProjectCapabilityKubeLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectCapabilityKubeLogKindResponse>;
 
 export interface ListCloudProjectCapabilityKubeRegionsRequest {
   /** Service name */
@@ -34948,17 +34034,13 @@ export const ListCloudProjectCapabilityKubeRegionsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectCapabilityKubeRegionsRequest>;
 
 export type ListCloudProjectCapabilityKubeRegionsResponseBodyList = Array<string>;
-export const ListCloudProjectCapabilityKubeRegionsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectCapabilityKubeRegionsResponseBodyList>;
+export const ListCloudProjectCapabilityKubeRegionsResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectCapabilityKubeRegionsResponseBodyList>;
 
 export type ListCloudProjectCapabilityKubeRegionsResponse =
   ListCloudProjectCapabilityKubeRegionsResponseBodyList;
-export const ListCloudProjectCapabilityKubeRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectCapabilityKubeRegionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectCapabilityKubeRegionsResponse",
-}) as any as S.Schema<ListCloudProjectCapabilityKubeRegionsResponse>;
+export const ListCloudProjectCapabilityKubeRegionsResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectCapabilityKubeRegionsResponse>;
 
 export interface ListCloudProjectCapabilityLoadbalancerRegionRequest {
   /** Service name */
@@ -34979,17 +34061,13 @@ export const ListCloudProjectCapabilityLoadbalancerRegionRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectCapabilityLoadbalancerRegionRequest>;
 
 export type ListCloudProjectCapabilityLoadbalancerRegionResponseBodyList = Array<string>;
-export const ListCloudProjectCapabilityLoadbalancerRegionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectCapabilityLoadbalancerRegionResponseBodyList>;
+export const ListCloudProjectCapabilityLoadbalancerRegionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectCapabilityLoadbalancerRegionResponseBodyList>;
 
 export type ListCloudProjectCapabilityLoadbalancerRegionResponse =
   ListCloudProjectCapabilityLoadbalancerRegionResponseBodyList;
-export const ListCloudProjectCapabilityLoadbalancerRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectCapabilityLoadbalancerRegionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectCapabilityLoadbalancerRegionResponse",
-}) as any as S.Schema<ListCloudProjectCapabilityLoadbalancerRegionResponse>;
+export const ListCloudProjectCapabilityLoadbalancerRegionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectCapabilityLoadbalancerRegionResponse>;
 
 export interface ListCloudProjectCapabilityLoadbalancerSizeRequest {
   /** Service name */
@@ -35044,9 +34122,7 @@ export const ListCloudProjectCapabilityNetworkloadbalancerRegionRequest = /*@__P
 
 export type ListCloudProjectCapabilityNetworkloadbalancerRegionResponseBodyList = Array<string>;
 export const ListCloudProjectCapabilityNetworkloadbalancerRegionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectCapabilityNetworkloadbalancerRegionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectCapabilityNetworkloadbalancerRegionResponseBodyList>;
 
 export type ListCloudProjectCapabilityNetworkloadbalancerRegionResponse =
   ListCloudProjectCapabilityNetworkloadbalancerRegionResponseBodyList;
@@ -35079,9 +34155,7 @@ export const ListCloudProjectCapabilityNetworkloadbalancerSizeRequest = /*@__PUR
 export type ListCloudProjectCapabilityNetworkloadbalancerSizeResponseBodyList =
   Array<CloudProjectLoadbalancerSizeEnum>;
 export const ListCloudProjectCapabilityNetworkloadbalancerSizeResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectLoadbalancerSizeEnum,
-  ) as any as S.Schema<ListCloudProjectCapabilityNetworkloadbalancerSizeResponseBodyList>;
+  ListCloudProjectCapabilityApplicationloadbalancerSizeResponseBodyList as any as S.Schema<ListCloudProjectCapabilityNetworkloadbalancerSizeResponseBodyList>;
 
 export type ListCloudProjectCapabilityNetworkloadbalancerSizeResponse =
   ListCloudProjectCapabilityNetworkloadbalancerSizeResponseBodyList;
@@ -35126,9 +34200,8 @@ export const ListCloudProjectCapabilityProductAvailabilityRequest = /*@__PURE__*
 
 /** Availability zones of the region */
 export type CloudCapabilitiesAvailabilityRegionAvailabilityZonesList = Array<string>;
-export const CloudCapabilitiesAvailabilityRegionAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudCapabilitiesAvailabilityRegionAvailabilityZonesList>;
+export const CloudCapabilitiesAvailabilityRegionAvailabilityZonesList =
+  CloudOperationRegionsList as any as S.Schema<CloudCapabilitiesAvailabilityRegionAvailabilityZonesList>;
 
 /** Details about a region */
 export interface CloudCapabilitiesAvailabilityRegion {
@@ -35193,9 +34266,8 @@ export const CloudCapabilitiesAvailabilityPlansList = /*@__PURE__*/ S.Array(
 /** Product is available on those regions */
 export type CloudCapabilitiesAvailabilityProductRegionsList =
   Array<CloudCapabilitiesAvailabilityRegion>;
-export const CloudCapabilitiesAvailabilityProductRegionsList = /*@__PURE__*/ S.Array(
-  CloudCapabilitiesAvailabilityRegion,
-) as any as S.Schema<CloudCapabilitiesAvailabilityProductRegionsList>;
+export const CloudCapabilitiesAvailabilityProductRegionsList =
+  CloudCapabilitiesAvailabilityPlanRegionsList as any as S.Schema<CloudCapabilitiesAvailabilityProductRegionsList>;
 
 /** Public Cloud product availability */
 export interface CloudCapabilitiesAvailabilityProduct {
@@ -35386,20 +34458,12 @@ export const ListCloudProjectContainerRegistryIpRestrictionRegistryRequest =
 export type ListCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList =
   Array<CloudContainerRegistryIPRestrictions>;
 export const ListCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudContainerRegistryIPRestrictions,
-  ) as any as S.Schema<ListCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList>;
+  ListCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList as any as S.Schema<ListCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList>;
 
 export type ListCloudProjectContainerRegistryIpRestrictionRegistryResponse =
   ListCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList;
 export const ListCloudProjectContainerRegistryIpRestrictionRegistryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectContainerRegistryIpRestrictionRegistryResponse",
-  }) as any as S.Schema<ListCloudProjectContainerRegistryIpRestrictionRegistryResponse>;
+  ListCloudProjectContainerRegistryIpRestrictionManagementResponse as any as S.Schema<ListCloudProjectContainerRegistryIpRestrictionRegistryResponse>;
 
 export interface ListCloudProjectContainerRegistryUsersRequest {
   /** Service name */
@@ -35449,16 +34513,12 @@ export const ListCloudProjectCreditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectCreditRequest>;
 
 export type ListCloudProjectCreditResponseBodyList = Array<number>;
-export const ListCloudProjectCreditResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCloudProjectCreditResponseBodyList>;
+export const ListCloudProjectCreditResponseBodyList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<ListCloudProjectCreditResponseBodyList>;
 
 export type ListCloudProjectCreditResponse = ListCloudProjectCreditResponseBodyList;
-export const ListCloudProjectCreditResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectCreditResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectCreditResponse",
-}) as any as S.Schema<ListCloudProjectCreditResponse>;
+export const ListCloudProjectCreditResponse =
+  CreateCloudProjectChangeContactResponse as any as S.Schema<ListCloudProjectCreditResponse>;
 
 /** Possible action to restrict availabilities */
 export type CloudProjectDatabaseAvailabilityActionEnum = "fork" | "read" | "update";
@@ -35708,15 +34768,13 @@ export const ListCloudProjectDatabaseCapabilitiesRequest = /*@__PURE__*/ S.suspe
 
 /** Disks available */
 export type CloudProjectDatabaseCapabilitiesDisksList = Array<string>;
-export const CloudProjectDatabaseCapabilitiesDisksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseCapabilitiesDisksList>;
+export const CloudProjectDatabaseCapabilitiesDisksList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseCapabilitiesDisksList>;
 
 /** SSL modes for this engine */
 export type CloudProjectDatabaseCapabilitiesEngineSslModesList = Array<string>;
-export const CloudProjectDatabaseCapabilitiesEngineSslModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseCapabilitiesEngineSslModesList>;
+export const CloudProjectDatabaseCapabilitiesEngineSslModesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseCapabilitiesEngineSslModesList>;
 
 /** Possible storage strategy for an engine */
 export type CloudProjectDatabaseCapabilitiesEngineStorageStrategyEnum =
@@ -35727,9 +34785,8 @@ export const CloudProjectDatabaseCapabilitiesEngineStorageStrategyEnum = S.Strin
 
 /** Versions available for this engine */
 export type CloudProjectDatabaseCapabilitiesEngineVersionsList = Array<string>;
-export const CloudProjectDatabaseCapabilitiesEngineVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseCapabilitiesEngineVersionsList>;
+export const CloudProjectDatabaseCapabilitiesEngineVersionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseCapabilitiesEngineVersionsList>;
 
 /** Specific database engine capability */
 export interface CloudProjectDatabaseCapabilitiesEngine {
@@ -35790,9 +34847,8 @@ export const CloudProjectDatabaseCapabilitiesFlavorSpecifications = /*@__PURE__*
 
 /** Display tags */
 export type CloudProjectDatabaseCapabilitiesFlavorTagsList = Array<string>;
-export const CloudProjectDatabaseCapabilitiesFlavorTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseCapabilitiesFlavorTagsList>;
+export const CloudProjectDatabaseCapabilitiesFlavorTagsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseCapabilitiesFlavorTagsList>;
 
 /** Cloud Database flavor definition */
 export interface CloudProjectDatabaseCapabilitiesFlavor {
@@ -35864,9 +34920,8 @@ export const CloudProjectDatabaseCapabilitiesOptionsList = /*@__PURE__*/ S.Array
 
 /** Display tags */
 export type CloudProjectDatabaseCapabilitiesPlanTagsList = Array<string>;
-export const CloudProjectDatabaseCapabilitiesPlanTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseCapabilitiesPlanTagsList>;
+export const CloudProjectDatabaseCapabilitiesPlanTagsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseCapabilitiesPlanTagsList>;
 
 /** Cloud Database plan definition */
 export interface CloudProjectDatabaseCapabilitiesPlan {
@@ -35904,9 +34959,8 @@ export const CloudProjectDatabaseCapabilitiesPlansList = /*@__PURE__*/ S.Array(
 
 /** Regions available */
 export type CloudProjectDatabaseCapabilitiesRegionsList = Array<string>;
-export const CloudProjectDatabaseCapabilitiesRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseCapabilitiesRegionsList>;
+export const CloudProjectDatabaseCapabilitiesRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseCapabilitiesRegionsList>;
 
 /** Capabilities available for the databases engines on cloud projects */
 export interface CloudProjectDatabaseCapabilities {
@@ -35951,17 +35005,13 @@ export const ListCloudProjectDatabaseCassandraRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraRequest>;
 
 export type ListCloudProjectDatabaseCassandraResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraResponse =
   ListCloudProjectDatabaseCassandraResponseBodyList;
-export const ListCloudProjectDatabaseCassandraResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraResponse>;
+export const ListCloudProjectDatabaseCassandraResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraResponse>;
 
 export interface ListCloudProjectDatabaseCassandraBackupRequest {
   /** Service name */
@@ -35985,17 +35035,13 @@ export const ListCloudProjectDatabaseCassandraBackupRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraBackupRequest>;
 
 export type ListCloudProjectDatabaseCassandraBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraBackupResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraBackupResponse =
   ListCloudProjectDatabaseCassandraBackupResponseBodyList;
-export const ListCloudProjectDatabaseCassandraBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraBackupResponse>;
+export const ListCloudProjectDatabaseCassandraBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraBackupResponse>;
 
 export interface ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -36030,9 +35076,7 @@ export const CloudProjectDatabaseCapabilitiesAdvancedConfigurationPropertyTypeEn
 /** Possible values for the property if string and applicable */
 export type CloudProjectDatabaseCapabilitiesAdvancedConfigurationPropertyValuesList = Array<string>;
 export const CloudProjectDatabaseCapabilitiesAdvancedConfigurationPropertyValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudProjectDatabaseCapabilitiesAdvancedConfigurationPropertyValuesList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CloudProjectDatabaseCapabilitiesAdvancedConfigurationPropertyValuesList>;
 
 /** Specific database engine capability */
 export interface CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty {
@@ -36194,17 +35238,13 @@ export const ListCloudProjectDatabaseCassandraIntegrationRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraIntegrationRequest>;
 
 export type ListCloudProjectDatabaseCassandraIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraIntegrationResponse =
   ListCloudProjectDatabaseCassandraIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseCassandraIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraIntegrationResponse>;
+export const ListCloudProjectDatabaseCassandraIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseCassandraLogKindRequest {
   /** Service name */
@@ -36228,17 +35268,13 @@ export const ListCloudProjectDatabaseCassandraLogKindRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraLogKindRequest>;
 
 export type ListCloudProjectDatabaseCassandraLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraLogKindResponse =
   ListCloudProjectDatabaseCassandraLogKindResponseBodyList;
-export const ListCloudProjectDatabaseCassandraLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraLogKindResponse>;
+export const ListCloudProjectDatabaseCassandraLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraLogKindResponse>;
 
 export interface ListCloudProjectDatabaseCassandraLogsRequest {
   /** Service name */
@@ -36320,9 +35356,7 @@ export const ListCloudProjectDatabaseCassandraLogSubscriptionRequest = /*@__PURE
 
 export type ListCloudProjectDatabaseCassandraLogSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseCassandraLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseCassandraLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseCassandraLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraLogSubscriptionResponse =
   ListCloudProjectDatabaseCassandraLogSubscriptionResponseBodyList;
@@ -36354,17 +35388,13 @@ export const ListCloudProjectDatabaseCassandraMaintenanceRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseCassandraMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraMaintenanceResponse =
   ListCloudProjectDatabaseCassandraMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseCassandraMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraMaintenanceResponse>;
+export const ListCloudProjectDatabaseCassandraMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseCassandraMetricRequest {
   /** Service name */
@@ -36391,17 +35421,13 @@ export const ListCloudProjectDatabaseCassandraMetricRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraMetricRequest>;
 
 export type ListCloudProjectDatabaseCassandraMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraMetricResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraMetricResponse =
   ListCloudProjectDatabaseCassandraMetricResponseBodyList;
-export const ListCloudProjectDatabaseCassandraMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraMetricResponse>;
+export const ListCloudProjectDatabaseCassandraMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraMetricResponse>;
 
 export interface ListCloudProjectDatabaseCassandraNodeRequest {
   /** Service name */
@@ -36425,17 +35451,13 @@ export const ListCloudProjectDatabaseCassandraNodeRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraNodeRequest>;
 
 export type ListCloudProjectDatabaseCassandraNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraNodeResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraNodeResponse =
   ListCloudProjectDatabaseCassandraNodeResponseBodyList;
-export const ListCloudProjectDatabaseCassandraNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraNodeResponse>;
+export const ListCloudProjectDatabaseCassandraNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraNodeResponse>;
 
 export interface ListCloudProjectDatabaseCassandraPrometheusRequest {
   /** Service name */
@@ -36519,17 +35541,13 @@ export const ListCloudProjectDatabaseCassandraUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseCassandraUserRequest>;
 
 export type ListCloudProjectDatabaseCassandraUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseCassandraUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseCassandraUserResponseBodyList>;
+export const ListCloudProjectDatabaseCassandraUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseCassandraUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseCassandraUserResponse =
   ListCloudProjectDatabaseCassandraUserResponseBodyList;
-export const ListCloudProjectDatabaseCassandraUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseCassandraUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseCassandraUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseCassandraUserResponse>;
+export const ListCloudProjectDatabaseCassandraUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseCassandraUserResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseRequest {
   /** Service name */
@@ -36546,17 +35564,13 @@ export const ListCloudProjectDatabaseClickhouseRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseRequest>;
 
 export type ListCloudProjectDatabaseClickhouseResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseResponse =
   ListCloudProjectDatabaseClickhouseResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseResponse>;
+export const ListCloudProjectDatabaseClickhouseResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseBackupRequest {
   /** Service name */
@@ -36580,17 +35594,13 @@ export const ListCloudProjectDatabaseClickhouseBackupRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseBackupRequest>;
 
 export type ListCloudProjectDatabaseClickhouseBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseBackupResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseBackupResponse =
   ListCloudProjectDatabaseClickhouseBackupResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseBackupResponse>;
+export const ListCloudProjectDatabaseClickhouseBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseBackupResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsRequest {
   /** Service name */
@@ -36617,20 +35627,12 @@ export const ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsRequest =
 export type ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponseBodyList =
   Array<string>;
 export const ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponse =
   ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponseBodyList;
 export const ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityBackupRegionsResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseCapabilityIntegrationRequest {
   /** Service name */
@@ -36657,20 +35659,12 @@ export const ListCloudProjectDatabaseClickhouseCapabilityIntegrationRequest =
 export type ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponse =
   ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponseBodyList;
 export const ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseCurrentQueriesRequest {
   /** Service name */
@@ -36840,17 +35834,13 @@ export const ListCloudProjectDatabaseClickhouseDatabaseRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseDatabaseRequest>;
 
 export type ListCloudProjectDatabaseClickhouseDatabaseResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseDatabaseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseDatabaseResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseDatabaseResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseDatabaseResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseDatabaseResponse =
   ListCloudProjectDatabaseClickhouseDatabaseResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseDatabaseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseDatabaseResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseDatabaseResponse>;
+export const ListCloudProjectDatabaseClickhouseDatabaseResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseDatabaseResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseIntegrationRequest {
   /** Service name */
@@ -36874,17 +35864,13 @@ export const ListCloudProjectDatabaseClickhouseIntegrationRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseIntegrationRequest>;
 
 export type ListCloudProjectDatabaseClickhouseIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseIntegrationResponse =
   ListCloudProjectDatabaseClickhouseIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseIntegrationResponse>;
+export const ListCloudProjectDatabaseClickhouseIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseLogKindRequest {
   /** Service name */
@@ -36908,17 +35894,13 @@ export const ListCloudProjectDatabaseClickhouseLogKindRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseLogKindRequest>;
 
 export type ListCloudProjectDatabaseClickhouseLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseLogKindResponse =
   ListCloudProjectDatabaseClickhouseLogKindResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseLogKindResponse>;
+export const ListCloudProjectDatabaseClickhouseLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseLogKindResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseLogSubscriptionRequest {
   /** Service name */
@@ -36947,17 +35929,12 @@ export const ListCloudProjectDatabaseClickhouseLogSubscriptionRequest = /*@__PUR
 
 export type ListCloudProjectDatabaseClickhouseLogSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseClickhouseLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseClickhouseLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseClickhouseLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseLogSubscriptionResponse =
   ListCloudProjectDatabaseClickhouseLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseLogSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () => ListCloudProjectDatabaseClickhouseLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseClickhouseLogSubscriptionResponse =
+  ListCloudProjectDatabaseCassandraLogSubscriptionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseMaintenanceRequest {
   /** Service name */
@@ -36981,17 +35958,13 @@ export const ListCloudProjectDatabaseClickhouseMaintenanceRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseClickhouseMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseMaintenanceResponse =
   ListCloudProjectDatabaseClickhouseMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseMaintenanceResponse>;
+export const ListCloudProjectDatabaseClickhouseMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseMetricRequest {
   /** Service name */
@@ -37018,17 +35991,13 @@ export const ListCloudProjectDatabaseClickhouseMetricRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseMetricRequest>;
 
 export type ListCloudProjectDatabaseClickhouseMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseMetricResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseMetricResponse =
   ListCloudProjectDatabaseClickhouseMetricResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseMetricResponse>;
+export const ListCloudProjectDatabaseClickhouseMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseMetricResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseNodeRequest {
   /** Service name */
@@ -37052,17 +36021,13 @@ export const ListCloudProjectDatabaseClickhouseNodeRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseNodeRequest>;
 
 export type ListCloudProjectDatabaseClickhouseNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseNodeResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseNodeResponse =
   ListCloudProjectDatabaseClickhouseNodeResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseNodeResponse>;
+export const ListCloudProjectDatabaseClickhouseNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseNodeResponse>;
 
 export interface ListCloudProjectDatabaseClickhousePrometheusRequest {
   /** Service name */
@@ -37195,17 +36160,13 @@ export const ListCloudProjectDatabaseClickhouseRolesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseRolesRequest>;
 
 export type ListCloudProjectDatabaseClickhouseRolesResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseRolesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseRolesResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseRolesResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseRolesResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseRolesResponse =
   ListCloudProjectDatabaseClickhouseRolesResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseRolesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseRolesResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseRolesResponse>;
+export const ListCloudProjectDatabaseClickhouseRolesResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseRolesResponse>;
 
 export interface ListCloudProjectDatabaseClickhouseUserRequest {
   /** Service name */
@@ -37229,17 +36190,13 @@ export const ListCloudProjectDatabaseClickhouseUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabaseClickhouseUserRequest>;
 
 export type ListCloudProjectDatabaseClickhouseUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseClickhouseUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseClickhouseUserResponseBodyList>;
+export const ListCloudProjectDatabaseClickhouseUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseClickhouseUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseClickhouseUserResponse =
   ListCloudProjectDatabaseClickhouseUserResponseBodyList;
-export const ListCloudProjectDatabaseClickhouseUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseClickhouseUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseClickhouseUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseClickhouseUserResponse>;
+export const ListCloudProjectDatabaseClickhouseUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseClickhouseUserResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaRequest {
   /** Service name */
@@ -37256,17 +36213,13 @@ export const ListCloudProjectDatabaseGrafanaRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaRequest>;
 
 export type ListCloudProjectDatabaseGrafanaResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaResponse =
   ListCloudProjectDatabaseGrafanaResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaResponse>;
+export const ListCloudProjectDatabaseGrafanaResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaBackupRequest {
   /** Service name */
@@ -37290,17 +36243,13 @@ export const ListCloudProjectDatabaseGrafanaBackupRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaBackupRequest>;
 
 export type ListCloudProjectDatabaseGrafanaBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaBackupResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaBackupResponse =
   ListCloudProjectDatabaseGrafanaBackupResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaBackupResponse>;
+export const ListCloudProjectDatabaseGrafanaBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaBackupResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -37327,20 +36276,12 @@ export const ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationReque
 export type ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsRequest {
   /** Service name */
@@ -37366,20 +36307,12 @@ export const ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsRequest =
 
 export type ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponse =
   ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponseBodyList;
 export const ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityBackupRegionsResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaCapabilityIntegrationRequest {
   /** Service name */
@@ -37406,9 +36339,7 @@ export const ListCloudProjectDatabaseGrafanaCapabilityIntegrationRequest = /*@__
 export type ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponse =
   ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponseBodyList;
@@ -37441,17 +36372,13 @@ export const ListCloudProjectDatabaseGrafanaIntegrationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaIntegrationRequest>;
 
 export type ListCloudProjectDatabaseGrafanaIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaIntegrationResponse =
   ListCloudProjectDatabaseGrafanaIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaIntegrationResponse>;
+export const ListCloudProjectDatabaseGrafanaIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaLogKindRequest {
   /** Service name */
@@ -37475,17 +36402,13 @@ export const ListCloudProjectDatabaseGrafanaLogKindRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogKindRequest>;
 
 export type ListCloudProjectDatabaseGrafanaLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaLogKindResponse =
   ListCloudProjectDatabaseGrafanaLogKindResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogKindResponse>;
+export const ListCloudProjectDatabaseGrafanaLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaLogKindResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaLogsRequest {
   /** Service name */
@@ -37510,17 +36433,13 @@ export const ListCloudProjectDatabaseGrafanaLogsRequest = /*@__PURE__*/ S.suspen
 
 export type ListCloudProjectDatabaseGrafanaLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseGrafanaLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogsResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseGrafanaLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaLogsResponse =
   ListCloudProjectDatabaseGrafanaLogsResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogsResponse>;
+export const ListCloudProjectDatabaseGrafanaLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaLogsResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaLogSubscriptionRequest {
   /** Service name */
@@ -37547,17 +36466,13 @@ export const ListCloudProjectDatabaseGrafanaLogSubscriptionRequest = /*@__PURE__
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogSubscriptionRequest>;
 
 export type ListCloudProjectDatabaseGrafanaLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogSubscriptionResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaLogSubscriptionResponse =
   ListCloudProjectDatabaseGrafanaLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseGrafanaLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaMaintenanceRequest {
   /** Service name */
@@ -37581,17 +36496,13 @@ export const ListCloudProjectDatabaseGrafanaMaintenanceRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseGrafanaMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaMaintenanceResponse =
   ListCloudProjectDatabaseGrafanaMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaMaintenanceResponse>;
+export const ListCloudProjectDatabaseGrafanaMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaMetricRequest {
   /** Service name */
@@ -37618,17 +36529,13 @@ export const ListCloudProjectDatabaseGrafanaMetricRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaMetricRequest>;
 
 export type ListCloudProjectDatabaseGrafanaMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaMetricResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaMetricResponse =
   ListCloudProjectDatabaseGrafanaMetricResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaMetricResponse>;
+export const ListCloudProjectDatabaseGrafanaMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaMetricResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaNodeRequest {
   /** Service name */
@@ -37652,17 +36559,13 @@ export const ListCloudProjectDatabaseGrafanaNodeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaNodeRequest>;
 
 export type ListCloudProjectDatabaseGrafanaNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaNodeResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaNodeResponse =
   ListCloudProjectDatabaseGrafanaNodeResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaNodeResponse>;
+export const ListCloudProjectDatabaseGrafanaNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaNodeResponse>;
 
 export interface ListCloudProjectDatabaseGrafanaUserRequest {
   /** Service name */
@@ -37686,17 +36589,13 @@ export const ListCloudProjectDatabaseGrafanaUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseGrafanaUserRequest>;
 
 export type ListCloudProjectDatabaseGrafanaUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseGrafanaUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseGrafanaUserResponseBodyList>;
+export const ListCloudProjectDatabaseGrafanaUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseGrafanaUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseGrafanaUserResponse =
   ListCloudProjectDatabaseGrafanaUserResponseBodyList;
-export const ListCloudProjectDatabaseGrafanaUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseGrafanaUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseGrafanaUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseGrafanaUserResponse>;
+export const ListCloudProjectDatabaseGrafanaUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseGrafanaUserResponse>;
 
 export interface ListCloudProjectDatabaseKafkaRequest {
   /** Service name */
@@ -37711,16 +36610,12 @@ export const ListCloudProjectDatabaseKafkaRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaRequest>;
 
 export type ListCloudProjectDatabaseKafkaResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaResponse = ListCloudProjectDatabaseKafkaResponseBodyList;
-export const ListCloudProjectDatabaseKafkaResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaResponse>;
+export const ListCloudProjectDatabaseKafkaResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaResponse>;
 
 export interface ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -37747,20 +36642,12 @@ export const ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationRequest
 export type ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaCapabilityBackupRegionsRequest {
   /** Service name */
@@ -37786,18 +36673,12 @@ export const ListCloudProjectDatabaseKafkaCapabilityBackupRegionsRequest = /*@__
 
 export type ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponse =
   ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponseBodyList;
-export const ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponse>;
+export const ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityBackupRegionsResponse>;
 
 export interface ListCloudProjectDatabaseKafkaCapabilityIntegrationRequest {
   /** Service name */
@@ -37824,18 +36705,12 @@ export const ListCloudProjectDatabaseKafkaCapabilityIntegrationRequest = /*@__PU
 export type ListCloudProjectDatabaseKafkaCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseKafkaCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaCapabilityIntegrationResponse =
   ListCloudProjectDatabaseKafkaCapabilityIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseKafkaCapabilityIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseKafkaCapabilityIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaCapabilityIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityIntegrationResponse>;
+export const ListCloudProjectDatabaseKafkaCapabilityIntegrationResponse =
+  ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseKafkaCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectRequest {
   /** Service name */
@@ -37852,17 +36727,13 @@ export const ListCloudProjectDatabaseKafkaConnectRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectRequest>;
 
 export type ListCloudProjectDatabaseKafkaConnectResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaConnectResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaConnectResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectResponse =
   ListCloudProjectDatabaseKafkaConnectResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectResponse>;
+export const ListCloudProjectDatabaseKafkaConnectResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -37889,20 +36760,12 @@ export const ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfiguration
 export type ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsRequest {
   /** Service name */
@@ -37929,20 +36792,12 @@ export const ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsRequest 
 export type ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponseBodyList =
   Array<string>;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponse =
   ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponseBodyList;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityBackupRegionsResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectCapabilityConnectorRequest {
   /** Service name */
@@ -37968,20 +36823,12 @@ export const ListCloudProjectDatabaseKafkaConnectCapabilityConnectorRequest =
 
 export type ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponse =
   ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponseBodyList;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityConnectorResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectCapabilityConnectorConfigurationRequest {
   /** Service name */
@@ -38033,9 +36880,7 @@ export const CloudProjectDatabaseKafkaConnectConnectorPropertyTypeEnum = S.Strin
 export type CloudProjectDatabaseKafkaConnectCapabilitiesConnectorConfigurationPropertyValuesList =
   Array<string>;
 export const CloudProjectDatabaseKafkaConnectCapabilitiesConnectorConfigurationPropertyValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudProjectDatabaseKafkaConnectCapabilitiesConnectorConfigurationPropertyValuesList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CloudProjectDatabaseKafkaConnectCapabilitiesConnectorConfigurationPropertyValuesList>;
 
 /** KafkaConnect connector config property definition */
 export interface CloudProjectDatabaseKafkaConnectCapabilitiesConnectorConfigurationProperty {
@@ -38128,9 +36973,7 @@ export const ListCloudProjectDatabaseKafkaConnectCapabilityConnectorTransformsRe
 export type CloudProjectDatabaseKafkaConnectCapabilitiesConnectorTransformValuesList =
   Array<string>;
 export const CloudProjectDatabaseKafkaConnectCapabilitiesConnectorTransformValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudProjectDatabaseKafkaConnectCapabilitiesConnectorTransformValuesList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<CloudProjectDatabaseKafkaConnectCapabilitiesConnectorTransformValuesList>;
 
 /** KafkaConnect connector transform definition */
 export interface CloudProjectDatabaseKafkaConnectCapabilitiesConnectorTransform {
@@ -38209,20 +37052,12 @@ export const ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationRequest =
 export type ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponse =
   ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponseBodyList;
 export const ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectConnectorRequest {
   /** Service name */
@@ -38246,17 +37081,13 @@ export const ListCloudProjectDatabaseKafkaConnectConnectorRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectConnectorRequest>;
 
 export type ListCloudProjectDatabaseKafkaConnectConnectorResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaConnectConnectorResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectConnectorResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaConnectConnectorResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectConnectorResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectConnectorResponse =
   ListCloudProjectDatabaseKafkaConnectConnectorResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectConnectorResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectConnectorResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectConnectorResponse>;
+export const ListCloudProjectDatabaseKafkaConnectConnectorResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectConnectorResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectConnectorTaskRequest {
   /** Service name */
@@ -38320,9 +37151,7 @@ export const ListCloudProjectDatabaseKafkaConnectIntegrationRequest = /*@__PURE_
 
 export type ListCloudProjectDatabaseKafkaConnectIntegrationResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaConnectIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectIntegrationResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectIntegrationResponse =
   ListCloudProjectDatabaseKafkaConnectIntegrationResponseBodyList;
@@ -38354,17 +37183,13 @@ export const ListCloudProjectDatabaseKafkaConnectLogKindRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogKindRequest>;
 
 export type ListCloudProjectDatabaseKafkaConnectLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaConnectLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaConnectLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectLogKindResponse =
   ListCloudProjectDatabaseKafkaConnectLogKindResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogKindResponse>;
+export const ListCloudProjectDatabaseKafkaConnectLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogKindResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectLogsRequest {
   /** Service name */
@@ -38389,17 +37214,13 @@ export const ListCloudProjectDatabaseKafkaConnectLogsRequest = /*@__PURE__*/ S.s
 
 export type ListCloudProjectDatabaseKafkaConnectLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseKafkaConnectLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogsResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaConnectLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectLogsResponse =
   ListCloudProjectDatabaseKafkaConnectLogsResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogsResponse>;
+export const ListCloudProjectDatabaseKafkaConnectLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogsResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectLogSubscriptionRequest {
   /** Service name */
@@ -38428,18 +37249,12 @@ export const ListCloudProjectDatabaseKafkaConnectLogSubscriptionRequest = /*@__P
 
 export type ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponse =
   ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectMaintenanceRequest {
   /** Service name */
@@ -38464,17 +37279,12 @@ export const ListCloudProjectDatabaseKafkaConnectMaintenanceRequest = /*@__PURE_
 
 export type ListCloudProjectDatabaseKafkaConnectMaintenanceResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaConnectMaintenanceResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMaintenanceResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectMaintenanceResponse =
   ListCloudProjectDatabaseKafkaConnectMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMaintenanceResponse>;
+export const ListCloudProjectDatabaseKafkaConnectMaintenanceResponse =
+  ListCloudProjectDatabaseKafkaConnectIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectMetricRequest {
   /** Service name */
@@ -38501,17 +37311,13 @@ export const ListCloudProjectDatabaseKafkaConnectMetricRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMetricRequest>;
 
 export type ListCloudProjectDatabaseKafkaConnectMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaConnectMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMetricResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaConnectMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectMetricResponse =
   ListCloudProjectDatabaseKafkaConnectMetricResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMetricResponse>;
+export const ListCloudProjectDatabaseKafkaConnectMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectMetricResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectNodeRequest {
   /** Service name */
@@ -38535,17 +37341,13 @@ export const ListCloudProjectDatabaseKafkaConnectNodeRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectNodeRequest>;
 
 export type ListCloudProjectDatabaseKafkaConnectNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaConnectNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectNodeResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaConnectNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectNodeResponse =
   ListCloudProjectDatabaseKafkaConnectNodeResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectNodeResponse>;
+export const ListCloudProjectDatabaseKafkaConnectNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectNodeResponse>;
 
 export interface ListCloudProjectDatabaseKafkaConnectPrometheusRequest {
   /** Service name */
@@ -38590,17 +37392,13 @@ export const ListCloudProjectDatabaseKafkaConnectUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectUserRequest>;
 
 export type ListCloudProjectDatabaseKafkaConnectUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaConnectUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectUserResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaConnectUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaConnectUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaConnectUserResponse =
   ListCloudProjectDatabaseKafkaConnectUserResponseBodyList;
-export const ListCloudProjectDatabaseKafkaConnectUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaConnectUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaConnectUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaConnectUserResponse>;
+export const ListCloudProjectDatabaseKafkaConnectUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaConnectUserResponse>;
 
 export interface ListCloudProjectDatabaseKafkaIntegrationRequest {
   /** Service name */
@@ -38624,17 +37422,13 @@ export const ListCloudProjectDatabaseKafkaIntegrationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaIntegrationRequest>;
 
 export type ListCloudProjectDatabaseKafkaIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaIntegrationResponse =
   ListCloudProjectDatabaseKafkaIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseKafkaIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaIntegrationResponse>;
+export const ListCloudProjectDatabaseKafkaIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaLogKindRequest {
   /** Service name */
@@ -38658,17 +37452,13 @@ export const ListCloudProjectDatabaseKafkaLogKindRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaLogKindRequest>;
 
 export type ListCloudProjectDatabaseKafkaLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaLogKindResponse =
   ListCloudProjectDatabaseKafkaLogKindResponseBodyList;
-export const ListCloudProjectDatabaseKafkaLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaLogKindResponse>;
+export const ListCloudProjectDatabaseKafkaLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaLogKindResponse>;
 
 export interface ListCloudProjectDatabaseKafkaLogsRequest {
   /** Service name */
@@ -38693,17 +37483,13 @@ export const ListCloudProjectDatabaseKafkaLogsRequest = /*@__PURE__*/ S.suspend(
 
 export type ListCloudProjectDatabaseKafkaLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseKafkaLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaLogsResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaLogsResponse =
   ListCloudProjectDatabaseKafkaLogsResponseBodyList;
-export const ListCloudProjectDatabaseKafkaLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaLogsResponse>;
+export const ListCloudProjectDatabaseKafkaLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseKafkaLogsResponse>;
 
 export interface ListCloudProjectDatabaseKafkaLogSubscriptionRequest {
   /** Service name */
@@ -38730,17 +37516,13 @@ export const ListCloudProjectDatabaseKafkaLogSubscriptionRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaLogSubscriptionRequest>;
 
 export type ListCloudProjectDatabaseKafkaLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaLogSubscriptionResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaLogSubscriptionResponse =
   ListCloudProjectDatabaseKafkaLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseKafkaLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseKafkaLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMaintenanceRequest {
   /** Service name */
@@ -38764,17 +37546,13 @@ export const ListCloudProjectDatabaseKafkaMaintenanceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseKafkaMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMaintenanceResponse =
   ListCloudProjectDatabaseKafkaMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMaintenanceResponse>;
+export const ListCloudProjectDatabaseKafkaMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMetricRequest {
   /** Service name */
@@ -38801,17 +37579,13 @@ export const ListCloudProjectDatabaseKafkaMetricRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaMetricRequest>;
 
 export type ListCloudProjectDatabaseKafkaMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaMetricResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMetricResponse =
   ListCloudProjectDatabaseKafkaMetricResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMetricResponse>;
+export const ListCloudProjectDatabaseKafkaMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMetricResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerRequest {
   /** Service name */
@@ -38832,17 +37606,13 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerRequest>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaMirrorMakerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaMirrorMakerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationRequest {
   /** Service name */
@@ -38869,20 +37639,12 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationReques
 export type ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponseBodyList;
 export const ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerIntegrationRequest {
   /** Service name */
@@ -38908,18 +37670,12 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerIntegrationRequest = /*@__P
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerLogKindRequest {
   /** Service name */
@@ -38944,17 +37700,12 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerLogKindRequest = /*@__PURE_
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponse =
+  ListCloudProjectDatabaseKafkaConnectIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogKindResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerLogsRequest {
   /** Service name */
@@ -38979,17 +37730,13 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerLogsRequest = /*@__PURE__*/
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseKafkaMirrorMakerLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogsResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerLogsResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerLogsResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaMirrorMakerLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogsResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogsResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionRequest {
   /** Service name */
@@ -39018,20 +37765,12 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionRequest =
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponseBodyList;
 export const ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceRequest {
   /** Service name */
@@ -39057,18 +37796,12 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceRequest = /*@__P
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerMetricRequest {
   /** Service name */
@@ -39095,17 +37828,13 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerMetricRequest = /*@__PURE__
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMetricRequest>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaMirrorMakerMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMetricResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerMetricResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerMetricResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaMirrorMakerMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMetricResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerMetricResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerNodeRequest {
   /** Service name */
@@ -39129,17 +37858,13 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerNodeRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerNodeRequest>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaMirrorMakerNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerNodeResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerNodeResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerNodeResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaMirrorMakerNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerNodeResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerNodeResponse>;
 
 export interface ListCloudProjectDatabaseKafkaMirrorMakerPrometheusRequest {
   /** Service name */
@@ -39187,18 +37912,12 @@ export const ListCloudProjectDatabaseKafkaMirrorMakerReplicationRequest = /*@__P
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponse =
   ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponseBodyList;
-export const ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponse>;
+export const ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaMirrorMakerReplicationResponse>;
 
 export interface ListCloudProjectDatabaseKafkaNodeRequest {
   /** Service name */
@@ -39222,17 +37941,13 @@ export const ListCloudProjectDatabaseKafkaNodeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaNodeRequest>;
 
 export type ListCloudProjectDatabaseKafkaNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaNodeResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaNodeResponse =
   ListCloudProjectDatabaseKafkaNodeResponseBodyList;
-export const ListCloudProjectDatabaseKafkaNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaNodeResponse>;
+export const ListCloudProjectDatabaseKafkaNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaNodeResponse>;
 
 export interface ListCloudProjectDatabaseKafkaPermissionsRequest {
   /** Service name */
@@ -39257,21 +37972,18 @@ export const ListCloudProjectDatabaseKafkaPermissionsRequest = /*@__PURE__*/ S.s
 
 /** Names of the topic permissions (DEPRECATED) */
 export type CloudProjectDatabaseKafkaPermissionsNamesList = Array<string>;
-export const CloudProjectDatabaseKafkaPermissionsNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseKafkaPermissionsNamesList>;
+export const CloudProjectDatabaseKafkaPermissionsNamesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseKafkaPermissionsNamesList>;
 
 /** Names of the schema registry permissions */
 export type CloudProjectDatabaseKafkaPermissionsSchemaRegistryList = Array<string>;
-export const CloudProjectDatabaseKafkaPermissionsSchemaRegistryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseKafkaPermissionsSchemaRegistryList>;
+export const CloudProjectDatabaseKafkaPermissionsSchemaRegistryList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseKafkaPermissionsSchemaRegistryList>;
 
 /** Names of the topic permissions */
 export type CloudProjectDatabaseKafkaPermissionsTopicList = Array<string>;
-export const CloudProjectDatabaseKafkaPermissionsTopicList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseKafkaPermissionsTopicList>;
+export const CloudProjectDatabaseKafkaPermissionsTopicList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseKafkaPermissionsTopicList>;
 
 /** Cloud databases kafka permissions definition */
 export interface CloudProjectDatabaseKafkaPermissions {
@@ -39335,17 +38047,13 @@ export const ListCloudProjectDatabaseKafkaSchemaRegistryAclRequest = /*@__PURE__
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaSchemaRegistryAclRequest>;
 
 export type ListCloudProjectDatabaseKafkaSchemaRegistryAclResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaSchemaRegistryAclResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaSchemaRegistryAclResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaSchemaRegistryAclResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaSchemaRegistryAclResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaSchemaRegistryAclResponse =
   ListCloudProjectDatabaseKafkaSchemaRegistryAclResponseBodyList;
-export const ListCloudProjectDatabaseKafkaSchemaRegistryAclResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaSchemaRegistryAclResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaSchemaRegistryAclResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaSchemaRegistryAclResponse>;
+export const ListCloudProjectDatabaseKafkaSchemaRegistryAclResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaSchemaRegistryAclResponse>;
 
 export interface ListCloudProjectDatabaseKafkaTopicRequest {
   /** Service name */
@@ -39369,17 +38077,13 @@ export const ListCloudProjectDatabaseKafkaTopicRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaTopicRequest>;
 
 export type ListCloudProjectDatabaseKafkaTopicResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaTopicResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaTopicResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaTopicResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaTopicResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaTopicResponse =
   ListCloudProjectDatabaseKafkaTopicResponseBodyList;
-export const ListCloudProjectDatabaseKafkaTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaTopicResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaTopicResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaTopicResponse>;
+export const ListCloudProjectDatabaseKafkaTopicResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaTopicResponse>;
 
 export interface ListCloudProjectDatabaseKafkaTopicAclRequest {
   /** Service name */
@@ -39403,17 +38107,13 @@ export const ListCloudProjectDatabaseKafkaTopicAclRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaTopicAclRequest>;
 
 export type ListCloudProjectDatabaseKafkaTopicAclResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaTopicAclResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaTopicAclResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaTopicAclResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaTopicAclResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaTopicAclResponse =
   ListCloudProjectDatabaseKafkaTopicAclResponseBodyList;
-export const ListCloudProjectDatabaseKafkaTopicAclResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaTopicAclResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaTopicAclResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaTopicAclResponse>;
+export const ListCloudProjectDatabaseKafkaTopicAclResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaTopicAclResponse>;
 
 export interface ListCloudProjectDatabaseKafkaUserRequest {
   /** Service name */
@@ -39437,17 +38137,13 @@ export const ListCloudProjectDatabaseKafkaUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectDatabaseKafkaUserRequest>;
 
 export type ListCloudProjectDatabaseKafkaUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseKafkaUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseKafkaUserResponseBodyList>;
+export const ListCloudProjectDatabaseKafkaUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseKafkaUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseKafkaUserResponse =
   ListCloudProjectDatabaseKafkaUserResponseBodyList;
-export const ListCloudProjectDatabaseKafkaUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseKafkaUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseKafkaUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseKafkaUserResponse>;
+export const ListCloudProjectDatabaseKafkaUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseKafkaUserResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorRequest {
   /** Service name */
@@ -39464,17 +38160,13 @@ export const ListCloudProjectDatabaseM3aggregatorRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorRequest>;
 
 export type ListCloudProjectDatabaseM3aggregatorResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3aggregatorResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorResponseBodyList>;
+export const ListCloudProjectDatabaseM3aggregatorResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorResponse =
   ListCloudProjectDatabaseM3aggregatorResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3aggregatorResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorResponse>;
+export const ListCloudProjectDatabaseM3aggregatorResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationRequest {
   /** Service name */
@@ -39501,20 +38193,12 @@ export const ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationRequest =
 export type ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponse =
   ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponseBodyList;
 export const ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorIntegrationRequest {
   /** Service name */
@@ -39539,17 +38223,12 @@ export const ListCloudProjectDatabaseM3aggregatorIntegrationRequest = /*@__PURE_
 
 export type ListCloudProjectDatabaseM3aggregatorIntegrationResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseM3aggregatorIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorIntegrationResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorIntegrationResponse =
   ListCloudProjectDatabaseM3aggregatorIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3aggregatorIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorIntegrationResponse>;
+export const ListCloudProjectDatabaseM3aggregatorIntegrationResponse =
+  ListCloudProjectDatabaseKafkaConnectIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorLogKindRequest {
   /** Service name */
@@ -39573,17 +38252,13 @@ export const ListCloudProjectDatabaseM3aggregatorLogKindRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogKindRequest>;
 
 export type ListCloudProjectDatabaseM3aggregatorLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3aggregatorLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseM3aggregatorLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorLogKindResponse =
   ListCloudProjectDatabaseM3aggregatorLogKindResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3aggregatorLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogKindResponse>;
+export const ListCloudProjectDatabaseM3aggregatorLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogKindResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorLogsRequest {
   /** Service name */
@@ -39608,17 +38283,13 @@ export const ListCloudProjectDatabaseM3aggregatorLogsRequest = /*@__PURE__*/ S.s
 
 export type ListCloudProjectDatabaseM3aggregatorLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseM3aggregatorLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogsResponseBodyList>;
+export const ListCloudProjectDatabaseM3aggregatorLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorLogsResponse =
   ListCloudProjectDatabaseM3aggregatorLogsResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3aggregatorLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogsResponse>;
+export const ListCloudProjectDatabaseM3aggregatorLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogsResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorLogSubscriptionRequest {
   /** Service name */
@@ -39647,18 +38318,12 @@ export const ListCloudProjectDatabaseM3aggregatorLogSubscriptionRequest = /*@__P
 
 export type ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponse =
   ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorMaintenanceRequest {
   /** Service name */
@@ -39683,17 +38348,12 @@ export const ListCloudProjectDatabaseM3aggregatorMaintenanceRequest = /*@__PURE_
 
 export type ListCloudProjectDatabaseM3aggregatorMaintenanceResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseM3aggregatorMaintenanceResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMaintenanceResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorMaintenanceResponse =
   ListCloudProjectDatabaseM3aggregatorMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3aggregatorMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMaintenanceResponse>;
+export const ListCloudProjectDatabaseM3aggregatorMaintenanceResponse =
+  ListCloudProjectDatabaseKafkaConnectIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorMetricRequest {
   /** Service name */
@@ -39720,17 +38380,13 @@ export const ListCloudProjectDatabaseM3aggregatorMetricRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMetricRequest>;
 
 export type ListCloudProjectDatabaseM3aggregatorMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3aggregatorMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMetricResponseBodyList>;
+export const ListCloudProjectDatabaseM3aggregatorMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorMetricResponse =
   ListCloudProjectDatabaseM3aggregatorMetricResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3aggregatorMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMetricResponse>;
+export const ListCloudProjectDatabaseM3aggregatorMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorMetricResponse>;
 
 export interface ListCloudProjectDatabaseM3aggregatorNodeRequest {
   /** Service name */
@@ -39754,17 +38410,13 @@ export const ListCloudProjectDatabaseM3aggregatorNodeRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorNodeRequest>;
 
 export type ListCloudProjectDatabaseM3aggregatorNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3aggregatorNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorNodeResponseBodyList>;
+export const ListCloudProjectDatabaseM3aggregatorNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3aggregatorNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3aggregatorNodeResponse =
   ListCloudProjectDatabaseM3aggregatorNodeResponseBodyList;
-export const ListCloudProjectDatabaseM3aggregatorNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3aggregatorNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3aggregatorNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3aggregatorNodeResponse>;
+export const ListCloudProjectDatabaseM3aggregatorNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3aggregatorNodeResponse>;
 
 export interface ListCloudProjectDatabaseM3dbRequest {
   /** Service name */
@@ -39779,16 +38431,12 @@ export const ListCloudProjectDatabaseM3dbRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbRequest>;
 
 export type ListCloudProjectDatabaseM3dbResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbResponse = ListCloudProjectDatabaseM3dbResponseBodyList;
-export const ListCloudProjectDatabaseM3dbResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbResponse>;
+export const ListCloudProjectDatabaseM3dbResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbResponse>;
 
 export interface ListCloudProjectDatabaseM3dbBackupRequest {
   /** Service name */
@@ -39812,17 +38460,13 @@ export const ListCloudProjectDatabaseM3dbBackupRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbBackupRequest>;
 
 export type ListCloudProjectDatabaseM3dbBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbBackupResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbBackupResponse =
   ListCloudProjectDatabaseM3dbBackupResponseBodyList;
-export const ListCloudProjectDatabaseM3dbBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbBackupResponse>;
+export const ListCloudProjectDatabaseM3dbBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbBackupResponse>;
 
 export interface ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -39849,20 +38493,12 @@ export const ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationRequest 
 export type ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseM3dbCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseM3dbCapabilityIntegrationRequest {
   /** Service name */
@@ -39889,9 +38525,7 @@ export const ListCloudProjectDatabaseM3dbCapabilityIntegrationRequest = /*@__PUR
 export type ListCloudProjectDatabaseM3dbCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseM3dbCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseM3dbCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseM3dbCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbCapabilityIntegrationResponse =
   ListCloudProjectDatabaseM3dbCapabilityIntegrationResponseBodyList;
@@ -39923,17 +38557,13 @@ export const ListCloudProjectDatabaseM3dbIntegrationRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbIntegrationRequest>;
 
 export type ListCloudProjectDatabaseM3dbIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbIntegrationResponse =
   ListCloudProjectDatabaseM3dbIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseM3dbIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbIntegrationResponse>;
+export const ListCloudProjectDatabaseM3dbIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseM3dbLogKindRequest {
   /** Service name */
@@ -39957,17 +38587,13 @@ export const ListCloudProjectDatabaseM3dbLogKindRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbLogKindRequest>;
 
 export type ListCloudProjectDatabaseM3dbLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbLogKindResponse =
   ListCloudProjectDatabaseM3dbLogKindResponseBodyList;
-export const ListCloudProjectDatabaseM3dbLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbLogKindResponse>;
+export const ListCloudProjectDatabaseM3dbLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbLogKindResponse>;
 
 export interface ListCloudProjectDatabaseM3dbLogsRequest {
   /** Service name */
@@ -39992,17 +38618,13 @@ export const ListCloudProjectDatabaseM3dbLogsRequest = /*@__PURE__*/ S.suspend((
 
 export type ListCloudProjectDatabaseM3dbLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseM3dbLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbLogsResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseM3dbLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbLogsResponse =
   ListCloudProjectDatabaseM3dbLogsResponseBodyList;
-export const ListCloudProjectDatabaseM3dbLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbLogsResponse>;
+export const ListCloudProjectDatabaseM3dbLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseM3dbLogsResponse>;
 
 export interface ListCloudProjectDatabaseM3dbLogSubscriptionRequest {
   /** Service name */
@@ -40029,17 +38651,13 @@ export const ListCloudProjectDatabaseM3dbLogSubscriptionRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbLogSubscriptionRequest>;
 
 export type ListCloudProjectDatabaseM3dbLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbLogSubscriptionResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbLogSubscriptionResponse =
   ListCloudProjectDatabaseM3dbLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseM3dbLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseM3dbLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseM3dbMaintenanceRequest {
   /** Service name */
@@ -40063,17 +38681,13 @@ export const ListCloudProjectDatabaseM3dbMaintenanceRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseM3dbMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbMaintenanceResponse =
   ListCloudProjectDatabaseM3dbMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseM3dbMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbMaintenanceResponse>;
+export const ListCloudProjectDatabaseM3dbMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseM3dbMetricRequest {
   /** Service name */
@@ -40100,17 +38714,13 @@ export const ListCloudProjectDatabaseM3dbMetricRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbMetricRequest>;
 
 export type ListCloudProjectDatabaseM3dbMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbMetricResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbMetricResponse =
   ListCloudProjectDatabaseM3dbMetricResponseBodyList;
-export const ListCloudProjectDatabaseM3dbMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbMetricResponse>;
+export const ListCloudProjectDatabaseM3dbMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbMetricResponse>;
 
 export interface ListCloudProjectDatabaseM3dbNamespaceRequest {
   /** Service name */
@@ -40134,17 +38744,13 @@ export const ListCloudProjectDatabaseM3dbNamespaceRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbNamespaceRequest>;
 
 export type ListCloudProjectDatabaseM3dbNamespaceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbNamespaceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbNamespaceResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbNamespaceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbNamespaceResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbNamespaceResponse =
   ListCloudProjectDatabaseM3dbNamespaceResponseBodyList;
-export const ListCloudProjectDatabaseM3dbNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbNamespaceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbNamespaceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbNamespaceResponse>;
+export const ListCloudProjectDatabaseM3dbNamespaceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbNamespaceResponse>;
 
 export interface ListCloudProjectDatabaseM3dbNodeRequest {
   /** Service name */
@@ -40168,17 +38774,13 @@ export const ListCloudProjectDatabaseM3dbNodeRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbNodeRequest>;
 
 export type ListCloudProjectDatabaseM3dbNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbNodeResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbNodeResponse =
   ListCloudProjectDatabaseM3dbNodeResponseBodyList;
-export const ListCloudProjectDatabaseM3dbNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbNodeResponse>;
+export const ListCloudProjectDatabaseM3dbNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbNodeResponse>;
 
 export interface ListCloudProjectDatabaseM3dbUserRequest {
   /** Service name */
@@ -40202,17 +38804,13 @@ export const ListCloudProjectDatabaseM3dbUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListCloudProjectDatabaseM3dbUserRequest>;
 
 export type ListCloudProjectDatabaseM3dbUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseM3dbUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseM3dbUserResponseBodyList>;
+export const ListCloudProjectDatabaseM3dbUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseM3dbUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseM3dbUserResponse =
   ListCloudProjectDatabaseM3dbUserResponseBodyList;
-export const ListCloudProjectDatabaseM3dbUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseM3dbUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseM3dbUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseM3dbUserResponse>;
+export const ListCloudProjectDatabaseM3dbUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseM3dbUserResponse>;
 
 export interface ListCloudProjectDatabaseMongodbRequest {
   /** Service name */
@@ -40229,17 +38827,13 @@ export const ListCloudProjectDatabaseMongodbRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbRequest>;
 
 export type ListCloudProjectDatabaseMongodbResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbResponse =
   ListCloudProjectDatabaseMongodbResponseBodyList;
-export const ListCloudProjectDatabaseMongodbResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbResponse>;
+export const ListCloudProjectDatabaseMongodbResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbResponse>;
 
 export interface ListCloudProjectDatabaseMongodbBackupRequest {
   /** Service name */
@@ -40263,17 +38857,13 @@ export const ListCloudProjectDatabaseMongodbBackupRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbBackupRequest>;
 
 export type ListCloudProjectDatabaseMongodbBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbBackupResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbBackupResponse =
   ListCloudProjectDatabaseMongodbBackupResponseBodyList;
-export const ListCloudProjectDatabaseMongodbBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbBackupResponse>;
+export const ListCloudProjectDatabaseMongodbBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbBackupResponse>;
 
 export interface ListCloudProjectDatabaseMongodbLogKindRequest {
   /** Service name */
@@ -40297,17 +38887,13 @@ export const ListCloudProjectDatabaseMongodbLogKindRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbLogKindRequest>;
 
 export type ListCloudProjectDatabaseMongodbLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbLogKindResponse =
   ListCloudProjectDatabaseMongodbLogKindResponseBodyList;
-export const ListCloudProjectDatabaseMongodbLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbLogKindResponse>;
+export const ListCloudProjectDatabaseMongodbLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbLogKindResponse>;
 
 export interface ListCloudProjectDatabaseMongodbLogsRequest {
   /** Service name */
@@ -40332,17 +38918,13 @@ export const ListCloudProjectDatabaseMongodbLogsRequest = /*@__PURE__*/ S.suspen
 
 export type ListCloudProjectDatabaseMongodbLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseMongodbLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbLogsResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseMongodbLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbLogsResponse =
   ListCloudProjectDatabaseMongodbLogsResponseBodyList;
-export const ListCloudProjectDatabaseMongodbLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbLogsResponse>;
+export const ListCloudProjectDatabaseMongodbLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseMongodbLogsResponse>;
 
 export interface ListCloudProjectDatabaseMongodbLogSubscriptionRequest {
   /** Service name */
@@ -40369,17 +38951,13 @@ export const ListCloudProjectDatabaseMongodbLogSubscriptionRequest = /*@__PURE__
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbLogSubscriptionRequest>;
 
 export type ListCloudProjectDatabaseMongodbLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbLogSubscriptionResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbLogSubscriptionResponse =
   ListCloudProjectDatabaseMongodbLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseMongodbLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseMongodbLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseMongodbMaintenanceRequest {
   /** Service name */
@@ -40403,17 +38981,13 @@ export const ListCloudProjectDatabaseMongodbMaintenanceRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseMongodbMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbMaintenanceResponse =
   ListCloudProjectDatabaseMongodbMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseMongodbMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbMaintenanceResponse>;
+export const ListCloudProjectDatabaseMongodbMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseMongodbMetricRequest {
   /** Service name */
@@ -40440,17 +39014,13 @@ export const ListCloudProjectDatabaseMongodbMetricRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbMetricRequest>;
 
 export type ListCloudProjectDatabaseMongodbMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbMetricResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbMetricResponse =
   ListCloudProjectDatabaseMongodbMetricResponseBodyList;
-export const ListCloudProjectDatabaseMongodbMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbMetricResponse>;
+export const ListCloudProjectDatabaseMongodbMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbMetricResponse>;
 
 export interface ListCloudProjectDatabaseMongodbNodeRequest {
   /** Service name */
@@ -40474,17 +39044,13 @@ export const ListCloudProjectDatabaseMongodbNodeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbNodeRequest>;
 
 export type ListCloudProjectDatabaseMongodbNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbNodeResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbNodeResponse =
   ListCloudProjectDatabaseMongodbNodeResponseBodyList;
-export const ListCloudProjectDatabaseMongodbNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbNodeResponse>;
+export const ListCloudProjectDatabaseMongodbNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbNodeResponse>;
 
 export interface ListCloudProjectDatabaseMongodbRolesRequest {
   /** Service name */
@@ -40511,17 +39077,13 @@ export const ListCloudProjectDatabaseMongodbRolesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbRolesRequest>;
 
 export type ListCloudProjectDatabaseMongodbRolesResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbRolesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbRolesResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbRolesResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbRolesResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbRolesResponse =
   ListCloudProjectDatabaseMongodbRolesResponseBodyList;
-export const ListCloudProjectDatabaseMongodbRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbRolesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbRolesResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbRolesResponse>;
+export const ListCloudProjectDatabaseMongodbRolesResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbRolesResponse>;
 
 export interface ListCloudProjectDatabaseMongodbUserRequest {
   /** Service name */
@@ -40545,17 +39107,13 @@ export const ListCloudProjectDatabaseMongodbUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseMongodbUserRequest>;
 
 export type ListCloudProjectDatabaseMongodbUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMongodbUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMongodbUserResponseBodyList>;
+export const ListCloudProjectDatabaseMongodbUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMongodbUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseMongodbUserResponse =
   ListCloudProjectDatabaseMongodbUserResponseBodyList;
-export const ListCloudProjectDatabaseMongodbUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMongodbUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMongodbUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMongodbUserResponse>;
+export const ListCloudProjectDatabaseMongodbUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMongodbUserResponse>;
 
 export interface ListCloudProjectDatabaseMysqlRequest {
   /** Service name */
@@ -40570,16 +39128,12 @@ export const ListCloudProjectDatabaseMysqlRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlRequest>;
 
 export type ListCloudProjectDatabaseMysqlResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlResponse = ListCloudProjectDatabaseMysqlResponseBodyList;
-export const ListCloudProjectDatabaseMysqlResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlResponse>;
+export const ListCloudProjectDatabaseMysqlResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlResponse>;
 
 export interface ListCloudProjectDatabaseMysqlBackupRequest {
   /** Service name */
@@ -40603,17 +39157,13 @@ export const ListCloudProjectDatabaseMysqlBackupRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlBackupRequest>;
 
 export type ListCloudProjectDatabaseMysqlBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlBackupResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlBackupResponse =
   ListCloudProjectDatabaseMysqlBackupResponseBodyList;
-export const ListCloudProjectDatabaseMysqlBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlBackupResponse>;
+export const ListCloudProjectDatabaseMysqlBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlBackupResponse>;
 
 export interface ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -40640,20 +39190,12 @@ export const ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationRequest
 export type ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseMysqlCapabilityBackupRegionsRequest {
   /** Service name */
@@ -40679,18 +39221,12 @@ export const ListCloudProjectDatabaseMysqlCapabilityBackupRegionsRequest = /*@__
 
 export type ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponse =
   ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponseBodyList;
-export const ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponse>;
+export const ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityBackupRegionsResponse>;
 
 export interface ListCloudProjectDatabaseMysqlCapabilityIntegrationRequest {
   /** Service name */
@@ -40717,18 +39253,12 @@ export const ListCloudProjectDatabaseMysqlCapabilityIntegrationRequest = /*@__PU
 export type ListCloudProjectDatabaseMysqlCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseMysqlCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlCapabilityIntegrationResponse =
   ListCloudProjectDatabaseMysqlCapabilityIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseMysqlCapabilityIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseMysqlCapabilityIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlCapabilityIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityIntegrationResponse>;
+export const ListCloudProjectDatabaseMysqlCapabilityIntegrationResponse =
+  ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseMysqlCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseMysqlCurrentQueriesRequest {
   /** Service name */
@@ -40779,17 +39309,13 @@ export const ListCloudProjectDatabaseMysqlDatabaseRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlDatabaseRequest>;
 
 export type ListCloudProjectDatabaseMysqlDatabaseResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlDatabaseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlDatabaseResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlDatabaseResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlDatabaseResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlDatabaseResponse =
   ListCloudProjectDatabaseMysqlDatabaseResponseBodyList;
-export const ListCloudProjectDatabaseMysqlDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlDatabaseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlDatabaseResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlDatabaseResponse>;
+export const ListCloudProjectDatabaseMysqlDatabaseResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlDatabaseResponse>;
 
 export interface ListCloudProjectDatabaseMysqlIntegrationRequest {
   /** Service name */
@@ -40813,17 +39339,13 @@ export const ListCloudProjectDatabaseMysqlIntegrationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlIntegrationRequest>;
 
 export type ListCloudProjectDatabaseMysqlIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlIntegrationResponse =
   ListCloudProjectDatabaseMysqlIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseMysqlIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlIntegrationResponse>;
+export const ListCloudProjectDatabaseMysqlIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseMysqlLogKindRequest {
   /** Service name */
@@ -40847,17 +39369,13 @@ export const ListCloudProjectDatabaseMysqlLogKindRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlLogKindRequest>;
 
 export type ListCloudProjectDatabaseMysqlLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlLogKindResponse =
   ListCloudProjectDatabaseMysqlLogKindResponseBodyList;
-export const ListCloudProjectDatabaseMysqlLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlLogKindResponse>;
+export const ListCloudProjectDatabaseMysqlLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlLogKindResponse>;
 
 export interface ListCloudProjectDatabaseMysqlLogsRequest {
   /** Service name */
@@ -40882,17 +39400,13 @@ export const ListCloudProjectDatabaseMysqlLogsRequest = /*@__PURE__*/ S.suspend(
 
 export type ListCloudProjectDatabaseMysqlLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseMysqlLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlLogsResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseMysqlLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlLogsResponse =
   ListCloudProjectDatabaseMysqlLogsResponseBodyList;
-export const ListCloudProjectDatabaseMysqlLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlLogsResponse>;
+export const ListCloudProjectDatabaseMysqlLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseMysqlLogsResponse>;
 
 export interface ListCloudProjectDatabaseMysqlLogSubscriptionRequest {
   /** Service name */
@@ -40919,17 +39433,13 @@ export const ListCloudProjectDatabaseMysqlLogSubscriptionRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlLogSubscriptionRequest>;
 
 export type ListCloudProjectDatabaseMysqlLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlLogSubscriptionResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlLogSubscriptionResponse =
   ListCloudProjectDatabaseMysqlLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseMysqlLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseMysqlLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseMysqlMaintenanceRequest {
   /** Service name */
@@ -40953,17 +39463,13 @@ export const ListCloudProjectDatabaseMysqlMaintenanceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseMysqlMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlMaintenanceResponse =
   ListCloudProjectDatabaseMysqlMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseMysqlMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlMaintenanceResponse>;
+export const ListCloudProjectDatabaseMysqlMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseMysqlMetricRequest {
   /** Service name */
@@ -40990,17 +39496,13 @@ export const ListCloudProjectDatabaseMysqlMetricRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlMetricRequest>;
 
 export type ListCloudProjectDatabaseMysqlMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlMetricResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlMetricResponse =
   ListCloudProjectDatabaseMysqlMetricResponseBodyList;
-export const ListCloudProjectDatabaseMysqlMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlMetricResponse>;
+export const ListCloudProjectDatabaseMysqlMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlMetricResponse>;
 
 export interface ListCloudProjectDatabaseMysqlNodeRequest {
   /** Service name */
@@ -41024,17 +39526,13 @@ export const ListCloudProjectDatabaseMysqlNodeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlNodeRequest>;
 
 export type ListCloudProjectDatabaseMysqlNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlNodeResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlNodeResponse =
   ListCloudProjectDatabaseMysqlNodeResponseBodyList;
-export const ListCloudProjectDatabaseMysqlNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlNodeResponse>;
+export const ListCloudProjectDatabaseMysqlNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlNodeResponse>;
 
 export interface ListCloudProjectDatabaseMysqlPrometheusRequest {
   /** Service name */
@@ -41241,17 +39739,13 @@ export const ListCloudProjectDatabaseMysqlUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectDatabaseMysqlUserRequest>;
 
 export type ListCloudProjectDatabaseMysqlUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseMysqlUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseMysqlUserResponseBodyList>;
+export const ListCloudProjectDatabaseMysqlUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseMysqlUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseMysqlUserResponse =
   ListCloudProjectDatabaseMysqlUserResponseBodyList;
-export const ListCloudProjectDatabaseMysqlUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseMysqlUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseMysqlUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseMysqlUserResponse>;
+export const ListCloudProjectDatabaseMysqlUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseMysqlUserResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchRequest {
   /** Service name */
@@ -41268,17 +39762,13 @@ export const ListCloudProjectDatabaseOpensearchRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchRequest>;
 
 export type ListCloudProjectDatabaseOpensearchResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchResponse =
   ListCloudProjectDatabaseOpensearchResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchResponse>;
+export const ListCloudProjectDatabaseOpensearchResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchBackupRequest {
   /** Service name */
@@ -41302,17 +39792,13 @@ export const ListCloudProjectDatabaseOpensearchBackupRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchBackupRequest>;
 
 export type ListCloudProjectDatabaseOpensearchBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchBackupResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchBackupResponse =
   ListCloudProjectDatabaseOpensearchBackupResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchBackupResponse>;
+export const ListCloudProjectDatabaseOpensearchBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchBackupResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -41339,20 +39825,12 @@ export const ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationRe
 export type ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsRequest {
   /** Service name */
@@ -41379,20 +39857,12 @@ export const ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsRequest =
 export type ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponseBodyList =
   Array<string>;
 export const ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponse =
   ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponseBodyList;
 export const ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityBackupRegionsResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchCapabilityIntegrationRequest {
   /** Service name */
@@ -41419,20 +39889,12 @@ export const ListCloudProjectDatabaseOpensearchCapabilityIntegrationRequest =
 export type ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponse =
   ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponseBodyList;
 export const ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchIndexRequest {
   /** Service name */
@@ -41456,17 +39918,13 @@ export const ListCloudProjectDatabaseOpensearchIndexRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchIndexRequest>;
 
 export type ListCloudProjectDatabaseOpensearchIndexResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchIndexResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchIndexResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchIndexResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchIndexResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchIndexResponse =
   ListCloudProjectDatabaseOpensearchIndexResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchIndexResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchIndexResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchIndexResponse>;
+export const ListCloudProjectDatabaseOpensearchIndexResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchIndexResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchIntegrationRequest {
   /** Service name */
@@ -41490,17 +39948,13 @@ export const ListCloudProjectDatabaseOpensearchIntegrationRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchIntegrationRequest>;
 
 export type ListCloudProjectDatabaseOpensearchIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchIntegrationResponse =
   ListCloudProjectDatabaseOpensearchIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchIntegrationResponse>;
+export const ListCloudProjectDatabaseOpensearchIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchLogKindRequest {
   /** Service name */
@@ -41524,17 +39978,13 @@ export const ListCloudProjectDatabaseOpensearchLogKindRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchLogKindRequest>;
 
 export type ListCloudProjectDatabaseOpensearchLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchLogKindResponse =
   ListCloudProjectDatabaseOpensearchLogKindResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchLogKindResponse>;
+export const ListCloudProjectDatabaseOpensearchLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchLogKindResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchLogsRequest {
   /** Service name */
@@ -41559,17 +40009,13 @@ export const ListCloudProjectDatabaseOpensearchLogsRequest = /*@__PURE__*/ S.sus
 
 export type ListCloudProjectDatabaseOpensearchLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseOpensearchLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchLogsResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseOpensearchLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchLogsResponse =
   ListCloudProjectDatabaseOpensearchLogsResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchLogsResponse>;
+export const ListCloudProjectDatabaseOpensearchLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchLogsResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchLogSubscriptionRequest {
   /** Service name */
@@ -41598,17 +40044,12 @@ export const ListCloudProjectDatabaseOpensearchLogSubscriptionRequest = /*@__PUR
 
 export type ListCloudProjectDatabaseOpensearchLogSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseOpensearchLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseOpensearchLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseOpensearchLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchLogSubscriptionResponse =
   ListCloudProjectDatabaseOpensearchLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchLogSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () => ListCloudProjectDatabaseOpensearchLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseOpensearchLogSubscriptionResponse =
+  ListCloudProjectDatabaseCassandraLogSubscriptionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchMaintenanceRequest {
   /** Service name */
@@ -41632,17 +40073,13 @@ export const ListCloudProjectDatabaseOpensearchMaintenanceRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseOpensearchMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchMaintenanceResponse =
   ListCloudProjectDatabaseOpensearchMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchMaintenanceResponse>;
+export const ListCloudProjectDatabaseOpensearchMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchMetricRequest {
   /** Service name */
@@ -41669,17 +40106,13 @@ export const ListCloudProjectDatabaseOpensearchMetricRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchMetricRequest>;
 
 export type ListCloudProjectDatabaseOpensearchMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchMetricResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchMetricResponse =
   ListCloudProjectDatabaseOpensearchMetricResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchMetricResponse>;
+export const ListCloudProjectDatabaseOpensearchMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchMetricResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchNodeRequest {
   /** Service name */
@@ -41703,17 +40136,13 @@ export const ListCloudProjectDatabaseOpensearchNodeRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchNodeRequest>;
 
 export type ListCloudProjectDatabaseOpensearchNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchNodeResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchNodeResponse =
   ListCloudProjectDatabaseOpensearchNodeResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchNodeResponse>;
+export const ListCloudProjectDatabaseOpensearchNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchNodeResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchPatternRequest {
   /** Service name */
@@ -41737,17 +40166,13 @@ export const ListCloudProjectDatabaseOpensearchPatternRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchPatternRequest>;
 
 export type ListCloudProjectDatabaseOpensearchPatternResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchPatternResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchPatternResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchPatternResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchPatternResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchPatternResponse =
   ListCloudProjectDatabaseOpensearchPatternResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchPatternResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchPatternResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchPatternResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchPatternResponse>;
+export const ListCloudProjectDatabaseOpensearchPatternResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchPatternResponse>;
 
 export interface ListCloudProjectDatabaseOpensearchPermissionsRequest {
   /** Service name */
@@ -41772,9 +40197,8 @@ export const ListCloudProjectDatabaseOpensearchPermissionsRequest = /*@__PURE__*
 
 /** Possible values for the permissions */
 export type CloudProjectDatabaseOpensearchPermissionsNamesList = Array<string>;
-export const CloudProjectDatabaseOpensearchPermissionsNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProjectDatabaseOpensearchPermissionsNamesList>;
+export const CloudProjectDatabaseOpensearchPermissionsNamesList =
+  CloudOperationRegionsList as any as S.Schema<CloudProjectDatabaseOpensearchPermissionsNamesList>;
 
 /** Cloud database opensearch permissions definition */
 export interface CloudProjectDatabaseOpensearchPermissions {
@@ -41832,17 +40256,13 @@ export const ListCloudProjectDatabaseOpensearchUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabaseOpensearchUserRequest>;
 
 export type ListCloudProjectDatabaseOpensearchUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseOpensearchUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseOpensearchUserResponseBodyList>;
+export const ListCloudProjectDatabaseOpensearchUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseOpensearchUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseOpensearchUserResponse =
   ListCloudProjectDatabaseOpensearchUserResponseBodyList;
-export const ListCloudProjectDatabaseOpensearchUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseOpensearchUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseOpensearchUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseOpensearchUserResponse>;
+export const ListCloudProjectDatabaseOpensearchUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseOpensearchUserResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlRequest {
   /** Service name */
@@ -41859,17 +40279,13 @@ export const ListCloudProjectDatabasePostgresqlRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlRequest>;
 
 export type ListCloudProjectDatabasePostgresqlResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlResponse =
   ListCloudProjectDatabasePostgresqlResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlResponse>;
+export const ListCloudProjectDatabasePostgresqlResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlBackupRequest {
   /** Service name */
@@ -41893,17 +40309,13 @@ export const ListCloudProjectDatabasePostgresqlBackupRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlBackupRequest>;
 
 export type ListCloudProjectDatabasePostgresqlBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlBackupResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlBackupResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlBackupResponse =
   ListCloudProjectDatabasePostgresqlBackupResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlBackupResponse>;
+export const ListCloudProjectDatabasePostgresqlBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlBackupResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -41930,20 +40342,12 @@ export const ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationRe
 export type ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsRequest {
   /** Service name */
@@ -41970,20 +40374,12 @@ export const ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsRequest =
 export type ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponseBodyList =
   Array<string>;
 export const ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponse =
   ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponseBodyList;
 export const ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponse",
-  }) as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityBackupRegionsResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlCapabilityIntegrationRequest {
   /** Service name */
@@ -42010,20 +40406,12 @@ export const ListCloudProjectDatabasePostgresqlCapabilityIntegrationRequest =
 export type ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponse =
   ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponseBodyList;
 export const ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlConnectionPoolRequest {
   /** Service name */
@@ -42048,17 +40436,12 @@ export const ListCloudProjectDatabasePostgresqlConnectionPoolRequest = /*@__PURE
 
 export type ListCloudProjectDatabasePostgresqlConnectionPoolResponseBodyList = Array<string>;
 export const ListCloudProjectDatabasePostgresqlConnectionPoolResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabasePostgresqlConnectionPoolResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabasePostgresqlConnectionPoolResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlConnectionPoolResponse =
   ListCloudProjectDatabasePostgresqlConnectionPoolResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlConnectionPoolResponse = /*@__PURE__*/ S.suspend(
-  () => ListCloudProjectDatabasePostgresqlConnectionPoolResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlConnectionPoolResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlConnectionPoolResponse>;
+export const ListCloudProjectDatabasePostgresqlConnectionPoolResponse =
+  ListCloudProjectDatabaseCassandraLogSubscriptionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlConnectionPoolResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlCurrentQueriesRequest {
   /** Service name */
@@ -42109,17 +40492,13 @@ export const ListCloudProjectDatabasePostgresqlDatabaseRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlDatabaseRequest>;
 
 export type ListCloudProjectDatabasePostgresqlDatabaseResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlDatabaseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlDatabaseResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlDatabaseResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlDatabaseResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlDatabaseResponse =
   ListCloudProjectDatabasePostgresqlDatabaseResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlDatabaseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlDatabaseResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlDatabaseResponse>;
+export const ListCloudProjectDatabasePostgresqlDatabaseResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlDatabaseResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlIntegrationRequest {
   /** Service name */
@@ -42143,17 +40522,13 @@ export const ListCloudProjectDatabasePostgresqlIntegrationRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlIntegrationRequest>;
 
 export type ListCloudProjectDatabasePostgresqlIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlIntegrationResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlIntegrationResponse =
   ListCloudProjectDatabasePostgresqlIntegrationResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlIntegrationResponse>;
+export const ListCloudProjectDatabasePostgresqlIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlIntegrationResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlLogKindRequest {
   /** Service name */
@@ -42177,17 +40552,13 @@ export const ListCloudProjectDatabasePostgresqlLogKindRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlLogKindRequest>;
 
 export type ListCloudProjectDatabasePostgresqlLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlLogKindResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlLogKindResponse =
   ListCloudProjectDatabasePostgresqlLogKindResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlLogKindResponse>;
+export const ListCloudProjectDatabasePostgresqlLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlLogKindResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlLogsRequest {
   /** Service name */
@@ -42212,17 +40583,13 @@ export const ListCloudProjectDatabasePostgresqlLogsRequest = /*@__PURE__*/ S.sus
 
 export type ListCloudProjectDatabasePostgresqlLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabasePostgresqlLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlLogsResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabasePostgresqlLogsResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlLogsResponse =
   ListCloudProjectDatabasePostgresqlLogsResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlLogsResponse>;
+export const ListCloudProjectDatabasePostgresqlLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlLogsResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlLogSubscriptionRequest {
   /** Service name */
@@ -42251,17 +40618,12 @@ export const ListCloudProjectDatabasePostgresqlLogSubscriptionRequest = /*@__PUR
 
 export type ListCloudProjectDatabasePostgresqlLogSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectDatabasePostgresqlLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabasePostgresqlLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabasePostgresqlLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlLogSubscriptionResponse =
   ListCloudProjectDatabasePostgresqlLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlLogSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () => ListCloudProjectDatabasePostgresqlLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlLogSubscriptionResponse>;
+export const ListCloudProjectDatabasePostgresqlLogSubscriptionResponse =
+  ListCloudProjectDatabaseCassandraLogSubscriptionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlMaintenanceRequest {
   /** Service name */
@@ -42285,17 +40647,13 @@ export const ListCloudProjectDatabasePostgresqlMaintenanceRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlMaintenanceRequest>;
 
 export type ListCloudProjectDatabasePostgresqlMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlMaintenanceResponse =
   ListCloudProjectDatabasePostgresqlMaintenanceResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlMaintenanceResponse>;
+export const ListCloudProjectDatabasePostgresqlMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlMaintenanceResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlMetricRequest {
   /** Service name */
@@ -42322,17 +40680,13 @@ export const ListCloudProjectDatabasePostgresqlMetricRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlMetricRequest>;
 
 export type ListCloudProjectDatabasePostgresqlMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlMetricResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlMetricResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlMetricResponse =
   ListCloudProjectDatabasePostgresqlMetricResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlMetricResponse>;
+export const ListCloudProjectDatabasePostgresqlMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlMetricResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlNodeRequest {
   /** Service name */
@@ -42356,17 +40710,13 @@ export const ListCloudProjectDatabasePostgresqlNodeRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlNodeRequest>;
 
 export type ListCloudProjectDatabasePostgresqlNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlNodeResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlNodeResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlNodeResponse =
   ListCloudProjectDatabasePostgresqlNodeResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlNodeResponse>;
+export const ListCloudProjectDatabasePostgresqlNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlNodeResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlPrometheusRequest {
   /** Service name */
@@ -42559,17 +40909,13 @@ export const ListCloudProjectDatabasePostgresqlRolesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlRolesRequest>;
 
 export type ListCloudProjectDatabasePostgresqlRolesResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlRolesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlRolesResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlRolesResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlRolesResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlRolesResponse =
   ListCloudProjectDatabasePostgresqlRolesResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlRolesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlRolesResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlRolesResponse>;
+export const ListCloudProjectDatabasePostgresqlRolesResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlRolesResponse>;
 
 export interface ListCloudProjectDatabasePostgresqlUserRequest {
   /** Service name */
@@ -42593,17 +40939,13 @@ export const ListCloudProjectDatabasePostgresqlUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListCloudProjectDatabasePostgresqlUserRequest>;
 
 export type ListCloudProjectDatabasePostgresqlUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabasePostgresqlUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabasePostgresqlUserResponseBodyList>;
+export const ListCloudProjectDatabasePostgresqlUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabasePostgresqlUserResponseBodyList>;
 
 export type ListCloudProjectDatabasePostgresqlUserResponse =
   ListCloudProjectDatabasePostgresqlUserResponseBodyList;
-export const ListCloudProjectDatabasePostgresqlUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabasePostgresqlUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabasePostgresqlUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabasePostgresqlUserResponse>;
+export const ListCloudProjectDatabasePostgresqlUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabasePostgresqlUserResponse>;
 
 export interface ListCloudProjectDatabaseRedisRequest {
   /** Service name */
@@ -42618,16 +40960,12 @@ export const ListCloudProjectDatabaseRedisRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListCloudProjectDatabaseRedisRequest>;
 
 export type ListCloudProjectDatabaseRedisResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisResponseBodyList>;
+export const ListCloudProjectDatabaseRedisResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisResponse = ListCloudProjectDatabaseRedisResponseBodyList;
-export const ListCloudProjectDatabaseRedisResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisResponse>;
+export const ListCloudProjectDatabaseRedisResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisResponse>;
 
 export interface ListCloudProjectDatabaseRedisBackupRequest {
   /** Service name */
@@ -42651,17 +40989,13 @@ export const ListCloudProjectDatabaseRedisBackupRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseRedisBackupRequest>;
 
 export type ListCloudProjectDatabaseRedisBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisBackupResponseBodyList>;
+export const ListCloudProjectDatabaseRedisBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisBackupResponse =
   ListCloudProjectDatabaseRedisBackupResponseBodyList;
-export const ListCloudProjectDatabaseRedisBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisBackupResponse>;
+export const ListCloudProjectDatabaseRedisBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisBackupResponse>;
 
 export interface ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -42688,20 +41022,12 @@ export const ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationRequest
 export type ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseRedisCapabilityCategoriesRequest {
   /** Service name */
@@ -42727,17 +41053,12 @@ export const ListCloudProjectDatabaseRedisCapabilityCategoriesRequest = /*@__PUR
 
 export type ListCloudProjectDatabaseRedisCapabilityCategoriesResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseRedisCapabilityCategoriesResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCategoriesResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCategoriesResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisCapabilityCategoriesResponse =
   ListCloudProjectDatabaseRedisCapabilityCategoriesResponseBodyList;
-export const ListCloudProjectDatabaseRedisCapabilityCategoriesResponse = /*@__PURE__*/ S.suspend(
-  () => ListCloudProjectDatabaseRedisCapabilityCategoriesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisCapabilityCategoriesResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCategoriesResponse>;
+export const ListCloudProjectDatabaseRedisCapabilityCategoriesResponse =
+  ListCloudProjectDatabaseCassandraLogSubscriptionResponse as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCategoriesResponse>;
 
 export interface ListCloudProjectDatabaseRedisCapabilityCommandsRequest {
   /** Service name */
@@ -42762,17 +41083,12 @@ export const ListCloudProjectDatabaseRedisCapabilityCommandsRequest = /*@__PURE_
 
 export type ListCloudProjectDatabaseRedisCapabilityCommandsResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseRedisCapabilityCommandsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCommandsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCommandsResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisCapabilityCommandsResponse =
   ListCloudProjectDatabaseRedisCapabilityCommandsResponseBodyList;
-export const ListCloudProjectDatabaseRedisCapabilityCommandsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisCapabilityCommandsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisCapabilityCommandsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCommandsResponse>;
+export const ListCloudProjectDatabaseRedisCapabilityCommandsResponse =
+  ListCloudProjectDatabaseKafkaConnectIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityCommandsResponse>;
 
 export interface ListCloudProjectDatabaseRedisCapabilityIntegrationRequest {
   /** Service name */
@@ -42799,18 +41115,12 @@ export const ListCloudProjectDatabaseRedisCapabilityIntegrationRequest = /*@__PU
 export type ListCloudProjectDatabaseRedisCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseRedisCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisCapabilityIntegrationResponse =
   ListCloudProjectDatabaseRedisCapabilityIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseRedisCapabilityIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseRedisCapabilityIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisCapabilityIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityIntegrationResponse>;
+export const ListCloudProjectDatabaseRedisCapabilityIntegrationResponse =
+  ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseRedisCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseRedisIntegrationRequest {
   /** Service name */
@@ -42834,17 +41144,13 @@ export const ListCloudProjectDatabaseRedisIntegrationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseRedisIntegrationRequest>;
 
 export type ListCloudProjectDatabaseRedisIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseRedisIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisIntegrationResponse =
   ListCloudProjectDatabaseRedisIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseRedisIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisIntegrationResponse>;
+export const ListCloudProjectDatabaseRedisIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseRedisLogKindRequest {
   /** Service name */
@@ -42868,17 +41174,13 @@ export const ListCloudProjectDatabaseRedisLogKindRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseRedisLogKindRequest>;
 
 export type ListCloudProjectDatabaseRedisLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseRedisLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisLogKindResponse =
   ListCloudProjectDatabaseRedisLogKindResponseBodyList;
-export const ListCloudProjectDatabaseRedisLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisLogKindResponse>;
+export const ListCloudProjectDatabaseRedisLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisLogKindResponse>;
 
 export interface ListCloudProjectDatabaseRedisLogsRequest {
   /** Service name */
@@ -42903,17 +41205,13 @@ export const ListCloudProjectDatabaseRedisLogsRequest = /*@__PURE__*/ S.suspend(
 
 export type ListCloudProjectDatabaseRedisLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseRedisLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseRedisLogsResponseBodyList>;
+export const ListCloudProjectDatabaseRedisLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseRedisLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisLogsResponse =
   ListCloudProjectDatabaseRedisLogsResponseBodyList;
-export const ListCloudProjectDatabaseRedisLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisLogsResponse>;
+export const ListCloudProjectDatabaseRedisLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseRedisLogsResponse>;
 
 export interface ListCloudProjectDatabaseRedisLogSubscriptionRequest {
   /** Service name */
@@ -42940,17 +41238,13 @@ export const ListCloudProjectDatabaseRedisLogSubscriptionRequest = /*@__PURE__*/
 }) as any as S.Schema<ListCloudProjectDatabaseRedisLogSubscriptionRequest>;
 
 export type ListCloudProjectDatabaseRedisLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisLogSubscriptionResponseBodyList>;
+export const ListCloudProjectDatabaseRedisLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisLogSubscriptionResponse =
   ListCloudProjectDatabaseRedisLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseRedisLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseRedisLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseRedisMaintenanceRequest {
   /** Service name */
@@ -42974,17 +41268,13 @@ export const ListCloudProjectDatabaseRedisMaintenanceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCloudProjectDatabaseRedisMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseRedisMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseRedisMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisMaintenanceResponse =
   ListCloudProjectDatabaseRedisMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseRedisMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisMaintenanceResponse>;
+export const ListCloudProjectDatabaseRedisMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseRedisMetricRequest {
   /** Service name */
@@ -43011,17 +41301,13 @@ export const ListCloudProjectDatabaseRedisMetricRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectDatabaseRedisMetricRequest>;
 
 export type ListCloudProjectDatabaseRedisMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisMetricResponseBodyList>;
+export const ListCloudProjectDatabaseRedisMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisMetricResponse =
   ListCloudProjectDatabaseRedisMetricResponseBodyList;
-export const ListCloudProjectDatabaseRedisMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisMetricResponse>;
+export const ListCloudProjectDatabaseRedisMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisMetricResponse>;
 
 export interface ListCloudProjectDatabaseRedisNodeRequest {
   /** Service name */
@@ -43045,17 +41331,13 @@ export const ListCloudProjectDatabaseRedisNodeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectDatabaseRedisNodeRequest>;
 
 export type ListCloudProjectDatabaseRedisNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisNodeResponseBodyList>;
+export const ListCloudProjectDatabaseRedisNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisNodeResponse =
   ListCloudProjectDatabaseRedisNodeResponseBodyList;
-export const ListCloudProjectDatabaseRedisNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisNodeResponse>;
+export const ListCloudProjectDatabaseRedisNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisNodeResponse>;
 
 export interface ListCloudProjectDatabaseRedisPrometheusRequest {
   /** Service name */
@@ -43100,17 +41382,13 @@ export const ListCloudProjectDatabaseRedisUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectDatabaseRedisUserRequest>;
 
 export type ListCloudProjectDatabaseRedisUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseRedisUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseRedisUserResponseBodyList>;
+export const ListCloudProjectDatabaseRedisUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseRedisUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseRedisUserResponse =
   ListCloudProjectDatabaseRedisUserResponseBodyList;
-export const ListCloudProjectDatabaseRedisUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseRedisUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseRedisUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseRedisUserResponse>;
+export const ListCloudProjectDatabaseRedisUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseRedisUserResponse>;
 
 export interface ListCloudProjectDatabaseServiceRequest {
   /** Service name */
@@ -43130,17 +41408,13 @@ export const ListCloudProjectDatabaseServiceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListCloudProjectDatabaseServiceRequest>;
 
 export type ListCloudProjectDatabaseServiceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseServiceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseServiceResponseBodyList>;
+export const ListCloudProjectDatabaseServiceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseServiceResponseBodyList>;
 
 export type ListCloudProjectDatabaseServiceResponse =
   ListCloudProjectDatabaseServiceResponseBodyList;
-export const ListCloudProjectDatabaseServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseServiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseServiceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseServiceResponse>;
+export const ListCloudProjectDatabaseServiceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseServiceResponse>;
 
 export interface ListCloudProjectDatabaseValkeyRequest {
   /** Service name */
@@ -43157,16 +41431,12 @@ export const ListCloudProjectDatabaseValkeyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyRequest>;
 
 export type ListCloudProjectDatabaseValkeyResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyResponse = ListCloudProjectDatabaseValkeyResponseBodyList;
-export const ListCloudProjectDatabaseValkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyResponse>;
+export const ListCloudProjectDatabaseValkeyResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyResponse>;
 
 export interface ListCloudProjectDatabaseValkeyBackupRequest {
   /** Service name */
@@ -43190,17 +41460,13 @@ export const ListCloudProjectDatabaseValkeyBackupRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyBackupRequest>;
 
 export type ListCloudProjectDatabaseValkeyBackupResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyBackupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyBackupResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyBackupResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyBackupResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyBackupResponse =
   ListCloudProjectDatabaseValkeyBackupResponseBodyList;
-export const ListCloudProjectDatabaseValkeyBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyBackupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyBackupResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyBackupResponse>;
+export const ListCloudProjectDatabaseValkeyBackupResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyBackupResponse>;
 
 export interface ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationRequest {
   /** Service name */
@@ -43227,20 +41493,12 @@ export const ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationReques
 export type ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty>;
 export const ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesAdvancedConfigurationProperty,
-  ) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponse =
   ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponseBodyList;
 export const ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponse",
-  }) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponse>;
+  ListCloudProjectDatabaseCassandraCapabilityAdvancedConfigurationResponse as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityAdvancedConfigurationResponse>;
 
 export interface ListCloudProjectDatabaseValkeyCapabilityBackupRegionsRequest {
   /** Service name */
@@ -43266,9 +41524,7 @@ export const ListCloudProjectDatabaseValkeyCapabilityBackupRegionsRequest = /*@_
 
 export type ListCloudProjectDatabaseValkeyCapabilityBackupRegionsResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseValkeyCapabilityBackupRegionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityBackupRegionsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityBackupRegionsResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyCapabilityBackupRegionsResponse =
   ListCloudProjectDatabaseValkeyCapabilityBackupRegionsResponseBodyList;
@@ -43303,18 +41559,12 @@ export const ListCloudProjectDatabaseValkeyCapabilityCategoriesRequest = /*@__PU
 
 export type ListCloudProjectDatabaseValkeyCapabilityCategoriesResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseValkeyCapabilityCategoriesResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCategoriesResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCategoriesResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyCapabilityCategoriesResponse =
   ListCloudProjectDatabaseValkeyCapabilityCategoriesResponseBodyList;
-export const ListCloudProjectDatabaseValkeyCapabilityCategoriesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseValkeyCapabilityCategoriesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyCapabilityCategoriesResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCategoriesResponse>;
+export const ListCloudProjectDatabaseValkeyCapabilityCategoriesResponse =
+  ListCloudProjectCapabilityNetworkloadbalancerRegionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCategoriesResponse>;
 
 export interface ListCloudProjectDatabaseValkeyCapabilityCommandsRequest {
   /** Service name */
@@ -43339,17 +41589,12 @@ export const ListCloudProjectDatabaseValkeyCapabilityCommandsRequest = /*@__PURE
 
 export type ListCloudProjectDatabaseValkeyCapabilityCommandsResponseBodyList = Array<string>;
 export const ListCloudProjectDatabaseValkeyCapabilityCommandsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCommandsResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCommandsResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyCapabilityCommandsResponse =
   ListCloudProjectDatabaseValkeyCapabilityCommandsResponseBodyList;
-export const ListCloudProjectDatabaseValkeyCapabilityCommandsResponse = /*@__PURE__*/ S.suspend(
-  () => ListCloudProjectDatabaseValkeyCapabilityCommandsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyCapabilityCommandsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCommandsResponse>;
+export const ListCloudProjectDatabaseValkeyCapabilityCommandsResponse =
+  ListCloudProjectDatabaseCassandraLogSubscriptionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityCommandsResponse>;
 
 export interface ListCloudProjectDatabaseValkeyCapabilityIntegrationRequest {
   /** Service name */
@@ -43376,18 +41621,12 @@ export const ListCloudProjectDatabaseValkeyCapabilityIntegrationRequest = /*@__P
 export type ListCloudProjectDatabaseValkeyCapabilityIntegrationResponseBodyList =
   Array<CloudProjectDatabaseCapabilitiesIntegration>;
 export const ListCloudProjectDatabaseValkeyCapabilityIntegrationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseCapabilitiesIntegration,
-  ) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityIntegrationResponseBodyList>;
+  ListCloudProjectDatabaseCassandraCapabilityIntegrationResponseBodyList as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyCapabilityIntegrationResponse =
   ListCloudProjectDatabaseValkeyCapabilityIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseValkeyCapabilityIntegrationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListCloudProjectDatabaseValkeyCapabilityIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyCapabilityIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityIntegrationResponse>;
+export const ListCloudProjectDatabaseValkeyCapabilityIntegrationResponse =
+  ListCloudProjectDatabaseGrafanaCapabilityIntegrationResponse as any as S.Schema<ListCloudProjectDatabaseValkeyCapabilityIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseValkeyIntegrationRequest {
   /** Service name */
@@ -43411,17 +41650,13 @@ export const ListCloudProjectDatabaseValkeyIntegrationRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyIntegrationRequest>;
 
 export type ListCloudProjectDatabaseValkeyIntegrationResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyIntegrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyIntegrationResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyIntegrationResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyIntegrationResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyIntegrationResponse =
   ListCloudProjectDatabaseValkeyIntegrationResponseBodyList;
-export const ListCloudProjectDatabaseValkeyIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyIntegrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyIntegrationResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyIntegrationResponse>;
+export const ListCloudProjectDatabaseValkeyIntegrationResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyIntegrationResponse>;
 
 export interface ListCloudProjectDatabaseValkeyLogKindRequest {
   /** Service name */
@@ -43445,17 +41680,13 @@ export const ListCloudProjectDatabaseValkeyLogKindRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyLogKindRequest>;
 
 export type ListCloudProjectDatabaseValkeyLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyLogKindResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyLogKindResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyLogKindResponse =
   ListCloudProjectDatabaseValkeyLogKindResponseBodyList;
-export const ListCloudProjectDatabaseValkeyLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyLogKindResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyLogKindResponse>;
+export const ListCloudProjectDatabaseValkeyLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyLogKindResponse>;
 
 export interface ListCloudProjectDatabaseValkeyLogsRequest {
   /** Service name */
@@ -43480,17 +41711,13 @@ export const ListCloudProjectDatabaseValkeyLogsRequest = /*@__PURE__*/ S.suspend
 
 export type ListCloudProjectDatabaseValkeyLogsResponseBodyList =
   Array<CloudProjectDatabaseServiceLogEntry>;
-export const ListCloudProjectDatabaseValkeyLogsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceLogEntry,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyLogsResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyLogsResponseBodyList =
+  ListCloudProjectDatabaseCassandraLogsResponseBodyList as any as S.Schema<ListCloudProjectDatabaseValkeyLogsResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyLogsResponse =
   ListCloudProjectDatabaseValkeyLogsResponseBodyList;
-export const ListCloudProjectDatabaseValkeyLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyLogsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyLogsResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyLogsResponse>;
+export const ListCloudProjectDatabaseValkeyLogsResponse =
+  ListCloudProjectDatabaseCassandraLogsResponse as any as S.Schema<ListCloudProjectDatabaseValkeyLogsResponse>;
 
 export interface ListCloudProjectDatabaseValkeyLogSubscriptionRequest {
   /** Service name */
@@ -43517,17 +41744,13 @@ export const ListCloudProjectDatabaseValkeyLogSubscriptionRequest = /*@__PURE__*
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyLogSubscriptionRequest>;
 
 export type ListCloudProjectDatabaseValkeyLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyLogSubscriptionResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyLogSubscriptionResponse =
   ListCloudProjectDatabaseValkeyLogSubscriptionResponseBodyList;
-export const ListCloudProjectDatabaseValkeyLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyLogSubscriptionResponse>;
+export const ListCloudProjectDatabaseValkeyLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyLogSubscriptionResponse>;
 
 export interface ListCloudProjectDatabaseValkeyMaintenanceRequest {
   /** Service name */
@@ -43551,17 +41774,13 @@ export const ListCloudProjectDatabaseValkeyMaintenanceRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyMaintenanceRequest>;
 
 export type ListCloudProjectDatabaseValkeyMaintenanceResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyMaintenanceResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyMaintenanceResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyMaintenanceResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyMaintenanceResponse =
   ListCloudProjectDatabaseValkeyMaintenanceResponseBodyList;
-export const ListCloudProjectDatabaseValkeyMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyMaintenanceResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyMaintenanceResponse>;
+export const ListCloudProjectDatabaseValkeyMaintenanceResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyMaintenanceResponse>;
 
 export interface ListCloudProjectDatabaseValkeyMetricRequest {
   /** Service name */
@@ -43588,17 +41807,13 @@ export const ListCloudProjectDatabaseValkeyMetricRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyMetricRequest>;
 
 export type ListCloudProjectDatabaseValkeyMetricResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyMetricResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyMetricResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyMetricResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyMetricResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyMetricResponse =
   ListCloudProjectDatabaseValkeyMetricResponseBodyList;
-export const ListCloudProjectDatabaseValkeyMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyMetricResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyMetricResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyMetricResponse>;
+export const ListCloudProjectDatabaseValkeyMetricResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyMetricResponse>;
 
 export interface ListCloudProjectDatabaseValkeyNodeRequest {
   /** Service name */
@@ -43622,17 +41837,13 @@ export const ListCloudProjectDatabaseValkeyNodeRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyNodeRequest>;
 
 export type ListCloudProjectDatabaseValkeyNodeResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyNodeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyNodeResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyNodeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyNodeResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyNodeResponse =
   ListCloudProjectDatabaseValkeyNodeResponseBodyList;
-export const ListCloudProjectDatabaseValkeyNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyNodeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyNodeResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyNodeResponse>;
+export const ListCloudProjectDatabaseValkeyNodeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyNodeResponse>;
 
 export interface ListCloudProjectDatabaseValkeyPrometheusRequest {
   /** Service name */
@@ -43677,17 +41888,13 @@ export const ListCloudProjectDatabaseValkeyUserRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectDatabaseValkeyUserRequest>;
 
 export type ListCloudProjectDatabaseValkeyUserResponseBodyList = Array<string>;
-export const ListCloudProjectDatabaseValkeyUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectDatabaseValkeyUserResponseBodyList>;
+export const ListCloudProjectDatabaseValkeyUserResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectDatabaseValkeyUserResponseBodyList>;
 
 export type ListCloudProjectDatabaseValkeyUserResponse =
   ListCloudProjectDatabaseValkeyUserResponseBodyList;
-export const ListCloudProjectDatabaseValkeyUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectDatabaseValkeyUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectDatabaseValkeyUserResponse",
-}) as any as S.Schema<ListCloudProjectDatabaseValkeyUserResponse>;
+export const ListCloudProjectDatabaseValkeyUserResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectDatabaseValkeyUserResponse>;
 
 /** OSTypeEnum */
 export type CloudImageOSTypeEnum = "baremetal-linux" | "bsd" | "linux" | "windows";
@@ -43742,16 +41949,12 @@ export const ListCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectInstanceRequest>;
 
 export type ListCloudProjectInstanceResponseBodyList = Array<CloudInstanceInstance>;
-export const ListCloudProjectInstanceResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudInstanceInstance,
-) as any as S.Schema<ListCloudProjectInstanceResponseBodyList>;
+export const ListCloudProjectInstanceResponseBodyList =
+  ActivateCloudProjectMonthlyBillingResponseBodyList as any as S.Schema<ListCloudProjectInstanceResponseBodyList>;
 
 export type ListCloudProjectInstanceResponse = ListCloudProjectInstanceResponseBodyList;
-export const ListCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectInstanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectInstanceResponse",
-}) as any as S.Schema<ListCloudProjectInstanceResponse>;
+export const ListCloudProjectInstanceResponse =
+  ActivateCloudProjectMonthlyBillingResponse as any as S.Schema<ListCloudProjectInstanceResponse>;
 
 export interface ListCloudProjectInstanceGroupRequest {
   /** Service name */
@@ -43896,16 +42099,12 @@ export const ListCloudProjectKubeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectKubeRequest>;
 
 export type ListCloudProjectKubeResponseBodyList = Array<string>;
-export const ListCloudProjectKubeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectKubeResponseBodyList>;
+export const ListCloudProjectKubeResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectKubeResponseBodyList>;
 
 export type ListCloudProjectKubeResponse = ListCloudProjectKubeResponseBodyList;
-export const ListCloudProjectKubeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectKubeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectKubeResponse",
-}) as any as S.Schema<ListCloudProjectKubeResponse>;
+export const ListCloudProjectKubeResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectKubeResponse>;
 
 export interface ListCloudProjectKubeFlavorsRequest {
   /** Service name */
@@ -43925,16 +42124,12 @@ export const ListCloudProjectKubeFlavorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectKubeFlavorsRequest>;
 
 export type ListCloudProjectKubeFlavorsResponseBodyList = Array<CloudKubeFlavor>;
-export const ListCloudProjectKubeFlavorsResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudKubeFlavor,
-) as any as S.Schema<ListCloudProjectKubeFlavorsResponseBodyList>;
+export const ListCloudProjectKubeFlavorsResponseBodyList =
+  ListCloudProjectCapabilityKubeFlavorsResponseBodyList as any as S.Schema<ListCloudProjectKubeFlavorsResponseBodyList>;
 
 export type ListCloudProjectKubeFlavorsResponse = ListCloudProjectKubeFlavorsResponseBodyList;
-export const ListCloudProjectKubeFlavorsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectKubeFlavorsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectKubeFlavorsResponse",
-}) as any as S.Schema<ListCloudProjectKubeFlavorsResponse>;
+export const ListCloudProjectKubeFlavorsResponse =
+  ListCloudProjectCapabilityKubeFlavorsResponse as any as S.Schema<ListCloudProjectKubeFlavorsResponse>;
 
 export interface ListCloudProjectKubeIpRestrictionsRequest {
   /** Service name */
@@ -43958,17 +42153,13 @@ export const ListCloudProjectKubeIpRestrictionsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListCloudProjectKubeIpRestrictionsRequest>;
 
 export type ListCloudProjectKubeIpRestrictionsResponseBodyList = Array<string>;
-export const ListCloudProjectKubeIpRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectKubeIpRestrictionsResponseBodyList>;
+export const ListCloudProjectKubeIpRestrictionsResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectKubeIpRestrictionsResponseBodyList>;
 
 export type ListCloudProjectKubeIpRestrictionsResponse =
   ListCloudProjectKubeIpRestrictionsResponseBodyList;
-export const ListCloudProjectKubeIpRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectKubeIpRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectKubeIpRestrictionsResponse",
-}) as any as S.Schema<ListCloudProjectKubeIpRestrictionsResponse>;
+export const ListCloudProjectKubeIpRestrictionsResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectKubeIpRestrictionsResponse>;
 
 export interface ListCloudProjectKubeLogSubscriptionRequest {
   /** Service name */
@@ -43995,17 +42186,13 @@ export const ListCloudProjectKubeLogSubscriptionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCloudProjectKubeLogSubscriptionRequest>;
 
 export type ListCloudProjectKubeLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectKubeLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectKubeLogSubscriptionResponseBodyList>;
+export const ListCloudProjectKubeLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectKubeLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectKubeLogSubscriptionResponse =
   ListCloudProjectKubeLogSubscriptionResponseBodyList;
-export const ListCloudProjectKubeLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectKubeLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectKubeLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectKubeLogSubscriptionResponse>;
+export const ListCloudProjectKubeLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectKubeLogSubscriptionResponse>;
 
 export interface ListCloudProjectKubeNodeRequest {
   /** Service name */
@@ -44106,17 +42293,13 @@ export const ListCloudProjectKubeNodepoolNodesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCloudProjectKubeNodepoolNodesRequest>;
 
 export type ListCloudProjectKubeNodepoolNodesResponseBodyList = Array<CloudKubeNode>;
-export const ListCloudProjectKubeNodepoolNodesResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudKubeNode,
-) as any as S.Schema<ListCloudProjectKubeNodepoolNodesResponseBodyList>;
+export const ListCloudProjectKubeNodepoolNodesResponseBodyList =
+  ListCloudProjectKubeNodeResponseBodyList as any as S.Schema<ListCloudProjectKubeNodepoolNodesResponseBodyList>;
 
 export type ListCloudProjectKubeNodepoolNodesResponse =
   ListCloudProjectKubeNodepoolNodesResponseBodyList;
-export const ListCloudProjectKubeNodepoolNodesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectKubeNodepoolNodesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectKubeNodepoolNodesResponse",
-}) as any as S.Schema<ListCloudProjectKubeNodepoolNodesResponse>;
+export const ListCloudProjectKubeNodepoolNodesResponse =
+  ListCloudProjectKubeNodeResponse as any as S.Schema<ListCloudProjectKubeNodepoolNodesResponse>;
 
 export interface ListCloudProjectLabRequest {
   /** Service name */
@@ -44161,15 +42344,13 @@ export const ListCloudProjectLabAgreementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of agreements already accepted to activate the lab */
 export type CloudLabAgreementsAcceptedList = Array<number>;
-export const CloudLabAgreementsAcceptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CloudLabAgreementsAcceptedList>;
+export const CloudLabAgreementsAcceptedList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<CloudLabAgreementsAcceptedList>;
 
 /** List of agreements to accept before activate the lab */
 export type CloudLabAgreementsToAcceptList = Array<number>;
-export const CloudLabAgreementsToAcceptList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CloudLabAgreementsToAcceptList>;
+export const CloudLabAgreementsToAcceptList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<CloudLabAgreementsToAcceptList>;
 
 /** List of required agreements to activate the lab */
 export interface CloudLabAgreements {
@@ -44224,16 +42405,12 @@ export const ListCloudProjectNetworkPrivateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListCloudProjectNetworkPrivateRequest>;
 
 export type ListCloudProjectNetworkPrivateResponseBodyList = Array<CloudNetworkNetwork>;
-export const ListCloudProjectNetworkPrivateResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudNetworkNetwork,
-) as any as S.Schema<ListCloudProjectNetworkPrivateResponseBodyList>;
+export const ListCloudProjectNetworkPrivateResponseBodyList =
+  ListCloudProjectNetworkResponseBodyList as any as S.Schema<ListCloudProjectNetworkPrivateResponseBodyList>;
 
 export type ListCloudProjectNetworkPrivateResponse = ListCloudProjectNetworkPrivateResponseBodyList;
-export const ListCloudProjectNetworkPrivateResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectNetworkPrivateResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectNetworkPrivateResponse",
-}) as any as S.Schema<ListCloudProjectNetworkPrivateResponse>;
+export const ListCloudProjectNetworkPrivateResponse =
+  ListCloudProjectNetworkResponse as any as S.Schema<ListCloudProjectNetworkPrivateResponse>;
 
 export interface ListCloudProjectNetworkPrivateSubnetRequest {
   /** Service name */
@@ -44316,17 +42493,13 @@ export const ListCloudProjectQuantumCapabilityRegionRequest = /*@__PURE__*/ S.su
 
 export type ListCloudProjectQuantumCapabilityRegionResponseBodyList =
   Array<CloudProjectQuantumCapabilitiesRegion>;
-export const ListCloudProjectQuantumCapabilityRegionResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudProjectQuantumCapabilitiesRegion,
-) as any as S.Schema<ListCloudProjectQuantumCapabilityRegionResponseBodyList>;
+export const ListCloudProjectQuantumCapabilityRegionResponseBodyList =
+  ListCloudProjectAiCapabilityRegionResponseBodyList as any as S.Schema<ListCloudProjectQuantumCapabilityRegionResponseBodyList>;
 
 export type ListCloudProjectQuantumCapabilityRegionResponse =
   ListCloudProjectQuantumCapabilityRegionResponseBodyList;
-export const ListCloudProjectQuantumCapabilityRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectQuantumCapabilityRegionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectQuantumCapabilityRegionResponse",
-}) as any as S.Schema<ListCloudProjectQuantumCapabilityRegionResponse>;
+export const ListCloudProjectQuantumCapabilityRegionResponse =
+  ListCloudProjectAiCapabilityRegionResponse as any as S.Schema<ListCloudProjectQuantumCapabilityRegionResponse>;
 
 export interface ListCloudProjectQuantumCapabilityRegionQpuRequest {
   /** Service name */
@@ -44379,16 +42552,12 @@ export const ListCloudProjectRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectRegionRequest>;
 
 export type ListCloudProjectRegionResponseBodyList = Array<string>;
-export const ListCloudProjectRegionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectRegionResponseBodyList>;
+export const ListCloudProjectRegionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectRegionResponseBodyList>;
 
 export type ListCloudProjectRegionResponse = ListCloudProjectRegionResponseBodyList;
-export const ListCloudProjectRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectRegionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectRegionResponse",
-}) as any as S.Schema<ListCloudProjectRegionResponse>;
+export const ListCloudProjectRegionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectRegionResponse>;
 
 export interface ListCloudProjectRegionAvailableRequest {
   /** Service name */
@@ -44508,9 +42677,8 @@ export const ListCloudProjectRegionGatewayInterfaceRequest = /*@__PURE__*/ S.sus
 
 export type ListCloudProjectRegionGatewayInterfaceResponseBodyList =
   Array<CloudNetworkGatewayInterface>;
-export const ListCloudProjectRegionGatewayInterfaceResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudNetworkGatewayInterface,
-) as any as S.Schema<ListCloudProjectRegionGatewayInterfaceResponseBodyList>;
+export const ListCloudProjectRegionGatewayInterfaceResponseBodyList =
+  CloudNetworkGatewayInterfacesList as any as S.Schema<ListCloudProjectRegionGatewayInterfaceResponseBodyList>;
 
 export type ListCloudProjectRegionGatewayInterfaceResponse =
   ListCloudProjectRegionGatewayInterfaceResponseBodyList;
@@ -44546,17 +42714,12 @@ export const ListCloudProjectRegionInstanceMetricSubscriptionRequest = /*@__PURE
 
 export type ListCloudProjectRegionInstanceMetricSubscriptionResponseBodyList = Array<string>;
 export const ListCloudProjectRegionInstanceMetricSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectRegionInstanceMetricSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectRegionInstanceMetricSubscriptionResponseBodyList>;
 
 export type ListCloudProjectRegionInstanceMetricSubscriptionResponse =
   ListCloudProjectRegionInstanceMetricSubscriptionResponseBodyList;
-export const ListCloudProjectRegionInstanceMetricSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () => ListCloudProjectRegionInstanceMetricSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectRegionInstanceMetricSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectRegionInstanceMetricSubscriptionResponse>;
+export const ListCloudProjectRegionInstanceMetricSubscriptionResponse =
+  ListCloudProjectDatabaseCassandraLogSubscriptionResponse as any as S.Schema<ListCloudProjectRegionInstanceMetricSubscriptionResponse>;
 
 export interface ListCloudProjectRegionKeymanagerCertificateRequest {
   /** Service name */
@@ -44650,17 +42813,13 @@ export const ListCloudProjectRegionLoadbalancingFlavorRequest = /*@__PURE__*/ S.
 
 export type ListCloudProjectRegionLoadbalancingFlavorResponseBodyList =
   Array<CloudLoadbalancingFlavor>;
-export const ListCloudProjectRegionLoadbalancingFlavorResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudLoadbalancingFlavor,
-) as any as S.Schema<ListCloudProjectRegionLoadbalancingFlavorResponseBodyList>;
+export const ListCloudProjectRegionLoadbalancingFlavorResponseBodyList =
+  ListCloudProjectRegionKeymanagerSecretResponseBodyList as any as S.Schema<ListCloudProjectRegionLoadbalancingFlavorResponseBodyList>;
 
 export type ListCloudProjectRegionLoadbalancingFlavorResponse =
   ListCloudProjectRegionLoadbalancingFlavorResponseBodyList;
-export const ListCloudProjectRegionLoadbalancingFlavorResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectRegionLoadbalancingFlavorResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectRegionLoadbalancingFlavorResponse",
-}) as any as S.Schema<ListCloudProjectRegionLoadbalancingFlavorResponse>;
+export const ListCloudProjectRegionLoadbalancingFlavorResponse =
+  ListCloudProjectRegionKeymanagerSecretResponse as any as S.Schema<ListCloudProjectRegionLoadbalancingFlavorResponse>;
 
 export interface ListCloudProjectRegionLoadbalancingHealthMonitorRequest {
   /** Service name */
@@ -44884,20 +43043,12 @@ export const ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionReque
 export type ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponseBodyList =
   Array<string>;
 export const ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponseBodyList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponse =
   ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponseBodyList;
 export const ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponse",
-  }) as any as S.Schema<ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponse>;
+  ListCloudProjectCapabilityApplicationloadbalancerRegionResponse as any as S.Schema<ListCloudProjectRegionLoadbalancingLoadbalancerLogSubscriptionResponse>;
 
 export interface ListCloudProjectRegionLoadbalancingLogKindRequest {
   /** Service name */
@@ -44921,17 +43072,13 @@ export const ListCloudProjectRegionLoadbalancingLogKindRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListCloudProjectRegionLoadbalancingLogKindRequest>;
 
 export type ListCloudProjectRegionLoadbalancingLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectRegionLoadbalancingLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectRegionLoadbalancingLogKindResponseBodyList>;
+export const ListCloudProjectRegionLoadbalancingLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectRegionLoadbalancingLogKindResponseBodyList>;
 
 export type ListCloudProjectRegionLoadbalancingLogKindResponse =
   ListCloudProjectRegionLoadbalancingLogKindResponseBodyList;
-export const ListCloudProjectRegionLoadbalancingLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectRegionLoadbalancingLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectRegionLoadbalancingLogKindResponse",
-}) as any as S.Schema<ListCloudProjectRegionLoadbalancingLogKindResponse>;
+export const ListCloudProjectRegionLoadbalancingLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectRegionLoadbalancingLogKindResponse>;
 
 export interface ListCloudProjectRegionLoadbalancingPoolRequest {
   /** Service name */
@@ -45030,16 +43177,12 @@ export const ListCloudProjectRegionLogKindRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListCloudProjectRegionLogKindRequest>;
 
 export type ListCloudProjectRegionLogKindResponseBodyList = Array<string>;
-export const ListCloudProjectRegionLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectRegionLogKindResponseBodyList>;
+export const ListCloudProjectRegionLogKindResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectRegionLogKindResponseBodyList>;
 
 export type ListCloudProjectRegionLogKindResponse = ListCloudProjectRegionLogKindResponseBodyList;
-export const ListCloudProjectRegionLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectRegionLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectRegionLogKindResponse",
-}) as any as S.Schema<ListCloudProjectRegionLogKindResponse>;
+export const ListCloudProjectRegionLogKindResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectRegionLogKindResponse>;
 
 export interface ListCloudProjectRegionLogSubscriptionRequest {
   /** Service name */
@@ -45066,17 +43209,13 @@ export const ListCloudProjectRegionLogSubscriptionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListCloudProjectRegionLogSubscriptionRequest>;
 
 export type ListCloudProjectRegionLogSubscriptionResponseBodyList = Array<string>;
-export const ListCloudProjectRegionLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCloudProjectRegionLogSubscriptionResponseBodyList>;
+export const ListCloudProjectRegionLogSubscriptionResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListCloudProjectRegionLogSubscriptionResponseBodyList>;
 
 export type ListCloudProjectRegionLogSubscriptionResponse =
   ListCloudProjectRegionLogSubscriptionResponseBodyList;
-export const ListCloudProjectRegionLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectRegionLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectRegionLogSubscriptionResponse",
-}) as any as S.Schema<ListCloudProjectRegionLogSubscriptionResponse>;
+export const ListCloudProjectRegionLogSubscriptionResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListCloudProjectRegionLogSubscriptionResponse>;
 
 export interface ListCloudProjectRegionNetworkRequest {
   /** Service name */
@@ -45553,15 +43692,13 @@ export const ListCloudProjectRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** OpenStack roles */
 export type CloudRoleRolesRolesList = Array<CloudRoleRole>;
-export const CloudRoleRolesRolesList = /*@__PURE__*/ S.Array(
-  CloudRoleRole,
-) as any as S.Schema<CloudRoleRolesRolesList>;
+export const CloudRoleRolesRolesList =
+  CloudUserUserDetailRolesList as any as S.Schema<CloudRoleRolesRolesList>;
 
 /** Roles having this permission */
 export type CloudRolePermissionRolesList = Array<string>;
-export const CloudRolePermissionRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudRolePermissionRolesList>;
+export const CloudRolePermissionRolesList =
+  CloudOperationRegionsList as any as S.Schema<CloudRolePermissionRolesList>;
 
 /** Role permissions */
 export interface CloudRolePermission {
@@ -45636,16 +43773,12 @@ export const ListCloudProjectSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectSnapshotRequest>;
 
 export type ListCloudProjectSnapshotResponseBodyList = Array<CloudImageImage>;
-export const ListCloudProjectSnapshotResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudImageImage,
-) as any as S.Schema<ListCloudProjectSnapshotResponseBodyList>;
+export const ListCloudProjectSnapshotResponseBodyList =
+  ListCloudProjectImageResponseBodyList as any as S.Schema<ListCloudProjectSnapshotResponseBodyList>;
 
 export type ListCloudProjectSnapshotResponse = ListCloudProjectSnapshotResponseBodyList;
-export const ListCloudProjectSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCloudProjectSnapshotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCloudProjectSnapshotResponse",
-}) as any as S.Schema<ListCloudProjectSnapshotResponse>;
+export const ListCloudProjectSnapshotResponse =
+  ListCloudProjectImageResponse as any as S.Schema<ListCloudProjectSnapshotResponse>;
 
 export interface ListCloudProjectSshkeyRequest {
   /** Service name */
@@ -45664,9 +43797,8 @@ export const ListCloudProjectSshkeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** SSH key regions */
 export type CloudSshkeySshKeyRegionsList = Array<string>;
-export const CloudSshkeySshKeyRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudSshkeySshKeyRegionsList>;
+export const CloudSshkeySshKeyRegionsList =
+  CloudOperationRegionsList as any as S.Schema<CloudSshkeySshKeyRegionsList>;
 
 /** SshKey */
 export interface CloudSshkeySshKey {
@@ -45797,9 +43929,8 @@ export const ListCloudProjectUsagePlansRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed listing of all flat fees */
 export type CloudPlanFlatFeeDetailsList = Array<CloudPlanDetail>;
-export const CloudPlanFlatFeeDetailsList = /*@__PURE__*/ S.Array(
-  CloudPlanDetail,
-) as any as S.Schema<CloudPlanFlatFeeDetailsList>;
+export const CloudPlanFlatFeeDetailsList =
+  CloudBillingViewMonthlySavingsPlanDetailsList as any as S.Schema<CloudPlanFlatFeeDetailsList>;
 
 /** Details of fees regardless of the consumption */
 export interface CloudPlanFlatFee {
@@ -45817,9 +43948,8 @@ export const CloudPlanFlatFee = /*@__PURE__*/ S.suspend(() =>
 
 /** List of plan ids */
 export type CloudPlanOverQuotaIdsList = Array<string>;
-export const CloudPlanOverQuotaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudPlanOverQuotaIdsList>;
+export const CloudPlanOverQuotaIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudPlanOverQuotaIdsList>;
 
 /** Details of fees when the consumption exceeds the size of the plans */
 export interface CloudPlanOverQuota {
@@ -45863,15 +43993,13 @@ export const CloudPlanFees = /*@__PURE__*/ S.suspend(() =>
 
 /** List of plans Ids */
 export type CloudPlanPlanPeriodPlansIdsList = Array<string>;
-export const CloudPlanPlanPeriodPlansIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudPlanPlanPeriodPlansIdsList>;
+export const CloudPlanPlanPeriodPlansIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudPlanPlanPeriodPlansIdsList>;
 
 /** List of resource IDs that could be covered by this plan */
 export type CloudPlanPlanPeriodResourceIdsList = Array<string>;
-export const CloudPlanPlanPeriodResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudPlanPlanPeriodResourceIdsList>;
+export const CloudPlanPlanPeriodResourceIdsList =
+  CloudOperationRegionsList as any as S.Schema<CloudPlanPlanPeriodResourceIdsList>;
 
 /** Consumption period for a flavor */
 export interface CloudPlanPlanPeriod {
@@ -45970,12 +44098,7 @@ export interface CloudPlanPeriod {
   /** End of the period */
   to?: string;
 }
-export const CloudPlanPeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.optional(S.String),
-    to: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudPlanPeriod" }) as any as S.Schema<CloudPlanPeriod>;
+export const CloudPlanPeriod = CloudUsagePeriod as any as S.Schema<CloudPlanPeriod>;
 
 /** Usage of plans */
 export interface CloudUsagePlanResponse {
@@ -46039,9 +44162,8 @@ export const ListCloudProjectUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudProjectUserRoleRequest>;
 
 export type ListCloudProjectUserRoleResponseBodyList = Array<CloudRoleRole>;
-export const ListCloudProjectUserRoleResponseBodyList = /*@__PURE__*/ S.Array(
-  CloudRoleRole,
-) as any as S.Schema<ListCloudProjectUserRoleResponseBodyList>;
+export const ListCloudProjectUserRoleResponseBodyList =
+  CloudUserUserDetailRolesList as any as S.Schema<ListCloudProjectUserRoleResponseBodyList>;
 
 export type ListCloudProjectUserRoleResponse = ListCloudProjectUserRoleResponseBodyList;
 export const ListCloudProjectUserRoleResponse = /*@__PURE__*/ S.suspend(() =>
@@ -46162,16 +44284,12 @@ export const ListLoadBalancerConfigurationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListLoadBalancerConfigurationsRequest>;
 
 export type ListLoadBalancerConfigurationsResponseBodyList = Array<number>;
-export const ListLoadBalancerConfigurationsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListLoadBalancerConfigurationsResponseBodyList>;
+export const ListLoadBalancerConfigurationsResponseBodyList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<ListLoadBalancerConfigurationsResponseBodyList>;
 
 export type ListLoadBalancerConfigurationsResponse = ListLoadBalancerConfigurationsResponseBodyList;
-export const ListLoadBalancerConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListLoadBalancerConfigurationsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListLoadBalancerConfigurationsResponse",
-}) as any as S.Schema<ListLoadBalancerConfigurationsResponse>;
+export const ListLoadBalancerConfigurationsResponse =
+  CreateCloudProjectChangeContactResponse as any as S.Schema<ListLoadBalancerConfigurationsResponse>;
 
 export interface ListLoadBalancersRequest {
   /** Service name */
@@ -46184,16 +44302,12 @@ export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLoadBalancersRequest" }) as any as S.Schema<ListLoadBalancersRequest>;
 
 export type ListLoadBalancersResponseBodyList = Array<string>;
-export const ListLoadBalancersResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLoadBalancersResponseBodyList>;
+export const ListLoadBalancersResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListLoadBalancersResponseBodyList>;
 
 export type ListLoadBalancersResponse = ListLoadBalancersResponseBodyList;
-export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListLoadBalancersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListLoadBalancersResponse",
-}) as any as S.Schema<ListLoadBalancersResponse>;
+export const ListLoadBalancersResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListLoadBalancersResponse>;
 
 export interface ListNetworkLoadBalancerConfigurationsRequest {
   /** Service name */
@@ -46217,17 +44331,13 @@ export const ListNetworkLoadBalancerConfigurationsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListNetworkLoadBalancerConfigurationsRequest>;
 
 export type ListNetworkLoadBalancerConfigurationsResponseBodyList = Array<number>;
-export const ListNetworkLoadBalancerConfigurationsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListNetworkLoadBalancerConfigurationsResponseBodyList>;
+export const ListNetworkLoadBalancerConfigurationsResponseBodyList =
+  CloudProjectLoadbalancerEntryPointPortsList as any as S.Schema<ListNetworkLoadBalancerConfigurationsResponseBodyList>;
 
 export type ListNetworkLoadBalancerConfigurationsResponse =
   ListNetworkLoadBalancerConfigurationsResponseBodyList;
-export const ListNetworkLoadBalancerConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListNetworkLoadBalancerConfigurationsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListNetworkLoadBalancerConfigurationsResponse",
-}) as any as S.Schema<ListNetworkLoadBalancerConfigurationsResponse>;
+export const ListNetworkLoadBalancerConfigurationsResponse =
+  CreateCloudProjectChangeContactResponse as any as S.Schema<ListNetworkLoadBalancerConfigurationsResponse>;
 
 export interface ListNetworkLoadBalancersRequest {
   /** Service name */
@@ -46244,16 +44354,12 @@ export const ListNetworkLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNetworkLoadBalancersRequest>;
 
 export type ListNetworkLoadBalancersResponseBodyList = Array<string>;
-export const ListNetworkLoadBalancersResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNetworkLoadBalancersResponseBodyList>;
+export const ListNetworkLoadBalancersResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<ListNetworkLoadBalancersResponseBodyList>;
 
 export type ListNetworkLoadBalancersResponse = ListNetworkLoadBalancersResponseBodyList;
-export const ListNetworkLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListNetworkLoadBalancersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListNetworkLoadBalancersResponse",
-}) as any as S.Schema<ListNetworkLoadBalancersResponse>;
+export const ListNetworkLoadBalancersResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<ListNetworkLoadBalancersResponse>;
 
 export interface PauseCloudProjectDatabaseKafkaConnectConnectorRequest {
   /** Service name */
@@ -46280,11 +44386,8 @@ export const PauseCloudProjectDatabaseKafkaConnectConnectorRequest = /*@__PURE__
 }) as any as S.Schema<PauseCloudProjectDatabaseKafkaConnectConnectorRequest>;
 
 export interface PauseCloudProjectDatabaseKafkaConnectConnectorResponse {}
-export const PauseCloudProjectDatabaseKafkaConnectConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PauseCloudProjectDatabaseKafkaConnectConnectorResponse",
-}) as any as S.Schema<PauseCloudProjectDatabaseKafkaConnectConnectorResponse>;
+export const PauseCloudProjectDatabaseKafkaConnectConnectorResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PauseCloudProjectDatabaseKafkaConnectConnectorResponse>;
 
 export interface PresignCloudProjectRegionColdArchiveRequest {
   /** Service name */
@@ -46342,15 +44445,13 @@ export const PutCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutCloudProjectRequest" }) as any as S.Schema<PutCloudProjectRequest>;
 
 export interface PutCloudProjectResponse {}
-export const PutCloudProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCloudProjectResponse",
-}) as any as S.Schema<PutCloudProjectResponse>;
+export const PutCloudProjectResponse =
+  CancelCloudProjectResponse as any as S.Schema<PutCloudProjectResponse>;
 
 /** App command and arguments. Pass empty list to reset */
 export type PutCloudProjectAiAppRequestCommandList = Array<string>;
-export const PutCloudProjectAiAppRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectAiAppRequestCommandList>;
+export const PutCloudProjectAiAppRequestCommandList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectAiAppRequestCommandList>;
 
 /** AI Solutions Instance Env Object */
 export interface CloudProjectAiEnv {
@@ -46476,11 +44577,8 @@ export const PutCloudProjectAiAppLabelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectAiAppLabelRequest>;
 
 export interface PutCloudProjectAiAppLabelResponse {}
-export const PutCloudProjectAiAppLabelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiAppLabelResponse",
-}) as any as S.Schema<PutCloudProjectAiAppLabelResponse>;
+export const PutCloudProjectAiAppLabelResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiAppLabelResponse>;
 
 export interface PutCloudProjectAiAppScalingstrategyRequest {
   /** Service name */
@@ -46510,11 +44608,8 @@ export const PutCloudProjectAiAppScalingstrategyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutCloudProjectAiAppScalingstrategyRequest>;
 
 export interface PutCloudProjectAiAppScalingstrategyResponse {}
-export const PutCloudProjectAiAppScalingstrategyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiAppScalingstrategyResponse",
-}) as any as S.Schema<PutCloudProjectAiAppScalingstrategyResponse>;
+export const PutCloudProjectAiAppScalingstrategyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiAppScalingstrategyResponse>;
 
 export interface PutCloudProjectAiAppStartRequest {
   /** Service name */
@@ -46534,11 +44629,8 @@ export const PutCloudProjectAiAppStartRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectAiAppStartRequest>;
 
 export interface PutCloudProjectAiAppStartResponse {}
-export const PutCloudProjectAiAppStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiAppStartResponse",
-}) as any as S.Schema<PutCloudProjectAiAppStartResponse>;
+export const PutCloudProjectAiAppStartResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiAppStartResponse>;
 
 export interface PutCloudProjectAiAppStopRequest {
   /** Service name */
@@ -46558,11 +44650,8 @@ export const PutCloudProjectAiAppStopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectAiAppStopRequest>;
 
 export interface PutCloudProjectAiAppStopResponse {}
-export const PutCloudProjectAiAppStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiAppStopResponse",
-}) as any as S.Schema<PutCloudProjectAiAppStopResponse>;
+export const PutCloudProjectAiAppStopResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiAppStopResponse>;
 
 export interface PutCloudProjectAiCapabilityRegionNotebookWorkspacebackupretentionpolicyRequest {
   /** Service name */
@@ -46635,11 +44724,8 @@ export const PutCloudProjectAiDataRegionAliasRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutCloudProjectAiDataRegionAliasRequest>;
 
 export interface PutCloudProjectAiDataRegionAliasResponse {}
-export const PutCloudProjectAiDataRegionAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiDataRegionAliasResponse",
-}) as any as S.Schema<PutCloudProjectAiDataRegionAliasResponse>;
+export const PutCloudProjectAiDataRegionAliasResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiDataRegionAliasResponse>;
 
 export interface PutCloudProjectAiJobKillRequest {
   /** Service name */
@@ -46659,11 +44745,8 @@ export const PutCloudProjectAiJobKillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectAiJobKillRequest>;
 
 export interface PutCloudProjectAiJobKillResponse {}
-export const PutCloudProjectAiJobKillResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiJobKillResponse",
-}) as any as S.Schema<PutCloudProjectAiJobKillResponse>;
+export const PutCloudProjectAiJobKillResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiJobKillResponse>;
 
 export interface PutCloudProjectAiJobLabelRequest {
   /** Service name */
@@ -46689,30 +44772,23 @@ export const PutCloudProjectAiJobLabelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectAiJobLabelRequest>;
 
 export interface PutCloudProjectAiJobLabelResponse {}
-export const PutCloudProjectAiJobLabelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiJobLabelResponse",
-}) as any as S.Schema<PutCloudProjectAiJobLabelResponse>;
+export const PutCloudProjectAiJobLabelResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiJobLabelResponse>;
 
 /** Labels for the notebook */
 export type PutCloudProjectAiNotebookRequestLabelsMap = { [key: string]: string | undefined };
-export const PutCloudProjectAiNotebookRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutCloudProjectAiNotebookRequestLabelsMap>;
+export const PutCloudProjectAiNotebookRequestLabelsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<PutCloudProjectAiNotebookRequestLabelsMap>;
 
 /** SSH keys authorized to access the notebook */
 export type PutCloudProjectAiNotebookRequestSshPublicKeysList = Array<string>;
-export const PutCloudProjectAiNotebookRequestSshPublicKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectAiNotebookRequestSshPublicKeysList>;
+export const PutCloudProjectAiNotebookRequestSshPublicKeysList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectAiNotebookRequestSshPublicKeysList>;
 
 /** Notebook Data linked */
 export type PutCloudProjectAiNotebookRequestVolumesList = Array<CloudProjectAiVolumeVolumeInput>;
-export const PutCloudProjectAiNotebookRequestVolumesList = /*@__PURE__*/ S.Array(
-  CloudProjectAiVolumeVolumeInput,
-) as any as S.Schema<PutCloudProjectAiNotebookRequestVolumesList>;
+export const PutCloudProjectAiNotebookRequestVolumesList =
+  CreateCloudProjectAiAppRequestVolumesList as any as S.Schema<PutCloudProjectAiNotebookRequestVolumesList>;
 
 export interface PutCloudProjectAiNotebookRequest {
   /** Service name */
@@ -46763,11 +44839,8 @@ export const PutCloudProjectAiNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectAiNotebookRequest>;
 
 export interface PutCloudProjectAiNotebookResponse {}
-export const PutCloudProjectAiNotebookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiNotebookResponse",
-}) as any as S.Schema<PutCloudProjectAiNotebookResponse>;
+export const PutCloudProjectAiNotebookResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiNotebookResponse>;
 
 export interface PutCloudProjectAiNotebookLabelRequest {
   /** Service name */
@@ -46797,11 +44870,8 @@ export const PutCloudProjectAiNotebookLabelRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutCloudProjectAiNotebookLabelRequest>;
 
 export interface PutCloudProjectAiNotebookLabelResponse {}
-export const PutCloudProjectAiNotebookLabelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiNotebookLabelResponse",
-}) as any as S.Schema<PutCloudProjectAiNotebookLabelResponse>;
+export const PutCloudProjectAiNotebookLabelResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiNotebookLabelResponse>;
 
 export interface PutCloudProjectAiNotebookRestartRequest {
   /** Service name */
@@ -46825,11 +44895,8 @@ export const PutCloudProjectAiNotebookRestartRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutCloudProjectAiNotebookRestartRequest>;
 
 export interface PutCloudProjectAiNotebookRestartResponse {}
-export const PutCloudProjectAiNotebookRestartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiNotebookRestartResponse",
-}) as any as S.Schema<PutCloudProjectAiNotebookRestartResponse>;
+export const PutCloudProjectAiNotebookRestartResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiNotebookRestartResponse>;
 
 export interface PutCloudProjectAiNotebookStartRequest {
   /** Service name */
@@ -46853,11 +44920,8 @@ export const PutCloudProjectAiNotebookStartRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutCloudProjectAiNotebookStartRequest>;
 
 export interface PutCloudProjectAiNotebookStartResponse {}
-export const PutCloudProjectAiNotebookStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiNotebookStartResponse",
-}) as any as S.Schema<PutCloudProjectAiNotebookStartResponse>;
+export const PutCloudProjectAiNotebookStartResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiNotebookStartResponse>;
 
 export interface PutCloudProjectAiNotebookStopRequest {
   /** Service name */
@@ -46881,11 +44945,8 @@ export const PutCloudProjectAiNotebookStopRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutCloudProjectAiNotebookStopRequest>;
 
 export interface PutCloudProjectAiNotebookStopResponse {}
-export const PutCloudProjectAiNotebookStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiNotebookStopResponse",
-}) as any as S.Schema<PutCloudProjectAiNotebookStopResponse>;
+export const PutCloudProjectAiNotebookStopResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiNotebookStopResponse>;
 
 export interface PutCloudProjectAiNotebookWorkspacebackupretentionpolicyRequest {
   /** Service name */
@@ -46949,11 +45010,8 @@ export const PutCloudProjectAiRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectAiRegistryRequest>;
 
 export interface PutCloudProjectAiRegistryResponse {}
-export const PutCloudProjectAiRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectAiRegistryResponse",
-}) as any as S.Schema<PutCloudProjectAiRegistryResponse>;
+export const PutCloudProjectAiRegistryResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectAiRegistryResponse>;
 
 export interface PutCloudProjectContainerRegistryRequest {
   /** Service name */
@@ -46980,11 +45038,8 @@ export const PutCloudProjectContainerRegistryRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutCloudProjectContainerRegistryRequest>;
 
 export interface PutCloudProjectContainerRegistryResponse {}
-export const PutCloudProjectContainerRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectContainerRegistryResponse",
-}) as any as S.Schema<PutCloudProjectContainerRegistryResponse>;
+export const PutCloudProjectContainerRegistryResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectContainerRegistryResponse>;
 
 /** Container registry Get IP Restrictions */
 export interface CloudContainerRegistryIPRestrictionsInput {
@@ -47038,27 +45093,17 @@ export const PutCloudProjectContainerRegistryIpRestrictionManagementRequest =
 export type PutCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList =
   Array<CloudContainerRegistryIPRestrictions>;
 export const PutCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudContainerRegistryIPRestrictions,
-  ) as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList>;
+  ListCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList>;
 
 export type PutCloudProjectContainerRegistryIpRestrictionManagementResponse =
   PutCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList;
 export const PutCloudProjectContainerRegistryIpRestrictionManagementResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    PutCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "PutCloudProjectContainerRegistryIpRestrictionManagementResponse",
-  }) as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionManagementResponse>;
+  ListCloudProjectContainerRegistryIpRestrictionManagementResponse as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionManagementResponse>;
 
 export type PutCloudProjectContainerRegistryIpRestrictionRegistryRequestBodyList =
   Array<CloudContainerRegistryIPRestrictionsInput>;
 export const PutCloudProjectContainerRegistryIpRestrictionRegistryRequestBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudContainerRegistryIPRestrictionsInput,
-  ) as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionRegistryRequestBodyList>;
+  PutCloudProjectContainerRegistryIpRestrictionManagementRequestBodyList as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionRegistryRequestBodyList>;
 
 export interface PutCloudProjectContainerRegistryIpRestrictionRegistryRequest {
   /** Service name */
@@ -47087,9 +45132,7 @@ export const PutCloudProjectContainerRegistryIpRestrictionRegistryRequest = /*@_
 export type PutCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList =
   Array<CloudContainerRegistryIPRestrictions>;
 export const PutCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CloudContainerRegistryIPRestrictions,
-  ) as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList>;
+  ListCloudProjectContainerRegistryIpRestrictionManagementResponseBodyList as any as S.Schema<PutCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList>;
 
 export type PutCloudProjectContainerRegistryIpRestrictionRegistryResponse =
   PutCloudProjectContainerRegistryIpRestrictionRegistryResponseBodyList;
@@ -47155,11 +45198,8 @@ export const PutCloudProjectContainerRegistryOpenIdConnectRequest = /*@__PURE__*
 }) as any as S.Schema<PutCloudProjectContainerRegistryOpenIdConnectRequest>;
 
 export interface PutCloudProjectContainerRegistryOpenIdConnectResponse {}
-export const PutCloudProjectContainerRegistryOpenIdConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectContainerRegistryOpenIdConnectResponse",
-}) as any as S.Schema<PutCloudProjectContainerRegistryOpenIdConnectResponse>;
+export const PutCloudProjectContainerRegistryOpenIdConnectResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectContainerRegistryOpenIdConnectResponse>;
 
 export interface PutCloudProjectContainerRegistryPlanRequest {
   /** Service name */
@@ -47186,11 +45226,8 @@ export const PutCloudProjectContainerRegistryPlanRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutCloudProjectContainerRegistryPlanRequest>;
 
 export interface PutCloudProjectContainerRegistryPlanResponse {}
-export const PutCloudProjectContainerRegistryPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectContainerRegistryPlanResponse",
-}) as any as S.Schema<PutCloudProjectContainerRegistryPlanResponse>;
+export const PutCloudProjectContainerRegistryPlanResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectContainerRegistryPlanResponse>;
 
 export interface PutCloudProjectContainerRegistryUserSetAsAdminRequest {
   /** Service name */
@@ -47217,18 +45254,14 @@ export const PutCloudProjectContainerRegistryUserSetAsAdminRequest = /*@__PURE__
 }) as any as S.Schema<PutCloudProjectContainerRegistryUserSetAsAdminRequest>;
 
 export interface PutCloudProjectContainerRegistryUserSetAsAdminResponse {}
-export const PutCloudProjectContainerRegistryUserSetAsAdminResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectContainerRegistryUserSetAsAdminResponse",
-}) as any as S.Schema<PutCloudProjectContainerRegistryUserSetAsAdminResponse>;
+export const PutCloudProjectContainerRegistryUserSetAsAdminResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectContainerRegistryUserSetAsAdminResponse>;
 
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseCassandraRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseCassandraRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseCassandraRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseCassandraRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseCassandraRequestIpRestrictionsList>;
 
 /** Defines the storage attributes of a service */
 export interface CloudProjectDatabaseServiceStorageInput {
@@ -47307,10 +45340,7 @@ export type PutCloudProjectDatabaseCassandraAdvancedConfigurationRequestBodyMap 
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseCassandraAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseCassandraAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseCassandraAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseCassandraAdvancedConfigurationRequest {
   /** Service name */
@@ -47340,26 +45370,18 @@ export type PutCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseCassandraAdvancedConfigurationResponse =
   PutCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap;
 export const PutCloudProjectDatabaseCassandraAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    PutCloudProjectDatabaseCassandraAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "PutCloudProjectDatabaseCassandraAdvancedConfigurationResponse",
-  }) as any as S.Schema<PutCloudProjectDatabaseCassandraAdvancedConfigurationResponse>;
+  GetCloudProjectDatabaseCassandraAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseCassandraAdvancedConfigurationResponse>;
 
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseClickhouseRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseClickhouseRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseClickhouseRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseClickhouseRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseClickhouseRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseClickhouseRequest {
   /** Service name */
@@ -47423,9 +45445,8 @@ export const PutCloudProjectDatabaseClickhouseRequest = /*@__PURE__*/ S.suspend(
 
 /** Roles the user belongs to */
 export type PutCloudProjectDatabaseClickhouseUserRequestRolesList = Array<string>;
-export const PutCloudProjectDatabaseClickhouseUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseClickhouseUserRequestRolesList>;
+export const PutCloudProjectDatabaseClickhouseUserRequestRolesList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseClickhouseUserRequestRolesList>;
 
 export interface PutCloudProjectDatabaseClickhouseUserRequest {
   /** Service name */
@@ -47457,9 +45478,8 @@ export const PutCloudProjectDatabaseClickhouseUserRequest = /*@__PURE__*/ S.susp
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseGrafanaRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseGrafanaRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseGrafanaRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseGrafanaRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseGrafanaRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseGrafanaRequest {
   /** Service name */
@@ -47522,10 +45542,7 @@ export type PutCloudProjectDatabaseGrafanaAdvancedConfigurationRequestBodyMap = 
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseGrafanaAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseGrafanaAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseGrafanaAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseGrafanaAdvancedConfigurationRequest {
   /** Service name */
@@ -47555,26 +45572,18 @@ export type PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap =
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponse =
   PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap;
-export const PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponse",
-}) as any as S.Schema<PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponse>;
+export const PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseGrafanaAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseGrafanaAdvancedConfigurationResponse>;
 
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseKafkaRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseKafkaRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseKafkaRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseKafkaRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseKafkaRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseKafkaRequest {
   /** Service name */
@@ -47646,10 +45655,7 @@ export type PutCloudProjectDatabaseKafkaAdvancedConfigurationRequestBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseKafkaAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseKafkaAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseKafkaAdvancedConfigurationRequest {
   /** Service name */
@@ -47679,25 +45685,18 @@ export type PutCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseKafkaAdvancedConfigurationResponse =
   PutCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap;
-export const PutCloudProjectDatabaseKafkaAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => PutCloudProjectDatabaseKafkaAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCloudProjectDatabaseKafkaAdvancedConfigurationResponse",
-}) as any as S.Schema<PutCloudProjectDatabaseKafkaAdvancedConfigurationResponse>;
+export const PutCloudProjectDatabaseKafkaAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseKafkaAdvancedConfigurationResponse>;
 
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseKafkaConnectRequest {
   /** Service name */
@@ -47763,10 +45762,7 @@ export type PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationRequestBodyM
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationRequest {
   /** Service name */
@@ -47798,31 +45794,19 @@ export type PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBody
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponse =
   PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap;
 export const PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponseBodyMap.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponse",
-  }) as any as S.Schema<PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponse>;
+  GetCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseKafkaConnectAdvancedConfigurationResponse>;
 
 /** Configuration of the connector */
 export type PutCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseKafkaConnectConnectorRequestConfigurationMap>;
 
 export interface PutCloudProjectDatabaseKafkaConnectConnectorRequest {
   /** Service name */
@@ -47855,9 +45839,7 @@ export const PutCloudProjectDatabaseKafkaConnectConnectorRequest = /*@__PURE__*/
 export type PutCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
 export const PutCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList =
-  /*@__PURE__*/ S.Array(
-    CloudProjectDatabaseServiceIpRestrictionInput,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList>;
+  CreateCloudProjectDatabaseKafkaConnectRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseKafkaMirrorMakerRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseKafkaMirrorMakerRequest {
   /** Service name */
@@ -47923,16 +45905,12 @@ export const PutCloudProjectDatabaseKafkaMirrorMakerRequest = /*@__PURE__*/ S.su
 export type PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList =
   Array<string>;
 export const PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicExcludeListList>;
 
 /** Patterns of the topics to replicate */
 export type PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList = Array<string>;
 export const PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequestTopicsList>;
 
 export interface PutCloudProjectDatabaseKafkaMirrorMakerReplicationRequest {
   /** Service name */
@@ -48024,9 +46002,8 @@ export const PutCloudProjectDatabaseKafkaTopicRequest = /*@__PURE__*/ S.suspend(
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseM3aggregatorRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseM3aggregatorRequest {
   /** Service name */
@@ -48088,9 +46065,8 @@ export const PutCloudProjectDatabaseM3aggregatorRequest = /*@__PURE__*/ S.suspen
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseM3dbRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseM3dbRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseM3dbRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseM3dbRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseM3dbRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseM3dbRequest {
   /** Service name */
@@ -48153,10 +46129,7 @@ export type PutCloudProjectDatabaseM3dbAdvancedConfigurationRequestBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseM3dbAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseM3dbAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseM3dbAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseM3dbAdvancedConfigurationRequest {
   /** Service name */
@@ -48185,18 +46158,12 @@ export type PutCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseM3dbAdvancedConfigurationResponse =
   PutCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap;
-export const PutCloudProjectDatabaseM3dbAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => PutCloudProjectDatabaseM3dbAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCloudProjectDatabaseM3dbAdvancedConfigurationResponse",
-}) as any as S.Schema<PutCloudProjectDatabaseM3dbAdvancedConfigurationResponse>;
+export const PutCloudProjectDatabaseM3dbAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseM3dbAdvancedConfigurationResponse>;
 
 /** M3db namespace retention definition */
 export interface CloudProjectDatabaseM3dbNamespaceRetentionInput {
@@ -48286,9 +46253,8 @@ export const PutCloudProjectDatabaseM3dbUserRequest = /*@__PURE__*/ S.suspend(()
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseMongodbRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseMongodbRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseMongodbRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseMongodbRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseMongodbRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseMongodbRequest {
   /** Service name */
@@ -48379,9 +46345,8 @@ export const PutCloudProjectDatabaseMongodbNodeRequest = /*@__PURE__*/ S.suspend
 
 /** Roles the user belongs to */
 export type PutCloudProjectDatabaseMongodbUserRequestRolesList = Array<string>;
-export const PutCloudProjectDatabaseMongodbUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseMongodbUserRequestRolesList>;
+export const PutCloudProjectDatabaseMongodbUserRequestRolesList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseMongodbUserRequestRolesList>;
 
 export interface PutCloudProjectDatabaseMongodbUserRequest {
   /** Service name */
@@ -48416,9 +46381,8 @@ export const PutCloudProjectDatabaseMongodbUserRequest = /*@__PURE__*/ S.suspend
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseMysqlRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseMysqlRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseMysqlRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseMysqlRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseMysqlRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseMysqlRequest {
   /** Service name */
@@ -48484,10 +46448,7 @@ export type PutCloudProjectDatabaseMysqlAdvancedConfigurationRequestBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseMysqlAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseMysqlAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseMysqlAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseMysqlAdvancedConfigurationRequest {
   /** Service name */
@@ -48517,25 +46478,18 @@ export type PutCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseMysqlAdvancedConfigurationResponse =
   PutCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap;
-export const PutCloudProjectDatabaseMysqlAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => PutCloudProjectDatabaseMysqlAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCloudProjectDatabaseMysqlAdvancedConfigurationResponse",
-}) as any as S.Schema<PutCloudProjectDatabaseMysqlAdvancedConfigurationResponse>;
+export const PutCloudProjectDatabaseMysqlAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseMysqlAdvancedConfigurationResponse>;
 
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseOpensearchRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseOpensearchRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseOpensearchRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseOpensearchRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseOpensearchRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseOpensearchRequest {
   /** Service name */
@@ -48604,10 +46558,7 @@ export type PutCloudProjectDatabaseOpensearchAdvancedConfigurationRequestBodyMap
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseOpensearchAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseOpensearchAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseOpensearchAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseOpensearchAdvancedConfigurationRequest {
   /** Service name */
@@ -48637,26 +46588,18 @@ export type PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMa
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponse =
   PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap;
 export const PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponse",
-  }) as any as S.Schema<PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponse>;
+  GetCloudProjectDatabaseCassandraAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseOpensearchAdvancedConfigurationResponse>;
 
 /** Acls of the user */
 export type PutCloudProjectDatabaseOpensearchUserRequestAclsList =
   Array<CloudProjectDatabaseOpensearchUserAcl>;
-export const PutCloudProjectDatabaseOpensearchUserRequestAclsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseOpensearchUserAcl,
-) as any as S.Schema<PutCloudProjectDatabaseOpensearchUserRequestAclsList>;
+export const PutCloudProjectDatabaseOpensearchUserRequestAclsList =
+  CreateCloudProjectDatabaseOpensearchUserRequestAclsList as any as S.Schema<PutCloudProjectDatabaseOpensearchUserRequestAclsList>;
 
 export interface PutCloudProjectDatabaseOpensearchUserRequest {
   /** Service name */
@@ -48688,9 +46631,8 @@ export const PutCloudProjectDatabaseOpensearchUserRequest = /*@__PURE__*/ S.susp
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabasePostgresqlRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabasePostgresqlRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabasePostgresqlRequestIpRestrictionsList>;
+export const PutCloudProjectDatabasePostgresqlRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabasePostgresqlRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabasePostgresqlRequest {
   /** Service name */
@@ -48756,10 +46698,7 @@ export type PutCloudProjectDatabasePostgresqlAdvancedConfigurationRequestBodyMap
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabasePostgresqlAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabasePostgresqlAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabasePostgresqlAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabasePostgresqlAdvancedConfigurationRequest {
   /** Service name */
@@ -48789,19 +46728,12 @@ export type PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMa
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponse =
   PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap;
 export const PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponse",
-  }) as any as S.Schema<PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponse>;
+  GetCloudProjectDatabaseCassandraAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabasePostgresqlAdvancedConfigurationResponse>;
 
 export interface PutCloudProjectDatabasePostgresqlConnectionPoolRequest {
   /** Service name */
@@ -48841,9 +46773,8 @@ export const PutCloudProjectDatabasePostgresqlConnectionPoolRequest = /*@__PURE_
 
 /** Roles the user belongs to */
 export type PutCloudProjectDatabasePostgresqlUserRequestRolesList = Array<string>;
-export const PutCloudProjectDatabasePostgresqlUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabasePostgresqlUserRequestRolesList>;
+export const PutCloudProjectDatabasePostgresqlUserRequestRolesList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabasePostgresqlUserRequestRolesList>;
 
 export interface PutCloudProjectDatabasePostgresqlUserRequest {
   /** Service name */
@@ -48875,9 +46806,8 @@ export const PutCloudProjectDatabasePostgresqlUserRequest = /*@__PURE__*/ S.susp
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseRedisRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseRedisRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseRedisRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseRedisRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseRedisRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseRedisRequest {
   /** Service name */
@@ -48943,10 +46873,7 @@ export type PutCloudProjectDatabaseRedisAdvancedConfigurationRequestBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseRedisAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseRedisAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseRedisAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseRedisAdvancedConfigurationRequest {
   /** Service name */
@@ -48976,42 +46903,32 @@ export type PutCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseRedisAdvancedConfigurationResponse =
   PutCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap;
-export const PutCloudProjectDatabaseRedisAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => PutCloudProjectDatabaseRedisAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCloudProjectDatabaseRedisAdvancedConfigurationResponse",
-}) as any as S.Schema<PutCloudProjectDatabaseRedisAdvancedConfigurationResponse>;
+export const PutCloudProjectDatabaseRedisAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseRedisAdvancedConfigurationResponse>;
 
 /** Categories of the user */
 export type PutCloudProjectDatabaseRedisUserRequestCategoriesList = Array<string>;
-export const PutCloudProjectDatabaseRedisUserRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestCategoriesList>;
+export const PutCloudProjectDatabaseRedisUserRequestCategoriesList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestCategoriesList>;
 
 /** Channels of the user */
 export type PutCloudProjectDatabaseRedisUserRequestChannelsList = Array<string>;
-export const PutCloudProjectDatabaseRedisUserRequestChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestChannelsList>;
+export const PutCloudProjectDatabaseRedisUserRequestChannelsList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestChannelsList>;
 
 /** Commands of the user */
 export type PutCloudProjectDatabaseRedisUserRequestCommandsList = Array<string>;
-export const PutCloudProjectDatabaseRedisUserRequestCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestCommandsList>;
+export const PutCloudProjectDatabaseRedisUserRequestCommandsList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestCommandsList>;
 
 /** Keys of the user */
 export type PutCloudProjectDatabaseRedisUserRequestKeysList = Array<string>;
-export const PutCloudProjectDatabaseRedisUserRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestKeysList>;
+export const PutCloudProjectDatabaseRedisUserRequestKeysList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseRedisUserRequestKeysList>;
 
 export interface PutCloudProjectDatabaseRedisUserRequest {
   /** Service name */
@@ -49052,9 +46969,8 @@ export const PutCloudProjectDatabaseRedisUserRequest = /*@__PURE__*/ S.suspend((
 /** IP Blocks authorized to access to the cluster */
 export type PutCloudProjectDatabaseValkeyRequestIpRestrictionsList =
   Array<CloudProjectDatabaseServiceIpRestrictionInput>;
-export const PutCloudProjectDatabaseValkeyRequestIpRestrictionsList = /*@__PURE__*/ S.Array(
-  CloudProjectDatabaseServiceIpRestrictionInput,
-) as any as S.Schema<PutCloudProjectDatabaseValkeyRequestIpRestrictionsList>;
+export const PutCloudProjectDatabaseValkeyRequestIpRestrictionsList =
+  CreateCloudProjectDatabaseCassandraRequestIpRestrictionsList as any as S.Schema<PutCloudProjectDatabaseValkeyRequestIpRestrictionsList>;
 
 export interface PutCloudProjectDatabaseValkeyRequest {
   /** Service name */
@@ -49120,10 +47036,7 @@ export type PutCloudProjectDatabaseValkeyAdvancedConfigurationRequestBodyMap = {
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseValkeyAdvancedConfigurationRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseValkeyAdvancedConfigurationRequestBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseValkeyAdvancedConfigurationRequestBodyMap>;
 
 export interface PutCloudProjectDatabaseValkeyAdvancedConfigurationRequest {
   /** Service name */
@@ -49153,42 +47066,32 @@ export type PutCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap = 
   [key: string]: string | undefined;
 };
 export const PutCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PutCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap>;
+  CreateCloudProjectDatabaseCassandraIntegrationRequestParametersMap as any as S.Schema<PutCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap>;
 
 export type PutCloudProjectDatabaseValkeyAdvancedConfigurationResponse =
   PutCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap;
-export const PutCloudProjectDatabaseValkeyAdvancedConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => PutCloudProjectDatabaseValkeyAdvancedConfigurationResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCloudProjectDatabaseValkeyAdvancedConfigurationResponse",
-}) as any as S.Schema<PutCloudProjectDatabaseValkeyAdvancedConfigurationResponse>;
+export const PutCloudProjectDatabaseValkeyAdvancedConfigurationResponse =
+  GetCloudProjectDatabaseKafkaAdvancedConfigurationResponse as any as S.Schema<PutCloudProjectDatabaseValkeyAdvancedConfigurationResponse>;
 
 /** Categories of the user */
 export type PutCloudProjectDatabaseValkeyUserRequestCategoriesList = Array<string>;
-export const PutCloudProjectDatabaseValkeyUserRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestCategoriesList>;
+export const PutCloudProjectDatabaseValkeyUserRequestCategoriesList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestCategoriesList>;
 
 /** Channels of the user */
 export type PutCloudProjectDatabaseValkeyUserRequestChannelsList = Array<string>;
-export const PutCloudProjectDatabaseValkeyUserRequestChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestChannelsList>;
+export const PutCloudProjectDatabaseValkeyUserRequestChannelsList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestChannelsList>;
 
 /** Commands of the user */
 export type PutCloudProjectDatabaseValkeyUserRequestCommandsList = Array<string>;
-export const PutCloudProjectDatabaseValkeyUserRequestCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestCommandsList>;
+export const PutCloudProjectDatabaseValkeyUserRequestCommandsList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestCommandsList>;
 
 /** Keys of the user */
 export type PutCloudProjectDatabaseValkeyUserRequestKeysList = Array<string>;
-export const PutCloudProjectDatabaseValkeyUserRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestKeysList>;
+export const PutCloudProjectDatabaseValkeyUserRequestKeysList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectDatabaseValkeyUserRequestKeysList>;
 
 export interface PutCloudProjectDatabaseValkeyUserRequest {
   /** Service name */
@@ -49247,9 +47150,8 @@ export const PutCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectInstanceRequest>;
 
 export interface PutCloudProjectInstanceResponse {}
-export const PutCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutCloudProjectInstanceResponse" },
-) as any as S.Schema<PutCloudProjectInstanceResponse>;
+export const PutCloudProjectInstanceResponse =
+  DeleteCloudProjectAiAppResponse as any as S.Schema<PutCloudProjectInstanceResponse>;
 
 export interface PutCloudProjectKubeRequest {
   /** Service name */
@@ -49273,9 +47175,8 @@ export const PutCloudProjectKubeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectKubeRequest>;
 
 export interface PutCloudProjectKubeResponse {}
-export const PutCloudProjectKubeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCloudProjectKubeResponse",
-}) as any as S.Schema<PutCloudProjectKubeResponse>;
+export const PutCloudProjectKubeResponse =
+  CancelCloudProjectResponse as any as S.Schema<PutCloudProjectKubeResponse>;
 
 export interface PutCloudProjectKubeCustomizationRequest {
   /** Service name */
@@ -49320,9 +47221,8 @@ export const CloudKubeResponseMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ips to add to the cluster api-server restrictions (format with /subnet available) */
 export type PutCloudProjectKubeIpRestrictionsRequestIpsList = Array<string>;
-export const PutCloudProjectKubeIpRestrictionsRequestIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectKubeIpRestrictionsRequestIpsList>;
+export const PutCloudProjectKubeIpRestrictionsRequestIpsList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectKubeIpRestrictionsRequestIpsList>;
 
 export interface PutCloudProjectKubeIpRestrictionsRequest {
   /** Service name */
@@ -49349,23 +47249,18 @@ export const PutCloudProjectKubeIpRestrictionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutCloudProjectKubeIpRestrictionsRequest>;
 
 export type PutCloudProjectKubeIpRestrictionsResponseBodyList = Array<string>;
-export const PutCloudProjectKubeIpRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectKubeIpRestrictionsResponseBodyList>;
+export const PutCloudProjectKubeIpRestrictionsResponseBodyList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectKubeIpRestrictionsResponseBodyList>;
 
 export type PutCloudProjectKubeIpRestrictionsResponse =
   PutCloudProjectKubeIpRestrictionsResponseBodyList;
-export const PutCloudProjectKubeIpRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  PutCloudProjectKubeIpRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCloudProjectKubeIpRestrictionsResponse",
-}) as any as S.Schema<PutCloudProjectKubeIpRestrictionsResponse>;
+export const PutCloudProjectKubeIpRestrictionsResponse =
+  CreateCloudProjectKubeIpRestrictionResponse as any as S.Schema<PutCloudProjectKubeIpRestrictionsResponse>;
 
 /** List of specific node IDs, openstack instance IDs or Node.Spec.providerIDs to delete during downscale */
 export type PutCloudProjectKubeNodepoolRequestNodesToRemoveList = Array<string>;
-export const PutCloudProjectKubeNodepoolRequestNodesToRemoveList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectKubeNodepoolRequestNodesToRemoveList>;
+export const PutCloudProjectKubeNodepoolRequestNodesToRemoveList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectKubeNodepoolRequestNodesToRemoveList>;
 
 export interface PutCloudProjectKubeNodepoolRequest {
   /** Service name */
@@ -49416,31 +47311,25 @@ export const PutCloudProjectKubeNodepoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectKubeNodepoolRequest>;
 
 export interface PutCloudProjectKubeNodepoolResponse {}
-export const PutCloudProjectKubeNodepoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectKubeNodepoolResponse",
-}) as any as S.Schema<PutCloudProjectKubeNodepoolResponse>;
+export const PutCloudProjectKubeNodepoolResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectKubeNodepoolResponse>;
 
 /** JWT claim to use as the user's group. If the claim is present it must be an array of strings. */
 export type PutCloudProjectKubeOpenIdConnectRequestGroupsClaimList = Array<string>;
-export const PutCloudProjectKubeOpenIdConnectRequestGroupsClaimList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectKubeOpenIdConnectRequestGroupsClaimList>;
+export const PutCloudProjectKubeOpenIdConnectRequestGroupsClaimList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectKubeOpenIdConnectRequestGroupsClaimList>;
 
 /** key=value pairs that describe required claims in the ID Token. If set, the claims are verified to be present in the ID Token with a matching value. */
 export type PutCloudProjectKubeOpenIdConnectRequestRequiredClaimList = Array<string>;
-export const PutCloudProjectKubeOpenIdConnectRequestRequiredClaimList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectKubeOpenIdConnectRequestRequiredClaimList>;
+export const PutCloudProjectKubeOpenIdConnectRequestRequiredClaimList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectKubeOpenIdConnectRequestRequiredClaimList>;
 
 /** The signing algorithms accepted. Default is "RS256". */
 export type PutCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList = Array<
   CloudKubeOpenIdConnectSigningAlgorithmsEnum | (string & {})
 >;
-export const PutCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList = /*@__PURE__*/ S.Array(
-  CloudKubeOpenIdConnectSigningAlgorithmsEnum,
-) as any as S.Schema<PutCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList>;
+export const PutCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList =
+  CloudKubeOpenIdConnectSigningAlgorithmsList as any as S.Schema<PutCloudProjectKubeOpenIdConnectRequestSigningAlgorithmsList>;
 
 export interface PutCloudProjectKubeOpenIdConnectRequest {
   /** Service name */
@@ -49493,11 +47382,8 @@ export const PutCloudProjectKubeOpenIdConnectRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutCloudProjectKubeOpenIdConnectRequest>;
 
 export interface PutCloudProjectKubeOpenIdConnectResponse {}
-export const PutCloudProjectKubeOpenIdConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectKubeOpenIdConnectResponse",
-}) as any as S.Schema<PutCloudProjectKubeOpenIdConnectResponse>;
+export const PutCloudProjectKubeOpenIdConnectResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectKubeOpenIdConnectResponse>;
 
 export interface PutCloudProjectKubePrivateNetworkConfigurationRequest {
   /** Service name */
@@ -49551,11 +47437,8 @@ export const PutCloudProjectKubeUpdateLoadBalancersSubnetIdRequest = /*@__PURE__
 }) as any as S.Schema<PutCloudProjectKubeUpdateLoadBalancersSubnetIdRequest>;
 
 export interface PutCloudProjectKubeUpdateLoadBalancersSubnetIdResponse {}
-export const PutCloudProjectKubeUpdateLoadBalancersSubnetIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectKubeUpdateLoadBalancersSubnetIdResponse",
-}) as any as S.Schema<PutCloudProjectKubeUpdateLoadBalancersSubnetIdResponse>;
+export const PutCloudProjectKubeUpdateLoadBalancersSubnetIdResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectKubeUpdateLoadBalancersSubnetIdResponse>;
 
 export interface PutCloudProjectKubeUpdatePolicyRequest {
   /** Service name */
@@ -49582,11 +47465,8 @@ export const PutCloudProjectKubeUpdatePolicyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutCloudProjectKubeUpdatePolicyRequest>;
 
 export interface PutCloudProjectKubeUpdatePolicyResponse {}
-export const PutCloudProjectKubeUpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectKubeUpdatePolicyResponse",
-}) as any as S.Schema<PutCloudProjectKubeUpdatePolicyResponse>;
+export const PutCloudProjectKubeUpdatePolicyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectKubeUpdatePolicyResponse>;
 
 export interface PutCloudProjectNetworkPrivateRequest {
   /** Service name */
@@ -49613,11 +47493,8 @@ export const PutCloudProjectNetworkPrivateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutCloudProjectNetworkPrivateRequest>;
 
 export interface PutCloudProjectNetworkPrivateResponse {}
-export const PutCloudProjectNetworkPrivateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectNetworkPrivateResponse",
-}) as any as S.Schema<PutCloudProjectNetworkPrivateResponse>;
+export const PutCloudProjectNetworkPrivateResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectNetworkPrivateResponse>;
 
 export interface PutCloudProjectNetworkPrivateSubnetRequest {
   /** Service name */
@@ -49653,11 +47530,8 @@ export const PutCloudProjectNetworkPrivateSubnetRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutCloudProjectNetworkPrivateSubnetRequest>;
 
 export interface PutCloudProjectNetworkPrivateSubnetResponse {}
-export const PutCloudProjectNetworkPrivateSubnetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectNetworkPrivateSubnetResponse",
-}) as any as S.Schema<PutCloudProjectNetworkPrivateSubnetResponse>;
+export const PutCloudProjectNetworkPrivateSubnetResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectNetworkPrivateSubnetResponse>;
 
 export interface PutCloudProjectRegionGatewayRequest {
   /** Service name */
@@ -49827,9 +47701,7 @@ export const PutCloudProjectRegionLoadbalancingL7PolicyL7RuleRequest = /*@__PURE
 /** The allowed CIDRs */
 export type PutCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList = Array<string>;
 export const PutCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList>;
+  CloudProjectLoadbalancerApplicationConfigurationCertificatesList as any as S.Schema<PutCloudProjectRegionLoadbalancingListenerRequestAllowedCidrsList>;
 
 export interface PutCloudProjectRegionLoadbalancingListenerRequest {
   /** Service name */
@@ -49993,11 +47865,8 @@ export const PutCloudProjectRegionQuotaStorageRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutCloudProjectRegionQuotaStorageRequest>;
 
 export interface PutCloudProjectRegionQuotaStorageResponse {}
-export const PutCloudProjectRegionQuotaStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectRegionQuotaStorageResponse",
-}) as any as S.Schema<PutCloudProjectRegionQuotaStorageResponse>;
+export const PutCloudProjectRegionQuotaStorageResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectRegionQuotaStorageResponse>;
 
 export interface PutCloudProjectRegionShareRequest {
   /** Service name */
@@ -50084,11 +47953,8 @@ export const PutCloudProjectServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectServiceInfosRequest>;
 
 export interface PutCloudProjectServiceInfosResponse {}
-export const PutCloudProjectServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCloudProjectServiceInfosResponse",
-}) as any as S.Schema<PutCloudProjectServiceInfosResponse>;
+export const PutCloudProjectServiceInfosResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<PutCloudProjectServiceInfosResponse>;
 
 export interface PutCloudProjectStorageRequest {
   /** Service name */
@@ -50111,15 +47977,13 @@ export const PutCloudProjectStorageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCloudProjectStorageRequest>;
 
 export interface PutCloudProjectStorageResponse {}
-export const PutCloudProjectStorageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutCloudProjectStorageResponse",
-}) as any as S.Schema<PutCloudProjectStorageResponse>;
+export const PutCloudProjectStorageResponse =
+  CancelCloudProjectResponse as any as S.Schema<PutCloudProjectStorageResponse>;
 
 /** Roles ids */
 export type PutCloudProjectUserRoleRequestRolesIdsList = Array<string>;
-export const PutCloudProjectUserRoleRequestRolesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCloudProjectUserRoleRequestRolesIdsList>;
+export const PutCloudProjectUserRoleRequestRolesIdsList =
+  CloudOperationRegionsList as any as S.Schema<PutCloudProjectUserRoleRequestRolesIdsList>;
 
 export interface PutCloudProjectUserRoleRequest {
   /** Service name */
@@ -50193,11 +48057,8 @@ export const RebootCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RebootCloudProjectInstanceRequest>;
 
 export interface RebootCloudProjectInstanceResponse {}
-export const RebootCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RebootCloudProjectInstanceResponse",
-}) as any as S.Schema<RebootCloudProjectInstanceResponse>;
+export const RebootCloudProjectInstanceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<RebootCloudProjectInstanceResponse>;
 
 export interface RegenerateCloudProjectUserPasswordRequest {
   /** Service name */
@@ -50628,11 +48489,8 @@ export const ResetCloudProjectDatabaseMysqlQueryStatisticsRequest = /*@__PURE__*
 }) as any as S.Schema<ResetCloudProjectDatabaseMysqlQueryStatisticsRequest>;
 
 export interface ResetCloudProjectDatabaseMysqlQueryStatisticsResponse {}
-export const ResetCloudProjectDatabaseMysqlQueryStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetCloudProjectDatabaseMysqlQueryStatisticsResponse",
-}) as any as S.Schema<ResetCloudProjectDatabaseMysqlQueryStatisticsResponse>;
+export const ResetCloudProjectDatabaseMysqlQueryStatisticsResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<ResetCloudProjectDatabaseMysqlQueryStatisticsResponse>;
 
 export interface ResetCloudProjectDatabaseMysqlUserCredentialsRequest {
   /** Service name */
@@ -50750,11 +48608,8 @@ export const ResetCloudProjectDatabasePostgresqlQueryStatisticsRequest = /*@__PU
 }) as any as S.Schema<ResetCloudProjectDatabasePostgresqlQueryStatisticsRequest>;
 
 export interface ResetCloudProjectDatabasePostgresqlQueryStatisticsResponse {}
-export const ResetCloudProjectDatabasePostgresqlQueryStatisticsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResetCloudProjectDatabasePostgresqlQueryStatisticsResponse",
-}) as any as S.Schema<ResetCloudProjectDatabasePostgresqlQueryStatisticsResponse>;
+export const ResetCloudProjectDatabasePostgresqlQueryStatisticsResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<ResetCloudProjectDatabasePostgresqlQueryStatisticsResponse>;
 
 export interface ResetCloudProjectDatabasePostgresqlUserCredentialsRequest {
   /** Service name */
@@ -50928,9 +48783,8 @@ export const ResetCloudProjectKubeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetCloudProjectKubeRequest>;
 
 export interface ResetCloudProjectKubeResponse {}
-export const ResetCloudProjectKubeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetCloudProjectKubeResponse",
-}) as any as S.Schema<ResetCloudProjectKubeResponse>;
+export const ResetCloudProjectKubeResponse =
+  CancelCloudProjectResponse as any as S.Schema<ResetCloudProjectKubeResponse>;
 
 export interface ResetCloudProjectKubeKubeconfigRequest {
   /** Service name */
@@ -50954,11 +48808,8 @@ export const ResetCloudProjectKubeKubeconfigRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ResetCloudProjectKubeKubeconfigRequest>;
 
 export interface ResetCloudProjectKubeKubeconfigResponse {}
-export const ResetCloudProjectKubeKubeconfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetCloudProjectKubeKubeconfigResponse",
-}) as any as S.Schema<ResetCloudProjectKubeKubeconfigResponse>;
+export const ResetCloudProjectKubeKubeconfigResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<ResetCloudProjectKubeKubeconfigResponse>;
 
 export interface ResizeCloudProjectInstanceRequest {
   /** Service name */
@@ -51009,11 +48860,8 @@ export const RestartCloudProjectDatabaseKafkaConnectConnectorRequest = /*@__PURE
 }) as any as S.Schema<RestartCloudProjectDatabaseKafkaConnectConnectorRequest>;
 
 export interface RestartCloudProjectDatabaseKafkaConnectConnectorResponse {}
-export const RestartCloudProjectDatabaseKafkaConnectConnectorResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RestartCloudProjectDatabaseKafkaConnectConnectorResponse",
-}) as any as S.Schema<RestartCloudProjectDatabaseKafkaConnectConnectorResponse>;
+export const RestartCloudProjectDatabaseKafkaConnectConnectorResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<RestartCloudProjectDatabaseKafkaConnectConnectorResponse>;
 
 export interface RestartCloudProjectDatabaseKafkaConnectConnectorTaskRequest {
   /** Service name */
@@ -51044,11 +48892,8 @@ export const RestartCloudProjectDatabaseKafkaConnectConnectorTaskRequest = /*@__
 }) as any as S.Schema<RestartCloudProjectDatabaseKafkaConnectConnectorTaskRequest>;
 
 export interface RestartCloudProjectDatabaseKafkaConnectConnectorTaskResponse {}
-export const RestartCloudProjectDatabaseKafkaConnectConnectorTaskResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RestartCloudProjectDatabaseKafkaConnectConnectorTaskResponse",
-}) as any as S.Schema<RestartCloudProjectDatabaseKafkaConnectConnectorTaskResponse>;
+export const RestartCloudProjectDatabaseKafkaConnectConnectorTaskResponse =
+  CreateCloudProjectContainerRegistryOpenIdConnectResponse as any as S.Schema<RestartCloudProjectDatabaseKafkaConnectConnectorTaskResponse>;
 
 export interface RestartCloudProjectKubeRequest {
   /** Service name */
@@ -51075,9 +48920,8 @@ export const RestartCloudProjectKubeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartCloudProjectKubeRequest>;
 
 export interface RestartCloudProjectKubeResponse {}
-export const RestartCloudProjectKubeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RestartCloudProjectKubeResponse" },
-) as any as S.Schema<RestartCloudProjectKubeResponse>;
+export const RestartCloudProjectKubeResponse =
+  DeleteCloudProjectAiAppResponse as any as S.Schema<RestartCloudProjectKubeResponse>;
 
 export interface RestoreCloudProjectDatabaseMongodbRequest {
   /** Service name */
@@ -51104,11 +48948,8 @@ export const RestoreCloudProjectDatabaseMongodbRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RestoreCloudProjectDatabaseMongodbRequest>;
 
 export interface RestoreCloudProjectDatabaseMongodbResponse {}
-export const RestoreCloudProjectDatabaseMongodbResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreCloudProjectDatabaseMongodbResponse",
-}) as any as S.Schema<RestoreCloudProjectDatabaseMongodbResponse>;
+export const RestoreCloudProjectDatabaseMongodbResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<RestoreCloudProjectDatabaseMongodbResponse>;
 
 export interface RestoreCloudProjectDatabaseMongodbBackupRequest {
   /** Service name */
@@ -51159,11 +49000,8 @@ export const RestoreCloudProjectRegionColdArchiveRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RestoreCloudProjectRegionColdArchiveRequest>;
 
 export interface RestoreCloudProjectRegionColdArchiveResponse {}
-export const RestoreCloudProjectRegionColdArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreCloudProjectRegionColdArchiveResponse",
-}) as any as S.Schema<RestoreCloudProjectRegionColdArchiveResponse>;
+export const RestoreCloudProjectRegionColdArchiveResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<RestoreCloudProjectRegionColdArchiveResponse>;
 
 export interface RestoreCloudProjectRegionStorageObjectRequest {
   /** Service name */
@@ -51196,11 +49034,8 @@ export const RestoreCloudProjectRegionStorageObjectRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<RestoreCloudProjectRegionStorageObjectRequest>;
 
 export interface RestoreCloudProjectRegionStorageObjectResponse {}
-export const RestoreCloudProjectRegionStorageObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreCloudProjectRegionStorageObjectResponse",
-}) as any as S.Schema<RestoreCloudProjectRegionStorageObjectResponse>;
+export const RestoreCloudProjectRegionStorageObjectResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<RestoreCloudProjectRegionStorageObjectResponse>;
 
 export interface RestoreCloudProjectRegionStorageObjectVersionRequest {
   /** Service name */
@@ -51236,11 +49071,8 @@ export const RestoreCloudProjectRegionStorageObjectVersionRequest = /*@__PURE__*
 }) as any as S.Schema<RestoreCloudProjectRegionStorageObjectVersionRequest>;
 
 export interface RestoreCloudProjectRegionStorageObjectVersionResponse {}
-export const RestoreCloudProjectRegionStorageObjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreCloudProjectRegionStorageObjectVersionResponse",
-}) as any as S.Schema<RestoreCloudProjectRegionStorageObjectVersionResponse>;
+export const RestoreCloudProjectRegionStorageObjectVersionResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<RestoreCloudProjectRegionStorageObjectVersionResponse>;
 
 export interface RestoreCloudProjectRegionVolumeBackupRequest {
   /** Service name */
@@ -51294,11 +49126,8 @@ export const ResumeCloudProjectDatabaseKafkaConnectConnectorRequest = /*@__PURE_
 }) as any as S.Schema<ResumeCloudProjectDatabaseKafkaConnectConnectorRequest>;
 
 export interface ResumeCloudProjectDatabaseKafkaConnectConnectorResponse {}
-export const ResumeCloudProjectDatabaseKafkaConnectConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeCloudProjectDatabaseKafkaConnectConnectorResponse",
-}) as any as S.Schema<ResumeCloudProjectDatabaseKafkaConnectConnectorResponse>;
+export const ResumeCloudProjectDatabaseKafkaConnectConnectorResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<ResumeCloudProjectDatabaseKafkaConnectConnectorResponse>;
 
 export interface ResumeCloudProjectInstanceRequest {
   /** Service name */
@@ -51322,11 +49151,8 @@ export const ResumeCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeCloudProjectInstanceRequest>;
 
 export interface ResumeCloudProjectInstanceResponse {}
-export const ResumeCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeCloudProjectInstanceResponse",
-}) as any as S.Schema<ResumeCloudProjectInstanceResponse>;
+export const ResumeCloudProjectInstanceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<ResumeCloudProjectInstanceResponse>;
 
 export interface ShareCloudProjectRegionRequest {
   /** Service name */
@@ -51440,11 +49266,8 @@ export const StartCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartCloudProjectInstanceRequest>;
 
 export interface StartCloudProjectInstanceResponse {}
-export const StartCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartCloudProjectInstanceResponse",
-}) as any as S.Schema<StartCloudProjectInstanceResponse>;
+export const StartCloudProjectInstanceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<StartCloudProjectInstanceResponse>;
 
 export interface StopCloudProjectDatabaseMysqlMigrationRequest {
   /** Service name */
@@ -51468,11 +49291,8 @@ export const StopCloudProjectDatabaseMysqlMigrationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<StopCloudProjectDatabaseMysqlMigrationRequest>;
 
 export interface StopCloudProjectDatabaseMysqlMigrationResponse {}
-export const StopCloudProjectDatabaseMysqlMigrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopCloudProjectDatabaseMysqlMigrationResponse",
-}) as any as S.Schema<StopCloudProjectDatabaseMysqlMigrationResponse>;
+export const StopCloudProjectDatabaseMysqlMigrationResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<StopCloudProjectDatabaseMysqlMigrationResponse>;
 
 export interface StopCloudProjectInstanceRequest {
   /** Service name */
@@ -51496,11 +49316,8 @@ export const StopCloudProjectInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopCloudProjectInstanceRequest>;
 
 export interface StopCloudProjectInstanceResponse {}
-export const StopCloudProjectInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopCloudProjectInstanceResponse",
-}) as any as S.Schema<StopCloudProjectInstanceResponse>;
+export const StopCloudProjectInstanceResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<StopCloudProjectInstanceResponse>;
 
 export interface TerminateCloudProjectRequest {
   /** The project id */
@@ -51515,17 +49332,13 @@ export const TerminateCloudProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateCloudProjectRequest>;
 
 export type TerminateCloudProjectResponse = string;
-export const TerminateCloudProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateCloudProjectResponse",
-}) as any as S.Schema<TerminateCloudProjectResponse>;
+export const TerminateCloudProjectResponse =
+  ConfirmCloudProjectTerminationResponse as any as S.Schema<TerminateCloudProjectResponse>;
 
 /** Receiver of the alert */
 export type UpdateAlertingRequestEmailsList = Array<string>;
-export const UpdateAlertingRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAlertingRequestEmailsList>;
+export const UpdateAlertingRequestEmailsList =
+  CloudOperationRegionsList as any as S.Schema<UpdateAlertingRequestEmailsList>;
 
 export interface UpdateAlertingRequest {
   /** Service name */
@@ -51562,9 +49375,8 @@ export const UpdateAlertingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAlertingRequest" }) as any as S.Schema<UpdateAlertingRequest>;
 
 export interface UpdateAlertingResponse {}
-export const UpdateAlertingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAlertingResponse",
-}) as any as S.Schema<UpdateAlertingResponse>;
+export const UpdateAlertingResponse =
+  CancelCloudProjectResponse as any as S.Schema<UpdateAlertingResponse>;
 
 export interface UpdateApplicationLoadBalancerRequest {
   /** Service name */
@@ -51624,9 +49436,8 @@ export const UpdateCloudProjectKubeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCloudProjectKubeRequest>;
 
 export interface UpdateCloudProjectKubeResponse {}
-export const UpdateCloudProjectKubeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCloudProjectKubeResponse",
-}) as any as S.Schema<UpdateCloudProjectKubeResponse>;
+export const UpdateCloudProjectKubeResponse =
+  CancelCloudProjectResponse as any as S.Schema<UpdateCloudProjectKubeResponse>;
 
 export interface UpdateCloudProjectLabRequest {
   /** Service name */
@@ -51677,18 +49488,14 @@ export const UpdateCloudProjectRegionColdArchivePolicyRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<UpdateCloudProjectRegionColdArchivePolicyRequest>;
 
 export interface UpdateCloudProjectRegionColdArchivePolicyResponse {}
-export const UpdateCloudProjectRegionColdArchivePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCloudProjectRegionColdArchivePolicyResponse",
-}) as any as S.Schema<UpdateCloudProjectRegionColdArchivePolicyResponse>;
+export const UpdateCloudProjectRegionColdArchivePolicyResponse =
+  ArchiveCloudProjectRegionColdArchiveResponse as any as S.Schema<UpdateCloudProjectRegionColdArchivePolicyResponse>;
 
 /** Lifecycle rules */
 export type UpdateContainerLifecycleConfigurationRequestRulesList =
   Array<CloudStorageLifecycleRule>;
-export const UpdateContainerLifecycleConfigurationRequestRulesList = /*@__PURE__*/ S.Array(
-  CloudStorageLifecycleRule,
-) as any as S.Schema<UpdateContainerLifecycleConfigurationRequestRulesList>;
+export const UpdateContainerLifecycleConfigurationRequestRulesList =
+  CloudStorageLifecycleConfigurationRulesList as any as S.Schema<UpdateContainerLifecycleConfigurationRequestRulesList>;
 
 export interface UpdateContainerLifecycleConfigurationRequest {
   /** Service name */
@@ -51848,10 +49655,8 @@ export const UpdateObjectVersionOnContainerOnRegionRequest = /*@__PURE__*/ S.sus
 
 /** Container tags. */
 export type UpdateStorageContainerOnRegionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageContainerOnRegionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStorageContainerOnRegionRequestTagsMap>;
+export const UpdateStorageContainerOnRegionRequestTagsMap =
+  CreateCloudProjectAiAppRequestLabelsMap as any as S.Schema<UpdateStorageContainerOnRegionRequestTagsMap>;
 
 export interface UpdateStorageContainerOnRegionRequest {
   /** Service name */

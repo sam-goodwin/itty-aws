@@ -106,14 +106,7 @@ export interface StartRtmResponse {
   self: ConnectRtmResponseSelf;
   team: ConnectRtmResponseTeam;
 }
-export const StartRtmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    url: S.String,
-    self: ConnectRtmResponseSelf,
-    team: ConnectRtmResponseTeam,
-  }),
-).annotate({ identifier: "StartRtmResponse" }) as any as S.Schema<StartRtmResponse>;
+export const StartRtmResponse = ConnectRtmResponse as any as S.Schema<StartRtmResponse>;
 
 export type ConnectRtmError = SlackOpError;
 /** Starts a Real Time Messaging session. Rate limit tier: 1 Method-specific errors (the `error` slug on the SlackError): - `migration_in_progress` -- Team is being migrated between servers. See [the `team_migration_started` event documentation](/reference/events/team_migration_started) for details. See https://docs.slack.dev/reference/methods/rtm.connect */

@@ -426,11 +426,8 @@ export interface DisassociateAttributeGroupResponse {
   applicationArn?: string;
   attributeGroupArn?: string;
 }
-export const DisassociateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationArn: S.optional(S.String), attributeGroupArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DisassociateAttributeGroupResponse",
-}) as any as S.Schema<DisassociateAttributeGroupResponse>;
+export const DisassociateAttributeGroupResponse =
+  AssociateAttributeGroupResponse as any as S.Schema<DisassociateAttributeGroupResponse>;
 export interface DisassociateResourceRequest {
   application: string;
   resourceType: ResourceType;
@@ -976,11 +973,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = PutConfigurationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = AttributeGroupIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -994,9 +989,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  PutConfigurationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   application: string;
   name?: string;
@@ -1021,11 +1015,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApplicationResponse {
   application?: Application;
 }
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ application: S.optional(Application) }),
-).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface UpdateAttributeGroupRequest {
   attributeGroup: string;
   name?: string;
@@ -1054,11 +1045,8 @@ export const UpdateAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAttributeGroupResponse {
   attributeGroup?: AttributeGroup;
 }
-export const UpdateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attributeGroup: S.optional(AttributeGroup) }),
-).annotate({
-  identifier: "UpdateAttributeGroupResponse",
-}) as any as S.Schema<UpdateAttributeGroupResponse>;
+export const UpdateAttributeGroupResponse =
+  CreateAttributeGroupResponse as any as S.Schema<UpdateAttributeGroupResponse>;
 export type AssociateAttributeGroupError =
   | ConflictException
   | InternalServerException

@@ -206,9 +206,8 @@ export const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEntitlementRequest" }) as any as S.Schema<DeleteEntitlementRequest>;
 export interface DeleteEntitlementResponse {}
-export const DeleteEntitlementResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEntitlementResponse",
-}) as any as S.Schema<DeleteEntitlementResponse>;
+export const DeleteEntitlementResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteEntitlementResponse>;
 export interface GetApplicationRequest {
   applicationArn: string;
 }
@@ -369,14 +368,10 @@ export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type IdentityCenterPrincipalFilter =
   | { userId: string; groupId?: never }
   | { userId?: never; groupId: string };
-export const IdentityCenterPrincipalFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ userId: S.String }),
-  /*@__PURE__*/ S.Struct({ groupId: S.String }),
-]);
+export const IdentityCenterPrincipalFilter =
+  IdentityCenterPrincipal as any as S.Schema<IdentityCenterPrincipalFilter>;
 export type PrincipalFilter = { identityCenter: IdentityCenterPrincipalFilter };
-export const PrincipalFilter = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterPrincipalFilter }),
-]);
+export const PrincipalFilter = Principal as any as S.Schema<PrincipalFilter>;
 export interface PrincipalRoleEntitlementFilter {
   principal?: PrincipalFilter;
   roleArn?: string;
@@ -419,20 +414,10 @@ export interface PrincipalRoleEntitlementSummary {
   account: string;
   accountName?: string;
 }
-export const PrincipalRoleEntitlementSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principal: Principal,
-    roleArn: S.String,
-    account: S.String,
-    accountName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrincipalRoleEntitlementSummary",
-}) as any as S.Schema<PrincipalRoleEntitlementSummary>;
+export const PrincipalRoleEntitlementSummary =
+  PrincipalRoleEntitlementDetails as any as S.Schema<PrincipalRoleEntitlementSummary>;
 export type EntitlementSummary = { principalRole: PrincipalRoleEntitlementSummary };
-export const EntitlementSummary = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlementSummary }),
-]);
+export const EntitlementSummary = EntitlementDetails as any as S.Schema<EntitlementSummary>;
 export interface EntitlementsListMember {
   entitlementId: string;
   entitlement: EntitlementSummary;
@@ -482,9 +467,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
 export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -500,9 +484,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export type CreateApplicationError =
   | AccessDeniedException
   | AlreadyCreatedException

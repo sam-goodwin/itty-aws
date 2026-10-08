@@ -454,9 +454,7 @@ export const GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueCas
 export type GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueCase1RoutingItemPathsList =
   Array<string>;
 export const GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueCase1RoutingItemPathsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueCase1RoutingItemPathsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueCase1RoutingItemPathsList>;
 
 /** Groups of path expressions that are routed to this application. See https://vercel.com/docs/microfrontends/path-routing. */
 export interface GetMicrofrontendsConfigForProjectResponseConfigApplicationsValueCase1RoutingItem {
@@ -622,9 +620,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemAliasItemConfiguredBy =
 export type GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAliasList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAliasList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAliasList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAliasList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAliasAssigned =
   | number
@@ -649,9 +645,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAlia
 export type GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAutomaticAliasesList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAutomaticAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAutomaticAliasesList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAutomaticAliasesList>;
 
 /** The type of matching to perform */
 export type GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBranchMatcherType =
@@ -746,9 +740,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentMeta
 export type GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaimsMfeGroupIdsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaimsMfeGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaimsMfeGroupIdsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaimsMfeGroupIdsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaims {
   aud: string;
@@ -1009,9 +1001,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemBlobs = /*@__PURE__*/ S
 export type GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItemAwsSubnetIdsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItemAwsSubnetIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItemAwsSubnetIdsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItemAwsSubnetIdsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItemAws {
   securityGroupId?: string;
@@ -1333,9 +1323,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemB
 export type GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemCurrentDeploymentAliasesList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemCurrentDeploymentAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemCurrentDeploymentAliasesList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemCurrentDeploymentAliasesList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemDomainsItemRedirectStatusCode =
   | 301
@@ -1578,9 +1566,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigFu
 export type GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigFunctionDefaultRegionsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigFunctionDefaultRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigFunctionDefaultRegionsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigFunctionDefaultRegionsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfig {
   buildMachineElasticLastUpdated?: number;
@@ -2334,9 +2320,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemContentHint =
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemCustomEnvironmentIdsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemEnvItemCustomEnvironmentIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemCustomEnvironmentIdsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemEnvItemCustomEnvironmentIdsList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemEnvItemInternalContentHintType =
   "flags-secret";
@@ -2821,9 +2805,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemIpBucketsList = /*@__PU
 export type GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresentTargetsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresentTargetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresentTargetsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresentTargetsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresent {
   targets: GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresentTargetsList;
@@ -2839,9 +2821,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPres
 
 export type GetMicrofrontendsInGroupResponseProjectsItemJobsLintTargetsList = Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemJobsLintTargetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsLintTargetsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsLintTargetsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemJobsLint {
   targets: GetMicrofrontendsInGroupResponseProjectsItemJobsLintTargetsList;
@@ -2857,27 +2837,17 @@ export const GetMicrofrontendsInGroupResponseProjectsItemJobsLint = /*@__PURE__*
 export type GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresentTargetsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresentTargetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresentTargetsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresentTargetsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresent {
   targets: GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresentTargetsList;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targets: GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresentTargetsList,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresent",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresent>;
+  GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresent as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsMfeConfigPresent>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemJobsTypecheckTargetsList = Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemJobsTypecheckTargetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsTypecheckTargetsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemJobsTypecheckTargetsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemJobsTypecheck {
   targets: GetMicrofrontendsInGroupResponseProjectsItemJobsTypecheckTargetsList;
@@ -2955,9 +2925,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLastAliasRequest = /*@_
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAliasList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAliasList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAliasList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAliasList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAliasAssigned =
   | number
@@ -2973,9 +2941,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAl
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAutomaticAliasesList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAutomaticAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAutomaticAliasesList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemAutomaticAliasesList>;
 
 /** The type of matching to perform */
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBranchMatcherType =
@@ -3009,9 +2975,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBu
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBuildsList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBuildsList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBuildsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemBuildsList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemChecksConclusion =
   | "canceled"
@@ -3037,17 +3001,12 @@ export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemMet
   [key: string]: string | undefined;
 };
 export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemMetaMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemMetaMap>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentMetaMap as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemMetaMap>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaimsMfeGroupIdsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaimsMfeGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaimsMfeGroupIdsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaimsMfeGroupIdsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaims {
   aud: string;
@@ -3065,27 +3024,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsIt
   sub: string;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaims =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aud: S.String,
-      custom_environment_id: S.optional(S.String),
-      deployment_id: S.optional(S.String),
-      environment: S.String,
-      iss: S.String,
-      mfe_group_ids: S.optional(
-        GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaimsMfeGroupIdsList,
-      ),
-      owner: S.String,
-      owner_id: S.String,
-      plan: S.optional(S.String),
-      project: S.String,
-      project_id: S.String,
-      scope: S.String,
-      sub: S.String,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaims",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaims>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaims as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemOidcTokenClaims>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItemPlan =
   | "enterprise"
@@ -3292,9 +3231,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase1DeployHooksIte
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase1DeployHooksList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase1DeployHooksList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase1DeployHooksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase1DeployHooksList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase1Type = "github-limited";
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase1Type = S.String;
@@ -3339,9 +3276,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase2DeployHooksIte
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase2DeployHooksList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase2DeployHooksList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase2DeployHooksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase2DeployHooksList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase2Type = "github-custom-host";
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase2Type = S.String;
@@ -3388,9 +3323,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase3DeployHooksIte
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase3DeployHooksList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase3DeployHooksList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase3DeployHooksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase3DeployHooksList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase3Type = "gitlab";
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase3Type = S.String;
@@ -3439,9 +3372,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase4DeployHooksIte
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase4DeployHooksList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase4DeployHooksList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase4DeployHooksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase4DeployHooksList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase4Type = "bitbucket";
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase4Type = S.String;
@@ -3487,9 +3418,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase5DeployHooksIte
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase5DeployHooksList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase5DeployHooksList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase5DeployHooksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase5DeployHooksList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase5Type = "vercel";
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase5Type = S.String;
@@ -3531,9 +3460,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase6DeployHooksIte
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase6DeployHooksList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase6DeployHooksList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase6DeployHooksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase6DeployHooksList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase6Type = "v0";
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase6Type = S.String;
@@ -3575,9 +3502,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase7DeployHooksIte
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase7DeployHooksList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase7DeployHooksList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase7DeployHooksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemLinkCase0DeployHooksList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemLinkCase7DeployHooksList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemLinkCase7Type = "cursor-origin";
 export const GetMicrofrontendsInGroupResponseProjectsItemLinkCase7Type = S.String;
@@ -3632,9 +3557,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemLink =
 export type GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase0GroupIdsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase0GroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase0GroupIdsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase0GroupIdsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase0 {
   /** A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs` */
@@ -3667,9 +3590,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase0 =
 export type GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase1GroupIdsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase1GroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase1GroupIdsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase1GroupIdsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemMicrofrontendsCase1 {
   /** A path that is used to take screenshots and as the default path in preview links when a domain for this microfrontend is shown in the UI. Includes the leading slash, e.g. `/docs` */
@@ -3836,942 +3757,704 @@ export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupL
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAgentList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAgentList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAgentList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAgentList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyBypassAllList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyBypassAllList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyBypassAllList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyBypassAllList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyOwnedBySelfList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyOwnedBySelfList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyOwnedBySelfList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyOwnedBySelfList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeySpendAttributionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeySpendAttributionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeySpendAttributionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeySpendAttributionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyZdrExemptionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyZdrExemptionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyZdrExemptionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayApiKeyZdrExemptionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayBudgetList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayBudgetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayBudgetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayBudgetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayCreditsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayCreditsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayCreditsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayCreditsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayGuardrailsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayGuardrailsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayGuardrailsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayGuardrailsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayPrivateModelsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayPrivateModelsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayPrivateModelsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayPrivateModelsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayRulesList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayRulesList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayRulesList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayRulesList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewaySettingsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewaySettingsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewaySettingsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewaySettingsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsSettingsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsSettingsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsSettingsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayTranscriptsSettingsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayUsageList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayUsageList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayUsageList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayUsageList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayVirtualModelConfigsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayVirtualModelConfigsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayVirtualModelConfigsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAiGatewayVirtualModelConfigsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertRulesList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertRulesList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertRulesList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertRulesList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertsList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAlertsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasGlobalList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasGlobalList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasGlobalList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasGlobalList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProjectList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProjectList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProjectList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProjectList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProtectionBypassList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProtectionBypassList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProtectionBypassList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAliasProtectionBypassList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsSamplingList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsSamplingList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsSamplingList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsSamplingList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsUsageList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsUsageList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsUsageList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAnalyticsUsageList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyAiGatewayList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyAiGatewayList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyAiGatewayList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyAiGatewayList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyOwnedBySelfList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyOwnedBySelfList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyOwnedBySelfList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsApiKeyOwnedBySelfList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAuditLogList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAuditLogList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAuditLogList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAuditLogList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsAutomationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsAutomationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAutomationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsAutomationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingAddressList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingAddressList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingAddressList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingAddressList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInformationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInformationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInformationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInformationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceEmailRecipientList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceEmailRecipientList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceEmailRecipientList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceEmailRecipientList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceLanguageList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceLanguageList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceLanguageList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingInvoiceLanguageList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPlanList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPlanList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPlanList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPlanList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPurchaseOrderList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPurchaseOrderList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPurchaseOrderList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingPurchaseOrderList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingRefundList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingRefundList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingRefundList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingRefundList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingTaxIdList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingTaxIdList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingTaxIdList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBillingTaxIdList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobStoreTokenSetList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobStoreTokenSetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobStoreTokenSetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBlobStoreTokenSetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBudgetList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBudgetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBudgetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBudgetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineDefaultList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineDefaultList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineDefaultList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBuildMachineDefaultList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsBulkRedirectsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsBulkRedirectsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBulkRedirectsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsBulkRedirectsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactUsageEventList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactUsageEventList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactUsageEventList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCacheArtifactUsageEventList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiInvocationsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiInvocationsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiInvocationsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiInvocationsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiLogsList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiLogsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiLogsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCiLogsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeChecksList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeChecksList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeChecksList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeChecksList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeOwnersList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeOwnersList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeOwnersList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCodeOwnersList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConcurrentBuildsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConcurrentBuildsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConcurrentBuildsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConcurrentBuildsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationLinkList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationLinkList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationLinkList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectConfigurationLinkList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectLogsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectLogsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectLogsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnectLogsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientProjectList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientProjectList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientProjectList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexClientProjectList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexContactList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexContactList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexContactList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexContactList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexInstallationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexInstallationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexInstallationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexInstallationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexTokenList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexTokenList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexTokenList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsConnexTokenList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsCursorOriginInstallationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsCursorOriginInstallationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCursorOriginInstallationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsCursorOriginInstallationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheBillingSettingsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheBillingSettingsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheBillingSettingsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheBillingSettingsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheNamespaceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheNamespaceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheNamespaceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDataCacheNamespaceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDefaultDeploymentProtectionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDefaultDeploymentProtectionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDefaultDeploymentProtectionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDefaultDeploymentProtectionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentBuildLogsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentBuildLogsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentBuildLogsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentBuildLogsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckPreviewList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckPreviewList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckPreviewList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckPreviewList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckReRunFromProductionBranchList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckReRunFromProductionBranchList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckReRunFromProductionBranchList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentCheckReRunFromProductionBranchList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPolicyList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPolicyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPolicyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPolicyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPreviewList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPreviewList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPreviewList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPreviewList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPrivateList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPrivateList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPrivateList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPrivateList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProductionGitList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProductionGitList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProductionGitList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProductionGitList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPromoteList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPromoteList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPromoteList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentPromoteList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProtectionExceptionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProtectionExceptionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProtectionExceptionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentProtectionExceptionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentRollbackList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentRollbackList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentRollbackList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentRollbackList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentV0List =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentV0List =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentV0List>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDeploymentV0List>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAcceptDelegationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAcceptDelegationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAcceptDelegationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAcceptDelegationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAuthCodesList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAuthCodesList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAuthCodesList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainAuthCodesList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCertificateList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCertificateList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCertificateList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCertificateList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCheckConfigList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCheckConfigList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCheckConfigList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainCheckConfigList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainMoveList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainMoveList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainMoveList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainMoveList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainPurchaseList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainPurchaseList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainPurchaseList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainPurchaseList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainRecordList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainRecordList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainRecordList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainRecordList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainTransferInList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainTransferInList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainTransferInList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDomainTransferInList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsDrainList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsDrainList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDrainList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsDrainList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeCacheNamespaceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeCacheNamespaceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeCacheNamespaceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeCacheNamespaceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigItemList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigItemList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigItemList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigItemList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigSchemaList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigSchemaList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigSchemaList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigSchemaList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigTokenList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigTokenList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigTokenList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEdgeConfigTokenList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEndpointVerificationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEndpointVerificationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEndpointVerificationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEndpointVerificationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEnvironmentsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEnvironmentsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEnvironmentsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsEventList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsEventList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEventList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsEventList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsFileUploadList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsFileUploadList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsFileUploadList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsFileUploadList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsFlagsExplorerSubscriptionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsFlagsExplorerSubscriptionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsFlagsExplorerSubscriptionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsFlagsExplorerSubscriptionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitCredentialGrantList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitCredentialGrantList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitCredentialGrantList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitCredentialGrantList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitRepositoryList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitRepositoryList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitRepositoryList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsGitRepositoryList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsImageOptimizationNewPriceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsImageOptimizationNewPriceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsImageOptimizationNewPriceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsImageOptimizationNewPriceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationAccountList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationAccountList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationAccountList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationAccountList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationProjectsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationProjectsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationProjectsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationProjectsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationRoleList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationRoleList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationRoleList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationRoleList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationTransferList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationTransferList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationTransferList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationConfigurationTransferList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationDeploymentActionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationDeploymentActionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationDeploymentActionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationDeploymentActionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationEventList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationEventList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationEventList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationEventList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationLogList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationLogList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationLogList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationLogList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationPullRequestList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationPullRequestList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationPullRequestList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationPullRequestList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceDataList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceDataList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceDataList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceDataList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceReplCommandList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceReplCommandList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceReplCommandList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceReplCommandList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceSecretsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceSecretsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceSecretsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationResourceSecretsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationSSOSessionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationSSOSessionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationSSOSessionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationSSOSessionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStoreTokenSetList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStoreTokenSetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStoreTokenSetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStoreTokenSetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStrictList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStrictList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStrictList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationStrictList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationVercelConfigurationOverrideList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationVercelConfigurationOverrideList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationVercelConfigurationOverrideList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIntegrationVercelConfigurationOverrideList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsIpBlockingList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsIpBlockingList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIpBlockingList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsIpBlockingList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsJobList = Array<ACLAction>;
@@ -4782,1320 +4465,984 @@ export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsJobList = /*
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsJobGlobalList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsJobGlobalList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsJobGlobalList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsJobGlobalList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsIssuerList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsIssuerList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsIssuerList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsIssuerList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsProjectGrantList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsProjectGrantList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsProjectGrantList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsKmsProjectGrantList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogDrainList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogDrainList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogDrainList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogDrainList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsPresetList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsPresetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsPresetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsLogsPresetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceBillingDataList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceBillingDataList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceBillingDataList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceBillingDataList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationEdgeConfigDataList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationEdgeConfigDataList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationEdgeConfigDataList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationEdgeConfigDataList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationItemList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationItemList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationItemList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceExperimentationItemList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceFlexCommitList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceFlexCommitList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceFlexCommitList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceFlexCommitList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInstallationMemberList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInstallationMemberList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInstallationMemberList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInstallationMemberList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInvoiceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInvoiceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInvoiceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceInvoiceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceSettingsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceSettingsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceSettingsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMarketplaceSettingsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardSpaceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardSpaceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardSpaceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardSpaceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardTaskList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardTaskList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardTaskList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMessageboardTaskList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringAlertList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringAlertList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringAlertList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringAlertList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringChartList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringChartList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringChartList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringChartList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringQueryList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringQueryList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringQueryList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringQueryList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringSettingsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringSettingsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringSettingsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsMonitoringSettingsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationCustomerBudgetList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationCustomerBudgetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationCustomerBudgetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationCustomerBudgetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDeploymentFailedList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDeploymentFailedList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDeploymentFailedList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDeploymentFailedList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainConfigurationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainConfigurationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainConfigurationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainConfigurationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainExpireList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainExpireList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainExpireList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainExpireList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainMovedList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainMovedList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainMovedList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainMovedList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainPurchaseList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainPurchaseList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainPurchaseList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainPurchaseList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainRenewalList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainRenewalList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainRenewalList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainRenewalList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainTransferList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainTransferList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainTransferList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainTransferList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainUnverifiedList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainUnverifiedList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainUnverifiedList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationDomainUnverifiedList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationMonitoringAlertList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationMonitoringAlertList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationMonitoringAlertList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationMonitoringAlertList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPaymentFailedList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPaymentFailedList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPaymentFailedList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPaymentFailedList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPreferencesList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPreferencesList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPreferencesList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationPreferencesList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationStatementOfReasonsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationStatementOfReasonsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationStatementOfReasonsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationStatementOfReasonsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationUsageAlertList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationUsageAlertList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationUsageAlertList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsNotificationUsageAlertList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ApplicationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ApplicationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ApplicationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ApplicationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ConnectionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ConnectionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ConnectionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOauth2ConnectionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityConfigurationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityConfigurationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityConfigurationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityConfigurationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityDataList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityDataList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityDataList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityDataList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityFunnelList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityFunnelList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityFunnelList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityFunnelList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityNotebookList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityNotebookList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityNotebookList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsObservabilityNotebookList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOidcFederationPolicyList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOidcFederationPolicyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOidcFederationPolicyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOidcFederationPolicyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandBuildList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandBuildList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandBuildList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandBuildList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandConcurrencyList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandConcurrencyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandConcurrencyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOnDemandConcurrencyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOpenTelemetryEndpointList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOpenTelemetryEndpointList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOpenTelemetryEndpointList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOpenTelemetryEndpointList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOptionsAllowlistList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOptionsAllowlistList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOptionsAllowlistList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOptionsAllowlistList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationDomainList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationDomainList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationDomainList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationDomainList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationTeamList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationTeamList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationTeamList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOrganizationTeamList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsOwnEventList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsOwnEventList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOwnEventList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsOwnEventList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPageIntegrityList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPageIntegrityList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPageIntegrityList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPageIntegrityList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionInvoiceItemList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionInvoiceItemList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionInvoiceItemList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPasswordProtectionInvoiceItemList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPaymentMethodList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPaymentMethodList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPaymentMethodList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPaymentMethodList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPermissionsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPermissionsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPermissionsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPermissionsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresStoreTokenSetList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresStoreTokenSetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresStoreTokenSetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPostgresStoreTokenSetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPreviewDeploymentSuffixList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPreviewDeploymentSuffixList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPreviewDeploymentSuffixList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPreviewDeploymentSuffixList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateCloudAccountList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateCloudAccountList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateCloudAccountList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateCloudAccountList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateLinkEndpointList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateLinkEndpointList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateLinkEndpointList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsPrivateLinkEndpointList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionAliasProtectionBypassList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionAliasProtectionBypassList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionAliasProtectionBypassList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionAliasProtectionBypassList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionShareableLinkList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionShareableLinkList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionShareableLinkList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProductionShareableLinkList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAccessGroupList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAccessGroupList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAccessGroupList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAccessGroupList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsSamplingList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsSamplingList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsSamplingList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsSamplingList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsUsageList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsUsageList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsUsageList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectAnalyticsUsageList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckRunList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckRunList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckRunList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectCheckRunList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentExpirationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentExpirationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentExpirationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentExpirationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentHookList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentHookList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentHookList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentHookList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentProtectionStrictList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentProtectionStrictList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentProtectionStrictList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDeploymentProtectionStrictList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainCheckConfigList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainCheckConfigList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainCheckConfigList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainCheckConfigList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainMoveList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainMoveList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainMoveList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainMoveList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainVerifyList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainVerifyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainVerifyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectDomainVerifyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsProductionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsProductionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsProductionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsProductionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsUnownedByIntegrationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsUnownedByIntegrationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsUnownedByIntegrationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEnvVarsUnownedByIntegrationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEventList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEventList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEventList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectEventList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsProductionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsProductionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsProductionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsProductionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsSdkKeyList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsSdkKeyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsSdkKeyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFlagsSdkKeyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFromV0List =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFromV0List =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFromV0List>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectFromV0List>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIdList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIdList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIdList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIdList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIntegrationConfigurationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIntegrationConfigurationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIntegrationConfigurationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectIntegrationConfigurationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectLinkList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectLinkList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectLinkList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectLinkList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMemberList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMemberList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMemberList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMemberList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMonitoringList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMonitoringList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMonitoringList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectMonitoringList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectOIDCTokenList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectOIDCTokenList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectOIDCTokenList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectOIDCTokenList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectPermissionsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectPermissionsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectPermissionsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectPermissionsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProductionBranchList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProductionBranchList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProductionBranchList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProductionBranchList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProtectionBypassList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProtectionBypassList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProtectionBypassList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectProtectionBypassList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRollingReleaseList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRollingReleaseList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRollingReleaseList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRollingReleaseList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRoutesList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRoutesList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRoutesList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectRoutesList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSettingList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSettingList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSettingList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSettingList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseCommentList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseCommentList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseCommentList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectSupportCaseCommentList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTierList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTierList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTierList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTierList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferInList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferInList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferInList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferInList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferOutList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferOutList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferOutList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferOutList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferRequestList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferRequestList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferRequestList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectTransferRequestList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectUsageList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectUsageList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectUsageList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProjectUsageList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsProTrialOnboardingList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsProTrialOnboardingList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProTrialOnboardingList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsProTrialOnboardingList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsRateLimitList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsRateLimitList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRateLimitList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRateLimitList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisStoreTokenSetList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisStoreTokenSetList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisStoreTokenSetList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRedisStoreTokenSetList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsRemoteCachingList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsRemoteCachingList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRemoteCachingList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRemoteCachingList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsRepositoryList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsRepositoryList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRepositoryList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsRepositoryList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSamlConfigList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSamlConfigList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSamlConfigList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSamlConfigList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsScheduleList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsScheduleList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsScheduleList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsScheduleList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSeawallConfigList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSeawallConfigList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSeawallConfigList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSeawallConfigList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecretList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecretList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecretList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecretList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityConfigList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityConfigList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityConfigList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityConfigList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityPlusConfigurationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityPlusConfigurationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityPlusConfigurationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSecurityPlusConfigurationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSensitiveEnvironmentVariablePolicyList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSensitiveEnvironmentVariablePolicyList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSensitiveEnvironmentVariablePolicyList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSensitiveEnvironmentVariablePolicyList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSettingList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSettingList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSettingList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSettingList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkStrictList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkStrictList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkStrictList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsShareableLinkStrictList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarConnectionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarConnectionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarConnectionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarConnectionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsProductionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsProductionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsProductionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSharedEnvVarsProductionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSkewProtectionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSkewProtectionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSkewProtectionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSkewProtectionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceRunList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceRunList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceRunList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSpaceRunList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreIsLockedList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreIsLockedList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreIsLockedList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreIsLockedList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTokenSetSensitiveList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTokenSetSensitiveList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTokenSetSensitiveList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTokenSetSensitiveList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTransferList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTransferList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTransferList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsStoreTransferList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseCommentList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseCommentList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseCommentList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsSupportCaseCommentList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamAccessRequestList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamAccessRequestList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamAccessRequestList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamAccessRequestList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamFellowMembershipList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamFellowMembershipList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamFellowMembershipList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamFellowMembershipList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamGitExclusivityList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamGitExclusivityList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamGitExclusivityList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamGitExclusivityList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteCodeList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteCodeList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteCodeList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteCodeList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteLinkList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteLinkList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteLinkList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamInviteLinkList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamJoinList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamJoinList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamJoinList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamJoinList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMemberMfaStatusList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMemberMfaStatusList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMemberMfaStatusList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMemberMfaStatusList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMicrofrontendsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMicrofrontendsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMicrofrontendsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamMicrofrontendsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipDisconnectSAMLList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipDisconnectSAMLList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipDisconnectSAMLList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamOwnMembershipDisconnectSAMLList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamSudoList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamSudoList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamSudoList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamSudoList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamTokenInvalidationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamTokenInvalidationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamTokenInvalidationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTeamTokenInvalidationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTokenList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTokenList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTokenList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTokenList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsToolbarCommentList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsToolbarCommentList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsToolbarCommentList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsToolbarCommentList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedIpsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedIpsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedIpsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedIpsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedSourcesList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedSourcesList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedSourcesList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsTrustedSourcesList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageCycleList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageCycleList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageCycleList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUsageCycleList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserConnectionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserConnectionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserConnectionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserConnectionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserMfaConfigurationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserMfaConfigurationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserMfaConfigurationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserMfaConfigurationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserPreferenceList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserPreferenceList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserPreferenceList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserPreferenceList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserSudoList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserSudoList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserSudoList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsUserSudoList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsV0ChatList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsV0ChatList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsV0ChatList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsV0ChatList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsVcrRepositoryList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsVcrRepositoryList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVcrRepositoryList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVcrRepositoryList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationRequestList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationRequestList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationRequestList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAppInstallationRequestList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAuthList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAuthList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAuthList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelAuthList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelRunList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelRunList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelRunList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVercelRunList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsVpcPeeringConnectionList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsVpcPeeringConnectionList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVpcPeeringConnectionList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsVpcPeeringConnectionList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsPlanList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsPlanList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsPlanList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAnalyticsPlanList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAuthnList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAuthnList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAuthnList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebAuthnList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookList = Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookEventList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookEventList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookEventList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWebhookEventList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export type GetMicrofrontendsInGroupResponseProjectsItemPermissionsWorkflowRunDataList =
   Array<ACLAction>;
 export const GetMicrofrontendsInGroupResponseProjectsItemPermissionsWorkflowRunDataList =
-  /*@__PURE__*/ S.Array(
-    ACLAction,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWorkflowRunDataList>;
+  GetMicrofrontendsInGroupResponseProjectsItemPermissionsAccessGroupList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemPermissionsWorkflowRunDataList>;
 
 /** Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary. */
 export interface GetMicrofrontendsInGroupResponseProjectsItemPermissions {
@@ -7595,9 +6942,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemResourceConfigFunctionD
 export type GetMicrofrontendsInGroupResponseProjectsItemResourceConfigFunctionDefaultRegionsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemResourceConfigFunctionDefaultRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemResourceConfigFunctionDefaultRegionsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemResourceConfigFunctionDefaultRegionsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemResourceConfig {
   buildMachineElasticLastUpdated?: number;
@@ -7681,9 +7026,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateActio
 export type GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateChecksItemExcludePathsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateChecksItemExcludePathsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateChecksItemExcludePathsList>;
 
 /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateChecksItemExcludeStatusCodesList =
@@ -7891,15 +7234,11 @@ export const GetMicrofrontendsInGroupResponseProjectsItemSandbox = /*@__PURE__*/
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityFirewallBypassIpsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityFirewallBypassIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityFirewallBypassIpsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityFirewallBypassIpsList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeadersCase0List = Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeadersCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeadersCase0List>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeadersCase0List>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeadersCase1 = "*";
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityLogHeadersCase1 = S.String;
@@ -8058,9 +7397,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueAc
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueLogHeadersCase0List =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueLogHeadersCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueLogHeadersCase0List>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueLogHeadersCase0List>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueLogHeadersCase1 = "*";
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueLogHeadersCase1 =
@@ -8089,9 +7426,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRa
 export type GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRateLimitKeysList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRateLimitKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRateLimitKeysList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRateLimitKeysList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRateLimit {
   action?: GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRateLimitAction | null;
@@ -8327,9 +7662,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemServicesList = /*@__PUR
 export type GetMicrofrontendsInGroupResponseProjectsItemSkewProtectionAllowedDomainsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemSkewProtectionAllowedDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSkewProtectionAllowedDomainsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemSkewProtectionAllowedDomainsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemSpeedInsights {
   canceledAt?: number;
@@ -8405,9 +7738,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemSsoProtection = /*@__PU
 
 export type GetMicrofrontendsInGroupResponseProjectsItemStaticIpsRegionsList = Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemStaticIpsRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemStaticIpsRegionsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemStaticIpsRegionsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemStaticIps {
   builds: boolean;
@@ -8426,9 +7757,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemStaticIps = /*@__PURE__
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasList = Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasAssigned =
   | number
@@ -8444,9 +7773,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAliasError 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAutomaticAliasesList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAutomaticAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAutomaticAliasesList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueAutomaticAliasesList>;
 
 /** The type of matching to perform */
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBranchMatcherType =
@@ -8479,9 +7806,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsItem 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList =
   Array<GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsItem>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList =
-  /*@__PURE__*/ S.Array(
-    GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsItem,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueBuildsList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueChecksConclusion =
   | "canceled"
@@ -8505,17 +7830,12 @@ export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueMetaMap = {
   [key: string]: string | undefined;
 };
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueMetaMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueMetaMap>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentMetaMap as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueMetaMap>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaimsMfeGroupIdsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaimsMfeGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaimsMfeGroupIdsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaimsMfeGroupIdsList>;
 
 export interface GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims {
   aud: string;
@@ -8533,27 +7853,7 @@ export interface GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTok
   sub: string;
 }
 export const GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aud: S.String,
-      custom_environment_id: S.optional(S.String),
-      deployment_id: S.optional(S.String),
-      environment: S.String,
-      iss: S.String,
-      mfe_group_ids: S.optional(
-        GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaimsMfeGroupIdsList,
-      ),
-      owner: S.String,
-      owner_id: S.String,
-      plan: S.optional(S.String),
-      project: S.String,
-      project_id: S.String,
-      scope: S.String,
-      sub: S.String,
-    }),
-  ).annotate({
-    identifier: "GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims",
-  }) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims>;
+  GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaims as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTargetsValueOidcTokenClaims>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTargetsValuePlan =
   | "enterprise"
@@ -8691,9 +7991,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTier = S.String;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTracingIgnorePathsList = Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTracingIgnorePathsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTracingIgnorePathsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTracingIgnorePathsList>;
 
 /** Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed. */
 export type GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesItemDestination =
@@ -8835,9 +8133,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvi
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase0SlugsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase0SlugsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase0SlugsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase0SlugsList>;
 
 /** The target envs on the current project that may be accessed. */
 export interface GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase0 {
@@ -8868,9 +8164,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvi
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase1SlugsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase1SlugsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase1SlugsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase1SlugsList>;
 
 /** The target envs on the current project that may be accessed. */
 export interface GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemToCase1 {
@@ -8901,9 +8195,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvi
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemClaimsValueList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemClaimsValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemClaimsValueList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemClaimsValueList>;
 
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItemClaimsMap =
   {
@@ -8961,9 +8253,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsV
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase0SlugsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase0SlugsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase0SlugsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase0SlugsList>;
 
 /** The source envs on the trusted project that are allowed to access `to`. */
 export interface GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase0 {
@@ -8994,9 +8284,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsV
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase1SlugsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase1SlugsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase1SlugsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase1SlugsList>;
 
 /** The source envs on the trusted project that are allowed to access `to`. */
 export interface GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemFromCase1 {
@@ -9033,9 +8321,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsV
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase0SlugsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase0SlugsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase0SlugsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase0SlugsList>;
 
 /** The target envs on the current project that may be accessed. */
 export interface GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase0 {
@@ -9066,9 +8352,7 @@ export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsV
 export type GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase1SlugsList =
   Array<string>;
 export const GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase1SlugsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase1SlugsList>;
+  GetMicrofrontendsConfigResponseConfigApplicationsValueCase1RoutingItemPathsList as any as S.Schema<GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase1SlugsList>;
 
 /** The target envs on the current project that may be accessed. */
 export interface GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItemToCase1 {

@@ -1376,11 +1376,7 @@ export interface Union {
   /** Delete cells which would be deleted by any element of `rules`. */
   rules?: GcRuleList;
 }
-export const Union = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(GcRuleList),
-  }),
-).annotate({ identifier: "Union" }) as any as S.Schema<Union>;
+export const Union = Intersection as any as S.Schema<Union>;
 
 /** Rule for determining which cells to delete during garbage collection. */
 export interface GcRule {
@@ -1801,9 +1797,7 @@ export const DeleteProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = DataBoostReadLocalWrites as any as S.Schema<Empty>;
 
 export interface DeleteProjectsInstancesAppProfilesRequest {
   /** Required. The unique name of the app profile to be deleted. Values are of the form `projects/{project}/instances/{instance}/appProfiles/{app_profile}`. */
@@ -3744,13 +3738,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsInstancesClustersBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

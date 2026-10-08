@@ -121,9 +121,8 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type ExperimentSavedMetricTagsList = Array<unknown>;
-export const ExperimentSavedMetricTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentSavedMetricTagsList>;
+export const ExperimentSavedMetricTagsList =
+  CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<ExperimentSavedMetricTagsList>;
 
 export interface ExperimentSavedMetricLinkedExperiment {
   /** Experiment ID. */
@@ -285,9 +284,8 @@ export const PaginatedExperimentSavedMetricList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedExperimentSavedMetricList>;
 
 export type UpdateExperimentSavedMetricsRequestTagsList = Array<unknown>;
-export const UpdateExperimentSavedMetricsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentSavedMetricsRequestTagsList>;
+export const UpdateExperimentSavedMetricsRequestTagsList =
+  CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<UpdateExperimentSavedMetricsRequestTagsList>;
 
 export interface UpdateExperimentSavedMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -322,9 +320,8 @@ export const UpdateExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateExperimentSavedMetricsRequest>;
 
 export type UpdateExperimentSavedMetricsPartialRequestTagsList = Array<unknown>;
-export const UpdateExperimentSavedMetricsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentSavedMetricsPartialRequestTagsList>;
+export const UpdateExperimentSavedMetricsPartialRequestTagsList =
+  CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<UpdateExperimentSavedMetricsPartialRequestTagsList>;
 
 export interface UpdateExperimentSavedMetricsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

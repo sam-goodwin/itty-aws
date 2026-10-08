@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
 
 export type BlockchainNodeStateEnum =
   | "STATE_UNSPECIFIED"

@@ -572,21 +572,13 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressSource {
   /** A PrivateServiceConnectEndpoint that is allowed to access data outside the perimeter. The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in. */
   pscEndpoint?: GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(S.String),
-    accessLevel: S.optional(S.String),
-    pscEndpoint: S.optional(GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint),
-  }),
-).annotate({
-  identifier: "GoogleIdentityAccesscontextmanagerV1EgressSource",
-}) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSource>;
+export const GoogleIdentityAccesscontextmanagerV1EgressSource =
+  GoogleIdentityAccesscontextmanagerV1IngressSource as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSource>;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressSourceList =
   Array<GoogleIdentityAccesscontextmanagerV1EgressSource>;
-export const GoogleIdentityAccesscontextmanagerV1EgressSourceList = /*@__PURE__*/ S.Array(
-  GoogleIdentityAccesscontextmanagerV1EgressSource,
-) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSourceList>;
+export const GoogleIdentityAccesscontextmanagerV1EgressSourceList =
+  GoogleIdentityAccesscontextmanagerV1IngressSourceList as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSourceList>;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"

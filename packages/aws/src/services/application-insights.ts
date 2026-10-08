@@ -369,9 +369,8 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+export const DeleteApplicationResponse =
+  CreateComponentResponse as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -382,9 +381,8 @@ export const DeleteComponentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteComponentRequest" }) as any as S.Schema<DeleteComponentRequest>;
 export interface DeleteComponentResponse {}
-export const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteComponentResponse",
-}) as any as S.Schema<DeleteComponentResponse>;
+export const DeleteComponentResponse =
+  CreateComponentResponse as any as S.Schema<DeleteComponentResponse>;
 export interface DeleteLogPatternRequest {
   ResourceGroupName: string;
   PatternSetName: string;
@@ -396,9 +394,8 @@ export const DeleteLogPatternRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLogPatternRequest" }) as any as S.Schema<DeleteLogPatternRequest>;
 export interface DeleteLogPatternResponse {}
-export const DeleteLogPatternResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLogPatternResponse",
-}) as any as S.Schema<DeleteLogPatternResponse>;
+export const DeleteLogPatternResponse =
+  CreateComponentResponse as any as S.Schema<DeleteLogPatternResponse>;
 export interface DescribeApplicationRequest {
   ResourceGroupName: string;
   AccountId?: string;
@@ -413,11 +410,8 @@ export const DescribeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeApplicationResponse {
   ApplicationInfo?: ApplicationInfo;
 }
-export const DescribeApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationInfo: S.optional(ApplicationInfo) }),
-).annotate({
-  identifier: "DescribeApplicationResponse",
-}) as any as S.Schema<DescribeApplicationResponse>;
+export const DescribeApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<DescribeApplicationResponse>;
 export interface DescribeComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -1038,7 +1032,7 @@ export const ListLogPatternSetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLogPatternSetsRequest",
 }) as any as S.Schema<ListLogPatternSetsRequest>;
 export type LogPatternSetList = string[];
-export const LogPatternSetList = /*@__PURE__*/ S.Array(S.String);
+export const LogPatternSetList = ResourceList as any as S.Schema<LogPatternSetList>;
 export interface ListLogPatternSetsResponse {
   ResourceGroupName?: string;
   AccountId?: string;
@@ -1167,9 +1161,8 @@ export const RemoveWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveWorkloadRequest" }) as any as S.Schema<RemoveWorkloadRequest>;
 export interface RemoveWorkloadResponse {}
-export const RemoveWorkloadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveWorkloadResponse",
-}) as any as S.Schema<RemoveWorkloadResponse>;
+export const RemoveWorkloadResponse =
+  CreateComponentResponse as any as S.Schema<RemoveWorkloadResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -1180,11 +1173,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CreateComponentResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ResourceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1195,9 +1186,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CreateComponentResponse as any as S.Schema<UntagResourceResponse>;
 export type RemoveSNSTopic = boolean;
 export interface UpdateApplicationRequest {
   ResourceGroupName: string;
@@ -1224,11 +1214,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApplicationResponse {
   ApplicationInfo?: ApplicationInfo;
 }
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationInfo: S.optional(ApplicationInfo) }),
-).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface UpdateComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -1244,9 +1231,8 @@ export const UpdateComponentRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateComponentRequest" }) as any as S.Schema<UpdateComponentRequest>;
 export interface UpdateComponentResponse {}
-export const UpdateComponentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateComponentResponse",
-}) as any as S.Schema<UpdateComponentResponse>;
+export const UpdateComponentResponse =
+  CreateComponentResponse as any as S.Schema<UpdateComponentResponse>;
 export interface UpdateComponentConfigurationRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -1312,9 +1298,8 @@ export const UpdateProblemRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateProblemRequest" }) as any as S.Schema<UpdateProblemRequest>;
 export interface UpdateProblemResponse {}
-export const UpdateProblemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateProblemResponse",
-}) as any as S.Schema<UpdateProblemResponse>;
+export const UpdateProblemResponse =
+  CreateComponentResponse as any as S.Schema<UpdateProblemResponse>;
 export interface UpdateWorkloadRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -1333,12 +1318,8 @@ export interface UpdateWorkloadResponse {
   WorkloadId?: string;
   WorkloadConfiguration?: WorkloadConfiguration;
 }
-export const UpdateWorkloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WorkloadId: S.optional(S.String),
-    WorkloadConfiguration: S.optional(WorkloadConfiguration),
-  }),
-).annotate({ identifier: "UpdateWorkloadResponse" }) as any as S.Schema<UpdateWorkloadResponse>;
+export const UpdateWorkloadResponse =
+  AddWorkloadResponse as any as S.Schema<UpdateWorkloadResponse>;
 export type ErrorMsg = string;
 export type ExceptionMessage = string;
 export type AddWorkloadError =

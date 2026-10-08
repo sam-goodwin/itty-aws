@@ -77,10 +77,8 @@ export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
+export const ClustersCreateOrUpdateResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
 
 /** The status of the cluster provisioning. The three terminal states are: Succeeded, Failed and Canceled */
 export type ClusterProvisioningState = "Succeeded" | "Failed" | "Canceled" | "InProgress";
@@ -164,9 +162,8 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClusterResponse",
-}) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  ClusterPropertiesInput as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteFunctionRequest {
   /** The ID of the target subscription. */
@@ -195,9 +192,8 @@ export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFunctionRequest" }) as any as S.Schema<DeleteFunctionRequest>;
 
 export interface DeleteFunctionResponse {}
-export const DeleteFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFunctionResponse",
-}) as any as S.Schema<DeleteFunctionResponse>;
+export const DeleteFunctionResponse =
+  ClusterPropertiesInput as any as S.Schema<DeleteFunctionResponse>;
 
 export interface DeleteInputRequest {
   /** The ID of the target subscription. */
@@ -226,9 +222,7 @@ export const DeleteInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInputRequest" }) as any as S.Schema<DeleteInputRequest>;
 
 export interface DeleteInputResponse {}
-export const DeleteInputResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInputResponse",
-}) as any as S.Schema<DeleteInputResponse>;
+export const DeleteInputResponse = ClusterPropertiesInput as any as S.Schema<DeleteInputResponse>;
 
 export interface DeleteOutputRequest {
   /** The ID of the target subscription. */
@@ -257,9 +251,7 @@ export const DeleteOutputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOutputRequest" }) as any as S.Schema<DeleteOutputRequest>;
 
 export interface DeleteOutputResponse {}
-export const DeleteOutputResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOutputResponse",
-}) as any as S.Schema<DeleteOutputResponse>;
+export const DeleteOutputResponse = ClusterPropertiesInput as any as S.Schema<DeleteOutputResponse>;
 
 export interface DeletePrivateEndpointRequest {
   /** The ID of the target subscription. */
@@ -290,9 +282,8 @@ export const DeletePrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateEndpointRequest>;
 
 export interface DeletePrivateEndpointResponse {}
-export const DeletePrivateEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePrivateEndpointResponse",
-}) as any as S.Schema<DeletePrivateEndpointResponse>;
+export const DeletePrivateEndpointResponse =
+  ClusterPropertiesInput as any as S.Schema<DeletePrivateEndpointResponse>;
 
 export interface DeleteStreamingJobRequest {
   /** The ID of the target subscription. */
@@ -320,9 +311,8 @@ export const DeleteStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStreamingJobRequest>;
 
 export interface DeleteStreamingJobResponse {}
-export const DeleteStreamingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStreamingJobResponse",
-}) as any as S.Schema<DeleteStreamingJobResponse>;
+export const DeleteStreamingJobResponse =
+  ClusterPropertiesInput as any as S.Schema<DeleteStreamingJobResponse>;
 
 /** Describes one input parameter of a function. */
 export interface FunctionInput {
@@ -490,10 +480,8 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetClusterResponseTagsMap>;
+export const GetClusterResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 export interface GetClusterResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -611,16 +599,8 @@ export interface GetFunctionDefaultDefinitionResponse {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const GetFunctionDefaultDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(FunctionProperties),
-  }),
-).annotate({
-  identifier: "GetFunctionDefaultDefinitionResponse",
-}) as any as S.Schema<GetFunctionDefaultDefinitionResponse>;
+export const GetFunctionDefaultDefinitionResponse =
+  FunctionsCreateOrReplaceResponse as any as S.Schema<GetFunctionDefaultDefinitionResponse>;
 
 export interface GetInputRequest {
   /** The ID of the target subscription. */
@@ -796,12 +776,7 @@ export interface OutputDataSource {
   /** Data-source-type-specific properties (e.g. `storageAccounts`, `container`, `pathPattern` for `Microsoft.Storage/Blob`). */
   properties?: unknown;
 }
-export const OutputDataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "OutputDataSource" }) as any as S.Schema<OutputDataSource>;
+export const OutputDataSource = FunctionBinding as any as S.Schema<OutputDataSource>;
 
 /** Describes how data from an input is serialized or how data is serialized when written to an output. */
 export interface OutputPropertiesSerialization {
@@ -821,9 +796,8 @@ export const OutputPropertiesSerialization = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of zero or more conditions applicable to the resource, or to the job overall, that warrant customer attention. */
 export type OutputPropertiesDiagnosticsConditionsList = Array<DiagnosticCondition>;
-export const OutputPropertiesDiagnosticsConditionsList = /*@__PURE__*/ S.Array(
-  DiagnosticCondition,
-) as any as S.Schema<OutputPropertiesDiagnosticsConditionsList>;
+export const OutputPropertiesDiagnosticsConditionsList =
+  DiagnosticsConditionsList as any as S.Schema<OutputPropertiesDiagnosticsConditionsList>;
 
 /** Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention. */
 export interface OutputPropertiesDiagnostics {
@@ -1049,10 +1023,8 @@ export const GetStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStreamingJobResponseTagsMap = { [key: string]: string | undefined };
-export const GetStreamingJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetStreamingJobResponseTagsMap>;
+export const GetStreamingJobResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetStreamingJobResponseTagsMap>;
 
 /** The name of the SKU. Required on PUT (CreateOrReplace) requests. */
 export type SkuName = "Standard";
@@ -1204,16 +1176,8 @@ export interface StreamingJobPropertiesFunctionsItem {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const StreamingJobPropertiesFunctionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(FunctionProperties),
-  }),
-).annotate({
-  identifier: "StreamingJobPropertiesFunctionsItem",
-}) as any as S.Schema<StreamingJobPropertiesFunctionsItem>;
+export const StreamingJobPropertiesFunctionsItem =
+  FunctionsCreateOrReplaceResponse as any as S.Schema<StreamingJobPropertiesFunctionsItem>;
 
 /** A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation. */
 export type StreamingJobPropertiesFunctionsList = Array<StreamingJobPropertiesFunctionsItem>;
@@ -1415,16 +1379,8 @@ export interface GetTransformationResponse {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationProperties;
 }
-export const GetTransformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TransformationProperties),
-  }),
-).annotate({
-  identifier: "GetTransformationResponse",
-}) as any as S.Schema<GetTransformationResponse>;
+export const GetTransformationResponse =
+  StreamingJobPropertiesTransformation as any as S.Schema<GetTransformationResponse>;
 
 /** The properties that are associated with an input. */
 export interface InputPropertiesInput {
@@ -1493,16 +1449,8 @@ export interface InputsCreateOrReplaceResponse {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputProperties;
 }
-export const InputsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(InputProperties),
-  }),
-).annotate({
-  identifier: "InputsCreateOrReplaceResponse",
-}) as any as S.Schema<InputsCreateOrReplaceResponse>;
+export const InputsCreateOrReplaceResponse =
+  StreamingJobPropertiesInputsItem as any as S.Schema<InputsCreateOrReplaceResponse>;
 
 export interface ListClusterByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1528,10 +1476,8 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterTagsMap>;
+export const ClusterTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterTagsMap>;
 
 /** A Stream Analytics Cluster object */
 export interface Cluster {
@@ -1551,18 +1497,7 @@ export interface Cluster {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterProperties;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ClusterTagsMap),
-    location: S.optional(S.String),
-    sku: S.optional(ClusterSku),
-    etag: S.optional(S.String),
-    properties: S.optional(ClusterProperties),
-  }),
-).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
+export const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
 
 /** A list of clusters. */
 export type ClusterListResultValueList = Array<Cluster>;
@@ -1712,9 +1647,8 @@ export const Function = StreamingJobPropertiesFunctionsItem;
 
 /** A list of functions under a streaming job. Populated by a 'List' operation. */
 export type FunctionListResultValueList = Array<StreamingJobPropertiesFunctionsItem>;
-export const FunctionListResultValueList = /*@__PURE__*/ S.Array(
-  StreamingJobPropertiesFunctionsItem,
-) as any as S.Schema<FunctionListResultValueList>;
+export const FunctionListResultValueList =
+  StreamingJobPropertiesFunctionsList as any as S.Schema<FunctionListResultValueList>;
 
 /** Object containing a list of functions under a streaming job. */
 export interface FunctionListResult {
@@ -1764,9 +1698,8 @@ export const Input = StreamingJobPropertiesInputsItem;
 
 /** A list of inputs under a streaming job. Populated by a 'List' operation. */
 export type InputListResultValueList = Array<StreamingJobPropertiesInputsItem>;
-export const InputListResultValueList = /*@__PURE__*/ S.Array(
-  StreamingJobPropertiesInputsItem,
-) as any as S.Schema<InputListResultValueList>;
+export const InputListResultValueList =
+  StreamingJobPropertiesInputsList as any as S.Schema<InputListResultValueList>;
 
 /** Object containing a list of inputs under a streaming job. */
 export interface InputListResult {
@@ -1885,9 +1818,8 @@ export const Output = StreamingJobPropertiesOutputsItem;
 
 /** A list of outputs under a streaming job. Populated by a 'List' operation. */
 export type OutputListResultValueList = Array<StreamingJobPropertiesOutputsItem>;
-export const OutputListResultValueList = /*@__PURE__*/ S.Array(
-  StreamingJobPropertiesOutputsItem,
-) as any as S.Schema<OutputListResultValueList>;
+export const OutputListResultValueList =
+  StreamingJobPropertiesOutputsList as any as S.Schema<OutputListResultValueList>;
 
 /** Object containing a list of outputs under a streaming job. */
 export interface OutputListResult {
@@ -2000,10 +1932,8 @@ export const ListStreamingJobByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type StreamingJobTagsMap = { [key: string]: string | undefined };
-export const StreamingJobTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamingJobTagsMap>;
+export const StreamingJobTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<StreamingJobTagsMap>;
 
 /** A streaming job object, containing all information associated with the named streaming job. */
 export interface StreamingJob {
@@ -2022,17 +1952,7 @@ export interface StreamingJob {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: Identity;
 }
-export const StreamingJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(StreamingJobTagsMap),
-    location: S.optional(S.String),
-    properties: S.optional(StreamingJobProperties),
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "StreamingJob" }) as any as S.Schema<StreamingJob>;
+export const StreamingJob = GetStreamingJobResponse as any as S.Schema<StreamingJob>;
 
 /** A list of streaming jobs. Populated by a 'List' operation. */
 export type StreamingJobListResultValueList = Array<StreamingJob>;
@@ -2158,14 +2078,8 @@ export interface OutputPropertiesInputSerialization {
   /** Serialization-type-specific properties. */
   properties?: unknown;
 }
-export const OutputPropertiesInputSerialization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EventSerializationType,
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "OutputPropertiesInputSerialization",
-}) as any as S.Schema<OutputPropertiesInputSerialization>;
+export const OutputPropertiesInputSerialization =
+  OutputPropertiesSerialization as any as S.Schema<OutputPropertiesInputSerialization>;
 
 /** Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention. */
 export type OutputPropertiesInputDiagnostics = ClusterPropertiesInput;
@@ -2238,22 +2152,13 @@ export interface OutputsCreateOrReplaceResponse {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputProperties;
 }
-export const OutputsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OutputProperties),
-  }),
-).annotate({
-  identifier: "OutputsCreateOrReplaceResponse",
-}) as any as S.Schema<OutputsCreateOrReplaceResponse>;
+export const OutputsCreateOrReplaceResponse =
+  StreamingJobPropertiesOutputsItem as any as S.Schema<OutputsCreateOrReplaceResponse>;
 
 /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests. */
 export type PrivateLinkServiceConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateLinkServiceConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkServiceConnectionPropertiesInputGroupIdsList>;
+export const PrivateLinkServiceConnectionPropertiesInputGroupIdsList =
+  PrivateLinkServiceConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkServiceConnectionPropertiesInputGroupIdsList>;
 
 /** A collection of read-only information about the state of the connection to the private remote resource. */
 export type PrivateLinkConnectionStateInput = ClusterPropertiesInput;
@@ -2357,17 +2262,8 @@ export interface PrivateEndpointsCreateOrUpdateResponse {
   /** Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests. */
   etag?: string;
 }
-export const PrivateEndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointsCreateOrUpdateResponse>;
+export const PrivateEndpointsCreateOrUpdateResponse =
+  GetPrivateEndpointResponse as any as S.Schema<PrivateEndpointsCreateOrUpdateResponse>;
 
 export interface ScaleStreamingJobRequest {
   /** The ID of the target subscription. */
@@ -2396,9 +2292,8 @@ export const ScaleStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleStreamingJobRequest" }) as any as S.Schema<ScaleStreamingJobRequest>;
 
 export interface ScaleStreamingJobResponse {}
-export const ScaleStreamingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ScaleStreamingJobResponse",
-}) as any as S.Schema<ScaleStreamingJobResponse>;
+export const ScaleStreamingJobResponse =
+  ClusterPropertiesInput as any as S.Schema<ScaleStreamingJobResponse>;
 
 export interface StartStreamingJobRequest {
   /** The ID of the target subscription. */
@@ -2430,9 +2325,8 @@ export const StartStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartStreamingJobRequest" }) as any as S.Schema<StartStreamingJobRequest>;
 
 export interface StartStreamingJobResponse {}
-export const StartStreamingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartStreamingJobResponse",
-}) as any as S.Schema<StartStreamingJobResponse>;
+export const StartStreamingJobResponse =
+  ClusterPropertiesInput as any as S.Schema<StartStreamingJobResponse>;
 
 export interface StopStreamingJobRequest {
   /** The ID of the target subscription. */
@@ -2458,16 +2352,13 @@ export const StopStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopStreamingJobRequest" }) as any as S.Schema<StopStreamingJobRequest>;
 
 export interface StopStreamingJobResponse {}
-export const StopStreamingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopStreamingJobResponse",
-}) as any as S.Schema<StopStreamingJobResponse>;
+export const StopStreamingJobResponse =
+  ClusterPropertiesInput as any as S.Schema<StopStreamingJobResponse>;
 
 /** Resource tags. */
 export type StreamingJobsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const StreamingJobsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamingJobsCreateOrReplaceRequestTagsMap>;
+export const StreamingJobsCreateOrReplaceRequestTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<StreamingJobsCreateOrReplaceRequestTagsMap>;
 
 /** Describes the type of the job. Valid modes are `Cloud` and 'Edge'. */
 export type StreamingJobPropertiesInputJobType = "Cloud" | "Edge";
@@ -2497,9 +2388,8 @@ export const StreamingJobPropertiesInputInputsList = /*@__PURE__*/ S.Array(
 
 /** Specifies the valid streaming units a streaming job can scale to. */
 export type TransformationPropertiesInputValidStreamingUnitsList = Array<number>;
-export const TransformationPropertiesInputValidStreamingUnitsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransformationPropertiesInputValidStreamingUnitsList>;
+export const TransformationPropertiesInputValidStreamingUnitsList =
+  TransformationPropertiesValidStreamingUnitsList as any as S.Schema<TransformationPropertiesInputValidStreamingUnitsList>;
 
 /** The properties that are associated with a transformation. */
 export interface TransformationPropertiesInput {
@@ -2696,10 +2586,8 @@ export const StreamingJobsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StreamingJobsCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const StreamingJobsCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StreamingJobsCreateOrReplaceResponseTagsMap>;
+export const StreamingJobsCreateOrReplaceResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<StreamingJobsCreateOrReplaceResponseTagsMap>;
 
 export interface StreamingJobsCreateOrReplaceResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2829,12 +2717,7 @@ export interface ResourceTestStatus {
   /** Describes the error that occurred. */
   error?: ErrorResponse;
 }
-export const ResourceTestStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    error: S.optional(ErrorResponse),
-  }),
-).annotate({ identifier: "ResourceTestStatus" }) as any as S.Schema<ResourceTestStatus>;
+export const ResourceTestStatus = TestFunctionResponse as any as S.Schema<ResourceTestStatus>;
 
 export interface TestOutputRequest {
   /** The ID of the target subscription. */
@@ -2874,12 +2757,7 @@ export interface TestOutputResponse {
   /** Describes the error that occurred. */
   error?: ErrorResponse;
 }
-export const TestOutputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    error: S.optional(ErrorResponse),
-  }),
-).annotate({ identifier: "TestOutputResponse" }) as any as S.Schema<TestOutputResponse>;
+export const TestOutputResponse = TestFunctionResponse as any as S.Schema<TestOutputResponse>;
 
 export interface TransformationsCreateOrReplaceRequest {
   /** The ID of the target subscription. */
@@ -2925,23 +2803,13 @@ export interface TransformationsCreateOrReplaceResponse {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationProperties;
 }
-export const TransformationsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TransformationProperties),
-  }),
-).annotate({
-  identifier: "TransformationsCreateOrReplaceResponse",
-}) as any as S.Schema<TransformationsCreateOrReplaceResponse>;
+export const TransformationsCreateOrReplaceResponse =
+  StreamingJobPropertiesTransformation as any as S.Schema<TransformationsCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterRequestTagsMap>;
+export const UpdateClusterRequestTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 export interface UpdateClusterRequest {
   /** The ID of the target subscription. */
@@ -2979,10 +2847,8 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterResponseTagsMap>;
+export const UpdateClusterResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
 
 export interface UpdateClusterResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3001,18 +2867,7 @@ export interface UpdateClusterResponse {
   /** The properties associated with a Stream Analytics cluster. */
   properties?: ClusterProperties;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateClusterResponseTagsMap),
-    location: S.optional(S.String),
-    sku: S.optional(ClusterSku),
-    etag: S.optional(S.String),
-    properties: S.optional(ClusterProperties),
-  }),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 export interface UpdateFunctionRequest {
   /** The ID of the target subscription. */
@@ -3056,14 +2911,8 @@ export interface UpdateFunctionResponse {
   /** The properties that are associated with a function. */
   properties?: FunctionProperties;
 }
-export const UpdateFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(FunctionProperties),
-  }),
-).annotate({ identifier: "UpdateFunctionResponse" }) as any as S.Schema<UpdateFunctionResponse>;
+export const UpdateFunctionResponse =
+  GetFunctionResponse as any as S.Schema<UpdateFunctionResponse>;
 
 export interface UpdateInputRequest {
   /** The ID of the target subscription. */
@@ -3107,14 +2956,7 @@ export interface UpdateInputResponse {
   /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
   properties?: InputProperties;
 }
-export const UpdateInputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(InputProperties),
-  }),
-).annotate({ identifier: "UpdateInputResponse" }) as any as S.Schema<UpdateInputResponse>;
+export const UpdateInputResponse = GetInputResponse as any as S.Schema<UpdateInputResponse>;
 
 export interface UpdateOutputRequest {
   /** The ID of the target subscription. */
@@ -3158,21 +3000,12 @@ export interface UpdateOutputResponse {
   /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
   properties?: OutputProperties;
 }
-export const UpdateOutputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OutputProperties),
-  }),
-).annotate({ identifier: "UpdateOutputResponse" }) as any as S.Schema<UpdateOutputResponse>;
+export const UpdateOutputResponse = GetOutputResponse as any as S.Schema<UpdateOutputResponse>;
 
 /** Resource tags. */
 export type UpdateStreamingJobRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStreamingJobRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStreamingJobRequestTagsMap>;
+export const UpdateStreamingJobRequestTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStreamingJobRequestTagsMap>;
 
 export interface UpdateStreamingJobRequest {
   /** The ID of the target subscription. */
@@ -3213,10 +3046,8 @@ export const UpdateStreamingJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStreamingJobResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStreamingJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStreamingJobResponseTagsMap>;
+export const UpdateStreamingJobResponseTagsMap =
+  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStreamingJobResponseTagsMap>;
 
 export interface UpdateStreamingJobResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3234,19 +3065,8 @@ export interface UpdateStreamingJobResponse {
   /** Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs. */
   identity?: Identity;
 }
-export const UpdateStreamingJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateStreamingJobResponseTagsMap),
-    location: S.optional(S.String),
-    properties: S.optional(StreamingJobProperties),
-    identity: S.optional(Identity),
-  }),
-).annotate({
-  identifier: "UpdateStreamingJobResponse",
-}) as any as S.Schema<UpdateStreamingJobResponse>;
+export const UpdateStreamingJobResponse =
+  StreamingJobsCreateOrReplaceResponse as any as S.Schema<UpdateStreamingJobResponse>;
 
 export interface UpdateTransformationRequest {
   /** The ID of the target subscription. */
@@ -3292,16 +3112,8 @@ export interface UpdateTransformationResponse {
   /** The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests. */
   properties?: TransformationProperties;
 }
-export const UpdateTransformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TransformationProperties),
-  }),
-).annotate({
-  identifier: "UpdateTransformationResponse",
-}) as any as S.Schema<UpdateTransformationResponse>;
+export const UpdateTransformationResponse =
+  StreamingJobPropertiesTransformation as any as S.Schema<UpdateTransformationResponse>;
 
 export type ClustersCreateOrUpdateError = AzureOpError;
 /** Creates a Stream Analytics Cluster or replaces an already existing cluster. */

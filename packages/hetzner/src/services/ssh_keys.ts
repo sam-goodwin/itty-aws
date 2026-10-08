@@ -34,10 +34,8 @@ export const CreateSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateSshKeyResponseSshKeyLabelsMap = { [key: string]: string | undefined };
-export const CreateSshKeyResponseSshKeyLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSshKeyResponseSshKeyLabelsMap>;
+export const CreateSshKeyResponseSshKeyLabelsMap =
+  CreateSshKeyRequestLabelsMap as any as S.Schema<CreateSshKeyResponseSshKeyLabelsMap>;
 
 export interface CreateSshKeyResponseSshKey {
   /** ID of the [SSH Key](#tag/ssh-keys). */
@@ -102,10 +100,8 @@ export const GetSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetSshKeyResponseSshKeyLabelsMap = { [key: string]: string | undefined };
-export const GetSshKeyResponseSshKeyLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSshKeyResponseSshKeyLabelsMap>;
+export const GetSshKeyResponseSshKeyLabelsMap =
+  CreateSshKeyRequestLabelsMap as any as S.Schema<GetSshKeyResponseSshKeyLabelsMap>;
 
 export interface GetSshKeyResponseSshKey {
   /** ID of the [SSH Key](#tag/ssh-keys). */
@@ -182,10 +178,8 @@ export const ListSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListSshKeysResponseSshKeysItemLabelsMap = { [key: string]: string | undefined };
-export const ListSshKeysResponseSshKeysItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListSshKeysResponseSshKeysItemLabelsMap>;
+export const ListSshKeysResponseSshKeysItemLabelsMap =
+  CreateSshKeyRequestLabelsMap as any as S.Schema<ListSshKeysResponseSshKeysItemLabelsMap>;
 
 export interface ListSshKeysResponseSshKeysItem {
   /** ID of the [SSH Key](#tag/ssh-keys). */
@@ -201,18 +195,8 @@ export interface ListSshKeysResponseSshKeysItem {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-export const ListSshKeysResponseSshKeysItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    fingerprint: S.String,
-    public_key: S.String,
-    labels: ListSshKeysResponseSshKeysItemLabelsMap,
-    created: S.String,
-  }),
-).annotate({
-  identifier: "ListSshKeysResponseSshKeysItem",
-}) as any as S.Schema<ListSshKeysResponseSshKeysItem>;
+export const ListSshKeysResponseSshKeysItem =
+  CreateSshKeyResponseSshKey as any as S.Schema<ListSshKeysResponseSshKeysItem>;
 
 export type ListSshKeysResponseSshKeysList = Array<ListSshKeysResponseSshKeysItem>;
 export const ListSshKeysResponseSshKeysList = /*@__PURE__*/ S.Array(
@@ -270,10 +254,8 @@ export const ListSshKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateSshKeyRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateSshKeyRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSshKeyRequestLabelsMap>;
+export const UpdateSshKeyRequestLabelsMap =
+  CreateSshKeyRequestLabelsMap as any as S.Schema<UpdateSshKeyRequestLabelsMap>;
 
 export interface UpdateSshKeyRequest {
   /** ID of the SSH Key. */
@@ -293,10 +275,8 @@ export const UpdateSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateSshKeyResponseSshKeyLabelsMap = { [key: string]: string | undefined };
-export const UpdateSshKeyResponseSshKeyLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSshKeyResponseSshKeyLabelsMap>;
+export const UpdateSshKeyResponseSshKeyLabelsMap =
+  CreateSshKeyRequestLabelsMap as any as S.Schema<UpdateSshKeyResponseSshKeyLabelsMap>;
 
 export interface UpdateSshKeyResponseSshKey {
   /** ID of the [SSH Key](#tag/ssh-keys). */
@@ -312,27 +292,13 @@ export interface UpdateSshKeyResponseSshKey {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-export const UpdateSshKeyResponseSshKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    fingerprint: S.String,
-    public_key: S.String,
-    labels: UpdateSshKeyResponseSshKeyLabelsMap,
-    created: S.String,
-  }),
-).annotate({
-  identifier: "UpdateSshKeyResponseSshKey",
-}) as any as S.Schema<UpdateSshKeyResponseSshKey>;
+export const UpdateSshKeyResponseSshKey =
+  CreateSshKeyResponseSshKey as any as S.Schema<UpdateSshKeyResponseSshKey>;
 
 export interface UpdateSshKeyResponse {
   ssh_key: UpdateSshKeyResponseSshKey;
 }
-export const UpdateSshKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ssh_key: UpdateSshKeyResponseSshKey,
-  }),
-).annotate({ identifier: "UpdateSshKeyResponse" }) as any as S.Schema<UpdateSshKeyResponse>;
+export const UpdateSshKeyResponse = CreateSshKeyResponse as any as S.Schema<UpdateSshKeyResponse>;
 
 export type CreateSshKeyError = HetznerOpError;
 /** Create an SSH key Creates a new SSH key with the given `name` and `public_key`. Once an SSH key is created, it can be used in other calls such as creating Servers. */

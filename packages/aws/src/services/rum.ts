@@ -360,7 +360,7 @@ export const BatchGetRumMetricDefinitionsResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BatchGetRumMetricDefinitionsResponse>;
 export type AppMonitorDomain = string;
 export type AppMonitorDomainList = string[];
-export const AppMonitorDomainList = /*@__PURE__*/ S.Array(S.String);
+export const AppMonitorDomainList = MetricDefinitionIds as any as S.Schema<AppMonitorDomainList>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
@@ -368,14 +368,14 @@ export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pi
 export type IdentityPoolId = string;
 export type Url = string;
 export type Pages = string[];
-export const Pages = /*@__PURE__*/ S.Array(S.String);
+export const Pages = MetricDefinitionIds as any as S.Schema<Pages>;
 export type FavoritePages = string[];
-export const FavoritePages = /*@__PURE__*/ S.Array(S.String);
+export const FavoritePages = MetricDefinitionIds as any as S.Schema<FavoritePages>;
 export type SessionSampleRate = number;
 export type Arn = string;
 export type Telemetry = string;
 export type Telemetries = string[];
-export const Telemetries = /*@__PURE__*/ S.Array(S.String);
+export const Telemetries = MetricDefinitionIds as any as S.Schema<Telemetries>;
 export interface AppMonitorConfiguration {
   IdentityPoolId?: string;
   ExcludedPages?: string[];
@@ -599,7 +599,7 @@ export const TimeRange = /*@__PURE__*/ S.suspend(() =>
 export type QueryFilterKey = string;
 export type QueryFilterValue = string;
 export type QueryFilterValueList = string[];
-export const QueryFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const QueryFilterValueList = MetricDefinitionIds as any as S.Schema<QueryFilterValueList>;
 export interface QueryFilter {
   Name?: string;
   Values?: string[];
@@ -631,7 +631,7 @@ export const GetAppMonitorDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAppMonitorDataRequest" }) as any as S.Schema<GetAppMonitorDataRequest>;
 export type EventData = string;
 export type EventDataList = string[];
-export const EventDataList = /*@__PURE__*/ S.Array(S.String);
+export const EventDataList = MetricDefinitionIds as any as S.Schema<EventDataList>;
 export interface GetAppMonitorDataResponse {
   Events?: string[];
   NextToken?: string;
@@ -799,11 +799,8 @@ export interface PutResourcePolicyResponse {
   PolicyDocument?: string;
   PolicyRevisionId?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyDocument: S.optional(S.String), PolicyRevisionId: S.optional(S.String) }),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface AppMonitorDetails {
   name?: string;
   id?: string;
@@ -860,9 +857,8 @@ export const PutRumEventsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutRumEventsRequest" }) as any as S.Schema<PutRumEventsRequest>;
 export interface PutRumEventsResponse {}
-export const PutRumEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutRumEventsResponse",
-}) as any as S.Schema<PutRumEventsResponse>;
+export const PutRumEventsResponse =
+  DeleteAppMonitorResponse as any as S.Schema<PutRumEventsResponse>;
 export interface PutRumMetricsDestinationRequest {
   AppMonitorName: string;
   Destination: string;
@@ -889,11 +885,8 @@ export const PutRumMetricsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutRumMetricsDestinationRequest",
 }) as any as S.Schema<PutRumMetricsDestinationRequest>;
 export interface PutRumMetricsDestinationResponse {}
-export const PutRumMetricsDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutRumMetricsDestinationResponse",
-}) as any as S.Schema<PutRumMetricsDestinationResponse>;
+export const PutRumMetricsDestinationResponse =
+  DeleteRumMetricsDestinationResponse as any as S.Schema<PutRumMetricsDestinationResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -904,11 +897,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAppMonitorResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = MetricDefinitionIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -922,9 +913,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAppMonitorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAppMonitorRequest {
   Name: string;
   Domain?: string;
@@ -948,9 +938,8 @@ export const UpdateAppMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateAppMonitorRequest" }) as any as S.Schema<UpdateAppMonitorRequest>;
 export interface UpdateAppMonitorResponse {}
-export const UpdateAppMonitorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAppMonitorResponse",
-}) as any as S.Schema<UpdateAppMonitorResponse>;
+export const UpdateAppMonitorResponse =
+  DeleteAppMonitorResponse as any as S.Schema<UpdateAppMonitorResponse>;
 export interface UpdateRumMetricDefinitionRequest {
   AppMonitorName: string;
   Destination: string;
@@ -979,11 +968,8 @@ export const UpdateRumMetricDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRumMetricDefinitionRequest",
 }) as any as S.Schema<UpdateRumMetricDefinitionRequest>;
 export interface UpdateRumMetricDefinitionResponse {}
-export const UpdateRumMetricDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRumMetricDefinitionResponse",
-}) as any as S.Schema<UpdateRumMetricDefinitionResponse>;
+export const UpdateRumMetricDefinitionResponse =
+  DeleteRumMetricsDestinationResponse as any as S.Schema<UpdateRumMetricDefinitionResponse>;
 export type BatchCreateRumMetricDefinitionsError =
   | AccessDeniedException
   | ConflictException

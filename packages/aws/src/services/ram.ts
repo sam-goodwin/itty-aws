@@ -469,13 +469,9 @@ export const ResourceArnList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
 );
 export type PrincipalArnOrIdList = string[];
-export const PrincipalArnOrIdList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const PrincipalArnOrIdList = ResourceArnList as any as S.Schema<PrincipalArnOrIdList>;
 export type SourceArnOrAccountList = string[];
-export const SourceArnOrAccountList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const SourceArnOrAccountList = ResourceArnList as any as S.Schema<SourceArnOrAccountList>;
 export interface AssociateResourceShareRequest {
   resourceShareArn: string;
   resourceArns?: string[];
@@ -705,9 +701,7 @@ export const CreatePermissionVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePermissionVersionResponse",
 }) as any as S.Schema<CreatePermissionVersionResponse>;
 export type PermissionArnList = string[];
-export const PermissionArnList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const PermissionArnList = ResourceArnList as any as S.Schema<PermissionArnList>;
 export interface ResourceShareConfiguration {
   retainSharingOnAccountLeaveOrganization?: boolean;
 }
@@ -915,14 +909,8 @@ export interface DisassociateResourceShareResponse {
   resourceShareAssociations?: ResourceShareAssociation[];
   clientToken?: string;
 }
-export const DisassociateResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceShareAssociations: S.optional(ResourceShareAssociationList),
-    clientToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisassociateResourceShareResponse",
-}) as any as S.Schema<DisassociateResourceShareResponse>;
+export const DisassociateResourceShareResponse =
+  AssociateResourceShareResponse as any as S.Schema<DisassociateResourceShareResponse>;
 export interface DisassociateResourceSharePermissionRequest {
   resourceShareArn: string;
   permissionArn: string;
@@ -950,11 +938,8 @@ export interface DisassociateResourceSharePermissionResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
-export const DisassociateResourceSharePermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ returnValue: S.optional(S.Boolean), clientToken: S.optional(S.String) }),
-).annotate({
-  identifier: "DisassociateResourceSharePermissionResponse",
-}) as any as S.Schema<DisassociateResourceSharePermissionResponse>;
+export const DisassociateResourceSharePermissionResponse =
+  AssociateResourceSharePermissionResponse as any as S.Schema<DisassociateResourceSharePermissionResponse>;
 export interface EnableSharingWithAwsOrganizationRequest {}
 export const EnableSharingWithAwsOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1013,9 +998,7 @@ export const GetResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourcePoliciesRequest",
 }) as any as S.Schema<GetResourcePoliciesRequest>;
 export type PolicyList = string[];
-export const PolicyList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const PolicyList = ResourceArnList as any as S.Schema<PolicyList>;
 export interface GetResourcePoliciesResponse {
   policies?: string[];
   nextToken?: string;
@@ -1026,9 +1009,7 @@ export const GetResourcePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourcePoliciesResponse",
 }) as any as S.Schema<GetResourcePoliciesResponse>;
 export type ResourceShareArnList = string[];
-export const ResourceShareArnList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const ResourceShareArnList = ResourceArnList as any as S.Schema<ResourceShareArnList>;
 export interface GetResourceShareAssociationsRequest {
   associationType: ResourceShareAssociationType;
   resourceShareArns?: string[];
@@ -1073,9 +1054,8 @@ export const GetResourceShareAssociationsResponse = /*@__PURE__*/ S.suspend(() =
   identifier: "GetResourceShareAssociationsResponse",
 }) as any as S.Schema<GetResourceShareAssociationsResponse>;
 export type ResourceShareInvitationArnList = string[];
-export const ResourceShareInvitationArnList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const ResourceShareInvitationArnList =
+  ResourceArnList as any as S.Schema<ResourceShareInvitationArnList>;
 export interface GetResourceShareInvitationsRequest {
   resourceShareInvitationArns?: string[];
   resourceShareArns?: string[];
@@ -1432,9 +1412,8 @@ export const ListPrincipalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ principals: S.optional(PrincipalList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListPrincipalsResponse" }) as any as S.Schema<ListPrincipalsResponse>;
 export type ReplacePermissionAssociationsWorkIdList = string[];
-export const ReplacePermissionAssociationsWorkIdList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")),
-);
+export const ReplacePermissionAssociationsWorkIdList =
+  ResourceArnList as any as S.Schema<ReplacePermissionAssociationsWorkIdList>;
 export type ReplacePermissionAssociationsWorkStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
@@ -1567,14 +1546,8 @@ export interface ListResourceSharePermissionsResponse {
   permissions?: ResourceSharePermissionSummary[];
   nextToken?: string;
 }
-export const ListResourceSharePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(ResourceSharePermissionList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResourceSharePermissionsResponse",
-}) as any as S.Schema<ListResourceSharePermissionsResponse>;
+export const ListResourceSharePermissionsResponse =
+  ListPermissionVersionsResponse as any as S.Schema<ListResourceSharePermissionsResponse>;
 export interface ListResourceTypesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1732,11 +1705,8 @@ export const PromoteResourceShareCreatedFromPolicyRequest = /*@__PURE__*/ S.susp
 export interface PromoteResourceShareCreatedFromPolicyResponse {
   returnValue?: boolean;
 }
-export const PromoteResourceShareCreatedFromPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")) }),
-).annotate({
-  identifier: "PromoteResourceShareCreatedFromPolicyResponse",
-}) as any as S.Schema<PromoteResourceShareCreatedFromPolicyResponse>;
+export const PromoteResourceShareCreatedFromPolicyResponse =
+  EnableSharingWithAwsOrganizationResponse as any as S.Schema<PromoteResourceShareCreatedFromPolicyResponse>;
 export interface RejectResourceShareInvitationRequest {
   resourceShareInvitationArn: string;
   clientToken?: string;
@@ -1759,14 +1729,8 @@ export interface RejectResourceShareInvitationResponse {
   resourceShareInvitation?: ResourceShareInvitation;
   clientToken?: string;
 }
-export const RejectResourceShareInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceShareInvitation: S.optional(ResourceShareInvitation),
-    clientToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RejectResourceShareInvitationResponse",
-}) as any as S.Schema<RejectResourceShareInvitationResponse>;
+export const RejectResourceShareInvitationResponse =
+  AcceptResourceShareInvitationResponse as any as S.Schema<RejectResourceShareInvitationResponse>;
 export interface ReplacePermissionAssociationsRequest {
   fromPermissionArn: string;
   fromPermissionVersion?: number;
@@ -1831,14 +1795,8 @@ export interface SetDefaultPermissionVersionResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
-export const SetDefaultPermissionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
-    clientToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetDefaultPermissionVersionResponse",
-}) as any as S.Schema<SetDefaultPermissionVersionResponse>;
+export const SetDefaultPermissionVersionResponse =
+  DeleteResourceShareResponse as any as S.Schema<SetDefaultPermissionVersionResponse>;
 export interface TagResourceRequest {
   resourceShareArn?: string;
   tags: Tag[];
@@ -1856,7 +1814,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TagValueList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceShareArn?: string;
   tagKeys: string[];
@@ -1870,9 +1828,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/untagresource" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateResourceShareRequest {
   resourceShareArn: string;
   name?: string;
@@ -1895,11 +1851,8 @@ export interface UpdateResourceShareResponse {
   resourceShare?: ResourceShare;
   clientToken?: string;
 }
-export const UpdateResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceShare: S.optional(ResourceShare), clientToken: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateResourceShareResponse",
-}) as any as S.Schema<UpdateResourceShareResponse>;
+export const UpdateResourceShareResponse =
+  CreateResourceShareResponse as any as S.Schema<UpdateResourceShareResponse>;
 export type AcceptResourceShareInvitationError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException

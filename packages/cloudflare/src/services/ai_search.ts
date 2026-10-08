@@ -970,10 +970,7 @@ export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap =
   [key: string]: unknown | undefined;
 };
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap as any as S.Schema<NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod = "max" | "rrf";
 export const NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod = S.String;
@@ -1359,25 +1356,16 @@ export const NamespacesChatCompletionsResponseChoicesList = /*@__PURE__*/ S.Arra
 export type NamespacesChatCompletionsResponseChunksItemItemMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesChatCompletionsResponseChunksItemItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesChatCompletionsResponseChunksItemItemMetadataMap>;
+export const NamespacesChatCompletionsResponseChunksItemItemMetadataMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<NamespacesChatCompletionsResponseChunksItemItemMetadataMap>;
 
 export interface NamespacesChatCompletionsResponseChunksItemItem {
   key: string;
   metadata?: NamespacesChatCompletionsResponseChunksItemItemMetadataMap | null;
   timestamp?: number | null;
 }
-export const NamespacesChatCompletionsResponseChunksItemItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    metadata: S.optional(S.NullOr(NamespacesChatCompletionsResponseChunksItemItemMetadataMap)),
-    timestamp: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "NamespacesChatCompletionsResponseChunksItemItem",
-}) as any as S.Schema<NamespacesChatCompletionsResponseChunksItemItem>;
+export const NamespacesChatCompletionsResponseChunksItemItem =
+  InstancesChatCompletionsResponseChunksItemItem as any as S.Schema<NamespacesChatCompletionsResponseChunksItemItem>;
 
 export type NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod = "rrf" | "max";
 export const NamespacesChatCompletionsResponseChunksItemScoringDetailsFusionMethod = S.String;
@@ -1678,10 +1666,7 @@ export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFil
   [key: string]: unknown | undefined;
 };
 export const NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap as any as S.Schema<NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod =
   | "max"
@@ -1961,10 +1946,7 @@ export type NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap 
   [key: string]: unknown | undefined;
 };
 export const NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap as any as S.Schema<NamespacesInstancesChatCompletionsResponseChunksItemItemMetadataMap>;
 
 export interface NamespacesInstancesChatCompletionsResponseChunksItemItem {
   key: string;
@@ -2100,25 +2082,16 @@ export const ChunksNamespaceInstanceItemRequest = /*@__PURE__*/ S.suspend(() =>
 export type NamespacesInstancesItemsChunksResultItemItemMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesInstancesItemsChunksResultItemItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesInstancesItemsChunksResultItemItemMetadataMap>;
+export const NamespacesInstancesItemsChunksResultItemItemMetadataMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<NamespacesInstancesItemsChunksResultItemItemMetadataMap>;
 
 export interface NamespacesInstancesItemsChunksResultItemItem {
   key: string;
   metadata?: NamespacesInstancesItemsChunksResultItemItemMetadataMap | null;
   timestamp?: number | null;
 }
-export const NamespacesInstancesItemsChunksResultItemItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    metadata: S.optional(S.NullOr(NamespacesInstancesItemsChunksResultItemItemMetadataMap)),
-    timestamp: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesItemsChunksResultItemItem",
-}) as any as S.Schema<NamespacesInstancesItemsChunksResultItemItem>;
+export const NamespacesInstancesItemsChunksResultItemItem =
+  InstancesChatCompletionsResponseChunksItemItem as any as S.Schema<NamespacesInstancesItemsChunksResultItemItem>;
 
 export interface NamespacesInstancesItemsChunksResultItem {
   id: string;
@@ -2253,9 +2226,8 @@ export const InstancesCreateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesCreateRequestMetadata>;
 
 export type InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList>;
+export const InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList>;
 
 export interface InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
@@ -2271,9 +2243,8 @@ export const InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
   }) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesCreateRequestPublicEndpointParamsCustomDomainsList = Array<string>;
-export const InstancesCreateRequestPublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
+export const InstancesCreateRequestPublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesCreateRequestPublicEndpointParamsMcp {
   description?: string;
@@ -2410,14 +2381,12 @@ export const InstancesCreateRequestRetrievalOptions = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<InstancesCreateRequestRetrievalOptions>;
 
 export type InstancesCreateRequestSourceParamsExcludeItemsList = Array<string>;
-export const InstancesCreateRequestSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateRequestSourceParamsExcludeItemsList>;
+export const InstancesCreateRequestSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateRequestSourceParamsExcludeItemsList>;
 
 export type InstancesCreateRequestSourceParamsIncludeItemsList = Array<string>;
-export const InstancesCreateRequestSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateRequestSourceParamsIncludeItemsList>;
+export const InstancesCreateRequestSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateRequestSourceParamsIncludeItemsList>;
 
 export type InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -2796,9 +2765,8 @@ export const InstancesCreateResponseMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesCreateResponseMetadata>;
 
 export type InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList>;
+export const InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export interface InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint {
   /** Disable chat completions endpoint for this public endpoint */
@@ -2814,9 +2782,8 @@ export const InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint 
   }) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesCreateResponsePublicEndpointParamsCustomDomainsList = Array<string>;
-export const InstancesCreateResponsePublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
+export const InstancesCreateResponsePublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesCreateResponsePublicEndpointParamsMcp {
   description?: string | null;
@@ -2961,14 +2928,12 @@ export const InstancesCreateResponseRetrievalOptions = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<InstancesCreateResponseRetrievalOptions>;
 
 export type InstancesCreateResponseSourceParamsExcludeItemsList = Array<string>;
-export const InstancesCreateResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateResponseSourceParamsExcludeItemsList>;
+export const InstancesCreateResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateResponseSourceParamsExcludeItemsList>;
 
 export type InstancesCreateResponseSourceParamsIncludeItemsList = Array<string>;
-export const InstancesCreateResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesCreateResponseSourceParamsIncludeItemsList>;
+export const InstancesCreateResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesCreateResponseSourceParamsIncludeItemsList>;
 
 export type InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -3014,25 +2979,18 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSel
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesCreateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -3305,9 +3263,8 @@ export const CreateInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateInstanceJobResponse>;
 
 export type NamespacesCreateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const NamespacesCreateRequestPublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsAuthorizedHostsList>;
+export const NamespacesCreateRequestPublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -3315,15 +3272,12 @@ export const NamespacesCreateRequestPublicEndpointParamsChatCompletionsEndpoint 
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesCreateRequestPublicEndpointParamsCustomDomainsList = Array<string>;
-export const NamespacesCreateRequestPublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsCustomDomainsList>;
+export const NamespacesCreateRequestPublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesCreateRequestPublicEndpointParamsInstancesAllowedList = Array<string>;
 export const NamespacesCreateRequestPublicEndpointParamsInstancesAllowedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsInstancesAllowedList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesCreateRequestPublicEndpointParamsInstancesAllowedList>;
 
 export type NamespacesCreateRequestPublicEndpointParamsMcp =
   InstancesCreateRequestPublicEndpointParamsMcp;
@@ -3423,9 +3377,7 @@ export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesCreateResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export const NamespacesCreateResponsePublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesCreateResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -3433,15 +3385,12 @@ export const NamespacesCreateResponsePublicEndpointParamsChatCompletionsEndpoint
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesCreateResponsePublicEndpointParamsCustomDomainsList = Array<string>;
-export const NamespacesCreateResponsePublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsCustomDomainsList>;
+export const NamespacesCreateResponsePublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesCreateResponsePublicEndpointParamsInstancesAllowedList = Array<string>;
 export const NamespacesCreateResponsePublicEndpointParamsInstancesAllowedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsInstancesAllowedList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesCreateResponsePublicEndpointParamsInstancesAllowedList>;
 
 export type NamespacesCreateResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -3625,9 +3574,7 @@ export const NamespacesInstancesCreateRequestMetadata = InstancesCreateRequestMe
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export const NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -3636,9 +3583,7 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletions
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList = Array<string>;
 export const NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesInstancesCreateRequestPublicEndpointParamsMcp =
   InstancesCreateRequestPublicEndpointParamsMcp;
@@ -3772,14 +3717,12 @@ export const NamespacesInstancesCreateRequestRetrievalOptions = /*@__PURE__*/ S.
 }) as any as S.Schema<NamespacesInstancesCreateRequestRetrievalOptions>;
 
 export type NamespacesInstancesCreateRequestSourceParamsExcludeItemsList = Array<string>;
-export const NamespacesInstancesCreateRequestSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsExcludeItemsList>;
+export const NamespacesInstancesCreateRequestSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesCreateRequestSourceParamsIncludeItemsList = Array<string>;
-export const NamespacesInstancesCreateRequestSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsIncludeItemsList>;
+export const NamespacesInstancesCreateRequestSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsIncludeItemsList>;
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -3827,25 +3770,18 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsC
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -4141,9 +4077,7 @@ export const NamespacesInstancesCreateResponseMetadata = InstancesCreateResponse
 export type NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export const NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -4152,9 +4086,7 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletion
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList = Array<string>;
 export const NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesInstancesCreateResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -4294,14 +4226,12 @@ export const NamespacesInstancesCreateResponseRetrievalOptions = /*@__PURE__*/ S
 }) as any as S.Schema<NamespacesInstancesCreateResponseRetrievalOptions>;
 
 export type NamespacesInstancesCreateResponseSourceParamsExcludeItemsList = Array<string>;
-export const NamespacesInstancesCreateResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsExcludeItemsList>;
+export const NamespacesInstancesCreateResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesCreateResponseSourceParamsIncludeItemsList = Array<string>;
-export const NamespacesInstancesCreateResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsIncludeItemsList>;
+export const NamespacesInstancesCreateResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsIncludeItemsList>;
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -4348,25 +4278,18 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -4897,9 +4820,8 @@ export type InstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
 export const InstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList>;
+export const InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -4907,9 +4829,8 @@ export const InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint 
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesDeleteResponsePublicEndpointParamsCustomDomainsList = Array<string>;
-export const InstancesDeleteResponsePublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
+export const InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
 
 export type InstancesDeleteResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -5037,14 +4958,12 @@ export const InstancesDeleteResponseRetrievalOptions = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<InstancesDeleteResponseRetrievalOptions>;
 
 export type InstancesDeleteResponseSourceParamsExcludeItemsList = Array<string>;
-export const InstancesDeleteResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesDeleteResponseSourceParamsExcludeItemsList>;
+export const InstancesDeleteResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesDeleteResponseSourceParamsExcludeItemsList>;
 
 export type InstancesDeleteResponseSourceParamsIncludeItemsList = Array<string>;
-export const InstancesDeleteResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesDeleteResponseSourceParamsIncludeItemsList>;
+export const InstancesDeleteResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesDeleteResponseSourceParamsIncludeItemsList>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -5090,25 +5009,18 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSel
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -5120,30 +5032,8 @@ export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
   specificSitemaps?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
   useBrowserRendering?: boolean | null;
 }
-export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentSelector: S.optional(
-        S.NullOr(InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList).pipe(
-          T.Body("content_selector"),
-        ),
-      ),
-      includeHeaders: S.optional(
-        S.NullOr(InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap).pipe(
-          T.Body("include_headers"),
-        ),
-      ),
-      includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        S.NullOr(
-          InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
-        ).pipe(T.Body("specific_sitemaps")),
-      ),
-      useBrowserRendering: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering"))),
-    }),
-).annotate({
-  identifier: "InstancesDeleteResponseSourceParamsWebCrawlerParseOptions",
-}) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptions>;
+export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptions =
+  InstancesCreateResponseSourceParamsWebCrawlerParseOptions as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerParseOptions>;
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseType = S.String;
@@ -5458,9 +5348,7 @@ export const NamespacesInstancesDeleteResponseMetadata = InstancesCreateResponse
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -5469,9 +5357,7 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletion
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList = Array<string>;
 export const NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -5611,14 +5497,12 @@ export const NamespacesInstancesDeleteResponseRetrievalOptions = /*@__PURE__*/ S
 }) as any as S.Schema<NamespacesInstancesDeleteResponseRetrievalOptions>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList = Array<string>;
-export const NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList>;
+export const NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList = Array<string>;
-export const NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList>;
+export const NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -5665,25 +5549,18 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -5696,29 +5573,7 @@ export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOpt
   useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contentSelector: S.optional(
-        S.NullOr(
-          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
-        ).pipe(T.Body("content_selector")),
-      ),
-      includeHeaders: S.optional(
-        S.NullOr(
-          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
-        ).pipe(T.Body("include_headers")),
-      ),
-      includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        S.NullOr(
-          NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
-        ).pipe(T.Body("specific_sitemaps")),
-      ),
-      useBrowserRendering: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering"))),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions>;
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
@@ -5974,9 +5829,7 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTokenRequest" }) as any as S.Schema<DeleteTokenRequest>;
 
 export type DeleteTokenResponse = unknown;
-export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteTokenResponse" }) as any as S.Schema<DeleteTokenResponse>;
+export const DeleteTokenResponse = DeleteNamespaceResponse as any as S.Schema<DeleteTokenResponse>;
 
 export interface DownloadNamespaceInstanceItemRequest {
   accountId: string;
@@ -6361,14 +6214,8 @@ export interface InstancesListResultItemIndexMethod {
   keyword: boolean;
   vector: boolean;
 }
-export const InstancesListResultItemIndexMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyword: S.Boolean,
-    vector: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesListResultItemIndexMethod",
-}) as any as S.Schema<InstancesListResultItemIndexMethod>;
+export const InstancesListResultItemIndexMethod =
+  InstancesCreateRequestIndexMethod as any as S.Schema<InstancesListResultItemIndexMethod>;
 
 export type InstancesListResultItemIndexingOptionsKeywordTokenizer = "porter" | "trigram";
 export const InstancesListResultItemIndexingOptionsKeywordTokenizer = S.String;
@@ -6394,39 +6241,25 @@ export type InstancesListResultItemMetadata = InstancesCreateResponseMetadata;
 export const InstancesListResultItemMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesListResultItemPublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const InstancesListResultItemPublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesListResultItemPublicEndpointParamsAuthorizedHostsList>;
+export const InstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesListResultItemPublicEndpointParamsAuthorizedHostsList>;
 
 export interface InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint {
   disabled?: boolean | null;
 }
 export const InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint",
-  }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
+  InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint as any as S.Schema<InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
 
 export type InstancesListResultItemPublicEndpointParamsCustomDomainsList = Array<string>;
-export const InstancesListResultItemPublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesListResultItemPublicEndpointParamsCustomDomainsList>;
+export const InstancesListResultItemPublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesListResultItemPublicEndpointParamsCustomDomainsList>;
 
 export interface InstancesListResultItemPublicEndpointParamsMcp {
   description?: string | null;
   disabled?: boolean | null;
 }
-export const InstancesListResultItemPublicEndpointParamsMcp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    disabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "InstancesListResultItemPublicEndpointParamsMcp",
-}) as any as S.Schema<InstancesListResultItemPublicEndpointParamsMcp>;
+export const InstancesListResultItemPublicEndpointParamsMcp =
+  InstancesCreateResponsePublicEndpointParamsMcp as any as S.Schema<InstancesListResultItemPublicEndpointParamsMcp>;
 
 export type InstancesListResultItemPublicEndpointParamsRateLimitTechnique = "fixed" | "sliding";
 export const InstancesListResultItemPublicEndpointParamsRateLimitTechnique = S.String;
@@ -6552,14 +6385,12 @@ export const InstancesListResultItemRetrievalOptions = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<InstancesListResultItemRetrievalOptions>;
 
 export type InstancesListResultItemSourceParamsExcludeItemsList = Array<string>;
-export const InstancesListResultItemSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesListResultItemSourceParamsExcludeItemsList>;
+export const InstancesListResultItemSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesListResultItemSourceParamsExcludeItemsList>;
 
 export type InstancesListResultItemSourceParamsIncludeItemsList = Array<string>;
-export const InstancesListResultItemSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesListResultItemSourceParamsIncludeItemsList>;
+export const InstancesListResultItemSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesListResultItemSourceParamsIncludeItemsList>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -6597,37 +6428,23 @@ export interface InstancesListResultItemSourceParamsWebCrawlerParseOptionsConten
   selector: string;
 }
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.String,
-      selector: S.String,
-    }),
-  ).annotate({
-    identifier: "InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-  }) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesListResultItemSourceParamsWebCrawlerParseOptions {
   contentSelector?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
@@ -6636,30 +6453,8 @@ export interface InstancesListResultItemSourceParamsWebCrawlerParseOptions {
   specificSitemaps?: InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
   useBrowserRendering?: boolean | null;
 }
-export const InstancesListResultItemSourceParamsWebCrawlerParseOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentSelector: S.optional(
-        S.NullOr(InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList).pipe(
-          T.Body("content_selector"),
-        ),
-      ),
-      includeHeaders: S.optional(
-        S.NullOr(InstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap).pipe(
-          T.Body("include_headers"),
-        ),
-      ),
-      includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        S.NullOr(
-          InstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
-        ).pipe(T.Body("specific_sitemaps")),
-      ),
-      useBrowserRendering: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering"))),
-    }),
-).annotate({
-  identifier: "InstancesListResultItemSourceParamsWebCrawlerParseOptions",
-}) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptions>;
+export const InstancesListResultItemSourceParamsWebCrawlerParseOptions =
+  InstancesCreateResponseSourceParamsWebCrawlerParseOptions as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerParseOptions>;
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export const InstancesListResultItemSourceParamsWebCrawlerParseType = S.String;
@@ -7191,9 +6986,7 @@ export const NamespacesInstancesListResultItemMetadata = InstancesCreateResponse
 export type NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export const NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
   InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint;
@@ -7202,9 +6995,7 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsChatCompletion
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList = Array<string>;
 export const NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesInstancesListResultItemPublicEndpointParamsMcp =
   InstancesListResultItemPublicEndpointParamsMcp;
@@ -7349,14 +7140,12 @@ export const NamespacesInstancesListResultItemRetrievalOptions = /*@__PURE__*/ S
 }) as any as S.Schema<NamespacesInstancesListResultItemRetrievalOptions>;
 
 export type NamespacesInstancesListResultItemSourceParamsExcludeItemsList = Array<string>;
-export const NamespacesInstancesListResultItemSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsExcludeItemsList>;
+export const NamespacesInstancesListResultItemSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesListResultItemSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesListResultItemSourceParamsIncludeItemsList = Array<string>;
-export const NamespacesInstancesListResultItemSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsIncludeItemsList>;
+export const NamespacesInstancesListResultItemSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesListResultItemSourceParamsIncludeItemsList>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -7398,25 +7187,18 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions {
   contentSelector?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
@@ -7426,29 +7208,7 @@ export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOpt
   useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contentSelector: S.optional(
-        S.NullOr(
-          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorList,
-        ).pipe(T.Body("content_selector")),
-      ),
-      includeHeaders: S.optional(
-        S.NullOr(
-          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
-        ).pipe(T.Body("include_headers")),
-      ),
-      includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        S.NullOr(
-          NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
-        ).pipe(T.Body("specific_sitemaps")),
-      ),
-      useBrowserRendering: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering"))),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions",
-  }) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions>;
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType =
   | "sitemap"
@@ -7677,9 +7437,7 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesListResultItemPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export const NamespacesListResultItemPublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesListResultItemPublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesListResultItemPublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -7687,15 +7445,12 @@ export const NamespacesListResultItemPublicEndpointParamsChatCompletionsEndpoint
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesListResultItemPublicEndpointParamsCustomDomainsList = Array<string>;
-export const NamespacesListResultItemPublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesListResultItemPublicEndpointParamsCustomDomainsList>;
+export const NamespacesListResultItemPublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesListResultItemPublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesListResultItemPublicEndpointParamsInstancesAllowedList = Array<string>;
 export const NamespacesListResultItemPublicEndpointParamsInstancesAllowedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesListResultItemPublicEndpointParamsInstancesAllowedList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesListResultItemPublicEndpointParamsInstancesAllowedList>;
 
 export type NamespacesListResultItemPublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -8033,9 +7788,8 @@ export type NamespacesInstancesJobsLogsResultItem = InstancesJobsLogsResultItem;
 export const NamespacesInstancesJobsLogsResultItem = InstancesJobsLogsResultItem;
 
 export type NamespacesInstancesJobsLogsResultList = Array<InstancesJobsLogsResultItem>;
-export const NamespacesInstancesJobsLogsResultList = /*@__PURE__*/ S.Array(
-  InstancesJobsLogsResultItem,
-) as any as S.Schema<NamespacesInstancesJobsLogsResultList>;
+export const NamespacesInstancesJobsLogsResultList =
+  InstancesJobsLogsResultList as any as S.Schema<NamespacesInstancesJobsLogsResultList>;
 
 export type LogsNamespaceInstanceJobResponse = NamespacesInstancesJobsLogsResultList;
 export const LogsNamespaceInstanceJobResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8198,9 +7952,8 @@ export type InstancesReadResponseMetadata = InstancesCreateResponseMetadata;
 export const InstancesReadResponseMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesReadResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const InstancesReadResponsePublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesReadResponsePublicEndpointParamsAuthorizedHostsList>;
+export const InstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesReadResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -8208,9 +7961,8 @@ export const InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesReadResponsePublicEndpointParamsCustomDomainsList = Array<string>;
-export const InstancesReadResponsePublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesReadResponsePublicEndpointParamsCustomDomainsList>;
+export const InstancesReadResponsePublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesReadResponsePublicEndpointParamsCustomDomainsList>;
 
 export type InstancesReadResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -8338,14 +8090,12 @@ export const InstancesReadResponseRetrievalOptions = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<InstancesReadResponseRetrievalOptions>;
 
 export type InstancesReadResponseSourceParamsExcludeItemsList = Array<string>;
-export const InstancesReadResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesReadResponseSourceParamsExcludeItemsList>;
+export const InstancesReadResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesReadResponseSourceParamsExcludeItemsList>;
 
 export type InstancesReadResponseSourceParamsIncludeItemsList = Array<string>;
-export const InstancesReadResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesReadResponseSourceParamsIncludeItemsList>;
+export const InstancesReadResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesReadResponseSourceParamsIncludeItemsList>;
 
 export type InstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -8391,25 +8141,18 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelec
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesReadResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -8651,9 +8394,8 @@ export const ReadNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadNamespaceRequest" }) as any as S.Schema<ReadNamespaceRequest>;
 
 export type NamespacesReadResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const NamespacesReadResponsePublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesReadResponsePublicEndpointParamsAuthorizedHostsList>;
+export const NamespacesReadResponsePublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesReadResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -8661,14 +8403,12 @@ export const NamespacesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesReadResponsePublicEndpointParamsCustomDomainsList = Array<string>;
-export const NamespacesReadResponsePublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesReadResponsePublicEndpointParamsCustomDomainsList>;
+export const NamespacesReadResponsePublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesReadResponsePublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesReadResponsePublicEndpointParamsInstancesAllowedList = Array<string>;
-export const NamespacesReadResponsePublicEndpointParamsInstancesAllowedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesReadResponsePublicEndpointParamsInstancesAllowedList>;
+export const NamespacesReadResponsePublicEndpointParamsInstancesAllowedList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesReadResponsePublicEndpointParamsInstancesAllowedList>;
 
 export type NamespacesReadResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -8873,9 +8613,7 @@ export const NamespacesInstancesReadResponseMetadata = InstancesCreateResponseMe
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export const NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -8884,9 +8622,7 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsE
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList = Array<string>;
 export const NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesInstancesReadResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -9024,14 +8760,12 @@ export const NamespacesInstancesReadResponseRetrievalOptions = /*@__PURE__*/ S.s
 }) as any as S.Schema<NamespacesInstancesReadResponseRetrievalOptions>;
 
 export type NamespacesInstancesReadResponseSourceParamsExcludeItemsList = Array<string>;
-export const NamespacesInstancesReadResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsExcludeItemsList>;
+export const NamespacesInstancesReadResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesReadResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesReadResponseSourceParamsIncludeItemsList = Array<string>;
-export const NamespacesInstancesReadResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsIncludeItemsList>;
+export const NamespacesInstancesReadResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesReadResponseSourceParamsIncludeItemsList>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -9077,25 +8811,18 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsCo
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -9108,29 +8835,7 @@ export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptio
   useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contentSelector: S.optional(
-        S.NullOr(
-          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
-        ).pipe(T.Body("content_selector")),
-      ),
-      includeHeaders: S.optional(
-        S.NullOr(
-          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
-        ).pipe(T.Body("include_headers")),
-      ),
-      includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        S.NullOr(
-          NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
-        ).pipe(T.Body("specific_sitemaps")),
-      ),
-      useBrowserRendering: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering"))),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions",
-  }) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions>;
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType = S.String;
@@ -9355,19 +9060,7 @@ export interface ReadTokenResponse {
   legacy?: boolean | null;
   modifiedBy?: string | null;
 }
-export const ReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cfApiId: S.String.pipe(T.Body("cf_api_id")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    legacy: S.optional(S.NullOr(S.Boolean)),
-    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ReadTokenResponse" }) as any as S.Schema<ReadTokenResponse>;
+export const ReadTokenResponse = CreateTokenResponse as any as S.Schema<ReadTokenResponse>;
 
 export type InstancesSearchRequestAiSearchOptionsCacheCacheThreshold =
   | "super_strict_match"
@@ -9445,10 +9138,8 @@ export const InstancesSearchRequestAiSearchOptionsRetrievalBoostByList = /*@__PU
 export type InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap = {
   [key: string]: unknown | undefined;
 };
-export const InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
+export const InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod = "max" | "rrf";
 export const InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod = S.String;
@@ -9672,25 +9363,16 @@ export const SearchInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export type InstancesSearchResponseChunksItemItemMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const InstancesSearchResponseChunksItemItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InstancesSearchResponseChunksItemItemMetadataMap>;
+export const InstancesSearchResponseChunksItemItemMetadataMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<InstancesSearchResponseChunksItemItemMetadataMap>;
 
 export interface InstancesSearchResponseChunksItemItem {
   key: string;
   metadata?: InstancesSearchResponseChunksItemItemMetadataMap | null;
   timestamp?: number | null;
 }
-export const InstancesSearchResponseChunksItemItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    metadata: S.optional(S.NullOr(InstancesSearchResponseChunksItemItemMetadataMap)),
-    timestamp: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "InstancesSearchResponseChunksItemItem",
-}) as any as S.Schema<InstancesSearchResponseChunksItemItem>;
+export const InstancesSearchResponseChunksItemItem =
+  InstancesChatCompletionsResponseChunksItemItem as any as S.Schema<InstancesSearchResponseChunksItemItem>;
 
 export type InstancesSearchResponseChunksItemScoringDetailsFusionMethod = "rrf" | "max";
 export const InstancesSearchResponseChunksItemScoringDetailsFusionMethod = S.String;
@@ -9766,9 +9448,8 @@ export const SearchInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchInstanceResponse" }) as any as S.Schema<SearchInstanceResponse>;
 
 export type NamespacesSearchRequestAiSearchOptionsInstanceIdsList = Array<string>;
-export const NamespacesSearchRequestAiSearchOptionsInstanceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsInstanceIdsList>;
+export const NamespacesSearchRequestAiSearchOptionsInstanceIdsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesSearchRequestAiSearchOptionsInstanceIdsList>;
 
 export type NamespacesSearchRequestAiSearchOptionsCacheCacheThreshold =
   | "super_strict_match"
@@ -9846,10 +9527,8 @@ export const NamespacesSearchRequestAiSearchOptionsRetrievalBoostByList = /*@__P
 export type NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
+export const NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod = "max" | "rrf";
 export const NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod = S.String;
@@ -10077,25 +9756,16 @@ export const SearchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export type NamespacesSearchResponseChunksItemItemMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesSearchResponseChunksItemItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesSearchResponseChunksItemItemMetadataMap>;
+export const NamespacesSearchResponseChunksItemItemMetadataMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<NamespacesSearchResponseChunksItemItemMetadataMap>;
 
 export interface NamespacesSearchResponseChunksItemItem {
   key: string;
   metadata?: NamespacesSearchResponseChunksItemItemMetadataMap | null;
   timestamp?: number | null;
 }
-export const NamespacesSearchResponseChunksItemItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    metadata: S.optional(S.NullOr(NamespacesSearchResponseChunksItemItemMetadataMap)),
-    timestamp: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "NamespacesSearchResponseChunksItemItem",
-}) as any as S.Schema<NamespacesSearchResponseChunksItemItem>;
+export const NamespacesSearchResponseChunksItemItem =
+  InstancesChatCompletionsResponseChunksItemItem as any as S.Schema<NamespacesSearchResponseChunksItemItem>;
 
 export type NamespacesSearchResponseChunksItemScoringDetailsFusionMethod = "rrf" | "max";
 export const NamespacesSearchResponseChunksItemScoringDetailsFusionMethod = S.String;
@@ -10283,10 +9953,7 @@ export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap =
   [key: string]: unknown | undefined;
 };
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
+  InstancesChatCompletionsRequestAiSearchOptionsRetrievalFiltersMap as any as S.Schema<NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFiltersMap>;
 
 export type NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod = "max" | "rrf";
 export const NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod = S.String;
@@ -10534,25 +10201,16 @@ export const SearchNamespaceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export type NamespacesInstancesSearchResponseChunksItemItemMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesInstancesSearchResponseChunksItemItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesInstancesSearchResponseChunksItemItemMetadataMap>;
+export const NamespacesInstancesSearchResponseChunksItemItemMetadataMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<NamespacesInstancesSearchResponseChunksItemItemMetadataMap>;
 
 export interface NamespacesInstancesSearchResponseChunksItemItem {
   key: string;
   metadata?: NamespacesInstancesSearchResponseChunksItemItemMetadataMap | null;
   timestamp?: number | null;
 }
-export const NamespacesInstancesSearchResponseChunksItemItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    metadata: S.optional(S.NullOr(NamespacesInstancesSearchResponseChunksItemItemMetadataMap)),
-    timestamp: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "NamespacesInstancesSearchResponseChunksItemItem",
-}) as any as S.Schema<NamespacesInstancesSearchResponseChunksItemItem>;
+export const NamespacesInstancesSearchResponseChunksItemItem =
+  InstancesChatCompletionsResponseChunksItemItem as any as S.Schema<NamespacesInstancesSearchResponseChunksItemItem>;
 
 export type NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod = "rrf" | "max";
 export const NamespacesInstancesSearchResponseChunksItemScoringDetailsFusionMethod = S.String;
@@ -10697,16 +10355,12 @@ export const InstancesStatsResponseEngine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesStatsResponseEngine>;
 
 export type InstancesStatsResponseFileEmbedErrorsMap = { [key: string]: unknown | undefined };
-export const InstancesStatsResponseFileEmbedErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InstancesStatsResponseFileEmbedErrorsMap>;
+export const InstancesStatsResponseFileEmbedErrorsMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<InstancesStatsResponseFileEmbedErrorsMap>;
 
 export type InstancesStatsResponseIndexSourceErrorsMap = { [key: string]: unknown | undefined };
-export const InstancesStatsResponseIndexSourceErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InstancesStatsResponseIndexSourceErrorsMap>;
+export const InstancesStatsResponseIndexSourceErrorsMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<InstancesStatsResponseIndexSourceErrorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatsInstanceResponse {
@@ -10781,18 +10435,14 @@ export const NamespacesInstancesStatsResponseEngine = InstancesStatsResponseEngi
 export type NamespacesInstancesStatsResponseFileEmbedErrorsMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesInstancesStatsResponseFileEmbedErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesInstancesStatsResponseFileEmbedErrorsMap>;
+export const NamespacesInstancesStatsResponseFileEmbedErrorsMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<NamespacesInstancesStatsResponseFileEmbedErrorsMap>;
 
 export type NamespacesInstancesStatsResponseIndexSourceErrorsMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesInstancesStatsResponseIndexSourceErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesInstancesStatsResponseIndexSourceErrorsMap>;
+export const NamespacesInstancesStatsResponseIndexSourceErrorsMap =
+  InstancesChatCompletionsResponseChunksItemItemMetadataMap as any as S.Schema<NamespacesInstancesStatsResponseIndexSourceErrorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatsNamespaceInstanceResponse {
@@ -11009,9 +10659,8 @@ export type InstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
 export const InstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
 
 export type InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
+export const InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
 
 export type InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -11019,9 +10668,8 @@ export const InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesUpdateRequestPublicEndpointParamsCustomDomainsList = Array<string>;
-export const InstancesUpdateRequestPublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
+export const InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
 
 export type InstancesUpdateRequestPublicEndpointParamsMcp =
   InstancesCreateRequestPublicEndpointParamsMcp;
@@ -11141,14 +10789,12 @@ export const InstancesUpdateRequestRetrievalOptions = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<InstancesUpdateRequestRetrievalOptions>;
 
 export type InstancesUpdateRequestSourceParamsExcludeItemsList = Array<string>;
-export const InstancesUpdateRequestSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateRequestSourceParamsExcludeItemsList>;
+export const InstancesUpdateRequestSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateRequestSourceParamsExcludeItemsList>;
 
 export type InstancesUpdateRequestSourceParamsIncludeItemsList = Array<string>;
-export const InstancesUpdateRequestSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateRequestSourceParamsIncludeItemsList>;
+export const InstancesUpdateRequestSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateRequestSourceParamsIncludeItemsList>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -11192,25 +10838,18 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSele
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -11222,30 +10861,8 @@ export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
   specificSitemaps?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList;
   useBrowserRendering?: boolean;
 }
-export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentSelector: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
-      ),
-      includeHeaders: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
-      ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
-      ),
-      useBrowserRendering: S.optional(S.Boolean.pipe(T.Body("use_browser_rendering"))),
-    }),
-).annotate({
-  identifier: "InstancesUpdateRequestSourceParamsWebCrawlerParseOptions",
-}) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptions>;
+export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptions =
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptions as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerParseOptions>;
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseType = S.String;
@@ -11488,9 +11105,8 @@ export type InstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
 export const InstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
 
 export type InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
+export const InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -11498,9 +11114,8 @@ export const InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint 
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type InstancesUpdateResponsePublicEndpointParamsCustomDomainsList = Array<string>;
-export const InstancesUpdateResponsePublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
+export const InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
 
 export type InstancesUpdateResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -11628,14 +11243,12 @@ export const InstancesUpdateResponseRetrievalOptions = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<InstancesUpdateResponseRetrievalOptions>;
 
 export type InstancesUpdateResponseSourceParamsExcludeItemsList = Array<string>;
-export const InstancesUpdateResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateResponseSourceParamsExcludeItemsList>;
+export const InstancesUpdateResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateResponseSourceParamsExcludeItemsList>;
 
 export type InstancesUpdateResponseSourceParamsIncludeItemsList = Array<string>;
-export const InstancesUpdateResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstancesUpdateResponseSourceParamsIncludeItemsList>;
+export const InstancesUpdateResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<InstancesUpdateResponseSourceParamsIncludeItemsList>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -11681,25 +11294,18 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSel
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -11711,30 +11317,8 @@ export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
   specificSitemaps?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList | null;
   useBrowserRendering?: boolean | null;
 }
-export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentSelector: S.optional(
-        S.NullOr(InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList).pipe(
-          T.Body("content_selector"),
-        ),
-      ),
-      includeHeaders: S.optional(
-        S.NullOr(InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap).pipe(
-          T.Body("include_headers"),
-        ),
-      ),
-      includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        S.NullOr(
-          InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
-        ).pipe(T.Body("specific_sitemaps")),
-      ),
-      useBrowserRendering: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering"))),
-    }),
-).annotate({
-  identifier: "InstancesUpdateResponseSourceParamsWebCrawlerParseOptions",
-}) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptions>;
+export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptions =
+  InstancesCreateResponseSourceParamsWebCrawlerParseOptions as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerParseOptions>;
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseType = S.String;
@@ -11923,9 +11507,8 @@ export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceResponse" }) as any as S.Schema<UpdateInstanceResponse>;
 
 export type NamespacesUpdateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
-export const NamespacesUpdateRequestPublicEndpointParamsAuthorizedHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
+export const NamespacesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -11933,15 +11516,12 @@ export const NamespacesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint 
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesUpdateRequestPublicEndpointParamsCustomDomainsList = Array<string>;
-export const NamespacesUpdateRequestPublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsCustomDomainsList>;
+export const NamespacesUpdateRequestPublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesUpdateRequestPublicEndpointParamsInstancesAllowedList = Array<string>;
 export const NamespacesUpdateRequestPublicEndpointParamsInstancesAllowedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsInstancesAllowedList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesUpdateRequestPublicEndpointParamsInstancesAllowedList>;
 
 export type NamespacesUpdateRequestPublicEndpointParamsMcp =
   InstancesCreateRequestPublicEndpointParamsMcp;
@@ -12047,9 +11627,7 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesUpdateResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export const NamespacesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -12057,15 +11635,12 @@ export const NamespacesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
 
 export type NamespacesUpdateResponsePublicEndpointParamsCustomDomainsList = Array<string>;
-export const NamespacesUpdateResponsePublicEndpointParamsCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsCustomDomainsList>;
+export const NamespacesUpdateResponsePublicEndpointParamsCustomDomainsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesUpdateResponsePublicEndpointParamsInstancesAllowedList = Array<string>;
 export const NamespacesUpdateResponsePublicEndpointParamsInstancesAllowedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsInstancesAllowedList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesUpdateResponsePublicEndpointParamsInstancesAllowedList>;
 
 export type NamespacesUpdateResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -12249,9 +11824,7 @@ export const NamespacesInstancesUpdateRequestMetadata = InstancesCreateRequestMe
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -12260,9 +11833,7 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletions
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList = Array<string>;
 export const NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsMcp =
   InstancesCreateRequestPublicEndpointParamsMcp;
@@ -12396,14 +11967,12 @@ export const NamespacesInstancesUpdateRequestRetrievalOptions = /*@__PURE__*/ S.
 }) as any as S.Schema<NamespacesInstancesUpdateRequestRetrievalOptions>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList = Array<string>;
-export const NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList>;
+export const NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList = Array<string>;
-export const NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList>;
+export const NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -12451,25 +12020,18 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsC
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -12482,29 +12044,7 @@ export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOpti
   useBrowserRendering?: boolean;
 }
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contentSelector: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList.pipe(
-          T.Body("content_selector"),
-        ),
-      ),
-      includeHeaders: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap.pipe(
-          T.Body("include_headers"),
-        ),
-      ),
-      includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList.pipe(
-          T.Body("specific_sitemaps"),
-        ),
-      ),
-      useBrowserRendering: S.optional(S.Boolean.pipe(T.Body("use_browser_rendering"))),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions>;
+  NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions>;
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
@@ -12769,9 +12309,7 @@ export const NamespacesInstancesUpdateResponseMetadata = InstancesCreateResponse
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList>;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -12780,9 +12318,7 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletion
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList = Array<string>;
 export const NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
 
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsMcp =
   InstancesCreateResponsePublicEndpointParamsMcp;
@@ -12922,14 +12458,12 @@ export const NamespacesInstancesUpdateResponseRetrievalOptions = /*@__PURE__*/ S
 }) as any as S.Schema<NamespacesInstancesUpdateResponseRetrievalOptions>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList = Array<string>;
-export const NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList>;
+export const NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList = Array<string>;
-export const NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList>;
+export const NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList =
+  NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource =
   | "all"
@@ -12976,25 +12510,18 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
   Array<InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem>;
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList =
-  /*@__PURE__*/ S.Array(
-    InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem,
-  ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap = {
   [key: string]: string | undefined;
 };
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
+  InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList>;
 
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
   /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
@@ -13007,29 +12534,7 @@ export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOpt
   useBrowserRendering?: boolean | null;
 }
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contentSelector: S.optional(
-        S.NullOr(
-          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList,
-        ).pipe(T.Body("content_selector")),
-      ),
-      includeHeaders: S.optional(
-        S.NullOr(
-          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap,
-        ).pipe(T.Body("include_headers")),
-      ),
-      includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
-      specificSitemaps: S.optional(
-        S.NullOr(
-          NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList,
-        ).pipe(T.Body("specific_sitemaps")),
-      ),
-      useBrowserRendering: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering"))),
-    }),
-  ).annotate({
-    identifier: "NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions>;
+  NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions>;
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
@@ -13264,19 +12769,7 @@ export interface UpdateTokenResponse {
   legacy?: boolean | null;
   modifiedBy?: string | null;
 }
-export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cfApiId: S.String.pipe(T.Body("cf_api_id")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    legacy: S.optional(S.NullOr(S.Boolean)),
-    modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateTokenResponse" }) as any as S.Schema<UpdateTokenResponse>;
+export const UpdateTokenResponse = CreateTokenResponse as any as S.Schema<UpdateTokenResponse>;
 
 export interface NamespacesInstancesItemsUploadRequestFile {
   /** The file to upload. Filename must not exceed 128 characters. */

@@ -434,60 +434,42 @@ export const TeamDefaultProjectJobsFlagDefinitionsPresent = /*@__PURE__*/ S.susp
 
 /** Default job configuration applied to new projects created in this team. */
 export type TeamDefaultProjectJobsLintTargetsList = Array<string>;
-export const TeamDefaultProjectJobsLintTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamDefaultProjectJobsLintTargetsList>;
+export const TeamDefaultProjectJobsLintTargetsList =
+  TeamDefaultProjectJobsFlagDefinitionsPresentTargetsList as any as S.Schema<TeamDefaultProjectJobsLintTargetsList>;
 
 /** Default job configuration applied to new projects created in this team. */
 export interface TeamDefaultProjectJobsLint {
   /** Default job configuration applied to new projects created in this team. */
   targets: TeamDefaultProjectJobsLintTargetsList;
 }
-export const TeamDefaultProjectJobsLint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: TeamDefaultProjectJobsLintTargetsList,
-  }),
-).annotate({
-  identifier: "TeamDefaultProjectJobsLint",
-}) as any as S.Schema<TeamDefaultProjectJobsLint>;
+export const TeamDefaultProjectJobsLint =
+  TeamDefaultProjectJobsFlagDefinitionsPresent as any as S.Schema<TeamDefaultProjectJobsLint>;
 
 /** Default job configuration applied to new projects created in this team. */
 export type TeamDefaultProjectJobsMfeConfigPresentTargetsList = Array<string>;
-export const TeamDefaultProjectJobsMfeConfigPresentTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamDefaultProjectJobsMfeConfigPresentTargetsList>;
+export const TeamDefaultProjectJobsMfeConfigPresentTargetsList =
+  TeamDefaultProjectJobsFlagDefinitionsPresentTargetsList as any as S.Schema<TeamDefaultProjectJobsMfeConfigPresentTargetsList>;
 
 /** Default job configuration applied to new projects created in this team. */
 export interface TeamDefaultProjectJobsMfeConfigPresent {
   /** Default job configuration applied to new projects created in this team. */
   targets: TeamDefaultProjectJobsMfeConfigPresentTargetsList;
 }
-export const TeamDefaultProjectJobsMfeConfigPresent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: TeamDefaultProjectJobsMfeConfigPresentTargetsList,
-  }),
-).annotate({
-  identifier: "TeamDefaultProjectJobsMfeConfigPresent",
-}) as any as S.Schema<TeamDefaultProjectJobsMfeConfigPresent>;
+export const TeamDefaultProjectJobsMfeConfigPresent =
+  TeamDefaultProjectJobsFlagDefinitionsPresent as any as S.Schema<TeamDefaultProjectJobsMfeConfigPresent>;
 
 /** Default job configuration applied to new projects created in this team. */
 export type TeamDefaultProjectJobsTypecheckTargetsList = Array<string>;
-export const TeamDefaultProjectJobsTypecheckTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamDefaultProjectJobsTypecheckTargetsList>;
+export const TeamDefaultProjectJobsTypecheckTargetsList =
+  TeamDefaultProjectJobsFlagDefinitionsPresentTargetsList as any as S.Schema<TeamDefaultProjectJobsTypecheckTargetsList>;
 
 /** Default job configuration applied to new projects created in this team. */
 export interface TeamDefaultProjectJobsTypecheck {
   /** Default job configuration applied to new projects created in this team. */
   targets: TeamDefaultProjectJobsTypecheckTargetsList;
 }
-export const TeamDefaultProjectJobsTypecheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: TeamDefaultProjectJobsTypecheckTargetsList,
-  }),
-).annotate({
-  identifier: "TeamDefaultProjectJobsTypecheck",
-}) as any as S.Schema<TeamDefaultProjectJobsTypecheck>;
+export const TeamDefaultProjectJobsTypecheck =
+  TeamDefaultProjectJobsFlagDefinitionsPresent as any as S.Schema<TeamDefaultProjectJobsTypecheck>;
 
 /** Default job configuration applied to new projects created in this team. */
 export interface TeamDefaultProjectJobs {
@@ -1646,14 +1628,12 @@ export const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTeamMembersRequest" }) as any as S.Schema<GetTeamMembersRequest>;
 
 export type GetTeamMembersResponseEmailInviteCodesItemAccessGroupsList = Array<string>;
-export const GetTeamMembersResponseEmailInviteCodesItemAccessGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemAccessGroupsList>;
+export const GetTeamMembersResponseEmailInviteCodesItemAccessGroupsList =
+  TeamDefaultProjectJobsFlagDefinitionsPresentTargetsList as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemAccessGroupsList>;
 
 export type GetTeamMembersResponseEmailInviteCodesItemEntitlementsList = Array<string>;
-export const GetTeamMembersResponseEmailInviteCodesItemEntitlementsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemEntitlementsList>;
+export const GetTeamMembersResponseEmailInviteCodesItemEntitlementsList =
+  TeamDefaultProjectJobsFlagDefinitionsPresentTargetsList as any as S.Schema<GetTeamMembersResponseEmailInviteCodesItemEntitlementsList>;
 
 export type GetTeamMembersResponseEmailInviteCodesItemProjectsValue =
   | "ADMIN"
@@ -2012,9 +1992,8 @@ export type TeamLimitedMembershipEntitlementsItem = TeamMembershipEntitlementsIt
 export const TeamLimitedMembershipEntitlementsItem = TeamMembershipEntitlementsItem;
 
 export type TeamLimitedMembershipEntitlementsList = Array<TeamMembershipEntitlementsItem>;
-export const TeamLimitedMembershipEntitlementsList = /*@__PURE__*/ S.Array(
-  TeamMembershipEntitlementsItem,
-) as any as S.Schema<TeamLimitedMembershipEntitlementsList>;
+export const TeamLimitedMembershipEntitlementsList =
+  TeamMembershipEntitlementsList as any as S.Schema<TeamLimitedMembershipEntitlementsList>;
 
 export type TeamLimitedMembershipJoinedFromGitUserId = string | number;
 export const TeamLimitedMembershipJoinedFromGitUserId =
@@ -3250,39 +3229,24 @@ export interface UpdateTeamRequestStrictShareableLinks {
   /** Enable or disable requiring Owner role to create shareable links. */
   enabled: boolean;
 }
-export const UpdateTeamRequestStrictShareableLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestStrictShareableLinks",
-}) as any as S.Schema<UpdateTeamRequestStrictShareableLinks>;
+export const UpdateTeamRequestStrictShareableLinks =
+  UpdateTeamRequestStrictDeploymentProtectionSettings as any as S.Schema<UpdateTeamRequestStrictShareableLinks>;
 
 /** When enabled, adding, changing, or removing project password protection requires Owner role. */
 export interface UpdateTeamRequestStrictPasswordProtectionSettings {
   /** Enable or disable requiring Owner role to change project password protection. */
   enabled: boolean;
 }
-export const UpdateTeamRequestStrictPasswordProtectionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestStrictPasswordProtectionSettings",
-}) as any as S.Schema<UpdateTeamRequestStrictPasswordProtectionSettings>;
+export const UpdateTeamRequestStrictPasswordProtectionSettings =
+  UpdateTeamRequestStrictDeploymentProtectionSettings as any as S.Schema<UpdateTeamRequestStrictPasswordProtectionSettings>;
 
 /** When enabled, creating and managing connectors requires Owner role. */
 export interface UpdateTeamRequestStrictConnectors {
   /** Enable or disable requiring Owner role to manage connectors. */
   enabled: boolean;
 }
-export const UpdateTeamRequestStrictConnectors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestStrictConnectors",
-}) as any as S.Schema<UpdateTeamRequestStrictConnectors>;
+export const UpdateTeamRequestStrictConnectors =
+  UpdateTeamRequestStrictDeploymentProtectionSettings as any as S.Schema<UpdateTeamRequestStrictConnectors>;
 
 /** The NSNB preference for the team. */
 export type UpdateTeamRequestNsnbConfigCase0Preference =
@@ -3309,36 +3273,24 @@ export const UpdateTeamRequestNsnbConfig =
   S.Unknown as any as S.Schema<UpdateTeamRequestNsnbConfig>;
 
 export type UpdateTeamRequestDefaultProjectJobsCase0LintTargetsList = Array<string>;
-export const UpdateTeamRequestDefaultProjectJobsCase0LintTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0LintTargetsList>;
+export const UpdateTeamRequestDefaultProjectJobsCase0LintTargetsList =
+  TeamDefaultProjectJobsFlagDefinitionsPresentTargetsList as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0LintTargetsList>;
 
 export interface UpdateTeamRequestDefaultProjectJobsCase0Lint {
   targets: UpdateTeamRequestDefaultProjectJobsCase0LintTargetsList;
 }
-export const UpdateTeamRequestDefaultProjectJobsCase0Lint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: UpdateTeamRequestDefaultProjectJobsCase0LintTargetsList,
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestDefaultProjectJobsCase0Lint",
-}) as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0Lint>;
+export const UpdateTeamRequestDefaultProjectJobsCase0Lint =
+  TeamDefaultProjectJobsFlagDefinitionsPresent as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0Lint>;
 
 export type UpdateTeamRequestDefaultProjectJobsCase0TypecheckTargetsList = Array<string>;
-export const UpdateTeamRequestDefaultProjectJobsCase0TypecheckTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0TypecheckTargetsList>;
+export const UpdateTeamRequestDefaultProjectJobsCase0TypecheckTargetsList =
+  TeamDefaultProjectJobsFlagDefinitionsPresentTargetsList as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0TypecheckTargetsList>;
 
 export interface UpdateTeamRequestDefaultProjectJobsCase0Typecheck {
   targets: UpdateTeamRequestDefaultProjectJobsCase0TypecheckTargetsList;
 }
-export const UpdateTeamRequestDefaultProjectJobsCase0Typecheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: UpdateTeamRequestDefaultProjectJobsCase0TypecheckTargetsList,
-  }),
-).annotate({
-  identifier: "UpdateTeamRequestDefaultProjectJobsCase0Typecheck",
-}) as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0Typecheck>;
+export const UpdateTeamRequestDefaultProjectJobsCase0Typecheck =
+  TeamDefaultProjectJobsFlagDefinitionsPresent as any as S.Schema<UpdateTeamRequestDefaultProjectJobsCase0Typecheck>;
 
 /** Default job configuration applied to new projects created in this team. */
 export interface UpdateTeamRequestDefaultProjectJobsCase0 {
@@ -3583,11 +3535,8 @@ export interface UpdateTeamMemberResponse {
   /** ID of the team. */
   id: string;
 }
-export const UpdateTeamMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "UpdateTeamMemberResponse" }) as any as S.Schema<UpdateTeamMemberResponse>;
+export const UpdateTeamMemberResponse =
+  RemoveTeamMemberResponse as any as S.Schema<UpdateTeamMemberResponse>;
 
 export type CreateTeamError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Create a Team Create a new Team under your account. You need to send a POST request with the desired Team slug, and optionally the Team name. */

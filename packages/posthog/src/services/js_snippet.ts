@@ -77,17 +77,12 @@ export const GetJsSnippetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetJsSnippetVersionRequest>;
 
 export type GetJsSnippetVersionResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetJsSnippetVersionResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetJsSnippetVersionResponseBodyMap>;
+export const GetJsSnippetVersionResponseBodyMap =
+  GetJsSnippetResolveResponseBodyMap as any as S.Schema<GetJsSnippetVersionResponseBodyMap>;
 
 export type GetJsSnippetVersionResponse = GetJsSnippetVersionResponseBodyMap;
-export const GetJsSnippetVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  GetJsSnippetVersionResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetJsSnippetVersionResponse",
-}) as any as S.Schema<GetJsSnippetVersionResponse>;
+export const GetJsSnippetVersionResponse =
+  GetJsSnippetResolveResponse as any as S.Schema<GetJsSnippetVersionResponse>;
 
 export interface UpdateJsSnippetVersionPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -107,17 +102,12 @@ export const UpdateJsSnippetVersionPartialRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateJsSnippetVersionPartialRequest>;
 
 export type UpdateJsSnippetVersionPartialResponseBodyMap = { [key: string]: unknown | undefined };
-export const UpdateJsSnippetVersionPartialResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateJsSnippetVersionPartialResponseBodyMap>;
+export const UpdateJsSnippetVersionPartialResponseBodyMap =
+  GetJsSnippetResolveResponseBodyMap as any as S.Schema<UpdateJsSnippetVersionPartialResponseBodyMap>;
 
 export type UpdateJsSnippetVersionPartialResponse = UpdateJsSnippetVersionPartialResponseBodyMap;
-export const UpdateJsSnippetVersionPartialResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateJsSnippetVersionPartialResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateJsSnippetVersionPartialResponse",
-}) as any as S.Schema<UpdateJsSnippetVersionPartialResponse>;
+export const UpdateJsSnippetVersionPartialResponse =
+  GetJsSnippetResolveResponse as any as S.Schema<UpdateJsSnippetVersionPartialResponse>;
 
 export type GetJsSnippetResolveError = Forbidden | NotFound | PosthogOpError;
 /** Preview what a given pin would resolve to, without saving it. */

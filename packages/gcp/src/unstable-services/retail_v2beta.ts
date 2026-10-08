@@ -1646,7 +1646,7 @@ export const GoogleCloudRetailV2betaColorInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2betaColorInfo>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = DoubleList as any as S.Schema<IntegerList>;
 
 /** The rating of a Product. */
 export interface GoogleCloudRetailV2betaRating {
@@ -4475,13 +4475,8 @@ export interface GoogleCloudRetailV2betaRemoveControlRequest {
   /** Required. The id of the control to apply. Assumed to be in the same catalog as the serving config. */
   controlId?: string;
 }
-export const GoogleCloudRetailV2betaRemoveControlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2betaRemoveControlRequest",
-}) as any as S.Schema<GoogleCloudRetailV2betaRemoveControlRequest>;
+export const GoogleCloudRetailV2betaRemoveControlRequest =
+  GoogleCloudRetailV2betaAddControlRequest as any as S.Schema<GoogleCloudRetailV2betaRemoveControlRequest>;
 
 export interface RemoveControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
@@ -5252,9 +5247,7 @@ export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSugg
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
   Array<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList>;
+  GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultSuggestedAnswerList>;
 
 /** Additional filter that client side need to apply. */
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilter =
@@ -5265,9 +5258,7 @@ export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAddi
 export type GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
   Array<GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList>;
+  GoogleCloudRetailV2betaConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2betaSearchResponseConversationalSearchResultAdditionalFilterList>;
 
 /** This field specifies all related information that is needed on client side for UI rendering of conversational retail search. */
 export interface GoogleCloudRetailV2betaSearchResponseConversationalSearchResult {

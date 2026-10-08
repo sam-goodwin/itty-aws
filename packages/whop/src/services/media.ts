@@ -115,9 +115,8 @@ export const MediaAssetFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MediaAssetFile" }) as any as S.Schema<MediaAssetFile>;
 
 export type MediaAssetGenerationReferenceMediaList = Array<string>;
-export const MediaAssetGenerationReferenceMediaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MediaAssetGenerationReferenceMediaList>;
+export const MediaAssetGenerationReferenceMediaList =
+  GenerateMediaAssetRequestReferenceMediaList as any as S.Schema<MediaAssetGenerationReferenceMediaList>;
 
 /** Requested video resolution. `null` for images. `1080p` is not supported by Seedance 2.0 Fast or Mini; `4k` is only supported by Seedance 2.0. */
 export type MediaAssetGenerationResolution = "480p" | "720p" | "1080p" | "4k";

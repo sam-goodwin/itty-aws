@@ -258,12 +258,7 @@ export interface HLSTimestampRange {
   StartTimestamp?: Date;
   EndTimestamp?: Date;
 }
-export const HLSTimestampRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "HLSTimestampRange" }) as any as S.Schema<HLSTimestampRange>;
+export const HLSTimestampRange = DASHTimestampRange as any as S.Schema<HLSTimestampRange>;
 export interface HLSFragmentSelector {
   FragmentSelectorType?: HLSFragmentSelectorType;
   TimestampRange?: HLSTimestampRange;
@@ -449,12 +444,7 @@ export interface TimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
 }
-export const TimestampRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "TimestampRange" }) as any as S.Schema<TimestampRange>;
+export const TimestampRange = ClipTimestampRange as any as S.Schema<TimestampRange>;
 export interface FragmentSelector {
   FragmentSelectorType: FragmentSelectorType;
   TimestampRange: TimestampRange;

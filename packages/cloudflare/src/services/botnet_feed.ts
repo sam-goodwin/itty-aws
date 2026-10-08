@@ -109,13 +109,7 @@ export interface FullReportAsnResponse {
   date?: string | null;
   offenseCount?: number | null;
 }
-export const FullReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cidr: S.optional(S.NullOr(S.String)),
-    date: S.optional(S.NullOr(S.String)),
-    offenseCount: S.optional(S.NullOr(S.Number).pipe(T.Body("offense_count"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "FullReportAsnResponse" }) as any as S.Schema<FullReportAsnResponse>;
+export const FullReportAsnResponse = DayReportAsnResponse as any as S.Schema<FullReportAsnResponse>;
 
 export interface GetConfigAsnRequest {
   /** Identifier. */
@@ -135,11 +129,8 @@ export const GetConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigAsnResponse {
   asn?: number | null;
 }
-export const GetConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asn: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetConfigAsnResponse" }) as any as S.Schema<GetConfigAsnResponse>;
+export const GetConfigAsnResponse =
+  DeleteConfigAsnResponse as any as S.Schema<GetConfigAsnResponse>;
 
 export type DayReportAsnError = CloudflareOpError;
 /** Gets all the data the botnet tracking database has for a given ASN registered to user account for given date. If no date is given, it will return results for the previous day. */

@@ -223,11 +223,8 @@ export interface InferenceS3OutputConfiguration {
   Bucket: string;
   Prefix?: string;
 }
-export const InferenceS3OutputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bucket: S.String, Prefix: S.optional(S.String) }),
-).annotate({
-  identifier: "InferenceS3OutputConfiguration",
-}) as any as S.Schema<InferenceS3OutputConfiguration>;
+export const InferenceS3OutputConfiguration =
+  InferenceS3InputConfiguration as any as S.Schema<InferenceS3OutputConfiguration>;
 export interface InferenceOutputConfiguration {
   S3OutputConfiguration: InferenceS3OutputConfiguration;
   KmsKeyId?: string;
@@ -366,11 +363,8 @@ export interface LabelsS3InputConfiguration {
   Bucket: string;
   Prefix?: string;
 }
-export const LabelsS3InputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bucket: S.String, Prefix: S.optional(S.String) }),
-).annotate({
-  identifier: "LabelsS3InputConfiguration",
-}) as any as S.Schema<LabelsS3InputConfiguration>;
+export const LabelsS3InputConfiguration =
+  InferenceS3InputConfiguration as any as S.Schema<LabelsS3InputConfiguration>;
 export interface LabelsInputConfiguration {
   S3InputConfiguration?: LabelsS3InputConfiguration;
   LabelGroupName?: string;
@@ -409,23 +403,14 @@ export interface ModelDiagnosticsS3OutputConfiguration {
   Bucket: string;
   Prefix?: string;
 }
-export const ModelDiagnosticsS3OutputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bucket: S.String, Prefix: S.optional(S.String) }),
-).annotate({
-  identifier: "ModelDiagnosticsS3OutputConfiguration",
-}) as any as S.Schema<ModelDiagnosticsS3OutputConfiguration>;
+export const ModelDiagnosticsS3OutputConfiguration =
+  InferenceS3InputConfiguration as any as S.Schema<ModelDiagnosticsS3OutputConfiguration>;
 export interface ModelDiagnosticsOutputConfiguration {
   S3OutputConfiguration: ModelDiagnosticsS3OutputConfiguration;
   KmsKeyId?: string;
 }
-export const ModelDiagnosticsOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    S3OutputConfiguration: ModelDiagnosticsS3OutputConfiguration,
-    KmsKeyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ModelDiagnosticsOutputConfiguration",
-}) as any as S.Schema<ModelDiagnosticsOutputConfiguration>;
+export const ModelDiagnosticsOutputConfiguration =
+  InferenceOutputConfiguration as any as S.Schema<ModelDiagnosticsOutputConfiguration>;
 export interface CreateModelRequest {
   ModelName: string;
   DatasetName: string;
@@ -564,9 +549,7 @@ export const DeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLabelRequest" }) as any as S.Schema<DeleteLabelRequest>;
 export interface DeleteLabelResponse {}
-export const DeleteLabelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLabelResponse",
-}) as any as S.Schema<DeleteLabelResponse>;
+export const DeleteLabelResponse = DeleteDatasetResponse as any as S.Schema<DeleteLabelResponse>;
 export interface DeleteLabelGroupRequest {
   LabelGroupName: string;
 }
@@ -576,9 +559,8 @@ export const DeleteLabelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLabelGroupRequest" }) as any as S.Schema<DeleteLabelGroupRequest>;
 export interface DeleteLabelGroupResponse {}
-export const DeleteLabelGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLabelGroupResponse",
-}) as any as S.Schema<DeleteLabelGroupResponse>;
+export const DeleteLabelGroupResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteLabelGroupResponse>;
 export interface DeleteModelRequest {
   ModelName: string;
 }
@@ -588,9 +570,7 @@ export const DeleteModelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteModelRequest" }) as any as S.Schema<DeleteModelRequest>;
 export interface DeleteModelResponse {}
-export const DeleteModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteModelResponse",
-}) as any as S.Schema<DeleteModelResponse>;
+export const DeleteModelResponse = DeleteDatasetResponse as any as S.Schema<DeleteModelResponse>;
 export type ResourceArn = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
@@ -603,9 +583,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteRetrainingSchedulerRequest {
   ModelName: string;
 }
@@ -617,11 +596,8 @@ export const DeleteRetrainingSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRetrainingSchedulerRequest",
 }) as any as S.Schema<DeleteRetrainingSchedulerRequest>;
 export interface DeleteRetrainingSchedulerResponse {}
-export const DeleteRetrainingSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRetrainingSchedulerResponse",
-}) as any as S.Schema<DeleteRetrainingSchedulerResponse>;
+export const DeleteRetrainingSchedulerResponse =
+  DeleteInferenceSchedulerResponse as any as S.Schema<DeleteRetrainingSchedulerResponse>;
 export type IngestionJobId = string;
 export interface DescribeDataIngestionJobRequest {
   JobId: string;
@@ -672,11 +648,8 @@ export const MissingCompleteSensorData = /*@__PURE__*/ S.suspend(() =>
 export interface SensorsWithShortDateRange {
   AffectedSensorCount: number;
 }
-export const SensorsWithShortDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AffectedSensorCount: S.Number }),
-).annotate({
-  identifier: "SensorsWithShortDateRange",
-}) as any as S.Schema<SensorsWithShortDateRange>;
+export const SensorsWithShortDateRange =
+  MissingCompleteSensorData as any as S.Schema<SensorsWithShortDateRange>;
 export interface InsufficientSensorData {
   MissingCompleteSensorData: MissingCompleteSensorData;
   SensorsWithShortDateRange: SensorsWithShortDateRange;
@@ -2049,15 +2022,8 @@ export interface StartRetrainingSchedulerResponse {
   ModelArn?: string;
   Status?: RetrainingSchedulerStatus;
 }
-export const StartRetrainingSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ModelName: S.optional(S.String),
-    ModelArn: S.optional(S.String),
-    Status: S.optional(RetrainingSchedulerStatus),
-  }),
-).annotate({
-  identifier: "StartRetrainingSchedulerResponse",
-}) as any as S.Schema<StartRetrainingSchedulerResponse>;
+export const StartRetrainingSchedulerResponse =
+  CreateRetrainingSchedulerResponse as any as S.Schema<StartRetrainingSchedulerResponse>;
 export interface StopInferenceSchedulerRequest {
   InferenceSchedulerName: string;
 }
@@ -2075,17 +2041,8 @@ export interface StopInferenceSchedulerResponse {
   InferenceSchedulerArn?: string;
   Status?: InferenceSchedulerStatus;
 }
-export const StopInferenceSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ModelArn: S.optional(S.String),
-    ModelName: S.optional(S.String),
-    InferenceSchedulerName: S.optional(S.String),
-    InferenceSchedulerArn: S.optional(S.String),
-    Status: S.optional(InferenceSchedulerStatus),
-  }),
-).annotate({
-  identifier: "StopInferenceSchedulerResponse",
-}) as any as S.Schema<StopInferenceSchedulerResponse>;
+export const StopInferenceSchedulerResponse =
+  StartInferenceSchedulerResponse as any as S.Schema<StopInferenceSchedulerResponse>;
 export interface StopRetrainingSchedulerRequest {
   ModelName: string;
 }
@@ -2101,15 +2058,8 @@ export interface StopRetrainingSchedulerResponse {
   ModelArn?: string;
   Status?: RetrainingSchedulerStatus;
 }
-export const StopRetrainingSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ModelName: S.optional(S.String),
-    ModelArn: S.optional(S.String),
-    Status: S.optional(RetrainingSchedulerStatus),
-  }),
-).annotate({
-  identifier: "StopRetrainingSchedulerResponse",
-}) as any as S.Schema<StopRetrainingSchedulerResponse>;
+export const StopRetrainingSchedulerResponse =
+  CreateRetrainingSchedulerResponse as any as S.Schema<StopRetrainingSchedulerResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -2120,11 +2070,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteDatasetResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = FaultCodes as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2135,9 +2083,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteDatasetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateActiveModelVersionRequest {
   ModelName: string;
   ModelVersion: number;
@@ -2190,11 +2137,8 @@ export const UpdateInferenceSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateInferenceSchedulerRequest",
 }) as any as S.Schema<UpdateInferenceSchedulerRequest>;
 export interface UpdateInferenceSchedulerResponse {}
-export const UpdateInferenceSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateInferenceSchedulerResponse",
-}) as any as S.Schema<UpdateInferenceSchedulerResponse>;
+export const UpdateInferenceSchedulerResponse =
+  DeleteInferenceSchedulerResponse as any as S.Schema<UpdateInferenceSchedulerResponse>;
 export interface UpdateLabelGroupRequest {
   LabelGroupName: string;
   FaultCodes?: string[];
@@ -2205,9 +2149,8 @@ export const UpdateLabelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateLabelGroupRequest" }) as any as S.Schema<UpdateLabelGroupRequest>;
 export interface UpdateLabelGroupResponse {}
-export const UpdateLabelGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLabelGroupResponse",
-}) as any as S.Schema<UpdateLabelGroupResponse>;
+export const UpdateLabelGroupResponse =
+  DeleteDatasetResponse as any as S.Schema<UpdateLabelGroupResponse>;
 export interface UpdateModelRequest {
   ModelName: string;
   LabelsInputConfiguration?: LabelsInputConfiguration;
@@ -2223,9 +2166,7 @@ export const UpdateModelRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateModelRequest" }) as any as S.Schema<UpdateModelRequest>;
 export interface UpdateModelResponse {}
-export const UpdateModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateModelResponse",
-}) as any as S.Schema<UpdateModelResponse>;
+export const UpdateModelResponse = DeleteDatasetResponse as any as S.Schema<UpdateModelResponse>;
 export interface UpdateRetrainingSchedulerRequest {
   ModelName: string;
   RetrainingStartDate?: Date;
@@ -2245,11 +2186,8 @@ export const UpdateRetrainingSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRetrainingSchedulerRequest",
 }) as any as S.Schema<UpdateRetrainingSchedulerRequest>;
 export interface UpdateRetrainingSchedulerResponse {}
-export const UpdateRetrainingSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRetrainingSchedulerResponse",
-}) as any as S.Schema<UpdateRetrainingSchedulerResponse>;
+export const UpdateRetrainingSchedulerResponse =
+  DeleteInferenceSchedulerResponse as any as S.Schema<UpdateRetrainingSchedulerResponse>;
 export type CreateDatasetError =
   | AccessDeniedException
   | ConflictException

@@ -149,12 +149,7 @@ export interface HeadingLink {
   /** The ID of the tab containing this heading. */
   tabId?: string;
 }
-export const HeadingLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tabId: S.optional(S.String),
-  }),
-).annotate({ identifier: "HeadingLink" }) as any as S.Schema<HeadingLink>;
+export const HeadingLink = BookmarkLink as any as S.Schema<HeadingLink>;
 
 /** A reference to another portion of a document or an external URL resource. */
 export interface Link {
@@ -659,13 +654,8 @@ export interface DeleteContentRangeRequest {
   /** The range of content to delete. Deleting text that crosses a paragraph boundary may result in changes to paragraph styles, lists, positioned objects and bookmarks as the two paragraphs are merged. Attempting to delete certain ranges can result in an invalid document structure in which case a 400 bad request error is returned. Some examples of invalid delete requests include: * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header, Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or Equation without deleting the entire element. * Deleting the newline character before a Table, TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a table. Deleting the content within a table cell is allowed. */
   range?: Range;
 }
-export const DeleteContentRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "DeleteContentRangeRequest",
-}) as any as S.Schema<DeleteContentRangeRequest>;
+export const DeleteContentRangeRequest =
+  DeleteParagraphBulletsRequest as any as S.Schema<DeleteContentRangeRequest>;
 
 /** Creates a NamedRange referencing the given range. */
 export interface CreateNamedRangeRequest {
@@ -1379,11 +1369,8 @@ export interface UnmergeTableCellsRequest {
   /** The table range specifying which cells of the table to unmerge. All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right, and the upper-right otherwise. */
   tableRange?: TableRange;
 }
-export const UnmergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({ identifier: "UnmergeTableCellsRequest" }) as any as S.Schema<UnmergeTableCellsRequest>;
+export const UnmergeTableCellsRequest =
+  MergeTableCellsRequest as any as S.Schema<UnmergeTableCellsRequest>;
 
 /** Inserts a page break followed by a newline at the specified location. */
 export interface InsertPageBreakRequest {
@@ -1649,11 +1636,8 @@ export interface DeleteTableColumnRequest {
   /** The reference table cell location from which the column will be deleted. The column this cell spans will be deleted. If this is a merged cell that spans multiple columns, all columns that the cell spans will be deleted. If no columns remain in the table after this deletion, the whole table is deleted. */
   tableCellLocation?: TableCellLocation;
 }
-export const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({ identifier: "DeleteTableColumnRequest" }) as any as S.Schema<DeleteTableColumnRequest>;
+export const DeleteTableColumnRequest =
+  DeleteTableRowRequest as any as S.Schema<DeleteTableColumnRequest>;
 
 /** Updates the number of pinned table header rows in a table. */
 export interface PinTableHeaderRowsRequest {
@@ -2545,11 +2529,8 @@ export interface AddDocumentTabResponse {
   /** The properties of the newly added tab. */
   tabProperties?: TabProperties;
 }
-export const AddDocumentTabResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabProperties: S.optional(TabProperties),
-  }),
-).annotate({ identifier: "AddDocumentTabResponse" }) as any as S.Schema<AddDocumentTabResponse>;
+export const AddDocumentTabResponse =
+  AddDocumentTabRequest as any as S.Schema<AddDocumentTabResponse>;
 
 /** The result of creating a header. */
 export interface CreateHeaderResponse {
@@ -2578,13 +2559,8 @@ export interface InsertInlineImageResponse {
   /** The ID of the created InlineObject. */
   objectId?: string;
 }
-export const InsertInlineImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertInlineImageResponse",
-}) as any as S.Schema<InsertInlineImageResponse>;
+export const InsertInlineImageResponse =
+  InsertInlineSheetsChartResponse as any as S.Schema<InsertInlineImageResponse>;
 
 /** Response message for creating a dropdown definition. */
 export interface CreateDropdownDefinitionResponse {

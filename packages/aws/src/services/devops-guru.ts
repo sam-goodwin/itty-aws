@@ -325,12 +325,7 @@ export interface PredictionTimeRange {
   StartTime: Date;
   EndTime?: Date;
 }
-export const PredictionTimeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "PredictionTimeRange" }) as any as S.Schema<PredictionTimeRange>;
+export const PredictionTimeRange = AnomalyTimeRange as any as S.Schema<PredictionTimeRange>;
 export type CloudWatchMetricsMetricName = string;
 export type CloudWatchMetricsNamespace = string;
 export type CloudWatchMetricsDimensionName = string;
@@ -549,7 +544,7 @@ export const AnomalySourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnomalySourceDetails" }) as any as S.Schema<AnomalySourceDetails>;
 export type StackName = string;
 export type StackNames = string[];
-export const StackNames = /*@__PURE__*/ S.Array(S.String);
+export const StackNames = PerformanceInsightsMetricDimensions as any as S.Schema<StackNames>;
 export interface CloudFormationCollection {
   StackNames?: string[];
 }
@@ -559,7 +554,7 @@ export const CloudFormationCollection = /*@__PURE__*/ S.suspend(() =>
 export type AppBoundaryKey = string;
 export type TagValue = string;
 export type TagValues = string[];
-export const TagValues = /*@__PURE__*/ S.Array(S.String);
+export const TagValues = PerformanceInsightsMetricDimensions as any as S.Schema<TagValues>;
 export interface TagCollection {
   AppBoundaryKey: string;
   TagValues: string[];
@@ -766,12 +761,7 @@ export interface InsightTimeRange {
   StartTime: Date;
   EndTime?: Date;
 }
-export const InsightTimeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "InsightTimeRange" }) as any as S.Schema<InsightTimeRange>;
+export const InsightTimeRange = AnomalyTimeRange as any as S.Schema<InsightTimeRange>;
 export type SsmOpsItemId = string;
 export type InsightDescription = string;
 export interface ProactiveInsight {
@@ -831,10 +821,11 @@ export const DescribeInsightResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DescribeInsightResponse" }) as any as S.Schema<DescribeInsightResponse>;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const AccountIdList = PerformanceInsightsMetricDimensions as any as S.Schema<AccountIdList>;
 export type OrganizationalUnitId = string;
 export type OrganizationalUnitIdList = string[];
-export const OrganizationalUnitIdList = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationalUnitIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<OrganizationalUnitIdList>;
 export interface DescribeOrganizationHealthRequest {
   AccountIds?: string[];
   OrganizationalUnitIds?: string[];
@@ -1012,12 +1003,7 @@ export interface AccountInsightHealth {
   OpenProactiveInsights?: number;
   OpenReactiveInsights?: number;
 }
-export const AccountInsightHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OpenProactiveInsights: S.optional(S.Number),
-    OpenReactiveInsights: S.optional(S.Number),
-  }),
-).annotate({ identifier: "AccountInsightHealth" }) as any as S.Schema<AccountInsightHealth>;
+export const AccountInsightHealth = ServiceInsightHealth as any as S.Schema<AccountInsightHealth>;
 export interface AccountHealth {
   AccountId?: string;
   Insight?: AccountInsightHealth;
@@ -1180,7 +1166,8 @@ export const GetCostEstimationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetCostEstimationRequest" }) as any as S.Schema<GetCostEstimationRequest>;
 export type CostEstimationStackNames = string[];
-export const CostEstimationStackNames = /*@__PURE__*/ S.Array(S.String);
+export const CostEstimationStackNames =
+  PerformanceInsightsMetricDimensions as any as S.Schema<CostEstimationStackNames>;
 export interface CloudFormationCostEstimationResourceCollectionFilter {
   StackNames?: string[];
 }
@@ -1190,7 +1177,8 @@ export const CloudFormationCostEstimationResourceCollectionFilter = /*@__PURE__*
   identifier: "CloudFormationCostEstimationResourceCollectionFilter",
 }) as any as S.Schema<CloudFormationCostEstimationResourceCollectionFilter>;
 export type CostEstimationTagValues = string[];
-export const CostEstimationTagValues = /*@__PURE__*/ S.Array(S.String);
+export const CostEstimationTagValues =
+  PerformanceInsightsMetricDimensions as any as S.Schema<CostEstimationTagValues>;
 export interface TagCostEstimationResourceCollectionFilter {
   AppBoundaryKey: string;
   TagValues: string[];
@@ -1297,20 +1285,15 @@ export const GetResourceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CloudFormationCollectionFilter {
   StackNames?: string[];
 }
-export const CloudFormationCollectionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StackNames: S.optional(StackNames) }),
-).annotate({
-  identifier: "CloudFormationCollectionFilter",
-}) as any as S.Schema<CloudFormationCollectionFilter>;
+export const CloudFormationCollectionFilter =
+  CloudFormationCostEstimationResourceCollectionFilter as any as S.Schema<CloudFormationCollectionFilter>;
 export interface TagCollectionFilter {
   AppBoundaryKey: string;
   TagValues: string[];
 }
-export const TagCollectionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppBoundaryKey: S.String, TagValues: TagValues }),
-).annotate({ identifier: "TagCollectionFilter" }) as any as S.Schema<TagCollectionFilter>;
+export const TagCollectionFilter = TagCollection as any as S.Schema<TagCollectionFilter>;
 export type TagCollectionFilters = TagCollectionFilter[];
-export const TagCollectionFilters = /*@__PURE__*/ S.Array(TagCollectionFilter);
+export const TagCollectionFilters = TagCollections as any as S.Schema<TagCollectionFilters>;
 export interface ResourceCollectionFilter {
   CloudFormation?: CloudFormationCollectionFilter;
   Tags?: TagCollectionFilter[];
@@ -1405,24 +1388,7 @@ export interface ProactiveAnomalySummary {
   AnomalyResources?: AnomalyResource[];
   Description?: string;
 }
-export const ProactiveAnomalySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Severity: S.optional(AnomalySeverity),
-    Status: S.optional(AnomalyStatus),
-    UpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AnomalyTimeRange: S.optional(AnomalyTimeRange),
-    AnomalyReportedTimeRange: S.optional(AnomalyReportedTimeRange),
-    PredictionTimeRange: S.optional(PredictionTimeRange),
-    SourceDetails: S.optional(AnomalySourceDetails),
-    AssociatedInsightId: S.optional(S.String),
-    ResourceCollection: S.optional(ResourceCollection),
-    Limit: S.optional(S.Number),
-    SourceMetadata: S.optional(AnomalySourceMetadata),
-    AnomalyResources: S.optional(AnomalyResources),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProactiveAnomalySummary" }) as any as S.Schema<ProactiveAnomalySummary>;
+export const ProactiveAnomalySummary = ProactiveAnomaly as any as S.Schema<ProactiveAnomalySummary>;
 export type ProactiveAnomalies = ProactiveAnomalySummary[];
 export const ProactiveAnomalies = /*@__PURE__*/ S.Array(ProactiveAnomalySummary);
 export interface ReactiveAnomalySummary {
@@ -1440,23 +1406,7 @@ export interface ReactiveAnomalySummary {
   CausalAnomalyId?: string;
   AnomalyResources?: AnomalyResource[];
 }
-export const ReactiveAnomalySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Severity: S.optional(AnomalySeverity),
-    Status: S.optional(AnomalyStatus),
-    AnomalyTimeRange: S.optional(AnomalyTimeRange),
-    AnomalyReportedTimeRange: S.optional(AnomalyReportedTimeRange),
-    SourceDetails: S.optional(AnomalySourceDetails),
-    AssociatedInsightId: S.optional(S.String),
-    ResourceCollection: S.optional(ResourceCollection),
-    Type: S.optional(AnomalyType),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    CausalAnomalyId: S.optional(S.String),
-    AnomalyResources: S.optional(AnomalyResources),
-  }),
-).annotate({ identifier: "ReactiveAnomalySummary" }) as any as S.Schema<ReactiveAnomalySummary>;
+export const ReactiveAnomalySummary = ReactiveAnomaly as any as S.Schema<ReactiveAnomalySummary>;
 export type ReactiveAnomalies = ReactiveAnomalySummary[];
 export const ReactiveAnomalies = /*@__PURE__*/ S.Array(ReactiveAnomalySummary);
 export interface ListAnomaliesForInsightResponse {
@@ -1688,12 +1638,7 @@ export interface EndTimeRange {
   FromTime?: Date;
   ToTime?: Date;
 }
-export const EndTimeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "EndTimeRange" }) as any as S.Schema<EndTimeRange>;
+export const EndTimeRange = StartTimeRange as any as S.Schema<EndTimeRange>;
 export interface ListInsightsClosedStatusFilter {
   Type: InsightType;
   EndTimeRange: EndTimeRange;
@@ -1739,7 +1684,8 @@ export const ListInsightsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInsightsRequest" }) as any as S.Schema<ListInsightsRequest>;
 export type ResourceArn = string;
 export type AssociatedResourceArns = string[];
-export const AssociatedResourceArns = /*@__PURE__*/ S.Array(S.String);
+export const AssociatedResourceArns =
+  PerformanceInsightsMetricDimensions as any as S.Schema<AssociatedResourceArns>;
 export interface ProactiveInsightSummary {
   Id?: string;
   Name?: string;
@@ -1926,9 +1872,11 @@ export const ListNotificationChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNotificationChannelsResponse",
 }) as any as S.Schema<ListNotificationChannelsResponse>;
 export type ListInsightsAccountIdList = string[];
-export const ListInsightsAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const ListInsightsAccountIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<ListInsightsAccountIdList>;
 export type ListInsightsOrganizationalUnitIdList = string[];
-export const ListInsightsOrganizationalUnitIdList = /*@__PURE__*/ S.Array(S.String);
+export const ListInsightsOrganizationalUnitIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<ListInsightsOrganizationalUnitIdList>;
 export interface ListOrganizationInsightsRequest {
   StatusFilter: ListInsightsStatusFilter;
   MaxResults?: number;
@@ -2096,15 +2044,11 @@ export interface RecommendationRelatedAnomalyResource {
   Name?: string;
   Type?: string;
 }
-export const RecommendationRelatedAnomalyResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
-).annotate({
-  identifier: "RecommendationRelatedAnomalyResource",
-}) as any as S.Schema<RecommendationRelatedAnomalyResource>;
+export const RecommendationRelatedAnomalyResource =
+  RecommendationRelatedEventResource as any as S.Schema<RecommendationRelatedAnomalyResource>;
 export type RecommendationRelatedAnomalyResources = RecommendationRelatedAnomalyResource[];
-export const RecommendationRelatedAnomalyResources = /*@__PURE__*/ S.Array(
-  RecommendationRelatedAnomalyResource,
-);
+export const RecommendationRelatedAnomalyResources =
+  RecommendationRelatedEventResources as any as S.Schema<RecommendationRelatedAnomalyResources>;
 export type RecommendationRelatedCloudWatchMetricsSourceMetricName = string;
 export type RecommendationRelatedCloudWatchMetricsSourceNamespace = string;
 export interface RecommendationRelatedCloudWatchMetricsSourceDetail {
@@ -2190,9 +2134,7 @@ export const PutFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutFeedbackRequest" }) as any as S.Schema<PutFeedbackRequest>;
 export interface PutFeedbackResponse {}
-export const PutFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutFeedbackResponse",
-}) as any as S.Schema<PutFeedbackResponse>;
+export const PutFeedbackResponse = DeleteInsightResponse as any as S.Schema<PutFeedbackResponse>;
 export interface RemoveNotificationChannelRequest {
   Id: string;
 }
@@ -2247,15 +2189,11 @@ export interface SearchInsightsResponse {
   ReactiveInsights?: ReactiveInsightSummary[];
   NextToken?: string;
 }
-export const SearchInsightsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProactiveInsights: S.optional(ProactiveInsights),
-    ReactiveInsights: S.optional(ReactiveInsights),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "SearchInsightsResponse" }) as any as S.Schema<SearchInsightsResponse>;
+export const SearchInsightsResponse =
+  ListInsightsResponse as any as S.Schema<SearchInsightsResponse>;
 export type SearchInsightsAccountIdList = string[];
-export const SearchInsightsAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const SearchInsightsAccountIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<SearchInsightsAccountIdList>;
 export interface SearchOrganizationInsightsFilters {
   Severities?: InsightSeverity[];
   Statuses?: InsightStatus[];
@@ -2330,9 +2268,8 @@ export const StartCostEstimationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartCostEstimationRequest",
 }) as any as S.Schema<StartCostEstimationRequest>;
 export interface StartCostEstimationResponse {}
-export const StartCostEstimationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCostEstimationResponse",
-}) as any as S.Schema<StartCostEstimationResponse>;
+export const StartCostEstimationResponse =
+  DeleteInsightResponse as any as S.Schema<StartCostEstimationResponse>;
 export interface UpdateEventSourcesConfigRequest {
   EventSources?: EventSourcesConfig;
 }
@@ -2344,35 +2281,28 @@ export const UpdateEventSourcesConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventSourcesConfigRequest",
 }) as any as S.Schema<UpdateEventSourcesConfigRequest>;
 export interface UpdateEventSourcesConfigResponse {}
-export const UpdateEventSourcesConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEventSourcesConfigResponse",
-}) as any as S.Schema<UpdateEventSourcesConfigResponse>;
+export const UpdateEventSourcesConfigResponse =
+  RemoveNotificationChannelResponse as any as S.Schema<UpdateEventSourcesConfigResponse>;
 export type UpdateResourceCollectionAction = "ADD" | "REMOVE" | (string & {});
 export const UpdateResourceCollectionAction = S.String;
 
 export type UpdateStackNames = string[];
-export const UpdateStackNames = /*@__PURE__*/ S.Array(S.String);
+export const UpdateStackNames =
+  PerformanceInsightsMetricDimensions as any as S.Schema<UpdateStackNames>;
 export interface UpdateCloudFormationCollectionFilter {
   StackNames?: string[];
 }
-export const UpdateCloudFormationCollectionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StackNames: S.optional(UpdateStackNames) }),
-).annotate({
-  identifier: "UpdateCloudFormationCollectionFilter",
-}) as any as S.Schema<UpdateCloudFormationCollectionFilter>;
+export const UpdateCloudFormationCollectionFilter =
+  CloudFormationCostEstimationResourceCollectionFilter as any as S.Schema<UpdateCloudFormationCollectionFilter>;
 export type UpdateTagValues = string[];
-export const UpdateTagValues = /*@__PURE__*/ S.Array(S.String);
+export const UpdateTagValues =
+  PerformanceInsightsMetricDimensions as any as S.Schema<UpdateTagValues>;
 export interface UpdateTagCollectionFilter {
   AppBoundaryKey: string;
   TagValues: string[];
 }
-export const UpdateTagCollectionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppBoundaryKey: S.String, TagValues: UpdateTagValues }),
-).annotate({
-  identifier: "UpdateTagCollectionFilter",
-}) as any as S.Schema<UpdateTagCollectionFilter>;
+export const UpdateTagCollectionFilter =
+  TagCostEstimationResourceCollectionFilter as any as S.Schema<UpdateTagCollectionFilter>;
 export type UpdateTagCollectionFilters = UpdateTagCollectionFilter[];
 export const UpdateTagCollectionFilters = /*@__PURE__*/ S.Array(UpdateTagCollectionFilter);
 export interface UpdateResourceCollectionFilter {
@@ -2402,41 +2332,25 @@ export const UpdateResourceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceCollectionRequest",
 }) as any as S.Schema<UpdateResourceCollectionRequest>;
 export interface UpdateResourceCollectionResponse {}
-export const UpdateResourceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateResourceCollectionResponse",
-}) as any as S.Schema<UpdateResourceCollectionResponse>;
+export const UpdateResourceCollectionResponse =
+  RemoveNotificationChannelResponse as any as S.Schema<UpdateResourceCollectionResponse>;
 export interface OpsCenterIntegrationConfig {
   OptInStatus?: OptInStatus;
 }
-export const OpsCenterIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OptInStatus: S.optional(OptInStatus) }),
-).annotate({
-  identifier: "OpsCenterIntegrationConfig",
-}) as any as S.Schema<OpsCenterIntegrationConfig>;
+export const OpsCenterIntegrationConfig =
+  LogsAnomalyDetectionIntegration as any as S.Schema<OpsCenterIntegrationConfig>;
 export interface LogsAnomalyDetectionIntegrationConfig {
   OptInStatus?: OptInStatus;
 }
-export const LogsAnomalyDetectionIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OptInStatus: S.optional(OptInStatus) }),
-).annotate({
-  identifier: "LogsAnomalyDetectionIntegrationConfig",
-}) as any as S.Schema<LogsAnomalyDetectionIntegrationConfig>;
+export const LogsAnomalyDetectionIntegrationConfig =
+  LogsAnomalyDetectionIntegration as any as S.Schema<LogsAnomalyDetectionIntegrationConfig>;
 export interface KMSServerSideEncryptionIntegrationConfig {
   KMSKeyId?: string;
   OptInStatus?: OptInStatus;
   Type?: ServerSideEncryptionType;
 }
-export const KMSServerSideEncryptionIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KMSKeyId: S.optional(S.String),
-    OptInStatus: S.optional(OptInStatus),
-    Type: S.optional(ServerSideEncryptionType),
-  }),
-).annotate({
-  identifier: "KMSServerSideEncryptionIntegrationConfig",
-}) as any as S.Schema<KMSServerSideEncryptionIntegrationConfig>;
+export const KMSServerSideEncryptionIntegrationConfig =
+  KMSServerSideEncryptionIntegration as any as S.Schema<KMSServerSideEncryptionIntegrationConfig>;
 export interface UpdateServiceIntegrationConfig {
   OpsCenter?: OpsCenterIntegrationConfig;
   LogsAnomalyDetection?: LogsAnomalyDetectionIntegrationConfig;
@@ -2462,11 +2376,8 @@ export const UpdateServiceIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServiceIntegrationRequest",
 }) as any as S.Schema<UpdateServiceIntegrationRequest>;
 export interface UpdateServiceIntegrationResponse {}
-export const UpdateServiceIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateServiceIntegrationResponse",
-}) as any as S.Schema<UpdateServiceIntegrationResponse>;
+export const UpdateServiceIntegrationResponse =
+  RemoveNotificationChannelResponse as any as S.Schema<UpdateServiceIntegrationResponse>;
 export type ErrorMessageString = string;
 export type ResourceIdString = string;
 export type ResourceIdType = string;

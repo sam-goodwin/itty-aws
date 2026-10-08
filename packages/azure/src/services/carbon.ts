@@ -72,16 +72,12 @@ export const CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList 
 /** List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList = Array<string>;
 export const CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList>;
+  CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList>;
 
 /** List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList = Array<string>;
 export const CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList>;
+  CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList>;
 
 /** List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestLocationListList = Array<string>;

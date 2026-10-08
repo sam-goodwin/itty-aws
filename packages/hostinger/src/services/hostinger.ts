@@ -721,9 +721,8 @@ export const EcommerceV1OrderOrderResponseResource = /*@__PURE__*/ S.suspend(() 
 
 /** TLDs list */
 export type CheckDomainDomainAvailabilityV1RequestTldsList = Array<string>;
-export const CheckDomainDomainAvailabilityV1RequestTldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckDomainDomainAvailabilityV1RequestTldsList>;
+export const CheckDomainDomainAvailabilityV1RequestTldsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CheckDomainDomainAvailabilityV1RequestTldsList>;
 
 export interface CheckDomainDomainAvailabilityV1Request {
   /** Domain name (without TLD) */
@@ -2498,9 +2497,8 @@ export const MailV1AliasesAliasResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Required when `has_all_mailboxes` is false. Mailbox resource IDs of this order. */
 export type CreateMailAPITokenV1RequestScopeMailboxIdsList = Array<string>;
-export const CreateMailAPITokenV1RequestScopeMailboxIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMailAPITokenV1RequestScopeMailboxIdsList>;
+export const CreateMailAPITokenV1RequestScopeMailboxIdsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CreateMailAPITokenV1RequestScopeMailboxIdsList>;
 
 /** Mailbox scope this token can access */
 export interface CreateMailAPITokenV1RequestScope {
@@ -2912,14 +2910,8 @@ export interface MailV1WebhooksWebhookMailboxResource {
   id?: string;
   address?: string;
 }
-export const MailV1WebhooksWebhookMailboxResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MailV1WebhooksWebhookMailboxResource",
-}) as any as S.Schema<MailV1WebhooksWebhookMailboxResource>;
+export const MailV1WebhooksWebhookMailboxResource =
+  MailV1AliasesAliasMailboxResource as any as S.Schema<MailV1WebhooksWebhookMailboxResource>;
 
 export type MailV1WebhooksWebhookCreatedResourceEventsItem = "message.received";
 export const MailV1WebhooksWebhookCreatedResourceEventsItem = S.String;
@@ -2982,9 +2974,8 @@ export const CreateReachAContactFieldV1RequestType = S.String;
 
 /** Required for single_choice and multi_choice, ignored for the scalar types. Labels must be unique regardless of casing. */
 export type CreateReachAContactFieldV1RequestOptionsList = Array<string>;
-export const CreateReachAContactFieldV1RequestOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReachAContactFieldV1RequestOptionsList>;
+export const CreateReachAContactFieldV1RequestOptionsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CreateReachAContactFieldV1RequestOptionsList>;
 
 export interface CreateReachAContactFieldV1Request {
   /** Profile uuid parameter */
@@ -3297,9 +3288,8 @@ export const CreateReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateReachAProfileSegmentV1Request>;
 
 export type ReachV1ContactsSegmentsSegmentResourceQueryList = Array<unknown>;
-export const ReachV1ContactsSegmentsSegmentResourceQueryList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ReachV1ContactsSegmentsSegmentResourceQueryList>;
+export const ReachV1ContactsSegmentsSegmentResourceQueryList =
+  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<ReachV1ContactsSegmentsSegmentResourceQueryList>;
 
 export interface ReachV1ContactsSegmentsSegmentResource {
   uuid?: string;
@@ -3322,9 +3312,8 @@ export const ReachV1ContactsSegmentsSegmentResource = /*@__PURE__*/ S.suspend(()
 
 /** Existing tags to attach to the created contact */
 export type CreateReachNewContactsV1RequestTagUuidsList = Array<string>;
-export const CreateReachNewContactsV1RequestTagUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReachNewContactsV1RequestTagUuidsList>;
+export const CreateReachNewContactsV1RequestTagUuidsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CreateReachNewContactsV1RequestTagUuidsList>;
 
 export interface CreateReachNewContactsV1Request {
   /** Profile uuid parameter */
@@ -3919,14 +3908,8 @@ export interface EcommerceV1StoreStoreDeleteResource {
   /** Always true when the store was soft-deleted. */
   is_deleted?: boolean;
 }
-export const EcommerceV1StoreStoreDeleteResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    is_deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EcommerceV1StoreStoreDeleteResource",
-}) as any as S.Schema<EcommerceV1StoreStoreDeleteResource>;
+export const EcommerceV1StoreStoreDeleteResource =
+  EcommerceV1VariantVariantDeletedResourceData as any as S.Schema<EcommerceV1StoreStoreDeleteResource>;
 
 export interface DeleteHostingAccountCronJobV1Request {
   username: string;
@@ -4793,11 +4776,8 @@ export const DomainsGetOutgoingDomainMoveListV1Request = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Request>;
 
 export type DomainsGetOutgoingDomainMoveListV1Response = DomainsV1MoveMoveCollection;
-export const DomainsGetOutgoingDomainMoveListV1Response = /*@__PURE__*/ S.suspend(() =>
-  DomainsV1MoveMoveCollection.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DomainsGetOutgoingDomainMoveListV1Response",
-}) as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Response>;
+export const DomainsGetOutgoingDomainMoveListV1Response =
+  DomainsGetIncomingDomainMoveListV1Response as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Response>;
 
 export interface DomainsGetOutgoingDomainMoveV1Request {
   /** Domain name */
@@ -4864,9 +4844,8 @@ export const DomainsPurchaseNewDomainV1RequestDomainContacts =
 
 /** Discount coupon codes */
 export type DomainsPurchaseNewDomainV1RequestCouponsList = Array<unknown>;
-export const DomainsPurchaseNewDomainV1RequestCouponsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DomainsPurchaseNewDomainV1RequestCouponsList>;
+export const DomainsPurchaseNewDomainV1RequestCouponsList =
+  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<DomainsPurchaseNewDomainV1RequestCouponsList>;
 
 export interface DomainsPurchaseNewDomainV1Request {
   /** Domain name */
@@ -4945,9 +4924,8 @@ export const DomainsSuggestDomainNamesFromADescriptionV1Request = /*@__PURE__*/ 
 
 /** Suggested domain names */
 export type DomainsV1AvailabilityAlternativeCollection = Array<string>;
-export const DomainsV1AvailabilityAlternativeCollection = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainsV1AvailabilityAlternativeCollection>;
+export const DomainsV1AvailabilityAlternativeCollection =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<DomainsV1AvailabilityAlternativeCollection>;
 
 export type DomainsSuggestDomainNamesFromADescriptionV1Response =
   DomainsV1AvailabilityAlternativeCollection;
@@ -4980,11 +4958,8 @@ export const DomainsSuggestDomainNamesFromADomainV1Request = /*@__PURE__*/ S.sus
 
 export type DomainsSuggestDomainNamesFromADomainV1Response =
   DomainsV1AvailabilityAlternativeCollection;
-export const DomainsSuggestDomainNamesFromADomainV1Response = /*@__PURE__*/ S.suspend(() =>
-  DomainsV1AvailabilityAlternativeCollection.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DomainsSuggestDomainNamesFromADomainV1Response",
-}) as any as S.Schema<DomainsSuggestDomainNamesFromADomainV1Response>;
+export const DomainsSuggestDomainNamesFromADomainV1Response =
+  DomainsSuggestDomainNamesFromADescriptionV1Response as any as S.Schema<DomainsSuggestDomainNamesFromADomainV1Response>;
 
 export interface DomainsUnsetDefaultWHOISProfileV1Request {
   /** WHOIS ID */
@@ -5072,10 +5047,8 @@ export const EcommerceCreateAProductImageUploadURLV1Request = /*@__PURE__*/ S.su
 export type EcommerceV1ProductProductImageUploadUrlResourceFieldsMap = {
   [key: string]: string | undefined;
 };
-export const EcommerceV1ProductProductImageUploadUrlResourceFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EcommerceV1ProductProductImageUploadUrlResourceFieldsMap>;
+export const EcommerceV1ProductProductImageUploadUrlResourceFieldsMap =
+  ReachV1CampaignsCreatedCampaignResourceMetadataMap as any as S.Schema<EcommerceV1ProductProductImageUploadUrlResourceFieldsMap>;
 
 export interface EcommerceV1ProductProductImageUploadUrlResource {
   /** Signed URL to upload the image to with a multipart/form-data POST. */
@@ -5409,15 +5382,12 @@ export const AgencyHostingV1WebsitesWebsiteResourceState = S.String;
 
 export type AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList = Array<string>;
 export const AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList>;
+  CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList>;
 
 /** SSL cert names */
 export type AgencyHostingV1WebsitesSslCertResourceNamesList = Array<string>;
-export const AgencyHostingV1WebsitesSslCertResourceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgencyHostingV1WebsitesSslCertResourceNamesList>;
+export const AgencyHostingV1WebsitesSslCertResourceNamesList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<AgencyHostingV1WebsitesSslCertResourceNamesList>;
 
 export interface AgencyHostingV1WebsitesSslCertResource {
   /** SSL cert names */
@@ -6078,9 +6048,8 @@ export const DomainsV1DomainDomainExtendedResourceNameServers = /*@__PURE__*/ S.
 }) as any as S.Schema<DomainsV1DomainDomainExtendedResourceNameServers>;
 
 export type DomainsV1DomainDomainExtendedResourceChildNameServersItemList = Array<string>;
-export const DomainsV1DomainDomainExtendedResourceChildNameServersItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainsV1DomainDomainExtendedResourceChildNameServersItemList>;
+export const DomainsV1DomainDomainExtendedResourceChildNameServersItemList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<DomainsV1DomainDomainExtendedResourceChildNameServersItemList>;
 
 /** Child name servers */
 export type DomainsV1DomainDomainExtendedResourceChildNameServersList =
@@ -6275,16 +6244,12 @@ export const GetDomainWHOISProfileUsageV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of domains */
 export type DomainsV1WHOISProfileUsageResource = Array<string>;
-export const DomainsV1WHOISProfileUsageResource = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainsV1WHOISProfileUsageResource>;
+export const DomainsV1WHOISProfileUsageResource =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<DomainsV1WHOISProfileUsageResource>;
 
 export type GetDomainWHOISProfileUsageV1Response = DomainsV1WHOISProfileUsageResource;
-export const GetDomainWHOISProfileUsageV1Response = /*@__PURE__*/ S.suspend(() =>
-  DomainsV1WHOISProfileUsageResource.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetDomainWHOISProfileUsageV1Response",
-}) as any as S.Schema<GetDomainWHOISProfileUsageV1Response>;
+export const GetDomainWHOISProfileUsageV1Response =
+  DomainsSuggestDomainNamesFromADescriptionV1Response as any as S.Schema<GetDomainWHOISProfileUsageV1Response>;
 
 export interface GetDomainWHOISProfileV1Request {
   /** WHOIS ID */
@@ -7479,16 +7444,14 @@ export const HostingV1PhpPhpDetailsResourceOptionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostingV1PhpPhpDetailsResourceOptionsMap>;
 
 export type HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList = Array<string>;
-export const HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList>;
+export const HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList>;
 
 /** Groups of extensions that conflict with each other */
 export type HostingV1PhpPhpDetailsResourceConflictingExtensionsList =
   Array<HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList>;
-export const HostingV1PhpPhpDetailsResourceConflictingExtensionsList = /*@__PURE__*/ S.Array(
-  HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList,
-) as any as S.Schema<HostingV1PhpPhpDetailsResourceConflictingExtensionsList>;
+export const HostingV1PhpPhpDetailsResourceConflictingExtensionsList =
+  DomainsV1DomainDomainExtendedResourceChildNameServersList as any as S.Schema<HostingV1PhpPhpDetailsResourceConflictingExtensionsList>;
 
 export interface HostingV1PhpPhpDetailsResource {
   /** Current PHP version name */
@@ -8062,9 +8025,8 @@ export const ReachV1CampaignsCampaignDeliveryResource = /*@__PURE__*/ S.suspend(
 
 /** Segments this campaign targets. Empty when it targets all contacts. */
 export type ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList = Array<string>;
-export const ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList>;
+export const ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList>;
 
 export interface ReachV1CampaignsCampaignDetailsResource {
   uuid?: string;
@@ -8313,16 +8275,13 @@ export const ReachV1ContactsFieldsContactFieldValueResourceType = S.String;
 /** Chosen options for the choice field types, empty for the scalar types */
 export type ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList = Array<string>;
 export const ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList>;
+  CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList>;
 
 /** Every option the field offers, not only the selected ones */
 export type ReachV1ContactsFieldsContactFieldValueResourceOptionsList =
   Array<ReachV1ContactsFieldsContactFieldOptionResource>;
-export const ReachV1ContactsFieldsContactFieldValueResourceOptionsList = /*@__PURE__*/ S.Array(
-  ReachV1ContactsFieldsContactFieldOptionResource,
-) as any as S.Schema<ReachV1ContactsFieldsContactFieldValueResourceOptionsList>;
+export const ReachV1ContactsFieldsContactFieldValueResourceOptionsList =
+  ReachV1ContactsFieldsContactFieldResourceOptionsList as any as S.Schema<ReachV1ContactsFieldsContactFieldValueResourceOptionsList>;
 
 /** A custom contact field together with the value held by one contact */
 export interface ReachV1ContactsFieldsContactFieldValueResource {
@@ -8666,9 +8625,8 @@ export const ReachV1ProfilesPlanLimitsResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of domains for which to get verification details for. */
 export type GetV2DomainVerificationsDIRECTRequestDomainsList = Array<string>;
-export const GetV2DomainVerificationsDIRECTRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetV2DomainVerificationsDIRECTRequestDomainsList>;
+export const GetV2DomainVerificationsDIRECTRequestDomainsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<GetV2DomainVerificationsDIRECTRequestDomainsList>;
 
 export interface GetV2DomainVerificationsDIRECTRequest {
   /** The list of domains for which to get verification details for. */
@@ -8686,9 +8644,7 @@ export const GetV2DomainVerificationsDIRECTRequest = /*@__PURE__*/ S.suspend(() 
 export type DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList =
   Array<string>;
 export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList>;
+  CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList>;
 
 /** Verification type ("NAMESERVERS" or "TXT"). Only verification types that exist for this domain will be present. */
 export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPE {
@@ -8755,9 +8711,7 @@ export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDat
 export type DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList =
   Array<string>;
 export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList>;
+  CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList>;
 
 /** Verification type (e.g., "NAMESERVERS", "TXT"). Only verification types that exist for this domain will be present. */
 export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE {
@@ -9363,14 +9317,8 @@ export interface GetVPSPublicKeysV1Response {
   data?: VPSV1PublicKeyPublicKeyCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const GetVPSPublicKeysV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(VPSV1PublicKeyPublicKeyCollection),
-    meta: S.optional(CommonSchemaPaginationMetaSchema),
-  }),
-).annotate({
-  identifier: "GetVPSPublicKeysV1Response",
-}) as any as S.Schema<GetVPSPublicKeysV1Response>;
+export const GetVPSPublicKeysV1Response =
+  GetVPSAttachedPublicKeysV1Response as any as S.Schema<GetVPSPublicKeysV1Response>;
 
 export interface GetVPSScanMetricsV1Request {
   /** Virtual Machine ID */
@@ -9820,15 +9768,8 @@ export interface HostingV1FilesUploadUrlResource {
   /** Authentication token to pass as the `X-Auth-Rest` header in TUS upload requests */
   rest_auth_key: string;
 }
-export const HostingV1FilesUploadUrlResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    auth_key: S.String,
-    rest_auth_key: S.String,
-  }),
-).annotate({
-  identifier: "HostingV1FilesUploadUrlResource",
-}) as any as S.Schema<HostingV1FilesUploadUrlResource>;
+export const HostingV1FilesUploadUrlResource =
+  AgencyHostingV1FilesUploadUrlResource as any as S.Schema<HostingV1FilesUploadUrlResource>;
 
 export interface HostingGetNodeJsBuildSettingsFromArchiveV1Request {
   username: string;
@@ -9882,9 +9823,8 @@ export const HostingV1NodeJsBuildSettingsResourcePackageManager = S.String;
 
 /** The scripts configured in the package.json file */
 export type HostingV1NodeJsBuildSettingsResourceAvailableScriptsList = Array<string>;
-export const HostingV1NodeJsBuildSettingsResourceAvailableScriptsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostingV1NodeJsBuildSettingsResourceAvailableScriptsList>;
+export const HostingV1NodeJsBuildSettingsResourceAvailableScriptsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1NodeJsBuildSettingsResourceAvailableScriptsList>;
 
 export interface HostingV1NodeJsBuildSettingsResource {
   /** Node.js application type */
@@ -10094,9 +10034,8 @@ export const HostingV1DatabasesWebsiteDatabaseConnectionResource = /*@__PURE__*/
 
 /** Names of the environment variables written for this database. Values are never returned. */
 export type HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList = Array<string>;
-export const HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList>;
+export const HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList>;
 
 export interface HostingV1DatabasesWebsiteDatabaseResource {
   database: HostingV1DatabasesWebsiteDatabaseConnectionResource;
@@ -10181,9 +10120,8 @@ export const InstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Plugin slugs to install. Use GET /api/hosting/v1/wordpress/plugins to discover available slugs. */
 export type InstallHostingWordPressPluginsV1RequestPluginsList = Array<string>;
-export const InstallHostingWordPressPluginsV1RequestPluginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstallHostingWordPressPluginsV1RequestPluginsList>;
+export const InstallHostingWordPressPluginsV1RequestPluginsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<InstallHostingWordPressPluginsV1RequestPluginsList>;
 
 export interface InstallHostingWordPressPluginsV1Request {
   username: string;
@@ -10436,9 +10374,8 @@ export const AgencyHostingV1OrdersDiskUsageMetricsMetricsResource = /*@__PURE__*
 }) as any as S.Schema<AgencyHostingV1OrdersDiskUsageMetricsMetricsResource>;
 
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList = Array<number>;
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList>;
+export const ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList =
+  AttachVPSPublicKeyV1RequestIdsList as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList>;
 
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem =
   | "active"
@@ -10535,15 +10472,13 @@ export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceState = S.String;
 
 /** Website domains */
 export type AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList = Array<unknown>;
-export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList>;
+export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList =
+  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList>;
 
 /** Ongoing website processes */
 export type AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList = Array<unknown>;
-export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList>;
+export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList =
+  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList>;
 
 export interface AgencyHostingV1WebsitesH5gWebsiteDetailsResource {
   /** Website UID */
@@ -10624,9 +10559,8 @@ export const AgencyHostingV1WebsitesU4sWebsiteDetailsResourceType = S.String;
 
 /** Application domains */
 export type AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList = Array<unknown>;
-export const AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList>;
+export const AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList =
+  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList>;
 
 export interface AgencyHostingV1WebsitesU4sWebsiteDetailsResource {
   /** Application UUID */
@@ -10861,11 +10795,8 @@ export const ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request = /*@__PU
 
 export type ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response =
   AgencyHostingV1PhpVersionCollection;
-export const ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response = /*@__PURE__*/ S.suspend(
-  () => AgencyHostingV1PhpVersionCollection.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response",
-}) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response>;
+export const ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response =
+  ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response>;
 
 export interface ListAgencyHostingAvailableWordPressVersionsV1Request {
   /** Agency Plan website UID */
@@ -10889,20 +10820,14 @@ export interface AgencyHostingV1WordPressVersionResource {
   /** WordPress core version. */
   version?: string;
 }
-export const AgencyHostingV1WordPressVersionResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgencyHostingV1WordPressVersionResource",
-}) as any as S.Schema<AgencyHostingV1WordPressVersionResource>;
+export const AgencyHostingV1WordPressVersionResource =
+  AgencyHostingV1PhpVersionResource as any as S.Schema<AgencyHostingV1WordPressVersionResource>;
 
 /** Array of [`AgencyHosting.V1.WordPress.VersionResource`](#model/agencyhostingv1wordpressversionresource) */
 export type AgencyHostingV1WordPressVersionCollection =
   Array<AgencyHostingV1WordPressVersionResource>;
-export const AgencyHostingV1WordPressVersionCollection = /*@__PURE__*/ S.Array(
-  AgencyHostingV1WordPressVersionResource,
-) as any as S.Schema<AgencyHostingV1WordPressVersionCollection>;
+export const AgencyHostingV1WordPressVersionCollection =
+  AgencyHostingV1PhpVersionCollection as any as S.Schema<AgencyHostingV1WordPressVersionCollection>;
 
 export type ListAgencyHostingAvailableWordPressVersionsV1Response =
   AgencyHostingV1WordPressVersionCollection;
@@ -10913,9 +10838,8 @@ export const ListAgencyHostingAvailableWordPressVersionsV1Response = /*@__PURE__
 }) as any as S.Schema<ListAgencyHostingAvailableWordPressVersionsV1Response>;
 
 export type ListAgencyHostingDomainsV1RequestWebsiteUuidsList = Array<string>;
-export const ListAgencyHostingDomainsV1RequestWebsiteUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAgencyHostingDomainsV1RequestWebsiteUuidsList>;
+export const ListAgencyHostingDomainsV1RequestWebsiteUuidsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ListAgencyHostingDomainsV1RequestWebsiteUuidsList>;
 
 export interface ListAgencyHostingDomainsV1Request {
   /** Page number */
@@ -11054,9 +10978,7 @@ export const AgencyHostingV1OrdersResourceUsageMetricsMetricCollection = /*@__PU
 /** Domains associated with the website */
 export type AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList = Array<string>;
 export const AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList>;
+  CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList>;
 
 export interface AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource {
   /** Website UID */
@@ -11263,9 +11185,8 @@ export const ListAgencyHostingPHPOptionsForAWebsiteV1Request = /*@__PURE__*/ S.s
 
 /** Values this option accepts. Null when the option accepts any value of its type. */
 export type AgencyHostingV1PhpOptionResourceAllowedValuesList = Array<string>;
-export const AgencyHostingV1PhpOptionResourceAllowedValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgencyHostingV1PhpOptionResourceAllowedValuesList>;
+export const AgencyHostingV1PhpOptionResourceAllowedValuesList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<AgencyHostingV1PhpOptionResourceAllowedValuesList>;
 
 /** Whether the option takes a single value or a list of values. */
 export type AgencyHostingV1PhpOptionResourceType = "value" | "list";
@@ -11500,9 +11421,8 @@ export const ListEcommerceDiscountsV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEcommerceDiscountsV1Response>;
 
 export type ListEcommerceProductsV1RequestProductIdsList = Array<string>;
-export const ListEcommerceProductsV1RequestProductIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEcommerceProductsV1RequestProductIdsList>;
+export const ListEcommerceProductsV1RequestProductIdsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ListEcommerceProductsV1RequestProductIdsList>;
 
 export type ListEcommerceProductsV1RequestStatusItem =
   | "draft"
@@ -11617,9 +11537,8 @@ export const EcommerceV1ProductProductResourceVariantsItemPricesItem =
 /** Prices per currency, in the smallest currency unit. */
 export type EcommerceV1ProductProductResourceVariantsItemPricesList =
   Array<EcommerceV1VariantVariantResourcePricesItem>;
-export const EcommerceV1ProductProductResourceVariantsItemPricesList = /*@__PURE__*/ S.Array(
-  EcommerceV1VariantVariantResourcePricesItem,
-) as any as S.Schema<EcommerceV1ProductProductResourceVariantsItemPricesList>;
+export const EcommerceV1ProductProductResourceVariantsItemPricesList =
+  EcommerceV1VariantVariantResourcePricesList as any as S.Schema<EcommerceV1ProductProductResourceVariantsItemPricesList>;
 
 export interface EcommerceV1ProductProductResourceVariantsItem {
   /** The variant ID. */
@@ -12040,9 +11959,7 @@ export const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedL
 export type EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList =
   Array<string>;
 export const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList>;
+  CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList>;
 
 export interface EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItem {
   /** The payment gateway ID, e.g. stripe. */
@@ -12627,9 +12544,8 @@ export const WordPressV1PluginsInstalledPluginResourceStatus = S.String;
 /** Known vulnerabilities affecting the installed version */
 export type WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList =
   Array<WordPressV1CommonVulnerabilityResource>;
-export const WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList = /*@__PURE__*/ S.Array(
-  WordPressV1CommonVulnerabilityResource,
-) as any as S.Schema<WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList>;
+export const WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList =
+  WordPressV1InstallationsVersionResourceVulnerabilitiesList as any as S.Schema<WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList>;
 
 export interface WordPressV1PluginsInstalledPluginResource {
   /** Plugin slug */
@@ -12700,9 +12616,8 @@ export const WordPressV1ThemesInstalledThemeResourceStatus = S.String;
 /** Known vulnerabilities affecting the installed version */
 export type WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList =
   Array<WordPressV1CommonVulnerabilityResource>;
-export const WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList = /*@__PURE__*/ S.Array(
-  WordPressV1CommonVulnerabilityResource,
-) as any as S.Schema<WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList>;
+export const WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList =
+  WordPressV1InstallationsVersionResourceVulnerabilitiesList as any as S.Schema<WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList>;
 
 export interface WordPressV1ThemesInstalledThemeResource {
   /** Theme slug */
@@ -12985,9 +12900,8 @@ export const ListHostingOrdersV1RequestStatusesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListHostingOrdersV1RequestStatusesList>;
 
 export type ListHostingOrdersV1RequestOrderIdsList = Array<number>;
-export const ListHostingOrdersV1RequestOrderIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListHostingOrdersV1RequestOrderIdsList>;
+export const ListHostingOrdersV1RequestOrderIdsList =
+  AttachVPSPublicKeyV1RequestIdsList as any as S.Schema<ListHostingOrdersV1RequestOrderIdsList>;
 
 export interface ListHostingOrdersV1Request {
   /** Page number */
@@ -14562,14 +14476,8 @@ export interface ListMailOutboundLogsV1Response {
   data?: MailV1LogsCommonDeliveryLogCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailOutboundLogsV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MailV1LogsCommonDeliveryLogCollection),
-    meta: S.optional(CommonSchemaPaginationMetaSchema),
-  }),
-).annotate({
-  identifier: "ListMailOutboundLogsV1Response",
-}) as any as S.Schema<ListMailOutboundLogsV1Response>;
+export const ListMailOutboundLogsV1Response =
+  ListMailInboundLogsV1Response as any as S.Schema<ListMailOutboundLogsV1Response>;
 
 export interface ListMailWebhookDeliveryLogsV1Request {
   /** Order resource ID */
@@ -15509,9 +15417,8 @@ export const ListReachProfileTagsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Reach.V1.Contacts.Tags.TagResource`](#model/reachv1contactstagstagresource) */
 export type ReachV1ContactsTagsTagCollection = Array<ReachV1ContactsTagsTagResource>;
-export const ReachV1ContactsTagsTagCollection = /*@__PURE__*/ S.Array(
-  ReachV1ContactsTagsTagResource,
-) as any as S.Schema<ReachV1ContactsTagsTagCollection>;
+export const ReachV1ContactsTagsTagCollection =
+  ReachV1ContactsContactDetailsResourceTagsList as any as S.Schema<ReachV1ContactsTagsTagCollection>;
 
 export type ListReachProfileTagsV1Response = ReachV1ContactsTagsTagCollection;
 export const ListReachProfileTagsV1Response = /*@__PURE__*/ S.suspend(() =>
@@ -15668,10 +15575,7 @@ export type ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperators
   [key: string]: string | undefined;
 };
 export const ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap>;
+  ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap>;
 
 /** The vocabulary a segment condition can be built from, for one profile. */
 export interface ReachV1ContactsSegmentsSegmentFilterAttributesResource {
@@ -15727,9 +15631,8 @@ export const MailUpdateForwarderKeepCopySettingV1Request = /*@__PURE__*/ S.suspe
 
 /** List of vulnerability IDs to patch, as returned by the list vulnerabilities endpoint. */
 export type PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList = Array<string>;
-export const PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList>;
+export const PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList>;
 
 export interface PatchHostingNodeJsVulnerabilitiesV1Request {
   username: string;
@@ -15756,9 +15659,8 @@ export const PatchHostingNodeJsVulnerabilitiesV1Request = /*@__PURE__*/ S.suspen
 
 /** List of vulnerability IDs that were patched in the pull request */
 export type HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList = Array<string>;
-export const HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList>;
+export const HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList>;
 
 export interface HostingV1NodeJsPatchResultResource {
   /** URL to the created GitHub pull request */
@@ -15893,14 +15795,8 @@ export interface PreviewReachContactsMatchingConditionsV1Response {
   data?: ReachV1ContactsProfileContactCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const PreviewReachContactsMatchingConditionsV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(ReachV1ContactsProfileContactCollection),
-    meta: S.optional(CommonSchemaPaginationMetaSchema),
-  }),
-).annotate({
-  identifier: "PreviewReachContactsMatchingConditionsV1Response",
-}) as any as S.Schema<PreviewReachContactsMatchingConditionsV1Response>;
+export const PreviewReachContactsMatchingConditionsV1Response =
+  ListReachProfileContactsV1Response as any as S.Schema<PreviewReachContactsMatchingConditionsV1Response>;
 
 export interface PublishHorizonWebsiteV1Request {
   /** The website ID */
@@ -16020,9 +15916,8 @@ export const ReachCreateContactsInBulkV1RequestContactsList = /*@__PURE__*/ S.Ar
 
 /** Existing tags to attach to every created contact */
 export type ReachCreateContactsInBulkV1RequestTagUuidsList = Array<string>;
-export const ReachCreateContactsInBulkV1RequestTagUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReachCreateContactsInBulkV1RequestTagUuidsList>;
+export const ReachCreateContactsInBulkV1RequestTagUuidsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ReachCreateContactsInBulkV1RequestTagUuidsList>;
 
 export interface ReachCreateContactsInBulkV1Request {
   /** Profile uuid parameter */
@@ -16051,9 +15946,8 @@ export const ReachCreateContactsInBulkV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReachCreateContactsInBulkV1Request>;
 
 export type ReachCreateOrFindTagsV1RequestNamesList = Array<string>;
-export const ReachCreateOrFindTagsV1RequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReachCreateOrFindTagsV1RequestNamesList>;
+export const ReachCreateOrFindTagsV1RequestNamesList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ReachCreateOrFindTagsV1RequestNamesList>;
 
 export interface ReachCreateOrFindTagsV1Request {
   /** Profile uuid parameter */
@@ -16070,11 +15964,8 @@ export const ReachCreateOrFindTagsV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReachCreateOrFindTagsV1Request>;
 
 export type ReachCreateOrFindTagsV1Response = ReachV1ContactsTagsTagCollection;
-export const ReachCreateOrFindTagsV1Response = /*@__PURE__*/ S.suspend(() =>
-  ReachV1ContactsTagsTagCollection.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ReachCreateOrFindTagsV1Response",
-}) as any as S.Schema<ReachCreateOrFindTagsV1Response>;
+export const ReachCreateOrFindTagsV1Response =
+  ListReachProfileTagsV1Response as any as S.Schema<ReachCreateOrFindTagsV1Response>;
 
 export interface RecreateVPSVirtualMachineV1Request {
   /** Virtual Machine ID */
@@ -16200,9 +16091,8 @@ export const RemoveReachAContactFromATagV1Request = /*@__PURE__*/ S.suspend(() =
 
 /** Contacts to apply the change to. Required unless all_contacts is true. */
 export type RemoveReachContactsFromATagV1RequestContactUuidsList = Array<string>;
-export const RemoveReachContactsFromATagV1RequestContactUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveReachContactsFromATagV1RequestContactUuidsList>;
+export const RemoveReachContactsFromATagV1RequestContactUuidsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<RemoveReachContactsFromATagV1RequestContactUuidsList>;
 
 export interface RemoveReachContactsFromATagV1Request {
   /** Profile uuid parameter */
@@ -16255,9 +16145,8 @@ export const RenameReachATagV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Discount coupon codes */
 export type RenewBillingSubscriptionV1RequestCouponsList = Array<unknown>;
-export const RenewBillingSubscriptionV1RequestCouponsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RenewBillingSubscriptionV1RequestCouponsList>;
+export const RenewBillingSubscriptionV1RequestCouponsList =
+  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<RenewBillingSubscriptionV1RequestCouponsList>;
 
 export interface RenewBillingSubscriptionV1Request {
   /** Subscription ID */
@@ -16286,9 +16175,7 @@ export const RenewBillingSubscriptionV1Request = /*@__PURE__*/ S.suspend(() =>
 /** Extension names, exactly as returned by the extensions endpoint. */
 export type ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList = Array<string>;
 export const ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList>;
+  CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList>;
 
 export interface ReplaceAgencyHostingWebsitePHPExtensionsV1Request {
   /** Agency Plan website UID */
@@ -16502,9 +16389,8 @@ export const ResendMailForwarderConfirmationV1Request = /*@__PURE__*/ S.suspend(
 
 /** Specifies which record types to not reset */
 export type ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList = Array<string>;
-export const ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList>;
+export const ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList>;
 
 export interface ResetDNSDNSRecordsV1Request {
   /** Domain name */
@@ -17390,9 +17276,8 @@ export const UninstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Slugs of the installed plugins to uninstall. */
 export type UninstallHostingWordPressPluginsV1RequestPluginsList = Array<string>;
-export const UninstallHostingWordPressPluginsV1RequestPluginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UninstallHostingWordPressPluginsV1RequestPluginsList>;
+export const UninstallHostingWordPressPluginsV1RequestPluginsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UninstallHostingWordPressPluginsV1RequestPluginsList>;
 
 export interface UninstallHostingWordPressPluginsV1Request {
   username: string;
@@ -17419,9 +17304,8 @@ export const UninstallHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend
 
 /** Slugs of the installed themes to uninstall. */
 export type UninstallHostingWordPressThemesV1RequestThemesList = Array<string>;
-export const UninstallHostingWordPressThemesV1RequestThemesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UninstallHostingWordPressThemesV1RequestThemesList>;
+export const UninstallHostingWordPressThemesV1RequestThemesList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UninstallHostingWordPressThemesV1RequestThemesList>;
 
 export interface UninstallHostingWordPressThemesV1Request {
   username: string;
@@ -17761,9 +17645,8 @@ export const UpdateEcommerceProductVariantsInBatchV1Request = /*@__PURE__*/ S.su
 /** The variants. */
 export type EcommerceV1VariantVariantListResponseResourceDataList =
   Array<EcommerceV1VariantVariantResource>;
-export const EcommerceV1VariantVariantListResponseResourceDataList = /*@__PURE__*/ S.Array(
-  EcommerceV1VariantVariantResource,
-) as any as S.Schema<EcommerceV1VariantVariantListResponseResourceDataList>;
+export const EcommerceV1VariantVariantListResponseResourceDataList =
+  EcommerceV1VariantVariantCollection as any as S.Schema<EcommerceV1VariantVariantListResponseResourceDataList>;
 
 export interface EcommerceV1VariantVariantListResponseResource {
   /** The variants. */
@@ -18000,15 +17883,13 @@ export const UpdateHostingNodeJsBuildSettingsV1Request = /*@__PURE__*/ S.suspend
 
 /** PHP extensions to enable. */
 export type UpdateHostingPHPExtensionsV1RequestEnableList = Array<string>;
-export const UpdateHostingPHPExtensionsV1RequestEnableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHostingPHPExtensionsV1RequestEnableList>;
+export const UpdateHostingPHPExtensionsV1RequestEnableList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingPHPExtensionsV1RequestEnableList>;
 
 /** PHP extensions to disable. */
 export type UpdateHostingPHPExtensionsV1RequestDisableList = Array<string>;
-export const UpdateHostingPHPExtensionsV1RequestDisableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHostingPHPExtensionsV1RequestDisableList>;
+export const UpdateHostingPHPExtensionsV1RequestDisableList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingPHPExtensionsV1RequestDisableList>;
 
 export interface UpdateHostingPHPExtensionsV1Request {
   username: string;
@@ -18123,9 +18004,8 @@ export const UpdateHostingWordPressCoreV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Slugs of the installed plugins to update to their latest version. */
 export type UpdateHostingWordPressPluginsV1RequestPluginsList = Array<string>;
-export const UpdateHostingWordPressPluginsV1RequestPluginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHostingWordPressPluginsV1RequestPluginsList>;
+export const UpdateHostingWordPressPluginsV1RequestPluginsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingWordPressPluginsV1RequestPluginsList>;
 
 export interface UpdateHostingWordPressPluginsV1Request {
   username: string;
@@ -18152,9 +18032,8 @@ export const UpdateHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(()
 
 /** Slugs of the installed themes to update to their latest version. */
 export type UpdateHostingWordPressThemesV1RequestThemesList = Array<string>;
-export const UpdateHostingWordPressThemesV1RequestThemesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHostingWordPressThemesV1RequestThemesList>;
+export const UpdateHostingWordPressThemesV1RequestThemesList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingWordPressThemesV1RequestThemesList>;
 
 export interface UpdateHostingWordPressThemesV1Request {
   username: string;
@@ -18303,9 +18182,8 @@ export const UpdateReachAContactV1RequestSubscriptionStatus = S.String;
 
 /** For the choice field types */
 export type UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList = Array<string>;
-export const UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList>;
+export const UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList =
+  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList>;
 
 export interface UpdateReachAContactV1RequestFieldsItem {
   uuid: string;
@@ -18562,9 +18440,8 @@ export const ValidateDNSDNSRecordsV1RequestZoneItemRecordsItem =
 /** Records assigned to the name */
 export type ValidateDNSDNSRecordsV1RequestZoneItemRecordsList =
   Array<UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem>;
-export const ValidateDNSDNSRecordsV1RequestZoneItemRecordsList = /*@__PURE__*/ S.Array(
-  UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem,
-) as any as S.Schema<ValidateDNSDNSRecordsV1RequestZoneItemRecordsList>;
+export const ValidateDNSDNSRecordsV1RequestZoneItemRecordsList =
+  UpdateDNSDNSRecordsV1RequestZoneItemRecordsList as any as S.Schema<ValidateDNSDNSRecordsV1RequestZoneItemRecordsList>;
 
 /** Type of the record */
 export type ValidateDNSDNSRecordsV1RequestZoneItemType =
@@ -18953,9 +18830,8 @@ export const VPSV1VirtualMachineSetupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Discount coupon codes */
 export type VPSPurchaseNewVirtualMachineV1RequestCouponsList = Array<unknown>;
-export const VPSPurchaseNewVirtualMachineV1RequestCouponsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VPSPurchaseNewVirtualMachineV1RequestCouponsList>;
+export const VPSPurchaseNewVirtualMachineV1RequestCouponsList =
+  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<VPSPurchaseNewVirtualMachineV1RequestCouponsList>;
 
 export interface VPSPurchaseNewVirtualMachineV1Request {
   /** Catalog price item ID */

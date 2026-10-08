@@ -238,14 +238,8 @@ export interface GoogleHomeEnterpriseSdmV1Room {
   /** Room traits. */
   traits?: DocumentMap;
 }
-export const GoogleHomeEnterpriseSdmV1Room = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    traits: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleHomeEnterpriseSdmV1Room",
-}) as any as S.Schema<GoogleHomeEnterpriseSdmV1Room>;
+export const GoogleHomeEnterpriseSdmV1Room =
+  GoogleHomeEnterpriseSdmV1Structure as any as S.Schema<GoogleHomeEnterpriseSdmV1Room>;
 
 export interface ListEnterprisesDevicesRequest {
   /** The parent enterprise to list devices under. E.g. "enterprises/XYZ". */
@@ -344,9 +338,8 @@ export const ListEnterprisesStructuresRoomsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEnterprisesStructuresRoomsRequest>;
 
 export type GoogleHomeEnterpriseSdmV1RoomList = Array<GoogleHomeEnterpriseSdmV1Room>;
-export const GoogleHomeEnterpriseSdmV1RoomList = /*@__PURE__*/ S.Array(
-  GoogleHomeEnterpriseSdmV1Room,
-) as any as S.Schema<GoogleHomeEnterpriseSdmV1RoomList>;
+export const GoogleHomeEnterpriseSdmV1RoomList =
+  GoogleHomeEnterpriseSdmV1StructureList as any as S.Schema<GoogleHomeEnterpriseSdmV1RoomList>;
 
 /** Response message for SmartDeviceManagementService.ListRooms */
 export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {

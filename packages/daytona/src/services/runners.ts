@@ -89,9 +89,8 @@ export const RunnerState = S.String;
 
 /** Tags associated with the runner */
 export type RunnerFullTagsList = Array<string>;
-export const RunnerFullTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunnerFullTagsList>;
+export const RunnerFullTagsList =
+  CreateRunnerRequestTagsList as any as S.Schema<RunnerFullTagsList>;
 
 /** The class of the runner. Deprecated and always returns "container" for backward compatibility - use sandboxClass instead. */
 export type RunnerClass = "container";
@@ -399,9 +398,8 @@ export const GetSnapshotRefsForAuthenticatedRunnerRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerRequest>;
 
 export type GetSnapshotRefsForAuthenticatedRunnerResponseBodyList = Array<string>;
-export const GetSnapshotRefsForAuthenticatedRunnerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerResponseBodyList>;
+export const GetSnapshotRefsForAuthenticatedRunnerResponseBodyList =
+  CreateRunnerRequestTagsList as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerResponseBodyList>;
 
 export type GetSnapshotRefsForAuthenticatedRunnerResponse =
   GetSnapshotRefsForAuthenticatedRunnerResponseBodyList;
@@ -531,9 +529,8 @@ export const RunnerHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunnerHealthcheckRequest" }) as any as S.Schema<RunnerHealthcheckRequest>;
 
 export interface RunnerHealthcheckResponse {}
-export const RunnerHealthcheckResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunnerHealthcheckResponse",
-}) as any as S.Schema<RunnerHealthcheckResponse>;
+export const RunnerHealthcheckResponse =
+  DeleteRunnerResponse as any as S.Schema<RunnerHealthcheckResponse>;
 
 export interface UpdateRunnerDrainingRequest {
   /** Runner ID */

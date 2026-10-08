@@ -402,9 +402,7 @@ export const DeleteV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteV1VariantRequest" }) as any as S.Schema<DeleteV1VariantRequest>;
 
 export type DeleteV1VariantResponse = unknown;
-export const DeleteV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteV1VariantResponse" }) as any as S.Schema<DeleteV1VariantResponse>;
+export const DeleteV1VariantResponse = DeleteV1Response as any as S.Schema<DeleteV1VariantResponse>;
 
 export interface GetV1Request {
   /** Account identifier tag. */
@@ -422,9 +420,8 @@ export const GetV1Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetV1Request" }) as any as S.Schema<GetV1Request>;
 
 export type V1GetResponseVariantsList = Array<string>;
-export const V1GetResponseVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1GetResponseVariantsList>;
+export const V1GetResponseVariantsList =
+  V1CreateResponseVariantsList as any as S.Schema<V1GetResponseVariantsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetV1Response {
@@ -443,17 +440,7 @@ export interface GetV1Response {
   /** Object specifying available variants for an image. */
   variants?: V1GetResponseVariantsList | null;
 }
-export const GetV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    creator: S.optional(S.NullOr(S.String)),
-    filename: S.optional(S.NullOr(S.String)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    uploaded: S.optional(S.NullOr(S.String)),
-    variants: S.optional(S.NullOr(V1GetResponseVariantsList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetV1Response" }) as any as S.Schema<GetV1Response>;
+export const GetV1Response = CreateV1Response as any as S.Schema<GetV1Response>;
 
 export interface GetV1BlobRequest {
   /** Account identifier tag. */
@@ -607,19 +594,14 @@ export type V1KeysListResponseKeysItem = V1KeysDeleteResponseKeysItem;
 export const V1KeysListResponseKeysItem = V1KeysDeleteResponseKeysItem;
 
 export type V1KeysListResponseKeysList = Array<V1KeysDeleteResponseKeysItem>;
-export const V1KeysListResponseKeysList = /*@__PURE__*/ S.Array(
-  V1KeysDeleteResponseKeysItem,
-) as any as S.Schema<V1KeysListResponseKeysList>;
+export const V1KeysListResponseKeysList =
+  V1KeysDeleteResponseKeysList as any as S.Schema<V1KeysListResponseKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListV1KeysResponse {
   keys?: V1KeysListResponseKeysList | null;
 }
-export const ListV1KeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(S.NullOr(V1KeysListResponseKeysList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListV1KeysResponse" }) as any as S.Schema<ListV1KeysResponse>;
+export const ListV1KeysResponse = DeleteV1KeyResponse as any as S.Schema<ListV1KeysResponse>;
 
 export interface ListV1sRequest {
   /** Account identifier tag. */
@@ -643,9 +625,8 @@ export const ListV1sRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV1sRequest" }) as any as S.Schema<ListV1sRequest>;
 
 export type V1ListResponseImagesItemVariantsList = Array<string>;
-export const V1ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1ListResponseImagesItemVariantsList>;
+export const V1ListResponseImagesItemVariantsList =
+  V1CreateResponseVariantsList as any as S.Schema<V1ListResponseImagesItemVariantsList>;
 
 export interface V1ListResponseImagesItem {
   /** Image unique identifier. */
@@ -812,9 +793,8 @@ export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV2sRequest" }) as any as S.Schema<ListV2sRequest>;
 
 export type V2ListResponseImagesItemVariantsList = Array<string>;
-export const V2ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2ListResponseImagesItemVariantsList>;
+export const V2ListResponseImagesItemVariantsList =
+  V1CreateResponseVariantsList as any as S.Schema<V2ListResponseImagesItemVariantsList>;
 
 export interface V2ListResponseImagesItem {
   /** Image unique identifier. */
@@ -832,22 +812,12 @@ export interface V2ListResponseImagesItem {
   /** Object specifying available variants for an image. */
   variants?: V2ListResponseImagesItemVariantsList | null;
 }
-export const V2ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    creator: S.optional(S.NullOr(S.String)),
-    filename: S.optional(S.NullOr(S.String)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    uploaded: S.optional(S.NullOr(S.String)),
-    variants: S.optional(S.NullOr(V2ListResponseImagesItemVariantsList)),
-  }),
-).annotate({ identifier: "V2ListResponseImagesItem" }) as any as S.Schema<V2ListResponseImagesItem>;
+export const V2ListResponseImagesItem =
+  V1ListResponseImagesItem as any as S.Schema<V2ListResponseImagesItem>;
 
 export type V2ListResponseImagesList = Array<V2ListResponseImagesItem>;
-export const V2ListResponseImagesList = /*@__PURE__*/ S.Array(
-  V2ListResponseImagesItem,
-) as any as S.Schema<V2ListResponseImagesList>;
+export const V2ListResponseImagesList =
+  V1ListResponseImagesList as any as S.Schema<V2ListResponseImagesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListV2sResponse {
@@ -889,9 +859,8 @@ export const PatchV1Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchV1Request" }) as any as S.Schema<PatchV1Request>;
 
 export type V1EditResponseVariantsList = Array<string>;
-export const V1EditResponseVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1EditResponseVariantsList>;
+export const V1EditResponseVariantsList =
+  V1CreateResponseVariantsList as any as S.Schema<V1EditResponseVariantsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchV1Response {
@@ -910,17 +879,7 @@ export interface PatchV1Response {
   /** Object specifying available variants for an image. */
   variants?: V1EditResponseVariantsList | null;
 }
-export const PatchV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    creator: S.optional(S.NullOr(S.String)),
-    filename: S.optional(S.NullOr(S.String)),
-    meta: S.optional(S.NullOr(S.Unknown)),
-    requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-    uploaded: S.optional(S.NullOr(S.String)),
-    variants: S.optional(S.NullOr(V1EditResponseVariantsList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchV1Response" }) as any as S.Schema<PatchV1Response>;
+export const PatchV1Response = CreateV1Response as any as S.Schema<PatchV1Response>;
 
 export type V1VariantsEditRequestOptionsFit = "scale-down" | "contain" | "cover" | "crop" | "pad";
 export const V1VariantsEditRequestOptionsFit = S.String;
@@ -1058,19 +1017,14 @@ export type V1KeysUpdateResponseKeysItem = V1KeysDeleteResponseKeysItem;
 export const V1KeysUpdateResponseKeysItem = V1KeysDeleteResponseKeysItem;
 
 export type V1KeysUpdateResponseKeysList = Array<V1KeysDeleteResponseKeysItem>;
-export const V1KeysUpdateResponseKeysList = /*@__PURE__*/ S.Array(
-  V1KeysDeleteResponseKeysItem,
-) as any as S.Schema<V1KeysUpdateResponseKeysList>;
+export const V1KeysUpdateResponseKeysList =
+  V1KeysDeleteResponseKeysList as any as S.Schema<V1KeysUpdateResponseKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutV1KeyResponse {
   keys?: V1KeysUpdateResponseKeysList | null;
 }
-export const PutV1KeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(S.NullOr(V1KeysUpdateResponseKeysList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutV1KeyResponse" }) as any as S.Schema<PutV1KeyResponse>;
+export const PutV1KeyResponse = DeleteV1KeyResponse as any as S.Schema<PutV1KeyResponse>;
 
 export type CreateV1Error = ImagesAccessNotEnabled | CloudflareOpError;
 /** Upload an image to CF Images. Images up to 10 Megabytes can be uploaded using a single HTTP POST (multipart/form-data) request by sending an image file or passing a URL accessible to the API. */

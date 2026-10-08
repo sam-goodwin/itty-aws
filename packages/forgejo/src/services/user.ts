@@ -76,9 +76,8 @@ export const DeleteUserRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRunnerRequest" }) as any as S.Schema<DeleteUserRunnerRequest>;
 
 export interface DeleteUserRunnerResponse {}
-export const DeleteUserRunnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserRunnerResponse",
-}) as any as S.Schema<DeleteUserRunnerResponse>;
+export const DeleteUserRunnerResponse =
+  CreateUserVariableResponse as any as S.Schema<DeleteUserRunnerResponse>;
 
 export interface DeleteUserSecretRequest {
   /** name of the secret */
@@ -91,9 +90,8 @@ export const DeleteUserSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserSecretRequest" }) as any as S.Schema<DeleteUserSecretRequest>;
 
 export interface DeleteUserSecretResponse {}
-export const DeleteUserSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserSecretResponse",
-}) as any as S.Schema<DeleteUserSecretResponse>;
+export const DeleteUserSecretResponse =
+  CreateUserVariableResponse as any as S.Schema<DeleteUserSecretResponse>;
 
 export interface DeleteUserVariableRequest {
   /** name of the variable */
@@ -108,9 +106,8 @@ export const DeleteUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUserVariableRequest>;
 
 export interface DeleteUserVariableResponse {}
-export const DeleteUserVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserVariableResponse",
-}) as any as S.Schema<DeleteUserVariableResponse>;
+export const DeleteUserVariableResponse =
+  CreateUserVariableResponse as any as S.Schema<DeleteUserVariableResponse>;
 
 export interface FollowUserCurrentActivityPubRequest {
   target?: string;
@@ -494,9 +491,8 @@ export const UnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnblockUserRequest" }) as any as S.Schema<UnblockUserRequest>;
 
 export interface UnblockUserResponse {}
-export const UnblockUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnblockUserResponse",
-}) as any as S.Schema<UnblockUserResponse>;
+export const UnblockUserResponse =
+  CreateUserVariableResponse as any as S.Schema<UnblockUserResponse>;
 
 export interface UpdateUserSecretRequest {
   /** name of the secret */
@@ -512,9 +508,8 @@ export const UpdateUserSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserSecretRequest" }) as any as S.Schema<UpdateUserSecretRequest>;
 
 export interface UpdateUserSecretResponse {}
-export const UpdateUserSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserSecretResponse",
-}) as any as S.Schema<UpdateUserSecretResponse>;
+export const UpdateUserSecretResponse =
+  CreateUserVariableResponse as any as S.Schema<UpdateUserSecretResponse>;
 
 export interface UpdateUserSettingsRequest {
   description?: string;
@@ -569,15 +564,13 @@ export const UpdateUserVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateUserVariableRequest>;
 
 export interface UpdateUserVariableResponse {}
-export const UpdateUserVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserVariableResponse",
-}) as any as S.Schema<UpdateUserVariableResponse>;
+export const UpdateUserVariableResponse =
+  CreateUserVariableResponse as any as S.Schema<UpdateUserVariableResponse>;
 
 /** email addresses to add */
 export type UserAddEmailRequestEmailsList = Array<string>;
-export const UserAddEmailRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserAddEmailRequestEmailsList>;
+export const UserAddEmailRequestEmailsList =
+  ActionRunnerLabelsList as any as S.Schema<UserAddEmailRequestEmailsList>;
 
 export interface UserAddEmailRequest {
   /** email addresses to add */
@@ -628,9 +621,8 @@ export const UserBlockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBlockUserRequest" }) as any as S.Schema<UserBlockUserRequest>;
 
 export interface UserBlockUserResponse {}
-export const UserBlockUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserBlockUserResponse",
-}) as any as S.Schema<UserBlockUserResponse>;
+export const UserBlockUserResponse =
+  CreateUserVariableResponse as any as S.Schema<UserBlockUserResponse>;
 
 export interface UserCheckFollowingRequest {
   /** username of following user */
@@ -648,9 +640,8 @@ export const UserCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCheckFollowingRequest>;
 
 export interface UserCheckFollowingResponse {}
-export const UserCheckFollowingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserCheckFollowingResponse",
-}) as any as S.Schema<UserCheckFollowingResponse>;
+export const UserCheckFollowingResponse =
+  CreateUserVariableResponse as any as S.Schema<UserCheckFollowingResponse>;
 
 export interface UserCheckQuotaRequest {
   /** subject of the quota */
@@ -675,9 +666,8 @@ export const CreateHookOptionConfig = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreateHookOptionConfig>;
 
 export type UserCreateHookRequestEventsList = Array<string>;
-export const UserCreateHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserCreateHookRequestEventsList>;
+export const UserCreateHookRequestEventsList =
+  ActionRunnerLabelsList as any as S.Schema<UserCreateHookRequestEventsList>;
 
 export type UserCreateHookRequestType =
   | "forgejo"
@@ -714,10 +704,7 @@ export const UserCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-export const HookConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HookConfigMap>;
+export const HookConfigMap = CreateHookOptionConfig as any as S.Schema<HookConfigMap>;
 
 export type HookEventsList = Array<string>;
 export const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
@@ -756,9 +743,8 @@ export const Hook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hook" }) as any as S.Schema<Hook>;
 
 export type UserCreateOAuth2ApplicationRequestRedirectUrisList = Array<string>;
-export const UserCreateOAuth2ApplicationRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserCreateOAuth2ApplicationRequestRedirectUrisList>;
+export const UserCreateOAuth2ApplicationRequestRedirectUrisList =
+  ActionRunnerLabelsList as any as S.Schema<UserCreateOAuth2ApplicationRequestRedirectUrisList>;
 
 export interface UserCreateOAuth2ApplicationRequest {
   confidential_client?: boolean;
@@ -776,9 +762,8 @@ export const UserCreateOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCreateOAuth2ApplicationRequest>;
 
 export type OAuth2ApplicationRedirectUrisList = Array<string>;
-export const OAuth2ApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuth2ApplicationRedirectUrisList>;
+export const OAuth2ApplicationRedirectUrisList =
+  ActionRunnerLabelsList as any as S.Schema<OAuth2ApplicationRedirectUrisList>;
 
 export interface OAuth2Application {
   client_id?: string;
@@ -821,9 +806,8 @@ export const UserCreateTokenRequestRepositoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserCreateTokenRequestRepositoriesList>;
 
 export type UserCreateTokenRequestScopesList = Array<string>;
-export const UserCreateTokenRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserCreateTokenRequestScopesList>;
+export const UserCreateTokenRequestScopesList =
+  ActionRunnerLabelsList as any as S.Schema<UserCreateTokenRequestScopesList>;
 
 export interface UserCreateTokenRequest {
   /** username of user */
@@ -865,9 +849,8 @@ export const AccessTokenRepositoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AccessTokenRepositoriesList>;
 
 export type AccessTokenScopesList = Array<string>;
-export const AccessTokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessTokenScopesList>;
+export const AccessTokenScopesList =
+  ActionRunnerLabelsList as any as S.Schema<AccessTokenScopesList>;
 
 export interface AccessToken {
   created_at: string;
@@ -904,11 +887,8 @@ export const UserCurrentCheckFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentCheckFollowingRequest>;
 
 export interface UserCurrentCheckFollowingResponse {}
-export const UserCurrentCheckFollowingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserCurrentCheckFollowingResponse",
-}) as any as S.Schema<UserCurrentCheckFollowingResponse>;
+export const UserCurrentCheckFollowingResponse =
+  FollowUserCurrentActivityPubResponse as any as S.Schema<UserCurrentCheckFollowingResponse>;
 
 export interface UserCurrentCheckStarringRequest {
   /** owner of the repo */
@@ -926,11 +906,8 @@ export const UserCurrentCheckStarringRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentCheckStarringRequest>;
 
 export interface UserCurrentCheckStarringResponse {}
-export const UserCurrentCheckStarringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserCurrentCheckStarringResponse",
-}) as any as S.Schema<UserCurrentCheckStarringResponse>;
+export const UserCurrentCheckStarringResponse =
+  FollowUserCurrentActivityPubResponse as any as S.Schema<UserCurrentCheckStarringResponse>;
 
 export interface UserCurrentDeleteFollowRequest {
   /** username of user to unfollow */
@@ -962,9 +939,8 @@ export const UserCurrentDeleteGPGKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentDeleteGPGKeyRequest>;
 
 export interface UserCurrentDeleteGPGKeyResponse {}
-export const UserCurrentDeleteGPGKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UserCurrentDeleteGPGKeyResponse" },
-) as any as S.Schema<UserCurrentDeleteGPGKeyResponse>;
+export const UserCurrentDeleteGPGKeyResponse =
+  UserCurrentDeleteFollowResponse as any as S.Schema<UserCurrentDeleteGPGKeyResponse>;
 
 export interface UserCurrentDeleteKeyRequest {
   /** id of key to delete */
@@ -979,9 +955,8 @@ export const UserCurrentDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentDeleteKeyRequest>;
 
 export interface UserCurrentDeleteKeyResponse {}
-export const UserCurrentDeleteKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserCurrentDeleteKeyResponse",
-}) as any as S.Schema<UserCurrentDeleteKeyResponse>;
+export const UserCurrentDeleteKeyResponse =
+  CreateUserVariableResponse as any as S.Schema<UserCurrentDeleteKeyResponse>;
 
 export interface UserCurrentDeleteStarRequest {
   /** owner of the repo to unstar */
@@ -999,9 +974,8 @@ export const UserCurrentDeleteStarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentDeleteStarRequest>;
 
 export interface UserCurrentDeleteStarResponse {}
-export const UserCurrentDeleteStarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserCurrentDeleteStarResponse",
-}) as any as S.Schema<UserCurrentDeleteStarResponse>;
+export const UserCurrentDeleteStarResponse =
+  CreateUserVariableResponse as any as S.Schema<UserCurrentDeleteStarResponse>;
 
 export interface UserCurrentGetGPGKeyRequest {
   /** id of key to get */
@@ -1127,9 +1101,8 @@ export const UserCurrentListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListFollowersRequest>;
 
 export type UserCurrentListFollowersResponseBodyList = Array<User>;
-export const UserCurrentListFollowersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UserCurrentListFollowersResponseBodyList>;
+export const UserCurrentListFollowersResponseBodyList =
+  SearchUserResponseDataList as any as S.Schema<UserCurrentListFollowersResponseBodyList>;
 
 export type UserCurrentListFollowersResponse = UserCurrentListFollowersResponseBodyList;
 export const UserCurrentListFollowersResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1154,16 +1127,12 @@ export const UserCurrentListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListFollowingRequest>;
 
 export type UserCurrentListFollowingResponseBodyList = Array<User>;
-export const UserCurrentListFollowingResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UserCurrentListFollowingResponseBodyList>;
+export const UserCurrentListFollowingResponseBodyList =
+  SearchUserResponseDataList as any as S.Schema<UserCurrentListFollowingResponseBodyList>;
 
 export type UserCurrentListFollowingResponse = UserCurrentListFollowingResponseBodyList;
-export const UserCurrentListFollowingResponse = /*@__PURE__*/ S.suspend(() =>
-  UserCurrentListFollowingResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UserCurrentListFollowingResponse",
-}) as any as S.Schema<UserCurrentListFollowingResponse>;
+export const UserCurrentListFollowingResponse =
+  UserCurrentListFollowersResponse as any as S.Schema<UserCurrentListFollowingResponse>;
 
 export interface UserCurrentListGPGKeysRequest {
   /** page number of results to return (1-based) */
@@ -1364,13 +1333,10 @@ export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
 export const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
+export const TeamUnitsList = HookEventsList as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TeamUnitsMapMap>;
+export const TeamUnitsMapMap = CreateHookOptionConfig as any as S.Schema<TeamUnitsMapMap>;
 
 /** Team represents a team in an organization */
 export interface Team {
@@ -1418,9 +1384,7 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList = ActionRunnerLabelsList as any as S.Schema<RepositoryTopicsList>;
 
 /** Repository represents a repository */
 export interface Repository {
@@ -1593,16 +1557,12 @@ export const UserCurrentListStarredRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListStarredRequest>;
 
 export type UserCurrentListStarredResponseBodyList = Array<Repository>;
-export const UserCurrentListStarredResponseBodyList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<UserCurrentListStarredResponseBodyList>;
+export const UserCurrentListStarredResponseBodyList =
+  UserCurrentListReposResponseBodyList as any as S.Schema<UserCurrentListStarredResponseBodyList>;
 
 export type UserCurrentListStarredResponse = UserCurrentListStarredResponseBodyList;
-export const UserCurrentListStarredResponse = /*@__PURE__*/ S.suspend(() =>
-  UserCurrentListStarredResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UserCurrentListStarredResponse",
-}) as any as S.Schema<UserCurrentListStarredResponse>;
+export const UserCurrentListStarredResponse =
+  UserCurrentListReposResponse as any as S.Schema<UserCurrentListStarredResponse>;
 
 export interface UserCurrentListSubscriptionsRequest {
   /** page number of results to return (1-based) */
@@ -1620,16 +1580,12 @@ export const UserCurrentListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentListSubscriptionsRequest>;
 
 export type UserCurrentListSubscriptionsResponseBodyList = Array<Repository>;
-export const UserCurrentListSubscriptionsResponseBodyList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<UserCurrentListSubscriptionsResponseBodyList>;
+export const UserCurrentListSubscriptionsResponseBodyList =
+  UserCurrentListReposResponseBodyList as any as S.Schema<UserCurrentListSubscriptionsResponseBodyList>;
 
 export type UserCurrentListSubscriptionsResponse = UserCurrentListSubscriptionsResponseBodyList;
-export const UserCurrentListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  UserCurrentListSubscriptionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UserCurrentListSubscriptionsResponse",
-}) as any as S.Schema<UserCurrentListSubscriptionsResponse>;
+export const UserCurrentListSubscriptionsResponse =
+  UserCurrentListReposResponse as any as S.Schema<UserCurrentListSubscriptionsResponse>;
 
 export interface UserCurrentPostGPGKeyRequest {
   /** An armored GPG key to add */
@@ -1676,9 +1632,8 @@ export const UserCurrentPutFollowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentPutFollowRequest>;
 
 export interface UserCurrentPutFollowResponse {}
-export const UserCurrentPutFollowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserCurrentPutFollowResponse",
-}) as any as S.Schema<UserCurrentPutFollowResponse>;
+export const UserCurrentPutFollowResponse =
+  CreateUserVariableResponse as any as S.Schema<UserCurrentPutFollowResponse>;
 
 export interface UserCurrentPutStarRequest {
   /** owner of the repo to star */
@@ -1696,9 +1651,8 @@ export const UserCurrentPutStarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserCurrentPutStarRequest>;
 
 export interface UserCurrentPutStarResponse {}
-export const UserCurrentPutStarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserCurrentPutStarResponse",
-}) as any as S.Schema<UserCurrentPutStarResponse>;
+export const UserCurrentPutStarResponse =
+  CreateUserVariableResponse as any as S.Schema<UserCurrentPutStarResponse>;
 
 export interface UserCurrentTrackedTimesRequest {
   /** page number of results to return (1-based) */
@@ -1754,9 +1708,7 @@ export const IssueAssetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IssueAssetsList>;
 
 export type IssueAssigneesList = Array<User>;
-export const IssueAssigneesList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<IssueAssigneesList>;
+export const IssueAssigneesList = SearchUserResponseDataList as any as S.Schema<IssueAssigneesList>;
 
 /** Label a label to an issue or a pr */
 export interface Label {
@@ -1938,9 +1890,8 @@ export const UserDeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserDeleteAccessTokenRequest>;
 
 export interface UserDeleteAccessTokenResponse {}
-export const UserDeleteAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserDeleteAccessTokenResponse",
-}) as any as S.Schema<UserDeleteAccessTokenResponse>;
+export const UserDeleteAccessTokenResponse =
+  CreateUserVariableResponse as any as S.Schema<UserDeleteAccessTokenResponse>;
 
 export interface UserDeleteAvatarRequest {}
 export const UserDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1948,15 +1899,13 @@ export const UserDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserDeleteAvatarRequest" }) as any as S.Schema<UserDeleteAvatarRequest>;
 
 export interface UserDeleteAvatarResponse {}
-export const UserDeleteAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserDeleteAvatarResponse",
-}) as any as S.Schema<UserDeleteAvatarResponse>;
+export const UserDeleteAvatarResponse =
+  CreateUserVariableResponse as any as S.Schema<UserDeleteAvatarResponse>;
 
 /** email addresses to delete */
 export type UserDeleteEmailRequestEmailsList = Array<string>;
-export const UserDeleteEmailRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserDeleteEmailRequestEmailsList>;
+export const UserDeleteEmailRequestEmailsList =
+  ActionRunnerLabelsList as any as S.Schema<UserDeleteEmailRequestEmailsList>;
 
 export interface UserDeleteEmailRequest {
   /** email addresses to delete */
@@ -1969,9 +1918,8 @@ export const UserDeleteEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserDeleteEmailRequest" }) as any as S.Schema<UserDeleteEmailRequest>;
 
 export interface UserDeleteEmailResponse {}
-export const UserDeleteEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserDeleteEmailResponse",
-}) as any as S.Schema<UserDeleteEmailResponse>;
+export const UserDeleteEmailResponse =
+  CreateUserVariableResponse as any as S.Schema<UserDeleteEmailResponse>;
 
 export interface UserDeleteHookRequest {
   /** id of the hook to delete */
@@ -1984,9 +1932,8 @@ export const UserDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserDeleteHookRequest" }) as any as S.Schema<UserDeleteHookRequest>;
 
 export interface UserDeleteHookResponse {}
-export const UserDeleteHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserDeleteHookResponse",
-}) as any as S.Schema<UserDeleteHookResponse>;
+export const UserDeleteHookResponse =
+  CreateUserVariableResponse as any as S.Schema<UserDeleteHookResponse>;
 
 export interface UserDeleteOAuth2ApplicationRequest {
   /** token to be deleted */
@@ -2001,22 +1948,16 @@ export const UserDeleteOAuth2ApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserDeleteOAuth2ApplicationRequest>;
 
 export interface UserDeleteOAuth2ApplicationResponse {}
-export const UserDeleteOAuth2ApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserDeleteOAuth2ApplicationResponse",
-}) as any as S.Schema<UserDeleteOAuth2ApplicationResponse>;
+export const UserDeleteOAuth2ApplicationResponse =
+  FollowUserCurrentActivityPubResponse as any as S.Schema<UserDeleteOAuth2ApplicationResponse>;
 
 export type UserEditHookRequestConfigMap = { [key: string]: string | undefined };
-export const UserEditHookRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserEditHookRequestConfigMap>;
+export const UserEditHookRequestConfigMap =
+  CreateHookOptionConfig as any as S.Schema<UserEditHookRequestConfigMap>;
 
 export type UserEditHookRequestEventsList = Array<string>;
-export const UserEditHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserEditHookRequestEventsList>;
+export const UserEditHookRequestEventsList =
+  ActionRunnerLabelsList as any as S.Schema<UserEditHookRequestEventsList>;
 
 export interface UserEditHookRequest {
   /** id of the hook to update */
@@ -2135,9 +2076,8 @@ export const UserGetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Subjects the rule affects */
 export type QuotaRuleInfoSubjectsList = Array<string>;
-export const QuotaRuleInfoSubjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuotaRuleInfoSubjectsList>;
+export const QuotaRuleInfoSubjectsList =
+  ActionRunnerLabelsList as any as S.Schema<QuotaRuleInfoSubjectsList>;
 
 /** QuotaRuleInfo contains information about a quota rule */
 export interface QuotaRuleInfo {
@@ -2386,9 +2326,7 @@ export const UserListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
-export const CommentAssetsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<CommentAssetsList>;
+export const CommentAssetsList = IssueAssetsList as any as S.Schema<CommentAssetsList>;
 
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
@@ -2551,14 +2489,12 @@ export const UserListEmailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListEmailsRequest" }) as any as S.Schema<UserListEmailsRequest>;
 
 export type UserListEmailsResponseBodyList = Array<Email>;
-export const UserListEmailsResponseBodyList = /*@__PURE__*/ S.Array(
-  Email,
-) as any as S.Schema<UserListEmailsResponseBodyList>;
+export const UserListEmailsResponseBodyList =
+  UserAddEmailResponseBodyList as any as S.Schema<UserListEmailsResponseBodyList>;
 
 export type UserListEmailsResponse = UserListEmailsResponseBodyList;
-export const UserListEmailsResponse = /*@__PURE__*/ S.suspend(() =>
-  UserListEmailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UserListEmailsResponse" }) as any as S.Schema<UserListEmailsResponse>;
+export const UserListEmailsResponse =
+  UserAddEmailResponse as any as S.Schema<UserListEmailsResponse>;
 
 export interface UserListFollowersRequest {
   /** username of user */
@@ -2577,16 +2513,12 @@ export const UserListFollowersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListFollowersRequest" }) as any as S.Schema<UserListFollowersRequest>;
 
 export type UserListFollowersResponseBodyList = Array<User>;
-export const UserListFollowersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UserListFollowersResponseBodyList>;
+export const UserListFollowersResponseBodyList =
+  SearchUserResponseDataList as any as S.Schema<UserListFollowersResponseBodyList>;
 
 export type UserListFollowersResponse = UserListFollowersResponseBodyList;
-export const UserListFollowersResponse = /*@__PURE__*/ S.suspend(() =>
-  UserListFollowersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UserListFollowersResponse",
-}) as any as S.Schema<UserListFollowersResponse>;
+export const UserListFollowersResponse =
+  UserCurrentListFollowersResponse as any as S.Schema<UserListFollowersResponse>;
 
 export interface UserListFollowingRequest {
   /** username of user */
@@ -2605,16 +2537,12 @@ export const UserListFollowingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListFollowingRequest" }) as any as S.Schema<UserListFollowingRequest>;
 
 export type UserListFollowingResponseBodyList = Array<User>;
-export const UserListFollowingResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UserListFollowingResponseBodyList>;
+export const UserListFollowingResponseBodyList =
+  SearchUserResponseDataList as any as S.Schema<UserListFollowingResponseBodyList>;
 
 export type UserListFollowingResponse = UserListFollowingResponseBodyList;
-export const UserListFollowingResponse = /*@__PURE__*/ S.suspend(() =>
-  UserListFollowingResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UserListFollowingResponse",
-}) as any as S.Schema<UserListFollowingResponse>;
+export const UserListFollowingResponse =
+  UserCurrentListFollowersResponse as any as S.Schema<UserListFollowingResponse>;
 
 export interface UserListGPGKeysRequest {
   /** username of user */
@@ -2633,9 +2561,8 @@ export const UserListGPGKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListGPGKeysRequest" }) as any as S.Schema<UserListGPGKeysRequest>;
 
 export type UserListGPGKeysResponseBodyList = Array<GPGKey>;
-export const UserListGPGKeysResponseBodyList = /*@__PURE__*/ S.Array(
-  GPGKey,
-) as any as S.Schema<UserListGPGKeysResponseBodyList>;
+export const UserListGPGKeysResponseBodyList =
+  UserCurrentListGPGKeysResponseBodyList as any as S.Schema<UserListGPGKeysResponseBodyList>;
 
 export type UserListGPGKeysResponse = UserListGPGKeysResponseBodyList;
 export const UserListGPGKeysResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2685,9 +2612,8 @@ export const UserListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListKeysRequest" }) as any as S.Schema<UserListKeysRequest>;
 
 export type UserListKeysResponseBodyList = Array<PublicKey>;
-export const UserListKeysResponseBodyList = /*@__PURE__*/ S.Array(
-  PublicKey,
-) as any as S.Schema<UserListKeysResponseBodyList>;
+export const UserListKeysResponseBodyList =
+  UserCurrentListKeysResponseBodyList as any as S.Schema<UserListKeysResponseBodyList>;
 
 export type UserListKeysResponse = UserListKeysResponseBodyList;
 export const UserListKeysResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2871,9 +2797,8 @@ export const UserListReposRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListReposRequest" }) as any as S.Schema<UserListReposRequest>;
 
 export type UserListReposResponseBodyList = Array<Repository>;
-export const UserListReposResponseBodyList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<UserListReposResponseBodyList>;
+export const UserListReposResponseBodyList =
+  UserCurrentListReposResponseBodyList as any as S.Schema<UserListReposResponseBodyList>;
 
 export type UserListReposResponse = UserListReposResponseBodyList;
 export const UserListReposResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2897,14 +2822,12 @@ export const UserListStarredRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListStarredRequest" }) as any as S.Schema<UserListStarredRequest>;
 
 export type UserListStarredResponseBodyList = Array<Repository>;
-export const UserListStarredResponseBodyList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<UserListStarredResponseBodyList>;
+export const UserListStarredResponseBodyList =
+  UserCurrentListReposResponseBodyList as any as S.Schema<UserListStarredResponseBodyList>;
 
 export type UserListStarredResponse = UserListStarredResponseBodyList;
-export const UserListStarredResponse = /*@__PURE__*/ S.suspend(() =>
-  UserListStarredResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UserListStarredResponse" }) as any as S.Schema<UserListStarredResponse>;
+export const UserListStarredResponse =
+  UserListReposResponse as any as S.Schema<UserListStarredResponse>;
 
 export interface UserListSubscriptionsRequest {
   /** username of the user */
@@ -2925,16 +2848,12 @@ export const UserListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserListSubscriptionsRequest>;
 
 export type UserListSubscriptionsResponseBodyList = Array<Repository>;
-export const UserListSubscriptionsResponseBodyList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<UserListSubscriptionsResponseBodyList>;
+export const UserListSubscriptionsResponseBodyList =
+  UserCurrentListReposResponseBodyList as any as S.Schema<UserListSubscriptionsResponseBodyList>;
 
 export type UserListSubscriptionsResponse = UserListSubscriptionsResponseBodyList;
-export const UserListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  UserListSubscriptionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UserListSubscriptionsResponse",
-}) as any as S.Schema<UserListSubscriptionsResponse>;
+export const UserListSubscriptionsResponse =
+  UserCurrentListReposResponse as any as S.Schema<UserListSubscriptionsResponse>;
 
 export interface UserListTeamsRequest {
   /** page number of results to return (1-based) */
@@ -2950,9 +2869,8 @@ export const UserListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserListTeamsRequest" }) as any as S.Schema<UserListTeamsRequest>;
 
 export type UserListTeamsResponseBodyList = Array<Team>;
-export const UserListTeamsResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<UserListTeamsResponseBodyList>;
+export const UserListTeamsResponseBodyList =
+  RepoTransferTeamsList as any as S.Schema<UserListTeamsResponseBodyList>;
 
 export type UserListTeamsResponse = UserListTeamsResponseBodyList;
 export const UserListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2971,15 +2889,13 @@ export const UserSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-export const ActionRunJobNeedsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobNeedsList>;
+export const ActionRunJobNeedsList =
+  ActionRunnerLabelsList as any as S.Schema<ActionRunJobNeedsList>;
 
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-export const ActionRunJobRunsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobRunsOnList>;
+export const ActionRunJobRunsOnList =
+  ActionRunnerLabelsList as any as S.Schema<ActionRunJobRunsOnList>;
 
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
@@ -3045,14 +2961,12 @@ export const UserUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserUpdateAvatarRequest" }) as any as S.Schema<UserUpdateAvatarRequest>;
 
 export interface UserUpdateAvatarResponse {}
-export const UserUpdateAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserUpdateAvatarResponse",
-}) as any as S.Schema<UserUpdateAvatarResponse>;
+export const UserUpdateAvatarResponse =
+  CreateUserVariableResponse as any as S.Schema<UserUpdateAvatarResponse>;
 
 export type UserUpdateOAuth2ApplicationRequestRedirectUrisList = Array<string>;
-export const UserUpdateOAuth2ApplicationRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserUpdateOAuth2ApplicationRequestRedirectUrisList>;
+export const UserUpdateOAuth2ApplicationRequestRedirectUrisList =
+  ActionRunnerLabelsList as any as S.Schema<UserUpdateOAuth2ApplicationRequestRedirectUrisList>;
 
 export interface UserUpdateOAuth2ApplicationRequest {
   /** application to be updated */

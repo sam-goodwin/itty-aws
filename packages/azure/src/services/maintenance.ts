@@ -248,26 +248,22 @@ export const ConfigurationAssignmentFilterPropertiesResourceTypesList = /*@__PUR
 
 /** List of allowed resource groups. */
 export type ConfigurationAssignmentFilterPropertiesResourceGroupsList = Array<string>;
-export const ConfigurationAssignmentFilterPropertiesResourceGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationAssignmentFilterPropertiesResourceGroupsList>;
+export const ConfigurationAssignmentFilterPropertiesResourceGroupsList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesResourceGroupsList>;
 
 /** List of allowed operating systems. */
 export type ConfigurationAssignmentFilterPropertiesOsTypesList = Array<string>;
-export const ConfigurationAssignmentFilterPropertiesOsTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationAssignmentFilterPropertiesOsTypesList>;
+export const ConfigurationAssignmentFilterPropertiesOsTypesList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesOsTypesList>;
 
 /** List of locations to scope the query to. */
 export type ConfigurationAssignmentFilterPropertiesLocationsList = Array<string>;
-export const ConfigurationAssignmentFilterPropertiesLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationAssignmentFilterPropertiesLocationsList>;
+export const ConfigurationAssignmentFilterPropertiesLocationsList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesLocationsList>;
 
 export type TagSettingsPropertiesTagsValueList = Array<string>;
-export const TagSettingsPropertiesTagsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TagSettingsPropertiesTagsValueList>;
+export const TagSettingsPropertiesTagsValueList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<TagSettingsPropertiesTagsValueList>;
 
 /** Dictionary of tags with its list of values. */
 export type TagSettingsPropertiesTagsMap = {
@@ -1307,10 +1303,8 @@ export const DeleteMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ S.Rec
 export type MaintenanceConfigurationPropertiesExtensionPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const MaintenanceConfigurationPropertiesExtensionPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaintenanceConfigurationPropertiesExtensionPropertiesMap>;
+export const MaintenanceConfigurationPropertiesExtensionPropertiesMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationPropertiesExtensionPropertiesMap>;
 
 /** Gets or sets maintenanceScope of the configuration */
 export type MaintenanceConfigurationPropertiesMaintenanceScope =
@@ -1356,21 +1350,18 @@ export const InputPatchConfigurationRebootSetting = S.String;
 
 /** Windows KBID to be excluded for patching. */
 export type InputWindowsParametersKbNumbersToExcludeList = Array<string>;
-export const InputWindowsParametersKbNumbersToExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InputWindowsParametersKbNumbersToExcludeList>;
+export const InputWindowsParametersKbNumbersToExcludeList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersKbNumbersToExcludeList>;
 
 /** Windows KBID to be included for patching. */
 export type InputWindowsParametersKbNumbersToIncludeList = Array<string>;
-export const InputWindowsParametersKbNumbersToIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InputWindowsParametersKbNumbersToIncludeList>;
+export const InputWindowsParametersKbNumbersToIncludeList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersKbNumbersToIncludeList>;
 
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'. */
 export type InputWindowsParametersClassificationsToIncludeList = Array<string>;
-export const InputWindowsParametersClassificationsToIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InputWindowsParametersClassificationsToIncludeList>;
+export const InputWindowsParametersClassificationsToIncludeList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersClassificationsToIncludeList>;
 
 /** Input properties for patching a Windows machine. */
 export interface InputWindowsParameters {
@@ -1394,21 +1385,18 @@ export const InputWindowsParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Package names to be excluded for patching. */
 export type InputLinuxParametersPackageNameMasksToExcludeList = Array<string>;
-export const InputLinuxParametersPackageNameMasksToExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InputLinuxParametersPackageNameMasksToExcludeList>;
+export const InputLinuxParametersPackageNameMasksToExcludeList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersPackageNameMasksToExcludeList>;
 
 /** Package names to be included for patching. */
 export type InputLinuxParametersPackageNameMasksToIncludeList = Array<string>;
-export const InputLinuxParametersPackageNameMasksToIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InputLinuxParametersPackageNameMasksToIncludeList>;
+export const InputLinuxParametersPackageNameMasksToIncludeList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersPackageNameMasksToIncludeList>;
 
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'. */
 export type InputLinuxParametersClassificationsToIncludeList = Array<string>;
-export const InputLinuxParametersClassificationsToIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InputLinuxParametersClassificationsToIncludeList>;
+export const InputLinuxParametersClassificationsToIncludeList =
+  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersClassificationsToIncludeList>;
 
 /** Input properties for patching a Linux machine. */
 export interface InputLinuxParameters {
@@ -2198,10 +2186,8 @@ export const GetMaintenanceConfigurationResponseSystemData = /*@__PURE__*/ S.sus
 
 /** Gets or sets tags of the resource */
 export type GetMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetMaintenanceConfigurationResponseTagsMap>;
+export const GetMaintenanceConfigurationResponseTagsMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<GetMaintenanceConfigurationResponseTagsMap>;
 
 export interface GetMaintenanceConfigurationResponse {
   /** Fully qualified identifier of the resource */
@@ -2305,10 +2291,8 @@ export const GetPublicMaintenanceConfigurationResponseSystemData = /*@__PURE__*/
 export type GetPublicMaintenanceConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetPublicMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPublicMaintenanceConfigurationResponseTagsMap>;
+export const GetPublicMaintenanceConfigurationResponseTagsMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<GetPublicMaintenanceConfigurationResponseTagsMap>;
 
 export interface GetPublicMaintenanceConfigurationResponse {
   /** Fully qualified identifier of the resource */
@@ -2581,10 +2565,8 @@ export const MaintenanceConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationTagsMap = { [key: string]: string | undefined };
-export const MaintenanceConfigurationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaintenanceConfigurationTagsMap>;
+export const MaintenanceConfigurationTagsMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationTagsMap>;
 
 /** Maintenance configuration record type */
 export interface MaintenanceConfiguration {
@@ -2888,10 +2870,8 @@ export const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type MaintenanceConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MaintenanceConfigurationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequestTagsMap>;
+export const MaintenanceConfigurationsCreateOrUpdateRequestTagsMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequestTagsMap>;
 
 export interface MaintenanceConfigurationsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2980,10 +2960,8 @@ export const MaintenanceConfigurationsCreateOrUpdateResponseSystemData = /*@__PU
 export type MaintenanceConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const MaintenanceConfigurationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseTagsMap>;
+export const MaintenanceConfigurationsCreateOrUpdateResponseTagsMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseTagsMap>;
 
 export interface MaintenanceConfigurationsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
@@ -3232,10 +3210,8 @@ export const UpdateConfigurationAssignmentsForSubscriptionResponse = /*@__PURE__
 
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMaintenanceConfigurationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMaintenanceConfigurationRequestTagsMap>;
+export const UpdateMaintenanceConfigurationRequestTagsMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<UpdateMaintenanceConfigurationRequestTagsMap>;
 
 export interface UpdateMaintenanceConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -3319,10 +3295,8 @@ export const UpdateMaintenanceConfigurationResponseSystemData = /*@__PURE__*/ S.
 
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMaintenanceConfigurationResponseTagsMap>;
+export const UpdateMaintenanceConfigurationResponseTagsMap =
+  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<UpdateMaintenanceConfigurationResponseTagsMap>;
 
 export interface UpdateMaintenanceConfigurationResponse {
   /** Fully qualified identifier of the resource */

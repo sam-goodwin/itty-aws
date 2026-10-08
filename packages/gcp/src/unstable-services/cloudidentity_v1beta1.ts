@@ -2116,11 +2116,7 @@ export interface DsaPublicKeyInfo {
   /** Key size in bits (size of parameter P). */
   keySize?: number;
 }
-export const DsaPublicKeyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keySize: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DsaPublicKeyInfo" }) as any as S.Schema<DsaPublicKeyInfo>;
+export const DsaPublicKeyInfo = RsaPublicKeyInfo as any as S.Schema<DsaPublicKeyInfo>;
 
 /** Credential for verifying signatures produced by the Identity Provider. */
 export interface IdpCredential {
@@ -3371,12 +3367,7 @@ export interface SearchGroupsResponse {
   /** The `Group` resources that match the search query. */
   groups?: GroupList;
 }
-export const SearchGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    groups: S.optional(GroupList),
-  }),
-).annotate({ identifier: "SearchGroupsResponse" }) as any as S.Schema<SearchGroupsResponse>;
+export const SearchGroupsResponse = ListGroupsResponse as any as S.Schema<SearchGroupsResponse>;
 
 export interface SearchTransitiveGroupsGroupsMembershipsRequest {
   /** [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API will search across all groups for a given member. */

@@ -244,13 +244,8 @@ export interface GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
   /** * A positive value of `adjustment` means that that the API provider wants to adjust the balance for an under-charged developer i.e. the balance of the developer will decrease. * A negative value of `adjustment` means that that the API provider wants to adjust the balance for an over-charged developer i.e. the balance of the developer will increase. NOTE: An adjustment cannot increase the balance of the developer beyond the balance as of the most recent credit. For example, if a developer's balance is updated to be $100, and they spend $10, a negative adjustment can only increase the balance of the developer to $100. */
   adjustment?: GoogleTypeMoney;
 }
-export const GoogleCloudApigeeV1AdjustDeveloperBalanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adjustment: S.optional(GoogleTypeMoney),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1AdjustDeveloperBalanceRequest",
-}) as any as S.Schema<GoogleCloudApigeeV1AdjustDeveloperBalanceRequest>;
+export const GoogleCloudApigeeV1AdjustDeveloperBalanceRequest =
+  GoogleCloudApigeeV1AdjustAppGroupBalanceRequest as any as S.Schema<GoogleCloudApigeeV1AdjustDeveloperBalanceRequest>;
 
 export interface AdjustOrganizationsDevelopersBalanceRequest {
   /** Required. Account balance for the developer. Use the following structure in your request: `organizations/{org}/developers/{developer}/balance` */
@@ -276,33 +271,21 @@ export interface GoogleCloudApigeeV1DeveloperBalanceWallet {
   /** Output only. Time at which the developer last added credit to the account in milliseconds since epoch. */
   lastCreditTime?: string;
 }
-export const GoogleCloudApigeeV1DeveloperBalanceWallet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    balance: S.optional(GoogleTypeMoney),
-    lastCreditTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1DeveloperBalanceWallet",
-}) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalanceWallet>;
+export const GoogleCloudApigeeV1DeveloperBalanceWallet =
+  GoogleCloudApigeeV1AppGroupBalanceWallet as any as S.Schema<GoogleCloudApigeeV1DeveloperBalanceWallet>;
 
 export type GoogleCloudApigeeV1DeveloperBalanceWalletList =
   Array<GoogleCloudApigeeV1DeveloperBalanceWallet>;
-export const GoogleCloudApigeeV1DeveloperBalanceWalletList = /*@__PURE__*/ S.Array(
-  GoogleCloudApigeeV1DeveloperBalanceWallet,
-) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalanceWalletList>;
+export const GoogleCloudApigeeV1DeveloperBalanceWalletList =
+  GoogleCloudApigeeV1AppGroupBalanceWalletList as any as S.Schema<GoogleCloudApigeeV1DeveloperBalanceWalletList>;
 
 /** Account balance for the developer. */
 export interface GoogleCloudApigeeV1DeveloperBalance {
   /** Output only. List of all wallets. Each individual wallet stores the account balance for a particular currency. */
   wallets?: GoogleCloudApigeeV1DeveloperBalanceWalletList;
 }
-export const GoogleCloudApigeeV1DeveloperBalance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    wallets: S.optional(GoogleCloudApigeeV1DeveloperBalanceWalletList),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1DeveloperBalance",
-}) as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>;
+export const GoogleCloudApigeeV1DeveloperBalance =
+  GoogleCloudApigeeV1AppGroupBalance as any as S.Schema<GoogleCloudApigeeV1DeveloperBalance>;
 
 export interface GoogleCloudApigeeV1FlowHook {
   /** Output only. Where in the API call flow the flow hook is invoked. Must be one of `PreProxyFlowHook`, `PostProxyFlowHook`, `PreTargetFlowHook`, or `PostTargetFlowHook`. */
@@ -1235,19 +1218,12 @@ export interface GoogleCloudApigeeV1Property {
   /** The property key */
   name?: string;
 }
-export const GoogleCloudApigeeV1Property = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1Property",
-}) as any as S.Schema<GoogleCloudApigeeV1Property>;
+export const GoogleCloudApigeeV1Property =
+  GoogleCloudApigeeV1Attribute as any as S.Schema<GoogleCloudApigeeV1Property>;
 
 export type GoogleCloudApigeeV1PropertyList = Array<GoogleCloudApigeeV1Property>;
-export const GoogleCloudApigeeV1PropertyList = /*@__PURE__*/ S.Array(
-  GoogleCloudApigeeV1Property,
-) as any as S.Schema<GoogleCloudApigeeV1PropertyList>;
+export const GoogleCloudApigeeV1PropertyList =
+  GoogleCloudApigeeV1AttributeList as any as S.Schema<GoogleCloudApigeeV1PropertyList>;
 
 /** Message for compatibility with legacy Edge specification for Java Properties object in JSON. */
 export interface GoogleCloudApigeeV1Properties {
@@ -1280,13 +1256,8 @@ export interface GoogleCloudApigeeV1MonetizationConfig {
   /** Flag that specifies whether the Monetization add-on is enabled. */
   enabled?: boolean;
 }
-export const GoogleCloudApigeeV1MonetizationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1MonetizationConfig",
-}) as any as S.Schema<GoogleCloudApigeeV1MonetizationConfig>;
+export const GoogleCloudApigeeV1MonetizationConfig =
+  GoogleCloudApigeeV1AdvancedApiOpsConfig as any as S.Schema<GoogleCloudApigeeV1MonetizationConfig>;
 
 /** Configuration for the Connectors Platform add-on. */
 export interface GoogleCloudApigeeV1ConnectorsPlatformConfig {
@@ -1339,13 +1310,8 @@ export interface GoogleCloudApigeeV1IntegrationConfig {
   /** Flag that specifies whether the Integration add-on is enabled. */
   enabled?: boolean;
 }
-export const GoogleCloudApigeeV1IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1IntegrationConfig",
-}) as any as S.Schema<GoogleCloudApigeeV1IntegrationConfig>;
+export const GoogleCloudApigeeV1IntegrationConfig =
+  GoogleCloudApigeeV1AdvancedApiOpsConfig as any as S.Schema<GoogleCloudApigeeV1IntegrationConfig>;
 
 /** Configurations of the API Security add-on. */
 export interface GoogleCloudApigeeV1ApiSecurityConfig {
@@ -2580,14 +2546,8 @@ export interface GoogleCloudApigeeV1KeyValueEntry {
   /** Resource URI that can be used to identify the scope of the key value map entries. */
   name?: string;
 }
-export const GoogleCloudApigeeV1KeyValueEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1KeyValueEntry",
-}) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>;
+export const GoogleCloudApigeeV1KeyValueEntry =
+  GoogleCloudApigeeV1Attribute as any as S.Schema<GoogleCloudApigeeV1KeyValueEntry>;
 
 export interface CreateOrganizationsApisKeyvaluemapsEntriesRequest {
   /** Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). */
@@ -4574,14 +4534,8 @@ export interface GoogleCloudApigeeV1SecurityReportResultMetadata {
   /** Output only. Expire_time is set to 7 days after report creation. Query result will be unaccessable after this time. Example: "2021-05-04T13:38:52-07:00" */
   expires?: string;
 }
-export const GoogleCloudApigeeV1SecurityReportResultMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    self: S.optional(S.String),
-    expires: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1SecurityReportResultMetadata",
-}) as any as S.Schema<GoogleCloudApigeeV1SecurityReportResultMetadata>;
+export const GoogleCloudApigeeV1SecurityReportResultMetadata =
+  GoogleCloudApigeeV1AsyncQueryResult as any as S.Schema<GoogleCloudApigeeV1SecurityReportResultMetadata>;
 
 /** Metadata for the security report. */
 export interface GoogleCloudApigeeV1SecurityReportMetadata {
@@ -6345,14 +6299,8 @@ export interface GoogleCloudApigeeV1CreditDeveloperBalanceRequest {
   /** The amount of money to be credited. The wallet corresponding to the currency specified within `transaction_amount` will be updated. For example, if you specified `currency_code` within `transaction_amount` as "USD", then the amount would be added to the wallet which has the "USD" currency or if no such wallet exists, a new wallet will be created with the "USD" currency. */
   transactionAmount?: GoogleTypeMoney;
 }
-export const GoogleCloudApigeeV1CreditDeveloperBalanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionId: S.optional(S.String),
-    transactionAmount: S.optional(GoogleTypeMoney),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1CreditDeveloperBalanceRequest",
-}) as any as S.Schema<GoogleCloudApigeeV1CreditDeveloperBalanceRequest>;
+export const GoogleCloudApigeeV1CreditDeveloperBalanceRequest =
+  GoogleCloudApigeeV1CreditAppGroupBalanceRequest as any as S.Schema<GoogleCloudApigeeV1CreditDeveloperBalanceRequest>;
 
 export interface CreditOrganizationsDevelopersBalanceRequest {
   /** Required. Account balance for the developer. Use the following structure in your request: `organizations/{org}/developers/{developer}/balance` */
@@ -8636,13 +8584,8 @@ export interface GoogleCloudApigeeV1RuntimeApiSecurityConfig {
   /** If the API Security is enabled or not. */
   enabled?: boolean;
 }
-export const GoogleCloudApigeeV1RuntimeApiSecurityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1RuntimeApiSecurityConfig",
-}) as any as S.Schema<GoogleCloudApigeeV1RuntimeApiSecurityConfig>;
+export const GoogleCloudApigeeV1RuntimeApiSecurityConfig =
+  GoogleCloudApigeeV1AdvancedApiOpsConfig as any as S.Schema<GoogleCloudApigeeV1RuntimeApiSecurityConfig>;
 
 /** Runtime configuration for the Spec Generation add-on. All fields are proto3 primitives (bool, string, double) rather than google.protobuf.*Value wrappers because the runtime consumer deserializes the JSON via Gson field reflection with no registered type adapters. Wrapper types would serialize as JSON objects/null that Gson cannot bind to Java primitive fields. */
 export interface GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig {
@@ -9851,14 +9794,8 @@ export interface GoogleCloudApigeeV1AccessGet {
   value?: string;
   name?: string;
 }
-export const GoogleCloudApigeeV1AccessGet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1AccessGet",
-}) as any as S.Schema<GoogleCloudApigeeV1AccessGet>;
+export const GoogleCloudApigeeV1AccessGet =
+  GoogleCloudApigeeV1Attribute as any as S.Schema<GoogleCloudApigeeV1AccessGet>;
 
 /** Remove action. For example, "Remove" : { "name" : "target.name", "success" : true } */
 export interface GoogleCloudApigeeV1AccessRemove {
@@ -11401,13 +11338,8 @@ export interface GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
   /** List of resources files. */
   resourceFile?: GoogleCloudApigeeV1ResourceFileList;
 }
-export const GoogleCloudApigeeV1ListEnvironmentResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceFile: S.optional(GoogleCloudApigeeV1ResourceFileList),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1ListEnvironmentResourcesResponse",
-}) as any as S.Schema<GoogleCloudApigeeV1ListEnvironmentResourcesResponse>;
+export const GoogleCloudApigeeV1ListEnvironmentResourcesResponse =
+  GoogleCloudApigeeV1ResourceFiles as any as S.Schema<GoogleCloudApigeeV1ListEnvironmentResourcesResponse>;
 
 export interface ListHybridIssuersRequest {
   /** Required. Must be of the form `hybrid/issuers`. */
@@ -11864,9 +11796,8 @@ export const ListOrganizationsApisKeyvaluemapsEntriesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListOrganizationsApisKeyvaluemapsEntriesRequest>;
 
 export type GoogleCloudApigeeV1KeyValueEntryList = Array<GoogleCloudApigeeV1KeyValueEntry>;
-export const GoogleCloudApigeeV1KeyValueEntryList = /*@__PURE__*/ S.Array(
-  GoogleCloudApigeeV1KeyValueEntry,
-) as any as S.Schema<GoogleCloudApigeeV1KeyValueEntryList>;
+export const GoogleCloudApigeeV1KeyValueEntryList =
+  GoogleCloudApigeeV1AttributeList as any as S.Schema<GoogleCloudApigeeV1KeyValueEntryList>;
 
 /** The request structure for listing key value map keys and its corresponding values. */
 export interface GoogleCloudApigeeV1ListKeyValueEntriesResponse {
@@ -13904,13 +13835,8 @@ export interface GoogleCloudApigeeV1MoveApiProxyRequest {
   /** Optional. Resource ID of the space to move the proxy to. If unspecified, the proxy will be moved to the organization level. */
   space?: string;
 }
-export const GoogleCloudApigeeV1MoveApiProxyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    space: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1MoveApiProxyRequest",
-}) as any as S.Schema<GoogleCloudApigeeV1MoveApiProxyRequest>;
+export const GoogleCloudApigeeV1MoveApiProxyRequest =
+  GoogleCloudApigeeV1MoveApiProductRequest as any as S.Schema<GoogleCloudApigeeV1MoveApiProxyRequest>;
 
 export interface MoveOrganizationsApisRequest {
   /** Required. API proxy to move in the following format: `organizations/{org}/apis/{api}` */
@@ -13934,13 +13860,8 @@ export interface GoogleCloudApigeeV1MoveSharedFlowRequest {
   /** Optional. Resource ID of the space to move the shared flow to. If unspecified, the shared flow will be moved to the organization level. */
   space?: string;
 }
-export const GoogleCloudApigeeV1MoveSharedFlowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    space: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1MoveSharedFlowRequest",
-}) as any as S.Schema<GoogleCloudApigeeV1MoveSharedFlowRequest>;
+export const GoogleCloudApigeeV1MoveSharedFlowRequest =
+  GoogleCloudApigeeV1MoveApiProductRequest as any as S.Schema<GoogleCloudApigeeV1MoveSharedFlowRequest>;
 
 export interface MoveOrganizationsSharedflowsRequest {
   /** Required. Shared Flow to move in the following format: `organizations/{org}/sharedflows/{shared_flow}` */
@@ -14688,11 +14609,8 @@ export const ReportStatusOrganizationsInstancesRequest = /*@__PURE__*/ S.suspend
 
 /** Placeholder for future enhancements to status reporting protocol */
 export interface GoogleCloudApigeeV1ReportInstanceStatusResponse {}
-export const GoogleCloudApigeeV1ReportInstanceStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudApigeeV1ReportInstanceStatusResponse",
-}) as any as S.Schema<GoogleCloudApigeeV1ReportInstanceStatusResponse>;
+export const GoogleCloudApigeeV1ReportInstanceStatusResponse =
+  GoogleCloudApigeeV1ActivateNatAddressRequest as any as S.Schema<GoogleCloudApigeeV1ReportInstanceStatusResponse>;
 
 /** Request for SetAddonEnablement. */
 export interface GoogleCloudApigeeV1SetAddonEnablementRequest {
@@ -14951,13 +14869,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

@@ -450,10 +450,8 @@ export type RuntimeEnvironmentSecretsValue = string | redacted.Redacted<string>;
 export type RuntimeEnvironmentSecrets = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const RuntimeEnvironmentSecrets = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const RuntimeEnvironmentSecrets =
+  RuntimeEnvironmentVariables as any as S.Schema<RuntimeEnvironmentSecrets>;
 export interface CodeConfigurationValues {
   Runtime: Runtime;
   BuildCommand?: string | redacted.Redacted<string>;
@@ -878,11 +876,8 @@ export const DeleteAutoScalingConfigurationRequest = /*@__PURE__*/ S.suspend(() 
 export interface DeleteAutoScalingConfigurationResponse {
   AutoScalingConfiguration: AutoScalingConfiguration;
 }
-export const DeleteAutoScalingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoScalingConfiguration: AutoScalingConfiguration }).pipe(ns),
-).annotate({
-  identifier: "DeleteAutoScalingConfigurationResponse",
-}) as any as S.Schema<DeleteAutoScalingConfigurationResponse>;
+export const DeleteAutoScalingConfigurationResponse =
+  CreateAutoScalingConfigurationResponse as any as S.Schema<DeleteAutoScalingConfigurationResponse>;
 export interface DeleteConnectionRequest {
   ConnectionArn: string;
 }
@@ -910,11 +905,8 @@ export const DeleteObservabilityConfigurationRequest = /*@__PURE__*/ S.suspend((
 export interface DeleteObservabilityConfigurationResponse {
   ObservabilityConfiguration: ObservabilityConfiguration;
 }
-export const DeleteObservabilityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ObservabilityConfiguration: ObservabilityConfiguration }).pipe(ns),
-).annotate({
-  identifier: "DeleteObservabilityConfigurationResponse",
-}) as any as S.Schema<DeleteObservabilityConfigurationResponse>;
+export const DeleteObservabilityConfigurationResponse =
+  CreateObservabilityConfigurationResponse as any as S.Schema<DeleteObservabilityConfigurationResponse>;
 export interface DeleteServiceRequest {
   ServiceArn: string;
 }
@@ -927,9 +919,8 @@ export interface DeleteServiceResponse {
   Service: Service;
   OperationId: string;
 }
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Service: Service, OperationId: S.String }).pipe(ns),
-).annotate({ identifier: "DeleteServiceResponse" }) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  CreateServiceResponse as any as S.Schema<DeleteServiceResponse>;
 export interface DeleteVpcConnectorRequest {
   VpcConnectorArn: string;
 }
@@ -943,11 +934,8 @@ export const DeleteVpcConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVpcConnectorResponse {
   VpcConnector: VpcConnector;
 }
-export const DeleteVpcConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcConnector: VpcConnector }).pipe(ns),
-).annotate({
-  identifier: "DeleteVpcConnectorResponse",
-}) as any as S.Schema<DeleteVpcConnectorResponse>;
+export const DeleteVpcConnectorResponse =
+  CreateVpcConnectorResponse as any as S.Schema<DeleteVpcConnectorResponse>;
 export interface DeleteVpcIngressConnectionRequest {
   VpcIngressConnectionArn: string;
 }
@@ -961,11 +949,8 @@ export const DeleteVpcIngressConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVpcIngressConnectionResponse {
   VpcIngressConnection: VpcIngressConnection;
 }
-export const DeleteVpcIngressConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcIngressConnection: VpcIngressConnection }).pipe(ns),
-).annotate({
-  identifier: "DeleteVpcIngressConnectionResponse",
-}) as any as S.Schema<DeleteVpcIngressConnectionResponse>;
+export const DeleteVpcIngressConnectionResponse =
+  CreateVpcIngressConnectionResponse as any as S.Schema<DeleteVpcIngressConnectionResponse>;
 export interface DescribeAutoScalingConfigurationRequest {
   AutoScalingConfigurationArn: string;
 }
@@ -979,11 +964,8 @@ export const DescribeAutoScalingConfigurationRequest = /*@__PURE__*/ S.suspend((
 export interface DescribeAutoScalingConfigurationResponse {
   AutoScalingConfiguration: AutoScalingConfiguration;
 }
-export const DescribeAutoScalingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoScalingConfiguration: AutoScalingConfiguration }).pipe(ns),
-).annotate({
-  identifier: "DescribeAutoScalingConfigurationResponse",
-}) as any as S.Schema<DescribeAutoScalingConfigurationResponse>;
+export const DescribeAutoScalingConfigurationResponse =
+  CreateAutoScalingConfigurationResponse as any as S.Schema<DescribeAutoScalingConfigurationResponse>;
 export type DescribeCustomDomainsMaxResults = number;
 export interface DescribeCustomDomainsRequest {
   ServiceArn: string;
@@ -1032,11 +1014,8 @@ export const DescribeObservabilityConfigurationRequest = /*@__PURE__*/ S.suspend
 export interface DescribeObservabilityConfigurationResponse {
   ObservabilityConfiguration: ObservabilityConfiguration;
 }
-export const DescribeObservabilityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ObservabilityConfiguration: ObservabilityConfiguration }).pipe(ns),
-).annotate({
-  identifier: "DescribeObservabilityConfigurationResponse",
-}) as any as S.Schema<DescribeObservabilityConfigurationResponse>;
+export const DescribeObservabilityConfigurationResponse =
+  CreateObservabilityConfigurationResponse as any as S.Schema<DescribeObservabilityConfigurationResponse>;
 export interface DescribeServiceRequest {
   ServiceArn: string;
 }
@@ -1064,11 +1043,8 @@ export const DescribeVpcConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeVpcConnectorResponse {
   VpcConnector: VpcConnector;
 }
-export const DescribeVpcConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcConnector: VpcConnector }).pipe(ns),
-).annotate({
-  identifier: "DescribeVpcConnectorResponse",
-}) as any as S.Schema<DescribeVpcConnectorResponse>;
+export const DescribeVpcConnectorResponse =
+  CreateVpcConnectorResponse as any as S.Schema<DescribeVpcConnectorResponse>;
 export interface DescribeVpcIngressConnectionRequest {
   VpcIngressConnectionArn: string;
 }
@@ -1082,11 +1058,8 @@ export const DescribeVpcIngressConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeVpcIngressConnectionResponse {
   VpcIngressConnection: VpcIngressConnection;
 }
-export const DescribeVpcIngressConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcIngressConnection: VpcIngressConnection }).pipe(ns),
-).annotate({
-  identifier: "DescribeVpcIngressConnectionResponse",
-}) as any as S.Schema<DescribeVpcIngressConnectionResponse>;
+export const DescribeVpcIngressConnectionResponse =
+  CreateVpcIngressConnectionResponse as any as S.Schema<DescribeVpcIngressConnectionResponse>;
 export interface DisassociateCustomDomainRequest {
   ServiceArn: string;
   DomainName: string;
@@ -1104,16 +1077,8 @@ export interface DisassociateCustomDomainResponse {
   CustomDomain: CustomDomain;
   VpcDNSTargets: VpcDNSTarget[];
 }
-export const DisassociateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DNSTarget: S.String,
-    ServiceArn: S.String,
-    CustomDomain: CustomDomain,
-    VpcDNSTargets: VpcDNSTargetList,
-  }).pipe(ns),
-).annotate({
-  identifier: "DisassociateCustomDomainResponse",
-}) as any as S.Schema<DisassociateCustomDomainResponse>;
+export const DisassociateCustomDomainResponse =
+  AssociateCustomDomainResponse as any as S.Schema<DisassociateCustomDomainResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListAutoScalingConfigurationsRequest {
@@ -1167,15 +1132,7 @@ export interface ConnectionSummary {
   Status?: ConnectionStatus;
   CreatedAt?: Date;
 }
-export const ConnectionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectionName: S.optional(S.String),
-    ConnectionArn: S.optional(S.String),
-    ProviderType: S.optional(ProviderType),
-    Status: S.optional(ConnectionStatus),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ConnectionSummary" }) as any as S.Schema<ConnectionSummary>;
+export const ConnectionSummary = Connection as any as S.Schema<ConnectionSummary>;
 export type ConnectionSummaryList = ConnectionSummary[];
 export const ConnectionSummaryList = /*@__PURE__*/ S.Array(ConnectionSummary);
 export interface ListConnectionsResponse {
@@ -1353,7 +1310,7 @@ export const ListServicesForAutoScalingConfigurationRequest = /*@__PURE__*/ S.su
   identifier: "ListServicesForAutoScalingConfigurationRequest",
 }) as any as S.Schema<ListServicesForAutoScalingConfigurationRequest>;
 export type ServiceArnList = string[];
-export const ServiceArnList = /*@__PURE__*/ S.Array(S.String);
+export const ServiceArnList = StringList as any as S.Schema<ServiceArnList>;
 export interface ListServicesForAutoScalingConfigurationResponse {
   ServiceArnList: string[];
   NextToken?: string;
@@ -1474,9 +1431,7 @@ export interface ResumeServiceResponse {
   Service: Service;
   OperationId?: string;
 }
-export const ResumeServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Service: Service, OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ResumeServiceResponse" }) as any as S.Schema<ResumeServiceResponse>;
+export const ResumeServiceResponse = PauseServiceResponse as any as S.Schema<ResumeServiceResponse>;
 export interface StartDeploymentRequest {
   ServiceArn: string;
 }
@@ -1505,7 +1460,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1516,9 +1471,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDefaultAutoScalingConfigurationRequest {
   AutoScalingConfigurationArn: string;
 }
@@ -1532,11 +1485,8 @@ export const UpdateDefaultAutoScalingConfigurationRequest = /*@__PURE__*/ S.susp
 export interface UpdateDefaultAutoScalingConfigurationResponse {
   AutoScalingConfiguration: AutoScalingConfiguration;
 }
-export const UpdateDefaultAutoScalingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoScalingConfiguration: AutoScalingConfiguration }).pipe(ns),
-).annotate({
-  identifier: "UpdateDefaultAutoScalingConfigurationResponse",
-}) as any as S.Schema<UpdateDefaultAutoScalingConfigurationResponse>;
+export const UpdateDefaultAutoScalingConfigurationResponse =
+  CreateAutoScalingConfigurationResponse as any as S.Schema<UpdateDefaultAutoScalingConfigurationResponse>;
 export interface UpdateServiceRequest {
   ServiceArn: string;
   SourceConfiguration?: SourceConfiguration;
@@ -1561,9 +1511,8 @@ export interface UpdateServiceResponse {
   Service: Service;
   OperationId: string;
 }
-export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Service: Service, OperationId: S.String }).pipe(ns),
-).annotate({ identifier: "UpdateServiceResponse" }) as any as S.Schema<UpdateServiceResponse>;
+export const UpdateServiceResponse =
+  CreateServiceResponse as any as S.Schema<UpdateServiceResponse>;
 export interface UpdateVpcIngressConnectionRequest {
   VpcIngressConnectionArn: string;
   IngressVpcConfiguration: IngressVpcConfiguration;
@@ -1579,11 +1528,8 @@ export const UpdateVpcIngressConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcIngressConnectionResponse {
   VpcIngressConnection: VpcIngressConnection;
 }
-export const UpdateVpcIngressConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcIngressConnection: VpcIngressConnection }).pipe(ns),
-).annotate({
-  identifier: "UpdateVpcIngressConnectionResponse",
-}) as any as S.Schema<UpdateVpcIngressConnectionResponse>;
+export const UpdateVpcIngressConnectionResponse =
+  CreateVpcIngressConnectionResponse as any as S.Schema<UpdateVpcIngressConnectionResponse>;
 export type ErrorMessage = string;
 export type AssociateCustomDomainError =
   | InternalServiceErrorException

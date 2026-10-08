@@ -336,9 +336,8 @@ export const ResetAllEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetAllEventsRequest" }) as any as S.Schema<ResetAllEventsRequest>;
 
 export interface ResetAllEventsResponse {}
-export const ResetAllEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetAllEventsResponse",
-}) as any as S.Schema<ResetAllEventsResponse>;
+export const ResetAllEventsResponse =
+  HidePlayersResponse as any as S.Schema<ResetAllEventsResponse>;
 
 export interface ResetAllForAllPlayersAchievementsRequest {}
 export const ResetAllForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -374,11 +373,8 @@ export const ResetAllForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetAllForAllPlayersEventsRequest>;
 
 export interface ResetAllForAllPlayersEventsResponse {}
-export const ResetAllForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetAllForAllPlayersEventsResponse",
-}) as any as S.Schema<ResetAllForAllPlayersEventsResponse>;
+export const ResetAllForAllPlayersEventsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetAllForAllPlayersEventsResponse>;
 
 export interface ResetAllForAllPlayersScoresRequest {}
 export const ResetAllForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
@@ -394,11 +390,8 @@ export const ResetAllForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetAllForAllPlayersScoresRequest>;
 
 export interface ResetAllForAllPlayersScoresResponse {}
-export const ResetAllForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetAllForAllPlayersScoresResponse",
-}) as any as S.Schema<ResetAllForAllPlayersScoresResponse>;
+export const ResetAllForAllPlayersScoresResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetAllForAllPlayersScoresResponse>;
 
 export interface ResetAllScoresRequest {}
 export const ResetAllScoresRequest = /*@__PURE__*/ S.suspend(() =>
@@ -469,9 +462,7 @@ export const ResetEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetEventsRequest" }) as any as S.Schema<ResetEventsRequest>;
 
 export interface ResetEventsResponse {}
-export const ResetEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetEventsResponse",
-}) as any as S.Schema<ResetEventsResponse>;
+export const ResetEventsResponse = HidePlayersResponse as any as S.Schema<ResetEventsResponse>;
 
 export interface ResetForAllPlayersAchievementsRequest {
   /** The ID of the achievement used by this method. */
@@ -492,11 +483,8 @@ export const ResetForAllPlayersAchievementsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ResetForAllPlayersAchievementsRequest>;
 
 export interface ResetForAllPlayersAchievementsResponse {}
-export const ResetForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetForAllPlayersAchievementsResponse",
-}) as any as S.Schema<ResetForAllPlayersAchievementsResponse>;
+export const ResetForAllPlayersAchievementsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersAchievementsResponse>;
 
 export interface ResetForAllPlayersEventsRequest {
   /** The ID of the event. */
@@ -517,11 +505,8 @@ export const ResetForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetForAllPlayersEventsRequest>;
 
 export interface ResetForAllPlayersEventsResponse {}
-export const ResetForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetForAllPlayersEventsResponse",
-}) as any as S.Schema<ResetForAllPlayersEventsResponse>;
+export const ResetForAllPlayersEventsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersEventsResponse>;
 
 export interface ResetForAllPlayersScoresRequest {
   /** The ID of the leaderboard. */
@@ -542,11 +527,8 @@ export const ResetForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetForAllPlayersScoresRequest>;
 
 export interface ResetForAllPlayersScoresResponse {}
-export const ResetForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetForAllPlayersScoresResponse",
-}) as any as S.Schema<ResetForAllPlayersScoresResponse>;
+export const ResetForAllPlayersScoresResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersScoresResponse>;
 
 export interface AchievementResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetMultipleForAllRequest`. */
@@ -582,11 +564,8 @@ export const ResetMultipleForAllPlayersAchievementsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ResetMultipleForAllPlayersAchievementsRequest>;
 
 export interface ResetMultipleForAllPlayersAchievementsResponse {}
-export const ResetMultipleForAllPlayersAchievementsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetMultipleForAllPlayersAchievementsResponse",
-}) as any as S.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
+export const ResetMultipleForAllPlayersAchievementsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
 
 /** Multiple events reset all request. */
 export interface EventsResetMultipleForAllRequest {
@@ -623,11 +602,8 @@ export const ResetMultipleForAllPlayersEventsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ResetMultipleForAllPlayersEventsRequest>;
 
 export interface ResetMultipleForAllPlayersEventsResponse {}
-export const ResetMultipleForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetMultipleForAllPlayersEventsResponse",
-}) as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>;
+export const ResetMultipleForAllPlayersEventsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>;
 
 export interface ScoresResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#scoresResetMultipleForAllRequest`. */
@@ -663,11 +639,8 @@ export const ResetMultipleForAllPlayersScoresRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ResetMultipleForAllPlayersScoresRequest>;
 
 export interface ResetMultipleForAllPlayersScoresResponse {}
-export const ResetMultipleForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetMultipleForAllPlayersScoresResponse",
-}) as any as S.Schema<ResetMultipleForAllPlayersScoresResponse>;
+export const ResetMultipleForAllPlayersScoresResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersScoresResponse>;
 
 export interface ResetScoresRequest {
   /** The ID of the leaderboard. */
@@ -705,9 +678,7 @@ export const UnhidePlayersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnhidePlayersRequest" }) as any as S.Schema<UnhidePlayersRequest>;
 
 export interface UnhidePlayersResponse {}
-export const UnhidePlayersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnhidePlayersResponse",
-}) as any as S.Schema<UnhidePlayersResponse>;
+export const UnhidePlayersResponse = HidePlayersResponse as any as S.Schema<UnhidePlayersResponse>;
 
 export type HidePlayersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console. */

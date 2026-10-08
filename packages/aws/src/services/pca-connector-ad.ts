@@ -260,12 +260,12 @@ export const CertificateValidity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ValidityPeriod: ValidityPeriod, RenewalPeriod: ValidityPeriod }),
 ).annotate({ identifier: "CertificateValidity" }) as any as S.Schema<CertificateValidity>;
 export type TemplateNameList = string[];
-export const TemplateNameList = /*@__PURE__*/ S.Array(S.String);
+export const TemplateNameList = SecurityGroupIdList as any as S.Schema<TemplateNameList>;
 export type KeySpec = "KEY_EXCHANGE" | "SIGNATURE" | (string & {});
 export const KeySpec = S.String;
 
 export type CryptoProvidersList = string[];
-export const CryptoProvidersList = /*@__PURE__*/ S.Array(S.String);
+export const CryptoProvidersList = SecurityGroupIdList as any as S.Schema<CryptoProvidersList>;
 export interface PrivateKeyAttributesV2 {
   MinimalKeyLength: number;
   KeySpec: KeySpec;
@@ -560,15 +560,7 @@ export interface EnrollmentFlagsV3 {
   NoSecurityExtension?: boolean;
   EnableKeyReuseOnNtTokenKeysetStorageFull?: boolean;
 }
-export const EnrollmentFlagsV3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IncludeSymmetricAlgorithms: S.optional(S.Boolean),
-    UserInteractionRequired: S.optional(S.Boolean),
-    RemoveInvalidCertificateFromPersonalStore: S.optional(S.Boolean),
-    NoSecurityExtension: S.optional(S.Boolean),
-    EnableKeyReuseOnNtTokenKeysetStorageFull: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "EnrollmentFlagsV3" }) as any as S.Schema<EnrollmentFlagsV3>;
+export const EnrollmentFlagsV3 = EnrollmentFlagsV2 as any as S.Schema<EnrollmentFlagsV3>;
 export interface SubjectNameFlagsV3 {
   SanRequireDomainDns?: boolean;
   SanRequireSpn?: boolean;
@@ -581,27 +573,12 @@ export interface SubjectNameFlagsV3 {
   RequireCommonName?: boolean;
   RequireDirectoryPath?: boolean;
 }
-export const SubjectNameFlagsV3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SanRequireDomainDns: S.optional(S.Boolean),
-    SanRequireSpn: S.optional(S.Boolean),
-    SanRequireDirectoryGuid: S.optional(S.Boolean),
-    SanRequireUpn: S.optional(S.Boolean),
-    SanRequireEmail: S.optional(S.Boolean),
-    SanRequireDns: S.optional(S.Boolean),
-    RequireDnsAsCn: S.optional(S.Boolean),
-    RequireEmail: S.optional(S.Boolean),
-    RequireCommonName: S.optional(S.Boolean),
-    RequireDirectoryPath: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SubjectNameFlagsV3" }) as any as S.Schema<SubjectNameFlagsV3>;
+export const SubjectNameFlagsV3 = SubjectNameFlagsV2 as any as S.Schema<SubjectNameFlagsV3>;
 export interface GeneralFlagsV3 {
   AutoEnrollment?: boolean;
   MachineType?: boolean;
 }
-export const GeneralFlagsV3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoEnrollment: S.optional(S.Boolean), MachineType: S.optional(S.Boolean) }),
-).annotate({ identifier: "GeneralFlagsV3" }) as any as S.Schema<GeneralFlagsV3>;
+export const GeneralFlagsV3 = GeneralFlagsV2 as any as S.Schema<GeneralFlagsV3>;
 export type HashAlgorithm = "SHA256" | "SHA384" | "SHA512" | (string & {});
 export const HashAlgorithm = S.String;
 
@@ -609,9 +586,7 @@ export interface ExtensionsV3 {
   KeyUsage: KeyUsage;
   ApplicationPolicies?: ApplicationPolicies;
 }
-export const ExtensionsV3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KeyUsage: KeyUsage, ApplicationPolicies: S.optional(ApplicationPolicies) }),
-).annotate({ identifier: "ExtensionsV3" }) as any as S.Schema<ExtensionsV3>;
+export const ExtensionsV3 = ExtensionsV2 as any as S.Schema<ExtensionsV3>;
 export interface TemplateV3 {
   CertificateValidity: CertificateValidity;
   SupersededTemplates?: string[];
@@ -684,15 +659,7 @@ export interface EnrollmentFlagsV4 {
   NoSecurityExtension?: boolean;
   EnableKeyReuseOnNtTokenKeysetStorageFull?: boolean;
 }
-export const EnrollmentFlagsV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IncludeSymmetricAlgorithms: S.optional(S.Boolean),
-    UserInteractionRequired: S.optional(S.Boolean),
-    RemoveInvalidCertificateFromPersonalStore: S.optional(S.Boolean),
-    NoSecurityExtension: S.optional(S.Boolean),
-    EnableKeyReuseOnNtTokenKeysetStorageFull: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "EnrollmentFlagsV4" }) as any as S.Schema<EnrollmentFlagsV4>;
+export const EnrollmentFlagsV4 = EnrollmentFlagsV2 as any as S.Schema<EnrollmentFlagsV4>;
 export interface SubjectNameFlagsV4 {
   SanRequireDomainDns?: boolean;
   SanRequireSpn?: boolean;
@@ -705,34 +672,17 @@ export interface SubjectNameFlagsV4 {
   RequireCommonName?: boolean;
   RequireDirectoryPath?: boolean;
 }
-export const SubjectNameFlagsV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SanRequireDomainDns: S.optional(S.Boolean),
-    SanRequireSpn: S.optional(S.Boolean),
-    SanRequireDirectoryGuid: S.optional(S.Boolean),
-    SanRequireUpn: S.optional(S.Boolean),
-    SanRequireEmail: S.optional(S.Boolean),
-    SanRequireDns: S.optional(S.Boolean),
-    RequireDnsAsCn: S.optional(S.Boolean),
-    RequireEmail: S.optional(S.Boolean),
-    RequireCommonName: S.optional(S.Boolean),
-    RequireDirectoryPath: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SubjectNameFlagsV4" }) as any as S.Schema<SubjectNameFlagsV4>;
+export const SubjectNameFlagsV4 = SubjectNameFlagsV2 as any as S.Schema<SubjectNameFlagsV4>;
 export interface GeneralFlagsV4 {
   AutoEnrollment?: boolean;
   MachineType?: boolean;
 }
-export const GeneralFlagsV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoEnrollment: S.optional(S.Boolean), MachineType: S.optional(S.Boolean) }),
-).annotate({ identifier: "GeneralFlagsV4" }) as any as S.Schema<GeneralFlagsV4>;
+export const GeneralFlagsV4 = GeneralFlagsV2 as any as S.Schema<GeneralFlagsV4>;
 export interface ExtensionsV4 {
   KeyUsage: KeyUsage;
   ApplicationPolicies?: ApplicationPolicies;
 }
-export const ExtensionsV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KeyUsage: KeyUsage, ApplicationPolicies: S.optional(ApplicationPolicies) }),
-).annotate({ identifier: "ExtensionsV4" }) as any as S.Schema<ExtensionsV4>;
+export const ExtensionsV4 = ExtensionsV2 as any as S.Schema<ExtensionsV4>;
 export interface TemplateV4 {
   CertificateValidity: CertificateValidity;
   SupersededTemplates?: string[];
@@ -829,11 +779,8 @@ export const CreateTemplateGroupAccessControlEntryRequest = /*@__PURE__*/ S.susp
   identifier: "CreateTemplateGroupAccessControlEntryRequest",
 }) as any as S.Schema<CreateTemplateGroupAccessControlEntryRequest>;
 export interface CreateTemplateGroupAccessControlEntryResponse {}
-export const CreateTemplateGroupAccessControlEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateTemplateGroupAccessControlEntryResponse",
-}) as any as S.Schema<CreateTemplateGroupAccessControlEntryResponse>;
+export const CreateTemplateGroupAccessControlEntryResponse =
+  CreateServicePrincipalNameResponse as any as S.Schema<CreateTemplateGroupAccessControlEntryResponse>;
 export interface DeleteConnectorRequest {
   ConnectorArn: string;
 }
@@ -873,11 +820,8 @@ export const DeleteDirectoryRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDirectoryRegistrationRequest",
 }) as any as S.Schema<DeleteDirectoryRegistrationRequest>;
 export interface DeleteDirectoryRegistrationResponse {}
-export const DeleteDirectoryRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDirectoryRegistrationResponse",
-}) as any as S.Schema<DeleteDirectoryRegistrationResponse>;
+export const DeleteDirectoryRegistrationResponse =
+  CreateServicePrincipalNameResponse as any as S.Schema<DeleteDirectoryRegistrationResponse>;
 export interface DeleteServicePrincipalNameRequest {
   DirectoryRegistrationArn: string;
   ConnectorArn: string;
@@ -903,11 +847,8 @@ export const DeleteServicePrincipalNameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteServicePrincipalNameRequest",
 }) as any as S.Schema<DeleteServicePrincipalNameRequest>;
 export interface DeleteServicePrincipalNameResponse {}
-export const DeleteServicePrincipalNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServicePrincipalNameResponse",
-}) as any as S.Schema<DeleteServicePrincipalNameResponse>;
+export const DeleteServicePrincipalNameResponse =
+  CreateServicePrincipalNameResponse as any as S.Schema<DeleteServicePrincipalNameResponse>;
 export interface DeleteTemplateRequest {
   TemplateArn: string;
 }
@@ -924,9 +865,8 @@ export const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTemplateRequest" }) as any as S.Schema<DeleteTemplateRequest>;
 export interface DeleteTemplateResponse {}
-export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTemplateResponse",
-}) as any as S.Schema<DeleteTemplateResponse>;
+export const DeleteTemplateResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteTemplateResponse>;
 export interface DeleteTemplateGroupAccessControlEntryRequest {
   TemplateArn: string;
   GroupSecurityIdentifier: string;
@@ -952,11 +892,8 @@ export const DeleteTemplateGroupAccessControlEntryRequest = /*@__PURE__*/ S.susp
   identifier: "DeleteTemplateGroupAccessControlEntryRequest",
 }) as any as S.Schema<DeleteTemplateGroupAccessControlEntryRequest>;
 export interface DeleteTemplateGroupAccessControlEntryResponse {}
-export const DeleteTemplateGroupAccessControlEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTemplateGroupAccessControlEntryResponse",
-}) as any as S.Schema<DeleteTemplateGroupAccessControlEntryResponse>;
+export const DeleteTemplateGroupAccessControlEntryResponse =
+  CreateServicePrincipalNameResponse as any as S.Schema<DeleteTemplateGroupAccessControlEntryResponse>;
 export interface GetConnectorRequest {
   ConnectorArn: string;
 }
@@ -1274,19 +1211,7 @@ export interface ConnectorSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const ConnectorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CertificateAuthorityArn: S.optional(S.String),
-    CertificateEnrollmentPolicyServerEndpoint: S.optional(S.String),
-    DirectoryId: S.optional(S.String),
-    VpcInformation: S.optional(VpcInformation),
-    Status: S.optional(ConnectorStatus),
-    StatusReason: S.optional(ConnectorStatusReason),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ConnectorSummary" }) as any as S.Schema<ConnectorSummary>;
+export const ConnectorSummary = Connector as any as S.Schema<ConnectorSummary>;
 export type ConnectorList = ConnectorSummary[];
 export const ConnectorList = /*@__PURE__*/ S.Array(ConnectorSummary);
 export interface ListConnectorsResponse {
@@ -1503,20 +1428,7 @@ export interface TemplateSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const TemplateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ConnectorArn: S.optional(S.String),
-    Definition: S.optional(TemplateDefinition),
-    Name: S.optional(S.String),
-    ObjectIdentifier: S.optional(S.String),
-    PolicySchema: S.optional(S.Number),
-    Status: S.optional(TemplateStatus),
-    Revision: S.optional(TemplateRevision),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "TemplateSummary" }) as any as S.Schema<TemplateSummary>;
+export const TemplateSummary = Template as any as S.Schema<TemplateSummary>;
 export type TemplateList = TemplateSummary[];
 export const TemplateList = /*@__PURE__*/ S.Array(TemplateSummary);
 export interface ListTemplatesResponse {
@@ -1536,11 +1448,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteConnectorResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SecurityGroupIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1554,9 +1464,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteConnectorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateTemplateRequest {
   TemplateArn: string;
   Definition?: TemplateDefinition;
@@ -1579,9 +1488,8 @@ export const UpdateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateTemplateRequest" }) as any as S.Schema<UpdateTemplateRequest>;
 export interface UpdateTemplateResponse {}
-export const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTemplateResponse",
-}) as any as S.Schema<UpdateTemplateResponse>;
+export const UpdateTemplateResponse =
+  DeleteConnectorResponse as any as S.Schema<UpdateTemplateResponse>;
 export interface UpdateTemplateGroupAccessControlEntryRequest {
   TemplateArn: string;
   GroupSecurityIdentifier: string;
@@ -1611,11 +1519,8 @@ export const UpdateTemplateGroupAccessControlEntryRequest = /*@__PURE__*/ S.susp
   identifier: "UpdateTemplateGroupAccessControlEntryRequest",
 }) as any as S.Schema<UpdateTemplateGroupAccessControlEntryRequest>;
 export interface UpdateTemplateGroupAccessControlEntryResponse {}
-export const UpdateTemplateGroupAccessControlEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateTemplateGroupAccessControlEntryResponse",
-}) as any as S.Schema<UpdateTemplateGroupAccessControlEntryResponse>;
+export const UpdateTemplateGroupAccessControlEntryResponse =
+  CreateServicePrincipalNameResponse as any as S.Schema<UpdateTemplateGroupAccessControlEntryResponse>;
 export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "INVALID_CA_SUBJECT"

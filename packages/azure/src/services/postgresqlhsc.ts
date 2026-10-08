@@ -250,10 +250,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const CreateClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateClusterResponseTagsMap>;
+export const CreateClusterResponseTagsMap =
+  CreateClusterRequestTagsMap as any as S.Schema<CreateClusterResponseTagsMap>;
 
 /** The name object for a server. */
 export interface ServerNameItem {
@@ -294,9 +292,8 @@ export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Group ids of the private endpoint connection. */
 export type PrivateEndpointConnectionSimplePropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionSimplePropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionSimplePropertiesGroupIdsList>;
+export const PrivateEndpointConnectionSimplePropertiesGroupIdsList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateEndpointConnectionSimplePropertiesGroupIdsList>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
@@ -626,9 +623,8 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRuleRequest>;
 
 export interface DeleteFirewallRuleResponse {}
-export const DeleteFirewallRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallRuleResponse",
-}) as any as S.Schema<DeleteFirewallRuleResponse>;
+export const DeleteFirewallRuleResponse =
+  DeleteClusterResponse as any as S.Schema<DeleteFirewallRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -659,11 +655,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  ClustersPromoteReadReplicaResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteRoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -692,9 +685,7 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoleRequest" }) as any as S.Schema<DeleteRoleRequest>;
 
 export interface DeleteRoleResponse {}
-export const DeleteRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleResponse",
-}) as any as S.Schema<DeleteRoleResponse>;
+export const DeleteRoleResponse = DeleteClusterResponse as any as S.Schema<DeleteRoleResponse>;
 
 /** The properties of a cluster firewall rule. */
 export interface FirewallRulePropertiesInput {
@@ -809,10 +800,8 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetClusterResponseTagsMap>;
+export const GetClusterResponseTagsMap =
+  CreateClusterRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 export interface GetClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -830,17 +819,7 @@ export interface GetClusterResponse {
   /** Properties of the cluster. */
   properties?: ClusterProperties;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetClusterResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ClusterProperties),
-  }),
-).annotate({ identifier: "GetClusterResponse" }) as any as S.Schema<GetClusterResponse>;
+export const GetClusterResponse = CreateClusterResponse as any as S.Schema<GetClusterResponse>;
 
 export interface GetConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1087,17 +1066,8 @@ export interface GetConfigurationNodeResponse {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
-export const GetConfigurationNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServerConfigurationProperties),
-  }),
-).annotate({
-  identifier: "GetConfigurationNodeResponse",
-}) as any as S.Schema<GetConfigurationNodeResponse>;
+export const GetConfigurationNodeResponse =
+  GetConfigurationCoordinatorResponse as any as S.Schema<GetConfigurationNodeResponse>;
 
 export interface GetFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1177,20 +1147,15 @@ export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrivateEndpoint" }) as any as S.Schema<PrivateEndpoint>;
+export const PrivateEndpoint = PrivateEndpointProperty as any as S.Schema<PrivateEndpoint>;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -1295,15 +1260,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -1386,15 +1349,7 @@ export interface GetRoleResponse {
   /** The properties of a role. */
   properties: RoleProperties;
 }
-export const GetRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: RoleProperties,
-  }),
-).annotate({ identifier: "GetRoleResponse" }) as any as S.Schema<GetRoleResponse>;
+export const GetRoleResponse = CreateRoleResponse as any as S.Schema<GetRoleResponse>;
 
 export interface GetServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1518,10 +1473,7 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterTagsMap>;
+export const ClusterTagsMap = CreateClusterRequestTagsMap as any as S.Schema<ClusterTagsMap>;
 
 /** Represents a cluster. */
 export interface Cluster {
@@ -1540,17 +1492,7 @@ export interface Cluster {
   /** Properties of the cluster. */
   properties?: ClusterProperties;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ClusterTagsMap),
-    location: S.String,
-    properties: S.optional(ClusterProperties),
-  }),
-).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
+export const Cluster = CreateClusterResponse as any as S.Schema<Cluster>;
 
 /** The list of clusters */
 export type ClusterListResultValueList = Array<Cluster>;
@@ -1627,15 +1569,7 @@ export interface Configuration {
   /** The properties of configuration. */
   properties?: ConfigurationProperties;
 }
-export const Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigurationProperties),
-  }),
-).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
+export const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
 
 /** The list of cluster configurations. */
 export type ClusterConfigurationListResultValueList = Array<Configuration>;
@@ -1770,15 +1704,7 @@ export interface FirewallRule {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
-export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FirewallRuleProperties,
-  }),
-).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
+export const FirewallRule = GetFirewallRuleResponse as any as S.Schema<FirewallRule>;
 
 /** The list of firewall rules in a cluster. */
 export type FirewallRuleListResultValueList = Array<FirewallRule>;
@@ -1921,17 +1847,8 @@ export interface PrivateEndpointConnectionListResultValueItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionListResultValueItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionListResultValueItem",
-}) as any as S.Schema<PrivateEndpointConnectionListResultValueItem>;
+export const PrivateEndpointConnectionListResultValueItem =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionListResultValueItem>;
 
 /** Array of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList =
@@ -1991,17 +1908,8 @@ export interface PrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceListResultValueItem",
-}) as any as S.Schema<PrivateLinkResourceListResultValueItem>;
+export const PrivateLinkResourceListResultValueItem =
+  GetPrivateLinkResourceResponse as any as S.Schema<PrivateLinkResourceListResultValueItem>;
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceListResultValueItem>;
@@ -2058,15 +1966,7 @@ export interface Role {
   /** The properties of a role. */
   properties: RoleProperties;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: RoleProperties,
-  }),
-).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
+export const Role = CreateRoleResponse as any as S.Schema<Role>;
 
 /** The list of roles in a cluster. */
 export type RoleListResultValueList = Array<Role>;
@@ -2123,15 +2023,7 @@ export interface ClusterServer {
   /** The properties of a server in a cluster. */
   properties?: ClusterServerProperties;
 }
-export const ClusterServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ClusterServerProperties),
-  }),
-).annotate({ identifier: "ClusterServer" }) as any as S.Schema<ClusterServer>;
+export const ClusterServer = GetServerResponse as any as S.Schema<ClusterServer>;
 
 /** The list of servers in a cluster. */
 export type ClusterServerListResultValueList = Array<ClusterServer>;
@@ -2152,9 +2044,7 @@ export const ClusterServerListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export const PrivateEndpointInput = DeleteClusterResponse as any as S.Schema<PrivateEndpointInput>;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -2215,17 +2105,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export interface RestartClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2251,9 +2132,8 @@ export const RestartClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartClusterRequest" }) as any as S.Schema<RestartClusterRequest>;
 
 export interface RestartClusterResponse {}
-export const RestartClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartClusterResponse",
-}) as any as S.Schema<RestartClusterResponse>;
+export const RestartClusterResponse =
+  DeleteClusterResponse as any as S.Schema<RestartClusterResponse>;
 
 export interface StartClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2279,9 +2159,7 @@ export const StartClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartClusterRequest" }) as any as S.Schema<StartClusterRequest>;
 
 export interface StartClusterResponse {}
-export const StartClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartClusterResponse",
-}) as any as S.Schema<StartClusterResponse>;
+export const StartClusterResponse = DeleteClusterResponse as any as S.Schema<StartClusterResponse>;
 
 export interface StopClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2307,9 +2185,7 @@ export const StopClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopClusterRequest" }) as any as S.Schema<StopClusterRequest>;
 
 export interface StopClusterResponse {}
-export const StopClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopClusterResponse",
-}) as any as S.Schema<StopClusterResponse>;
+export const StopClusterResponse = DeleteClusterResponse as any as S.Schema<StopClusterResponse>;
 
 /** The properties used to update a cluster. */
 export interface ClusterPropertiesForUpdateInput {
@@ -2368,10 +2244,8 @@ export const ClusterPropertiesForUpdateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterRequestTagsMap>;
+export const UpdateClusterRequestTagsMap =
+  CreateClusterRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 export interface UpdateClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2404,10 +2278,8 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterResponseTagsMap>;
+export const UpdateClusterResponseTagsMap =
+  CreateClusterRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
 
 export interface UpdateClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2425,17 +2297,8 @@ export interface UpdateClusterResponse {
   /** Properties of the cluster. */
   properties?: ClusterProperties;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateClusterResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ClusterProperties),
-  }),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse =
+  CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 /** The properties of a configuration. */
 export interface ServerConfigurationPropertiesInput {
@@ -2493,17 +2356,8 @@ export interface UpdateConfigurationOnCoordinatorResponse {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
-export const UpdateConfigurationOnCoordinatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServerConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationOnCoordinatorResponse",
-}) as any as S.Schema<UpdateConfigurationOnCoordinatorResponse>;
+export const UpdateConfigurationOnCoordinatorResponse =
+  GetConfigurationCoordinatorResponse as any as S.Schema<UpdateConfigurationOnCoordinatorResponse>;
 
 export interface UpdateConfigurationOnNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2548,17 +2402,8 @@ export interface UpdateConfigurationOnNodeResponse {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
-export const UpdateConfigurationOnNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServerConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationOnNodeResponse",
-}) as any as S.Schema<UpdateConfigurationOnNodeResponse>;
+export const UpdateConfigurationOnNodeResponse =
+  GetConfigurationCoordinatorResponse as any as S.Schema<UpdateConfigurationOnNodeResponse>;
 
 export type CheckClusterNameAvailabilityError = AzureOpError;
 /** Checks availability of a cluster name. Cluster names should be globally unique; at least 3 characters and at most 40 characters long; they must only contain lowercase letters, numbers, and hyphens; and must not start or end with a hyphen. */

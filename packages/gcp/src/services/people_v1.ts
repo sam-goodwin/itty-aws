@@ -826,15 +826,10 @@ export interface Tagline {
   /** Metadata about the tagline. */
   metadata?: FieldMetadata;
 }
-export const Tagline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    metadata: S.optional(FieldMetadata),
-  }),
-).annotate({ identifier: "Tagline" }) as any as S.Schema<Tagline>;
+export const Tagline = Locale as any as S.Schema<Tagline>;
 
 export type TaglineList = Array<Tagline>;
-export const TaglineList = /*@__PURE__*/ S.Array(Tagline) as any as S.Schema<TaglineList>;
+export const TaglineList = LocaleList as any as S.Schema<TaglineList>;
 
 /** A person's phone number. */
 export interface PhoneNumber {
@@ -898,15 +893,10 @@ export interface Skill {
   /** Metadata about the skill. */
   metadata?: FieldMetadata;
 }
-export const Skill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    metadata: S.optional(FieldMetadata),
-  }),
-).annotate({ identifier: "Skill" }) as any as S.Schema<Skill>;
+export const Skill = Locale as any as S.Schema<Skill>;
 
 export type SkillList = Array<Skill>;
-export const SkillList = /*@__PURE__*/ S.Array(Skill) as any as S.Schema<SkillList>;
+export const SkillList = LocaleList as any as S.Schema<SkillList>;
 
 /** A person's calendar URL. */
 export interface CalendarUrl {
@@ -960,15 +950,10 @@ export interface FileAs {
   /** Metadata about the file-as. */
   metadata?: FieldMetadata;
 }
-export const FileAs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    metadata: S.optional(FieldMetadata),
-  }),
-).annotate({ identifier: "FileAs" }) as any as S.Schema<FileAs>;
+export const FileAs = Locale as any as S.Schema<FileAs>;
 
 export type FileAsList = Array<FileAs>;
-export const FileAsList = /*@__PURE__*/ S.Array(FileAs) as any as S.Schema<FileAsList>;
+export const FileAsList = LocaleList as any as S.Schema<FileAsList>;
 
 /** A person's SIP address. Session Initial Protocol addresses are used for VoIP communications to make voice or video calls over the internet. */
 export interface SipAddress {
@@ -1050,15 +1035,10 @@ export interface Interest {
   /** Metadata about the interest. */
   metadata?: FieldMetadata;
 }
-export const Interest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    metadata: S.optional(FieldMetadata),
-  }),
-).annotate({ identifier: "Interest" }) as any as S.Schema<Interest>;
+export const Interest = Locale as any as S.Schema<Interest>;
 
 export type InterestList = Array<Interest>;
-export const InterestList = /*@__PURE__*/ S.Array(Interest) as any as S.Schema<InterestList>;
+export const InterestList = LocaleList as any as S.Schema<InterestList>;
 
 /** A person's occupation. */
 export interface Occupation {
@@ -1067,15 +1047,10 @@ export interface Occupation {
   /** Metadata about the occupation. */
   metadata?: FieldMetadata;
 }
-export const Occupation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    metadata: S.optional(FieldMetadata),
-  }),
-).annotate({ identifier: "Occupation" }) as any as S.Schema<Occupation>;
+export const Occupation = Locale as any as S.Schema<Occupation>;
 
 export type OccupationList = Array<Occupation>;
-export const OccupationList = /*@__PURE__*/ S.Array(Occupation) as any as S.Schema<OccupationList>;
+export const OccupationList = LocaleList as any as S.Schema<OccupationList>;
 
 /** **DEPRECATED**: No data will be returned A person's relationship interest . */
 export interface RelationshipInterest {
@@ -2558,13 +2533,8 @@ export interface UpdateContactPhotoResponse {
   /** The updated person, if person_fields is set in the UpdateContactPhotoRequest; otherwise this will be unset. */
   person?: Person;
 }
-export const UpdateContactPhotoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    person: S.optional(Person),
-  }),
-).annotate({
-  identifier: "UpdateContactPhotoResponse",
-}) as any as S.Schema<UpdateContactPhotoResponse>;
+export const UpdateContactPhotoResponse =
+  DeleteContactPhotoResponse as any as S.Schema<UpdateContactPhotoResponse>;
 
 export type BatchCreateContactsPeopleError =
   | NotFound

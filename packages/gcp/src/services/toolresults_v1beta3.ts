@@ -283,13 +283,8 @@ export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesR
 export interface BatchCreatePerfSamplesResponse {
   perfSamples?: PerfSampleList;
 }
-export const BatchCreatePerfSamplesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    perfSamples: S.optional(PerfSampleList),
-  }),
-).annotate({
-  identifier: "BatchCreatePerfSamplesResponse",
-}) as any as S.Schema<BatchCreatePerfSamplesResponse>;
+export const BatchCreatePerfSamplesResponse =
+  BatchCreatePerfSamplesRequest as any as S.Schema<BatchCreatePerfSamplesResponse>;
 
 export type HistoryTestPlatformEnum = "unknownPlatform" | "android" | "ios";
 export const HistoryTestPlatformEnum = S.String;
@@ -1655,18 +1650,15 @@ export type EnvironmentDimensionValueEntry = StepDimensionValueEntry;
 export const EnvironmentDimensionValueEntry = StepDimensionValueEntry;
 
 export type EnvironmentDimensionValueEntryList = Array<StepDimensionValueEntry>;
-export const EnvironmentDimensionValueEntryList = /*@__PURE__*/ S.Array(
-  StepDimensionValueEntry,
-) as any as S.Schema<EnvironmentDimensionValueEntryList>;
+export const EnvironmentDimensionValueEntryList =
+  StepDimensionValueEntryList as any as S.Schema<EnvironmentDimensionValueEntryList>;
 
 /** Lightweight summary of a step within this execution. */
 export type StepSummary = AndroidTestLoop;
 export const StepSummary = AndroidTestLoop;
 
 export type StepSummaryList = Array<AndroidTestLoop>;
-export const StepSummaryList = /*@__PURE__*/ S.Array(
-  AndroidTestLoop,
-) as any as S.Schema<StepSummaryList>;
+export const StepSummaryList = MatrixDimensionDefinitionList as any as S.Schema<StepSummaryList>;
 
 /** Result summary for a shard in an environment. */
 export interface ShardSummary {

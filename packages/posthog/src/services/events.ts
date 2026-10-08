@@ -258,14 +258,12 @@ export const ListEventsRequestPropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListEventsRequestPropertiesList>;
 
 export type ListEventsRequestSelectList = Array<string>;
-export const ListEventsRequestSelectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEventsRequestSelectList>;
+export const ListEventsRequestSelectList =
+  GetEventsValueRequestEventNameList as any as S.Schema<ListEventsRequestSelectList>;
 
 export type ListEventsRequestWhereList = Array<string>;
-export const ListEventsRequestWhereList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEventsRequestWhereList>;
+export const ListEventsRequestWhereList =
+  GetEventsValueRequestEventNameList as any as S.Schema<ListEventsRequestWhereList>;
 
 export interface ListEventsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -313,21 +311,16 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEventsRequest" }) as any as S.Schema<ListEventsRequest>;
 
 export type ClickhouseEventPropertiesMap = { [key: string]: unknown | undefined };
-export const ClickhouseEventPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClickhouseEventPropertiesMap>;
+export const ClickhouseEventPropertiesMap =
+  GetEventResponseBodyMap as any as S.Schema<ClickhouseEventPropertiesMap>;
 
 export type ClickhouseEventPersonMap = { [key: string]: unknown | undefined };
-export const ClickhouseEventPersonMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClickhouseEventPersonMap>;
+export const ClickhouseEventPersonMap =
+  GetEventResponseBodyMap as any as S.Schema<ClickhouseEventPersonMap>;
 
 export type EventElementAttrClassList = Array<string>;
-export const EventElementAttrClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventElementAttrClassList>;
+export const EventElementAttrClassList =
+  GetEventsValueRequestEventNameList as any as S.Schema<EventElementAttrClassList>;
 
 export interface EventElement {
   event?: string;

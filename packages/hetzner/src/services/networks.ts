@@ -133,9 +133,8 @@ export const CreateNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutes
 
 /** Array of routes set in this [Network](#tag/networks). */
 export type CreateNetworkResponseNetworkRoutesList = Array<CreateNetworkRequestRoutesItem>;
-export const CreateNetworkResponseNetworkRoutesList = /*@__PURE__*/ S.Array(
-  CreateNetworkRequestRoutesItem,
-) as any as S.Schema<CreateNetworkResponseNetworkRoutesList>;
+export const CreateNetworkResponseNetworkRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<CreateNetworkResponseNetworkRoutesList>;
 
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type CreateNetworkResponseNetworkServersList = Array<number>;
@@ -145,9 +144,8 @@ export const CreateNetworkResponseNetworkServersList = /*@__PURE__*/ S.Array(
 
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type CreateNetworkResponseNetworkLoadBalancersList = Array<number>;
-export const CreateNetworkResponseNetworkLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNetworkResponseNetworkLoadBalancersList>;
+export const CreateNetworkResponseNetworkLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<CreateNetworkResponseNetworkLoadBalancersList>;
 
 /** Protection configuration for the Resource. */
 export interface CreateNetworkResponseNetworkProtection {
@@ -164,10 +162,8 @@ export const CreateNetworkResponseNetworkProtection = /*@__PURE__*/ S.suspend(()
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateNetworkResponseNetworkLabelsMap = { [key: string]: string | undefined };
-export const CreateNetworkResponseNetworkLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateNetworkResponseNetworkLabelsMap>;
+export const CreateNetworkResponseNetworkLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<CreateNetworkResponseNetworkLabelsMap>;
 
 export interface CreateNetworkResponseNetwork {
   /** ID of the [Network](#tag/networks). */
@@ -284,21 +280,18 @@ export const GetNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesIte
 
 /** Array of routes set in this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkRoutesList = Array<CreateNetworkRequestRoutesItem>;
-export const GetNetworkResponseNetworkRoutesList = /*@__PURE__*/ S.Array(
-  CreateNetworkRequestRoutesItem,
-) as any as S.Schema<GetNetworkResponseNetworkRoutesList>;
+export const GetNetworkResponseNetworkRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<GetNetworkResponseNetworkRoutesList>;
 
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkServersList = Array<number>;
-export const GetNetworkResponseNetworkServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNetworkResponseNetworkServersList>;
+export const GetNetworkResponseNetworkServersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<GetNetworkResponseNetworkServersList>;
 
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkLoadBalancersList = Array<number>;
-export const GetNetworkResponseNetworkLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNetworkResponseNetworkLoadBalancersList>;
+export const GetNetworkResponseNetworkLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<GetNetworkResponseNetworkLoadBalancersList>;
 
 /** Protection configuration for the Resource. */
 export type GetNetworkResponseNetworkProtection = CreateNetworkResponseNetworkProtection;
@@ -306,10 +299,8 @@ export const GetNetworkResponseNetworkProtection = CreateNetworkResponseNetworkP
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetNetworkResponseNetworkLabelsMap = { [key: string]: string | undefined };
-export const GetNetworkResponseNetworkLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNetworkResponseNetworkLabelsMap>;
+export const GetNetworkResponseNetworkLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<GetNetworkResponseNetworkLabelsMap>;
 
 export interface GetNetworkResponseNetwork {
   /** ID of the [Network](#tag/networks). */
@@ -461,9 +452,8 @@ export const ListNetworkMembersResponseMembersItemStatus = S.String;
 
 /** Additional IP addresses of the resource within the [Network](#tag/networks). */
 export type ListNetworkMembersResponseMembersItemAliasIpsList = Array<string>;
-export const ListNetworkMembersResponseMembersItemAliasIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNetworkMembersResponseMembersItemAliasIpsList>;
+export const ListNetworkMembersResponseMembersItemAliasIpsList =
+  ListNetworkMembersRequestSubnetList as any as S.Schema<ListNetworkMembersResponseMembersItemAliasIpsList>;
 
 export interface ListNetworkMembersResponseMembersItem {
   /** Type of the resource attached to the [Network](#tag/networks). */
@@ -629,21 +619,18 @@ export const ListNetworksResponseNetworksItemRoutesItem = CreateNetworkRequestRo
 
 /** Array of routes set in this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemRoutesList = Array<CreateNetworkRequestRoutesItem>;
-export const ListNetworksResponseNetworksItemRoutesList = /*@__PURE__*/ S.Array(
-  CreateNetworkRequestRoutesItem,
-) as any as S.Schema<ListNetworksResponseNetworksItemRoutesList>;
+export const ListNetworksResponseNetworksItemRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<ListNetworksResponseNetworksItemRoutesList>;
 
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemServersList = Array<number>;
-export const ListNetworksResponseNetworksItemServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListNetworksResponseNetworksItemServersList>;
+export const ListNetworksResponseNetworksItemServersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<ListNetworksResponseNetworksItemServersList>;
 
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemLoadBalancersList = Array<number>;
-export const ListNetworksResponseNetworksItemLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListNetworksResponseNetworksItemLoadBalancersList>;
+export const ListNetworksResponseNetworksItemLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<ListNetworksResponseNetworksItemLoadBalancersList>;
 
 /** Protection configuration for the Resource. */
 export type ListNetworksResponseNetworksItemProtection = CreateNetworkResponseNetworkProtection;
@@ -651,10 +638,8 @@ export const ListNetworksResponseNetworksItemProtection = CreateNetworkResponseN
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListNetworksResponseNetworksItemLabelsMap = { [key: string]: string | undefined };
-export const ListNetworksResponseNetworksItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListNetworksResponseNetworksItemLabelsMap>;
+export const ListNetworksResponseNetworksItemLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<ListNetworksResponseNetworksItemLabelsMap>;
 
 export interface ListNetworksResponseNetworksItem {
   /** ID of the [Network](#tag/networks). */
@@ -723,10 +708,8 @@ export const ListNetworksResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateNetworkRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateNetworkRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNetworkRequestLabelsMap>;
+export const UpdateNetworkRequestLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<UpdateNetworkRequestLabelsMap>;
 
 export interface UpdateNetworkRequest {
   /** ID of the Network. */
@@ -787,21 +770,18 @@ export const UpdateNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutes
 
 /** Array of routes set in this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkRoutesList = Array<CreateNetworkRequestRoutesItem>;
-export const UpdateNetworkResponseNetworkRoutesList = /*@__PURE__*/ S.Array(
-  CreateNetworkRequestRoutesItem,
-) as any as S.Schema<UpdateNetworkResponseNetworkRoutesList>;
+export const UpdateNetworkResponseNetworkRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<UpdateNetworkResponseNetworkRoutesList>;
 
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkServersList = Array<number>;
-export const UpdateNetworkResponseNetworkServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateNetworkResponseNetworkServersList>;
+export const UpdateNetworkResponseNetworkServersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<UpdateNetworkResponseNetworkServersList>;
 
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkLoadBalancersList = Array<number>;
-export const UpdateNetworkResponseNetworkLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateNetworkResponseNetworkLoadBalancersList>;
+export const UpdateNetworkResponseNetworkLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<UpdateNetworkResponseNetworkLoadBalancersList>;
 
 /** Protection configuration for the Resource. */
 export type UpdateNetworkResponseNetworkProtection = CreateNetworkResponseNetworkProtection;
@@ -809,10 +789,8 @@ export const UpdateNetworkResponseNetworkProtection = CreateNetworkResponseNetwo
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateNetworkResponseNetworkLabelsMap = { [key: string]: string | undefined };
-export const UpdateNetworkResponseNetworkLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNetworkResponseNetworkLabelsMap>;
+export const UpdateNetworkResponseNetworkLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<UpdateNetworkResponseNetworkLabelsMap>;
 
 export interface UpdateNetworkResponseNetwork {
   /** ID of the [Network](#tag/networks). */

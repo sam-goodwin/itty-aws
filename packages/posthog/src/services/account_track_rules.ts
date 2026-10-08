@@ -131,9 +131,8 @@ export const AccountTrackRulePreviewTrackedSamplesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AccountTrackRulePreviewTrackedSamplesList>;
 
 export type AccountTrackRulePreviewIgnoredSamplesList = Array<AccountTrackRuleSample>;
-export const AccountTrackRulePreviewIgnoredSamplesList = /*@__PURE__*/ S.Array(
-  AccountTrackRuleSample,
-) as any as S.Schema<AccountTrackRulePreviewIgnoredSamplesList>;
+export const AccountTrackRulePreviewIgnoredSamplesList =
+  AccountTrackRulePreviewTrackedSamplesList as any as S.Schema<AccountTrackRulePreviewIgnoredSamplesList>;
 
 export type AccountTrackRulePreviewValidationErrorsList = Array<string>;
 export const AccountTrackRulePreviewValidationErrorsList = /*@__PURE__*/ S.Array(
@@ -211,9 +210,8 @@ export const ListAccountTrackRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountTrackRulesRequest>;
 
 export type AccountTrackRulesConfigGroupsList = Array<AccountTrackRuleGroup>;
-export const AccountTrackRulesConfigGroupsList = /*@__PURE__*/ S.Array(
-  AccountTrackRuleGroup,
-) as any as S.Schema<AccountTrackRulesConfigGroupsList>;
+export const AccountTrackRulesConfigGroupsList =
+  CreateAccountTrackRulesPreviewRequestGroupsList as any as S.Schema<AccountTrackRulesConfigGroupsList>;
 
 export interface AccountTrackRulesConfig {
   schema_version: number;
@@ -314,9 +312,8 @@ export const PaginatedAccountTrackRuleRunViewList = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PaginatedAccountTrackRuleRunViewList>;
 
 export type UpdateAccountTrackRuleRequestGroupsList = Array<AccountTrackRuleGroup>;
-export const UpdateAccountTrackRuleRequestGroupsList = /*@__PURE__*/ S.Array(
-  AccountTrackRuleGroup,
-) as any as S.Schema<UpdateAccountTrackRuleRequestGroupsList>;
+export const UpdateAccountTrackRuleRequestGroupsList =
+  CreateAccountTrackRulesPreviewRequestGroupsList as any as S.Schema<UpdateAccountTrackRuleRequestGroupsList>;
 
 export interface UpdateAccountTrackRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

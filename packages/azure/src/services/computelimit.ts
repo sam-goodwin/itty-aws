@@ -312,9 +312,8 @@ export const DeleteMemberCapOverrideRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMemberCapOverrideRequest>;
 
 export interface DeleteMemberCapOverrideResponse {}
-export const DeleteMemberCapOverrideResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteMemberCapOverrideResponse" },
-) as any as S.Schema<DeleteMemberCapOverrideResponse>;
+export const DeleteMemberCapOverrideResponse =
+  DeleteGuestSubscriptionResponse as any as S.Schema<DeleteMemberCapOverrideResponse>;
 
 export interface DeleteSharedLimitRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -370,9 +369,8 @@ export const DeleteSharedLimitCapRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSharedLimitCapRequest>;
 
 export interface DeleteSharedLimitCapResponse {}
-export const DeleteSharedLimitCapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSharedLimitCapResponse",
-}) as any as S.Schema<DeleteSharedLimitCapResponse>;
+export const DeleteSharedLimitCapResponse =
+  DeleteSharedLimitResponse as any as S.Schema<DeleteSharedLimitCapResponse>;
 
 export interface DeleteTrustedHostSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -400,11 +398,8 @@ export const DeleteTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteTrustedHostSubscriptionRequest>;
 
 export interface DeleteTrustedHostSubscriptionResponse {}
-export const DeleteTrustedHostSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustedHostSubscriptionResponse",
-}) as any as S.Schema<DeleteTrustedHostSubscriptionResponse>;
+export const DeleteTrustedHostSubscriptionResponse =
+  GuestSubscriptionPropertiesInput as any as S.Schema<DeleteTrustedHostSubscriptionResponse>;
 
 export interface DisableFeatureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -587,9 +582,8 @@ export const EnableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type EnableFeatureResponseOperationsList = Array<OperationStatusResult>;
-export const EnableFeatureResponseOperationsList = /*@__PURE__*/ S.Array(
-  OperationStatusResult,
-) as any as S.Schema<EnableFeatureResponseOperationsList>;
+export const EnableFeatureResponseOperationsList =
+  DisableFeatureResponseOperationsList as any as S.Schema<EnableFeatureResponseOperationsList>;
 
 export interface EnableFeatureResponse {
   /** Fully qualified ID for the async operation. */
@@ -611,19 +605,8 @@ export interface EnableFeatureResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const EnableFeatureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.String,
-    percentComplete: S.optional(S.Number),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    operations: S.optional(EnableFeatureResponseOperationsList),
-    error: S.optional(ErrorDetail),
-  }),
-).annotate({ identifier: "EnableFeatureResponse" }) as any as S.Schema<EnableFeatureResponse>;
+export const EnableFeatureResponse =
+  DisableFeatureResponse as any as S.Schema<EnableFeatureResponse>;
 
 export interface GetFeatureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -725,17 +708,8 @@ export interface GetGuestSubscriptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: GuestSubscriptionProperties;
 }
-export const GetGuestSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(GuestSubscriptionProperties),
-  }),
-).annotate({
-  identifier: "GetGuestSubscriptionResponse",
-}) as any as S.Schema<GetGuestSubscriptionResponse>;
+export const GetGuestSubscriptionResponse =
+  CreateGuestSubscriptionResponse as any as S.Schema<GetGuestSubscriptionResponse>;
 
 export interface GetMemberCapOverrideRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -949,16 +923,8 @@ export interface GetTrustedHostSubscriptionResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const GetTrustedHostSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-  }),
-).annotate({
-  identifier: "GetTrustedHostSubscriptionResponse",
-}) as any as S.Schema<GetTrustedHostSubscriptionResponse>;
+export const GetTrustedHostSubscriptionResponse =
+  CreateTrustedHostSubscriptionResponse as any as S.Schema<GetTrustedHostSubscriptionResponse>;
 
 export interface GetVmFamilyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1054,15 +1020,7 @@ export interface Feature {
   /** The resource-specific properties for this resource. */
   properties?: FeatureProperties;
 }
-export const Feature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FeatureProperties),
-  }),
-).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
+export const Feature = GetFeatureResponse as any as S.Schema<Feature>;
 
 /** The Feature items on this page */
 export type FeatureListResultValueList = Array<Feature>;
@@ -1339,15 +1297,7 @@ export interface SharedLimit {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitProperties;
 }
-export const SharedLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SharedLimitProperties),
-  }),
-).annotate({ identifier: "SharedLimit" }) as any as S.Schema<SharedLimit>;
+export const SharedLimit = GetSharedLimitResponse as any as S.Schema<SharedLimit>;
 
 /** The SharedLimit items on this page */
 export type SharedLimitListResultValueList = Array<SharedLimit>;
@@ -1537,15 +1487,7 @@ export interface VmFamily {
   /** The resource-specific properties for this resource. */
   properties?: VmFamilyProperties;
 }
-export const VmFamily = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VmFamilyProperties),
-  }),
-).annotate({ identifier: "VmFamily" }) as any as S.Schema<VmFamily>;
+export const VmFamily = GetVmFamilyResponse as any as S.Schema<VmFamily>;
 
 /** The VmFamily items on this page */
 export type VmFamilyListResultValueList = Array<VmFamily>;
@@ -1623,17 +1565,8 @@ export interface MemberCapOverridesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: MemberCapOverrideProperties;
 }
-export const MemberCapOverridesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MemberCapOverrideProperties),
-  }),
-).annotate({
-  identifier: "MemberCapOverridesCreateOrUpdateResponse",
-}) as any as S.Schema<MemberCapOverridesCreateOrUpdateResponse>;
+export const MemberCapOverridesCreateOrUpdateResponse =
+  GetMemberCapOverrideResponse as any as S.Schema<MemberCapOverridesCreateOrUpdateResponse>;
 
 /** Per-member cap override. Pairs a member subscription with its cap value. */
 export interface MemberCap {
@@ -1759,17 +1692,8 @@ export interface SharedLimitCapsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitCapProperties;
 }
-export const SharedLimitCapsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SharedLimitCapProperties),
-  }),
-).annotate({
-  identifier: "SharedLimitCapsCreateOrUpdateResponse",
-}) as any as S.Schema<SharedLimitCapsCreateOrUpdateResponse>;
+export const SharedLimitCapsCreateOrUpdateResponse =
+  GetSharedLimitCapResponse as any as S.Schema<SharedLimitCapsCreateOrUpdateResponse>;
 
 export type CreateGuestSubscriptionError = AzureOpError;
 /** Adds a subscription as a guest to consume the compute limits shared by the host subscription. */

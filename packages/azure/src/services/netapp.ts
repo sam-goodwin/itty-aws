@@ -87,15 +87,13 @@ export const ActiveDirectoryInputBackupOperatorsList = /*@__PURE__*/ S.Array(
 
 /** Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier */
 export type ActiveDirectoryInputAdministratorsList = Array<string>;
-export const ActiveDirectoryInputAdministratorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveDirectoryInputAdministratorsList>;
+export const ActiveDirectoryInputAdministratorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryInputAdministratorsList>;
 
 /** Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier */
 export type ActiveDirectoryInputSecurityOperatorsList = Array<string>;
-export const ActiveDirectoryInputSecurityOperatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveDirectoryInputSecurityOperatorsList>;
+export const ActiveDirectoryInputSecurityOperatorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryInputSecurityOperatorsList>;
 
 /** LDAP search scope */
 export interface LdapSearchScopeOpt {
@@ -270,9 +268,8 @@ export const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  AccountsChangeKeyVaultResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
@@ -374,10 +371,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+export const AccountsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
 
 /** Status of the Active Directory */
 export type ActiveDirectoryStatus = "Created" | "InUse" | "Deleted" | "Error" | "Updating";
@@ -385,21 +380,18 @@ export const ActiveDirectoryStatus = S.String;
 
 /** Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier */
 export type ActiveDirectoryBackupOperatorsList = Array<string>;
-export const ActiveDirectoryBackupOperatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveDirectoryBackupOperatorsList>;
+export const ActiveDirectoryBackupOperatorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryBackupOperatorsList>;
 
 /** Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier */
 export type ActiveDirectoryAdministratorsList = Array<string>;
-export const ActiveDirectoryAdministratorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveDirectoryAdministratorsList>;
+export const ActiveDirectoryAdministratorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryAdministratorsList>;
 
 /** Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier */
 export type ActiveDirectorySecurityOperatorsList = Array<string>;
-export const ActiveDirectorySecurityOperatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveDirectorySecurityOperatorsList>;
+export const ActiveDirectorySecurityOperatorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectorySecurityOperatorsList>;
 
 /** Active Directory */
 export interface ActiveDirectory {
@@ -861,10 +853,8 @@ export const RestoreStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BackupVaultsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupVaultsCreateOrUpdateRequestTagsMap>;
+export const BackupVaultsCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateRequestTagsMap>;
 
 /** Backup Vault properties */
 export type BackupVaultPropertiesInput = UserAssignedIdentityInput;
@@ -909,10 +899,8 @@ export const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BackupVaultsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupVaultsCreateOrUpdateResponseTagsMap>;
+export const BackupVaultsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateResponseTagsMap>;
 
 /** Backup Vault properties */
 export interface BackupVaultProperties {
@@ -1224,10 +1212,8 @@ export const BucketsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CachesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CachesCreateOrUpdateRequestTagsMap>;
+export const CachesCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesCreateOrUpdateRequestTagsMap>;
 
 /** This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own. */
 export type ExportPolicyRuleChownMode = "Restricted" | "Unrestricted";
@@ -1362,9 +1348,8 @@ export const LdapServerType = S.String;
 
 /** ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required */
 export type OriginClusterInformationPeerAddressesList = Array<string>;
-export const OriginClusterInformationPeerAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OriginClusterInformationPeerAddressesList>;
+export const OriginClusterInformationPeerAddressesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<OriginClusterInformationPeerAddressesList>;
 
 /** Stores the origin cluster information associated to a cache. */
 export interface OriginClusterInformation {
@@ -1459,9 +1444,8 @@ export const CachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type CachesCreateOrUpdateRequestZonesList = Array<string>;
-export const CachesCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CachesCreateOrUpdateRequestZonesList>;
+export const CachesCreateOrUpdateRequestZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<CachesCreateOrUpdateRequestZonesList>;
 
 export interface CachesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1508,16 +1492,13 @@ export const CachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CachesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CachesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CachesCreateOrUpdateResponseTagsMap>;
+export const CachesCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesCreateOrUpdateResponseTagsMap>;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
 export type CachePropertiesProtocolTypesList = Array<ProtocolTypes>;
-export const CachePropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
-  ProtocolTypes,
-) as any as S.Schema<CachePropertiesProtocolTypesList>;
+export const CachePropertiesProtocolTypesList =
+  CachePropertiesInputProtocolTypesList as any as S.Schema<CachePropertiesProtocolTypesList>;
 
 /** Azure lifecycle management */
 export type CacheProvisioningState =
@@ -1729,9 +1710,8 @@ export const CacheProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type CachesCreateOrUpdateResponseZonesList = Array<string>;
-export const CachesCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CachesCreateOrUpdateResponseZonesList>;
+export const CachesCreateOrUpdateResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<CachesCreateOrUpdateResponseZonesList>;
 
 export interface CachesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1803,16 +1783,13 @@ export const CachesPoolChangeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CachesPoolChangeResponseTagsMap = { [key: string]: string | undefined };
-export const CachesPoolChangeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CachesPoolChangeResponseTagsMap>;
+export const CachesPoolChangeResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesPoolChangeResponseTagsMap>;
 
 /** The availability zones. */
 export type CachesPoolChangeResponseZonesList = Array<string>;
-export const CachesPoolChangeResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CachesPoolChangeResponseZonesList>;
+export const CachesPoolChangeResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<CachesPoolChangeResponseZonesList>;
 
 export interface CachesPoolChangeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1990,9 +1967,8 @@ export const RansomwareSuspectResolution = S.String;
 
 /** List of file extensions resolved (PotentialThreat or FalsePositive) */
 export type ClearRansomwareReportSuspectsRequestExtensionsList = Array<string>;
-export const ClearRansomwareReportSuspectsRequestExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClearRansomwareReportSuspectsRequestExtensionsList>;
+export const ClearRansomwareReportSuspectsRequestExtensionsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ClearRansomwareReportSuspectsRequestExtensionsList>;
 
 export interface ClearRansomwareReportSuspectsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2035,11 +2011,8 @@ export const ClearRansomwareReportSuspectsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ClearRansomwareReportSuspectsRequest>;
 
 export interface ClearRansomwareReportSuspectsResponse {}
-export const ClearRansomwareReportSuspectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ClearRansomwareReportSuspectsResponse",
-}) as any as S.Schema<ClearRansomwareReportSuspectsResponse>;
+export const ClearRansomwareReportSuspectsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<ClearRansomwareReportSuspectsResponse>;
 
 /** Backup properties */
 export interface BackupPropertiesInput {
@@ -2171,10 +2144,8 @@ export const CreateBackupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateBackupPolicyRequestTagsMap = { [key: string]: string | undefined };
-export const CreateBackupPolicyRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBackupPolicyRequestTagsMap>;
+export const CreateBackupPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBackupPolicyRequestTagsMap>;
 
 /** Backup policy properties */
 export interface BackupPolicyPropertiesInput {
@@ -2237,10 +2208,8 @@ export const CreateBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateBackupPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const CreateBackupPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBackupPolicyResponseTagsMap>;
+export const CreateBackupPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBackupPolicyResponseTagsMap>;
 
 /** Volume details using the backup policy */
 export interface VolumeBackups {
@@ -2419,10 +2388,8 @@ export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSnapshotPolicyRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSnapshotPolicyRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSnapshotPolicyRequestTagsMap>;
+export const CreateSnapshotPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateSnapshotPolicyRequestTagsMap>;
 
 /** Hourly Schedule properties */
 export interface HourlySchedule {
@@ -2571,10 +2538,8 @@ export const CreateSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSnapshotPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSnapshotPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSnapshotPolicyResponseTagsMap>;
+export const CreateSnapshotPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateSnapshotPolicyResponseTagsMap>;
 
 /** Snapshot policy properties */
 export interface SnapshotPolicyProperties {
@@ -2681,16 +2646,13 @@ export const VolumeGroupMetaDataInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type VolumeGroupVolumePropertiesInputTagsMap = { [key: string]: string | undefined };
-export const VolumeGroupVolumePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeGroupVolumePropertiesInputTagsMap>;
+export const VolumeGroupVolumePropertiesInputTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeGroupVolumePropertiesInputTagsMap>;
 
 /** Availability Zone */
 export type VolumeGroupVolumePropertiesInputZonesList = Array<string>;
-export const VolumeGroupVolumePropertiesInputZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeGroupVolumePropertiesInputZonesList>;
+export const VolumeGroupVolumePropertiesInputZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumeGroupVolumePropertiesInputZonesList>;
 
 /** The service level of the file system */
 export type VolumePropertiesInputServiceLevel =
@@ -2703,28 +2665,21 @@ export const VolumePropertiesInputServiceLevel = S.String;
 
 /** Export policy rule */
 export type VolumePropertiesExportPolicyRulesList = Array<ExportPolicyRule>;
-export const VolumePropertiesExportPolicyRulesList = /*@__PURE__*/ S.Array(
-  ExportPolicyRule,
-) as any as S.Schema<VolumePropertiesExportPolicyRulesList>;
+export const VolumePropertiesExportPolicyRulesList =
+  CachePropertiesExportPolicyRulesList as any as S.Schema<VolumePropertiesExportPolicyRulesList>;
 
 /** Set of export policy rules */
 export interface VolumePropertiesExportPolicy {
   /** Export policy rule */
   rules?: VolumePropertiesExportPolicyRulesList;
 }
-export const VolumePropertiesExportPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(VolumePropertiesExportPolicyRulesList),
-  }),
-).annotate({
-  identifier: "VolumePropertiesExportPolicy",
-}) as any as S.Schema<VolumePropertiesExportPolicy>;
+export const VolumePropertiesExportPolicy =
+  CachePropertiesExportPolicy as any as S.Schema<VolumePropertiesExportPolicy>;
 
 /** Specify the protocol types for the volume. Supported values are NFSv3, NFSv4.1, and CIFS. For SMB volumes, specify CIFS. The value SMB isn't supported in the protocolTypes property. Default: NFSv3 */
 export type VolumePropertiesInputProtocolTypesList = Array<string>;
-export const VolumePropertiesInputProtocolTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumePropertiesInputProtocolTypesList>;
+export const VolumePropertiesInputProtocolTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePropertiesInputProtocolTypesList>;
 
 /** The original value of the network features type available to the volume at the time it was created. */
 export type VolumePropertiesInputNetworkFeatures =
@@ -2891,9 +2846,8 @@ export const VolumePropertiesInputAvsDataStore = S.String;
 
 /** Application specific placement rules for the particular volume */
 export type VolumePropertiesInputPlacementRulesList = Array<PlacementKeyValuePairs>;
-export const VolumePropertiesInputPlacementRulesList = /*@__PURE__*/ S.Array(
-  PlacementKeyValuePairs,
-) as any as S.Schema<VolumePropertiesInputPlacementRulesList>;
+export const VolumePropertiesInputPlacementRulesList =
+  VolumeGroupMetaDataInputGlobalPlacementRulesList as any as S.Schema<VolumePropertiesInputPlacementRulesList>;
 
 /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
 export type VolumePropertiesInputEnableSubvolumes = "Enabled" | "Disabled";
@@ -3113,9 +3067,8 @@ export const CreateVolumeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Application specific placement rules for the volume group */
 export type VolumeGroupMetaDataGlobalPlacementRulesList = Array<PlacementKeyValuePairs>;
-export const VolumeGroupMetaDataGlobalPlacementRulesList = /*@__PURE__*/ S.Array(
-  PlacementKeyValuePairs,
-) as any as S.Schema<VolumeGroupMetaDataGlobalPlacementRulesList>;
+export const VolumeGroupMetaDataGlobalPlacementRulesList =
+  VolumeGroupMetaDataInputGlobalPlacementRulesList as any as S.Schema<VolumeGroupMetaDataGlobalPlacementRulesList>;
 
 /** Volume group properties */
 export interface VolumeGroupMetaData {
@@ -3142,16 +3095,13 @@ export const VolumeGroupMetaData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type VolumeGroupVolumePropertiesTagsMap = { [key: string]: string | undefined };
-export const VolumeGroupVolumePropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeGroupVolumePropertiesTagsMap>;
+export const VolumeGroupVolumePropertiesTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeGroupVolumePropertiesTagsMap>;
 
 /** Availability Zone */
 export type VolumeGroupVolumePropertiesZonesList = Array<string>;
-export const VolumeGroupVolumePropertiesZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeGroupVolumePropertiesZonesList>;
+export const VolumeGroupVolumePropertiesZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumeGroupVolumePropertiesZonesList>;
 
 /** The service level of the file system */
 export type VolumePropertiesServiceLevel =
@@ -3164,9 +3114,8 @@ export const VolumePropertiesServiceLevel = S.String;
 
 /** Specify the protocol types for the volume. Supported values are NFSv3, NFSv4.1, and CIFS. For SMB volumes, specify CIFS. The value SMB isn't supported in the protocolTypes property. Default: NFSv3 */
 export type VolumePropertiesProtocolTypesList = Array<string>;
-export const VolumePropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumePropertiesProtocolTypesList>;
+export const VolumePropertiesProtocolTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePropertiesProtocolTypesList>;
 
 /** The original value of the network features type available to the volume at the time it was created. */
 export type VolumePropertiesNetworkFeatures =
@@ -3361,15 +3310,13 @@ export const VolumePropertiesAvsDataStore = S.String;
 
 /** Data store resource unique identifier */
 export type VolumePropertiesDataStoreResourceIdList = Array<string>;
-export const VolumePropertiesDataStoreResourceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumePropertiesDataStoreResourceIdList>;
+export const VolumePropertiesDataStoreResourceIdList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePropertiesDataStoreResourceIdList>;
 
 /** Application specific placement rules for the particular volume */
 export type VolumePropertiesPlacementRulesList = Array<PlacementKeyValuePairs>;
-export const VolumePropertiesPlacementRulesList = /*@__PURE__*/ S.Array(
-  PlacementKeyValuePairs,
-) as any as S.Schema<VolumePropertiesPlacementRulesList>;
+export const VolumePropertiesPlacementRulesList =
+  VolumeGroupMetaDataInputGlobalPlacementRulesList as any as S.Schema<VolumePropertiesPlacementRulesList>;
 
 /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
 export type VolumePropertiesEnableSubvolumes = "Enabled" | "Disabled";
@@ -3642,10 +3589,8 @@ export const CreateVolumeGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateVolumeQuotaRuleRequestTagsMap = { [key: string]: string | undefined };
-export const CreateVolumeQuotaRuleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateVolumeQuotaRuleRequestTagsMap>;
+export const CreateVolumeQuotaRuleRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateVolumeQuotaRuleRequestTagsMap>;
 
 /** Type of quota */
 export type QuotaType =
@@ -3719,10 +3664,8 @@ export const CreateVolumeQuotaRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateVolumeQuotaRuleResponseTagsMap = { [key: string]: string | undefined };
-export const CreateVolumeQuotaRuleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateVolumeQuotaRuleResponseTagsMap>;
+export const CreateVolumeQuotaRuleResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateVolumeQuotaRuleResponseTagsMap>;
 
 /** Volume Quota Rule properties */
 export interface VolumeQuotaRulesProperties {
@@ -3800,9 +3743,8 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccountResponse",
-}) as any as S.Schema<DeleteAccountResponse>;
+export const DeleteAccountResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeleteBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3834,9 +3776,8 @@ export const DeleteBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackupRequest" }) as any as S.Schema<DeleteBackupRequest>;
 
 export interface DeleteBackupResponse {}
-export const DeleteBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupResponse",
-}) as any as S.Schema<DeleteBackupResponse>;
+export const DeleteBackupResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBackupResponse>;
 
 export interface DeleteBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3867,9 +3808,8 @@ export const DeleteBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBackupPolicyRequest>;
 
 export interface DeleteBackupPolicyResponse {}
-export const DeleteBackupPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupPolicyResponse",
-}) as any as S.Schema<DeleteBackupPolicyResponse>;
+export const DeleteBackupPolicyResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBackupPolicyResponse>;
 
 export interface DeleteBackupVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3898,9 +3838,8 @@ export const DeleteBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackupVaultRequest" }) as any as S.Schema<DeleteBackupVaultRequest>;
 
 export interface DeleteBackupVaultResponse {}
-export const DeleteBackupVaultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupVaultResponse",
-}) as any as S.Schema<DeleteBackupVaultResponse>;
+export const DeleteBackupVaultResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBackupVaultResponse>;
 
 export interface DeleteBucketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3935,9 +3874,8 @@ export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBucketRequest" }) as any as S.Schema<DeleteBucketRequest>;
 
 export interface DeleteBucketResponse {}
-export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBucketResponse",
-}) as any as S.Schema<DeleteBucketResponse>;
+export const DeleteBucketResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBucketResponse>;
 
 export interface DeleteCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3969,9 +3907,8 @@ export const DeleteCachRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCachRequest" }) as any as S.Schema<DeleteCachRequest>;
 
 export interface DeleteCachResponse {}
-export const DeleteCachResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCachResponse",
-}) as any as S.Schema<DeleteCachResponse>;
+export const DeleteCachResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteCachResponse>;
 
 export interface DeletePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4000,9 +3937,8 @@ export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePoolRequest" }) as any as S.Schema<DeletePoolRequest>;
 
 export interface DeletePoolResponse {}
-export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePoolResponse",
-}) as any as S.Schema<DeletePoolResponse>;
+export const DeletePoolResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeletePoolResponse>;
 
 export interface DeleteSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4037,9 +3973,8 @@ export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSnapshotRequest" }) as any as S.Schema<DeleteSnapshotRequest>;
 
 export interface DeleteSnapshotResponse {}
-export const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSnapshotResponse",
-}) as any as S.Schema<DeleteSnapshotResponse>;
+export const DeleteSnapshotResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteSnapshotResponse>;
 
 export interface DeleteSnapshotPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4070,9 +4005,8 @@ export const DeleteSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSnapshotPolicyRequest>;
 
 export interface DeleteSnapshotPolicyResponse {}
-export const DeleteSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSnapshotPolicyResponse",
-}) as any as S.Schema<DeleteSnapshotPolicyResponse>;
+export const DeleteSnapshotPolicyResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteSnapshotPolicyResponse>;
 
 export interface DeleteVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4107,9 +4041,8 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeResponse",
-}) as any as S.Schema<DeleteVolumeResponse>;
+export const DeleteVolumeResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteVolumeResponse>;
 
 export interface DeleteVolumeGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4138,9 +4071,8 @@ export const DeleteVolumeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeGroupRequest" }) as any as S.Schema<DeleteVolumeGroupRequest>;
 
 export interface DeleteVolumeGroupResponse {}
-export const DeleteVolumeGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeGroupResponse",
-}) as any as S.Schema<DeleteVolumeGroupResponse>;
+export const DeleteVolumeGroupResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteVolumeGroupResponse>;
 
 export interface DeleteVolumeQuotaRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4177,9 +4109,8 @@ export const DeleteVolumeQuotaRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeQuotaRuleRequest>;
 
 export interface DeleteVolumeQuotaRuleResponse {}
-export const DeleteVolumeQuotaRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeQuotaRuleResponse",
-}) as any as S.Schema<DeleteVolumeQuotaRuleResponse>;
+export const DeleteVolumeQuotaRuleResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteVolumeQuotaRuleResponse>;
 
 export interface DeleteVolumeReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4213,9 +4144,8 @@ export const DeleteVolumeReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeReplicationRequest>;
 
 export interface DeleteVolumeReplicationResponse {}
-export const DeleteVolumeReplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteVolumeReplicationResponse" },
-) as any as S.Schema<DeleteVolumeReplicationResponse>;
+export const DeleteVolumeReplicationResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<DeleteVolumeReplicationResponse>;
 
 export interface FinalizeVolumeExternalReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4249,11 +4179,8 @@ export const FinalizeVolumeExternalReplicationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FinalizeVolumeExternalReplicationRequest>;
 
 export interface FinalizeVolumeExternalReplicationResponse {}
-export const FinalizeVolumeExternalReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FinalizeVolumeExternalReplicationResponse",
-}) as any as S.Schema<FinalizeVolumeExternalReplicationResponse>;
+export const FinalizeVolumeExternalReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<FinalizeVolumeExternalReplicationResponse>;
 
 export interface FinalizeVolumeRelocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4287,11 +4214,8 @@ export const FinalizeVolumeRelocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinalizeVolumeRelocationRequest>;
 
 export interface FinalizeVolumeRelocationResponse {}
-export const FinalizeVolumeRelocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FinalizeVolumeRelocationResponse",
-}) as any as S.Schema<FinalizeVolumeRelocationResponse>;
+export const FinalizeVolumeRelocationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<FinalizeVolumeRelocationResponse>;
 
 export interface GenerateBucketAkvCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4331,11 +4255,8 @@ export const GenerateBucketAkvCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateBucketAkvCredentialsRequest>;
 
 export interface GenerateBucketAkvCredentialsResponse {}
-export const GenerateBucketAkvCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateBucketAkvCredentialsResponse",
-}) as any as S.Schema<GenerateBucketAkvCredentialsResponse>;
+export const GenerateBucketAkvCredentialsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<GenerateBucketAkvCredentialsResponse>;
 
 export interface GenerateBucketCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4418,10 +4339,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetAccountResponseIdentityUserAssignedIdentitiesMap = {
@@ -4598,15 +4517,7 @@ export interface GetBackupResponse {
   /** Backup Properties */
   properties: BackupProperties;
 }
-export const GetBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: BackupProperties,
-  }),
-).annotate({ identifier: "GetBackupResponse" }) as any as S.Schema<GetBackupResponse>;
+export const GetBackupResponse = CreateBackupResponse as any as S.Schema<GetBackupResponse>;
 
 export interface GetBackupLatestStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4706,10 +4617,8 @@ export const GetBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBackupPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBackupPolicyResponseTagsMap>;
+export const GetBackupPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupPolicyResponseTagsMap>;
 
 export interface GetBackupPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4770,10 +4679,8 @@ export const GetBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBackupVaultResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupVaultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBackupVaultResponseTagsMap>;
+export const GetBackupVaultResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupVaultResponseTagsMap>;
 
 export interface GetBackupVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4888,16 +4795,13 @@ export const GetCachRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCachResponseTagsMap = { [key: string]: string | undefined };
-export const GetCachResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCachResponseTagsMap>;
+export const GetCachResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCachResponseTagsMap>;
 
 /** The availability zones. */
 export type GetCachResponseZonesList = Array<string>;
-export const GetCachResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCachResponseZonesList>;
+export const GetCachResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<GetCachResponseZonesList>;
 
 export interface GetCachResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4919,19 +4823,7 @@ export interface GetCachResponse {
   /** The availability zones. */
   zones?: GetCachResponseZonesList;
 }
-export const GetCachResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetCachResponseTagsMap),
-    location: S.String,
-    properties: CacheProperties,
-    etag: S.optional(S.String),
-    zones: S.optional(GetCachResponseZonesList),
-  }),
-).annotate({ identifier: "GetCachResponse" }) as any as S.Schema<GetCachResponse>;
+export const GetCachResponse = CachesPoolChangeResponse as any as S.Schema<GetCachResponse>;
 
 export interface GetNetAppResourceQuotaLimitRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5039,17 +4931,8 @@ export interface GetNetAppResourceQuotaLimitsAccountResponse {
   /** QuotaItem properties */
   properties?: QuotaItemProperties;
 }
-export const GetNetAppResourceQuotaLimitsAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(QuotaItemProperties),
-  }),
-).annotate({
-  identifier: "GetNetAppResourceQuotaLimitsAccountResponse",
-}) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountResponse>;
+export const GetNetAppResourceQuotaLimitsAccountResponse =
+  GetNetAppResourceQuotaLimitResponse as any as S.Schema<GetNetAppResourceQuotaLimitsAccountResponse>;
 
 export interface GetNetAppResourceRegionInfosRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5245,10 +5128,8 @@ export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPoolResponseTagsMap>;
+export const GetPoolResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPoolResponseTagsMap>;
 
 /** The service level of the file system */
 export type PoolPropertiesServiceLevel =
@@ -5525,16 +5406,7 @@ export interface GetSnapshotResponse {
   /** Resource location */
   location: string;
 }
-export const GetSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SnapshotProperties),
-    location: S.String,
-  }),
-).annotate({ identifier: "GetSnapshotResponse" }) as any as S.Schema<GetSnapshotResponse>;
+export const GetSnapshotResponse = CreateSnapshotResponse as any as S.Schema<GetSnapshotResponse>;
 
 export interface GetSnapshotPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5564,10 +5436,8 @@ export const GetSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSnapshotPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetSnapshotPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSnapshotPolicyResponseTagsMap>;
+export const GetSnapshotPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetSnapshotPolicyResponseTagsMap>;
 
 export interface GetSnapshotPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5587,20 +5457,8 @@ export interface GetSnapshotPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSnapshotPolicyResponseTagsMap),
-    location: S.String,
-    properties: SnapshotPolicyProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSnapshotPolicyResponse",
-}) as any as S.Schema<GetSnapshotPolicyResponse>;
+export const GetSnapshotPolicyResponse =
+  CreateSnapshotPolicyResponse as any as S.Schema<GetSnapshotPolicyResponse>;
 
 export interface GetVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5633,16 +5491,13 @@ export const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVolumeResponseTagsMap = { [key: string]: string | undefined };
-export const GetVolumeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVolumeResponseTagsMap>;
+export const GetVolumeResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVolumeResponseTagsMap>;
 
 /** The availability zones. */
 export type GetVolumeResponseZonesList = Array<string>;
-export const GetVolumeResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVolumeResponseZonesList>;
+export const GetVolumeResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<GetVolumeResponseZonesList>;
 
 export interface GetVolumeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5765,10 +5620,8 @@ export const GetVolumeQuotaRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVolumeQuotaRuleResponseTagsMap = { [key: string]: string | undefined };
-export const GetVolumeQuotaRuleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVolumeQuotaRuleResponseTagsMap>;
+export const GetVolumeQuotaRuleResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVolumeQuotaRuleResponseTagsMap>;
 
 export interface GetVolumeQuotaRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5786,19 +5639,8 @@ export interface GetVolumeQuotaRuleResponse {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesProperties;
 }
-export const GetVolumeQuotaRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetVolumeQuotaRuleResponseTagsMap),
-    location: S.String,
-    properties: S.optional(VolumeQuotaRulesProperties),
-  }),
-).annotate({
-  identifier: "GetVolumeQuotaRuleResponse",
-}) as any as S.Schema<GetVolumeQuotaRuleResponse>;
+export const GetVolumeQuotaRuleResponse =
+  CreateVolumeQuotaRuleResponse as any as S.Schema<GetVolumeQuotaRuleResponse>;
 
 export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5821,19 +5663,15 @@ export const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NetAppAccountTagsMap = { [key: string]: string | undefined };
-export const NetAppAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetAppAccountTagsMap>;
+export const NetAppAccountTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<NetAppAccountTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type NetAppAccountIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const NetAppAccountIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<NetAppAccountIdentityUserAssignedIdentitiesMap>;
+export const NetAppAccountIdentityUserAssignedIdentitiesMap =
+  GetAccountResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<NetAppAccountIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface NetAppAccountIdentity {
@@ -5971,15 +5809,7 @@ export interface Backup {
   /** Backup Properties */
   properties: BackupProperties;
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: BackupProperties,
-  }),
-).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
+export const Backup = CreateBackupResponse as any as S.Schema<Backup>;
 
 /** The Backup items on this page */
 export type BackupsListValueList = Array<Backup>;
@@ -6028,10 +5858,8 @@ export const ListBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BackupPolicyTagsMap = { [key: string]: string | undefined };
-export const BackupPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupPolicyTagsMap>;
+export const BackupPolicyTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<BackupPolicyTagsMap>;
 
 /** Backup policy information */
 export interface BackupPolicy {
@@ -6052,18 +5880,7 @@ export interface BackupPolicy {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(BackupPolicyTagsMap),
-    location: S.String,
-    properties: BackupPolicyProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
+export const BackupPolicy = GetBackupPolicyResponse as any as S.Schema<BackupPolicy>;
 
 /** The BackupPolicy items on this page */
 export type BackupPoliciesListValueList = Array<BackupPolicy>;
@@ -6112,10 +5929,8 @@ export const ListBackupVaultByNetAppAccountRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type BackupVaultTagsMap = { [key: string]: string | undefined };
-export const BackupVaultTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupVaultTagsMap>;
+export const BackupVaultTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultTagsMap>;
 
 /** Backup Vault information */
 export interface BackupVault {
@@ -6134,17 +5949,7 @@ export interface BackupVault {
   /** Backup Vault Properties */
   properties?: BackupVaultProperties;
 }
-export const BackupVault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(BackupVaultTagsMap),
-    location: S.String,
-    properties: S.optional(BackupVaultProperties),
-  }),
-).annotate({ identifier: "BackupVault" }) as any as S.Schema<BackupVault>;
+export const BackupVault = GetBackupVaultResponse as any as S.Schema<BackupVault>;
 
 /** The BackupVault items on this page */
 export type BackupVaultsListValueList = Array<BackupVault>;
@@ -6208,15 +6013,7 @@ export interface Bucket {
   /** Bucket properties */
   properties?: BucketProperties;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BucketProperties),
-  }),
-).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
+export const Bucket = GetBucketResponse as any as S.Schema<Bucket>;
 
 /** The Bucket items on this page */
 export type BucketListValueList = Array<Bucket>;
@@ -6266,10 +6063,7 @@ export const ListCachesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CacheTagsMap = { [key: string]: string | undefined };
-export const CacheTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CacheTagsMap>;
+export const CacheTagsMap = AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CacheTagsMap>;
 
 /** The availability zones. */
 export type CacheZonesList = Array<string>;
@@ -6621,9 +6415,8 @@ export const MetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.
 
 /** The supported time grain types for the metrics. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+export const MetricSpecificationSupportedTimeGrainTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Dimension of blobs, possibly be blob type or access tier. */
 export interface Dimension {
@@ -6714,18 +6507,12 @@ export interface LogSpecification {
   /** Display name of log specification. */
   displayName?: string;
 }
-export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({ identifier: "LogSpecification" }) as any as S.Schema<LogSpecification>;
+export const LogSpecification = Dimension as any as S.Schema<LogSpecification>;
 
 /** Log specification of operation. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
-  LogSpecification,
-) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
+export const ServiceSpecificationLogSpecificationsList =
+  MetricSpecificationDimensionsList as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
 /** One property of operation, include metric specifications. */
 export interface ServiceSpecification {
@@ -6817,10 +6604,8 @@ export const ListPoolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CapacityPoolTagsMap = { [key: string]: string | undefined };
-export const CapacityPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CapacityPoolTagsMap>;
+export const CapacityPoolTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CapacityPoolTagsMap>;
 
 /** Capacity pool resource */
 export interface CapacityPool {
@@ -6841,18 +6626,7 @@ export interface CapacityPool {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const CapacityPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CapacityPoolTagsMap),
-    location: S.String,
-    properties: PoolProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "CapacityPool" }) as any as S.Schema<CapacityPool>;
+export const CapacityPool = GetPoolResponse as any as S.Schema<CapacityPool>;
 
 /** The CapacityPool items on this page */
 export type CapacityPoolListValueList = Array<CapacityPool>;
@@ -6975,10 +6749,8 @@ export const ListSnapshotPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SnapshotPolicyTagsMap = { [key: string]: string | undefined };
-export const SnapshotPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SnapshotPolicyTagsMap>;
+export const SnapshotPolicyTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<SnapshotPolicyTagsMap>;
 
 /** Snapshot policy information */
 export interface SnapshotPolicy {
@@ -7062,14 +6834,11 @@ export const ListSnapshotPolicyVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VolumeTagsMap = { [key: string]: string | undefined };
-export const VolumeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeTagsMap>;
+export const VolumeTagsMap = AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeTagsMap>;
 
 /** The availability zones. */
 export type VolumeZonesList = Array<string>;
-export const VolumeZonesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<VolumeZonesList>;
+export const VolumeZonesList = CacheZonesList as any as S.Schema<VolumeZonesList>;
 
 /** Volume resource */
 export interface Volume {
@@ -7170,16 +6939,7 @@ export interface Snapshot {
   /** Resource location */
   location: string;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SnapshotProperties),
-    location: S.String,
-  }),
-).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
+export const Snapshot = CreateSnapshotResponse as any as S.Schema<Snapshot>;
 
 /** The Snapshot items on this page */
 export type SnapshotsListValueList = Array<Snapshot>;
@@ -7412,10 +7172,8 @@ export const ListVolumeQuotaRuleByVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VolumeQuotaRuleTagsMap = { [key: string]: string | undefined };
-export const VolumeQuotaRuleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeQuotaRuleTagsMap>;
+export const VolumeQuotaRuleTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeQuotaRuleTagsMap>;
 
 /** Quota Rule of a Volume */
 export interface VolumeQuotaRule {
@@ -7588,9 +7346,8 @@ export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Volume items on this page */
 export type VolumeListValueList = Array<Volume>;
-export const VolumeListValueList = /*@__PURE__*/ S.Array(
-  Volume,
-) as any as S.Schema<VolumeListValueList>;
+export const VolumeListValueList =
+  SnapshotPolicyVolumeListValueList as any as S.Schema<VolumeListValueList>;
 
 /** List of volume resources */
 export interface VolumeList {
@@ -7599,12 +7356,7 @@ export interface VolumeList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VolumeList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: VolumeListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "VolumeList" }) as any as S.Schema<VolumeList>;
+export const VolumeList = SnapshotPolicyVolumeList as any as S.Schema<VolumeList>;
 
 export interface MigrateBackupsUnderAccountBackupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7635,11 +7387,8 @@ export const MigrateBackupsUnderAccountBackupsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MigrateBackupsUnderAccountBackupsRequest>;
 
 export interface MigrateBackupsUnderAccountBackupsResponse {}
-export const MigrateBackupsUnderAccountBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrateBackupsUnderAccountBackupsResponse",
-}) as any as S.Schema<MigrateBackupsUnderAccountBackupsResponse>;
+export const MigrateBackupsUnderAccountBackupsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<MigrateBackupsUnderAccountBackupsResponse>;
 
 export interface MigrateBackupsUnderVolumeBackupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7676,11 +7425,8 @@ export const MigrateBackupsUnderVolumeBackupsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<MigrateBackupsUnderVolumeBackupsRequest>;
 
 export interface MigrateBackupsUnderVolumeBackupsResponse {}
-export const MigrateBackupsUnderVolumeBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrateBackupsUnderVolumeBackupsResponse",
-}) as any as S.Schema<MigrateBackupsUnderVolumeBackupsResponse>;
+export const MigrateBackupsUnderVolumeBackupsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<MigrateBackupsUnderVolumeBackupsResponse>;
 
 export interface NetAppResourceQueryRegionInfoRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7706,10 +7452,8 @@ export const NetAppResourceQueryRegionInfoRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
+export const PoolsCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
 
 /** The service level of the file system */
 export type PoolPropertiesInputServiceLevel =
@@ -7793,10 +7537,8 @@ export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
+export const PoolsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
 
 export interface PoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7866,11 +7608,8 @@ export const RefreshBucketCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshBucketCertificateRequest>;
 
 export interface RefreshBucketCertificateResponse {}
-export const RefreshBucketCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RefreshBucketCertificateResponse",
-}) as any as S.Schema<RefreshBucketCertificateResponse>;
+export const RefreshBucketCertificateResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<RefreshBucketCertificateResponse>;
 
 export interface RenewAccountCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7898,9 +7637,8 @@ export const RenewAccountCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenewAccountCredentialsRequest>;
 
 export interface RenewAccountCredentialsResponse {}
-export const RenewAccountCredentialsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RenewAccountCredentialsResponse" },
-) as any as S.Schema<RenewAccountCredentialsResponse>;
+export const RenewAccountCredentialsResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<RenewAccountCredentialsResponse>;
 
 export interface ResetCachSmbPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7935,16 +7673,13 @@ export const ResetCachSmbPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ResetCachSmbPasswordResponseTagsMap = { [key: string]: string | undefined };
-export const ResetCachSmbPasswordResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResetCachSmbPasswordResponseTagsMap>;
+export const ResetCachSmbPasswordResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<ResetCachSmbPasswordResponseTagsMap>;
 
 /** The availability zones. */
 export type ResetCachSmbPasswordResponseZonesList = Array<string>;
-export const ResetCachSmbPasswordResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResetCachSmbPasswordResponseZonesList>;
+export const ResetCachSmbPasswordResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ResetCachSmbPasswordResponseZonesList>;
 
 export interface ResetCachSmbPasswordResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7966,21 +7701,8 @@ export interface ResetCachSmbPasswordResponse {
   /** The availability zones. */
   zones?: ResetCachSmbPasswordResponseZonesList;
 }
-export const ResetCachSmbPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ResetCachSmbPasswordResponseTagsMap),
-    location: S.String,
-    properties: CacheProperties,
-    etag: S.optional(S.String),
-    zones: S.optional(ResetCachSmbPasswordResponseZonesList),
-  }),
-).annotate({
-  identifier: "ResetCachSmbPasswordResponse",
-}) as any as S.Schema<ResetCachSmbPasswordResponse>;
+export const ResetCachSmbPasswordResponse =
+  CachesCreateOrUpdateResponse as any as S.Schema<ResetCachSmbPasswordResponse>;
 
 export interface ResetVolumeCifsPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8014,15 +7736,13 @@ export const ResetVolumeCifsPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetVolumeCifsPasswordRequest>;
 
 export interface ResetVolumeCifsPasswordResponse {}
-export const ResetVolumeCifsPasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "ResetVolumeCifsPasswordResponse" },
-) as any as S.Schema<ResetVolumeCifsPasswordResponse>;
+export const ResetVolumeCifsPasswordResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<ResetVolumeCifsPasswordResponse>;
 
 /** List of files to be restored */
 export type RestoreBackupsUnderBackupVaultFilesRequestFileListList = Array<string>;
-export const RestoreBackupsUnderBackupVaultFilesRequestFileListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequestFileListList>;
+export const RestoreBackupsUnderBackupVaultFilesRequestFileListList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequestFileListList>;
 
 export interface RestoreBackupsUnderBackupVaultFilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8065,17 +7785,13 @@ export const RestoreBackupsUnderBackupVaultFilesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequest>;
 
 export interface RestoreBackupsUnderBackupVaultFilesResponse {}
-export const RestoreBackupsUnderBackupVaultFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreBackupsUnderBackupVaultFilesResponse",
-}) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesResponse>;
+export const RestoreBackupsUnderBackupVaultFilesResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<RestoreBackupsUnderBackupVaultFilesResponse>;
 
 /** List of files to be restored */
 export type RestoreSnapshotFilesRequestFilePathsList = Array<string>;
-export const RestoreSnapshotFilesRequestFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreSnapshotFilesRequestFilePathsList>;
+export const RestoreSnapshotFilesRequestFilePathsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<RestoreSnapshotFilesRequestFilePathsList>;
 
 export interface RestoreSnapshotFilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8118,9 +7834,8 @@ export const RestoreSnapshotFilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreSnapshotFilesRequest>;
 
 export interface RestoreSnapshotFilesResponse {}
-export const RestoreSnapshotFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreSnapshotFilesResponse",
-}) as any as S.Schema<RestoreSnapshotFilesResponse>;
+export const RestoreSnapshotFilesResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<RestoreSnapshotFilesResponse>;
 
 export interface SetNetAppResourceQueryNetworkSiblingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8164,9 +7879,8 @@ export const NetworkSiblingSetProvisioningState = S.String;
 
 /** Volume resource Ids */
 export type NicInfoVolumeResourceIdsList = Array<string>;
-export const NicInfoVolumeResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NicInfoVolumeResourceIdsList>;
+export const NicInfoVolumeResourceIdsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<NicInfoVolumeResourceIdsList>;
 
 /** NIC information and list of volumes for which the NIC has the primary mount IP Address. */
 export interface NicInfo {
@@ -8246,18 +7960,13 @@ export const TransferVolumesPerformReplicationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TransferVolumesPerformReplicationRequest>;
 
 export interface TransferVolumesPerformReplicationResponse {}
-export const TransferVolumesPerformReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TransferVolumesPerformReplicationResponse",
-}) as any as S.Schema<TransferVolumesPerformReplicationResponse>;
+export const TransferVolumesPerformReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<TransferVolumesPerformReplicationResponse>;
 
 /** Resource tags */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateAccountRequestIdentityUserAssignedIdentitiesMap = {
@@ -8320,19 +8029,15 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateAccountResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateAccountResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<UpdateAccountResponseIdentityUserAssignedIdentitiesMap>;
+export const UpdateAccountResponseIdentityUserAssignedIdentitiesMap =
+  GetAccountResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateAccountResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateAccountResponseIdentity {
@@ -8344,16 +8049,8 @@ export interface UpdateAccountResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateAccountResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateAccountResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UpdateAccountResponseIdentityUserAssignedIdentitiesMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountResponseIdentity",
-}) as any as S.Schema<UpdateAccountResponseIdentity>;
+export const UpdateAccountResponseIdentity =
+  GetAccountResponseIdentity as any as S.Schema<UpdateAccountResponseIdentity>;
 
 export interface UpdateAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8375,19 +8072,7 @@ export interface UpdateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateAccountResponseIdentity;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAccountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AccountProperties),
-    etag: S.optional(S.String),
-    identity: S.optional(UpdateAccountResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 /** Backup patch properties */
 export interface BackupPatchProperties {
@@ -8444,22 +8129,12 @@ export interface UpdateBackupResponse {
   /** Backup Properties */
   properties: BackupProperties;
 }
-export const UpdateBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: BackupProperties,
-  }),
-).annotate({ identifier: "UpdateBackupResponse" }) as any as S.Schema<UpdateBackupResponse>;
+export const UpdateBackupResponse = CreateBackupResponse as any as S.Schema<UpdateBackupResponse>;
 
 /** Resource tags */
 export type UpdateBackupPolicyRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupPolicyRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBackupPolicyRequestTagsMap>;
+export const UpdateBackupPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupPolicyRequestTagsMap>;
 
 export interface UpdateBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8500,10 +8175,8 @@ export const UpdateBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBackupPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBackupPolicyResponseTagsMap>;
+export const UpdateBackupPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupPolicyResponseTagsMap>;
 
 export interface UpdateBackupPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8523,27 +8196,13 @@ export interface UpdateBackupPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const UpdateBackupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBackupPolicyResponseTagsMap),
-    location: S.String,
-    properties: BackupPolicyProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBackupPolicyResponse",
-}) as any as S.Schema<UpdateBackupPolicyResponse>;
+export const UpdateBackupPolicyResponse =
+  CreateBackupPolicyResponse as any as S.Schema<UpdateBackupPolicyResponse>;
 
 /** Resource tags */
 export type UpdateBackupVaultRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupVaultRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBackupVaultRequestTagsMap>;
+export const UpdateBackupVaultRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupVaultRequestTagsMap>;
 
 export interface UpdateBackupVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8576,10 +8235,8 @@ export const UpdateBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBackupVaultResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupVaultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBackupVaultResponseTagsMap>;
+export const UpdateBackupVaultResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupVaultResponseTagsMap>;
 
 export interface UpdateBackupVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8597,19 +8254,8 @@ export interface UpdateBackupVaultResponse {
   /** Backup Vault Properties */
   properties?: BackupVaultProperties;
 }
-export const UpdateBackupVaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBackupVaultResponseTagsMap),
-    location: S.String,
-    properties: S.optional(BackupVaultProperties),
-  }),
-).annotate({
-  identifier: "UpdateBackupVaultResponse",
-}) as any as S.Schema<UpdateBackupVaultResponse>;
+export const UpdateBackupVaultResponse =
+  BackupVaultsCreateOrUpdateResponse as any as S.Schema<UpdateBackupVaultResponse>;
 
 /** Properties of the server managing the lifecycle of volume buckets */
 export type BucketServerPatchProperties = BucketServerPropertiesInput;
@@ -8688,28 +8334,17 @@ export interface UpdateBucketResponse {
   /** Bucket properties */
   properties?: BucketProperties;
 }
-export const UpdateBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BucketProperties),
-  }),
-).annotate({ identifier: "UpdateBucketResponse" }) as any as S.Schema<UpdateBucketResponse>;
+export const UpdateBucketResponse = GetBucketResponse as any as S.Schema<UpdateBucketResponse>;
 
 /** Resource tags. */
 export type UpdateCachRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCachRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCachRequestTagsMap>;
+export const UpdateCachRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCachRequestTagsMap>;
 
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
 export type CacheUpdatePropertiesProtocolTypesList = Array<ProtocolTypes | (string & {})>;
-export const CacheUpdatePropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
-  ProtocolTypes,
-) as any as S.Schema<CacheUpdatePropertiesProtocolTypesList>;
+export const CacheUpdatePropertiesProtocolTypesList =
+  CachePropertiesInputProtocolTypesList as any as S.Schema<CacheUpdatePropertiesProtocolTypesList>;
 
 /** The updatable properties of the Cache. */
 export interface CacheUpdateProperties {
@@ -8780,16 +8415,13 @@ export const UpdateCachRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCachResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCachResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCachResponseTagsMap>;
+export const UpdateCachResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCachResponseTagsMap>;
 
 /** The availability zones. */
 export type UpdateCachResponseZonesList = Array<string>;
-export const UpdateCachResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCachResponseZonesList>;
+export const UpdateCachResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<UpdateCachResponseZonesList>;
 
 export interface UpdateCachResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8811,19 +8443,7 @@ export interface UpdateCachResponse {
   /** The availability zones. */
   zones?: UpdateCachResponseZonesList;
 }
-export const UpdateCachResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCachResponseTagsMap),
-    location: S.String,
-    properties: CacheProperties,
-    etag: S.optional(S.String),
-    zones: S.optional(UpdateCachResponseZonesList),
-  }),
-).annotate({ identifier: "UpdateCachResponse" }) as any as S.Schema<UpdateCachResponse>;
+export const UpdateCachResponse = CachesPoolChangeResponse as any as S.Schema<UpdateCachResponse>;
 
 /** Network features available to the volume. */
 export type UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures =
@@ -8869,10 +8489,8 @@ export const UpdateNetAppResourceNetworkSiblingSetRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags */
 export type UpdatePoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePoolRequestTagsMap>;
+export const UpdatePoolRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePoolRequestTagsMap>;
 
 /** The qos type of the pool */
 export type QosType = "Auto" | "Manual";
@@ -8935,10 +8553,8 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePoolResponseTagsMap>;
+export const UpdatePoolResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePoolResponseTagsMap>;
 
 export interface UpdatePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8958,18 +8574,7 @@ export interface UpdatePoolResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdatePoolResponseTagsMap),
-    location: S.String,
-    properties: PoolProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdatePoolResponse" }) as any as S.Schema<UpdatePoolResponse>;
+export const UpdatePoolResponse = GetPoolResponse as any as S.Schema<UpdatePoolResponse>;
 
 export interface UpdateSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9017,23 +8622,13 @@ export interface UpdateSnapshotResponse {
   /** Resource location */
   location: string;
 }
-export const UpdateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SnapshotProperties),
-    location: S.String,
-  }),
-).annotate({ identifier: "UpdateSnapshotResponse" }) as any as S.Schema<UpdateSnapshotResponse>;
+export const UpdateSnapshotResponse =
+  CreateSnapshotResponse as any as S.Schema<UpdateSnapshotResponse>;
 
 /** Resource tags */
 export type UpdateSnapshotPolicyRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSnapshotPolicyRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSnapshotPolicyRequestTagsMap>;
+export const UpdateSnapshotPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSnapshotPolicyRequestTagsMap>;
 
 export interface UpdateSnapshotPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9074,10 +8669,8 @@ export const UpdateSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSnapshotPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSnapshotPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSnapshotPolicyResponseTagsMap>;
+export const UpdateSnapshotPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSnapshotPolicyResponseTagsMap>;
 
 export interface UpdateSnapshotPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9097,27 +8690,13 @@ export interface UpdateSnapshotPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const UpdateSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSnapshotPolicyResponseTagsMap),
-    location: S.String,
-    properties: SnapshotPolicyProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSnapshotPolicyResponse",
-}) as any as S.Schema<UpdateSnapshotPolicyResponse>;
+export const UpdateSnapshotPolicyResponse =
+  CreateSnapshotPolicyResponse as any as S.Schema<UpdateSnapshotPolicyResponse>;
 
 /** Resource tags */
 export type UpdateVolumeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVolumeRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeRequestTagsMap>;
+export const UpdateVolumeRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeRequestTagsMap>;
 
 /** The service level of the file system */
 export type ServiceLevel = "Standard" | "Premium" | "Ultra" | "StandardZRS" | "Flexible";
@@ -9125,28 +8704,21 @@ export const ServiceLevel = S.String;
 
 /** Export policy rule */
 export type VolumePatchPropertiesExportPolicyRulesList = Array<ExportPolicyRule>;
-export const VolumePatchPropertiesExportPolicyRulesList = /*@__PURE__*/ S.Array(
-  ExportPolicyRule,
-) as any as S.Schema<VolumePatchPropertiesExportPolicyRulesList>;
+export const VolumePatchPropertiesExportPolicyRulesList =
+  CachePropertiesExportPolicyRulesList as any as S.Schema<VolumePatchPropertiesExportPolicyRulesList>;
 
 /** Set of export policy rules */
 export interface VolumePatchPropertiesExportPolicy {
   /** Export policy rule */
   rules?: VolumePatchPropertiesExportPolicyRulesList;
 }
-export const VolumePatchPropertiesExportPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rules: S.optional(VolumePatchPropertiesExportPolicyRulesList),
-  }),
-).annotate({
-  identifier: "VolumePatchPropertiesExportPolicy",
-}) as any as S.Schema<VolumePatchPropertiesExportPolicy>;
+export const VolumePatchPropertiesExportPolicy =
+  CachePropertiesExportPolicy as any as S.Schema<VolumePatchPropertiesExportPolicy>;
 
 /** Specify the protocol types for the volume. Supported values are NFSv3, NFSv4.1, and CIFS. For SMB volumes, specify CIFS. The value SMB isn't supported in the protocolTypes property. Default: NFSv3 */
 export type VolumePatchPropertiesProtocolTypesList = Array<string>;
-export const VolumePatchPropertiesProtocolTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumePatchPropertiesProtocolTypesList>;
+export const VolumePatchPropertiesProtocolTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePatchPropertiesProtocolTypesList>;
 
 /** Advanced Ransomware Protection reports (ARP) updatable settings */
 export interface RansomwareProtectionPatchSettings {
@@ -9279,16 +8851,13 @@ export const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVolumeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVolumeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeResponseTagsMap>;
+export const UpdateVolumeResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeResponseTagsMap>;
 
 /** The availability zones. */
 export type UpdateVolumeResponseZonesList = Array<string>;
-export const UpdateVolumeResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVolumeResponseZonesList>;
+export const UpdateVolumeResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<UpdateVolumeResponseZonesList>;
 
 export interface UpdateVolumeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9310,26 +8879,12 @@ export interface UpdateVolumeResponse {
   /** The availability zones. */
   zones?: UpdateVolumeResponseZonesList;
 }
-export const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateVolumeResponseTagsMap),
-    location: S.String,
-    properties: VolumeProperties,
-    etag: S.optional(S.String),
-    zones: S.optional(UpdateVolumeResponseZonesList),
-  }),
-).annotate({ identifier: "UpdateVolumeResponse" }) as any as S.Schema<UpdateVolumeResponse>;
+export const UpdateVolumeResponse = GetVolumeResponse as any as S.Schema<UpdateVolumeResponse>;
 
 /** Resource tags */
 export type UpdateVolumeQuotaRuleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVolumeQuotaRuleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeQuotaRuleRequestTagsMap>;
+export const UpdateVolumeQuotaRuleRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeQuotaRuleRequestTagsMap>;
 
 export interface UpdateVolumeQuotaRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9373,10 +8928,8 @@ export const UpdateVolumeQuotaRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVolumeQuotaRuleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVolumeQuotaRuleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeQuotaRuleResponseTagsMap>;
+export const UpdateVolumeQuotaRuleResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeQuotaRuleResponseTagsMap>;
 
 export interface UpdateVolumeQuotaRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9394,19 +8947,8 @@ export interface UpdateVolumeQuotaRuleResponse {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesProperties;
 }
-export const UpdateVolumeQuotaRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateVolumeQuotaRuleResponseTagsMap),
-    location: S.String,
-    properties: S.optional(VolumeQuotaRulesProperties),
-  }),
-).annotate({
-  identifier: "UpdateVolumeQuotaRuleResponse",
-}) as any as S.Schema<UpdateVolumeQuotaRuleResponse>;
+export const UpdateVolumeQuotaRuleResponse =
+  CreateVolumeQuotaRuleResponse as any as S.Schema<UpdateVolumeQuotaRuleResponse>;
 
 export interface VolumesBreakFileLocksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9446,9 +8988,8 @@ export const VolumesBreakFileLocksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumesBreakFileLocksRequest>;
 
 export interface VolumesBreakFileLocksResponse {}
-export const VolumesBreakFileLocksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumesBreakFileLocksResponse",
-}) as any as S.Schema<VolumesBreakFileLocksResponse>;
+export const VolumesBreakFileLocksResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesBreakFileLocksResponse>;
 
 export interface VolumesBreakReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9485,22 +9026,18 @@ export const VolumesBreakReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumesBreakReplicationRequest>;
 
 export interface VolumesBreakReplicationResponse {}
-export const VolumesBreakReplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "VolumesBreakReplicationResponse" },
-) as any as S.Schema<VolumesBreakReplicationResponse>;
+export const VolumesBreakReplicationResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<VolumesBreakReplicationResponse>;
 
 /** Resource tags. */
 export type VolumesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VolumesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumesCreateOrUpdateRequestTagsMap>;
+export const VolumesCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesCreateOrUpdateRequestTagsMap>;
 
 /** The availability zones. */
 export type VolumesCreateOrUpdateRequestZonesList = Array<string>;
-export const VolumesCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumesCreateOrUpdateRequestZonesList>;
+export const VolumesCreateOrUpdateRequestZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesCreateOrUpdateRequestZonesList>;
 
 export interface VolumesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9547,16 +9084,13 @@ export const VolumesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VolumesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VolumesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumesCreateOrUpdateResponseTagsMap>;
+export const VolumesCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesCreateOrUpdateResponseTagsMap>;
 
 /** The availability zones. */
 export type VolumesCreateOrUpdateResponseZonesList = Array<string>;
-export const VolumesCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumesCreateOrUpdateResponseZonesList>;
+export const VolumesCreateOrUpdateResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesCreateOrUpdateResponseZonesList>;
 
 export interface VolumesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9630,9 +9164,8 @@ export const VolumesListGetGroupIdListForLdapUserRequest = /*@__PURE__*/ S.suspe
 
 /** Group Id list */
 export type GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList = Array<string>;
-export const GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList>;
+export const GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList>;
 
 /** Group Id list for Ldap user */
 export interface GetGroupIdListForLdapUserResponse {
@@ -9649,9 +9182,8 @@ export const GetGroupIdListForLdapUserResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IC-LIF IPs that can be used to connect to the On-prem cluster */
 export type VolumesPeerExternalClusterRequestPeerIpAddressesList = Array<string>;
-export const VolumesPeerExternalClusterRequestPeerIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumesPeerExternalClusterRequestPeerIpAddressesList>;
+export const VolumesPeerExternalClusterRequestPeerIpAddressesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesPeerExternalClusterRequestPeerIpAddressesList>;
 
 export interface VolumesPeerExternalClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9749,9 +9281,8 @@ export const VolumesPoolChangeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumesPoolChangeRequest" }) as any as S.Schema<VolumesPoolChangeRequest>;
 
 export interface VolumesPoolChangeResponse {}
-export const VolumesPoolChangeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumesPoolChangeResponse",
-}) as any as S.Schema<VolumesPoolChangeResponse>;
+export const VolumesPoolChangeResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesPoolChangeResponse>;
 
 export interface VolumesPopulateAvailabilityZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9786,16 +9317,13 @@ export const VolumesPopulateAvailabilityZoneRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type VolumesPopulateAvailabilityZoneResponseTagsMap = { [key: string]: string | undefined };
-export const VolumesPopulateAvailabilityZoneResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumesPopulateAvailabilityZoneResponseTagsMap>;
+export const VolumesPopulateAvailabilityZoneResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesPopulateAvailabilityZoneResponseTagsMap>;
 
 /** The availability zones. */
 export type VolumesPopulateAvailabilityZoneResponseZonesList = Array<string>;
-export const VolumesPopulateAvailabilityZoneResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumesPopulateAvailabilityZoneResponseZonesList>;
+export const VolumesPopulateAvailabilityZoneResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesPopulateAvailabilityZoneResponseZonesList>;
 
 export interface VolumesPopulateAvailabilityZoneResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9817,21 +9345,8 @@ export interface VolumesPopulateAvailabilityZoneResponse {
   /** The availability zones. */
   zones?: VolumesPopulateAvailabilityZoneResponseZonesList;
 }
-export const VolumesPopulateAvailabilityZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(VolumesPopulateAvailabilityZoneResponseTagsMap),
-    location: S.String,
-    properties: VolumeProperties,
-    etag: S.optional(S.String),
-    zones: S.optional(VolumesPopulateAvailabilityZoneResponseZonesList),
-  }),
-).annotate({
-  identifier: "VolumesPopulateAvailabilityZoneResponse",
-}) as any as S.Schema<VolumesPopulateAvailabilityZoneResponse>;
+export const VolumesPopulateAvailabilityZoneResponse =
+  VolumesCreateOrUpdateResponse as any as S.Schema<VolumesPopulateAvailabilityZoneResponse>;
 
 export interface VolumesReestablishReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9868,11 +9383,8 @@ export const VolumesReestablishReplicationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<VolumesReestablishReplicationRequest>;
 
 export interface VolumesReestablishReplicationResponse {}
-export const VolumesReestablishReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VolumesReestablishReplicationResponse",
-}) as any as S.Schema<VolumesReestablishReplicationResponse>;
+export const VolumesReestablishReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<VolumesReestablishReplicationResponse>;
 
 export interface VolumesReInitializeReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9906,11 +9418,8 @@ export const VolumesReInitializeReplicationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<VolumesReInitializeReplicationRequest>;
 
 export interface VolumesReInitializeReplicationResponse {}
-export const VolumesReInitializeReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VolumesReInitializeReplicationResponse",
-}) as any as S.Schema<VolumesReInitializeReplicationResponse>;
+export const VolumesReInitializeReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<VolumesReInitializeReplicationResponse>;
 
 export interface VolumesRelocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9945,9 +9454,8 @@ export const VolumesRelocateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumesRelocateRequest" }) as any as S.Schema<VolumesRelocateRequest>;
 
 export interface VolumesRelocateResponse {}
-export const VolumesRelocateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumesRelocateResponse",
-}) as any as S.Schema<VolumesRelocateResponse>;
+export const VolumesRelocateResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesRelocateResponse>;
 
 export interface VolumesReplicationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10035,11 +9543,8 @@ export const VolumesResyncReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumesResyncReplicationRequest>;
 
 export interface VolumesResyncReplicationResponse {}
-export const VolumesResyncReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VolumesResyncReplicationResponse",
-}) as any as S.Schema<VolumesResyncReplicationResponse>;
+export const VolumesResyncReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<VolumesResyncReplicationResponse>;
 
 export interface VolumesRevertRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10074,9 +9579,8 @@ export const VolumesRevertRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumesRevertRequest" }) as any as S.Schema<VolumesRevertRequest>;
 
 export interface VolumesRevertResponse {}
-export const VolumesRevertResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VolumesRevertResponse",
-}) as any as S.Schema<VolumesRevertResponse>;
+export const VolumesRevertResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesRevertResponse>;
 
 export interface VolumesRevertRelocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10110,9 +9614,8 @@ export const VolumesRevertRelocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumesRevertRelocationRequest>;
 
 export interface VolumesRevertRelocationResponse {}
-export const VolumesRevertRelocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "VolumesRevertRelocationResponse" },
-) as any as S.Schema<VolumesRevertRelocationResponse>;
+export const VolumesRevertRelocationResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<VolumesRevertRelocationResponse>;
 
 export interface VolumesSplitCloneFromParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10147,16 +9650,13 @@ export const VolumesSplitCloneFromParentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VolumesSplitCloneFromParentResponseTagsMap = { [key: string]: string | undefined };
-export const VolumesSplitCloneFromParentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumesSplitCloneFromParentResponseTagsMap>;
+export const VolumesSplitCloneFromParentResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesSplitCloneFromParentResponseTagsMap>;
 
 /** The availability zones. */
 export type VolumesSplitCloneFromParentResponseZonesList = Array<string>;
-export const VolumesSplitCloneFromParentResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumesSplitCloneFromParentResponseZonesList>;
+export const VolumesSplitCloneFromParentResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesSplitCloneFromParentResponseZonesList>;
 
 export interface VolumesSplitCloneFromParentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10178,21 +9678,8 @@ export interface VolumesSplitCloneFromParentResponse {
   /** The availability zones. */
   zones?: VolumesSplitCloneFromParentResponseZonesList;
 }
-export const VolumesSplitCloneFromParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(VolumesSplitCloneFromParentResponseTagsMap),
-    location: S.String,
-    properties: VolumeProperties,
-    etag: S.optional(S.String),
-    zones: S.optional(VolumesSplitCloneFromParentResponseZonesList),
-  }),
-).annotate({
-  identifier: "VolumesSplitCloneFromParentResponse",
-}) as any as S.Schema<VolumesSplitCloneFromParentResponse>;
+export const VolumesSplitCloneFromParentResponse =
+  VolumesCreateOrUpdateResponse as any as S.Schema<VolumesSplitCloneFromParentResponse>;
 
 export type AccountsChangeKeyVaultError = AzureOpError;
 /** Affects existing volumes that are encrypted with Key Vault/Managed HSM, and new volumes. Supports HSM to Key Vault, Key Vault to HSM, HSM to HSM and Key Vault to Key Vault. */

@@ -107,7 +107,7 @@ export type ServiceList = string[];
 export const ServiceList = /*@__PURE__*/ S.Array(S.String);
 export type Region = string;
 export type RegionsList = string[];
-export const RegionsList = /*@__PURE__*/ S.Array(S.String);
+export const RegionsList = ServiceList as any as S.Schema<RegionsList>;
 export interface GetAccountCustomizationsOutput {
   accountColor?: AccountColor;
   visibleServices?: string[];
@@ -169,15 +169,8 @@ export interface UpdateAccountCustomizationsOutput {
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-export const UpdateAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountColor: S.optional(AccountColor),
-    visibleServices: S.optional(ServiceList),
-    visibleRegions: S.optional(RegionsList),
-  }),
-).annotate({
-  identifier: "UpdateAccountCustomizationsOutput",
-}) as any as S.Schema<UpdateAccountCustomizationsOutput>;
+export const UpdateAccountCustomizationsOutput =
+  GetAccountCustomizationsOutput as any as S.Schema<UpdateAccountCustomizationsOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;

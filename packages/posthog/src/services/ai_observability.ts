@@ -152,15 +152,12 @@ export const OfflineExperimentItemPayloadInputInput =
 export type OfflineExperimentItemPayloadInputOutputCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const OfflineExperimentItemPayloadInputOutputCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OfflineExperimentItemPayloadInputOutputCase0Map>;
+export const OfflineExperimentItemPayloadInputOutputCase0Map =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineExperimentItemPayloadInputOutputCase0Map>;
 
 export type OfflineExperimentItemPayloadInputOutputCase1List = Array<unknown>;
-export const OfflineExperimentItemPayloadInputOutputCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<OfflineExperimentItemPayloadInputOutputCase1List>;
+export const OfflineExperimentItemPayloadInputOutputCase1List =
+  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<OfflineExperimentItemPayloadInputOutputCase1List>;
 
 export type OfflineExperimentItemPayloadInputOutput =
   | OfflineExperimentItemPayloadInputOutputCase0Map
@@ -174,15 +171,12 @@ export const OfflineExperimentItemPayloadInputOutput =
 export type OfflineExperimentItemPayloadInputExpectedOutputCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const OfflineExperimentItemPayloadInputExpectedOutputCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutputCase0Map>;
+export const OfflineExperimentItemPayloadInputExpectedOutputCase0Map =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutputCase0Map>;
 
 export type OfflineExperimentItemPayloadInputExpectedOutputCase1List = Array<unknown>;
-export const OfflineExperimentItemPayloadInputExpectedOutputCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutputCase1List>;
+export const OfflineExperimentItemPayloadInputExpectedOutputCase1List =
+  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutputCase1List>;
 
 export type OfflineExperimentItemPayloadInputExpectedOutput =
   | OfflineExperimentItemPayloadInputExpectedOutputCase0Map
@@ -194,10 +188,8 @@ export const OfflineExperimentItemPayloadInputExpectedOutput =
   S.Unknown as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutput>;
 
 export type OfflineExperimentItemPayloadInputMetadataMap = { [key: string]: unknown | undefined };
-export const OfflineExperimentItemPayloadInputMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OfflineExperimentItemPayloadInputMetadataMap>;
+export const OfflineExperimentItemPayloadInputMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineExperimentItemPayloadInputMetadataMap>;
 
 export interface OfflineExperimentItemPayloadInput {
   input?: OfflineExperimentItemPayloadInputInput | null;
@@ -267,10 +259,8 @@ export type ResultSubmissionValue = number | boolean | ResultSubmissionValueCase
 export const ResultSubmissionValue = S.Unknown as any as S.Schema<ResultSubmissionValue>;
 
 export type OfflineEvaluationResultPayloadInputMetadataMap = { [key: string]: unknown | undefined };
-export const OfflineEvaluationResultPayloadInputMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OfflineEvaluationResultPayloadInputMetadataMap>;
+export const OfflineEvaluationResultPayloadInputMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineEvaluationResultPayloadInputMetadataMap>;
 
 export interface OfflineEvaluationResultPayloadInput {
   reasoning?: string | null;
@@ -433,16 +423,12 @@ export const ArchiveDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON object with descriptive dataset metadata. */
 export type DatasetReadMetadataMap = { [key: string]: unknown | undefined };
-export const DatasetReadMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatasetReadMetadataMap>;
+export const DatasetReadMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<DatasetReadMetadataMap>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -550,15 +536,12 @@ export const ArchiveDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArchiveDatasetItemRequest>;
 
 export type DatasetJSONValueCase0Map = { [key: string]: unknown | undefined };
-export const DatasetJSONValueCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatasetJSONValueCase0Map>;
+export const DatasetJSONValueCase0Map =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<DatasetJSONValueCase0Map>;
 
 export type DatasetJSONValueCase1List = Array<unknown>;
-export const DatasetJSONValueCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatasetJSONValueCase1List>;
+export const DatasetJSONValueCase1List =
+  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<DatasetJSONValueCase1List>;
 
 export type DatasetJSONValue =
   | DatasetJSONValueCase0Map
@@ -570,10 +553,8 @@ export const DatasetJSONValue = S.Unknown as any as S.Schema<DatasetJSONValue>;
 
 /** JSON object with item metadata. */
 export type DatasetItemReadMetadataMap = { [key: string]: unknown | undefined };
-export const DatasetItemReadMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatasetItemReadMetadataMap>;
+export const DatasetItemReadMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<DatasetItemReadMetadataMap>;
 
 export interface DatasetItemRead {
   /** Stable dataset item ID shared by every version. */
@@ -809,10 +790,8 @@ export const CreateAiObservabilityOfflineExperimentsFailRequest = /*@__PURE__*/ 
 
 /** Optional JSON object with descriptive dataset metadata. */
 export type CreateDatasetRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateDatasetRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDatasetRequestMetadataMap>;
+export const CreateDatasetRequestMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<CreateDatasetRequestMetadataMap>;
 
 export interface CreateDatasetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -835,10 +814,8 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional JSON object with item metadata. */
 export type CreateDatasetItemRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateDatasetItemRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDatasetItemRequestMetadataMap>;
+export const CreateDatasetItemRequestMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<CreateDatasetItemRequestMetadataMap>;
 
 export interface CreateDatasetItemRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -957,9 +934,8 @@ export const CreateLlmAnalyticsOfflineEvaluationsExperimentItemRequest = /*@__PU
 }) as any as S.Schema<CreateLlmAnalyticsOfflineEvaluationsExperimentItemRequest>;
 
 export type OfflineExperimentItemsResponseResultsItemList = Array<unknown>;
-export const OfflineExperimentItemsResponseResultsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<OfflineExperimentItemsResponseResultsItemList>;
+export const OfflineExperimentItemsResponseResultsItemList =
+  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<OfflineExperimentItemsResponseResultsItemList>;
 
 /** Tuple-positional rows; positions match `RawOfflineExperimentMetricRow` in the frontend. */
 export type OfflineExperimentItemsResponseResultsList =
@@ -1058,9 +1034,8 @@ export const InterestingNote = SummaryBullet;
 
 /** Interesting notes (0-2 for minimal, more for detailed) */
 export type StructuredSummaryInterestingNotesList = Array<SummaryBullet>;
-export const StructuredSummaryInterestingNotesList = /*@__PURE__*/ S.Array(
-  SummaryBullet,
-) as any as S.Schema<StructuredSummaryInterestingNotesList>;
+export const StructuredSummaryInterestingNotesList =
+  StructuredSummarySummaryBulletsList as any as S.Schema<StructuredSummaryInterestingNotesList>;
 
 export interface StructuredSummary {
   /** Concise title (no longer than 10 words) summarizing the trace/event */
@@ -1099,9 +1074,8 @@ export const SummarizeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of trace IDs to check for cached summaries */
 export type CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList = Array<string>;
-export const CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList>;
+export const CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList =
+  ResultSubmissionValueCase2List as any as S.Schema<CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList>;
 
 export interface CreateLlmAnalyticsSummarizationBatchCheckRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1403,9 +1377,8 @@ export type PayloadStateEnum = "not_provided" | "available" | "expired";
 export const PayloadStateEnum = S.String;
 
 export type OfflineResultCellValueCase2List = Array<string>;
-export const OfflineResultCellValueCase2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OfflineResultCellValueCase2List>;
+export const OfflineResultCellValueCase2List =
+  ResultSubmissionValueCase2List as any as S.Schema<OfflineResultCellValueCase2List>;
 
 /** Typed score for ok outcomes; null for other outcomes. */
 export type OfflineResultCellValue = number | boolean | OfflineResultCellValueCase2List;
@@ -1602,9 +1575,8 @@ export const SelectionModeEnum = S.String;
 
 /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
 export type CategoricalScorePassingRuleCategoriesList = Array<string>;
-export const CategoricalScorePassingRuleCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CategoricalScorePassingRuleCategoriesList>;
+export const CategoricalScorePassingRuleCategoriesList =
+  ResultSubmissionValueCase2List as any as S.Schema<CategoricalScorePassingRuleCategoriesList>;
 
 export interface CategoricalScorePassingRule {
   /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
@@ -1743,9 +1715,8 @@ export const OfflineResultCellsScorerVersionsList = /*@__PURE__*/ S.Array(
 
 /** Submitted results for the exact selected items and versions; at most 1,000 cells. */
 export type OfflineResultCellsResultsList = Array<OfflineResultCell>;
-export const OfflineResultCellsResultsList = /*@__PURE__*/ S.Array(
-  OfflineResultCell,
-) as any as S.Schema<OfflineResultCellsResultsList>;
+export const OfflineResultCellsResultsList =
+  OfflineItemReadResultsList as any as S.Schema<OfflineResultCellsResultsList>;
 
 export interface OfflineResultCells {
   /** Selected authorized versions, including versions with no results for these items. */
@@ -1920,9 +1891,8 @@ export const TraceTimelineList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TraceTimelineList>;
 
 export type TraceThreadNodeIdsList = Array<string>;
-export const TraceThreadNodeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TraceThreadNodeIdsList>;
+export const TraceThreadNodeIdsList =
+  ResultSubmissionValueCase2List as any as S.Schema<TraceThreadNodeIdsList>;
 
 export interface Trace {
   id: string;
@@ -2166,9 +2136,8 @@ export const OfflineItemPageResultsList = /*@__PURE__*/ S.Array(
 
 /** Selected scorer versions, each returned once, including versions with no results. */
 export type OfflineItemPageScorerVersionsList = Array<OfflineScorerVersionRead>;
-export const OfflineItemPageScorerVersionsList = /*@__PURE__*/ S.Array(
-  OfflineScorerVersionRead,
-) as any as S.Schema<OfflineItemPageScorerVersionsList>;
+export const OfflineItemPageScorerVersionsList =
+  OfflineResultCellsScorerVersionsList as any as S.Schema<OfflineItemPageScorerVersionsList>;
 
 export interface OfflineItemPage {
   /** Total authorized rows matching the filters, independent of this page. */
@@ -2227,9 +2196,8 @@ export const ListAiObservabilityOfflineExperimentsItemsResultsRequest = /*@__PUR
 }) as any as S.Schema<ListAiObservabilityOfflineExperimentsItemsResultsRequest>;
 
 export type OfflineResultReadValueCase2List = Array<string>;
-export const OfflineResultReadValueCase2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OfflineResultReadValueCase2List>;
+export const OfflineResultReadValueCase2List =
+  ResultSubmissionValueCase2List as any as S.Schema<OfflineResultReadValueCase2List>;
 
 /** Typed score for ok outcomes; null for other outcomes. */
 export type OfflineResultReadValue = number | boolean | OfflineResultReadValueCase2List;
@@ -2633,9 +2601,8 @@ export const ListDatasetItemsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetItemsVersionsRequest>;
 
 export type ListDatasetsRequestIdInList = Array<string>;
-export const ListDatasetsRequestIdInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDatasetsRequestIdInList>;
+export const ListDatasetsRequestIdInList =
+  ResultSubmissionValueCase2List as any as S.Schema<ListDatasetsRequestIdInList>;
 
 export type ListDatasetsRequestOrderBy =
   | "created_at"
@@ -3197,15 +3164,12 @@ export const RestoreDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreDatasetItemRequest>;
 
 export type UpdateDatasetItemsPartialRequestInputCase0Map = { [key: string]: unknown | undefined };
-export const UpdateDatasetItemsPartialRequestInputCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDatasetItemsPartialRequestInputCase0Map>;
+export const UpdateDatasetItemsPartialRequestInputCase0Map =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetItemsPartialRequestInputCase0Map>;
 
 export type UpdateDatasetItemsPartialRequestInputCase1List = Array<unknown>;
-export const UpdateDatasetItemsPartialRequestInputCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateDatasetItemsPartialRequestInputCase1List>;
+export const UpdateDatasetItemsPartialRequestInputCase1List =
+  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<UpdateDatasetItemsPartialRequestInputCase1List>;
 
 /** Replacement input. Omit to keep the current value. */
 export type UpdateDatasetItemsPartialRequestInput =
@@ -3220,15 +3184,12 @@ export const UpdateDatasetItemsPartialRequestInput =
 export type UpdateDatasetItemsPartialRequestExpectedOutputCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDatasetItemsPartialRequestExpectedOutputCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDatasetItemsPartialRequestExpectedOutputCase0Map>;
+export const UpdateDatasetItemsPartialRequestExpectedOutputCase0Map =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetItemsPartialRequestExpectedOutputCase0Map>;
 
 export type UpdateDatasetItemsPartialRequestExpectedOutputCase1List = Array<unknown>;
-export const UpdateDatasetItemsPartialRequestExpectedOutputCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateDatasetItemsPartialRequestExpectedOutputCase1List>;
+export const UpdateDatasetItemsPartialRequestExpectedOutputCase1List =
+  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<UpdateDatasetItemsPartialRequestExpectedOutputCase1List>;
 
 /** Replacement expected output. Send null to clear it. */
 export type UpdateDatasetItemsPartialRequestExpectedOutput =
@@ -3242,10 +3203,8 @@ export const UpdateDatasetItemsPartialRequestExpectedOutput =
 
 /** Replacement metadata object. Send an empty object to clear it. */
 export type UpdateDatasetItemsPartialRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateDatasetItemsPartialRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDatasetItemsPartialRequestMetadataMap>;
+export const UpdateDatasetItemsPartialRequestMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetItemsPartialRequestMetadataMap>;
 
 export interface UpdateDatasetItemsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3281,10 +3240,8 @@ export const UpdateDatasetItemsPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Replacement JSON object for descriptive dataset metadata. */
 export type UpdateDatasetsPartialRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateDatasetsPartialRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDatasetsPartialRequestMetadataMap>;
+export const UpdateDatasetsPartialRequestMetadataMap =
+  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetsPartialRequestMetadataMap>;
 
 export interface UpdateDatasetsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

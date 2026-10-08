@@ -50,10 +50,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -184,9 +182,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
 
 export type IoK8sApiAuthenticationV1UserInfoExtraValueList = Array<string>;
-export const IoK8sApiAuthenticationV1UserInfoExtraValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthenticationV1UserInfoExtraValueList>;
+export const IoK8sApiAuthenticationV1UserInfoExtraValueList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1UserInfoExtraValueList>;
 
 /** extra is any additional information provided by the authenticator. */
 export type IoK8sApiAuthenticationV1UserInfoExtraMap = {
@@ -199,9 +196,8 @@ export const IoK8sApiAuthenticationV1UserInfoExtraMap = /*@__PURE__*/ S.Record(
 
 /** groups is the names of groups this user is a part of. */
 export type IoK8sApiAuthenticationV1UserInfoGroupsList = Array<string>;
-export const IoK8sApiAuthenticationV1UserInfoGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthenticationV1UserInfoGroupsList>;
+export const IoK8sApiAuthenticationV1UserInfoGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1UserInfoGroupsList>;
 
 /** UserInfo holds the information about the user needed to implement the user.Info interface. */
 export interface IoK8sApiAuthenticationV1UserInfo {
@@ -297,9 +293,8 @@ export const IoK8sApiAuthenticationV1SelfSubjectReview = /*@__PURE__*/ S.suspend
 
 /** audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver. */
 export type IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList = Array<string>;
-export const IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList>;
+export const IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList>;
 
 /** TokenReviewSpec is a description of the token authentication request. */
 export interface IoK8sApiAuthenticationV1TokenReviewSpec {
@@ -319,9 +314,8 @@ export const IoK8sApiAuthenticationV1TokenReviewSpec = /*@__PURE__*/ S.suspend((
 
 /** audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token's audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server. */
 export type IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList = Array<string>;
-export const IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList>;
+export const IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList>;
 
 /** TokenReviewStatus is the result of the token authentication request. */
 export interface IoK8sApiAuthenticationV1TokenReviewStatus {
@@ -501,21 +495,18 @@ export const GetAuthenticationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(()
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {

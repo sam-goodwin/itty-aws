@@ -287,9 +287,8 @@ export const ValidationDetailsServerLevelValidationDetailsList = /*@__PURE__*/ S
 
 /** Summary of database level validations. */
 export type DbLevelValidationStatusSummaryList = Array<ValidationSummaryItem>;
-export const DbLevelValidationStatusSummaryList = /*@__PURE__*/ S.Array(
-  ValidationSummaryItem,
-) as any as S.Schema<DbLevelValidationStatusSummaryList>;
+export const DbLevelValidationStatusSummaryList =
+  ValidationDetailsServerLevelValidationDetailsList as any as S.Schema<DbLevelValidationStatusSummaryList>;
 
 /** Validation status summary for a database. */
 export interface DbLevelValidationStatus {
@@ -511,9 +510,8 @@ export const TriggerCutover = S.String;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesDbsToTriggerCutoverOnList = Array<string>;
-export const MigrationPropertiesDbsToTriggerCutoverOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesDbsToTriggerCutoverOnList>;
+export const MigrationPropertiesDbsToTriggerCutoverOnList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesDbsToTriggerCutoverOnList>;
 
 /** Indicates if cancel must be triggered for the entire migration. */
 export type Cancel = "True" | "False";
@@ -521,9 +519,8 @@ export const Cancel = S.String;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesDbsToCancelMigrationOnList = Array<string>;
-export const MigrationPropertiesDbsToCancelMigrationOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesDbsToCancelMigrationOnList>;
+export const MigrationPropertiesDbsToCancelMigrationOnList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesDbsToCancelMigrationOnList>;
 
 /** Migration. */
 export interface MigrationProperties {
@@ -897,11 +894,8 @@ export const CreateBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateBackupsAutomaticAndOnDemandRequest>;
 
 export interface CreateBackupsAutomaticAndOnDemandResponse {}
-export const CreateBackupsAutomaticAndOnDemandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateBackupsAutomaticAndOnDemandResponse",
-}) as any as S.Schema<CreateBackupsAutomaticAndOnDemandResponse>;
+export const CreateBackupsAutomaticAndOnDemandResponse =
+  AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<CreateBackupsAutomaticAndOnDemandResponse>;
 
 /** Properties of a database. */
 export interface DatabaseProperties {
@@ -953,28 +947,23 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})
 
 /** Resource tags. */
 export type CreateMigrationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateMigrationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateMigrationRequestTagsMap>;
+export const CreateMigrationRequestTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<CreateMigrationRequestTagsMap>;
 
 /** Names of databases to migrate. */
 export type MigrationPropertiesInputDbsToMigrateList = Array<string>;
-export const MigrationPropertiesInputDbsToMigrateList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesInputDbsToMigrateList>;
+export const MigrationPropertiesInputDbsToMigrateList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesInputDbsToMigrateList>;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesInputDbsToTriggerCutoverOnList = Array<string>;
-export const MigrationPropertiesInputDbsToTriggerCutoverOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesInputDbsToTriggerCutoverOnList>;
+export const MigrationPropertiesInputDbsToTriggerCutoverOnList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesInputDbsToTriggerCutoverOnList>;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesInputDbsToCancelMigrationOnList = Array<string>;
-export const MigrationPropertiesInputDbsToCancelMigrationOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesInputDbsToCancelMigrationOnList>;
+export const MigrationPropertiesInputDbsToCancelMigrationOnList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesInputDbsToCancelMigrationOnList>;
 
 /** Migration. */
 export interface MigrationPropertiesInput {
@@ -1081,10 +1070,8 @@ export const CreateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMigrationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateMigrationResponseTagsMap>;
+export const CreateMigrationResponseTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<CreateMigrationResponseTagsMap>;
 
 export interface CreateMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1102,17 +1089,8 @@ export interface CreateMigrationResponse {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const CreateMigrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreateMigrationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationProperties),
-  }),
-).annotate({ identifier: "CreateMigrationResponse" }) as any as S.Schema<CreateMigrationResponse>;
+export const CreateMigrationResponse =
+  CancelMigrationResponse as any as S.Schema<CreateMigrationResponse>;
 
 /** Type of endpoint for the virtual endpoints. */
 export type VirtualEndpointType = "ReadWrite";
@@ -1120,9 +1098,8 @@ export const VirtualEndpointType = S.String;
 
 /** List of servers that one of the virtual endpoints can refer to. */
 export type VirtualEndpointResourcePropertiesInputMembersList = Array<string>;
-export const VirtualEndpointResourcePropertiesInputMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualEndpointResourcePropertiesInputMembersList>;
+export const VirtualEndpointResourcePropertiesInputMembersList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<VirtualEndpointResourcePropertiesInputMembersList>;
 
 /** Properties of a pair of virtual endpoints. */
 export interface VirtualEndpointResourcePropertiesInput {
@@ -1172,9 +1149,8 @@ export const CreateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVirtualEndpointRequest>;
 
 export interface CreateVirtualEndpointResponse {}
-export const CreateVirtualEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateVirtualEndpointResponse",
-}) as any as S.Schema<CreateVirtualEndpointResponse>;
+export const CreateVirtualEndpointResponse =
+  CreateDatabaseResponse as any as S.Schema<CreateVirtualEndpointResponse>;
 
 export interface DeleteAdministratorsMicrosoftEntraRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1205,11 +1181,8 @@ export const DeleteAdministratorsMicrosoftEntraRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteAdministratorsMicrosoftEntraRequest>;
 
 export interface DeleteAdministratorsMicrosoftEntraResponse {}
-export const DeleteAdministratorsMicrosoftEntraResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAdministratorsMicrosoftEntraResponse",
-}) as any as S.Schema<DeleteAdministratorsMicrosoftEntraResponse>;
+export const DeleteAdministratorsMicrosoftEntraResponse =
+  AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<DeleteAdministratorsMicrosoftEntraResponse>;
 
 export interface DeleteBackupsAutomaticAndOnDemandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1240,11 +1213,8 @@ export const DeleteBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteBackupsAutomaticAndOnDemandRequest>;
 
 export interface DeleteBackupsAutomaticAndOnDemandResponse {}
-export const DeleteBackupsAutomaticAndOnDemandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBackupsAutomaticAndOnDemandResponse",
-}) as any as S.Schema<DeleteBackupsAutomaticAndOnDemandResponse>;
+export const DeleteBackupsAutomaticAndOnDemandResponse =
+  AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<DeleteBackupsAutomaticAndOnDemandResponse>;
 
 export interface DeleteDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1273,9 +1243,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  CreateDatabaseResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1306,9 +1275,8 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRuleRequest>;
 
 export interface DeleteFirewallRuleResponse {}
-export const DeleteFirewallRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallRuleResponse",
-}) as any as S.Schema<DeleteFirewallRuleResponse>;
+export const DeleteFirewallRuleResponse =
+  CreateDatabaseResponse as any as S.Schema<DeleteFirewallRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1339,11 +1307,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1369,9 +1334,7 @@ export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServerRequest" }) as any as S.Schema<DeleteServerRequest>;
 
 export interface DeleteServerResponse {}
-export const DeleteServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServerResponse",
-}) as any as S.Schema<DeleteServerResponse>;
+export const DeleteServerResponse = CreateDatabaseResponse as any as S.Schema<DeleteServerResponse>;
 
 export interface DeleteVirtualEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1402,9 +1365,8 @@ export const DeleteVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualEndpointRequest>;
 
 export interface DeleteVirtualEndpointResponse {}
-export const DeleteVirtualEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVirtualEndpointResponse",
-}) as any as S.Schema<DeleteVirtualEndpointResponse>;
+export const DeleteVirtualEndpointResponse =
+  CreateDatabaseResponse as any as S.Schema<DeleteVirtualEndpointResponse>;
 
 /** Properties of a firewall rule. */
 export interface FirewallRuleProperties {
@@ -1452,11 +1414,8 @@ export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>;
 
 export interface FirewallRulesCreateOrUpdateResponse {}
-export const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FirewallRulesCreateOrUpdateResponse",
-}) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>;
+export const FirewallRulesCreateOrUpdateResponse =
+  AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<FirewallRulesCreateOrUpdateResponse>;
 
 export interface GetAdministratorsMicrosoftEntraRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2005,10 +1964,8 @@ export const GetMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const GetMigrationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetMigrationResponseTagsMap>;
+export const GetMigrationResponseTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<GetMigrationResponseTagsMap>;
 
 export interface GetMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2026,17 +1983,8 @@ export interface GetMigrationResponse {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const GetMigrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetMigrationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationProperties),
-  }),
-).annotate({ identifier: "GetMigrationResponse" }) as any as S.Schema<GetMigrationResponse>;
+export const GetMigrationResponse =
+  CancelMigrationResponse as any as S.Schema<GetMigrationResponse>;
 
 export interface GetPrivateDnsZoneSuffixRequest {}
 export const GetPrivateDnsZoneSuffixRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2089,9 +2037,8 @@ export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
@@ -2211,15 +2158,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredMembersList = Array<string>;
-export const GetPrivateLinkResourceResponsePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredMembersList>;
+export const GetPrivateLinkResourceResponsePropertiesRequiredMembersList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList = Array<string>;
-export const GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList>;
+export const GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface GetPrivateLinkResourceResponseProperties {
@@ -2289,10 +2234,8 @@ export const GetServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServerResponseTagsMap = { [key: string]: string | undefined };
-export const GetServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServerResponseTagsMap>;
+export const GetServerResponseTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<GetServerResponseTagsMap>;
 
 /** Major version of PostgreSQL database engine. */
 export type PostgresMajorVersion = "18" | "17" | "16" | "15" | "14" | "13" | "12" | "11";
@@ -2590,17 +2533,8 @@ export interface ServerPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const ServerPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "ServerPropertiesPrivateEndpointConnectionsItem",
-}) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsItem>;
+export const ServerPropertiesPrivateEndpointConnectionsItem =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsItem>;
 
 /** List of private endpoint connections associated with the specified server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
@@ -2888,15 +2822,13 @@ export const GetVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of servers that one of the virtual endpoints can refer to. */
 export type VirtualEndpointResourcePropertiesMembersList = Array<string>;
-export const VirtualEndpointResourcePropertiesMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualEndpointResourcePropertiesMembersList>;
+export const VirtualEndpointResourcePropertiesMembersList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<VirtualEndpointResourcePropertiesMembersList>;
 
 /** List of virtual endpoints for a server. */
 export type VirtualEndpointResourcePropertiesVirtualEndpointsList = Array<string>;
-export const VirtualEndpointResourcePropertiesVirtualEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualEndpointResourcePropertiesVirtualEndpointsList>;
+export const VirtualEndpointResourcePropertiesVirtualEndpointsList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<VirtualEndpointResourcePropertiesVirtualEndpointsList>;
 
 /** Properties of a pair of virtual endpoints. */
 export interface VirtualEndpointResourceProperties {
@@ -2979,17 +2911,8 @@ export interface AdministratorMicrosoftEntra {
   /** Properties of a server administrator associated to a Microsoft Entra principal. */
   properties: AdministratorMicrosoftEntraProperties;
 }
-export const AdministratorMicrosoftEntra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AdministratorMicrosoftEntraProperties,
-  }),
-).annotate({
-  identifier: "AdministratorMicrosoftEntra",
-}) as any as S.Schema<AdministratorMicrosoftEntra>;
+export const AdministratorMicrosoftEntra =
+  GetAdministratorsMicrosoftEntraResponse as any as S.Schema<AdministratorMicrosoftEntra>;
 
 /** The AdministratorMicrosoftEntra items on this page */
 export type AdministratorMicrosoftEntraListValueList = Array<AdministratorMicrosoftEntra>;
@@ -3051,17 +2974,8 @@ export interface AdvancedThreatProtectionSettingsModel {
   /** Advanced threat protection properties. */
   properties?: AdvancedThreatProtectionSettingsProperties;
 }
-export const AdvancedThreatProtectionSettingsModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AdvancedThreatProtectionSettingsProperties),
-  }),
-).annotate({
-  identifier: "AdvancedThreatProtectionSettingsModel",
-}) as any as S.Schema<AdvancedThreatProtectionSettingsModel>;
+export const AdvancedThreatProtectionSettingsModel =
+  GetAdvancedThreatProtectionSettingsResponse as any as S.Schema<AdvancedThreatProtectionSettingsModel>;
 
 /** The AdvancedThreatProtectionSettingsModel items on this page */
 export type AdvancedThreatProtectionSettingsListValueList =
@@ -3124,17 +3038,8 @@ export interface BackupAutomaticAndOnDemand {
   /** Properties of a backup. */
   properties?: BackupAutomaticAndOnDemandProperties;
 }
-export const BackupAutomaticAndOnDemand = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupAutomaticAndOnDemandProperties),
-  }),
-).annotate({
-  identifier: "BackupAutomaticAndOnDemand",
-}) as any as S.Schema<BackupAutomaticAndOnDemand>;
+export const BackupAutomaticAndOnDemand =
+  GetBackupsAutomaticAndOnDemandResponse as any as S.Schema<BackupAutomaticAndOnDemand>;
 
 /** The BackupAutomaticAndOnDemand items on this page */
 export type BackupAutomaticAndOnDemandListValueList = Array<BackupAutomaticAndOnDemand>;
@@ -3196,17 +3101,8 @@ export interface BackupsLongTermRetentionOperation {
   /** Long Term Retention Backup Operation Resource Properties */
   properties?: LtrBackupOperationResponseProperties;
 }
-export const BackupsLongTermRetentionOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(LtrBackupOperationResponseProperties),
-  }),
-).annotate({
-  identifier: "BackupsLongTermRetentionOperation",
-}) as any as S.Schema<BackupsLongTermRetentionOperation>;
+export const BackupsLongTermRetentionOperation =
+  GetBackupsLongTermRetentionResponse as any as S.Schema<BackupsLongTermRetentionOperation>;
 
 /** The BackupsLongTermRetentionOperation items on this page */
 export type LtrServerBackupOperationListValueList = Array<BackupsLongTermRetentionOperation>;
@@ -3357,9 +3253,8 @@ export const ServerEditionCapabilitySupportedStorageEditionsList = /*@__PURE__*/
 
 /** List of supported availability zones. E.g. '1', '2', '3' */
 export type ServerSkuCapabilitySupportedZonesList = Array<string>;
-export const ServerSkuCapabilitySupportedZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServerSkuCapabilitySupportedZonesList>;
+export const ServerSkuCapabilitySupportedZonesList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<ServerSkuCapabilitySupportedZonesList>;
 
 /** Mode of high availability supported for this compute. */
 export type HighAvailabilityMode2 = "ZoneRedundant" | "SameZone";
@@ -3473,15 +3368,13 @@ export const CapabilitySupportedServerEditionsList = /*@__PURE__*/ S.Array(
 
 /** Major versions of PostgreSQL database engine to which this version can be automatically upgraded. */
 export type ServerVersionCapabilitySupportedVersionsToUpgradeList = Array<string>;
-export const ServerVersionCapabilitySupportedVersionsToUpgradeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServerVersionCapabilitySupportedVersionsToUpgradeList>;
+export const ServerVersionCapabilitySupportedVersionsToUpgradeList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<ServerVersionCapabilitySupportedVersionsToUpgradeList>;
 
 /** Features supported. */
 export type ServerVersionCapabilitySupportedFeaturesList = Array<SupportedFeature>;
-export const ServerVersionCapabilitySupportedFeaturesList = /*@__PURE__*/ S.Array(
-  SupportedFeature,
-) as any as S.Schema<ServerVersionCapabilitySupportedFeaturesList>;
+export const ServerVersionCapabilitySupportedFeaturesList =
+  ServerSkuCapabilitySupportedFeaturesList as any as S.Schema<ServerVersionCapabilitySupportedFeaturesList>;
 
 /** Capabilities in terms of major versions of PostgreSQL database engine. */
 export interface ServerVersionCapability {
@@ -3514,9 +3407,8 @@ export const CapabilitySupportedServerVersionsList = /*@__PURE__*/ S.Array(
 
 /** Features supported. */
 export type CapabilitySupportedFeaturesList = Array<SupportedFeature>;
-export const CapabilitySupportedFeaturesList = /*@__PURE__*/ S.Array(
-  SupportedFeature,
-) as any as S.Schema<CapabilitySupportedFeaturesList>;
+export const CapabilitySupportedFeaturesList =
+  ServerSkuCapabilitySupportedFeaturesList as any as S.Schema<CapabilitySupportedFeaturesList>;
 
 /** Indicates if fast provisioning is supported. 'Enabled' means fast provisioning is supported. 'Disabled' stands for fast provisioning is not supported. Will be deprecated in the future. Look to Supported Features for 'FastProvisioning'. */
 export type FastProvisioningSupport = "Enabled" | "Disabled";
@@ -3812,15 +3704,7 @@ export interface Configuration {
   /** Properties of a configuration (also known as server parameter). */
   properties?: ConfigurationProperties;
 }
-export const Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigurationProperties),
-  }),
-).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
+export const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
 export type ConfigurationListValueList = Array<Configuration>;
@@ -3880,15 +3764,7 @@ export interface Database {
   /** Properties of a database. */
   properties?: DatabaseProperties;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseProperties),
-  }),
-).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
+export const Database = GetDatabaseResponse as any as S.Schema<Database>;
 
 /** The Database items on this page */
 export type DatabaseListValueList = Array<Database>;
@@ -3948,15 +3824,7 @@ export interface FirewallRule {
   /** Properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
-export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FirewallRuleProperties,
-  }),
-).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
+export const FirewallRule = GetFirewallRuleResponse as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
 export type FirewallRuleListValueList = Array<FirewallRule>;
@@ -4013,10 +3881,7 @@ export const ListMigrationByTargetServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MigrationTagsMap = { [key: string]: string | undefined };
-export const MigrationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationTagsMap>;
+export const MigrationTagsMap = CancelMigrationResponseTagsMap as any as S.Schema<MigrationTagsMap>;
 
 /** Properties of a migration. */
 export interface Migration {
@@ -4035,17 +3900,7 @@ export interface Migration {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const Migration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MigrationTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationProperties),
-  }),
-).annotate({ identifier: "Migration" }) as any as S.Schema<Migration>;
+export const Migration = CancelMigrationResponse as any as S.Schema<Migration>;
 
 /** The Migration items on this page */
 export type MigrationListValueList = Array<Migration>;
@@ -4105,15 +3960,13 @@ export const OperationOrigin = S.String;
 
 /** Supported aggregation types for the metric. */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
+export const MetricSpecificationSupportedAggregationTypesList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Supported time grain types for the metric. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+export const MetricSpecificationSupportedTimeGrainTypesList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Metric specification for an operation. */
 export interface MetricSpecification {
@@ -4277,9 +4130,8 @@ export const PrivateEndpointConnectionListValueItem =
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListValueList =
   Array<ServerPropertiesPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
-  ServerPropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<PrivateEndpointConnectionListValueList>;
+export const PrivateEndpointConnectionListValueList =
+  ServerPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListValueList>;
 
 /** List of private endpoint connections. */
 export interface PrivateEndpointConnectionList {
@@ -4324,15 +4176,13 @@ export const ListPrivateLinkResourceByServerRequest = /*@__PURE__*/ S.suspend(()
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -4343,15 +4193,8 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.optional(S.String),
-    requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-    requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceProperties",
-}) as any as S.Schema<PrivateLinkResourceProperties>;
+export const PrivateLinkResourceProperties =
+  GetPrivateLinkResourceResponseProperties as any as S.Schema<PrivateLinkResourceProperties>;
 
 /** A private link resource. */
 export interface PrivateLinkResource {
@@ -4500,10 +4343,7 @@ export const ListReplicasByServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServerTagsMap = { [key: string]: string | undefined };
-export const ServerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServerTagsMap>;
+export const ServerTagsMap = CancelMigrationResponseTagsMap as any as S.Schema<ServerTagsMap>;
 
 /** Properties of a server. */
 export interface Server {
@@ -4526,19 +4366,7 @@ export interface Server {
   /** User assigned managed identities assigned to the server. */
   identity?: UserAssignedIdentity;
 }
-export const Server = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ServerTagsMap),
-    location: S.String,
-    properties: S.optional(ServerProperties),
-    sku: S.optional(Sku),
-    identity: S.optional(UserAssignedIdentity),
-  }),
-).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
+export const Server = GetServerResponse as any as S.Schema<Server>;
 
 /** The Server items on this page */
 export type ServerListValueList = Array<Server>;
@@ -4639,15 +4467,7 @@ export interface TuningOptions {
   /** The resource-specific properties for this resource. */
   properties?: TuningOptionsProperties;
 }
-export const TuningOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TuningOptionsProperties),
-  }),
-).annotate({ identifier: "TuningOptions" }) as any as S.Schema<TuningOptions>;
+export const TuningOptions = GetTuningOptionResponse as any as S.Schema<TuningOptions>;
 
 /** The TuningOptions items on this page */
 export type TuningOptionsListValueList = Array<TuningOptions>;
@@ -4785,15 +4605,13 @@ export const ObjectRecommendationPropertiesEstimatedImpactList = /*@__PURE__*/ S
 
 /** Index columns. */
 export type ObjectRecommendationDetailsIndexColumnsList = Array<string>;
-export const ObjectRecommendationDetailsIndexColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObjectRecommendationDetailsIndexColumnsList>;
+export const ObjectRecommendationDetailsIndexColumnsList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<ObjectRecommendationDetailsIndexColumnsList>;
 
 /** Index included columns. */
 export type ObjectRecommendationDetailsIncludedColumnsList = Array<string>;
-export const ObjectRecommendationDetailsIncludedColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObjectRecommendationDetailsIncludedColumnsList>;
+export const ObjectRecommendationDetailsIncludedColumnsList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<ObjectRecommendationDetailsIncludedColumnsList>;
 
 /** Recommendation details for the recommended action. */
 export interface ObjectRecommendationDetails {
@@ -5091,9 +4909,8 @@ export const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutConfigurationRequest" }) as any as S.Schema<PutConfigurationRequest>;
 
 export interface PutConfigurationResponse {}
-export const PutConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutConfigurationResponse",
-}) as any as S.Schema<PutConfigurationResponse>;
+export const PutConfigurationResponse =
+  CreateDatabaseResponse as any as S.Schema<PutConfigurationResponse>;
 
 /** Failover mode. */
 export type FailoverMode =
@@ -5133,16 +4950,13 @@ export const RestartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartServerRequest" }) as any as S.Schema<RestartServerRequest>;
 
 export interface RestartServerResponse {}
-export const RestartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartServerResponse",
-}) as any as S.Schema<RestartServerResponse>;
+export const RestartServerResponse =
+  CreateDatabaseResponse as any as S.Schema<RestartServerResponse>;
 
 /** Resource tags. */
 export type ServersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServersCreateOrUpdateRequestTagsMap>;
+export const ServersCreateOrUpdateRequestTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<ServersCreateOrUpdateRequestTagsMap>;
 
 /** Indicates if the server is configured to create geographically redundant backups. */
 export type BackupInputGeoRedundantBackup = "Enabled" | "Disabled";
@@ -5242,10 +5056,8 @@ export const ServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type UserAssignedIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserIdentity | undefined;
 };
-export const UserAssignedIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserIdentity,
-) as any as S.Schema<UserAssignedIdentityInputUserAssignedIdentitiesMap>;
+export const UserAssignedIdentityInputUserAssignedIdentitiesMap =
+  UserAssignedIdentityUserAssignedIdentitiesMap as any as S.Schema<UserAssignedIdentityInputUserAssignedIdentitiesMap>;
 
 /** Identities associated with a server. */
 export interface UserAssignedIdentityInput {
@@ -5307,9 +5119,8 @@ export const ServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersCreateOrUpdateRequest>;
 
 export interface ServersCreateOrUpdateResponse {}
-export const ServersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ServersCreateOrUpdateResponse",
-}) as any as S.Schema<ServersCreateOrUpdateResponse>;
+export const ServersCreateOrUpdateResponse =
+  CreateDatabaseResponse as any as S.Schema<ServersCreateOrUpdateResponse>;
 
 export type ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName = "Default";
 export const ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName = S.String;
@@ -5362,17 +5173,13 @@ export const ServerThreatProtectionSettingsCreateOrUpdateRequest = /*@__PURE__*/
 }) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateRequest>;
 
 export interface ServerThreatProtectionSettingsCreateOrUpdateResponse {}
-export const ServerThreatProtectionSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServerThreatProtectionSettingsCreateOrUpdateResponse",
-}) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateResponse>;
+export const ServerThreatProtectionSettingsCreateOrUpdateResponse =
+  AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateResponse>;
 
 /** List of SAS uri of storage containers where backup data is to be streamed/copied. */
 export type BackupStoreDetailsSasUriListList = Array<string>;
-export const BackupStoreDetailsSasUriListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupStoreDetailsSasUriListList>;
+export const BackupStoreDetailsSasUriListList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<BackupStoreDetailsSasUriListList>;
 
 /** Details about the target where the backup content will be stored. */
 export interface BackupStoreDetails {
@@ -5453,9 +5260,7 @@ export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServerRequest" }) as any as S.Schema<StartServerRequest>;
 
 export interface StartServerResponse {}
-export const StartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartServerResponse",
-}) as any as S.Schema<StartServerResponse>;
+export const StartServerResponse = CreateDatabaseResponse as any as S.Schema<StartServerResponse>;
 
 export interface StopServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5481,9 +5286,7 @@ export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServerRequest" }) as any as S.Schema<StopServerRequest>;
 
 export interface StopServerResponse {}
-export const StopServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServerResponse",
-}) as any as S.Schema<StopServerResponse>;
+export const StopServerResponse = CreateDatabaseResponse as any as S.Schema<StopServerResponse>;
 
 export interface UpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5517,9 +5320,8 @@ export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateConfigurationRequest>;
 
 export interface UpdateConfigurationResponse {}
-export const UpdateConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateConfigurationResponse",
-}) as any as S.Schema<UpdateConfigurationResponse>;
+export const UpdateConfigurationResponse =
+  CreateDatabaseResponse as any as S.Schema<UpdateConfigurationResponse>;
 
 /** Credentials of administrator users for source and target servers. */
 export interface AdminCredentialsForPatch {
@@ -5556,21 +5358,18 @@ export const MigrationSecretParametersForPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of databases to migrate. */
 export type MigrationPropertiesForPatchDbsToMigrateList = Array<string>;
-export const MigrationPropertiesForPatchDbsToMigrateList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesForPatchDbsToMigrateList>;
+export const MigrationPropertiesForPatchDbsToMigrateList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesForPatchDbsToMigrateList>;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesForPatchDbsToTriggerCutoverOnList = Array<string>;
-export const MigrationPropertiesForPatchDbsToTriggerCutoverOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesForPatchDbsToTriggerCutoverOnList>;
+export const MigrationPropertiesForPatchDbsToTriggerCutoverOnList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesForPatchDbsToTriggerCutoverOnList>;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesForPatchDbsToCancelMigrationOnList = Array<string>;
-export const MigrationPropertiesForPatchDbsToCancelMigrationOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationPropertiesForPatchDbsToCancelMigrationOnList>;
+export const MigrationPropertiesForPatchDbsToCancelMigrationOnList =
+  MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesForPatchDbsToCancelMigrationOnList>;
 
 /** Migration properties. */
 export interface MigrationPropertiesForPatch {
@@ -5629,10 +5428,8 @@ export const MigrationPropertiesForPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateMigrationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMigrationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMigrationRequestTagsMap>;
+export const UpdateMigrationRequestTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<UpdateMigrationRequestTagsMap>;
 
 export interface UpdateMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5668,10 +5465,8 @@ export const UpdateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMigrationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMigrationResponseTagsMap>;
+export const UpdateMigrationResponseTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<UpdateMigrationResponseTagsMap>;
 
 export interface UpdateMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5689,23 +5484,12 @@ export interface UpdateMigrationResponse {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const UpdateMigrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateMigrationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationProperties),
-  }),
-).annotate({ identifier: "UpdateMigrationResponse" }) as any as S.Schema<UpdateMigrationResponse>;
+export const UpdateMigrationResponse =
+  CancelMigrationResponse as any as S.Schema<UpdateMigrationResponse>;
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export const PrivateEndpointInput = CreateDatabaseResponse as any as S.Schema<PrivateEndpointInput>;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -5755,11 +5539,8 @@ export const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>;
 
 export interface UpdatePrivateEndpointConnectionResponse {}
-export const UpdatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePrivateEndpointConnectionResponse",
-}) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
+export const UpdatePrivateEndpointConnectionResponse =
+  AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
 
 /** Compute information of a server. */
 export interface SkuForPatch {
@@ -5768,12 +5549,7 @@ export interface SkuForPatch {
   /** Tier of the compute assigned to a server. */
   tier?: SkuTier | (string & {});
 }
-export const SkuForPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    tier: S.optional(SkuTier),
-  }),
-).annotate({ identifier: "SkuForPatch" }) as any as S.Schema<SkuForPatch>;
+export const SkuForPatch = ServerSku as any as S.Schema<SkuForPatch>;
 
 /** Backup properties of a server. */
 export interface BackupForPatchInput {
@@ -5890,10 +5666,8 @@ export const ServerPropertiesForPatchInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateServerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerRequestTagsMap>;
+export const UpdateServerRequestTagsMap =
+  CancelMigrationResponseTagsMap as any as S.Schema<UpdateServerRequestTagsMap>;
 
 export interface UpdateServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5931,9 +5705,7 @@ export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateServerRequest" }) as any as S.Schema<UpdateServerRequest>;
 
 export interface UpdateServerResponse {}
-export const UpdateServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateServerResponse",
-}) as any as S.Schema<UpdateServerResponse>;
+export const UpdateServerResponse = CreateDatabaseResponse as any as S.Schema<UpdateServerResponse>;
 
 export interface UpdateVirtualEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5967,9 +5739,8 @@ export const UpdateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateVirtualEndpointRequest>;
 
 export interface UpdateVirtualEndpointResponse {}
-export const UpdateVirtualEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateVirtualEndpointResponse",
-}) as any as S.Schema<UpdateVirtualEndpointResponse>;
+export const UpdateVirtualEndpointResponse =
+  CreateDatabaseResponse as any as S.Schema<UpdateVirtualEndpointResponse>;
 
 export type AdministratorsMicrosoftEntraCreateOrUpdateError = AzureOpError;
 /** Creates a new server administrator associated to a Microsoft Entra principal. */

@@ -221,10 +221,7 @@ export type Status =
 export const Status = S.String;
 
 export type StatusDetails = { [key: string]: string | undefined };
-export const StatusDetails = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const StatusDetails = ConfigurationParametersMap as any as S.Schema<StatusDetails>;
 export interface StatusSummary {
   StatusType: StatusType;
   Status?: Status;
@@ -557,7 +554,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = FilterValues as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -571,9 +568,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConfigurationDefinitionInput {
   ManagerArn: string;
   Id: string;
@@ -604,11 +599,8 @@ export const UpdateConfigurationDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConfigurationDefinitionInput",
 }) as any as S.Schema<UpdateConfigurationDefinitionInput>;
 export interface UpdateConfigurationDefinitionResponse {}
-export const UpdateConfigurationDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateConfigurationDefinitionResponse",
-}) as any as S.Schema<UpdateConfigurationDefinitionResponse>;
+export const UpdateConfigurationDefinitionResponse =
+  DeleteConfigurationManagerResponse as any as S.Schema<UpdateConfigurationDefinitionResponse>;
 export interface UpdateConfigurationManagerInput {
   ManagerArn: string;
   Name?: string;
@@ -633,11 +625,8 @@ export const UpdateConfigurationManagerInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConfigurationManagerInput",
 }) as any as S.Schema<UpdateConfigurationManagerInput>;
 export interface UpdateConfigurationManagerResponse {}
-export const UpdateConfigurationManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateConfigurationManagerResponse",
-}) as any as S.Schema<UpdateConfigurationManagerResponse>;
+export const UpdateConfigurationManagerResponse =
+  DeleteConfigurationManagerResponse as any as S.Schema<UpdateConfigurationManagerResponse>;
 export interface UpdateServiceSettingsInput {
   ExplorerEnablingRoleArn?: string;
 }
@@ -649,9 +638,8 @@ export const UpdateServiceSettingsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServiceSettingsInput",
 }) as any as S.Schema<UpdateServiceSettingsInput>;
 export interface UpdateServiceSettingsResponse {}
-export const UpdateServiceSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateServiceSettingsResponse",
-}) as any as S.Schema<UpdateServiceSettingsResponse>;
+export const UpdateServiceSettingsResponse =
+  TagResourceResponse as any as S.Schema<UpdateServiceSettingsResponse>;
 export type CreateConfigurationManagerError =
   | AccessDeniedException
   | ConflictException

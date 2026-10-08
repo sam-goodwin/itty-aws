@@ -100,10 +100,8 @@ export const CreateZoneRequestRrsetsItemRecordsList = /*@__PURE__*/ S.Array(
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateZoneRequestRrsetsItemLabelsMap = { [key: string]: string | undefined };
-export const CreateZoneRequestRrsetsItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateZoneRequestRrsetsItemLabelsMap>;
+export const CreateZoneRequestRrsetsItemLabelsMap =
+  CreateZoneRequestLabelsMap as any as S.Schema<CreateZoneRequestRrsetsItemLabelsMap>;
 
 export interface CreateZoneRequestRrsetsItem {
   /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
@@ -200,10 +198,8 @@ export const ZonePrimaryPrimaryNameserversList = /*@__PURE__*/ S.Array(
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ZonePrimaryLabelsMap = { [key: string]: string | undefined };
-export const ZonePrimaryLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZonePrimaryLabelsMap>;
+export const ZonePrimaryLabelsMap =
+  CreateZoneRequestLabelsMap as any as S.Schema<ZonePrimaryLabelsMap>;
 
 /** Protection configuration for the Resource. */
 export interface ZonePrimaryProtection {
@@ -228,9 +224,8 @@ export const ZonePrimaryAuthoritativeNameserversAssignedList = /*@__PURE__*/ S.A
 
 /** Authoritative nameservers currently delegated to by the parent DNS zone. If these don't match the assigned authoritative nameservers, the DNS zone is currently not being served by Hetzner. */
 export type ZonePrimaryAuthoritativeNameserversDelegatedList = Array<string>;
-export const ZonePrimaryAuthoritativeNameserversDelegatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZonePrimaryAuthoritativeNameserversDelegatedList>;
+export const ZonePrimaryAuthoritativeNameserversDelegatedList =
+  ZonePrimaryAuthoritativeNameserversAssignedList as any as S.Schema<ZonePrimaryAuthoritativeNameserversDelegatedList>;
 
 /** Status of the delegation. */
 export type ZonePrimaryAuthoritativeNameserversDelegationStatus =
@@ -350,10 +345,8 @@ export const ZoneSecondaryPrimaryNameserversList = /*@__PURE__*/ S.Array(
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ZoneSecondaryLabelsMap = { [key: string]: string | undefined };
-export const ZoneSecondaryLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneSecondaryLabelsMap>;
+export const ZoneSecondaryLabelsMap =
+  CreateZoneRequestLabelsMap as any as S.Schema<ZoneSecondaryLabelsMap>;
 
 /** Protection configuration for the Resource. */
 export type ZoneSecondaryProtection = ZonePrimaryProtection;
@@ -365,15 +358,13 @@ export const ZoneSecondaryStatus = S.String;
 
 /** Authoritative Hetzner nameservers assigned to this [Zone](#tag/zones). */
 export type ZoneSecondaryAuthoritativeNameserversAssignedList = Array<string>;
-export const ZoneSecondaryAuthoritativeNameserversAssignedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZoneSecondaryAuthoritativeNameserversAssignedList>;
+export const ZoneSecondaryAuthoritativeNameserversAssignedList =
+  ZonePrimaryAuthoritativeNameserversAssignedList as any as S.Schema<ZoneSecondaryAuthoritativeNameserversAssignedList>;
 
 /** Authoritative nameservers currently delegated to by the parent DNS zone. If these don't match the assigned authoritative nameservers, the DNS zone is currently not being served by Hetzner. */
 export type ZoneSecondaryAuthoritativeNameserversDelegatedList = Array<string>;
-export const ZoneSecondaryAuthoritativeNameserversDelegatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZoneSecondaryAuthoritativeNameserversDelegatedList>;
+export const ZoneSecondaryAuthoritativeNameserversDelegatedList =
+  ZonePrimaryAuthoritativeNameserversAssignedList as any as S.Schema<ZoneSecondaryAuthoritativeNameserversDelegatedList>;
 
 /** Status of the delegation. */
 export type ZoneSecondaryAuthoritativeNameserversDelegationStatus =
@@ -561,9 +552,8 @@ export const DeleteZoneResponseActionResourcesItem = CreateZoneResponseActionRes
 
 /** Resources the Action relates to. */
 export type DeleteZoneResponseActionResourcesList = Array<CreateZoneResponseActionResourcesItem>;
-export const DeleteZoneResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  CreateZoneResponseActionResourcesItem,
-) as any as S.Schema<DeleteZoneResponseActionResourcesList>;
+export const DeleteZoneResponseActionResourcesList =
+  CreateZoneResponseActionResourcesList as any as S.Schema<DeleteZoneResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteZoneResponseActionError = CreateZoneResponseActionError;
@@ -756,10 +746,8 @@ export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateZoneRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateZoneRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateZoneRequestLabelsMap>;
+export const UpdateZoneRequestLabelsMap =
+  CreateZoneRequestLabelsMap as any as S.Schema<UpdateZoneRequestLabelsMap>;
 
 export interface UpdateZoneRequest {
   /** ID or Name of the Zone. */

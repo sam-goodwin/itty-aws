@@ -236,9 +236,7 @@ export const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.su
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** CheckMigrationPermissionRequest is the request message for CheckMigrationPermission method. */
 export type CheckMigrationPermissionRequest = CancelOperationRequest;
@@ -605,11 +603,7 @@ export interface DetachTrustRequest {
   /** Required. The domain trust resource to removed. */
   trust?: Trust;
 }
-export const DetachTrustRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trust: S.optional(Trust),
-  }),
-).annotate({ identifier: "DetachTrustRequest" }) as any as S.Schema<DetachTrustRequest>;
+export const DetachTrustRequest = AttachTrustRequest as any as S.Schema<DetachTrustRequest>;
 
 export interface DetachTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
@@ -1741,13 +1735,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1823,11 +1812,7 @@ export interface ValidateTrustRequest {
   /** Required. The domain trust to validate trust state for. */
   trust?: Trust;
 }
-export const ValidateTrustRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trust: S.optional(Trust),
-  }),
-).annotate({ identifier: "ValidateTrustRequest" }) as any as S.Schema<ValidateTrustRequest>;
+export const ValidateTrustRequest = AttachTrustRequest as any as S.Schema<ValidateTrustRequest>;
 
 export interface ValidateTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */

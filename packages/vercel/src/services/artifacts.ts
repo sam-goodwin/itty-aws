@@ -263,9 +263,7 @@ export const RecordEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordEventsRequest" }) as any as S.Schema<RecordEventsRequest>;
 
 export interface RecordEventsResponse {}
-export const RecordEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RecordEventsResponse",
-}) as any as S.Schema<RecordEventsResponse>;
+export const RecordEventsResponse = ArtifactExistsResponse as any as S.Schema<RecordEventsResponse>;
 
 export interface StatusRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -350,9 +348,8 @@ export const UploadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of URLs where the artifact was updated */
 export type UploadArtifactResponseUrlsList = Array<string>;
-export const UploadArtifactResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UploadArtifactResponseUrlsList>;
+export const UploadArtifactResponseUrlsList =
+  ArtifactQueryRequestHashesList as any as S.Schema<UploadArtifactResponseUrlsList>;
 
 export interface UploadArtifactResponse {
   /** Array of URLs where the artifact was updated */

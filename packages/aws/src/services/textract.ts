@@ -256,7 +256,7 @@ export const QueriesConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ Queries: Q
 export type AdapterId = string;
 export type AdapterPage = string;
 export type AdapterPages = string[];
-export const AdapterPages = /*@__PURE__*/ S.Array(S.String);
+export const AdapterPages = QueryPages as any as S.Schema<AdapterPages>;
 export type AdapterVersion = string;
 export interface Adapter {
   AdapterId: string;
@@ -380,7 +380,7 @@ export type RelationshipType =
 export const RelationshipType = S.String;
 
 export type IdList = string[];
-export const IdList = /*@__PURE__*/ S.Array(S.String);
+export const IdList = QueryPages as any as S.Schema<IdList>;
 export interface Relationship {
   Type?: RelationshipType;
   Ids?: string[];
@@ -449,7 +449,7 @@ export const BlockList = /*@__PURE__*/ S.Array(Block);
 export type HumanLoopArn = string;
 export type HumanLoopActivationReason = string;
 export type HumanLoopActivationReasons = string[];
-export const HumanLoopActivationReasons = /*@__PURE__*/ S.Array(S.String);
+export const HumanLoopActivationReasons = QueryPages as any as S.Schema<HumanLoopActivationReasons>;
 export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults = string;
 export interface HumanLoopActivationOutput {
   HumanLoopArn?: string;
@@ -514,7 +514,7 @@ export const ExpenseCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Code: S.optional(S.String), Confidence: S.optional(S.Number) }),
 ).annotate({ identifier: "ExpenseCurrency" }) as any as S.Schema<ExpenseCurrency>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = QueryPages as any as S.Schema<StringList>;
 export interface ExpenseGroupProperty {
   Types?: string[];
   Id?: string;
@@ -760,9 +760,8 @@ export const DeleteAdapterVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAdapterVersionRequest",
 }) as any as S.Schema<DeleteAdapterVersionRequest>;
 export interface DeleteAdapterVersionResponse {}
-export const DeleteAdapterVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAdapterVersionResponse",
-}) as any as S.Schema<DeleteAdapterVersionResponse>;
+export const DeleteAdapterVersionResponse =
+  DeleteAdapterResponse as any as S.Schema<DeleteAdapterVersionResponse>;
 export interface DetectDocumentTextRequest {
   Document: Document;
 }
@@ -1161,7 +1160,7 @@ export const GetLendingAnalysisSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLendingAnalysisSummaryRequest",
 }) as any as S.Schema<GetLendingAnalysisSummaryRequest>;
 export type PageList = number[];
-export const PageList = /*@__PURE__*/ S.Array(S.Number);
+export const PageList = Pages as any as S.Schema<PageList>;
 export interface SplitDocument {
   Index?: number;
   Pages?: number[];
@@ -1182,11 +1181,10 @@ export const DetectedSignatureList = /*@__PURE__*/ S.Array(DetectedSignature);
 export interface UndetectedSignature {
   Page?: number;
 }
-export const UndetectedSignature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Page: S.optional(S.Number) }),
-).annotate({ identifier: "UndetectedSignature" }) as any as S.Schema<UndetectedSignature>;
+export const UndetectedSignature = DetectedSignature as any as S.Schema<UndetectedSignature>;
 export type UndetectedSignatureList = UndetectedSignature[];
-export const UndetectedSignatureList = /*@__PURE__*/ S.Array(UndetectedSignature);
+export const UndetectedSignatureList =
+  DetectedSignatureList as any as S.Schema<UndetectedSignatureList>;
 export interface DocumentGroup {
   Type?: string;
   SplitDocuments?: SplitDocument[];
@@ -1204,7 +1202,7 @@ export const DocumentGroup = /*@__PURE__*/ S.suspend(() =>
 export type DocumentGroupList = DocumentGroup[];
 export const DocumentGroupList = /*@__PURE__*/ S.Array(DocumentGroup);
 export type UndetectedDocumentTypeList = string[];
-export const UndetectedDocumentTypeList = /*@__PURE__*/ S.Array(S.String);
+export const UndetectedDocumentTypeList = QueryPages as any as S.Schema<UndetectedDocumentTypeList>;
 export interface LendingSummary {
   DocumentGroups?: DocumentGroup[];
   UndetectedDocumentTypes?: string[];
@@ -1411,11 +1409,8 @@ export const StartDocumentTextDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartDocumentTextDetectionResponse {
   JobId?: string;
 }
-export const StartDocumentTextDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartDocumentTextDetectionResponse",
-}) as any as S.Schema<StartDocumentTextDetectionResponse>;
+export const StartDocumentTextDetectionResponse =
+  StartDocumentAnalysisResponse as any as S.Schema<StartDocumentTextDetectionResponse>;
 export interface StartExpenseAnalysisRequest {
   DocumentLocation: DocumentLocation;
   ClientRequestToken?: string;
@@ -1439,11 +1434,8 @@ export const StartExpenseAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartExpenseAnalysisResponse {
   JobId?: string;
 }
-export const StartExpenseAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartExpenseAnalysisResponse",
-}) as any as S.Schema<StartExpenseAnalysisResponse>;
+export const StartExpenseAnalysisResponse =
+  StartDocumentAnalysisResponse as any as S.Schema<StartExpenseAnalysisResponse>;
 export interface StartLendingAnalysisRequest {
   DocumentLocation: DocumentLocation;
   ClientRequestToken?: string;
@@ -1467,11 +1459,8 @@ export const StartLendingAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartLendingAnalysisResponse {
   JobId?: string;
 }
-export const StartLendingAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartLendingAnalysisResponse",
-}) as any as S.Schema<StartLendingAnalysisResponse>;
+export const StartLendingAnalysisResponse =
+  StartDocumentAnalysisResponse as any as S.Schema<StartLendingAnalysisResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: { [key: string]: string | undefined };
@@ -1482,11 +1471,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAdapterResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = QueryPages as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1497,9 +1484,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAdapterResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAdapterRequest {
   AdapterId: string;
   Description?: string;

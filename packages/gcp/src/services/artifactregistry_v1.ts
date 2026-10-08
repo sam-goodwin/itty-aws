@@ -182,9 +182,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** The request for checking an artifact for streaming. */
 export interface CheckPrewarmedArtifactRequest {
@@ -526,14 +524,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRep
   uri?: string;
 }
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository>;
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository>;
 
 /** Configuration for a Docker remote repository. */
 export interface DockerRepository {
@@ -564,14 +555,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRep
   uri?: string;
 }
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository>;
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository>;
 
 /** Configuration for a Python remote repository. */
 export interface PythonRepository {
@@ -628,14 +612,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumReposi
   uri?: string;
 }
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository>;
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository>;
 
 /** Configuration for a Yum remote repository. */
 export interface YumRepository {
@@ -675,14 +652,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmReposi
   uri?: string;
 }
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository>;
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository>;
 
 /** Configuration for a Npm remote repository. */
 export interface NpmRepository {
@@ -736,14 +706,7 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptReposi
   uri?: string;
 }
 export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository",
-  }) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository>;
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository>;
 
 /** Configuration for an Apt remote repository. */
 export interface AptRepository {
@@ -1263,9 +1226,7 @@ export const DownloadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S
 
 /** The response to download a file. */
 export interface DownloadFileResponse {}
-export const DownloadFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadFileResponse",
-}) as any as S.Schema<DownloadFileResponse>;
+export const DownloadFileResponse = CancelOperationRequest as any as S.Schema<DownloadFileResponse>;
 
 /** The request for exporting an artifact to a destination. */
 export interface ExportArtifactRequest {
@@ -2988,13 +2949,8 @@ export interface RemovePrewarmedArtifactResponse {
   /** The prewarmed artifact that was removed. */
   prewarmedArtifact?: PrewarmedArtifact;
 }
-export const RemovePrewarmedArtifactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prewarmedArtifact: S.optional(PrewarmedArtifact),
-  }),
-).annotate({
-  identifier: "RemovePrewarmedArtifactResponse",
-}) as any as S.Schema<RemovePrewarmedArtifactResponse>;
+export const RemovePrewarmedArtifactResponse =
+  CheckPrewarmedArtifactResponse as any as S.Schema<RemovePrewarmedArtifactResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -3067,13 +3023,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateProjectConfigProjectsLocationsRequest {
   /** Optional. Field mask to support partial updates. See https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask for more details. */
@@ -3283,13 +3234,8 @@ export interface UploadGenericArtifactMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
-export const UploadGenericArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadGenericArtifactMediaResponse",
-}) as any as S.Schema<UploadGenericArtifactMediaResponse>;
+export const UploadGenericArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadGenericArtifactMediaResponse>;
 
 /** The request to upload a Go module. */
 export type UploadGoModuleRequest = CancelOperationRequest;
@@ -3321,13 +3267,8 @@ export interface UploadGoModuleMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
-export const UploadGoModuleMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadGoModuleMediaResponse",
-}) as any as S.Schema<UploadGoModuleMediaResponse>;
+export const UploadGoModuleMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadGoModuleMediaResponse>;
 
 /** The request to upload an artifact. */
 export type UploadGoogetArtifactRequest = CancelOperationRequest;
@@ -3360,13 +3301,8 @@ export interface UploadGoogetArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
-export const UploadGoogetArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadGoogetArtifactMediaResponse",
-}) as any as S.Schema<UploadGoogetArtifactMediaResponse>;
+export const UploadGoogetArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadGoogetArtifactMediaResponse>;
 
 /** The request to upload an artifact. */
 export interface UploadKfpArtifactRequest {
@@ -3408,13 +3344,8 @@ export interface UploadKfpArtifactMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
-export const UploadKfpArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadKfpArtifactMediaResponse",
-}) as any as S.Schema<UploadKfpArtifactMediaResponse>;
+export const UploadKfpArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadKfpArtifactMediaResponse>;
 
 /** The request to upload an artifact. */
 export type UploadYumArtifactRequest = CancelOperationRequest;
@@ -3446,13 +3377,8 @@ export interface UploadYumArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
-export const UploadYumArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadYumArtifactMediaResponse",
-}) as any as S.Schema<UploadYumArtifactMediaResponse>;
+export const UploadYumArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadYumArtifactMediaResponse>;
 
 export type BatchDeleteProjectsLocationsRepositoriesPackagesVersionsError =
   | NotFound

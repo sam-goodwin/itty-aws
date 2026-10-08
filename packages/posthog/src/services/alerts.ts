@@ -268,14 +268,7 @@ export interface MADDetectorConfig {
   /** Rolling window size for calculating median/MAD (default: 30) */
   window?: number | null;
 }
-export const MADDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "MADDetectorConfig" }) as any as S.Schema<MADDetectorConfig>;
+export const MADDetectorConfig = ZScoreDetectorConfig as any as S.Schema<MADDetectorConfig>;
 
 export interface IQRDetectorConfig {
   /** IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers) */
@@ -322,14 +315,7 @@ export interface ECODDetectorConfig {
   /** Rolling window size -- how many historical data points to train on (default: based on calculation interval) */
   window?: number | null;
 }
-export const ECODDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "ECODDetectorConfig" }) as any as S.Schema<ECODDetectorConfig>;
+export const ECODDetectorConfig = ZScoreDetectorConfig as any as S.Schema<ECODDetectorConfig>;
 
 export type COPODDetectorConfig = ECODDetectorConfig;
 export const COPODDetectorConfig = ECODDetectorConfig;
@@ -687,9 +673,8 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type AlertSubscribedUsersList = Array<number>;
-export const AlertSubscribedUsersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AlertSubscribedUsersList>;
+export const AlertSubscribedUsersList =
+  CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSubscribedUsersList>;
 
 export interface Threshold {
   id?: string;
@@ -946,9 +931,8 @@ export const CreateAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the created destination. Pass them to destinations/delete to remove it. */
 export type AlertDestinationResponseHogFunctionIdsList = Array<string>;
-export const AlertDestinationResponseHogFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertDestinationResponseHogFunctionIdsList>;
+export const AlertDestinationResponseHogFunctionIdsList =
+  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertDestinationResponseHogFunctionIdsList>;
 
 export interface AlertDestinationResponse {
   /** IDs of the created destination. Pass them to destinations/delete to remove it. */
@@ -999,15 +983,13 @@ export const CreateAlertsSimulateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Data values for each point. */
 export type AlertSimulateResponseDataList = Array<number>;
-export const AlertSimulateResponseDataList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AlertSimulateResponseDataList>;
+export const AlertSimulateResponseDataList =
+  CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSimulateResponseDataList>;
 
 /** Date labels for each point. */
 export type AlertSimulateResponseDatesList = Array<string>;
-export const AlertSimulateResponseDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertSimulateResponseDatesList>;
+export const AlertSimulateResponseDatesList =
+  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertSimulateResponseDatesList>;
 
 /** Score for each point. Null can mean insufficient data or a valid unscored point. AI previews report model confidence only for points flagged by an anomaly verdict; all other points are null, including every point in a normal verdict. */
 export type AlertSimulateResponseScoresList = Array<number | null>;
@@ -1017,21 +999,17 @@ export const AlertSimulateResponseScoresList = /*@__PURE__*/ S.Array(
 
 /** Indices of points flagged as anomalies. */
 export type AlertSimulateResponseTriggeredIndicesList = Array<number>;
-export const AlertSimulateResponseTriggeredIndicesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AlertSimulateResponseTriggeredIndicesList>;
+export const AlertSimulateResponseTriggeredIndicesList =
+  CreateAlertRequestSubscribedUsersList as any as S.Schema<AlertSimulateResponseTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
 export type AlertSimulateResponseTriggeredDatesList = Array<string>;
-export const AlertSimulateResponseTriggeredDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertSimulateResponseTriggeredDatesList>;
+export const AlertSimulateResponseTriggeredDatesList =
+  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<AlertSimulateResponseTriggeredDatesList>;
 
 export type AlertSimulateResponseSubDetectorScoresItemMap = { [key: string]: unknown | undefined };
-export const AlertSimulateResponseSubDetectorScoresItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AlertSimulateResponseSubDetectorScoresItemMap>;
+export const AlertSimulateResponseSubDetectorScoresItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AlertSimulateResponseSubDetectorScoresItemMap>;
 
 /** Per-sub-detector scores for ensemble detectors. Each entry has 'type' and 'scores' fields. */
 export type AlertSimulateResponseSubDetectorScoresList =
@@ -1042,48 +1020,40 @@ export const AlertSimulateResponseSubDetectorScoresList = /*@__PURE__*/ S.Array(
 
 /** Data values for each point. */
 export type BreakdownSimulationResultDataList = Array<number>;
-export const BreakdownSimulationResultDataList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BreakdownSimulationResultDataList>;
+export const BreakdownSimulationResultDataList =
+  CreateAlertRequestSubscribedUsersList as any as S.Schema<BreakdownSimulationResultDataList>;
 
 /** Date labels for each point. */
 export type BreakdownSimulationResultDatesList = Array<string>;
-export const BreakdownSimulationResultDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BreakdownSimulationResultDatesList>;
+export const BreakdownSimulationResultDatesList =
+  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BreakdownSimulationResultDatesList>;
 
 /** Anomaly score for each point. */
 export type BreakdownSimulationResultScoresList = Array<number | null>;
-export const BreakdownSimulationResultScoresList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.Number),
-) as any as S.Schema<BreakdownSimulationResultScoresList>;
+export const BreakdownSimulationResultScoresList =
+  AlertSimulateResponseScoresList as any as S.Schema<BreakdownSimulationResultScoresList>;
 
 /** Indices of points flagged as anomalies. */
 export type BreakdownSimulationResultTriggeredIndicesList = Array<number>;
-export const BreakdownSimulationResultTriggeredIndicesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BreakdownSimulationResultTriggeredIndicesList>;
+export const BreakdownSimulationResultTriggeredIndicesList =
+  CreateAlertRequestSubscribedUsersList as any as S.Schema<BreakdownSimulationResultTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
 export type BreakdownSimulationResultTriggeredDatesList = Array<string>;
-export const BreakdownSimulationResultTriggeredDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BreakdownSimulationResultTriggeredDatesList>;
+export const BreakdownSimulationResultTriggeredDatesList =
+  AlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BreakdownSimulationResultTriggeredDatesList>;
 
 export type BreakdownSimulationResultSubDetectorScoresItemMap = {
   [key: string]: unknown | undefined;
 };
-export const BreakdownSimulationResultSubDetectorScoresItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BreakdownSimulationResultSubDetectorScoresItemMap>;
+export const BreakdownSimulationResultSubDetectorScoresItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<BreakdownSimulationResultSubDetectorScoresItemMap>;
 
 /** Per-sub-detector scores for ensemble detectors. */
 export type BreakdownSimulationResultSubDetectorScoresList =
   Array<BreakdownSimulationResultSubDetectorScoresItemMap>;
-export const BreakdownSimulationResultSubDetectorScoresList = /*@__PURE__*/ S.Array(
-  BreakdownSimulationResultSubDetectorScoresItemMap,
-) as any as S.Schema<BreakdownSimulationResultSubDetectorScoresList>;
+export const BreakdownSimulationResultSubDetectorScoresList =
+  AlertSimulateResponseSubDetectorScoresList as any as S.Schema<BreakdownSimulationResultSubDetectorScoresList>;
 
 export interface BreakdownSimulationResult {
   /** Breakdown value label. */
@@ -1198,11 +1168,8 @@ export const CreateAlertsTestDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAlertsTestDeliveryRequest>;
 
 export interface CreateAlertsTestDeliveryResponse {}
-export const CreateAlertsTestDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateAlertsTestDeliveryResponse",
-}) as any as S.Schema<CreateAlertsTestDeliveryResponse>;
+export const CreateAlertsTestDeliveryResponse =
+  AlertsDestinationsDeleteCreateResponse as any as S.Schema<CreateAlertsTestDeliveryResponse>;
 
 export interface GetAlertRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1282,9 +1249,8 @@ export const PaginatedAlertList = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type UpdateAlertRequestSubscribedUsersList = Array<number>;
-export const UpdateAlertRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateAlertRequestSubscribedUsersList>;
+export const UpdateAlertRequestSubscribedUsersList =
+  CreateAlertRequestSubscribedUsersList as any as S.Schema<UpdateAlertRequestSubscribedUsersList>;
 
 export interface UpdateAlertRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1351,9 +1317,8 @@ export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type UpdateAlertsPartialRequestSubscribedUsersList = Array<number>;
-export const UpdateAlertsPartialRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateAlertsPartialRequestSubscribedUsersList>;
+export const UpdateAlertsPartialRequestSubscribedUsersList =
+  CreateAlertRequestSubscribedUsersList as any as S.Schema<UpdateAlertsPartialRequestSubscribedUsersList>;
 
 export interface UpdateAlertsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

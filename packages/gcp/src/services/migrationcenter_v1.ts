@@ -428,9 +428,7 @@ export const BatchDeleteProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = AggregationFrequency as any as S.Schema<Empty>;
 
 /** MySql plugin. */
 export interface MySqlPlugin {
@@ -1028,13 +1026,8 @@ export interface DailyResourceUsageAggregationMemory {
   /** Memory utilization percentage. */
   utilizationPercentage?: DailyResourceUsageAggregationStats;
 }
-export const DailyResourceUsageAggregationMemory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    utilizationPercentage: S.optional(DailyResourceUsageAggregationStats),
-  }),
-).annotate({
-  identifier: "DailyResourceUsageAggregationMemory",
-}) as any as S.Schema<DailyResourceUsageAggregationMemory>;
+export const DailyResourceUsageAggregationMemory =
+  DailyResourceUsageAggregationCPU as any as S.Schema<DailyResourceUsageAggregationMemory>;
 
 /** Statistical aggregation of disk usage. */
 export interface DailyResourceUsageAggregationDisk {
@@ -3732,11 +3725,7 @@ export interface ReportSummaryVmwareNode {
   /** Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes */
   code?: string;
 }
-export const ReportSummaryVmwareNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReportSummaryVmwareNode" }) as any as S.Schema<ReportSummaryVmwareNode>;
+export const ReportSummaryVmwareNode = MachineSeries as any as S.Schema<ReportSummaryVmwareNode>;
 
 /** Represents assets allocated to a specific VMWare Node type. */
 export interface ReportSummaryVmwareNodeAllocation {
@@ -4658,11 +4647,7 @@ export interface MemoryUsageSample {
   /** Percentage of system memory utilized. Must be in the interval [0, 100]. */
   utilizedPercentage?: number;
 }
-export const MemoryUsageSample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    utilizedPercentage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MemoryUsageSample" }) as any as S.Schema<MemoryUsageSample>;
+export const MemoryUsageSample = CpuUsageSample as any as S.Schema<MemoryUsageSample>;
 
 /** Network usage sample. Values are across all network interfaces. */
 export interface NetworkUsageSample {
@@ -5774,9 +5759,8 @@ export const ReportAssetFramesProjectsLocationsAssetsRequest = /*@__PURE__*/ S.s
 
 /** A response to a call to `ReportAssetFrame`. */
 export interface ReportAssetFramesResponse {}
-export const ReportAssetFramesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReportAssetFramesResponse",
-}) as any as S.Schema<ReportAssetFramesResponse>;
+export const ReportAssetFramesResponse =
+  AggregationFrequency as any as S.Schema<ReportAssetFramesResponse>;
 
 /** A request to run an assets export job. */
 export interface RunAssetsExportJobRequest {

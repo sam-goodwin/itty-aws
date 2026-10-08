@@ -22,9 +22,8 @@ export const CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesLi
 
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList = Array<string>;
-export const CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList>;
+export const CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList =
+  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList>;
 
 export interface CreateWebAnalyticsContentAutopilotProfileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -64,21 +63,18 @@ export const CreateWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ S.
 
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type ContentAutopilotSiteProfileSourceUrlsList = Array<string>;
-export const ContentAutopilotSiteProfileSourceUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSiteProfileSourceUrlsList>;
+export const ContentAutopilotSiteProfileSourceUrlsList =
+  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileSourceUrlsList>;
 
 /** Same-origin URL path prefixes allowed for research. */
 export type ContentAutopilotSiteProfileContentBoundariesList = Array<string>;
-export const ContentAutopilotSiteProfileContentBoundariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSiteProfileContentBoundariesList>;
+export const ContentAutopilotSiteProfileContentBoundariesList =
+  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileContentBoundariesList>;
 
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type ContentAutopilotSiteProfileBrandRulesList = Array<string>;
-export const ContentAutopilotSiteProfileBrandRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSiteProfileBrandRulesList>;
+export const ContentAutopilotSiteProfileBrandRulesList =
+  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileBrandRulesList>;
 
 export interface ContentAutopilotSiteProfile {
   id: string;
@@ -184,24 +180,18 @@ export const PaginatedContentAutopilotSiteProfileList = /*@__PURE__*/ S.suspend(
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList = Array<string>;
 export const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList>;
+  CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList>;
 
 /** Same-origin URL path prefixes allowed for research. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList =
   Array<string>;
 export const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList>;
+  CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList>;
 
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList = Array<string>;
 export const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList>;
+  CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList>;
 
 export interface UpdateWebAnalyticsContentAutopilotProfilesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

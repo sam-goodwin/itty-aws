@@ -253,9 +253,8 @@ export const OtelMetricTypeEnum = S.String;
 
 /** Label predicates ANDed together, matching the chart the point came from. */
 export type MetricExplainBodyFiltersList = Array<MetricFilter>;
-export const MetricExplainBodyFiltersList = /*@__PURE__*/ S.Array(
-  MetricFilter,
-) as any as S.Schema<MetricExplainBodyFiltersList>;
+export const MetricExplainBodyFiltersList =
+  MetricAnomalyBodyFiltersList as any as S.Schema<MetricExplainBodyFiltersList>;
 
 /** * `second` - second * `minute` - minute * `minute_5` - minute_5 * `minute_15` - minute_15 * `hour` - hour * `hour_6` - hour_6 * `day` - day * `week` - week */
 export type MetricQueryIntervalEnum =
@@ -330,17 +329,13 @@ export const SpatialReducerEnum = S.String;
 
 /** Per-data-point attributes identifying the series. */
 export type MetricSeriesBreakdownLabelsMap = { [key: string]: string | undefined };
-export const MetricSeriesBreakdownLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetricSeriesBreakdownLabelsMap>;
+export const MetricSeriesBreakdownLabelsMap =
+  MetricSeriesLabelsMap as any as S.Schema<MetricSeriesBreakdownLabelsMap>;
 
 /** Resource attributes identifying the scrape target. */
 export type MetricSeriesBreakdownResourceLabelsMap = { [key: string]: string | undefined };
-export const MetricSeriesBreakdownResourceLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetricSeriesBreakdownResourceLabelsMap>;
+export const MetricSeriesBreakdownResourceLabelsMap =
+  MetricSeriesLabelsMap as any as S.Schema<MetricSeriesBreakdownResourceLabelsMap>;
 
 export interface MetricSampleView {
   /** Sample timestamp, ISO 8601. */
@@ -464,9 +459,8 @@ export const MetricExplainResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Label predicates ANDed together. Rows must satisfy every filter. */
 export type MetricQueryBodyFiltersList = Array<MetricFilter>;
-export const MetricQueryBodyFiltersList = /*@__PURE__*/ S.Array(
-  MetricFilter,
-) as any as S.Schema<MetricQueryBodyFiltersList>;
+export const MetricQueryBodyFiltersList =
+  MetricAnomalyBodyFiltersList as any as S.Schema<MetricQueryBodyFiltersList>;
 
 export interface MetricGroupBy {
   /** Attribute name to split series by (e.g. 'k8s.pod.name', 'env'). */
@@ -489,15 +483,13 @@ export const MetricQueryBodyGroupByList = /*@__PURE__*/ S.Array(
 
 /** Label predicates ANDed together for this clause. */
 export type MetricClauseFiltersList = Array<MetricFilter>;
-export const MetricClauseFiltersList = /*@__PURE__*/ S.Array(
-  MetricFilter,
-) as any as S.Schema<MetricClauseFiltersList>;
+export const MetricClauseFiltersList =
+  MetricAnomalyBodyFiltersList as any as S.Schema<MetricClauseFiltersList>;
 
 /** Labels to split this clause into separate series by. */
 export type MetricClauseGroupByList = Array<MetricGroupBy>;
-export const MetricClauseGroupByList = /*@__PURE__*/ S.Array(
-  MetricGroupBy,
-) as any as S.Schema<MetricClauseGroupByList>;
+export const MetricClauseGroupByList =
+  MetricQueryBodyGroupByList as any as S.Schema<MetricClauseGroupByList>;
 
 export interface MetricClause {
   /** Clause name a formula refers to (e.g. 'a'). */
@@ -606,9 +598,8 @@ export const MetricQueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Label predicates ANDed together, matched against each emission's series. Pass the same filters used for the chart so the emissions listed are the ones behind it. */
 export type MetricSamplesBodyFiltersList = Array<MetricFilter>;
-export const MetricSamplesBodyFiltersList = /*@__PURE__*/ S.Array(
-  MetricFilter,
-) as any as S.Schema<MetricSamplesBodyFiltersList>;
+export const MetricSamplesBodyFiltersList =
+  MetricAnomalyBodyFiltersList as any as S.Schema<MetricSamplesBodyFiltersList>;
 
 export interface MetricSamplesBody {
   /** Exact metric name to list raw emissions for (e.g. 'http.server.duration'). Omit to list emissions across all metric names -- allowed only with traceId (the trace->metrics pivot). */
@@ -660,17 +651,13 @@ export const CreateMetricsSampleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-emission attributes (high-cardinality labels on the data point). */
 export type MetricEventSampleAttributesMap = { [key: string]: string | undefined };
-export const MetricEventSampleAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetricEventSampleAttributesMap>;
+export const MetricEventSampleAttributesMap =
+  MetricSeriesLabelsMap as any as S.Schema<MetricEventSampleAttributesMap>;
 
 /** Attributes of the resource (host, pod, service version) that emitted the metric. */
 export type MetricEventSampleResourceAttributesMap = { [key: string]: string | undefined };
-export const MetricEventSampleResourceAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetricEventSampleResourceAttributesMap>;
+export const MetricEventSampleResourceAttributesMap =
+  MetricSeriesLabelsMap as any as S.Schema<MetricEventSampleResourceAttributesMap>;
 
 export interface MetricEventSample {
   /** When the metric was emitted, ISO 8601. */
@@ -736,9 +723,8 @@ export const MetricSamplesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Exact metric names to load as a batch. Overrides value and limit. */
 export type CreateMetricsValueRequestNamesList = Array<string>;
-export const CreateMetricsValueRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMetricsValueRequestNamesList>;
+export const CreateMetricsValueRequestNamesList =
+  MetricAnomalyBodyCandidateKeysList as any as S.Schema<CreateMetricsValueRequestNamesList>;
 
 export interface CreateMetricsValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

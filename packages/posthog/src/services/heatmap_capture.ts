@@ -102,9 +102,8 @@ export const HeatmapCaptureSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Full http(s) URLs that may send heatmap data. Use * to match any characters. */
 export type UpdateHeatmapCaptureSettingsRequestUrlAllowlistList = Array<string>;
-export const UpdateHeatmapCaptureSettingsRequestUrlAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHeatmapCaptureSettingsRequestUrlAllowlistList>;
+export const UpdateHeatmapCaptureSettingsRequestUrlAllowlistList =
+  HeatmapCaptureSettingsUrlAllowlistList as any as S.Schema<UpdateHeatmapCaptureSettingsRequestUrlAllowlistList>;
 
 export interface UpdateHeatmapCaptureSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

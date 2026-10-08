@@ -69,10 +69,8 @@ export const CreatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
-export const CreatePrimaryIpResponsePrimaryIpLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePrimaryIpResponsePrimaryIpLabelsMap>;
+export const CreatePrimaryIpResponsePrimaryIpLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<CreatePrimaryIpResponsePrimaryIpLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export interface CreatePrimaryIpResponsePrimaryIpLocation {
@@ -314,10 +312,8 @@ export const GetPrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetPrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
-export const GetPrimaryIpResponsePrimaryIpLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPrimaryIpResponsePrimaryIpLabelsMap>;
+export const GetPrimaryIpResponsePrimaryIpLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<GetPrimaryIpResponsePrimaryIpLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type GetPrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
@@ -329,9 +325,8 @@ export const GetPrimaryIpResponsePrimaryIpDnsPtrItem = CreatePrimaryIpResponsePr
 /** List of reverse DNS records. */
 export type GetPrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
-export const GetPrimaryIpResponsePrimaryIpDnsPtrList = /*@__PURE__*/ S.Array(
-  CreatePrimaryIpResponsePrimaryIpDnsPtrItem,
-) as any as S.Schema<GetPrimaryIpResponsePrimaryIpDnsPtrList>;
+export const GetPrimaryIpResponsePrimaryIpDnsPtrList =
+  CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<GetPrimaryIpResponsePrimaryIpDnsPtrList>;
 
 /** Protection configuration for the Resource. */
 export type GetPrimaryIpResponsePrimaryIpProtection = CreatePrimaryIpResponsePrimaryIpProtection;
@@ -443,10 +438,8 @@ export const ListPrimaryIpsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListPrimaryIpsResponsePrimaryIpsItemLabelsMap = { [key: string]: string | undefined };
-export const ListPrimaryIpsResponsePrimaryIpsItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemLabelsMap>;
+export const ListPrimaryIpsResponsePrimaryIpsItemLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type ListPrimaryIpsResponsePrimaryIpsItemLocation = CreatePrimaryIpResponsePrimaryIpLocation;
@@ -461,9 +454,8 @@ export const ListPrimaryIpsResponsePrimaryIpsItemDnsPtrItem =
 /** List of reverse DNS records. */
 export type ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
-export const ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList = /*@__PURE__*/ S.Array(
-  CreatePrimaryIpResponsePrimaryIpDnsPtrItem,
-) as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList>;
+export const ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList =
+  CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList>;
 
 /** Protection configuration for the Resource. */
 export type ListPrimaryIpsResponsePrimaryIpsItemProtection =
@@ -585,10 +577,8 @@ export const ListPrimaryIpsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdatePrimaryIpRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdatePrimaryIpRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrimaryIpRequestLabelsMap>;
+export const UpdatePrimaryIpRequestLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<UpdatePrimaryIpRequestLabelsMap>;
 
 export interface UpdatePrimaryIpRequest {
   /** ID of the Primary IP. */
@@ -611,10 +601,8 @@ export const UpdatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdatePrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
-export const UpdatePrimaryIpResponsePrimaryIpLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpLabelsMap>;
+export const UpdatePrimaryIpResponsePrimaryIpLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type UpdatePrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
@@ -627,9 +615,8 @@ export const UpdatePrimaryIpResponsePrimaryIpDnsPtrItem =
 /** List of reverse DNS records. */
 export type UpdatePrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
-export const UpdatePrimaryIpResponsePrimaryIpDnsPtrList = /*@__PURE__*/ S.Array(
-  CreatePrimaryIpResponsePrimaryIpDnsPtrItem,
-) as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpDnsPtrList>;
+export const UpdatePrimaryIpResponsePrimaryIpDnsPtrList =
+  CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpDnsPtrList>;
 
 /** Protection configuration for the Resource. */
 export type UpdatePrimaryIpResponsePrimaryIpProtection = CreatePrimaryIpResponsePrimaryIpProtection;

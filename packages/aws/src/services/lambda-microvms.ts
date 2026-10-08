@@ -351,10 +351,7 @@ export type EnvironmentVariableValue = string | redacted.Redacted<string>;
 export type EnvironmentVariableMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const EnvironmentVariableMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const EnvironmentVariableMap = TokenParts as any as S.Schema<EnvironmentVariableMap>;
 export type ImageName = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -494,11 +491,8 @@ export const CreateMicrovmShellAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMicrovmShellAuthTokenResponse {
   authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const CreateMicrovmShellAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ authToken: TokenParts }),
-).annotate({
-  identifier: "CreateMicrovmShellAuthTokenResponse",
-}) as any as S.Schema<CreateMicrovmShellAuthTokenResponse>;
+export const CreateMicrovmShellAuthTokenResponse =
+  CreateMicrovmAuthTokenResponse as any as S.Schema<CreateMicrovmShellAuthTokenResponse>;
 export type MicrovmImageIdentifier = string;
 export interface DeleteMicrovmImageInput {
   imageIdentifier: string;
@@ -1089,32 +1083,8 @@ export interface MicrovmImageVersionSummary {
   stateReason?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const MicrovmImageVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseImageArn: S.String,
-    baseImageVersion: S.optional(S.String),
-    buildRoleArn: S.String,
-    description: S.optional(S.String),
-    codeArtifact: CodeArtifact,
-    logging: S.optional(Logging),
-    egressNetworkConnectors: S.optional(NetworkConnectorList),
-    cpuConfigurations: S.optional(CpuConfigurationList),
-    resources: S.optional(ResourcesList),
-    additionalOsCapabilities: S.optional(CapabilityList),
-    hooks: S.optional(Hooks),
-    environmentVariables: S.optional(EnvironmentVariableMap),
-    imageArn: S.String,
-    imageVersion: S.String,
-    state: MicrovmImageVersionState,
-    status: MicrovmImageVersionStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stateReason: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "MicrovmImageVersionSummary",
-}) as any as S.Schema<MicrovmImageVersionSummary>;
+export const MicrovmImageVersionSummary =
+  GetMicrovmImageVersionOutput as any as S.Schema<MicrovmImageVersionSummary>;
 export type MicrovmImageVersionSummaryList = MicrovmImageVersionSummary[];
 export const MicrovmImageVersionSummaryList = /*@__PURE__*/ S.Array(MicrovmImageVersionSummary);
 export interface ListMicrovmImageVersionsOutput {
@@ -1205,9 +1175,7 @@ export const ResumeMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ResumeMicrovmRequest" }) as any as S.Schema<ResumeMicrovmRequest>;
 export interface ResumeMicrovmResponse {}
-export const ResumeMicrovmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeMicrovmResponse",
-}) as any as S.Schema<ResumeMicrovmResponse>;
+export const ResumeMicrovmResponse = LoggingDisabled as any as S.Schema<ResumeMicrovmResponse>;
 export type RunHookPayload = string | redacted.Redacted<string>;
 export interface RunMicrovmRequest {
   ingressNetworkConnectors?: string[];
@@ -1252,23 +1220,7 @@ export interface RunMicrovmResponse {
   ingressNetworkConnectors?: string[];
   egressNetworkConnectors?: string[];
 }
-export const RunMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmId: S.String,
-    state: MicrovmState,
-    endpoint: S.String,
-    imageArn: S.String,
-    imageVersion: S.String,
-    executionRoleArn: S.optional(S.String),
-    idlePolicy: S.optional(IdlePolicy),
-    maximumDurationInSeconds: S.Number,
-    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    terminatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stateReason: S.optional(S.String),
-    ingressNetworkConnectors: S.optional(NetworkConnectorList),
-    egressNetworkConnectors: S.optional(NetworkConnectorList),
-  }),
-).annotate({ identifier: "RunMicrovmResponse" }) as any as S.Schema<RunMicrovmResponse>;
+export const RunMicrovmResponse = GetMicrovmResponse as any as S.Schema<RunMicrovmResponse>;
 export interface SuspendMicrovmRequest {
   microvmIdentifier: string;
 }
@@ -1285,9 +1237,7 @@ export const SuspendMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SuspendMicrovmRequest" }) as any as S.Schema<SuspendMicrovmRequest>;
 export interface SuspendMicrovmResponse {}
-export const SuspendMicrovmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendMicrovmResponse",
-}) as any as S.Schema<SuspendMicrovmResponse>;
+export const SuspendMicrovmResponse = LoggingDisabled as any as S.Schema<SuspendMicrovmResponse>;
 export interface TagResourceRequest {
   Resource: string;
   Tags: { [key: string]: string | undefined };
@@ -1305,9 +1255,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = LoggingDisabled as any as S.Schema<TagResourceResponse>;
 export interface TerminateMicrovmRequest {
   microvmIdentifier: string;
 }
@@ -1324,9 +1272,8 @@ export const TerminateMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TerminateMicrovmRequest" }) as any as S.Schema<TerminateMicrovmRequest>;
 export interface TerminateMicrovmResponse {}
-export const TerminateMicrovmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TerminateMicrovmResponse",
-}) as any as S.Schema<TerminateMicrovmResponse>;
+export const TerminateMicrovmResponse =
+  LoggingDisabled as any as S.Schema<TerminateMicrovmResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
@@ -1351,9 +1298,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = LoggingDisabled as any as S.Schema<UntagResourceResponse>;
 export interface UpdateMicrovmImageRequest {
   baseImageArn: string;
   baseImageVersion?: string;
@@ -1495,32 +1440,8 @@ export interface UpdateMicrovmImageVersionResponse {
   stateReason?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateMicrovmImageVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseImageArn: S.String,
-    baseImageVersion: S.optional(S.String),
-    buildRoleArn: S.String,
-    description: S.optional(S.String),
-    codeArtifact: CodeArtifact,
-    logging: S.optional(Logging),
-    egressNetworkConnectors: S.optional(NetworkConnectorList),
-    cpuConfigurations: S.optional(CpuConfigurationList),
-    resources: S.optional(ResourcesList),
-    additionalOsCapabilities: S.optional(CapabilityList),
-    hooks: S.optional(Hooks),
-    environmentVariables: S.optional(EnvironmentVariableMap),
-    imageArn: S.String,
-    imageVersion: S.String,
-    state: MicrovmImageVersionState,
-    status: MicrovmImageVersionStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stateReason: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "UpdateMicrovmImageVersionResponse",
-}) as any as S.Schema<UpdateMicrovmImageVersionResponse>;
+export const UpdateMicrovmImageVersionResponse =
+  GetMicrovmImageVersionOutput as any as S.Schema<UpdateMicrovmImageVersionResponse>;
 export type CreateMicrovmAuthTokenError =
   | AccessDeniedException
   | ConflictException

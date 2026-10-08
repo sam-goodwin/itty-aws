@@ -585,7 +585,7 @@ export const BatchGetChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BatchGetChannelResponse" }) as any as S.Schema<BatchGetChannelResponse>;
 export type StreamKeyArn = string;
 export type StreamKeyArnList = string[];
-export const StreamKeyArnList = /*@__PURE__*/ S.Array(S.String);
+export const StreamKeyArnList = ChannelArnList as any as S.Schema<StreamKeyArnList>;
 export interface BatchGetStreamKeyRequest {
   arns: string[];
 }
@@ -831,10 +831,12 @@ export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateChannelResponse" }) as any as S.Schema<CreateChannelResponse>;
 export type PlaybackRestrictionPolicyAllowedCountry = string;
 export type PlaybackRestrictionPolicyAllowedCountryList = string[];
-export const PlaybackRestrictionPolicyAllowedCountryList = /*@__PURE__*/ S.Array(S.String);
+export const PlaybackRestrictionPolicyAllowedCountryList =
+  ChannelArnList as any as S.Schema<PlaybackRestrictionPolicyAllowedCountryList>;
 export type PlaybackRestrictionPolicyAllowedOrigin = string;
 export type PlaybackRestrictionPolicyAllowedOriginList = string[];
-export const PlaybackRestrictionPolicyAllowedOriginList = /*@__PURE__*/ S.Array(S.String);
+export const PlaybackRestrictionPolicyAllowedOriginList =
+  ChannelArnList as any as S.Schema<PlaybackRestrictionPolicyAllowedOriginList>;
 export type PlaybackRestrictionPolicyEnableStrictOriginEnforcement = boolean;
 export type PlaybackRestrictionPolicyName = string;
 export interface CreatePlaybackRestrictionPolicyRequest {
@@ -921,7 +923,8 @@ export const ThumbnailConfigurationResolution = S.String;
 
 export type ThumbnailConfigurationStorage = string;
 export type ThumbnailConfigurationStorageList = string[];
-export const ThumbnailConfigurationStorageList = /*@__PURE__*/ S.Array(S.String);
+export const ThumbnailConfigurationStorageList =
+  ChannelArnList as any as S.Schema<ThumbnailConfigurationStorageList>;
 export interface ThumbnailConfiguration {
   recordingMode?: string;
   targetIntervalSeconds?: number;
@@ -1059,9 +1062,8 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelResponse",
-}) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse =
+  DeleteAdConfigurationResponse as any as S.Schema<DeleteChannelResponse>;
 export type PlaybackKeyPairArn = string;
 export interface DeletePlaybackKeyPairRequest {
   arn: string;
@@ -1074,9 +1076,8 @@ export const DeletePlaybackKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePlaybackKeyPairRequest",
 }) as any as S.Schema<DeletePlaybackKeyPairRequest>;
 export interface DeletePlaybackKeyPairResponse {}
-export const DeletePlaybackKeyPairResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePlaybackKeyPairResponse",
-}) as any as S.Schema<DeletePlaybackKeyPairResponse>;
+export const DeletePlaybackKeyPairResponse =
+  DeleteAdConfigurationResponse as any as S.Schema<DeletePlaybackKeyPairResponse>;
 export interface DeletePlaybackRestrictionPolicyRequest {
   arn: string;
 }
@@ -1118,11 +1119,8 @@ export const DeleteRecordingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRecordingConfigurationRequest",
 }) as any as S.Schema<DeleteRecordingConfigurationRequest>;
 export interface DeleteRecordingConfigurationResponse {}
-export const DeleteRecordingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRecordingConfigurationResponse",
-}) as any as S.Schema<DeleteRecordingConfigurationResponse>;
+export const DeleteRecordingConfigurationResponse =
+  DeletePlaybackRestrictionPolicyResponse as any as S.Schema<DeleteRecordingConfigurationResponse>;
 export interface DeleteStreamKeyRequest {
   arn: string;
 }
@@ -1132,9 +1130,8 @@ export const DeleteStreamKeyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStreamKeyRequest" }) as any as S.Schema<DeleteStreamKeyRequest>;
 export interface DeleteStreamKeyResponse {}
-export const DeleteStreamKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStreamKeyResponse",
-}) as any as S.Schema<DeleteStreamKeyResponse>;
+export const DeleteStreamKeyResponse =
+  DeleteAdConfigurationResponse as any as S.Schema<DeleteStreamKeyResponse>;
 export interface GetAdConfigurationRequest {
   arn: string;
 }
@@ -1221,11 +1218,8 @@ export const GetPlaybackRestrictionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPlaybackRestrictionPolicyResponse {
   playbackRestrictionPolicy?: PlaybackRestrictionPolicy;
 }
-export const GetPlaybackRestrictionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ playbackRestrictionPolicy: S.optional(PlaybackRestrictionPolicy) }),
-).annotate({
-  identifier: "GetPlaybackRestrictionPolicyResponse",
-}) as any as S.Schema<GetPlaybackRestrictionPolicyResponse>;
+export const GetPlaybackRestrictionPolicyResponse =
+  CreatePlaybackRestrictionPolicyResponse as any as S.Schema<GetPlaybackRestrictionPolicyResponse>;
 export interface GetRecordingConfigurationRequest {
   arn: string;
 }
@@ -1246,11 +1240,8 @@ export const GetRecordingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRecordingConfigurationResponse {
   recordingConfiguration?: RecordingConfiguration;
 }
-export const GetRecordingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recordingConfiguration: S.optional(RecordingConfiguration) }),
-).annotate({
-  identifier: "GetRecordingConfigurationResponse",
-}) as any as S.Schema<GetRecordingConfigurationResponse>;
+export const GetRecordingConfigurationResponse =
+  CreateRecordingConfigurationResponse as any as S.Schema<GetRecordingConfigurationResponse>;
 export interface GetStreamRequest {
   channelArn: string;
 }
@@ -1301,9 +1292,8 @@ export const GetStreamKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetStreamKeyResponse {
   streamKey?: StreamKey;
 }
-export const GetStreamKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ streamKey: S.optional(StreamKey) }),
-).annotate({ identifier: "GetStreamKeyResponse" }) as any as S.Schema<GetStreamKeyResponse>;
+export const GetStreamKeyResponse =
+  CreateStreamKeyResponse as any as S.Schema<GetStreamKeyResponse>;
 export interface GetStreamSessionRequest {
   channelArn: string;
   streamId?: string;
@@ -1442,11 +1432,8 @@ export const ImportPlaybackKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportPlaybackKeyPairResponse {
   keyPair?: PlaybackKeyPair;
 }
-export const ImportPlaybackKeyPairResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ keyPair: S.optional(PlaybackKeyPair) }),
-).annotate({
-  identifier: "ImportPlaybackKeyPairResponse",
-}) as any as S.Schema<ImportPlaybackKeyPairResponse>;
+export const ImportPlaybackKeyPairResponse =
+  GetPlaybackKeyPairResponse as any as S.Schema<ImportPlaybackKeyPairResponse>;
 export interface InsertAdBreakRequest {
   channelArn: string;
   durationSeconds: number;
@@ -1483,15 +1470,7 @@ export interface AdConfigurationSummary {
   postRollConfiguration?: PostRollConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const AdConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.optional(S.String),
-    mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
-    postRollConfiguration: S.optional(PostRollConfiguration),
-    tags: S.optional(Tags),
-  }),
-).annotate({ identifier: "AdConfigurationSummary" }) as any as S.Schema<AdConfigurationSummary>;
+export const AdConfigurationSummary = AdConfiguration as any as S.Schema<AdConfigurationSummary>;
 export type AdConfigurationList = AdConfigurationSummary[];
 export const AdConfigurationList = /*@__PURE__*/ S.Array(AdConfigurationSummary);
 export interface ListAdConfigurationsResponse {
@@ -1617,18 +1596,8 @@ export interface PlaybackRestrictionPolicySummary {
   name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const PlaybackRestrictionPolicySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    allowedCountries: PlaybackRestrictionPolicyAllowedCountryList,
-    allowedOrigins: PlaybackRestrictionPolicyAllowedOriginList,
-    enableStrictOriginEnforcement: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "PlaybackRestrictionPolicySummary",
-}) as any as S.Schema<PlaybackRestrictionPolicySummary>;
+export const PlaybackRestrictionPolicySummary =
+  PlaybackRestrictionPolicy as any as S.Schema<PlaybackRestrictionPolicySummary>;
 export type PlaybackRestrictionPolicyList = PlaybackRestrictionPolicySummary[];
 export const PlaybackRestrictionPolicyList = /*@__PURE__*/ S.Array(
   PlaybackRestrictionPolicySummary,
@@ -1842,9 +1811,8 @@ export const PutMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutMetadataRequest" }) as any as S.Schema<PutMetadataRequest>;
 export interface PutMetadataResponse {}
-export const PutMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMetadataResponse",
-}) as any as S.Schema<PutMetadataResponse>;
+export const PutMetadataResponse =
+  DeleteAdConfigurationResponse as any as S.Schema<PutMetadataResponse>;
 export interface StartViewerSessionRevocationRequest {
   channelArn: string;
   viewerId: string;
@@ -1869,11 +1837,8 @@ export const StartViewerSessionRevocationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartViewerSessionRevocationRequest",
 }) as any as S.Schema<StartViewerSessionRevocationRequest>;
 export interface StartViewerSessionRevocationResponse {}
-export const StartViewerSessionRevocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartViewerSessionRevocationResponse",
-}) as any as S.Schema<StartViewerSessionRevocationResponse>;
+export const StartViewerSessionRevocationResponse =
+  DeletePlaybackRestrictionPolicyResponse as any as S.Schema<StartViewerSessionRevocationResponse>;
 export interface StopStreamRequest {
   channelArn: string;
 }
@@ -1883,9 +1848,8 @@ export const StopStreamRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopStreamRequest" }) as any as S.Schema<StopStreamRequest>;
 export interface StopStreamResponse {}
-export const StopStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopStreamResponse",
-}) as any as S.Schema<StopStreamResponse>;
+export const StopStreamResponse =
+  DeleteAdConfigurationResponse as any as S.Schema<StopStreamResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1896,11 +1860,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteAdConfigurationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ChannelArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1914,9 +1877,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAdConfigurationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAdConfigurationRequest {
   arn: string;
   name?: string;
@@ -1938,11 +1900,8 @@ export const UpdateAdConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAdConfigurationResponse {
   adConfiguration: AdConfiguration;
 }
-export const UpdateAdConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ adConfiguration: AdConfiguration }),
-).annotate({
-  identifier: "UpdateAdConfigurationResponse",
-}) as any as S.Schema<UpdateAdConfigurationResponse>;
+export const UpdateAdConfigurationResponse =
+  CreateAdConfigurationResponse as any as S.Schema<UpdateAdConfigurationResponse>;
 export interface UpdateChannelRequest {
   arn: string;
   name?: string;
@@ -1976,9 +1935,7 @@ export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChannelResponse {
   channel?: Channel;
 }
-export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ channel: S.optional(Channel) }),
-).annotate({ identifier: "UpdateChannelResponse" }) as any as S.Schema<UpdateChannelResponse>;
+export const UpdateChannelResponse = GetChannelResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdatePlaybackRestrictionPolicyRequest {
   arn: string;
   allowedCountries?: string[];
@@ -2009,11 +1966,8 @@ export const UpdatePlaybackRestrictionPolicyRequest = /*@__PURE__*/ S.suspend(()
 export interface UpdatePlaybackRestrictionPolicyResponse {
   playbackRestrictionPolicy?: PlaybackRestrictionPolicy;
 }
-export const UpdatePlaybackRestrictionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ playbackRestrictionPolicy: S.optional(PlaybackRestrictionPolicy) }),
-).annotate({
-  identifier: "UpdatePlaybackRestrictionPolicyResponse",
-}) as any as S.Schema<UpdatePlaybackRestrictionPolicyResponse>;
+export const UpdatePlaybackRestrictionPolicyResponse =
+  CreatePlaybackRestrictionPolicyResponse as any as S.Schema<UpdatePlaybackRestrictionPolicyResponse>;
 export type BatchGetChannelError =
   | AccessDeniedException
   | ServiceUnavailable

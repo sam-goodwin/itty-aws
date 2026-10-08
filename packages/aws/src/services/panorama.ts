@@ -157,9 +157,8 @@ export const ManifestPayload = /*@__PURE__*/ S.Union([
 ]);
 export type ManifestOverridesPayloadData = string;
 export type ManifestOverridesPayload = { PayloadData: string };
-export const ManifestOverridesPayload = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ PayloadData: S.String }),
-]);
+export const ManifestOverridesPayload =
+  ManifestPayload as any as S.Schema<ManifestOverridesPayload>;
 export type ApplicationInstanceId = string;
 export type RuntimeRoleArn = string;
 export type DefaultRuntimeContextDevice = string;
@@ -444,11 +443,8 @@ export const CreatePackageImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePackageImportJobResponse {
   JobId: string;
 }
-export const CreatePackageImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.String }),
-).annotate({
-  identifier: "CreatePackageImportJobResponse",
-}) as any as S.Schema<CreatePackageImportJobResponse>;
+export const CreatePackageImportJobResponse =
+  CreateNodeFromTemplateJobResponse as any as S.Schema<CreatePackageImportJobResponse>;
 export interface DeleteDeviceRequest {
   DeviceId: string;
 }
@@ -678,7 +674,7 @@ export type IpAddress = string;
 export type Mask = string;
 export type Dns = string;
 export type DnsList = string[];
-export const DnsList = /*@__PURE__*/ S.Array(S.String);
+export const DnsList = DeviceIdList as any as S.Schema<DnsList>;
 export type DefaultGateway = string;
 export interface StaticIpConnectionInfo {
   IpAddress: string;
@@ -710,7 +706,7 @@ export const EthernetPayload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EthernetPayload>;
 export type IpAddressOrServerName = string;
 export type NtpServerList = string[];
-export const NtpServerList = /*@__PURE__*/ S.Array(S.String);
+export const NtpServerList = DeviceIdList as any as S.Schema<NtpServerList>;
 export interface NtpPayload {
   NtpServers: string[];
 }
@@ -1052,7 +1048,7 @@ export const DescribePackageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePackageRequest>;
 export type PrincipalArn = string;
 export type PrincipalArnsList = string[];
-export const PrincipalArnsList = /*@__PURE__*/ S.Array(S.String);
+export const PrincipalArnsList = DeviceIdList as any as S.Schema<PrincipalArnsList>;
 export interface DescribePackageResponse {
   PackageId: string;
   PackageName: string;
@@ -1790,9 +1786,8 @@ export const RegisterPackageVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterPackageVersionRequest",
 }) as any as S.Schema<RegisterPackageVersionRequest>;
 export interface RegisterPackageVersionResponse {}
-export const RegisterPackageVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegisterPackageVersionResponse",
-}) as any as S.Schema<RegisterPackageVersionResponse>;
+export const RegisterPackageVersionResponse =
+  DeletePackageResponse as any as S.Schema<RegisterPackageVersionResponse>;
 export interface RemoveApplicationInstanceRequest {
   ApplicationInstanceId: string;
 }
@@ -1816,11 +1811,8 @@ export const RemoveApplicationInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveApplicationInstanceRequest",
 }) as any as S.Schema<RemoveApplicationInstanceRequest>;
 export interface RemoveApplicationInstanceResponse {}
-export const RemoveApplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveApplicationInstanceResponse",
-}) as any as S.Schema<RemoveApplicationInstanceResponse>;
+export const RemoveApplicationInstanceResponse =
+  DeregisterPackageVersionResponse as any as S.Schema<RemoveApplicationInstanceResponse>;
 export type NodeSignalValue = string;
 export interface NodeSignal {
   NodeInstanceId: string;
@@ -1858,11 +1850,8 @@ export const SignalApplicationInstanceNodeInstancesRequest = /*@__PURE__*/ S.sus
 export interface SignalApplicationInstanceNodeInstancesResponse {
   ApplicationInstanceId: string;
 }
-export const SignalApplicationInstanceNodeInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationInstanceId: S.String }),
-).annotate({
-  identifier: "SignalApplicationInstanceNodeInstancesResponse",
-}) as any as S.Schema<SignalApplicationInstanceNodeInstancesResponse>;
+export const SignalApplicationInstanceNodeInstancesResponse =
+  CreateApplicationInstanceResponse as any as S.Schema<SignalApplicationInstanceNodeInstancesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1878,11 +1867,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeletePackageResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = DeviceIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1898,9 +1885,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeletePackageResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeviceMetadataRequest {
   DeviceId: string;
   Description?: string;
@@ -1918,11 +1904,8 @@ export const UpdateDeviceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDeviceMetadataResponse {
   DeviceId?: string;
 }
-export const UpdateDeviceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DeviceId: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateDeviceMetadataResponse",
-}) as any as S.Schema<UpdateDeviceMetadataResponse>;
+export const UpdateDeviceMetadataResponse =
+  DeleteDeviceResponse as any as S.Schema<UpdateDeviceMetadataResponse>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionErrorArgument {
@@ -1953,15 +1936,11 @@ export interface ConflictExceptionErrorArgument {
   Name: string;
   Value: string;
 }
-export const ConflictExceptionErrorArgument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({
-  identifier: "ConflictExceptionErrorArgument",
-}) as any as S.Schema<ConflictExceptionErrorArgument>;
+export const ConflictExceptionErrorArgument =
+  ValidationExceptionErrorArgument as any as S.Schema<ConflictExceptionErrorArgument>;
 export type ConflictExceptionErrorArgumentList = ConflictExceptionErrorArgument[];
-export const ConflictExceptionErrorArgumentList = /*@__PURE__*/ S.Array(
-  ConflictExceptionErrorArgument,
-);
+export const ConflictExceptionErrorArgumentList =
+  ValidationExceptionErrorArgumentList as any as S.Schema<ConflictExceptionErrorArgumentList>;
 export type CreateApplicationInstanceError =
   | AccessDeniedException
   | InternalServerException

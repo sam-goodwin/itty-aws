@@ -1053,11 +1053,8 @@ export const DeleteAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteAccountsContainersEnvironmentsRequest>;
 
 export interface DeleteAccountsContainersEnvironmentsResponse {}
-export const DeleteAccountsContainersEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersEnvironmentsResponse",
-}) as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>;
+export const DeleteAccountsContainersEnvironmentsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>;
 
 export interface DeleteAccountsContainersFoldersRequest {
   /** The GTM Container ID. */
@@ -1084,11 +1081,8 @@ export const DeleteAccountsContainersFoldersRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteAccountsContainersFoldersRequest>;
 
 export interface DeleteAccountsContainersFoldersResponse {}
-export const DeleteAccountsContainersFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersFoldersResponse",
-}) as any as S.Schema<DeleteAccountsContainersFoldersResponse>;
+export const DeleteAccountsContainersFoldersResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersFoldersResponse>;
 
 export interface DeleteAccountsContainersTagsRequest {
   /** The GTM Container ID. */
@@ -1115,11 +1109,8 @@ export const DeleteAccountsContainersTagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccountsContainersTagsRequest>;
 
 export interface DeleteAccountsContainersTagsResponse {}
-export const DeleteAccountsContainersTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersTagsResponse",
-}) as any as S.Schema<DeleteAccountsContainersTagsResponse>;
+export const DeleteAccountsContainersTagsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersTagsResponse>;
 
 export interface DeleteAccountsContainersTriggersRequest {
   /** The GTM Trigger ID. */
@@ -1146,11 +1137,8 @@ export const DeleteAccountsContainersTriggersRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteAccountsContainersTriggersRequest>;
 
 export interface DeleteAccountsContainersTriggersResponse {}
-export const DeleteAccountsContainersTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersTriggersResponse",
-}) as any as S.Schema<DeleteAccountsContainersTriggersResponse>;
+export const DeleteAccountsContainersTriggersResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersTriggersResponse>;
 
 export interface DeleteAccountsContainersVariablesRequest {
   /** The GTM Container ID. */
@@ -1177,11 +1165,8 @@ export const DeleteAccountsContainersVariablesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteAccountsContainersVariablesRequest>;
 
 export interface DeleteAccountsContainersVariablesResponse {}
-export const DeleteAccountsContainersVariablesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersVariablesResponse",
-}) as any as S.Schema<DeleteAccountsContainersVariablesResponse>;
+export const DeleteAccountsContainersVariablesResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersVariablesResponse>;
 
 export interface DeleteAccountsContainersVersionsRequest {
   /** The GTM Account ID. */
@@ -1208,11 +1193,8 @@ export const DeleteAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteAccountsContainersVersionsRequest>;
 
 export interface DeleteAccountsContainersVersionsResponse {}
-export const DeleteAccountsContainersVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersVersionsResponse",
-}) as any as S.Schema<DeleteAccountsContainersVersionsResponse>;
+export const DeleteAccountsContainersVersionsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersVersionsResponse>;
 
 export interface DeleteAccountsPermissionsRequest {
   /** The GTM Account ID. */
@@ -1236,11 +1218,8 @@ export const DeleteAccountsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccountsPermissionsRequest>;
 
 export interface DeleteAccountsPermissionsResponse {}
-export const DeleteAccountsPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsPermissionsResponse",
-}) as any as S.Schema<DeleteAccountsPermissionsResponse>;
+export const DeleteAccountsPermissionsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsPermissionsResponse>;
 
 export interface GetAccountsRequest {
   /** The GTM Account ID. */
@@ -1878,14 +1857,8 @@ export interface PublishContainerVersionResponse {
   /** The container version created. */
   containerVersion?: ContainerVersion;
 }
-export const PublishContainerVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compilerError: S.optional(S.Boolean),
-    containerVersion: S.optional(ContainerVersion),
-  }),
-).annotate({
-  identifier: "PublishContainerVersionResponse",
-}) as any as S.Schema<PublishContainerVersionResponse>;
+export const PublishContainerVersionResponse =
+  CreateContainerVersionResponse as any as S.Schema<PublishContainerVersionResponse>;
 
 export interface RestoreAccountsContainersVersionsRequest {
   /** The GTM Container ID. */
@@ -2081,11 +2054,8 @@ export const UpdateAccountsContainersMove_foldersRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateAccountsContainersMove_foldersRequest>;
 
 export interface UpdateAccountsContainersMove_foldersResponse {}
-export const UpdateAccountsContainersMove_foldersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAccountsContainersMove_foldersResponse",
-}) as any as S.Schema<UpdateAccountsContainersMove_foldersResponse>;
+export const UpdateAccountsContainersMove_foldersResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<UpdateAccountsContainersMove_foldersResponse>;
 
 export interface UpdateAccountsContainersReauthorize_environmentsRequest {
   /** The GTM Container ID. */

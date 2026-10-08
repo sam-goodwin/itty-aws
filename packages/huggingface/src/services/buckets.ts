@@ -353,9 +353,7 @@ export const FollowChangesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FollowChangesRequest" }) as any as S.Schema<FollowChangesRequest>;
 
 export interface FollowChangesResponse {}
-export const FollowChangesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FollowChangesResponse",
-}) as any as S.Schema<FollowChangesResponse>;
+export const FollowChangesResponse = DeleteBucketResponse as any as S.Schema<FollowChangesResponse>;
 
 export interface GetBucketDetailsRequest {
   namespace: string;
@@ -628,9 +626,8 @@ export type ListNamespaceBucketsResponseBodyItemRepoType = "bucket" | "container
 export const ListNamespaceBucketsResponseBodyItemRepoType = S.String;
 
 export type ListNamespaceBucketsResponseBodyItemAdminTagsList = Array<string>;
-export const ListNamespaceBucketsResponseBodyItemAdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNamespaceBucketsResponseBodyItemAdminTagsList>;
+export const ListNamespaceBucketsResponseBodyItemAdminTagsList =
+  GetBucketDetailsResponseAdminTagsList as any as S.Schema<ListNamespaceBucketsResponseBodyItemAdminTagsList>;
 
 export type ListNamespaceBucketsResponseBodyItemDisabled = GetBucketDetailsResponseDisabled;
 export const ListNamespaceBucketsResponseBodyItemDisabled = GetBucketDetailsResponseDisabled;
@@ -721,9 +718,8 @@ export const ListNamespaceBucketsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespaceBucketsResponse>;
 
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
-export const ListPathsInfoRequestPathsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
+export const ListPathsInfoRequestPathsCase0List =
+  GetBucketDetailsResponseAdminTagsList as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
 
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
 export const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
@@ -905,13 +901,7 @@ export interface XetWriteTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    casUrl: S.String,
-    exp: S.Number,
-    accessToken: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({ identifier: "XetWriteTokenResponse" }) as any as S.Schema<XetWriteTokenResponse>;
+export const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
 
 export type AddResourceGroupError = HuggingFaceOpError;
 /** Add resource group Add the repository to a resource group */

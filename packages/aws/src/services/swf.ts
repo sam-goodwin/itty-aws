@@ -253,9 +253,7 @@ export interface PendingTaskCount {
   count: number;
   truncated?: boolean;
 }
-export const PendingTaskCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ count: S.Number, truncated: S.optional(S.Boolean) }).pipe(ns),
-).annotate({ identifier: "PendingTaskCount" }) as any as S.Schema<PendingTaskCount>;
+export const PendingTaskCount = WorkflowExecutionCount as any as S.Schema<PendingTaskCount>;
 export interface CountPendingDecisionTasksInput {
   domain: string;
   taskList: TaskList;
@@ -294,9 +292,7 @@ export interface WorkflowType {
   name: string;
   version: string;
 }
-export const WorkflowType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, version: S.String }),
-).annotate({ identifier: "WorkflowType" }) as any as S.Schema<WorkflowType>;
+export const WorkflowType = ActivityType as any as S.Schema<WorkflowType>;
 export interface DeleteWorkflowTypeInput {
   domain: string;
   workflowType: WorkflowType;
@@ -307,11 +303,8 @@ export const DeleteWorkflowTypeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkflowTypeInput" }) as any as S.Schema<DeleteWorkflowTypeInput>;
 export interface DeleteWorkflowTypeResponse {}
-export const DeleteWorkflowTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteWorkflowTypeResponse",
-}) as any as S.Schema<DeleteWorkflowTypeResponse>;
+export const DeleteWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<DeleteWorkflowTypeResponse>;
 export interface DeprecateActivityTypeInput {
   domain: string;
   activityType: ActivityType;
@@ -324,11 +317,8 @@ export const DeprecateActivityTypeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeprecateActivityTypeInput",
 }) as any as S.Schema<DeprecateActivityTypeInput>;
 export interface DeprecateActivityTypeResponse {}
-export const DeprecateActivityTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeprecateActivityTypeResponse",
-}) as any as S.Schema<DeprecateActivityTypeResponse>;
+export const DeprecateActivityTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<DeprecateActivityTypeResponse>;
 export interface DeprecateDomainInput {
   name: string;
 }
@@ -353,11 +343,8 @@ export const DeprecateWorkflowTypeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeprecateWorkflowTypeInput",
 }) as any as S.Schema<DeprecateWorkflowTypeInput>;
 export interface DeprecateWorkflowTypeResponse {}
-export const DeprecateWorkflowTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeprecateWorkflowTypeResponse",
-}) as any as S.Schema<DeprecateWorkflowTypeResponse>;
+export const DeprecateWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<DeprecateWorkflowTypeResponse>;
 export interface DescribeActivityTypeInput {
   domain: string;
   activityType: ActivityType;
@@ -1013,11 +1000,8 @@ export interface ActivityTaskStartedEventAttributes {
   identity?: string;
   scheduledEventId: number;
 }
-export const ActivityTaskStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identity: S.optional(S.String), scheduledEventId: S.Number }),
-).annotate({
-  identifier: "ActivityTaskStartedEventAttributes",
-}) as any as S.Schema<ActivityTaskStartedEventAttributes>;
+export const ActivityTaskStartedEventAttributes =
+  DecisionTaskStartedEventAttributes as any as S.Schema<ActivityTaskStartedEventAttributes>;
 export interface ActivityTaskCompletedEventAttributes {
   result?: string;
   scheduledEventId: number;
@@ -1375,11 +1359,8 @@ export interface ExternalWorkflowExecutionCancelRequestedEventAttributes {
   workflowExecution: WorkflowExecution;
   initiatedEventId: number;
 }
-export const ExternalWorkflowExecutionCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowExecution: WorkflowExecution, initiatedEventId: S.Number }),
-).annotate({
-  identifier: "ExternalWorkflowExecutionCancelRequestedEventAttributes",
-}) as any as S.Schema<ExternalWorkflowExecutionCancelRequestedEventAttributes>;
+export const ExternalWorkflowExecutionCancelRequestedEventAttributes =
+  ExternalWorkflowExecutionSignaledEventAttributes as any as S.Schema<ExternalWorkflowExecutionCancelRequestedEventAttributes>;
 export interface RequestCancelExternalWorkflowExecutionInitiatedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -2130,11 +2111,8 @@ export const RegisterActivityTypeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterActivityTypeInput",
 }) as any as S.Schema<RegisterActivityTypeInput>;
 export interface RegisterActivityTypeResponse {}
-export const RegisterActivityTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RegisterActivityTypeResponse",
-}) as any as S.Schema<RegisterActivityTypeResponse>;
+export const RegisterActivityTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RegisterActivityTypeResponse>;
 export interface RegisterDomainInput {
   name: string;
   description?: string;
@@ -2182,11 +2160,8 @@ export const RegisterWorkflowTypeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterWorkflowTypeInput",
 }) as any as S.Schema<RegisterWorkflowTypeInput>;
 export interface RegisterWorkflowTypeResponse {}
-export const RegisterWorkflowTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RegisterWorkflowTypeResponse",
-}) as any as S.Schema<RegisterWorkflowTypeResponse>;
+export const RegisterWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RegisterWorkflowTypeResponse>;
 export interface RequestCancelWorkflowExecutionInput {
   domain: string;
   workflowId: string;
@@ -2200,11 +2175,8 @@ export const RequestCancelWorkflowExecutionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestCancelWorkflowExecutionInput",
 }) as any as S.Schema<RequestCancelWorkflowExecutionInput>;
 export interface RequestCancelWorkflowExecutionResponse {}
-export const RequestCancelWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RequestCancelWorkflowExecutionResponse",
-}) as any as S.Schema<RequestCancelWorkflowExecutionResponse>;
+export const RequestCancelWorkflowExecutionResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RequestCancelWorkflowExecutionResponse>;
 export interface RespondActivityTaskCanceledInput {
   taskToken: string;
   details?: string;
@@ -2217,11 +2189,8 @@ export const RespondActivityTaskCanceledInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RespondActivityTaskCanceledInput",
 }) as any as S.Schema<RespondActivityTaskCanceledInput>;
 export interface RespondActivityTaskCanceledResponse {}
-export const RespondActivityTaskCanceledResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RespondActivityTaskCanceledResponse",
-}) as any as S.Schema<RespondActivityTaskCanceledResponse>;
+export const RespondActivityTaskCanceledResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondActivityTaskCanceledResponse>;
 export interface RespondActivityTaskCompletedInput {
   taskToken: string;
   result?: string;
@@ -2234,11 +2203,8 @@ export const RespondActivityTaskCompletedInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RespondActivityTaskCompletedInput",
 }) as any as S.Schema<RespondActivityTaskCompletedInput>;
 export interface RespondActivityTaskCompletedResponse {}
-export const RespondActivityTaskCompletedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RespondActivityTaskCompletedResponse",
-}) as any as S.Schema<RespondActivityTaskCompletedResponse>;
+export const RespondActivityTaskCompletedResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondActivityTaskCompletedResponse>;
 export interface RespondActivityTaskFailedInput {
   taskToken: string;
   reason?: string;
@@ -2254,11 +2220,8 @@ export const RespondActivityTaskFailedInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RespondActivityTaskFailedInput",
 }) as any as S.Schema<RespondActivityTaskFailedInput>;
 export interface RespondActivityTaskFailedResponse {}
-export const RespondActivityTaskFailedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RespondActivityTaskFailedResponse",
-}) as any as S.Schema<RespondActivityTaskFailedResponse>;
+export const RespondActivityTaskFailedResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondActivityTaskFailedResponse>;
 export type DecisionType =
   | "ScheduleActivityTask"
   | "RequestCancelActivityTask"
@@ -2536,11 +2499,8 @@ export const RespondDecisionTaskCompletedInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RespondDecisionTaskCompletedInput",
 }) as any as S.Schema<RespondDecisionTaskCompletedInput>;
 export interface RespondDecisionTaskCompletedResponse {}
-export const RespondDecisionTaskCompletedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RespondDecisionTaskCompletedResponse",
-}) as any as S.Schema<RespondDecisionTaskCompletedResponse>;
+export const RespondDecisionTaskCompletedResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondDecisionTaskCompletedResponse>;
 export interface SignalWorkflowExecutionInput {
   domain: string;
   workflowId: string;
@@ -2560,11 +2520,8 @@ export const SignalWorkflowExecutionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalWorkflowExecutionInput",
 }) as any as S.Schema<SignalWorkflowExecutionInput>;
 export interface SignalWorkflowExecutionResponse {}
-export const SignalWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SignalWorkflowExecutionResponse",
-}) as any as S.Schema<SignalWorkflowExecutionResponse>;
+export const SignalWorkflowExecutionResponse =
+  DeleteActivityTypeResponse as any as S.Schema<SignalWorkflowExecutionResponse>;
 export interface StartWorkflowExecutionInput {
   domain: string;
   workflowId: string;
@@ -2635,11 +2592,8 @@ export const TerminateWorkflowExecutionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateWorkflowExecutionInput",
 }) as any as S.Schema<TerminateWorkflowExecutionInput>;
 export interface TerminateWorkflowExecutionResponse {}
-export const TerminateWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "TerminateWorkflowExecutionResponse",
-}) as any as S.Schema<TerminateWorkflowExecutionResponse>;
+export const TerminateWorkflowExecutionResponse =
+  DeleteActivityTypeResponse as any as S.Schema<TerminateWorkflowExecutionResponse>;
 export interface UndeprecateActivityTypeInput {
   domain: string;
   activityType: ActivityType;
@@ -2652,11 +2606,8 @@ export const UndeprecateActivityTypeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UndeprecateActivityTypeInput",
 }) as any as S.Schema<UndeprecateActivityTypeInput>;
 export interface UndeprecateActivityTypeResponse {}
-export const UndeprecateActivityTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UndeprecateActivityTypeResponse",
-}) as any as S.Schema<UndeprecateActivityTypeResponse>;
+export const UndeprecateActivityTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<UndeprecateActivityTypeResponse>;
 export interface UndeprecateDomainInput {
   name: string;
 }
@@ -2666,11 +2617,8 @@ export const UndeprecateDomainInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UndeprecateDomainInput" }) as any as S.Schema<UndeprecateDomainInput>;
 export interface UndeprecateDomainResponse {}
-export const UndeprecateDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UndeprecateDomainResponse",
-}) as any as S.Schema<UndeprecateDomainResponse>;
+export const UndeprecateDomainResponse =
+  DeleteActivityTypeResponse as any as S.Schema<UndeprecateDomainResponse>;
 export interface UndeprecateWorkflowTypeInput {
   domain: string;
   workflowType: WorkflowType;
@@ -2683,13 +2631,10 @@ export const UndeprecateWorkflowTypeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UndeprecateWorkflowTypeInput",
 }) as any as S.Schema<UndeprecateWorkflowTypeInput>;
 export interface UndeprecateWorkflowTypeResponse {}
-export const UndeprecateWorkflowTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UndeprecateWorkflowTypeResponse",
-}) as any as S.Schema<UndeprecateWorkflowTypeResponse>;
+export const UndeprecateWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<UndeprecateWorkflowTypeResponse>;
 export type ResourceTagKeyList = string[];
-export const ResourceTagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTagKeyList = TagList as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -2700,9 +2645,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type CountClosedWorkflowExecutionsError =
   | OperationNotPermittedFault

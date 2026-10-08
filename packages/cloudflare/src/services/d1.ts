@@ -315,9 +315,8 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportDatabaseRequest" }) as any as S.Schema<ExportDatabaseRequest>;
 
 export type DatabaseExportResponseMessagesList = Array<string>;
-export const DatabaseExportResponseMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseExportResponseMessagesList>;
+export const DatabaseExportResponseMessagesList =
+  DatabaseExportRequestDumpOptionsTablesList as any as S.Schema<DatabaseExportResponseMessagesList>;
 
 export interface DatabaseExportResponseResult {
   /** The generated SQL filename. */
@@ -530,9 +529,8 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDatabaseRequest" }) as any as S.Schema<ImportDatabaseRequest>;
 
 export type DatabaseImportResponseMessagesList = Array<string>;
-export const DatabaseImportResponseMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseImportResponseMessagesList>;
+export const DatabaseImportResponseMessagesList =
+  DatabaseExportRequestDumpOptionsTablesList as any as S.Schema<DatabaseImportResponseMessagesList>;
 
 export type DatabaseImportResponseResultMetaServedByRegion =
   | "WNAM"
@@ -815,9 +813,8 @@ export const DatabaseQueryRequestParamsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DatabaseQueryRequestParamsList>;
 
 export type DatabaseQueryRequestBatchItemParamsList = Array<unknown>;
-export const DatabaseQueryRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatabaseQueryRequestBatchItemParamsList>;
+export const DatabaseQueryRequestBatchItemParamsList =
+  DatabaseQueryRequestParamsList as any as S.Schema<DatabaseQueryRequestBatchItemParamsList>;
 
 export interface DatabaseQueryRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
@@ -923,9 +920,8 @@ export const DatabaseQueryResultItemMeta = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseQueryResultItemMeta>;
 
 export type DatabaseQueryResultItemResultsList = Array<unknown>;
-export const DatabaseQueryResultItemResultsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatabaseQueryResultItemResultsList>;
+export const DatabaseQueryResultItemResultsList =
+  DatabaseQueryRequestParamsList as any as S.Schema<DatabaseQueryResultItemResultsList>;
 
 export interface DatabaseQueryResultItem {
   meta?: DatabaseQueryResultItemMeta | null;
@@ -959,33 +955,24 @@ export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryDatabaseResponse" }) as any as S.Schema<QueryDatabaseResponse>;
 
 export type DatabaseRawRequestParamsList = Array<unknown>;
-export const DatabaseRawRequestParamsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatabaseRawRequestParamsList>;
+export const DatabaseRawRequestParamsList =
+  DatabaseQueryRequestParamsList as any as S.Schema<DatabaseRawRequestParamsList>;
 
 export type DatabaseRawRequestBatchItemParamsList = Array<unknown>;
-export const DatabaseRawRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatabaseRawRequestBatchItemParamsList>;
+export const DatabaseRawRequestBatchItemParamsList =
+  DatabaseQueryRequestParamsList as any as S.Schema<DatabaseRawRequestBatchItemParamsList>;
 
 export interface DatabaseRawRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
   params?: DatabaseRawRequestBatchItemParamsList;
 }
-export const DatabaseRawRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sql: S.String,
-    params: S.optional(DatabaseRawRequestBatchItemParamsList),
-  }),
-).annotate({
-  identifier: "DatabaseRawRequestBatchItem",
-}) as any as S.Schema<DatabaseRawRequestBatchItem>;
+export const DatabaseRawRequestBatchItem =
+  DatabaseQueryRequestBatchItem as any as S.Schema<DatabaseRawRequestBatchItem>;
 
 export type DatabaseRawRequestBatchList = Array<DatabaseRawRequestBatchItem>;
-export const DatabaseRawRequestBatchList = /*@__PURE__*/ S.Array(
-  DatabaseRawRequestBatchItem,
-) as any as S.Schema<DatabaseRawRequestBatchList>;
+export const DatabaseRawRequestBatchList =
+  DatabaseQueryRequestBatchList as any as S.Schema<DatabaseRawRequestBatchList>;
 
 export interface RawDatabaseRequest {
   /** Account identifier tag. */
@@ -1072,14 +1059,12 @@ export const DatabaseRawResultItemMeta = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseRawResultItemMeta>;
 
 export type DatabaseRawResultItemResultsColumnsList = Array<string>;
-export const DatabaseRawResultItemResultsColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseRawResultItemResultsColumnsList>;
+export const DatabaseRawResultItemResultsColumnsList =
+  DatabaseExportRequestDumpOptionsTablesList as any as S.Schema<DatabaseRawResultItemResultsColumnsList>;
 
 export type DatabaseRawResultItemResultsRowsList = Array<unknown>;
-export const DatabaseRawResultItemResultsRowsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatabaseRawResultItemResultsRowsList>;
+export const DatabaseRawResultItemResultsRowsList =
+  DatabaseQueryRequestParamsList as any as S.Schema<DatabaseRawResultItemResultsRowsList>;
 
 export interface DatabaseRawResultItemResults {
   columns?: DatabaseRawResultItemResultsColumnsList | null;

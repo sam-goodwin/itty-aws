@@ -442,7 +442,8 @@ export const GetTagSyncTaskOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTagSyncTaskOutput" }) as any as S.Schema<GetTagSyncTaskOutput>;
 export type ResourceArn = string;
 export type ResourceArnList = string[];
-export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceArnList =
+  GroupConfigurationParameterValueList as any as S.Schema<ResourceArnList>;
 export interface GroupResourcesInput {
   Group: string;
   ResourceArns: string[];
@@ -493,7 +494,8 @@ export const ListGroupingStatusesFilterName = S.String;
 
 export type ListGroupingStatusesFilterValue = string;
 export type ListGroupingStatusesFilterValues = string[];
-export const ListGroupingStatusesFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const ListGroupingStatusesFilterValues =
+  GroupConfigurationParameterValueList as any as S.Schema<ListGroupingStatusesFilterValues>;
 export interface ListGroupingStatusesFilter {
   Name: ListGroupingStatusesFilterName;
   Values: string[];
@@ -569,7 +571,8 @@ export const ResourceFilterName = S.String;
 
 export type ResourceFilterValue = string;
 export type ResourceFilterValues = string[];
-export const ResourceFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const ResourceFilterValues =
+  GroupConfigurationParameterValueList as any as S.Schema<ResourceFilterValues>;
 export interface ResourceFilter {
   Name: ResourceFilterName;
   Values: string[];
@@ -668,7 +671,8 @@ export const GroupFilterName = S.String;
 
 export type GroupFilterValue = string;
 export type GroupFilterValues = string[];
-export const GroupFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const GroupFilterValues =
+  GroupConfigurationParameterValueList as any as S.Schema<GroupFilterValues>;
 export interface GroupFilter {
   Name: GroupFilterName;
   Values: string[];
@@ -760,20 +764,7 @@ export interface TagSyncTaskItem {
   ErrorMessage?: string;
   CreatedAt?: Date;
 }
-export const TagSyncTaskItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupArn: S.optional(S.String),
-    GroupName: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    TagKey: S.optional(S.String),
-    TagValue: S.optional(S.String),
-    ResourceQuery: S.optional(ResourceQuery),
-    RoleArn: S.optional(S.String),
-    Status: S.optional(TagSyncTaskStatus),
-    ErrorMessage: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "TagSyncTaskItem" }) as any as S.Schema<TagSyncTaskItem>;
+export const TagSyncTaskItem = GetTagSyncTaskOutput as any as S.Schema<TagSyncTaskItem>;
 export type TagSyncTaskList = TagSyncTaskItem[];
 export const TagSyncTaskList = /*@__PURE__*/ S.Array(TagSyncTaskItem);
 export interface ListTagSyncTasksOutput {
@@ -802,9 +793,8 @@ export const PutGroupConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutGroupConfigurationInput",
 }) as any as S.Schema<PutGroupConfigurationInput>;
 export interface PutGroupConfigurationOutput {}
-export const PutGroupConfigurationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutGroupConfigurationOutput",
-}) as any as S.Schema<PutGroupConfigurationOutput>;
+export const PutGroupConfigurationOutput =
+  CancelTagSyncTaskResponse as any as S.Schema<PutGroupConfigurationOutput>;
 export interface SearchResourcesInput {
   ResourceQuery: ResourceQuery;
   MaxResults?: number;
@@ -882,9 +872,7 @@ export interface TagOutput {
   Arn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const TagOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Tags: S.optional(Tags) }),
-).annotate({ identifier: "TagOutput" }) as any as S.Schema<TagOutput>;
+export const TagOutput = GetTagsOutput as any as S.Schema<TagOutput>;
 export interface UngroupResourcesInput {
   Group: string;
   ResourceArns: string[];
@@ -899,15 +887,10 @@ export interface UngroupResourcesOutput {
   Failed?: FailedResource[];
   Pending?: PendingResource[];
 }
-export const UngroupResourcesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Succeeded: S.optional(ResourceArnList),
-    Failed: S.optional(FailedResourceList),
-    Pending: S.optional(PendingResourceList),
-  }),
-).annotate({ identifier: "UngroupResourcesOutput" }) as any as S.Schema<UngroupResourcesOutput>;
+export const UngroupResourcesOutput =
+  GroupResourcesOutput as any as S.Schema<UngroupResourcesOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = GroupConfigurationParameterValueList as any as S.Schema<TagKeyList>;
 export interface UntagInput {
   Arn: string;
   Keys: string[];
@@ -972,9 +955,7 @@ export const UpdateGroupInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGroupOutput {
   Group?: Group;
 }
-export const UpdateGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(Group) }),
-).annotate({ identifier: "UpdateGroupOutput" }) as any as S.Schema<UpdateGroupOutput>;
+export const UpdateGroupOutput = DeleteGroupOutput as any as S.Schema<UpdateGroupOutput>;
 export interface UpdateGroupQueryInput {
   GroupName?: string;
   Group?: string;
@@ -992,9 +973,8 @@ export const UpdateGroupQueryInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGroupQueryOutput {
   GroupQuery?: GroupQuery;
 }
-export const UpdateGroupQueryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GroupQuery: S.optional(GroupQuery) }),
-).annotate({ identifier: "UpdateGroupQueryOutput" }) as any as S.Schema<UpdateGroupQueryOutput>;
+export const UpdateGroupQueryOutput =
+  GetGroupQueryOutput as any as S.Schema<UpdateGroupQueryOutput>;
 export type CancelTagSyncTaskError =
   | BadRequestException
   | ForbiddenException

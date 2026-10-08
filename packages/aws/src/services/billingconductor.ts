@@ -195,7 +195,8 @@ export const AssociateAccountsOutput = /*@__PURE__*/ S.suspend(() =>
 export type PricingPlanArn = string;
 export type PricingRuleArn = string;
 export type PricingRuleArnsNonEmptyInput = string[];
-export const PricingRuleArnsNonEmptyInput = /*@__PURE__*/ S.Array(S.String);
+export const PricingRuleArnsNonEmptyInput =
+  AccountIdList as any as S.Schema<PricingRuleArnsNonEmptyInput>;
 export interface AssociatePricingRulesInput {
   Arn: string;
   PricingRuleArns: string[];
@@ -218,7 +219,8 @@ export const AssociatePricingRulesOutput = /*@__PURE__*/ S.suspend(() =>
 export type CustomLineItemArn = string;
 export type CustomLineItemAssociationElement = string;
 export type CustomLineItemBatchAssociationsList = string[];
-export const CustomLineItemBatchAssociationsList = /*@__PURE__*/ S.Array(S.String);
+export const CustomLineItemBatchAssociationsList =
+  AccountIdList as any as S.Schema<CustomLineItemBatchAssociationsList>;
 export type BillingPeriod = string;
 export interface CustomLineItemBillingPeriodRange {
   InclusiveStartBillingPeriod: string;
@@ -297,7 +299,8 @@ export const BatchAssociateResourcesToCustomLineItemOutput = /*@__PURE__*/ S.sus
   identifier: "BatchAssociateResourcesToCustomLineItemOutput",
 }) as any as S.Schema<BatchAssociateResourcesToCustomLineItemOutput>;
 export type CustomLineItemBatchDisassociationsList = string[];
-export const CustomLineItemBatchDisassociationsList = /*@__PURE__*/ S.Array(S.String);
+export const CustomLineItemBatchDisassociationsList =
+  AccountIdList as any as S.Schema<CustomLineItemBatchDisassociationsList>;
 export interface BatchDisassociateResourcesFromCustomLineItemInput {
   TargetArn: string;
   ResourceArns: string[];
@@ -325,15 +328,11 @@ export interface DisassociateResourceResponseElement {
   Arn?: string;
   Error?: AssociateResourceError;
 }
-export const DisassociateResourceResponseElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Error: S.optional(AssociateResourceError) }),
-).annotate({
-  identifier: "DisassociateResourceResponseElement",
-}) as any as S.Schema<DisassociateResourceResponseElement>;
+export const DisassociateResourceResponseElement =
+  AssociateResourceResponseElement as any as S.Schema<DisassociateResourceResponseElement>;
 export type DisassociateResourcesResponseList = DisassociateResourceResponseElement[];
-export const DisassociateResourcesResponseList = /*@__PURE__*/ S.Array(
-  DisassociateResourceResponseElement,
-);
+export const DisassociateResourcesResponseList =
+  AssociateResourcesResponseList as any as S.Schema<DisassociateResourcesResponseList>;
 export interface BatchDisassociateResourcesFromCustomLineItemOutput {
   SuccessfullyDisassociatedResources?: DisassociateResourceResponseElement[];
   FailedDisassociatedResources?: DisassociateResourceResponseElement[];
@@ -401,9 +400,8 @@ export const CreateBillingGroupInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBillingGroupOutput {
   Arn?: string;
 }
-export const CreateBillingGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "CreateBillingGroupOutput" }) as any as S.Schema<CreateBillingGroupOutput>;
+export const CreateBillingGroupOutput =
+  AssociateAccountsOutput as any as S.Schema<CreateBillingGroupOutput>;
 export type CustomLineItemName = string | redacted.Redacted<string>;
 export type CustomLineItemDescription = string | redacted.Redacted<string>;
 export type CustomLineItemChargeValue = number;
@@ -417,7 +415,8 @@ export const CustomLineItemFlatChargeDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomLineItemFlatChargeDetails>;
 export type CustomLineItemPercentageChargeValue = number;
 export type CustomLineItemAssociationsList = string[];
-export const CustomLineItemAssociationsList = /*@__PURE__*/ S.Array(S.String);
+export const CustomLineItemAssociationsList =
+  AccountIdList as any as S.Schema<CustomLineItemAssociationsList>;
 export interface CustomLineItemPercentageChargeDetails {
   PercentageValue: number;
   AssociatedValues?: string[];
@@ -446,7 +445,7 @@ export type LineItemFilterValuesList = LineItemFilterValue[];
 export const LineItemFilterValuesList = /*@__PURE__*/ S.Array(LineItemFilterValue);
 export type AttributeValue = string;
 export type AttributeValueList = string[];
-export const AttributeValueList = /*@__PURE__*/ S.Array(S.String);
+export const AttributeValueList = AccountIdList as any as S.Schema<AttributeValueList>;
 export interface LineItemFilter {
   Attribute: LineItemFilterAttributeName;
   MatchOption: MatchOption;
@@ -532,15 +531,12 @@ export const CreateCustomLineItemInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCustomLineItemOutput {
   Arn?: string;
 }
-export const CreateCustomLineItemOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateCustomLineItemOutput",
-}) as any as S.Schema<CreateCustomLineItemOutput>;
+export const CreateCustomLineItemOutput =
+  AssociatePricingRulesOutput as any as S.Schema<CreateCustomLineItemOutput>;
 export type PricingPlanName = string | redacted.Redacted<string>;
 export type PricingPlanDescription = string | redacted.Redacted<string>;
 export type PricingRuleArnsInput = string[];
-export const PricingRuleArnsInput = /*@__PURE__*/ S.Array(S.String);
+export const PricingRuleArnsInput = AccountIdList as any as S.Schema<PricingRuleArnsInput>;
 export interface CreatePricingPlanInput {
   ClientToken?: string;
   Name: string | redacted.Redacted<string>;
@@ -565,9 +561,8 @@ export const CreatePricingPlanInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePricingPlanOutput {
   Arn?: string;
 }
-export const CreatePricingPlanOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "CreatePricingPlanOutput" }) as any as S.Schema<CreatePricingPlanOutput>;
+export const CreatePricingPlanOutput =
+  AssociateAccountsOutput as any as S.Schema<CreatePricingPlanOutput>;
 export type PricingRuleName = string | redacted.Redacted<string>;
 export type PricingRuleDescription = string | redacted.Redacted<string>;
 export type PricingRuleScope = "GLOBAL" | "SERVICE" | "BILLING_ENTITY" | "SKU" | (string & {});
@@ -652,9 +647,8 @@ export const CreatePricingRuleInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePricingRuleOutput {
   Arn?: string;
 }
-export const CreatePricingRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "CreatePricingRuleOutput" }) as any as S.Schema<CreatePricingRuleOutput>;
+export const CreatePricingRuleOutput =
+  AssociateAccountsOutput as any as S.Schema<CreatePricingRuleOutput>;
 export interface DeleteBillingGroupInput {
   Arn: string;
 }
@@ -666,9 +660,8 @@ export const DeleteBillingGroupInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBillingGroupOutput {
   Arn?: string;
 }
-export const DeleteBillingGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "DeleteBillingGroupOutput" }) as any as S.Schema<DeleteBillingGroupOutput>;
+export const DeleteBillingGroupOutput =
+  AssociateAccountsOutput as any as S.Schema<DeleteBillingGroupOutput>;
 export interface DeleteCustomLineItemInput {
   Arn: string;
   BillingPeriodRange?: CustomLineItemBillingPeriodRange;
@@ -693,11 +686,8 @@ export const DeleteCustomLineItemInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCustomLineItemOutput {
   Arn?: string;
 }
-export const DeleteCustomLineItemOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteCustomLineItemOutput",
-}) as any as S.Schema<DeleteCustomLineItemOutput>;
+export const DeleteCustomLineItemOutput =
+  AssociatePricingRulesOutput as any as S.Schema<DeleteCustomLineItemOutput>;
 export interface DeletePricingPlanInput {
   Arn: string;
 }
@@ -709,9 +699,8 @@ export const DeletePricingPlanInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePricingPlanOutput {
   Arn?: string;
 }
-export const DeletePricingPlanOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "DeletePricingPlanOutput" }) as any as S.Schema<DeletePricingPlanOutput>;
+export const DeletePricingPlanOutput =
+  AssociateAccountsOutput as any as S.Schema<DeletePricingPlanOutput>;
 export interface DeletePricingRuleInput {
   Arn: string;
 }
@@ -723,9 +712,8 @@ export const DeletePricingRuleInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePricingRuleOutput {
   Arn?: string;
 }
-export const DeletePricingRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "DeletePricingRuleOutput" }) as any as S.Schema<DeletePricingRuleOutput>;
+export const DeletePricingRuleOutput =
+  AssociateAccountsOutput as any as S.Schema<DeletePricingRuleOutput>;
 export interface DisassociateAccountsInput {
   Arn: string;
   AccountIds: string[];
@@ -740,11 +728,8 @@ export const DisassociateAccountsInput = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateAccountsOutput {
   Arn?: string;
 }
-export const DisassociateAccountsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "DisassociateAccountsOutput",
-}) as any as S.Schema<DisassociateAccountsOutput>;
+export const DisassociateAccountsOutput =
+  AssociatePricingRulesOutput as any as S.Schema<DisassociateAccountsOutput>;
 export interface DisassociatePricingRulesInput {
   Arn: string;
   PricingRuleArns: string[];
@@ -766,11 +751,8 @@ export const DisassociatePricingRulesInput = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociatePricingRulesOutput {
   Arn?: string;
 }
-export const DisassociatePricingRulesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "DisassociatePricingRulesOutput",
-}) as any as S.Schema<DisassociatePricingRulesOutput>;
+export const DisassociatePricingRulesOutput =
+  AssociatePricingRulesOutput as any as S.Schema<DisassociatePricingRulesOutput>;
 export interface BillingPeriodRange {
   InclusiveStartBillingPeriod: string;
   ExclusiveEndBillingPeriod: string;
@@ -907,7 +889,7 @@ export const GetBillingTransferPreferenceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBillingTransferPreferenceOutput>;
 export type Association = string;
 export type AccountIdFilterList = string[];
-export const AccountIdFilterList = /*@__PURE__*/ S.Array(S.String);
+export const AccountIdFilterList = AccountIdList as any as S.Schema<AccountIdFilterList>;
 export interface ListAccountAssociationsFilter {
   Association?: string;
   AccountId?: string;
@@ -979,7 +961,7 @@ export const ListAccountAssociationsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountAssociationsOutput>;
 export type MaxBillingGroupResults = number;
 export type BillingGroupArnList = string[];
-export const BillingGroupArnList = /*@__PURE__*/ S.Array(S.String);
+export const BillingGroupArnList = AccountIdList as any as S.Schema<BillingGroupArnList>;
 export interface ListBillingGroupCostReportsFilter {
   BillingGroupArns?: string[];
 }
@@ -1053,7 +1035,7 @@ export const BillingGroupStatus = S.String;
 export type BillingGroupStatusList = BillingGroupStatus[];
 export const BillingGroupStatusList = /*@__PURE__*/ S.Array(BillingGroupStatus);
 export type PrimaryAccountIdList = string[];
-export const PrimaryAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const PrimaryAccountIdList = AccountIdList as any as S.Schema<PrimaryAccountIdList>;
 export type BillingGroupType = "STANDARD" | "TRANSFER_BILLING" | (string & {});
 export const BillingGroupType = S.String;
 
@@ -1073,7 +1055,8 @@ export const StringSearch = /*@__PURE__*/ S.suspend(() =>
 export type StringSearches = StringSearch[];
 export const StringSearches = /*@__PURE__*/ S.Array(StringSearch);
 export type ResponsibilityTransferArnsList = string[];
-export const ResponsibilityTransferArnsList = /*@__PURE__*/ S.Array(S.String);
+export const ResponsibilityTransferArnsList =
+  AccountIdList as any as S.Schema<ResponsibilityTransferArnsList>;
 export interface ListBillingGroupsFilter {
   Arns?: string[];
   PricingPlan?: string;
@@ -1169,7 +1152,7 @@ export type MaxCustomLineItemResults = number;
 export type CustomLineItemNameList = (string | redacted.Redacted<string>)[];
 export const CustomLineItemNameList = /*@__PURE__*/ S.Array(SensitiveString);
 export type CustomLineItemArns = string[];
-export const CustomLineItemArns = /*@__PURE__*/ S.Array(S.String);
+export const CustomLineItemArns = AccountIdList as any as S.Schema<CustomLineItemArns>;
 export interface ListCustomLineItemsFilter {
   Names?: (string | redacted.Redacted<string>)[];
   BillingGroups?: string[];
@@ -1205,11 +1188,8 @@ export const ListCustomLineItemsInput = /*@__PURE__*/ S.suspend(() =>
 export interface ListCustomLineItemFlatChargeDetails {
   ChargeValue: number;
 }
-export const ListCustomLineItemFlatChargeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChargeValue: S.Number }),
-).annotate({
-  identifier: "ListCustomLineItemFlatChargeDetails",
-}) as any as S.Schema<ListCustomLineItemFlatChargeDetails>;
+export const ListCustomLineItemFlatChargeDetails =
+  CustomLineItemFlatChargeDetails as any as S.Schema<ListCustomLineItemFlatChargeDetails>;
 export interface ListCustomLineItemPercentageChargeDetails {
   PercentageValue: number;
 }
@@ -1381,7 +1361,7 @@ export const ListCustomLineItemVersionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomLineItemVersionsOutput",
 }) as any as S.Schema<ListCustomLineItemVersionsOutput>;
 export type PricingPlanArns = string[];
-export const PricingPlanArns = /*@__PURE__*/ S.Array(S.String);
+export const PricingPlanArns = AccountIdList as any as S.Schema<PricingPlanArns>;
 export interface ListPricingPlansFilter {
   Arns?: string[];
 }
@@ -1481,13 +1461,12 @@ export const ListPricingPlansAssociatedWithPricingRuleOutput = /*@__PURE__*/ S.s
   identifier: "ListPricingPlansAssociatedWithPricingRuleOutput",
 }) as any as S.Schema<ListPricingPlansAssociatedWithPricingRuleOutput>;
 export type PricingRuleArns = string[];
-export const PricingRuleArns = /*@__PURE__*/ S.Array(S.String);
+export const PricingRuleArns = AccountIdList as any as S.Schema<PricingRuleArns>;
 export interface ListPricingRulesFilter {
   Arns?: string[];
 }
-export const ListPricingRulesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arns: S.optional(PricingRuleArns) }),
-).annotate({ identifier: "ListPricingRulesFilter" }) as any as S.Schema<ListPricingRulesFilter>;
+export const ListPricingRulesFilter =
+  ListPricingPlansFilter as any as S.Schema<ListPricingRulesFilter>;
 export interface ListPricingRulesInput {
   BillingPeriod?: string;
   Filters?: ListPricingRulesFilter;
@@ -1508,9 +1487,7 @@ export type NumberOfPricingPlansAssociatedWith = number;
 export interface FreeTierConfig {
   Activated: boolean;
 }
-export const FreeTierConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Activated: S.Boolean }),
-).annotate({ identifier: "FreeTierConfig" }) as any as S.Schema<FreeTierConfig>;
+export const FreeTierConfig = CreateFreeTierConfig as any as S.Schema<FreeTierConfig>;
 export interface Tiering {
   FreeTier?: FreeTierConfig;
   CustomTiers?: CustomTier[];
@@ -1711,7 +1688,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AccountIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1725,21 +1702,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBillingGroupAccountGrouping {
   AutoAssociate?: boolean;
   ResponsibilityTransferArn?: string;
 }
-export const UpdateBillingGroupAccountGrouping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AutoAssociate: S.optional(S.Boolean),
-    ResponsibilityTransferArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBillingGroupAccountGrouping",
-}) as any as S.Schema<UpdateBillingGroupAccountGrouping>;
+export const UpdateBillingGroupAccountGrouping =
+  ListBillingGroupAccountGrouping as any as S.Schema<UpdateBillingGroupAccountGrouping>;
 export interface UpdateBillingGroupInput {
   Arn: string;
   Name?: string | redacted.Redacted<string>;
@@ -1829,19 +1798,13 @@ export const UpdateBillingTransferPreferenceOutput = /*@__PURE__*/ S.suspend(() 
 export interface UpdateCustomLineItemFlatChargeDetails {
   ChargeValue: number;
 }
-export const UpdateCustomLineItemFlatChargeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChargeValue: S.Number }),
-).annotate({
-  identifier: "UpdateCustomLineItemFlatChargeDetails",
-}) as any as S.Schema<UpdateCustomLineItemFlatChargeDetails>;
+export const UpdateCustomLineItemFlatChargeDetails =
+  CustomLineItemFlatChargeDetails as any as S.Schema<UpdateCustomLineItemFlatChargeDetails>;
 export interface UpdateCustomLineItemPercentageChargeDetails {
   PercentageValue: number;
 }
-export const UpdateCustomLineItemPercentageChargeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PercentageValue: S.Number }),
-).annotate({
-  identifier: "UpdateCustomLineItemPercentageChargeDetails",
-}) as any as S.Schema<UpdateCustomLineItemPercentageChargeDetails>;
+export const UpdateCustomLineItemPercentageChargeDetails =
+  ListCustomLineItemPercentageChargeDetails as any as S.Schema<UpdateCustomLineItemPercentageChargeDetails>;
 export interface UpdateCustomLineItemChargeDetails {
   Flat?: UpdateCustomLineItemFlatChargeDetails;
   Percentage?: UpdateCustomLineItemPercentageChargeDetails;
@@ -1939,19 +1902,12 @@ export const UpdatePricingPlanOutput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFreeTierConfig {
   Activated: boolean;
 }
-export const UpdateFreeTierConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Activated: S.Boolean }),
-).annotate({ identifier: "UpdateFreeTierConfig" }) as any as S.Schema<UpdateFreeTierConfig>;
+export const UpdateFreeTierConfig = CreateFreeTierConfig as any as S.Schema<UpdateFreeTierConfig>;
 export interface UpdateTieringInput {
   FreeTier?: UpdateFreeTierConfig;
   CustomTiers?: CustomTier[];
 }
-export const UpdateTieringInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FreeTier: S.optional(UpdateFreeTierConfig),
-    CustomTiers: S.optional(CustomTiersList),
-  }),
-).annotate({ identifier: "UpdateTieringInput" }) as any as S.Schema<UpdateTieringInput>;
+export const UpdateTieringInput = CreateTieringInput as any as S.Schema<UpdateTieringInput>;
 export interface UpdatePricingRuleInput {
   Arn: string;
   Name?: string | redacted.Redacted<string>;

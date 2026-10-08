@@ -65,14 +65,8 @@ export interface AccountsTableCustomPropertyColumn {
   definitionId: string;
   kind?: string;
 }
-export const AccountsTableCustomPropertyColumn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitionId: S.String,
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsTableCustomPropertyColumn",
-}) as any as S.Schema<AccountsTableCustomPropertyColumn>;
+export const AccountsTableCustomPropertyColumn =
+  AccountsTableRelationshipColumn as any as S.Schema<AccountsTableCustomPropertyColumn>;
 
 export type WindowDays = 7 | 14 | 30 | 90;
 export const WindowDays = S.Number;
@@ -247,9 +241,8 @@ export const AccountsTableSearchFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Match accounts carrying any of these tag names. */
 export type AccountsTableTagsFilterTagNamesList = Array<string>;
-export const AccountsTableTagsFilterTagNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsTableTagsFilterTagNamesList>;
+export const AccountsTableTagsFilterTagNamesList =
+  AccountsTableAccountFieldFilterValuesList as any as S.Schema<AccountsTableTagsFilterTagNamesList>;
 
 export interface AccountsTableTagsFilter {
   kind?: string;
@@ -265,9 +258,8 @@ export const AccountsTableTagsFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Match accounts where any listed user actively holds any relationship. */
 export type AccountsTableAssignedToFilterUserIdsList = Array<number>;
-export const AccountsTableAssignedToFilterUserIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AccountsTableAssignedToFilterUserIdsList>;
+export const AccountsTableAssignedToFilterUserIdsList =
+  AccountsTableRelationshipFilterUserIdsList as any as S.Schema<AccountsTableAssignedToFilterUserIdsList>;
 
 export interface AccountsTableAssignedToFilter {
   kind?: string;
@@ -473,9 +465,8 @@ export type CustomChannelOperator =
 export const CustomChannelOperator = S.String;
 
 export type CustomChannelConditionValueCase1List = Array<string>;
-export const CustomChannelConditionValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomChannelConditionValueCase1List>;
+export const CustomChannelConditionValueCase1List =
+  AccountsTableAccountFieldFilterValuesList as any as S.Schema<CustomChannelConditionValueCase1List>;
 
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
 export const CustomChannelConditionValue =
@@ -545,9 +536,8 @@ export const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/
 ) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
 
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
-export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
+export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
+  AccountsTableAccountFieldFilterValuesList as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
 
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
 export const InCohortVia = S.String;
@@ -699,9 +689,8 @@ export const AccountsTableQueryResponseMetricsResultsList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<AccountsTableQueryResponseMetricsResultsList>;
 
 export type QueryStatusLabelsList = Array<string>;
-export const QueryStatusLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryStatusLabelsList>;
+export const QueryStatusLabelsList =
+  AccountsTableAccountFieldFilterValuesList as any as S.Schema<QueryStatusLabelsList>;
 
 export interface ClickhouseQueryProgress {
   active_cpu_time?: number;
@@ -927,9 +916,8 @@ export const AccountsTableRowCustomPropertyHistoryMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsTableRowCustomPropertyHistoryMap>;
 
 export type AccountsTableRowRelationshipsValueList = Array<number>;
-export const AccountsTableRowRelationshipsValueList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AccountsTableRowRelationshipsValueList>;
+export const AccountsTableRowRelationshipsValueList =
+  AccountsTableRelationshipFilterUserIdsList as any as S.Schema<AccountsTableRowRelationshipsValueList>;
 
 /** Active assignee user IDs keyed by requested relationship definition ID. */
 export type AccountsTableRowRelationshipsMap = {
@@ -941,9 +929,8 @@ export const AccountsTableRowRelationshipsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsTableRowRelationshipsMap>;
 
 export type AccountsTableRowTagsList = Array<string>;
-export const AccountsTableRowTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsTableRowTagsList>;
+export const AccountsTableRowTagsList =
+  AccountsTableAccountFieldFilterValuesList as any as S.Schema<AccountsTableRowTagsList>;
 
 export interface AccountsTableRow {
   /** Requested direct Account fields, keyed by their typed field reference. */
@@ -1054,9 +1041,8 @@ export const DataWarehouseSyncWarning = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
 export type AccessControlFilterWarningResourcesList = Array<string>;
-export const AccessControlFilterWarningResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlFilterWarningResourcesList>;
+export const AccessControlFilterWarningResourcesList =
+  AccountsTableAccountFieldFilterValuesList as any as S.Schema<AccessControlFilterWarningResourcesList>;
 
 export interface AccessControlFilterWarning {
   /** Human-readable warning shown to the user */

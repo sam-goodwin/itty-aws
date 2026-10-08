@@ -227,9 +227,8 @@ export const DeleteSslGatewayServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSslGatewayServerRequest>;
 
 export interface DeleteSslGatewayServerResponse {}
-export const DeleteSslGatewayServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSslGatewayServerResponse",
-}) as any as S.Schema<DeleteSslGatewayServerResponse>;
+export const DeleteSslGatewayServerResponse =
+  DeleteSslGatewayDomainResponse as any as S.Schema<DeleteSslGatewayServerResponse>;
 
 export interface GetSslGatewayRequest {
   /** The internal name of your SSL Gateway */
@@ -296,9 +295,8 @@ export const SslGatewayStateEnum = S.String;
 
 /** Zones of your SSL Gateway */
 export type SslGatewaySslGatewayWithIAMZonesList = Array<string>;
-export const SslGatewaySslGatewayWithIAMZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SslGatewaySslGatewayWithIAMZonesList>;
+export const SslGatewaySslGatewayWithIAMZonesList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<SslGatewaySslGatewayWithIAMZonesList>;
 
 /** Your SSL Gateway */
 export interface SslGatewaySslGatewayWithIAM {
@@ -399,9 +397,8 @@ export const GetSslGatewayServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateSslGatewayChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -548,9 +545,8 @@ export const SslGatewayTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IamResourceTagFilterInput",
-}) as any as S.Schema<IamResourceTagFilterInput>;
+export const IamResourceTagFilterInput =
+  DeleteSslGatewayDomainResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListSslGatewayRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export const ListSslGatewayRequestIamTagsValueList = /*@__PURE__*/ S.Array(
@@ -576,9 +572,8 @@ export const ListSslGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSslGatewayRequest" }) as any as S.Schema<ListSslGatewayRequest>;
 
 export type ListSslGatewayResponseBodyList = Array<string>;
-export const ListSslGatewayResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSslGatewayResponseBodyList>;
+export const ListSslGatewayResponseBodyList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<ListSslGatewayResponseBodyList>;
 
 export type ListSslGatewayResponse = ListSslGatewayResponseBodyList;
 export const ListSslGatewayResponse = /*@__PURE__*/ S.suspend(() =>
@@ -593,9 +588,8 @@ export const ListSslGatewayAvailableZonesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSslGatewayAvailableZonesRequest>;
 
 export type ListSslGatewayAvailableZonesResponseBodyList = Array<string>;
-export const ListSslGatewayAvailableZonesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSslGatewayAvailableZonesResponseBodyList>;
+export const ListSslGatewayAvailableZonesResponseBodyList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<ListSslGatewayAvailableZonesResponseBodyList>;
 
 export type ListSslGatewayAvailableZonesResponse = ListSslGatewayAvailableZonesResponseBodyList;
 export const ListSslGatewayAvailableZonesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -617,16 +611,12 @@ export const ListSslGatewayDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSslGatewayDomainRequest>;
 
 export type ListSslGatewayDomainResponseBodyList = Array<number>;
-export const ListSslGatewayDomainResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListSslGatewayDomainResponseBodyList>;
+export const ListSslGatewayDomainResponseBodyList =
+  CreateSslGatewayChangeContactResponseBodyList as any as S.Schema<ListSslGatewayDomainResponseBodyList>;
 
 export type ListSslGatewayDomainResponse = ListSslGatewayDomainResponseBodyList;
-export const ListSslGatewayDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSslGatewayDomainResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListSslGatewayDomainResponse",
-}) as any as S.Schema<ListSslGatewayDomainResponse>;
+export const ListSslGatewayDomainResponse =
+  CreateSslGatewayChangeContactResponse as any as S.Schema<ListSslGatewayDomainResponse>;
 
 export interface ListSslGatewayEligibilityRequest {
   /** domain to check eligibility for SSL Gateway offer */
@@ -642,15 +632,13 @@ export const ListSslGatewayEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Eligible IP(s) v6 for this domain */
 export type SslGatewayEligibilityStatusIp6sList = Array<string>;
-export const SslGatewayEligibilityStatusIp6sList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SslGatewayEligibilityStatusIp6sList>;
+export const SslGatewayEligibilityStatusIp6sList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<SslGatewayEligibilityStatusIp6sList>;
 
 /** Eligible IP(s) for this domain */
 export type SslGatewayEligibilityStatusIpsList = Array<string>;
-export const SslGatewayEligibilityStatusIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SslGatewayEligibilityStatusIpsList>;
+export const SslGatewayEligibilityStatusIpsList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<SslGatewayEligibilityStatusIpsList>;
 
 /** A structure describing the eligibility status of a domain */
 export interface SslGatewayEligibilityStatus {
@@ -687,9 +675,8 @@ export const ListSslGatewayNatIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSslGatewayNatIpRequest>;
 
 export type SslGatewayNatIpsIpList = Array<string>;
-export const SslGatewayNatIpsIpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SslGatewayNatIpsIpList>;
+export const SslGatewayNatIpsIpList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<SslGatewayNatIpsIpList>;
 
 /** a list of {zone, nat Ip} */
 export interface SslGatewayNatIps {
@@ -728,16 +715,12 @@ export const ListSslGatewayServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSslGatewayServerRequest>;
 
 export type ListSslGatewayServerResponseBodyList = Array<number>;
-export const ListSslGatewayServerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListSslGatewayServerResponseBodyList>;
+export const ListSslGatewayServerResponseBodyList =
+  CreateSslGatewayChangeContactResponseBodyList as any as S.Schema<ListSslGatewayServerResponseBodyList>;
 
 export type ListSslGatewayServerResponse = ListSslGatewayServerResponseBodyList;
-export const ListSslGatewayServerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSslGatewayServerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListSslGatewayServerResponse",
-}) as any as S.Schema<ListSslGatewayServerResponse>;
+export const ListSslGatewayServerResponse =
+  CreateSslGatewayChangeContactResponse as any as S.Schema<ListSslGatewayServerResponse>;
 
 export interface ListSslGatewayTaskRequest {
   /** The internal name of your SSL Gateway */
@@ -752,22 +735,17 @@ export const ListSslGatewayTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSslGatewayTaskRequest>;
 
 export type ListSslGatewayTaskResponseBodyList = Array<number>;
-export const ListSslGatewayTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListSslGatewayTaskResponseBodyList>;
+export const ListSslGatewayTaskResponseBodyList =
+  CreateSslGatewayChangeContactResponseBodyList as any as S.Schema<ListSslGatewayTaskResponseBodyList>;
 
 export type ListSslGatewayTaskResponse = ListSslGatewayTaskResponseBodyList;
-export const ListSslGatewayTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSslGatewayTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListSslGatewayTaskResponse",
-}) as any as S.Schema<ListSslGatewayTaskResponse>;
+export const ListSslGatewayTaskResponse =
+  CreateSslGatewayChangeContactResponse as any as S.Schema<ListSslGatewayTaskResponse>;
 
 /** Restrict SSL Gateway access to these ip block. No restriction if null */
 export type PutSslGatewayRequestAllowedSourceList = Array<string>;
-export const PutSslGatewayRequestAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutSslGatewayRequestAllowedSourceList>;
+export const PutSslGatewayRequestAllowedSourceList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<PutSslGatewayRequestAllowedSourceList>;
 
 export interface PutSslGatewayRequest {
   /** The internal name of your SSL Gateway */
@@ -801,9 +779,8 @@ export const PutSslGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSslGatewayRequest" }) as any as S.Schema<PutSslGatewayRequest>;
 
 export interface PutSslGatewayResponse {}
-export const PutSslGatewayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSslGatewayResponse",
-}) as any as S.Schema<PutSslGatewayResponse>;
+export const PutSslGatewayResponse =
+  DeleteSslGatewayDomainResponse as any as S.Schema<PutSslGatewayResponse>;
 
 export interface PutSslGatewayServerRequest {
   /** The internal name of your SSL Gateway */
@@ -827,9 +804,8 @@ export const PutSslGatewayServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSslGatewayServerRequest>;
 
 export interface PutSslGatewayServerResponse {}
-export const PutSslGatewayServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSslGatewayServerResponse",
-}) as any as S.Schema<PutSslGatewayServerResponse>;
+export const PutSslGatewayServerResponse =
+  DeleteSslGatewayDomainResponse as any as S.Schema<PutSslGatewayServerResponse>;
 
 export interface PutSslGatewayServiceInfosRequest {
   /** The internal name of your SSL Gateway */
@@ -869,16 +845,12 @@ export const RenewSslGatewayCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenewSslGatewayCertificateRequest>;
 
 export type RenewSslGatewayCertificateResponseBodyList = Array<string>;
-export const RenewSslGatewayCertificateResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RenewSslGatewayCertificateResponseBodyList>;
+export const RenewSslGatewayCertificateResponseBodyList =
+  SslGatewaySslGatewayWithIAMAllowedSourceList as any as S.Schema<RenewSslGatewayCertificateResponseBodyList>;
 
 export type RenewSslGatewayCertificateResponse = RenewSslGatewayCertificateResponseBodyList;
-export const RenewSslGatewayCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  RenewSslGatewayCertificateResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RenewSslGatewayCertificateResponse",
-}) as any as S.Schema<RenewSslGatewayCertificateResponse>;
+export const RenewSslGatewayCertificateResponse =
+  ListSslGatewayAvailableZonesResponse as any as S.Schema<RenewSslGatewayCertificateResponse>;
 
 export interface TerminateSslGatewayRequest {
   /** The internal name of your SSL Gateway */
@@ -893,11 +865,8 @@ export const TerminateSslGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateSslGatewayRequest>;
 
 export type TerminateSslGatewayResponse = string;
-export const TerminateSslGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateSslGatewayResponse",
-}) as any as S.Schema<TerminateSslGatewayResponse>;
+export const TerminateSslGatewayResponse =
+  ConfirmSslGatewayTerminationResponse as any as S.Schema<TerminateSslGatewayResponse>;
 
 export type ConfirmSslGatewayTerminationError = OvhOpError;
 /** Confirm service termination */

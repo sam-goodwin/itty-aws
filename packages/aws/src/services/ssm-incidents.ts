@@ -315,7 +315,8 @@ export const EmptyChatChannel = /*@__PURE__*/ S.suspend(() => S.Struct({})).anno
 }) as any as S.Schema<EmptyChatChannel>;
 export type SnsArn = string;
 export type ChatbotSnsConfigurationSet = string[];
-export const ChatbotSnsConfigurationSet = /*@__PURE__*/ S.Array(S.String);
+export const ChatbotSnsConfigurationSet =
+  FindingIdList as any as S.Schema<ChatbotSnsConfigurationSet>;
 export type ChatChannel =
   | { empty: EmptyChatChannel; chatbotSns?: never }
   | { empty?: never; chatbotSns: string[] };
@@ -325,11 +326,11 @@ export const ChatChannel = /*@__PURE__*/ S.Union([
 ]);
 export type SsmContactsArn = string;
 export type EngagementSet = string[];
-export const EngagementSet = /*@__PURE__*/ S.Array(S.String);
+export const EngagementSet = FindingIdList as any as S.Schema<EngagementSet>;
 export type RoleArn = string;
 export type SsmTargetAccount = string;
 export type SsmParameterValues = string[];
-export const SsmParameterValues = /*@__PURE__*/ S.Array(S.String);
+export const SsmParameterValues = FindingIdList as any as S.Schema<SsmParameterValues>;
 export type SsmParameters = { [key: string]: string[] | undefined };
 export const SsmParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -480,9 +481,8 @@ export const DeleteIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIncidentRecordInput",
 }) as any as S.Schema<DeleteIncidentRecordInput>;
 export interface DeleteIncidentRecordOutput {}
-export const DeleteIncidentRecordOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIncidentRecordOutput",
-}) as any as S.Schema<DeleteIncidentRecordOutput>;
+export const DeleteIncidentRecordOutput =
+  EmptyChatChannel as any as S.Schema<DeleteIncidentRecordOutput>;
 export interface DeleteReplicationSetInput {
   arn: string;
 }
@@ -494,9 +494,8 @@ export const DeleteReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteReplicationSetInput",
 }) as any as S.Schema<DeleteReplicationSetInput>;
 export interface DeleteReplicationSetOutput {}
-export const DeleteReplicationSetOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReplicationSetOutput",
-}) as any as S.Schema<DeleteReplicationSetOutput>;
+export const DeleteReplicationSetOutput =
+  EmptyChatChannel as any as S.Schema<DeleteReplicationSetOutput>;
 export type PolicyId = string;
 export interface DeleteResourcePolicyInput {
   resourceArn: string;
@@ -510,9 +509,8 @@ export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyInput",
 }) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyOutput {}
-export const DeleteResourcePolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyOutput",
-}) as any as S.Schema<DeleteResourcePolicyOutput>;
+export const DeleteResourcePolicyOutput =
+  EmptyChatChannel as any as S.Schema<DeleteResourcePolicyOutput>;
 export interface DeleteResponsePlanInput {
   arn: string;
 }
@@ -522,9 +520,8 @@ export const DeleteResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteResponsePlanInput" }) as any as S.Schema<DeleteResponsePlanInput>;
 export interface DeleteResponsePlanOutput {}
-export const DeleteResponsePlanOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResponsePlanOutput",
-}) as any as S.Schema<DeleteResponsePlanOutput>;
+export const DeleteResponsePlanOutput =
+  EmptyChatChannel as any as S.Schema<DeleteResponsePlanOutput>;
 export interface DeleteTimelineEventInput {
   incidentRecordArn: string;
   eventId: string;
@@ -535,9 +532,8 @@ export const DeleteTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTimelineEventInput" }) as any as S.Schema<DeleteTimelineEventInput>;
 export interface DeleteTimelineEventOutput {}
-export const DeleteTimelineEventOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTimelineEventOutput",
-}) as any as S.Schema<DeleteTimelineEventOutput>;
+export const DeleteTimelineEventOutput =
+  EmptyChatChannel as any as S.Schema<DeleteTimelineEventOutput>;
 export interface GetIncidentRecordInput {
   arn: string;
 }
@@ -803,7 +799,7 @@ export const ListIncidentFindingsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListIncidentFindingsOutput",
 }) as any as S.Schema<ListIncidentFindingsOutput>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = FindingIdList as any as S.Schema<StringList>;
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type AttributeValueList =
@@ -959,7 +955,7 @@ export const ListReplicationSetsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListReplicationSetsInput" }) as any as S.Schema<ListReplicationSetsInput>;
 export type ReplicationSetArnList = string[];
-export const ReplicationSetArnList = /*@__PURE__*/ S.Array(S.String);
+export const ReplicationSetArnList = FindingIdList as any as S.Schema<ReplicationSetArnList>;
 export interface ListReplicationSetsOutput {
   replicationSetArns: string[];
   nextToken?: string;
@@ -1126,11 +1122,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = EmptyChatChannel as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = FindingIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1144,9 +1138,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = EmptyChatChannel as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeletionProtectionInput {
   arn: string;
   deletionProtected: boolean;
@@ -1171,9 +1163,8 @@ export const UpdateDeletionProtectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDeletionProtectionInput",
 }) as any as S.Schema<UpdateDeletionProtectionInput>;
 export interface UpdateDeletionProtectionOutput {}
-export const UpdateDeletionProtectionOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDeletionProtectionOutput",
-}) as any as S.Schema<UpdateDeletionProtectionOutput>;
+export const UpdateDeletionProtectionOutput =
+  EmptyChatChannel as any as S.Schema<UpdateDeletionProtectionOutput>;
 export interface UpdateIncidentRecordInput {
   clientToken?: string;
   arn: string;
@@ -1201,9 +1192,8 @@ export const UpdateIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateIncidentRecordInput",
 }) as any as S.Schema<UpdateIncidentRecordInput>;
 export interface UpdateIncidentRecordOutput {}
-export const UpdateIncidentRecordOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateIncidentRecordOutput",
-}) as any as S.Schema<UpdateIncidentRecordOutput>;
+export const UpdateIncidentRecordOutput =
+  EmptyChatChannel as any as S.Schema<UpdateIncidentRecordOutput>;
 export type RelatedItemsUpdate =
   | { itemToAdd: RelatedItem; itemToRemove?: never }
   | { itemToAdd?: never; itemToRemove: ItemIdentifier };
@@ -1226,9 +1216,8 @@ export const UpdateRelatedItemsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRelatedItemsInput" }) as any as S.Schema<UpdateRelatedItemsInput>;
 export interface UpdateRelatedItemsOutput {}
-export const UpdateRelatedItemsOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRelatedItemsOutput",
-}) as any as S.Schema<UpdateRelatedItemsOutput>;
+export const UpdateRelatedItemsOutput =
+  EmptyChatChannel as any as S.Schema<UpdateRelatedItemsOutput>;
 export interface AddRegionAction {
   regionName: string;
   sseKmsKeyId?: string;
@@ -1268,9 +1257,8 @@ export const UpdateReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateReplicationSetInput",
 }) as any as S.Schema<UpdateReplicationSetInput>;
 export interface UpdateReplicationSetOutput {}
-export const UpdateReplicationSetOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateReplicationSetOutput",
-}) as any as S.Schema<UpdateReplicationSetOutput>;
+export const UpdateReplicationSetOutput =
+  EmptyChatChannel as any as S.Schema<UpdateReplicationSetOutput>;
 export type TagMapUpdate = { [key: string]: string | undefined };
 export const TagMapUpdate = /*@__PURE__*/ S.Record(
   S.String,
@@ -1311,9 +1299,8 @@ export const UpdateResponsePlanInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateResponsePlanInput" }) as any as S.Schema<UpdateResponsePlanInput>;
 export interface UpdateResponsePlanOutput {}
-export const UpdateResponsePlanOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateResponsePlanOutput",
-}) as any as S.Schema<UpdateResponsePlanOutput>;
+export const UpdateResponsePlanOutput =
+  EmptyChatChannel as any as S.Schema<UpdateResponsePlanOutput>;
 export interface UpdateTimelineEventInput {
   clientToken?: string;
   incidentRecordArn: string;
@@ -1337,9 +1324,8 @@ export const UpdateTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateTimelineEventInput" }) as any as S.Schema<UpdateTimelineEventInput>;
 export interface UpdateTimelineEventOutput {}
-export const UpdateTimelineEventOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTimelineEventOutput",
-}) as any as S.Schema<UpdateTimelineEventOutput>;
+export const UpdateTimelineEventOutput =
+  EmptyChatChannel as any as S.Schema<UpdateTimelineEventOutput>;
 export type ExceptionMessage = string;
 export type ResourceType = string;
 export type ServiceCode = string;

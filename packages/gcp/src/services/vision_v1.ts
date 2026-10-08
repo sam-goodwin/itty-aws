@@ -158,7 +158,7 @@ export type FeatureList = Array<Feature>;
 export const FeatureList = /*@__PURE__*/ S.Array(Feature) as any as S.Schema<FeatureList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** Parameters for crop hints annotation request. */
 export interface CropHintsParams {
@@ -1607,11 +1607,7 @@ export interface GcsDestination {
   /** Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs directory. In either case, the uri should be unique because in order to get all of the output files, you will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The output files will be created in gs://bucket-name/some/location/ and the names of the output files could be anything because there was no filename prefix specified. If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded files. */
   uri?: string;
 }
-export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "GcsDestination" }) as any as S.Schema<GcsDestination>;
+export const GcsDestination = GcsSource as any as S.Schema<GcsDestination>;
 
 /** The desired output location and metadata. */
 export interface OutputConfig {
@@ -1838,9 +1834,7 @@ export const AsyncBatchAnnotateProjectsLocationsImagesRequest = /*@__PURE__*/ S.
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = Empty as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -2471,13 +2465,8 @@ export interface RemoveProductFromProductSetRequest {
   /** Required. The resource name for the Product to be removed from this ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` */
   product?: string;
 }
-export const RemoveProductFromProductSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    product: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveProductFromProductSetRequest",
-}) as any as S.Schema<RemoveProductFromProductSetRequest>;
+export const RemoveProductFromProductSetRequest =
+  AddProductToProductSetRequest as any as S.Schema<RemoveProductFromProductSetRequest>;
 
 export interface RemoveProductProjectsLocationsProductSetsRequest {
   /** Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */

@@ -63,10 +63,8 @@ export const DiagnosticResourcePropertiesInputGlobalParametersMap = /*@__PURE__*
 
 /** Additional parameters required to invoke the solutionId. */
 export type DiagnosticInvocationAdditionalParametersMap = { [key: string]: string | undefined };
-export const DiagnosticInvocationAdditionalParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiagnosticInvocationAdditionalParametersMap>;
+export const DiagnosticInvocationAdditionalParametersMap =
+  DiagnosticResourcePropertiesInputGlobalParametersMap as any as S.Schema<DiagnosticInvocationAdditionalParametersMap>;
 
 /** Solution Invocation with additional params needed for invocation. */
 export interface DiagnosticInvocation {
@@ -163,16 +161,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Global parameters that can be passed to all solutionIds. */
 export type DiagnosticResourcePropertiesGlobalParametersMap = { [key: string]: string | undefined };
-export const DiagnosticResourcePropertiesGlobalParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DiagnosticResourcePropertiesGlobalParametersMap>;
+export const DiagnosticResourcePropertiesGlobalParametersMap =
+  DiagnosticResourcePropertiesInputGlobalParametersMap as any as S.Schema<DiagnosticResourcePropertiesGlobalParametersMap>;
 
 /** SolutionIds that are needed to be invoked. */
 export type DiagnosticResourcePropertiesInsightsList = Array<DiagnosticInvocation>;
-export const DiagnosticResourcePropertiesInsightsList = /*@__PURE__*/ S.Array(
-  DiagnosticInvocation,
-) as any as S.Schema<DiagnosticResourcePropertiesInsightsList>;
+export const DiagnosticResourcePropertiesInsightsList =
+  DiagnosticResourcePropertiesInputInsightsList as any as S.Schema<DiagnosticResourcePropertiesInsightsList>;
 
 /** Status of diagnostic provisioning. */
 export type DiagnosticResourcePropertiesProvisioningState =
@@ -345,15 +340,8 @@ export interface GetDiagnosticResponse {
   /** Diagnostic Resource properties. */
   properties?: DiagnosticResourceProperties;
 }
-export const GetDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DiagnosticResourceProperties),
-  }),
-).annotate({ identifier: "GetDiagnosticResponse" }) as any as S.Schema<GetDiagnosticResponse>;
+export const GetDiagnosticResponse =
+  CreateDiagnosticResponse as any as S.Schema<GetDiagnosticResponse>;
 
 export interface ListDiscoverySolutionRequest {
   /** This is an extension resource provider and only resource level extension is supported at the moment. */

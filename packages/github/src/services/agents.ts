@@ -71,11 +71,8 @@ export const AddSelectedRepoToOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddSelectedRepoToOrgVariableRequest>;
 
 export interface AddSelectedRepoToOrgVariableResponse {}
-export const AddSelectedRepoToOrgVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddSelectedRepoToOrgVariableResponse",
-}) as any as S.Schema<AddSelectedRepoToOrgVariableResponse>;
+export const AddSelectedRepoToOrgVariableResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<AddSelectedRepoToOrgVariableResponse>;
 
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type CreateOrgVariableRequestVisibility = "all" | "private" | "selected";
@@ -122,9 +119,8 @@ export const CreateOrUpdateOrgSecretRequestVisibility = S.String;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
+export const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList =
+  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
 
 export interface CreateOrUpdateOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -154,11 +150,8 @@ export const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateOrgSecretRequest>;
 
 export type CreateOrUpdateOrgSecretResponse = unknown;
-export const CreateOrUpdateOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateOrUpdateOrgSecretResponse",
-}) as any as S.Schema<CreateOrUpdateOrgSecretResponse>;
+export const CreateOrUpdateOrgSecretResponse =
+  CreateOrgVariableResponse as any as S.Schema<CreateOrUpdateOrgSecretResponse>;
 
 export interface CreateOrUpdateRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -187,11 +180,8 @@ export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
 
 export type CreateOrUpdateRepoSecretResponse = unknown;
-export const CreateOrUpdateRepoSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateOrUpdateRepoSecretResponse",
-}) as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
+export const CreateOrUpdateRepoSecretResponse =
+  CreateOrgVariableResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
 
 export interface CreateRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -215,11 +205,8 @@ export const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRepoVariableRequest>;
 
 export type CreateRepoVariableResponse = unknown;
-export const CreateRepoVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateRepoVariableResponse",
-}) as any as S.Schema<CreateRepoVariableResponse>;
+export const CreateRepoVariableResponse =
+  CreateOrgVariableResponse as any as S.Schema<CreateRepoVariableResponse>;
 
 export interface DeleteOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -253,9 +240,8 @@ export const DeleteOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgVariableRequest" }) as any as S.Schema<DeleteOrgVariableRequest>;
 
 export interface DeleteOrgVariableResponse {}
-export const DeleteOrgVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgVariableResponse",
-}) as any as S.Schema<DeleteOrgVariableResponse>;
+export const DeleteOrgVariableResponse =
+  DeleteOrgSecretResponse as any as S.Schema<DeleteOrgVariableResponse>;
 
 export interface DeleteRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -280,9 +266,8 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoSecretResponse",
-}) as any as S.Schema<DeleteRepoSecretResponse>;
+export const DeleteRepoSecretResponse =
+  DeleteOrgSecretResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface DeleteRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -305,9 +290,8 @@ export const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepoVariableRequest>;
 
 export interface DeleteRepoVariableResponse {}
-export const DeleteRepoVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoVariableResponse",
-}) as any as S.Schema<DeleteRepoVariableResponse>;
+export const DeleteRepoVariableResponse =
+  DeleteOrgSecretResponse as any as S.Schema<DeleteRepoVariableResponse>;
 
 export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
@@ -679,9 +663,8 @@ export const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoSecretsRequest" }) as any as S.Schema<ListRepoSecretsRequest>;
 
 export type ListRepoSecretsResponseSecretsList = Array<ActionsSecret>;
-export const ListRepoSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
-  ActionsSecret,
-) as any as S.Schema<ListRepoSecretsResponseSecretsList>;
+export const ListRepoSecretsResponseSecretsList =
+  ListRepoOrganizationSecretsResponseSecretsList as any as S.Schema<ListRepoSecretsResponseSecretsList>;
 
 export interface ListRepoSecretsResponse {
   total_count: number;
@@ -714,22 +697,15 @@ export const ListRepoVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoVariablesRequest" }) as any as S.Schema<ListRepoVariablesRequest>;
 
 export type ListRepoVariablesResponseVariablesList = Array<ActionsVariable>;
-export const ListRepoVariablesResponseVariablesList = /*@__PURE__*/ S.Array(
-  ActionsVariable,
-) as any as S.Schema<ListRepoVariablesResponseVariablesList>;
+export const ListRepoVariablesResponseVariablesList =
+  ListRepoOrganizationVariablesResponseVariablesList as any as S.Schema<ListRepoVariablesResponseVariablesList>;
 
 export interface ListRepoVariablesResponse {
   total_count: number;
   variables: ListRepoVariablesResponseVariablesList;
 }
-export const ListRepoVariablesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    variables: ListRepoVariablesResponseVariablesList,
-  }),
-).annotate({
-  identifier: "ListRepoVariablesResponse",
-}) as any as S.Schema<ListRepoVariablesResponse>;
+export const ListRepoVariablesResponse =
+  ListRepoOrganizationVariablesResponse as any as S.Schema<ListRepoVariablesResponse>;
 
 export interface ListSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1332,22 +1308,15 @@ export const ListSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListSelectedReposForOrgVariableRequest>;
 
 export type ListSelectedReposForOrgVariableResponseRepositoriesList = Array<MinimalRepository>;
-export const ListSelectedReposForOrgVariableResponseRepositoriesList = /*@__PURE__*/ S.Array(
-  MinimalRepository,
-) as any as S.Schema<ListSelectedReposForOrgVariableResponseRepositoriesList>;
+export const ListSelectedReposForOrgVariableResponseRepositoriesList =
+  ListSelectedReposForOrgSecretResponseRepositoriesList as any as S.Schema<ListSelectedReposForOrgVariableResponseRepositoriesList>;
 
 export interface ListSelectedReposForOrgVariableResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgVariableResponseRepositoriesList;
 }
-export const ListSelectedReposForOrgVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    repositories: ListSelectedReposForOrgVariableResponseRepositoriesList,
-  }),
-).annotate({
-  identifier: "ListSelectedReposForOrgVariableResponse",
-}) as any as S.Schema<ListSelectedReposForOrgVariableResponse>;
+export const ListSelectedReposForOrgVariableResponse =
+  ListSelectedReposForOrgSecretResponse as any as S.Schema<ListSelectedReposForOrgVariableResponse>;
 
 export interface RemoveSelectedRepoFromOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1373,11 +1342,8 @@ export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
 
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-export const RemoveSelectedRepoFromOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveSelectedRepoFromOrgSecretResponse",
-}) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
+export const RemoveSelectedRepoFromOrgSecretResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
 
 export interface RemoveSelectedRepoFromOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1403,17 +1369,13 @@ export const RemoveSelectedRepoFromOrgVariableRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemoveSelectedRepoFromOrgVariableRequest>;
 
 export interface RemoveSelectedRepoFromOrgVariableResponse {}
-export const RemoveSelectedRepoFromOrgVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveSelectedRepoFromOrgVariableResponse",
-}) as any as S.Schema<RemoveSelectedRepoFromOrgVariableResponse>;
+export const RemoveSelectedRepoFromOrgVariableResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgVariableResponse>;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/agents/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
+export const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
+  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
 
 export interface SetSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1440,17 +1402,13 @@ export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
 
 export interface SetSelectedReposForOrgSecretResponse {}
-export const SetSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetSelectedReposForOrgSecretResponse",
-}) as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
+export const SetSelectedReposForOrgSecretResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
 
 /** The IDs of the repositories that can access the organization variable. */
 export type SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-export const SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList>;
+export const SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList =
+  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList>;
 
 export interface SetSelectedReposForOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1473,11 +1431,8 @@ export const SetSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SetSelectedReposForOrgVariableRequest>;
 
 export interface SetSelectedReposForOrgVariableResponse {}
-export const SetSelectedReposForOrgVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetSelectedReposForOrgVariableResponse",
-}) as any as S.Schema<SetSelectedReposForOrgVariableResponse>;
+export const SetSelectedReposForOrgVariableResponse =
+  AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgVariableResponse>;
 
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type UpdateOrgVariableRequestVisibility = "all" | "private" | "selected";
@@ -1485,9 +1440,8 @@ export const UpdateOrgVariableRequestVisibility = S.String;
 
 /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
 export type UpdateOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-export const UpdateOrgVariableRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrgVariableRequestSelectedRepositoryIdsList>;
+export const UpdateOrgVariableRequestSelectedRepositoryIdsList =
+  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<UpdateOrgVariableRequestSelectedRepositoryIdsList>;
 
 export interface UpdateOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1512,9 +1466,8 @@ export const UpdateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateOrgVariableRequest" }) as any as S.Schema<UpdateOrgVariableRequest>;
 
 export interface UpdateOrgVariableResponse {}
-export const UpdateOrgVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateOrgVariableResponse",
-}) as any as S.Schema<UpdateOrgVariableResponse>;
+export const UpdateOrgVariableResponse =
+  DeleteOrgSecretResponse as any as S.Schema<UpdateOrgVariableResponse>;
 
 export interface UpdateRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1540,9 +1493,8 @@ export const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRepoVariableRequest>;
 
 export interface UpdateRepoVariableResponse {}
-export const UpdateRepoVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRepoVariableResponse",
-}) as any as S.Schema<UpdateRepoVariableResponse>;
+export const UpdateRepoVariableResponse =
+  DeleteOrgSecretResponse as any as S.Schema<UpdateRepoVariableResponse>;
 
 export type AddSelectedRepoToOrgSecretError = Conflict | GithubOpError;
 /** Add selected repository to an organization secret Adds a repository to an organization secret when the `visibility` for repository access is set to `selected`. For more information about setting the visibility, see [Create or update an organization secret](https://docs.github.com/rest/agents/secrets#create-or-update-an-organization-secret). Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. */

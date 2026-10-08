@@ -398,9 +398,8 @@ export const PullRequestAssigneesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PullRequestAssigneesList>;
 
 export type PullRequestRequestedReviewersList = Array<NullableSimpleUser>;
-export const PullRequestRequestedReviewersList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<PullRequestRequestedReviewersList>;
+export const PullRequestRequestedReviewersList =
+  PullRequestAssigneesList as any as S.Schema<PullRequestRequestedReviewersList>;
 
 /** The ownership type of the team */
 export type TeamSimpleType = "enterprise" | "organization";
@@ -1009,9 +1008,8 @@ export const PullRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of pull request numbers forming the stack from bottom to top. */
 export type CreatePullRequestStackRequestPullRequestsList = Array<number>;
-export const CreatePullRequestStackRequestPullRequestsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreatePullRequestStackRequestPullRequestsList>;
+export const CreatePullRequestStackRequestPullRequestsList =
+  AddPullRequestStackRequestPullRequestsList as any as S.Schema<CreatePullRequestStackRequestPullRequestsList>;
 
 export interface CreatePullRequestStackRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1035,9 +1033,8 @@ export type CreatePullRequestStackResponseBase = AddPullRequestStackResponseBase
 export const CreatePullRequestStackResponseBase = AddPullRequestStackResponseBase;
 
 export type CreatePullRequestStackResponsePullRequestsList = Array<PullRequestStackPullRequest>;
-export const CreatePullRequestStackResponsePullRequestsList = /*@__PURE__*/ S.Array(
-  PullRequestStackPullRequest,
-) as any as S.Schema<CreatePullRequestStackResponsePullRequestsList>;
+export const CreatePullRequestStackResponsePullRequestsList =
+  AddPullRequestStackResponsePullRequestsList as any as S.Schema<CreatePullRequestStackResponsePullRequestsList>;
 
 export interface CreatePullRequestStackResponse {
   id: number;
@@ -1050,20 +1047,8 @@ export interface CreatePullRequestStackResponse {
   created_at: string;
   pull_requests: CreatePullRequestStackResponsePullRequestsList;
 }
-export const CreatePullRequestStackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    number: S.Number,
-    node_id: S.String,
-    url: S.String,
-    base: AddPullRequestStackResponseBase,
-    open: S.Boolean,
-    created_at: S.String,
-    pull_requests: CreatePullRequestStackResponsePullRequestsList,
-  }),
-).annotate({
-  identifier: "CreatePullRequestStackResponse",
-}) as any as S.Schema<CreatePullRequestStackResponse>;
+export const CreatePullRequestStackResponse =
+  AddPullRequestStackResponse as any as S.Schema<CreatePullRequestStackResponse>;
 
 export interface CreateReplyForReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1483,9 +1468,8 @@ export const DeleteReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReviewCommentRequest>;
 
 export interface DeleteReviewCommentResponse {}
-export const DeleteReviewCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReviewCommentResponse",
-}) as any as S.Schema<DeleteReviewCommentResponse>;
+export const DeleteReviewCommentResponse =
+  CheckIfMergedResponse as any as S.Schema<DeleteReviewCommentResponse>;
 
 export type DismissReviewRequestEvent = "DISMISS";
 export const DismissReviewRequestEvent = S.String;
@@ -1677,9 +1661,8 @@ export type GetPullRequestStackResponseBase = AddPullRequestStackResponseBase;
 export const GetPullRequestStackResponseBase = AddPullRequestStackResponseBase;
 
 export type GetPullRequestStackResponsePullRequestsList = Array<PullRequestStackPullRequest>;
-export const GetPullRequestStackResponsePullRequestsList = /*@__PURE__*/ S.Array(
-  PullRequestStackPullRequest,
-) as any as S.Schema<GetPullRequestStackResponsePullRequestsList>;
+export const GetPullRequestStackResponsePullRequestsList =
+  AddPullRequestStackResponsePullRequestsList as any as S.Schema<GetPullRequestStackResponsePullRequestsList>;
 
 export interface GetPullRequestStackResponse {
   id: number;
@@ -1692,20 +1675,8 @@ export interface GetPullRequestStackResponse {
   created_at: string;
   pull_requests: GetPullRequestStackResponsePullRequestsList;
 }
-export const GetPullRequestStackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    number: S.Number,
-    node_id: S.String,
-    url: S.String,
-    base: AddPullRequestStackResponseBase,
-    open: S.Boolean,
-    created_at: S.String,
-    pull_requests: GetPullRequestStackResponsePullRequestsList,
-  }),
-).annotate({
-  identifier: "GetPullRequestStackResponse",
-}) as any as S.Schema<GetPullRequestStackResponse>;
+export const GetPullRequestStackResponse =
+  AddPullRequestStackResponse as any as S.Schema<GetPullRequestStackResponse>;
 
 export interface GetReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1825,14 +1796,12 @@ export const PullRequestSimpleLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PullRequestSimpleLabelsList>;
 
 export type PullRequestSimpleAssigneesList = Array<NullableSimpleUser>;
-export const PullRequestSimpleAssigneesList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<PullRequestSimpleAssigneesList>;
+export const PullRequestSimpleAssigneesList =
+  PullRequestAssigneesList as any as S.Schema<PullRequestSimpleAssigneesList>;
 
 export type PullRequestSimpleRequestedReviewersList = Array<NullableSimpleUser>;
-export const PullRequestSimpleRequestedReviewersList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
+export const PullRequestSimpleRequestedReviewersList =
+  PullRequestAssigneesList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
 
 export interface TeamPermissions {
   pull: boolean;
@@ -2586,14 +2555,12 @@ export const ListRequestedReviewersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRequestedReviewersRequest>;
 
 export type PullRequestReviewRequestUsersList = Array<NullableSimpleUser>;
-export const PullRequestReviewRequestUsersList = /*@__PURE__*/ S.Array(
-  NullableSimpleUser,
-) as any as S.Schema<PullRequestReviewRequestUsersList>;
+export const PullRequestReviewRequestUsersList =
+  PullRequestAssigneesList as any as S.Schema<PullRequestReviewRequestUsersList>;
 
 export type PullRequestReviewRequestTeamsList = Array<Team>;
-export const PullRequestReviewRequestTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<PullRequestReviewRequestTeamsList>;
+export const PullRequestReviewRequestTeamsList =
+  PullRequestSimpleRequestedTeamsList as any as S.Schema<PullRequestReviewRequestTeamsList>;
 
 /** Pull Request Review Request */
 export interface PullRequestReviewRequest {
@@ -2696,16 +2663,12 @@ export const ListReviewCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReviewCommentsForRepoRequest>;
 
 export type ListReviewCommentsForRepoResponseBodyList = Array<PullRequestReviewComment>;
-export const ListReviewCommentsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
-  PullRequestReviewComment,
-) as any as S.Schema<ListReviewCommentsForRepoResponseBodyList>;
+export const ListReviewCommentsForRepoResponseBodyList =
+  ListReviewCommentsResponseBodyList as any as S.Schema<ListReviewCommentsForRepoResponseBodyList>;
 
 export type ListReviewCommentsForRepoResponse = ListReviewCommentsForRepoResponseBodyList;
-export const ListReviewCommentsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
-  ListReviewCommentsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListReviewCommentsForRepoResponse",
-}) as any as S.Schema<ListReviewCommentsForRepoResponse>;
+export const ListReviewCommentsForRepoResponse =
+  ListReviewCommentsResponse as any as S.Schema<ListReviewCommentsForRepoResponse>;
 
 export interface ListReviewsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2865,9 +2828,8 @@ export type PullRequestStacksUnstackResponseBase = AddPullRequestStackResponseBa
 export const PullRequestStacksUnstackResponseBase = AddPullRequestStackResponseBase;
 
 export type PullRequestStacksUnstackResponsePullRequestsList = Array<PullRequestStackPullRequest>;
-export const PullRequestStacksUnstackResponsePullRequestsList = /*@__PURE__*/ S.Array(
-  PullRequestStackPullRequest,
-) as any as S.Schema<PullRequestStacksUnstackResponsePullRequestsList>;
+export const PullRequestStacksUnstackResponsePullRequestsList =
+  AddPullRequestStackResponsePullRequestsList as any as S.Schema<PullRequestStacksUnstackResponsePullRequestsList>;
 
 export interface PullRequestStacksUnstackResponse {
   id: number;
@@ -2880,32 +2842,18 @@ export interface PullRequestStacksUnstackResponse {
   created_at: string;
   pull_requests: PullRequestStacksUnstackResponsePullRequestsList;
 }
-export const PullRequestStacksUnstackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    number: S.Number,
-    node_id: S.String,
-    url: S.String,
-    base: AddPullRequestStackResponseBase,
-    open: S.Boolean,
-    created_at: S.String,
-    pull_requests: PullRequestStacksUnstackResponsePullRequestsList,
-  }),
-).annotate({
-  identifier: "PullRequestStacksUnstackResponse",
-}) as any as S.Schema<PullRequestStacksUnstackResponse>;
+export const PullRequestStacksUnstackResponse =
+  AddPullRequestStackResponse as any as S.Schema<PullRequestStacksUnstackResponse>;
 
 /** An array of user `login`s that will be removed. */
 export type RemoveRequestedReviewersRequestReviewersList = Array<string>;
-export const RemoveRequestedReviewersRequestReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveRequestedReviewersRequestReviewersList>;
+export const RemoveRequestedReviewersRequestReviewersList =
+  RepositoryTopicsList as any as S.Schema<RemoveRequestedReviewersRequestReviewersList>;
 
 /** An array of team `slug`s that will be removed. */
 export type RemoveRequestedReviewersRequestTeamReviewersList = Array<string>;
-export const RemoveRequestedReviewersRequestTeamReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveRequestedReviewersRequestTeamReviewersList>;
+export const RemoveRequestedReviewersRequestTeamReviewersList =
+  RepositoryTopicsList as any as S.Schema<RemoveRequestedReviewersRequestTeamReviewersList>;
 
 export interface RemoveRequestedReviewersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2939,15 +2887,13 @@ export const RemoveRequestedReviewersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of user `login`s that will be requested. */
 export type RequestReviewersRequestReviewersList = Array<string>;
-export const RequestReviewersRequestReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequestReviewersRequestReviewersList>;
+export const RequestReviewersRequestReviewersList =
+  RepositoryTopicsList as any as S.Schema<RequestReviewersRequestReviewersList>;
 
 /** An array of team `slug`s that will be requested. */
 export type RequestReviewersRequestTeamReviewersList = Array<string>;
-export const RequestReviewersRequestTeamReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequestReviewersRequestTeamReviewersList>;
+export const RequestReviewersRequestTeamReviewersList =
+  RepositoryTopicsList as any as S.Schema<RequestReviewersRequestTeamReviewersList>;
 
 export interface RequestReviewersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2979,15 +2925,13 @@ export const RequestReviewersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of user `login`s whose reviews will be rerequested. */
 export type RerequestReviewersRequestReviewersList = Array<string>;
-export const RerequestReviewersRequestReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RerequestReviewersRequestReviewersList>;
+export const RerequestReviewersRequestReviewersList =
+  RepositoryTopicsList as any as S.Schema<RerequestReviewersRequestReviewersList>;
 
 /** An array of team `slug`s whose reviews will be rerequested. */
 export type RerequestReviewersRequestTeamReviewersList = Array<string>;
-export const RerequestReviewersRequestTeamReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RerequestReviewersRequestTeamReviewersList>;
+export const RerequestReviewersRequestTeamReviewersList =
+  RepositoryTopicsList as any as S.Schema<RerequestReviewersRequestTeamReviewersList>;
 
 export interface RerequestReviewersRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3115,9 +3059,7 @@ export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateBranchRequest" }) as any as S.Schema<UpdateBranchRequest>;
 
 export interface UpdateBranchResponse {}
-export const UpdateBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateBranchResponse",
-}) as any as S.Schema<UpdateBranchResponse>;
+export const UpdateBranchResponse = CheckIfMergedResponse as any as S.Schema<UpdateBranchResponse>;
 
 export interface UpdateReviewRequest {
   /** The account owner of the repository. The name is not case sensitive. */

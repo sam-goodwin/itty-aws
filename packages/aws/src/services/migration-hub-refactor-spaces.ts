@@ -851,10 +851,7 @@ export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
 export type PathResourceToIdKey = string;
 export type PathResourceToIdValue = string;
 export type PathResourceToId = { [key: string]: string | undefined };
-export const PathResourceToId = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const PathResourceToId = AdditionalDetails as any as S.Schema<PathResourceToId>;
 export interface GetRouteResponse {
   RouteId?: string;
   Arn?: string;
@@ -1006,17 +1003,8 @@ export interface ApiGatewayProxySummary {
   EndpointType?: string;
   StageName?: string;
 }
-export const ApiGatewayProxySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProxyUrl: S.optional(S.String),
-    ApiGatewayId: S.optional(S.String),
-    VpcLinkId: S.optional(S.String),
-    NlbArn: S.optional(S.String),
-    NlbName: S.optional(S.String),
-    EndpointType: S.optional(S.String),
-    StageName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ApiGatewayProxySummary" }) as any as S.Schema<ApiGatewayProxySummary>;
+export const ApiGatewayProxySummary =
+  ApiGatewayProxyConfig as any as S.Schema<ApiGatewayProxySummary>;
 export interface ApplicationSummary {
   Name?: string;
   Arn?: string;
@@ -1033,24 +1021,7 @@ export interface ApplicationSummary {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Arn: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    CreatedByAccountId: S.optional(S.String),
-    ApplicationId: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    VpcId: S.optional(S.String),
-    ProxyType: S.optional(S.String),
-    ApiGatewayProxy: S.optional(ApiGatewayProxySummary),
-    State: S.optional(S.String),
-    Tags: S.optional(TagMap),
-    Error: S.optional(ErrorResponse),
-    LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ApplicationSummary" }) as any as S.Schema<ApplicationSummary>;
+export const ApplicationSummary = GetApplicationResponse as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaries = ApplicationSummary[];
 export const ApplicationSummaries = /*@__PURE__*/ S.Array(ApplicationSummary);
 export interface ListApplicationsResponse {
@@ -1087,22 +1058,7 @@ export interface EnvironmentSummary {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Description: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    NetworkFabricType: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    TransitGatewayId: S.optional(S.String),
-    State: S.optional(S.String),
-    Tags: S.optional(TagMap),
-    Error: S.optional(ErrorResponse),
-    LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "EnvironmentSummary" }) as any as S.Schema<EnvironmentSummary>;
+export const EnvironmentSummary = GetEnvironmentResponse as any as S.Schema<EnvironmentSummary>;
 export type EnvironmentSummaries = EnvironmentSummary[];
 export const EnvironmentSummaries = /*@__PURE__*/ S.Array(EnvironmentSummary);
 export interface ListEnvironmentsResponse {
@@ -1140,7 +1096,7 @@ export const ListEnvironmentVpcsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnvironmentVpcsRequest>;
 export type CidrBlock = string;
 export type CidrBlocks = string[];
-export const CidrBlocks = /*@__PURE__*/ S.Array(S.String);
+export const CidrBlocks = HttpMethods as any as S.Schema<CidrBlocks>;
 export type Ec2TagValue = string;
 export interface EnvironmentVpc {
   EnvironmentId?: string;
@@ -1219,28 +1175,7 @@ export interface RouteSummary {
   CreatedTime?: Date;
   AppendSourcePath?: boolean;
 }
-export const RouteSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RouteId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    CreatedByAccountId: S.optional(S.String),
-    RouteType: S.optional(S.String),
-    ServiceId: S.optional(S.String),
-    ApplicationId: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    SourcePath: S.optional(S.String),
-    Methods: S.optional(HttpMethods),
-    IncludeChildPaths: S.optional(S.Boolean),
-    PathResourceToId: S.optional(PathResourceToId),
-    State: S.optional(S.String),
-    Tags: S.optional(TagMap),
-    Error: S.optional(ErrorResponse),
-    LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AppendSourcePath: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RouteSummary" }) as any as S.Schema<RouteSummary>;
+export const RouteSummary = GetRouteResponse as any as S.Schema<RouteSummary>;
 export type RouteSummaries = RouteSummary[];
 export const RouteSummaries = /*@__PURE__*/ S.Array(RouteSummary);
 export interface ListRoutesResponse {
@@ -1280,15 +1215,11 @@ export interface UrlEndpointSummary {
   Url?: string;
   HealthUrl?: string;
 }
-export const UrlEndpointSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Url: S.optional(S.String), HealthUrl: S.optional(S.String) }),
-).annotate({ identifier: "UrlEndpointSummary" }) as any as S.Schema<UrlEndpointSummary>;
+export const UrlEndpointSummary = UrlEndpointConfig as any as S.Schema<UrlEndpointSummary>;
 export interface LambdaEndpointSummary {
   Arn?: string;
 }
-export const LambdaEndpointSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "LambdaEndpointSummary" }) as any as S.Schema<LambdaEndpointSummary>;
+export const LambdaEndpointSummary = LambdaEndpointConfig as any as S.Schema<LambdaEndpointSummary>;
 export interface ServiceSummary {
   ServiceId?: string;
   Name?: string;
@@ -1308,27 +1239,7 @@ export interface ServiceSummary {
   LastUpdatedTime?: Date;
   CreatedTime?: Date;
 }
-export const ServiceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Arn: S.optional(S.String),
-    OwnerAccountId: S.optional(S.String),
-    CreatedByAccountId: S.optional(S.String),
-    Description: S.optional(S.String),
-    EnvironmentId: S.optional(S.String),
-    ApplicationId: S.optional(S.String),
-    VpcId: S.optional(S.String),
-    EndpointType: S.optional(S.String),
-    UrlEndpoint: S.optional(UrlEndpointSummary),
-    LambdaEndpoint: S.optional(LambdaEndpointSummary),
-    State: S.optional(S.String),
-    Tags: S.optional(TagMap),
-    Error: S.optional(ErrorResponse),
-    LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ServiceSummary" }) as any as S.Schema<ServiceSummary>;
+export const ServiceSummary = GetServiceResponse as any as S.Schema<ServiceSummary>;
 export type ServiceSummaries = ServiceSummary[];
 export const ServiceSummaries = /*@__PURE__*/ S.Array(ServiceSummary);
 export interface ListServicesResponse {
@@ -1366,9 +1277,8 @@ export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1379,11 +1289,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = HttpMethods as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1397,9 +1306,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateRouteRequest {
   EnvironmentIdentifier: string;
   ApplicationIdentifier: string;
@@ -1434,16 +1342,7 @@ export interface UpdateRouteResponse {
   State?: string;
   LastUpdatedTime?: Date;
 }
-export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RouteId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    ServiceId: S.optional(S.String),
-    ApplicationId: S.optional(S.String),
-    State: S.optional(S.String),
-    LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "UpdateRouteResponse" }) as any as S.Schema<UpdateRouteResponse>;
+export const UpdateRouteResponse = DeleteRouteResponse as any as S.Schema<UpdateRouteResponse>;
 export type RetryAfterSeconds = number;
 export type CreateApplicationError =
   | AccessDeniedException

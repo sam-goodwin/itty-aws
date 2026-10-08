@@ -1342,12 +1342,7 @@ export interface LegacyDisputeProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const LegacyDisputeProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-  }),
-).annotate({ identifier: "LegacyDisputeProduct" }) as any as S.Schema<LegacyDisputeProduct>;
+export const LegacyDisputeProduct = LegacyDisputeCompany as any as S.Schema<LegacyDisputeProduct>;
 
 /** The refund policy document uploaded as dispute evidence. Null if no refund policy has been provided. */
 export type LegacyDisputeRefundPolicyAttachment = LegacyDisputeCancellationPolicyAttachment;

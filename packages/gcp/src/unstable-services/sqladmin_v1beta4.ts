@@ -711,14 +711,8 @@ export interface StopWorkloadReplayContext {
   /** Required. The name of the Cloud SQL instance where the captured workload (SQL queries) is being executed, excluding the project ID (for example, `my-replay-instance`). The instance name must start with a lowercase letter and contain only lowercase letters, numbers, and hyphens. The combined length of `project-ID:instance-name` must be 98 characters or less. */
   replayInstance?: string;
 }
-export const StopWorkloadReplayContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadId: S.optional(S.String),
-    replayInstance: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopWorkloadReplayContext",
-}) as any as S.Schema<StopWorkloadReplayContext>;
+export const StopWorkloadReplayContext =
+  StartWorkloadReplayContext as any as S.Schema<StopWorkloadReplayContext>;
 
 /** The context for the `StartWorkloadCapture` operation, which contains details to start recording the workload (SQL queries) on a Cloud SQL instance. */
 export interface StartWorkloadCaptureContext {
@@ -2076,17 +2070,11 @@ export interface ConnectionPoolFlags {
   /** Required. The name of the flag. */
   name?: string;
 }
-export const ConnectionPoolFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConnectionPoolFlags" }) as any as S.Schema<ConnectionPoolFlags>;
+export const ConnectionPoolFlags = DatabaseFlags as any as S.Schema<ConnectionPoolFlags>;
 
 export type ConnectionPoolFlagsList = Array<ConnectionPoolFlags>;
-export const ConnectionPoolFlagsList = /*@__PURE__*/ S.Array(
-  ConnectionPoolFlags,
-) as any as S.Schema<ConnectionPoolFlagsList>;
+export const ConnectionPoolFlagsList =
+  DatabaseFlagsList as any as S.Schema<ConnectionPoolFlagsList>;
 
 /** The managed connection pooling configuration. */
 export interface ConnectionPoolConfig {
@@ -5978,13 +5966,8 @@ export interface SqlInstancesReleaseSsrsLeaseResponse {
   /** The operation ID. */
   operationId?: string;
 }
-export const SqlInstancesReleaseSsrsLeaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlInstancesReleaseSsrsLeaseResponse",
-}) as any as S.Schema<SqlInstancesReleaseSsrsLeaseResponse>;
+export const SqlInstancesReleaseSsrsLeaseResponse =
+  SqlInstancesAcquireSsrsLeaseResponse as any as S.Schema<SqlInstancesReleaseSsrsLeaseResponse>;
 
 export type RescheduleRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
@@ -6405,12 +6388,7 @@ export interface SyncFlags {
   /** The name of the flag. */
   name?: string;
 }
-export const SyncFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "SyncFlags" }) as any as S.Schema<SyncFlags>;
+export const SyncFlags = DatabaseFlags as any as S.Schema<SyncFlags>;
 
 export type SyncFlagsList = Array<SyncFlags>;
 export const SyncFlagsList = /*@__PURE__*/ S.Array(SyncFlags) as any as S.Schema<SyncFlagsList>;

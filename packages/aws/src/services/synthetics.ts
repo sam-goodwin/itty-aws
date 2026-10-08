@@ -248,10 +248,10 @@ export const CanaryRunConfigInput = /*@__PURE__*/ S.suspend(() =>
 export type MaxSize1024 = number;
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = BlueprintTypes as any as S.Schema<SubnetIds>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = BlueprintTypes as any as S.Schema<SecurityGroupIds>;
 export interface VpcConfigInput {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -479,7 +479,8 @@ export const VpcConfigOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcConfigOutput" }) as any as S.Schema<VpcConfigOutput>;
 export type BaseScreenshotConfigIgnoreCoordinate = string;
 export type BaseScreenshotIgnoreCoordinates = string[];
-export const BaseScreenshotIgnoreCoordinates = /*@__PURE__*/ S.Array(S.String);
+export const BaseScreenshotIgnoreCoordinates =
+  BlueprintTypes as any as S.Schema<BaseScreenshotIgnoreCoordinates>;
 export interface BaseScreenshot {
   ScreenshotName: string;
   IgnoreCoordinates?: string[];
@@ -568,9 +569,7 @@ export const MultiLocationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ArtifactConfigOutput {
   S3Encryption?: S3EncryptionConfig;
 }
-export const ArtifactConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Encryption: S.optional(S3EncryptionConfig) }),
-).annotate({ identifier: "ArtifactConfigOutput" }) as any as S.Schema<ArtifactConfigOutput>;
+export const ArtifactConfigOutput = ArtifactConfigInput as any as S.Schema<ArtifactConfigOutput>;
 export interface DryRunConfigOutput {
   DryRunId?: string;
   LastDryRunExecutionStatus?: string;
@@ -684,9 +683,8 @@ export const DeleteCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/canary/{Name}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteCanaryRequest" }) as any as S.Schema<DeleteCanaryRequest>;
 export interface DeleteCanaryResponse {}
-export const DeleteCanaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCanaryResponse",
-}) as any as S.Schema<DeleteCanaryResponse>;
+export const DeleteCanaryResponse =
+  AssociateResourceResponse as any as S.Schema<DeleteCanaryResponse>;
 export interface DeleteGroupRequest {
   GroupIdentifier: string;
 }
@@ -703,13 +701,13 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse =
+  AssociateResourceResponse as any as S.Schema<DeleteGroupResponse>;
 export type Token = string;
 export type MaxCanaryResults = number;
 export type DescribeCanariesNameFilter = string[];
-export const DescribeCanariesNameFilter = /*@__PURE__*/ S.Array(S.String);
+export const DescribeCanariesNameFilter =
+  BlueprintTypes as any as S.Schema<DescribeCanariesNameFilter>;
 export interface DescribeCanariesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -733,7 +731,8 @@ export const DescribeCanariesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeCanariesResponse" }) as any as S.Schema<DescribeCanariesResponse>;
 export type MaxSize100 = number;
 export type DescribeCanariesLastRunNameFilter = string[];
-export const DescribeCanariesLastRunNameFilter = /*@__PURE__*/ S.Array(S.String);
+export const DescribeCanariesLastRunNameFilter =
+  BlueprintTypes as any as S.Schema<DescribeCanariesLastRunNameFilter>;
 export interface DescribeCanariesLastRunRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -896,9 +895,8 @@ export const DisassociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateResourceRequest",
 }) as any as S.Schema<DisassociateResourceRequest>;
 export interface DisassociateResourceResponse {}
-export const DisassociateResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateResourceResponse",
-}) as any as S.Schema<DisassociateResourceResponse>;
+export const DisassociateResourceResponse =
+  AssociateResourceResponse as any as S.Schema<DisassociateResourceResponse>;
 export interface GetCanaryRequest {
   Name: string;
   DryRunId?: string;
@@ -912,9 +910,7 @@ export const GetCanaryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCanaryResponse {
   Canary?: Canary;
 }
-export const GetCanaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Canary: S.optional(Canary) }),
-).annotate({ identifier: "GetCanaryResponse" }) as any as S.Schema<GetCanaryResponse>;
+export const GetCanaryResponse = CreateCanaryResponse as any as S.Schema<GetCanaryResponse>;
 export type RunType = "CANARY_RUN" | "DRY_RUN" | (string & {});
 export const RunType = S.String;
 
@@ -956,9 +952,7 @@ export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupResponse {
   Group?: Group;
 }
-export const GetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(Group) }),
-).annotate({ identifier: "GetGroupResponse" }) as any as S.Schema<GetGroupResponse>;
+export const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
 export type PaginationToken = string;
 export type MaxGroupResults = number;
 export interface ListAssociatedGroupsRequest {
@@ -1027,7 +1021,7 @@ export const ListGroupResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupResourcesRequest",
 }) as any as S.Schema<ListGroupResourcesRequest>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = BlueprintTypes as any as S.Schema<StringList>;
 export interface ListGroupResourcesResponse {
   Resources?: string[];
   NextToken?: string;
@@ -1081,9 +1075,8 @@ export const StartCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartCanaryRequest" }) as any as S.Schema<StartCanaryRequest>;
 export interface StartCanaryResponse {}
-export const StartCanaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCanaryResponse",
-}) as any as S.Schema<StartCanaryResponse>;
+export const StartCanaryResponse =
+  AssociateResourceResponse as any as S.Schema<StartCanaryResponse>;
 export interface VisualReferenceInput {
   BaseScreenshots?: BaseScreenshot[];
   BaseCanaryRunId: string;
@@ -1158,9 +1151,7 @@ export const StopCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopCanaryRequest" }) as any as S.Schema<StopCanaryRequest>;
 export interface StopCanaryResponse {}
-export const StopCanaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCanaryResponse",
-}) as any as S.Schema<StopCanaryResponse>;
+export const StopCanaryResponse = AssociateResourceResponse as any as S.Schema<StopCanaryResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1171,11 +1162,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AssociateResourceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = BlueprintTypes as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1189,11 +1179,10 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssociateResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type RemoveReplicaLocations = string[];
-export const RemoveReplicaLocations = /*@__PURE__*/ S.Array(S.String);
+export const RemoveReplicaLocations = BlueprintTypes as any as S.Schema<RemoveReplicaLocations>;
 export interface UpdateCanaryRequest {
   Name: string;
   Code?: CanaryCodeInput;
@@ -1239,9 +1228,8 @@ export const UpdateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "PATCH", uri: "/canary/{Name}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateCanaryRequest" }) as any as S.Schema<UpdateCanaryRequest>;
 export interface UpdateCanaryResponse {}
-export const UpdateCanaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCanaryResponse",
-}) as any as S.Schema<UpdateCanaryResponse>;
+export const UpdateCanaryResponse =
+  AssociateResourceResponse as any as S.Schema<UpdateCanaryResponse>;
 export type ErrorMessage = string;
 export type AssociateResourceError =
   | ConflictException

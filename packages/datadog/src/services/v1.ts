@@ -113,9 +113,8 @@ export const CheckCanDeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Monitor IDs that can be safely deleted. */
 export type CheckCanDeleteMonitorResponseDataOkList = Array<number>;
-export const CheckCanDeleteMonitorResponseDataOkList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CheckCanDeleteMonitorResponseDataOkList>;
+export const CheckCanDeleteMonitorResponseDataOkList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<CheckCanDeleteMonitorResponseDataOkList>;
 
 /** Wrapper object with the list of monitor IDs. */
 export interface CheckCanDeleteMonitorResponseData {
@@ -172,9 +171,8 @@ export const CheckCanDeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of SLO IDs that can be safely deleted. */
 export type CheckCanDeleteSLOResponseDataOkList = Array<string>;
-export const CheckCanDeleteSLOResponseDataOkList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckCanDeleteSLOResponseDataOkList>;
+export const CheckCanDeleteSLOResponseDataOkList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CheckCanDeleteSLOResponseDataOkList>;
 
 /** An array of service level objective objects. */
 export interface CheckCanDeleteSLOResponseData {
@@ -292,9 +290,8 @@ export const ApplicationKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type CreateAzureIntegrationRequestErrorsList = Array<string>;
-export const CreateAzureIntegrationRequestErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAzureIntegrationRequestErrorsList>;
+export const CreateAzureIntegrationRequestErrorsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateAzureIntegrationRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource provider. */
 export interface ResourceProviderConfig {
@@ -403,11 +400,8 @@ export interface OrganizationSubscription {
   /** The subscription type. Types available are `trial`, `free`, and `pro`. */
   type?: string;
 }
-export const OrganizationSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "OrganizationSubscription" }) as any as S.Schema<OrganizationSubscription>;
+export const OrganizationSubscription =
+  OrganizationBilling as any as S.Schema<OrganizationSubscription>;
 
 export interface CreateChildOrgRequest {
   billing?: OrganizationBilling;
@@ -440,9 +434,8 @@ export const AccessRole = S.String;
 
 /** List of domains where the SAML automated user creation is enabled. */
 export type OrganizationSettingsSamlAutocreateUsersDomainsDomainsList = Array<string>;
-export const OrganizationSettingsSamlAutocreateUsersDomainsDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationSettingsSamlAutocreateUsersDomainsDomainsList>;
+export const OrganizationSettingsSamlAutocreateUsersDomainsDomainsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<OrganizationSettingsSamlAutocreateUsersDomainsDomainsList>;
 
 /** Has two properties, `enabled` (boolean) and `domains`, which is a list of domains without the @ symbol. */
 export interface OrganizationSettingsSamlAutocreateUsersDomains {
@@ -478,13 +471,8 @@ export interface OrganizationSettingsSamlStrictMode {
   /** Whether or not the SAML strict mode is enabled. If true, all users must log in with SAML. Learn more on the [SAML Strict documentation](https://docs.datadoghq.com/account_management/saml/#saml-strict). */
   enabled?: boolean;
 }
-export const OrganizationSettingsSamlStrictMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OrganizationSettingsSamlStrictMode",
-}) as any as S.Schema<OrganizationSettingsSamlStrictMode>;
+export const OrganizationSettingsSamlStrictMode =
+  OrganizationSettingsSamlIdpInitiatedLogin as any as S.Schema<OrganizationSettingsSamlStrictMode>;
 
 /** A JSON array of settings. */
 export interface OrganizationSettings {
@@ -648,9 +636,8 @@ export const DashboardLayoutType = S.String;
 
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type CreateDashboardRequestNotifyListList = Array<string>;
-export const CreateDashboardRequestNotifyListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardRequestNotifyListList>;
+export const CreateDashboardRequestNotifyListList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestNotifyListList>;
 
 /** Reflow type for a **new dashboard layout** dashboard. Set this only when layout type is 'ordered'. If set to 'fixed', the dashboard expects all widgets to have a layout, and if it's set to 'auto', widgets should not have layouts. */
 export type DashboardReflowType = "auto" | "fixed";
@@ -658,15 +645,13 @@ export const DashboardReflowType = S.String;
 
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type CreateDashboardRequestRestrictedRolesList = Array<string>;
-export const CreateDashboardRequestRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardRequestRestrictedRolesList>;
+export const CreateDashboardRequestRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestRestrictedRolesList>;
 
 /** List of widget IDs belonging to this tab. The backend also accepts positional references in @N format (1-indexed) as a convenience for Terraform and other declarative tools. */
 export type DashboardTabWidgetIdsList = Array<number>;
-export const DashboardTabWidgetIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DashboardTabWidgetIdsList>;
+export const DashboardTabWidgetIdsList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<DashboardTabWidgetIdsList>;
 
 /** Dashboard tab for organizing widgets. */
 export interface DashboardTab {
@@ -693,15 +678,13 @@ export const CreateDashboardRequestTabsList = /*@__PURE__*/ S.Array(
 
 /** List of team names representing ownership of a dashboard. */
 export type CreateDashboardRequestTagsList = Array<string>;
-export const CreateDashboardRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardRequestTagsList>;
+export const CreateDashboardRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateDashboardRequestTagsList>;
 
 /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. Cannot be used in conjunction with `value`. */
 export type DashboardTemplateVariablePresetValueValuesList = Array<string>;
-export const DashboardTemplateVariablePresetValueValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTemplateVariablePresetValueValuesList>;
+export const DashboardTemplateVariablePresetValueValuesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariablePresetValueValuesList>;
 
 /** Template variables saved views. */
 export interface DashboardTemplateVariablePresetValue {
@@ -754,15 +737,13 @@ export const CreateDashboardRequestTemplateVariablePresetsList = /*@__PURE__*/ S
 
 /** The list of values that the template variable drop-down is limited to. */
 export type DashboardTemplateVariableAvailableValuesList = Array<string>;
-export const DashboardTemplateVariableAvailableValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTemplateVariableAvailableValuesList>;
+export const DashboardTemplateVariableAvailableValuesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariableAvailableValuesList>;
 
 /** One or many default values for template variables on load. If more than one default is specified, they will be unioned together with `OR`. Cannot be used in conjunction with `default`. */
 export type DashboardTemplateVariableDefaultsList = Array<string>;
-export const DashboardTemplateVariableDefaultsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTemplateVariableDefaultsList>;
+export const DashboardTemplateVariableDefaultsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTemplateVariableDefaultsList>;
 
 /** Template variable. */
 export interface DashboardTemplateVariable {
@@ -1182,9 +1163,8 @@ export const WidgetFormulaCellDisplayModeOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** List of conditional formats. */
 export type WidgetFormulaConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const WidgetFormulaConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<WidgetFormulaConditionalFormatsList>;
+export const WidgetFormulaConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<WidgetFormulaConditionalFormatsList>;
 
 /** Direction of sort. */
 export type QuerySortOrder = "asc" | "desc";
@@ -1320,9 +1300,8 @@ export const BarChartWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
 
 /** List of processes. */
 export type ProcessQueryDefinitionFilterByList = Array<string>;
-export const ProcessQueryDefinitionFilterByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProcessQueryDefinitionFilterByList>;
+export const ProcessQueryDefinitionFilterByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ProcessQueryDefinitionFilterByList>;
 
 /** The process query to use in the widget. */
 export interface ProcessQueryDefinition {
@@ -1488,9 +1467,8 @@ export const FormulaAndFunctionEventQueryGroupByList = /*@__PURE__*/ S.Array(
 
 /** List of event facets to group by. */
 export type FormulaAndFunctionEventQueryGroupByFieldsFieldsList = Array<string>;
-export const FormulaAndFunctionEventQueryGroupByFieldsFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormulaAndFunctionEventQueryGroupByFieldsFieldsList>;
+export const FormulaAndFunctionEventQueryGroupByFieldsFieldsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionEventQueryGroupByFieldsFieldsList>;
 
 /** Flat group by configuration using multiple event facet fields. */
 export interface FormulaAndFunctionEventQueryGroupByFields {
@@ -1519,9 +1497,8 @@ export const FormulaAndFunctionEventQueryGroupByConfig =
 
 /** An array of index names to query in the stream. Omit or use `[]` to query all indexes at once. */
 export type FormulaAndFunctionEventQueryDefinitionIndexesList = Array<string>;
-export const FormulaAndFunctionEventQueryDefinitionIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormulaAndFunctionEventQueryDefinitionIndexesList>;
+export const FormulaAndFunctionEventQueryDefinitionIndexesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionEventQueryDefinitionIndexesList>;
 
 /** Search options. */
 export interface FormulaAndFunctionEventQueryDefinitionSearch {
@@ -1571,9 +1548,8 @@ export const FormulaAndFunctionProcessQueryDataSource = S.String;
 
 /** An array of tags to filter by. */
 export type FormulaAndFunctionProcessQueryDefinitionTagFiltersList = Array<string>;
-export const FormulaAndFunctionProcessQueryDefinitionTagFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormulaAndFunctionProcessQueryDefinitionTagFiltersList>;
+export const FormulaAndFunctionProcessQueryDefinitionTagFiltersList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionProcessQueryDefinitionTagFiltersList>;
 
 /** Process query using formulas and functions. */
 export interface FormulaAndFunctionProcessQueryDefinition {
@@ -1672,9 +1648,8 @@ export const FormulaAndFunctionApmResourceStatsDataSource = S.String;
 
 /** Array of fields to group results by. */
 export type FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList = Array<string>;
-export const FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList>;
+export const FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionApmResourceStatsQueryDefinitionGroupByList>;
 
 /** APM resource stat name. */
 export type FormulaAndFunctionApmResourceStatName =
@@ -1737,15 +1712,13 @@ export const FormulaAndFunctionApmMetricsDataSource = S.String;
 
 /** Optional fields to group the query results by. */
 export type FormulaAndFunctionApmMetricsQueryDefinitionGroupByList = Array<string>;
-export const FormulaAndFunctionApmMetricsQueryDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormulaAndFunctionApmMetricsQueryDefinitionGroupByList>;
+export const FormulaAndFunctionApmMetricsQueryDefinitionGroupByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionApmMetricsQueryDefinitionGroupByList>;
 
 /** Tags to query for a specific downstream entity (peer.service, peer.db_instance, peer.s3, peer.s3.bucket, etc.). */
 export type FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList = Array<string>;
-export const FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList>;
+export const FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FormulaAndFunctionApmMetricsQueryDefinitionPeerTagsList>;
 
 /** Describes the relationship between the span, its parents, and its children in a trace. */
 export type FormulaAndFunctionApmMetricsSpanKind =
@@ -1953,19 +1926,12 @@ export interface ProductAnalyticsAudienceUserSubquery {
   /** The query string for the user subquery. */
   query?: string;
 }
-export const ProductAnalyticsAudienceUserSubquery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    query: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductAnalyticsAudienceUserSubquery",
-}) as any as S.Schema<ProductAnalyticsAudienceUserSubquery>;
+export const ProductAnalyticsAudienceUserSubquery =
+  ProductAnalyticsAudienceAccountSubquery as any as S.Schema<ProductAnalyticsAudienceUserSubquery>;
 
 export type ProductAnalyticsAudienceFiltersUsersList = Array<ProductAnalyticsAudienceUserSubquery>;
-export const ProductAnalyticsAudienceFiltersUsersList = /*@__PURE__*/ S.Array(
-  ProductAnalyticsAudienceUserSubquery,
-) as any as S.Schema<ProductAnalyticsAudienceFiltersUsersList>;
+export const ProductAnalyticsAudienceFiltersUsersList =
+  ProductAnalyticsAudienceFiltersAccountsList as any as S.Schema<ProductAnalyticsAudienceFiltersUsersList>;
 
 /** Product Analytics/RUM audience filters. */
 export interface ProductAnalyticsAudienceFilters {
@@ -2095,13 +2061,8 @@ export interface ProductAnalyticsEventQuerySearch {
   /** RUM event search query used to filter views or actions. */
   query: string;
 }
-export const ProductAnalyticsEventQuerySearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.String,
-  }),
-).annotate({
-  identifier: "ProductAnalyticsEventQuerySearch",
-}) as any as S.Schema<ProductAnalyticsEventQuerySearch>;
+export const ProductAnalyticsEventQuerySearch =
+  FormulaAndFunctionEventQueryDefinitionSearch as any as S.Schema<ProductAnalyticsEventQuerySearch>;
 
 /** Product Analytics event query. */
 export interface ProductAnalyticsEventQuery {
@@ -2270,9 +2231,8 @@ export const UserJourneySearchFilters = /*@__PURE__*/ S.suspend(() =>
 
 /** Secondary join keys. */
 export type UserJourneyJoinKeysSecondaryList = Array<string>;
-export const UserJourneyJoinKeysSecondaryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserJourneyJoinKeysSecondaryList>;
+export const UserJourneyJoinKeysSecondaryList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UserJourneyJoinKeysSecondaryList>;
 
 /** Join keys for user journey queries. */
 export interface UserJourneyJoinKeys {
@@ -2299,10 +2259,8 @@ export const UserJourneySearchNodeObjectsMap = /*@__PURE__*/ S.Record(
 
 /** Step aliases mapping. */
 export type UserJourneySearchStepAliasesMap = { [key: string]: string | undefined };
-export const UserJourneySearchStepAliasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserJourneySearchStepAliasesMap>;
+export const UserJourneySearchStepAliasesMap =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<UserJourneySearchStepAliasesMap>;
 
 /** User journey search configuration. */
 export interface UserJourneySearch {
@@ -2828,9 +2786,8 @@ export const BarChartWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type ChangeWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ChangeWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<ChangeWidgetDefinitionCustomLinksList>;
+export const ChangeWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ChangeWidgetDefinitionCustomLinksList>;
 
 /** Show the absolute or the relative change. */
 export type WidgetChangeType = "absolute" | "relative";
@@ -2842,9 +2799,8 @@ export const WidgetCompareTo = S.String;
 
 /** List of formulas that operate on queries. */
 export type ChangeWidgetRequestFormulasList = Array<WidgetFormula>;
-export const ChangeWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<ChangeWidgetRequestFormulasList>;
+export const ChangeWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<ChangeWidgetRequestFormulasList>;
 
 /** What to order by. */
 export type WidgetOrderBy = "change" | "name" | "present" | "past";
@@ -2852,9 +2808,8 @@ export const WidgetOrderBy = S.String;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type ChangeWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const ChangeWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<ChangeWidgetRequestQueriesList>;
+export const ChangeWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<ChangeWidgetRequestQueriesList>;
 
 /** Updated change widget. */
 export interface ChangeWidgetRequest {
@@ -2954,9 +2909,8 @@ export const ChangeWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tag prefixes to group by in the case of a cluster check. */
 export type CheckStatusWidgetDefinitionGroupByList = Array<string>;
-export const CheckStatusWidgetDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckStatusWidgetDefinitionGroupByList>;
+export const CheckStatusWidgetDefinitionGroupByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CheckStatusWidgetDefinitionGroupByList>;
 
 /** The kind of grouping to use. */
 export type WidgetGrouping = "check" | "cluster";
@@ -2964,9 +2918,8 @@ export const WidgetGrouping = S.String;
 
 /** List of tags used to filter the groups reporting a cluster check. */
 export type CheckStatusWidgetDefinitionTagsList = Array<string>;
-export const CheckStatusWidgetDefinitionTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckStatusWidgetDefinitionTagsList>;
+export const CheckStatusWidgetDefinitionTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CheckStatusWidgetDefinitionTagsList>;
 
 /** Type of the check status widget. */
 export type CheckStatusWidgetDefinitionType = "check_status";
@@ -3013,9 +2966,8 @@ export const CheckStatusWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Group by configuration. */
 export type RetentionQueryGroupByList = Array<RetentionGroupBy>;
-export const RetentionQueryGroupByList = /*@__PURE__*/ S.Array(
-  RetentionGroupBy,
-) as any as S.Schema<RetentionQueryGroupByList>;
+export const RetentionQueryGroupByList =
+  FormulaAndFunctionRetentionQueryDefinitionGroupByList as any as S.Schema<RetentionQueryGroupByList>;
 
 /** Retention query definition. */
 export interface RetentionQuery {
@@ -3093,9 +3045,8 @@ export const CohortWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of custom links. */
 export type DistributionWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const DistributionWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<DistributionWidgetDefinitionCustomLinksList>;
+export const DistributionWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<DistributionWidgetDefinitionCustomLinksList>;
 
 /** Markers allow you to add visual conditional formatting for your graphs. */
 export interface WidgetMarker {
@@ -3181,15 +3132,13 @@ export const ApmStatsQueryDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of formulas that operate on queries. */
 export type DistributionWidgetRequestFormulasList = Array<WidgetFormula>;
-export const DistributionWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<DistributionWidgetRequestFormulasList>;
+export const DistributionWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<DistributionWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type DistributionWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const DistributionWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<DistributionWidgetRequestQueriesList>;
+export const DistributionWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<DistributionWidgetRequestQueriesList>;
 
 /** Query definition for Distribution Widget Histogram Request */
 export type DistributionWidgetHistogramRequestQuery =
@@ -3372,9 +3321,8 @@ export const DistributionWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type EmbeddedAppWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const EmbeddedAppWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<EmbeddedAppWidgetDefinitionCustomLinksList>;
+export const EmbeddedAppWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<EmbeddedAppWidgetDefinitionCustomLinksList>;
 
 /** An input passed to the embedded app. */
 export interface EmbeddedAppWidgetInput {
@@ -3640,9 +3588,8 @@ export const FunnelWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Comparison segments. */
 export type ProductAnalyticsFunnelRequestComparisonSegmentsList = Array<string>;
-export const ProductAnalyticsFunnelRequestComparisonSegmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAnalyticsFunnelRequestComparisonSegmentsList>;
+export const ProductAnalyticsFunnelRequestComparisonSegmentsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ProductAnalyticsFunnelRequestComparisonSegmentsList>;
 
 /** Custom timeframe for funnel comparison. */
 export interface FunnelComparisonCustomTimeframe {
@@ -3834,9 +3781,8 @@ export const ProductAnalyticsFunnelWidgetDefinition = /*@__PURE__*/ S.suspend(()
 
 /** A list of custom links. */
 export type GeomapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const GeomapWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<GeomapWidgetDefinitionCustomLinksList>;
+export const GeomapWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<GeomapWidgetDefinitionCustomLinksList>;
 
 /** Widget column width. */
 export type ListStreamColumnWidth = "auto" | "compact" | "full";
@@ -3863,27 +3809,23 @@ export const GeomapWidgetRequestColumnsList = /*@__PURE__*/ S.Array(
 
 /** Threshold (numeric) conditional formatting rules may be used by a regions layer. */
 export type GeomapWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const GeomapWidgetRequestConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<GeomapWidgetRequestConditionalFormatsList>;
+export const GeomapWidgetRequestConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<GeomapWidgetRequestConditionalFormatsList>;
 
 /** List of formulas that operate on queries. */
 export type GeomapWidgetRequestFormulasList = Array<WidgetFormula>;
-export const GeomapWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<GeomapWidgetRequestFormulasList>;
+export const GeomapWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<GeomapWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type GeomapWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const GeomapWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<GeomapWidgetRequestQueriesList>;
+export const GeomapWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<GeomapWidgetRequestQueriesList>;
 
 /** Filter by assignee UUIDs. Usable only with `issue_stream`. */
 export type ListStreamQueryAssigneeUuidsList = Array<string>;
-export const ListStreamQueryAssigneeUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListStreamQueryAssigneeUuidsList>;
+export const ListStreamQueryAssigneeUuidsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQueryAssigneeUuidsList>;
 
 /** Aggregation value. */
 export type ListStreamComputeAggregation =
@@ -3964,9 +3906,8 @@ export const ListStreamQueryGroupByList = /*@__PURE__*/ S.Array(
 
 /** List of indexes. */
 export type ListStreamQueryIndexesList = Array<string>;
-export const ListStreamQueryIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListStreamQueryIndexesList>;
+export const ListStreamQueryIndexesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQueryIndexesList>;
 
 /** Persona filter for the `issue_stream` data source. */
 export type ListStreamIssuePersona = "all" | "browser" | "mobile" | "backend";
@@ -3997,15 +3938,13 @@ export const ListStreamQueryStatesList = /*@__PURE__*/ S.Array(
 
 /** Filter by suspected causes. Usable only with `issue_stream`. */
 export type ListStreamQuerySuspectedCausesList = Array<string>;
-export const ListStreamQuerySuspectedCausesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListStreamQuerySuspectedCausesList>;
+export const ListStreamQuerySuspectedCausesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQuerySuspectedCausesList>;
 
 /** Filter by team handles. Usable only with `issue_stream`. */
 export type ListStreamQueryTeamHandlesList = Array<string>;
-export const ListStreamQueryTeamHandlesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListStreamQueryTeamHandlesList>;
+export const ListStreamQueryTeamHandlesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ListStreamQueryTeamHandlesList>;
 
 /** Version of the query for the logs transaction stream widget. When omitted, v1 query behavior is preserved. Set to `sequential_query` to use v2 behavior. **This feature is in Preview.** */
 export type ListStreamQueryVersion = "sequential_query";
@@ -4345,9 +4284,8 @@ export const GroupWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type HeatMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const HeatMapWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<HeatMapWidgetDefinitionCustomLinksList>;
+export const HeatMapWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<HeatMapWidgetDefinitionCustomLinksList>;
 
 /** Event overlay control options. See the dedicated [Events JSON schema documentation](https://docs.datadoghq.com/dashboards/graphing_json/widget_json/#events-schema) to learn how to build the `<EVENTS_SCHEMA>`. */
 export interface WidgetEvent {
@@ -4371,9 +4309,8 @@ export const HeatMapWidgetDefinitionEventsList = /*@__PURE__*/ S.Array(
 
 /** List of markers. */
 export type HeatMapWidgetDefinitionMarkersList = Array<WidgetMarker>;
-export const HeatMapWidgetDefinitionMarkersList = /*@__PURE__*/ S.Array(
-  WidgetMarker,
-) as any as S.Schema<HeatMapWidgetDefinitionMarkersList>;
+export const HeatMapWidgetDefinitionMarkersList =
+  DistributionWidgetDefinitionMarkersList as any as S.Schema<HeatMapWidgetDefinitionMarkersList>;
 
 /** The event query. */
 export interface EventQueryDefinition {
@@ -4391,15 +4328,13 @@ export const EventQueryDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of formulas that operate on queries. */
 export type HeatMapWidgetRequestFormulasList = Array<WidgetFormula>;
-export const HeatMapWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<HeatMapWidgetRequestFormulasList>;
+export const HeatMapWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<HeatMapWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type HeatMapWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const HeatMapWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<HeatMapWidgetRequestQueriesList>;
+export const HeatMapWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<HeatMapWidgetRequestQueriesList>;
 
 /** Updated heat map widget. */
 export interface HeatMapWidgetRequest {
@@ -4486,15 +4421,7 @@ export interface WidgetAxis {
   /** Specifies the scale type. Possible values are `linear`, `log`, `sqrt`, and `pow##` (for example `pow2` or `pow0.5`). */
   scale?: string;
 }
-export const WidgetAxis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include_zero: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    max: S.optional(S.String),
-    min: S.optional(S.String),
-    scale: S.optional(S.String),
-  }),
-).annotate({ identifier: "WidgetAxis" }) as any as S.Schema<WidgetAxis>;
+export const WidgetAxis = DistributionWidgetYAxis as any as S.Schema<WidgetAxis>;
 
 /** The heat map visualization shows metrics aggregated across many tags, such as hosts. The more hosts that have a particular value, the darker that square is. */
 export interface HeatMapWidgetDefinition {
@@ -4542,15 +4469,13 @@ export const HeatMapWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type HostMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const HostMapWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<HostMapWidgetDefinitionCustomLinksList>;
+export const HostMapWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<HostMapWidgetDefinitionCustomLinksList>;
 
 /** Deprecated - Only used by the legacy metric-based format. Use `group_by` (infrastructure) or a `group` dimension (DDSQL) inside `requests` instead. */
 export type HostMapWidgetDefinitionGroupList = Array<string>;
-export const HostMapWidgetDefinitionGroupList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostMapWidgetDefinitionGroupList>;
+export const HostMapWidgetDefinitionGroupList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostMapWidgetDefinitionGroupList>;
 
 /** Which type of node to use in the map. */
 export type WidgetNodeType = "host" | "container";
@@ -4559,9 +4484,8 @@ export const WidgetNodeType = S.String;
 /** List of conditional formatting rules applied to fill values. */
 export type HostMapWidgetInfrastructureRequestLeafConditionalFormatsList =
   Array<WidgetConditionalFormat>;
-export const HostMapWidgetInfrastructureRequestLeafConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<HostMapWidgetInfrastructureRequestLeafConditionalFormatsList>;
+export const HostMapWidgetInfrastructureRequestLeafConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<HostMapWidgetInfrastructureRequestLeafConditionalFormatsList>;
 
 /** Visual dimension for the host map widget. Used both by infrastructure-backed formulas and by DDSQL projection columns; `group` is only meaningful for DDSQL projection columns, where repeated entries define the grouping hierarchy. */
 export type HostMapWidgetDimension = "node" | "fill" | "size" | "group";
@@ -4593,9 +4517,8 @@ export const HostMapWidgetScalarRequestFormulasList = /*@__PURE__*/ S.Array(
 
 /** List of queries that can be returned directly or used in formulas. */
 export type HostMapWidgetScalarRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const HostMapWidgetScalarRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<HostMapWidgetScalarRequestQueriesList>;
+export const HostMapWidgetScalarRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<HostMapWidgetScalarRequestQueriesList>;
 
 /** Response format for the scalar formula request. Only `scalar` is supported. */
 export type HostMapWidgetScalarRequestResponseFormat = "scalar";
@@ -4713,21 +4636,18 @@ export const HostMapWidgetInfrastructureRequestLeaf = /*@__PURE__*/ S.suspend(()
 /** List of conditional formatting rules applied to fill values. */
 export type HostMapWidgetInfrastructureRequestConditionalFormatsList =
   Array<WidgetConditionalFormat>;
-export const HostMapWidgetInfrastructureRequestConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<HostMapWidgetInfrastructureRequestConditionalFormatsList>;
+export const HostMapWidgetInfrastructureRequestConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<HostMapWidgetInfrastructureRequestConditionalFormatsList>;
 
 /** Metric or event queries joined to the entity set. Each formula specifies a visual dimension. */
 export type HostMapWidgetInfrastructureRequestEnrichmentsList = Array<HostMapWidgetScalarRequest>;
-export const HostMapWidgetInfrastructureRequestEnrichmentsList = /*@__PURE__*/ S.Array(
-  HostMapWidgetScalarRequest,
-) as any as S.Schema<HostMapWidgetInfrastructureRequestEnrichmentsList>;
+export const HostMapWidgetInfrastructureRequestEnrichmentsList =
+  HostMapWidgetInfrastructureRequestLeafEnrichmentsList as any as S.Schema<HostMapWidgetInfrastructureRequestEnrichmentsList>;
 
 /** Defines how entities are grouped into tiles. The ordering of entries implies the grouping hierarchy. */
 export type HostMapWidgetInfrastructureRequestGroupByList = Array<HostMapWidgetGroupBy>;
-export const HostMapWidgetInfrastructureRequestGroupByList = /*@__PURE__*/ S.Array(
-  HostMapWidgetGroupBy,
-) as any as S.Schema<HostMapWidgetInfrastructureRequestGroupByList>;
+export const HostMapWidgetInfrastructureRequestGroupByList =
+  HostMapWidgetInfrastructureRequestLeafGroupByList as any as S.Schema<HostMapWidgetInfrastructureRequestGroupByList>;
 
 /** Infrastructure-backed request for the host map widget. Supports entity-based visualization with metric query enrichments, tag-based filtering, flexible grouping, and hierarchical views. */
 export interface HostMapWidgetInfrastructureRequest {
@@ -4768,15 +4688,13 @@ export const HostMapWidgetInfrastructureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of conditional formatting rules applied to fill values. */
 export type HostMapWidgetDefinitionRequestsConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const HostMapWidgetDefinitionRequestsConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<HostMapWidgetDefinitionRequestsConditionalFormatsList>;
+export const HostMapWidgetDefinitionRequestsConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<HostMapWidgetDefinitionRequestsConditionalFormatsList>;
 
 /** Metric or event queries joined to the entity set. Each formula specifies a visual dimension. Only used by the infrastructure-backed format. */
 export type HostMapWidgetDefinitionRequestsEnrichmentsList = Array<HostMapWidgetScalarRequest>;
-export const HostMapWidgetDefinitionRequestsEnrichmentsList = /*@__PURE__*/ S.Array(
-  HostMapWidgetScalarRequest,
-) as any as S.Schema<HostMapWidgetDefinitionRequestsEnrichmentsList>;
+export const HostMapWidgetDefinitionRequestsEnrichmentsList =
+  HostMapWidgetInfrastructureRequestLeafEnrichmentsList as any as S.Schema<HostMapWidgetDefinitionRequestsEnrichmentsList>;
 
 /** Deprecated - Legacy metric-based host map request. Use the infrastructure-backed (`request_type: infrastructure_hostmap`) or DDSQL (`request_type: data_projection`) format instead. */
 export interface HostMapRequest {
@@ -4815,9 +4733,8 @@ export const HostMapRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines how entities are grouped into tiles. The ordering of entries implies the grouping hierarchy. Only used by the infrastructure-backed format. */
 export type HostMapWidgetDefinitionRequestsGroupByList = Array<HostMapWidgetGroupBy>;
-export const HostMapWidgetDefinitionRequestsGroupByList = /*@__PURE__*/ S.Array(
-  HostMapWidgetGroupBy,
-) as any as S.Schema<HostMapWidgetDefinitionRequestsGroupByList>;
+export const HostMapWidgetDefinitionRequestsGroupByList =
+  HostMapWidgetInfrastructureRequestLeafGroupByList as any as S.Schema<HostMapWidgetDefinitionRequestsGroupByList>;
 
 /** Maps a dataset column to a host map visual dimension. */
 export interface HostMapWidgetProjectionDimensionMapping {
@@ -4984,9 +4901,8 @@ export const HostMapWidgetDefinitionRequests = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated - Only used by the legacy metric-based format. Use `filter` inside `requests` instead. */
 export type HostMapWidgetDefinitionScopeList = Array<string>;
-export const HostMapWidgetDefinitionScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostMapWidgetDefinitionScopeList>;
+export const HostMapWidgetDefinitionScopeList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostMapWidgetDefinitionScopeList>;
 
 /** Deprecated - The style to apply to the legacy metric-based host map widget. Use `HostMapWidgetInfrastructureStyle` instead. */
 export interface HostMapWidgetDefinitionStyle {
@@ -5138,9 +5054,8 @@ export const ImageWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Widget columns. */
 export type ListStreamWidgetRequestColumnsList = Array<ListStreamColumn>;
-export const ListStreamWidgetRequestColumnsList = /*@__PURE__*/ S.Array(
-  ListStreamColumn,
-) as any as S.Schema<ListStreamWidgetRequestColumnsList>;
+export const ListStreamWidgetRequestColumnsList =
+  GeomapWidgetRequestColumnsList as any as S.Schema<ListStreamWidgetRequestColumnsList>;
 
 /** Widget response format. */
 export type ListStreamResponseFormat = "event_list";
@@ -5206,15 +5121,13 @@ export const ListStreamWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Which columns to display on the widget. */
 export type LogStreamWidgetDefinitionColumnsList = Array<string>;
-export const LogStreamWidgetDefinitionColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogStreamWidgetDefinitionColumnsList>;
+export const LogStreamWidgetDefinitionColumnsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogStreamWidgetDefinitionColumnsList>;
 
 /** An array of index names to query in the stream. Use [] to query all indexes at once. */
 export type LogStreamWidgetDefinitionIndexesList = Array<string>;
-export const LogStreamWidgetDefinitionIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogStreamWidgetDefinitionIndexesList>;
+export const LogStreamWidgetDefinitionIndexesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogStreamWidgetDefinitionIndexesList>;
 
 /** Amount of log lines to display */
 export type WidgetMessageDisplay = "inline" | "expanded-md" | "expanded-lg";
@@ -5401,9 +5314,8 @@ export const NoteWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** One or many template variable values within the saved view, which will be unioned together using `OR` if more than one is specified. */
 export type PowerpackTemplateVariableContentsValuesList = Array<string>;
-export const PowerpackTemplateVariableContentsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PowerpackTemplateVariableContentsValuesList>;
+export const PowerpackTemplateVariableContentsValuesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<PowerpackTemplateVariableContentsValuesList>;
 
 /** Powerpack template variable contents. */
 export interface PowerpackTemplateVariableContents {
@@ -5434,9 +5346,8 @@ export const PowerpackTemplateVariablesControlledByPowerpackList = /*@__PURE__*/
 /** Template variables controlled by the external resource, such as the dashboard this powerpack is on. */
 export type PowerpackTemplateVariablesControlledExternallyList =
   Array<PowerpackTemplateVariableContents>;
-export const PowerpackTemplateVariablesControlledExternallyList = /*@__PURE__*/ S.Array(
-  PowerpackTemplateVariableContents,
-) as any as S.Schema<PowerpackTemplateVariablesControlledExternallyList>;
+export const PowerpackTemplateVariablesControlledExternallyList =
+  PowerpackTemplateVariablesControlledByPowerpackList as any as S.Schema<PowerpackTemplateVariablesControlledExternallyList>;
 
 /** Powerpack template variables. */
 export interface PowerpackTemplateVariables {
@@ -5489,9 +5400,8 @@ export const PowerpackWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type PointPlotWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const PointPlotWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<PointPlotWidgetDefinitionCustomLinksList>;
+export const PointPlotWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<PointPlotWidgetDefinitionCustomLinksList>;
 
 /** Type of legend to show for the point plot widget. */
 export type PointPlotWidgetLegendType = "automatic" | "none";
@@ -5509,9 +5419,8 @@ export const PointPlotWidgetLegend = /*@__PURE__*/ S.suspend(() =>
 
 /** List of markers for the widget. */
 export type PointPlotWidgetDefinitionMarkersList = Array<WidgetMarker>;
-export const PointPlotWidgetDefinitionMarkersList = /*@__PURE__*/ S.Array(
-  WidgetMarker,
-) as any as S.Schema<PointPlotWidgetDefinitionMarkersList>;
+export const PointPlotWidgetDefinitionMarkersList =
+  DistributionWidgetDefinitionMarkersList as any as S.Schema<PointPlotWidgetDefinitionMarkersList>;
 
 /** Dimension of the point plot. */
 export type PointPlotDimension = "group" | "time" | "y" | "radius";
@@ -5543,9 +5452,8 @@ export const PointPlotProjectionDimensionsList = /*@__PURE__*/ S.Array(
 
 /** Additional columns to include in the projection. */
 export type PointPlotProjectionExtraColumnsList = Array<string>;
-export const PointPlotProjectionExtraColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PointPlotProjectionExtraColumnsList>;
+export const PointPlotProjectionExtraColumnsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<PointPlotProjectionExtraColumnsList>;
 
 /** Type of the projection. */
 export type PointPlotProjectionType = "point_plot";
@@ -5569,9 +5477,8 @@ export const PointPlotProjection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of indexes to query. */
 export type DataProjectionQueryIndexesList = Array<string>;
-export const DataProjectionQueryIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataProjectionQueryIndexesList>;
+export const DataProjectionQueryIndexesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DataProjectionQueryIndexesList>;
 
 /** Query configuration for a data projection request. */
 export interface DataProjectionQuery {
@@ -5664,9 +5571,8 @@ export const PointPlotWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type QueryValueWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const QueryValueWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<QueryValueWidgetDefinitionCustomLinksList>;
+export const QueryValueWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<QueryValueWidgetDefinitionCustomLinksList>;
 
 /** Color-coding direction: `increase_better` (green on rise), `decrease_better` (green on drop), or `neutral` (no color). */
 export type QueryValueWidgetComparisonDirectionality =
@@ -5682,14 +5588,8 @@ export interface ComparisonCustomTimeframe {
   /** End time in milliseconds since epoch. */
   to: number;
 }
-export const ComparisonCustomTimeframe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.Number,
-    to: S.Number,
-  }),
-).annotate({
-  identifier: "ComparisonCustomTimeframe",
-}) as any as S.Schema<ComparisonCustomTimeframe>;
+export const ComparisonCustomTimeframe =
+  FunnelComparisonCustomTimeframe as any as S.Schema<ComparisonCustomTimeframe>;
 
 /** The comparison window type. */
 export type ComparisonDurationType =
@@ -5736,21 +5636,18 @@ export const QueryValueWidgetComparison = /*@__PURE__*/ S.suspend(() =>
 
 /** List of conditional formats. */
 export type QueryValueWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const QueryValueWidgetRequestConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<QueryValueWidgetRequestConditionalFormatsList>;
+export const QueryValueWidgetRequestConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<QueryValueWidgetRequestConditionalFormatsList>;
 
 /** List of formulas that operate on queries. */
 export type QueryValueWidgetRequestFormulasList = Array<WidgetFormula>;
-export const QueryValueWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<QueryValueWidgetRequestFormulasList>;
+export const QueryValueWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<QueryValueWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type QueryValueWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const QueryValueWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<QueryValueWidgetRequestQueriesList>;
+export const QueryValueWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<QueryValueWidgetRequestQueriesList>;
 
 /** Updated query value widget. */
 export interface QueryValueWidgetRequest {
@@ -5885,11 +5782,7 @@ export interface RetentionCurveStyle {
   /** Color palette for the retention curve. */
   palette?: string;
 }
-export const RetentionCurveStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    palette: S.optional(S.String),
-  }),
-).annotate({ identifier: "RetentionCurveStyle" }) as any as S.Schema<RetentionCurveStyle>;
+export const RetentionCurveStyle = WidgetStyle as any as S.Schema<RetentionCurveStyle>;
 
 /** Retention curve widget request. */
 export interface RetentionCurveWidgetRequest {
@@ -5947,9 +5840,8 @@ export const RetentionCurveWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type RunWorkflowWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const RunWorkflowWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<RunWorkflowWidgetDefinitionCustomLinksList>;
+export const RunWorkflowWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<RunWorkflowWidgetDefinitionCustomLinksList>;
 
 /** Object to map a dashboard template variable to a workflow input. */
 export interface RunWorkflowWidgetInput {
@@ -6151,15 +6043,13 @@ export const SLOWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of groups used for colors. */
 export type ScatterPlotWidgetDefinitionColorByGroupsList = Array<string>;
-export const ScatterPlotWidgetDefinitionColorByGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScatterPlotWidgetDefinitionColorByGroupsList>;
+export const ScatterPlotWidgetDefinitionColorByGroupsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ScatterPlotWidgetDefinitionColorByGroupsList>;
 
 /** List of custom links. */
 export type ScatterPlotWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ScatterPlotWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<ScatterPlotWidgetDefinitionCustomLinksList>;
+export const ScatterPlotWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ScatterPlotWidgetDefinitionCustomLinksList>;
 
 /** Dimension of the Scatterplot. */
 export type ScatterplotDimension = "x" | "y" | "radius" | "color";
@@ -6189,9 +6079,8 @@ export const ScatterplotTableRequestFormulasList = /*@__PURE__*/ S.Array(
 
 /** List of queries that can be returned directly or used in formulas. */
 export type ScatterplotTableRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const ScatterplotTableRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<ScatterplotTableRequestQueriesList>;
+export const ScatterplotTableRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<ScatterplotTableRequestQueriesList>;
 
 /** Scatterplot request containing formulas and functions. */
 export interface ScatterplotTableRequest {
@@ -6313,9 +6202,8 @@ export const SankeyRumDataSource = S.String;
 
 /** Secondary join keys. */
 export type SankeyJoinKeysSecondaryList = Array<string>;
-export const SankeyJoinKeysSecondaryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SankeyJoinKeysSecondaryList>;
+export const SankeyJoinKeysSecondaryList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SankeyJoinKeysSecondaryList>;
 
 /** Join keys. */
 export interface SankeyJoinKeys {
@@ -6324,12 +6212,7 @@ export interface SankeyJoinKeys {
   /** Secondary join keys. */
   secondary?: SankeyJoinKeysSecondaryList;
 }
-export const SankeyJoinKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primary: S.String,
-    secondary: S.optional(SankeyJoinKeysSecondaryList),
-  }),
-).annotate({ identifier: "SankeyJoinKeys" }) as any as S.Schema<SankeyJoinKeys>;
+export const SankeyJoinKeys = UserJourneyJoinKeys as any as S.Schema<SankeyJoinKeys>;
 
 /** Sankey mode for Product Analytics or RUM queries. */
 export type SankeyRumQueryMode = "source" | "target";
@@ -6424,9 +6307,8 @@ export const SankeyNetworkDataSource = S.String;
 
 /** Fields to group by. */
 export type SankeyNetworkQueryGroupByList = Array<string>;
-export const SankeyNetworkQueryGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SankeyNetworkQueryGroupByList>;
+export const SankeyNetworkQueryGroupByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SankeyNetworkQueryGroupByList>;
 
 /** Sankey mode for network queries. */
 export type SankeyNetworkQueryMode = "target";
@@ -6530,15 +6412,13 @@ export const SankeyWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type ServiceMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ServiceMapWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<ServiceMapWidgetDefinitionCustomLinksList>;
+export const ServiceMapWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ServiceMapWidgetDefinitionCustomLinksList>;
 
 /** Your environment and primary tag (or * if enabled for your account). */
 export type ServiceMapWidgetDefinitionFiltersList = Array<string>;
-export const ServiceMapWidgetDefinitionFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceMapWidgetDefinitionFiltersList>;
+export const ServiceMapWidgetDefinitionFiltersList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceMapWidgetDefinitionFiltersList>;
 
 /** Type of the service map widget. */
 export type ServiceMapWidgetDefinitionType = "servicemap";
@@ -6650,9 +6530,8 @@ export const SplitGraphVizSize = S.String;
 
 /** List of custom links. */
 export type SunburstWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const SunburstWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<SunburstWidgetDefinitionCustomLinksList>;
+export const SunburstWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<SunburstWidgetDefinitionCustomLinksList>;
 
 /** Whether or not to show a table legend. */
 export type SunburstWidgetLegendTableType = "table" | "none";
@@ -6698,15 +6577,13 @@ export const SunburstWidgetLegend = S.Unknown as any as S.Schema<SunburstWidgetL
 
 /** List of formulas that operate on queries. */
 export type SunburstWidgetRequestFormulasList = Array<WidgetFormula>;
-export const SunburstWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<SunburstWidgetRequestFormulasList>;
+export const SunburstWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<SunburstWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type SunburstWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const SunburstWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<SunburstWidgetRequestQueriesList>;
+export const SunburstWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<SunburstWidgetRequestQueriesList>;
 
 /** Request definition of sunburst widget. */
 export interface SunburstWidgetRequest {
@@ -6804,9 +6681,8 @@ export const SunburstWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type TableWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const TableWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<TableWidgetDefinitionCustomLinksList>;
+export const TableWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TableWidgetDefinitionCustomLinksList>;
 
 /** Controls the display of the search bar. */
 export type TableWidgetHasSearchBar = "always" | "never" | "auto";
@@ -6822,27 +6698,23 @@ export const TableWidgetRequestCellDisplayModeList = /*@__PURE__*/ S.Array(
 
 /** List of conditional formats. */
 export type TableWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const TableWidgetRequestConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<TableWidgetRequestConditionalFormatsList>;
+export const TableWidgetRequestConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<TableWidgetRequestConditionalFormatsList>;
 
 /** List of formulas that operate on queries. */
 export type TableWidgetRequestFormulasList = Array<WidgetFormula>;
-export const TableWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<TableWidgetRequestFormulasList>;
+export const TableWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<TableWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type TableWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const TableWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<TableWidgetRequestQueriesList>;
+export const TableWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<TableWidgetRequestQueriesList>;
 
 /** Text format rules for a tag-based column within a table widget. */
 export type TableWidgetTextFormat = Array<TableWidgetTextFormatRule>;
-export const TableWidgetTextFormat = /*@__PURE__*/ S.Array(
-  TableWidgetTextFormatRule,
-) as any as S.Schema<TableWidgetTextFormat>;
+export const TableWidgetTextFormat =
+  GeomapWidgetRequestTextFormatsList as any as S.Schema<TableWidgetTextFormat>;
 
 /** List of text formats for columns produced by tags. */
 export type TableWidgetRequestTextFormatsList = Array<TableWidgetTextFormat>;
@@ -6959,15 +6831,13 @@ export const TableWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type TimeseriesWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const TimeseriesWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<TimeseriesWidgetDefinitionCustomLinksList>;
+export const TimeseriesWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TimeseriesWidgetDefinitionCustomLinksList>;
 
 /** List of widget events. Deprecated - Use `overlay` request type instead. */
 export type TimeseriesWidgetDefinitionEventsList = Array<WidgetEvent>;
-export const TimeseriesWidgetDefinitionEventsList = /*@__PURE__*/ S.Array(
-  WidgetEvent,
-) as any as S.Schema<TimeseriesWidgetDefinitionEventsList>;
+export const TimeseriesWidgetDefinitionEventsList =
+  HeatMapWidgetDefinitionEventsList as any as S.Schema<TimeseriesWidgetDefinitionEventsList>;
 
 /** Legend column. */
 export type TimeseriesWidgetLegendColumn = "value" | "avg" | "sum" | "min" | "max";
@@ -6987,9 +6857,8 @@ export const TimeseriesWidgetLegendLayout = S.String;
 
 /** List of markers. */
 export type TimeseriesWidgetDefinitionMarkersList = Array<WidgetMarker>;
-export const TimeseriesWidgetDefinitionMarkersList = /*@__PURE__*/ S.Array(
-  WidgetMarker,
-) as any as S.Schema<TimeseriesWidgetDefinitionMarkersList>;
+export const TimeseriesWidgetDefinitionMarkersList =
+  DistributionWidgetDefinitionMarkersList as any as S.Schema<TimeseriesWidgetDefinitionMarkersList>;
 
 /** Type of display to use for the request. */
 export type WidgetDisplayType = "area" | "bars" | "line" | "overlay";
@@ -6997,9 +6866,8 @@ export const WidgetDisplayType = S.String;
 
 /** List of formulas that operate on queries. */
 export type TimeseriesWidgetRequestFormulasList = Array<WidgetFormula>;
-export const TimeseriesWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<TimeseriesWidgetRequestFormulasList>;
+export const TimeseriesWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<TimeseriesWidgetRequestFormulasList>;
 
 /** Define an expression alias. */
 export interface TimeseriesWidgetExpressionAlias {
@@ -7025,9 +6893,8 @@ export const TimeseriesWidgetRequestMetadataList = /*@__PURE__*/ S.Array(
 
 /** List of queries that can be returned directly or used in formulas. */
 export type TimeseriesWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const TimeseriesWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<TimeseriesWidgetRequestQueriesList>;
+export const TimeseriesWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<TimeseriesWidgetRequestQueriesList>;
 
 /** Define request widget style for timeseries widgets. */
 export interface TimeseriesRequestStyle {
@@ -7168,27 +7035,23 @@ export const TimeseriesWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type ToplistWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const ToplistWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<ToplistWidgetDefinitionCustomLinksList>;
+export const ToplistWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<ToplistWidgetDefinitionCustomLinksList>;
 
 /** List of conditional formats. */
 export type ToplistWidgetRequestConditionalFormatsList = Array<WidgetConditionalFormat>;
-export const ToplistWidgetRequestConditionalFormatsList = /*@__PURE__*/ S.Array(
-  WidgetConditionalFormat,
-) as any as S.Schema<ToplistWidgetRequestConditionalFormatsList>;
+export const ToplistWidgetRequestConditionalFormatsList =
+  BarChartWidgetRequestConditionalFormatsList as any as S.Schema<ToplistWidgetRequestConditionalFormatsList>;
 
 /** List of formulas that operate on queries. */
 export type ToplistWidgetRequestFormulasList = Array<WidgetFormula>;
-export const ToplistWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<ToplistWidgetRequestFormulasList>;
+export const ToplistWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<ToplistWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type ToplistWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const ToplistWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<ToplistWidgetRequestQueriesList>;
+export const ToplistWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<ToplistWidgetRequestQueriesList>;
 
 /** Updated top list widget. */
 export interface ToplistWidgetRequest {
@@ -7222,32 +7085,12 @@ export interface ToplistWidgetRequest {
   sort?: WidgetSortBy;
   style?: WidgetRequestStyle;
 }
-export const ToplistWidgetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apm_query: S.optional(LogQueryDefinition),
-    audit_query: S.optional(LogQueryDefinition),
-    conditional_formats: S.optional(ToplistWidgetRequestConditionalFormatsList),
-    event_query: S.optional(LogQueryDefinition),
-    formulas: S.optional(ToplistWidgetRequestFormulasList),
-    log_query: S.optional(LogQueryDefinition),
-    network_query: S.optional(LogQueryDefinition),
-    process_query: S.optional(ProcessQueryDefinition),
-    profile_metrics_query: S.optional(LogQueryDefinition),
-    q: S.optional(S.String),
-    queries: S.optional(ToplistWidgetRequestQueriesList),
-    response_format: S.optional(FormulaAndFunctionResponseFormat),
-    rum_query: S.optional(LogQueryDefinition),
-    security_query: S.optional(LogQueryDefinition),
-    sort: S.optional(WidgetSortBy),
-    style: S.optional(WidgetRequestStyle),
-  }),
-).annotate({ identifier: "ToplistWidgetRequest" }) as any as S.Schema<ToplistWidgetRequest>;
+export const ToplistWidgetRequest = BarChartWidgetRequest as any as S.Schema<ToplistWidgetRequest>;
 
 /** List of top list widget requests. */
 export type ToplistWidgetDefinitionRequestsList = Array<ToplistWidgetRequest>;
-export const ToplistWidgetDefinitionRequestsList = /*@__PURE__*/ S.Array(
-  ToplistWidgetRequest,
-) as any as S.Schema<ToplistWidgetDefinitionRequestsList>;
+export const ToplistWidgetDefinitionRequestsList =
+  BarChartWidgetDefinitionRequestsList as any as S.Schema<ToplistWidgetDefinitionRequestsList>;
 
 /** Top list widget stacked legend behavior. */
 export type ToplistWidgetLegend = "automatic" | "inline" | "none";
@@ -7347,9 +7190,8 @@ export const TreeMapColorBy = S.String;
 
 /** List of custom links. */
 export type TreeMapWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const TreeMapWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<TreeMapWidgetDefinitionCustomLinksList>;
+export const TreeMapWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TreeMapWidgetDefinitionCustomLinksList>;
 
 /** (deprecated) The attribute formerly used to group elements in the widget. */
 export type TreeMapGroupBy = "user" | "family" | "process";
@@ -7357,15 +7199,13 @@ export const TreeMapGroupBy = S.String;
 
 /** List of formulas that operate on queries. */
 export type TreeMapWidgetRequestFormulasList = Array<WidgetFormula>;
-export const TreeMapWidgetRequestFormulasList = /*@__PURE__*/ S.Array(
-  WidgetFormula,
-) as any as S.Schema<TreeMapWidgetRequestFormulasList>;
+export const TreeMapWidgetRequestFormulasList =
+  BarChartWidgetRequestFormulasList as any as S.Schema<TreeMapWidgetRequestFormulasList>;
 
 /** List of queries that can be returned directly or used in formulas. */
 export type TreeMapWidgetRequestQueriesList = Array<FormulaAndFunctionQueryDefinition>;
-export const TreeMapWidgetRequestQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionQueryDefinition,
-) as any as S.Schema<TreeMapWidgetRequestQueriesList>;
+export const TreeMapWidgetRequestQueriesList =
+  BarChartWidgetRequestQueriesList as any as S.Schema<TreeMapWidgetRequestQueriesList>;
 
 /** An updated treemap widget. */
 export interface TreeMapWidgetRequest {
@@ -7494,9 +7334,8 @@ export const SplitConfigSplitDimensionsList = /*@__PURE__*/ S.Array(
 
 /** The tag values. */
 export type SplitVectorEntryItemTagValuesList = Array<string>;
-export const SplitVectorEntryItemTagValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SplitVectorEntryItemTagValuesList>;
+export const SplitVectorEntryItemTagValuesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SplitVectorEntryItemTagValuesList>;
 
 /** The split graph list contains a graph for each value of the split dimension. */
 export interface SplitVectorEntryItem {
@@ -7575,9 +7414,8 @@ export const SplitGraphWidgetDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom links. */
 export type TopologyMapWidgetDefinitionDataStreamsCustomLinksList = Array<WidgetCustomLink>;
-export const TopologyMapWidgetDefinitionDataStreamsCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<TopologyMapWidgetDefinitionDataStreamsCustomLinksList>;
+export const TopologyMapWidgetDefinitionDataStreamsCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TopologyMapWidgetDefinitionDataStreamsCustomLinksList>;
 
 /** Name of the data source. */
 export type TopologyQueryDataStreamsDataSource = "data_streams";
@@ -7585,9 +7423,8 @@ export const TopologyQueryDataStreamsDataSource = S.String;
 
 /** Your environment and primary tag (or * if enabled for your account). */
 export type TopologyQueryDataStreamsFiltersList = Array<string>;
-export const TopologyQueryDataStreamsFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopologyQueryDataStreamsFiltersList>;
+export const TopologyQueryDataStreamsFiltersList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<TopologyQueryDataStreamsFiltersList>;
 
 /** Query to the data streams topology data source. */
 export interface TopologyQueryDataStreams {
@@ -7669,9 +7506,8 @@ export const TopologyMapWidgetDefinitionDataStreams = /*@__PURE__*/ S.suspend(()
 
 /** List of custom links. */
 export type TopologyMapWidgetDefinitionServiceMapCustomLinksList = Array<WidgetCustomLink>;
-export const TopologyMapWidgetDefinitionServiceMapCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<TopologyMapWidgetDefinitionServiceMapCustomLinksList>;
+export const TopologyMapWidgetDefinitionServiceMapCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<TopologyMapWidgetDefinitionServiceMapCustomLinksList>;
 
 /** Name of the data source. */
 export type TopologyQueryServiceMapDataSource = "service_map";
@@ -7679,9 +7515,8 @@ export const TopologyQueryServiceMapDataSource = S.String;
 
 /** Your environment and primary tag (or * if enabled for your account). */
 export type TopologyQueryServiceMapFiltersList = Array<string>;
-export const TopologyQueryServiceMapFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopologyQueryServiceMapFiltersList>;
+export const TopologyQueryServiceMapFiltersList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<TopologyQueryServiceMapFiltersList>;
 
 /** Query to the service map topology data source. */
 export interface TopologyQueryServiceMap {
@@ -7762,9 +7597,8 @@ export const TopologyMapWidgetDefinition =
 
 /** List of custom links. */
 export type WildcardWidgetDefinitionCustomLinksList = Array<WidgetCustomLink>;
-export const WildcardWidgetDefinitionCustomLinksList = /*@__PURE__*/ S.Array(
-  WidgetCustomLink,
-) as any as S.Schema<WildcardWidgetDefinitionCustomLinksList>;
+export const WildcardWidgetDefinitionCustomLinksList =
+  BarChartWidgetDefinitionCustomLinksList as any as S.Schema<WildcardWidgetDefinitionCustomLinksList>;
 
 /** Request object for the wildcard widget. Each variant represents a distinct data-fetching pattern: scalar formulas, timeseries formulas, list streams, and histograms. */
 export type WildcardWidgetRequest =
@@ -7973,45 +7807,38 @@ export const DashboardExperienceType = S.String;
 
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type DashboardNotifyListList = Array<string>;
-export const DashboardNotifyListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardNotifyListList>;
+export const DashboardNotifyListList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardNotifyListList>;
 
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type DashboardRestrictedRolesList = Array<string>;
-export const DashboardRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardRestrictedRolesList>;
+export const DashboardRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardRestrictedRolesList>;
 
 /** List of tabs for organizing dashboard widgets into groups. */
 export type DashboardTabsList = Array<DashboardTab>;
-export const DashboardTabsList = /*@__PURE__*/ S.Array(
-  DashboardTab,
-) as any as S.Schema<DashboardTabsList>;
+export const DashboardTabsList =
+  CreateDashboardRequestTabsList as any as S.Schema<DashboardTabsList>;
 
 /** List of team names representing ownership of a dashboard. */
 export type DashboardTagsList = Array<string>;
-export const DashboardTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTagsList>;
+export const DashboardTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DashboardTagsList>;
 
 /** Array of template variables saved views. */
 export type DashboardTemplateVariablePresetsList = Array<DashboardTemplateVariablePreset>;
-export const DashboardTemplateVariablePresetsList = /*@__PURE__*/ S.Array(
-  DashboardTemplateVariablePreset,
-) as any as S.Schema<DashboardTemplateVariablePresetsList>;
+export const DashboardTemplateVariablePresetsList =
+  CreateDashboardRequestTemplateVariablePresetsList as any as S.Schema<DashboardTemplateVariablePresetsList>;
 
 /** List of template variables for this dashboard. */
 export type DashboardTemplateVariablesList = Array<DashboardTemplateVariable>;
-export const DashboardTemplateVariablesList = /*@__PURE__*/ S.Array(
-  DashboardTemplateVariable,
-) as any as S.Schema<DashboardTemplateVariablesList>;
+export const DashboardTemplateVariablesList =
+  CreateDashboardRequestTemplateVariablesList as any as S.Schema<DashboardTemplateVariablesList>;
 
 /** List of widgets to display on the dashboard. */
 export type DashboardWidgetsList = Array<Widget>;
-export const DashboardWidgetsList = /*@__PURE__*/ S.Array(
-  Widget,
-) as any as S.Schema<DashboardWidgetsList>;
+export const DashboardWidgetsList =
+  CreateDashboardRequestWidgetsList as any as S.Schema<DashboardWidgetsList>;
 
 /** A dashboard is Datadog's tool for visually tracking, analyzing, and displaying key performance metrics, which enable you to monitor the health of your infrastructure. */
 export interface Dashboard {
@@ -8155,9 +7982,8 @@ export const EventPriority = S.String;
 
 /** A list of tags to apply to the event. */
 export type CreateEventRequestTagsList = Array<string>;
-export const CreateEventRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEventRequestTagsList>;
+export const CreateEventRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateEventRequestTagsList>;
 
 export interface CreateEventRequest {
   /** An arbitrary string to use for aggregation. Limited to 100 characters. If you specify a key, all events using that key are grouped together in the Event Stream. */
@@ -8204,9 +8030,8 @@ export const CreateEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
 
 /** A list of role identifiers that can be pulled from the Roles API, for restricting read and write access. This field is deprecated. Use the restriction policies API to manage permissions. */
 export type SyntheticsRestrictedRoles = Array<string>;
-export const SyntheticsRestrictedRoles = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsRestrictedRoles>;
+export const SyntheticsRestrictedRoles =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsRestrictedRoles>;
 
 /** Attributes of the global variable. */
 export interface SyntheticsGlobalVariableAttributes {
@@ -8267,9 +8092,8 @@ export const SyntheticsGlobalVariableParseTestOptions = /*@__PURE__*/ S.suspend(
 
 /** Tags of the global variable. */
 export type CreateGlobalVariableRequestTagsList = Array<string>;
-export const CreateGlobalVariableRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGlobalVariableRequestTagsList>;
+export const CreateGlobalVariableRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateGlobalVariableRequestTagsList>;
 
 /** Parameters for the TOTP/MFA variable */
 export interface SyntheticsGlobalVariableTOTPParameters {
@@ -8352,9 +8176,8 @@ export const CreateGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the global variable. */
 export type SyntheticsGlobalVariableTagsList = Array<string>;
-export const SyntheticsGlobalVariableTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsGlobalVariableTagsList>;
+export const SyntheticsGlobalVariableTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsGlobalVariableTagsList>;
 
 /** Synthetic global variable. */
 export interface SyntheticsGlobalVariable {
@@ -8393,9 +8216,8 @@ export const SyntheticsGlobalVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with a host. */
 export type CreateHostTagsRequestTagsList = Array<string>;
-export const CreateHostTagsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHostTagsRequestTagsList>;
+export const CreateHostTagsRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateHostTagsRequestTagsList>;
 
 export interface CreateHostTagsRequest {
   /** Specified host name to add new tags */
@@ -8418,9 +8240,8 @@ export const CreateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with a host. */
 export type HostTagsTagsList = Array<string>;
-export const HostTagsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostTagsTagsList>;
+export const HostTagsTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostTagsTagsList>;
 
 /** Host name and an array of its tags */
 export interface HostTags {
@@ -8502,9 +8323,8 @@ export const LogsFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type CreateLogsIndexRequestTagsList = Array<string>;
-export const CreateLogsIndexRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLogsIndexRequestTagsList>;
+export const CreateLogsIndexRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateLogsIndexRequestTagsList>;
 
 export interface CreateLogsIndexRequest {
   /** The number of log events you can send in this index per day before you are rate-limited. */
@@ -8540,15 +8360,13 @@ export const CreateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type LogsIndexExclusionFiltersList = Array<LogsExclusion>;
-export const LogsIndexExclusionFiltersList = /*@__PURE__*/ S.Array(
-  LogsExclusion,
-) as any as S.Schema<LogsIndexExclusionFiltersList>;
+export const LogsIndexExclusionFiltersList =
+  CreateLogsIndexRequestExclusionFiltersList as any as S.Schema<LogsIndexExclusionFiltersList>;
 
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type LogsIndexTagsList = Array<string>;
-export const LogsIndexTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsIndexTagsList>;
+export const LogsIndexTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsIndexTagsList>;
 
 /** Object describing a Datadog Log index. */
 export interface LogsIndex {
@@ -8602,9 +8420,8 @@ export const LogsGrokParserRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List of sample logs to test this grok parser. */
 export type LogsGrokParserSamplesList = Array<string>;
-export const LogsGrokParserSamplesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsGrokParserSamplesList>;
+export const LogsGrokParserSamplesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsGrokParserSamplesList>;
 
 /** Type of logs grok parser. */
 export type LogsGrokParserType = "grok-parser";
@@ -8636,9 +8453,8 @@ export const LogsGrokParser = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsDateRemapperSourcesList = Array<string>;
-export const LogsDateRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsDateRemapperSourcesList>;
+export const LogsDateRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsDateRemapperSourcesList>;
 
 /** Type of logs date remapper. */
 export type LogsDateRemapperType = "date-remapper";
@@ -8665,9 +8481,8 @@ export const LogsDateRemapper = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsStatusRemapperSourcesList = Array<string>;
-export const LogsStatusRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsStatusRemapperSourcesList>;
+export const LogsStatusRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsStatusRemapperSourcesList>;
 
 /** Type of logs status remapper. */
 export type LogsStatusRemapperType = "status-remapper";
@@ -8694,9 +8509,8 @@ export const LogsStatusRemapper = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsServiceRemapperSourcesList = Array<string>;
-export const LogsServiceRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsServiceRemapperSourcesList>;
+export const LogsServiceRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsServiceRemapperSourcesList>;
 
 /** Type of logs service remapper. */
 export type LogsServiceRemapperType = "service-remapper";
@@ -8723,9 +8537,8 @@ export const LogsServiceRemapper = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsMessageRemapperSourcesList = Array<string>;
-export const LogsMessageRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsMessageRemapperSourcesList>;
+export const LogsMessageRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsMessageRemapperSourcesList>;
 
 /** Type of logs message remapper. */
 export type LogsMessageRemapperType = "message-remapper";
@@ -8752,9 +8565,8 @@ export const LogsMessageRemapper = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsAttributeRemapperSourcesList = Array<string>;
-export const LogsAttributeRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAttributeRemapperSourcesList>;
+export const LogsAttributeRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsAttributeRemapperSourcesList>;
 
 /** If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. */
 export type TargetFormatType = "auto" | "string" | "integer" | "double";
@@ -8802,9 +8614,8 @@ export const LogsAttributeRemapper = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsURLParserSourcesList = Array<string>;
-export const LogsURLParserSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsURLParserSourcesList>;
+export const LogsURLParserSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsURLParserSourcesList>;
 
 /** Type of logs URL parser. */
 export type LogsURLParserType = "url-parser";
@@ -8837,9 +8648,8 @@ export const LogsURLParser = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsUserAgentParserSourcesList = Array<string>;
-export const LogsUserAgentParserSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsUserAgentParserSourcesList>;
+export const LogsUserAgentParserSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsUserAgentParserSourcesList>;
 
 /** Type of logs User-Agent parser. */
 export type LogsUserAgentParserType = "user-agent-parser";
@@ -8985,9 +8795,8 @@ export const LogsPipelineProcessorProcessorsList = /*@__PURE__*/ S.Array(
 
 /** A list of tags associated with the pipeline. */
 export type LogsPipelineProcessorTagsList = Array<string>;
-export const LogsPipelineProcessorTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsPipelineProcessorTagsList>;
+export const LogsPipelineProcessorTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelineProcessorTagsList>;
 
 /** Type of logs pipeline processor. */
 export type LogsPipelineProcessorType = "pipeline";
@@ -9022,9 +8831,8 @@ export const LogsPipelineProcessor = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsGeoIPParserSourcesList = Array<string>;
-export const LogsGeoIPParserSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsGeoIPParserSourcesList>;
+export const LogsGeoIPParserSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsGeoIPParserSourcesList>;
 
 /** Type of GeoIP parser. */
 export type LogsGeoIPParserType = "geo-ip-parser";
@@ -9054,9 +8862,8 @@ export const LogsGeoIPParser = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]` */
 export type LogsLookupProcessorLookupTableList = Array<string>;
-export const LogsLookupProcessorLookupTableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsLookupProcessorLookupTableList>;
+export const LogsLookupProcessorLookupTableList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsLookupProcessorLookupTableList>;
 
 /** Type of logs lookup processor. */
 export type LogsLookupProcessorType = "lookup-processor";
@@ -9119,9 +8926,8 @@ export const ReferenceTableLogsLookupProcessor = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsTraceRemapperSourcesList = Array<string>;
-export const LogsTraceRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsTraceRemapperSourcesList>;
+export const LogsTraceRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsTraceRemapperSourcesList>;
 
 /** Type of logs trace remapper. */
 export type LogsTraceRemapperType = "trace-id-remapper";
@@ -9148,9 +8954,8 @@ export const LogsTraceRemapper = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsSpanRemapperSourcesList = Array<string>;
-export const LogsSpanRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsSpanRemapperSourcesList>;
+export const LogsSpanRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSpanRemapperSourcesList>;
 
 /** Type of logs span remapper. */
 export type LogsSpanRemapperType = "span-id-remapper";
@@ -9352,9 +9157,8 @@ export const LogsDecoderProcessor = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attributes. */
 export type LogsSchemaRemapperSourcesList = Array<string>;
-export const LogsSchemaRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsSchemaRemapperSourcesList>;
+export const LogsSchemaRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSchemaRemapperSourcesList>;
 
 /** Type of logs schema remapper. */
 export type LogsSchemaRemapperType = "schema-remapper";
@@ -9412,25 +9216,20 @@ export const LogsSchemaCategoryMapperCategoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LogsSchemaCategoryMapperCategoriesList>;
 
 export type LogsSchemaCategoryMapperFallbackSourcesValueList = Array<string>;
-export const LogsSchemaCategoryMapperFallbackSourcesValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsSchemaCategoryMapperFallbackSourcesValueList>;
+export const LogsSchemaCategoryMapperFallbackSourcesValueList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSchemaCategoryMapperFallbackSourcesValueList>;
 
 /** Fallback sources used to populate value of field. */
 export type LogsSchemaCategoryMapperFallbackSourcesMap = {
   [key: string]: LogsSchemaCategoryMapperFallbackSourcesValueList | undefined;
 };
-export const LogsSchemaCategoryMapperFallbackSourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  LogsSchemaCategoryMapperFallbackSourcesValueList,
-) as any as S.Schema<LogsSchemaCategoryMapperFallbackSourcesMap>;
+export const LogsSchemaCategoryMapperFallbackSourcesMap =
+  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<LogsSchemaCategoryMapperFallbackSourcesMap>;
 
 /** Values that define when the fallback is used. */
 export type LogsSchemaCategoryMapperFallbackValuesMap = { [key: string]: string | undefined };
-export const LogsSchemaCategoryMapperFallbackValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogsSchemaCategoryMapperFallbackValuesMap>;
+export const LogsSchemaCategoryMapperFallbackValuesMap =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<LogsSchemaCategoryMapperFallbackValuesMap>;
 
 /** Used to override hardcoded category values with a value pulled from a source attribute on the log. */
 export interface LogsSchemaCategoryMapperFallback {
@@ -9500,9 +9299,8 @@ export const LogsSchemaProcessorMappersList = /*@__PURE__*/ S.Array(
 
 /** Optional list of profiles to modify the schema. */
 export type LogsSchemaDataProfilesList = Array<string>;
-export const LogsSchemaDataProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsSchemaDataProfilesList>;
+export const LogsSchemaDataProfilesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsSchemaDataProfilesList>;
 
 /** Configuration of the schema data to use. */
 export interface LogsSchemaData {
@@ -9579,9 +9377,8 @@ export const LogsExcludeAttributeProcessor = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of source attribute paths. */
 export type LogsArrayMapAttributeRemapperSourcesList = Array<string>;
-export const LogsArrayMapAttributeRemapperSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsArrayMapAttributeRemapperSourcesList>;
+export const LogsArrayMapAttributeRemapperSourcesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsArrayMapAttributeRemapperSourcesList>;
 
 /** An attribute remapper sub-processor for use inside an array-map processor. Unlike the top-level attribute remapper, `is_enabled`, `source_type`, and `target_type` are not supported. */
 export interface LogsArrayMapAttributeRemapper {
@@ -9662,9 +9459,8 @@ export const LogsArrayMapStringBuilderSubProcessor = /*@__PURE__*/ S.suspend(() 
 
 /** Array of filters to match against a log and the corresponding value to assign. */
 export type LogsArrayMapCategorySubProcessorCategoriesList = Array<LogsCategoryProcessorCategory>;
-export const LogsArrayMapCategorySubProcessorCategoriesList = /*@__PURE__*/ S.Array(
-  LogsCategoryProcessorCategory,
-) as any as S.Schema<LogsArrayMapCategorySubProcessorCategoriesList>;
+export const LogsArrayMapCategorySubProcessorCategoriesList =
+  LogsCategoryProcessorCategoriesList as any as S.Schema<LogsArrayMapCategorySubProcessorCategoriesList>;
 
 /** A category sub-processor for use inside an array-map processor. Unlike the top-level category processor, `is_enabled` is not supported. */
 export interface LogsArrayMapCategorySubProcessor {
@@ -9767,9 +9563,8 @@ export const CreateLogsPipelineRequestProcessorsList = /*@__PURE__*/ S.Array(
 
 /** A list of tags associated with the pipeline. */
 export type CreateLogsPipelineRequestTagsList = Array<string>;
-export const CreateLogsPipelineRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateLogsPipelineRequestTagsList>;
+export const CreateLogsPipelineRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateLogsPipelineRequestTagsList>;
 
 export interface CreateLogsPipelineRequest {
   /** A description of the pipeline. */
@@ -9799,15 +9594,13 @@ export const CreateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of processors in this pipeline. */
 export type LogsPipelineProcessorsList = Array<LogsProcessor>;
-export const LogsPipelineProcessorsList = /*@__PURE__*/ S.Array(
-  LogsProcessor,
-) as any as S.Schema<LogsPipelineProcessorsList>;
+export const LogsPipelineProcessorsList =
+  CreateLogsPipelineRequestProcessorsList as any as S.Schema<LogsPipelineProcessorsList>;
 
 /** A list of tags associated with the pipeline. */
 export type LogsPipelineTagsList = Array<string>;
-export const LogsPipelineTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsPipelineTagsList>;
+export const LogsPipelineTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelineTagsList>;
 
 /** Pipelines and processors operate on incoming logs, parsing and transforming them into structured attributes for easier querying. **Note**: These endpoints are only available for admin users. Make sure to use an application key created by an admin. */
 export interface LogsPipeline {
@@ -9884,9 +9677,8 @@ export const MonitorDraftStatus = S.String;
 
 /** The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`. Provide multiple scopes as a comma-separated list like `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`). */
 export type MatchingDowntimeInputScopeList = Array<string>;
-export const MatchingDowntimeInputScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MatchingDowntimeInputScopeList>;
+export const MatchingDowntimeInputScopeList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MatchingDowntimeInputScopeList>;
 
 /** Object describing a downtime that matches this monitor. */
 export interface MatchingDowntimeInput {
@@ -9924,9 +9716,8 @@ export const MonitorOptionsNotificationPresets = S.String;
 
 /** Controls what granularity a monitor alerts on. Only available for monitors with groupings. For instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each new `cluster` violating the alert conditions by setting `notify_by` to `["cluster"]`. Tags mentioned in `notify_by` must be a subset of the grouping tags in the query. For example, a query grouped by `cluster` and `namespace` cannot notify on `region`. Setting `notify_by` to `["*"]` configures the monitor to notify as a simple-alert. */
 export type MonitorOptionsInputNotifyByList = Array<string>;
-export const MonitorOptionsInputNotifyByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorOptionsInputNotifyByList>;
+export const MonitorOptionsInputNotifyByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorOptionsInputNotifyByList>;
 
 /** Controls how groups or monitors are treated if an evaluation does not return any data points. The default option results in different behavior depending on the monitor query type. For monitors using Count queries, an empty monitor evaluation is treated as 0 and is compared to the threshold conditions. For monitors using any query type other than Count, for example Gauge, Measure, or Rate, the monitor shows the last known status. This option is available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors. It is also required for metric monitors that use `scheduling_options.custom_schedule`. */
 export type OnMissingDataOption =
@@ -10179,9 +9970,8 @@ export const MonitorFormulaAndFunctionEventQueryDefinitionGroupByList = /*@__PUR
 
 /** An array of index names to query in the stream. Omit or use `[]` to query all indexes at once. */
 export type MonitorFormulaAndFunctionEventQueryDefinitionIndexesList = Array<string>;
-export const MonitorFormulaAndFunctionEventQueryDefinitionIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorFormulaAndFunctionEventQueryDefinitionIndexesList>;
+export const MonitorFormulaAndFunctionEventQueryDefinitionIndexesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorFormulaAndFunctionEventQueryDefinitionIndexesList>;
 
 /** Search options. */
 export type MonitorFormulaAndFunctionEventQueryDefinitionSearch =
@@ -10257,9 +10047,8 @@ export const MonitorFormulaAndFunctionDataQualityDataSource = S.String;
 
 /** Optional grouping fields for aggregation. */
 export type MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList = Array<string>;
-export const MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList>;
+export const MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList>;
 
 /** Columns to group results by. */
 export type MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList = Array<string>;
@@ -10317,9 +10106,7 @@ export const MonitorFormulaAndFunctionDataQualityDiffType = S.String;
 export type MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList =
   Array<string>;
 export const MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList>;
+  MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList as any as S.Schema<MonitorFormulaAndFunctionDataQualityEntityMetricConfigGroupByColumnsList>;
 
 /** Measure configuration for one side of a source to target comparison. */
 export interface MonitorFormulaAndFunctionDataQualityEntityMetricConfig {
@@ -10633,9 +10420,7 @@ export const MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition = /*@__P
 export type MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList =
   Array<MonitorFormulaAndFunctionEventQueryDefinitionCompute>;
 export const MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList =
-  /*@__PURE__*/ S.Array(
-    MonitorFormulaAndFunctionEventQueryDefinitionCompute,
-  ) as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList>;
+  MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList>;
 
 /** Data source for aggregate filtered queries. */
 export type MonitorFormulaAndFunctionAggregateFilteredDataSource = "aggregate_filtered_query";
@@ -10679,9 +10464,7 @@ export const MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionFiltersLis
 export type MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList =
   Array<MonitorFormulaAndFunctionEventQueryGroupBy>;
 export const MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList =
-  /*@__PURE__*/ S.Array(
-    MonitorFormulaAndFunctionEventQueryGroupBy,
-  ) as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList>;
+  MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList as any as S.Schema<MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList>;
 
 /** A formula and functions aggregate filtered query. Used to filter base query results using data from another source. */
 export interface MonitorFormulaAndFunctionAggregateFilteredQueryDefinition {
@@ -10821,15 +10604,13 @@ export const MonitorOptionsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type CreateMonitorRequestRestrictedRolesList = Array<string>;
-export const CreateMonitorRequestRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMonitorRequestRestrictedRolesList>;
+export const CreateMonitorRequestRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type CreateMonitorRequestTagsList = Array<string>;
-export const CreateMonitorRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMonitorRequestTagsList>;
+export const CreateMonitorRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateMonitorRequestTagsList>;
 
 /** The type of the monitor. For more information about `type`, see the [monitor options](https://docs.datadoghq.com/monitors/guide/monitor_api_options/) docs. */
 export type MonitorType =
@@ -10897,15 +10678,13 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type MonitorAssetsList = Array<MonitorAsset>;
-export const MonitorAssetsList = /*@__PURE__*/ S.Array(
-  MonitorAsset,
-) as any as S.Schema<MonitorAssetsList>;
+export const MonitorAssetsList =
+  CreateMonitorRequestAssetsList as any as S.Schema<MonitorAssetsList>;
 
 /** The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`. Provide multiple scopes as a comma-separated list like `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`). */
 export type MatchingDowntimeScopeList = Array<string>;
-export const MatchingDowntimeScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MatchingDowntimeScopeList>;
+export const MatchingDowntimeScopeList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MatchingDowntimeScopeList>;
 
 /** Object describing a downtime that matches this monitor. */
 export interface MatchingDowntime {
@@ -10973,28 +10752,23 @@ export const MonitorOptionsDeviceIdsList = /*@__PURE__*/ S.Array(
 
 /** Controls what granularity a monitor alerts on. Only available for monitors with groupings. For instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each new `cluster` violating the alert conditions by setting `notify_by` to `["cluster"]`. Tags mentioned in `notify_by` must be a subset of the grouping tags in the query. For example, a query grouped by `cluster` and `namespace` cannot notify on `region`. Setting `notify_by` to `["*"]` configures the monitor to notify as a simple-alert. */
 export type MonitorOptionsNotifyByList = Array<string>;
-export const MonitorOptionsNotifyByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorOptionsNotifyByList>;
+export const MonitorOptionsNotifyByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorOptionsNotifyByList>;
 
 /** The types of monitor statuses for which re-notification messages are sent. Default: **null** if `renotify_interval` is **null**. If `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`. */
 export type MonitorOptionsRenotifyStatusesList = Array<MonitorRenotifyStatusType>;
-export const MonitorOptionsRenotifyStatusesList = /*@__PURE__*/ S.Array(
-  MonitorRenotifyStatusType,
-) as any as S.Schema<MonitorOptionsRenotifyStatusesList>;
+export const MonitorOptionsRenotifyStatusesList =
+  MonitorOptionsInputRenotifyStatusesList as any as S.Schema<MonitorOptionsRenotifyStatusesList>;
 
 /** Information about the downtime applied to the monitor. Only shows v1 downtimes. */
 export type MonitorOptionsSilencedMap = { [key: string]: number | null | undefined };
-export const MonitorOptionsSilencedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.Number),
-) as any as S.Schema<MonitorOptionsSilencedMap>;
+export const MonitorOptionsSilencedMap =
+  MonitorOptionsInputSilencedMap as any as S.Schema<MonitorOptionsSilencedMap>;
 
 /** List of requests that can be used in the monitor query. **This feature is currently in beta.** */
 export type MonitorOptionsVariablesList = Array<MonitorFormulaAndFunctionQueryDefinition>;
-export const MonitorOptionsVariablesList = /*@__PURE__*/ S.Array(
-  MonitorFormulaAndFunctionQueryDefinition,
-) as any as S.Schema<MonitorOptionsVariablesList>;
+export const MonitorOptionsVariablesList =
+  MonitorOptionsInputVariablesList as any as S.Schema<MonitorOptionsVariablesList>;
 
 /** List of options associated with your monitor. */
 export interface MonitorOptions {
@@ -11104,9 +10878,8 @@ export const MonitorOverallStates = S.String;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type MonitorRestrictedRolesList = Array<string>;
-export const MonitorRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorRestrictedRolesList>;
+export const MonitorRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorRestrictedRolesList>;
 
 /** Monitor state for a single group. */
 export interface MonitorStateGroup {
@@ -11153,7 +10926,7 @@ export const MonitorState = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags associated to your monitor. */
 export type MonitorTagsList = Array<string>;
-export const MonitorTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MonitorTagsList>;
+export const MonitorTagsList = CrossOrgUuids as any as S.Schema<MonitorTagsList>;
 
 /** Object describing a monitor. */
 export interface Monitor {
@@ -11251,15 +11024,13 @@ export const NotebookGraphSize = S.String;
 
 /** Keys to split on. */
 export type NotebookSplitByKeysList = Array<string>;
-export const NotebookSplitByKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookSplitByKeysList>;
+export const NotebookSplitByKeysList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookSplitByKeysList>;
 
 /** Tags to split on. */
 export type NotebookSplitByTagsList = Array<string>;
-export const NotebookSplitByTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookSplitByTagsList>;
+export const NotebookSplitByTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookSplitByTagsList>;
 
 /** Object describing how to split the graph to display multiple visualizations per request. */
 export interface NotebookSplitBy {
@@ -11460,9 +11231,8 @@ export const NotebookStatus = S.String;
 
 /** The list of values that the template variable drop-down is limited to. */
 export type NotebookTemplateVariableAvailableValuesList = Array<string>;
-export const NotebookTemplateVariableAvailableValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookTemplateVariableAvailableValuesList>;
+export const NotebookTemplateVariableAvailableValuesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookTemplateVariableAvailableValuesList>;
 
 /** A group-by facet for an available values query. */
 export interface NotebookTemplateVariableAvailableValuesQueryGroupBy {
@@ -11490,13 +11260,8 @@ export interface NotebookTemplateVariableAvailableValuesQuerySearch {
   /** The search query string. */
   query: string;
 }
-export const NotebookTemplateVariableAvailableValuesQuerySearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    query: S.String,
-  }),
-).annotate({
-  identifier: "NotebookTemplateVariableAvailableValuesQuerySearch",
-}) as any as S.Schema<NotebookTemplateVariableAvailableValuesQuerySearch>;
+export const NotebookTemplateVariableAvailableValuesQuerySearch =
+  FormulaAndFunctionEventQueryDefinitionSearch as any as S.Schema<NotebookTemplateVariableAvailableValuesQuerySearch>;
 
 /** Available values query for logs, RUM, or spans data sources. */
 export interface NotebookTemplateVariableAvailableValuesQueryLogRumSpans {
@@ -11541,16 +11306,13 @@ export const NotebookTemplateVariableAvailableValuesQuery =
 
 /** Mapping of data source names to template variable values. */
 export type NotebookTemplateVariableDataSourceMappingsMap = { [key: string]: string | undefined };
-export const NotebookTemplateVariableDataSourceMappingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotebookTemplateVariableDataSourceMappingsMap>;
+export const NotebookTemplateVariableDataSourceMappingsMap =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<NotebookTemplateVariableDataSourceMappingsMap>;
 
 /** One or many default values for the template variable. Cannot be used in conjunction with `default`. */
 export type NotebookTemplateVariableDefaultsList = Array<string>;
-export const NotebookTemplateVariableDefaultsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotebookTemplateVariableDefaultsList>;
+export const NotebookTemplateVariableDefaultsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<NotebookTemplateVariableDefaultsList>;
 
 /** Notebook template variable. */
 export interface NotebookTemplateVariable {
@@ -11715,9 +11477,8 @@ export const NotebookResponseDataAttributesCellsList = /*@__PURE__*/ S.Array(
 
 /** List of template variables for this notebook. */
 export type NotebookResponseDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-export const NotebookResponseDataAttributesTemplateVariablesList = /*@__PURE__*/ S.Array(
-  NotebookTemplateVariable,
-) as any as S.Schema<NotebookResponseDataAttributesTemplateVariablesList>;
+export const NotebookResponseDataAttributesTemplateVariablesList =
+  NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebookResponseDataAttributesTemplateVariablesList>;
 
 /** The attributes of a notebook. */
 export interface NotebookResponseDataAttributes {
@@ -11815,9 +11576,8 @@ export const SyntheticsPrivateLocationMetadata = SyntheticsGlobalVariableAttribu
 
 /** Array of tags attached to the private location. */
 export type CreatePrivateLocationRequestTagsList = Array<string>;
-export const CreatePrivateLocationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePrivateLocationRequestTagsList>;
+export const CreatePrivateLocationRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePrivateLocationRequestTagsList>;
 
 export interface CreatePrivateLocationRequest {
   /** Description of the private location. */
@@ -11884,9 +11644,8 @@ export const SyntheticsPrivateLocationSecrets = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of tags attached to the private location. */
 export type SyntheticsPrivateLocationTagsList = Array<string>;
-export const SyntheticsPrivateLocationTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsPrivateLocationTagsList>;
+export const SyntheticsPrivateLocationTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsPrivateLocationTagsList>;
 
 /** Object containing information about the private location to create. */
 export interface SyntheticsPrivateLocation {
@@ -11954,9 +11713,8 @@ export const DashboardType = S.String;
 
 /** The `SharedDashboard` `embeddable_domains`. */
 export type CreatePublicDashboardRequestEmbeddableDomainsList = Array<string>;
-export const CreatePublicDashboardRequestEmbeddableDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePublicDashboardRequestEmbeddableDomainsList>;
+export const CreatePublicDashboardRequestEmbeddableDomainsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePublicDashboardRequestEmbeddableDomainsList>;
 
 /** Dashboard global time live_span selection */
 export type DashboardGlobalTimeLiveSpan = "15m" | "1h" | "4h" | "1d" | "2d" | "1w" | "1mo" | "3mo";
@@ -11996,9 +11754,8 @@ export const CreatePublicDashboardRequestInviteesList = /*@__PURE__*/ S.Array(
 
 /** List of visible tag values on the shared dashboard. */
 export type SelectableTemplateVariableItemsVisibleTagsList = Array<string>;
-export const SelectableTemplateVariableItemsVisibleTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SelectableTemplateVariableItemsVisibleTagsList>;
+export const SelectableTemplateVariableItemsVisibleTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SelectableTemplateVariableItemsVisibleTagsList>;
 
 /** Object containing the template variable's name, associated tag/attribute, default value and selectable values. */
 export interface SelectableTemplateVariableItems {
@@ -12034,9 +11791,8 @@ export const CreatePublicDashboardRequestSelectableTemplateVarsList = /*@__PURE_
 
 /** List of email addresses that can receive an invitation to access to the shared dashboard. */
 export type CreatePublicDashboardRequestShareListList = Array<string>;
-export const CreatePublicDashboardRequestShareListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePublicDashboardRequestShareListList>;
+export const CreatePublicDashboardRequestShareListList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreatePublicDashboardRequestShareListList>;
 
 /** Type of sharing access (either open to anyone who has the public URL or invite-only). */
 export type DashboardShareType = "open" | "invite" | "embed";
@@ -12124,9 +11880,8 @@ export const SharedDashboardAuthor = /*@__PURE__*/ S.suspend(() =>
 
 /** The `SharedDashboard` `embeddable_domains`. */
 export type SharedDashboardEmbeddableDomainsList = Array<string>;
-export const SharedDashboardEmbeddableDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SharedDashboardEmbeddableDomainsList>;
+export const SharedDashboardEmbeddableDomainsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SharedDashboardEmbeddableDomainsList>;
 
 /** The allowlisted invitees for an INVITE-only shared dashboard. */
 export interface SharedDashboardInviteesItems {
@@ -12155,15 +11910,13 @@ export const SharedDashboardInviteesList = /*@__PURE__*/ S.Array(
 
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type SharedDashboardSelectableTemplateVarsList = Array<SelectableTemplateVariableItems>;
-export const SharedDashboardSelectableTemplateVarsList = /*@__PURE__*/ S.Array(
-  SelectableTemplateVariableItems,
-) as any as S.Schema<SharedDashboardSelectableTemplateVarsList>;
+export const SharedDashboardSelectableTemplateVarsList =
+  CreatePublicDashboardRequestSelectableTemplateVarsList as any as S.Schema<SharedDashboardSelectableTemplateVarsList>;
 
 /** List of email addresses that can receive an invitation to access to the shared dashboard. */
 export type SharedDashboardShareListList = Array<string>;
-export const SharedDashboardShareListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SharedDashboardShareListList>;
+export const SharedDashboardShareListList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SharedDashboardShareListList>;
 
 /** The metadata object associated with how a dashboard has been/will be shared. */
 export interface SharedDashboard {
@@ -12284,15 +12037,13 @@ export const SlackIntegrationChannel = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type CreateSLORequestGroupsList = Array<string>;
-export const CreateSLORequestGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSLORequestGroupsList>;
+export const CreateSLORequestGroupsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSLORequestGroupsList>;
 
 /** A list of monitor IDs that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type CreateSLORequestMonitorIdsList = Array<number>;
-export const CreateSLORequestMonitorIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateSLORequestMonitorIdsList>;
+export const CreateSLORequestMonitorIdsList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<CreateSLORequestMonitorIdsList>;
 
 /** A count-based (metric) SLO query. This field is superseded by `sli_specification` but is retained for backwards compatibility. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests. */
 export interface ServiceLevelObjectiveQuery {
@@ -12384,9 +12135,8 @@ export const SLOTimeSliceSpec = /*@__PURE__*/ S.suspend(() =>
 
 export type SLOCountDefinitionWithTotalEventsFormulaQueriesList =
   Array<FormulaAndFunctionMetricQueryDefinition>;
-export const SLOCountDefinitionWithTotalEventsFormulaQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionMetricQueryDefinition,
-) as any as S.Schema<SLOCountDefinitionWithTotalEventsFormulaQueriesList>;
+export const SLOCountDefinitionWithTotalEventsFormulaQueriesList =
+  SLOTimeSliceQueryQueriesList as any as S.Schema<SLOCountDefinitionWithTotalEventsFormulaQueriesList>;
 
 /** SLO count definition using a total events formula alongside a good events formula. */
 export interface SLOCountDefinitionWithTotalEventsFormula {
@@ -12407,9 +12157,8 @@ export const SLOCountDefinitionWithTotalEventsFormula = /*@__PURE__*/ S.suspend(
 
 export type SLOCountDefinitionWithBadEventsFormulaQueriesList =
   Array<FormulaAndFunctionMetricQueryDefinition>;
-export const SLOCountDefinitionWithBadEventsFormulaQueriesList = /*@__PURE__*/ S.Array(
-  FormulaAndFunctionMetricQueryDefinition,
-) as any as S.Schema<SLOCountDefinitionWithBadEventsFormulaQueriesList>;
+export const SLOCountDefinitionWithBadEventsFormulaQueriesList =
+  SLOTimeSliceQueryQueriesList as any as S.Schema<SLOCountDefinitionWithBadEventsFormulaQueriesList>;
 
 /** SLO count definition using a bad events formula alongside a good events formula. */
 export interface SLOCountDefinitionWithBadEventsFormula {
@@ -12450,9 +12199,8 @@ export const SLOSliSpec = S.Unknown as any as S.Schema<SLOSliSpec>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type CreateSLORequestTagsList = Array<string>;
-export const CreateSLORequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSLORequestTagsList>;
+export const CreateSLORequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSLORequestTagsList>;
 
 /** The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. */
 export type SLOTimeframe = "7d" | "30d" | "90d" | "custom";
@@ -12531,33 +12279,28 @@ export const CreateSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type ServiceLevelObjectiveGroupsList = Array<string>;
-export const ServiceLevelObjectiveGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceLevelObjectiveGroupsList>;
+export const ServiceLevelObjectiveGroupsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type ServiceLevelObjectiveMonitorIdsList = Array<number>;
-export const ServiceLevelObjectiveMonitorIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServiceLevelObjectiveMonitorIdsList>;
+export const ServiceLevelObjectiveMonitorIdsList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<ServiceLevelObjectiveMonitorIdsList>;
 
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type ServiceLevelObjectiveMonitorTagsList = Array<string>;
-export const ServiceLevelObjectiveMonitorTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceLevelObjectiveMonitorTagsList>;
+export const ServiceLevelObjectiveMonitorTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveMonitorTagsList>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type ServiceLevelObjectiveTagsList = Array<string>;
-export const ServiceLevelObjectiveTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceLevelObjectiveTagsList>;
+export const ServiceLevelObjectiveTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceLevelObjectiveTagsList>;
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type ServiceLevelObjectiveThresholdsList = Array<SLOThreshold>;
-export const ServiceLevelObjectiveThresholdsList = /*@__PURE__*/ S.Array(
-  SLOThreshold,
-) as any as S.Schema<ServiceLevelObjectiveThresholdsList>;
+export const ServiceLevelObjectiveThresholdsList =
+  CreateSLORequestThresholdsList as any as S.Schema<ServiceLevelObjectiveThresholdsList>;
 
 /** A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.). */
 export interface ServiceLevelObjective {
@@ -12621,9 +12364,8 @@ export const SLOListResponseDataList = /*@__PURE__*/ S.Array(
 
 /** An array of error messages. Each endpoint documents how/whether this field is used. */
 export type SLOListResponseErrorsList = Array<string>;
-export const SLOListResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOListResponseErrorsList>;
+export const SLOListResponseErrorsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOListResponseErrorsList>;
 
 /** The object containing information about the pages of the list of SLOs. */
 export interface SLOListResponseMetadataPage {
@@ -13477,9 +13219,8 @@ export const SyntheticsTestRequestCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** By default, the client certificate is applied on the domain of the starting URL for browser tests. If you want your client certificate to be applied on other domains instead, add them in `certificateDomains`. */
 export type SyntheticsTestRequestCertificateDomainsList = Array<string>;
-export const SyntheticsTestRequestCertificateDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestRequestCertificateDomainsList>;
+export const SyntheticsTestRequestCertificateDomainsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestRequestCertificateDomainsList>;
 
 /** DNS server port to use for DNS tests. */
 export type SyntheticsTestRequestDNSServerPort = number | string;
@@ -13525,17 +13266,13 @@ export const SyntheticsTestRequestFilesList = /*@__PURE__*/ S.Array(
 
 /** Form to be used as part of the request in the test. Only valid if `bodyType` is `multipart/form-data`. */
 export type SyntheticsTestRequestFormMap = { [key: string]: string | undefined };
-export const SyntheticsTestRequestFormMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SyntheticsTestRequestFormMap>;
+export const SyntheticsTestRequestFormMap =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestRequestFormMap>;
 
 /** Headers to include when performing the test. */
 export type SyntheticsTestHeaders = { [key: string]: string | undefined };
-export const SyntheticsTestHeaders = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SyntheticsTestHeaders>;
+export const SyntheticsTestHeaders =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestHeaders>;
 
 /** HTTP version to use for a Synthetic test. */
 export type SyntheticsTestOptionsHTTPVersion = "http1" | "http2" | "any";
@@ -13547,10 +13284,8 @@ export const SyntheticsMCPProtocolVersion = S.String;
 
 /** Metadata to include when performing the gRPC test. */
 export type SyntheticsTestMetadata = { [key: string]: string | undefined };
-export const SyntheticsTestMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SyntheticsTestMetadata>;
+export const SyntheticsTestMetadata =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsTestMetadata>;
 
 /** Port to use when performing the test. */
 export type SyntheticsTestRequestPort = number | string;
@@ -13692,9 +13427,8 @@ export const SyntheticsTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. */
 export type SyntheticsAPITestStepInputAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsAPITestStepInputAssertionsList = /*@__PURE__*/ S.Array(
-  SyntheticsAssertion,
-) as any as S.Schema<SyntheticsAPITestStepInputAssertionsList>;
+export const SyntheticsAPITestStepInputAssertionsList =
+  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsAPITestStepInputAssertionsList>;
 
 /** Property of the Synthetic Test Response to extract into a local variable. */
 export type SyntheticsLocalVariableParsingOptionsType =
@@ -13898,15 +13632,13 @@ export const SyntheticsAPITestConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type CreateSyntheticsAPITestRequestLocationsList = Array<string>;
-export const CreateSyntheticsAPITestRequestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSyntheticsAPITestRequestLocationsList>;
+export const CreateSyntheticsAPITestRequestLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsAPITestRequestLocationsList>;
 
 /** Array of URL patterns to block. */
 export type SyntheticsTestOptionsBlockedRequestPatternsList = Array<string>;
-export const SyntheticsTestOptionsBlockedRequestPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestOptionsBlockedRequestPatternsList>;
+export const SyntheticsTestOptionsBlockedRequestPatternsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestOptionsBlockedRequestPatternsList>;
 
 /** Execution rule for a Synthetic test. */
 export type SyntheticsTestExecutionRule = "blocking" | "non_blocking" | "skipped";
@@ -13924,9 +13656,8 @@ export const SyntheticsTestCiOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** For browser test, array with the different device IDs used to run the test. */
 export type SyntheticsTestOptionsDeviceIdsList = Array<string>;
-export const SyntheticsTestOptionsDeviceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestOptionsDeviceIdsList>;
+export const SyntheticsTestOptionsDeviceIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestOptionsDeviceIdsList>;
 
 /** The name of the preset for the notification for the monitor. */
 export type SyntheticsTestOptionsMonitorOptionsNotificationPresetName =
@@ -14130,9 +13861,8 @@ export const SyntheticsTestDetailsSubType = S.String;
 
 /** Array of tags attached to the test. */
 export type CreateSyntheticsAPITestRequestTagsList = Array<string>;
-export const CreateSyntheticsAPITestRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSyntheticsAPITestRequestTagsList>;
+export const CreateSyntheticsAPITestRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsAPITestRequestTagsList>;
 
 /** Type of the Synthetic test, `api`. */
 export type SyntheticsAPITestType = "api";
@@ -14171,27 +13901,23 @@ export const CreateSyntheticsAPITestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsAPITestConfigAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsAPITestConfigAssertionsList = /*@__PURE__*/ S.Array(
-  SyntheticsAssertion,
-) as any as S.Schema<SyntheticsAPITestConfigAssertionsList>;
+export const SyntheticsAPITestConfigAssertionsList =
+  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsAPITestConfigAssertionsList>;
 
 /** Array of variables used for the test. */
 export type SyntheticsAPITestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsAPITestConfigConfigVariablesList = /*@__PURE__*/ S.Array(
-  SyntheticsConfigVariable,
-) as any as S.Schema<SyntheticsAPITestConfigConfigVariablesList>;
+export const SyntheticsAPITestConfigConfigVariablesList =
+  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsAPITestConfigConfigVariablesList>;
 
 /** Array of assertions used for the test. */
 export type SyntheticsAPITestStepAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsAPITestStepAssertionsList = /*@__PURE__*/ S.Array(
-  SyntheticsAssertion,
-) as any as S.Schema<SyntheticsAPITestStepAssertionsList>;
+export const SyntheticsAPITestStepAssertionsList =
+  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsAPITestStepAssertionsList>;
 
 /** Array of values to parse and save as variables from the response. */
 export type SyntheticsAPITestStepExtractedValuesList = Array<SyntheticsParsingOptions>;
-export const SyntheticsAPITestStepExtractedValuesList = /*@__PURE__*/ S.Array(
-  SyntheticsParsingOptions,
-) as any as S.Schema<SyntheticsAPITestStepExtractedValuesList>;
+export const SyntheticsAPITestStepExtractedValuesList =
+  SyntheticsAPITestStepInputExtractedValuesList as any as S.Schema<SyntheticsAPITestStepExtractedValuesList>;
 
 /** The Test step used in a Synthetic multi-step API test. */
 export interface SyntheticsAPITestStep {
@@ -14323,15 +14049,13 @@ export const SyntheticsAPITestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsAPITestLocationsList = Array<string>;
-export const SyntheticsAPITestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsAPITestLocationsList>;
+export const SyntheticsAPITestLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsAPITestLocationsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsAPITestTagsList = Array<string>;
-export const SyntheticsAPITestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsAPITestTagsList>;
+export const SyntheticsAPITestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsAPITestTagsList>;
 
 /** Object containing details about a Synthetic API test. */
 export interface SyntheticsAPITest {
@@ -14371,15 +14095,13 @@ export const SyntheticsAPITest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. */
 export type SyntheticsBrowserTestConfigAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsBrowserTestConfigAssertionsList = /*@__PURE__*/ S.Array(
-  SyntheticsAssertion,
-) as any as S.Schema<SyntheticsBrowserTestConfigAssertionsList>;
+export const SyntheticsBrowserTestConfigAssertionsList =
+  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsBrowserTestConfigAssertionsList>;
 
 /** Array of variables used for the test. */
 export type SyntheticsBrowserTestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsBrowserTestConfigConfigVariablesList = /*@__PURE__*/ S.Array(
-  SyntheticsConfigVariable,
-) as any as S.Schema<SyntheticsBrowserTestConfigConfigVariablesList>;
+export const SyntheticsBrowserTestConfigConfigVariablesList =
+  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsBrowserTestConfigConfigVariablesList>;
 
 /** Type of browser test variable. */
 export type SyntheticsBrowserVariableType = "element" | "email" | "global" | "text";
@@ -14444,9 +14166,8 @@ export const SyntheticsBrowserTestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type CreateSyntheticsBrowserTestRequestLocationsList = Array<string>;
-export const CreateSyntheticsBrowserTestRequestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSyntheticsBrowserTestRequestLocationsList>;
+export const CreateSyntheticsBrowserTestRequestLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsBrowserTestRequestLocationsList>;
 
 /** Step type used in your Synthetic test. */
 export type SyntheticsStepType =
@@ -14526,9 +14247,8 @@ export const CreateSyntheticsBrowserTestRequestStepsList = /*@__PURE__*/ S.Array
 
 /** Array of tags attached to the test. */
 export type CreateSyntheticsBrowserTestRequestTagsList = Array<string>;
-export const CreateSyntheticsBrowserTestRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSyntheticsBrowserTestRequestTagsList>;
+export const CreateSyntheticsBrowserTestRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsBrowserTestRequestTagsList>;
 
 /** Type of the Synthetic test, `browser`. */
 export type SyntheticsBrowserTestType = "browser";
@@ -14568,21 +14288,18 @@ export const CreateSyntheticsBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsBrowserTestLocationsList = Array<string>;
-export const SyntheticsBrowserTestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsBrowserTestLocationsList>;
+export const SyntheticsBrowserTestLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsBrowserTestLocationsList>;
 
 /** Array of steps for the test. */
 export type SyntheticsBrowserTestStepsList = Array<SyntheticsStep>;
-export const SyntheticsBrowserTestStepsList = /*@__PURE__*/ S.Array(
-  SyntheticsStep,
-) as any as S.Schema<SyntheticsBrowserTestStepsList>;
+export const SyntheticsBrowserTestStepsList =
+  CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<SyntheticsBrowserTestStepsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsBrowserTestTagsList = Array<string>;
-export const SyntheticsBrowserTestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsBrowserTestTagsList>;
+export const SyntheticsBrowserTestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsBrowserTestTagsList>;
 
 /** Object containing details about a Synthetic browser test. */
 export interface SyntheticsBrowserTest {
@@ -14623,16 +14340,13 @@ export const SyntheticsBrowserTest = /*@__PURE__*/ S.suspend(() =>
 
 /** Initial application arguments for a mobile test. */
 export type SyntheticsMobileTestInitialApplicationArguments = { [key: string]: string | undefined };
-export const SyntheticsMobileTestInitialApplicationArguments = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SyntheticsMobileTestInitialApplicationArguments>;
+export const SyntheticsMobileTestInitialApplicationArguments =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsMobileTestInitialApplicationArguments>;
 
 /** Array of variables used for the test steps. */
 export type SyntheticsMobileTestConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsMobileTestConfigVariablesList = /*@__PURE__*/ S.Array(
-  SyntheticsConfigVariable,
-) as any as S.Schema<SyntheticsMobileTestConfigVariablesList>;
+export const SyntheticsMobileTestConfigVariablesList =
+  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsMobileTestConfigVariablesList>;
 
 /** Configuration object for a Synthetic mobile test. */
 export interface SyntheticsMobileTestConfig {
@@ -14651,15 +14365,13 @@ export const SyntheticsMobileTestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Array with the different device IDs used to run the test. */
 export type CreateSyntheticsMobileTestRequestDeviceIdsList = Array<string>;
-export const CreateSyntheticsMobileTestRequestDeviceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSyntheticsMobileTestRequestDeviceIdsList>;
+export const CreateSyntheticsMobileTestRequestDeviceIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsMobileTestRequestDeviceIdsList>;
 
 /** List of principals for a mobile test binding. */
 export type SyntheticsTestRestrictionPolicyBindingPrincipals = Array<string>;
-export const SyntheticsTestRestrictionPolicyBindingPrincipals = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestRestrictionPolicyBindingPrincipals>;
+export const SyntheticsTestRestrictionPolicyBindingPrincipals =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestRestrictionPolicyBindingPrincipals>;
 
 /** The type of relation for the binding. */
 export type SyntheticsTestRestrictionPolicyBindingRelation = "editor" | "viewer";
@@ -14687,9 +14399,8 @@ export const SyntheticsMobileTestOptionsBindingsList = /*@__PURE__*/ S.Array(
 
 /** For mobile test, array with the different device IDs used to run the test. */
 export type SyntheticsMobileTestOptionsDeviceIdsList = Array<string>;
-export const SyntheticsMobileTestOptionsDeviceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsMobileTestOptionsDeviceIdsList>;
+export const SyntheticsMobileTestOptionsDeviceIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestOptionsDeviceIdsList>;
 
 /** Reference type for the mobile application for a mobile synthetics test. */
 export type SyntheticsMobileTestsMobileApplicationReferenceType = "latest" | "version";
@@ -14898,14 +14609,8 @@ export interface SyntheticsMobileStepParamsPositionsItems {
   /** The `y` position for the flick. */
   y?: number;
 }
-export const SyntheticsMobileStepParamsPositionsItems = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SyntheticsMobileStepParamsPositionsItems",
-}) as any as S.Schema<SyntheticsMobileStepParamsPositionsItems>;
+export const SyntheticsMobileStepParamsPositionsItems =
+  SyntheticsMobileStepParamsElementRelativePosition as any as S.Schema<SyntheticsMobileStepParamsPositionsItems>;
 
 /** List of positions for the `flick` step type. The maximum is 10 flicks per step */
 export type SyntheticsMobileStepParamsPositions = Array<SyntheticsMobileStepParamsPositionsItems>;
@@ -15039,9 +14744,8 @@ export const CreateSyntheticsMobileTestRequestStepsList = /*@__PURE__*/ S.Array(
 
 /** Array of tags attached to the test. */
 export type CreateSyntheticsMobileTestRequestTagsList = Array<string>;
-export const CreateSyntheticsMobileTestRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSyntheticsMobileTestRequestTagsList>;
+export const CreateSyntheticsMobileTestRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<CreateSyntheticsMobileTestRequestTagsList>;
 
 /** Type of the Synthetic test, `mobile`. */
 export type SyntheticsMobileTestType = "mobile";
@@ -15081,21 +14785,18 @@ export const CreateSyntheticsMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array with the different device IDs used to run the test. */
 export type SyntheticsMobileTestDeviceIdsList = Array<string>;
-export const SyntheticsMobileTestDeviceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsMobileTestDeviceIdsList>;
+export const SyntheticsMobileTestDeviceIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestDeviceIdsList>;
 
 /** Array of steps for the test. */
 export type SyntheticsMobileTestStepsList = Array<SyntheticsMobileStep>;
-export const SyntheticsMobileTestStepsList = /*@__PURE__*/ S.Array(
-  SyntheticsMobileStep,
-) as any as S.Schema<SyntheticsMobileTestStepsList>;
+export const SyntheticsMobileTestStepsList =
+  CreateSyntheticsMobileTestRequestStepsList as any as S.Schema<SyntheticsMobileTestStepsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsMobileTestTagsList = Array<string>;
-export const SyntheticsMobileTestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsMobileTestTagsList>;
+export const SyntheticsMobileTestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsMobileTestTagsList>;
 
 /** Object containing details about a Synthetic mobile test. */
 export interface SyntheticsMobileTest {
@@ -15287,16 +14988,14 @@ export const DeleteApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type DeleteAzureIntegrationRequestErrorsList = Array<string>;
-export const DeleteAzureIntegrationRequestErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteAzureIntegrationRequestErrorsList>;
+export const DeleteAzureIntegrationRequestErrorsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DeleteAzureIntegrationRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type DeleteAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-export const DeleteAzureIntegrationRequestResourceProviderConfigsList = /*@__PURE__*/ S.Array(
-  ResourceProviderConfig,
-) as any as S.Schema<DeleteAzureIntegrationRequestResourceProviderConfigsList>;
+export const DeleteAzureIntegrationRequestResourceProviderConfigsList =
+  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<DeleteAzureIntegrationRequestResourceProviderConfigsList>;
 
 export interface DeleteAzureIntegrationRequest {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
@@ -15362,11 +15061,8 @@ export const DeleteAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAzureIntegrationRequest>;
 
 export type DeleteAzureIntegrationResponse = unknown;
-export const DeleteAzureIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteAzureIntegrationResponse",
-}) as any as S.Schema<DeleteAzureIntegrationResponse>;
+export const DeleteAzureIntegrationResponse =
+  CreateAzureIntegrationResponse as any as S.Schema<DeleteAzureIntegrationResponse>;
 
 export interface DeleteDashboardRequest {
   /** The ID of the dashboard. */
@@ -15446,9 +15142,8 @@ export const DeleteDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDashboardsRequest" }) as any as S.Schema<DeleteDashboardsRequest>;
 
 export interface DeleteDashboardsResponse {}
-export const DeleteDashboardsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDashboardsResponse",
-}) as any as S.Schema<DeleteDashboardsResponse>;
+export const DeleteDashboardsResponse =
+  CreateEventResponse as any as S.Schema<DeleteDashboardsResponse>;
 
 export interface DeleteGlobalVariableRequest {
   /** The ID of the global variable. */
@@ -15465,9 +15160,8 @@ export const DeleteGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalVariableRequest>;
 
 export interface DeleteGlobalVariableResponse {}
-export const DeleteGlobalVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGlobalVariableResponse",
-}) as any as S.Schema<DeleteGlobalVariableResponse>;
+export const DeleteGlobalVariableResponse =
+  CreateEventResponse as any as S.Schema<DeleteGlobalVariableResponse>;
 
 export interface DeleteHostTagsRequest {
   /** Specified host name to delete tags */
@@ -15483,9 +15177,8 @@ export const DeleteHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHostTagsRequest" }) as any as S.Schema<DeleteHostTagsRequest>;
 
 export interface DeleteHostTagsResponse {}
-export const DeleteHostTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHostTagsResponse",
-}) as any as S.Schema<DeleteHostTagsResponse>;
+export const DeleteHostTagsResponse =
+  CreateEventResponse as any as S.Schema<DeleteHostTagsResponse>;
 
 export interface DeleteLogsIndexRequest {
   /** Name of the log index. */
@@ -15498,9 +15191,8 @@ export const DeleteLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLogsIndexRequest" }) as any as S.Schema<DeleteLogsIndexRequest>;
 
 export interface DeleteLogsIndexResponse {}
-export const DeleteLogsIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLogsIndexResponse",
-}) as any as S.Schema<DeleteLogsIndexResponse>;
+export const DeleteLogsIndexResponse =
+  CreateEventResponse as any as S.Schema<DeleteLogsIndexResponse>;
 
 export interface DeleteLogsPipelineRequest {
   /** ID of the pipeline to delete. */
@@ -15517,9 +15209,8 @@ export const DeleteLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogsPipelineRequest>;
 
 export interface DeleteLogsPipelineResponse {}
-export const DeleteLogsPipelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLogsPipelineResponse",
-}) as any as S.Schema<DeleteLogsPipelineResponse>;
+export const DeleteLogsPipelineResponse =
+  CreateEventResponse as any as S.Schema<DeleteLogsPipelineResponse>;
 
 export interface DeleteMonitorRequest {
   /** The ID of the monitor. */
@@ -15556,9 +15247,8 @@ export const DeleteNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNotebookRequest" }) as any as S.Schema<DeleteNotebookRequest>;
 
 export interface DeleteNotebookResponse {}
-export const DeleteNotebookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotebookResponse",
-}) as any as S.Schema<DeleteNotebookResponse>;
+export const DeleteNotebookResponse =
+  CreateEventResponse as any as S.Schema<DeleteNotebookResponse>;
 
 export interface DeletePagerDutyIntegrationServiceRequest {
   /** The service name */
@@ -15604,9 +15294,8 @@ export const DeletePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateLocationRequest>;
 
 export interface DeletePrivateLocationResponse {}
-export const DeletePrivateLocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePrivateLocationResponse",
-}) as any as S.Schema<DeletePrivateLocationResponse>;
+export const DeletePrivateLocationResponse =
+  CreateEventResponse as any as S.Schema<DeletePrivateLocationResponse>;
 
 export interface DeletePublicDashboardRequest {
   /** The token of the shared dashboard. */
@@ -15694,11 +15383,8 @@ export const DeletePublicDashboardInvitationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePublicDashboardInvitationRequest>;
 
 export interface DeletePublicDashboardInvitationResponse {}
-export const DeletePublicDashboardInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePublicDashboardInvitationResponse",
-}) as any as S.Schema<DeletePublicDashboardInvitationResponse>;
+export const DeletePublicDashboardInvitationResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeletePublicDashboardInvitationResponse>;
 
 export interface DeleteSLORequest {
   /** The ID of the service level objective. */
@@ -15715,16 +15401,13 @@ export const DeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the ID of the deleted service level objective object. */
 export type SLODeleteResponseDataList = Array<string>;
-export const SLODeleteResponseDataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLODeleteResponseDataList>;
+export const SLODeleteResponseDataList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLODeleteResponseDataList>;
 
 /** An dictionary containing the ID of the SLO as key and a deletion error as value. */
 export type SLODeleteResponseErrorsMap = { [key: string]: string | undefined };
-export const SLODeleteResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SLODeleteResponseErrorsMap>;
+export const SLODeleteResponseErrorsMap =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SLODeleteResponseErrorsMap>;
 
 /** A response list of all service level objective deleted. */
 export interface SLODeleteResponse {
@@ -15755,9 +15438,8 @@ export const DeleteSLOCorrectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSLOCorrectionRequest>;
 
 export interface DeleteSLOCorrectionResponse {}
-export const DeleteSLOCorrectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSLOCorrectionResponse",
-}) as any as S.Schema<DeleteSLOCorrectionResponse>;
+export const DeleteSLOCorrectionResponse =
+  CreateEventResponse as any as S.Schema<DeleteSLOCorrectionResponse>;
 
 /** An array of all SLO timeframes. */
 export type SLOBulkDeleteValueList = Array<SLOTimeframe | (string & {})>;
@@ -15785,15 +15467,13 @@ export const DeleteSLOTimeframeInBulkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of service level objective object IDs that indicates which objects that were completely deleted. */
 export type SLOBulkDeleteResponseDataDeletedList = Array<string>;
-export const SLOBulkDeleteResponseDataDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOBulkDeleteResponseDataDeletedList>;
+export const SLOBulkDeleteResponseDataDeletedList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOBulkDeleteResponseDataDeletedList>;
 
 /** An array of service level objective object IDs that indicates which objects that were modified (objects for which at least one threshold was deleted, but that were not completely deleted). */
 export type SLOBulkDeleteResponseDataUpdatedList = Array<string>;
-export const SLOBulkDeleteResponseDataUpdatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOBulkDeleteResponseDataUpdatedList>;
+export const SLOBulkDeleteResponseDataUpdatedList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOBulkDeleteResponseDataUpdatedList>;
 
 /** An array of service level objective objects. */
 export interface SLOBulkDeleteResponseData {
@@ -15852,9 +15532,8 @@ export const SLOBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Synthetic test IDs you want to delete. */
 export type DeleteTestsRequestPublicIdsList = Array<string>;
-export const DeleteTestsRequestPublicIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteTestsRequestPublicIdsList>;
+export const DeleteTestsRequestPublicIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<DeleteTestsRequestPublicIdsList>;
 
 export interface DeleteTestsRequest {
   /** Delete the Synthetic test even if it's referenced by other resources (for example, SLOs and composite monitors). */
@@ -15921,11 +15600,8 @@ export const DeleteWebhooksIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebhooksIntegrationRequest>;
 
 export interface DeleteWebhooksIntegrationResponse {}
-export const DeleteWebhooksIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebhooksIntegrationResponse",
-}) as any as S.Schema<DeleteWebhooksIntegrationResponse>;
+export const DeleteWebhooksIntegrationResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeleteWebhooksIntegrationResponse>;
 
 export interface DeleteWebhooksIntegrationCustomVariableRequest {
   /** The name of the custom variable. */
@@ -15946,11 +15622,8 @@ export const DeleteWebhooksIntegrationCustomVariableRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteWebhooksIntegrationCustomVariableRequest>;
 
 export interface DeleteWebhooksIntegrationCustomVariableResponse {}
-export const DeleteWebhooksIntegrationCustomVariableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebhooksIntegrationCustomVariableResponse",
-}) as any as S.Schema<DeleteWebhooksIntegrationCustomVariableResponse>;
+export const DeleteWebhooksIntegrationCustomVariableResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<DeleteWebhooksIntegrationCustomVariableResponse>;
 
 export interface DisableUserRequest {
   /** The handle of the user. */
@@ -15988,17 +15661,12 @@ export interface OrgDowngradedResponse {
   /** Information pertaining to the downgraded child organization. */
   message?: string;
 }
-export const OrgDowngradedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "OrgDowngradedResponse" }) as any as S.Schema<OrgDowngradedResponse>;
+export const OrgDowngradedResponse = UserDisableResponse as any as S.Schema<OrgDowngradedResponse>;
 
 /** Tags of the global variable. */
 export type EditGlobalVariableRequestTagsList = Array<string>;
-export const EditGlobalVariableRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditGlobalVariableRequestTagsList>;
+export const EditGlobalVariableRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<EditGlobalVariableRequestTagsList>;
 
 export interface EditGlobalVariableRequest {
   /** The ID of the global variable. */
@@ -16038,9 +15706,8 @@ export const EditGlobalVariableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Synthetic test IDs you want uptimes for. */
 export type FetchUptimesRequestPublicIdsList = Array<string>;
-export const FetchUptimesRequestPublicIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FetchUptimesRequestPublicIdsList>;
+export const FetchUptimesRequestPublicIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<FetchUptimesRequestPublicIdsList>;
 
 export interface FetchUptimesRequest {
   /** Timestamp in seconds (Unix epoch) for the start of uptime. */
@@ -16082,9 +15749,8 @@ export const SyntheticsUptimeErrorsList = /*@__PURE__*/ S.Array(
 
 /** An array of transitions */
 export type SyntheticsUptimeHistoryItemList = Array<number>;
-export const SyntheticsUptimeHistoryItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SyntheticsUptimeHistoryItemList>;
+export const SyntheticsUptimeHistoryItemList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SyntheticsUptimeHistoryItemList>;
 
 /** The state transition history for the monitor, represented as an array of pairs. Each pair is an array where the first element is the transition timestamp in Unix epoch format (integer) and the second element is the state (integer). For the state, an integer value of `0` indicates uptime, `1` indicates downtime, and `2` indicates no data. */
 export type SyntheticsUptimeHistoryList = Array<SyntheticsUptimeHistoryItemList>;
@@ -16165,9 +15831,8 @@ export const GetAPITestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAPITestRequest" }) as any as S.Schema<GetAPITestRequest>;
 
 export type GetAPITestLatestResultsRequestProbeDcList = Array<string>;
-export const GetAPITestLatestResultsRequestProbeDcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAPITestLatestResultsRequestProbeDcList>;
+export const GetAPITestLatestResultsRequestProbeDcList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetAPITestLatestResultsRequestProbeDcList>;
 
 export interface GetAPITestLatestResultsRequest {
   /** The public ID of the test for which to search results for. */
@@ -16313,21 +15978,18 @@ export const GetAPITestResultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of assertions used for the test. Required for single API tests. */
 export type SyntheticsTestConfigAssertionsList = Array<SyntheticsAssertion>;
-export const SyntheticsTestConfigAssertionsList = /*@__PURE__*/ S.Array(
-  SyntheticsAssertion,
-) as any as S.Schema<SyntheticsTestConfigAssertionsList>;
+export const SyntheticsTestConfigAssertionsList =
+  SyntheticsAPITestConfigInputAssertionsList as any as S.Schema<SyntheticsTestConfigAssertionsList>;
 
 /** Array of variables used for the test. */
 export type SyntheticsTestConfigConfigVariablesList = Array<SyntheticsConfigVariable>;
-export const SyntheticsTestConfigConfigVariablesList = /*@__PURE__*/ S.Array(
-  SyntheticsConfigVariable,
-) as any as S.Schema<SyntheticsTestConfigConfigVariablesList>;
+export const SyntheticsTestConfigConfigVariablesList =
+  SyntheticsAPITestConfigInputConfigVariablesList as any as S.Schema<SyntheticsTestConfigConfigVariablesList>;
 
 /** Browser tests only - array of variables used for the test steps. */
 export type SyntheticsTestConfigVariablesList = Array<SyntheticsBrowserVariable>;
-export const SyntheticsTestConfigVariablesList = /*@__PURE__*/ S.Array(
-  SyntheticsBrowserVariable,
-) as any as S.Schema<SyntheticsTestConfigVariablesList>;
+export const SyntheticsTestConfigVariablesList =
+  SyntheticsBrowserTestConfigVariablesList as any as S.Schema<SyntheticsTestConfigVariablesList>;
 
 /** Configuration object for a Synthetic test. */
 export interface SyntheticsTestConfig {
@@ -16362,9 +16024,8 @@ export const SyntheticsAPITestResultFullCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of extensions and details used for the certificate. */
 export type SyntheticsSSLCertificateExtKeyUsageList = Array<string>;
-export const SyntheticsSSLCertificateExtKeyUsageList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsSSLCertificateExtKeyUsageList>;
+export const SyntheticsSSLCertificateExtKeyUsageList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsSSLCertificateExtKeyUsageList>;
 
 /** Object describing the issuer of a SSL certificate. */
 export interface SyntheticsSSLCertificateIssuer {
@@ -16522,17 +16183,13 @@ export const SyntheticsApiTestResultFailure = /*@__PURE__*/ S.suspend(() =>
 
 /** Request header object used for the API test. */
 export type SyntheticsAPITestResultDataRequestHeadersMap = { [key: string]: unknown | undefined };
-export const SyntheticsAPITestResultDataRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SyntheticsAPITestResultDataRequestHeadersMap>;
+export const SyntheticsAPITestResultDataRequestHeadersMap =
+  SyntheticsTestRequestToolArgsMap as any as S.Schema<SyntheticsAPITestResultDataRequestHeadersMap>;
 
 /** Response headers returned for the API test. */
 export type SyntheticsAPITestResultDataResponseHeadersMap = { [key: string]: unknown | undefined };
-export const SyntheticsAPITestResultDataResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SyntheticsAPITestResultDataResponseHeadersMap>;
+export const SyntheticsAPITestResultDataResponseHeadersMap =
+  SyntheticsTestRequestToolArgsMap as any as S.Schema<SyntheticsAPITestResultDataResponseHeadersMap>;
 
 /** Object containing results for your Synthetic API test. */
 export interface SyntheticsAPITestResultData {
@@ -16618,9 +16275,8 @@ export const GetBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBrowserTestRequest" }) as any as S.Schema<GetBrowserTestRequest>;
 
 export type GetBrowserTestLatestResultsRequestProbeDcList = Array<string>;
-export const GetBrowserTestLatestResultsRequestProbeDcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBrowserTestLatestResultsRequestProbeDcList>;
+export const GetBrowserTestLatestResultsRequestProbeDcList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetBrowserTestLatestResultsRequestProbeDcList>;
 
 export interface GetBrowserTestLatestResultsRequest {
   /** The public ID of the browser test for which to search results for. */
@@ -17076,7 +16732,7 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags to apply to the event. */
 export type EventTagsList = Array<string>;
-export const EventTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<EventTagsList>;
+export const EventTagsList = CrossOrgUuids as any as S.Schema<EventTagsList>;
 
 /** Object representing an event. */
 export interface Event {
@@ -17352,11 +17008,8 @@ export const GetHourlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHourlyUsageAttributionRequest>;
 
 export interface GetHourlyUsageAttributionResponse {}
-export const GetHourlyUsageAttributionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetHourlyUsageAttributionResponse",
-}) as any as S.Schema<GetHourlyUsageAttributionResponse>;
+export const GetHourlyUsageAttributionResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<GetHourlyUsageAttributionResponse>;
 
 export interface GetIPRangesRequest {}
 export const GetIPRangesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -17365,15 +17018,13 @@ export const GetIPRangesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesAgentsPrefixesIpv4List = Array<string>;
-export const IPPrefixesAgentsPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesAgentsPrefixesIpv4List>;
+export const IPPrefixesAgentsPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAgentsPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesAgentsPrefixesIpv6List = Array<string>;
-export const IPPrefixesAgentsPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesAgentsPrefixesIpv6List>;
+export const IPPrefixesAgentsPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAgentsPrefixesIpv6List>;
 
 /** Available prefix information for the Agent endpoints. */
 export interface IPPrefixesAgents {
@@ -17391,15 +17042,13 @@ export const IPPrefixesAgents = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesAPIPrefixesIpv4List = Array<string>;
-export const IPPrefixesAPIPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesAPIPrefixesIpv4List>;
+export const IPPrefixesAPIPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPIPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesAPIPrefixesIpv6List = Array<string>;
-export const IPPrefixesAPIPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesAPIPrefixesIpv6List>;
+export const IPPrefixesAPIPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPIPrefixesIpv6List>;
 
 /** Available prefix information for the API endpoints. */
 export interface IPPrefixesAPI {
@@ -17408,24 +17057,17 @@ export interface IPPrefixesAPI {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAPIPrefixesIpv6List;
 }
-export const IPPrefixesAPI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesAPIPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesAPIPrefixesIpv6List),
-  }),
-).annotate({ identifier: "IPPrefixesAPI" }) as any as S.Schema<IPPrefixesAPI>;
+export const IPPrefixesAPI = IPPrefixesAgents as any as S.Schema<IPPrefixesAPI>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesAPMPrefixesIpv4List = Array<string>;
-export const IPPrefixesAPMPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesAPMPrefixesIpv4List>;
+export const IPPrefixesAPMPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPMPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesAPMPrefixesIpv6List = Array<string>;
-export const IPPrefixesAPMPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesAPMPrefixesIpv6List>;
+export const IPPrefixesAPMPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesAPMPrefixesIpv6List>;
 
 /** Available prefix information for the APM endpoints. */
 export interface IPPrefixesAPM {
@@ -17434,24 +17076,17 @@ export interface IPPrefixesAPM {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesAPMPrefixesIpv6List;
 }
-export const IPPrefixesAPM = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesAPMPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesAPMPrefixesIpv6List),
-  }),
-).annotate({ identifier: "IPPrefixesAPM" }) as any as S.Schema<IPPrefixesAPM>;
+export const IPPrefixesAPM = IPPrefixesAgents as any as S.Schema<IPPrefixesAPM>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesGlobalPrefixesIpv4List = Array<string>;
-export const IPPrefixesGlobalPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesGlobalPrefixesIpv4List>;
+export const IPPrefixesGlobalPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesGlobalPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesGlobalPrefixesIpv6List = Array<string>;
-export const IPPrefixesGlobalPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesGlobalPrefixesIpv6List>;
+export const IPPrefixesGlobalPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesGlobalPrefixesIpv6List>;
 
 /** Available prefix information for all Datadog endpoints. */
 export interface IPPrefixesGlobal {
@@ -17460,24 +17095,17 @@ export interface IPPrefixesGlobal {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesGlobalPrefixesIpv6List;
 }
-export const IPPrefixesGlobal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesGlobalPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesGlobalPrefixesIpv6List),
-  }),
-).annotate({ identifier: "IPPrefixesGlobal" }) as any as S.Schema<IPPrefixesGlobal>;
+export const IPPrefixesGlobal = IPPrefixesAgents as any as S.Schema<IPPrefixesGlobal>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesLogsPrefixesIpv4List = Array<string>;
-export const IPPrefixesLogsPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesLogsPrefixesIpv4List>;
+export const IPPrefixesLogsPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesLogsPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesLogsPrefixesIpv6List = Array<string>;
-export const IPPrefixesLogsPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesLogsPrefixesIpv6List>;
+export const IPPrefixesLogsPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesLogsPrefixesIpv6List>;
 
 /** Available prefix information for the Logs endpoints. */
 export interface IPPrefixesLogs {
@@ -17486,24 +17114,17 @@ export interface IPPrefixesLogs {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesLogsPrefixesIpv6List;
 }
-export const IPPrefixesLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesLogsPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesLogsPrefixesIpv6List),
-  }),
-).annotate({ identifier: "IPPrefixesLogs" }) as any as S.Schema<IPPrefixesLogs>;
+export const IPPrefixesLogs = IPPrefixesAgents as any as S.Schema<IPPrefixesLogs>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesOrchestratorPrefixesIpv4List = Array<string>;
-export const IPPrefixesOrchestratorPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesOrchestratorPrefixesIpv4List>;
+export const IPPrefixesOrchestratorPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesOrchestratorPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesOrchestratorPrefixesIpv6List = Array<string>;
-export const IPPrefixesOrchestratorPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesOrchestratorPrefixesIpv6List>;
+export const IPPrefixesOrchestratorPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesOrchestratorPrefixesIpv6List>;
 
 /** Available prefix information for the Orchestrator endpoints. */
 export interface IPPrefixesOrchestrator {
@@ -17512,24 +17133,17 @@ export interface IPPrefixesOrchestrator {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesOrchestratorPrefixesIpv6List;
 }
-export const IPPrefixesOrchestrator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesOrchestratorPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesOrchestratorPrefixesIpv6List),
-  }),
-).annotate({ identifier: "IPPrefixesOrchestrator" }) as any as S.Schema<IPPrefixesOrchestrator>;
+export const IPPrefixesOrchestrator = IPPrefixesAgents as any as S.Schema<IPPrefixesOrchestrator>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesProcessPrefixesIpv4List = Array<string>;
-export const IPPrefixesProcessPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesProcessPrefixesIpv4List>;
+export const IPPrefixesProcessPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesProcessPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesProcessPrefixesIpv6List = Array<string>;
-export const IPPrefixesProcessPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesProcessPrefixesIpv6List>;
+export const IPPrefixesProcessPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesProcessPrefixesIpv6List>;
 
 /** Available prefix information for the Process endpoints. */
 export interface IPPrefixesProcess {
@@ -17538,24 +17152,17 @@ export interface IPPrefixesProcess {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesProcessPrefixesIpv6List;
 }
-export const IPPrefixesProcess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesProcessPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesProcessPrefixesIpv6List),
-  }),
-).annotate({ identifier: "IPPrefixesProcess" }) as any as S.Schema<IPPrefixesProcess>;
+export const IPPrefixesProcess = IPPrefixesAgents as any as S.Schema<IPPrefixesProcess>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesRemoteConfigurationPrefixesIpv4List = Array<string>;
-export const IPPrefixesRemoteConfigurationPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv4List>;
+export const IPPrefixesRemoteConfigurationPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesRemoteConfigurationPrefixesIpv6List = Array<string>;
-export const IPPrefixesRemoteConfigurationPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv6List>;
+export const IPPrefixesRemoteConfigurationPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesRemoteConfigurationPrefixesIpv6List>;
 
 /** Available prefix information for the Remote Configuration endpoints. */
 export interface IPPrefixesRemoteConfiguration {
@@ -17575,45 +17182,37 @@ export const IPPrefixesRemoteConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv4List = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4List>;
+export const IPPrefixesSyntheticsPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4List>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList>;
+export const IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList>;
 
 /** List of IPv4 prefixes by location. */
 export type IPPrefixesSyntheticsPrefixesIpv4ByLocationMap = {
   [key: string]: IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList | undefined;
 };
-export const IPPrefixesSyntheticsPrefixesIpv4ByLocationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IPPrefixesSyntheticsPrefixesIpv4ByLocationValueList,
-) as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4ByLocationMap>;
+export const IPPrefixesSyntheticsPrefixesIpv4ByLocationMap =
+  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv4ByLocationMap>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv6List = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6List>;
+export const IPPrefixesSyntheticsPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList = Array<string>;
-export const IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList>;
+export const IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList>;
 
 /** List of IPv6 prefixes by location. */
 export type IPPrefixesSyntheticsPrefixesIpv6ByLocationMap = {
   [key: string]: IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList | undefined;
 };
-export const IPPrefixesSyntheticsPrefixesIpv6ByLocationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IPPrefixesSyntheticsPrefixesIpv6ByLocationValueList,
-) as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6ByLocationMap>;
+export const IPPrefixesSyntheticsPrefixesIpv6ByLocationMap =
+  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<IPPrefixesSyntheticsPrefixesIpv6ByLocationMap>;
 
 /** Available prefix information for the Synthetics endpoints. */
 export interface IPPrefixesSynthetics {
@@ -17637,15 +17236,13 @@ export const IPPrefixesSynthetics = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List = Array<string>;
-export const IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List>;
+export const IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List = Array<string>;
-export const IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List>;
+export const IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List>;
 
 /** Available prefix information for the Synthetics Private Locations endpoints. */
 export interface IPPrefixesSyntheticsPrivateLocations {
@@ -17654,26 +17251,18 @@ export interface IPPrefixesSyntheticsPrivateLocations {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List;
 }
-export const IPPrefixesSyntheticsPrivateLocations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesSyntheticsPrivateLocationsPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesSyntheticsPrivateLocationsPrefixesIpv6List),
-  }),
-).annotate({
-  identifier: "IPPrefixesSyntheticsPrivateLocations",
-}) as any as S.Schema<IPPrefixesSyntheticsPrivateLocations>;
+export const IPPrefixesSyntheticsPrivateLocations =
+  IPPrefixesRemoteConfiguration as any as S.Schema<IPPrefixesSyntheticsPrivateLocations>;
 
 /** List of IPv4 prefixes. */
 export type IPPrefixesWebhooksPrefixesIpv4List = Array<string>;
-export const IPPrefixesWebhooksPrefixesIpv4List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesWebhooksPrefixesIpv4List>;
+export const IPPrefixesWebhooksPrefixesIpv4List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesWebhooksPrefixesIpv4List>;
 
 /** List of IPv6 prefixes. */
 export type IPPrefixesWebhooksPrefixesIpv6List = Array<string>;
-export const IPPrefixesWebhooksPrefixesIpv6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPPrefixesWebhooksPrefixesIpv6List>;
+export const IPPrefixesWebhooksPrefixesIpv6List =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<IPPrefixesWebhooksPrefixesIpv6List>;
 
 /** Available prefix information for the Webhook endpoints. */
 export interface IPPrefixesWebhooks {
@@ -17682,12 +17271,7 @@ export interface IPPrefixesWebhooks {
   /** List of IPv6 prefixes. */
   prefixes_ipv6?: IPPrefixesWebhooksPrefixesIpv6List;
 }
-export const IPPrefixesWebhooks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes_ipv4: S.optional(IPPrefixesWebhooksPrefixesIpv4List),
-    prefixes_ipv6: S.optional(IPPrefixesWebhooksPrefixesIpv6List),
-  }),
-).annotate({ identifier: "IPPrefixesWebhooks" }) as any as S.Schema<IPPrefixesWebhooks>;
+export const IPPrefixesWebhooks = IPPrefixesAgents as any as S.Schema<IPPrefixesWebhooks>;
 
 /** IP ranges. */
 export interface IPRanges {
@@ -17746,9 +17330,8 @@ export const GetLogsIndexOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
 export type LogsIndexesOrderIndexNamesList = Array<string>;
-export const LogsIndexesOrderIndexNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsIndexesOrderIndexNamesList>;
+export const LogsIndexesOrderIndexNamesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsIndexesOrderIndexNamesList>;
 
 /** Object containing the ordered list of log index names. */
 export interface LogsIndexesOrder {
@@ -17782,9 +17365,8 @@ export const GetLogsPipelineOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
 export type LogsPipelinesOrderPipelineIdsList = Array<string>;
-export const LogsPipelinesOrderPipelineIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsPipelinesOrderPipelineIdsList>;
+export const LogsPipelinesOrderPipelineIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogsPipelinesOrderPipelineIdsList>;
 
 /** Object containing the ordered list of pipeline IDs. */
 export interface LogsPipelinesOrder {
@@ -18078,11 +17660,8 @@ export const GetMonthlyUsageAttributionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMonthlyUsageAttributionRequest>;
 
 export interface GetMonthlyUsageAttributionResponse {}
-export const GetMonthlyUsageAttributionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetMonthlyUsageAttributionResponse",
-}) as any as S.Schema<GetMonthlyUsageAttributionResponse>;
+export const GetMonthlyUsageAttributionResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<GetMonthlyUsageAttributionResponse>;
 
 export interface GetNotebookRequest {
   /** Unique ID, assigned when you create the notebook. */
@@ -18334,39 +17913,33 @@ export const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query. */
 export type SLOResponseDataConfiguredAlertIdsList = Array<number>;
-export const SLOResponseDataConfiguredAlertIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SLOResponseDataConfiguredAlertIdsList>;
+export const SLOResponseDataConfiguredAlertIdsList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOResponseDataConfiguredAlertIdsList>;
 
 /** A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type SLOResponseDataGroupsList = Array<string>;
-export const SLOResponseDataGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOResponseDataGroupsList>;
+export const SLOResponseDataGroupsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type SLOResponseDataMonitorIdsList = Array<number>;
-export const SLOResponseDataMonitorIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SLOResponseDataMonitorIdsList>;
+export const SLOResponseDataMonitorIdsList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOResponseDataMonitorIdsList>;
 
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type SLOResponseDataMonitorTagsList = Array<string>;
-export const SLOResponseDataMonitorTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOResponseDataMonitorTagsList>;
+export const SLOResponseDataMonitorTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataMonitorTagsList>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type SLOResponseDataTagsList = Array<string>;
-export const SLOResponseDataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOResponseDataTagsList>;
+export const SLOResponseDataTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseDataTagsList>;
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type SLOResponseDataThresholdsList = Array<SLOThreshold>;
-export const SLOResponseDataThresholdsList = /*@__PURE__*/ S.Array(
-  SLOThreshold,
-) as any as S.Schema<SLOResponseDataThresholdsList>;
+export const SLOResponseDataThresholdsList =
+  CreateSLORequestThresholdsList as any as S.Schema<SLOResponseDataThresholdsList>;
 
 /** A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.). */
 export interface SLOResponseData {
@@ -18429,9 +18002,8 @@ export const SLOResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of error messages. Each endpoint documents how/whether this field is used. */
 export type SLOResponseErrorsList = Array<string>;
-export const SLOResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOResponseErrorsList>;
+export const SLOResponseErrorsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOResponseErrorsList>;
 
 /** A service level objective response containing a single service level objective. */
 export interface SLOResponse {
@@ -18535,9 +18107,8 @@ export const GetSLOHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** For `metric` based SLOs where the query includes a group-by clause, this represents the list of grouping parameters. This is not included in responses for `monitor` based SLOs. */
 export type SLOHistoryResponseDataGroupByList = Array<string>;
-export const SLOHistoryResponseDataGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SLOHistoryResponseDataGroupByList>;
+export const SLOHistoryResponseDataGroupByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SLOHistoryResponseDataGroupByList>;
 
 /** A mapping of threshold `timeframe` to the remaining error budget. */
 export type SLOErrorBudgetRemainingData = { [key: string]: number | undefined };
@@ -18548,21 +18119,18 @@ export const SLOErrorBudgetRemainingData = /*@__PURE__*/ S.Record(
 
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SLOHistoryMonitorErrorsList = Array<SLOHistoryResponseErrorWithType>;
-export const SLOHistoryMonitorErrorsList = /*@__PURE__*/ S.Array(
-  SLOHistoryResponseErrorWithType,
-) as any as S.Schema<SLOHistoryMonitorErrorsList>;
+export const SLOHistoryMonitorErrorsList =
+  SyntheticsUptimeErrorsList as any as S.Schema<SLOHistoryMonitorErrorsList>;
 
 /** Represents an array timeseries data. */
 export type SLOHistoryMonitorHistoryItemList = Array<number>;
-export const SLOHistoryMonitorHistoryItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SLOHistoryMonitorHistoryItemList>;
+export const SLOHistoryMonitorHistoryItemList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMonitorHistoryItemList>;
 
 /** The state transition history for the monitor. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data are counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information. */
 export type SLOHistoryMonitorHistoryList = Array<SLOHistoryMonitorHistoryItemList>;
-export const SLOHistoryMonitorHistoryList = /*@__PURE__*/ S.Array(
-  SLOHistoryMonitorHistoryItemList,
-) as any as S.Schema<SLOHistoryMonitorHistoryList>;
+export const SLOHistoryMonitorHistoryList =
+  SyntheticsUptimeHistoryList as any as S.Schema<SLOHistoryMonitorHistoryList>;
 
 /** An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value. This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs. */
 export interface SLOHistoryMonitor {
@@ -18615,34 +18183,28 @@ export const SLOHistoryResponseDataGroupsList = /*@__PURE__*/ S.Array(
 
 /** For multi-monitor SLOs, this represents SLI data for specific monitors. This is not included in the responses for `metric` based SLOs. */
 export type SLOHistoryResponseDataMonitorsList = Array<SLOHistoryMonitor>;
-export const SLOHistoryResponseDataMonitorsList = /*@__PURE__*/ S.Array(
-  SLOHistoryMonitor,
-) as any as S.Schema<SLOHistoryResponseDataMonitorsList>;
+export const SLOHistoryResponseDataMonitorsList =
+  SLOHistoryResponseDataGroupsList as any as S.Schema<SLOHistoryResponseDataMonitorsList>;
 
 /** An array of error objects returned while querying the history data for the service level objective. */
 export type SLOHistorySLIDataErrorsList = Array<SLOHistoryResponseErrorWithType>;
-export const SLOHistorySLIDataErrorsList = /*@__PURE__*/ S.Array(
-  SLOHistoryResponseErrorWithType,
-) as any as S.Schema<SLOHistorySLIDataErrorsList>;
+export const SLOHistorySLIDataErrorsList =
+  SyntheticsUptimeErrorsList as any as S.Schema<SLOHistorySLIDataErrorsList>;
 
 /** Represents an array timeseries data. */
 export type SLOHistorySLIDataHistoryItemList = Array<number>;
-export const SLOHistorySLIDataHistoryItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SLOHistorySLIDataHistoryItemList>;
+export const SLOHistorySLIDataHistoryItemList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistorySLIDataHistoryItemList>;
 
 /** The state transition history for `monitor` or `time-slice` SLOs. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data count as uptime in time-slice SLOs, while for monitor SLOs, no data is counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information. */
 export type SLOHistorySLIDataHistoryList = Array<SLOHistorySLIDataHistoryItemList>;
-export const SLOHistorySLIDataHistoryList = /*@__PURE__*/ S.Array(
-  SLOHistorySLIDataHistoryItemList,
-) as any as S.Schema<SLOHistorySLIDataHistoryList>;
+export const SLOHistorySLIDataHistoryList =
+  SyntheticsUptimeHistoryList as any as S.Schema<SLOHistorySLIDataHistoryList>;
 
 /** A mapping of threshold `timeframe` to number of accurate decimals, regardless of the from && to timestamp. */
 export type SLOHistorySLIDataPrecisionMap = { [key: string]: number | undefined };
-export const SLOHistorySLIDataPrecisionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<SLOHistorySLIDataPrecisionMap>;
+export const SLOHistorySLIDataPrecisionMap =
+  SLOErrorBudgetRemainingData as any as S.Schema<SLOHistorySLIDataPrecisionMap>;
 
 /** An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value. This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs. */
 export interface SLOHistorySLIData {
@@ -18752,9 +18314,8 @@ export const SLOHistoryMetricsSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The query values for each metric. */
 export type SLOHistoryMetricsSeriesValuesList = Array<number>;
-export const SLOHistoryMetricsSeriesValuesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SLOHistoryMetricsSeriesValuesList>;
+export const SLOHistoryMetricsSeriesValuesList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMetricsSeriesValuesList>;
 
 /** A representation of `metric` based SLO timeseries for the provided queries. This is the same response type from `batch_query` endpoint. */
 export interface SLOHistoryMetricsSeries {
@@ -18777,9 +18338,8 @@ export const SLOHistoryMetricsSeries = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of query timestamps in EPOCH milliseconds. */
 export type SLOHistoryMetricsTimesList = Array<number>;
-export const SLOHistoryMetricsTimesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SLOHistoryMetricsTimesList>;
+export const SLOHistoryMetricsTimesList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SLOHistoryMetricsTimesList>;
 
 /** A `metric` based SLO history response. This is not included in responses for `monitor` based SLOs. */
 export interface SLOHistoryMetrics {
@@ -19054,9 +18614,8 @@ export const GetSyntheticsDefaultLocationsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of Synthetics default locations settings. */
 export type SyntheticsDefaultLocations = Array<string>;
-export const SyntheticsDefaultLocations = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsDefaultLocations>;
+export const SyntheticsDefaultLocations =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsDefaultLocations>;
 
 export type GetSyntheticsDefaultLocationsResponse = SyntheticsDefaultLocations;
 export const GetSyntheticsDefaultLocationsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -19077,15 +18636,13 @@ export const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsTestDetailsWithoutStepsLocationsList = Array<string>;
-export const SyntheticsTestDetailsWithoutStepsLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestDetailsWithoutStepsLocationsList>;
+export const SyntheticsTestDetailsWithoutStepsLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsWithoutStepsLocationsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsTestDetailsWithoutStepsTagsList = Array<string>;
-export const SyntheticsTestDetailsWithoutStepsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestDetailsWithoutStepsTagsList>;
+export const SyntheticsTestDetailsWithoutStepsTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsWithoutStepsTagsList>;
 
 /** Object containing details about your Synthetic test, without test steps. */
 export interface SyntheticsTestDetailsWithoutSteps {
@@ -19148,9 +18705,8 @@ export const GetUsageBillableSummaryResponse = /*@__PURE__*/ S.suspend(() => S.S
 ) as any as S.Schema<GetUsageBillableSummaryResponse>;
 
 export type GetUsageLogsByIndexRequestIndexNameList = Array<string>;
-export const GetUsageLogsByIndexRequestIndexNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsageLogsByIndexRequestIndexNameList>;
+export const GetUsageLogsByIndexRequestIndexNameList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetUsageLogsByIndexRequestIndexNameList>;
 
 export interface GetUsageLogsByIndexRequest {
   /** Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage beginning at this hour. */
@@ -19171,9 +18727,8 @@ export const GetUsageLogsByIndexRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsageLogsByIndexRequest>;
 
 export interface GetUsageLogsByIndexResponse {}
-export const GetUsageLogsByIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUsageLogsByIndexResponse",
-}) as any as S.Schema<GetUsageLogsByIndexResponse>;
+export const GetUsageLogsByIndexResponse =
+  CreateEventResponse as any as S.Schema<GetUsageLogsByIndexResponse>;
 
 export interface GetUsageSummaryRequest {
   /** Datetime in ISO-8601 format, UTC, precise to month: `[YYYY-MM]` for usage beginning in this month. Maximum of 15 months ago. */
@@ -19195,14 +18750,12 @@ export const GetUsageSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUsageSummaryRequest" }) as any as S.Schema<GetUsageSummaryRequest>;
 
 export interface GetUsageSummaryResponse {}
-export const GetUsageSummaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUsageSummaryResponse",
-}) as any as S.Schema<GetUsageSummaryResponse>;
+export const GetUsageSummaryResponse =
+  CreateEventResponse as any as S.Schema<GetUsageSummaryResponse>;
 
 export type GetUsageTopAvgMetricsRequestNamesList = Array<string>;
-export const GetUsageTopAvgMetricsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsageTopAvgMetricsRequestNamesList>;
+export const GetUsageTopAvgMetricsRequestNamesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<GetUsageTopAvgMetricsRequestNamesList>;
 
 export interface GetUsageTopAvgMetricsRequest {
   /** Datetime in ISO-8601 format, UTC, precise to month: [YYYY-MM] for usage beginning at this hour. (Either month or day should be specified, but not both) */
@@ -19229,9 +18782,8 @@ export const GetUsageTopAvgMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsageTopAvgMetricsRequest>;
 
 export interface GetUsageTopAvgMetricsResponse {}
-export const GetUsageTopAvgMetricsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUsageTopAvgMetricsResponse",
-}) as any as S.Schema<GetUsageTopAvgMetricsResponse>;
+export const GetUsageTopAvgMetricsResponse =
+  CreateEventResponse as any as S.Schema<GetUsageTopAvgMetricsResponse>;
 
 export interface GetUserRequest {
   /** The ID of the user. */
@@ -19297,9 +18849,8 @@ export const ListActiveMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of metric names. */
 export type MetricsListResponseMetricsList = Array<string>;
-export const MetricsListResponseMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsListResponseMetricsList>;
+export const MetricsListResponseMetricsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsListResponseMetricsList>;
 
 /** Object listing all metric names stored by Datadog since a given time. */
 export interface MetricsListResponse {
@@ -19372,15 +18923,13 @@ export const ListAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type AzureAccountErrorsList = Array<string>;
-export const AzureAccountErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureAccountErrorsList>;
+export const AzureAccountErrorsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<AzureAccountErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type AzureAccountResourceProviderConfigsList = Array<ResourceProviderConfig>;
-export const AzureAccountResourceProviderConfigsList = /*@__PURE__*/ S.Array(
-  ResourceProviderConfig,
-) as any as S.Schema<AzureAccountResourceProviderConfigsList>;
+export const AzureAccountResourceProviderConfigsList =
+  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<AzureAccountResourceProviderConfigsList>;
 
 /** Datadog-Azure integrations configured for your organization. */
 export interface AzureAccount {
@@ -19665,11 +19214,11 @@ export const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Host aliases collected by Datadog. */
 export type HostAliasesList = Array<string>;
-export const HostAliasesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HostAliasesList>;
+export const HostAliasesList = CrossOrgUuids as any as S.Schema<HostAliasesList>;
 
 /** The Datadog integrations reporting metrics for the host. */
 export type HostAppsList = Array<string>;
-export const HostAppsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HostAppsList>;
+export const HostAppsList = CrossOrgUuids as any as S.Schema<HostAppsList>;
 
 /** Array of strings. */
 export type AgentCheck = Array<unknown>;
@@ -19706,21 +19255,15 @@ export const HostMetaInstallMethod = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Mac versions. */
 export type HostMetaMacVList = Array<unknown>;
-export const HostMetaMacVList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<HostMetaMacVList>;
+export const HostMetaMacVList = HostMetaFbsdVList as any as S.Schema<HostMetaMacVList>;
 
 /** Array of Unix versions. */
 export type HostMetaNixVList = Array<unknown>;
-export const HostMetaNixVList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<HostMetaNixVList>;
+export const HostMetaNixVList = HostMetaFbsdVList as any as S.Schema<HostMetaNixVList>;
 
 /** An array of Windows versions. */
 export type HostMetaWinVList = Array<unknown>;
-export const HostMetaWinVList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<HostMetaWinVList>;
+export const HostMetaWinVList = HostMetaFbsdVList as any as S.Schema<HostMetaWinVList>;
 
 /** Metadata associated with your host. */
 export interface HostMeta {
@@ -19793,20 +19336,17 @@ export const HostMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** Source or cloud provider associated with your host. */
 export type HostSourcesList = Array<string>;
-export const HostSourcesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HostSourcesList>;
+export const HostSourcesList = CrossOrgUuids as any as S.Schema<HostSourcesList>;
 
 /** Array of tags for a single source. */
 export type HostTagsBySourceValueList = Array<string>;
-export const HostTagsBySourceValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostTagsBySourceValueList>;
+export const HostTagsBySourceValueList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<HostTagsBySourceValueList>;
 
 /** List of tags for each source (AWS, Datadog Agent, Chef..). */
 export type HostTagsBySourceMap = { [key: string]: HostTagsBySourceValueList | undefined };
-export const HostTagsBySourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  HostTagsBySourceValueList,
-) as any as S.Schema<HostTagsBySourceMap>;
+export const HostTagsBySourceMap =
+  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<HostTagsBySourceMap>;
 
 /** Object representing a host. */
 export interface Host {
@@ -19891,16 +19431,13 @@ export const ListHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of host names which contain this tag */
 export type TagToHostsTagsValueList = Array<string>;
-export const TagToHostsTagsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TagToHostsTagsValueList>;
+export const TagToHostsTagsValueList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<TagToHostsTagsValueList>;
 
 /** A mapping of tags to host names */
 export type TagToHostsTagsMap = { [key: string]: TagToHostsTagsValueList | undefined };
-export const TagToHostsTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  TagToHostsTagsValueList,
-) as any as S.Schema<TagToHostsTagsMap>;
+export const TagToHostsTagsMap =
+  CheckCanDeleteMonitorResponseErrorsMap as any as S.Schema<TagToHostsTagsMap>;
 
 /** In this object, the key is the tag, and the value is a list of host names that are reporting that tag. */
 export interface TagToHosts {
@@ -20017,16 +19554,13 @@ export const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON object of attributes from your log. */
 export type LogContentAttributesMap = { [key: string]: unknown | undefined };
-export const LogContentAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogContentAttributesMap>;
+export const LogContentAttributesMap =
+  SyntheticsTestRequestToolArgsMap as any as S.Schema<LogContentAttributesMap>;
 
 /** Array of tags associated with your log. */
 export type LogContentTagsList = Array<string>;
-export const LogContentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogContentTagsList>;
+export const LogContentTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<LogContentTagsList>;
 
 /** JSON object containing all log attributes and their associated values. */
 export interface LogContent {
@@ -20189,15 +19723,13 @@ export const ListNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of cells to display in the notebook. */
 export type NotebooksResponseDataAttributesCellsList = Array<NotebookCellResponse>;
-export const NotebooksResponseDataAttributesCellsList = /*@__PURE__*/ S.Array(
-  NotebookCellResponse,
-) as any as S.Schema<NotebooksResponseDataAttributesCellsList>;
+export const NotebooksResponseDataAttributesCellsList =
+  NotebookResponseDataAttributesCellsList as any as S.Schema<NotebooksResponseDataAttributesCellsList>;
 
 /** List of template variables for this notebook. */
 export type NotebooksResponseDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-export const NotebooksResponseDataAttributesTemplateVariablesList = /*@__PURE__*/ S.Array(
-  NotebookTemplateVariable,
-) as any as S.Schema<NotebooksResponseDataAttributesTemplateVariablesList>;
+export const NotebooksResponseDataAttributesTemplateVariablesList =
+  NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebooksResponseDataAttributesTemplateVariablesList>;
 
 /** The attributes of a notebook in get all response. */
 export interface NotebooksResponseDataAttributes {
@@ -20260,22 +19792,14 @@ export interface NotebooksResponsePage {
   /** The total number of notebooks returned. */
   total_filtered_count?: number;
 }
-export const NotebooksResponsePage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.optional(S.Number),
-    total_filtered_count: S.optional(S.Number),
-  }),
-).annotate({ identifier: "NotebooksResponsePage" }) as any as S.Schema<NotebooksResponsePage>;
+export const NotebooksResponsePage = Pagination as any as S.Schema<NotebooksResponsePage>;
 
 /** Searches metadata returned by the API. */
 export interface NotebooksResponseMeta {
   page?: NotebooksResponsePage;
 }
-export const NotebooksResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    page: S.optional(NotebooksResponsePage),
-  }),
-).annotate({ identifier: "NotebooksResponseMeta" }) as any as S.Schema<NotebooksResponseMeta>;
+export const NotebooksResponseMeta =
+  ResponseMetaAttributes as any as S.Schema<NotebooksResponseMeta>;
 
 /** Notebooks get all response. */
 export interface NotebooksResponse {
@@ -20495,21 +20019,18 @@ export const PatchTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type SyntheticsTestDetailsLocationsList = Array<string>;
-export const SyntheticsTestDetailsLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestDetailsLocationsList>;
+export const SyntheticsTestDetailsLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsLocationsList>;
 
 /** The steps of the test if they exist. */
 export type SyntheticsTestDetailsStepsList = Array<SyntheticsStep>;
-export const SyntheticsTestDetailsStepsList = /*@__PURE__*/ S.Array(
-  SyntheticsStep,
-) as any as S.Schema<SyntheticsTestDetailsStepsList>;
+export const SyntheticsTestDetailsStepsList =
+  CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<SyntheticsTestDetailsStepsList>;
 
 /** Array of tags attached to the test. */
 export type SyntheticsTestDetailsTagsList = Array<string>;
-export const SyntheticsTestDetailsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTestDetailsTagsList>;
+export const SyntheticsTestDetailsTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTestDetailsTagsList>;
 
 /** Object containing details about your Synthetic test. */
 export interface SyntheticsTestDetails {
@@ -20570,9 +20091,8 @@ export const QueryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tag keys on which to group. */
 export type MetricsQueryResponseGroupByList = Array<string>;
-export const MetricsQueryResponseGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsQueryResponseGroupByList>;
+export const MetricsQueryResponseGroupByList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsQueryResponseGroupByList>;
 
 /** Array of timeseries points. */
 export type Point = Array<number | null>;
@@ -20588,9 +20108,8 @@ export const MetricsQueryMetadataPointlistList = /*@__PURE__*/ S.Array(
 
 /** Unique tags identifying this series. */
 export type MetricsQueryMetadataTagSetList = Array<string>;
-export const MetricsQueryMetadataTagSetList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsQueryMetadataTagSetList>;
+export const MetricsQueryMetadataTagSetList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MetricsQueryMetadataTagSetList>;
 
 /** Object containing the metric unit family, scale factor, name, and short name. */
 export interface MetricsQueryUnit {
@@ -20731,11 +20250,8 @@ export const RemoveSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveSlackIntegrationChannelRequest>;
 
 export interface RemoveSlackIntegrationChannelResponse {}
-export const RemoveSlackIntegrationChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveSlackIntegrationChannelResponse",
-}) as any as S.Schema<RemoveSlackIntegrationChannelResponse>;
+export const RemoveSlackIntegrationChannelResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<RemoveSlackIntegrationChannelResponse>;
 
 export interface RestoreDashboardsRequest {
   data: DashboardBulkActionDataList;
@@ -20747,9 +20263,8 @@ export const RestoreDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreDashboardsRequest" }) as any as S.Schema<RestoreDashboardsRequest>;
 
 export interface RestoreDashboardsResponse {}
-export const RestoreDashboardsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreDashboardsResponse",
-}) as any as S.Schema<RestoreDashboardsResponse>;
+export const RestoreDashboardsResponse =
+  CreateEventResponse as any as S.Schema<RestoreDashboardsResponse>;
 
 export interface SearchMonitorGroupsRequest {
   /** After entering a search query on the [Triggered Monitors page][1], use the query parameter value in the URL of the page as a value for this parameter. For more information, see the [Manage Monitors documentation][2]. The query can contain any number of space-separated monitor attributes, for instance: `query="type:metric group_status:alert"`. [1]: https://app.datadoghq.com/monitors/triggered [2]: /monitors/manage/#triggered-monitors */
@@ -20808,9 +20323,8 @@ export const MonitorGroupSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tags of the monitor group. */
 export type MonitorGroupSearchResultGroupTagsList = Array<string>;
-export const MonitorGroupSearchResultGroupTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorGroupSearchResultGroupTagsList>;
+export const MonitorGroupSearchResultGroupTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorGroupSearchResultGroupTagsList>;
 
 /** A single monitor group search result. */
 export interface MonitorGroupSearchResult {
@@ -20924,9 +20438,8 @@ export const MonitorSearchResponseCounts = /*@__PURE__*/ S.suspend(() =>
 
 /** Metrics used by the monitor. */
 export type MonitorSearchResultMetricsList = Array<string>;
-export const MonitorSearchResultMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorSearchResultMetricsList>;
+export const MonitorSearchResultMetricsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultMetricsList>;
 
 /** A notification triggered by the monitor. */
 export interface MonitorSearchResultNotification {
@@ -20952,21 +20465,18 @@ export const MonitorSearchResultNotificationsList = /*@__PURE__*/ S.Array(
 
 /** Quality issues detected with the monitor. */
 export type MonitorSearchResultQualityIssuesList = Array<string>;
-export const MonitorSearchResultQualityIssuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorSearchResultQualityIssuesList>;
+export const MonitorSearchResultQualityIssuesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultQualityIssuesList>;
 
 /** The scope(s) to which the downtime applies, for example `host:app2`. Provide multiple scopes as a comma-separated list, for example `env:dev,env:prod`. The resulting downtime applies to sources that matches ALL provided scopes (that is `env:dev AND env:prod`), NOT any of them. */
 export type MonitorSearchResultScopesList = Array<string>;
-export const MonitorSearchResultScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorSearchResultScopesList>;
+export const MonitorSearchResultScopesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultScopesList>;
 
 /** Tags associated with the monitor. */
 export type MonitorSearchResultTagsList = Array<string>;
-export const MonitorSearchResultTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorSearchResultTagsList>;
+export const MonitorSearchResultTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<MonitorSearchResultTagsList>;
 
 /** Holds search results. */
 export interface MonitorSearchResult {
@@ -21081,23 +20591,20 @@ export const SearchSLOResponseDataAttributesFacetsAllTagsList = /*@__PURE__*/ S.
 /** Creator of an SLO. */
 export type SearchSLOResponseDataAttributesFacetsCreatorNameList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsCreatorNameList = /*@__PURE__*/ S.Array(
-  SearchSLOResponseDataAttributesFacetsObjectString,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsCreatorNameList>;
+export const SearchSLOResponseDataAttributesFacetsCreatorNameList =
+  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsCreatorNameList>;
 
 /** Tags with the `env` tag key. */
 export type SearchSLOResponseDataAttributesFacetsEnvTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsEnvTagsList = /*@__PURE__*/ S.Array(
-  SearchSLOResponseDataAttributesFacetsObjectString,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsEnvTagsList>;
+export const SearchSLOResponseDataAttributesFacetsEnvTagsList =
+  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsEnvTagsList>;
 
 /** Tags with the `service` tag key. */
 export type SearchSLOResponseDataAttributesFacetsServiceTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsServiceTagsList = /*@__PURE__*/ S.Array(
-  SearchSLOResponseDataAttributesFacetsObjectString,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsServiceTagsList>;
+export const SearchSLOResponseDataAttributesFacetsServiceTagsList =
+  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsServiceTagsList>;
 
 /** Facet */
 export interface SearchSLOResponseDataAttributesFacetsObjectInt {
@@ -21125,23 +20632,20 @@ export const SearchSLOResponseDataAttributesFacetsSloTypeList = /*@__PURE__*/ S.
 /** SLO Target */
 export type SearchSLOResponseDataAttributesFacetsTargetList =
   Array<SearchSLOResponseDataAttributesFacetsObjectInt>;
-export const SearchSLOResponseDataAttributesFacetsTargetList = /*@__PURE__*/ S.Array(
-  SearchSLOResponseDataAttributesFacetsObjectInt,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsTargetList>;
+export const SearchSLOResponseDataAttributesFacetsTargetList =
+  SearchSLOResponseDataAttributesFacetsSloTypeList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTargetList>;
 
 /** Tags with the `team` tag key. */
 export type SearchSLOResponseDataAttributesFacetsTeamTagsList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsTeamTagsList = /*@__PURE__*/ S.Array(
-  SearchSLOResponseDataAttributesFacetsObjectString,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsTeamTagsList>;
+export const SearchSLOResponseDataAttributesFacetsTeamTagsList =
+  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTeamTagsList>;
 
 /** Timeframes of SLOs. */
 export type SearchSLOResponseDataAttributesFacetsTimeframeList =
   Array<SearchSLOResponseDataAttributesFacetsObjectString>;
-export const SearchSLOResponseDataAttributesFacetsTimeframeList = /*@__PURE__*/ S.Array(
-  SearchSLOResponseDataAttributesFacetsObjectString,
-) as any as S.Schema<SearchSLOResponseDataAttributesFacetsTimeframeList>;
+export const SearchSLOResponseDataAttributesFacetsTimeframeList =
+  SearchSLOResponseDataAttributesFacetsAllTagsList as any as S.Schema<SearchSLOResponseDataAttributesFacetsTimeframeList>;
 
 /** Facets */
 export interface SearchSLOResponseDataAttributesFacets {
@@ -21179,9 +20683,8 @@ export const SearchSLOResponseDataAttributesFacets = /*@__PURE__*/ S.suspend(() 
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). */
 export type SearchServiceLevelObjectiveAttributesAllTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesAllTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesAllTagsList>;
+export const SearchServiceLevelObjectiveAttributesAllTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesAllTagsList>;
 
 /** The creator of the SLO */
 export interface SLOCreator {
@@ -21202,21 +20705,18 @@ export const SLOCreator = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags with the `env` tag key. */
 export type SearchServiceLevelObjectiveAttributesEnvTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesEnvTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesEnvTagsList>;
+export const SearchServiceLevelObjectiveAttributesEnvTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesEnvTagsList>;
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. */
 export type SearchServiceLevelObjectiveAttributesGroupsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesGroupsList>;
+export const SearchServiceLevelObjectiveAttributesGroupsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. */
 export type SearchServiceLevelObjectiveAttributesMonitorIdsList = Array<number>;
-export const SearchServiceLevelObjectiveAttributesMonitorIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesMonitorIdsList>;
+export const SearchServiceLevelObjectiveAttributesMonitorIdsList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<SearchServiceLevelObjectiveAttributesMonitorIdsList>;
 
 /** Error budget remaining for an SLO. */
 export interface SLORawErrorBudgetRemaining {
@@ -21278,9 +20778,8 @@ export const SearchServiceLevelObjectiveAttributesOverallStatusList = /*@__PURE_
 
 /** Metric names used in the query's numerator and denominator. This field will return null and will be implemented in the next version of this endpoint. */
 export type SearchSLOQueryMetricsList = Array<string>;
-export const SearchSLOQueryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchSLOQueryMetricsList>;
+export const SearchSLOQueryMetricsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchSLOQueryMetricsList>;
 
 /** A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests. */
 export interface SearchSLOQuery {
@@ -21301,9 +20800,8 @@ export const SearchSLOQuery = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags with the `service` tag key. */
 export type SearchServiceLevelObjectiveAttributesServiceTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesServiceTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesServiceTagsList>;
+export const SearchServiceLevelObjectiveAttributesServiceTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesServiceTagsList>;
 
 /** Status of the SLO's primary timeframe. */
 export interface SLOStatus {
@@ -21334,9 +20832,8 @@ export const SLOStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags with the `team` tag key. */
 export type SearchServiceLevelObjectiveAttributesTeamTagsList = Array<string>;
-export const SearchServiceLevelObjectiveAttributesTeamTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchServiceLevelObjectiveAttributesTeamTagsList>;
+export const SearchServiceLevelObjectiveAttributesTeamTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SearchServiceLevelObjectiveAttributesTeamTagsList>;
 
 /** The SLO time window options. */
 export type SearchSLOTimeframe = "7d" | "30d" | "90d";
@@ -21618,11 +21115,8 @@ export const SubmitDistributionPointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitDistributionPointsRequest>;
 
 export interface SubmitDistributionPointsResponse {}
-export const SubmitDistributionPointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubmitDistributionPointsResponse",
-}) as any as S.Schema<SubmitDistributionPointsResponse>;
+export const SubmitDistributionPointsResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<SubmitDistributionPointsResponse>;
 
 export interface SubmitMetricsRequest {}
 export const SubmitMetricsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -21630,9 +21124,7 @@ export const SubmitMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubmitMetricsRequest" }) as any as S.Schema<SubmitMetricsRequest>;
 
 export interface SubmitMetricsResponse {}
-export const SubmitMetricsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubmitMetricsResponse",
-}) as any as S.Schema<SubmitMetricsResponse>;
+export const SubmitMetricsResponse = CreateEventResponse as any as S.Schema<SubmitMetricsResponse>;
 
 /** The status of a service check. Set to `0` for OK, `1` for warning, `2` for critical, and `3` for unknown. */
 export type ServiceCheckStatus = 0 | 1 | 2 | 3;
@@ -21640,9 +21132,8 @@ export const ServiceCheckStatus = S.Number;
 
 /** Tags related to a check. */
 export type ServiceCheckTagsList = Array<string>;
-export const ServiceCheckTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCheckTagsList>;
+export const ServiceCheckTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ServiceCheckTagsList>;
 
 /** An object containing service check and status. */
 export interface ServiceCheck {
@@ -21685,28 +21176,23 @@ export const SubmitServiceCheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitServiceCheckRequest>;
 
 export interface SubmitServiceCheckResponse {}
-export const SubmitServiceCheckResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubmitServiceCheckResponse",
-}) as any as S.Schema<SubmitServiceCheckResponse>;
+export const SubmitServiceCheckResponse =
+  CreateEventResponse as any as S.Schema<SubmitServiceCheckResponse>;
 
 /** For browser test, array with the different device IDs used to run the test. */
 export type SyntheticsCITestDeviceIdsList = Array<string>;
-export const SyntheticsCITestDeviceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsCITestDeviceIdsList>;
+export const SyntheticsCITestDeviceIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsCITestDeviceIdsList>;
 
 /** Array of locations used to run the test. */
 export type SyntheticsCITestLocationsList = Array<string>;
-export const SyntheticsCITestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsCITestLocationsList>;
+export const SyntheticsCITestLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsCITestLocationsList>;
 
 /** Variables to replace in the test. */
 export type SyntheticsCITestVariablesMap = { [key: string]: string | undefined };
-export const SyntheticsCITestVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SyntheticsCITestVariablesMap>;
+export const SyntheticsCITestVariablesMap =
+  CheckCanDeleteSLOResponseErrorsMap as any as S.Schema<SyntheticsCITestVariablesMap>;
 
 /** Configuration for Continuous Testing. */
 export interface SyntheticsCITest {
@@ -21824,9 +21310,8 @@ export const SyntheticsTriggerCITestsResponseResultsList = /*@__PURE__*/ S.Array
 
 /** The public IDs of the Synthetic test triggered. */
 export type SyntheticsTriggerCITestsResponseTriggeredCheckIdsList = Array<string>;
-export const SyntheticsTriggerCITestsResponseTriggeredCheckIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyntheticsTriggerCITestsResponseTriggeredCheckIdsList>;
+export const SyntheticsTriggerCITestsResponseTriggeredCheckIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<SyntheticsTriggerCITestsResponseTriggeredCheckIdsList>;
 
 /** Object containing information about the tests triggered. */
 export interface SyntheticsTriggerCITestsResponse {
@@ -21904,15 +21389,13 @@ export const UpdateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of locations used to run the test. */
 export type UpdateAPITestRequestLocationsList = Array<string>;
-export const UpdateAPITestRequestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAPITestRequestLocationsList>;
+export const UpdateAPITestRequestLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAPITestRequestLocationsList>;
 
 /** Array of tags attached to the test. */
 export type UpdateAPITestRequestTagsList = Array<string>;
-export const UpdateAPITestRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAPITestRequestTagsList>;
+export const UpdateAPITestRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAPITestRequestTagsList>;
 
 export interface UpdateAPITestRequest {
   /** The public ID of the test to get details from. */
@@ -21963,16 +21446,14 @@ export const UpdateApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in your configuration. */
 export type UpdateAzureHostFiltersRequestErrorsList = Array<string>;
-export const UpdateAzureHostFiltersRequestErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAzureHostFiltersRequestErrorsList>;
+export const UpdateAzureHostFiltersRequestErrorsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAzureHostFiltersRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type UpdateAzureHostFiltersRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-export const UpdateAzureHostFiltersRequestResourceProviderConfigsList = /*@__PURE__*/ S.Array(
-  ResourceProviderConfig,
-) as any as S.Schema<UpdateAzureHostFiltersRequestResourceProviderConfigsList>;
+export const UpdateAzureHostFiltersRequestResourceProviderConfigsList =
+  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<UpdateAzureHostFiltersRequestResourceProviderConfigsList>;
 
 export interface UpdateAzureHostFiltersRequest {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
@@ -22038,24 +21519,19 @@ export const UpdateAzureHostFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAzureHostFiltersRequest>;
 
 export type UpdateAzureHostFiltersResponse = unknown;
-export const UpdateAzureHostFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateAzureHostFiltersResponse",
-}) as any as S.Schema<UpdateAzureHostFiltersResponse>;
+export const UpdateAzureHostFiltersResponse =
+  CreateAzureIntegrationResponse as any as S.Schema<UpdateAzureHostFiltersResponse>;
 
 /** Errors in your configuration. */
 export type UpdateAzureIntegrationRequestErrorsList = Array<string>;
-export const UpdateAzureIntegrationRequestErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAzureIntegrationRequestErrorsList>;
+export const UpdateAzureIntegrationRequestErrorsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateAzureIntegrationRequestErrorsList>;
 
 /** Configuration settings applied to resources from the specified Azure resource providers. */
 export type UpdateAzureIntegrationRequestResourceProviderConfigsList =
   Array<ResourceProviderConfig>;
-export const UpdateAzureIntegrationRequestResourceProviderConfigsList = /*@__PURE__*/ S.Array(
-  ResourceProviderConfig,
-) as any as S.Schema<UpdateAzureIntegrationRequestResourceProviderConfigsList>;
+export const UpdateAzureIntegrationRequestResourceProviderConfigsList =
+  CreateAzureIntegrationRequestResourceProviderConfigsList as any as S.Schema<UpdateAzureIntegrationRequestResourceProviderConfigsList>;
 
 export interface UpdateAzureIntegrationRequest {
   /** Limit the Azure app service plans that are pulled into Datadog using tags. Only app service plans that match one of the defined tags are imported into Datadog. */
@@ -22121,29 +21597,23 @@ export const UpdateAzureIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAzureIntegrationRequest>;
 
 export type UpdateAzureIntegrationResponse = unknown;
-export const UpdateAzureIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateAzureIntegrationResponse",
-}) as any as S.Schema<UpdateAzureIntegrationResponse>;
+export const UpdateAzureIntegrationResponse =
+  CreateAzureIntegrationResponse as any as S.Schema<UpdateAzureIntegrationResponse>;
 
 /** Array of locations used to run the test. */
 export type UpdateBrowserTestRequestLocationsList = Array<string>;
-export const UpdateBrowserTestRequestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBrowserTestRequestLocationsList>;
+export const UpdateBrowserTestRequestLocationsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateBrowserTestRequestLocationsList>;
 
 /** Array of steps for the test. */
 export type UpdateBrowserTestRequestStepsList = Array<SyntheticsStep>;
-export const UpdateBrowserTestRequestStepsList = /*@__PURE__*/ S.Array(
-  SyntheticsStep,
-) as any as S.Schema<UpdateBrowserTestRequestStepsList>;
+export const UpdateBrowserTestRequestStepsList =
+  CreateSyntheticsBrowserTestRequestStepsList as any as S.Schema<UpdateBrowserTestRequestStepsList>;
 
 /** Array of tags attached to the test. */
 export type UpdateBrowserTestRequestTagsList = Array<string>;
-export const UpdateBrowserTestRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBrowserTestRequestTagsList>;
+export const UpdateBrowserTestRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateBrowserTestRequestTagsList>;
 
 export interface UpdateBrowserTestRequest {
   /** The public ID of the test to edit. */
@@ -22182,46 +21652,39 @@ export const UpdateBrowserTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of handles of users to notify when changes are made to this dashboard. */
 export type UpdateDashboardRequestNotifyListList = Array<string>;
-export const UpdateDashboardRequestNotifyListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestNotifyListList>;
+export const UpdateDashboardRequestNotifyListList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestNotifyListList>;
 
 /** A list of role identifiers. Only the author and users associated with at least one of these roles can edit this dashboard. */
 export type UpdateDashboardRequestRestrictedRolesList = Array<string>;
-export const UpdateDashboardRequestRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestRestrictedRolesList>;
+export const UpdateDashboardRequestRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestRestrictedRolesList>;
 
 /** List of tabs for organizing dashboard widgets into groups. */
 export type UpdateDashboardRequestTabsList = Array<DashboardTab>;
-export const UpdateDashboardRequestTabsList = /*@__PURE__*/ S.Array(
-  DashboardTab,
-) as any as S.Schema<UpdateDashboardRequestTabsList>;
+export const UpdateDashboardRequestTabsList =
+  CreateDashboardRequestTabsList as any as S.Schema<UpdateDashboardRequestTabsList>;
 
 /** List of team names representing ownership of a dashboard. */
 export type UpdateDashboardRequestTagsList = Array<string>;
-export const UpdateDashboardRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestTagsList>;
+export const UpdateDashboardRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateDashboardRequestTagsList>;
 
 /** Array of template variables saved views. */
 export type UpdateDashboardRequestTemplateVariablePresetsList =
   Array<DashboardTemplateVariablePreset>;
-export const UpdateDashboardRequestTemplateVariablePresetsList = /*@__PURE__*/ S.Array(
-  DashboardTemplateVariablePreset,
-) as any as S.Schema<UpdateDashboardRequestTemplateVariablePresetsList>;
+export const UpdateDashboardRequestTemplateVariablePresetsList =
+  CreateDashboardRequestTemplateVariablePresetsList as any as S.Schema<UpdateDashboardRequestTemplateVariablePresetsList>;
 
 /** List of template variables for this dashboard. */
 export type UpdateDashboardRequestTemplateVariablesList = Array<DashboardTemplateVariable>;
-export const UpdateDashboardRequestTemplateVariablesList = /*@__PURE__*/ S.Array(
-  DashboardTemplateVariable,
-) as any as S.Schema<UpdateDashboardRequestTemplateVariablesList>;
+export const UpdateDashboardRequestTemplateVariablesList =
+  CreateDashboardRequestTemplateVariablesList as any as S.Schema<UpdateDashboardRequestTemplateVariablesList>;
 
 /** List of widgets to display on the dashboard. */
 export type UpdateDashboardRequestWidgetsList = Array<Widget>;
-export const UpdateDashboardRequestWidgetsList = /*@__PURE__*/ S.Array(
-  Widget,
-) as any as S.Schema<UpdateDashboardRequestWidgetsList>;
+export const UpdateDashboardRequestWidgetsList =
+  CreateDashboardRequestWidgetsList as any as S.Schema<UpdateDashboardRequestWidgetsList>;
 
 export interface UpdateDashboardRequest {
   /** The ID of the dashboard. */
@@ -22289,9 +21752,8 @@ export const UpdateDashboardListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tags associated with a host. */
 export type UpdateHostTagsRequestTagsList = Array<string>;
-export const UpdateHostTagsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHostTagsRequestTagsList>;
+export const UpdateHostTagsRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateHostTagsRequestTagsList>;
 
 export interface UpdateHostTagsRequest {
   /** Specified host name to change tags */
@@ -22314,15 +21776,13 @@ export const UpdateHostTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of exclusion objects. The logs are tested against the query of each filter, following the order of the array. Only the first matching active exclusion matters, others (if any) are ignored. */
 export type UpdateLogsIndexRequestExclusionFiltersList = Array<LogsExclusion>;
-export const UpdateLogsIndexRequestExclusionFiltersList = /*@__PURE__*/ S.Array(
-  LogsExclusion,
-) as any as S.Schema<UpdateLogsIndexRequestExclusionFiltersList>;
+export const UpdateLogsIndexRequestExclusionFiltersList =
+  CreateLogsIndexRequestExclusionFiltersList as any as S.Schema<UpdateLogsIndexRequestExclusionFiltersList>;
 
 /** A list of tags associated with the index. Tags must be in `key:value` format. */
 export type UpdateLogsIndexRequestTagsList = Array<string>;
-export const UpdateLogsIndexRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLogsIndexRequestTagsList>;
+export const UpdateLogsIndexRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsIndexRequestTagsList>;
 
 export interface UpdateLogsIndexRequest {
   /** Name of the log index. */
@@ -22361,9 +21821,8 @@ export const UpdateLogsIndexRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
 export type UpdateLogsIndexOrderRequestIndexNamesList = Array<string>;
-export const UpdateLogsIndexOrderRequestIndexNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLogsIndexOrderRequestIndexNamesList>;
+export const UpdateLogsIndexOrderRequestIndexNamesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsIndexOrderRequestIndexNamesList>;
 
 export interface UpdateLogsIndexOrderRequest {
   /** Array of strings identifying by their name(s) the index(es) of your organization. Logs are tested against the query filter of each index one by one, following the order of the array. Logs are eventually stored in the first matching index. */
@@ -22379,15 +21838,13 @@ export const UpdateLogsIndexOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of processors in this pipeline. */
 export type UpdateLogsPipelineRequestProcessorsList = Array<LogsProcessor>;
-export const UpdateLogsPipelineRequestProcessorsList = /*@__PURE__*/ S.Array(
-  LogsProcessor,
-) as any as S.Schema<UpdateLogsPipelineRequestProcessorsList>;
+export const UpdateLogsPipelineRequestProcessorsList =
+  CreateLogsPipelineRequestProcessorsList as any as S.Schema<UpdateLogsPipelineRequestProcessorsList>;
 
 /** A list of tags associated with the pipeline. */
 export type UpdateLogsPipelineRequestTagsList = Array<string>;
-export const UpdateLogsPipelineRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLogsPipelineRequestTagsList>;
+export const UpdateLogsPipelineRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsPipelineRequestTagsList>;
 
 export interface UpdateLogsPipelineRequest {
   /** ID of the pipeline to delete. */
@@ -22420,9 +21877,8 @@ export const UpdateLogsPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
 export type UpdateLogsPipelineOrderRequestPipelineIdsList = Array<string>;
-export const UpdateLogsPipelineOrderRequestPipelineIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLogsPipelineOrderRequestPipelineIdsList>;
+export const UpdateLogsPipelineOrderRequestPipelineIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateLogsPipelineOrderRequestPipelineIdsList>;
 
 export interface UpdateLogsPipelineOrderRequest {
   /** Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog. */
@@ -22468,21 +21924,18 @@ export const UpdateMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array with the different device IDs used to run the test. */
 export type UpdateMobileTestRequestDeviceIdsList = Array<string>;
-export const UpdateMobileTestRequestDeviceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMobileTestRequestDeviceIdsList>;
+export const UpdateMobileTestRequestDeviceIdsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMobileTestRequestDeviceIdsList>;
 
 /** Array of steps for the test. */
 export type UpdateMobileTestRequestStepsList = Array<SyntheticsMobileStep>;
-export const UpdateMobileTestRequestStepsList = /*@__PURE__*/ S.Array(
-  SyntheticsMobileStep,
-) as any as S.Schema<UpdateMobileTestRequestStepsList>;
+export const UpdateMobileTestRequestStepsList =
+  CreateSyntheticsMobileTestRequestStepsList as any as S.Schema<UpdateMobileTestRequestStepsList>;
 
 /** Array of tags attached to the test. */
 export type UpdateMobileTestRequestTagsList = Array<string>;
-export const UpdateMobileTestRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMobileTestRequestTagsList>;
+export const UpdateMobileTestRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMobileTestRequestTagsList>;
 
 export interface UpdateMobileTestRequest {
   /** The public ID of the test to get details from. */
@@ -22519,21 +21972,18 @@ export const UpdateMobileTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type UpdateMonitorRequestAssetsList = Array<MonitorAsset>;
-export const UpdateMonitorRequestAssetsList = /*@__PURE__*/ S.Array(
-  MonitorAsset,
-) as any as S.Schema<UpdateMonitorRequestAssetsList>;
+export const UpdateMonitorRequestAssetsList =
+  CreateMonitorRequestAssetsList as any as S.Schema<UpdateMonitorRequestAssetsList>;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type UpdateMonitorRequestRestrictedRolesList = Array<string>;
-export const UpdateMonitorRequestRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMonitorRequestRestrictedRolesList>;
+export const UpdateMonitorRequestRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type UpdateMonitorRequestTagsList = Array<string>;
-export const UpdateMonitorRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMonitorRequestTagsList>;
+export const UpdateMonitorRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateMonitorRequestTagsList>;
 
 export interface UpdateMonitorRequest {
   /** The ID of the monitor. */
@@ -22612,9 +22062,8 @@ export const NotebookUpdateDataAttributesCellsList = /*@__PURE__*/ S.Array(
 
 /** List of template variables for this notebook. */
 export type NotebookUpdateDataAttributesTemplateVariablesList = Array<NotebookTemplateVariable>;
-export const NotebookUpdateDataAttributesTemplateVariablesList = /*@__PURE__*/ S.Array(
-  NotebookTemplateVariable,
-) as any as S.Schema<NotebookUpdateDataAttributesTemplateVariablesList>;
+export const NotebookUpdateDataAttributesTemplateVariablesList =
+  NotebookCreateDataAttributesTemplateVariablesList as any as S.Schema<NotebookUpdateDataAttributesTemplateVariablesList>;
 
 /** The data attributes of a notebook. */
 export interface NotebookUpdateDataAttributes {
@@ -22712,17 +22161,13 @@ export const UpdatePagerDutyIntegrationServiceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdatePagerDutyIntegrationServiceRequest>;
 
 export interface UpdatePagerDutyIntegrationServiceResponse {}
-export const UpdatePagerDutyIntegrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePagerDutyIntegrationServiceResponse",
-}) as any as S.Schema<UpdatePagerDutyIntegrationServiceResponse>;
+export const UpdatePagerDutyIntegrationServiceResponse =
+  DeletePagerDutyIntegrationServiceResponse as any as S.Schema<UpdatePagerDutyIntegrationServiceResponse>;
 
 /** Array of tags attached to the private location. */
 export type UpdatePrivateLocationRequestTagsList = Array<string>;
-export const UpdatePrivateLocationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePrivateLocationRequestTagsList>;
+export const UpdatePrivateLocationRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePrivateLocationRequestTagsList>;
 
 export interface UpdatePrivateLocationRequest {
   /** The ID of the private location. */
@@ -22751,9 +22196,8 @@ export const UpdatePrivateLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The `SharedDashboard` `embeddable_domains`. */
 export type UpdatePublicDashboardRequestEmbeddableDomainsList = Array<string>;
-export const UpdatePublicDashboardRequestEmbeddableDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePublicDashboardRequestEmbeddableDomainsList>;
+export const UpdatePublicDashboardRequestEmbeddableDomainsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePublicDashboardRequestEmbeddableDomainsList>;
 
 /** Timeframe setting for the shared dashboard. */
 export type SharedDashboardUpdateRequestGlobalTime = DashboardGlobalTime;
@@ -22761,22 +22205,19 @@ export const SharedDashboardUpdateRequestGlobalTime = DashboardGlobalTime;
 
 /** The `SharedDashboard` `invitees`. */
 export type UpdatePublicDashboardRequestInviteesList = Array<SharedDashboardInviteesItemsInput>;
-export const UpdatePublicDashboardRequestInviteesList = /*@__PURE__*/ S.Array(
-  SharedDashboardInviteesItemsInput,
-) as any as S.Schema<UpdatePublicDashboardRequestInviteesList>;
+export const UpdatePublicDashboardRequestInviteesList =
+  CreatePublicDashboardRequestInviteesList as any as S.Schema<UpdatePublicDashboardRequestInviteesList>;
 
 /** List of objects representing template variables on the shared dashboard which can have selectable values. */
 export type UpdatePublicDashboardRequestSelectableTemplateVarsList =
   Array<SelectableTemplateVariableItems>;
-export const UpdatePublicDashboardRequestSelectableTemplateVarsList = /*@__PURE__*/ S.Array(
-  SelectableTemplateVariableItems,
-) as any as S.Schema<UpdatePublicDashboardRequestSelectableTemplateVarsList>;
+export const UpdatePublicDashboardRequestSelectableTemplateVarsList =
+  CreatePublicDashboardRequestSelectableTemplateVarsList as any as S.Schema<UpdatePublicDashboardRequestSelectableTemplateVarsList>;
 
 /** List of email addresses that can be given access to the shared dashboard. */
 export type UpdatePublicDashboardRequestShareListList = Array<string>;
-export const UpdatePublicDashboardRequestShareListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePublicDashboardRequestShareListList>;
+export const UpdatePublicDashboardRequestShareListList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdatePublicDashboardRequestShareListList>;
 
 export interface UpdatePublicDashboardRequest {
   /** The token of the shared dashboard. */
@@ -22849,33 +22290,28 @@ export const UpdateSlackIntegrationChannelRequest = /*@__PURE__*/ S.suspend(() =
 
 /** A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one. */
 export type UpdateSLORequestGroupsList = Array<string>;
-export const UpdateSLORequestGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSLORequestGroupsList>;
+export const UpdateSLORequestGroupsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestGroupsList>;
 
 /** A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is `monitor`**. */
 export type UpdateSLORequestMonitorIdsList = Array<number>;
-export const UpdateSLORequestMonitorIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateSLORequestMonitorIdsList>;
+export const UpdateSLORequestMonitorIdsList =
+  CheckCanDeleteMonitorRequestMonitorIdsList as any as S.Schema<UpdateSLORequestMonitorIdsList>;
 
 /** The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field). */
 export type UpdateSLORequestMonitorTagsList = Array<string>;
-export const UpdateSLORequestMonitorTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSLORequestMonitorTagsList>;
+export const UpdateSLORequestMonitorTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestMonitorTagsList>;
 
 /** A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests. */
 export type UpdateSLORequestTagsList = Array<string>;
-export const UpdateSLORequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSLORequestTagsList>;
+export const UpdateSLORequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<UpdateSLORequestTagsList>;
 
 /** The thresholds (timeframes and associated targets) for this service level objective object. */
 export type UpdateSLORequestThresholdsList = Array<SLOThreshold>;
-export const UpdateSLORequestThresholdsList = /*@__PURE__*/ S.Array(
-  SLOThreshold,
-) as any as S.Schema<UpdateSLORequestThresholdsList>;
+export const UpdateSLORequestThresholdsList =
+  CreateSLORequestThresholdsList as any as S.Schema<UpdateSLORequestThresholdsList>;
 
 export interface UpdateSLORequest {
   /** The ID of the service level objective object. */
@@ -23138,27 +22574,23 @@ export const AuthenticationValidationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type ValidateExistingMonitorRequestAssetsList = Array<MonitorAsset>;
-export const ValidateExistingMonitorRequestAssetsList = /*@__PURE__*/ S.Array(
-  MonitorAsset,
-) as any as S.Schema<ValidateExistingMonitorRequestAssetsList>;
+export const ValidateExistingMonitorRequestAssetsList =
+  CreateMonitorRequestAssetsList as any as S.Schema<ValidateExistingMonitorRequestAssetsList>;
 
 /** A list of active v1 downtimes that match this monitor. */
 export type ValidateExistingMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-export const ValidateExistingMonitorRequestMatchingDowntimesList = /*@__PURE__*/ S.Array(
-  MatchingDowntimeInput,
-) as any as S.Schema<ValidateExistingMonitorRequestMatchingDowntimesList>;
+export const ValidateExistingMonitorRequestMatchingDowntimesList =
+  CreateMonitorRequestMatchingDowntimesList as any as S.Schema<ValidateExistingMonitorRequestMatchingDowntimesList>;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type ValidateExistingMonitorRequestRestrictedRolesList = Array<string>;
-export const ValidateExistingMonitorRequestRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateExistingMonitorRequestRestrictedRolesList>;
+export const ValidateExistingMonitorRequestRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateExistingMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type ValidateExistingMonitorRequestTagsList = Array<string>;
-export const ValidateExistingMonitorRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateExistingMonitorRequestTagsList>;
+export const ValidateExistingMonitorRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateExistingMonitorRequestTagsList>;
 
 export interface ValidateExistingMonitorRequest {
   /** The ID of the monitor */
@@ -23203,35 +22635,28 @@ export const ValidateExistingMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateExistingMonitorRequest>;
 
 export type ValidateExistingMonitorResponse = unknown;
-export const ValidateExistingMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ValidateExistingMonitorResponse",
-}) as any as S.Schema<ValidateExistingMonitorResponse>;
+export const ValidateExistingMonitorResponse =
+  CreateAzureIntegrationResponse as any as S.Schema<ValidateExistingMonitorResponse>;
 
 /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */
 export type ValidateMonitorRequestAssetsList = Array<MonitorAsset>;
-export const ValidateMonitorRequestAssetsList = /*@__PURE__*/ S.Array(
-  MonitorAsset,
-) as any as S.Schema<ValidateMonitorRequestAssetsList>;
+export const ValidateMonitorRequestAssetsList =
+  CreateMonitorRequestAssetsList as any as S.Schema<ValidateMonitorRequestAssetsList>;
 
 /** A list of active v1 downtimes that match this monitor. */
 export type ValidateMonitorRequestMatchingDowntimesList = Array<MatchingDowntimeInput>;
-export const ValidateMonitorRequestMatchingDowntimesList = /*@__PURE__*/ S.Array(
-  MatchingDowntimeInput,
-) as any as S.Schema<ValidateMonitorRequestMatchingDowntimesList>;
+export const ValidateMonitorRequestMatchingDowntimesList =
+  CreateMonitorRequestMatchingDowntimesList as any as S.Schema<ValidateMonitorRequestMatchingDowntimesList>;
 
 /** A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles. */
 export type ValidateMonitorRequestRestrictedRolesList = Array<string>;
-export const ValidateMonitorRequestRestrictedRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateMonitorRequestRestrictedRolesList>;
+export const ValidateMonitorRequestRestrictedRolesList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateMonitorRequestRestrictedRolesList>;
 
 /** Tags associated to your monitor. */
 export type ValidateMonitorRequestTagsList = Array<string>;
-export const ValidateMonitorRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateMonitorRequestTagsList>;
+export const ValidateMonitorRequestTagsList =
+  CheckCanDeleteMonitorResponseErrorsValueList as any as S.Schema<ValidateMonitorRequestTagsList>;
 
 export interface ValidateMonitorRequest {
   /** The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks). */

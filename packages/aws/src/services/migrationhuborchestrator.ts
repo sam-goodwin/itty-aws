@@ -140,7 +140,7 @@ export const CreateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export type StringMapKey = string;
 export type StringMapValue = string;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const StringMap = TagMap as any as S.Schema<StringMap>;
 export interface CreateTemplateResponse {
   templateId?: string;
   templateArn?: string;
@@ -266,9 +266,7 @@ export interface PlatformCommand {
   linux?: string;
   windows?: string;
 }
-export const PlatformCommand = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ linux: S.optional(S.String), windows: S.optional(S.String) }),
-).annotate({ identifier: "PlatformCommand" }) as any as S.Schema<PlatformCommand>;
+export const PlatformCommand = PlatformScriptKey as any as S.Schema<PlatformCommand>;
 export type RunEnvironment = string;
 export type TargetType = string;
 export interface WorkflowStepAutomationConfiguration {
@@ -293,7 +291,7 @@ export type WorkflowStepOutputName = string;
 export type DataType = string;
 export type MaxStringValue = string;
 export type MaxStringList = string[];
-export const MaxStringList = /*@__PURE__*/ S.Array(S.String);
+export const MaxStringList = StringList as any as S.Schema<MaxStringList>;
 export type WorkflowStepOutputUnion =
   | { integerValue: number; stringValue?: never; listOfStringValue?: never }
   | { integerValue?: never; stringValue: string; listOfStringValue?: never }
@@ -476,9 +474,8 @@ export const DeleteWorkflowStepRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkflowStepRequest",
 }) as any as S.Schema<DeleteWorkflowStepRequest>;
 export interface DeleteWorkflowStepResponse {}
-export const DeleteWorkflowStepResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowStepResponse",
-}) as any as S.Schema<DeleteWorkflowStepResponse>;
+export const DeleteWorkflowStepResponse =
+  DeleteTemplateResponse as any as S.Schema<DeleteWorkflowStepResponse>;
 export interface DeleteWorkflowStepGroupRequest {
   workflowId: string;
   id: string;
@@ -604,17 +601,8 @@ export interface StepAutomationConfiguration {
   runEnvironment?: string;
   targetType?: string;
 }
-export const StepAutomationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scriptLocationS3Bucket: S.optional(S.String),
-    scriptLocationS3Key: S.optional(PlatformScriptKey),
-    command: S.optional(PlatformCommand),
-    runEnvironment: S.optional(S.String),
-    targetType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StepAutomationConfiguration",
-}) as any as S.Schema<StepAutomationConfiguration>;
+export const StepAutomationConfiguration =
+  WorkflowStepAutomationConfiguration as any as S.Schema<StepAutomationConfiguration>;
 export interface GetTemplateStepResponse {
   id?: string;
   stepGroupId?: string;
@@ -1367,11 +1355,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteTemplateResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1385,9 +1371,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteTemplateResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateTemplateRequest {
   id: string;
   templateName?: string;
@@ -1407,13 +1392,8 @@ export interface UpdateTemplateResponse {
   templateArn?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateId: S.optional(S.String),
-    templateArn: S.optional(S.String),
-    tags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "UpdateTemplateResponse" }) as any as S.Schema<UpdateTemplateResponse>;
+export const UpdateTemplateResponse =
+  CreateTemplateResponse as any as S.Schema<UpdateTemplateResponse>;
 export interface UpdateMigrationWorkflowRequest {
   id: string;
   name?: string;
@@ -1508,16 +1488,8 @@ export interface UpdateWorkflowStepResponse {
   workflowId?: string;
   name?: string;
 }
-export const UpdateWorkflowStepResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    stepGroupId: S.optional(S.String),
-    workflowId: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWorkflowStepResponse",
-}) as any as S.Schema<UpdateWorkflowStepResponse>;
+export const UpdateWorkflowStepResponse =
+  CreateWorkflowStepResponse as any as S.Schema<UpdateWorkflowStepResponse>;
 export interface UpdateWorkflowStepGroupRequest {
   workflowId: string;
   id: string;

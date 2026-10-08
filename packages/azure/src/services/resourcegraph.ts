@@ -173,10 +173,8 @@ export const GraphQueryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GraphQueryCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const GraphQueryCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GraphQueryCreateOrUpdateRequestTagsMap>;
+export const GraphQueryCreateOrUpdateRequestTagsMap =
+  GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryCreateOrUpdateRequestTagsMap>;
 
 export interface GraphQueryCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -217,10 +215,8 @@ export const GraphQueryCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GraphQueryCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const GraphQueryCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GraphQueryCreateOrUpdateResponseTagsMap>;
+export const GraphQueryCreateOrUpdateResponseTagsMap =
+  GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryCreateOrUpdateResponseTagsMap>;
 
 export interface GraphQueryCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -277,10 +273,8 @@ export const ListGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GraphQueryResourceTagsMap = { [key: string]: string | undefined };
-export const GraphQueryResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GraphQueryResourceTagsMap>;
+export const GraphQueryResourceTagsMap =
+  GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryResourceTagsMap>;
 
 /** Graph Query entity definition. */
 export interface GraphQueryResource {
@@ -301,18 +295,7 @@ export interface GraphQueryResource {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-export const GraphQueryResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(GraphQueryProperties),
-    tags: S.optional(GraphQueryResourceTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "GraphQueryResource" }) as any as S.Schema<GraphQueryResource>;
+export const GraphQueryResource = GetGraphQueryResponse as any as S.Schema<GraphQueryResource>;
 
 /** The GraphQueryResource items on this page */
 export type GraphQueryListResultValueList = Array<GraphQueryResource>;
@@ -430,9 +413,8 @@ export const ResourcesRequestSubscriptionsList = /*@__PURE__*/ S.Array(
 
 /** Azure management groups against which to execute the query. Example: [ 'mg1', 'mg2' ] */
 export type ResourcesRequestManagementGroupsList = Array<string>;
-export const ResourcesRequestManagementGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesRequestManagementGroupsList>;
+export const ResourcesRequestManagementGroupsList =
+  ResourcesRequestSubscriptionsList as any as S.Schema<ResourcesRequestManagementGroupsList>;
 
 /** Defines in which format query result returned. */
 export type QueryRequestOptionsResultFormat = "table" | "objectArray";
@@ -597,10 +579,8 @@ export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateGraphQueryRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateGraphQueryRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateGraphQueryRequestTagsMap>;
+export const UpdateGraphQueryRequestTagsMap =
+  GetGraphQueryResponseTagsMap as any as S.Schema<UpdateGraphQueryRequestTagsMap>;
 
 /** Properties that contain a workbook for PATCH operation. */
 export interface GraphQueryPropertiesUpdateParameters {
@@ -652,10 +632,8 @@ export const UpdateGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateGraphQueryResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateGraphQueryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateGraphQueryResponseTagsMap>;
+export const UpdateGraphQueryResponseTagsMap =
+  GetGraphQueryResponseTagsMap as any as S.Schema<UpdateGraphQueryResponseTagsMap>;
 
 export interface UpdateGraphQueryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -675,18 +653,8 @@ export interface UpdateGraphQueryResponse {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-export const UpdateGraphQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(GraphQueryProperties),
-    tags: S.optional(UpdateGraphQueryResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateGraphQueryResponse" }) as any as S.Schema<UpdateGraphQueryResponse>;
+export const UpdateGraphQueryResponse =
+  GetGraphQueryResponse as any as S.Schema<UpdateGraphQueryResponse>;
 
 export type DeleteGraphQueryError = AzureOpError;
 /** Delete a graph query. */

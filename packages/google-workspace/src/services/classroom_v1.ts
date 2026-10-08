@@ -453,13 +453,7 @@ export interface NotebookLmNotebook {
   /** Notebook resource id. */
   id?: string;
 }
-export const NotebookLmNotebook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    title: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "NotebookLmNotebook" }) as any as S.Schema<NotebookLmNotebook>;
+export const NotebookLmNotebook = GeminiGem as any as S.Schema<NotebookLmNotebook>;
 
 /** Material attached to course work. When creating attachments, setting the `form`, `gem`, or `notebook` field is not supported. */
 export interface Material {
@@ -1480,11 +1474,8 @@ export interface CourseWorkChangesInfo {
   /** The `course_id` of the course to subscribe to work changes for. */
   courseId?: string;
 }
-export const CourseWorkChangesInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    courseId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CourseWorkChangesInfo" }) as any as S.Schema<CourseWorkChangesInfo>;
+export const CourseWorkChangesInfo =
+  CourseRosterChangesInfo as any as S.Schema<CourseWorkChangesInfo>;
 
 /** A class of notifications that an application can register to receive. For example: "all roster changes for a domain". */
 export interface Feed {
@@ -2029,9 +2020,7 @@ export const StudentContext = /*@__PURE__*/ S.suspend(() =>
 
 /** Role-specific context if the requesting user is a teacher. */
 export interface TeacherContext {}
-export const TeacherContext = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TeacherContext",
-}) as any as S.Schema<TeacherContext>;
+export const TeacherContext = Empty as any as S.Schema<TeacherContext>;
 
 /** Attachment-relevant metadata for Classroom add-ons in the context of a specific post. */
 export interface AddOnContext {
@@ -2548,11 +2537,8 @@ export interface ShortAnswerSubmission {
   /** Student response to a short-answer question. */
   answer?: string;
 }
-export const ShortAnswerSubmission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    answer: S.optional(S.String),
-  }),
-).annotate({ identifier: "ShortAnswerSubmission" }) as any as S.Schema<ShortAnswerSubmission>;
+export const ShortAnswerSubmission =
+  MultipleChoiceSubmission as any as S.Schema<ShortAnswerSubmission>;
 
 /** Attachment added to student assignment work. When creating attachments, setting the `form` field is not supported. */
 export interface Attachment {

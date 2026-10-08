@@ -240,16 +240,13 @@ export const DeleteOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOuContainerRequest" }) as any as S.Schema<DeleteOuContainerRequest>;
 
 export interface DeleteOuContainerResponse {}
-export const DeleteOuContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOuContainerResponse",
-}) as any as S.Schema<DeleteOuContainerResponse>;
+export const DeleteOuContainerResponse =
+  DeleteDomainServiceResponse as any as S.Schema<DeleteOuContainerResponse>;
 
 /** Resource tags */
 export type DomainServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DomainServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainServicesCreateOrUpdateRequestTagsMap>;
+export const DomainServicesCreateOrUpdateRequestTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<DomainServicesCreateOrUpdateRequestTagsMap>;
 
 /** Replica Set Definition */
 export interface ReplicaSetInput {
@@ -464,9 +461,8 @@ export const ConfigDiagnosticsValidatorResultStatus = S.String;
 
 /** List of domain resource property name or values used to compose a rich description. */
 export type ConfigDiagnosticsValidatorResultIssueDescriptionParamsList = Array<string>;
-export const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigDiagnosticsValidatorResultIssueDescriptionParamsList>;
+export const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
+  NotificationSettingsAdditionalRecipientsList as any as S.Schema<ConfigDiagnosticsValidatorResultIssueDescriptionParamsList>;
 
 /** Specific issue for a particular config diagnostics validator */
 export interface ConfigDiagnosticsValidatorResultIssue {
@@ -615,10 +611,8 @@ export const DomainServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type DomainServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DomainServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainServicesCreateOrUpdateResponseTagsMap>;
+export const DomainServicesCreateOrUpdateResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<DomainServicesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type DomainServicesCreateOrUpdateResponseSystemDataCreatedByType =
@@ -668,9 +662,8 @@ export const DomainServicesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.su
 
 /** List of Domain Controller IP Address */
 export type ReplicaSetDomainControllerIpAddressList = Array<string>;
-export const ReplicaSetDomainControllerIpAddressList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplicaSetDomainControllerIpAddressList>;
+export const ReplicaSetDomainControllerIpAddressList =
+  NotificationSettingsAdditionalRecipientsList as any as S.Schema<ReplicaSetDomainControllerIpAddressList>;
 
 /** Health Monitor Description */
 export interface HealthMonitor {
@@ -970,10 +963,8 @@ export const GetDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetDomainServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetDomainServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDomainServiceResponseTagsMap>;
+export const GetDomainServiceResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<GetDomainServiceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetDomainServiceResponseSystemDataCreatedByType =
@@ -1078,10 +1069,8 @@ export const GetOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetOuContainerResponseTagsMap = { [key: string]: string | undefined };
-export const GetOuContainerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetOuContainerResponseTagsMap>;
+export const GetOuContainerResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<GetOuContainerResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetOuContainerResponseSystemDataCreatedByType =
@@ -1182,10 +1171,8 @@ export const ListDomainServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags */
 export type DomainServiceTagsMap = { [key: string]: string | undefined };
-export const DomainServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainServiceTagsMap>;
+export const DomainServiceTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<DomainServiceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type DomainServiceSystemDataCreatedByType =
@@ -1398,10 +1385,8 @@ export const ListOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type OuContainerTagsMap = { [key: string]: string | undefined };
-export const OuContainerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OuContainerTagsMap>;
+export const OuContainerTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<OuContainerTagsMap>;
 
 /** The type of identity that created the resource. */
 export type OuContainerSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -1509,10 +1494,8 @@ export const ListOuContainerOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateDomainServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDomainServiceRequestTagsMap>;
+export const UpdateDomainServiceRequestTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<UpdateDomainServiceRequestTagsMap>;
 
 export interface UpdateDomainServiceRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1553,10 +1536,8 @@ export const UpdateDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateDomainServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDomainServiceResponseTagsMap>;
+export const UpdateDomainServiceResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<UpdateDomainServiceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateDomainServiceResponseSystemDataCreatedByType =
@@ -1672,10 +1653,8 @@ export const UpdateOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateOuContainerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateOuContainerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOuContainerResponseTagsMap>;
+export const UpdateOuContainerResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<UpdateOuContainerResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateOuContainerResponseSystemDataCreatedByType =

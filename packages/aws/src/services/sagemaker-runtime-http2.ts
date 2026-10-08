@@ -432,14 +432,7 @@ export interface ResponsePayloadPart {
   CompletionState?: string;
   P?: string;
 }
-export const ResponsePayloadPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
-    DataType: S.optional(S.String).pipe(T.EventHeader()),
-    CompletionState: S.optional(S.String).pipe(T.EventHeader()),
-    P: S.optional(S.String).pipe(T.EventHeader()),
-  }),
-).annotate({ identifier: "ResponsePayloadPart" }) as any as S.Schema<ResponsePayloadPart>;
+export const ResponsePayloadPart = RequestPayloadPart as any as S.Schema<ResponsePayloadPart>;
 export type ResponseStreamEvent =
   | { PayloadPart: ResponsePayloadPart; ModelStreamError?: never; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError: ModelStreamError; InternalStreamFailure?: never }

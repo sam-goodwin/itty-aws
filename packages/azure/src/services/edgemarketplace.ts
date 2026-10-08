@@ -193,9 +193,8 @@ export const OfferContentCategoryIdsList = /*@__PURE__*/ S.Array(
 
 /** The operating systems */
 export type OfferContentOperatingSystemsList = Array<string>;
-export const OfferContentOperatingSystemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OfferContentOperatingSystemsList>;
+export const OfferContentOperatingSystemsList =
+  OfferContentCategoryIdsList as any as S.Schema<OfferContentOperatingSystemsList>;
 
 /** The offer content */
 export interface OfferContent {
@@ -506,15 +505,7 @@ export interface Offer {
   /** The resource-specific properties for this resource. */
   properties?: OfferProperties;
 }
-export const Offer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OfferProperties),
-  }),
-).annotate({ identifier: "Offer" }) as any as S.Schema<Offer>;
+export const Offer = GetOfferResponse as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
 export type OfferListResultValueList = Array<Offer>;
@@ -682,15 +673,7 @@ export interface Publisher {
   /** The resource-specific properties for this resource. */
   properties?: PublisherProperties;
 }
-export const Publisher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PublisherProperties),
-  }),
-).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
+export const Publisher = GetPublisherResponse as any as S.Schema<Publisher>;
 
 /** The Publisher items on this page */
 export type PublisherListResultValueList = Array<Publisher>;

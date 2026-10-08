@@ -192,7 +192,7 @@ export type ComponentId = string;
 export type ComponentIdList = string[];
 export const ComponentIdList = /*@__PURE__*/ S.Array(S.String);
 export type ApplicationArnList = string[];
-export const ApplicationArnList = /*@__PURE__*/ S.Array(S.String);
+export const ApplicationArnList = ComponentIdList as any as S.Schema<ApplicationArnList>;
 export interface Application {
   Id?: string;
   Type?: ApplicationType;
@@ -334,7 +334,7 @@ export const AssociatedHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssociatedHost" }) as any as S.Schema<AssociatedHost>;
 export type DatabaseId = string;
 export type DatabaseIdList = string[];
-export const DatabaseIdList = /*@__PURE__*/ S.Array(S.String);
+export const DatabaseIdList = ComponentIdList as any as S.Schema<DatabaseIdList>;
 export type HostRole = "LEADER" | "WORKER" | "STANDBY" | "UNKNOWN" | (string & {});
 export const HostRole = S.String;
 
@@ -550,7 +550,7 @@ export type DatabaseStatus =
 export const DatabaseStatus = S.String;
 
 export type ComponentArnList = string[];
-export const ComponentArnList = /*@__PURE__*/ S.Array(S.String);
+export const ComponentArnList = ComponentIdList as any as S.Schema<ComponentArnList>;
 export interface Database {
   ApplicationId?: string;
   ComponentId?: string;
@@ -659,11 +659,8 @@ export const GetResourcePermissionInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourcePermissionOutput {
   Policy?: string;
 }
-export const GetResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.optional(S.String) }),
-).annotate({
-  identifier: "GetResourcePermissionOutput",
-}) as any as S.Schema<GetResourcePermissionOutput>;
+export const GetResourcePermissionOutput =
+  DeleteResourcePermissionOutput as any as S.Schema<GetResourcePermissionOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export type FilterName = string;
@@ -988,7 +985,7 @@ export const ListSubCheckResultsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubCheckResultsInput" }) as any as S.Schema<ListSubCheckResultsInput>;
 export type SubCheckResultId = string;
 export type SubCheckReferencesList = string[];
-export const SubCheckReferencesList = /*@__PURE__*/ S.Array(S.String);
+export const SubCheckReferencesList = ComponentIdList as any as S.Schema<SubCheckReferencesList>;
 export interface SubCheckResult {
   Id?: string;
   Name?: string;
@@ -1119,14 +1116,11 @@ export const PutResourcePermissionInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutResourcePermissionOutput {
   Policy?: string;
 }
-export const PutResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.optional(S.String) }),
-).annotate({
-  identifier: "PutResourcePermissionOutput",
-}) as any as S.Schema<PutResourcePermissionOutput>;
+export const PutResourcePermissionOutput =
+  DeleteResourcePermissionOutput as any as S.Schema<PutResourcePermissionOutput>;
 export type InstanceId = string;
 export type InstanceList = string[];
-export const InstanceList = /*@__PURE__*/ S.Array(S.String);
+export const InstanceList = ComponentIdList as any as S.Schema<InstanceList>;
 export interface ComponentInfo {
   ComponentType: ComponentType;
   Sid: string;
@@ -1262,9 +1256,8 @@ export const StopApplicationInput = /*@__PURE__*/ S.suspend(() =>
 export interface StopApplicationOutput {
   OperationId?: string;
 }
-export const StopApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }),
-).annotate({ identifier: "StopApplicationOutput" }) as any as S.Schema<StopApplicationOutput>;
+export const StopApplicationOutput =
+  StartApplicationOutput as any as S.Schema<StopApplicationOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1275,11 +1268,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeregisterApplicationOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ComponentIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1293,9 +1285,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeregisterApplicationOutput as any as S.Schema<UntagResourceResponse>;
 export type BackintMode = "AWSBackup" | (string & {});
 export const BackintMode = S.String;
 
@@ -1334,7 +1325,7 @@ export const UpdateApplicationSettingsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateApplicationSettingsInput",
 }) as any as S.Schema<UpdateApplicationSettingsInput>;
 export type OperationIdList = string[];
-export const OperationIdList = /*@__PURE__*/ S.Array(S.String);
+export const OperationIdList = ComponentIdList as any as S.Schema<OperationIdList>;
 export interface UpdateApplicationSettingsOutput {
   Message?: string;
   OperationIds?: string[];

@@ -32,9 +32,7 @@ export const DeleteDictRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDictRequest" }) as any as S.Schema<DeleteDictRequest>;
 
 export interface DeleteDictResponse {}
-export const DeleteDictResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDictResponse",
-}) as any as S.Schema<DeleteDictResponse>;
+export const DeleteDictResponse = ClearDictResponse as any as S.Schema<DeleteDictResponse>;
 
 export interface DictContainsRequest {
   dictId?: string;
@@ -143,12 +141,8 @@ export interface DictGetOrCreateResponse {
   dictId?: string;
   metadata?: DictMetadata;
 }
-export const DictGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dictId: S.optional(S.String),
-    metadata: S.optional(DictMetadata),
-  }),
-).annotate({ identifier: "DictGetOrCreateResponse" }) as any as S.Schema<DictGetOrCreateResponse>;
+export const DictGetOrCreateResponse =
+  DictGetByIdResponse as any as S.Schema<DictGetOrCreateResponse>;
 
 export interface DictHeartbeatRequest {
   dictId?: string;
@@ -160,9 +154,7 @@ export const DictHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DictHeartbeatRequest" }) as any as S.Schema<DictHeartbeatRequest>;
 
 export interface DictHeartbeatResponse {}
-export const DictHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DictHeartbeatResponse",
-}) as any as S.Schema<DictHeartbeatResponse>;
+export const DictHeartbeatResponse = ClearDictResponse as any as S.Schema<DictHeartbeatResponse>;
 
 export interface DictLenRequest {
   dictId?: string;
@@ -219,12 +211,7 @@ export interface GetDictResponse {
   found?: boolean;
   value?: string;
 }
-export const GetDictResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    found: S.optional(S.Boolean),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetDictResponse" }) as any as S.Schema<GetDictResponse>;
+export const GetDictResponse = DictPopResponse as any as S.Schema<GetDictResponse>;
 
 export interface ListPagination {
   maxObjects?: number;

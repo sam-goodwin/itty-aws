@@ -567,9 +567,8 @@ export const GetOrgUsageV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrgUsageV2Request" }) as any as S.Schema<GetOrgUsageV2Request>;
 
 export interface GetOrgUsageV2Response {}
-export const GetOrgUsageV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetOrgUsageV2Response",
-}) as any as S.Schema<GetOrgUsageV2Response>;
+export const GetOrgUsageV2Response =
+  ChangeMemberRoleResponse as any as S.Schema<GetOrgUsageV2Response>;
 
 export interface GetResourceGroupUsageRequest {
   name: string;
@@ -1232,9 +1231,8 @@ export const RevokeMemberTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeMemberTokenRequest" }) as any as S.Schema<RevokeMemberTokenRequest>;
 
 export interface RevokeMemberTokenResponse {}
-export const RevokeMemberTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeMemberTokenResponse",
-}) as any as S.Schema<RevokeMemberTokenResponse>;
+export const RevokeMemberTokenResponse =
+  ChangeMemberRoleResponse as any as S.Schema<RevokeMemberTokenResponse>;
 
 /** OIDC client secret */
 export interface RotateSsoCredentialsRequestBodyCase0 {
@@ -1300,14 +1298,11 @@ export const StreamUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamUsageRequest" }) as any as S.Schema<StreamUsageRequest>;
 
 export interface StreamUsageResponse {}
-export const StreamUsageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StreamUsageResponse",
-}) as any as S.Schema<StreamUsageResponse>;
+export const StreamUsageResponse = ChangeMemberRoleResponse as any as S.Schema<StreamUsageResponse>;
 
 export type UpdateNetworkSecurityRequestIpRangesList = Array<string>;
-export const UpdateNetworkSecurityRequestIpRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateNetworkSecurityRequestIpRangesList>;
+export const UpdateNetworkSecurityRequestIpRangesList =
+  GetNetworkSecuritySettingsResponseIpRangesList as any as S.Schema<UpdateNetworkSecurityRequestIpRangesList>;
 
 export type UpdateNetworkSecurityRequestBlockedContentsItemResourceCase0 =
   | "dataset"
@@ -1413,9 +1408,8 @@ export const UpdateNetworkSecurityResponseEnforceAuth =
   S.Unknown as any as S.Schema<UpdateNetworkSecurityResponseEnforceAuth>;
 
 export type UpdateNetworkSecurityResponseIpRangesList = Array<string>;
-export const UpdateNetworkSecurityResponseIpRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateNetworkSecurityResponseIpRangesList>;
+export const UpdateNetworkSecurityResponseIpRangesList =
+  GetNetworkSecuritySettingsResponseIpRangesList as any as S.Schema<UpdateNetworkSecurityResponseIpRangesList>;
 
 export type UpdateNetworkSecurityResponseBlockedContentsItemResourceCase0 =
   | "dataset"

@@ -406,13 +406,8 @@ export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LinkPreviewMentionResponse",
-}) as any as S.Schema<LinkPreviewMentionResponse>;
+export const LinkPreviewMentionResponse =
+  RichTextItemResponseTextLink as any as S.Schema<LinkPreviewMentionResponse>;
 
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
@@ -517,13 +512,8 @@ export interface RichTextItemResponseMentionCase5Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemResponseMentionCase5Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase5Database",
-}) as any as S.Schema<RichTextItemResponseMentionCase5Database>;
+export const RichTextItemResponseMentionCase5Database =
+  RichTextItemResponseMentionCase4Page as any as S.Schema<RichTextItemResponseMentionCase5Database>;
 
 export interface RichTextItemResponseMentionCase5 {
   /** Always `database` */
@@ -942,14 +932,7 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueI
   value: string;
 }
 export const QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1",
-  }) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1>;
+  QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase0Value as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase1>;
 
 export type QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItem =
   | QueryMeetingNotesRequestFilterFiltersItemCase0FilterCase1ValueItemCase0
@@ -1826,9 +1809,8 @@ export const QueryMeetingNotesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Title of the meeting note as rich text. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesTitleList = Array<RichTextItemResponse>;
-export const QueryMeetingNotesResponseResultsItemMeetingNotesTitleList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesTitleList>;
+export const QueryMeetingNotesResponseResultsItemMeetingNotesTitleList =
+  CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesTitleList>;
 
 /** Current processing status of the meeting note transcription. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesStatus =
@@ -1850,9 +1832,7 @@ export const QueryMeetingNotesResponseResultsItemMeetingNotesChildren =
 export type QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList =
   Array<string>;
 export const QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList>;
+  CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList>;
 
 /** Calendar event metadata associated with this meeting note. */
 export interface QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent {

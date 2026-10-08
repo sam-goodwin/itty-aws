@@ -126,9 +126,8 @@ export const CreateHealthCheckRequestHttpConfigExpectedCodesList = /*@__PURE__*/
 ) as any as S.Schema<CreateHealthCheckRequestHttpConfigExpectedCodesList>;
 
 export type CreateHealthCheckRequestHttpConfigHeaderValueList = Array<string>;
-export const CreateHealthCheckRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHealthCheckRequestHttpConfigHeaderValueList>;
+export const CreateHealthCheckRequestHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<CreateHealthCheckRequestHttpConfigHeaderValueList>;
 
 export type CreateHealthCheckRequestHttpConfigHeaderMap = {
   [key: string]: CreateHealthCheckRequestHttpConfigHeaderValueList | undefined;
@@ -269,22 +268,18 @@ export const CreateHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateHealthCheckResponseCheckRegionsList>;
 
 export type CreateHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-export const CreateHealthCheckResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHealthCheckResponseHttpConfigExpectedCodesList>;
+export const CreateHealthCheckResponseHttpConfigExpectedCodesList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<CreateHealthCheckResponseHttpConfigExpectedCodesList>;
 
 export type CreateHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
-export const CreateHealthCheckResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateHealthCheckResponseHttpConfigHeaderValueList>;
+export const CreateHealthCheckResponseHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<CreateHealthCheckResponseHttpConfigHeaderValueList>;
 
 export type CreateHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: CreateHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-export const CreateHealthCheckResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateHealthCheckResponseHttpConfigHeaderValueList,
-) as any as S.Schema<CreateHealthCheckResponseHttpConfigHeaderMap>;
+export const CreateHealthCheckResponseHttpConfigHeaderMap =
+  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<CreateHealthCheckResponseHttpConfigHeaderMap>;
 
 export type CreateHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
 export const CreateHealthCheckResponseHttpConfigMethod = S.String;
@@ -468,22 +463,18 @@ export const EditHealthCheckRequestCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditHealthCheckRequestCheckRegionsList>;
 
 export type EditHealthCheckRequestHttpConfigExpectedCodesList = Array<string>;
-export const EditHealthCheckRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditHealthCheckRequestHttpConfigExpectedCodesList>;
+export const EditHealthCheckRequestHttpConfigExpectedCodesList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<EditHealthCheckRequestHttpConfigExpectedCodesList>;
 
 export type EditHealthCheckRequestHttpConfigHeaderValueList = Array<string>;
-export const EditHealthCheckRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditHealthCheckRequestHttpConfigHeaderValueList>;
+export const EditHealthCheckRequestHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<EditHealthCheckRequestHttpConfigHeaderValueList>;
 
 export type EditHealthCheckRequestHttpConfigHeaderMap = {
   [key: string]: EditHealthCheckRequestHttpConfigHeaderValueList | undefined;
 };
-export const EditHealthCheckRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  EditHealthCheckRequestHttpConfigHeaderValueList,
-) as any as S.Schema<EditHealthCheckRequestHttpConfigHeaderMap>;
+export const EditHealthCheckRequestHttpConfigHeaderMap =
+  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<EditHealthCheckRequestHttpConfigHeaderMap>;
 
 export type EditHealthCheckRequestHttpConfigMethod = "GET" | "HEAD";
 export const EditHealthCheckRequestHttpConfigMethod = S.String;
@@ -623,22 +614,18 @@ export const EditHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditHealthCheckResponseCheckRegionsList>;
 
 export type EditHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-export const EditHealthCheckResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditHealthCheckResponseHttpConfigExpectedCodesList>;
+export const EditHealthCheckResponseHttpConfigExpectedCodesList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<EditHealthCheckResponseHttpConfigExpectedCodesList>;
 
 export type EditHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
-export const EditHealthCheckResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditHealthCheckResponseHttpConfigHeaderValueList>;
+export const EditHealthCheckResponseHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<EditHealthCheckResponseHttpConfigHeaderValueList>;
 
 export type EditHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: EditHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-export const EditHealthCheckResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  EditHealthCheckResponseHttpConfigHeaderValueList,
-) as any as S.Schema<EditHealthCheckResponseHttpConfigHeaderMap>;
+export const EditHealthCheckResponseHttpConfigHeaderMap =
+  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<EditHealthCheckResponseHttpConfigHeaderMap>;
 
 export type EditHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
 export const EditHealthCheckResponseHttpConfigMethod = S.String;
@@ -915,22 +902,18 @@ export const GetHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetHealthCheckResponseCheckRegionsList>;
 
 export type GetHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-export const GetHealthCheckResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetHealthCheckResponseHttpConfigExpectedCodesList>;
+export const GetHealthCheckResponseHttpConfigExpectedCodesList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<GetHealthCheckResponseHttpConfigExpectedCodesList>;
 
 export type GetHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
-export const GetHealthCheckResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetHealthCheckResponseHttpConfigHeaderValueList>;
+export const GetHealthCheckResponseHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<GetHealthCheckResponseHttpConfigHeaderValueList>;
 
 export type GetHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: GetHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-export const GetHealthCheckResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetHealthCheckResponseHttpConfigHeaderValueList,
-) as any as S.Schema<GetHealthCheckResponseHttpConfigHeaderMap>;
+export const GetHealthCheckResponseHttpConfigHeaderMap =
+  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<GetHealthCheckResponseHttpConfigHeaderMap>;
 
 export type GetHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
 export const GetHealthCheckResponseHttpConfigMethod = S.String;
@@ -1093,22 +1076,18 @@ export const ListHealthChecksResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListHealthChecksResultItemCheckRegionsList>;
 
 export type ListHealthChecksResultItemHttpConfigExpectedCodesList = Array<string>;
-export const ListHealthChecksResultItemHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHealthChecksResultItemHttpConfigExpectedCodesList>;
+export const ListHealthChecksResultItemHttpConfigExpectedCodesList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<ListHealthChecksResultItemHttpConfigExpectedCodesList>;
 
 export type ListHealthChecksResultItemHttpConfigHeaderValueList = Array<string>;
-export const ListHealthChecksResultItemHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHealthChecksResultItemHttpConfigHeaderValueList>;
+export const ListHealthChecksResultItemHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<ListHealthChecksResultItemHttpConfigHeaderValueList>;
 
 export type ListHealthChecksResultItemHttpConfigHeaderMap = {
   [key: string]: ListHealthChecksResultItemHttpConfigHeaderValueList | undefined;
 };
-export const ListHealthChecksResultItemHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListHealthChecksResultItemHttpConfigHeaderValueList,
-) as any as S.Schema<ListHealthChecksResultItemHttpConfigHeaderMap>;
+export const ListHealthChecksResultItemHttpConfigHeaderMap =
+  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<ListHealthChecksResultItemHttpConfigHeaderMap>;
 
 export type ListHealthChecksResultItemHttpConfigMethod = "GET" | "HEAD";
 export const ListHealthChecksResultItemHttpConfigMethod = S.String;
@@ -1400,9 +1379,8 @@ export type UpdateHealthCheckRequestMessagesItem = UpdateHealthCheckRequestError
 export const UpdateHealthCheckRequestMessagesItem = UpdateHealthCheckRequestErrorsItem;
 
 export type UpdateHealthCheckRequestMessagesList = Array<UpdateHealthCheckRequestErrorsItem>;
-export const UpdateHealthCheckRequestMessagesList = /*@__PURE__*/ S.Array(
-  UpdateHealthCheckRequestErrorsItem,
-) as any as S.Schema<UpdateHealthCheckRequestMessagesList>;
+export const UpdateHealthCheckRequestMessagesList =
+  UpdateHealthCheckRequestErrorsList as any as S.Schema<UpdateHealthCheckRequestMessagesList>;
 
 export type UpdateHealthCheckRequestResultCheckRegionsItem =
   | "WNAM"
@@ -1429,22 +1407,18 @@ export const UpdateHealthCheckRequestResultCheckRegionsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<UpdateHealthCheckRequestResultCheckRegionsList>;
 
 export type UpdateHealthCheckRequestResultHttpConfigExpectedCodesList = Array<string>;
-export const UpdateHealthCheckRequestResultHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigExpectedCodesList>;
+export const UpdateHealthCheckRequestResultHttpConfigExpectedCodesList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigExpectedCodesList>;
 
 export type UpdateHealthCheckRequestResultHttpConfigHeaderValueList = Array<string>;
-export const UpdateHealthCheckRequestResultHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigHeaderValueList>;
+export const UpdateHealthCheckRequestResultHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigHeaderValueList>;
 
 export type UpdateHealthCheckRequestResultHttpConfigHeaderMap = {
   [key: string]: UpdateHealthCheckRequestResultHttpConfigHeaderValueList | undefined;
 };
-export const UpdateHealthCheckRequestResultHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateHealthCheckRequestResultHttpConfigHeaderValueList,
-) as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigHeaderMap>;
+export const UpdateHealthCheckRequestResultHttpConfigHeaderMap =
+  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigHeaderMap>;
 
 export type UpdateHealthCheckRequestResultHttpConfigMethod = "GET" | "HEAD";
 export const UpdateHealthCheckRequestResultHttpConfigMethod = S.String;
@@ -1624,22 +1598,18 @@ export const UpdateHealthCheckResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateHealthCheckResponseCheckRegionsList>;
 
 export type UpdateHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-export const UpdateHealthCheckResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHealthCheckResponseHttpConfigExpectedCodesList>;
+export const UpdateHealthCheckResponseHttpConfigExpectedCodesList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateHealthCheckResponseHttpConfigExpectedCodesList>;
 
 export type UpdateHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
-export const UpdateHealthCheckResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHealthCheckResponseHttpConfigHeaderValueList>;
+export const UpdateHealthCheckResponseHttpConfigHeaderValueList =
+  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateHealthCheckResponseHttpConfigHeaderValueList>;
 
 export type UpdateHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: UpdateHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-export const UpdateHealthCheckResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateHealthCheckResponseHttpConfigHeaderValueList,
-) as any as S.Schema<UpdateHealthCheckResponseHttpConfigHeaderMap>;
+export const UpdateHealthCheckResponseHttpConfigHeaderMap =
+  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<UpdateHealthCheckResponseHttpConfigHeaderMap>;
 
 export type UpdateHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
 export const UpdateHealthCheckResponseHttpConfigMethod = S.String;

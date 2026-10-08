@@ -425,9 +425,9 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type ChannelId = string | redacted.Redacted<string>;
 export type ChannelMemberArns = string[];
-export const ChannelMemberArns = /*@__PURE__*/ S.Array(S.String);
+export const ChannelMemberArns = MemberArns as any as S.Schema<ChannelMemberArns>;
 export type ChannelModeratorArns = string[];
-export const ChannelModeratorArns = /*@__PURE__*/ S.Array(S.String);
+export const ChannelModeratorArns = MemberArns as any as S.Schema<ChannelModeratorArns>;
 export type MaximumSubChannels = number;
 export type TargetMembershipsPerSubChannel = number;
 export type MinimumMembershipPercentage = number;
@@ -676,9 +676,8 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelResponse",
-}) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse =
+  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteChannelBanRequest {
   ChannelArn: string;
   MemberArn: string;
@@ -701,9 +700,8 @@ export const DeleteChannelBanRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelBanRequest" }) as any as S.Schema<DeleteChannelBanRequest>;
 export interface DeleteChannelBanResponse {}
-export const DeleteChannelBanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelBanResponse",
-}) as any as S.Schema<DeleteChannelBanResponse>;
+export const DeleteChannelBanResponse =
+  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelBanResponse>;
 export interface DeleteChannelFlowRequest {
   ChannelFlowArn: string;
 }
@@ -720,9 +718,8 @@ export const DeleteChannelFlowRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelFlowRequest" }) as any as S.Schema<DeleteChannelFlowRequest>;
 export interface DeleteChannelFlowResponse {}
-export const DeleteChannelFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelFlowResponse",
-}) as any as S.Schema<DeleteChannelFlowResponse>;
+export const DeleteChannelFlowResponse =
+  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelFlowResponse>;
 export interface DeleteChannelMembershipRequest {
   ChannelArn: string;
   MemberArn: string;
@@ -778,9 +775,8 @@ export const DeleteChannelMessageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelMessageRequest",
 }) as any as S.Schema<DeleteChannelMessageRequest>;
 export interface DeleteChannelMessageResponse {}
-export const DeleteChannelMessageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelMessageResponse",
-}) as any as S.Schema<DeleteChannelMessageResponse>;
+export const DeleteChannelMessageResponse =
+  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelMessageResponse>;
 export interface DeleteChannelModeratorRequest {
   ChannelArn: string;
   ChannelModeratorArn: string;
@@ -805,9 +801,8 @@ export const DeleteChannelModeratorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelModeratorRequest",
 }) as any as S.Schema<DeleteChannelModeratorRequest>;
 export interface DeleteChannelModeratorResponse {}
-export const DeleteChannelModeratorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelModeratorResponse",
-}) as any as S.Schema<DeleteChannelModeratorResponse>;
+export const DeleteChannelModeratorResponse =
+  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelModeratorResponse>;
 export interface DeleteMessagingStreamingConfigurationsRequest {
   AppInstanceArn: string;
 }
@@ -1204,9 +1199,8 @@ export const DisassociateChannelFlowRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateChannelFlowRequest",
 }) as any as S.Schema<DisassociateChannelFlowRequest>;
 export interface DisassociateChannelFlowResponse {}
-export const DisassociateChannelFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DisassociateChannelFlowResponse" },
-) as any as S.Schema<DisassociateChannelFlowResponse>;
+export const DisassociateChannelFlowResponse =
+  DeleteChannelMembershipResponse as any as S.Schema<DisassociateChannelFlowResponse>;
 export interface GetChannelMembershipPreferencesRequest {
   ChannelArn: string;
   MemberArn: string;
@@ -1583,11 +1577,11 @@ export const ListChannelMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ChannelMembershipSummary {
   Member?: Identity;
 }
-export const ChannelMembershipSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Member: S.optional(Identity) }),
-).annotate({ identifier: "ChannelMembershipSummary" }) as any as S.Schema<ChannelMembershipSummary>;
+export const ChannelMembershipSummary =
+  ChannelBanSummary as any as S.Schema<ChannelMembershipSummary>;
 export type ChannelMembershipSummaryList = ChannelMembershipSummary[];
-export const ChannelMembershipSummaryList = /*@__PURE__*/ S.Array(ChannelMembershipSummary);
+export const ChannelMembershipSummaryList =
+  ChannelBanSummaryList as any as S.Schema<ChannelMembershipSummaryList>;
 export interface ListChannelMembershipsResponse {
   ChannelArn?: string;
   ChannelMemberships?: ChannelMembershipSummary[];
@@ -2033,15 +2027,8 @@ export interface PutChannelMembershipPreferencesResponse {
   Member?: Identity;
   Preferences?: ChannelMembershipPreferences;
 }
-export const PutChannelMembershipPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelArn: S.optional(S.String),
-    Member: S.optional(Identity),
-    Preferences: S.optional(ChannelMembershipPreferences),
-  }),
-).annotate({
-  identifier: "PutChannelMembershipPreferencesResponse",
-}) as any as S.Schema<PutChannelMembershipPreferencesResponse>;
+export const PutChannelMembershipPreferencesResponse =
+  GetChannelMembershipPreferencesResponse as any as S.Schema<PutChannelMembershipPreferencesResponse>;
 export interface PutMessagingStreamingConfigurationsRequest {
   AppInstanceArn: string;
   StreamingConfigurations: StreamingConfiguration[];
@@ -2066,11 +2053,8 @@ export const PutMessagingStreamingConfigurationsRequest = /*@__PURE__*/ S.suspen
 export interface PutMessagingStreamingConfigurationsResponse {
   StreamingConfigurations?: StreamingConfiguration[];
 }
-export const PutMessagingStreamingConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StreamingConfigurations: S.optional(StreamingConfigurationList) }),
-).annotate({
-  identifier: "PutMessagingStreamingConfigurationsResponse",
-}) as any as S.Schema<PutMessagingStreamingConfigurationsResponse>;
+export const PutMessagingStreamingConfigurationsResponse =
+  GetMessagingStreamingConfigurationsResponse as any as S.Schema<PutMessagingStreamingConfigurationsResponse>;
 export interface RedactChannelMessageRequest {
   ChannelArn: string;
   MessageId: string;
@@ -2118,7 +2102,7 @@ export const SearchFieldKey = S.String;
 
 export type SearchFieldValue = string;
 export type SearchFieldValues = string[];
-export const SearchFieldValues = /*@__PURE__*/ S.Array(S.String);
+export const SearchFieldValues = MemberArns as any as S.Schema<SearchFieldValues>;
 export type SearchFieldOperator = "EQUALS" | "INCLUDES" | (string & {});
 export const SearchFieldOperator = S.String;
 
@@ -2159,9 +2143,8 @@ export interface SearchChannelsResponse {
   Channels?: ChannelSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const SearchChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Channels: S.optional(ChannelSummaryList), NextToken: S.optional(SensitiveString) }),
-).annotate({ identifier: "SearchChannelsResponse" }) as any as S.Schema<SearchChannelsResponse>;
+export const SearchChannelsResponse =
+  ListChannelsResponse as any as S.Schema<SearchChannelsResponse>;
 export interface SendChannelMessageRequest {
   ChannelArn: string;
   Content: string | redacted.Redacted<string>;
@@ -2236,11 +2219,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AssociateChannelFlowResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
-export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
+export const TagKeyList = MessageAttributeStringValues as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: (string | redacted.Redacted<string>)[];
@@ -2258,9 +2240,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssociateChannelFlowResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelRequest {
   ChannelArn: string;
   Name?: string | redacted.Redacted<string>;
@@ -2282,9 +2263,8 @@ export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChannelResponse {
   ChannelArn?: string;
 }
-export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateChannelResponse" }) as any as S.Schema<UpdateChannelResponse>;
+export const UpdateChannelResponse =
+  CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdateChannelFlowRequest {
   ChannelFlowArn: string;
   Processors: Processor[];
@@ -2309,11 +2289,8 @@ export const UpdateChannelFlowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChannelFlowResponse {
   ChannelFlowArn?: string;
 }
-export const UpdateChannelFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelFlowArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateChannelFlowResponse",
-}) as any as S.Schema<UpdateChannelFlowResponse>;
+export const UpdateChannelFlowResponse =
+  CreateChannelFlowResponse as any as S.Schema<UpdateChannelFlowResponse>;
 export interface UpdateChannelMessageRequest {
   ChannelArn: string;
   MessageId: string;
@@ -2351,16 +2328,8 @@ export interface UpdateChannelMessageResponse {
   Status?: ChannelMessageStatusStructure;
   SubChannelId?: string;
 }
-export const UpdateChannelMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChannelArn: S.optional(S.String),
-    MessageId: S.optional(S.String),
-    Status: S.optional(ChannelMessageStatusStructure),
-    SubChannelId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateChannelMessageResponse",
-}) as any as S.Schema<UpdateChannelMessageResponse>;
+export const UpdateChannelMessageResponse =
+  SendChannelMessageResponse as any as S.Schema<UpdateChannelMessageResponse>;
 export interface UpdateChannelReadMarkerRequest {
   ChannelArn: string;
   ChimeBearer: string;

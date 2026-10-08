@@ -401,9 +401,8 @@ export type AccountRequiredActionAction =
 export const AccountRequiredActionAction = S.String;
 
 export type AccountRequiredActionBlockedCapabilitiesList = Array<string>;
-export const AccountRequiredActionBlockedCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountRequiredActionBlockedCapabilitiesList>;
+export const AccountRequiredActionBlockedCapabilitiesList =
+  AccountRecommendedActionBlockedCapabilitiesList as any as S.Schema<AccountRequiredActionBlockedCapabilitiesList>;
 
 /** required (act now) or pending (under review) */
 export type AccountRequiredActionStatus = "required" | "pending";

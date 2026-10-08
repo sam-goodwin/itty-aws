@@ -55,16 +55,13 @@ export const CreateTerminalAiRequestMessagesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateTerminalAiRequestMessagesList>;
 
 export type CreateTerminalAiRequestSystemCase1ItemMap = { [key: string]: unknown | undefined };
-export const CreateTerminalAiRequestSystemCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTerminalAiRequestSystemCase1ItemMap>;
+export const CreateTerminalAiRequestSystemCase1ItemMap =
+  TerminalAIMessageContentCase1ItemMap as any as S.Schema<CreateTerminalAiRequestSystemCase1ItemMap>;
 
 export type CreateTerminalAiRequestSystemCase1List =
   Array<CreateTerminalAiRequestSystemCase1ItemMap>;
-export const CreateTerminalAiRequestSystemCase1List = /*@__PURE__*/ S.Array(
-  CreateTerminalAiRequestSystemCase1ItemMap,
-) as any as S.Schema<CreateTerminalAiRequestSystemCase1List>;
+export const CreateTerminalAiRequestSystemCase1List =
+  TerminalAIMessageContentCase1List as any as S.Schema<CreateTerminalAiRequestSystemCase1List>;
 
 /** Agent instructions. */
 export type CreateTerminalAiRequestSystem = string | CreateTerminalAiRequestSystemCase1List;
@@ -73,10 +70,8 @@ export const CreateTerminalAiRequestSystem =
 
 /** JSON schema for the tool's arguments. */
 export type TerminalAIToolInputSchemaMap = { [key: string]: unknown | undefined };
-export const TerminalAIToolInputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TerminalAIToolInputSchemaMap>;
+export const TerminalAIToolInputSchemaMap =
+  TerminalAIMessageContentCase1ItemMap as any as S.Schema<TerminalAIToolInputSchemaMap>;
 
 export type TerminalAIToolCacheControlMap = { [key: string]: string | undefined };
 export const TerminalAIToolCacheControlMap = /*@__PURE__*/ S.Record(

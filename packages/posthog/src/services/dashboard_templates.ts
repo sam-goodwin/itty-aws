@@ -52,9 +52,8 @@ export const CreateDashboardTemplateRequestScope =
   S.Unknown as any as S.Schema<CreateDashboardTemplateRequestScope>;
 
 export type CreateDashboardTemplateRequestAvailabilityContextsList = Array<string>;
-export const CreateDashboardTemplateRequestAvailabilityContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDashboardTemplateRequestAvailabilityContextsList>;
+export const CreateDashboardTemplateRequestAvailabilityContextsList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<CreateDashboardTemplateRequestAvailabilityContextsList>;
 
 export interface CreateDashboardTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -96,9 +95,8 @@ export const CreateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardTemplateRequest>;
 
 export type DashboardTemplateTagsList = Array<string>;
-export const DashboardTemplateTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTemplateTagsList>;
+export const DashboardTemplateTagsList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<DashboardTemplateTagsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -152,15 +150,13 @@ export type DashboardTemplateScope = DashboardTemplateScopeEnum | BlankEnum;
 export const DashboardTemplateScope = S.Unknown as any as S.Schema<DashboardTemplateScope>;
 
 export type DashboardTemplateAvailabilityContextsList = Array<string>;
-export const DashboardTemplateAvailabilityContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DashboardTemplateAvailabilityContextsList>;
+export const DashboardTemplateAvailabilityContextsList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<DashboardTemplateAvailabilityContextsList>;
 
 /** Names of data warehouse tables referenced by the template's tiles that are specific to the source project. */
 export type NonPortableReferencesWarehouseTablesList = Array<string>;
-export const NonPortableReferencesWarehouseTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NonPortableReferencesWarehouseTablesList>;
+export const NonPortableReferencesWarehouseTablesList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<NonPortableReferencesWarehouseTablesList>;
 
 export interface NonPortableReferences {
   /** Count of distinct action references in the template's tiles that are specific to the source project. */
@@ -358,18 +354,16 @@ export const PaginatedDashboardTemplateList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDashboardTemplateList>;
 
 export type UpdateDashboardTemplateRequestTagsList = Array<string>;
-export const UpdateDashboardTemplateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardTemplateRequestTagsList>;
+export const UpdateDashboardTemplateRequestTagsList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplateRequestTagsList>;
 
 export type UpdateDashboardTemplateRequestScope = DashboardTemplateScopeEnum | BlankEnum;
 export const UpdateDashboardTemplateRequestScope =
   S.Unknown as any as S.Schema<UpdateDashboardTemplateRequestScope>;
 
 export type UpdateDashboardTemplateRequestAvailabilityContextsList = Array<string>;
-export const UpdateDashboardTemplateRequestAvailabilityContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardTemplateRequestAvailabilityContextsList>;
+export const UpdateDashboardTemplateRequestAvailabilityContextsList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplateRequestAvailabilityContextsList>;
 
 export interface UpdateDashboardTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -418,18 +412,16 @@ export const UpdateDashboardTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDashboardTemplateRequest>;
 
 export type UpdateDashboardTemplatesPartialRequestTagsList = Array<string>;
-export const UpdateDashboardTemplatesPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardTemplatesPartialRequestTagsList>;
+export const UpdateDashboardTemplatesPartialRequestTagsList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplatesPartialRequestTagsList>;
 
 export type UpdateDashboardTemplatesPartialRequestScope = DashboardTemplateScopeEnum | BlankEnum;
 export const UpdateDashboardTemplatesPartialRequestScope =
   S.Unknown as any as S.Schema<UpdateDashboardTemplatesPartialRequestScope>;
 
 export type UpdateDashboardTemplatesPartialRequestAvailabilityContextsList = Array<string>;
-export const UpdateDashboardTemplatesPartialRequestAvailabilityContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDashboardTemplatesPartialRequestAvailabilityContextsList>;
+export const UpdateDashboardTemplatesPartialRequestAvailabilityContextsList =
+  CreateDashboardTemplateRequestTagsList as any as S.Schema<UpdateDashboardTemplatesPartialRequestAvailabilityContextsList>;
 
 export interface UpdateDashboardTemplatesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

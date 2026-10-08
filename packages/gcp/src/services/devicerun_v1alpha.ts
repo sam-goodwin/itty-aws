@@ -225,11 +225,7 @@ export interface Warning {
   /** Output only. Detailed warning summary. */
   summary?: IssueSummary;
 }
-export const Warning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    summary: S.optional(IssueSummary),
-  }),
-).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
+export const Warning = ResultCause as any as S.Schema<Warning>;
 
 export type WarningList = Array<Warning>;
 export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
@@ -601,13 +597,8 @@ export interface AndroidDumpsysDeviceAction {
   /** Optional. Whether to deliver the dumpsys when the test passes. If false, the dumpsys is skipped on pass to save time (default behavior). If true, the dumpsys is always delivered. */
   collectOnPass?: boolean;
 }
-export const AndroidDumpsysDeviceAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collectOnPass: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AndroidDumpsysDeviceAction",
-}) as any as S.Schema<AndroidDumpsysDeviceAction>;
+export const AndroidDumpsysDeviceAction =
+  AndroidBugreportDeviceAction as any as S.Schema<AndroidDumpsysDeviceAction>;
 
 /** Installs iOS packages on the device. */
 export interface IosInstallPackagesDeviceAction {
@@ -701,26 +692,16 @@ export interface IosRecordVideoDeviceAction {
   /** Optional. Whether to discard the video if the test passes. If not specified, the default is false (always keep the video). */
   discardOnPass?: boolean;
 }
-export const IosRecordVideoDeviceAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discardOnPass: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IosRecordVideoDeviceAction",
-}) as any as S.Schema<IosRecordVideoDeviceAction>;
+export const IosRecordVideoDeviceAction =
+  AndroidRecordVideoDeviceAction as any as S.Schema<IosRecordVideoDeviceAction>;
 
 /** Switches the locale (language and region) of the device. */
 export interface AndroidSwitchLocaleDeviceAction {
   /** Required. The locale (language and region) to switch the device to. The format is `language-region`, e.g. "en-US", "zh-CN", etc. The typical language value is a two or three-letter language code as defined in ISO639. The typical region value is a two-letter ISO 3166 code or a three-digit UN M.49 area code. */
   localeCode?: string;
 }
-export const AndroidSwitchLocaleDeviceAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localeCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AndroidSwitchLocaleDeviceAction",
-}) as any as S.Schema<AndroidSwitchLocaleDeviceAction>;
+export const AndroidSwitchLocaleDeviceAction =
+  IosSwitchLocaleDeviceAction as any as S.Schema<AndroidSwitchLocaleDeviceAction>;
 
 /** The configuration of pushing a file to the iOS device. */
 export interface IosPushFilesDeviceActionFileConfig {

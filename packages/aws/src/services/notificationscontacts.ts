@@ -204,9 +204,8 @@ export const DeleteEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEmailContactRequest",
 }) as any as S.Schema<DeleteEmailContactRequest>;
 export interface DeleteEmailContactResponse {}
-export const DeleteEmailContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailContactResponse",
-}) as any as S.Schema<DeleteEmailContactResponse>;
+export const DeleteEmailContactResponse =
+  ActivateEmailContactResponse as any as S.Schema<DeleteEmailContactResponse>;
 export interface GetEmailContactRequest {
   arn: string;
 }
@@ -300,9 +299,8 @@ export const SendActivationCodeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendActivationCodeRequest",
 }) as any as S.Schema<SendActivationCodeRequest>;
 export interface SendActivationCodeResponse {}
-export const SendActivationCodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendActivationCodeResponse",
-}) as any as S.Schema<SendActivationCodeResponse>;
+export const SendActivationCodeResponse =
+  ActivateEmailContactResponse as any as S.Schema<SendActivationCodeResponse>;
 export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
@@ -313,9 +311,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  ActivateEmailContactResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
 export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -329,9 +326,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  ActivateEmailContactResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;

@@ -198,11 +198,8 @@ export const BatchExportsRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsRunsCancelCreateRequest>;
 
 export interface BatchExportsRunsCancelCreateResponse {}
-export const BatchExportsRunsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchExportsRunsCancelCreateResponse",
-}) as any as S.Schema<BatchExportsRunsCancelCreateResponse>;
+export const BatchExportsRunsCancelCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsRunsCancelCreateResponse>;
 
 export interface BatchExportsRunsRetryCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -264,11 +261,8 @@ export const BatchExportsRunsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsRunsRetryCreateRequest>;
 
 export interface BatchExportsRunsRetryCreateResponse {}
-export const BatchExportsRunsRetryCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchExportsRunsRetryCreateResponse",
-}) as any as S.Schema<BatchExportsRunsRetryCreateResponse>;
+export const BatchExportsRunsRetryCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsRunsRetryCreateResponse>;
 
 export interface BatchExportsUnpauseCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -295,11 +289,8 @@ export const BatchExportsUnpauseCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsUnpauseCreateRequest>;
 
 export interface BatchExportsUnpauseCreateResponse {}
-export const BatchExportsUnpauseCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchExportsUnpauseCreateResponse",
-}) as any as S.Schema<BatchExportsUnpauseCreateResponse>;
+export const BatchExportsUnpauseCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsUnpauseCreateResponse>;
 
 /** * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportModelEnum = "events" | "persons" | "sessions" | "hogql";
@@ -955,9 +946,8 @@ export const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/
 ) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
 
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
-export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
+export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
+  CustomChannelConditionValueCase1List as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
 
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
 export const InCohortVia = S.String;
@@ -2141,11 +2131,8 @@ export const CreateBatchExportsRunTestStepRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateBatchExportsRunTestStepRequest>;
 
 export interface CreateBatchExportsRunTestStepResponse {}
-export const CreateBatchExportsRunTestStepResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateBatchExportsRunTestStepResponse",
-}) as any as S.Schema<CreateBatchExportsRunTestStepResponse>;
+export const CreateBatchExportsRunTestStepResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<CreateBatchExportsRunTestStepResponse>;
 
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type CreateBatchExportsRunTestStepNewRequestModel = BatchExportModelEnum | BlankEnum;
@@ -2212,11 +2199,8 @@ export const CreateBatchExportsRunTestStepNewRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateBatchExportsRunTestStepNewRequest>;
 
 export interface CreateBatchExportsRunTestStepNewResponse {}
-export const CreateBatchExportsRunTestStepNewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateBatchExportsRunTestStepNewResponse",
-}) as any as S.Schema<CreateBatchExportsRunTestStepNewResponse>;
+export const CreateBatchExportsRunTestStepNewResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<CreateBatchExportsRunTestStepNewResponse>;
 
 export interface FileDownloadBatchExportsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2240,11 +2224,8 @@ export const FileDownloadBatchExportsCancelCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<FileDownloadBatchExportsCancelCreateRequest>;
 
 export interface FileDownloadBatchExportsCancelCreateResponse {}
-export const FileDownloadBatchExportsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FileDownloadBatchExportsCancelCreateResponse",
-}) as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>;
+export const FileDownloadBatchExportsCancelCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>;
 
 /** * `hogql` - hogql */
 export type FileDownloadHogQLModelEnum = "hogql";
@@ -2320,14 +2301,12 @@ export type FileDownloadEventsRequestModelEnum = "events";
 export const FileDownloadEventsRequestModelEnum = S.String;
 
 export type FileDownloadEventsRequestIncludeList = Array<string>;
-export const FileDownloadEventsRequestIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FileDownloadEventsRequestIncludeList>;
+export const FileDownloadEventsRequestIncludeList =
+  CustomChannelConditionValueCase1List as any as S.Schema<FileDownloadEventsRequestIncludeList>;
 
 export type FileDownloadEventsRequestExcludeList = Array<string>;
-export const FileDownloadEventsRequestExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FileDownloadEventsRequestExcludeList>;
+export const FileDownloadEventsRequestExcludeList =
+  CustomChannelConditionValueCase1List as any as S.Schema<FileDownloadEventsRequestExcludeList>;
 
 /** Typed configuration for the events model. */
 export interface FileDownloadEventsRequest {
@@ -2447,11 +2426,8 @@ export const FileDownloadBatchExportsCreateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<FileDownloadBatchExportsCreateRequest>;
 
 export interface FileDownloadBatchExportsCreateResponse {}
-export const FileDownloadBatchExportsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FileDownloadBatchExportsCreateResponse",
-}) as any as S.Schema<FileDownloadBatchExportsCreateResponse>;
+export const FileDownloadBatchExportsCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsCreateResponse>;
 
 export interface FileDownloadBatchExportsDownloadRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2475,11 +2451,8 @@ export const FileDownloadBatchExportsDownloadRetrieveRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveRequest>;
 
 export interface FileDownloadBatchExportsDownloadRetrieveResponse {}
-export const FileDownloadBatchExportsDownloadRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FileDownloadBatchExportsDownloadRetrieveResponse",
-}) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveResponse>;
+export const FileDownloadBatchExportsDownloadRetrieveResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveResponse>;
 
 export interface FileDownloadBatchExportsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2579,11 +2552,8 @@ export const FileDownloadBatchExportsLogsRetrieveRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveRequest>;
 
 export interface FileDownloadBatchExportsLogsRetrieveResponse {}
-export const FileDownloadBatchExportsLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FileDownloadBatchExportsLogsRetrieveResponse",
-}) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveResponse>;
+export const FileDownloadBatchExportsLogsRetrieveResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsLogsRetrieveResponse>;
 
 export interface FileDownloadBatchExportsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2625,9 +2595,8 @@ export type RetrieveCompletedOutputStatusEnum = "Completed";
 export const RetrieveCompletedOutputStatusEnum = S.String;
 
 export type RetrieveCompletedOutputFilesList = Array<string>;
-export const RetrieveCompletedOutputFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RetrieveCompletedOutputFilesList>;
+export const RetrieveCompletedOutputFilesList =
+  CustomChannelConditionValueCase1List as any as S.Schema<RetrieveCompletedOutputFilesList>;
 
 /** Typed output for view set `retrieve` with completed status. */
 export interface RetrieveCompletedOutput {
@@ -2757,9 +2726,8 @@ export const GetBatchExportsLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBatchExportsLogRequest>;
 
 export interface GetBatchExportsLogResponse {}
-export const GetBatchExportsLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBatchExportsLogResponse",
-}) as any as S.Schema<GetBatchExportsLogResponse>;
+export const GetBatchExportsLogResponse =
+  BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsLogResponse>;
 
 export interface GetBatchExportsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2826,9 +2794,8 @@ export const GetBatchExportsRunsLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBatchExportsRunsLogRequest>;
 
 export interface GetBatchExportsRunsLogResponse {}
-export const GetBatchExportsRunsLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBatchExportsRunsLogResponse",
-}) as any as S.Schema<GetBatchExportsRunsLogResponse>;
+export const GetBatchExportsRunsLogResponse =
+  BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsRunsLogResponse>;
 
 export interface GetBatchExportsTestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2845,9 +2812,8 @@ export const GetBatchExportsTestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBatchExportsTestRequest>;
 
 export interface GetBatchExportsTestResponse {}
-export const GetBatchExportsTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBatchExportsTestResponse",
-}) as any as S.Schema<GetBatchExportsTestResponse>;
+export const GetBatchExportsTestResponse =
+  BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsTestResponse>;
 
 export interface ListBatchExportsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2996,9 +2962,8 @@ export const ListBatchExportsRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBatchExportsRunsRequest>;
 
 export type PaginatedBatchExportRunListResultsList = Array<BatchExportRun>;
-export const PaginatedBatchExportRunListResultsList = /*@__PURE__*/ S.Array(
-  BatchExportRun,
-) as any as S.Schema<PaginatedBatchExportRunListResultsList>;
+export const PaginatedBatchExportRunListResultsList =
+  BatchExportOutputLatestRunsList as any as S.Schema<PaginatedBatchExportRunListResultsList>;
 
 export interface PaginatedBatchExportRunList {
   next?: string | null;

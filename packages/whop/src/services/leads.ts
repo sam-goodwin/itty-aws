@@ -87,10 +87,7 @@ export const LeadMember = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom key-value pairs attached to this lead. Null if no metadata was provided. */
 export type LeadMetadataMap = { [key: string]: unknown | undefined };
-export const LeadMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LeadMetadataMap>;
+export const LeadMetadataMap = CreateLeadRequestMetadataMap as any as S.Schema<LeadMetadataMap>;
 
 /** The product the lead expressed interest in. Null if the lead is not associated with a specific product. */
 export interface LeadProduct {
@@ -203,10 +200,8 @@ export const LeadListItemMember = LeadMember;
 
 /** Custom key-value pairs attached to this lead. Null if no metadata was provided. */
 export type LeadListItemMetadataMap = { [key: string]: unknown | undefined };
-export const LeadListItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LeadListItemMetadataMap>;
+export const LeadListItemMetadataMap =
+  CreateLeadRequestMetadataMap as any as S.Schema<LeadListItemMetadataMap>;
 
 /** The product the lead expressed interest in. Null if the lead is not associated with a specific product. */
 export type LeadListItemProduct = LeadProduct;
@@ -235,18 +230,7 @@ export interface LeadListItem {
   /** The user account associated with this lead. */
   user: LeadUser;
 }
-export const LeadListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.String,
-    id: S.String,
-    member: S.NullOr(LeadMember),
-    metadata: S.NullOr(LeadListItemMetadataMap),
-    product: S.NullOr(LeadProduct),
-    referrer: S.NullOr(S.String),
-    updated_at: S.String,
-    user: LeadUser,
-  }),
-).annotate({ identifier: "LeadListItem" }) as any as S.Schema<LeadListItem>;
+export const LeadListItem = Lead as any as S.Schema<LeadListItem>;
 
 /** A list of nodes. */
 export type ListLeadResponseDataList = Array<LeadListItem>;
@@ -289,10 +273,8 @@ export const ListLeadResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A JSON object of custom metadata to set on the lead, replacing any existing metadata. */
 export type UpdateLeadRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateLeadRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateLeadRequestMetadataMap>;
+export const UpdateLeadRequestMetadataMap =
+  CreateLeadRequestMetadataMap as any as S.Schema<UpdateLeadRequestMetadataMap>;
 
 export interface UpdateLeadRequest {
   /** The unique identifier of the lead to update, starting with 'lead_'. */

@@ -150,9 +150,8 @@ export const EngineeringAnalyticsPRStateEnum = S.String;
 
 /** GitHub label names on the pull request. */
 export type PullRequestListItemLabelsList = Array<string>;
-export const PullRequestListItemLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PullRequestListItemLabelsList>;
+export const PullRequestListItemLabelsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<PullRequestListItemLabelsList>;
 
 export interface PullRequestListItem {
   /** The pull request author. */
@@ -286,9 +285,8 @@ export const AuthorFrictionGroupsList = /*@__PURE__*/ S.Array(
 
 /** The author's GitHub teams. Empty when the membership table isn't synced. */
 export type AuthorFrictionTeamsList = Array<string>;
-export const AuthorFrictionTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorFrictionTeamsList>;
+export const AuthorFrictionTeamsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<AuthorFrictionTeamsList>;
 
 export interface AuthorFriction {
   /** The score split by the kind of friction. */
@@ -409,15 +407,13 @@ export const EngineeringAnalyticsAuthorFrictionDetailRequest = /*@__PURE__*/ S.s
 
 /** The author's teams without the author, each only with at least 2 other scored members. */
 export type AuthorFrictionDetailTeamsList = Array<TeamFriction>;
-export const AuthorFrictionDetailTeamsList = /*@__PURE__*/ S.Array(
-  TeamFriction,
-) as any as S.Schema<AuthorFrictionDetailTeamsList>;
+export const AuthorFrictionDetailTeamsList =
+  AuthorFrictionListTeamsList as any as S.Schema<AuthorFrictionDetailTeamsList>;
 
 /** The pull request's friction split by kind. */
 export type PullRequestFrictionItemGroupsList = Array<FrictionGroupShare>;
-export const PullRequestFrictionItemGroupsList = /*@__PURE__*/ S.Array(
-  FrictionGroupShare,
-) as any as S.Schema<PullRequestFrictionItemGroupsList>;
+export const PullRequestFrictionItemGroupsList =
+  AuthorFrictionGroupsList as any as S.Schema<PullRequestFrictionItemGroupsList>;
 
 export interface PullRequestFrictionItem {
   /** The pull request's friction split by kind. */
@@ -656,9 +652,8 @@ export const BrokenTestsResultRowsList = /*@__PURE__*/ S.Array(
 
 /** Default-branch job names whose latest completed run is failing: the 'what's on fire right now' summary. Empty when the job-level source isn't synced or trunk is green. */
 export type BrokenTestsResultBreakingMasterJobsList = Array<string>;
-export const BrokenTestsResultBreakingMasterJobsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BrokenTestsResultBreakingMasterJobsList>;
+export const BrokenTestsResultBreakingMasterJobsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<BrokenTestsResultBreakingMasterJobsList>;
 
 export interface BrokenTestsResult {
   /** Classified failures ranked by triage urgency: breaking trunk first, single-PR failures last. */
@@ -862,9 +857,8 @@ export const EngineeringAnalyticsCurrentBranchHealthRequest = /*@__PURE__*/ S.su
 
 /** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
 export type CurrentBranchHealthFailingWorkflowNamesList = Array<string>;
-export const CurrentBranchHealthFailingWorkflowNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CurrentBranchHealthFailingWorkflowNamesList>;
+export const CurrentBranchHealthFailingWorkflowNamesList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<CurrentBranchHealthFailingWorkflowNamesList>;
 
 export interface CurrentBranchHealth {
   /** Detected default branch ('master' or 'main') from runs in the same 24-hour window. */
@@ -1241,9 +1235,8 @@ export const DeliverySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeliverySummary" }) as any as S.Schema<DeliverySummary>;
 
 export type EngineeringAnalyticsDoraRequestEnvironmentList = Array<string>;
-export const EngineeringAnalyticsDoraRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EngineeringAnalyticsDoraRequestEnvironmentList>;
+export const EngineeringAnalyticsDoraRequestEnvironmentList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<EngineeringAnalyticsDoraRequestEnvironmentList>;
 
 export type EngineeringAnalyticsDoraRequestGranularity = "day" | "hour" | "week";
 export const EngineeringAnalyticsDoraRequestGranularity = S.String;
@@ -1353,33 +1346,28 @@ export const DoraOverviewMergeToDeploySeriesList = /*@__PURE__*/ S.Array(
 
 /** Open-to-merge distribution over the SAME deployed PRs and buckets as merge_to_deploy_series, so the two stages compare bucket by bucket. Not the all-merged-PRs cycle time. Empty in the same cases as merge_to_deploy_series. */
 export type DoraOverviewOpenToMergeSeriesList = Array<LeadTimeBucket>;
-export const DoraOverviewOpenToMergeSeriesList = /*@__PURE__*/ S.Array(
-  LeadTimeBucket,
-) as any as S.Schema<DoraOverviewOpenToMergeSeriesList>;
+export const DoraOverviewOpenToMergeSeriesList =
+  DoraOverviewMergeToDeploySeriesList as any as S.Schema<DoraOverviewOpenToMergeSeriesList>;
 
 /** Open-to-deploy distribution over the same deployed PRs and buckets: the full open to first-successful-deploy span the two stages above compose into. Empty in the same cases as merge_to_deploy_series. */
 export type DoraOverviewOpenToDeploySeriesList = Array<LeadTimeBucket>;
-export const DoraOverviewOpenToDeploySeriesList = /*@__PURE__*/ S.Array(
-  LeadTimeBucket,
-) as any as S.Schema<DoraOverviewOpenToDeploySeriesList>;
+export const DoraOverviewOpenToDeploySeriesList =
+  DoraOverviewMergeToDeploySeriesList as any as S.Schema<DoraOverviewOpenToDeploySeriesList>;
 
 /** Distinct persistent environments from the metric scan window or the 30 days before its end, whichever starts earlier, most-deployed first. Transient environments are omitted. */
 export type DoraOverviewEnvironmentsList = Array<string>;
-export const DoraOverviewEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DoraOverviewEnvironmentsList>;
+export const DoraOverviewEnvironmentsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewEnvironmentsList>;
 
 /** Exact environment names used for these metrics. Defaults to all persistent environments marked production or named prod/production (including regional suffixes), falling back to the busiest persistent environment. Explicit filters are trimmed and deduplicated. DRF rejects blank or unknown names; real transient names are allowed. */
 export type DoraOverviewSelectedEnvironmentsList = Array<string>;
-export const DoraOverviewSelectedEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DoraOverviewSelectedEnvironmentsList>;
+export const DoraOverviewSelectedEnvironmentsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewSelectedEnvironmentsList>;
 
 /** Distinct GitHub team slugs from the membership snapshot, sorted: the team picker's options. Empty when membership isn't synced. */
 export type DoraOverviewGithubTeamsList = Array<string>;
-export const DoraOverviewGithubTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DoraOverviewGithubTeamsList>;
+export const DoraOverviewGithubTeamsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<DoraOverviewGithubTeamsList>;
 
 export interface DoraOverview {
   /** Successful deployments per bucket across the window, oldest first, zero-filled, bucketed by series_granularity. Empty when the deploy tables aren't synced. */
@@ -1798,9 +1786,8 @@ export const EngineeringAnalyticsPrCostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Same spend broken down per workflow. */
 export type PRCostSummaryByWorkflowList = Array<WorkflowCost>;
-export const PRCostSummaryByWorkflowList = /*@__PURE__*/ S.Array(
-  WorkflowCost,
-) as any as S.Schema<PRCostSummaryByWorkflowList>;
+export const PRCostSummaryByWorkflowList =
+  EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList as any as S.Schema<PRCostSummaryByWorkflowList>;
 
 export interface RunCost {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */
@@ -2132,15 +2119,13 @@ export const EngineeringAnalyticsPullRequestFrictionRequest = /*@__PURE__*/ S.su
 
 /** The pull request's friction split by kind. */
 export type PullRequestFrictionBreakdownGroupsList = Array<FrictionGroupShare>;
-export const PullRequestFrictionBreakdownGroupsList = /*@__PURE__*/ S.Array(
-  FrictionGroupShare,
-) as any as S.Schema<PullRequestFrictionBreakdownGroupsList>;
+export const PullRequestFrictionBreakdownGroupsList =
+  AuthorFrictionGroupsList as any as S.Schema<PullRequestFrictionBreakdownGroupsList>;
 
 /** CI running time of each push, oldest first. */
 export type PullRequestFrictionBreakdownCiWaitSecondsList = Array<number>;
-export const PullRequestFrictionBreakdownCiWaitSecondsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PullRequestFrictionBreakdownCiWaitSecondsList>;
+export const PullRequestFrictionBreakdownCiWaitSecondsList =
+  BrokenTestRowTrend24hList as any as S.Schema<PullRequestFrictionBreakdownCiWaitSecondsList>;
 
 export interface PullRequestFrictionBreakdown {
   /** The pull request's friction split by kind. */
@@ -2255,9 +2240,8 @@ export const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ S.suspend((
 
 /** This page of pull requests, newest first, capped at `limit`. */
 export type PullRequestListItemsList = Array<PullRequestListItem>;
-export const PullRequestListItemsList = /*@__PURE__*/ S.Array(
-  PullRequestListItem,
-) as any as S.Schema<PullRequestListItemsList>;
+export const PullRequestListItemsList =
+  AttentionPullRequestListItemsList as any as S.Schema<PullRequestListItemsList>;
 
 export interface PullRequestList {
   /** This page of pull requests, newest first, capped at `limit`. */
@@ -2569,15 +2553,13 @@ export const QuarantineFileEntriesList = /*@__PURE__*/ S.Array(
 
 /** Contract violations (malformed JSON, bad entries) or fetch failures. Malformed entries are dropped; well-formed ones are kept. */
 export type QuarantineFileParseErrorsList = Array<string>;
-export const QuarantineFileParseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuarantineFileParseErrorsList>;
+export const QuarantineFileParseErrorsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<QuarantineFileParseErrorsList>;
 
 /** Forward-compatibility notices, e.g. unknown entry fields. */
 export type QuarantineFileParseWarningsList = Array<string>;
-export const QuarantineFileParseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuarantineFileParseWarningsList>;
+export const QuarantineFileParseWarningsList =
+  CIStatusRollupFailingWorkflowsList as any as S.Schema<QuarantineFileParseWarningsList>;
 
 export interface QuarantineFile {
   /** Quarantined selectors, most urgent first (overdue, in_grace, expiring_soon, active), then by soonest expiry. */
@@ -2778,18 +2760,12 @@ export interface OpenToMergeBucket {
   /** Median merged_at - created_at seconds over PRs merged in this bucket, bots and drafts excluded. Null when nothing merged in the bucket (a gap, not instant merges). */
   p50_seconds: number | null;
 }
-export const OpenToMergeBucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_start: S.String,
-    p50_seconds: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "OpenToMergeBucket" }) as any as S.Schema<OpenToMergeBucket>;
+export const OpenToMergeBucket = TimeToGreenBucket as any as S.Schema<OpenToMergeBucket>;
 
 /** Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
 export type RepoOverviewOpenToMergeSeriesList = Array<OpenToMergeBucket>;
-export const RepoOverviewOpenToMergeSeriesList = /*@__PURE__*/ S.Array(
-  OpenToMergeBucket,
-) as any as S.Schema<RepoOverviewOpenToMergeSeriesList>;
+export const RepoOverviewOpenToMergeSeriesList =
+  RepoOverviewTimeToGreenSeriesList as any as S.Schema<RepoOverviewOpenToMergeSeriesList>;
 
 /** * `open_to_gate` - OPEN_TO_GATE * `gate_to_merge` - GATE_TO_MERGE */
 export type DeliveryStageTimingStageEnum = "open_to_gate" | "gate_to_merge";
@@ -2839,18 +2815,12 @@ export interface ReadyToMergeBucket {
   /** Median per-PR ready_to_merge_seconds (merged_at minus the last observed ready-for-review transition) over PRs merged in this bucket, bots and drafts excluded. Null when nothing merged with an observed value (a gap, never zero). */
   p50_seconds: number | null;
 }
-export const ReadyToMergeBucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_start: S.String,
-    p50_seconds: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "ReadyToMergeBucket" }) as any as S.Schema<ReadyToMergeBucket>;
+export const ReadyToMergeBucket = TimeToGreenBucket as any as S.Schema<ReadyToMergeBucket>;
 
 /** Median cycle time (p50 per-PR ready_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by ready_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when the issue-events table isn't synced or include_series=false, so fall back to open_to_merge_series. */
 export type RepoOverviewReadyToMergeSeriesList = Array<ReadyToMergeBucket>;
-export const RepoOverviewReadyToMergeSeriesList = /*@__PURE__*/ S.Array(
-  ReadyToMergeBucket,
-) as any as S.Schema<RepoOverviewReadyToMergeSeriesList>;
+export const RepoOverviewReadyToMergeSeriesList =
+  RepoOverviewTimeToGreenSeriesList as any as S.Schema<RepoOverviewReadyToMergeSeriesList>;
 
 export interface RepoOverview {
   /** CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn't synced or include_series=false. */
@@ -3847,17 +3817,13 @@ export const EngineeringAnalyticsWorkflowRunsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<EngineeringAnalyticsWorkflowRunsRequest>;
 
 export type EngineeringAnalyticsWorkflowRunsResponseBodyList = Array<WorkflowRunDetail>;
-export const EngineeringAnalyticsWorkflowRunsResponseBodyList = /*@__PURE__*/ S.Array(
-  WorkflowRunDetail,
-) as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponseBodyList>;
+export const EngineeringAnalyticsWorkflowRunsResponseBodyList =
+  EngineeringAnalyticsPrRunsResponseBodyList as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponseBodyList>;
 
 export type EngineeringAnalyticsWorkflowRunsResponse =
   EngineeringAnalyticsWorkflowRunsResponseBodyList;
-export const EngineeringAnalyticsWorkflowRunsResponse = /*@__PURE__*/ S.suspend(() =>
-  EngineeringAnalyticsWorkflowRunsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "EngineeringAnalyticsWorkflowRunsResponse",
-}) as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponse>;
+export const EngineeringAnalyticsWorkflowRunsResponse =
+  EngineeringAnalyticsPrRunsResponse as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponse>;
 
 export interface GetEngineeringAnalyticsCiSignalsConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4003,9 +3969,8 @@ export const RunEngineeringAnalyticsFailureLogsRequest = /*@__PURE__*/ S.suspend
 
 /** Failed CI jobs of this run with their thinned failure logs, grouped by job. */
 export type RunFailureLogsJobsList = Array<CIJobFailureLog>;
-export const RunFailureLogsJobsList = /*@__PURE__*/ S.Array(
-  CIJobFailureLog,
-) as any as S.Schema<RunFailureLogsJobsList>;
+export const RunFailureLogsJobsList =
+  CIFailureLogsJobsList as any as S.Schema<RunFailureLogsJobsList>;
 
 export interface RunFailureLogs {
   /** CI execution engine; null when unknown. * `github_actions` - GitHub Actions * `depot_ci` - Depot CI */

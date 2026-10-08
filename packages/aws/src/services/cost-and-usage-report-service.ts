@@ -307,9 +307,8 @@ export const PutReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutReportDefinitionRequest",
 }) as any as S.Schema<PutReportDefinitionRequest>;
 export interface PutReportDefinitionResponse {}
-export const PutReportDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutReportDefinitionResponse",
-}) as any as S.Schema<PutReportDefinitionResponse>;
+export const PutReportDefinitionResponse =
+  ModifyReportDefinitionResponse as any as S.Schema<PutReportDefinitionResponse>;
 export interface TagResourceRequest {
   ReportName: string;
   Tags: Tag[];
@@ -320,9 +319,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  ModifyReportDefinitionResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -335,9 +333,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  ModifyReportDefinitionResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type DeleteReportDefinitionError =
   | InternalErrorException

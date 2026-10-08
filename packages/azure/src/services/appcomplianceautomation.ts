@@ -95,9 +95,7 @@ export const DeleteReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReportRequest" }) as any as S.Schema<DeleteReportRequest>;
 
 export interface DeleteReportResponse {}
-export const DeleteReportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReportResponse",
-}) as any as S.Schema<DeleteReportResponse>;
+export const DeleteReportResponse = DeleteEvidenceResponse as any as S.Schema<DeleteReportResponse>;
 
 export interface DeleteScopingConfigurationRequest {
   /** Report Name. */
@@ -149,9 +147,8 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse =
+  DeleteEvidenceResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DownloadEvidenceRequest {
   /** Report Name. */
@@ -348,13 +345,8 @@ export interface DownloadResponseComplianceDetailedPdfReport {
   /** The uri of detailed compliance pdf report */
   sasUri?: string;
 }
-export const DownloadResponseComplianceDetailedPdfReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sasUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DownloadResponseComplianceDetailedPdfReport",
-}) as any as S.Schema<DownloadResponseComplianceDetailedPdfReport>;
+export const DownloadResponseComplianceDetailedPdfReport =
+  DownloadResponseCompliancePdfReport as any as S.Schema<DownloadResponseComplianceDetailedPdfReport>;
 
 /** Object that includes all the possible response for the download operation. */
 export interface DownloadResponse {
@@ -714,9 +706,8 @@ export const ReportPropertiesErrorsList = /*@__PURE__*/ S.Array(
 
 /** List of subscription Ids. */
 export type ReportPropertiesSubscriptionsList = Array<string>;
-export const ReportPropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportPropertiesSubscriptionsList>;
+export const ReportPropertiesSubscriptionsList =
+  ReportPropertiesErrorsList as any as S.Schema<ReportPropertiesSubscriptionsList>;
 
 /** The overview of the compliance result for one report. */
 export interface OverviewStatus {
@@ -933,9 +924,8 @@ export const InputType = S.String;
 
 /** Option id list. */
 export type ScopingQuestionOptionIdsList = Array<string>;
-export const ScopingQuestionOptionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScopingQuestionOptionIdsList>;
+export const ScopingQuestionOptionIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<ScopingQuestionOptionIdsList>;
 
 /** Scoping question rule. */
 export type Rule =
@@ -1028,9 +1018,8 @@ export const GetScopingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Question answer value list. */
 export type ScopingAnswerAnswersList = Array<string>;
-export const ScopingAnswerAnswersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScopingAnswerAnswersList>;
+export const ScopingAnswerAnswersList =
+  ReportPropertiesErrorsList as any as S.Schema<ScopingAnswerAnswersList>;
 
 /** Scoping answer. */
 export interface ScopingAnswer {
@@ -1182,9 +1171,8 @@ export const ResponsibilityEnvironment = S.String;
 
 /** List of recommendation id. */
 export type ResponsibilityResourceRecommendationIdsList = Array<string>;
-export const ResponsibilityResourceRecommendationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResponsibilityResourceRecommendationIdsList>;
+export const ResponsibilityResourceRecommendationIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<ResponsibilityResourceRecommendationIdsList>;
 
 /** A class represent the resource. */
 export interface ResponsibilityResource {
@@ -1273,9 +1261,8 @@ export const ResponsibilityRecommendationListList = /*@__PURE__*/ S.Array(
 
 /** List of evidence file url. */
 export type ResponsibilityEvidenceFilesList = Array<string>;
-export const ResponsibilityEvidenceFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResponsibilityEvidenceFilesList>;
+export const ResponsibilityEvidenceFilesList =
+  ReportPropertiesErrorsList as any as S.Schema<ResponsibilityEvidenceFilesList>;
 
 /** A class represent the customer responsibility. */
 export interface Responsibility {
@@ -1667,15 +1654,7 @@ export interface EvidenceResource {
   /** Evidence property. */
   properties: EvidenceProperties;
 }
-export const EvidenceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: EvidenceProperties,
-  }),
-).annotate({ identifier: "EvidenceResource" }) as any as S.Schema<EvidenceResource>;
+export const EvidenceResource = GetEvidenceResponse as any as S.Schema<EvidenceResource>;
 
 /** The EvidenceResource items on this page */
 export type EvidenceResourceListResultValueList = Array<EvidenceResource>;
@@ -1874,15 +1853,7 @@ export interface ReportResource {
   /** Report property. */
   properties: ReportProperties;
 }
-export const ReportResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ReportProperties,
-  }),
-).annotate({ identifier: "ReportResource" }) as any as S.Schema<ReportResource>;
+export const ReportResource = GetReportResponse as any as S.Schema<ReportResource>;
 
 /** The ReportResource items on this page */
 export type ReportResourceListResultValueList = Array<ReportResource>;
@@ -1936,17 +1907,8 @@ export interface ScopingConfigurationResource {
   /** ScopingConfiguration property. */
   properties: ScopingConfigurationProperties;
 }
-export const ScopingConfigurationResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScopingConfigurationProperties,
-  }),
-).annotate({
-  identifier: "ScopingConfigurationResource",
-}) as any as S.Schema<ScopingConfigurationResource>;
+export const ScopingConfigurationResource =
+  GetScopingConfigurationResponse as any as S.Schema<ScopingConfigurationResource>;
 
 /** The ScopingConfigurationResource items on this page */
 export type ScopingConfigurationResourceListResultValueList = Array<ScopingConfigurationResource>;
@@ -2021,15 +1983,7 @@ export interface SnapshotResource {
   /** Snapshot's property. */
   properties?: SnapshotProperties;
 }
-export const SnapshotResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SnapshotProperties),
-  }),
-).annotate({ identifier: "SnapshotResource" }) as any as S.Schema<SnapshotResource>;
+export const SnapshotResource = GetSnapshotResponse as any as S.Schema<SnapshotResource>;
 
 /** The SnapshotResource items on this page */
 export type SnapshotResourceListResultValueList = Array<SnapshotResource>;
@@ -2104,15 +2058,7 @@ export interface WebhookResource {
   /** Webhook property. */
   properties: WebhookProperties;
 }
-export const WebhookResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: WebhookProperties,
-  }),
-).annotate({ identifier: "WebhookResource" }) as any as S.Schema<WebhookResource>;
+export const WebhookResource = GetWebhookResponse as any as S.Schema<WebhookResource>;
 
 /** The WebhookResource items on this page */
 export type WebhookResourceListResultValueList = Array<WebhookResource>;
@@ -2138,9 +2084,8 @@ export const WebhookResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription ids to be onboarded */
 export type ProviderActionsOnboardRequestSubscriptionIdsList = Array<string>;
-export const ProviderActionsOnboardRequestSubscriptionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderActionsOnboardRequestSubscriptionIdsList>;
+export const ProviderActionsOnboardRequestSubscriptionIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<ProviderActionsOnboardRequestSubscriptionIdsList>;
 
 export interface ProviderActionsOnboardRequest {
   /** List of subscription ids to be onboarded */
@@ -2163,9 +2108,8 @@ export const ProviderActionsOnboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription ids that are onboarded */
 export type OnboardResponseSubscriptionIdsList = Array<string>;
-export const OnboardResponseSubscriptionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnboardResponseSubscriptionIdsList>;
+export const OnboardResponseSubscriptionIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<OnboardResponseSubscriptionIdsList>;
 
 /** Success. The response indicates given subscriptions has been onboarded. */
 export interface OnboardResponse {
@@ -2180,9 +2124,8 @@ export const OnboardResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource data. */
 export type ReportPropertiesInputResourcesList = Array<ResourceMetadata>;
-export const ReportPropertiesInputResourcesList = /*@__PURE__*/ S.Array(
-  ResourceMetadata,
-) as any as S.Schema<ReportPropertiesInputResourcesList>;
+export const ReportPropertiesInputResourcesList =
+  ReportPropertiesResourcesList as any as S.Schema<ReportPropertiesInputResourcesList>;
 
 /** Create Report's properties. */
 export interface ReportPropertiesInput {
@@ -2337,9 +2280,8 @@ export const ReportNestedResourceCheckNameAvailabilityResponse = /*@__PURE__*/ S
 
 /** List of scoping question answers. */
 export type ScopingConfigurationPropertiesInputAnswersList = Array<ScopingAnswer>;
-export const ScopingConfigurationPropertiesInputAnswersList = /*@__PURE__*/ S.Array(
-  ScopingAnswer,
-) as any as S.Schema<ScopingConfigurationPropertiesInputAnswersList>;
+export const ScopingConfigurationPropertiesInputAnswersList =
+  ScopingConfigurationPropertiesAnswersList as any as S.Schema<ScopingConfigurationPropertiesInputAnswersList>;
 
 /** ScopingConfiguration's properties. */
 export interface ScopingConfigurationPropertiesInput {
@@ -2391,17 +2333,8 @@ export interface ScopingConfigurationCreateOrUpdateResponse {
   /** ScopingConfiguration property. */
   properties: ScopingConfigurationProperties;
 }
-export const ScopingConfigurationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ScopingConfigurationProperties,
-  }),
-).annotate({
-  identifier: "ScopingConfigurationCreateOrUpdateResponse",
-}) as any as S.Schema<ScopingConfigurationCreateOrUpdateResponse>;
+export const ScopingConfigurationCreateOrUpdateResponse =
+  GetScopingConfigurationResponse as any as S.Schema<ScopingConfigurationCreateOrUpdateResponse>;
 
 export interface SyncReportCertRecordRequest {
   /** Report Name. */
@@ -2438,9 +2371,8 @@ export const SyncCertRecordResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource ids to be evaluated */
 export type TriggerProviderActionEvaluationRequestResourceIdsList = Array<string>;
-export const TriggerProviderActionEvaluationRequestResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggerProviderActionEvaluationRequestResourceIdsList>;
+export const TriggerProviderActionEvaluationRequestResourceIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<TriggerProviderActionEvaluationRequestResourceIdsList>;
 
 export interface TriggerProviderActionEvaluationRequest {
   /** List of resource ids to be evaluated */
@@ -2463,9 +2395,8 @@ export const TriggerProviderActionEvaluationRequest = /*@__PURE__*/ S.suspend(()
 
 /** List of resource ids to be evaluated */
 export type TriggerEvaluationPropertyResourceIdsList = Array<string>;
-export const TriggerEvaluationPropertyResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggerEvaluationPropertyResourceIdsList>;
+export const TriggerEvaluationPropertyResourceIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<TriggerEvaluationPropertyResourceIdsList>;
 
 /** A class represent the quick assessment. */
 export interface QuickAssessment {
@@ -2539,9 +2470,8 @@ export const TriggerEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource data. */
 export type ReportPatchPropertiesInputResourcesList = Array<ResourceMetadata>;
-export const ReportPatchPropertiesInputResourcesList = /*@__PURE__*/ S.Array(
-  ResourceMetadata,
-) as any as S.Schema<ReportPatchPropertiesInputResourcesList>;
+export const ReportPatchPropertiesInputResourcesList =
+  ReportPropertiesResourcesList as any as S.Schema<ReportPatchPropertiesInputResourcesList>;
 
 /** Patch Report's properties. */
 export interface ReportPatchPropertiesInput {
@@ -2600,21 +2530,12 @@ export interface UpdateReportResponse {
   /** Report property. */
   properties: ReportProperties;
 }
-export const UpdateReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ReportProperties,
-  }),
-).annotate({ identifier: "UpdateReportResponse" }) as any as S.Schema<UpdateReportResponse>;
+export const UpdateReportResponse = GetReportResponse as any as S.Schema<UpdateReportResponse>;
 
 /** under which event notification should be sent. */
 export type WebhookPropertiesInputEventsList = Array<NotificationEvent | (string & {})>;
-export const WebhookPropertiesInputEventsList = /*@__PURE__*/ S.Array(
-  NotificationEvent,
-) as any as S.Schema<WebhookPropertiesInputEventsList>;
+export const WebhookPropertiesInputEventsList =
+  WebhookPropertiesEventsList as any as S.Schema<WebhookPropertiesInputEventsList>;
 
 /** Webhook properties. */
 export interface WebhookPropertiesInput {
@@ -2683,15 +2604,7 @@ export interface UpdateWebhookResponse {
   /** Webhook property. */
   properties: WebhookProperties;
 }
-export const UpdateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: WebhookProperties,
-  }),
-).annotate({ identifier: "UpdateWebhookResponse" }) as any as S.Schema<UpdateWebhookResponse>;
+export const UpdateWebhookResponse = GetWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
 
 export interface VerifyReportRequest {
   /** Report Name. */
@@ -2717,12 +2630,8 @@ export interface ReportVerificationResult {
   /** If the report verification action failed, to indicate the detailed failed reason. */
   reason?: string;
 }
-export const ReportVerificationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(Result),
-    reason: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReportVerificationResult" }) as any as S.Schema<ReportVerificationResult>;
+export const ReportVerificationResult =
+  ReportFixResult as any as S.Schema<ReportVerificationResult>;
 
 export interface WebhookCreateOrUpdateRequest {
   /** Report Name. */

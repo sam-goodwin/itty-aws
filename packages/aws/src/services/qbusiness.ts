@@ -153,7 +153,7 @@ export const PermissionConditionOperator = S.String;
 export type PermissionConditionKey = string;
 export type PermissionConditionValue = string;
 export type PermissionConditionValues = string[];
-export const PermissionConditionValues = /*@__PURE__*/ S.Array(S.String);
+export const PermissionConditionValues = QIamActions as any as S.Schema<PermissionConditionValues>;
 export interface PermissionCondition {
   conditionOperator: PermissionConditionOperator;
   conditionKey: string;
@@ -285,7 +285,8 @@ export const BatchDeleteDocumentResponse = /*@__PURE__*/ S.suspend(() =>
 export type DocumentAttributeKey = string;
 export type DocumentAttributeStringValue = string;
 export type DocumentAttributeStringListValue = string[];
-export const DocumentAttributeStringListValue = /*@__PURE__*/ S.Array(S.String);
+export const DocumentAttributeStringListValue =
+  QIamActions as any as S.Schema<DocumentAttributeStringListValue>;
 export type DocumentAttributeValue =
   | { stringValue: string; stringListValue?: never; longValue?: never; dateValue?: never }
   | { stringValue?: never; stringListValue: string[]; longValue?: never; dateValue?: never }
@@ -646,7 +647,7 @@ export const CancelSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelSubscriptionResponse",
 }) as any as S.Schema<CancelSubscriptionResponse>;
 export type UserGroups = string[];
-export const UserGroups = /*@__PURE__*/ S.Array(S.String);
+export const UserGroups = QIamActions as any as S.Schema<UserGroups>;
 export type ConversationId = string;
 export type MessageId = string;
 export type ClientToken = string;
@@ -1234,13 +1235,7 @@ export interface ActionExecution {
   payload: { [key: string]: ActionExecutionPayloadField | undefined };
   payloadFieldNameSeparator: string;
 }
-export const ActionExecution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pluginId: S.String,
-    payload: ActionExecutionPayload,
-    payloadFieldNameSeparator: S.String,
-  }),
-).annotate({ identifier: "ActionExecution" }) as any as S.Schema<ActionExecution>;
+export const ActionExecution = ActionExecutionEvent as any as S.Schema<ActionExecution>;
 export interface AuthChallengeResponse {
   responseMap: { [key: string]: string | undefined };
 }
@@ -1384,20 +1379,16 @@ export interface DocumentAclUser {
   id?: string;
   type?: MembershipType;
 }
-export const DocumentAclUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), type: S.optional(MembershipType) }),
-).annotate({ identifier: "DocumentAclUser" }) as any as S.Schema<DocumentAclUser>;
+export const DocumentAclUser = AssociatedUser as any as S.Schema<DocumentAclUser>;
 export type DocumentAclUsers = DocumentAclUser[];
-export const DocumentAclUsers = /*@__PURE__*/ S.Array(DocumentAclUser);
+export const DocumentAclUsers = AssociatedUsers as any as S.Schema<DocumentAclUsers>;
 export interface DocumentAclGroup {
   name?: string;
   type?: MembershipType;
 }
-export const DocumentAclGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), type: S.optional(MembershipType) }),
-).annotate({ identifier: "DocumentAclGroup" }) as any as S.Schema<DocumentAclGroup>;
+export const DocumentAclGroup = AssociatedGroup as any as S.Schema<DocumentAclGroup>;
 export type DocumentAclGroups = DocumentAclGroup[];
-export const DocumentAclGroups = /*@__PURE__*/ S.Array(DocumentAclGroup);
+export const DocumentAclGroups = AssociatedGroups as any as S.Schema<DocumentAclGroups>;
 export interface DocumentAclCondition {
   memberRelation?: MemberRelation;
   users?: DocumentAclUser[];
@@ -1498,7 +1489,7 @@ export type IAMIdentityProviderArn = string;
 export type InstanceArn = string;
 export type ClientIdForOIDC = string;
 export type ClientIdsForOIDC = string[];
-export const ClientIdsForOIDC = /*@__PURE__*/ S.Array(S.String);
+export const ClientIdsForOIDC = QIamActions as any as S.Schema<ClientIdsForOIDC>;
 export type Description = string;
 export type KmsKeyId = string | redacted.Redacted<string>;
 export interface EncryptionConfiguration {
@@ -1717,7 +1708,7 @@ export const DataAccessorAuthenticationConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export type DataAccessorExternalId = string;
 export type DataAccessorExternalIds = string[];
-export const DataAccessorExternalIds = /*@__PURE__*/ S.Array(S.String);
+export const DataAccessorExternalIds = QIamActions as any as S.Schema<DataAccessorExternalIds>;
 export interface DataAccessorAuthenticationDetail {
   authenticationType: DataAccessorAuthenticationType;
   authenticationConfiguration?: DataAccessorAuthenticationConfiguration;
@@ -1780,10 +1771,10 @@ export type DataSourceName = string;
 export type DataSourceConfiguration = unknown;
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = QIamActions as any as S.Schema<SubnetIds>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = QIamActions as any as S.Schema<SecurityGroupIds>;
 export interface DataSourceVpcConfiguration {
   subnetIds: string[];
   securityGroupIds: string[];
@@ -1920,9 +1911,7 @@ export const OAuth2ClientCredentialConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "OAuth2ClientCredentialConfiguration",
 }) as any as S.Schema<OAuth2ClientCredentialConfiguration>;
 export interface NoAuthConfiguration {}
-export const NoAuthConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NoAuthConfiguration",
-}) as any as S.Schema<NoAuthConfiguration>;
+export const NoAuthConfiguration = EndOfInputEvent as any as S.Schema<NoAuthConfiguration>;
 export interface IdcAuthConfiguration {
   idcApplicationArn: string;
   roleArn: string;
@@ -2316,9 +2305,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResponse {}
-export const CreateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateUserResponse",
-}) as any as S.Schema<CreateUserResponse>;
+export const CreateUserResponse = EndOfInputEvent as any as S.Schema<CreateUserResponse>;
 export type WebExperienceTitle = string;
 export type WebExperienceSubtitle = string;
 export type WebExperienceWelcomeMessage = string;
@@ -2327,7 +2314,7 @@ export const WebExperienceSamplePromptsControlMode = S.String;
 
 export type Origin = string;
 export type WebExperienceOrigins = string[];
-export const WebExperienceOrigins = /*@__PURE__*/ S.Array(S.String);
+export const WebExperienceOrigins = QIamActions as any as S.Schema<WebExperienceOrigins>;
 export type SamlAuthenticationUrl = string;
 export interface SamlProviderConfiguration {
   authenticationUrl: string;
@@ -2355,7 +2342,7 @@ export const IdentityProviderConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export type BrowserExtension = string;
 export type BrowserExtensionList = string[];
-export const BrowserExtensionList = /*@__PURE__*/ S.Array(S.String);
+export const BrowserExtensionList = QIamActions as any as S.Schema<BrowserExtensionList>;
 export interface BrowserExtensionConfiguration {
   enabledBrowserExtensions: string[];
 }
@@ -2451,9 +2438,8 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+export const DeleteApplicationResponse =
+  EndOfInputEvent as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteAttachmentRequest {
   applicationId: string;
   conversationId: string;
@@ -2481,9 +2467,8 @@ export const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAttachmentRequest" }) as any as S.Schema<DeleteAttachmentRequest>;
 export interface DeleteAttachmentResponse {}
-export const DeleteAttachmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAttachmentResponse",
-}) as any as S.Schema<DeleteAttachmentResponse>;
+export const DeleteAttachmentResponse =
+  EndOfInputEvent as any as S.Schema<DeleteAttachmentResponse>;
 export interface DeleteChatControlsConfigurationRequest {
   applicationId: string;
 }
@@ -2532,11 +2517,8 @@ export const DeleteChatResponseConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteChatResponseConfigurationRequest",
 }) as any as S.Schema<DeleteChatResponseConfigurationRequest>;
 export interface DeleteChatResponseConfigurationResponse {}
-export const DeleteChatResponseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteChatResponseConfigurationResponse",
-}) as any as S.Schema<DeleteChatResponseConfigurationResponse>;
+export const DeleteChatResponseConfigurationResponse =
+  DeleteChatControlsConfigurationResponse as any as S.Schema<DeleteChatResponseConfigurationResponse>;
 export interface DeleteConversationRequest {
   conversationId: string;
   applicationId: string;
@@ -2564,9 +2546,8 @@ export const DeleteConversationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConversationRequest",
 }) as any as S.Schema<DeleteConversationRequest>;
 export interface DeleteConversationResponse {}
-export const DeleteConversationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConversationResponse",
-}) as any as S.Schema<DeleteConversationResponse>;
+export const DeleteConversationResponse =
+  EndOfInputEvent as any as S.Schema<DeleteConversationResponse>;
 export interface DeleteDataAccessorRequest {
   applicationId: string;
   dataAccessorId: string;
@@ -2592,9 +2573,8 @@ export const DeleteDataAccessorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDataAccessorRequest",
 }) as any as S.Schema<DeleteDataAccessorRequest>;
 export interface DeleteDataAccessorResponse {}
-export const DeleteDataAccessorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataAccessorResponse",
-}) as any as S.Schema<DeleteDataAccessorResponse>;
+export const DeleteDataAccessorResponse =
+  EndOfInputEvent as any as S.Schema<DeleteDataAccessorResponse>;
 export interface DeleteDataSourceRequest {
   applicationId: string;
   indexId: string;
@@ -2620,9 +2600,8 @@ export const DeleteDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDataSourceRequest" }) as any as S.Schema<DeleteDataSourceRequest>;
 export interface DeleteDataSourceResponse {}
-export const DeleteDataSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataSourceResponse",
-}) as any as S.Schema<DeleteDataSourceResponse>;
+export const DeleteDataSourceResponse =
+  EndOfInputEvent as any as S.Schema<DeleteDataSourceResponse>;
 export interface DeleteGroupRequest {
   applicationId: string;
   indexId: string;
@@ -2650,9 +2629,7 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse = EndOfInputEvent as any as S.Schema<DeleteGroupResponse>;
 export interface DeleteIndexRequest {
   applicationId: string;
   indexId: string;
@@ -2673,9 +2650,7 @@ export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteIndexRequest" }) as any as S.Schema<DeleteIndexRequest>;
 export interface DeleteIndexResponse {}
-export const DeleteIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIndexResponse",
-}) as any as S.Schema<DeleteIndexResponse>;
+export const DeleteIndexResponse = EndOfInputEvent as any as S.Schema<DeleteIndexResponse>;
 export interface DeletePluginRequest {
   applicationId: string;
   pluginId: string;
@@ -2696,9 +2671,7 @@ export const DeletePluginRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePluginRequest" }) as any as S.Schema<DeletePluginRequest>;
 export interface DeletePluginResponse {}
-export const DeletePluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePluginResponse",
-}) as any as S.Schema<DeletePluginResponse>;
+export const DeletePluginResponse = EndOfInputEvent as any as S.Schema<DeletePluginResponse>;
 export interface DeleteRetrieverRequest {
   applicationId: string;
   retrieverId: string;
@@ -2719,9 +2692,7 @@ export const DeleteRetrieverRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRetrieverRequest" }) as any as S.Schema<DeleteRetrieverRequest>;
 export interface DeleteRetrieverResponse {}
-export const DeleteRetrieverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRetrieverResponse",
-}) as any as S.Schema<DeleteRetrieverResponse>;
+export const DeleteRetrieverResponse = EndOfInputEvent as any as S.Schema<DeleteRetrieverResponse>;
 export interface DeleteUserRequest {
   applicationId: string;
   userId: string;
@@ -2742,9 +2713,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = EndOfInputEvent as any as S.Schema<DeleteUserResponse>;
 export interface DeleteWebExperienceRequest {
   applicationId: string;
   webExperienceId: string;
@@ -2770,9 +2739,8 @@ export const DeleteWebExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebExperienceRequest",
 }) as any as S.Schema<DeleteWebExperienceRequest>;
 export interface DeleteWebExperienceResponse {}
-export const DeleteWebExperienceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebExperienceResponse",
-}) as any as S.Schema<DeleteWebExperienceResponse>;
+export const DeleteWebExperienceResponse =
+  EndOfInputEvent as any as S.Schema<DeleteWebExperienceResponse>;
 export interface DisassociatePermissionRequest {
   applicationId: string;
   statementId: string;
@@ -2795,9 +2763,8 @@ export const DisassociatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociatePermissionRequest",
 }) as any as S.Schema<DisassociatePermissionRequest>;
 export interface DisassociatePermissionResponse {}
-export const DisassociatePermissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociatePermissionResponse",
-}) as any as S.Schema<DisassociatePermissionResponse>;
+export const DisassociatePermissionResponse =
+  EndOfInputEvent as any as S.Schema<DisassociatePermissionResponse>;
 export interface GetApplicationRequest {
   applicationId: string;
 }
@@ -2933,7 +2900,7 @@ export const AppliedOrchestrationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppliedOrchestrationConfiguration>;
 export type BlockedPhrase = string;
 export type BlockedPhrases = string[];
-export const BlockedPhrases = /*@__PURE__*/ S.Array(S.String);
+export const BlockedPhrases = QIamActions as any as S.Schema<BlockedPhrases>;
 export type SystemMessageOverride = string;
 export interface BlockedPhrasesConfiguration {
   blockedPhrases?: string[];
@@ -2951,9 +2918,9 @@ export type TopicConfigurationName = string;
 export type TopicDescription = string;
 export type ExampleChatMessage = string;
 export type ExampleChatMessages = string[];
-export const ExampleChatMessages = /*@__PURE__*/ S.Array(S.String);
+export const ExampleChatMessages = QIamActions as any as S.Schema<ExampleChatMessages>;
 export type UserIds = string[];
-export const UserIds = /*@__PURE__*/ S.Array(S.String);
+export const UserIds = QIamActions as any as S.Schema<UserIds>;
 export interface UsersAndGroups {
   userIds?: string[];
   userGroups?: string[];
@@ -4150,7 +4117,7 @@ export const ListDataSourceSyncJobsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataSourceSyncJobsResponse",
 }) as any as S.Schema<ListDataSourceSyncJobsResponse>;
 export type DataSourceIds = string[];
-export const DataSourceIds = /*@__PURE__*/ S.Array(S.String);
+export const DataSourceIds = QIamActions as any as S.Schema<DataSourceIds>;
 export type MaxResultsIntegerForListDocuments = number;
 export interface ListDocumentsRequest {
   applicationId: string;
@@ -4500,11 +4467,8 @@ export interface ListPluginTypeActionsResponse {
   nextToken?: string;
   items?: ActionSummary[];
 }
-export const ListPluginTypeActionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), items: S.optional(Actions) }),
-).annotate({
-  identifier: "ListPluginTypeActionsResponse",
-}) as any as S.Schema<ListPluginTypeActionsResponse>;
+export const ListPluginTypeActionsResponse =
+  ListPluginActionsResponse as any as S.Schema<ListPluginTypeActionsResponse>;
 export type MaxResultsIntegerForListPluginTypeMetadata = number;
 export interface ListPluginTypeMetadataRequest {
   nextToken?: string;
@@ -4788,9 +4752,7 @@ export const PutFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutFeedbackRequest" }) as any as S.Schema<PutFeedbackRequest>;
 export interface PutFeedbackResponse {}
-export const PutFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutFeedbackResponse",
-}) as any as S.Schema<PutFeedbackResponse>;
+export const PutFeedbackResponse = EndOfInputEvent as any as S.Schema<PutFeedbackResponse>;
 export interface MemberGroup {
   groupName: string;
   type?: MembershipType;
@@ -4852,9 +4814,7 @@ export const PutGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutGroupRequest" }) as any as S.Schema<PutGroupRequest>;
 export interface PutGroupResponse {}
-export const PutGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutGroupResponse",
-}) as any as S.Schema<PutGroupResponse>;
+export const PutGroupResponse = EndOfInputEvent as any as S.Schema<PutGroupResponse>;
 export type QueryText = string;
 export interface RetrieverContentSource {
   retrieverId: string;
@@ -5001,9 +4961,8 @@ export const StopDataSourceSyncJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopDataSourceSyncJobRequest",
 }) as any as S.Schema<StopDataSourceSyncJobRequest>;
 export interface StopDataSourceSyncJobResponse {}
-export const StopDataSourceSyncJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopDataSourceSyncJobResponse",
-}) as any as S.Schema<StopDataSourceSyncJobResponse>;
+export const StopDataSourceSyncJobResponse =
+  EndOfInputEvent as any as S.Schema<StopDataSourceSyncJobResponse>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: Tag[];
@@ -5014,11 +4973,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = EndOfInputEvent as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = QIamActions as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
@@ -5039,9 +4996,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = EndOfInputEvent as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   applicationId: string;
   identityCenterInstanceArn?: string;
@@ -5076,17 +5031,13 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateApplicationRequest" }) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {}
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  EndOfInputEvent as any as S.Schema<UpdateApplicationResponse>;
 export interface OrchestrationConfiguration {
   control: OrchestrationControl;
 }
-export const OrchestrationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ control: OrchestrationControl }),
-).annotate({
-  identifier: "OrchestrationConfiguration",
-}) as any as S.Schema<OrchestrationConfiguration>;
+export const OrchestrationConfiguration =
+  AppliedOrchestrationConfiguration as any as S.Schema<OrchestrationConfiguration>;
 export interface BlockedPhrasesConfigurationUpdate {
   blockedPhrasesToCreateOrUpdate?: string[];
   blockedPhrasesToDelete?: string[];
@@ -5143,11 +5094,8 @@ export const UpdateChatControlsConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateChatControlsConfigurationRequest",
 }) as any as S.Schema<UpdateChatControlsConfigurationRequest>;
 export interface UpdateChatControlsConfigurationResponse {}
-export const UpdateChatControlsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateChatControlsConfigurationResponse",
-}) as any as S.Schema<UpdateChatControlsConfigurationResponse>;
+export const UpdateChatControlsConfigurationResponse =
+  DeleteChatControlsConfigurationResponse as any as S.Schema<UpdateChatControlsConfigurationResponse>;
 export interface UpdateChatResponseConfigurationRequest {
   applicationId: string;
   chatResponseConfigurationId: string;
@@ -5179,11 +5127,8 @@ export const UpdateChatResponseConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateChatResponseConfigurationRequest",
 }) as any as S.Schema<UpdateChatResponseConfigurationRequest>;
 export interface UpdateChatResponseConfigurationResponse {}
-export const UpdateChatResponseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateChatResponseConfigurationResponse",
-}) as any as S.Schema<UpdateChatResponseConfigurationResponse>;
+export const UpdateChatResponseConfigurationResponse =
+  DeleteChatControlsConfigurationResponse as any as S.Schema<UpdateChatResponseConfigurationResponse>;
 export interface UpdateDataAccessorRequest {
   applicationId: string;
   dataAccessorId: string;
@@ -5215,9 +5160,8 @@ export const UpdateDataAccessorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDataAccessorRequest",
 }) as any as S.Schema<UpdateDataAccessorRequest>;
 export interface UpdateDataAccessorResponse {}
-export const UpdateDataAccessorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDataAccessorResponse",
-}) as any as S.Schema<UpdateDataAccessorResponse>;
+export const UpdateDataAccessorResponse =
+  EndOfInputEvent as any as S.Schema<UpdateDataAccessorResponse>;
 export interface UpdateDataSourceRequest {
   applicationId: string;
   indexId: string;
@@ -5259,9 +5203,8 @@ export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateDataSourceRequest" }) as any as S.Schema<UpdateDataSourceRequest>;
 export interface UpdateDataSourceResponse {}
-export const UpdateDataSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDataSourceResponse",
-}) as any as S.Schema<UpdateDataSourceResponse>;
+export const UpdateDataSourceResponse =
+  EndOfInputEvent as any as S.Schema<UpdateDataSourceResponse>;
 export interface UpdateIndexRequest {
   applicationId: string;
   indexId: string;
@@ -5290,9 +5233,7 @@ export const UpdateIndexRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateIndexRequest" }) as any as S.Schema<UpdateIndexRequest>;
 export interface UpdateIndexResponse {}
-export const UpdateIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateIndexResponse",
-}) as any as S.Schema<UpdateIndexResponse>;
+export const UpdateIndexResponse = EndOfInputEvent as any as S.Schema<UpdateIndexResponse>;
 export interface UpdatePluginRequest {
   applicationId: string;
   pluginId: string;
@@ -5323,9 +5264,7 @@ export const UpdatePluginRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdatePluginRequest" }) as any as S.Schema<UpdatePluginRequest>;
 export interface UpdatePluginResponse {}
-export const UpdatePluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePluginResponse",
-}) as any as S.Schema<UpdatePluginResponse>;
+export const UpdatePluginResponse = EndOfInputEvent as any as S.Schema<UpdatePluginResponse>;
 export interface UpdateRetrieverRequest {
   applicationId: string;
   retrieverId: string;
@@ -5352,9 +5291,7 @@ export const UpdateRetrieverRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRetrieverRequest" }) as any as S.Schema<UpdateRetrieverRequest>;
 export interface UpdateRetrieverResponse {}
-export const UpdateRetrieverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRetrieverResponse",
-}) as any as S.Schema<UpdateRetrieverResponse>;
+export const UpdateRetrieverResponse = EndOfInputEvent as any as S.Schema<UpdateRetrieverResponse>;
 export interface UpdateSubscriptionRequest {
   applicationId: string;
   subscriptionId: string;
@@ -5386,15 +5323,8 @@ export interface UpdateSubscriptionResponse {
   currentSubscription?: SubscriptionDetails;
   nextSubscription?: SubscriptionDetails;
 }
-export const UpdateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionArn: S.optional(S.String),
-    currentSubscription: S.optional(SubscriptionDetails),
-    nextSubscription: S.optional(SubscriptionDetails),
-  }),
-).annotate({
-  identifier: "UpdateSubscriptionResponse",
-}) as any as S.Schema<UpdateSubscriptionResponse>;
+export const UpdateSubscriptionResponse =
+  CancelSubscriptionResponse as any as S.Schema<UpdateSubscriptionResponse>;
 export interface UpdateUserRequest {
   applicationId: string;
   userId: string;
@@ -5472,9 +5402,8 @@ export const UpdateWebExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWebExperienceRequest",
 }) as any as S.Schema<UpdateWebExperienceRequest>;
 export interface UpdateWebExperienceResponse {}
-export const UpdateWebExperienceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWebExperienceResponse",
-}) as any as S.Schema<UpdateWebExperienceResponse>;
+export const UpdateWebExperienceResponse =
+  EndOfInputEvent as any as S.Schema<UpdateWebExperienceResponse>;
 export type ValidationExceptionReason =
   | "CANNOT_PARSE"
   | "FIELD_VALIDATION_FAILED"

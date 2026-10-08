@@ -99,10 +99,8 @@ export const DomainIssuesList = /*@__PURE__*/ S.Array(
 
 /** Custom string keys and values attached to this domain. */
 export type DomainMetadataMap = { [key: string]: string | undefined };
-export const DomainMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainMetadataMap>;
+export const DomainMetadataMap =
+  CreateDomainRequestMetadataMap as any as S.Schema<DomainMetadataMap>;
 
 /** Domain lifecycle. Only active domains resolve to their app. */
 export type DomainStatus =
@@ -271,10 +269,8 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replacement custom string keys and values. */
 export type UpdateDomainRequestMetadataMap = { [key: string]: string | undefined };
-export const UpdateDomainRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDomainRequestMetadataMap>;
+export const UpdateDomainRequestMetadataMap =
+  CreateDomainRequestMetadataMap as any as S.Schema<UpdateDomainRequestMetadataMap>;
 
 export interface UpdateDomainRequest {
   /** Domain ID, prefixed dom_. */

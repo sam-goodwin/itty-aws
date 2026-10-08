@@ -94,9 +94,8 @@ export const DownloadArchiveForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadArchiveForOrgRequest>;
 
 export interface DownloadArchiveForOrgResponse {}
-export const DownloadArchiveForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadArchiveForOrgResponse",
-}) as any as S.Schema<DownloadArchiveForOrgResponse>;
+export const DownloadArchiveForOrgResponse =
+  DeleteArchiveForOrgResponse as any as S.Schema<DownloadArchiveForOrgResponse>;
 
 export interface GetArchiveForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
@@ -111,11 +110,8 @@ export const GetArchiveForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetArchiveForAuthenticatedUserRequest>;
 
 export interface GetArchiveForAuthenticatedUserResponse {}
-export const GetArchiveForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetArchiveForAuthenticatedUserResponse",
-}) as any as S.Schema<GetArchiveForAuthenticatedUserResponse>;
+export const GetArchiveForAuthenticatedUserResponse =
+  DeleteArchiveForAuthenticatedUserResponse as any as S.Schema<GetArchiveForAuthenticatedUserResponse>;
 
 export type GetStatusForAuthenticatedUserRequestExcludeList = Array<string>;
 export const GetStatusForAuthenticatedUserRequestExcludeList = /*@__PURE__*/ S.Array(
@@ -230,9 +226,8 @@ export type SimpleUser = NullableSimpleUser;
 export const SimpleUser = NullableSimpleUser;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -511,9 +506,8 @@ export const MigrationRepositoriesList = /*@__PURE__*/ S.Array(
 
 /** Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`. */
 export type MigrationExcludeList = Array<string>;
-export const MigrationExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationExcludeList>;
+export const MigrationExcludeList =
+  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<MigrationExcludeList>;
 
 /** A migration. */
 export interface Migration {
@@ -644,9 +638,8 @@ export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForOrgRequest" }) as any as S.Schema<ListForOrgRequest>;
 
 export type ListForOrgResponseBodyList = Array<Migration>;
-export const ListForOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  Migration,
-) as any as S.Schema<ListForOrgResponseBodyList>;
+export const ListForOrgResponseBodyList =
+  ListForAuthenticatedUserResponseBodyList as any as S.Schema<ListForOrgResponseBodyList>;
 
 export type ListForOrgResponse = ListForOrgResponseBodyList;
 export const ListForOrgResponse = /*@__PURE__*/ S.suspend(() =>
@@ -674,9 +667,8 @@ export const ListReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListReposForAuthenticatedUserRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
+export const MinimalRepositoryTopicsList =
+  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1187,9 +1179,8 @@ export const ListReposForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReposForOrgRequest" }) as any as S.Schema<ListReposForOrgRequest>;
 
 export type ListReposForOrgResponseBodyList = Array<MinimalRepository>;
-export const ListReposForOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  MinimalRepository,
-) as any as S.Schema<ListReposForOrgResponseBodyList>;
+export const ListReposForOrgResponseBodyList =
+  ListReposForAuthenticatedUserResponseBodyList as any as S.Schema<ListReposForOrgResponseBodyList>;
 
 export type ListReposForOrgResponse = ListReposForOrgResponseBodyList;
 export const ListReposForOrgResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1209,9 +1200,8 @@ export const StartForAuthenticatedUserRequestExcludeList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<StartForAuthenticatedUserRequestExcludeList>;
 
 export type StartForAuthenticatedUserRequestRepositoriesList = Array<string>;
-export const StartForAuthenticatedUserRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StartForAuthenticatedUserRequestRepositoriesList>;
+export const StartForAuthenticatedUserRequestRepositoriesList =
+  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<StartForAuthenticatedUserRequestRepositoriesList>;
 
 export interface StartForAuthenticatedUserRequest {
   /** Lock the repositories being migrated at the start of the migration */
@@ -1250,9 +1240,8 @@ export const StartForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of arrays indicating which repositories should be migrated. */
 export type StartForOrgRequestRepositoriesList = Array<string>;
-export const StartForOrgRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StartForOrgRequestRepositoriesList>;
+export const StartForOrgRequestRepositoriesList =
+  GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<StartForOrgRequestRepositoriesList>;
 
 export type StartForOrgRequestExcludeItem = "repositories";
 export const StartForOrgRequestExcludeItem = S.String;
@@ -1322,11 +1311,8 @@ export const UnlockRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UnlockRepoForAuthenticatedUserRequest>;
 
 export interface UnlockRepoForAuthenticatedUserResponse {}
-export const UnlockRepoForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnlockRepoForAuthenticatedUserResponse",
-}) as any as S.Schema<UnlockRepoForAuthenticatedUserResponse>;
+export const UnlockRepoForAuthenticatedUserResponse =
+  DeleteArchiveForAuthenticatedUserResponse as any as S.Schema<UnlockRepoForAuthenticatedUserResponse>;
 
 export interface UnlockRepoForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1351,9 +1337,8 @@ export const UnlockRepoForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlockRepoForOrgRequest" }) as any as S.Schema<UnlockRepoForOrgRequest>;
 
 export interface UnlockRepoForOrgResponse {}
-export const UnlockRepoForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnlockRepoForOrgResponse",
-}) as any as S.Schema<UnlockRepoForOrgResponse>;
+export const UnlockRepoForOrgResponse =
+  DeleteArchiveForOrgResponse as any as S.Schema<UnlockRepoForOrgResponse>;
 
 export type DeleteArchiveForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Delete a user migration archive Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/rest/migrations/users#list-user-migrations) and [Get a user migration status](https://docs.github.com/rest/migrations/users#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted. */

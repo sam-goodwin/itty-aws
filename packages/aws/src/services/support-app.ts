@@ -188,11 +188,8 @@ export const DeleteSlackChannelConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteSlackChannelConfigurationRequest",
 }) as any as S.Schema<DeleteSlackChannelConfigurationRequest>;
 export interface DeleteSlackChannelConfigurationResult {}
-export const DeleteSlackChannelConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSlackChannelConfigurationResult",
-}) as any as S.Schema<DeleteSlackChannelConfigurationResult>;
+export const DeleteSlackChannelConfigurationResult =
+  CreateSlackChannelConfigurationResult as any as S.Schema<DeleteSlackChannelConfigurationResult>;
 export interface DeleteSlackWorkspaceConfigurationRequest {
   teamId: string;
 }
@@ -211,11 +208,8 @@ export const DeleteSlackWorkspaceConfigurationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteSlackWorkspaceConfigurationRequest",
 }) as any as S.Schema<DeleteSlackWorkspaceConfigurationRequest>;
 export interface DeleteSlackWorkspaceConfigurationResult {}
-export const DeleteSlackWorkspaceConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSlackWorkspaceConfigurationResult",
-}) as any as S.Schema<DeleteSlackWorkspaceConfigurationResult>;
+export const DeleteSlackWorkspaceConfigurationResult =
+  CreateSlackChannelConfigurationResult as any as S.Schema<DeleteSlackWorkspaceConfigurationResult>;
 export interface GetAccountAliasRequest {}
 export const GetAccountAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -354,9 +348,8 @@ export const PutAccountAliasRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutAccountAliasRequest" }) as any as S.Schema<PutAccountAliasRequest>;
 export interface PutAccountAliasResult {}
-export const PutAccountAliasResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutAccountAliasResult",
-}) as any as S.Schema<PutAccountAliasResult>;
+export const PutAccountAliasResult =
+  DeleteAccountAliasResult as any as S.Schema<PutAccountAliasResult>;
 export interface RegisterSlackWorkspaceForOrganizationRequest {
   teamId: string;
 }

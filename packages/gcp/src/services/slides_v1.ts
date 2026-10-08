@@ -1202,11 +1202,7 @@ export interface OutlineFill {
   /** Solid color fill. */
   solidFill?: SolidFill;
 }
-export const OutlineFill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solidFill: S.optional(SolidFill),
-  }),
-).annotate({ identifier: "OutlineFill" }) as any as S.Schema<OutlineFill>;
+export const OutlineFill = TableBorderFill as any as S.Schema<OutlineFill>;
 
 /** The outline of a PageElement. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
 export interface Outline {
@@ -3176,11 +3172,7 @@ export interface DeleteObjectRequest {
   /** The object ID of the page or page element to delete. If after a delete operation a group contains only 1 or no page elements, the group is also deleted. If a placeholder is deleted on a layout, any empty inheriting placeholders are also deleted. */
   objectId?: string;
 }
-export const DeleteObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteObjectRequest" }) as any as S.Schema<DeleteObjectRequest>;
+export const DeleteObjectRequest = RerouteLineRequest as any as S.Schema<DeleteObjectRequest>;
 
 /** Unmerges cells in a Table. */
 export interface UnmergeTableCellsRequest {
@@ -3189,12 +3181,7 @@ export interface UnmergeTableCellsRequest {
   /** The object ID of the table. */
   objectId?: string;
 }
-export const UnmergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "UnmergeTableCellsRequest" }) as any as S.Schema<UnmergeTableCellsRequest>;
+export const UnmergeTableCellsRequest = TableAnchor as any as S.Schema<UnmergeTableCellsRequest>;
 
 /** Deletes bullets from all of the paragraphs that overlap with the given text index range. The nesting level of each paragraph will be visually preserved by adding indent to the start of the corresponding paragraph. */
 export interface DeleteParagraphBulletsRequest {
@@ -3501,114 +3488,73 @@ export interface DuplicateObjectResponse {
   /** The ID of the new duplicate object. */
   objectId?: string;
 }
-export const DuplicateObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DuplicateObjectResponse" }) as any as S.Schema<DuplicateObjectResponse>;
+export const DuplicateObjectResponse =
+  RerouteLineRequest as any as S.Schema<DuplicateObjectResponse>;
 
 /** The result of grouping objects. */
 export interface GroupObjectsResponse {
   /** The object ID of the created group. */
   objectId?: string;
 }
-export const GroupObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "GroupObjectsResponse" }) as any as S.Schema<GroupObjectsResponse>;
+export const GroupObjectsResponse = RerouteLineRequest as any as S.Schema<GroupObjectsResponse>;
 
 /** The result of creating a shape. */
 export interface CreateShapeResponse {
   /** The object ID of the created shape. */
   objectId?: string;
 }
-export const CreateShapeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateShapeResponse" }) as any as S.Schema<CreateShapeResponse>;
+export const CreateShapeResponse = RerouteLineRequest as any as S.Schema<CreateShapeResponse>;
 
 /** The result of creating a table. */
 export interface CreateTableResponse {
   /** The object ID of the created table. */
   objectId?: string;
 }
-export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateTableResponse" }) as any as S.Schema<CreateTableResponse>;
+export const CreateTableResponse = RerouteLineRequest as any as S.Schema<CreateTableResponse>;
 
 /** The result of replacing shapes with an image. */
 export interface ReplaceAllShapesWithImageResponse {
   /** The number of shapes replaced with images. */
   occurrencesChanged?: number;
 }
-export const ReplaceAllShapesWithImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrencesChanged: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplaceAllShapesWithImageResponse",
-}) as any as S.Schema<ReplaceAllShapesWithImageResponse>;
+export const ReplaceAllShapesWithImageResponse =
+  ReplaceAllShapesWithSheetsChartResponse as any as S.Schema<ReplaceAllShapesWithImageResponse>;
 
 /** The result of creating an image. */
 export interface CreateImageResponse {
   /** The object ID of the created image. */
   objectId?: string;
 }
-export const CreateImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateImageResponse" }) as any as S.Schema<CreateImageResponse>;
+export const CreateImageResponse = RerouteLineRequest as any as S.Schema<CreateImageResponse>;
 
 /** The result of creating a line. */
 export interface CreateLineResponse {
   /** The object ID of the created line. */
   objectId?: string;
 }
-export const CreateLineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateLineResponse" }) as any as S.Schema<CreateLineResponse>;
+export const CreateLineResponse = RerouteLineRequest as any as S.Schema<CreateLineResponse>;
 
 /** The result of creating a slide. */
 export interface CreateSlideResponse {
   /** The object ID of the created slide. */
   objectId?: string;
 }
-export const CreateSlideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateSlideResponse" }) as any as S.Schema<CreateSlideResponse>;
+export const CreateSlideResponse = RerouteLineRequest as any as S.Schema<CreateSlideResponse>;
 
 /** The result of creating an embedded Google Sheets chart. */
 export interface CreateSheetsChartResponse {
   /** The object ID of the created chart. */
   objectId?: string;
 }
-export const CreateSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSheetsChartResponse",
-}) as any as S.Schema<CreateSheetsChartResponse>;
+export const CreateSheetsChartResponse =
+  RefreshSheetsChartRequest as any as S.Schema<CreateSheetsChartResponse>;
 
 /** The result of creating a video. */
 export interface CreateVideoResponse {
   /** The object ID of the created video. */
   objectId?: string;
 }
-export const CreateVideoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateVideoResponse" }) as any as S.Schema<CreateVideoResponse>;
+export const CreateVideoResponse = RerouteLineRequest as any as S.Schema<CreateVideoResponse>;
 
 /** The result of replacing text. */
 export interface ReplaceAllTextResponse {

@@ -82,11 +82,8 @@ export interface DeleteReminderResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteReminderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "DeleteReminderResponse" }) as any as S.Schema<DeleteReminderResponse>;
+export const DeleteReminderResponse =
+  CompleteReminderResponse as any as S.Schema<DeleteReminderResponse>;
 
 export interface ListRemindersRequest {
   /** Encoded team id, required if org token is passed */
@@ -133,12 +130,7 @@ export interface RemindersInfoResponse {
   ok: boolean;
   reminder: unknown;
 }
-export const RemindersInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    reminder: S.Unknown,
-  }),
-).annotate({ identifier: "RemindersInfoResponse" }) as any as S.Schema<RemindersInfoResponse>;
+export const RemindersInfoResponse = AddReminderResponse as any as S.Schema<RemindersInfoResponse>;
 
 export type AddReminderError = SlackOpError;
 /** Creates a reminder. Required scopes -- user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cannot_add_bot` -- Reminders can't be sent to bots. - `cannot_add_others` -- Guests can't set reminders for other team members. - `cannot_add_others_recurring` -- Recurring reminders can't be set for other team members. - `cannot_add_profile_only_user` -- Reminders can't be sent to profile only users. - `cannot_add_slackbot` -- Reminders can't be sent to Slackbot. - `cannot_parse` -- The phrasing of the timing for this reminder is unclear. You must include a complete time description. Some examples that work: `1458678068`, `20`, `in 5 minutes`, `tomorrow`, `at 3:30pm`, `on Tuesday`, or `next week`. - `missing_argument` -- An argument is missing. - `user_not_found` -- That user can't be found. See https://docs.slack.dev/reference/methods/reminders.add */

@@ -95,13 +95,8 @@ export interface CloseDevtoolBrowserTargetResponse {
   /** Target is closing. */
   message: string;
 }
-export const CloseDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CloseDevtoolBrowserTargetResponse",
-}) as any as S.Schema<CloseDevtoolBrowserTargetResponse>;
+export const CloseDevtoolBrowserTargetResponse =
+  ActivateDevtoolBrowserTargetResponse as any as S.Schema<CloseDevtoolBrowserTargetResponse>;
 
 export interface ConnectDevtoolBrowserRequest {
   /** Account ID. */
@@ -338,9 +333,8 @@ export const CreateAccessibilityTreeRequestGotoOptions = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateAccessibilityTreeRequestGotoOptions>;
 
 export type CreateAccessibilityTreeRequestRejectRequestPatternList = Array<string>;
-export const CreateAccessibilityTreeRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAccessibilityTreeRequestRejectRequestPatternList>;
+export const CreateAccessibilityTreeRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CreateAccessibilityTreeRequestRejectRequestPatternList>;
 
 export type CreateAccessibilityTreeRequestRejectResourceTypesItem =
   | "document"
@@ -610,23 +604,20 @@ export const ContentCreateRequestAddScriptTagItem = CreateAccessibilityTreeReque
 
 export type ContentCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const ContentCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<ContentCreateRequestAddScriptTagList>;
+export const ContentCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<ContentCreateRequestAddScriptTagList>;
 
 export type ContentCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const ContentCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type ContentCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const ContentCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<ContentCreateRequestAddStyleTagList>;
+export const ContentCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<ContentCreateRequestAddStyleTagList>;
 
 export type ContentCreateRequestAllowRequestPatternList = Array<string>;
-export const ContentCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentCreateRequestAllowRequestPatternList>;
+export const ContentCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ContentCreateRequestAllowRequestPatternList>;
 
 export type ContentCreateRequestAllowResourceTypesItem =
   | "document"
@@ -758,9 +749,8 @@ export const ContentCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContentCreateRequestGotoOptions>;
 
 export type ContentCreateRequestRejectRequestPatternList = Array<string>;
-export const ContentCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentCreateRequestRejectRequestPatternList>;
+export const ContentCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ContentCreateRequestRejectRequestPatternList>;
 
 export type ContentCreateRequestRejectResourceTypesItem =
   | "document"
@@ -791,10 +781,8 @@ export const ContentCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<ContentCreateRequestRejectResourceTypesList>;
 
 export type ContentCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const ContentCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContentCreateRequestSetExtraHTTPHeadersMap>;
+export const ContentCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<ContentCreateRequestSetExtraHTTPHeadersMap>;
 
 export type ContentCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const ContentCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -890,23 +878,20 @@ export const CrawlCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequest
 
 export type CrawlCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const CrawlCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<CrawlCreateRequestAddScriptTagList>;
+export const CrawlCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<CrawlCreateRequestAddScriptTagList>;
 
 export type CrawlCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const CrawlCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type CrawlCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const CrawlCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<CrawlCreateRequestAddStyleTagList>;
+export const CrawlCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<CrawlCreateRequestAddStyleTagList>;
 
 export type CrawlCreateRequestAllowRequestPatternList = Array<string>;
-export const CrawlCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CrawlCreateRequestAllowRequestPatternList>;
+export const CrawlCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestAllowRequestPatternList>;
 
 export type CrawlCreateRequestAllowResourceTypesItem =
   | "document"
@@ -1125,14 +1110,12 @@ export const CrawlCreateRequestJsonOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlCreateRequestJsonOptions>;
 
 export type CrawlCreateRequestOptionsExcludePatternsList = Array<string>;
-export const CrawlCreateRequestOptionsExcludePatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CrawlCreateRequestOptionsExcludePatternsList>;
+export const CrawlCreateRequestOptionsExcludePatternsList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestOptionsExcludePatternsList>;
 
 export type CrawlCreateRequestOptionsIncludePatternsList = Array<string>;
-export const CrawlCreateRequestOptionsIncludePatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CrawlCreateRequestOptionsIncludePatternsList>;
+export const CrawlCreateRequestOptionsIncludePatternsList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestOptionsIncludePatternsList>;
 
 export interface CrawlCreateRequestOptions {
   /** Exclude links matching the provided wildcard patterns in the crawl job. Example: 'https://example.com/privacy/**'. */
@@ -1156,9 +1139,8 @@ export const CrawlCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlCreateRequestOptions>;
 
 export type CrawlCreateRequestRejectRequestPatternList = Array<string>;
-export const CrawlCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CrawlCreateRequestRejectRequestPatternList>;
+export const CrawlCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestRejectRequestPatternList>;
 
 export type CrawlCreateRequestRejectResourceTypesItem =
   | "document"
@@ -1189,10 +1171,8 @@ export const CrawlCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CrawlCreateRequestRejectResourceTypesList>;
 
 export type CrawlCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const CrawlCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CrawlCreateRequestSetExtraHTTPHeadersMap>;
+export const CrawlCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<CrawlCreateRequestSetExtraHTTPHeadersMap>;
 
 export type CrawlCreateRequestSource = "sitemaps" | "links" | "all";
 export const CrawlCreateRequestSource = S.String;
@@ -1308,19 +1288,15 @@ export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCrawlRequest" }) as any as S.Schema<CreateCrawlRequest>;
 
 export type CreateCrawlResponse = string;
-export const CreateCrawlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "CreateCrawlResponse" }) as any as S.Schema<CreateCrawlResponse>;
+export const CreateCrawlResponse = CreateContentResponse as any as S.Schema<CreateCrawlResponse>;
 
 export type DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList = Array<string>;
-export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList>;
+export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList>;
 
 export type DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList = Array<string>;
-export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList>;
+export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList>;
 
 export interface DevtoolsBrowserCreateRequestGuardrails {
   /** Hostname patterns, max 50. Supports exact hosts (example.com) or a single * wildcard anywhere. Prefer *.example.com (subdomain wildcard) over *example.com (prefix wildcard) to avoid matching overbroad lookalikes like evilexample.com. */
@@ -1561,22 +1537,19 @@ export const JsonCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestA
 
 export type JsonCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const JsonCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<JsonCreateRequestAddScriptTagList>;
+export const JsonCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<JsonCreateRequestAddScriptTagList>;
 
 export type JsonCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const JsonCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type JsonCreateRequestAddStyleTagList = Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const JsonCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<JsonCreateRequestAddStyleTagList>;
+export const JsonCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<JsonCreateRequestAddStyleTagList>;
 
 export type JsonCreateRequestAllowRequestPatternList = Array<string>;
-export const JsonCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JsonCreateRequestAllowRequestPatternList>;
+export const JsonCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<JsonCreateRequestAllowRequestPatternList>;
 
 export type JsonCreateRequestAllowResourceTypesItem =
   | "document"
@@ -1665,9 +1638,8 @@ export type JsonCreateRequestCustomAiItem = CrawlCreateRequestJsonOptionsCustomA
 export const JsonCreateRequestCustomAiItem = CrawlCreateRequestJsonOptionsCustomAiItem;
 
 export type JsonCreateRequestCustomAiList = Array<CrawlCreateRequestJsonOptionsCustomAiItem>;
-export const JsonCreateRequestCustomAiList = /*@__PURE__*/ S.Array(
-  CrawlCreateRequestJsonOptionsCustomAiItem,
-) as any as S.Schema<JsonCreateRequestCustomAiList>;
+export const JsonCreateRequestCustomAiList =
+  CrawlCreateRequestJsonOptionsCustomAiList as any as S.Schema<JsonCreateRequestCustomAiList>;
 
 export type JsonCreateRequestGotoOptionsWaitUntilCase0 =
   | "load"
@@ -1716,9 +1688,8 @@ export const JsonCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JsonCreateRequestGotoOptions>;
 
 export type JsonCreateRequestRejectRequestPatternList = Array<string>;
-export const JsonCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JsonCreateRequestRejectRequestPatternList>;
+export const JsonCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<JsonCreateRequestRejectRequestPatternList>;
 
 export type JsonCreateRequestRejectResourceTypesItem =
   | "document"
@@ -1749,32 +1720,20 @@ export const JsonCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<JsonCreateRequestRejectResourceTypesList>;
 
 export type JsonCreateRequestResponseFormatJsonSchemaMap = { [key: string]: unknown | undefined };
-export const JsonCreateRequestResponseFormatJsonSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<JsonCreateRequestResponseFormatJsonSchemaMap>;
+export const JsonCreateRequestResponseFormatJsonSchemaMap =
+  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<JsonCreateRequestResponseFormatJsonSchemaMap>;
 
 export interface JsonCreateRequestResponseFormat {
   type: string;
   /** Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/ */
   jsonSchema?: JsonCreateRequestResponseFormatJsonSchemaMap;
 }
-export const JsonCreateRequestResponseFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    jsonSchema: S.optional(
-      JsonCreateRequestResponseFormatJsonSchemaMap.pipe(T.Body("json_schema")),
-    ),
-  }),
-).annotate({
-  identifier: "JsonCreateRequestResponseFormat",
-}) as any as S.Schema<JsonCreateRequestResponseFormat>;
+export const JsonCreateRequestResponseFormat =
+  CrawlCreateRequestJsonOptionsResponseFormat as any as S.Schema<JsonCreateRequestResponseFormat>;
 
 export type JsonCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const JsonCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JsonCreateRequestSetExtraHTTPHeadersMap>;
+export const JsonCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<JsonCreateRequestSetExtraHTTPHeadersMap>;
 
 export type JsonCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const JsonCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -1864,10 +1823,8 @@ export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateJsonRequest" }) as any as S.Schema<CreateJsonRequest>;
 
 export type JsonCreateResultMap = { [key: string]: unknown | undefined };
-export const JsonCreateResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<JsonCreateResultMap>;
+export const JsonCreateResultMap =
+  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<JsonCreateResultMap>;
 
 export type CreateJsonResponse = JsonCreateResultMap;
 export const CreateJsonResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1882,23 +1839,20 @@ export const LinksCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequest
 
 export type LinksCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const LinksCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<LinksCreateRequestAddScriptTagList>;
+export const LinksCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<LinksCreateRequestAddScriptTagList>;
 
 export type LinksCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const LinksCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type LinksCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const LinksCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<LinksCreateRequestAddStyleTagList>;
+export const LinksCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<LinksCreateRequestAddStyleTagList>;
 
 export type LinksCreateRequestAllowRequestPatternList = Array<string>;
-export const LinksCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinksCreateRequestAllowRequestPatternList>;
+export const LinksCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<LinksCreateRequestAllowRequestPatternList>;
 
 export type LinksCreateRequestAllowResourceTypesItem =
   | "document"
@@ -2030,9 +1984,8 @@ export const LinksCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinksCreateRequestGotoOptions>;
 
 export type LinksCreateRequestRejectRequestPatternList = Array<string>;
-export const LinksCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinksCreateRequestRejectRequestPatternList>;
+export const LinksCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<LinksCreateRequestRejectRequestPatternList>;
 
 export type LinksCreateRequestRejectResourceTypesItem =
   | "document"
@@ -2063,10 +2016,8 @@ export const LinksCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LinksCreateRequestRejectResourceTypesList>;
 
 export type LinksCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const LinksCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinksCreateRequestSetExtraHTTPHeadersMap>;
+export const LinksCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<LinksCreateRequestSetExtraHTTPHeadersMap>;
 
 export type LinksCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const LinksCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -2153,9 +2104,8 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLinkRequest" }) as any as S.Schema<CreateLinkRequest>;
 
 export type LinksCreateResultList = Array<string>;
-export const LinksCreateResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinksCreateResultList>;
+export const LinksCreateResultList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<LinksCreateResultList>;
 
 export type CreateLinkResponse = LinksCreateResultList;
 export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2170,23 +2120,20 @@ export const MarkdownCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequ
 
 export type MarkdownCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const MarkdownCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<MarkdownCreateRequestAddScriptTagList>;
+export const MarkdownCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<MarkdownCreateRequestAddScriptTagList>;
 
 export type MarkdownCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const MarkdownCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type MarkdownCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const MarkdownCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<MarkdownCreateRequestAddStyleTagList>;
+export const MarkdownCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<MarkdownCreateRequestAddStyleTagList>;
 
 export type MarkdownCreateRequestAllowRequestPatternList = Array<string>;
-export const MarkdownCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarkdownCreateRequestAllowRequestPatternList>;
+export const MarkdownCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<MarkdownCreateRequestAllowRequestPatternList>;
 
 export type MarkdownCreateRequestAllowResourceTypesItem =
   | "document"
@@ -2318,9 +2265,8 @@ export const MarkdownCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkdownCreateRequestGotoOptions>;
 
 export type MarkdownCreateRequestRejectRequestPatternList = Array<string>;
-export const MarkdownCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarkdownCreateRequestRejectRequestPatternList>;
+export const MarkdownCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<MarkdownCreateRequestRejectRequestPatternList>;
 
 export type MarkdownCreateRequestRejectResourceTypesItem =
   | "document"
@@ -2351,10 +2297,8 @@ export const MarkdownCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<MarkdownCreateRequestRejectResourceTypesList>;
 
 export type MarkdownCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const MarkdownCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MarkdownCreateRequestSetExtraHTTPHeadersMap>;
+export const MarkdownCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<MarkdownCreateRequestSetExtraHTTPHeadersMap>;
 
 export type MarkdownCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const MarkdownCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -2441,9 +2385,8 @@ export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMarkdownRequest" }) as any as S.Schema<CreateMarkdownRequest>;
 
 export type CreateMarkdownResponse = string;
-export const CreateMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "CreateMarkdownResponse" }) as any as S.Schema<CreateMarkdownResponse>;
+export const CreateMarkdownResponse =
+  CreateContentResponse as any as S.Schema<CreateMarkdownResponse>;
 
 export type PdfCreateRequestBrowser = "kitesurf";
 export const PdfCreateRequestBrowser = S.String;
@@ -2453,22 +2396,19 @@ export const PdfCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAd
 
 export type PdfCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const PdfCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<PdfCreateRequestAddScriptTagList>;
+export const PdfCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<PdfCreateRequestAddScriptTagList>;
 
 export type PdfCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const PdfCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type PdfCreateRequestAddStyleTagList = Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const PdfCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<PdfCreateRequestAddStyleTagList>;
+export const PdfCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<PdfCreateRequestAddStyleTagList>;
 
 export type PdfCreateRequestAllowRequestPatternList = Array<string>;
-export const PdfCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PdfCreateRequestAllowRequestPatternList>;
+export const PdfCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<PdfCreateRequestAllowRequestPatternList>;
 
 export type PdfCreateRequestAllowResourceTypesItem =
   | "document"
@@ -2718,9 +2658,8 @@ export const PdfCreateRequestPdfOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PdfCreateRequestPdfOptions>;
 
 export type PdfCreateRequestRejectRequestPatternList = Array<string>;
-export const PdfCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PdfCreateRequestRejectRequestPatternList>;
+export const PdfCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<PdfCreateRequestRejectRequestPatternList>;
 
 export type PdfCreateRequestRejectResourceTypesItem =
   | "document"
@@ -2751,10 +2690,8 @@ export const PdfCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PdfCreateRequestRejectResourceTypesList>;
 
 export type PdfCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const PdfCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PdfCreateRequestSetExtraHTTPHeadersMap>;
+export const PdfCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<PdfCreateRequestSetExtraHTTPHeadersMap>;
 
 export type PdfCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const PdfCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -2852,23 +2789,20 @@ export const ScrapeCreateRequestAddScriptTagItem = CreateAccessibilityTreeReques
 
 export type ScrapeCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const ScrapeCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<ScrapeCreateRequestAddScriptTagList>;
+export const ScrapeCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<ScrapeCreateRequestAddScriptTagList>;
 
 export type ScrapeCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const ScrapeCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type ScrapeCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const ScrapeCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<ScrapeCreateRequestAddStyleTagList>;
+export const ScrapeCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<ScrapeCreateRequestAddStyleTagList>;
 
 export type ScrapeCreateRequestAllowRequestPatternList = Array<string>;
-export const ScrapeCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScrapeCreateRequestAllowRequestPatternList>;
+export const ScrapeCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScrapeCreateRequestAllowRequestPatternList>;
 
 export type ScrapeCreateRequestAllowResourceTypesItem =
   | "document"
@@ -3016,9 +2950,8 @@ export const ScrapeCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScrapeCreateRequestGotoOptions>;
 
 export type ScrapeCreateRequestRejectRequestPatternList = Array<string>;
-export const ScrapeCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScrapeCreateRequestRejectRequestPatternList>;
+export const ScrapeCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScrapeCreateRequestRejectRequestPatternList>;
 
 export type ScrapeCreateRequestRejectResourceTypesItem =
   | "document"
@@ -3049,10 +2982,8 @@ export const ScrapeCreateRequestRejectResourceTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ScrapeCreateRequestRejectResourceTypesList>;
 
 export type ScrapeCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const ScrapeCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ScrapeCreateRequestSetExtraHTTPHeadersMap>;
+export const ScrapeCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<ScrapeCreateRequestSetExtraHTTPHeadersMap>;
 
 export type ScrapeCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const ScrapeCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -3218,23 +3149,20 @@ export const ScreenshotCreateRequestAddScriptTagItem =
 
 export type ScreenshotCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const ScreenshotCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<ScreenshotCreateRequestAddScriptTagList>;
+export const ScreenshotCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<ScreenshotCreateRequestAddScriptTagList>;
 
 export type ScreenshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const ScreenshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type ScreenshotCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const ScreenshotCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<ScreenshotCreateRequestAddStyleTagList>;
+export const ScreenshotCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<ScreenshotCreateRequestAddStyleTagList>;
 
 export type ScreenshotCreateRequestAllowRequestPatternList = Array<string>;
-export const ScreenshotCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScreenshotCreateRequestAllowRequestPatternList>;
+export const ScreenshotCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScreenshotCreateRequestAllowRequestPatternList>;
 
 export type ScreenshotCreateRequestAllowResourceTypesItem =
   | "document"
@@ -3366,9 +3294,8 @@ export const ScreenshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScreenshotCreateRequestGotoOptions>;
 
 export type ScreenshotCreateRequestRejectRequestPatternList = Array<string>;
-export const ScreenshotCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScreenshotCreateRequestRejectRequestPatternList>;
+export const ScreenshotCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScreenshotCreateRequestRejectRequestPatternList>;
 
 export type ScreenshotCreateRequestRejectResourceTypesItem =
   | "document"
@@ -3451,10 +3378,8 @@ export const ScreenshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScreenshotCreateRequestScreenshotOptions>;
 
 export type ScreenshotCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const ScreenshotCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ScreenshotCreateRequestSetExtraHTTPHeadersMap>;
+export const ScreenshotCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<ScreenshotCreateRequestSetExtraHTTPHeadersMap>;
 
 export type ScreenshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const ScreenshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -3548,9 +3473,8 @@ export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateScreenshotRequest" }) as any as S.Schema<CreateScreenshotRequest>;
 
 export interface CreateScreenshotResponse {}
-export const CreateScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "CreateScreenshotResponse" }) as any as S.Schema<CreateScreenshotResponse>;
+export const CreateScreenshotResponse =
+  CreatePdfResponse as any as S.Schema<CreateScreenshotResponse>;
 
 export type SnapshotCreateRequestBrowser = "kitesurf";
 export const SnapshotCreateRequestBrowser = S.String;
@@ -3560,23 +3484,20 @@ export const SnapshotCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequ
 
 export type SnapshotCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const SnapshotCreateRequestAddScriptTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddScriptTagItem,
-) as any as S.Schema<SnapshotCreateRequestAddScriptTagList>;
+export const SnapshotCreateRequestAddScriptTagList =
+  CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<SnapshotCreateRequestAddScriptTagList>;
 
 export type SnapshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 export const SnapshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
 
 export type SnapshotCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const SnapshotCreateRequestAddStyleTagList = /*@__PURE__*/ S.Array(
-  CreateAccessibilityTreeRequestAddStyleTagItem,
-) as any as S.Schema<SnapshotCreateRequestAddStyleTagList>;
+export const SnapshotCreateRequestAddStyleTagList =
+  CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<SnapshotCreateRequestAddStyleTagList>;
 
 export type SnapshotCreateRequestAllowRequestPatternList = Array<string>;
-export const SnapshotCreateRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SnapshotCreateRequestAllowRequestPatternList>;
+export const SnapshotCreateRequestAllowRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<SnapshotCreateRequestAllowRequestPatternList>;
 
 export type SnapshotCreateRequestAllowResourceTypesItem =
   | "document"
@@ -3722,9 +3643,8 @@ export const SnapshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotCreateRequestGotoOptions>;
 
 export type SnapshotCreateRequestRejectRequestPatternList = Array<string>;
-export const SnapshotCreateRequestRejectRequestPatternList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SnapshotCreateRequestRejectRequestPatternList>;
+export const SnapshotCreateRequestRejectRequestPatternList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<SnapshotCreateRequestRejectRequestPatternList>;
 
 export type SnapshotCreateRequestRejectResourceTypesItem =
   | "document"
@@ -3788,10 +3708,8 @@ export const SnapshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SnapshotCreateRequestScreenshotOptions>;
 
 export type SnapshotCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const SnapshotCreateRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SnapshotCreateRequestSetExtraHTTPHeadersMap>;
+export const SnapshotCreateRequestSetExtraHTTPHeadersMap =
+  CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<SnapshotCreateRequestSetExtraHTTPHeadersMap>;
 
 export type SnapshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
 export const SnapshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
@@ -3892,9 +3810,8 @@ export const SnapshotCreateResponseAccessibilityTreeChecked2 = /*@__PURE__*/ S.U
 );
 
 export type SnapshotCreateResponseAccessibilityTreeChildrenList = Array<unknown>;
-export const SnapshotCreateResponseAccessibilityTreeChildrenList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChildrenList>;
+export const SnapshotCreateResponseAccessibilityTreeChildrenList =
+  CreateAccessibilityTreeResponseAccessibilityTreeChildrenList as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChildrenList>;
 
 export type SnapshotCreateResponseAccessibilityTreePressed = "mixed";
 export const SnapshotCreateResponseAccessibilityTreePressed = S.String;
@@ -4117,10 +4034,8 @@ export type CrawlGetResponseRecordsItemStatus =
 export const CrawlGetResponseRecordsItemStatus = S.String;
 
 export type CrawlGetResponseRecordsItemJsonMap = { [key: string]: unknown | undefined };
-export const CrawlGetResponseRecordsItemJsonMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CrawlGetResponseRecordsItemJsonMap>;
+export const CrawlGetResponseRecordsItemJsonMap =
+  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<CrawlGetResponseRecordsItemJsonMap>;
 
 export interface CrawlGetResponseRecordsItemMetadata {
   /** HTTP status code of the crawled page. */
@@ -4234,11 +4149,8 @@ export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDevtoolBrowserPageRequest>;
 
 export interface GetDevtoolBrowserPageResponse {}
-export const GetDevtoolBrowserPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetDevtoolBrowserPageResponse",
-}) as any as S.Schema<GetDevtoolBrowserPageResponse>;
+export const GetDevtoolBrowserPageResponse =
+  ConnectDevtoolBrowserResponse as any as S.Schema<GetDevtoolBrowserPageResponse>;
 
 export interface GetDevtoolBrowserTargetRequest {
   /** Account ID. */
@@ -4283,19 +4195,8 @@ export interface GetDevtoolBrowserTargetResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const GetDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetDevtoolBrowserTargetResponse",
-}) as any as S.Schema<GetDevtoolBrowserTargetResponse>;
+export const GetDevtoolBrowserTargetResponse =
+  CreateDevtoolBrowserTargetResponse as any as S.Schema<GetDevtoolBrowserTargetResponse>;
 
 export interface GetDevtoolSessionRequest {
   /** Account ID. */
@@ -4393,11 +4294,8 @@ export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchDevtoolBrowserRequest>;
 
 export interface LaunchDevtoolBrowserResponse {}
-export const LaunchDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "LaunchDevtoolBrowserResponse",
-}) as any as S.Schema<LaunchDevtoolBrowserResponse>;
+export const LaunchDevtoolBrowserResponse =
+  ConnectDevtoolBrowserResponse as any as S.Schema<LaunchDevtoolBrowserResponse>;
 
 export interface ListDevtoolBrowserTargetsRequest {
   /** Account ID. */
@@ -4442,19 +4340,8 @@ export interface ListDevtoolBrowserTargetsResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const ListDevtoolBrowserTargetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListDevtoolBrowserTargetsResponse",
-}) as any as S.Schema<ListDevtoolBrowserTargetsResponse>;
+export const ListDevtoolBrowserTargetsResponse =
+  CreateDevtoolBrowserTargetResponse as any as S.Schema<ListDevtoolBrowserTargetsResponse>;
 
 export interface ListDevtoolSessionsRequest {
   /** Account ID. */
@@ -4505,23 +4392,8 @@ export interface ListDevtoolSessionsResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const ListDevtoolSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    closeReason: S.optional(S.NullOr(S.Number)),
-    closeReasonText: S.optional(S.NullOr(S.String)),
-    connectionEndTime: S.optional(S.NullOr(S.Number)),
-    connectionId: S.optional(S.NullOr(S.String)),
-    connectionStartTime: S.optional(S.NullOr(S.Number)),
-    devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
-    endTime: S.optional(S.NullOr(S.Number)),
-    lastUpdated: S.optional(S.NullOr(S.Number)),
-    startTime: S.optional(S.NullOr(S.Number)),
-    webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ListDevtoolSessionsResponse",
-}) as any as S.Schema<ListDevtoolSessionsResponse>;
+export const ListDevtoolSessionsResponse =
+  GetDevtoolSessionResponse as any as S.Schema<ListDevtoolSessionsResponse>;
 
 export interface ProtocolDevtoolBrowserRequest {
   /** Account ID. */
@@ -4549,10 +4421,8 @@ export const ProtocolDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 export type DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
+export const DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap =
+  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemCommandsList =
   Array<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
@@ -4561,37 +4431,30 @@ export const DevtoolsBrowserProtocolResponseDomainsItemCommandsList = /*@__PURE_
 ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemCommandsList>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemDependenciesList = Array<string>;
-export const DevtoolsBrowserProtocolResponseDomainsItemDependenciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemDependenciesList>;
+export const DevtoolsBrowserProtocolResponseDomainsItemDependenciesList =
+  CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemDependenciesList>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
+export const DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap =
+  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemEventsList =
   Array<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
-export const DevtoolsBrowserProtocolResponseDomainsItemEventsList = /*@__PURE__*/ S.Array(
-  DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap,
-) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemEventsList>;
+export const DevtoolsBrowserProtocolResponseDomainsItemEventsList =
+  DevtoolsBrowserProtocolResponseDomainsItemCommandsList as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemEventsList>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
+export const DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap =
+  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemTypesList =
   Array<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
-export const DevtoolsBrowserProtocolResponseDomainsItemTypesList = /*@__PURE__*/ S.Array(
-  DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap,
-) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesList>;
+export const DevtoolsBrowserProtocolResponseDomainsItemTypesList =
+  DevtoolsBrowserProtocolResponseDomainsItemCommandsList as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesList>;
 
 export interface DevtoolsBrowserProtocolResponseDomainsItem {
   /** Domain name. */

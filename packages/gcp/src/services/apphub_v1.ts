@@ -100,9 +100,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type ApplicationStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
 export const ApplicationStateEnum = S.String;
@@ -499,11 +497,7 @@ export interface WorkloadReference {
   /** Output only. The underlying compute resource uri. */
   uri?: string;
 }
-export const WorkloadReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "WorkloadReference" }) as any as S.Schema<WorkloadReference>;
+export const WorkloadReference = ServiceReference as any as S.Schema<WorkloadReference>;
 
 /** Properties of an underlying compute resource represented by the Workload. */
 export interface WorkloadProperties {
@@ -1821,13 +1815,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateBoundaryProjectsLocationsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Boundary resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */

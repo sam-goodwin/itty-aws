@@ -144,11 +144,7 @@ export interface ApplicationLoadBalancer {
   /** Enables the application load balancer extension. U+26A0 Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. */
   enabled: boolean;
 }
-export const ApplicationLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({ identifier: "ApplicationLoadBalancer" }) as any as S.Schema<ApplicationLoadBalancer>;
+export const ApplicationLoadBalancer = Audit as any as S.Schema<ApplicationLoadBalancer>;
 
 /** Array of domain filters for ExternalDNS, e.g., *.runs.onstackit.cloud. */
 export type DNSZonesList = Array<string>;
@@ -301,15 +297,13 @@ export const V2ControlPlaneNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** PodAddressRanges contains the CIDRs that are used to allocate Pod IPs from. Currently only 1 range is allowed. Immutable after creation. */
 export type NetworkPodAddressRangesList = Array<string>;
-export const NetworkPodAddressRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkPodAddressRangesList>;
+export const NetworkPodAddressRangesList =
+  ACLAllowedCidrsList as any as S.Schema<NetworkPodAddressRangesList>;
 
 /** ServiceAddressRanges contains the CIDRs that are used to allocate Service ClusterIPs from. Currently only 1 range is allowed. Immutable after creation. */
 export type NetworkServiceAddressRangesList = Array<string>;
-export const NetworkServiceAddressRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkServiceAddressRangesList>;
+export const NetworkServiceAddressRangesList =
+  ACLAllowedCidrsList as any as S.Schema<NetworkServiceAddressRangesList>;
 
 export interface Network {
   cni?: CNI;
@@ -331,19 +325,14 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 
 export type NodepoolAvailabilityZonesList = Array<string>;
-export const NodepoolAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NodepoolAvailabilityZonesList>;
+export const NodepoolAvailabilityZonesList =
+  ACLAllowedCidrsList as any as S.Schema<NodepoolAvailabilityZonesList>;
 
 export interface Kata {
   /** Enable workload isolation via Kata Containers for pods scheduled on this node pool. U+26A0 Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. */
   enabled: boolean;
 }
-export const Kata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({ identifier: "Kata" }) as any as S.Schema<Kata>;
+export const Kata = Audit as any as S.Schema<Kata>;
 
 export type CRIName = "containerd";
 export const CRIName = S.String;
@@ -370,10 +359,8 @@ export const NodepoolKubernetes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodepoolKubernetes" }) as any as S.Schema<NodepoolKubernetes>;
 
 export type NodepoolLabelsMap = { [key: string]: string | undefined };
-export const NodepoolLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NodepoolLabelsMap>;
+export const NodepoolLabelsMap =
+  CreateOrUpdateClusterRequestLabelsMap as any as S.Schema<NodepoolLabelsMap>;
 
 /** For valid names and versions please take a look at [provider-options](#tag/ProviderOptions/operation/SkeService_GetProviderOptions) `machineImages`. */
 export interface Image {
@@ -513,9 +500,8 @@ export const CredentialsRotationState = /*@__PURE__*/ S.suspend(() =>
 
 /** The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster. */
 export type ClusterStatusEgressAddressRangesList = Array<string>;
-export const ClusterStatusEgressAddressRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterStatusEgressAddressRangesList>;
+export const ClusterStatusEgressAddressRangesList =
+  ACLAllowedCidrsList as any as S.Schema<ClusterStatusEgressAddressRangesList>;
 
 /** - Code: `SKE_UNSPECIFIED` Message: "An error occurred. Please open a support ticket if this error persists." - Code: `SKE_TMP_AUTH_ERROR` Message: "Authentication failed. This is a temporary error. Please wait while the system recovers." - Code: `SKE_QUOTA_EXCEEDED` Message: "Your project's resource quotas are exhausted. Please make sure your quota is sufficient for the ordered cluster." - Code: `SKE_OBSERVABILITY_INSTANCE_NOT_FOUND` Message: "The provided Observability instance could not be found." - Code: `SKE_RATE_LIMITS` Message: "While provisioning your cluster, request rate limits where incurred. Please wait while the system recovers." - Code: `SKE_INFRA_ERROR` Message: "An error occurred with the underlying infrastructure. Please open a support ticket if this error persists." - Code: `SKE_REMAINING_RESOURCES` Message: "There are remaining Kubernetes resources in your cluster that prevent deletion. Please make sure to remove them." - Code: `SKE_CONFIGURATION_PROBLEM` Message: "A configuration error occurred. Please open a support ticket if this error persists." - Code: `SKE_UNREADY_NODES` Message: "Not all worker nodes are ready. Please open a support ticket if this error persists." - Code: `SKE_API_SERVER_ERROR` Message: "The Kubernetes API server is not reporting readiness. Please open a support ticket if this error persists." - Code: `SKE_DNS_ZONE_NOT_FOUND` Message: "The provided DNS zone for the STACKIT DNS extension could not be found. Please ensure you defined a valid domain that belongs to a STACKIT DNS zone." */
 export type RuntimeErrorCode =
@@ -613,21 +599,18 @@ export const ExpirationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The network ranges (in CIDR notation) used by nodes of the cluster. */
 export type ClusterStatusNodeAddressRangesList = Array<string>;
-export const ClusterStatusNodeAddressRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterStatusNodeAddressRangesList>;
+export const ClusterStatusNodeAddressRangesList =
+  ACLAllowedCidrsList as any as S.Schema<ClusterStatusNodeAddressRangesList>;
 
 /** The network ranges (in CIDR notation) used by pods of the cluster. */
 export type ClusterStatusPodAddressRangesList = Array<string>;
-export const ClusterStatusPodAddressRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterStatusPodAddressRangesList>;
+export const ClusterStatusPodAddressRangesList =
+  ACLAllowedCidrsList as any as S.Schema<ClusterStatusPodAddressRangesList>;
 
 /** The network ranges (in CIDR notation) used by services of the cluster. */
 export type ClusterStatusServiceAddressRangesList = Array<string>;
-export const ClusterStatusServiceAddressRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterStatusServiceAddressRangesList>;
+export const ClusterStatusServiceAddressRangesList =
+  ACLAllowedCidrsList as any as S.Schema<ClusterStatusServiceAddressRangesList>;
 
 export interface ClusterStatus {
   aggregated?: ClusterStatusState | (string & {});
@@ -713,15 +696,12 @@ export const CreateOrUpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are key-value pairs. Keys may contain domain prefix separated by a slash(/) and must begin with an alphanumerical character. Values may be empty and if not empty, they must begin and end with an alphanumerical character. Keys can be between 1-314 characters long, whereas values can be 0-63 characters long. */
 export type ClusterLabelsMap = { [key: string]: string | undefined };
-export const ClusterLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterLabelsMap>;
+export const ClusterLabelsMap =
+  CreateOrUpdateClusterRequestLabelsMap as any as S.Schema<ClusterLabelsMap>;
 
 export type ClusterNodepoolsList = Array<Nodepool>;
-export const ClusterNodepoolsList = /*@__PURE__*/ S.Array(
-  Nodepool,
-) as any as S.Schema<ClusterNodepoolsList>;
+export const ClusterNodepoolsList =
+  CreateOrUpdateClusterRequestNodepoolsList as any as S.Schema<ClusterNodepoolsList>;
 
 export interface Cluster {
   access?: Access;
@@ -853,11 +833,7 @@ export const GetLoginKubeconfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LoginKubeconfig {
   kubeconfig?: string;
 }
-export const LoginKubeconfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kubeconfig: S.optional(S.String),
-  }),
-).annotate({ identifier: "LoginKubeconfig" }) as any as S.Schema<LoginKubeconfig>;
+export const LoginKubeconfig = IDPKubeconfig as any as S.Schema<LoginKubeconfig>;
 
 export interface ListClustersRequest {
   projectId: string;
@@ -929,10 +905,8 @@ export const ProviderOptionsAvailabilityZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProviderOptionsAvailabilityZonesList>;
 
 export type KubernetesVersionFeatureGatesMap = { [key: string]: string | undefined };
-export const KubernetesVersionFeatureGatesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubernetesVersionFeatureGatesMap>;
+export const KubernetesVersionFeatureGatesMap =
+  CreateOrUpdateClusterRequestLabelsMap as any as S.Schema<KubernetesVersionFeatureGatesMap>;
 
 export interface KubernetesVersion {
   expirationDate?: string;
@@ -1021,9 +995,8 @@ export type VolumeType = AvailabilityZone;
 export const VolumeType = AvailabilityZone;
 
 export type ProviderOptionsVolumeTypesList = Array<AvailabilityZone>;
-export const ProviderOptionsVolumeTypesList = /*@__PURE__*/ S.Array(
-  AvailabilityZone,
-) as any as S.Schema<ProviderOptionsVolumeTypesList>;
+export const ProviderOptionsVolumeTypesList =
+  ProviderOptionsAvailabilityZonesList as any as S.Schema<ProviderOptionsVolumeTypesList>;
 
 export interface ProviderOptions {
   availabilityZones?: ProviderOptionsAvailabilityZonesList;
@@ -1065,11 +1038,8 @@ export const StartCredentialsRotationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartCredentialsRotationRequest>;
 
 export type StartCredentialsRotationResponse = unknown;
-export const StartCredentialsRotationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartCredentialsRotationResponse",
-}) as any as S.Schema<StartCredentialsRotationResponse>;
+export const StartCredentialsRotationResponse =
+  CompleteCredentialsRotationResponse as any as S.Schema<StartCredentialsRotationResponse>;
 
 export interface TriggerHibernateRequest {
   projectId: string;
@@ -1092,9 +1062,8 @@ export const TriggerHibernateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerHibernateRequest" }) as any as S.Schema<TriggerHibernateRequest>;
 
 export type TriggerHibernateResponse = unknown;
-export const TriggerHibernateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TriggerHibernateResponse" }) as any as S.Schema<TriggerHibernateResponse>;
+export const TriggerHibernateResponse =
+  DeleteClusterResponse as any as S.Schema<TriggerHibernateResponse>;
 
 export interface TriggerMaintenanceRequest {
   projectId: string;
@@ -1119,11 +1088,8 @@ export const TriggerMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerMaintenanceRequest>;
 
 export type TriggerMaintenanceResponse = unknown;
-export const TriggerMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TriggerMaintenanceResponse",
-}) as any as S.Schema<TriggerMaintenanceResponse>;
+export const TriggerMaintenanceResponse =
+  CompleteCredentialsRotationResponse as any as S.Schema<TriggerMaintenanceResponse>;
 
 export interface TriggerReconcileRequest {
   projectId: string;
@@ -1146,9 +1112,8 @@ export const TriggerReconcileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerReconcileRequest" }) as any as S.Schema<TriggerReconcileRequest>;
 
 export type TriggerReconcileResponse = unknown;
-export const TriggerReconcileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TriggerReconcileResponse" }) as any as S.Schema<TriggerReconcileResponse>;
+export const TriggerReconcileResponse =
+  DeleteClusterResponse as any as S.Schema<TriggerReconcileResponse>;
 
 export interface TriggerWakeupRequest {
   projectId: string;
@@ -1171,9 +1136,8 @@ export const TriggerWakeupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerWakeupRequest" }) as any as S.Schema<TriggerWakeupRequest>;
 
 export type TriggerWakeupResponse = unknown;
-export const TriggerWakeupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TriggerWakeupResponse" }) as any as S.Schema<TriggerWakeupResponse>;
+export const TriggerWakeupResponse =
+  DeleteClusterResponse as any as S.Schema<TriggerWakeupResponse>;
 
 export type CompleteCredentialsRotationError = BadRequest | NotFound | StackitOpError;
 /** Complete cluster credentials rotation Complete cluster credentials rotation. This is step 2 of a two-step process. Start the rotation using [start-credentials-rotation](#tag/Credentials/operation/SkeService_StartClusterCredentialsRotation). */

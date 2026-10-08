@@ -76,9 +76,8 @@ export const ActivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateSubscriptionRequest>;
 
 export interface ActivateSubscriptionResponse {}
-export const ActivateSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ActivateSubscriptionResponse",
-}) as any as S.Schema<ActivateSubscriptionResponse>;
+export const ActivateSubscriptionResponse =
+  ActivatePlanResponse as any as S.Schema<ActivateSubscriptionResponse>;
 
 export interface CancelSubscriptionRequest {
   /** The ID of the subscription. */
@@ -96,9 +95,8 @@ export const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelSubscriptionRequest>;
 
 export interface CancelSubscriptionResponse {}
-export const CancelSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelSubscriptionResponse",
-}) as any as S.Schema<CancelSubscriptionResponse>;
+export const CancelSubscriptionResponse =
+  ActivatePlanResponse as any as S.Schema<CancelSubscriptionResponse>;
 
 /** The type of capture. */
 export type CaptureSubscriptionRequestCaptureType = "OUTSTANDING_BALANCE";
@@ -1089,9 +1087,8 @@ export const VaultResponseCustomer = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related HATEOAS links. */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<DefinitionsLinkDescriptionList>;
+export const DefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
 
 /** The details about a saved payment source. */
 export interface VaultResponse {
@@ -1434,9 +1431,8 @@ export const DeactivatePlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeactivatePlanRequest" }) as any as S.Schema<DeactivatePlanRequest>;
 
 export interface DeactivatePlanResponse {}
-export const DeactivatePlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivatePlanResponse",
-}) as any as S.Schema<DeactivatePlanResponse>;
+export const DeactivatePlanResponse =
+  ActivatePlanResponse as any as S.Schema<DeactivatePlanResponse>;
 
 export interface GetPlanRequest {
   /** The ID of the subscription. */
@@ -1607,9 +1603,7 @@ export const PatchPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchPlanRequest" }) as any as S.Schema<PatchPlanRequest>;
 
 export interface PatchPlanResponse {}
-export const PatchPlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchPlanResponse",
-}) as any as S.Schema<PatchPlanResponse>;
+export const PatchPlanResponse = ActivatePlanResponse as any as S.Schema<PatchPlanResponse>;
 
 export interface PatchSubscriptionRequest {
   /** The ID of the subscription. */
@@ -1624,9 +1618,8 @@ export const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchSubscriptionRequest" }) as any as S.Schema<PatchSubscriptionRequest>;
 
 export interface PatchSubscriptionResponse {}
-export const PatchSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchSubscriptionResponse",
-}) as any as S.Schema<PatchSubscriptionResponse>;
+export const PatchSubscriptionResponse =
+  ActivatePlanResponse as any as S.Schema<PatchSubscriptionResponse>;
 
 /** The update pricing scheme request details. */
 export interface UpdatePricingSchemeRequestInput {
@@ -1784,9 +1777,8 @@ export const PlanOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type SubscriptionReviseResponseDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const SubscriptionReviseResponseDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<SubscriptionReviseResponseDefinitionsLinkDescriptionList>;
+export const SubscriptionReviseResponseDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<SubscriptionReviseResponseDefinitionsLinkDescriptionList>;
 
 /** The response to a request to update the quantity of the product or service in a subscription. You can also use this method to switch the plan and update the `shipping_amount` and `shipping_address` values for the subscription. This type of update requires the buyer's consent. */
 export interface SubscriptionReviseResponse {
@@ -1876,9 +1868,8 @@ export const SuspendSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendSubscriptionRequest>;
 
 export interface SuspendSubscriptionResponse {}
-export const SuspendSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendSubscriptionResponse",
-}) as any as S.Schema<SuspendSubscriptionResponse>;
+export const SuspendSubscriptionResponse =
+  ActivatePlanResponse as any as S.Schema<SuspendSubscriptionResponse>;
 
 export type ActivatePlanError = Forbidden | NotFound | UnprocessableEntity | PaypalOpError;
 /** Activate plan Activates a plan, by ID. */

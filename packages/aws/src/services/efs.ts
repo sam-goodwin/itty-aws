@@ -841,9 +841,8 @@ export const DeleteAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAccessPointRequest" }) as any as S.Schema<DeleteAccessPointRequest>;
 export interface DeleteAccessPointResponse {}
-export const DeleteAccessPointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccessPointResponse",
-}) as any as S.Schema<DeleteAccessPointResponse>;
+export const DeleteAccessPointResponse =
+  CreateTagsResponse as any as S.Schema<DeleteAccessPointResponse>;
 export interface DeleteFileSystemRequest {
   FileSystemId: string;
 }
@@ -860,9 +859,8 @@ export const DeleteFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFileSystemRequest" }) as any as S.Schema<DeleteFileSystemRequest>;
 export interface DeleteFileSystemResponse {}
-export const DeleteFileSystemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFileSystemResponse",
-}) as any as S.Schema<DeleteFileSystemResponse>;
+export const DeleteFileSystemResponse =
+  CreateTagsResponse as any as S.Schema<DeleteFileSystemResponse>;
 export interface DeleteFileSystemPolicyRequest {
   FileSystemId: string;
 }
@@ -881,9 +879,8 @@ export const DeleteFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFileSystemPolicyRequest",
 }) as any as S.Schema<DeleteFileSystemPolicyRequest>;
 export interface DeleteFileSystemPolicyResponse {}
-export const DeleteFileSystemPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFileSystemPolicyResponse",
-}) as any as S.Schema<DeleteFileSystemPolicyResponse>;
+export const DeleteFileSystemPolicyResponse =
+  CreateTagsResponse as any as S.Schema<DeleteFileSystemPolicyResponse>;
 export interface DeleteMountTargetRequest {
   MountTargetId: string;
 }
@@ -900,9 +897,8 @@ export const DeleteMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMountTargetRequest" }) as any as S.Schema<DeleteMountTargetRequest>;
 export interface DeleteMountTargetResponse {}
-export const DeleteMountTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMountTargetResponse",
-}) as any as S.Schema<DeleteMountTargetResponse>;
+export const DeleteMountTargetResponse =
+  CreateTagsResponse as any as S.Schema<DeleteMountTargetResponse>;
 export type DeletionMode = "ALL_CONFIGURATIONS" | "LOCAL_CONFIGURATION_ONLY" | (string & {});
 export const DeletionMode = S.String;
 
@@ -937,7 +933,7 @@ export const DeleteReplicationConfigurationResponse = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteReplicationConfigurationResponse",
 }) as any as S.Schema<DeleteReplicationConfigurationResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = SecurityGroups as any as S.Schema<TagKeys>;
 export interface DeleteTagsRequest {
   FileSystemId: string;
   TagKeys: string[];
@@ -955,9 +951,7 @@ export const DeleteTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTagsRequest" }) as any as S.Schema<DeleteTagsRequest>;
 export interface DeleteTagsResponse {}
-export const DeleteTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagsResponse",
-}) as any as S.Schema<DeleteTagsResponse>;
+export const DeleteTagsResponse = CreateTagsResponse as any as S.Schema<DeleteTagsResponse>;
 export type MaxResults = number;
 export type Token = string;
 export interface DescribeAccessPointsRequest {
@@ -1398,11 +1392,8 @@ export const ModifyMountTargetSecurityGroupsRequest = /*@__PURE__*/ S.suspend(()
   identifier: "ModifyMountTargetSecurityGroupsRequest",
 }) as any as S.Schema<ModifyMountTargetSecurityGroupsRequest>;
 export interface ModifyMountTargetSecurityGroupsResponse {}
-export const ModifyMountTargetSecurityGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ModifyMountTargetSecurityGroupsResponse",
-}) as any as S.Schema<ModifyMountTargetSecurityGroupsResponse>;
+export const ModifyMountTargetSecurityGroupsResponse =
+  DeleteReplicationConfigurationResponse as any as S.Schema<ModifyMountTargetSecurityGroupsResponse>;
 export interface PutAccountPreferencesRequest {
   ResourceIdType: ResourceIdType;
 }
@@ -1512,9 +1503,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CreateTagsResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceId: string;
   TagKeys: string[];
@@ -1535,9 +1524,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = CreateTagsResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateFileSystemRequest {
   FileSystemId: string;
   ThroughputMode?: ThroughputMode;

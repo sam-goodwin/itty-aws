@@ -234,9 +234,7 @@ export const BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList =
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
 export const BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList>;
 
 export interface BroadcastActionLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
@@ -349,195 +347,143 @@ export const BroadcastActionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 /** The number of `attempted` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList>;
 
 /** The number of spam complaints. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList =
   Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList = Array<number>;
 export const BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface BroadcastActionMetricsResponseLanguageVariantsValueSeries {
@@ -681,162 +627,133 @@ export const BroadcastActionMetricsResponseLanguageVariantsMap = /*@__PURE__*/ S
 
 /** The number of `attempted` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesAttemptedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesAttemptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesAttemptedList>;
+export const BroadcastActionMetricsResponseMetricSeriesAttemptedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesBouncedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesBouncedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesBouncedList>;
+export const BroadcastActionMetricsResponseMetricSeriesBouncedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesClickedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesClickedList>;
+export const BroadcastActionMetricsResponseMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesConvertedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesConvertedList>;
+export const BroadcastActionMetricsResponseMetricSeriesConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesCreatedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesCreatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesCreatedList>;
+export const BroadcastActionMetricsResponseMetricSeriesCreatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesDeferredList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesDeferredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDeferredList>;
+export const BroadcastActionMetricsResponseMetricSeriesDeferredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesDeliveredList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesDeliveredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDeliveredList>;
+export const BroadcastActionMetricsResponseMetricSeriesDeliveredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesDraftedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesDraftedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDraftedList>;
+export const BroadcastActionMetricsResponseMetricSeriesDraftedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesFailedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesFailedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesFailedList>;
+export const BroadcastActionMetricsResponseMetricSeriesFailedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesHumanClickedList>;
+export const BroadcastActionMetricsResponseMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesHumanOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesHumanOpenedList>;
+export const BroadcastActionMetricsResponseMetricSeriesHumanOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList>;
+export const BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesMachineClickedList>;
+export const BroadcastActionMetricsResponseMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList>;
+export const BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesOpenedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesOpenedList>;
+export const BroadcastActionMetricsResponseMetricSeriesOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList>;
+export const BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type BroadcastActionMetricsResponseMetricSeriesRepliedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesRepliedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesRepliedList>;
+export const BroadcastActionMetricsResponseMetricSeriesRepliedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type BroadcastActionMetricsResponseMetricSeriesSentList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesSentList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSentList>;
+export const BroadcastActionMetricsResponseMetricSeriesSentList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSentList>;
 
 /** The number of spam complaints. */
 export type BroadcastActionMetricsResponseMetricSeriesSpammedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesSpammedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSpammedList>;
+export const BroadcastActionMetricsResponseMetricSeriesSpammedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesSuppressedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesSuppressedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSuppressedList>;
+export const BroadcastActionMetricsResponseMetricSeriesSuppressedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
 export const BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
 export const BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
 export const BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesUndeliverableList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUndeliverableList>;
+export const BroadcastActionMetricsResponseMetricSeriesUndeliverableList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type BroadcastActionMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUnsubscribedList>;
+export const BroadcastActionMetricsResponseMetricSeriesUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type BroadcastActionMetricsResponseMetricSeriesUntrackedList = Array<number>;
-export const BroadcastActionMetricsResponseMetricSeriesUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUntrackedList>;
+export const BroadcastActionMetricsResponseMetricSeriesUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface BroadcastActionMetricsResponseMetricSeries {
@@ -1310,9 +1227,8 @@ export const BroadcastErrorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of errors in the format `line <x>: <error text>` to help you troubleshoot errors associated with your audience or data file. */
 export type BroadcastErrorsResponseErrorsList = Array<string>;
-export const BroadcastErrorsResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BroadcastErrorsResponseErrorsList>;
+export const BroadcastErrorsResponseErrorsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<BroadcastErrorsResponseErrorsList>;
 
 export interface BroadcastErrorsResponse {
   /** A list of errors in the format `line <x>: <error text>` to help you troubleshoot errors associated with your audience or data file. */
@@ -1354,21 +1270,18 @@ export const BroadcastLinksResponseLinksItemLink = BroadcastActionLinksResponseL
 
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type BroadcastLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-export const BroadcastLinksResponseLinksItemMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesClickedList>;
+export const BroadcastLinksResponseLinksItemMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesClickedList>;
 
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
-export const BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList>;
+export const BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList>;
 
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
-export const BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList>;
+export const BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList>;
 
 export interface BroadcastLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
@@ -1727,159 +1640,133 @@ export const BroadcastMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The number of `attempted` messages. */
 export type BroadcastMetricsResponseMetricSeriesAttemptedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesAttemptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesAttemptedList>;
+export const BroadcastMetricsResponseMetricSeriesAttemptedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type BroadcastMetricsResponseMetricSeriesBouncedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesBouncedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesBouncedList>;
+export const BroadcastMetricsResponseMetricSeriesBouncedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type BroadcastMetricsResponseMetricSeriesClickedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesClickedList>;
+export const BroadcastMetricsResponseMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type BroadcastMetricsResponseMetricSeriesConvertedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesConvertedList>;
+export const BroadcastMetricsResponseMetricSeriesConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type BroadcastMetricsResponseMetricSeriesCreatedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesCreatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesCreatedList>;
+export const BroadcastMetricsResponseMetricSeriesCreatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type BroadcastMetricsResponseMetricSeriesDeferredList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesDeferredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesDeferredList>;
+export const BroadcastMetricsResponseMetricSeriesDeferredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type BroadcastMetricsResponseMetricSeriesDeliveredList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesDeliveredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesDeliveredList>;
+export const BroadcastMetricsResponseMetricSeriesDeliveredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type BroadcastMetricsResponseMetricSeriesDraftedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesDraftedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesDraftedList>;
+export const BroadcastMetricsResponseMetricSeriesDraftedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type BroadcastMetricsResponseMetricSeriesFailedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesFailedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesFailedList>;
+export const BroadcastMetricsResponseMetricSeriesFailedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesHumanClickedList>;
+export const BroadcastMetricsResponseMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesHumanOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesHumanOpenedList>;
+export const BroadcastMetricsResponseMetricSeriesHumanOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type BroadcastMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesLinkUntrackedList>;
+export const BroadcastMetricsResponseMetricSeriesLinkUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesMachineClickedList>;
+export const BroadcastMetricsResponseMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesOpenUntrackedList>;
+export const BroadcastMetricsResponseMetricSeriesOpenUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type BroadcastMetricsResponseMetricSeriesOpenedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesOpenedList>;
+export const BroadcastMetricsResponseMetricSeriesOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type BroadcastMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesPrefetchOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesPrefetchOpenedList>;
+export const BroadcastMetricsResponseMetricSeriesPrefetchOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type BroadcastMetricsResponseMetricSeriesRepliedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesRepliedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesRepliedList>;
+export const BroadcastMetricsResponseMetricSeriesRepliedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type BroadcastMetricsResponseMetricSeriesSentList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesSentList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesSentList>;
+export const BroadcastMetricsResponseMetricSeriesSentList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesSentList>;
 
 /** The number of spam complaints. */
 export type BroadcastMetricsResponseMetricSeriesSpammedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesSpammedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesSpammedList>;
+export const BroadcastMetricsResponseMetricSeriesSpammedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type BroadcastMetricsResponseMetricSeriesSuppressedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesSuppressedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesSuppressedList>;
+export const BroadcastMetricsResponseMetricSeriesSuppressedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList>;
+export const BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList>;
+export const BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList>;
+export const BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type BroadcastMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesUndeliverableList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesUndeliverableList>;
+export const BroadcastMetricsResponseMetricSeriesUndeliverableList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type BroadcastMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesUnsubscribedList>;
+export const BroadcastMetricsResponseMetricSeriesUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type BroadcastMetricsResponseMetricSeriesUntrackedList = Array<number>;
-export const BroadcastMetricsResponseMetricSeriesUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeriesUntrackedList>;
+export const BroadcastMetricsResponseMetricSeriesUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface BroadcastMetricsResponseMetricSeries {
@@ -2089,23 +1976,18 @@ export const CampaignActionLinksResponseLinksItemLink = BroadcastActionLinksResp
 
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type CampaignActionLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-export const CampaignActionLinksResponseLinksItemMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesClickedList>;
+export const CampaignActionLinksResponseLinksItemMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesClickedList>;
 
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
 export const CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList>;
 
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
 export const CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList>;
 
 export interface CampaignActionLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
@@ -2245,194 +2127,142 @@ export const CampaignActionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 /** The number of `attempted` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesAttemptedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesAttemptedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesAttemptedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesBouncedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesBouncedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesBouncedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesClickedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesConvertedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesConvertedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesConvertedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesCreatedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesCreatedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesDeferredList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesDeferredList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesDeferredList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesDeliveredList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesDeliveredList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesDeliveredList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesDraftedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesDraftedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesDraftedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesFailedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesFailedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesFailedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesRepliedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesRepliedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesRepliedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesSentList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesSentList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesSentList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesSentList>;
 
 /** The number of spam complaints. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesSpammedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesSpammedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesSpammedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesSuppressedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesSuppressedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesSuppressedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList =
   Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesUntrackedList = Array<number>;
 export const CampaignActionMetricsResponseLanguageVariantsValueSeriesUntrackedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesUntrackedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface CampaignActionMetricsResponseLanguageVariantsValueSeries {
@@ -2489,63 +2319,8 @@ export interface CampaignActionMetricsResponseLanguageVariantsValueSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: CampaignActionMetricsResponseLanguageVariantsValueSeriesUntrackedList;
 }
-export const CampaignActionMetricsResponseLanguageVariantsValueSeries = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attempted: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesAttemptedList),
-      bounced: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesBouncedList),
-      clicked: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesClickedList),
-      converted: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesConvertedList),
-      created: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesCreatedList),
-      deferred: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesDeferredList),
-      delivered: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesDeliveredList),
-      drafted: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesDraftedList),
-      failed: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesFailedList),
-      human_clicked: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList,
-      ),
-      human_opened: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList,
-      ),
-      link_untracked: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList,
-      ),
-      machine_clicked: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList,
-      ),
-      open_untracked: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList,
-      ),
-      opened: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesOpenedList),
-      prefetch_opened: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList,
-      ),
-      replied: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesRepliedList),
-      sent: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesSentList),
-      spammed: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesSpammedList),
-      suppressed: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesSuppressedList,
-      ),
-      topic_unsubscribed: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList,
-      ),
-      tracking_consent_denied: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList,
-      ),
-      tracking_consent_granted: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList,
-      ),
-      undeliverable: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList,
-      ),
-      unsubscribed: S.optional(
-        CampaignActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList,
-      ),
-      untracked: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeriesUntrackedList),
-    }),
-).annotate({
-  identifier: "CampaignActionMetricsResponseLanguageVariantsValueSeries",
-}) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeries>;
+export const CampaignActionMetricsResponseLanguageVariantsValueSeries =
+  BroadcastActionMetricsResponseLanguageVariantsValueSeries as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValueSeries>;
 
 export interface CampaignActionMetricsResponseLanguageVariantsValue {
   /** Whether this is the default variant. Exactly one variant per multi-language message is the default, and it always has an empty `language`. */
@@ -2555,182 +2330,145 @@ export interface CampaignActionMetricsResponseLanguageVariantsValue {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: CampaignActionMetricsResponseLanguageVariantsValueSeries;
 }
-export const CampaignActionMetricsResponseLanguageVariantsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(S.Boolean),
-    language: S.optional(S.String),
-    series: S.optional(CampaignActionMetricsResponseLanguageVariantsValueSeries),
-  }),
-).annotate({
-  identifier: "CampaignActionMetricsResponseLanguageVariantsValue",
-}) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValue>;
+export const CampaignActionMetricsResponseLanguageVariantsValue =
+  BroadcastActionMetricsResponseLanguageVariantsValue as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsValue>;
 
 /** Metrics for each language variant of a multi-language message, keyed by the variant's action ID. Only returned when you request metrics for a multi-language branch action. */
 export type CampaignActionMetricsResponseLanguageVariantsMap = {
   [key: string]: CampaignActionMetricsResponseLanguageVariantsValue | undefined;
 };
-export const CampaignActionMetricsResponseLanguageVariantsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CampaignActionMetricsResponseLanguageVariantsValue,
-) as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsMap>;
+export const CampaignActionMetricsResponseLanguageVariantsMap =
+  BroadcastActionMetricsResponseLanguageVariantsMap as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsMap>;
 
 /** The number of `attempted` messages. */
 export type CampaignActionMetricsResponseMetricSeriesAttemptedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesAttemptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesAttemptedList>;
+export const CampaignActionMetricsResponseMetricSeriesAttemptedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type CampaignActionMetricsResponseMetricSeriesBouncedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesBouncedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesBouncedList>;
+export const CampaignActionMetricsResponseMetricSeriesBouncedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type CampaignActionMetricsResponseMetricSeriesClickedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesClickedList>;
+export const CampaignActionMetricsResponseMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type CampaignActionMetricsResponseMetricSeriesConvertedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesConvertedList>;
+export const CampaignActionMetricsResponseMetricSeriesConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type CampaignActionMetricsResponseMetricSeriesCreatedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesCreatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesCreatedList>;
+export const CampaignActionMetricsResponseMetricSeriesCreatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type CampaignActionMetricsResponseMetricSeriesDeferredList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesDeferredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDeferredList>;
+export const CampaignActionMetricsResponseMetricSeriesDeferredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type CampaignActionMetricsResponseMetricSeriesDeliveredList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesDeliveredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDeliveredList>;
+export const CampaignActionMetricsResponseMetricSeriesDeliveredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type CampaignActionMetricsResponseMetricSeriesDraftedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesDraftedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDraftedList>;
+export const CampaignActionMetricsResponseMetricSeriesDraftedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type CampaignActionMetricsResponseMetricSeriesFailedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesFailedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesFailedList>;
+export const CampaignActionMetricsResponseMetricSeriesFailedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesHumanClickedList>;
+export const CampaignActionMetricsResponseMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesHumanOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesHumanOpenedList>;
+export const CampaignActionMetricsResponseMetricSeriesHumanOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type CampaignActionMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesLinkUntrackedList>;
+export const CampaignActionMetricsResponseMetricSeriesLinkUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesMachineClickedList>;
+export const CampaignActionMetricsResponseMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type CampaignActionMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesOpenUntrackedList>;
+export const CampaignActionMetricsResponseMetricSeriesOpenUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type CampaignActionMetricsResponseMetricSeriesOpenedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesOpenedList>;
+export const CampaignActionMetricsResponseMetricSeriesOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList>;
+export const CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type CampaignActionMetricsResponseMetricSeriesRepliedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesRepliedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesRepliedList>;
+export const CampaignActionMetricsResponseMetricSeriesRepliedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type CampaignActionMetricsResponseMetricSeriesSentList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesSentList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSentList>;
+export const CampaignActionMetricsResponseMetricSeriesSentList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSentList>;
 
 /** The number of spam complaints. */
 export type CampaignActionMetricsResponseMetricSeriesSpammedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesSpammedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSpammedList>;
+export const CampaignActionMetricsResponseMetricSeriesSpammedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type CampaignActionMetricsResponseMetricSeriesSuppressedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesSuppressedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSuppressedList>;
+export const CampaignActionMetricsResponseMetricSeriesSuppressedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList>;
+export const CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
 export const CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
 export const CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type CampaignActionMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesUndeliverableList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUndeliverableList>;
+export const CampaignActionMetricsResponseMetricSeriesUndeliverableList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type CampaignActionMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUnsubscribedList>;
+export const CampaignActionMetricsResponseMetricSeriesUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type CampaignActionMetricsResponseMetricSeriesUntrackedList = Array<number>;
-export const CampaignActionMetricsResponseMetricSeriesUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUntrackedList>;
+export const CampaignActionMetricsResponseMetricSeriesUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface CampaignActionMetricsResponseMetricSeries {
@@ -2905,45 +2643,38 @@ export const CampaignJourneyMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** People who started a journey and were not filtered out before they experienced an action. */
 export type CampaignJourneyMetricsResponseJourneyMetricActivatedList = Array<number>;
-export const CampaignJourneyMetricsResponseJourneyMetricActivatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricActivatedList>;
+export const CampaignJourneyMetricsResponseJourneyMetricActivatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricActivatedList>;
 
 /** People who matched the conversion criteria for the automation. */
 export type CampaignJourneyMetricsResponseJourneyMetricConvertedList = Array<number>;
-export const CampaignJourneyMetricsResponseJourneyMetricConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricConvertedList>;
+export const CampaignJourneyMetricsResponseJourneyMetricConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricConvertedList>;
 
 /** People who started a journey but stopped meeting the automation trigger/filter criteria. */
 export type CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList = Array<number>;
-export const CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList>;
+export const CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList>;
 
 /** People who finished the journey. */
 export type CampaignJourneyMetricsResponseJourneyMetricFinishedList = Array<number>;
-export const CampaignJourneyMetricsResponseJourneyMetricFinishedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricFinishedList>;
+export const CampaignJourneyMetricsResponseJourneyMetricFinishedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricFinishedList>;
 
 /** People who experienced at least one non-delay action in the journey. This metric typically represents journeys in progress. */
 export type CampaignJourneyMetricsResponseJourneyMetricMessagedList = Array<number>;
-export const CampaignJourneyMetricsResponseJourneyMetricMessagedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricMessagedList>;
+export const CampaignJourneyMetricsResponseJourneyMetricMessagedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricMessagedList>;
 
 /** People who started a journey but were filtered out before they could experience any of the actions in the journey. */
 export type CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList = Array<number>;
-export const CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList>;
+export const CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList>;
 
 /** The total number of people who meet the trigger criteria for a journey. This count occurs before filters are applied. */
 export type CampaignJourneyMetricsResponseJourneyMetricStartedList = Array<number>;
-export const CampaignJourneyMetricsResponseJourneyMetricStartedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricStartedList>;
+export const CampaignJourneyMetricsResponseJourneyMetricStartedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricStartedList>;
 
 export interface CampaignJourneyMetricsResponseJourneyMetric {
   /** People who started a journey and were not filtered out before they experienced an action. */
@@ -3015,23 +2746,18 @@ export const CampaignLinkMetricsResponseLinksItemLink = BroadcastActionLinksResp
 
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type CampaignLinkMetricsResponseLinksItemMetricSeriesClickedList = Array<number>;
-export const CampaignLinkMetricsResponseLinksItemMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeriesClickedList>;
+export const CampaignLinkMetricsResponseLinksItemMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeriesClickedList>;
 
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignLinkMetricsResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
 export const CampaignLinkMetricsResponseLinksItemMetricSeriesHumanClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeriesHumanClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeriesHumanClickedList>;
 
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignLinkMetricsResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
 export const CampaignLinkMetricsResponseLinksItemMetricSeriesMachineClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeriesMachineClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeriesMachineClickedList>;
 
 export interface CampaignLinkMetricsResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
@@ -3041,57 +2767,33 @@ export interface CampaignLinkMetricsResponseLinksItemMetricSeries {
   /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: CampaignLinkMetricsResponseLinksItemMetricSeriesMachineClickedList;
 }
-export const CampaignLinkMetricsResponseLinksItemMetricSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clicked: S.optional(CampaignLinkMetricsResponseLinksItemMetricSeriesClickedList),
-    human_clicked: S.optional(CampaignLinkMetricsResponseLinksItemMetricSeriesHumanClickedList),
-    machine_clicked: S.optional(CampaignLinkMetricsResponseLinksItemMetricSeriesMachineClickedList),
-  }),
-).annotate({
-  identifier: "CampaignLinkMetricsResponseLinksItemMetricSeries",
-}) as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeries>;
+export const CampaignLinkMetricsResponseLinksItemMetricSeries =
+  CampaignActionLinksResponseLinksItemMetricSeries as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetricSeries>;
 
 /** Contains metrics for the link. */
 export interface CampaignLinkMetricsResponseLinksItemMetric {
   series?: CampaignLinkMetricsResponseLinksItemMetricSeries;
 }
-export const CampaignLinkMetricsResponseLinksItemMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    series: S.optional(CampaignLinkMetricsResponseLinksItemMetricSeries),
-  }),
-).annotate({
-  identifier: "CampaignLinkMetricsResponseLinksItemMetric",
-}) as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetric>;
+export const CampaignLinkMetricsResponseLinksItemMetric =
+  CampaignActionLinksResponseLinksItemMetric as any as S.Schema<CampaignLinkMetricsResponseLinksItemMetric>;
 
 export interface CampaignLinkMetricsResponseLinksItem {
   link?: BroadcastActionLinksResponseLinksItemLink;
   /** Contains metrics for the link. */
   metric?: CampaignLinkMetricsResponseLinksItemMetric;
 }
-export const CampaignLinkMetricsResponseLinksItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(BroadcastActionLinksResponseLinksItemLink),
-    metric: S.optional(CampaignLinkMetricsResponseLinksItemMetric),
-  }),
-).annotate({
-  identifier: "CampaignLinkMetricsResponseLinksItem",
-}) as any as S.Schema<CampaignLinkMetricsResponseLinksItem>;
+export const CampaignLinkMetricsResponseLinksItem =
+  CampaignActionLinksResponseLinksItem as any as S.Schema<CampaignLinkMetricsResponseLinksItem>;
 
 export type CampaignLinkMetricsResponseLinksList = Array<CampaignLinkMetricsResponseLinksItem>;
-export const CampaignLinkMetricsResponseLinksList = /*@__PURE__*/ S.Array(
-  CampaignLinkMetricsResponseLinksItem,
-) as any as S.Schema<CampaignLinkMetricsResponseLinksList>;
+export const CampaignLinkMetricsResponseLinksList =
+  CampaignActionLinksResponseLinksList as any as S.Schema<CampaignLinkMetricsResponseLinksList>;
 
 export interface CampaignLinkMetricsResponse {
   links?: CampaignLinkMetricsResponseLinksList;
 }
-export const CampaignLinkMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(CampaignLinkMetricsResponseLinksList),
-  }),
-).annotate({
-  identifier: "CampaignLinkMetricsResponse",
-}) as any as S.Schema<CampaignLinkMetricsResponse>;
+export const CampaignLinkMetricsResponse =
+  CampaignActionLinksResponse as any as S.Schema<CampaignLinkMetricsResponse>;
 
 export type CampaignMetricsRequestVersion = "1" | "2";
 export const CampaignMetricsRequestVersion = S.String;
@@ -3157,159 +2859,133 @@ export const CampaignMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The number of `attempted` messages. */
 export type CampaignMetricsResponseMetricSeriesAttemptedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesAttemptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesAttemptedList>;
+export const CampaignMetricsResponseMetricSeriesAttemptedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type CampaignMetricsResponseMetricSeriesBouncedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesBouncedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesBouncedList>;
+export const CampaignMetricsResponseMetricSeriesBouncedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type CampaignMetricsResponseMetricSeriesClickedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesClickedList>;
+export const CampaignMetricsResponseMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type CampaignMetricsResponseMetricSeriesConvertedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesConvertedList>;
+export const CampaignMetricsResponseMetricSeriesConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type CampaignMetricsResponseMetricSeriesCreatedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesCreatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesCreatedList>;
+export const CampaignMetricsResponseMetricSeriesCreatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type CampaignMetricsResponseMetricSeriesDeferredList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesDeferredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesDeferredList>;
+export const CampaignMetricsResponseMetricSeriesDeferredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type CampaignMetricsResponseMetricSeriesDeliveredList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesDeliveredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesDeliveredList>;
+export const CampaignMetricsResponseMetricSeriesDeliveredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type CampaignMetricsResponseMetricSeriesDraftedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesDraftedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesDraftedList>;
+export const CampaignMetricsResponseMetricSeriesDraftedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type CampaignMetricsResponseMetricSeriesFailedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesFailedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesFailedList>;
+export const CampaignMetricsResponseMetricSeriesFailedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesHumanClickedList>;
+export const CampaignMetricsResponseMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesHumanOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesHumanOpenedList>;
+export const CampaignMetricsResponseMetricSeriesHumanOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type CampaignMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesLinkUntrackedList>;
+export const CampaignMetricsResponseMetricSeriesLinkUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesMachineClickedList>;
+export const CampaignMetricsResponseMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type CampaignMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesOpenUntrackedList>;
+export const CampaignMetricsResponseMetricSeriesOpenUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type CampaignMetricsResponseMetricSeriesOpenedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesOpenedList>;
+export const CampaignMetricsResponseMetricSeriesOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type CampaignMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesPrefetchOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesPrefetchOpenedList>;
+export const CampaignMetricsResponseMetricSeriesPrefetchOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type CampaignMetricsResponseMetricSeriesRepliedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesRepliedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesRepliedList>;
+export const CampaignMetricsResponseMetricSeriesRepliedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type CampaignMetricsResponseMetricSeriesSentList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesSentList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesSentList>;
+export const CampaignMetricsResponseMetricSeriesSentList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesSentList>;
 
 /** The number of spam complaints. */
 export type CampaignMetricsResponseMetricSeriesSpammedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesSpammedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesSpammedList>;
+export const CampaignMetricsResponseMetricSeriesSpammedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type CampaignMetricsResponseMetricSeriesSuppressedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesSuppressedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesSuppressedList>;
+export const CampaignMetricsResponseMetricSeriesSuppressedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type CampaignMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesTopicUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesTopicUnsubscribedList>;
+export const CampaignMetricsResponseMetricSeriesTopicUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type CampaignMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesTrackingConsentDeniedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesTrackingConsentDeniedList>;
+export const CampaignMetricsResponseMetricSeriesTrackingConsentDeniedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type CampaignMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesTrackingConsentGrantedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesTrackingConsentGrantedList>;
+export const CampaignMetricsResponseMetricSeriesTrackingConsentGrantedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type CampaignMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesUndeliverableList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesUndeliverableList>;
+export const CampaignMetricsResponseMetricSeriesUndeliverableList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type CampaignMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesUnsubscribedList>;
+export const CampaignMetricsResponseMetricSeriesUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type CampaignMetricsResponseMetricSeriesUntrackedList = Array<number>;
-export const CampaignMetricsResponseMetricSeriesUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CampaignMetricsResponseMetricSeriesUntrackedList>;
+export const CampaignMetricsResponseMetricSeriesUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignMetricsResponseMetricSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface CampaignMetricsResponseMetricSeries {
@@ -3366,54 +3042,15 @@ export interface CampaignMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: CampaignMetricsResponseMetricSeriesUntrackedList;
 }
-export const CampaignMetricsResponseMetricSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempted: S.optional(CampaignMetricsResponseMetricSeriesAttemptedList),
-    bounced: S.optional(CampaignMetricsResponseMetricSeriesBouncedList),
-    clicked: S.optional(CampaignMetricsResponseMetricSeriesClickedList),
-    converted: S.optional(CampaignMetricsResponseMetricSeriesConvertedList),
-    created: S.optional(CampaignMetricsResponseMetricSeriesCreatedList),
-    deferred: S.optional(CampaignMetricsResponseMetricSeriesDeferredList),
-    delivered: S.optional(CampaignMetricsResponseMetricSeriesDeliveredList),
-    drafted: S.optional(CampaignMetricsResponseMetricSeriesDraftedList),
-    failed: S.optional(CampaignMetricsResponseMetricSeriesFailedList),
-    human_clicked: S.optional(CampaignMetricsResponseMetricSeriesHumanClickedList),
-    human_opened: S.optional(CampaignMetricsResponseMetricSeriesHumanOpenedList),
-    link_untracked: S.optional(CampaignMetricsResponseMetricSeriesLinkUntrackedList),
-    machine_clicked: S.optional(CampaignMetricsResponseMetricSeriesMachineClickedList),
-    open_untracked: S.optional(CampaignMetricsResponseMetricSeriesOpenUntrackedList),
-    opened: S.optional(CampaignMetricsResponseMetricSeriesOpenedList),
-    prefetch_opened: S.optional(CampaignMetricsResponseMetricSeriesPrefetchOpenedList),
-    replied: S.optional(CampaignMetricsResponseMetricSeriesRepliedList),
-    sent: S.optional(CampaignMetricsResponseMetricSeriesSentList),
-    spammed: S.optional(CampaignMetricsResponseMetricSeriesSpammedList),
-    suppressed: S.optional(CampaignMetricsResponseMetricSeriesSuppressedList),
-    topic_unsubscribed: S.optional(CampaignMetricsResponseMetricSeriesTopicUnsubscribedList),
-    tracking_consent_denied: S.optional(
-      CampaignMetricsResponseMetricSeriesTrackingConsentDeniedList,
-    ),
-    tracking_consent_granted: S.optional(
-      CampaignMetricsResponseMetricSeriesTrackingConsentGrantedList,
-    ),
-    undeliverable: S.optional(CampaignMetricsResponseMetricSeriesUndeliverableList),
-    unsubscribed: S.optional(CampaignMetricsResponseMetricSeriesUnsubscribedList),
-    untracked: S.optional(CampaignMetricsResponseMetricSeriesUntrackedList),
-  }),
-).annotate({
-  identifier: "CampaignMetricsResponseMetricSeries",
-}) as any as S.Schema<CampaignMetricsResponseMetricSeries>;
+export const CampaignMetricsResponseMetricSeries =
+  BroadcastMetricsResponseMetricSeries as any as S.Schema<CampaignMetricsResponseMetricSeries>;
 
 export interface CampaignMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: CampaignMetricsResponseMetricSeries;
 }
-export const CampaignMetricsResponseMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    series: S.optional(CampaignMetricsResponseMetricSeries),
-  }),
-).annotate({
-  identifier: "CampaignMetricsResponseMetric",
-}) as any as S.Schema<CampaignMetricsResponseMetric>;
+export const CampaignMetricsResponseMetric =
+  BroadcastMetricsResponseMetric as any as S.Schema<CampaignMetricsResponseMetric>;
 
 /** The resolution for metrics set in the request. */
 export type CampaignMetricsResponseRes =
@@ -3986,13 +3623,8 @@ export interface CreateEmailRequestTransformersPreventWidows {
   /** Enable widow word prevention. */
   enabled?: boolean;
 }
-export const CreateEmailRequestTransformersPreventWidows = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateEmailRequestTransformersPreventWidows",
-}) as any as S.Schema<CreateEmailRequestTransformersPreventWidows>;
+export const CreateEmailRequestTransformersPreventWidows =
+  CreateEmailRequestTransformersEncodeEntities as any as S.Schema<CreateEmailRequestTransformersPreventWidows>;
 
 export interface CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem {
   /** Opening delimiter. */
@@ -4020,9 +3652,8 @@ export const CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList =
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailRequestTransformersRemoveUnusedCssWhitelistList = Array<string>;
-export const CreateEmailRequestTransformersRemoveUnusedCssWhitelistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEmailRequestTransformersRemoveUnusedCssWhitelistList>;
+export const CreateEmailRequestTransformersRemoveUnusedCssWhitelistList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateEmailRequestTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailRequestTransformersRemoveUnusedCss {
@@ -4149,9 +3780,8 @@ export const CreateEmailRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type CreateEmailResponseEmailAvailableLanguagesList = Array<string>;
-export const CreateEmailResponseEmailAvailableLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEmailResponseEmailAvailableLanguagesList>;
+export const CreateEmailResponseEmailAvailableLanguagesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateEmailResponseEmailAvailableLanguagesList>;
 
 /** The content of your email. */
 export type CreateEmailResponseEmailContent = CreateEmailRequestContent;
@@ -4163,9 +3793,8 @@ export const CreateEmailResponseEmailEnvelopeHeadersItem = CreateEmailRequestEnv
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type CreateEmailResponseEmailEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-export const CreateEmailResponseEmailEnvelopeHeadersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestEnvelopeHeadersItem,
-) as any as S.Schema<CreateEmailResponseEmailEnvelopeHeadersList>;
+export const CreateEmailResponseEmailEnvelopeHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<CreateEmailResponseEmailEnvelopeHeadersList>;
 
 export interface CreateEmailResponseEmailEnvelope {
   /** BCC email address. */
@@ -4326,9 +3955,7 @@ export const CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersIt
 export type CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList = Array<string>;
@@ -4484,9 +4111,8 @@ export const CreateEmailTranslationRequestEnvelopeHeadersItem =
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type CreateEmailTranslationRequestEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-export const CreateEmailTranslationRequestEnvelopeHeadersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestEnvelopeHeadersItem,
-) as any as S.Schema<CreateEmailTranslationRequestEnvelopeHeadersList>;
+export const CreateEmailTranslationRequestEnvelopeHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<CreateEmailTranslationRequestEnvelopeHeadersList>;
 
 /** The envelope of your email, like from and to addresses. */
 export interface CreateEmailTranslationRequestEnvelope {
@@ -4503,18 +4129,8 @@ export interface CreateEmailTranslationRequestEnvelope {
   /** Reply-to identity ID. Must reference an existing identity from *Workspace Settings > Email* under your From Addresses. */
   reply_to_id?: number | null;
 }
-export const CreateEmailTranslationRequestEnvelope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from_id: S.optional(S.NullOr(S.Number)),
-    headers: S.optional(CreateEmailTranslationRequestEnvelopeHeadersList),
-    recipient: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "CreateEmailTranslationRequestEnvelope",
-}) as any as S.Schema<CreateEmailTranslationRequestEnvelope>;
+export const CreateEmailTranslationRequestEnvelope =
+  CreateEmailRequestEnvelope as any as S.Schema<CreateEmailTranslationRequestEnvelope>;
 
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type CreateEmailTranslationRequestTransformersAccessibility =
@@ -4651,16 +4267,12 @@ export const CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMark
 export type CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList = Array<string>;
 export const CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailTranslationRequestTransformersRemoveUnusedCss {
@@ -4696,9 +4308,7 @@ export const CreateEmailTranslationRequestTransformersUrlParametersParametersIte
 export type CreateEmailTranslationRequestTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
 export const CreateEmailTranslationRequestTransformersUrlParametersParametersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersUrlParametersParametersItem,
-  ) as any as S.Schema<CreateEmailTranslationRequestTransformersUrlParametersParametersList>;
+  CreateEmailResponseEmailTransformersUrlParametersParametersList as any as S.Schema<CreateEmailTranslationRequestTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface CreateEmailTranslationRequestTransformersUrlParameters {
@@ -4707,14 +4317,8 @@ export interface CreateEmailTranslationRequestTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: CreateEmailTranslationRequestTransformersUrlParametersParametersList;
 }
-export const CreateEmailTranslationRequestTransformersUrlParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    parameters: S.optional(CreateEmailTranslationRequestTransformersUrlParametersParametersList),
-  }),
-).annotate({
-  identifier: "CreateEmailTranslationRequestTransformersUrlParameters",
-}) as any as S.Schema<CreateEmailTranslationRequestTransformersUrlParameters>;
+export const CreateEmailTranslationRequestTransformersUrlParameters =
+  CreateEmailResponseEmailTransformersUrlParameters as any as S.Schema<CreateEmailTranslationRequestTransformersUrlParameters>;
 
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface CreateEmailTranslationRequestTransformers {
@@ -4777,9 +4381,7 @@ export const CreateEmailTranslationRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList = Array<string>;
 export const CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList>;
 
 /** The content of your email. */
 export type CreateEmailTranslationResponseEmailTranslationContent = CreateEmailRequestContent;
@@ -4970,17 +4572,13 @@ export const CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnu
 export type CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList =
   Array<string>;
 export const CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss {
@@ -5018,9 +4616,7 @@ export const CreateEmailTranslationResponseEmailTranslationTransformersUrlParame
 export type CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
 export const CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersUrlParametersParametersItem,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList>;
+  CreateEmailResponseEmailTransformersUrlParametersParametersList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters {
@@ -5206,10 +4802,8 @@ export const CreateManSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
 export type CreateManSegmentResponseSegmentConditionsMap = { [key: string]: unknown | undefined };
-export const CreateManSegmentResponseSegmentConditionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateManSegmentResponseSegmentConditionsMap>;
+export const CreateManSegmentResponseSegmentConditionsMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<CreateManSegmentResponseSegmentConditionsMap>;
 
 /** The segment's build state. The state is `build` while Customer.io calculates who belongs to the segment, and `finished` when membership is up to date. */
 export type CreateManSegmentResponseSegmentState = "build" | "finished";
@@ -5217,9 +4811,8 @@ export const CreateManSegmentResponseSegmentState = S.String;
 
 /** The tags assigned to the segment, if any. Tags may help you sort through your segments. */
 export type CreateManSegmentResponseSegmentTagsList = Array<string>;
-export const CreateManSegmentResponseSegmentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateManSegmentResponseSegmentTagsList>;
+export const CreateManSegmentResponseSegmentTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateManSegmentResponseSegmentTagsList>;
 
 /** The type of segment. */
 export type CreateManSegmentResponseSegmentType = "dynamic" | "manual";
@@ -5318,9 +4911,8 @@ export const CreateNewsletterRequestBodyCase0RecipientsAttribute = /*@__PURE__*/
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase0RecipientsOrList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase0RecipientsOrList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase0RecipientsOrList>;
+export const CreateNewsletterRequestBodyCase0RecipientsOrList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase0RecipientsOrList>;
 
 /** A segment condition. */
 export interface CreateNewsletterRequestBodyCase0RecipientsSegment {
@@ -5362,9 +4954,8 @@ export const CreateNewsletterRequestBodyCase0Recipients = /*@__PURE__*/ S.suspen
 
 /** The IDs of the tags you want to apply to the one-time send. Each tag must already exist. */
 export type CreateNewsletterRequestBodyCase0TagIdsList = Array<number>;
-export const CreateNewsletterRequestBodyCase0TagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterRequestBodyCase0TagIdsList>;
+export const CreateNewsletterRequestBodyCase0TagIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterRequestBodyCase0TagIdsList>;
 
 /** When you create an email, include `subject` and `body`. Set either `from` or `from_id`, but not both. If you set neither, Customer.io uses your oldest verified sending address. */
 export interface CreateNewsletterRequestBodyCase0 {
@@ -5446,9 +5037,8 @@ export const CreateNewsletterRequestBodyCase1RateLimitTimePeriod = S.Number;
 
 /** An array of conditions that must all be true. */
 export type CreateNewsletterRequestBodyCase1RecipientsAndList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase1RecipientsAndList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase1RecipientsAndList>;
+export const CreateNewsletterRequestBodyCase1RecipientsAndList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase1RecipientsAndList>;
 
 /** The comparison operator. */
 export type CreateNewsletterRequestBodyCase1RecipientsAttributeOperator = "eq" | "exists";
@@ -5478,9 +5068,8 @@ export const CreateNewsletterRequestBodyCase1RecipientsAttribute = /*@__PURE__*/
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase1RecipientsOrList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase1RecipientsOrList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase1RecipientsOrList>;
+export const CreateNewsletterRequestBodyCase1RecipientsOrList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase1RecipientsOrList>;
 
 /** A segment condition. */
 export type CreateNewsletterRequestBodyCase1RecipientsSegment =
@@ -5515,9 +5104,8 @@ export const CreateNewsletterRequestBodyCase1Recipients = /*@__PURE__*/ S.suspen
 
 /** The IDs of the tags you want to apply to the one-time send. Each tag must already exist. */
 export type CreateNewsletterRequestBodyCase1TagIdsList = Array<number>;
-export const CreateNewsletterRequestBodyCase1TagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterRequestBodyCase1TagIdsList>;
+export const CreateNewsletterRequestBodyCase1TagIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterRequestBodyCase1TagIdsList>;
 
 /** When creating an SMS text, you must include `body`. */
 export interface CreateNewsletterRequestBodyCase1 {
@@ -5581,9 +5169,8 @@ export const CreateNewsletterRequestBodyCase2RateLimitTimePeriod = S.Number;
 
 /** An array of conditions that must all be true. */
 export type CreateNewsletterRequestBodyCase2RecipientsAndList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase2RecipientsAndList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase2RecipientsAndList>;
+export const CreateNewsletterRequestBodyCase2RecipientsAndList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase2RecipientsAndList>;
 
 /** The comparison operator. */
 export type CreateNewsletterRequestBodyCase2RecipientsAttributeOperator = "eq" | "exists";
@@ -5613,9 +5200,8 @@ export const CreateNewsletterRequestBodyCase2RecipientsAttribute = /*@__PURE__*/
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase2RecipientsOrList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase2RecipientsOrList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase2RecipientsOrList>;
+export const CreateNewsletterRequestBodyCase2RecipientsOrList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase2RecipientsOrList>;
 
 /** A segment condition. */
 export type CreateNewsletterRequestBodyCase2RecipientsSegment =
@@ -5650,9 +5236,8 @@ export const CreateNewsletterRequestBodyCase2Recipients = /*@__PURE__*/ S.suspen
 
 /** The IDs of the tags you want to apply to the one-time send. Each tag must already exist. */
 export type CreateNewsletterRequestBodyCase2TagIdsList = Array<number>;
-export const CreateNewsletterRequestBodyCase2TagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterRequestBodyCase2TagIdsList>;
+export const CreateNewsletterRequestBodyCase2TagIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterRequestBodyCase2TagIdsList>;
 
 /** For push notifications, you must provide at least one of `subject` or `body`. */
 export interface CreateNewsletterRequestBodyCase2 {
@@ -5719,9 +5304,8 @@ export const CreateNewsletterRequestBodyCase3RateLimitTimePeriod = S.Number;
 
 /** An array of conditions that must all be true. */
 export type CreateNewsletterRequestBodyCase3RecipientsAndList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase3RecipientsAndList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase3RecipientsAndList>;
+export const CreateNewsletterRequestBodyCase3RecipientsAndList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase3RecipientsAndList>;
 
 /** The comparison operator. */
 export type CreateNewsletterRequestBodyCase3RecipientsAttributeOperator = "eq" | "exists";
@@ -5751,9 +5335,8 @@ export const CreateNewsletterRequestBodyCase3RecipientsAttribute = /*@__PURE__*/
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase3RecipientsOrList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase3RecipientsOrList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase3RecipientsOrList>;
+export const CreateNewsletterRequestBodyCase3RecipientsOrList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase3RecipientsOrList>;
 
 /** A segment condition. */
 export type CreateNewsletterRequestBodyCase3RecipientsSegment =
@@ -5788,9 +5371,8 @@ export const CreateNewsletterRequestBodyCase3Recipients = /*@__PURE__*/ S.suspen
 
 /** The IDs of the tags you want to apply to the one-time send. Each tag must already exist. */
 export type CreateNewsletterRequestBodyCase3TagIdsList = Array<number>;
-export const CreateNewsletterRequestBodyCase3TagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterRequestBodyCase3TagIdsList>;
+export const CreateNewsletterRequestBodyCase3TagIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterRequestBodyCase3TagIdsList>;
 
 /** For in-app messages, you must include `body_json`. */
 export interface CreateNewsletterRequestBodyCase3 {
@@ -5863,9 +5445,8 @@ export const CreateNewsletterRequestBodyCase4RateLimitTimePeriod = S.Number;
 
 /** An array of conditions that must all be true. */
 export type CreateNewsletterRequestBodyCase4RecipientsAndList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase4RecipientsAndList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase4RecipientsAndList>;
+export const CreateNewsletterRequestBodyCase4RecipientsAndList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase4RecipientsAndList>;
 
 /** The comparison operator. */
 export type CreateNewsletterRequestBodyCase4RecipientsAttributeOperator = "eq" | "exists";
@@ -5895,9 +5476,8 @@ export const CreateNewsletterRequestBodyCase4RecipientsAttribute = /*@__PURE__*/
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase4RecipientsOrList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase4RecipientsOrList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase4RecipientsOrList>;
+export const CreateNewsletterRequestBodyCase4RecipientsOrList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase4RecipientsOrList>;
 
 /** A segment condition. */
 export type CreateNewsletterRequestBodyCase4RecipientsSegment =
@@ -5932,9 +5512,8 @@ export const CreateNewsletterRequestBodyCase4Recipients = /*@__PURE__*/ S.suspen
 
 /** The IDs of the tags you want to apply to the one-time send. Each tag must already exist. */
 export type CreateNewsletterRequestBodyCase4TagIdsList = Array<number>;
-export const CreateNewsletterRequestBodyCase4TagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterRequestBodyCase4TagIdsList>;
+export const CreateNewsletterRequestBodyCase4TagIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterRequestBodyCase4TagIdsList>;
 
 /** For webhooks, you must include `body`, `request_method`, and `url`. */
 export interface CreateNewsletterRequestBodyCase4 {
@@ -6004,9 +5583,8 @@ export const CreateNewsletterRequestBodyCase5RateLimitTimePeriod = S.Number;
 
 /** An array of conditions that must all be true. */
 export type CreateNewsletterRequestBodyCase5RecipientsAndList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase5RecipientsAndList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase5RecipientsAndList>;
+export const CreateNewsletterRequestBodyCase5RecipientsAndList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase5RecipientsAndList>;
 
 /** The comparison operator. */
 export type CreateNewsletterRequestBodyCase5RecipientsAttributeOperator = "eq" | "exists";
@@ -6036,9 +5614,8 @@ export const CreateNewsletterRequestBodyCase5RecipientsAttribute = /*@__PURE__*/
 
 /** An array of conditions where at least one must be true. On this endpoint, `or` arrays can contain only segment conditions. */
 export type CreateNewsletterRequestBodyCase5RecipientsOrList = Array<unknown>;
-export const CreateNewsletterRequestBodyCase5RecipientsOrList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateNewsletterRequestBodyCase5RecipientsOrList>;
+export const CreateNewsletterRequestBodyCase5RecipientsOrList =
+  CreateNewsletterRequestBodyCase0RecipientsAndList as any as S.Schema<CreateNewsletterRequestBodyCase5RecipientsOrList>;
 
 /** A segment condition. */
 export type CreateNewsletterRequestBodyCase5RecipientsSegment =
@@ -6073,9 +5650,8 @@ export const CreateNewsletterRequestBodyCase5Recipients = /*@__PURE__*/ S.suspen
 
 /** The IDs of the tags you want to apply to the one-time send. Each tag must already exist. */
 export type CreateNewsletterRequestBodyCase5TagIdsList = Array<number>;
-export const CreateNewsletterRequestBodyCase5TagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterRequestBodyCase5TagIdsList>;
+export const CreateNewsletterRequestBodyCase5TagIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterRequestBodyCase5TagIdsList>;
 
 /** For inbox messages, you must include `body_json`. */
 export interface CreateNewsletterRequestBodyCase5 {
@@ -6150,9 +5726,8 @@ export const CreateNewsletterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterResponseNewsletterContentIdsList = Array<number>;
-export const CreateNewsletterResponseNewsletterContentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterResponseNewsletterContentIdsList>;
+export const CreateNewsletterResponseNewsletterContentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterResponseNewsletterContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterResponseNewsletterRecipientFileStatus =
@@ -6164,9 +5739,8 @@ export const CreateNewsletterResponseNewsletterRecipientFileStatus = S.String;
 
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type CreateNewsletterResponseNewsletterRecipientSegmentIdsList = Array<number>;
-export const CreateNewsletterResponseNewsletterRecipientSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterResponseNewsletterRecipientSegmentIdsList>;
+export const CreateNewsletterResponseNewsletterRecipientSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterResponseNewsletterRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterResponseNewsletterSendState =
@@ -6182,9 +5756,8 @@ export const CreateNewsletterResponseNewsletterSendState = S.String;
 
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterResponseNewsletterTagsList = Array<string>;
-export const CreateNewsletterResponseNewsletterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNewsletterResponseNewsletterTagsList>;
+export const CreateNewsletterResponseNewsletterTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterResponseNewsletterTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterResponseNewsletterType =
@@ -6338,14 +5911,8 @@ export interface CreateNewsletterLanguageVariantRequestBodyCase3 {
   /** The [language tag](/journeys/channels/localization/attribute/#supported-languages) for the new variant, e.g. `es`, `fr`, `de`. */
   language: string;
 }
-export const CreateNewsletterLanguageVariantRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.String,
-    language: S.String,
-  }),
-).annotate({
-  identifier: "CreateNewsletterLanguageVariantRequestBodyCase3",
-}) as any as S.Schema<CreateNewsletterLanguageVariantRequestBodyCase3>;
+export const CreateNewsletterLanguageVariantRequestBodyCase3 =
+  CreateNewsletterLanguageVariantRequestBodyCase1 as any as S.Schema<CreateNewsletterLanguageVariantRequestBodyCase3>;
 
 /** Add a language variant to an inbox message one-time send. Requires `language` and `body_json`. */
 export interface CreateNewsletterLanguageVariantRequestBodyCase4 {
@@ -6390,9 +5957,7 @@ export const CreateNewsletterLanguageVariantRequest = /*@__PURE__*/ S.suspend(()
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterLanguageVariantResponseNewsletterContentIdsList = Array<number>;
 export const CreateNewsletterLanguageVariantResponseNewsletterContentIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterContentIdsList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterLanguageVariantResponseNewsletterRecipientFileStatus =
@@ -6406,9 +5971,7 @@ export const CreateNewsletterLanguageVariantResponseNewsletterRecipientFileStatu
 export type CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList =
   Array<number>;
 export const CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterLanguageVariantResponseNewsletterSendState =
@@ -6424,9 +5987,8 @@ export const CreateNewsletterLanguageVariantResponseNewsletterSendState = S.Stri
 
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterLanguageVariantResponseNewsletterTagsList = Array<string>;
-export const CreateNewsletterLanguageVariantResponseNewsletterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterTagsList>;
+export const CreateNewsletterLanguageVariantResponseNewsletterTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterLanguageVariantResponseNewsletterType =
@@ -6532,9 +6094,8 @@ export const CreateNewsletterTestGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterTestGroupResponseNewsletterContentIdsList = Array<number>;
-export const CreateNewsletterTestGroupResponseNewsletterContentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterContentIdsList>;
+export const CreateNewsletterTestGroupResponseNewsletterContentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterTestGroupResponseNewsletterRecipientFileStatus =
@@ -6547,9 +6108,7 @@ export const CreateNewsletterTestGroupResponseNewsletterRecipientFileStatus = S.
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList = Array<number>;
 export const CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterTestGroupResponseNewsletterSendState =
@@ -6565,9 +6124,8 @@ export const CreateNewsletterTestGroupResponseNewsletterSendState = S.String;
 
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterTestGroupResponseNewsletterTagsList = Array<string>;
-export const CreateNewsletterTestGroupResponseNewsletterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterTagsList>;
+export const CreateNewsletterTestGroupResponseNewsletterTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterTestGroupResponseNewsletterType =
@@ -6723,9 +6281,7 @@ export const CreateNewsletterTestLanguageVariantRequest = /*@__PURE__*/ S.suspen
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList = Array<number>;
 export const CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterRecipientFileStatus =
@@ -6739,9 +6295,7 @@ export const CreateNewsletterTestLanguageVariantResponseNewsletterRecipientFileS
 export type CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList =
   Array<number>;
 export const CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterSendState =
@@ -6757,9 +6311,8 @@ export const CreateNewsletterTestLanguageVariantResponseNewsletterSendState = S.
 
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterTagsList = Array<string>;
-export const CreateNewsletterTestLanguageVariantResponseNewsletterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterTagsList>;
+export const CreateNewsletterTestLanguageVariantResponseNewsletterTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterType =
@@ -7139,9 +6692,8 @@ export const DeleteAssetFolderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAssetFolderRequest" }) as any as S.Schema<DeleteAssetFolderRequest>;
 
 export interface DeleteAssetFolderResponse {}
-export const DeleteAssetFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssetFolderResponse",
-}) as any as S.Schema<DeleteAssetFolderResponse>;
+export const DeleteAssetFolderResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteAssetFolderResponse>;
 
 export interface DeleteCollectionRequest {
   /** The identifier for a collection. */
@@ -7154,9 +6706,8 @@ export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCollectionRequest" }) as any as S.Schema<DeleteCollectionRequest>;
 
 export interface DeleteCollectionResponse {}
-export const DeleteCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCollectionResponse",
-}) as any as S.Schema<DeleteCollectionResponse>;
+export const DeleteCollectionResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteCollectionResponse>;
 
 export interface DeleteComponentRequest {
   /** The UUID of the component. */
@@ -7169,9 +6720,8 @@ export const DeleteComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteComponentRequest" }) as any as S.Schema<DeleteComponentRequest>;
 
 export interface DeleteComponentResponse {}
-export const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteComponentResponse",
-}) as any as S.Schema<DeleteComponentResponse>;
+export const DeleteComponentResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteComponentResponse>;
 
 export interface DeleteEmailRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
@@ -7184,9 +6734,7 @@ export const DeleteEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmailRequest" }) as any as S.Schema<DeleteEmailRequest>;
 
 export interface DeleteEmailResponse {}
-export const DeleteEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailResponse",
-}) as any as S.Schema<DeleteEmailResponse>;
+export const DeleteEmailResponse = DeleteAssetResponse as any as S.Schema<DeleteEmailResponse>;
 
 export interface DeleteEmailTranslationRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
@@ -7210,9 +6758,8 @@ export const DeleteEmailTranslationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmailTranslationRequest>;
 
 export interface DeleteEmailTranslationResponse {}
-export const DeleteEmailTranslationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailTranslationResponse",
-}) as any as S.Schema<DeleteEmailTranslationResponse>;
+export const DeleteEmailTranslationResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteEmailTranslationResponse>;
 
 export interface DeleteFolderRequest {
   /** The UUID of the folder. */
@@ -7225,9 +6772,7 @@ export const DeleteFolderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFolderRequest" }) as any as S.Schema<DeleteFolderRequest>;
 
 export interface DeleteFolderResponse {}
-export const DeleteFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFolderResponse",
-}) as any as S.Schema<DeleteFolderResponse>;
+export const DeleteFolderResponse = DeleteAssetResponse as any as S.Schema<DeleteFolderResponse>;
 
 export interface DeleteManSegmentRequest {
   /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
@@ -7240,9 +6785,8 @@ export const DeleteManSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteManSegmentRequest" }) as any as S.Schema<DeleteManSegmentRequest>;
 
 export interface DeleteManSegmentResponse {}
-export const DeleteManSegmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteManSegmentResponse",
-}) as any as S.Schema<DeleteManSegmentResponse>;
+export const DeleteManSegmentResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteManSegmentResponse>;
 
 export interface DeleteNewsletterLanguageVariantRequest {
   /** The identifier of a one-time send. */
@@ -7283,9 +6827,8 @@ export const DeleteNewslettersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNewslettersRequest" }) as any as S.Schema<DeleteNewslettersRequest>;
 
 export interface DeleteNewslettersResponse {}
-export const DeleteNewslettersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNewslettersResponse",
-}) as any as S.Schema<DeleteNewslettersResponse>;
+export const DeleteNewslettersResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteNewslettersResponse>;
 
 export interface DeleteNewsletterTestLanguageVariantRequest {
   /** The identifier of a one-time send. */
@@ -7312,11 +6855,8 @@ export const DeleteNewsletterTestLanguageVariantRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteNewsletterTestLanguageVariantRequest>;
 
 export interface DeleteNewsletterTestLanguageVariantResponse {}
-export const DeleteNewsletterTestLanguageVariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNewsletterTestLanguageVariantResponse",
-}) as any as S.Schema<DeleteNewsletterTestLanguageVariantResponse>;
+export const DeleteNewsletterTestLanguageVariantResponse =
+  DeleteNewsletterLanguageVariantResponse as any as S.Schema<DeleteNewsletterTestLanguageVariantResponse>;
 
 export interface DeleteSnippetRequest {
   /** The name of a snippet. */
@@ -7329,9 +6869,7 @@ export const DeleteSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSnippetRequest" }) as any as S.Schema<DeleteSnippetRequest>;
 
 export interface DeleteSnippetResponse {}
-export const DeleteSnippetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSnippetResponse",
-}) as any as S.Schema<DeleteSnippetResponse>;
+export const DeleteSnippetResponse = DeleteAssetResponse as any as S.Schema<DeleteSnippetResponse>;
 
 export type DeleteSuppressionRequestSuppressionType =
   | "blocks"
@@ -7360,9 +6898,8 @@ export const DeleteSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSuppressionRequest" }) as any as S.Schema<DeleteSuppressionRequest>;
 
 export interface DeleteSuppressionResponse {}
-export const DeleteSuppressionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSuppressionResponse",
-}) as any as S.Schema<DeleteSuppressionResponse>;
+export const DeleteSuppressionResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteSuppressionResponse>;
 
 export interface DeleteVersionRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
@@ -7384,9 +6921,7 @@ export const DeleteVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVersionRequest" }) as any as S.Schema<DeleteVersionRequest>;
 
 export interface DeleteVersionResponse {}
-export const DeleteVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVersionResponse",
-}) as any as S.Schema<DeleteVersionResponse>;
+export const DeleteVersionResponse = DeleteAssetResponse as any as S.Schema<DeleteVersionResponse>;
 
 export interface DeleteWebhookRequest {
   /** The identifier of a webhook. */
@@ -7399,9 +6934,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse = DeleteAssetResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DownloadExportRequest {
   /** The export_id you want to access. */
@@ -7425,17 +6958,13 @@ export const DownloadExportResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Static activity fields, for renderers that need them alongside the content state. */
 export type EndLiveNotificationRequestAttributesMap = { [key: string]: unknown | undefined };
-export const EndLiveNotificationRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EndLiveNotificationRequestAttributesMap>;
+export const EndLiveNotificationRequestAttributesMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<EndLiveNotificationRequestAttributesMap>;
 
 /** Your own dynamic fields. On iOS, field names must match your `ContentState` type. For Android custom types, fields pass through to your app's renderer as-is. Date fields are epoch seconds. */
 export type EndLiveNotificationRequestContentStateCase0Map = { [key: string]: unknown | undefined };
-export const EndLiveNotificationRequestContentStateCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EndLiveNotificationRequestContentStateCase0Map>;
+export const EndLiveNotificationRequestContentStateCase0Map =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<EndLiveNotificationRequestContentStateCase0Map>;
 
 /** Dynamic fields for the multi-step tracker template. `notification_type`: `io.customer.livenotifications.segments`. */
 export interface EndLiveNotificationRequestContentStateCase1 {
@@ -7557,9 +7086,8 @@ export const EndLiveNotificationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Recipient attributes you want to include as extra columns in your export. You can't include event or trigger properties. */
 export type ExportDeliveriesDataRequestBodyCase0AttributesList = Array<string>;
-export const ExportDeliveriesDataRequestBodyCase0AttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportDeliveriesDataRequestBodyCase0AttributesList>;
+export const ExportDeliveriesDataRequestBodyCase0AttributesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ExportDeliveriesDataRequestBodyCase0AttributesList>;
 
 /** Determines the metric(s) you want to return. */
 export type ExportDeliveriesDataRequestBodyCase0Metric =
@@ -7611,9 +7139,8 @@ export const ExportDeliveriesDataRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =
 
 /** Recipient attributes you want to include as extra columns in your export. You can't include event or trigger properties. */
 export type ExportDeliveriesDataRequestBodyCase1AttributesList = Array<string>;
-export const ExportDeliveriesDataRequestBodyCase1AttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportDeliveriesDataRequestBodyCase1AttributesList>;
+export const ExportDeliveriesDataRequestBodyCase1AttributesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ExportDeliveriesDataRequestBodyCase1AttributesList>;
 
 /** Determines the metric(s) you want to return. */
 export type ExportDeliveriesDataRequestBodyCase1Metric =
@@ -7665,9 +7192,8 @@ export const ExportDeliveriesDataRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =
 
 /** Recipient attributes you want to include as extra columns in your export. You can't include event or trigger properties. */
 export type ExportDeliveriesDataRequestBodyCase2AttributesList = Array<string>;
-export const ExportDeliveriesDataRequestBodyCase2AttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportDeliveriesDataRequestBodyCase2AttributesList>;
+export const ExportDeliveriesDataRequestBodyCase2AttributesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ExportDeliveriesDataRequestBodyCase2AttributesList>;
 
 /** Determines the metric(s) you want to return. */
 export type ExportDeliveriesDataRequestBodyCase2Metric =
@@ -7719,9 +7245,8 @@ export const ExportDeliveriesDataRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =
 
 /** Recipient attributes you want to include as extra columns in your export. You can't include event or trigger properties. */
 export type ExportDeliveriesDataRequestBodyCase3AttributesList = Array<string>;
-export const ExportDeliveriesDataRequestBodyCase3AttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportDeliveriesDataRequestBodyCase3AttributesList>;
+export const ExportDeliveriesDataRequestBodyCase3AttributesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ExportDeliveriesDataRequestBodyCase3AttributesList>;
 
 /** Determines the metric(s) you want to return. */
 export type ExportDeliveriesDataRequestBodyCase3Metric =
@@ -9550,9 +9075,8 @@ export const ExportPeopleDataRequestFilters =
 
 /** Recipient attributes you want to include as extra columns in your export. */
 export type ExportPeopleDataRequestAttributesList = Array<string>;
-export const ExportPeopleDataRequestAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportPeopleDataRequestAttributesList>;
+export const ExportPeopleDataRequestAttributesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ExportPeopleDataRequestAttributesList>;
 
 export interface ExportPeopleDataRequest {
   /** Use `and`, `or`, and `not` to combine segment and attribute conditions. The top-level object accepts one property; nest groups for complex filters. */
@@ -9732,11 +9256,7 @@ export const GetAssetResponseAsset = CreateAssetResponseAsset;
 export interface GetAssetResponse {
   asset?: CreateAssetResponseAsset;
 }
-export const GetAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asset: S.optional(CreateAssetResponseAsset),
-  }),
-).annotate({ identifier: "GetAssetResponse" }) as any as S.Schema<GetAssetResponse>;
+export const GetAssetResponse = CreateAssetResponse as any as S.Schema<GetAssetResponse>;
 
 export interface GetAssetFolderRequest {
   /** The unique identifier of the resource. */
@@ -9838,9 +9358,8 @@ export const GetBroadcastResponseBroadcastState = S.String;
 
 /** An array of tags you set on this broadcast. */
 export type GetBroadcastResponseBroadcastTagsList = Array<string>;
-export const GetBroadcastResponseBroadcastTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBroadcastResponseBroadcastTagsList>;
+export const GetBroadcastResponseBroadcastTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetBroadcastResponseBroadcastTagsList>;
 
 /** The type of broadcast. */
 export type GetBroadcastResponseBroadcastType = "triggered_broadcast";
@@ -11373,10 +10892,8 @@ export const GetCampaignMessagesResponseMessagesItemTrackedResponsesValue =
 export type GetCampaignMessagesResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-export const GetCampaignMessagesResponseMessagesItemTrackedResponsesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BroadcastMessagesResponseMessagesItemTrackedResponsesValue,
-) as any as S.Schema<GetCampaignMessagesResponseMessagesItemTrackedResponsesMap>;
+export const GetCampaignMessagesResponseMessagesItemTrackedResponsesMap =
+  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<GetCampaignMessagesResponseMessagesItemTrackedResponsesMap>;
 
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type GetCampaignMessagesResponseMessagesItemType =
@@ -11508,9 +11025,8 @@ export const GetCampaignsResponseCampaignCase0ActionsList = /*@__PURE__*/ S.Arra
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type GetCampaignsResponseCampaignCase0FilterSegmentIdsList = Array<number>;
-export const GetCampaignsResponseCampaignCase0FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetCampaignsResponseCampaignCase0FilterSegmentIdsList>;
+export const GetCampaignsResponseCampaignCase0FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetCampaignsResponseCampaignCase0FilterSegmentIdsList>;
 
 /** The message type the template represents. */
 export type GetCampaignsResponseCampaignCase0MsgTemplatesItemType =
@@ -11548,15 +11064,13 @@ export const GetCampaignsResponseCampaignCase0State = S.String;
 
 /** An array of tags you set on this automation. */
 export type GetCampaignsResponseCampaignCase0TagsList = Array<string>;
-export const GetCampaignsResponseCampaignCase0TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCampaignsResponseCampaignCase0TagsList>;
+export const GetCampaignsResponseCampaignCase0TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCampaignsResponseCampaignCase0TagsList>;
 
 /** A list of segments used in the automation trigger, returned if the automation trigger included one or more segment conditions. */
 export type GetCampaignsResponseCampaignCase0TriggerSegmentIdsList = Array<number>;
-export const GetCampaignsResponseCampaignCase0TriggerSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetCampaignsResponseCampaignCase0TriggerSegmentIdsList>;
+export const GetCampaignsResponseCampaignCase0TriggerSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetCampaignsResponseCampaignCase0TriggerSegmentIdsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type GetCampaignsResponseCampaignCase0Type = "segment";
@@ -11624,15 +11138,13 @@ export const GetCampaignsResponseCampaignCase1ActionsItem =
 /** An array of actions contained within the automation. */
 export type GetCampaignsResponseCampaignCase1ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const GetCampaignsResponseCampaignCase1ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<GetCampaignsResponseCampaignCase1ActionsList>;
+export const GetCampaignsResponseCampaignCase1ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<GetCampaignsResponseCampaignCase1ActionsList>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type GetCampaignsResponseCampaignCase1FilterSegmentIdsList = Array<number>;
-export const GetCampaignsResponseCampaignCase1FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetCampaignsResponseCampaignCase1FilterSegmentIdsList>;
+export const GetCampaignsResponseCampaignCase1FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetCampaignsResponseCampaignCase1FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type GetCampaignsResponseCampaignCase1State = "running" | "draft" | "stopped";
@@ -11640,9 +11152,8 @@ export const GetCampaignsResponseCampaignCase1State = S.String;
 
 /** An array of tags you set on this automation. */
 export type GetCampaignsResponseCampaignCase1TagsList = Array<string>;
-export const GetCampaignsResponseCampaignCase1TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCampaignsResponseCampaignCase1TagsList>;
+export const GetCampaignsResponseCampaignCase1TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCampaignsResponseCampaignCase1TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type GetCampaignsResponseCampaignCase1Type = "event";
@@ -11707,15 +11218,13 @@ export const GetCampaignsResponseCampaignCase2ActionsItem =
 /** An array of actions contained within the automation. */
 export type GetCampaignsResponseCampaignCase2ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const GetCampaignsResponseCampaignCase2ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<GetCampaignsResponseCampaignCase2ActionsList>;
+export const GetCampaignsResponseCampaignCase2ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<GetCampaignsResponseCampaignCase2ActionsList>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type GetCampaignsResponseCampaignCase2FilterSegmentIdsList = Array<number>;
-export const GetCampaignsResponseCampaignCase2FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetCampaignsResponseCampaignCase2FilterSegmentIdsList>;
+export const GetCampaignsResponseCampaignCase2FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetCampaignsResponseCampaignCase2FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type GetCampaignsResponseCampaignCase2State = "running" | "draft" | "stopped";
@@ -11723,9 +11232,8 @@ export const GetCampaignsResponseCampaignCase2State = S.String;
 
 /** An array of tags you set on this automation. */
 export type GetCampaignsResponseCampaignCase2TagsList = Array<string>;
-export const GetCampaignsResponseCampaignCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCampaignsResponseCampaignCase2TagsList>;
+export const GetCampaignsResponseCampaignCase2TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCampaignsResponseCampaignCase2TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type GetCampaignsResponseCampaignCase2Type = "form";
@@ -11787,15 +11295,13 @@ export const GetCampaignsResponseCampaignCase3ActionsItem =
 /** An array of actions contained within the automation. */
 export type GetCampaignsResponseCampaignCase3ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const GetCampaignsResponseCampaignCase3ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<GetCampaignsResponseCampaignCase3ActionsList>;
+export const GetCampaignsResponseCampaignCase3ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<GetCampaignsResponseCampaignCase3ActionsList>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type GetCampaignsResponseCampaignCase3FilterSegmentIdsList = Array<number>;
-export const GetCampaignsResponseCampaignCase3FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetCampaignsResponseCampaignCase3FilterSegmentIdsList>;
+export const GetCampaignsResponseCampaignCase3FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetCampaignsResponseCampaignCase3FilterSegmentIdsList>;
 
 /** How often a person will receive this automation based on the date specified in the automation trigger. */
 export type GetCampaignsResponseCampaignCase3Frequency = "once" | "monthly" | "yearly";
@@ -11807,9 +11313,8 @@ export const GetCampaignsResponseCampaignCase3State = S.String;
 
 /** An array of tags you set on this automation. */
 export type GetCampaignsResponseCampaignCase3TagsList = Array<string>;
-export const GetCampaignsResponseCampaignCase3TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCampaignsResponseCampaignCase3TagsList>;
+export const GetCampaignsResponseCampaignCase3TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCampaignsResponseCampaignCase3TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type GetCampaignsResponseCampaignCase3Type = "date";
@@ -11889,9 +11394,8 @@ export const GetCampaignsResponseCampaignCase4ActionsItem =
 /** An array of actions contained within the automation. */
 export type GetCampaignsResponseCampaignCase4ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const GetCampaignsResponseCampaignCase4ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<GetCampaignsResponseCampaignCase4ActionsList>;
+export const GetCampaignsResponseCampaignCase4ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<GetCampaignsResponseCampaignCase4ActionsList>;
 
 /** Defines the people who will start a journey in your automation. */
 export interface GetCampaignsResponseCampaignCase4Audience {
@@ -11914,9 +11418,8 @@ export const GetCampaignsResponseCampaignCase4Audience = /*@__PURE__*/ S.suspend
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type GetCampaignsResponseCampaignCase4FilterSegmentIdsList = Array<number>;
-export const GetCampaignsResponseCampaignCase4FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetCampaignsResponseCampaignCase4FilterSegmentIdsList>;
+export const GetCampaignsResponseCampaignCase4FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetCampaignsResponseCampaignCase4FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type GetCampaignsResponseCampaignCase4State = "running" | "draft" | "stopped";
@@ -11924,9 +11427,8 @@ export const GetCampaignsResponseCampaignCase4State = S.String;
 
 /** An array of tags you set on this automation. */
 export type GetCampaignsResponseCampaignCase4TagsList = Array<string>;
-export const GetCampaignsResponseCampaignCase4TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCampaignsResponseCampaignCase4TagsList>;
+export const GetCampaignsResponseCampaignCase4TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCampaignsResponseCampaignCase4TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type GetCampaignsResponseCampaignCase4Type = "relationship";
@@ -12003,9 +11505,8 @@ export const GetCampaignsResponseCampaignCase5ActionsItem =
 /** An array of actions contained within the automation. */
 export type GetCampaignsResponseCampaignCase5ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const GetCampaignsResponseCampaignCase5ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<GetCampaignsResponseCampaignCase5ActionsList>;
+export const GetCampaignsResponseCampaignCase5ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<GetCampaignsResponseCampaignCase5ActionsList>;
 
 /** Defines the people who will start a journey in your automation. */
 export interface GetCampaignsResponseCampaignCase5Audience {
@@ -12016,21 +11517,13 @@ export interface GetCampaignsResponseCampaignCase5Audience {
   /** The type of audience selected. "Every person in the object" is `1`. "Certain people in the object" is also `1`. "Certain people" will always have one or more audience filters (see below). "Every person" will never have an audience filter. */
   type?: number;
 }
-export const GetCampaignsResponseCampaignCase5Audience = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    person_filters: S.optional(S.Unknown),
-    relationship_filters: S.optional(S.Unknown),
-    type: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCampaignsResponseCampaignCase5Audience",
-}) as any as S.Schema<GetCampaignsResponseCampaignCase5Audience>;
+export const GetCampaignsResponseCampaignCase5Audience =
+  GetCampaignsResponseCampaignCase4Audience as any as S.Schema<GetCampaignsResponseCampaignCase5Audience>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type GetCampaignsResponseCampaignCase5FilterSegmentIdsList = Array<number>;
-export const GetCampaignsResponseCampaignCase5FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetCampaignsResponseCampaignCase5FilterSegmentIdsList>;
+export const GetCampaignsResponseCampaignCase5FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetCampaignsResponseCampaignCase5FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type GetCampaignsResponseCampaignCase5State = "running" | "draft" | "stopped";
@@ -12038,9 +11531,8 @@ export const GetCampaignsResponseCampaignCase5State = S.String;
 
 /** An array of tags you set on this automation. */
 export type GetCampaignsResponseCampaignCase5TagsList = Array<string>;
-export const GetCampaignsResponseCampaignCase5TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCampaignsResponseCampaignCase5TagsList>;
+export const GetCampaignsResponseCampaignCase5TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCampaignsResponseCampaignCase5TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type GetCampaignsResponseCampaignCase5Type = "object";
@@ -12117,9 +11609,8 @@ export const GetCampaignsResponseCampaignCase6ActionsItem =
 /** An array of actions contained within the automation. */
 export type GetCampaignsResponseCampaignCase6ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const GetCampaignsResponseCampaignCase6ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<GetCampaignsResponseCampaignCase6ActionsList>;
+export const GetCampaignsResponseCampaignCase6ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<GetCampaignsResponseCampaignCase6ActionsList>;
 
 /** The status of the automation. */
 export type GetCampaignsResponseCampaignCase6State = "running" | "draft" | "stopped";
@@ -12127,9 +11618,8 @@ export const GetCampaignsResponseCampaignCase6State = S.String;
 
 /** An array of tags you set on this automation. */
 export type GetCampaignsResponseCampaignCase6TagsList = Array<string>;
-export const GetCampaignsResponseCampaignCase6TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCampaignsResponseCampaignCase6TagsList>;
+export const GetCampaignsResponseCampaignCase6TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCampaignsResponseCampaignCase6TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type GetCampaignsResponseCampaignCase6Type = "webhook";
@@ -12265,9 +11755,8 @@ export const GetCioAllowlistRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCioAllowlistRequest" }) as any as S.Schema<GetCioAllowlistRequest>;
 
 export type GetCioAllowlistResponseIpAddressesList = Array<string>;
-export const GetCioAllowlistResponseIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCioAllowlistResponseIpAddressesList>;
+export const GetCioAllowlistResponseIpAddressesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCioAllowlistResponseIpAddressesList>;
 
 export interface GetCioAllowlistResponse {
   ip_addresses?: GetCioAllowlistResponseIpAddressesList;
@@ -12290,9 +11779,8 @@ export const GetCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type GetCollectionResponseCollectionSchemaList = Array<string>;
-export const GetCollectionResponseCollectionSchemaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseCollectionSchemaList>;
+export const GetCollectionResponseCollectionSchemaList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCollectionResponseCollectionSchemaList>;
 
 export interface GetCollectionResponseCollection {
   /** The size of the collection in bytes. */
@@ -12310,28 +11798,14 @@ export interface GetCollectionResponseCollection {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-export const GetCollectionResponseCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytes: S.optional(S.Number),
-    created_at: S.optional(S.Number),
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    rows: S.optional(S.Number),
-    schema: S.optional(GetCollectionResponseCollectionSchemaList),
-    updated_at: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCollectionResponseCollection",
-}) as any as S.Schema<GetCollectionResponseCollection>;
+export const GetCollectionResponseCollection =
+  AddCollectionResponseCollection as any as S.Schema<GetCollectionResponseCollection>;
 
 export interface GetCollectionResponse {
   collection?: GetCollectionResponseCollection;
 }
-export const GetCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collection: S.optional(GetCollectionResponseCollection),
-  }),
-).annotate({ identifier: "GetCollectionResponse" }) as any as S.Schema<GetCollectionResponse>;
+export const GetCollectionResponse =
+  AddCollectionResponse as any as S.Schema<GetCollectionResponse>;
 
 export interface GetCollectionContentsRequest {
   /** The identifier for a collection. */
@@ -12346,10 +11820,8 @@ export const GetCollectionContentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionContentsRequest>;
 
 export type GetCollectionContentsResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetCollectionContentsResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetCollectionContentsResponseBodyMap>;
+export const GetCollectionContentsResponseBodyMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<GetCollectionContentsResponseBodyMap>;
 
 export type GetCollectionContentsResponse = GetCollectionContentsResponseBodyMap;
 export const GetCollectionContentsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -12365,9 +11837,8 @@ export const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type GetCollectionsResponseCollectionsItemSchemaList = Array<string>;
-export const GetCollectionsResponseCollectionsItemSchemaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseCollectionsItemSchemaList>;
+export const GetCollectionsResponseCollectionsItemSchemaList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCollectionsResponseCollectionsItemSchemaList>;
 
 export interface GetCollectionsResponseCollectionsItem {
   /** The size of the collection in bytes. */
@@ -12385,19 +11856,8 @@ export interface GetCollectionsResponseCollectionsItem {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-export const GetCollectionsResponseCollectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytes: S.optional(S.Number),
-    created_at: S.optional(S.Number),
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    rows: S.optional(S.Number),
-    schema: S.optional(GetCollectionsResponseCollectionsItemSchemaList),
-    updated_at: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCollectionsResponseCollectionsItem",
-}) as any as S.Schema<GetCollectionsResponseCollectionsItem>;
+export const GetCollectionsResponseCollectionsItem =
+  AddCollectionResponseCollection as any as S.Schema<GetCollectionsResponseCollectionsItem>;
 
 export type GetCollectionsResponseCollectionsList = Array<GetCollectionsResponseCollectionsItem>;
 export const GetCollectionsResponseCollectionsList = /*@__PURE__*/ S.Array(
@@ -12429,11 +11889,8 @@ export const GetComponentResponseComponent = CreateComponentResponseComponent;
 export interface GetComponentResponse {
   component?: CreateComponentResponseComponent;
 }
-export const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    component: S.optional(CreateComponentResponseComponent),
-  }),
-).annotate({ identifier: "GetComponentResponse" }) as any as S.Schema<GetComponentResponse>;
+export const GetComponentResponse =
+  CreateComponentResponse as any as S.Schema<GetComponentResponse>;
 
 export type GetDomainSuppressionsByTypeRequestSuppressionType =
   | "blocks"
@@ -12534,9 +11991,8 @@ export const GetEmailRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type GetEmailResponseEmailAvailableLanguagesList = Array<string>;
-export const GetEmailResponseEmailAvailableLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetEmailResponseEmailAvailableLanguagesList>;
+export const GetEmailResponseEmailAvailableLanguagesList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetEmailResponseEmailAvailableLanguagesList>;
 
 /** The content of your email. */
 export type GetEmailResponseEmailContent = CreateEmailRequestContent;
@@ -12547,9 +12003,8 @@ export const GetEmailResponseEmailEnvelopeHeadersItem = CreateEmailRequestEnvelo
 
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type GetEmailResponseEmailEnvelopeHeadersList = Array<CreateEmailRequestEnvelopeHeadersItem>;
-export const GetEmailResponseEmailEnvelopeHeadersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestEnvelopeHeadersItem,
-) as any as S.Schema<GetEmailResponseEmailEnvelopeHeadersList>;
+export const GetEmailResponseEmailEnvelopeHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<GetEmailResponseEmailEnvelopeHeadersList>;
 
 export interface GetEmailResponseEmailEnvelope {
   /** BCC email address. */
@@ -12569,20 +12024,8 @@ export interface GetEmailResponseEmailEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-export const GetEmailResponseEmailEnvelope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.NullOr(S.Number)),
-    headers: S.optional(GetEmailResponseEmailEnvelopeHeadersList),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GetEmailResponseEmailEnvelope",
-}) as any as S.Schema<GetEmailResponseEmailEnvelope>;
+export const GetEmailResponseEmailEnvelope =
+  CreateEmailResponseEmailEnvelope as any as S.Schema<GetEmailResponseEmailEnvelope>;
 
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type GetEmailResponseEmailTransformersAccessibility =
@@ -12704,15 +12147,12 @@ export const GetEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersItem 
 export type GetEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const GetEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList = Array<string>;
-export const GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList>;
+export const GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface GetEmailResponseEmailTransformersRemoveUnusedCss {
@@ -12725,16 +12165,8 @@ export interface GetEmailResponseEmailTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList;
 }
-export const GetEmailResponseEmailTransformersRemoveUnusedCss = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backend_markers: S.optional(GetEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList),
-    enabled: S.optional(S.Boolean),
-    uglify: S.optional(S.Boolean),
-    whitelist: S.optional(GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList),
-  }),
-).annotate({
-  identifier: "GetEmailResponseEmailTransformersRemoveUnusedCss",
-}) as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCss>;
+export const GetEmailResponseEmailTransformersRemoveUnusedCss =
+  CreateEmailRequestTransformersRemoveUnusedCss as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCss>;
 
 export type GetEmailResponseEmailTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
@@ -12744,9 +12176,8 @@ export const GetEmailResponseEmailTransformersUrlParametersParametersItem =
 /** List of parameters to append to URLs. */
 export type GetEmailResponseEmailTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
-export const GetEmailResponseEmailTransformersUrlParametersParametersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestTransformersUrlParametersParametersItem,
-) as any as S.Schema<GetEmailResponseEmailTransformersUrlParametersParametersList>;
+export const GetEmailResponseEmailTransformersUrlParametersParametersList =
+  CreateEmailRequestTransformersUrlParametersParametersList as any as S.Schema<GetEmailResponseEmailTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface GetEmailResponseEmailTransformersUrlParameters {
@@ -12755,14 +12186,8 @@ export interface GetEmailResponseEmailTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: GetEmailResponseEmailTransformersUrlParametersParametersList;
 }
-export const GetEmailResponseEmailTransformersUrlParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    parameters: S.optional(GetEmailResponseEmailTransformersUrlParametersParametersList),
-  }),
-).annotate({
-  identifier: "GetEmailResponseEmailTransformersUrlParameters",
-}) as any as S.Schema<GetEmailResponseEmailTransformersUrlParameters>;
+export const GetEmailResponseEmailTransformersUrlParameters =
+  CreateEmailRequestTransformersUrlParameters as any as S.Schema<GetEmailResponseEmailTransformersUrlParameters>;
 
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface GetEmailResponseEmailTransformers {
@@ -12866,9 +12291,7 @@ export const GetEmailTranslationRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type GetEmailTranslationResponseEmailTranslationAvailableLanguagesList = Array<string>;
 export const GetEmailTranslationResponseEmailTranslationAvailableLanguagesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetEmailTranslationResponseEmailTranslationAvailableLanguagesList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<GetEmailTranslationResponseEmailTranslationAvailableLanguagesList>;
 
 /** The content of your email. */
 export type GetEmailTranslationResponseEmailTranslationContent = CreateEmailRequestContent;
@@ -12882,9 +12305,8 @@ export const GetEmailTranslationResponseEmailTranslationEnvelopeHeadersItem =
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type GetEmailTranslationResponseEmailTranslationEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-export const GetEmailTranslationResponseEmailTranslationEnvelopeHeadersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestEnvelopeHeadersItem,
-) as any as S.Schema<GetEmailTranslationResponseEmailTranslationEnvelopeHeadersList>;
+export const GetEmailTranslationResponseEmailTranslationEnvelopeHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<GetEmailTranslationResponseEmailTranslationEnvelopeHeadersList>;
 
 export interface GetEmailTranslationResponseEmailTranslationEnvelope {
   /** BCC email address. */
@@ -12904,20 +12326,8 @@ export interface GetEmailTranslationResponseEmailTranslationEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-export const GetEmailTranslationResponseEmailTranslationEnvelope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.NullOr(S.Number)),
-    headers: S.optional(GetEmailTranslationResponseEmailTranslationEnvelopeHeadersList),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GetEmailTranslationResponseEmailTranslationEnvelope",
-}) as any as S.Schema<GetEmailTranslationResponseEmailTranslationEnvelope>;
+export const GetEmailTranslationResponseEmailTranslationEnvelope =
+  CreateEmailResponseEmailEnvelope as any as S.Schema<GetEmailTranslationResponseEmailTranslationEnvelope>;
 
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type GetEmailTranslationResponseEmailTranslationTransformersAccessibility =
@@ -13058,17 +12468,13 @@ export const GetEmailTranslationResponseEmailTranslationTransformersRemoveUnused
 export type GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList =
   Array<string>;
 export const GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss {
@@ -13082,20 +12488,7 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersRemoveUn
   whitelist?: GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList;
 }
 export const GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      backend_markers: S.optional(
-        GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList,
-      ),
-      enabled: S.optional(S.Boolean),
-      uglify: S.optional(S.Boolean),
-      whitelist: S.optional(
-        GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss",
-  }) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss>;
+  CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss>;
 
 export type GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
@@ -13106,9 +12499,7 @@ export const GetEmailTranslationResponseEmailTranslationTransformersUrlParameter
 export type GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
 export const GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersUrlParametersParametersItem,
-  ) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList>;
+  CreateEmailResponseEmailTransformersUrlParametersParametersList as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface GetEmailTranslationResponseEmailTranslationTransformersUrlParameters {
@@ -13118,16 +12509,7 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersUrlParam
   parameters?: GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList;
 }
 export const GetEmailTranslationResponseEmailTranslationTransformersUrlParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-      parameters: S.optional(
-        GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetEmailTranslationResponseEmailTranslationTransformersUrlParameters",
-  }) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersUrlParameters>;
+  CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersUrlParameters>;
 
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface GetEmailTranslationResponseEmailTranslationTransformers {
@@ -13309,11 +12691,7 @@ export const GetFolderResponseFolder = CreateFolderResponseFolder;
 export interface GetFolderResponse {
   folder?: CreateFolderResponseFolder;
 }
-export const GetFolderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    folder: S.optional(CreateFolderResponseFolder),
-  }),
-).annotate({ identifier: "GetFolderResponse" }) as any as S.Schema<GetFolderResponse>;
+export const GetFolderResponse = CreateFolderResponse as any as S.Schema<GetFolderResponse>;
 
 export interface GetImportRequest {
   /** The `id` of the import you want to lookup. This value is [returned from an import](/integrations/api/app/tag/imports/import/) that was accepted and queued for processing. */
@@ -13457,9 +12835,8 @@ export const GetInboxPreviewCaptureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInboxPreviewCaptureRequest>;
 
 export interface GetInboxPreviewCaptureResponse {}
-export const GetInboxPreviewCaptureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetInboxPreviewCaptureResponse",
-}) as any as S.Schema<GetInboxPreviewCaptureResponse>;
+export const GetInboxPreviewCaptureResponse =
+  DeleteAssetResponse as any as S.Schema<GetInboxPreviewCaptureResponse>;
 
 export interface GetInboxPreviewCreditsRequest {}
 export const GetInboxPreviewCreditsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13536,9 +12913,8 @@ export const GetInboxPreviewJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The device identifiers requested for this job. */
 export type GetInboxPreviewJobResponseClientIdsList = Array<string>;
-export const GetInboxPreviewJobResponseClientIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetInboxPreviewJobResponseClientIdsList>;
+export const GetInboxPreviewJobResponseClientIdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetInboxPreviewJobResponseClientIdsList>;
 
 /** Client category. `Mobile` is a phone's native mail app, for example the Gmail App on Android devices. `Application` is a desktop native mail app, for example Apple Mail on macOS. `Web` is webmail viewed in a desktop browser, for example Gmail.com in Firefox, and includes a `browser` value. */
 export type GetInboxPreviewJobResponsePreviewsItemCategory = "Mobile" | "Application" | "Web";
@@ -13803,10 +13179,8 @@ export const GetMessageResponseMessageTrackedResponsesValue =
 export type GetMessageResponseMessageTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-export const GetMessageResponseMessageTrackedResponsesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BroadcastMessagesResponseMessagesItemTrackedResponsesValue,
-) as any as S.Schema<GetMessageResponseMessageTrackedResponsesMap>;
+export const GetMessageResponseMessageTrackedResponsesMap =
+  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<GetMessageResponseMessageTrackedResponsesMap>;
 
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type GetMessageResponseMessageType =
@@ -13928,23 +13302,18 @@ export const GetNewsletterLinksResponseLinksItemLink = BroadcastActionLinksRespo
 
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type GetNewsletterLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-export const GetNewsletterLinksResponseLinksItemMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeriesClickedList>;
+export const GetNewsletterLinksResponseLinksItemMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeriesClickedList>;
 
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetNewsletterLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
 export const GetNewsletterLinksResponseLinksItemMetricSeriesHumanClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeriesHumanClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeriesHumanClickedList>;
 
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetNewsletterLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
 export const GetNewsletterLinksResponseLinksItemMetricSeriesMachineClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeriesMachineClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeriesMachineClickedList>;
 
 export interface GetNewsletterLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
@@ -13954,57 +13323,33 @@ export interface GetNewsletterLinksResponseLinksItemMetricSeries {
   /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: GetNewsletterLinksResponseLinksItemMetricSeriesMachineClickedList;
 }
-export const GetNewsletterLinksResponseLinksItemMetricSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clicked: S.optional(GetNewsletterLinksResponseLinksItemMetricSeriesClickedList),
-    human_clicked: S.optional(GetNewsletterLinksResponseLinksItemMetricSeriesHumanClickedList),
-    machine_clicked: S.optional(GetNewsletterLinksResponseLinksItemMetricSeriesMachineClickedList),
-  }),
-).annotate({
-  identifier: "GetNewsletterLinksResponseLinksItemMetricSeries",
-}) as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeries>;
+export const GetNewsletterLinksResponseLinksItemMetricSeries =
+  CampaignActionLinksResponseLinksItemMetricSeries as any as S.Schema<GetNewsletterLinksResponseLinksItemMetricSeries>;
 
 /** Contains metrics for the link. */
 export interface GetNewsletterLinksResponseLinksItemMetric {
   series?: GetNewsletterLinksResponseLinksItemMetricSeries;
 }
-export const GetNewsletterLinksResponseLinksItemMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    series: S.optional(GetNewsletterLinksResponseLinksItemMetricSeries),
-  }),
-).annotate({
-  identifier: "GetNewsletterLinksResponseLinksItemMetric",
-}) as any as S.Schema<GetNewsletterLinksResponseLinksItemMetric>;
+export const GetNewsletterLinksResponseLinksItemMetric =
+  CampaignActionLinksResponseLinksItemMetric as any as S.Schema<GetNewsletterLinksResponseLinksItemMetric>;
 
 export interface GetNewsletterLinksResponseLinksItem {
   link?: BroadcastActionLinksResponseLinksItemLink;
   /** Contains metrics for the link. */
   metric?: GetNewsletterLinksResponseLinksItemMetric;
 }
-export const GetNewsletterLinksResponseLinksItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(BroadcastActionLinksResponseLinksItemLink),
-    metric: S.optional(GetNewsletterLinksResponseLinksItemMetric),
-  }),
-).annotate({
-  identifier: "GetNewsletterLinksResponseLinksItem",
-}) as any as S.Schema<GetNewsletterLinksResponseLinksItem>;
+export const GetNewsletterLinksResponseLinksItem =
+  CampaignActionLinksResponseLinksItem as any as S.Schema<GetNewsletterLinksResponseLinksItem>;
 
 export type GetNewsletterLinksResponseLinksList = Array<GetNewsletterLinksResponseLinksItem>;
-export const GetNewsletterLinksResponseLinksList = /*@__PURE__*/ S.Array(
-  GetNewsletterLinksResponseLinksItem,
-) as any as S.Schema<GetNewsletterLinksResponseLinksList>;
+export const GetNewsletterLinksResponseLinksList =
+  CampaignActionLinksResponseLinksList as any as S.Schema<GetNewsletterLinksResponseLinksList>;
 
 export interface GetNewsletterLinksResponse {
   links?: GetNewsletterLinksResponseLinksList;
 }
-export const GetNewsletterLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(GetNewsletterLinksResponseLinksList),
-  }),
-).annotate({
-  identifier: "GetNewsletterLinksResponse",
-}) as any as S.Schema<GetNewsletterLinksResponse>;
+export const GetNewsletterLinksResponse =
+  CampaignActionLinksResponse as any as S.Schema<GetNewsletterLinksResponse>;
 
 export type GetNewsletterMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
 export const GetNewsletterMetricsRequestPeriod = S.String;
@@ -14041,161 +13386,133 @@ export const GetNewsletterMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The number of `attempted` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesAttemptedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesAttemptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesAttemptedList>;
+export const GetNewsletterMetricsResponseMetricSeriesAttemptedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesBouncedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesBouncedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesBouncedList>;
+export const GetNewsletterMetricsResponseMetricSeriesBouncedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesClickedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesClickedList>;
+export const GetNewsletterMetricsResponseMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesConvertedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesConvertedList>;
+export const GetNewsletterMetricsResponseMetricSeriesConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesCreatedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesCreatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesCreatedList>;
+export const GetNewsletterMetricsResponseMetricSeriesCreatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesDeferredList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesDeferredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesDeferredList>;
+export const GetNewsletterMetricsResponseMetricSeriesDeferredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesDeliveredList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesDeliveredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesDeliveredList>;
+export const GetNewsletterMetricsResponseMetricSeriesDeliveredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesDraftedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesDraftedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesDraftedList>;
+export const GetNewsletterMetricsResponseMetricSeriesDraftedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesFailedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesFailedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesFailedList>;
+export const GetNewsletterMetricsResponseMetricSeriesFailedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetNewsletterMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesHumanClickedList>;
+export const GetNewsletterMetricsResponseMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetNewsletterMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesHumanOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesHumanOpenedList>;
+export const GetNewsletterMetricsResponseMetricSeriesHumanOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList>;
+export const GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetNewsletterMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesMachineClickedList>;
+export const GetNewsletterMetricsResponseMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList>;
+export const GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesOpenedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesOpenedList>;
+export const GetNewsletterMetricsResponseMetricSeriesOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type GetNewsletterMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesPrefetchOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesPrefetchOpenedList>;
+export const GetNewsletterMetricsResponseMetricSeriesPrefetchOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type GetNewsletterMetricsResponseMetricSeriesRepliedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesRepliedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesRepliedList>;
+export const GetNewsletterMetricsResponseMetricSeriesRepliedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type GetNewsletterMetricsResponseMetricSeriesSentList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesSentList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesSentList>;
+export const GetNewsletterMetricsResponseMetricSeriesSentList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesSentList>;
 
 /** The number of spam complaints. */
 export type GetNewsletterMetricsResponseMetricSeriesSpammedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesSpammedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesSpammedList>;
+export const GetNewsletterMetricsResponseMetricSeriesSpammedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesSuppressedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesSuppressedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesSuppressedList>;
+export const GetNewsletterMetricsResponseMetricSeriesSuppressedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type GetNewsletterMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesTopicUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesTopicUnsubscribedList>;
+export const GetNewsletterMetricsResponseMetricSeriesTopicUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type GetNewsletterMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
 export const GetNewsletterMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesTrackingConsentDeniedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type GetNewsletterMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
 export const GetNewsletterMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesTrackingConsentGrantedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesUndeliverableList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesUndeliverableList>;
+export const GetNewsletterMetricsResponseMetricSeriesUndeliverableList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type GetNewsletterMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesUnsubscribedList>;
+export const GetNewsletterMetricsResponseMetricSeriesUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type GetNewsletterMetricsResponseMetricSeriesUntrackedList = Array<number>;
-export const GetNewsletterMetricsResponseMetricSeriesUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesUntrackedList>;
+export const GetNewsletterMetricsResponseMetricSeriesUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewsletterMetricsResponseMetricSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface GetNewsletterMetricsResponseMetricSeries {
@@ -14252,42 +13569,8 @@ export interface GetNewsletterMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: GetNewsletterMetricsResponseMetricSeriesUntrackedList;
 }
-export const GetNewsletterMetricsResponseMetricSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempted: S.optional(GetNewsletterMetricsResponseMetricSeriesAttemptedList),
-    bounced: S.optional(GetNewsletterMetricsResponseMetricSeriesBouncedList),
-    clicked: S.optional(GetNewsletterMetricsResponseMetricSeriesClickedList),
-    converted: S.optional(GetNewsletterMetricsResponseMetricSeriesConvertedList),
-    created: S.optional(GetNewsletterMetricsResponseMetricSeriesCreatedList),
-    deferred: S.optional(GetNewsletterMetricsResponseMetricSeriesDeferredList),
-    delivered: S.optional(GetNewsletterMetricsResponseMetricSeriesDeliveredList),
-    drafted: S.optional(GetNewsletterMetricsResponseMetricSeriesDraftedList),
-    failed: S.optional(GetNewsletterMetricsResponseMetricSeriesFailedList),
-    human_clicked: S.optional(GetNewsletterMetricsResponseMetricSeriesHumanClickedList),
-    human_opened: S.optional(GetNewsletterMetricsResponseMetricSeriesHumanOpenedList),
-    link_untracked: S.optional(GetNewsletterMetricsResponseMetricSeriesLinkUntrackedList),
-    machine_clicked: S.optional(GetNewsletterMetricsResponseMetricSeriesMachineClickedList),
-    open_untracked: S.optional(GetNewsletterMetricsResponseMetricSeriesOpenUntrackedList),
-    opened: S.optional(GetNewsletterMetricsResponseMetricSeriesOpenedList),
-    prefetch_opened: S.optional(GetNewsletterMetricsResponseMetricSeriesPrefetchOpenedList),
-    replied: S.optional(GetNewsletterMetricsResponseMetricSeriesRepliedList),
-    sent: S.optional(GetNewsletterMetricsResponseMetricSeriesSentList),
-    spammed: S.optional(GetNewsletterMetricsResponseMetricSeriesSpammedList),
-    suppressed: S.optional(GetNewsletterMetricsResponseMetricSeriesSuppressedList),
-    topic_unsubscribed: S.optional(GetNewsletterMetricsResponseMetricSeriesTopicUnsubscribedList),
-    tracking_consent_denied: S.optional(
-      GetNewsletterMetricsResponseMetricSeriesTrackingConsentDeniedList,
-    ),
-    tracking_consent_granted: S.optional(
-      GetNewsletterMetricsResponseMetricSeriesTrackingConsentGrantedList,
-    ),
-    undeliverable: S.optional(GetNewsletterMetricsResponseMetricSeriesUndeliverableList),
-    unsubscribed: S.optional(GetNewsletterMetricsResponseMetricSeriesUnsubscribedList),
-    untracked: S.optional(GetNewsletterMetricsResponseMetricSeriesUntrackedList),
-  }),
-).annotate({
-  identifier: "GetNewsletterMetricsResponseMetricSeries",
-}) as any as S.Schema<GetNewsletterMetricsResponseMetricSeries>;
+export const GetNewsletterMetricsResponseMetricSeries =
+  CampaignActionMetricsResponseMetricSeries as any as S.Schema<GetNewsletterMetricsResponseMetricSeries>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetNewsletterMetricsResponseMetricType =
@@ -14391,10 +13674,8 @@ export const GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesValue =
 export type GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-export const GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BroadcastMessagesResponseMessagesItemTrackedResponsesValue,
-) as any as S.Schema<GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap>;
+export const GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap =
+  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetNewsletterMsgMetaResponseMessagesItemType =
@@ -14502,9 +13783,8 @@ export const GetNewslettersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type GetNewslettersResponseNewsletterContentIdsList = Array<number>;
-export const GetNewslettersResponseNewsletterContentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewslettersResponseNewsletterContentIdsList>;
+export const GetNewslettersResponseNewsletterContentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewslettersResponseNewsletterContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type GetNewslettersResponseNewsletterRecipientFileStatus =
@@ -14516,9 +13796,8 @@ export const GetNewslettersResponseNewsletterRecipientFileStatus = S.String;
 
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type GetNewslettersResponseNewsletterRecipientSegmentIdsList = Array<number>;
-export const GetNewslettersResponseNewsletterRecipientSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetNewslettersResponseNewsletterRecipientSegmentIdsList>;
+export const GetNewslettersResponseNewsletterRecipientSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewslettersResponseNewsletterRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type GetNewslettersResponseNewsletterSendState =
@@ -14534,9 +13813,8 @@ export const GetNewslettersResponseNewsletterSendState = S.String;
 
 /** An array of tags associated with the one-time send. */
 export type GetNewslettersResponseNewsletterTagsList = Array<string>;
-export const GetNewslettersResponseNewsletterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetNewslettersResponseNewsletterTagsList>;
+export const GetNewslettersResponseNewsletterTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetNewslettersResponseNewsletterTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetNewslettersResponseNewsletterType =
@@ -14634,9 +13912,8 @@ export const GetNewsletterTestGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of content_ids for each variant in the test group. */
 export type GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList = Array<string>;
-export const GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList>;
+export const GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList>;
 
 export interface GetNewsletterTestGroupsResponseTestGroupsItem {
   /** A list of content_ids for each variant in the test group. */
@@ -15066,10 +14343,8 @@ export const GetObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Attributes assigned to this object. */
 export type GetObjectAttributesResponseObjectAttributesMap = { [key: string]: unknown | undefined };
-export const GetObjectAttributesResponseObjectAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetObjectAttributesResponseObjectAttributesMap>;
+export const GetObjectAttributesResponseObjectAttributesMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<GetObjectAttributesResponseObjectAttributesMap>;
 
 /** Identifies an object. */
 export interface GetObjectAttributesResponseObjectIdentifiers {
@@ -15479,9 +14754,8 @@ export const GetObjectsFilterResponseIdentifiersList = /*@__PURE__*/ S.Array(
 
 /** A list of object IDs matching the object_type_id and filter in the request. Items are the same as the `object_id` values under `identifiers`, but this array may be easier to search/sort through if you have a large number of objects and don't need to to use the `cio_object_id`. */
 export type GetObjectsFilterResponseIdsList = Array<string>;
-export const GetObjectsFilterResponseIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetObjectsFilterResponseIdsList>;
+export const GetObjectsFilterResponseIdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetObjectsFilterResponseIdsList>;
 
 export interface GetObjectsFilterResponse {
   identifiers?: GetObjectsFilterResponseIdentifiersList;
@@ -15631,9 +14905,8 @@ export const GetPeopleByIdRequestIdType = S.String;
 
 /** An array of up to 100 customer identifiers. All values must match the `id_type` query parameter--`id` values by default. */
 export type GetPeopleByIdRequestIdsList = Array<string>;
-export const GetPeopleByIdRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPeopleByIdRequestIdsList>;
+export const GetPeopleByIdRequestIdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetPeopleByIdRequestIdsList>;
 
 export interface GetPeopleByIdRequest {
   /** The type of `customer_id` you want to use to reference a person. If you don't provide this parameter, we assume that the `customer_id` in your request is a person's `id`. You can use `email` and `phone` only if they're enabled as identifiers in your [workspace settings](/accounts/workspaces/overview/#migrate-workspace); otherwise the request returns `400`. Reference `phone` values in [E.164 format](https://en.wikipedia.org/wiki/E.164), like `+14155552671`, and URL-encode the leading `+` as `%2B`. */
@@ -17579,15 +16852,13 @@ export const GetPeopleFilterResponseIdentifiersItem = GetPeopleEmailResponseResu
 
 /** An array of objects, where each object represents a customer. Each object contains identifiers for a customer. */
 export type GetPeopleFilterResponseIdentifiersList = Array<GetPeopleEmailResponseResultsItem>;
-export const GetPeopleFilterResponseIdentifiersList = /*@__PURE__*/ S.Array(
-  GetPeopleEmailResponseResultsItem,
-) as any as S.Schema<GetPeopleFilterResponseIdentifiersList>;
+export const GetPeopleFilterResponseIdentifiersList =
+  GetPeopleEmailResponseResultsList as any as S.Schema<GetPeopleFilterResponseIdentifiersList>;
 
 /** In general, you should use the `identifiers` array. This array contains identifiers for people captured in your filter. However, as of June 2021, some workspaces let you add people without an `id`. Entries without an `id` are empty strings in this array, where the `identifiers` array contains more complete information for each person captured in the filter. */
 export type GetPeopleFilterResponseIdsList = Array<string>;
-export const GetPeopleFilterResponseIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPeopleFilterResponseIdsList>;
+export const GetPeopleFilterResponseIdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetPeopleFilterResponseIdsList>;
 
 export interface GetPeopleFilterResponse {
   /** An array of objects, where each object represents a customer. Each object contains identifiers for a customer. */
@@ -18668,10 +17939,8 @@ export const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
 export type GetSegmentResponseSegmentConditionsMap = { [key: string]: unknown | undefined };
-export const GetSegmentResponseSegmentConditionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetSegmentResponseSegmentConditionsMap>;
+export const GetSegmentResponseSegmentConditionsMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<GetSegmentResponseSegmentConditionsMap>;
 
 /** The segment's build state. The state is `build` while Customer.io calculates who belongs to the segment, and `finished` when membership is up to date. */
 export type GetSegmentResponseSegmentState = "build" | "finished";
@@ -18679,9 +17948,8 @@ export const GetSegmentResponseSegmentState = S.String;
 
 /** The tags assigned to the segment, if any. Tags may help you sort through your segments. */
 export type GetSegmentResponseSegmentTagsList = Array<string>;
-export const GetSegmentResponseSegmentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSegmentResponseSegmentTagsList>;
+export const GetSegmentResponseSegmentTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetSegmentResponseSegmentTagsList>;
 
 /** The type of segment. */
 export type GetSegmentResponseSegmentType = "dynamic" | "manual";
@@ -18775,21 +18043,18 @@ export const GetSegmentDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The automations that use this segment. */
 export type GetSegmentDependenciesResponseUsedByCampaignsList = Array<number>;
-export const GetSegmentDependenciesResponseUsedByCampaignsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSegmentDependenciesResponseUsedByCampaignsList>;
+export const GetSegmentDependenciesResponseUsedByCampaignsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSegmentDependenciesResponseUsedByCampaignsList>;
 
 /** The one-time sends that are still in a draft state that reference this segment. */
 export type GetSegmentDependenciesResponseUsedByDraftNewslettersList = Array<number>;
-export const GetSegmentDependenciesResponseUsedByDraftNewslettersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSegmentDependenciesResponseUsedByDraftNewslettersList>;
+export const GetSegmentDependenciesResponseUsedByDraftNewslettersList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSegmentDependenciesResponseUsedByDraftNewslettersList>;
 
 /** The one-time sends that you've sent that use this segment. */
 export type GetSegmentDependenciesResponseUsedBySentNewslettersList = Array<number>;
-export const GetSegmentDependenciesResponseUsedBySentNewslettersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSegmentDependenciesResponseUsedBySentNewslettersList>;
+export const GetSegmentDependenciesResponseUsedBySentNewslettersList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSegmentDependenciesResponseUsedBySentNewslettersList>;
 
 export interface GetSegmentDependenciesResponseUsedBy {
   /** The automations that use this segment. */
@@ -18856,9 +18121,8 @@ export const GetSegmentMembershipResponseBodyCase0IdentifiersList = /*@__PURE__*
 
 /** The customers that belong to this segment. */
 export type GetSegmentMembershipResponseBodyCase0IdsList = Array<string>;
-export const GetSegmentMembershipResponseBodyCase0IdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSegmentMembershipResponseBodyCase0IdsList>;
+export const GetSegmentMembershipResponseBodyCase0IdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetSegmentMembershipResponseBodyCase0IdsList>;
 
 export interface GetSegmentMembershipResponseBodyCase0 {
   /** The customers that belong to this segment. */
@@ -18906,9 +18170,8 @@ export const GetSegmentMembershipResponseBodyCase1IdentifiersList = /*@__PURE__*
 
 /** The customers that belong to this segment. */
 export type GetSegmentMembershipResponseBodyCase1IdsList = Array<string>;
-export const GetSegmentMembershipResponseBodyCase1IdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSegmentMembershipResponseBodyCase1IdsList>;
+export const GetSegmentMembershipResponseBodyCase1IdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetSegmentMembershipResponseBodyCase1IdsList>;
 
 export interface GetSegmentMembershipResponseBodyCase1 {
   /** The customers that belong to this segment. */
@@ -19017,21 +18280,18 @@ export const GetSenderUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The automations that use the sender. */
 export type GetSenderUsageResponseCampaignsList = Array<number>;
-export const GetSenderUsageResponseCampaignsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSenderUsageResponseCampaignsList>;
+export const GetSenderUsageResponseCampaignsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSenderUsageResponseCampaignsList>;
 
 /** The one-time send drafts that are set up using the sender. */
 export type GetSenderUsageResponseDraftNewslettersList = Array<number>;
-export const GetSenderUsageResponseDraftNewslettersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSenderUsageResponseDraftNewslettersList>;
+export const GetSenderUsageResponseDraftNewslettersList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSenderUsageResponseDraftNewslettersList>;
 
 /** The one-time sends you've sent that used the sender. */
 export type GetSenderUsageResponseSentNewslettersList = Array<number>;
-export const GetSenderUsageResponseSentNewslettersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSenderUsageResponseSentNewslettersList>;
+export const GetSenderUsageResponseSentNewslettersList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSenderUsageResponseSentNewslettersList>;
 
 export interface GetSenderUsageResponse {
   /** The automations that use the sender. */
@@ -19098,9 +18358,8 @@ export const GetSuppressionResponseSuppressionsItem =
 /** The addresses suppressed in this category. */
 export type GetSuppressionResponseSuppressionsList =
   Array<GetDomainSuppressionsByTypeResponseSuppressionsItem>;
-export const GetSuppressionResponseSuppressionsList = /*@__PURE__*/ S.Array(
-  GetDomainSuppressionsByTypeResponseSuppressionsItem,
-) as any as S.Schema<GetSuppressionResponseSuppressionsList>;
+export const GetSuppressionResponseSuppressionsList =
+  GetDomainSuppressionsByTypeResponseSuppressionsList as any as S.Schema<GetSuppressionResponseSuppressionsList>;
 
 export interface GetSuppressionResponse {
   /** The reason the addresses are suppressed. */
@@ -19155,9 +18414,8 @@ export const GetSuppressionByTypeResponseSuppressionsItem =
 /** The addresses suppressed in this category. */
 export type GetSuppressionByTypeResponseSuppressionsList =
   Array<GetDomainSuppressionsByTypeResponseSuppressionsItem>;
-export const GetSuppressionByTypeResponseSuppressionsList = /*@__PURE__*/ S.Array(
-  GetDomainSuppressionsByTypeResponseSuppressionsItem,
-) as any as S.Schema<GetSuppressionByTypeResponseSuppressionsList>;
+export const GetSuppressionByTypeResponseSuppressionsList =
+  GetDomainSuppressionsByTypeResponseSuppressionsList as any as S.Schema<GetSuppressionByTypeResponseSuppressionsList>;
 
 export interface GetSuppressionByTypeResponse {
   /** The reason the addresses are suppressed. */
@@ -19548,21 +18806,18 @@ export const GetVariantLinksResponseLinksItemLink = BroadcastActionLinksResponse
 
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type GetVariantLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-export const GetVariantLinksResponseLinksItemMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeriesClickedList>;
+export const GetVariantLinksResponseLinksItemMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeriesClickedList>;
 
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
-export const GetVariantLinksResponseLinksItemMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeriesHumanClickedList>;
+export const GetVariantLinksResponseLinksItemMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeriesHumanClickedList>;
 
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
-export const GetVariantLinksResponseLinksItemMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeriesMachineClickedList>;
+export const GetVariantLinksResponseLinksItemMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeriesMachineClickedList>;
 
 export interface GetVariantLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
@@ -19572,57 +18827,35 @@ export interface GetVariantLinksResponseLinksItemMetricSeries {
   /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: GetVariantLinksResponseLinksItemMetricSeriesMachineClickedList;
 }
-export const GetVariantLinksResponseLinksItemMetricSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clicked: S.optional(GetVariantLinksResponseLinksItemMetricSeriesClickedList),
-    human_clicked: S.optional(GetVariantLinksResponseLinksItemMetricSeriesHumanClickedList),
-    machine_clicked: S.optional(GetVariantLinksResponseLinksItemMetricSeriesMachineClickedList),
-  }),
-).annotate({
-  identifier: "GetVariantLinksResponseLinksItemMetricSeries",
-}) as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeries>;
+export const GetVariantLinksResponseLinksItemMetricSeries =
+  BroadcastLinksResponseLinksItemMetricSeries as any as S.Schema<GetVariantLinksResponseLinksItemMetricSeries>;
 
 /** Contains metrics for the link. */
 export interface GetVariantLinksResponseLinksItemMetric {
   series?: GetVariantLinksResponseLinksItemMetricSeries;
 }
-export const GetVariantLinksResponseLinksItemMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    series: S.optional(GetVariantLinksResponseLinksItemMetricSeries),
-  }),
-).annotate({
-  identifier: "GetVariantLinksResponseLinksItemMetric",
-}) as any as S.Schema<GetVariantLinksResponseLinksItemMetric>;
+export const GetVariantLinksResponseLinksItemMetric =
+  BroadcastLinksResponseLinksItemMetric as any as S.Schema<GetVariantLinksResponseLinksItemMetric>;
 
 export interface GetVariantLinksResponseLinksItem {
   link?: BroadcastActionLinksResponseLinksItemLink;
   /** Contains metrics for the link. */
   metric?: GetVariantLinksResponseLinksItemMetric;
 }
-export const GetVariantLinksResponseLinksItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(BroadcastActionLinksResponseLinksItemLink),
-    metric: S.optional(GetVariantLinksResponseLinksItemMetric),
-  }),
-).annotate({
-  identifier: "GetVariantLinksResponseLinksItem",
-}) as any as S.Schema<GetVariantLinksResponseLinksItem>;
+export const GetVariantLinksResponseLinksItem =
+  BroadcastLinksResponseLinksItem as any as S.Schema<GetVariantLinksResponseLinksItem>;
 
 /** Each object in the array represents a link in your one-time send variant. */
 export type GetVariantLinksResponseLinksList = Array<GetVariantLinksResponseLinksItem>;
-export const GetVariantLinksResponseLinksList = /*@__PURE__*/ S.Array(
-  GetVariantLinksResponseLinksItem,
-) as any as S.Schema<GetVariantLinksResponseLinksList>;
+export const GetVariantLinksResponseLinksList =
+  BroadcastLinksResponseLinksList as any as S.Schema<GetVariantLinksResponseLinksList>;
 
 export interface GetVariantLinksResponse {
   /** Each object in the array represents a link in your one-time send variant. */
   links?: GetVariantLinksResponseLinksList;
 }
-export const GetVariantLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(GetVariantLinksResponseLinksList),
-  }),
-).annotate({ identifier: "GetVariantLinksResponse" }) as any as S.Schema<GetVariantLinksResponse>;
+export const GetVariantLinksResponse =
+  BroadcastLinksResponse as any as S.Schema<GetVariantLinksResponse>;
 
 export type GetVariantMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
 export const GetVariantMetricsRequestPeriod = S.String;
@@ -19666,160 +18899,133 @@ export const GetVariantMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The number of `attempted` messages. */
 export type GetVariantMetricsResponseMetricSeriesAttemptedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesAttemptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesAttemptedList>;
+export const GetVariantMetricsResponseMetricSeriesAttemptedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type GetVariantMetricsResponseMetricSeriesBouncedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesBouncedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesBouncedList>;
+export const GetVariantMetricsResponseMetricSeriesBouncedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type GetVariantMetricsResponseMetricSeriesClickedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesClickedList>;
+export const GetVariantMetricsResponseMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type GetVariantMetricsResponseMetricSeriesConvertedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesConvertedList>;
+export const GetVariantMetricsResponseMetricSeriesConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type GetVariantMetricsResponseMetricSeriesCreatedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesCreatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesCreatedList>;
+export const GetVariantMetricsResponseMetricSeriesCreatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type GetVariantMetricsResponseMetricSeriesDeferredList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesDeferredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesDeferredList>;
+export const GetVariantMetricsResponseMetricSeriesDeferredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type GetVariantMetricsResponseMetricSeriesDeliveredList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesDeliveredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesDeliveredList>;
+export const GetVariantMetricsResponseMetricSeriesDeliveredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type GetVariantMetricsResponseMetricSeriesDraftedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesDraftedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesDraftedList>;
+export const GetVariantMetricsResponseMetricSeriesDraftedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type GetVariantMetricsResponseMetricSeriesFailedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesFailedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesFailedList>;
+export const GetVariantMetricsResponseMetricSeriesFailedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesHumanClickedList>;
+export const GetVariantMetricsResponseMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesHumanOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesHumanOpenedList>;
+export const GetVariantMetricsResponseMetricSeriesHumanOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type GetVariantMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesLinkUntrackedList>;
+export const GetVariantMetricsResponseMetricSeriesLinkUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesMachineClickedList>;
+export const GetVariantMetricsResponseMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type GetVariantMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesOpenUntrackedList>;
+export const GetVariantMetricsResponseMetricSeriesOpenUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type GetVariantMetricsResponseMetricSeriesOpenedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesOpenedList>;
+export const GetVariantMetricsResponseMetricSeriesOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type GetVariantMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesPrefetchOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesPrefetchOpenedList>;
+export const GetVariantMetricsResponseMetricSeriesPrefetchOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type GetVariantMetricsResponseMetricSeriesRepliedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesRepliedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesRepliedList>;
+export const GetVariantMetricsResponseMetricSeriesRepliedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type GetVariantMetricsResponseMetricSeriesSentList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesSentList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesSentList>;
+export const GetVariantMetricsResponseMetricSeriesSentList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesSentList>;
 
 /** The number of spam complaints. */
 export type GetVariantMetricsResponseMetricSeriesSpammedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesSpammedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesSpammedList>;
+export const GetVariantMetricsResponseMetricSeriesSpammedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type GetVariantMetricsResponseMetricSeriesSuppressedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesSuppressedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesSuppressedList>;
+export const GetVariantMetricsResponseMetricSeriesSuppressedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList>;
+export const GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList>;
+export const GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
 export const GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type GetVariantMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesUndeliverableList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesUndeliverableList>;
+export const GetVariantMetricsResponseMetricSeriesUndeliverableList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type GetVariantMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesUnsubscribedList>;
+export const GetVariantMetricsResponseMetricSeriesUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type GetVariantMetricsResponseMetricSeriesUntrackedList = Array<number>;
-export const GetVariantMetricsResponseMetricSeriesUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeriesUntrackedList>;
+export const GetVariantMetricsResponseMetricSeriesUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface GetVariantMetricsResponseMetricSeries {
@@ -20008,9 +19214,8 @@ export const GetVersionResponseNodeEnvelopeHeadersItem = CreateEmailRequestEnvel
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type GetVersionResponseNodeEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-export const GetVersionResponseNodeEnvelopeHeadersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestEnvelopeHeadersItem,
-) as any as S.Schema<GetVersionResponseNodeEnvelopeHeadersList>;
+export const GetVersionResponseNodeEnvelopeHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<GetVersionResponseNodeEnvelopeHeadersList>;
 
 export interface GetVersionResponseNodeEnvelope {
   /** BCC email address. */
@@ -20030,20 +19235,8 @@ export interface GetVersionResponseNodeEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-export const GetVersionResponseNodeEnvelope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from: S.optional(S.String),
-    from_id: S.optional(S.NullOr(S.Number)),
-    headers: S.optional(GetVersionResponseNodeEnvelopeHeadersList),
-    recipient: S.optional(S.String),
-    reply_to: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "GetVersionResponseNodeEnvelope",
-}) as any as S.Schema<GetVersionResponseNodeEnvelope>;
+export const GetVersionResponseNodeEnvelope =
+  CreateEmailResponseEmailEnvelope as any as S.Schema<GetVersionResponseNodeEnvelope>;
 
 /** Always `EMAIL` for the node. */
 export type GetVersionResponseNodeNodeType = "EMAIL";
@@ -20172,15 +19365,12 @@ export const GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersItem
 export type GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList = Array<string>;
-export const GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList>;
+export const GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface GetVersionResponseNodeTransformersRemoveUnusedCss {
@@ -20214,9 +19404,8 @@ export const GetVersionResponseNodeTransformersUrlParametersParametersItem =
 /** List of parameters to append to URLs. */
 export type GetVersionResponseNodeTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
-export const GetVersionResponseNodeTransformersUrlParametersParametersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestTransformersUrlParametersParametersItem,
-) as any as S.Schema<GetVersionResponseNodeTransformersUrlParametersParametersList>;
+export const GetVersionResponseNodeTransformersUrlParametersParametersList =
+  CreateEmailRequestTransformersUrlParametersParametersList as any as S.Schema<GetVersionResponseNodeTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface GetVersionResponseNodeTransformersUrlParameters {
@@ -20225,14 +19414,8 @@ export interface GetVersionResponseNodeTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: GetVersionResponseNodeTransformersUrlParametersParametersList;
 }
-export const GetVersionResponseNodeTransformersUrlParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    parameters: S.optional(GetVersionResponseNodeTransformersUrlParametersParametersList),
-  }),
-).annotate({
-  identifier: "GetVersionResponseNodeTransformersUrlParameters",
-}) as any as S.Schema<GetVersionResponseNodeTransformersUrlParameters>;
+export const GetVersionResponseNodeTransformersUrlParameters =
+  CreateEmailRequestTransformersUrlParameters as any as S.Schema<GetVersionResponseNodeTransformersUrlParameters>;
 
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface GetVersionResponseNodeTransformers {
@@ -20989,10 +20172,8 @@ export const ListActivitiesResponseActivitiesItemDataCase1Value =
 export type ListActivitiesResponseActivitiesItemDataCase1Map = {
   [key: string]: GetPersonActivitiesResponseActivitiesItemDataCase1Value | undefined;
 };
-export const ListActivitiesResponseActivitiesItemDataCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  GetPersonActivitiesResponseActivitiesItemDataCase1Value,
-) as any as S.Schema<ListActivitiesResponseActivitiesItemDataCase1Map>;
+export const ListActivitiesResponseActivitiesItemDataCase1Map =
+  GetPersonActivitiesResponseActivitiesItemDataCase1Map as any as S.Schema<ListActivitiesResponseActivitiesItemDataCase1Map>;
 
 export type ListActivitiesResponseActivitiesItemData =
   | GetPersonActivitiesResponseActivitiesItemDataCase0
@@ -21402,9 +20583,8 @@ export const ListBroadcastsResponseBroadcastsItemState = S.String;
 
 /** An array of tags you set on this broadcast. */
 export type ListBroadcastsResponseBroadcastsItemTagsList = Array<string>;
-export const ListBroadcastsResponseBroadcastsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBroadcastsResponseBroadcastsItemTagsList>;
+export const ListBroadcastsResponseBroadcastsItemTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListBroadcastsResponseBroadcastsItemTagsList>;
 
 /** The type of broadcast. */
 export type ListBroadcastsResponseBroadcastsItemType = "triggered_broadcast";
@@ -21498,19 +20678,8 @@ export interface ListBroadcastTriggersResponseTriggersItem {
   /** The date-time this trigger is scheduled to send at, or `0` if you didn't schedule it. */
   scheduled_at?: number;
 }
-export const ListBroadcastTriggersResponseTriggersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    broadcast_id: S.optional(S.Number),
-    cancelled_at: S.optional(S.Number),
-    created_at: S.optional(S.Number),
-    expires_after: S.optional(S.Number),
-    id: S.optional(S.Number),
-    processed_at: S.optional(S.Number),
-    scheduled_at: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListBroadcastTriggersResponseTriggersItem",
-}) as any as S.Schema<ListBroadcastTriggersResponseTriggersItem>;
+export const ListBroadcastTriggersResponseTriggersItem =
+  CancelBroadcastTriggerResponseTrigger as any as S.Schema<ListBroadcastTriggersResponseTriggersItem>;
 
 /** Each object in the array represents a time that your broadcast was triggered/sent. */
 export type ListBroadcastTriggersResponseTriggersList =
@@ -21898,15 +21067,13 @@ export const ListCampaignsResponseCampaignsItemCase0ActionsItem =
 /** An array of actions contained within the automation. */
 export type ListCampaignsResponseCampaignsItemCase0ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const ListCampaignsResponseCampaignsItemCase0ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase0ActionsList>;
+export const ListCampaignsResponseCampaignsItemCase0ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase0ActionsList>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type ListCampaignsResponseCampaignsItemCase0FilterSegmentIdsList = Array<number>;
-export const ListCampaignsResponseCampaignsItemCase0FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase0FilterSegmentIdsList>;
+export const ListCampaignsResponseCampaignsItemCase0FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListCampaignsResponseCampaignsItemCase0FilterSegmentIdsList>;
 
 /** The message type the template represents. */
 export type ListCampaignsResponseCampaignsItemCase0MsgTemplatesItemType =
@@ -21944,15 +21111,13 @@ export const ListCampaignsResponseCampaignsItemCase0State = S.String;
 
 /** An array of tags you set on this automation. */
 export type ListCampaignsResponseCampaignsItemCase0TagsList = Array<string>;
-export const ListCampaignsResponseCampaignsItemCase0TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase0TagsList>;
+export const ListCampaignsResponseCampaignsItemCase0TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListCampaignsResponseCampaignsItemCase0TagsList>;
 
 /** A list of segments used in the automation trigger, returned if the automation trigger included one or more segment conditions. */
 export type ListCampaignsResponseCampaignsItemCase0TriggerSegmentIdsList = Array<number>;
-export const ListCampaignsResponseCampaignsItemCase0TriggerSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase0TriggerSegmentIdsList>;
+export const ListCampaignsResponseCampaignsItemCase0TriggerSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListCampaignsResponseCampaignsItemCase0TriggerSegmentIdsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type ListCampaignsResponseCampaignsItemCase0Type = "segment";
@@ -22020,15 +21185,13 @@ export const ListCampaignsResponseCampaignsItemCase1ActionsItem =
 /** An array of actions contained within the automation. */
 export type ListCampaignsResponseCampaignsItemCase1ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const ListCampaignsResponseCampaignsItemCase1ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase1ActionsList>;
+export const ListCampaignsResponseCampaignsItemCase1ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase1ActionsList>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type ListCampaignsResponseCampaignsItemCase1FilterSegmentIdsList = Array<number>;
-export const ListCampaignsResponseCampaignsItemCase1FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase1FilterSegmentIdsList>;
+export const ListCampaignsResponseCampaignsItemCase1FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListCampaignsResponseCampaignsItemCase1FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type ListCampaignsResponseCampaignsItemCase1State = "running" | "draft" | "stopped";
@@ -22036,9 +21199,8 @@ export const ListCampaignsResponseCampaignsItemCase1State = S.String;
 
 /** An array of tags you set on this automation. */
 export type ListCampaignsResponseCampaignsItemCase1TagsList = Array<string>;
-export const ListCampaignsResponseCampaignsItemCase1TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase1TagsList>;
+export const ListCampaignsResponseCampaignsItemCase1TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListCampaignsResponseCampaignsItemCase1TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type ListCampaignsResponseCampaignsItemCase1Type = "event";
@@ -22103,15 +21265,13 @@ export const ListCampaignsResponseCampaignsItemCase2ActionsItem =
 /** An array of actions contained within the automation. */
 export type ListCampaignsResponseCampaignsItemCase2ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const ListCampaignsResponseCampaignsItemCase2ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase2ActionsList>;
+export const ListCampaignsResponseCampaignsItemCase2ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase2ActionsList>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type ListCampaignsResponseCampaignsItemCase2FilterSegmentIdsList = Array<number>;
-export const ListCampaignsResponseCampaignsItemCase2FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase2FilterSegmentIdsList>;
+export const ListCampaignsResponseCampaignsItemCase2FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListCampaignsResponseCampaignsItemCase2FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type ListCampaignsResponseCampaignsItemCase2State = "running" | "draft" | "stopped";
@@ -22119,9 +21279,8 @@ export const ListCampaignsResponseCampaignsItemCase2State = S.String;
 
 /** An array of tags you set on this automation. */
 export type ListCampaignsResponseCampaignsItemCase2TagsList = Array<string>;
-export const ListCampaignsResponseCampaignsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase2TagsList>;
+export const ListCampaignsResponseCampaignsItemCase2TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListCampaignsResponseCampaignsItemCase2TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type ListCampaignsResponseCampaignsItemCase2Type = "form";
@@ -22183,15 +21342,13 @@ export const ListCampaignsResponseCampaignsItemCase3ActionsItem =
 /** An array of actions contained within the automation. */
 export type ListCampaignsResponseCampaignsItemCase3ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const ListCampaignsResponseCampaignsItemCase3ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase3ActionsList>;
+export const ListCampaignsResponseCampaignsItemCase3ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase3ActionsList>;
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type ListCampaignsResponseCampaignsItemCase3FilterSegmentIdsList = Array<number>;
-export const ListCampaignsResponseCampaignsItemCase3FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase3FilterSegmentIdsList>;
+export const ListCampaignsResponseCampaignsItemCase3FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListCampaignsResponseCampaignsItemCase3FilterSegmentIdsList>;
 
 /** How often a person will receive this automation based on the date specified in the automation trigger. */
 export type ListCampaignsResponseCampaignsItemCase3Frequency = "once" | "monthly" | "yearly";
@@ -22203,9 +21360,8 @@ export const ListCampaignsResponseCampaignsItemCase3State = S.String;
 
 /** An array of tags you set on this automation. */
 export type ListCampaignsResponseCampaignsItemCase3TagsList = Array<string>;
-export const ListCampaignsResponseCampaignsItemCase3TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase3TagsList>;
+export const ListCampaignsResponseCampaignsItemCase3TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListCampaignsResponseCampaignsItemCase3TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type ListCampaignsResponseCampaignsItemCase3Type = "date";
@@ -22285,9 +21441,8 @@ export const ListCampaignsResponseCampaignsItemCase4ActionsItem =
 /** An array of actions contained within the automation. */
 export type ListCampaignsResponseCampaignsItemCase4ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const ListCampaignsResponseCampaignsItemCase4ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase4ActionsList>;
+export const ListCampaignsResponseCampaignsItemCase4ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase4ActionsList>;
 
 /** Defines the people who will start a journey in your automation. */
 export type ListCampaignsResponseCampaignsItemCase4Audience =
@@ -22297,9 +21452,8 @@ export const ListCampaignsResponseCampaignsItemCase4Audience =
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type ListCampaignsResponseCampaignsItemCase4FilterSegmentIdsList = Array<number>;
-export const ListCampaignsResponseCampaignsItemCase4FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase4FilterSegmentIdsList>;
+export const ListCampaignsResponseCampaignsItemCase4FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListCampaignsResponseCampaignsItemCase4FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type ListCampaignsResponseCampaignsItemCase4State = "running" | "draft" | "stopped";
@@ -22307,9 +21461,8 @@ export const ListCampaignsResponseCampaignsItemCase4State = S.String;
 
 /** An array of tags you set on this automation. */
 export type ListCampaignsResponseCampaignsItemCase4TagsList = Array<string>;
-export const ListCampaignsResponseCampaignsItemCase4TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase4TagsList>;
+export const ListCampaignsResponseCampaignsItemCase4TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListCampaignsResponseCampaignsItemCase4TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type ListCampaignsResponseCampaignsItemCase4Type = "relationship";
@@ -22386,9 +21539,8 @@ export const ListCampaignsResponseCampaignsItemCase5ActionsItem =
 /** An array of actions contained within the automation. */
 export type ListCampaignsResponseCampaignsItemCase5ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const ListCampaignsResponseCampaignsItemCase5ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase5ActionsList>;
+export const ListCampaignsResponseCampaignsItemCase5ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase5ActionsList>;
 
 /** Defines the people who will start a journey in your automation. */
 export type ListCampaignsResponseCampaignsItemCase5Audience =
@@ -22398,9 +21550,8 @@ export const ListCampaignsResponseCampaignsItemCase5Audience =
 
 /** A list of segments used in the automation filter, returned if the automation audience was filtered on one or more segments. */
 export type ListCampaignsResponseCampaignsItemCase5FilterSegmentIdsList = Array<number>;
-export const ListCampaignsResponseCampaignsItemCase5FilterSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase5FilterSegmentIdsList>;
+export const ListCampaignsResponseCampaignsItemCase5FilterSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListCampaignsResponseCampaignsItemCase5FilterSegmentIdsList>;
 
 /** The status of the automation. */
 export type ListCampaignsResponseCampaignsItemCase5State = "running" | "draft" | "stopped";
@@ -22408,9 +21559,8 @@ export const ListCampaignsResponseCampaignsItemCase5State = S.String;
 
 /** An array of tags you set on this automation. */
 export type ListCampaignsResponseCampaignsItemCase5TagsList = Array<string>;
-export const ListCampaignsResponseCampaignsItemCase5TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase5TagsList>;
+export const ListCampaignsResponseCampaignsItemCase5TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListCampaignsResponseCampaignsItemCase5TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type ListCampaignsResponseCampaignsItemCase5Type = "object";
@@ -22487,9 +21637,8 @@ export const ListCampaignsResponseCampaignsItemCase6ActionsItem =
 /** An array of actions contained within the automation. */
 export type ListCampaignsResponseCampaignsItemCase6ActionsList =
   Array<GetCampaignsResponseCampaignCase0ActionsItem>;
-export const ListCampaignsResponseCampaignsItemCase6ActionsList = /*@__PURE__*/ S.Array(
-  GetCampaignsResponseCampaignCase0ActionsItem,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase6ActionsList>;
+export const ListCampaignsResponseCampaignsItemCase6ActionsList =
+  GetCampaignsResponseCampaignCase0ActionsList as any as S.Schema<ListCampaignsResponseCampaignsItemCase6ActionsList>;
 
 /** The status of the automation. */
 export type ListCampaignsResponseCampaignsItemCase6State = "running" | "draft" | "stopped";
@@ -22497,9 +21646,8 @@ export const ListCampaignsResponseCampaignsItemCase6State = S.String;
 
 /** An array of tags you set on this automation. */
 export type ListCampaignsResponseCampaignsItemCase6TagsList = Array<string>;
-export const ListCampaignsResponseCampaignsItemCase6TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCampaignsResponseCampaignsItemCase6TagsList>;
+export const ListCampaignsResponseCampaignsItemCase6TagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListCampaignsResponseCampaignsItemCase6TagsList>;
 
 /** The type of automation trigger. **Sunsetting on March 30, 2025** */
 export type ListCampaignsResponseCampaignsItemCase6Type = "webhook";
@@ -22672,15 +21820,8 @@ export interface ListComponentsResponseMetaPagination {
   /** The total number of folders. */
   total?: number;
 }
-export const ListComponentsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    page: S.optional(S.Number),
-    total: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListComponentsResponseMetaPagination",
-}) as any as S.Schema<ListComponentsResponseMetaPagination>;
+export const ListComponentsResponseMetaPagination =
+  ListAssetFoldersResponseMetaPagination as any as S.Schema<ListComponentsResponseMetaPagination>;
 
 export interface ListComponentsResponseMeta {
   /** The filters applied in your request. */
@@ -22810,9 +21951,8 @@ export type ListEmailsResponseFoldersItem = CreateFolderResponseFolder;
 export const ListEmailsResponseFoldersItem = CreateFolderResponseFolder;
 
 export type ListEmailsResponseFoldersList = Array<CreateFolderResponseFolder>;
-export const ListEmailsResponseFoldersList = /*@__PURE__*/ S.Array(
-  CreateFolderResponseFolder,
-) as any as S.Schema<ListEmailsResponseFoldersList>;
+export const ListEmailsResponseFoldersList =
+  ListComponentsResponseFoldersList as any as S.Schema<ListEmailsResponseFoldersList>;
 
 export type ListEmailsResponseMetaPagination = ListComponentsResponseMetaPagination;
 export const ListEmailsResponseMetaPagination = ListComponentsResponseMetaPagination;
@@ -22849,9 +21989,7 @@ export const ListEmailTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList =
   Array<string>;
 export const ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList>;
 
 /** The content of your email. */
 export type ListEmailTranslationsResponseEmailTranslationsItemContent = CreateEmailRequestContent;
@@ -22866,9 +22004,7 @@ export const ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersIt
 export type ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
 export const ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestEnvelopeHeadersItem,
-  ) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList>;
+  CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersList as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList>;
 
 export interface ListEmailTranslationsResponseEmailTranslationsItemEnvelope {
   /** BCC email address. */
@@ -23045,17 +22181,13 @@ export const ListEmailTranslationsResponseEmailTranslationsItemTransformersRemov
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList =
   Array<string>;
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss {
@@ -23069,20 +22201,7 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersR
   whitelist?: ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList;
 }
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      backend_markers: S.optional(
-        ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssBackendMarkersList,
-      ),
-      enabled: S.optional(S.Boolean),
-      uglify: S.optional(S.Boolean),
-      whitelist: S.optional(
-        ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss",
-  }) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss>;
+  CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss>;
 
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
@@ -23093,9 +22212,7 @@ export const ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlPa
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersUrlParametersParametersItem,
-  ) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersList>;
+  CreateEmailResponseEmailTransformersUrlParametersParametersList as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters {
@@ -23105,16 +22222,7 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersU
   parameters?: ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersList;
 }
 export const ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-      parameters: S.optional(
-        ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters",
-  }) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters>;
+  CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters>;
 
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface ListEmailTranslationsResponseEmailTranslationsItemTransformers {
@@ -23335,9 +22443,8 @@ export type ListFoldersResponseFoldersItem = CreateFolderResponseFolder;
 export const ListFoldersResponseFoldersItem = CreateFolderResponseFolder;
 
 export type ListFoldersResponseFoldersList = Array<CreateFolderResponseFolder>;
-export const ListFoldersResponseFoldersList = /*@__PURE__*/ S.Array(
-  CreateFolderResponseFolder,
-) as any as S.Schema<ListFoldersResponseFoldersList>;
+export const ListFoldersResponseFoldersList =
+  ListComponentsResponseFoldersList as any as S.Schema<ListFoldersResponseFoldersList>;
 
 export type ListFoldersResponseMetaPagination = ListComponentsResponseMetaPagination;
 export const ListFoldersResponseMetaPagination = ListComponentsResponseMetaPagination;
@@ -23605,10 +22712,8 @@ export const ListMessagesResponseMessagesItemTrackedResponsesValue =
 export type ListMessagesResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-export const ListMessagesResponseMessagesItemTrackedResponsesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BroadcastMessagesResponseMessagesItemTrackedResponsesValue,
-) as any as S.Schema<ListMessagesResponseMessagesItemTrackedResponsesMap>;
+export const ListMessagesResponseMessagesItemTrackedResponsesMap =
+  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<ListMessagesResponseMessagesItemTrackedResponsesMap>;
 
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type ListMessagesResponseMessagesItemType =
@@ -23726,9 +22831,8 @@ export const ListNewslettersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type ListNewslettersResponseNewslettersItemContentIdsList = Array<number>;
-export const ListNewslettersResponseNewslettersItemContentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListNewslettersResponseNewslettersItemContentIdsList>;
+export const ListNewslettersResponseNewslettersItemContentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListNewslettersResponseNewslettersItemContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type ListNewslettersResponseNewslettersItemRecipientFileStatus =
@@ -23740,9 +22844,8 @@ export const ListNewslettersResponseNewslettersItemRecipientFileStatus = S.Strin
 
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type ListNewslettersResponseNewslettersItemRecipientSegmentIdsList = Array<number>;
-export const ListNewslettersResponseNewslettersItemRecipientSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListNewslettersResponseNewslettersItemRecipientSegmentIdsList>;
+export const ListNewslettersResponseNewslettersItemRecipientSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListNewslettersResponseNewslettersItemRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type ListNewslettersResponseNewslettersItemSendState =
@@ -23758,9 +22861,8 @@ export const ListNewslettersResponseNewslettersItemSendState = S.String;
 
 /** An array of tags associated with the one-time send. */
 export type ListNewslettersResponseNewslettersItemTagsList = Array<string>;
-export const ListNewslettersResponseNewslettersItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNewslettersResponseNewslettersItemTagsList>;
+export const ListNewslettersResponseNewslettersItemTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListNewslettersResponseNewslettersItemTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type ListNewslettersResponseNewslettersItemType =
@@ -23976,10 +23078,8 @@ export const ListSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
 export type ListSegmentsResponseSegmentsItemConditionsMap = { [key: string]: unknown | undefined };
-export const ListSegmentsResponseSegmentsItemConditionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListSegmentsResponseSegmentsItemConditionsMap>;
+export const ListSegmentsResponseSegmentsItemConditionsMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<ListSegmentsResponseSegmentsItemConditionsMap>;
 
 /** The segment's build state. The state is `build` while Customer.io calculates who belongs to the segment, and `finished` when membership is up to date. */
 export type ListSegmentsResponseSegmentsItemState = "build" | "finished";
@@ -23987,9 +23087,8 @@ export const ListSegmentsResponseSegmentsItemState = S.String;
 
 /** The tags assigned to the segment, if any. Tags may help you sort through your segments. */
 export type ListSegmentsResponseSegmentsItemTagsList = Array<string>;
-export const ListSegmentsResponseSegmentsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSegmentsResponseSegmentsItemTagsList>;
+export const ListSegmentsResponseSegmentsItemTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListSegmentsResponseSegmentsItemTagsList>;
 
 /** The type of segment. */
 export type ListSegmentsResponseSegmentsItemType = "dynamic" | "manual";
@@ -24613,93 +23712,78 @@ export const PreviewEmailRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** BCC field Liquid errors. */
 export type PreviewEmailResponseErrorsBccList = Array<string>;
-export const PreviewEmailResponseErrorsBccList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsBccList>;
+export const PreviewEmailResponseErrorsBccList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBccList>;
 
 /** HTML body Liquid errors. */
 export type PreviewEmailResponseErrorsBodyList = Array<string>;
-export const PreviewEmailResponseErrorsBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsBodyList>;
+export const PreviewEmailResponseErrorsBodyList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBodyList>;
 
 /** AMP body Liquid errors. */
 export type PreviewEmailResponseErrorsBodyAmpList = Array<string>;
-export const PreviewEmailResponseErrorsBodyAmpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsBodyAmpList>;
+export const PreviewEmailResponseErrorsBodyAmpList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBodyAmpList>;
 
 /** Plain-text body Liquid errors. */
 export type PreviewEmailResponseErrorsBodyPlainList = Array<string>;
-export const PreviewEmailResponseErrorsBodyPlainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsBodyPlainList>;
+export const PreviewEmailResponseErrorsBodyPlainList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBodyPlainList>;
 
 /** CC field Liquid errors. */
 export type PreviewEmailResponseErrorsCcList = Array<string>;
-export const PreviewEmailResponseErrorsCcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsCcList>;
+export const PreviewEmailResponseErrorsCcList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsCcList>;
 
 /** Event data Liquid errors. */
 export type PreviewEmailResponseErrorsEventList = Array<string>;
-export const PreviewEmailResponseErrorsEventList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsEventList>;
+export const PreviewEmailResponseErrorsEventList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsEventList>;
 
 /** From address Liquid errors. */
 export type PreviewEmailResponseErrorsFromList = Array<string>;
-export const PreviewEmailResponseErrorsFromList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsFromList>;
+export const PreviewEmailResponseErrorsFromList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsFromList>;
 
 /** Layout template errors. */
 export type PreviewEmailResponseErrorsLayoutList = Array<string>;
-export const PreviewEmailResponseErrorsLayoutList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsLayoutList>;
+export const PreviewEmailResponseErrorsLayoutList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsLayoutList>;
 
 /** Message-level errors. */
 export type PreviewEmailResponseErrorsMessageList = Array<string>;
-export const PreviewEmailResponseErrorsMessageList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsMessageList>;
+export const PreviewEmailResponseErrorsMessageList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsMessageList>;
 
 /** Preheader Liquid errors. */
 export type PreviewEmailResponseErrorsPreheaderTextList = Array<string>;
-export const PreviewEmailResponseErrorsPreheaderTextList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsPreheaderTextList>;
+export const PreviewEmailResponseErrorsPreheaderTextList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsPreheaderTextList>;
 
 /** Reply-to address Liquid errors. */
 export type PreviewEmailResponseErrorsReplyToList = Array<string>;
-export const PreviewEmailResponseErrorsReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsReplyToList>;
+export const PreviewEmailResponseErrorsReplyToList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsReplyToList>;
 
 /** Snippet rendering errors. */
 export type PreviewEmailResponseErrorsSnippetsList = Array<string>;
-export const PreviewEmailResponseErrorsSnippetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsSnippetsList>;
+export const PreviewEmailResponseErrorsSnippetsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsSnippetsList>;
 
 /** Subject line Liquid errors. */
 export type PreviewEmailResponseErrorsSubjectList = Array<string>;
-export const PreviewEmailResponseErrorsSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsSubjectList>;
+export const PreviewEmailResponseErrorsSubjectList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsSubjectList>;
 
 /** Recipient field Liquid errors, for example `"undefined variable: customer.email"`. */
 export type PreviewEmailResponseErrorsToList = Array<string>;
-export const PreviewEmailResponseErrorsToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsToList>;
+export const PreviewEmailResponseErrorsToList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsToList>;
 
 /** Trigger data Liquid errors. */
 export type PreviewEmailResponseErrorsTriggerList = Array<string>;
-export const PreviewEmailResponseErrorsTriggerList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseErrorsTriggerList>;
+export const PreviewEmailResponseErrorsTriggerList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsTriggerList>;
 
 /** Per-field Liquid error arrays. All 15 fields are always present; an empty array means no errors for that field. */
 export interface PreviewEmailResponseErrors {
@@ -24758,15 +23842,13 @@ export const PreviewEmailResponseErrors = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors in the header name. */
 export type PreviewEmailResponseHeadersItemNameList = Array<string>;
-export const PreviewEmailResponseHeadersItemNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseHeadersItemNameList>;
+export const PreviewEmailResponseHeadersItemNameList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseHeadersItemNameList>;
 
 /** Errors in the header value. */
 export type PreviewEmailResponseHeadersItemValueList = Array<string>;
-export const PreviewEmailResponseHeadersItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseHeadersItemValueList>;
+export const PreviewEmailResponseHeadersItemValueList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseHeadersItemValueList>;
 
 export interface PreviewEmailResponseHeadersItem {
   /** Errors in the header name. */
@@ -24791,9 +23873,8 @@ export const PreviewEmailResponseHeadersList = /*@__PURE__*/ S.Array(
 
 /** Problems with this link, like a relative URL or liquid tags that were URL-encoded. Empty when the link is fine. */
 export type PreviewEmailResponseLinksItemErrorsList = Array<string>;
-export const PreviewEmailResponseLinksItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewEmailResponseLinksItemErrorsList>;
+export const PreviewEmailResponseLinksItemErrorsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseLinksItemErrorsList>;
 
 export interface PreviewEmailResponseLinksItem {
   /** Problems with this link, like a relative URL or liquid tags that were URL-encoded. Empty when the link is fine. */
@@ -24888,9 +23969,8 @@ export const PublishEmailResponseMappingsItem = GetPublishStatusResponseMappings
 
 /** The template versions created by the publish. Present when `status` is `done`. */
 export type PublishEmailResponseMappingsList = Array<GetPublishStatusResponseMappingsItem>;
-export const PublishEmailResponseMappingsList = /*@__PURE__*/ S.Array(
-  GetPublishStatusResponseMappingsItem,
-) as any as S.Schema<PublishEmailResponseMappingsList>;
+export const PublishEmailResponseMappingsList =
+  GetPublishStatusResponseMappingsList as any as S.Schema<PublishEmailResponseMappingsList>;
 
 /** Returns `done` when the publish process finished within the request window. Returns `pending` when publish is still running for a multi-language email (poll with `publish_id`). */
 export type PublishEmailResponseStatus = "done" | "pending";
@@ -24972,9 +24052,8 @@ export const RestoreVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The nodes whose content was rolled back. Always just the email node itself--component dependencies aren't restored. */
 export type RestoreVersionResponseRestoredNodeIdsList = Array<string>;
-export const RestoreVersionResponseRestoredNodeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreVersionResponseRestoredNodeIdsList>;
+export const RestoreVersionResponseRestoredNodeIdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<RestoreVersionResponseRestoredNodeIdsList>;
 
 export interface RestoreVersionResponse {
   /** The UUID of the restored email node. */
@@ -25235,9 +24314,8 @@ export const ScheduleNewsletterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type ScheduleNewsletterResponseNewsletterContentIdsList = Array<number>;
-export const ScheduleNewsletterResponseNewsletterContentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ScheduleNewsletterResponseNewsletterContentIdsList>;
+export const ScheduleNewsletterResponseNewsletterContentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ScheduleNewsletterResponseNewsletterContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type ScheduleNewsletterResponseNewsletterRecipientFileStatus =
@@ -25249,9 +24327,8 @@ export const ScheduleNewsletterResponseNewsletterRecipientFileStatus = S.String;
 
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList = Array<number>;
-export const ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList>;
+export const ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type ScheduleNewsletterResponseNewsletterSendState =
@@ -25267,9 +24344,8 @@ export const ScheduleNewsletterResponseNewsletterSendState = S.String;
 
 /** An array of tags associated with the one-time send. */
 export type ScheduleNewsletterResponseNewsletterTagsList = Array<string>;
-export const ScheduleNewsletterResponseNewsletterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduleNewsletterResponseNewsletterTagsList>;
+export const ScheduleNewsletterResponseNewsletterTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<ScheduleNewsletterResponseNewsletterTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type ScheduleNewsletterResponseNewsletterType =
@@ -25413,10 +24489,8 @@ export const SendEmailRequestIdentifiers =
 
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendEmailRequestMessageDataMap = { [key: string]: unknown | undefined };
-export const SendEmailRequestMessageDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendEmailRequestMessageDataMap>;
+export const SendEmailRequestMessageDataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendEmailRequestMessageDataMap>;
 
 /** The transactional message template you want to use. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
 export type SendEmailRequestTransactionalMessageId = number | string;
@@ -25542,10 +24616,8 @@ export const SendInAppRequestTransactionalMessageId =
 
 /** An object containing the key-value pairs referenced using liquid in the format `{{trigger.<property_name>}}` in your in-app message. These values populate the `properties` field in the message that the SDK delivers to your application. */
 export type SendInAppRequestMessageDataMap = { [key: string]: unknown | undefined };
-export const SendInAppRequestMessageDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendInAppRequestMessageDataMap>;
+export const SendInAppRequestMessageDataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendInAppRequestMessageDataMap>;
 
 export interface SendInAppRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
@@ -25583,13 +24655,7 @@ export interface SendInAppResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-export const SendInAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delivery_id: S.optional(S.String),
-    queued_at: S.optional(S.Number),
-    send_at: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SendInAppResponse" }) as any as S.Schema<SendInAppResponse>;
+export const SendInAppResponse = SendEmailResponse as any as S.Schema<SendInAppResponse>;
 
 export type SendInboxMessageRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export const SendInboxMessageRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
@@ -25615,10 +24681,8 @@ export const SendInboxMessageRequestTransactionalMessageId =
 
 /** An object containing the key-value pairs referenced using liquid in the format `{{trigger.<property_name>}}` in your inbox message. These values will populate the `properties` field in the message received by your application. */
 export type SendInboxMessageRequestMessageDataMap = { [key: string]: unknown | undefined };
-export const SendInboxMessageRequestMessageDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendInboxMessageRequestMessageDataMap>;
+export const SendInboxMessageRequestMessageDataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendInboxMessageRequestMessageDataMap>;
 
 export interface SendInboxMessageRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
@@ -25659,13 +24723,8 @@ export interface SendInboxMessageResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-export const SendInboxMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delivery_id: S.optional(S.String),
-    queued_at: S.optional(S.Number),
-    send_at: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SendInboxMessageResponse" }) as any as S.Schema<SendInboxMessageResponse>;
+export const SendInboxMessageResponse =
+  SendEmailResponse as any as S.Schema<SendInboxMessageResponse>;
 
 /** Time period in seconds for rate limiting. Must be one of 60 (minute), 3600 (hour), or 86400 (day). */
 export type SendNewsletterRequestRateLimitTimePeriod = 60 | 3600 | 86400;
@@ -25695,9 +24754,8 @@ export const SendNewsletterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type SendNewsletterResponseNewsletterContentIdsList = Array<number>;
-export const SendNewsletterResponseNewsletterContentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SendNewsletterResponseNewsletterContentIdsList>;
+export const SendNewsletterResponseNewsletterContentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<SendNewsletterResponseNewsletterContentIdsList>;
 
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type SendNewsletterResponseNewsletterRecipientFileStatus =
@@ -25709,9 +24767,8 @@ export const SendNewsletterResponseNewsletterRecipientFileStatus = S.String;
 
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type SendNewsletterResponseNewsletterRecipientSegmentIdsList = Array<number>;
-export const SendNewsletterResponseNewsletterRecipientSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SendNewsletterResponseNewsletterRecipientSegmentIdsList>;
+export const SendNewsletterResponseNewsletterRecipientSegmentIdsList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<SendNewsletterResponseNewsletterRecipientSegmentIdsList>;
 
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type SendNewsletterResponseNewsletterSendState =
@@ -25727,9 +24784,8 @@ export const SendNewsletterResponseNewsletterSendState = S.String;
 
 /** An array of tags associated with the one-time send. */
 export type SendNewsletterResponseNewsletterTagsList = Array<string>;
-export const SendNewsletterResponseNewsletterTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendNewsletterResponseNewsletterTagsList>;
+export const SendNewsletterResponseNewsletterTagsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<SendNewsletterResponseNewsletterTagsList>;
 
 /** Channel type for a one-time send or one-time send content variant. */
 export type SendNewsletterResponseNewsletterType =
@@ -25946,10 +25002,8 @@ export const SendPushRequestCustomPayloadAndroidMessageAndroid = /*@__PURE__*/ S
 export type SendPushRequestCustomPayloadAndroidMessageDataMap = {
   [key: string]: string | undefined;
 };
-export const SendPushRequestCustomPayloadAndroidMessageDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SendPushRequestCustomPayloadAndroidMessageDataMap>;
+export const SendPushRequestCustomPayloadAndroidMessageDataMap =
+  GetInboxPreviewJobResponsePreviewsItemScreenshotsMap as any as S.Schema<SendPushRequestCustomPayloadAndroidMessageDataMap>;
 
 /** Contains the push body and title. */
 export interface SendPushRequestCustomPayloadAndroidMessageNotification {
@@ -26003,25 +25057,19 @@ export const SendPushRequestCustomPayloadAndroid = /*@__PURE__*/ S.suspend(() =>
 export type SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1LocArgsList =
   Array<string>;
 export const SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1LocArgsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1LocArgsList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1LocArgsList>;
 
 /** An array of replacement value strings for variables in your subtitle string. Each %@ character in the subtitle-loc-key is replaced by a value from this array, in the order they appear in the subtitle string. */
 export type SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1SubtitleLocArgsList =
   Array<string>;
 export const SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1SubtitleLocArgsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1SubtitleLocArgsList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1SubtitleLocArgsList>;
 
 /** An array of replacement value strings for variables in your title string. Each %@ character in the title-loc-key is replaced by a value from this array, in the order they appear in the title string. */
 export type SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1TitleLocArgsList =
   Array<string>;
 export const SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1TitleLocArgsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1TitleLocArgsList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1TitleLocArgsList>;
 
 export interface SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1 {
   /** The body of your push notification. */
@@ -26255,23 +25303,18 @@ export const SendPushRequestCustomPayloadIosCase0 = /*@__PURE__*/ S.suspend(() =
 
 /** An array of replacement value strings for variables in your message text. Each %@ character in the loc-key is replaced by a value from this array, in the order they appear in the message body. */
 export type SendPushRequestCustomPayloadIosCase1ApsAlertCase1LocArgsList = Array<string>;
-export const SendPushRequestCustomPayloadIosCase1ApsAlertCase1LocArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendPushRequestCustomPayloadIosCase1ApsAlertCase1LocArgsList>;
+export const SendPushRequestCustomPayloadIosCase1ApsAlertCase1LocArgsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<SendPushRequestCustomPayloadIosCase1ApsAlertCase1LocArgsList>;
 
 /** An array of replacement value strings for variables in your subtitle string. Each %@ character in the subtitle-loc-key is replaced by a value from this array, in the order they appear in the subtitle string. */
 export type SendPushRequestCustomPayloadIosCase1ApsAlertCase1SubtitleLocArgsList = Array<string>;
 export const SendPushRequestCustomPayloadIosCase1ApsAlertCase1SubtitleLocArgsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SendPushRequestCustomPayloadIosCase1ApsAlertCase1SubtitleLocArgsList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<SendPushRequestCustomPayloadIosCase1ApsAlertCase1SubtitleLocArgsList>;
 
 /** An array of replacement value strings for variables in your title string. Each %@ character in the title-loc-key is replaced by a value from this array, in the order they appear in the title string. */
 export type SendPushRequestCustomPayloadIosCase1ApsAlertCase1TitleLocArgsList = Array<string>;
 export const SendPushRequestCustomPayloadIosCase1ApsAlertCase1TitleLocArgsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SendPushRequestCustomPayloadIosCase1ApsAlertCase1TitleLocArgsList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<SendPushRequestCustomPayloadIosCase1ApsAlertCase1TitleLocArgsList>;
 
 export interface SendPushRequestCustomPayloadIosCase1ApsAlertCase1 {
   /** The body of your push notification. */
@@ -26456,10 +25499,8 @@ export const SendPushRequestCustomPayload = /*@__PURE__*/ S.suspend(() =>
 
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendPushRequestMessageDataMap = { [key: string]: unknown | undefined };
-export const SendPushRequestMessageDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendPushRequestMessageDataMap>;
+export const SendPushRequestMessageDataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendPushRequestMessageDataMap>;
 
 /** **For iOS Only**: your notification can alert users with the device's default notification sound or play no sound at all. */
 export type SendPushRequestSound = "default" | "none";
@@ -26538,13 +25579,7 @@ export interface SendPushResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-export const SendPushResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delivery_id: S.optional(S.String),
-    queued_at: S.optional(S.Number),
-    send_at: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SendPushResponse" }) as any as S.Schema<SendPushResponse>;
+export const SendPushResponse = SendEmailResponse as any as S.Schema<SendPushResponse>;
 
 export type SendSMSRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export const SendSMSRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
@@ -26569,10 +25604,8 @@ export const SendSMSRequestTransactionalMessageId =
 
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendSMSRequestMessageDataMap = { [key: string]: unknown | undefined };
-export const SendSMSRequestMessageDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendSMSRequestMessageDataMap>;
+export const SendSMSRequestMessageDataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendSMSRequestMessageDataMap>;
 
 export interface SendSMSRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
@@ -26625,13 +25658,7 @@ export interface SendSMSResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-export const SendSMSResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delivery_id: S.optional(S.String),
-    queued_at: S.optional(S.Number),
-    send_at: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SendSMSResponse" }) as any as S.Schema<SendSMSResponse>;
+export const SendSMSResponse = SendEmailResponse as any as S.Schema<SendSMSResponse>;
 
 export type SendWhatsAppRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export const SendWhatsAppRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
@@ -26657,10 +25684,8 @@ export const SendWhatsAppRequestTransactionalMessageId =
 
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendWhatsAppRequestMessageDataMap = { [key: string]: unknown | undefined };
-export const SendWhatsAppRequestMessageDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendWhatsAppRequestMessageDataMap>;
+export const SendWhatsAppRequestMessageDataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendWhatsAppRequestMessageDataMap>;
 
 export interface SendWhatsAppRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
@@ -26710,20 +25735,12 @@ export interface SendWhatsAppResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-export const SendWhatsAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delivery_id: S.optional(S.String),
-    queued_at: S.optional(S.Number),
-    send_at: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SendWhatsAppResponse" }) as any as S.Schema<SendWhatsAppResponse>;
+export const SendWhatsAppResponse = SendEmailResponse as any as S.Schema<SendWhatsAppResponse>;
 
 /** Your own static fields. On iOS, field names must match the `ActivityAttributes` type in your app. For Android custom types, fields pass through to your app's renderer as-is. */
 export type StartLiveNotificationRequestAttributesCase0Map = { [key: string]: unknown | undefined };
-export const StartLiveNotificationRequestAttributesCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StartLiveNotificationRequestAttributesCase0Map>;
+export const StartLiveNotificationRequestAttributesCase0Map =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<StartLiveNotificationRequestAttributesCase0Map>;
 
 /** Static fields for a multi-step tracker template. `notification_type`: `io.customer.livenotifications.segments`. */
 export interface StartLiveNotificationRequestAttributesCase1 {
@@ -26743,13 +25760,8 @@ export interface StartLiveNotificationRequestAttributesCase2 {
   /** Top-row label of the notification. */
   header: string;
 }
-export const StartLiveNotificationRequestAttributesCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    header: S.String,
-  }),
-).annotate({
-  identifier: "StartLiveNotificationRequestAttributesCase2",
-}) as any as S.Schema<StartLiveNotificationRequestAttributesCase2>;
+export const StartLiveNotificationRequestAttributesCase2 =
+  StartLiveNotificationRequestAttributesCase1 as any as S.Schema<StartLiveNotificationRequestAttributesCase2>;
 
 /** Static fields used to create the activity--an order number, a flight's origin and destination, or the teams in a match. On iOS they can't change after start. On Android, include the static fields your renderer needs on update and end calls too, because the SDK renders from a merged payload. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Template fields are documented for [iOS](/integrations/sdk/ios/live-activities/reference/#built-in-templates) and [Android](/integrations/sdk/android/live-notifications/reference/#built-in-templates). */
 export type StartLiveNotificationRequestAttributes =
@@ -26763,10 +25775,8 @@ export const StartLiveNotificationRequestAttributes =
 export type StartLiveNotificationRequestContentStateCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const StartLiveNotificationRequestContentStateCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StartLiveNotificationRequestContentStateCase0Map>;
+export const StartLiveNotificationRequestContentStateCase0Map =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<StartLiveNotificationRequestContentStateCase0Map>;
 
 /** Dynamic fields for the multi-step tracker template. `notification_type`: `io.customer.livenotifications.segments`. */
 export type StartLiveNotificationRequestContentStateCase1 =
@@ -26822,27 +25832,15 @@ export interface StartLiveNotificationRequestPushPayloadAlert {
   /** The sound to play when the activity starts. */
   sound?: string;
 }
-export const StartLiveNotificationRequestPushPayloadAlert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.String,
-    title: S.String,
-    sound: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartLiveNotificationRequestPushPayloadAlert",
-}) as any as S.Schema<StartLiveNotificationRequestPushPayloadAlert>;
+export const StartLiveNotificationRequestPushPayloadAlert =
+  EndLiveNotificationRequestPushPayloadAlert as any as S.Schema<StartLiveNotificationRequestPushPayloadAlert>;
 
 /** The alert shown when the activity starts. Required for iOS. */
 export interface StartLiveNotificationRequestPushPayload {
   alert?: StartLiveNotificationRequestPushPayloadAlert;
 }
-export const StartLiveNotificationRequestPushPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert: S.optional(StartLiveNotificationRequestPushPayloadAlert),
-  }),
-).annotate({
-  identifier: "StartLiveNotificationRequestPushPayload",
-}) as any as S.Schema<StartLiveNotificationRequestPushPayload>;
+export const StartLiveNotificationRequestPushPayload =
+  EndLiveNotificationRequestPushPayload as any as S.Schema<StartLiveNotificationRequestPushPayload>;
 
 export interface StartLiveNotificationRequest {
   /** Static fields used to create the activity--an order number, a flight's origin and destination, or the teams in a match. On iOS they can't change after start. On Android, include the static fields your renderer needs on update and end calls too, because the SDK renders from a merged payload. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Template fields are documented for [iOS](/integrations/sdk/ios/live-activities/reference/#built-in-templates) and [Android](/integrations/sdk/android/live-notifications/reference/#built-in-templates). */
@@ -26887,26 +25885,18 @@ export interface StartLiveNotificationResponse {
   /** The unique identifier (ULID) for the new activity instance. Use it to update, end, or check the status of the activity. */
   instance_id?: string;
 }
-export const StartLiveNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartLiveNotificationResponse",
-}) as any as S.Schema<StartLiveNotificationResponse>;
+export const StartLiveNotificationResponse =
+  EndLiveNotificationResponse as any as S.Schema<StartLiveNotificationResponse>;
 
 /** The identifiers of the preview options you want. You can retrieve client IDs from [List inbox preview options](/integrations/api/app/tag/design-studio-emails/listInboxPreviewClients/). */
 export type SubmitInboxPreviewRequestClientIdsList = Array<string>;
-export const SubmitInboxPreviewRequestClientIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubmitInboxPreviewRequestClientIdsList>;
+export const SubmitInboxPreviewRequestClientIdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<SubmitInboxPreviewRequestClientIdsList>;
 
 /** Liquid variables to render with, as a JSON object--any shape is accepted, from flat variables like `{"first_name": "Janine"}` to nested ones like `{"customer": {"first_name": "Janine"}}`. Defaults to none, which fails the render on any variable the content needs beyond the ones a preview already sets for you. Set `lax_mode` to render missing variables as blank instead. Limited to 128 KB. */
 export type SubmitInboxPreviewRequestSampleDataMap = { [key: string]: unknown | undefined };
-export const SubmitInboxPreviewRequestSampleDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SubmitInboxPreviewRequestSampleDataMap>;
+export const SubmitInboxPreviewRequestSampleDataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SubmitInboxPreviewRequestSampleDataMap>;
 
 export interface SubmitInboxPreviewRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
@@ -26951,30 +25941,23 @@ export const SubmitInboxPreviewResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The email addresses you want to send the test to. You can send to up to 25 addresses per request; up to three addresses on a trial account; or a single address (the account owner's address or your workspace's delivery address) if your account isn't verified yet. */
 export type TestSendEmailRequestToList = Array<string>;
-export const TestSendEmailRequestToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TestSendEmailRequestToList>;
+export const TestSendEmailRequestToList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<TestSendEmailRequestToList>;
 
 /** Sample profile attributes for `customer.*` liquid variables, as a flat object of values. Encode a nested value as a JSON string. You can pass this alongside `customer_id`: Customer.io uses the profile's attributes, and a value here overrides the profile's value for the same key. */
 export type TestSendEmailRequestCustomerMap = { [key: string]: unknown | undefined };
-export const TestSendEmailRequestCustomerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestSendEmailRequestCustomerMap>;
+export const TestSendEmailRequestCustomerMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TestSendEmailRequestCustomerMap>;
 
 /** Sample event data for `event.*` liquid variables. The `event` key references trigger data for event-triggered automations. */
 export type TestSendEmailRequestEventMap = { [key: string]: unknown | undefined };
-export const TestSendEmailRequestEventMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestSendEmailRequestEventMap>;
+export const TestSendEmailRequestEventMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TestSendEmailRequestEventMap>;
 
 /** Sample trigger data for `trigger.*` liquid variables. The `trigger` key references trigger data for these specific workflows: API-triggered broadcasts or transactional messages. */
 export type TestSendEmailRequestTriggerMap = { [key: string]: unknown | undefined };
-export const TestSendEmailRequestTriggerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestSendEmailRequestTriggerMap>;
+export const TestSendEmailRequestTriggerMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TestSendEmailRequestTriggerMap>;
 
 export interface TestSendEmailRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
@@ -27016,15 +25999,13 @@ export const TestSendEmailResponseNodeType = S.String;
 
 /** The recipients the test was sent to. */
 export type TestSendEmailResponseToList = Array<string>;
-export const TestSendEmailResponseToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TestSendEmailResponseToList>;
+export const TestSendEmailResponseToList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<TestSendEmailResponseToList>;
 
 /** The ways this test differs from a real send. Customer.io delivered the email anyway, so read these before you trust what landed in the inbox. You might see that no profile data was available, that context a test send can't supply rendered as empty strings (like `campaign.*` or `message.*` on an email that isn't linked to a workflow), that Customer.io ignored a routing key like `recipient` or `from_address` in your `event` or `trigger` data, or that a recipient field in the template failed to render. That last one doesn't change who got the test: it goes only to the addresses in `to`. Omitted when there's nothing to report. */
 export type TestSendEmailResponseWarningsList = Array<string>;
-export const TestSendEmailResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TestSendEmailResponseWarningsList>;
+export const TestSendEmailResponseWarningsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<TestSendEmailResponseWarningsList>;
 
 export interface TestSendEmailResponse {
   /** Always `true` in a 200 response. Anything that stops the send returns a 4xx instead. Acceptance isn't proof of delivery. */
@@ -27088,23 +26069,18 @@ export const TransactionalLinksResponseLinksItemLink = BroadcastActionLinksRespo
 
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type TransactionalLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-export const TransactionalLinksResponseLinksItemMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeriesClickedList>;
+export const TransactionalLinksResponseLinksItemMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeriesClickedList>;
 
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type TransactionalLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
 export const TransactionalLinksResponseLinksItemMetricSeriesHumanClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeriesHumanClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeriesHumanClickedList>;
 
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type TransactionalLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
 export const TransactionalLinksResponseLinksItemMetricSeriesMachineClickedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeriesMachineClickedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeriesMachineClickedList>;
 
 export interface TransactionalLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
@@ -27114,57 +26090,33 @@ export interface TransactionalLinksResponseLinksItemMetricSeries {
   /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: TransactionalLinksResponseLinksItemMetricSeriesMachineClickedList;
 }
-export const TransactionalLinksResponseLinksItemMetricSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clicked: S.optional(TransactionalLinksResponseLinksItemMetricSeriesClickedList),
-    human_clicked: S.optional(TransactionalLinksResponseLinksItemMetricSeriesHumanClickedList),
-    machine_clicked: S.optional(TransactionalLinksResponseLinksItemMetricSeriesMachineClickedList),
-  }),
-).annotate({
-  identifier: "TransactionalLinksResponseLinksItemMetricSeries",
-}) as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeries>;
+export const TransactionalLinksResponseLinksItemMetricSeries =
+  CampaignActionLinksResponseLinksItemMetricSeries as any as S.Schema<TransactionalLinksResponseLinksItemMetricSeries>;
 
 /** Contains metrics for the link. */
 export interface TransactionalLinksResponseLinksItemMetric {
   series?: TransactionalLinksResponseLinksItemMetricSeries;
 }
-export const TransactionalLinksResponseLinksItemMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    series: S.optional(TransactionalLinksResponseLinksItemMetricSeries),
-  }),
-).annotate({
-  identifier: "TransactionalLinksResponseLinksItemMetric",
-}) as any as S.Schema<TransactionalLinksResponseLinksItemMetric>;
+export const TransactionalLinksResponseLinksItemMetric =
+  CampaignActionLinksResponseLinksItemMetric as any as S.Schema<TransactionalLinksResponseLinksItemMetric>;
 
 export interface TransactionalLinksResponseLinksItem {
   link?: BroadcastActionLinksResponseLinksItemLink;
   /** Contains metrics for the link. */
   metric?: TransactionalLinksResponseLinksItemMetric;
 }
-export const TransactionalLinksResponseLinksItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.optional(BroadcastActionLinksResponseLinksItemLink),
-    metric: S.optional(TransactionalLinksResponseLinksItemMetric),
-  }),
-).annotate({
-  identifier: "TransactionalLinksResponseLinksItem",
-}) as any as S.Schema<TransactionalLinksResponseLinksItem>;
+export const TransactionalLinksResponseLinksItem =
+  CampaignActionLinksResponseLinksItem as any as S.Schema<TransactionalLinksResponseLinksItem>;
 
 export type TransactionalLinksResponseLinksList = Array<TransactionalLinksResponseLinksItem>;
-export const TransactionalLinksResponseLinksList = /*@__PURE__*/ S.Array(
-  TransactionalLinksResponseLinksItem,
-) as any as S.Schema<TransactionalLinksResponseLinksList>;
+export const TransactionalLinksResponseLinksList =
+  CampaignActionLinksResponseLinksList as any as S.Schema<TransactionalLinksResponseLinksList>;
 
 export interface TransactionalLinksResponse {
   links?: TransactionalLinksResponseLinksList;
 }
-export const TransactionalLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(TransactionalLinksResponseLinksList),
-  }),
-).annotate({
-  identifier: "TransactionalLinksResponse",
-}) as any as S.Schema<TransactionalLinksResponse>;
+export const TransactionalLinksResponse =
+  CampaignActionLinksResponse as any as S.Schema<TransactionalLinksResponse>;
 
 export type TransactionalMessagesRequestMetric =
   | "attempted"
@@ -27240,10 +26192,8 @@ export const TransactionalMessagesResponseMessagesItemTrackedResponsesValue =
 export type TransactionalMessagesResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-export const TransactionalMessagesResponseMessagesItemTrackedResponsesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BroadcastMessagesResponseMessagesItemTrackedResponsesValue,
-) as any as S.Schema<TransactionalMessagesResponseMessagesItemTrackedResponsesMap>;
+export const TransactionalMessagesResponseMessagesItemTrackedResponsesMap =
+  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<TransactionalMessagesResponseMessagesItemTrackedResponsesMap>;
 
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type TransactionalMessagesResponseMessagesItemType =
@@ -27366,161 +26316,133 @@ export const TransactionalMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The number of `attempted` messages. */
 export type TransactionalMetricsResponseMetricSeriesAttemptedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesAttemptedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesAttemptedList>;
+export const TransactionalMetricsResponseMetricSeriesAttemptedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesAttemptedList>;
 
 /** The number of `bounced` messages. */
 export type TransactionalMetricsResponseMetricSeriesBouncedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesBouncedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesBouncedList>;
+export const TransactionalMetricsResponseMetricSeriesBouncedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesBouncedList>;
 
 /** The number of `clicked` messages. */
 export type TransactionalMetricsResponseMetricSeriesClickedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesClickedList>;
+export const TransactionalMetricsResponseMetricSeriesClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesClickedList>;
 
 /** The number of `converted` messages. */
 export type TransactionalMetricsResponseMetricSeriesConvertedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesConvertedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesConvertedList>;
+export const TransactionalMetricsResponseMetricSeriesConvertedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesConvertedList>;
 
 /** The number of `created` messages. */
 export type TransactionalMetricsResponseMetricSeriesCreatedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesCreatedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesCreatedList>;
+export const TransactionalMetricsResponseMetricSeriesCreatedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesCreatedList>;
 
 /** The number of `deferred` messages. */
 export type TransactionalMetricsResponseMetricSeriesDeferredList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesDeferredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesDeferredList>;
+export const TransactionalMetricsResponseMetricSeriesDeferredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesDeferredList>;
 
 /** The number of `delivered` messages. */
 export type TransactionalMetricsResponseMetricSeriesDeliveredList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesDeliveredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesDeliveredList>;
+export const TransactionalMetricsResponseMetricSeriesDeliveredList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesDeliveredList>;
 
 /** The number of `drafted` messages. */
 export type TransactionalMetricsResponseMetricSeriesDraftedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesDraftedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesDraftedList>;
+export const TransactionalMetricsResponseMetricSeriesDraftedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesDraftedList>;
 
 /** The number of `failed` messages. */
 export type TransactionalMetricsResponseMetricSeriesFailedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesFailedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesFailedList>;
+export const TransactionalMetricsResponseMetricSeriesFailedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesFailedList>;
 
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type TransactionalMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesHumanClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesHumanClickedList>;
+export const TransactionalMetricsResponseMetricSeriesHumanClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesHumanClickedList>;
 
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type TransactionalMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesHumanOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesHumanOpenedList>;
+export const TransactionalMetricsResponseMetricSeriesHumanOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesHumanOpenedList>;
 
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type TransactionalMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesLinkUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesLinkUntrackedList>;
+export const TransactionalMetricsResponseMetricSeriesLinkUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesLinkUntrackedList>;
 
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type TransactionalMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesMachineClickedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesMachineClickedList>;
+export const TransactionalMetricsResponseMetricSeriesMachineClickedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesMachineClickedList>;
 
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type TransactionalMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesOpenUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesOpenUntrackedList>;
+export const TransactionalMetricsResponseMetricSeriesOpenUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesOpenUntrackedList>;
 
 /** The number of `opened` messages. */
 export type TransactionalMetricsResponseMetricSeriesOpenedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesOpenedList>;
+export const TransactionalMetricsResponseMetricSeriesOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesOpenedList>;
 
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type TransactionalMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesPrefetchOpenedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesPrefetchOpenedList>;
+export const TransactionalMetricsResponseMetricSeriesPrefetchOpenedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesPrefetchOpenedList>;
 
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type TransactionalMetricsResponseMetricSeriesRepliedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesRepliedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesRepliedList>;
+export const TransactionalMetricsResponseMetricSeriesRepliedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesRepliedList>;
 
 /** The number of sent messages. */
 export type TransactionalMetricsResponseMetricSeriesSentList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesSentList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesSentList>;
+export const TransactionalMetricsResponseMetricSeriesSentList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesSentList>;
 
 /** The number of spam complaints. */
 export type TransactionalMetricsResponseMetricSeriesSpammedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesSpammedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesSpammedList>;
+export const TransactionalMetricsResponseMetricSeriesSpammedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesSpammedList>;
 
 /** The number of `suppressed` messages. */
 export type TransactionalMetricsResponseMetricSeriesSuppressedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesSuppressedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesSuppressedList>;
+export const TransactionalMetricsResponseMetricSeriesSuppressedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesSuppressedList>;
 
 /** The number of topic unsubscribes in a given period. */
 export type TransactionalMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesTopicUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesTopicUnsubscribedList>;
+export const TransactionalMetricsResponseMetricSeriesTopicUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesTopicUnsubscribedList>;
 
 /** The number of people who denied consent to email open tracking in the period. */
 export type TransactionalMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
 export const TransactionalMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<TransactionalMetricsResponseMetricSeriesTrackingConsentDeniedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesTrackingConsentDeniedList>;
 
 /** The number of people who granted consent to email open tracking in the period. */
 export type TransactionalMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
 export const TransactionalMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<TransactionalMetricsResponseMetricSeriesTrackingConsentGrantedList>;
+  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesTrackingConsentGrantedList>;
 
 /** The number of `undeliverable` messages. */
 export type TransactionalMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesUndeliverableList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesUndeliverableList>;
+export const TransactionalMetricsResponseMetricSeriesUndeliverableList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesUndeliverableList>;
 
 /** The number of unsubscribes attributed to the automation or message. */
 export type TransactionalMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesUnsubscribedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesUnsubscribedList>;
+export const TransactionalMetricsResponseMetricSeriesUnsubscribedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesUnsubscribedList>;
 
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type TransactionalMetricsResponseMetricSeriesUntrackedList = Array<number>;
-export const TransactionalMetricsResponseMetricSeriesUntrackedList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransactionalMetricsResponseMetricSeriesUntrackedList>;
+export const TransactionalMetricsResponseMetricSeriesUntrackedList =
+  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<TransactionalMetricsResponseMetricSeriesUntrackedList>;
 
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface TransactionalMetricsResponseMetricSeries {
@@ -27577,54 +26499,15 @@ export interface TransactionalMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: TransactionalMetricsResponseMetricSeriesUntrackedList;
 }
-export const TransactionalMetricsResponseMetricSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempted: S.optional(TransactionalMetricsResponseMetricSeriesAttemptedList),
-    bounced: S.optional(TransactionalMetricsResponseMetricSeriesBouncedList),
-    clicked: S.optional(TransactionalMetricsResponseMetricSeriesClickedList),
-    converted: S.optional(TransactionalMetricsResponseMetricSeriesConvertedList),
-    created: S.optional(TransactionalMetricsResponseMetricSeriesCreatedList),
-    deferred: S.optional(TransactionalMetricsResponseMetricSeriesDeferredList),
-    delivered: S.optional(TransactionalMetricsResponseMetricSeriesDeliveredList),
-    drafted: S.optional(TransactionalMetricsResponseMetricSeriesDraftedList),
-    failed: S.optional(TransactionalMetricsResponseMetricSeriesFailedList),
-    human_clicked: S.optional(TransactionalMetricsResponseMetricSeriesHumanClickedList),
-    human_opened: S.optional(TransactionalMetricsResponseMetricSeriesHumanOpenedList),
-    link_untracked: S.optional(TransactionalMetricsResponseMetricSeriesLinkUntrackedList),
-    machine_clicked: S.optional(TransactionalMetricsResponseMetricSeriesMachineClickedList),
-    open_untracked: S.optional(TransactionalMetricsResponseMetricSeriesOpenUntrackedList),
-    opened: S.optional(TransactionalMetricsResponseMetricSeriesOpenedList),
-    prefetch_opened: S.optional(TransactionalMetricsResponseMetricSeriesPrefetchOpenedList),
-    replied: S.optional(TransactionalMetricsResponseMetricSeriesRepliedList),
-    sent: S.optional(TransactionalMetricsResponseMetricSeriesSentList),
-    spammed: S.optional(TransactionalMetricsResponseMetricSeriesSpammedList),
-    suppressed: S.optional(TransactionalMetricsResponseMetricSeriesSuppressedList),
-    topic_unsubscribed: S.optional(TransactionalMetricsResponseMetricSeriesTopicUnsubscribedList),
-    tracking_consent_denied: S.optional(
-      TransactionalMetricsResponseMetricSeriesTrackingConsentDeniedList,
-    ),
-    tracking_consent_granted: S.optional(
-      TransactionalMetricsResponseMetricSeriesTrackingConsentGrantedList,
-    ),
-    undeliverable: S.optional(TransactionalMetricsResponseMetricSeriesUndeliverableList),
-    unsubscribed: S.optional(TransactionalMetricsResponseMetricSeriesUnsubscribedList),
-    untracked: S.optional(TransactionalMetricsResponseMetricSeriesUntrackedList),
-  }),
-).annotate({
-  identifier: "TransactionalMetricsResponseMetricSeries",
-}) as any as S.Schema<TransactionalMetricsResponseMetricSeries>;
+export const TransactionalMetricsResponseMetricSeries =
+  CampaignActionMetricsResponseMetricSeries as any as S.Schema<TransactionalMetricsResponseMetricSeries>;
 
 export interface TransactionalMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: TransactionalMetricsResponseMetricSeries;
 }
-export const TransactionalMetricsResponseMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    series: S.optional(TransactionalMetricsResponseMetricSeries),
-  }),
-).annotate({
-  identifier: "TransactionalMetricsResponseMetric",
-}) as any as S.Schema<TransactionalMetricsResponseMetric>;
+export const TransactionalMetricsResponseMetric =
+  CampaignActionMetricsResponseMetric as any as S.Schema<TransactionalMetricsResponseMetric>;
 
 export interface TransactionalMetricsResponse {
   metric?: TransactionalMetricsResponseMetric;
@@ -27639,10 +26522,8 @@ export const TransactionalMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains information you want to use to populate your broadcast. */
 export type TriggerBroadcastRequestBodyCase0DataMap = { [key: string]: unknown | undefined };
-export const TriggerBroadcastRequestBodyCase0DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase0DataMap>;
+export const TriggerBroadcastRequestBodyCase0DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase0DataMap>;
 
 /** Send your broadcast to the default set of recipients defined in the UI. */
 export interface TriggerBroadcastRequestBodyCase0 {
@@ -29462,10 +28343,8 @@ export const TriggerBroadcastRequestBodyCase1Recipients =
 
 /** Contains information you want to use to populate your broadcast. */
 export type TriggerBroadcastRequestBodyCase1DataMap = { [key: string]: unknown | undefined };
-export const TriggerBroadcastRequestBodyCase1DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase1DataMap>;
+export const TriggerBroadcastRequestBodyCase1DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase1DataMap>;
 
 /** Send your broadcast to a group of people defined by a set of filters. */
 export interface TriggerBroadcastRequestBodyCase1 {
@@ -29500,16 +28379,13 @@ export const TriggerBroadcastRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of email addresses you want to send the broadcast to. These addresses must already exist; your request cannot create a new person. */
 export type TriggerBroadcastRequestBodyCase2EmailsList = Array<string>;
-export const TriggerBroadcastRequestBodyCase2EmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase2EmailsList>;
+export const TriggerBroadcastRequestBodyCase2EmailsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<TriggerBroadcastRequestBodyCase2EmailsList>;
 
 /** Contains information you want to use to populate your broadcast. */
 export type TriggerBroadcastRequestBodyCase2DataMap = { [key: string]: unknown | undefined };
-export const TriggerBroadcastRequestBodyCase2DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase2DataMap>;
+export const TriggerBroadcastRequestBodyCase2DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase2DataMap>;
 
 /** An array of emails you want to send the broadcast to. These addresses must already exist; your request cannot create a new person. */
 export interface TriggerBroadcastRequestBodyCase2 {
@@ -29544,16 +28420,13 @@ export const TriggerBroadcastRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of IDs you want to send a broadcast to. **NOTE**: If your workspace identifies people by `email`, don't use this option. Identify your audience by `emails` instead. */
 export type TriggerBroadcastRequestBodyCase3IdsList = Array<string>;
-export const TriggerBroadcastRequestBodyCase3IdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase3IdsList>;
+export const TriggerBroadcastRequestBodyCase3IdsList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<TriggerBroadcastRequestBodyCase3IdsList>;
 
 /** Contains information you want to use to populate your broadcast. */
 export type TriggerBroadcastRequestBodyCase3DataMap = { [key: string]: unknown | undefined };
-export const TriggerBroadcastRequestBodyCase3DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase3DataMap>;
+export const TriggerBroadcastRequestBodyCase3DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase3DataMap>;
 
 /** An array of customer ids that you want to send the broadcast to. These IDs must already exist; your request cannot create a new person. */
 export interface TriggerBroadcastRequestBodyCase3 {
@@ -29590,10 +28463,8 @@ export const TriggerBroadcastRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
 export type TriggerBroadcastRequestBodyCase4PerUserDataItemCase0DataMap = {
   [key: string]: unknown | undefined;
 };
-export const TriggerBroadcastRequestBodyCase4PerUserDataItemCase0DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase4PerUserDataItemCase0DataMap>;
+export const TriggerBroadcastRequestBodyCase4PerUserDataItemCase0DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase4PerUserDataItemCase0DataMap>;
 
 export interface TriggerBroadcastRequestBodyCase4PerUserDataItemCase0 {
   /** The ID of the recipient. */
@@ -29614,10 +28485,8 @@ export const TriggerBroadcastRequestBodyCase4PerUserDataItemCase0 = /*@__PURE__*
 export type TriggerBroadcastRequestBodyCase4PerUserDataItemCase1DataMap = {
   [key: string]: unknown | undefined;
 };
-export const TriggerBroadcastRequestBodyCase4PerUserDataItemCase1DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase4PerUserDataItemCase1DataMap>;
+export const TriggerBroadcastRequestBodyCase4PerUserDataItemCase1DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase4PerUserDataItemCase1DataMap>;
 
 export interface TriggerBroadcastRequestBodyCase4PerUserDataItemCase1 {
   /** The email address of the recipient. This address must be unique in your workspace. If more than one person has the same `email` attribute, your request will produce an error. */
@@ -29649,10 +28518,8 @@ export const TriggerBroadcastRequestBodyCase4PerUserDataList = /*@__PURE__*/ S.A
 
 /** Contains information you want to use to populate your broadcast. */
 export type TriggerBroadcastRequestBodyCase4DataMap = { [key: string]: unknown | undefined };
-export const TriggerBroadcastRequestBodyCase4DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase4DataMap>;
+export const TriggerBroadcastRequestBodyCase4DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase4DataMap>;
 
 /** An array of JSON objects containing `id` or `email` keys and a `data` key. Each object represents a person you want to send the broadcast to and data you want to personalize their message with using liquid. */
 export interface TriggerBroadcastRequestBodyCase4 {
@@ -29687,10 +28554,8 @@ export const TriggerBroadcastRequestBodyCase4 = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains information you want to use to populate your broadcast. */
 export type TriggerBroadcastRequestBodyCase5DataMap = { [key: string]: unknown | undefined };
-export const TriggerBroadcastRequestBodyCase5DataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerBroadcastRequestBodyCase5DataMap>;
+export const TriggerBroadcastRequestBodyCase5DataMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TriggerBroadcastRequestBodyCase5DataMap>;
 
 /** The URL of a data file with one JSON object per line, using either `id` and `data` or `email` and `data`. The people you reference must already exist in your workspace. The file may be gzip-compressed to reduce transfer size (recommended for large files); if compressed, it must use gzip and the hosting server must return a `Content-Encoding` header set to `gzip` when the file is downloaded. */
 export interface TriggerBroadcastRequestBodyCase5 {
@@ -29772,9 +28637,7 @@ export const UpdateAssetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAssetRequest" }) as any as S.Schema<UpdateAssetRequest>;
 
 export interface UpdateAssetResponse {}
-export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAssetResponse",
-}) as any as S.Schema<UpdateAssetResponse>;
+export const UpdateAssetResponse = DeleteAssetResponse as any as S.Schema<UpdateAssetResponse>;
 
 export interface UpdateAssetFolderRequest {
   /** The unique identifier of the resource. */
@@ -29793,9 +28656,8 @@ export const UpdateAssetFolderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAssetFolderRequest" }) as any as S.Schema<UpdateAssetFolderRequest>;
 
 export interface UpdateAssetFolderResponse {}
-export const UpdateAssetFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAssetFolderResponse",
-}) as any as S.Schema<UpdateAssetFolderResponse>;
+export const UpdateAssetFolderResponse =
+  DeleteAssetResponse as any as S.Schema<UpdateAssetFolderResponse>;
 
 /** Available on Premium plans. This indicates whether an attribute is sensitive or not. 0 means NOT sensitive. 1 means sensitive. */
 export type UpdateAttributeMetadataRequestAttributesItemPrivacyLevel = 0 | 1;
@@ -29849,21 +28711,14 @@ export interface UpdateBroadcastActionRequestBodyCase0HeadersItem {
   /** The value of the header. */
   value?: string;
 }
-export const UpdateBroadcastActionRequestBodyCase0HeadersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastActionRequestBodyCase0HeadersItem",
-}) as any as S.Schema<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
+export const UpdateBroadcastActionRequestBodyCase0HeadersItem =
+  CreateEmailRequestEnvelopeHeadersItem as any as S.Schema<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
 
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateBroadcastActionRequestBodyCase0HeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateBroadcastActionRequestBodyCase0HeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateBroadcastActionRequestBodyCase0HeadersList>;
+export const UpdateBroadcastActionRequestBodyCase0HeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateBroadcastActionRequestBodyCase0HeadersList>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateBroadcastActionRequestBodyCase0SendingState = "automatic" | "draft" | "off";
@@ -30363,9 +29218,8 @@ export const UpdateBroadcastActionLanguageRequestBodyCase0HeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateBroadcastActionLanguageRequestBodyCase0HeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateBroadcastActionLanguageRequestBodyCase0HeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase0HeadersList>;
+export const UpdateBroadcastActionLanguageRequestBodyCase0HeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateBroadcastActionLanguageRequestBodyCase0HeadersList>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateBroadcastActionLanguageRequestBodyCase0SendingState =
@@ -30896,9 +29750,8 @@ export const UpdateCampaignActionRequestBodyCase0HeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateCampaignActionRequestBodyCase0HeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateCampaignActionRequestBodyCase0HeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateCampaignActionRequestBodyCase0HeadersList>;
+export const UpdateCampaignActionRequestBodyCase0HeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateCampaignActionRequestBodyCase0HeadersList>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateCampaignActionRequestBodyCase0SendingState = "automatic" | "draft" | "off";
@@ -31416,9 +30269,8 @@ export const UpdateCampaignActionTranslationRequestBodyCase0HeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateCampaignActionTranslationRequestBodyCase0HeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateCampaignActionTranslationRequestBodyCase0HeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase0HeadersList>;
+export const UpdateCampaignActionTranslationRequestBodyCase0HeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateCampaignActionTranslationRequestBodyCase0HeadersList>;
 
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
 export type UpdateCampaignActionTranslationRequestBodyCase0SendingState =
@@ -31960,17 +30812,14 @@ export const UpdateCampaignActionTranslationResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateCampaignActionTranslationResponse>;
 
 export type UpdateCollectionRequestBodyCase0DataItemMap = { [key: string]: unknown | undefined };
-export const UpdateCollectionRequestBodyCase0DataItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateCollectionRequestBodyCase0DataItemMap>;
+export const UpdateCollectionRequestBodyCase0DataItemMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<UpdateCollectionRequestBodyCase0DataItemMap>;
 
 /** An array of data objects that you want to reference in this collection. */
 export type UpdateCollectionRequestBodyCase0DataList =
   Array<UpdateCollectionRequestBodyCase0DataItemMap>;
-export const UpdateCollectionRequestBodyCase0DataList = /*@__PURE__*/ S.Array(
-  UpdateCollectionRequestBodyCase0DataItemMap,
-) as any as S.Schema<UpdateCollectionRequestBodyCase0DataList>;
+export const UpdateCollectionRequestBodyCase0DataList =
+  AddCollectionRequestBodyCase0DataList as any as S.Schema<UpdateCollectionRequestBodyCase0DataList>;
 
 export interface UpdateCollectionRequestBodyCase0 {
   /** An array of data objects that you want to reference in this collection. */
@@ -32022,9 +30871,8 @@ export const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type UpdateCollectionResponseCollectionSchemaList = Array<string>;
-export const UpdateCollectionResponseCollectionSchemaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseCollectionSchemaList>;
+export const UpdateCollectionResponseCollectionSchemaList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<UpdateCollectionResponseCollectionSchemaList>;
 
 export interface UpdateCollectionResponseCollection {
   /** The size of the collection in bytes. */
@@ -32042,34 +30890,18 @@ export interface UpdateCollectionResponseCollection {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-export const UpdateCollectionResponseCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytes: S.optional(S.Number),
-    created_at: S.optional(S.Number),
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    rows: S.optional(S.Number),
-    schema: S.optional(UpdateCollectionResponseCollectionSchemaList),
-    updated_at: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCollectionResponseCollection",
-}) as any as S.Schema<UpdateCollectionResponseCollection>;
+export const UpdateCollectionResponseCollection =
+  AddCollectionResponseCollection as any as S.Schema<UpdateCollectionResponseCollection>;
 
 export interface UpdateCollectionResponse {
   collection?: UpdateCollectionResponseCollection;
 }
-export const UpdateCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collection: S.optional(UpdateCollectionResponseCollection),
-  }),
-).annotate({ identifier: "UpdateCollectionResponse" }) as any as S.Schema<UpdateCollectionResponse>;
+export const UpdateCollectionResponse =
+  AddCollectionResponse as any as S.Schema<UpdateCollectionResponse>;
 
 export type UpdateCollectionContentsRequestBodyMap = { [key: string]: unknown | undefined };
-export const UpdateCollectionContentsRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateCollectionContentsRequestBodyMap>;
+export const UpdateCollectionContentsRequestBodyMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<UpdateCollectionContentsRequestBodyMap>;
 
 export interface UpdateCollectionContentsRequest {
   /** The identifier for a collection. */
@@ -32087,9 +30919,8 @@ export const UpdateCollectionContentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type UpdateCollectionContentsResponseCollectionSchemaList = Array<string>;
-export const UpdateCollectionContentsResponseCollectionSchemaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionContentsResponseCollectionSchemaList>;
+export const UpdateCollectionContentsResponseCollectionSchemaList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<UpdateCollectionContentsResponseCollectionSchemaList>;
 
 export interface UpdateCollectionContentsResponseCollection {
   /** The size of the collection in bytes. */
@@ -32107,19 +30938,8 @@ export interface UpdateCollectionContentsResponseCollection {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-export const UpdateCollectionContentsResponseCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytes: S.optional(S.Number),
-    created_at: S.optional(S.Number),
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    rows: S.optional(S.Number),
-    schema: S.optional(UpdateCollectionContentsResponseCollectionSchemaList),
-    updated_at: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateCollectionContentsResponseCollection",
-}) as any as S.Schema<UpdateCollectionContentsResponseCollection>;
+export const UpdateCollectionContentsResponseCollection =
+  AddCollectionResponseCollection as any as S.Schema<UpdateCollectionContentsResponseCollection>;
 
 export interface UpdateCollectionContentsResponse {
   collection?: UpdateCollectionContentsResponseCollection;
@@ -32155,9 +30975,8 @@ export const UpdateComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateComponentRequest" }) as any as S.Schema<UpdateComponentRequest>;
 
 export interface UpdateComponentResponse {}
-export const UpdateComponentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateComponentResponse",
-}) as any as S.Schema<UpdateComponentResponse>;
+export const UpdateComponentResponse =
+  DeleteAssetResponse as any as S.Schema<UpdateComponentResponse>;
 
 /** The content of your email. */
 export type UpdateEmailRequestContent = CreateEmailRequestContent;
@@ -32168,9 +30987,8 @@ export const UpdateEmailRequestEnvelopeHeadersItem = CreateEmailRequestEnvelopeH
 
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type UpdateEmailRequestEnvelopeHeadersList = Array<CreateEmailRequestEnvelopeHeadersItem>;
-export const UpdateEmailRequestEnvelopeHeadersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestEnvelopeHeadersItem,
-) as any as S.Schema<UpdateEmailRequestEnvelopeHeadersList>;
+export const UpdateEmailRequestEnvelopeHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateEmailRequestEnvelopeHeadersList>;
 
 /** The envelope of your email, like from and to addresses. */
 export interface UpdateEmailRequestEnvelope {
@@ -32187,18 +31005,8 @@ export interface UpdateEmailRequestEnvelope {
   /** Reply-to identity ID. Must reference an existing identity from *Workspace Settings > Email* under your From Addresses. */
   reply_to_id?: number | null;
 }
-export const UpdateEmailRequestEnvelope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from_id: S.optional(S.NullOr(S.Number)),
-    headers: S.optional(UpdateEmailRequestEnvelopeHeadersList),
-    recipient: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "UpdateEmailRequestEnvelope",
-}) as any as S.Schema<UpdateEmailRequestEnvelope>;
+export const UpdateEmailRequestEnvelope =
+  CreateEmailRequestEnvelope as any as S.Schema<UpdateEmailRequestEnvelope>;
 
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type UpdateEmailRequestTransformersAccessibility =
@@ -32321,15 +31129,12 @@ export const UpdateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem =
 export type UpdateEmailRequestTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const UpdateEmailRequestTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList = Array<string>;
-export const UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList>;
+export const UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList =
+  AddCollectionResponseCollectionSchemaList as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface UpdateEmailRequestTransformersRemoveUnusedCss {
@@ -32342,16 +31147,8 @@ export interface UpdateEmailRequestTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList;
 }
-export const UpdateEmailRequestTransformersRemoveUnusedCss = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backend_markers: S.optional(UpdateEmailRequestTransformersRemoveUnusedCssBackendMarkersList),
-    enabled: S.optional(S.Boolean),
-    uglify: S.optional(S.Boolean),
-    whitelist: S.optional(UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList),
-  }),
-).annotate({
-  identifier: "UpdateEmailRequestTransformersRemoveUnusedCss",
-}) as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCss>;
+export const UpdateEmailRequestTransformersRemoveUnusedCss =
+  CreateEmailRequestTransformersRemoveUnusedCss as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCss>;
 
 export type UpdateEmailRequestTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
@@ -32361,9 +31158,8 @@ export const UpdateEmailRequestTransformersUrlParametersParametersItem =
 /** List of parameters to append to URLs. */
 export type UpdateEmailRequestTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
-export const UpdateEmailRequestTransformersUrlParametersParametersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestTransformersUrlParametersParametersItem,
-) as any as S.Schema<UpdateEmailRequestTransformersUrlParametersParametersList>;
+export const UpdateEmailRequestTransformersUrlParametersParametersList =
+  CreateEmailRequestTransformersUrlParametersParametersList as any as S.Schema<UpdateEmailRequestTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface UpdateEmailRequestTransformersUrlParameters {
@@ -32372,14 +31168,8 @@ export interface UpdateEmailRequestTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: UpdateEmailRequestTransformersUrlParametersParametersList;
 }
-export const UpdateEmailRequestTransformersUrlParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    parameters: S.optional(UpdateEmailRequestTransformersUrlParametersParametersList),
-  }),
-).annotate({
-  identifier: "UpdateEmailRequestTransformersUrlParameters",
-}) as any as S.Schema<UpdateEmailRequestTransformersUrlParameters>;
+export const UpdateEmailRequestTransformersUrlParameters =
+  CreateEmailRequestTransformersUrlParameters as any as S.Schema<UpdateEmailRequestTransformersUrlParameters>;
 
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface UpdateEmailRequestTransformers {
@@ -32444,9 +31234,7 @@ export const UpdateEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateEmailRequest" }) as any as S.Schema<UpdateEmailRequest>;
 
 export interface UpdateEmailResponse {}
-export const UpdateEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEmailResponse",
-}) as any as S.Schema<UpdateEmailResponse>;
+export const UpdateEmailResponse = DeleteAssetResponse as any as S.Schema<UpdateEmailResponse>;
 
 /** The content of your email. */
 export type UpdateEmailTranslationRequestContent = CreateEmailRequestContent;
@@ -32460,9 +31248,8 @@ export const UpdateEmailTranslationRequestEnvelopeHeadersItem =
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type UpdateEmailTranslationRequestEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-export const UpdateEmailTranslationRequestEnvelopeHeadersList = /*@__PURE__*/ S.Array(
-  CreateEmailRequestEnvelopeHeadersItem,
-) as any as S.Schema<UpdateEmailTranslationRequestEnvelopeHeadersList>;
+export const UpdateEmailTranslationRequestEnvelopeHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateEmailTranslationRequestEnvelopeHeadersList>;
 
 /** The envelope of your email, like from and to addresses. */
 export interface UpdateEmailTranslationRequestEnvelope {
@@ -32479,18 +31266,8 @@ export interface UpdateEmailTranslationRequestEnvelope {
   /** Reply-to identity ID. Must reference an existing identity from *Workspace Settings > Email* under your From Addresses. */
   reply_to_id?: number | null;
 }
-export const UpdateEmailTranslationRequestEnvelope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bcc: S.optional(S.String),
-    fake_bcc: S.optional(S.Boolean),
-    from_id: S.optional(S.NullOr(S.Number)),
-    headers: S.optional(UpdateEmailTranslationRequestEnvelopeHeadersList),
-    recipient: S.optional(S.String),
-    reply_to_id: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "UpdateEmailTranslationRequestEnvelope",
-}) as any as S.Schema<UpdateEmailTranslationRequestEnvelope>;
+export const UpdateEmailTranslationRequestEnvelope =
+  CreateEmailRequestEnvelope as any as S.Schema<UpdateEmailTranslationRequestEnvelope>;
 
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type UpdateEmailTranslationRequestTransformersAccessibility =
@@ -32627,16 +31404,12 @@ export const UpdateEmailTranslationRequestTransformersRemoveUnusedCssBackendMark
 export type UpdateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
 export const UpdateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem,
-  ) as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList>;
+  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList>;
 
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList = Array<string>;
 export const UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList>;
+  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList>;
 
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface UpdateEmailTranslationRequestTransformersRemoveUnusedCss {
@@ -32649,19 +31422,8 @@ export interface UpdateEmailTranslationRequestTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList;
 }
-export const UpdateEmailTranslationRequestTransformersRemoveUnusedCss = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      backend_markers: S.optional(
-        UpdateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList,
-      ),
-      enabled: S.optional(S.Boolean),
-      uglify: S.optional(S.Boolean),
-      whitelist: S.optional(UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList),
-    }),
-).annotate({
-  identifier: "UpdateEmailTranslationRequestTransformersRemoveUnusedCss",
-}) as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCss>;
+export const UpdateEmailTranslationRequestTransformersRemoveUnusedCss =
+  CreateEmailTranslationRequestTransformersRemoveUnusedCss as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCss>;
 
 export type UpdateEmailTranslationRequestTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
@@ -32672,9 +31434,7 @@ export const UpdateEmailTranslationRequestTransformersUrlParametersParametersIte
 export type UpdateEmailTranslationRequestTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
 export const UpdateEmailTranslationRequestTransformersUrlParametersParametersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmailRequestTransformersUrlParametersParametersItem,
-  ) as any as S.Schema<UpdateEmailTranslationRequestTransformersUrlParametersParametersList>;
+  CreateEmailResponseEmailTransformersUrlParametersParametersList as any as S.Schema<UpdateEmailTranslationRequestTransformersUrlParametersParametersList>;
 
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface UpdateEmailTranslationRequestTransformersUrlParameters {
@@ -32683,14 +31443,8 @@ export interface UpdateEmailTranslationRequestTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: UpdateEmailTranslationRequestTransformersUrlParametersParametersList;
 }
-export const UpdateEmailTranslationRequestTransformersUrlParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    parameters: S.optional(UpdateEmailTranslationRequestTransformersUrlParametersParametersList),
-  }),
-).annotate({
-  identifier: "UpdateEmailTranslationRequestTransformersUrlParameters",
-}) as any as S.Schema<UpdateEmailTranslationRequestTransformersUrlParameters>;
+export const UpdateEmailTranslationRequestTransformersUrlParameters =
+  CreateEmailResponseEmailTransformersUrlParameters as any as S.Schema<UpdateEmailTranslationRequestTransformersUrlParameters>;
 
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface UpdateEmailTranslationRequestTransformers {
@@ -32753,9 +31507,8 @@ export const UpdateEmailTranslationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEmailTranslationRequest>;
 
 export interface UpdateEmailTranslationResponse {}
-export const UpdateEmailTranslationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEmailTranslationResponse",
-}) as any as S.Schema<UpdateEmailTranslationResponse>;
+export const UpdateEmailTranslationResponse =
+  DeleteAssetResponse as any as S.Schema<UpdateEmailTranslationResponse>;
 
 export interface UpdateEventMetadataRequestEventsItem {
   /** The name of the event */
@@ -32763,14 +31516,8 @@ export interface UpdateEventMetadataRequestEventsItem {
   /** The meaning of the event */
   description?: string;
 }
-export const UpdateEventMetadataRequestEventsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateEventMetadataRequestEventsItem",
-}) as any as S.Schema<UpdateEventMetadataRequestEventsItem>;
+export const UpdateEventMetadataRequestEventsItem =
+  CreateManSegmentRequestSegment as any as S.Schema<UpdateEventMetadataRequestEventsItem>;
 
 /** Array of event updates */
 export type UpdateEventMetadataRequestEventsList = Array<UpdateEventMetadataRequestEventsItem>;
@@ -32791,9 +31538,8 @@ export const UpdateEventMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEventMetadataRequest>;
 
 export interface UpdateEventMetadataResponse {}
-export const UpdateEventMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEventMetadataResponse",
-}) as any as S.Schema<UpdateEventMetadataResponse>;
+export const UpdateEventMetadataResponse =
+  DeleteAssetResponse as any as S.Schema<UpdateEventMetadataResponse>;
 
 export interface UpdateFolderRequest {
   /** The UUID of the folder. */
@@ -32812,18 +31558,14 @@ export const UpdateFolderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateFolderRequest" }) as any as S.Schema<UpdateFolderRequest>;
 
 export interface UpdateFolderResponse {}
-export const UpdateFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateFolderResponse",
-}) as any as S.Schema<UpdateFolderResponse>;
+export const UpdateFolderResponse = DeleteAssetResponse as any as S.Schema<UpdateFolderResponse>;
 
 /** Your own dynamic fields. On iOS, field names must match your `ContentState` type. For Android custom types, fields pass through to your app's renderer as-is. Date fields are epoch seconds. */
 export type UpdateLiveNotificationRequestContentStateCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const UpdateLiveNotificationRequestContentStateCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateLiveNotificationRequestContentStateCase0Map>;
+export const UpdateLiveNotificationRequestContentStateCase0Map =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<UpdateLiveNotificationRequestContentStateCase0Map>;
 
 /** Dynamic fields for the multi-step tracker template. `notification_type`: `io.customer.livenotifications.segments`. */
 export type UpdateLiveNotificationRequestContentStateCase1 =
@@ -32847,10 +31589,8 @@ export const UpdateLiveNotificationRequestContentState =
 
 /** Static activity fields, for renderers that need them alongside the content state. On iOS, attributes can't change after start. */
 export type UpdateLiveNotificationRequestAttributesMap = { [key: string]: unknown | undefined };
-export const UpdateLiveNotificationRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateLiveNotificationRequestAttributesMap>;
+export const UpdateLiveNotificationRequestAttributesMap =
+  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<UpdateLiveNotificationRequestAttributesMap>;
 
 export interface UpdateLiveNotificationRequestPushPayloadAlert {
   /** The alert body. */
@@ -32860,27 +31600,15 @@ export interface UpdateLiveNotificationRequestPushPayloadAlert {
   /** The sound to play with the update. */
   sound?: string;
 }
-export const UpdateLiveNotificationRequestPushPayloadAlert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.String,
-    title: S.String,
-    sound: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateLiveNotificationRequestPushPayloadAlert",
-}) as any as S.Schema<UpdateLiveNotificationRequestPushPayloadAlert>;
+export const UpdateLiveNotificationRequestPushPayloadAlert =
+  EndLiveNotificationRequestPushPayloadAlert as any as S.Schema<UpdateLiveNotificationRequestPushPayloadAlert>;
 
 /** The alert to accompany the update. Optional whether Customer.io delivers directly through APNs or relays through Firebase Cloud Messaging (FCM). If you include an alert, provide both its `title` and `body`. */
 export interface UpdateLiveNotificationRequestPushPayload {
   alert?: UpdateLiveNotificationRequestPushPayloadAlert;
 }
-export const UpdateLiveNotificationRequestPushPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert: S.optional(UpdateLiveNotificationRequestPushPayloadAlert),
-  }),
-).annotate({
-  identifier: "UpdateLiveNotificationRequestPushPayload",
-}) as any as S.Schema<UpdateLiveNotificationRequestPushPayload>;
+export const UpdateLiveNotificationRequestPushPayload =
+  EndLiveNotificationRequestPushPayload as any as S.Schema<UpdateLiveNotificationRequestPushPayload>;
 
 export interface UpdateLiveNotificationRequest {
   /** The complete new content state for the activity. The content state's shape depends on the activity's `notification_type`. For iOS or a free form Android activity, pick the free form variant. For other Android notification types, pick the matching variant below. Date fields are epoch seconds. */
@@ -32910,13 +31638,8 @@ export interface UpdateLiveNotificationResponse {
   /** The activity's instance ID. */
   instance_id?: string;
 }
-export const UpdateLiveNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateLiveNotificationResponse",
-}) as any as S.Schema<UpdateLiveNotificationResponse>;
+export const UpdateLiveNotificationResponse =
+  EndLiveNotificationResponse as any as S.Schema<UpdateLiveNotificationResponse>;
 
 /** Update the contents of an email one-time send variant. You can set the sender with `from_id`. If you don't provide it, the existing sender is preserved. */
 export interface UpdateNewsletterTestTranslationRequestBodyCase0 {
@@ -32989,9 +31712,8 @@ export const UpdateNewsletterTestTranslationRequestBodyCase3HeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateNewsletterTestTranslationRequestBodyCase3HeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateNewsletterTestTranslationRequestBodyCase3HeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateNewsletterTestTranslationRequestBodyCase3HeadersList>;
+export const UpdateNewsletterTestTranslationRequestBodyCase3HeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateNewsletterTestTranslationRequestBodyCase3HeadersList>;
 
 /** Update the contents of a webhook one-time send variant. */
 export interface UpdateNewsletterTestTranslationRequestBodyCase3 {
@@ -33011,11 +31733,8 @@ export const UpdateNewsletterTestTranslationRequestBodyCase3 = /*@__PURE__*/ S.s
 
 /** You can't update in-app message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
 export interface UpdateNewsletterTestTranslationRequestBodyCase4 {}
-export const UpdateNewsletterTestTranslationRequestBodyCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateNewsletterTestTranslationRequestBodyCase4",
-}) as any as S.Schema<UpdateNewsletterTestTranslationRequestBodyCase4>;
+export const UpdateNewsletterTestTranslationRequestBodyCase4 =
+  DeleteNewsletterLanguageVariantResponse as any as S.Schema<UpdateNewsletterTestTranslationRequestBodyCase4>;
 
 /** You can't update inbox message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your inbox message. */
 export type UpdateNewsletterTestTranslationRequestBodyCase5 =
@@ -33182,9 +31901,8 @@ export const UpdateNewsletterVariantRequestBodyCase3HeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateNewsletterVariantRequestBodyCase3HeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateNewsletterVariantRequestBodyCase3HeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateNewsletterVariantRequestBodyCase3HeadersList>;
+export const UpdateNewsletterVariantRequestBodyCase3HeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateNewsletterVariantRequestBodyCase3HeadersList>;
 
 /** Update the contents of a webhook one-time send variant. */
 export interface UpdateNewsletterVariantRequestBodyCase3 {
@@ -33193,14 +31911,8 @@ export interface UpdateNewsletterVariantRequestBodyCase3 {
   /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: UpdateNewsletterVariantRequestBodyCase3HeadersList;
 }
-export const UpdateNewsletterVariantRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    headers: S.optional(UpdateNewsletterVariantRequestBodyCase3HeadersList),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterVariantRequestBodyCase3",
-}) as any as S.Schema<UpdateNewsletterVariantRequestBodyCase3>;
+export const UpdateNewsletterVariantRequestBodyCase3 =
+  UpdateNewsletterTestTranslationRequestBodyCase3 as any as S.Schema<UpdateNewsletterVariantRequestBodyCase3>;
 
 /** You can't update in-app message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
 export type UpdateNewsletterVariantRequestBodyCase4 =
@@ -33370,9 +32082,8 @@ export const UpdateNewsletterVariantTranslationRequestBodyCase3HeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateNewsletterVariantTranslationRequestBodyCase3HeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateNewsletterVariantTranslationRequestBodyCase3HeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateNewsletterVariantTranslationRequestBodyCase3HeadersList>;
+export const UpdateNewsletterVariantTranslationRequestBodyCase3HeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateNewsletterVariantTranslationRequestBodyCase3HeadersList>;
 
 /** Update the contents of a webhook one-time send variant. */
 export interface UpdateNewsletterVariantTranslationRequestBodyCase3 {
@@ -33381,14 +32092,8 @@ export interface UpdateNewsletterVariantTranslationRequestBodyCase3 {
   /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
   headers?: UpdateNewsletterVariantTranslationRequestBodyCase3HeadersList;
 }
-export const UpdateNewsletterVariantTranslationRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    headers: S.optional(UpdateNewsletterVariantTranslationRequestBodyCase3HeadersList),
-  }),
-).annotate({
-  identifier: "UpdateNewsletterVariantTranslationRequestBodyCase3",
-}) as any as S.Schema<UpdateNewsletterVariantTranslationRequestBodyCase3>;
+export const UpdateNewsletterVariantTranslationRequestBodyCase3 =
+  UpdateNewsletterTestTranslationRequestBodyCase3 as any as S.Schema<UpdateNewsletterVariantTranslationRequestBodyCase3>;
 
 /** You can't update in-app message content through the API--you can only set it when you [create the message](/integrations/api/app/tag/newsletters/createNewsletter/). Use the message editor to update the content of your message. */
 export type UpdateNewsletterVariantTranslationRequestBodyCase4 =
@@ -33582,9 +32287,8 @@ export const UpdatePersonOptoutsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePersonOptoutsRequest>;
 
 export interface UpdatePersonOptoutsResponse {}
-export const UpdatePersonOptoutsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePersonOptoutsResponse",
-}) as any as S.Schema<UpdatePersonOptoutsResponse>;
+export const UpdatePersonOptoutsResponse =
+  DeleteAssetResponse as any as S.Schema<UpdatePersonOptoutsResponse>;
 
 export interface UpdateSnippetsRequest {
   /** The name of the snippet, must be unique. Trimmed of leading and trailing whitespace before storage. */
@@ -33607,11 +32311,8 @@ export interface UpdateSnippetsResponse {
   /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
   snippet?: CreateSnippetResponseSnippet;
 }
-export const UpdateSnippetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snippet: S.optional(CreateSnippetResponseSnippet),
-  }),
-).annotate({ identifier: "UpdateSnippetsResponse" }) as any as S.Schema<UpdateSnippetsResponse>;
+export const UpdateSnippetsResponse =
+  CreateSnippetResponse as any as S.Schema<UpdateSnippetsResponse>;
 
 export type UpdateTransactionalRequestHeadersItem =
   UpdateBroadcastActionRequestBodyCase0HeadersItem;
@@ -33621,9 +32322,8 @@ export const UpdateTransactionalRequestHeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateTransactionalRequestHeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateTransactionalRequestHeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateTransactionalRequestHeadersList>;
+export const UpdateTransactionalRequestHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateTransactionalRequestHeadersList>;
 
 export interface UpdateTransactionalRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
@@ -33773,9 +32473,8 @@ export const UpdateTransactionalVariantRequestHeadersItem =
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateTransactionalVariantRequestHeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-export const UpdateTransactionalVariantRequestHeadersList = /*@__PURE__*/ S.Array(
-  UpdateBroadcastActionRequestBodyCase0HeadersItem,
-) as any as S.Schema<UpdateTransactionalVariantRequestHeadersList>;
+export const UpdateTransactionalVariantRequestHeadersList =
+  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateTransactionalVariantRequestHeadersList>;
 
 export interface UpdateTransactionalVariantRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */

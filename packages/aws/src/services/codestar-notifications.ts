@@ -200,11 +200,8 @@ export const DeleteNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteNotificationRuleResult {
   Arn?: string;
 }
-export const DeleteNotificationRuleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteNotificationRuleResult",
-}) as any as S.Schema<DeleteNotificationRuleResult>;
+export const DeleteNotificationRuleResult =
+  CreateNotificationRuleResult as any as S.Schema<DeleteNotificationRuleResult>;
 export type ForceUnsubscribeAll = boolean;
 export interface DeleteTargetRequest {
   TargetAddress: string | redacted.Redacted<string>;
@@ -504,7 +501,7 @@ export const UnsubscribeResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String }),
 ).annotate({ identifier: "UnsubscribeResult" }) as any as S.Schema<UnsubscribeResult>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = EventTypeIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   Arn: string;
   TagKeys: string[];
@@ -518,9 +515,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
-export const UntagResourceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResult",
-}) as any as S.Schema<UntagResourceResult>;
+export const UntagResourceResult = DeleteTargetResult as any as S.Schema<UntagResourceResult>;
 export interface UpdateNotificationRuleRequest {
   Arn: string;
   Name?: string | redacted.Redacted<string>;
@@ -544,9 +539,8 @@ export const UpdateNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNotificationRuleRequest",
 }) as any as S.Schema<UpdateNotificationRuleRequest>;
 export interface UpdateNotificationRuleResult {}
-export const UpdateNotificationRuleResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNotificationRuleResult",
-}) as any as S.Schema<UpdateNotificationRuleResult>;
+export const UpdateNotificationRuleResult =
+  DeleteTargetResult as any as S.Schema<UpdateNotificationRuleResult>;
 export type Message = string;
 export type CreateNotificationRuleError =
   | AccessDeniedException

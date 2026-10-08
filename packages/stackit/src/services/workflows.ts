@@ -459,9 +459,8 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All configured DAG bundles. This is the canonical source of truth for DAG sources. Available for Airflow 3 instances. */
 export type InstanceDagBundlesList = Array<DagBundle>;
-export const InstanceDagBundlesList = /*@__PURE__*/ S.Array(
-  DagBundle,
-) as any as S.Schema<InstanceDagBundlesList>;
+export const InstanceDagBundlesList =
+  CreateInstanceRequestDagBundlesList as any as S.Schema<InstanceDagBundlesList>;
 
 /** A collection of endpoints offered by the Workflows instance. */
 export interface Endpoints {
@@ -590,9 +589,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  DeleteDagBundleResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface GetDagBundleRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
@@ -621,9 +619,8 @@ export const GetDagBundleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDagBundleRequest" }) as any as S.Schema<GetDagBundleRequest>;
 
 export type GetDagBundleResponse = DagBundleResponseOutput;
-export const GetDagBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  DagBundleResponseOutput.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetDagBundleResponse" }) as any as S.Schema<GetDagBundleResponse>;
+export const GetDagBundleResponse =
+  CreateDagBundleResponse as any as S.Schema<GetDagBundleResponse>;
 
 export interface GetInstanceRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
@@ -863,9 +860,8 @@ export const UpdateDagBundleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDagBundleRequest" }) as any as S.Schema<UpdateDagBundleRequest>;
 
 export type UpdateDagBundleResponse = DagBundleResponseOutput;
-export const UpdateDagBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  DagBundleResponseOutput.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UpdateDagBundleResponse" }) as any as S.Schema<UpdateDagBundleResponse>;
+export const UpdateDagBundleResponse =
+  CreateDagBundleResponse as any as S.Schema<UpdateDagBundleResponse>;
 
 export interface UpdateDagsRepositoryRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
@@ -902,9 +898,8 @@ export const UpdateDagsRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated expected audience(s) for API token validation. Set to empty array to disable audience validation. */
 export type OAuth2IdentityProviderPatchApiAudienceList = Array<string>;
-export const OAuth2IdentityProviderPatchApiAudienceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuth2IdentityProviderPatchApiAudienceList>;
+export const OAuth2IdentityProviderPatchApiAudienceList =
+  OAuth2IdentityProviderApiAudienceList as any as S.Schema<OAuth2IdentityProviderPatchApiAudienceList>;
 
 /** Request to update an OAuth2 identity provider configuration */
 export interface OAuth2IdentityProviderPatch {

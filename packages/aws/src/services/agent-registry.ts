@@ -181,13 +181,8 @@ export interface AgentSkillsMdDescriptor {
   dataSchemaVersion?: string;
   source?: DescriptorSource;
 }
-export const AgentSkillsMdDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(SensitiveString),
-    dataSchemaVersion: S.optional(S.String),
-    source: S.optional(DescriptorSource),
-  }),
-).annotate({ identifier: "AgentSkillsMdDescriptor" }) as any as S.Schema<AgentSkillsMdDescriptor>;
+export const AgentSkillsMdDescriptor =
+  A2aAgentCardDescriptor as any as S.Schema<AgentSkillsMdDescriptor>;
 export interface AgentSkillsAdditionalData {
   skillMd?: AgentSkillsMdDescriptor;
 }
@@ -225,9 +220,7 @@ export const HttpDescriptor = /*@__PURE__*/ S.suspend(() =>
 export interface AgUiDescriptor {
   source?: DescriptorSource;
 }
-export const AgUiDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ source: S.optional(DescriptorSource) }),
-).annotate({ identifier: "AgUiDescriptor" }) as any as S.Schema<AgUiDescriptor>;
+export const AgUiDescriptor = HttpDescriptor as any as S.Schema<AgUiDescriptor>;
 export interface Descriptors {
   mcpServer?: McpServerDescriptor;
   a2aAgentCard?: A2aAgentCardDescriptor;
@@ -340,7 +333,8 @@ export const RegistryRecordFilterName = S.String;
 
 export type FilterValue = string;
 export type DiscoverableFilterValues = string[];
-export const DiscoverableFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DiscoverableFilterValues =
+  RegistryRecordIdList as any as S.Schema<DiscoverableFilterValues>;
 export interface RegistryRecordFilter {
   name: RegistryRecordFilterName;
   values: string[];
@@ -376,7 +370,7 @@ export const ListDiscoverableRegistryRecordsRequest = /*@__PURE__*/ S.suspend(()
   identifier: "ListDiscoverableRegistryRecordsRequest",
 }) as any as S.Schema<ListDiscoverableRegistryRecordsRequest>;
 export type DescriptorTypeList = string[];
-export const DescriptorTypeList = /*@__PURE__*/ S.Array(S.String);
+export const DescriptorTypeList = RegistryRecordIdList as any as S.Schema<DescriptorTypeList>;
 export interface DiscoverableRegistryRecordSummary {
   registryArn: string;
   recordArn: string;
@@ -427,7 +421,7 @@ export const ListDiscoverableRegistryRecordsResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListDiscoverableRegistryRecordsResponse>;
 export type SearchQuery = string | redacted.Redacted<string>;
 export type RegistryIdList = string[];
-export const RegistryIdList = /*@__PURE__*/ S.Array(S.String);
+export const RegistryIdList = RegistryRecordIdList as any as S.Schema<RegistryIdList>;
 export type MetadataFilterExpression = unknown;
 export interface SearchDiscoverableRegistryRecordsRequest {
   searchQuery: string | redacted.Redacted<string>;

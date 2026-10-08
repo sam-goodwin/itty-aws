@@ -240,10 +240,8 @@ export const CreateVisualReviewRunRequestSnapshotsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateVisualReviewRunRequestSnapshotsList>;
 
 export type CreateVisualReviewRunRequestBaselineHashesMap = { [key: string]: string | undefined };
-export const CreateVisualReviewRunRequestBaselineHashesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateVisualReviewRunRequestBaselineHashesMap>;
+export const CreateVisualReviewRunRequestBaselineHashesMap =
+  RepoBaselineFilePathsMap as any as S.Schema<CreateVisualReviewRunRequestBaselineHashesMap>;
 
 export type CreateVisualReviewRunRequestRemovedIdentifiersList = Array<string>;
 export const CreateVisualReviewRunRequestRemovedIdentifiersList = /*@__PURE__*/ S.Array(
@@ -251,10 +249,8 @@ export const CreateVisualReviewRunRequestRemovedIdentifiersList = /*@__PURE__*/ 
 ) as any as S.Schema<CreateVisualReviewRunRequestRemovedIdentifiersList>;
 
 export type CreateVisualReviewRunRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateVisualReviewRunRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateVisualReviewRunRequestMetadataMap>;
+export const CreateVisualReviewRunRequestMetadataMap =
+  SnapshotManifestItemMetadataMap as any as S.Schema<CreateVisualReviewRunRequestMetadataMap>;
 
 export interface CreateVisualReviewRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -295,10 +291,8 @@ export const CreateVisualReviewRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVisualReviewRunRequest>;
 
 export type UploadTargetFieldsMap = { [key: string]: string | undefined };
-export const UploadTargetFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UploadTargetFieldsMap>;
+export const UploadTargetFieldsMap =
+  RepoBaselineFilePathsMap as any as S.Schema<UploadTargetFieldsMap>;
 
 export interface UploadTarget {
   content_hash?: string;
@@ -381,10 +375,7 @@ export const RunSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunSummary" }) as any as S.Schema<RunSummary>;
 
 export type RunMetadataMap = { [key: string]: unknown | undefined };
-export const RunMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RunMetadataMap>;
+export const RunMetadataMap = SnapshotManifestItemMetadataMap as any as S.Schema<RunMetadataMap>;
 
 export interface Run {
   approved_by?: UserBasicInfo | null;
@@ -720,10 +711,8 @@ export const RowShift = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RowShift" }) as any as S.Schema<RowShift>;
 
 export type SnapshotMetadataMap = { [key: string]: unknown | undefined };
-export const SnapshotMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SnapshotMetadataMap>;
+export const SnapshotMetadataMap =
+  SnapshotManifestItemMetadataMap as any as S.Schema<SnapshotMetadataMap>;
 
 export interface Snapshot {
   current_artifact?: Artifact | null;
@@ -950,9 +939,8 @@ export const FlakinessEntryDailyHardCountsList = /*@__PURE__*/ S.Array(
 
 /** Absorbed runs per day over the same 30 days, oldest first. */
 export type FlakinessEntryDailySoftCountsList = Array<number>;
-export const FlakinessEntryDailySoftCountsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FlakinessEntryDailySoftCountsList>;
+export const FlakinessEntryDailySoftCountsList =
+  FlakinessEntryDailyHardCountsList as any as S.Schema<FlakinessEntryDailySoftCountsList>;
 
 /** * `broken` - broken * `unstable` - unstable * `at_risk` - at_risk * `noisy` - noisy * `clean` - clean */
 export type FlakinessStateEnum = "broken" | "unstable" | "at_risk" | "noisy" | "clean";
@@ -1040,10 +1028,8 @@ export const FlakinessOverviewEntriesList = /*@__PURE__*/ S.Array(
 
 /** Listed identifiers per run type, so one suite's noise can be told from another's. */
 export type FlakinessTotalsByRunTypeMap = { [key: string]: number | undefined };
-export const FlakinessTotalsByRunTypeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<FlakinessTotalsByRunTypeMap>;
+export const FlakinessTotalsByRunTypeMap =
+  BaselineTotalsByRunTypeMap as any as S.Schema<FlakinessTotalsByRunTypeMap>;
 
 export interface FlakinessTotals {
   /** Identifiers with an entry in `entries`. */
@@ -1156,11 +1142,8 @@ export const GetVisualReviewReposThumbnailRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetVisualReviewReposThumbnailRequest>;
 
 export interface GetVisualReviewReposThumbnailResponse {}
-export const GetVisualReviewReposThumbnailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetVisualReviewReposThumbnailResponse",
-}) as any as S.Schema<GetVisualReviewReposThumbnailResponse>;
+export const GetVisualReviewReposThumbnailResponse =
+  CreateVisualReviewReposQuarantineExpireResponse as any as S.Schema<GetVisualReviewReposThumbnailResponse>;
 
 export interface GetVisualReviewReposTolerationPileupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1764,10 +1747,8 @@ export const PaginatedToleratedHashEntryList = /*@__PURE__*/ S.suspend(() =>
 export type UpdateVisualReviewReposPartialRequestBaselineFilePathsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateVisualReviewReposPartialRequestBaselineFilePathsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVisualReviewReposPartialRequestBaselineFilePathsMap>;
+export const UpdateVisualReviewReposPartialRequestBaselineFilePathsMap =
+  RepoBaselineFilePathsMap as any as S.Schema<UpdateVisualReviewReposPartialRequestBaselineFilePathsMap>;
 
 export interface UpdateVisualReviewReposPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1800,17 +1781,14 @@ export const UpdateVisualReviewReposPartialRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateVisualReviewReposPartialRequest>;
 
 export type VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList = Array<SnapshotManifestItem>;
-export const VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList = /*@__PURE__*/ S.Array(
-  SnapshotManifestItem,
-) as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList>;
+export const VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList =
+  CreateVisualReviewRunRequestSnapshotsList as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequestSnapshotsList>;
 
 export type VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap = {
   [key: string]: string | undefined;
 };
-export const VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap>;
+export const VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap =
+  RepoBaselineFilePathsMap as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequestBaselineHashesMap>;
 
 export interface VisualReviewRunsAddSnapshotsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1840,9 +1818,8 @@ export const VisualReviewRunsAddSnapshotsCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<VisualReviewRunsAddSnapshotsCreateRequest>;
 
 export type AddSnapshotsResultUploadsList = Array<UploadTarget>;
-export const AddSnapshotsResultUploadsList = /*@__PURE__*/ S.Array(
-  UploadTarget,
-) as any as S.Schema<AddSnapshotsResultUploadsList>;
+export const AddSnapshotsResultUploadsList =
+  CreateRunResultUploadsList as any as S.Schema<AddSnapshotsResultUploadsList>;
 
 export interface AddSnapshotsResult {
   /** Where to upload the story-to-file map, as a presigned POST with a JSON body. Null when the request sent no map, or the store already holds a map with that hash. */
@@ -1924,11 +1901,8 @@ export const VisualReviewRunsQuarantineLiftsCancelCreateRequest = /*@__PURE__*/ 
 }) as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateRequest>;
 
 export interface VisualReviewRunsQuarantineLiftsCancelCreateResponse {}
-export const VisualReviewRunsQuarantineLiftsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VisualReviewRunsQuarantineLiftsCancelCreateResponse",
-}) as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateResponse>;
+export const VisualReviewRunsQuarantineLiftsCancelCreateResponse =
+  CreateVisualReviewReposQuarantineExpireResponse as any as S.Schema<VisualReviewRunsQuarantineLiftsCancelCreateResponse>;
 
 export type CreateVisualReviewReposError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create a new repo. */

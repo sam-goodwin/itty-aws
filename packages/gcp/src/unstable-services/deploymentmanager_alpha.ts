@@ -1014,9 +1014,8 @@ export type DeploymentUpdateLabelEntry = CompositeTypeLabelEntry;
 export const DeploymentUpdateLabelEntry = CompositeTypeLabelEntry;
 
 export type DeploymentUpdateLabelEntryList = Array<CompositeTypeLabelEntry>;
-export const DeploymentUpdateLabelEntryList = /*@__PURE__*/ S.Array(
-  CompositeTypeLabelEntry,
-) as any as S.Schema<DeploymentUpdateLabelEntryList>;
+export const DeploymentUpdateLabelEntryList =
+  CompositeTypeLabelEntryList as any as S.Schema<DeploymentUpdateLabelEntryList>;
 
 export interface DeploymentUpdate {
   /** Output only. An optional user-provided description of the deployment after the current update has been applied. */
@@ -1086,17 +1085,11 @@ export interface DeploymentLabelEntry {
   /** Value of the label */
   value?: string;
 }
-export const DeploymentLabelEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeploymentLabelEntry" }) as any as S.Schema<DeploymentLabelEntry>;
+export const DeploymentLabelEntry = DeploymentOutputEntry as any as S.Schema<DeploymentLabelEntry>;
 
 export type DeploymentLabelEntryList = Array<DeploymentLabelEntry>;
-export const DeploymentLabelEntryList = /*@__PURE__*/ S.Array(
-  DeploymentLabelEntry,
-) as any as S.Schema<DeploymentLabelEntryList>;
+export const DeploymentLabelEntryList =
+  DeploymentOutputEntryList as any as S.Schema<DeploymentLabelEntryList>;
 
 export interface Deployment {
   /** An optional user-provided description of the deployment. */
@@ -1386,9 +1379,8 @@ export type ResourceWarningsItemDataItem = OperationWarningsItemDataItem;
 export const ResourceWarningsItemDataItem = OperationWarningsItemDataItem;
 
 export type ResourceWarningsItemDataItemList = Array<OperationWarningsItemDataItem>;
-export const ResourceWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ResourceWarningsItemDataItemList>;
+export const ResourceWarningsItemDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ResourceWarningsItemDataItemList>;
 
 export type ResourceWarningsItemCodeEnum =
   | "DEPRECATED_RESOURCE_USED"
@@ -1775,9 +1767,8 @@ export type TypeProviderLabelEntry = CompositeTypeLabelEntry;
 export const TypeProviderLabelEntry = CompositeTypeLabelEntry;
 
 export type TypeProviderLabelEntryList = Array<CompositeTypeLabelEntry>;
-export const TypeProviderLabelEntryList = /*@__PURE__*/ S.Array(
-  CompositeTypeLabelEntry,
-) as any as S.Schema<TypeProviderLabelEntryList>;
+export const TypeProviderLabelEntryList =
+  CompositeTypeLabelEntryList as any as S.Schema<TypeProviderLabelEntryList>;
 
 export type DiagnosticLevelEnum = "UNKNOWN" | "INFORMATION" | "WARNING" | "ERROR";
 export const DiagnosticLevelEnum = S.String;
@@ -2052,9 +2043,7 @@ export type TypeLabelEntry = DeploymentLabelEntry;
 export const TypeLabelEntry = DeploymentLabelEntry;
 
 export type TypeLabelEntryList = Array<DeploymentLabelEntry>;
-export const TypeLabelEntryList = /*@__PURE__*/ S.Array(
-  DeploymentLabelEntry,
-) as any as S.Schema<TypeLabelEntryList>;
+export const TypeLabelEntryList = DeploymentOutputEntryList as any as S.Schema<TypeLabelEntryList>;
 
 /** A resource type supported by Deployment Manager. */
 export interface Type {
@@ -2819,11 +2808,8 @@ export interface TestPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({ identifier: "TestPermissionsResponse" }) as any as S.Schema<TestPermissionsResponse>;
+export const TestPermissionsResponse =
+  TestPermissionsRequest as any as S.Schema<TestPermissionsResponse>;
 
 export interface UpdateCompositeTypesRequest {
   /** The project ID for this request. */

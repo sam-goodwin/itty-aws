@@ -39,14 +39,8 @@ export interface OpenAiServicesForPutRequest {
   /** The user assigned identity to be used to grant permissions */
   userAssignedIdentity?: string;
 }
-export const OpenAiServicesForPutRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String),
-    userAssignedIdentity: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OpenAiServicesForPutRequest",
-}) as any as S.Schema<OpenAiServicesForPutRequest>;
+export const OpenAiServicesForPutRequest =
+  StorageServicesForPutRequest as any as S.Schema<OpenAiServicesForPutRequest>;
 
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestInputPublicNetworkAccess = "Enabled" | "Disabled";
@@ -252,10 +246,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+export const AccountsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
 
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestPublicNetworkAccess = "Enabled" | "Disabled";
@@ -543,9 +535,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccountResponse",
-}) as any as S.Schema<DeleteAccountResponse>;
+export const DeleteAccountResponse = PrivateEndpointInput as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -793,10 +783,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
@@ -915,15 +903,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -992,10 +978,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsMap>;
+export const AccountTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type AccountIdentity = AccountsCreateOrUpdateResponseIdentity;
@@ -1020,18 +1004,7 @@ export interface Account {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateResponseIdentity;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AccountTagsMap),
-    location: S.String,
-    properties: S.optional(AccountPropertiesForPutRequest),
-    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
+export const Account = GetAccountResponse as any as S.Schema<Account>;
 
 /** List of accounts and their properties. */
 export type AccountListValueList = Array<Account>;
@@ -1179,9 +1152,8 @@ export const PrivateEndpointConnection =
 /** Array of private endpoint connections. */
 export type ListPrivateEndpointConnectionByAccountResponseValueList =
   Array<AccountPropertiesForPutRequestPrivateEndpointConnectionsItem>;
-export const ListPrivateEndpointConnectionByAccountResponseValueList = /*@__PURE__*/ S.Array(
-  AccountPropertiesForPutRequestPrivateEndpointConnectionsItem,
-) as any as S.Schema<ListPrivateEndpointConnectionByAccountResponseValueList>;
+export const ListPrivateEndpointConnectionByAccountResponseValueList =
+  AccountPropertiesForPutRequestPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionByAccountResponseValueList>;
 
 export interface ListPrivateEndpointConnectionByAccountResponse {
   /** Array of private endpoint connections. */
@@ -1310,24 +1282,13 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 /** Resource tags */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** The storage services details */
 export interface StorageServicesForPatchRequest {
@@ -1360,9 +1321,7 @@ export const AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsItem
 export type AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList =
   Array<AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem>;
 export const AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem,
-  ) as any as S.Schema<AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList>;
+  AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList as any as S.Schema<AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList>;
 
 /** Azure Video Indexer account properties */
 export interface AccountPropertiesForPatchRequestInput {
@@ -1426,10 +1385,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
@@ -1453,18 +1410,7 @@ export interface UpdateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateResponseIdentity;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAccountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AccountPropertiesForPutRequest),
-    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Creates or updates an Azure Video Indexer account. */

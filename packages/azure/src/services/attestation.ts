@@ -198,10 +198,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAttestationProviderResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAttestationProviderResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAttestationProviderResponseTagsMap>;
+export const CreateAttestationProviderResponseTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<CreateAttestationProviderResponseTagsMap>;
 
 /** Status of attestation service. */
 export type AttestationServiceStatus = "Ready" | "NotReady" | "Error";
@@ -369,11 +367,7 @@ export interface PrivateEndpointInput {
   /** The ARM identifier for Private Endpoint. */
   id?: string;
 }
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrivateEndpointInput" }) as any as S.Schema<PrivateEndpointInput>;
+export const PrivateEndpointInput = PrivateEndpoint as any as S.Schema<PrivateEndpointInput>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -437,17 +431,8 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "CreatePrivateEndpointConnectionResponse",
-}) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
+export const CreatePrivateEndpointConnectionResponse =
+  StatusResultPrivateEndpointConnectionsItem as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
 
 export interface DeleteAttestationProviderRequest {
   /** The ID of the target subscription. */
@@ -510,11 +495,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteAttestationProviderResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface GetAttestationProviderRequest {
   /** The ID of the target subscription. */
@@ -543,10 +525,8 @@ export const GetAttestationProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAttestationProviderResponseTagsMap = { [key: string]: string | undefined };
-export const GetAttestationProviderResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAttestationProviderResponseTagsMap>;
+export const GetAttestationProviderResponseTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<GetAttestationProviderResponseTagsMap>;
 
 export interface GetAttestationProviderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -564,19 +544,8 @@ export interface GetAttestationProviderResponse {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
-export const GetAttestationProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAttestationProviderResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StatusResult),
-  }),
-).annotate({
-  identifier: "GetAttestationProviderResponse",
-}) as any as S.Schema<GetAttestationProviderResponse>;
+export const GetAttestationProviderResponse =
+  CreateAttestationProviderResponse as any as S.Schema<GetAttestationProviderResponse>;
 
 export interface GetAttestationProviderDefaultByLocationRequest {
   /** The ID of the target subscription. */
@@ -604,10 +573,8 @@ export const GetAttestationProviderDefaultByLocationRequest = /*@__PURE__*/ S.su
 export type GetAttestationProviderDefaultByLocationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetAttestationProviderDefaultByLocationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAttestationProviderDefaultByLocationResponseTagsMap>;
+export const GetAttestationProviderDefaultByLocationResponseTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<GetAttestationProviderDefaultByLocationResponseTagsMap>;
 
 export interface GetAttestationProviderDefaultByLocationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -625,19 +592,8 @@ export interface GetAttestationProviderDefaultByLocationResponse {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
-export const GetAttestationProviderDefaultByLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAttestationProviderDefaultByLocationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StatusResult),
-  }),
-).annotate({
-  identifier: "GetAttestationProviderDefaultByLocationResponse",
-}) as any as S.Schema<GetAttestationProviderDefaultByLocationResponse>;
+export const GetAttestationProviderDefaultByLocationResponse =
+  CreateAttestationProviderResponse as any as S.Schema<GetAttestationProviderDefaultByLocationResponse>;
 
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -679,17 +635,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  StatusResultPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface ListAttestationProviderByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -759,10 +706,8 @@ export const AttestationProviderListResultSystemData = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type AttestationProviderTagsMap = { [key: string]: string | undefined };
-export const AttestationProviderTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AttestationProviderTagsMap>;
+export const AttestationProviderTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<AttestationProviderTagsMap>;
 
 /** Attestation service response message. */
 export interface AttestationProvider {
@@ -1042,9 +987,8 @@ export const PrivateEndpointConnectionListResultValueItem =
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<StatusResultPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  StatusResultPrivateEndpointConnectionsItem,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  StatusResultPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
@@ -1089,15 +1033,13 @@ export const ListPrivateLinkResourceByProviderRequest = /*@__PURE__*/ S.suspend(
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  JsonWebKeyX5cList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  JsonWebKeyX5cList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -1167,10 +1109,8 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags that will be assigned to the attestation provider. */
 export type UpdateAttestationProviderRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAttestationProviderRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAttestationProviderRequestTagsMap>;
+export const UpdateAttestationProviderRequestTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<UpdateAttestationProviderRequestTagsMap>;
 
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
 export type AttestationServicePatchSpecificParamsPublicNetworkAccess = "Enabled" | "Disabled";
@@ -1235,10 +1175,8 @@ export const UpdateAttestationProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAttestationProviderResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAttestationProviderResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAttestationProviderResponseTagsMap>;
+export const UpdateAttestationProviderResponseTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<UpdateAttestationProviderResponseTagsMap>;
 
 export interface UpdateAttestationProviderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1256,19 +1194,8 @@ export interface UpdateAttestationProviderResponse {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
-export const UpdateAttestationProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAttestationProviderResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StatusResult),
-  }),
-).annotate({
-  identifier: "UpdateAttestationProviderResponse",
-}) as any as S.Schema<UpdateAttestationProviderResponse>;
+export const UpdateAttestationProviderResponse =
+  CreateAttestationProviderResponse as any as S.Schema<UpdateAttestationProviderResponse>;
 
 export type CreateAttestationProviderError = AzureOpError;
 /** Creates or updates an Attestation Provider. */

@@ -136,9 +136,8 @@ export const ChangeVolumeProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeVolumeProtectionResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-export const ChangeVolumeProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AttachVolumeResponseActionResourcesItem,
-) as any as S.Schema<ChangeVolumeProtectionResponseActionResourcesList>;
+export const ChangeVolumeProtectionResponseActionResourcesList =
+  AttachVolumeResponseActionResourcesList as any as S.Schema<ChangeVolumeProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeVolumeProtectionResponseActionError = AttachVolumeResponseActionError;
@@ -208,9 +207,8 @@ export const DetachVolumeResponseActionResourcesItem = AttachVolumeResponseActio
 /** Resources the Action relates to. */
 export type DetachVolumeResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-export const DetachVolumeResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AttachVolumeResponseActionResourcesItem,
-) as any as S.Schema<DetachVolumeResponseActionResourcesList>;
+export const DetachVolumeResponseActionResourcesList =
+  AttachVolumeResponseActionResourcesList as any as S.Schema<DetachVolumeResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachVolumeResponseActionError = AttachVolumeResponseActionError;
@@ -278,9 +276,8 @@ export const GetVolumesActionResponseActionResourcesItem = AttachVolumeResponseA
 /** Resources the Action relates to. */
 export type GetVolumesActionResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-export const GetVolumesActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AttachVolumeResponseActionResourcesItem,
-) as any as S.Schema<GetVolumesActionResponseActionResourcesList>;
+export const GetVolumesActionResponseActionResourcesList =
+  AttachVolumeResponseActionResourcesList as any as S.Schema<GetVolumesActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetVolumesActionResponseActionError = AttachVolumeResponseActionError;
@@ -398,9 +395,8 @@ export const ListVolumeActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListVolumeActionsResponseActionsItemResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-export const ListVolumeActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AttachVolumeResponseActionResourcesItem,
-) as any as S.Schema<ListVolumeActionsResponseActionsItemResourcesList>;
+export const ListVolumeActionsResponseActionsItemResourcesList =
+  AttachVolumeResponseActionResourcesList as any as S.Schema<ListVolumeActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListVolumeActionsResponseActionsItemError = AttachVolumeResponseActionError;
@@ -574,9 +570,8 @@ export const ListVolumesActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListVolumesActionsResponseActionsItemResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-export const ListVolumesActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AttachVolumeResponseActionResourcesItem,
-) as any as S.Schema<ListVolumesActionsResponseActionsItemResourcesList>;
+export const ListVolumesActionsResponseActionsItemResourcesList =
+  AttachVolumeResponseActionResourcesList as any as S.Schema<ListVolumesActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListVolumesActionsResponseActionsItemError = AttachVolumeResponseActionError;
@@ -663,9 +658,8 @@ export const ResizeVolumeResponseActionResourcesItem = AttachVolumeResponseActio
 /** Resources the Action relates to. */
 export type ResizeVolumeResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-export const ResizeVolumeResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AttachVolumeResponseActionResourcesItem,
-) as any as S.Schema<ResizeVolumeResponseActionResourcesList>;
+export const ResizeVolumeResponseActionResourcesList =
+  AttachVolumeResponseActionResourcesList as any as S.Schema<ResizeVolumeResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResizeVolumeResponseActionError = AttachVolumeResponseActionError;

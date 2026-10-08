@@ -16,9 +16,8 @@ export const AddAddsServiceRequestCustomNotificationEmailsList = /*@__PURE__*/ S
 
 /** The list of emails to whom service notifications will be sent. */
 export type AddAddsServiceRequestNotificationEmailsList = Array<string>;
-export const AddAddsServiceRequestNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddAddsServiceRequestNotificationEmailsList>;
+export const AddAddsServiceRequestNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddAddsServiceRequestNotificationEmailsList>;
 
 export interface AddAddsServiceRequest {
   /** The id of the service. */
@@ -108,15 +107,13 @@ export const AddAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type ServicePropertiesCustomNotificationEmailsList = Array<string>;
-export const ServicePropertiesCustomNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
+export const ServicePropertiesCustomNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type ServicePropertiesNotificationEmailsList = Array<string>;
-export const ServicePropertiesNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServicePropertiesNotificationEmailsList>;
+export const ServicePropertiesNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ServicePropertiesNotificationEmailsList>;
 
 /** The service properties for a given service. */
 export interface ServiceProperties {
@@ -398,9 +395,8 @@ export const ServiceMember = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the metric. */
 export type AddAddsServicesUserPreferenceRequestMetricNamesList = Array<string>;
-export const AddAddsServicesUserPreferenceRequestMetricNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddAddsServicesUserPreferenceRequestMetricNamesList>;
+export const AddAddsServicesUserPreferenceRequestMetricNamesList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddAddsServicesUserPreferenceRequestMetricNamesList>;
 
 export interface AddAddsServicesUserPreferenceRequest {
   /** The name of the service. */
@@ -448,9 +444,8 @@ export const AddConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of global administrators for the tenant. */
 export type TenantGlobalAdminsEmailList = Array<string>;
-export const TenantGlobalAdminsEmailList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TenantGlobalAdminsEmailList>;
+export const TenantGlobalAdminsEmailList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<TenantGlobalAdminsEmailList>;
 
 /** The details of the onboarded tenant. */
 export interface Tenant {
@@ -525,15 +520,13 @@ export const Tenant = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type AddServiceRequestCustomNotificationEmailsList = Array<string>;
-export const AddServiceRequestCustomNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddServiceRequestCustomNotificationEmailsList>;
+export const AddServiceRequestCustomNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddServiceRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type AddServiceRequestNotificationEmailsList = Array<string>;
-export const AddServiceRequestNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddServiceRequestNotificationEmailsList>;
+export const AddServiceRequestNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddServiceRequestNotificationEmailsList>;
 
 export interface AddServiceRequest {
   /** The id of the service. */
@@ -875,11 +868,8 @@ export const DeleteAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteAddsServicesUserPreferenceRequest>;
 
 export interface DeleteAddsServicesUserPreferenceResponse {}
-export const DeleteAddsServicesUserPreferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAddsServicesUserPreferenceResponse",
-}) as any as S.Schema<DeleteAddsServicesUserPreferenceResponse>;
+export const DeleteAddsServicesUserPreferenceResponse =
+  AddAddsServicesUserPreferenceResponse as any as S.Schema<DeleteAddsServicesUserPreferenceResponse>;
 
 export interface DeleteServiceRequest {
   /** The name of the service which needs to be deleted. */
@@ -902,9 +892,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  DeleteAddsServiceResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteServiceMemberRequest {
   /** The name of the service. */
@@ -932,9 +921,8 @@ export const DeleteServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceMemberRequest>;
 
 export interface DeleteServiceMemberResponse {}
-export const DeleteServiceMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceMemberResponse",
-}) as any as S.Schema<DeleteServiceMemberResponse>;
+export const DeleteServiceMemberResponse =
+  DeleteAddsServiceResponse as any as S.Schema<DeleteServiceMemberResponse>;
 
 export interface DeleteServiceMemberDataRequest {
   /** The name of the service. */
@@ -959,9 +947,8 @@ export const DeleteServiceMemberDataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceMemberDataRequest>;
 
 export interface DeleteServiceMemberDataResponse {}
-export const DeleteServiceMemberDataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteServiceMemberDataResponse" },
-) as any as S.Schema<DeleteServiceMemberDataResponse>;
+export const DeleteServiceMemberDataResponse =
+  DeleteAddsServiceMemberResponse as any as S.Schema<DeleteServiceMemberDataResponse>;
 
 export interface GetAddsServiceRequest {
   /** The name of the service. */
@@ -1001,15 +988,13 @@ export const GetAddsServiceForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of domain controller names. */
 export type ForestSummaryDomainsList = Array<string>;
-export const ForestSummaryDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ForestSummaryDomainsList>;
+export const ForestSummaryDomainsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ForestSummaryDomainsList>;
 
 /** The list of site names. */
 export type ForestSummarySitesList = Array<string>;
-export const ForestSummarySitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ForestSummarySitesList>;
+export const ForestSummarySitesList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ForestSummarySitesList>;
 
 /** The forest summary for an ADDS domain. */
 export interface ForestSummary {
@@ -1210,9 +1195,8 @@ export const MetricSetsSetsList = /*@__PURE__*/ S.Array(
 
 /** The list of timestamps for each metric in the metric set. */
 export type MetricSetsTimeStampsList = Array<string>;
-export const MetricSetsTimeStampsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSetsTimeStampsList>;
+export const MetricSetsTimeStampsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<MetricSetsTimeStampsList>;
 
 /** The metrics data represented set. */
 export interface MetricSets {
@@ -1322,9 +1306,8 @@ export const GetAddsServicesUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The name of the metric. */
 export type UserPreferenceMetricNamesList = Array<string>;
-export const UserPreferenceMetricNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserPreferenceMetricNamesList>;
+export const UserPreferenceMetricNamesList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UserPreferenceMetricNamesList>;
 
 /** The user preference for a given feature. */
 export interface UserPreference {
@@ -1478,9 +1461,8 @@ export const ConnectorMetadataConnectorsList = /*@__PURE__*/ S.Array(
 
 /** The list of run profile names. */
 export type ConnectorMetadataRunProfileNamesList = Array<string>;
-export const ConnectorMetadataRunProfileNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
+export const ConnectorMetadataRunProfileNamesList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
 
 /** Gets the list of connectors and run profile names. */
 export interface ConnectorMetadata {
@@ -1745,15 +1727,13 @@ export const ListAdDomainServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of ADDS roles. */
 export type AddsServiceMemberAddsRolesList = Array<string>;
-export const AddsServiceMemberAddsRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddsServiceMemberAddsRolesList>;
+export const AddsServiceMemberAddsRolesList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddsServiceMemberAddsRolesList>;
 
 /** The list of domain controller types. */
 export type AddsServiceMemberDcTypesList = Array<string>;
-export const AddsServiceMemberDcTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddsServiceMemberDcTypesList>;
+export const AddsServiceMemberDcTypesList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<AddsServiceMemberDcTypesList>;
 
 /** The key value pair for properties. */
 export interface Item {
@@ -1800,27 +1780,23 @@ export const AddsServiceMemberInstalledQfesList = /*@__PURE__*/ S.Array(
 
 /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
 export type AddsServiceMemberMonitoringConfigurationsComputedList = Array<Item>;
-export const AddsServiceMemberMonitoringConfigurationsComputedList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<AddsServiceMemberMonitoringConfigurationsComputedList>;
+export const AddsServiceMemberMonitoringConfigurationsComputedList =
+  AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberMonitoringConfigurationsComputedList>;
 
 /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
 export type AddsServiceMemberMonitoringConfigurationsCustomizedList = Array<Item>;
-export const AddsServiceMemberMonitoringConfigurationsCustomizedList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<AddsServiceMemberMonitoringConfigurationsCustomizedList>;
+export const AddsServiceMemberMonitoringConfigurationsCustomizedList =
+  AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberMonitoringConfigurationsCustomizedList>;
 
 /** Server specific properties. */
 export type AddsServiceMemberPropertiesList = Array<Item>;
-export const AddsServiceMemberPropertiesList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<AddsServiceMemberPropertiesList>;
+export const AddsServiceMemberPropertiesList =
+  AddsServiceMemberDimensionsList as any as S.Schema<AddsServiceMemberPropertiesList>;
 
 /** The list of recommended hotfixes for the server. */
 export type AddsServiceMemberRecommendedQfesList = Array<Hotfix>;
-export const AddsServiceMemberRecommendedQfesList = /*@__PURE__*/ S.Array(
-  Hotfix,
-) as any as S.Schema<AddsServiceMemberRecommendedQfesList>;
+export const AddsServiceMemberRecommendedQfesList =
+  AddsServiceMemberInstalledQfesList as any as S.Schema<AddsServiceMemberRecommendedQfesList>;
 
 /** The monitoring level reported by the server. */
 export type AddsServiceMemberServerReportedMonitoringLevel = "Partial" | "Full" | "Off";
@@ -1993,9 +1969,8 @@ export const ListAddsServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend((
 
 /** The credential data. */
 export type CredentialCredentialDataList = Array<string>;
-export const CredentialCredentialDataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CredentialCredentialDataList>;
+export const CredentialCredentialDataList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<CredentialCredentialDataList>;
 
 /** The credential for a given server. */
 export interface Credential {
@@ -2412,9 +2387,8 @@ export const ListAddsServiceReplicationSummaryRequest = /*@__PURE__*/ S.suspend(
 
 /** The value returned by the operation. */
 export type ReplicationSummaryListValueList = Array<ReplicationSummary>;
-export const ReplicationSummaryListValueList = /*@__PURE__*/ S.Array(
-  ReplicationSummary,
-) as any as S.Schema<ReplicationSummaryListValueList>;
+export const ReplicationSummaryListValueList =
+  ReplicationDetailsListValueList as any as S.Schema<ReplicationSummaryListValueList>;
 
 /** The list of replication summary details. */
 export interface ReplicationSummaryList {
@@ -2548,15 +2522,13 @@ export const AlertAdditionalInformationList = /*@__PURE__*/ S.Array(
 
 /** The active alert properties. */
 export type AlertActiveAlertPropertiesList = Array<Item>;
-export const AlertActiveAlertPropertiesList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<AlertActiveAlertPropertiesList>;
+export const AlertActiveAlertPropertiesList =
+  AddsServiceMemberDimensionsList as any as S.Schema<AlertActiveAlertPropertiesList>;
 
 /** The resolved alert properties. */
 export type AlertResolvedAlertPropertiesList = Array<Item>;
-export const AlertResolvedAlertPropertiesList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<AlertResolvedAlertPropertiesList>;
+export const AlertResolvedAlertPropertiesList =
+  AddsServiceMemberDimensionsList as any as S.Schema<AlertResolvedAlertPropertiesList>;
 
 /** The alert details indicating an issue with service or server. */
 export interface Alert {
@@ -2756,9 +2728,8 @@ export const ListConfigurationAddsConfigurationsRequest = /*@__PURE__*/ S.suspen
 
 /** The value returned by the operation. */
 export type AddsConfigurationValueList = Array<Item>;
-export const AddsConfigurationValueList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<AddsConfigurationValueList>;
+export const AddsConfigurationValueList =
+  AddsServiceMemberDimensionsList as any as S.Schema<AddsConfigurationValueList>;
 
 /** The list of key value properties. */
 export interface AddsConfiguration {
@@ -3199,21 +3170,18 @@ export const ListServiceMemberConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The in-scope object classes. */
 export type PartitionScopeObjectClassesList = Array<string>;
-export const PartitionScopeObjectClassesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartitionScopeObjectClassesList>;
+export const PartitionScopeObjectClassesList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeObjectClassesList>;
 
 /** The list of containers included. */
 export type PartitionScopeContainersIncludedList = Array<string>;
-export const PartitionScopeContainersIncludedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartitionScopeContainersIncludedList>;
+export const PartitionScopeContainersIncludedList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeContainersIncludedList>;
 
 /** The list of containers excluded. */
 export type PartitionScopeContainersExcludedList = Array<string>;
-export const PartitionScopeContainersExcludedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartitionScopeContainersExcludedList>;
+export const PartitionScopeContainersExcludedList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<PartitionScopeContainersExcludedList>;
 
 /** The connector partition scope. */
 export interface PartitionScope {
@@ -3336,15 +3304,13 @@ export const ConnectorRunProfilesList = /*@__PURE__*/ S.Array(
 
 /** The class inclusion list of the connector. */
 export type ConnectorClassesIncludedList = Array<string>;
-export const ConnectorClassesIncludedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorClassesIncludedList>;
+export const ConnectorClassesIncludedList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorClassesIncludedList>;
 
 /** The attribute inclusion list of the connector. */
 export type ConnectorAttributesIncludedList = Array<string>;
-export const ConnectorAttributesIncludedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorAttributesIncludedList>;
+export const ConnectorAttributesIncludedList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<ConnectorAttributesIncludedList>;
 
 /** The connect details. */
 export interface Connector {
@@ -3465,9 +3431,8 @@ export const ListServiceMemberDataFreshnessRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The value returned by the operation. */
 export type DataFreshnessDetailsValueList = Array<Item>;
-export const DataFreshnessDetailsValueList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<DataFreshnessDetailsValueList>;
+export const DataFreshnessDetailsValueList =
+  AddsServiceMemberDimensionsList as any as S.Schema<DataFreshnessDetailsValueList>;
 
 /** The data freshness details for the server. */
 export interface DataFreshnessDetails {
@@ -3504,9 +3469,8 @@ export const ListServiceMemberGlobalConfigurationRequest = /*@__PURE__*/ S.suspe
 
 /** The list of additional feature sets. */
 export type GlobalConfigurationFeatureSetList = Array<Item>;
-export const GlobalConfigurationFeatureSetList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<GlobalConfigurationFeatureSetList>;
+export const GlobalConfigurationFeatureSetList =
+  AddsServiceMemberDimensionsList as any as S.Schema<GlobalConfigurationFeatureSetList>;
 
 /** The global configuration settings. */
 export interface GlobalConfiguration {
@@ -3672,7 +3636,7 @@ export const ListServiceMonitoringConfigurationsRequest = /*@__PURE__*/ S.suspen
 
 /** The value returned by the operation. */
 export type ItemsValueList = Array<Item>;
-export const ItemsValueList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemsValueList>;
+export const ItemsValueList = MetricsValueList as any as S.Schema<ItemsValueList>;
 
 /** The list of key value properties. */
 export interface Items {
@@ -4181,15 +4145,13 @@ export const ServicesListExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type UpdateAddsServiceRequestCustomNotificationEmailsList = Array<string>;
-export const UpdateAddsServiceRequestCustomNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAddsServiceRequestCustomNotificationEmailsList>;
+export const UpdateAddsServiceRequestCustomNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateAddsServiceRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type UpdateAddsServiceRequestNotificationEmailsList = Array<string>;
-export const UpdateAddsServiceRequestNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAddsServiceRequestNotificationEmailsList>;
+export const UpdateAddsServiceRequestNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateAddsServiceRequestNotificationEmailsList>;
 
 export interface UpdateAddsServiceRequest {
   /** The name of the service which needs to be deleted. */
@@ -4279,9 +4241,8 @@ export const UpdateAddsServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of global administrators for the tenant. */
 export type UpdateConfigurationRequestGlobalAdminsEmailList = Array<string>;
-export const UpdateConfigurationRequestGlobalAdminsEmailList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigurationRequestGlobalAdminsEmailList>;
+export const UpdateConfigurationRequestGlobalAdminsEmailList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateConfigurationRequestGlobalAdminsEmailList>;
 
 export interface UpdateConfigurationRequest {
   /** The Id of the tenant. */
@@ -4401,15 +4362,13 @@ export const UpdateIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend((
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type UpdateServiceRequestCustomNotificationEmailsList = Array<string>;
-export const UpdateServiceRequestCustomNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateServiceRequestCustomNotificationEmailsList>;
+export const UpdateServiceRequestCustomNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateServiceRequestCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
 export type UpdateServiceRequestNotificationEmailsList = Array<string>;
-export const UpdateServiceRequestNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateServiceRequestNotificationEmailsList>;
+export const UpdateServiceRequestNotificationEmailsList =
+  AddAddsServiceRequestCustomNotificationEmailsList as any as S.Schema<UpdateServiceRequestNotificationEmailsList>;
 
 export interface UpdateServiceRequest {
   /** The name of the service which needs to be deleted. */
@@ -4523,11 +4482,8 @@ export const UpdateServiceMonitoringConfigurationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateServiceMonitoringConfigurationRequest>;
 
 export interface UpdateServiceMonitoringConfigurationResponse {}
-export const UpdateServiceMonitoringConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateServiceMonitoringConfigurationResponse",
-}) as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>;
+export const UpdateServiceMonitoringConfigurationResponse =
+  AddAddsServicesUserPreferenceResponse as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>;
 
 export type AddAddsServiceError = AzureOpError;
 /** Onboards a service for a given tenant in Azure Active Directory Connect Health. */

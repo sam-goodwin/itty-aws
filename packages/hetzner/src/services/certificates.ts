@@ -54,10 +54,8 @@ export const CreateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateCertificateResponseCertificateLabelsMap = { [key: string]: string | undefined };
-export const CreateCertificateResponseCertificateLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCertificateResponseCertificateLabelsMap>;
+export const CreateCertificateResponseCertificateLabelsMap =
+  CreateCertificateRequestLabelsMap as any as S.Schema<CreateCertificateResponseCertificateLabelsMap>;
 
 /** Type of the Certificate. */
 export type CreateCertificateResponseCertificateType = "uploaded" | "managed";
@@ -65,9 +63,8 @@ export const CreateCertificateResponseCertificateType = S.String;
 
 /** Domains and subdomains covered by the Certificate. */
 export type CreateCertificateResponseCertificateDomainNamesList = Array<string>;
-export const CreateCertificateResponseCertificateDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCertificateResponseCertificateDomainNamesList>;
+export const CreateCertificateResponseCertificateDomainNamesList =
+  CreateCertificateRequestDomainNamesList as any as S.Schema<CreateCertificateResponseCertificateDomainNamesList>;
 
 /** Status of the issuance process of the Certificate. */
 export type CreateCertificateResponseCertificateStatusIssuance = "pending" | "completed" | "failed";
@@ -191,21 +188,14 @@ export interface CreateCertificateResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const CreateCertificateResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "CreateCertificateResponseActionResourcesItem",
-}) as any as S.Schema<CreateCertificateResponseActionResourcesItem>;
+export const CreateCertificateResponseActionResourcesItem =
+  CreateCertificateResponseCertificateUsedByItem as any as S.Schema<CreateCertificateResponseActionResourcesItem>;
 
 /** Resources the Action relates to. */
 export type CreateCertificateResponseActionResourcesList =
   Array<CreateCertificateResponseActionResourcesItem>;
-export const CreateCertificateResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  CreateCertificateResponseActionResourcesItem,
-) as any as S.Schema<CreateCertificateResponseActionResourcesList>;
+export const CreateCertificateResponseActionResourcesList =
+  CreateCertificateResponseCertificateUsedByList as any as S.Schema<CreateCertificateResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateCertificateResponseActionError {
@@ -296,10 +286,8 @@ export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetCertificateResponseCertificateLabelsMap = { [key: string]: string | undefined };
-export const GetCertificateResponseCertificateLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCertificateResponseCertificateLabelsMap>;
+export const GetCertificateResponseCertificateLabelsMap =
+  CreateCertificateRequestLabelsMap as any as S.Schema<GetCertificateResponseCertificateLabelsMap>;
 
 /** Type of the Certificate. */
 export type GetCertificateResponseCertificateType = "uploaded" | "managed";
@@ -307,9 +295,8 @@ export const GetCertificateResponseCertificateType = S.String;
 
 /** Domains and subdomains covered by the Certificate. */
 export type GetCertificateResponseCertificateDomainNamesList = Array<string>;
-export const GetCertificateResponseCertificateDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCertificateResponseCertificateDomainNamesList>;
+export const GetCertificateResponseCertificateDomainNamesList =
+  CreateCertificateRequestDomainNamesList as any as S.Schema<GetCertificateResponseCertificateDomainNamesList>;
 
 /** Status of the issuance process of the Certificate. */
 export type GetCertificateResponseCertificateStatusIssuance = "pending" | "completed" | "failed";
@@ -356,9 +343,8 @@ export const GetCertificateResponseCertificateUsedByItem =
 /** Resources currently using the Certificate. */
 export type GetCertificateResponseCertificateUsedByList =
   Array<CreateCertificateResponseCertificateUsedByItem>;
-export const GetCertificateResponseCertificateUsedByList = /*@__PURE__*/ S.Array(
-  CreateCertificateResponseCertificateUsedByItem,
-) as any as S.Schema<GetCertificateResponseCertificateUsedByList>;
+export const GetCertificateResponseCertificateUsedByList =
+  CreateCertificateResponseCertificateUsedByList as any as S.Schema<GetCertificateResponseCertificateUsedByList>;
 
 export interface GetCertificateResponseCertificate {
   /** ID of the [Certificate](#tag/certificates). */
@@ -473,10 +459,8 @@ export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListCertificatesResponseCertificatesItemLabelsMap = {
   [key: string]: string | undefined;
 };
-export const ListCertificatesResponseCertificatesItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListCertificatesResponseCertificatesItemLabelsMap>;
+export const ListCertificatesResponseCertificatesItemLabelsMap =
+  CreateCertificateRequestLabelsMap as any as S.Schema<ListCertificatesResponseCertificatesItemLabelsMap>;
 
 /** Type of the Certificate. */
 export type ListCertificatesResponseCertificatesItemType = "uploaded" | "managed";
@@ -484,9 +468,8 @@ export const ListCertificatesResponseCertificatesItemType = S.String;
 
 /** Domains and subdomains covered by the Certificate. */
 export type ListCertificatesResponseCertificatesItemDomainNamesList = Array<string>;
-export const ListCertificatesResponseCertificatesItemDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCertificatesResponseCertificatesItemDomainNamesList>;
+export const ListCertificatesResponseCertificatesItemDomainNamesList =
+  CreateCertificateRequestDomainNamesList as any as S.Schema<ListCertificatesResponseCertificatesItemDomainNamesList>;
 
 /** Status of the issuance process of the Certificate. */
 export type ListCertificatesResponseCertificatesItemStatusIssuance =
@@ -536,9 +519,8 @@ export const ListCertificatesResponseCertificatesItemUsedByItem =
 /** Resources currently using the Certificate. */
 export type ListCertificatesResponseCertificatesItemUsedByList =
   Array<CreateCertificateResponseCertificateUsedByItem>;
-export const ListCertificatesResponseCertificatesItemUsedByList = /*@__PURE__*/ S.Array(
-  CreateCertificateResponseCertificateUsedByItem,
-) as any as S.Schema<ListCertificatesResponseCertificatesItemUsedByList>;
+export const ListCertificatesResponseCertificatesItemUsedByList =
+  CreateCertificateResponseCertificateUsedByList as any as S.Schema<ListCertificatesResponseCertificatesItemUsedByList>;
 
 export interface ListCertificatesResponseCertificatesItem {
   /** ID of the [Certificate](#tag/certificates). */
@@ -644,10 +626,8 @@ export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateCertificateRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateCertificateRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCertificateRequestLabelsMap>;
+export const UpdateCertificateRequestLabelsMap =
+  CreateCertificateRequestLabelsMap as any as S.Schema<UpdateCertificateRequestLabelsMap>;
 
 export interface UpdateCertificateRequest {
   /** ID of the Certificate. */
@@ -667,10 +647,8 @@ export const UpdateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateCertificateResponseCertificateLabelsMap = { [key: string]: string | undefined };
-export const UpdateCertificateResponseCertificateLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCertificateResponseCertificateLabelsMap>;
+export const UpdateCertificateResponseCertificateLabelsMap =
+  CreateCertificateRequestLabelsMap as any as S.Schema<UpdateCertificateResponseCertificateLabelsMap>;
 
 /** Type of the Certificate. */
 export type UpdateCertificateResponseCertificateType = "uploaded" | "managed";
@@ -678,9 +656,8 @@ export const UpdateCertificateResponseCertificateType = S.String;
 
 /** Domains and subdomains covered by the Certificate. */
 export type UpdateCertificateResponseCertificateDomainNamesList = Array<string>;
-export const UpdateCertificateResponseCertificateDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCertificateResponseCertificateDomainNamesList>;
+export const UpdateCertificateResponseCertificateDomainNamesList =
+  CreateCertificateRequestDomainNamesList as any as S.Schema<UpdateCertificateResponseCertificateDomainNamesList>;
 
 /** Status of the issuance process of the Certificate. */
 export type UpdateCertificateResponseCertificateStatusIssuance = "pending" | "completed" | "failed";
@@ -727,9 +704,8 @@ export const UpdateCertificateResponseCertificateUsedByItem =
 /** Resources currently using the Certificate. */
 export type UpdateCertificateResponseCertificateUsedByList =
   Array<CreateCertificateResponseCertificateUsedByItem>;
-export const UpdateCertificateResponseCertificateUsedByList = /*@__PURE__*/ S.Array(
-  CreateCertificateResponseCertificateUsedByItem,
-) as any as S.Schema<UpdateCertificateResponseCertificateUsedByList>;
+export const UpdateCertificateResponseCertificateUsedByList =
+  CreateCertificateResponseCertificateUsedByList as any as S.Schema<UpdateCertificateResponseCertificateUsedByList>;
 
 export interface UpdateCertificateResponseCertificate {
   /** ID of the [Certificate](#tag/certificates). */

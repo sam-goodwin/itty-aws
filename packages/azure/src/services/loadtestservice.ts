@@ -591,10 +591,8 @@ export const GetPlaywrightWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPlaywrightWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetPlaywrightWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPlaywrightWorkspaceResponseTagsMap>;
+export const GetPlaywrightWorkspaceResponseTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<GetPlaywrightWorkspaceResponseTagsMap>;
 
 /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
 export type PlaywrightWorkspacePropertiesRegionalAffinity = "Enabled" | "Disabled";
@@ -841,10 +839,8 @@ export const ListLoadTestByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LoadTestResourceTagsMap = { [key: string]: string | undefined };
-export const LoadTestResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LoadTestResourceTagsMap>;
+export const LoadTestResourceTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<LoadTestResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type LoadTestResourceIdentity = GetLoadTestResponseIdentity;
@@ -869,18 +865,7 @@ export interface LoadTestResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
 }
-export const LoadTestResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(LoadTestResourceTagsMap),
-    location: S.String,
-    properties: S.optional(LoadTestProperties),
-    identity: S.optional(GetLoadTestResponseIdentity),
-  }),
-).annotate({ identifier: "LoadTestResource" }) as any as S.Schema<LoadTestResource>;
+export const LoadTestResource = GetLoadTestResponse as any as S.Schema<LoadTestResource>;
 
 /** The LoadTestResource items on this page */
 export type LoadTestResourceListResultValueList = Array<LoadTestResource>;
@@ -1199,10 +1184,8 @@ export const ListPlaywrightWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type PlaywrightWorkspaceTagsMap = { [key: string]: string | undefined };
-export const PlaywrightWorkspaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PlaywrightWorkspaceTagsMap>;
+export const PlaywrightWorkspaceTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<PlaywrightWorkspaceTagsMap>;
 
 /** Playwright workspace resource. */
 export interface PlaywrightWorkspace {
@@ -1378,15 +1361,7 @@ export interface QuotaResource {
   /** The resource-specific properties for this resource. */
   properties?: QuotaResourceProperties;
 }
-export const QuotaResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(QuotaResourceProperties),
-  }),
-).annotate({ identifier: "QuotaResource" }) as any as S.Schema<QuotaResource>;
+export const QuotaResource = GetQuotasResponse as any as S.Schema<QuotaResource>;
 
 /** The QuotaResource items on this page */
 export type QuotaResourceListResultValueList = Array<QuotaResource>;
@@ -1410,10 +1385,8 @@ export const QuotaResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LoadTestsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const LoadTestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LoadTestsCreateOrUpdateRequestTagsMap>;
+export const LoadTestsCreateOrUpdateRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<LoadTestsCreateOrUpdateRequestTagsMap>;
 
 /** LoadTest resource properties. */
 export interface LoadTestPropertiesInput {
@@ -1431,9 +1404,8 @@ export const LoadTestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  DeleteLoadTestResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
@@ -1497,10 +1469,8 @@ export const LoadTestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LoadTestsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const LoadTestsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LoadTestsCreateOrUpdateResponseTagsMap>;
+export const LoadTestsCreateOrUpdateResponseTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<LoadTestsCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type LoadTestsCreateOrUpdateResponseIdentity = GetLoadTestResponseIdentity;
@@ -1543,10 +1513,8 @@ export const LoadTestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type PlaywrightWorkspacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PlaywrightWorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequestTagsMap>;
+export const PlaywrightWorkspacesCreateOrUpdateRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
 export type PlaywrightWorkspacePropertiesInputRegionalAffinity = "Enabled" | "Disabled";
@@ -1610,10 +1578,8 @@ export const PlaywrightWorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type PlaywrightWorkspacesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PlaywrightWorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponseTagsMap>;
+export const PlaywrightWorkspacesCreateOrUpdateResponseTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponseTagsMap>;
 
 export interface PlaywrightWorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1631,19 +1597,8 @@ export interface PlaywrightWorkspacesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceProperties;
 }
-export const PlaywrightWorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PlaywrightWorkspacesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PlaywrightWorkspaceProperties),
-  }),
-).annotate({
-  identifier: "PlaywrightWorkspacesCreateOrUpdateResponse",
-}) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>;
+export const PlaywrightWorkspacesCreateOrUpdateResponse =
+  GetPlaywrightWorkspaceResponse as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateLoadTestRequestIdentity = LoadTestsCreateOrUpdateRequestIdentity;
@@ -1651,10 +1606,8 @@ export const UpdateLoadTestRequestIdentity = LoadTestsCreateOrUpdateRequestIdent
 
 /** Resource tags. */
 export type UpdateLoadTestRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateLoadTestRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLoadTestRequestTagsMap>;
+export const UpdateLoadTestRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<UpdateLoadTestRequestTagsMap>;
 
 /** The updatable properties of the LoadTestResource. */
 export type LoadTestResourceUpdateProperties = LoadTestPropertiesInput;
@@ -1694,10 +1647,8 @@ export const UpdateLoadTestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLoadTestResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLoadTestResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLoadTestResponseTagsMap>;
+export const UpdateLoadTestResponseTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<UpdateLoadTestResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateLoadTestResponseIdentity = GetLoadTestResponseIdentity;
@@ -1721,25 +1672,13 @@ export interface UpdateLoadTestResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
 }
-export const UpdateLoadTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateLoadTestResponseTagsMap),
-    location: S.String,
-    properties: S.optional(LoadTestProperties),
-    identity: S.optional(GetLoadTestResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateLoadTestResponse" }) as any as S.Schema<UpdateLoadTestResponse>;
+export const UpdateLoadTestResponse =
+  GetLoadTestResponse as any as S.Schema<UpdateLoadTestResponse>;
 
 /** Resource tags. */
 export type UpdatePlaywrightWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePlaywrightWorkspaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePlaywrightWorkspaceRequestTagsMap>;
+export const UpdatePlaywrightWorkspaceRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<UpdatePlaywrightWorkspaceRequestTagsMap>;
 
 /** The enablement status of a feature. */
 export type EnablementStatus = "Enabled" | "Disabled";
@@ -1794,10 +1733,8 @@ export const UpdatePlaywrightWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePlaywrightWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePlaywrightWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePlaywrightWorkspaceResponseTagsMap>;
+export const UpdatePlaywrightWorkspaceResponseTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<UpdatePlaywrightWorkspaceResponseTagsMap>;
 
 export interface UpdatePlaywrightWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1815,19 +1752,8 @@ export interface UpdatePlaywrightWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceProperties;
 }
-export const UpdatePlaywrightWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdatePlaywrightWorkspaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PlaywrightWorkspaceProperties),
-  }),
-).annotate({
-  identifier: "UpdatePlaywrightWorkspaceResponse",
-}) as any as S.Schema<UpdatePlaywrightWorkspaceResponse>;
+export const UpdatePlaywrightWorkspaceResponse =
+  GetPlaywrightWorkspaceResponse as any as S.Schema<UpdatePlaywrightWorkspaceResponse>;
 
 export type CheckPlaywrightWorkspaceNameAvailabilityError = AzureOpError;
 /** Checks if a Playwright workspace name is available globally. */

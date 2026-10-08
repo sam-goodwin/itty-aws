@@ -201,7 +201,7 @@ export const Trace = /*@__PURE__*/ S.suspend(() =>
 export type TraceList = Trace[];
 export const TraceList = /*@__PURE__*/ S.Array(Trace);
 export type UnprocessedTraceIdList = string[];
-export const UnprocessedTraceIdList = /*@__PURE__*/ S.Array(S.String);
+export const UnprocessedTraceIdList = TraceIdList as any as S.Schema<UnprocessedTraceIdList>;
 export interface BatchGetTracesResult {
   Traces?: Trace[];
   UnprocessedTraceIds?: string[];
@@ -384,9 +384,7 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResult {}
-export const DeleteGroupResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResult",
-}) as any as S.Schema<DeleteGroupResult>;
+export const DeleteGroupResult = CancelTraceRetrievalResult as any as S.Schema<DeleteGroupResult>;
 export type PolicyName = string;
 export type PolicyRevisionId = string;
 export interface DeleteResourcePolicyRequest {
@@ -401,9 +399,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResult {}
-export const DeleteResourcePolicyResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResult",
-}) as any as S.Schema<DeleteResourcePolicyResult>;
+export const DeleteResourcePolicyResult =
+  CancelTraceRetrievalResult as any as S.Schema<DeleteResourcePolicyResult>;
 export interface DeleteSamplingRuleRequest {
   RuleName?: string;
   RuleARN?: string;
@@ -418,9 +415,8 @@ export const DeleteSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSamplingRuleResult {
   SamplingRuleRecord?: SamplingRuleRecord;
 }
-export const DeleteSamplingRuleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SamplingRuleRecord: S.optional(SamplingRuleRecord) }),
-).annotate({ identifier: "DeleteSamplingRuleResult" }) as any as S.Schema<DeleteSamplingRuleResult>;
+export const DeleteSamplingRuleResult =
+  CreateSamplingRuleResult as any as S.Schema<DeleteSamplingRuleResult>;
 export interface GetEncryptionConfigRequest {}
 export const GetEncryptionConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -467,9 +463,7 @@ export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupResult {
   Group?: Group;
 }
-export const GetGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(Group) }),
-).annotate({ identifier: "GetGroupResult" }) as any as S.Schema<GetGroupResult>;
+export const GetGroupResult = CreateGroupResult as any as S.Schema<GetGroupResult>;
 export type GetGroupsNextToken = string;
 export interface GetGroupsRequest {
   NextToken?: string;
@@ -485,14 +479,7 @@ export interface GroupSummary {
   FilterExpression?: string;
   InsightsConfiguration?: InsightsConfiguration;
 }
-export const GroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupName: S.optional(S.String),
-    GroupARN: S.optional(S.String),
-    FilterExpression: S.optional(S.String),
-    InsightsConfiguration: S.optional(InsightsConfiguration),
-  }),
-).annotate({ identifier: "GroupSummary" }) as any as S.Schema<GroupSummary>;
+export const GroupSummary = Group as any as S.Schema<GroupSummary>;
 export type GroupSummaryList = GroupSummary[];
 export const GroupSummaryList = /*@__PURE__*/ S.Array(GroupSummary);
 export interface GetGroupsResult {
@@ -552,7 +539,7 @@ export const GetInsightRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetInsightRequest" }) as any as S.Schema<GetInsightRequest>;
 export type ServiceNames = string[];
-export const ServiceNames = /*@__PURE__*/ S.Array(S.String);
+export const ServiceNames = TraceIdList as any as S.Schema<ServiceNames>;
 export interface ServiceId {
   Name?: string;
   Names?: string[];
@@ -885,7 +872,7 @@ export const HistogramEntry = /*@__PURE__*/ S.suspend(() =>
 export type Histogram = HistogramEntry[];
 export const Histogram = /*@__PURE__*/ S.Array(HistogramEntry);
 export type AliasNames = string[];
-export const AliasNames = /*@__PURE__*/ S.Array(S.String);
+export const AliasNames = TraceIdList as any as S.Schema<AliasNames>;
 export interface Alias {
   Name?: string;
   Names?: string[];
@@ -931,15 +918,7 @@ export interface ServiceStatistics {
   TotalCount?: number;
   TotalResponseTime?: number;
 }
-export const ServiceStatistics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    OkCount: S.optional(S.Number),
-    ErrorStatistics: S.optional(ErrorStatistics),
-    FaultStatistics: S.optional(FaultStatistics),
-    TotalCount: S.optional(S.Number),
-    TotalResponseTime: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ServiceStatistics" }) as any as S.Schema<ServiceStatistics>;
+export const ServiceStatistics = EdgeStatistics as any as S.Schema<ServiceStatistics>;
 export interface Service {
   ReferenceId?: number;
   Name?: string;
@@ -1522,15 +1501,10 @@ export interface ErrorRootCauseEntity {
   Exceptions?: RootCauseException[];
   Remote?: boolean;
 }
-export const ErrorRootCauseEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Exceptions: S.optional(RootCauseExceptions),
-    Remote: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ErrorRootCauseEntity" }) as any as S.Schema<ErrorRootCauseEntity>;
+export const ErrorRootCauseEntity = FaultRootCauseEntity as any as S.Schema<ErrorRootCauseEntity>;
 export type ErrorRootCauseEntityPath = ErrorRootCauseEntity[];
-export const ErrorRootCauseEntityPath = /*@__PURE__*/ S.Array(ErrorRootCauseEntity);
+export const ErrorRootCauseEntityPath =
+  FaultRootCauseEntityPath as any as S.Schema<ErrorRootCauseEntityPath>;
 export interface ErrorRootCauseService {
   Name?: string;
   Names?: string[];
@@ -1539,30 +1513,18 @@ export interface ErrorRootCauseService {
   EntityPath?: ErrorRootCauseEntity[];
   Inferred?: boolean;
 }
-export const ErrorRootCauseService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Names: S.optional(ServiceNames),
-    Type: S.optional(S.String),
-    AccountId: S.optional(S.String),
-    EntityPath: S.optional(ErrorRootCauseEntityPath),
-    Inferred: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ErrorRootCauseService" }) as any as S.Schema<ErrorRootCauseService>;
+export const ErrorRootCauseService =
+  FaultRootCauseService as any as S.Schema<ErrorRootCauseService>;
 export type ErrorRootCauseServices = ErrorRootCauseService[];
-export const ErrorRootCauseServices = /*@__PURE__*/ S.Array(ErrorRootCauseService);
+export const ErrorRootCauseServices =
+  FaultRootCauseServices as any as S.Schema<ErrorRootCauseServices>;
 export interface ErrorRootCause {
   Services?: ErrorRootCauseService[];
   ClientImpacting?: boolean;
 }
-export const ErrorRootCause = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Services: S.optional(ErrorRootCauseServices),
-    ClientImpacting: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ErrorRootCause" }) as any as S.Schema<ErrorRootCause>;
+export const ErrorRootCause = FaultRootCause as any as S.Schema<ErrorRootCause>;
 export type ErrorRootCauses = ErrorRootCause[];
-export const ErrorRootCauses = /*@__PURE__*/ S.Array(ErrorRootCause);
+export const ErrorRootCauses = FaultRootCauses as any as S.Schema<ErrorRootCauses>;
 export interface ResponseTimeRootCauseEntity {
   Name?: string;
   Coverage?: number;
@@ -1739,11 +1701,9 @@ export interface Span {
   Id?: string;
   Document?: string;
 }
-export const Span = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Document: S.optional(S.String) }),
-).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
+export const Span = Segment as any as S.Schema<Span>;
 export type SpanList = Span[];
-export const SpanList = /*@__PURE__*/ S.Array(Span);
+export const SpanList = SegmentList as any as S.Schema<SpanList>;
 export interface RetrievedTrace {
   Id?: string;
   Duration?: number;
@@ -1810,11 +1770,8 @@ export const PutEncryptionConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutEncryptionConfigResult {
   EncryptionConfig?: EncryptionConfig;
 }
-export const PutEncryptionConfigResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EncryptionConfig: S.optional(EncryptionConfig) }),
-).annotate({
-  identifier: "PutEncryptionConfigResult",
-}) as any as S.Schema<PutEncryptionConfigResult>;
+export const PutEncryptionConfigResult =
+  GetEncryptionConfigResult as any as S.Schema<PutEncryptionConfigResult>;
 export interface PutResourcePolicyRequest {
   PolicyName: string;
   PolicyDocument: string;
@@ -1896,12 +1853,11 @@ export const PutTelemetryRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTelemetryRecordsRequest",
 }) as any as S.Schema<PutTelemetryRecordsRequest>;
 export interface PutTelemetryRecordsResult {}
-export const PutTelemetryRecordsResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTelemetryRecordsResult",
-}) as any as S.Schema<PutTelemetryRecordsResult>;
+export const PutTelemetryRecordsResult =
+  CancelTraceRetrievalResult as any as S.Schema<PutTelemetryRecordsResult>;
 export type TraceSegmentDocument = string;
 export type TraceSegmentDocumentList = string[];
-export const TraceSegmentDocumentList = /*@__PURE__*/ S.Array(S.String);
+export const TraceSegmentDocumentList = TraceIdList as any as S.Schema<TraceSegmentDocumentList>;
 export interface PutTraceSegmentsRequest {
   TraceSegmentDocuments: string[];
 }
@@ -1931,7 +1887,7 @@ export const PutTraceSegmentsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UnprocessedTraceSegments: S.optional(UnprocessedTraceSegmentList) }),
 ).annotate({ identifier: "PutTraceSegmentsResult" }) as any as S.Schema<PutTraceSegmentsResult>;
 export type TraceIdListForRetrieval = string[];
-export const TraceIdListForRetrieval = /*@__PURE__*/ S.Array(S.String);
+export const TraceIdListForRetrieval = TraceIdList as any as S.Schema<TraceIdListForRetrieval>;
 export interface StartTraceRetrievalRequest {
   TraceIds: string[];
   StartTime: Date;
@@ -1966,11 +1922,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CancelTraceRetrievalResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TraceIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1981,9 +1936,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelTraceRetrievalResult as any as S.Schema<UntagResourceResponse>;
 export interface UpdateGroupRequest {
   GroupName?: string;
   GroupARN?: string;
@@ -2001,9 +1955,7 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGroupResult {
   Group?: Group;
 }
-export const UpdateGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(Group) }),
-).annotate({ identifier: "UpdateGroupResult" }) as any as S.Schema<UpdateGroupResult>;
+export const UpdateGroupResult = CreateGroupResult as any as S.Schema<UpdateGroupResult>;
 export interface ProbabilisticRuleValueUpdate {
   DesiredSamplingPercentage: number;
 }
@@ -2078,9 +2030,8 @@ export const UpdateSamplingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSamplingRuleResult {
   SamplingRuleRecord?: SamplingRuleRecord;
 }
-export const UpdateSamplingRuleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SamplingRuleRecord: S.optional(SamplingRuleRecord) }),
-).annotate({ identifier: "UpdateSamplingRuleResult" }) as any as S.Schema<UpdateSamplingRuleResult>;
+export const UpdateSamplingRuleResult =
+  CreateSamplingRuleResult as any as S.Schema<UpdateSamplingRuleResult>;
 export interface UpdateTraceSegmentDestinationRequest {
   Destination?: TraceSegmentDestination;
 }
@@ -2102,14 +2053,8 @@ export interface UpdateTraceSegmentDestinationResult {
   Destination?: TraceSegmentDestination;
   Status?: TraceSegmentDestinationStatus;
 }
-export const UpdateTraceSegmentDestinationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Destination: S.optional(TraceSegmentDestination),
-    Status: S.optional(TraceSegmentDestinationStatus),
-  }),
-).annotate({
-  identifier: "UpdateTraceSegmentDestinationResult",
-}) as any as S.Schema<UpdateTraceSegmentDestinationResult>;
+export const UpdateTraceSegmentDestinationResult =
+  GetTraceSegmentDestinationResult as any as S.Schema<UpdateTraceSegmentDestinationResult>;
 export type ErrorMessage = string;
 export type BatchGetTracesError = InvalidRequestException | ThrottledException | CommonErrors;
 /**

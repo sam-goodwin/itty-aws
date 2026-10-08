@@ -384,7 +384,8 @@ export type OrcCompression = "NONE" | "ZLIB" | "SNAPPY" | (string & {});
 export const OrcCompression = S.String;
 
 export type ListOfNonEmptyStringsWithoutWhitespace = string[];
-export const ListOfNonEmptyStringsWithoutWhitespace = /*@__PURE__*/ S.Array(S.String);
+export const ListOfNonEmptyStringsWithoutWhitespace =
+  ListOfNonEmptyStrings as any as S.Schema<ListOfNonEmptyStringsWithoutWhitespace>;
 export type OrcFormatVersion = "V0_11" | "V0_12" | (string & {});
 export const OrcFormatVersion = S.String;
 
@@ -523,9 +524,7 @@ export type RedshiftRetryDurationInSeconds = number;
 export interface RedshiftRetryOptions {
   DurationInSeconds?: number;
 }
-export const RedshiftRetryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DurationInSeconds: S.optional(S.Number) }),
-).annotate({ identifier: "RedshiftRetryOptions" }) as any as S.Schema<RedshiftRetryOptions>;
+export const RedshiftRetryOptions = RetryOptions as any as S.Schema<RedshiftRetryOptions>;
 export type RedshiftS3BackupMode = "Disabled" | "Enabled" | (string & {});
 export const RedshiftS3BackupMode = S.String;
 
@@ -609,9 +608,9 @@ export type ElasticsearchS3BackupMode = "FailedDocumentsOnly" | "AllDocuments" |
 export const ElasticsearchS3BackupMode = S.String;
 
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIdList = ListOfNonEmptyStrings as any as S.Schema<SubnetIdList>;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdList = ListOfNonEmptyStrings as any as S.Schema<SecurityGroupIdList>;
 export interface VpcConfiguration {
   SubnetIds: string[];
   RoleARN: string;
@@ -684,20 +683,14 @@ export interface AmazonopensearchserviceBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
 }
-export const AmazonopensearchserviceBufferingHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IntervalInSeconds: S.optional(S.Number), SizeInMBs: S.optional(S.Number) }),
-).annotate({
-  identifier: "AmazonopensearchserviceBufferingHints",
-}) as any as S.Schema<AmazonopensearchserviceBufferingHints>;
+export const AmazonopensearchserviceBufferingHints =
+  ElasticsearchBufferingHints as any as S.Schema<AmazonopensearchserviceBufferingHints>;
 export type AmazonopensearchserviceRetryDurationInSeconds = number;
 export interface AmazonopensearchserviceRetryOptions {
   DurationInSeconds?: number;
 }
-export const AmazonopensearchserviceRetryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DurationInSeconds: S.optional(S.Number) }),
-).annotate({
-  identifier: "AmazonopensearchserviceRetryOptions",
-}) as any as S.Schema<AmazonopensearchserviceRetryOptions>;
+export const AmazonopensearchserviceRetryOptions =
+  ElasticsearchRetryOptions as any as S.Schema<AmazonopensearchserviceRetryOptions>;
 export type AmazonopensearchserviceS3BackupMode =
   | "FailedDocumentsOnly"
   | "AllDocuments"
@@ -750,9 +743,7 @@ export type SplunkRetryDurationInSeconds = number;
 export interface SplunkRetryOptions {
   DurationInSeconds?: number;
 }
-export const SplunkRetryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DurationInSeconds: S.optional(S.Number) }),
-).annotate({ identifier: "SplunkRetryOptions" }) as any as S.Schema<SplunkRetryOptions>;
+export const SplunkRetryOptions = RetryOptions as any as S.Schema<SplunkRetryOptions>;
 export type SplunkS3BackupMode = "FailedEventsOnly" | "AllEvents" | (string & {});
 export const SplunkS3BackupMode = S.String;
 
@@ -855,9 +846,7 @@ export type HttpEndpointRetryDurationInSeconds = number;
 export interface HttpEndpointRetryOptions {
   DurationInSeconds?: number;
 }
-export const HttpEndpointRetryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DurationInSeconds: S.optional(S.Number) }),
-).annotate({ identifier: "HttpEndpointRetryOptions" }) as any as S.Schema<HttpEndpointRetryOptions>;
+export const HttpEndpointRetryOptions = RetryOptions as any as S.Schema<HttpEndpointRetryOptions>;
 export type HttpEndpointS3BackupMode = "FailedDataOnly" | "AllData" | (string & {});
 export const HttpEndpointS3BackupMode = S.String;
 
@@ -908,20 +897,14 @@ export interface AmazonOpenSearchServerlessBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
 }
-export const AmazonOpenSearchServerlessBufferingHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IntervalInSeconds: S.optional(S.Number), SizeInMBs: S.optional(S.Number) }),
-).annotate({
-  identifier: "AmazonOpenSearchServerlessBufferingHints",
-}) as any as S.Schema<AmazonOpenSearchServerlessBufferingHints>;
+export const AmazonOpenSearchServerlessBufferingHints =
+  ElasticsearchBufferingHints as any as S.Schema<AmazonOpenSearchServerlessBufferingHints>;
 export type AmazonOpenSearchServerlessRetryDurationInSeconds = number;
 export interface AmazonOpenSearchServerlessRetryOptions {
   DurationInSeconds?: number;
 }
-export const AmazonOpenSearchServerlessRetryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DurationInSeconds: S.optional(S.Number) }),
-).annotate({
-  identifier: "AmazonOpenSearchServerlessRetryOptions",
-}) as any as S.Schema<AmazonOpenSearchServerlessRetryOptions>;
+export const AmazonOpenSearchServerlessRetryOptions =
+  ElasticsearchRetryOptions as any as S.Schema<AmazonOpenSearchServerlessRetryOptions>;
 export type AmazonOpenSearchServerlessS3BackupMode =
   | "FailedDocumentsOnly"
   | "AllDocuments"
@@ -1024,9 +1007,7 @@ export type SnowflakeRetryDurationInSeconds = number;
 export interface SnowflakeRetryOptions {
   DurationInSeconds?: number;
 }
-export const SnowflakeRetryOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DurationInSeconds: S.optional(S.Number) }),
-).annotate({ identifier: "SnowflakeRetryOptions" }) as any as S.Schema<SnowflakeRetryOptions>;
+export const SnowflakeRetryOptions = RetryOptions as any as S.Schema<SnowflakeRetryOptions>;
 export type SnowflakeS3BackupMode = "FailedDataOnly" | "AllData" | (string & {});
 export const SnowflakeS3BackupMode = S.String;
 
@@ -1036,9 +1017,7 @@ export interface SnowflakeBufferingHints {
   SizeInMBs?: number;
   IntervalInSeconds?: number;
 }
-export const SnowflakeBufferingHints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SizeInMBs: S.optional(S.Number), IntervalInSeconds: S.optional(S.Number) }),
-).annotate({ identifier: "SnowflakeBufferingHints" }) as any as S.Schema<SnowflakeBufferingHints>;
+export const SnowflakeBufferingHints = BufferingHints as any as S.Schema<SnowflakeBufferingHints>;
 export interface SnowflakeDestinationConfiguration {
   AccountUrl: string | redacted.Redacted<string>;
   PrivateKey?: string | redacted.Redacted<string>;
@@ -1135,11 +1114,8 @@ export const SchemaEvolutionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface TableCreationConfiguration {
   Enabled: boolean;
 }
-export const TableCreationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.Boolean }),
-).annotate({
-  identifier: "TableCreationConfiguration",
-}) as any as S.Schema<TableCreationConfiguration>;
+export const TableCreationConfiguration =
+  SchemaEvolutionConfiguration as any as S.Schema<TableCreationConfiguration>;
 export type IcebergS3BackupMode = "FailedDataOnly" | "AllData" | (string & {});
 export const IcebergS3BackupMode = S.String;
 
@@ -1194,7 +1170,8 @@ export const SSLMode = S.String;
 
 export type DatabaseName = string;
 export type DatabaseIncludeOrExcludeList = string[];
-export const DatabaseIncludeOrExcludeList = /*@__PURE__*/ S.Array(S.String);
+export const DatabaseIncludeOrExcludeList =
+  ListOfNonEmptyStrings as any as S.Schema<DatabaseIncludeOrExcludeList>;
 export interface DatabaseList {
   Include?: string[];
   Exclude?: string[];
@@ -1207,32 +1184,25 @@ export const DatabaseList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseList" }) as any as S.Schema<DatabaseList>;
 export type DatabaseTableName = string;
 export type DatabaseTableIncludeOrExcludeList = string[];
-export const DatabaseTableIncludeOrExcludeList = /*@__PURE__*/ S.Array(S.String);
+export const DatabaseTableIncludeOrExcludeList =
+  ListOfNonEmptyStrings as any as S.Schema<DatabaseTableIncludeOrExcludeList>;
 export interface DatabaseTableList {
   Include?: string[];
   Exclude?: string[];
 }
-export const DatabaseTableList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Include: S.optional(DatabaseTableIncludeOrExcludeList),
-    Exclude: S.optional(DatabaseTableIncludeOrExcludeList),
-  }),
-).annotate({ identifier: "DatabaseTableList" }) as any as S.Schema<DatabaseTableList>;
+export const DatabaseTableList = DatabaseList as any as S.Schema<DatabaseTableList>;
 export type DatabaseColumnName = string;
 export type DatabaseColumnIncludeOrExcludeList = string[];
-export const DatabaseColumnIncludeOrExcludeList = /*@__PURE__*/ S.Array(S.String);
+export const DatabaseColumnIncludeOrExcludeList =
+  ListOfNonEmptyStrings as any as S.Schema<DatabaseColumnIncludeOrExcludeList>;
 export interface DatabaseColumnList {
   Include?: string[];
   Exclude?: string[];
 }
-export const DatabaseColumnList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Include: S.optional(DatabaseColumnIncludeOrExcludeList),
-    Exclude: S.optional(DatabaseColumnIncludeOrExcludeList),
-  }),
-).annotate({ identifier: "DatabaseColumnList" }) as any as S.Schema<DatabaseColumnList>;
+export const DatabaseColumnList = DatabaseList as any as S.Schema<DatabaseColumnList>;
 export type DatabaseSurrogateKeyList = string[];
-export const DatabaseSurrogateKeyList = /*@__PURE__*/ S.Array(S.String);
+export const DatabaseSurrogateKeyList =
+  ListOfNonEmptyStrings as any as S.Schema<DatabaseSurrogateKeyList>;
 export interface DatabaseSourceAuthenticationConfiguration {
   SecretsManagerConfiguration: SecretsManagerConfiguration;
 }
@@ -1984,7 +1954,8 @@ export const ListDeliveryStreamsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListDeliveryStreamsInput" }) as any as S.Schema<ListDeliveryStreamsInput>;
 export type DeliveryStreamNameList = string[];
-export const DeliveryStreamNameList = /*@__PURE__*/ S.Array(S.String);
+export const DeliveryStreamNameList =
+  ListOfNonEmptyStrings as any as S.Schema<DeliveryStreamNameList>;
 export interface ListDeliveryStreamsOutput {
   DeliveryStreamNames: string[];
   HasMoreDeliveryStreams: boolean;
@@ -2012,7 +1983,8 @@ export const ListTagsForDeliveryStreamInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForDeliveryStreamInput",
 }) as any as S.Schema<ListTagsForDeliveryStreamInput>;
 export type ListTagsForDeliveryStreamOutputTagList = Tag[];
-export const ListTagsForDeliveryStreamOutputTagList = /*@__PURE__*/ S.Array(Tag);
+export const ListTagsForDeliveryStreamOutputTagList =
+  TagDeliveryStreamInputTagList as any as S.Schema<ListTagsForDeliveryStreamOutputTagList>;
 export interface ListTagsForDeliveryStreamOutput {
   Tags: Tag[];
   HasMoreTags: boolean;
@@ -2102,11 +2074,8 @@ export const StartDeliveryStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartDeliveryStreamEncryptionInput",
 }) as any as S.Schema<StartDeliveryStreamEncryptionInput>;
 export interface StartDeliveryStreamEncryptionOutput {}
-export const StartDeliveryStreamEncryptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StartDeliveryStreamEncryptionOutput",
-}) as any as S.Schema<StartDeliveryStreamEncryptionOutput>;
+export const StartDeliveryStreamEncryptionOutput =
+  DeleteDeliveryStreamOutput as any as S.Schema<StartDeliveryStreamEncryptionOutput>;
 export interface StopDeliveryStreamEncryptionInput {
   DeliveryStreamName: string;
 }
@@ -2118,11 +2087,8 @@ export const StopDeliveryStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopDeliveryStreamEncryptionInput",
 }) as any as S.Schema<StopDeliveryStreamEncryptionInput>;
 export interface StopDeliveryStreamEncryptionOutput {}
-export const StopDeliveryStreamEncryptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StopDeliveryStreamEncryptionOutput",
-}) as any as S.Schema<StopDeliveryStreamEncryptionOutput>;
+export const StopDeliveryStreamEncryptionOutput =
+  DeleteDeliveryStreamOutput as any as S.Schema<StopDeliveryStreamEncryptionOutput>;
 export interface TagDeliveryStreamInput {
   DeliveryStreamName: string;
   Tags: Tag[];
@@ -2137,7 +2103,7 @@ export const TagDeliveryStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({ identifier: "TagDeliveryStreamOutput" }) as any as S.Schema<TagDeliveryStreamOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ListOfNonEmptyStrings as any as S.Schema<TagKeyList>;
 export interface UntagDeliveryStreamInput {
   DeliveryStreamName: string;
   TagKeys: string[];
@@ -2148,11 +2114,8 @@ export const UntagDeliveryStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagDeliveryStreamInput" }) as any as S.Schema<UntagDeliveryStreamInput>;
 export interface UntagDeliveryStreamOutput {}
-export const UntagDeliveryStreamOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UntagDeliveryStreamOutput",
-}) as any as S.Schema<UntagDeliveryStreamOutput>;
+export const UntagDeliveryStreamOutput =
+  DeleteDeliveryStreamOutput as any as S.Schema<UntagDeliveryStreamOutput>;
 export interface S3DestinationUpdate {
   RoleARN?: string;
   BucketARN?: string;
@@ -2500,9 +2463,8 @@ export const UpdateDestinationInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateDestinationInput" }) as any as S.Schema<UpdateDestinationInput>;
 export interface UpdateDestinationOutput {}
-export const UpdateDestinationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "UpdateDestinationOutput" }) as any as S.Schema<UpdateDestinationOutput>;
+export const UpdateDestinationOutput =
+  TagDeliveryStreamOutput as any as S.Schema<UpdateDestinationOutput>;
 export type CreateDeliveryStreamError =
   | InvalidArgumentException
   | InvalidKMSResourceException

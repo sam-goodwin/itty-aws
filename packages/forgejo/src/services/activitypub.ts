@@ -127,11 +127,8 @@ export const ActivitypubPersonFeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivitypubPersonFeedRequest>;
 
 export type ActivitypubPersonFeedResponse = unknown;
-export const ActivitypubPersonFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ActivitypubPersonFeedResponse",
-}) as any as S.Schema<ActivitypubPersonFeedResponse>;
+export const ActivitypubPersonFeedResponse =
+  ActivitypubInstanceActorOutboxResponse as any as S.Schema<ActivitypubPersonFeedResponse>;
 
 export interface ActivitypubPersonInboxRequest {
   /** user ID of the user */
@@ -177,11 +174,8 @@ export const ActivitypubRepositoryInboxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivitypubRepositoryInboxRequest>;
 
 export interface ActivitypubRepositoryInboxResponse {}
-export const ActivitypubRepositoryInboxResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActivitypubRepositoryInboxResponse",
-}) as any as S.Schema<ActivitypubRepositoryInboxResponse>;
+export const ActivitypubRepositoryInboxResponse =
+  ActivitypubInstanceActorInboxResponse as any as S.Schema<ActivitypubRepositoryInboxResponse>;
 
 export interface ActivitypubRepositoryOutboxRequest {
   /** repository ID of the repo */
@@ -198,11 +192,8 @@ export const ActivitypubRepositoryOutboxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivitypubRepositoryOutboxRequest>;
 
 export type ActivitypubRepositoryOutboxResponse = unknown;
-export const ActivitypubRepositoryOutboxResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ActivitypubRepositoryOutboxResponse",
-}) as any as S.Schema<ActivitypubRepositoryOutboxResponse>;
+export const ActivitypubRepositoryOutboxResponse =
+  ActivitypubInstanceActorOutboxResponse as any as S.Schema<ActivitypubRepositoryOutboxResponse>;
 
 export type ActivitypubInstanceActorError = ForgejoOpError;
 /** Returns the instance's Actor */

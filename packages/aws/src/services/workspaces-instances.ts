@@ -641,7 +641,7 @@ export const PrivateDnsNameOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateDnsNameOptionsRequest>;
 export type SecurityGroupName = string;
 export type SecurityGroupNames = string[];
-export const SecurityGroupNames = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupNames = SecurityGroupIds as any as S.Schema<SecurityGroupNames>;
 export type UserData = string | redacted.Redacted<string>;
 export interface ManagedInstanceRequest {
   BlockDeviceMappings?: BlockDeviceMappingRequest[];
@@ -755,9 +755,8 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeResponse",
-}) as any as S.Schema<DeleteVolumeResponse>;
+export const DeleteVolumeResponse =
+  AssociateVolumeResponse as any as S.Schema<DeleteVolumeResponse>;
 export interface DeleteWorkspaceInstanceRequest {
   WorkspaceInstanceId: string;
 }
@@ -792,9 +791,8 @@ export const DisassociateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateVolumeRequest",
 }) as any as S.Schema<DisassociateVolumeRequest>;
 export interface DisassociateVolumeResponse {}
-export const DisassociateVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateVolumeResponse",
-}) as any as S.Schema<DisassociateVolumeResponse>;
+export const DisassociateVolumeResponse =
+  AssociateVolumeResponse as any as S.Schema<DisassociateVolumeResponse>;
 export interface GetWorkspaceInstanceRequest {
   WorkspaceInstanceId: string;
 }
@@ -1038,11 +1036,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AssociateVolumeResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SecurityGroupIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   WorkspaceInstanceId: string;
   TagKeys: string[];
@@ -1053,9 +1049,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssociateVolumeResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "UNSUPPORTED_OPERATION"

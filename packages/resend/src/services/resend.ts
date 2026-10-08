@@ -25,11 +25,11 @@ export const EmailToList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Em
 
 /** The email addresses of the blind carbon copy recipients. */
 export type EmailBccList = Array<string>;
-export const EmailBccList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<EmailBccList>;
+export const EmailBccList = EmailToList as any as S.Schema<EmailBccList>;
 
 /** The email addresses of the carbon copy recipients. */
 export type EmailCcList = Array<string>;
-export const EmailCcList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<EmailCcList>;
+export const EmailCcList = EmailToList as any as S.Schema<EmailCcList>;
 
 /** The email addresses to which replies should be sent. */
 export type EmailReplyToList = Array<string>;
@@ -217,9 +217,8 @@ export const CreateAutomationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The email addresses to which replies should be sent. */
 export type CreateBroadcastRequestReplyToList = Array<string>;
-export const CreateBroadcastRequestReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBroadcastRequestReplyToList>;
+export const CreateBroadcastRequestReplyToList =
+  EmailReplyToList as any as S.Schema<CreateBroadcastRequestReplyToList>;
 
 export interface CreateBroadcastRequest {
   /** Name of the broadcast. */
@@ -288,9 +287,8 @@ export const CreateContactRequestPropertiesMap = /*@__PURE__*/ S.Record(
 
 /** Array of segment IDs to add the contact to. */
 export type CreateContactRequestSegmentsList = Array<string>;
-export const CreateContactRequestSegmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContactRequestSegmentsList>;
+export const CreateContactRequestSegmentsList =
+  EmailReplyToList as any as S.Schema<CreateContactRequestSegmentsList>;
 
 /** The subscription status for this topic. */
 export type CreateContactRequestTopicsItemSubscription = "opt_in" | "opt_out";
@@ -396,14 +394,8 @@ export interface CreateContactPropertyResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const CreateContactPropertyResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateContactPropertyResponseSuccess",
-}) as any as S.Schema<CreateContactPropertyResponseSuccess>;
+export const CreateContactPropertyResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateContactPropertyResponseSuccess>;
 
 /** The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1 */
 export type CreateDomainRequestRegion = "us-east-1" | "eu-west-1" | "sa-east-1" | "ap-northeast-1";
@@ -551,36 +543,32 @@ export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDomainResponse" }) as any as S.Schema<CreateDomainResponse>;
 
 export type CreateEmailRequestToCase1List = Array<string>;
-export const CreateEmailRequestToCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEmailRequestToCase1List>;
+export const CreateEmailRequestToCase1List =
+  EmailReplyToList as any as S.Schema<CreateEmailRequestToCase1List>;
 
 /** Recipient email address. For multiple addresses, send as an array of strings. Max 50. */
 export type CreateEmailRequestTo = string | CreateEmailRequestToCase1List;
 export const CreateEmailRequestTo = S.Unknown as any as S.Schema<CreateEmailRequestTo>;
 
 export type CreateEmailRequestBccCase1List = Array<string>;
-export const CreateEmailRequestBccCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEmailRequestBccCase1List>;
+export const CreateEmailRequestBccCase1List =
+  EmailReplyToList as any as S.Schema<CreateEmailRequestBccCase1List>;
 
 /** Bcc recipient email address. For multiple addresses, send as an array of strings. */
 export type CreateEmailRequestBcc = string | CreateEmailRequestBccCase1List;
 export const CreateEmailRequestBcc = S.Unknown as any as S.Schema<CreateEmailRequestBcc>;
 
 export type CreateEmailRequestCcCase1List = Array<string>;
-export const CreateEmailRequestCcCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEmailRequestCcCase1List>;
+export const CreateEmailRequestCcCase1List =
+  EmailReplyToList as any as S.Schema<CreateEmailRequestCcCase1List>;
 
 /** Cc recipient email address. For multiple addresses, send as an array of strings. */
 export type CreateEmailRequestCc = string | CreateEmailRequestCcCase1List;
 export const CreateEmailRequestCc = S.Unknown as any as S.Schema<CreateEmailRequestCc>;
 
 export type CreateEmailRequestReplyToCase1List = Array<string>;
-export const CreateEmailRequestReplyToCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEmailRequestReplyToCase1List>;
+export const CreateEmailRequestReplyToCase1List =
+  EmailReplyToList as any as S.Schema<CreateEmailRequestReplyToCase1List>;
 
 /** Reply-to email address. For multiple addresses, send as an array of strings. */
 export type CreateEmailRequestReplyTo = string | CreateEmailRequestReplyToCase1List;
@@ -716,36 +704,32 @@ export const SendEmailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendEmailResponse" }) as any as S.Schema<SendEmailResponse>;
 
 export type SendEmailRequestToCase1List = Array<string>;
-export const SendEmailRequestToCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendEmailRequestToCase1List>;
+export const SendEmailRequestToCase1List =
+  EmailReplyToList as any as S.Schema<SendEmailRequestToCase1List>;
 
 /** Recipient email address. For multiple addresses, send as an array of strings. Max 50. */
 export type SendEmailRequestTo = string | SendEmailRequestToCase1List;
 export const SendEmailRequestTo = S.Unknown as any as S.Schema<SendEmailRequestTo>;
 
 export type SendEmailRequestBccCase1List = Array<string>;
-export const SendEmailRequestBccCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendEmailRequestBccCase1List>;
+export const SendEmailRequestBccCase1List =
+  EmailReplyToList as any as S.Schema<SendEmailRequestBccCase1List>;
 
 /** Bcc recipient email address. For multiple addresses, send as an array of strings. */
 export type SendEmailRequestBcc = string | SendEmailRequestBccCase1List;
 export const SendEmailRequestBcc = S.Unknown as any as S.Schema<SendEmailRequestBcc>;
 
 export type SendEmailRequestCcCase1List = Array<string>;
-export const SendEmailRequestCcCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendEmailRequestCcCase1List>;
+export const SendEmailRequestCcCase1List =
+  EmailReplyToList as any as S.Schema<SendEmailRequestCcCase1List>;
 
 /** Cc recipient email address. For multiple addresses, send as an array of strings. */
 export type SendEmailRequestCc = string | SendEmailRequestCcCase1List;
 export const SendEmailRequestCc = S.Unknown as any as S.Schema<SendEmailRequestCc>;
 
 export type SendEmailRequestReplyToCase1List = Array<string>;
-export const SendEmailRequestReplyToCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendEmailRequestReplyToCase1List>;
+export const SendEmailRequestReplyToCase1List =
+  EmailReplyToList as any as S.Schema<SendEmailRequestReplyToCase1List>;
 
 /** Reply-to email address. For multiple addresses, send as an array of strings. */
 export type SendEmailRequestReplyTo = string | SendEmailRequestReplyToCase1List;
@@ -778,14 +762,12 @@ export const SendEmailRequestTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendEmailRequestTemplate" }) as any as S.Schema<SendEmailRequestTemplate>;
 
 export type SendEmailRequestAttachmentsList = Array<Attachment>;
-export const SendEmailRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<SendEmailRequestAttachmentsList>;
+export const SendEmailRequestAttachmentsList =
+  CreateEmailRequestAttachmentsList as any as S.Schema<SendEmailRequestAttachmentsList>;
 
 export type SendEmailRequestTagsList = Array<Tag>;
-export const SendEmailRequestTagsList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<SendEmailRequestTagsList>;
+export const SendEmailRequestTagsList =
+  CreateEmailRequestTagsList as any as S.Schema<SendEmailRequestTagsList>;
 
 export interface SendEmailRequest {
   /** Sender email address. To include a friendly name, use the format "Your Name <sender@domain.com>". */
@@ -894,12 +876,7 @@ export interface CreateEventResponse {
   /** The ID of the created event. */
   id?: string;
 }
-export const CreateEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateEventResponse" }) as any as S.Schema<CreateEventResponse>;
+export const CreateEventResponse = CreateAutomationResponse as any as S.Schema<CreateEventResponse>;
 
 export interface CreateSegmentRequest {
   /** The name of the segment. */
@@ -923,20 +900,13 @@ export interface CreateSegmentResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const CreateSegmentResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSegmentResponseSuccess",
-}) as any as S.Schema<CreateSegmentResponseSuccess>;
+export const CreateSegmentResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateSegmentResponseSuccess>;
 
 /** Reply-to email addresses. */
 export type CreateTemplateRequestReplyToList = Array<string>;
-export const CreateTemplateRequestReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTemplateRequestReplyToList>;
+export const CreateTemplateRequestReplyToList =
+  EmailReplyToList as any as S.Schema<CreateTemplateRequestReplyToList>;
 
 /** The type of the variable. */
 export type TemplateVariableInputType = "string" | "number" | "boolean" | "object" | "list";
@@ -1014,14 +984,8 @@ export interface CreateTemplateResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const CreateTemplateResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateTemplateResponseSuccess",
-}) as any as S.Schema<CreateTemplateResponseSuccess>;
+export const CreateTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateTemplateResponseSuccess>;
 
 /** The default subscription status for the topic. Cannot be changed after creation. */
 export type CreateTopicRequestDefaultSubscription = "opt_in" | "opt_out";
@@ -1056,20 +1020,13 @@ export interface CreateTopicResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const CreateTopicResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateTopicResponseSuccess",
-}) as any as S.Schema<CreateTopicResponseSuccess>;
+export const CreateTopicResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateTopicResponseSuccess>;
 
 /** Array of event types to subscribe to. */
 export type CreateWebhookRequestEventsList = Array<string>;
-export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestEventsList>;
+export const CreateWebhookRequestEventsList =
+  EmailReplyToList as any as S.Schema<CreateWebhookRequestEventsList>;
 
 export interface CreateWebhookRequest {
   /** The URL where webhook events will be sent. */
@@ -1144,13 +1101,8 @@ export interface DeleteAutomationResponse {
   /** Indicates whether the automation was successfully deleted. */
   deleted?: boolean;
 }
-export const DeleteAutomationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeleteAutomationResponse" }) as any as S.Schema<DeleteAutomationResponse>;
+export const DeleteAutomationResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteAutomationResponse>;
 
 export interface DeleteBroadcastRequest {
   /** The Broadcast ID. */
@@ -1228,15 +1180,8 @@ export interface RemoveContactPropertyResponseSuccess {
   /** Indicates whether the contact property was successfully deleted. */
   deleted?: boolean;
 }
-export const RemoveContactPropertyResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RemoveContactPropertyResponseSuccess",
-}) as any as S.Schema<RemoveContactPropertyResponseSuccess>;
+export const RemoveContactPropertyResponseSuccess =
+  RemoveBroadcastResponseSuccess as any as S.Schema<RemoveContactPropertyResponseSuccess>;
 
 export interface DeleteContactSegmentRequest {
   /** The Contact ID or email address. */
@@ -1294,13 +1239,7 @@ export interface DeleteDomainResponse {
   /** Indicates whether the domain was deleted successfully. */
   deleted?: boolean;
 }
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeleteDomainResponse" }) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse = DeleteApiKeyResponse as any as S.Schema<DeleteDomainResponse>;
 
 export interface DeleteEventRequest {
   /** The event ID (UUID) or event name. */
@@ -1320,13 +1259,7 @@ export interface RemoveEventResponse {
   /** Indicates whether the event was deleted. */
   deleted?: boolean;
 }
-export const RemoveEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RemoveEventResponse" }) as any as S.Schema<RemoveEventResponse>;
+export const RemoveEventResponse = DeleteApiKeyResponse as any as S.Schema<RemoveEventResponse>;
 
 export interface DeleteSegmentRequest {
   /** The Segment ID. */
@@ -1346,15 +1279,8 @@ export interface RemoveSegmentResponseSuccess {
   /** Indicates whether the segment was successfully deleted. */
   deleted?: boolean;
 }
-export const RemoveSegmentResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RemoveSegmentResponseSuccess",
-}) as any as S.Schema<RemoveSegmentResponseSuccess>;
+export const RemoveSegmentResponseSuccess =
+  RemoveBroadcastResponseSuccess as any as S.Schema<RemoveSegmentResponseSuccess>;
 
 export interface DeleteTemplateRequest {
   /** The Template ID or alias. */
@@ -1374,15 +1300,8 @@ export interface RemoveTemplateResponseSuccess {
   /** Indicates whether the template was successfully deleted. */
   deleted?: boolean;
 }
-export const RemoveTemplateResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RemoveTemplateResponseSuccess",
-}) as any as S.Schema<RemoveTemplateResponseSuccess>;
+export const RemoveTemplateResponseSuccess =
+  RemoveContactResponseSuccess as any as S.Schema<RemoveTemplateResponseSuccess>;
 
 export interface DeleteTopicRequest {
   /** The Topic ID. */
@@ -1402,15 +1321,8 @@ export interface RemoveTopicResponseSuccess {
   /** Indicates whether the topic was successfully deleted. */
   deleted?: boolean;
 }
-export const RemoveTopicResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RemoveTopicResponseSuccess",
-}) as any as S.Schema<RemoveTopicResponseSuccess>;
+export const RemoveTopicResponseSuccess =
+  RemoveBroadcastResponseSuccess as any as S.Schema<RemoveTopicResponseSuccess>;
 
 export interface DeleteWebhookRequest {
   /** The Webhook ID. */
@@ -1430,13 +1342,7 @@ export interface DeleteWebhookResponse {
   /** Indicates whether the webhook was successfully deleted. */
   deleted?: boolean;
 }
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DeleteWebhookResponse" }) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse = DeleteApiKeyResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DuplicateTemplateRequest {
   /** The Template ID or alias. */
@@ -1454,14 +1360,8 @@ export interface DuplicateTemplateResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const DuplicateTemplateResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DuplicateTemplateResponseSuccess",
-}) as any as S.Schema<DuplicateTemplateResponseSuccess>;
+export const DuplicateTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<DuplicateTemplateResponseSuccess>;
 
 export interface GetAutomationRequest {
   /** The ID of the automation. */
@@ -1514,9 +1414,8 @@ export const AutomationStepsList = /*@__PURE__*/ S.Array(
 
 /** The connections between steps in the active version of the automation. */
 export type AutomationConnectionsList = Array<AutomationConnection>;
-export const AutomationConnectionsList = /*@__PURE__*/ S.Array(
-  AutomationConnection,
-) as any as S.Schema<AutomationConnectionsList>;
+export const AutomationConnectionsList =
+  CreateAutomationRequestConnectionsList as any as S.Schema<AutomationConnectionsList>;
 
 export interface Automation {
   /** Type of the response object. */
@@ -1656,9 +1555,8 @@ export const GetBroadcastRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The email addresses to which replies should be sent. */
 export type GetBroadcastResponseSuccessReplyToList = Array<string>;
-export const GetBroadcastResponseSuccessReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBroadcastResponseSuccessReplyToList>;
+export const GetBroadcastResponseSuccessReplyToList =
+  EmailReplyToList as any as S.Schema<GetBroadcastResponseSuccessReplyToList>;
 
 export interface GetBroadcastResponseSuccess {
   /** Unique identifier for the broadcast. */
@@ -1726,10 +1624,8 @@ export const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A map of custom property keys and values. */
 export type GetContactResponseSuccessPropertiesMap = { [key: string]: unknown | undefined };
-export const GetContactResponseSuccessPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetContactResponseSuccessPropertiesMap>;
+export const GetContactResponseSuccessPropertiesMap =
+  CreateContactRequestPropertiesMap as any as S.Schema<GetContactResponseSuccessPropertiesMap>;
 
 export interface GetContactResponseSuccess {
   /** Type of the response object. */
@@ -1819,9 +1715,8 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDomainRequest" }) as any as S.Schema<GetDomainRequest>;
 
 export type DomainRecordsList = Array<DomainRecord>;
-export const DomainRecordsList = /*@__PURE__*/ S.Array(
-  DomainRecord,
-) as any as S.Schema<DomainRecordsList>;
+export const DomainRecordsList =
+  CreateDomainResponseRecordsList as any as S.Schema<DomainRecordsList>;
 
 export interface Domain {
   /** The type of object. */
@@ -1938,27 +1833,23 @@ export const GetEmailReceivingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The recipient email addresses. */
 export type GetReceivedEmailResponseToList = Array<string>;
-export const GetReceivedEmailResponseToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetReceivedEmailResponseToList>;
+export const GetReceivedEmailResponseToList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseToList>;
 
 /** The BCC recipients. */
 export type GetReceivedEmailResponseBccList = Array<string>;
-export const GetReceivedEmailResponseBccList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetReceivedEmailResponseBccList>;
+export const GetReceivedEmailResponseBccList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseBccList>;
 
 /** The CC recipients. */
 export type GetReceivedEmailResponseCcList = Array<string>;
-export const GetReceivedEmailResponseCcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetReceivedEmailResponseCcList>;
+export const GetReceivedEmailResponseCcList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseCcList>;
 
 /** The reply-to addresses. */
 export type GetReceivedEmailResponseReplyToList = Array<string>;
-export const GetReceivedEmailResponseReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetReceivedEmailResponseReplyToList>;
+export const GetReceivedEmailResponseReplyToList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseReplyToList>;
 
 /** How the attachment should be displayed. */
 export type GetReceivedEmailResponseAttachmentsItemContentDisposition = "inline" | "attachment";
@@ -2200,18 +2091,15 @@ export const GetTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Reply-to email addresses. */
 export type TemplateReplyToList = Array<string>;
-export const TemplateReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplateReplyToList>;
+export const TemplateReplyToList = EmailReplyToList as any as S.Schema<TemplateReplyToList>;
 
 /** The type of the variable. */
 export type TemplateVariableType = "string" | "number" | "boolean" | "object" | "list";
 export const TemplateVariableType = S.String;
 
 export type TemplateVariableFallbackValueCase4List = Array<unknown>;
-export const TemplateVariableFallbackValueCase4List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TemplateVariableFallbackValueCase4List>;
+export const TemplateVariableFallbackValueCase4List =
+  TemplateVariableInputFallbackValueCase4List as any as S.Schema<TemplateVariableFallbackValueCase4List>;
 
 /** The fallback value of the variable. */
 export type TemplateVariableFallbackValue =
@@ -2369,9 +2257,8 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event types subscribed to. */
 export type GetWebhookResponseEventsList = Array<string>;
-export const GetWebhookResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseEventsList>;
+export const GetWebhookResponseEventsList =
+  EmailReplyToList as any as S.Schema<GetWebhookResponseEventsList>;
 
 export interface GetWebhookResponse {
   /** The type of object. */
@@ -3108,27 +2995,23 @@ export const ListEmailReceivingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The recipient email addresses. */
 export type ListReceivedEmailsResponseDataItemToList = Array<string>;
-export const ListReceivedEmailsResponseDataItemToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListReceivedEmailsResponseDataItemToList>;
+export const ListReceivedEmailsResponseDataItemToList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemToList>;
 
 /** The BCC recipients. */
 export type ListReceivedEmailsResponseDataItemBccList = Array<string>;
-export const ListReceivedEmailsResponseDataItemBccList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListReceivedEmailsResponseDataItemBccList>;
+export const ListReceivedEmailsResponseDataItemBccList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemBccList>;
 
 /** The CC recipients. */
 export type ListReceivedEmailsResponseDataItemCcList = Array<string>;
-export const ListReceivedEmailsResponseDataItemCcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListReceivedEmailsResponseDataItemCcList>;
+export const ListReceivedEmailsResponseDataItemCcList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemCcList>;
 
 /** The reply-to addresses. */
 export type ListReceivedEmailsResponseDataItemReplyToList = Array<string>;
-export const ListReceivedEmailsResponseDataItemReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListReceivedEmailsResponseDataItemReplyToList>;
+export const ListReceivedEmailsResponseDataItemReplyToList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemReplyToList>;
 
 /** How the attachment should be displayed. */
 export type ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition =
@@ -3647,9 +3530,8 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event types subscribed to. */
 export type ListWebhooksResponseDataItemEventsList = Array<string>;
-export const ListWebhooksResponseDataItemEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseDataItemEventsList>;
+export const ListWebhooksResponseDataItemEventsList =
+  EmailReplyToList as any as S.Schema<ListWebhooksResponseDataItemEventsList>;
 
 export interface ListWebhooksResponseDataItem {
   /** The ID of the webhook. */
@@ -3713,14 +3595,8 @@ export interface PublishTemplateResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const PublishTemplateResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PublishTemplateResponseSuccess",
-}) as any as S.Schema<PublishTemplateResponseSuccess>;
+export const PublishTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<PublishTemplateResponseSuccess>;
 
 export interface SendBroadcastRequest {
   /** The Broadcast ID. */
@@ -3739,20 +3615,13 @@ export interface SendBroadcastResponseSuccess {
   /** The ID of the broadcast. */
   id?: string;
 }
-export const SendBroadcastResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SendBroadcastResponseSuccess",
-}) as any as S.Schema<SendBroadcastResponseSuccess>;
+export const SendBroadcastResponseSuccess =
+  CreateBatchEmailsResponseDataItem as any as S.Schema<SendBroadcastResponseSuccess>;
 
 /** An optional payload of key/value pairs to include with the event. */
 export type SendEventRequestPayloadMap = { [key: string]: unknown | undefined };
-export const SendEventRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SendEventRequestPayloadMap>;
+export const SendEventRequestPayloadMap =
+  CreateContactRequestPropertiesMap as any as S.Schema<SendEventRequestPayloadMap>;
 
 export interface SendEventRequest {
   /** The name of the event to send. */
@@ -3810,15 +3679,13 @@ export const UpdateAutomationRequestStatus = S.String;
 
 /** The steps that compose the automation workflow. Must be provided together with `connections`. */
 export type UpdateAutomationRequestStepsList = Array<AutomationStep>;
-export const UpdateAutomationRequestStepsList = /*@__PURE__*/ S.Array(
-  AutomationStep,
-) as any as S.Schema<UpdateAutomationRequestStepsList>;
+export const UpdateAutomationRequestStepsList =
+  CreateAutomationRequestStepsList as any as S.Schema<UpdateAutomationRequestStepsList>;
 
 /** The connections between steps in the automation graph. Must be provided together with `steps`. */
 export type UpdateAutomationRequestConnectionsList = Array<AutomationConnection>;
-export const UpdateAutomationRequestConnectionsList = /*@__PURE__*/ S.Array(
-  AutomationConnection,
-) as any as S.Schema<UpdateAutomationRequestConnectionsList>;
+export const UpdateAutomationRequestConnectionsList =
+  CreateAutomationRequestConnectionsList as any as S.Schema<UpdateAutomationRequestConnectionsList>;
 
 export interface UpdateAutomationRequest {
   /** The ID of the automation. */
@@ -3848,18 +3715,13 @@ export interface PatchAutomationResponse {
   /** The ID of the updated automation. */
   id?: string;
 }
-export const PatchAutomationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PatchAutomationResponse" }) as any as S.Schema<PatchAutomationResponse>;
+export const PatchAutomationResponse =
+  CreateAutomationResponse as any as S.Schema<PatchAutomationResponse>;
 
 /** The email addresses to which replies should be sent. */
 export type UpdateBroadcastRequestReplyToList = Array<string>;
-export const UpdateBroadcastRequestReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBroadcastRequestReplyToList>;
+export const UpdateBroadcastRequestReplyToList =
+  EmailReplyToList as any as S.Schema<UpdateBroadcastRequestReplyToList>;
 
 export interface UpdateBroadcastRequest {
   /** The Broadcast ID. */
@@ -3907,21 +3769,13 @@ export interface UpdateBroadcastResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const UpdateBroadcastResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBroadcastResponseSuccess",
-}) as any as S.Schema<UpdateBroadcastResponseSuccess>;
+export const UpdateBroadcastResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateBroadcastResponseSuccess>;
 
 /** A map of custom property keys and values to update. */
 export type UpdateContactRequestPropertiesMap = { [key: string]: unknown | undefined };
-export const UpdateContactRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateContactRequestPropertiesMap>;
+export const UpdateContactRequestPropertiesMap =
+  CreateContactRequestPropertiesMap as any as S.Schema<UpdateContactRequestPropertiesMap>;
 
 export interface UpdateContactRequest {
   /** The Contact ID or email address. */
@@ -3954,14 +3808,8 @@ export interface UpdateContactResponseSuccess {
   /** Unique identifier for the updated contact. */
   id?: string;
 }
-export const UpdateContactResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateContactResponseSuccess",
-}) as any as S.Schema<UpdateContactResponseSuccess>;
+export const UpdateContactResponseSuccess =
+  CreateContactResponseSuccess as any as S.Schema<UpdateContactResponseSuccess>;
 
 /** The default value to use when the property is not set for a contact. Must match the type of the property. */
 export type UpdateContactPropertyRequestFallbackValue = string | number;
@@ -3989,14 +3837,8 @@ export interface UpdateContactPropertyResponseSuccess {
   /** The object type. */
   object?: string;
 }
-export const UpdateContactPropertyResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateContactPropertyResponseSuccess",
-}) as any as S.Schema<UpdateContactPropertyResponseSuccess>;
+export const UpdateContactPropertyResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateContactPropertyResponseSuccess>;
 
 export interface UpdateContactSegmentRequest {
   /** The Contact ID or email address. */
@@ -4145,14 +3987,8 @@ export interface UpdateDomainResponseSuccess {
   /** The object type representing the updated domain. */
   object?: string;
 }
-export const UpdateDomainResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDomainResponseSuccess",
-}) as any as S.Schema<UpdateDomainResponseSuccess>;
+export const UpdateDomainResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateDomainResponseSuccess>;
 
 export interface UpdateEmailRequest {
   /** The ID of the email. */
@@ -4193,23 +4029,16 @@ export interface UpdateEventResponse {
   /** The ID of the updated event. */
   id?: string;
 }
-export const UpdateEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateEventResponse" }) as any as S.Schema<UpdateEventResponse>;
+export const UpdateEventResponse = CreateAutomationResponse as any as S.Schema<UpdateEventResponse>;
 
 /** Reply-to email addresses. */
 export type UpdateTemplateRequestReplyToList = Array<string>;
-export const UpdateTemplateRequestReplyToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTemplateRequestReplyToList>;
+export const UpdateTemplateRequestReplyToList =
+  EmailReplyToList as any as S.Schema<UpdateTemplateRequestReplyToList>;
 
 export type UpdateTemplateRequestVariablesList = Array<TemplateVariableInput>;
-export const UpdateTemplateRequestVariablesList = /*@__PURE__*/ S.Array(
-  TemplateVariableInput,
-) as any as S.Schema<UpdateTemplateRequestVariablesList>;
+export const UpdateTemplateRequestVariablesList =
+  CreateTemplateRequestVariablesList as any as S.Schema<UpdateTemplateRequestVariablesList>;
 
 export interface UpdateTemplateRequest {
   /** The Template ID or alias. */
@@ -4250,14 +4079,8 @@ export interface UpdateTemplateResponseSuccess {
   /** The object type of the response. */
   object?: string;
 }
-export const UpdateTemplateResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTemplateResponseSuccess",
-}) as any as S.Schema<UpdateTemplateResponseSuccess>;
+export const UpdateTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateTemplateResponseSuccess>;
 
 /** The visibility of the topic. */
 export type UpdateTopicRequestVisibility = "public" | "private";
@@ -4288,20 +4111,13 @@ export interface UpdateTopicResponseSuccess {
   /** The object type. */
   object?: string;
 }
-export const UpdateTopicResponseSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTopicResponseSuccess",
-}) as any as S.Schema<UpdateTopicResponseSuccess>;
+export const UpdateTopicResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateTopicResponseSuccess>;
 
 /** Array of event types to subscribe to. */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestEventsList>;
+export const UpdateWebhookRequestEventsList =
+  EmailReplyToList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 /** The status of the webhook. */
 export type UpdateWebhookRequestStatus = "enabled" | "disabled";
@@ -4332,12 +4148,8 @@ export interface UpdateWebhookResponse {
   /** The ID of the updated webhook. */
   id?: string;
 }
-export const UpdateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateWebhookResponse" }) as any as S.Schema<UpdateWebhookResponse>;
+export const UpdateWebhookResponse =
+  CreateAutomationResponse as any as S.Schema<UpdateWebhookResponse>;
 
 export interface VerifyDomainRequest {
   /** The ID of the domain. */
@@ -4355,12 +4167,8 @@ export interface VerifyDomainResponse {
   /** The ID of the domain. */
   id?: string;
 }
-export const VerifyDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "VerifyDomainResponse" }) as any as S.Schema<VerifyDomainResponse>;
+export const VerifyDomainResponse =
+  CreateAutomationResponse as any as S.Schema<VerifyDomainResponse>;
 
 export type CancelEmailError = ResendOpError;
 /** Cancel the schedule of the e-mail. */

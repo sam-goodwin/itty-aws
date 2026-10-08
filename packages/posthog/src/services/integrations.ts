@@ -319,11 +319,8 @@ export const GetIntegrationsAnthropicManagedAgentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetIntegrationsAnthropicManagedAgentRequest>;
 
 export interface GetIntegrationsAnthropicManagedAgentResponse {}
-export const GetIntegrationsAnthropicManagedAgentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsAnthropicManagedAgentResponse",
-}) as any as S.Schema<GetIntegrationsAnthropicManagedAgentResponse>;
+export const GetIntegrationsAnthropicManagedAgentResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentResponse>;
 
 export interface GetIntegrationsAnthropicManagedAgentEnvRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -347,11 +344,8 @@ export const GetIntegrationsAnthropicManagedAgentEnvRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvRequest>;
 
 export interface GetIntegrationsAnthropicManagedAgentEnvResponse {}
-export const GetIntegrationsAnthropicManagedAgentEnvResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsAnthropicManagedAgentEnvResponse",
-}) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvResponse>;
+export const GetIntegrationsAnthropicManagedAgentEnvResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvResponse>;
 
 export interface GetIntegrationsAnthropicManagedAgentVaultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -375,11 +369,8 @@ export const GetIntegrationsAnthropicManagedAgentVaultRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultRequest>;
 
 export interface GetIntegrationsAnthropicManagedAgentVaultResponse {}
-export const GetIntegrationsAnthropicManagedAgentVaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsAnthropicManagedAgentVaultResponse",
-}) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultResponse>;
+export const GetIntegrationsAnthropicManagedAgentVaultResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultResponse>;
 
 export interface GetIntegrationsChannelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -480,11 +471,8 @@ export const GetIntegrationsClickupListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIntegrationsClickupListRequest>;
 
 export interface GetIntegrationsClickupListResponse {}
-export const GetIntegrationsClickupListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsClickupListResponse",
-}) as any as S.Schema<GetIntegrationsClickupListResponse>;
+export const GetIntegrationsClickupListResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupListResponse>;
 
 export interface GetIntegrationsClickupSpaceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -508,11 +496,8 @@ export const GetIntegrationsClickupSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIntegrationsClickupSpaceRequest>;
 
 export interface GetIntegrationsClickupSpaceResponse {}
-export const GetIntegrationsClickupSpaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsClickupSpaceResponse",
-}) as any as S.Schema<GetIntegrationsClickupSpaceResponse>;
+export const GetIntegrationsClickupSpaceResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupSpaceResponse>;
 
 export interface GetIntegrationsClickupWorkspaceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -536,11 +521,8 @@ export const GetIntegrationsClickupWorkspaceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetIntegrationsClickupWorkspaceRequest>;
 
 export interface GetIntegrationsClickupWorkspaceResponse {}
-export const GetIntegrationsClickupWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsClickupWorkspaceResponse",
-}) as any as S.Schema<GetIntegrationsClickupWorkspaceResponse>;
+export const GetIntegrationsClickupWorkspaceResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupWorkspaceResponse>;
 
 export interface GetIntegrationsGithubAvailableInstallationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -854,11 +836,8 @@ export const GetIntegrationsGoogleAccessibleAccountRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountRequest>;
 
 export interface GetIntegrationsGoogleAccessibleAccountResponse {}
-export const GetIntegrationsGoogleAccessibleAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsGoogleAccessibleAccountResponse",
-}) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountResponse>;
+export const GetIntegrationsGoogleAccessibleAccountResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsGoogleAccessibleAccountResponse>;
 
 export interface GetIntegrationsGoogleConversionActionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -882,11 +861,8 @@ export const GetIntegrationsGoogleConversionActionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetIntegrationsGoogleConversionActionRequest>;
 
 export interface GetIntegrationsGoogleConversionActionResponse {}
-export const GetIntegrationsGoogleConversionActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsGoogleConversionActionResponse",
-}) as any as S.Schema<GetIntegrationsGoogleConversionActionResponse>;
+export const GetIntegrationsGoogleConversionActionResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsGoogleConversionActionResponse>;
 
 export interface GetIntegrationsJiraProjectRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1013,11 +989,8 @@ export const GetIntegrationsLinkedinAdsAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetIntegrationsLinkedinAdsAccountRequest>;
 
 export interface GetIntegrationsLinkedinAdsAccountResponse {}
-export const GetIntegrationsLinkedinAdsAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsLinkedinAdsAccountResponse",
-}) as any as S.Schema<GetIntegrationsLinkedinAdsAccountResponse>;
+export const GetIntegrationsLinkedinAdsAccountResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsLinkedinAdsAccountResponse>;
 
 export interface GetIntegrationsLinkedinAdsConversionRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1041,11 +1014,8 @@ export const GetIntegrationsLinkedinAdsConversionRuleRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleRequest>;
 
 export interface GetIntegrationsLinkedinAdsConversionRuleResponse {}
-export const GetIntegrationsLinkedinAdsConversionRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsLinkedinAdsConversionRuleResponse",
-}) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleResponse>;
+export const GetIntegrationsLinkedinAdsConversionRuleResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleResponse>;
 
 export interface GetIntegrationsTwilioPhoneNumberRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1069,11 +1039,8 @@ export const GetIntegrationsTwilioPhoneNumberRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetIntegrationsTwilioPhoneNumberRequest>;
 
 export interface GetIntegrationsTwilioPhoneNumberResponse {}
-export const GetIntegrationsTwilioPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetIntegrationsTwilioPhoneNumberResponse",
-}) as any as S.Schema<GetIntegrationsTwilioPhoneNumberResponse>;
+export const GetIntegrationsTwilioPhoneNumberResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsTwilioPhoneNumberResponse>;
 
 export interface GetIntegrationsUserRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1164,11 +1131,8 @@ export const IntegrationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<IntegrationsAuthorizeRetrieveRequest>;
 
 export interface IntegrationsAuthorizeRetrieveResponse {}
-export const IntegrationsAuthorizeRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntegrationsAuthorizeRetrieveResponse",
-}) as any as S.Schema<IntegrationsAuthorizeRetrieveResponse>;
+export const IntegrationsAuthorizeRetrieveResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsAuthorizeRetrieveResponse>;
 
 export interface IntegrationsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1215,11 +1179,8 @@ export const IntegrationsDomainConnectApplyUrlCreateRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateRequest>;
 
 export interface IntegrationsDomainConnectApplyUrlCreateResponse {}
-export const IntegrationsDomainConnectApplyUrlCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntegrationsDomainConnectApplyUrlCreateResponse",
-}) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateResponse>;
+export const IntegrationsDomainConnectApplyUrlCreateResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateResponse>;
 
 export interface IntegrationsDomainConnectCheckRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1240,11 +1201,8 @@ export const IntegrationsDomainConnectCheckRetrieveRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveRequest>;
 
 export interface IntegrationsDomainConnectCheckRetrieveResponse {}
-export const IntegrationsDomainConnectCheckRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntegrationsDomainConnectCheckRetrieveResponse",
-}) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveResponse>;
+export const IntegrationsDomainConnectCheckRetrieveResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsDomainConnectCheckRetrieveResponse>;
 
 export interface IntegrationsEmailVerifyCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1272,11 +1230,8 @@ export const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<IntegrationsEmailVerifyCreateRequest>;
 
 export interface IntegrationsEmailVerifyCreateResponse {}
-export const IntegrationsEmailVerifyCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntegrationsEmailVerifyCreateResponse",
-}) as any as S.Schema<IntegrationsEmailVerifyCreateResponse>;
+export const IntegrationsEmailVerifyCreateResponse =
+  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsEmailVerifyCreateResponse>;
 
 /** * `posthog_code` - posthog_code */
 export type ConnectFromEnum = "posthog_code";
@@ -1344,9 +1299,8 @@ export const IntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.suspe
 
 /** The refreshed repository cache. */
 export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
-export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
-  GitHubRepo,
-) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
+export const GitHubReposRefreshResponseRepositoriesList =
+  GitHubReposResponseRepositoriesList as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
 
 export interface GitHubReposRefreshResponse {
   /** The refreshed repository cache. */

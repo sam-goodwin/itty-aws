@@ -45,9 +45,7 @@ export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyRequest" }) as any as S.Schema<DeleteKeyRequest>;
 
 export interface DeleteKeyResponse {}
-export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyResponse",
-}) as any as S.Schema<DeleteKeyResponse>;
+export const DeleteKeyResponse = CreateSqlResponse as any as S.Schema<DeleteKeyResponse>;
 
 export interface DeleteKeyByIdRequest {
   /** The table of the record to delete */
@@ -69,9 +67,7 @@ export const DeleteKeyByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyByIdRequest" }) as any as S.Schema<DeleteKeyByIdRequest>;
 
 export interface DeleteKeyByIdResponse {}
-export const DeleteKeyByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyByIdResponse",
-}) as any as S.Schema<DeleteKeyByIdResponse>;
+export const DeleteKeyByIdResponse = CreateSqlResponse as any as S.Schema<DeleteKeyByIdResponse>;
 
 export interface GetExportRequest {
   /** Sets the selected Namespace for queries */
@@ -87,9 +83,7 @@ export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetExportRequest" }) as any as S.Schema<GetExportRequest>;
 
 export interface GetExportResponse {}
-export const GetExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetExportResponse",
-}) as any as S.Schema<GetExportResponse>;
+export const GetExportResponse = CreateSqlResponse as any as S.Schema<GetExportResponse>;
 
 export interface GetHealthRequest {}
 export const GetHealthRequest = /*@__PURE__*/ S.suspend(() =>
@@ -97,9 +91,7 @@ export const GetHealthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetHealthRequest" }) as any as S.Schema<GetHealthRequest>;
 
 export interface GetHealthResponse {}
-export const GetHealthResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetHealthResponse",
-}) as any as S.Schema<GetHealthResponse>;
+export const GetHealthResponse = CreateSqlResponse as any as S.Schema<GetHealthResponse>;
 
 export interface GetKeyRequest {
   /** The table of the records to select */
@@ -127,9 +119,7 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
 
 export interface GetKeyResponse {}
-export const GetKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetKeyResponse",
-}) as any as S.Schema<GetKeyResponse>;
+export const GetKeyResponse = CreateSqlResponse as any as S.Schema<GetKeyResponse>;
 
 export interface GetKeyByIdRequest {
   /** The table of the record to select */
@@ -199,9 +189,7 @@ export const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStatusRequest" }) as any as S.Schema<GetStatusRequest>;
 
 export interface GetStatusResponse {}
-export const GetStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetStatusResponse",
-}) as any as S.Schema<GetStatusResponse>;
+export const GetStatusResponse = CreateSqlResponse as any as S.Schema<GetStatusResponse>;
 
 export interface GetVersionRequest {}
 export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -209,9 +197,7 @@ export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVersionRequest" }) as any as S.Schema<GetVersionRequest>;
 
 export interface GetVersionResponse {}
-export const GetVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetVersionResponse",
-}) as any as S.Schema<GetVersionResponse>;
+export const GetVersionResponse = CreateSqlResponse as any as S.Schema<GetVersionResponse>;
 
 export interface ImportRequest {
   /** Sets the selected Namespace for queries */
@@ -229,9 +215,7 @@ export const ImportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportRequest" }) as any as S.Schema<ImportRequest>;
 
 export interface ImportResponse {}
-export const ImportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImportResponse",
-}) as any as S.Schema<ImportResponse>;
+export const ImportResponse = CreateSqlResponse as any as S.Schema<ImportResponse>;
 
 /** Record content */
 export type PutKeyRequestBodyMap = { [key: string]: unknown | undefined };
@@ -259,16 +243,12 @@ export const PutKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutKeyRequest" }) as any as S.Schema<PutKeyRequest>;
 
 export interface PutKeyResponse {}
-export const PutKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutKeyResponse",
-}) as any as S.Schema<PutKeyResponse>;
+export const PutKeyResponse = CreateSqlResponse as any as S.Schema<PutKeyResponse>;
 
 /** Record content */
 export type PutKeyByIdRequestBodyMap = { [key: string]: unknown | undefined };
-export const PutKeyByIdRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutKeyByIdRequestBodyMap>;
+export const PutKeyByIdRequestBodyMap =
+  PutKeyRequestBodyMap as any as S.Schema<PutKeyByIdRequestBodyMap>;
 
 export interface PutKeyByIdRequest {
   /** The table of the record to update */
@@ -294,16 +274,12 @@ export const PutKeyByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutKeyByIdRequest" }) as any as S.Schema<PutKeyByIdRequest>;
 
 export interface PutKeyByIdResponse {}
-export const PutKeyByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutKeyByIdResponse",
-}) as any as S.Schema<PutKeyByIdResponse>;
+export const PutKeyByIdResponse = CreateSqlResponse as any as S.Schema<PutKeyByIdResponse>;
 
 /** Record content */
 export type UpdateKeyRequestBodyMap = { [key: string]: unknown | undefined };
-export const UpdateKeyRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateKeyRequestBodyMap>;
+export const UpdateKeyRequestBodyMap =
+  PutKeyRequestBodyMap as any as S.Schema<UpdateKeyRequestBodyMap>;
 
 export interface UpdateKeyRequest {
   /** The table of the record to create */
@@ -324,16 +300,12 @@ export const UpdateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateKeyRequest" }) as any as S.Schema<UpdateKeyRequest>;
 
 export interface UpdateKeyResponse {}
-export const UpdateKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateKeyResponse",
-}) as any as S.Schema<UpdateKeyResponse>;
+export const UpdateKeyResponse = CreateSqlResponse as any as S.Schema<UpdateKeyResponse>;
 
 /** Record content */
 export type UpdateKeyByIdRequestBodyMap = { [key: string]: unknown | undefined };
-export const UpdateKeyByIdRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateKeyByIdRequestBodyMap>;
+export const UpdateKeyByIdRequestBodyMap =
+  PutKeyRequestBodyMap as any as S.Schema<UpdateKeyByIdRequestBodyMap>;
 
 export interface UpdateKeyByIdRequest {
   /** The table of the record to create */
@@ -357,16 +329,12 @@ export const UpdateKeyByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateKeyByIdRequest" }) as any as S.Schema<UpdateKeyByIdRequest>;
 
 export interface UpdateKeyByIdResponse {}
-export const UpdateKeyByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateKeyByIdResponse",
-}) as any as S.Schema<UpdateKeyByIdResponse>;
+export const UpdateKeyByIdResponse = CreateSqlResponse as any as S.Schema<UpdateKeyByIdResponse>;
 
 /** Fields to merge into the record */
 export type UpdateKeyByIdRequestBodyMap2 = { [key: string]: unknown | undefined };
-export const UpdateKeyByIdRequestBodyMap2 = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateKeyByIdRequestBodyMap2>;
+export const UpdateKeyByIdRequestBodyMap2 =
+  PutKeyRequestBodyMap as any as S.Schema<UpdateKeyByIdRequestBodyMap2>;
 
 export interface UpdateKeyByIdRequest2 {
   /** The table of the record to update */
@@ -390,16 +358,12 @@ export const UpdateKeyByIdRequest2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateKeyByIdRequest2" }) as any as S.Schema<UpdateKeyByIdRequest2>;
 
 export interface UpdateKeyById2Response {}
-export const UpdateKeyById2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateKeyById2Response",
-}) as any as S.Schema<UpdateKeyById2Response>;
+export const UpdateKeyById2Response = CreateSqlResponse as any as S.Schema<UpdateKeyById2Response>;
 
 /** Fields to merge into each record */
 export type UpdateKeyByTableRequestBodyMap = { [key: string]: unknown | undefined };
-export const UpdateKeyByTableRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateKeyByTableRequestBodyMap>;
+export const UpdateKeyByTableRequestBodyMap =
+  PutKeyRequestBodyMap as any as S.Schema<UpdateKeyByTableRequestBodyMap>;
 
 export interface UpdateKeyByTableRequest {
   /** The table of the records to update */
@@ -420,9 +384,8 @@ export const UpdateKeyByTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateKeyByTableRequest" }) as any as S.Schema<UpdateKeyByTableRequest>;
 
 export interface UpdateKeyByTableResponse {}
-export const UpdateKeyByTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateKeyByTableResponse",
-}) as any as S.Schema<UpdateKeyByTableResponse>;
+export const UpdateKeyByTableResponse =
+  CreateSqlResponse as any as S.Schema<UpdateKeyByTableResponse>;
 
 export type CreateSqlError = SurrealdbOpError;
 /** Run SurrealQL queries against SurrealDB The SQL endpoint enables running advanced SurrealQL queries. This HTTP endpoint expects the HTTP body to be one or more SurrealQL statements, separated by a semicolon. */

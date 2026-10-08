@@ -80,9 +80,8 @@ export const DangerouslyDeleteBySrcImagesResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DangerouslyDeleteBySrcImagesResponse>;
 
 export type DangerouslyDeleteByTagsRequestTagsCase0List = Array<string>;
-export const DangerouslyDeleteByTagsRequestTagsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DangerouslyDeleteByTagsRequestTagsCase0List>;
+export const DangerouslyDeleteByTagsRequestTagsCase0List =
+  DangerouslyDeleteBySrcImagesRequestSrcImagesList as any as S.Schema<DangerouslyDeleteByTagsRequestTagsCase0List>;
 
 export type DangerouslyDeleteByTagsRequestTags =
   | DangerouslyDeleteByTagsRequestTagsCase0List
@@ -122,9 +121,8 @@ export const DangerouslyDeleteByTagsResponse = /*@__PURE__*/ S.suspend(() => S.S
 ) as any as S.Schema<DangerouslyDeleteByTagsResponse>;
 
 export type InvalidateBySrcImagesRequestSrcImagesList = Array<string>;
-export const InvalidateBySrcImagesRequestSrcImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateBySrcImagesRequestSrcImagesList>;
+export const InvalidateBySrcImagesRequestSrcImagesList =
+  DangerouslyDeleteBySrcImagesRequestSrcImagesList as any as S.Schema<InvalidateBySrcImagesRequestSrcImagesList>;
 
 export interface InvalidateBySrcImagesRequest {
   projectIdOrName: string;
@@ -151,9 +149,8 @@ export const InvalidateBySrcImagesResponse = /*@__PURE__*/ S.suspend(() => S.Str
 }) as any as S.Schema<InvalidateBySrcImagesResponse>;
 
 export type InvalidateByTagsRequestTagsCase0List = Array<string>;
-export const InvalidateByTagsRequestTagsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateByTagsRequestTagsCase0List>;
+export const InvalidateByTagsRequestTagsCase0List =
+  DangerouslyDeleteBySrcImagesRequestSrcImagesList as any as S.Schema<InvalidateByTagsRequestTagsCase0List>;
 
 export type InvalidateByTagsRequestTags = InvalidateByTagsRequestTagsCase0List | string;
 export const InvalidateByTagsRequestTags =
@@ -182,9 +179,8 @@ export const InvalidateByTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvalidateByTagsRequest" }) as any as S.Schema<InvalidateByTagsRequest>;
 
 export interface InvalidateByTagsResponse {}
-export const InvalidateByTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InvalidateByTagsResponse",
-}) as any as S.Schema<InvalidateByTagsResponse>;
+export const InvalidateByTagsResponse =
+  InvalidateBySrcImagesResponse as any as S.Schema<InvalidateByTagsResponse>;
 
 export type DangerouslyDeleteBySrcImagesError =
   | BadRequest

@@ -108,21 +108,18 @@ export const OperatorType = S.String;
 
 /** Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. */
 export type NotificationContactEmailsList = Array<string>;
-export const NotificationContactEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationContactEmailsList>;
+export const NotificationContactEmailsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactEmailsList>;
 
 /** Contact roles to send the budget notification to when the threshold is exceeded. */
 export type NotificationContactRolesList = Array<string>;
-export const NotificationContactRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationContactRolesList>;
+export const NotificationContactRolesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactRolesList>;
 
 /** Action groups to send the budget notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Only supported at Subscription or Resource Group scopes. */
 export type NotificationContactGroupsList = Array<string>;
-export const NotificationContactGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationContactGroupsList>;
+export const NotificationContactGroupsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactGroupsList>;
 
 /** The type of threshold */
 export type NotificationThresholdType = "Actual" | "Forecasted";
@@ -296,10 +293,8 @@ export const CurrentSpend = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
 export type BudgetPropertiesNotificationsMap = { [key: string]: Notification | undefined };
-export const BudgetPropertiesNotificationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Notification,
-) as any as S.Schema<BudgetPropertiesNotificationsMap>;
+export const BudgetPropertiesNotificationsMap =
+  BudgetPropertiesInputNotificationsMap as any as S.Schema<BudgetPropertiesNotificationsMap>;
 
 /** The forecasted cost which is being tracked for a budget. */
 export interface ForecastSpend {
@@ -308,12 +303,7 @@ export interface ForecastSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
-export const ForecastSpend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "ForecastSpend" }) as any as S.Schema<ForecastSpend>;
+export const ForecastSpend = CurrentSpend as any as S.Schema<ForecastSpend>;
 
 /** The properties of the budget. */
 export interface BudgetProperties {
@@ -532,9 +522,7 @@ export const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
 /** List of subscription Guids excluded from the calculation of aggregated cost */
 export type ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList = Array<string>;
 export const ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList>;
+  ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList as any as S.Schema<ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList>;
 
 /** The properties of the Management Group Aggregated Cost. */
 export interface ManagementGroupAggregatedCostProperties {
@@ -584,10 +572,8 @@ export const ManagementGroupAggregatedCostProperties = /*@__PURE__*/ S.suspend((
 export type GetAggregatedCostByManagementGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetAggregatedCostByManagementGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAggregatedCostByManagementGroupResponseTagsMap>;
+export const GetAggregatedCostByManagementGroupResponseTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetAggregatedCostByManagementGroupResponseTagsMap>;
 
 export interface GetAggregatedCostByManagementGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -734,20 +720,13 @@ export interface BalancePropertiesAdjustmentDetailsItem {
   /** the value of new adjustment. */
   value?: number;
 }
-export const BalancePropertiesAdjustmentDetailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BalancePropertiesAdjustmentDetailsItem",
-}) as any as S.Schema<BalancePropertiesAdjustmentDetailsItem>;
+export const BalancePropertiesAdjustmentDetailsItem =
+  BalancePropertiesNewPurchasesDetailsItem as any as S.Schema<BalancePropertiesAdjustmentDetailsItem>;
 
 /** List of Adjustments (Promo credit, SIE credit etc.). */
 export type BalancePropertiesAdjustmentDetailsList = Array<BalancePropertiesAdjustmentDetailsItem>;
-export const BalancePropertiesAdjustmentDetailsList = /*@__PURE__*/ S.Array(
-  BalancePropertiesAdjustmentDetailsItem,
-) as any as S.Schema<BalancePropertiesAdjustmentDetailsList>;
+export const BalancePropertiesAdjustmentDetailsList =
+  BalancePropertiesNewPurchasesDetailsList as any as S.Schema<BalancePropertiesAdjustmentDetailsList>;
 
 /** The properties of the balance. */
 export interface BalanceProperties {
@@ -807,10 +786,8 @@ export const BalanceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBalanceByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetBalanceByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBalanceByBillingAccountResponseTagsMap>;
+export const GetBalanceByBillingAccountResponseTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetBalanceByBillingAccountResponseTagsMap>;
 
 export interface GetBalanceByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -868,10 +845,8 @@ export const GetBalanceForBillingPeriodByBillingAccountRequest = /*@__PURE__*/ S
 export type GetBalanceForBillingPeriodByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBalanceForBillingPeriodByBillingAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponseTagsMap>;
+export const GetBalanceForBillingPeriodByBillingAccountResponseTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponseTagsMap>;
 
 export interface GetBalanceForBillingPeriodByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -889,19 +864,8 @@ export interface GetBalanceForBillingPeriodByBillingAccountResponse {
   /** Resource tags. */
   tags?: GetBalanceForBillingPeriodByBillingAccountResponseTagsMap;
 }
-export const GetBalanceForBillingPeriodByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BalanceProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(GetBalanceForBillingPeriodByBillingAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBalanceForBillingPeriodByBillingAccountResponse",
-}) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>;
+export const GetBalanceForBillingPeriodByBillingAccountResponse =
+  GetBalanceByBillingAccountResponse as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>;
 
 export interface GetBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1070,10 +1034,8 @@ export const CreditSummaryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Tag. */
 export type GetCreditResponseTagsMap = { [key: string]: string | undefined };
-export const GetCreditResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCreditResponseTagsMap>;
+export const GetCreditResponseTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetCreditResponseTagsMap>;
 
 export interface GetCreditResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1244,10 +1206,8 @@ export const PriceSheetModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPriceSheetResponseTagsMap = { [key: string]: string | undefined };
-export const GetPriceSheetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPriceSheetResponseTagsMap>;
+export const GetPriceSheetResponseTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetPriceSheetResponseTagsMap>;
 
 export interface GetPriceSheetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1310,10 +1270,8 @@ export const GetPriceSheetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPriceSheetByBillingPeriodResponseTagsMap = { [key: string]: string | undefined };
-export const GetPriceSheetByBillingPeriodResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPriceSheetByBillingPeriodResponseTagsMap>;
+export const GetPriceSheetByBillingPeriodResponseTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetPriceSheetByBillingPeriodResponseTagsMap>;
 
 export interface GetPriceSheetByBillingPeriodResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1403,9 +1361,7 @@ export const GetReservationRecommendationDetailRequest = /*@__PURE__*/ S.suspend
 /** List of subscriptions for which the reservation is applied. */
 export type ReservationRecommendationDetailsResourcePropertiesAppliedScopesList = Array<string>;
 export const ReservationRecommendationDetailsResourcePropertiesAppliedScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReservationRecommendationDetailsResourcePropertiesAppliedScopesList>;
+  ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList as any as S.Schema<ReservationRecommendationDetailsResourcePropertiesAppliedScopesList>;
 
 /** Details of the resource. */
 export interface ReservationRecommendationDetailsResourceProperties {
@@ -1591,10 +1547,8 @@ export const ReservationRecommendationDetailsProperties = /*@__PURE__*/ S.suspen
 export type GetReservationRecommendationDetailResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetReservationRecommendationDetailResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetReservationRecommendationDetailResponseTagsMap>;
+export const GetReservationRecommendationDetailResponseTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetReservationRecommendationDetailResponseTagsMap>;
 
 export interface GetReservationRecommendationDetailResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1747,16 +1701,7 @@ export interface Budget {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const Budget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BudgetProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
+export const Budget = GetBudgetResponse as any as S.Schema<Budget>;
 
 /** The list of budgets. */
 export type BudgetsListResultValueList = Array<Budget>;
@@ -2344,10 +2289,8 @@ export const MarketplaceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MarketplaceTagsMap = { [key: string]: string | undefined };
-export const MarketplaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MarketplaceTagsMap>;
+export const MarketplaceTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<MarketplaceTagsMap>;
 
 /** A marketplace resource. */
 export interface Marketplace {
@@ -2535,10 +2478,8 @@ export const ReservationRecommendationSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReservationRecommendationTagsMap = { [key: string]: string | undefined };
-export const ReservationRecommendationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReservationRecommendationTagsMap>;
+export const ReservationRecommendationTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationRecommendationTagsMap>;
 
 /** Specifies the kind of reservation recommendation. */
 export type ReservationRecommendationKind = "legacy" | "modern";
@@ -2673,10 +2614,8 @@ export const ReservationDetailProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReservationDetailTagsMap = { [key: string]: string | undefined };
-export const ReservationDetailTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReservationDetailTagsMap>;
+export const ReservationDetailTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationDetailTagsMap>;
 
 /** reservation detail resource. */
 export interface ReservationDetail {
@@ -2860,10 +2799,8 @@ export const ReservationSummaryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReservationSummaryTagsMap = { [key: string]: string | undefined };
-export const ReservationSummaryTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReservationSummaryTagsMap>;
+export const ReservationSummaryTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationSummaryTagsMap>;
 
 /** reservation summary resource. */
 export interface ReservationSummary {
@@ -3041,9 +2978,8 @@ export const ModernReservationTransactionProperties = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type ModernReservationTransactionTagsList = Array<string>;
-export const ModernReservationTransactionTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModernReservationTransactionTagsList>;
+export const ModernReservationTransactionTagsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ModernReservationTransactionTagsList>;
 
 /** Modern Reservation transaction resource. */
 export interface ModernReservationTransaction {
@@ -3204,9 +3140,8 @@ export const LegacyReservationTransactionProperties = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type ReservationTransactionTagsList = Array<string>;
-export const ReservationTransactionTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservationTransactionTagsList>;
+export const ReservationTransactionTagsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ReservationTransactionTagsList>;
 
 /** Reservation transaction resource. */
 export interface ReservationTransaction {
@@ -3297,10 +3232,8 @@ export const UsageDetailsKind = S.String;
 
 /** Resource tags. */
 export type UsageDetailTagsMap = { [key: string]: string | undefined };
-export const UsageDetailTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UsageDetailTagsMap>;
+export const UsageDetailTagsMap =
+  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<UsageDetailTagsMap>;
 
 /** An usage detail resource. */
 export interface UsageDetail {

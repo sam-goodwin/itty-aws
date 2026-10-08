@@ -258,9 +258,8 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
 export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectorResponse",
-}) as any as S.Schema<DeleteConnectorResponse>;
+export const DeleteConnectorResponse =
+  DeleteChallengeResponse as any as S.Schema<DeleteConnectorResponse>;
 export interface GetChallengeMetadataRequest {
   ChallengeArn: string;
 }
@@ -424,14 +423,8 @@ export interface ChallengeMetadataSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const ChallengeMetadataSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    ConnectorArn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ChallengeMetadataSummary" }) as any as S.Schema<ChallengeMetadataSummary>;
+export const ChallengeMetadataSummary =
+  ChallengeMetadata as any as S.Schema<ChallengeMetadataSummary>;
 export type ChallengeMetadataList = ChallengeMetadataSummary[];
 export const ChallengeMetadataList = /*@__PURE__*/ S.Array(ChallengeMetadataSummary);
 export interface ListChallengeMetadataResponse {
@@ -465,20 +458,7 @@ export interface ConnectorSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const ConnectorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CertificateAuthorityArn: S.optional(S.String),
-    Type: S.optional(ConnectorType),
-    MobileDeviceManagement: S.optional(MobileDeviceManagement),
-    OpenIdConfiguration: S.optional(OpenIdConfiguration),
-    Status: S.optional(ConnectorStatus),
-    StatusReason: S.optional(ConnectorStatusReason),
-    Endpoint: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ConnectorSummary" }) as any as S.Schema<ConnectorSummary>;
+export const ConnectorSummary = Connector as any as S.Schema<ConnectorSummary>;
 export type ConnectorList = ConnectorSummary[];
 export const ConnectorList = /*@__PURE__*/ S.Array(ConnectorSummary);
 export interface ListConnectorsResponse {
@@ -516,9 +496,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteChallengeResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -534,9 +512,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteChallengeResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason =
   | "CA_CERT_VALIDITY_TOO_SHORT"
   | "INVALID_CA_USAGE_MODE"

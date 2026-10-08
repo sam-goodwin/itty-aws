@@ -532,7 +532,7 @@ export const RedactionPlaceHolder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RedactionPlaceHolder" }) as any as S.Schema<RedactionPlaceHolder>;
 export type InlineRedactionUrl = string | redacted.Redacted<string>;
 export type InlineRedactionUrls = (string | redacted.Redacted<string>)[];
-export const InlineRedactionUrls = /*@__PURE__*/ S.Array(SensitiveString);
+export const InlineRedactionUrls = UrlPatternList as any as S.Schema<InlineRedactionUrls>;
 export type ConfidenceLevel = number;
 export interface InlineRedactionPattern {
   builtInPatternId?: string | redacted.Redacted<string>;
@@ -555,7 +555,8 @@ export const InlineRedactionPattern = /*@__PURE__*/ S.suspend(() =>
 export type InlineRedactionPatterns = InlineRedactionPattern[];
 export const InlineRedactionPatterns = /*@__PURE__*/ S.Array(InlineRedactionPattern);
 export type GlobalInlineRedactionUrls = (string | redacted.Redacted<string>)[];
-export const GlobalInlineRedactionUrls = /*@__PURE__*/ S.Array(SensitiveString);
+export const GlobalInlineRedactionUrls =
+  UrlPatternList as any as S.Schema<GlobalInlineRedactionUrls>;
 export interface InlineRedactionConfiguration {
   inlineRedactionPatterns: InlineRedactionPattern[];
   globalEnforcedUrls?: (string | redacted.Redacted<string>)[];
@@ -607,10 +608,8 @@ export const CreateDataProtectionSettingsResponse = /*@__PURE__*/ S.suspend(() =
 export type IdentityProviderName = string | redacted.Redacted<string>;
 export type IdentityProviderType = string;
 export type IdentityProviderDetails = { [key: string]: string | undefined };
-export const IdentityProviderDetails = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const IdentityProviderDetails =
+  EncryptionContextMap as any as S.Schema<IdentityProviderDetails>;
 export interface CreateIdentityProviderRequest {
   portalArn: string;
   identityProviderName: string | redacted.Redacted<string>;
@@ -692,7 +691,7 @@ export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdList = SubnetIdList as any as S.Schema<SecurityGroupIdList>;
 export interface CreateNetworkSettingsRequest {
   vpcId: string;
   subnetIds: string[];
@@ -932,7 +931,7 @@ export type ToolbarType = string;
 export type VisualMode = string;
 export type ToolbarItem = string;
 export type HiddenToolbarItemList = string[];
-export const HiddenToolbarItemList = /*@__PURE__*/ S.Array(S.String);
+export const HiddenToolbarItemList = SubnetIdList as any as S.Schema<HiddenToolbarItemList>;
 export type MaxDisplayResolution = string;
 export interface ToolbarConfiguration {
   toolbarType?: string;
@@ -959,10 +958,7 @@ export type WallpaperImage = Uint8Array;
 export type WallpaperImageInput =
   | { blob: Uint8Array; s3Uri?: never }
   | { blob?: never; s3Uri: string };
-export const WallpaperImageInput = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ blob: T.Blob }),
-  /*@__PURE__*/ S.Struct({ s3Uri: S.String }),
-]);
+export const WallpaperImageInput = IconImageInput as any as S.Schema<WallpaperImageInput>;
 export type Locale =
   | "de-DE"
   | "en-US"
@@ -1143,9 +1139,8 @@ export const DeleteIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIdentityProviderRequest",
 }) as any as S.Schema<DeleteIdentityProviderRequest>;
 export interface DeleteIdentityProviderResponse {}
-export const DeleteIdentityProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIdentityProviderResponse",
-}) as any as S.Schema<DeleteIdentityProviderResponse>;
+export const DeleteIdentityProviderResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DeleteIdentityProviderResponse>;
 export interface DeleteIpAccessSettingsRequest {
   ipAccessSettingsArn: string;
 }
@@ -1164,9 +1159,8 @@ export const DeleteIpAccessSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIpAccessSettingsRequest",
 }) as any as S.Schema<DeleteIpAccessSettingsRequest>;
 export interface DeleteIpAccessSettingsResponse {}
-export const DeleteIpAccessSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIpAccessSettingsResponse",
-}) as any as S.Schema<DeleteIpAccessSettingsResponse>;
+export const DeleteIpAccessSettingsResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DeleteIpAccessSettingsResponse>;
 export interface DeleteNetworkSettingsRequest {
   networkSettingsArn: string;
 }
@@ -1185,9 +1179,8 @@ export const DeleteNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteNetworkSettingsRequest",
 }) as any as S.Schema<DeleteNetworkSettingsRequest>;
 export interface DeleteNetworkSettingsResponse {}
-export const DeleteNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkSettingsResponse",
-}) as any as S.Schema<DeleteNetworkSettingsResponse>;
+export const DeleteNetworkSettingsResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DeleteNetworkSettingsResponse>;
 export interface DeletePortalRequest {
   portalArn: string;
 }
@@ -1197,9 +1190,8 @@ export const DeletePortalRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePortalRequest" }) as any as S.Schema<DeletePortalRequest>;
 export interface DeletePortalResponse {}
-export const DeletePortalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePortalResponse",
-}) as any as S.Schema<DeletePortalResponse>;
+export const DeletePortalResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DeletePortalResponse>;
 export interface DeleteSessionLoggerRequest {
   sessionLoggerArn: string;
 }
@@ -1218,9 +1210,8 @@ export const DeleteSessionLoggerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSessionLoggerRequest",
 }) as any as S.Schema<DeleteSessionLoggerRequest>;
 export interface DeleteSessionLoggerResponse {}
-export const DeleteSessionLoggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSessionLoggerResponse",
-}) as any as S.Schema<DeleteSessionLoggerResponse>;
+export const DeleteSessionLoggerResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DeleteSessionLoggerResponse>;
 export interface DeleteTrustStoreRequest {
   trustStoreArn: string;
 }
@@ -1237,9 +1228,8 @@ export const DeleteTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTrustStoreRequest" }) as any as S.Schema<DeleteTrustStoreRequest>;
 export interface DeleteTrustStoreResponse {}
-export const DeleteTrustStoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrustStoreResponse",
-}) as any as S.Schema<DeleteTrustStoreResponse>;
+export const DeleteTrustStoreResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DeleteTrustStoreResponse>;
 export interface DeleteUserAccessLoggingSettingsRequest {
   userAccessLoggingSettingsArn: string;
 }
@@ -1263,11 +1253,8 @@ export const DeleteUserAccessLoggingSettingsRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteUserAccessLoggingSettingsRequest",
 }) as any as S.Schema<DeleteUserAccessLoggingSettingsRequest>;
 export interface DeleteUserAccessLoggingSettingsResponse {}
-export const DeleteUserAccessLoggingSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserAccessLoggingSettingsResponse",
-}) as any as S.Schema<DeleteUserAccessLoggingSettingsResponse>;
+export const DeleteUserAccessLoggingSettingsResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DeleteUserAccessLoggingSettingsResponse>;
 export interface DeleteUserSettingsRequest {
   userSettingsArn: string;
 }
@@ -1286,9 +1273,8 @@ export const DeleteUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserSettingsRequest",
 }) as any as S.Schema<DeleteUserSettingsRequest>;
 export interface DeleteUserSettingsResponse {}
-export const DeleteUserSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserSettingsResponse",
-}) as any as S.Schema<DeleteUserSettingsResponse>;
+export const DeleteUserSettingsResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DeleteUserSettingsResponse>;
 export interface DisassociateBrowserSettingsRequest {
   portalArn: string;
 }
@@ -1307,11 +1293,8 @@ export const DisassociateBrowserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateBrowserSettingsRequest",
 }) as any as S.Schema<DisassociateBrowserSettingsRequest>;
 export interface DisassociateBrowserSettingsResponse {}
-export const DisassociateBrowserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateBrowserSettingsResponse",
-}) as any as S.Schema<DisassociateBrowserSettingsResponse>;
+export const DisassociateBrowserSettingsResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateBrowserSettingsResponse>;
 export interface DisassociateDataProtectionSettingsRequest {
   portalArn: string;
 }
@@ -1330,11 +1313,8 @@ export const DisassociateDataProtectionSettingsRequest = /*@__PURE__*/ S.suspend
   identifier: "DisassociateDataProtectionSettingsRequest",
 }) as any as S.Schema<DisassociateDataProtectionSettingsRequest>;
 export interface DisassociateDataProtectionSettingsResponse {}
-export const DisassociateDataProtectionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateDataProtectionSettingsResponse",
-}) as any as S.Schema<DisassociateDataProtectionSettingsResponse>;
+export const DisassociateDataProtectionSettingsResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateDataProtectionSettingsResponse>;
 export interface DisassociateIpAccessSettingsRequest {
   portalArn: string;
 }
@@ -1353,11 +1333,8 @@ export const DisassociateIpAccessSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateIpAccessSettingsRequest",
 }) as any as S.Schema<DisassociateIpAccessSettingsRequest>;
 export interface DisassociateIpAccessSettingsResponse {}
-export const DisassociateIpAccessSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateIpAccessSettingsResponse",
-}) as any as S.Schema<DisassociateIpAccessSettingsResponse>;
+export const DisassociateIpAccessSettingsResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateIpAccessSettingsResponse>;
 export interface DisassociateNetworkSettingsRequest {
   portalArn: string;
 }
@@ -1376,11 +1353,8 @@ export const DisassociateNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateNetworkSettingsRequest",
 }) as any as S.Schema<DisassociateNetworkSettingsRequest>;
 export interface DisassociateNetworkSettingsResponse {}
-export const DisassociateNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateNetworkSettingsResponse",
-}) as any as S.Schema<DisassociateNetworkSettingsResponse>;
+export const DisassociateNetworkSettingsResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateNetworkSettingsResponse>;
 export interface DisassociateSessionLoggerRequest {
   portalArn: string;
 }
@@ -1399,11 +1373,8 @@ export const DisassociateSessionLoggerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateSessionLoggerRequest",
 }) as any as S.Schema<DisassociateSessionLoggerRequest>;
 export interface DisassociateSessionLoggerResponse {}
-export const DisassociateSessionLoggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateSessionLoggerResponse",
-}) as any as S.Schema<DisassociateSessionLoggerResponse>;
+export const DisassociateSessionLoggerResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateSessionLoggerResponse>;
 export interface DisassociateTrustStoreRequest {
   portalArn: string;
 }
@@ -1422,9 +1393,8 @@ export const DisassociateTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateTrustStoreRequest",
 }) as any as S.Schema<DisassociateTrustStoreRequest>;
 export interface DisassociateTrustStoreResponse {}
-export const DisassociateTrustStoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateTrustStoreResponse",
-}) as any as S.Schema<DisassociateTrustStoreResponse>;
+export const DisassociateTrustStoreResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<DisassociateTrustStoreResponse>;
 export interface DisassociateUserAccessLoggingSettingsRequest {
   portalArn: string;
 }
@@ -1443,11 +1413,8 @@ export const DisassociateUserAccessLoggingSettingsRequest = /*@__PURE__*/ S.susp
   identifier: "DisassociateUserAccessLoggingSettingsRequest",
 }) as any as S.Schema<DisassociateUserAccessLoggingSettingsRequest>;
 export interface DisassociateUserAccessLoggingSettingsResponse {}
-export const DisassociateUserAccessLoggingSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateUserAccessLoggingSettingsResponse",
-}) as any as S.Schema<DisassociateUserAccessLoggingSettingsResponse>;
+export const DisassociateUserAccessLoggingSettingsResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateUserAccessLoggingSettingsResponse>;
 export interface DisassociateUserSettingsRequest {
   portalArn: string;
 }
@@ -1466,11 +1433,8 @@ export const DisassociateUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateUserSettingsRequest",
 }) as any as S.Schema<DisassociateUserSettingsRequest>;
 export interface DisassociateUserSettingsResponse {}
-export const DisassociateUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateUserSettingsResponse",
-}) as any as S.Schema<DisassociateUserSettingsResponse>;
+export const DisassociateUserSettingsResponse =
+  DeleteDataProtectionSettingsResponse as any as S.Schema<DisassociateUserSettingsResponse>;
 export type PortalId = string;
 export type SessionId = string;
 export interface ExpireSessionRequest {
@@ -1493,9 +1457,8 @@ export const ExpireSessionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ExpireSessionRequest" }) as any as S.Schema<ExpireSessionRequest>;
 export interface ExpireSessionResponse {}
-export const ExpireSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExpireSessionResponse",
-}) as any as S.Schema<ExpireSessionResponse>;
+export const ExpireSessionResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<ExpireSessionResponse>;
 export interface GetBrowserSettingsRequest {
   browserSettingsArn: string;
 }
@@ -1514,7 +1477,7 @@ export const GetBrowserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBrowserSettingsRequest",
 }) as any as S.Schema<GetBrowserSettingsRequest>;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = SubnetIdList as any as S.Schema<ArnList>;
 export interface BrowserSettings {
   browserSettingsArn: string;
   associatedPortalArns?: string[];
@@ -1827,7 +1790,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export type Username = string | redacted.Redacted<string>;
 export type IpAddress = string | redacted.Redacted<string>;
 export type IpAddressList = (string | redacted.Redacted<string>)[];
-export const IpAddressList = /*@__PURE__*/ S.Array(SensitiveString);
+export const IpAddressList = UrlPatternList as any as S.Schema<IpAddressList>;
 export type SessionStatus = "Active" | "Terminated" | (string & {});
 export const SessionStatus = S.String;
 
@@ -2671,11 +2634,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
-export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
+export const TagKeyList = UrlPatternList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: (string | redacted.Redacted<string>)[];
@@ -2689,9 +2651,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteBrowserSettingsResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBrowserSettingsRequest {
   browserSettingsArn: string;
   browserPolicy?: string | redacted.Redacted<string>;
@@ -2888,9 +2849,7 @@ export const UpdatePortalRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePortalResponse {
   portal?: Portal;
 }
-export const UpdatePortalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ portal: S.optional(Portal) }),
-).annotate({ identifier: "UpdatePortalResponse" }) as any as S.Schema<UpdatePortalResponse>;
+export const UpdatePortalResponse = GetPortalResponse as any as S.Schema<UpdatePortalResponse>;
 export interface UpdateSessionLoggerRequest {
   sessionLoggerArn: string;
   eventFilter?: EventFilter;
@@ -2925,7 +2884,7 @@ export const UpdateSessionLoggerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSessionLoggerResponse",
 }) as any as S.Schema<UpdateSessionLoggerResponse>;
 export type CertificateThumbprintList = string[];
-export const CertificateThumbprintList = /*@__PURE__*/ S.Array(S.String);
+export const CertificateThumbprintList = SubnetIdList as any as S.Schema<CertificateThumbprintList>;
 export interface UpdateTrustStoreRequest {
   trustStoreArn: string;
   certificatesToAdd?: Uint8Array[];
@@ -2952,9 +2911,8 @@ export const UpdateTrustStoreRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTrustStoreResponse {
   trustStoreArn: string;
 }
-export const UpdateTrustStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ trustStoreArn: S.String }),
-).annotate({ identifier: "UpdateTrustStoreResponse" }) as any as S.Schema<UpdateTrustStoreResponse>;
+export const UpdateTrustStoreResponse =
+  CreateTrustStoreResponse as any as S.Schema<UpdateTrustStoreResponse>;
 export interface UpdateUserAccessLoggingSettingsRequest {
   userAccessLoggingSettingsArn: string;
   kinesisStreamArn?: string;

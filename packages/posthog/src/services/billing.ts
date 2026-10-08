@@ -41,11 +41,8 @@ export const BillingActivateAuthorizeStatusCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<BillingActivateAuthorizeStatusCreateRequest>;
 
 export interface BillingActivateAuthorizeStatusCreateResponse {}
-export const BillingActivateAuthorizeStatusCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingActivateAuthorizeStatusCreateResponse",
-}) as any as S.Schema<BillingActivateAuthorizeStatusCreateResponse>;
+export const BillingActivateAuthorizeStatusCreateResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingActivateAuthorizeStatusCreateResponse>;
 
 export interface BillingActivateCreateRequest {
   plan: string;
@@ -96,11 +93,8 @@ export const BillingAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequest>;
 
 export interface BillingAlertsDestinationsDeleteCreateResponse {}
-export const BillingAlertsDestinationsDeleteCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingAlertsDestinationsDeleteCreateResponse",
-}) as any as S.Schema<BillingAlertsDestinationsDeleteCreateResponse>;
+export const BillingAlertsDestinationsDeleteCreateResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingAlertsDestinationsDeleteCreateResponse>;
 
 export interface BillingAlertsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -124,9 +118,8 @@ export const BillingAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingAlertsDestroyRequest>;
 
 export interface BillingAlertsDestroyResponse {}
-export const BillingAlertsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BillingAlertsDestroyResponse",
-}) as any as S.Schema<BillingAlertsDestroyResponse>;
+export const BillingAlertsDestroyResponse =
+  BillingActivateCreateResponse as any as S.Schema<BillingAlertsDestroyResponse>;
 
 export interface BillingDeactivateCreateRequest {
   plan: string;
@@ -154,11 +147,8 @@ export const BillingGetInvoicesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingGetInvoicesRetrieveRequest>;
 
 export interface BillingGetInvoicesRetrieveResponse {}
-export const BillingGetInvoicesRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingGetInvoicesRetrieveResponse",
-}) as any as S.Schema<BillingGetInvoicesRetrieveResponse>;
+export const BillingGetInvoicesRetrieveResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingGetInvoicesRetrieveResponse>;
 
 export interface BillingSpendExportRetrieveRequest {
   /** The `next` cursor from the previous page. Opaque. Ignored without page_size. */
@@ -196,11 +186,8 @@ export const BillingSpendExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSpendExportRetrieveRequest>;
 
 export interface BillingSpendExportRetrieveResponse {}
-export const BillingSpendExportRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingSpendExportRetrieveResponse",
-}) as any as S.Schema<BillingSpendExportRetrieveResponse>;
+export const BillingSpendExportRetrieveResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingSpendExportRetrieveResponse>;
 
 export interface BillingStartupsApplyCreateRequest {
   plan: string;
@@ -216,11 +203,8 @@ export const BillingStartupsApplyCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingStartupsApplyCreateRequest>;
 
 export interface BillingStartupsApplyCreateResponse {}
-export const BillingStartupsApplyCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingStartupsApplyCreateResponse",
-}) as any as S.Schema<BillingStartupsApplyCreateResponse>;
+export const BillingStartupsApplyCreateResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingStartupsApplyCreateResponse>;
 
 export interface BillingTrialsActivateCreateRequest {
   plan: string;
@@ -236,11 +220,8 @@ export const BillingTrialsActivateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTrialsActivateCreateRequest>;
 
 export interface BillingTrialsActivateCreateResponse {}
-export const BillingTrialsActivateCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingTrialsActivateCreateResponse",
-}) as any as S.Schema<BillingTrialsActivateCreateResponse>;
+export const BillingTrialsActivateCreateResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingTrialsActivateCreateResponse>;
 
 export interface BillingTrialsCancelCreateRequest {
   plan: string;
@@ -256,11 +237,8 @@ export const BillingTrialsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingTrialsCancelCreateRequest>;
 
 export interface BillingTrialsCancelCreateResponse {}
-export const BillingTrialsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingTrialsCancelCreateResponse",
-}) as any as S.Schema<BillingTrialsCancelCreateResponse>;
+export const BillingTrialsCancelCreateResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingTrialsCancelCreateResponse>;
 
 export interface BillingUsageExportRetrieveRequest {
   /** The `next` cursor from the previous page. Opaque. Ignored without page_size. */
@@ -298,11 +276,8 @@ export const BillingUsageExportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingUsageExportRetrieveRequest>;
 
 export interface BillingUsageExportRetrieveResponse {}
-export const BillingUsageExportRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BillingUsageExportRetrieveResponse",
-}) as any as S.Schema<BillingUsageExportRetrieveResponse>;
+export const BillingUsageExportRetrieveResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<BillingUsageExportRetrieveResponse>;
 
 /** * `spend` - Spend * `projected_spend` - Projected spend */
 export type BillingAlertConfigurationMetricEnum = "spend" | "projected_spend";
@@ -316,9 +291,8 @@ export type BillingAlertConfigurationThresholdTypeEnum =
 export const BillingAlertConfigurationThresholdTypeEnum = S.String;
 
 export type BillingAlertDestinationChangesDeleteItemList = Array<string>;
-export const BillingAlertDestinationChangesDeleteItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingAlertDestinationChangesDeleteItemList>;
+export const BillingAlertDestinationChangesDeleteItemList =
+  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationChangesDeleteItemList>;
 
 export type BillingAlertDestinationChangesDeleteList =
   Array<BillingAlertDestinationChangesDeleteItemList>;
@@ -443,9 +417,8 @@ export type BillingAlertConfigurationStateEnum =
 export const BillingAlertConfigurationStateEnum = S.String;
 
 export type BillingAlertDestinationSummaryHogFunctionIdsList = Array<string>;
-export const BillingAlertDestinationSummaryHogFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingAlertDestinationSummaryHogFunctionIdsList>;
+export const BillingAlertDestinationSummaryHogFunctionIdsList =
+  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationSummaryHogFunctionIdsList>;
 
 export interface BillingAlertDestinationSummary {
   type: NotificationDestinationTypeEnum;
@@ -727,9 +700,8 @@ export const CreateBillingAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateBillingAlertsDestinationRequest>;
 
 export type BillingAlertDestinationResponseHogFunctionIdsList = Array<string>;
-export const BillingAlertDestinationResponseHogFunctionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingAlertDestinationResponseHogFunctionIdsList>;
+export const BillingAlertDestinationResponseHogFunctionIdsList =
+  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingAlertDestinationResponseHogFunctionIdsList>;
 
 export interface BillingAlertDestinationResponse {
   hog_function_ids: BillingAlertDestinationResponseHogFunctionIdsList;
@@ -756,11 +728,8 @@ export const CreateBillingCouponsClaimRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBillingCouponsClaimRequest>;
 
 export interface CreateBillingCouponsClaimResponse {}
-export const CreateBillingCouponsClaimResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateBillingCouponsClaimResponse",
-}) as any as S.Schema<CreateBillingCouponsClaimResponse>;
+export const CreateBillingCouponsClaimResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingCouponsClaimResponse>;
 
 export interface CreateBillingCreditsPurchaseRequest {
   plan: string;
@@ -776,11 +745,8 @@ export const CreateBillingCreditsPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBillingCreditsPurchaseRequest>;
 
 export interface CreateBillingCreditsPurchaseResponse {}
-export const CreateBillingCreditsPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateBillingCreditsPurchaseResponse",
-}) as any as S.Schema<CreateBillingCreditsPurchaseResponse>;
+export const CreateBillingCreditsPurchaseResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingCreditsPurchaseResponse>;
 
 export interface CreateBillingSubscriptionSwitchPlanRequest {
   plan: string;
@@ -796,11 +762,8 @@ export const CreateBillingSubscriptionSwitchPlanRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateBillingSubscriptionSwitchPlanRequest>;
 
 export interface CreateBillingSubscriptionSwitchPlanResponse {}
-export const CreateBillingSubscriptionSwitchPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateBillingSubscriptionSwitchPlanResponse",
-}) as any as S.Schema<CreateBillingSubscriptionSwitchPlanResponse>;
+export const CreateBillingSubscriptionSwitchPlanResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<CreateBillingSubscriptionSwitchPlanResponse>;
 
 export interface GetBillingAlertRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -829,11 +792,8 @@ export const GetBillingCouponsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBillingCouponsOverviewRequest>;
 
 export interface GetBillingCouponsOverviewResponse {}
-export const GetBillingCouponsOverviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetBillingCouponsOverviewResponse",
-}) as any as S.Schema<GetBillingCouponsOverviewResponse>;
+export const GetBillingCouponsOverviewResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<GetBillingCouponsOverviewResponse>;
 
 export interface GetBillingCreditsOverviewRequest {}
 export const GetBillingCreditsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
@@ -843,11 +803,8 @@ export const GetBillingCreditsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBillingCreditsOverviewRequest>;
 
 export interface GetBillingCreditsOverviewResponse {}
-export const GetBillingCreditsOverviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetBillingCreditsOverviewResponse",
-}) as any as S.Schema<GetBillingCreditsOverviewResponse>;
+export const GetBillingCreditsOverviewResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<GetBillingCreditsOverviewResponse>;
 
 export interface GetBillingPeriodRequest {}
 export const GetBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
@@ -873,9 +830,8 @@ export const GetBillingPortalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBillingPortalRequest" }) as any as S.Schema<GetBillingPortalRequest>;
 
 export interface GetBillingPortalResponse {}
-export const GetBillingPortalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBillingPortalResponse",
-}) as any as S.Schema<GetBillingPortalResponse>;
+export const GetBillingPortalResponse =
+  BillingActivateCreateResponse as any as S.Schema<GetBillingPortalResponse>;
 
 export interface GetBillingSpendRequest {
   /** The `next` cursor from the previous page. Opaque. Ignored without page_size. */
@@ -916,9 +872,8 @@ export const BillingTimeSeriesPointDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingTimeSeriesPointDataList>;
 
 export type BillingTimeSeriesPointDatesList = Array<string>;
-export const BillingTimeSeriesPointDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingTimeSeriesPointDatesList>;
+export const BillingTimeSeriesPointDatesList =
+  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingTimeSeriesPointDatesList>;
 
 /** * `type` - type * `team` - team * `multiple` - multiple */
 export type BreakdownTypeEnum = "type" | "team" | "multiple";
@@ -949,9 +904,8 @@ export const BillingTimeSeriesResponseResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingTimeSeriesResponseResultsList>;
 
 export type BillingTimeSeriesResponseTeamIdOptionsList = Array<number>;
-export const BillingTimeSeriesResponseTeamIdOptionsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BillingTimeSeriesResponseTeamIdOptionsList>;
+export const BillingTimeSeriesResponseTeamIdOptionsList =
+  BillingTimeSeriesPointDataList as any as S.Schema<BillingTimeSeriesResponseTeamIdOptionsList>;
 
 export interface BillingTimeSeriesResponse {
   status?: string;
@@ -1018,9 +972,8 @@ export const GetBillingUsageTeamOptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Project ids that appear in the organization's usage reports. */
 export type BillingTeamOptionsResponseTeamIdOptionsList = Array<number>;
-export const BillingTeamOptionsResponseTeamIdOptionsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BillingTeamOptionsResponseTeamIdOptionsList>;
+export const BillingTeamOptionsResponseTeamIdOptionsList =
+  BillingTimeSeriesPointDataList as any as S.Schema<BillingTeamOptionsResponseTeamIdOptionsList>;
 
 export interface BillingTeamOptionsResponse {
   /** Project ids that appear in the organization's usage reports. */
@@ -1052,9 +1005,8 @@ export const BillingOverviewResponseProductsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingOverviewResponseProductsList>;
 
 export type BillingOverviewResponseAvailableProductFeaturesList = Array<string>;
-export const BillingOverviewResponseAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingOverviewResponseAvailableProductFeaturesList>;
+export const BillingOverviewResponseAvailableProductFeaturesList =
+  BillingAlertsDestinationsDeleteCreateRequestHogFunctionIdsList as any as S.Schema<BillingOverviewResponseAvailableProductFeaturesList>;
 
 export interface BillingManagedByPartner {
   /** Name of the partner that pays for this organization. Can be empty. */
@@ -1367,11 +1319,8 @@ export const UpdateBillingLicensePartialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBillingLicensePartialRequest>;
 
 export interface UpdateBillingLicensePartialResponse {}
-export const UpdateBillingLicensePartialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateBillingLicensePartialResponse",
-}) as any as S.Schema<UpdateBillingLicensePartialResponse>;
+export const UpdateBillingLicensePartialResponse =
+  BillingActivateAuthorizeCreateResponse as any as S.Schema<UpdateBillingLicensePartialResponse>;
 
 export type BillingActivateAuthorizeCreateError = PosthogOpError;
 export const billingActivateAuthorizeCreate: API.OperationMethod<

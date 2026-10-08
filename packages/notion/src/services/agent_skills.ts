@@ -54,15 +54,8 @@ export interface GetSkillDirectoryResponse {
   /** Temporary signed URL for downloading the skill directory archive. */
   url: string;
 }
-export const GetSkillDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    version_id: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "GetSkillDirectoryResponse",
-}) as any as S.Schema<GetSkillDirectoryResponse>;
+export const GetSkillDirectoryResponse =
+  GetPluginDirectoryResponse as any as S.Schema<GetSkillDirectoryResponse>;
 
 export interface ListPluginsRequest {
   page_size?: number;

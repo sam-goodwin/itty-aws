@@ -164,9 +164,8 @@ export const UpdateWebProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWebProfileRequest" }) as any as S.Schema<UpdateWebProfileRequest>;
 
 export interface UpdateWebProfileResponse {}
-export const UpdateWebProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWebProfileResponse",
-}) as any as S.Schema<UpdateWebProfileResponse>;
+export const UpdateWebProfileResponse =
+  DeleteWebProfileResponse as any as S.Schema<UpdateWebProfileResponse>;
 
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";

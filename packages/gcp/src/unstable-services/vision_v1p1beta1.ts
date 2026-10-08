@@ -324,7 +324,7 @@ export const GoogleCloudVisionV1p1beta1InputConfig = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GoogleCloudVisionV1p1beta1InputConfig>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = DoubleList as any as S.Schema<IntegerList>;
 
 /** A request to annotate one single file, e.g. a PDF, TIFF or GIF file. */
 export interface GoogleCloudVisionV1p1beta1AnnotateFileRequest {
@@ -1737,13 +1737,8 @@ export interface GoogleCloudVisionV1p1beta1GcsDestination {
   /** Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs directory. In either case, the uri should be unique because in order to get all of the output files, you will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The output files will be created in gs://bucket-name/some/location/ and the names of the output files could be anything because there was no filename prefix specified. If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded files. */
   uri?: string;
 }
-export const GoogleCloudVisionV1p1beta1GcsDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudVisionV1p1beta1GcsDestination",
-}) as any as S.Schema<GoogleCloudVisionV1p1beta1GcsDestination>;
+export const GoogleCloudVisionV1p1beta1GcsDestination =
+  GoogleCloudVisionV1p1beta1GcsSource as any as S.Schema<GoogleCloudVisionV1p1beta1GcsDestination>;
 
 /** The desired output location and metadata. */
 export interface GoogleCloudVisionV1p1beta1OutputConfig {

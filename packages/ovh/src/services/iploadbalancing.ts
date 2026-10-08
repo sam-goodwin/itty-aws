@@ -188,9 +188,8 @@ export const IpLoadbalancingTaskStatusEnum = S.String;
 
 /** Zone of your Load Balancer which are updated by current Task */
 export type IpLoadbalancingTaskTaskZonesList = Array<string>;
-export const IpLoadbalancingTaskTaskZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingTaskTaskZonesList>;
+export const IpLoadbalancingTaskTaskZonesList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingTaskTaskZonesList>;
 
 /** IP Load Balancing Operations */
 export interface IpLoadbalancingTaskTask {
@@ -575,27 +574,23 @@ export const IpLoadbalancingVrackTransparentIpVrackTransparentIp = /*@__PURE__*/
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList>;
+export const CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList>;
+export const CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList>;
+export const CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList = Array<string>;
-export const CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList>;
+export const CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequestHttpHeaderList>;
 
 export interface CreateIpLoadbalancingHttpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -652,27 +647,23 @@ export const CreateIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList>;
+export const IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList>;
+export const IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList>;
+export const IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList = Array<string>;
-export const IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList>;
+export const IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttpHttpHeaderList>;
 
 /** Frontend HTTP */
 export interface IpLoadbalancingFrontendHttpFrontendHttp {
@@ -771,27 +762,23 @@ export const CreateIpLoadbalancingHttpFrontendPrivateRequest = /*@__PURE__*/ S.s
 
 /** Restrict iplb access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendFrontendAllowedSourceList = Array<string>;
-export const IpLoadbalancingFrontendFrontendAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendFrontendAllowedSourceList>;
+export const IpLoadbalancingFrontendFrontendAllowedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendFrontendDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendFrontendDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendFrontendDedicatedIpfoList>;
+export const IpLoadbalancingFrontendFrontendDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendDedicatedIpfoList>;
 
 /** Deny iplb access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendFrontendDeniedSourceList = Array<string>;
-export const IpLoadbalancingFrontendFrontendDeniedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendFrontendDeniedSourceList>;
+export const IpLoadbalancingFrontendFrontendDeniedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type IpLoadbalancingFrontendFrontendHttpHeaderList = Array<string>;
-export const IpLoadbalancingFrontendFrontendHttpHeaderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendFrontendHttpHeaderList>;
+export const IpLoadbalancingFrontendFrontendHttpHeaderList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendFrontendHttpHeaderList>;
 
 /** Possible values for proxy type */
 export type IpLoadbalancingProxyTypeEnum = "http" | "tcp";
@@ -1137,9 +1124,8 @@ export const CreateIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Subject Alternative Name of your SSL certificate */
 export type IpLoadbalancingSslSslSanList = Array<string>;
-export const IpLoadbalancingSslSslSanList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingSslSslSanList>;
+export const IpLoadbalancingSslSslSanList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingSslSslSanList>;
 
 /** Possible values for ssl type */
 export type IpLoadbalancingSslTypeEnum = "built" | "built_not_routed" | "custom";
@@ -1310,9 +1296,7 @@ export const CreateIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend
 export type IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList =
   Array<IpLoadbalancingServerState>;
 export const IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList =
-  /*@__PURE__*/ S.Array(
-    IpLoadbalancingServerState,
-  ) as any as S.Schema<IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList>;
+  IpLoadbalancingBackendHttpCustomerServerBackendHTTPServerServerStateList as any as S.Schema<IpLoadbalancingBackendTcpCustomerServerBackendTCPServerServerStateList>;
 
 /** TCP Farm's Server */
 export interface IpLoadbalancingBackendTcpCustomerServerBackendTCPServer {
@@ -1396,21 +1380,18 @@ export const CreateIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList = Array<string>;
-export const CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList>;
+export const CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList>;
+export const CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList = Array<string>;
-export const CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList>;
+export const CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequestDeniedSourceList>;
 
 export interface CreateIpLoadbalancingTcpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -1458,21 +1439,18 @@ export const CreateIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend((
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList = Array<string>;
-export const IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList>;
+export const IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList>;
+export const IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList = Array<string>;
-export const IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList>;
+export const IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcpDeniedSourceList>;
 
 /** Frontend TCP */
 export interface IpLoadbalancingFrontendTcpFrontendTcp {
@@ -1526,9 +1504,7 @@ export const IpLoadbalancingFrontendTcpFrontendTcp = /*@__PURE__*/ S.suspend(() 
 /** Address of the frontend in the vrack. Null to disable */
 export type CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList = Array<string>;
 export const CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList>;
+  CreateIpLoadbalancingHttpFrontendPrivateRequestDedicatedIpfoList as any as S.Schema<CreateIpLoadbalancingTcpFrontendPrivateRequestDedicatedIpfoList>;
 
 export interface CreateIpLoadbalancingTcpFrontendPrivateRequest {
   /** The internal name of your IP load balancing */
@@ -1602,9 +1578,8 @@ export const CreateIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of rules to match to trigger action */
 export type IpLoadbalancingRouteTcpRouteTcpRulesList = Array<IpLoadbalancingRouteRule>;
-export const IpLoadbalancingRouteTcpRouteTcpRulesList = /*@__PURE__*/ S.Array(
-  IpLoadbalancingRouteRule,
-) as any as S.Schema<IpLoadbalancingRouteTcpRouteTcpRulesList>;
+export const IpLoadbalancingRouteTcpRouteTcpRulesList =
+  IpLoadbalancingRouteHttpRouteHttpRulesList as any as S.Schema<IpLoadbalancingRouteTcpRouteTcpRulesList>;
 
 /** TCP Route */
 export interface IpLoadbalancingRouteTcpRouteTcp {
@@ -1788,9 +1763,8 @@ export const IpLoadbalancingBackendUdpCustomerServerBackendUDPServer = /*@__PURE
 
 /** Only attach frontend on these ip. No restriction if null */
 export type CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList = Array<string>;
-export const CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList>;
+export const CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<CreateIpLoadbalancingUdpFrontendRequestDedicatedIpfoList>;
 
 export interface CreateIpLoadbalancingUdpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -1826,9 +1800,8 @@ export const CreateIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend((
 
 /** Only attach frontend on these ip. No restriction if null */
 export type IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList = Array<string>;
-export const IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList>;
+export const IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFrontendUdpFrontendUdpDedicatedIpfoList>;
 
 /** Frontend UDP */
 export interface IpLoadbalancingFrontendUdpFrontendUdp {
@@ -1863,9 +1836,8 @@ export const IpLoadbalancingFrontendUdpFrontendUdp = /*@__PURE__*/ S.suspend(() 
 
 /** Farm Id you want to attach to that vrack network */
 export type CreateIpLoadbalancingVrackNetworkRequestFarmIdList = Array<number>;
-export const CreateIpLoadbalancingVrackNetworkRequestFarmIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateIpLoadbalancingVrackNetworkRequestFarmIdList>;
+export const CreateIpLoadbalancingVrackNetworkRequestFarmIdList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<CreateIpLoadbalancingVrackNetworkRequestFarmIdList>;
 
 export interface CreateIpLoadbalancingVrackNetworkRequest {
   /** The internal name of your IP load balancing */
@@ -1966,11 +1938,8 @@ export const DeleteIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFarmRequest>;
 
 export interface DeleteIpLoadbalancingHttpFarmResponse {}
-export const DeleteIpLoadbalancingHttpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingHttpFarmResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingHttpFarmResponse>;
+export const DeleteIpLoadbalancingHttpFarmResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFarmResponse>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -1997,11 +1966,8 @@ export const DeleteIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerRequest>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerResponse {}
-export const DeleteIpLoadbalancingHttpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingHttpFarmServerResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerResponse>;
+export const DeleteIpLoadbalancingHttpFarmServerResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerResponse>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerTransparentRequest {
   /** The internal name of your IP load balancing */
@@ -2030,11 +1996,8 @@ export const DeleteIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentRequest>;
 
 export interface DeleteIpLoadbalancingHttpFarmServerTransparentResponse {}
-export const DeleteIpLoadbalancingHttpFarmServerTransparentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingHttpFarmServerTransparentResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentResponse>;
+export const DeleteIpLoadbalancingHttpFarmServerTransparentResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentResponse>;
 
 export interface DeleteIpLoadbalancingHttpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -2058,11 +2021,8 @@ export const DeleteIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteIpLoadbalancingHttpFrontendRequest>;
 
 export interface DeleteIpLoadbalancingHttpFrontendResponse {}
-export const DeleteIpLoadbalancingHttpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingHttpFrontendResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingHttpFrontendResponse>;
+export const DeleteIpLoadbalancingHttpFrontendResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpFrontendResponse>;
 
 export interface DeleteIpLoadbalancingHttpRouteRequest {
   /** The internal name of your IP load balancing */
@@ -2086,11 +2046,8 @@ export const DeleteIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRequest>;
 
 export interface DeleteIpLoadbalancingHttpRouteResponse {}
-export const DeleteIpLoadbalancingHttpRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingHttpRouteResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingHttpRouteResponse>;
+export const DeleteIpLoadbalancingHttpRouteResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpRouteResponse>;
 
 export interface DeleteIpLoadbalancingHttpRouteRuleRequest {
   /** The internal name of your IP load balancing */
@@ -2117,11 +2074,8 @@ export const DeleteIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleRequest>;
 
 export interface DeleteIpLoadbalancingHttpRouteRuleResponse {}
-export const DeleteIpLoadbalancingHttpRouteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingHttpRouteRuleResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleResponse>;
+export const DeleteIpLoadbalancingHttpRouteRuleResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleResponse>;
 
 export interface DeleteIpLoadbalancingLogSubscriptionRequest {
   /** The internal name of your IP load balancing */
@@ -2160,11 +2114,8 @@ export const DeleteIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpLoadbalancingSslRequest>;
 
 export interface DeleteIpLoadbalancingSslResponse {}
-export const DeleteIpLoadbalancingSslResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingSslResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingSslResponse>;
+export const DeleteIpLoadbalancingSslResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingSslResponse>;
 
 export interface DeleteIpLoadbalancingTcpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -2188,11 +2139,8 @@ export const DeleteIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFarmRequest>;
 
 export interface DeleteIpLoadbalancingTcpFarmResponse {}
-export const DeleteIpLoadbalancingTcpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingTcpFarmResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingTcpFarmResponse>;
+export const DeleteIpLoadbalancingTcpFarmResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFarmResponse>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -2219,11 +2167,8 @@ export const DeleteIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerRequest>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerResponse {}
-export const DeleteIpLoadbalancingTcpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingTcpFarmServerResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerResponse>;
+export const DeleteIpLoadbalancingTcpFarmServerResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerResponse>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerTransparentRequest {
   /** The internal name of your IP load balancing */
@@ -2252,11 +2197,8 @@ export const DeleteIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentRequest>;
 
 export interface DeleteIpLoadbalancingTcpFarmServerTransparentResponse {}
-export const DeleteIpLoadbalancingTcpFarmServerTransparentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingTcpFarmServerTransparentResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentResponse>;
+export const DeleteIpLoadbalancingTcpFarmServerTransparentResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentResponse>;
 
 export interface DeleteIpLoadbalancingTcpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -2280,11 +2222,8 @@ export const DeleteIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteIpLoadbalancingTcpFrontendRequest>;
 
 export interface DeleteIpLoadbalancingTcpFrontendResponse {}
-export const DeleteIpLoadbalancingTcpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingTcpFrontendResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingTcpFrontendResponse>;
+export const DeleteIpLoadbalancingTcpFrontendResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpFrontendResponse>;
 
 export interface DeleteIpLoadbalancingTcpRouteRequest {
   /** The internal name of your IP load balancing */
@@ -2308,11 +2247,8 @@ export const DeleteIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRequest>;
 
 export interface DeleteIpLoadbalancingTcpRouteResponse {}
-export const DeleteIpLoadbalancingTcpRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingTcpRouteResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingTcpRouteResponse>;
+export const DeleteIpLoadbalancingTcpRouteResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpRouteResponse>;
 
 export interface DeleteIpLoadbalancingTcpRouteRuleRequest {
   /** The internal name of your IP load balancing */
@@ -2339,11 +2275,8 @@ export const DeleteIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleRequest>;
 
 export interface DeleteIpLoadbalancingTcpRouteRuleResponse {}
-export const DeleteIpLoadbalancingTcpRouteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingTcpRouteRuleResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleResponse>;
+export const DeleteIpLoadbalancingTcpRouteRuleResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleResponse>;
 
 export interface DeleteIpLoadbalancingUdpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -2367,11 +2300,8 @@ export const DeleteIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpLoadbalancingUdpFarmRequest>;
 
 export interface DeleteIpLoadbalancingUdpFarmResponse {}
-export const DeleteIpLoadbalancingUdpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingUdpFarmResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingUdpFarmResponse>;
+export const DeleteIpLoadbalancingUdpFarmResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingUdpFarmResponse>;
 
 export interface DeleteIpLoadbalancingUdpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -2398,11 +2328,8 @@ export const DeleteIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerRequest>;
 
 export interface DeleteIpLoadbalancingUdpFarmServerResponse {}
-export const DeleteIpLoadbalancingUdpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingUdpFarmServerResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerResponse>;
+export const DeleteIpLoadbalancingUdpFarmServerResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerResponse>;
 
 export interface DeleteIpLoadbalancingUdpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -2426,11 +2353,8 @@ export const DeleteIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteIpLoadbalancingUdpFrontendRequest>;
 
 export interface DeleteIpLoadbalancingUdpFrontendResponse {}
-export const DeleteIpLoadbalancingUdpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingUdpFrontendResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingUdpFrontendResponse>;
+export const DeleteIpLoadbalancingUdpFrontendResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingUdpFrontendResponse>;
 
 export interface DeleteIpLoadbalancingVrackNetworkRequest {
   /** The internal name of your IP load balancing */
@@ -2454,11 +2378,8 @@ export const DeleteIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteIpLoadbalancingVrackNetworkRequest>;
 
 export interface DeleteIpLoadbalancingVrackNetworkResponse {}
-export const DeleteIpLoadbalancingVrackNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIpLoadbalancingVrackNetworkResponse",
-}) as any as S.Schema<DeleteIpLoadbalancingVrackNetworkResponse>;
+export const DeleteIpLoadbalancingVrackNetworkResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<DeleteIpLoadbalancingVrackNetworkResponse>;
 
 export interface GetIpLoadbalancingRequest {
   /** The internal name of your IP load balancing */
@@ -2537,9 +2458,8 @@ export const IpLoadbalancingIpStateEnum = S.String;
 
 /** Location where your service is */
 export type IpLoadbalancingIpWithIAMZoneList = Array<string>;
-export const IpLoadbalancingIpWithIAMZoneList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingIpWithIAMZoneList>;
+export const IpLoadbalancingIpWithIAMZoneList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingIpWithIAMZoneList>;
 
 /** Your IP load balancing */
 export interface IpLoadbalancingIpWithIAM {
@@ -2743,9 +2663,8 @@ export const GetIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional log fields managed in this log kind */
 export type IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList = Array<string>;
-export const IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList>;
+export const IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingLdpKindLdpKindAdditionalReturnedFieldsList>;
 
 /** Log kind for your Load Balancer */
 export interface IpLoadbalancingLdpKindLdpKind {
@@ -2973,9 +2892,8 @@ export const GetIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -3485,9 +3403,8 @@ export const ListIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingRequest>;
 
 export type ListIpLoadbalancingResponseBodyList = Array<string>;
-export const ListIpLoadbalancingResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingResponseBodyList>;
+export const ListIpLoadbalancingResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingResponseBodyList>;
 
 export type ListIpLoadbalancingResponse = ListIpLoadbalancingResponseBodyList;
 export const ListIpLoadbalancingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3512,21 +3429,18 @@ export const ListIpLoadbalancingAvailableFarmProbesRequest = /*@__PURE__*/ S.sus
 
 /** List of possible probe result checkers for this type of probe */
 export type IpLoadbalancingFarmAvailableProbeMatchesList = Array<string>;
-export const IpLoadbalancingFarmAvailableProbeMatchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFarmAvailableProbeMatchesList>;
+export const IpLoadbalancingFarmAvailableProbeMatchesList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFarmAvailableProbeMatchesList>;
 
 /** List of available HTTP method, if available */
 export type IpLoadbalancingFarmAvailableProbeMethodList = Array<string>;
-export const IpLoadbalancingFarmAvailableProbeMethodList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFarmAvailableProbeMethodList>;
+export const IpLoadbalancingFarmAvailableProbeMethodList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFarmAvailableProbeMethodList>;
 
 /** List of matches operators that accept the negate option for this type of probe */
 export type IpLoadbalancingFarmAvailableProbeNegatableMatchesList = Array<string>;
-export const IpLoadbalancingFarmAvailableProbeNegatableMatchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingFarmAvailableProbeNegatableMatchesList>;
+export const IpLoadbalancingFarmAvailableProbeNegatableMatchesList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingFarmAvailableProbeNegatableMatchesList>;
 
 /** Available farm probes options */
 export interface IpLoadbalancingFarmAvailableProbe {
@@ -3585,17 +3499,13 @@ export const ListIpLoadbalancingAvailableFarmTypeRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeRequest>;
 
 export type ListIpLoadbalancingAvailableFarmTypeResponseBodyList = Array<string>;
-export const ListIpLoadbalancingAvailableFarmTypeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponseBodyList>;
+export const ListIpLoadbalancingAvailableFarmTypeResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponseBodyList>;
 
 export type ListIpLoadbalancingAvailableFarmTypeResponse =
   ListIpLoadbalancingAvailableFarmTypeResponseBodyList;
-export const ListIpLoadbalancingAvailableFarmTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingAvailableFarmTypeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingAvailableFarmTypeResponse",
-}) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponse>;
+export const ListIpLoadbalancingAvailableFarmTypeResponse =
+  ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponse>;
 
 export interface ListIpLoadbalancingAvailableFrontendTypeRequest {
   /** The internal name of your IP load balancing */
@@ -3616,17 +3526,13 @@ export const ListIpLoadbalancingAvailableFrontendTypeRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeRequest>;
 
 export type ListIpLoadbalancingAvailableFrontendTypeResponseBodyList = Array<string>;
-export const ListIpLoadbalancingAvailableFrontendTypeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponseBodyList>;
+export const ListIpLoadbalancingAvailableFrontendTypeResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponseBodyList>;
 
 export type ListIpLoadbalancingAvailableFrontendTypeResponse =
   ListIpLoadbalancingAvailableFrontendTypeResponseBodyList;
-export const ListIpLoadbalancingAvailableFrontendTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingAvailableFrontendTypeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingAvailableFrontendTypeResponse",
-}) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponse>;
+export const ListIpLoadbalancingAvailableFrontendTypeResponse =
+  ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponse>;
 
 export interface ListIpLoadbalancingAvailableRouteActionsRequest {
   /** The internal name of your IP load balancing */
@@ -3648,9 +3554,8 @@ export const ListIpLoadbalancingAvailableRouteActionsRequest = /*@__PURE__*/ S.s
 
 /** List of available HTTP status code if applicable */
 export type IpLoadbalancingRouteAvailableActionStatusList = Array<number>;
-export const IpLoadbalancingRouteAvailableActionStatusList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IpLoadbalancingRouteAvailableActionStatusList>;
+export const IpLoadbalancingRouteAvailableActionStatusList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<IpLoadbalancingRouteAvailableActionStatusList>;
 
 /** Available route actions options */
 export interface IpLoadbalancingRouteAvailableAction {
@@ -3704,15 +3609,13 @@ export const ListIpLoadbalancingAvailableRouteRulesRequest = /*@__PURE__*/ S.sus
 
 /** If pattern is "enum", list of available options */
 export type IpLoadbalancingRouteAvailableRuleEnumList = Array<string>;
-export const IpLoadbalancingRouteAvailableRuleEnumList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingRouteAvailableRuleEnumList>;
+export const IpLoadbalancingRouteAvailableRuleEnumList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingRouteAvailableRuleEnumList>;
 
 /** List of match operators compatible with this rule */
 export type IpLoadbalancingRouteAvailableRuleMatchesList = Array<string>;
-export const IpLoadbalancingRouteAvailableRuleMatchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingRouteAvailableRuleMatchesList>;
+export const IpLoadbalancingRouteAvailableRuleMatchesList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingRouteAvailableRuleMatchesList>;
 
 /** Match rule to combine to build routes */
 export interface IpLoadbalancingRouteAvailableRule {
@@ -3772,9 +3675,8 @@ export const ListIpLoadbalancingDefinedFarmsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingDefinedFarmsRequest>;
 
 export type ListIpLoadbalancingDefinedFarmsResponseBodyList = Array<IpLoadbalancingDefinedFarm>;
-export const ListIpLoadbalancingDefinedFarmsResponseBodyList = /*@__PURE__*/ S.Array(
-  IpLoadbalancingDefinedFarm,
-) as any as S.Schema<ListIpLoadbalancingDefinedFarmsResponseBodyList>;
+export const ListIpLoadbalancingDefinedFarmsResponseBodyList =
+  IpLoadbalancingVrackNetworkVrackNetworkFarmIdList as any as S.Schema<ListIpLoadbalancingDefinedFarmsResponseBodyList>;
 
 export type ListIpLoadbalancingDefinedFarmsResponse =
   ListIpLoadbalancingDefinedFarmsResponseBodyList;
@@ -3803,17 +3705,13 @@ export type IpLoadbalancingDefinedFrontend = IpLoadbalancingDefinedFarm;
 export const IpLoadbalancingDefinedFrontend = IpLoadbalancingDefinedFarm;
 
 export type ListIpLoadbalancingDefinedFrontendsResponseBodyList = Array<IpLoadbalancingDefinedFarm>;
-export const ListIpLoadbalancingDefinedFrontendsResponseBodyList = /*@__PURE__*/ S.Array(
-  IpLoadbalancingDefinedFarm,
-) as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponseBodyList>;
+export const ListIpLoadbalancingDefinedFrontendsResponseBodyList =
+  IpLoadbalancingVrackNetworkVrackNetworkFarmIdList as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponseBodyList>;
 
 export type ListIpLoadbalancingDefinedFrontendsResponse =
   ListIpLoadbalancingDefinedFrontendsResponseBodyList;
-export const ListIpLoadbalancingDefinedFrontendsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingDefinedFrontendsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingDefinedFrontendsResponse",
-}) as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponse>;
+export const ListIpLoadbalancingDefinedFrontendsResponse =
+  ListIpLoadbalancingDefinedFarmsResponse as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponse>;
 
 export interface ListIpLoadbalancingDefinedRoutesRequest {
   /** The internal name of your IP load balancing */
@@ -3874,16 +3772,12 @@ export const ListIpLoadbalancingFailoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingFailoverRequest>;
 
 export type ListIpLoadbalancingFailoverResponseBodyList = Array<string>;
-export const ListIpLoadbalancingFailoverResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingFailoverResponseBodyList>;
+export const ListIpLoadbalancingFailoverResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingFailoverResponseBodyList>;
 
 export type ListIpLoadbalancingFailoverResponse = ListIpLoadbalancingFailoverResponseBodyList;
-export const ListIpLoadbalancingFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingFailoverResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingFailoverResponse",
-}) as any as S.Schema<ListIpLoadbalancingFailoverResponse>;
+export const ListIpLoadbalancingFailoverResponse =
+  ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingFailoverResponse>;
 
 export interface ListIpLoadbalancingHttpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -3904,16 +3798,12 @@ export const ListIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingHttpFarmRequest>;
 
 export type ListIpLoadbalancingHttpFarmResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFarmResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingHttpFarmResponseBodyList>;
+export const ListIpLoadbalancingHttpFarmResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFarmResponseBodyList>;
 
 export type ListIpLoadbalancingHttpFarmResponse = ListIpLoadbalancingHttpFarmResponseBodyList;
-export const ListIpLoadbalancingHttpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingHttpFarmResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingHttpFarmResponse",
-}) as any as S.Schema<ListIpLoadbalancingHttpFarmResponse>;
+export const ListIpLoadbalancingHttpFarmResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFarmResponse>;
 
 export interface ListIpLoadbalancingHttpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -3946,17 +3836,13 @@ export const ListIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListIpLoadbalancingHttpFarmServerRequest>;
 
 export type ListIpLoadbalancingHttpFarmServerResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFarmServerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponseBodyList>;
+export const ListIpLoadbalancingHttpFarmServerResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponseBodyList>;
 
 export type ListIpLoadbalancingHttpFarmServerResponse =
   ListIpLoadbalancingHttpFarmServerResponseBodyList;
-export const ListIpLoadbalancingHttpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingHttpFarmServerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingHttpFarmServerResponse",
-}) as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponse>;
+export const ListIpLoadbalancingHttpFarmServerResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponse>;
 
 export interface ListIpLoadbalancingHttpFarmServerTransparentRequest {
   /** The internal name of your IP load balancing */
@@ -3986,17 +3872,13 @@ export const ListIpLoadbalancingHttpFarmServerTransparentRequest = /*@__PURE__*/
 }) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentRequest>;
 
 export type ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList>;
+export const ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList>;
 
 export type ListIpLoadbalancingHttpFarmServerTransparentResponse =
   ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList;
-export const ListIpLoadbalancingHttpFarmServerTransparentResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingHttpFarmServerTransparentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingHttpFarmServerTransparentResponse",
-}) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponse>;
+export const ListIpLoadbalancingHttpFarmServerTransparentResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponse>;
 
 export interface ListIpLoadbalancingHttpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -4025,17 +3907,13 @@ export const ListIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingHttpFrontendRequest>;
 
 export type ListIpLoadbalancingHttpFrontendResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpFrontendResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingHttpFrontendResponseBodyList>;
+export const ListIpLoadbalancingHttpFrontendResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpFrontendResponseBodyList>;
 
 export type ListIpLoadbalancingHttpFrontendResponse =
   ListIpLoadbalancingHttpFrontendResponseBodyList;
-export const ListIpLoadbalancingHttpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingHttpFrontendResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingHttpFrontendResponse",
-}) as any as S.Schema<ListIpLoadbalancingHttpFrontendResponse>;
+export const ListIpLoadbalancingHttpFrontendResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpFrontendResponse>;
 
 export interface ListIpLoadbalancingHttpRouteRequest {
   /** The internal name of your IP load balancing */
@@ -4053,16 +3931,12 @@ export const ListIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingHttpRouteRequest>;
 
 export type ListIpLoadbalancingHttpRouteResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpRouteResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingHttpRouteResponseBodyList>;
+export const ListIpLoadbalancingHttpRouteResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpRouteResponseBodyList>;
 
 export type ListIpLoadbalancingHttpRouteResponse = ListIpLoadbalancingHttpRouteResponseBodyList;
-export const ListIpLoadbalancingHttpRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingHttpRouteResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingHttpRouteResponse",
-}) as any as S.Schema<ListIpLoadbalancingHttpRouteResponse>;
+export const ListIpLoadbalancingHttpRouteResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpRouteResponse>;
 
 export interface ListIpLoadbalancingHttpRouteRuleRequest {
   /** The internal name of your IP load balancing */
@@ -4086,17 +3960,13 @@ export const ListIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleRequest>;
 
 export type ListIpLoadbalancingHttpRouteRuleResponseBodyList = Array<number>;
-export const ListIpLoadbalancingHttpRouteRuleResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponseBodyList>;
+export const ListIpLoadbalancingHttpRouteRuleResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponseBodyList>;
 
 export type ListIpLoadbalancingHttpRouteRuleResponse =
   ListIpLoadbalancingHttpRouteRuleResponseBodyList;
-export const ListIpLoadbalancingHttpRouteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingHttpRouteRuleResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingHttpRouteRuleResponse",
-}) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponse>;
+export const ListIpLoadbalancingHttpRouteRuleResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponse>;
 
 export interface ListIpLoadbalancingLogKindRequest {
   /** The internal name of your IP load balancing */
@@ -4111,16 +3981,12 @@ export const ListIpLoadbalancingLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingLogKindRequest>;
 
 export type ListIpLoadbalancingLogKindResponseBodyList = Array<string>;
-export const ListIpLoadbalancingLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingLogKindResponseBodyList>;
+export const ListIpLoadbalancingLogKindResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingLogKindResponseBodyList>;
 
 export type ListIpLoadbalancingLogKindResponse = ListIpLoadbalancingLogKindResponseBodyList;
-export const ListIpLoadbalancingLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingLogKindResponse",
-}) as any as S.Schema<ListIpLoadbalancingLogKindResponse>;
+export const ListIpLoadbalancingLogKindResponse =
+  ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingLogKindResponse>;
 
 export interface ListIpLoadbalancingLogSubscriptionRequest {
   /** The internal name of your IP load balancing */
@@ -4140,17 +4006,13 @@ export const ListIpLoadbalancingLogSubscriptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListIpLoadbalancingLogSubscriptionRequest>;
 
 export type ListIpLoadbalancingLogSubscriptionResponseBodyList = Array<string>;
-export const ListIpLoadbalancingLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponseBodyList>;
+export const ListIpLoadbalancingLogSubscriptionResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponseBodyList>;
 
 export type ListIpLoadbalancingLogSubscriptionResponse =
   ListIpLoadbalancingLogSubscriptionResponseBodyList;
-export const ListIpLoadbalancingLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingLogSubscriptionResponse",
-}) as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponse>;
+export const ListIpLoadbalancingLogSubscriptionResponse =
+  ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponse>;
 
 export interface ListIpLoadbalancingNatIpRequest {
   /** The internal name of your IP load balancing */
@@ -4165,9 +4027,8 @@ export const ListIpLoadbalancingNatIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingNatIpRequest>;
 
 export type IpLoadbalancingNatIpsIpList = Array<string>;
-export const IpLoadbalancingNatIpsIpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpLoadbalancingNatIpsIpList>;
+export const IpLoadbalancingNatIpsIpList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<IpLoadbalancingNatIpsIpList>;
 
 /** a list of {zone, nat Ip} */
 export interface IpLoadbalancingNatIps {
@@ -4250,16 +4111,12 @@ export const ListIpLoadbalancingQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingQuotaRequest>;
 
 export type ListIpLoadbalancingQuotaResponseBodyList = Array<string>;
-export const ListIpLoadbalancingQuotaResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingQuotaResponseBodyList>;
+export const ListIpLoadbalancingQuotaResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingQuotaResponseBodyList>;
 
 export type ListIpLoadbalancingQuotaResponse = ListIpLoadbalancingQuotaResponseBodyList;
-export const ListIpLoadbalancingQuotaResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingQuotaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingQuotaResponse",
-}) as any as S.Schema<ListIpLoadbalancingQuotaResponse>;
+export const ListIpLoadbalancingQuotaResponse =
+  ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingQuotaResponse>;
 
 export interface ListIpLoadbalancingQuotaHistoryRequest {
   /** The internal name of your IP load balancing */
@@ -4283,17 +4140,13 @@ export const ListIpLoadbalancingQuotaHistoryRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingQuotaHistoryRequest>;
 
 export type ListIpLoadbalancingQuotaHistoryResponseBodyList = Array<number>;
-export const ListIpLoadbalancingQuotaHistoryResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponseBodyList>;
+export const ListIpLoadbalancingQuotaHistoryResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponseBodyList>;
 
 export type ListIpLoadbalancingQuotaHistoryResponse =
   ListIpLoadbalancingQuotaHistoryResponseBodyList;
-export const ListIpLoadbalancingQuotaHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingQuotaHistoryResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingQuotaHistoryResponse",
-}) as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponse>;
+export const ListIpLoadbalancingQuotaHistoryResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponse>;
 
 export interface ListIpLoadbalancingSslRequest {
   /** The internal name of your IP load balancing */
@@ -4320,16 +4173,12 @@ export const ListIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingSslRequest>;
 
 export type ListIpLoadbalancingSslResponseBodyList = Array<number>;
-export const ListIpLoadbalancingSslResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingSslResponseBodyList>;
+export const ListIpLoadbalancingSslResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingSslResponseBodyList>;
 
 export type ListIpLoadbalancingSslResponse = ListIpLoadbalancingSslResponseBodyList;
-export const ListIpLoadbalancingSslResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingSslResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingSslResponse",
-}) as any as S.Schema<ListIpLoadbalancingSslResponse>;
+export const ListIpLoadbalancingSslResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingSslResponse>;
 
 export interface ListIpLoadbalancingTaskRequest {
   /** The internal name of your IP load balancing */
@@ -4362,16 +4211,12 @@ export const ListIpLoadbalancingTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingTaskRequest>;
 
 export type ListIpLoadbalancingTaskResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingTaskResponseBodyList>;
+export const ListIpLoadbalancingTaskResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTaskResponseBodyList>;
 
 export type ListIpLoadbalancingTaskResponse = ListIpLoadbalancingTaskResponseBodyList;
-export const ListIpLoadbalancingTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingTaskResponse",
-}) as any as S.Schema<ListIpLoadbalancingTaskResponse>;
+export const ListIpLoadbalancingTaskResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTaskResponse>;
 
 export interface ListIpLoadbalancingTcpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -4392,16 +4237,12 @@ export const ListIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingTcpFarmRequest>;
 
 export type ListIpLoadbalancingTcpFarmResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFarmResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingTcpFarmResponseBodyList>;
+export const ListIpLoadbalancingTcpFarmResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFarmResponseBodyList>;
 
 export type ListIpLoadbalancingTcpFarmResponse = ListIpLoadbalancingTcpFarmResponseBodyList;
-export const ListIpLoadbalancingTcpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingTcpFarmResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingTcpFarmResponse",
-}) as any as S.Schema<ListIpLoadbalancingTcpFarmResponse>;
+export const ListIpLoadbalancingTcpFarmResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFarmResponse>;
 
 export interface ListIpLoadbalancingTcpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -4431,17 +4272,13 @@ export const ListIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListIpLoadbalancingTcpFarmServerRequest>;
 
 export type ListIpLoadbalancingTcpFarmServerResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFarmServerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponseBodyList>;
+export const ListIpLoadbalancingTcpFarmServerResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponseBodyList>;
 
 export type ListIpLoadbalancingTcpFarmServerResponse =
   ListIpLoadbalancingTcpFarmServerResponseBodyList;
-export const ListIpLoadbalancingTcpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingTcpFarmServerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingTcpFarmServerResponse",
-}) as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponse>;
+export const ListIpLoadbalancingTcpFarmServerResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponse>;
 
 export interface ListIpLoadbalancingTcpFarmServerTransparentRequest {
   /** The internal name of your IP load balancing */
@@ -4471,17 +4308,13 @@ export const ListIpLoadbalancingTcpFarmServerTransparentRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentRequest>;
 
 export type ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList>;
+export const ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList>;
 
 export type ListIpLoadbalancingTcpFarmServerTransparentResponse =
   ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList;
-export const ListIpLoadbalancingTcpFarmServerTransparentResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingTcpFarmServerTransparentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingTcpFarmServerTransparentResponse",
-}) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponse>;
+export const ListIpLoadbalancingTcpFarmServerTransparentResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponse>;
 
 export interface ListIpLoadbalancingTcpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -4508,16 +4341,12 @@ export const ListIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListIpLoadbalancingTcpFrontendRequest>;
 
 export type ListIpLoadbalancingTcpFrontendResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpFrontendResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingTcpFrontendResponseBodyList>;
+export const ListIpLoadbalancingTcpFrontendResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpFrontendResponseBodyList>;
 
 export type ListIpLoadbalancingTcpFrontendResponse = ListIpLoadbalancingTcpFrontendResponseBodyList;
-export const ListIpLoadbalancingTcpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingTcpFrontendResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingTcpFrontendResponse",
-}) as any as S.Schema<ListIpLoadbalancingTcpFrontendResponse>;
+export const ListIpLoadbalancingTcpFrontendResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpFrontendResponse>;
 
 export interface ListIpLoadbalancingTcpRouteRequest {
   /** The internal name of your IP load balancing */
@@ -4535,16 +4364,12 @@ export const ListIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingTcpRouteRequest>;
 
 export type ListIpLoadbalancingTcpRouteResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpRouteResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingTcpRouteResponseBodyList>;
+export const ListIpLoadbalancingTcpRouteResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpRouteResponseBodyList>;
 
 export type ListIpLoadbalancingTcpRouteResponse = ListIpLoadbalancingTcpRouteResponseBodyList;
-export const ListIpLoadbalancingTcpRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingTcpRouteResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingTcpRouteResponse",
-}) as any as S.Schema<ListIpLoadbalancingTcpRouteResponse>;
+export const ListIpLoadbalancingTcpRouteResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpRouteResponse>;
 
 export interface ListIpLoadbalancingTcpRouteRuleRequest {
   /** The internal name of your IP load balancing */
@@ -4568,17 +4393,13 @@ export const ListIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleRequest>;
 
 export type ListIpLoadbalancingTcpRouteRuleResponseBodyList = Array<number>;
-export const ListIpLoadbalancingTcpRouteRuleResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponseBodyList>;
+export const ListIpLoadbalancingTcpRouteRuleResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponseBodyList>;
 
 export type ListIpLoadbalancingTcpRouteRuleResponse =
   ListIpLoadbalancingTcpRouteRuleResponseBodyList;
-export const ListIpLoadbalancingTcpRouteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingTcpRouteRuleResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingTcpRouteRuleResponse",
-}) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponse>;
+export const ListIpLoadbalancingTcpRouteRuleResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponse>;
 
 export interface ListIpLoadbalancingUdpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -4599,16 +4420,12 @@ export const ListIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingUdpFarmRequest>;
 
 export type ListIpLoadbalancingUdpFarmResponseBodyList = Array<number>;
-export const ListIpLoadbalancingUdpFarmResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingUdpFarmResponseBodyList>;
+export const ListIpLoadbalancingUdpFarmResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingUdpFarmResponseBodyList>;
 
 export type ListIpLoadbalancingUdpFarmResponse = ListIpLoadbalancingUdpFarmResponseBodyList;
-export const ListIpLoadbalancingUdpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingUdpFarmResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingUdpFarmResponse",
-}) as any as S.Schema<ListIpLoadbalancingUdpFarmResponse>;
+export const ListIpLoadbalancingUdpFarmResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingUdpFarmResponse>;
 
 export interface ListIpLoadbalancingUdpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -4638,17 +4455,13 @@ export const ListIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListIpLoadbalancingUdpFarmServerRequest>;
 
 export type ListIpLoadbalancingUdpFarmServerResponseBodyList = Array<number>;
-export const ListIpLoadbalancingUdpFarmServerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponseBodyList>;
+export const ListIpLoadbalancingUdpFarmServerResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponseBodyList>;
 
 export type ListIpLoadbalancingUdpFarmServerResponse =
   ListIpLoadbalancingUdpFarmServerResponseBodyList;
-export const ListIpLoadbalancingUdpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingUdpFarmServerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingUdpFarmServerResponse",
-}) as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponse>;
+export const ListIpLoadbalancingUdpFarmServerResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponse>;
 
 export interface ListIpLoadbalancingUdpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -4672,16 +4485,12 @@ export const ListIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListIpLoadbalancingUdpFrontendRequest>;
 
 export type ListIpLoadbalancingUdpFrontendResponseBodyList = Array<number>;
-export const ListIpLoadbalancingUdpFrontendResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingUdpFrontendResponseBodyList>;
+export const ListIpLoadbalancingUdpFrontendResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingUdpFrontendResponseBodyList>;
 
 export type ListIpLoadbalancingUdpFrontendResponse = ListIpLoadbalancingUdpFrontendResponseBodyList;
-export const ListIpLoadbalancingUdpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingUdpFrontendResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingUdpFrontendResponse",
-}) as any as S.Schema<ListIpLoadbalancingUdpFrontendResponse>;
+export const ListIpLoadbalancingUdpFrontendResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingUdpFrontendResponse>;
 
 export interface ListIpLoadbalancingVrackNetworkRequest {
   /** The internal name of your IP load balancing */
@@ -4704,17 +4513,13 @@ export const ListIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIpLoadbalancingVrackNetworkRequest>;
 
 export type ListIpLoadbalancingVrackNetworkResponseBodyList = Array<number>;
-export const ListIpLoadbalancingVrackNetworkResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpLoadbalancingVrackNetworkResponseBodyList>;
+export const ListIpLoadbalancingVrackNetworkResponseBodyList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<ListIpLoadbalancingVrackNetworkResponseBodyList>;
 
 export type ListIpLoadbalancingVrackNetworkResponse =
   ListIpLoadbalancingVrackNetworkResponseBodyList;
-export const ListIpLoadbalancingVrackNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingVrackNetworkResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingVrackNetworkResponse",
-}) as any as S.Schema<ListIpLoadbalancingVrackNetworkResponse>;
+export const ListIpLoadbalancingVrackNetworkResponse =
+  CreateIpLoadbalancingChangeContactResponse as any as S.Schema<ListIpLoadbalancingVrackNetworkResponse>;
 
 export interface ListIpLoadbalancingVrackStatusRequest {
   /** The internal name of your IP load balancing */
@@ -4734,9 +4539,8 @@ export const IpLoadbalancingVrackStateEnum = S.String;
 
 /** Ongoing task related to vRack installation or uninstallation on your Load Balancer */
 export type IpLoadbalancingVrackInformationTaskList = Array<number>;
-export const IpLoadbalancingVrackInformationTaskList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IpLoadbalancingVrackInformationTaskList>;
+export const IpLoadbalancingVrackInformationTaskList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<IpLoadbalancingVrackInformationTaskList>;
 
 /** Information about vRack for your Load Balancer */
 export interface IpLoadbalancingVrackInformation {
@@ -4821,16 +4625,12 @@ export const ListIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLoadbalancingZoneRequest>;
 
 export type ListIpLoadbalancingZoneResponseBodyList = Array<string>;
-export const ListIpLoadbalancingZoneResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLoadbalancingZoneResponseBodyList>;
+export const ListIpLoadbalancingZoneResponseBodyList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<ListIpLoadbalancingZoneResponseBodyList>;
 
 export type ListIpLoadbalancingZoneResponse = ListIpLoadbalancingZoneResponseBodyList;
-export const ListIpLoadbalancingZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLoadbalancingZoneResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLoadbalancingZoneResponse",
-}) as any as S.Schema<ListIpLoadbalancingZoneResponse>;
+export const ListIpLoadbalancingZoneResponse =
+  ListIpLoadbalancingResponse as any as S.Schema<ListIpLoadbalancingZoneResponse>;
 
 export interface PutIpLoadbalancingRequest {
   /** The internal name of your IP load balancing */
@@ -4851,9 +4651,8 @@ export const PutIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingRequest>;
 
 export interface PutIpLoadbalancingResponse {}
-export const PutIpLoadbalancingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpLoadbalancingResponse",
-}) as any as S.Schema<PutIpLoadbalancingResponse>;
+export const PutIpLoadbalancingResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutIpLoadbalancingResponse>;
 
 export interface PutIpLoadbalancingHttpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -4891,11 +4690,8 @@ export const PutIpLoadbalancingHttpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingHttpFarmRequest>;
 
 export interface PutIpLoadbalancingHttpFarmResponse {}
-export const PutIpLoadbalancingHttpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingHttpFarmResponse",
-}) as any as S.Schema<PutIpLoadbalancingHttpFarmResponse>;
+export const PutIpLoadbalancingHttpFarmResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpFarmResponse>;
 
 export interface PutIpLoadbalancingHttpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -4955,35 +4751,28 @@ export const PutIpLoadbalancingHttpFarmServerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutIpLoadbalancingHttpFarmServerRequest>;
 
 export interface PutIpLoadbalancingHttpFarmServerResponse {}
-export const PutIpLoadbalancingHttpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingHttpFarmServerResponse",
-}) as any as S.Schema<PutIpLoadbalancingHttpFarmServerResponse>;
+export const PutIpLoadbalancingHttpFarmServerResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpFarmServerResponse>;
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingHttpFrontendRequestAllowedSourceList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestAllowedSourceList>;
+export const PutIpLoadbalancingHttpFrontendRequestAllowedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList>;
+export const PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingHttpFrontendRequestDeniedSourceList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestDeniedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestDeniedSourceList>;
+export const PutIpLoadbalancingHttpFrontendRequestDeniedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestDeniedSourceList>;
 
 /** Add header to your frontend. Useful variables admitted : %ci <=> client_ip, %cp <=> client_port */
 export type PutIpLoadbalancingHttpFrontendRequestHttpHeaderList = Array<string>;
-export const PutIpLoadbalancingHttpFrontendRequestHttpHeaderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestHttpHeaderList>;
+export const PutIpLoadbalancingHttpFrontendRequestHttpHeaderList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingHttpFrontendRequestHttpHeaderList>;
 
 export interface PutIpLoadbalancingHttpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -5046,11 +4835,8 @@ export const PutIpLoadbalancingHttpFrontendRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequest>;
 
 export interface PutIpLoadbalancingHttpFrontendResponse {}
-export const PutIpLoadbalancingHttpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingHttpFrontendResponse",
-}) as any as S.Schema<PutIpLoadbalancingHttpFrontendResponse>;
+export const PutIpLoadbalancingHttpFrontendResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpFrontendResponse>;
 
 export interface PutIpLoadbalancingHttpRouteRequest {
   /** The internal name of your IP load balancing */
@@ -5086,11 +4872,8 @@ export const PutIpLoadbalancingHttpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingHttpRouteRequest>;
 
 export interface PutIpLoadbalancingHttpRouteResponse {}
-export const PutIpLoadbalancingHttpRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingHttpRouteResponse",
-}) as any as S.Schema<PutIpLoadbalancingHttpRouteResponse>;
+export const PutIpLoadbalancingHttpRouteResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpRouteResponse>;
 
 export interface PutIpLoadbalancingHttpRouteRuleRequest {
   /** The internal name of your IP load balancing */
@@ -5135,11 +4918,8 @@ export const PutIpLoadbalancingHttpRouteRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutIpLoadbalancingHttpRouteRuleRequest>;
 
 export interface PutIpLoadbalancingHttpRouteRuleResponse {}
-export const PutIpLoadbalancingHttpRouteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingHttpRouteRuleResponse",
-}) as any as S.Schema<PutIpLoadbalancingHttpRouteRuleResponse>;
+export const PutIpLoadbalancingHttpRouteRuleResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingHttpRouteRuleResponse>;
 
 export interface PutIpLoadbalancingQuotaRequest {
   /** The internal name of your IP load balancing */
@@ -5180,11 +4960,8 @@ export const PutIpLoadbalancingServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingServiceInfosRequest>;
 
 export interface PutIpLoadbalancingServiceInfosResponse {}
-export const PutIpLoadbalancingServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingServiceInfosResponse",
-}) as any as S.Schema<PutIpLoadbalancingServiceInfosResponse>;
+export const PutIpLoadbalancingServiceInfosResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingServiceInfosResponse>;
 
 export interface PutIpLoadbalancingSslRequest {
   /** The internal name of your IP load balancing */
@@ -5205,9 +4982,8 @@ export const PutIpLoadbalancingSslRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingSslRequest>;
 
 export interface PutIpLoadbalancingSslResponse {}
-export const PutIpLoadbalancingSslResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpLoadbalancingSslResponse",
-}) as any as S.Schema<PutIpLoadbalancingSslResponse>;
+export const PutIpLoadbalancingSslResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutIpLoadbalancingSslResponse>;
 
 export interface PutIpLoadbalancingTcpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -5245,11 +5021,8 @@ export const PutIpLoadbalancingTcpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingTcpFarmRequest>;
 
 export interface PutIpLoadbalancingTcpFarmResponse {}
-export const PutIpLoadbalancingTcpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingTcpFarmResponse",
-}) as any as S.Schema<PutIpLoadbalancingTcpFarmResponse>;
+export const PutIpLoadbalancingTcpFarmResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpFarmResponse>;
 
 export interface PutIpLoadbalancingTcpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -5306,29 +5079,23 @@ export const PutIpLoadbalancingTcpFarmServerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutIpLoadbalancingTcpFarmServerRequest>;
 
 export interface PutIpLoadbalancingTcpFarmServerResponse {}
-export const PutIpLoadbalancingTcpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingTcpFarmServerResponse",
-}) as any as S.Schema<PutIpLoadbalancingTcpFarmServerResponse>;
+export const PutIpLoadbalancingTcpFarmServerResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpFarmServerResponse>;
 
 /** Restrict IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingTcpFrontendRequestAllowedSourceList = Array<string>;
-export const PutIpLoadbalancingTcpFrontendRequestAllowedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestAllowedSourceList>;
+export const PutIpLoadbalancingTcpFrontendRequestAllowedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestAllowedSourceList>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList = Array<string>;
-export const PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList>;
+export const PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestDedicatedIpfoList>;
 
 /** Deny IP Load Balancing access to these ip block. No restriction if null. You cannot specify allowedSource and deniedSource both at the same time */
 export type PutIpLoadbalancingTcpFrontendRequestDeniedSourceList = Array<string>;
-export const PutIpLoadbalancingTcpFrontendRequestDeniedSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestDeniedSourceList>;
+export const PutIpLoadbalancingTcpFrontendRequestDeniedSourceList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingTcpFrontendRequestDeniedSourceList>;
 
 export interface PutIpLoadbalancingTcpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -5382,11 +5149,8 @@ export const PutIpLoadbalancingTcpFrontendRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutIpLoadbalancingTcpFrontendRequest>;
 
 export interface PutIpLoadbalancingTcpFrontendResponse {}
-export const PutIpLoadbalancingTcpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingTcpFrontendResponse",
-}) as any as S.Schema<PutIpLoadbalancingTcpFrontendResponse>;
+export const PutIpLoadbalancingTcpFrontendResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpFrontendResponse>;
 
 export interface PutIpLoadbalancingTcpRouteRequest {
   /** The internal name of your IP load balancing */
@@ -5418,11 +5182,8 @@ export const PutIpLoadbalancingTcpRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingTcpRouteRequest>;
 
 export interface PutIpLoadbalancingTcpRouteResponse {}
-export const PutIpLoadbalancingTcpRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingTcpRouteResponse",
-}) as any as S.Schema<PutIpLoadbalancingTcpRouteResponse>;
+export const PutIpLoadbalancingTcpRouteResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpRouteResponse>;
 
 export interface PutIpLoadbalancingTcpRouteRuleRequest {
   /** The internal name of your IP load balancing */
@@ -5467,11 +5228,8 @@ export const PutIpLoadbalancingTcpRouteRuleRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingTcpRouteRuleRequest>;
 
 export interface PutIpLoadbalancingTcpRouteRuleResponse {}
-export const PutIpLoadbalancingTcpRouteRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingTcpRouteRuleResponse",
-}) as any as S.Schema<PutIpLoadbalancingTcpRouteRuleResponse>;
+export const PutIpLoadbalancingTcpRouteRuleResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingTcpRouteRuleResponse>;
 
 export interface PutIpLoadbalancingUdpFarmRequest {
   /** The internal name of your IP load balancing */
@@ -5500,11 +5258,8 @@ export const PutIpLoadbalancingUdpFarmRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpLoadbalancingUdpFarmRequest>;
 
 export interface PutIpLoadbalancingUdpFarmResponse {}
-export const PutIpLoadbalancingUdpFarmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingUdpFarmResponse",
-}) as any as S.Schema<PutIpLoadbalancingUdpFarmResponse>;
+export const PutIpLoadbalancingUdpFarmResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingUdpFarmResponse>;
 
 export interface PutIpLoadbalancingUdpFarmServerRequest {
   /** The internal name of your IP load balancing */
@@ -5540,17 +5295,13 @@ export const PutIpLoadbalancingUdpFarmServerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutIpLoadbalancingUdpFarmServerRequest>;
 
 export interface PutIpLoadbalancingUdpFarmServerResponse {}
-export const PutIpLoadbalancingUdpFarmServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingUdpFarmServerResponse",
-}) as any as S.Schema<PutIpLoadbalancingUdpFarmServerResponse>;
+export const PutIpLoadbalancingUdpFarmServerResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingUdpFarmServerResponse>;
 
 /** Only attach frontend on these ip. No restriction if null */
 export type PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList = Array<string>;
-export const PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList>;
+export const PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList =
+  CreateIpLoadbalancingFreeCertificateRequestFqdnList as any as S.Schema<PutIpLoadbalancingUdpFrontendRequestDedicatedIpfoList>;
 
 export interface PutIpLoadbalancingUdpFrontendRequest {
   /** The internal name of your IP load balancing */
@@ -5592,11 +5343,8 @@ export const PutIpLoadbalancingUdpFrontendRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutIpLoadbalancingUdpFrontendRequest>;
 
 export interface PutIpLoadbalancingUdpFrontendResponse {}
-export const PutIpLoadbalancingUdpFrontendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingUdpFrontendResponse",
-}) as any as S.Schema<PutIpLoadbalancingUdpFrontendResponse>;
+export const PutIpLoadbalancingUdpFrontendResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingUdpFrontendResponse>;
 
 export interface PutIpLoadbalancingVrackNetworkRequest {
   /** The internal name of your IP load balancing */
@@ -5629,11 +5377,8 @@ export const PutIpLoadbalancingVrackNetworkRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutIpLoadbalancingVrackNetworkRequest>;
 
 export interface PutIpLoadbalancingVrackNetworkResponse {}
-export const PutIpLoadbalancingVrackNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpLoadbalancingVrackNetworkResponse",
-}) as any as S.Schema<PutIpLoadbalancingVrackNetworkResponse>;
+export const PutIpLoadbalancingVrackNetworkResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<PutIpLoadbalancingVrackNetworkResponse>;
 
 export interface RefreshIpLoadbalancingRequest {
   /** The internal name of your IP load balancing */
@@ -5663,11 +5408,8 @@ export const TerminateIpLoadbalancingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateIpLoadbalancingRequest>;
 
 export type TerminateIpLoadbalancingResponse = string;
-export const TerminateIpLoadbalancingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateIpLoadbalancingResponse",
-}) as any as S.Schema<TerminateIpLoadbalancingResponse>;
+export const TerminateIpLoadbalancingResponse =
+  ConfirmIpLoadbalancingTerminationResponse as any as S.Schema<TerminateIpLoadbalancingResponse>;
 
 export interface TerminateIpLoadbalancingZoneRequest {
   /** The internal name of your IP load balancing */
@@ -5691,17 +5433,13 @@ export const TerminateIpLoadbalancingZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateIpLoadbalancingZoneRequest>;
 
 export interface TerminateIpLoadbalancingZoneResponse {}
-export const TerminateIpLoadbalancingZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TerminateIpLoadbalancingZoneResponse",
-}) as any as S.Schema<TerminateIpLoadbalancingZoneResponse>;
+export const TerminateIpLoadbalancingZoneResponse =
+  CancelIpLoadbalancingZoneTerminationResponse as any as S.Schema<TerminateIpLoadbalancingZoneResponse>;
 
 /** Farm Id you want to attach to that vrack network */
 export type UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList = Array<number>;
-export const UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList>;
+export const UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList =
+  CreateIpLoadbalancingChangeContactResponseBodyList as any as S.Schema<UpdateIpLoadbalancingVrackNetworkFarmIdRequestFarmIdList>;
 
 export interface UpdateIpLoadbalancingVrackNetworkFarmIdRequest {
   /** The internal name of your IP load balancing */

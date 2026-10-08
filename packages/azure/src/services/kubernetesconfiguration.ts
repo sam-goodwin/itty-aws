@@ -58,10 +58,8 @@ export const ExtensionPropertiesInputConfigurationSettingsMap = /*@__PURE__*/ S.
 export type ExtensionPropertiesInputConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const ExtensionPropertiesInputConfigurationProtectedSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExtensionPropertiesInputConfigurationProtectedSettingsMap>;
+export const ExtensionPropertiesInputConfigurationProtectedSettingsMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesInputConfigurationProtectedSettingsMap>;
 
 /** Level of the status. */
 export type ExtensionStatusLevel = "Error" | "Warning" | "Information";
@@ -365,19 +363,15 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration settings, as name-value pairs for configuring this extension. */
 export type ExtensionPropertiesConfigurationSettingsMap = { [key: string]: string | undefined };
-export const ExtensionPropertiesConfigurationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExtensionPropertiesConfigurationSettingsMap>;
+export const ExtensionPropertiesConfigurationSettingsMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesConfigurationSettingsMap>;
 
 /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
 export type ExtensionPropertiesConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const ExtensionPropertiesConfigurationProtectedSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExtensionPropertiesConfigurationProtectedSettingsMap>;
+export const ExtensionPropertiesConfigurationProtectedSettingsMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesConfigurationProtectedSettingsMap>;
 
 /** The provisioning state of the resource. */
 export type ProvisioningState =
@@ -391,9 +385,8 @@ export const ProvisioningState = S.String;
 
 /** Status from this extension. */
 export type ExtensionPropertiesStatusesList = Array<ExtensionStatus>;
-export const ExtensionPropertiesStatusesList = /*@__PURE__*/ S.Array(
-  ExtensionStatus,
-) as any as S.Schema<ExtensionPropertiesStatusesList>;
+export const ExtensionPropertiesStatusesList =
+  ExtensionPropertiesInputStatusesList as any as S.Schema<ExtensionPropertiesStatusesList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
@@ -452,9 +445,8 @@ export const ExtensionPropertiesErrorInfoDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type ExtensionPropertiesErrorInfoAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ExtensionPropertiesErrorInfoAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<ExtensionPropertiesErrorInfoAdditionalInfoList>;
+export const ExtensionPropertiesErrorInfoAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<ExtensionPropertiesErrorInfoAdditionalInfoList>;
 
 /** The error detail. */
 export interface ExtensionPropertiesErrorInfo {
@@ -483,10 +475,8 @@ export const ExtensionPropertiesErrorInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom Location settings properties. */
 export type ExtensionPropertiesCustomLocationSettingsMap = { [key: string]: string | undefined };
-export const ExtensionPropertiesCustomLocationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExtensionPropertiesCustomLocationSettingsMap>;
+export const ExtensionPropertiesCustomLocationSettingsMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesCustomLocationSettingsMap>;
 
 /** Identity of the Extension resource in an AKS cluster */
 export interface ExtensionPropertiesAksAssignedIdentity {
@@ -762,11 +752,8 @@ export const DeleteSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSourceControlConfigurationRequest>;
 
 export interface DeleteSourceControlConfigurationResponse {}
-export const DeleteSourceControlConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSourceControlConfigurationResponse",
-}) as any as S.Schema<DeleteSourceControlConfigurationResponse>;
+export const DeleteSourceControlConfigurationResponse =
+  ExtensionPropertiesInputErrorInfo as any as S.Schema<DeleteSourceControlConfigurationResponse>;
 
 /** Scope at which the operator will be installed. */
 export type FluxConfigurationPropertiesInputScope = "cluster" | "namespace";
@@ -983,10 +970,8 @@ export const LayerSelectorDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** An object containing trusted public keys of trusted authors. */
 export type VerifyDefinitionVerificationConfigMap = { [key: string]: string | undefined };
-export const VerifyDefinitionVerificationConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VerifyDefinitionVerificationConfigMap>;
+export const VerifyDefinitionVerificationConfigMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<VerifyDefinitionVerificationConfigMap>;
 
 /** MatchOIDCIdentity defines the criteria for matching the identity while verifying an OCI artifact. */
 export interface MatchOidcIdentityDefinition {
@@ -1087,16 +1072,13 @@ export const OCIRepositoryDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
 export type KustomizationDefinitionInputDependsOnList = Array<string>;
-export const KustomizationDefinitionInputDependsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KustomizationDefinitionInputDependsOnList>;
+export const KustomizationDefinitionInputDependsOnList =
+  AccessDetailAllowedActionsList as any as S.Schema<KustomizationDefinitionInputDependsOnList>;
 
 /** Key/value pairs holding the variables to be substituted in this Kustomization. */
 export type PostBuildDefinitionSubstituteMap = { [key: string]: string | undefined };
-export const PostBuildDefinitionSubstituteMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostBuildDefinitionSubstituteMap>;
+export const PostBuildDefinitionSubstituteMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PostBuildDefinitionSubstituteMap>;
 
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
 export interface SubstituteFromDefinition {
@@ -1290,9 +1272,8 @@ export const FluxConfigurationPropertiesSourceKind = S.String;
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
 export type KustomizationDefinitionDependsOnList = Array<string>;
-export const KustomizationDefinitionDependsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KustomizationDefinitionDependsOnList>;
+export const KustomizationDefinitionDependsOnList =
+  AccessDetailAllowedActionsList as any as S.Schema<KustomizationDefinitionDependsOnList>;
 
 /** The Kustomization defining how to reconcile the artifact pulled by the source type on the cluster. */
 export interface KustomizationDefinition {
@@ -1345,10 +1326,8 @@ export const FluxConfigurationPropertiesKustomizationsMap = /*@__PURE__*/ S.Reco
 export type FluxConfigurationPropertiesConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const FluxConfigurationPropertiesConfigurationProtectedSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FluxConfigurationPropertiesConfigurationProtectedSettingsMap>;
+export const FluxConfigurationPropertiesConfigurationProtectedSettingsMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<FluxConfigurationPropertiesConfigurationProtectedSettingsMap>;
 
 /** Compliance state of the applied object showing whether the applied object has come into a ready state on the cluster. */
 export type ObjectStatusDefinitionComplianceState =
@@ -1699,22 +1678,18 @@ export const GetFluxConfigOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional information, if available. */
 export type OperationStatusResultPropertiesMap = { [key: string]: string | undefined };
-export const OperationStatusResultPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OperationStatusResultPropertiesMap>;
+export const OperationStatusResultPropertiesMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<OperationStatusResultPropertiesMap>;
 
 /** The error details. */
 export type OperationStatusResultErrorDetailsList = Array<ErrorDetail>;
-export const OperationStatusResultErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetail,
-) as any as S.Schema<OperationStatusResultErrorDetailsList>;
+export const OperationStatusResultErrorDetailsList =
+  ExtensionPropertiesErrorInfoDetailsList as any as S.Schema<OperationStatusResultErrorDetailsList>;
 
 /** The error additional info. */
 export type OperationStatusResultErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const OperationStatusResultErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<OperationStatusResultErrorAdditionalInfoList>;
+export const OperationStatusResultErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<OperationStatusResultErrorAdditionalInfoList>;
 
 /** The error detail. */
 export interface OperationStatusResultError {
@@ -1729,17 +1704,8 @@ export interface OperationStatusResultError {
   /** The error additional info. */
   additionalInfo?: OperationStatusResultErrorAdditionalInfoList;
 }
-export const OperationStatusResultError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    details: S.optional(OperationStatusResultErrorDetailsList),
-    additionalInfo: S.optional(OperationStatusResultErrorAdditionalInfoList),
-  }),
-).annotate({
-  identifier: "OperationStatusResultError",
-}) as any as S.Schema<OperationStatusResultError>;
+export const OperationStatusResultError =
+  ExtensionPropertiesErrorInfo as any as S.Schema<OperationStatusResultError>;
 
 /** The current status of an async operation. */
 export interface OperationStatusResult_2 {
@@ -1810,17 +1776,8 @@ export interface GetFluxConfigurationResponse {
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
 }
-export const GetFluxConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FluxConfigurationProperties),
-  }),
-).annotate({
-  identifier: "GetFluxConfigurationResponse",
-}) as any as S.Schema<GetFluxConfigurationResponse>;
+export const GetFluxConfigurationResponse =
+  FluxConfigurationsCreateOrUpdateResponse as any as S.Schema<GetFluxConfigurationResponse>;
 
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. */
@@ -1921,10 +1878,8 @@ export const OperatorTypeDefinition = S.String;
 
 /** Name-value pairs of protected configuration settings for the configuration */
 export type ConfigurationProtectedSettings = { [key: string]: string | undefined };
-export const ConfigurationProtectedSettings = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationProtectedSettings>;
+export const ConfigurationProtectedSettings =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ConfigurationProtectedSettings>;
 
 /** Scope at which the operator will be installed. */
 export type OperatorScopeDefinition = "cluster" | "namespace";
@@ -2814,19 +2769,15 @@ export const PatchExtensionPropertiesAutoUpgradeMode = S.String;
 export type PatchExtensionPropertiesConfigurationSettingsMap = {
   [key: string]: string | undefined;
 };
-export const PatchExtensionPropertiesConfigurationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchExtensionPropertiesConfigurationSettingsMap>;
+export const PatchExtensionPropertiesConfigurationSettingsMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PatchExtensionPropertiesConfigurationSettingsMap>;
 
 /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
 export type PatchExtensionPropertiesConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const PatchExtensionPropertiesConfigurationProtectedSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchExtensionPropertiesConfigurationProtectedSettingsMap>;
+export const PatchExtensionPropertiesConfigurationProtectedSettingsMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PatchExtensionPropertiesConfigurationProtectedSettingsMap>;
 
 /** Updatable properties of an Extension Patch Request */
 export interface PatchExtensionProperties {
@@ -3063,10 +3014,8 @@ export const LayerSelectorPatchDefinition = LayerSelectorDefinition;
 
 /** An object containing trusted public keys of trusted authors. */
 export type VerifyPatchDefinitionVerificationConfigMap = { [key: string]: string | undefined };
-export const VerifyPatchDefinitionVerificationConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VerifyPatchDefinitionVerificationConfigMap>;
+export const VerifyPatchDefinitionVerificationConfigMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<VerifyPatchDefinitionVerificationConfigMap>;
 
 /** MatchOIDCIdentity defines the criteria for matching the identity while verifying an OCI artifact. */
 export type MatchOidcIdentityPatchDefinition = MatchOidcIdentityDefinition;
@@ -3074,9 +3023,8 @@ export const MatchOidcIdentityPatchDefinition = MatchOidcIdentityDefinition;
 
 /** Array defining the criteria for matching the OIDC identity while verifying an OCI artifact. */
 export type VerifyPatchDefinitionMatchOidcIdentityList = Array<MatchOidcIdentityDefinition>;
-export const VerifyPatchDefinitionMatchOidcIdentityList = /*@__PURE__*/ S.Array(
-  MatchOidcIdentityDefinition,
-) as any as S.Schema<VerifyPatchDefinitionMatchOidcIdentityList>;
+export const VerifyPatchDefinitionMatchOidcIdentityList =
+  VerifyDefinitionMatchOidcIdentityList as any as S.Schema<VerifyPatchDefinitionMatchOidcIdentityList>;
 
 /** Parameters to verify the authenticity of an OCI Artifact. */
 export interface VerifyPatchDefinition {
@@ -3087,13 +3035,7 @@ export interface VerifyPatchDefinition {
   /** Array defining the criteria for matching the OIDC identity while verifying an OCI artifact. */
   matchOidcIdentity?: VerifyPatchDefinitionMatchOidcIdentityList | null;
 }
-export const VerifyPatchDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    verificationConfig: S.optional(S.NullOr(VerifyPatchDefinitionVerificationConfigMap)),
-    matchOidcIdentity: S.optional(S.NullOr(VerifyPatchDefinitionMatchOidcIdentityList)),
-  }),
-).annotate({ identifier: "VerifyPatchDefinition" }) as any as S.Schema<VerifyPatchDefinition>;
+export const VerifyPatchDefinition = VerifyDefinition as any as S.Schema<VerifyPatchDefinition>;
 
 /** Parameters to authenticate using TLS config for OCI repository. */
 export type TlsConfigPatchDefinition = TlsConfigDefinition;
@@ -3144,16 +3086,13 @@ export const OCIRepositoryPatchDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
 export type KustomizationPatchDefinitionDependsOnList = Array<string>;
-export const KustomizationPatchDefinitionDependsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KustomizationPatchDefinitionDependsOnList>;
+export const KustomizationPatchDefinitionDependsOnList =
+  AccessDetailAllowedActionsList as any as S.Schema<KustomizationPatchDefinitionDependsOnList>;
 
 /** Key/value pairs holding the variables to be substituted in this Kustomization. */
 export type PostBuildPatchDefinitionSubstituteMap = { [key: string]: string | undefined };
-export const PostBuildPatchDefinitionSubstituteMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostBuildPatchDefinitionSubstituteMap>;
+export const PostBuildPatchDefinitionSubstituteMap =
+  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PostBuildPatchDefinitionSubstituteMap>;
 
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
 export type SubstituteFromPatchDefinition = SubstituteFromDefinition;
@@ -3161,9 +3100,8 @@ export const SubstituteFromPatchDefinition = SubstituteFromDefinition;
 
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
 export type PostBuildPatchDefinitionSubstituteFromList = Array<SubstituteFromDefinition>;
-export const PostBuildPatchDefinitionSubstituteFromList = /*@__PURE__*/ S.Array(
-  SubstituteFromDefinition,
-) as any as S.Schema<PostBuildPatchDefinitionSubstituteFromList>;
+export const PostBuildPatchDefinitionSubstituteFromList =
+  PostBuildDefinitionSubstituteFromList as any as S.Schema<PostBuildPatchDefinitionSubstituteFromList>;
 
 /** The postBuild definitions defining variable substitutions for this Kustomization after kustomize build. */
 export interface PostBuildPatchDefinition {
@@ -3230,10 +3168,7 @@ export type FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap = 
   [key: string]: string | undefined;
 };
 export const FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap>;
+  FluxConfigurationPropertiesInputConfigurationProtectedSettingsMap as any as S.Schema<FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap>;
 
 /** Updatable properties of an Flux Configuration Patch Request */
 export interface FluxConfigurationPatchProperties {
@@ -3320,17 +3255,8 @@ export interface UpdateFluxConfigurationResponse {
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
 }
-export const UpdateFluxConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FluxConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateFluxConfigurationResponse",
-}) as any as S.Schema<UpdateFluxConfigurationResponse>;
+export const UpdateFluxConfigurationResponse =
+  FluxConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateFluxConfigurationResponse>;
 
 export type CreateExtensionError = AzureOpError;
 /** Create a new Kubernetes Cluster Extension. */

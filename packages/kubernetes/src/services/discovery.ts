@@ -98,19 +98,13 @@ export interface IoK8sApiDiscoveryV1ForZone {
   /** name represents the name of the zone. */
   name: string;
 }
-export const IoK8sApiDiscoveryV1ForZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiDiscoveryV1ForZone",
-}) as any as S.Schema<IoK8sApiDiscoveryV1ForZone>;
+export const IoK8sApiDiscoveryV1ForZone =
+  IoK8sApiDiscoveryV1ForNode as any as S.Schema<IoK8sApiDiscoveryV1ForZone>;
 
 /** forZones indicates the zone(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries. */
 export type IoK8sApiDiscoveryV1EndpointHintsForZonesList = Array<IoK8sApiDiscoveryV1ForZone>;
-export const IoK8sApiDiscoveryV1EndpointHintsForZonesList = /*@__PURE__*/ S.Array(
-  IoK8sApiDiscoveryV1ForZone,
-) as any as S.Schema<IoK8sApiDiscoveryV1EndpointHintsForZonesList>;
+export const IoK8sApiDiscoveryV1EndpointHintsForZonesList =
+  IoK8sApiDiscoveryV1EndpointHintsForNodesList as any as S.Schema<IoK8sApiDiscoveryV1EndpointHintsForZonesList>;
 
 /** EndpointHints provides hints describing how an endpoint should be consumed. */
 export interface IoK8sApiDiscoveryV1EndpointHints {
@@ -204,25 +198,20 @@ export const CreateDiscoveryV1NamespacedEndpointSliceRequestEndpointsList = /*@_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
+  IoK8sApiDiscoveryV1EndpointDeprecatedTopologyMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
+  IoK8sApiDiscoveryV1EndpointAddressesList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApiDiscoveryV1EndpointDeprecatedTopologyMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -431,15 +420,13 @@ export const CreateDiscoveryV1NamespacedEndpointSliceRequest = /*@__PURE__*/ S.s
 
 /** endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints. */
 export type IoK8sApiDiscoveryV1EndpointSliceEndpointsList = Array<IoK8sApiDiscoveryV1Endpoint>;
-export const IoK8sApiDiscoveryV1EndpointSliceEndpointsList = /*@__PURE__*/ S.Array(
-  IoK8sApiDiscoveryV1Endpoint,
-) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSliceEndpointsList>;
+export const IoK8sApiDiscoveryV1EndpointSliceEndpointsList =
+  CreateDiscoveryV1NamespacedEndpointSliceRequestEndpointsList as any as S.Schema<IoK8sApiDiscoveryV1EndpointSliceEndpointsList>;
 
 /** ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. Each slice may include a maximum of 100 ports. Services always have at least 1 port, so EndpointSlices generated by the EndpointSlice controller will likewise always have at least 1 port. EndpointSlices used for other purposes may have an empty ports list. */
 export type IoK8sApiDiscoveryV1EndpointSlicePortsList = Array<IoK8sApiDiscoveryV1EndpointPort>;
-export const IoK8sApiDiscoveryV1EndpointSlicePortsList = /*@__PURE__*/ S.Array(
-  IoK8sApiDiscoveryV1EndpointPort,
-) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlicePortsList>;
+export const IoK8sApiDiscoveryV1EndpointSlicePortsList =
+  CreateDiscoveryV1NamespacedEndpointSliceRequestPortsList as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlicePortsList>;
 
 /** EndpointSlice represents a set of service endpoints. Most EndpointSlices are created by the EndpointSlice controller to represent the Pods selected by Service objects. For a given service there may be multiple EndpointSlice objects which must be joined to produce the full set of endpoints; you can find all of the slices for a given service by listing EndpointSlices in the service's namespace whose `kubernetes.io/service-name` label contains the service's name. */
 export interface IoK8sApiDiscoveryV1EndpointSlice {
@@ -825,21 +812,18 @@ export const GetDiscoveryV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApiDiscoveryV1EndpointAddressesList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApiDiscoveryV1EndpointAddressesList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApiDiscoveryV1EndpointAddressesList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -1100,16 +1084,14 @@ export const ReadDiscoveryV1NamespacedEndpointSliceRequest = /*@__PURE__*/ S.sus
 /** endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints. */
 export type ReplaceDiscoveryV1NamespacedEndpointSliceRequestEndpointsList =
   Array<IoK8sApiDiscoveryV1Endpoint>;
-export const ReplaceDiscoveryV1NamespacedEndpointSliceRequestEndpointsList = /*@__PURE__*/ S.Array(
-  IoK8sApiDiscoveryV1Endpoint,
-) as any as S.Schema<ReplaceDiscoveryV1NamespacedEndpointSliceRequestEndpointsList>;
+export const ReplaceDiscoveryV1NamespacedEndpointSliceRequestEndpointsList =
+  CreateDiscoveryV1NamespacedEndpointSliceRequestEndpointsList as any as S.Schema<ReplaceDiscoveryV1NamespacedEndpointSliceRequestEndpointsList>;
 
 /** ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. Each slice may include a maximum of 100 ports. Services always have at least 1 port, so EndpointSlices generated by the EndpointSlice controller will likewise always have at least 1 port. EndpointSlices used for other purposes may have an empty ports list. */
 export type ReplaceDiscoveryV1NamespacedEndpointSliceRequestPortsList =
   Array<IoK8sApiDiscoveryV1EndpointPort>;
-export const ReplaceDiscoveryV1NamespacedEndpointSliceRequestPortsList = /*@__PURE__*/ S.Array(
-  IoK8sApiDiscoveryV1EndpointPort,
-) as any as S.Schema<ReplaceDiscoveryV1NamespacedEndpointSliceRequestPortsList>;
+export const ReplaceDiscoveryV1NamespacedEndpointSliceRequestPortsList =
+  CreateDiscoveryV1NamespacedEndpointSliceRequestPortsList as any as S.Schema<ReplaceDiscoveryV1NamespacedEndpointSliceRequestPortsList>;
 
 export interface ReplaceDiscoveryV1NamespacedEndpointSliceRequest {
   /** object name and auth scope, such as for teams and projects */

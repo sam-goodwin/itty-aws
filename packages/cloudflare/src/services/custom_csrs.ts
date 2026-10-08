@@ -82,9 +82,8 @@ export type CreateResponseKeyType = "rsa2048" | "p256v1";
 export const CreateResponseKeyType = S.String;
 
 export type CreateResponseSansList = Array<string>;
-export const CreateResponseSansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseSansList>;
+export const CreateResponseSansList =
+  CreateRequestSansList as any as S.Schema<CreateResponseSansList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomCsrResponse {
@@ -260,9 +259,7 @@ export type GetResponseKeyType = "rsa2048" | "p256v1";
 export const GetResponseKeyType = S.String;
 
 export type GetResponseSansList = Array<string>;
-export const GetResponseSansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseSansList>;
+export const GetResponseSansList = CreateRequestSansList as any as S.Schema<GetResponseSansList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomCsrResponse {
@@ -367,9 +364,8 @@ export type ListResultItemKeyType = "rsa2048" | "p256v1";
 export const ListResultItemKeyType = S.String;
 
 export type ListResultItemSansList = Array<string>;
-export const ListResultItemSansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemSansList>;
+export const ListResultItemSansList =
+  CreateRequestSansList as any as S.Schema<ListResultItemSansList>;
 
 export interface ListResultItem {
   /** Custom CSR identifier tag. */

@@ -1119,9 +1119,8 @@ export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigurationRequest>;
 
 export interface DeleteConfigurationResponse {}
-export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConfigurationResponse",
-}) as any as S.Schema<DeleteConfigurationResponse>;
+export const DeleteConfigurationResponse =
+  AttachConfigurationResponse as any as S.Schema<DeleteConfigurationResponse>;
 
 export interface DeleteConfigurationForEnterpriseRequest {
   /** The slug version of the enterprise name. */
@@ -1145,17 +1144,13 @@ export const DeleteConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteConfigurationForEnterpriseRequest>;
 
 export interface DeleteConfigurationForEnterpriseResponse {}
-export const DeleteConfigurationForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationForEnterpriseResponse",
-}) as any as S.Schema<DeleteConfigurationForEnterpriseResponse>;
+export const DeleteConfigurationForEnterpriseResponse =
+  AttachEnterpriseConfigurationResponse as any as S.Schema<DeleteConfigurationForEnterpriseResponse>;
 
 /** An array of repository IDs to detach from configurations. Up to 250 IDs can be provided. */
 export type DetachConfigurationRequestSelectedRepositoryIdsList = Array<number>;
-export const DetachConfigurationRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DetachConfigurationRequestSelectedRepositoryIdsList>;
+export const DetachConfigurationRequestSelectedRepositoryIdsList =
+  AttachConfigurationRequestSelectedRepositoryIdsList as any as S.Schema<DetachConfigurationRequestSelectedRepositoryIdsList>;
 
 export interface DetachConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1175,9 +1170,8 @@ export const DetachConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetachConfigurationRequest>;
 
 export interface DetachConfigurationResponse {}
-export const DetachConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachConfigurationResponse",
-}) as any as S.Schema<DetachConfigurationResponse>;
+export const DetachConfigurationResponse =
+  AttachConfigurationResponse as any as S.Schema<DetachConfigurationResponse>;
 
 export interface GetConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1310,16 +1304,12 @@ export const GetConfigurationsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationsForOrgRequest>;
 
 export type GetConfigurationsForOrgResponseBodyList = Array<CodeSecurityConfiguration>;
-export const GetConfigurationsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  CodeSecurityConfiguration,
-) as any as S.Schema<GetConfigurationsForOrgResponseBodyList>;
+export const GetConfigurationsForOrgResponseBodyList =
+  GetConfigurationsForEnterpriseResponseBodyList as any as S.Schema<GetConfigurationsForOrgResponseBodyList>;
 
 export type GetConfigurationsForOrgResponse = GetConfigurationsForOrgResponseBodyList;
-export const GetConfigurationsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  GetConfigurationsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetConfigurationsForOrgResponse",
-}) as any as S.Schema<GetConfigurationsForOrgResponse>;
+export const GetConfigurationsForOrgResponse =
+  GetConfigurationsForEnterpriseResponse as any as S.Schema<GetConfigurationsForOrgResponse>;
 
 export interface GetDefaultConfigurationsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1388,11 +1378,8 @@ export const GetDefaultConfigurationsForEnterpriseRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetDefaultConfigurationsForEnterpriseRequest>;
 
 export type GetDefaultConfigurationsForEnterpriseResponse = CodeSecurityDefaultConfigurations;
-export const GetDefaultConfigurationsForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
-  CodeSecurityDefaultConfigurations.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetDefaultConfigurationsForEnterpriseResponse",
-}) as any as S.Schema<GetDefaultConfigurationsForEnterpriseResponse>;
+export const GetDefaultConfigurationsForEnterpriseResponse =
+  GetDefaultConfigurationsResponse as any as S.Schema<GetDefaultConfigurationsForEnterpriseResponse>;
 
 export interface GetRepositoriesForConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1701,17 +1688,13 @@ export const GetRepositoriesForEnterpriseConfigurationRequest = /*@__PURE__*/ S.
 
 export type GetRepositoriesForEnterpriseConfigurationResponseBodyList =
   Array<CodeSecurityConfigurationRepositories>;
-export const GetRepositoriesForEnterpriseConfigurationResponseBodyList = /*@__PURE__*/ S.Array(
-  CodeSecurityConfigurationRepositories,
-) as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponseBodyList>;
+export const GetRepositoriesForEnterpriseConfigurationResponseBodyList =
+  GetRepositoriesForConfigurationResponseBodyList as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponseBodyList>;
 
 export type GetRepositoriesForEnterpriseConfigurationResponse =
   GetRepositoriesForEnterpriseConfigurationResponseBodyList;
-export const GetRepositoriesForEnterpriseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  GetRepositoriesForEnterpriseConfigurationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetRepositoriesForEnterpriseConfigurationResponse",
-}) as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponse>;
+export const GetRepositoriesForEnterpriseConfigurationResponse =
+  GetRepositoriesForConfigurationResponse as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponse>;
 
 export interface GetSingleConfigurationForEnterpriseRequest {
   /** The slug version of the enterprise name. */

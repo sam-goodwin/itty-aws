@@ -247,10 +247,7 @@ export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
-export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspaceTagsMap>;
+export const WorkspaceTagsMap = GetWorkspaceResponseTagsMap as any as S.Schema<WorkspaceTagsMap>;
 
 /** An object that represents a machine learning workspace. */
 export interface Workspace {
@@ -269,17 +266,7 @@ export interface Workspace {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-export const Workspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(WorkspaceTagsMap),
-    sku: S.optional(Sku),
-    properties: S.optional(WorkspaceProperties),
-  }),
-).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
+export const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
 
 /** The list of machine learning workspaces. Since this list may be incomplete, the nextLink field should be used to request the next list of machine learning workspaces. */
 export type WorkspaceListResultValueList = Array<Workspace>;
@@ -359,10 +346,8 @@ export const WorkspaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags for the machine learning workspace. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+export const UpdateWorkspaceRequestTagsMap =
+  GetWorkspaceResponseTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
 
 /** The current state of workspace resource. */
 export type WorkspacePropertiesUpdateParametersWorkspaceState =
@@ -425,10 +410,8 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
+export const UpdateWorkspaceResponseTagsMap =
+  GetWorkspaceResponseTagsMap as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
 
 export interface UpdateWorkspaceResponse {
   /** The resource ID. */
@@ -446,24 +429,13 @@ export interface UpdateWorkspaceResponse {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(UpdateWorkspaceResponseTagsMap),
-    sku: S.optional(Sku),
-    properties: S.optional(WorkspaceProperties),
-  }),
-).annotate({ identifier: "UpdateWorkspaceResponse" }) as any as S.Schema<UpdateWorkspaceResponse>;
+export const UpdateWorkspaceResponse =
+  GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
 
 /** The tags of the resource. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+export const WorkspacesCreateOrUpdateRequestTagsMap =
+  GetWorkspaceResponseTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** The properties of a machine learning workspace. */
 export interface WorkspacePropertiesInput {
@@ -521,10 +493,8 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+export const WorkspacesCreateOrUpdateResponseTagsMap =
+  GetWorkspaceResponseTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 export interface WorkspacesCreateOrUpdateResponse {
   /** The resource ID. */

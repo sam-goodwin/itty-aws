@@ -378,11 +378,8 @@ export const CreateClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-export const CreateClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ snapshot: ClusterSnapshot }),
-).annotate({
-  identifier: "CreateClusterSnapshotOutput",
-}) as any as S.Schema<CreateClusterSnapshotOutput>;
+export const CreateClusterSnapshotOutput =
+  CopyClusterSnapshotOutput as any as S.Schema<CreateClusterSnapshotOutput>;
 export interface DeleteClusterInput {
   clusterArn: string;
 }
@@ -394,9 +391,7 @@ export const DeleteClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterOutput {
   cluster: Cluster;
 }
-export const DeleteClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: Cluster }),
-).annotate({ identifier: "DeleteClusterOutput" }) as any as S.Schema<DeleteClusterOutput>;
+export const DeleteClusterOutput = CreateClusterOutput as any as S.Schema<DeleteClusterOutput>;
 export interface DeleteClusterSnapshotInput {
   snapshotArn: string;
 }
@@ -417,11 +412,8 @@ export const DeleteClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-export const DeleteClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ snapshot: ClusterSnapshot }),
-).annotate({
-  identifier: "DeleteClusterSnapshotOutput",
-}) as any as S.Schema<DeleteClusterSnapshotOutput>;
+export const DeleteClusterSnapshotOutput =
+  CopyClusterSnapshotOutput as any as S.Schema<DeleteClusterSnapshotOutput>;
 export interface GetClusterInput {
   clusterArn: string;
 }
@@ -433,9 +425,7 @@ export const GetClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetClusterOutput {
   cluster: Cluster;
 }
-export const GetClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: Cluster }),
-).annotate({ identifier: "GetClusterOutput" }) as any as S.Schema<GetClusterOutput>;
+export const GetClusterOutput = CreateClusterOutput as any as S.Schema<GetClusterOutput>;
 export interface GetClusterSnapshotInput {
   snapshotArn: string;
 }
@@ -477,11 +467,8 @@ export const GetPendingMaintenanceActionInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetPendingMaintenanceActionOutput {
   resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction;
 }
-export const GetPendingMaintenanceActionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction }),
-).annotate({
-  identifier: "GetPendingMaintenanceActionOutput",
-}) as any as S.Schema<GetPendingMaintenanceActionOutput>;
+export const GetPendingMaintenanceActionOutput =
+  ApplyPendingMaintenanceActionOutput as any as S.Schema<GetPendingMaintenanceActionOutput>;
 export type PaginationToken = string;
 export interface ListClustersInput {
   nextToken?: string;
@@ -661,9 +648,7 @@ export const StartClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartClusterOutput {
   cluster: Cluster;
 }
-export const StartClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: Cluster }),
-).annotate({ identifier: "StartClusterOutput" }) as any as S.Schema<StartClusterOutput>;
+export const StartClusterOutput = CreateClusterOutput as any as S.Schema<StartClusterOutput>;
 export interface StopClusterInput {
   clusterArn: string;
 }
@@ -682,9 +667,7 @@ export const StopClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface StopClusterOutput {
   cluster: Cluster;
 }
-export const StopClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: Cluster }),
-).annotate({ identifier: "StopClusterOutput" }) as any as S.Schema<StopClusterOutput>;
+export const StopClusterOutput = CreateClusterOutput as any as S.Schema<StopClusterOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -699,7 +682,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -713,9 +696,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateClusterInput {
   clusterArn: string;
   authType?: string;
@@ -751,9 +732,7 @@ export const UpdateClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateClusterOutput {
   cluster: Cluster;
 }
-export const UpdateClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cluster: Cluster }),
-).annotate({ identifier: "UpdateClusterOutput" }) as any as S.Schema<UpdateClusterOutput>;
+export const UpdateClusterOutput = CreateClusterOutput as any as S.Schema<UpdateClusterOutput>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;

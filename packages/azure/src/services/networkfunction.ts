@@ -147,10 +147,8 @@ export const AzureTrafficCollectorPropertiesFormat = /*@__PURE__*/ S.suspend(() 
 export type AzureTrafficCollectorsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AzureTrafficCollectorsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AzureTrafficCollectorsCreateOrUpdateResponseTagsMap>;
+export const AzureTrafficCollectorsCreateOrUpdateResponseTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<AzureTrafficCollectorsCreateOrUpdateResponseTagsMap>;
 
 export interface AzureTrafficCollectorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -304,10 +302,8 @@ export const CollectorPolicyPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CollectorPoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CollectorPoliciesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CollectorPoliciesCreateOrUpdateRequestTagsMap>;
+export const CollectorPoliciesCreateOrUpdateRequestTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<CollectorPoliciesCreateOrUpdateRequestTagsMap>;
 
 export interface CollectorPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -348,10 +344,8 @@ export const CollectorPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type CollectorPoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CollectorPoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CollectorPoliciesCreateOrUpdateResponseTagsMap>;
+export const CollectorPoliciesCreateOrUpdateResponseTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<CollectorPoliciesCreateOrUpdateResponseTagsMap>;
 
 export interface CollectorPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -478,10 +472,8 @@ export const GetAzureTrafficCollectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAzureTrafficCollectorResponseTagsMap = { [key: string]: string | undefined };
-export const GetAzureTrafficCollectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAzureTrafficCollectorResponseTagsMap>;
+export const GetAzureTrafficCollectorResponseTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAzureTrafficCollectorResponseTagsMap>;
 
 export interface GetAzureTrafficCollectorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -501,20 +493,8 @@ export interface GetAzureTrafficCollectorResponse {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const GetAzureTrafficCollectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AzureTrafficCollectorPropertiesFormat),
-    location: S.String,
-    tags: S.optional(GetAzureTrafficCollectorResponseTagsMap),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAzureTrafficCollectorResponse",
-}) as any as S.Schema<GetAzureTrafficCollectorResponse>;
+export const GetAzureTrafficCollectorResponse =
+  AzureTrafficCollectorsCreateOrUpdateResponse as any as S.Schema<GetAzureTrafficCollectorResponse>;
 
 export interface GetCollectorPolicyRequest {
   /** The ID of the target subscription. */
@@ -546,10 +526,8 @@ export const GetCollectorPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCollectorPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetCollectorPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCollectorPolicyResponseTagsMap>;
+export const GetCollectorPolicyResponseTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCollectorPolicyResponseTagsMap>;
 
 export interface GetCollectorPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -569,20 +547,8 @@ export interface GetCollectorPolicyResponse {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const GetCollectorPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CollectorPolicyPropertiesFormat),
-    location: S.String,
-    tags: S.optional(GetCollectorPolicyResponseTagsMap),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCollectorPolicyResponse",
-}) as any as S.Schema<GetCollectorPolicyResponse>;
+export const GetCollectorPolicyResponse =
+  CollectorPoliciesCreateOrUpdateResponse as any as S.Schema<GetCollectorPolicyResponse>;
 
 export interface ListAzureTrafficCollectorsByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -608,10 +574,8 @@ export const ListAzureTrafficCollectorsByResourceGroupRequest = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type AzureTrafficCollectorTagsMap = { [key: string]: string | undefined };
-export const AzureTrafficCollectorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AzureTrafficCollectorTagsMap>;
+export const AzureTrafficCollectorTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<AzureTrafficCollectorTagsMap>;
 
 /** Azure Traffic Collector resource. */
 export interface AzureTrafficCollector {
@@ -713,10 +677,8 @@ export const ListCollectorPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CollectorPolicyTagsMap = { [key: string]: string | undefined };
-export const CollectorPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CollectorPolicyTagsMap>;
+export const CollectorPolicyTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<CollectorPolicyTagsMap>;
 
 /** Collector policy resource. */
 export interface CollectorPolicy {
@@ -848,10 +810,8 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAzureTrafficCollectorTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureTrafficCollectorTagsRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAzureTrafficCollectorTagsRequestTagsMap>;
+export const UpdateAzureTrafficCollectorTagsRequestTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAzureTrafficCollectorTagsRequestTagsMap>;
 
 export interface UpdateAzureTrafficCollectorTagsRequest {
   /** The ID of the target subscription. */
@@ -883,10 +843,8 @@ export const UpdateAzureTrafficCollectorTagsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateAzureTrafficCollectorTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAzureTrafficCollectorTagsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAzureTrafficCollectorTagsResponseTagsMap>;
+export const UpdateAzureTrafficCollectorTagsResponseTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAzureTrafficCollectorTagsResponseTagsMap>;
 
 export interface UpdateAzureTrafficCollectorTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -906,27 +864,13 @@ export interface UpdateAzureTrafficCollectorTagsResponse {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const UpdateAzureTrafficCollectorTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AzureTrafficCollectorPropertiesFormat),
-    location: S.String,
-    tags: S.optional(UpdateAzureTrafficCollectorTagsResponseTagsMap),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAzureTrafficCollectorTagsResponse",
-}) as any as S.Schema<UpdateAzureTrafficCollectorTagsResponse>;
+export const UpdateAzureTrafficCollectorTagsResponse =
+  AzureTrafficCollectorsCreateOrUpdateResponse as any as S.Schema<UpdateAzureTrafficCollectorTagsResponse>;
 
 /** Resource tags. */
 export type UpdateCollectorPolicyTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCollectorPolicyTagsRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCollectorPolicyTagsRequestTagsMap>;
+export const UpdateCollectorPolicyTagsRequestTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCollectorPolicyTagsRequestTagsMap>;
 
 export interface UpdateCollectorPolicyTagsRequest {
   /** The ID of the target subscription. */
@@ -961,10 +905,8 @@ export const UpdateCollectorPolicyTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCollectorPolicyTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCollectorPolicyTagsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCollectorPolicyTagsResponseTagsMap>;
+export const UpdateCollectorPolicyTagsResponseTagsMap =
+  AzureTrafficCollectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCollectorPolicyTagsResponseTagsMap>;
 
 export interface UpdateCollectorPolicyTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -984,20 +926,8 @@ export interface UpdateCollectorPolicyTagsResponse {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const UpdateCollectorPolicyTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CollectorPolicyPropertiesFormat),
-    location: S.String,
-    tags: S.optional(UpdateCollectorPolicyTagsResponseTagsMap),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCollectorPolicyTagsResponse",
-}) as any as S.Schema<UpdateCollectorPolicyTagsResponse>;
+export const UpdateCollectorPolicyTagsResponse =
+  CollectorPoliciesCreateOrUpdateResponse as any as S.Schema<UpdateCollectorPolicyTagsResponse>;
 
 export type AzureTrafficCollectorsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a Azure Traffic Collector resource */

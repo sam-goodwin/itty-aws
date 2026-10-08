@@ -454,10 +454,10 @@ export const AgentStatus = S.String;
 
 export type FailureReason = string;
 export type FailureReasons = string[];
-export const FailureReasons = /*@__PURE__*/ S.Array(S.String);
+export const FailureReasons = StopSequences as any as S.Schema<FailureReasons>;
 export type RecommendedAction = string;
 export type RecommendedActions = string[];
-export const RecommendedActions = /*@__PURE__*/ S.Array(S.String);
+export const RecommendedActions = StopSequences as any as S.Schema<RecommendedActions>;
 export interface Agent {
   agentId: string;
   agentName: string;
@@ -880,9 +880,7 @@ export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeeklySchedule" }) as any as S.Schema<WeeklySchedule>;
 export type DayOfMonthNumber = number;
 export interface LastDayOfMonth {}
-export const LastDayOfMonth = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LastDayOfMonth",
-}) as any as S.Schema<LastDayOfMonth>;
+export const LastDayOfMonth = DailySchedule as any as S.Schema<LastDayOfMonth>;
 export type DayOfMonth =
   | { dayNumber: number; lastDayOfMonth?: never }
   | { dayNumber?: never; lastDayOfMonth: LastDayOfMonth };
@@ -970,7 +968,7 @@ export const WebCrawlerLimits = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebCrawlerLimits" }) as any as S.Schema<WebCrawlerLimits>;
 export type FilterPattern = string | redacted.Redacted<string>;
 export type FilterList = (string | redacted.Redacted<string>)[];
-export const FilterList = /*@__PURE__*/ S.Array(SensitiveString);
+export const FilterList = S3Prefixes as any as S.Schema<FilterList>;
 export type WebScopeType = "HOST_ONLY" | "SUBDOMAINS" | (string & {});
 export const WebScopeType = S.String;
 
@@ -1102,11 +1100,8 @@ export const SalesforceSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface SalesforceCrawlerConfiguration {
   filterConfiguration?: CrawlFilterConfiguration;
 }
-export const SalesforceCrawlerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filterConfiguration: S.optional(CrawlFilterConfiguration) }),
-).annotate({
-  identifier: "SalesforceCrawlerConfiguration",
-}) as any as S.Schema<SalesforceCrawlerConfiguration>;
+export const SalesforceCrawlerConfiguration =
+  ConfluenceCrawlerConfiguration as any as S.Schema<SalesforceCrawlerConfiguration>;
 export interface SalesforceDataSourceConfiguration {
   sourceConfiguration: SalesforceSourceConfiguration;
   crawlerConfiguration?: SalesforceCrawlerConfiguration;
@@ -1122,7 +1117,7 @@ export const SalesforceDataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type Microsoft365TenantId = string;
 export type SharePointDomain = string;
 export type SharePointSiteUrls = string[];
-export const SharePointSiteUrls = /*@__PURE__*/ S.Array(S.String);
+export const SharePointSiteUrls = StopSequences as any as S.Schema<SharePointSiteUrls>;
 export type SharePointHostType = "ONLINE" | (string & {});
 export const SharePointHostType = S.String;
 
@@ -1155,11 +1150,8 @@ export const SharePointSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface SharePointCrawlerConfiguration {
   filterConfiguration?: CrawlFilterConfiguration;
 }
-export const SharePointCrawlerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ filterConfiguration: S.optional(CrawlFilterConfiguration) }),
-).annotate({
-  identifier: "SharePointCrawlerConfiguration",
-}) as any as S.Schema<SharePointCrawlerConfiguration>;
+export const SharePointCrawlerConfiguration =
+  ConfluenceCrawlerConfiguration as any as S.Schema<SharePointCrawlerConfiguration>;
 export interface SharePointDataSourceConfiguration {
   sourceConfiguration: SharePointSourceConfiguration;
   crawlerConfiguration?: SharePointCrawlerConfiguration;
@@ -1524,13 +1516,11 @@ export type FlowNodeType =
 export const FlowNodeType = S.String;
 
 export interface InputFlowNodeConfiguration {}
-export const InputFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InputFlowNodeConfiguration",
-}) as any as S.Schema<InputFlowNodeConfiguration>;
+export const InputFlowNodeConfiguration =
+  DailySchedule as any as S.Schema<InputFlowNodeConfiguration>;
 export interface OutputFlowNodeConfiguration {}
-export const OutputFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OutputFlowNodeConfiguration",
-}) as any as S.Schema<OutputFlowNodeConfiguration>;
+export const OutputFlowNodeConfiguration =
+  DailySchedule as any as S.Schema<OutputFlowNodeConfiguration>;
 export type FlowKnowledgeBaseId = string;
 export type KnowledgeBaseModelIdentifier = string;
 export type KnowledgeBaseTextPrompt = string | redacted.Redacted<string>;
@@ -1788,12 +1778,9 @@ export type NonEmptyString = string;
 export type SystemContentBlock =
   | { text: string; cachePoint?: never }
   | { text?: never; cachePoint: CachePointBlock };
-export const SystemContentBlock = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ text: S.String }),
-  /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
-]);
+export const SystemContentBlock = ContentBlock as any as S.Schema<SystemContentBlock>;
 export type SystemContentBlocks = SystemContentBlock[];
-export const SystemContentBlocks = /*@__PURE__*/ S.Array(SystemContentBlock);
+export const SystemContentBlocks = ContentBlocks as any as S.Schema<SystemContentBlocks>;
 export type ToolName = string;
 export type ToolInputSchema = { json: any };
 export const ToolInputSchema = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ json: S.Any })]);
@@ -1821,13 +1808,9 @@ export const Tool = /*@__PURE__*/ S.Union([
 export type Tools = Tool[];
 export const Tools = /*@__PURE__*/ S.Array(Tool);
 export interface AutoToolChoice {}
-export const AutoToolChoice = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AutoToolChoice",
-}) as any as S.Schema<AutoToolChoice>;
+export const AutoToolChoice = DailySchedule as any as S.Schema<AutoToolChoice>;
 export interface AnyToolChoice {}
-export const AnyToolChoice = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AnyToolChoice",
-}) as any as S.Schema<AnyToolChoice>;
+export const AnyToolChoice = DailySchedule as any as S.Schema<AnyToolChoice>;
 export interface SpecificToolChoice {
   name: string;
 }
@@ -1915,11 +1898,8 @@ export type FlowLambdaArn = string;
 export interface LambdaFunctionFlowNodeConfiguration {
   lambdaArn: string;
 }
-export const LambdaFunctionFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lambdaArn: S.String }),
-).annotate({
-  identifier: "LambdaFunctionFlowNodeConfiguration",
-}) as any as S.Schema<LambdaFunctionFlowNodeConfiguration>;
+export const LambdaFunctionFlowNodeConfiguration =
+  TransformationLambdaConfiguration as any as S.Schema<LambdaFunctionFlowNodeConfiguration>;
 export type FlowS3BucketName = string;
 export interface StorageFlowNodeS3Configuration {
   bucketName: string;
@@ -1953,31 +1933,22 @@ export const AgentFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface RetrievalFlowNodeS3Configuration {
   bucketName: string;
 }
-export const RetrievalFlowNodeS3Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bucketName: S.String }),
-).annotate({
-  identifier: "RetrievalFlowNodeS3Configuration",
-}) as any as S.Schema<RetrievalFlowNodeS3Configuration>;
+export const RetrievalFlowNodeS3Configuration =
+  StorageFlowNodeS3Configuration as any as S.Schema<RetrievalFlowNodeS3Configuration>;
 export type RetrievalFlowNodeServiceConfiguration = { s3: RetrievalFlowNodeS3Configuration };
-export const RetrievalFlowNodeServiceConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ s3: RetrievalFlowNodeS3Configuration }),
-]);
+export const RetrievalFlowNodeServiceConfiguration =
+  StorageFlowNodeServiceConfiguration as any as S.Schema<RetrievalFlowNodeServiceConfiguration>;
 export interface RetrievalFlowNodeConfiguration {
   serviceConfiguration: RetrievalFlowNodeServiceConfiguration;
 }
-export const RetrievalFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ serviceConfiguration: RetrievalFlowNodeServiceConfiguration }),
-).annotate({
-  identifier: "RetrievalFlowNodeConfiguration",
-}) as any as S.Schema<RetrievalFlowNodeConfiguration>;
+export const RetrievalFlowNodeConfiguration =
+  StorageFlowNodeConfiguration as any as S.Schema<RetrievalFlowNodeConfiguration>;
 export interface IteratorFlowNodeConfiguration {}
-export const IteratorFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IteratorFlowNodeConfiguration",
-}) as any as S.Schema<IteratorFlowNodeConfiguration>;
+export const IteratorFlowNodeConfiguration =
+  DailySchedule as any as S.Schema<IteratorFlowNodeConfiguration>;
 export interface CollectorFlowNodeConfiguration {}
-export const CollectorFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CollectorFlowNodeConfiguration",
-}) as any as S.Schema<CollectorFlowNodeConfiguration>;
+export const CollectorFlowNodeConfiguration =
+  DailySchedule as any as S.Schema<CollectorFlowNodeConfiguration>;
 export type InlineCode = string | redacted.Redacted<string>;
 export type SupportedLanguages = "Python_3" | (string & {});
 export const SupportedLanguages = S.String;
@@ -2004,9 +1975,8 @@ export const LoopFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoopFlowNodeConfiguration",
 }) as any as S.Schema<LoopFlowNodeConfiguration>;
 export interface LoopInputFlowNodeConfiguration {}
-export const LoopInputFlowNodeConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LoopInputFlowNodeConfiguration",
-}) as any as S.Schema<LoopInputFlowNodeConfiguration>;
+export const LoopInputFlowNodeConfiguration =
+  DailySchedule as any as S.Schema<LoopInputFlowNodeConfiguration>;
 export interface LoopControllerFlowNodeConfiguration {
   continueCondition: FlowCondition;
   maxIterations?: number;
@@ -2662,19 +2632,14 @@ export const AudioConfigurations = /*@__PURE__*/ S.Array(AudioConfiguration);
 export interface VideoSegmentationConfiguration {
   fixedLengthDuration: number;
 }
-export const VideoSegmentationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fixedLengthDuration: S.Number }),
-).annotate({
-  identifier: "VideoSegmentationConfiguration",
-}) as any as S.Schema<VideoSegmentationConfiguration>;
+export const VideoSegmentationConfiguration =
+  AudioSegmentationConfiguration as any as S.Schema<VideoSegmentationConfiguration>;
 export interface VideoConfiguration {
   segmentationConfiguration: VideoSegmentationConfiguration;
 }
-export const VideoConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ segmentationConfiguration: VideoSegmentationConfiguration }),
-).annotate({ identifier: "VideoConfiguration" }) as any as S.Schema<VideoConfiguration>;
+export const VideoConfiguration = AudioConfiguration as any as S.Schema<VideoConfiguration>;
 export type VideoConfigurations = VideoConfiguration[];
-export const VideoConfigurations = /*@__PURE__*/ S.Array(VideoConfiguration);
+export const VideoConfigurations = AudioConfigurations as any as S.Schema<VideoConfigurations>;
 export interface BedrockEmbeddingModelConfiguration {
   dimensions?: number;
   embeddingDataType?: EmbeddingDataType;
@@ -2777,7 +2742,7 @@ export const RedshiftQueryEngineStorageType = S.String;
 
 export type AwsDataCatalogTableName = string;
 export type AwsDataCatalogTableNames = string[];
-export const AwsDataCatalogTableNames = /*@__PURE__*/ S.Array(S.String);
+export const AwsDataCatalogTableNames = StopSequences as any as S.Schema<AwsDataCatalogTableNames>;
 export interface RedshiftQueryEngineAwsDataCatalogStorageConfiguration {
   tableNames: string[];
 }
@@ -3038,11 +3003,8 @@ export interface OpenSearchManagedClusterFieldMapping {
   textField: string;
   metadataField: string;
 }
-export const OpenSearchManagedClusterFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vectorField: S.String, textField: S.String, metadataField: S.String }),
-).annotate({
-  identifier: "OpenSearchManagedClusterFieldMapping",
-}) as any as S.Schema<OpenSearchManagedClusterFieldMapping>;
+export const OpenSearchManagedClusterFieldMapping =
+  OpenSearchServerlessFieldMapping as any as S.Schema<OpenSearchManagedClusterFieldMapping>;
 export interface OpenSearchManagedClusterConfiguration {
   domainEndpoint: string;
   domainArn: string;
@@ -3089,11 +3051,8 @@ export interface RedisEnterpriseCloudFieldMapping {
   textField: string;
   metadataField: string;
 }
-export const RedisEnterpriseCloudFieldMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vectorField: S.String, textField: S.String, metadataField: S.String }),
-).annotate({
-  identifier: "RedisEnterpriseCloudFieldMapping",
-}) as any as S.Schema<RedisEnterpriseCloudFieldMapping>;
+export const RedisEnterpriseCloudFieldMapping =
+  OpenSearchServerlessFieldMapping as any as S.Schema<RedisEnterpriseCloudFieldMapping>;
 export interface RedisEnterpriseCloudConfiguration {
   endpoint: string;
   vectorIndexName: string;
@@ -3465,7 +3424,7 @@ export const CreatePromptVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIdList = StopSequences as any as S.Schema<SubnetIdList>;
 export type ResourceTarget = string;
 export type Port = number;
 export type VpcProtocol = "HTTP" | "HTTPS" | (string & {});
@@ -3586,9 +3545,8 @@ export const DeleteAgentActionGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAgentActionGroupRequest",
 }) as any as S.Schema<DeleteAgentActionGroupRequest>;
 export interface DeleteAgentActionGroupResponse {}
-export const DeleteAgentActionGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentActionGroupResponse",
-}) as any as S.Schema<DeleteAgentActionGroupResponse>;
+export const DeleteAgentActionGroupResponse =
+  DailySchedule as any as S.Schema<DeleteAgentActionGroupResponse>;
 export interface DeleteAgentAliasRequest {
   agentId: string;
   agentAliasId: string;
@@ -3793,9 +3751,8 @@ export const ContentDataSourceType = S.String;
 export interface CustomDocumentIdentifier {
   id: string;
 }
-export const CustomDocumentIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }),
-).annotate({ identifier: "CustomDocumentIdentifier" }) as any as S.Schema<CustomDocumentIdentifier>;
+export const CustomDocumentIdentifier =
+  DeleteFlowResponse as any as S.Schema<CustomDocumentIdentifier>;
 export interface DocumentIdentifier {
   dataSourceType: ContentDataSourceType;
   s3?: S3Location;
@@ -3970,11 +3927,8 @@ export interface DeleteVpcConfigurationResponse {
   vpcConfigurationId: string;
   status: VpcConfigurationStatus;
 }
-export const DeleteVpcConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vpcConfigurationId: S.String, status: VpcConfigurationStatus }),
-).annotate({
-  identifier: "DeleteVpcConfigurationResponse",
-}) as any as S.Schema<DeleteVpcConfigurationResponse>;
+export const DeleteVpcConfigurationResponse =
+  CreateVpcConfigurationResponse as any as S.Schema<DeleteVpcConfigurationResponse>;
 export interface DisassociateAgentCollaboratorRequest {
   agentId: string;
   agentVersion: string;
@@ -4034,11 +3988,8 @@ export const DisassociateAgentKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DisassociateAgentKnowledgeBaseRequest",
 }) as any as S.Schema<DisassociateAgentKnowledgeBaseRequest>;
 export interface DisassociateAgentKnowledgeBaseResponse {}
-export const DisassociateAgentKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateAgentKnowledgeBaseResponse",
-}) as any as S.Schema<DisassociateAgentKnowledgeBaseResponse>;
+export const DisassociateAgentKnowledgeBaseResponse =
+  DisassociateAgentCollaboratorResponse as any as S.Schema<DisassociateAgentKnowledgeBaseResponse>;
 export interface GetAgentRequest {
   agentId: string;
 }
@@ -4082,11 +4033,8 @@ export const GetAgentActionGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAgentActionGroupResponse {
   agentActionGroup: AgentActionGroup;
 }
-export const GetAgentActionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentActionGroup: AgentActionGroup }),
-).annotate({
-  identifier: "GetAgentActionGroupResponse",
-}) as any as S.Schema<GetAgentActionGroupResponse>;
+export const GetAgentActionGroupResponse =
+  CreateAgentActionGroupResponse as any as S.Schema<GetAgentActionGroupResponse>;
 export interface GetAgentAliasRequest {
   agentId: string;
   agentAliasId: string;
@@ -4109,9 +4057,8 @@ export const GetAgentAliasRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAgentAliasResponse {
   agentAlias: AgentAlias;
 }
-export const GetAgentAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentAlias: AgentAlias }),
-).annotate({ identifier: "GetAgentAliasResponse" }) as any as S.Schema<GetAgentAliasResponse>;
+export const GetAgentAliasResponse =
+  CreateAgentAliasResponse as any as S.Schema<GetAgentAliasResponse>;
 export interface GetAgentCollaboratorRequest {
   agentId: string;
   agentVersion: string;
@@ -4141,11 +4088,8 @@ export const GetAgentCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAgentCollaboratorResponse {
   agentCollaborator: AgentCollaborator;
 }
-export const GetAgentCollaboratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentCollaborator: AgentCollaborator }),
-).annotate({
-  identifier: "GetAgentCollaboratorResponse",
-}) as any as S.Schema<GetAgentCollaboratorResponse>;
+export const GetAgentCollaboratorResponse =
+  AssociateAgentCollaboratorResponse as any as S.Schema<GetAgentCollaboratorResponse>;
 export interface GetAgentKnowledgeBaseRequest {
   agentId: string;
   agentVersion: string;
@@ -4175,11 +4119,8 @@ export const GetAgentKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAgentKnowledgeBaseResponse {
   agentKnowledgeBase: AgentKnowledgeBase;
 }
-export const GetAgentKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentKnowledgeBase: AgentKnowledgeBase }),
-).annotate({
-  identifier: "GetAgentKnowledgeBaseResponse",
-}) as any as S.Schema<GetAgentKnowledgeBaseResponse>;
+export const GetAgentKnowledgeBaseResponse =
+  AssociateAgentKnowledgeBaseResponse as any as S.Schema<GetAgentKnowledgeBaseResponse>;
 export interface GetAgentVersionRequest {
   agentId: string;
   agentVersion: string;
@@ -4274,9 +4215,8 @@ export const GetDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataSourceResponse {
   dataSource: DataSource;
 }
-export const GetDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataSource: DataSource }),
-).annotate({ identifier: "GetDataSourceResponse" }) as any as S.Schema<GetDataSourceResponse>;
+export const GetDataSourceResponse =
+  CreateDataSourceResponse as any as S.Schema<GetDataSourceResponse>;
 export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
 export const IncludedData = S.String;
 
@@ -4333,43 +4273,28 @@ export const UnreachableNodeFlowValidationDetails = /*@__PURE__*/ S.suspend(() =
 export interface UnknownConnectionSourceFlowValidationDetails {
   connection: string;
 }
-export const UnknownConnectionSourceFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "UnknownConnectionSourceFlowValidationDetails",
-}) as any as S.Schema<UnknownConnectionSourceFlowValidationDetails>;
+export const UnknownConnectionSourceFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<UnknownConnectionSourceFlowValidationDetails>;
 export interface UnknownConnectionSourceOutputFlowValidationDetails {
   connection: string;
 }
-export const UnknownConnectionSourceOutputFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "UnknownConnectionSourceOutputFlowValidationDetails",
-}) as any as S.Schema<UnknownConnectionSourceOutputFlowValidationDetails>;
+export const UnknownConnectionSourceOutputFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<UnknownConnectionSourceOutputFlowValidationDetails>;
 export interface UnknownConnectionTargetFlowValidationDetails {
   connection: string;
 }
-export const UnknownConnectionTargetFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "UnknownConnectionTargetFlowValidationDetails",
-}) as any as S.Schema<UnknownConnectionTargetFlowValidationDetails>;
+export const UnknownConnectionTargetFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<UnknownConnectionTargetFlowValidationDetails>;
 export interface UnknownConnectionTargetInputFlowValidationDetails {
   connection: string;
 }
-export const UnknownConnectionTargetInputFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "UnknownConnectionTargetInputFlowValidationDetails",
-}) as any as S.Schema<UnknownConnectionTargetInputFlowValidationDetails>;
+export const UnknownConnectionTargetInputFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<UnknownConnectionTargetInputFlowValidationDetails>;
 export interface UnknownConnectionConditionFlowValidationDetails {
   connection: string;
 }
-export const UnknownConnectionConditionFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "UnknownConnectionConditionFlowValidationDetails",
-}) as any as S.Schema<UnknownConnectionConditionFlowValidationDetails>;
+export const UnknownConnectionConditionFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<UnknownConnectionConditionFlowValidationDetails>;
 export type ErrorMessage = string;
 export interface MalformedConditionExpressionFlowValidationDetails {
   node: string;
@@ -4414,41 +4339,26 @@ export const MismatchedNodeOutputTypeFlowValidationDetails = /*@__PURE__*/ S.sus
 export interface IncompatibleConnectionDataTypeFlowValidationDetails {
   connection: string;
 }
-export const IncompatibleConnectionDataTypeFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "IncompatibleConnectionDataTypeFlowValidationDetails",
-}) as any as S.Schema<IncompatibleConnectionDataTypeFlowValidationDetails>;
+export const IncompatibleConnectionDataTypeFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<IncompatibleConnectionDataTypeFlowValidationDetails>;
 export interface MissingConnectionConfigurationFlowValidationDetails {
   connection: string;
 }
-export const MissingConnectionConfigurationFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "MissingConnectionConfigurationFlowValidationDetails",
-}) as any as S.Schema<MissingConnectionConfigurationFlowValidationDetails>;
+export const MissingConnectionConfigurationFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<MissingConnectionConfigurationFlowValidationDetails>;
 export interface MissingDefaultConditionFlowValidationDetails {
   node: string;
 }
-export const MissingDefaultConditionFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ node: S.String }),
-).annotate({
-  identifier: "MissingDefaultConditionFlowValidationDetails",
-}) as any as S.Schema<MissingDefaultConditionFlowValidationDetails>;
+export const MissingDefaultConditionFlowValidationDetails =
+  UnreachableNodeFlowValidationDetails as any as S.Schema<MissingDefaultConditionFlowValidationDetails>;
 export interface MissingEndingNodesFlowValidationDetails {}
-export const MissingEndingNodesFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MissingEndingNodesFlowValidationDetails",
-}) as any as S.Schema<MissingEndingNodesFlowValidationDetails>;
+export const MissingEndingNodesFlowValidationDetails =
+  DisassociateAgentCollaboratorResponse as any as S.Schema<MissingEndingNodesFlowValidationDetails>;
 export interface MissingNodeConfigurationFlowValidationDetails {
   node: string;
 }
-export const MissingNodeConfigurationFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ node: S.String }),
-).annotate({
-  identifier: "MissingNodeConfigurationFlowValidationDetails",
-}) as any as S.Schema<MissingNodeConfigurationFlowValidationDetails>;
+export const MissingNodeConfigurationFlowValidationDetails =
+  UnreachableNodeFlowValidationDetails as any as S.Schema<MissingNodeConfigurationFlowValidationDetails>;
 export interface MissingNodeInputFlowValidationDetails {
   node: string;
   input: string;
@@ -4468,61 +4378,40 @@ export const MissingNodeOutputFlowValidationDetails = /*@__PURE__*/ S.suspend(()
   identifier: "MissingNodeOutputFlowValidationDetails",
 }) as any as S.Schema<MissingNodeOutputFlowValidationDetails>;
 export interface MissingStartingNodesFlowValidationDetails {}
-export const MissingStartingNodesFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MissingStartingNodesFlowValidationDetails",
-}) as any as S.Schema<MissingStartingNodesFlowValidationDetails>;
+export const MissingStartingNodesFlowValidationDetails =
+  DisassociateAgentCollaboratorResponse as any as S.Schema<MissingStartingNodesFlowValidationDetails>;
 export interface MultipleNodeInputConnectionsFlowValidationDetails {
   node: string;
   input: string;
 }
-export const MultipleNodeInputConnectionsFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ node: S.String, input: S.String }),
-).annotate({
-  identifier: "MultipleNodeInputConnectionsFlowValidationDetails",
-}) as any as S.Schema<MultipleNodeInputConnectionsFlowValidationDetails>;
+export const MultipleNodeInputConnectionsFlowValidationDetails =
+  MissingNodeInputFlowValidationDetails as any as S.Schema<MultipleNodeInputConnectionsFlowValidationDetails>;
 export interface UnfulfilledNodeInputFlowValidationDetails {
   node: string;
   input: string;
 }
-export const UnfulfilledNodeInputFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ node: S.String, input: S.String }),
-).annotate({
-  identifier: "UnfulfilledNodeInputFlowValidationDetails",
-}) as any as S.Schema<UnfulfilledNodeInputFlowValidationDetails>;
+export const UnfulfilledNodeInputFlowValidationDetails =
+  MissingNodeInputFlowValidationDetails as any as S.Schema<UnfulfilledNodeInputFlowValidationDetails>;
 export interface UnsatisfiedConnectionConditionsFlowValidationDetails {
   connection: string;
 }
-export const UnsatisfiedConnectionConditionsFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.String }),
-).annotate({
-  identifier: "UnsatisfiedConnectionConditionsFlowValidationDetails",
-}) as any as S.Schema<UnsatisfiedConnectionConditionsFlowValidationDetails>;
+export const UnsatisfiedConnectionConditionsFlowValidationDetails =
+  CyclicConnectionFlowValidationDetails as any as S.Schema<UnsatisfiedConnectionConditionsFlowValidationDetails>;
 export interface UnspecifiedFlowValidationDetails {}
-export const UnspecifiedFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnspecifiedFlowValidationDetails",
-}) as any as S.Schema<UnspecifiedFlowValidationDetails>;
+export const UnspecifiedFlowValidationDetails =
+  DisassociateAgentCollaboratorResponse as any as S.Schema<UnspecifiedFlowValidationDetails>;
 export interface UnknownNodeInputFlowValidationDetails {
   node: string;
   input: string;
 }
-export const UnknownNodeInputFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ node: S.String, input: S.String }),
-).annotate({
-  identifier: "UnknownNodeInputFlowValidationDetails",
-}) as any as S.Schema<UnknownNodeInputFlowValidationDetails>;
+export const UnknownNodeInputFlowValidationDetails =
+  MissingNodeInputFlowValidationDetails as any as S.Schema<UnknownNodeInputFlowValidationDetails>;
 export interface UnknownNodeOutputFlowValidationDetails {
   node: string;
   output: string;
 }
-export const UnknownNodeOutputFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ node: S.String, output: S.String }),
-).annotate({
-  identifier: "UnknownNodeOutputFlowValidationDetails",
-}) as any as S.Schema<UnknownNodeOutputFlowValidationDetails>;
+export const UnknownNodeOutputFlowValidationDetails =
+  MissingNodeOutputFlowValidationDetails as any as S.Schema<UnknownNodeOutputFlowValidationDetails>;
 export interface MissingLoopInputNodeFlowValidationDetails {
   loopNode: string;
 }
@@ -4534,27 +4423,18 @@ export const MissingLoopInputNodeFlowValidationDetails = /*@__PURE__*/ S.suspend
 export interface MissingLoopControllerNodeFlowValidationDetails {
   loopNode: string;
 }
-export const MissingLoopControllerNodeFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ loopNode: S.String }),
-).annotate({
-  identifier: "MissingLoopControllerNodeFlowValidationDetails",
-}) as any as S.Schema<MissingLoopControllerNodeFlowValidationDetails>;
+export const MissingLoopControllerNodeFlowValidationDetails =
+  MissingLoopInputNodeFlowValidationDetails as any as S.Schema<MissingLoopControllerNodeFlowValidationDetails>;
 export interface MultipleLoopInputNodesFlowValidationDetails {
   loopNode: string;
 }
-export const MultipleLoopInputNodesFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ loopNode: S.String }),
-).annotate({
-  identifier: "MultipleLoopInputNodesFlowValidationDetails",
-}) as any as S.Schema<MultipleLoopInputNodesFlowValidationDetails>;
+export const MultipleLoopInputNodesFlowValidationDetails =
+  MissingLoopInputNodeFlowValidationDetails as any as S.Schema<MultipleLoopInputNodesFlowValidationDetails>;
 export interface MultipleLoopControllerNodesFlowValidationDetails {
   loopNode: string;
 }
-export const MultipleLoopControllerNodesFlowValidationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ loopNode: S.String }),
-).annotate({
-  identifier: "MultipleLoopControllerNodesFlowValidationDetails",
-}) as any as S.Schema<MultipleLoopControllerNodesFlowValidationDetails>;
+export const MultipleLoopControllerNodesFlowValidationDetails =
+  MissingLoopInputNodeFlowValidationDetails as any as S.Schema<MultipleLoopControllerNodesFlowValidationDetails>;
 export type IncompatibleLoopNodeType =
   | "Input"
   | "Condition"
@@ -5921,19 +5801,8 @@ export interface GetFlowAliasResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const GetFlowAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    routingConfiguration: FlowAliasRoutingConfiguration,
-    concurrencyConfiguration: S.optional(FlowAliasConcurrencyConfiguration),
-    flowId: S.String,
-    id: S.String,
-    arn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "GetFlowAliasResponse" }) as any as S.Schema<GetFlowAliasResponse>;
+export const GetFlowAliasResponse =
+  CreateFlowAliasResponse as any as S.Schema<GetFlowAliasResponse>;
 export interface GetFlowVersionRequest {
   flowIdentifier: string;
   flowVersion: string;
@@ -6119,11 +5988,8 @@ export const GetKnowledgeBaseDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetKnowledgeBaseDocumentsResponse {
   documentDetails?: KnowledgeBaseDocumentDetail[];
 }
-export const GetKnowledgeBaseDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ documentDetails: S.optional(KnowledgeBaseDocumentDetails) }),
-).annotate({
-  identifier: "GetKnowledgeBaseDocumentsResponse",
-}) as any as S.Schema<GetKnowledgeBaseDocumentsResponse>;
+export const GetKnowledgeBaseDocumentsResponse =
+  DeleteKnowledgeBaseDocumentsResponse as any as S.Schema<GetKnowledgeBaseDocumentsResponse>;
 export interface GetPromptRequest {
   promptIdentifier: string;
   promptVersion?: string;
@@ -6157,20 +6023,7 @@ export interface GetPromptResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const GetPromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    customerEncryptionKeyArn: S.optional(S.String),
-    defaultVariant: S.optional(S.String),
-    variants: S.optional(PromptVariantList),
-    id: S.String,
-    arn: S.String,
-    version: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "GetPromptResponse" }) as any as S.Schema<GetPromptResponse>;
+export const GetPromptResponse = CreatePromptResponse as any as S.Schema<GetPromptResponse>;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
@@ -6276,7 +6129,7 @@ export const MetadataValueType = S.String;
 export type NumberValue = number;
 export type StringValue = string | redacted.Redacted<string>;
 export type StringListValue = (string | redacted.Redacted<string>)[];
-export const StringListValue = /*@__PURE__*/ S.Array(SensitiveString);
+export const StringListValue = S3Prefixes as any as S.Schema<StringListValue>;
 export interface MetadataAttributeValue {
   type: MetadataValueType;
   numberValue?: number;
@@ -6392,9 +6245,7 @@ export const CustomContent = /*@__PURE__*/ S.suspend(() =>
 export interface S3Content {
   s3Location: S3Location;
 }
-export const S3Content = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Location: S3Location }),
-).annotate({ identifier: "S3Content" }) as any as S.Schema<S3Content>;
+export const S3Content = IntermediateStorage as any as S.Schema<S3Content>;
 export interface DocumentContent {
   dataSourceType: ContentDataSourceType;
   custom?: CustomContent;
@@ -6447,11 +6298,8 @@ export const IngestKnowledgeBaseDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IngestKnowledgeBaseDocumentsResponse {
   documentDetails?: KnowledgeBaseDocumentDetail[];
 }
-export const IngestKnowledgeBaseDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ documentDetails: S.optional(KnowledgeBaseDocumentDetails) }),
-).annotate({
-  identifier: "IngestKnowledgeBaseDocumentsResponse",
-}) as any as S.Schema<IngestKnowledgeBaseDocumentsResponse>;
+export const IngestKnowledgeBaseDocumentsResponse =
+  DeleteKnowledgeBaseDocumentsResponse as any as S.Schema<IngestKnowledgeBaseDocumentsResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListAgentActionGroupsRequest {
@@ -6855,19 +6703,7 @@ export interface FlowAliasSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-export const FlowAliasSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    routingConfiguration: FlowAliasRoutingConfiguration,
-    concurrencyConfiguration: S.optional(FlowAliasConcurrencyConfiguration),
-    flowId: S.String,
-    id: S.String,
-    arn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "FlowAliasSummary" }) as any as S.Schema<FlowAliasSummary>;
+export const FlowAliasSummary = CreateFlowAliasResponse as any as S.Schema<FlowAliasSummary>;
 export type FlowAliasSummaries = FlowAliasSummary[];
 export const FlowAliasSummaries = /*@__PURE__*/ S.Array(FlowAliasSummary);
 export interface ListFlowAliasesResponse {
@@ -6972,7 +6808,7 @@ export const IngestionJobFilterOperator = S.String;
 
 export type IngestionJobFilterValue = string;
 export type IngestionJobFilterValues = string[];
-export const IngestionJobFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const IngestionJobFilterValues = StopSequences as any as S.Schema<IngestionJobFilterValues>;
 export interface IngestionJobFilter {
   attribute: IngestionJobFilterAttribute;
   operator: IngestionJobFilterOperator;
@@ -7403,9 +7239,8 @@ export const StopIngestionJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopIngestionJobResponse {
   ingestionJob: IngestionJob;
 }
-export const StopIngestionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ingestionJob: IngestionJob }),
-).annotate({ identifier: "StopIngestionJobResponse" }) as any as S.Schema<StopIngestionJobResponse>;
+export const StopIngestionJobResponse =
+  GetIngestionJobResponse as any as S.Schema<StopIngestionJobResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -7416,11 +7251,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DailySchedule as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StopSequences as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -7434,9 +7267,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DailySchedule as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAgentRequest {
   agentId: string;
   agentName: string;
@@ -7476,9 +7307,7 @@ export const UpdateAgentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentResponse {
   agent: Agent;
 }
-export const UpdateAgentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agent: Agent }),
-).annotate({ identifier: "UpdateAgentResponse" }) as any as S.Schema<UpdateAgentResponse>;
+export const UpdateAgentResponse = CreateAgentResponse as any as S.Schema<UpdateAgentResponse>;
 export interface UpdateAgentActionGroupRequest {
   agentId: string;
   agentVersion: string;
@@ -7524,11 +7353,8 @@ export const UpdateAgentActionGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentActionGroupResponse {
   agentActionGroup: AgentActionGroup;
 }
-export const UpdateAgentActionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentActionGroup: AgentActionGroup }),
-).annotate({
-  identifier: "UpdateAgentActionGroupResponse",
-}) as any as S.Schema<UpdateAgentActionGroupResponse>;
+export const UpdateAgentActionGroupResponse =
+  CreateAgentActionGroupResponse as any as S.Schema<UpdateAgentActionGroupResponse>;
 export interface UpdateAgentAliasRequest {
   agentId: string;
   agentAliasId: string;
@@ -7559,9 +7385,8 @@ export const UpdateAgentAliasRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentAliasResponse {
   agentAlias: AgentAlias;
 }
-export const UpdateAgentAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentAlias: AgentAlias }),
-).annotate({ identifier: "UpdateAgentAliasResponse" }) as any as S.Schema<UpdateAgentAliasResponse>;
+export const UpdateAgentAliasResponse =
+  CreateAgentAliasResponse as any as S.Schema<UpdateAgentAliasResponse>;
 export interface UpdateAgentCollaboratorRequest {
   agentId: string;
   agentVersion: string;
@@ -7599,11 +7424,8 @@ export const UpdateAgentCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentCollaboratorResponse {
   agentCollaborator: AgentCollaborator;
 }
-export const UpdateAgentCollaboratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentCollaborator: AgentCollaborator }),
-).annotate({
-  identifier: "UpdateAgentCollaboratorResponse",
-}) as any as S.Schema<UpdateAgentCollaboratorResponse>;
+export const UpdateAgentCollaboratorResponse =
+  AssociateAgentCollaboratorResponse as any as S.Schema<UpdateAgentCollaboratorResponse>;
 export interface UpdateAgentKnowledgeBaseRequest {
   agentId: string;
   agentVersion: string;
@@ -7637,11 +7459,8 @@ export const UpdateAgentKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentKnowledgeBaseResponse {
   agentKnowledgeBase: AgentKnowledgeBase;
 }
-export const UpdateAgentKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentKnowledgeBase: AgentKnowledgeBase }),
-).annotate({
-  identifier: "UpdateAgentKnowledgeBaseResponse",
-}) as any as S.Schema<UpdateAgentKnowledgeBaseResponse>;
+export const UpdateAgentKnowledgeBaseResponse =
+  AssociateAgentKnowledgeBaseResponse as any as S.Schema<UpdateAgentKnowledgeBaseResponse>;
 export interface UpdateDataSourceRequest {
   knowledgeBaseId: string;
   dataSourceId: string;
@@ -7679,9 +7498,8 @@ export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataSourceResponse {
   dataSource: DataSource;
 }
-export const UpdateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataSource: DataSource }),
-).annotate({ identifier: "UpdateDataSourceResponse" }) as any as S.Schema<UpdateDataSourceResponse>;
+export const UpdateDataSourceResponse =
+  CreateDataSourceResponse as any as S.Schema<UpdateDataSourceResponse>;
 export interface UpdateFlowRequest {
   name: string;
   description?: string;
@@ -7715,21 +7533,7 @@ export interface UpdateFlowResponse {
   version: string;
   definition?: FlowDefinition;
 }
-export const UpdateFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    executionRoleArn: S.String,
-    customerEncryptionKeyArn: S.optional(S.String),
-    id: S.String,
-    arn: S.String,
-    status: FlowStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    version: S.String,
-    definition: S.optional(FlowDefinition),
-  }),
-).annotate({ identifier: "UpdateFlowResponse" }) as any as S.Schema<UpdateFlowResponse>;
+export const UpdateFlowResponse = CreateFlowResponse as any as S.Schema<UpdateFlowResponse>;
 export interface UpdateFlowAliasRequest {
   name: string;
   description?: string;
@@ -7768,19 +7572,8 @@ export interface UpdateFlowAliasResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const UpdateFlowAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    routingConfiguration: FlowAliasRoutingConfiguration,
-    concurrencyConfiguration: S.optional(FlowAliasConcurrencyConfiguration),
-    flowId: S.String,
-    id: S.String,
-    arn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "UpdateFlowAliasResponse" }) as any as S.Schema<UpdateFlowAliasResponse>;
+export const UpdateFlowAliasResponse =
+  CreateFlowAliasResponse as any as S.Schema<UpdateFlowAliasResponse>;
 export interface UpdateKnowledgeBaseRequest {
   knowledgeBaseId: string;
   name: string;
@@ -7813,11 +7606,8 @@ export const UpdateKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateKnowledgeBaseResponse {
   knowledgeBase: KnowledgeBase;
 }
-export const UpdateKnowledgeBaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ knowledgeBase: KnowledgeBase }),
-).annotate({
-  identifier: "UpdateKnowledgeBaseResponse",
-}) as any as S.Schema<UpdateKnowledgeBaseResponse>;
+export const UpdateKnowledgeBaseResponse =
+  CreateKnowledgeBaseResponse as any as S.Schema<UpdateKnowledgeBaseResponse>;
 export interface UpdatePromptRequest {
   name: string;
   description?: string;
@@ -7857,20 +7647,7 @@ export interface UpdatePromptResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const UpdatePromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    customerEncryptionKeyArn: S.optional(S.String),
-    defaultVariant: S.optional(S.String),
-    variants: S.optional(PromptVariantList),
-    id: S.String,
-    arn: S.String,
-    version: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "UpdatePromptResponse" }) as any as S.Schema<UpdatePromptResponse>;
+export const UpdatePromptResponse = CreatePromptResponse as any as S.Schema<UpdatePromptResponse>;
 export interface ValidateFlowDefinitionRequest {
   definition: FlowDefinition;
 }

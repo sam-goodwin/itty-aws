@@ -162,9 +162,8 @@ export type PayloadsDeleteResultItem = PayloadsCreateResultItem;
 export const PayloadsDeleteResultItem = PayloadsCreateResultItem;
 
 export type PayloadsDeleteResultList = Array<PayloadsCreateResultItem>;
-export const PayloadsDeleteResultList = /*@__PURE__*/ S.Array(
-  PayloadsCreateResultItem,
-) as any as S.Schema<PayloadsDeleteResultList>;
+export const PayloadsDeleteResultList =
+  PayloadsCreateResultList as any as S.Schema<PayloadsDeleteResultList>;
 
 export interface DeletePayloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -172,12 +171,8 @@ export interface DeletePayloadResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const DeletePayloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: PayloadsDeleteResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
-).annotate({ identifier: "DeletePayloadResponse" }) as any as S.Schema<DeletePayloadResponse>;
+export const DeletePayloadResponse =
+  CreatePayloadResponse as any as S.Schema<DeletePayloadResponse>;
 
 export interface DisableContentScanningRequest {
   /** Defines an identifier. */
@@ -215,11 +210,8 @@ export const EnableContentScanningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableContentScanningRequest>;
 
 export type EnableContentScanningResponse = unknown;
-export const EnableContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "EnableContentScanningResponse",
-}) as any as S.Schema<EnableContentScanningResponse>;
+export const EnableContentScanningResponse =
+  DisableContentScanningResponse as any as S.Schema<EnableContentScanningResponse>;
 
 export interface GetContentScanningRequest {
   /** Defines an identifier. */
@@ -242,14 +234,8 @@ export interface GetContentScanningResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
-export const GetContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetContentScanningResponse",
-}) as any as S.Schema<GetContentScanningResponse>;
+export const GetContentScanningResponse =
+  CreateContentScanningResponse as any as S.Schema<GetContentScanningResponse>;
 
 export interface GetSettingsRequest {
   /** Defines an identifier. */
@@ -293,9 +279,8 @@ export type PayloadsListResultItem = PayloadsCreateResultItem;
 export const PayloadsListResultItem = PayloadsCreateResultItem;
 
 export type PayloadsListResultList = Array<PayloadsCreateResultItem>;
-export const PayloadsListResultList = /*@__PURE__*/ S.Array(
-  PayloadsCreateResultItem,
-) as any as S.Schema<PayloadsListResultList>;
+export const PayloadsListResultList =
+  PayloadsCreateResultList as any as S.Schema<PayloadsListResultList>;
 
 export interface ListPayloadsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -303,12 +288,7 @@ export interface ListPayloadsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPayloadsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: PayloadsListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }),
-).annotate({ identifier: "ListPayloadsResponse" }) as any as S.Schema<ListPayloadsResponse>;
+export const ListPayloadsResponse = CreatePayloadResponse as any as S.Schema<ListPayloadsResponse>;
 
 export type UpdateRequestValue = "enabled" | "disabled";
 export const UpdateRequestValue = S.String;
@@ -335,12 +315,7 @@ export interface UpdateResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+export const UpdateResponse = GetSettingsResponse as any as S.Schema<UpdateResponse>;
 
 export interface UpdatePayloadRequest {
   /** Defines an identifier. */
@@ -368,9 +343,8 @@ export type UpdatePayloadResultItem = PayloadsCreateResultItem;
 export const UpdatePayloadResultItem = PayloadsCreateResultItem;
 
 export type UpdatePayloadResultList = Array<PayloadsCreateResultItem>;
-export const UpdatePayloadResultList = /*@__PURE__*/ S.Array(
-  PayloadsCreateResultItem,
-) as any as S.Schema<UpdatePayloadResultList>;
+export const UpdatePayloadResultList =
+  PayloadsCreateResultList as any as S.Schema<UpdatePayloadResultList>;
 
 export type UpdatePayloadResponse = UpdatePayloadResultList;
 export const UpdatePayloadResponse = /*@__PURE__*/ S.suspend(() =>

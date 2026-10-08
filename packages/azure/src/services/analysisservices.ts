@@ -235,10 +235,8 @@ export const CreateServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateServerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServerResponseTagsMap>;
+export const CreateServerResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<CreateServerResponseTagsMap>;
 
 /** The gateway details. */
 export interface GatewayDetails {
@@ -425,10 +423,8 @@ export const GetServerDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type GetServerDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const GetServerDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServerDetailsResponseTagsMap>;
+export const GetServerDetailsResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<GetServerDetailsResponseTagsMap>;
 
 export interface GetServerDetailsResponse {
   /** An identifier that represents the Analysis Services resource. */
@@ -446,17 +442,8 @@ export interface GetServerDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-export const GetServerDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    sku: ResourceSku,
-    tags: S.optional(GetServerDetailsResponseTagsMap),
-    properties: S.optional(AnalysisServicesServerProperties),
-  }),
-).annotate({ identifier: "GetServerDetailsResponse" }) as any as S.Schema<GetServerDetailsResponse>;
+export const GetServerDetailsResponse =
+  CreateServerResponse as any as S.Schema<GetServerDetailsResponse>;
 
 export interface ListOperationsRequest {}
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -660,10 +647,8 @@ export const ListServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type AnalysisServicesServerTagsMap = { [key: string]: string | undefined };
-export const AnalysisServicesServerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AnalysisServicesServerTagsMap>;
+export const AnalysisServicesServerTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<AnalysisServicesServerTagsMap>;
 
 /** Represents an instance of an Analysis Services resource. */
 export interface AnalysisServicesServer {
@@ -682,17 +667,8 @@ export interface AnalysisServicesServer {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-export const AnalysisServicesServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    sku: ResourceSku,
-    tags: S.optional(AnalysisServicesServerTagsMap),
-    properties: S.optional(AnalysisServicesServerProperties),
-  }),
-).annotate({ identifier: "AnalysisServicesServer" }) as any as S.Schema<AnalysisServicesServer>;
+export const AnalysisServicesServer =
+  CreateServerResponse as any as S.Schema<AnalysisServicesServer>;
 
 /** An array of Analysis Services resources. */
 export type AnalysisServicesServersValueList = Array<AnalysisServicesServer>;
@@ -1031,9 +1007,7 @@ export const ResumeServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeServerRequest" }) as any as S.Schema<ResumeServerRequest>;
 
 export interface ResumeServerResponse {}
-export const ResumeServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeServerResponse",
-}) as any as S.Schema<ResumeServerResponse>;
+export const ResumeServerResponse = DeleteServerResponse as any as S.Schema<ResumeServerResponse>;
 
 export interface ServersDissociateGatewayRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1061,11 +1035,8 @@ export const ServersDissociateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersDissociateGatewayRequest>;
 
 export interface ServersDissociateGatewayResponse {}
-export const ServersDissociateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServersDissociateGatewayResponse",
-}) as any as S.Schema<ServersDissociateGatewayResponse>;
+export const ServersDissociateGatewayResponse =
+  ListServerOperationResultsResponse as any as S.Schema<ServersDissociateGatewayResponse>;
 
 export interface SuspendServerRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1091,16 +1062,12 @@ export const SuspendServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendServerRequest" }) as any as S.Schema<SuspendServerRequest>;
 
 export interface SuspendServerResponse {}
-export const SuspendServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendServerResponse",
-}) as any as S.Schema<SuspendServerResponse>;
+export const SuspendServerResponse = DeleteServerResponse as any as S.Schema<SuspendServerResponse>;
 
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateServerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerRequestTagsMap>;
+export const UpdateServerRequestTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<UpdateServerRequestTagsMap>;
 
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
@@ -1185,10 +1152,8 @@ export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type UpdateServerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerResponseTagsMap>;
+export const UpdateServerResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<UpdateServerResponseTagsMap>;
 
 export interface UpdateServerResponse {
   /** An identifier that represents the Analysis Services resource. */
@@ -1206,17 +1171,7 @@ export interface UpdateServerResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-export const UpdateServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    sku: ResourceSku,
-    tags: S.optional(UpdateServerResponseTagsMap),
-    properties: S.optional(AnalysisServicesServerProperties),
-  }),
-).annotate({ identifier: "UpdateServerResponse" }) as any as S.Schema<UpdateServerResponse>;
+export const UpdateServerResponse = CreateServerResponse as any as S.Schema<UpdateServerResponse>;
 
 export type CheckServerNameAvailabilityError = AzureOpError;
 /** Check the name availability in the target location. */

@@ -490,9 +490,7 @@ export const LinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkPackageRequest" }) as any as S.Schema<LinkPackageRequest>;
 
 export interface LinkPackageResponse {}
-export const LinkPackageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LinkPackageResponse",
-}) as any as S.Schema<LinkPackageResponse>;
+export const LinkPackageResponse = DeletePackageResponse as any as S.Schema<LinkPackageResponse>;
 
 export interface ListPackageFilesRequest {
   /** owner of the package */
@@ -620,9 +618,8 @@ export const UnlinkPackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlinkPackageRequest" }) as any as S.Schema<UnlinkPackageRequest>;
 
 export interface UnlinkPackageResponse {}
-export const UnlinkPackageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnlinkPackageResponse",
-}) as any as S.Schema<UnlinkPackageResponse>;
+export const UnlinkPackageResponse =
+  DeletePackageResponse as any as S.Schema<UnlinkPackageResponse>;
 
 export type DeletePackageError = NotFound | ForgejoOpError;
 /** Delete a package */

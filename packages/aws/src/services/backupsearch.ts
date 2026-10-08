@@ -149,7 +149,7 @@ export type ResourceArnList = string[];
 export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
 export type RecoveryPoint = string;
 export type RecoveryPointArnList = string[];
-export const RecoveryPointArnList = /*@__PURE__*/ S.Array(S.String);
+export const RecoveryPointArnList = ResourceArnList as any as S.Schema<RecoveryPointArnList>;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -700,11 +700,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = StopSearchJobOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = ResourceArnList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -718,9 +716,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = StopSearchJobOutput as any as S.Schema<UntagResourceResponse>;
 export type GetSearchJobError = ResourceNotFoundException | CommonErrors;
 /**
  * This operation retrieves metadata of a search job, including its progress.

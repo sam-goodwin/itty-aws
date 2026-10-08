@@ -524,12 +524,7 @@ export interface BraggingRights {
   /** The bragging rights; for example, `climbed mount everest`. */
   value?: string;
 }
-export const BraggingRights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(FieldMetadata),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "BraggingRights" }) as any as S.Schema<BraggingRights>;
+export const BraggingRights = Locale as any as S.Schema<BraggingRights>;
 
 export type BraggingRightsList = Array<BraggingRights>;
 export const BraggingRightsList = /*@__PURE__*/ S.Array(
@@ -712,15 +707,10 @@ export interface Occupation {
   /** Metadata about the occupation. */
   metadata?: FieldMetadata;
 }
-export const Occupation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    metadata: S.optional(FieldMetadata),
-  }),
-).annotate({ identifier: "Occupation" }) as any as S.Schema<Occupation>;
+export const Occupation = FileAs as any as S.Schema<Occupation>;
 
 export type OccupationList = Array<Occupation>;
-export const OccupationList = /*@__PURE__*/ S.Array(Occupation) as any as S.Schema<OccupationList>;
+export const OccupationList = FileAsList as any as S.Schema<OccupationList>;
 
 /** **DEPRECATED**: No data will be returned A brief one-line description of the person. */
 export interface Tagline {
@@ -729,15 +719,10 @@ export interface Tagline {
   /** Metadata about the tagline. */
   metadata?: FieldMetadata;
 }
-export const Tagline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    metadata: S.optional(FieldMetadata),
-  }),
-).annotate({ identifier: "Tagline" }) as any as S.Schema<Tagline>;
+export const Tagline = FileAs as any as S.Schema<Tagline>;
 
 export type TaglineList = Array<Tagline>;
-export const TaglineList = /*@__PURE__*/ S.Array(Tagline) as any as S.Schema<TaglineList>;
+export const TaglineList = FileAsList as any as S.Schema<TaglineList>;
 
 /** A person's physical address. May be a P.O. box or street address. All fields are optional. */
 export interface Address {
@@ -793,15 +778,10 @@ export interface Interest {
   /** The interest; for example, `stargazing`. */
   value?: string;
 }
-export const Interest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(FieldMetadata),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Interest" }) as any as S.Schema<Interest>;
+export const Interest = Locale as any as S.Schema<Interest>;
 
 export type InterestList = Array<Interest>;
-export const InterestList = /*@__PURE__*/ S.Array(Interest) as any as S.Schema<InterestList>;
+export const InterestList = LocaleList as any as S.Schema<InterestList>;
 
 export type NicknameTypeEnum =
   | "DEFAULT"
@@ -1014,15 +994,10 @@ export interface Skill {
   /** The skill; for example, `underwater basket weaving`. */
   value?: string;
 }
-export const Skill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(FieldMetadata),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Skill" }) as any as S.Schema<Skill>;
+export const Skill = Locale as any as S.Schema<Skill>;
 
 export type SkillList = Array<Skill>;
-export const SkillList = /*@__PURE__*/ S.Array(Skill) as any as S.Schema<SkillList>;
+export const SkillList = LocaleList as any as S.Schema<SkillList>;
 
 /** A person's associated URLs. */
 export interface Url {
@@ -2562,13 +2537,8 @@ export interface UpdateContactPhotoResponse {
   /** The updated person, if person_fields is set in the UpdateContactPhotoRequest; otherwise this will be unset. */
   person?: Person;
 }
-export const UpdateContactPhotoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    person: S.optional(Person),
-  }),
-).annotate({
-  identifier: "UpdateContactPhotoResponse",
-}) as any as S.Schema<UpdateContactPhotoResponse>;
+export const UpdateContactPhotoResponse =
+  DeleteContactPhotoResponse as any as S.Schema<UpdateContactPhotoResponse>;
 
 export type BatchCreateContactsPeopleError =
   | NotFound

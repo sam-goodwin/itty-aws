@@ -251,10 +251,8 @@ export const CreateCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomHostnameRequest>;
 
 export type CreateResponseCustomMetadataMap = { [key: string]: unknown | undefined };
-export const CreateResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateResponseCustomMetadataMap>;
+export const CreateResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<CreateResponseCustomMetadataMap>;
 
 export type CreateResponseOwnershipVerificationType = "txt";
 export const CreateResponseOwnershipVerificationType = S.String;
@@ -303,9 +301,8 @@ export type CreateResponseSslCertificateAuthority =
 export const CreateResponseSslCertificateAuthority = S.String;
 
 export type CreateResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
-export const CreateResponseSslDcvDelegationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseSslDcvDelegationRecordsItemEmailsList>;
+export const CreateResponseSslDcvDelegationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseSslDcvDelegationRecordsItemEmailsList>;
 
 export interface CreateResponseSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -347,17 +344,15 @@ export const CreateResponseSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseSslDcvDelegationRecordsList>;
 
 export type CreateResponseSslHostsList = Array<string>;
-export const CreateResponseSslHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseSslHostsList>;
+export const CreateResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseSslHostsList>;
 
 export type CreateResponseSslMethod = "http" | "txt" | "email";
 export const CreateResponseSslMethod = S.String;
 
 export type CreateResponseSslSettingsCiphersList = Array<string>;
-export const CreateResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseSslSettingsCiphersList>;
+export const CreateResponseSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseSslSettingsCiphersList>;
 
 export type CreateResponseSslSettingsEarlyHints = "on" | "off";
 export const CreateResponseSslSettingsEarlyHints = S.String;
@@ -444,9 +439,8 @@ export const CreateResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseSslValidationErrorsList>;
 
 export type CreateResponseSslValidationRecordsItemEmailsList = Array<string>;
-export const CreateResponseSslValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseSslValidationRecordsItemEmailsList>;
+export const CreateResponseSslValidationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseSslValidationRecordsItemEmailsList>;
 
 export interface CreateResponseSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -466,25 +460,12 @@ export interface CreateResponseSslValidationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const CreateResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(CreateResponseSslValidationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "CreateResponseSslValidationRecordsItem",
-}) as any as S.Schema<CreateResponseSslValidationRecordsItem>;
+export const CreateResponseSslValidationRecordsItem =
+  CreateResponseSslDcvDelegationRecordsItem as any as S.Schema<CreateResponseSslValidationRecordsItem>;
 
 export type CreateResponseSslValidationRecordsList = Array<CreateResponseSslValidationRecordsItem>;
-export const CreateResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
-  CreateResponseSslValidationRecordsItem,
-) as any as S.Schema<CreateResponseSslValidationRecordsList>;
+export const CreateResponseSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<CreateResponseSslValidationRecordsList>;
 
 export interface CreateResponseSsl {
   /** Custom hostname SSL identifier tag. */
@@ -579,9 +560,8 @@ export type CreateResponseStatus =
 export const CreateResponseStatus = S.String;
 
 export type CreateResponseVerificationErrorsList = Array<string>;
-export const CreateResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseVerificationErrorsList>;
+export const CreateResponseVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseVerificationErrorsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomHostnameResponse {
@@ -703,13 +683,8 @@ export interface DeleteCustomHostnameResponse {
   /** Custom hostname identifier tag. */
   id?: string | null;
 }
-export const DeleteCustomHostnameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteCustomHostnameResponse",
-}) as any as S.Schema<DeleteCustomHostnameResponse>;
+export const DeleteCustomHostnameResponse =
+  DeleteCertificatePackCertificateResponse as any as S.Schema<DeleteCustomHostnameResponse>;
 
 export interface DeleteFallbackOriginRequest {
   /** Identifier. */
@@ -732,9 +707,8 @@ export const DeleteFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFallbackOriginRequest>;
 
 export type FallbackOriginDeleteResponseErrorsList = Array<string>;
-export const FallbackOriginDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FallbackOriginDeleteResponseErrorsList>;
+export const FallbackOriginDeleteResponseErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<FallbackOriginDeleteResponseErrorsList>;
 
 export type FallbackOriginDeleteResponseStatus =
   | "initializing"
@@ -792,10 +766,8 @@ export const GetCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCustomHostnameRequest" }) as any as S.Schema<GetCustomHostnameRequest>;
 
 export type GetResponseCustomMetadataMap = { [key: string]: unknown | undefined };
-export const GetResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetResponseCustomMetadataMap>;
+export const GetResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<GetResponseCustomMetadataMap>;
 
 export type GetResponseOwnershipVerificationType = "txt";
 export const GetResponseOwnershipVerificationType = S.String;
@@ -828,9 +800,8 @@ export type GetResponseSslCertificateAuthority = "digicert" | "google" | "lets_e
 export const GetResponseSslCertificateAuthority = S.String;
 
 export type GetResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
-export const GetResponseSslDcvDelegationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseSslDcvDelegationRecordsItemEmailsList>;
+export const GetResponseSslDcvDelegationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseSslDcvDelegationRecordsItemEmailsList>;
 
 export interface GetResponseSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -850,38 +821,23 @@ export interface GetResponseSslDcvDelegationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const GetResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(GetResponseSslDcvDelegationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "GetResponseSslDcvDelegationRecordsItem",
-}) as any as S.Schema<GetResponseSslDcvDelegationRecordsItem>;
+export const GetResponseSslDcvDelegationRecordsItem =
+  CreateResponseSslDcvDelegationRecordsItem as any as S.Schema<GetResponseSslDcvDelegationRecordsItem>;
 
 export type GetResponseSslDcvDelegationRecordsList = Array<GetResponseSslDcvDelegationRecordsItem>;
-export const GetResponseSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
-  GetResponseSslDcvDelegationRecordsItem,
-) as any as S.Schema<GetResponseSslDcvDelegationRecordsList>;
+export const GetResponseSslDcvDelegationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<GetResponseSslDcvDelegationRecordsList>;
 
 export type GetResponseSslHostsList = Array<string>;
-export const GetResponseSslHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseSslHostsList>;
+export const GetResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseSslHostsList>;
 
 export type GetResponseSslMethod = "http" | "txt" | "email";
 export const GetResponseSslMethod = S.String;
 
 export type GetResponseSslSettingsCiphersList = Array<string>;
-export const GetResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseSslSettingsCiphersList>;
+export const GetResponseSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseSslSettingsCiphersList>;
 
 export type GetResponseSslSettingsEarlyHints = "on" | "off";
 export const GetResponseSslSettingsEarlyHints = S.String;
@@ -950,14 +906,12 @@ export type GetResponseSslValidationErrorsItem = CreateResponseSslValidationErro
 export const GetResponseSslValidationErrorsItem = CreateResponseSslValidationErrorsItem;
 
 export type GetResponseSslValidationErrorsList = Array<CreateResponseSslValidationErrorsItem>;
-export const GetResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
-  CreateResponseSslValidationErrorsItem,
-) as any as S.Schema<GetResponseSslValidationErrorsList>;
+export const GetResponseSslValidationErrorsList =
+  CreateResponseSslValidationErrorsList as any as S.Schema<GetResponseSslValidationErrorsList>;
 
 export type GetResponseSslValidationRecordsItemEmailsList = Array<string>;
-export const GetResponseSslValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseSslValidationRecordsItemEmailsList>;
+export const GetResponseSslValidationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseSslValidationRecordsItemEmailsList>;
 
 export interface GetResponseSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -977,25 +931,12 @@ export interface GetResponseSslValidationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const GetResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(GetResponseSslValidationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "GetResponseSslValidationRecordsItem",
-}) as any as S.Schema<GetResponseSslValidationRecordsItem>;
+export const GetResponseSslValidationRecordsItem =
+  CreateResponseSslDcvDelegationRecordsItem as any as S.Schema<GetResponseSslValidationRecordsItem>;
 
 export type GetResponseSslValidationRecordsList = Array<GetResponseSslValidationRecordsItem>;
-export const GetResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
-  GetResponseSslValidationRecordsItem,
-) as any as S.Schema<GetResponseSslValidationRecordsList>;
+export const GetResponseSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<GetResponseSslValidationRecordsList>;
 
 export interface GetResponseSsl {
   /** Custom hostname SSL identifier tag. */
@@ -1090,9 +1031,8 @@ export type GetResponseStatus =
 export const GetResponseStatus = S.String;
 
 export type GetResponseVerificationErrorsList = Array<string>;
-export const GetResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseVerificationErrorsList>;
+export const GetResponseVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseVerificationErrorsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomHostnameResponse {
@@ -1163,9 +1103,8 @@ export const GetFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFallbackOriginRequest" }) as any as S.Schema<GetFallbackOriginRequest>;
 
 export type FallbackOriginGetResponseErrorsList = Array<string>;
-export const FallbackOriginGetResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FallbackOriginGetResponseErrorsList>;
+export const FallbackOriginGetResponseErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<FallbackOriginGetResponseErrorsList>;
 
 export type FallbackOriginGetResponseStatus =
   | "initializing"
@@ -1353,10 +1292,8 @@ export const ListCustomHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomHostnamesRequest>;
 
 export type ListResultItemCustomMetadataMap = { [key: string]: unknown | undefined };
-export const ListResultItemCustomMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListResultItemCustomMetadataMap>;
+export const ListResultItemCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<ListResultItemCustomMetadataMap>;
 
 export type ListResultItemOwnershipVerificationType = "txt";
 export const ListResultItemOwnershipVerificationType = S.String;
@@ -1393,9 +1330,8 @@ export type ListResultItemSslCertificateAuthority =
 export const ListResultItemSslCertificateAuthority = S.String;
 
 export type ListResultItemSslDcvDelegationRecordsItemEmailsList = Array<string>;
-export const ListResultItemSslDcvDelegationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemSslDcvDelegationRecordsItemEmailsList>;
+export const ListResultItemSslDcvDelegationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemSslDcvDelegationRecordsItemEmailsList>;
 
 export interface ListResultItemSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1415,39 +1351,24 @@ export interface ListResultItemSslDcvDelegationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const ListResultItemSslDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(ListResultItemSslDcvDelegationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "ListResultItemSslDcvDelegationRecordsItem",
-}) as any as S.Schema<ListResultItemSslDcvDelegationRecordsItem>;
+export const ListResultItemSslDcvDelegationRecordsItem =
+  CreateResponseSslDcvDelegationRecordsItem as any as S.Schema<ListResultItemSslDcvDelegationRecordsItem>;
 
 export type ListResultItemSslDcvDelegationRecordsList =
   Array<ListResultItemSslDcvDelegationRecordsItem>;
-export const ListResultItemSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
-  ListResultItemSslDcvDelegationRecordsItem,
-) as any as S.Schema<ListResultItemSslDcvDelegationRecordsList>;
+export const ListResultItemSslDcvDelegationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<ListResultItemSslDcvDelegationRecordsList>;
 
 export type ListResultItemSslHostsList = Array<string>;
-export const ListResultItemSslHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemSslHostsList>;
+export const ListResultItemSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemSslHostsList>;
 
 export type ListResultItemSslMethod = "http" | "txt" | "email";
 export const ListResultItemSslMethod = S.String;
 
 export type ListResultItemSslSettingsCiphersList = Array<string>;
-export const ListResultItemSslSettingsCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemSslSettingsCiphersList>;
+export const ListResultItemSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemSslSettingsCiphersList>;
 
 export type ListResultItemSslSettingsEarlyHints = "on" | "off";
 export const ListResultItemSslSettingsEarlyHints = S.String;
@@ -1520,14 +1441,12 @@ export type ListResultItemSslValidationErrorsItem = CreateResponseSslValidationE
 export const ListResultItemSslValidationErrorsItem = CreateResponseSslValidationErrorsItem;
 
 export type ListResultItemSslValidationErrorsList = Array<CreateResponseSslValidationErrorsItem>;
-export const ListResultItemSslValidationErrorsList = /*@__PURE__*/ S.Array(
-  CreateResponseSslValidationErrorsItem,
-) as any as S.Schema<ListResultItemSslValidationErrorsList>;
+export const ListResultItemSslValidationErrorsList =
+  CreateResponseSslValidationErrorsList as any as S.Schema<ListResultItemSslValidationErrorsList>;
 
 export type ListResultItemSslValidationRecordsItemEmailsList = Array<string>;
-export const ListResultItemSslValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemSslValidationRecordsItemEmailsList>;
+export const ListResultItemSslValidationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemSslValidationRecordsItemEmailsList>;
 
 export interface ListResultItemSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1547,25 +1466,12 @@ export interface ListResultItemSslValidationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const ListResultItemSslValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(ListResultItemSslValidationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "ListResultItemSslValidationRecordsItem",
-}) as any as S.Schema<ListResultItemSslValidationRecordsItem>;
+export const ListResultItemSslValidationRecordsItem =
+  CreateResponseSslDcvDelegationRecordsItem as any as S.Schema<ListResultItemSslValidationRecordsItem>;
 
 export type ListResultItemSslValidationRecordsList = Array<ListResultItemSslValidationRecordsItem>;
-export const ListResultItemSslValidationRecordsList = /*@__PURE__*/ S.Array(
-  ListResultItemSslValidationRecordsItem,
-) as any as S.Schema<ListResultItemSslValidationRecordsList>;
+export const ListResultItemSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<ListResultItemSslValidationRecordsList>;
 
 export interface ListResultItemSsl {
   /** Custom hostname SSL identifier tag. */
@@ -1660,9 +1566,8 @@ export type ListResultItemStatus =
 export const ListResultItemStatus = S.String;
 
 export type ListResultItemVerificationErrorsList = Array<string>;
-export const ListResultItemVerificationErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemVerificationErrorsList>;
+export const ListResultItemVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemVerificationErrorsList>;
 
 export interface ListResultItem {
   /** Custom hostname identifier tag. */
@@ -1732,10 +1637,8 @@ export const ListCustomHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomHostnamesResponse>;
 
 export type EditRequestCustomMetadataMap = { [key: string]: unknown | undefined };
-export const EditRequestCustomMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestCustomMetadataMap>;
+export const EditRequestCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<EditRequestCustomMetadataMap>;
 
 export type EditRequestSslBundleMethod = "ubiquitous" | "optimal" | "force";
 export const EditRequestSslBundleMethod = S.String;
@@ -1747,17 +1650,15 @@ export type EditRequestSslCustomCertBundleItem = CreateRequestSslCustomCertBundl
 export const EditRequestSslCustomCertBundleItem = CreateRequestSslCustomCertBundleItem;
 
 export type EditRequestSslCustomCertBundleList = Array<CreateRequestSslCustomCertBundleItem>;
-export const EditRequestSslCustomCertBundleList = /*@__PURE__*/ S.Array(
-  CreateRequestSslCustomCertBundleItem,
-) as any as S.Schema<EditRequestSslCustomCertBundleList>;
+export const EditRequestSslCustomCertBundleList =
+  CreateRequestSslCustomCertBundleList as any as S.Schema<EditRequestSslCustomCertBundleList>;
 
 export type EditRequestSslMethod = "http" | "txt" | "email";
 export const EditRequestSslMethod = S.String;
 
 export type EditRequestSslSettingsCiphersList = Array<string>;
-export const EditRequestSslSettingsCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestSslSettingsCiphersList>;
+export const EditRequestSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditRequestSslSettingsCiphersList>;
 
 export type EditRequestSslSettingsEarlyHints = "on" | "off";
 export const EditRequestSslSettingsEarlyHints = S.String;
@@ -1876,10 +1777,8 @@ export const PatchCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCustomHostnameRequest>;
 
 export type EditResponseCustomMetadataMap = { [key: string]: unknown | undefined };
-export const EditResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseCustomMetadataMap>;
+export const EditResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<EditResponseCustomMetadataMap>;
 
 export type EditResponseOwnershipVerificationType = "txt";
 export const EditResponseOwnershipVerificationType = S.String;
@@ -1916,9 +1815,8 @@ export type EditResponseSslCertificateAuthority =
 export const EditResponseSslCertificateAuthority = S.String;
 
 export type EditResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
-export const EditResponseSslDcvDelegationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseSslDcvDelegationRecordsItemEmailsList>;
+export const EditResponseSslDcvDelegationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseSslDcvDelegationRecordsItemEmailsList>;
 
 export interface EditResponseSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1938,39 +1836,24 @@ export interface EditResponseSslDcvDelegationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const EditResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(EditResponseSslDcvDelegationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "EditResponseSslDcvDelegationRecordsItem",
-}) as any as S.Schema<EditResponseSslDcvDelegationRecordsItem>;
+export const EditResponseSslDcvDelegationRecordsItem =
+  CreateResponseSslDcvDelegationRecordsItem as any as S.Schema<EditResponseSslDcvDelegationRecordsItem>;
 
 export type EditResponseSslDcvDelegationRecordsList =
   Array<EditResponseSslDcvDelegationRecordsItem>;
-export const EditResponseSslDcvDelegationRecordsList = /*@__PURE__*/ S.Array(
-  EditResponseSslDcvDelegationRecordsItem,
-) as any as S.Schema<EditResponseSslDcvDelegationRecordsList>;
+export const EditResponseSslDcvDelegationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<EditResponseSslDcvDelegationRecordsList>;
 
 export type EditResponseSslHostsList = Array<string>;
-export const EditResponseSslHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseSslHostsList>;
+export const EditResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseSslHostsList>;
 
 export type EditResponseSslMethod = "http" | "txt" | "email";
 export const EditResponseSslMethod = S.String;
 
 export type EditResponseSslSettingsCiphersList = Array<string>;
-export const EditResponseSslSettingsCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseSslSettingsCiphersList>;
+export const EditResponseSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseSslSettingsCiphersList>;
 
 export type EditResponseSslSettingsEarlyHints = "on" | "off";
 export const EditResponseSslSettingsEarlyHints = S.String;
@@ -2039,14 +1922,12 @@ export type EditResponseSslValidationErrorsItem = CreateResponseSslValidationErr
 export const EditResponseSslValidationErrorsItem = CreateResponseSslValidationErrorsItem;
 
 export type EditResponseSslValidationErrorsList = Array<CreateResponseSslValidationErrorsItem>;
-export const EditResponseSslValidationErrorsList = /*@__PURE__*/ S.Array(
-  CreateResponseSslValidationErrorsItem,
-) as any as S.Schema<EditResponseSslValidationErrorsList>;
+export const EditResponseSslValidationErrorsList =
+  CreateResponseSslValidationErrorsList as any as S.Schema<EditResponseSslValidationErrorsList>;
 
 export type EditResponseSslValidationRecordsItemEmailsList = Array<string>;
-export const EditResponseSslValidationRecordsItemEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseSslValidationRecordsItemEmailsList>;
+export const EditResponseSslValidationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseSslValidationRecordsItemEmailsList>;
 
 export interface EditResponseSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -2066,25 +1947,12 @@ export interface EditResponseSslValidationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
-export const EditResponseSslValidationRecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cname: S.optional(S.NullOr(S.String)),
-    cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-    emails: S.optional(S.NullOr(EditResponseSslValidationRecordsItemEmailsList)),
-    httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-    httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-    status: S.optional(S.NullOr(S.String)),
-    txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-    txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-  }),
-).annotate({
-  identifier: "EditResponseSslValidationRecordsItem",
-}) as any as S.Schema<EditResponseSslValidationRecordsItem>;
+export const EditResponseSslValidationRecordsItem =
+  CreateResponseSslDcvDelegationRecordsItem as any as S.Schema<EditResponseSslValidationRecordsItem>;
 
 export type EditResponseSslValidationRecordsList = Array<EditResponseSslValidationRecordsItem>;
-export const EditResponseSslValidationRecordsList = /*@__PURE__*/ S.Array(
-  EditResponseSslValidationRecordsItem,
-) as any as S.Schema<EditResponseSslValidationRecordsList>;
+export const EditResponseSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<EditResponseSslValidationRecordsList>;
 
 export interface EditResponseSsl {
   /** Custom hostname SSL identifier tag. */
@@ -2179,9 +2047,8 @@ export type EditResponseStatus =
 export const EditResponseStatus = S.String;
 
 export type EditResponseVerificationErrorsList = Array<string>;
-export const EditResponseVerificationErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseVerificationErrorsList>;
+export const EditResponseVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseVerificationErrorsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCustomHostnameResponse {
@@ -2271,10 +2138,8 @@ export const PutCertificatePackCertificateRequest = /*@__PURE__*/ S.suspend(() =
 export type CertificatePackCertificatesUpdateResponseCustomMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CertificatePackCertificatesUpdateResponseCustomMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CertificatePackCertificatesUpdateResponseCustomMetadataMap>;
+export const CertificatePackCertificatesUpdateResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<CertificatePackCertificatesUpdateResponseCustomMetadataMap>;
 
 export type CertificatePackCertificatesUpdateResponseOwnershipVerificationType = "txt";
 export const CertificatePackCertificatesUpdateResponseOwnershipVerificationType = S.String;
@@ -2369,18 +2234,15 @@ export const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsLis
   ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList>;
 
 export type CertificatePackCertificatesUpdateResponseSslHostsList = Array<string>;
-export const CertificatePackCertificatesUpdateResponseSslHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslHostsList>;
+export const CertificatePackCertificatesUpdateResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CertificatePackCertificatesUpdateResponseSslHostsList>;
 
 export type CertificatePackCertificatesUpdateResponseSslMethod = "http" | "txt" | "email";
 export const CertificatePackCertificatesUpdateResponseSslMethod = S.String;
 
 export type CertificatePackCertificatesUpdateResponseSslSettingsCiphersList = Array<string>;
 export const CertificatePackCertificatesUpdateResponseSslSettingsCiphersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslSettingsCiphersList>;
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList as any as S.Schema<CertificatePackCertificatesUpdateResponseSslSettingsCiphersList>;
 
 export type CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints = "on" | "off";
 export const CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints = S.String;
@@ -2472,9 +2334,7 @@ export const CertificatePackCertificatesUpdateResponseSslValidationErrorsList =
 export type CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList =
   Array<string>;
 export const CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList>;
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList>;
 
 export interface CertificatePackCertificatesUpdateResponseSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -2495,29 +2355,12 @@ export interface CertificatePackCertificatesUpdateResponseSslValidationRecordsIt
   txtValue?: string | null;
 }
 export const CertificatePackCertificatesUpdateResponseSslValidationRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cname: S.optional(S.NullOr(S.String)),
-      cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-      emails: S.optional(
-        S.NullOr(CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList),
-      ),
-      httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-      httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-      status: S.optional(S.NullOr(S.String)),
-      txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-      txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-    }),
-  ).annotate({
-    identifier: "CertificatePackCertificatesUpdateResponseSslValidationRecordsItem",
-  }) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsItem>;
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsItem>;
 
 export type CertificatePackCertificatesUpdateResponseSslValidationRecordsList =
   Array<CertificatePackCertificatesUpdateResponseSslValidationRecordsItem>;
 export const CertificatePackCertificatesUpdateResponseSslValidationRecordsList =
-  /*@__PURE__*/ S.Array(
-    CertificatePackCertificatesUpdateResponseSslValidationRecordsItem,
-  ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsList>;
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsList>;
 
 export interface CertificatePackCertificatesUpdateResponseSsl {
   /** Custom hostname SSL identifier tag. */
@@ -2627,9 +2470,7 @@ export const CertificatePackCertificatesUpdateResponseStatus = S.String;
 
 export type CertificatePackCertificatesUpdateResponseVerificationErrorsList = Array<string>;
 export const CertificatePackCertificatesUpdateResponseVerificationErrorsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CertificatePackCertificatesUpdateResponseVerificationErrorsList>;
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList as any as S.Schema<CertificatePackCertificatesUpdateResponseVerificationErrorsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCertificatePackCertificateResponse {
@@ -2709,9 +2550,8 @@ export const PutFallbackOriginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutFallbackOriginRequest" }) as any as S.Schema<PutFallbackOriginRequest>;
 
 export type FallbackOriginUpdateResponseErrorsList = Array<string>;
-export const FallbackOriginUpdateResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FallbackOriginUpdateResponseErrorsList>;
+export const FallbackOriginUpdateResponseErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<FallbackOriginUpdateResponseErrorsList>;
 
 export type FallbackOriginUpdateResponseStatus =
   | "initializing"

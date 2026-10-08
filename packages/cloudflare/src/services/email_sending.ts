@@ -391,21 +391,8 @@ export interface EditSubdomainResponse {
   /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.&lt;base&gt;`. */
   returnPathDomain?: string | null;
 }
-export const EditSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    name: S.String,
-    tag: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
-    dropSuppressedRecipients: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
-    ),
-    modified: S.optional(S.NullOr(S.String)),
-    previewEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.NullOr(S.String).pipe(T.Body("return_path_domain"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "EditSubdomainResponse" }) as any as S.Schema<EditSubdomainResponse>;
+export const EditSubdomainResponse =
+  CreateSubdomainResponse as any as S.Schema<EditSubdomainResponse>;
 
 export interface EditSuppressionRequest {
   /** Cloudflare account ID. */
@@ -554,21 +541,8 @@ export interface GetSubdomainResponse {
   /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.&lt;base&gt;`. */
   returnPathDomain?: string | null;
 }
-export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    name: S.String,
-    tag: S.String,
-    created: S.optional(S.NullOr(S.String)),
-    dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
-    dropSuppressedRecipients: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
-    ),
-    modified: S.optional(S.NullOr(S.String)),
-    previewEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.NullOr(S.String).pipe(T.Body("return_path_domain"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetSubdomainResponse" }) as any as S.Schema<GetSubdomainResponse>;
+export const GetSubdomainResponse =
+  CreateSubdomainResponse as any as S.Schema<GetSubdomainResponse>;
 
 export interface GetSubdomainDnsRequest {
   /** Identifier. */
@@ -1173,19 +1147,16 @@ export const SendResponseDeliveredList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SendResponseDeliveredList>;
 
 export type SendResponsePermanentBouncesList = Array<string>;
-export const SendResponsePermanentBouncesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendResponsePermanentBouncesList>;
+export const SendResponsePermanentBouncesList =
+  SendResponseDeliveredList as any as S.Schema<SendResponsePermanentBouncesList>;
 
 export type SendResponseQueuedList = Array<string>;
-export const SendResponseQueuedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendResponseQueuedList>;
+export const SendResponseQueuedList =
+  SendResponseDeliveredList as any as S.Schema<SendResponseQueuedList>;
 
 export type SendResponseSuppressedRecipientsList = Array<string>;
-export const SendResponseSuppressedRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendResponseSuppressedRecipientsList>;
+export const SendResponseSuppressedRecipientsList =
+  SendResponseDeliveredList as any as S.Schema<SendResponseSuppressedRecipientsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SendEmailSendingResponse {
@@ -1213,9 +1184,8 @@ export const SendEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendEmailSendingResponse" }) as any as S.Schema<SendEmailSendingResponse>;
 
 export type SendRawRequestRecipientsList = Array<string>;
-export const SendRawRequestRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendRawRequestRecipientsList>;
+export const SendRawRequestRecipientsList =
+  SendResponseDeliveredList as any as S.Schema<SendRawRequestRecipientsList>;
 
 export interface SendRawEmailSendingRequest {
   /** Identifier of the account. */
@@ -1243,24 +1213,20 @@ export const SendRawEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SendRawEmailSendingRequest>;
 
 export type SendRawResponseDeliveredList = Array<string>;
-export const SendRawResponseDeliveredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendRawResponseDeliveredList>;
+export const SendRawResponseDeliveredList =
+  SendResponseDeliveredList as any as S.Schema<SendRawResponseDeliveredList>;
 
 export type SendRawResponsePermanentBouncesList = Array<string>;
-export const SendRawResponsePermanentBouncesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendRawResponsePermanentBouncesList>;
+export const SendRawResponsePermanentBouncesList =
+  SendResponseDeliveredList as any as S.Schema<SendRawResponsePermanentBouncesList>;
 
 export type SendRawResponseQueuedList = Array<string>;
-export const SendRawResponseQueuedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendRawResponseQueuedList>;
+export const SendRawResponseQueuedList =
+  SendResponseDeliveredList as any as S.Schema<SendRawResponseQueuedList>;
 
 export type SendRawResponseSuppressedRecipientsList = Array<string>;
-export const SendRawResponseSuppressedRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendRawResponseSuppressedRecipientsList>;
+export const SendRawResponseSuppressedRecipientsList =
+  SendResponseDeliveredList as any as S.Schema<SendRawResponseSuppressedRecipientsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SendRawEmailSendingResponse {

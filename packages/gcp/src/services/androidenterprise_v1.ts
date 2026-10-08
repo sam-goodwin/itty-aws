@@ -349,25 +349,15 @@ export interface AdministratorWebTokenSpecZeroTouch {
   /** Whether zero-touch embedded UI is usable with this token. If enabled, the admin can link zero-touch customers to this enterprise. */
   enabled?: boolean;
 }
-export const AdministratorWebTokenSpecZeroTouch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdministratorWebTokenSpecZeroTouch",
-}) as any as S.Schema<AdministratorWebTokenSpecZeroTouch>;
+export const AdministratorWebTokenSpecZeroTouch =
+  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecZeroTouch>;
 
 export interface AdministratorWebTokenSpecManagedConfigurations {
   /** Whether the Managed Configuration page is displayed. Default is true. */
   enabled?: boolean;
 }
-export const AdministratorWebTokenSpecManagedConfigurations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdministratorWebTokenSpecManagedConfigurations",
-}) as any as S.Schema<AdministratorWebTokenSpecManagedConfigurations>;
+export const AdministratorWebTokenSpecManagedConfigurations =
+  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecManagedConfigurations>;
 
 export interface AdministratorWebTokenSpecPlaySearch {
   /** Whether the managed Play Search apps page is displayed. Default is true. */
@@ -388,25 +378,15 @@ export interface AdministratorWebTokenSpecStoreBuilder {
   /** Whether the Organize apps page is displayed. Default is true. */
   enabled?: boolean;
 }
-export const AdministratorWebTokenSpecStoreBuilder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdministratorWebTokenSpecStoreBuilder",
-}) as any as S.Schema<AdministratorWebTokenSpecStoreBuilder>;
+export const AdministratorWebTokenSpecStoreBuilder =
+  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecStoreBuilder>;
 
 export interface AdministratorWebTokenSpecWebApps {
   /** Whether the Web Apps page is displayed. Default is true. */
   enabled?: boolean;
 }
-export const AdministratorWebTokenSpecWebApps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdministratorWebTokenSpecWebApps",
-}) as any as S.Schema<AdministratorWebTokenSpecWebApps>;
+export const AdministratorWebTokenSpecWebApps =
+  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecWebApps>;
 
 export type AdministratorWebTokenSpecPermissionItemEnum = "unknown" | "approveApps" | "manageMcm";
 export const AdministratorWebTokenSpecPermissionItemEnum = S.String;
@@ -509,9 +489,8 @@ export const DeleteEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEntitlementsRequest>;
 
 export interface DeleteEntitlementsResponse {}
-export const DeleteEntitlementsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEntitlementsResponse",
-}) as any as S.Schema<DeleteEntitlementsResponse>;
+export const DeleteEntitlementsResponse =
+  ApproveProductsResponse as any as S.Schema<DeleteEntitlementsResponse>;
 
 export interface DeleteInstallsRequest {
   /** The Android ID of the device. */
@@ -539,9 +518,8 @@ export const DeleteInstallsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstallsRequest" }) as any as S.Schema<DeleteInstallsRequest>;
 
 export interface DeleteInstallsResponse {}
-export const DeleteInstallsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstallsResponse",
-}) as any as S.Schema<DeleteInstallsResponse>;
+export const DeleteInstallsResponse =
+  ApproveProductsResponse as any as S.Schema<DeleteInstallsResponse>;
 
 export interface DeleteManagedconfigurationsfordeviceRequest {
   /** The ID of the enterprise. */
@@ -571,11 +549,8 @@ export const DeleteManagedconfigurationsfordeviceRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteManagedconfigurationsfordeviceRequest>;
 
 export interface DeleteManagedconfigurationsfordeviceResponse {}
-export const DeleteManagedconfigurationsfordeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteManagedconfigurationsfordeviceResponse",
-}) as any as S.Schema<DeleteManagedconfigurationsfordeviceResponse>;
+export const DeleteManagedconfigurationsfordeviceResponse =
+  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteManagedconfigurationsfordeviceResponse>;
 
 export interface DeleteManagedconfigurationsforuserRequest {
   /** The ID of the user. */
@@ -602,11 +577,8 @@ export const DeleteManagedconfigurationsforuserRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteManagedconfigurationsforuserRequest>;
 
 export interface DeleteManagedconfigurationsforuserResponse {}
-export const DeleteManagedconfigurationsforuserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteManagedconfigurationsforuserResponse",
-}) as any as S.Schema<DeleteManagedconfigurationsforuserResponse>;
+export const DeleteManagedconfigurationsforuserResponse =
+  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteManagedconfigurationsforuserResponse>;
 
 export interface DeleteServiceaccountkeysRequest {
   /** The ID of the enterprise. */
@@ -630,11 +602,8 @@ export const DeleteServiceaccountkeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceaccountkeysRequest>;
 
 export interface DeleteServiceaccountkeysResponse {}
-export const DeleteServiceaccountkeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceaccountkeysResponse",
-}) as any as S.Schema<DeleteServiceaccountkeysResponse>;
+export const DeleteServiceaccountkeysResponse =
+  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteServiceaccountkeysResponse>;
 
 export interface DeleteStorelayoutclustersRequest {
   /** The ID of the page. */
@@ -661,11 +630,8 @@ export const DeleteStorelayoutclustersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorelayoutclustersRequest>;
 
 export interface DeleteStorelayoutclustersResponse {}
-export const DeleteStorelayoutclustersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStorelayoutclustersResponse",
-}) as any as S.Schema<DeleteStorelayoutclustersResponse>;
+export const DeleteStorelayoutclustersResponse =
+  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteStorelayoutclustersResponse>;
 
 export interface DeleteStorelayoutpagesRequest {
   /** The ID of the page. */
@@ -689,9 +655,8 @@ export const DeleteStorelayoutpagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorelayoutpagesRequest>;
 
 export interface DeleteStorelayoutpagesResponse {}
-export const DeleteStorelayoutpagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStorelayoutpagesResponse",
-}) as any as S.Schema<DeleteStorelayoutpagesResponse>;
+export const DeleteStorelayoutpagesResponse =
+  ApproveProductsResponse as any as S.Schema<DeleteStorelayoutpagesResponse>;
 
 export interface DeleteUsersRequest {
   /** The ID of the enterprise. */
@@ -713,9 +678,7 @@ export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersRequest" }) as any as S.Schema<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
-export const DeleteUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersResponse",
-}) as any as S.Schema<DeleteUsersResponse>;
+export const DeleteUsersResponse = ApproveProductsResponse as any as S.Schema<DeleteUsersResponse>;
 
 export interface DeleteWebappsRequest {
   /** The ID of the enterprise. */
@@ -737,9 +700,8 @@ export const DeleteWebappsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebappsRequest" }) as any as S.Schema<DeleteWebappsRequest>;
 
 export interface DeleteWebappsResponse {}
-export const DeleteWebappsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebappsResponse",
-}) as any as S.Schema<DeleteWebappsResponse>;
+export const DeleteWebappsResponse =
+  ApproveProductsResponse as any as S.Schema<DeleteWebappsResponse>;
 
 export interface EnrollEnterprisesRequest {
   /** Required. The token provided by the enterprise to register the EMM. */
@@ -785,11 +747,8 @@ export const ForceReportUploadDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForceReportUploadDevicesRequest>;
 
 export interface ForceReportUploadDevicesResponse {}
-export const ForceReportUploadDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ForceReportUploadDevicesResponse",
-}) as any as S.Schema<ForceReportUploadDevicesResponse>;
+export const ForceReportUploadDevicesResponse =
+  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<ForceReportUploadDevicesResponse>;
 
 export interface GenerateApprovalUrlProductsRequest {
   /** The ID of the product. */
@@ -853,11 +812,7 @@ export interface AuthenticationToken {
   /** The authentication token to be passed to the device policy client on the device where it can be used to provision the account for which this token was generated. */
   token?: string;
 }
-export const AuthenticationToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String),
-  }),
-).annotate({ identifier: "AuthenticationToken" }) as any as S.Schema<AuthenticationToken>;
+export const AuthenticationToken = AdministratorWebToken as any as S.Schema<AuthenticationToken>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -891,13 +846,8 @@ export interface GenerateEnterpriseUpgradeUrlResponse {
   /** A URL for an enterprise admin to upgrade their enterprise. The page can't be rendered in an iframe. */
   url?: string;
 }
-export const GenerateEnterpriseUpgradeUrlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateEnterpriseUpgradeUrlResponse",
-}) as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>;
+export const GenerateEnterpriseUpgradeUrlResponse =
+  ProductsGenerateApprovalUrlResponse as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>;
 
 export interface GenerateSignupUrlEnterprisesRequest {
   /** Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a hint only and can be altered by the user. If `allowedDomains` is non-empty then this must belong to one of the `allowedDomains`. */
@@ -3554,9 +3504,8 @@ export const UnapproveProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnapproveProductsRequest" }) as any as S.Schema<UnapproveProductsRequest>;
 
 export interface UnapproveProductsResponse {}
-export const UnapproveProductsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnapproveProductsResponse",
-}) as any as S.Schema<UnapproveProductsResponse>;
+export const UnapproveProductsResponse =
+  ApproveProductsResponse as any as S.Schema<UnapproveProductsResponse>;
 
 export interface UnenrollEnterprisesRequest {
   /** The ID of the enterprise. */
@@ -3577,9 +3526,8 @@ export const UnenrollEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnenrollEnterprisesRequest>;
 
 export interface UnenrollEnterprisesResponse {}
-export const UnenrollEnterprisesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnenrollEnterprisesResponse",
-}) as any as S.Schema<UnenrollEnterprisesResponse>;
+export const UnenrollEnterprisesResponse =
+  ApproveProductsResponse as any as S.Schema<UnenrollEnterprisesResponse>;
 
 export interface UpdateDevicesRequest {
   /** The ID of the device. */

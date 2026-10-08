@@ -161,10 +161,8 @@ export const CreateRegistrationRequestAcknowledgementsMap = /*@__PURE__*/ S.Reco
 ) as any as S.Schema<CreateRegistrationRequestAcknowledgementsMap>;
 
 export type CreateRegistrationRequestContactExtensionsMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationRequestContactExtensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRegistrationRequestContactExtensionsMap>;
+export const CreateRegistrationRequestContactExtensionsMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationRequestContactExtensionsMap>;
 
 export interface CreateRegistrationRequestContactsAdministratorPostalInfoAddress {
   /** City or locality name. */
@@ -368,10 +366,8 @@ export type CreateRegistrationResponseState =
 export const CreateRegistrationResponseState = S.String;
 
 export type CreateRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRegistrationResponseContextMap>;
+export const CreateRegistrationResponseContextMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationResponseContextMap>;
 
 export interface CreateRegistrationResponseError {
   /** Machine-readable error code identifying the failure reason. */
@@ -417,10 +413,8 @@ export const CreateRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRegistrationResponse>;
 
 export type CreateTransferInRequestContactExtensionsMap = { [key: string]: unknown | undefined };
-export const CreateTransferInRequestContactExtensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTransferInRequestContactExtensionsMap>;
+export const CreateTransferInRequestContactExtensionsMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateTransferInRequestContactExtensionsMap>;
 
 export type CreateTransferInRequestContactsAdministratorPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
@@ -540,10 +534,8 @@ export type CreateTransferInResponseState =
 export const CreateTransferInResponseState = S.String;
 
 export type CreateTransferInResponseContextMap = { [key: string]: unknown | undefined };
-export const CreateTransferInResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTransferInResponseContextMap>;
+export const CreateTransferInResponseContextMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateTransferInResponseContextMap>;
 
 export type CreateTransferInResponseError = CreateRegistrationResponseError;
 export const CreateTransferInResponseError = CreateRegistrationResponseError;
@@ -616,10 +608,8 @@ export type EditRegistrationResponseState =
 export const EditRegistrationResponseState = S.String;
 
 export type EditRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-export const EditRegistrationResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRegistrationResponseContextMap>;
+export const EditRegistrationResponseContextMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<EditRegistrationResponseContextMap>;
 
 export type EditRegistrationResponseError = CreateRegistrationResponseError;
 export const EditRegistrationResponseError = CreateRegistrationResponseError;
@@ -827,10 +817,8 @@ export type RegistrationStatusGetResponseState =
 export const RegistrationStatusGetResponseState = S.String;
 
 export type RegistrationStatusGetResponseContextMap = { [key: string]: unknown | undefined };
-export const RegistrationStatusGetResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RegistrationStatusGetResponseContextMap>;
+export const RegistrationStatusGetResponseContextMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<RegistrationStatusGetResponseContextMap>;
 
 export type RegistrationStatusGetResponseError = CreateRegistrationResponseError;
 export const RegistrationStatusGetResponseError = CreateRegistrationResponseError;
@@ -899,10 +887,8 @@ export type GetTransferInStatusResponseState =
 export const GetTransferInStatusResponseState = S.String;
 
 export type GetTransferInStatusResponseContextMap = { [key: string]: unknown | undefined };
-export const GetTransferInStatusResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetTransferInStatusResponseContextMap>;
+export const GetTransferInStatusResponseContextMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<GetTransferInStatusResponseContextMap>;
 
 export type GetTransferInStatusResponseError = CreateRegistrationResponseError;
 export const GetTransferInStatusResponseError = CreateRegistrationResponseError;
@@ -969,10 +955,8 @@ export type UpdateStatusGetResponseState =
 export const UpdateStatusGetResponseState = S.String;
 
 export type UpdateStatusGetResponseContextMap = { [key: string]: unknown | undefined };
-export const UpdateStatusGetResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateStatusGetResponseContextMap>;
+export const UpdateStatusGetResponseContextMap =
+  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<UpdateStatusGetResponseContextMap>;
 
 export type UpdateStatusGetResponseError = CreateRegistrationResponseError;
 export const UpdateStatusGetResponseError = CreateRegistrationResponseError;
@@ -1383,14 +1367,11 @@ export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDomainRequest" }) as any as S.Schema<PutDomainRequest>;
 
 export type PutDomainResponse = unknown;
-export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutDomainResponse" }) as any as S.Schema<PutDomainResponse>;
+export const PutDomainResponse = GetDomainResponse as any as S.Schema<PutDomainResponse>;
 
 export type SearchRequestExtensionsList = Array<string>;
-export const SearchRequestExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchRequestExtensionsList>;
+export const SearchRequestExtensionsList =
+  CheckRequestDomainsList as any as S.Schema<SearchRequestExtensionsList>;
 
 export interface SearchRegistrarRequest {
   /** Identifier. */

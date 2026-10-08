@@ -140,28 +140,20 @@ export const CountSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CountSchedulesRequest" }) as any as S.Schema<CountSchedulesRequest>;
 
 export type CountSchedulesResponseAggregationGroupGroupValuesList = Array<unknown>;
-export const CountSchedulesResponseAggregationGroupGroupValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CountSchedulesResponseAggregationGroupGroupValuesList>;
+export const CountSchedulesResponseAggregationGroupGroupValuesList =
+  CountActivityExecutionsResponseAggregationGroupGroupValuesList as any as S.Schema<CountSchedulesResponseAggregationGroupGroupValuesList>;
 
 export interface CountSchedulesResponseAggregationGroup {
   groupValues?: CountSchedulesResponseAggregationGroupGroupValuesList;
   count?: string;
 }
-export const CountSchedulesResponseAggregationGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupValues: S.optional(CountSchedulesResponseAggregationGroupGroupValuesList),
-    count: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CountSchedulesResponseAggregationGroup",
-}) as any as S.Schema<CountSchedulesResponseAggregationGroup>;
+export const CountSchedulesResponseAggregationGroup =
+  CountActivityExecutionsResponseAggregationGroup as any as S.Schema<CountSchedulesResponseAggregationGroup>;
 
 /** Contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
 export type CountSchedulesResponseGroupsList = Array<CountSchedulesResponseAggregationGroup>;
-export const CountSchedulesResponseGroupsList = /*@__PURE__*/ S.Array(
-  CountSchedulesResponseAggregationGroup,
-) as any as S.Schema<CountSchedulesResponseGroupsList>;
+export const CountSchedulesResponseGroupsList =
+  CountActivityExecutionsResponseGroupsList as any as S.Schema<CountSchedulesResponseGroupsList>;
 
 export interface CountSchedulesResponse {
   /** If `query` is not grouping by any field, the count is an approximate number of schedules that match the query. If `query` is grouping by a field, the count is simply the sum of the counts of the groups returned in the response. This number can be smaller than the total number of schedules matching the query. */
@@ -192,29 +184,21 @@ export const CountWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CountWorkflowExecutionsRequest>;
 
 export type CountWorkflowExecutionsResponseAggregationGroupGroupValuesList = Array<unknown>;
-export const CountWorkflowExecutionsResponseAggregationGroupGroupValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CountWorkflowExecutionsResponseAggregationGroupGroupValuesList>;
+export const CountWorkflowExecutionsResponseAggregationGroupGroupValuesList =
+  CountActivityExecutionsResponseAggregationGroupGroupValuesList as any as S.Schema<CountWorkflowExecutionsResponseAggregationGroupGroupValuesList>;
 
 export interface CountWorkflowExecutionsResponseAggregationGroup {
   groupValues?: CountWorkflowExecutionsResponseAggregationGroupGroupValuesList;
   count?: string;
 }
-export const CountWorkflowExecutionsResponseAggregationGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupValues: S.optional(CountWorkflowExecutionsResponseAggregationGroupGroupValuesList),
-    count: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CountWorkflowExecutionsResponseAggregationGroup",
-}) as any as S.Schema<CountWorkflowExecutionsResponseAggregationGroup>;
+export const CountWorkflowExecutionsResponseAggregationGroup =
+  CountActivityExecutionsResponseAggregationGroup as any as S.Schema<CountWorkflowExecutionsResponseAggregationGroup>;
 
 /** `groups` contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
 export type CountWorkflowExecutionsResponseGroupsList =
   Array<CountWorkflowExecutionsResponseAggregationGroup>;
-export const CountWorkflowExecutionsResponseGroupsList = /*@__PURE__*/ S.Array(
-  CountWorkflowExecutionsResponseAggregationGroup,
-) as any as S.Schema<CountWorkflowExecutionsResponseGroupsList>;
+export const CountWorkflowExecutionsResponseGroupsList =
+  CountActivityExecutionsResponseGroupsList as any as S.Schema<CountWorkflowExecutionsResponseGroupsList>;
 
 export interface CountWorkflowExecutionsResponse {
   /** If `query` is not grouping by any field, the count is an approximate number of workflows that matches the query. If `query` is grouping by a field, the count is simply the sum of the counts of the groups returned in the response. This number can be smaller than the total number of workflows matching the query. */
@@ -222,14 +206,8 @@ export interface CountWorkflowExecutionsResponse {
   /** `groups` contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
   groups?: CountWorkflowExecutionsResponseGroupsList;
 }
-export const CountWorkflowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.String),
-    groups: S.optional(CountWorkflowExecutionsResponseGroupsList),
-  }),
-).annotate({
-  identifier: "CountWorkflowExecutionsResponse",
-}) as any as S.Schema<CountWorkflowExecutionsResponse>;
+export const CountWorkflowExecutionsResponse =
+  CountActivityExecutionsResponse as any as S.Schema<CountWorkflowExecutionsResponse>;
 
 /** Target a worker polling on a Nexus task queue in a specific namespace. */
 export interface EndpointTargetWorker {
@@ -360,39 +338,33 @@ export const StructuredCalendarSpecSecondList = /*@__PURE__*/ S.Array(
 
 /** Match minutes (0-59) */
 export type StructuredCalendarSpecMinuteList = Array<Range>;
-export const StructuredCalendarSpecMinuteList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<StructuredCalendarSpecMinuteList>;
+export const StructuredCalendarSpecMinuteList =
+  StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecMinuteList>;
 
 /** Match hours (0-23) */
 export type StructuredCalendarSpecHourList = Array<Range>;
-export const StructuredCalendarSpecHourList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<StructuredCalendarSpecHourList>;
+export const StructuredCalendarSpecHourList =
+  StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecHourList>;
 
 /** Match days of the month (1-31) (-- api-linter: core::0140::prepositions=disabled aip.dev/not-precedent: standard name of field --) */
 export type StructuredCalendarSpecDayOfMonthList = Array<Range>;
-export const StructuredCalendarSpecDayOfMonthList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<StructuredCalendarSpecDayOfMonthList>;
+export const StructuredCalendarSpecDayOfMonthList =
+  StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecDayOfMonthList>;
 
 /** Match months (1-12) */
 export type StructuredCalendarSpecMonthList = Array<Range>;
-export const StructuredCalendarSpecMonthList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<StructuredCalendarSpecMonthList>;
+export const StructuredCalendarSpecMonthList =
+  StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecMonthList>;
 
 /** Match years. */
 export type StructuredCalendarSpecYearList = Array<Range>;
-export const StructuredCalendarSpecYearList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<StructuredCalendarSpecYearList>;
+export const StructuredCalendarSpecYearList =
+  StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecYearList>;
 
 /** Match days of the week (0-6; 0 is Sunday). */
 export type StructuredCalendarSpecDayOfWeekList = Array<Range>;
-export const StructuredCalendarSpecDayOfWeekList = /*@__PURE__*/ S.Array(
-  Range,
-) as any as S.Schema<StructuredCalendarSpecDayOfWeekList>;
+export const StructuredCalendarSpecDayOfWeekList =
+  StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecDayOfWeekList>;
 
 /** StructuredCalendarSpec describes an event specification relative to the calendar, in a form that's easy to work with programmatically. Each field can be one or more ranges. A timestamp matches if at least one range of each field matches the corresponding fields of the timestamp, except for year: if year is missing, that means all years match. For all fields besides year, at least one Range must be present to match anything. Relative expressions such as "last day of the month" or "third Monday" are not currently representable; callers must enumerate the concrete days they require. */
 export interface StructuredCalendarSpec {
@@ -496,14 +468,12 @@ export const ScheduleSpecIntervalList = /*@__PURE__*/ S.Array(
 
 /** Any timestamps matching any of exclude_* will be skipped. Deprecated. Use exclude_structured_calendar. */
 export type ScheduleSpecExcludeCalendarList = Array<CalendarSpec>;
-export const ScheduleSpecExcludeCalendarList = /*@__PURE__*/ S.Array(
-  CalendarSpec,
-) as any as S.Schema<ScheduleSpecExcludeCalendarList>;
+export const ScheduleSpecExcludeCalendarList =
+  ScheduleSpecCalendarList as any as S.Schema<ScheduleSpecExcludeCalendarList>;
 
 export type ScheduleSpecExcludeStructuredCalendarList = Array<StructuredCalendarSpec>;
-export const ScheduleSpecExcludeStructuredCalendarList = /*@__PURE__*/ S.Array(
-  StructuredCalendarSpec,
-) as any as S.Schema<ScheduleSpecExcludeStructuredCalendarList>;
+export const ScheduleSpecExcludeStructuredCalendarList =
+  ScheduleSpecStructuredCalendarList as any as S.Schema<ScheduleSpecExcludeStructuredCalendarList>;
 
 /** ScheduleSpec is a complete description of a set of absolute timestamps (possibly infinite) that an action should occur at. The meaning of a ScheduleSpec depends only on its contents and never changes, except that the definition of a time zone can change over time (most commonly, when daylight saving time policy changes for an area). To create a totally self-contained ScheduleSpec, use UTC or include timezone_data. For input, you can provide zero or more of: structured_calendar, calendar, cron_string, interval, and exclude_structured_calendar, and all of them will be used (the schedule will take action at the union of all of their times, minus the ones that match exclude_structured_calendar). On input, calendar and cron_string fields will be compiled into structured_calendar (and maybe interval and timezone_name), so if you Describe a schedule, you'll see only structured_calendar, interval, etc. If a spec has no matching times after the current time, then the schedule will be subject to automatic deletion (after several days). */
 export interface ScheduleSpec {
@@ -579,9 +549,8 @@ export const TaskQueue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskQueue" }) as any as S.Schema<TaskQueue>;
 
 export type PayloadsPayloadsList = Array<unknown>;
-export const PayloadsPayloadsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PayloadsPayloadsList>;
+export const PayloadsPayloadsList =
+  CountActivityExecutionsResponseAggregationGroupGroupValuesList as any as S.Schema<PayloadsPayloadsList>;
 
 /** See `Payload` */
 export interface Payloads {
@@ -604,9 +573,8 @@ export const NewWorkflowExecutionInfoWorkflowIdReusePolicy = S.String;
 
 /** Non-Retryable errors types. Will stop retrying if the error type matches this list. Note that this is not a substring match, the error *type* (not message) must match exactly. */
 export type RetryPolicyNonRetryableErrorTypesList = Array<string>;
-export const RetryPolicyNonRetryableErrorTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RetryPolicyNonRetryableErrorTypesList>;
+export const RetryPolicyNonRetryableErrorTypesList =
+  ScheduleSpecCronStringList as any as S.Schema<RetryPolicyNonRetryableErrorTypesList>;
 
 /** How retries ought to be handled, usable by both workflows and activities */
 export interface RetryPolicy {
@@ -648,10 +616,8 @@ export const Memo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Memo" }) as any as S.Schema<Memo>;
 
 export type SearchAttributesIndexedFieldsMap = { [key: string]: unknown | undefined };
-export const SearchAttributesIndexedFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchAttributesIndexedFieldsMap>;
+export const SearchAttributesIndexedFieldsMap =
+  MemoFieldsMap as any as S.Schema<SearchAttributesIndexedFieldsMap>;
 
 /** A user-defined set of *indexed* fields that are used/exposed when listing/searching workflows. The payload is not serialized in a user-defined way. */
 export interface SearchAttributes {
@@ -664,20 +630,13 @@ export const SearchAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchAttributes" }) as any as S.Schema<SearchAttributes>;
 
 export type HeaderFieldsMap = { [key: string]: unknown | undefined };
-export const HeaderFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HeaderFieldsMap>;
+export const HeaderFieldsMap = MemoFieldsMap as any as S.Schema<HeaderFieldsMap>;
 
 /** Contains metadata that can be attached to a variety of requests, like starting a workflow, and can be propagated between, for example, workflows and activities. */
 export interface Header {
   fields?: HeaderFieldsMap;
 }
-export const Header = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(HeaderFieldsMap),
-  }),
-).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
+export const Header = Memo as any as S.Schema<Header>;
 
 /** Information a user can set, often for use by user interfaces. */
 export interface UserMetadata {
@@ -1321,11 +1280,8 @@ export const DeleteNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNexusEndpointRequest>;
 
 export type DeleteNexusEndpointResponse2 = unknown;
-export const DeleteNexusEndpointResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteNexusEndpointResponse2",
-}) as any as S.Schema<DeleteNexusEndpointResponse2>;
+export const DeleteNexusEndpointResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteNexusEndpointResponse2>;
 
 export interface DeleteScheduleRequest {
   /** The namespace of the schedule to delete. */
@@ -1377,11 +1333,8 @@ export const DeleteWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkerDeploymentRequest>;
 
 export type DeleteWorkerDeploymentResponse2 = unknown;
-export const DeleteWorkerDeploymentResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteWorkerDeploymentResponse2",
-}) as any as S.Schema<DeleteWorkerDeploymentResponse2>;
+export const DeleteWorkerDeploymentResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteWorkerDeploymentResponse2>;
 
 export interface DeleteWorkerDeploymentVersionRequest {
   namespace: string;
@@ -1422,11 +1375,8 @@ export const DeleteWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWorkerDeploymentVersionRequest>;
 
 export type DeleteWorkerDeploymentVersionResponse2 = unknown;
-export const DeleteWorkerDeploymentVersionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteWorkerDeploymentVersionResponse2",
-}) as any as S.Schema<DeleteWorkerDeploymentVersionResponse2>;
+export const DeleteWorkerDeploymentVersionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteWorkerDeploymentVersionResponse2>;
 
 export interface DeleteWorkflowRuleRequest {
   namespace: string;
@@ -1449,11 +1399,8 @@ export const DeleteWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkflowRuleRequest>;
 
 export type DeleteWorkflowRuleResponse2 = unknown;
-export const DeleteWorkflowRuleResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteWorkflowRuleResponse2",
-}) as any as S.Schema<DeleteWorkflowRuleResponse2>;
+export const DeleteWorkflowRuleResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteWorkflowRuleResponse2>;
 
 export interface DescribeActivityExecutionRequest {
   namespace: string;
@@ -2371,10 +2318,8 @@ export const DeploymentInfoTaskQueueInfosList = /*@__PURE__*/ S.Array(
 
 /** A user-defined set of key-values. Can be updated as part of write operations to the deployment, such as `SetCurrentDeployment`. */
 export type DeploymentInfoMetadataMap = { [key: string]: unknown | undefined };
-export const DeploymentInfoMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentInfoMetadataMap>;
+export const DeploymentInfoMetadataMap =
+  MemoFieldsMap as any as S.Schema<DeploymentInfoMetadataMap>;
 
 /** `DeploymentInfo` holds information about a deployment. Deployment information is tracked automatically by server as soon as the first poll from that deployment reaches the server. There can be multiple task queue workers in a single deployment which are listed in this message. Deprecated. */
 export interface DeploymentInfo {
@@ -2431,10 +2376,7 @@ export const NamespaceInfoState = S.String;
 
 /** A key-value map for any customized purpose. */
 export type NamespaceInfoDataMap = { [key: string]: string | undefined };
-export const NamespaceInfoDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceInfoDataMap>;
+export const NamespaceInfoDataMap = CallbackNexusHeaderMap as any as S.Schema<NamespaceInfoDataMap>;
 
 /** Namespace capability details. Should contain what features are enabled in a namespace. */
 export interface NamespaceInfoCapabilities {
@@ -2562,10 +2504,8 @@ export const NamespaceConfigVisibilityArchivalState = S.String;
 
 /** Map from field name to alias. */
 export type NamespaceConfigCustomSearchAttributeAliasesMap = { [key: string]: string | undefined };
-export const NamespaceConfigCustomSearchAttributeAliasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceConfigCustomSearchAttributeAliasesMap>;
+export const NamespaceConfigCustomSearchAttributeAliasesMap =
+  CallbackNexusHeaderMap as any as S.Schema<NamespaceConfigCustomSearchAttributeAliasesMap>;
 
 export interface NamespaceConfig {
   workflowExecutionRetentionTtl?: string;
@@ -2763,16 +2703,13 @@ export const NexusOperationExecutionCancellationInfo = /*@__PURE__*/ S.suspend((
 
 /** Header for context propagation and tracing purposes. */
 export type NexusOperationExecutionInfoNexusHeaderMap = { [key: string]: string | undefined };
-export const NexusOperationExecutionInfoNexusHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NexusOperationExecutionInfoNexusHeaderMap>;
+export const NexusOperationExecutionInfoNexusHeaderMap =
+  CallbackNexusHeaderMap as any as S.Schema<NexusOperationExecutionInfoNexusHeaderMap>;
 
 /** Links attached by the handler of this operation on start or completion. */
 export type NexusOperationExecutionInfoLinksList = Array<Link>;
-export const NexusOperationExecutionInfoLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<NexusOperationExecutionInfoLinksList>;
+export const NexusOperationExecutionInfoLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<NexusOperationExecutionInfoLinksList>;
 
 /** Full current state of a standalone Nexus operation, as of the time of the request. */
 export interface NexusOperationExecutionInfo {
@@ -2957,9 +2894,8 @@ export const ScheduleInfoRecentActionsList = /*@__PURE__*/ S.Array(
 
 /** Next ten scheduled action times. */
 export type ScheduleInfoFutureActionTimesList = Array<string>;
-export const ScheduleInfoFutureActionTimesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduleInfoFutureActionTimesList>;
+export const ScheduleInfoFutureActionTimesList =
+  ScheduleSpecCronStringList as any as S.Schema<ScheduleInfoFutureActionTimesList>;
 
 export interface ScheduleInfo {
   /** Number of actions taken so far. */
@@ -3041,9 +2977,8 @@ export type DescribeTaskQueueRequestApiMode =
 export const DescribeTaskQueueRequestApiMode = S.String;
 
 export type DescribeTaskQueueRequestVersionsBuildIdsList = Array<string>;
-export const DescribeTaskQueueRequestVersionsBuildIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DescribeTaskQueueRequestVersionsBuildIdsList>;
+export const DescribeTaskQueueRequestVersionsBuildIdsList =
+  ScheduleSpecCronStringList as any as S.Schema<DescribeTaskQueueRequestVersionsBuildIdsList>;
 
 export type DescribeTaskQueueRequestTaskQueueTypesItem =
   | "TASK_QUEUE_TYPE_UNSPECIFIED"
@@ -3356,9 +3291,8 @@ export const TaskQueueStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Unversioned workers (with `useVersioning=false`) are reported in unversioned result even if they set a Build ID. */
 export type TaskQueueTypeInfoPollersList = Array<PollerInfo>;
-export const TaskQueueTypeInfoPollersList = /*@__PURE__*/ S.Array(
-  PollerInfo,
-) as any as S.Schema<TaskQueueTypeInfoPollersList>;
+export const TaskQueueTypeInfoPollersList =
+  DescribeTaskQueueResponsePollersList as any as S.Schema<TaskQueueTypeInfoPollersList>;
 
 export interface TaskQueueTypeInfo {
   /** Unversioned workers (with `useVersioning=false`) are reported in unversioned result even if they set a Build ID. */
@@ -3971,10 +3905,8 @@ export const WorkerDeploymentVersionInfoTaskQueueInfosList = /*@__PURE__*/ S.Arr
 
 /** Arbitrary key-values. */
 export type VersionMetadataEntriesMap = { [key: string]: unknown | undefined };
-export const VersionMetadataEntriesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<VersionMetadataEntriesMap>;
+export const VersionMetadataEntriesMap =
+  MemoFieldsMap as any as S.Schema<VersionMetadataEntriesMap>;
 
 export interface VersionMetadata {
   /** Arbitrary key-values. */
@@ -4577,9 +4509,8 @@ export const PendingWorkflowTaskInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingWorkflowTaskInfo" }) as any as S.Schema<PendingWorkflowTaskInfo>;
 
 export type DescribeWorkflowExecutionResponseCallbacksList = Array<CallbackInfo>;
-export const DescribeWorkflowExecutionResponseCallbacksList = /*@__PURE__*/ S.Array(
-  CallbackInfo,
-) as any as S.Schema<DescribeWorkflowExecutionResponseCallbacksList>;
+export const DescribeWorkflowExecutionResponseCallbacksList =
+  DescribeActivityExecutionResponseCallbacksList as any as S.Schema<DescribeWorkflowExecutionResponseCallbacksList>;
 
 export type PendingNexusOperationInfoState =
   | "PENDING_NEXUS_OPERATION_STATE_UNSPECIFIED"
@@ -4995,10 +4926,8 @@ export const GetClusterInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key is client name i.e "temporal-go", "temporal-java", or "temporal-cli". Value is ranges of supported versions of this client i.e ">1.1.1 <=1.4.0 || ^5.0.0". */
 export type GetClusterInfoResponseSupportedClientsMap = { [key: string]: string | undefined };
-export const GetClusterInfoResponseSupportedClientsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetClusterInfoResponseSupportedClientsMap>;
+export const GetClusterInfoResponseSupportedClientsMap =
+  CallbackNexusHeaderMap as any as S.Schema<GetClusterInfoResponseSupportedClientsMap>;
 
 /** ReleaseInfo contains information about specific version of temporal. */
 export interface ReleaseInfo {
@@ -5275,9 +5204,8 @@ export const GetWorkerBuildIdCompatibilityRequest = /*@__PURE__*/ S.suspend(() =
 
 /** All the compatible versions, unordered, except for the last element, which is considered the set "default". */
 export type CompatibleVersionSetBuildIdsList = Array<string>;
-export const CompatibleVersionSetBuildIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CompatibleVersionSetBuildIdsList>;
+export const CompatibleVersionSetBuildIdsList =
+  ScheduleSpecCronStringList as any as S.Schema<CompatibleVersionSetBuildIdsList>;
 
 /** Used by the worker versioning APIs, represents an unordered set of one or more versions which are considered to be compatible with each other. Currently the versions are always worker build IDs. */
 export interface CompatibleVersionSet {
@@ -5310,14 +5238,12 @@ export const GetWorkerBuildIdCompatibilityResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetWorkerBuildIdCompatibilityResponse>;
 
 export type GetWorkerTaskReachabilityRequestBuildIdsList = Array<string>;
-export const GetWorkerTaskReachabilityRequestBuildIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWorkerTaskReachabilityRequestBuildIdsList>;
+export const GetWorkerTaskReachabilityRequestBuildIdsList =
+  ScheduleSpecCronStringList as any as S.Schema<GetWorkerTaskReachabilityRequestBuildIdsList>;
 
 export type GetWorkerTaskReachabilityRequestTaskQueuesList = Array<string>;
-export const GetWorkerTaskReachabilityRequestTaskQueuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWorkerTaskReachabilityRequestTaskQueuesList>;
+export const GetWorkerTaskReachabilityRequestTaskQueuesList =
+  ScheduleSpecCronStringList as any as S.Schema<GetWorkerTaskReachabilityRequestTaskQueuesList>;
 
 export type GetWorkerTaskReachabilityRequestReachability =
   | "TASK_REACHABILITY_UNSPECIFIED"
@@ -5643,9 +5569,8 @@ export const HistoryEventEventType = S.String;
 
 /** Links to related entities, such as the entity that started this event's workflow. */
 export type HistoryEventLinksList = Array<Link>;
-export const HistoryEventLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<HistoryEventLinksList>;
+export const HistoryEventLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<HistoryEventLinksList>;
 
 /** Principal is an authenticated caller identity computed by the server from trusted authentication context. */
 export interface Principal {
@@ -6007,9 +5932,8 @@ export const WorkflowTaskCompletedMetadataCoreUsedFlagsList = /*@__PURE__*/ S.Ar
 
 /** Flags used by the SDK lang. No attempt is made to distinguish between different SDK languages here as processing a workflow with a different language than the one which authored it is already undefined behavior. See `core_used_patches` for more. (-- api-linter: core::0141::forbidden-types=disabled aip.dev/not-precedent: These really shouldn't have negative values. --) */
 export type WorkflowTaskCompletedMetadataLangUsedFlagsList = Array<number>;
-export const WorkflowTaskCompletedMetadataLangUsedFlagsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<WorkflowTaskCompletedMetadataLangUsedFlagsList>;
+export const WorkflowTaskCompletedMetadataLangUsedFlagsList =
+  WorkflowTaskCompletedMetadataCoreUsedFlagsList as any as S.Schema<WorkflowTaskCompletedMetadataLangUsedFlagsList>;
 
 export interface WorkflowTaskCompletedMetadata {
   /** Internal flags used by the core SDK. SDKs using flags must comply with the following behavior: During replay: * If a flag is not recognized (value is too high or not defined), it must fail the workflow task. * If a flag is recognized, it is stored in a set of used flags for the run. Code checks for that flag during and after this WFT are allowed to assume that the flag is present. * If a code check for a flag does not find the flag in the set of used flags, it must take the branch corresponding to the absence of that flag. During non-replay execution of new WFTs: * The SDK is free to use all flags it knows about. It must record any newly-used (IE: not previously recorded) flags when completing the WFT. SDKs which are too old to even know about this field at all are considered to produce undefined behavior if they replay workflows which used this mechanism. (-- api-linter: core::0141::forbidden-types=disabled aip.dev/not-precedent: These really shouldn't have negative values. --) */
@@ -7316,10 +7240,8 @@ export const WorkflowExecutionUpdateAdmittedEventAttributes = /*@__PURE__*/ S.su
 export type NexusOperationScheduledEventAttributesNexusHeaderMap = {
   [key: string]: string | undefined;
 };
-export const NexusOperationScheduledEventAttributesNexusHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NexusOperationScheduledEventAttributesNexusHeaderMap>;
+export const NexusOperationScheduledEventAttributesNexusHeaderMap =
+  CallbackNexusHeaderMap as any as S.Schema<NexusOperationScheduledEventAttributesNexusHeaderMap>;
 
 /** Event marking that an operation was scheduled by a workflow via the ScheduleNexusOperation command. */
 export interface NexusOperationScheduledEventAttributes {
@@ -7433,15 +7355,8 @@ export interface NexusOperationCanceledEventAttributes {
   /** The request ID allocated at schedule time. */
   requestId?: string;
 }
-export const NexusOperationCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheduledEventId: S.optional(S.String),
-    failure: S.optional(Failure),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NexusOperationCanceledEventAttributes",
-}) as any as S.Schema<NexusOperationCanceledEventAttributes>;
+export const NexusOperationCanceledEventAttributes =
+  NexusOperationFailedEventAttributes as any as S.Schema<NexusOperationCanceledEventAttributes>;
 
 /** Nexus operation timed out. */
 export interface NexusOperationTimedOutEventAttributes {
@@ -7452,15 +7367,8 @@ export interface NexusOperationTimedOutEventAttributes {
   /** The request ID allocated at schedule time. */
   requestId?: string;
 }
-export const NexusOperationTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheduledEventId: S.optional(S.String),
-    failure: S.optional(Failure),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NexusOperationTimedOutEventAttributes",
-}) as any as S.Schema<NexusOperationTimedOutEventAttributes>;
+export const NexusOperationTimedOutEventAttributes =
+  NexusOperationFailedEventAttributes as any as S.Schema<NexusOperationTimedOutEventAttributes>;
 
 export interface NexusOperationCancelRequestedEventAttributes {
   /** The id of the `NEXUS_OPERATION_SCHEDULED` event this cancel request corresponds to. */
@@ -7468,14 +7376,8 @@ export interface NexusOperationCancelRequestedEventAttributes {
   /** The `WORKFLOW_TASK_COMPLETED` event that the corresponding RequestCancelNexusOperation command was reported with. */
   workflowTaskCompletedEventId?: string;
 }
-export const NexusOperationCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheduledEventId: S.optional(S.String),
-    workflowTaskCompletedEventId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NexusOperationCancelRequestedEventAttributes",
-}) as any as S.Schema<NexusOperationCancelRequestedEventAttributes>;
+export const NexusOperationCancelRequestedEventAttributes =
+  ActivityTaskCancelRequestedEventAttributes as any as S.Schema<NexusOperationCancelRequestedEventAttributes>;
 
 /** Completion callbacks attached to the running workflow execution. */
 export type WorkflowExecutionOptionsUpdatedEventAttributesAttachedCompletionCallbacksList =
@@ -7584,15 +7486,8 @@ export interface WorkflowExecutionUnpausedEventAttributes {
   /** The request ID of the request that unpaused the workflow execution. */
   requestId?: string;
 }
-export const WorkflowExecutionUnpausedEventAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identity: S.optional(S.String),
-    reason: S.optional(S.String),
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkflowExecutionUnpausedEventAttributes",
-}) as any as S.Schema<WorkflowExecutionUnpausedEventAttributes>;
+export const WorkflowExecutionUnpausedEventAttributes =
+  WorkflowExecutionPausedEventAttributes as any as S.Schema<WorkflowExecutionUnpausedEventAttributes>;
 
 /** Attributes for an event indicating that time skipping state changed for a workflow execution, either time was advanced or time skipping was disabled automatically due to a bound being reached. The worker_may_ignore field in HistoryEvent should always be set true for this event. */
 export interface WorkflowExecutionTimeSkippingTransitionedEventAttributes {
@@ -8364,9 +8259,8 @@ export const ListScheduleMatchingTimesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListScheduleMatchingTimesRequest>;
 
 export type ListScheduleMatchingTimesResponseStartTimeList = Array<string>;
-export const ListScheduleMatchingTimesResponseStartTimeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListScheduleMatchingTimesResponseStartTimeList>;
+export const ListScheduleMatchingTimesResponseStartTimeList =
+  ScheduleSpecCronStringList as any as S.Schema<ListScheduleMatchingTimesResponseStartTimeList>;
 
 export interface ListScheduleMatchingTimesResponse {
   startTime?: ListScheduleMatchingTimesResponseStartTimeList;
@@ -8400,14 +8294,12 @@ export const ListSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** From info (maybe fewer entries): */
 export type ScheduleListInfoRecentActionsList = Array<ScheduleActionResult>;
-export const ScheduleListInfoRecentActionsList = /*@__PURE__*/ S.Array(
-  ScheduleActionResult,
-) as any as S.Schema<ScheduleListInfoRecentActionsList>;
+export const ScheduleListInfoRecentActionsList =
+  ScheduleInfoRecentActionsList as any as S.Schema<ScheduleListInfoRecentActionsList>;
 
 export type ScheduleListInfoFutureActionTimesList = Array<string>;
-export const ScheduleListInfoFutureActionTimesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduleListInfoFutureActionTimesList>;
+export const ScheduleListInfoFutureActionTimesList =
+  ScheduleSpecCronStringList as any as S.Schema<ScheduleListInfoFutureActionTimesList>;
 
 /** ScheduleListInfo is an abbreviated set of values from Schedule and ScheduleInfo that's returned in ListSchedules. */
 export interface ScheduleListInfo {
@@ -8520,10 +8412,8 @@ export const ListSearchAttributesResponseSystemAttributesMap = /*@__PURE__*/ S.R
 
 /** Mapping from the attribute name to the visibility storage native type. */
 export type ListSearchAttributesResponseStorageSchemaMap = { [key: string]: string | undefined };
-export const ListSearchAttributesResponseStorageSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListSearchAttributesResponseStorageSchemaMap>;
+export const ListSearchAttributesResponseStorageSchemaMap =
+  CallbackNexusHeaderMap as any as S.Schema<ListSearchAttributesResponseStorageSchemaMap>;
 
 export interface ListSearchAttributesResponse {
   /** Mapping between custom (user-registered) search attribute name to its IndexedValueType. */
@@ -8641,15 +8531,13 @@ export const WorkerListInfoStatus = S.String;
 
 /** Plugins currently in use by this SDK. */
 export type WorkerListInfoPluginsList = Array<PluginInfo>;
-export const WorkerListInfoPluginsList = /*@__PURE__*/ S.Array(
-  PluginInfo,
-) as any as S.Schema<WorkerListInfoPluginsList>;
+export const WorkerListInfoPluginsList =
+  WorkerHeartbeatPluginsList as any as S.Schema<WorkerListInfoPluginsList>;
 
 /** Storage drivers in use by this SDK. */
 export type WorkerListInfoDriversList = Array<StorageDriverInfo>;
-export const WorkerListInfoDriversList = /*@__PURE__*/ S.Array(
-  StorageDriverInfo,
-) as any as S.Schema<WorkerListInfoDriversList>;
+export const WorkerListInfoDriversList =
+  WorkerHeartbeatDriversList as any as S.Schema<WorkerListInfoDriversList>;
 
 /** Limited worker information returned in the list response. When adding fields here, ensure that it is also added to WorkerInfo (as it carries the full worker information). */
 export interface WorkerListInfo {
@@ -8735,22 +8623,15 @@ export const ListWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkflowExecutionsRequest>;
 
 export type ListWorkflowExecutionsResponseExecutionsList = Array<WorkflowExecutionInfo>;
-export const ListWorkflowExecutionsResponseExecutionsList = /*@__PURE__*/ S.Array(
-  WorkflowExecutionInfo,
-) as any as S.Schema<ListWorkflowExecutionsResponseExecutionsList>;
+export const ListWorkflowExecutionsResponseExecutionsList =
+  ListArchivedWorkflowExecutionsResponseExecutionsList as any as S.Schema<ListWorkflowExecutionsResponseExecutionsList>;
 
 export interface ListWorkflowExecutionsResponse {
   executions?: ListWorkflowExecutionsResponseExecutionsList;
   nextPageToken?: string;
 }
-export const ListWorkflowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executions: S.optional(ListWorkflowExecutionsResponseExecutionsList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkflowExecutionsResponse",
-}) as any as S.Schema<ListWorkflowExecutionsResponse>;
+export const ListWorkflowExecutionsResponse =
+  ListArchivedWorkflowExecutionsResponse as any as S.Schema<ListWorkflowExecutionsResponse>;
 
 export interface ListWorkflowRulesRequest {
   namespace: string;
@@ -8811,9 +8692,8 @@ export const PatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchScheduleRequest" }) as any as S.Schema<PatchScheduleRequest>;
 
 export type PatchScheduleResponse2 = unknown;
-export const PatchScheduleResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PatchScheduleResponse2" }) as any as S.Schema<PatchScheduleResponse2>;
+export const PatchScheduleResponse2 =
+  DeleteScheduleResponse2 as any as S.Schema<PatchScheduleResponse2>;
 
 export interface PauseActivityRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -8850,9 +8730,8 @@ export const PauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PauseActivityRequest" }) as any as S.Schema<PauseActivityRequest>;
 
 export type PauseActivityResponse2 = unknown;
-export const PauseActivityResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PauseActivityResponse2" }) as any as S.Schema<PauseActivityResponse2>;
+export const PauseActivityResponse2 =
+  DeleteScheduleResponse2 as any as S.Schema<PauseActivityResponse2>;
 
 export interface PauseActivityExecutionRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -8894,11 +8773,8 @@ export const PauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseActivityExecutionRequest>;
 
 export type PauseActivityExecutionResponse2 = unknown;
-export const PauseActivityExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PauseActivityExecutionResponse2",
-}) as any as S.Schema<PauseActivityExecutionResponse2>;
+export const PauseActivityExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<PauseActivityExecutionResponse2>;
 
 export interface PauseWorkflowExecutionRequest {
   /** Namespace of the workflow to pause. */
@@ -8934,11 +8810,8 @@ export const PauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseWorkflowExecutionRequest>;
 
 export type PauseWorkflowExecutionResponse2 = unknown;
-export const PauseWorkflowExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PauseWorkflowExecutionResponse2",
-}) as any as S.Schema<PauseWorkflowExecutionResponse2>;
+export const PauseWorkflowExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<PauseWorkflowExecutionResponse2>;
 
 export interface PollActivityExecutionRequest {
   namespace: string;
@@ -9208,15 +9081,8 @@ export interface RecordActivityTaskHeartbeatByIdResponse {
   /** Will be set to true if the activity was reset. Applies only to the current run. */
   activityReset?: boolean;
 }
-export const RecordActivityTaskHeartbeatByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cancelRequested: S.optional(S.Boolean),
-    activityPaused: S.optional(S.Boolean),
-    activityReset: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RecordActivityTaskHeartbeatByIdResponse",
-}) as any as S.Schema<RecordActivityTaskHeartbeatByIdResponse>;
+export const RecordActivityTaskHeartbeatByIdResponse =
+  RecordActivityTaskHeartbeatResponse as any as S.Schema<RecordActivityTaskHeartbeatByIdResponse>;
 
 export type RecordWorkerHeartbeatRequestWorkerHeartbeatList = Array<WorkerHeartbeat>;
 export const RecordWorkerHeartbeatRequestWorkerHeartbeatList = /*@__PURE__*/ S.Array(
@@ -9246,23 +9112,17 @@ export const RecordWorkerHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordWorkerHeartbeatRequest>;
 
 export type RecordWorkerHeartbeatResponse2 = unknown;
-export const RecordWorkerHeartbeatResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RecordWorkerHeartbeatResponse2",
-}) as any as S.Schema<RecordWorkerHeartbeatResponse2>;
+export const RecordWorkerHeartbeatResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RecordWorkerHeartbeatResponse2>;
 
 export type RegisterNamespaceRequestClustersList = Array<ClusterReplicationConfig>;
-export const RegisterNamespaceRequestClustersList = /*@__PURE__*/ S.Array(
-  ClusterReplicationConfig,
-) as any as S.Schema<RegisterNamespaceRequestClustersList>;
+export const RegisterNamespaceRequestClustersList =
+  NamespaceReplicationConfigClustersList as any as S.Schema<RegisterNamespaceRequestClustersList>;
 
 /** A key-value map for any customized purpose. */
 export type RegisterNamespaceRequestDataMap = { [key: string]: string | undefined };
-export const RegisterNamespaceRequestDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegisterNamespaceRequestDataMap>;
+export const RegisterNamespaceRequestDataMap =
+  CallbackNexusHeaderMap as any as S.Schema<RegisterNamespaceRequestDataMap>;
 
 /** If unspecified (ARCHIVAL_STATE_UNSPECIFIED) then default server configuration is used. */
 export type RegisterNamespaceRequestHistoryArchivalState =
@@ -9315,11 +9175,8 @@ export const RegisterNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegisterNamespaceRequest" }) as any as S.Schema<RegisterNamespaceRequest>;
 
 export type RegisterNamespaceResponse2 = unknown;
-export const RegisterNamespaceResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RegisterNamespaceResponse2",
-}) as any as S.Schema<RegisterNamespaceResponse2>;
+export const RegisterNamespaceResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RegisterNamespaceResponse2>;
 
 export interface RequestCancelActivityExecutionRequest {
   namespace: string;
@@ -9353,11 +9210,8 @@ export const RequestCancelActivityExecutionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RequestCancelActivityExecutionRequest>;
 
 export type RequestCancelActivityExecutionResponse2 = unknown;
-export const RequestCancelActivityExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RequestCancelActivityExecutionResponse2",
-}) as any as S.Schema<RequestCancelActivityExecutionResponse2>;
+export const RequestCancelActivityExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RequestCancelActivityExecutionResponse2>;
 
 export interface RequestCancelNexusOperationExecutionRequest {
   namespace: string;
@@ -9391,17 +9245,13 @@ export const RequestCancelNexusOperationExecutionRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RequestCancelNexusOperationExecutionRequest>;
 
 export type RequestCancelNexusOperationExecutionResponse2 = unknown;
-export const RequestCancelNexusOperationExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RequestCancelNexusOperationExecutionResponse2",
-}) as any as S.Schema<RequestCancelNexusOperationExecutionResponse2>;
+export const RequestCancelNexusOperationExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RequestCancelNexusOperationExecutionResponse2>;
 
 /** Links to be associated with the WorkflowExecutionCanceled event. */
 export type RequestCancelWorkflowExecutionRequestLinksList = Array<Link>;
-export const RequestCancelWorkflowExecutionRequestLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<RequestCancelWorkflowExecutionRequestLinksList>;
+export const RequestCancelWorkflowExecutionRequestLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<RequestCancelWorkflowExecutionRequestLinksList>;
 
 export interface RequestCancelWorkflowExecutionRequest {
   namespace: string;
@@ -9440,11 +9290,8 @@ export const RequestCancelWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RequestCancelWorkflowExecutionRequest>;
 
 export type RequestCancelWorkflowExecutionResponse2 = unknown;
-export const RequestCancelWorkflowExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RequestCancelWorkflowExecutionResponse2",
-}) as any as S.Schema<RequestCancelWorkflowExecutionResponse2>;
+export const RequestCancelWorkflowExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RequestCancelWorkflowExecutionResponse2>;
 
 export interface ResetActivityRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -9490,9 +9337,8 @@ export const ResetActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetActivityRequest" }) as any as S.Schema<ResetActivityRequest>;
 
 export type ResetActivityResponse2 = unknown;
-export const ResetActivityResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ResetActivityResponse2" }) as any as S.Schema<ResetActivityResponse2>;
+export const ResetActivityResponse2 =
+  DeleteScheduleResponse2 as any as S.Schema<ResetActivityResponse2>;
 
 export interface ResetActivityExecutionRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -9540,11 +9386,8 @@ export const ResetActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetActivityExecutionRequest>;
 
 export type ResetActivityExecutionResponse2 = unknown;
-export const ResetActivityExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ResetActivityExecutionResponse2",
-}) as any as S.Schema<ResetActivityExecutionResponse2>;
+export const ResetActivityExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<ResetActivityExecutionResponse2>;
 
 /** Deprecated. Use `options`. Default: RESET_REAPPLY_TYPE_SIGNAL */
 export type ResetWorkflowExecutionRequestResetReapplyType =
@@ -9572,9 +9415,8 @@ export const ResetWorkflowExecutionRequestResetReapplyExcludeTypesList = /*@__PU
 
 /** Links to be associated with the WorkflowExecutionSignaled event. */
 export type PostResetOperationSignalWorkflowLinksList = Array<Link>;
-export const PostResetOperationSignalWorkflowLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<PostResetOperationSignalWorkflowLinksList>;
+export const PostResetOperationSignalWorkflowLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<PostResetOperationSignalWorkflowLinksList>;
 
 /** SignalWorkflow represents sending a signal after a workflow reset. Keep the parameter in sync with temporal.api.workflowservice.v1.SignalWorkflowExecutionRequest. */
 export interface PostResetOperationSignalWorkflow {
@@ -9740,11 +9582,8 @@ export const RespondActivityTaskCanceledRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RespondActivityTaskCanceledRequest>;
 
 export type RespondActivityTaskCanceledResponse2 = unknown;
-export const RespondActivityTaskCanceledResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RespondActivityTaskCanceledResponse2",
-}) as any as S.Schema<RespondActivityTaskCanceledResponse2>;
+export const RespondActivityTaskCanceledResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCanceledResponse2>;
 
 export interface RespondActivityTaskCanceledByIdRequest {
   /** Namespace of the workflow which scheduled this activity */
@@ -9786,11 +9625,8 @@ export const RespondActivityTaskCanceledByIdRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RespondActivityTaskCanceledByIdRequest>;
 
 export type RespondActivityTaskCanceledByIdResponse2 = unknown;
-export const RespondActivityTaskCanceledByIdResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RespondActivityTaskCanceledByIdResponse2",
-}) as any as S.Schema<RespondActivityTaskCanceledByIdResponse2>;
+export const RespondActivityTaskCanceledByIdResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCanceledByIdResponse2>;
 
 export interface RespondActivityTaskCompletedRequest {
   namespace: string;
@@ -9827,11 +9663,8 @@ export const RespondActivityTaskCompletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RespondActivityTaskCompletedRequest>;
 
 export type RespondActivityTaskCompletedResponse2 = unknown;
-export const RespondActivityTaskCompletedResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RespondActivityTaskCompletedResponse2",
-}) as any as S.Schema<RespondActivityTaskCompletedResponse2>;
+export const RespondActivityTaskCompletedResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCompletedResponse2>;
 
 export interface RespondActivityTaskCompletedByIdRequest {
   /** Namespace of the workflow which scheduled this activity */
@@ -9870,11 +9703,8 @@ export const RespondActivityTaskCompletedByIdRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RespondActivityTaskCompletedByIdRequest>;
 
 export type RespondActivityTaskCompletedByIdResponse2 = unknown;
-export const RespondActivityTaskCompletedByIdResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RespondActivityTaskCompletedByIdResponse2",
-}) as any as S.Schema<RespondActivityTaskCompletedByIdResponse2>;
+export const RespondActivityTaskCompletedByIdResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCompletedByIdResponse2>;
 
 export interface RespondActivityTaskFailedRequest {
   namespace: string;
@@ -9972,33 +9802,24 @@ export const RespondActivityTaskFailedByIdRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Server validation failures could include last_heartbeat_details payload is too large, request failure is too large */
 export type RespondActivityTaskFailedByIdResponseFailuresList = Array<Failure>;
-export const RespondActivityTaskFailedByIdResponseFailuresList = /*@__PURE__*/ S.Array(
-  Failure,
-) as any as S.Schema<RespondActivityTaskFailedByIdResponseFailuresList>;
+export const RespondActivityTaskFailedByIdResponseFailuresList =
+  RespondActivityTaskFailedResponseFailuresList as any as S.Schema<RespondActivityTaskFailedByIdResponseFailuresList>;
 
 export interface RespondActivityTaskFailedByIdResponse {
   /** Server validation failures could include last_heartbeat_details payload is too large, request failure is too large */
   failures?: RespondActivityTaskFailedByIdResponseFailuresList;
 }
-export const RespondActivityTaskFailedByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failures: S.optional(RespondActivityTaskFailedByIdResponseFailuresList),
-  }),
-).annotate({
-  identifier: "RespondActivityTaskFailedByIdResponse",
-}) as any as S.Schema<RespondActivityTaskFailedByIdResponse>;
+export const RespondActivityTaskFailedByIdResponse =
+  RespondActivityTaskFailedResponse as any as S.Schema<RespondActivityTaskFailedByIdResponse>;
 
 export type UpdateDeploymentMetadataUpsertEntriesMap = { [key: string]: unknown | undefined };
-export const UpdateDeploymentMetadataUpsertEntriesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDeploymentMetadataUpsertEntriesMap>;
+export const UpdateDeploymentMetadataUpsertEntriesMap =
+  MemoFieldsMap as any as S.Schema<UpdateDeploymentMetadataUpsertEntriesMap>;
 
 /** List of keys to remove from the metadata. */
 export type UpdateDeploymentMetadataRemoveEntriesList = Array<string>;
-export const UpdateDeploymentMetadataRemoveEntriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDeploymentMetadataRemoveEntriesList>;
+export const UpdateDeploymentMetadataRemoveEntriesList =
+  ScheduleSpecCronStringList as any as S.Schema<UpdateDeploymentMetadataRemoveEntriesList>;
 
 /** Used as part of Deployment write APIs to update metadata attached to a deployment. Deprecated. */
 export interface UpdateDeploymentMetadata {
@@ -10236,9 +10057,8 @@ export const SignalWithStartWorkflowExecutionRequestWorkflowIdConflictPolicy = S
 
 /** Links to be associated with the WorkflowExecutionStarted and WorkflowExecutionSignaled events. */
 export type SignalWithStartWorkflowExecutionRequestLinksList = Array<Link>;
-export const SignalWithStartWorkflowExecutionRequestLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<SignalWithStartWorkflowExecutionRequestLinksList>;
+export const SignalWithStartWorkflowExecutionRequestLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<SignalWithStartWorkflowExecutionRequestLinksList>;
 
 export interface SignalWithStartWorkflowExecutionRequest {
   namespace: string;
@@ -10353,9 +10173,8 @@ export const SignalWithStartWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(
 
 /** Links to be associated with the WorkflowExecutionSignaled event. */
 export type SignalWorkflowExecutionRequestLinksList = Array<Link>;
-export const SignalWorkflowExecutionRequestLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<SignalWorkflowExecutionRequestLinksList>;
+export const SignalWorkflowExecutionRequestLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<SignalWorkflowExecutionRequestLinksList>;
 
 export interface SignalWorkflowExecutionRequest {
   namespace: string;
@@ -10428,15 +10247,13 @@ export const StartActivityExecutionRequestIdConflictPolicy = S.String;
 
 /** Callbacks to be called by the server when this activity reaches a terminal state. Callback addresses must be whitelisted in the server's dynamic configuration. */
 export type StartActivityExecutionRequestCompletionCallbacksList = Array<Callback>;
-export const StartActivityExecutionRequestCompletionCallbacksList = /*@__PURE__*/ S.Array(
-  Callback,
-) as any as S.Schema<StartActivityExecutionRequestCompletionCallbacksList>;
+export const StartActivityExecutionRequestCompletionCallbacksList =
+  WorkflowExecutionStartedEventAttributesCompletionCallbacksList as any as S.Schema<StartActivityExecutionRequestCompletionCallbacksList>;
 
 /** Links to be associated with the activity. Callbacks may also have associated links; links already included with a callback should not be duplicated here. */
 export type StartActivityExecutionRequestLinksList = Array<Link>;
-export const StartActivityExecutionRequestLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StartActivityExecutionRequestLinksList>;
+export const StartActivityExecutionRequestLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<StartActivityExecutionRequestLinksList>;
 
 /** When starting an execution with a conflict policy that uses an existing execution and there is already an existing running execution, OnConflictOptions defines actions to be taken on the existing running execution. */
 export interface OnConflictOptions {
@@ -10555,9 +10372,8 @@ export const StartActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Executions to apply the batch operation This field and `visibility_query` are mutually exclusive */
 export type StartBatchOperationRequestExecutionsList = Array<WorkflowExecution>;
-export const StartBatchOperationRequestExecutionsList = /*@__PURE__*/ S.Array(
-  WorkflowExecution,
-) as any as S.Schema<StartBatchOperationRequestExecutionsList>;
+export const StartBatchOperationRequestExecutionsList =
+  ScheduleInfoRunningWorkflowsList as any as S.Schema<StartBatchOperationRequestExecutionsList>;
 
 /** BatchOperationTermination sends terminate requests to batch workflows. Keep the parameter in sync with temporal.api.workflowservice.v1.TerminateWorkflowExecutionRequest. Ignore first_execution_run_id because this is used for single workflow operation. */
 export interface BatchOperationTermination {
@@ -10676,9 +10492,8 @@ export const BatchOperationResetResetReapplyType = S.String;
 
 /** Operations to perform after the workflow has been reset. These operations will be applied to the *new* run of the workflow execution in the order they are provided. All operations are applied to the workflow before the first new workflow task is generated */
 export type BatchOperationResetPostResetOperationsList = Array<PostResetOperation>;
-export const BatchOperationResetPostResetOperationsList = /*@__PURE__*/ S.Array(
-  PostResetOperation,
-) as any as S.Schema<BatchOperationResetPostResetOperationsList>;
+export const BatchOperationResetPostResetOperationsList =
+  ResetWorkflowExecutionRequestPostResetOperationsList as any as S.Schema<BatchOperationResetPostResetOperationsList>;
 
 /** BatchOperationReset sends reset requests to batch workflows. Keep the parameter in sync with temporal.api.workflowservice.v1.ResetWorkflowExecutionRequest. */
 export interface BatchOperationReset {
@@ -10858,11 +10673,8 @@ export const StartBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartBatchOperationRequest>;
 
 export type StartBatchOperationResponse2 = unknown;
-export const StartBatchOperationResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartBatchOperationResponse2",
-}) as any as S.Schema<StartBatchOperationResponse2>;
+export const StartBatchOperationResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<StartBatchOperationResponse2>;
 
 /** Defines whether to allow re-using the operation id from a previously *closed* operation. The default policy is NEXUS_OPERATION_ID_REUSE_POLICY_ALLOW_DUPLICATE. */
 export type StartNexusOperationExecutionRequestIdReusePolicy =
@@ -10883,10 +10695,8 @@ export const StartNexusOperationExecutionRequestIdConflictPolicy = S.String;
 export type StartNexusOperationExecutionRequestNexusHeaderMap = {
   [key: string]: string | undefined;
 };
-export const StartNexusOperationExecutionRequestNexusHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StartNexusOperationExecutionRequestNexusHeaderMap>;
+export const StartNexusOperationExecutionRequestNexusHeaderMap =
+  CallbackNexusHeaderMap as any as S.Schema<StartNexusOperationExecutionRequestNexusHeaderMap>;
 
 export interface StartNexusOperationExecutionRequest {
   namespace: string;
@@ -10984,15 +10794,13 @@ export const StartWorkflowExecutionRequestWorkflowIdConflictPolicy = S.String;
 
 /** Callbacks to be called by the server when this workflow reaches a terminal state. If the workflow continues-as-new, these callbacks will be carried over to the new execution. Callback addresses must be whitelisted in the server's dynamic configuration. */
 export type StartWorkflowExecutionRequestCompletionCallbacksList = Array<Callback>;
-export const StartWorkflowExecutionRequestCompletionCallbacksList = /*@__PURE__*/ S.Array(
-  Callback,
-) as any as S.Schema<StartWorkflowExecutionRequestCompletionCallbacksList>;
+export const StartWorkflowExecutionRequestCompletionCallbacksList =
+  WorkflowExecutionStartedEventAttributesCompletionCallbacksList as any as S.Schema<StartWorkflowExecutionRequestCompletionCallbacksList>;
 
 /** Links to be associated with the workflow. */
 export type StartWorkflowExecutionRequestLinksList = Array<Link>;
-export const StartWorkflowExecutionRequestLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<StartWorkflowExecutionRequestLinksList>;
+export const StartWorkflowExecutionRequestLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<StartWorkflowExecutionRequestLinksList>;
 
 export interface StartWorkflowExecutionRequest {
   namespace: string;
@@ -11287,11 +11095,8 @@ export const StopBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopBatchOperationRequest>;
 
 export type StopBatchOperationResponse2 = unknown;
-export const StopBatchOperationResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StopBatchOperationResponse2",
-}) as any as S.Schema<StopBatchOperationResponse2>;
+export const StopBatchOperationResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<StopBatchOperationResponse2>;
 
 export interface TerminateActivityExecutionRequest {
   namespace: string;
@@ -11325,11 +11130,8 @@ export const TerminateActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateActivityExecutionRequest>;
 
 export type TerminateActivityExecutionResponse2 = unknown;
-export const TerminateActivityExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateActivityExecutionResponse2",
-}) as any as S.Schema<TerminateActivityExecutionResponse2>;
+export const TerminateActivityExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<TerminateActivityExecutionResponse2>;
 
 export interface TerminateNexusOperationExecutionRequest {
   namespace: string;
@@ -11363,17 +11165,13 @@ export const TerminateNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<TerminateNexusOperationExecutionRequest>;
 
 export type TerminateNexusOperationExecutionResponse2 = unknown;
-export const TerminateNexusOperationExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateNexusOperationExecutionResponse2",
-}) as any as S.Schema<TerminateNexusOperationExecutionResponse2>;
+export const TerminateNexusOperationExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<TerminateNexusOperationExecutionResponse2>;
 
 /** Links to be associated with the WorkflowExecutionTerminated event. */
 export type TerminateWorkflowExecutionRequestLinksList = Array<Link>;
-export const TerminateWorkflowExecutionRequestLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<TerminateWorkflowExecutionRequestLinksList>;
+export const TerminateWorkflowExecutionRequestLinksList =
+  ActivityExecutionInfoLinksList as any as S.Schema<TerminateWorkflowExecutionRequestLinksList>;
 
 export interface TerminateWorkflowExecutionRequest {
   namespace: string;
@@ -11411,11 +11209,8 @@ export const TerminateWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateWorkflowExecutionRequest>;
 
 export type TerminateWorkflowExecutionResponse2 = unknown;
-export const TerminateWorkflowExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateWorkflowExecutionResponse2",
-}) as any as S.Schema<TerminateWorkflowExecutionResponse2>;
+export const TerminateWorkflowExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<TerminateWorkflowExecutionResponse2>;
 
 export interface TriggerWorkflowRuleRequest {
   namespace: string;
@@ -11500,9 +11295,8 @@ export const UnpauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnpauseActivityRequest" }) as any as S.Schema<UnpauseActivityRequest>;
 
 export type UnpauseActivityResponse2 = unknown;
-export const UnpauseActivityResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UnpauseActivityResponse2" }) as any as S.Schema<UnpauseActivityResponse2>;
+export const UnpauseActivityResponse2 =
+  DeleteScheduleResponse2 as any as S.Schema<UnpauseActivityResponse2>;
 
 export interface UnpauseActivityExecutionRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -11550,11 +11344,8 @@ export const UnpauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnpauseActivityExecutionRequest>;
 
 export type UnpauseActivityExecutionResponse2 = unknown;
-export const UnpauseActivityExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UnpauseActivityExecutionResponse2",
-}) as any as S.Schema<UnpauseActivityExecutionResponse2>;
+export const UnpauseActivityExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<UnpauseActivityExecutionResponse2>;
 
 export interface UnpauseWorkflowExecutionRequest {
   /** Namespace of the workflow to unpause. */
@@ -11590,11 +11381,8 @@ export const UnpauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnpauseWorkflowExecutionRequest>;
 
 export type UnpauseWorkflowExecutionResponse2 = unknown;
-export const UnpauseWorkflowExecutionResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UnpauseWorkflowExecutionResponse2",
-}) as any as S.Schema<UnpauseWorkflowExecutionResponse2>;
+export const UnpauseWorkflowExecutionResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<UnpauseWorkflowExecutionResponse2>;
 
 export interface UpdateActivityExecutionOptionsRequest {
   /** Namespace of the workflow which scheduled this activity */
@@ -11697,20 +11485,13 @@ export interface UpdateActivityOptionsResponse {
   /** Activity options after an update */
   activityOptions?: ActivityOptions;
 }
-export const UpdateActivityOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activityOptions: S.optional(ActivityOptions),
-  }),
-).annotate({
-  identifier: "UpdateActivityOptionsResponse",
-}) as any as S.Schema<UpdateActivityOptionsResponse>;
+export const UpdateActivityOptionsResponse =
+  UpdateActivityExecutionOptionsResponse as any as S.Schema<UpdateActivityOptionsResponse>;
 
 /** A key-value map for any customized purpose. If data already exists on the namespace, this will merge with the existing key values. */
 export type UpdateNamespaceInfoDataMap = { [key: string]: string | undefined };
-export const UpdateNamespaceInfoDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceInfoDataMap>;
+export const UpdateNamespaceInfoDataMap =
+  CallbackNexusHeaderMap as any as S.Schema<UpdateNamespaceInfoDataMap>;
 
 /** New namespace state, server will reject if transition is not allowed. Allowed transitions are: Registered -> [ Deleted | Deprecated | Handover ] Handover -> [ Registered ] Default is NAMESPACE_STATE_UNSPECIFIED which is do not change state. */
 export type UpdateNamespaceInfoState =
@@ -11797,13 +11578,8 @@ export interface UpdateNexusEndpointResponse {
   /** Data post acceptance. Can be used to issue additional updates to this record. */
   endpoint?: Endpoint;
 }
-export const UpdateNexusEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.optional(Endpoint),
-  }),
-).annotate({
-  identifier: "UpdateNexusEndpointResponse",
-}) as any as S.Schema<UpdateNexusEndpointResponse>;
+export const UpdateNexusEndpointResponse =
+  CreateNexusEndpointResponse as any as S.Schema<UpdateNexusEndpointResponse>;
 
 export interface UpdateScheduleRequest {
   /** The namespace of the schedule to update. */
@@ -11843,9 +11619,8 @@ export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateScheduleRequest" }) as any as S.Schema<UpdateScheduleRequest>;
 
 export type UpdateScheduleResponse2 = unknown;
-export const UpdateScheduleResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UpdateScheduleResponse2" }) as any as S.Schema<UpdateScheduleResponse2>;
+export const UpdateScheduleResponse2 =
+  DeleteScheduleResponse2 as any as S.Schema<UpdateScheduleResponse2>;
 
 export type UpdateTaskQueueConfigRequestTaskQueueType =
   | "TASK_QUEUE_TYPE_UNSPECIFIED"
@@ -11873,16 +11648,13 @@ export const UpdateTaskQueueConfigRequestRateLimitUpdate = /*@__PURE__*/ S.suspe
 export type UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap = {
   [key: string]: number | undefined;
 };
-export const UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap>;
+export const UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap =
+  TaskQueueConfigFairnessWeightOverridesMap as any as S.Schema<UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap>;
 
 /** If set, removes any existing fairness weight overrides for each specified fairness key. Fairness weights for corresponding keys fall back to the values set during task creation (if any), or to the default weight of 1.0. */
 export type UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList = Array<string>;
-export const UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList>;
+export const UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList =
+  ScheduleSpecCronStringList as any as S.Schema<UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList>;
 
 export interface UpdateTaskQueueConfigRequest {
   namespace: string;
@@ -11975,13 +11747,8 @@ export interface UpdateWorkerConfigResponse {
   /** The worker configuration. Will be returned if the command was sent to a single worker. */
   workerConfig?: WorkerConfig;
 }
-export const UpdateWorkerConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workerConfig: S.optional(WorkerConfig),
-  }),
-).annotate({
-  identifier: "UpdateWorkerConfigResponse",
-}) as any as S.Schema<UpdateWorkerConfigResponse>;
+export const UpdateWorkerConfigResponse =
+  FetchWorkerConfigResponse as any as S.Schema<UpdateWorkerConfigResponse>;
 
 export interface ComputeConfigScalingGroupUpdate {
   scalingGroup?: ComputeConfigScalingGroup;
@@ -12056,25 +11823,19 @@ export const UpdateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigRequest>;
 
 export type UpdateWorkerDeploymentVersionComputeConfigResponse2 = unknown;
-export const UpdateWorkerDeploymentVersionComputeConfigResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateWorkerDeploymentVersionComputeConfigResponse2",
-}) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigResponse2>;
+export const UpdateWorkerDeploymentVersionComputeConfigResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigResponse2>;
 
 export type UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap>;
+export const UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap =
+  MemoFieldsMap as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap>;
 
 /** List of keys to remove from the metadata. */
 export type UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList = Array<string>;
-export const UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList>;
+export const UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList =
+  ScheduleSpecCronStringList as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList>;
 
 export interface UpdateWorkerDeploymentVersionMetadataRequest {
   namespace: string;
@@ -12263,18 +12024,13 @@ export type ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScal
   [key: string]: ComputeConfigScalingGroupUpdate | undefined;
 };
 export const ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ComputeConfigScalingGroupUpdate,
-  ) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap>;
+  UpdateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap>;
 
 /** Optional. Contains the compute config scaling groups to remove from the Worker Deployment. */
 export type ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
   Array<string>;
 export const ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList>;
+  UpdateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList>;
 
 export interface ValidateWorkerDeploymentVersionComputeConfigRequest {
   namespace: string;
@@ -12314,11 +12070,8 @@ export const ValidateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/
 }) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequest>;
 
 export type ValidateWorkerDeploymentVersionComputeConfigResponse2 = unknown;
-export const ValidateWorkerDeploymentVersionComputeConfigResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ValidateWorkerDeploymentVersionComputeConfigResponse2",
-}) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigResponse2>;
+export const ValidateWorkerDeploymentVersionComputeConfigResponse2 =
+  CreateWorkerDeploymentVersionResponse2 as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigResponse2>;
 
 export type CountActivityExecutionsError = TemporalOpError;
 /** CountActivityExecutions is a visibility API to count activity executions in a specific namespace. */

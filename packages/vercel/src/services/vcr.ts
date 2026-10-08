@@ -283,11 +283,8 @@ export const DeleteBlobsUploadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBlobsUploadRequest" }) as any as S.Schema<DeleteBlobsUploadRequest>;
 
 export type DeleteBlobsUploadResponse = unknown;
-export const DeleteBlobsUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteBlobsUploadResponse",
-}) as any as S.Schema<DeleteBlobsUploadResponse>;
+export const DeleteBlobsUploadResponse =
+  ClearRepositoryPermissionsResponse as any as S.Schema<DeleteBlobsUploadResponse>;
 
 export interface DeleteManifestRequest {
   /** Single Docker repository team slug component. */
@@ -338,9 +335,8 @@ export const DeleteRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepositoryRequest" }) as any as S.Schema<DeleteRepositoryRequest>;
 
 export type DeleteRepositoryResponse = unknown;
-export const DeleteRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteRepositoryResponse" }) as any as S.Schema<DeleteRepositoryResponse>;
+export const DeleteRepositoryResponse =
+  DeleteManifestResponse as any as S.Schema<DeleteRepositoryResponse>;
 
 export interface DeleteRepositoryImageRequest {
   idOrName: string;
@@ -367,11 +363,8 @@ export const DeleteRepositoryImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepositoryImageRequest>;
 
 export type DeleteRepositoryImageResponse = unknown;
-export const DeleteRepositoryImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteRepositoryImageResponse",
-}) as any as S.Schema<DeleteRepositoryImageResponse>;
+export const DeleteRepositoryImageResponse =
+  ClearRepositoryPermissionsResponse as any as S.Schema<DeleteRepositoryImageResponse>;
 
 export interface GetBlobRequest {
   /** Single Docker repository team slug component. */
@@ -399,9 +392,7 @@ export const GetBlobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBlobRequest" }) as any as S.Schema<GetBlobRequest>;
 
 export interface GetBlobResponse {}
-export const GetBlobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetBlobResponse",
-}) as any as S.Schema<GetBlobResponse>;
+export const GetBlobResponse = DeleteBlobResponse as any as S.Schema<GetBlobResponse>;
 
 export interface GetBlobsUploadRequest {
   /** Single Docker repository team slug component. */
@@ -429,9 +420,8 @@ export const GetBlobsUploadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBlobsUploadRequest" }) as any as S.Schema<GetBlobsUploadRequest>;
 
 export type GetBlobsUploadResponse = unknown;
-export const GetBlobsUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetBlobsUploadResponse" }) as any as S.Schema<GetBlobsUploadResponse>;
+export const GetBlobsUploadResponse =
+  DeleteManifestResponse as any as S.Schema<GetBlobsUploadResponse>;
 
 export interface GetManifestRequest {
   /** Single Docker repository team slug component. */
@@ -459,9 +449,7 @@ export const GetManifestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetManifestRequest" }) as any as S.Schema<GetManifestRequest>;
 
 export interface GetManifestResponse {}
-export const GetManifestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetManifestResponse",
-}) as any as S.Schema<GetManifestResponse>;
+export const GetManifestResponse = DeleteBlobResponse as any as S.Schema<GetManifestResponse>;
 
 export interface GetRepositoryRequest {
   idOrName: string;
@@ -484,11 +472,8 @@ export const GetRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRepositoryResponse {
   repository: VcrRepository;
 }
-export const GetRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: VcrRepository,
-  }),
-).annotate({ identifier: "GetRepositoryResponse" }) as any as S.Schema<GetRepositoryResponse>;
+export const GetRepositoryResponse =
+  CreateRepositoryResponse as any as S.Schema<GetRepositoryResponse>;
 
 export interface GetRepositoryImageRequest {
   idOrName: string;
@@ -745,9 +730,8 @@ export const VcrImageDetailStatus = S.String;
 
 /** Tags pointing at this image's manifest. */
 export type VcrImageDetailTagsList = Array<string>;
-export const VcrImageDetailTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VcrImageDetailTagsList>;
+export const VcrImageDetailTagsList =
+  VcrImageLayerCase0CollapsedDigestsList as any as S.Schema<VcrImageDetailTagsList>;
 
 /** A single image with its tags, status and resolved Dockerfile layer history. */
 export interface VcrImageDetail {
@@ -887,9 +871,7 @@ export const GetRootRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRootRequest" }) as any as S.Schema<GetRootRequest>;
 
 export type GetRootResponse = unknown;
-export const GetRootResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetRootResponse" }) as any as S.Schema<GetRootResponse>;
+export const GetRootResponse = DeleteManifestResponse as any as S.Schema<GetRootResponse>;
 
 export interface GetTagsListRequest {
   /** Single Docker repository team slug component. */
@@ -919,9 +901,8 @@ export const GetTagsListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTagsListRequest" }) as any as S.Schema<GetTagsListRequest>;
 
 export type GetTagsListResponseTagsList = Array<string>;
-export const GetTagsListResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTagsListResponseTagsList>;
+export const GetTagsListResponseTagsList =
+  VcrImageLayerCase0CollapsedDigestsList as any as S.Schema<GetTagsListResponseTagsList>;
 
 export interface GetTagsListResponse {
   name: string;
@@ -960,9 +941,7 @@ export const HeadBlobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeadBlobRequest" }) as any as S.Schema<HeadBlobRequest>;
 
 export interface HeadBlobResponse {}
-export const HeadBlobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HeadBlobResponse",
-}) as any as S.Schema<HeadBlobResponse>;
+export const HeadBlobResponse = DeleteBlobResponse as any as S.Schema<HeadBlobResponse>;
 
 export interface HeadManifestRequest {
   /** Single Docker repository team slug component. */
@@ -990,9 +969,7 @@ export const HeadManifestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeadManifestRequest" }) as any as S.Schema<HeadManifestRequest>;
 
 export interface HeadManifestResponse {}
-export const HeadManifestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HeadManifestResponse",
-}) as any as S.Schema<HeadManifestResponse>;
+export const HeadManifestResponse = DeleteBlobResponse as any as S.Schema<HeadManifestResponse>;
 
 export interface ListRepositoriesRequest {
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -1070,9 +1047,8 @@ export const VcrImageListItemStatus = S.String;
 
 /** Tags pointing at this image's manifest. */
 export type VcrImageListItemTagsList = Array<string>;
-export const VcrImageListItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VcrImageListItemTagsList>;
+export const VcrImageListItemTagsList =
+  VcrImageLayerCase0CollapsedDigestsList as any as S.Schema<VcrImageListItemTagsList>;
 
 /** An image enriched with its tags and VHS-readiness status, as returned when listing a repository's images. */
 export interface VcrImageListItem {
@@ -1301,11 +1277,8 @@ export const RemoveRepositoryPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveRepositoryPermissionRequest>;
 
 export type RemoveRepositoryPermissionResponse = unknown;
-export const RemoveRepositoryPermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RemoveRepositoryPermissionResponse",
-}) as any as S.Schema<RemoveRepositoryPermissionResponse>;
+export const RemoveRepositoryPermissionResponse =
+  ClearRepositoryPermissionsResponse as any as S.Schema<RemoveRepositoryPermissionResponse>;
 
 export interface ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest {
   /** Single Docker repository team slug component. */
@@ -1340,9 +1313,7 @@ export const ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidReq
 
 export type ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse = unknown;
 export const ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse =
-  /*@__PURE__*/ S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-    identifier: "ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse",
-  }) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>;
+  CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>;
 
 export interface ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest {
   /** Single Docker repository team slug component. */
@@ -1374,9 +1345,7 @@ export const ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceR
 
 export type ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse = unknown;
 export const ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-    identifier: "ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse",
-  }) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse>;
+  CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse>;
 
 export interface UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest {
   /** Single Docker repository team slug component. */
@@ -1408,9 +1377,7 @@ export const UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequ
 
 export type UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse = unknown;
 export const UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse =
-  /*@__PURE__*/ S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-    identifier: "UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse",
-  }) as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>;
+  CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>;
 
 export type AddRepositoryPermissionError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Add a repository permission Grant a team access to a VCR repository. Sharing applies to the whole repository. */

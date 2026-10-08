@@ -529,9 +529,8 @@ export const UpdateOrgPrivateRegistryRequestVisibility = S.String;
 
 /** An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`. */
 export type UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList = Array<number>;
-export const UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList>;
+export const UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList =
+  CreateOrgPrivateRegistryRequestSelectedRepositoryIdsList as any as S.Schema<UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList>;
 
 /** The authentication type for the private registry. This field cannot be changed after creation. If provided, it must match the existing `auth_type` of the configuration. To change the authentication type, delete and recreate the configuration. */
 export type UpdateOrgPrivateRegistryRequestAuthType =
@@ -634,11 +633,8 @@ export const UpdateOrgPrivateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrgPrivateRegistryRequest>;
 
 export interface UpdateOrgPrivateRegistryResponse {}
-export const UpdateOrgPrivateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrgPrivateRegistryResponse",
-}) as any as S.Schema<UpdateOrgPrivateRegistryResponse>;
+export const UpdateOrgPrivateRegistryResponse =
+  DeleteOrgPrivateRegistryResponse as any as S.Schema<UpdateOrgPrivateRegistryResponse>;
 
 export type CreateOrgPrivateRegistryError = NotFound | UnprocessableEntity | GithubOpError;
 /** Create a private registry for an organization Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)." For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. */

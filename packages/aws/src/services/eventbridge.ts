@@ -408,15 +408,8 @@ export interface ConnectionQueryStringParameter {
   Value?: string | redacted.Redacted<string>;
   IsValueSecret?: boolean;
 }
-export const ConnectionQueryStringParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Value: S.optional(SensitiveString),
-    IsValueSecret: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConnectionQueryStringParameter",
-}) as any as S.Schema<ConnectionQueryStringParameter>;
+export const ConnectionQueryStringParameter =
+  ConnectionHeaderParameter as any as S.Schema<ConnectionQueryStringParameter>;
 export type ConnectionQueryStringParametersList = ConnectionQueryStringParameter[];
 export const ConnectionQueryStringParametersList = /*@__PURE__*/ S.Array(
   ConnectionQueryStringParameter,
@@ -751,11 +744,8 @@ export const DeactivateEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeactivateEventSourceRequest",
 }) as any as S.Schema<DeactivateEventSourceRequest>;
 export interface DeactivateEventSourceResponse {}
-export const DeactivateEventSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeactivateEventSourceResponse",
-}) as any as S.Schema<DeactivateEventSourceResponse>;
+export const DeactivateEventSourceResponse =
+  ActivateEventSourceResponse as any as S.Schema<DeactivateEventSourceResponse>;
 export interface DeauthorizeConnectionRequest {
   Name: string;
 }
@@ -795,11 +785,8 @@ export const DeleteApiDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteApiDestinationRequest",
 }) as any as S.Schema<DeleteApiDestinationRequest>;
 export interface DeleteApiDestinationResponse {}
-export const DeleteApiDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteApiDestinationResponse",
-}) as any as S.Schema<DeleteApiDestinationResponse>;
+export const DeleteApiDestinationResponse =
+  ActivateEventSourceResponse as any as S.Schema<DeleteApiDestinationResponse>;
 export interface DeleteArchiveRequest {
   ArchiveName: string;
 }
@@ -857,9 +844,8 @@ export const DeleteEventBusRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEventBusRequest" }) as any as S.Schema<DeleteEventBusRequest>;
 export interface DeleteEventBusResponse {}
-export const DeleteEventBusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "DeleteEventBusResponse" },
-) as any as S.Schema<DeleteEventBusResponse>;
+export const DeleteEventBusResponse =
+  DeleteEndpointResponse as any as S.Schema<DeleteEventBusResponse>;
 export interface DeletePartnerEventSourceRequest {
   Name: string;
   Account: string;
@@ -872,11 +858,8 @@ export const DeletePartnerEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePartnerEventSourceRequest",
 }) as any as S.Schema<DeletePartnerEventSourceRequest>;
 export interface DeletePartnerEventSourceResponse {}
-export const DeletePartnerEventSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeletePartnerEventSourceResponse",
-}) as any as S.Schema<DeletePartnerEventSourceResponse>;
+export const DeletePartnerEventSourceResponse =
+  ActivateEventSourceResponse as any as S.Schema<DeletePartnerEventSourceResponse>;
 export type RuleName = string;
 export type EventBusNameOrArn = string;
 export interface DeleteRuleRequest {
@@ -892,9 +875,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteRuleResponse",
-}) as any as S.Schema<DeleteRuleResponse>;
+export const DeleteRuleResponse = DeleteArchiveResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DescribeApiDestinationRequest {
   Name: string;
 }
@@ -1331,9 +1312,7 @@ export const DisableRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableRuleRequest" }) as any as S.Schema<DisableRuleRequest>;
 export interface DisableRuleResponse {}
-export const DisableRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DisableRuleResponse",
-}) as any as S.Schema<DisableRuleResponse>;
+export const DisableRuleResponse = DeleteArchiveResponse as any as S.Schema<DisableRuleResponse>;
 export interface EnableRuleRequest {
   Name: string;
   EventBusName?: string;
@@ -1344,9 +1323,7 @@ export const EnableRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EnableRuleRequest" }) as any as S.Schema<EnableRuleRequest>;
 export interface EnableRuleResponse {}
-export const EnableRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "EnableRuleResponse",
-}) as any as S.Schema<EnableRuleResponse>;
+export const EnableRuleResponse = DeleteArchiveResponse as any as S.Schema<EnableRuleResponse>;
 export type NextToken = string;
 export type LimitMax100 = number;
 export interface ListApiDestinationsRequest {
@@ -1781,7 +1758,7 @@ export const ListRuleNamesByTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRuleNamesByTargetRequest",
 }) as any as S.Schema<ListRuleNamesByTargetRequest>;
 export type RuleNameList = string[];
-export const RuleNameList = /*@__PURE__*/ S.Array(S.String);
+export const RuleNameList = ReplayDestinationFilters as any as S.Schema<RuleNameList>;
 export interface ListRuleNamesByTargetResponse {
   RuleNames?: string[];
   NextToken?: string;
@@ -1897,7 +1874,8 @@ export const KinesisParameters = /*@__PURE__*/ S.suspend(() =>
 export type RunCommandTargetKey = string;
 export type RunCommandTargetValue = string;
 export type RunCommandTargetValues = string[];
-export const RunCommandTargetValues = /*@__PURE__*/ S.Array(S.String);
+export const RunCommandTargetValues =
+  ReplayDestinationFilters as any as S.Schema<RunCommandTargetValues>;
 export interface RunCommandTarget {
   Key: string;
   Values: string[];
@@ -1918,7 +1896,7 @@ export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL" | (string & {});
 export const LaunchType = S.String;
 
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = ReplayDestinationFilters as any as S.Schema<StringList>;
 export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
 export const AssignPublicIp = S.String;
 
@@ -2058,19 +2036,14 @@ export const SqsParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqsParameters" }) as any as S.Schema<SqsParameters>;
 export type PathParameter = string;
 export type PathParameterList = string[];
-export const PathParameterList = /*@__PURE__*/ S.Array(S.String);
+export const PathParameterList = ReplayDestinationFilters as any as S.Schema<PathParameterList>;
 export type HeaderValue = string;
 export type HeaderParametersMap = { [key: string]: string | undefined };
-export const HeaderParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const HeaderParametersMap = TransformerPaths as any as S.Schema<HeaderParametersMap>;
 export type QueryStringValue = string;
 export type QueryStringParametersMap = { [key: string]: string | undefined };
-export const QueryStringParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const QueryStringParametersMap =
+  TransformerPaths as any as S.Schema<QueryStringParametersMap>;
 export interface HttpParameters {
   PathParameterValues?: string[];
   HeaderParameters?: { [key: string]: string | undefined };
@@ -2204,7 +2177,7 @@ export const ListTargetsByRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export type EventTime = Date;
 export type EventResource = string;
 export type EventResourceList = string[];
-export const EventResourceList = /*@__PURE__*/ S.Array(S.String);
+export const EventResourceList = ReplayDestinationFilters as any as S.Schema<EventResourceList>;
 export type NonPartnerEventBusNameOrArn = string;
 export type TraceHeader = string;
 export interface PutEventsRequestEntry {
@@ -2351,9 +2324,8 @@ export const PutPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "PutPermissionRequest" }) as any as S.Schema<PutPermissionRequest>;
 export interface PutPermissionResponse {}
-export const PutPermissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "PutPermissionResponse",
-}) as any as S.Schema<PutPermissionResponse>;
+export const PutPermissionResponse =
+  DeleteArchiveResponse as any as S.Schema<PutPermissionResponse>;
 export interface PutRuleRequest {
   Name: string;
   ScheduleExpression?: string;
@@ -2433,7 +2405,7 @@ export const RemovePermissionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({ identifier: "RemovePermissionResponse" }) as any as S.Schema<RemovePermissionResponse>;
 export type TargetIdList = string[];
-export const TargetIdList = /*@__PURE__*/ S.Array(S.String);
+export const TargetIdList = ReplayDestinationFilters as any as S.Schema<TargetIdList>;
 export interface RemoveTargetsRequest {
   Rule: string;
   EventBusName?: string;
@@ -2453,25 +2425,16 @@ export interface RemoveTargetsResultEntry {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const RemoveTargetsResultEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TargetId: S.optional(S.String),
-    ErrorCode: S.optional(S.String),
-    ErrorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "RemoveTargetsResultEntry" }) as any as S.Schema<RemoveTargetsResultEntry>;
+export const RemoveTargetsResultEntry =
+  PutTargetsResultEntry as any as S.Schema<RemoveTargetsResultEntry>;
 export type RemoveTargetsResultEntryList = RemoveTargetsResultEntry[];
-export const RemoveTargetsResultEntryList = /*@__PURE__*/ S.Array(RemoveTargetsResultEntry);
+export const RemoveTargetsResultEntryList =
+  PutTargetsResultEntryList as any as S.Schema<RemoveTargetsResultEntryList>;
 export interface RemoveTargetsResponse {
   FailedEntryCount?: number;
   FailedEntries?: RemoveTargetsResultEntry[];
 }
-export const RemoveTargetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FailedEntryCount: S.optional(S.Number),
-    FailedEntries: S.optional(RemoveTargetsResultEntryList),
-  }).pipe(ns),
-).annotate({ identifier: "RemoveTargetsResponse" }) as any as S.Schema<RemoveTargetsResponse>;
+export const RemoveTargetsResponse = PutTargetsResponse as any as S.Schema<RemoveTargetsResponse>;
 export interface StartReplayRequest {
   ReplayName: string;
   Description?: string;
@@ -2514,9 +2477,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteArchiveResponse as any as S.Schema<TagResourceResponse>;
 export interface TestEventPatternRequest {
   EventPattern: string;
   Event: string;
@@ -2533,7 +2494,7 @@ export const TestEventPatternResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Result: S.optional(S.Boolean) }).pipe(ns),
 ).annotate({ identifier: "TestEventPatternResponse" }) as any as S.Schema<TestEventPatternResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ReplayDestinationFilters as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -2544,9 +2505,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteArchiveResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApiDestinationRequest {
   Name: string;
   Description?: string;
@@ -2573,16 +2533,8 @@ export interface UpdateApiDestinationResponse {
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
-export const UpdateApiDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApiDestinationArn: S.optional(S.String),
-    ApiDestinationState: S.optional(ApiDestinationState),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateApiDestinationResponse",
-}) as any as S.Schema<UpdateApiDestinationResponse>;
+export const UpdateApiDestinationResponse =
+  CreateApiDestinationResponse as any as S.Schema<UpdateApiDestinationResponse>;
 export interface UpdateArchiveRequest {
   ArchiveName: string;
   Description?: string;
@@ -2605,14 +2557,8 @@ export interface UpdateArchiveResponse {
   StateReason?: string;
   CreationTime?: Date;
 }
-export const UpdateArchiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ArchiveArn: S.optional(S.String),
-    State: S.optional(ArchiveState),
-    StateReason: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }).pipe(ns),
-).annotate({ identifier: "UpdateArchiveResponse" }) as any as S.Schema<UpdateArchiveResponse>;
+export const UpdateArchiveResponse =
+  CreateArchiveResponse as any as S.Schema<UpdateArchiveResponse>;
 export interface UpdateConnectionBasicAuthRequestParameters {
   Username?: string;
   Password?: string | redacted.Redacted<string>;
@@ -2699,15 +2645,8 @@ export interface UpdateConnectionResponse {
   LastModifiedTime?: Date;
   LastAuthorizedTime?: Date;
 }
-export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectionArn: S.optional(S.String),
-    ConnectionState: S.optional(ConnectionState),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastAuthorizedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }).pipe(ns),
-).annotate({ identifier: "UpdateConnectionResponse" }) as any as S.Schema<UpdateConnectionResponse>;
+export const UpdateConnectionResponse =
+  DeleteConnectionResponse as any as S.Schema<UpdateConnectionResponse>;
 export interface UpdateEndpointRequest {
   Name: string;
   Description?: string;

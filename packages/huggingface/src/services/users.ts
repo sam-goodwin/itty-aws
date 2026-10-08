@@ -269,9 +269,7 @@ export const GetUserUsageV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserUsageV2Request" }) as any as S.Schema<GetUserUsageV2Request>;
 
 export interface GetUserUsageV2Response {}
-export const GetUserUsageV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUserUsageV2Response",
-}) as any as S.Schema<GetUserUsageV2Response>;
+export const GetUserUsageV2Response = GetAvatarResponse as any as S.Schema<GetUserUsageV2Response>;
 
 export interface ListFollowedOrganizationsRequest {
   username: string;
@@ -527,9 +525,8 @@ export const ListUserFollowersResponseBodyItemCase0OrgsItem =
 
 export type ListUserFollowersResponseBodyItemCase0OrgsList =
   Array<ListFollowedUsersResponseBodyItemOrgsItem>;
-export const ListUserFollowersResponseBodyItemCase0OrgsList = /*@__PURE__*/ S.Array(
-  ListFollowedUsersResponseBodyItemOrgsItem,
-) as any as S.Schema<ListUserFollowersResponseBodyItemCase0OrgsList>;
+export const ListUserFollowersResponseBodyItemCase0OrgsList =
+  ListFollowedUsersResponseBodyItemOrgsList as any as S.Schema<ListUserFollowersResponseBodyItemCase0OrgsList>;
 
 /** Set when the user is a service account */
 export type ListUserFollowersResponseBodyItemCase0ServiceAccount =
@@ -565,36 +562,8 @@ export interface ListUserFollowersResponseBodyItemCase0 {
   serviceAccount?: ListFollowedUsersResponseBodyItemServiceAccount;
   type: string;
 }
-export const ListUserFollowersResponseBodyItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    orgs: S.optional(ListUserFollowersResponseBodyItemCase0OrgsList),
-    avatarUrl: S.String,
-    fullname: S.String,
-    isPro: S.Boolean,
-    user: S.String,
-    numModels: S.optional(S.Number),
-    numDatasets: S.optional(S.Number),
-    numSpaces: S.optional(S.Number),
-    numBuckets: S.optional(S.Number),
-    numKernels: S.optional(S.Number),
-    numDiscussions: S.optional(S.Number),
-    numPapers: S.optional(S.Number),
-    numUpvotes: S.optional(S.Number),
-    numLikes: S.optional(S.Number),
-    numFollowers: S.optional(S.Number),
-    numFollowing: S.optional(S.Number),
-    numFollowingOrgs: S.optional(S.Number),
-    details: S.optional(S.String),
-    isFollowing: S.optional(S.Boolean),
-    reasonToFollow: S.optional(S.String),
-    primaryOrgAvatarUrl: S.optional(S.String),
-    serviceAccount: S.optional(ListFollowedUsersResponseBodyItemServiceAccount),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "ListUserFollowersResponseBodyItemCase0",
-}) as any as S.Schema<ListUserFollowersResponseBodyItemCase0>;
+export const ListUserFollowersResponseBodyItemCase0 =
+  ListFollowedUsersResponseBodyItem as any as S.Schema<ListUserFollowersResponseBodyItemCase0>;
 
 /** Returned when `expand=followedAt` is set */
 export interface ListUserFollowersResponseBodyItemCase1 {
@@ -775,9 +744,7 @@ export const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamMetricsRequest" }) as any as S.Schema<StreamMetricsRequest>;
 
 export interface StreamMetricsResponse {}
-export const StreamMetricsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StreamMetricsResponse",
-}) as any as S.Schema<StreamMetricsResponse>;
+export const StreamMetricsResponse = GetAvatarResponse as any as S.Schema<StreamMetricsResponse>;
 
 export interface StreamUserUsageRequest {}
 export const StreamUserUsageRequest = /*@__PURE__*/ S.suspend(() =>
@@ -785,9 +752,8 @@ export const StreamUserUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamUserUsageRequest" }) as any as S.Schema<StreamUserUsageRequest>;
 
 export interface StreamUserUsageResponse {}
-export const StreamUserUsageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StreamUserUsageResponse",
-}) as any as S.Schema<StreamUserUsageResponse>;
+export const StreamUserUsageResponse =
+  GetAvatarResponse as any as S.Schema<StreamUserUsageResponse>;
 
 export interface StreamUserUsageByUsernameRequest {
   username: string;
@@ -820,9 +786,8 @@ export type UserOverviewResponseOrgsItem = ListFollowedUsersResponseBodyItemOrgs
 export const UserOverviewResponseOrgsItem = ListFollowedUsersResponseBodyItemOrgsItem;
 
 export type UserOverviewResponseOrgsList = Array<ListFollowedUsersResponseBodyItemOrgsItem>;
-export const UserOverviewResponseOrgsList = /*@__PURE__*/ S.Array(
-  ListFollowedUsersResponseBodyItemOrgsItem,
-) as any as S.Schema<UserOverviewResponseOrgsList>;
+export const UserOverviewResponseOrgsList =
+  ListFollowedUsersResponseBodyItemOrgsList as any as S.Schema<UserOverviewResponseOrgsList>;
 
 /** Set when the user is a service account */
 export type UserOverviewResponseServiceAccount = ListFollowedUsersResponseBodyItemServiceAccount;

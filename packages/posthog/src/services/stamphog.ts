@@ -235,9 +235,8 @@ export const ReviewOutputSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Issues the reviewer found that block approval. */
 export type ReviewReasoningShowstoppersList = Array<string>;
-export const ReviewReasoningShowstoppersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReviewReasoningShowstoppersList>;
+export const ReviewReasoningShowstoppersList =
+  StamphogSyncInstallationResponseSkippedList as any as S.Schema<ReviewReasoningShowstoppersList>;
 
 /** The reviewer's reasoning for one run, the same text stamphog posts as its GitHub review. */
 export interface ReviewReasoning {
@@ -585,9 +584,8 @@ export const GetStamphogRepoConfigsAvailableRepositoryRequest = /*@__PURE__*/ S.
 
 /** Repository full names the team can add, sorted by name and capped by limit. Only repositories a project member proved access to on GitHub are listed, and never one another project already holds under the same installation. */
 export type StamphogAvailableRepositoriesRepositoriesList = Array<string>;
-export const StamphogAvailableRepositoriesRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StamphogAvailableRepositoriesRepositoriesList>;
+export const StamphogAvailableRepositoriesRepositoriesList =
+  StamphogSyncInstallationResponseSkippedList as any as S.Schema<StamphogAvailableRepositoriesRepositoriesList>;
 
 /** Repositories from the team's connected GitHub installations that are not added to stamphog yet. */
 export interface StamphogAvailableRepositories {
@@ -740,9 +738,8 @@ export const ListStamphogRepoConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStamphogRepoConfigsRequest>;
 
 export type PaginatedStamphogRepoConfigListResultsList = Array<StamphogRepoConfig>;
-export const PaginatedStamphogRepoConfigListResultsList = /*@__PURE__*/ S.Array(
-  StamphogRepoConfig,
-) as any as S.Schema<PaginatedStamphogRepoConfigListResultsList>;
+export const PaginatedStamphogRepoConfigListResultsList =
+  StamphogSyncInstallationResponseSyncedList as any as S.Schema<PaginatedStamphogRepoConfigListResultsList>;
 
 export interface PaginatedStamphogRepoConfigList {
   count: number;

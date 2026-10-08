@@ -130,11 +130,8 @@ export const CreateUsersIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/
 }) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackRequest>;
 
 export interface CreateUsersIntegrationsGithubPrepareCallbackResponse {}
-export const CreateUsersIntegrationsGithubPrepareCallbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateUsersIntegrationsGithubPrepareCallbackResponse",
-}) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackResponse>;
+export const CreateUsersIntegrationsGithubPrepareCallbackResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackResponse>;
 
 /** * `later` - Later * `other` - Other */
 export type OnboardingSkipRequestReasonEnum = "later" | "other";
@@ -854,10 +851,8 @@ export type OrganizationPluginsAccessLevelEnum = 0 | 3 | 6 | 9;
 export const OrganizationPluginsAccessLevelEnum = S.Number;
 
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
-export const OrganizationTeamsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationTeamsItemMap>;
+export const OrganizationTeamsItemMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<OrganizationTeamsItemMap>;
 
 export type OrganizationTeamsList = Array<OrganizationTeamsItemMap>;
 export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
@@ -865,15 +860,12 @@ export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OrganizationTeamsList>;
 
 export type OrganizationProjectsItemMap = { [key: string]: unknown | undefined };
-export const OrganizationProjectsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationProjectsItemMap>;
+export const OrganizationProjectsItemMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<OrganizationProjectsItemMap>;
 
 export type OrganizationProjectsList = Array<OrganizationProjectsItemMap>;
-export const OrganizationProjectsList = /*@__PURE__*/ S.Array(
-  OrganizationProjectsItemMap,
-) as any as S.Schema<OrganizationProjectsList>;
+export const OrganizationProjectsList =
+  OrganizationTeamsList as any as S.Schema<OrganizationProjectsList>;
 
 export type OrganizationAvailableProductFeaturesList = Array<unknown>;
 export const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
@@ -1365,20 +1357,15 @@ export const CreateUsersRequestEmailVerificationRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateUsersRequestEmailVerificationRequest>;
 
 export interface CreateUsersRequestEmailVerificationResponse {}
-export const CreateUsersRequestEmailVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateUsersRequestEmailVerificationResponse",
-}) as any as S.Schema<CreateUsersRequestEmailVerificationResponse>;
+export const CreateUsersRequestEmailVerificationResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersRequestEmailVerificationResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersScenePersonalisationRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUsersScenePersonalisationRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateUsersScenePersonalisationRequestNotificationSettingsMap>;
+export const CreateUsersScenePersonalisationRequestNotificationSettingsMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersScenePersonalisationRequestNotificationSettingsMap>;
 
 export type CreateUsersScenePersonalisationRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const CreateUsersScenePersonalisationRequestToolbarMode =
@@ -1459,11 +1446,8 @@ export const CreateUsersScenePersonalisationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateUsersScenePersonalisationRequest>;
 
 export interface CreateUsersScenePersonalisationResponse {}
-export const CreateUsersScenePersonalisationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateUsersScenePersonalisationResponse",
-}) as any as S.Schema<CreateUsersScenePersonalisationResponse>;
+export const CreateUsersScenePersonalisationResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersScenePersonalisationResponse>;
 
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
 export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
@@ -1564,10 +1548,8 @@ export const SignalUserAutonomyConfig = /*@__PURE__*/ S.suspend(() =>
 export type CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap>;
+export const CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap>;
 
 export type CreateUsersTwoFactorBackupCodeRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const CreateUsersTwoFactorBackupCodeRequestToolbarMode =
@@ -1646,20 +1628,15 @@ export const CreateUsersTwoFactorBackupCodeRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateUsersTwoFactorBackupCodeRequest>;
 
 export interface CreateUsersTwoFactorBackupCodeResponse {}
-export const CreateUsersTwoFactorBackupCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateUsersTwoFactorBackupCodeResponse",
-}) as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>;
+export const CreateUsersTwoFactorBackupCodeResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersValidate2faRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUsersValidate2faRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateUsersValidate2faRequestNotificationSettingsMap>;
+export const CreateUsersValidate2faRequestNotificationSettingsMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersValidate2faRequestNotificationSettingsMap>;
 
 export type CreateUsersValidate2faRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const CreateUsersValidate2faRequestToolbarMode =
@@ -1782,9 +1759,8 @@ export const GetUsersHedgehogConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersHedgehogConfigRequest>;
 
 export interface GetUsersHedgehogConfigResponse {}
-export const GetUsersHedgehogConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUsersHedgehogConfigResponse",
-}) as any as S.Schema<GetUsersHedgehogConfigResponse>;
+export const GetUsersHedgehogConfigResponse =
+  CreateUsersValidate2faResponse as any as S.Schema<GetUsersHedgehogConfigResponse>;
 
 export interface GetUsersIntegrationsCodexRequest {
   uuid: string;
@@ -1830,9 +1806,8 @@ export const GetUsersIntegrationsGithubBranchRequest = /*@__PURE__*/ S.suspend((
 
 /** List of branch names */
 export type GitHubBranchesResponseBranchesList = Array<string>;
-export const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GitHubBranchesResponseBranchesList>;
+export const GitHubBranchesResponseBranchesList =
+  UserOutputActiveRealtimeNotificationTypesList as any as S.Schema<GitHubBranchesResponseBranchesList>;
 
 export interface GitHubBranchesResponse {
   /** List of branch names */
@@ -2021,9 +1996,8 @@ export const GetUsersStart2faSetupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersStart2faSetupRequest>;
 
 export interface GetUsersStart2faSetupResponse {}
-export const GetUsersStart2faSetupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUsersStart2faSetupResponse",
-}) as any as S.Schema<GetUsersStart2faSetupResponse>;
+export const GetUsersStart2faSetupResponse =
+  CreateUsersValidate2faResponse as any as S.Schema<GetUsersStart2faSetupResponse>;
 
 export interface GetUsersTwoFactorStatusRequest {
   uuid: string;
@@ -2081,11 +2055,8 @@ export const InstallUsersIntegrationsGithubRequestsDestroyRequest = /*@__PURE__*
 }) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyRequest>;
 
 export interface InstallUsersIntegrationsGithubRequestsDestroyResponse {}
-export const InstallUsersIntegrationsGithubRequestsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InstallUsersIntegrationsGithubRequestsDestroyResponse",
-}) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyResponse>;
+export const InstallUsersIntegrationsGithubRequestsDestroyResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyResponse>;
 
 export interface ListUsersRequest {
   email?: string;
@@ -2316,11 +2287,8 @@ export const LoginUserSessionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoginUserSessionsDestroyRequest>;
 
 export interface LoginUserSessionsDestroyResponse {}
-export const LoginUserSessionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LoginUserSessionsDestroyResponse",
-}) as any as S.Schema<LoginUserSessionsDestroyResponse>;
+export const LoginUserSessionsDestroyResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<LoginUserSessionsDestroyResponse>;
 
 export interface SignalUserAutonomyDestroyRequest {
   user_id: string;
@@ -2334,18 +2302,13 @@ export const SignalUserAutonomyDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalUserAutonomyDestroyRequest>;
 
 export interface SignalUserAutonomyDestroyResponse {}
-export const SignalUserAutonomyDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SignalUserAutonomyDestroyResponse",
-}) as any as S.Schema<SignalUserAutonomyDestroyResponse>;
+export const SignalUserAutonomyDestroyResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<SignalUserAutonomyDestroyResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUserRequestNotificationSettingsMap = { [key: string]: unknown | undefined };
-export const UpdateUserRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateUserRequestNotificationSettingsMap>;
+export const UpdateUserRequestNotificationSettingsMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<UpdateUserRequestNotificationSettingsMap>;
 
 export type UpdateUserRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UpdateUserRequestToolbarMode =
@@ -2423,10 +2386,7 @@ export type UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap>;
+  CreateUsersRequestEmailVerificationRequestNotificationSettingsMap as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap>;
 
 export type UpdateUsersHedgehogConfigPartialRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UpdateUsersHedgehogConfigPartialRequestToolbarMode =
@@ -2509,20 +2469,15 @@ export const UpdateUsersHedgehogConfigPartialRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateUsersHedgehogConfigPartialRequest>;
 
 export interface UpdateUsersHedgehogConfigPartialResponse {}
-export const UpdateUsersHedgehogConfigPartialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUsersHedgehogConfigPartialResponse",
-}) as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>;
+export const UpdateUsersHedgehogConfigPartialResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUsersPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateUsersPartialRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateUsersPartialRequestNotificationSettingsMap>;
+export const UpdateUsersPartialRequestNotificationSettingsMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<UpdateUsersPartialRequestNotificationSettingsMap>;
 
 export type UpdateUsersPartialRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UpdateUsersPartialRequestToolbarMode =
@@ -2636,10 +2591,7 @@ export type UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSetting
   [key: string]: unknown | undefined;
 };
 export const UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap>;
+  CreateUsersRequestEmailVerificationRequestNotificationSettingsMap as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap>;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
   | ToolbarModeEnum
@@ -2724,11 +2676,8 @@ export const UsersCancelEmailChangeRequestPartialUpdateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>;
 
 export interface UsersCancelEmailChangeRequestPartialUpdateResponse {}
-export const UsersCancelEmailChangeRequestPartialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersCancelEmailChangeRequestPartialUpdateResponse",
-}) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>;
+export const UsersCancelEmailChangeRequestPartialUpdateResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>;
 
 export interface UsersDestroyRequest {
   uuid: string;
@@ -2740,9 +2689,8 @@ export const UsersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsersDestroyRequest" }) as any as S.Schema<UsersDestroyRequest>;
 
 export interface UsersDestroyResponse {}
-export const UsersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UsersDestroyResponse",
-}) as any as S.Schema<UsersDestroyResponse>;
+export const UsersDestroyResponse =
+  CreateUsersValidate2faResponse as any as S.Schema<UsersDestroyResponse>;
 
 export interface UsersIntegrationsCodexDestroyRequest {
   uuid: string;
@@ -2756,11 +2704,8 @@ export const UsersIntegrationsCodexDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UsersIntegrationsCodexDestroyRequest>;
 
 export interface UsersIntegrationsCodexDestroyResponse {}
-export const UsersIntegrationsCodexDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersIntegrationsCodexDestroyResponse",
-}) as any as S.Schema<UsersIntegrationsCodexDestroyResponse>;
+export const UsersIntegrationsCodexDestroyResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsCodexDestroyResponse>;
 
 export interface UsersIntegrationsGithubDestroyRequest {
   uuid: string;
@@ -2782,11 +2727,8 @@ export const UsersIntegrationsGithubDestroyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>;
 
 export interface UsersIntegrationsGithubDestroyResponse {}
-export const UsersIntegrationsGithubDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersIntegrationsGithubDestroyResponse",
-}) as any as S.Schema<UsersIntegrationsGithubDestroyResponse>;
+export const UsersIntegrationsGithubDestroyResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsGithubDestroyResponse>;
 
 export interface UsersIntegrationsGithubInstallRequestsRetrieveRequest {
   uuid: string;
@@ -2882,9 +2824,8 @@ export const UsersIntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.
 
 /** The refreshed repository cache. */
 export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
-export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
-  GitHubRepo,
-) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
+export const GitHubReposRefreshResponseRepositoriesList =
+  GitHubReposResponseRepositoriesList as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
 
 export interface GitHubReposRefreshResponse {
   /** The refreshed repository cache. */
@@ -2955,11 +2896,8 @@ export const UsersIntegrationsSlackDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>;
 
 export interface UsersIntegrationsSlackDestroyResponse {}
-export const UsersIntegrationsSlackDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersIntegrationsSlackDestroyResponse",
-}) as any as S.Schema<UsersIntegrationsSlackDestroyResponse>;
+export const UsersIntegrationsSlackDestroyResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsSlackDestroyResponse>;
 
 export interface UsersIntegrationsSlackStartCreateRequest {
   uuid: string;
@@ -3032,20 +2970,15 @@ export const UsersPushTokensUnregisterCreateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UsersPushTokensUnregisterCreateRequest>;
 
 export interface UsersPushTokensUnregisterCreateResponse {}
-export const UsersPushTokensUnregisterCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersPushTokensUnregisterCreateResponse",
-}) as any as S.Schema<UsersPushTokensUnregisterCreateResponse>;
+export const UsersPushTokensUnregisterCreateResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersPushTokensUnregisterCreateResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorDisableCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UsersTwoFactorDisableCreateRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UsersTwoFactorDisableCreateRequestNotificationSettingsMap>;
+export const UsersTwoFactorDisableCreateRequestNotificationSettingsMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<UsersTwoFactorDisableCreateRequestNotificationSettingsMap>;
 
 export type UsersTwoFactorDisableCreateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UsersTwoFactorDisableCreateRequestToolbarMode =
@@ -3122,11 +3055,8 @@ export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersTwoFactorDisableCreateRequest>;
 
 export interface UsersTwoFactorDisableCreateResponse {}
-export const UsersTwoFactorDisableCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersTwoFactorDisableCreateResponse",
-}) as any as S.Schema<UsersTwoFactorDisableCreateResponse>;
+export const UsersTwoFactorDisableCreateResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorDisableCreateResponse>;
 
 export interface UsersTwoFactorStartSetupRetrieveRequest {
   uuid: string;
@@ -3140,20 +3070,15 @@ export const UsersTwoFactorStartSetupRetrieveRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UsersTwoFactorStartSetupRetrieveRequest>;
 
 export interface UsersTwoFactorStartSetupRetrieveResponse {}
-export const UsersTwoFactorStartSetupRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersTwoFactorStartSetupRetrieveResponse",
-}) as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>;
+export const UsersTwoFactorStartSetupRetrieveResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorValidateCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UsersTwoFactorValidateCreateRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UsersTwoFactorValidateCreateRequestNotificationSettingsMap>;
+export const UsersTwoFactorValidateCreateRequestNotificationSettingsMap =
+  UserOutputNotificationSettingsMap as any as S.Schema<UsersTwoFactorValidateCreateRequestNotificationSettingsMap>;
 
 export type UsersTwoFactorValidateCreateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UsersTwoFactorValidateCreateRequestToolbarMode =
@@ -3230,11 +3155,8 @@ export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersTwoFactorValidateCreateRequest>;
 
 export interface UsersTwoFactorValidateCreateResponse {}
-export const UsersTwoFactorValidateCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersTwoFactorValidateCreateResponse",
-}) as any as S.Schema<UsersTwoFactorValidateCreateResponse>;
+export const UsersTwoFactorValidateCreateResponse =
+  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorValidateCreateResponse>;
 
 export interface UsersVerifyEmailCreateRequest {
   /** UUID of the user whose email is being verified. */
@@ -3252,9 +3174,8 @@ export const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersVerifyEmailCreateRequest>;
 
 export interface UsersVerifyEmailCreateResponse {}
-export const UsersVerifyEmailCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UsersVerifyEmailCreateResponse",
-}) as any as S.Schema<UsersVerifyEmailCreateResponse>;
+export const UsersVerifyEmailCreateResponse =
+  CreateUsersValidate2faResponse as any as S.Schema<UsersVerifyEmailCreateResponse>;
 
 export type CreateUsersCredentialsReviewCompleteError = PosthogOpError;
 /** Mark the user as having reviewed their existing credentials. Idempotent. Flips `requires_credential_review` to False so the post-login interstitial isn't shown again. Does not modify any credentials; the user revokes individual Personal API Keys and passkeys via their existing endpoints from the same screen. */

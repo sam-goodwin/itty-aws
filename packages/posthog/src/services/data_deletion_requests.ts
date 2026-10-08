@@ -88,10 +88,8 @@ export const DataDeletionRequestVariablesValue = CreateDataDeletionRequestReques
 export type DataDeletionRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-export const DataDeletionRequestVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateDataDeletionRequestRequestVariablesValue,
-) as any as S.Schema<DataDeletionRequestVariablesMap>;
+export const DataDeletionRequestVariablesMap =
+  CreateDataDeletionRequestRequestVariablesMap as any as S.Schema<DataDeletionRequestVariablesMap>;
 
 export interface DataDeletionRequest {
   /** Deletion request identifier. */
@@ -145,10 +143,8 @@ export const CreateDataDeletionRequestsPreviewRequestVariablesValue =
 export type CreateDataDeletionRequestsPreviewRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-export const CreateDataDeletionRequestsPreviewRequestVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateDataDeletionRequestRequestVariablesValue,
-) as any as S.Schema<CreateDataDeletionRequestsPreviewRequestVariablesMap>;
+export const CreateDataDeletionRequestsPreviewRequestVariablesMap =
+  CreateDataDeletionRequestRequestVariablesMap as any as S.Schema<CreateDataDeletionRequestsPreviewRequestVariablesMap>;
 
 export interface CreateDataDeletionRequestsPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

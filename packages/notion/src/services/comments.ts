@@ -47,13 +47,8 @@ export interface CreateCommentRequestDisplayNameCase1 {
   /** Always `user` */
   type: string;
 }
-export const CreateCommentRequestDisplayNameCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({
-  identifier: "CreateCommentRequestDisplayNameCase1",
-}) as any as S.Schema<CreateCommentRequestDisplayNameCase1>;
+export const CreateCommentRequestDisplayNameCase1 =
+  CreateCommentRequestDisplayNameCase0 as any as S.Schema<CreateCommentRequestDisplayNameCase1>;
 
 export interface CreateCommentRequestDisplayNameCase2Custom {
   /** The custom display name to use */
@@ -293,13 +288,8 @@ export interface RichTextItemRequestMentionCase3Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase3Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase3Database",
-}) as any as S.Schema<RichTextItemRequestMentionCase3Database>;
+export const RichTextItemRequestMentionCase3Database =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<RichTextItemRequestMentionCase3Database>;
 
 export interface RichTextItemRequestMentionCase3 {
   /** Always `database` */
@@ -786,13 +776,8 @@ export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LinkPreviewMentionResponse",
-}) as any as S.Schema<LinkPreviewMentionResponse>;
+export const LinkPreviewMentionResponse =
+  RichTextItemRequestTextLink as any as S.Schema<LinkPreviewMentionResponse>;
 
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
@@ -1248,9 +1233,8 @@ export const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of rich text objects that represent the updated content of the comment. */
 export type UpdateCommentRequestBodyCase0RichTextList = Array<RichTextItemRequest>;
-export const UpdateCommentRequestBodyCase0RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateCommentRequestBodyCase0RichTextList>;
+export const UpdateCommentRequestBodyCase0RichTextList =
+  CreateCommentRequestRichTextList as any as S.Schema<UpdateCommentRequestBodyCase0RichTextList>;
 
 export interface UpdateCommentRequestBodyCase0 {
   /** An array of rich text objects that represent the updated content of the comment. */

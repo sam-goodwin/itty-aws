@@ -97,9 +97,8 @@ export const GeneralUISettingsAllowedReactionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GeneralUISettingsAllowedReactionsList>;
 
 export type GeneralUISettingsCustomEmojisList = Array<string>;
-export const GeneralUISettingsCustomEmojisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GeneralUISettingsCustomEmojisList>;
+export const GeneralUISettingsCustomEmojisList =
+  GeneralUISettingsAllowedReactionsList as any as S.Schema<GeneralUISettingsCustomEmojisList>;
 
 /** GeneralUISettings contains global ui settings exposed by API */
 export interface GeneralUISettings {

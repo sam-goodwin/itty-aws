@@ -96,11 +96,8 @@ export const ConnectCoreV1DeleteNamespacedPodProxyWithPathRequest = /*@__PURE__*
 }) as any as S.Schema<ConnectCoreV1DeleteNamespacedPodProxyWithPathRequest>;
 
 export type ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse = string;
-export const ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse>;
+export const ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1DeleteNamespacedPodProxyWithPathResponse>;
 
 export interface ConnectCoreV1DeleteNamespacedServiceProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -127,11 +124,8 @@ export const ConnectCoreV1DeleteNamespacedServiceProxyRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ConnectCoreV1DeleteNamespacedServiceProxyRequest>;
 
 export type ConnectCoreV1DeleteNamespacedServiceProxyResponse = string;
-export const ConnectCoreV1DeleteNamespacedServiceProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1DeleteNamespacedServiceProxyResponse",
-}) as any as S.Schema<ConnectCoreV1DeleteNamespacedServiceProxyResponse>;
+export const ConnectCoreV1DeleteNamespacedServiceProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1DeleteNamespacedServiceProxyResponse>;
 
 export interface ConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -181,11 +175,8 @@ export const ConnectCoreV1DeleteNodeProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectCoreV1DeleteNodeProxyRequest>;
 
 export type ConnectCoreV1DeleteNodeProxyResponse = string;
-export const ConnectCoreV1DeleteNodeProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1DeleteNodeProxyResponse",
-}) as any as S.Schema<ConnectCoreV1DeleteNodeProxyResponse>;
+export const ConnectCoreV1DeleteNodeProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1DeleteNodeProxyResponse>;
 
 export interface ConnectCoreV1DeleteNodeProxyWithPathRequest {
   /** name of the NodeProxyOptions */
@@ -203,11 +194,8 @@ export const ConnectCoreV1DeleteNodeProxyWithPathRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ConnectCoreV1DeleteNodeProxyWithPathRequest>;
 
 export type ConnectCoreV1DeleteNodeProxyWithPathResponse = string;
-export const ConnectCoreV1DeleteNodeProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1DeleteNodeProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1DeleteNodeProxyWithPathResponse>;
+export const ConnectCoreV1DeleteNodeProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1DeleteNodeProxyWithPathResponse>;
 
 export interface ConnectCoreV1GetNamespacedPodAttachRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -242,11 +230,8 @@ export const ConnectCoreV1GetNamespacedPodAttachRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ConnectCoreV1GetNamespacedPodAttachRequest>;
 
 export type ConnectCoreV1GetNamespacedPodAttachResponse = string;
-export const ConnectCoreV1GetNamespacedPodAttachResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNamespacedPodAttachResponse",
-}) as any as S.Schema<ConnectCoreV1GetNamespacedPodAttachResponse>;
+export const ConnectCoreV1GetNamespacedPodAttachResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNamespacedPodAttachResponse>;
 
 export interface ConnectCoreV1GetNamespacedPodExecRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -284,11 +269,8 @@ export const ConnectCoreV1GetNamespacedPodExecRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectCoreV1GetNamespacedPodExecRequest>;
 
 export type ConnectCoreV1GetNamespacedPodExecResponse = string;
-export const ConnectCoreV1GetNamespacedPodExecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNamespacedPodExecResponse",
-}) as any as S.Schema<ConnectCoreV1GetNamespacedPodExecResponse>;
+export const ConnectCoreV1GetNamespacedPodExecResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNamespacedPodExecResponse>;
 
 export interface ConnectCoreV1GetNamespacedPodPortforwardRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -315,11 +297,8 @@ export const ConnectCoreV1GetNamespacedPodPortforwardRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ConnectCoreV1GetNamespacedPodPortforwardRequest>;
 
 export type ConnectCoreV1GetNamespacedPodPortforwardResponse = string;
-export const ConnectCoreV1GetNamespacedPodPortforwardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNamespacedPodPortforwardResponse",
-}) as any as S.Schema<ConnectCoreV1GetNamespacedPodPortforwardResponse>;
+export const ConnectCoreV1GetNamespacedPodPortforwardResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNamespacedPodPortforwardResponse>;
 
 export interface ConnectCoreV1GetNamespacedPodProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -342,11 +321,8 @@ export const ConnectCoreV1GetNamespacedPodProxyRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ConnectCoreV1GetNamespacedPodProxyRequest>;
 
 export type ConnectCoreV1GetNamespacedPodProxyResponse = string;
-export const ConnectCoreV1GetNamespacedPodProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNamespacedPodProxyResponse",
-}) as any as S.Schema<ConnectCoreV1GetNamespacedPodProxyResponse>;
+export const ConnectCoreV1GetNamespacedPodProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNamespacedPodProxyResponse>;
 
 export interface ConnectCoreV1GetNamespacedPodProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -373,11 +349,8 @@ export const ConnectCoreV1GetNamespacedPodProxyWithPathRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ConnectCoreV1GetNamespacedPodProxyWithPathRequest>;
 
 export type ConnectCoreV1GetNamespacedPodProxyWithPathResponse = string;
-export const ConnectCoreV1GetNamespacedPodProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNamespacedPodProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1GetNamespacedPodProxyWithPathResponse>;
+export const ConnectCoreV1GetNamespacedPodProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNamespacedPodProxyWithPathResponse>;
 
 export interface ConnectCoreV1GetNamespacedServiceProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -404,11 +377,8 @@ export const ConnectCoreV1GetNamespacedServiceProxyRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ConnectCoreV1GetNamespacedServiceProxyRequest>;
 
 export type ConnectCoreV1GetNamespacedServiceProxyResponse = string;
-export const ConnectCoreV1GetNamespacedServiceProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNamespacedServiceProxyResponse",
-}) as any as S.Schema<ConnectCoreV1GetNamespacedServiceProxyResponse>;
+export const ConnectCoreV1GetNamespacedServiceProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNamespacedServiceProxyResponse>;
 
 export interface ConnectCoreV1GetNamespacedServiceProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -435,11 +405,8 @@ export const ConnectCoreV1GetNamespacedServiceProxyWithPathRequest = /*@__PURE__
 }) as any as S.Schema<ConnectCoreV1GetNamespacedServiceProxyWithPathRequest>;
 
 export type ConnectCoreV1GetNamespacedServiceProxyWithPathResponse = string;
-export const ConnectCoreV1GetNamespacedServiceProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNamespacedServiceProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1GetNamespacedServiceProxyWithPathResponse>;
+export const ConnectCoreV1GetNamespacedServiceProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNamespacedServiceProxyWithPathResponse>;
 
 export interface ConnectCoreV1GetNodeProxyRequest {
   /** name of the NodeProxyOptions */
@@ -457,11 +424,8 @@ export const ConnectCoreV1GetNodeProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectCoreV1GetNodeProxyRequest>;
 
 export type ConnectCoreV1GetNodeProxyResponse = string;
-export const ConnectCoreV1GetNodeProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNodeProxyResponse",
-}) as any as S.Schema<ConnectCoreV1GetNodeProxyResponse>;
+export const ConnectCoreV1GetNodeProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNodeProxyResponse>;
 
 export interface ConnectCoreV1GetNodeProxyWithPathRequest {
   /** name of the NodeProxyOptions */
@@ -479,11 +443,8 @@ export const ConnectCoreV1GetNodeProxyWithPathRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectCoreV1GetNodeProxyWithPathRequest>;
 
 export type ConnectCoreV1GetNodeProxyWithPathResponse = string;
-export const ConnectCoreV1GetNodeProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1GetNodeProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1GetNodeProxyWithPathResponse>;
+export const ConnectCoreV1GetNodeProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1GetNodeProxyWithPathResponse>;
 
 export interface ConnectCoreV1PatchNamespacedPodProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -506,11 +467,8 @@ export const ConnectCoreV1PatchNamespacedPodProxyRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ConnectCoreV1PatchNamespacedPodProxyRequest>;
 
 export type ConnectCoreV1PatchNamespacedPodProxyResponse = string;
-export const ConnectCoreV1PatchNamespacedPodProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PatchNamespacedPodProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PatchNamespacedPodProxyResponse>;
+export const ConnectCoreV1PatchNamespacedPodProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PatchNamespacedPodProxyResponse>;
 
 export interface ConnectCoreV1PatchNamespacedPodProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -537,11 +495,8 @@ export const ConnectCoreV1PatchNamespacedPodProxyWithPathRequest = /*@__PURE__*/
 }) as any as S.Schema<ConnectCoreV1PatchNamespacedPodProxyWithPathRequest>;
 
 export type ConnectCoreV1PatchNamespacedPodProxyWithPathResponse = string;
-export const ConnectCoreV1PatchNamespacedPodProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PatchNamespacedPodProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PatchNamespacedPodProxyWithPathResponse>;
+export const ConnectCoreV1PatchNamespacedPodProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PatchNamespacedPodProxyWithPathResponse>;
 
 export interface ConnectCoreV1PatchNamespacedServiceProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -568,11 +523,8 @@ export const ConnectCoreV1PatchNamespacedServiceProxyRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ConnectCoreV1PatchNamespacedServiceProxyRequest>;
 
 export type ConnectCoreV1PatchNamespacedServiceProxyResponse = string;
-export const ConnectCoreV1PatchNamespacedServiceProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PatchNamespacedServiceProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PatchNamespacedServiceProxyResponse>;
+export const ConnectCoreV1PatchNamespacedServiceProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PatchNamespacedServiceProxyResponse>;
 
 export interface ConnectCoreV1PatchNamespacedServiceProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -599,11 +551,8 @@ export const ConnectCoreV1PatchNamespacedServiceProxyWithPathRequest = /*@__PURE
 }) as any as S.Schema<ConnectCoreV1PatchNamespacedServiceProxyWithPathRequest>;
 
 export type ConnectCoreV1PatchNamespacedServiceProxyWithPathResponse = string;
-export const ConnectCoreV1PatchNamespacedServiceProxyWithPathResponse = /*@__PURE__*/ S.suspend(
-  () => S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PatchNamespacedServiceProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PatchNamespacedServiceProxyWithPathResponse>;
+export const ConnectCoreV1PatchNamespacedServiceProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse as any as S.Schema<ConnectCoreV1PatchNamespacedServiceProxyWithPathResponse>;
 
 export interface ConnectCoreV1PatchNodeProxyRequest {
   /** name of the NodeProxyOptions */
@@ -621,11 +570,8 @@ export const ConnectCoreV1PatchNodeProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectCoreV1PatchNodeProxyRequest>;
 
 export type ConnectCoreV1PatchNodeProxyResponse = string;
-export const ConnectCoreV1PatchNodeProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PatchNodeProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PatchNodeProxyResponse>;
+export const ConnectCoreV1PatchNodeProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PatchNodeProxyResponse>;
 
 export interface ConnectCoreV1PatchNodeProxyWithPathRequest {
   /** name of the NodeProxyOptions */
@@ -643,11 +589,8 @@ export const ConnectCoreV1PatchNodeProxyWithPathRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ConnectCoreV1PatchNodeProxyWithPathRequest>;
 
 export type ConnectCoreV1PatchNodeProxyWithPathResponse = string;
-export const ConnectCoreV1PatchNodeProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PatchNodeProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PatchNodeProxyWithPathResponse>;
+export const ConnectCoreV1PatchNodeProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PatchNodeProxyWithPathResponse>;
 
 export interface ConnectCoreV1PostNamespacedPodAttachRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -682,11 +625,8 @@ export const ConnectCoreV1PostNamespacedPodAttachRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ConnectCoreV1PostNamespacedPodAttachRequest>;
 
 export type ConnectCoreV1PostNamespacedPodAttachResponse = string;
-export const ConnectCoreV1PostNamespacedPodAttachResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNamespacedPodAttachResponse",
-}) as any as S.Schema<ConnectCoreV1PostNamespacedPodAttachResponse>;
+export const ConnectCoreV1PostNamespacedPodAttachResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNamespacedPodAttachResponse>;
 
 export interface ConnectCoreV1PostNamespacedPodExecRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -724,11 +664,8 @@ export const ConnectCoreV1PostNamespacedPodExecRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ConnectCoreV1PostNamespacedPodExecRequest>;
 
 export type ConnectCoreV1PostNamespacedPodExecResponse = string;
-export const ConnectCoreV1PostNamespacedPodExecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNamespacedPodExecResponse",
-}) as any as S.Schema<ConnectCoreV1PostNamespacedPodExecResponse>;
+export const ConnectCoreV1PostNamespacedPodExecResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNamespacedPodExecResponse>;
 
 export interface ConnectCoreV1PostNamespacedPodPortforwardRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -755,11 +692,8 @@ export const ConnectCoreV1PostNamespacedPodPortforwardRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ConnectCoreV1PostNamespacedPodPortforwardRequest>;
 
 export type ConnectCoreV1PostNamespacedPodPortforwardResponse = string;
-export const ConnectCoreV1PostNamespacedPodPortforwardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNamespacedPodPortforwardResponse",
-}) as any as S.Schema<ConnectCoreV1PostNamespacedPodPortforwardResponse>;
+export const ConnectCoreV1PostNamespacedPodPortforwardResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNamespacedPodPortforwardResponse>;
 
 export interface ConnectCoreV1PostNamespacedPodProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -782,11 +716,8 @@ export const ConnectCoreV1PostNamespacedPodProxyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ConnectCoreV1PostNamespacedPodProxyRequest>;
 
 export type ConnectCoreV1PostNamespacedPodProxyResponse = string;
-export const ConnectCoreV1PostNamespacedPodProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNamespacedPodProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PostNamespacedPodProxyResponse>;
+export const ConnectCoreV1PostNamespacedPodProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNamespacedPodProxyResponse>;
 
 export interface ConnectCoreV1PostNamespacedPodProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -813,11 +744,8 @@ export const ConnectCoreV1PostNamespacedPodProxyWithPathRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ConnectCoreV1PostNamespacedPodProxyWithPathRequest>;
 
 export type ConnectCoreV1PostNamespacedPodProxyWithPathResponse = string;
-export const ConnectCoreV1PostNamespacedPodProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNamespacedPodProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PostNamespacedPodProxyWithPathResponse>;
+export const ConnectCoreV1PostNamespacedPodProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNamespacedPodProxyWithPathResponse>;
 
 export interface ConnectCoreV1PostNamespacedServiceProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -844,11 +772,8 @@ export const ConnectCoreV1PostNamespacedServiceProxyRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ConnectCoreV1PostNamespacedServiceProxyRequest>;
 
 export type ConnectCoreV1PostNamespacedServiceProxyResponse = string;
-export const ConnectCoreV1PostNamespacedServiceProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNamespacedServiceProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PostNamespacedServiceProxyResponse>;
+export const ConnectCoreV1PostNamespacedServiceProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNamespacedServiceProxyResponse>;
 
 export interface ConnectCoreV1PostNamespacedServiceProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -875,11 +800,8 @@ export const ConnectCoreV1PostNamespacedServiceProxyWithPathRequest = /*@__PURE_
 }) as any as S.Schema<ConnectCoreV1PostNamespacedServiceProxyWithPathRequest>;
 
 export type ConnectCoreV1PostNamespacedServiceProxyWithPathResponse = string;
-export const ConnectCoreV1PostNamespacedServiceProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNamespacedServiceProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PostNamespacedServiceProxyWithPathResponse>;
+export const ConnectCoreV1PostNamespacedServiceProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNamespacedServiceProxyWithPathResponse>;
 
 export interface ConnectCoreV1PostNodeProxyRequest {
   /** name of the NodeProxyOptions */
@@ -897,11 +819,8 @@ export const ConnectCoreV1PostNodeProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectCoreV1PostNodeProxyRequest>;
 
 export type ConnectCoreV1PostNodeProxyResponse = string;
-export const ConnectCoreV1PostNodeProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNodeProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PostNodeProxyResponse>;
+export const ConnectCoreV1PostNodeProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNodeProxyResponse>;
 
 export interface ConnectCoreV1PostNodeProxyWithPathRequest {
   /** name of the NodeProxyOptions */
@@ -919,11 +838,8 @@ export const ConnectCoreV1PostNodeProxyWithPathRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ConnectCoreV1PostNodeProxyWithPathRequest>;
 
 export type ConnectCoreV1PostNodeProxyWithPathResponse = string;
-export const ConnectCoreV1PostNodeProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PostNodeProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PostNodeProxyWithPathResponse>;
+export const ConnectCoreV1PostNodeProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PostNodeProxyWithPathResponse>;
 
 export interface ConnectCoreV1PutNamespacedPodProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -946,11 +862,8 @@ export const ConnectCoreV1PutNamespacedPodProxyRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ConnectCoreV1PutNamespacedPodProxyRequest>;
 
 export type ConnectCoreV1PutNamespacedPodProxyResponse = string;
-export const ConnectCoreV1PutNamespacedPodProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PutNamespacedPodProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PutNamespacedPodProxyResponse>;
+export const ConnectCoreV1PutNamespacedPodProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PutNamespacedPodProxyResponse>;
 
 export interface ConnectCoreV1PutNamespacedPodProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -977,11 +890,8 @@ export const ConnectCoreV1PutNamespacedPodProxyWithPathRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ConnectCoreV1PutNamespacedPodProxyWithPathRequest>;
 
 export type ConnectCoreV1PutNamespacedPodProxyWithPathResponse = string;
-export const ConnectCoreV1PutNamespacedPodProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PutNamespacedPodProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PutNamespacedPodProxyWithPathResponse>;
+export const ConnectCoreV1PutNamespacedPodProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PutNamespacedPodProxyWithPathResponse>;
 
 export interface ConnectCoreV1PutNamespacedServiceProxyRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1008,11 +918,8 @@ export const ConnectCoreV1PutNamespacedServiceProxyRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ConnectCoreV1PutNamespacedServiceProxyRequest>;
 
 export type ConnectCoreV1PutNamespacedServiceProxyResponse = string;
-export const ConnectCoreV1PutNamespacedServiceProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PutNamespacedServiceProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PutNamespacedServiceProxyResponse>;
+export const ConnectCoreV1PutNamespacedServiceProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PutNamespacedServiceProxyResponse>;
 
 export interface ConnectCoreV1PutNamespacedServiceProxyWithPathRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1039,11 +946,8 @@ export const ConnectCoreV1PutNamespacedServiceProxyWithPathRequest = /*@__PURE__
 }) as any as S.Schema<ConnectCoreV1PutNamespacedServiceProxyWithPathRequest>;
 
 export type ConnectCoreV1PutNamespacedServiceProxyWithPathResponse = string;
-export const ConnectCoreV1PutNamespacedServiceProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PutNamespacedServiceProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PutNamespacedServiceProxyWithPathResponse>;
+export const ConnectCoreV1PutNamespacedServiceProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PutNamespacedServiceProxyWithPathResponse>;
 
 export interface ConnectCoreV1PutNodeProxyRequest {
   /** name of the NodeProxyOptions */
@@ -1061,11 +965,8 @@ export const ConnectCoreV1PutNodeProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectCoreV1PutNodeProxyRequest>;
 
 export type ConnectCoreV1PutNodeProxyResponse = string;
-export const ConnectCoreV1PutNodeProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PutNodeProxyResponse",
-}) as any as S.Schema<ConnectCoreV1PutNodeProxyResponse>;
+export const ConnectCoreV1PutNodeProxyResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PutNodeProxyResponse>;
 
 export interface ConnectCoreV1PutNodeProxyWithPathRequest {
   /** name of the NodeProxyOptions */
@@ -1083,11 +984,8 @@ export const ConnectCoreV1PutNodeProxyWithPathRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectCoreV1PutNodeProxyWithPathRequest>;
 
 export type ConnectCoreV1PutNodeProxyWithPathResponse = string;
-export const ConnectCoreV1PutNodeProxyWithPathResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCoreV1PutNodeProxyWithPathResponse",
-}) as any as S.Schema<ConnectCoreV1PutNodeProxyWithPathResponse>;
+export const ConnectCoreV1PutNodeProxyWithPathResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ConnectCoreV1PutNodeProxyWithPathResponse>;
 
 /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
@@ -1108,10 +1006,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -1243,9 +1139,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 
 /** finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/ */
 export type IoK8sApiCoreV1NamespaceSpecFinalizersList = Array<string>;
-export const IoK8sApiCoreV1NamespaceSpecFinalizersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NamespaceSpecFinalizersList>;
+export const IoK8sApiCoreV1NamespaceSpecFinalizersList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NamespaceSpecFinalizersList>;
 
 /** NamespaceSpec describes the attributes on a Namespace. */
 export interface IoK8sApiCoreV1NamespaceSpec {
@@ -1457,17 +1352,13 @@ export const IoK8sApiCoreV1Binding = /*@__PURE__*/ S.suspend(() =>
 export type CreateCoreV1NamespacedConfigMapRequestBinaryDataMap = {
   [key: string]: string | undefined;
 };
-export const CreateCoreV1NamespacedConfigMapRequestBinaryDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCoreV1NamespacedConfigMapRequestBinaryDataMap>;
+export const CreateCoreV1NamespacedConfigMapRequestBinaryDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateCoreV1NamespacedConfigMapRequestBinaryDataMap>;
 
 /** data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data must not overlap with the keys in the BinaryData field, this is enforced during validation process. */
 export type CreateCoreV1NamespacedConfigMapRequestDataMap = { [key: string]: string | undefined };
-export const CreateCoreV1NamespacedConfigMapRequestDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCoreV1NamespacedConfigMapRequestDataMap>;
+export const CreateCoreV1NamespacedConfigMapRequestDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateCoreV1NamespacedConfigMapRequestDataMap>;
 
 export interface CreateCoreV1NamespacedConfigMapRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1513,17 +1404,13 @@ export const CreateCoreV1NamespacedConfigMapRequest = /*@__PURE__*/ S.suspend(()
 
 /** binaryData contains the binary data. Each key must consist of alphanumeric characters, '-', '_' or '.'. BinaryData can contain byte sequences that are not in the UTF-8 range. The keys stored in BinaryData must not overlap with the ones in the Data field, this is enforced during validation process. Using this field will require 1.10+ apiserver and kubelet. Note: BinaryData keys are not currently propagated to container env vars via ConfigMapKeyRef or ConfigMapRef env sources; only Data keys are used. */
 export type IoK8sApiCoreV1ConfigMapBinaryDataMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ConfigMapBinaryDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapBinaryDataMap>;
+export const IoK8sApiCoreV1ConfigMapBinaryDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ConfigMapBinaryDataMap>;
 
 /** data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data must not overlap with the keys in the BinaryData field, this is enforced during validation process. */
 export type IoK8sApiCoreV1ConfigMapDataMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ConfigMapDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapDataMap>;
+export const IoK8sApiCoreV1ConfigMapDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ConfigMapDataMap>;
 
 /** ConfigMap holds configuration data for pods to consume. */
 export interface IoK8sApiCoreV1ConfigMap {
@@ -1582,9 +1469,8 @@ export const IoK8sApiCoreV1EndpointSubsetAddressesList = /*@__PURE__*/ S.Array(
 /** IP addresses which offer the related ports but are not currently marked as ready because they have not yet finished starting, have recently failed a readiness check, or have recently failed a liveness check. */
 export type IoK8sApiCoreV1EndpointSubsetNotReadyAddressesList =
   Array<IoK8sApiCoreV1EndpointAddress>;
-export const IoK8sApiCoreV1EndpointSubsetNotReadyAddressesList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1EndpointAddress,
-) as any as S.Schema<IoK8sApiCoreV1EndpointSubsetNotReadyAddressesList>;
+export const IoK8sApiCoreV1EndpointSubsetNotReadyAddressesList =
+  IoK8sApiCoreV1EndpointSubsetAddressesList as any as S.Schema<IoK8sApiCoreV1EndpointSubsetNotReadyAddressesList>;
 
 /** EndpointPort is a tuple that describes a single port. Deprecated: This API is deprecated in v1.33+. */
 export interface IoK8sApiCoreV1EndpointPort {
@@ -1677,9 +1563,8 @@ export const CreateCoreV1NamespacedEndpointsRequest = /*@__PURE__*/ S.suspend(()
 
 /** The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service. */
 export type IoK8sApiCoreV1EndpointsSubsetsList = Array<IoK8sApiCoreV1EndpointSubset>;
-export const IoK8sApiCoreV1EndpointsSubsetsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1EndpointSubset,
-) as any as S.Schema<IoK8sApiCoreV1EndpointsSubsetsList>;
+export const IoK8sApiCoreV1EndpointsSubsetsList =
+  CreateCoreV1NamespacedEndpointsRequestSubsetsList as any as S.Schema<IoK8sApiCoreV1EndpointsSubsetsList>;
 
 /** Endpoints is a collection of endpoints that implement the actual service. Example: Name: "mysvc", Subsets: [ { Addresses: [{"ip": "10.10.1.1"}, {"ip": "10.10.2.2"}], Ports: [{"name": "a", "port": 8675}, {"name": "b", "port": 309}] }, { Addresses: [{"ip": "10.10.3.3"}], Ports: [{"name": "a", "port": 93}, {"name": "b", "port": 76}] }, ] Endpoints is a legacy API and does not contain information about all Service features. Use discoveryv1.EndpointSlice for complete information about Service endpoints. Deprecated: This API is deprecated in v1.33+. Use discoveryv1.EndpointSlice. */
 export interface IoK8sApiCoreV1Endpoints {
@@ -1869,40 +1754,30 @@ export const IoK8sApiCoreV1Event = /*@__PURE__*/ S.suspend(() =>
 
 /** default specifies resource limit values by resource name. These are applied to containers which do not specify their own limits for those resources. */
 export type IoK8sApiCoreV1LimitRangeItemDefaultMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1LimitRangeItemDefaultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1LimitRangeItemDefaultMap>;
+export const IoK8sApiCoreV1LimitRangeItemDefaultMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1LimitRangeItemDefaultMap>;
 
 /** defaultRequest specifies resource request values by resource name. These are applied to containers which do not specify their own requests for those resources. */
 export type IoK8sApiCoreV1LimitRangeItemDefaultRequestMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1LimitRangeItemDefaultRequestMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1LimitRangeItemDefaultRequestMap>;
+export const IoK8sApiCoreV1LimitRangeItemDefaultRequestMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1LimitRangeItemDefaultRequestMap>;
 
 /** max usage constraints on this kind by resource name. */
 export type IoK8sApiCoreV1LimitRangeItemMaxMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1LimitRangeItemMaxMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1LimitRangeItemMaxMap>;
+export const IoK8sApiCoreV1LimitRangeItemMaxMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1LimitRangeItemMaxMap>;
 
 /** maxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource. */
 export type IoK8sApiCoreV1LimitRangeItemMaxLimitRequestRatioMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1LimitRangeItemMaxLimitRequestRatioMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1LimitRangeItemMaxLimitRequestRatioMap>;
+export const IoK8sApiCoreV1LimitRangeItemMaxLimitRequestRatioMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1LimitRangeItemMaxLimitRequestRatioMap>;
 
 /** min usage constraints on this kind by resource name. */
 export type IoK8sApiCoreV1LimitRangeItemMinMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1LimitRangeItemMinMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1LimitRangeItemMinMap>;
+export const IoK8sApiCoreV1LimitRangeItemMinMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1LimitRangeItemMinMap>;
 
 /** LimitRangeItem defines a min/max usage limit for any resource that matches on kind. */
 export interface IoK8sApiCoreV1LimitRangeItem {
@@ -2009,9 +1884,8 @@ export const IoK8sApiCoreV1LimitRange = /*@__PURE__*/ S.suspend(() =>
 
 /** accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
 export type IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList = Array<string>;
-export const IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList>;
+export const IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList>;
 
 /** TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace. */
 export interface IoK8sApiCoreV1TypedLocalObjectReference {
@@ -2058,19 +1932,15 @@ export const IoK8sApiCoreV1TypedObjectReference = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap>;
+export const IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap>;
 
 /** requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap>;
+export const IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap>;
 
 /** VolumeResourceRequirements describes the storage resource requirements for a volume. */
 export interface IoK8sApiCoreV1VolumeResourceRequirements {
@@ -2126,10 +1996,8 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
 
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
@@ -2186,9 +2054,8 @@ export const IoK8sApiCoreV1PersistentVolumeClaimSpec = /*@__PURE__*/ S.suspend((
 
 /** accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
 export type IoK8sApiCoreV1PersistentVolumeClaimStatusAccessModesList = Array<string>;
-export const IoK8sApiCoreV1PersistentVolumeClaimStatusAccessModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimStatusAccessModesList>;
+export const IoK8sApiCoreV1PersistentVolumeClaimStatusAccessModesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimStatusAccessModesList>;
 
 /** allocatedResourceStatuses stores status of resource being resized for the given PVC. Key names follow standard Kubernetes label syntax. Valid values are either: * Un-prefixed keys: - storage - the capacity of the volume. * Custom resources must use implementation-defined prefixed names such as "example.com/my-custom-resource" Apart from above values - keys that are unprefixed or have kubernetes.io prefix are considered reserved and hence may not be used. ClaimResourceStatus can be in any of following states: - ControllerResizeInProgress: State set when resize controller starts resizing the volume in control-plane. - ControllerResizeFailed: State set when resize has failed in resize controller with a terminal error. - NodeResizePending: State set when resize controller has finished resizing the volume but further resizing of volume is needed on the node. - NodeResizeInProgress: State set when kubelet starts resizing the volume. - NodeResizeFailed: State set when resizing has failed in kubelet with a terminal error. Transient errors don't set NodeResizeFailed. For example: if expanding a PVC for more capacity - this field can be one of the following states: - pvc.status.allocatedResourceStatus['storage'] = "ControllerResizeInProgress" - pvc.status.allocatedResourceStatus['storage'] = "ControllerResizeFailed" - pvc.status.allocatedResourceStatus['storage'] = "NodeResizePending" - pvc.status.allocatedResourceStatus['storage'] = "NodeResizeInProgress" - pvc.status.allocatedResourceStatus['storage'] = "NodeResizeFailed" When this field is not set, it means that no resize operation is in progress for the given PVC. A controller that receives PVC update with previously unknown resourceName or ClaimResourceStatus should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC. */
 export type IoK8sApiCoreV1PersistentVolumeClaimStatusAllocatedResourceStatusesMap = {
@@ -2205,19 +2072,14 @@ export type IoK8sApiCoreV1PersistentVolumeClaimStatusAllocatedResourcesMap = {
   [key: string]: string | undefined;
 };
 export const IoK8sApiCoreV1PersistentVolumeClaimStatusAllocatedResourcesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimStatusAllocatedResourcesMap>;
+  IoK8sApiCoreV1PersistentVolumeClaimStatusAllocatedResourceStatusesMap as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimStatusAllocatedResourcesMap>;
 
 /** capacity represents the actual resources of the underlying volume. */
 export type IoK8sApiCoreV1PersistentVolumeClaimStatusCapacityMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1PersistentVolumeClaimStatusCapacityMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimStatusCapacityMap>;
+export const IoK8sApiCoreV1PersistentVolumeClaimStatusCapacityMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimStatusCapacityMap>;
 
 /** PersistentVolumeClaimCondition contains details about state of pvc */
 export interface IoK8sApiCoreV1PersistentVolumeClaimCondition {
@@ -2423,9 +2285,8 @@ export const IoK8sApiCoreV1PersistentVolumeClaim = /*@__PURE__*/ S.suspend(() =>
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
 export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = Array<string>;
-export const IoK8sApiCoreV1NodeSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
+export const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
 
 /** A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApiCoreV1NodeSelectorRequirement {
@@ -2456,9 +2317,8 @@ export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList = /*@__PURE__*/ 
 /** matchFields is a list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1NodeSelectorRequirement,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
+export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
+  IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
 
 /** A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm. */
 export interface IoK8sApiCoreV1NodeSelectorTerm {
@@ -2539,21 +2399,18 @@ export const IoK8sApiCoreV1NodeAffinity = /*@__PURE__*/ S.suspend(() =>
 
 /** matchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set. */
 export type IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList = Array<string>;
-export const IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList>;
+export const IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList>;
 
 /** mismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both mismatchLabelKeys and labelSelector. Also, mismatchLabelKeys cannot be set when labelSelector isn't set. */
 export type IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList = Array<string>;
-export const IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList>;
+export const IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList>;
 
 /** namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means "this pod's namespace". */
 export type IoK8sApiCoreV1PodAffinityTermNamespacesList = Array<string>;
-export const IoK8sApiCoreV1PodAffinityTermNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodAffinityTermNamespacesList>;
+export const IoK8sApiCoreV1PodAffinityTermNamespacesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodAffinityTermNamespacesList>;
 
 /** Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running */
 export interface IoK8sApiCoreV1PodAffinityTerm {
@@ -2639,17 +2496,13 @@ export const IoK8sApiCoreV1PodAffinity = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
   Array<IoK8sApiCoreV1WeightedPodAffinityTerm>;
 export const IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiCoreV1WeightedPodAffinityTerm,
-  ) as any as S.Schema<IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList>;
+  IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExecutionList as any as S.Schema<IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList>;
 
 /** requiredDuringSchedulingIgnoredDuringExecution specifies that if the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. */
 export type IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
   Array<IoK8sApiCoreV1PodAffinityTerm>;
 export const IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiCoreV1PodAffinityTerm,
-  ) as any as S.Schema<IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList>;
+  IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList as any as S.Schema<IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList>;
 
 /** Pod anti affinity is a group of inter pod anti affinity scheduling rules. */
 export interface IoK8sApiCoreV1PodAntiAffinity {
@@ -2658,18 +2511,8 @@ export interface IoK8sApiCoreV1PodAntiAffinity {
   /** requiredDuringSchedulingIgnoredDuringExecution specifies that if the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. */
   requiredDuringSchedulingIgnoredDuringExecution?: IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList;
 }
-export const IoK8sApiCoreV1PodAntiAffinity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preferredDuringSchedulingIgnoredDuringExecution: S.optional(
-      IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList,
-    ),
-    requiredDuringSchedulingIgnoredDuringExecution: S.optional(
-      IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList,
-    ),
-  }),
-).annotate({
-  identifier: "IoK8sApiCoreV1PodAntiAffinity",
-}) as any as S.Schema<IoK8sApiCoreV1PodAntiAffinity>;
+export const IoK8sApiCoreV1PodAntiAffinity =
+  IoK8sApiCoreV1PodAffinity as any as S.Schema<IoK8sApiCoreV1PodAntiAffinity>;
 
 /** Affinity is a group of affinity scheduling rules. */
 export interface IoK8sApiCoreV1Affinity {
@@ -2690,15 +2533,13 @@ export const IoK8sApiCoreV1Affinity = /*@__PURE__*/ S.suspend(() =>
 
 /** args are the arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1ContainerArgsList = Array<string>;
-export const IoK8sApiCoreV1ContainerArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ContainerArgsList>;
+export const IoK8sApiCoreV1ContainerArgsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ContainerArgsList>;
 
 /** command is the entrypoint array. Not executed within a shell. The container image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1ContainerCommandList = Array<string>;
-export const IoK8sApiCoreV1ContainerCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ContainerCommandList>;
+export const IoK8sApiCoreV1ContainerCommandList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ContainerCommandList>;
 
 /** Selects a key from a ConfigMap. */
 export interface IoK8sApiCoreV1ConfigMapKeySelector {
@@ -2785,15 +2626,8 @@ export interface IoK8sApiCoreV1SecretKeySelector {
   /** optional specifies whether the Secret or its key must be defined */
   optional?: boolean;
 }
-export const IoK8sApiCoreV1SecretKeySelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    name: S.optional(S.String),
-    optional: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IoK8sApiCoreV1SecretKeySelector",
-}) as any as S.Schema<IoK8sApiCoreV1SecretKeySelector>;
+export const IoK8sApiCoreV1SecretKeySelector =
+  IoK8sApiCoreV1ConfigMapKeySelector as any as S.Schema<IoK8sApiCoreV1SecretKeySelector>;
 
 /** EnvVarSource represents a source for the value of an EnvVar. */
 export interface IoK8sApiCoreV1EnvVarSource {
@@ -2866,14 +2700,8 @@ export interface IoK8sApiCoreV1SecretEnvSource {
   /** optional specifies whether the Secret must be defined */
   optional?: boolean;
 }
-export const IoK8sApiCoreV1SecretEnvSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    optional: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IoK8sApiCoreV1SecretEnvSource",
-}) as any as S.Schema<IoK8sApiCoreV1SecretEnvSource>;
+export const IoK8sApiCoreV1SecretEnvSource =
+  IoK8sApiCoreV1ConfigMapEnvSource as any as S.Schema<IoK8sApiCoreV1SecretEnvSource>;
 
 /** EnvFromSource represents the source of a set of ConfigMaps or Secrets */
 export interface IoK8sApiCoreV1EnvFromSource {
@@ -2902,9 +2730,8 @@ export const IoK8sApiCoreV1ContainerEnvFromList = /*@__PURE__*/ S.Array(
 
 /** command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
 export type IoK8sApiCoreV1ExecActionCommandList = Array<string>;
-export const IoK8sApiCoreV1ExecActionCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ExecActionCommandList>;
+export const IoK8sApiCoreV1ExecActionCommandList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ExecActionCommandList>;
 
 /** ExecAction describes a "run in container" action. */
 export interface IoK8sApiCoreV1ExecAction {
@@ -3165,17 +2992,13 @@ export const IoK8sApiCoreV1ResourceRequirementsClaimsList = /*@__PURE__*/ S.Arra
 
 /** limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type IoK8sApiCoreV1ResourceRequirementsLimitsMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ResourceRequirementsLimitsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ResourceRequirementsLimitsMap>;
+export const IoK8sApiCoreV1ResourceRequirementsLimitsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ResourceRequirementsLimitsMap>;
 
 /** requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type IoK8sApiCoreV1ResourceRequirementsRequestsMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ResourceRequirementsRequestsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ResourceRequirementsRequestsMap>;
+export const IoK8sApiCoreV1ResourceRequirementsRequestsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ResourceRequirementsRequestsMap>;
 
 /** ResourceRequirements describes the compute resource requirements. */
 export interface IoK8sApiCoreV1ResourceRequirements {
@@ -3259,15 +3082,13 @@ export const IoK8sApiCoreV1AppArmorProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** add lists the capabilities to add to the container. */
 export type IoK8sApiCoreV1CapabilitiesAddList = Array<string>;
-export const IoK8sApiCoreV1CapabilitiesAddList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CapabilitiesAddList>;
+export const IoK8sApiCoreV1CapabilitiesAddList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CapabilitiesAddList>;
 
 /** drop lists the capabilities to remove from the container. */
 export type IoK8sApiCoreV1CapabilitiesDropList = Array<string>;
-export const IoK8sApiCoreV1CapabilitiesDropList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CapabilitiesDropList>;
+export const IoK8sApiCoreV1CapabilitiesDropList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CapabilitiesDropList>;
 
 /** Adds and removes POSIX capabilities from running containers. */
 export interface IoK8sApiCoreV1Capabilities {
@@ -3314,14 +3135,8 @@ export interface IoK8sApiCoreV1SeccompProfile {
   /** type indicates which kind of seccomp profile will be applied. Valid options are: Localhost - a profile defined in a file on the node should be used. RuntimeDefault - the container runtime default profile should be used. Unconfined - no profile should be applied. */
   type: string;
 }
-export const IoK8sApiCoreV1SeccompProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localhostProfile: S.optional(S.String),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiCoreV1SeccompProfile",
-}) as any as S.Schema<IoK8sApiCoreV1SeccompProfile>;
+export const IoK8sApiCoreV1SeccompProfile =
+  IoK8sApiCoreV1AppArmorProfile as any as S.Schema<IoK8sApiCoreV1SeccompProfile>;
 
 /** WindowsSecurityContextOptions contain Windows-specific options and credentials. */
 export interface IoK8sApiCoreV1WindowsSecurityContextOptions {
@@ -3415,9 +3230,8 @@ export const IoK8sApiCoreV1ContainerVolumeDevicesList = /*@__PURE__*/ S.Array(
 
 /** bindMountOptions is the list of additional bind mount options to apply when mounting this volume into the container. Allowed values are noexec, nodev, and nosuid. These are Linux mount options and have no effect on Windows nodes. This field is not supported with image volumes. This is an alpha field and requires enabling the VolumeBindMountOptions feature gate. */
 export type IoK8sApiCoreV1VolumeMountBindMountOptionsList = Array<string>;
-export const IoK8sApiCoreV1VolumeMountBindMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1VolumeMountBindMountOptionsList>;
+export const IoK8sApiCoreV1VolumeMountBindMountOptionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1VolumeMountBindMountOptionsList>;
 
 /** VolumeMount describes a mounting of a Volume within a container. */
 export interface IoK8sApiCoreV1VolumeMount {
@@ -3550,9 +3364,8 @@ export const IoK8sApiCoreV1PodSpecContainersList = /*@__PURE__*/ S.Array(
 
 /** nameservers is a list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed. */
 export type IoK8sApiCoreV1PodDNSConfigNameserversList = Array<string>;
-export const IoK8sApiCoreV1PodDNSConfigNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodDNSConfigNameserversList>;
+export const IoK8sApiCoreV1PodDNSConfigNameserversList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodDNSConfigNameserversList>;
 
 /** PodDNSConfigOption defines DNS resolver options of a pod. */
 export interface IoK8sApiCoreV1PodDNSConfigOption {
@@ -3578,9 +3391,8 @@ export const IoK8sApiCoreV1PodDNSConfigOptionsList = /*@__PURE__*/ S.Array(
 
 /** searches is a list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed. */
 export type IoK8sApiCoreV1PodDNSConfigSearchesList = Array<string>;
-export const IoK8sApiCoreV1PodDNSConfigSearchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodDNSConfigSearchesList>;
+export const IoK8sApiCoreV1PodDNSConfigSearchesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodDNSConfigSearchesList>;
 
 /** PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy. */
 export interface IoK8sApiCoreV1PodDNSConfig {
@@ -3603,59 +3415,50 @@ export const IoK8sApiCoreV1PodDNSConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** args are the arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1EphemeralContainerArgsList = Array<string>;
-export const IoK8sApiCoreV1EphemeralContainerArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerArgsList>;
+export const IoK8sApiCoreV1EphemeralContainerArgsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerArgsList>;
 
 /** command is the entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1EphemeralContainerCommandList = Array<string>;
-export const IoK8sApiCoreV1EphemeralContainerCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerCommandList>;
+export const IoK8sApiCoreV1EphemeralContainerCommandList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerCommandList>;
 
 /** env is the list of environment variables to set in the container. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerEnvList = Array<IoK8sApiCoreV1EnvVar>;
-export const IoK8sApiCoreV1EphemeralContainerEnvList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1EnvVar,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerEnvList>;
+export const IoK8sApiCoreV1EphemeralContainerEnvList =
+  IoK8sApiCoreV1ContainerEnvList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerEnvList>;
 
 /** envFrom is the list of sources to populate environment variables in the container. The keys defined within a source may consist of any printable ASCII characters except '='. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerEnvFromList = Array<IoK8sApiCoreV1EnvFromSource>;
-export const IoK8sApiCoreV1EphemeralContainerEnvFromList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1EnvFromSource,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerEnvFromList>;
+export const IoK8sApiCoreV1EphemeralContainerEnvFromList =
+  IoK8sApiCoreV1ContainerEnvFromList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerEnvFromList>;
 
 /** ports are not allowed for ephemeral containers. */
 export type IoK8sApiCoreV1EphemeralContainerPortsList = Array<IoK8sApiCoreV1ContainerPort>;
-export const IoK8sApiCoreV1EphemeralContainerPortsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ContainerPort,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerPortsList>;
+export const IoK8sApiCoreV1EphemeralContainerPortsList =
+  IoK8sApiCoreV1ContainerPortsList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerPortsList>;
 
 /** resizePolicy is the resources resize policy for the container. */
 export type IoK8sApiCoreV1EphemeralContainerResizePolicyList =
   Array<IoK8sApiCoreV1ContainerResizePolicy>;
-export const IoK8sApiCoreV1EphemeralContainerResizePolicyList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ContainerResizePolicy,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerResizePolicyList>;
+export const IoK8sApiCoreV1EphemeralContainerResizePolicyList =
+  IoK8sApiCoreV1ContainerResizePolicyList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerResizePolicyList>;
 
 /** restartPolicyRules represents a list of rules to be checked to determine if the container should be restarted on exit. You cannot set this field on ephemeral containers. */
 export type IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList =
   Array<IoK8sApiCoreV1ContainerRestartRule>;
-export const IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ContainerRestartRule,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList>;
+export const IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList =
+  IoK8sApiCoreV1ContainerRestartPolicyRulesList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList>;
 
 /** volumeDevices is the list of block devices to be used by the container. */
 export type IoK8sApiCoreV1EphemeralContainerVolumeDevicesList = Array<IoK8sApiCoreV1VolumeDevice>;
-export const IoK8sApiCoreV1EphemeralContainerVolumeDevicesList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1VolumeDevice,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerVolumeDevicesList>;
+export const IoK8sApiCoreV1EphemeralContainerVolumeDevicesList =
+  IoK8sApiCoreV1ContainerVolumeDevicesList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerVolumeDevicesList>;
 
 /** volumeMounts are the pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerVolumeMountsList = Array<IoK8sApiCoreV1VolumeMount>;
-export const IoK8sApiCoreV1EphemeralContainerVolumeMountsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1VolumeMount,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerVolumeMountsList>;
+export const IoK8sApiCoreV1EphemeralContainerVolumeMountsList =
+  IoK8sApiCoreV1ContainerVolumeMountsList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerVolumeMountsList>;
 
 /** An EphemeralContainer is a temporary container that you may add to an existing Pod for user-initiated activities such as debugging. Ephemeral containers have no resource or scheduling guarantees, and they will not be restarted when they exit or when a Pod is removed or restarted. The kubelet may evict a Pod if an ephemeral container causes the Pod to exceed its resource allocation. To add an ephemeral container, use the ephemeralcontainers subresource of an existing Pod. Ephemeral containers may not be removed or restarted. */
 export interface IoK8sApiCoreV1EphemeralContainer {
@@ -3775,9 +3578,8 @@ export const IoK8sApiCoreV1PodSpecEvictionRespondersList = /*@__PURE__*/ S.Array
 
 /** hostnames for the above IP address. */
 export type IoK8sApiCoreV1HostAliasHostnamesList = Array<string>;
-export const IoK8sApiCoreV1HostAliasHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1HostAliasHostnamesList>;
+export const IoK8sApiCoreV1HostAliasHostnamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1HostAliasHostnamesList>;
 
 /** HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file. */
 export interface IoK8sApiCoreV1HostAlias {
@@ -3820,16 +3622,13 @@ export const IoK8sApiCoreV1PodSpecImagePullSecretsList = /*@__PURE__*/ S.Array(
 
 /** initContainers is the list of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/ */
 export type IoK8sApiCoreV1PodSpecInitContainersList = Array<IoK8sApiCoreV1Container>;
-export const IoK8sApiCoreV1PodSpecInitContainersList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1Container,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecInitContainersList>;
+export const IoK8sApiCoreV1PodSpecInitContainersList =
+  IoK8sApiCoreV1PodSpecContainersList as any as S.Schema<IoK8sApiCoreV1PodSpecInitContainersList>;
 
 /** nodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/ */
 export type IoK8sApiCoreV1PodSpecNodeSelectorMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1PodSpecNodeSelectorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecNodeSelectorMap>;
+export const IoK8sApiCoreV1PodSpecNodeSelectorMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PodSpecNodeSelectorMap>;
 
 /** PodOS defines the OS parameters of a pod. */
 export interface IoK8sApiCoreV1PodOS {
@@ -3844,10 +3643,8 @@ export const IoK8sApiCoreV1PodOS = /*@__PURE__*/ S.suspend(() =>
 
 /** overhead represents the resource overhead associated with running a pod for a given RuntimeClass. This field will be autopopulated at admission time by the RuntimeClass admission controller. If the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The RuntimeClass admission controller will reject Pod create requests which have the overhead already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md */
 export type IoK8sApiCoreV1PodSpecOverheadMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1PodSpecOverheadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecOverheadMap>;
+export const IoK8sApiCoreV1PodSpecOverheadMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PodSpecOverheadMap>;
 
 /** PodReadinessGate contains the reference to a pod condition */
 export interface IoK8sApiCoreV1PodReadinessGate {
@@ -3927,9 +3724,8 @@ export const IoK8sApiCoreV1PodSchedulingGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** supplementalGroups is a list of groups applied to the first process run in each container, in addition to the container's primary GID and fsGroup (if specified). If the SupplementalGroupsPolicy feature is enabled, the supplementalGroupsPolicy field determines whether these are in addition to or instead of any group memberships defined in the container image. If unspecified, no additional groups are added, though group memberships defined in the container image may still be used, depending on the supplementalGroupsPolicy field. Note that this field cannot be set when spec.os.name is windows. */
 export type IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList = Array<number>;
-export const IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList>;
+export const IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList =
+  IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList as any as S.Schema<IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList>;
 
 /** Sysctl defines a kernel parameter to be set */
 export interface IoK8sApiCoreV1Sysctl {
@@ -3938,18 +3734,13 @@ export interface IoK8sApiCoreV1Sysctl {
   /** value of a property to set */
   value: string;
 }
-export const IoK8sApiCoreV1Sysctl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "IoK8sApiCoreV1Sysctl" }) as any as S.Schema<IoK8sApiCoreV1Sysctl>;
+export const IoK8sApiCoreV1Sysctl =
+  IoK8sApiCoreV1HTTPHeader as any as S.Schema<IoK8sApiCoreV1Sysctl>;
 
 /** sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.name is windows. */
 export type IoK8sApiCoreV1PodSecurityContextSysctlsList = Array<IoK8sApiCoreV1Sysctl>;
-export const IoK8sApiCoreV1PodSecurityContextSysctlsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1Sysctl,
-) as any as S.Schema<IoK8sApiCoreV1PodSecurityContextSysctlsList>;
+export const IoK8sApiCoreV1PodSecurityContextSysctlsList =
+  IoK8sApiCoreV1HTTPGetActionHttpHeadersList as any as S.Schema<IoK8sApiCoreV1PodSecurityContextSysctlsList>;
 
 /** PodSecurityContext holds pod-level security attributes and common container settings. Some fields are also present in container.securityContext. Field values of container.securityContext take precedence over field values of PodSecurityContext. */
 export interface IoK8sApiCoreV1PodSecurityContext {
@@ -4031,9 +3822,8 @@ export const IoK8sApiCoreV1PodSpecTolerationsList = /*@__PURE__*/ S.Array(
 
 /** matchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. MatchLabelKeys cannot be set when LabelSelector isn't set. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector. This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default). */
 export type IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList = Array<string>;
-export const IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList>;
+export const IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList>;
 
 /** TopologySpreadConstraint specifies how to spread matching pods among the given topology. */
 export interface IoK8sApiCoreV1TopologySpreadConstraint {
@@ -4147,9 +3937,8 @@ export const IoK8sApiCoreV1AzureFileVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
 export type IoK8sApiCoreV1CephFSVolumeSourceMonitorsList = Array<string>;
-export const IoK8sApiCoreV1CephFSVolumeSourceMonitorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CephFSVolumeSourceMonitorsList>;
+export const IoK8sApiCoreV1CephFSVolumeSourceMonitorsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CephFSVolumeSourceMonitorsList>;
 
 /** Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1CephFSVolumeSource {
@@ -4256,10 +4045,8 @@ export const IoK8sApiCoreV1ConfigMapVolumeSource = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap>;
+export const IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap>;
 
 /** Represents a source location of a volume to mount, managed by an external CSI driver */
 export interface IoK8sApiCoreV1CSIVolumeSource {
@@ -4387,15 +4174,13 @@ export const IoK8sApiCoreV1EphemeralVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** targetWWNs is Optional: FC target worldwide names (WWNs) */
 export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = Array<string>;
-export const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
+export const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
 
 /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
 export type IoK8sApiCoreV1FCVolumeSourceWwidsList = Array<string>;
-export const IoK8sApiCoreV1FCVolumeSourceWwidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
+export const IoK8sApiCoreV1FCVolumeSourceWwidsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
 
 /** Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1FCVolumeSource {
@@ -4424,10 +4209,8 @@ export const IoK8sApiCoreV1FCVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** options is Optional: this field holds extra command options if any. */
 export type IoK8sApiCoreV1FlexVolumeSourceOptionsMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1FlexVolumeSourceOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1FlexVolumeSourceOptionsMap>;
+export const IoK8sApiCoreV1FlexVolumeSourceOptionsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1FlexVolumeSourceOptionsMap>;
 
 /** FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. */
 export interface IoK8sApiCoreV1FlexVolumeSource {
@@ -4564,9 +4347,8 @@ export const IoK8sApiCoreV1ImageVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** portals is the iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
 export type IoK8sApiCoreV1ISCSIVolumeSourcePortalsList = Array<string>;
-export const IoK8sApiCoreV1ISCSIVolumeSourcePortalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ISCSIVolumeSourcePortalsList>;
+export const IoK8sApiCoreV1ISCSIVolumeSourcePortalsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ISCSIVolumeSourcePortalsList>;
 
 /** Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1ISCSIVolumeSource {
@@ -4711,9 +4493,8 @@ export const IoK8sApiCoreV1ClusterTrustBundleProjection = /*@__PURE__*/ S.suspen
 
 /** items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1ConfigMapProjectionItemsList = Array<IoK8sApiCoreV1KeyToPath>;
-export const IoK8sApiCoreV1ConfigMapProjectionItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1KeyToPath,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapProjectionItemsList>;
+export const IoK8sApiCoreV1ConfigMapProjectionItemsList =
+  IoK8sApiCoreV1ConfigMapVolumeSourceItemsList as any as S.Schema<IoK8sApiCoreV1ConfigMapProjectionItemsList>;
 
 /** Adapts a ConfigMap into a projected volume. The contents of the target ConfigMap's Data field will be presented in a projected volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. Note that this is identical to a configmap volume source without the default mode. */
 export interface IoK8sApiCoreV1ConfigMapProjection {
@@ -4737,9 +4518,8 @@ export const IoK8sApiCoreV1ConfigMapProjection = /*@__PURE__*/ S.suspend(() =>
 /** items is a list of DownwardAPIVolume file */
 export type IoK8sApiCoreV1DownwardAPIProjectionItemsList =
   Array<IoK8sApiCoreV1DownwardAPIVolumeFile>;
-export const IoK8sApiCoreV1DownwardAPIProjectionItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1DownwardAPIVolumeFile,
-) as any as S.Schema<IoK8sApiCoreV1DownwardAPIProjectionItemsList>;
+export const IoK8sApiCoreV1DownwardAPIProjectionItemsList =
+  IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList as any as S.Schema<IoK8sApiCoreV1DownwardAPIProjectionItemsList>;
 
 /** Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode. */
 export interface IoK8sApiCoreV1DownwardAPIProjection {
@@ -4758,10 +4538,8 @@ export const IoK8sApiCoreV1DownwardAPIProjection = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap>;
+export const IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap>;
 
 /** PodCertificateProjection provides a private key and X.509 certificate in the pod filesystem. */
 export interface IoK8sApiCoreV1PodCertificateProjection {
@@ -4799,9 +4577,8 @@ export const IoK8sApiCoreV1PodCertificateProjection = /*@__PURE__*/ S.suspend(()
 
 /** items if unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1SecretProjectionItemsList = Array<IoK8sApiCoreV1KeyToPath>;
-export const IoK8sApiCoreV1SecretProjectionItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1KeyToPath,
-) as any as S.Schema<IoK8sApiCoreV1SecretProjectionItemsList>;
+export const IoK8sApiCoreV1SecretProjectionItemsList =
+  IoK8sApiCoreV1ConfigMapVolumeSourceItemsList as any as S.Schema<IoK8sApiCoreV1SecretProjectionItemsList>;
 
 /** Adapts a secret into a projected volume. The contents of the target Secret's Data field will be presented in a projected volume as files using the keys in the Data field as the file names. Note that this is identical to a secret volume source without the default mode. */
 export interface IoK8sApiCoreV1SecretProjection {
@@ -4812,15 +4589,8 @@ export interface IoK8sApiCoreV1SecretProjection {
   /** optional field specify whether the Secret or its key must be defined */
   optional?: boolean;
 }
-export const IoK8sApiCoreV1SecretProjection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(IoK8sApiCoreV1SecretProjectionItemsList),
-    name: S.optional(S.String),
-    optional: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IoK8sApiCoreV1SecretProjection",
-}) as any as S.Schema<IoK8sApiCoreV1SecretProjection>;
+export const IoK8sApiCoreV1SecretProjection =
+  IoK8sApiCoreV1ConfigMapProjection as any as S.Schema<IoK8sApiCoreV1SecretProjection>;
 
 /** ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise). */
 export interface IoK8sApiCoreV1ServiceAccountTokenProjection {
@@ -4927,9 +4697,8 @@ export const IoK8sApiCoreV1QuobyteVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
 export type IoK8sApiCoreV1RBDVolumeSourceMonitorsList = Array<string>;
-export const IoK8sApiCoreV1RBDVolumeSourceMonitorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1RBDVolumeSourceMonitorsList>;
+export const IoK8sApiCoreV1RBDVolumeSourceMonitorsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1RBDVolumeSourceMonitorsList>;
 
 /** Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1RBDVolumeSource {
@@ -5007,9 +4776,8 @@ export const IoK8sApiCoreV1ScaleIOVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** items If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1SecretVolumeSourceItemsList = Array<IoK8sApiCoreV1KeyToPath>;
-export const IoK8sApiCoreV1SecretVolumeSourceItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1KeyToPath,
-) as any as S.Schema<IoK8sApiCoreV1SecretVolumeSourceItemsList>;
+export const IoK8sApiCoreV1SecretVolumeSourceItemsList =
+  IoK8sApiCoreV1ConfigMapVolumeSourceItemsList as any as S.Schema<IoK8sApiCoreV1SecretVolumeSourceItemsList>;
 
 /** Adapts a Secret into a volume. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. Secret volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1SecretVolumeSource {
@@ -5329,10 +5097,8 @@ export const IoK8sApiCoreV1PodSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** AllocatedResources is the total requests allocated for this pod by the node. If pod-level requests are not set, this will be the total requests aggregated across containers in the pod. */
 export type IoK8sApiCoreV1PodStatusAllocatedResourcesMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1PodStatusAllocatedResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PodStatusAllocatedResourcesMap>;
+export const IoK8sApiCoreV1PodStatusAllocatedResourcesMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PodStatusAllocatedResourcesMap>;
 
 /** PodCondition contains details for the current condition of this pod. */
 export interface IoK8sApiCoreV1PodCondition {
@@ -5375,10 +5141,8 @@ export const IoK8sApiCoreV1PodStatusConditionsList = /*@__PURE__*/ S.Array(
 export type IoK8sApiCoreV1ContainerStatusAllocatedResourcesMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1ContainerStatusAllocatedResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ContainerStatusAllocatedResourcesMap>;
+export const IoK8sApiCoreV1ContainerStatusAllocatedResourcesMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ContainerStatusAllocatedResourcesMap>;
 
 /** ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680. */
 export interface IoK8sApiCoreV1ResourceHealth {
@@ -5509,9 +5273,8 @@ export const IoK8sApiCoreV1ContainerState = /*@__PURE__*/ S.suspend(() =>
 
 /** supplementalGroups are the supplemental groups initially attached to the first process in the container */
 export type IoK8sApiCoreV1LinuxContainerUserSupplementalGroupsList = Array<number>;
-export const IoK8sApiCoreV1LinuxContainerUserSupplementalGroupsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IoK8sApiCoreV1LinuxContainerUserSupplementalGroupsList>;
+export const IoK8sApiCoreV1LinuxContainerUserSupplementalGroupsList =
+  IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList as any as S.Schema<IoK8sApiCoreV1LinuxContainerUserSupplementalGroupsList>;
 
 /** LinuxContainerUser represents user identity information in Linux containers */
 export interface IoK8sApiCoreV1LinuxContainerUser {
@@ -5666,9 +5429,8 @@ export const IoK8sApiCoreV1PodStatusContainerStatusesList = /*@__PURE__*/ S.Arra
 /** Statuses for any ephemeral containers that have run in this pod. Each ephemeral container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status */
 export type IoK8sApiCoreV1PodStatusEphemeralContainerStatusesList =
   Array<IoK8sApiCoreV1ContainerStatus>;
-export const IoK8sApiCoreV1PodStatusEphemeralContainerStatusesList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ContainerStatus,
-) as any as S.Schema<IoK8sApiCoreV1PodStatusEphemeralContainerStatusesList>;
+export const IoK8sApiCoreV1PodStatusEphemeralContainerStatusesList =
+  IoK8sApiCoreV1PodStatusContainerStatusesList as any as S.Schema<IoK8sApiCoreV1PodStatusEphemeralContainerStatusesList>;
 
 /** ContainerExtendedResourceRequest has the mapping of container name, extended resource name to the device request name. */
 export interface IoK8sApiCoreV1ContainerExtendedResourceRequest {
@@ -5732,15 +5494,13 @@ export const IoK8sApiCoreV1PodStatusHostIPsList = /*@__PURE__*/ S.Array(
 
 /** Statuses of init containers in this pod. The most recent successful non-restartable init container will have ready = true, the most recently started container will have startTime set. Each init container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-and-container-status */
 export type IoK8sApiCoreV1PodStatusInitContainerStatusesList = Array<IoK8sApiCoreV1ContainerStatus>;
-export const IoK8sApiCoreV1PodStatusInitContainerStatusesList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ContainerStatus,
-) as any as S.Schema<IoK8sApiCoreV1PodStatusInitContainerStatusesList>;
+export const IoK8sApiCoreV1PodStatusInitContainerStatusesList =
+  IoK8sApiCoreV1PodStatusContainerStatusesList as any as S.Schema<IoK8sApiCoreV1PodStatusInitContainerStatusesList>;
 
 /** containers lists the names of all containers in this pod that reference the claim. */
 export type IoK8sApiCoreV1NodeAllocatableResourceClaimStatusContainersList = Array<string>;
-export const IoK8sApiCoreV1NodeAllocatableResourceClaimStatusContainersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeAllocatableResourceClaimStatusContainersList>;
+export const IoK8sApiCoreV1NodeAllocatableResourceClaimStatusContainersList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeAllocatableResourceClaimStatusContainersList>;
 
 /** NodeAllocatableMappedResources describes mapped node allocatable resource allocations. */
 export interface IoK8sApiCoreV1NodeAllocatableMappedResources {
@@ -5826,17 +5586,12 @@ export interface IoK8sApiCoreV1PodIP {
   /** ip is the IP address assigned to the pod */
   ip: string;
 }
-export const IoK8sApiCoreV1PodIP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ip: S.String,
-  }),
-).annotate({ identifier: "IoK8sApiCoreV1PodIP" }) as any as S.Schema<IoK8sApiCoreV1PodIP>;
+export const IoK8sApiCoreV1PodIP = IoK8sApiCoreV1HostIP as any as S.Schema<IoK8sApiCoreV1PodIP>;
 
 /** podIPs holds the IP addresses allocated to the pod. If this field is specified, the 0th entry must match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list is empty if no IPs have been allocated yet. */
 export type IoK8sApiCoreV1PodStatusPodIPsList = Array<IoK8sApiCoreV1PodIP>;
-export const IoK8sApiCoreV1PodStatusPodIPsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1PodIP,
-) as any as S.Schema<IoK8sApiCoreV1PodStatusPodIPsList>;
+export const IoK8sApiCoreV1PodStatusPodIPsList =
+  IoK8sApiCoreV1PodStatusHostIPsList as any as S.Schema<IoK8sApiCoreV1PodStatusPodIPsList>;
 
 /** PodResourceClaimStatus is stored in the PodStatus for each PodResourceClaim which references a ResourceClaimTemplate. It stores the generated name for the corresponding ResourceClaim. */
 export interface IoK8sApiCoreV1PodResourceClaimStatus {
@@ -5864,9 +5619,8 @@ export const IoK8sApiCoreV1PodStatusResourceClaimStatusesList = /*@__PURE__*/ S.
 /** healthConditions is the set of adverse conditions reported by the CSI node plugin for this volume on this node. At most 16 conditions may be reported. */
 export type IoK8sApiCoreV1PodVolumeHealthHealthConditionsList =
   Array<IoK8sApiCoreV1VolumeHealthCondition>;
-export const IoK8sApiCoreV1PodVolumeHealthHealthConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1VolumeHealthCondition,
-) as any as S.Schema<IoK8sApiCoreV1PodVolumeHealthHealthConditionsList>;
+export const IoK8sApiCoreV1PodVolumeHealthHealthConditionsList =
+  IoK8sApiCoreV1VolumeHealthStatusHealthConditionsList as any as S.Schema<IoK8sApiCoreV1PodVolumeHealthHealthConditionsList>;
 
 /** PodVolumeHealth contains health information for a volume used by a pod, reported by the CSI node plugin via the kubelet. */
 export interface IoK8sApiCoreV1PodVolumeHealth {
@@ -6078,9 +5832,8 @@ export const CreateCoreV1NamespacedPodBindingRequest = /*@__PURE__*/ S.suspend((
 
 /** When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed */
 export type IoK8sApimachineryPkgApisMetaV1DeleteOptionsDryRunList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1DeleteOptionsDryRunList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1DeleteOptionsDryRunList>;
+export const IoK8sApimachineryPkgApisMetaV1DeleteOptionsDryRunList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1DeleteOptionsDryRunList>;
 
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
@@ -6277,10 +6030,8 @@ export const IoK8sApiCoreV1PodTemplate = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiCoreV1ReplicationControllerSpecSelectorMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1ReplicationControllerSpecSelectorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ReplicationControllerSpecSelectorMap>;
+export const IoK8sApiCoreV1ReplicationControllerSpecSelectorMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ReplicationControllerSpecSelectorMap>;
 
 /** ReplicationControllerSpec is the specification of a replication controller. */
 export interface IoK8sApiCoreV1ReplicationControllerSpec {
@@ -6317,24 +6068,14 @@ export interface IoK8sApiCoreV1ReplicationControllerCondition {
   /** type is the type of replication controller condition. */
   type: string;
 }
-export const IoK8sApiCoreV1ReplicationControllerCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastTransitionTime: S.optional(S.String),
-    message: S.optional(S.String),
-    reason: S.optional(S.String),
-    status: S.String,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiCoreV1ReplicationControllerCondition",
-}) as any as S.Schema<IoK8sApiCoreV1ReplicationControllerCondition>;
+export const IoK8sApiCoreV1ReplicationControllerCondition =
+  IoK8sApiCoreV1NamespaceCondition as any as S.Schema<IoK8sApiCoreV1ReplicationControllerCondition>;
 
 /** Represents the latest available observations of a replication controller's current state. */
 export type IoK8sApiCoreV1ReplicationControllerStatusConditionsList =
   Array<IoK8sApiCoreV1ReplicationControllerCondition>;
-export const IoK8sApiCoreV1ReplicationControllerStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ReplicationControllerCondition,
-) as any as S.Schema<IoK8sApiCoreV1ReplicationControllerStatusConditionsList>;
+export const IoK8sApiCoreV1ReplicationControllerStatusConditionsList =
+  IoK8sApiCoreV1NamespaceStatusConditionsList as any as S.Schema<IoK8sApiCoreV1ReplicationControllerStatusConditionsList>;
 
 /** ReplicationControllerStatus represents the current status of a replication controller. */
 export interface IoK8sApiCoreV1ReplicationControllerStatus {
@@ -6436,16 +6177,13 @@ export const IoK8sApiCoreV1ReplicationController = /*@__PURE__*/ S.suspend(() =>
 
 /** hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/ */
 export type IoK8sApiCoreV1ResourceQuotaSpecHardMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ResourceQuotaSpecHardMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ResourceQuotaSpecHardMap>;
+export const IoK8sApiCoreV1ResourceQuotaSpecHardMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ResourceQuotaSpecHardMap>;
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApiCoreV1ScopedResourceSelectorRequirementValuesList = Array<string>;
-export const IoK8sApiCoreV1ScopedResourceSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ScopedResourceSelectorRequirementValuesList>;
+export const IoK8sApiCoreV1ScopedResourceSelectorRequirementValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ScopedResourceSelectorRequirementValuesList>;
 
 /** A scoped-resource selector requirement is a selector that contains values, a scope name, and an operator that relates the scope name and values. */
 export interface IoK8sApiCoreV1ScopedResourceSelectorRequirement {
@@ -6488,9 +6226,8 @@ export const IoK8sApiCoreV1ScopeSelector = /*@__PURE__*/ S.suspend(() =>
 
 /** scopes is a collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects. */
 export type IoK8sApiCoreV1ResourceQuotaSpecScopesList = Array<string>;
-export const IoK8sApiCoreV1ResourceQuotaSpecScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ResourceQuotaSpecScopesList>;
+export const IoK8sApiCoreV1ResourceQuotaSpecScopesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ResourceQuotaSpecScopesList>;
 
 /** ResourceQuotaSpec defines the desired hard limits to enforce for Quota. */
 export interface IoK8sApiCoreV1ResourceQuotaSpec {
@@ -6513,17 +6250,13 @@ export const IoK8sApiCoreV1ResourceQuotaSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/ */
 export type IoK8sApiCoreV1ResourceQuotaStatusHardMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ResourceQuotaStatusHardMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ResourceQuotaStatusHardMap>;
+export const IoK8sApiCoreV1ResourceQuotaStatusHardMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ResourceQuotaStatusHardMap>;
 
 /** used is the current observed total usage of the resource in the namespace. */
 export type IoK8sApiCoreV1ResourceQuotaStatusUsedMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ResourceQuotaStatusUsedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ResourceQuotaStatusUsedMap>;
+export const IoK8sApiCoreV1ResourceQuotaStatusUsedMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ResourceQuotaStatusUsedMap>;
 
 /** ResourceQuotaStatus defines the enforced hard limits and observed use. */
 export interface IoK8sApiCoreV1ResourceQuotaStatus {
@@ -6609,19 +6342,15 @@ export const IoK8sApiCoreV1ResourceQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4 */
 export type CreateCoreV1NamespacedSecretRequestDataMap = { [key: string]: string | undefined };
-export const CreateCoreV1NamespacedSecretRequestDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCoreV1NamespacedSecretRequestDataMap>;
+export const CreateCoreV1NamespacedSecretRequestDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateCoreV1NamespacedSecretRequestDataMap>;
 
 /** stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. */
 export type CreateCoreV1NamespacedSecretRequestStringDataMap = {
   [key: string]: string | undefined;
 };
-export const CreateCoreV1NamespacedSecretRequestStringDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCoreV1NamespacedSecretRequestStringDataMap>;
+export const CreateCoreV1NamespacedSecretRequestStringDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateCoreV1NamespacedSecretRequestStringDataMap>;
 
 export interface CreateCoreV1NamespacedSecretRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -6670,17 +6399,13 @@ export const CreateCoreV1NamespacedSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4 */
 export type IoK8sApiCoreV1SecretDataMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1SecretDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1SecretDataMap>;
+export const IoK8sApiCoreV1SecretDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1SecretDataMap>;
 
 /** stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. */
 export type IoK8sApiCoreV1SecretStringDataMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1SecretStringDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1SecretStringDataMap>;
+export const IoK8sApiCoreV1SecretStringDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1SecretStringDataMap>;
 
 /** Secret holds secret data of a certain type. The total bytes of the values in the Data field must be less than MaxSecretSize bytes. */
 export interface IoK8sApiCoreV1Secret {
@@ -6713,27 +6438,23 @@ export const IoK8sApiCoreV1Secret = /*@__PURE__*/ S.suspend(() =>
 
 /** clusterIPs is a list of IP addresses assigned to this service, and are usually assigned randomly. If an address is specified manually, is in-range (as per system configuration), and is not in use, it will be allocated to the service; otherwise creation of the service will fail. This field may not be changed through updates unless the type field is also being changed to ExternalName (which requires this field to be empty) or the type field is being changed from ExternalName (in which case this field may optionally be specified, as describe above). Valid values are "None", empty string (""), or a valid IP address. Setting this to "None" makes a "headless service" (no virtual IP), which is useful when direct endpoint connections are preferred and proxying is not required. Only applies to types ClusterIP, NodePort, and LoadBalancer. If this field is specified when creating a Service of type ExternalName, creation will fail. This field will be wiped when updating a Service to type ExternalName. If this field is not specified, it will be initialized from the clusterIP field. If this field is specified, clients must ensure that clusterIPs[0] and clusterIP have the same value. This field may hold a maximum of two entries (dual-stack IPs, in either order). These IPs must correspond to the values of the ipFamilies field. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies */
 export type IoK8sApiCoreV1ServiceSpecClusterIPsList = Array<string>;
-export const IoK8sApiCoreV1ServiceSpecClusterIPsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ServiceSpecClusterIPsList>;
+export const IoK8sApiCoreV1ServiceSpecClusterIPsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ServiceSpecClusterIPsList>;
 
 /** externalIPs is a list of IP addresses for which nodes in the cluster will also accept traffic for this service. These IPs are not managed by Kubernetes. The user is responsible for ensuring that traffic arrives at a node with this IP. A common example is external load-balancers that are not part of the Kubernetes system. */
 export type IoK8sApiCoreV1ServiceSpecExternalIPsList = Array<string>;
-export const IoK8sApiCoreV1ServiceSpecExternalIPsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ServiceSpecExternalIPsList>;
+export const IoK8sApiCoreV1ServiceSpecExternalIPsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ServiceSpecExternalIPsList>;
 
 /** ipFamilies is a list of IP families (e.g. IPv4, IPv6) assigned to this service. This field is usually assigned automatically based on cluster configuration and the ipFamilyPolicy field. If this field is specified manually, the requested family is available in the cluster, and ipFamilyPolicy allows it, it will be used; otherwise creation of the service will fail. This field is conditionally mutable: it allows for adding or removing a secondary IP family, but it does not allow changing the primary IP family of the Service. Valid values are "IPv4" and "IPv6". This field only applies to Services of types ClusterIP, NodePort, and LoadBalancer, and does apply to "headless" services. This field will be wiped when updating a Service to type ExternalName. This field may hold a maximum of two entries (dual-stack families, in either order). These families must correspond to the values of the clusterIPs field, if specified. Both clusterIPs and ipFamilies are governed by the ipFamilyPolicy field. */
 export type IoK8sApiCoreV1ServiceSpecIpFamiliesList = Array<string>;
-export const IoK8sApiCoreV1ServiceSpecIpFamiliesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ServiceSpecIpFamiliesList>;
+export const IoK8sApiCoreV1ServiceSpecIpFamiliesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ServiceSpecIpFamiliesList>;
 
 /** loadBalancerSourceRanges If specified and supported by the platform, this will restrict traffic through the cloud-provider load-balancer will be restricted to the specified client IPs. This field will be ignored if the cloud-provider does not support the feature." More info: https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/ */
 export type IoK8sApiCoreV1ServiceSpecLoadBalancerSourceRangesList = Array<string>;
-export const IoK8sApiCoreV1ServiceSpecLoadBalancerSourceRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ServiceSpecLoadBalancerSourceRangesList>;
+export const IoK8sApiCoreV1ServiceSpecLoadBalancerSourceRangesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ServiceSpecLoadBalancerSourceRangesList>;
 
 /** ServicePort contains information on service's port. */
 export interface IoK8sApiCoreV1ServicePort {
@@ -6771,10 +6492,8 @@ export const IoK8sApiCoreV1ServiceSpecPortsList = /*@__PURE__*/ S.Array(
 
 /** selector routes service traffic to pods with label keys and values matching this selector. If empty or not present, the service is assumed to have an external process managing its endpoints, which Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/ */
 export type IoK8sApiCoreV1ServiceSpecSelectorMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1ServiceSpecSelectorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ServiceSpecSelectorMap>;
+export const IoK8sApiCoreV1ServiceSpecSelectorMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ServiceSpecSelectorMap>;
 
 /** ClientIPConfig represents the configurations of Client IP based session affinity. */
 export interface IoK8sApiCoreV1ClientIPConfig {
@@ -7111,15 +6830,13 @@ export const CreateCoreV1NamespacedServiceAccountRequest = /*@__PURE__*/ S.suspe
 /** imagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod */
 export type IoK8sApiCoreV1ServiceAccountImagePullSecretsList =
   Array<IoK8sApiCoreV1LocalObjectReference>;
-export const IoK8sApiCoreV1ServiceAccountImagePullSecretsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1LocalObjectReference,
-) as any as S.Schema<IoK8sApiCoreV1ServiceAccountImagePullSecretsList>;
+export const IoK8sApiCoreV1ServiceAccountImagePullSecretsList =
+  IoK8sApiCoreV1PodSpecImagePullSecretsList as any as S.Schema<IoK8sApiCoreV1ServiceAccountImagePullSecretsList>;
 
 /** secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". The "kubernetes.io/enforce-mountable-secrets" annotation is deprecated since v1.32. Prefer separate namespaces to isolate access to mounted secrets. This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret */
 export type IoK8sApiCoreV1ServiceAccountSecretsList = Array<IoK8sApiCoreV1ObjectReference>;
-export const IoK8sApiCoreV1ServiceAccountSecretsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ObjectReference,
-) as any as S.Schema<IoK8sApiCoreV1ServiceAccountSecretsList>;
+export const IoK8sApiCoreV1ServiceAccountSecretsList =
+  CreateCoreV1NamespacedServiceAccountRequestSecretsList as any as S.Schema<IoK8sApiCoreV1ServiceAccountSecretsList>;
 
 /** ServiceAccount binds together: * a name, understood by users, and perhaps by peripheral systems, for an identity * a principal that can be authenticated and authorized * a set of secrets */
 export interface IoK8sApiCoreV1ServiceAccount {
@@ -7150,9 +6867,8 @@ export const IoK8sApiCoreV1ServiceAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1ServiceAccount>;
 
 export type IoK8sApiAuthenticationV1TokenRequestSpecAttestationsValueList = Array<string>;
-export const IoK8sApiAuthenticationV1TokenRequestSpecAttestationsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthenticationV1TokenRequestSpecAttestationsValueList>;
+export const IoK8sApiAuthenticationV1TokenRequestSpecAttestationsValueList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1TokenRequestSpecAttestationsValueList>;
 
 /** attestations is a map of well-known keys to string-slice values. The values for each key have a specific semantic meaning, which is documented on the key definition. Requesters of tokens may ask the Kubernetes API Server to attest to certain claims. The API Server may perform authorization checks depending on the key of this map. */
 export type IoK8sApiAuthenticationV1TokenRequestSpecAttestationsMap = {
@@ -7165,9 +6881,8 @@ export const IoK8sApiAuthenticationV1TokenRequestSpecAttestationsMap = /*@__PURE
 
 /** audiences are the intendend audiences of the token. A recipient of a token must identify themself with an identifier in the list of audiences of the token, and otherwise should reject the token. A token issued for multiple audiences may be used to authenticate against any of the audiences listed but implies a high degree of trust between the target audiences. */
 export type IoK8sApiAuthenticationV1TokenRequestSpecAudiencesList = Array<string>;
-export const IoK8sApiAuthenticationV1TokenRequestSpecAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthenticationV1TokenRequestSpecAudiencesList>;
+export const IoK8sApiAuthenticationV1TokenRequestSpecAudiencesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1TokenRequestSpecAudiencesList>;
 
 /** BoundObjectReference is a reference to an object that a token is bound to. */
 export interface IoK8sApiAuthenticationV1BoundObjectReference {
@@ -7342,16 +7057,13 @@ export const IoK8sApiCoreV1NodeConfigSource = /*@__PURE__*/ S.suspend(() =>
 
 /** podCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this field is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for each of IPv4 and IPv6. */
 export type IoK8sApiCoreV1NodeSpecPodCIDRsList = Array<string>;
-export const IoK8sApiCoreV1NodeSpecPodCIDRsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeSpecPodCIDRsList>;
+export const IoK8sApiCoreV1NodeSpecPodCIDRsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeSpecPodCIDRsList>;
 
 /** disableResizePreemption lists the owners (e.g., autoscalers, operators, administrators) that have requested to disable scheduler and Kubelet preemption for in-place pod resize on this node. If this list is non-empty, resize-induced preemption is disabled on this node. This is an alpha field and requires enabling the InPlacePodVerticalScalingSchedulerPreemption feature gate. */
 export type IoK8sApiCoreV1NodePodPreemptionPolicyDisableResizePreemptionList = Array<string>;
 export const IoK8sApiCoreV1NodePodPreemptionPolicyDisableResizePreemptionList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiCoreV1NodePodPreemptionPolicyDisableResizePreemptionList>;
+  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList as any as S.Schema<IoK8sApiCoreV1NodePodPreemptionPolicyDisableResizePreemptionList>;
 
 /** NodePodPreemptionPolicy defines the node-level policies governing preemption for pods on this node. */
 export interface IoK8sApiCoreV1NodePodPreemptionPolicy {
@@ -7450,17 +7162,13 @@ export const IoK8sApiCoreV1NodeStatusAddressesList = /*@__PURE__*/ S.Array(
 
 /** Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity. */
 export type IoK8sApiCoreV1NodeStatusAllocatableMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1NodeStatusAllocatableMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeStatusAllocatableMap>;
+export const IoK8sApiCoreV1NodeStatusAllocatableMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1NodeStatusAllocatableMap>;
 
 /** Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/reference/node/node-status/#capacity */
 export type IoK8sApiCoreV1NodeStatusCapacityMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1NodeStatusCapacityMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeStatusCapacityMap>;
+export const IoK8sApiCoreV1NodeStatusCapacityMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1NodeStatusCapacityMap>;
 
 /** NodeCondition contains condition information for a node. */
 export interface IoK8sApiCoreV1NodeCondition {
@@ -7546,9 +7254,8 @@ export const IoK8sApiCoreV1NodeDaemonEndpoints = /*@__PURE__*/ S.suspend(() =>
 
 /** DeclaredFeatures represents the features related to feature gates that are declared by the node. */
 export type IoK8sApiCoreV1NodeStatusDeclaredFeaturesList = Array<string>;
-export const IoK8sApiCoreV1NodeStatusDeclaredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeStatusDeclaredFeaturesList>;
+export const IoK8sApiCoreV1NodeStatusDeclaredFeaturesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeStatusDeclaredFeaturesList>;
 
 /** NodeFeatures describes the set of features implemented by the CRI implementation. The features contained in the NodeFeatures should depend only on the cri implementation independent of runtime handlers. */
 export interface IoK8sApiCoreV1NodeFeatures {
@@ -7565,9 +7272,8 @@ export const IoK8sApiCoreV1NodeFeatures = /*@__PURE__*/ S.suspend(() =>
 
 /** names by which this image is known. e.g. ["kubernetes.example/hyperkube:v1.0.7", "cloud-vendor.registry.example/cloud-vendor/hyperkube:v1.0.7"] */
 export type IoK8sApiCoreV1ContainerImageNamesList = Array<string>;
-export const IoK8sApiCoreV1ContainerImageNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ContainerImageNamesList>;
+export const IoK8sApiCoreV1ContainerImageNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ContainerImageNamesList>;
 
 /** Describe a container image */
 export interface IoK8sApiCoreV1ContainerImage {
@@ -7695,26 +7401,18 @@ export interface IoK8sApiCoreV1AttachedVolume {
   /** name of the attached volume */
   name: string;
 }
-export const IoK8sApiCoreV1AttachedVolume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    devicePath: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiCoreV1AttachedVolume",
-}) as any as S.Schema<IoK8sApiCoreV1AttachedVolume>;
+export const IoK8sApiCoreV1AttachedVolume =
+  IoK8sApiCoreV1VolumeDevice as any as S.Schema<IoK8sApiCoreV1AttachedVolume>;
 
 /** List of volumes that are attached to the node. */
 export type IoK8sApiCoreV1NodeStatusVolumesAttachedList = Array<IoK8sApiCoreV1AttachedVolume>;
-export const IoK8sApiCoreV1NodeStatusVolumesAttachedList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1AttachedVolume,
-) as any as S.Schema<IoK8sApiCoreV1NodeStatusVolumesAttachedList>;
+export const IoK8sApiCoreV1NodeStatusVolumesAttachedList =
+  IoK8sApiCoreV1ContainerVolumeDevicesList as any as S.Schema<IoK8sApiCoreV1NodeStatusVolumesAttachedList>;
 
 /** List of attachable volumes in use (mounted) by the node. */
 export type IoK8sApiCoreV1NodeStatusVolumesInUseList = Array<string>;
-export const IoK8sApiCoreV1NodeStatusVolumesInUseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeStatusVolumesInUseList>;
+export const IoK8sApiCoreV1NodeStatusVolumesInUseList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeStatusVolumesInUseList>;
 
 /** NodeStatus is information about the current status of a node. */
 export interface IoK8sApiCoreV1NodeStatus {
@@ -7825,9 +7523,8 @@ export const IoK8sApiCoreV1Node = /*@__PURE__*/ S.suspend(() =>
 
 /** accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes */
 export type IoK8sApiCoreV1PersistentVolumeSpecAccessModesList = Array<string>;
-export const IoK8sApiCoreV1PersistentVolumeSpecAccessModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecAccessModesList>;
+export const IoK8sApiCoreV1PersistentVolumeSpecAccessModesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecAccessModesList>;
 
 /** AzureFile represents an Azure File Service mount on the host and bind mount to the pod. */
 export interface IoK8sApiCoreV1AzureFilePersistentVolumeSource {
@@ -7853,16 +7550,13 @@ export const IoK8sApiCoreV1AzureFilePersistentVolumeSource = /*@__PURE__*/ S.sus
 
 /** capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity */
 export type IoK8sApiCoreV1PersistentVolumeSpecCapacityMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1PersistentVolumeSpecCapacityMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecCapacityMap>;
+export const IoK8sApiCoreV1PersistentVolumeSpecCapacityMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecCapacityMap>;
 
 /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
 export type IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList = Array<string>;
-export const IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList>;
+export const IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList>;
 
 /** SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace */
 export interface IoK8sApiCoreV1SecretReference {
@@ -7934,10 +7628,8 @@ export const IoK8sApiCoreV1CinderPersistentVolumeSource = /*@__PURE__*/ S.suspen
 export type IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap>;
+export const IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap>;
 
 /** Represents storage that is managed by an external CSI volume driver */
 export interface IoK8sApiCoreV1CSIPersistentVolumeSource {
@@ -7983,10 +7675,8 @@ export const IoK8sApiCoreV1CSIPersistentVolumeSource = /*@__PURE__*/ S.suspend((
 export type IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap>;
+export const IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap>;
 
 /** FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin. */
 export interface IoK8sApiCoreV1FlexPersistentVolumeSource {
@@ -8037,9 +7727,8 @@ export const IoK8sApiCoreV1GlusterfsPersistentVolumeSource = /*@__PURE__*/ S.sus
 
 /** portals is the iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
 export type IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList = Array<string>;
-export const IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList>;
+export const IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList>;
 
 /** ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1ISCSIPersistentVolumeSource {
@@ -8102,9 +7791,8 @@ export const IoK8sApiCoreV1LocalVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options */
 export type IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList = Array<string>;
-export const IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList>;
+export const IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList>;
 
 /** VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from. */
 export interface IoK8sApiCoreV1VolumeNodeAffinity {
@@ -8121,9 +7809,8 @@ export const IoK8sApiCoreV1VolumeNodeAffinity = /*@__PURE__*/ S.suspend(() =>
 
 /** monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
 export type IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList = Array<string>;
-export const IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList>;
+export const IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList>;
 
 /** Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1RBDPersistentVolumeSource {
@@ -8455,9 +8142,8 @@ export const IoK8sApiLifecycleV1alpha1EvictionSpec = /*@__PURE__*/ S.suspend(() 
 /** conditions contain information about the eviction request. Eviction specific conditions are: TargetEvicted or Failed (managed by evictionrequest-controller). - Failed means that the eviction request is no longer being processed by any eviction responder. This can happen if the request is canceled or if no responder managed to evict the target (e.g. terminate or delete a pod). - TargetEvicted means that the target has been evicted (e.g. a pod has been terminated or deleted). The maximum length of the conditions list is 100. */
 export type IoK8sApiLifecycleV1alpha1EvictionStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiLifecycleV1alpha1EvictionStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiLifecycleV1alpha1EvictionStatusConditionsList>;
+export const IoK8sApiLifecycleV1alpha1EvictionStatusConditionsList =
+  IoK8sApiCoreV1ServiceStatusConditionsList as any as S.Schema<IoK8sApiLifecycleV1alpha1EvictionStatusConditionsList>;
 
 /** Requester allows you to identify the entity, that requested the eviction of the target. */
 export interface IoK8sApiLifecycleV1alpha1Requester {
@@ -8672,9 +8358,8 @@ export const IoK8sApiLifecycleV1alpha1EvictionRequestSpec = /*@__PURE__*/ S.susp
 /** conditions contain information about the eviction request. EvictionRequest specific conditions are: TargetEvicted or Failed (managed by evictionrequest-controller). - Failed means that the eviction request is no longer being processed by any eviction responder. This can happen if the request is canceled or if no responder managed to evict the target (e.g. terminate or delete a pod). - TargetEvicted means that the target has been evicted (e.g. a pod has been terminated or deleted). These conditions can be reset if the eviction was unsuccessful and a new Eviction intent has been submitted. The maximum length of the conditions list is 100. */
 export type IoK8sApiLifecycleV1alpha1EvictionRequestStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiLifecycleV1alpha1EvictionRequestStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiLifecycleV1alpha1EvictionRequestStatusConditionsList>;
+export const IoK8sApiLifecycleV1alpha1EvictionRequestStatusConditionsList =
+  IoK8sApiCoreV1ServiceStatusConditionsList as any as S.Schema<IoK8sApiLifecycleV1alpha1EvictionRequestStatusConditionsList>;
 
 /** EvictionRequestStatus represents the last observed status of the eviction request. */
 export interface IoK8sApiLifecycleV1alpha1EvictionRequestStatus {
@@ -10909,15 +10594,12 @@ export const GetCoreAPIVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApimachineryPkgApisMetaV1APIVersionsServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIVersionsServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIVersionsServerAddressByClientCIDRsList>;
+  IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIVersionsServerAddressByClientCIDRsList>;
 
 /** versions are the api versions that are available. */
 export type IoK8sApimachineryPkgApisMetaV1APIVersionsVersionsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIVersionsVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIVersionsVersionsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIVersionsVersionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIVersionsVersionsList>;
 
 /** APIVersions lists the versions that are available, to allow clients to discover the API at /api, which is the root path of the legacy v1 API. */
 export interface IoK8sApimachineryPkgApisMetaV1APIVersions {
@@ -10951,21 +10633,18 @@ export const GetCoreV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -11060,11 +10739,8 @@ export const GetServiceAccountIssuerOpenIDConfigurationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetServiceAccountIssuerOpenIDConfigurationRequest>;
 
 export type GetServiceAccountIssuerOpenIDConfigurationResponse = string;
-export const GetServiceAccountIssuerOpenIDConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetServiceAccountIssuerOpenIDConfigurationResponse",
-}) as any as S.Schema<GetServiceAccountIssuerOpenIDConfigurationResponse>;
+export const GetServiceAccountIssuerOpenIDConfigurationResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<GetServiceAccountIssuerOpenIDConfigurationResponse>;
 
 export interface GetServiceAccountIssuerOpenIDKeysetRequest {}
 export const GetServiceAccountIssuerOpenIDKeysetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11074,11 +10750,8 @@ export const GetServiceAccountIssuerOpenIDKeysetRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetServiceAccountIssuerOpenIDKeysetRequest>;
 
 export type GetServiceAccountIssuerOpenIDKeysetResponse = string;
-export const GetServiceAccountIssuerOpenIDKeysetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetServiceAccountIssuerOpenIDKeysetResponse",
-}) as any as S.Schema<GetServiceAccountIssuerOpenIDKeysetResponse>;
+export const GetServiceAccountIssuerOpenIDKeysetResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<GetServiceAccountIssuerOpenIDKeysetResponse>;
 
 export interface ListCoreV1ComponentStatusRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -13164,9 +12837,8 @@ export const LogFileListHandlerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogFileListHandlerRequest>;
 
 export interface LogFileListHandlerResponse {}
-export const LogFileListHandlerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LogFileListHandlerResponse",
-}) as any as S.Schema<LogFileListHandlerResponse>;
+export const LogFileListHandlerResponse =
+  LogFileHandlerResponse as any as S.Schema<LogFileListHandlerResponse>;
 
 export interface PatchCoreV1NamespaceRequest {
   /** name of the Namespace */
@@ -14471,11 +14143,8 @@ export const ReadCoreV1NamespacedPodLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadCoreV1NamespacedPodLogRequest>;
 
 export type ReadCoreV1NamespacedPodLogResponse = string;
-export const ReadCoreV1NamespacedPodLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ReadCoreV1NamespacedPodLogResponse",
-}) as any as S.Schema<ReadCoreV1NamespacedPodLogResponse>;
+export const ReadCoreV1NamespacedPodLogResponse =
+  ConnectCoreV1DeleteNamespacedPodProxyResponse as any as S.Schema<ReadCoreV1NamespacedPodLogResponse>;
 
 export interface ReadCoreV1NamespacedPodResizeRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -14958,17 +14627,13 @@ export const ReplaceCoreV1NamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReplaceCoreV1NamespacedConfigMapRequestBinaryDataMap = {
   [key: string]: string | undefined;
 };
-export const ReplaceCoreV1NamespacedConfigMapRequestBinaryDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplaceCoreV1NamespacedConfigMapRequestBinaryDataMap>;
+export const ReplaceCoreV1NamespacedConfigMapRequestBinaryDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceCoreV1NamespacedConfigMapRequestBinaryDataMap>;
 
 /** data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data must not overlap with the keys in the BinaryData field, this is enforced during validation process. */
 export type ReplaceCoreV1NamespacedConfigMapRequestDataMap = { [key: string]: string | undefined };
-export const ReplaceCoreV1NamespacedConfigMapRequestDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplaceCoreV1NamespacedConfigMapRequestDataMap>;
+export const ReplaceCoreV1NamespacedConfigMapRequestDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceCoreV1NamespacedConfigMapRequestDataMap>;
 
 export interface ReplaceCoreV1NamespacedConfigMapRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -15020,9 +14685,8 @@ export const ReplaceCoreV1NamespacedConfigMapRequest = /*@__PURE__*/ S.suspend((
 /** The set of all endpoints is the union of all subsets. Addresses are placed into subsets according to the IPs they share. A single address with multiple ports, some of which are ready and some of which are not (because they come from different containers) will result in the address being displayed in different subsets for the different ports. No address will appear in both Addresses and NotReadyAddresses in the same subset. Sets of addresses and ports that comprise a service. */
 export type ReplaceCoreV1NamespacedEndpointsRequestSubsetsList =
   Array<IoK8sApiCoreV1EndpointSubset>;
-export const ReplaceCoreV1NamespacedEndpointsRequestSubsetsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1EndpointSubset,
-) as any as S.Schema<ReplaceCoreV1NamespacedEndpointsRequestSubsetsList>;
+export const ReplaceCoreV1NamespacedEndpointsRequestSubsetsList =
+  CreateCoreV1NamespacedEndpointsRequestSubsetsList as any as S.Schema<ReplaceCoreV1NamespacedEndpointsRequestSubsetsList>;
 
 export interface ReplaceCoreV1NamespacedEndpointsRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -15746,19 +15410,15 @@ export const ReplaceCoreV1NamespacedResourceQuotaStatusRequest = /*@__PURE__*/ S
 
 /** data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4 */
 export type ReplaceCoreV1NamespacedSecretRequestDataMap = { [key: string]: string | undefined };
-export const ReplaceCoreV1NamespacedSecretRequestDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplaceCoreV1NamespacedSecretRequestDataMap>;
+export const ReplaceCoreV1NamespacedSecretRequestDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceCoreV1NamespacedSecretRequestDataMap>;
 
 /** stringData allows specifying non-binary secret data in string form. It is provided as a write-only input field for convenience. All keys and values are merged into the data field on write, overwriting any existing values. The stringData field is never output when reading from the API. */
 export type ReplaceCoreV1NamespacedSecretRequestStringDataMap = {
   [key: string]: string | undefined;
 };
-export const ReplaceCoreV1NamespacedSecretRequestStringDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplaceCoreV1NamespacedSecretRequestStringDataMap>;
+export const ReplaceCoreV1NamespacedSecretRequestStringDataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceCoreV1NamespacedSecretRequestStringDataMap>;
 
 export interface ReplaceCoreV1NamespacedSecretRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -15858,16 +15518,13 @@ export const ReplaceCoreV1NamespacedServiceRequest = /*@__PURE__*/ S.suspend(() 
 export type ReplaceCoreV1NamespacedServiceAccountRequestImagePullSecretsList =
   Array<IoK8sApiCoreV1LocalObjectReference>;
 export const ReplaceCoreV1NamespacedServiceAccountRequestImagePullSecretsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiCoreV1LocalObjectReference,
-  ) as any as S.Schema<ReplaceCoreV1NamespacedServiceAccountRequestImagePullSecretsList>;
+  CreateCoreV1NamespacedServiceAccountRequestImagePullSecretsList as any as S.Schema<ReplaceCoreV1NamespacedServiceAccountRequestImagePullSecretsList>;
 
 /** secrets is a list of the secrets in the same namespace that pods running using this ServiceAccount are allowed to use. Pods are only limited to this list if this service account has a "kubernetes.io/enforce-mountable-secrets" annotation set to "true". The "kubernetes.io/enforce-mountable-secrets" annotation is deprecated since v1.32. Prefer separate namespaces to isolate access to mounted secrets. This field should not be used to find auto-generated service account token secrets for use outside of pods. Instead, tokens can be requested directly using the TokenRequest API, or service account token secrets can be manually created. More info: https://kubernetes.io/docs/concepts/configuration/secret */
 export type ReplaceCoreV1NamespacedServiceAccountRequestSecretsList =
   Array<IoK8sApiCoreV1ObjectReference>;
-export const ReplaceCoreV1NamespacedServiceAccountRequestSecretsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1ObjectReference,
-) as any as S.Schema<ReplaceCoreV1NamespacedServiceAccountRequestSecretsList>;
+export const ReplaceCoreV1NamespacedServiceAccountRequestSecretsList =
+  CreateCoreV1NamespacedServiceAccountRequestSecretsList as any as S.Schema<ReplaceCoreV1NamespacedServiceAccountRequestSecretsList>;
 
 export interface ReplaceCoreV1NamespacedServiceAccountRequest {
   /** object name and auth scope, such as for teams and projects */

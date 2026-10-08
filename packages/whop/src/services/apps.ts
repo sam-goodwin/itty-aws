@@ -185,9 +185,8 @@ export const AppBannerImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppBannerImage" }) as any as S.Schema<AppBannerImage>;
 
 export type AppBusinessesCreatedLogoUrlsList = Array<string>;
-export const AppBusinessesCreatedLogoUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppBusinessesCreatedLogoUrlsList>;
+export const AppBusinessesCreatedLogoUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppBusinessesCreatedLogoUrlsList>;
 
 export interface AppCreator {
   /** User ID, prefixed `user_`. */
@@ -365,11 +364,7 @@ export interface AppIcon {
   /** Icon image URL. Always present -- the default app icon when none is uploaded. */
   url: string;
 }
-export const AppIcon = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({ identifier: "AppIcon" }) as any as S.Schema<AppIcon>;
+export const AppIcon = AppBannerImage as any as S.Schema<AppIcon>;
 
 /** Approval status of the app's product listing on the Whop app store, or `null` when the app has no associated product. */
 export type AppMarketplaceStatus = "not_available" | "pending_review" | "live_marketplace";
@@ -380,9 +375,8 @@ export type AppOauthClientType = "public" | "confidential";
 export const AppOauthClientType = S.String;
 
 export type AppPreviousHostedUrlsList = Array<string>;
-export const AppPreviousHostedUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppPreviousHostedUrlsList>;
+export const AppPreviousHostedUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppPreviousHostedUrlsList>;
 
 /** The build's review status. */
 export type AppProductionBuildStatus = "draft" | "pending" | "approved" | "rejected";
@@ -411,9 +405,8 @@ export const AppProductionBuild = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppProductionBuild" }) as any as S.Schema<AppProductionBuild>;
 
 export type AppRedirectUrisList = Array<string>;
-export const AppRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppRedirectUrisList>;
+export const AppRedirectUrisList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppRedirectUrisList>;
 
 export interface AppRequestedPermissionAction {
   /** The permission action's identifier, for example `company:basic:read`. */
@@ -828,9 +821,8 @@ export type AppListItemAppType = "b2b_app" | "b2c_app" | "company_app" | "compon
 export const AppListItemAppType = S.String;
 
 export type AppListItemBusinessesCreatedLogoUrlsList = Array<string>;
-export const AppListItemBusinessesCreatedLogoUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppListItemBusinessesCreatedLogoUrlsList>;
+export const AppListItemBusinessesCreatedLogoUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppListItemBusinessesCreatedLogoUrlsList>;
 
 export type AppListItemDomainsList = Array<AppDomain>;
 export const AppListItemDomainsList = /*@__PURE__*/ S.Array(
@@ -838,9 +830,8 @@ export const AppListItemDomainsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppListItemDomainsList>;
 
 export type AppListItemPreviousHostedUrlsList = Array<string>;
-export const AppListItemPreviousHostedUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppListItemPreviousHostedUrlsList>;
+export const AppListItemPreviousHostedUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppListItemPreviousHostedUrlsList>;
 
 /** Visibility on the Whop app store: `live` is publicly discoverable, `unlisted` is accessible only via direct link, `hidden` is not visible anywhere. */
 export type AppListItemStatus = "live" | "unlisted" | "hidden";
@@ -972,15 +963,13 @@ export const UpdateAppRequestOauthClientType = S.String;
 
 /** The whitelisted OAuth callback URLs users are redirected to after authorizing the app. */
 export type UpdateAppRequestRedirectUrisList = Array<string>;
-export const UpdateAppRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAppRequestRedirectUrisList>;
+export const UpdateAppRequestRedirectUrisList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<UpdateAppRequestRedirectUrisList>;
 
 /** The OAuth scopes the app requests from users when they install it. */
 export type UpdateAppRequestRequiredScopesList = Array<string>;
-export const UpdateAppRequestRequiredScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAppRequestRequiredScopesList>;
+export const UpdateAppRequestRequiredScopesList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<UpdateAppRequestRequiredScopesList>;
 
 /** Controls whether the app is published on Whop discovery or accessible only through its direct link. Publishing requires a name, icon, and description. */
 export type UpdateAppRequestStatus = "live" | "unlisted" | "hidden";
@@ -1105,22 +1094,14 @@ export interface UpdatePermissionsAppRequestRequestedPermissionsItem {
   /** The reason for requesting the action. */
   justification: string;
 }
-export const UpdatePermissionsAppRequestRequestedPermissionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    is_required: S.Boolean,
-    justification: S.String,
-  }),
-).annotate({
-  identifier: "UpdatePermissionsAppRequestRequestedPermissionsItem",
-}) as any as S.Schema<UpdatePermissionsAppRequestRequestedPermissionsItem>;
+export const UpdatePermissionsAppRequestRequestedPermissionsItem =
+  UpdateAppPermissionsRequestRequestedPermissionsItem as any as S.Schema<UpdatePermissionsAppRequestRequestedPermissionsItem>;
 
 /** The permissions that the app will request off of users when a user installs the app. */
 export type UpdatePermissionsAppRequestRequestedPermissionsList =
   Array<UpdatePermissionsAppRequestRequestedPermissionsItem>;
-export const UpdatePermissionsAppRequestRequestedPermissionsList = /*@__PURE__*/ S.Array(
-  UpdatePermissionsAppRequestRequestedPermissionsItem,
-) as any as S.Schema<UpdatePermissionsAppRequestRequestedPermissionsList>;
+export const UpdatePermissionsAppRequestRequestedPermissionsList =
+  UpdateAppPermissionsRequestRequestedPermissionsList as any as S.Schema<UpdatePermissionsAppRequestRequestedPermissionsList>;
 
 export interface UpdatePermissionsAppRequest {
   /** The ID of the app the permission requirements are being updated for */

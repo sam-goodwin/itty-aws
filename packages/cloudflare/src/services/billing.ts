@@ -564,48 +564,7 @@ export interface GetProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    accountType: S.optional(S.NullOr(S.String).pipe(T.Body("account_type"))),
-    address: S.optional(S.NullOr(S.String)),
-    address2: S.optional(S.NullOr(S.String)),
-    balance: S.optional(S.NullOr(S.String)),
-    cardExpiryMonth: S.optional(S.NullOr(S.Number).pipe(T.Body("card_expiry_month"))),
-    cardExpiryYear: S.optional(S.NullOr(S.Number).pipe(T.Body("card_expiry_year"))),
-    cardNumber: S.optional(S.NullOr(S.String).pipe(T.Body("card_number"))),
-    city: S.optional(S.NullOr(S.String)),
-    company: S.optional(S.NullOr(S.String)),
-    country: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deviceData: S.optional(S.NullOr(S.String).pipe(T.Body("device_data"))),
-    editedOn: S.optional(S.NullOr(S.String).pipe(T.Body("edited_on"))),
-    enterpriseBillingEmail: S.optional(S.NullOr(S.String).pipe(T.Body("enterprise_billing_email"))),
-    enterprisePrimaryEmail: S.optional(S.NullOr(S.String).pipe(T.Body("enterprise_primary_email"))),
-    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
-    isPartner: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_partner"))),
-    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
-    nextBillDate: S.optional(S.NullOr(S.String).pipe(T.Body("next_bill_date"))),
-    paymentAddress: S.optional(S.NullOr(S.String).pipe(T.Body("payment_address"))),
-    paymentAddress2: S.optional(S.NullOr(S.String).pipe(T.Body("payment_address2"))),
-    paymentCity: S.optional(S.NullOr(S.String).pipe(T.Body("payment_city"))),
-    paymentCountry: S.optional(S.NullOr(S.String).pipe(T.Body("payment_country"))),
-    paymentEmail: S.optional(S.NullOr(S.String).pipe(T.Body("payment_email"))),
-    paymentFirstName: S.optional(S.NullOr(S.String).pipe(T.Body("payment_first_name"))),
-    paymentGateway: S.optional(S.NullOr(S.String).pipe(T.Body("payment_gateway"))),
-    paymentLastName: S.optional(S.NullOr(S.String).pipe(T.Body("payment_last_name"))),
-    paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
-    paymentState: S.optional(S.NullOr(S.String).pipe(T.Body("payment_state"))),
-    paymentZipcode: S.optional(S.NullOr(S.String).pipe(T.Body("payment_zipcode"))),
-    primaryEmail: S.optional(S.NullOr(S.String).pipe(T.Body("primary_email"))),
-    state: S.optional(S.NullOr(S.String)),
-    taxIdType: S.optional(S.NullOr(S.String).pipe(T.Body("tax_id_type"))),
-    telephone: S.optional(S.NullOr(S.String)),
-    validationCode: S.optional(S.NullOr(S.String).pipe(T.Body("validation_code"))),
-    vat: S.optional(S.NullOr(S.String)),
-    zipcode: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetProfileResponse" }) as any as S.Schema<GetProfileResponse>;
+export const GetProfileResponse = CreateProfileResponse as any as S.Schema<GetProfileResponse>;
 
 export interface GetRatePlanRequest {
   publicKey: string;
@@ -667,9 +626,8 @@ export type GetUnpaidInvoiceResponseInvoicesItem = GetBadDebtResponseInvoicesIte
 export const GetUnpaidInvoiceResponseInvoicesItem = GetBadDebtResponseInvoicesItem;
 
 export type GetUnpaidInvoiceResponseInvoicesList = Array<GetBadDebtResponseInvoicesItem>;
-export const GetUnpaidInvoiceResponseInvoicesList = /*@__PURE__*/ S.Array(
-  GetBadDebtResponseInvoicesItem,
-) as any as S.Schema<GetUnpaidInvoiceResponseInvoicesList>;
+export const GetUnpaidInvoiceResponseInvoicesList =
+  GetBadDebtResponseInvoicesList as any as S.Schema<GetUnpaidInvoiceResponseInvoicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUnpaidInvoiceResponse {
@@ -870,9 +828,8 @@ export type ListHistoryResultItem = GetBadDebtResponseInvoicesItem;
 export const ListHistoryResultItem = GetBadDebtResponseInvoicesItem;
 
 export type ListHistoryResultList = Array<GetBadDebtResponseInvoicesItem>;
-export const ListHistoryResultList = /*@__PURE__*/ S.Array(
-  GetBadDebtResponseInvoicesItem,
-) as any as S.Schema<ListHistoryResultList>;
+export const ListHistoryResultList =
+  GetBadDebtResponseInvoicesList as any as S.Schema<ListHistoryResultList>;
 
 export type ListHistoryResponse = ListHistoryResultList;
 export const ListHistoryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1216,48 +1173,8 @@ export interface UpdateProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-export const UpdateProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    accountType: S.optional(S.NullOr(S.String).pipe(T.Body("account_type"))),
-    address: S.optional(S.NullOr(S.String)),
-    address2: S.optional(S.NullOr(S.String)),
-    balance: S.optional(S.NullOr(S.String)),
-    cardExpiryMonth: S.optional(S.NullOr(S.Number).pipe(T.Body("card_expiry_month"))),
-    cardExpiryYear: S.optional(S.NullOr(S.Number).pipe(T.Body("card_expiry_year"))),
-    cardNumber: S.optional(S.NullOr(S.String).pipe(T.Body("card_number"))),
-    city: S.optional(S.NullOr(S.String)),
-    company: S.optional(S.NullOr(S.String)),
-    country: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deviceData: S.optional(S.NullOr(S.String).pipe(T.Body("device_data"))),
-    editedOn: S.optional(S.NullOr(S.String).pipe(T.Body("edited_on"))),
-    enterpriseBillingEmail: S.optional(S.NullOr(S.String).pipe(T.Body("enterprise_billing_email"))),
-    enterprisePrimaryEmail: S.optional(S.NullOr(S.String).pipe(T.Body("enterprise_primary_email"))),
-    firstName: S.optional(S.NullOr(S.String).pipe(T.Body("first_name"))),
-    isPartner: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_partner"))),
-    lastName: S.optional(S.NullOr(S.String).pipe(T.Body("last_name"))),
-    nextBillDate: S.optional(S.NullOr(S.String).pipe(T.Body("next_bill_date"))),
-    paymentAddress: S.optional(S.NullOr(S.String).pipe(T.Body("payment_address"))),
-    paymentAddress2: S.optional(S.NullOr(S.String).pipe(T.Body("payment_address2"))),
-    paymentCity: S.optional(S.NullOr(S.String).pipe(T.Body("payment_city"))),
-    paymentCountry: S.optional(S.NullOr(S.String).pipe(T.Body("payment_country"))),
-    paymentEmail: S.optional(S.NullOr(S.String).pipe(T.Body("payment_email"))),
-    paymentFirstName: S.optional(S.NullOr(S.String).pipe(T.Body("payment_first_name"))),
-    paymentGateway: S.optional(S.NullOr(S.String).pipe(T.Body("payment_gateway"))),
-    paymentLastName: S.optional(S.NullOr(S.String).pipe(T.Body("payment_last_name"))),
-    paymentNonce: S.optional(S.NullOr(S.String).pipe(T.Body("payment_nonce"))),
-    paymentState: S.optional(S.NullOr(S.String).pipe(T.Body("payment_state"))),
-    paymentZipcode: S.optional(S.NullOr(S.String).pipe(T.Body("payment_zipcode"))),
-    primaryEmail: S.optional(S.NullOr(S.String).pipe(T.Body("primary_email"))),
-    state: S.optional(S.NullOr(S.String)),
-    taxIdType: S.optional(S.NullOr(S.String).pipe(T.Body("tax_id_type"))),
-    telephone: S.optional(S.NullOr(S.String)),
-    validationCode: S.optional(S.NullOr(S.String).pipe(T.Body("validation_code"))),
-    vat: S.optional(S.NullOr(S.String)),
-    zipcode: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateProfileResponse" }) as any as S.Schema<UpdateProfileResponse>;
+export const UpdateProfileResponse =
+  CreateProfileResponse as any as S.Schema<UpdateProfileResponse>;
 
 export interface UsageGetAccountUsageInfoV1Request {
   /** Represents a Cloudflare resource identifier tag. */
@@ -1635,9 +1552,8 @@ export const UsagePaygoInfoResponseSubscriptionsItem =
 
 export type UsagePaygoInfoResponseSubscriptionsList =
   Array<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
-export const UsagePaygoInfoResponseSubscriptionsList = /*@__PURE__*/ S.Array(
-  UsageGetAccountUsageInfoV1ResponseSubscriptionsItem,
-) as any as S.Schema<UsagePaygoInfoResponseSubscriptionsList>;
+export const UsagePaygoInfoResponseSubscriptionsList =
+  UsageGetAccountUsageInfoV1ResponseSubscriptionsList as any as S.Schema<UsagePaygoInfoResponseSubscriptionsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UsagePaygoInfoResponse {

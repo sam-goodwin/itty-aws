@@ -98,10 +98,8 @@ export const ConnectorCallStatusEnum = S.String;
 
 /** Tool output. Native tools return their documented shape; MCP tools return {content, structured_content, is_error}. */
 export type CanvasConnectorCallResultResultMap = { [key: string]: unknown | undefined };
-export const CanvasConnectorCallResultResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasConnectorCallResultResultMap>;
+export const CanvasConnectorCallResultResultMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasConnectorCallResultResultMap>;
 
 /** Result of one connector call. `status` is 'ok' when `result` holds the tool's output. */
 export interface CanvasConnectorCallResult {
@@ -198,9 +196,8 @@ export const CanvasPostHogCapabilitiesInsightsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CanvasPostHogCapabilitiesInsightsList>;
 
 export type CanvasPostHogCapabilitiesCaptureEventsList = Array<string>;
-export const CanvasPostHogCapabilitiesCaptureEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasPostHogCapabilitiesCaptureEventsList>;
+export const CanvasPostHogCapabilitiesCaptureEventsList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasPostHogCapabilitiesCaptureEventsList>;
 
 /** * `user` - user * `shared` - shared */
 export type CanvasStateScopeEnum = "user" | "shared";
@@ -214,9 +211,8 @@ export const CanvasPostHogCapabilitiesStateList = /*@__PURE__*/ S.Array(
 
 /** Registered action verbs the canvas may invoke via ph.actions (e.g. 'annotations.create', 'tasks.create'). Each executes as the viewer; declaring one shows it in the promote review. */
 export type CanvasPostHogCapabilitiesActionsList = Array<string>;
-export const CanvasPostHogCapabilitiesActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasPostHogCapabilitiesActionsList>;
+export const CanvasPostHogCapabilitiesActionsList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasPostHogCapabilitiesActionsList>;
 
 export interface CanvasPostHogCapabilities {
   insights: CanvasPostHogCapabilitiesInsightsList;
@@ -242,9 +238,8 @@ export const CanvasPostHogCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CanvasPostHogCapabilities>;
 
 export type CanvasNetworkCapabilitiesOriginsList = Array<string>;
-export const CanvasNetworkCapabilitiesOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasNetworkCapabilitiesOriginsList>;
+export const CanvasNetworkCapabilitiesOriginsList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasNetworkCapabilitiesOriginsList>;
 
 export interface CanvasNetworkCapabilities {
   origins: CanvasNetworkCapabilitiesOriginsList;
@@ -259,9 +254,8 @@ export const CanvasNetworkCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Tool names the canvas may call on this provider. Read-only tools only. */
 export type CanvasConnectorDeclarationToolsList = Array<string>;
-export const CanvasConnectorDeclarationToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasConnectorDeclarationToolsList>;
+export const CanvasConnectorDeclarationToolsList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasConnectorDeclarationToolsList>;
 
 /** One provider a canvas may call through ph.connectors, with the tools it may use. */
 export interface CanvasConnectorDeclaration {
@@ -406,9 +400,8 @@ export const BuildStatusEnum = S.String;
 
 /** Structured diagnostics recorded by the build (errors explain a failed status). */
 export type CanvasPublishedBuildDiagnosticsList = Array<CanvasDiagnostic>;
-export const CanvasPublishedBuildDiagnosticsList = /*@__PURE__*/ S.Array(
-  CanvasDiagnostic,
-) as any as S.Schema<CanvasPublishedBuildDiagnosticsList>;
+export const CanvasPublishedBuildDiagnosticsList =
+  CanvasSourcePublishResponseDiagnosticsList as any as S.Schema<CanvasPublishedBuildDiagnosticsList>;
 
 /** The build a publish queued, as it stood when the response was sent. */
 export interface CanvasPublishedBuild {
@@ -484,10 +477,8 @@ export const CanvasPlacementStatusEnum = S.String;
 
 /** Per-placement settings, validated against the component's configSchema. */
 export type CanvasPlacementConfigMap = { [key: string]: unknown | undefined };
-export const CanvasPlacementConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasPlacementConfigMap>;
+export const CanvasPlacementConfigMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasPlacementConfigMap>;
 
 /** One placed widget on a grid canvas. */
 export interface CanvasPlacement {
@@ -532,10 +523,8 @@ export const CanvasPlacement = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-placement settings, validated against the component's configSchema. */
 export type CanvasPlacementChangesConfigMap = { [key: string]: unknown | undefined };
-export const CanvasPlacementChangesConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasPlacementChangesConfigMap>;
+export const CanvasPlacementChangesConfigMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasPlacementChangesConfigMap>;
 
 /** Fields to merge into an existing placement (all optional; id cannot change). */
 export interface CanvasPlacementChanges {
@@ -758,10 +747,8 @@ export const CanvasSourceProjectAssetsMap = /*@__PURE__*/ S.Record(
 
 /** Exact-version dependencies, restricted to the platform-supported set at its pinned versions. */
 export type CanvasSourceProjectDependenciesMap = { [key: string]: string | undefined };
-export const CanvasSourceProjectDependenciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CanvasSourceProjectDependenciesMap>;
+export const CanvasSourceProjectDependenciesMap =
+  CanvasSourceProjectFilesMap as any as S.Schema<CanvasSourceProjectDependenciesMap>;
 
 /** A component's grid-size contract, in grid units. */
 export interface CanvasComponentSize {
@@ -791,10 +778,8 @@ export const CanvasComponentSize = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON Schema ("type": "object") for a placement's config. The host validates each placement's config against it and passes the validated object to the widget at mount. */
 export type CanvasComponentMetaConfigSchemaMap = { [key: string]: unknown | undefined };
-export const CanvasComponentMetaConfigSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasComponentMetaConfigSchemaMap>;
+export const CanvasComponentMetaConfigSchemaMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasComponentMetaConfigSchemaMap>;
 
 /** A component's placement contract: how grid canvases may place and configure it. */
 export interface CanvasComponentMeta {
@@ -897,9 +882,8 @@ export const CanvasesPublishCurrentVersionCreateRequest = /*@__PURE__*/ S.suspen
 
 /** Structured diagnostics recorded by the build (errors explain a failed status). */
 export type CanvasBuildDiagnosticsList = Array<CanvasDiagnostic>;
-export const CanvasBuildDiagnosticsList = /*@__PURE__*/ S.Array(
-  CanvasDiagnostic,
-) as any as S.Schema<CanvasBuildDiagnosticsList>;
+export const CanvasBuildDiagnosticsList =
+  CanvasSourcePublishResponseDiagnosticsList as any as S.Schema<CanvasBuildDiagnosticsList>;
 
 /** One emitted file of a built canvas artifact. */
 export interface CanvasArtifactAsset {
@@ -926,24 +910,18 @@ export const CanvasArtifactManifestAssetsList = /*@__PURE__*/ S.Array(
 
 /** Exact dependency versions the artifact was built against. */
 export type CanvasArtifactManifestDependenciesMap = { [key: string]: string | undefined };
-export const CanvasArtifactManifestDependenciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CanvasArtifactManifestDependenciesMap>;
+export const CanvasArtifactManifestDependenciesMap =
+  CanvasSourceProjectFilesMap as any as S.Schema<CanvasArtifactManifestDependenciesMap>;
 
 /** Declared PostHog/network capabilities the artifact is held to at runtime. */
 export type CanvasArtifactManifestCapabilitiesMap = { [key: string]: unknown | undefined };
-export const CanvasArtifactManifestCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasArtifactManifestCapabilitiesMap>;
+export const CanvasArtifactManifestCapabilitiesMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasArtifactManifestCapabilitiesMap>;
 
 /** For component artifacts: the placement contract (size, configSchema) frozen into the build. */
 export type CanvasArtifactManifestComponentMap = { [key: string]: unknown | undefined };
-export const CanvasArtifactManifestComponentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasArtifactManifestComponentMap>;
+export const CanvasArtifactManifestComponentMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasArtifactManifestComponentMap>;
 
 /** The manifest frozen into a ready build: entry, assets, versions, capabilities. */
 export interface CanvasArtifactManifest {
@@ -1041,9 +1019,8 @@ export const CanvasesValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Structured diagnostics; errors block publishing, warnings are advisory. */
 export type CanvasValidateResponseDiagnosticsList = Array<CanvasDiagnostic>;
-export const CanvasValidateResponseDiagnosticsList = /*@__PURE__*/ S.Array(
-  CanvasDiagnostic,
-) as any as S.Schema<CanvasValidateResponseDiagnosticsList>;
+export const CanvasValidateResponseDiagnosticsList =
+  CanvasSourcePublishResponseDiagnosticsList as any as S.Schema<CanvasValidateResponseDiagnosticsList>;
 
 /** Validation outcome for a candidate source project. */
 export interface CanvasValidateResponse {
@@ -1085,10 +1062,8 @@ export const CreateCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCanvaseRequest" }) as any as S.Schema<CreateCanvaseRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -1236,45 +1211,38 @@ export const CreateCanvasesDraftRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Advisory (warning-severity) diagnostics recorded for the drafted project. */
 export type CanvasSourceDraftResponseDiagnosticsList = Array<CanvasDiagnostic>;
-export const CanvasSourceDraftResponseDiagnosticsList = /*@__PURE__*/ S.Array(
-  CanvasDiagnostic,
-) as any as S.Schema<CanvasSourceDraftResponseDiagnosticsList>;
+export const CanvasSourceDraftResponseDiagnosticsList =
+  CanvasSourcePublishResponseDiagnosticsList as any as S.Schema<CanvasSourceDraftResponseDiagnosticsList>;
 
 /** Insight short ids the draft newly declares access to. */
 export type CanvasCapabilityWideningInsightsAddedList = Array<string>;
-export const CanvasCapabilityWideningInsightsAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasCapabilityWideningInsightsAddedList>;
+export const CanvasCapabilityWideningInsightsAddedList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasCapabilityWideningInsightsAddedList>;
 
 /** Event names the draft newly declares it may capture. */
 export type CanvasCapabilityWideningCaptureEventsAddedList = Array<string>;
-export const CanvasCapabilityWideningCaptureEventsAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasCapabilityWideningCaptureEventsAddedList>;
+export const CanvasCapabilityWideningCaptureEventsAddedList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasCapabilityWideningCaptureEventsAddedList>;
 
 /** Network origins the draft newly declares it may reach. */
 export type CanvasCapabilityWideningNetworkOriginsAddedList = Array<string>;
-export const CanvasCapabilityWideningNetworkOriginsAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasCapabilityWideningNetworkOriginsAddedList>;
+export const CanvasCapabilityWideningNetworkOriginsAddedList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasCapabilityWideningNetworkOriginsAddedList>;
 
 /** State scopes (user, shared) the draft newly declares for ph.state. */
 export type CanvasCapabilityWideningStateScopesAddedList = Array<string>;
-export const CanvasCapabilityWideningStateScopesAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasCapabilityWideningStateScopesAddedList>;
+export const CanvasCapabilityWideningStateScopesAddedList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasCapabilityWideningStateScopesAddedList>;
 
 /** Action verbs the draft newly declares it may invoke via ph.actions. */
 export type CanvasCapabilityWideningActionsAddedList = Array<string>;
-export const CanvasCapabilityWideningActionsAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasCapabilityWideningActionsAddedList>;
+export const CanvasCapabilityWideningActionsAddedList =
+  CanvasPostHogCapabilitiesInsightsList as any as S.Schema<CanvasCapabilityWideningActionsAddedList>;
 
 /** Connector providers and tools the draft newly declares it may call via ph.connectors. */
 export type CanvasCapabilityWideningConnectorsAddedList = Array<CanvasConnectorDeclaration>;
-export const CanvasCapabilityWideningConnectorsAddedList = /*@__PURE__*/ S.Array(
-  CanvasConnectorDeclaration,
-) as any as S.Schema<CanvasCapabilityWideningConnectorsAddedList>;
+export const CanvasCapabilityWideningConnectorsAddedList =
+  CanvasCapabilitiesConnectorsList as any as S.Schema<CanvasCapabilityWideningConnectorsAddedList>;
 
 /** How a draft's declared capabilities grow the current head's. A head that predates the capabilities snapshot reports every declaration as an addition. */
 export interface CanvasCapabilityWidening {
@@ -1427,11 +1395,8 @@ export const CreateCanvasesRequestAgentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCanvasesRequestAgentRequest>;
 
 export interface CreateCanvasesRequestAgentResponse {}
-export const CreateCanvasesRequestAgentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCanvasesRequestAgentResponse",
-}) as any as S.Schema<CreateCanvasesRequestAgentResponse>;
+export const CreateCanvasesRequestAgentResponse =
+  CreateCanvasesReportErrorResponse as any as S.Schema<CreateCanvasesRequestAgentResponse>;
 
 export interface CreateCanvasesRequestFixRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1461,11 +1426,8 @@ export const CreateCanvasesRequestFixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCanvasesRequestFixRequest>;
 
 export interface CreateCanvasesRequestFixResponse {}
-export const CreateCanvasesRequestFixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCanvasesRequestFixResponse",
-}) as any as S.Schema<CreateCanvasesRequestFixResponse>;
+export const CreateCanvasesRequestFixResponse =
+  CreateCanvasesReportErrorResponse as any as S.Schema<CreateCanvasesRequestFixResponse>;
 
 export interface CreateCanvasesRevertRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1747,10 +1709,8 @@ export const ConnectorKindEnum = S.String;
 
 /** JSON Schema of the tool's arguments object. */
 export type CanvasConnectorToolInputSchemaMap = { [key: string]: unknown | undefined };
-export const CanvasConnectorToolInputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasConnectorToolInputSchemaMap>;
+export const CanvasConnectorToolInputSchemaMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasConnectorToolInputSchemaMap>;
 
 /** One tool a connector provider exposes to canvases. */
 export interface CanvasConnectorTool {
@@ -1898,9 +1858,8 @@ export const GetCanvasesLayoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The build the placement renders (live, or the pinned version's retained build). Empty when none is renderable. */
 export type CanvasComponentLifecycleBuildsList = Array<CanvasBuild>;
-export const CanvasComponentLifecycleBuildsList = /*@__PURE__*/ S.Array(
-  CanvasBuild,
-) as any as S.Schema<CanvasComponentLifecycleBuildsList>;
+export const CanvasComponentLifecycleBuildsList =
+  CanvasBuildsResponseBuildsList as any as S.Schema<CanvasComponentLifecycleBuildsList>;
 
 /** The renderable build of one component referenced by a grid layout, shaped like the builds endpoint's response so clients reuse one lifecycle reader. */
 export interface CanvasComponentLifecycle {
@@ -2228,9 +2187,8 @@ export const GetCanvasesViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** For grid canvases: the renderable build of every component the layout's live placements reference, so the grid renders from this one call. Absent for other kinds. */
 export type CanvasViewResponseComponentLifecyclesList = Array<CanvasComponentLifecycle>;
-export const CanvasViewResponseComponentLifecyclesList = /*@__PURE__*/ S.Array(
-  CanvasComponentLifecycle,
-) as any as S.Schema<CanvasViewResponseComponentLifecyclesList>;
+export const CanvasViewResponseComponentLifecyclesList =
+  CanvasLayoutWithComponentsResponseComponentLifecyclesList as any as S.Schema<CanvasViewResponseComponentLifecyclesList>;
 
 /** Everything a client needs to open a canvas, in one round trip. Replaces the record -> builds -> source waterfall: the record, the live build (with its signed artifact URL), and -- only when there is nothing built to render -- the head source project (freeform/component) or the layout document (grid). */
 export interface CanvasViewResponse {
@@ -2266,10 +2224,8 @@ export const CanvasViewResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Verb-specific arguments, validated against the verb's payload schema. */
 export type InvokeCanvasesActionRequestPayloadMap = { [key: string]: unknown | undefined };
-export const InvokeCanvasesActionRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InvokeCanvasesActionRequestPayloadMap>;
+export const InvokeCanvasesActionRequestPayloadMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<InvokeCanvasesActionRequestPayloadMap>;
 
 export interface InvokeCanvasesActionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2300,10 +2256,8 @@ export const InvokeCanvasesActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Verb-specific result, e.g. {'task_id': ...} for tasks.create. */
 export type CanvasActionResultResultMap = { [key: string]: unknown | undefined };
-export const CanvasActionResultResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasActionResultResultMap>;
+export const CanvasActionResultResultMap =
+  CanvasesConnectorsCallRequestArgumentsMap as any as S.Schema<CanvasActionResultResultMap>;
 
 /** Result of one action invocation. */
 export interface CanvasActionResult {

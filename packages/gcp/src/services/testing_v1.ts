@@ -90,9 +90,7 @@ export const CancelProjectsDeviceSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelDeviceSessionRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsTestMatricesRequest {
   /** Test matrix that will be canceled. */
@@ -514,11 +512,7 @@ export interface FileReference {
   /** A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding) */
   gcsPath?: string;
 }
-export const FileReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsPath: S.optional(S.String),
-  }),
-).annotate({ identifier: "FileReference" }) as any as S.Schema<FileReference>;
+export const FileReference = GoogleCloudStorage as any as S.Schema<FileReference>;
 
 export type FileReferenceList = Array<FileReference>;
 export const FileReferenceList = /*@__PURE__*/ S.Array(
@@ -914,17 +908,11 @@ export interface EnvironmentVariable {
   /** Key for the environment variable. */
   key?: string;
 }
-export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    key: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnvironmentVariable" }) as any as S.Schema<EnvironmentVariable>;
+export const EnvironmentVariable = ClientInfoDetail as any as S.Schema<EnvironmentVariable>;
 
 export type EnvironmentVariableList = Array<EnvironmentVariable>;
-export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<EnvironmentVariableList>;
+export const EnvironmentVariableList =
+  ClientInfoDetailList as any as S.Schema<EnvironmentVariableList>;
 
 /** Enables automatic Google account login. If set, the service automatically generates a Google test account and adds it to the device, before executing the test. Note that test accounts might be reused. Many applications show their full set of functionalities when an account is present on the device. Logging into the device with these generated accounts allows testing more functionalities. */
 export type GoogleAuto = CancelDeviceSessionRequest;

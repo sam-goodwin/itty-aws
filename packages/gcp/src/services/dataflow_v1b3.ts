@@ -1709,9 +1709,7 @@ export const DeleteProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend((
 
 /** Response from deleting a snapshot. */
 export interface DeleteSnapshotResponse {}
-export const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSnapshotResponse",
-}) as any as S.Schema<DeleteSnapshotResponse>;
+export const DeleteSnapshotResponse = Empty as any as S.Schema<DeleteSnapshotResponse>;
 
 export interface DeleteSnapshotsProjectsRequest {
   /** The ID of the snapshot. */
@@ -3784,11 +3782,8 @@ export interface SourceGetMetadataRequest {
   /** Specification of the source whose metadata should be computed. */
   source?: Source;
 }
-export const SourceGetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(Source),
-  }),
-).annotate({ identifier: "SourceGetMetadataRequest" }) as any as S.Schema<SourceGetMetadataRequest>;
+export const SourceGetMetadataRequest =
+  ReadInstruction as any as S.Schema<SourceGetMetadataRequest>;
 
 /** A work item that represents the different operations that can be performed on a user-defined Source specification. */
 export interface SourceOperationRequest {
@@ -5732,9 +5727,7 @@ export const SendCaptureProjectsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response to a send capture request. nothing */
 export interface SendDebugCaptureResponse {}
-export const SendDebugCaptureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendDebugCaptureResponse",
-}) as any as S.Schema<SendDebugCaptureResponse>;
+export const SendDebugCaptureResponse = Empty as any as S.Schema<SendDebugCaptureResponse>;
 
 export interface SendCaptureProjectsLocationsJobsDebugRequest {
   /** The job id. */

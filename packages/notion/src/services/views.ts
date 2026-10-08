@@ -545,9 +545,8 @@ export const TableViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableViewConfigRequest" }) as any as S.Schema<TableViewConfigRequest>;
 
 export type BoardViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const BoardViewConfigRequestPropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<BoardViewConfigRequestPropertiesList>;
+export const BoardViewConfigRequestPropertiesList =
+  TableViewConfigRequestPropertiesList as any as S.Schema<BoardViewConfigRequestPropertiesList>;
 
 /** Source of the cover image. */
 export type CoverConfigRequestType = "page_cover" | "page_content" | "property";
@@ -610,9 +609,8 @@ export const BoardViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BoardViewConfigRequest" }) as any as S.Schema<BoardViewConfigRequest>;
 
 export type CalendarViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const CalendarViewConfigRequestPropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<CalendarViewConfigRequestPropertiesList>;
+export const CalendarViewConfigRequestPropertiesList =
+  TableViewConfigRequestPropertiesList as any as S.Schema<CalendarViewConfigRequestPropertiesList>;
 
 /** One of: `week`, `month` */
 export type CalendarViewConfigRequestViewRange = "week" | "month";
@@ -643,14 +641,12 @@ export const CalendarViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CalendarViewConfigRequest>;
 
 export type TimelineViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const TimelineViewConfigRequestPropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<TimelineViewConfigRequestPropertiesList>;
+export const TimelineViewConfigRequestPropertiesList =
+  TableViewConfigRequestPropertiesList as any as S.Schema<TimelineViewConfigRequestPropertiesList>;
 
 export type TimelineViewConfigRequestTablePropertiesList = Array<ViewPropertyConfigRequest>;
-export const TimelineViewConfigRequestTablePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<TimelineViewConfigRequestTablePropertiesList>;
+export const TimelineViewConfigRequestTablePropertiesList =
+  TableViewConfigRequestPropertiesList as any as S.Schema<TimelineViewConfigRequestTablePropertiesList>;
 
 /** Zoom level for the timeline. */
 export type TimelinePreferenceRequestZoomLevel =
@@ -726,9 +722,8 @@ export const TimelineViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimelineViewConfigRequest>;
 
 export type GalleryViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const GalleryViewConfigRequestPropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<GalleryViewConfigRequestPropertiesList>;
+export const GalleryViewConfigRequestPropertiesList =
+  TableViewConfigRequestPropertiesList as any as S.Schema<GalleryViewConfigRequestPropertiesList>;
 
 /** One of: `small`, `medium`, `large` */
 export type GalleryViewConfigRequestCoverSize = "small" | "medium" | "large";
@@ -768,9 +763,8 @@ export const GalleryViewConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GalleryViewConfigRequest" }) as any as S.Schema<GalleryViewConfigRequest>;
 
 export type ListViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const ListViewConfigRequestPropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<ListViewConfigRequestPropertiesList>;
+export const ListViewConfigRequestPropertiesList =
+  TableViewConfigRequestPropertiesList as any as S.Schema<ListViewConfigRequestPropertiesList>;
 
 export interface ListViewConfigRequest {
   /** The view type. Must be "list". */
@@ -790,9 +784,8 @@ export type MapViewConfigRequestHeight = "small" | "medium" | "large" | "extra_l
 export const MapViewConfigRequestHeight = S.String;
 
 export type MapViewConfigRequestPropertiesList = Array<ViewPropertyConfigRequest>;
-export const MapViewConfigRequestPropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigRequest,
-) as any as S.Schema<MapViewConfigRequestPropertiesList>;
+export const MapViewConfigRequestPropertiesList =
+  TableViewConfigRequestPropertiesList as any as S.Schema<MapViewConfigRequestPropertiesList>;
 
 export interface MapViewConfigRequest {
   /** The view type. Must be "map". */
@@ -1092,11 +1085,8 @@ export interface ViewPositionRequestCase1 {
   /** Position type. "end" places the view as the last tab. */
   type: string;
 }
-export const ViewPositionRequestCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({ identifier: "ViewPositionRequestCase1" }) as any as S.Schema<ViewPositionRequestCase1>;
+export const ViewPositionRequestCase1 =
+  ViewPositionRequestCase0 as any as S.Schema<ViewPositionRequestCase1>;
 
 export interface ViewPositionRequestCase2 {
   /** Position type. "after_view" places the new view immediately after the specified view. */
@@ -1617,10 +1607,8 @@ export const DataSourceViewObjectResponseSortsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataSourceViewObjectResponseSortsList>;
 
 export type DataSourceViewObjectResponseQuickFiltersMap = { [key: string]: unknown | undefined };
-export const DataSourceViewObjectResponseQuickFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataSourceViewObjectResponseQuickFiltersMap>;
+export const DataSourceViewObjectResponseQuickFiltersMap =
+  CreateViewRequestQuickFiltersMap as any as S.Schema<DataSourceViewObjectResponseQuickFiltersMap>;
 
 /** How to display status properties (as select dropdown or checkbox). */
 export type ViewPropertyConfigResponseStatusShowAs = "select" | "checkbox";
@@ -1933,17 +1921,8 @@ export interface CheckboxGroupByConfigResponse {
   /** Whether to hide groups that have no items. */
   hide_empty_groups?: boolean;
 }
-export const CheckboxGroupByConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    property_id: S.String,
-    sort: GroupSortResponse,
-    property_name: S.optional(S.String),
-    hide_empty_groups: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CheckboxGroupByConfigResponse",
-}) as any as S.Schema<CheckboxGroupByConfigResponse>;
+export const CheckboxGroupByConfigResponse =
+  RelationGroupByConfigResponse as any as S.Schema<CheckboxGroupByConfigResponse>;
 
 /** Granularity for date grouping. */
 export type FormulaDateSubGroupByResponseGroupBy = "relative" | "day" | "week" | "month" | "year";
@@ -2139,9 +2118,8 @@ export const TableViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties to display on each card. */
 export type BoardViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const BoardViewConfigResponsePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<BoardViewConfigResponsePropertiesList>;
+export const BoardViewConfigResponsePropertiesList =
+  TableViewConfigResponsePropertiesList as any as S.Schema<BoardViewConfigResponsePropertiesList>;
 
 /** Source of the cover image. */
 export type CoverConfigResponseType =
@@ -2209,9 +2187,8 @@ export const BoardViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties to display on calendar event cards. */
 export type CalendarViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const CalendarViewConfigResponsePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<CalendarViewConfigResponsePropertiesList>;
+export const CalendarViewConfigResponsePropertiesList =
+  TableViewConfigResponsePropertiesList as any as S.Schema<CalendarViewConfigResponsePropertiesList>;
 
 /** Calendar view range. */
 export type CalendarViewConfigResponseViewRange = "week" | "month";
@@ -2246,15 +2223,13 @@ export const CalendarViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties to display on timeline items. */
 export type TimelineViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const TimelineViewConfigResponsePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<TimelineViewConfigResponsePropertiesList>;
+export const TimelineViewConfigResponsePropertiesList =
+  TableViewConfigResponsePropertiesList as any as S.Schema<TimelineViewConfigResponsePropertiesList>;
 
 /** Properties to display in the table panel (when show_table is true). */
 export type TimelineViewConfigResponseTablePropertiesList = Array<ViewPropertyConfigResponse>;
-export const TimelineViewConfigResponseTablePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<TimelineViewConfigResponseTablePropertiesList>;
+export const TimelineViewConfigResponseTablePropertiesList =
+  TableViewConfigResponsePropertiesList as any as S.Schema<TimelineViewConfigResponseTablePropertiesList>;
 
 /** Zoom level for the timeline. */
 export type TimelinePreferenceResponseZoomLevel =
@@ -2287,11 +2262,8 @@ export interface TimelineArrowsByResponse {
   /** Relation property ID used for dependency arrows. */
   property_id?: string | null;
 }
-export const TimelineArrowsByResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "TimelineArrowsByResponse" }) as any as S.Schema<TimelineArrowsByResponse>;
+export const TimelineArrowsByResponse =
+  TimelineArrowsByRequest as any as S.Schema<TimelineArrowsByResponse>;
 
 export interface TimelineViewConfigResponse {
   /** The view configuration type. */
@@ -2337,9 +2309,8 @@ export const TimelineViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties to display on gallery cards. */
 export type GalleryViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const GalleryViewConfigResponsePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<GalleryViewConfigResponsePropertiesList>;
+export const GalleryViewConfigResponsePropertiesList =
+  TableViewConfigResponsePropertiesList as any as S.Schema<GalleryViewConfigResponsePropertiesList>;
 
 /** Cover image size. */
 export type GalleryViewConfigResponseCoverSize = "small" | "medium" | "large";
@@ -2382,9 +2353,8 @@ export const GalleryViewConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties to display in list items. */
 export type ListViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const ListViewConfigResponsePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<ListViewConfigResponsePropertiesList>;
+export const ListViewConfigResponsePropertiesList =
+  TableViewConfigResponsePropertiesList as any as S.Schema<ListViewConfigResponsePropertiesList>;
 
 export interface ListViewConfigResponse {
   /** The view configuration type. */
@@ -2405,9 +2375,8 @@ export const MapViewConfigResponseHeight = S.String;
 
 /** Properties to display on map pin cards. */
 export type MapViewConfigResponsePropertiesList = Array<ViewPropertyConfigResponse>;
-export const MapViewConfigResponsePropertiesList = /*@__PURE__*/ S.Array(
-  ViewPropertyConfigResponse,
-) as any as S.Schema<MapViewConfigResponsePropertiesList>;
+export const MapViewConfigResponsePropertiesList =
+  TableViewConfigResponsePropertiesList as any as S.Schema<MapViewConfigResponsePropertiesList>;
 
 export interface MapViewConfigResponse {
   /** The view configuration type. */
@@ -3047,19 +3016,12 @@ export interface DataSourceViewReferenceResponse {
   /** The ID of the view. */
   id: string;
 }
-export const DataSourceViewReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "DataSourceViewReferenceResponse",
-}) as any as S.Schema<DataSourceViewReferenceResponse>;
+export const DataSourceViewReferenceResponse =
+  PartialPageObjectResponse as any as S.Schema<DataSourceViewReferenceResponse>;
 
 export type ListViewsResponseResultsList = Array<DataSourceViewReferenceResponse>;
-export const ListViewsResponseResultsList = /*@__PURE__*/ S.Array(
-  DataSourceViewReferenceResponse,
-) as any as S.Schema<ListViewsResponseResultsList>;
+export const ListViewsResponseResultsList =
+  GetViewQueryResultsResponseResultsList as any as S.Schema<ListViewsResponseResultsList>;
 
 export interface ListViewsResponse {
   /** Always `list` */

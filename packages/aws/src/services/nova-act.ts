@@ -370,11 +370,8 @@ export const DeleteWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWorkflowDefinitionResponse {
   status: WorkflowDefinitionStatus;
 }
-export const DeleteWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: WorkflowDefinitionStatus }),
-).annotate({
-  identifier: "DeleteWorkflowDefinitionResponse",
-}) as any as S.Schema<DeleteWorkflowDefinitionResponse>;
+export const DeleteWorkflowDefinitionResponse =
+  CreateWorkflowDefinitionResponse as any as S.Schema<DeleteWorkflowDefinitionResponse>;
 export interface DeleteWorkflowRunRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -719,9 +716,7 @@ export const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SessionSummary {
   sessionId: string;
 }
-export const SessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String }),
-).annotate({ identifier: "SessionSummary" }) as any as S.Schema<SessionSummary>;
+export const SessionSummary = CreateSessionResponse as any as S.Schema<SessionSummary>;
 export type SessionSummaries = SessionSummary[];
 export const SessionSummaries = /*@__PURE__*/ S.Array(SessionSummary);
 export interface ListSessionsResponse {
@@ -897,9 +892,8 @@ export const UpdateWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateWorkflowRunRequest" }) as any as S.Schema<UpdateWorkflowRunRequest>;
 export interface UpdateWorkflowRunResponse {}
-export const UpdateWorkflowRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWorkflowRunResponse",
-}) as any as S.Schema<UpdateWorkflowRunResponse>;
+export const UpdateWorkflowRunResponse =
+  UpdateActResponse as any as S.Schema<UpdateWorkflowRunResponse>;
 export type InternalServerExceptionReason =
   | "InvalidModelGeneration"
   | "RequestTokenLimitExceeded"

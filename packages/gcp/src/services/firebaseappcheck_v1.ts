@@ -1717,14 +1717,8 @@ export interface GoogleFirebaseAppcheckV1MintAppCheckTokenResponse {
   /** The duration from the time this token is minted until its expiration. This field is intended to ease client-side token management, since the client may have clock skew, but is still able to accurately measure a duration. */
   ttl?: string;
 }
-export const GoogleFirebaseAppcheckV1MintAppCheckTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String),
-    ttl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleFirebaseAppcheckV1MintAppCheckTokenResponse",
-}) as any as S.Schema<GoogleFirebaseAppcheckV1MintAppCheckTokenResponse>;
+export const GoogleFirebaseAppcheckV1MintAppCheckTokenResponse =
+  GoogleFirebaseAppcheckV1AppCheckToken as any as S.Schema<GoogleFirebaseAppcheckV1MintAppCheckTokenResponse>;
 
 export interface PatchProjectsAppsAppAttestConfigRequest {
   /** Required. The relative resource name of the App Attest configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/appAttestConfig ``` */

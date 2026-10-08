@@ -104,11 +104,7 @@ export const GetProxyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetProxyResponse {
   proxy?: Proxy;
 }
-export const GetProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proxy: S.optional(Proxy),
-  }),
-).annotate({ identifier: "GetProxyResponse" }) as any as S.Schema<GetProxyResponse>;
+export const GetProxyResponse = CreateProxyResponse as any as S.Schema<GetProxyResponse>;
 
 export interface ListProxyRequest {}
 export const ListProxyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -189,9 +185,7 @@ export const ProxyRemoveIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProxyRemoveIpRequest" }) as any as S.Schema<ProxyRemoveIpRequest>;
 
 export interface ProxyRemoveIpResponse {}
-export const ProxyRemoveIpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ProxyRemoveIpResponse",
-}) as any as S.Schema<ProxyRemoveIpResponse>;
+export const ProxyRemoveIpResponse = DeleteProxyResponse as any as S.Schema<ProxyRemoveIpResponse>;
 
 export type CreateProxyError = ModalOpError;
 export const createProxy: API.OperationMethod<

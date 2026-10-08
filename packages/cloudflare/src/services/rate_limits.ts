@@ -198,9 +198,8 @@ export const DeleteRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRateLimitRequest" }) as any as S.Schema<DeleteRateLimitRequest>;
 
 export interface DeleteRateLimitResponse {}
-export const DeleteRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteRateLimitResponse" }) as any as S.Schema<DeleteRateLimitResponse>;
+export const DeleteRateLimitResponse =
+  CreateRateLimitResponse as any as S.Schema<DeleteRateLimitResponse>;
 
 export type EditRequestActionMode =
   | "simulate"
@@ -273,9 +272,8 @@ export const EditRequestMatchRequestMethodsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditRequestMatchRequestMethodsList>;
 
 export type EditRequestMatchRequestSchemesList = Array<string>;
-export const EditRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestMatchRequestSchemesList>;
+export const EditRequestMatchRequestSchemesList =
+  CreateRequestMatchRequestSchemesList as any as S.Schema<EditRequestMatchRequestSchemesList>;
 
 export interface EditRequestMatchRequest {
   /** The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit. */
@@ -337,9 +335,8 @@ export const EditRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRateLimitRequest" }) as any as S.Schema<EditRateLimitRequest>;
 
 export interface EditRateLimitResponse {}
-export const EditRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "EditRateLimitResponse" }) as any as S.Schema<EditRateLimitResponse>;
+export const EditRateLimitResponse =
+  CreateRateLimitResponse as any as S.Schema<EditRateLimitResponse>;
 
 export interface GetRateLimitRequest {
   /** Defines an identifier. */
@@ -357,9 +354,8 @@ export const GetRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRateLimitRequest" }) as any as S.Schema<GetRateLimitRequest>;
 
 export interface GetRateLimitResponse {}
-export const GetRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetRateLimitResponse" }) as any as S.Schema<GetRateLimitResponse>;
+export const GetRateLimitResponse =
+  CreateRateLimitResponse as any as S.Schema<GetRateLimitResponse>;
 
 export interface ListRateLimitsRequest {
   /** Defines an identifier. */
@@ -380,9 +376,8 @@ export const ListRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRateLimitsRequest" }) as any as S.Schema<ListRateLimitsRequest>;
 
 export interface ListRateLimitsResponse {}
-export const ListRateLimitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListRateLimitsResponse" }) as any as S.Schema<ListRateLimitsResponse>;
+export const ListRateLimitsResponse =
+  CreateRateLimitResponse as any as S.Schema<ListRateLimitsResponse>;
 
 export type CreateRateLimitError = CloudflareOpError;
 /** **Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead. */

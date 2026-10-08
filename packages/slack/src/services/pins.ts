@@ -103,11 +103,7 @@ export interface RemovePinResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemovePinResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemovePinResponse" }) as any as S.Schema<RemovePinResponse>;
+export const RemovePinResponse = AddPinResponse as any as S.Schema<RemovePinResponse>;
 
 export type AddPinError = SlackOpError;
 /** Pins an item to a channel. Required scopes -- bot: `pins:write`; user: `pins:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `already_pinned` -- The specified item is already pinned to the channel. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- The `channel` argument was not specified or was invalid - `external_channel_migrating` -- Channel is undergoing an active migration. - `file_not_found` -- File not found. - `file_not_shared` -- File specified by `file` is not public nor shared to the channel. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- One of `file`, `file_comment`, or `timestamp` was not specified. - `not_in_channel` -- Item is not in channel. - `not_pinnable` -- This message type is not pinnable. - `restricted_action` -- The user does not have permission to add pins to the channel. - `too_many_pins` -- Too many pins in channel. See https://docs.slack.dev/reference/methods/pins.add */

@@ -189,14 +189,7 @@ export interface DeleteTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const DeleteTurnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    uid: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteTurnResponse" }) as any as S.Schema<DeleteTurnResponse>;
+export const DeleteTurnResponse = DeleteSfuResponse as any as S.Schema<DeleteTurnResponse>;
 
 export interface GetSfuRequest {
   /** The account identifier tag. */
@@ -224,14 +217,7 @@ export interface GetSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const GetSfuResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    uid: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetSfuResponse" }) as any as S.Schema<GetSfuResponse>;
+export const GetSfuResponse = DeleteSfuResponse as any as S.Schema<GetSfuResponse>;
 
 export interface GetTurnRequest {
   /** The account identifier tag. */
@@ -261,14 +247,7 @@ export interface GetTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const GetTurnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    uid: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetTurnResponse" }) as any as S.Schema<GetTurnResponse>;
+export const GetTurnResponse = DeleteSfuResponse as any as S.Schema<GetTurnResponse>;
 
 export interface ListSfusRequest {
   /** The account identifier tag. */
@@ -335,9 +314,7 @@ export type TurnListResultItem = SfuListResultItem;
 export const TurnListResultItem = SfuListResultItem;
 
 export type TurnListResultList = Array<SfuListResultItem>;
-export const TurnListResultList = /*@__PURE__*/ S.Array(
-  SfuListResultItem,
-) as any as S.Schema<TurnListResultList>;
+export const TurnListResultList = SfuListResultList as any as S.Schema<TurnListResultList>;
 
 export interface ListTurnsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -345,12 +322,7 @@ export interface ListTurnsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListTurnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: TurnListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListTurnsResponse" }) as any as S.Schema<ListTurnsResponse>;
+export const ListTurnsResponse = ListSfusResponse as any as S.Schema<ListTurnsResponse>;
 
 export interface UpdateSfuRequest {
   /** The account identifier tag. */
@@ -381,14 +353,7 @@ export interface UpdateSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const UpdateSfuResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    uid: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateSfuResponse" }) as any as S.Schema<UpdateSfuResponse>;
+export const UpdateSfuResponse = DeleteSfuResponse as any as S.Schema<UpdateSfuResponse>;
 
 export interface UpdateTurnRequest {
   /** The account identifier tag. */
@@ -421,14 +386,7 @@ export interface UpdateTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const UpdateTurnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    uid: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateTurnResponse" }) as any as S.Schema<UpdateTurnResponse>;
+export const UpdateTurnResponse = DeleteSfuResponse as any as S.Schema<UpdateTurnResponse>;
 
 export type CreateSfuError = Forbidden | CloudflareOpError;
 /** Creates a Realtime SFU app. An app is an isolated namespace in which sessions can access the app's tracks. */

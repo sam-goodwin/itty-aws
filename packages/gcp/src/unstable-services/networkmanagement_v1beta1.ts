@@ -90,9 +90,7 @@ export const CancelOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -320,11 +318,8 @@ export interface CloudFunctionEndpoint {
   /** A [Cloud Function](https://cloud.google.com/functions) name. */
   uri?: string;
 }
-export const CloudFunctionEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudFunctionEndpoint" }) as any as S.Schema<CloudFunctionEndpoint>;
+export const CloudFunctionEndpoint =
+  AppEngineVersionEndpoint as any as S.Schema<CloudFunctionEndpoint>;
 
 /** Wrapper for Cloud Run revision attributes. */
 export interface CloudRunRevisionEndpoint {
@@ -1224,11 +1219,8 @@ export interface PrivateConnectionInfo {
   /** URI of the Private Connection in format "projects/{project_id}/locations/{location}/privateConnections/{private_connection_id}" */
   uri?: string;
 }
-export const PrivateConnectionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrivateConnectionInfo" }) as any as S.Schema<PrivateConnectionInfo>;
+export const PrivateConnectionInfo =
+  AppEngineVersionEndpoint as any as S.Schema<PrivateConnectionInfo>;
 
 /** For display only. Metadata associated with a Google Kubernetes Engine (GKE) Pod. */
 export interface GkePodInfo {
@@ -3368,13 +3360,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export type CancelOrganizationsLocationsGlobalOperationsError =
   | NotFound

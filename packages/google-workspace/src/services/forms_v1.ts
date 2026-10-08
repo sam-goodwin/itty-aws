@@ -1033,9 +1033,7 @@ export const DeleteFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = TextItem as any as S.Schema<Empty>;
 
 export interface GetFormsRequest {
   /** Required. The form ID. */
@@ -1123,11 +1121,7 @@ export interface TextAnswer {
   /** Output only. The answer value. Formatting used for different kinds of question: * ChoiceQuestion * `RADIO` or `DROP_DOWN`: A single string corresponding to the option that was selected. * `CHECKBOX`: Multiple strings corresponding to each option that was selected. * TextQuestion: The text that the user entered. * ScaleQuestion: A string containing the number that was selected. * DateQuestion * Without time or year: MM-DD e.g. "05-19" * With year: YYYY-MM-DD e.g. "1986-05-19" * With time: MM-DD HH:MM e.g. "05-19 14:51" * With year and time: YYYY-MM-DD HH:MM e.g. "1986-05-19 14:51" * TimeQuestion: String with time or duration in HH:MM format e.g. "14:51" * RowQuestion within QuestionGroupItem: The answer for each row of a QuestionGroupItem is represented as a separate Answer. Each will contain one string for `RADIO`-type choices or multiple strings for `CHECKBOX` choices. */
   value?: string;
 }
-export const TextAnswer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "TextAnswer" }) as any as S.Schema<TextAnswer>;
+export const TextAnswer = CorrectAnswer as any as S.Schema<TextAnswer>;
 
 export type TextAnswerList = Array<TextAnswer>;
 export const TextAnswerList = /*@__PURE__*/ S.Array(TextAnswer) as any as S.Schema<TextAnswerList>;

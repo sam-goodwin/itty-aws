@@ -480,9 +480,8 @@ export const AttachPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AttachPolicyRequest" }) as any as S.Schema<AttachPolicyRequest>;
 export interface AttachPolicyResponse {}
-export const AttachPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AttachPolicyResponse",
-}) as any as S.Schema<AttachPolicyResponse>;
+export const AttachPolicyResponse =
+  AddFacetToObjectResponse as any as S.Schema<AttachPolicyResponse>;
 export interface AttachToIndexRequest {
   DirectoryArn: string;
   IndexReference: ObjectReference;
@@ -507,9 +506,7 @@ export const AttachToIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AttachToIndexResponse {
   AttachedObjectIdentifier?: string;
 }
-export const AttachToIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttachedObjectIdentifier: S.optional(S.String) }),
-).annotate({ identifier: "AttachToIndexResponse" }) as any as S.Schema<AttachToIndexResponse>;
+export const AttachToIndexResponse = AttachObjectResponse as any as S.Schema<AttachToIndexResponse>;
 export type TypedLinkName = string;
 export interface TypedLinkSchemaAndFacetName {
   SchemaArn: string;
@@ -657,25 +654,15 @@ export interface BatchListObjectParents {
   NextToken?: string;
   MaxResults?: number;
 }
-export const BatchListObjectParents = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ObjectReference: ObjectReference,
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BatchListObjectParents" }) as any as S.Schema<BatchListObjectParents>;
+export const BatchListObjectParents =
+  BatchListObjectChildren as any as S.Schema<BatchListObjectParents>;
 export interface BatchListObjectPolicies {
   ObjectReference: ObjectReference;
   NextToken?: string;
   MaxResults?: number;
 }
-export const BatchListObjectPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ObjectReference: ObjectReference,
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BatchListObjectPolicies" }) as any as S.Schema<BatchListObjectPolicies>;
+export const BatchListObjectPolicies =
+  BatchListObjectChildren as any as S.Schema<BatchListObjectPolicies>;
 export interface BatchListPolicyAttachments {
   PolicyReference: ObjectReference;
   NextToken?: string;
@@ -695,13 +682,7 @@ export interface BatchLookupPolicy {
   NextToken?: string;
   MaxResults?: number;
 }
-export const BatchLookupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ObjectReference: ObjectReference,
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BatchLookupPolicy" }) as any as S.Schema<BatchLookupPolicy>;
+export const BatchLookupPolicy = BatchListObjectChildren as any as S.Schema<BatchLookupPolicy>;
 export type RangeMode =
   | "FIRST"
   | "LAST"
@@ -782,17 +763,8 @@ export interface BatchListIncomingTypedLinks {
   NextToken?: string;
   MaxResults?: number;
 }
-export const BatchListIncomingTypedLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ObjectReference: ObjectReference,
-    FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-    FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchListIncomingTypedLinks",
-}) as any as S.Schema<BatchListIncomingTypedLinks>;
+export const BatchListIncomingTypedLinks =
+  BatchListOutgoingTypedLinks as any as S.Schema<BatchListIncomingTypedLinks>;
 export interface BatchGetLinkAttributes {
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeNames: string[];
@@ -928,7 +900,7 @@ export const BatchListAttachedIndicesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchListAttachedIndicesResponse>;
 export type PathString = string;
 export type ObjectIdentifierList = string[];
-export const ObjectIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const ObjectIdentifierList = AttributeNameList as any as S.Schema<ObjectIdentifierList>;
 export interface PathToObjectIdentifiers {
   Path?: string;
   ObjectIdentifiers?: string[];
@@ -1040,11 +1012,8 @@ export const BatchListIncomingTypedLinksResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BatchGetLinkAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-export const BatchGetLinkAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
-).annotate({
-  identifier: "BatchGetLinkAttributesResponse",
-}) as any as S.Schema<BatchGetLinkAttributesResponse>;
+export const BatchGetLinkAttributesResponse =
+  BatchGetObjectAttributesResponse as any as S.Schema<BatchGetLinkAttributesResponse>;
 export interface ObjectIdentifierAndLinkNameTuple {
   ObjectIdentifier?: string;
   LinkName?: string;
@@ -1264,9 +1233,7 @@ export interface BatchDetachPolicy {
   PolicyReference: ObjectReference;
   ObjectReference: ObjectReference;
 }
-export const BatchDetachPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyReference: ObjectReference, ObjectReference: ObjectReference }),
-).annotate({ identifier: "BatchDetachPolicy" }) as any as S.Schema<BatchDetachPolicy>;
+export const BatchDetachPolicy = BatchAttachPolicy as any as S.Schema<BatchDetachPolicy>;
 export type AttributeKeyList = AttributeKey[];
 export const AttributeKeyList = /*@__PURE__*/ S.Array(AttributeKey);
 export interface BatchCreateIndex {
@@ -1296,9 +1263,7 @@ export interface BatchDetachFromIndex {
   IndexReference: ObjectReference;
   TargetReference: ObjectReference;
 }
-export const BatchDetachFromIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IndexReference: ObjectReference, TargetReference: ObjectReference }),
-).annotate({ identifier: "BatchDetachFromIndex" }) as any as S.Schema<BatchDetachFromIndex>;
+export const BatchDetachFromIndex = BatchAttachToIndex as any as S.Schema<BatchDetachFromIndex>;
 export interface BatchAttachTypedLink {
   SourceObjectReference: ObjectReference;
   TargetObjectReference: ObjectReference;
@@ -1434,19 +1399,14 @@ export const BatchDetachObjectResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BatchUpdateObjectAttributesResponse {
   ObjectIdentifier?: string;
 }
-export const BatchUpdateObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ObjectIdentifier: S.optional(S.String) }),
-).annotate({
-  identifier: "BatchUpdateObjectAttributesResponse",
-}) as any as S.Schema<BatchUpdateObjectAttributesResponse>;
+export const BatchUpdateObjectAttributesResponse =
+  BatchCreateObjectResponse as any as S.Schema<BatchUpdateObjectAttributesResponse>;
 export interface BatchDeleteObjectResponse {}
-export const BatchDeleteObjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchDeleteObjectResponse",
-}) as any as S.Schema<BatchDeleteObjectResponse>;
+export const BatchDeleteObjectResponse =
+  AddFacetToObjectResponse as any as S.Schema<BatchDeleteObjectResponse>;
 export interface BatchAddFacetToObjectResponse {}
-export const BatchAddFacetToObjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchAddFacetToObjectResponse",
-}) as any as S.Schema<BatchAddFacetToObjectResponse>;
+export const BatchAddFacetToObjectResponse =
+  AddFacetToObjectResponse as any as S.Schema<BatchAddFacetToObjectResponse>;
 export interface BatchRemoveFacetFromObjectResponse {}
 export const BatchRemoveFacetFromObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -1454,13 +1414,11 @@ export const BatchRemoveFacetFromObjectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchRemoveFacetFromObjectResponse",
 }) as any as S.Schema<BatchRemoveFacetFromObjectResponse>;
 export interface BatchAttachPolicyResponse {}
-export const BatchAttachPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchAttachPolicyResponse",
-}) as any as S.Schema<BatchAttachPolicyResponse>;
+export const BatchAttachPolicyResponse =
+  AddFacetToObjectResponse as any as S.Schema<BatchAttachPolicyResponse>;
 export interface BatchDetachPolicyResponse {}
-export const BatchDetachPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchDetachPolicyResponse",
-}) as any as S.Schema<BatchDetachPolicyResponse>;
+export const BatchDetachPolicyResponse =
+  AddFacetToObjectResponse as any as S.Schema<BatchDetachPolicyResponse>;
 export interface BatchCreateIndexResponse {
   ObjectIdentifier?: string;
 }
@@ -1492,15 +1450,11 @@ export const BatchAttachTypedLinkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchAttachTypedLinkResponse",
 }) as any as S.Schema<BatchAttachTypedLinkResponse>;
 export interface BatchDetachTypedLinkResponse {}
-export const BatchDetachTypedLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchDetachTypedLinkResponse",
-}) as any as S.Schema<BatchDetachTypedLinkResponse>;
+export const BatchDetachTypedLinkResponse =
+  AddFacetToObjectResponse as any as S.Schema<BatchDetachTypedLinkResponse>;
 export interface BatchUpdateLinkAttributesResponse {}
-export const BatchUpdateLinkAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchUpdateLinkAttributesResponse",
-}) as any as S.Schema<BatchUpdateLinkAttributesResponse>;
+export const BatchUpdateLinkAttributesResponse =
+  BatchRemoveFacetFromObjectResponse as any as S.Schema<BatchUpdateLinkAttributesResponse>;
 export interface BatchWriteOperationResponse {
   CreateObject?: BatchCreateObjectResponse;
   AttachObject?: BatchAttachObjectResponse;
@@ -1601,10 +1555,7 @@ export const RuleType = S.String;
 export type RuleParameterKey = string;
 export type RuleParameterValue = string;
 export type RuleParameterMap = { [key: string]: string | undefined };
-export const RuleParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const RuleParameterMap = LinkNameToObjectIdentifierMap as any as S.Schema<RuleParameterMap>;
 export interface Rule {
   Type?: RuleType;
   Parameters?: { [key: string]: string | undefined };
@@ -1686,9 +1637,7 @@ export const CreateFacetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateFacetRequest" }) as any as S.Schema<CreateFacetRequest>;
 export interface CreateFacetResponse {}
-export const CreateFacetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateFacetResponse",
-}) as any as S.Schema<CreateFacetResponse>;
+export const CreateFacetResponse = AddFacetToObjectResponse as any as S.Schema<CreateFacetResponse>;
 export interface CreateIndexRequest {
   DirectoryArn: string;
   OrderedIndexedAttributeList: AttributeKey[];
@@ -1717,9 +1666,7 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateIndexResponse {
   ObjectIdentifier?: string;
 }
-export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ObjectIdentifier: S.optional(S.String) }),
-).annotate({ identifier: "CreateIndexResponse" }) as any as S.Schema<CreateIndexResponse>;
+export const CreateIndexResponse = BatchCreateIndexResponse as any as S.Schema<CreateIndexResponse>;
 export interface CreateObjectRequest {
   DirectoryArn: string;
   SchemaFacets: SchemaFacet[];
@@ -1748,9 +1695,8 @@ export const CreateObjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateObjectResponse {
   ObjectIdentifier?: string;
 }
-export const CreateObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ObjectIdentifier: S.optional(S.String) }),
-).annotate({ identifier: "CreateObjectResponse" }) as any as S.Schema<CreateObjectResponse>;
+export const CreateObjectResponse =
+  BatchCreateIndexResponse as any as S.Schema<CreateObjectResponse>;
 export type SchemaName = string;
 export interface CreateSchemaRequest {
   Name: string;
@@ -1829,9 +1775,8 @@ export const CreateTypedLinkFacetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTypedLinkFacetRequest",
 }) as any as S.Schema<CreateTypedLinkFacetRequest>;
 export interface CreateTypedLinkFacetResponse {}
-export const CreateTypedLinkFacetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTypedLinkFacetResponse",
-}) as any as S.Schema<CreateTypedLinkFacetResponse>;
+export const CreateTypedLinkFacetResponse =
+  AddFacetToObjectResponse as any as S.Schema<CreateTypedLinkFacetResponse>;
 export interface DeleteDirectoryRequest {
   DirectoryArn: string;
 }
@@ -1870,9 +1815,7 @@ export const DeleteFacetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFacetRequest" }) as any as S.Schema<DeleteFacetRequest>;
 export interface DeleteFacetResponse {}
-export const DeleteFacetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFacetResponse",
-}) as any as S.Schema<DeleteFacetResponse>;
+export const DeleteFacetResponse = AddFacetToObjectResponse as any as S.Schema<DeleteFacetResponse>;
 export interface DeleteObjectRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -1893,9 +1836,8 @@ export const DeleteObjectRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteObjectRequest" }) as any as S.Schema<DeleteObjectRequest>;
 export interface DeleteObjectResponse {}
-export const DeleteObjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteObjectResponse",
-}) as any as S.Schema<DeleteObjectResponse>;
+export const DeleteObjectResponse =
+  AddFacetToObjectResponse as any as S.Schema<DeleteObjectResponse>;
 export interface DeleteSchemaRequest {
   SchemaArn: string;
 }
@@ -1914,9 +1856,7 @@ export const DeleteSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSchemaResponse {
   SchemaArn?: string;
 }
-export const DeleteSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SchemaArn: S.optional(S.String) }),
-).annotate({ identifier: "DeleteSchemaResponse" }) as any as S.Schema<DeleteSchemaResponse>;
+export const DeleteSchemaResponse = CreateSchemaResponse as any as S.Schema<DeleteSchemaResponse>;
 export interface DeleteTypedLinkFacetRequest {
   SchemaArn: string;
   Name: string;
@@ -1936,9 +1876,8 @@ export const DeleteTypedLinkFacetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTypedLinkFacetRequest",
 }) as any as S.Schema<DeleteTypedLinkFacetRequest>;
 export interface DeleteTypedLinkFacetResponse {}
-export const DeleteTypedLinkFacetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTypedLinkFacetResponse",
-}) as any as S.Schema<DeleteTypedLinkFacetResponse>;
+export const DeleteTypedLinkFacetResponse =
+  AddFacetToObjectResponse as any as S.Schema<DeleteTypedLinkFacetResponse>;
 export interface DetachFromIndexRequest {
   DirectoryArn: string;
   IndexReference: ObjectReference;
@@ -1990,9 +1929,8 @@ export const DetachObjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DetachObjectResponse {
   DetachedObjectIdentifier?: string;
 }
-export const DetachObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DetachedObjectIdentifier: S.optional(S.String) }),
-).annotate({ identifier: "DetachObjectResponse" }) as any as S.Schema<DetachObjectResponse>;
+export const DetachObjectResponse =
+  DetachFromIndexResponse as any as S.Schema<DetachObjectResponse>;
 export interface DetachPolicyRequest {
   DirectoryArn: string;
   PolicyReference: ObjectReference;
@@ -2015,9 +1953,8 @@ export const DetachPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DetachPolicyRequest" }) as any as S.Schema<DetachPolicyRequest>;
 export interface DetachPolicyResponse {}
-export const DetachPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachPolicyResponse",
-}) as any as S.Schema<DetachPolicyResponse>;
+export const DetachPolicyResponse =
+  AddFacetToObjectResponse as any as S.Schema<DetachPolicyResponse>;
 export interface DetachTypedLinkRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
@@ -2038,9 +1975,8 @@ export const DetachTypedLinkRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DetachTypedLinkRequest" }) as any as S.Schema<DetachTypedLinkRequest>;
 export interface DetachTypedLinkResponse {}
-export const DetachTypedLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachTypedLinkResponse",
-}) as any as S.Schema<DetachTypedLinkResponse>;
+export const DetachTypedLinkResponse =
+  AddFacetToObjectResponse as any as S.Schema<DetachTypedLinkResponse>;
 export interface DisableDirectoryRequest {
   DirectoryArn: string;
 }
@@ -2059,9 +1995,8 @@ export const DisableDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisableDirectoryResponse {
   DirectoryArn: string;
 }
-export const DisableDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryArn: S.String }),
-).annotate({ identifier: "DisableDirectoryResponse" }) as any as S.Schema<DisableDirectoryResponse>;
+export const DisableDirectoryResponse =
+  DeleteDirectoryResponse as any as S.Schema<DisableDirectoryResponse>;
 export interface EnableDirectoryRequest {
   DirectoryArn: string;
 }
@@ -2080,9 +2015,8 @@ export const EnableDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnableDirectoryResponse {
   DirectoryArn: string;
 }
-export const EnableDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryArn: S.String }),
-).annotate({ identifier: "EnableDirectoryResponse" }) as any as S.Schema<EnableDirectoryResponse>;
+export const EnableDirectoryResponse =
+  DeleteDirectoryResponse as any as S.Schema<EnableDirectoryResponse>;
 export interface GetAppliedSchemaVersionRequest {
   SchemaArn: string;
 }
@@ -2206,11 +2140,8 @@ export const GetLinkAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetLinkAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-export const GetLinkAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
-).annotate({
-  identifier: "GetLinkAttributesResponse",
-}) as any as S.Schema<GetLinkAttributesResponse>;
+export const GetLinkAttributesResponse =
+  BatchGetObjectAttributesResponse as any as S.Schema<GetLinkAttributesResponse>;
 export interface GetObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2241,11 +2172,8 @@ export const GetObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-export const GetObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
-).annotate({
-  identifier: "GetObjectAttributesResponse",
-}) as any as S.Schema<GetObjectAttributesResponse>;
+export const GetObjectAttributesResponse =
+  BatchGetObjectAttributesResponse as any as S.Schema<GetObjectAttributesResponse>;
 export interface GetObjectInformationRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2273,11 +2201,8 @@ export interface GetObjectInformationResponse {
   SchemaFacets?: SchemaFacet[];
   ObjectIdentifier?: string;
 }
-export const GetObjectInformationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SchemaFacets: S.optional(SchemaFacetList), ObjectIdentifier: S.optional(S.String) }),
-).annotate({
-  identifier: "GetObjectInformationResponse",
-}) as any as S.Schema<GetObjectInformationResponse>;
+export const GetObjectInformationResponse =
+  BatchGetObjectInformationResponse as any as S.Schema<GetObjectInformationResponse>;
 export interface GetSchemaAsJsonRequest {
   SchemaArn: string;
 }
@@ -2353,7 +2278,7 @@ export const ListAppliedSchemaArnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppliedSchemaArnsRequest",
 }) as any as S.Schema<ListAppliedSchemaArnsRequest>;
 export type Arns = string[];
-export const Arns = /*@__PURE__*/ S.Array(S.String);
+export const Arns = AttributeNameList as any as S.Schema<Arns>;
 export interface ListAppliedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
@@ -2394,11 +2319,8 @@ export interface ListAttachedIndicesResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-export const ListAttachedIndicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IndexAttachments: S.optional(IndexAttachmentList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAttachedIndicesResponse",
-}) as any as S.Schema<ListAttachedIndicesResponse>;
+export const ListAttachedIndicesResponse =
+  BatchListAttachedIndicesResponse as any as S.Schema<ListAttachedIndicesResponse>;
 export interface ListDevelopmentSchemaArnsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2421,11 +2343,8 @@ export interface ListDevelopmentSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-export const ListDevelopmentSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDevelopmentSchemaArnsResponse",
-}) as any as S.Schema<ListDevelopmentSchemaArnsResponse>;
+export const ListDevelopmentSchemaArnsResponse =
+  ListAppliedSchemaArnsResponse as any as S.Schema<ListDevelopmentSchemaArnsResponse>;
 export interface ListDirectoriesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2512,7 +2431,7 @@ export const ListFacetNamesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListFacetNamesRequest" }) as any as S.Schema<ListFacetNamesRequest>;
 export type FacetNameList = string[];
-export const FacetNameList = /*@__PURE__*/ S.Array(S.String);
+export const FacetNameList = AttributeNameList as any as S.Schema<FacetNameList>;
 export interface ListFacetNamesResponse {
   FacetNames?: string[];
   NextToken?: string;
@@ -2555,11 +2474,8 @@ export interface ListIncomingTypedLinksResponse {
   LinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-export const ListIncomingTypedLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LinkSpecifiers: S.optional(TypedLinkSpecifierList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListIncomingTypedLinksResponse",
-}) as any as S.Schema<ListIncomingTypedLinksResponse>;
+export const ListIncomingTypedLinksResponse =
+  BatchListIncomingTypedLinksResponse as any as S.Schema<ListIncomingTypedLinksResponse>;
 export interface ListIndexRequest {
   DirectoryArn: string;
   RangesOnIndexedValues?: ObjectAttributeRange[];
@@ -2591,9 +2507,7 @@ export interface ListIndexResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-export const ListIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IndexAttachments: S.optional(IndexAttachmentList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListIndexResponse" }) as any as S.Schema<ListIndexResponse>;
+export const ListIndexResponse = BatchListIndexResponse as any as S.Schema<ListIndexResponse>;
 export interface ListManagedSchemaArnsRequest {
   SchemaArn?: string;
   NextToken?: string;
@@ -2621,11 +2535,8 @@ export interface ListManagedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-export const ListManagedSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListManagedSchemaArnsResponse",
-}) as any as S.Schema<ListManagedSchemaArnsResponse>;
+export const ListManagedSchemaArnsResponse =
+  ListAppliedSchemaArnsResponse as any as S.Schema<ListManagedSchemaArnsResponse>;
 export interface ListObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2659,11 +2570,8 @@ export interface ListObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
   NextToken?: string;
 }
-export const ListObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attributes: S.optional(AttributeKeyAndValueList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListObjectAttributesResponse",
-}) as any as S.Schema<ListObjectAttributesResponse>;
+export const ListObjectAttributesResponse =
+  BatchListObjectAttributesResponse as any as S.Schema<ListObjectAttributesResponse>;
 export interface ListObjectChildrenRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2695,14 +2603,8 @@ export interface ListObjectChildrenResponse {
   Children?: { [key: string]: string | undefined };
   NextToken?: string;
 }
-export const ListObjectChildrenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Children: S.optional(LinkNameToObjectIdentifierMap),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListObjectChildrenResponse",
-}) as any as S.Schema<ListObjectChildrenResponse>;
+export const ListObjectChildrenResponse =
+  BatchListObjectChildrenResponse as any as S.Schema<ListObjectChildrenResponse>;
 export interface ListObjectParentPathsRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2732,14 +2634,8 @@ export interface ListObjectParentPathsResponse {
   PathToObjectIdentifiersList?: PathToObjectIdentifiers[];
   NextToken?: string;
 }
-export const ListObjectParentPathsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PathToObjectIdentifiersList: S.optional(PathToObjectIdentifiersList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListObjectParentPathsResponse",
-}) as any as S.Schema<ListObjectParentPathsResponse>;
+export const ListObjectParentPathsResponse =
+  BatchListObjectParentPathsResponse as any as S.Schema<ListObjectParentPathsResponse>;
 export interface ListObjectParentsRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2768,10 +2664,8 @@ export const ListObjectParentsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListObjectParentsRequest" }) as any as S.Schema<ListObjectParentsRequest>;
 export type ObjectIdentifierToLinkNameMap = { [key: string]: string | undefined };
-export const ObjectIdentifierToLinkNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ObjectIdentifierToLinkNameMap =
+  LinkNameToObjectIdentifierMap as any as S.Schema<ObjectIdentifierToLinkNameMap>;
 export interface ListObjectParentsResponse {
   Parents?: { [key: string]: string | undefined };
   NextToken?: string;
@@ -2817,14 +2711,8 @@ export interface ListObjectPoliciesResponse {
   AttachedPolicyIds?: string[];
   NextToken?: string;
 }
-export const ListObjectPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AttachedPolicyIds: S.optional(ObjectIdentifierList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListObjectPoliciesResponse",
-}) as any as S.Schema<ListObjectPoliciesResponse>;
+export const ListObjectPoliciesResponse =
+  BatchListObjectPoliciesResponse as any as S.Schema<ListObjectPoliciesResponse>;
 export interface ListOutgoingTypedLinksRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2860,14 +2748,8 @@ export interface ListOutgoingTypedLinksResponse {
   TypedLinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-export const ListOutgoingTypedLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TypedLinkSpecifiers: S.optional(TypedLinkSpecifierList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOutgoingTypedLinksResponse",
-}) as any as S.Schema<ListOutgoingTypedLinksResponse>;
+export const ListOutgoingTypedLinksResponse =
+  BatchListOutgoingTypedLinksResponse as any as S.Schema<ListOutgoingTypedLinksResponse>;
 export interface ListPolicyAttachmentsRequest {
   DirectoryArn: string;
   PolicyReference: ObjectReference;
@@ -2899,14 +2781,8 @@ export interface ListPolicyAttachmentsResponse {
   ObjectIdentifiers?: string[];
   NextToken?: string;
 }
-export const ListPolicyAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ObjectIdentifiers: S.optional(ObjectIdentifierList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPolicyAttachmentsResponse",
-}) as any as S.Schema<ListPolicyAttachmentsResponse>;
+export const ListPolicyAttachmentsResponse =
+  BatchListPolicyAttachmentsResponse as any as S.Schema<ListPolicyAttachmentsResponse>;
 export interface ListPublishedSchemaArnsRequest {
   SchemaArn?: string;
   NextToken?: string;
@@ -2934,11 +2810,8 @@ export interface ListPublishedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-export const ListPublishedSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPublishedSchemaArnsResponse",
-}) as any as S.Schema<ListPublishedSchemaArnsResponse>;
+export const ListPublishedSchemaArnsResponse =
+  ListAppliedSchemaArnsResponse as any as S.Schema<ListPublishedSchemaArnsResponse>;
 export type TagsNumberResults = number;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
@@ -3047,7 +2920,7 @@ export const ListTypedLinkFacetNamesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTypedLinkFacetNamesRequest",
 }) as any as S.Schema<ListTypedLinkFacetNamesRequest>;
 export type TypedLinkNameList = string[];
-export const TypedLinkNameList = /*@__PURE__*/ S.Array(S.String);
+export const TypedLinkNameList = AttributeNameList as any as S.Schema<TypedLinkNameList>;
 export interface ListTypedLinkFacetNamesResponse {
   FacetNames?: string[];
   NextToken?: string;
@@ -3168,9 +3041,8 @@ export const RemoveFacetFromObjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveFacetFromObjectRequest",
 }) as any as S.Schema<RemoveFacetFromObjectRequest>;
 export interface RemoveFacetFromObjectResponse {}
-export const RemoveFacetFromObjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveFacetFromObjectResponse",
-}) as any as S.Schema<RemoveFacetFromObjectResponse>;
+export const RemoveFacetFromObjectResponse =
+  AddFacetToObjectResponse as any as S.Schema<RemoveFacetFromObjectResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -3188,11 +3060,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AddFacetToObjectResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AttributeNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -3210,9 +3080,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AddFacetToObjectResponse as any as S.Schema<UntagResourceResponse>;
 export interface FacetAttributeUpdate {
   Attribute?: FacetAttribute;
   Action?: UpdateActionType;
@@ -3246,9 +3115,7 @@ export const UpdateFacetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateFacetRequest" }) as any as S.Schema<UpdateFacetRequest>;
 export interface UpdateFacetResponse {}
-export const UpdateFacetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateFacetResponse",
-}) as any as S.Schema<UpdateFacetResponse>;
+export const UpdateFacetResponse = AddFacetToObjectResponse as any as S.Schema<UpdateFacetResponse>;
 export interface UpdateLinkAttributesRequest {
   DirectoryArn: string;
   TypedLinkSpecifier: TypedLinkSpecifier;
@@ -3276,9 +3143,8 @@ export const UpdateLinkAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLinkAttributesRequest",
 }) as any as S.Schema<UpdateLinkAttributesRequest>;
 export interface UpdateLinkAttributesResponse {}
-export const UpdateLinkAttributesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLinkAttributesResponse",
-}) as any as S.Schema<UpdateLinkAttributesResponse>;
+export const UpdateLinkAttributesResponse =
+  AddFacetToObjectResponse as any as S.Schema<UpdateLinkAttributesResponse>;
 export interface UpdateObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -3305,11 +3171,8 @@ export const UpdateObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateObjectAttributesResponse {
   ObjectIdentifier?: string;
 }
-export const UpdateObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ObjectIdentifier: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateObjectAttributesResponse",
-}) as any as S.Schema<UpdateObjectAttributesResponse>;
+export const UpdateObjectAttributesResponse =
+  BatchCreateObjectResponse as any as S.Schema<UpdateObjectAttributesResponse>;
 export interface UpdateSchemaRequest {
   SchemaArn: string;
   Name: string;
@@ -3329,9 +3192,7 @@ export const UpdateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSchemaResponse {
   SchemaArn?: string;
 }
-export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SchemaArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateSchemaResponse" }) as any as S.Schema<UpdateSchemaResponse>;
+export const UpdateSchemaResponse = CreateSchemaResponse as any as S.Schema<UpdateSchemaResponse>;
 export interface TypedLinkFacetAttributeUpdate {
   Attribute: TypedLinkAttributeDefinition;
   Action: UpdateActionType;
@@ -3371,9 +3232,8 @@ export const UpdateTypedLinkFacetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTypedLinkFacetRequest",
 }) as any as S.Schema<UpdateTypedLinkFacetRequest>;
 export interface UpdateTypedLinkFacetResponse {}
-export const UpdateTypedLinkFacetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTypedLinkFacetResponse",
-}) as any as S.Schema<UpdateTypedLinkFacetResponse>;
+export const UpdateTypedLinkFacetResponse =
+  AddFacetToObjectResponse as any as S.Schema<UpdateTypedLinkFacetResponse>;
 export interface UpgradeAppliedSchemaRequest {
   PublishedSchemaArn: string;
   DirectoryArn: string;

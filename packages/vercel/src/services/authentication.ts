@@ -639,9 +639,8 @@ export const Pagination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pagination" }) as any as S.Schema<Pagination>;
 
 export type ListAuthTokensResponseBodyCase1TokensList = Array<AuthToken>;
-export const ListAuthTokensResponseBodyCase1TokensList = /*@__PURE__*/ S.Array(
-  AuthToken,
-) as any as S.Schema<ListAuthTokensResponseBodyCase1TokensList>;
+export const ListAuthTokensResponseBodyCase1TokensList =
+  ListAuthTokensResponseBodyCase0TokensList as any as S.Schema<ListAuthTokensResponseBodyCase1TokensList>;
 
 export interface ListAuthTokensResponseBodyCase1 {
   pagination: Pagination;

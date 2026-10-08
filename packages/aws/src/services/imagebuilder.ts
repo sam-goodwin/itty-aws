@@ -339,7 +339,8 @@ export type ComponentVersionArnOrBuildVersionArn = string;
 export type ComponentParameterName = string;
 export type ComponentParameterValue = string;
 export type ComponentParameterValueList = string[];
-export const ComponentParameterValueList = /*@__PURE__*/ S.Array(S.String);
+export const ComponentParameterValueList =
+  OsVersionList as any as S.Schema<ComponentParameterValueList>;
 export interface ComponentParameter {
   name: string;
   value: string[];
@@ -502,15 +503,16 @@ export const CreateContainerRecipeResponse = /*@__PURE__*/ S.suspend(() =>
 export type AmiNameString = string;
 export type AccountId = string;
 export type AccountList = string[];
-export const AccountList = /*@__PURE__*/ S.Array(S.String);
+export const AccountList = OsVersionList as any as S.Schema<AccountList>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = OsVersionList as any as S.Schema<StringList>;
 export type OrganizationArn = string;
 export type OrganizationArnList = string[];
-export const OrganizationArnList = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationArnList = OsVersionList as any as S.Schema<OrganizationArnList>;
 export type OrganizationalUnitArn = string;
 export type OrganizationalUnitArnList = string[];
-export const OrganizationalUnitArnList = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationalUnitArnList =
+  OsVersionList as any as S.Schema<OrganizationalUnitArnList>;
 export interface LaunchPermissionConfiguration {
   userIds?: string[];
   userGroups?: string[];
@@ -563,7 +565,8 @@ export const ContainerDistributionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerDistributionConfiguration>;
 export type LicenseConfigurationArn = string;
 export type LicenseConfigurationArnList = string[];
-export const LicenseConfigurationArnList = /*@__PURE__*/ S.Array(S.String);
+export const LicenseConfigurationArnList =
+  OsVersionList as any as S.Schema<LicenseConfigurationArnList>;
 export type LaunchTemplateId = string;
 export interface LaunchTemplateConfiguration {
   launchTemplateId: string;
@@ -761,16 +764,16 @@ export type WorkflowVersionArnOrBuildVersionArn = string;
 export type WorkflowParameterName = string;
 export type WorkflowParameterValue = string;
 export type WorkflowParameterValueList = string[];
-export const WorkflowParameterValueList = /*@__PURE__*/ S.Array(S.String);
+export const WorkflowParameterValueList =
+  OsVersionList as any as S.Schema<WorkflowParameterValueList>;
 export interface WorkflowParameter {
   name: string;
   value: string[];
 }
-export const WorkflowParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, value: WorkflowParameterValueList }),
-).annotate({ identifier: "WorkflowParameter" }) as any as S.Schema<WorkflowParameter>;
+export const WorkflowParameter = ComponentParameter as any as S.Schema<WorkflowParameter>;
 export type WorkflowParameterList = WorkflowParameter[];
-export const WorkflowParameterList = /*@__PURE__*/ S.Array(WorkflowParameter);
+export const WorkflowParameterList =
+  ComponentParameterList as any as S.Schema<WorkflowParameterList>;
 export type ParallelGroup = string;
 export type OnWorkflowFailure = "CONTINUE" | "ABORT" | (string & {});
 export const OnWorkflowFailure = S.String;
@@ -967,7 +970,7 @@ export const AdditionalInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalInstanceConfiguration>;
 export type AmiWatermarkName = string;
 export type AmiWatermarksList = string[];
-export const AmiWatermarksList = /*@__PURE__*/ S.Array(S.String);
+export const AmiWatermarksList = OsVersionList as any as S.Schema<AmiWatermarksList>;
 export interface CreateImageRecipeRequest {
   name: string;
   description?: string;
@@ -1020,10 +1023,10 @@ export const CreateImageRecipeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateImageRecipeResponse>;
 export type InstanceType = string;
 export type InstanceTypeList = string[];
-export const InstanceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const InstanceTypeList = OsVersionList as any as S.Schema<InstanceTypeList>;
 export type InstanceProfileNameType = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = OsVersionList as any as S.Schema<SecurityGroupIds>;
 export interface S3Logs {
   s3BucketName?: string;
   s3KeyPrefix?: string;
@@ -1787,11 +1790,8 @@ export interface GetContainerRecipePolicyResponse {
   requestId?: string;
   policy?: string;
 }
-export const GetContainerRecipePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requestId: S.optional(S.String), policy: S.optional(S.String) }),
-).annotate({
-  identifier: "GetContainerRecipePolicyResponse",
-}) as any as S.Schema<GetContainerRecipePolicyResponse>;
+export const GetContainerRecipePolicyResponse =
+  GetComponentPolicyResponse as any as S.Schema<GetContainerRecipePolicyResponse>;
 export interface GetDistributionConfigurationRequest {
   distributionConfigurationArn: string;
 }
@@ -2306,11 +2306,8 @@ export interface GetImageRecipePolicyResponse {
   requestId?: string;
   policy?: string;
 }
-export const GetImageRecipePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requestId: S.optional(S.String), policy: S.optional(S.String) }),
-).annotate({
-  identifier: "GetImageRecipePolicyResponse",
-}) as any as S.Schema<GetImageRecipePolicyResponse>;
+export const GetImageRecipePolicyResponse =
+  GetComponentPolicyResponse as any as S.Schema<GetImageRecipePolicyResponse>;
 export interface GetInfrastructureConfigurationRequest {
   infrastructureConfigurationArn: string;
 }
@@ -2512,16 +2509,11 @@ export interface WorkflowParameterDetail {
   defaultValue?: string[];
   description?: string;
 }
-export const WorkflowParameterDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: S.String,
-    defaultValue: S.optional(WorkflowParameterValueList),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "WorkflowParameterDetail" }) as any as S.Schema<WorkflowParameterDetail>;
+export const WorkflowParameterDetail =
+  ComponentParameterDetail as any as S.Schema<WorkflowParameterDetail>;
 export type WorkflowParameterDetailList = WorkflowParameterDetail[];
-export const WorkflowParameterDetailList = /*@__PURE__*/ S.Array(WorkflowParameterDetail);
+export const WorkflowParameterDetailList =
+  ComponentParameterDetailList as any as S.Schema<WorkflowParameterDetailList>;
 export interface Workflow {
   arn?: string;
   name?: string;
@@ -2808,9 +2800,8 @@ export interface ImportDiskImageResponse {
   clientToken?: string;
   imageBuildVersionArn?: string;
 }
-export const ImportDiskImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clientToken: S.optional(S.String), imageBuildVersionArn: S.optional(S.String) }),
-).annotate({ identifier: "ImportDiskImageResponse" }) as any as S.Schema<ImportDiskImageResponse>;
+export const ImportDiskImageResponse =
+  DistributeImageResponse as any as S.Schema<ImportDiskImageResponse>;
 export interface ImportVmImageRequest {
   name: string;
   semanticVersion: string;
@@ -2935,7 +2926,7 @@ export const Ownership = S.String;
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = OsVersionList as any as S.Schema<FilterValues>;
 export interface Filter {
   name?: string;
   values?: string[];
@@ -3085,7 +3076,7 @@ export const ListDistributionConfigurationsRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "ListDistributionConfigurationsRequest",
 }) as any as S.Schema<ListDistributionConfigurationsRequest>;
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export const RegionList = OsVersionList as any as S.Schema<RegionList>;
 export interface DistributionConfigurationSummary {
   arn?: string;
   name?: string;
@@ -3266,15 +3257,8 @@ export interface ListImagePipelineImagesResponse {
   imageSummaryList?: ImageSummary[];
   nextToken?: string;
 }
-export const ListImagePipelineImagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    imageSummaryList: S.optional(ImageSummaryList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListImagePipelineImagesResponse",
-}) as any as S.Schema<ListImagePipelineImagesResponse>;
+export const ListImagePipelineImagesResponse =
+  ListImageBuildVersionsResponse as any as S.Schema<ListImagePipelineImagesResponse>;
 export interface ListImagePipelinesRequest {
   filters?: Filter[];
   maxResults?: number;
@@ -3516,16 +3500,16 @@ export const ListImageScanFindingAggregationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListImageScanFindingAggregationsResponse",
 }) as any as S.Schema<ListImageScanFindingAggregationsResponse>;
 export type ImageScanFindingsFilterValues = string[];
-export const ImageScanFindingsFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const ImageScanFindingsFilterValues =
+  OsVersionList as any as S.Schema<ImageScanFindingsFilterValues>;
 export interface ImageScanFindingsFilter {
   name?: string;
   values?: string[];
 }
-export const ImageScanFindingsFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), values: S.optional(ImageScanFindingsFilterValues) }),
-).annotate({ identifier: "ImageScanFindingsFilter" }) as any as S.Schema<ImageScanFindingsFilter>;
+export const ImageScanFindingsFilter = Filter as any as S.Schema<ImageScanFindingsFilter>;
 export type ImageScanFindingsFilterList = ImageScanFindingsFilter[];
-export const ImageScanFindingsFilterList = /*@__PURE__*/ S.Array(ImageScanFindingsFilter);
+export const ImageScanFindingsFilterList =
+  FilterList as any as S.Schema<ImageScanFindingsFilterList>;
 export interface ListImageScanFindingsRequest {
   filters?: ImageScanFindingsFilter[];
   maxResults?: number;
@@ -3640,9 +3624,9 @@ export const CvssScore = /*@__PURE__*/ S.suspend(() =>
 export type CvssScoreList = CvssScore[];
 export const CvssScoreList = /*@__PURE__*/ S.Array(CvssScore);
 export type VulnerabilityIdList = string[];
-export const VulnerabilityIdList = /*@__PURE__*/ S.Array(S.String);
+export const VulnerabilityIdList = OsVersionList as any as S.Schema<VulnerabilityIdList>;
 export type NonEmptyStringList = string[];
-export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
+export const NonEmptyStringList = OsVersionList as any as S.Schema<NonEmptyStringList>;
 export interface PackageVulnerabilityDetails {
   vulnerabilityId: string;
   vulnerablePackages?: VulnerablePackage[];
@@ -4376,11 +4360,8 @@ export interface PutContainerRecipePolicyResponse {
   requestId?: string;
   containerRecipeArn?: string;
 }
-export const PutContainerRecipePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requestId: S.optional(S.String), containerRecipeArn: S.optional(S.String) }),
-).annotate({
-  identifier: "PutContainerRecipePolicyResponse",
-}) as any as S.Schema<PutContainerRecipePolicyResponse>;
+export const PutContainerRecipePolicyResponse =
+  DeleteContainerRecipeResponse as any as S.Schema<PutContainerRecipePolicyResponse>;
 export interface PutImagePolicyRequest {
   imageArn: string;
   policy: string;
@@ -4412,11 +4393,8 @@ export interface PutImageRecipePolicyResponse {
   requestId?: string;
   imageRecipeArn?: string;
 }
-export const PutImageRecipePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requestId: S.optional(S.String), imageRecipeArn: S.optional(S.String) }),
-).annotate({
-  identifier: "PutImageRecipePolicyResponse",
-}) as any as S.Schema<PutImageRecipePolicyResponse>;
+export const PutImageRecipePolicyResponse =
+  DeleteImageRecipeResponse as any as S.Schema<PutImageRecipePolicyResponse>;
 export interface RetryImageRequest {
   imageBuildVersionArn: string;
   clientToken: string;
@@ -4431,9 +4409,7 @@ export interface RetryImageResponse {
   clientToken?: string;
   imageBuildVersionArn?: string;
 }
-export const RetryImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ clientToken: S.optional(S.String), imageBuildVersionArn: S.optional(S.String) }),
-).annotate({ identifier: "RetryImageResponse" }) as any as S.Schema<RetryImageResponse>;
+export const RetryImageResponse = DistributeImageResponse as any as S.Schema<RetryImageResponse>;
 export type WorkflowStepActionType = "RESUME" | "STOP" | (string & {});
 export const WorkflowStepActionType = S.String;
 
@@ -4499,15 +4475,8 @@ export interface StartImagePipelineExecutionResponse {
   clientToken?: string;
   imageBuildVersionArn?: string;
 }
-export const StartImagePipelineExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    clientToken: S.optional(S.String),
-    imageBuildVersionArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartImagePipelineExecutionResponse",
-}) as any as S.Schema<StartImagePipelineExecutionResponse>;
+export const StartImagePipelineExecutionResponse =
+  CancelImageCreationResponse as any as S.Schema<StartImagePipelineExecutionResponse>;
 export type ResourceStatus = "AVAILABLE" | "DELETED" | "DEPRECATED" | "DISABLED" | (string & {});
 export const ResourceStatus = S.String;
 
@@ -4522,15 +4491,8 @@ export interface ResourceStateUpdateIncludeResources {
   snapshots?: boolean;
   containers?: boolean;
 }
-export const ResourceStateUpdateIncludeResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amis: S.optional(S.Boolean),
-    snapshots: S.optional(S.Boolean),
-    containers: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ResourceStateUpdateIncludeResources",
-}) as any as S.Schema<ResourceStateUpdateIncludeResources>;
+export const ResourceStateUpdateIncludeResources =
+  LifecyclePolicyDetailActionIncludeResources as any as S.Schema<ResourceStateUpdateIncludeResources>;
 export interface ResourceStateUpdateExclusionRules {
   amis?: LifecyclePolicyDetailExclusionRulesAmis;
 }
@@ -4593,7 +4555,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = OsVersionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -4607,9 +4569,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDistributionConfigurationRequest {
   distributionConfigurationArn: string;
   description?: string;
@@ -4640,15 +4600,8 @@ export interface UpdateDistributionConfigurationResponse {
   clientToken?: string;
   distributionConfigurationArn?: string;
 }
-export const UpdateDistributionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    clientToken: S.optional(S.String),
-    distributionConfigurationArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDistributionConfigurationResponse",
-}) as any as S.Schema<UpdateDistributionConfigurationResponse>;
+export const UpdateDistributionConfigurationResponse =
+  CreateDistributionConfigurationResponse as any as S.Schema<UpdateDistributionConfigurationResponse>;
 export interface UpdateImagePipelineRequest {
   imagePipelineArn: string;
   description?: string;
@@ -4696,15 +4649,8 @@ export interface UpdateImagePipelineResponse {
   clientToken?: string;
   imagePipelineArn?: string;
 }
-export const UpdateImagePipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    clientToken: S.optional(S.String),
-    imagePipelineArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateImagePipelineResponse",
-}) as any as S.Schema<UpdateImagePipelineResponse>;
+export const UpdateImagePipelineResponse =
+  CreateImagePipelineResponse as any as S.Schema<UpdateImagePipelineResponse>;
 export interface UpdateInfrastructureConfigurationRequest {
   infrastructureConfigurationArn: string;
   description?: string;
@@ -4755,15 +4701,8 @@ export interface UpdateInfrastructureConfigurationResponse {
   clientToken?: string;
   infrastructureConfigurationArn?: string;
 }
-export const UpdateInfrastructureConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    clientToken: S.optional(S.String),
-    infrastructureConfigurationArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateInfrastructureConfigurationResponse",
-}) as any as S.Schema<UpdateInfrastructureConfigurationResponse>;
+export const UpdateInfrastructureConfigurationResponse =
+  CreateInfrastructureConfigurationResponse as any as S.Schema<UpdateInfrastructureConfigurationResponse>;
 export interface UpdateLifecyclePolicyRequest {
   lifecyclePolicyArn: string;
   description?: string;
@@ -4793,11 +4732,8 @@ export const UpdateLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLifecyclePolicyResponse {
   lifecyclePolicyArn?: string;
 }
-export const UpdateLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ lifecyclePolicyArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateLifecyclePolicyResponse",
-}) as any as S.Schema<UpdateLifecyclePolicyResponse>;
+export const UpdateLifecyclePolicyResponse =
+  DeleteLifecyclePolicyResponse as any as S.Schema<UpdateLifecyclePolicyResponse>;
 export type ErrorMessage = string;
 export type CancelImageCreationError =
   | CallRateLimitExceededException

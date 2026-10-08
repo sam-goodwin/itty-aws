@@ -855,11 +855,8 @@ export const DeleteBucketAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBucketAccessControlsRequest>;
 
 export interface DeleteBucketAccessControlsResponse {}
-export const DeleteBucketAccessControlsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBucketAccessControlsResponse",
-}) as any as S.Schema<DeleteBucketAccessControlsResponse>;
+export const DeleteBucketAccessControlsResponse =
+  AdvanceRelocateBucketOperationsResponse as any as S.Schema<DeleteBucketAccessControlsResponse>;
 
 export interface DeleteBucketsRequest {
   /** Name of a bucket. */
@@ -887,9 +884,8 @@ export const DeleteBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBucketsRequest" }) as any as S.Schema<DeleteBucketsRequest>;
 
 export interface DeleteBucketsResponse {}
-export const DeleteBucketsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBucketsResponse",
-}) as any as S.Schema<DeleteBucketsResponse>;
+export const DeleteBucketsResponse =
+  CancelOperationsResponse as any as S.Schema<DeleteBucketsResponse>;
 
 export interface DeleteDefaultObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -916,11 +912,8 @@ export const DeleteDefaultObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteDefaultObjectAccessControlsRequest>;
 
 export interface DeleteDefaultObjectAccessControlsResponse {}
-export const DeleteDefaultObjectAccessControlsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDefaultObjectAccessControlsResponse",
-}) as any as S.Schema<DeleteDefaultObjectAccessControlsResponse>;
+export const DeleteDefaultObjectAccessControlsResponse =
+  AdvanceRelocateBucketOperationsResponse as any as S.Schema<DeleteDefaultObjectAccessControlsResponse>;
 
 export interface DeleteFoldersRequest {
   /** Name of the bucket in which the folder resides. */
@@ -948,9 +941,8 @@ export const DeleteFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFoldersRequest" }) as any as S.Schema<DeleteFoldersRequest>;
 
 export interface DeleteFoldersResponse {}
-export const DeleteFoldersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFoldersResponse",
-}) as any as S.Schema<DeleteFoldersResponse>;
+export const DeleteFoldersResponse =
+  CancelOperationsResponse as any as S.Schema<DeleteFoldersResponse>;
 
 export interface DeleteManagedFoldersRequest {
   /** Name of the bucket containing the managed folder. */
@@ -983,9 +975,8 @@ export const DeleteManagedFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedFoldersRequest>;
 
 export interface DeleteManagedFoldersResponse {}
-export const DeleteManagedFoldersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteManagedFoldersResponse",
-}) as any as S.Schema<DeleteManagedFoldersResponse>;
+export const DeleteManagedFoldersResponse =
+  CancelOperationsResponse as any as S.Schema<DeleteManagedFoldersResponse>;
 
 export interface DeleteNotificationsRequest {
   /** The parent bucket of the notification. */
@@ -1012,9 +1003,8 @@ export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
-export const DeleteNotificationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotificationsResponse",
-}) as any as S.Schema<DeleteNotificationsResponse>;
+export const DeleteNotificationsResponse =
+  CancelOperationsResponse as any as S.Schema<DeleteNotificationsResponse>;
 
 export interface DeleteObjectAccessControlsRequest {
   /** Name of a bucket. */
@@ -1047,11 +1037,8 @@ export const DeleteObjectAccessControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteObjectAccessControlsRequest>;
 
 export interface DeleteObjectAccessControlsResponse {}
-export const DeleteObjectAccessControlsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteObjectAccessControlsResponse",
-}) as any as S.Schema<DeleteObjectAccessControlsResponse>;
+export const DeleteObjectAccessControlsResponse =
+  AdvanceRelocateBucketOperationsResponse as any as S.Schema<DeleteObjectAccessControlsResponse>;
 
 export interface DeleteObjectsRequest {
   /** Name of the bucket in which the object resides. */
@@ -1091,9 +1078,8 @@ export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteObjectsRequest" }) as any as S.Schema<DeleteObjectsRequest>;
 
 export interface DeleteObjectsResponse {}
-export const DeleteObjectsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteObjectsResponse",
-}) as any as S.Schema<DeleteObjectsResponse>;
+export const DeleteObjectsResponse =
+  CancelOperationsResponse as any as S.Schema<DeleteObjectsResponse>;
 
 export interface DeleteProjectsHmacKeysRequest {
   /** Name of the HMAC key to be deleted. */
@@ -1120,9 +1106,8 @@ export const DeleteProjectsHmacKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectsHmacKeysRequest>;
 
 export interface DeleteProjectsHmacKeysResponse {}
-export const DeleteProjectsHmacKeysResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectsHmacKeysResponse",
-}) as any as S.Schema<DeleteProjectsHmacKeysResponse>;
+export const DeleteProjectsHmacKeysResponse =
+  CancelOperationsResponse as any as S.Schema<DeleteProjectsHmacKeysResponse>;
 
 export interface DeleteRecursiveFoldersRequest {
   /** Name of the bucket in which the folder resides. */
@@ -1550,14 +1535,8 @@ export interface BucketIamConfigurationUniformBucketLevelAccess {
   /** The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339 format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable. */
   lockedTime?: string;
 }
-export const BucketIamConfigurationUniformBucketLevelAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    lockedTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BucketIamConfigurationUniformBucketLevelAccess",
-}) as any as S.Schema<BucketIamConfigurationUniformBucketLevelAccess>;
+export const BucketIamConfigurationUniformBucketLevelAccess =
+  BucketIamConfigurationBucketPolicyOnly as any as S.Schema<BucketIamConfigurationUniformBucketLevelAccess>;
 
 export interface BucketIamConfiguration {
   /** The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature. */
@@ -1761,12 +1740,7 @@ export interface BucketOwner {
   /** The ID for the entity. */
   entityId?: string;
 }
-export const BucketOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entity: S.optional(S.String),
-    entityId: S.optional(S.String),
-  }),
-).annotate({ identifier: "BucketOwner" }) as any as S.Schema<BucketOwner>;
+export const BucketOwner = Storage_ObjectOwner as any as S.Schema<BucketOwner>;
 
 export interface BucketRetentionPolicy {
   /** Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format. */
@@ -4242,9 +4216,8 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopChannelsResponse",
-}) as any as S.Schema<StopChannelsResponse>;
+export const StopChannelsResponse =
+  CancelOperationsResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface TestIamPermissionsBucketsRequest {
   /** Name of a bucket. */

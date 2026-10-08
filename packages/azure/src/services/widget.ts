@@ -130,10 +130,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EmployeesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EmployeesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EmployeesCreateOrUpdateResponseTagsMap>;
+export const EmployeesCreateOrUpdateResponseTagsMap =
+  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<EmployeesCreateOrUpdateResponseTagsMap>;
 
 /** The resource provisioning state. */
 export type ProvisioningState =
@@ -221,10 +219,8 @@ export const GetEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEmployeeResponseTagsMap = { [key: string]: string | undefined };
-export const GetEmployeeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEmployeeResponseTagsMap>;
+export const GetEmployeeResponseTagsMap =
+  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEmployeeResponseTagsMap>;
 
 export interface GetEmployeeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -278,10 +274,8 @@ export const ListEmployeeByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EmployeeTagsMap = { [key: string]: string | undefined };
-export const EmployeeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EmployeeTagsMap>;
+export const EmployeeTagsMap =
+  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<EmployeeTagsMap>;
 
 /** Employee resource */
 export interface Employee {
@@ -300,17 +294,7 @@ export interface Employee {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-export const Employee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EmployeeTagsMap),
-    location: S.String,
-    properties: S.optional(EmployeeProperties),
-  }),
-).annotate({ identifier: "Employee" }) as any as S.Schema<Employee>;
+export const Employee = GetEmployeeResponse as any as S.Schema<Employee>;
 
 /** The Employee items on this page */
 export type EmployeeListResultValueList = Array<Employee>;
@@ -435,10 +419,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEmployeeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEmployeeRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEmployeeRequestTagsMap>;
+export const UpdateEmployeeRequestTagsMap =
+  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmployeeRequestTagsMap>;
 
 export interface UpdateEmployeeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -471,10 +453,8 @@ export const UpdateEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEmployeeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEmployeeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEmployeeResponseTagsMap>;
+export const UpdateEmployeeResponseTagsMap =
+  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmployeeResponseTagsMap>;
 
 export interface UpdateEmployeeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -492,17 +472,8 @@ export interface UpdateEmployeeResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-export const UpdateEmployeeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateEmployeeResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EmployeeProperties),
-  }),
-).annotate({ identifier: "UpdateEmployeeResponse" }) as any as S.Schema<UpdateEmployeeResponse>;
+export const UpdateEmployeeResponse =
+  GetEmployeeResponse as any as S.Schema<UpdateEmployeeResponse>;
 
 export type DeleteEmployeeError = AzureOpError;
 /** Delete a Employee */

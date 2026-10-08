@@ -672,16 +672,13 @@ export const ConfluentAgreementResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateOrganizationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateOrganizationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrganizationRequestTagsMap>;
+export const CreateOrganizationRequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<CreateOrganizationRequestTagsMap>;
 
 /** Array of Private Offer Ids */
 export type OfferDetailInputPrivateOfferIdsList = Array<string>;
-export const OfferDetailInputPrivateOfferIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OfferDetailInputPrivateOfferIdsList>;
+export const OfferDetailInputPrivateOfferIdsList =
+  AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<OfferDetailInputPrivateOfferIdsList>;
 
 /** Confluent Offer detail */
 export interface OfferDetailInput {
@@ -804,10 +801,8 @@ export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const CreateOrganizationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrganizationResponseTagsMap>;
+export const CreateOrganizationResponseTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<CreateOrganizationResponseTagsMap>;
 
 /** Provision states for confluent RP */
 export type ProvisionState =
@@ -824,9 +819,8 @@ export const ProvisionState = S.String;
 
 /** Array of Private Offer Ids */
 export type OfferDetailPrivateOfferIdsList = Array<string>;
-export const OfferDetailPrivateOfferIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OfferDetailPrivateOfferIdsList>;
+export const OfferDetailPrivateOfferIdsList =
+  AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<OfferDetailPrivateOfferIdsList>;
 
 /** SaaS Offer Status for confluent RP */
 export type SaaSOfferStatus =
@@ -1309,9 +1303,8 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
 
 export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectorResponse",
-}) as any as S.Schema<DeleteConnectorResponse>;
+export const DeleteConnectorResponse =
+  DeleteClusterResponse as any as S.Schema<DeleteConnectorResponse>;
 
 export interface DeleteEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1340,9 +1333,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  DeleteClusterResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1370,9 +1362,8 @@ export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationRequest>;
 
 export interface DeleteOrganizationResponse {}
-export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrganizationResponse",
-}) as any as S.Schema<DeleteOrganizationResponse>;
+export const DeleteOrganizationResponse =
+  DeleteClusterResponse as any as S.Schema<DeleteOrganizationResponse>;
 
 export interface DeleteOrganizationClusterAPIKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1442,9 +1433,7 @@ export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicRequest" }) as any as S.Schema<DeleteTopicRequest>;
 
 export interface DeleteTopicResponse {}
-export const DeleteTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTopicResponse",
-}) as any as S.Schema<DeleteTopicResponse>;
+export const DeleteTopicResponse = DeleteClusterResponse as any as S.Schema<DeleteTopicResponse>;
 
 /** Stream governance configuration */
 export interface StreamGovernanceConfig {
@@ -1611,10 +1600,8 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const GetOrganizationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetOrganizationResponseTagsMap>;
+export const GetOrganizationResponseTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<GetOrganizationResponseTagsMap>;
 
 export interface GetOrganizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1717,18 +1704,8 @@ export interface GetOrganizationClusterByIdResponse {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
-export const GetOrganizationClusterByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: S.optional(S.String),
-    properties: S.optional(ClusterProperties),
-  }),
-).annotate({
-  identifier: "GetOrganizationClusterByIdResponse",
-}) as any as S.Schema<GetOrganizationClusterByIdResponse>;
+export const GetOrganizationClusterByIdResponse =
+  ClusterCreateOrUpdateResponse as any as S.Schema<GetOrganizationClusterByIdResponse>;
 
 export interface GetOrganizationEnvironmentByIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1772,18 +1749,8 @@ export interface GetOrganizationEnvironmentByIdResponse {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
-export const GetOrganizationEnvironmentByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: S.optional(S.String),
-    properties: S.optional(EnvironmentProperties),
-  }),
-).annotate({
-  identifier: "GetOrganizationEnvironmentByIdResponse",
-}) as any as S.Schema<GetOrganizationEnvironmentByIdResponse>;
+export const GetOrganizationEnvironmentByIdResponse =
+  EnvironmentCreateOrUpdateResponse as any as S.Schema<GetOrganizationEnvironmentByIdResponse>;
 
 export interface GetOrganizationSchemaRegistryClusterByIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1943,15 +1910,7 @@ export interface GetTopicResponse {
   /** Topic Properties */
   properties?: TopicProperties;
 }
-export const GetTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TopicProperties),
-  }),
-).annotate({ identifier: "GetTopicResponse" }) as any as S.Schema<GetTopicResponse>;
+export const GetTopicResponse = CreateTopicResponse as any as S.Schema<GetTopicResponse>;
 
 /** Details of the user being invited */
 export interface AccessInvitedUserDetails {
@@ -2036,10 +1995,8 @@ export const InvitationRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Search filters for the request */
 export type ListAccessClustersRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessClustersRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListAccessClustersRequestSearchFiltersMap>;
+export const ListAccessClustersRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessClustersRequestSearchFiltersMap>;
 
 export interface ListAccessClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2207,10 +2164,8 @@ export const AccessListClusterSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Search filters for the request */
 export type ListAccessEnvironmentsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessEnvironmentsRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListAccessEnvironmentsRequestSearchFiltersMap>;
+export const ListAccessEnvironmentsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessEnvironmentsRequestSearchFiltersMap>;
 
 export interface ListAccessEnvironmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2287,10 +2242,8 @@ export const AccessListEnvironmentsSuccessResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Search filters for the request */
 export type ListAccessInvitationsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessInvitationsRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListAccessInvitationsRequestSearchFiltersMap>;
+export const ListAccessInvitationsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessInvitationsRequestSearchFiltersMap>;
 
 export interface ListAccessInvitationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2347,10 +2300,8 @@ export const AccessListInvitationsSuccessResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Search filters for the request */
 export type ListAccessRoleBindingsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessRoleBindingsRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListAccessRoleBindingsRequestSearchFiltersMap>;
+export const ListAccessRoleBindingsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessRoleBindingsRequestSearchFiltersMap>;
 
 export interface ListAccessRoleBindingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2409,10 +2360,8 @@ export const AccessListRoleBindingsSuccessResponse = /*@__PURE__*/ S.suspend(() 
 export type ListAccessServiceAccountsRequestSearchFiltersMap = {
   [key: string]: string | undefined;
 };
-export const ListAccessServiceAccountsRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListAccessServiceAccountsRequestSearchFiltersMap>;
+export const ListAccessServiceAccountsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessServiceAccountsRequestSearchFiltersMap>;
 
 export interface ListAccessServiceAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2492,10 +2441,8 @@ export const AccessListServiceAccountsSuccessResponse = /*@__PURE__*/ S.suspend(
 
 /** Search filters for the request */
 export type ListAccessUsersRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessUsersRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListAccessUsersRequestSearchFiltersMap>;
+export const ListAccessUsersRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessUsersRequestSearchFiltersMap>;
 
 export interface ListAccessUsersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2622,15 +2569,7 @@ export interface ConnectorResource {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
-export const ConnectorResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectorResourceProperties,
-  }),
-).annotate({ identifier: "ConnectorResource" }) as any as S.Schema<ConnectorResource>;
+export const ConnectorResource = GetConnectorResponse as any as S.Schema<ConnectorResource>;
 
 /** The ConnectorResource items on this page */
 export type ListConnectorsSuccessResponseValueList = Array<ConnectorResource>;
@@ -2719,10 +2658,8 @@ export const ListOrganizationByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type OrganizationResourceTagsMap = { [key: string]: string | undefined };
-export const OrganizationResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrganizationResourceTagsMap>;
+export const OrganizationResourceTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<OrganizationResourceTagsMap>;
 
 /** Organization resource. */
 export interface OrganizationResource {
@@ -2741,17 +2678,8 @@ export interface OrganizationResource {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const OrganizationResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(OrganizationResourceTagsMap),
-    location: S.String,
-    properties: OrganizationResourceProperties,
-  }),
-).annotate({ identifier: "OrganizationResource" }) as any as S.Schema<OrganizationResource>;
+export const OrganizationResource =
+  GetOrganizationResponse as any as S.Schema<OrganizationResource>;
 
 /** The OrganizationResource items on this page */
 export type OrganizationResourceListResultValueList = Array<OrganizationResource>;
@@ -3026,10 +2954,8 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Search filters for the request */
 export type ListOrganizationRegionsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListOrganizationRegionsRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListOrganizationRegionsRequestSearchFiltersMap>;
+export const ListOrganizationRegionsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListOrganizationRegionsRequestSearchFiltersMap>;
 
 export interface ListOrganizationRegionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3060,9 +2986,8 @@ export const ListOrganizationRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationRegionsRequest>;
 
 export type RegionSpecEntityPackagesList = Array<string>;
-export const RegionSpecEntityPackagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegionSpecEntityPackagesList>;
+export const RegionSpecEntityPackagesList =
+  AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<RegionSpecEntityPackagesList>;
 
 /** Region spec details */
 export interface RegionSpecEntity {
@@ -3237,15 +3162,7 @@ export interface TopicRecord {
   /** Topic Properties */
   properties?: TopicProperties;
 }
-export const TopicRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TopicProperties),
-  }),
-).annotate({ identifier: "TopicRecord" }) as any as S.Schema<TopicRecord>;
+export const TopicRecord = CreateTopicResponse as any as S.Schema<TopicRecord>;
 
 /** The TopicRecord items on this page */
 export type ListTopicsSuccessResponseValueList = Array<TopicRecord>;
@@ -3271,10 +3188,8 @@ export const ListTopicsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** ARM resource tags */
 export type UpdateOrganizationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateOrganizationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationRequestTagsMap>;
+export const UpdateOrganizationRequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<UpdateOrganizationRequestTagsMap>;
 
 export interface UpdateOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3306,10 +3221,8 @@ export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateOrganizationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseTagsMap>;
+export const UpdateOrganizationResponseTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<UpdateOrganizationResponseTagsMap>;
 
 export interface UpdateOrganizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3327,26 +3240,13 @@ export interface UpdateOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const UpdateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateOrganizationResponseTagsMap),
-    location: S.String,
-    properties: OrganizationResourceProperties,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationResponse",
-}) as any as S.Schema<UpdateOrganizationResponse>;
+export const UpdateOrganizationResponse =
+  CreateOrganizationResponse as any as S.Schema<UpdateOrganizationResponse>;
 
 /** Resource tags. */
 export type ValidateValidationOrganizationRequestTagsMap = { [key: string]: string | undefined };
-export const ValidateValidationOrganizationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ValidateValidationOrganizationRequestTagsMap>;
+export const ValidateValidationOrganizationRequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationRequestTagsMap>;
 
 export interface ValidateValidationOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3384,10 +3284,8 @@ export const ValidateValidationOrganizationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type ValidateValidationOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const ValidateValidationOrganizationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ValidateValidationOrganizationResponseTagsMap>;
+export const ValidateValidationOrganizationResponseTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationResponseTagsMap>;
 
 export interface ValidateValidationOrganizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3405,26 +3303,13 @@ export interface ValidateValidationOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const ValidateValidationOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ValidateValidationOrganizationResponseTagsMap),
-    location: S.String,
-    properties: OrganizationResourceProperties,
-  }),
-).annotate({
-  identifier: "ValidateValidationOrganizationResponse",
-}) as any as S.Schema<ValidateValidationOrganizationResponse>;
+export const ValidateValidationOrganizationResponse =
+  CreateOrganizationResponse as any as S.Schema<ValidateValidationOrganizationResponse>;
 
 /** Resource tags. */
 export type ValidateValidationOrganizationV2RequestTagsMap = { [key: string]: string | undefined };
-export const ValidateValidationOrganizationV2RequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ValidateValidationOrganizationV2RequestTagsMap>;
+export const ValidateValidationOrganizationV2RequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationV2RequestTagsMap>;
 
 export interface ValidateValidationOrganizationV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3462,10 +3347,8 @@ export const ValidateValidationOrganizationV2Request = /*@__PURE__*/ S.suspend((
 
 /** Info from the response */
 export type ValidationResponseInfoMap = { [key: string]: string | undefined };
-export const ValidationResponseInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ValidationResponseInfoMap>;
+export const ValidationResponseInfoMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidationResponseInfoMap>;
 
 /** Validation response from the provider */
 export interface ValidationResponse {

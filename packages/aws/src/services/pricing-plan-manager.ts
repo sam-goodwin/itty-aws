@@ -188,14 +188,8 @@ export interface AssociateResourcesToSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const AssociateResourcesToSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({
-  identifier: "AssociateResourcesToSubscriptionOutput",
-}) as any as S.Schema<AssociateResourcesToSubscriptionOutput>;
+export const AssociateResourcesToSubscriptionOutput =
+  ApprovePaidSubscriptionOutput as any as S.Schema<AssociateResourcesToSubscriptionOutput>;
 export interface CancelSubscriptionInput {
   arn: string;
   ifMatch: string;
@@ -247,14 +241,8 @@ export interface CancelSubscriptionChangeOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const CancelSubscriptionChangeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({
-  identifier: "CancelSubscriptionChangeOutput",
-}) as any as S.Schema<CancelSubscriptionChangeOutput>;
+export const CancelSubscriptionChangeOutput =
+  ApprovePaidSubscriptionOutput as any as S.Schema<CancelSubscriptionChangeOutput>;
 export type ApprovalMode = "MANUAL" | "IMMEDIATE" | (string & {});
 export const ApprovalMode = S.String;
 
@@ -282,12 +270,8 @@ export interface CreateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const CreateSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "CreateSubscriptionOutput" }) as any as S.Schema<CreateSubscriptionOutput>;
+export const CreateSubscriptionOutput =
+  CancelSubscriptionOutput as any as S.Schema<CreateSubscriptionOutput>;
 export interface DisassociateResourcesFromSubscriptionInput {
   arn: string;
   resourceArns: string[];
@@ -317,14 +301,8 @@ export interface DisassociateResourcesFromSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const DisassociateResourcesFromSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({
-  identifier: "DisassociateResourcesFromSubscriptionOutput",
-}) as any as S.Schema<DisassociateResourcesFromSubscriptionOutput>;
+export const DisassociateResourcesFromSubscriptionOutput =
+  ApprovePaidSubscriptionOutput as any as S.Schema<DisassociateResourcesFromSubscriptionOutput>;
 export interface GetSubscriptionInput {
   arn: string;
 }
@@ -337,12 +315,8 @@ export interface GetSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const GetSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "GetSubscriptionOutput" }) as any as S.Schema<GetSubscriptionOutput>;
+export const GetSubscriptionOutput =
+  CancelSubscriptionOutput as any as S.Schema<GetSubscriptionOutput>;
 export interface ListSubscriptionsInput {
   nextToken?: string;
 }
@@ -410,12 +384,8 @@ export interface UpdateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const UpdateSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
-    eTag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "UpdateSubscriptionOutput" }) as any as S.Schema<UpdateSubscriptionOutput>;
+export const UpdateSubscriptionOutput =
+  CancelSubscriptionOutput as any as S.Schema<UpdateSubscriptionOutput>;
 export type ApprovePaidSubscriptionError =
   | AccessDeniedException
   | ConflictException

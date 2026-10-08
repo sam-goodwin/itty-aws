@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -221,15 +219,13 @@ export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference = /*@__PUR
 
 /** nonResourceURLs is a set of url prefixes that a user should have access to and may not be empty. For example: - "/healthz" is legal - "/hea*" is illegal - "/hea" is legal but matches nothing - "/hea/*" also matches nothing - "/healthz/*" matches all per-component health checks. "*" matches all non-resource urls. if it is present, it must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList = Array<string>;
-export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList>;
+export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList>;
 
 /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList = Array<string>;
-export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList>;
+export const IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList>;
 
 /** NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request. */
 export interface IoK8sApiFlowcontrolV1NonResourcePolicyRule {
@@ -257,27 +253,23 @@ export const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList =
 
 /** apiGroups is a list of matching API groups and may not be empty. "*" matches all API groups and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList>;
+export const IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList>;
 
 /** namespaces is a list of target namespaces that restricts matches. A request that specifies a target namespace matches only if either (a) this list contains that target namespace or (b) this list contains "*". Note that "*" matches any specified namespace but does not match a request that _does not specify_ a namespace (see the `clusterScope` field for that). This list may be empty, but only if `clusterScope` is true. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList>;
+export const IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList>;
 
 /** resources is a list of matching resources (i.e., lowercase and plural) with, if desired, subresource. For example, [ "services", "nodes/status" ]. This list may not be empty. "*" matches all resources and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList>;
+export const IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList>;
 
 /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList = Array<string>;
-export const IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList>;
+export const IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList>;
 
 /** ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb and the target resource. A ResourcePolicyRule matches a resource request if and only if: (a) at least one member of verbs matches the request, (b) at least one member of apiGroups matches the request, (c) at least one member of resources matches the request, and (d) either (d1) the request does not specify a namespace (i.e., `Namespace==""`) and clusterScope is true or (d2) the request specifies a namespace and least one member of namespaces matches the request's namespace. */
 export interface IoK8sApiFlowcontrolV1ResourcePolicyRule {
@@ -345,13 +337,8 @@ export interface IoK8sApiFlowcontrolV1UserSubject {
   /** name is the username that matches, or "*" to match all usernames. Required. */
   name: string;
 }
-export const IoK8sApiFlowcontrolV1UserSubject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiFlowcontrolV1UserSubject",
-}) as any as S.Schema<IoK8sApiFlowcontrolV1UserSubject>;
+export const IoK8sApiFlowcontrolV1UserSubject =
+  IoK8sApiFlowcontrolV1GroupSubject as any as S.Schema<IoK8sApiFlowcontrolV1UserSubject>;
 
 /** Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account. */
 export interface IoK8sApiFlowcontrolV1Subject {
@@ -1194,21 +1181,18 @@ export const GetFlowcontrolApiserverV1APIResourcesRequest = /*@__PURE__*/ S.susp
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {

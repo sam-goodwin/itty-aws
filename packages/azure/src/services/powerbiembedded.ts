@@ -116,10 +116,8 @@ export const CreateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkspaceCollectionRequest>;
 
 export type WorkspaceCollectionTagsMap = { [key: string]: string | undefined };
-export const WorkspaceCollectionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspaceCollectionTagsMap>;
+export const WorkspaceCollectionTagsMap =
+  CreateWorkspaceCollectionRequestTagsMap as any as S.Schema<WorkspaceCollectionTagsMap>;
 
 export interface WorkspaceCollection {
   /** Resource id */
@@ -450,11 +448,8 @@ export const MigrateWorkspaceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateWorkspaceCollectionRequest>;
 
 export interface MigrateWorkspaceCollectionResponse {}
-export const MigrateWorkspaceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrateWorkspaceCollectionResponse",
-}) as any as S.Schema<MigrateWorkspaceCollectionResponse>;
+export const MigrateWorkspaceCollectionResponse =
+  DeleteWorkspaceCollectionResponse as any as S.Schema<MigrateWorkspaceCollectionResponse>;
 
 /** Key name */
 export type RegenerateWorkspaceCollectionKeyRequestKeyName = "key1" | "key2";
@@ -489,10 +484,8 @@ export const RegenerateWorkspaceCollectionKeyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RegenerateWorkspaceCollectionKeyRequest>;
 
 export type UpdateWorkspaceCollectionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceCollectionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceCollectionRequestTagsMap>;
+export const UpdateWorkspaceCollectionRequestTagsMap =
+  CreateWorkspaceCollectionRequestTagsMap as any as S.Schema<UpdateWorkspaceCollectionRequestTagsMap>;
 
 export interface UpdateWorkspaceCollectionRequest {
   /** Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */

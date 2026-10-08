@@ -1156,9 +1156,7 @@ export const ReserveIdsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response for Datastore.ReserveIds. */
 export interface ReserveIdsResponse {}
-export const ReserveIdsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReserveIdsResponse",
-}) as any as S.Schema<ReserveIdsResponse>;
+export const ReserveIdsResponse = Empty as any as S.Schema<ReserveIdsResponse>;
 
 /** The request for Datastore.Rollback. */
 export interface RollbackRequest {
@@ -1201,9 +1199,7 @@ export const RollbackProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response for Datastore.Rollback. (an empty message). */
 export interface RollbackResponse {}
-export const RollbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RollbackResponse",
-}) as any as S.Schema<RollbackResponse>;
+export const RollbackResponse = Empty as any as S.Schema<RollbackResponse>;
 
 /** A binding parameter for a GQL query. */
 export interface GqlQueryParameter {
@@ -1406,16 +1402,10 @@ export interface KindExpression {
   /** The name of the kind. */
   name?: string;
 }
-export const KindExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "KindExpression" }) as any as S.Schema<KindExpression>;
+export const KindExpression = PropertyReference as any as S.Schema<KindExpression>;
 
 export type KindExpressionList = Array<KindExpression>;
-export const KindExpressionList = /*@__PURE__*/ S.Array(
-  KindExpression,
-) as any as S.Schema<KindExpressionList>;
+export const KindExpressionList = PropertyReferenceList as any as S.Schema<KindExpressionList>;
 
 /** A query for entities. The query stages are executed in the following order: 1. kind 2. filter 3. projection 4. order + start_cursor + end_cursor 5. offset 6. limit 7. find_nearest */
 export interface Query {
@@ -1460,11 +1450,7 @@ export interface Avg {
   /** The property to aggregate on. */
   property?: PropertyReference;
 }
-export const Avg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(PropertyReference),
-  }),
-).annotate({ identifier: "Avg" }) as any as S.Schema<Avg>;
+export const Avg = Projection as any as S.Schema<Avg>;
 
 /** Count of entities that match the query. The `COUNT(*)` aggregation function operates on the entire entity so it does not require a field reference. */
 export interface Count {

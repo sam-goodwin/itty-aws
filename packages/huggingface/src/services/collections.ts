@@ -408,9 +408,8 @@ export type AddItemResponseItemsItemCase1Note = AddItemResponseItemsItemCase0Not
 export const AddItemResponseItemsItemCase1Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemResponseItemsItemCase1GalleryList = Array<string>;
-export const AddItemResponseItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase1GalleryList>;
+export const AddItemResponseItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase1GalleryList>;
 
 export type AddItemResponseItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -699,9 +698,8 @@ export const AddItemResponseItemsItemCase1AuthorData =
   S.Unknown as any as S.Schema<AddItemResponseItemsItemCase1AuthorData>;
 
 export type AddItemResponseItemsItemCase1WidgetOutputUrlsList = Array<string>;
-export const AddItemResponseItemsItemCase1WidgetOutputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase1WidgetOutputUrlsList>;
+export const AddItemResponseItemsItemCase1WidgetOutputUrlsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase1WidgetOutputUrlsList>;
 
 export interface AddItemResponseItemsItemCase1 {
   _id: string;
@@ -758,9 +756,8 @@ export type AddItemResponseItemsItemCase2Note = AddItemResponseItemsItemCase0Not
 export const AddItemResponseItemsItemCase2Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemResponseItemsItemCase2GalleryList = Array<string>;
-export const AddItemResponseItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase2GalleryList>;
+export const AddItemResponseItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase2GalleryList>;
 
 export type AddItemResponseItemsItemCase2Sdk = "gradio" | "docker" | "static" | "streamlit";
 export const AddItemResponseItemsItemCase2Sdk = S.String;
@@ -1101,9 +1098,8 @@ export type AddItemResponseItemsItemCase2ResourceGroup = AddItemResponseResource
 export const AddItemResponseItemsItemCase2ResourceGroup = AddItemResponseResourceGroup;
 
 export type AddItemResponseItemsItemCase2TagsList = Array<string>;
-export const AddItemResponseItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase2TagsList>;
+export const AddItemResponseItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase2TagsList>;
 
 export type AddItemResponseItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -1310,9 +1306,8 @@ export type AddItemResponseItemsItemCase3Note = AddItemResponseItemsItemCase0Not
 export const AddItemResponseItemsItemCase3Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemResponseItemsItemCase3GalleryList = Array<string>;
-export const AddItemResponseItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase3GalleryList>;
+export const AddItemResponseItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase3GalleryList>;
 
 export interface AddItemResponseItemsItemCase3 {
   _id: string;
@@ -1349,9 +1344,8 @@ export type AddItemResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Not
 export const AddItemResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemResponseItemsItemCase4GalleryList = Array<string>;
-export const AddItemResponseItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase4GalleryList>;
+export const AddItemResponseItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase4GalleryList>;
 
 export type AddItemResponseItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -1532,17 +1526,15 @@ export type AddItemResponseItemsItemCase5Note = AddItemResponseItemsItemCase0Not
 export const AddItemResponseItemsItemCase5Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemResponseItemsItemCase5GalleryList = Array<string>;
-export const AddItemResponseItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase5GalleryList>;
+export const AddItemResponseItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase5GalleryList>;
 
 export type AddItemResponseItemsItemCase5RepoType = "bucket" | "container";
 export const AddItemResponseItemsItemCase5RepoType = S.String;
 
 export type AddItemResponseItemsItemCase5AdminTagsList = Array<string>;
-export const AddItemResponseItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemResponseItemsItemCase5AdminTagsList>;
+export const AddItemResponseItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemResponseItemsItemCase5AdminTagsList>;
 
 export interface AddItemResponseItemsItemCase5Disabled {
   reason: string;
@@ -1891,9 +1883,8 @@ export type AddItemBySlugResponseItemsItemCase0Note = AddItemResponseItemsItemCa
 export const AddItemBySlugResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemBySlugResponseItemsItemCase0GalleryList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase0GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase0GalleryList>;
+export const AddItemBySlugResponseItemsItemCase0GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase0GalleryList>;
 
 export type AddItemBySlugResponseItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
@@ -2048,9 +2039,8 @@ export type AddItemBySlugResponseItemsItemCase1Note = AddItemResponseItemsItemCa
 export const AddItemBySlugResponseItemsItemCase1Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemBySlugResponseItemsItemCase1GalleryList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase1GalleryList>;
+export const AddItemBySlugResponseItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase1GalleryList>;
 
 export type AddItemBySlugResponseItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -2339,9 +2329,8 @@ export const AddItemBySlugResponseItemsItemCase1AuthorData =
   S.Unknown as any as S.Schema<AddItemBySlugResponseItemsItemCase1AuthorData>;
 
 export type AddItemBySlugResponseItemsItemCase1WidgetOutputUrlsList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase1WidgetOutputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase1WidgetOutputUrlsList>;
+export const AddItemBySlugResponseItemsItemCase1WidgetOutputUrlsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase1WidgetOutputUrlsList>;
 
 export interface AddItemBySlugResponseItemsItemCase1 {
   _id: string;
@@ -2398,9 +2387,8 @@ export type AddItemBySlugResponseItemsItemCase2Note = AddItemResponseItemsItemCa
 export const AddItemBySlugResponseItemsItemCase2Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemBySlugResponseItemsItemCase2GalleryList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase2GalleryList>;
+export const AddItemBySlugResponseItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase2GalleryList>;
 
 export type AddItemBySlugResponseItemsItemCase2Sdk = "gradio" | "docker" | "static" | "streamlit";
 export const AddItemBySlugResponseItemsItemCase2Sdk = S.String;
@@ -2547,29 +2535,19 @@ export const AddItemBySlugResponseItemsItemCase2RuntimeDomainsList = /*@__PURE__
 export type AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
   Array<unknown>;
 export const AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList as any as S.Schema<AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 
 export type AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
   Array<AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 export const AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
-  /*@__PURE__*/ S.Array(
-    AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList,
-  ) as any as S.Schema<AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList as any as S.Schema<AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
 
 export interface AddItemBySlugResponseItemsItemCase2RuntimeHotReloading {
   status: string;
   replicaStatuses: AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList;
 }
-export const AddItemBySlugResponseItemsItemCase2RuntimeHotReloading = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    replicaStatuses: AddItemBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList,
-  }),
-).annotate({
-  identifier: "AddItemBySlugResponseItemsItemCase2RuntimeHotReloading",
-}) as any as S.Schema<AddItemBySlugResponseItemsItemCase2RuntimeHotReloading>;
+export const AddItemBySlugResponseItemsItemCase2RuntimeHotReloading =
+  AddItemResponseItemsItemCase2RuntimeHotReloading as any as S.Schema<AddItemBySlugResponseItemsItemCase2RuntimeHotReloading>;
 
 export interface AddItemBySlugResponseItemsItemCase2Runtime {
   stage: AddItemBySlugResponseItemsItemCase2RuntimeStage;
@@ -2745,9 +2723,8 @@ export type AddItemBySlugResponseItemsItemCase2ResourceGroup = AddItemResponseRe
 export const AddItemBySlugResponseItemsItemCase2ResourceGroup = AddItemResponseResourceGroup;
 
 export type AddItemBySlugResponseItemsItemCase2TagsList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase2TagsList>;
+export const AddItemBySlugResponseItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase2TagsList>;
 
 export type AddItemBySlugResponseItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -2955,9 +2932,8 @@ export type AddItemBySlugResponseItemsItemCase3Note = AddItemResponseItemsItemCa
 export const AddItemBySlugResponseItemsItemCase3Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemBySlugResponseItemsItemCase3GalleryList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase3GalleryList>;
+export const AddItemBySlugResponseItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase3GalleryList>;
 
 export interface AddItemBySlugResponseItemsItemCase3 {
   _id: string;
@@ -2972,31 +2948,15 @@ export interface AddItemBySlugResponseItemsItemCase3 {
   isUpvotedByUser?: boolean;
   type: string;
 }
-export const AddItemBySlugResponseItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    note: S.optional(AddItemResponseItemsItemCase0Note),
-    gallery: S.optional(AddItemBySlugResponseItemsItemCase3GalleryList),
-    position: S.Number,
-    id: S.String,
-    title: S.String,
-    upvotes: S.Number,
-    publishedAt: S.String,
-    thumbnailUrl: S.optional(S.String),
-    isUpvotedByUser: S.optional(S.Boolean),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "AddItemBySlugResponseItemsItemCase3",
-}) as any as S.Schema<AddItemBySlugResponseItemsItemCase3>;
+export const AddItemBySlugResponseItemsItemCase3 =
+  AddItemResponseItemsItemCase3 as any as S.Schema<AddItemBySlugResponseItemsItemCase3>;
 
 export type AddItemBySlugResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 export const AddItemBySlugResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemBySlugResponseItemsItemCase4GalleryList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase4GalleryList>;
+export const AddItemBySlugResponseItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase4GalleryList>;
 
 export type AddItemBySlugResponseItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -3177,17 +3137,15 @@ export type AddItemBySlugResponseItemsItemCase5Note = AddItemResponseItemsItemCa
 export const AddItemBySlugResponseItemsItemCase5Note = AddItemResponseItemsItemCase0Note;
 
 export type AddItemBySlugResponseItemsItemCase5GalleryList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase5GalleryList>;
+export const AddItemBySlugResponseItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase5GalleryList>;
 
 export type AddItemBySlugResponseItemsItemCase5RepoType = "bucket" | "container";
 export const AddItemBySlugResponseItemsItemCase5RepoType = S.String;
 
 export type AddItemBySlugResponseItemsItemCase5AdminTagsList = Array<string>;
-export const AddItemBySlugResponseItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddItemBySlugResponseItemsItemCase5AdminTagsList>;
+export const AddItemBySlugResponseItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<AddItemBySlugResponseItemsItemCase5AdminTagsList>;
 
 export type AddItemBySlugResponseItemsItemCase5Disabled = AddItemResponseItemsItemCase5Disabled;
 export const AddItemBySlugResponseItemsItemCase5Disabled = AddItemResponseItemsItemCase5Disabled;
@@ -3323,9 +3281,8 @@ export type BatchUpdateItemsRequestBodyItemAction = "update";
 export const BatchUpdateItemsRequestBodyItemAction = S.String;
 
 export type BatchUpdateItemsRequestBodyItemDataGalleryList = Array<string>;
-export const BatchUpdateItemsRequestBodyItemDataGalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BatchUpdateItemsRequestBodyItemDataGalleryList>;
+export const BatchUpdateItemsRequestBodyItemDataGalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<BatchUpdateItemsRequestBodyItemDataGalleryList>;
 
 export interface BatchUpdateItemsRequestBodyItemData {
   gallery?: BatchUpdateItemsRequestBodyItemDataGalleryList;
@@ -3392,24 +3349,16 @@ export type BatchUpdateItemsBySlugRequestBodyItemAction = "update";
 export const BatchUpdateItemsBySlugRequestBodyItemAction = S.String;
 
 export type BatchUpdateItemsBySlugRequestBodyItemDataGalleryList = Array<string>;
-export const BatchUpdateItemsBySlugRequestBodyItemDataGalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BatchUpdateItemsBySlugRequestBodyItemDataGalleryList>;
+export const BatchUpdateItemsBySlugRequestBodyItemDataGalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<BatchUpdateItemsBySlugRequestBodyItemDataGalleryList>;
 
 export interface BatchUpdateItemsBySlugRequestBodyItemData {
   gallery?: BatchUpdateItemsBySlugRequestBodyItemDataGalleryList;
   note?: string;
   position?: number;
 }
-export const BatchUpdateItemsBySlugRequestBodyItemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gallery: S.optional(BatchUpdateItemsBySlugRequestBodyItemDataGalleryList),
-    note: S.optional(S.String),
-    position: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchUpdateItemsBySlugRequestBodyItemData",
-}) as any as S.Schema<BatchUpdateItemsBySlugRequestBodyItemData>;
+export const BatchUpdateItemsBySlugRequestBodyItemData =
+  BatchUpdateItemsRequestBodyItemData as any as S.Schema<BatchUpdateItemsBySlugRequestBodyItemData>;
 
 export interface BatchUpdateItemsBySlugRequestBodyItem {
   action: BatchUpdateItemsBySlugRequestBodyItemAction | (string & {});
@@ -3449,9 +3398,8 @@ export const BatchUpdateItemsBySlugRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateItemsBySlugRequest>;
 
 export interface BatchUpdateItemsBySlugResponse {}
-export const BatchUpdateItemsBySlugResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchUpdateItemsBySlugResponse",
-}) as any as S.Schema<BatchUpdateItemsBySlugResponse>;
+export const BatchUpdateItemsBySlugResponse =
+  BatchUpdateItemsResponse as any as S.Schema<BatchUpdateItemsBySlugResponse>;
 
 export type CreateCollectionRequestItemType =
   | "paper"
@@ -3676,9 +3624,8 @@ export type CreateCollectionResponseItemsItemCase0Note = AddItemResponseItemsIte
 export const CreateCollectionResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 
 export type CreateCollectionResponseItemsItemCase0GalleryList = Array<string>;
-export const CreateCollectionResponseItemsItemCase0GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase0GalleryList>;
+export const CreateCollectionResponseItemsItemCase0GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase0GalleryList>;
 
 export type CreateCollectionResponseItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
@@ -3834,9 +3781,8 @@ export type CreateCollectionResponseItemsItemCase1Note = AddItemResponseItemsIte
 export const CreateCollectionResponseItemsItemCase1Note = AddItemResponseItemsItemCase0Note;
 
 export type CreateCollectionResponseItemsItemCase1GalleryList = Array<string>;
-export const CreateCollectionResponseItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase1GalleryList>;
+export const CreateCollectionResponseItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase1GalleryList>;
 
 export type CreateCollectionResponseItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -4126,9 +4072,8 @@ export const CreateCollectionResponseItemsItemCase1AuthorData =
   S.Unknown as any as S.Schema<CreateCollectionResponseItemsItemCase1AuthorData>;
 
 export type CreateCollectionResponseItemsItemCase1WidgetOutputUrlsList = Array<string>;
-export const CreateCollectionResponseItemsItemCase1WidgetOutputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase1WidgetOutputUrlsList>;
+export const CreateCollectionResponseItemsItemCase1WidgetOutputUrlsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase1WidgetOutputUrlsList>;
 
 export interface CreateCollectionResponseItemsItemCase1 {
   _id: string;
@@ -4186,9 +4131,8 @@ export type CreateCollectionResponseItemsItemCase2Note = AddItemResponseItemsIte
 export const CreateCollectionResponseItemsItemCase2Note = AddItemResponseItemsItemCase0Note;
 
 export type CreateCollectionResponseItemsItemCase2GalleryList = Array<string>;
-export const CreateCollectionResponseItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase2GalleryList>;
+export const CreateCollectionResponseItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase2GalleryList>;
 
 export type CreateCollectionResponseItemsItemCase2Sdk =
   | "gradio"
@@ -4340,16 +4284,12 @@ export const CreateCollectionResponseItemsItemCase2RuntimeDomainsList = /*@__PUR
 export type CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
   Array<unknown>;
 export const CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList as any as S.Schema<CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 
 export type CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
   Array<CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 export const CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
-  /*@__PURE__*/ S.Array(
-    CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList,
-  ) as any as S.Schema<CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList as any as S.Schema<CreateCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
 
 export interface CreateCollectionResponseItemsItemCase2RuntimeHotReloading {
   status: string;
@@ -4540,9 +4480,8 @@ export type CreateCollectionResponseItemsItemCase2ResourceGroup = AddItemRespons
 export const CreateCollectionResponseItemsItemCase2ResourceGroup = AddItemResponseResourceGroup;
 
 export type CreateCollectionResponseItemsItemCase2TagsList = Array<string>;
-export const CreateCollectionResponseItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase2TagsList>;
+export const CreateCollectionResponseItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase2TagsList>;
 
 export type CreateCollectionResponseItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -4750,9 +4689,8 @@ export type CreateCollectionResponseItemsItemCase3Note = AddItemResponseItemsIte
 export const CreateCollectionResponseItemsItemCase3Note = AddItemResponseItemsItemCase0Note;
 
 export type CreateCollectionResponseItemsItemCase3GalleryList = Array<string>;
-export const CreateCollectionResponseItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase3GalleryList>;
+export const CreateCollectionResponseItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase3GalleryList>;
 
 export interface CreateCollectionResponseItemsItemCase3 {
   _id: string;
@@ -4767,31 +4705,15 @@ export interface CreateCollectionResponseItemsItemCase3 {
   isUpvotedByUser?: boolean;
   type: string;
 }
-export const CreateCollectionResponseItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    note: S.optional(AddItemResponseItemsItemCase0Note),
-    gallery: S.optional(CreateCollectionResponseItemsItemCase3GalleryList),
-    position: S.Number,
-    id: S.String,
-    title: S.String,
-    upvotes: S.Number,
-    publishedAt: S.String,
-    thumbnailUrl: S.optional(S.String),
-    isUpvotedByUser: S.optional(S.Boolean),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "CreateCollectionResponseItemsItemCase3",
-}) as any as S.Schema<CreateCollectionResponseItemsItemCase3>;
+export const CreateCollectionResponseItemsItemCase3 =
+  AddItemResponseItemsItemCase3 as any as S.Schema<CreateCollectionResponseItemsItemCase3>;
 
 export type CreateCollectionResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 export const CreateCollectionResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 
 export type CreateCollectionResponseItemsItemCase4GalleryList = Array<string>;
-export const CreateCollectionResponseItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase4GalleryList>;
+export const CreateCollectionResponseItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase4GalleryList>;
 
 export type CreateCollectionResponseItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -4973,17 +4895,15 @@ export type CreateCollectionResponseItemsItemCase5Note = AddItemResponseItemsIte
 export const CreateCollectionResponseItemsItemCase5Note = AddItemResponseItemsItemCase0Note;
 
 export type CreateCollectionResponseItemsItemCase5GalleryList = Array<string>;
-export const CreateCollectionResponseItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase5GalleryList>;
+export const CreateCollectionResponseItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase5GalleryList>;
 
 export type CreateCollectionResponseItemsItemCase5RepoType = "bucket" | "container";
 export const CreateCollectionResponseItemsItemCase5RepoType = S.String;
 
 export type CreateCollectionResponseItemsItemCase5AdminTagsList = Array<string>;
-export const CreateCollectionResponseItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseItemsItemCase5AdminTagsList>;
+export const CreateCollectionResponseItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<CreateCollectionResponseItemsItemCase5AdminTagsList>;
 
 export type CreateCollectionResponseItemsItemCase5Disabled = AddItemResponseItemsItemCase5Disabled;
 export const CreateCollectionResponseItemsItemCase5Disabled = AddItemResponseItemsItemCase5Disabled;
@@ -5129,9 +5049,8 @@ export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCollectionRequest" }) as any as S.Schema<DeleteCollectionRequest>;
 
 export interface DeleteCollectionResponse {}
-export const DeleteCollectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCollectionResponse",
-}) as any as S.Schema<DeleteCollectionResponse>;
+export const DeleteCollectionResponse =
+  BatchUpdateItemsResponse as any as S.Schema<DeleteCollectionResponse>;
 
 export interface DeleteCollectionBySlugRequest {
   namespace: string;
@@ -5147,9 +5066,8 @@ export const DeleteCollectionBySlugRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCollectionBySlugRequest>;
 
 export interface DeleteCollectionBySlugResponse {}
-export const DeleteCollectionBySlugResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCollectionBySlugResponse",
-}) as any as S.Schema<DeleteCollectionBySlugResponse>;
+export const DeleteCollectionBySlugResponse =
+  BatchUpdateItemsResponse as any as S.Schema<DeleteCollectionBySlugResponse>;
 
 export interface DeleteItemRequest {
   namespace: string;
@@ -5173,9 +5091,7 @@ export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteItemRequest" }) as any as S.Schema<DeleteItemRequest>;
 
 export interface DeleteItemResponse {}
-export const DeleteItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteItemResponse",
-}) as any as S.Schema<DeleteItemResponse>;
+export const DeleteItemResponse = BatchUpdateItemsResponse as any as S.Schema<DeleteItemResponse>;
 
 export interface DeleteItemBySlugRequest {
   namespace: string;
@@ -5195,9 +5111,8 @@ export const DeleteItemBySlugRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteItemBySlugRequest" }) as any as S.Schema<DeleteItemBySlugRequest>;
 
 export interface DeleteItemBySlugResponse {}
-export const DeleteItemBySlugResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteItemBySlugResponse",
-}) as any as S.Schema<DeleteItemBySlugResponse>;
+export const DeleteItemBySlugResponse =
+  BatchUpdateItemsResponse as any as S.Schema<DeleteItemBySlugResponse>;
 
 export interface GetCollectionRequest {
   namespace: string;
@@ -5385,9 +5300,8 @@ export type GetCollectionResponseItemsItemCase0Note = AddItemResponseItemsItemCa
 export const GetCollectionResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionResponseItemsItemCase0GalleryList = Array<string>;
-export const GetCollectionResponseItemsItemCase0GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase0GalleryList>;
+export const GetCollectionResponseItemsItemCase0GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase0GalleryList>;
 
 export type GetCollectionResponseItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
@@ -5542,9 +5456,8 @@ export type GetCollectionResponseItemsItemCase1Note = AddItemResponseItemsItemCa
 export const GetCollectionResponseItemsItemCase1Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionResponseItemsItemCase1GalleryList = Array<string>;
-export const GetCollectionResponseItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase1GalleryList>;
+export const GetCollectionResponseItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase1GalleryList>;
 
 export type GetCollectionResponseItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -5833,9 +5746,8 @@ export const GetCollectionResponseItemsItemCase1AuthorData =
   S.Unknown as any as S.Schema<GetCollectionResponseItemsItemCase1AuthorData>;
 
 export type GetCollectionResponseItemsItemCase1WidgetOutputUrlsList = Array<string>;
-export const GetCollectionResponseItemsItemCase1WidgetOutputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase1WidgetOutputUrlsList>;
+export const GetCollectionResponseItemsItemCase1WidgetOutputUrlsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase1WidgetOutputUrlsList>;
 
 export interface GetCollectionResponseItemsItemCase1 {
   _id: string;
@@ -5892,9 +5804,8 @@ export type GetCollectionResponseItemsItemCase2Note = AddItemResponseItemsItemCa
 export const GetCollectionResponseItemsItemCase2Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionResponseItemsItemCase2GalleryList = Array<string>;
-export const GetCollectionResponseItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase2GalleryList>;
+export const GetCollectionResponseItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase2GalleryList>;
 
 export type GetCollectionResponseItemsItemCase2Sdk = "gradio" | "docker" | "static" | "streamlit";
 export const GetCollectionResponseItemsItemCase2Sdk = S.String;
@@ -6041,29 +5952,19 @@ export const GetCollectionResponseItemsItemCase2RuntimeDomainsList = /*@__PURE__
 export type GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
   Array<unknown>;
 export const GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList as any as S.Schema<GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 
 export type GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
   Array<GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 export const GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
-  /*@__PURE__*/ S.Array(
-    GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList,
-  ) as any as S.Schema<GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList as any as S.Schema<GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
 
 export interface GetCollectionResponseItemsItemCase2RuntimeHotReloading {
   status: string;
   replicaStatuses: GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList;
 }
-export const GetCollectionResponseItemsItemCase2RuntimeHotReloading = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    replicaStatuses: GetCollectionResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList,
-  }),
-).annotate({
-  identifier: "GetCollectionResponseItemsItemCase2RuntimeHotReloading",
-}) as any as S.Schema<GetCollectionResponseItemsItemCase2RuntimeHotReloading>;
+export const GetCollectionResponseItemsItemCase2RuntimeHotReloading =
+  AddItemResponseItemsItemCase2RuntimeHotReloading as any as S.Schema<GetCollectionResponseItemsItemCase2RuntimeHotReloading>;
 
 export interface GetCollectionResponseItemsItemCase2Runtime {
   stage: GetCollectionResponseItemsItemCase2RuntimeStage;
@@ -6239,9 +6140,8 @@ export type GetCollectionResponseItemsItemCase2ResourceGroup = AddItemResponseRe
 export const GetCollectionResponseItemsItemCase2ResourceGroup = AddItemResponseResourceGroup;
 
 export type GetCollectionResponseItemsItemCase2TagsList = Array<string>;
-export const GetCollectionResponseItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase2TagsList>;
+export const GetCollectionResponseItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase2TagsList>;
 
 export type GetCollectionResponseItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -6449,9 +6349,8 @@ export type GetCollectionResponseItemsItemCase3Note = AddItemResponseItemsItemCa
 export const GetCollectionResponseItemsItemCase3Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionResponseItemsItemCase3GalleryList = Array<string>;
-export const GetCollectionResponseItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase3GalleryList>;
+export const GetCollectionResponseItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase3GalleryList>;
 
 export interface GetCollectionResponseItemsItemCase3 {
   _id: string;
@@ -6466,31 +6365,15 @@ export interface GetCollectionResponseItemsItemCase3 {
   isUpvotedByUser?: boolean;
   type: string;
 }
-export const GetCollectionResponseItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    note: S.optional(AddItemResponseItemsItemCase0Note),
-    gallery: S.optional(GetCollectionResponseItemsItemCase3GalleryList),
-    position: S.Number,
-    id: S.String,
-    title: S.String,
-    upvotes: S.Number,
-    publishedAt: S.String,
-    thumbnailUrl: S.optional(S.String),
-    isUpvotedByUser: S.optional(S.Boolean),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "GetCollectionResponseItemsItemCase3",
-}) as any as S.Schema<GetCollectionResponseItemsItemCase3>;
+export const GetCollectionResponseItemsItemCase3 =
+  AddItemResponseItemsItemCase3 as any as S.Schema<GetCollectionResponseItemsItemCase3>;
 
 export type GetCollectionResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 export const GetCollectionResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionResponseItemsItemCase4GalleryList = Array<string>;
-export const GetCollectionResponseItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase4GalleryList>;
+export const GetCollectionResponseItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase4GalleryList>;
 
 export type GetCollectionResponseItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -6671,17 +6554,15 @@ export type GetCollectionResponseItemsItemCase5Note = AddItemResponseItemsItemCa
 export const GetCollectionResponseItemsItemCase5Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionResponseItemsItemCase5GalleryList = Array<string>;
-export const GetCollectionResponseItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase5GalleryList>;
+export const GetCollectionResponseItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase5GalleryList>;
 
 export type GetCollectionResponseItemsItemCase5RepoType = "bucket" | "container";
 export const GetCollectionResponseItemsItemCase5RepoType = S.String;
 
 export type GetCollectionResponseItemsItemCase5AdminTagsList = Array<string>;
-export const GetCollectionResponseItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseItemsItemCase5AdminTagsList>;
+export const GetCollectionResponseItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionResponseItemsItemCase5AdminTagsList>;
 
 export type GetCollectionResponseItemsItemCase5Disabled = AddItemResponseItemsItemCase5Disabled;
 export const GetCollectionResponseItemsItemCase5Disabled = AddItemResponseItemsItemCase5Disabled;
@@ -7007,9 +6888,8 @@ export type GetCollectionBySlugResponseItemsItemCase0Note = AddItemResponseItems
 export const GetCollectionBySlugResponseItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionBySlugResponseItemsItemCase0GalleryList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase0GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase0GalleryList>;
+export const GetCollectionBySlugResponseItemsItemCase0GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase0GalleryList>;
 
 export type GetCollectionBySlugResponseItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
@@ -7165,9 +7045,8 @@ export type GetCollectionBySlugResponseItemsItemCase1Note = AddItemResponseItems
 export const GetCollectionBySlugResponseItemsItemCase1Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionBySlugResponseItemsItemCase1GalleryList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase1GalleryList>;
+export const GetCollectionBySlugResponseItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase1GalleryList>;
 
 export type GetCollectionBySlugResponseItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -7463,9 +7342,8 @@ export const GetCollectionBySlugResponseItemsItemCase1AuthorData =
   S.Unknown as any as S.Schema<GetCollectionBySlugResponseItemsItemCase1AuthorData>;
 
 export type GetCollectionBySlugResponseItemsItemCase1WidgetOutputUrlsList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase1WidgetOutputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase1WidgetOutputUrlsList>;
+export const GetCollectionBySlugResponseItemsItemCase1WidgetOutputUrlsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase1WidgetOutputUrlsList>;
 
 export interface GetCollectionBySlugResponseItemsItemCase1 {
   _id: string;
@@ -7523,9 +7401,8 @@ export type GetCollectionBySlugResponseItemsItemCase2Note = AddItemResponseItems
 export const GetCollectionBySlugResponseItemsItemCase2Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionBySlugResponseItemsItemCase2GalleryList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2GalleryList>;
+export const GetCollectionBySlugResponseItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2GalleryList>;
 
 export type GetCollectionBySlugResponseItemsItemCase2Sdk =
   | "gradio"
@@ -7679,16 +7556,12 @@ export const GetCollectionBySlugResponseItemsItemCase2RuntimeDomainsList = /*@__
 export type GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
   Array<unknown>;
 export const GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 
 export type GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
   Array<GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 export const GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
-  /*@__PURE__*/ S.Array(
-    GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList,
-  ) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
 
 export interface GetCollectionBySlugResponseItemsItemCase2RuntimeHotReloading {
   status: string;
@@ -7885,9 +7758,8 @@ export type GetCollectionBySlugResponseItemsItemCase2ResourceGroup = AddItemResp
 export const GetCollectionBySlugResponseItemsItemCase2ResourceGroup = AddItemResponseResourceGroup;
 
 export type GetCollectionBySlugResponseItemsItemCase2TagsList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2TagsList>;
+export const GetCollectionBySlugResponseItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase2TagsList>;
 
 export type GetCollectionBySlugResponseItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -8102,9 +7974,8 @@ export type GetCollectionBySlugResponseItemsItemCase3Note = AddItemResponseItems
 export const GetCollectionBySlugResponseItemsItemCase3Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionBySlugResponseItemsItemCase3GalleryList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase3GalleryList>;
+export const GetCollectionBySlugResponseItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase3GalleryList>;
 
 export interface GetCollectionBySlugResponseItemsItemCase3 {
   _id: string;
@@ -8119,31 +7990,15 @@ export interface GetCollectionBySlugResponseItemsItemCase3 {
   isUpvotedByUser?: boolean;
   type: string;
 }
-export const GetCollectionBySlugResponseItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    note: S.optional(AddItemResponseItemsItemCase0Note),
-    gallery: S.optional(GetCollectionBySlugResponseItemsItemCase3GalleryList),
-    position: S.Number,
-    id: S.String,
-    title: S.String,
-    upvotes: S.Number,
-    publishedAt: S.String,
-    thumbnailUrl: S.optional(S.String),
-    isUpvotedByUser: S.optional(S.Boolean),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "GetCollectionBySlugResponseItemsItemCase3",
-}) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase3>;
+export const GetCollectionBySlugResponseItemsItemCase3 =
+  AddItemResponseItemsItemCase3 as any as S.Schema<GetCollectionBySlugResponseItemsItemCase3>;
 
 export type GetCollectionBySlugResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 export const GetCollectionBySlugResponseItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionBySlugResponseItemsItemCase4GalleryList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase4GalleryList>;
+export const GetCollectionBySlugResponseItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase4GalleryList>;
 
 export type GetCollectionBySlugResponseItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -8325,17 +8180,15 @@ export type GetCollectionBySlugResponseItemsItemCase5Note = AddItemResponseItems
 export const GetCollectionBySlugResponseItemsItemCase5Note = AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionBySlugResponseItemsItemCase5GalleryList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase5GalleryList>;
+export const GetCollectionBySlugResponseItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase5GalleryList>;
 
 export type GetCollectionBySlugResponseItemsItemCase5RepoType = "bucket" | "container";
 export const GetCollectionBySlugResponseItemsItemCase5RepoType = S.String;
 
 export type GetCollectionBySlugResponseItemsItemCase5AdminTagsList = Array<string>;
-export const GetCollectionBySlugResponseItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionBySlugResponseItemsItemCase5AdminTagsList>;
+export const GetCollectionBySlugResponseItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionBySlugResponseItemsItemCase5AdminTagsList>;
 
 export type GetCollectionBySlugResponseItemsItemCase5Disabled =
   AddItemResponseItemsItemCase5Disabled;
@@ -8498,15 +8351,8 @@ export interface GetCollectionResourceGroupResponse {
   name: string;
   numUsers?: number;
 }
-export const GetCollectionResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    numUsers: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCollectionResourceGroupResponse",
-}) as any as S.Schema<GetCollectionResourceGroupResponse>;
+export const GetCollectionResourceGroupResponse =
+  AddItemResponseResourceGroup as any as S.Schema<GetCollectionResourceGroupResponse>;
 
 export interface GetCollectionResourceGroupBySlugRequest {
   namespace: string;
@@ -8529,28 +8375,19 @@ export interface GetCollectionResourceGroupBySlugResponse {
   name: string;
   numUsers?: number;
 }
-export const GetCollectionResourceGroupBySlugResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    numUsers: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetCollectionResourceGroupBySlugResponse",
-}) as any as S.Schema<GetCollectionResourceGroupBySlugResponse>;
+export const GetCollectionResourceGroupBySlugResponse =
+  AddItemResponseResourceGroup as any as S.Schema<GetCollectionResourceGroupBySlugResponse>;
 
 export type GetCollectionsRequestItemCase0List = Array<string>;
-export const GetCollectionsRequestItemCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsRequestItemCase0List>;
+export const GetCollectionsRequestItemCase0List =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsRequestItemCase0List>;
 
 export type GetCollectionsRequestItem = GetCollectionsRequestItemCase0List | string;
 export const GetCollectionsRequestItem = S.Unknown as any as S.Schema<GetCollectionsRequestItem>;
 
 export type GetCollectionsRequestOwnerCase0List = Array<string>;
-export const GetCollectionsRequestOwnerCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsRequestOwnerCase0List>;
+export const GetCollectionsRequestOwnerCase0List =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsRequestOwnerCase0List>;
 
 export type GetCollectionsRequestOwnerCase2Map = { [key: string]: string | undefined };
 export const GetCollectionsRequestOwnerCase2Map = /*@__PURE__*/ S.Record(
@@ -8779,9 +8616,8 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase0Note =
   AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase0GalleryList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase0GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase0GalleryList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase0GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase0GalleryList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
@@ -8946,9 +8782,8 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase1Note =
   AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase1GalleryList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase1GalleryList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase1GalleryList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -9318,9 +9153,8 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase2Note =
   AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase2GalleryList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2GalleryList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2GalleryList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase2Sdk =
   | "gradio"
@@ -9479,16 +9313,12 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeDomainsList
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
   Array<unknown>;
 export const GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
   Array<GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 export const GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
-  /*@__PURE__*/ S.Array(
-    GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList,
-  ) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
 
 export interface GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloading {
   status: string;
@@ -9691,9 +9521,8 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase2ResourceGroup =
   AddItemResponseResourceGroup;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase2TagsList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2TagsList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase2TagsList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -9916,9 +9745,8 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase3Note =
   AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase3GalleryList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase3GalleryList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase3GalleryList>;
 
 export interface GetCollectionsResponseBodyCase0ItemItemsItemCase3 {
   _id: string;
@@ -9933,23 +9761,8 @@ export interface GetCollectionsResponseBodyCase0ItemItemsItemCase3 {
   isUpvotedByUser?: boolean;
   type: string;
 }
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    note: S.optional(AddItemResponseItemsItemCase0Note),
-    gallery: S.optional(GetCollectionsResponseBodyCase0ItemItemsItemCase3GalleryList),
-    position: S.Number,
-    id: S.String,
-    title: S.String,
-    upvotes: S.Number,
-    publishedAt: S.String,
-    thumbnailUrl: S.optional(S.String),
-    isUpvotedByUser: S.optional(S.Boolean),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "GetCollectionsResponseBodyCase0ItemItemsItemCase3",
-}) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase3>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase3 =
+  AddItemResponseItemsItemCase3 as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase3>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase4Note =
   AddItemResponseItemsItemCase0Note;
@@ -9957,9 +9770,8 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase4Note =
   AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase4GalleryList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase4GalleryList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase4GalleryList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -10148,17 +9960,15 @@ export const GetCollectionsResponseBodyCase0ItemItemsItemCase5Note =
   AddItemResponseItemsItemCase0Note;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase5GalleryList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase5GalleryList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase5GalleryList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase5RepoType = "bucket" | "container";
 export const GetCollectionsResponseBodyCase0ItemItemsItemCase5RepoType = S.String;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase5AdminTagsList = Array<string>;
-export const GetCollectionsResponseBodyCase0ItemItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase5AdminTagsList>;
+export const GetCollectionsResponseBodyCase0ItemItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<GetCollectionsResponseBodyCase0ItemItemsItemCase5AdminTagsList>;
 
 export type GetCollectionsResponseBodyCase0ItemItemsItemCase5Disabled =
   AddItemResponseItemsItemCase5Disabled;
@@ -10409,17 +10219,8 @@ export interface SetCollectionResourceGroupBySlugResponse {
   private: boolean;
   addedBy: string;
 }
-export const SetCollectionResourceGroupBySlugResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    title: S.String,
-    private: S.Boolean,
-    addedBy: S.String,
-  }),
-).annotate({
-  identifier: "SetCollectionResourceGroupBySlugResponse",
-}) as any as S.Schema<SetCollectionResourceGroupBySlugResponse>;
+export const SetCollectionResourceGroupBySlugResponse =
+  SetCollectionResourceGroupResponse as any as S.Schema<SetCollectionResourceGroupBySlugResponse>;
 
 export type UpdateCollectionRequestTheme =
   | "orange"
@@ -10679,9 +10480,8 @@ export type UpdateCollectionResponseDataItemsItemCase0Note = AddItemResponseItem
 export const UpdateCollectionResponseDataItemsItemCase0Note = AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionResponseDataItemsItemCase0GalleryList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase0GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase0GalleryList>;
+export const UpdateCollectionResponseDataItemsItemCase0GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase0GalleryList>;
 
 export type UpdateCollectionResponseDataItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
@@ -10837,9 +10637,8 @@ export type UpdateCollectionResponseDataItemsItemCase1Note = AddItemResponseItem
 export const UpdateCollectionResponseDataItemsItemCase1Note = AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionResponseDataItemsItemCase1GalleryList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase1GalleryList>;
+export const UpdateCollectionResponseDataItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase1GalleryList>;
 
 export type UpdateCollectionResponseDataItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -11135,9 +10934,8 @@ export const UpdateCollectionResponseDataItemsItemCase1AuthorData =
   S.Unknown as any as S.Schema<UpdateCollectionResponseDataItemsItemCase1AuthorData>;
 
 export type UpdateCollectionResponseDataItemsItemCase1WidgetOutputUrlsList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase1WidgetOutputUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase1WidgetOutputUrlsList>;
+export const UpdateCollectionResponseDataItemsItemCase1WidgetOutputUrlsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase1WidgetOutputUrlsList>;
 
 export interface UpdateCollectionResponseDataItemsItemCase1 {
   _id: string;
@@ -11195,9 +10993,8 @@ export type UpdateCollectionResponseDataItemsItemCase2Note = AddItemResponseItem
 export const UpdateCollectionResponseDataItemsItemCase2Note = AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionResponseDataItemsItemCase2GalleryList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2GalleryList>;
+export const UpdateCollectionResponseDataItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2GalleryList>;
 
 export type UpdateCollectionResponseDataItemsItemCase2Sdk =
   | "gradio"
@@ -11351,31 +11148,19 @@ export const UpdateCollectionResponseDataItemsItemCase2RuntimeDomainsList = /*@_
 export type UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
   Array<unknown>;
 export const UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 
 export type UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
   Array<UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 export const UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
-  /*@__PURE__*/ S.Array(
-    UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList,
-  ) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
 
 export interface UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloading {
   status: string;
   replicaStatuses: UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList;
 }
 export const UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloading =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.String,
-      replicaStatuses:
-        UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList,
-    }),
-  ).annotate({
-    identifier: "UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloading",
-  }) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloading>;
+  GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloading as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2RuntimeHotReloading>;
 
 export interface UpdateCollectionResponseDataItemsItemCase2Runtime {
   stage: UpdateCollectionResponseDataItemsItemCase2RuntimeStage;
@@ -11557,9 +11342,8 @@ export type UpdateCollectionResponseDataItemsItemCase2ResourceGroup = AddItemRes
 export const UpdateCollectionResponseDataItemsItemCase2ResourceGroup = AddItemResponseResourceGroup;
 
 export type UpdateCollectionResponseDataItemsItemCase2TagsList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2TagsList>;
+export const UpdateCollectionResponseDataItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase2TagsList>;
 
 export type UpdateCollectionResponseDataItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -11774,9 +11558,8 @@ export type UpdateCollectionResponseDataItemsItemCase3Note = AddItemResponseItem
 export const UpdateCollectionResponseDataItemsItemCase3Note = AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionResponseDataItemsItemCase3GalleryList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase3GalleryList>;
+export const UpdateCollectionResponseDataItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase3GalleryList>;
 
 export interface UpdateCollectionResponseDataItemsItemCase3 {
   _id: string;
@@ -11791,31 +11574,15 @@ export interface UpdateCollectionResponseDataItemsItemCase3 {
   isUpvotedByUser?: boolean;
   type: string;
 }
-export const UpdateCollectionResponseDataItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    note: S.optional(AddItemResponseItemsItemCase0Note),
-    gallery: S.optional(UpdateCollectionResponseDataItemsItemCase3GalleryList),
-    position: S.Number,
-    id: S.String,
-    title: S.String,
-    upvotes: S.Number,
-    publishedAt: S.String,
-    thumbnailUrl: S.optional(S.String),
-    isUpvotedByUser: S.optional(S.Boolean),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "UpdateCollectionResponseDataItemsItemCase3",
-}) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase3>;
+export const UpdateCollectionResponseDataItemsItemCase3 =
+  AddItemResponseItemsItemCase3 as any as S.Schema<UpdateCollectionResponseDataItemsItemCase3>;
 
 export type UpdateCollectionResponseDataItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 export const UpdateCollectionResponseDataItemsItemCase4Note = AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionResponseDataItemsItemCase4GalleryList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase4GalleryList>;
+export const UpdateCollectionResponseDataItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase4GalleryList>;
 
 export type UpdateCollectionResponseDataItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -11997,17 +11764,15 @@ export type UpdateCollectionResponseDataItemsItemCase5Note = AddItemResponseItem
 export const UpdateCollectionResponseDataItemsItemCase5Note = AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionResponseDataItemsItemCase5GalleryList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase5GalleryList>;
+export const UpdateCollectionResponseDataItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase5GalleryList>;
 
 export type UpdateCollectionResponseDataItemsItemCase5RepoType = "bucket" | "container";
 export const UpdateCollectionResponseDataItemsItemCase5RepoType = S.String;
 
 export type UpdateCollectionResponseDataItemsItemCase5AdminTagsList = Array<string>;
-export const UpdateCollectionResponseDataItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionResponseDataItemsItemCase5AdminTagsList>;
+export const UpdateCollectionResponseDataItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionResponseDataItemsItemCase5AdminTagsList>;
 
 export type UpdateCollectionResponseDataItemsItemCase5Disabled =
   AddItemResponseItemsItemCase5Disabled;
@@ -12417,9 +12182,8 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase0Note =
   AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase0GalleryList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase0GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase0GalleryList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase0GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase0GalleryList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase0DatasetsServerInfoViewer =
   | "preview"
@@ -12584,9 +12348,8 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase1Note =
   AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase1GalleryList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase1GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase1GalleryList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase1GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase1GalleryList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase1AvailableInferenceProvidersItemProvider =
   | "baseten"
@@ -12892,9 +12655,7 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase1AuthorData =
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase1WidgetOutputUrlsList = Array<string>;
 export const UpdateCollectionBySlugResponseDataItemsItemCase1WidgetOutputUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase1WidgetOutputUrlsList>;
+  GetCollectionsResponseBodyCase0ItemItemsItemCase1WidgetOutputUrlsList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase1WidgetOutputUrlsList>;
 
 export interface UpdateCollectionBySlugResponseDataItemsItemCase1 {
   _id: string;
@@ -12956,9 +12717,8 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase2Note =
   AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase2GalleryList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase2GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2GalleryList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase2GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2GalleryList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase2Sdk =
   | "gradio"
@@ -13115,31 +12875,19 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeDomainsList 
 export type UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
   Array<unknown>;
 export const UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
   Array<UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList>;
 export const UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList =
-  /*@__PURE__*/ S.Array(
-    UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesItemList,
-  ) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
+  AddItemResponseItemsItemCase2RuntimeHotReloadingReplicaStatusesList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList>;
 
 export interface UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloading {
   status: string;
   replicaStatuses: UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList;
 }
 export const UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloading =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.String,
-      replicaStatuses:
-        UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloadingReplicaStatusesList,
-    }),
-  ).annotate({
-    identifier: "UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloading",
-  }) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloading>;
+  GetCollectionsResponseBodyCase0ItemItemsItemCase2RuntimeHotReloading as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeHotReloading>;
 
 export interface UpdateCollectionBySlugResponseDataItemsItemCase2Runtime {
   stage: UpdateCollectionBySlugResponseDataItemsItemCase2RuntimeStage;
@@ -13324,9 +13072,8 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase2ResourceGroup =
   AddItemResponseResourceGroup;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase2TagsList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2TagsList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase2TagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase2TagsList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase2AuthorDataCase0Plan =
   | "team"
@@ -13549,9 +13296,8 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase3Note =
   AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase3GalleryList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase3GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase3GalleryList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase3GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase3GalleryList>;
 
 export interface UpdateCollectionBySlugResponseDataItemsItemCase3 {
   _id: string;
@@ -13566,23 +13312,8 @@ export interface UpdateCollectionBySlugResponseDataItemsItemCase3 {
   isUpvotedByUser?: boolean;
   type: string;
 }
-export const UpdateCollectionBySlugResponseDataItemsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    note: S.optional(AddItemResponseItemsItemCase0Note),
-    gallery: S.optional(UpdateCollectionBySlugResponseDataItemsItemCase3GalleryList),
-    position: S.Number,
-    id: S.String,
-    title: S.String,
-    upvotes: S.Number,
-    publishedAt: S.String,
-    thumbnailUrl: S.optional(S.String),
-    isUpvotedByUser: S.optional(S.Boolean),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "UpdateCollectionBySlugResponseDataItemsItemCase3",
-}) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase3>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase3 =
+  AddItemResponseItemsItemCase3 as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase3>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase4Note =
   AddItemResponseItemsItemCase0Note;
@@ -13590,9 +13321,8 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase4Note =
   AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase4GalleryList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase4GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase4GalleryList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase4GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase4GalleryList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase4OwnerCase0Plan =
   | "team"
@@ -13781,17 +13511,15 @@ export const UpdateCollectionBySlugResponseDataItemsItemCase5Note =
   AddItemResponseItemsItemCase0Note;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase5GalleryList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase5GalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase5GalleryList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase5GalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase5GalleryList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase5RepoType = "bucket" | "container";
 export const UpdateCollectionBySlugResponseDataItemsItemCase5RepoType = S.String;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase5AdminTagsList = Array<string>;
-export const UpdateCollectionBySlugResponseDataItemsItemCase5AdminTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase5AdminTagsList>;
+export const UpdateCollectionBySlugResponseDataItemsItemCase5AdminTagsList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateCollectionBySlugResponseDataItemsItemCase5AdminTagsList>;
 
 export type UpdateCollectionBySlugResponseDataItemsItemCase5Disabled =
   AddItemResponseItemsItemCase5Disabled;
@@ -13943,9 +13671,8 @@ export const UpdateCollectionBySlugResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCollectionBySlugResponse>;
 
 export type UpdateItemRequestGalleryList = Array<string>;
-export const UpdateItemRequestGalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateItemRequestGalleryList>;
+export const UpdateItemRequestGalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateItemRequestGalleryList>;
 
 export interface UpdateItemRequest {
   namespace: string;
@@ -13975,14 +13702,11 @@ export const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateItemRequest" }) as any as S.Schema<UpdateItemRequest>;
 
 export interface UpdateItemResponse {}
-export const UpdateItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateItemResponse",
-}) as any as S.Schema<UpdateItemResponse>;
+export const UpdateItemResponse = BatchUpdateItemsResponse as any as S.Schema<UpdateItemResponse>;
 
 export type UpdateItemBySlugRequestGalleryList = Array<string>;
-export const UpdateItemBySlugRequestGalleryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateItemBySlugRequestGalleryList>;
+export const UpdateItemBySlugRequestGalleryList =
+  AddItemResponseItemsItemCase0GalleryList as any as S.Schema<UpdateItemBySlugRequestGalleryList>;
 
 export interface UpdateItemBySlugRequest {
   namespace: string;
@@ -14004,9 +13728,8 @@ export const UpdateItemBySlugRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateItemBySlugRequest" }) as any as S.Schema<UpdateItemBySlugRequest>;
 
 export interface UpdateItemBySlugResponse {}
-export const UpdateItemBySlugResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateItemBySlugResponse",
-}) as any as S.Schema<UpdateItemBySlugResponse>;
+export const UpdateItemBySlugResponse =
+  BatchUpdateItemsResponse as any as S.Schema<UpdateItemBySlugResponse>;
 
 export type AddItemError = HuggingFaceOpError;
 /** Add item Add an item to a collection */

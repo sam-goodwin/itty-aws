@@ -158,9 +158,8 @@ export const BulkReportCustomReportItemDepartmentUuidsList = /*@__PURE__*/ S.Arr
 
 /** Employees to filter by. */
 export type BulkReportCustomReportItemEmployeeUuidsList = Array<string>;
-export const BulkReportCustomReportItemEmployeeUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkReportCustomReportItemEmployeeUuidsList>;
+export const BulkReportCustomReportItemEmployeeUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BulkReportCustomReportItemEmployeeUuidsList>;
 
 /** Employee employment status to filter by. */
 export type BulkReportCustomReportItemEmploymentStatus =
@@ -211,9 +210,8 @@ export const BulkReportCustomReportItemReportType = S.String;
 
 /** Work addresses to filter by. */
 export type BulkReportCustomReportItemWorkAddressUuidsList = Array<string>;
-export const BulkReportCustomReportItemWorkAddressUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkReportCustomReportItemWorkAddressUuidsList>;
+export const BulkReportCustomReportItemWorkAddressUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BulkReportCustomReportItemWorkAddressUuidsList>;
 
 /** A custom report entry in a bulk batch. */
 export interface BulkReportCustomReportItem {
@@ -1697,9 +1695,8 @@ export const ContractorPaymentGroupPreviewContractorPaymentsList = /*@__PURE__*/
 
 /** List of credit blockers for the contractor payment group. */
 export type ContractorPaymentGroupPreviewCreditBlockersList = Array<PayrollCreditBlockerType>;
-export const ContractorPaymentGroupPreviewCreditBlockersList = /*@__PURE__*/ S.Array(
-  PayrollCreditBlockerType,
-) as any as S.Schema<ContractorPaymentGroupPreviewCreditBlockersList>;
+export const ContractorPaymentGroupPreviewCreditBlockersList =
+  CreateCompanyContractorPaymentGroupResponseCreditBlockersList as any as S.Schema<ContractorPaymentGroupPreviewCreditBlockersList>;
 
 /** The status of the contractor payment group. Will be `Funded` if all payments that should be funded (i.e. have `Direct Deposit` for payment method) are funded. A group can have status `Funded` while having associated payments that have status `Unfunded`, i.e. payment with `Check` payment method. */
 export type ContractorPaymentGroupPreviewStatus = "Unfunded" | "Funded";
@@ -2145,9 +2142,8 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of employee UUIDs to include on the payroll. At least one UUID is required for non-termination off-cycle payrolls. */
 export type CreateCompanyPayrollRequestEmployeeUuidsList = Array<string>;
-export const CreateCompanyPayrollRequestEmployeeUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCompanyPayrollRequestEmployeeUuidsList>;
+export const CreateCompanyPayrollRequestEmployeeUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<CreateCompanyPayrollRequestEmployeeUuidsList>;
 
 /** An off cycle payroll reason. Select one from the following list. */
 export type CreateCompanyPayrollRequestOffCycleReason =
@@ -3013,9 +3009,8 @@ export const CreateCompanyPaySchedulesAssignmentPreviewRequestEmployeesItem =
 /** List of employees and their pay schedules. */
 export type CreateCompanyPaySchedulesAssignmentPreviewRequestEmployeesList =
   Array<CreateCompanyPaySchedulesAssignRequestEmployeesItem>;
-export const CreateCompanyPaySchedulesAssignmentPreviewRequestEmployeesList = /*@__PURE__*/ S.Array(
-  CreateCompanyPaySchedulesAssignRequestEmployeesItem,
-) as any as S.Schema<CreateCompanyPaySchedulesAssignmentPreviewRequestEmployeesList>;
+export const CreateCompanyPaySchedulesAssignmentPreviewRequestEmployeesList =
+  CreateCompanyPaySchedulesAssignRequestEmployeesList as any as S.Schema<CreateCompanyPaySchedulesAssignmentPreviewRequestEmployeesList>;
 
 export type CreateCompanyPaySchedulesAssignmentPreviewRequestType =
   | "single"
@@ -3572,15 +3567,13 @@ export const CreateCompanyReportRequestDateFilterType = S.String;
 
 /** Departments to filter by */
 export type CreateCompanyReportRequestDepartmentUuidsList = Array<string>;
-export const CreateCompanyReportRequestDepartmentUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCompanyReportRequestDepartmentUuidsList>;
+export const CreateCompanyReportRequestDepartmentUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<CreateCompanyReportRequestDepartmentUuidsList>;
 
 /** Employees to filter by */
 export type CreateCompanyReportRequestEmployeeUuidsList = Array<string>;
-export const CreateCompanyReportRequestEmployeeUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCompanyReportRequestEmployeeUuidsList>;
+export const CreateCompanyReportRequestEmployeeUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<CreateCompanyReportRequestEmployeeUuidsList>;
 
 /** Employee employment status to filter by */
 export type CreateCompanyReportRequestEmploymentStatus =
@@ -3627,9 +3620,8 @@ export const CreateCompanyReportRequestPaymentMethod = S.String;
 
 /** Work addresses to filter by */
 export type CreateCompanyReportRequestWorkAddressUuidsList = Array<string>;
-export const CreateCompanyReportRequestWorkAddressUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCompanyReportRequestWorkAddressUuidsList>;
+export const CreateCompanyReportRequestWorkAddressUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<CreateCompanyReportRequestWorkAddressUuidsList>;
 
 export interface CreateCompanyReportRequest {
   /** The UUID of the company */
@@ -3735,11 +3727,8 @@ export const CreateCompanyReportsEmployeesAnnualFicaWageRequest = /*@__PURE__*/ 
 }) as any as S.Schema<CreateCompanyReportsEmployeesAnnualFicaWageRequest>;
 
 export interface CreateCompanyReportsEmployeesAnnualFicaWageResponse {}
-export const CreateCompanyReportsEmployeesAnnualFicaWageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCompanyReportsEmployeesAnnualFicaWageResponse",
-}) as any as S.Schema<CreateCompanyReportsEmployeesAnnualFicaWageResponse>;
+export const CreateCompanyReportsEmployeesAnnualFicaWageResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<CreateCompanyReportsEmployeesAnnualFicaWageResponse>;
 
 /** The signatory's home address. */
 export interface CreateCompanySignatoriesInviteRequestHomeAddress {
@@ -4111,10 +4100,8 @@ export const EmbeddedTimeOffRequestApprover = /*@__PURE__*/ S.suspend(() =>
 
 /** An object where keys are dates in YYYY-MM-DD format and values are hours as string decimals (e.g. {"2025-01-20": "8.000"}). */
 export type EmbeddedTimeOffRequestDaysMap = { [key: string]: string | undefined };
-export const EmbeddedTimeOffRequestDaysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EmbeddedTimeOffRequestDaysMap>;
+export const EmbeddedTimeOffRequestDaysMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<EmbeddedTimeOffRequestDaysMap>;
 
 export interface EmbeddedTimeOffRequestEmployee {
   /** The full name of the employee the time off request is for. */
@@ -4122,14 +4109,8 @@ export interface EmbeddedTimeOffRequestEmployee {
   /** The UUID of the employee the time off request is for. */
   uuid?: string;
 }
-export const EmbeddedTimeOffRequestEmployee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    full_name: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EmbeddedTimeOffRequestEmployee",
-}) as any as S.Schema<EmbeddedTimeOffRequestEmployee>;
+export const EmbeddedTimeOffRequestEmployee =
+  EmbeddedTimeOffRequestApprover as any as S.Schema<EmbeddedTimeOffRequestEmployee>;
 
 export interface EmbeddedTimeOffRequestInitiator {
   /** The full name of the employee who initiated the time off request. */
@@ -4137,14 +4118,8 @@ export interface EmbeddedTimeOffRequestInitiator {
   /** The UUID of the employee who initiated the time off request. */
   uuid?: string;
 }
-export const EmbeddedTimeOffRequestInitiator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    full_name: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EmbeddedTimeOffRequestInitiator",
-}) as any as S.Schema<EmbeddedTimeOffRequestInitiator>;
+export const EmbeddedTimeOffRequestInitiator =
+  EmbeddedTimeOffRequestApprover as any as S.Schema<EmbeddedTimeOffRequestInitiator>;
 
 /** The status of the time off request. */
 export type EmbeddedTimeOffRequestStatus = "pending" | "approved" | "declined" | "consumed";
@@ -4348,10 +4323,8 @@ export const TimeOffPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** An object where keys are dates in YYYY-MM-DD format and values are hours as string decimals (e.g. {"2025-01-20": "8.000"}) */
 export type CreateCompanyTimeOffRequestRequestDaysMap = { [key: string]: string | undefined };
-export const CreateCompanyTimeOffRequestRequestDaysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCompanyTimeOffRequestRequestDaysMap>;
+export const CreateCompanyTimeOffRequestRequestDaysMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<CreateCompanyTimeOffRequestRequestDaysMap>;
 
 export interface CreateCompanyTimeOffRequestRequest {
   /** The UUID of the company */
@@ -4389,10 +4362,8 @@ export const CreateCompanyTimeOffRequestRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateCompanyTimeOffRequestsPreviewRequestDaysMap = {
   [key: string]: string | undefined;
 };
-export const CreateCompanyTimeOffRequestsPreviewRequestDaysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCompanyTimeOffRequestsPreviewRequestDaysMap>;
+export const CreateCompanyTimeOffRequestsPreviewRequestDaysMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<CreateCompanyTimeOffRequestsPreviewRequestDaysMap>;
 
 export interface CreateCompanyTimeOffRequestsPreviewRequest {
   /** The UUID of the company */
@@ -4495,10 +4466,8 @@ export const CreateCompanyTimeTrackingTimeSheetRequestEntriesList = /*@__PURE__*
 export type CreateCompanyTimeTrackingTimeSheetRequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const CreateCompanyTimeTrackingTimeSheetRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCompanyTimeTrackingTimeSheetRequestMetadataMap>;
+export const CreateCompanyTimeTrackingTimeSheetRequestMetadataMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<CreateCompanyTimeTrackingTimeSheetRequestMetadataMap>;
 
 export interface CreateCompanyTimeTrackingTimeSheetRequest {
   /** The UUID of the company */
@@ -4574,10 +4543,8 @@ export const TimeSheetEntriesList = /*@__PURE__*/ S.Array(
 
 /** Metadata associated with the time sheet. Key-value pairs of arbitrary data. Both keys and values must be strings. */
 export type TimeSheetMetadataMap = { [key: string]: string | undefined };
-export const TimeSheetMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TimeSheetMetadataMap>;
+export const TimeSheetMetadataMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<TimeSheetMetadataMap>;
 
 /** Status of the time sheet. */
 export type TimeSheetStatus = "pending" | "rejected" | "approved";
@@ -4714,11 +4681,8 @@ export const CreateContractorMemberPortalInvitationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateContractorMemberPortalInvitationRequest>;
 
 export interface CreateContractorMemberPortalInvitationResponse {}
-export const CreateContractorMemberPortalInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateContractorMemberPortalInvitationResponse",
-}) as any as S.Schema<CreateContractorMemberPortalInvitationResponse>;
+export const CreateContractorMemberPortalInvitationResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<CreateContractorMemberPortalInvitationResponse>;
 
 export interface CreateContractorRehireRequest {
   /** The UUID of the contractor */
@@ -4758,11 +4722,8 @@ export const CreateContractorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContractorTerminationRequest>;
 
 export interface CreateContractorTerminationResponse {}
-export const CreateContractorTerminationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateContractorTerminationResponse",
-}) as any as S.Schema<CreateContractorTerminationResponse>;
+export const CreateContractorTerminationResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<CreateContractorTerminationResponse>;
 
 /** The bank account type. */
 export type CreateEmployeeBankAccountRequestAccountType = "Checking" | "Savings";
@@ -5281,9 +5242,8 @@ export const CreateEmployeeHomeAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of warning objects that provide additional information about the address. Warnings do not prevent the address from being saved. */
 export type EmployeeAddressWarningsList = Array<WarningObject>;
-export const EmployeeAddressWarningsList = /*@__PURE__*/ S.Array(
-  WarningObject,
-) as any as S.Schema<EmployeeAddressWarningsList>;
+export const EmployeeAddressWarningsList =
+  LocationWarningsList as any as S.Schema<EmployeeAddressWarningsList>;
 
 export interface EmployeeAddress {
   /** The status of the location. Inactive locations have been deleted, but may still have historical data associated with them. */
@@ -5505,11 +5465,8 @@ export const CreateEmployeeMemberPortalInvitationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateEmployeeMemberPortalInvitationRequest>;
 
 export interface CreateEmployeeMemberPortalInvitationResponse {}
-export const CreateEmployeeMemberPortalInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEmployeeMemberPortalInvitationResponse",
-}) as any as S.Schema<CreateEmployeeMemberPortalInvitationResponse>;
+export const CreateEmployeeMemberPortalInvitationResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<CreateEmployeeMemberPortalInvitationResponse>;
 
 export interface CreateEmployeeRecurringReimbursementRequest {
   /** The UUID of the employee */
@@ -6390,9 +6347,8 @@ export const CreateProvisionRequestCompanyAddressesList = /*@__PURE__*/ S.Array(
 
 /** The states in which the company operates. States should be included by their two letter code, i.e. NY for New York. */
 export type CreateProvisionRequestCompanyStatesList = Array<string>;
-export const CreateProvisionRequestCompanyStatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProvisionRequestCompanyStatesList>;
+export const CreateProvisionRequestCompanyStatesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<CreateProvisionRequestCompanyStatesList>;
 
 export interface CreateProvisionRequestCompany {
   /** The locations for the company. This includes mailing, work, and filing addresses. */
@@ -6681,11 +6637,8 @@ export const DeleteCompanyBankAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCompanyBankAccountRequest>;
 
 export interface DeleteCompanyBankAccountResponse {}
-export const DeleteCompanyBankAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCompanyBankAccountResponse",
-}) as any as S.Schema<DeleteCompanyBankAccountResponse>;
+export const DeleteCompanyBankAccountResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteCompanyBankAccountResponse>;
 
 export interface DeleteCompanyBenefitRequest {
   /** The UUID of the company benefit */
@@ -6702,9 +6655,8 @@ export const DeleteCompanyBenefitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCompanyBenefitRequest>;
 
 export interface DeleteCompanyBenefitResponse {}
-export const DeleteCompanyBenefitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCompanyBenefitResponse",
-}) as any as S.Schema<DeleteCompanyBenefitResponse>;
+export const DeleteCompanyBenefitResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteCompanyBenefitResponse>;
 
 export interface DeleteCompanyContractorPaymentContractorPaymentRequest {
   /** The UUID of the company */
@@ -6728,11 +6680,8 @@ export const DeleteCompanyContractorPaymentContractorPaymentRequest = /*@__PURE_
 }) as any as S.Schema<DeleteCompanyContractorPaymentContractorPaymentRequest>;
 
 export interface DeleteCompanyContractorPaymentContractorPaymentResponse {}
-export const DeleteCompanyContractorPaymentContractorPaymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCompanyContractorPaymentContractorPaymentResponse",
-}) as any as S.Schema<DeleteCompanyContractorPaymentContractorPaymentResponse>;
+export const DeleteCompanyContractorPaymentContractorPaymentResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteCompanyContractorPaymentContractorPaymentResponse>;
 
 export interface DeleteCompanyEarningTypeRequest {
   /** The UUID of the company */
@@ -6756,11 +6705,8 @@ export const DeleteCompanyEarningTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCompanyEarningTypeRequest>;
 
 export interface DeleteCompanyEarningTypeResponse {}
-export const DeleteCompanyEarningTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCompanyEarningTypeResponse",
-}) as any as S.Schema<DeleteCompanyEarningTypeResponse>;
+export const DeleteCompanyEarningTypeResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteCompanyEarningTypeResponse>;
 
 export interface DeleteCompanyHolidayPayPolicyRequest {
   /** The UUID of the company */
@@ -6777,11 +6723,8 @@ export const DeleteCompanyHolidayPayPolicyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteCompanyHolidayPayPolicyRequest>;
 
 export interface DeleteCompanyHolidayPayPolicyResponse {}
-export const DeleteCompanyHolidayPayPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCompanyHolidayPayPolicyResponse",
-}) as any as S.Schema<DeleteCompanyHolidayPayPolicyResponse>;
+export const DeleteCompanyHolidayPayPolicyResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteCompanyHolidayPayPolicyResponse>;
 
 export interface DeleteCompanyPayrollsRequest {
   /** The UUID of the company */
@@ -6808,9 +6751,8 @@ export const DeleteCompanyPayrollsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCompanyPayrollsRequest>;
 
 export interface DeleteCompanyPayrollsResponse {}
-export const DeleteCompanyPayrollsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCompanyPayrollsResponse",
-}) as any as S.Schema<DeleteCompanyPayrollsResponse>;
+export const DeleteCompanyPayrollsResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteCompanyPayrollsResponse>;
 
 export interface DeleteCompanySignatoryRequest {
   /** The UUID of the company */
@@ -6834,9 +6776,8 @@ export const DeleteCompanySignatoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCompanySignatoryRequest>;
 
 export interface DeleteCompanySignatoryResponse {}
-export const DeleteCompanySignatoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCompanySignatoryResponse",
-}) as any as S.Schema<DeleteCompanySignatoryResponse>;
+export const DeleteCompanySignatoryResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteCompanySignatoryResponse>;
 
 export interface DeleteCompensationRequest {
   /** The UUID of the compensation */
@@ -6851,9 +6792,8 @@ export const DeleteCompensationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCompensationRequest>;
 
 export interface DeleteCompensationResponse {}
-export const DeleteCompensationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCompensationResponse",
-}) as any as S.Schema<DeleteCompensationResponse>;
+export const DeleteCompensationResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteCompensationResponse>;
 
 export interface DeleteContractorRequest {
   /** The UUID of the contractor */
@@ -6866,9 +6806,8 @@ export const DeleteContractorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContractorRequest" }) as any as S.Schema<DeleteContractorRequest>;
 
 export interface DeleteContractorResponse {}
-export const DeleteContractorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContractorResponse",
-}) as any as S.Schema<DeleteContractorResponse>;
+export const DeleteContractorResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteContractorResponse>;
 
 export interface DeleteContractorMemberPortalInvitationsRequest {
   /** The UUID of the contractor */
@@ -6889,11 +6828,8 @@ export const DeleteContractorMemberPortalInvitationsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteContractorMemberPortalInvitationsRequest>;
 
 export interface DeleteContractorMemberPortalInvitationsResponse {}
-export const DeleteContractorMemberPortalInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContractorMemberPortalInvitationsResponse",
-}) as any as S.Schema<DeleteContractorMemberPortalInvitationsResponse>;
+export const DeleteContractorMemberPortalInvitationsResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteContractorMemberPortalInvitationsResponse>;
 
 export interface DeleteContractorRehireRequest {
   /** The UUID of the contractor */
@@ -6908,9 +6844,8 @@ export const DeleteContractorRehireRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContractorRehireRequest>;
 
 export interface DeleteContractorRehireResponse {}
-export const DeleteContractorRehireResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContractorRehireResponse",
-}) as any as S.Schema<DeleteContractorRehireResponse>;
+export const DeleteContractorRehireResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteContractorRehireResponse>;
 
 export interface DeleteContractorTerminationRequest {
   /** The UUID of the contractor */
@@ -6927,11 +6862,8 @@ export const DeleteContractorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContractorTerminationRequest>;
 
 export interface DeleteContractorTerminationResponse {}
-export const DeleteContractorTerminationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContractorTerminationResponse",
-}) as any as S.Schema<DeleteContractorTerminationResponse>;
+export const DeleteContractorTerminationResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteContractorTerminationResponse>;
 
 export interface DeleteDepartmentRequest {
   /** The UUID of the department */
@@ -6944,9 +6876,8 @@ export const DeleteDepartmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDepartmentRequest" }) as any as S.Schema<DeleteDepartmentRequest>;
 
 export interface DeleteDepartmentResponse {}
-export const DeleteDepartmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDepartmentResponse",
-}) as any as S.Schema<DeleteDepartmentResponse>;
+export const DeleteDepartmentResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteDepartmentResponse>;
 
 export interface DeleteEmployeeRequest {
   /** The UUID of the employee */
@@ -6959,9 +6890,8 @@ export const DeleteEmployeeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmployeeRequest" }) as any as S.Schema<DeleteEmployeeRequest>;
 
 export interface DeleteEmployeeResponse {}
-export const DeleteEmployeeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmployeeResponse",
-}) as any as S.Schema<DeleteEmployeeResponse>;
+export const DeleteEmployeeResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteEmployeeResponse>;
 
 export interface DeleteEmployeeBenefitRequest {
   /** The UUID of the employee benefit. */
@@ -6978,9 +6908,8 @@ export const DeleteEmployeeBenefitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmployeeBenefitRequest>;
 
 export interface DeleteEmployeeBenefitResponse {}
-export const DeleteEmployeeBenefitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmployeeBenefitResponse",
-}) as any as S.Schema<DeleteEmployeeBenefitResponse>;
+export const DeleteEmployeeBenefitResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteEmployeeBenefitResponse>;
 
 export interface DeleteEmployeeI9AuthorizationDocumentRequest {
   /** The UUID of the employee */
@@ -7004,11 +6933,8 @@ export const DeleteEmployeeI9AuthorizationDocumentRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteEmployeeI9AuthorizationDocumentRequest>;
 
 export interface DeleteEmployeeI9AuthorizationDocumentResponse {}
-export const DeleteEmployeeI9AuthorizationDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEmployeeI9AuthorizationDocumentResponse",
-}) as any as S.Schema<DeleteEmployeeI9AuthorizationDocumentResponse>;
+export const DeleteEmployeeI9AuthorizationDocumentResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteEmployeeI9AuthorizationDocumentResponse>;
 
 export interface DeleteEmployeeMemberPortalInvitationsRequest {
   /** The UUID of the employee */
@@ -7029,11 +6955,8 @@ export const DeleteEmployeeMemberPortalInvitationsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteEmployeeMemberPortalInvitationsRequest>;
 
 export interface DeleteEmployeeMemberPortalInvitationsResponse {}
-export const DeleteEmployeeMemberPortalInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEmployeeMemberPortalInvitationsResponse",
-}) as any as S.Schema<DeleteEmployeeMemberPortalInvitationsResponse>;
+export const DeleteEmployeeMemberPortalInvitationsResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteEmployeeMemberPortalInvitationsResponse>;
 
 export interface DeleteEmployeeRehireRequest {
   /** The UUID of the employee */
@@ -7048,9 +6971,8 @@ export const DeleteEmployeeRehireRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmployeeRehireRequest>;
 
 export interface DeleteEmployeeRehireResponse {}
-export const DeleteEmployeeRehireResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmployeeRehireResponse",
-}) as any as S.Schema<DeleteEmployeeRehireResponse>;
+export const DeleteEmployeeRehireResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteEmployeeRehireResponse>;
 
 export interface DeleteEmployeeTerminationsRequest {
   /** The UUID of the employee */
@@ -7065,11 +6987,8 @@ export const DeleteEmployeeTerminationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmployeeTerminationsRequest>;
 
 export interface DeleteEmployeeTerminationsResponse {}
-export const DeleteEmployeeTerminationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEmployeeTerminationsResponse",
-}) as any as S.Schema<DeleteEmployeeTerminationsResponse>;
+export const DeleteEmployeeTerminationsResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteEmployeeTerminationsResponse>;
 
 export interface DeleteHomeAddressRequest {
   /** The UUID of the home address */
@@ -7082,9 +7001,8 @@ export const DeleteHomeAddressRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHomeAddressRequest" }) as any as S.Schema<DeleteHomeAddressRequest>;
 
 export interface DeleteHomeAddressResponse {}
-export const DeleteHomeAddressResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHomeAddressResponse",
-}) as any as S.Schema<DeleteHomeAddressResponse>;
+export const DeleteHomeAddressResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteHomeAddressResponse>;
 
 export interface DeleteJobRequest {
   /** The UUID of the job */
@@ -7097,9 +7015,8 @@ export const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteJobRequest" }) as any as S.Schema<DeleteJobRequest>;
 
 export interface DeleteJobResponse {}
-export const DeleteJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteJobResponse",
-}) as any as S.Schema<DeleteJobResponse>;
+export const DeleteJobResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteJobResponse>;
 
 export interface DeleteRecurringReimbursementsRequest {
   /** The UUID of the reimbursement */
@@ -7114,11 +7031,8 @@ export const DeleteRecurringReimbursementsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteRecurringReimbursementsRequest>;
 
 export interface DeleteRecurringReimbursementsResponse {}
-export const DeleteRecurringReimbursementsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRecurringReimbursementsResponse",
-}) as any as S.Schema<DeleteRecurringReimbursementsResponse>;
+export const DeleteRecurringReimbursementsResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteRecurringReimbursementsResponse>;
 
 export interface DeleteTimeOffRequestRequest {
   /** The UUID of the time off request */
@@ -7135,9 +7049,8 @@ export const DeleteTimeOffRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTimeOffRequestRequest>;
 
 export interface DeleteTimeOffRequestResponse {}
-export const DeleteTimeOffRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTimeOffRequestResponse",
-}) as any as S.Schema<DeleteTimeOffRequestResponse>;
+export const DeleteTimeOffRequestResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteTimeOffRequestResponse>;
 
 export interface DeleteTimeTrackingTimeSheetRequest {
   /** UUID of the time sheet */
@@ -7157,11 +7070,8 @@ export const DeleteTimeTrackingTimeSheetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTimeTrackingTimeSheetRequest>;
 
 export interface DeleteTimeTrackingTimeSheetResponse {}
-export const DeleteTimeTrackingTimeSheetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTimeTrackingTimeSheetResponse",
-}) as any as S.Schema<DeleteTimeTrackingTimeSheetResponse>;
+export const DeleteTimeTrackingTimeSheetResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteTimeTrackingTimeSheetResponse>;
 
 export interface DeleteV1ContractorPaymentGroupsContractorPaymentGroupIdRequest {
   /** The UUID of the contractor payment group */
@@ -7211,11 +7121,8 @@ export const DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdRequest = /*@__
 }) as any as S.Schema<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdRequest>;
 
 export interface DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse {}
-export const DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse",
-}) as any as S.Schema<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse>;
+export const DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse =
+  CreateEmployeeYtdBenefitAmountsFromDifferentCompanyResponse as any as S.Schema<DeleteV1EmployeesEmployeeIdBankAccountsBankAccountIdResponse>;
 
 export interface DeleteV1ExternalPayrollRequest {
   /** The UUID of the company */
@@ -7262,11 +7169,8 @@ export const DeleteWebhookSubscriptionUuidRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWebhookSubscriptionUuidRequest>;
 
 export interface DeleteWebhookSubscriptionUuidResponse {}
-export const DeleteWebhookSubscriptionUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebhookSubscriptionUuidResponse",
-}) as any as S.Schema<DeleteWebhookSubscriptionUuidResponse>;
+export const DeleteWebhookSubscriptionUuidResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<DeleteWebhookSubscriptionUuidResponse>;
 
 export interface DeleteWorkAddressRequest {
   /** The UUID of the work address */
@@ -7279,9 +7183,8 @@ export const DeleteWorkAddressRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkAddressRequest" }) as any as S.Schema<DeleteWorkAddressRequest>;
 
 export interface DeleteWorkAddressResponse {}
-export const DeleteWorkAddressResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkAddressResponse",
-}) as any as S.Schema<DeleteWorkAddressResponse>;
+export const DeleteWorkAddressResponse =
+  CreateContractorRehireResponse as any as S.Schema<DeleteWorkAddressResponse>;
 
 export interface GetAchTransactionsRequest {
   /** The UUID of the company */
@@ -7470,9 +7373,8 @@ export const GetBenefitsBenefitRequirementsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetBenefitsBenefitRequirementsRequest>;
 
 export type BenefitTypeRequirementsCatchUpChoicesList = Array<string>;
-export const BenefitTypeRequirementsCatchUpChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitTypeRequirementsCatchUpChoicesList>;
+export const BenefitTypeRequirementsCatchUpChoicesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BenefitTypeRequirementsCatchUpChoicesList>;
 
 export interface BenefitTypeRequirementsCatchUpDefaultValue {
   type?: string;
@@ -7537,9 +7439,8 @@ export const BenefitTypeRequirementsCompanyContributionAnnualMaximum = /*@__PURE
 }) as any as S.Schema<BenefitTypeRequirementsCompanyContributionAnnualMaximum>;
 
 export type BenefitTypeRequirementsContributionChoicesList = Array<string>;
-export const BenefitTypeRequirementsContributionChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitTypeRequirementsContributionChoicesList>;
+export const BenefitTypeRequirementsContributionChoicesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BenefitTypeRequirementsContributionChoicesList>;
 
 export type BenefitTypeRequirementsContributionDefaultValue =
   BenefitTypeRequirementsCatchUpDefaultValue;
@@ -7553,21 +7454,12 @@ export interface BenefitTypeRequirementsContribution {
   editable?: boolean;
   required?: boolean;
 }
-export const BenefitTypeRequirementsContribution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: S.optional(S.NullOr(BenefitTypeRequirementsContributionChoicesList)),
-    default_value: S.optional(S.NullOr(BenefitTypeRequirementsCatchUpDefaultValue)),
-    editable: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BenefitTypeRequirementsContribution",
-}) as any as S.Schema<BenefitTypeRequirementsContribution>;
+export const BenefitTypeRequirementsContribution =
+  BenefitTypeRequirementsCatchUp as any as S.Schema<BenefitTypeRequirementsContribution>;
 
 export type BenefitTypeRequirementsCoverageAmountChoicesList = Array<string>;
-export const BenefitTypeRequirementsCoverageAmountChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitTypeRequirementsCoverageAmountChoicesList>;
+export const BenefitTypeRequirementsCoverageAmountChoicesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BenefitTypeRequirementsCoverageAmountChoicesList>;
 
 export type BenefitTypeRequirementsCoverageAmountDefaultValue =
   BenefitTypeRequirementsCatchUpDefaultValue;
@@ -7581,21 +7473,12 @@ export interface BenefitTypeRequirementsCoverageAmount {
   editable?: boolean;
   required?: boolean;
 }
-export const BenefitTypeRequirementsCoverageAmount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: S.optional(S.NullOr(BenefitTypeRequirementsCoverageAmountChoicesList)),
-    default_value: S.optional(S.NullOr(BenefitTypeRequirementsCatchUpDefaultValue)),
-    editable: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BenefitTypeRequirementsCoverageAmount",
-}) as any as S.Schema<BenefitTypeRequirementsCoverageAmount>;
+export const BenefitTypeRequirementsCoverageAmount =
+  BenefitTypeRequirementsCatchUp as any as S.Schema<BenefitTypeRequirementsCoverageAmount>;
 
 export type BenefitTypeRequirementsCoverageSalaryMultiplierChoicesList = Array<string>;
-export const BenefitTypeRequirementsCoverageSalaryMultiplierChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitTypeRequirementsCoverageSalaryMultiplierChoicesList>;
+export const BenefitTypeRequirementsCoverageSalaryMultiplierChoicesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BenefitTypeRequirementsCoverageSalaryMultiplierChoicesList>;
 
 export type BenefitTypeRequirementsCoverageSalaryMultiplierDefaultValue =
   BenefitTypeRequirementsCatchUpDefaultValue;
@@ -7609,21 +7492,12 @@ export interface BenefitTypeRequirementsCoverageSalaryMultiplier {
   editable?: boolean;
   required?: boolean;
 }
-export const BenefitTypeRequirementsCoverageSalaryMultiplier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: S.optional(S.NullOr(BenefitTypeRequirementsCoverageSalaryMultiplierChoicesList)),
-    default_value: S.optional(S.NullOr(BenefitTypeRequirementsCatchUpDefaultValue)),
-    editable: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BenefitTypeRequirementsCoverageSalaryMultiplier",
-}) as any as S.Schema<BenefitTypeRequirementsCoverageSalaryMultiplier>;
+export const BenefitTypeRequirementsCoverageSalaryMultiplier =
+  BenefitTypeRequirementsCatchUp as any as S.Schema<BenefitTypeRequirementsCoverageSalaryMultiplier>;
 
 export type BenefitTypeRequirementsDeductAsPercentageChoicesList = Array<string>;
-export const BenefitTypeRequirementsDeductAsPercentageChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitTypeRequirementsDeductAsPercentageChoicesList>;
+export const BenefitTypeRequirementsDeductAsPercentageChoicesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BenefitTypeRequirementsDeductAsPercentageChoicesList>;
 
 export type BenefitTypeRequirementsDeductAsPercentageDefaultValue =
   BenefitTypeRequirementsCatchUpDefaultValue;
@@ -7637,21 +7511,12 @@ export interface BenefitTypeRequirementsDeductAsPercentage {
   editable?: boolean;
   required?: boolean;
 }
-export const BenefitTypeRequirementsDeductAsPercentage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: S.optional(S.NullOr(BenefitTypeRequirementsDeductAsPercentageChoicesList)),
-    default_value: S.optional(S.NullOr(BenefitTypeRequirementsCatchUpDefaultValue)),
-    editable: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BenefitTypeRequirementsDeductAsPercentage",
-}) as any as S.Schema<BenefitTypeRequirementsDeductAsPercentage>;
+export const BenefitTypeRequirementsDeductAsPercentage =
+  BenefitTypeRequirementsCatchUp as any as S.Schema<BenefitTypeRequirementsDeductAsPercentage>;
 
 export type BenefitTypeRequirementsEmployeeDeductionChoicesList = Array<string>;
-export const BenefitTypeRequirementsEmployeeDeductionChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitTypeRequirementsEmployeeDeductionChoicesList>;
+export const BenefitTypeRequirementsEmployeeDeductionChoicesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BenefitTypeRequirementsEmployeeDeductionChoicesList>;
 
 export type BenefitTypeRequirementsEmployeeDeductionDefaultValue =
   BenefitTypeRequirementsCatchUpDefaultValue;
@@ -7665,21 +7530,12 @@ export interface BenefitTypeRequirementsEmployeeDeduction {
   editable?: boolean;
   required?: boolean;
 }
-export const BenefitTypeRequirementsEmployeeDeduction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: S.optional(S.NullOr(BenefitTypeRequirementsEmployeeDeductionChoicesList)),
-    default_value: S.optional(S.NullOr(BenefitTypeRequirementsCatchUpDefaultValue)),
-    editable: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BenefitTypeRequirementsEmployeeDeduction",
-}) as any as S.Schema<BenefitTypeRequirementsEmployeeDeduction>;
+export const BenefitTypeRequirementsEmployeeDeduction =
+  BenefitTypeRequirementsCatchUp as any as S.Schema<BenefitTypeRequirementsEmployeeDeduction>;
 
 export type BenefitTypeRequirementsLimitOptionChoicesList = Array<string>;
-export const BenefitTypeRequirementsLimitOptionChoicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BenefitTypeRequirementsLimitOptionChoicesList>;
+export const BenefitTypeRequirementsLimitOptionChoicesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<BenefitTypeRequirementsLimitOptionChoicesList>;
 
 export type BenefitTypeRequirementsLimitOptionDefaultValue =
   BenefitTypeRequirementsCatchUpDefaultValue;
@@ -7693,16 +7549,8 @@ export interface BenefitTypeRequirementsLimitOption {
   editable?: boolean;
   required?: boolean;
 }
-export const BenefitTypeRequirementsLimitOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: S.optional(S.NullOr(BenefitTypeRequirementsLimitOptionChoicesList)),
-    default_value: S.optional(S.NullOr(BenefitTypeRequirementsCatchUpDefaultValue)),
-    editable: S.optional(S.Boolean),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BenefitTypeRequirementsLimitOption",
-}) as any as S.Schema<BenefitTypeRequirementsLimitOption>;
+export const BenefitTypeRequirementsLimitOption =
+  BenefitTypeRequirementsCatchUp as any as S.Schema<BenefitTypeRequirementsLimitOption>;
 
 export interface BenefitTypeRequirements {
   /** Whether the employee should use a benefit's 'catch up' rate. Only Roth 401k and 401k benefits use this value for employees over 50. */
@@ -7909,20 +7757,13 @@ export interface CompanyCompensationsPaidTimeOffItem {
   /** The UUID of the paid time off type. */
   uuid?: string | null;
 }
-export const CompanyCompensationsPaidTimeOffItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    uuid: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CompanyCompensationsPaidTimeOffItem",
-}) as any as S.Schema<CompanyCompensationsPaidTimeOffItem>;
+export const CompanyCompensationsPaidTimeOffItem =
+  CompanyCompensationsFixedItem as any as S.Schema<CompanyCompensationsPaidTimeOffItem>;
 
 /** The available types of paid time off for the company. */
 export type CompanyCompensationsPaidTimeOffList = Array<CompanyCompensationsPaidTimeOffItem>;
-export const CompanyCompensationsPaidTimeOffList = /*@__PURE__*/ S.Array(
-  CompanyCompensationsPaidTimeOffItem,
-) as any as S.Schema<CompanyCompensationsPaidTimeOffList>;
+export const CompanyCompensationsPaidTimeOffList =
+  CompanyCompensationsFixedList as any as S.Schema<CompanyCompensationsPaidTimeOffList>;
 
 /** The available company-wide compensation rates for the company. */
 export interface CompanyCompensations {
@@ -8296,18 +8137,16 @@ export const DepartmentContractorsItem = HolidayPayPolicyEmployeesItem;
 
 /** Array of contractors assigned to the department. */
 export type DepartmentContractorsList = Array<HolidayPayPolicyEmployeesItem>;
-export const DepartmentContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<DepartmentContractorsList>;
+export const DepartmentContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<DepartmentContractorsList>;
 
 export type DepartmentEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const DepartmentEmployeesItem = HolidayPayPolicyEmployeesItem;
 
 /** Array of employees assigned to the department. */
 export type DepartmentEmployeesList = Array<HolidayPayPolicyEmployeesItem>;
-export const DepartmentEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<DepartmentEmployeesList>;
+export const DepartmentEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<DepartmentEmployeesList>;
 
 export interface Department {
   /** The current version of the object. See the [versioning guide](https://docs.gusto.com/embedded-payroll/docs/idempotency) for information on how to use this field. */
@@ -8425,9 +8264,7 @@ export const CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsItemContributionV
 export type CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsItemContributionValueCase1TiersList =
   Array<CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem>;
 export const CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsItemContributionValueCase1TiersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem,
-  ) as any as S.Schema<CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsItemContributionValueCase1TiersList>;
+  CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersList as any as S.Schema<CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsItemContributionValueCase1TiersList>;
 
 export interface CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsItemContributionValueCase1 {
   tiers?: CompanyBenefitWithEmployeeBenefitsEmployeeBenefitsItemContributionValueCase1TiersList;
@@ -8868,16 +8705,14 @@ export const ContractorPaymentGroupWithBlockersStatus = S.String;
 
 /** List of credit blockers for the contractor payment group. */
 export type ContractorPaymentGroupWithBlockersCreditBlockersList = Array<PayrollCreditBlockerType>;
-export const ContractorPaymentGroupWithBlockersCreditBlockersList = /*@__PURE__*/ S.Array(
-  PayrollCreditBlockerType,
-) as any as S.Schema<ContractorPaymentGroupWithBlockersCreditBlockersList>;
+export const ContractorPaymentGroupWithBlockersCreditBlockersList =
+  CreateCompanyContractorPaymentGroupResponseCreditBlockersList as any as S.Schema<ContractorPaymentGroupWithBlockersCreditBlockersList>;
 
 /** List of submission blockers for the contractor payment group. */
 export type ContractorPaymentGroupWithBlockersSubmissionBlockersList =
   Array<PayrollSubmissionBlockerType>;
-export const ContractorPaymentGroupWithBlockersSubmissionBlockersList = /*@__PURE__*/ S.Array(
-  PayrollSubmissionBlockerType,
-) as any as S.Schema<ContractorPaymentGroupWithBlockersSubmissionBlockersList>;
+export const ContractorPaymentGroupWithBlockersSubmissionBlockersList =
+  ContractorPaymentGroupPreviewSubmissionBlockersList as any as S.Schema<ContractorPaymentGroupWithBlockersSubmissionBlockersList>;
 
 export type ContractorPaymentGroupWithBlockersTotals =
   CreateCompanyContractorPaymentGroupResponseTotals;
@@ -9373,9 +9208,8 @@ export const GetCompanyCustomFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of options for fields of type radio. Otherwise, null. */
 export type CompanyCustomFieldSelectionOptionsList = Array<string>;
-export const CompanyCustomFieldSelectionOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CompanyCustomFieldSelectionOptionsList>;
+export const CompanyCustomFieldSelectionOptionsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<CompanyCustomFieldSelectionOptionsList>;
 
 /** Input type for the custom field. */
 export type CustomFieldType = "text" | "currency" | "number" | "date" | "radio";
@@ -9437,9 +9271,8 @@ export const EarningTypeListCustomList = /*@__PURE__*/ S.Array(
 
 /** The default earning types for the company. */
 export type EarningTypeListDefaultList = Array<EarningType>;
-export const EarningTypeListDefaultList = /*@__PURE__*/ S.Array(
-  EarningType,
-) as any as S.Schema<EarningTypeListDefaultList>;
+export const EarningTypeListDefaultList =
+  EarningTypeListCustomList as any as S.Schema<EarningTypeListDefaultList>;
 
 /** Lists of default and custom earning types for a company. */
 export interface EarningTypeList {
@@ -9472,9 +9305,8 @@ export const GetCompanyEmployeesRequestIncludeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetCompanyEmployeesRequestIncludeList>;
 
 export type GetCompanyEmployeesRequestUuidsList = Array<string>;
-export const GetCompanyEmployeesRequestUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCompanyEmployeesRequestUuidsList>;
+export const GetCompanyEmployeesRequestUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<GetCompanyEmployeesRequestUuidsList>;
 
 export interface GetCompanyEmployeesRequest {
   /** The UUID of the company */
@@ -9539,9 +9371,8 @@ export const ShowEmployeesItemCurrentEmploymentStatus = S.String;
 
 /** An array of options for fields of type radio. Otherwise, null. */
 export type EmployeeCustomFieldSelectionOptionsList = Array<string>;
-export const EmployeeCustomFieldSelectionOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmployeeCustomFieldSelectionOptionsList>;
+export const EmployeeCustomFieldSelectionOptionsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<EmployeeCustomFieldSelectionOptionsList>;
 
 /** A custom field of an employee */
 export interface EmployeeCustomField {
@@ -9933,27 +9764,14 @@ export interface EmployeePaymentDetailsListItemSplitsItem {
   /** If `split_by` is 'Amount', this is in cents (e.g., 500 for $5.00) and exactly one account must have a `split_amount` of `null` to capture the remainder. If `split_by` is 'Percentage', this is the percentage value (e.g., 60 for 60%). */
   split_amount?: number | null;
 }
-export const EmployeePaymentDetailsListItemSplitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_type: S.optional(S.String),
-    bank_account_uuid: S.optional(S.String),
-    encrypted_account_number: S.optional(S.NullOr(S.String)),
-    hidden_account_number: S.optional(S.String),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    routing_number: S.optional(S.String),
-    split_amount: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "EmployeePaymentDetailsListItemSplitsItem",
-}) as any as S.Schema<EmployeePaymentDetailsListItemSplitsItem>;
+export const EmployeePaymentDetailsListItemSplitsItem =
+  ContractorPaymentDetailsListItemSplitsItem as any as S.Schema<EmployeePaymentDetailsListItemSplitsItem>;
 
 /** An array of payment splits. This field is applicable when `payment_method` is "Direct Deposit". */
 export type EmployeePaymentDetailsListItemSplitsList =
   Array<EmployeePaymentDetailsListItemSplitsItem>;
-export const EmployeePaymentDetailsListItemSplitsList = /*@__PURE__*/ S.Array(
-  EmployeePaymentDetailsListItemSplitsItem,
-) as any as S.Schema<EmployeePaymentDetailsListItemSplitsList>;
+export const EmployeePaymentDetailsListItemSplitsList =
+  ContractorPaymentDetailsListItemSplitsList as any as S.Schema<EmployeePaymentDetailsListItemSplitsList>;
 
 export interface EmployeePaymentDetailsListItem {
   /** The UUID of the employee. */
@@ -10286,10 +10104,8 @@ export const NotificationStatus = S.String;
 
 /** An object containing template variables used to render the notification. The structure of this object depends on the notification category. Each category defines a fixed set of variable names (keys), which are always present. The values of these variables can vary depending on the specific notification instance. */
 export type NotificationTemplateVariablesMap = { [key: string]: string | undefined };
-export const NotificationTemplateVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationTemplateVariablesMap>;
+export const NotificationTemplateVariablesMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<NotificationTemplateVariablesMap>;
 
 export interface Notification {
   /** Indicates whether a notification requires action or not. If false, the notification provides critical information only. */
@@ -10726,9 +10542,8 @@ export const PayrollCompanyTaxesType = /*@__PURE__*/ S.Array(
 
 /** Only included for processed payrolls */
 export type PayrollCreditBlockersType = Array<PayrollCreditBlockerType>;
-export const PayrollCreditBlockersType = /*@__PURE__*/ S.Array(
-  PayrollCreditBlockerType,
-) as any as S.Schema<PayrollCreditBlockersType>;
+export const PayrollCreditBlockersType =
+  CreateCompanyContractorPaymentGroupResponseCreditBlockersList as any as S.Schema<PayrollCreditBlockersType>;
 
 /** How to interpret the amount. */
 export type PayrollShowEmployeeCompensationsItemCustomWithholdingsFederalAmountType =
@@ -10857,9 +10672,8 @@ export const PayrollShowEmployeeCompensationsItemPaidTimeOffItem =
 /** An array of all paid time off the employee is eligible for this pay period. */
 export type PayrollShowEmployeeCompensationsItemPaidTimeOffList =
   Array<PayrollUnprocessedEmployeeCompensationsTypePaidTimeOffItem>;
-export const PayrollShowEmployeeCompensationsItemPaidTimeOffList = /*@__PURE__*/ S.Array(
-  PayrollUnprocessedEmployeeCompensationsTypePaidTimeOffItem,
-) as any as S.Schema<PayrollShowEmployeeCompensationsItemPaidTimeOffList>;
+export const PayrollShowEmployeeCompensationsItemPaidTimeOffList =
+  PayrollUnprocessedEmployeeCompensationsTypePaidTimeOffList as any as S.Schema<PayrollShowEmployeeCompensationsItemPaidTimeOffList>;
 
 export type PayrollShowEmployeeCompensationsItemPaymentMethod =
   | "Direct Deposit"
@@ -10875,9 +10689,8 @@ export const PayrollShowEmployeeCompensationsItemReimbursementsItem =
 /** An array of reimbursements for the employee. */
 export type PayrollShowEmployeeCompensationsItemReimbursementsList =
   Array<PayrollUnprocessedEmployeeCompensationsTypeReimbursementsItem>;
-export const PayrollShowEmployeeCompensationsItemReimbursementsList = /*@__PURE__*/ S.Array(
-  PayrollUnprocessedEmployeeCompensationsTypeReimbursementsItem,
-) as any as S.Schema<PayrollShowEmployeeCompensationsItemReimbursementsList>;
+export const PayrollShowEmployeeCompensationsItemReimbursementsList =
+  PayrollUnprocessedEmployeeCompensationsTypeReimbursementsList as any as S.Schema<PayrollShowEmployeeCompensationsItemReimbursementsList>;
 
 /** The amount type of the deduction for the pay period. Only present for unprocessed payrolls. */
 export type PayrollShowEmployeeCompensationsItemDeductionsItemAmountType = "fixed" | "percent";
@@ -11055,9 +10868,8 @@ export const PayrollTaxesType = /*@__PURE__*/ S.Array(
 
 /** Only included for processed or calculated payrolls */
 export type PayrollSubmissionBlockersType = Array<PayrollSubmissionBlockerType>;
-export const PayrollSubmissionBlockersType = /*@__PURE__*/ S.Array(
-  PayrollSubmissionBlockerType,
-) as any as S.Schema<PayrollSubmissionBlockersType>;
+export const PayrollSubmissionBlockersType =
+  ContractorPaymentGroupPreviewSubmissionBlockersList as any as S.Schema<PayrollSubmissionBlockersType>;
 
 /** The subtotals for the payroll. */
 export interface PayrollTotalsType {
@@ -11292,9 +11104,8 @@ export const GetCompanyPayrollReversalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of affected employee UUIDs. */
 export type PayrollReversalReversedEmployeeUuidsList = Array<string>;
-export const PayrollReversalReversedEmployeeUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PayrollReversalReversedEmployeeUuidsList>;
+export const PayrollReversalReversedEmployeeUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<PayrollReversalReversedEmployeeUuidsList>;
 
 export interface PayrollReversal {
   /** Timestamp of when the reversal was approved. */
@@ -11569,20 +11380,13 @@ export interface PayScheduleAssignmentDepartment {
   /** The department's pay schedule UUID. */
   pay_schedule_uuid?: string;
 }
-export const PayScheduleAssignmentDepartment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    department_uuid: S.optional(S.String),
-    pay_schedule_uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PayScheduleAssignmentDepartment",
-}) as any as S.Schema<PayScheduleAssignmentDepartment>;
+export const PayScheduleAssignmentDepartment =
+  CreateCompanyPaySchedulesAssignRequestDepartmentsItem as any as S.Schema<PayScheduleAssignmentDepartment>;
 
 /** List of departments and their pay schedules. */
 export type PayScheduleAssignmentDepartmentsList = Array<PayScheduleAssignmentDepartment>;
-export const PayScheduleAssignmentDepartmentsList = /*@__PURE__*/ S.Array(
-  PayScheduleAssignmentDepartment,
-) as any as S.Schema<PayScheduleAssignmentDepartmentsList>;
+export const PayScheduleAssignmentDepartmentsList =
+  CreateCompanyPaySchedulesAssignRequestDepartmentsList as any as S.Schema<PayScheduleAssignmentDepartmentsList>;
 
 export interface PayScheduleAssignmentEmployee {
   /** The UUID of the employee. */
@@ -11682,9 +11486,8 @@ export const GetCompanyPaySchedulesPreviewRequest = /*@__PURE__*/ S.suspend(() =
 
 /** A list of dates for bank closures (ISO date strings); may affect payroll processing. */
 export type PaySchedulePreviewHolidaysList = Array<string>;
-export const PaySchedulePreviewHolidaysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaySchedulePreviewHolidaysList>;
+export const PaySchedulePreviewHolidaysList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<PaySchedulePreviewHolidaysList>;
 
 /** A single pay period in a pay schedule preview, with check date, period boundaries, and payroll deadline. */
 export interface PaySchedulePreviewPayPeriod {
@@ -11751,15 +11554,13 @@ export const GetCompanyReportTemplatesReportTypeRequest = /*@__PURE__*/ S.suspen
 
 /** List of columns recommended */
 export type ReportTemplateColumnsList = Array<string>;
-export const ReportTemplateColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportTemplateColumnsList>;
+export const ReportTemplateColumnsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<ReportTemplateColumnsList>;
 
 /** List of groupings recommended */
 export type ReportTemplateGroupingsList = Array<string>;
-export const ReportTemplateGroupingsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportTemplateGroupingsList>;
+export const ReportTemplateGroupingsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<ReportTemplateGroupingsList>;
 
 export interface ReportTemplate {
   /** List of columns recommended */
@@ -11925,9 +11726,8 @@ export const TaxRequirementMetadataType = S.String;
 
 /** [for `one_of`] The possible, unformatted tax rates for selection. - e.g. ["0.0", "0.001"] representing 0% and 0.1% */
 export type TaxRequirementMetadataValidationRatesList = Array<string>;
-export const TaxRequirementMetadataValidationRatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaxRequirementMetadataValidationRatesList>;
+export const TaxRequirementMetadataValidationRatesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<TaxRequirementMetadataValidationRatesList>;
 
 /** Describes the type of tax_rate validation rule */
 export type TaxRequirementMetadataValidationType = "one_of" | "min_max";
@@ -12357,9 +12157,8 @@ export const GetCompanyTimeOffRequestsResponse2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCompanyTimeOffRequestsResponse2>;
 
 export type GetCompanyTimeTrackingTimeSheetsRequestEntityUuidsList = Array<string>;
-export const GetCompanyTimeTrackingTimeSheetsRequestEntityUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCompanyTimeTrackingTimeSheetsRequestEntityUuidsList>;
+export const GetCompanyTimeTrackingTimeSheetsRequestEntityUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<GetCompanyTimeTrackingTimeSheetsRequestEntityUuidsList>;
 
 export type GetCompanyTimeTrackingTimeSheetsRequestEntityType = "Employee" | "Contractor";
 export const GetCompanyTimeTrackingTimeSheetsRequestEntityType = S.String;
@@ -12484,9 +12283,8 @@ export const GetContractorAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of warning objects that provide additional information about the address. Warnings do not prevent the address from being saved. */
 export type ContractorAddressWarningsList = Array<WarningObject>;
-export const ContractorAddressWarningsList = /*@__PURE__*/ S.Array(
-  WarningObject,
-) as any as S.Schema<ContractorAddressWarningsList>;
+export const ContractorAddressWarningsList =
+  LocationWarningsList as any as S.Schema<ContractorAddressWarningsList>;
 
 export interface ContractorAddress2 {
   /** The status of the location. Inactive locations have been deleted, but may still have historical data associated with them. */
@@ -12825,9 +12623,8 @@ export const ContractorOnboardingStatusOnboardingStatus = S.String;
 
 /** A list of onboarding steps required to begin this step. */
 export type ContractorOnboardingStatusOnboardingStepsItemRequirementsList = Array<string>;
-export const ContractorOnboardingStatusOnboardingStepsItemRequirementsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContractorOnboardingStatusOnboardingStepsItemRequirementsList>;
+export const ContractorOnboardingStatusOnboardingStepsItemRequirementsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<ContractorOnboardingStatusOnboardingStepsItemRequirementsList>;
 
 export interface ContractorOnboardingStatusOnboardingStepsItem {
   /** When true, this step has been completed. */
@@ -13045,9 +12842,8 @@ export const GetContractorPaymentPdfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContractorPaymentPdfRequest>;
 
 export interface GetContractorPaymentPdfResponse {}
-export const GetContractorPaymentPdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetContractorPaymentPdfResponse" },
-) as any as S.Schema<GetContractorPaymentPdfResponse>;
+export const GetContractorPaymentPdfResponse =
+  DeleteV1ExternalPayrollResponse as any as S.Schema<GetContractorPaymentPdfResponse>;
 
 export interface GetContractorPaymentReceiptRequest {
   /** The UUID of the contractor payment */
@@ -13307,18 +13103,16 @@ export const GetDepartmentResponseContractorsItem = HolidayPayPolicyEmployeesIte
 
 /** Array of contractors assigned to the department. */
 export type GetDepartmentResponseContractorsList = Array<HolidayPayPolicyEmployeesItem>;
-export const GetDepartmentResponseContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<GetDepartmentResponseContractorsList>;
+export const GetDepartmentResponseContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<GetDepartmentResponseContractorsList>;
 
 export type GetDepartmentResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const GetDepartmentResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 
 /** Array of employees assigned to the department. */
 export type GetDepartmentResponseEmployeesList = Array<HolidayPayPolicyEmployeesItem>;
-export const GetDepartmentResponseEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<GetDepartmentResponseEmployeesList>;
+export const GetDepartmentResponseEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<GetDepartmentResponseEmployeesList>;
 
 export interface GetDepartmentResponse {
   /** The current version of the object. See the [versioning guide](https://docs.gusto.com/embedded-payroll/docs/idempotency) for information on how to use this field. */
@@ -13334,16 +13128,7 @@ export interface GetDepartmentResponse {
   /** The UUID of the department */
   uuid?: string;
 }
-export const GetDepartmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    company_uuid: S.optional(S.String),
-    contractors: S.optional(GetDepartmentResponseContractorsList),
-    employees: S.optional(GetDepartmentResponseEmployeesList),
-    title: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetDepartmentResponse" }) as any as S.Schema<GetDepartmentResponse>;
+export const GetDepartmentResponse = Department as any as S.Schema<GetDepartmentResponse>;
 
 export interface GetEmployeeBankAccountsRequest {
   /** The UUID of the employee */
@@ -13395,20 +13180,14 @@ export const GetEmployeeBenefitResponseContributionValueCase1TiersItem =
 
 export type GetEmployeeBenefitResponseContributionValueCase1TiersList =
   Array<CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem>;
-export const GetEmployeeBenefitResponseContributionValueCase1TiersList = /*@__PURE__*/ S.Array(
-  CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem,
-) as any as S.Schema<GetEmployeeBenefitResponseContributionValueCase1TiersList>;
+export const GetEmployeeBenefitResponseContributionValueCase1TiersList =
+  EmployeeBenefitContributionValueCase1TiersList as any as S.Schema<GetEmployeeBenefitResponseContributionValueCase1TiersList>;
 
 export interface GetEmployeeBenefitResponseContributionValueCase1 {
   tiers?: GetEmployeeBenefitResponseContributionValueCase1TiersList;
 }
-export const GetEmployeeBenefitResponseContributionValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tiers: S.optional(GetEmployeeBenefitResponseContributionValueCase1TiersList),
-  }),
-).annotate({
-  identifier: "GetEmployeeBenefitResponseContributionValueCase1",
-}) as any as S.Schema<GetEmployeeBenefitResponseContributionValueCase1>;
+export const GetEmployeeBenefitResponseContributionValueCase1 =
+  EmployeeBenefitContributionValueCase1 as any as S.Schema<GetEmployeeBenefitResponseContributionValueCase1>;
 
 /** For the `amount` and `percentage` contribution types, the value of the corresponding amount or percentage. For the `tiered` contribution type, an array of tiers. */
 export type GetEmployeeBenefitResponseContributionValue =
@@ -13532,9 +13311,8 @@ export const GetEmployeeCustomFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeCustomFieldsRequest>;
 
 export type EmployeeCustomFieldListCustomFieldsList = Array<EmployeeCustomField>;
-export const EmployeeCustomFieldListCustomFieldsList = /*@__PURE__*/ S.Array(
-  EmployeeCustomField,
-) as any as S.Schema<EmployeeCustomFieldListCustomFieldsList>;
+export const EmployeeCustomFieldListCustomFieldsList =
+  ShowEmployeesItemCustomFieldsList as any as S.Schema<EmployeeCustomFieldListCustomFieldsList>;
 
 /** A list of an employee's custom fields */
 export interface EmployeeCustomFieldList {
@@ -13573,16 +13351,12 @@ export const GetEmployeeEmployeeBenefitsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeEmployeeBenefitsRequest>;
 
 export type GetEmployeeEmployeeBenefitsResponseBodyList = Array<EmployeeBenefit>;
-export const GetEmployeeEmployeeBenefitsResponseBodyList = /*@__PURE__*/ S.Array(
-  EmployeeBenefit,
-) as any as S.Schema<GetEmployeeEmployeeBenefitsResponseBodyList>;
+export const GetEmployeeEmployeeBenefitsResponseBodyList =
+  GetCompanyBenefitEmployeeBenefitsResponseBodyList as any as S.Schema<GetEmployeeEmployeeBenefitsResponseBodyList>;
 
 export type GetEmployeeEmployeeBenefitsResponse = GetEmployeeEmployeeBenefitsResponseBodyList;
-export const GetEmployeeEmployeeBenefitsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetEmployeeEmployeeBenefitsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetEmployeeEmployeeBenefitsResponse",
-}) as any as S.Schema<GetEmployeeEmployeeBenefitsResponse>;
+export const GetEmployeeEmployeeBenefitsResponse =
+  GetCompanyBenefitEmployeeBenefitsResponse as any as S.Schema<GetEmployeeEmployeeBenefitsResponse>;
 
 export interface GetEmployeeEmploymentHistoryRequest {
   /** The UUID of the employee */
@@ -13685,14 +13459,12 @@ export const GetEmployeeFormsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmployeeFormsRequest" }) as any as S.Schema<GetEmployeeFormsRequest>;
 
 export type GetEmployeeFormsResponseBodyList = Array<Form>;
-export const GetEmployeeFormsResponseBodyList = /*@__PURE__*/ S.Array(
-  Form,
-) as any as S.Schema<GetEmployeeFormsResponseBodyList>;
+export const GetEmployeeFormsResponseBodyList =
+  GetCompanyFormsResponseBodyList as any as S.Schema<GetEmployeeFormsResponseBodyList>;
 
 export type GetEmployeeFormsResponse = GetEmployeeFormsResponseBodyList;
-export const GetEmployeeFormsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetEmployeeFormsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetEmployeeFormsResponse" }) as any as S.Schema<GetEmployeeFormsResponse>;
+export const GetEmployeeFormsResponse =
+  GetCompanyFormsResponse as any as S.Schema<GetEmployeeFormsResponse>;
 
 export interface GetEmployeeGarnishmentsRequest {
   /** The UUID of the employee */
@@ -13713,9 +13485,8 @@ export const GetEmployeeGarnishmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeGarnishmentsRequest>;
 
 export type GetEmployeeGarnishmentsResponseBodyList = Array<Garnishment>;
-export const GetEmployeeGarnishmentsResponseBodyList = /*@__PURE__*/ S.Array(
-  Garnishment,
-) as any as S.Schema<GetEmployeeGarnishmentsResponseBodyList>;
+export const GetEmployeeGarnishmentsResponseBodyList =
+  ShowEmployeesItemGarnishmentsList as any as S.Schema<GetEmployeeGarnishmentsResponseBodyList>;
 
 export type GetEmployeeGarnishmentsResponse = GetEmployeeGarnishmentsResponseBodyList;
 export const GetEmployeeGarnishmentsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -13840,9 +13611,8 @@ export const GetEmployeeI9AuthorizationDocumentOptionsRequest = /*@__PURE__*/ S.
 
 /** The document option's document titles */
 export type I9AuthorizationDocumentOptionDocumentTitleList = Array<string>;
-export const I9AuthorizationDocumentOptionDocumentTitleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<I9AuthorizationDocumentOptionDocumentTitleList>;
+export const I9AuthorizationDocumentOptionDocumentTitleList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<I9AuthorizationDocumentOptionDocumentTitleList>;
 
 /** The document option's section in the list of acceptable documents on the Form I-9 */
 export type I9AuthorizationDocumentOptionSection = "A" | "A1" | "A2" | "A3" | "B" | "C";
@@ -13964,9 +13734,8 @@ export const GetEmployeeJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmployeeJobsRequest" }) as any as S.Schema<GetEmployeeJobsRequest>;
 
 export type GetEmployeeJobsResponseBodyList = Array<Job>;
-export const GetEmployeeJobsResponseBodyList = /*@__PURE__*/ S.Array(
-  Job,
-) as any as S.Schema<GetEmployeeJobsResponseBodyList>;
+export const GetEmployeeJobsResponseBodyList =
+  ShowEmployeesItemJobsList as any as S.Schema<GetEmployeeJobsResponseBodyList>;
 
 export type GetEmployeeJobsResponse = GetEmployeeJobsResponseBodyList;
 export const GetEmployeeJobsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -14039,9 +13808,8 @@ export const EmployeeOnboardingStatusBlockersList = /*@__PURE__*/ S.Array(
 
 /** A list of onboarding steps required to begin this step. */
 export type EmployeeOnboardingStatusOnboardingStepsItemRequirementsList = Array<string>;
-export const EmployeeOnboardingStatusOnboardingStepsItemRequirementsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmployeeOnboardingStatusOnboardingStepsItemRequirementsList>;
+export const EmployeeOnboardingStatusOnboardingStepsItemRequirementsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<EmployeeOnboardingStatusOnboardingStepsItemRequirementsList>;
 
 export interface EmployeeOnboardingStatusOnboardingStepsItem {
   /** When true, this step has been completed. */
@@ -14055,24 +13823,14 @@ export interface EmployeeOnboardingStatusOnboardingStepsItem {
   /** User-friendly description of the onboarding step. */
   title?: string;
 }
-export const EmployeeOnboardingStatusOnboardingStepsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completed: S.optional(S.Boolean),
-    id: S.optional(S.String),
-    required: S.optional(S.Boolean),
-    requirements: S.optional(EmployeeOnboardingStatusOnboardingStepsItemRequirementsList),
-    title: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EmployeeOnboardingStatusOnboardingStepsItem",
-}) as any as S.Schema<EmployeeOnboardingStatusOnboardingStepsItem>;
+export const EmployeeOnboardingStatusOnboardingStepsItem =
+  ContractorOnboardingStatusOnboardingStepsItem as any as S.Schema<EmployeeOnboardingStatusOnboardingStepsItem>;
 
 /** List of steps required to onboard an employee. */
 export type EmployeeOnboardingStatusOnboardingStepsList =
   Array<EmployeeOnboardingStatusOnboardingStepsItem>;
-export const EmployeeOnboardingStatusOnboardingStepsList = /*@__PURE__*/ S.Array(
-  EmployeeOnboardingStatusOnboardingStepsItem,
-) as any as S.Schema<EmployeeOnboardingStatusOnboardingStepsList>;
+export const EmployeeOnboardingStatusOnboardingStepsList =
+  ContractorOnboardingStatusOnboardingStepsList as any as S.Schema<EmployeeOnboardingStatusOnboardingStepsList>;
 
 /** The representation of an employee's onboarding status. */
 export interface EmployeeOnboardingStatus2 {
@@ -14112,9 +13870,8 @@ export type EmployeePaymentMethodSplitBy = "Amount" | "Percentage";
 export const EmployeePaymentMethodSplitBy = S.String;
 
 export type EmployeePaymentMethodSplitsList = Array<PaymentMethodBankAccount>;
-export const EmployeePaymentMethodSplitsList = /*@__PURE__*/ S.Array(
-  PaymentMethodBankAccount,
-) as any as S.Schema<EmployeePaymentMethodSplitsList>;
+export const EmployeePaymentMethodSplitsList =
+  ContractorPaymentMethodSplitsList as any as S.Schema<EmployeePaymentMethodSplitsList>;
 
 /** The payment method type. If type is Check, then `split_by` and `splits` do not need to be populated. If type is Direct Deposit, `split_by` and `splits` are required. */
 export type EmployeePaymentMethodType = "Direct Deposit" | "Check";
@@ -14212,9 +13969,8 @@ export const GetEmployeesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmployeesRequest" }) as any as S.Schema<GetEmployeesRequest>;
 
 export type EmployeeApplicableTaxIdsList = Array<number>;
-export const EmployeeApplicableTaxIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<EmployeeApplicableTaxIdsList>;
+export const EmployeeApplicableTaxIdsList =
+  ShowEmployeesItemApplicableTaxIdsList as any as S.Schema<EmployeeApplicableTaxIdsList>;
 
 export type EmployeeCurrentEmploymentStatus =
   | "full_time"
@@ -14226,19 +13982,16 @@ export const EmployeeCurrentEmploymentStatus = S.String;
 
 /** Custom fields are only included for the employee if the include param has the custom_fields value set */
 export type EmployeeCustomFieldsList = Array<EmployeeCustomField>;
-export const EmployeeCustomFieldsList = /*@__PURE__*/ S.Array(
-  EmployeeCustomField,
-) as any as S.Schema<EmployeeCustomFieldsList>;
+export const EmployeeCustomFieldsList =
+  ShowEmployeesItemCustomFieldsList as any as S.Schema<EmployeeCustomFieldsList>;
 
 export type EmployeeEligiblePaidTimeOffList = Array<PaidTimeOff>;
-export const EmployeeEligiblePaidTimeOffList = /*@__PURE__*/ S.Array(
-  PaidTimeOff,
-) as any as S.Schema<EmployeeEligiblePaidTimeOffList>;
+export const EmployeeEligiblePaidTimeOffList =
+  ShowEmployeesItemEligiblePaidTimeOffList as any as S.Schema<EmployeeEligiblePaidTimeOffList>;
 
 export type EmployeeGarnishmentsList = Array<Garnishment>;
-export const EmployeeGarnishmentsList = /*@__PURE__*/ S.Array(
-  Garnishment,
-) as any as S.Schema<EmployeeGarnishmentsList>;
+export const EmployeeGarnishmentsList =
+  ShowEmployeesItemGarnishmentsList as any as S.Schema<EmployeeGarnishmentsList>;
 
 export type EmployeeJobsList = Array<Job>;
 export const EmployeeJobsList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<EmployeeJobsList>;
@@ -14294,9 +14047,8 @@ export type EmployeePaymentMethod = "Direct Deposit" | "Check";
 export const EmployeePaymentMethod = S.String;
 
 export type EmployeeTerminationsList = Array<Termination>;
-export const EmployeeTerminationsList = /*@__PURE__*/ S.Array(
-  Termination,
-) as any as S.Schema<EmployeeTerminationsList>;
+export const EmployeeTerminationsList =
+  ShowEmployeesItemTerminationsList as any as S.Schema<EmployeeTerminationsList>;
 
 /** The representation of an employee in Gusto. */
 export interface Employee {
@@ -14467,9 +14219,8 @@ export const GetEmployeeTerminationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeTerminationsRequest>;
 
 export type GetEmployeeTerminationsResponseBodyList = Array<Termination>;
-export const GetEmployeeTerminationsResponseBodyList = /*@__PURE__*/ S.Array(
-  Termination,
-) as any as S.Schema<GetEmployeeTerminationsResponseBodyList>;
+export const GetEmployeeTerminationsResponseBodyList =
+  ShowEmployeesItemTerminationsList as any as S.Schema<GetEmployeeTerminationsResponseBodyList>;
 
 export type GetEmployeeTerminationsResponse = GetEmployeeTerminationsResponseBodyList;
 export const GetEmployeeTerminationsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -14762,9 +14513,8 @@ export const GetGeneratedDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of urls to access the documents. */
 export type GeneratedDocumentDocumentUrlsList = Array<string>;
-export const GeneratedDocumentDocumentUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GeneratedDocumentDocumentUrlsList>;
+export const GeneratedDocumentDocumentUrlsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<GeneratedDocumentDocumentUrlsList>;
 
 /** Current status of the Generated Document */
 export type GeneratedDocumentStatus = "pending" | "started" | "succeeded" | "failed";
@@ -14982,9 +14732,8 @@ export const GetJobCompensationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetJobCompensationsRequest>;
 
 export type GetJobCompensationsResponseBodyList = Array<Compensation>;
-export const GetJobCompensationsResponseBodyList = /*@__PURE__*/ S.Array(
-  Compensation,
-) as any as S.Schema<GetJobCompensationsResponseBodyList>;
+export const GetJobCompensationsResponseBodyList =
+  JobCompensationsList as any as S.Schema<GetJobCompensationsResponseBodyList>;
 
 export type GetJobCompensationsResponse = GetJobCompensationsResponseBodyList;
 export const GetJobCompensationsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -15128,13 +14877,7 @@ export interface GetPartnerManagedCompanyMigrationReadinessResponseWarningsItemM
   key?: string;
 }
 export const GetPartnerManagedCompanyMigrationReadinessResponseWarningsItemMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetPartnerManagedCompanyMigrationReadinessResponseWarningsItemMetadata",
-  }) as any as S.Schema<GetPartnerManagedCompanyMigrationReadinessResponseWarningsItemMetadata>;
+  GetPartnerManagedCompanyMigrationReadinessResponseErrorsItemMetadata as any as S.Schema<GetPartnerManagedCompanyMigrationReadinessResponseWarningsItemMetadata>;
 
 export interface GetPartnerManagedCompanyMigrationReadinessResponseWarningsItem {
   /** Error category */
@@ -15785,9 +15528,8 @@ export const GetRecoveryCasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The uuids of the associated contractor payments for which the recovery case was created. If the recovery case was created for a payroll, this field will be null. */
 export type RecoveryCaseContractorPaymentUuidsList = Array<string>;
-export const RecoveryCaseContractorPaymentUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecoveryCaseContractorPaymentUuidsList>;
+export const RecoveryCaseContractorPaymentUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<RecoveryCaseContractorPaymentUuidsList>;
 
 /** Status of the recovery case */
 export type RecoveryCaseStatus =
@@ -15870,9 +15612,8 @@ export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of urls to access the report */
 export type ReportReportUrlsList = Array<string>;
-export const ReportReportUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportReportUrlsList>;
+export const ReportReportUrlsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<ReportReportUrlsList>;
 
 export interface Report {
   /** The array of urls to access the report */
@@ -16100,14 +15841,12 @@ export const TaxPayment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaxPayment" }) as any as S.Schema<TaxPayment>;
 
 export type GetTaxPaymentsRequestJurisdictionList = Array<string>;
-export const GetTaxPaymentsRequestJurisdictionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTaxPaymentsRequestJurisdictionList>;
+export const GetTaxPaymentsRequestJurisdictionList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<GetTaxPaymentsRequestJurisdictionList>;
 
 export type GetTaxPaymentsRequestPayrollUuidsList = Array<string>;
-export const GetTaxPaymentsRequestPayrollUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTaxPaymentsRequestPayrollUuidsList>;
+export const GetTaxPaymentsRequestPayrollUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<GetTaxPaymentsRequestPayrollUuidsList>;
 
 export interface GetTaxPaymentsRequest {
   /** The UUID of the company */
@@ -16617,9 +16356,8 @@ export const GetV1CompanyIndustryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Standard Industrial Classification (SIC) codes, which are four digit numbers that categorize the industries that companies belong to based on their business activities. If sic_codes is not passed in, we will perform an internal lookup with `naics_code`. */
 export type IndustrySicCodesList = Array<string>;
-export const IndustrySicCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IndustrySicCodesList>;
+export const IndustrySicCodesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<IndustrySicCodesList>;
 
 export interface Industry {
   /** Company UUID */
@@ -16705,9 +16443,7 @@ export const GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseStatus 
 export type GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseContractorPaymentsList =
   Array<ContractorPaymentForGroup>;
 export const GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseContractorPaymentsList =
-  /*@__PURE__*/ S.Array(
-    ContractorPaymentForGroup,
-  ) as any as S.Schema<GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseContractorPaymentsList>;
+  CreateCompanyContractorPaymentGroupResponseContractorPaymentsList as any as S.Schema<GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseContractorPaymentsList>;
 
 /** List of credit blockers for the contractor payment group. */
 export type GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseCreditBlockersList =
@@ -16721,9 +16457,7 @@ export const GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseCreditB
 export type GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseSubmissionBlockersList =
   Array<PayrollSubmissionBlockerType>;
 export const GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseSubmissionBlockersList =
-  /*@__PURE__*/ S.Array(
-    PayrollSubmissionBlockerType,
-  ) as any as S.Schema<GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseSubmissionBlockersList>;
+  CreateCompanyContractorPaymentGroupResponseSubmissionBlockersList as any as S.Schema<GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseSubmissionBlockersList>;
 
 export type GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseTotals =
   CreateCompanyContractorPaymentGroupResponseTotals;
@@ -17371,21 +17105,14 @@ export interface ExternalPayrollTaxSuggestionsTaxSuggestionsItem {
   /** The ID of the tax. */
   tax_id?: number;
 }
-export const ExternalPayrollTaxSuggestionsTaxSuggestionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.String),
-    tax_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ExternalPayrollTaxSuggestionsTaxSuggestionsItem",
-}) as any as S.Schema<ExternalPayrollTaxSuggestionsTaxSuggestionsItem>;
+export const ExternalPayrollTaxSuggestionsTaxSuggestionsItem =
+  ExternalPayrollExternalPayrollItemsItemTaxesItem as any as S.Schema<ExternalPayrollTaxSuggestionsTaxSuggestionsItem>;
 
 /** Possible tax liabilities selections. */
 export type ExternalPayrollTaxSuggestionsTaxSuggestionsList =
   Array<ExternalPayrollTaxSuggestionsTaxSuggestionsItem>;
-export const ExternalPayrollTaxSuggestionsTaxSuggestionsList = /*@__PURE__*/ S.Array(
-  ExternalPayrollTaxSuggestionsTaxSuggestionsItem,
-) as any as S.Schema<ExternalPayrollTaxSuggestionsTaxSuggestionsList>;
+export const ExternalPayrollTaxSuggestionsTaxSuggestionsList =
+  ExternalPayrollExternalPayrollItemsItemTaxesList as any as S.Schema<ExternalPayrollTaxSuggestionsTaxSuggestionsList>;
 
 /** The representation of an external payroll with minimal information. */
 export interface ExternalPayrollTaxSuggestions {
@@ -17629,11 +17356,8 @@ export const GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubRequest = /*@__
 }) as any as S.Schema<GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubRequest>;
 
 export interface GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubResponse {}
-export const GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubResponse",
-}) as any as S.Schema<GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubResponse>;
+export const GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubResponse =
+  CreateEmployeeYtdBenefitAmountsFromDifferentCompanyResponse as any as S.Schema<GetV1PayrollsPayrollUuidEmployeesEmployeeUuidPayStubResponse>;
 
 export interface GetV1SalaryEstimatesIdRequest {
   /** The UUID of the salary estimate */
@@ -18033,9 +17757,8 @@ export const OauthAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of employees. This field is only applicable to new hire payroll and termination payroll */
 export type PostCompaniesPayrollSkipCompanyUuidRequestEmployeeUuidsList = Array<string>;
-export const PostCompaniesPayrollSkipCompanyUuidRequestEmployeeUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostCompaniesPayrollSkipCompanyUuidRequestEmployeeUuidsList>;
+export const PostCompaniesPayrollSkipCompanyUuidRequestEmployeeUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<PostCompaniesPayrollSkipCompanyUuidRequestEmployeeUuidsList>;
 
 /** Payroll type */
 export type PostCompaniesPayrollSkipCompanyUuidRequestPayrollType =
@@ -18075,11 +17798,8 @@ export const PostCompaniesPayrollSkipCompanyUuidRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PostCompaniesPayrollSkipCompanyUuidRequest>;
 
 export interface PostCompaniesPayrollSkipCompanyUuidResponse {}
-export const PostCompaniesPayrollSkipCompanyUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostCompaniesPayrollSkipCompanyUuidResponse",
-}) as any as S.Schema<PostCompaniesPayrollSkipCompanyUuidResponse>;
+export const PostCompaniesPayrollSkipCompanyUuidResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<PostCompaniesPayrollSkipCompanyUuidResponse>;
 
 export interface PostDepartmentsRequest {
   /** The UUID of the company */
@@ -18099,18 +17819,16 @@ export const PostDepartmentsResponseContractorsItem = HolidayPayPolicyEmployeesI
 
 /** Array of contractors assigned to the department. */
 export type PostDepartmentsResponseContractorsList = Array<HolidayPayPolicyEmployeesItem>;
-export const PostDepartmentsResponseContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PostDepartmentsResponseContractorsList>;
+export const PostDepartmentsResponseContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PostDepartmentsResponseContractorsList>;
 
 export type PostDepartmentsResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const PostDepartmentsResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 
 /** Array of employees assigned to the department. */
 export type PostDepartmentsResponseEmployeesList = Array<HolidayPayPolicyEmployeesItem>;
-export const PostDepartmentsResponseEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PostDepartmentsResponseEmployeesList>;
+export const PostDepartmentsResponseEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PostDepartmentsResponseEmployeesList>;
 
 export interface PostDepartmentsResponse {
   /** The current version of the object. See the [versioning guide](https://docs.gusto.com/embedded-payroll/docs/idempotency) for information on how to use this field. */
@@ -18126,16 +17844,7 @@ export interface PostDepartmentsResponse {
   /** The UUID of the department */
   uuid?: string;
 }
-export const PostDepartmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    company_uuid: S.optional(S.String),
-    contractors: S.optional(PostDepartmentsResponseContractorsList),
-    employees: S.optional(PostDepartmentsResponseEmployeesList),
-    title: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "PostDepartmentsResponse" }) as any as S.Schema<PostDepartmentsResponse>;
+export const PostDepartmentsResponse = Department as any as S.Schema<PostDepartmentsResponse>;
 
 export interface PostPayrollsGrossUpPayrollUuidRequest {
   /** The UUID of the payroll */
@@ -18244,11 +17953,8 @@ export const PostV1DisconnectAppIntegrationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PostV1DisconnectAppIntegrationRequest>;
 
 export interface PostV1DisconnectAppIntegrationResponse {}
-export const PostV1DisconnectAppIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostV1DisconnectAppIntegrationResponse",
-}) as any as S.Schema<PostV1DisconnectAppIntegrationResponse>;
+export const PostV1DisconnectAppIntegrationResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<PostV1DisconnectAppIntegrationResponse>;
 
 export interface PostV1EmployeesRequest {
   /** Company ID */
@@ -18376,13 +18082,8 @@ export interface PostV1HistoricalEmployeesRequestWorkAddress {
   /** UUID of a company work location from the company locations response. */
   location_uuid: string;
 }
-export const PostV1HistoricalEmployeesRequestWorkAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location_uuid: S.String,
-  }),
-).annotate({
-  identifier: "PostV1HistoricalEmployeesRequestWorkAddress",
-}) as any as S.Schema<PostV1HistoricalEmployeesRequestWorkAddress>;
+export const PostV1HistoricalEmployeesRequestWorkAddress =
+  CreateCompanyPeopleBatchRequestBatchItemWorkAddress as any as S.Schema<PostV1HistoricalEmployeesRequestWorkAddress>;
 
 export interface PostV1HistoricalEmployeesRequest {
   /** The UUID of the company that will employ this historical record. */
@@ -18540,18 +18241,16 @@ export const PutAddPeopleToDepartmentRequestContractorsItem = HolidayPayPolicyEm
 
 /** Array of contractors to add or remove from the department */
 export type PutAddPeopleToDepartmentRequestContractorsList = Array<HolidayPayPolicyEmployeesItem>;
-export const PutAddPeopleToDepartmentRequestContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutAddPeopleToDepartmentRequestContractorsList>;
+export const PutAddPeopleToDepartmentRequestContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutAddPeopleToDepartmentRequestContractorsList>;
 
 export type PutAddPeopleToDepartmentRequestEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const PutAddPeopleToDepartmentRequestEmployeesItem = HolidayPayPolicyEmployeesItem;
 
 /** Array of employees to add or remove from the department */
 export type PutAddPeopleToDepartmentRequestEmployeesList = Array<HolidayPayPolicyEmployeesItem>;
-export const PutAddPeopleToDepartmentRequestEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutAddPeopleToDepartmentRequestEmployeesList>;
+export const PutAddPeopleToDepartmentRequestEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutAddPeopleToDepartmentRequestEmployeesList>;
 
 export interface PutAddPeopleToDepartmentRequest {
   /** The UUID of the department */
@@ -18579,18 +18278,16 @@ export const PutAddPeopleToDepartmentResponseContractorsItem = HolidayPayPolicyE
 
 /** Array of contractors assigned to the department. */
 export type PutAddPeopleToDepartmentResponseContractorsList = Array<HolidayPayPolicyEmployeesItem>;
-export const PutAddPeopleToDepartmentResponseContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutAddPeopleToDepartmentResponseContractorsList>;
+export const PutAddPeopleToDepartmentResponseContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutAddPeopleToDepartmentResponseContractorsList>;
 
 export type PutAddPeopleToDepartmentResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const PutAddPeopleToDepartmentResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 
 /** Array of employees assigned to the department. */
 export type PutAddPeopleToDepartmentResponseEmployeesList = Array<HolidayPayPolicyEmployeesItem>;
-export const PutAddPeopleToDepartmentResponseEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutAddPeopleToDepartmentResponseEmployeesList>;
+export const PutAddPeopleToDepartmentResponseEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutAddPeopleToDepartmentResponseEmployeesList>;
 
 export interface PutAddPeopleToDepartmentResponse {
   /** The current version of the object. See the [versioning guide](https://docs.gusto.com/embedded-payroll/docs/idempotency) for information on how to use this field. */
@@ -18781,17 +18478,13 @@ export const PutCompanyBenefitContributionExclusionsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<PutCompanyBenefitContributionExclusionsRequest>;
 
 export type PutCompanyBenefitContributionExclusionsResponseBodyList = Array<ContributionExclusion>;
-export const PutCompanyBenefitContributionExclusionsResponseBodyList = /*@__PURE__*/ S.Array(
-  ContributionExclusion,
-) as any as S.Schema<PutCompanyBenefitContributionExclusionsResponseBodyList>;
+export const PutCompanyBenefitContributionExclusionsResponseBodyList =
+  GetCompanyBenefitContributionExclusionsResponseBodyList as any as S.Schema<PutCompanyBenefitContributionExclusionsResponseBodyList>;
 
 export type PutCompanyBenefitContributionExclusionsResponse =
   PutCompanyBenefitContributionExclusionsResponseBodyList;
-export const PutCompanyBenefitContributionExclusionsResponse = /*@__PURE__*/ S.suspend(() =>
-  PutCompanyBenefitContributionExclusionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCompanyBenefitContributionExclusionsResponse",
-}) as any as S.Schema<PutCompanyBenefitContributionExclusionsResponse>;
+export const PutCompanyBenefitContributionExclusionsResponse =
+  GetCompanyBenefitContributionExclusionsResponse as any as S.Schema<PutCompanyBenefitContributionExclusionsResponse>;
 
 /** A single tier of a tiered matching scheme. */
 export type EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersItem =
@@ -18802,21 +18495,13 @@ export const EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersIte
 export type EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersList =
   Array<CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem>;
 export const EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersList =
-  /*@__PURE__*/ S.Array(
-    CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem,
-  ) as any as S.Schema<EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersList>;
+  CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersList as any as S.Schema<EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersList>;
 
 export interface EmployeeBenefitForCompanyBenefitInputContributionValueCase1 {
   tiers?: EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersList;
 }
-export const EmployeeBenefitForCompanyBenefitInputContributionValueCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tiers: S.optional(EmployeeBenefitForCompanyBenefitInputContributionValueCase1TiersList),
-    }),
-).annotate({
-  identifier: "EmployeeBenefitForCompanyBenefitInputContributionValueCase1",
-}) as any as S.Schema<EmployeeBenefitForCompanyBenefitInputContributionValueCase1>;
+export const EmployeeBenefitForCompanyBenefitInputContributionValueCase1 =
+  CreateEmployeeEmployeeBenefitResponseContributionValueCase1 as any as S.Schema<EmployeeBenefitForCompanyBenefitInputContributionValueCase1>;
 
 /** For the `amount` and `percentage` contribution types, the value of the corresponding amount or percentage. For the `tiered` contribution type, an array of tiers. */
 export type EmployeeBenefitForCompanyBenefitInputContributionValue =
@@ -18958,17 +18643,13 @@ export const PutCompanyBenefitEmployeeBenefitsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutCompanyBenefitEmployeeBenefitsRequest>;
 
 export type PutCompanyBenefitEmployeeBenefitsResponseBodyList = Array<EmployeeBenefit>;
-export const PutCompanyBenefitEmployeeBenefitsResponseBodyList = /*@__PURE__*/ S.Array(
-  EmployeeBenefit,
-) as any as S.Schema<PutCompanyBenefitEmployeeBenefitsResponseBodyList>;
+export const PutCompanyBenefitEmployeeBenefitsResponseBodyList =
+  GetCompanyBenefitEmployeeBenefitsResponseBodyList as any as S.Schema<PutCompanyBenefitEmployeeBenefitsResponseBodyList>;
 
 export type PutCompanyBenefitEmployeeBenefitsResponse =
   PutCompanyBenefitEmployeeBenefitsResponseBodyList;
-export const PutCompanyBenefitEmployeeBenefitsResponse = /*@__PURE__*/ S.suspend(() =>
-  PutCompanyBenefitEmployeeBenefitsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutCompanyBenefitEmployeeBenefitsResponse",
-}) as any as S.Schema<PutCompanyBenefitEmployeeBenefitsResponse>;
+export const PutCompanyBenefitEmployeeBenefitsResponse =
+  GetCompanyBenefitEmployeeBenefitsResponse as any as S.Schema<PutCompanyBenefitEmployeeBenefitsResponse>;
 
 export interface PutCompanyEarningTypeRequest {
   /** The UUID of the company */
@@ -19133,9 +18814,8 @@ export const PutCompanyHolidayPayPolicyAddRequestEmployeesItem = HolidayPayPolic
 /** An array of employee objects, each containing an employee_uuid. */
 export type PutCompanyHolidayPayPolicyAddRequestEmployeesList =
   Array<HolidayPayPolicyEmployeesItem>;
-export const PutCompanyHolidayPayPolicyAddRequestEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutCompanyHolidayPayPolicyAddRequestEmployeesList>;
+export const PutCompanyHolidayPayPolicyAddRequestEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutCompanyHolidayPayPolicyAddRequestEmployeesList>;
 
 export interface PutCompanyHolidayPayPolicyAddRequest {
   /** The UUID of the company */
@@ -19167,9 +18847,8 @@ export const PutCompanyHolidayPayPolicyRemoveRequestEmployeesItem = HolidayPayPo
 /** An array of employee objects, each containing an employee_uuid. */
 export type PutCompanyHolidayPayPolicyRemoveRequestEmployeesList =
   Array<HolidayPayPolicyEmployeesItem>;
-export const PutCompanyHolidayPayPolicyRemoveRequestEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutCompanyHolidayPayPolicyRemoveRequestEmployeesList>;
+export const PutCompanyHolidayPayPolicyRemoveRequestEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutCompanyHolidayPayPolicyRemoveRequestEmployeesList>;
 
 export interface PutCompanyHolidayPayPolicyRemoveRequest {
   /** The UUID of the company */
@@ -19255,17 +18934,13 @@ export const PutCompanyPayrollCalculateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCompanyPayrollCalculateRequest>;
 
 export interface PutCompanyPayrollCalculateResponse {}
-export const PutCompanyPayrollCalculateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCompanyPayrollCalculateResponse",
-}) as any as S.Schema<PutCompanyPayrollCalculateResponse>;
+export const PutCompanyPayrollCalculateResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<PutCompanyPayrollCalculateResponse>;
 
 /** The employees to prepare, identified by UUID. If omitted, every employee currently on the payroll is prepared. **Off-cycle payrolls that support multiple employees (`Bonus`, `Correction`, `Adhoc`):** passing `employee_uuids` also adds eligible employees who aren't yet on the payroll - a listed employee not on the payroll is added, while one already on it is simply prepared. A request may include up to 100 UUIDs, of which at most 25 may be employees not already on the payroll; an ineligible or unknown UUID, or more than 25 new employees, is rejected with a 422. **All other payrolls:** `employee_uuids` selects which of the payroll's existing employees to prepare; a UUID for an employee not on the payroll is rejected with a 422. */
 export type PutCompanyPayrollPrepareRequestEmployeeUuidsList = Array<string>;
-export const PutCompanyPayrollPrepareRequestEmployeeUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutCompanyPayrollPrepareRequestEmployeeUuidsList>;
+export const PutCompanyPayrollPrepareRequestEmployeeUuidsList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<PutCompanyPayrollPrepareRequestEmployeeUuidsList>;
 
 export interface PutCompanyPayrollPrepareRequest {
   /** The UUID of the company */
@@ -19399,9 +19074,8 @@ export const PayrollEmployeeCompensationsTypeFixedCompensationsItem =
 /** An array of fixed compensations for the employee. Fixed compensations include tips and bonuses. On regular payrolls, reimbursements are sent via the dedicated `reimbursements` array instead. Off-cycle payrolls continue to include reimbursements in `fixed_compensations`. If this payroll has been processed, only fixed compensations with a value greater than 0.00 are returned. For an unprocessed payroll, all active fixed compensations are returned. */
 export type PayrollEmployeeCompensationsTypeFixedCompensationsList =
   Array<PayrollUnprocessedEmployeeCompensationsTypeFixedCompensationsItem>;
-export const PayrollEmployeeCompensationsTypeFixedCompensationsList = /*@__PURE__*/ S.Array(
-  PayrollUnprocessedEmployeeCompensationsTypeFixedCompensationsItem,
-) as any as S.Schema<PayrollEmployeeCompensationsTypeFixedCompensationsList>;
+export const PayrollEmployeeCompensationsTypeFixedCompensationsList =
+  PayrollShowEmployeeCompensationsItemFixedCompensationsList as any as S.Schema<PayrollEmployeeCompensationsTypeFixedCompensationsList>;
 
 export type PayrollEmployeeCompensationsTypeHourlyCompensationsItem =
   PayrollUnprocessedEmployeeCompensationsTypeHourlyCompensationsItem;
@@ -19411,9 +19085,8 @@ export const PayrollEmployeeCompensationsTypeHourlyCompensationsItem =
 /** An array of hourly compensations for the employee. Hourly compensations include regular, overtime, and double overtime hours. If this payroll has been processed, only hourly compensations with a value greater than 0.00 are returned. For an unprocessed payroll, all active hourly compensations are returned. */
 export type PayrollEmployeeCompensationsTypeHourlyCompensationsList =
   Array<PayrollUnprocessedEmployeeCompensationsTypeHourlyCompensationsItem>;
-export const PayrollEmployeeCompensationsTypeHourlyCompensationsList = /*@__PURE__*/ S.Array(
-  PayrollUnprocessedEmployeeCompensationsTypeHourlyCompensationsItem,
-) as any as S.Schema<PayrollEmployeeCompensationsTypeHourlyCompensationsList>;
+export const PayrollEmployeeCompensationsTypeHourlyCompensationsList =
+  PayrollShowEmployeeCompensationsItemHourlyCompensationsList as any as S.Schema<PayrollEmployeeCompensationsTypeHourlyCompensationsList>;
 
 export type PayrollEmployeeCompensationsTypePaidTimeOffItem =
   PayrollUnprocessedEmployeeCompensationsTypePaidTimeOffItem;
@@ -19423,9 +19096,8 @@ export const PayrollEmployeeCompensationsTypePaidTimeOffItem =
 /** An array of all paid time off the employee is eligible for this pay period. */
 export type PayrollEmployeeCompensationsTypePaidTimeOffList =
   Array<PayrollUnprocessedEmployeeCompensationsTypePaidTimeOffItem>;
-export const PayrollEmployeeCompensationsTypePaidTimeOffList = /*@__PURE__*/ S.Array(
-  PayrollUnprocessedEmployeeCompensationsTypePaidTimeOffItem,
-) as any as S.Schema<PayrollEmployeeCompensationsTypePaidTimeOffList>;
+export const PayrollEmployeeCompensationsTypePaidTimeOffList =
+  PayrollUnprocessedEmployeeCompensationsTypePaidTimeOffList as any as S.Schema<PayrollEmployeeCompensationsTypePaidTimeOffList>;
 
 export type PayrollEmployeeCompensationsTypePaymentMethod =
   | "Direct Deposit"
@@ -19441,9 +19113,8 @@ export const PayrollEmployeeCompensationsTypeReimbursementsItem =
 /** An array of reimbursements for the employee. */
 export type PayrollEmployeeCompensationsTypeReimbursementsList =
   Array<PayrollUnprocessedEmployeeCompensationsTypeReimbursementsItem>;
-export const PayrollEmployeeCompensationsTypeReimbursementsList = /*@__PURE__*/ S.Array(
-  PayrollUnprocessedEmployeeCompensationsTypeReimbursementsItem,
-) as any as S.Schema<PayrollEmployeeCompensationsTypeReimbursementsList>;
+export const PayrollEmployeeCompensationsTypeReimbursementsList =
+  PayrollUnprocessedEmployeeCompensationsTypeReimbursementsList as any as S.Schema<PayrollEmployeeCompensationsTypeReimbursementsList>;
 
 /** The amount type of the deduction for the pay period. Only present for unprocessed payrolls. */
 export type PayrollEmployeeCompensationsTypeDeductionsItemAmountType = "fixed" | "percent";
@@ -19763,9 +19434,7 @@ export const PutCompanyPayrollsRequestEmployeeCompensationsItemFixedCompensation
 export type PutCompanyPayrollsRequestEmployeeCompensationsItemFixedCompensationsList =
   Array<PayrollUnprocessedEmployeeCompensationsTypeFixedCompensationsItem>;
 export const PutCompanyPayrollsRequestEmployeeCompensationsItemFixedCompensationsList =
-  /*@__PURE__*/ S.Array(
-    PayrollUnprocessedEmployeeCompensationsTypeFixedCompensationsItem,
-  ) as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemFixedCompensationsList>;
+  PayrollUnprocessedEmployeeCompensationsTypeFixedCompensationsList as any as S.Schema<PutCompanyPayrollsRequestEmployeeCompensationsItemFixedCompensationsList>;
 
 /** An array of hourly compensations for the employee. Hourly compensations include regular, overtime, and double overtime hours. */
 export interface PutCompanyPayrollsRequestEmployeeCompensationsItemHourlyCompensationsItem {
@@ -19997,9 +19666,8 @@ export const PutCompanyPayrollSubmitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCompanyPayrollSubmitRequest>;
 
 export interface PutCompanyPayrollSubmitResponse {}
-export const PutCompanyPayrollSubmitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutCompanyPayrollSubmitResponse" },
-) as any as S.Schema<PutCompanyPayrollSubmitResponse>;
+export const PutCompanyPayrollSubmitResponse =
+  DeleteV1ExternalPayrollResponse as any as S.Schema<PutCompanyPayrollSubmitResponse>;
 
 export interface PutCompanyPayScheduleRequest {
   /** The UUID of the company */
@@ -20155,11 +19823,8 @@ export const PutCompanyTaxRequirementRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCompanyTaxRequirementRequest>;
 
 export interface PutCompanyTaxRequirementResponse {}
-export const PutCompanyTaxRequirementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutCompanyTaxRequirementResponse",
-}) as any as S.Schema<PutCompanyTaxRequirementResponse>;
+export const PutCompanyTaxRequirementResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<PutCompanyTaxRequirementResponse>;
 
 export type PutCompensationRequestMinimumWagesItem =
   PostV1CompensationsCompensationIdRequestMinimumWagesItem;
@@ -20168,9 +19833,8 @@ export const PutCompensationRequestMinimumWagesItem =
 
 export type PutCompensationRequestMinimumWagesList =
   Array<PostV1CompensationsCompensationIdRequestMinimumWagesItem>;
-export const PutCompensationRequestMinimumWagesList = /*@__PURE__*/ S.Array(
-  PostV1CompensationsCompensationIdRequestMinimumWagesItem,
-) as any as S.Schema<PutCompensationRequestMinimumWagesList>;
+export const PutCompensationRequestMinimumWagesList =
+  PostV1CompensationsCompensationIdRequestMinimumWagesList as any as S.Schema<PutCompensationRequestMinimumWagesList>;
 
 /** The unit accompanying the compensation rate. If the employee is an owner, rate should be 'Paycheck'. */
 export type PutCompensationRequestPaymentUnit = "Hour" | "Week" | "Month" | "Year" | "Paycheck";
@@ -20355,18 +20019,16 @@ export const PutDepartmentsResponseContractorsItem = HolidayPayPolicyEmployeesIt
 
 /** Array of contractors assigned to the department. */
 export type PutDepartmentsResponseContractorsList = Array<HolidayPayPolicyEmployeesItem>;
-export const PutDepartmentsResponseContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutDepartmentsResponseContractorsList>;
+export const PutDepartmentsResponseContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutDepartmentsResponseContractorsList>;
 
 export type PutDepartmentsResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const PutDepartmentsResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 
 /** Array of employees assigned to the department. */
 export type PutDepartmentsResponseEmployeesList = Array<HolidayPayPolicyEmployeesItem>;
-export const PutDepartmentsResponseEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutDepartmentsResponseEmployeesList>;
+export const PutDepartmentsResponseEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutDepartmentsResponseEmployeesList>;
 
 export interface PutDepartmentsResponse {
   /** The current version of the object. See the [versioning guide](https://docs.gusto.com/embedded-payroll/docs/idempotency) for information on how to use this field. */
@@ -20382,16 +20044,7 @@ export interface PutDepartmentsResponse {
   /** The UUID of the department */
   uuid?: string;
 }
-export const PutDepartmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    company_uuid: S.optional(S.String),
-    contractors: S.optional(PutDepartmentsResponseContractorsList),
-    employees: S.optional(PutDepartmentsResponseEmployeesList),
-    title: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "PutDepartmentsResponse" }) as any as S.Schema<PutDepartmentsResponse>;
+export const PutDepartmentsResponse = Department as any as S.Schema<PutDepartmentsResponse>;
 
 /** The bank account type. */
 export type PutEmployeeBankAccountsRequestAccountType = "Checking" | "Savings";
@@ -20443,9 +20096,8 @@ export const PutEmployeeBenefitRequestContributionValueCase1Item =
 /** For `tiered` contribution types, an array of tiers. */
 export type PutEmployeeBenefitRequestContributionValueCase1List =
   Array<CreateEmployeeEmployeeBenefitRequestContributionValueCase1Item>;
-export const PutEmployeeBenefitRequestContributionValueCase1List = /*@__PURE__*/ S.Array(
-  CreateEmployeeEmployeeBenefitRequestContributionValueCase1Item,
-) as any as S.Schema<PutEmployeeBenefitRequestContributionValueCase1List>;
+export const PutEmployeeBenefitRequestContributionValueCase1List =
+  CreateEmployeeEmployeeBenefitRequestContributionValueCase1List as any as S.Schema<PutEmployeeBenefitRequestContributionValueCase1List>;
 
 /** For the `amount` and `percentage` contribution types, the value of the corresponding amount or percentage. For the `tiered` contribution type, an array of tiers. */
 export type PutEmployeeBenefitRequestContributionValue =
@@ -20559,20 +20211,14 @@ export const PutEmployeeBenefitResponseContributionValueCase1TiersItem =
 
 export type PutEmployeeBenefitResponseContributionValueCase1TiersList =
   Array<CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem>;
-export const PutEmployeeBenefitResponseContributionValueCase1TiersList = /*@__PURE__*/ S.Array(
-  CreateEmployeeEmployeeBenefitResponseContributionValueCase1TiersItem,
-) as any as S.Schema<PutEmployeeBenefitResponseContributionValueCase1TiersList>;
+export const PutEmployeeBenefitResponseContributionValueCase1TiersList =
+  EmployeeBenefitContributionValueCase1TiersList as any as S.Schema<PutEmployeeBenefitResponseContributionValueCase1TiersList>;
 
 export interface PutEmployeeBenefitResponseContributionValueCase1 {
   tiers?: PutEmployeeBenefitResponseContributionValueCase1TiersList;
 }
-export const PutEmployeeBenefitResponseContributionValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tiers: S.optional(PutEmployeeBenefitResponseContributionValueCase1TiersList),
-  }),
-).annotate({
-  identifier: "PutEmployeeBenefitResponseContributionValueCase1",
-}) as any as S.Schema<PutEmployeeBenefitResponseContributionValueCase1>;
+export const PutEmployeeBenefitResponseContributionValueCase1 =
+  EmployeeBenefitContributionValueCase1 as any as S.Schema<PutEmployeeBenefitResponseContributionValueCase1>;
 
 /** For the `amount` and `percentage` contribution types, the value of the corresponding amount or percentage. For the `tiered` contribution type, an array of tiers. */
 export type PutEmployeeBenefitResponseContributionValue =
@@ -20883,17 +20529,13 @@ export const PutEmployeeI9AuthorizationDocumentsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutEmployeeI9AuthorizationDocumentsRequest>;
 
 export type PutEmployeeI9AuthorizationDocumentsResponseBodyList = Array<I9AuthorizationDocument>;
-export const PutEmployeeI9AuthorizationDocumentsResponseBodyList = /*@__PURE__*/ S.Array(
-  I9AuthorizationDocument,
-) as any as S.Schema<PutEmployeeI9AuthorizationDocumentsResponseBodyList>;
+export const PutEmployeeI9AuthorizationDocumentsResponseBodyList =
+  GetEmployeeI9AuthorizationDocumentsResponseBodyList as any as S.Schema<PutEmployeeI9AuthorizationDocumentsResponseBodyList>;
 
 export type PutEmployeeI9AuthorizationDocumentsResponse =
   PutEmployeeI9AuthorizationDocumentsResponseBodyList;
-export const PutEmployeeI9AuthorizationDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  PutEmployeeI9AuthorizationDocumentsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutEmployeeI9AuthorizationDocumentsResponse",
-}) as any as S.Schema<PutEmployeeI9AuthorizationDocumentsResponse>;
+export const PutEmployeeI9AuthorizationDocumentsResponse =
+  GetEmployeeI9AuthorizationDocumentsResponse as any as S.Schema<PutEmployeeI9AuthorizationDocumentsResponse>;
 
 export interface PutEmployeeI9AuthorizationEmployerSignRequest {
   /** The UUID of the employee */
@@ -20959,14 +20601,8 @@ export interface EmployeeOnboardingDocument {
   /** The UUID of the onboarding documents config record. Null when no config has been saved yet. */
   uuid?: string | null;
 }
-export const EmployeeOnboardingDocument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    i9_document: S.optional(S.Boolean),
-    uuid: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EmployeeOnboardingDocument",
-}) as any as S.Schema<EmployeeOnboardingDocument>;
+export const EmployeeOnboardingDocument =
+  ShowEmployeesItemOnboardingDocumentsConfig as any as S.Schema<EmployeeOnboardingDocument>;
 
 /** Onboarding status value */
 export type PutEmployeeOnboardingStatusRequestOnboardingStatus =
@@ -21454,9 +21090,8 @@ export const PutRemovePeopleFromDepartmentRequestContractorsItem = HolidayPayPol
 /** Array of contractors to add or remove from the department */
 export type PutRemovePeopleFromDepartmentRequestContractorsList =
   Array<HolidayPayPolicyEmployeesItem>;
-export const PutRemovePeopleFromDepartmentRequestContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutRemovePeopleFromDepartmentRequestContractorsList>;
+export const PutRemovePeopleFromDepartmentRequestContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutRemovePeopleFromDepartmentRequestContractorsList>;
 
 export type PutRemovePeopleFromDepartmentRequestEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const PutRemovePeopleFromDepartmentRequestEmployeesItem = HolidayPayPolicyEmployeesItem;
@@ -21464,9 +21099,8 @@ export const PutRemovePeopleFromDepartmentRequestEmployeesItem = HolidayPayPolic
 /** Array of employees to add or remove from the department */
 export type PutRemovePeopleFromDepartmentRequestEmployeesList =
   Array<HolidayPayPolicyEmployeesItem>;
-export const PutRemovePeopleFromDepartmentRequestEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutRemovePeopleFromDepartmentRequestEmployeesList>;
+export const PutRemovePeopleFromDepartmentRequestEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutRemovePeopleFromDepartmentRequestEmployeesList>;
 
 export interface PutRemovePeopleFromDepartmentRequest {
   /** The UUID of the department */
@@ -21495,9 +21129,8 @@ export const PutRemovePeopleFromDepartmentResponseContractorsItem = HolidayPayPo
 /** Array of contractors assigned to the department. */
 export type PutRemovePeopleFromDepartmentResponseContractorsList =
   Array<HolidayPayPolicyEmployeesItem>;
-export const PutRemovePeopleFromDepartmentResponseContractorsList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutRemovePeopleFromDepartmentResponseContractorsList>;
+export const PutRemovePeopleFromDepartmentResponseContractorsList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutRemovePeopleFromDepartmentResponseContractorsList>;
 
 export type PutRemovePeopleFromDepartmentResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
 export const PutRemovePeopleFromDepartmentResponseEmployeesItem = HolidayPayPolicyEmployeesItem;
@@ -21505,9 +21138,8 @@ export const PutRemovePeopleFromDepartmentResponseEmployeesItem = HolidayPayPoli
 /** Array of employees assigned to the department. */
 export type PutRemovePeopleFromDepartmentResponseEmployeesList =
   Array<HolidayPayPolicyEmployeesItem>;
-export const PutRemovePeopleFromDepartmentResponseEmployeesList = /*@__PURE__*/ S.Array(
-  HolidayPayPolicyEmployeesItem,
-) as any as S.Schema<PutRemovePeopleFromDepartmentResponseEmployeesList>;
+export const PutRemovePeopleFromDepartmentResponseEmployeesList =
+  HolidayPayPolicyEmployeesList as any as S.Schema<PutRemovePeopleFromDepartmentResponseEmployeesList>;
 
 export interface PutRemovePeopleFromDepartmentResponse {
   /** The current version of the object. See the [versioning guide](https://docs.gusto.com/embedded-payroll/docs/idempotency) for information on how to use this field. */
@@ -21523,18 +21155,8 @@ export interface PutRemovePeopleFromDepartmentResponse {
   /** The UUID of the department */
   uuid?: string;
 }
-export const PutRemovePeopleFromDepartmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    company_uuid: S.optional(S.String),
-    contractors: S.optional(PutRemovePeopleFromDepartmentResponseContractorsList),
-    employees: S.optional(PutRemovePeopleFromDepartmentResponseEmployeesList),
-    title: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutRemovePeopleFromDepartmentResponse",
-}) as any as S.Schema<PutRemovePeopleFromDepartmentResponse>;
+export const PutRemovePeopleFromDepartmentResponse =
+  PutAddPeopleToDepartmentResponse as any as S.Schema<PutRemovePeopleFromDepartmentResponse>;
 
 export interface PutTerminationRequest {
   /** The UUID of the employee */
@@ -21762,10 +21384,8 @@ export const PutTimeOffPolicyRemoveEmployeesRequest = /*@__PURE__*/ S.suspend(()
 
 /** An object where keys are dates in YYYY-MM-DD format and values are hours as string decimals (e.g. {"2025-01-20": "8.000"}). Use this to override the requested hours. */
 export type PutTimeOffRequestApproveRequestDaysMap = { [key: string]: string | undefined };
-export const PutTimeOffRequestApproveRequestDaysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutTimeOffRequestApproveRequestDaysMap>;
+export const PutTimeOffRequestApproveRequestDaysMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<PutTimeOffRequestApproveRequestDaysMap>;
 
 export interface PutTimeOffRequestApproveRequest {
   /** The UUID of the time off request */
@@ -21852,10 +21472,8 @@ export const PutTimeTrackingTimeSheetRequestEntriesList = /*@__PURE__*/ S.Array(
 
 /** Metadata associated with the time sheet. Key-value pairs of arbitrary data. Both keys and values must be strings. */
 export type PutTimeTrackingTimeSheetRequestMetadataMap = { [key: string]: string | undefined };
-export const PutTimeTrackingTimeSheetRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutTimeTrackingTimeSheetRequestMetadataMap>;
+export const PutTimeTrackingTimeSheetRequestMetadataMap =
+  CreateCompanyTimeOffAdminApprovedRequestRequestDaysMap as any as S.Schema<PutTimeTrackingTimeSheetRequestMetadataMap>;
 
 export interface PutTimeTrackingTimeSheetRequest {
   /** UUID of the time sheet */
@@ -21921,9 +21539,8 @@ export const PutV1CompanyFormSignRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Standard Industrial Classification (SIC) codes, which are four digit numbers that categorize the industries that companies belong to based on their business activities. If sic_codes is not passed in, we will perform an internal lookup with `naics_code`. */
 export type PutV1CompanyIndustryRequestSicCodesList = Array<string>;
-export const PutV1CompanyIndustryRequestSicCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutV1CompanyIndustryRequestSicCodesList>;
+export const PutV1CompanyIndustryRequestSicCodesList =
+  BulkReportCustomReportItemDepartmentUuidsList as any as S.Schema<PutV1CompanyIndustryRequestSicCodesList>;
 
 export interface PutV1CompanyIndustryRequest {
   /** The UUID of the company */
@@ -22011,34 +21628,21 @@ export interface DocumentSignedFieldsItem {
   /** Y-coordinate location of the field on the page. May be null when the field has no positioning information. */
   y?: number | null;
 }
-export const DocumentSignedFieldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_type: S.optional(S.String),
-    height: S.optional(S.NullOr(S.Number)),
-    key: S.optional(S.NullOr(S.String)),
-    page_number: S.optional(S.NullOr(S.Number)),
-    required: S.optional(S.Boolean),
-    value: S.optional(S.NullOr(S.String)),
-    width: S.optional(S.NullOr(S.Number)),
-    x: S.optional(S.NullOr(S.Number)),
-    y: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "DocumentSignedFieldsItem" }) as any as S.Schema<DocumentSignedFieldsItem>;
+export const DocumentSignedFieldsItem =
+  DocumentFieldsItem as any as S.Schema<DocumentSignedFieldsItem>;
 
 /** List of the document's fields and associated data. Values reflect the data provided at signing. */
 export type DocumentSignedFieldsList = Array<DocumentSignedFieldsItem>;
-export const DocumentSignedFieldsList = /*@__PURE__*/ S.Array(
-  DocumentSignedFieldsItem,
-) as any as S.Schema<DocumentSignedFieldsList>;
+export const DocumentSignedFieldsList =
+  DocumentFieldsList as any as S.Schema<DocumentSignedFieldsList>;
 
 export type DocumentSignedPagesItem = DocumentPagesItem;
 export const DocumentSignedPagesItem = DocumentPagesItem;
 
 /** List of the document's pages and associated image URLs. */
 export type DocumentSignedPagesList = Array<DocumentPagesItem>;
-export const DocumentSignedPagesList = /*@__PURE__*/ S.Array(
-  DocumentPagesItem,
-) as any as S.Schema<DocumentSignedPagesList>;
+export const DocumentSignedPagesList =
+  DocumentPagesList as any as S.Schema<DocumentSignedPagesList>;
 
 /** The type of recipient associated with the document (will be `Contractor` for Contractor Documents) */
 export type DocumentSignedRecipientType = "Company" | "Employee" | "Contractor";
@@ -22118,25 +21722,19 @@ export const PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseSta
 export type PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseContractorPaymentsList =
   Array<ContractorPaymentForGroup>;
 export const PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseContractorPaymentsList =
-  /*@__PURE__*/ S.Array(
-    ContractorPaymentForGroup,
-  ) as any as S.Schema<PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseContractorPaymentsList>;
+  CreateCompanyContractorPaymentGroupResponseContractorPaymentsList as any as S.Schema<PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseContractorPaymentsList>;
 
 /** List of credit blockers for the contractor payment group. */
 export type PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseCreditBlockersList =
   Array<PayrollCreditBlockerType>;
 export const PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseCreditBlockersList =
-  /*@__PURE__*/ S.Array(
-    PayrollCreditBlockerType,
-  ) as any as S.Schema<PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseCreditBlockersList>;
+  GetV1ContractorPaymentGroupsContractorPaymentGroupIdResponseCreditBlockersList as any as S.Schema<PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseCreditBlockersList>;
 
 /** List of submission blockers for the contractor payment group. */
 export type PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseSubmissionBlockersList =
   Array<PayrollSubmissionBlockerType>;
 export const PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseSubmissionBlockersList =
-  /*@__PURE__*/ S.Array(
-    PayrollSubmissionBlockerType,
-  ) as any as S.Schema<PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseSubmissionBlockersList>;
+  CreateCompanyContractorPaymentGroupResponseSubmissionBlockersList as any as S.Schema<PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseSubmissionBlockersList>;
 
 export type PutV1ContractorPaymentGroupsContractorPaymentGroupIdFundResponseTotals =
   CreateCompanyContractorPaymentGroupResponseTotals;
@@ -22269,11 +21867,8 @@ export const PutV1EmployeesEmployeeIdFederalTaxesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutV1EmployeesEmployeeIdFederalTaxesRequest>;
 
 export type PutV1EmployeesEmployeeIdFederalTaxesResponse = EmployeeFederalTax;
-export const PutV1EmployeesEmployeeIdFederalTaxesResponse = /*@__PURE__*/ S.suspend(() =>
-  EmployeeFederalTax.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutV1EmployeesEmployeeIdFederalTaxesResponse",
-}) as any as S.Schema<PutV1EmployeesEmployeeIdFederalTaxesResponse>;
+export const PutV1EmployeesEmployeeIdFederalTaxesResponse =
+  GetV1EmployeesEmployeeIdFederalTaxesResponse as any as S.Schema<PutV1EmployeesEmployeeIdFederalTaxesResponse>;
 
 export type PutV1EmployeesEmployeeIdStateTaxesRequestStatesItemQuestionsItemAnswersItemValue =
   | string
@@ -22364,11 +21959,8 @@ export const PutV1EmployeesEmployeeIdStateTaxesRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PutV1EmployeesEmployeeIdStateTaxesRequest>;
 
 export type PutV1EmployeesEmployeeIdStateTaxesResponse = EmployeeStateTaxesList;
-export const PutV1EmployeesEmployeeIdStateTaxesResponse = /*@__PURE__*/ S.suspend(() =>
-  EmployeeStateTaxesList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutV1EmployeesEmployeeIdStateTaxesResponse",
-}) as any as S.Schema<PutV1EmployeesEmployeeIdStateTaxesResponse>;
+export const PutV1EmployeesEmployeeIdStateTaxesResponse =
+  GetV1EmployeesEmployeeIdStateTaxesResponse as any as S.Schema<PutV1EmployeesEmployeeIdStateTaxesResponse>;
 
 export interface PutV1ExternalPayrollRequestExternalPayrollItemsItemBenefitsItem {
   /** The ID of the company benefit. */
@@ -22730,16 +22322,12 @@ export const PutV1TaxLiabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutV1TaxLiabilitiesRequest>;
 
 export type PutV1TaxLiabilitiesResponseBodyList = Array<TaxLiabilitiesSelections>;
-export const PutV1TaxLiabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
-  TaxLiabilitiesSelections,
-) as any as S.Schema<PutV1TaxLiabilitiesResponseBodyList>;
+export const PutV1TaxLiabilitiesResponseBodyList =
+  GetV1TaxLiabilitiesResponseBodyList as any as S.Schema<PutV1TaxLiabilitiesResponseBodyList>;
 
 export type PutV1TaxLiabilitiesResponse = PutV1TaxLiabilitiesResponseBodyList;
-export const PutV1TaxLiabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  PutV1TaxLiabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutV1TaxLiabilitiesResponse",
-}) as any as S.Schema<PutV1TaxLiabilitiesResponse>;
+export const PutV1TaxLiabilitiesResponse =
+  GetV1TaxLiabilitiesResponse as any as S.Schema<PutV1TaxLiabilitiesResponse>;
 
 export interface PutV1TaxLiabilitiesFinishRequest {
   /** The UUID of the company */
@@ -22760,11 +22348,8 @@ export const PutV1TaxLiabilitiesFinishRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutV1TaxLiabilitiesFinishRequest>;
 
 export interface PutV1TaxLiabilitiesFinishResponse {}
-export const PutV1TaxLiabilitiesFinishResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutV1TaxLiabilitiesFinishResponse",
-}) as any as S.Schema<PutV1TaxLiabilitiesFinishResponse>;
+export const PutV1TaxLiabilitiesFinishResponse =
+  CreateCompanyPaySchedulesAssignResponse as any as S.Schema<PutV1TaxLiabilitiesFinishResponse>;
 
 export interface PutV1VerifyWebhookSubscriptionUuidRequest {
   /** The webhook subscription UUID. */
@@ -22894,9 +22479,8 @@ export const RedebitRecoveryCaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedebitRecoveryCaseRequest>;
 
 export interface RedebitRecoveryCaseResponse {}
-export const RedebitRecoveryCaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RedebitRecoveryCaseResponse",
-}) as any as S.Schema<RedebitRecoveryCaseResponse>;
+export const RedebitRecoveryCaseResponse =
+  CreateContractorRehireResponse as any as S.Schema<RedebitRecoveryCaseResponse>;
 
 export interface RevokeAccessTokenRequest {
   /** Your client id */
@@ -22915,9 +22499,8 @@ export const RevokeAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeAccessTokenRequest" }) as any as S.Schema<RevokeAccessTokenRequest>;
 
 export interface RevokeAccessTokenResponse {}
-export const RevokeAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeAccessTokenResponse",
-}) as any as S.Schema<RevokeAccessTokenResponse>;
+export const RevokeAccessTokenResponse =
+  CreateContractorRehireResponse as any as S.Schema<RevokeAccessTokenResponse>;
 
 /** Payment method for the employee */
 export type UpdateCompanyPayrollPartnerDisbursementsRequestDisbursementsItemPaymentMethod =

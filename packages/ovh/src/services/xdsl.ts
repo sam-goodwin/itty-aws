@@ -298,9 +298,7 @@ export const BookMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BookMeetingRequest" }) as any as S.Schema<BookMeetingRequest>;
 
 export interface BookMeetingResponse {}
-export const BookMeetingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BookMeetingResponse",
-}) as any as S.Schema<BookMeetingResponse>;
+export const BookMeetingResponse = ArchiveXdslTaskResponse as any as S.Schema<BookMeetingResponse>;
 
 export interface CancelXdslLinesDiagnosticRequest {
   /** Service name */
@@ -343,9 +341,8 @@ export const CancelXdslResiliationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelXdslResiliationRequest>;
 
 export interface CancelXdslResiliationResponse {}
-export const CancelXdslResiliationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelXdslResiliationResponse",
-}) as any as S.Schema<CancelXdslResiliationResponse>;
+export const CancelXdslResiliationResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<CancelXdslResiliationResponse>;
 
 export interface ChangeContactRequest {
   /** Service name */
@@ -605,9 +602,8 @@ export const XdslTemplateModemParametersToIgnoreWLANListList = /*@__PURE__*/ S.A
 
 /** PortMapping names list to ignore. Ignore only listed portMapping */
 export type XdslTemplateModemParametersToIgnorePortMappingListList = Array<string>;
-export const XdslTemplateModemParametersToIgnorePortMappingListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<XdslTemplateModemParametersToIgnorePortMappingListList>;
+export const XdslTemplateModemParametersToIgnorePortMappingListList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslTemplateModemParametersToIgnorePortMappingListList>;
 
 /** Parameters and values to ignore when apply modem template configuration */
 export interface XdslTemplateModemParametersToIgnore {
@@ -761,11 +757,8 @@ export const CreateXdslModemReconfigureVoipRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateXdslModemReconfigureVoipRequest>;
 
 export interface CreateXdslModemReconfigureVoipResponse {}
-export const CreateXdslModemReconfigureVoipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateXdslModemReconfigureVoipResponse",
-}) as any as S.Schema<CreateXdslModemReconfigureVoipResponse>;
+export const CreateXdslModemReconfigureVoipResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslModemReconfigureVoipResponse>;
 
 export interface CreateXdslRequestPPPLoginMailRequest {
   /** Service name */
@@ -780,11 +773,8 @@ export const CreateXdslRequestPPPLoginMailRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateXdslRequestPPPLoginMailRequest>;
 
 export interface CreateXdslRequestPPPLoginMailResponse {}
-export const CreateXdslRequestPPPLoginMailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateXdslRequestPPPLoginMailResponse",
-}) as any as S.Schema<CreateXdslRequestPPPLoginMailResponse>;
+export const CreateXdslRequestPPPLoginMailResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslRequestPPPLoginMailResponse>;
 
 export interface CreateXdslSpareReturnMerchandiseRequest {
   /** Spare */
@@ -799,11 +789,8 @@ export const CreateXdslSpareReturnMerchandiseRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateXdslSpareReturnMerchandiseRequest>;
 
 export interface CreateXdslSpareReturnMerchandiseResponse {}
-export const CreateXdslSpareReturnMerchandiseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateXdslSpareReturnMerchandiseResponse",
-}) as any as S.Schema<CreateXdslSpareReturnMerchandiseResponse>;
+export const CreateXdslSpareReturnMerchandiseResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslSpareReturnMerchandiseResponse>;
 
 export interface DeleteModemTemplateRequest {
   /** Name */
@@ -818,9 +805,8 @@ export const DeleteModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteModemTemplateRequest>;
 
 export interface DeleteModemTemplateResponse {}
-export const DeleteModemTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteModemTemplateResponse",
-}) as any as S.Schema<DeleteModemTemplateResponse>;
+export const DeleteModemTemplateResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<DeleteModemTemplateResponse>;
 
 export interface DeleteXdslEmailProRequest {
   /** Email */
@@ -835,9 +821,8 @@ export const DeleteXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteXdslEmailProRequest>;
 
 export interface DeleteXdslEmailProResponse {}
-export const DeleteXdslEmailProResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteXdslEmailProResponse",
-}) as any as S.Schema<DeleteXdslEmailProResponse>;
+export const DeleteXdslEmailProResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslEmailProResponse>;
 
 export interface DeleteXdslIpsRequest {
   /** Service name */
@@ -853,9 +838,8 @@ export const DeleteXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteXdslIpsRequest" }) as any as S.Schema<DeleteXdslIpsRequest>;
 
 export interface DeleteXdslIpsResponse {}
-export const DeleteXdslIpsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteXdslIpsResponse",
-}) as any as S.Schema<DeleteXdslIpsResponse>;
+export const DeleteXdslIpsResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslIpsResponse>;
 
 export interface DeleteXdslRmaRequest {
   /** Service name */
@@ -871,9 +855,8 @@ export const DeleteXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteXdslRmaRequest" }) as any as S.Schema<DeleteXdslRmaRequest>;
 
 export interface DeleteXdslRmaResponse {}
-export const DeleteXdslRmaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteXdslRmaResponse",
-}) as any as S.Schema<DeleteXdslRmaResponse>;
+export const DeleteXdslRmaResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslRmaResponse>;
 
 export interface DeleteXdslSpareRequest {
   /** Spare */
@@ -886,9 +869,8 @@ export const DeleteXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteXdslSpareRequest" }) as any as S.Schema<DeleteXdslSpareRequest>;
 
 export interface DeleteXdslSpareResponse {}
-export const DeleteXdslSpareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteXdslSpareResponse",
-}) as any as S.Schema<DeleteXdslSpareResponse>;
+export const DeleteXdslSpareResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslSpareResponse>;
 
 export interface GetAccessModemReplacementRequest {
   /** Service name */
@@ -1051,9 +1033,8 @@ export const GetDHCPStaticAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDHCPStaticAddressesRequest>;
 
 export type GetDHCPStaticAddressesResponseBodyList = Array<string>;
-export const GetDHCPStaticAddressesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDHCPStaticAddressesResponseBodyList>;
+export const GetDHCPStaticAddressesResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetDHCPStaticAddressesResponseBodyList>;
 
 export type GetDHCPStaticAddressesResponse = GetDHCPStaticAddressesResponseBodyList;
 export const GetDHCPStaticAddressesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1092,9 +1073,8 @@ export const GetFTPStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFTPStatusRequest" }) as any as S.Schema<GetFTPStatusRequest>;
 
 export type GetFTPStatusResponse = XdslServiceStatusEnum;
-export const GetFTPStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetFTPStatusResponse" }) as any as S.Schema<GetFTPStatusResponse>;
+export const GetFTPStatusResponse =
+  GetBlocIPStatusResponse as any as S.Schema<GetFTPStatusResponse>;
 
 export interface GetIpsecAlgStatusRequest {
   /** Service name */
@@ -1107,11 +1087,8 @@ export const GetIpsecAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIpsecAlgStatusRequest" }) as any as S.Schema<GetIpsecAlgStatusRequest>;
 
 export type GetIpsecAlgStatusResponse = XdslServiceStatusEnum;
-export const GetIpsecAlgStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetIpsecAlgStatusResponse",
-}) as any as S.Schema<GetIpsecAlgStatusResponse>;
+export const GetIpsecAlgStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetIpsecAlgStatusResponse>;
 
 export interface GetModemCallWaitingStatusRequest {
   /** Service name */
@@ -1126,11 +1103,8 @@ export const GetModemCallWaitingStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetModemCallWaitingStatusRequest>;
 
 export type GetModemCallWaitingStatusResponse = XdslServiceStatusEnum;
-export const GetModemCallWaitingStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetModemCallWaitingStatusResponse",
-}) as any as S.Schema<GetModemCallWaitingStatusResponse>;
+export const GetModemCallWaitingStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetModemCallWaitingStatusResponse>;
 
 export interface GetModemTemplateRequest {
   /** Name */
@@ -1148,16 +1122,12 @@ export const GetModemTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetModemTemplatesRequest" }) as any as S.Schema<GetModemTemplatesRequest>;
 
 export type GetModemTemplatesResponseBodyList = Array<string>;
-export const GetModemTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetModemTemplatesResponseBodyList>;
+export const GetModemTemplatesResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetModemTemplatesResponseBodyList>;
 
 export type GetModemTemplatesResponse = GetModemTemplatesResponseBodyList;
-export const GetModemTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  GetModemTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetModemTemplatesResponse",
-}) as any as S.Schema<GetModemTemplatesResponse>;
+export const GetModemTemplatesResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<GetModemTemplatesResponse>;
 
 export interface GetMonitoringNotificationRequest {
   /** Service name */
@@ -1189,9 +1159,8 @@ export const GetMonitoringNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMonitoringNotificationsRequest>;
 
 export type GetMonitoringNotificationsResponseBodyList = Array<number>;
-export const GetMonitoringNotificationsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetMonitoringNotificationsResponseBodyList>;
+export const GetMonitoringNotificationsResponseBodyList =
+  ChangeContactResponseBodyList as any as S.Schema<GetMonitoringNotificationsResponseBodyList>;
 
 export type GetMonitoringNotificationsResponse = GetMonitoringNotificationsResponseBodyList;
 export const GetMonitoringNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1226,9 +1195,8 @@ export const GetPortMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPortMappingsRequest" }) as any as S.Schema<GetPortMappingsRequest>;
 
 export type GetPortMappingsResponseBodyList = Array<string>;
-export const GetPortMappingsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPortMappingsResponseBodyList>;
+export const GetPortMappingsResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetPortMappingsResponseBodyList>;
 
 export type GetPortMappingsResponse = GetPortMappingsResponseBodyList;
 export const GetPortMappingsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1246,9 +1214,8 @@ export const GetSipAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSipAlgStatusRequest" }) as any as S.Schema<GetSipAlgStatusRequest>;
 
 export type GetSipAlgStatusResponse = XdslServiceStatusEnum;
-export const GetSipAlgStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetSipAlgStatusResponse" }) as any as S.Schema<GetSipAlgStatusResponse>;
+export const GetSipAlgStatusResponse =
+  GetBlocIPStatusResponse as any as S.Schema<GetSipAlgStatusResponse>;
 
 export interface GetUpnpStatusRequest {
   /** Service name */
@@ -1261,9 +1228,8 @@ export const GetUpnpStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUpnpStatusRequest" }) as any as S.Schema<GetUpnpStatusRequest>;
 
 export type GetUpnpStatusResponse = XdslServiceStatusEnum;
-export const GetUpnpStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetUpnpStatusResponse" }) as any as S.Schema<GetUpnpStatusResponse>;
+export const GetUpnpStatusResponse =
+  GetBlocIPStatusResponse as any as S.Schema<GetUpnpStatusResponse>;
 
 export interface GetWifiMeshStatusRequest {
   /** Service name */
@@ -1276,11 +1242,8 @@ export const GetWifiMeshStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWifiMeshStatusRequest" }) as any as S.Schema<GetWifiMeshStatusRequest>;
 
 export type GetWifiMeshStatusResponse = XdslServiceStatusEnum;
-export const GetWifiMeshStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWifiMeshStatusResponse",
-}) as any as S.Schema<GetWifiMeshStatusResponse>;
+export const GetWifiMeshStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetWifiMeshStatusResponse>;
 
 export interface GetWifiOneSsidStatusRequest {
   /** Service name */
@@ -1295,11 +1258,8 @@ export const GetWifiOneSsidStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWifiOneSsidStatusRequest>;
 
 export type GetWifiOneSsidStatusResponse = XdslServiceStatusEnum;
-export const GetWifiOneSsidStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWifiOneSsidStatusResponse",
-}) as any as S.Schema<GetWifiOneSsidStatusResponse>;
+export const GetWifiOneSsidStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetWifiOneSsidStatusResponse>;
 
 export interface GetXdslRequest {
   /** Service name */
@@ -1871,12 +1831,7 @@ export interface XdslProvider {
   /** Provider name */
   name?: string;
 }
-export const XdslProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "XdslProvider" }) as any as S.Schema<XdslProvider>;
+export const XdslProvider = XdslOffer as any as S.Schema<XdslProvider>;
 
 /** Status of the fiber eligibility */
 export type XdslFiberEligibilityStatusEnum =
@@ -1942,15 +1897,13 @@ export const GetXdslIncidentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Department list */
 export type XdslIncidentDepartmentsList = Array<string>;
-export const XdslIncidentDepartmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<XdslIncidentDepartmentsList>;
+export const XdslIncidentDepartmentsList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIncidentDepartmentsList>;
 
 /** NRA list */
 export type XdslIncidentNraList = Array<string>;
-export const XdslIncidentNraList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<XdslIncidentNraList>;
+export const XdslIncidentNraList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIncidentNraList>;
 
 /** Operators */
 export type XdslOperatorTypeEnum = "collect" | "kosc" | "ovh";
@@ -2019,9 +1972,8 @@ export const GetXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetXdslIpsRequest" }) as any as S.Schema<GetXdslIpsRequest>;
 
 export type XdslIPDnsListList = Array<string>;
-export const XdslIPDnsListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<XdslIPDnsListList>;
+export const XdslIPDnsListList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIPDnsListList>;
 
 /** Status of an IP. */
 export type XdslIpStatusEnum = "active" | "close" | "toDelete";
@@ -2701,11 +2653,8 @@ export const GetXdslModemWifiQrCodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetXdslModemWifiQrCodeRequest>;
 
 export type GetXdslModemWifiQrCodeResponse = string;
-export const GetXdslModemWifiQrCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetXdslModemWifiQrCodeResponse",
-}) as any as S.Schema<GetXdslModemWifiQrCodeResponse>;
+export const GetXdslModemWifiQrCodeResponse =
+  GetFirmwareVersionResponse as any as S.Schema<GetXdslModemWifiQrCodeResponse>;
 
 export interface GetXdslModemWifiRadioRequest {
   /** Service name */
@@ -2726,21 +2675,18 @@ export const GetXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported channels by this radio */
 export type XdslWifiRadioSupportedChannelsList = Array<number>;
-export const XdslWifiRadioSupportedChannelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<XdslWifiRadioSupportedChannelsList>;
+export const XdslWifiRadioSupportedChannelsList =
+  ChangeContactResponseBodyList as any as S.Schema<XdslWifiRadioSupportedChannelsList>;
 
 /** Supported transmit power levels as percentage of full power */
 export type XdslWifiRadioSupportedPowersList = Array<number>;
-export const XdslWifiRadioSupportedPowersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<XdslWifiRadioSupportedPowersList>;
+export const XdslWifiRadioSupportedPowersList =
+  ChangeContactResponseBodyList as any as S.Schema<XdslWifiRadioSupportedPowersList>;
 
 /** Supported IEEE 802.11 standards by this radio */
 export type XdslWifiRadioSupportedStandardsList = Array<string>;
-export const XdslWifiRadioSupportedStandardsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<XdslWifiRadioSupportedStandardsList>;
+export const XdslWifiRadioSupportedStandardsList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslWifiRadioSupportedStandardsList>;
 
 /** Wifi Radio Configuration of the Modem */
 export interface XdslWifiRadio {
@@ -3370,9 +3316,8 @@ export const GetXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  ChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -3558,9 +3503,8 @@ export const InstallFrimwareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IamResourceTagFilterInput",
-}) as any as S.Schema<IamResourceTagFilterInput>;
+export const IamResourceTagFilterInput =
+  ArchiveXdslTaskResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListXdslRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export const ListXdslRequestIamTagsValueList = /*@__PURE__*/ S.Array(
@@ -3586,14 +3530,11 @@ export const ListXdslRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslRequest" }) as any as S.Schema<ListXdslRequest>;
 
 export type ListXdslResponseBodyList = Array<string>;
-export const ListXdslResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslResponseBodyList>;
+export const ListXdslResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslResponseBodyList>;
 
 export type ListXdslResponse = ListXdslResponseBodyList;
-export const ListXdslResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslResponse" }) as any as S.Schema<ListXdslResponse>;
+export const ListXdslResponse = GetPortMappingsResponse as any as S.Schema<ListXdslResponse>;
 
 export interface ListXdslAntiSpamEvidencesRequest {
   /** Service name */
@@ -3671,29 +3612,22 @@ export const ListXdslAntiSpamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslAntiSpamsRequest" }) as any as S.Schema<ListXdslAntiSpamsRequest>;
 
 export type ListXdslAntiSpamsResponseBodyList = Array<string>;
-export const ListXdslAntiSpamsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslAntiSpamsResponseBodyList>;
+export const ListXdslAntiSpamsResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslAntiSpamsResponseBodyList>;
 
 export type ListXdslAntiSpamsResponse = ListXdslAntiSpamsResponseBodyList;
-export const ListXdslAntiSpamsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslAntiSpamsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslAntiSpamsResponse",
-}) as any as S.Schema<ListXdslAntiSpamsResponse>;
+export const ListXdslAntiSpamsResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslAntiSpamsResponse>;
 
 export type ListXdslEmailProRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListXdslEmailProRequestIamTagsValueList = /*@__PURE__*/ S.Array(
-  IamResourceTagFilterInput,
-) as any as S.Schema<ListXdslEmailProRequestIamTagsValueList>;
+export const ListXdslEmailProRequestIamTagsValueList =
+  ListXdslRequestIamTagsValueList as any as S.Schema<ListXdslEmailProRequestIamTagsValueList>;
 
 export type ListXdslEmailProRequestIamTagsMap = {
   [key: string]: ListXdslEmailProRequestIamTagsValueList | undefined;
 };
-export const ListXdslEmailProRequestIamTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListXdslEmailProRequestIamTagsValueList,
-) as any as S.Schema<ListXdslEmailProRequestIamTagsMap>;
+export const ListXdslEmailProRequestIamTagsMap =
+  ListXdslRequestIamTagsMap as any as S.Schema<ListXdslEmailProRequestIamTagsMap>;
 
 export interface ListXdslEmailProRequest {
   /** Filter resources on IAM tags */
@@ -3706,14 +3640,12 @@ export const ListXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslEmailProRequest" }) as any as S.Schema<ListXdslEmailProRequest>;
 
 export type ListXdslEmailProResponseBodyList = Array<string>;
-export const ListXdslEmailProResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslEmailProResponseBodyList>;
+export const ListXdslEmailProResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslEmailProResponseBodyList>;
 
 export type ListXdslEmailProResponse = ListXdslEmailProResponseBodyList;
-export const ListXdslEmailProResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslEmailProResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslEmailProResponse" }) as any as S.Schema<ListXdslEmailProResponse>;
+export const ListXdslEmailProResponse =
+  GetPortMappingsResponse as any as S.Schema<ListXdslEmailProResponse>;
 
 export interface ListXdslFiberEligibilitiesRequest {
   /** Service name */
@@ -3731,16 +3663,12 @@ export const ListXdslFiberEligibilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslFiberEligibilitiesRequest>;
 
 export type ListXdslFiberEligibilitiesResponseBodyList = Array<number>;
-export const ListXdslFiberEligibilitiesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListXdslFiberEligibilitiesResponseBodyList>;
+export const ListXdslFiberEligibilitiesResponseBodyList =
+  ChangeContactResponseBodyList as any as S.Schema<ListXdslFiberEligibilitiesResponseBodyList>;
 
 export type ListXdslFiberEligibilitiesResponse = ListXdslFiberEligibilitiesResponseBodyList;
-export const ListXdslFiberEligibilitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslFiberEligibilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslFiberEligibilitiesResponse",
-}) as any as S.Schema<ListXdslFiberEligibilitiesResponse>;
+export const ListXdslFiberEligibilitiesResponse =
+  GetMonitoringNotificationsResponse as any as S.Schema<ListXdslFiberEligibilitiesResponse>;
 
 export interface ListXdslIncidentsRequest {
   /** Filter the value of creationDate property (>) */
@@ -3756,16 +3684,12 @@ export const ListXdslIncidentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslIncidentsRequest" }) as any as S.Schema<ListXdslIncidentsRequest>;
 
 export type ListXdslIncidentsResponseBodyList = Array<number>;
-export const ListXdslIncidentsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListXdslIncidentsResponseBodyList>;
+export const ListXdslIncidentsResponseBodyList =
+  ChangeContactResponseBodyList as any as S.Schema<ListXdslIncidentsResponseBodyList>;
 
 export type ListXdslIncidentsResponse = ListXdslIncidentsResponseBodyList;
-export const ListXdslIncidentsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslIncidentsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslIncidentsResponse",
-}) as any as S.Schema<ListXdslIncidentsResponse>;
+export const ListXdslIncidentsResponse =
+  GetMonitoringNotificationsResponse as any as S.Schema<ListXdslIncidentsResponse>;
 
 export interface ListXdslIpsRequest {
   /** Service name */
@@ -3778,14 +3702,11 @@ export const ListXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslIpsRequest" }) as any as S.Schema<ListXdslIpsRequest>;
 
 export type ListXdslIpsResponseBodyList = Array<string>;
-export const ListXdslIpsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslIpsResponseBodyList>;
+export const ListXdslIpsResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslIpsResponseBodyList>;
 
 export type ListXdslIpsResponse = ListXdslIpsResponseBodyList;
-export const ListXdslIpsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslIpsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslIpsResponse" }) as any as S.Schema<ListXdslIpsResponse>;
+export const ListXdslIpsResponse = GetPortMappingsResponse as any as S.Schema<ListXdslIpsResponse>;
 
 export interface ListXdslLineDslamPortAvailableProfilesRequest {
   /** Service name */
@@ -3881,14 +3802,12 @@ export const ListXdslLinesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslLinesRequest" }) as any as S.Schema<ListXdslLinesRequest>;
 
 export type ListXdslLinesResponseBodyList = Array<string>;
-export const ListXdslLinesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslLinesResponseBodyList>;
+export const ListXdslLinesResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslLinesResponseBodyList>;
 
 export type ListXdslLinesResponse = ListXdslLinesResponseBodyList;
-export const ListXdslLinesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslLinesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslLinesResponse" }) as any as S.Schema<ListXdslLinesResponse>;
+export const ListXdslLinesResponse =
+  GetPortMappingsResponse as any as S.Schema<ListXdslLinesResponse>;
 
 /** Periods for statistics. */
 export type XdslStatisticsPeriodEnum = "daily" | "monthly" | "preview" | "weekly" | "yearly";
@@ -3974,17 +3893,13 @@ export const ListXdslModemAvailableACSBackendRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListXdslModemAvailableACSBackendRequest>;
 
 export type ListXdslModemAvailableACSBackendResponseBodyList = Array<string>;
-export const ListXdslModemAvailableACSBackendResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslModemAvailableACSBackendResponseBodyList>;
+export const ListXdslModemAvailableACSBackendResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemAvailableACSBackendResponseBodyList>;
 
 export type ListXdslModemAvailableACSBackendResponse =
   ListXdslModemAvailableACSBackendResponseBodyList;
-export const ListXdslModemAvailableACSBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemAvailableACSBackendResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslModemAvailableACSBackendResponse",
-}) as any as S.Schema<ListXdslModemAvailableACSBackendResponse>;
+export const ListXdslModemAvailableACSBackendResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemAvailableACSBackendResponse>;
 
 /** Frequency of WLAN */
 export type XdslWLANFrequencyEnum = "2.4GHz" | "5GHz";
@@ -4008,17 +3923,13 @@ export const ListXdslModemAvailableWLANChannelRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListXdslModemAvailableWLANChannelRequest>;
 
 export type ListXdslModemAvailableWLANChannelResponseBodyList = Array<number>;
-export const ListXdslModemAvailableWLANChannelResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListXdslModemAvailableWLANChannelResponseBodyList>;
+export const ListXdslModemAvailableWLANChannelResponseBodyList =
+  ChangeContactResponseBodyList as any as S.Schema<ListXdslModemAvailableWLANChannelResponseBodyList>;
 
 export type ListXdslModemAvailableWLANChannelResponse =
   ListXdslModemAvailableWLANChannelResponseBodyList;
-export const ListXdslModemAvailableWLANChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemAvailableWLANChannelResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslModemAvailableWLANChannelResponse",
-}) as any as S.Schema<ListXdslModemAvailableWLANChannelResponse>;
+export const ListXdslModemAvailableWLANChannelResponse =
+  GetMonitoringNotificationsResponse as any as S.Schema<ListXdslModemAvailableWLANChannelResponse>;
 
 export interface ListXdslModemConnectedDevicesRequest {
   /** Service name */
@@ -4033,16 +3944,12 @@ export const ListXdslModemConnectedDevicesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListXdslModemConnectedDevicesRequest>;
 
 export type ListXdslModemConnectedDevicesResponseBodyList = Array<string>;
-export const ListXdslModemConnectedDevicesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslModemConnectedDevicesResponseBodyList>;
+export const ListXdslModemConnectedDevicesResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemConnectedDevicesResponseBodyList>;
 
 export type ListXdslModemConnectedDevicesResponse = ListXdslModemConnectedDevicesResponseBodyList;
-export const ListXdslModemConnectedDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemConnectedDevicesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslModemConnectedDevicesResponse",
-}) as any as S.Schema<ListXdslModemConnectedDevicesResponse>;
+export const ListXdslModemConnectedDevicesResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemConnectedDevicesResponse>;
 
 export interface ListXdslModemFirmwareAvailableRequest {
   /** Service name */
@@ -4057,16 +3964,12 @@ export const ListXdslModemFirmwareAvailableRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListXdslModemFirmwareAvailableRequest>;
 
 export type ListXdslModemFirmwareAvailableResponseBodyList = Array<string>;
-export const ListXdslModemFirmwareAvailableResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslModemFirmwareAvailableResponseBodyList>;
+export const ListXdslModemFirmwareAvailableResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemFirmwareAvailableResponseBodyList>;
 
 export type ListXdslModemFirmwareAvailableResponse = ListXdslModemFirmwareAvailableResponseBodyList;
-export const ListXdslModemFirmwareAvailableResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemFirmwareAvailableResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslModemFirmwareAvailableResponse",
-}) as any as S.Schema<ListXdslModemFirmwareAvailableResponse>;
+export const ListXdslModemFirmwareAvailableResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemFirmwareAvailableResponse>;
 
 export interface ListXdslModemLanRequest {
   /** Service name */
@@ -4079,14 +3982,12 @@ export const ListXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslModemLanRequest" }) as any as S.Schema<ListXdslModemLanRequest>;
 
 export type ListXdslModemLanResponseBodyList = Array<string>;
-export const ListXdslModemLanResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslModemLanResponseBodyList>;
+export const ListXdslModemLanResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemLanResponseBodyList>;
 
 export type ListXdslModemLanResponse = ListXdslModemLanResponseBodyList;
-export const ListXdslModemLanResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemLanResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslModemLanResponse" }) as any as S.Schema<ListXdslModemLanResponse>;
+export const ListXdslModemLanResponse =
+  GetPortMappingsResponse as any as S.Schema<ListXdslModemLanResponse>;
 
 export interface ListXdslModemLanDhcpRequest {
   /** Service name */
@@ -4106,16 +4007,12 @@ export const ListXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslModemLanDhcpRequest>;
 
 export type ListXdslModemLanDhcpResponseBodyList = Array<string>;
-export const ListXdslModemLanDhcpResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslModemLanDhcpResponseBodyList>;
+export const ListXdslModemLanDhcpResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemLanDhcpResponseBodyList>;
 
 export type ListXdslModemLanDhcpResponse = ListXdslModemLanDhcpResponseBodyList;
-export const ListXdslModemLanDhcpResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemLanDhcpResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslModemLanDhcpResponse",
-}) as any as S.Schema<ListXdslModemLanDhcpResponse>;
+export const ListXdslModemLanDhcpResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemLanDhcpResponse>;
 
 export interface ListXdslModemWifiRequest {
   /** Service name */
@@ -4128,16 +4025,12 @@ export const ListXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslModemWifiRequest" }) as any as S.Schema<ListXdslModemWifiRequest>;
 
 export type ListXdslModemWifiResponseBodyList = Array<string>;
-export const ListXdslModemWifiResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslModemWifiResponseBodyList>;
+export const ListXdslModemWifiResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemWifiResponseBodyList>;
 
 export type ListXdslModemWifiResponse = ListXdslModemWifiResponseBodyList;
-export const ListXdslModemWifiResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemWifiResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslModemWifiResponse",
-}) as any as S.Schema<ListXdslModemWifiResponse>;
+export const ListXdslModemWifiResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemWifiResponse>;
 
 export interface ListXdslModemWifiRadioRequest {
   /** Service name */
@@ -4152,16 +4045,12 @@ export const ListXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslModemWifiRadioRequest>;
 
 export type ListXdslModemWifiRadioResponseBodyList = Array<string>;
-export const ListXdslModemWifiRadioResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslModemWifiRadioResponseBodyList>;
+export const ListXdslModemWifiRadioResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemWifiRadioResponseBodyList>;
 
 export type ListXdslModemWifiRadioResponse = ListXdslModemWifiRadioResponseBodyList;
-export const ListXdslModemWifiRadioResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslModemWifiRadioResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslModemWifiRadioResponse",
-}) as any as S.Schema<ListXdslModemWifiRadioResponse>;
+export const ListXdslModemWifiRadioResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemWifiRadioResponse>;
 
 export interface ListXdslOrderFollowupRequest {
   /** Service name */
@@ -4176,9 +4065,8 @@ export const ListXdslOrderFollowupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslOrderFollowupRequest>;
 
 export type XdslOrderFollowupStepCommentsList = Array<string>;
-export const XdslOrderFollowupStepCommentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<XdslOrderFollowupStepCommentsList>;
+export const XdslOrderFollowupStepCommentsList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslOrderFollowupStepCommentsList>;
 
 /** The duration units */
 export type XdslOrderFollowupDurationUnitEnum = "day" | "hour" | "minute";
@@ -4294,27 +4182,21 @@ export const ListXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslRmaRequest" }) as any as S.Schema<ListXdslRmaRequest>;
 
 export type ListXdslRmaResponseBodyList = Array<string>;
-export const ListXdslRmaResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslRmaResponseBodyList>;
+export const ListXdslRmaResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslRmaResponseBodyList>;
 
 export type ListXdslRmaResponse = ListXdslRmaResponseBodyList;
-export const ListXdslRmaResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslRmaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslRmaResponse" }) as any as S.Schema<ListXdslRmaResponse>;
+export const ListXdslRmaResponse = GetPortMappingsResponse as any as S.Schema<ListXdslRmaResponse>;
 
 export type ListXdslSpareRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListXdslSpareRequestIamTagsValueList = /*@__PURE__*/ S.Array(
-  IamResourceTagFilterInput,
-) as any as S.Schema<ListXdslSpareRequestIamTagsValueList>;
+export const ListXdslSpareRequestIamTagsValueList =
+  ListXdslRequestIamTagsValueList as any as S.Schema<ListXdslSpareRequestIamTagsValueList>;
 
 export type ListXdslSpareRequestIamTagsMap = {
   [key: string]: ListXdslSpareRequestIamTagsValueList | undefined;
 };
-export const ListXdslSpareRequestIamTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListXdslSpareRequestIamTagsValueList,
-) as any as S.Schema<ListXdslSpareRequestIamTagsMap>;
+export const ListXdslSpareRequestIamTagsMap =
+  ListXdslRequestIamTagsMap as any as S.Schema<ListXdslSpareRequestIamTagsMap>;
 
 export interface ListXdslSpareRequest {
   /** Filter resources on IAM tags */
@@ -4327,14 +4209,12 @@ export const ListXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslSpareRequest" }) as any as S.Schema<ListXdslSpareRequest>;
 
 export type ListXdslSpareResponseBodyList = Array<string>;
-export const ListXdslSpareResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslSpareResponseBodyList>;
+export const ListXdslSpareResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslSpareResponseBodyList>;
 
 export type ListXdslSpareResponse = ListXdslSpareResponseBodyList;
-export const ListXdslSpareResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslSpareResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslSpareResponse" }) as any as S.Schema<ListXdslSpareResponse>;
+export const ListXdslSpareResponse =
+  GetPortMappingsResponse as any as S.Schema<ListXdslSpareResponse>;
 
 export interface ListXdslSpareBrandsRequest {}
 export const ListXdslSpareBrandsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4344,16 +4224,12 @@ export const ListXdslSpareBrandsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslSpareBrandsRequest>;
 
 export type ListXdslSpareBrandsResponseBodyList = Array<string>;
-export const ListXdslSpareBrandsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslSpareBrandsResponseBodyList>;
+export const ListXdslSpareBrandsResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslSpareBrandsResponseBodyList>;
 
 export type ListXdslSpareBrandsResponse = ListXdslSpareBrandsResponseBodyList;
-export const ListXdslSpareBrandsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslSpareBrandsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslSpareBrandsResponse",
-}) as any as S.Schema<ListXdslSpareBrandsResponse>;
+export const ListXdslSpareBrandsResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslSpareBrandsResponse>;
 
 export interface ListXdslSpareCompatibleReplacementRequest {
   /** Spare */
@@ -4368,17 +4244,13 @@ export const ListXdslSpareCompatibleReplacementRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListXdslSpareCompatibleReplacementRequest>;
 
 export type ListXdslSpareCompatibleReplacementResponseBodyList = Array<string>;
-export const ListXdslSpareCompatibleReplacementResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListXdslSpareCompatibleReplacementResponseBodyList>;
+export const ListXdslSpareCompatibleReplacementResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslSpareCompatibleReplacementResponseBodyList>;
 
 export type ListXdslSpareCompatibleReplacementResponse =
   ListXdslSpareCompatibleReplacementResponseBodyList;
-export const ListXdslSpareCompatibleReplacementResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslSpareCompatibleReplacementResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListXdslSpareCompatibleReplacementResponse",
-}) as any as S.Schema<ListXdslSpareCompatibleReplacementResponse>;
+export const ListXdslSpareCompatibleReplacementResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslSpareCompatibleReplacementResponse>;
 
 /** Various types of statisctics available for the access. */
 export type XdslAccessStatisticsTypeEnum = "ping" | "traffic:download" | "traffic:upload";
@@ -4454,14 +4326,12 @@ export const ListXdslTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslTasksRequest" }) as any as S.Schema<ListXdslTasksRequest>;
 
 export type ListXdslTasksResponseBodyList = Array<number>;
-export const ListXdslTasksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListXdslTasksResponseBodyList>;
+export const ListXdslTasksResponseBodyList =
+  ChangeContactResponseBodyList as any as S.Schema<ListXdslTasksResponseBodyList>;
 
 export type ListXdslTasksResponse = ListXdslTasksResponseBodyList;
-export const ListXdslTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListXdslTasksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListXdslTasksResponse" }) as any as S.Schema<ListXdslTasksResponse>;
+export const ListXdslTasksResponse =
+  ChangeContactResponse as any as S.Schema<ListXdslTasksResponse>;
 
 export interface PutXdslRequest {
   /** Service name */
@@ -4482,9 +4352,7 @@ export const PutXdslRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslRequest" }) as any as S.Schema<PutXdslRequest>;
 
 export interface PutXdslResponse {}
-export const PutXdslResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslResponse",
-}) as any as S.Schema<PutXdslResponse>;
+export const PutXdslResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslResponse>;
 
 export interface PutXdslEmailProRequest {
   /** Email */
@@ -4509,9 +4377,8 @@ export const PutXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslEmailProRequest" }) as any as S.Schema<PutXdslEmailProRequest>;
 
 export interface PutXdslEmailProResponse {}
-export const PutXdslEmailProResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslEmailProResponse",
-}) as any as S.Schema<PutXdslEmailProResponse>;
+export const PutXdslEmailProResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslEmailProResponse>;
 
 export interface PutXdslModemRequest {
   /** Service name */
@@ -4539,9 +4406,8 @@ export const PutXdslModemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslModemRequest" }) as any as S.Schema<PutXdslModemRequest>;
 
 export interface PutXdslModemResponse {}
-export const PutXdslModemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslModemResponse",
-}) as any as S.Schema<PutXdslModemResponse>;
+export const PutXdslModemResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemResponse>;
 
 export interface PutXdslModemLanRequest {
   /** Service name */
@@ -4566,9 +4432,8 @@ export const PutXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslModemLanRequest" }) as any as S.Schema<PutXdslModemLanRequest>;
 
 export interface PutXdslModemLanResponse {}
-export const PutXdslModemLanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslModemLanResponse",
-}) as any as S.Schema<PutXdslModemLanResponse>;
+export const PutXdslModemLanResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemLanResponse>;
 
 export interface PutXdslModemLanDhcpRequest {
   /** Service name */
@@ -4622,9 +4487,8 @@ export const PutXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutXdslModemLanDhcpRequest>;
 
 export interface PutXdslModemLanDhcpResponse {}
-export const PutXdslModemLanDhcpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslModemLanDhcpResponse",
-}) as any as S.Schema<PutXdslModemLanDhcpResponse>;
+export const PutXdslModemLanDhcpResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemLanDhcpResponse>;
 
 export interface PutXdslModemWifiRequest {
   /** Service name */
@@ -4661,9 +4525,8 @@ export const PutXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslModemWifiRequest" }) as any as S.Schema<PutXdslModemWifiRequest>;
 
 export interface PutXdslModemWifiResponse {}
-export const PutXdslModemWifiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslModemWifiResponse",
-}) as any as S.Schema<PutXdslModemWifiResponse>;
+export const PutXdslModemWifiResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemWifiResponse>;
 
 export interface PutXdslModemWifiRadioRequest {
   /** Service name */
@@ -4708,9 +4571,7 @@ export const PutXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslRmaRequest" }) as any as S.Schema<PutXdslRmaRequest>;
 
 export interface PutXdslRmaResponse {}
-export const PutXdslRmaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslRmaResponse",
-}) as any as S.Schema<PutXdslRmaResponse>;
+export const PutXdslRmaResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslRmaResponse>;
 
 export interface PutXdslServiceInfosRequest {
   /** Service name */
@@ -4728,9 +4589,8 @@ export const PutXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutXdslServiceInfosRequest>;
 
 export interface PutXdslServiceInfosResponse {}
-export const PutXdslServiceInfosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutXdslServiceInfosResponse",
-}) as any as S.Schema<PutXdslServiceInfosResponse>;
+export const PutXdslServiceInfosResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslServiceInfosResponse>;
 
 export interface PutXdslSpareServiceInfosRequest {
   /** Spare */
@@ -4748,11 +4608,8 @@ export const PutXdslSpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutXdslSpareServiceInfosRequest>;
 
 export interface PutXdslSpareServiceInfosResponse {}
-export const PutXdslSpareServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutXdslSpareServiceInfosResponse",
-}) as any as S.Schema<PutXdslSpareServiceInfosResponse>;
+export const PutXdslSpareServiceInfosResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<PutXdslSpareServiceInfosResponse>;
 
 export interface RebootModemRequest {
   /** Service name */
@@ -4830,11 +4687,8 @@ export const RemoveMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveMonitoringNotificationRequest>;
 
 export interface RemoveMonitoringNotificationResponse {}
-export const RemoveMonitoringNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveMonitoringNotificationResponse",
-}) as any as S.Schema<RemoveMonitoringNotificationResponse>;
+export const RemoveMonitoringNotificationResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<RemoveMonitoringNotificationResponse>;
 
 export interface RemovePortMappingRequest {
   /** Service name */
@@ -5059,9 +4913,8 @@ export const ReplaceModemBySpareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceModemBySpareRequest>;
 
 export interface ReplaceModemBySpareResponse {}
-export const ReplaceModemBySpareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReplaceModemBySpareResponse",
-}) as any as S.Schema<ReplaceModemBySpareResponse>;
+export const ReplaceModemBySpareResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<ReplaceModemBySpareResponse>;
 
 export interface RequestTotalDeconsolidationRequest {
   /** Service name */
@@ -5134,11 +4987,8 @@ export const ResetXdslModemPortMappingConfigRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ResetXdslModemPortMappingConfigRequest>;
 
 export interface ResetXdslModemPortMappingConfigResponse {}
-export const ResetXdslModemPortMappingConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetXdslModemPortMappingConfigResponse",
-}) as any as S.Schema<ResetXdslModemPortMappingConfigResponse>;
+export const ResetXdslModemPortMappingConfigResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<ResetXdslModemPortMappingConfigResponse>;
 
 /** Information about the reason for the resiliation */
 export type XdslResiliationSurveyInput = IamResourceTagFilterInput;
@@ -5363,9 +5213,8 @@ export const UpdateDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDHCPStaticAddressRequest>;
 
 export interface UpdateDHCPStaticAddressResponse {}
-export const UpdateDHCPStaticAddressResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateDHCPStaticAddressResponse" },
-) as any as S.Schema<UpdateDHCPStaticAddressResponse>;
+export const UpdateDHCPStaticAddressResponse =
+  SendXdslOrderToProviderResponse as any as S.Schema<UpdateDHCPStaticAddressResponse>;
 
 export interface UpdateFTPStatusRequest {
   /** Service name */
@@ -5474,9 +5323,8 @@ export const UpdateLineDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of actions already done by customer */
 export type XdslLineDiagnosticDiagnosticDataActionsDoneList =
   Array<XdslLineDiagnosticCustomerActionsEnum>;
-export const XdslLineDiagnosticDiagnosticDataActionsDoneList = /*@__PURE__*/ S.Array(
-  XdslLineDiagnosticCustomerActionsEnum,
-) as any as S.Schema<XdslLineDiagnosticDiagnosticDataActionsDoneList>;
+export const XdslLineDiagnosticDiagnosticDataActionsDoneList =
+  UpdateLineDiagnosticRequestActionsDoneList as any as S.Schema<XdslLineDiagnosticDiagnosticDataActionsDoneList>;
 
 /** Customer action to do */
 export interface XdslLineDiagnosticCustomerActionToDo {
@@ -5802,9 +5650,8 @@ export const XdslLineDiagnosticSeltResult = /*@__PURE__*/ S.suspend(() =>
 
 /** available values for enum */
 export type XdslLineDiagnosticQuestionEnumValuesList = Array<string>;
-export const XdslLineDiagnosticQuestionEnumValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<XdslLineDiagnosticQuestionEnumValuesList>;
+export const XdslLineDiagnosticQuestionEnumValuesList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslLineDiagnosticQuestionEnumValuesList>;
 
 /** Possible customer questions */
 export type XdslLineDiagnosticQuestionsEnum =
@@ -6038,9 +5885,8 @@ export const UpdateModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateModemTemplateRequest>;
 
 export interface UpdateModemTemplateResponse {}
-export const UpdateModemTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateModemTemplateResponse",
-}) as any as S.Schema<UpdateModemTemplateResponse>;
+export const UpdateModemTemplateResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<UpdateModemTemplateResponse>;
 
 export interface UpdateMonitoringNotificationRequest {
   /** Service name */
@@ -6078,11 +5924,8 @@ export const UpdateMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMonitoringNotificationRequest>;
 
 export interface UpdateMonitoringNotificationResponse {}
-export const UpdateMonitoringNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateMonitoringNotificationResponse",
-}) as any as S.Schema<UpdateMonitoringNotificationResponse>;
+export const UpdateMonitoringNotificationResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<UpdateMonitoringNotificationResponse>;
 
 export interface UpdatePortMappingRequest {
   /** Service name */
@@ -6124,9 +5967,8 @@ export const UpdatePortMappingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePortMappingRequest" }) as any as S.Schema<UpdatePortMappingRequest>;
 
 export interface UpdatePortMappingResponse {}
-export const UpdatePortMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePortMappingResponse",
-}) as any as S.Schema<UpdatePortMappingResponse>;
+export const UpdatePortMappingResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<UpdatePortMappingResponse>;
 
 export interface UpdateRIORequest {
   /** Service name */
@@ -6147,9 +5989,7 @@ export const UpdateRIORequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRIORequest" }) as any as S.Schema<UpdateRIORequest>;
 
 export interface UpdateRIOResponse {}
-export const UpdateRIOResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRIOResponse",
-}) as any as S.Schema<UpdateRIOResponse>;
+export const UpdateRIOResponse = ArchiveXdslTaskResponse as any as S.Schema<UpdateRIOResponse>;
 
 /** Types of return merchandise authorisation you can change to */
 export type TelephonyRmaChangeTypeEnum = "resiliate" | "toSip";
@@ -6172,9 +6012,8 @@ export const UpdateRMATypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRMATypeRequest" }) as any as S.Schema<UpdateRMATypeRequest>;
 
 export interface UpdateRMATypeResponse {}
-export const UpdateRMATypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRMATypeResponse",
-}) as any as S.Schema<UpdateRMATypeResponse>;
+export const UpdateRMATypeResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<UpdateRMATypeResponse>;
 
 export interface UpdateSipAlgStatusRequest {
   /** Service name */

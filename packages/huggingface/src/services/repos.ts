@@ -664,9 +664,8 @@ export const CreateRepositoryRequestBodyCase3VariablesItem =
 
 export type CreateRepositoryRequestBodyCase3VariablesList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-export const CreateRepositoryRequestBodyCase3VariablesList = /*@__PURE__*/ S.Array(
-  CreateRepositoryRequestBodyCase3SecretsItem,
-) as any as S.Schema<CreateRepositoryRequestBodyCase3VariablesList>;
+export const CreateRepositoryRequestBodyCase3VariablesList =
+  CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<CreateRepositoryRequestBodyCase3VariablesList>;
 
 export type CreateRepositoryRequestBodyCase3SleepTimeSeconds = number | number;
 export const CreateRepositoryRequestBodyCase3SleepTimeSeconds =
@@ -855,18 +854,16 @@ export const DuplicateRepositoryRequestSecretsItem = CreateRepositoryRequestBody
 
 export type DuplicateRepositoryRequestSecretsList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-export const DuplicateRepositoryRequestSecretsList = /*@__PURE__*/ S.Array(
-  CreateRepositoryRequestBodyCase3SecretsItem,
-) as any as S.Schema<DuplicateRepositoryRequestSecretsList>;
+export const DuplicateRepositoryRequestSecretsList =
+  CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<DuplicateRepositoryRequestSecretsList>;
 
 export type DuplicateRepositoryRequestVariablesItem = CreateRepositoryRequestBodyCase3SecretsItem;
 export const DuplicateRepositoryRequestVariablesItem = CreateRepositoryRequestBodyCase3SecretsItem;
 
 export type DuplicateRepositoryRequestVariablesList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-export const DuplicateRepositoryRequestVariablesList = /*@__PURE__*/ S.Array(
-  CreateRepositoryRequestBodyCase3SecretsItem,
-) as any as S.Schema<DuplicateRepositoryRequestVariablesList>;
+export const DuplicateRepositoryRequestVariablesList =
+  CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<DuplicateRepositoryRequestVariablesList>;
 
 export type DuplicateRepositoryRequestVolumesItemType = "bucket" | "model" | "dataset" | "space";
 export const DuplicateRepositoryRequestVolumesItemType = S.String;

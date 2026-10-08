@@ -262,14 +262,12 @@ export type EmbeddingModelDetailsCategory = "standard" | "plus" | "premium";
 export const EmbeddingModelDetailsCategory = S.String;
 
 export type EmbeddingModelDetailsSkusList = Array<SKU>;
-export const EmbeddingModelDetailsSkusList = /*@__PURE__*/ S.Array(
-  SKU,
-) as any as S.Schema<EmbeddingModelDetailsSkusList>;
+export const EmbeddingModelDetailsSkusList =
+  ChatModelDetailsSkusList as any as S.Schema<EmbeddingModelDetailsSkusList>;
 
 export type EmbeddingModelDetailsTagsList = Array<string>;
-export const EmbeddingModelDetailsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmbeddingModelDetailsTagsList>;
+export const EmbeddingModelDetailsTagsList =
+  ChatModelDetailsTagsList as any as S.Schema<EmbeddingModelDetailsTagsList>;
 
 export interface EmbeddingModelDetails {
   category: EmbeddingModelDetailsCategory;
@@ -526,12 +524,7 @@ export interface UpdateTokenResponse {
   message?: string;
   token: Token;
 }
-export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    token: Token,
-  }),
-).annotate({ identifier: "UpdateTokenResponse" }) as any as S.Schema<UpdateTokenResponse>;
+export const UpdateTokenResponse = GetTokenResponse as any as S.Schema<UpdateTokenResponse>;
 
 export type CreateTokenError = BadRequest | Conflict | StackitOpError;
 /** create auth token for shared model use create auth token for shared model use */

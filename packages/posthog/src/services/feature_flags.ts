@@ -427,15 +427,13 @@ export const FeatureFlagFiltersSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this feature flag. */
 export type CreateFeatureFlagRequestTagsList = Array<string>;
-export const CreateFeatureFlagRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFeatureFlagRequestTagsList>;
+export const CreateFeatureFlagRequestTagsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<CreateFeatureFlagRequestTagsList>;
 
 /** Evaluation contexts that control where this flag evaluates at runtime. */
 export type CreateFeatureFlagRequestEvaluationContextsList = Array<string>;
-export const CreateFeatureFlagRequestEvaluationContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFeatureFlagRequestEvaluationContextsList>;
+export const CreateFeatureFlagRequestEvaluationContextsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<CreateFeatureFlagRequestEvaluationContextsList>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
@@ -495,10 +493,8 @@ export const FeatureFlagOutputFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FeatureFlagOutputFiltersMap>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -574,16 +570,12 @@ export const FeatureFlagOutputExperimentSetMetadataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FeatureFlagOutputExperimentSetMetadataList>;
 
 export type FeatureFlagOutputSurveysMap = { [key: string]: unknown | undefined };
-export const FeatureFlagOutputSurveysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureFlagOutputSurveysMap>;
+export const FeatureFlagOutputSurveysMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagOutputSurveysMap>;
 
 export type FeatureFlagOutputFeaturesMap = { [key: string]: unknown | undefined };
-export const FeatureFlagOutputFeaturesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureFlagOutputFeaturesMap>;
+export const FeatureFlagOutputFeaturesMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagOutputFeaturesMap>;
 
 export type FeatureFlagOutputTagsList = Array<unknown>;
 export const FeatureFlagOutputTagsList = /*@__PURE__*/ S.Array(
@@ -591,9 +583,8 @@ export const FeatureFlagOutputTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FeatureFlagOutputTagsList>;
 
 export type FeatureFlagOutputAnalyticsDashboardsList = Array<number>;
-export const FeatureFlagOutputAnalyticsDashboardsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FeatureFlagOutputAnalyticsDashboardsList>;
+export const FeatureFlagOutputAnalyticsDashboardsList =
+  FeatureFlagOutputExperimentSetList as any as S.Schema<FeatureFlagOutputAnalyticsDashboardsList>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type FeatureFlagOutputEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
@@ -779,10 +770,8 @@ export const CreateFeatureFlagsTestEvaluationRequest = /*@__PURE__*/ S.suspend((
 export type FeatureFlagTestEvaluationResponsePersonPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const FeatureFlagTestEvaluationResponsePersonPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureFlagTestEvaluationResponsePersonPropertiesMap>;
+export const FeatureFlagTestEvaluationResponsePersonPropertiesMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagTestEvaluationResponsePersonPropertiesMap>;
 
 export interface FeatureFlagConditionPropertyAnalysis {
   /** Property key */
@@ -900,10 +889,8 @@ export const FeatureFlagTestEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateFeatureFlagsUserBlastRadiusRequestConditionMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateFeatureFlagsUserBlastRadiusRequestConditionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateFeatureFlagsUserBlastRadiusRequestConditionMap>;
+export const CreateFeatureFlagsUserBlastRadiusRequestConditionMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<CreateFeatureFlagsUserBlastRadiusRequestConditionMap>;
 
 export interface CreateFeatureFlagsUserBlastRadiusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -973,15 +960,13 @@ export const BulkDeleteFiltersTypeEnum = S.String;
 
 /** Tag names to filter by. Flags carrying at least one of these tags match. */
 export type BulkDeleteFiltersTagsList = Array<string>;
-export const BulkDeleteFiltersTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkDeleteFiltersTagsList>;
+export const BulkDeleteFiltersTagsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<BulkDeleteFiltersTagsList>;
 
 /** Tag names to exclude. Flags carrying any of these tags are filtered out. */
 export type BulkDeleteFiltersExcludedTagsList = Array<string>;
-export const BulkDeleteFiltersExcludedTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkDeleteFiltersExcludedTagsList>;
+export const BulkDeleteFiltersExcludedTagsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<BulkDeleteFiltersExcludedTagsList>;
 
 /** Allowed filter keys for bulk_delete -- same shape as the list endpoint's query params. */
 export interface BulkDeleteFilters {
@@ -1023,9 +1008,8 @@ export const BulkDeleteFilters = /*@__PURE__*/ S.suspend(() =>
 
 /** Explicit feature flag IDs to soft-delete. Mutually exclusive with `filters`. */
 export type FeatureFlagsBulkDeleteCreateRequestIdsList = Array<number>;
-export const FeatureFlagsBulkDeleteCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FeatureFlagsBulkDeleteCreateRequestIdsList>;
+export const FeatureFlagsBulkDeleteCreateRequestIdsList =
+  FeatureFlagOutputExperimentSetList as any as S.Schema<FeatureFlagsBulkDeleteCreateRequestIdsList>;
 
 export interface FeatureFlagsBulkDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1118,9 +1102,8 @@ export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Feature flag IDs to look up keys for. Strings of digits are also accepted; any other value is reported in the response `warning` field and otherwise ignored. */
 export type FeatureFlagsBulkKeysRetrieveRequestIdsList = Array<unknown>;
-export const FeatureFlagsBulkKeysRetrieveRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FeatureFlagsBulkKeysRetrieveRequestIdsList>;
+export const FeatureFlagsBulkKeysRetrieveRequestIdsList =
+  FeatureFlagOutputTagsList as any as S.Schema<FeatureFlagsBulkKeysRetrieveRequestIdsList>;
 
 export interface FeatureFlagsBulkKeysRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1145,10 +1128,8 @@ export const FeatureFlagsBulkKeysRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping of feature flag ID (as a string) to flag key, for IDs that exist in this project. */
 export type BulkKeysResponseKeysMap = { [key: string]: string | undefined };
-export const BulkKeysResponseKeysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BulkKeysResponseKeysMap>;
+export const BulkKeysResponseKeysMap =
+  FeatureFlagFiltersSchemaPayloadsMap as any as S.Schema<BulkKeysResponseKeysMap>;
 
 export interface BulkKeysResponse {
   /** Mapping of feature flag ID (as a string) to flag key, for IDs that exist in this project. */
@@ -1165,9 +1146,8 @@ export const BulkKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object IDs to update tags on. */
 export type FeatureFlagsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-export const FeatureFlagsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestIdsList>;
+export const FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
+  FeatureFlagOutputExperimentSetList as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
@@ -1175,9 +1155,8 @@ export const BulkUpdateTagsActionEnum = S.String;
 
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type FeatureFlagsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-export const FeatureFlagsBulkUpdateTagsCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestTagsList>;
+export const FeatureFlagsBulkUpdateTagsCreateRequestTagsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestTagsList>;
 
 export interface FeatureFlagsBulkUpdateTagsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1207,9 +1186,8 @@ export const FeatureFlagsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequest>;
 
 export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateTagsItemTagsList>;
+export const BulkUpdateTagsItemTagsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<BulkUpdateTagsItemTagsList>;
 
 export interface BulkUpdateTagsItem {
   id?: number;
@@ -1257,15 +1235,12 @@ export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap = {
   [key: string]: unknown | undefined;
 };
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap>;
+export const FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList = Array<unknown>;
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList>;
+export const FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList =
+  FeatureFlagOutputTagsList as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList =
   Array<unknown>;
@@ -1652,9 +1627,8 @@ export const GetFeatureFlagsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsAllActivityRequest>;
 
 export type GetFeatureFlagsEvaluationReasonRequestFlagKeysList = Array<string>;
-export const GetFeatureFlagsEvaluationReasonRequestFlagKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetFeatureFlagsEvaluationReasonRequestFlagKeysList>;
+export const GetFeatureFlagsEvaluationReasonRequestFlagKeysList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<GetFeatureFlagsEvaluationReasonRequestFlagKeysList>;
 
 export interface GetFeatureFlagsEvaluationReasonRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1684,11 +1658,8 @@ export const GetFeatureFlagsEvaluationReasonRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetFeatureFlagsEvaluationReasonRequest>;
 
 export interface GetFeatureFlagsEvaluationReasonResponse {}
-export const GetFeatureFlagsEvaluationReasonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetFeatureFlagsEvaluationReasonResponse",
-}) as any as S.Schema<GetFeatureFlagsEvaluationReasonResponse>;
+export const GetFeatureFlagsEvaluationReasonResponse =
+  FeatureFlagsCreateStaticCohortForFlagCreateResponse as any as S.Schema<GetFeatureFlagsEvaluationReasonResponse>;
 
 export interface GetFeatureFlagsMatchingIdsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1709,16 +1680,12 @@ export const GetFeatureFlagsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsMatchingIdsRequest>;
 
 export interface GetFeatureFlagsMatchingIdsResponse {}
-export const GetFeatureFlagsMatchingIdsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetFeatureFlagsMatchingIdsResponse",
-}) as any as S.Schema<GetFeatureFlagsMatchingIdsResponse>;
+export const GetFeatureFlagsMatchingIdsResponse =
+  FeatureFlagsCreateStaticCohortForFlagCreateResponse as any as S.Schema<GetFeatureFlagsMatchingIdsResponse>;
 
 export type GetFeatureFlagsMyFlagRequestFlagKeysList = Array<string>;
-export const GetFeatureFlagsMyFlagRequestFlagKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetFeatureFlagsMyFlagRequestFlagKeysList>;
+export const GetFeatureFlagsMyFlagRequestFlagKeysList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<GetFeatureFlagsMyFlagRequestFlagKeysList>;
 
 export interface GetFeatureFlagsMyFlagRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1741,10 +1708,8 @@ export const GetFeatureFlagsMyFlagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsMyFlagRequest>;
 
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
+export const MinimalFeatureFlagFiltersMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
@@ -1757,9 +1722,8 @@ export const MinimalFeatureFlagBucketingIdentifier =
   S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
+export const MinimalFeatureFlagEvaluationContextsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
 
 export interface MinimalFeatureFlag {
   id?: number;
@@ -1839,11 +1803,8 @@ export const GetFeatureFlagsRemoteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsRemoteConfigRequest>;
 
 export interface GetFeatureFlagsRemoteConfigResponse {}
-export const GetFeatureFlagsRemoteConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetFeatureFlagsRemoteConfigResponse",
-}) as any as S.Schema<GetFeatureFlagsRemoteConfigResponse>;
+export const GetFeatureFlagsRemoteConfigResponse =
+  FeatureFlagsCreateStaticCohortForFlagCreateResponse as any as S.Schema<GetFeatureFlagsRemoteConfigResponse>;
 
 export interface GetFeatureFlagsStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1933,10 +1894,8 @@ export const GetFeatureFlagsVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsVersionRequest>;
 
 export type FeatureFlagVersionResponseFiltersMap = { [key: string]: unknown | undefined };
-export const FeatureFlagVersionResponseFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FeatureFlagVersionResponseFiltersMap>;
+export const FeatureFlagVersionResponseFiltersMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagVersionResponseFiltersMap>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type FeatureFlagVersionResponseEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
@@ -2142,25 +2101,20 @@ export const ListFeatureFlagsDependentFlagsResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListFeatureFlagsDependentFlagsResponse>;
 
 export type UpdateFeatureFlagRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateFeatureFlagRequestFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateFeatureFlagRequestFiltersMap>;
+export const UpdateFeatureFlagRequestFiltersMap =
+  FeatureFlagOutputFiltersMap as any as S.Schema<UpdateFeatureFlagRequestFiltersMap>;
 
 export type UpdateFeatureFlagRequestTagsList = Array<unknown>;
-export const UpdateFeatureFlagRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateFeatureFlagRequestTagsList>;
+export const UpdateFeatureFlagRequestTagsList =
+  FeatureFlagOutputTagsList as any as S.Schema<UpdateFeatureFlagRequestTagsList>;
 
 export type UpdateFeatureFlagRequestEvaluationContextsList = Array<unknown>;
-export const UpdateFeatureFlagRequestEvaluationContextsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateFeatureFlagRequestEvaluationContextsList>;
+export const UpdateFeatureFlagRequestEvaluationContextsList =
+  FeatureFlagOutputTagsList as any as S.Schema<UpdateFeatureFlagRequestEvaluationContextsList>;
 
 export type UpdateFeatureFlagRequestAnalyticsDashboardsList = Array<number>;
-export const UpdateFeatureFlagRequestAnalyticsDashboardsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateFeatureFlagRequestAnalyticsDashboardsList>;
+export const UpdateFeatureFlagRequestAnalyticsDashboardsList =
+  FeatureFlagOutputExperimentSetList as any as S.Schema<UpdateFeatureFlagRequestAnalyticsDashboardsList>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type UpdateFeatureFlagRequestEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
@@ -2230,15 +2184,13 @@ export const UpdateFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this feature flag. */
 export type UpdateFeatureFlagsPartialRequestTagsList = Array<string>;
-export const UpdateFeatureFlagsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureFlagsPartialRequestTagsList>;
+export const UpdateFeatureFlagsPartialRequestTagsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<UpdateFeatureFlagsPartialRequestTagsList>;
 
 /** Evaluation contexts that control where this flag evaluates at runtime. */
 export type UpdateFeatureFlagsPartialRequestEvaluationContextsList = Array<string>;
-export const UpdateFeatureFlagsPartialRequestEvaluationContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureFlagsPartialRequestEvaluationContextsList>;
+export const UpdateFeatureFlagsPartialRequestEvaluationContextsList =
+  FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<UpdateFeatureFlagsPartialRequestEvaluationContextsList>;
 
 export interface UpdateFeatureFlagsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -216,9 +214,8 @@ export const IoK8sApiStorageV1CSIDriverSpecTokenRequestsList = /*@__PURE__*/ S.A
 
 /** volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism. The other mode is "Ephemeral". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume. For more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future. This field is beta. This field is immutable. */
 export type IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList = Array<string>;
-export const IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList>;
+export const IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiStorageV1CSIDriverSpecVolumeLifecycleModesList>;
 
 /** CSIDriverSpec is the specification of a CSIDriver. */
 export interface IoK8sApiStorageV1CSIDriverSpec {
@@ -333,9 +330,8 @@ export const IoK8sApiStorageV1VolumeNodeResources = /*@__PURE__*/ S.suspend(() =
 
 /** topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. "company.com/zone", "company.com/region"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology. */
 export type IoK8sApiStorageV1CSINodeDriverTopologyKeysList = Array<string>;
-export const IoK8sApiStorageV1CSINodeDriverTopologyKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiStorageV1CSINodeDriverTopologyKeysList>;
+export const IoK8sApiStorageV1CSINodeDriverTopologyKeysList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiStorageV1CSINodeDriverTopologyKeysList>;
 
 /** CSINodeDriver holds information about the specification of one CSI driver installed on a node */
 export interface IoK8sApiStorageV1CSINodeDriver {
@@ -545,10 +541,8 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
 
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
@@ -650,9 +644,8 @@ export const IoK8sApiStorageV1CSIStorageCapacity = /*@__PURE__*/ S.suspend(() =>
 
 /** values is an array of string values. One value must match the label to be selected. Each entry in values is ORed. */
 export type IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList = Array<string>;
-export const IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList>;
+export const IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1TopologySelectorLabelRequirementValuesList>;
 
 /** A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future. */
 export interface IoK8sApiCoreV1TopologySelectorLabelRequirement {
@@ -699,16 +692,13 @@ export const CreateStorageV1StorageClassRequestAllowedTopologiesList = /*@__PURE
 
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
 export type CreateStorageV1StorageClassRequestMountOptionsList = Array<string>;
-export const CreateStorageV1StorageClassRequestMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateStorageV1StorageClassRequestMountOptionsList>;
+export const CreateStorageV1StorageClassRequestMountOptionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<CreateStorageV1StorageClassRequestMountOptionsList>;
 
 /** parameters holds the parameters for the provisioner that should create volumes of this storage class. */
 export type CreateStorageV1StorageClassRequestParametersMap = { [key: string]: string | undefined };
-export const CreateStorageV1StorageClassRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateStorageV1StorageClassRequestParametersMap>;
+export const CreateStorageV1StorageClassRequestParametersMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateStorageV1StorageClassRequestParametersMap>;
 
 export interface CreateStorageV1StorageClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -764,22 +754,18 @@ export const CreateStorageV1StorageClassRequest = /*@__PURE__*/ S.suspend(() =>
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type IoK8sApiStorageV1StorageClassAllowedTopologiesList =
   Array<IoK8sApiCoreV1TopologySelectorTerm>;
-export const IoK8sApiStorageV1StorageClassAllowedTopologiesList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1TopologySelectorTerm,
-) as any as S.Schema<IoK8sApiStorageV1StorageClassAllowedTopologiesList>;
+export const IoK8sApiStorageV1StorageClassAllowedTopologiesList =
+  CreateStorageV1StorageClassRequestAllowedTopologiesList as any as S.Schema<IoK8sApiStorageV1StorageClassAllowedTopologiesList>;
 
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
 export type IoK8sApiStorageV1StorageClassMountOptionsList = Array<string>;
-export const IoK8sApiStorageV1StorageClassMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiStorageV1StorageClassMountOptionsList>;
+export const IoK8sApiStorageV1StorageClassMountOptionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiStorageV1StorageClassMountOptionsList>;
 
 /** parameters holds the parameters for the provisioner that should create volumes of this storage class. */
 export type IoK8sApiStorageV1StorageClassParametersMap = { [key: string]: string | undefined };
-export const IoK8sApiStorageV1StorageClassParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiStorageV1StorageClassParametersMap>;
+export const IoK8sApiStorageV1StorageClassParametersMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiStorageV1StorageClassParametersMap>;
 
 /** StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned. StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name. */
 export interface IoK8sApiStorageV1StorageClass {
@@ -823,9 +809,8 @@ export const IoK8sApiStorageV1StorageClass = /*@__PURE__*/ S.suspend(() =>
 
 /** accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes */
 export type IoK8sApiCoreV1PersistentVolumeSpecAccessModesList = Array<string>;
-export const IoK8sApiCoreV1PersistentVolumeSpecAccessModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecAccessModesList>;
+export const IoK8sApiCoreV1PersistentVolumeSpecAccessModesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecAccessModesList>;
 
 /** Represents a Persistent Disk resource in AWS. An AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource {
@@ -901,16 +886,13 @@ export const IoK8sApiCoreV1AzureFilePersistentVolumeSource = /*@__PURE__*/ S.sus
 
 /** capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity */
 export type IoK8sApiCoreV1PersistentVolumeSpecCapacityMap = { [key: string]: string | undefined };
-export const IoK8sApiCoreV1PersistentVolumeSpecCapacityMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecCapacityMap>;
+export const IoK8sApiCoreV1PersistentVolumeSpecCapacityMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecCapacityMap>;
 
 /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
 export type IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList = Array<string>;
-export const IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList>;
+export const IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CephFSPersistentVolumeSourceMonitorsList>;
 
 /** SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace */
 export interface IoK8sApiCoreV1SecretReference {
@@ -1013,10 +995,8 @@ export const IoK8sApiCoreV1ObjectReference = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap>;
+export const IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1CSIPersistentVolumeSourceVolumeAttributesMap>;
 
 /** Represents storage that is managed by an external CSI volume driver */
 export interface IoK8sApiCoreV1CSIPersistentVolumeSource {
@@ -1060,15 +1040,13 @@ export const IoK8sApiCoreV1CSIPersistentVolumeSource = /*@__PURE__*/ S.suspend((
 
 /** targetWWNs is Optional: FC target worldwide names (WWNs) */
 export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = Array<string>;
-export const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
+export const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
 
 /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
 export type IoK8sApiCoreV1FCVolumeSourceWwidsList = Array<string>;
-export const IoK8sApiCoreV1FCVolumeSourceWwidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
+export const IoK8sApiCoreV1FCVolumeSourceWwidsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
 
 /** Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1FCVolumeSource {
@@ -1099,10 +1077,8 @@ export const IoK8sApiCoreV1FCVolumeSource = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap>;
+export const IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1FlexPersistentVolumeSourceOptionsMap>;
 
 /** FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin. */
 export interface IoK8sApiCoreV1FlexPersistentVolumeSource {
@@ -1207,9 +1183,8 @@ export const IoK8sApiCoreV1HostPathVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** portals is the iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
 export type IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList = Array<string>;
-export const IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList>;
+export const IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ISCSIPersistentVolumeSourcePortalsList>;
 
 /** ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1ISCSIPersistentVolumeSource {
@@ -1272,9 +1247,8 @@ export const IoK8sApiCoreV1LocalVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** mountOptions is the list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options */
 export type IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList = Array<string>;
-export const IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList>;
+export const IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeSpecMountOptionsList>;
 
 /** Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1NFSVolumeSource {
@@ -1297,9 +1271,8 @@ export const IoK8sApiCoreV1NFSVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
 export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = Array<string>;
-export const IoK8sApiCoreV1NodeSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
+export const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
 
 /** A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApiCoreV1NodeSelectorRequirement {
@@ -1330,9 +1303,8 @@ export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList = /*@__PURE__*/ 
 /** matchFields is a list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1NodeSelectorRequirement,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
+export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
+  IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
 
 /** A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm. */
 export interface IoK8sApiCoreV1NodeSelectorTerm {
@@ -1447,9 +1419,8 @@ export const IoK8sApiCoreV1QuobyteVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
 export type IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList = Array<string>;
-export const IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList>;
+export const IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1RBDPersistentVolumeSourceMonitorsList>;
 
 /** Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1RBDPersistentVolumeSource {
@@ -1733,10 +1704,8 @@ export const IoK8sApiStorageV1VolumeError = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap>;
+export const IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentStatusAttachmentMetadataMap>;
 
 /** VolumeAttachmentStatus is the status of a VolumeAttachment request. */
 export interface IoK8sApiStorageV1VolumeAttachmentStatus {
@@ -1825,10 +1794,8 @@ export const IoK8sApiStorageV1VolumeAttachment = /*@__PURE__*/ S.suspend(() =>
 export type CreateStorageV1VolumeAttributesClassRequestParametersMap = {
   [key: string]: string | undefined;
 };
-export const CreateStorageV1VolumeAttributesClassRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateStorageV1VolumeAttributesClassRequestParametersMap>;
+export const CreateStorageV1VolumeAttributesClassRequestParametersMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<CreateStorageV1VolumeAttributesClassRequestParametersMap>;
 
 export interface CreateStorageV1VolumeAttributesClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -1872,10 +1839,8 @@ export const CreateStorageV1VolumeAttributesClassRequest = /*@__PURE__*/ S.suspe
 export type IoK8sApiStorageV1VolumeAttributesClassParametersMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiStorageV1VolumeAttributesClassParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassParametersMap>;
+export const IoK8sApiStorageV1VolumeAttributesClassParametersMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassParametersMap>;
 
 /** VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning. */
 export interface IoK8sApiStorageV1VolumeAttributesClass {
@@ -2788,21 +2753,18 @@ export const GetStorageV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -3935,24 +3897,20 @@ export const ReplaceStorageV1NamespacedCSIStorageCapacityRequest = /*@__PURE__*/
 /** allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature. */
 export type ReplaceStorageV1StorageClassRequestAllowedTopologiesList =
   Array<IoK8sApiCoreV1TopologySelectorTerm>;
-export const ReplaceStorageV1StorageClassRequestAllowedTopologiesList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1TopologySelectorTerm,
-) as any as S.Schema<ReplaceStorageV1StorageClassRequestAllowedTopologiesList>;
+export const ReplaceStorageV1StorageClassRequestAllowedTopologiesList =
+  CreateStorageV1StorageClassRequestAllowedTopologiesList as any as S.Schema<ReplaceStorageV1StorageClassRequestAllowedTopologiesList>;
 
 /** mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid. */
 export type ReplaceStorageV1StorageClassRequestMountOptionsList = Array<string>;
-export const ReplaceStorageV1StorageClassRequestMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceStorageV1StorageClassRequestMountOptionsList>;
+export const ReplaceStorageV1StorageClassRequestMountOptionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<ReplaceStorageV1StorageClassRequestMountOptionsList>;
 
 /** parameters holds the parameters for the provisioner that should create volumes of this storage class. */
 export type ReplaceStorageV1StorageClassRequestParametersMap = {
   [key: string]: string | undefined;
 };
-export const ReplaceStorageV1StorageClassRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplaceStorageV1StorageClassRequestParametersMap>;
+export const ReplaceStorageV1StorageClassRequestParametersMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceStorageV1StorageClassRequestParametersMap>;
 
 export interface ReplaceStorageV1StorageClassRequest {
   /** name of the StorageClass */
@@ -4100,10 +4058,8 @@ export const ReplaceStorageV1VolumeAttachmentStatusRequest = /*@__PURE__*/ S.sus
 export type ReplaceStorageV1VolumeAttributesClassRequestParametersMap = {
   [key: string]: string | undefined;
 };
-export const ReplaceStorageV1VolumeAttributesClassRequestParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplaceStorageV1VolumeAttributesClassRequestParametersMap>;
+export const ReplaceStorageV1VolumeAttributesClassRequestParametersMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<ReplaceStorageV1VolumeAttributesClassRequestParametersMap>;
 
 export interface ReplaceStorageV1VolumeAttributesClassRequest {
   /** name of the VolumeAttributesClass */

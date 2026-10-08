@@ -87,9 +87,7 @@ export const CancelOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CancelOrganizationsOperationsRequest>;
 
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface Source {
   name?: string;
@@ -978,13 +976,8 @@ export const TestIamPermissionsOrganizationsSourcesRequest = /*@__PURE__*/ S.sus
 export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateOrganizationSettingsOrganizationsRequest {
   updateMask?: string;

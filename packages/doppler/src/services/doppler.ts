@@ -715,9 +715,8 @@ export const ConfigsInheritableResponseConfigInheritsList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<ConfigsInheritableResponseConfigInheritsList>;
 
 export type ConfigsInheritableResponseConfigInheritedByList = Array<unknown>;
-export const ConfigsInheritableResponseConfigInheritedByList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfigsInheritableResponseConfigInheritedByList>;
+export const ConfigsInheritableResponseConfigInheritedByList =
+  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ConfigsInheritableResponseConfigInheritedByList>;
 
 export interface ConfigsInheritableResponseConfig {
   name?: string;
@@ -824,9 +823,8 @@ export const ConfigsInheritsResponseConfigInheritsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConfigsInheritsResponseConfigInheritsList>;
 
 export type ConfigsInheritsResponseConfigInheritedByList = Array<unknown>;
-export const ConfigsInheritsResponseConfigInheritedByList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfigsInheritsResponseConfigInheritedByList>;
+export const ConfigsInheritsResponseConfigInheritedByList =
+  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ConfigsInheritsResponseConfigInheritedByList>;
 
 export interface ConfigsInheritsResponseConfig {
   name?: string;
@@ -888,9 +886,8 @@ export const ConfigsListTrustedIpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsListTrustedIpsRequest>;
 
 export type ConfigsListTrustedIpsResponseIpsList = Array<string>;
-export const ConfigsListTrustedIpsResponseIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsListTrustedIpsResponseIpsList>;
+export const ConfigsListTrustedIpsResponseIpsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ConfigsListTrustedIpsResponseIpsList>;
 
 export interface ConfigsListTrustedIpsResponse {
   ips?: ConfigsListTrustedIpsResponseIpsList;
@@ -998,9 +995,8 @@ export const CreateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateChangeRequestPolicyRequest>;
 
 export type CreateChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
-export const CreateChangeRequestPolicyResponsePolicyRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateChangeRequestPolicyResponsePolicyRulesList>;
+export const CreateChangeRequestPolicyResponsePolicyRulesList =
+  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<CreateChangeRequestPolicyResponsePolicyRulesList>;
 
 export interface CreateChangeRequestPolicyResponsePolicyTargets {
   allProjects?: boolean;
@@ -1069,11 +1065,7 @@ export const CreateConfigResponseConfig = CloneConfigResponseConfig;
 export interface CreateConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CloneConfigResponseConfig),
-  }),
-).annotate({ identifier: "CreateConfigResponse" }) as any as S.Schema<CreateConfigResponse>;
+export const CreateConfigResponse = CloneConfigResponse as any as S.Schema<CreateConfigResponse>;
 
 export interface CreateEnvironmentRequest {
   /** The project's name */
@@ -1514,9 +1506,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteGroupRequest {
   /** The group's slug */
@@ -1529,9 +1520,8 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteGroupResponse>;
 
 export interface DeleteIntegrationRequest {
   /** The slug of the integration to delete */
@@ -1561,9 +1551,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteSecretRequest {
   /** Unique identifier for the project object. */
@@ -1582,9 +1571,8 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecretResponse",
-}) as any as S.Schema<DeleteSecretResponse>;
+export const DeleteSecretResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteSecretResponse>;
 
 export interface DeleteSyncRequest {
   /** The project slug */
@@ -1606,9 +1594,7 @@ export const DeleteSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSyncRequest" }) as any as S.Schema<DeleteSyncRequest>;
 
 export type DeleteSyncResponse = unknown;
-export const DeleteSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteSyncResponse" }) as any as S.Schema<DeleteSyncResponse>;
+export const DeleteSyncResponse = AddWebhookResponse as any as S.Schema<DeleteSyncResponse>;
 
 export interface DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest {
   change_request_id: string;
@@ -1712,9 +1698,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export type DeleteWebhookResponse = unknown;
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteWebhookResponse" }) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse = AddWebhookResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export type DeleteWorkplaceIntegrationsIntegrationMemberRequestType =
   | "workplace_user"
@@ -1767,9 +1751,7 @@ export const DisableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableWebhookRequest" }) as any as S.Schema<DisableWebhookRequest>;
 
 export type DisableWebhookResponse = unknown;
-export const DisableWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DisableWebhookResponse" }) as any as S.Schema<DisableWebhookResponse>;
+export const DisableWebhookResponse = AddWebhookResponse as any as S.Schema<DisableWebhookResponse>;
 
 export type DownloadSecretRequestFormat =
   | "json"
@@ -1902,13 +1884,8 @@ export const DynamicSecretsRevokeLeaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DynamicSecretsRevokeLeaseResponse {
   success?: boolean;
 }
-export const DynamicSecretsRevokeLeaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DynamicSecretsRevokeLeaseResponse",
-}) as any as S.Schema<DynamicSecretsRevokeLeaseResponse>;
+export const DynamicSecretsRevokeLeaseResponse =
+  DeleteChangeRequestPolicyResponse as any as S.Schema<DynamicSecretsRevokeLeaseResponse>;
 
 export interface EnableWebhookRequest {
   /** Webhook's slug */
@@ -1924,9 +1901,7 @@ export const EnableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableWebhookRequest" }) as any as S.Schema<EnableWebhookRequest>;
 
 export type EnableWebhookResponse = unknown;
-export const EnableWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "EnableWebhookResponse" }) as any as S.Schema<EnableWebhookResponse>;
+export const EnableWebhookResponse = AddWebhookResponse as any as S.Schema<EnableWebhookResponse>;
 
 export interface GenerateCliAuthRequest {
   hostname: string;
@@ -1976,9 +1951,8 @@ export const GetChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetChangeRequestPolicyRequest>;
 
 export type GetChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
-export const GetChangeRequestPolicyResponsePolicyRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetChangeRequestPolicyResponsePolicyRulesList>;
+export const GetChangeRequestPolicyResponsePolicyRulesList =
+  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<GetChangeRequestPolicyResponsePolicyRulesList>;
 
 export type GetChangeRequestPolicyResponsePolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
@@ -1992,30 +1966,15 @@ export interface GetChangeRequestPolicyResponsePolicy {
   rules?: GetChangeRequestPolicyResponsePolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-export const GetChangeRequestPolicyResponsePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    rules: S.optional(GetChangeRequestPolicyResponsePolicyRulesList),
-    targets: S.optional(CreateChangeRequestPolicyResponsePolicyTargets),
-  }),
-).annotate({
-  identifier: "GetChangeRequestPolicyResponsePolicy",
-}) as any as S.Schema<GetChangeRequestPolicyResponsePolicy>;
+export const GetChangeRequestPolicyResponsePolicy =
+  CreateChangeRequestPolicyResponsePolicy as any as S.Schema<GetChangeRequestPolicyResponsePolicy>;
 
 export interface GetChangeRequestPolicyResponse {
   policy?: GetChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-export const GetChangeRequestPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(GetChangeRequestPolicyResponsePolicy),
-    success: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetChangeRequestPolicyResponse",
-}) as any as S.Schema<GetChangeRequestPolicyResponse>;
+export const GetChangeRequestPolicyResponse =
+  CreateChangeRequestPolicyResponse as any as S.Schema<GetChangeRequestPolicyResponse>;
 
 export interface GetConfigRequest {
   /** Unique identifier for the project object. */
@@ -2036,11 +1995,7 @@ export const GetConfigResponseConfig = CloneConfigResponseConfig;
 export interface GetConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CloneConfigResponseConfig),
-  }),
-).annotate({ identifier: "GetConfigResponse" }) as any as S.Schema<GetConfigResponse>;
+export const GetConfigResponse = CloneConfigResponse as any as S.Schema<GetConfigResponse>;
 
 export interface GetEnvironmentRequest {
   /** The project's name */
@@ -2087,17 +2042,15 @@ export type GetGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjects
 export const GetGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
 
 export type GetGroupResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-export const GetGroupResponseGroupProjectsList = /*@__PURE__*/ S.Array(
-  CreateGroupResponseGroupProjectsItem,
-) as any as S.Schema<GetGroupResponseGroupProjectsList>;
+export const GetGroupResponseGroupProjectsList =
+  CreateGroupResponseGroupProjectsList as any as S.Schema<GetGroupResponseGroupProjectsList>;
 
 export type GetGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
 export const GetGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
 
 export type GetGroupResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-export const GetGroupResponseGroupMembersList = /*@__PURE__*/ S.Array(
-  AuthMeResponsePrincipal,
-) as any as S.Schema<GetGroupResponseGroupMembersList>;
+export const GetGroupResponseGroupMembersList =
+  CreateGroupResponseGroupMembersList as any as S.Schema<GetGroupResponseGroupMembersList>;
 
 export interface GetGroupResponseGroup {
   name?: string;
@@ -2107,25 +2060,13 @@ export interface GetGroupResponseGroup {
   projects?: GetGroupResponseGroupProjectsList;
   members?: GetGroupResponseGroupMembersList;
 }
-export const GetGroupResponseGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    slug: S.optional(S.String),
-    created_at: S.optional(S.String),
-    default_project_role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-    projects: S.optional(GetGroupResponseGroupProjectsList),
-    members: S.optional(GetGroupResponseGroupMembersList),
-  }),
-).annotate({ identifier: "GetGroupResponseGroup" }) as any as S.Schema<GetGroupResponseGroup>;
+export const GetGroupResponseGroup =
+  CreateGroupResponseGroup as any as S.Schema<GetGroupResponseGroup>;
 
 export interface GetGroupResponse {
   group?: GetGroupResponseGroup;
 }
-export const GetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(GetGroupResponseGroup),
-  }),
-).annotate({ identifier: "GetGroupResponse" }) as any as S.Schema<GetGroupResponse>;
+export const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
 
 export interface GetIntegrationRequest {
   /** The integration slug */
@@ -2275,17 +2216,15 @@ export type GetMemberResponseGroupProjectsItem = CreateGroupResponseGroupProject
 export const GetMemberResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
 
 export type GetMemberResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-export const GetMemberResponseGroupProjectsList = /*@__PURE__*/ S.Array(
-  CreateGroupResponseGroupProjectsItem,
-) as any as S.Schema<GetMemberResponseGroupProjectsList>;
+export const GetMemberResponseGroupProjectsList =
+  CreateGroupResponseGroupProjectsList as any as S.Schema<GetMemberResponseGroupProjectsList>;
 
 export type GetMemberResponseGroupMembersItem = AuthMeResponsePrincipal;
 export const GetMemberResponseGroupMembersItem = AuthMeResponsePrincipal;
 
 export type GetMemberResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-export const GetMemberResponseGroupMembersList = /*@__PURE__*/ S.Array(
-  AuthMeResponsePrincipal,
-) as any as S.Schema<GetMemberResponseGroupMembersList>;
+export const GetMemberResponseGroupMembersList =
+  CreateGroupResponseGroupMembersList as any as S.Schema<GetMemberResponseGroupMembersList>;
 
 export interface GetMemberResponseGroup {
   name?: string;
@@ -2295,25 +2234,13 @@ export interface GetMemberResponseGroup {
   projects?: GetMemberResponseGroupProjectsList;
   members?: GetMemberResponseGroupMembersList;
 }
-export const GetMemberResponseGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    slug: S.optional(S.String),
-    created_at: S.optional(S.String),
-    default_project_role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-    projects: S.optional(GetMemberResponseGroupProjectsList),
-    members: S.optional(GetMemberResponseGroupMembersList),
-  }),
-).annotate({ identifier: "GetMemberResponseGroup" }) as any as S.Schema<GetMemberResponseGroup>;
+export const GetMemberResponseGroup =
+  CreateGroupResponseGroup as any as S.Schema<GetMemberResponseGroup>;
 
 export interface GetMemberResponse {
   group?: GetMemberResponseGroup;
 }
-export const GetMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(GetMemberResponseGroup),
-  }),
-).annotate({ identifier: "GetMemberResponse" }) as any as S.Schema<GetMemberResponse>;
+export const GetMemberResponse = CreateGroupResponse as any as S.Schema<GetMemberResponse>;
 
 export interface GetOptionsRequest {
   /** The integration slug */
@@ -2326,9 +2253,7 @@ export const GetOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOptionsRequest" }) as any as S.Schema<GetOptionsRequest>;
 
 export type GetOptionsResponse = unknown;
-export const GetOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetOptionsResponse" }) as any as S.Schema<GetOptionsResponse>;
+export const GetOptionsResponse = AddWebhookResponse as any as S.Schema<GetOptionsResponse>;
 
 export interface GetProjectRequest {
   /** Unique identifier for the project object. */
@@ -2346,11 +2271,7 @@ export const GetProjectResponseProject = CreateProjectResponseProject;
 export interface GetProjectResponse {
   project?: CreateProjectResponseProject;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.optional(CreateProjectResponseProject),
-  }),
-).annotate({ identifier: "GetProjectResponse" }) as any as S.Schema<GetProjectResponse>;
+export const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
 
 export interface GetSecretRequest {
   /** Unique identifier for the project object. */
@@ -2439,11 +2360,7 @@ export const GetSyncResponseSync = CreateSyncResponseSync;
 export interface GetSyncResponse {
   sync?: CreateSyncResponseSync;
 }
-export const GetSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sync: S.optional(CreateSyncResponseSync),
-  }),
-).annotate({ identifier: "GetSyncResponse" }) as any as S.Schema<GetSyncResponse>;
+export const GetSyncResponse = CreateSyncResponse as any as S.Schema<GetSyncResponse>;
 
 export interface GetUserRequest {
   /** The slug of the workplace user */
@@ -2487,9 +2404,8 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserResponse" }) as any as S.Schema<GetUserResponse>;
 
 export type GetV3workplacechangeRequestsRequestStatusList = Array<string>;
-export const GetV3workplacechangeRequestsRequestStatusList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetV3workplacechangeRequestsRequestStatusList>;
+export const GetV3workplacechangeRequestsRequestStatusList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<GetV3workplacechangeRequestsRequestStatusList>;
 
 export interface GetV3workplacechangeRequestsRequest {
   page?: number;
@@ -3205,9 +3121,7 @@ export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList =
   Array<string>;
 export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList>;
 
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims {
   aud?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList;
@@ -3334,35 +3248,19 @@ export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
   Array<string>;
 export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList>;
 
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
   Array<string>;
 export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList>;
 
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims {
   aud?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList;
   sub?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList;
 }
 export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aud: S.optional(
-        GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList,
-      ),
-      sub: S.optional(
-        GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims",
-  }) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
 
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig {
   discovery_url?: string;
@@ -3459,9 +3357,8 @@ export const GetWebhookResponseWebhookAuthentication = /*@__PURE__*/ S.suspend((
 
 /** The configs the webhook will trigger for */
 export type GetWebhookResponseWebhookEnabledConfigsList = Array<string>;
-export const GetWebhookResponseWebhookEnabledConfigsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookEnabledConfigsList>;
+export const GetWebhookResponseWebhookEnabledConfigsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<GetWebhookResponseWebhookEnabledConfigsList>;
 
 export interface GetWebhookResponseWebhook {
   /** Webhook's slug */
@@ -3620,9 +3517,8 @@ export const GroupsAddMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupsAddMemberRequest" }) as any as S.Schema<GroupsAddMemberRequest>;
 
 export interface GroupsAddMemberResponse {}
-export const GroupsAddMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GroupsAddMemberResponse",
-}) as any as S.Schema<GroupsAddMemberResponse>;
+export const GroupsAddMemberResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<GroupsAddMemberResponse>;
 
 export type GroupsDeleteMemberRequestType = "workplace_user";
 export const GroupsDeleteMemberRequestType = S.String;
@@ -3651,9 +3547,8 @@ export const GroupsDeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsDeleteMemberRequest>;
 
 export interface GroupsDeleteMemberResponse {}
-export const GroupsDeleteMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GroupsDeleteMemberResponse",
-}) as any as S.Schema<GroupsDeleteMemberResponse>;
+export const GroupsDeleteMemberResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<GroupsDeleteMemberResponse>;
 
 export interface ListChangeRequestPoliciesRequest {}
 export const ListChangeRequestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3665,9 +3560,8 @@ export const ListChangeRequestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChangeRequestPoliciesRequest>;
 
 export type ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList = Array<unknown>;
-export const ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList>;
+export const ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList =
+  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList>;
 
 export type ListChangeRequestPoliciesResponsePoliciesItemPolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
@@ -3681,17 +3575,8 @@ export interface ListChangeRequestPoliciesResponsePoliciesItemPolicy {
   rules?: ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-export const ListChangeRequestPoliciesResponsePoliciesItemPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    rules: S.optional(ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList),
-    targets: S.optional(CreateChangeRequestPolicyResponsePolicyTargets),
-  }),
-).annotate({
-  identifier: "ListChangeRequestPoliciesResponsePoliciesItemPolicy",
-}) as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItemPolicy>;
+export const ListChangeRequestPoliciesResponsePoliciesItemPolicy =
+  CreateChangeRequestPolicyResponsePolicy as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItemPolicy>;
 
 export interface ListChangeRequestPoliciesResponsePoliciesItem {
   policy?: ListChangeRequestPoliciesResponsePoliciesItemPolicy;
@@ -3890,9 +3775,8 @@ export const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInvitesRequest" }) as any as S.Schema<ListInvitesRequest>;
 
 export type ListInvitesResponseInvitesItemWorkplaceRolePermissionsList = Array<string>;
-export const ListInvitesResponseInvitesItemWorkplaceRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListInvitesResponseInvitesItemWorkplaceRolePermissionsList>;
+export const ListInvitesResponseInvitesItemWorkplaceRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ListInvitesResponseInvitesItemWorkplaceRolePermissionsList>;
 
 export interface ListInvitesResponseInvitesItemWorkplaceRole {
   name?: string;
@@ -4197,9 +4081,8 @@ export const ListWebhooksResponseWebhooksItemAuthentication = /*@__PURE__*/ S.su
 
 /** The configs the webhook will trigger for */
 export type ListWebhooksResponseWebhooksItemEnabledConfigsList = Array<string>;
-export const ListWebhooksResponseWebhooksItemEnabledConfigsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseWebhooksItemEnabledConfigsList>;
+export const ListWebhooksResponseWebhooksItemEnabledConfigsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ListWebhooksResponseWebhooksItemEnabledConfigsList>;
 
 export interface ListWebhooksResponseWebhooksItem {
   /** Webhook's slug */
@@ -4267,11 +4150,7 @@ export const LockConfigResponseConfig = CloneConfigResponseConfig;
 export interface LockConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const LockConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CloneConfigResponseConfig),
-  }),
-).annotate({ identifier: "LockConfigResponse" }) as any as S.Schema<LockConfigResponse>;
+export const LockConfigResponse = CloneConfigResponse as any as S.Schema<LockConfigResponse>;
 
 export type PostV3workplacechangeRequestsRequestAssignedItemType =
   | "WorkplaceUser"
@@ -4304,14 +4183,8 @@ export interface PostV3workplacechangeRequestsRequestUnitsItemTarget {
   project: string;
   config: string;
 }
-export const PostV3workplacechangeRequestsRequestUnitsItemTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.String,
-    config: S.String,
-  }),
-).annotate({
-  identifier: "PostV3workplacechangeRequestsRequestUnitsItemTarget",
-}) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemTarget>;
+export const PostV3workplacechangeRequestsRequestUnitsItemTarget =
+  ConfigsInheritsRequestInheritsItem as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemTarget>;
 
 export type PostV3workplacechangeRequestsRequestUnitsItemStatus = "draft" | "open";
 export const PostV3workplacechangeRequestsRequestUnitsItemStatus = S.String;
@@ -4753,16 +4626,12 @@ export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitie
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList =
   Array<string>;
 export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList>;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList =
   Array<string>;
 export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList>;
 
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims {
   aud: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList;
@@ -4835,35 +4704,19 @@ export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitie
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList =
   Array<string>;
 export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList>;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList =
   Array<string>;
 export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList>;
 
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims {
   aud?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList;
   sub?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList;
 }
 export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aud: S.optional(
-        PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList,
-      ),
-      sub: S.optional(
-        PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims",
-  }) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims>;
 
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig {
   discovery_url?: string;
@@ -4936,9 +4789,8 @@ export const ProjectMembersAddRequestType = S.String;
 
 /** Environment slugs to grant the member access to */
 export type ProjectMembersAddRequestEnvironmentsList = Array<string>;
-export const ProjectMembersAddRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectMembersAddRequestEnvironmentsList>;
+export const ProjectMembersAddRequestEnvironmentsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersAddRequestEnvironmentsList>;
 
 export interface ProjectMembersAddRequest {
   /** Project slug */
@@ -4965,9 +4817,8 @@ export type ProjectMembersAddResponseMemberRole = CreateGroupResponseGroupDefaul
 export const ProjectMembersAddResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
 
 export type ProjectMembersAddResponseMemberEnvironmentsList = Array<string>;
-export const ProjectMembersAddResponseMemberEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectMembersAddResponseMemberEnvironmentsList>;
+export const ProjectMembersAddResponseMemberEnvironmentsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersAddResponseMemberEnvironmentsList>;
 
 export interface ProjectMembersAddResponseMember {
   type?: string;
@@ -5030,9 +4881,8 @@ export const ProjectMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectMembersDeleteRequest>;
 
 export interface ProjectMembersDeleteResponse {}
-export const ProjectMembersDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ProjectMembersDeleteResponse",
-}) as any as S.Schema<ProjectMembersDeleteResponse>;
+export const ProjectMembersDeleteResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<ProjectMembersDeleteResponse>;
 
 export type ProjectMembersGetRequestType =
   | "workplace_user"
@@ -5062,9 +4912,8 @@ export type ProjectMembersGetResponseMemberRole = CreateGroupResponseGroupDefaul
 export const ProjectMembersGetResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
 
 export type ProjectMembersGetResponseMemberEnvironmentsList = Array<string>;
-export const ProjectMembersGetResponseMemberEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectMembersGetResponseMemberEnvironmentsList>;
+export const ProjectMembersGetResponseMemberEnvironmentsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersGetResponseMemberEnvironmentsList>;
 
 export interface ProjectMembersGetResponseMember {
   type?: string;
@@ -5073,28 +4922,14 @@ export interface ProjectMembersGetResponseMember {
   access_all_environments?: boolean;
   environments?: ProjectMembersGetResponseMemberEnvironmentsList;
 }
-export const ProjectMembersGetResponseMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    slug: S.optional(S.String),
-    role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-    access_all_environments: S.optional(S.Boolean),
-    environments: S.optional(ProjectMembersGetResponseMemberEnvironmentsList),
-  }),
-).annotate({
-  identifier: "ProjectMembersGetResponseMember",
-}) as any as S.Schema<ProjectMembersGetResponseMember>;
+export const ProjectMembersGetResponseMember =
+  ProjectMembersAddResponseMember as any as S.Schema<ProjectMembersGetResponseMember>;
 
 export interface ProjectMembersGetResponse {
   member?: ProjectMembersGetResponseMember;
 }
-export const ProjectMembersGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    member: S.optional(ProjectMembersGetResponseMember),
-  }),
-).annotate({
-  identifier: "ProjectMembersGetResponse",
-}) as any as S.Schema<ProjectMembersGetResponse>;
+export const ProjectMembersGetResponse =
+  ProjectMembersAddResponse as any as S.Schema<ProjectMembersGetResponse>;
 
 export interface ProjectMembersListRequest {
   /** Project slug */
@@ -5116,9 +4951,8 @@ export type ProjectMembersListResponseMembersItemRole = CreateGroupResponseGroup
 export const ProjectMembersListResponseMembersItemRole = CreateGroupResponseGroupDefaultProjectRole;
 
 export type ProjectMembersListResponseMembersItemEnvironmentsList = Array<string>;
-export const ProjectMembersListResponseMembersItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectMembersListResponseMembersItemEnvironmentsList>;
+export const ProjectMembersListResponseMembersItemEnvironmentsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersListResponseMembersItemEnvironmentsList>;
 
 export interface ProjectMembersListResponseMembersItem {
   type?: string;
@@ -5127,17 +4961,8 @@ export interface ProjectMembersListResponseMembersItem {
   access_all_environments?: boolean;
   environments?: ProjectMembersListResponseMembersItemEnvironmentsList;
 }
-export const ProjectMembersListResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    slug: S.optional(S.String),
-    role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-    access_all_environments: S.optional(S.Boolean),
-    environments: S.optional(ProjectMembersListResponseMembersItemEnvironmentsList),
-  }),
-).annotate({
-  identifier: "ProjectMembersListResponseMembersItem",
-}) as any as S.Schema<ProjectMembersListResponseMembersItem>;
+export const ProjectMembersListResponseMembersItem =
+  ProjectMembersAddResponseMember as any as S.Schema<ProjectMembersListResponseMembersItem>;
 
 export type ProjectMembersListResponseMembersList = Array<ProjectMembersListResponseMembersItem>;
 export const ProjectMembersListResponseMembersList = /*@__PURE__*/ S.Array(
@@ -5164,9 +4989,8 @@ export const ProjectMembersUpdateRequestType = S.String;
 
 /** Environment slugs to grant the member access to */
 export type ProjectMembersUpdateRequestEnvironmentsList = Array<string>;
-export const ProjectMembersUpdateRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectMembersUpdateRequestEnvironmentsList>;
+export const ProjectMembersUpdateRequestEnvironmentsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersUpdateRequestEnvironmentsList>;
 
 export interface ProjectMembersUpdateRequest {
   type: ProjectMembersUpdateRequestType | (string & {});
@@ -5201,9 +5025,8 @@ export type ProjectMembersUpdateResponseMemberRole = CreateGroupResponseGroupDef
 export const ProjectMembersUpdateResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
 
 export type ProjectMembersUpdateResponseMemberEnvironmentsList = Array<string>;
-export const ProjectMembersUpdateResponseMemberEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectMembersUpdateResponseMemberEnvironmentsList>;
+export const ProjectMembersUpdateResponseMemberEnvironmentsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersUpdateResponseMemberEnvironmentsList>;
 
 export interface ProjectMembersUpdateResponseMember {
   type?: string;
@@ -5212,34 +5035,19 @@ export interface ProjectMembersUpdateResponseMember {
   access_all_environments?: boolean;
   environments?: ProjectMembersUpdateResponseMemberEnvironmentsList;
 }
-export const ProjectMembersUpdateResponseMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    slug: S.optional(S.String),
-    role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-    access_all_environments: S.optional(S.Boolean),
-    environments: S.optional(ProjectMembersUpdateResponseMemberEnvironmentsList),
-  }),
-).annotate({
-  identifier: "ProjectMembersUpdateResponseMember",
-}) as any as S.Schema<ProjectMembersUpdateResponseMember>;
+export const ProjectMembersUpdateResponseMember =
+  ProjectMembersAddResponseMember as any as S.Schema<ProjectMembersUpdateResponseMember>;
 
 export interface ProjectMembersUpdateResponse {
   member?: ProjectMembersUpdateResponseMember;
 }
-export const ProjectMembersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    member: S.optional(ProjectMembersUpdateResponseMember),
-  }),
-).annotate({
-  identifier: "ProjectMembersUpdateResponse",
-}) as any as S.Schema<ProjectMembersUpdateResponse>;
+export const ProjectMembersUpdateResponse =
+  ProjectMembersAddResponse as any as S.Schema<ProjectMembersUpdateResponse>;
 
 /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
 export type ProjectRolesCreateRequestPermissionsList = Array<string>;
-export const ProjectRolesCreateRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRolesCreateRequestPermissionsList>;
+export const ProjectRolesCreateRequestPermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesCreateRequestPermissionsList>;
 
 export interface ProjectRolesCreateRequest {
   /** The name of the role */
@@ -5257,9 +5065,8 @@ export const ProjectRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectRolesCreateRequest>;
 
 export type ProjectRolesCreateResponseRolePermissionsList = Array<string>;
-export const ProjectRolesCreateResponseRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRolesCreateResponseRolePermissionsList>;
+export const ProjectRolesCreateResponseRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesCreateResponseRolePermissionsList>;
 
 export interface ProjectRolesCreateResponseRole {
   name?: string;
@@ -5304,9 +5111,8 @@ export const ProjectRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectRolesDeleteRequest>;
 
 export interface ProjectRolesDeleteResponse {}
-export const ProjectRolesDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ProjectRolesDeleteResponse",
-}) as any as S.Schema<ProjectRolesDeleteResponse>;
+export const ProjectRolesDeleteResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<ProjectRolesDeleteResponse>;
 
 export interface ProjectRolesGetRequest {
   /** The role's unique identifier */
@@ -5319,9 +5125,8 @@ export const ProjectRolesGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectRolesGetRequest" }) as any as S.Schema<ProjectRolesGetRequest>;
 
 export type ProjectRolesGetResponseRolePermissionsList = Array<string>;
-export const ProjectRolesGetResponseRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRolesGetResponseRolePermissionsList>;
+export const ProjectRolesGetResponseRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesGetResponseRolePermissionsList>;
 
 export interface ProjectRolesGetResponseRole {
   name?: string;
@@ -5330,17 +5135,8 @@ export interface ProjectRolesGetResponseRole {
   created_at?: string;
   is_custom_role?: boolean;
 }
-export const ProjectRolesGetResponseRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    permissions: S.optional(ProjectRolesGetResponseRolePermissionsList),
-    identifier: S.optional(S.String),
-    created_at: S.optional(S.String),
-    is_custom_role: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ProjectRolesGetResponseRole",
-}) as any as S.Schema<ProjectRolesGetResponseRole>;
+export const ProjectRolesGetResponseRole =
+  ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesGetResponseRole>;
 
 export interface ProjectRolesGetResponse {
   role?: ProjectRolesGetResponseRole;
@@ -5357,9 +5153,8 @@ export const ProjectRolesListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectRolesListRequest" }) as any as S.Schema<ProjectRolesListRequest>;
 
 export type ProjectRolesListResponseRolesItemPermissionsList = Array<string>;
-export const ProjectRolesListResponseRolesItemPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRolesListResponseRolesItemPermissionsList>;
+export const ProjectRolesListResponseRolesItemPermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesListResponseRolesItemPermissionsList>;
 
 export interface ProjectRolesListResponseRolesItem {
   name?: string;
@@ -5368,17 +5163,8 @@ export interface ProjectRolesListResponseRolesItem {
   created_at?: string;
   is_custom_role?: boolean;
 }
-export const ProjectRolesListResponseRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    permissions: S.optional(ProjectRolesListResponseRolesItemPermissionsList),
-    identifier: S.optional(S.String),
-    created_at: S.optional(S.String),
-    is_custom_role: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ProjectRolesListResponseRolesItem",
-}) as any as S.Schema<ProjectRolesListResponseRolesItem>;
+export const ProjectRolesListResponseRolesItem =
+  ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesListResponseRolesItem>;
 
 export type ProjectRolesListResponseRolesList = Array<ProjectRolesListResponseRolesItem>;
 export const ProjectRolesListResponseRolesList = /*@__PURE__*/ S.Array(
@@ -5402,9 +5188,8 @@ export const ProjectRolesListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectRolesListPermissionsRequest>;
 
 export type ProjectRolesListPermissionsResponsePermissionsList = Array<string>;
-export const ProjectRolesListPermissionsResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRolesListPermissionsResponsePermissionsList>;
+export const ProjectRolesListPermissionsResponsePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesListPermissionsResponsePermissionsList>;
 
 export interface ProjectRolesListPermissionsResponse {
   permissions?: ProjectRolesListPermissionsResponsePermissionsList;
@@ -5419,9 +5204,8 @@ export const ProjectRolesListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
 export type ProjectRolesUpdateRequestPermissionsList = Array<string>;
-export const ProjectRolesUpdateRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRolesUpdateRequestPermissionsList>;
+export const ProjectRolesUpdateRequestPermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesUpdateRequestPermissionsList>;
 
 export interface ProjectRolesUpdateRequest {
   /** The role's unique identifier */
@@ -5442,9 +5226,8 @@ export const ProjectRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectRolesUpdateRequest>;
 
 export type ProjectRolesUpdateResponseRolePermissionsList = Array<string>;
-export const ProjectRolesUpdateResponseRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectRolesUpdateResponseRolePermissionsList>;
+export const ProjectRolesUpdateResponseRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesUpdateResponseRolePermissionsList>;
 
 export interface ProjectRolesUpdateResponseRole {
   name?: string;
@@ -5453,28 +5236,14 @@ export interface ProjectRolesUpdateResponseRole {
   created_at?: string;
   is_custom_role?: boolean;
 }
-export const ProjectRolesUpdateResponseRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    permissions: S.optional(ProjectRolesUpdateResponseRolePermissionsList),
-    identifier: S.optional(S.String),
-    created_at: S.optional(S.String),
-    is_custom_role: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ProjectRolesUpdateResponseRole",
-}) as any as S.Schema<ProjectRolesUpdateResponseRole>;
+export const ProjectRolesUpdateResponseRole =
+  ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesUpdateResponseRole>;
 
 export interface ProjectRolesUpdateResponse {
   role?: ProjectRolesUpdateResponseRole;
 }
-export const ProjectRolesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(ProjectRolesUpdateResponseRole),
-  }),
-).annotate({
-  identifier: "ProjectRolesUpdateResponse",
-}) as any as S.Schema<ProjectRolesUpdateResponse>;
+export const ProjectRolesUpdateResponse =
+  ProjectRolesCreateResponse as any as S.Schema<ProjectRolesUpdateResponse>;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType =
   | "WorkplaceUser"
@@ -5670,31 +5439,19 @@ export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList =
   Array<string>;
 export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList>;
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList =
   Array<string>;
 export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList>;
 
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims {
   aud: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList;
   sub: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList;
 }
 export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aud: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList,
-      sub: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList,
-    }),
-  ).annotate({
-    identifier:
-      "PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims",
-  }) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims>;
+  PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims>;
 
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig {
   discovery_url: string;
@@ -5764,35 +5521,19 @@ export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
   Array<string>;
 export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList>;
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
   Array<string>;
 export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList>;
 
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims {
   aud?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList;
   sub?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList;
 }
 export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aud: S.optional(
-        PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList,
-      ),
-      sub: S.optional(
-        PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims",
-  }) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
 
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig {
   discovery_url?: string;
@@ -5887,13 +5628,8 @@ export const RenameEnvironmentResponseEnvironment = CreateEnvironmentResponseEnv
 export interface RenameEnvironmentResponse {
   environment?: CreateEnvironmentResponseEnvironment;
 }
-export const RenameEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.optional(CreateEnvironmentResponseEnvironment),
-  }),
-).annotate({
-  identifier: "RenameEnvironmentResponse",
-}) as any as S.Schema<RenameEnvironmentResponse>;
+export const RenameEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<RenameEnvironmentResponse>;
 
 export interface RevokeAuthRequest {
   token: string;
@@ -5905,9 +5641,8 @@ export const RevokeAuthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeAuthRequest" }) as any as S.Schema<RevokeAuthRequest>;
 
 export interface RevokeAuthResponse {}
-export const RevokeAuthResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeAuthResponse",
-}) as any as S.Schema<RevokeAuthResponse>;
+export const RevokeAuthResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<RevokeAuthResponse>;
 
 export interface RevokeCliAuthRequest {
   token: string | Redacted.Redacted<string>;
@@ -5919,9 +5654,7 @@ export const RevokeCliAuthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeCliAuthRequest" }) as any as S.Schema<RevokeCliAuthRequest>;
 
 export type RevokeCliAuthResponse = unknown;
-export const RevokeCliAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RevokeCliAuthResponse" }) as any as S.Schema<RevokeCliAuthResponse>;
+export const RevokeCliAuthResponse = AddWebhookResponse as any as S.Schema<RevokeCliAuthResponse>;
 
 export interface SecretsNamesRequest {
   /** Unique identifier for the project object. */
@@ -5943,9 +5676,8 @@ export const SecretsNamesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretsNamesRequest" }) as any as S.Schema<SecretsNamesRequest>;
 
 export type SecretsNamesResponseNamesList = Array<string>;
-export const SecretsNamesResponseNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SecretsNamesResponseNamesList>;
+export const SecretsNamesResponseNamesList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<SecretsNamesResponseNamesList>;
 
 export interface SecretsNamesResponse {
   names?: SecretsNamesResponseNamesList;
@@ -5987,9 +5719,8 @@ export const SecretsUpdateNoteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Workplace permissions to grant */
 export type ServiceAccountsCreateRequestWorkplaceRolePermissionsList = Array<string>;
-export const ServiceAccountsCreateRequestWorkplaceRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceAccountsCreateRequestWorkplaceRolePermissionsList>;
+export const ServiceAccountsCreateRequestWorkplaceRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ServiceAccountsCreateRequestWorkplaceRolePermissionsList>;
 
 /** You may provide an identifier OR permissions, but not both */
 export interface ServiceAccountsCreateRequestWorkplaceRole {
@@ -6023,9 +5754,7 @@ export const ServiceAccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList = Array<string>;
 export const ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList>;
 
 export interface ServiceAccountsCreateResponseServiceAccountWorkplaceRole {
   name?: string;
@@ -6098,9 +5827,8 @@ export const ServiceAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountsDeleteRequest>;
 
 export interface ServiceAccountsDeleteResponse {}
-export const ServiceAccountsDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ServiceAccountsDeleteResponse",
-}) as any as S.Schema<ServiceAccountsDeleteResponse>;
+export const ServiceAccountsDeleteResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<ServiceAccountsDeleteResponse>;
 
 export interface ServiceAccountsGetRequest {
   /** Slug of the service account */
@@ -6122,9 +5850,7 @@ export const ServiceAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList = Array<string>;
 export const ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList>;
 
 export interface ServiceAccountsGetResponseServiceAccountWorkplaceRole {
   name?: string;
@@ -6191,9 +5917,7 @@ export const ServiceAccountsListRequest = /*@__PURE__*/ S.suspend(() =>
 export type ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList =
   Array<string>;
 export const ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList>;
+  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList>;
 
 export interface ServiceAccountsListResponseServiceAccountsItemWorkplaceRole {
   name?: string;
@@ -6203,21 +5927,8 @@ export interface ServiceAccountsListResponseServiceAccountsItemWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const ServiceAccountsListResponseServiceAccountsItemWorkplaceRole = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      permissions: S.optional(
-        ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList,
-      ),
-      identifier: S.optional(S.String),
-      created_at: S.optional(S.String),
-      is_custom_role: S.optional(S.Boolean),
-      is_inline_role: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "ServiceAccountsListResponseServiceAccountsItemWorkplaceRole",
-}) as any as S.Schema<ServiceAccountsListResponseServiceAccountsItemWorkplaceRole>;
+export const ServiceAccountsListResponseServiceAccountsItemWorkplaceRole =
+  ServiceAccountsCreateResponseServiceAccountWorkplaceRole as any as S.Schema<ServiceAccountsListResponseServiceAccountsItemWorkplaceRole>;
 
 export interface ServiceAccountsListResponseServiceAccountsItem {
   name?: string;
@@ -6225,16 +5936,8 @@ export interface ServiceAccountsListResponseServiceAccountsItem {
   created_at?: string;
   workplace_role?: ServiceAccountsListResponseServiceAccountsItemWorkplaceRole;
 }
-export const ServiceAccountsListResponseServiceAccountsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    slug: S.optional(S.String),
-    created_at: S.optional(S.String),
-    workplace_role: S.optional(ServiceAccountsListResponseServiceAccountsItemWorkplaceRole),
-  }),
-).annotate({
-  identifier: "ServiceAccountsListResponseServiceAccountsItem",
-}) as any as S.Schema<ServiceAccountsListResponseServiceAccountsItem>;
+export const ServiceAccountsListResponseServiceAccountsItem =
+  ServiceAccountsCreateResponseServiceAccount as any as S.Schema<ServiceAccountsListResponseServiceAccountsItem>;
 
 export type ServiceAccountsListResponseServiceAccountsList =
   Array<ServiceAccountsListResponseServiceAccountsItem>;
@@ -6255,9 +5958,8 @@ export const ServiceAccountsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Workplace permissions to grant */
 export type ServiceAccountsUpdateRequestWorkplaceRolePermissionsList = Array<string>;
-export const ServiceAccountsUpdateRequestWorkplaceRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceAccountsUpdateRequestWorkplaceRolePermissionsList>;
+export const ServiceAccountsUpdateRequestWorkplaceRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<ServiceAccountsUpdateRequestWorkplaceRolePermissionsList>;
 
 /** You may provide an identifier OR permissions, but not both */
 export interface ServiceAccountsUpdateRequestWorkplaceRole {
@@ -6266,14 +5968,8 @@ export interface ServiceAccountsUpdateRequestWorkplaceRole {
   /** Workplace permissions to grant */
   permissions?: ServiceAccountsUpdateRequestWorkplaceRolePermissionsList;
 }
-export const ServiceAccountsUpdateRequestWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.optional(S.String),
-    permissions: S.optional(ServiceAccountsUpdateRequestWorkplaceRolePermissionsList),
-  }),
-).annotate({
-  identifier: "ServiceAccountsUpdateRequestWorkplaceRole",
-}) as any as S.Schema<ServiceAccountsUpdateRequestWorkplaceRole>;
+export const ServiceAccountsUpdateRequestWorkplaceRole =
+  ServiceAccountsCreateRequestWorkplaceRole as any as S.Schema<ServiceAccountsUpdateRequestWorkplaceRole>;
 
 export interface ServiceAccountsUpdateRequest {
   /** Slug of the service account */
@@ -6437,11 +6133,8 @@ export const ServiceAccountTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountTokensDeleteRequest>;
 
 export interface ServiceAccountTokensDeleteResponse {}
-export const ServiceAccountTokensDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServiceAccountTokensDeleteResponse",
-}) as any as S.Schema<ServiceAccountTokensDeleteResponse>;
+export const ServiceAccountTokensDeleteResponse =
+  DeleteWorkplaceIntegrationsIntegrationMemberResponse as any as S.Schema<ServiceAccountTokensDeleteResponse>;
 
 export interface ServiceAccountTokensGetRequest {
   /** Slug of the service account */
@@ -6631,13 +6324,8 @@ export const ServiceTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ServiceTokensDeleteResponse {
   success?: boolean;
 }
-export const ServiceTokensDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServiceTokensDeleteResponse",
-}) as any as S.Schema<ServiceTokensDeleteResponse>;
+export const ServiceTokensDeleteResponse =
+  DeleteChangeRequestPolicyResponse as any as S.Schema<ServiceTokensDeleteResponse>;
 
 export interface ServiceTokensListRequest {
   /** Unique identifier for the project object. */
@@ -6781,11 +6469,7 @@ export const UnlockConfigResponseConfig = CloneConfigResponseConfig;
 export interface UnlockConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const UnlockConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CloneConfigResponseConfig),
-  }),
-).annotate({ identifier: "UnlockConfigResponse" }) as any as S.Schema<UnlockConfigResponse>;
+export const UnlockConfigResponse = CloneConfigResponse as any as S.Schema<UnlockConfigResponse>;
 
 export type UpdateChangeRequestPolicyRequestRulesItemType =
   | '"RequiredReviewer"'
@@ -6879,9 +6563,8 @@ export const UpdateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateChangeRequestPolicyRequest>;
 
 export type UpdateChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
-export const UpdateChangeRequestPolicyResponsePolicyRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateChangeRequestPolicyResponsePolicyRulesList>;
+export const UpdateChangeRequestPolicyResponsePolicyRulesList =
+  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<UpdateChangeRequestPolicyResponsePolicyRulesList>;
 
 export type UpdateChangeRequestPolicyResponsePolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
@@ -6895,30 +6578,15 @@ export interface UpdateChangeRequestPolicyResponsePolicy {
   rules?: UpdateChangeRequestPolicyResponsePolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-export const UpdateChangeRequestPolicyResponsePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    rules: S.optional(UpdateChangeRequestPolicyResponsePolicyRulesList),
-    targets: S.optional(CreateChangeRequestPolicyResponsePolicyTargets),
-  }),
-).annotate({
-  identifier: "UpdateChangeRequestPolicyResponsePolicy",
-}) as any as S.Schema<UpdateChangeRequestPolicyResponsePolicy>;
+export const UpdateChangeRequestPolicyResponsePolicy =
+  CreateChangeRequestPolicyResponsePolicy as any as S.Schema<UpdateChangeRequestPolicyResponsePolicy>;
 
 export interface UpdateChangeRequestPolicyResponse {
   policy?: UpdateChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-export const UpdateChangeRequestPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(UpdateChangeRequestPolicyResponsePolicy),
-    success: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateChangeRequestPolicyResponse",
-}) as any as S.Schema<UpdateChangeRequestPolicyResponse>;
+export const UpdateChangeRequestPolicyResponse =
+  CreateChangeRequestPolicyResponse as any as S.Schema<UpdateChangeRequestPolicyResponse>;
 
 export interface UpdateConfigRequest {
   /** Unique identifier for the project object. */
@@ -6942,11 +6610,7 @@ export const UpdateConfigResponseConfig = CloneConfigResponseConfig;
 export interface UpdateConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const UpdateConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CloneConfigResponseConfig),
-  }),
-).annotate({ identifier: "UpdateConfigResponse" }) as any as S.Schema<UpdateConfigResponse>;
+export const UpdateConfigResponse = CloneConfigResponse as any as S.Schema<UpdateConfigResponse>;
 
 export interface UpdateGroupRequest {
   /** The group's slug */
@@ -6974,17 +6638,15 @@ export type UpdateGroupResponseGroupProjectsItem = CreateGroupResponseGroupProje
 export const UpdateGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
 
 export type UpdateGroupResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-export const UpdateGroupResponseGroupProjectsList = /*@__PURE__*/ S.Array(
-  CreateGroupResponseGroupProjectsItem,
-) as any as S.Schema<UpdateGroupResponseGroupProjectsList>;
+export const UpdateGroupResponseGroupProjectsList =
+  CreateGroupResponseGroupProjectsList as any as S.Schema<UpdateGroupResponseGroupProjectsList>;
 
 export type UpdateGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
 export const UpdateGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
 
 export type UpdateGroupResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-export const UpdateGroupResponseGroupMembersList = /*@__PURE__*/ S.Array(
-  AuthMeResponsePrincipal,
-) as any as S.Schema<UpdateGroupResponseGroupMembersList>;
+export const UpdateGroupResponseGroupMembersList =
+  CreateGroupResponseGroupMembersList as any as S.Schema<UpdateGroupResponseGroupMembersList>;
 
 export interface UpdateGroupResponseGroup {
   name?: string;
@@ -6994,25 +6656,13 @@ export interface UpdateGroupResponseGroup {
   projects?: UpdateGroupResponseGroupProjectsList;
   members?: UpdateGroupResponseGroupMembersList;
 }
-export const UpdateGroupResponseGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    slug: S.optional(S.String),
-    created_at: S.optional(S.String),
-    default_project_role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-    projects: S.optional(UpdateGroupResponseGroupProjectsList),
-    members: S.optional(UpdateGroupResponseGroupMembersList),
-  }),
-).annotate({ identifier: "UpdateGroupResponseGroup" }) as any as S.Schema<UpdateGroupResponseGroup>;
+export const UpdateGroupResponseGroup =
+  CreateGroupResponseGroup as any as S.Schema<UpdateGroupResponseGroup>;
 
 export interface UpdateGroupResponse {
   group?: UpdateGroupResponseGroup;
 }
-export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(UpdateGroupResponseGroup),
-  }),
-).annotate({ identifier: "UpdateGroupResponse" }) as any as S.Schema<UpdateGroupResponse>;
+export const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
 
 export interface UpdateIntegrationRequest {
   /** The slug of the integration to update */
@@ -7031,11 +6681,8 @@ export const UpdateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateIntegrationRequest" }) as any as S.Schema<UpdateIntegrationRequest>;
 
 export type UpdateIntegrationResponse = unknown;
-export const UpdateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateIntegrationResponse",
-}) as any as S.Schema<UpdateIntegrationResponse>;
+export const UpdateIntegrationResponse =
+  DeleteIntegrationResponse as any as S.Schema<UpdateIntegrationResponse>;
 
 export type UpdateIntegrationsIntegrationMemberRequestType =
   | "workplace_user"
@@ -7129,11 +6776,8 @@ export const UpdateProjectResponseProject = CreateProjectResponseProject;
 export interface UpdateProjectResponse {
   project?: CreateProjectResponseProject;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.optional(CreateProjectResponseProject),
-  }),
-).annotate({ identifier: "UpdateProjectResponse" }) as any as S.Schema<UpdateProjectResponse>;
+export const UpdateProjectResponse =
+  CreateProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** Either `secrets` or `change_requests` is required (can't use both). Object of secrets you would like to save to the config. Try it with the sample secrets below. */
 export interface UpdateSecretRequestSecrets {
@@ -7344,12 +6988,7 @@ export interface UpdateUserResponse {
   workplace_user?: GetUserResponseWorkplaceUser;
   success?: boolean;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workplace_user: S.optional(GetUserResponseWorkplaceUser),
-    success: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
 
 export type UpdateWebhookRequestAuthenticationType = "None" | "Bearer" | "Basic";
 export const UpdateWebhookRequestAuthenticationType = S.String;
@@ -7376,15 +7015,13 @@ export const UpdateWebhookRequestAuthentication = /*@__PURE__*/ S.suspend(() =>
 
 /** Config slugs that the webhook should be enabled for */
 export type UpdateWebhookRequestEnableConfigsList = Array<string>;
-export const UpdateWebhookRequestEnableConfigsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestEnableConfigsList>;
+export const UpdateWebhookRequestEnableConfigsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<UpdateWebhookRequestEnableConfigsList>;
 
 /** Config slugs that the webhook should be disabled for */
 export type UpdateWebhookRequestDisableConfigsList = Array<string>;
-export const UpdateWebhookRequestDisableConfigsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestDisableConfigsList>;
+export const UpdateWebhookRequestDisableConfigsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<UpdateWebhookRequestDisableConfigsList>;
 
 export interface UpdateWebhookRequest {
   /** Webhook's slug */
@@ -7420,9 +7057,7 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWebhookRequest" }) as any as S.Schema<UpdateWebhookRequest>;
 
 export type UpdateWebhookResponse = unknown;
-export const UpdateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UpdateWebhookResponse" }) as any as S.Schema<UpdateWebhookResponse>;
+export const UpdateWebhookResponse = AddWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
 
 export interface UpdateWorkplaceRequest {
   /** Workplace name */
@@ -7444,17 +7079,13 @@ export const UpdateWorkplaceResponseWorkplace = GetWorkplaceResponseWorkplace;
 export interface UpdateWorkplaceResponse {
   workplace?: GetWorkplaceResponseWorkplace;
 }
-export const UpdateWorkplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workplace: S.optional(GetWorkplaceResponseWorkplace),
-  }),
-).annotate({ identifier: "UpdateWorkplaceResponse" }) as any as S.Schema<UpdateWorkplaceResponse>;
+export const UpdateWorkplaceResponse =
+  GetWorkplaceResponse as any as S.Schema<UpdateWorkplaceResponse>;
 
 /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
 export type WorkplaceRolesCreateRequestPermissionsList = Array<string>;
-export const WorkplaceRolesCreateRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkplaceRolesCreateRequestPermissionsList>;
+export const WorkplaceRolesCreateRequestPermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesCreateRequestPermissionsList>;
 
 export interface WorkplaceRolesCreateRequest {
   /** The name of the role */
@@ -7472,9 +7103,8 @@ export const WorkplaceRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesCreateRequest>;
 
 export type WorkplaceRolesCreateResponseRolePermissionsList = Array<string>;
-export const WorkplaceRolesCreateResponseRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkplaceRolesCreateResponseRolePermissionsList>;
+export const WorkplaceRolesCreateResponseRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesCreateResponseRolePermissionsList>;
 
 export interface WorkplaceRolesCreateResponseRole {
   name?: string;
@@ -7484,18 +7114,8 @@ export interface WorkplaceRolesCreateResponseRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesCreateResponseRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    permissions: S.optional(WorkplaceRolesCreateResponseRolePermissionsList),
-    identifier: S.optional(S.String),
-    created_at: S.optional(S.String),
-    is_custom_role: S.optional(S.Boolean),
-    is_inline_role: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkplaceRolesCreateResponseRole",
-}) as any as S.Schema<WorkplaceRolesCreateResponseRole>;
+export const WorkplaceRolesCreateResponseRole =
+  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesCreateResponseRole>;
 
 export interface WorkplaceRolesCreateResponse {
   role?: WorkplaceRolesCreateResponseRole;
@@ -7521,9 +7141,8 @@ export const WorkplaceRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesDeleteRequest>;
 
 export interface WorkplaceRolesDeleteResponse {}
-export const WorkplaceRolesDeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WorkplaceRolesDeleteResponse",
-}) as any as S.Schema<WorkplaceRolesDeleteResponse>;
+export const WorkplaceRolesDeleteResponse =
+  ConfigsDeleteTrustedIpResponse as any as S.Schema<WorkplaceRolesDeleteResponse>;
 
 export interface WorkplaceRolesGetRequest {
   /** The role's unique identifier */
@@ -7536,9 +7155,8 @@ export const WorkplaceRolesGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkplaceRolesGetRequest" }) as any as S.Schema<WorkplaceRolesGetRequest>;
 
 export type WorkplaceRolesGetResponseRolePermissionsList = Array<string>;
-export const WorkplaceRolesGetResponseRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkplaceRolesGetResponseRolePermissionsList>;
+export const WorkplaceRolesGetResponseRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesGetResponseRolePermissionsList>;
 
 export interface WorkplaceRolesGetResponseRole {
   name?: string;
@@ -7548,29 +7166,14 @@ export interface WorkplaceRolesGetResponseRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesGetResponseRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    permissions: S.optional(WorkplaceRolesGetResponseRolePermissionsList),
-    identifier: S.optional(S.String),
-    created_at: S.optional(S.String),
-    is_custom_role: S.optional(S.Boolean),
-    is_inline_role: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkplaceRolesGetResponseRole",
-}) as any as S.Schema<WorkplaceRolesGetResponseRole>;
+export const WorkplaceRolesGetResponseRole =
+  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesGetResponseRole>;
 
 export interface WorkplaceRolesGetResponse {
   role?: WorkplaceRolesGetResponseRole;
 }
-export const WorkplaceRolesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(WorkplaceRolesGetResponseRole),
-  }),
-).annotate({
-  identifier: "WorkplaceRolesGetResponse",
-}) as any as S.Schema<WorkplaceRolesGetResponse>;
+export const WorkplaceRolesGetResponse =
+  WorkplaceRolesCreateResponse as any as S.Schema<WorkplaceRolesGetResponse>;
 
 export interface WorkplaceRolesListRequest {}
 export const WorkplaceRolesListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7580,9 +7183,8 @@ export const WorkplaceRolesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesListRequest>;
 
 export type WorkplaceRolesListResponseRolesItemPermissionsList = Array<string>;
-export const WorkplaceRolesListResponseRolesItemPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkplaceRolesListResponseRolesItemPermissionsList>;
+export const WorkplaceRolesListResponseRolesItemPermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesListResponseRolesItemPermissionsList>;
 
 export interface WorkplaceRolesListResponseRolesItem {
   name?: string;
@@ -7592,18 +7194,8 @@ export interface WorkplaceRolesListResponseRolesItem {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesListResponseRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    permissions: S.optional(WorkplaceRolesListResponseRolesItemPermissionsList),
-    identifier: S.optional(S.String),
-    created_at: S.optional(S.String),
-    is_custom_role: S.optional(S.Boolean),
-    is_inline_role: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkplaceRolesListResponseRolesItem",
-}) as any as S.Schema<WorkplaceRolesListResponseRolesItem>;
+export const WorkplaceRolesListResponseRolesItem =
+  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesListResponseRolesItem>;
 
 export type WorkplaceRolesListResponseRolesList = Array<WorkplaceRolesListResponseRolesItem>;
 export const WorkplaceRolesListResponseRolesList = /*@__PURE__*/ S.Array(
@@ -7629,26 +7221,19 @@ export const WorkplaceRolesListPermissionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<WorkplaceRolesListPermissionsRequest>;
 
 export type WorkplaceRolesListPermissionsResponsePermissionsList = Array<string>;
-export const WorkplaceRolesListPermissionsResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkplaceRolesListPermissionsResponsePermissionsList>;
+export const WorkplaceRolesListPermissionsResponsePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesListPermissionsResponsePermissionsList>;
 
 export interface WorkplaceRolesListPermissionsResponse {
   permissions?: WorkplaceRolesListPermissionsResponsePermissionsList;
 }
-export const WorkplaceRolesListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(WorkplaceRolesListPermissionsResponsePermissionsList),
-  }),
-).annotate({
-  identifier: "WorkplaceRolesListPermissionsResponse",
-}) as any as S.Schema<WorkplaceRolesListPermissionsResponse>;
+export const WorkplaceRolesListPermissionsResponse =
+  ProjectRolesListPermissionsResponse as any as S.Schema<WorkplaceRolesListPermissionsResponse>;
 
 /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
 export type WorkplaceRolesUpdateRequestPermissionsList = Array<string>;
-export const WorkplaceRolesUpdateRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkplaceRolesUpdateRequestPermissionsList>;
+export const WorkplaceRolesUpdateRequestPermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesUpdateRequestPermissionsList>;
 
 export interface WorkplaceRolesUpdateRequest {
   /** The role's unique identifier, which is the initial name the role was given */
@@ -7669,9 +7254,8 @@ export const WorkplaceRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesUpdateRequest>;
 
 export type WorkplaceRolesUpdateResponseRolePermissionsList = Array<string>;
-export const WorkplaceRolesUpdateResponseRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkplaceRolesUpdateResponseRolePermissionsList>;
+export const WorkplaceRolesUpdateResponseRolePermissionsList =
+  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesUpdateResponseRolePermissionsList>;
 
 export interface WorkplaceRolesUpdateResponseRole {
   name?: string;
@@ -7681,29 +7265,14 @@ export interface WorkplaceRolesUpdateResponseRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesUpdateResponseRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    permissions: S.optional(WorkplaceRolesUpdateResponseRolePermissionsList),
-    identifier: S.optional(S.String),
-    created_at: S.optional(S.String),
-    is_custom_role: S.optional(S.Boolean),
-    is_inline_role: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "WorkplaceRolesUpdateResponseRole",
-}) as any as S.Schema<WorkplaceRolesUpdateResponseRole>;
+export const WorkplaceRolesUpdateResponseRole =
+  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesUpdateResponseRole>;
 
 export interface WorkplaceRolesUpdateResponse {
   role?: WorkplaceRolesUpdateResponseRole;
 }
-export const WorkplaceRolesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(WorkplaceRolesUpdateResponseRole),
-  }),
-).annotate({
-  identifier: "WorkplaceRolesUpdateResponse",
-}) as any as S.Schema<WorkplaceRolesUpdateResponse>;
+export const WorkplaceRolesUpdateResponse =
+  WorkplaceRolesCreateResponse as any as S.Schema<WorkplaceRolesUpdateResponse>;
 
 export type ActivityLogsListError = DopplerOpError;
 /** List Activity Logs */

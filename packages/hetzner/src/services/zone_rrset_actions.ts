@@ -221,9 +221,8 @@ export const ChangeZoneRrsetProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeZoneRrsetProtectionResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
-export const ChangeZoneRrsetProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddZoneRrsetRecordsResponseActionResourcesItem,
-) as any as S.Schema<ChangeZoneRrsetProtectionResponseActionResourcesList>;
+export const ChangeZoneRrsetProtectionResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<ChangeZoneRrsetProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneRrsetProtectionResponseActionError = AddZoneRrsetRecordsResponseActionError;
@@ -330,9 +329,8 @@ export const ChangeZoneRrsetTtlResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeZoneRrsetTtlResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
-export const ChangeZoneRrsetTtlResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddZoneRrsetRecordsResponseActionResourcesItem,
-) as any as S.Schema<ChangeZoneRrsetTtlResponseActionResourcesList>;
+export const ChangeZoneRrsetTtlResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<ChangeZoneRrsetTtlResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneRrsetTtlResponseActionError = AddZoneRrsetRecordsResponseActionError;
@@ -408,9 +406,8 @@ export const RemoveZoneRrsetRecordsRequestRecordsItem = AddZoneRrsetRecordsReque
 
 /** Records to remove from the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
 export type RemoveZoneRrsetRecordsRequestRecordsList = Array<AddZoneRrsetRecordsRequestRecordsItem>;
-export const RemoveZoneRrsetRecordsRequestRecordsList = /*@__PURE__*/ S.Array(
-  AddZoneRrsetRecordsRequestRecordsItem,
-) as any as S.Schema<RemoveZoneRrsetRecordsRequestRecordsList>;
+export const RemoveZoneRrsetRecordsRequestRecordsList =
+  AddZoneRrsetRecordsRequestRecordsList as any as S.Schema<RemoveZoneRrsetRecordsRequestRecordsList>;
 
 export interface RemoveZoneRrsetRecordsRequest {
   /** ID or Name of the Zone. */
@@ -449,9 +446,8 @@ export const RemoveZoneRrsetRecordsResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type RemoveZoneRrsetRecordsResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
-export const RemoveZoneRrsetRecordsResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddZoneRrsetRecordsResponseActionResourcesItem,
-) as any as S.Schema<RemoveZoneRrsetRecordsResponseActionResourcesList>;
+export const RemoveZoneRrsetRecordsResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<RemoveZoneRrsetRecordsResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveZoneRrsetRecordsResponseActionError = AddZoneRrsetRecordsResponseActionError;
@@ -527,9 +523,8 @@ export const SetZoneRrsetRecordsRequestRecordsItem = AddZoneRrsetRecordsRequestR
 
 /** Records to set in the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
 export type SetZoneRrsetRecordsRequestRecordsList = Array<AddZoneRrsetRecordsRequestRecordsItem>;
-export const SetZoneRrsetRecordsRequestRecordsList = /*@__PURE__*/ S.Array(
-  AddZoneRrsetRecordsRequestRecordsItem,
-) as any as S.Schema<SetZoneRrsetRecordsRequestRecordsList>;
+export const SetZoneRrsetRecordsRequestRecordsList =
+  AddZoneRrsetRecordsRequestRecordsList as any as S.Schema<SetZoneRrsetRecordsRequestRecordsList>;
 
 export interface SetZoneRrsetRecordsRequest {
   /** ID or Name of the Zone. */
@@ -568,9 +563,8 @@ export const SetZoneRrsetRecordsResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type SetZoneRrsetRecordsResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
-export const SetZoneRrsetRecordsResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddZoneRrsetRecordsResponseActionResourcesItem,
-) as any as S.Schema<SetZoneRrsetRecordsResponseActionResourcesList>;
+export const SetZoneRrsetRecordsResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<SetZoneRrsetRecordsResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type SetZoneRrsetRecordsResponseActionError = AddZoneRrsetRecordsResponseActionError;
@@ -700,9 +694,8 @@ export const UpdateZoneRrsetRecordsResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type UpdateZoneRrsetRecordsResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
-export const UpdateZoneRrsetRecordsResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddZoneRrsetRecordsResponseActionResourcesItem,
-) as any as S.Schema<UpdateZoneRrsetRecordsResponseActionResourcesList>;
+export const UpdateZoneRrsetRecordsResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<UpdateZoneRrsetRecordsResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UpdateZoneRrsetRecordsResponseActionError = AddZoneRrsetRecordsResponseActionError;

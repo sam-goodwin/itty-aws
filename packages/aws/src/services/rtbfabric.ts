@@ -242,7 +242,7 @@ export type FilterType = "INCLUDE" | "EXCLUDE" | (string & {});
 export const FilterType = S.String;
 
 export type ValueList = string[];
-export const ValueList = /*@__PURE__*/ S.Array(S.String);
+export const ValueList = FlowModuleNameList as any as S.Schema<ValueList>;
 export interface FilterCriterion {
   path: string;
   values: string[];
@@ -641,10 +641,10 @@ export const CreateOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIdList = FlowModuleNameList as any as S.Schema<SubnetIdList>;
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdList = FlowModuleNameList as any as S.Schema<SecurityGroupIdList>;
 export interface CreateRequesterGatewayRequest {
   vpcId: string;
   subnetIds: string[];
@@ -712,7 +712,8 @@ export const TrustStoreConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrustStoreConfiguration" }) as any as S.Schema<TrustStoreConfiguration>;
 export type AutoScalingGroupName = string;
 export type AutoScalingGroupNameList = string[];
-export const AutoScalingGroupNameList = /*@__PURE__*/ S.Array(S.String);
+export const AutoScalingGroupNameList =
+  FlowModuleNameList as any as S.Schema<AutoScalingGroupNameList>;
 export type StatusCodeMatcher = string;
 export interface HealthCheckConfig {
   port: number;
@@ -981,11 +982,8 @@ export interface DeleteOutboundExternalLinkResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const DeleteOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ linkId: S.String, status: LinkStatus }),
-).annotate({
-  identifier: "DeleteOutboundExternalLinkResponse",
-}) as any as S.Schema<DeleteOutboundExternalLinkResponse>;
+export const DeleteOutboundExternalLinkResponse =
+  DeleteInboundExternalLinkResponse as any as S.Schema<DeleteOutboundExternalLinkResponse>;
 export interface DeleteRequesterGatewayRequest {
   gatewayId: string;
 }
@@ -1064,15 +1062,8 @@ export interface DisassociateCertificateResponse {
   acmCertificateArn: string;
   status: CertificateAssociationStatus;
 }
-export const DisassociateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayId: S.String,
-    acmCertificateArn: S.String,
-    status: CertificateAssociationStatus,
-  }),
-).annotate({
-  identifier: "DisassociateCertificateResponse",
-}) as any as S.Schema<DisassociateCertificateResponse>;
+export const DisassociateCertificateResponse =
+  AssociateCertificateResponse as any as S.Schema<DisassociateCertificateResponse>;
 export interface GetCertificateAssociationRequest {
   gatewayId: string;
   acmCertificateArn: string;
@@ -1637,7 +1628,7 @@ export const ListRequesterGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRequesterGatewaysRequest",
 }) as any as S.Schema<ListRequesterGatewaysRequest>;
 export type GatewayIdList = string[];
-export const GatewayIdList = /*@__PURE__*/ S.Array(S.String);
+export const GatewayIdList = FlowModuleNameList as any as S.Schema<GatewayIdList>;
 export interface ListRequesterGatewaysResponse {
   gatewayIds?: string[];
   nextToken?: string;
@@ -1665,11 +1656,8 @@ export interface ListResponderGatewaysResponse {
   gatewayIds?: string[];
   nextToken?: string;
 }
-export const ListResponderGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ gatewayIds: S.optional(GatewayIdList), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListResponderGatewaysResponse",
-}) as any as S.Schema<ListResponderGatewaysResponse>;
+export const ListResponderGatewaysResponse =
+  ListRequesterGatewaysResponse as any as S.Schema<ListResponderGatewaysResponse>;
 export type RtbTaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
@@ -1722,22 +1710,7 @@ export interface RejectLinkResponse {
   connectivityType?: ConnectivityType;
   linkId: string;
 }
-export const RejectLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayId: S.String,
-    peerGatewayId: S.String,
-    status: LinkStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    direction: S.optional(LinkDirection),
-    flowModules: S.optional(ModuleConfigurationList),
-    pendingFlowModules: S.optional(ModuleConfigurationList),
-    attributes: S.optional(LinkAttributes),
-    logSettings: S.optional(LinkLogSettings),
-    connectivityType: S.optional(ConnectivityType),
-    linkId: S.String,
-  }),
-).annotate({ identifier: "RejectLinkResponse" }) as any as S.Schema<RejectLinkResponse>;
+export const RejectLinkResponse = AcceptLinkResponse as any as S.Schema<RejectLinkResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1752,7 +1725,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = FlowModuleNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1766,9 +1739,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLinkRequest {
   gatewayId: string;
   linkId: string;
@@ -1796,9 +1767,7 @@ export interface UpdateLinkResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const UpdateLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ linkId: S.String, status: LinkStatus }),
-).annotate({ identifier: "UpdateLinkResponse" }) as any as S.Schema<UpdateLinkResponse>;
+export const UpdateLinkResponse = DeleteLinkResponse as any as S.Schema<UpdateLinkResponse>;
 export interface UpdateLinkModuleFlowRequest {
   clientToken: string;
   gatewayId: string;
@@ -1829,11 +1798,8 @@ export interface UpdateLinkModuleFlowResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const UpdateLinkModuleFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ gatewayId: S.String, linkId: S.String, status: LinkStatus }),
-).annotate({
-  identifier: "UpdateLinkModuleFlowResponse",
-}) as any as S.Schema<UpdateLinkModuleFlowResponse>;
+export const UpdateLinkModuleFlowResponse =
+  CreateOutboundExternalLinkResponse as any as S.Schema<UpdateLinkModuleFlowResponse>;
 export interface UpdateLinkRoutingRuleRequest {
   gatewayId: string;
   linkId: string;
@@ -1905,11 +1871,8 @@ export interface UpdateRequesterGatewayResponse {
   gatewayId: string;
   status: RequesterGatewayStatus;
 }
-export const UpdateRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ gatewayId: S.String, status: RequesterGatewayStatus }),
-).annotate({
-  identifier: "UpdateRequesterGatewayResponse",
-}) as any as S.Schema<UpdateRequesterGatewayResponse>;
+export const UpdateRequesterGatewayResponse =
+  DeleteRequesterGatewayResponse as any as S.Schema<UpdateRequesterGatewayResponse>;
 export interface UpdateResponderGatewayRequest {
   domainName?: string;
   port: number;

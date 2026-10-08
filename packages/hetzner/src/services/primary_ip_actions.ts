@@ -143,9 +143,8 @@ export const ChangePrimaryIpDnsPtrResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangePrimaryIpDnsPtrResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-export const ChangePrimaryIpDnsPtrResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignPrimaryIpResponseActionResourcesItem,
-) as any as S.Schema<ChangePrimaryIpDnsPtrResponseActionResourcesList>;
+export const ChangePrimaryIpDnsPtrResponseActionResourcesList =
+  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ChangePrimaryIpDnsPtrResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangePrimaryIpDnsPtrResponseActionError = AssignPrimaryIpResponseActionError;
@@ -224,9 +223,8 @@ export const ChangePrimaryIpProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangePrimaryIpProtectionResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-export const ChangePrimaryIpProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignPrimaryIpResponseActionResourcesItem,
-) as any as S.Schema<ChangePrimaryIpProtectionResponseActionResourcesList>;
+export const ChangePrimaryIpProtectionResponseActionResourcesList =
+  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ChangePrimaryIpProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangePrimaryIpProtectionResponseActionError = AssignPrimaryIpResponseActionError;
@@ -300,9 +298,8 @@ export const GetPrimaryIpsActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetPrimaryIpsActionResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-export const GetPrimaryIpsActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignPrimaryIpResponseActionResourcesItem,
-) as any as S.Schema<GetPrimaryIpsActionResponseActionResourcesList>;
+export const GetPrimaryIpsActionResponseActionResourcesList =
+  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<GetPrimaryIpsActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetPrimaryIpsActionResponseActionError = AssignPrimaryIpResponseActionError;
@@ -424,9 +421,8 @@ export const ListPrimaryIpActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListPrimaryIpActionsResponseActionsItemResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-export const ListPrimaryIpActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AssignPrimaryIpResponseActionResourcesItem,
-) as any as S.Schema<ListPrimaryIpActionsResponseActionsItemResourcesList>;
+export const ListPrimaryIpActionsResponseActionsItemResourcesList =
+  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ListPrimaryIpActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListPrimaryIpActionsResponseActionsItemError = AssignPrimaryIpResponseActionError;
@@ -601,9 +597,8 @@ export const ListPrimaryIpsActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListPrimaryIpsActionsResponseActionsItemResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-export const ListPrimaryIpsActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AssignPrimaryIpResponseActionResourcesItem,
-) as any as S.Schema<ListPrimaryIpsActionsResponseActionsItemResourcesList>;
+export const ListPrimaryIpsActionsResponseActionsItemResourcesList =
+  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ListPrimaryIpsActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListPrimaryIpsActionsResponseActionsItemError = AssignPrimaryIpResponseActionError;
@@ -692,9 +687,8 @@ export const UnassignPrimaryIpResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type UnassignPrimaryIpResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-export const UnassignPrimaryIpResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignPrimaryIpResponseActionResourcesItem,
-) as any as S.Schema<UnassignPrimaryIpResponseActionResourcesList>;
+export const UnassignPrimaryIpResponseActionResourcesList =
+  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<UnassignPrimaryIpResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UnassignPrimaryIpResponseActionError = AssignPrimaryIpResponseActionError;

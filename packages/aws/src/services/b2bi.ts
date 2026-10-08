@@ -908,7 +908,7 @@ export type FromFormat = "X12" | (string & {});
 export const FromFormat = S.String;
 
 export type FormatOptions = { x12: X12Details };
-export const FormatOptions = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ x12: X12Details })]);
+export const FormatOptions = TemplateDetails as any as S.Schema<FormatOptions>;
 export type X12SplitBy = "NONE" | "TRANSACTION" | (string & {});
 export const X12SplitBy = S.String;
 
@@ -920,7 +920,7 @@ export const X12SplitOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "X12SplitOptions" }) as any as S.Schema<X12SplitOptions>;
 export type ElementId = string;
 export type CodeList = string[];
-export const CodeList = /*@__PURE__*/ S.Array(S.String);
+export const CodeList = PartnershipCapabilities as any as S.Schema<CodeList>;
 export interface X12CodeListValidationRule {
   elementId: string;
   codesToAdd?: string[];
@@ -1156,9 +1156,8 @@ export const DeletePartnershipRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePartnershipRequest" }) as any as S.Schema<DeletePartnershipRequest>;
 export interface DeletePartnershipResponse {}
-export const DeletePartnershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePartnershipResponse",
-}) as any as S.Schema<DeletePartnershipResponse>;
+export const DeletePartnershipResponse =
+  DeleteCapabilityResponse as any as S.Schema<DeletePartnershipResponse>;
 export interface DeleteProfileRequest {
   profileId: string;
 }
@@ -1168,9 +1167,8 @@ export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProfileRequest" }) as any as S.Schema<DeleteProfileRequest>;
 export interface DeleteProfileResponse {}
-export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProfileResponse",
-}) as any as S.Schema<DeleteProfileResponse>;
+export const DeleteProfileResponse =
+  DeleteCapabilityResponse as any as S.Schema<DeleteProfileResponse>;
 export interface DeleteTransformerRequest {
   transformerId: string;
 }
@@ -1187,9 +1185,8 @@ export const DeleteTransformerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTransformerRequest" }) as any as S.Schema<DeleteTransformerRequest>;
 export interface DeleteTransformerResponse {}
-export const DeleteTransformerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTransformerResponse",
-}) as any as S.Schema<DeleteTransformerResponse>;
+export const DeleteTransformerResponse =
+  DeleteCapabilityResponse as any as S.Schema<DeleteTransformerResponse>;
 export type GenerateMappingInputFileContent = string;
 export type GenerateMappingOutputFileContent = string;
 export interface GenerateMappingRequest {
@@ -1401,7 +1398,7 @@ export type TransformerJobStatus = "running" | "succeeded" | "failed" | (string 
 export const TransformerJobStatus = S.String;
 
 export type S3LocationList = S3Location[];
-export const S3LocationList = /*@__PURE__*/ S.Array(S3Location);
+export const S3LocationList = InstructionsDocuments as any as S.Schema<S3LocationList>;
 export interface GetTransformerJobResponse {
   status: TransformerJobStatus;
   outputFiles?: S3Location[];
@@ -1641,9 +1638,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteCapabilityResponse as any as S.Schema<TagResourceResponse>;
 export type ConversionSourceFormat = "JSON" | "XML" | (string & {});
 export const ConversionSourceFormat = S.String;
 
@@ -1693,7 +1688,7 @@ export const TestConversionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TestConversionRequest" }) as any as S.Schema<TestConversionRequest>;
 export type ValidationMessages = string[];
-export const ValidationMessages = /*@__PURE__*/ S.Array(S.String);
+export const ValidationMessages = PartnershipCapabilities as any as S.Schema<ValidationMessages>;
 export interface TestConversionResponse {
   convertedFileContent: string;
   validationMessages?: string[];
@@ -1733,7 +1728,8 @@ export const TestParsingRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/testparsing" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "TestParsingRequest" }) as any as S.Schema<TestParsingRequest>;
 export type ParsedSplitFileContentsList = string[];
-export const ParsedSplitFileContentsList = /*@__PURE__*/ S.Array(S.String);
+export const ParsedSplitFileContentsList =
+  PartnershipCapabilities as any as S.Schema<ParsedSplitFileContentsList>;
 export interface TestParsingResponse {
   parsedFileContent: string;
   parsedSplitFileContents?: string[];
@@ -1747,7 +1743,7 @@ export const TestParsingResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestParsingResponse" }) as any as S.Schema<TestParsingResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = PartnershipCapabilities as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1761,9 +1757,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteCapabilityResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCapabilityRequest {
   capabilityId: string;
   name?: string;
@@ -1797,18 +1792,8 @@ export interface UpdateCapabilityResponse {
   createdAt: Date;
   modifiedAt?: Date;
 }
-export const UpdateCapabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capabilityId: S.String,
-    capabilityArn: S.String,
-    name: S.String,
-    type: CapabilityType,
-    configuration: CapabilityConfiguration,
-    instructionsDocuments: S.optional(InstructionsDocuments),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "UpdateCapabilityResponse" }) as any as S.Schema<UpdateCapabilityResponse>;
+export const UpdateCapabilityResponse =
+  GetCapabilityResponse as any as S.Schema<UpdateCapabilityResponse>;
 export interface UpdatePartnershipRequest {
   partnershipId: string;
   name?: string;
@@ -1892,20 +1877,7 @@ export interface UpdateProfileResponse {
   createdAt: Date;
   modifiedAt?: Date;
 }
-export const UpdateProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String,
-    profileArn: S.String,
-    name: S.String,
-    email: S.optional(SensitiveString),
-    phone: SensitiveString,
-    businessName: S.String,
-    logging: S.optional(Logging),
-    logGroupName: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    modifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "UpdateProfileResponse" }) as any as S.Schema<UpdateProfileResponse>;
+export const UpdateProfileResponse = GetProfileResponse as any as S.Schema<UpdateProfileResponse>;
 export interface UpdateTransformerRequest {
   transformerId: string;
   name?: string;

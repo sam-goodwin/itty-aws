@@ -546,10 +546,8 @@ export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMemberRequest" }) as any as S.Schema<GetMemberRequest>;
 
 export type GetMemberResponseMetaMap = { [key: string]: unknown | undefined };
-export const GetMemberResponseMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetMemberResponseMetaMap>;
+export const GetMemberResponseMetaMap =
+  CreateMemberResponseMetaMap as any as S.Schema<GetMemberResponseMetaMap>;
 
 export type GetMemberResponseStatus = "active" | "pending" | "rejected" | "canceled";
 export const GetMemberResponseStatus = S.String;
@@ -590,9 +588,8 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrganizationRequest" }) as any as S.Schema<GetOrganizationRequest>;
 
 export type GetResponseMetaHierarchyTagsList = Array<string>;
-export const GetResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseMetaHierarchyTagsList>;
+export const GetResponseMetaHierarchyTagsList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<GetResponseMetaHierarchyTagsList>;
 
 export type GetResponseMetaTenantFlags = CreateResponseMetaTenantFlags;
 export const GetResponseMetaTenantFlags = CreateResponseMetaTenantFlags;
@@ -604,15 +601,7 @@ export interface GetResponseMeta {
   /** Enable features for Organizations. */
   tenantFlags?: CreateResponseMetaTenantFlags | null;
 }
-export const GetResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hierarchyTags: S.optional(
-      S.NullOr(GetResponseMetaHierarchyTagsList).pipe(T.Body("hierarchy_tags")),
-    ),
-    managedBy: S.optional(S.NullOr(S.String).pipe(T.Body("managed_by"))),
-    tenantFlags: S.optional(S.NullOr(CreateResponseMetaTenantFlags).pipe(T.Body("tenant_flags"))),
-  }),
-).annotate({ identifier: "GetResponseMeta" }) as any as S.Schema<GetResponseMeta>;
+export const GetResponseMeta = CreateResponseMeta as any as S.Schema<GetResponseMeta>;
 
 export type GetResponseParent = CreateResponseParent;
 export const GetResponseParent = CreateResponseParent;
@@ -669,15 +658,8 @@ export interface GetOrganizationAccountRequestName {
   /** (case-insensitive) Filter the list of accounts to where the name starts with a particular string. */
   startsWith?: string;
 }
-export const GetOrganizationAccountRequestName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contains: S.optional(S.String),
-    endsWith: S.optional(S.String),
-    startsWith: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOrganizationAccountRequestName",
-}) as any as S.Schema<GetOrganizationAccountRequestName>;
+export const GetOrganizationAccountRequestName =
+  GetOrganizationAccountRequestAccountPubname as any as S.Schema<GetOrganizationAccountRequestName>;
 
 export type GetOrganizationAccountRequestOrderBy = "account_name";
 export const GetOrganizationAccountRequestOrderBy = S.String;
@@ -822,9 +804,8 @@ export const GetOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationProfileResponse>;
 
 export type LogsAuditListRequestIdNotList = Array<string>;
-export const LogsAuditListRequestIdNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestIdNotList>;
+export const LogsAuditListRequestIdNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestIdNotList>;
 
 export interface LogsAuditListRequestId {
   /** Filters out audit logs by their IDs. */
@@ -909,9 +890,8 @@ export const LogsAuditListRequestActorContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAuditListRequestActorContext>;
 
 export type LogsAuditListRequestActorEmailNotList = Array<string>;
-export const LogsAuditListRequestActorEmailNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestActorEmailNotList>;
+export const LogsAuditListRequestActorEmailNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestActorEmailNotList>;
 
 export interface LogsAuditListRequestActorEmail {
   /** Filters out audit logs by the actor's email address. */
@@ -926,72 +906,48 @@ export const LogsAuditListRequestActorEmail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAuditListRequestActorEmail>;
 
 export type LogsAuditListRequestActorIdNotList = Array<string>;
-export const LogsAuditListRequestActorIdNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestActorIdNotList>;
+export const LogsAuditListRequestActorIdNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestActorIdNotList>;
 
 export interface LogsAuditListRequestActorId {
   /** Filters out audit logs by the actor's user ID. */
   not?: LogsAuditListRequestActorIdNotList;
 }
-export const LogsAuditListRequestActorId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorIdNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorId",
-}) as any as S.Schema<LogsAuditListRequestActorId>;
+export const LogsAuditListRequestActorId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorId>;
 
 export type LogsAuditListRequestActorIpAddressNotList = Array<string>;
-export const LogsAuditListRequestActorIpAddressNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestActorIpAddressNotList>;
+export const LogsAuditListRequestActorIpAddressNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestActorIpAddressNotList>;
 
 export interface LogsAuditListRequestActorIpAddress {
   /** Filters out audit logs IP address where the action was initiated. */
   not?: LogsAuditListRequestActorIpAddressNotList;
 }
-export const LogsAuditListRequestActorIpAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorIpAddressNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorIpAddress",
-}) as any as S.Schema<LogsAuditListRequestActorIpAddress>;
+export const LogsAuditListRequestActorIpAddress =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorIpAddress>;
 
 export type LogsAuditListRequestActorTokenIdNotList = Array<string>;
-export const LogsAuditListRequestActorTokenIdNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestActorTokenIdNotList>;
+export const LogsAuditListRequestActorTokenIdNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestActorTokenIdNotList>;
 
 export interface LogsAuditListRequestActorTokenId {
   /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
   not?: LogsAuditListRequestActorTokenIdNotList;
 }
-export const LogsAuditListRequestActorTokenId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorTokenIdNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorTokenId",
-}) as any as S.Schema<LogsAuditListRequestActorTokenId>;
+export const LogsAuditListRequestActorTokenId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorTokenId>;
 
 export type LogsAuditListRequestActorTokenNameNotList = Array<string>;
-export const LogsAuditListRequestActorTokenNameNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestActorTokenNameNotList>;
+export const LogsAuditListRequestActorTokenNameNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestActorTokenNameNotList>;
 
 export interface LogsAuditListRequestActorTokenName {
   /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
   not?: LogsAuditListRequestActorTokenNameNotList;
 }
-export const LogsAuditListRequestActorTokenName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestActorTokenNameNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestActorTokenName",
-}) as any as S.Schema<LogsAuditListRequestActorTokenName>;
+export const LogsAuditListRequestActorTokenName =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorTokenName>;
 
 export type LogsAuditListRequestActorTypeNotItem = "cloudflare_admin" | "system" | "user";
 export const LogsAuditListRequestActorTypeNotItem = S.String;
@@ -1019,38 +975,26 @@ export type LogsAuditListRequestDirection = "desc" | "asc";
 export const LogsAuditListRequestDirection = S.String;
 
 export type LogsAuditListRequestRawCfRayIdNotList = Array<string>;
-export const LogsAuditListRequestRawCfRayIdNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestRawCfRayIdNotList>;
+export const LogsAuditListRequestRawCfRayIdNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestRawCfRayIdNotList>;
 
 export interface LogsAuditListRequestRawCfRayId {
   /** Filters out audit logs by the response CF Ray ID. */
   not?: LogsAuditListRequestRawCfRayIdNotList;
 }
-export const LogsAuditListRequestRawCfRayId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestRawCfRayIdNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestRawCfRayId",
-}) as any as S.Schema<LogsAuditListRequestRawCfRayId>;
+export const LogsAuditListRequestRawCfRayId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestRawCfRayId>;
 
 export type LogsAuditListRequestRawMethodNotList = Array<string>;
-export const LogsAuditListRequestRawMethodNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestRawMethodNotList>;
+export const LogsAuditListRequestRawMethodNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestRawMethodNotList>;
 
 export interface LogsAuditListRequestRawMethod {
   /** Filters out audit logs by the HTTP method for the API call. */
   not?: LogsAuditListRequestRawMethodNotList;
 }
-export const LogsAuditListRequestRawMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestRawMethodNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestRawMethod",
-}) as any as S.Schema<LogsAuditListRequestRawMethod>;
+export const LogsAuditListRequestRawMethod =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestRawMethod>;
 
 export type LogsAuditListRequestRawStatusCodeNotList = Array<number>;
 export const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ S.Array(
@@ -1070,55 +1014,37 @@ export const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAuditListRequestRawStatusCode>;
 
 export type LogsAuditListRequestRawUriNotList = Array<string>;
-export const LogsAuditListRequestRawUriNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestRawUriNotList>;
+export const LogsAuditListRequestRawUriNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestRawUriNotList>;
 
 export interface LogsAuditListRequestRawUri {
   /** Filters out audit logs by the request URI. */
   not?: LogsAuditListRequestRawUriNotList;
 }
-export const LogsAuditListRequestRawUri = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestRawUriNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestRawUri",
-}) as any as S.Schema<LogsAuditListRequestRawUri>;
+export const LogsAuditListRequestRawUri =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestRawUri>;
 
 export type LogsAuditListRequestResourceIdNotList = Array<string>;
-export const LogsAuditListRequestResourceIdNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestResourceIdNotList>;
+export const LogsAuditListRequestResourceIdNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestResourceIdNotList>;
 
 export interface LogsAuditListRequestResourceId {
   /** Filters out audit logs by the resource ID. */
   not?: LogsAuditListRequestResourceIdNotList;
 }
-export const LogsAuditListRequestResourceId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestResourceIdNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestResourceId",
-}) as any as S.Schema<LogsAuditListRequestResourceId>;
+export const LogsAuditListRequestResourceId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestResourceId>;
 
 export type LogsAuditListRequestResourceProductNotList = Array<string>;
-export const LogsAuditListRequestResourceProductNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestResourceProductNotList>;
+export const LogsAuditListRequestResourceProductNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestResourceProductNotList>;
 
 export interface LogsAuditListRequestResourceProduct {
   /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
   not?: LogsAuditListRequestResourceProductNotList;
 }
-export const LogsAuditListRequestResourceProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestResourceProductNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestResourceProduct",
-}) as any as S.Schema<LogsAuditListRequestResourceProduct>;
+export const LogsAuditListRequestResourceProduct =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestResourceProduct>;
 
 export type LogsAuditListRequestResourceScopeNotItem = "organizations";
 export const LogsAuditListRequestResourceScopeNotItem = S.String;
@@ -1143,21 +1069,15 @@ export const LogsAuditListRequestResourceScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsAuditListRequestResourceScope>;
 
 export type LogsAuditListRequestResourceTypeNotList = Array<string>;
-export const LogsAuditListRequestResourceTypeNotList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsAuditListRequestResourceTypeNotList>;
+export const LogsAuditListRequestResourceTypeNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestResourceTypeNotList>;
 
 export interface LogsAuditListRequestResourceType {
   /** Filters out audit logs based on the unique type of resource changed by the action. */
   not?: LogsAuditListRequestResourceTypeNotList;
 }
-export const LogsAuditListRequestResourceType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    not: S.optional(LogsAuditListRequestResourceTypeNotList),
-  }),
-).annotate({
-  identifier: "LogsAuditListRequestResourceType",
-}) as any as S.Schema<LogsAuditListRequestResourceType>;
+export const LogsAuditListRequestResourceType =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestResourceType>;
 
 export interface ListLogAuditsRequest {
   /** The unique id that identifies the organization. */
@@ -1480,10 +1400,8 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type ListMembersResultItemMetaMap = { [key: string]: unknown | undefined };
-export const ListMembersResultItemMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListMembersResultItemMetaMap>;
+export const ListMembersResultItemMetaMap =
+  CreateMemberResponseMetaMap as any as S.Schema<ListMembersResultItemMetaMap>;
 
 export type ListMembersResultItemStatus = "active" | "pending" | "rejected" | "canceled";
 export const ListMembersResultItemStatus = S.String;
@@ -1522,9 +1440,8 @@ export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersResponse" }) as any as S.Schema<ListMembersResponse>;
 
 export type ListRequestIdList = Array<string>;
-export const ListRequestIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestIdList>;
+export const ListRequestIdList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<ListRequestIdList>;
 
 export interface ListRequestContaining {
   /** Filter the list of organizations to the ones that contain this particular account. */
@@ -1593,9 +1510,8 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type ListResultItemMetaHierarchyTagsList = Array<string>;
-export const ListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemMetaHierarchyTagsList>;
+export const ListResultItemMetaHierarchyTagsList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<ListResultItemMetaHierarchyTagsList>;
 
 export type ListResultItemMetaTenantFlags = CreateResponseMetaTenantFlags;
 export const ListResultItemMetaTenantFlags = CreateResponseMetaTenantFlags;
@@ -1607,15 +1523,7 @@ export interface ListResultItemMeta {
   /** Enable features for Organizations. */
   tenantFlags?: CreateResponseMetaTenantFlags | null;
 }
-export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hierarchyTags: S.optional(
-      S.NullOr(ListResultItemMetaHierarchyTagsList).pipe(T.Body("hierarchy_tags")),
-    ),
-    managedBy: S.optional(S.NullOr(S.String).pipe(T.Body("managed_by"))),
-    tenantFlags: S.optional(S.NullOr(CreateResponseMetaTenantFlags).pipe(T.Body("tenant_flags"))),
-  }),
-).annotate({ identifier: "ListResultItemMeta" }) as any as S.Schema<ListResultItemMeta>;
+export const ListResultItemMeta = CreateResponseMeta as any as S.Schema<ListResultItemMeta>;
 
 export type ListResultItemParent = CreateResponseParent;
 export const ListResultItemParent = CreateResponseParent;
@@ -1851,9 +1759,8 @@ export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationRequest>;
 
 export type UpdateResponseMetaHierarchyTagsList = Array<string>;
-export const UpdateResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseMetaHierarchyTagsList>;
+export const UpdateResponseMetaHierarchyTagsList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<UpdateResponseMetaHierarchyTagsList>;
 
 export type UpdateResponseMetaTenantFlags = CreateResponseMetaTenantFlags;
 export const UpdateResponseMetaTenantFlags = CreateResponseMetaTenantFlags;
@@ -1865,15 +1772,7 @@ export interface UpdateResponseMeta {
   /** Enable features for Organizations. */
   tenantFlags?: CreateResponseMetaTenantFlags | null;
 }
-export const UpdateResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hierarchyTags: S.optional(
-      S.NullOr(UpdateResponseMetaHierarchyTagsList).pipe(T.Body("hierarchy_tags")),
-    ),
-    managedBy: S.optional(S.NullOr(S.String).pipe(T.Body("managed_by"))),
-    tenantFlags: S.optional(S.NullOr(CreateResponseMetaTenantFlags).pipe(T.Body("tenant_flags"))),
-  }),
-).annotate({ identifier: "UpdateResponseMeta" }) as any as S.Schema<UpdateResponseMeta>;
+export const UpdateResponseMeta = CreateResponseMeta as any as S.Schema<UpdateResponseMeta>;
 
 export type UpdateResponseParent = CreateResponseParent;
 export const UpdateResponseParent = CreateResponseParent;
@@ -1890,18 +1789,8 @@ export interface UpdateOrganizationResponse {
   parent?: CreateResponseParent | null;
   profile?: CreateRequestProfile | null;
 }
-export const UpdateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createTime: S.String.pipe(T.Body("create_time")),
-    meta: UpdateResponseMeta,
-    name: S.String,
-    parent: S.optional(S.NullOr(CreateResponseParent)),
-    profile: S.optional(S.NullOr(CreateRequestProfile)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateOrganizationResponse",
-}) as any as S.Schema<UpdateOrganizationResponse>;
+export const UpdateOrganizationResponse =
+  CreateOrganizationResponse as any as S.Schema<UpdateOrganizationResponse>;
 
 export type CreateMemberError = CloudflareOpError;
 /** Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */

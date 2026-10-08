@@ -149,7 +149,7 @@ export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
 export type CidrBlock = string;
 export interface VpcAttachmentOptions {
   AttachToVpc: boolean;
@@ -257,7 +257,7 @@ export const PipelineStatusReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Description: S.optional(S.String) }),
 ).annotate({ identifier: "PipelineStatusReason" }) as any as S.Schema<PipelineStatusReason>;
 export type IngestEndpointUrlsList = string[];
-export const IngestEndpointUrlsList = /*@__PURE__*/ S.Array(S.String);
+export const IngestEndpointUrlsList = SubnetIds as any as S.Schema<IngestEndpointUrlsList>;
 export interface VpcEndpoint {
   VpcEndpointId?: string;
   VpcId?: string;
@@ -465,11 +465,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeletePipelineEndpointResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface GetPipelineRequest {
   PipelineName: string;
 }
@@ -489,9 +486,7 @@ export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPipelineResponse {
   Pipeline?: Pipeline;
 }
-export const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pipeline: S.optional(Pipeline) }).pipe(ns),
-).annotate({ identifier: "GetPipelineResponse" }) as any as S.Schema<GetPipelineResponse>;
+export const GetPipelineResponse = CreatePipelineResponse as any as S.Schema<GetPipelineResponse>;
 export type BlueprintFormat = string;
 export interface GetPipelineBlueprintRequest {
   BlueprintName: string;
@@ -899,13 +894,10 @@ export interface PutResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export type PipelineEndpointIdsList = string[];
-export const PipelineEndpointIdsList = /*@__PURE__*/ S.Array(S.String);
+export const PipelineEndpointIdsList = SubnetIds as any as S.Schema<PipelineEndpointIdsList>;
 export interface RevokePipelineEndpointConnectionsRequest {
   PipelineArn: string;
   EndpointIds: string[];
@@ -952,9 +944,8 @@ export const StartPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartPipelineResponse {
   Pipeline?: Pipeline;
 }
-export const StartPipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pipeline: S.optional(Pipeline) }).pipe(ns),
-).annotate({ identifier: "StartPipelineResponse" }) as any as S.Schema<StartPipelineResponse>;
+export const StartPipelineResponse =
+  CreatePipelineResponse as any as S.Schema<StartPipelineResponse>;
 export interface StopPipelineRequest {
   PipelineName: string;
 }
@@ -974,9 +965,7 @@ export const StopPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopPipelineResponse {
   Pipeline?: Pipeline;
 }
-export const StopPipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pipeline: S.optional(Pipeline) }).pipe(ns),
-).annotate({ identifier: "StopPipelineResponse" }) as any as S.Schema<StopPipelineResponse>;
+export const StopPipelineResponse = CreatePipelineResponse as any as S.Schema<StopPipelineResponse>;
 export interface TagResourceRequest {
   Arn: string;
   Tags: Tag[];
@@ -999,7 +988,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = SubnetIds as any as S.Schema<StringList>;
 export interface UntagResourceRequest {
   Arn: string;
   TagKeys: string[];
@@ -1018,9 +1007,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdatePipelineRequest {
   PipelineName: string;
   MinUnits?: number;
@@ -1056,9 +1043,8 @@ export const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePipelineResponse {
   Pipeline?: Pipeline;
 }
-export const UpdatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pipeline: S.optional(Pipeline) }).pipe(ns),
-).annotate({ identifier: "UpdatePipelineResponse" }) as any as S.Schema<UpdatePipelineResponse>;
+export const UpdatePipelineResponse =
+  CreatePipelineResponse as any as S.Schema<UpdatePipelineResponse>;
 export interface ValidatePipelineRequest {
   PipelineConfigurationBody: string;
 }

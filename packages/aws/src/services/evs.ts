@@ -306,7 +306,7 @@ export const RequestTagMap = /*@__PURE__*/ S.Record(
 );
 export type SecurityGroupId = string;
 export type SecurityGroups = string[];
-export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroups = VmIdList as any as S.Schema<SecurityGroups>;
 export interface ServiceAccessSecurityGroups {
   securityGroups?: string[];
 }
@@ -357,7 +357,7 @@ export const InitialVlans = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InitialVlans" }) as any as S.Schema<InitialVlans>;
 export type RouteServerPeering = string;
 export type RouteServerPeeringList = string[];
-export const RouteServerPeeringList = /*@__PURE__*/ S.Array(S.String);
+export const RouteServerPeeringList = VmIdList as any as S.Schema<RouteServerPeeringList>;
 export interface ConnectivityInfo {
   privateRouteServerPeerings: string[];
 }
@@ -771,11 +771,8 @@ export const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEntitlementResponse {
   entitlements?: VmEntitlement[];
 }
-export const DeleteEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entitlements: S.optional(VmEntitlementList) }),
-).annotate({
-  identifier: "DeleteEntitlementResponse",
-}) as any as S.Schema<DeleteEntitlementResponse>;
+export const DeleteEntitlementResponse =
+  CreateEntitlementResponse as any as S.Schema<DeleteEntitlementResponse>;
 export interface DeleteEnvironmentRequest {
   clientToken?: string;
   environmentId: string;
@@ -789,11 +786,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEnvironmentResponse {
   environment?: Environment;
 }
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environment: S.optional(Environment) }),
-).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<DeleteEnvironmentResponse>;
 export interface DeleteEnvironmentConnectorRequest {
   clientToken?: string;
   environmentId: string;
@@ -838,11 +832,8 @@ export interface DeleteEnvironmentHostResponse {
   environmentSummary?: EnvironmentSummary;
   host?: Host;
 }
-export const DeleteEnvironmentHostResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environmentSummary: S.optional(EnvironmentSummary), host: S.optional(Host) }),
-).annotate({
-  identifier: "DeleteEnvironmentHostResponse",
-}) as any as S.Schema<DeleteEnvironmentHostResponse>;
+export const DeleteEnvironmentHostResponse =
+  CreateEnvironmentHostResponse as any as S.Schema<DeleteEnvironmentHostResponse>;
 export interface DisassociateEipFromVlanRequest {
   clientToken?: string;
   environmentId: string;
@@ -862,11 +853,8 @@ export const DisassociateEipFromVlanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateEipFromVlanResponse {
   vlan?: Vlan;
 }
-export const DisassociateEipFromVlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vlan: S.optional(Vlan) }),
-).annotate({
-  identifier: "DisassociateEipFromVlanResponse",
-}) as any as S.Schema<DisassociateEipFromVlanResponse>;
+export const DisassociateEipFromVlanResponse =
+  AssociateEipToVlanResponse as any as S.Schema<DisassociateEipFromVlanResponse>;
 export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -946,7 +934,7 @@ export const VcfVersionInfo = /*@__PURE__*/ S.suspend(() =>
 export type VcfVersionList = VcfVersionInfo[];
 export const VcfVersionList = /*@__PURE__*/ S.Array(VcfVersionInfo);
 export type EsxVersionList = string[];
-export const EsxVersionList = /*@__PURE__*/ S.Array(S.String);
+export const EsxVersionList = VmIdList as any as S.Schema<EsxVersionList>;
 export interface InstanceTypeEsxVersionsInfo {
   instanceType: InstanceType;
   esxVersions: string[];
@@ -1079,10 +1067,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ResponseTagMap = RequestTagMap as any as S.Schema<ResponseTagMap>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
@@ -1131,11 +1116,8 @@ export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAccountSettingsResponse {
   settings?: AccountSetting[];
 }
-export const PutAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ settings: S.optional(AccountSettingList) }),
-).annotate({
-  identifier: "PutAccountSettingsResponse",
-}) as any as S.Schema<PutAccountSettingsResponse>;
+export const PutAccountSettingsResponse =
+  GetAccountSettingsResponse as any as S.Schema<PutAccountSettingsResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1150,7 +1132,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = VmIdList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1161,9 +1143,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateEnvironmentConnectorRequest {
   clientToken?: string;
   environmentId: string;
@@ -1185,11 +1165,8 @@ export const UpdateEnvironmentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEnvironmentConnectorResponse {
   connector?: Connector;
 }
-export const UpdateEnvironmentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connector: S.optional(Connector) }),
-).annotate({
-  identifier: "UpdateEnvironmentConnectorResponse",
-}) as any as S.Schema<UpdateEnvironmentConnectorResponse>;
+export const UpdateEnvironmentConnectorResponse =
+  CreateEnvironmentConnectorResponse as any as S.Schema<UpdateEnvironmentConnectorResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"

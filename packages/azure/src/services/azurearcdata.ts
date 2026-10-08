@@ -610,9 +610,8 @@ export const ActiveDirectoryConnectorDomainDetails = /*@__PURE__*/ S.suspend(() 
 
 /** List of Active Directory DNS server IP addresses. */
 export type ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList = Array<string>;
-export const ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList>;
+export const ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList>;
 
 /** DNS server details */
 export interface ActiveDirectoryConnectorDNSDetails {
@@ -922,10 +921,8 @@ export const CreateFailoverGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreatePostgresInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const CreatePostgresInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePostgresInstanceRequestTagsMap>;
+export const CreatePostgresInstanceRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreatePostgresInstanceRequestTagsMap>;
 
 /** The type of extendedLocation. */
 export type ExtendedLocationType = "CustomLocation";
@@ -1052,10 +1049,8 @@ export const CreatePostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreatePostgresInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const CreatePostgresInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePostgresInstanceResponseTagsMap>;
+export const CreatePostgresInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreatePostgresInstanceResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export interface CreatePostgresInstanceResponseExtendedLocation {
@@ -1064,14 +1059,8 @@ export interface CreatePostgresInstanceResponseExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationType;
 }
-export const CreatePostgresInstanceResponseExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "CreatePostgresInstanceResponseExtendedLocation",
-}) as any as S.Schema<CreatePostgresInstanceResponseExtendedLocation>;
+export const CreatePostgresInstanceResponseExtendedLocation =
+  CreatePostgresInstanceRequestExtendedLocation as any as S.Schema<CreatePostgresInstanceResponseExtendedLocation>;
 
 /** Username and password for basic login authentication. */
 export type PostgresInstancePropertiesBasicLoginInformation =
@@ -1147,24 +1136,18 @@ export const CreatePostgresInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlManagedInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSqlManagedInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlManagedInstanceRequestTagsMap>;
+export const CreateSqlManagedInstanceRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlManagedInstanceRequestTagsMap>;
 
 /** Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
 export type K8sResourceRequirementsRequestsMap = { [key: string]: string | undefined };
-export const K8sResourceRequirementsRequestsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<K8sResourceRequirementsRequestsMap>;
+export const K8sResourceRequirementsRequestsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<K8sResourceRequirementsRequestsMap>;
 
 /** Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
 export type K8sResourceRequirementsLimitsMap = { [key: string]: string | undefined };
-export const K8sResourceRequirementsLimitsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<K8sResourceRequirementsLimitsMap>;
+export const K8sResourceRequirementsLimitsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<K8sResourceRequirementsLimitsMap>;
 
 /** The kubernetes resource limits and requests used to restrict or reserve resource usage. */
 export interface K8sResourceRequirements {
@@ -1217,9 +1200,8 @@ export const K8sActiveDirectoryConnector = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of encryption types */
 export type K8sActiveDirectoryEncryptionTypesList = Array<string>;
-export const K8sActiveDirectoryEncryptionTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<K8sActiveDirectoryEncryptionTypesList>;
+export const K8sActiveDirectoryEncryptionTypesList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<K8sActiveDirectoryEncryptionTypesList>;
 
 /** The kubernetes active directory information. */
 export interface K8sActiveDirectory {
@@ -1494,10 +1476,8 @@ export const CreateSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlManagedInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSqlManagedInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlManagedInstanceResponseTagsMap>;
+export const CreateSqlManagedInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlManagedInstanceResponseTagsMap>;
 
 /** Username and password for basic login authentication. */
 export type SqlManagedInstancePropertiesBasicLoginInformation =
@@ -1604,10 +1584,8 @@ export const CreateSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerAvailabilityGroupRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerAvailabilityGroupRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupRequestTagsMap>;
+export const CreateSqlServerAvailabilityGroupRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerAvailabilityGroupRequestTagsMap>;
 
 /** The specifications of the availability group state */
 export interface AvailabilityGroupInfoInput {
@@ -1888,10 +1866,8 @@ export const CreateSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type CreateSqlServerAvailabilityGroupResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerAvailabilityGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupResponseTagsMap>;
+export const CreateSqlServerAvailabilityGroupResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerAvailabilityGroupResponseTagsMap>;
 
 export interface CreateSqlServerAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1909,19 +1885,8 @@ export interface CreateSqlServerAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const CreateSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CreateSqlServerAvailabilityGroupResponseTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "CreateSqlServerAvailabilityGroupResponse",
-}) as any as S.Schema<CreateSqlServerAvailabilityGroupResponse>;
+export const CreateSqlServerAvailabilityGroupResponse =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<CreateSqlServerAvailabilityGroupResponse>;
 
 /** The endpoint connection authentication type(s). */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
@@ -1974,9 +1939,7 @@ export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowCo
 export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
   Array<string>;
 export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList>;
+  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList>;
 
 /** The specifications of the availability group replica configuration */
 export interface AvailabilityGroupCreateUpdateReplicaConfiguration {
@@ -2060,9 +2023,7 @@ export const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestReplicasLis
 /** List of databases to include in the availability group. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList = Array<string>;
 export const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList>;
+  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList>;
 
 /** Preferred replica for running automated backups. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestAutomatedBackupPreference =
@@ -2327,10 +2288,7 @@ export type CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse
   [key: string]: string | undefined;
 };
 export const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponseTagsMap>;
+  CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponseTagsMap>;
 
 export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2372,9 +2330,8 @@ export const AvailabilityGroupCreateUpdateConfigurationReplicasList = /*@__PURE_
 
 /** List of databases to include in the availability group. */
 export type AvailabilityGroupCreateUpdateConfigurationDatabasesList = Array<string>;
-export const AvailabilityGroupCreateUpdateConfigurationDatabasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AvailabilityGroupCreateUpdateConfigurationDatabasesList>;
+export const AvailabilityGroupCreateUpdateConfigurationDatabasesList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<AvailabilityGroupCreateUpdateConfigurationDatabasesList>;
 
 /** Preferred replica for running automated backups. */
 export type AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
@@ -2529,10 +2486,7 @@ export type CreateSqlServerAvailabilityGroupManagedInstanceLinkResponseTagsMap =
   [key: string]: string | undefined;
 };
 export const CreateSqlServerAvailabilityGroupManagedInstanceLinkResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponseTagsMap>;
+  CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponseTagsMap>;
 
 export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2550,27 +2504,13 @@ export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(CreateSqlServerAvailabilityGroupManagedInstanceLinkResponseTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-).annotate({
-  identifier: "CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse",
-}) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse>;
+export const CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse =
+  CreateSqlServerAvailabilityGroupAvailabilityGroupResponse as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse>;
 
 /** Resource tags. */
 export type CreateSqlServerDatabaseRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerDatabaseRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerDatabaseRequestTagsMap>;
+export const CreateSqlServerDatabaseRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerDatabaseRequestTagsMap>;
 
 /** State of the database. */
 export type SqlServerDatabaseResourcePropertiesInputState =
@@ -2781,10 +2721,8 @@ export const CreateSqlServerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerDatabaseResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerDatabaseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerDatabaseResponseTagsMap>;
+export const CreateSqlServerDatabaseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerDatabaseResponseTagsMap>;
 
 /** State of the database. */
 export type SqlServerDatabaseResourcePropertiesState =
@@ -3160,10 +3098,8 @@ export const CreateSqlServerDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerEsuLicenseRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerEsuLicenseRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerEsuLicenseRequestTagsMap>;
+export const CreateSqlServerEsuLicenseRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerEsuLicenseRequestTagsMap>;
 
 /** SQL Server ESU license type. */
 export type SqlServerEsuLicensePropertiesInputBillingPlan = "PAYG";
@@ -3248,10 +3184,8 @@ export const CreateSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerEsuLicenseResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerEsuLicenseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerEsuLicenseResponseTagsMap>;
+export const CreateSqlServerEsuLicenseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerEsuLicenseResponseTagsMap>;
 
 /** SQL Server ESU license type. */
 export type SqlServerEsuLicensePropertiesBillingPlan = "PAYG";
@@ -3338,10 +3272,8 @@ export const CreateSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerInstanceRequestTagsMap>;
+export const CreateSqlServerInstanceRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerInstanceRequestTagsMap>;
 
 /** SQL Server version. */
 export type SqlServerInstancePropertiesInputVersion =
@@ -3567,11 +3499,7 @@ export interface ClientConnection {
   /** Indicates if client connection is enabled for this SQL Server instance. */
   enabled?: boolean;
 }
-export const ClientConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ClientConnection" }) as any as S.Schema<ClientConnection>;
+export const ClientConnection = Monitoring as any as S.Schema<ClientConnection>;
 
 /** Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host. */
 export type ServiceType = "Engine" | "SSRS" | "SSAS" | "SSIS" | "PBIRS";
@@ -3715,10 +3643,8 @@ export const CreateSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerInstanceResponseTagsMap>;
+export const CreateSqlServerInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerInstanceResponseTagsMap>;
 
 /** SQL Server version. */
 export type SqlServerInstancePropertiesVersion =
@@ -3873,15 +3799,13 @@ export const DBMEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster. */
 export type FailoverClusterSqlInstanceIdsList = Array<string>;
-export const FailoverClusterSqlInstanceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FailoverClusterSqlInstanceIdsList>;
+export const FailoverClusterSqlInstanceIdsList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<FailoverClusterSqlInstanceIdsList>;
 
 /** The host names which are part of the SQL FCI resource group. */
 export type FailoverClusterHostNamesList = Array<string>;
-export const FailoverClusterHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FailoverClusterHostNamesList>;
+export const FailoverClusterHostNamesList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<FailoverClusterHostNamesList>;
 
 /** IP address and subnet mask. */
 export interface HostIPAddressInformation {
@@ -3987,9 +3911,8 @@ export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCost =
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
   Array<SkuRecommendationResultsMonthlyCostOptionItem>;
-export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList = /*@__PURE__*/ S.Array(
-  SkuRecommendationResultsMonthlyCostOptionItem,
-) as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList>;
+export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
+  SkuRecommendationSummaryMonthlyCostOptionsList as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList>;
 
 export type SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory =
   SkuRecommendationSummaryTargetSkuCategory;
@@ -4011,19 +3934,8 @@ export interface SkuRecommendationResultsAzureSqlDatabaseTargetSku {
   /** The maximum throughput in Azure SQL, will impact the billing cost. */
   maxThroughputMBps?: number;
 }
-export const SkuRecommendationResultsAzureSqlDatabaseTargetSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    category: S.optional(SkuRecommendationSummaryTargetSkuCategory),
-    computeSize: S.optional(S.Number),
-    storageMaxSizeInMb: S.optional(S.Number),
-    predictedDataSizeInMb: S.optional(S.Number),
-    predictedLogSizeInMb: S.optional(S.Number),
-    maxStorageIops: S.optional(S.Number),
-    maxThroughputMBps: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SkuRecommendationResultsAzureSqlDatabaseTargetSku",
-}) as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseTargetSku>;
+export const SkuRecommendationResultsAzureSqlDatabaseTargetSku =
+  SkuRecommendationSummaryTargetSku as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseTargetSku>;
 
 /** SKU Recommendation results for Azure SQL Database. */
 export interface SkuRecommendationResultsAzureSqlDatabase {
@@ -4125,17 +4037,13 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost =
 export type SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
   Array<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
-  /*@__PURE__*/ S.Array(
-    SkuRecommendationResultsMonthlyCostOptionItem,
-  ) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList>;
+  SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList>;
 
 /** Available VM SKUs for the Azure SQL Virtual Machine. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
   Array<string>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList>;
+  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList>;
 
 export interface SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategory {
   /** Available VM SKUs for the Azure SQL Virtual Machine. */
@@ -4225,17 +4133,13 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSize
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
   Array<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
-  /*@__PURE__*/ S.Array(
-    DiskSizes,
-  ) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList>;
+  SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList>;
 
 /** temp db disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
   Array<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
-  /*@__PURE__*/ S.Array(
-    DiskSizes,
-  ) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList>;
+  SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList>;
 
 export interface SkuRecommendationResultsAzureSqlVirtualMachineTargetSku {
   category?: SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategory;
@@ -4324,9 +4228,8 @@ export const ImpactedObjectsInfo = SkuRecommendationSummaryImpactedObjectsSummar
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
   Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
-export const MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList = /*@__PURE__*/ S.Array(
-  SkuRecommendationSummaryImpactedObjectsSummaryItem,
-) as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList>;
+export const MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
+  SkuRecommendationSummaryImpactedObjectsSummaryList as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList>;
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
   Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
@@ -4547,10 +4450,8 @@ export const CreateSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerLicenseRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerLicenseRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerLicenseRequestTagsMap>;
+export const CreateSqlServerLicenseRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerLicenseRequestTagsMap>;
 
 /** SQL Server license type. */
 export type SqlServerLicensePropertiesInputBillingPlan = "PAYG" | "Paid";
@@ -4629,10 +4530,8 @@ export const CreateSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSqlServerLicenseResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSqlServerLicenseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSqlServerLicenseResponseTagsMap>;
+export const CreateSqlServerLicenseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerLicenseResponseTagsMap>;
 
 /** SQL Server license type. */
 export type SqlServerLicensePropertiesBillingPlan = "PAYG" | "Paid";
@@ -4775,11 +4674,8 @@ export const DeleteDataControllerDataControllerRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteDataControllerDataControllerRequest>;
 
 export interface DeleteDataControllerDataControllerResponse {}
-export const DeleteDataControllerDataControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDataControllerDataControllerResponse",
-}) as any as S.Schema<DeleteDataControllerDataControllerResponse>;
+export const DeleteDataControllerDataControllerResponse =
+  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteDataControllerDataControllerResponse>;
 
 export interface DeleteFailoverGroupRequest {
   /** The ID of the Azure subscription */
@@ -4810,9 +4706,8 @@ export const DeleteFailoverGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFailoverGroupRequest>;
 
 export interface DeleteFailoverGroupResponse {}
-export const DeleteFailoverGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFailoverGroupResponse",
-}) as any as S.Schema<DeleteFailoverGroupResponse>;
+export const DeleteFailoverGroupResponse =
+  AvailabilityGroupStateInput as any as S.Schema<DeleteFailoverGroupResponse>;
 
 export interface DeletePostgresInstanceRequest {
   /** The ID of the Azure subscription */
@@ -4840,9 +4735,8 @@ export const DeletePostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePostgresInstanceRequest>;
 
 export interface DeletePostgresInstanceResponse {}
-export const DeletePostgresInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePostgresInstanceResponse",
-}) as any as S.Schema<DeletePostgresInstanceResponse>;
+export const DeletePostgresInstanceResponse =
+  AvailabilityGroupStateInput as any as S.Schema<DeletePostgresInstanceResponse>;
 
 export interface DeleteSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
@@ -4870,11 +4764,8 @@ export const DeleteSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlManagedInstanceRequest>;
 
 export interface DeleteSqlManagedInstanceResponse {}
-export const DeleteSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSqlManagedInstanceResponse",
-}) as any as S.Schema<DeleteSqlManagedInstanceResponse>;
+export const DeleteSqlManagedInstanceResponse =
+  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlManagedInstanceResponse>;
 
 export interface DeleteSqlServerAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4905,11 +4796,8 @@ export const DeleteSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSqlServerAvailabilityGroupRequest>;
 
 export interface DeleteSqlServerAvailabilityGroupResponse {}
-export const DeleteSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSqlServerAvailabilityGroupResponse",
-}) as any as S.Schema<DeleteSqlServerAvailabilityGroupResponse>;
+export const DeleteSqlServerAvailabilityGroupResponse =
+  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlServerAvailabilityGroupResponse>;
 
 export interface DeleteSqlServerAvailabilityGroupMiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4940,11 +4828,8 @@ export const DeleteSqlServerAvailabilityGroupMiLinkRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkRequest>;
 
 export interface DeleteSqlServerAvailabilityGroupMiLinkResponse {}
-export const DeleteSqlServerAvailabilityGroupMiLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSqlServerAvailabilityGroupMiLinkResponse",
-}) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkResponse>;
+export const DeleteSqlServerAvailabilityGroupMiLinkResponse =
+  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkResponse>;
 
 export interface DeleteSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
@@ -5005,11 +4890,8 @@ export const DeleteSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlServerEsuLicenseRequest>;
 
 export interface DeleteSqlServerEsuLicenseResponse {}
-export const DeleteSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSqlServerEsuLicenseResponse",
-}) as any as S.Schema<DeleteSqlServerEsuLicenseResponse>;
+export const DeleteSqlServerEsuLicenseResponse =
+  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlServerEsuLicenseResponse>;
 
 export interface DeleteSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
@@ -5037,9 +4919,8 @@ export const DeleteSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlServerInstanceRequest>;
 
 export interface DeleteSqlServerInstanceResponse {}
-export const DeleteSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteSqlServerInstanceResponse" },
-) as any as S.Schema<DeleteSqlServerInstanceResponse>;
+export const DeleteSqlServerInstanceResponse =
+  DeleteSqlServerDatabaseResponse as any as S.Schema<DeleteSqlServerInstanceResponse>;
 
 export interface DeleteSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
@@ -5067,9 +4948,8 @@ export const DeleteSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlServerLicenseRequest>;
 
 export interface DeleteSqlServerLicenseResponse {}
-export const DeleteSqlServerLicenseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSqlServerLicenseResponse",
-}) as any as S.Schema<DeleteSqlServerLicenseResponse>;
+export const DeleteSqlServerLicenseResponse =
+  AvailabilityGroupStateInput as any as S.Schema<DeleteSqlServerLicenseResponse>;
 
 export interface GetActiveDirectoryConnectorRequest {
   /** The ID of the Azure subscription */
@@ -5111,17 +4991,8 @@ export interface GetActiveDirectoryConnectorResponse {
   /** null */
   properties: ActiveDirectoryConnectorProperties;
 }
-export const GetActiveDirectoryConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ActiveDirectoryConnectorProperties,
-  }),
-).annotate({
-  identifier: "GetActiveDirectoryConnectorResponse",
-}) as any as S.Schema<GetActiveDirectoryConnectorResponse>;
+export const GetActiveDirectoryConnectorResponse =
+  CreateActiveDirectoryConnectorResponse as any as S.Schema<GetActiveDirectoryConnectorResponse>;
 
 export interface GetDataControllerDataControllerRequest {
   /** The ID of the Azure subscription */
@@ -5150,10 +5021,8 @@ export const GetDataControllerDataControllerRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type GetDataControllerDataControllerResponseTagsMap = { [key: string]: string | undefined };
-export const GetDataControllerDataControllerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDataControllerDataControllerResponseTagsMap>;
+export const GetDataControllerDataControllerResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetDataControllerDataControllerResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type GetDataControllerDataControllerResponseExtendedLocation =
@@ -5417,10 +5286,8 @@ export const GetPostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPostgresInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetPostgresInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPostgresInstanceResponseTagsMap>;
+export const GetPostgresInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetPostgresInstanceResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type GetPostgresInstanceResponseExtendedLocation =
@@ -5448,21 +5315,8 @@ export interface GetPostgresInstanceResponse {
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-export const GetPostgresInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetPostgresInstanceResponseTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-    properties: PostgresInstanceProperties,
-    sku: S.optional(PostgresInstanceSku),
-  }),
-).annotate({
-  identifier: "GetPostgresInstanceResponse",
-}) as any as S.Schema<GetPostgresInstanceResponse>;
+export const GetPostgresInstanceResponse =
+  CreatePostgresInstanceResponse as any as S.Schema<GetPostgresInstanceResponse>;
 
 export interface GetSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
@@ -5491,10 +5345,8 @@ export const GetSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlManagedInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlManagedInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlManagedInstanceResponseTagsMap>;
+export const GetSqlManagedInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetSqlManagedInstanceResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type GetSqlManagedInstanceResponseExtendedLocation =
@@ -5522,21 +5374,8 @@ export interface GetSqlManagedInstanceResponse {
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-export const GetSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSqlManagedInstanceResponseTagsMap),
-    location: S.String,
-    properties: SqlManagedInstanceProperties,
-    extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-    sku: S.optional(SqlManagedInstanceSku),
-  }),
-).annotate({
-  identifier: "GetSqlManagedInstanceResponse",
-}) as any as S.Schema<GetSqlManagedInstanceResponse>;
+export const GetSqlManagedInstanceResponse =
+  CreateSqlManagedInstanceResponse as any as S.Schema<GetSqlManagedInstanceResponse>;
 
 export interface GetSqlServerAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5568,10 +5407,8 @@ export const GetSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type GetSqlServerAvailabilityGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlServerAvailabilityGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlServerAvailabilityGroupResponseTagsMap>;
+export const GetSqlServerAvailabilityGroupResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetSqlServerAvailabilityGroupResponseTagsMap>;
 
 export interface GetSqlServerAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5589,19 +5426,8 @@ export interface GetSqlServerAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const GetSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSqlServerAvailabilityGroupResponseTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "GetSqlServerAvailabilityGroupResponse",
-}) as any as S.Schema<GetSqlServerAvailabilityGroupResponse>;
+export const GetSqlServerAvailabilityGroupResponse =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<GetSqlServerAvailabilityGroupResponse>;
 
 export interface GetSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
@@ -5633,10 +5459,8 @@ export const GetSqlServerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlServerDatabaseResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlServerDatabaseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlServerDatabaseResponseTagsMap>;
+export const GetSqlServerDatabaseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetSqlServerDatabaseResponseTagsMap>;
 
 export interface GetSqlServerDatabaseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5654,19 +5478,8 @@ export interface GetSqlServerDatabaseResponse {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-export const GetSqlServerDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSqlServerDatabaseResponseTagsMap),
-    location: S.String,
-    properties: SqlServerDatabaseResourceProperties,
-  }),
-).annotate({
-  identifier: "GetSqlServerDatabaseResponse",
-}) as any as S.Schema<GetSqlServerDatabaseResponse>;
+export const GetSqlServerDatabaseResponse =
+  CreateSqlServerDatabaseResponse as any as S.Schema<GetSqlServerDatabaseResponse>;
 
 export interface GetSqlServerEsuLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5695,10 +5508,8 @@ export const GetSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlServerEsuLicenseResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlServerEsuLicenseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlServerEsuLicenseResponseTagsMap>;
+export const GetSqlServerEsuLicenseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetSqlServerEsuLicenseResponseTagsMap>;
 
 export interface GetSqlServerEsuLicenseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5716,19 +5527,8 @@ export interface GetSqlServerEsuLicenseResponse {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicenseProperties;
 }
-export const GetSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSqlServerEsuLicenseResponseTagsMap),
-    location: S.String,
-    properties: SqlServerEsuLicenseProperties,
-  }),
-).annotate({
-  identifier: "GetSqlServerEsuLicenseResponse",
-}) as any as S.Schema<GetSqlServerEsuLicenseResponse>;
+export const GetSqlServerEsuLicenseResponse =
+  CreateSqlServerEsuLicenseResponse as any as S.Schema<GetSqlServerEsuLicenseResponse>;
 
 export interface GetSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
@@ -5757,10 +5557,8 @@ export const GetSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlServerInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlServerInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlServerInstanceResponseTagsMap>;
+export const GetSqlServerInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetSqlServerInstanceResponseTagsMap>;
 
 export interface GetSqlServerInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5778,19 +5576,8 @@ export interface GetSqlServerInstanceResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-export const GetSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSqlServerInstanceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlServerInstanceProperties),
-  }),
-).annotate({
-  identifier: "GetSqlServerInstanceResponse",
-}) as any as S.Schema<GetSqlServerInstanceResponse>;
+export const GetSqlServerInstanceResponse =
+  CreateSqlServerInstanceResponse as any as S.Schema<GetSqlServerInstanceResponse>;
 
 /** Filter retrieval based on availability group type. */
 export type AvailabilityGroupTypeFilter = "CONTAINED" | "DISTRIBUTED" | "DEFAULT";
@@ -5834,10 +5621,8 @@ export const GetSqlServerInstanceAllAvailabilityGroupsRequest = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type SqlServerAvailabilityGroupResourceTagsMap = { [key: string]: string | undefined };
-export const SqlServerAvailabilityGroupResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerAvailabilityGroupResourceTagsMap>;
+export const SqlServerAvailabilityGroupResourceTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerAvailabilityGroupResourceTagsMap>;
 
 /** Arc Sql Server Availability Group */
 export interface SqlServerAvailabilityGroupResource {
@@ -5856,19 +5641,8 @@ export interface SqlServerAvailabilityGroupResource {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerAvailabilityGroupResourceTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupResource",
-}) as any as S.Schema<SqlServerAvailabilityGroupResource>;
+export const SqlServerAvailabilityGroupResource =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupResource>;
 
 /** Array of Arc Sql Server Availability Groups. */
 export type ArcSqlServerAvailabilityGroupListResultValueList =
@@ -5970,9 +5744,8 @@ export const GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList = /*
 
 /** An array of values representing a row in the SQL best practices assessment results. */
 export type SqlServerInstanceBpaRow = Array<string>;
-export const SqlServerInstanceBpaRow = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SqlServerInstanceBpaRow>;
+export const SqlServerInstanceBpaRow =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<SqlServerInstanceBpaRow>;
 
 /** An array of results of the SQL best practices assessment response. */
 export type GetSqlServerInstanceBestPracticesAssessmentResponseRowsList =
@@ -6187,9 +5960,8 @@ export const GetSqlServerInstanceTelemetryRequestAggregationType = S.String;
 
 /** The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned. */
 export type GetSqlServerInstanceTelemetryRequestDatabaseNamesList = Array<string>;
-export const GetSqlServerInstanceTelemetryRequestDatabaseNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSqlServerInstanceTelemetryRequestDatabaseNamesList>;
+export const GetSqlServerInstanceTelemetryRequestDatabaseNamesList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<GetSqlServerInstanceTelemetryRequestDatabaseNamesList>;
 
 export interface GetSqlServerInstanceTelemetryRequest {
   /** The ID of the Azure subscription */
@@ -6271,15 +6043,13 @@ export const GetSqlServerInstanceTelemetryResponseColumnsList = /*@__PURE__*/ S.
 
 /** An array of values representing a telemetry row for the SQL Server instance. */
 export type SqlServerInstanceTelemetryRow = Array<string>;
-export const SqlServerInstanceTelemetryRow = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SqlServerInstanceTelemetryRow>;
+export const SqlServerInstanceTelemetryRow =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<SqlServerInstanceTelemetryRow>;
 
 /** A list of rows from the result telemetry table for the SQL Server instance. */
 export type GetSqlServerInstanceTelemetryResponseRowsList = Array<SqlServerInstanceTelemetryRow>;
-export const GetSqlServerInstanceTelemetryResponseRowsList = /*@__PURE__*/ S.Array(
-  SqlServerInstanceTelemetryRow,
-) as any as S.Schema<GetSqlServerInstanceTelemetryResponseRowsList>;
+export const GetSqlServerInstanceTelemetryResponseRowsList =
+  GetSqlServerInstanceBestPracticesAssessmentResponseRowsList as any as S.Schema<GetSqlServerInstanceTelemetryResponseRowsList>;
 
 export interface GetSqlServerInstanceTelemetryResponse {
   /** The columns of the result telemetry table for the SQL Server instance. */
@@ -6326,10 +6096,8 @@ export const GetSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlServerLicenseResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlServerLicenseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlServerLicenseResponseTagsMap>;
+export const GetSqlServerLicenseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetSqlServerLicenseResponseTagsMap>;
 
 export interface GetSqlServerLicenseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6347,19 +6115,8 @@ export interface GetSqlServerLicenseResponse {
   /** SQL Server license properties */
   properties: SqlServerLicenseProperties;
 }
-export const GetSqlServerLicenseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSqlServerLicenseResponseTagsMap),
-    location: S.String,
-    properties: SqlServerLicenseProperties,
-  }),
-).annotate({
-  identifier: "GetSqlServerLicenseResponse",
-}) as any as S.Schema<GetSqlServerLicenseResponse>;
+export const GetSqlServerLicenseResponse =
+  CreateSqlServerLicenseResponse as any as S.Schema<GetSqlServerLicenseResponse>;
 
 export interface ListActiveDirectoryConnectorsRequest {
   /** The ID of the Azure subscription */
@@ -6399,17 +6156,8 @@ export interface ActiveDirectoryConnectorResource {
   /** null */
   properties: ActiveDirectoryConnectorProperties;
 }
-export const ActiveDirectoryConnectorResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ActiveDirectoryConnectorProperties,
-  }),
-).annotate({
-  identifier: "ActiveDirectoryConnectorResource",
-}) as any as S.Schema<ActiveDirectoryConnectorResource>;
+export const ActiveDirectoryConnectorResource =
+  CreateActiveDirectoryConnectorResponse as any as S.Schema<ActiveDirectoryConnectorResource>;
 
 /** Array of results. */
 export type ListActiveDirectoryConnectorsResponseValueList =
@@ -6457,10 +6205,8 @@ export const ListDataControllerInGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DataControllerResourceTagsMap = { [key: string]: string | undefined };
-export const DataControllerResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataControllerResourceTagsMap>;
+export const DataControllerResourceTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<DataControllerResourceTagsMap>;
 
 /** The complex type of the extended location. */
 export type DataControllerResourceExtendedLocation = CreatePostgresInstanceResponseExtendedLocation;
@@ -6541,9 +6287,8 @@ export const ListDataControllerInSubscriptionRequest = /*@__PURE__*/ S.suspend((
 
 /** Array of results. */
 export type ListDataControllerInSubscriptionResponseValueList = Array<DataControllerResource>;
-export const ListDataControllerInSubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  DataControllerResource,
-) as any as S.Schema<ListDataControllerInSubscriptionResponseValueList>;
+export const ListDataControllerInSubscriptionResponseValueList =
+  ListDataControllerInGroupResponseValueList as any as S.Schema<ListDataControllerInSubscriptionResponseValueList>;
 
 export interface ListDataControllerInSubscriptionResponse {
   /** Array of results. */
@@ -6551,14 +6296,8 @@ export interface ListDataControllerInSubscriptionResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ListDataControllerInSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListDataControllerInSubscriptionResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDataControllerInSubscriptionResponse",
-}) as any as S.Schema<ListDataControllerInSubscriptionResponse>;
+export const ListDataControllerInSubscriptionResponse =
+  ListDataControllerInGroupResponse as any as S.Schema<ListDataControllerInSubscriptionResponse>;
 
 export interface ListFailoverGroupsRequest {
   /** The ID of the Azure subscription */
@@ -6598,15 +6337,8 @@ export interface FailoverGroupResource {
   /** null */
   properties: FailoverGroupProperties;
 }
-export const FailoverGroupResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FailoverGroupProperties,
-  }),
-).annotate({ identifier: "FailoverGroupResource" }) as any as S.Schema<FailoverGroupResource>;
+export const FailoverGroupResource =
+  GetFailoverGroupResponse as any as S.Schema<FailoverGroupResource>;
 
 /** Array of failover group results. */
 export type ListFailoverGroupsResponseValueList = Array<FailoverGroupResource>;
@@ -6738,10 +6470,8 @@ export const ListPostgresInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type PostgresInstanceTagsMap = { [key: string]: string | undefined };
-export const PostgresInstanceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostgresInstanceTagsMap>;
+export const PostgresInstanceTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PostgresInstanceTagsMap>;
 
 /** The complex type of the extended location. */
 export type PostgresInstanceExtendedLocation = CreatePostgresInstanceResponseExtendedLocation;
@@ -6824,9 +6554,8 @@ export const ListPostgresInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ListPostgresInstancesResponseValueList = Array<PostgresInstance>;
-export const ListPostgresInstancesResponseValueList = /*@__PURE__*/ S.Array(
-  PostgresInstance,
-) as any as S.Schema<ListPostgresInstancesResponseValueList>;
+export const ListPostgresInstancesResponseValueList =
+  ListPostgresInstanceByResourceGroupResponseValueList as any as S.Schema<ListPostgresInstancesResponseValueList>;
 
 export interface ListPostgresInstancesResponse {
   /** Array of results. */
@@ -6834,14 +6563,8 @@ export interface ListPostgresInstancesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ListPostgresInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPostgresInstancesResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPostgresInstancesResponse",
-}) as any as S.Schema<ListPostgresInstancesResponse>;
+export const ListPostgresInstancesResponse =
+  ListPostgresInstanceByResourceGroupResponse as any as S.Schema<ListPostgresInstancesResponse>;
 
 export interface ListSqlManagedInstanceByResourceGroupRequest {
   /** The ID of the Azure subscription */
@@ -6867,10 +6590,8 @@ export const ListSqlManagedInstanceByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type SqlManagedInstanceTagsMap = { [key: string]: string | undefined };
-export const SqlManagedInstanceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlManagedInstanceTagsMap>;
+export const SqlManagedInstanceTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlManagedInstanceTagsMap>;
 
 /** The complex type of the extended location. */
 export type SqlManagedInstanceExtendedLocation = CreatePostgresInstanceResponseExtendedLocation;
@@ -6953,9 +6674,8 @@ export const ListSqlManagedInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ListSqlManagedInstancesResponseValueList = Array<SqlManagedInstance>;
-export const ListSqlManagedInstancesResponseValueList = /*@__PURE__*/ S.Array(
-  SqlManagedInstance,
-) as any as S.Schema<ListSqlManagedInstancesResponseValueList>;
+export const ListSqlManagedInstancesResponseValueList =
+  ListSqlManagedInstanceByResourceGroupResponseValueList as any as S.Schema<ListSqlManagedInstancesResponseValueList>;
 
 export interface ListSqlManagedInstancesResponse {
   /** Array of results. */
@@ -6963,14 +6683,8 @@ export interface ListSqlManagedInstancesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ListSqlManagedInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListSqlManagedInstancesResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSqlManagedInstancesResponse",
-}) as any as S.Schema<ListSqlManagedInstancesResponse>;
+export const ListSqlManagedInstancesResponse =
+  ListSqlManagedInstanceByResourceGroupResponse as any as S.Schema<ListSqlManagedInstancesResponse>;
 
 export interface ListSqlServerAvailabilityGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7024,10 +6738,8 @@ export const ListSqlServerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SqlServerDatabaseResourceTagsMap = { [key: string]: string | undefined };
-export const SqlServerDatabaseResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerDatabaseResourceTagsMap>;
+export const SqlServerDatabaseResourceTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerDatabaseResourceTagsMap>;
 
 /** Arc Sql Server database */
 export interface SqlServerDatabaseResource {
@@ -7046,19 +6758,8 @@ export interface SqlServerDatabaseResource {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-export const SqlServerDatabaseResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerDatabaseResourceTagsMap),
-    location: S.String,
-    properties: SqlServerDatabaseResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerDatabaseResource",
-}) as any as S.Schema<SqlServerDatabaseResource>;
+export const SqlServerDatabaseResource =
+  CreateSqlServerDatabaseResponse as any as S.Schema<SqlServerDatabaseResource>;
 
 /** Array of Arc Sql Server database. */
 export type ArcSqlServerDatabaseListResultValueList = Array<SqlServerDatabaseResource>;
@@ -7106,10 +6807,8 @@ export const ListSqlServerEsuLicenseByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type SqlServerEsuLicenseTagsMap = { [key: string]: string | undefined };
-export const SqlServerEsuLicenseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerEsuLicenseTagsMap>;
+export const SqlServerEsuLicenseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerEsuLicenseTagsMap>;
 
 /** Describe SQL Server ESU license resource. */
 export interface SqlServerEsuLicense {
@@ -7205,10 +6904,8 @@ export const ListSqlServerInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type SqlServerInstanceTagsMap = { [key: string]: string | undefined };
-export const SqlServerInstanceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerInstanceTagsMap>;
+export const SqlServerInstanceTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerInstanceTagsMap>;
 
 /** A SqlServerInstance. */
 export interface SqlServerInstance {
@@ -7281,9 +6978,8 @@ export const ListSqlServerInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ListSqlServerInstancesResponseValueList = Array<SqlServerInstance>;
-export const ListSqlServerInstancesResponseValueList = /*@__PURE__*/ S.Array(
-  SqlServerInstance,
-) as any as S.Schema<ListSqlServerInstancesResponseValueList>;
+export const ListSqlServerInstancesResponseValueList =
+  ListSqlServerInstanceByResourceGroupResponseValueList as any as S.Schema<ListSqlServerInstancesResponseValueList>;
 
 export interface ListSqlServerInstancesResponse {
   /** Array of results. */
@@ -7291,14 +6987,8 @@ export interface ListSqlServerInstancesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ListSqlServerInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListSqlServerInstancesResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSqlServerInstancesResponse",
-}) as any as S.Schema<ListSqlServerInstancesResponse>;
+export const ListSqlServerInstancesResponse =
+  ListSqlServerInstanceByResourceGroupResponse as any as S.Schema<ListSqlServerInstancesResponse>;
 
 export interface ListSqlServerLicenseByResourceGroupRequest {
   /** The ID of the Azure subscription */
@@ -7324,10 +7014,8 @@ export const ListSqlServerLicenseByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type SqlServerLicenseTagsMap = { [key: string]: string | undefined };
-export const SqlServerLicenseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerLicenseTagsMap>;
+export const SqlServerLicenseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerLicenseTagsMap>;
 
 /** Describe SQL Server license resource. */
 export interface SqlServerLicense {
@@ -7400,9 +7088,8 @@ export const ListSqlServerLicensesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ListSqlServerLicensesResponseValueList = Array<SqlServerLicense>;
-export const ListSqlServerLicensesResponseValueList = /*@__PURE__*/ S.Array(
-  SqlServerLicense,
-) as any as S.Schema<ListSqlServerLicensesResponseValueList>;
+export const ListSqlServerLicensesResponseValueList =
+  ListSqlServerLicenseByResourceGroupResponseValueList as any as S.Schema<ListSqlServerLicensesResponseValueList>;
 
 export interface ListSqlServerLicensesResponse {
   /** Array of results. */
@@ -7410,21 +7097,13 @@ export interface ListSqlServerLicensesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export const ListSqlServerLicensesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListSqlServerLicensesResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSqlServerLicensesResponse",
-}) as any as S.Schema<ListSqlServerLicensesResponse>;
+export const ListSqlServerLicensesResponse =
+  ListSqlServerLicenseByResourceGroupResponse as any as S.Schema<ListSqlServerLicensesResponse>;
 
 /** Resource tags */
 export type PatchDataControllerDataControllerRequestTagsMap = { [key: string]: string | undefined };
-export const PatchDataControllerDataControllerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchDataControllerDataControllerRequestTagsMap>;
+export const PatchDataControllerDataControllerRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PatchDataControllerDataControllerRequestTagsMap>;
 
 /** The infrastructure the data controller is running on. */
 export type DataControllerPropertiesInputInfrastructure =
@@ -7538,10 +7217,8 @@ export const PatchDataControllerDataControllerRequest = /*@__PURE__*/ S.suspend(
 export type PatchDataControllerDataControllerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PatchDataControllerDataControllerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchDataControllerDataControllerResponseTagsMap>;
+export const PatchDataControllerDataControllerResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PatchDataControllerDataControllerResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type PatchDataControllerDataControllerResponseExtendedLocation =
@@ -7567,20 +7244,8 @@ export interface PatchDataControllerDataControllerResponse {
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
-export const PatchDataControllerDataControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PatchDataControllerDataControllerResponseTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-    properties: DataControllerProperties,
-  }),
-).annotate({
-  identifier: "PatchDataControllerDataControllerResponse",
-}) as any as S.Schema<PatchDataControllerDataControllerResponse>;
+export const PatchDataControllerDataControllerResponse =
+  GetDataControllerDataControllerResponse as any as S.Schema<PatchDataControllerDataControllerResponse>;
 
 export interface PostSqlServerInstanceUpgradeRequest {
   /** The ID of the Azure subscription */
@@ -7609,10 +7274,8 @@ export const PostSqlServerInstanceUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PostSqlServerInstanceUpgradeResponseTagsMap = { [key: string]: string | undefined };
-export const PostSqlServerInstanceUpgradeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PostSqlServerInstanceUpgradeResponseTagsMap>;
+export const PostSqlServerInstanceUpgradeResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PostSqlServerInstanceUpgradeResponseTagsMap>;
 
 export interface PostSqlServerInstanceUpgradeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7630,26 +7293,13 @@ export interface PostSqlServerInstanceUpgradeResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-export const PostSqlServerInstanceUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PostSqlServerInstanceUpgradeResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlServerInstanceProperties),
-  }),
-).annotate({
-  identifier: "PostSqlServerInstanceUpgradeResponse",
-}) as any as S.Schema<PostSqlServerInstanceUpgradeResponse>;
+export const PostSqlServerInstanceUpgradeResponse =
+  CreateSqlServerInstanceResponse as any as S.Schema<PostSqlServerInstanceUpgradeResponse>;
 
 /** Resource tags. */
 export type PutDataControllerDataControllerRequestTagsMap = { [key: string]: string | undefined };
-export const PutDataControllerDataControllerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutDataControllerDataControllerRequestTagsMap>;
+export const PutDataControllerDataControllerRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PutDataControllerDataControllerRequestTagsMap>;
 
 /** The complex type of the extended location. */
 export type PutDataControllerDataControllerRequestExtendedLocation =
@@ -7696,10 +7346,8 @@ export const PutDataControllerDataControllerRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type PutDataControllerDataControllerResponseTagsMap = { [key: string]: string | undefined };
-export const PutDataControllerDataControllerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutDataControllerDataControllerResponseTagsMap>;
+export const PutDataControllerDataControllerResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PutDataControllerDataControllerResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type PutDataControllerDataControllerResponseExtendedLocation =
@@ -7725,26 +7373,13 @@ export interface PutDataControllerDataControllerResponse {
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
-export const PutDataControllerDataControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PutDataControllerDataControllerResponseTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-    properties: DataControllerProperties,
-  }),
-).annotate({
-  identifier: "PutDataControllerDataControllerResponse",
-}) as any as S.Schema<PutDataControllerDataControllerResponse>;
+export const PutDataControllerDataControllerResponse =
+  GetDataControllerDataControllerResponse as any as S.Schema<PutDataControllerDataControllerResponse>;
 
 /** List of database names. */
 export type RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList = Array<string>;
-export const RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList>;
+export const RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList>;
 
 export interface RemoveSqlServerAvailabilityGroupDatabasesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7781,10 +7416,8 @@ export const RemoveSqlServerAvailabilityGroupDatabasesRequest = /*@__PURE__*/ S.
 export type RemoveSqlServerAvailabilityGroupDatabasesResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const RemoveSqlServerAvailabilityGroupDatabasesResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponseTagsMap>;
+export const RemoveSqlServerAvailabilityGroupDatabasesResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponseTagsMap>;
 
 export interface RemoveSqlServerAvailabilityGroupDatabasesResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7802,19 +7435,8 @@ export interface RemoveSqlServerAvailabilityGroupDatabasesResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const RemoveSqlServerAvailabilityGroupDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RemoveSqlServerAvailabilityGroupDatabasesResponseTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "RemoveSqlServerAvailabilityGroupDatabasesResponse",
-}) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponse>;
+export const RemoveSqlServerAvailabilityGroupDatabasesResponse =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponse>;
 
 export interface RunSqlServerInstanceBestPracticesAssessmentRequest {
   /** The ID of the Azure subscription */
@@ -7897,9 +7519,7 @@ export const RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAzureManage
 export type RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList =
   Array<string>;
 export const RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList>;
+  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList>;
 
 /** Validation category for the MI Link prerequisites assessment. */
 export type MiLinkAssessmentCategory =
@@ -7985,9 +7605,8 @@ export const SqlServerInstanceManagedInstanceLinkAssessmentStatus = S.String;
 
 /** List of names of databases that are failing the given assessment. */
 export type SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList = Array<string>;
-export const SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList>;
+export const SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList =
+  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList>;
 
 /** The status of an individual requirement for MI Link. */
 export interface SqlServerInstanceManagedInstanceLinkAssessment {
@@ -8076,9 +7695,7 @@ export const RunSqlServerInstanceMigrationAssessmentResponseJobStatus = S.String
 export type RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList =
   Array<SequencerAction>;
 export const RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList =
-  /*@__PURE__*/ S.Array(
-    SequencerAction,
-  ) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList>;
+  RunSqlServerInstanceBestPracticesAssessmentResponseSequencerActionsList as any as S.Schema<RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList>;
 
 export interface RunSqlServerInstanceMigrationAssessmentResponse {
   /** The unique identifier of the job. */
@@ -8141,10 +7758,8 @@ export const SqlServerAvailabilityGroupsDetailViewRequest = /*@__PURE__*/ S.susp
 export type SqlServerAvailabilityGroupsDetailViewResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlServerAvailabilityGroupsDetailViewResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponseTagsMap>;
+export const SqlServerAvailabilityGroupsDetailViewResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponseTagsMap>;
 
 export interface SqlServerAvailabilityGroupsDetailViewResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8162,19 +7777,8 @@ export interface SqlServerAvailabilityGroupsDetailViewResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupsDetailViewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerAvailabilityGroupsDetailViewResponseTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsDetailViewResponse",
-}) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>;
+export const SqlServerAvailabilityGroupsDetailViewResponse =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>;
 
 export interface SqlServerAvailabilityGroupsFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8208,10 +7812,8 @@ export const SqlServerAvailabilityGroupsFailoverRequest = /*@__PURE__*/ S.suspen
 export type SqlServerAvailabilityGroupsFailoverResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlServerAvailabilityGroupsFailoverResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponseTagsMap>;
+export const SqlServerAvailabilityGroupsFailoverResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponseTagsMap>;
 
 export interface SqlServerAvailabilityGroupsFailoverResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8229,19 +7831,8 @@ export interface SqlServerAvailabilityGroupsFailoverResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupsFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerAvailabilityGroupsFailoverResponseTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsFailoverResponse",
-}) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>;
+export const SqlServerAvailabilityGroupsFailoverResponse =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>;
 
 export interface SqlServerAvailabilityGroupsFailoverMiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8281,10 +7872,8 @@ export const SqlServerAvailabilityGroupsFailoverMiLinkRequest = /*@__PURE__*/ S.
 export type SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap>;
+export const SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap>;
 
 export interface SqlServerAvailabilityGroupsFailoverMiLinkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8302,19 +7891,8 @@ export interface SqlServerAvailabilityGroupsFailoverMiLinkResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const SqlServerAvailabilityGroupsFailoverMiLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "SqlServerAvailabilityGroupsFailoverMiLinkResponse",
-}) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>;
+export const SqlServerAvailabilityGroupsFailoverMiLinkResponse =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>;
 
 export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8350,10 +7928,7 @@ export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap
   [key: string]: string | undefined;
 };
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap>;
+  CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap>;
 
 export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8372,19 +7947,7 @@ export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse {
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap),
-      location: S.String,
-      properties: SqlServerAvailabilityGroupResourceProperties,
-    }),
-  ).annotate({
-    identifier: "SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse",
-  }) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse>;
+  CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse>;
 
 export interface SqlServerInstancesPreUpgradeRequest {
   /** The ID of the Azure subscription */
@@ -8413,10 +7976,8 @@ export const SqlServerInstancesPreUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SqlServerInstancesPreUpgradeResponseTagsMap = { [key: string]: string | undefined };
-export const SqlServerInstancesPreUpgradeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlServerInstancesPreUpgradeResponseTagsMap>;
+export const SqlServerInstancesPreUpgradeResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerInstancesPreUpgradeResponseTagsMap>;
 
 export interface SqlServerInstancesPreUpgradeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8434,26 +7995,13 @@ export interface SqlServerInstancesPreUpgradeResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-export const SqlServerInstancesPreUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlServerInstancesPreUpgradeResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlServerInstanceProperties),
-  }),
-).annotate({
-  identifier: "SqlServerInstancesPreUpgradeResponse",
-}) as any as S.Schema<SqlServerInstancesPreUpgradeResponse>;
+export const SqlServerInstancesPreUpgradeResponse =
+  CreateSqlServerInstanceResponse as any as S.Schema<SqlServerInstancesPreUpgradeResponse>;
 
 /** Resource tags. */
 export type UpdatePostgresInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePostgresInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePostgresInstanceRequestTagsMap>;
+export const UpdatePostgresInstanceRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdatePostgresInstanceRequestTagsMap>;
 
 export interface UpdatePostgresInstanceRequest {
   /** The ID of the Azure subscription */
@@ -8487,10 +8035,8 @@ export const UpdatePostgresInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePostgresInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePostgresInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePostgresInstanceResponseTagsMap>;
+export const UpdatePostgresInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdatePostgresInstanceResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type UpdatePostgresInstanceResponseExtendedLocation =
@@ -8518,28 +8064,13 @@ export interface UpdatePostgresInstanceResponse {
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-export const UpdatePostgresInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdatePostgresInstanceResponseTagsMap),
-    location: S.String,
-    extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-    properties: PostgresInstanceProperties,
-    sku: S.optional(PostgresInstanceSku),
-  }),
-).annotate({
-  identifier: "UpdatePostgresInstanceResponse",
-}) as any as S.Schema<UpdatePostgresInstanceResponse>;
+export const UpdatePostgresInstanceResponse =
+  CreatePostgresInstanceResponse as any as S.Schema<UpdatePostgresInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateSqlManagedInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlManagedInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlManagedInstanceRequestTagsMap>;
+export const UpdateSqlManagedInstanceRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlManagedInstanceRequestTagsMap>;
 
 export interface UpdateSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
@@ -8571,10 +8102,8 @@ export const UpdateSqlManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlManagedInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlManagedInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlManagedInstanceResponseTagsMap>;
+export const UpdateSqlManagedInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlManagedInstanceResponseTagsMap>;
 
 /** The complex type of the extended location. */
 export type UpdateSqlManagedInstanceResponseExtendedLocation =
@@ -8602,28 +8131,13 @@ export interface UpdateSqlManagedInstanceResponse {
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-export const UpdateSqlManagedInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlManagedInstanceResponseTagsMap),
-    location: S.String,
-    properties: SqlManagedInstanceProperties,
-    extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-    sku: S.optional(SqlManagedInstanceSku),
-  }),
-).annotate({
-  identifier: "UpdateSqlManagedInstanceResponse",
-}) as any as S.Schema<UpdateSqlManagedInstanceResponse>;
+export const UpdateSqlManagedInstanceResponse =
+  CreateSqlManagedInstanceResponse as any as S.Schema<UpdateSqlManagedInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateSqlServerAvailabilityGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerAvailabilityGroupRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerAvailabilityGroupRequestTagsMap>;
+export const UpdateSqlServerAvailabilityGroupRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerAvailabilityGroupRequestTagsMap>;
 
 export interface UpdateSqlServerAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8661,10 +8175,8 @@ export const UpdateSqlServerAvailabilityGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type UpdateSqlServerAvailabilityGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerAvailabilityGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerAvailabilityGroupResponseTagsMap>;
+export const UpdateSqlServerAvailabilityGroupResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerAvailabilityGroupResponseTagsMap>;
 
 export interface UpdateSqlServerAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8682,26 +8194,13 @@ export interface UpdateSqlServerAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-export const UpdateSqlServerAvailabilityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlServerAvailabilityGroupResponseTagsMap),
-    location: S.String,
-    properties: SqlServerAvailabilityGroupResourceProperties,
-  }),
-).annotate({
-  identifier: "UpdateSqlServerAvailabilityGroupResponse",
-}) as any as S.Schema<UpdateSqlServerAvailabilityGroupResponse>;
+export const UpdateSqlServerAvailabilityGroupResponse =
+  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<UpdateSqlServerAvailabilityGroupResponse>;
 
 /** Resource tags. */
 export type UpdateSqlServerDatabaseRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerDatabaseRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerDatabaseRequestTagsMap>;
+export const UpdateSqlServerDatabaseRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerDatabaseRequestTagsMap>;
 
 export interface UpdateSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
@@ -8739,10 +8238,8 @@ export const UpdateSqlServerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlServerDatabaseResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerDatabaseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerDatabaseResponseTagsMap>;
+export const UpdateSqlServerDatabaseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerDatabaseResponseTagsMap>;
 
 export interface UpdateSqlServerDatabaseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8760,26 +8257,13 @@ export interface UpdateSqlServerDatabaseResponse {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-export const UpdateSqlServerDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlServerDatabaseResponseTagsMap),
-    location: S.String,
-    properties: SqlServerDatabaseResourceProperties,
-  }),
-).annotate({
-  identifier: "UpdateSqlServerDatabaseResponse",
-}) as any as S.Schema<UpdateSqlServerDatabaseResponse>;
+export const UpdateSqlServerDatabaseResponse =
+  CreateSqlServerDatabaseResponse as any as S.Schema<UpdateSqlServerDatabaseResponse>;
 
 /** Resource tags. */
 export type UpdateSqlServerEsuLicenseRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerEsuLicenseRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerEsuLicenseRequestTagsMap>;
+export const UpdateSqlServerEsuLicenseRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerEsuLicenseRequestTagsMap>;
 
 /** SQL Server ESU license type. */
 export type SqlServerEsuLicenseUpdatePropertiesInputBillingPlan = "PAYG";
@@ -8861,10 +8345,8 @@ export const UpdateSqlServerEsuLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlServerEsuLicenseResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerEsuLicenseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerEsuLicenseResponseTagsMap>;
+export const UpdateSqlServerEsuLicenseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerEsuLicenseResponseTagsMap>;
 
 export interface UpdateSqlServerEsuLicenseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8882,26 +8364,13 @@ export interface UpdateSqlServerEsuLicenseResponse {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicenseProperties;
 }
-export const UpdateSqlServerEsuLicenseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlServerEsuLicenseResponseTagsMap),
-    location: S.String,
-    properties: SqlServerEsuLicenseProperties,
-  }),
-).annotate({
-  identifier: "UpdateSqlServerEsuLicenseResponse",
-}) as any as S.Schema<UpdateSqlServerEsuLicenseResponse>;
+export const UpdateSqlServerEsuLicenseResponse =
+  CreateSqlServerEsuLicenseResponse as any as S.Schema<UpdateSqlServerEsuLicenseResponse>;
 
 /** Resource tags. */
 export type UpdateSqlServerInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerInstanceRequestTagsMap>;
+export const UpdateSqlServerInstanceRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerInstanceRequestTagsMap>;
 
 /** SQL Server version. */
 export type SqlServerInstanceUpdatePropertiesInputVersion =
@@ -9041,10 +8510,8 @@ export const UpdateSqlServerInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlServerInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerInstanceResponseTagsMap>;
+export const UpdateSqlServerInstanceResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerInstanceResponseTagsMap>;
 
 export interface UpdateSqlServerInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9062,26 +8529,13 @@ export interface UpdateSqlServerInstanceResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-export const UpdateSqlServerInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlServerInstanceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlServerInstanceProperties),
-  }),
-).annotate({
-  identifier: "UpdateSqlServerInstanceResponse",
-}) as any as S.Schema<UpdateSqlServerInstanceResponse>;
+export const UpdateSqlServerInstanceResponse =
+  CreateSqlServerInstanceResponse as any as S.Schema<UpdateSqlServerInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateSqlServerLicenseRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerLicenseRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerLicenseRequestTagsMap>;
+export const UpdateSqlServerLicenseRequestTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerLicenseRequestTagsMap>;
 
 /** SQL Server license type. */
 export type SqlServerLicenseUpdatePropertiesInputBillingPlan = "PAYG" | "Paid";
@@ -9160,10 +8614,8 @@ export const UpdateSqlServerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlServerLicenseResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlServerLicenseResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlServerLicenseResponseTagsMap>;
+export const UpdateSqlServerLicenseResponseTagsMap =
+  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerLicenseResponseTagsMap>;
 
 export interface UpdateSqlServerLicenseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9181,19 +8633,8 @@ export interface UpdateSqlServerLicenseResponse {
   /** SQL Server license properties */
   properties: SqlServerLicenseProperties;
 }
-export const UpdateSqlServerLicenseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlServerLicenseResponseTagsMap),
-    location: S.String,
-    properties: SqlServerLicenseProperties,
-  }),
-).annotate({
-  identifier: "UpdateSqlServerLicenseResponse",
-}) as any as S.Schema<UpdateSqlServerLicenseResponse>;
+export const UpdateSqlServerLicenseResponse =
+  CreateSqlServerLicenseResponse as any as S.Schema<UpdateSqlServerLicenseResponse>;
 
 export type AddSqlServerAvailabilityGroupDatabasesError = AzureOpError;
 /** Request adding database(s) to an existing availability group. */

@@ -572,9 +572,8 @@ export const CancelActionRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelActionRunRequest" }) as any as S.Schema<CancelActionRunRequest>;
 
 export interface CancelActionRunResponse {}
-export const CancelActionRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelActionRunResponse",
-}) as any as S.Schema<CancelActionRunResponse>;
+export const CancelActionRunResponse =
+  AcceptRepoTransferResponse as any as S.Schema<CancelActionRunResponse>;
 
 export interface ConvertRepoRequest {
   /** owner of the repo to convert */
@@ -666,9 +665,7 @@ export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateForkRequest" }) as any as S.Schema<CreateForkRequest>;
 
 export interface CreateForkResponse {}
-export const CreateForkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateForkResponse",
-}) as any as S.Schema<CreateForkResponse>;
+export const CreateForkResponse = AcceptRepoTransferResponse as any as S.Schema<CreateForkResponse>;
 
 export interface CreateRepoVariableRequest {
   /** name of the owner */
@@ -698,9 +695,8 @@ export const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRepoVariableRequest>;
 
 export interface CreateRepoVariableResponse {}
-export const CreateRepoVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateRepoVariableResponse",
-}) as any as S.Schema<CreateRepoVariableResponse>;
+export const CreateRepoVariableResponse =
+  AcceptRepoTransferResponse as any as S.Schema<CreateRepoVariableResponse>;
 
 export interface DeleteActionArtifactRequest {
   /** owner of the repo */
@@ -727,9 +723,8 @@ export const DeleteActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteActionArtifactRequest>;
 
 export interface DeleteActionArtifactResponse {}
-export const DeleteActionArtifactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteActionArtifactResponse",
-}) as any as S.Schema<DeleteActionArtifactResponse>;
+export const DeleteActionArtifactResponse =
+  AcceptRepoTransferResponse as any as S.Schema<DeleteActionArtifactResponse>;
 
 export interface DeleteActionRunRequest {
   /** owner of the repo */
@@ -750,9 +745,8 @@ export const DeleteActionRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteActionRunRequest" }) as any as S.Schema<DeleteActionRunRequest>;
 
 export interface DeleteActionRunResponse {}
-export const DeleteActionRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteActionRunResponse",
-}) as any as S.Schema<DeleteActionRunResponse>;
+export const DeleteActionRunResponse =
+  AcceptRepoTransferResponse as any as S.Schema<DeleteActionRunResponse>;
 
 export interface DeleteRepoRequest {
   /** owner of the repo to delete */
@@ -768,9 +762,7 @@ export const DeleteRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoRequest" }) as any as S.Schema<DeleteRepoRequest>;
 
 export interface DeleteRepoResponse {}
-export const DeleteRepoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoResponse",
-}) as any as S.Schema<DeleteRepoResponse>;
+export const DeleteRepoResponse = AcceptRepoTransferResponse as any as S.Schema<DeleteRepoResponse>;
 
 export interface DeleteRepoRunnerRequest {
   /** owner of the repo */
@@ -795,9 +787,8 @@ export const DeleteRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoRunnerRequest" }) as any as S.Schema<DeleteRepoRunnerRequest>;
 
 export interface DeleteRepoRunnerResponse {}
-export const DeleteRepoRunnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoRunnerResponse",
-}) as any as S.Schema<DeleteRepoRunnerResponse>;
+export const DeleteRepoRunnerResponse =
+  AcceptRepoTransferResponse as any as S.Schema<DeleteRepoRunnerResponse>;
 
 export interface DeleteRepoSecretRequest {
   /** owner of the repository */
@@ -822,9 +813,8 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoSecretResponse",
-}) as any as S.Schema<DeleteRepoSecretResponse>;
+export const DeleteRepoSecretResponse =
+  AcceptRepoTransferResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface DeleteRepoVariableRequest {
   /** name of the owner */
@@ -851,16 +841,13 @@ export const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepoVariableRequest>;
 
 export interface DeleteRepoVariableResponse {}
-export const DeleteRepoVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoVariableResponse",
-}) as any as S.Schema<DeleteRepoVariableResponse>;
+export const DeleteRepoVariableResponse =
+  AcceptRepoTransferResponse as any as S.Schema<DeleteRepoVariableResponse>;
 
 /** Input keys and values configured in the workflow file. */
 export type DispatchWorkflowRequestInputsMap = { [key: string]: string | undefined };
-export const DispatchWorkflowRequestInputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DispatchWorkflowRequestInputsMap>;
+export const DispatchWorkflowRequestInputsMap =
+  TeamUnitsMapMap as any as S.Schema<DispatchWorkflowRequestInputsMap>;
 
 export interface DispatchWorkflowRequest {
   /** owner of the repo */
@@ -895,9 +882,8 @@ export const DispatchWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the jobs name */
 export type DispatchWorkflowRunJobsList = Array<string>;
-export const DispatchWorkflowRunJobsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DispatchWorkflowRunJobsList>;
+export const DispatchWorkflowRunJobsList =
+  RepositoryTopicsList as any as S.Schema<DispatchWorkflowRunJobsList>;
 
 /** DispatchWorkflowRun represents a workflow run */
 export interface DispatchWorkflowRun {
@@ -941,9 +927,8 @@ export const DownloadActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadActionArtifactRequest>;
 
 export interface DownloadActionArtifactResponse {}
-export const DownloadActionArtifactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadActionArtifactResponse",
-}) as any as S.Schema<DownloadActionArtifactResponse>;
+export const DownloadActionArtifactResponse =
+  AcceptRepoTransferResponse as any as S.Schema<DownloadActionArtifactResponse>;
 
 export interface EditRepoRequest {
   /** owner of the repo to edit */
@@ -1409,9 +1394,8 @@ export const GetRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
-export const ActionRunnerLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunnerLabelsList>;
+export const ActionRunnerLabelsList =
+  RepositoryTopicsList as any as S.Schema<ActionRunnerLabelsList>;
 
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
@@ -1702,16 +1686,12 @@ export const ListActionRunArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListActionRunArtifactsRequest>;
 
 export type ListActionRunArtifactsResponseBodyList = Array<ActionArtifact>;
-export const ListActionRunArtifactsResponseBodyList = /*@__PURE__*/ S.Array(
-  ActionArtifact,
-) as any as S.Schema<ListActionRunArtifactsResponseBodyList>;
+export const ListActionRunArtifactsResponseBodyList =
+  ListActionArtifactsResponseBodyList as any as S.Schema<ListActionRunArtifactsResponseBodyList>;
 
 export type ListActionRunArtifactsResponse = ListActionRunArtifactsResponseBodyList;
-export const ListActionRunArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListActionRunArtifactsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListActionRunArtifactsResponse",
-}) as any as S.Schema<ListActionRunArtifactsResponse>;
+export const ListActionRunArtifactsResponse =
+  ListActionArtifactsResponse as any as S.Schema<ListActionRunArtifactsResponse>;
 
 export interface ListActionRunJobsRequest {
   /** owner of the repo */
@@ -1733,15 +1713,12 @@ export const ListActionRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-export const ActionRunJobNeedsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobNeedsList>;
+export const ActionRunJobNeedsList = RepositoryTopicsList as any as S.Schema<ActionRunJobNeedsList>;
 
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-export const ActionRunJobRunsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobRunsOnList>;
+export const ActionRunJobRunsOnList =
+  RepositoryTopicsList as any as S.Schema<ActionRunJobRunsOnList>;
 
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
@@ -1797,9 +1774,8 @@ export const ListActionRunJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListActionRunJobsResponse>;
 
 export type ListActionRunsRequestEventList = Array<string>;
-export const ListActionRunsRequestEventList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListActionRunsRequestEventList>;
+export const ListActionRunsRequestEventList =
+  RepositoryTopicsList as any as S.Schema<ListActionRunsRequestEventList>;
 
 export type ListActionRunsRequestStatusItem =
   | "unknown"
@@ -2133,9 +2109,8 @@ export const RepoAddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoAddCollaboratorRequest>;
 
 export interface RepoAddCollaboratorResponse {}
-export const RepoAddCollaboratorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoAddCollaboratorResponse",
-}) as any as S.Schema<RepoAddCollaboratorResponse>;
+export const RepoAddCollaboratorResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoAddCollaboratorResponse>;
 
 export interface RepoAddFlagRequest {
   /** owner of the repo */
@@ -2154,9 +2129,8 @@ export const RepoAddFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoAddFlagRequest" }) as any as S.Schema<RepoAddFlagRequest>;
 
 export interface RepoAddFlagResponse {}
-export const RepoAddFlagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoAddFlagResponse",
-}) as any as S.Schema<RepoAddFlagResponse>;
+export const RepoAddFlagResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoAddFlagResponse>;
 
 export interface RepoAddPushMirrorRequest {
   /** owner of the repo */
@@ -2230,9 +2204,8 @@ export const RepoAddTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoAddTeamRequest" }) as any as S.Schema<RepoAddTeamRequest>;
 
 export interface RepoAddTeamResponse {}
-export const RepoAddTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoAddTeamResponse",
-}) as any as S.Schema<RepoAddTeamResponse>;
+export const RepoAddTeamResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoAddTeamResponse>;
 
 export interface RepoAddTopicRequest {
   /** owner of the repo */
@@ -2251,9 +2224,8 @@ export const RepoAddTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoAddTopicRequest" }) as any as S.Schema<RepoAddTopicRequest>;
 
 export interface RepoAddTopicResponse {}
-export const RepoAddTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoAddTopicResponse",
-}) as any as S.Schema<RepoAddTopicResponse>;
+export const RepoAddTopicResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoAddTopicResponse>;
 
 /** Identity for a person's identity like an author or committer */
 export interface Identity {
@@ -2577,9 +2549,8 @@ export const RepoCheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCheckCollaboratorRequest>;
 
 export interface RepoCheckCollaboratorResponse {}
-export const RepoCheckCollaboratorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoCheckCollaboratorResponse",
-}) as any as S.Schema<RepoCheckCollaboratorResponse>;
+export const RepoCheckCollaboratorResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoCheckCollaboratorResponse>;
 
 export interface RepoCheckFlagRequest {
   /** owner of the repo */
@@ -2598,9 +2569,8 @@ export const RepoCheckFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoCheckFlagRequest" }) as any as S.Schema<RepoCheckFlagRequest>;
 
 export interface RepoCheckFlagResponse {}
-export const RepoCheckFlagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoCheckFlagResponse",
-}) as any as S.Schema<RepoCheckFlagResponse>;
+export const RepoCheckFlagResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoCheckFlagResponse>;
 
 export interface RepoCheckTeamRequest {
   /** owner of the repo */
@@ -2671,9 +2641,8 @@ export const CommitFilesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CommitFilesList>;
 
 export type CommitParentsList = Array<CommitMeta>;
-export const CommitParentsList = /*@__PURE__*/ S.Array(
-  CommitMeta,
-) as any as S.Schema<CommitParentsList>;
+export const CommitParentsList =
+  FileCommitResponseParentsList as any as S.Schema<CommitParentsList>;
 
 /** CommitStats is statistics for a RepoCommit */
 export interface CommitStats {
@@ -2722,9 +2691,7 @@ export const CompareCommitsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CompareCommitsList>;
 
 export type CompareFilesList = Array<CommitAffectedFiles>;
-export const CompareFilesList = /*@__PURE__*/ S.Array(
-  CommitAffectedFiles,
-) as any as S.Schema<CompareFilesList>;
+export const CompareFilesList = CommitFilesList as any as S.Schema<CompareFilesList>;
 
 export interface Compare {
   commits?: CompareCommitsList;
@@ -2762,19 +2729,16 @@ export const RepoCreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoCreateBranchRequest" }) as any as S.Schema<RepoCreateBranchRequest>;
 
 export type PayloadCommitAddedList = Array<string>;
-export const PayloadCommitAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PayloadCommitAddedList>;
+export const PayloadCommitAddedList =
+  RepositoryTopicsList as any as S.Schema<PayloadCommitAddedList>;
 
 export type PayloadCommitModifiedList = Array<string>;
-export const PayloadCommitModifiedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PayloadCommitModifiedList>;
+export const PayloadCommitModifiedList =
+  RepositoryTopicsList as any as S.Schema<PayloadCommitModifiedList>;
 
 export type PayloadCommitRemovedList = Array<string>;
-export const PayloadCommitRemovedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PayloadCommitRemovedList>;
+export const PayloadCommitRemovedList =
+  RepositoryTopicsList as any as S.Schema<PayloadCommitRemovedList>;
 
 /** PayloadCommit represents a commit */
 export interface PayloadCommit {
@@ -2806,9 +2770,8 @@ export const PayloadCommit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayloadCommit" }) as any as S.Schema<PayloadCommit>;
 
 export type BranchStatusCheckContextsList = Array<string>;
-export const BranchStatusCheckContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchStatusCheckContextsList>;
+export const BranchStatusCheckContextsList =
+  RepositoryTopicsList as any as S.Schema<BranchStatusCheckContextsList>;
 
 /** Branch represents a repository branch */
 export interface Branch {
@@ -2837,9 +2800,8 @@ export const Branch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Branch" }) as any as S.Schema<Branch>;
 
 export type RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList = Array<string>;
-export const RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList>;
+export const RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList>;
 
 export type RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList = Array<string>;
 export const RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList =
@@ -2848,29 +2810,24 @@ export const RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList =
   ) as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList>;
 
 export type RepoCreateBranchProtectionRequestMergeWhitelistTeamsList = Array<string>;
-export const RepoCreateBranchProtectionRequestMergeWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistTeamsList>;
+export const RepoCreateBranchProtectionRequestMergeWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistTeamsList>;
 
 export type RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList = Array<string>;
-export const RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList>;
+export const RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList>;
 
 export type RepoCreateBranchProtectionRequestPushWhitelistTeamsList = Array<string>;
-export const RepoCreateBranchProtectionRequestPushWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistTeamsList>;
+export const RepoCreateBranchProtectionRequestPushWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistTeamsList>;
 
 export type RepoCreateBranchProtectionRequestPushWhitelistUsernamesList = Array<string>;
-export const RepoCreateBranchProtectionRequestPushWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistUsernamesList>;
+export const RepoCreateBranchProtectionRequestPushWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistUsernamesList>;
 
 export type RepoCreateBranchProtectionRequestStatusCheckContextsList = Array<string>;
-export const RepoCreateBranchProtectionRequestStatusCheckContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateBranchProtectionRequestStatusCheckContextsList>;
+export const RepoCreateBranchProtectionRequestStatusCheckContextsList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestStatusCheckContextsList>;
 
 export interface RepoCreateBranchProtectionRequest {
   /** owner of the repo */
@@ -2947,39 +2904,32 @@ export const RepoCreateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCreateBranchProtectionRequest>;
 
 export type BranchProtectionApprovalsWhitelistTeamsList = Array<string>;
-export const BranchProtectionApprovalsWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchProtectionApprovalsWhitelistTeamsList>;
+export const BranchProtectionApprovalsWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<BranchProtectionApprovalsWhitelistTeamsList>;
 
 export type BranchProtectionApprovalsWhitelistUsernameList = Array<string>;
-export const BranchProtectionApprovalsWhitelistUsernameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchProtectionApprovalsWhitelistUsernameList>;
+export const BranchProtectionApprovalsWhitelistUsernameList =
+  RepositoryTopicsList as any as S.Schema<BranchProtectionApprovalsWhitelistUsernameList>;
 
 export type BranchProtectionMergeWhitelistTeamsList = Array<string>;
-export const BranchProtectionMergeWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchProtectionMergeWhitelistTeamsList>;
+export const BranchProtectionMergeWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<BranchProtectionMergeWhitelistTeamsList>;
 
 export type BranchProtectionMergeWhitelistUsernamesList = Array<string>;
-export const BranchProtectionMergeWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchProtectionMergeWhitelistUsernamesList>;
+export const BranchProtectionMergeWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<BranchProtectionMergeWhitelistUsernamesList>;
 
 export type BranchProtectionPushWhitelistTeamsList = Array<string>;
-export const BranchProtectionPushWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchProtectionPushWhitelistTeamsList>;
+export const BranchProtectionPushWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<BranchProtectionPushWhitelistTeamsList>;
 
 export type BranchProtectionPushWhitelistUsernamesList = Array<string>;
-export const BranchProtectionPushWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchProtectionPushWhitelistUsernamesList>;
+export const BranchProtectionPushWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<BranchProtectionPushWhitelistUsernamesList>;
 
 export type BranchProtectionStatusCheckContextsList = Array<string>;
-export const BranchProtectionStatusCheckContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchProtectionStatusCheckContextsList>;
+export const BranchProtectionStatusCheckContextsList =
+  RepositoryTopicsList as any as S.Schema<BranchProtectionStatusCheckContextsList>;
 
 /** BranchProtection represents a branch protection for a repository */
 export interface BranchProtection {
@@ -3086,15 +3036,11 @@ export const RepoCreateFileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** CreateHookOptionConfig has all config options in it required are "content_type" and "url" Required */
 export type CreateHookOptionConfig = { [key: string]: string | undefined };
-export const CreateHookOptionConfig = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateHookOptionConfig>;
+export const CreateHookOptionConfig = TeamUnitsMapMap as any as S.Schema<CreateHookOptionConfig>;
 
 export type RepoCreateHookRequestEventsList = Array<string>;
-export const RepoCreateHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateHookRequestEventsList>;
+export const RepoCreateHookRequestEventsList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateHookRequestEventsList>;
 
 export type RepoCreateHookRequestType =
   | "forgejo"
@@ -3137,13 +3083,10 @@ export const RepoCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-export const HookConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HookConfigMap>;
+export const HookConfigMap = TeamUnitsMapMap as any as S.Schema<HookConfigMap>;
 
 export type HookEventsList = Array<string>;
-export const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
+export const HookEventsList = TeamUnitsList as any as S.Schema<HookEventsList>;
 
 /** Hook a hook is a web hook when one repository changed */
 export interface Hook {
@@ -3227,9 +3170,8 @@ export const DeployKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployKey" }) as any as S.Schema<DeployKey>;
 
 export type RepoCreatePullRequestRequestAssigneesList = Array<string>;
-export const RepoCreatePullRequestRequestAssigneesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreatePullRequestRequestAssigneesList>;
+export const RepoCreatePullRequestRequestAssigneesList =
+  RepositoryTopicsList as any as S.Schema<RepoCreatePullRequestRequestAssigneesList>;
 
 export type RepoCreatePullRequestRequestLabelsList = Array<number>;
 export const RepoCreatePullRequestRequestLabelsList = /*@__PURE__*/ S.Array(
@@ -3348,14 +3290,12 @@ export const Milestone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Milestone" }) as any as S.Schema<Milestone>;
 
 export type PullRequestRequestedReviewersList = Array<User>;
-export const PullRequestRequestedReviewersList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<PullRequestRequestedReviewersList>;
+export const PullRequestRequestedReviewersList =
+  PullRequestAssigneesList as any as S.Schema<PullRequestRequestedReviewersList>;
 
 export type PullRequestRequestedReviewersTeamsList = Array<Team>;
-export const PullRequestRequestedReviewersTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<PullRequestRequestedReviewersTeamsList>;
+export const PullRequestRequestedReviewersTeamsList =
+  RepoTransferTeamsList as any as S.Schema<PullRequestRequestedReviewersTeamsList>;
 
 /** PullRequest represents a pull request */
 export interface PullRequest {
@@ -3616,14 +3556,12 @@ export const PullReviewComment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullReviewComment" }) as any as S.Schema<PullReviewComment>;
 
 export type RepoCreatePullReviewRequestsRequestReviewersList = Array<string>;
-export const RepoCreatePullReviewRequestsRequestReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreatePullReviewRequestsRequestReviewersList>;
+export const RepoCreatePullReviewRequestsRequestReviewersList =
+  RepositoryTopicsList as any as S.Schema<RepoCreatePullReviewRequestsRequestReviewersList>;
 
 export type RepoCreatePullReviewRequestsRequestTeamReviewersList = Array<string>;
-export const RepoCreatePullReviewRequestsRequestTeamReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreatePullReviewRequestsRequestTeamReviewersList>;
+export const RepoCreatePullReviewRequestsRequestTeamReviewersList =
+  RepositoryTopicsList as any as S.Schema<RepoCreatePullReviewRequestsRequestTeamReviewersList>;
 
 export interface RepoCreatePullReviewRequestsRequest {
   /** owner of the repo */
@@ -3881,14 +3819,12 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type RepoCreateTagProtectionRequestWhitelistTeamsList = Array<string>;
-export const RepoCreateTagProtectionRequestWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateTagProtectionRequestWhitelistTeamsList>;
+export const RepoCreateTagProtectionRequestWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateTagProtectionRequestWhitelistTeamsList>;
 
 export type RepoCreateTagProtectionRequestWhitelistUsernamesList = Array<string>;
-export const RepoCreateTagProtectionRequestWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoCreateTagProtectionRequestWhitelistUsernamesList>;
+export const RepoCreateTagProtectionRequestWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<RepoCreateTagProtectionRequestWhitelistUsernamesList>;
 
 export interface RepoCreateTagProtectionRequest {
   /** owner of the repo */
@@ -3912,14 +3848,12 @@ export const RepoCreateTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCreateTagProtectionRequest>;
 
 export type TagProtectionWhitelistTeamsList = Array<string>;
-export const TagProtectionWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TagProtectionWhitelistTeamsList>;
+export const TagProtectionWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<TagProtectionWhitelistTeamsList>;
 
 export type TagProtectionWhitelistUsernamesList = Array<string>;
-export const TagProtectionWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TagProtectionWhitelistUsernamesList>;
+export const TagProtectionWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<TagProtectionWhitelistUsernamesList>;
 
 /** TagProtection represents a tag protection */
 export interface TagProtection {
@@ -4022,9 +3956,8 @@ export const RepoDeleteAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteAllFlagsRequest>;
 
 export interface RepoDeleteAllFlagsResponse {}
-export const RepoDeleteAllFlagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteAllFlagsResponse",
-}) as any as S.Schema<RepoDeleteAllFlagsResponse>;
+export const RepoDeleteAllFlagsResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteAllFlagsResponse>;
 
 export interface RepoDeleteAvatarRequest {
   /** owner of the repo */
@@ -4040,9 +3973,8 @@ export const RepoDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteAvatarRequest" }) as any as S.Schema<RepoDeleteAvatarRequest>;
 
 export interface RepoDeleteAvatarResponse {}
-export const RepoDeleteAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteAvatarResponse",
-}) as any as S.Schema<RepoDeleteAvatarResponse>;
+export const RepoDeleteAvatarResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteAvatarResponse>;
 
 export interface RepoDeleteBranchRequest {
   /** owner of the repo */
@@ -4061,9 +3993,8 @@ export const RepoDeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteBranchRequest" }) as any as S.Schema<RepoDeleteBranchRequest>;
 
 export interface RepoDeleteBranchResponse {}
-export const RepoDeleteBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteBranchResponse",
-}) as any as S.Schema<RepoDeleteBranchResponse>;
+export const RepoDeleteBranchResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteBranchResponse>;
 
 export interface RepoDeleteBranchProtectionRequest {
   /** owner of the repo */
@@ -4086,11 +4017,8 @@ export const RepoDeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteBranchProtectionRequest>;
 
 export interface RepoDeleteBranchProtectionResponse {}
-export const RepoDeleteBranchProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RepoDeleteBranchProtectionResponse",
-}) as any as S.Schema<RepoDeleteBranchProtectionResponse>;
+export const RepoDeleteBranchProtectionResponse =
+  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeleteBranchProtectionResponse>;
 
 export interface RepoDeleteCollaboratorRequest {
   /** owner of the repo */
@@ -4117,9 +4045,8 @@ export const RepoDeleteCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteCollaboratorRequest>;
 
 export interface RepoDeleteCollaboratorResponse {}
-export const RepoDeleteCollaboratorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteCollaboratorResponse",
-}) as any as S.Schema<RepoDeleteCollaboratorResponse>;
+export const RepoDeleteCollaboratorResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteCollaboratorResponse>;
 
 export interface RepoDeleteFileRequest {
   /** owner of the repo */
@@ -4194,9 +4121,8 @@ export const RepoDeleteFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteFlagRequest" }) as any as S.Schema<RepoDeleteFlagRequest>;
 
 export interface RepoDeleteFlagResponse {}
-export const RepoDeleteFlagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteFlagResponse",
-}) as any as S.Schema<RepoDeleteFlagResponse>;
+export const RepoDeleteFlagResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteFlagResponse>;
 
 export interface RepoDeleteGitHookRequest {
   /** owner of the repo */
@@ -4215,9 +4141,8 @@ export const RepoDeleteGitHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteGitHookRequest" }) as any as S.Schema<RepoDeleteGitHookRequest>;
 
 export interface RepoDeleteGitHookResponse {}
-export const RepoDeleteGitHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteGitHookResponse",
-}) as any as S.Schema<RepoDeleteGitHookResponse>;
+export const RepoDeleteGitHookResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteGitHookResponse>;
 
 export interface RepoDeleteHookRequest {
   /** owner of the repo */
@@ -4236,9 +4161,8 @@ export const RepoDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteHookRequest" }) as any as S.Schema<RepoDeleteHookRequest>;
 
 export interface RepoDeleteHookResponse {}
-export const RepoDeleteHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteHookResponse",
-}) as any as S.Schema<RepoDeleteHookResponse>;
+export const RepoDeleteHookResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteHookResponse>;
 
 export interface RepoDeleteKeyRequest {
   /** owner of the repo */
@@ -4257,9 +4181,8 @@ export const RepoDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteKeyRequest" }) as any as S.Schema<RepoDeleteKeyRequest>;
 
 export interface RepoDeleteKeyResponse {}
-export const RepoDeleteKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteKeyResponse",
-}) as any as S.Schema<RepoDeleteKeyResponse>;
+export const RepoDeleteKeyResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteKeyResponse>;
 
 export interface RepoDeletePullReviewRequest {
   /** owner of the repo */
@@ -4289,9 +4212,8 @@ export const RepoDeletePullReviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePullReviewRequest>;
 
 export interface RepoDeletePullReviewResponse {}
-export const RepoDeletePullReviewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeletePullReviewResponse",
-}) as any as S.Schema<RepoDeletePullReviewResponse>;
+export const RepoDeletePullReviewResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeletePullReviewResponse>;
 
 export interface RepoDeletePullReviewCommentRequest {
   /** owner of the repo */
@@ -4324,21 +4246,16 @@ export const RepoDeletePullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePullReviewCommentRequest>;
 
 export interface RepoDeletePullReviewCommentResponse {}
-export const RepoDeletePullReviewCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RepoDeletePullReviewCommentResponse",
-}) as any as S.Schema<RepoDeletePullReviewCommentResponse>;
+export const RepoDeletePullReviewCommentResponse =
+  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeletePullReviewCommentResponse>;
 
 export type RepoDeletePullReviewRequestsRequestReviewersList = Array<string>;
-export const RepoDeletePullReviewRequestsRequestReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoDeletePullReviewRequestsRequestReviewersList>;
+export const RepoDeletePullReviewRequestsRequestReviewersList =
+  RepositoryTopicsList as any as S.Schema<RepoDeletePullReviewRequestsRequestReviewersList>;
 
 export type RepoDeletePullReviewRequestsRequestTeamReviewersList = Array<string>;
-export const RepoDeletePullReviewRequestsRequestTeamReviewersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoDeletePullReviewRequestsRequestTeamReviewersList>;
+export const RepoDeletePullReviewRequestsRequestTeamReviewersList =
+  RepositoryTopicsList as any as S.Schema<RepoDeletePullReviewRequestsRequestTeamReviewersList>;
 
 export interface RepoDeletePullReviewRequestsRequest {
   /** owner of the repo */
@@ -4369,11 +4286,8 @@ export const RepoDeletePullReviewRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePullReviewRequestsRequest>;
 
 export interface RepoDeletePullReviewRequestsResponse {}
-export const RepoDeletePullReviewRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RepoDeletePullReviewRequestsResponse",
-}) as any as S.Schema<RepoDeletePullReviewRequestsResponse>;
+export const RepoDeletePullReviewRequestsResponse =
+  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeletePullReviewRequestsResponse>;
 
 export interface RepoDeletePushMirrorRequest {
   /** owner of the repo */
@@ -4396,9 +4310,8 @@ export const RepoDeletePushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePushMirrorRequest>;
 
 export interface RepoDeletePushMirrorResponse {}
-export const RepoDeletePushMirrorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeletePushMirrorResponse",
-}) as any as S.Schema<RepoDeletePushMirrorResponse>;
+export const RepoDeletePushMirrorResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeletePushMirrorResponse>;
 
 export interface RepoDeleteReleaseRequest {
   /** owner of the repo */
@@ -4417,9 +4330,8 @@ export const RepoDeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteReleaseRequest" }) as any as S.Schema<RepoDeleteReleaseRequest>;
 
 export interface RepoDeleteReleaseResponse {}
-export const RepoDeleteReleaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteReleaseResponse",
-}) as any as S.Schema<RepoDeleteReleaseResponse>;
+export const RepoDeleteReleaseResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteReleaseResponse>;
 
 export interface RepoDeleteReleaseAttachmentRequest {
   /** owner of the repo */
@@ -4449,11 +4361,8 @@ export const RepoDeleteReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteReleaseAttachmentRequest>;
 
 export interface RepoDeleteReleaseAttachmentResponse {}
-export const RepoDeleteReleaseAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RepoDeleteReleaseAttachmentResponse",
-}) as any as S.Schema<RepoDeleteReleaseAttachmentResponse>;
+export const RepoDeleteReleaseAttachmentResponse =
+  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeleteReleaseAttachmentResponse>;
 
 export interface RepoDeleteReleaseByTagRequest {
   /** owner of the repo */
@@ -4476,9 +4385,8 @@ export const RepoDeleteReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteReleaseByTagRequest>;
 
 export interface RepoDeleteReleaseByTagResponse {}
-export const RepoDeleteReleaseByTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteReleaseByTagResponse",
-}) as any as S.Schema<RepoDeleteReleaseByTagResponse>;
+export const RepoDeleteReleaseByTagResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteReleaseByTagResponse>;
 
 export interface RepoDeleteTagRequest {
   /** owner of the repo */
@@ -4497,9 +4405,8 @@ export const RepoDeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteTagRequest" }) as any as S.Schema<RepoDeleteTagRequest>;
 
 export interface RepoDeleteTagResponse {}
-export const RepoDeleteTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteTagResponse",
-}) as any as S.Schema<RepoDeleteTagResponse>;
+export const RepoDeleteTagResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTagResponse>;
 
 export interface RepoDeleteTagProtectionRequest {
   /** owner of the repo */
@@ -4543,9 +4450,8 @@ export const RepoDeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteTeamRequest" }) as any as S.Schema<RepoDeleteTeamRequest>;
 
 export interface RepoDeleteTeamResponse {}
-export const RepoDeleteTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteTeamResponse",
-}) as any as S.Schema<RepoDeleteTeamResponse>;
+export const RepoDeleteTeamResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTeamResponse>;
 
 export interface RepoDeleteTopicRequest {
   /** owner of the repo */
@@ -4564,9 +4470,8 @@ export const RepoDeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteTopicRequest" }) as any as S.Schema<RepoDeleteTopicRequest>;
 
 export interface RepoDeleteTopicResponse {}
-export const RepoDeleteTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteTopicResponse",
-}) as any as S.Schema<RepoDeleteTopicResponse>;
+export const RepoDeleteTopicResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTopicResponse>;
 
 export interface RepoDeleteWikiPageRequest {
   /** owner of the repo */
@@ -4589,9 +4494,8 @@ export const RepoDeleteWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteWikiPageRequest>;
 
 export interface RepoDeleteWikiPageResponse {}
-export const RepoDeleteWikiPageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoDeleteWikiPageResponse",
-}) as any as S.Schema<RepoDeleteWikiPageResponse>;
+export const RepoDeleteWikiPageResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteWikiPageResponse>;
 
 export type RepoDownloadCommitDiffOrPatchRequestDiffType = "diff" | "patch";
 export const RepoDownloadCommitDiffOrPatchRequestDiffType = S.String;
@@ -4656,46 +4560,36 @@ export const RepoDownloadPullDiffOrPatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDownloadPullDiffOrPatchRequest>;
 
 export type RepoDownloadPullDiffOrPatchResponse = string;
-export const RepoDownloadPullDiffOrPatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoDownloadPullDiffOrPatchResponse",
-}) as any as S.Schema<RepoDownloadPullDiffOrPatchResponse>;
+export const RepoDownloadPullDiffOrPatchResponse =
+  RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoDownloadPullDiffOrPatchResponse>;
 
 export type RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList = Array<string>;
-export const RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList>;
+export const RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList>;
 
 export type RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList = Array<string>;
-export const RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList>;
+export const RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList =
+  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList>;
 
 export type RepoEditBranchProtectionRequestMergeWhitelistTeamsList = Array<string>;
-export const RepoEditBranchProtectionRequestMergeWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistTeamsList>;
+export const RepoEditBranchProtectionRequestMergeWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistTeamsList>;
 
 export type RepoEditBranchProtectionRequestMergeWhitelistUsernamesList = Array<string>;
-export const RepoEditBranchProtectionRequestMergeWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistUsernamesList>;
+export const RepoEditBranchProtectionRequestMergeWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistUsernamesList>;
 
 export type RepoEditBranchProtectionRequestPushWhitelistTeamsList = Array<string>;
-export const RepoEditBranchProtectionRequestPushWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistTeamsList>;
+export const RepoEditBranchProtectionRequestPushWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistTeamsList>;
 
 export type RepoEditBranchProtectionRequestPushWhitelistUsernamesList = Array<string>;
-export const RepoEditBranchProtectionRequestPushWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistUsernamesList>;
+export const RepoEditBranchProtectionRequestPushWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistUsernamesList>;
 
 export type RepoEditBranchProtectionRequestStatusCheckContextsList = Array<string>;
-export const RepoEditBranchProtectionRequestStatusCheckContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditBranchProtectionRequestStatusCheckContextsList>;
+export const RepoEditBranchProtectionRequestStatusCheckContextsList =
+  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestStatusCheckContextsList>;
 
 export interface RepoEditBranchProtectionRequest {
   /** owner of the repo */
@@ -4802,15 +4696,12 @@ export const GitHook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHook" }) as any as S.Schema<GitHook>;
 
 export type RepoEditHookRequestConfigMap = { [key: string]: string | undefined };
-export const RepoEditHookRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RepoEditHookRequestConfigMap>;
+export const RepoEditHookRequestConfigMap =
+  TeamUnitsMapMap as any as S.Schema<RepoEditHookRequestConfigMap>;
 
 export type RepoEditHookRequestEventsList = Array<string>;
-export const RepoEditHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditHookRequestEventsList>;
+export const RepoEditHookRequestEventsList =
+  RepositoryTopicsList as any as S.Schema<RepoEditHookRequestEventsList>;
 
 export interface RepoEditHookRequest {
   /** owner of the repo */
@@ -4839,14 +4730,12 @@ export const RepoEditHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoEditHookRequest" }) as any as S.Schema<RepoEditHookRequest>;
 
 export type RepoEditPullRequestRequestAssigneesList = Array<string>;
-export const RepoEditPullRequestRequestAssigneesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditPullRequestRequestAssigneesList>;
+export const RepoEditPullRequestRequestAssigneesList =
+  RepositoryTopicsList as any as S.Schema<RepoEditPullRequestRequestAssigneesList>;
 
 export type RepoEditPullRequestRequestLabelsList = Array<number>;
-export const RepoEditPullRequestRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RepoEditPullRequestRequestLabelsList>;
+export const RepoEditPullRequestRequestLabelsList =
+  RepoCreatePullRequestRequestLabelsList as any as S.Schema<RepoEditPullRequestRequestLabelsList>;
 
 export interface RepoEditPullRequestRequest {
   /** owner of the repo */
@@ -4951,14 +4840,12 @@ export const RepoEditReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoEditReleaseAttachmentRequest>;
 
 export type RepoEditTagProtectionRequestWhitelistTeamsList = Array<string>;
-export const RepoEditTagProtectionRequestWhitelistTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditTagProtectionRequestWhitelistTeamsList>;
+export const RepoEditTagProtectionRequestWhitelistTeamsList =
+  RepositoryTopicsList as any as S.Schema<RepoEditTagProtectionRequestWhitelistTeamsList>;
 
 export type RepoEditTagProtectionRequestWhitelistUsernamesList = Array<string>;
-export const RepoEditTagProtectionRequestWhitelistUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoEditTagProtectionRequestWhitelistUsernamesList>;
+export const RepoEditTagProtectionRequestWhitelistUsernamesList =
+  RepositoryTopicsList as any as S.Schema<RepoEditTagProtectionRequestWhitelistUsernamesList>;
 
 export interface RepoEditTagProtectionRequest {
   /** owner of the repo */
@@ -5037,11 +4924,8 @@ export const RepoGetActionJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetActionJobLogsRequest>;
 
 export type RepoGetActionJobLogsResponse = string;
-export const RepoGetActionJobLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoGetActionJobLogsResponse",
-}) as any as S.Schema<RepoGetActionJobLogsResponse>;
+export const RepoGetActionJobLogsResponse =
+  RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoGetActionJobLogsResponse>;
 
 export interface RepoGetActionRunLogsRequest {
   /** owner of the repo */
@@ -5064,11 +4948,8 @@ export const RepoGetActionRunLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetActionRunLogsRequest>;
 
 export type RepoGetActionRunLogsResponse = string;
-export const RepoGetActionRunLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoGetActionRunLogsResponse",
-}) as any as S.Schema<RepoGetActionRunLogsResponse>;
+export const RepoGetActionRunLogsResponse =
+  RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoGetActionRunLogsResponse>;
 
 export interface RepoGetAllCommitsRequest {
   /** owner of the repo */
@@ -5108,9 +4989,8 @@ export const RepoGetAllCommitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetAllCommitsRequest" }) as any as S.Schema<RepoGetAllCommitsRequest>;
 
 export type RepoGetAllCommitsResponseBodyList = Array<Commit>;
-export const RepoGetAllCommitsResponseBodyList = /*@__PURE__*/ S.Array(
-  Commit,
-) as any as S.Schema<RepoGetAllCommitsResponseBodyList>;
+export const RepoGetAllCommitsResponseBodyList =
+  CompareCommitsList as any as S.Schema<RepoGetAllCommitsResponseBodyList>;
 
 export type RepoGetAllCommitsResponse = RepoGetAllCommitsResponseBodyList;
 export const RepoGetAllCommitsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5136,9 +5016,8 @@ export const RepoGetArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetArchiveRequest" }) as any as S.Schema<RepoGetArchiveRequest>;
 
 export interface RepoGetArchiveResponse {}
-export const RepoGetArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoGetArchiveResponse",
-}) as any as S.Schema<RepoGetArchiveResponse>;
+export const RepoGetArchiveResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoGetArchiveResponse>;
 
 export interface RepoGetAssigneesRequest {
   /** owner of the repo */
@@ -5154,9 +5033,8 @@ export const RepoGetAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetAssigneesRequest" }) as any as S.Schema<RepoGetAssigneesRequest>;
 
 export type RepoGetAssigneesResponseBodyList = Array<User>;
-export const RepoGetAssigneesResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<RepoGetAssigneesResponseBodyList>;
+export const RepoGetAssigneesResponseBodyList =
+  PullRequestAssigneesList as any as S.Schema<RepoGetAssigneesResponseBodyList>;
 
 export type RepoGetAssigneesResponse = RepoGetAssigneesResponseBodyList;
 export const RepoGetAssigneesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5316,9 +5194,8 @@ export const RepoGetContentsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetContentsListRequest>;
 
 export type RepoGetContentsListResponseBodyList = Array<ContentsResponse>;
-export const RepoGetContentsListResponseBodyList = /*@__PURE__*/ S.Array(
-  ContentsResponse,
-) as any as S.Schema<RepoGetContentsListResponseBodyList>;
+export const RepoGetContentsListResponseBodyList =
+  FilesResponseFilesList as any as S.Schema<RepoGetContentsListResponseBodyList>;
 
 export type RepoGetContentsListResponse = RepoGetContentsListResponseBodyList;
 export const RepoGetContentsListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5351,10 +5228,8 @@ export const RepoGetEditorConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetEditorConfigRequest>;
 
 export type RepoGetEditorConfigResponseBodyMap = { [key: string]: string | undefined };
-export const RepoGetEditorConfigResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RepoGetEditorConfigResponseBodyMap>;
+export const RepoGetEditorConfigResponseBodyMap =
+  TeamUnitsMapMap as any as S.Schema<RepoGetEditorConfigResponseBodyMap>;
 
 export type RepoGetEditorConfigResponse = RepoGetEditorConfigResponseBodyMap;
 export const RepoGetEditorConfigResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5461,15 +5336,12 @@ export const IssueFormFieldAttributesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<IssueFormFieldAttributesMap>;
 
 export type IssueFormFieldValidationsMap = { [key: string]: unknown | undefined };
-export const IssueFormFieldValidationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IssueFormFieldValidationsMap>;
+export const IssueFormFieldValidationsMap =
+  IssueFormFieldAttributesMap as any as S.Schema<IssueFormFieldValidationsMap>;
 
 export type IssueFormFieldVisibleList = Array<string>;
-export const IssueFormFieldVisibleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IssueFormFieldVisibleList>;
+export const IssueFormFieldVisibleList =
+  RepositoryTopicsList as any as S.Schema<IssueFormFieldVisibleList>;
 
 /** IssueFormField represents a form field */
 export interface IssueFormField {
@@ -5495,9 +5367,7 @@ export const IssueTemplateBodyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IssueTemplateBodyList>;
 
 export type IssueTemplateLabels = Array<string>;
-export const IssueTemplateLabels = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IssueTemplateLabels>;
+export const IssueTemplateLabels = RepositoryTopicsList as any as S.Schema<IssueTemplateLabels>;
 
 /** IssueTemplate represents an issue template for a repository */
 export interface IssueTemplate {
@@ -5694,16 +5564,12 @@ export const RepoGetPullRequestCommitsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetPullRequestCommitsRequest>;
 
 export type RepoGetPullRequestCommitsResponseBodyList = Array<Commit>;
-export const RepoGetPullRequestCommitsResponseBodyList = /*@__PURE__*/ S.Array(
-  Commit,
-) as any as S.Schema<RepoGetPullRequestCommitsResponseBodyList>;
+export const RepoGetPullRequestCommitsResponseBodyList =
+  CompareCommitsList as any as S.Schema<RepoGetPullRequestCommitsResponseBodyList>;
 
 export type RepoGetPullRequestCommitsResponse = RepoGetPullRequestCommitsResponseBodyList;
-export const RepoGetPullRequestCommitsResponse = /*@__PURE__*/ S.suspend(() =>
-  RepoGetPullRequestCommitsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoGetPullRequestCommitsResponse",
-}) as any as S.Schema<RepoGetPullRequestCommitsResponse>;
+export const RepoGetPullRequestCommitsResponse =
+  RepoGetAllCommitsResponse as any as S.Schema<RepoGetPullRequestCommitsResponse>;
 
 export type RepoGetPullRequestFilesRequestWhitespace =
   | "ignore-all"
@@ -6015,14 +5881,12 @@ export const RepoGetReviewersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetReviewersRequest" }) as any as S.Schema<RepoGetReviewersRequest>;
 
 export type RepoGetReviewersResponseBodyList = Array<User>;
-export const RepoGetReviewersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<RepoGetReviewersResponseBodyList>;
+export const RepoGetReviewersResponseBodyList =
+  PullRequestAssigneesList as any as S.Schema<RepoGetReviewersResponseBodyList>;
 
 export type RepoGetReviewersResponse = RepoGetReviewersResponseBodyList;
-export const RepoGetReviewersResponse = /*@__PURE__*/ S.suspend(() =>
-  RepoGetReviewersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RepoGetReviewersResponse" }) as any as S.Schema<RepoGetReviewersResponse>;
+export const RepoGetReviewersResponse =
+  RepoGetAssigneesResponse as any as S.Schema<RepoGetReviewersResponse>;
 
 export interface RepoGetSingleCommitRequest {
   /** owner of the repo */
@@ -6258,9 +6122,7 @@ export const RepoListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
-export const CommentAssetsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<CommentAssetsList>;
+export const CommentAssetsList = ReleaseAssetsList as any as S.Schema<CommentAssetsList>;
 
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
@@ -6500,9 +6362,8 @@ export const RepoListCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListCollaboratorsRequest>;
 
 export type RepoListCollaboratorsResponseBodyList = Array<User>;
-export const RepoListCollaboratorsResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<RepoListCollaboratorsResponseBodyList>;
+export const RepoListCollaboratorsResponseBodyList =
+  PullRequestAssigneesList as any as S.Schema<RepoListCollaboratorsResponseBodyList>;
 
 export type RepoListCollaboratorsResponse = RepoListCollaboratorsResponseBodyList;
 export const RepoListCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6525,9 +6386,8 @@ export const RepoListFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListFlagsRequest" }) as any as S.Schema<RepoListFlagsRequest>;
 
 export type RepoListFlagsResponseBodyList = Array<string>;
-export const RepoListFlagsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoListFlagsResponseBodyList>;
+export const RepoListFlagsResponseBodyList =
+  RepositoryTopicsList as any as S.Schema<RepoListFlagsResponseBodyList>;
 
 export type RepoListFlagsResponse = RepoListFlagsResponseBodyList;
 export const RepoListFlagsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6574,9 +6434,8 @@ export const RepoListGitRefsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListGitRefsRequest" }) as any as S.Schema<RepoListGitRefsRequest>;
 
 export type RepoListGitRefsResponseBodyList = Array<Reference>;
-export const RepoListGitRefsResponseBodyList = /*@__PURE__*/ S.Array(
-  Reference,
-) as any as S.Schema<RepoListGitRefsResponseBodyList>;
+export const RepoListGitRefsResponseBodyList =
+  RepoListAllGitRefsResponseBodyList as any as S.Schema<RepoListGitRefsResponseBodyList>;
 
 export type RepoListGitRefsResponse = RepoListGitRefsResponseBodyList;
 export const RepoListGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -6663,14 +6522,10 @@ export const RepoListPinnedIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPinnedIssuesRequest>;
 
 export type IssueAssetsList = Array<Attachment>;
-export const IssueAssetsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<IssueAssetsList>;
+export const IssueAssetsList = ReleaseAssetsList as any as S.Schema<IssueAssetsList>;
 
 export type IssueAssigneesList = Array<User>;
-export const IssueAssigneesList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<IssueAssigneesList>;
+export const IssueAssigneesList = PullRequestAssigneesList as any as S.Schema<IssueAssigneesList>;
 
 export type IssueLabelsList = Array<Label>;
 export const IssueLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<IssueLabelsList>;
@@ -6818,9 +6673,8 @@ export type RepoListPullRequestsRequestSort =
 export const RepoListPullRequestsRequestSort = S.String;
 
 export type RepoListPullRequestsRequestLabelsList = Array<number>;
-export const RepoListPullRequestsRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RepoListPullRequestsRequestLabelsList>;
+export const RepoListPullRequestsRequestLabelsList =
+  RepoCreatePullRequestRequestLabelsList as any as S.Schema<RepoListPullRequestsRequestLabelsList>;
 
 export interface RepoListPullRequestsRequest {
   /** Owner of the repo */
@@ -6865,16 +6719,12 @@ export const RepoListPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPullRequestsRequest>;
 
 export type RepoListPullRequestsResponseBodyList = Array<PullRequest>;
-export const RepoListPullRequestsResponseBodyList = /*@__PURE__*/ S.Array(
-  PullRequest,
-) as any as S.Schema<RepoListPullRequestsResponseBodyList>;
+export const RepoListPullRequestsResponseBodyList =
+  RepoListPinnedPullRequestsResponseBodyList as any as S.Schema<RepoListPullRequestsResponseBodyList>;
 
 export type RepoListPullRequestsResponse = RepoListPullRequestsResponseBodyList;
-export const RepoListPullRequestsResponse = /*@__PURE__*/ S.suspend(() =>
-  RepoListPullRequestsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoListPullRequestsResponse",
-}) as any as S.Schema<RepoListPullRequestsResponse>;
+export const RepoListPullRequestsResponse =
+  RepoListPinnedPullRequestsResponse as any as S.Schema<RepoListPullRequestsResponse>;
 
 export interface RepoListPullReviewsRequest {
   /** owner of the repo */
@@ -6901,16 +6751,12 @@ export const RepoListPullReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPullReviewsRequest>;
 
 export type RepoListPullReviewsResponseBodyList = Array<PullReview>;
-export const RepoListPullReviewsResponseBodyList = /*@__PURE__*/ S.Array(
-  PullReview,
-) as any as S.Schema<RepoListPullReviewsResponseBodyList>;
+export const RepoListPullReviewsResponseBodyList =
+  RepoCreatePullReviewRequestsResponseBodyList as any as S.Schema<RepoListPullReviewsResponseBodyList>;
 
 export type RepoListPullReviewsResponse = RepoListPullReviewsResponseBodyList;
-export const RepoListPullReviewsResponse = /*@__PURE__*/ S.suspend(() =>
-  RepoListPullReviewsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoListPullReviewsResponse",
-}) as any as S.Schema<RepoListPullReviewsResponse>;
+export const RepoListPullReviewsResponse =
+  RepoCreatePullReviewRequestsResponse as any as S.Schema<RepoListPullReviewsResponse>;
 
 export interface RepoListPushMirrorsRequest {
   /** owner of the repo */
@@ -6964,9 +6810,8 @@ export const RepoListReleaseAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListReleaseAttachmentsRequest>;
 
 export type RepoListReleaseAttachmentsResponseBodyList = Array<Attachment>;
-export const RepoListReleaseAttachmentsResponseBodyList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<RepoListReleaseAttachmentsResponseBodyList>;
+export const RepoListReleaseAttachmentsResponseBodyList =
+  ReleaseAssetsList as any as S.Schema<RepoListReleaseAttachmentsResponseBodyList>;
 
 export type RepoListReleaseAttachmentsResponse = RepoListReleaseAttachmentsResponseBodyList;
 export const RepoListReleaseAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7035,16 +6880,12 @@ export const RepoListStargazersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListStargazersRequest>;
 
 export type RepoListStargazersResponseBodyList = Array<User>;
-export const RepoListStargazersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<RepoListStargazersResponseBodyList>;
+export const RepoListStargazersResponseBodyList =
+  PullRequestAssigneesList as any as S.Schema<RepoListStargazersResponseBodyList>;
 
 export type RepoListStargazersResponse = RepoListStargazersResponseBodyList;
-export const RepoListStargazersResponse = /*@__PURE__*/ S.suspend(() =>
-  RepoListStargazersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoListStargazersResponse",
-}) as any as S.Schema<RepoListStargazersResponse>;
+export const RepoListStargazersResponse =
+  RepoListCollaboratorsResponse as any as S.Schema<RepoListStargazersResponse>;
 
 export type RepoListStatusesRequestSort =
   | "oldest"
@@ -7086,9 +6927,8 @@ export const RepoListStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListStatusesRequest" }) as any as S.Schema<RepoListStatusesRequest>;
 
 export type RepoListStatusesResponseBodyList = Array<CommitStatus>;
-export const RepoListStatusesResponseBodyList = /*@__PURE__*/ S.Array(
-  CommitStatus,
-) as any as S.Schema<RepoListStatusesResponseBodyList>;
+export const RepoListStatusesResponseBodyList =
+  CombinedStatusStatusesList as any as S.Schema<RepoListStatusesResponseBodyList>;
 
 export type RepoListStatusesResponse = RepoListStatusesResponseBodyList;
 export const RepoListStatusesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7144,9 +6984,8 @@ export const RepoListStatusesByRefRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListStatusesByRefRequest>;
 
 export type RepoListStatusesByRefResponseBodyList = Array<CommitStatus>;
-export const RepoListStatusesByRefResponseBodyList = /*@__PURE__*/ S.Array(
-  CommitStatus,
-) as any as S.Schema<RepoListStatusesByRefResponseBodyList>;
+export const RepoListStatusesByRefResponseBodyList =
+  CombinedStatusStatusesList as any as S.Schema<RepoListStatusesByRefResponseBodyList>;
 
 export type RepoListStatusesByRefResponse = RepoListStatusesByRefResponseBodyList;
 export const RepoListStatusesByRefResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7177,16 +7016,12 @@ export const RepoListSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListSubscribersRequest>;
 
 export type RepoListSubscribersResponseBodyList = Array<User>;
-export const RepoListSubscribersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<RepoListSubscribersResponseBodyList>;
+export const RepoListSubscribersResponseBodyList =
+  PullRequestAssigneesList as any as S.Schema<RepoListSubscribersResponseBodyList>;
 
 export type RepoListSubscribersResponse = RepoListSubscribersResponseBodyList;
-export const RepoListSubscribersResponse = /*@__PURE__*/ S.suspend(() =>
-  RepoListSubscribersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoListSubscribersResponse",
-}) as any as S.Schema<RepoListSubscribersResponse>;
+export const RepoListSubscribersResponse =
+  RepoListCollaboratorsResponse as any as S.Schema<RepoListSubscribersResponse>;
 
 export interface RepoListTagProtectionRequest {
   /** owner of the repo */
@@ -7258,9 +7093,8 @@ export const RepoListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListTeamsRequest" }) as any as S.Schema<RepoListTeamsRequest>;
 
 export type RepoListTeamsResponseBodyList = Array<Team>;
-export const RepoListTeamsResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<RepoListTeamsResponseBodyList>;
+export const RepoListTeamsResponseBodyList =
+  RepoTransferTeamsList as any as S.Schema<RepoListTeamsResponseBodyList>;
 
 export type RepoListTeamsResponse = RepoListTeamsResponseBodyList;
 export const RepoListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7287,9 +7121,7 @@ export const RepoListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListTopicsRequest" }) as any as S.Schema<RepoListTopicsRequest>;
 
 export type TopicNameTopicsList = Array<string>;
-export const TopicNameTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopicNameTopicsList>;
+export const TopicNameTopicsList = RepositoryTopicsList as any as S.Schema<TopicNameTopicsList>;
 
 /** TopicName a list of repo topic names */
 export interface TopicName {
@@ -7345,9 +7177,8 @@ export const RepoMergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoMergePullRequestRequest>;
 
 export interface RepoMergePullRequestResponse {}
-export const RepoMergePullRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoMergePullRequestResponse",
-}) as any as S.Schema<RepoMergePullRequestResponse>;
+export const RepoMergePullRequestResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoMergePullRequestResponse>;
 
 export interface RepoNewPinAllowedRequest {
   /** owner of the repo */
@@ -7393,9 +7224,8 @@ export const RepoPullRequestIsMergedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoPullRequestIsMergedRequest>;
 
 export interface RepoPullRequestIsMergedResponse {}
-export const RepoPullRequestIsMergedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RepoPullRequestIsMergedResponse" },
-) as any as S.Schema<RepoPullRequestIsMergedResponse>;
+export const RepoPullRequestIsMergedResponse =
+  RepoDeleteTagProtectionResponse as any as S.Schema<RepoPullRequestIsMergedResponse>;
 
 export interface RepoRemoveNoteRequest {
   /** owner of the repo */
@@ -7414,14 +7244,12 @@ export const RepoRemoveNoteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoRemoveNoteRequest" }) as any as S.Schema<RepoRemoveNoteRequest>;
 
 export interface RepoRemoveNoteResponse {}
-export const RepoRemoveNoteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoRemoveNoteResponse",
-}) as any as S.Schema<RepoRemoveNoteResponse>;
+export const RepoRemoveNoteResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoRemoveNoteResponse>;
 
 export type RepoReplaceAllFlagsRequestFlagsList = Array<string>;
-export const RepoReplaceAllFlagsRequestFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoReplaceAllFlagsRequestFlagsList>;
+export const RepoReplaceAllFlagsRequestFlagsList =
+  RepositoryTopicsList as any as S.Schema<RepoReplaceAllFlagsRequestFlagsList>;
 
 export interface RepoReplaceAllFlagsRequest {
   /** owner of the repo */
@@ -7441,9 +7269,8 @@ export const RepoReplaceAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoReplaceAllFlagsRequest>;
 
 export interface RepoReplaceAllFlagsResponse {}
-export const RepoReplaceAllFlagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoReplaceAllFlagsResponse",
-}) as any as S.Schema<RepoReplaceAllFlagsResponse>;
+export const RepoReplaceAllFlagsResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoReplaceAllFlagsResponse>;
 
 export interface RepoSearchRunJobsRequest {
   /** owner of the repo */
@@ -7462,16 +7289,12 @@ export const RepoSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoSearchRunJobsRequest" }) as any as S.Schema<RepoSearchRunJobsRequest>;
 
 export type RepoSearchRunJobsResponseBodyList = Array<ActionRunJob>;
-export const RepoSearchRunJobsResponseBodyList = /*@__PURE__*/ S.Array(
-  ActionRunJob,
-) as any as S.Schema<RepoSearchRunJobsResponseBodyList>;
+export const RepoSearchRunJobsResponseBodyList =
+  ListActionRunJobsResponseBodyList as any as S.Schema<RepoSearchRunJobsResponseBodyList>;
 
 export type RepoSearchRunJobsResponse = RepoSearchRunJobsResponseBodyList;
-export const RepoSearchRunJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  RepoSearchRunJobsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RepoSearchRunJobsResponse",
-}) as any as S.Schema<RepoSearchRunJobsResponse>;
+export const RepoSearchRunJobsResponse =
+  ListActionRunJobsResponse as any as S.Schema<RepoSearchRunJobsResponse>;
 
 export interface RepoSetNoteRequest {
   /** owner of the repo */
@@ -7555,9 +7378,8 @@ export const RepoSyncForkBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoSyncForkBranchRequest>;
 
 export interface RepoSyncForkBranchResponse {}
-export const RepoSyncForkBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoSyncForkBranchResponse",
-}) as any as S.Schema<RepoSyncForkBranchResponse>;
+export const RepoSyncForkBranchResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoSyncForkBranchResponse>;
 
 export interface RepoSyncForkBranchInfoRequest {
   /** owner of the repo */
@@ -7609,9 +7431,8 @@ export const RepoSyncForkDefaultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoSyncForkDefaultRequest>;
 
 export interface RepoSyncForkDefaultResponse {}
-export const RepoSyncForkDefaultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoSyncForkDefaultResponse",
-}) as any as S.Schema<RepoSyncForkDefaultResponse>;
+export const RepoSyncForkDefaultResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoSyncForkDefaultResponse>;
 
 export interface RepoSyncForkDefaultInfoRequest {
   /** owner of the repo */
@@ -7648,9 +7469,8 @@ export const RepoTestHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTestHookRequest" }) as any as S.Schema<RepoTestHookRequest>;
 
 export interface RepoTestHookResponse {}
-export const RepoTestHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoTestHookResponse",
-}) as any as S.Schema<RepoTestHookResponse>;
+export const RepoTestHookResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoTestHookResponse>;
 
 export interface RepoTrackedTimesRequest {
   /** owner of the repo */
@@ -7732,9 +7552,8 @@ export const RepoUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoUpdateAvatarRequest" }) as any as S.Schema<RepoUpdateAvatarRequest>;
 
 export interface RepoUpdateAvatarResponse {}
-export const RepoUpdateAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoUpdateAvatarResponse",
-}) as any as S.Schema<RepoUpdateAvatarResponse>;
+export const RepoUpdateAvatarResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoUpdateAvatarResponse>;
 
 export interface RepoUpdateBranchRequest {
   /** owner of the repo */
@@ -7756,9 +7575,8 @@ export const RepoUpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoUpdateBranchRequest" }) as any as S.Schema<RepoUpdateBranchRequest>;
 
 export interface RepoUpdateBranchResponse {}
-export const RepoUpdateBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoUpdateBranchResponse",
-}) as any as S.Schema<RepoUpdateBranchResponse>;
+export const RepoUpdateBranchResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoUpdateBranchResponse>;
 
 export interface RepoUpdateFileRequest {
   /** owner of the repo */
@@ -7831,15 +7649,13 @@ export const RepoUpdatePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoUpdatePullRequestRequest>;
 
 export interface RepoUpdatePullRequestResponse {}
-export const RepoUpdatePullRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoUpdatePullRequestResponse",
-}) as any as S.Schema<RepoUpdatePullRequestResponse>;
+export const RepoUpdatePullRequestResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoUpdatePullRequestResponse>;
 
 /** list of topic names */
 export type RepoUpdateTopicsRequestTopicsList = Array<string>;
-export const RepoUpdateTopicsRequestTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoUpdateTopicsRequestTopicsList>;
+export const RepoUpdateTopicsRequestTopicsList =
+  RepositoryTopicsList as any as S.Schema<RepoUpdateTopicsRequestTopicsList>;
 
 export interface RepoUpdateTopicsRequest {
   /** owner of the repo */
@@ -7858,9 +7674,8 @@ export const RepoUpdateTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoUpdateTopicsRequest" }) as any as S.Schema<RepoUpdateTopicsRequest>;
 
 export interface RepoUpdateTopicsResponse {}
-export const RepoUpdateTopicsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepoUpdateTopicsResponse",
-}) as any as S.Schema<RepoUpdateTopicsResponse>;
+export const RepoUpdateTopicsResponse =
+  AcceptRepoTransferResponse as any as S.Schema<RepoUpdateTopicsResponse>;
 
 export interface RepoValidateIssueConfigRequest {
   /** owner of the repo */
@@ -8020,9 +7835,8 @@ export const SearchRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRepoRequest" }) as any as S.Schema<SearchRepoRequest>;
 
 export type SearchResultsDataList = Array<Repository>;
-export const SearchResultsDataList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<SearchResultsDataList>;
+export const SearchResultsDataList =
+  ListForksResponseBodyList as any as S.Schema<SearchResultsDataList>;
 
 /** SearchResults results of a successful search */
 export interface SearchResults {
@@ -8098,9 +7912,8 @@ export const SyncRepoMirrorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncRepoMirrorRequest" }) as any as S.Schema<SyncRepoMirrorRequest>;
 
 export interface SyncRepoMirrorResponse {}
-export const SyncRepoMirrorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SyncRepoMirrorResponse",
-}) as any as S.Schema<SyncRepoMirrorResponse>;
+export const SyncRepoMirrorResponse =
+  AcceptRepoTransferResponse as any as S.Schema<SyncRepoMirrorResponse>;
 
 export interface SyncRepoPushMirrorRequest {
   /** owner of the repo to sync */
@@ -8118,15 +7931,13 @@ export const SyncRepoPushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncRepoPushMirrorRequest>;
 
 export interface SyncRepoPushMirrorResponse {}
-export const SyncRepoPushMirrorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SyncRepoPushMirrorResponse",
-}) as any as S.Schema<SyncRepoPushMirrorResponse>;
+export const SyncRepoPushMirrorResponse =
+  AcceptRepoTransferResponse as any as S.Schema<SyncRepoPushMirrorResponse>;
 
 /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
 export type TransferRepoRequestTeamIdsList = Array<number>;
-export const TransferRepoRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransferRepoRequestTeamIdsList>;
+export const TransferRepoRequestTeamIdsList =
+  RepoCreatePullRequestRequestLabelsList as any as S.Schema<TransferRepoRequestTeamIdsList>;
 
 export interface TransferRepoRequest {
   /** owner of the repo to transfer */
@@ -8147,9 +7958,8 @@ export const TransferRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferRepoRequest" }) as any as S.Schema<TransferRepoRequest>;
 
 export interface TransferRepoResponse {}
-export const TransferRepoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TransferRepoResponse",
-}) as any as S.Schema<TransferRepoResponse>;
+export const TransferRepoResponse =
+  AcceptRepoTransferResponse as any as S.Schema<TransferRepoResponse>;
 
 export interface UpdateRepoSecretRequest {
   /** owner of the repository */
@@ -8173,9 +7983,8 @@ export const UpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRepoSecretRequest" }) as any as S.Schema<UpdateRepoSecretRequest>;
 
 export interface UpdateRepoSecretResponse {}
-export const UpdateRepoSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRepoSecretResponse",
-}) as any as S.Schema<UpdateRepoSecretResponse>;
+export const UpdateRepoSecretResponse =
+  AcceptRepoTransferResponse as any as S.Schema<UpdateRepoSecretResponse>;
 
 export interface UpdateRepoVariableRequest {
   /** name of the owner */
@@ -8208,9 +8017,8 @@ export const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRepoVariableRequest>;
 
 export interface UpdateRepoVariableResponse {}
-export const UpdateRepoVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRepoVariableResponse",
-}) as any as S.Schema<UpdateRepoVariableResponse>;
+export const UpdateRepoVariableResponse =
+  AcceptRepoTransferResponse as any as S.Schema<UpdateRepoVariableResponse>;
 
 export interface UserCurrentCheckSubscriptionRequest {
   /** owner of the repo */
@@ -8263,11 +8071,8 @@ export const UserCurrentDeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UserCurrentDeleteSubscriptionRequest>;
 
 export interface UserCurrentDeleteSubscriptionResponse {}
-export const UserCurrentDeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserCurrentDeleteSubscriptionResponse",
-}) as any as S.Schema<UserCurrentDeleteSubscriptionResponse>;
+export const UserCurrentDeleteSubscriptionResponse =
+  RepoCancelScheduledAutoMergeResponse as any as S.Schema<UserCurrentDeleteSubscriptionResponse>;
 
 export interface UserCurrentPutSubscriptionRequest {
   /** owner of the repo */

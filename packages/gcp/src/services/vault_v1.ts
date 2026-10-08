@@ -277,9 +277,7 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Close a matter by ID. */
 export type CloseMatterRequest = CancelOperationRequest;
@@ -1088,11 +1086,7 @@ export interface HeldHangoutsChatQuery {
   /** To include messages in Chat spaces the user was a member of, set to **true**. */
   includeRooms?: boolean;
 }
-export const HeldHangoutsChatQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    includeRooms: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "HeldHangoutsChatQuery" }) as any as S.Schema<HeldHangoutsChatQuery>;
+export const HeldHangoutsChatQuery = HangoutsChatOptions as any as S.Schema<HeldHangoutsChatQuery>;
 
 /** Query options for Gmail holds. */
 export interface HeldMailQuery {
@@ -1906,11 +1900,7 @@ export interface ReopenMatterResponse {
   /** The updated matter, with state **OPEN**. */
   matter?: Matter;
 }
-export const ReopenMatterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matter: S.optional(Matter),
-  }),
-).annotate({ identifier: "ReopenMatterResponse" }) as any as S.Schema<ReopenMatterResponse>;
+export const ReopenMatterResponse = CloseMatterResponse as any as S.Schema<ReopenMatterResponse>;
 
 /** Undelete a matter by ID. */
 export type UndeleteMatterRequest = CancelOperationRequest;

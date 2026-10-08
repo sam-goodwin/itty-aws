@@ -150,9 +150,7 @@ export interface S3Location {
   ObjectKey: string;
   VersionId?: string;
 }
-export const S3Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bucket: S.String, ObjectKey: S.String, VersionId: S.optional(S.String) }),
-).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+export const S3Location = DefinitionS3Location as any as S.Schema<S3Location>;
 export type Code = { S3Location: S3Location };
 export const Code = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ S3Location: S3Location })]);
 export type RoleARN = string;
@@ -180,7 +178,7 @@ export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type SubnetString = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = SecurityGroupIds as any as S.Schema<SubnetIds>;
 export interface NetworkConfiguration {
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
@@ -230,7 +228,7 @@ export const WorkflowStatus = S.String;
 export type WorkflowVersion = string;
 export type IsLatestVersion = boolean;
 export type WarningMessages = string[];
-export const WarningMessages = /*@__PURE__*/ S.Array(S.String);
+export const WarningMessages = SecurityGroupIds as any as S.Schema<WarningMessages>;
 export interface CreateWorkflowResponse {
   WorkflowArn: string;
   CreatedAt?: Date;
@@ -322,7 +320,7 @@ export type TaskInstanceStatus =
 export const TaskInstanceStatus = S.String;
 
 export type GenericMap = { [key: string]: string | undefined };
-export const GenericMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const GenericMap = Tags as any as S.Schema<GenericMap>;
 export interface GetTaskInstanceResponse {
   WorkflowArn: string;
   RunId: string;
@@ -444,7 +442,7 @@ export const RunType = S.String;
 export type ObjectMap = { [key: string]: any | undefined };
 export const ObjectMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
 export type TaskInstanceIds = string[];
-export const TaskInstanceIds = /*@__PURE__*/ S.Array(S.String);
+export const TaskInstanceIds = SecurityGroupIds as any as S.Schema<TaskInstanceIds>;
 export type WorkflowRunStatus =
   | "STARTING"
   | "QUEUED"
@@ -822,7 +820,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = SecurityGroupIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -836,9 +834,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateWorkflowRequest {
   WorkflowArn: string;
   DefinitionS3Location: DefinitionS3Location;

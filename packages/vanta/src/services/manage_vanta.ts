@@ -138,9 +138,8 @@ export const Owner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Owner" }) as any as S.Schema<Owner>;
 
 export type CustomFieldValueCase1List = Array<string>;
-export const CustomFieldValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomFieldValueCase1List>;
+export const CustomFieldValueCase1List =
+  ControlDomainsList as any as S.Schema<CustomFieldValueCase1List>;
 
 export type CustomFieldValue = string | CustomFieldValueCase1List;
 export const CustomFieldValue = S.Unknown as any as S.Schema<CustomFieldValue>;
@@ -207,9 +206,8 @@ export const Control = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the categories to add the control to. This cannot be empty. */
 export type AddControlToTrustCenterRequestCategoryIdsList = Array<string>;
-export const AddControlToTrustCenterRequestCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddControlToTrustCenterRequestCategoryIdsList>;
+export const AddControlToTrustCenterRequestCategoryIdsList =
+  ControlDomainsList as any as S.Schema<AddControlToTrustCenterRequestCategoryIdsList>;
 
 export interface AddControlToTrustCenterRequest {
   slugId: string;
@@ -305,9 +303,8 @@ export const AddDiscoveredVendorToManagedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of risk attribute IDs the vendor has been assigned to. */
 export type VendorRiskAttributeIdsList = Array<string>;
-export const VendorRiskAttributeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VendorRiskAttributeIdsList>;
+export const VendorRiskAttributeIdsList =
+  ControlDomainsList as any as S.Schema<VendorRiskAttributeIdsList>;
 
 /** The vendor's category. */
 export interface VendorCategory {
@@ -664,9 +661,8 @@ export const VendorContractAmount = /*@__PURE__*/ S.suspend(() =>
 
 /** The vendor's custom fields. */
 export type VendorCustomFieldsList = Array<CustomField>;
-export const VendorCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<VendorCustomFieldsList>;
+export const VendorCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<VendorCustomFieldsList>;
 
 export type VendorDecisionStatus = "APPROVED" | "CONDITIONALLY_APPROVED" | "NOT_APPROVED";
 export const VendorDecisionStatus = S.String;
@@ -960,9 +956,7 @@ export const LeaveInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The id of each group the user belongs to. This includes both manually created groups in Vanta and groups imported from an identity provider. */
 export type PersonGroupIdsList = Array<string>;
-export const PersonGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PersonGroupIdsList>;
+export const PersonGroupIdsList = ControlDomainsList as any as S.Schema<PersonGroupIdsList>;
 
 export interface PersonName {
   /** The person's first (given) name. */
@@ -1101,9 +1095,8 @@ export const CompleteTrainingsTaskSummaryIncompleteTrainingsList = /*@__PURE__*/
 
 /** Security trainings that have been completed and are relevant given a person's current requirements. */
 export type CompleteTrainingsTaskSummaryCompletedTrainingsList = Array<Training>;
-export const CompleteTrainingsTaskSummaryCompletedTrainingsList = /*@__PURE__*/ S.Array(
-  Training,
-) as any as S.Schema<CompleteTrainingsTaskSummaryCompletedTrainingsList>;
+export const CompleteTrainingsTaskSummaryCompletedTrainingsList =
+  CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<CompleteTrainingsTaskSummaryCompletedTrainingsList>;
 
 /** Task summary for completing all trainings. */
 export interface CompleteTrainingsTaskSummary {
@@ -1146,18 +1139,16 @@ export const AcceptPoliciesTaskSummaryUnacceptedPoliciesItem = Training;
 
 /** Unaccepted policies that are relevant to the person. */
 export type AcceptPoliciesTaskSummaryUnacceptedPoliciesList = Array<Training>;
-export const AcceptPoliciesTaskSummaryUnacceptedPoliciesList = /*@__PURE__*/ S.Array(
-  Training,
-) as any as S.Schema<AcceptPoliciesTaskSummaryUnacceptedPoliciesList>;
+export const AcceptPoliciesTaskSummaryUnacceptedPoliciesList =
+  CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<AcceptPoliciesTaskSummaryUnacceptedPoliciesList>;
 
 export type AcceptPoliciesTaskSummaryAcceptedPoliciesItem = Training;
 export const AcceptPoliciesTaskSummaryAcceptedPoliciesItem = Training;
 
 /** Accepted policies that are relevant to the person. */
 export type AcceptPoliciesTaskSummaryAcceptedPoliciesList = Array<Training>;
-export const AcceptPoliciesTaskSummaryAcceptedPoliciesList = /*@__PURE__*/ S.Array(
-  Training,
-) as any as S.Schema<AcceptPoliciesTaskSummaryAcceptedPoliciesList>;
+export const AcceptPoliciesTaskSummaryAcceptedPoliciesList =
+  CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<AcceptPoliciesTaskSummaryAcceptedPoliciesList>;
 
 /** Policy acceptance details for a person. */
 export interface AcceptPoliciesTaskSummary {
@@ -1201,15 +1192,13 @@ export const CustomTask = Training;
 
 /** Incomplete custom tasks that are relevant given a person's requirements. */
 export type CompleteCustomTasksTaskSummaryIncompleteCustomTasksList = Array<Training>;
-export const CompleteCustomTasksTaskSummaryIncompleteCustomTasksList = /*@__PURE__*/ S.Array(
-  Training,
-) as any as S.Schema<CompleteCustomTasksTaskSummaryIncompleteCustomTasksList>;
+export const CompleteCustomTasksTaskSummaryIncompleteCustomTasksList =
+  CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<CompleteCustomTasksTaskSummaryIncompleteCustomTasksList>;
 
 /** Custom tasks that have been completed and are relevant given a person's current requirements. */
 export type CompleteCustomTasksTaskSummaryCompletedCustomTasksList = Array<Training>;
-export const CompleteCustomTasksTaskSummaryCompletedCustomTasksList = /*@__PURE__*/ S.Array(
-  Training,
-) as any as S.Schema<CompleteCustomTasksTaskSummaryCompletedCustomTasksList>;
+export const CompleteCustomTasksTaskSummaryCompletedCustomTasksList =
+  CompleteTrainingsTaskSummaryIncompleteTrainingsList as any as S.Schema<CompleteCustomTasksTaskSummaryCompletedCustomTasksList>;
 
 /** Task summary for completing all custom tasks. */
 export interface CompleteCustomTasksTaskSummary {
@@ -1261,9 +1250,7 @@ export const CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardin
 export type CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList =
   Array<Training>;
 export const CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList =
-  /*@__PURE__*/ S.Array(
-    Training,
-  ) as any as S.Schema<CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList>;
+  CompleteOffboardingCustomTasksTaskSummaryIncompleteCustomOffboardingTasksList as any as S.Schema<CompleteOffboardingCustomTasksTaskSummaryCompletedCustomOffboardingTasksList>;
 
 /** Task summary for completing all offboarding custom tasks. */
 export interface CompleteOffboardingCustomTasksTaskSummary {
@@ -1498,9 +1485,7 @@ export const TestVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** This test's third-party integration dependencies. */
 export type TestIntegrationsList = Array<string>;
-export const TestIntegrationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TestIntegrationsList>;
+export const TestIntegrationsList = ControlDomainsList as any as S.Schema<TestIntegrationsList>;
 
 export type TestStatus =
   | "OK"
@@ -1689,9 +1674,8 @@ export const TrustCenterResourceCategory = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for the resources that this viewer should have access to. If this field is omitted, the viewer will have access to all resources on the Trust Center. */
 export type AddTrustCenterViewerRequestResourceIdsList = Array<string>;
-export const AddTrustCenterViewerRequestResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTrustCenterViewerRequestResourceIdsList>;
+export const AddTrustCenterViewerRequestResourceIdsList =
+  ControlDomainsList as any as S.Schema<AddTrustCenterViewerRequestResourceIdsList>;
 
 /** The access level of the viewer. FULL_ACCESS means having access to all resources on the trust center. PARTIAL_ACCESS means having access to all public resources and a select list of requestable resources. */
 export type ViewerAccessLevel = "FULL_ACCESS" | "PARTIAL_ACCESS";
@@ -1734,9 +1718,8 @@ export const AddTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs for the resources this viewer has access to. If null, the viewer has access to all resources on the Trust Center. */
 export type TrustCenterViewerResourceIdsList = Array<string>;
-export const TrustCenterViewerResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrustCenterViewerResourceIdsList>;
+export const TrustCenterViewerResourceIdsList =
+  ControlDomainsList as any as S.Schema<TrustCenterViewerResourceIdsList>;
 
 /** Contains information about the DocuSign NDA if that is the NDA provider. */
 export interface TrustCenterViewerNdaInfoDocuSign {
@@ -2081,9 +2064,8 @@ export const CustomerTrustQuestionnaire = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for the resources that this viewer should have access to. If this field is omitted, the viewer will have access to all resources that they requested. */
 export type ApproveTrustCenterAccessRequestRequestResourceIdsList = Array<string>;
-export const ApproveTrustCenterAccessRequestRequestResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApproveTrustCenterAccessRequestRequestResourceIdsList>;
+export const ApproveTrustCenterAccessRequestRequestResourceIdsList =
+  ControlDomainsList as any as S.Schema<ApproveTrustCenterAccessRequestRequestResourceIdsList>;
 
 export interface ApproveTrustCenterAccessRequestRequest {
   slugId: string;
@@ -2117,23 +2099,18 @@ export const ApproveTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ApproveTrustCenterAccessRequestRequest>;
 
 export interface ApproveTrustCenterAccessRequestResponse {}
-export const ApproveTrustCenterAccessRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ApproveTrustCenterAccessRequestResponse",
-}) as any as S.Schema<ApproveTrustCenterAccessRequestResponse>;
+export const ApproveTrustCenterAccessRequestResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<ApproveTrustCenterAccessRequestResponse>;
 
 /** IDs of the controls to tag. Maximum 100. */
 export type BulkAddTagsToControlsRequestControlIdsList = Array<string>;
-export const BulkAddTagsToControlsRequestControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkAddTagsToControlsRequestControlIdsList>;
+export const BulkAddTagsToControlsRequestControlIdsList =
+  ControlDomainsList as any as S.Schema<BulkAddTagsToControlsRequestControlIdsList>;
 
 /** IDs of the tags to add or remove. */
 export type BulkAddTagsToControlsRequestTagsList = Array<string>;
-export const BulkAddTagsToControlsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkAddTagsToControlsRequestTagsList>;
+export const BulkAddTagsToControlsRequestTagsList =
+  ControlDomainsList as any as S.Schema<BulkAddTagsToControlsRequestTagsList>;
 
 export interface BulkAddTagsToControlsRequest {
   slugId: string;
@@ -2173,15 +2150,13 @@ export const ArrayResponseTrustCenterControl = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the controls to tag. Maximum 100. */
 export type BulkRemoveTagsFromControlsRequestControlIdsList = Array<string>;
-export const BulkRemoveTagsFromControlsRequestControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkRemoveTagsFromControlsRequestControlIdsList>;
+export const BulkRemoveTagsFromControlsRequestControlIdsList =
+  ControlDomainsList as any as S.Schema<BulkRemoveTagsFromControlsRequestControlIdsList>;
 
 /** IDs of the tags to add or remove. */
 export type BulkRemoveTagsFromControlsRequestTagsList = Array<string>;
-export const BulkRemoveTagsFromControlsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkRemoveTagsFromControlsRequestTagsList>;
+export const BulkRemoveTagsFromControlsRequestTagsList =
+  ControlDomainsList as any as S.Schema<BulkRemoveTagsFromControlsRequestTagsList>;
 
 export interface BulkRemoveTagsFromControlsRequest {
   slugId: string;
@@ -2222,9 +2197,8 @@ export const CancelRiskScenarioApprovalRequestRequest = /*@__PURE__*/ S.suspend(
 
 /** The list of categories this risk scenario belongs to. */
 export type RiskScenarioCategoriesList = Array<string>;
-export const RiskScenarioCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RiskScenarioCategoriesList>;
+export const RiskScenarioCategoriesList =
+  ControlDomainsList as any as S.Schema<RiskScenarioCategoriesList>;
 
 export type CIA = "Confidentiality" | "Integrity" | "Availability";
 export const CIA = S.String;
@@ -2239,9 +2213,8 @@ export type Treatment = "Mitigate" | "Transfer" | "Avoid" | "Accept";
 export const Treatment = S.String;
 
 export type CustomAttributeValueCase1List = Array<string>;
-export const CustomAttributeValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomAttributeValueCase1List>;
+export const CustomAttributeValueCase1List =
+  ControlDomainsList as any as S.Schema<CustomAttributeValueCase1List>;
 
 export type CustomAttributeValue = string | CustomAttributeValueCase1List;
 export const CustomAttributeValue = S.Unknown as any as S.Schema<CustomAttributeValue>;
@@ -2274,9 +2247,8 @@ export const ReviewStatus = S.String;
 
 /** The list of required approvers for this risk scenario. */
 export type RiskScenarioRequiredApproversList = Array<string>;
-export const RiskScenarioRequiredApproversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RiskScenarioRequiredApproversList>;
+export const RiskScenarioRequiredApproversList =
+  ControlDomainsList as any as S.Schema<RiskScenarioRequiredApproversList>;
 
 export type RiskScenarioType = "Risk Scenario" | "Enterprise Risk";
 export const RiskScenarioType = S.String;
@@ -2446,9 +2418,8 @@ export const AnswerLibraryActorAssignmentInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the entry. Discover valid `categoryId` and `tagId` values via `GET /v1/customer-trust/tag-categories` (to list categories) and `GET /v1/customer-trust/tag-categories/{tagCategoryId}` (to list tags within a category). */
 export type CreateAnswerLibraryEntryRequestTagsList = Array<TagInput>;
-export const CreateAnswerLibraryEntryRequestTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<CreateAnswerLibraryEntryRequestTagsList>;
+export const CreateAnswerLibraryEntryRequestTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<CreateAnswerLibraryEntryRequestTagsList>;
 
 export interface CreateAnswerLibraryEntryRequest {
   /** The question text. */
@@ -2496,9 +2467,8 @@ export const AnswerLibraryActorAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnswerLibraryActorAssignment>;
 
 export type KnowledgeBaseAnswerLibraryEntryOutputTagsList = Array<TagInput>;
-export const KnowledgeBaseAnswerLibraryEntryOutputTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<KnowledgeBaseAnswerLibraryEntryOutputTagsList>;
+export const KnowledgeBaseAnswerLibraryEntryOutputTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<KnowledgeBaseAnswerLibraryEntryOutputTagsList>;
 
 export interface KnowledgeBaseAnswerLibraryEntryOutput {
   id: string;
@@ -2736,9 +2706,8 @@ export const GdprRole = S.String;
 
 /** The control's values for custom fields. */
 export type CreateCustomControlRequestCustomFieldsList = Array<CustomField>;
-export const CreateCustomControlRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<CreateCustomControlRequestCustomFieldsList>;
+export const CreateCustomControlRequestCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<CreateCustomControlRequestCustomFieldsList>;
 
 export interface CreateCustomControlRequest {
   /** The control's external ID. */
@@ -2793,9 +2762,8 @@ export const CustomerTrustAccountGrantAccessOption = S.String;
 
 /** Tag IDs to assign. An empty array removes all tags for the category. */
 export type TagsByCategoryInputTagIdsList = Array<string>;
-export const TagsByCategoryInputTagIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TagsByCategoryInputTagIdsList>;
+export const TagsByCategoryInputTagIdsList =
+  ControlDomainsList as any as S.Schema<TagsByCategoryInputTagIdsList>;
 
 export interface TagsByCategoryInput {
   /** The tag category ID */
@@ -2835,15 +2803,13 @@ export const CustomerTrustAccountAccessConfigInput = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CustomerTrustAccountAccessConfigInput>;
 
 export type CreateCustomerTrustAccountRequestCustomFieldsList = Array<CustomField>;
-export const CreateCustomerTrustAccountRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<CreateCustomerTrustAccountRequestCustomFieldsList>;
+export const CreateCustomerTrustAccountRequestCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<CreateCustomerTrustAccountRequestCustomFieldsList>;
 
 /** Tags to assign to this account, grouped by category */
 export type CreateCustomerTrustAccountRequestTagsByCategoryList = Array<TagsByCategoryInput>;
-export const CreateCustomerTrustAccountRequestTagsByCategoryList = /*@__PURE__*/ S.Array(
-  TagsByCategoryInput,
-) as any as S.Schema<CreateCustomerTrustAccountRequestTagsByCategoryList>;
+export const CreateCustomerTrustAccountRequestTagsByCategoryList =
+  CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<CreateCustomerTrustAccountRequestTagsByCategoryList>;
 
 export interface CreateCustomerTrustAccountRequest {
   name: string;
@@ -2902,15 +2868,13 @@ export const CustomerTrustAccountAccessConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom field values for this account */
 export type CustomerTrustAccountVantaApiCustomFieldsList = Array<CustomField>;
-export const CustomerTrustAccountVantaApiCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<CustomerTrustAccountVantaApiCustomFieldsList>;
+export const CustomerTrustAccountVantaApiCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<CustomerTrustAccountVantaApiCustomFieldsList>;
 
 /** Tag IDs assigned in this category */
 export type TagsByCategoryOutputTagIdsList = Array<string>;
-export const TagsByCategoryOutputTagIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TagsByCategoryOutputTagIdsList>;
+export const TagsByCategoryOutputTagIdsList =
+  ControlDomainsList as any as S.Schema<TagsByCategoryOutputTagIdsList>;
 
 export interface TagsByCategoryOutput {
   /** The tag category ID */
@@ -2918,18 +2882,12 @@ export interface TagsByCategoryOutput {
   /** Tag IDs assigned in this category */
   tagIds: TagsByCategoryOutputTagIdsList;
 }
-export const TagsByCategoryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categoryId: S.String,
-    tagIds: TagsByCategoryOutputTagIdsList,
-  }),
-).annotate({ identifier: "TagsByCategoryOutput" }) as any as S.Schema<TagsByCategoryOutput>;
+export const TagsByCategoryOutput = TagsByCategoryInput as any as S.Schema<TagsByCategoryOutput>;
 
 /** Tags assigned to this account, grouped by category */
 export type CustomerTrustAccountVantaApiTagsByCategoryList = Array<TagsByCategoryOutput>;
-export const CustomerTrustAccountVantaApiTagsByCategoryList = /*@__PURE__*/ S.Array(
-  TagsByCategoryOutput,
-) as any as S.Schema<CustomerTrustAccountVantaApiTagsByCategoryList>;
+export const CustomerTrustAccountVantaApiTagsByCategoryList =
+  CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<CustomerTrustAccountVantaApiTagsByCategoryList>;
 
 /** Vanta API representation of a CustomerTrustAccount. */
 export interface CustomerTrustAccountVantaApi {
@@ -3110,9 +3068,8 @@ export type KnowledgeBaseExpirationStatus = "CURRENT" | "EXPIRED";
 export const KnowledgeBaseExpirationStatus = S.String;
 
 export type KnowledgeBaseDocumentResourceOutputTagsList = Array<TagInput>;
-export const KnowledgeBaseDocumentResourceOutputTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<KnowledgeBaseDocumentResourceOutputTagsList>;
+export const KnowledgeBaseDocumentResourceOutputTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<KnowledgeBaseDocumentResourceOutputTagsList>;
 
 export interface KnowledgeBaseDocumentResourceOutput {
   id: string;
@@ -3329,29 +3286,23 @@ export const CreateQuestionnaireExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateQuestionnaireExportRequest>;
 
 export interface CreateQuestionnaireExportResponse {}
-export const CreateQuestionnaireExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateQuestionnaireExportResponse",
-}) as any as S.Schema<CreateQuestionnaireExportResponse>;
+export const CreateQuestionnaireExportResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<CreateQuestionnaireExportResponse>;
 
 /** The list of categories this risk scenario belongs to. Each element in the list will become a new custom category if it doesn't match an existing one. You can reference the current category options in the Risk Management settings and/or enter new values. */
 export type CreateRiskScenarioRequestCategoriesList = Array<string>;
-export const CreateRiskScenarioRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRiskScenarioRequestCategoriesList>;
+export const CreateRiskScenarioRequestCategoriesList =
+  ControlDomainsList as any as S.Schema<CreateRiskScenarioRequestCategoriesList>;
 
 /** Enter a list of the following for the type of risk documented: - Confidentiality: Risk to data stores, customer/sensitive information, etc. - Integrity: Risk to accuracy or integrity of system settings and/or data - Availability: Risk to normal service operations and critical system functionality */
 export type CreateRiskScenarioRequestCiaCategoriesList = Array<CIA | (string & {})>;
-export const CreateRiskScenarioRequestCiaCategoriesList = /*@__PURE__*/ S.Array(
-  CIA,
-) as any as S.Schema<CreateRiskScenarioRequestCiaCategoriesList>;
+export const CreateRiskScenarioRequestCiaCategoriesList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<CreateRiskScenarioRequestCiaCategoriesList>;
 
 /** The list of custom attributes. You can reference existing custom attributes in the Risk Management settings and/or create new ones. The format is: - {label: "field-name", value: "string-representation"} for text, date, number and currency fields - {label: "field-name", value: ["option1", "option2"]} for picklist fields */
 export type CreateRiskScenarioRequestCustomFieldsList = Array<CustomAttribute>;
-export const CreateRiskScenarioRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomAttribute,
-) as any as S.Schema<CreateRiskScenarioRequestCustomFieldsList>;
+export const CreateRiskScenarioRequestCustomFieldsList =
+  RiskScenarioCustomFieldsList as any as S.Schema<CreateRiskScenarioRequestCustomFieldsList>;
 
 export interface CreateRiskScenarioRequest {
   /** This describes an actual or potential risk to your organization's people, processes, technology, data, and facilities. Document actual issues or likely scenarios based on your specific environment or a potential vulnerability. */
@@ -3625,12 +3576,7 @@ export interface SubscriberGroup {
   /** Name of the group. */
   name: string;
 }
-export const SubscriberGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "SubscriberGroup" }) as any as S.Schema<SubscriberGroup>;
+export const SubscriberGroup = TrustCenterFaqCategory as any as S.Schema<SubscriberGroup>;
 
 /** Groups this subscriber belongs to. */
 export type TrustCenterSubscriberGroupsList = Array<SubscriberGroup>;
@@ -3665,9 +3611,8 @@ export const TrustCenterSubscriber = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriber IDs in the group. */
 export type CreateTrustCenterSubscriberGroupRequestSubscriberIdsList = Array<string>;
-export const CreateTrustCenterSubscriberGroupRequestSubscriberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTrustCenterSubscriberGroupRequestSubscriberIdsList>;
+export const CreateTrustCenterSubscriberGroupRequestSubscriberIdsList =
+  ControlDomainsList as any as S.Schema<CreateTrustCenterSubscriberGroupRequestSubscriberIdsList>;
 
 export interface CreateTrustCenterSubscriberGroupRequest {
   slugId: string;
@@ -3688,9 +3633,8 @@ export const CreateTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** List of subscriber IDs in the group. */
 export type TrustCenterSubscriberGroupSubscriberIdsList = Array<string>;
-export const TrustCenterSubscriberGroupSubscriberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrustCenterSubscriberGroupSubscriberIdsList>;
+export const TrustCenterSubscriberGroupSubscriberIdsList =
+  ControlDomainsList as any as S.Schema<TrustCenterSubscriberGroupSubscriberIdsList>;
 
 export interface TrustCenterSubscriberGroup {
   /** Unique identifier for the subscriber group. */
@@ -3729,9 +3673,8 @@ export const UpdateVisibilityType = S.String;
 
 /** Additional one-off email addresses to notify. These are always sent regardless of `notificationTarget`. */
 export type CreateTrustCenterUpdateRequestNotifiedEmailsList = Array<string>;
-export const CreateTrustCenterUpdateRequestNotifiedEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTrustCenterUpdateRequestNotifiedEmailsList>;
+export const CreateTrustCenterUpdateRequestNotifiedEmailsList =
+  ControlDomainsList as any as S.Schema<CreateTrustCenterUpdateRequestNotifiedEmailsList>;
 
 /** Target recipients for notifications */
 export type UpdateNotificationTarget = "ALL" | "GROUPS" | "NONE";
@@ -3739,9 +3682,8 @@ export const UpdateNotificationTarget = S.String;
 
 /** IDs of subscriber groups to notify. Required when `notificationTarget` is `GROUPS`. */
 export type CreateTrustCenterUpdateRequestSubscriberGroupIdsList = Array<string>;
-export const CreateTrustCenterUpdateRequestSubscriberGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTrustCenterUpdateRequestSubscriberGroupIdsList>;
+export const CreateTrustCenterUpdateRequestSubscriberGroupIdsList =
+  ControlDomainsList as any as S.Schema<CreateTrustCenterUpdateRequestSubscriberGroupIdsList>;
 
 export interface CreateTrustCenterUpdateRequest {
   slugId: string;
@@ -3777,9 +3719,8 @@ export const CreateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails to notify about the update. */
 export type TrustCenterUpdateAPIResponseNotifiedEmailsList = Array<string>;
-export const TrustCenterUpdateAPIResponseNotifiedEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrustCenterUpdateAPIResponseNotifiedEmailsList>;
+export const TrustCenterUpdateAPIResponseNotifiedEmailsList =
+  ControlDomainsList as any as S.Schema<TrustCenterUpdateAPIResponseNotifiedEmailsList>;
 
 export interface TrustCenterUpdateAPIResponse {
   /** Unique identifier for the update. */
@@ -3841,9 +3782,8 @@ export const CreateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom fields for the vendor. For more information on how to set custom fields via the API, visit https://developer.vanta.com/docs/guides/use-custom-fields-with-vendors */
 export type CreateVendorRequestCustomFieldsList = Array<CustomField>;
-export const CreateVendorRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<CreateVendorRequestCustomFieldsList>;
+export const CreateVendorRequestCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<CreateVendorRequestCustomFieldsList>;
 
 /** The scope type: - ALL: Vendor applies to all frameworks - PARTIAL: Vendor applies to specific frameworks (requires frameworkIds) - NONE: Vendor excluded from all frameworks */
 export type VendorFrameworkScopeScopeType = "ALL" | "PARTIAL" | "NONE";
@@ -3851,9 +3791,8 @@ export const VendorFrameworkScopeScopeType = S.String;
 
 /** Framework IDs the vendor applies to. Required when scopeType is PARTIAL. */
 export type VendorFrameworkScopeFrameworkIdsList = Array<string>;
-export const VendorFrameworkScopeFrameworkIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VendorFrameworkScopeFrameworkIdsList>;
+export const VendorFrameworkScopeFrameworkIdsList =
+  ControlDomainsList as any as S.Schema<VendorFrameworkScopeFrameworkIdsList>;
 
 /** Framework scoping configuration for a vendor. Determines which compliance frameworks the vendor applies to. */
 export interface VendorFrameworkScope {
@@ -4056,9 +3995,8 @@ export const KnowledgeBaseCustomerVisibility = S.String;
 
 /** Tags to associate with the resource. */
 export type CreateWebpageResourceRequestTagsList = Array<TagInput>;
-export const CreateWebpageResourceRequestTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<CreateWebpageResourceRequestTagsList>;
+export const CreateWebpageResourceRequestTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<CreateWebpageResourceRequestTagsList>;
 
 export interface CreateWebpageResourceRequest {
   /** The title of the webpage resource. */
@@ -4110,9 +4048,8 @@ export type KnowledgeBaseWebpageResourceOutputCustomerVisibility =
 export const KnowledgeBaseWebpageResourceOutputCustomerVisibility = S.String;
 
 export type KnowledgeBaseWebpageResourceOutputTagsList = Array<TagInput>;
-export const KnowledgeBaseWebpageResourceOutputTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<KnowledgeBaseWebpageResourceOutputTagsList>;
+export const KnowledgeBaseWebpageResourceOutputTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<KnowledgeBaseWebpageResourceOutputTagsList>;
 
 export interface KnowledgeBaseWebpageResourceOutput {
   id: string;
@@ -4195,9 +4132,8 @@ export const CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategory
 
 /** Tags to assign to the questionnaire. Each entry must include a categoryId and tagId. Replaces all existing tags. */
 export type CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList = Array<TagInput>;
-export const CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList>;
+export const CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<CreateWebsiteQuestionnaireRequestTagAndCategoryIdsList>;
 
 export interface CreateWebsiteQuestionnaireRequest {
   /** Display name for the questionnaire. */
@@ -4320,11 +4256,8 @@ export const DeleteAnswerLibraryEntryRouteRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteAnswerLibraryEntryRouteRequest>;
 
 export interface DeleteAnswerLibraryEntryRouteResponse {}
-export const DeleteAnswerLibraryEntryRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAnswerLibraryEntryRouteResponse",
-}) as any as S.Schema<DeleteAnswerLibraryEntryRouteResponse>;
+export const DeleteAnswerLibraryEntryRouteResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteAnswerLibraryEntryRouteResponse>;
 
 export interface DeleteByIdRequest {
   vendorId: string;
@@ -4336,9 +4269,8 @@ export const DeleteByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteByIdRequest" }) as any as S.Schema<DeleteByIdRequest>;
 
 export interface DeleteByIdResponse {}
-export const DeleteByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteByIdResponse",
-}) as any as S.Schema<DeleteByIdResponse>;
+export const DeleteByIdResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteByIdResponse>;
 
 export interface DeleteComplianceFrameworkRequest {
   slugId: string;
@@ -4360,11 +4292,8 @@ export const DeleteComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteComplianceFrameworkRequest>;
 
 export interface DeleteComplianceFrameworkResponse {}
-export const DeleteComplianceFrameworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteComplianceFrameworkResponse",
-}) as any as S.Schema<DeleteComplianceFrameworkResponse>;
+export const DeleteComplianceFrameworkResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteComplianceFrameworkResponse>;
 
 export interface DeleteContractRequest {
   contractId: string;
@@ -4376,9 +4305,8 @@ export const DeleteContractRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContractRequest" }) as any as S.Schema<DeleteContractRequest>;
 
 export interface DeleteContractResponse {}
-export const DeleteContractResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContractResponse",
-}) as any as S.Schema<DeleteContractResponse>;
+export const DeleteContractResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteContractResponse>;
 
 export interface DeleteControlRequest {
   controlId: string;
@@ -4390,9 +4318,8 @@ export const DeleteControlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteControlRequest" }) as any as S.Schema<DeleteControlRequest>;
 
 export interface DeleteControlResponse {}
-export const DeleteControlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteControlResponse",
-}) as any as S.Schema<DeleteControlResponse>;
+export const DeleteControlResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteControlResponse>;
 
 export interface DeleteCustomerTrustAccountRequest {
   accountId: string;
@@ -4406,11 +4333,8 @@ export const DeleteCustomerTrustAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomerTrustAccountRequest>;
 
 export interface DeleteCustomerTrustAccountResponse {}
-export const DeleteCustomerTrustAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomerTrustAccountResponse",
-}) as any as S.Schema<DeleteCustomerTrustAccountResponse>;
+export const DeleteCustomerTrustAccountResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteCustomerTrustAccountResponse>;
 
 export interface DeleteDocumentRequest {
   documentId: string;
@@ -4422,9 +4346,8 @@ export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDocumentRequest" }) as any as S.Schema<DeleteDocumentRequest>;
 
 export interface DeleteDocumentResponse {}
-export const DeleteDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDocumentResponse",
-}) as any as S.Schema<DeleteDocumentResponse>;
+export const DeleteDocumentResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteDocumentResponse>;
 
 export interface DeleteDocumentForcontrolRequest {
   controlId: string;
@@ -4442,11 +4365,8 @@ export const DeleteDocumentForcontrolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDocumentForcontrolRequest>;
 
 export interface DeleteDocumentForcontrolResponse {}
-export const DeleteDocumentForcontrolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDocumentForcontrolResponse",
-}) as any as S.Schema<DeleteDocumentForcontrolResponse>;
+export const DeleteDocumentForcontrolResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteDocumentForcontrolResponse>;
 
 export interface DeleteFileForDocumentRequest {
   documentId: string;
@@ -4468,9 +4388,8 @@ export const DeleteFileForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFileForDocumentRequest>;
 
 export interface DeleteFileForDocumentResponse {}
-export const DeleteFileForDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFileForDocumentResponse",
-}) as any as S.Schema<DeleteFileForDocumentResponse>;
+export const DeleteFileForDocumentResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteFileForDocumentResponse>;
 
 export interface DeleteFindingByIdRequest {
   vendorId: string;
@@ -4484,9 +4403,8 @@ export const DeleteFindingByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFindingByIdRequest" }) as any as S.Schema<DeleteFindingByIdRequest>;
 
 export interface DeleteFindingByIdResponse {}
-export const DeleteFindingByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFindingByIdResponse",
-}) as any as S.Schema<DeleteFindingByIdResponse>;
+export const DeleteFindingByIdResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteFindingByIdResponse>;
 
 export interface DeleteKnowledgeBaseResourceRequest {
   id: string;
@@ -4500,11 +4418,8 @@ export const DeleteKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKnowledgeBaseResourceRequest>;
 
 export interface DeleteKnowledgeBaseResourceResponse {}
-export const DeleteKnowledgeBaseResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteKnowledgeBaseResourceResponse",
-}) as any as S.Schema<DeleteKnowledgeBaseResourceResponse>;
+export const DeleteKnowledgeBaseResourceResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteKnowledgeBaseResourceResponse>;
 
 export interface DeleteLinkForDocumentRequest {
   documentId: string;
@@ -4520,9 +4435,8 @@ export const DeleteLinkForDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkForDocumentRequest>;
 
 export interface DeleteLinkForDocumentResponse {}
-export const DeleteLinkForDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLinkForDocumentResponse",
-}) as any as S.Schema<DeleteLinkForDocumentResponse>;
+export const DeleteLinkForDocumentResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteLinkForDocumentResponse>;
 
 export interface DeleteQuestionnaireRequest {
   questionnaireId: string;
@@ -4542,9 +4456,8 @@ export const DeleteQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteQuestionnaireRequest>;
 
 export interface DeleteQuestionnaireResponse {}
-export const DeleteQuestionnaireResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQuestionnaireResponse",
-}) as any as S.Schema<DeleteQuestionnaireResponse>;
+export const DeleteQuestionnaireResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteQuestionnaireResponse>;
 
 export interface DeleteRiskScenarioControlRequest {
   riskScenarioId: string;
@@ -4566,11 +4479,8 @@ export const DeleteRiskScenarioControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRiskScenarioControlRequest>;
 
 export interface DeleteRiskScenarioControlResponse {}
-export const DeleteRiskScenarioControlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRiskScenarioControlResponse",
-}) as any as S.Schema<DeleteRiskScenarioControlResponse>;
+export const DeleteRiskScenarioControlResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteRiskScenarioControlResponse>;
 
 export interface DeleteSecurityReviewDocumentByIdRequest {
   vendorId: string;
@@ -4594,11 +4504,8 @@ export const DeleteSecurityReviewDocumentByIdRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSecurityReviewDocumentByIdRequest>;
 
 export interface DeleteSecurityReviewDocumentByIdResponse {}
-export const DeleteSecurityReviewDocumentByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSecurityReviewDocumentByIdResponse",
-}) as any as S.Schema<DeleteSecurityReviewDocumentByIdResponse>;
+export const DeleteSecurityReviewDocumentByIdResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteSecurityReviewDocumentByIdResponse>;
 
 export interface DeleteTestForControlRequest {
   controlId: string;
@@ -4614,9 +4521,8 @@ export const DeleteTestForControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTestForControlRequest>;
 
 export interface DeleteTestForControlResponse {}
-export const DeleteTestForControlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTestForControlResponse",
-}) as any as S.Schema<DeleteTestForControlResponse>;
+export const DeleteTestForControlResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteTestForControlResponse>;
 
 export interface DeleteTrustCenterControlRequest {
   slugId: string;
@@ -4634,11 +4540,8 @@ export const DeleteTrustCenterControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterControlRequest>;
 
 export interface DeleteTrustCenterControlResponse {}
-export const DeleteTrustCenterControlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterControlResponse",
-}) as any as S.Schema<DeleteTrustCenterControlResponse>;
+export const DeleteTrustCenterControlResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterControlResponse>;
 
 export interface DeleteTrustCenterControlCategoryRequest {
   slugId: string;
@@ -4660,11 +4563,8 @@ export const DeleteTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTrustCenterControlCategoryRequest>;
 
 export interface DeleteTrustCenterControlCategoryResponse {}
-export const DeleteTrustCenterControlCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterControlCategoryResponse",
-}) as any as S.Schema<DeleteTrustCenterControlCategoryResponse>;
+export const DeleteTrustCenterControlCategoryResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterControlCategoryResponse>;
 
 export interface DeleteTrustCenterFaqRequest {
   slugId: string;
@@ -4680,9 +4580,8 @@ export const DeleteTrustCenterFaqRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterFaqRequest>;
 
 export interface DeleteTrustCenterFaqResponse {}
-export const DeleteTrustCenterFaqResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrustCenterFaqResponse",
-}) as any as S.Schema<DeleteTrustCenterFaqResponse>;
+export const DeleteTrustCenterFaqResponse =
+  DeactivateTestEntityResponse as any as S.Schema<DeleteTrustCenterFaqResponse>;
 
 export interface DeleteTrustCenterFaqCategoryRequest {
   slugId: string;
@@ -4704,11 +4603,8 @@ export const DeleteTrustCenterFaqCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterFaqCategoryRequest>;
 
 export interface DeleteTrustCenterFaqCategoryResponse {}
-export const DeleteTrustCenterFaqCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterFaqCategoryResponse",
-}) as any as S.Schema<DeleteTrustCenterFaqCategoryResponse>;
+export const DeleteTrustCenterFaqCategoryResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterFaqCategoryResponse>;
 
 export interface DeleteTrustCenterResourceRequest {
   slugId: string;
@@ -4726,11 +4622,8 @@ export const DeleteTrustCenterResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterResourceRequest>;
 
 export interface DeleteTrustCenterResourceResponse {}
-export const DeleteTrustCenterResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterResourceResponse",
-}) as any as S.Schema<DeleteTrustCenterResourceResponse>;
+export const DeleteTrustCenterResourceResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterResourceResponse>;
 
 export interface DeleteTrustCenterResourceCategoryRequest {
   slugId: string;
@@ -4752,11 +4645,8 @@ export const DeleteTrustCenterResourceCategoryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTrustCenterResourceCategoryRequest>;
 
 export interface DeleteTrustCenterResourceCategoryResponse {}
-export const DeleteTrustCenterResourceCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterResourceCategoryResponse",
-}) as any as S.Schema<DeleteTrustCenterResourceCategoryResponse>;
+export const DeleteTrustCenterResourceCategoryResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterResourceCategoryResponse>;
 
 export interface DeleteTrustCenterSubprocessorRequest {
   slugId: string;
@@ -4778,11 +4668,8 @@ export const DeleteTrustCenterSubprocessorRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteTrustCenterSubprocessorRequest>;
 
 export interface DeleteTrustCenterSubprocessorResponse {}
-export const DeleteTrustCenterSubprocessorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterSubprocessorResponse",
-}) as any as S.Schema<DeleteTrustCenterSubprocessorResponse>;
+export const DeleteTrustCenterSubprocessorResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterSubprocessorResponse>;
 
 export interface DeleteTrustCenterSubscriberRequest {
   slugId: string;
@@ -4804,11 +4691,8 @@ export const DeleteTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustCenterSubscriberRequest>;
 
 export interface DeleteTrustCenterSubscriberResponse {}
-export const DeleteTrustCenterSubscriberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterSubscriberResponse",
-}) as any as S.Schema<DeleteTrustCenterSubscriberResponse>;
+export const DeleteTrustCenterSubscriberResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterSubscriberResponse>;
 
 export interface DeleteTrustCenterSubscriberGroupRequest {
   slugId: string;
@@ -4830,11 +4714,8 @@ export const DeleteTrustCenterSubscriberGroupRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTrustCenterSubscriberGroupRequest>;
 
 export interface DeleteTrustCenterSubscriberGroupResponse {}
-export const DeleteTrustCenterSubscriberGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustCenterSubscriberGroupResponse",
-}) as any as S.Schema<DeleteTrustCenterSubscriberGroupResponse>;
+export const DeleteTrustCenterSubscriberGroupResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DeleteTrustCenterSubscriberGroupResponse>;
 
 export interface DeleteTrustCenterUpdateRequest {
   slugId: string;
@@ -4882,11 +4763,8 @@ export const DenyTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DenyTrustCenterAccessRequestRequest>;
 
 export interface DenyTrustCenterAccessRequestResponse {}
-export const DenyTrustCenterAccessRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DenyTrustCenterAccessRequestResponse",
-}) as any as S.Schema<DenyTrustCenterAccessRequestResponse>;
+export const DenyTrustCenterAccessRequestResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<DenyTrustCenterAccessRequestResponse>;
 
 export interface GetAnswerLibraryEntryRequest {
   id: string;
@@ -5019,9 +4897,8 @@ export const VendorAssessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VendorAssessment" }) as any as S.Schema<VendorAssessment>;
 
 export type GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList = Array<string>;
-export const GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList>;
+export const GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<GetAssessmentsByVendorIdRequestTypeIdMatchesAnyList>;
 
 export type GetAssessmentsByVendorIdRequestStatusMatchesAnyList = Array<
   AssessmentStatus | (string & {})
@@ -5236,9 +5113,8 @@ export const ChatbotMessageRole = S.String;
 
 /** Resource IDs referenced by this message. */
 export type TrustCenterChatbotMessageReferencesList = Array<string>;
-export const TrustCenterChatbotMessageReferencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrustCenterChatbotMessageReferencesList>;
+export const TrustCenterChatbotMessageReferencesList =
+  ControlDomainsList as any as S.Schema<TrustCenterChatbotMessageReferencesList>;
 
 export interface TrustCenterChatbotMessage {
   /** Unique identifier for the message. */
@@ -5294,9 +5170,8 @@ export const GetConnectedIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of string identifiers for the resource types ingested by the Integration. */
 export type IntegrationResourceKindsList = Array<string>;
-export const IntegrationResourceKindsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationResourceKindsList>;
+export const IntegrationResourceKindsList =
+  ControlDomainsList as any as S.Schema<IntegrationResourceKindsList>;
 
 export interface Connection {
   /** The unique identifier for the Connection. */
@@ -5384,15 +5259,13 @@ export const GetControlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The security domains that the control belongs to. */
 export type ControlDetailDomainsList = Array<string>;
-export const ControlDetailDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ControlDetailDomainsList>;
+export const ControlDetailDomainsList =
+  ControlDomainsList as any as S.Schema<ControlDetailDomainsList>;
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type ControlDetailCustomFieldsList = Array<CustomField>;
-export const ControlDetailCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<ControlDetailCustomFieldsList>;
+export const ControlDetailCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<ControlDetailCustomFieldsList>;
 
 export type ControlStatus = "NO_EVIDENCE_MAPPED" | "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
 export const ControlStatus = S.String;
@@ -5501,9 +5374,8 @@ export const DocumentDetailDeactivatedStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the emails subscribed to the document. */
 export type DocumentDetailSubscribersList = Array<string>;
-export const DocumentDetailSubscribersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DocumentDetailSubscribersList>;
+export const DocumentDetailSubscribersList =
+  ControlDomainsList as any as S.Schema<DocumentDetailSubscribersList>;
 
 export interface DocumentDetail {
   /** The document's unique ID. */
@@ -5803,24 +5675,20 @@ export const ClosedMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClosedMetadata" }) as any as S.Schema<ClosedMetadata>;
 
 export type StandardIssueMappedControlIdsList = Array<string>;
-export const StandardIssueMappedControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StandardIssueMappedControlIdsList>;
+export const StandardIssueMappedControlIdsList =
+  ControlDomainsList as any as S.Schema<StandardIssueMappedControlIdsList>;
 
 export type StandardIssueMappedRiskScenarioIdsList = Array<string>;
-export const StandardIssueMappedRiskScenarioIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StandardIssueMappedRiskScenarioIdsList>;
+export const StandardIssueMappedRiskScenarioIdsList =
+  ControlDomainsList as any as S.Schema<StandardIssueMappedRiskScenarioIdsList>;
 
 export type StandardIssueMappedPolicyIdsList = Array<string>;
-export const StandardIssueMappedPolicyIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StandardIssueMappedPolicyIdsList>;
+export const StandardIssueMappedPolicyIdsList =
+  ControlDomainsList as any as S.Schema<StandardIssueMappedPolicyIdsList>;
 
 export type IssueCustomFieldValueCase1List = Array<string>;
-export const IssueCustomFieldValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IssueCustomFieldValueCase1List>;
+export const IssueCustomFieldValueCase1List =
+  ControlDomainsList as any as S.Schema<IssueCustomFieldValueCase1List>;
 
 export type IssueCustomFieldValue = string | IssueCustomFieldValueCase1List;
 export const IssueCustomFieldValue = S.Unknown as any as S.Schema<IssueCustomFieldValue>;
@@ -5910,29 +5778,24 @@ export const StandardIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StandardIssue" }) as any as S.Schema<StandardIssue>;
 
 export type StandardPOAMOwnersList = Array<IssueOwner>;
-export const StandardPOAMOwnersList = /*@__PURE__*/ S.Array(
-  IssueOwner,
-) as any as S.Schema<StandardPOAMOwnersList>;
+export const StandardPOAMOwnersList =
+  StandardIssueOwnersList as any as S.Schema<StandardPOAMOwnersList>;
 
 export type StandardPOAMMappedControlIdsList = Array<string>;
-export const StandardPOAMMappedControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StandardPOAMMappedControlIdsList>;
+export const StandardPOAMMappedControlIdsList =
+  ControlDomainsList as any as S.Schema<StandardPOAMMappedControlIdsList>;
 
 export type StandardPOAMMappedRiskScenarioIdsList = Array<string>;
-export const StandardPOAMMappedRiskScenarioIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StandardPOAMMappedRiskScenarioIdsList>;
+export const StandardPOAMMappedRiskScenarioIdsList =
+  ControlDomainsList as any as S.Schema<StandardPOAMMappedRiskScenarioIdsList>;
 
 export type StandardPOAMMappedPolicyIdsList = Array<string>;
-export const StandardPOAMMappedPolicyIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StandardPOAMMappedPolicyIdsList>;
+export const StandardPOAMMappedPolicyIdsList =
+  ControlDomainsList as any as S.Schema<StandardPOAMMappedPolicyIdsList>;
 
 export type StandardPOAMCustomFieldsList = Array<IssueCustomField>;
-export const StandardPOAMCustomFieldsList = /*@__PURE__*/ S.Array(
-  IssueCustomField,
-) as any as S.Schema<StandardPOAMCustomFieldsList>;
+export const StandardPOAMCustomFieldsList =
+  StandardIssueCustomFieldsList as any as S.Schema<StandardPOAMCustomFieldsList>;
 
 /** Extract from T those types that are assignable to U */
 export type ExtractIssueTemplateSTANDARDPOAM = "STANDARD_POAM";
@@ -6433,26 +6296,20 @@ export type JSONSchema7Items = JSONSchema7Definition | JSONSchema7ItemsCase1List
 export const JSONSchema7Items = S.Unknown as any as S.Schema<JSONSchema7Items>;
 
 export type JSONSchema7RequiredList = Array<string>;
-export const JSONSchema7RequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JSONSchema7RequiredList>;
+export const JSONSchema7RequiredList =
+  ControlDomainsList as any as S.Schema<JSONSchema7RequiredList>;
 
 export type JSONSchema7PropertiesMap = { [key: string]: JSONSchema7Definition | undefined };
-export const JSONSchema7PropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  JSONSchema7Definition,
-) as any as S.Schema<JSONSchema7PropertiesMap>;
+export const JSONSchema7PropertiesMap =
+  JSONSchema7DefsMap as any as S.Schema<JSONSchema7PropertiesMap>;
 
 export type JSONSchema7PatternPropertiesMap = { [key: string]: JSONSchema7Definition | undefined };
-export const JSONSchema7PatternPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  JSONSchema7Definition,
-) as any as S.Schema<JSONSchema7PatternPropertiesMap>;
+export const JSONSchema7PatternPropertiesMap =
+  JSONSchema7DefsMap as any as S.Schema<JSONSchema7PatternPropertiesMap>;
 
 export type JSONSchema7DependenciesValueCase1List = Array<string>;
-export const JSONSchema7DependenciesValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JSONSchema7DependenciesValueCase1List>;
+export const JSONSchema7DependenciesValueCase1List =
+  ControlDomainsList as any as S.Schema<JSONSchema7DependenciesValueCase1List>;
 
 export type JSONSchema7DependenciesValue =
   | JSONSchema7Definition
@@ -6469,25 +6326,20 @@ export const JSONSchema7DependenciesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JSONSchema7DependenciesMap>;
 
 export type JSONSchema7AllOfList = Array<JSONSchema7Definition>;
-export const JSONSchema7AllOfList = /*@__PURE__*/ S.Array(
-  JSONSchema7Definition,
-) as any as S.Schema<JSONSchema7AllOfList>;
+export const JSONSchema7AllOfList =
+  JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7AllOfList>;
 
 export type JSONSchema7AnyOfList = Array<JSONSchema7Definition>;
-export const JSONSchema7AnyOfList = /*@__PURE__*/ S.Array(
-  JSONSchema7Definition,
-) as any as S.Schema<JSONSchema7AnyOfList>;
+export const JSONSchema7AnyOfList =
+  JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7AnyOfList>;
 
 export type JSONSchema7OneOfList = Array<JSONSchema7Definition>;
-export const JSONSchema7OneOfList = /*@__PURE__*/ S.Array(
-  JSONSchema7Definition,
-) as any as S.Schema<JSONSchema7OneOfList>;
+export const JSONSchema7OneOfList =
+  JSONSchema7ItemsCase1List as any as S.Schema<JSONSchema7OneOfList>;
 
 export type JSONSchema7DefinitionsMap = { [key: string]: JSONSchema7Definition | undefined };
-export const JSONSchema7DefinitionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  JSONSchema7Definition,
-) as any as S.Schema<JSONSchema7DefinitionsMap>;
+export const JSONSchema7DefinitionsMap =
+  JSONSchema7DefsMap as any as S.Schema<JSONSchema7DefinitionsMap>;
 
 export interface JSONSchema7 {
   _id?: string;
@@ -6591,9 +6443,8 @@ export const JSONSchema7 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JSONSchema7" }) as any as S.Schema<JSONSchema7>;
 
 export type AnswerPartValueCase3List = Array<string>;
-export const AnswerPartValueCase3List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnswerPartValueCase3List>;
+export const AnswerPartValueCase3List =
+  ControlDomainsList as any as S.Schema<AnswerPartValueCase3List>;
 
 /** Valid runtime value types for an answer part. Array values are restricted to string items to match `ArrayFieldSchema.items` (which is narrowed to `StringFieldSchema` only). */
 export type AnswerPartValue = string | number | boolean | AnswerPartValueCase3List;
@@ -7104,15 +6955,11 @@ export const StorageBucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Any role(s) assigned to the Account */
 export type AccountRolesList = Array<string>;
-export const AccountRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountRolesList>;
+export const AccountRolesList = ControlDomainsList as any as S.Schema<AccountRolesList>;
 
 /** Any groups to which the Account belongs */
 export type AccountGroupsList = Array<string>;
-export const AccountGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountGroupsList>;
+export const AccountGroupsList = ControlDomainsList as any as S.Schema<AccountGroupsList>;
 
 export interface Account {
   responseType: ResourceResponseType;
@@ -7167,15 +7014,11 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 
 /** Any role(s) assigned to the Account */
 export type AwsAccountRolesList = Array<string>;
-export const AwsAccountRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AwsAccountRolesList>;
+export const AwsAccountRolesList = ControlDomainsList as any as S.Schema<AwsAccountRolesList>;
 
 /** Any groups to which the Account belongs */
 export type AwsAccountGroupsList = Array<string>;
-export const AwsAccountGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AwsAccountGroupsList>;
+export const AwsAccountGroupsList = ControlDomainsList as any as S.Schema<AwsAccountGroupsList>;
 
 export interface AccessKeyInfo {
   /** The access key ID */
@@ -7690,12 +7533,7 @@ export interface UserDefinedTagCategory {
   id: string;
   displayName: string;
 }
-export const UserDefinedTagCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    displayName: S.String,
-  }),
-).annotate({ identifier: "UserDefinedTagCategory" }) as any as S.Schema<UserDefinedTagCategory>;
+export const UserDefinedTagCategory = BusinessUnit as any as S.Schema<UserDefinedTagCategory>;
 
 export interface UserDefinedTag {
   id: string;
@@ -7925,9 +7763,8 @@ export const GetTrustCenterAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs for the resources that the viewer requested access to. */
 export type TrustCenterAccessRequestRequestedResourcesList = Array<string>;
-export const TrustCenterAccessRequestRequestedResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrustCenterAccessRequestRequestedResourcesList>;
+export const TrustCenterAccessRequestRequestedResourcesList =
+  ControlDomainsList as any as S.Schema<TrustCenterAccessRequestRequestedResourcesList>;
 
 export interface TrustCenterAccessRequest {
   /** Unique identifier for the access request. */
@@ -7990,9 +7827,8 @@ export const GetTrustCenterControlCategoriesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetTrustCenterControlCategoriesRequest>;
 
 export type ArrayResponseTrustCenterControlCategoryResultsList = Array<TrustCenterControlCategory>;
-export const ArrayResponseTrustCenterControlCategoryResultsList = /*@__PURE__*/ S.Array(
-  TrustCenterControlCategory,
-) as any as S.Schema<ArrayResponseTrustCenterControlCategoryResultsList>;
+export const ArrayResponseTrustCenterControlCategoryResultsList =
+  TrustCenterControlCategoriesList as any as S.Schema<ArrayResponseTrustCenterControlCategoryResultsList>;
 
 export interface ArrayResponseTrustCenterControlCategory {
   results: ArrayResponseTrustCenterControlCategoryResultsList;
@@ -8285,15 +8121,13 @@ export const ExternalFindingSeverityType = S.String;
 
 /** Related vulnerabilities. Only relevant to vulnerabilities of type GROUPED. */
 export type VulnerabilityRelatedVulnsList = Array<string>;
-export const VulnerabilityRelatedVulnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerabilityRelatedVulnsList>;
+export const VulnerabilityRelatedVulnsList =
+  ControlDomainsList as any as S.Schema<VulnerabilityRelatedVulnsList>;
 
 /** Related URLs. */
 export type VulnerabilityRelatedUrlsList = Array<string>;
-export const VulnerabilityRelatedUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerabilityRelatedUrlsList>;
+export const VulnerabilityRelatedUrlsList =
+  ControlDomainsList as any as S.Schema<VulnerabilityRelatedUrlsList>;
 
 /** Metadata for the deactivation of the vulnerability. */
 export interface VulnerabilityDeactivateMetadata {
@@ -8419,9 +8253,8 @@ export const VulnerableAssetType = S.String;
 
 /** Tags of the scanned container image. */
 export type VulnerableAssetScannerImageTagsList = Array<string>;
-export const VulnerableAssetScannerImageTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerableAssetScannerImageTagsList>;
+export const VulnerableAssetScannerImageTagsList =
+  ControlDomainsList as any as S.Schema<VulnerableAssetScannerImageTagsList>;
 
 export interface KeyValuePair {
   /** Key of key-value pair. */
@@ -8429,54 +8262,42 @@ export interface KeyValuePair {
   /** Value of key-value pair. */
   value: string;
 }
-export const KeyValuePair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "KeyValuePair" }) as any as S.Schema<KeyValuePair>;
+export const KeyValuePair = QuestionnaireMetadata as any as S.Schema<KeyValuePair>;
 
 /** Tags of the scanned asset. */
 export type VulnerableAssetScannerAssetTagsList = Array<KeyValuePair>;
-export const VulnerableAssetScannerAssetTagsList = /*@__PURE__*/ S.Array(
-  KeyValuePair,
-) as any as S.Schema<VulnerableAssetScannerAssetTagsList>;
+export const VulnerableAssetScannerAssetTagsList =
+  CreateWebsiteQuestionnaireRequestMetadataList as any as S.Schema<VulnerableAssetScannerAssetTagsList>;
 
 /** IPV4s of the scanned asset. */
 export type VulnerableAssetScannerIpv4sList = Array<string>;
-export const VulnerableAssetScannerIpv4sList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerableAssetScannerIpv4sList>;
+export const VulnerableAssetScannerIpv4sList =
+  ControlDomainsList as any as S.Schema<VulnerableAssetScannerIpv4sList>;
 
 /** IPV6s of the scanned asset. */
 export type VulnerableAssetScannerIpv6sList = Array<string>;
-export const VulnerableAssetScannerIpv6sList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerableAssetScannerIpv6sList>;
+export const VulnerableAssetScannerIpv6sList =
+  ControlDomainsList as any as S.Schema<VulnerableAssetScannerIpv6sList>;
 
 /** Mac addresses of the scanned asset. */
 export type VulnerableAssetScannerMacAddressesList = Array<string>;
-export const VulnerableAssetScannerMacAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerableAssetScannerMacAddressesList>;
+export const VulnerableAssetScannerMacAddressesList =
+  ControlDomainsList as any as S.Schema<VulnerableAssetScannerMacAddressesList>;
 
 /** Host names of the scanned asset. */
 export type VulnerableAssetScannerHostnamesList = Array<string>;
-export const VulnerableAssetScannerHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerableAssetScannerHostnamesList>;
+export const VulnerableAssetScannerHostnamesList =
+  ControlDomainsList as any as S.Schema<VulnerableAssetScannerHostnamesList>;
 
 /** fqdns of the scanned asset. */
 export type VulnerableAssetScannerFqdnsList = Array<string>;
-export const VulnerableAssetScannerFqdnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerableAssetScannerFqdnsList>;
+export const VulnerableAssetScannerFqdnsList =
+  ControlDomainsList as any as S.Schema<VulnerableAssetScannerFqdnsList>;
 
 /** Operating systems of the scanned asset. */
 export type VulnerableAssetScannerOperatingSystemsList = Array<string>;
-export const VulnerableAssetScannerOperatingSystemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerableAssetScannerOperatingSystemsList>;
+export const VulnerableAssetScannerOperatingSystemsList =
+  ControlDomainsList as any as S.Schema<VulnerableAssetScannerOperatingSystemsList>;
 
 export interface VulnerableAssetScanner {
   /** The scanned asset's Vanta resource id. */
@@ -8563,9 +8384,8 @@ export const VulnerableAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** IdP-group resource IDs to import. */
 export type ImportIdpGroupsRequestIdpGroupIdsList = Array<string>;
-export const ImportIdpGroupsRequestIdpGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportIdpGroupsRequestIdpGroupIdsList>;
+export const ImportIdpGroupsRequestIdpGroupIdsList =
+  ControlDomainsList as any as S.Schema<ImportIdpGroupsRequestIdpGroupIdsList>;
 
 export interface ImportIdpGroupsRequest {
   /** IdP-group resource IDs to import. */
@@ -8632,9 +8452,8 @@ export const ImportIdpGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportIdpGroupsResponse" }) as any as S.Schema<ImportIdpGroupsResponse>;
 
 export type ListRequestReadableIssueIdMatchesAnyList = Array<string>;
-export const ListRequestReadableIssueIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestReadableIssueIdMatchesAnyList>;
+export const ListRequestReadableIssueIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListRequestReadableIssueIdMatchesAnyList>;
 
 export type ListRequestStatusMatchesAnyList = Array<IssueStatus | (string & {})>;
 export const ListRequestStatusMatchesAnyList = /*@__PURE__*/ S.Array(
@@ -8657,9 +8476,8 @@ export const ListRequestTypeMatchesAnyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListRequestTypeMatchesAnyList>;
 
 export type ListRequestOwnerIdMatchesAnyList = Array<string>;
-export const ListRequestOwnerIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestOwnerIdMatchesAnyList>;
+export const ListRequestOwnerIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListRequestOwnerIdMatchesAnyList>;
 
 export type IssueTemplate = "STANDARD_ISSUE" | "STANDARD_POAM";
 export const IssueTemplate = S.String;
@@ -8675,14 +8493,12 @@ export const ListRequestCloseReasonMatchesAnyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListRequestCloseReasonMatchesAnyList>;
 
 export type ListRequestAuditIdMatchesAnyList = Array<string>;
-export const ListRequestAuditIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestAuditIdMatchesAnyList>;
+export const ListRequestAuditIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListRequestAuditIdMatchesAnyList>;
 
 export type ListRequestControlIdMatchesAnyList = Array<string>;
-export const ListRequestControlIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestControlIdMatchesAnyList>;
+export const ListRequestControlIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListRequestControlIdMatchesAnyList>;
 
 export type IssueSortField =
   | "dueDate"
@@ -8929,9 +8745,8 @@ export const ListBusinessUnitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBusinessUnitsRequest" }) as any as S.Schema<ListBusinessUnitsRequest>;
 
 export type PaginatedResponseBusinessUnitResultsDataList = Array<BusinessUnit>;
-export const PaginatedResponseBusinessUnitResultsDataList = /*@__PURE__*/ S.Array(
-  BusinessUnit,
-) as any as S.Schema<PaginatedResponseBusinessUnitResultsDataList>;
+export const PaginatedResponseBusinessUnitResultsDataList =
+  QuestionnaireAssignableUsersResponseResultsDataList as any as S.Schema<PaginatedResponseBusinessUnitResultsDataList>;
 
 export interface PaginatedResponseBusinessUnitResults {
   data: PaginatedResponseBusinessUnitResultsDataList;
@@ -9150,9 +8965,8 @@ export const PaginatedResponseContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseContract>;
 
 export type ListControlsRequestFrameworkMatchesAnyList = Array<string>;
-export const ListControlsRequestFrameworkMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListControlsRequestFrameworkMatchesAnyList>;
+export const ListControlsRequestFrameworkMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListControlsRequestFrameworkMatchesAnyList>;
 
 export interface ListControlsRequest {
   pageSize?: number;
@@ -9289,21 +9103,18 @@ export const ListDeactivatedControlsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The security domains that the control belongs to. */
 export type DeactivatedControlDomainsList = Array<string>;
-export const DeactivatedControlDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeactivatedControlDomainsList>;
+export const DeactivatedControlDomainsList =
+  ControlDomainsList as any as S.Schema<DeactivatedControlDomainsList>;
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type DeactivatedControlCustomFieldsList = Array<CustomField>;
-export const DeactivatedControlCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<DeactivatedControlCustomFieldsList>;
+export const DeactivatedControlCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<DeactivatedControlCustomFieldsList>;
 
 /** The shorthands of the framework's sections that the control maps to. */
 export type DeactivatedControlFrameworkSectionsList = Array<string>;
-export const DeactivatedControlFrameworkSectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeactivatedControlFrameworkSectionsList>;
+export const DeactivatedControlFrameworkSectionsList =
+  ControlDomainsList as any as S.Schema<DeactivatedControlFrameworkSectionsList>;
 
 export interface DeactivatedControlFramework {
   /** The framework's unique ID. Accepted by the `frameworkMatchesAny` filter on `GET /v1/controls`. */
@@ -9630,9 +9441,8 @@ export const PaginatedResponseDiscoveredVendor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseDiscoveredVendor>;
 
 export type ListDocumentsRequestFrameworkMatchesAnyList = Array<string>;
-export const ListDocumentsRequestFrameworkMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDocumentsRequestFrameworkMatchesAnyList>;
+export const ListDocumentsRequestFrameworkMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListDocumentsRequestFrameworkMatchesAnyList>;
 
 export type ListDocumentsRequestStatusMatchesAnyList = Array<DocumentStatus | (string & {})>;
 export const ListDocumentsRequestStatusMatchesAnyList = /*@__PURE__*/ S.Array(
@@ -9734,12 +9544,7 @@ export interface EventLogTargetsItem {
   /** The target's unique ID. */
   id: string;
 }
-export const EventLogTargetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-  }),
-).annotate({ identifier: "EventLogTargetsItem" }) as any as S.Schema<EventLogTargetsItem>;
+export const EventLogTargetsItem = EventLogActor as any as S.Schema<EventLogTargetsItem>;
 
 /** The list of targets of the event. */
 export type EventLogTargetsList = Array<EventLogTargetsItem>;
@@ -9964,9 +9769,8 @@ export const PaginatedResponseFramework = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseFramework>;
 
 export type ListImportableIdpGroupsRequestIntegrationIdList = Array<string>;
-export const ListImportableIdpGroupsRequestIntegrationIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListImportableIdpGroupsRequestIntegrationIdList>;
+export const ListImportableIdpGroupsRequestIntegrationIdList =
+  ControlDomainsList as any as S.Schema<ListImportableIdpGroupsRequestIntegrationIdList>;
 
 export interface ListImportableIdpGroupsRequest {
   pageSize?: number;
@@ -10241,14 +10045,12 @@ export const ListPeopleRequestTaskStatusMatchesAnyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListPeopleRequestTaskStatusMatchesAnyList>;
 
 export type ListPeopleRequestGroupIdsMatchesAnyList = Array<string>;
-export const ListPeopleRequestGroupIdsMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPeopleRequestGroupIdsMatchesAnyList>;
+export const ListPeopleRequestGroupIdsMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListPeopleRequestGroupIdsMatchesAnyList>;
 
 export type ListPeopleRequestFrameworkIdMatchesAnyList = Array<string>;
-export const ListPeopleRequestFrameworkIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPeopleRequestFrameworkIdMatchesAnyList>;
+export const ListPeopleRequestFrameworkIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListPeopleRequestFrameworkIdMatchesAnyList>;
 
 export interface ListPeopleRequest {
   pageSize?: number;
@@ -10285,9 +10087,8 @@ export const ListPeopleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPeopleRequest" }) as any as S.Schema<ListPeopleRequest>;
 
 export type PaginatedResponsePersonResultsDataList = Array<Person>;
-export const PaginatedResponsePersonResultsDataList = /*@__PURE__*/ S.Array(
-  Person,
-) as any as S.Schema<PaginatedResponsePersonResultsDataList>;
+export const PaginatedResponsePersonResultsDataList =
+  GetGroupMembersResponseBodyList as any as S.Schema<PaginatedResponsePersonResultsDataList>;
 
 export interface PaginatedResponsePersonResults {
   data: PaginatedResponsePersonResultsDataList;
@@ -10388,14 +10189,12 @@ export const PaginatedResponsePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaginatedResponsePolicy" }) as any as S.Schema<PaginatedResponsePolicy>;
 
 export type ListProgramScopesRequestBusinessUnitIdMatchesAnyList = Array<string>;
-export const ListProgramScopesRequestBusinessUnitIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProgramScopesRequestBusinessUnitIdMatchesAnyList>;
+export const ListProgramScopesRequestBusinessUnitIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListProgramScopesRequestBusinessUnitIdMatchesAnyList>;
 
 export type ListProgramScopesRequestFrameworkIdMatchesAnyList = Array<string>;
-export const ListProgramScopesRequestFrameworkIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProgramScopesRequestFrameworkIdMatchesAnyList>;
+export const ListProgramScopesRequestFrameworkIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListProgramScopesRequestFrameworkIdMatchesAnyList>;
 
 export interface ListProgramScopesRequest {
   pageSize?: number;
@@ -10519,14 +10318,12 @@ export const ListQuestionnairesRequestTypeMatchesAnyList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<ListQuestionnairesRequestTypeMatchesAnyList>;
 
 export type ListQuestionnairesRequestOwnerIdMatchesAnyList = Array<string>;
-export const ListQuestionnairesRequestOwnerIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListQuestionnairesRequestOwnerIdMatchesAnyList>;
+export const ListQuestionnairesRequestOwnerIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListQuestionnairesRequestOwnerIdMatchesAnyList>;
 
 export type ListQuestionnairesRequestApproverIdMatchesAnyList = Array<string>;
-export const ListQuestionnairesRequestApproverIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListQuestionnairesRequestApproverIdMatchesAnyList>;
+export const ListQuestionnairesRequestApproverIdMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListQuestionnairesRequestApproverIdMatchesAnyList>;
 
 export interface ListQuestionnairesRequest {
   pageSize?: number;
@@ -10707,14 +10504,12 @@ export const PaginatedResponseAnyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseAnyResource>;
 
 export type ListRiskScenarioRequestOwnerMatchesAnyList = Array<string>;
-export const ListRiskScenarioRequestOwnerMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRiskScenarioRequestOwnerMatchesAnyList>;
+export const ListRiskScenarioRequestOwnerMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListRiskScenarioRequestOwnerMatchesAnyList>;
 
 export type ListRiskScenarioRequestCategoryMatchesAnyList = Array<string>;
-export const ListRiskScenarioRequestCategoryMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRiskScenarioRequestCategoryMatchesAnyList>;
+export const ListRiskScenarioRequestCategoryMatchesAnyList =
+  ControlDomainsList as any as S.Schema<ListRiskScenarioRequestCategoryMatchesAnyList>;
 
 export type UNCATEGORIZED = "Uncategorized";
 export const UNCATEGORIZED = S.String;
@@ -10755,9 +10550,8 @@ export const ListRiskScenarioRequestInherentScoreGroupMatchesAnyList = /*@__PURE
 export type ListRiskScenarioRequestResidualScoreGroupMatchesAnyList = Array<
   ScoreGroup | (string & {})
 >;
-export const ListRiskScenarioRequestResidualScoreGroupMatchesAnyList = /*@__PURE__*/ S.Array(
-  ScoreGroup,
-) as any as S.Schema<ListRiskScenarioRequestResidualScoreGroupMatchesAnyList>;
+export const ListRiskScenarioRequestResidualScoreGroupMatchesAnyList =
+  ListRiskScenarioRequestInherentScoreGroupMatchesAnyList as any as S.Schema<ListRiskScenarioRequestResidualScoreGroupMatchesAnyList>;
 
 export type ListRiskScenarioRequestReviewStatusMatchesAnyList = Array<ReviewStatus | (string & {})>;
 export const ListRiskScenarioRequestReviewStatusMatchesAnyList = /*@__PURE__*/ S.Array(
@@ -10915,9 +10709,8 @@ export const ListTagCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagCategoriesRequest" }) as any as S.Schema<ListTagCategoriesRequest>;
 
 export type ArrayResponseUserDefinedTagCategoryResultsList = Array<UserDefinedTagCategory>;
-export const ArrayResponseUserDefinedTagCategoryResultsList = /*@__PURE__*/ S.Array(
-  UserDefinedTagCategory,
-) as any as S.Schema<ArrayResponseUserDefinedTagCategoryResultsList>;
+export const ArrayResponseUserDefinedTagCategoryResultsList =
+  QuestionnaireAssignableUsersResponseResultsDataList as any as S.Schema<ArrayResponseUserDefinedTagCategoryResultsList>;
 
 export interface ArrayResponseUserDefinedTagCategory {
   results: ArrayResponseUserDefinedTagCategoryResultsList;
@@ -11241,9 +11034,8 @@ export const ListTrustCenterControlsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterControlsRequest>;
 
 export type PaginatedResponseTrustCenterControlResultsDataList = Array<TrustCenterControl>;
-export const PaginatedResponseTrustCenterControlResultsDataList = /*@__PURE__*/ S.Array(
-  TrustCenterControl,
-) as any as S.Schema<PaginatedResponseTrustCenterControlResultsDataList>;
+export const PaginatedResponseTrustCenterControlResultsDataList =
+  ArrayResponseTrustCenterControlResultsList as any as S.Schema<PaginatedResponseTrustCenterControlResultsDataList>;
 
 export interface PaginatedResponseTrustCenterControlResults {
   data: PaginatedResponseTrustCenterControlResultsDataList;
@@ -11325,9 +11117,8 @@ export const ListTrustCenterFaqCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrustCenterFaqCategoriesRequest>;
 
 export type ArrayResponseTrustCenterFaqCategoryResultsList = Array<TrustCenterFaqCategory>;
-export const ArrayResponseTrustCenterFaqCategoryResultsList = /*@__PURE__*/ S.Array(
-  TrustCenterFaqCategory,
-) as any as S.Schema<ArrayResponseTrustCenterFaqCategoryResultsList>;
+export const ArrayResponseTrustCenterFaqCategoryResultsList =
+  TrustCenterSubscriberGroupsList as any as S.Schema<ArrayResponseTrustCenterFaqCategoryResultsList>;
 
 export interface ArrayResponseTrustCenterFaqCategory {
   results: ArrayResponseTrustCenterFaqCategoryResultsList;
@@ -11386,9 +11177,8 @@ export const ListTrustCenterHistoricalAccessRequestsRequest = /*@__PURE__*/ S.su
 
 /** IDs for the resources that the viewer requested access to. */
 export type TrustCenterAccessRequestHistoricalRequestedResourcesList = Array<string>;
-export const TrustCenterAccessRequestHistoricalRequestedResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrustCenterAccessRequestHistoricalRequestedResourcesList>;
+export const TrustCenterAccessRequestHistoricalRequestedResourcesList =
+  ControlDomainsList as any as S.Schema<TrustCenterAccessRequestHistoricalRequestedResourcesList>;
 
 /** Enum representing the outcome states of a historical trust center access request */
 export type HistoricalAccessRequestOutcome = "APPROVED" | "DENIED";
@@ -11895,9 +11685,8 @@ export const ListVendorRiskAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Vendor categories this risk attribute applies to. */
 export type VendorRiskAttributeVendorCategoriesList = Array<string>;
-export const VendorRiskAttributeVendorCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VendorRiskAttributeVendorCategoriesList>;
+export const VendorRiskAttributeVendorCategoriesList =
+  ControlDomainsList as any as S.Schema<VendorRiskAttributeVendorCategoriesList>;
 
 export interface VendorRiskSection {
   /** Unique identifier for the risk section. */
@@ -11905,12 +11694,7 @@ export interface VendorRiskSection {
   /** Display name of the risk section. */
   name: string;
 }
-export const VendorRiskSection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "VendorRiskSection" }) as any as S.Schema<VendorRiskSection>;
+export const VendorRiskSection = TrustCenterFaqCategory as any as S.Schema<VendorRiskSection>;
 
 export interface VendorRiskAttribute {
   /** Unique identifier for the risk attribute. */
@@ -12272,19 +12056,13 @@ export interface MarkAsPeopleRequestUpdatesItem {
   /** ID of the person to change */
   id: string;
 }
-export const MarkAsPeopleRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "MarkAsPeopleRequestUpdatesItem",
-}) as any as S.Schema<MarkAsPeopleRequestUpdatesItem>;
+export const MarkAsPeopleRequestUpdatesItem =
+  AddPeopleToGroupRequestUpdatesItem as any as S.Schema<MarkAsPeopleRequestUpdatesItem>;
 
 /** List of account IDs to mark as a person */
 export type MarkAsPeopleRequestUpdatesList = Array<MarkAsPeopleRequestUpdatesItem>;
-export const MarkAsPeopleRequestUpdatesList = /*@__PURE__*/ S.Array(
-  MarkAsPeopleRequestUpdatesItem,
-) as any as S.Schema<MarkAsPeopleRequestUpdatesList>;
+export const MarkAsPeopleRequestUpdatesList =
+  AddPeopleToGroupRequestUpdatesList as any as S.Schema<MarkAsPeopleRequestUpdatesList>;
 
 export interface MarkAsPeopleRequest {
   /** List of account IDs to mark as a person */
@@ -12343,28 +12121,21 @@ export const ReactivateTestEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactivateTestEntityRequest>;
 
 export interface ReactivateTestEntityResponse {}
-export const ReactivateTestEntityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReactivateTestEntityResponse",
-}) as any as S.Schema<ReactivateTestEntityResponse>;
+export const ReactivateTestEntityResponse =
+  DeactivateTestEntityResponse as any as S.Schema<ReactivateTestEntityResponse>;
 
 export interface ReactivateVulnerabilitiesRequestUpdatesItem {
   /** ID of the vulnerability to reactivate. */
   id: string;
 }
-export const ReactivateVulnerabilitiesRequestUpdatesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "ReactivateVulnerabilitiesRequestUpdatesItem",
-}) as any as S.Schema<ReactivateVulnerabilitiesRequestUpdatesItem>;
+export const ReactivateVulnerabilitiesRequestUpdatesItem =
+  AddPeopleToGroupRequestUpdatesItem as any as S.Schema<ReactivateVulnerabilitiesRequestUpdatesItem>;
 
 /** List of vulnerability IDs to reactivate. */
 export type ReactivateVulnerabilitiesRequestUpdatesList =
   Array<ReactivateVulnerabilitiesRequestUpdatesItem>;
-export const ReactivateVulnerabilitiesRequestUpdatesList = /*@__PURE__*/ S.Array(
-  ReactivateVulnerabilitiesRequestUpdatesItem,
-) as any as S.Schema<ReactivateVulnerabilitiesRequestUpdatesList>;
+export const ReactivateVulnerabilitiesRequestUpdatesList =
+  AddPeopleToGroupRequestUpdatesList as any as S.Schema<ReactivateVulnerabilitiesRequestUpdatesList>;
 
 export interface ReactivateVulnerabilitiesRequest {
   /** List of vulnerability IDs to reactivate. */
@@ -12383,9 +12154,8 @@ export const RemovePeopleFromGroupRequestUpdatesItem = AddPeopleToGroupRequestUp
 
 /** List of people IDs to remove from a group. */
 export type RemovePeopleFromGroupRequestUpdatesList = Array<AddPeopleToGroupRequestUpdatesItem>;
-export const RemovePeopleFromGroupRequestUpdatesList = /*@__PURE__*/ S.Array(
-  AddPeopleToGroupRequestUpdatesItem,
-) as any as S.Schema<RemovePeopleFromGroupRequestUpdatesList>;
+export const RemovePeopleFromGroupRequestUpdatesList =
+  AddPeopleToGroupRequestUpdatesList as any as S.Schema<RemovePeopleFromGroupRequestUpdatesList>;
 
 export interface RemovePeopleFromGroupRequest {
   groupId: string;
@@ -12440,11 +12210,8 @@ export const RemoveTagCategoryProductContextRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveTagCategoryProductContextRequest>;
 
 export interface RemoveTagCategoryProductContextResponse {}
-export const RemoveTagCategoryProductContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveTagCategoryProductContextResponse",
-}) as any as S.Schema<RemoveTagCategoryProductContextResponse>;
+export const RemoveTagCategoryProductContextResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<RemoveTagCategoryProductContextResponse>;
 
 export interface RemoveTrustCenterViewerRequest {
   slugId: string;
@@ -12462,9 +12229,8 @@ export const RemoveTrustCenterViewerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveTrustCenterViewerRequest>;
 
 export interface RemoveTrustCenterViewerResponse {}
-export const RemoveTrustCenterViewerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RemoveTrustCenterViewerResponse" },
-) as any as S.Schema<RemoveTrustCenterViewerResponse>;
+export const RemoveTrustCenterViewerResponse =
+  DeleteTrustCenterUpdateResponse as any as S.Schema<RemoveTrustCenterViewerResponse>;
 
 export interface ReplaceDocumentResourceFileRequest {
   id: string;
@@ -12507,29 +12273,22 @@ export const SendNotificationsToAllSubscribersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SendNotificationsToAllSubscribersRequest>;
 
 export interface SendNotificationsToAllSubscribersResponse {}
-export const SendNotificationsToAllSubscribersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendNotificationsToAllSubscribersResponse",
-}) as any as S.Schema<SendNotificationsToAllSubscribersResponse>;
+export const SendNotificationsToAllSubscribersResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<SendNotificationsToAllSubscribersResponse>;
 
 /** Additional email addresses to notify about this Trust Center update in addition to the existing Trust Center subscribers. Duplicate emails are deduplicated to ensure each recipient gets only one notification. */
 export type SendTrustCenterUpdateNotificationsRequestEmailsList = Array<string>;
-export const SendTrustCenterUpdateNotificationsRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendTrustCenterUpdateNotificationsRequestEmailsList>;
+export const SendTrustCenterUpdateNotificationsRequestEmailsList =
+  ControlDomainsList as any as S.Schema<SendTrustCenterUpdateNotificationsRequestEmailsList>;
 
 /** IDs of subscriber groups to notify. When `customerTrustAccounts` is also provided, only subscribers in these groups whose linked account matches are notified. */
 export type SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList = Array<string>;
 export const SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList>;
+  CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList as any as S.Schema<SendTrustCenterUpdateNotificationsRequestSubscriberGroupIdsList>;
 
 export type CustomerTrustAccountCustomFieldFilterValueCase1List = Array<string>;
-export const CustomerTrustAccountCustomFieldFilterValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomerTrustAccountCustomFieldFilterValueCase1List>;
+export const CustomerTrustAccountCustomFieldFilterValueCase1List =
+  ControlDomainsList as any as S.Schema<CustomerTrustAccountCustomFieldFilterValueCase1List>;
 
 /** The value(s) to match against. Provide an array to match any of multiple values. */
 export type CustomerTrustAccountCustomFieldFilterValue =
@@ -12563,9 +12322,8 @@ export const CustomerTrustAccountsInputCustomFieldsFilterList = /*@__PURE__*/ S.
 
 /** Narrow the candidate accounts resolved from `customFieldsFilter` to those with matching tags. Within a category entry, accounts matching any of the `tagIds` are included. When multiple entries are provided, accounts must satisfy all of them. */
 export type CustomerTrustAccountsInputTagsByCategoryList = Array<TagsByCategoryInput>;
-export const CustomerTrustAccountsInputTagsByCategoryList = /*@__PURE__*/ S.Array(
-  TagsByCategoryInput,
-) as any as S.Schema<CustomerTrustAccountsInputTagsByCategoryList>;
+export const CustomerTrustAccountsInputTagsByCategoryList =
+  CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<CustomerTrustAccountsInputTagsByCategoryList>;
 
 /** Account selectors for narrowing `GROUPS` notifications to subscribers with a matching linked account. */
 export interface CustomerTrustAccountsInput {
@@ -12729,11 +12487,8 @@ export const SubmitDocumentCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitDocumentCollectionRequest>;
 
 export interface SubmitDocumentCollectionResponse {}
-export const SubmitDocumentCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubmitDocumentCollectionResponse",
-}) as any as S.Schema<SubmitDocumentCollectionResponse>;
+export const SubmitDocumentCollectionResponse =
+  AddTagCategoryProductContextResponse as any as S.Schema<SubmitDocumentCollectionResponse>;
 
 export interface SubmitRiskForApprovalRequest {
   riskScenarioId: string;
@@ -12757,9 +12512,8 @@ export const SubmitRiskForApprovalRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the entry. Replaces the existing tag set. Pass `[]` to clear all tags. Discover valid `categoryId` and `tagId` values via `GET /v1/customer-trust/tag-categories` (to list categories) and `GET /v1/customer-trust/tag-categories/{tagCategoryId}` (to list tags within a category). */
 export type UpdateAnswerLibraryEntryRouteRequestTagsList = Array<TagInput>;
-export const UpdateAnswerLibraryEntryRouteRequestTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<UpdateAnswerLibraryEntryRouteRequestTagsList>;
+export const UpdateAnswerLibraryEntryRouteRequestTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateAnswerLibraryEntryRouteRequestTagsList>;
 
 export interface UpdateAnswerLibraryEntryRouteRequest {
   id: string;
@@ -12877,9 +12631,8 @@ export const UpdateComplianceFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The control's new values for custom fields. */
 export type UpdateControlMetadataRequestCustomFieldsList = Array<CustomField>;
-export const UpdateControlMetadataRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<UpdateControlMetadataRequestCustomFieldsList>;
+export const UpdateControlMetadataRequestCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<UpdateControlMetadataRequestCustomFieldsList>;
 
 export interface UpdateControlMetadataRequest {
   controlId: string;
@@ -12915,15 +12668,13 @@ export const UpdateControlMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated custom field values for the account */
 export type UpdateCustomerTrustAccountRequestCustomFieldsList = Array<CustomField>;
-export const UpdateCustomerTrustAccountRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<UpdateCustomerTrustAccountRequestCustomFieldsList>;
+export const UpdateCustomerTrustAccountRequestCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<UpdateCustomerTrustAccountRequestCustomFieldsList>;
 
 /** Tags to assign to this account, grouped by category. Replaces existing tags per category. */
 export type UpdateCustomerTrustAccountRequestTagsByCategoryList = Array<TagsByCategoryInput>;
-export const UpdateCustomerTrustAccountRequestTagsByCategoryList = /*@__PURE__*/ S.Array(
-  TagsByCategoryInput,
-) as any as S.Schema<UpdateCustomerTrustAccountRequestTagsByCategoryList>;
+export const UpdateCustomerTrustAccountRequestTagsByCategoryList =
+  CustomerTrustAccountAccessConfigInputTagsByCategoryList as any as S.Schema<UpdateCustomerTrustAccountRequestTagsByCategoryList>;
 
 export interface UpdateCustomerTrustAccountRequest {
   accountId: string;
@@ -12954,9 +12705,8 @@ export const KnowledgeBaseResourceDownloadPermission = S.String;
 
 /** Tags to associate with the resource. A non-empty array replaces the existing tag set; pass `[]` to clear all tags. */
 export type UpdateDocumentResourceRequestTagsList = Array<TagInput>;
-export const UpdateDocumentResourceRequestTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<UpdateDocumentResourceRequestTagsList>;
+export const UpdateDocumentResourceRequestTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateDocumentResourceRequestTagsList>;
 
 export interface UpdateDocumentResourceRequest {
   id: string;
@@ -13078,15 +12828,13 @@ export const UpdateActorAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata key-value pairs */
 export type UpdateQuestionnaireRequestMetadataList = Array<QuestionnaireMetadata>;
-export const UpdateQuestionnaireRequestMetadataList = /*@__PURE__*/ S.Array(
-  QuestionnaireMetadata,
-) as any as S.Schema<UpdateQuestionnaireRequestMetadataList>;
+export const UpdateQuestionnaireRequestMetadataList =
+  CreateWebsiteQuestionnaireRequestMetadataList as any as S.Schema<UpdateQuestionnaireRequestMetadataList>;
 
 /** Tags to assign to the questionnaire. Each entry must include a categoryId and tagId. Replaces all existing tags. */
 export type UpdateQuestionnaireRequestTagAndCategoryIdsList = Array<TagInput>;
-export const UpdateQuestionnaireRequestTagAndCategoryIdsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<UpdateQuestionnaireRequestTagAndCategoryIdsList>;
+export const UpdateQuestionnaireRequestTagAndCategoryIdsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateQuestionnaireRequestTagAndCategoryIdsList>;
 
 export interface UpdateQuestionnaireRequest {
   questionnaireId: string;
@@ -13205,9 +12953,8 @@ export const UpdateResourceRequest2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateResourceRequest2" }) as any as S.Schema<UpdateResourceRequest2>;
 
 export interface UpdateResourceResponse {}
-export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateResourceResponse",
-}) as any as S.Schema<UpdateResourceResponse>;
+export const UpdateResourceResponse =
+  DeactivateTestEntityResponse as any as S.Schema<UpdateResourceResponse>;
 
 export interface UpdateResourceRequest {
   /** ID of the resource to update. */
@@ -13258,21 +13005,18 @@ export const UpdateResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of categories this risk scenario belongs to. Each element in the list will become a new custom category if it doesn't match an existing one. You can reference the current category options in the Risk Management settings and/or enter new values. */
 export type UpdateRiskScenarioRequestCategoriesList = Array<string>;
-export const UpdateRiskScenarioRequestCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRiskScenarioRequestCategoriesList>;
+export const UpdateRiskScenarioRequestCategoriesList =
+  ControlDomainsList as any as S.Schema<UpdateRiskScenarioRequestCategoriesList>;
 
 /** Enter a list of the following for the type of risk documented: - Confidentiality: Risk to data stores, customer/sensitive information, etc. - Integrity: Risk to accuracy or integrity of system settings and/or data - Availability: Risk to normal service operations and critical system functionality */
 export type UpdateRiskScenarioRequestCiaCategoriesList = Array<CIA | (string & {})>;
-export const UpdateRiskScenarioRequestCiaCategoriesList = /*@__PURE__*/ S.Array(
-  CIA,
-) as any as S.Schema<UpdateRiskScenarioRequestCiaCategoriesList>;
+export const UpdateRiskScenarioRequestCiaCategoriesList =
+  RiskScenarioCiaCategoriesList as any as S.Schema<UpdateRiskScenarioRequestCiaCategoriesList>;
 
 /** The list of custom fields. You can reference custom fields in the Risk Management settings and/or create new one. The format is: - {label: "field-name", value: "string-representation"} for text, date, number and currency fields - {label: "field-name", value: ["option1", "option2"]} for picklist fields */
 export type UpdateRiskScenarioRequestCustomFieldsList = Array<CustomAttribute>;
-export const UpdateRiskScenarioRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomAttribute,
-) as any as S.Schema<UpdateRiskScenarioRequestCustomFieldsList>;
+export const UpdateRiskScenarioRequestCustomFieldsList =
+  RiskScenarioCustomFieldsList as any as S.Schema<UpdateRiskScenarioRequestCustomFieldsList>;
 
 export interface UpdateRiskScenarioRequest {
   riskScenarioId: string;
@@ -13360,9 +13104,8 @@ export const NotificationFrequency = S.String;
 
 /** Replaces the complete channel set. Omit to preserve it; an empty array disables reminders. */
 export type UpdateSettingsRequestChannelsList = Array<NotificationChannelType | (string & {})>;
-export const UpdateSettingsRequestChannelsList = /*@__PURE__*/ S.Array(
-  NotificationChannelType,
-) as any as S.Schema<UpdateSettingsRequestChannelsList>;
+export const UpdateSettingsRequestChannelsList =
+  EnabledPersonnelNotificationSettingsEnabledChannelsList as any as S.Schema<UpdateSettingsRequestChannelsList>;
 
 export interface UpdateSettingsRequest {
   /** Omit to preserve the current frequency. NEVER disables reminders. */
@@ -13378,9 +13121,8 @@ export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSettingsRequest" }) as any as S.Schema<UpdateSettingsRequest>;
 
 export type UpdateSettingsResponse = PersonnelNotificationSettings;
-export const UpdateSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  PersonnelNotificationSettings.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UpdateSettingsResponse" }) as any as S.Schema<UpdateSettingsResponse>;
+export const UpdateSettingsResponse =
+  GetSettingsResponse as any as S.Schema<UpdateSettingsResponse>;
 
 export type BannerSettingGRADIENT = "GRADIENT";
 export const BannerSettingGRADIENT = S.String;
@@ -13495,15 +13237,13 @@ export const UpdateTrustCenterControlCategoryRequest = /*@__PURE__*/ S.suspend((
 
 /** IDs of controls to add to the category. */
 export type UpdateTrustCenterControlsInCategoryRequestControlsToAddList = Array<string>;
-export const UpdateTrustCenterControlsInCategoryRequestControlsToAddList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTrustCenterControlsInCategoryRequestControlsToAddList>;
+export const UpdateTrustCenterControlsInCategoryRequestControlsToAddList =
+  ControlDomainsList as any as S.Schema<UpdateTrustCenterControlsInCategoryRequestControlsToAddList>;
 
 /** IDs of controls to remove from the category. */
 export type UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList = Array<string>;
-export const UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList>;
+export const UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList =
+  ControlDomainsList as any as S.Schema<UpdateTrustCenterControlsInCategoryRequestControlsToRemoveList>;
 
 export interface UpdateTrustCenterControlsInCategoryRequest {
   slugId: string;
@@ -13699,9 +13439,8 @@ export const UpdateTrustCenterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for the resources that this viewer should have access to. */
 export type UpdateTrustCenterViewerRequestResourceIdsList = Array<string>;
-export const UpdateTrustCenterViewerRequestResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTrustCenterViewerRequestResourceIdsList>;
+export const UpdateTrustCenterViewerRequestResourceIdsList =
+  ControlDomainsList as any as S.Schema<UpdateTrustCenterViewerRequestResourceIdsList>;
 
 export interface UpdateTrustCenterViewerRequest {
   slugId: string;
@@ -13760,15 +13499,13 @@ export const UpdateVendorRequestAuthDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of risk attribute ids the vendor has been assigned. */
 export type UpdateVendorRequestRiskAttributeIdsList = Array<string>;
-export const UpdateVendorRequestRiskAttributeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVendorRequestRiskAttributeIdsList>;
+export const UpdateVendorRequestRiskAttributeIdsList =
+  ControlDomainsList as any as S.Schema<UpdateVendorRequestRiskAttributeIdsList>;
 
 /** The custom fields for the vendor. For more information on how to set custom fields via the API, visit https://developer.vanta.com/docs/guides/use-custom-fields-with-vendors */
 export type UpdateVendorRequestCustomFieldsList = Array<CustomField>;
-export const UpdateVendorRequestCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<UpdateVendorRequestCustomFieldsList>;
+export const UpdateVendorRequestCustomFieldsList =
+  ControlCustomFieldsList as any as S.Schema<UpdateVendorRequestCustomFieldsList>;
 
 export interface UpdateVendorRequest {
   vendorId: string;
@@ -13873,9 +13610,8 @@ export const UpdateVendorFindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the resource. A non-empty array replaces the existing tag set; pass `[]` to clear all tags. */
 export type UpdateWebpageResourceRequestTagsList = Array<TagInput>;
-export const UpdateWebpageResourceRequestTagsList = /*@__PURE__*/ S.Array(
-  TagInput,
-) as any as S.Schema<UpdateWebpageResourceRequestTagsList>;
+export const UpdateWebpageResourceRequestTagsList =
+  CustomerTrustQuestionnaireTagAndCategoryIdsList as any as S.Schema<UpdateWebpageResourceRequestTagsList>;
 
 export interface UpdateWebpageResourceRequest {
   id: string;
@@ -13941,11 +13677,7 @@ export interface BadgeUploadResponse {
   /** Whether the upload succeeded. */
   isSuccessful: boolean;
 }
-export const BadgeUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isSuccessful: S.Boolean,
-  }),
-).annotate({ identifier: "BadgeUploadResponse" }) as any as S.Schema<BadgeUploadResponse>;
+export const BadgeUploadResponse = InviteReminderResponse as any as S.Schema<BadgeUploadResponse>;
 
 export interface UploadContractRequest {
   /** The contract file to upload. Only PDF files are accepted. */
@@ -14077,17 +13809,13 @@ export interface UploadFaviconResponse {
   /** Whether the favicon was successfully uploaded. */
   isSuccessful: boolean;
 }
-export const UploadFaviconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isSuccessful: S.Boolean,
-  }),
-).annotate({ identifier: "UploadFaviconResponse" }) as any as S.Schema<UploadFaviconResponse>;
+export const UploadFaviconResponse =
+  InviteReminderResponse as any as S.Schema<UploadFaviconResponse>;
 
 /** Group IDs to set for the subscriber. The subscriber will be removed from any groups not included in this list. */
 export type UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList = Array<string>;
-export const UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList>;
+export const UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList =
+  ControlDomainsList as any as S.Schema<UpsertGroupsForTrustCenterSubscriberRequestGroupIdsList>;
 
 export interface UpsertGroupsForTrustCenterSubscriberRequest {
   slugId: string;
@@ -14114,9 +13842,7 @@ export const UpsertGroupsForTrustCenterSubscriberRequest = /*@__PURE__*/ S.suspe
 /** Ordered list of all control category IDs representing the desired order. */
 export type UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList = Array<string>;
 export const UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList>;
+  CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList as any as S.Schema<UpsertTrustCenterControlCategoriesOrderRequestOrderedCategoryIdsList>;
 
 export interface UpsertTrustCenterControlCategoriesOrderRequest {
   slugId: string;
@@ -14137,9 +13863,7 @@ export const UpsertTrustCenterControlCategoriesOrderRequest = /*@__PURE__*/ S.su
 /** Ordered list of all control IDs in the category representing the desired order. */
 export type UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList = Array<string>;
 export const UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList>;
+  CreateWebsiteQuestionnaireRequestIncludeUntaggedEntitiesForCategoryIdsList as any as S.Schema<UpsertTrustCenterControlsInCategoryOrderRequestOrderedControlIdsList>;
 
 export interface UpsertTrustCenterControlsInCategoryOrderRequest {
   slugId: string;
@@ -14169,18 +13893,13 @@ export interface DataCollectedInputItem {
   /** Status of the data collection disclosure. Must be one of "COLLECTED", "HIDDEN", or "NOT_COLLECTED". */
   status: DataCollectedStatus | (string & {});
 }
-export const DataCollectedInputItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataCollected: S.String,
-    status: DataCollectedStatus,
-  }),
-).annotate({ identifier: "DataCollectedInputItem" }) as any as S.Schema<DataCollectedInputItem>;
+export const DataCollectedInputItem =
+  TrustCenterDataCollected as any as S.Schema<DataCollectedInputItem>;
 
 /** List of data-collected disclosures to set on the Trust Center. */
 export type UpsertTrustCenterDataCollectedRequestDataCollectedList = Array<DataCollectedInputItem>;
-export const UpsertTrustCenterDataCollectedRequestDataCollectedList = /*@__PURE__*/ S.Array(
-  DataCollectedInputItem,
-) as any as S.Schema<UpsertTrustCenterDataCollectedRequestDataCollectedList>;
+export const UpsertTrustCenterDataCollectedRequestDataCollectedList =
+  ArrayResponseTrustCenterDataCollectedResultsList as any as S.Schema<UpsertTrustCenterDataCollectedRequestDataCollectedList>;
 
 export interface UpsertTrustCenterDataCollectedRequest {
   slugId: string;
@@ -14201,9 +13920,8 @@ export const UpsertTrustCenterDataCollectedRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Ordered list of all resource category IDs representing the desired order. */
 export type UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList = Array<string>;
-export const UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList>;
+export const UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList =
+  ControlDomainsList as any as S.Schema<UpsertTrustCenterResourceCategoriesOrderRequestCategoryIdsList>;
 
 export interface UpsertTrustCenterResourceCategoriesOrderRequest {
   slugId: string;
@@ -14318,11 +14036,8 @@ export const VerifyKnowledgeBaseResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifyKnowledgeBaseResourceRequest>;
 
 export type VerifyKnowledgeBaseResourceResponse = TrustKnowledgeBaseResourceOutput;
-export const VerifyKnowledgeBaseResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  TrustKnowledgeBaseResourceOutput.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "VerifyKnowledgeBaseResourceResponse",
-}) as any as S.Schema<VerifyKnowledgeBaseResourceResponse>;
+export const VerifyKnowledgeBaseResourceResponse =
+  GetKnowledgeBaseResourceResponse as any as S.Schema<VerifyKnowledgeBaseResourceResponse>;
 
 export type AcknowledgeSlaMissVulnerabilityRemediationsError = VantaOpError;
 /** Acknowledge SLA miss Acknowledge an SLA miss for a vulnerability remediation. */

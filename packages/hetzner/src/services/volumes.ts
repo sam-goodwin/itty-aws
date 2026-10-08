@@ -93,10 +93,8 @@ export const CreateVolumeResponseVolumeProtection = /*@__PURE__*/ S.suspend(() =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
-export const CreateVolumeResponseVolumeLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateVolumeResponseVolumeLabelsMap>;
+export const CreateVolumeResponseVolumeLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<CreateVolumeResponseVolumeLabelsMap>;
 
 /** Status of the Volume. */
 export type CreateVolumeResponseVolumeStatus = "available" | "creating";
@@ -231,9 +229,8 @@ export const CreateVolumeResponseNextActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type CreateVolumeResponseNextActionsItemResourcesList =
   Array<CreateVolumeResponseActionResourcesItem>;
-export const CreateVolumeResponseNextActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  CreateVolumeResponseActionResourcesItem,
-) as any as S.Schema<CreateVolumeResponseNextActionsItemResourcesList>;
+export const CreateVolumeResponseNextActionsItemResourcesList =
+  CreateVolumeResponseActionResourcesList as any as S.Schema<CreateVolumeResponseNextActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateVolumeResponseNextActionsItemError = CreateVolumeResponseActionError;
@@ -325,10 +322,8 @@ export const GetVolumeResponseVolumeProtection = CreateVolumeResponseVolumeProte
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
-export const GetVolumeResponseVolumeLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVolumeResponseVolumeLabelsMap>;
+export const GetVolumeResponseVolumeLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<GetVolumeResponseVolumeLabelsMap>;
 
 /** Status of the Volume. */
 export type GetVolumeResponseVolumeStatus = "available" | "creating";
@@ -444,10 +439,8 @@ export const ListVolumesResponseVolumesItemProtection = CreateVolumeResponseVolu
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListVolumesResponseVolumesItemLabelsMap = { [key: string]: string | undefined };
-export const ListVolumesResponseVolumesItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListVolumesResponseVolumesItemLabelsMap>;
+export const ListVolumesResponseVolumesItemLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<ListVolumesResponseVolumesItemLabelsMap>;
 
 /** Status of the Volume. */
 export type ListVolumesResponseVolumesItemStatus = "available" | "creating";
@@ -551,10 +544,8 @@ export const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateVolumeRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateVolumeRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeRequestLabelsMap>;
+export const UpdateVolumeRequestLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<UpdateVolumeRequestLabelsMap>;
 
 export interface UpdateVolumeRequest {
   /** ID of the Volume. */
@@ -582,10 +573,8 @@ export const UpdateVolumeResponseVolumeProtection = CreateVolumeResponseVolumePr
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
-export const UpdateVolumeResponseVolumeLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVolumeResponseVolumeLabelsMap>;
+export const UpdateVolumeResponseVolumeLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<UpdateVolumeResponseVolumeLabelsMap>;
 
 /** Status of the Volume. */
 export type UpdateVolumeResponseVolumeStatus = "available" | "creating";

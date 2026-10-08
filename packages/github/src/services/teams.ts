@@ -449,15 +449,13 @@ export const TeamRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** List GitHub usernames for organization members who will become team maintainers. */
 export type CreateRequestMaintainersList = Array<string>;
-export const CreateRequestMaintainersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestMaintainersList>;
+export const CreateRequestMaintainersList =
+  TeamRepositoryTopicsList as any as S.Schema<CreateRequestMaintainersList>;
 
 /** The full name (e.g., "organization-name/repository-name") of repositories to add the team to. */
 export type CreateRequestRepoNamesList = Array<string>;
-export const CreateRequestRepoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestRepoNamesList>;
+export const CreateRequestRepoNamesList =
+  TeamRepositoryTopicsList as any as S.Schema<CreateRequestRepoNamesList>;
 
 /** The level of privacy this team should have. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. Default: `secret` **For a parent or child team:** * `closed` - visible to all members of this organization. Default for child team: `closed` */
 export type CreateRequestPrivacy = "secret" | "closed";
@@ -939,14 +937,11 @@ export const ListChildInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListChildInOrgRequest" }) as any as S.Schema<ListChildInOrgRequest>;
 
 export type ListChildInOrgResponseBodyList = Array<Team>;
-export const ListChildInOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<ListChildInOrgResponseBodyList>;
+export const ListChildInOrgResponseBodyList =
+  ListResponseBodyList as any as S.Schema<ListChildInOrgResponseBodyList>;
 
 export type ListChildInOrgResponse = ListChildInOrgResponseBodyList;
-export const ListChildInOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  ListChildInOrgResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListChildInOrgResponse" }) as any as S.Schema<ListChildInOrgResponse>;
+export const ListChildInOrgResponse = ListResponse as any as S.Schema<ListChildInOrgResponse>;
 
 export interface ListForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
@@ -1161,9 +1156,8 @@ export const ListReposInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReposInOrgRequest" }) as any as S.Schema<ListReposInOrgRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
+export const MinimalRepositoryTopicsList =
+  TeamRepositoryTopicsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1675,11 +1669,8 @@ export const RemoveMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveMembershipForUserInOrgRequest>;
 
 export interface RemoveMembershipForUserInOrgResponse {}
-export const RemoveMembershipForUserInOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveMembershipForUserInOrgResponse",
-}) as any as S.Schema<RemoveMembershipForUserInOrgResponse>;
+export const RemoveMembershipForUserInOrgResponse =
+  AddOrUpdateRepoPermissionsInOrgResponse as any as S.Schema<RemoveMembershipForUserInOrgResponse>;
 
 export interface RemoveRepoInOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1707,9 +1698,8 @@ export const RemoveRepoInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveRepoInOrgRequest" }) as any as S.Schema<RemoveRepoInOrgRequest>;
 
 export interface RemoveRepoInOrgResponse {}
-export const RemoveRepoInOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveRepoInOrgResponse",
-}) as any as S.Schema<RemoveRepoInOrgResponse>;
+export const RemoveRepoInOrgResponse =
+  DeleteInOrgResponse as any as S.Schema<RemoveRepoInOrgResponse>;
 
 /** The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. **For a parent or child team:** * `closed` - visible to all members of this organization. */
 export type UpdateInOrgRequestPrivacy = "secret" | "closed";

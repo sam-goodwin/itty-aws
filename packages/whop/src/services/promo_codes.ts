@@ -184,12 +184,7 @@ export interface PromoCodeProduct {
   /** Product display name. */
   title: string;
 }
-export const PromoCodeProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-  }),
-).annotate({ identifier: "PromoCodeProduct" }) as any as S.Schema<PromoCodeProduct>;
+export const PromoCodeProduct = AccountSummary as any as S.Schema<PromoCodeProduct>;
 
 /** Whether the discount is percentage-based or a fixed amount. */
 export type PromoCodePromoType = "percentage" | "flat_amount";
@@ -460,14 +455,12 @@ export type ListPromoCodesRequestStatus = "active" | "inactive" | "archived" | "
 export const ListPromoCodesRequestStatus = S.String;
 
 export type ListPromoCodesRequestProductIdsList = Array<string>;
-export const ListPromoCodesRequestProductIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPromoCodesRequestProductIdsList>;
+export const ListPromoCodesRequestProductIdsList =
+  CreatePromoCodeRequestPlanIdsList as any as S.Schema<ListPromoCodesRequestProductIdsList>;
 
 export type ListPromoCodesRequestPlanIdsList = Array<string>;
-export const ListPromoCodesRequestPlanIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPromoCodesRequestPlanIdsList>;
+export const ListPromoCodesRequestPlanIdsList =
+  CreatePromoCodeRequestPlanIdsList as any as S.Schema<ListPromoCodesRequestPlanIdsList>;
 
 export type ListPromoCodesRequestOrder = "created_at";
 export const ListPromoCodesRequestOrder = S.String;
@@ -748,12 +741,7 @@ export interface LegacyPromoCodeCompany {
   /** The written name of the company. */
   title: string;
 }
-export const LegacyPromoCodeCompany = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-  }),
-).annotate({ identifier: "LegacyPromoCodeCompany" }) as any as S.Schema<LegacyPromoCodeCompany>;
+export const LegacyPromoCodeCompany = AccountSummary as any as S.Schema<LegacyPromoCodeCompany>;
 
 /** The available currencies on the platform */
 export type LegacyCurrencies =
@@ -860,12 +848,7 @@ export interface LegacyPromoCodeProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const LegacyPromoCodeProduct = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    title: S.String,
-  }),
-).annotate({ identifier: "LegacyPromoCodeProduct" }) as any as S.Schema<LegacyPromoCodeProduct>;
+export const LegacyPromoCodeProduct = AccountSummary as any as S.Schema<LegacyPromoCodeProduct>;
 
 /** The type of promo code used to discount a plan */
 export type PromoTypes = "percentage" | "flat_amount";

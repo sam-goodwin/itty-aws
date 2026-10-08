@@ -112,19 +112,12 @@ export interface UpdateRequestRulesItemFieldsItem {
   expression: string;
   name: string;
 }
-export const UpdateRequestRulesItemFieldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "UpdateRequestRulesItemFieldsItem",
-}) as any as S.Schema<UpdateRequestRulesItemFieldsItem>;
+export const UpdateRequestRulesItemFieldsItem =
+  GetResponseRulesItemFieldsItem as any as S.Schema<UpdateRequestRulesItemFieldsItem>;
 
 export type UpdateRequestRulesItemFieldsList = Array<UpdateRequestRulesItemFieldsItem>;
-export const UpdateRequestRulesItemFieldsList = /*@__PURE__*/ S.Array(
-  UpdateRequestRulesItemFieldsItem,
-) as any as S.Schema<UpdateRequestRulesItemFieldsList>;
+export const UpdateRequestRulesItemFieldsList =
+  GetResponseRulesItemFieldsList as any as S.Schema<UpdateRequestRulesItemFieldsList>;
 
 export interface UpdateRequestRulesItem {
   fields: UpdateRequestRulesItemFieldsList;
@@ -169,9 +162,8 @@ export type UpdateResponseRulesItemFieldsItem = GetResponseRulesItemFieldsItem;
 export const UpdateResponseRulesItemFieldsItem = GetResponseRulesItemFieldsItem;
 
 export type UpdateResponseRulesItemFieldsList = Array<GetResponseRulesItemFieldsItem>;
-export const UpdateResponseRulesItemFieldsList = /*@__PURE__*/ S.Array(
-  GetResponseRulesItemFieldsItem,
-) as any as S.Schema<UpdateResponseRulesItemFieldsList>;
+export const UpdateResponseRulesItemFieldsList =
+  GetResponseRulesItemFieldsList as any as S.Schema<UpdateResponseRulesItemFieldsList>;
 
 export interface UpdateResponseRulesItem {
   fields: UpdateResponseRulesItemFieldsList;
@@ -180,18 +172,12 @@ export interface UpdateResponseRulesItem {
   /** Human-readable rule description. */
   description?: string | null;
 }
-export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: UpdateResponseRulesItemFieldsList,
-    ref: S.String,
-    description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "UpdateResponseRulesItem" }) as any as S.Schema<UpdateResponseRulesItem>;
+export const UpdateResponseRulesItem =
+  GetResponseRulesItem as any as S.Schema<UpdateResponseRulesItem>;
 
 export type UpdateResponseRulesList = Array<UpdateResponseRulesItem>;
-export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
-  UpdateResponseRulesItem,
-) as any as S.Schema<UpdateResponseRulesList>;
+export const UpdateResponseRulesList =
+  GetResponseRulesList as any as S.Schema<UpdateResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
@@ -199,12 +185,7 @@ export interface UpdateResponse {
   extractor: string;
   rules: UpdateResponseRulesList;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extractor: S.String,
-    rules: UpdateResponseRulesList,
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+export const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
 
 export type DeleteError = CloudflareOpError;
 /** Deletes all custom extraction rules for an extractor type. */

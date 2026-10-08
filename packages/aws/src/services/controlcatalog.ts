@@ -129,7 +129,7 @@ export const ControlScope = S.String;
 
 export type RegionCode = string;
 export type DeployableRegions = string[];
-export const DeployableRegions = /*@__PURE__*/ S.Array(S.String);
+export const DeployableRegions = ControlAliases as any as S.Schema<DeployableRegions>;
 export interface RegionConfiguration {
   Scope: ControlScope;
   DeployableRegions?: string[];
@@ -163,10 +163,10 @@ export type ControlParameters = ControlParameter[];
 export const ControlParameters = /*@__PURE__*/ S.Array(ControlParameter);
 export type GovernedResource = string;
 export type GovernedResources = string[];
-export const GovernedResources = /*@__PURE__*/ S.Array(S.String);
+export const GovernedResources = ControlAliases as any as S.Schema<GovernedResources>;
 export type GovernedProvider = string;
 export type GovernedProviders = string[];
-export const GovernedProviders = /*@__PURE__*/ S.Array(S.String);
+export const GovernedProviders = ControlAliases as any as S.Schema<GovernedProviders>;
 export interface GetControlResponse {
   Arn: string;
   Aliases?: string[];
@@ -281,9 +281,10 @@ export const ListCommonControlsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommonControlsResponse>;
 export type MaxListControlMappingsResults = number;
 export type ControlArnFilterList = string[];
-export const ControlArnFilterList = /*@__PURE__*/ S.Array(S.String);
+export const ControlArnFilterList = ControlAliases as any as S.Schema<ControlArnFilterList>;
 export type CommonControlArnFilterList = string[];
-export const CommonControlArnFilterList = /*@__PURE__*/ S.Array(S.String);
+export const CommonControlArnFilterList =
+  ControlAliases as any as S.Schema<CommonControlArnFilterList>;
 export type MappingType = "FRAMEWORK" | "COMMON_CONTROL" | "RELATED_CONTROL" | (string & {});
 export const MappingType = S.String;
 
@@ -380,9 +381,11 @@ export const ListControlMappingsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListControlMappingsResponse>;
 export type MaxListControlsResults = number;
 export type ImplementationTypeFilterList = string[];
-export const ImplementationTypeFilterList = /*@__PURE__*/ S.Array(S.String);
+export const ImplementationTypeFilterList =
+  ControlAliases as any as S.Schema<ImplementationTypeFilterList>;
 export type ImplementationIdentifierFilterList = string[];
-export const ImplementationIdentifierFilterList = /*@__PURE__*/ S.Array(S.String);
+export const ImplementationIdentifierFilterList =
+  ControlAliases as any as S.Schema<ImplementationIdentifierFilterList>;
 export interface ImplementationFilter {
   Types?: string[];
   Identifiers?: string[];
@@ -394,7 +397,8 @@ export const ImplementationFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImplementationFilter" }) as any as S.Schema<ImplementationFilter>;
 export type GovernedProviderFilterList = string[];
-export const GovernedProviderFilterList = /*@__PURE__*/ S.Array(S.String);
+export const GovernedProviderFilterList =
+  ControlAliases as any as S.Schema<GovernedProviderFilterList>;
 export interface ControlFilter {
   Implementations?: ImplementationFilter;
   GovernedProviders?: string[];
@@ -421,9 +425,8 @@ export interface ImplementationSummary {
   Type: string;
   Identifier?: string;
 }
-export const ImplementationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
-).annotate({ identifier: "ImplementationSummary" }) as any as S.Schema<ImplementationSummary>;
+export const ImplementationSummary =
+  ImplementationDetails as any as S.Schema<ImplementationSummary>;
 export interface ControlSummary {
   Arn: string;
   Aliases?: string[];
@@ -501,11 +504,11 @@ export type MaxListObjectivesResults = number;
 export interface DomainResourceFilter {
   Arn?: string;
 }
-export const DomainResourceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "DomainResourceFilter" }) as any as S.Schema<DomainResourceFilter>;
+export const DomainResourceFilter =
+  ObjectiveResourceFilter as any as S.Schema<DomainResourceFilter>;
 export type DomainResourceFilterList = DomainResourceFilter[];
-export const DomainResourceFilterList = /*@__PURE__*/ S.Array(DomainResourceFilter);
+export const DomainResourceFilterList =
+  ObjectiveResourceFilterList as any as S.Schema<DomainResourceFilterList>;
 export interface ObjectiveFilter {
   Domains?: DomainResourceFilter[];
 }

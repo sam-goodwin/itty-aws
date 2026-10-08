@@ -193,11 +193,7 @@ export interface SetActiveResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetActiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetActiveResponse" }) as any as S.Schema<SetActiveResponse>;
+export const SetActiveResponse = DeletePhotoResponse as any as S.Schema<SetActiveResponse>;
 
 export interface SetPhotoRequest {
   /** Width/height of crop box (always square) */
@@ -256,11 +252,7 @@ export interface SetPresenceResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetPresenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetPresenceResponse" }) as any as S.Schema<SetPresenceResponse>;
+export const SetPresenceResponse = DeletePhotoResponse as any as S.Schema<SetPresenceResponse>;
 
 export interface SetProfileRequest {
   /** Name of a single key to set. Usable only if `profile` is not passed. */
@@ -328,9 +320,8 @@ export const UsersConversationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersConversationsRequest>;
 
 export type UsersConversationsResponseChannelsList = Array<unknown>;
-export const UsersConversationsResponseChannelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UsersConversationsResponseChannelsList>;
+export const UsersConversationsResponseChannelsList =
+  ListUsersResponseMembersList as any as S.Schema<UsersConversationsResponseChannelsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type UsersConversationsResponseResponseMetadata = ListUsersResponseResponseMetadata;
@@ -362,11 +353,7 @@ export interface UsersIdentityResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UsersIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "UsersIdentityResponse" }) as any as S.Schema<UsersIdentityResponse>;
+export const UsersIdentityResponse = DeletePhotoResponse as any as S.Schema<UsersIdentityResponse>;
 
 export interface UsersInfoRequest {
   /** Set this to `true` to receive the locale for this user. Defaults to `false` */
@@ -382,9 +369,8 @@ export const UsersInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsersInfoRequest" }) as any as S.Schema<UsersInfoRequest>;
 
 export type UsersInfoResponseUsersList = Array<unknown>;
-export const UsersInfoResponseUsersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UsersInfoResponseUsersList>;
+export const UsersInfoResponseUsersList =
+  ListUsersResponseMembersList as any as S.Schema<UsersInfoResponseUsersList>;
 
 export interface UsersInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */

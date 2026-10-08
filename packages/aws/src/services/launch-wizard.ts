@@ -458,10 +458,8 @@ export const EventStatus = S.String;
 export type DeploymentEventMetadataKey = string;
 export type DeploymentEventMetadataValue = string;
 export type DeploymentEventMetadata = { [key: string]: string | undefined };
-export const DeploymentEventMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DeploymentEventMetadata =
+  DeploymentSpecifications as any as S.Schema<DeploymentEventMetadata>;
 export interface DeploymentEventDataSummary {
   name?: string;
   description?: string;
@@ -502,7 +500,8 @@ export const DeploymentPatternVersionFilterKey = S.String;
 
 export type DeploymentPatternVersionFilterValue = string;
 export type DeploymentPatternVersionFilterValues = string[];
-export const DeploymentPatternVersionFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DeploymentPatternVersionFilterValues =
+  AllowedValues as any as S.Schema<DeploymentPatternVersionFilterValues>;
 export interface DeploymentPatternVersionFilter {
   name: DeploymentPatternVersionFilterKey;
   values: string[];
@@ -565,7 +564,7 @@ export const DeploymentFilterKey = S.String;
 
 export type DeploymentFilterValue = string;
 export type DeploymentFilterValues = string[];
-export const DeploymentFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DeploymentFilterValues = AllowedValues as any as S.Schema<DeploymentFilterValues>;
 export interface DeploymentFilter {
   name?: DeploymentFilterKey;
   values?: string[];
@@ -741,11 +740,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = ManagementAccountConstraint as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AllowedValues as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -759,9 +756,8 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput =
+  ManagementAccountConstraint as any as S.Schema<UntagResourceOutput>;
 export interface UpdateDeploymentInput {
   deploymentId: string;
   specifications: { [key: string]: string | undefined };

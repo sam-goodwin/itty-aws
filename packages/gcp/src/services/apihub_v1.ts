@@ -1678,14 +1678,8 @@ export interface GoogleCloudApihubV1PluginInstanceActionID {
   /** Output only. The action ID that is using the curation. This should map to one of the action IDs specified in action configs in the plugin. */
   actionId?: string;
 }
-export const GoogleCloudApihubV1PluginInstanceActionID = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pluginInstance: S.optional(S.String),
-    actionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApihubV1PluginInstanceActionID",
-}) as any as S.Schema<GoogleCloudApihubV1PluginInstanceActionID>;
+export const GoogleCloudApihubV1PluginInstanceActionID =
+  GoogleCloudApihubV1PluginInstanceActionSource as any as S.Schema<GoogleCloudApihubV1PluginInstanceActionID>;
 
 export type GoogleCloudApihubV1PluginInstanceActionIDList =
   Array<GoogleCloudApihubV1PluginInstanceActionID>;
@@ -2370,13 +2364,8 @@ export interface GoogleCloudApihubV1MultiStringValues {
   /** Optional. The config variable value of data type multi string. */
   values?: StringList;
 }
-export const GoogleCloudApihubV1MultiStringValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudApihubV1MultiStringValues",
-}) as any as S.Schema<GoogleCloudApihubV1MultiStringValues>;
+export const GoogleCloudApihubV1MultiStringValues =
+  GoogleCloudApihubV1StringAttributeValues as any as S.Schema<GoogleCloudApihubV1MultiStringValues>;
 
 export type IntegerList = Array<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
@@ -3070,13 +3059,8 @@ export interface GoogleCloudApihubV1EnablePluginInstanceActionRequest {
   /** Required. The action id to enable. */
   actionId?: string;
 }
-export const GoogleCloudApihubV1EnablePluginInstanceActionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApihubV1EnablePluginInstanceActionRequest",
-}) as any as S.Schema<GoogleCloudApihubV1EnablePluginInstanceActionRequest>;
+export const GoogleCloudApihubV1EnablePluginInstanceActionRequest =
+  GoogleCloudApihubV1DisablePluginInstanceActionRequest as any as S.Schema<GoogleCloudApihubV1EnablePluginInstanceActionRequest>;
 
 export interface EnableActionProjectsLocationsPluginsInstancesRequest {
   /** Required. The name of the plugin instance to enable. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
@@ -3125,13 +3109,8 @@ export interface GoogleCloudApihubV1ActionExecutionDetail {
   /** Required. The action id of the plugin to execute. */
   actionId?: string;
 }
-export const GoogleCloudApihubV1ActionExecutionDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApihubV1ActionExecutionDetail",
-}) as any as S.Schema<GoogleCloudApihubV1ActionExecutionDetail>;
+export const GoogleCloudApihubV1ActionExecutionDetail =
+  GoogleCloudApihubV1DisablePluginInstanceActionRequest as any as S.Schema<GoogleCloudApihubV1ActionExecutionDetail>;
 
 /** The ExecutePluginInstanceAction method's request. */
 export interface GoogleCloudApihubV1ExecutePluginInstanceActionRequest {

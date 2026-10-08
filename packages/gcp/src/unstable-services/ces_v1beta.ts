@@ -226,9 +226,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Request message for AssistantService.ChatAiAssistant. */
 export interface ChatAiAssistantRequest {
@@ -2561,19 +2559,13 @@ export interface AggregatedMetricsHallucinationMetrics {
   /** Output only. The average hallucination score (0 to 1). */
   score?: number;
 }
-export const AggregatedMetricsHallucinationMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AggregatedMetricsHallucinationMetrics",
-}) as any as S.Schema<AggregatedMetricsHallucinationMetrics>;
+export const AggregatedMetricsHallucinationMetrics =
+  AggregatedMetricsSemanticSimilarityMetrics as any as S.Schema<AggregatedMetricsHallucinationMetrics>;
 
 export type AggregatedMetricsHallucinationMetricsList =
   Array<AggregatedMetricsHallucinationMetrics>;
-export const AggregatedMetricsHallucinationMetricsList = /*@__PURE__*/ S.Array(
-  AggregatedMetricsHallucinationMetrics,
-) as any as S.Schema<AggregatedMetricsHallucinationMetricsList>;
+export const AggregatedMetricsHallucinationMetricsList =
+  AggregatedMetricsSemanticSimilarityMetricsList as any as S.Schema<AggregatedMetricsHallucinationMetricsList>;
 
 /** Metrics for a single tool. */
 export interface AggregatedMetricsToolMetrics {
@@ -4449,13 +4441,8 @@ export interface TriggerActionGenerativeAnswer {
   /** Required. The prompt to use for the generative answer. */
   prompt?: string;
 }
-export const TriggerActionGenerativeAnswer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TriggerActionGenerativeAnswer",
-}) as any as S.Schema<TriggerActionGenerativeAnswer>;
+export const TriggerActionGenerativeAnswer =
+  EvaluationExpectationLlmCriteria as any as S.Schema<TriggerActionGenerativeAnswer>;
 
 /** Action that is taken when a certain precondition is met. */
 export interface TriggerAction {
@@ -4902,11 +4889,7 @@ export interface CodeBlock {
   /** Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead. */
   pythonCode?: string;
 }
-export const CodeBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pythonCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "CodeBlock" }) as any as S.Schema<CodeBlock>;
+export const CodeBlock = PythonCodeCondition as any as S.Schema<CodeBlock>;
 
 /** Configuration for tool behavior in fake mode. */
 export interface ToolFakeConfig {
@@ -6693,14 +6676,8 @@ export interface ExportEvaluationResultsRequest {
   /** Optional. The export options for the evaluation results. */
   exportOptions?: ExportOptions;
 }
-export const ExportEvaluationResultsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-    exportOptions: S.optional(ExportOptions),
-  }),
-).annotate({
-  identifier: "ExportEvaluationResultsRequest",
-}) as any as S.Schema<ExportEvaluationResultsRequest>;
+export const ExportEvaluationResultsRequest =
+  ExportEvaluationRunsRequest as any as S.Schema<ExportEvaluationResultsRequest>;
 
 export interface ExportProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation to export evaluation results from. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}` */
@@ -8770,13 +8747,8 @@ export interface ImportEvaluationsRequestConversationList {
   /** Optional. Conversation resource names. */
   conversations?: StringList;
 }
-export const ImportEvaluationsRequestConversationList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ImportEvaluationsRequestConversationList",
-}) as any as S.Schema<ImportEvaluationsRequestConversationList>;
+export const ImportEvaluationsRequestConversationList =
+  BatchDeleteConversationsRequest as any as S.Schema<ImportEvaluationsRequestConversationList>;
 
 export type ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum =
   | "CONFLICT_RESOLUTION_STRATEGY_UNSPECIFIED"

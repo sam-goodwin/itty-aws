@@ -2938,13 +2938,8 @@ export interface TableFieldSchemaPolicyTags {
   /** A list of policy tag resource names. For example, "projects/1/locations/eu/taxonomies/2/policyTags/3". At most 1 policy tag is currently allowed. */
   names?: StringList;
 }
-export const TableFieldSchemaPolicyTags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TableFieldSchemaPolicyTags",
-}) as any as S.Schema<TableFieldSchemaPolicyTags>;
+export const TableFieldSchemaPolicyTags =
+  TableFieldSchemaCategories as any as S.Schema<TableFieldSchemaPolicyTags>;
 
 /** A field in TableSchema */
 export interface TableFieldSchema {
@@ -3308,9 +3303,8 @@ export type JobStatisticsReservationUsageItem = JobStatistics2ReservationUsageIt
 export const JobStatisticsReservationUsageItem = JobStatistics2ReservationUsageItem;
 
 export type JobStatisticsReservationUsageItemList = Array<JobStatistics2ReservationUsageItem>;
-export const JobStatisticsReservationUsageItemList = /*@__PURE__*/ S.Array(
-  JobStatistics2ReservationUsageItem,
-) as any as S.Schema<JobStatisticsReservationUsageItemList>;
+export const JobStatisticsReservationUsageItemList =
+  JobStatistics2ReservationUsageItemList as any as S.Schema<JobStatisticsReservationUsageItemList>;
 
 /** [Preview] Information related to sessions. */
 export interface SessionInfo {
@@ -3673,7 +3667,7 @@ export const RangePartitioning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RangePartitioning" }) as any as S.Schema<RangePartitioning>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = DoubleList as any as S.Schema<IntegerList>;
 
 /** JobConfigurationLoad contains the configuration properties for loading data into a destination table. */
 export interface JobConfigurationLoad {
@@ -4634,9 +4628,7 @@ export const DeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteJobsRequest" }) as any as S.Schema<DeleteJobsRequest>;
 
 export interface DeleteJobsResponse {}
-export const DeleteJobsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteJobsResponse",
-}) as any as S.Schema<DeleteJobsResponse>;
+export const DeleteJobsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteJobsResponse>;
 
 export interface DeleteModelsRequest {
   /** Required. Project ID of the model to delete. */
@@ -4661,9 +4653,7 @@ export const DeleteModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteModelsRequest" }) as any as S.Schema<DeleteModelsRequest>;
 
 export interface DeleteModelsResponse {}
-export const DeleteModelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteModelsResponse",
-}) as any as S.Schema<DeleteModelsResponse>;
+export const DeleteModelsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteModelsResponse>;
 
 export interface DeleteRoutinesRequest {
   /** Required. Dataset ID of the routine to delete */
@@ -4688,9 +4678,8 @@ export const DeleteRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoutinesRequest" }) as any as S.Schema<DeleteRoutinesRequest>;
 
 export interface DeleteRoutinesResponse {}
-export const DeleteRoutinesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoutinesResponse",
-}) as any as S.Schema<DeleteRoutinesResponse>;
+export const DeleteRoutinesResponse =
+  DeleteDatasetsResponse as any as S.Schema<DeleteRoutinesResponse>;
 
 export interface DeleteRowAccessPoliciesRequest {
   /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
@@ -4750,9 +4739,7 @@ export const DeleteTablesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTablesRequest" }) as any as S.Schema<DeleteTablesRequest>;
 
 export interface DeleteTablesResponse {}
-export const DeleteTablesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTablesResponse",
-}) as any as S.Schema<DeleteTablesResponse>;
+export const DeleteTablesResponse = DeleteDatasetsResponse as any as S.Schema<DeleteTablesResponse>;
 
 export type GetDatasetsDatasetViewEnum = "DATASET_VIEW_UNSPECIFIED" | "METADATA" | "ACL" | "FULL";
 export const GetDatasetsDatasetViewEnum = S.String;
@@ -5480,11 +5467,7 @@ export interface IntCandidates {
   /** Candidates for the int parameter in increasing order. */
   candidates?: StringList;
 }
-export const IntCandidates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    candidates: S.optional(StringList),
-  }),
-).annotate({ identifier: "IntCandidates" }) as any as S.Schema<IntCandidates>;
+export const IntCandidates = StringHparamSearchSpace as any as S.Schema<IntCandidates>;
 
 /** Search space for an int hyperparameter. */
 export interface IntHparamSearchSpace {
@@ -8324,13 +8307,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsRowAccessPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

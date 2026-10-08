@@ -944,13 +944,8 @@ export interface GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
   /** Protocol buffer source of the schema. */
   text?: string;
 }
-export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema",
-}) as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema>;
+export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema =
+  GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema>;
 
 /** Marks a CSV-encoded data source. */
 export type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema =
@@ -969,13 +964,8 @@ export interface GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
   /** JSON source of the Avro schema. */
   text?: string;
 }
-export const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema",
-}) as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema>;
+export const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema =
+  GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema as any as S.Schema<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema>;
 
 /** Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data. */
 export interface GoogleCloudDatacatalogV1PhysicalSchema {
@@ -1766,13 +1756,8 @@ export interface GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue {
   /** Required. The display name of the enum value. Must not be an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters. */
   displayName?: string;
 }
-export const GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue",
-}) as any as S.Schema<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
+export const GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue =
+  GoogleCloudDatacatalogV1TagFieldEnumValue as any as S.Schema<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
 
 export type GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueList =
   Array<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
@@ -2777,13 +2762,8 @@ export interface GoogleCloudDatacatalogV1InlineSource {
   /** Required. Taxonomies to import. */
   taxonomies?: GoogleCloudDatacatalogV1SerializedTaxonomyList;
 }
-export const GoogleCloudDatacatalogV1InlineSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taxonomies: S.optional(GoogleCloudDatacatalogV1SerializedTaxonomyList),
-  }),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1InlineSource",
-}) as any as S.Schema<GoogleCloudDatacatalogV1InlineSource>;
+export const GoogleCloudDatacatalogV1InlineSource =
+  GoogleCloudDatacatalogV1ExportTaxonomiesResponse as any as S.Schema<GoogleCloudDatacatalogV1InlineSource>;
 
 /** Cross-regional source used to import an existing taxonomy into a different region. */
 export interface GoogleCloudDatacatalogV1CrossRegionalSource {
@@ -3919,11 +3899,8 @@ export const StarProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.su
 
 /** Response message for StarEntry. Empty for now */
 export interface GoogleCloudDatacatalogV1StarEntryResponse {}
-export const GoogleCloudDatacatalogV1StarEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1StarEntryResponse",
-}) as any as S.Schema<GoogleCloudDatacatalogV1StarEntryResponse>;
+export const GoogleCloudDatacatalogV1StarEntryResponse =
+  GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema as any as S.Schema<GoogleCloudDatacatalogV1StarEntryResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -3964,13 +3941,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4087,11 +4059,8 @@ export const UnstarProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ S.
 
 /** Response message for UnstarEntry. Empty for now */
 export interface GoogleCloudDatacatalogV1UnstarEntryResponse {}
-export const GoogleCloudDatacatalogV1UnstarEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudDatacatalogV1UnstarEntryResponse",
-}) as any as S.Schema<GoogleCloudDatacatalogV1UnstarEntryResponse>;
+export const GoogleCloudDatacatalogV1UnstarEntryResponse =
+  GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema as any as S.Schema<GoogleCloudDatacatalogV1UnstarEntryResponse>;
 
 export type CancelProjectsLocationsOperationsError =
   | NotFound

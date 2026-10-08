@@ -96,10 +96,8 @@ export type EditRequestId = "csam_scanner";
 export const EditRequestId = S.String;
 
 export type EditRequestValueSourcesMap = { [key: string]: boolean | undefined };
-export const EditRequestValueSourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<EditRequestValueSourcesMap>;
+export const EditRequestValueSourcesMap =
+  GetResponseValueSourcesMap as any as S.Schema<EditRequestValueSourcesMap>;
 
 export interface EditRequestValue {
   /** Notification email address for CSAM scan results. When changed, email verification is triggered automatically. */
@@ -151,10 +149,8 @@ export type EditResponseValueEmailState = "valid" | "pending" | "unverified";
 export const EditResponseValueEmailState = S.String;
 
 export type EditResponseValueSourcesMap = { [key: string]: boolean | undefined };
-export const EditResponseValueSourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<EditResponseValueSourcesMap>;
+export const EditResponseValueSourcesMap =
+  GetResponseValueSourcesMap as any as S.Schema<EditResponseValueSourcesMap>;
 
 export interface EditResponseValue {
   /** Notification email address for CSAM scan results. Masked in responses unless explicitly unmasked via admin endpoint. */

@@ -295,9 +295,8 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDatasetResponse {
   Dataset?: Dataset;
 }
-export const DescribeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Dataset: S.optional(Dataset) }).pipe(ns),
-).annotate({ identifier: "DescribeDatasetResponse" }) as any as S.Schema<DescribeDatasetResponse>;
+export const DescribeDatasetResponse =
+  DeleteDatasetResponse as any as S.Schema<DescribeDatasetResponse>;
 export interface DescribeIdentityPoolUsageRequest {
   IdentityPoolId: string;
 }
@@ -644,7 +643,7 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
 export type RecordList = Record[];
 export const RecordList = /*@__PURE__*/ S.Array(Record);
 export type MergedDatasetNameList = string[];
-export const MergedDatasetNameList = /*@__PURE__*/ S.Array(S.String);
+export const MergedDatasetNameList = ApplicationArnList as any as S.Schema<MergedDatasetNameList>;
 export interface ListRecordsResponse {
   Records?: Record[];
   NextToken?: string;
@@ -757,15 +756,8 @@ export interface SetIdentityPoolConfigurationResponse {
   PushSync?: PushSync;
   CognitoStreams?: CognitoStreams;
 }
-export const SetIdentityPoolConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityPoolId: S.optional(S.String),
-    PushSync: S.optional(PushSync),
-    CognitoStreams: S.optional(CognitoStreams),
-  }).pipe(ns),
-).annotate({
-  identifier: "SetIdentityPoolConfigurationResponse",
-}) as any as S.Schema<SetIdentityPoolConfigurationResponse>;
+export const SetIdentityPoolConfigurationResponse =
+  GetIdentityPoolConfigurationResponse as any as S.Schema<SetIdentityPoolConfigurationResponse>;
 export interface SubscribeToDatasetRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -831,11 +823,8 @@ export const UnsubscribeFromDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnsubscribeFromDatasetRequest",
 }) as any as S.Schema<UnsubscribeFromDatasetRequest>;
 export interface UnsubscribeFromDatasetResponse {}
-export const UnsubscribeFromDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UnsubscribeFromDatasetResponse",
-}) as any as S.Schema<UnsubscribeFromDatasetResponse>;
+export const UnsubscribeFromDatasetResponse =
+  SubscribeToDatasetResponse as any as S.Schema<UnsubscribeFromDatasetResponse>;
 export type Operation = "replace" | "remove" | (string & {});
 export const Operation = S.String;
 

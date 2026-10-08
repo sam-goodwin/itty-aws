@@ -301,9 +301,8 @@ export const SchemaPropertyGroupsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateSchemaPropertyGroupRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
-export const UpdateSchemaPropertyGroupRequestPropertiesList = /*@__PURE__*/ S.Array(
-  SchemaPropertyGroupPropertyInput,
-) as any as S.Schema<UpdateSchemaPropertyGroupRequestPropertiesList>;
+export const UpdateSchemaPropertyGroupRequestPropertiesList =
+  CreateSchemaPropertyGroupRequestPropertiesList as any as S.Schema<UpdateSchemaPropertyGroupRequestPropertiesList>;
 
 export interface UpdateSchemaPropertyGroupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -334,9 +333,8 @@ export const UpdateSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateSchemaPropertyGroupsPartialRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
-export const UpdateSchemaPropertyGroupsPartialRequestPropertiesList = /*@__PURE__*/ S.Array(
-  SchemaPropertyGroupPropertyInput,
-) as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequestPropertiesList>;
+export const UpdateSchemaPropertyGroupsPartialRequestPropertiesList =
+  CreateSchemaPropertyGroupRequestPropertiesList as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequestPropertiesList>;
 
 export interface UpdateSchemaPropertyGroupsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

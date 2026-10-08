@@ -721,9 +721,8 @@ export const DeleteIpReverseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIpReverseRequest" }) as any as S.Schema<DeleteIpReverseRequest>;
 
 export interface DeleteIpReverseResponse {}
-export const DeleteIpReverseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIpReverseResponse",
-}) as any as S.Schema<DeleteIpReverseResponse>;
+export const DeleteIpReverseResponse =
+  DeleteIpDelegationResponse as any as S.Schema<DeleteIpReverseResponse>;
 
 export interface GetIpRequest {
   ip: string;
@@ -1497,9 +1496,8 @@ export const GetIpServiceServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateIpServiceChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1632,9 +1630,8 @@ export const GetIpTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IamResourceTagFilterInput",
-}) as any as S.Schema<IamResourceTagFilterInput>;
+export const IamResourceTagFilterInput =
+  DeleteIpDelegationResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListIpRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export const ListIpRequestIamTagsValueList = /*@__PURE__*/ S.Array(
@@ -1701,14 +1698,11 @@ export const ListIpAntihackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpAntihackRequest" }) as any as S.Schema<ListIpAntihackRequest>;
 
 export type ListIpAntihackResponseBodyList = Array<string>;
-export const ListIpAntihackResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpAntihackResponseBodyList>;
+export const ListIpAntihackResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpAntihackResponseBodyList>;
 
 export type ListIpAntihackResponse = ListIpAntihackResponseBodyList;
-export const ListIpAntihackResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpAntihackResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpAntihackResponse" }) as any as S.Schema<ListIpAntihackResponse>;
+export const ListIpAntihackResponse = ListIpResponse as any as S.Schema<ListIpAntihackResponse>;
 
 export interface ListIpArpRequest {
   ip: string;
@@ -1723,14 +1717,11 @@ export const ListIpArpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpArpRequest" }) as any as S.Schema<ListIpArpRequest>;
 
 export type ListIpArpResponseBodyList = Array<string>;
-export const ListIpArpResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpArpResponseBodyList>;
+export const ListIpArpResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpArpResponseBodyList>;
 
 export type ListIpArpResponse = ListIpArpResponseBodyList;
-export const ListIpArpResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpArpResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpArpResponse" }) as any as S.Schema<ListIpArpResponse>;
+export const ListIpArpResponse = ListIpResponse as any as S.Schema<ListIpArpResponse>;
 
 export interface ListIpBringYourOwnIpAggregateRequest {
   ip: string;
@@ -1745,9 +1736,8 @@ export const ListIpBringYourOwnIpAggregateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Existing Additional IP(s) that will be aggregated */
 export type IpByoipAggregationPreviewChildrenIpsList = Array<string>;
-export const IpByoipAggregationPreviewChildrenIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpByoipAggregationPreviewChildrenIpsList>;
+export const IpByoipAggregationPreviewChildrenIpsList =
+  ListIpResponseBodyList as any as S.Schema<IpByoipAggregationPreviewChildrenIpsList>;
 
 /** Preview of an IP aggregation on BYOIP Additional IPs */
 export interface IpByoipAggregationPreview {
@@ -1790,9 +1780,8 @@ export const ListIpBringYourOwnIpSliceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional IP(s) that will be created */
 export type IpByoipSlicingPreviewChildrenIpsList = Array<string>;
-export const IpByoipSlicingPreviewChildrenIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpByoipSlicingPreviewChildrenIpsList>;
+export const IpByoipSlicingPreviewChildrenIpsList =
+  ListIpResponseBodyList as any as S.Schema<IpByoipSlicingPreviewChildrenIpsList>;
 
 /** Preview of an IP slicing on BYOIP Additional IPs */
 export interface IpByoipSlicingPreview {
@@ -1827,9 +1816,8 @@ export const ListIpCampusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of RIRs whose IPs can be imported in the campus */
 export type IpCampusBringYourOwnIpSupportedRirForIpList = Array<string>;
-export const IpCampusBringYourOwnIpSupportedRirForIpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpCampusBringYourOwnIpSupportedRirForIpList>;
+export const IpCampusBringYourOwnIpSupportedRirForIpList =
+  ListIpResponseBodyList as any as S.Schema<IpCampusBringYourOwnIpSupportedRirForIpList>;
 
 /** ovh datacenter */
 export type DedicatedDatacenterEnum =
@@ -1953,14 +1941,11 @@ export const ListIpDelegationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpDelegationRequest" }) as any as S.Schema<ListIpDelegationRequest>;
 
 export type ListIpDelegationResponseBodyList = Array<string>;
-export const ListIpDelegationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpDelegationResponseBodyList>;
+export const ListIpDelegationResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpDelegationResponseBodyList>;
 
 export type ListIpDelegationResponse = ListIpDelegationResponseBodyList;
-export const ListIpDelegationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpDelegationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpDelegationResponse" }) as any as S.Schema<ListIpDelegationResponse>;
+export const ListIpDelegationResponse = ListIpResponse as any as S.Schema<ListIpDelegationResponse>;
 
 export interface ListIpFirewallRequest {
   ip: string;
@@ -1978,14 +1963,11 @@ export const ListIpFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpFirewallRequest" }) as any as S.Schema<ListIpFirewallRequest>;
 
 export type ListIpFirewallResponseBodyList = Array<string>;
-export const ListIpFirewallResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpFirewallResponseBodyList>;
+export const ListIpFirewallResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpFirewallResponseBodyList>;
 
 export type ListIpFirewallResponse = ListIpFirewallResponseBodyList;
-export const ListIpFirewallResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpFirewallResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpFirewallResponse" }) as any as S.Schema<ListIpFirewallResponse>;
+export const ListIpFirewallResponse = ListIpResponse as any as S.Schema<ListIpFirewallResponse>;
 
 export interface ListIpFirewallRuleRequest {
   ip: string;
@@ -2004,16 +1986,12 @@ export const ListIpFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpFirewallRuleRequest>;
 
 export type ListIpFirewallRuleResponseBodyList = Array<number>;
-export const ListIpFirewallRuleResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpFirewallRuleResponseBodyList>;
+export const ListIpFirewallRuleResponseBodyList =
+  CreateIpServiceChangeContactResponseBodyList as any as S.Schema<ListIpFirewallRuleResponseBodyList>;
 
 export type ListIpFirewallRuleResponse = ListIpFirewallRuleResponseBodyList;
-export const ListIpFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpFirewallRuleResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpFirewallRuleResponse",
-}) as any as S.Schema<ListIpFirewallRuleResponse>;
+export const ListIpFirewallRuleResponse =
+  CreateIpServiceChangeContactResponse as any as S.Schema<ListIpFirewallRuleResponse>;
 
 export interface ListIpGameRequest {
   ip: string;
@@ -2025,14 +2003,11 @@ export const ListIpGameRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpGameRequest" }) as any as S.Schema<ListIpGameRequest>;
 
 export type ListIpGameResponseBodyList = Array<string>;
-export const ListIpGameResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpGameResponseBodyList>;
+export const ListIpGameResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpGameResponseBodyList>;
 
 export type ListIpGameResponse = ListIpGameResponseBodyList;
-export const ListIpGameResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpGameResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpGameResponse" }) as any as S.Schema<ListIpGameResponse>;
+export const ListIpGameResponse = ListIpResponse as any as S.Schema<ListIpGameResponse>;
 
 export interface ListIpGameRuleRequest {
   ip: string;
@@ -2046,9 +2021,8 @@ export const ListIpGameRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpGameRuleRequest" }) as any as S.Schema<ListIpGameRuleRequest>;
 
 export type ListIpGameRuleResponseBodyList = Array<number>;
-export const ListIpGameRuleResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpGameRuleResponseBodyList>;
+export const ListIpGameRuleResponseBodyList =
+  CreateIpServiceChangeContactResponseBodyList as any as S.Schema<ListIpGameRuleResponseBodyList>;
 
 export type ListIpGameRuleResponse = ListIpGameRuleResponseBodyList;
 export const ListIpGameRuleResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2070,9 +2044,8 @@ export const ListIpLicenseCloudLinuxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicenseCloudLinuxRequest>;
 
 export type ListIpLicenseCloudLinuxResponseBodyList = Array<string>;
-export const ListIpLicenseCloudLinuxResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicenseCloudLinuxResponseBodyList>;
+export const ListIpLicenseCloudLinuxResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicenseCloudLinuxResponseBodyList>;
 
 export type ListIpLicenseCloudLinuxResponse = ListIpLicenseCloudLinuxResponseBodyList;
 export const ListIpLicenseCloudLinuxResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2096,16 +2069,12 @@ export const ListIpLicenseCpanelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicenseCpanelRequest>;
 
 export type ListIpLicenseCpanelResponseBodyList = Array<string>;
-export const ListIpLicenseCpanelResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicenseCpanelResponseBodyList>;
+export const ListIpLicenseCpanelResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicenseCpanelResponseBodyList>;
 
 export type ListIpLicenseCpanelResponse = ListIpLicenseCpanelResponseBodyList;
-export const ListIpLicenseCpanelResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLicenseCpanelResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLicenseCpanelResponse",
-}) as any as S.Schema<ListIpLicenseCpanelResponse>;
+export const ListIpLicenseCpanelResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseCpanelResponse>;
 
 export interface ListIpLicenseDirectadminRequest {
   ip: string;
@@ -2122,16 +2091,12 @@ export const ListIpLicenseDirectadminRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicenseDirectadminRequest>;
 
 export type ListIpLicenseDirectadminResponseBodyList = Array<string>;
-export const ListIpLicenseDirectadminResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicenseDirectadminResponseBodyList>;
+export const ListIpLicenseDirectadminResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicenseDirectadminResponseBodyList>;
 
 export type ListIpLicenseDirectadminResponse = ListIpLicenseDirectadminResponseBodyList;
-export const ListIpLicenseDirectadminResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLicenseDirectadminResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLicenseDirectadminResponse",
-}) as any as S.Schema<ListIpLicenseDirectadminResponse>;
+export const ListIpLicenseDirectadminResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseDirectadminResponse>;
 
 export interface ListIpLicensePleskRequest {
   ip: string;
@@ -2148,16 +2113,12 @@ export const ListIpLicensePleskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicensePleskRequest>;
 
 export type ListIpLicensePleskResponseBodyList = Array<string>;
-export const ListIpLicensePleskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicensePleskResponseBodyList>;
+export const ListIpLicensePleskResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicensePleskResponseBodyList>;
 
 export type ListIpLicensePleskResponse = ListIpLicensePleskResponseBodyList;
-export const ListIpLicensePleskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLicensePleskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLicensePleskResponse",
-}) as any as S.Schema<ListIpLicensePleskResponse>;
+export const ListIpLicensePleskResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicensePleskResponse>;
 
 export interface ListIpLicenseSqlserverRequest {
   ip: string;
@@ -2174,16 +2135,12 @@ export const ListIpLicenseSqlserverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicenseSqlserverRequest>;
 
 export type ListIpLicenseSqlserverResponseBodyList = Array<string>;
-export const ListIpLicenseSqlserverResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicenseSqlserverResponseBodyList>;
+export const ListIpLicenseSqlserverResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicenseSqlserverResponseBodyList>;
 
 export type ListIpLicenseSqlserverResponse = ListIpLicenseSqlserverResponseBodyList;
-export const ListIpLicenseSqlserverResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLicenseSqlserverResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLicenseSqlserverResponse",
-}) as any as S.Schema<ListIpLicenseSqlserverResponse>;
+export const ListIpLicenseSqlserverResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseSqlserverResponse>;
 
 export interface ListIpLicenseVirtuozzoRequest {
   ip: string;
@@ -2200,16 +2157,12 @@ export const ListIpLicenseVirtuozzoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicenseVirtuozzoRequest>;
 
 export type ListIpLicenseVirtuozzoResponseBodyList = Array<string>;
-export const ListIpLicenseVirtuozzoResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicenseVirtuozzoResponseBodyList>;
+export const ListIpLicenseVirtuozzoResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicenseVirtuozzoResponseBodyList>;
 
 export type ListIpLicenseVirtuozzoResponse = ListIpLicenseVirtuozzoResponseBodyList;
-export const ListIpLicenseVirtuozzoResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLicenseVirtuozzoResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLicenseVirtuozzoResponse",
-}) as any as S.Schema<ListIpLicenseVirtuozzoResponse>;
+export const ListIpLicenseVirtuozzoResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseVirtuozzoResponse>;
 
 export interface ListIpLicenseWindowsRequest {
   ip: string;
@@ -2226,16 +2179,12 @@ export const ListIpLicenseWindowsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicenseWindowsRequest>;
 
 export type ListIpLicenseWindowsResponseBodyList = Array<string>;
-export const ListIpLicenseWindowsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicenseWindowsResponseBodyList>;
+export const ListIpLicenseWindowsResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicenseWindowsResponseBodyList>;
 
 export type ListIpLicenseWindowsResponse = ListIpLicenseWindowsResponseBodyList;
-export const ListIpLicenseWindowsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLicenseWindowsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLicenseWindowsResponse",
-}) as any as S.Schema<ListIpLicenseWindowsResponse>;
+export const ListIpLicenseWindowsResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseWindowsResponse>;
 
 export interface ListIpLicenseWorklightRequest {
   ip: string;
@@ -2252,16 +2201,12 @@ export const ListIpLicenseWorklightRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpLicenseWorklightRequest>;
 
 export type ListIpLicenseWorklightResponseBodyList = Array<string>;
-export const ListIpLicenseWorklightResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpLicenseWorklightResponseBodyList>;
+export const ListIpLicenseWorklightResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpLicenseWorklightResponseBodyList>;
 
 export type ListIpLicenseWorklightResponse = ListIpLicenseWorklightResponseBodyList;
-export const ListIpLicenseWorklightResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpLicenseWorklightResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpLicenseWorklightResponse",
-}) as any as S.Schema<ListIpLicenseWorklightResponse>;
+export const ListIpLicenseWorklightResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseWorklightResponse>;
 
 export interface ListIpMitigationRequest {
   ip: string;
@@ -2279,14 +2224,11 @@ export const ListIpMitigationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpMitigationRequest" }) as any as S.Schema<ListIpMitigationRequest>;
 
 export type ListIpMitigationResponseBodyList = Array<string>;
-export const ListIpMitigationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpMitigationResponseBodyList>;
+export const ListIpMitigationResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpMitigationResponseBodyList>;
 
 export type ListIpMitigationResponse = ListIpMitigationResponseBodyList;
-export const ListIpMitigationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpMitigationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpMitigationResponse" }) as any as S.Schema<ListIpMitigationResponse>;
+export const ListIpMitigationResponse = ListIpResponse as any as S.Schema<ListIpMitigationResponse>;
 
 export interface ListIpMitigationProfilesRequest {
   ip: string;
@@ -2300,16 +2242,12 @@ export const ListIpMitigationProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpMitigationProfilesRequest>;
 
 export type ListIpMitigationProfilesResponseBodyList = Array<string>;
-export const ListIpMitigationProfilesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpMitigationProfilesResponseBodyList>;
+export const ListIpMitigationProfilesResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpMitigationProfilesResponseBodyList>;
 
 export type ListIpMitigationProfilesResponse = ListIpMitigationProfilesResponseBodyList;
-export const ListIpMitigationProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpMitigationProfilesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIpMitigationProfilesResponse",
-}) as any as S.Schema<ListIpMitigationProfilesResponse>;
+export const ListIpMitigationProfilesResponse =
+  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpMitigationProfilesResponse>;
 
 export interface ListIpMoveRequest {
   ip: string;
@@ -2322,9 +2260,8 @@ export const ListIpMoveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Nexthops available on this service */
 export type IpDestinationNexthopList = Array<string>;
-export const IpDestinationNexthopList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpDestinationNexthopList>;
+export const IpDestinationNexthopList =
+  ListIpResponseBodyList as any as S.Schema<IpDestinationNexthopList>;
 
 /** A structure given service and its nexthops as a destination for failover ips */
 export interface IpDestination {
@@ -2348,33 +2285,28 @@ export const IpDestinationsCloudProjectList = /*@__PURE__*/ S.Array(
 
 /** list of dedicated clouds */
 export type IpDestinationsDedicatedCloudList = Array<IpDestination>;
-export const IpDestinationsDedicatedCloudList = /*@__PURE__*/ S.Array(
-  IpDestination,
-) as any as S.Schema<IpDestinationsDedicatedCloudList>;
+export const IpDestinationsDedicatedCloudList =
+  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsDedicatedCloudList>;
 
 /** list of dedicated servers */
 export type IpDestinationsDedicatedServerList = Array<IpDestination>;
-export const IpDestinationsDedicatedServerList = /*@__PURE__*/ S.Array(
-  IpDestination,
-) as any as S.Schema<IpDestinationsDedicatedServerList>;
+export const IpDestinationsDedicatedServerList =
+  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsDedicatedServerList>;
 
 /** list of hosting reseller services */
 export type IpDestinationsHostingResellerList = Array<IpDestination>;
-export const IpDestinationsHostingResellerList = /*@__PURE__*/ S.Array(
-  IpDestination,
-) as any as S.Schema<IpDestinationsHostingResellerList>;
+export const IpDestinationsHostingResellerList =
+  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsHostingResellerList>;
 
 /** list of load balancing services */
 export type IpDestinationsIpLoadbalancingList = Array<IpDestination>;
-export const IpDestinationsIpLoadbalancingList = /*@__PURE__*/ S.Array(
-  IpDestination,
-) as any as S.Schema<IpDestinationsIpLoadbalancingList>;
+export const IpDestinationsIpLoadbalancingList =
+  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsIpLoadbalancingList>;
 
 /** list of vps */
 export type IpDestinationsVpsList = Array<IpDestination>;
-export const IpDestinationsVpsList = /*@__PURE__*/ S.Array(
-  IpDestination,
-) as any as S.Schema<IpDestinationsVpsList>;
+export const IpDestinationsVpsList =
+  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsVpsList>;
 
 /** A structure given all services allowed as a destination for this ip */
 export interface IpDestinations {
@@ -2418,14 +2350,12 @@ export const ListIpPhishingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpPhishingRequest" }) as any as S.Schema<ListIpPhishingRequest>;
 
 export type ListIpPhishingResponseBodyList = Array<number>;
-export const ListIpPhishingResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpPhishingResponseBodyList>;
+export const ListIpPhishingResponseBodyList =
+  CreateIpServiceChangeContactResponseBodyList as any as S.Schema<ListIpPhishingResponseBodyList>;
 
 export type ListIpPhishingResponse = ListIpPhishingResponseBodyList;
-export const ListIpPhishingResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpPhishingResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpPhishingResponse" }) as any as S.Schema<ListIpPhishingResponse>;
+export const ListIpPhishingResponse =
+  ListIpGameRuleResponse as any as S.Schema<ListIpPhishingResponse>;
 
 export interface ListIpReverseRequest {
   ip: string;
@@ -2437,27 +2367,21 @@ export const ListIpReverseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpReverseRequest" }) as any as S.Schema<ListIpReverseRequest>;
 
 export type ListIpReverseResponseBodyList = Array<string>;
-export const ListIpReverseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpReverseResponseBodyList>;
+export const ListIpReverseResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpReverseResponseBodyList>;
 
 export type ListIpReverseResponse = ListIpReverseResponseBodyList;
-export const ListIpReverseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpReverseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpReverseResponse" }) as any as S.Schema<ListIpReverseResponse>;
+export const ListIpReverseResponse = ListIpResponse as any as S.Schema<ListIpReverseResponse>;
 
 export type ListIpServiceRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListIpServiceRequestIamTagsValueList = /*@__PURE__*/ S.Array(
-  IamResourceTagFilterInput,
-) as any as S.Schema<ListIpServiceRequestIamTagsValueList>;
+export const ListIpServiceRequestIamTagsValueList =
+  ListIpRequestIamTagsValueList as any as S.Schema<ListIpServiceRequestIamTagsValueList>;
 
 export type ListIpServiceRequestIamTagsMap = {
   [key: string]: ListIpServiceRequestIamTagsValueList | undefined;
 };
-export const ListIpServiceRequestIamTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListIpServiceRequestIamTagsValueList,
-) as any as S.Schema<ListIpServiceRequestIamTagsMap>;
+export const ListIpServiceRequestIamTagsMap =
+  ListIpRequestIamTagsMap as any as S.Schema<ListIpServiceRequestIamTagsMap>;
 
 export interface ListIpServiceRequest {
   /** Filter resources on IAM tags */
@@ -2470,14 +2394,11 @@ export const ListIpServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpServiceRequest" }) as any as S.Schema<ListIpServiceRequest>;
 
 export type ListIpServiceResponseBodyList = Array<string>;
-export const ListIpServiceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpServiceResponseBodyList>;
+export const ListIpServiceResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpServiceResponseBodyList>;
 
 export type ListIpServiceResponse = ListIpServiceResponseBodyList;
-export const ListIpServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpServiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpServiceResponse" }) as any as S.Schema<ListIpServiceResponse>;
+export const ListIpServiceResponse = ListIpResponse as any as S.Schema<ListIpServiceResponse>;
 
 export interface ListIpSpamRequest {
   ip: string;
@@ -2492,14 +2413,11 @@ export const ListIpSpamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpSpamRequest" }) as any as S.Schema<ListIpSpamRequest>;
 
 export type ListIpSpamResponseBodyList = Array<string>;
-export const ListIpSpamResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIpSpamResponseBodyList>;
+export const ListIpSpamResponseBodyList =
+  ListIpResponseBodyList as any as S.Schema<ListIpSpamResponseBodyList>;
 
 export type ListIpSpamResponse = ListIpSpamResponseBodyList;
-export const ListIpSpamResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpSpamResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpSpamResponse" }) as any as S.Schema<ListIpSpamResponse>;
+export const ListIpSpamResponse = ListIpResponse as any as S.Schema<ListIpSpamResponse>;
 
 export interface ListIpSpamStatsRequest {
   ip: string;
@@ -2594,14 +2512,11 @@ export const ListIpTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpTaskRequest" }) as any as S.Schema<ListIpTaskRequest>;
 
 export type ListIpTaskResponseBodyList = Array<number>;
-export const ListIpTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListIpTaskResponseBodyList>;
+export const ListIpTaskResponseBodyList =
+  CreateIpServiceChangeContactResponseBodyList as any as S.Schema<ListIpTaskResponseBodyList>;
 
 export type ListIpTaskResponse = ListIpTaskResponseBodyList;
-export const ListIpTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIpTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIpTaskResponse" }) as any as S.Schema<ListIpTaskResponse>;
+export const ListIpTaskResponse = ListIpGameRuleResponse as any as S.Schema<ListIpTaskResponse>;
 
 export interface MoveIpRequest {
   ip: string;
@@ -2631,9 +2546,7 @@ export const PutIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutIpRequest" }) as any as S.Schema<PutIpRequest>;
 
 export interface PutIpResponse {}
-export const PutIpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpResponse",
-}) as any as S.Schema<PutIpResponse>;
+export const PutIpResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpResponse>;
 
 export interface PutIpFirewallRequest {
   ip: string;
@@ -2649,9 +2562,8 @@ export const PutIpFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutIpFirewallRequest" }) as any as S.Schema<PutIpFirewallRequest>;
 
 export interface PutIpFirewallResponse {}
-export const PutIpFirewallResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpFirewallResponse",
-}) as any as S.Schema<PutIpFirewallResponse>;
+export const PutIpFirewallResponse =
+  DeleteIpDelegationResponse as any as S.Schema<PutIpFirewallResponse>;
 
 export interface PutIpGameRequest {
   ip: string;
@@ -2668,9 +2580,7 @@ export const PutIpGameRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutIpGameRequest" }) as any as S.Schema<PutIpGameRequest>;
 
 export interface PutIpGameResponse {}
-export const PutIpGameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpGameResponse",
-}) as any as S.Schema<PutIpGameResponse>;
+export const PutIpGameResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpGameResponse>;
 
 export interface PutIpMitigationRequest {
   ip: string;
@@ -2687,9 +2597,8 @@ export const PutIpMitigationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutIpMitigationRequest" }) as any as S.Schema<PutIpMitigationRequest>;
 
 export interface PutIpMitigationResponse {}
-export const PutIpMitigationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpMitigationResponse",
-}) as any as S.Schema<PutIpMitigationResponse>;
+export const PutIpMitigationResponse =
+  DeleteIpDelegationResponse as any as S.Schema<PutIpMitigationResponse>;
 
 export interface PutIpMitigationProfileRequest {
   ip: string;
@@ -2710,9 +2619,8 @@ export const PutIpMitigationProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpMitigationProfileRequest>;
 
 export interface PutIpMitigationProfileResponse {}
-export const PutIpMitigationProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpMitigationProfileResponse",
-}) as any as S.Schema<PutIpMitigationProfileResponse>;
+export const PutIpMitigationProfileResponse =
+  DeleteIpDelegationResponse as any as S.Schema<PutIpMitigationProfileResponse>;
 
 export interface PutIpRipeRequest {
   ip: string;
@@ -2728,9 +2636,7 @@ export const PutIpRipeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutIpRipeRequest" }) as any as S.Schema<PutIpRipeRequest>;
 
 export interface PutIpRipeResponse {}
-export const PutIpRipeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpRipeResponse",
-}) as any as S.Schema<PutIpRipeResponse>;
+export const PutIpRipeResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpRipeResponse>;
 
 export interface PutIpServiceRequest {
   /** The internal name of your IP services */
@@ -2746,9 +2652,8 @@ export const PutIpServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutIpServiceRequest" }) as any as S.Schema<PutIpServiceRequest>;
 
 export interface PutIpServiceResponse {}
-export const PutIpServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutIpServiceResponse",
-}) as any as S.Schema<PutIpServiceResponse>;
+export const PutIpServiceResponse =
+  DeleteIpDelegationResponse as any as S.Schema<PutIpServiceResponse>;
 
 export interface PutIpServiceServiceInfosRequest {
   /** The internal name of your IP services */
@@ -2766,11 +2671,8 @@ export const PutIpServiceServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIpServiceServiceInfosRequest>;
 
 export interface PutIpServiceServiceInfosResponse {}
-export const PutIpServiceServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutIpServiceServiceInfosResponse",
-}) as any as S.Schema<PutIpServiceServiceInfosResponse>;
+export const PutIpServiceServiceInfosResponse =
+  DeleteIpMitigationProfileResponse as any as S.Schema<PutIpServiceServiceInfosResponse>;
 
 export interface TerminateIpServiceRequest {
   /** The internal name of your IP services */
@@ -2785,11 +2687,8 @@ export const TerminateIpServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateIpServiceRequest>;
 
 export type TerminateIpServiceResponse = string;
-export const TerminateIpServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateIpServiceResponse",
-}) as any as S.Schema<TerminateIpServiceResponse>;
+export const TerminateIpServiceResponse =
+  ConfirmIpServiceTerminationResponse as any as S.Schema<TerminateIpServiceResponse>;
 
 export interface UnblockIpAntihackRequest {
   ip: string;
@@ -2804,9 +2703,8 @@ export const UnblockIpAntihackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnblockIpAntihackRequest" }) as any as S.Schema<UnblockIpAntihackRequest>;
 
 export interface UnblockIpAntihackResponse {}
-export const UnblockIpAntihackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnblockIpAntihackResponse",
-}) as any as S.Schema<UnblockIpAntihackResponse>;
+export const UnblockIpAntihackResponse =
+  DeleteIpDelegationResponse as any as S.Schema<UnblockIpAntihackResponse>;
 
 export interface UnblockIpArpRequest {
   ip: string;
@@ -2821,9 +2719,8 @@ export const UnblockIpArpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnblockIpArpRequest" }) as any as S.Schema<UnblockIpArpRequest>;
 
 export interface UnblockIpArpResponse {}
-export const UnblockIpArpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnblockIpArpResponse",
-}) as any as S.Schema<UnblockIpArpResponse>;
+export const UnblockIpArpResponse =
+  DeleteIpDelegationResponse as any as S.Schema<UnblockIpArpResponse>;
 
 export interface UnblockIpSpamRequest {
   ip: string;

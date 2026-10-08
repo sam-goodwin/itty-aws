@@ -625,9 +625,7 @@ export const RejectProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for PartnerProcurementService.ResetAccount. */
 export interface ResetAccountRequest {}
-export const ResetAccountRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetAccountRequest",
-}) as any as S.Schema<ResetAccountRequest>;
+export const ResetAccountRequest = Empty as any as S.Schema<ResetAccountRequest>;
 
 export interface ResetProvidersAccountsRequest {
   /** Required. The resource name of the account. */

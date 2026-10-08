@@ -331,7 +331,8 @@ export class TagQuotaPerResourceExceeded
 export type AvailabilityZoneList = string[];
 export const AvailabilityZoneList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdentifierList = string[];
-export const SecurityGroupIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdentifierList =
+  AvailabilityZoneList as any as S.Schema<SecurityGroupIdentifierList>;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -403,7 +404,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 export type NodeIdentifierList = string[];
-export const NodeIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const NodeIdentifierList = AvailabilityZoneList as any as S.Schema<NodeIdentifierList>;
 export interface Node {
   NodeId?: string;
   Endpoint?: Endpoint;
@@ -540,7 +541,7 @@ export const CreateParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateParameterGroupResponse",
 }) as any as S.Schema<CreateParameterGroupResponse>;
 export type SubnetIdentifierList = string[];
-export const SubnetIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIdentifierList = AvailabilityZoneList as any as S.Schema<SubnetIdentifierList>;
 export interface CreateSubnetGroupRequest {
   SubnetGroupName: string;
   Description?: string;
@@ -628,9 +629,8 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterResponse {
   Cluster?: Cluster;
 }
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "DeleteClusterResponse" }) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  CreateClusterResponse as any as S.Schema<DeleteClusterResponse>;
 export interface DeleteParameterGroupRequest {
   ParameterGroupName: string;
 }
@@ -660,13 +660,10 @@ export const DeleteSubnetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSubnetGroupResponse {
   DeletionMessage?: string;
 }
-export const DeleteSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DeletionMessage: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeleteSubnetGroupResponse",
-}) as any as S.Schema<DeleteSubnetGroupResponse>;
+export const DeleteSubnetGroupResponse =
+  DeleteParameterGroupResponse as any as S.Schema<DeleteSubnetGroupResponse>;
 export type ClusterNameList = string[];
-export const ClusterNameList = /*@__PURE__*/ S.Array(S.String);
+export const ClusterNameList = AvailabilityZoneList as any as S.Schema<ClusterNameList>;
 export interface DescribeClustersRequest {
   ClusterNames?: string[];
   MaxResults?: number;
@@ -801,7 +798,8 @@ export const DescribeEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), Events: S.optional(EventList) }).pipe(ns),
 ).annotate({ identifier: "DescribeEventsResponse" }) as any as S.Schema<DescribeEventsResponse>;
 export type ParameterGroupNameList = string[];
-export const ParameterGroupNameList = /*@__PURE__*/ S.Array(S.String);
+export const ParameterGroupNameList =
+  AvailabilityZoneList as any as S.Schema<ParameterGroupNameList>;
 export interface DescribeParameterGroupsRequest {
   ParameterGroupNames?: string[];
   MaxResults?: number;
@@ -850,13 +848,10 @@ export interface DescribeParametersResponse {
   NextToken?: string;
   Parameters?: Parameter[];
 }
-export const DescribeParametersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Parameters: S.optional(ParameterList) }).pipe(ns),
-).annotate({
-  identifier: "DescribeParametersResponse",
-}) as any as S.Schema<DescribeParametersResponse>;
+export const DescribeParametersResponse =
+  DescribeDefaultParametersResponse as any as S.Schema<DescribeParametersResponse>;
 export type SubnetGroupNameList = string[];
-export const SubnetGroupNameList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetGroupNameList = AvailabilityZoneList as any as S.Schema<SubnetGroupNameList>;
 export interface DescribeSubnetGroupsRequest {
   SubnetGroupNames?: string[];
   MaxResults?: number;
@@ -899,11 +894,8 @@ export const IncreaseReplicationFactorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IncreaseReplicationFactorResponse {
   Cluster?: Cluster;
 }
-export const IncreaseReplicationFactorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({
-  identifier: "IncreaseReplicationFactorResponse",
-}) as any as S.Schema<IncreaseReplicationFactorResponse>;
+export const IncreaseReplicationFactorResponse =
+  DecreaseReplicationFactorResponse as any as S.Schema<IncreaseReplicationFactorResponse>;
 export interface ListTagsRequest {
   ResourceName: string;
   NextToken?: string;
@@ -932,9 +924,7 @@ export const RebootNodeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RebootNodeResponse {
   Cluster?: Cluster;
 }
-export const RebootNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "RebootNodeResponse" }) as any as S.Schema<RebootNodeResponse>;
+export const RebootNodeResponse = CreateClusterResponse as any as S.Schema<RebootNodeResponse>;
 export interface TagResourceRequest {
   ResourceName: string;
   Tags: Tag[];
@@ -951,7 +941,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "TagResourceResponse" }) as any as S.Schema<TagResourceResponse>;
 export type KeyList = string[];
-export const KeyList = /*@__PURE__*/ S.Array(S.String);
+export const KeyList = AvailabilityZoneList as any as S.Schema<KeyList>;
 export interface UntagResourceRequest {
   ResourceName: string;
   TagKeys: string[];
@@ -964,9 +954,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UntagResourceResponse {
   Tags?: Tag[];
 }
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }).pipe(ns),
-).annotate({ identifier: "UntagResourceResponse" }) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateClusterRequest {
   ClusterName: string;
   Description?: string;
@@ -990,9 +978,8 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateClusterResponse {
   Cluster?: Cluster;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse =
+  CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
 export interface ParameterNameValue {
   ParameterName?: string;
   ParameterValue?: string;
@@ -1016,11 +1003,8 @@ export const UpdateParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const UpdateParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-).annotate({
-  identifier: "UpdateParameterGroupResponse",
-}) as any as S.Schema<UpdateParameterGroupResponse>;
+export const UpdateParameterGroupResponse =
+  CreateParameterGroupResponse as any as S.Schema<UpdateParameterGroupResponse>;
 export interface UpdateSubnetGroupRequest {
   SubnetGroupName: string;
   Description?: string;
@@ -1036,11 +1020,8 @@ export const UpdateSubnetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
-export const UpdateSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
-).annotate({
-  identifier: "UpdateSubnetGroupResponse",
-}) as any as S.Schema<UpdateSubnetGroupResponse>;
+export const UpdateSubnetGroupResponse =
+  CreateSubnetGroupResponse as any as S.Schema<UpdateSubnetGroupResponse>;
 export type ExceptionMessage = string;
 export type AwsQueryErrorMessage = string;
 export type CreateClusterError =

@@ -103,15 +103,13 @@ export const ClaimDomainOwnershipResponseDomainEchMode = S.String;
 
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type ClaimDomainOwnershipResponseDomainIntendedNameserversList = Array<string>;
-export const ClaimDomainOwnershipResponseDomainIntendedNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClaimDomainOwnershipResponseDomainIntendedNameserversList>;
+export const ClaimDomainOwnershipResponseDomainIntendedNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<ClaimDomainOwnershipResponseDomainIntendedNameserversList>;
 
 /** A list of the current nameservers of the domain. */
 export type ClaimDomainOwnershipResponseDomainNameserversList = Array<string>;
-export const ClaimDomainOwnershipResponseDomainNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClaimDomainOwnershipResponseDomainNameserversList>;
+export const ClaimDomainOwnershipResponseDomainNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<ClaimDomainOwnershipResponseDomainNameserversList>;
 
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type ClaimDomainOwnershipResponseDomainServiceType = "external" | "na" | "zeit.world";
@@ -211,9 +209,8 @@ export const CreateOrTransferDomainResponseDomainCreator =
 
 /** A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel. */
 export type CreateOrTransferDomainResponseDomainCustomNameserversList = Array<string>;
-export const CreateOrTransferDomainResponseDomainCustomNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrTransferDomainResponseDomainCustomNameserversList>;
+export const CreateOrTransferDomainResponseDomainCustomNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<CreateOrTransferDomainResponseDomainCustomNameserversList>;
 
 /** Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment. */
 export type CreateOrTransferDomainResponseDomainEchMode = "auto" | "disabled" | "enabled";
@@ -221,15 +218,13 @@ export const CreateOrTransferDomainResponseDomainEchMode = S.String;
 
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type CreateOrTransferDomainResponseDomainIntendedNameserversList = Array<string>;
-export const CreateOrTransferDomainResponseDomainIntendedNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrTransferDomainResponseDomainIntendedNameserversList>;
+export const CreateOrTransferDomainResponseDomainIntendedNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<CreateOrTransferDomainResponseDomainIntendedNameserversList>;
 
 /** A list of the current nameservers of the domain. */
 export type CreateOrTransferDomainResponseDomainNameserversList = Array<string>;
-export const CreateOrTransferDomainResponseDomainNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrTransferDomainResponseDomainNameserversList>;
+export const CreateOrTransferDomainResponseDomainNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<CreateOrTransferDomainResponseDomainNameserversList>;
 
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type CreateOrTransferDomainResponseDomainServiceType = "external" | "na" | "zeit.world";
@@ -351,9 +346,8 @@ export const GetDomainResponseDomainCreator = ClaimDomainOwnershipResponseDomain
 
 /** A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel. */
 export type GetDomainResponseDomainCustomNameserversList = Array<string>;
-export const GetDomainResponseDomainCustomNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainResponseDomainCustomNameserversList>;
+export const GetDomainResponseDomainCustomNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainResponseDomainCustomNameserversList>;
 
 /** Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment. */
 export type GetDomainResponseDomainEchMode = "auto" | "disabled" | "enabled";
@@ -361,15 +355,13 @@ export const GetDomainResponseDomainEchMode = S.String;
 
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type GetDomainResponseDomainIntendedNameserversList = Array<string>;
-export const GetDomainResponseDomainIntendedNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainResponseDomainIntendedNameserversList>;
+export const GetDomainResponseDomainIntendedNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainResponseDomainIntendedNameserversList>;
 
 /** A list of the current nameservers of the domain. */
 export type GetDomainResponseDomainNameserversList = Array<string>;
-export const GetDomainResponseDomainNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainResponseDomainNameserversList>;
+export const GetDomainResponseDomainNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainResponseDomainNameserversList>;
 
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type GetDomainResponseDomainServiceType = "external" | "na" | "zeit.world";
@@ -501,9 +493,8 @@ export const GetDomainConfigResponseRecommendedCNAMEList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<GetDomainConfigResponseRecommendedCNAMEList>;
 
 export type GetDomainConfigResponseRecommendedIPv4ItemValueList = Array<string>;
-export const GetDomainConfigResponseRecommendedIPv4ItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainConfigResponseRecommendedIPv4ItemValueList>;
+export const GetDomainConfigResponseRecommendedIPv4ItemValueList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainConfigResponseRecommendedIPv4ItemValueList>;
 
 /** Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable. */
 export interface GetDomainConfigResponseRecommendedIPv4Item {
@@ -708,9 +699,8 @@ export const GetDomainsResponseDomainsItemCreator = ClaimDomainOwnershipResponse
 
 /** A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel. */
 export type GetDomainsResponseDomainsItemCustomNameserversList = Array<string>;
-export const GetDomainsResponseDomainsItemCustomNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainsResponseDomainsItemCustomNameserversList>;
+export const GetDomainsResponseDomainsItemCustomNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainsResponseDomainsItemCustomNameserversList>;
 
 /** Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment. */
 export type GetDomainsResponseDomainsItemEchMode = "auto" | "disabled" | "enabled";
@@ -718,15 +708,13 @@ export const GetDomainsResponseDomainsItemEchMode = S.String;
 
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type GetDomainsResponseDomainsItemIntendedNameserversList = Array<string>;
-export const GetDomainsResponseDomainsItemIntendedNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainsResponseDomainsItemIntendedNameserversList>;
+export const GetDomainsResponseDomainsItemIntendedNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainsResponseDomainsItemIntendedNameserversList>;
 
 /** A list of the current nameservers of the domain. */
 export type GetDomainsResponseDomainsItemNameserversList = Array<string>;
-export const GetDomainsResponseDomainsItemNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainsResponseDomainsItemNameserversList>;
+export const GetDomainsResponseDomainsItemNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainsResponseDomainsItemNameserversList>;
 
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type GetDomainsResponseDomainsItemServiceType = "external" | "na" | "zeit.world";
@@ -839,9 +827,8 @@ export const GetDomainVerificationRecordResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead. */
 export type UpdateDomainRequestBodyCase0CustomNameserversList = Array<string>;
-export const UpdateDomainRequestBodyCase0CustomNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDomainRequestBodyCase0CustomNameserversList>;
+export const UpdateDomainRequestBodyCase0CustomNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<UpdateDomainRequestBodyCase0CustomNameserversList>;
 
 /** Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment. */
 export type UpdateDomainRequestBodyCase0EchMode = "auto" | "disabled";
@@ -931,9 +918,8 @@ export const UpdateDomainResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDomainResponseBodyCase1>;
 
 export type UpdateDomainResponseBodyCase2CustomNameserversList = Array<string>;
-export const UpdateDomainResponseBodyCase2CustomNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDomainResponseBodyCase2CustomNameserversList>;
+export const UpdateDomainResponseBodyCase2CustomNameserversList =
+  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<UpdateDomainResponseBodyCase2CustomNameserversList>;
 
 export type UpdateDomainResponseBodyCase2EchMode = "auto" | "disabled" | "enabled";
 export const UpdateDomainResponseBodyCase2EchMode = S.String;

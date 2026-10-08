@@ -242,7 +242,7 @@ export const BatchCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchCreateUserResponse" }) as any as S.Schema<BatchCreateUserResponse>;
 export type UserIds = string[];
-export const UserIds = /*@__PURE__*/ S.Array(S.String);
+export const UserIds = SecurityGroupIdList as any as S.Schema<UserIds>;
 export interface BatchDeleteUserRequest {
   networkId: string;
   userIds: string[];
@@ -287,7 +287,7 @@ export const BatchDeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchDeleteUserResponse" }) as any as S.Schema<BatchDeleteUserResponse>;
 export type Unames = string[];
-export const Unames = /*@__PURE__*/ S.Array(S.String);
+export const Unames = SecurityGroupIdList as any as S.Schema<Unames>;
 export interface BatchLookupUserUnameRequest {
   networkId: string;
   unames: string[];
@@ -385,7 +385,7 @@ export const BatchReinviteUserResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchReinviteUserResponse",
 }) as any as S.Schema<BatchReinviteUserResponse>;
 export type AppIds = string[];
-export const AppIds = /*@__PURE__*/ S.Array(S.String);
+export const AppIds = SecurityGroupIdList as any as S.Schema<AppIds>;
 export interface BatchResetDevicesForUserRequest {
   networkId: string;
   userId: string;
@@ -479,15 +479,8 @@ export interface BatchToggleUserSuspendStatusResponse {
   successful?: BatchUserSuccessResponseItem[];
   failed?: BatchUserErrorResponseItem[];
 }
-export const BatchToggleUserSuspendStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    successful: S.optional(BatchUserSuccessResponseItems),
-    failed: S.optional(BatchUserErrorResponseItems),
-  }),
-).annotate({
-  identifier: "BatchToggleUserSuspendStatusResponse",
-}) as any as S.Schema<BatchToggleUserSuspendStatusResponse>;
+export const BatchToggleUserSuspendStatusResponse =
+  BatchReinviteUserResponse as any as S.Schema<BatchToggleUserSuspendStatusResponse>;
 export interface CreateBotRequest {
   networkId: string;
   username: string;
@@ -612,7 +605,7 @@ export const CreateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateNetworkResponse" }) as any as S.Schema<CreateNetworkResponse>;
 export type PermittedNetworksList = string[];
-export const PermittedNetworksList = /*@__PURE__*/ S.Array(S.String);
+export const PermittedNetworksList = SecurityGroupIdList as any as S.Schema<PermittedNetworksList>;
 export interface WickrAwsNetworks {
   region: string;
   networkId: string;
@@ -685,7 +678,8 @@ export const CreateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSecurityGroupRequest",
 }) as any as S.Schema<CreateSecurityGroupRequest>;
 export type SecurityGroupStringList = string[];
-export const SecurityGroupStringList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupStringList =
+  SecurityGroupIdList as any as S.Schema<SecurityGroupStringList>;
 export interface CallingSettings {
   canStart11Call?: boolean;
   canVideoCall?: boolean;
@@ -874,11 +868,8 @@ export const DeleteDataRetentionBotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDataRetentionBotResponse {
   message?: string;
 }
-export const DeleteDataRetentionBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteDataRetentionBotResponse",
-}) as any as S.Schema<DeleteDataRetentionBotResponse>;
+export const DeleteDataRetentionBotResponse =
+  CreateDataRetentionBotResponse as any as S.Schema<DeleteDataRetentionBotResponse>;
 export interface DeleteNetworkRequest {
   networkId: string;
   clientToken?: string;
@@ -894,9 +885,7 @@ export const DeleteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteNetworkResponse {
   message?: string;
 }
-export const DeleteNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "DeleteNetworkResponse" }) as any as S.Schema<DeleteNetworkResponse>;
+export const DeleteNetworkResponse = DeleteBotResponse as any as S.Schema<DeleteNetworkResponse>;
 export interface DeleteSecurityGroupRequest {
   networkId: string;
   groupId: string;
@@ -1471,20 +1460,7 @@ export interface Bot {
   suspended?: boolean;
   lastLogin?: string;
 }
-export const Bot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    botId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    username: S.optional(S.String),
-    uname: S.optional(S.String),
-    pubkey: S.optional(S.String),
-    status: S.optional(BotStatus),
-    groupId: S.optional(S.String),
-    hasChallenge: S.optional(S.Boolean),
-    suspended: S.optional(S.Boolean),
-    lastLogin: S.optional(S.String),
-  }),
-).annotate({ identifier: "Bot" }) as any as S.Schema<Bot>;
+export const Bot = GetBotResponse as any as S.Schema<Bot>;
 export type Bots = Bot[];
 export const Bots = /*@__PURE__*/ S.Array(Bot);
 export interface ListBotsResponse {
@@ -1623,19 +1599,7 @@ export interface Network {
   migrationState?: number;
   encryptionKeyArn?: string;
 }
-export const Network = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkId: S.String,
-    networkName: S.String,
-    accessLevel: AccessLevel,
-    awsAccountId: S.String,
-    networkArn: S.String,
-    standing: S.optional(S.Number),
-    freeTrialExpiration: S.optional(S.String),
-    migrationState: S.optional(S.Number),
-    encryptionKeyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
+export const Network = GetNetworkResponse as any as S.Schema<Network>;
 export type NetworkList = Network[];
 export const NetworkList = /*@__PURE__*/ S.Array(Network);
 export interface ListNetworksResponse {
@@ -1864,7 +1828,7 @@ export const RegisterOidcConfigTestRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterOidcConfigTestRequest",
 }) as any as S.Schema<RegisterOidcConfigTestRequest>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = SecurityGroupIdList as any as S.Schema<StringList>;
 export interface RegisterOidcConfigTestResponse {
   tokenEndpoint?: string;
   userinfoEndpoint?: string;
@@ -1972,9 +1936,7 @@ export const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBotResponse {
   message?: string;
 }
-export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "UpdateBotResponse" }) as any as S.Schema<UpdateBotResponse>;
+export const UpdateBotResponse = DeleteBotResponse as any as S.Schema<UpdateBotResponse>;
 export type DataRetentionActionType = "ENABLE" | "DISABLE" | "PUBKEY_MSG_ACK" | (string & {});
 export const DataRetentionActionType = S.String;
 
@@ -2002,11 +1964,8 @@ export const UpdateDataRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataRetentionResponse {
   message?: string;
 }
-export const UpdateDataRetentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateDataRetentionResponse",
-}) as any as S.Schema<UpdateDataRetentionResponse>;
+export const UpdateDataRetentionResponse =
+  CreateDataRetentionBotResponse as any as S.Schema<UpdateDataRetentionResponse>;
 export interface UpdateGuestUserRequest {
   networkId: string;
   usernameHash: string;
@@ -2031,9 +1990,8 @@ export const UpdateGuestUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGuestUserResponse {
   message?: string;
 }
-export const UpdateGuestUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "UpdateGuestUserResponse" }) as any as S.Schema<UpdateGuestUserResponse>;
+export const UpdateGuestUserResponse =
+  DeleteBotResponse as any as S.Schema<UpdateGuestUserResponse>;
 export interface UpdateNetworkRequest {
   networkId: string;
   networkName: string;
@@ -2053,9 +2011,7 @@ export const UpdateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNetworkResponse {
   message?: string;
 }
-export const UpdateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: S.optional(S.String) }),
-).annotate({ identifier: "UpdateNetworkResponse" }) as any as S.Schema<UpdateNetworkResponse>;
+export const UpdateNetworkResponse = DeleteBotResponse as any as S.Schema<UpdateNetworkResponse>;
 export type Status = "DISABLED" | "ENABLED" | "FORCE_ENABLED" | (string & {});
 export const Status = S.String;
 
@@ -2116,11 +2072,8 @@ export const UpdateNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNetworkSettingsResponse {
   settings: Setting[];
 }
-export const UpdateNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ settings: SettingsList }),
-).annotate({
-  identifier: "UpdateNetworkSettingsResponse",
-}) as any as S.Schema<UpdateNetworkSettingsResponse>;
+export const UpdateNetworkSettingsResponse =
+  GetNetworkSettingsResponse as any as S.Schema<UpdateNetworkSettingsResponse>;
 export interface UpdateSecurityGroupRequest {
   networkId: string;
   groupId: string;
@@ -2149,11 +2102,8 @@ export const UpdateSecurityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-export const UpdateSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ securityGroup: SecurityGroup }),
-).annotate({
-  identifier: "UpdateSecurityGroupResponse",
-}) as any as S.Schema<UpdateSecurityGroupResponse>;
+export const UpdateSecurityGroupResponse =
+  CreateSecurityGroupResponse as any as S.Schema<UpdateSecurityGroupResponse>;
 export interface UpdateUserDetails {
   firstName?: string | redacted.Redacted<string>;
   lastName?: string | redacted.Redacted<string>;

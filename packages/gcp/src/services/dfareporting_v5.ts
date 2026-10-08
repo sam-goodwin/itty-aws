@@ -534,15 +534,8 @@ export interface ConversionsBatchUpdateRequest {
   /** Describes how encryptedUserId is encrypted. This is a required field if encryptedUserId is used. */
   encryptionInfo?: EncryptionInfo;
 }
-export const ConversionsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversions: S.optional(ConversionList),
-    kind: S.optional(S.String),
-    encryptionInfo: S.optional(EncryptionInfo),
-  }),
-).annotate({
-  identifier: "ConversionsBatchUpdateRequest",
-}) as any as S.Schema<ConversionsBatchUpdateRequest>;
+export const ConversionsBatchUpdateRequest =
+  ConversionsBatchInsertRequest as any as S.Schema<ConversionsBatchUpdateRequest>;
 
 export interface BatchupdateConversionsRequest {
   /** User profile ID associated with this request. */
@@ -658,9 +651,8 @@ export const DeleteCreativeFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCreativeFieldsRequest>;
 
 export interface DeleteCreativeFieldsResponse {}
-export const DeleteCreativeFieldsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCreativeFieldsResponse",
-}) as any as S.Schema<DeleteCreativeFieldsResponse>;
+export const DeleteCreativeFieldsResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteCreativeFieldsResponse>;
 
 export interface DeleteCreativeFieldValuesRequest {
   /** User profile ID associated with this request. */
@@ -728,11 +720,8 @@ export const DeleteDynamicTargetingKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDynamicTargetingKeysRequest>;
 
 export interface DeleteDynamicTargetingKeysResponse {}
-export const DeleteDynamicTargetingKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDynamicTargetingKeysResponse",
-}) as any as S.Schema<DeleteDynamicTargetingKeysResponse>;
+export const DeleteDynamicTargetingKeysResponse =
+  DeleteCreativeFieldValuesResponse as any as S.Schema<DeleteDynamicTargetingKeysResponse>;
 
 export interface DeleteEventTagsRequest {
   /** User profile ID associated with this request. */
@@ -754,9 +743,8 @@ export const DeleteEventTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEventTagsRequest" }) as any as S.Schema<DeleteEventTagsRequest>;
 
 export interface DeleteEventTagsResponse {}
-export const DeleteEventTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventTagsResponse",
-}) as any as S.Schema<DeleteEventTagsResponse>;
+export const DeleteEventTagsResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteEventTagsResponse>;
 
 export interface DeleteFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
@@ -780,11 +768,8 @@ export const DeleteFloodlightActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFloodlightActivitiesRequest>;
 
 export interface DeleteFloodlightActivitiesResponse {}
-export const DeleteFloodlightActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFloodlightActivitiesResponse",
-}) as any as S.Schema<DeleteFloodlightActivitiesResponse>;
+export const DeleteFloodlightActivitiesResponse =
+  DeleteCreativeFieldValuesResponse as any as S.Schema<DeleteFloodlightActivitiesResponse>;
 
 export interface DeletePlacementStrategiesRequest {
   /** Placement strategy ID. */
@@ -808,11 +793,8 @@ export const DeletePlacementStrategiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlacementStrategiesRequest>;
 
 export interface DeletePlacementStrategiesResponse {}
-export const DeletePlacementStrategiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePlacementStrategiesResponse",
-}) as any as S.Schema<DeletePlacementStrategiesResponse>;
+export const DeletePlacementStrategiesResponse =
+  DeleteCreativeFieldValuesResponse as any as S.Schema<DeletePlacementStrategiesResponse>;
 
 export interface DeleteReportsRequest {
   /** The ID of the report. */
@@ -834,9 +816,8 @@ export const DeleteReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReportsRequest" }) as any as S.Schema<DeleteReportsRequest>;
 
 export interface DeleteReportsResponse {}
-export const DeleteReportsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReportsResponse",
-}) as any as S.Schema<DeleteReportsResponse>;
+export const DeleteReportsResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteReportsResponse>;
 
 export interface DeleteUserRolesRequest {
   /** User role ID. */
@@ -858,9 +839,8 @@ export const DeleteUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRolesRequest" }) as any as S.Schema<DeleteUserRolesRequest>;
 
 export interface DeleteUserRolesResponse {}
-export const DeleteUserRolesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserRolesResponse",
-}) as any as S.Schema<DeleteUserRolesResponse>;
+export const DeleteUserRolesResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteUserRolesResponse>;
 
 export interface GenerateCodeDynamicProfilesRequest {
   /** Required. Dynamic profile ID. */
@@ -1664,13 +1644,7 @@ export interface PlatformType {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#platformType". */
   kind?: string;
 }
-export const PlatformType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "PlatformType" }) as any as S.Schema<PlatformType>;
+export const PlatformType = AccountPermissionGroup as any as S.Schema<PlatformType>;
 
 export type PlatformTypeList = Array<PlatformType>;
 export const PlatformTypeList = /*@__PURE__*/ S.Array(
@@ -7844,12 +7818,7 @@ export interface SiteTranscodeSetting {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#siteTranscodeSetting". */
   kind?: string;
 }
-export const SiteTranscodeSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabledVideoFormats: S.optional(IntegerList),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "SiteTranscodeSetting" }) as any as S.Schema<SiteTranscodeSetting>;
+export const SiteTranscodeSetting = TranscodeSetting as any as S.Schema<SiteTranscodeSetting>;
 
 /** Video Settings */
 export interface SiteVideoSettings {
@@ -9637,9 +9606,8 @@ export const ListAccountPermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountPermissionGroupsRequest>;
 
 export type AccountPermissionGroupList = Array<AccountPermissionGroup>;
-export const AccountPermissionGroupList = /*@__PURE__*/ S.Array(
-  AccountPermissionGroup,
-) as any as S.Schema<AccountPermissionGroupList>;
+export const AccountPermissionGroupList =
+  PlatformTypeList as any as S.Schema<AccountPermissionGroupList>;
 
 /** Account Permission Group List Response */
 export interface AccountPermissionGroupsListResponse {
@@ -14014,9 +13982,8 @@ export const PublishDynamicProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishDynamicProfilesRequest>;
 
 export interface PublishDynamicProfilesResponse {}
-export const PublishDynamicProfilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PublishDynamicProfilesResponse",
-}) as any as S.Schema<PublishDynamicProfilesResponse>;
+export const PublishDynamicProfilesResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<PublishDynamicProfilesResponse>;
 
 export interface PublishStudioCreativesRequest {
   /** Required. Studio creative ID. */
@@ -14037,9 +14004,8 @@ export const PublishStudioCreativesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishStudioCreativesRequest>;
 
 export interface PublishStudioCreativesResponse {}
-export const PublishStudioCreativesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PublishStudioCreativesResponse",
-}) as any as S.Schema<PublishStudioCreativesResponse>;
+export const PublishStudioCreativesResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<PublishStudioCreativesResponse>;
 
 /** Represents a dimension filter. */
 export interface DimensionFilter {
@@ -14302,15 +14268,10 @@ export interface Metric {
   /** The kind of resource this is, in this case dfareporting#metric. */
   kind?: string;
 }
-export const Metric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
+export const Metric = Dimension as any as S.Schema<Metric>;
 
 export type MetricList = Array<Metric>;
-export const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
+export const MetricList = DimensionList as any as S.Schema<MetricList>;
 
 /** Represents fields that are compatible to be selected for a report of type "REACH". */
 export interface ReachReportCompatibleFields {

@@ -67,9 +67,8 @@ export const AuthorizationPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 
 /** The permissions associated with the policy. */
 export type AuthorizationPolicyPermissionsList = Array<PermissionTypes>;
-export const AuthorizationPolicyPermissionsList = /*@__PURE__*/ S.Array(
-  PermissionTypes,
-) as any as S.Schema<AuthorizationPolicyPermissionsList>;
+export const AuthorizationPolicyPermissionsList =
+  AuthorizationPolicyInputPermissionsList as any as S.Schema<AuthorizationPolicyPermissionsList>;
 
 /** The authorization policy. */
 export interface AuthorizationPolicy {
@@ -497,10 +496,8 @@ export const ConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The connector properties. */
 export type ConnectorConnectorPropertiesMap = { [key: string]: unknown | undefined };
-export const ConnectorConnectorPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectorConnectorPropertiesMap>;
+export const ConnectorConnectorPropertiesMap =
+  ConnectorInputConnectorPropertiesMap as any as S.Schema<ConnectorConnectorPropertiesMap>;
 
 /** State of connector. */
 export type ConnectorState = "Creating" | "Created" | "Ready" | "Expiring" | "Deleting" | "Failed";
@@ -630,9 +627,8 @@ export const DeleteConnectorMappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectorMappingRequest>;
 
 export interface DeleteConnectorMappingResponse {}
-export const DeleteConnectorMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectorMappingResponse",
-}) as any as S.Schema<DeleteConnectorMappingResponse>;
+export const DeleteConnectorMappingResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteConnectorMappingResponse>;
 
 export interface DeleteHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -658,9 +654,7 @@ export const DeleteHubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHubRequest" }) as any as S.Schema<DeleteHubRequest>;
 
 export interface DeleteHubResponse {}
-export const DeleteHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHubResponse",
-}) as any as S.Schema<DeleteHubResponse>;
+export const DeleteHubResponse = DeleteConnectorResponse as any as S.Schema<DeleteHubResponse>;
 
 export interface DeleteKpiRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -689,9 +683,7 @@ export const DeleteKpiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKpiRequest" }) as any as S.Schema<DeleteKpiRequest>;
 
 export interface DeleteKpiResponse {}
-export const DeleteKpiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKpiResponse",
-}) as any as S.Schema<DeleteKpiResponse>;
+export const DeleteKpiResponse = DeleteConnectorResponse as any as S.Schema<DeleteKpiResponse>;
 
 export interface DeleteLinkRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -720,9 +712,7 @@ export const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLinkRequest" }) as any as S.Schema<DeleteLinkRequest>;
 
 export interface DeleteLinkResponse {}
-export const DeleteLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLinkResponse",
-}) as any as S.Schema<DeleteLinkResponse>;
+export const DeleteLinkResponse = DeleteConnectorResponse as any as S.Schema<DeleteLinkResponse>;
 
 export interface DeletePredictionRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -751,9 +741,8 @@ export const DeletePredictionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePredictionRequest" }) as any as S.Schema<DeletePredictionRequest>;
 
 export interface DeletePredictionResponse {}
-export const DeletePredictionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePredictionResponse",
-}) as any as S.Schema<DeletePredictionResponse>;
+export const DeletePredictionResponse =
+  DeleteConnectorResponse as any as S.Schema<DeletePredictionResponse>;
 
 export interface DeleteProfileRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -785,9 +774,8 @@ export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProfileRequest" }) as any as S.Schema<DeleteProfileRequest>;
 
 export interface DeleteProfileResponse {}
-export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProfileResponse",
-}) as any as S.Schema<DeleteProfileResponse>;
+export const DeleteProfileResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteProfileResponse>;
 
 export interface DeleteRelationshipRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -818,9 +806,8 @@ export const DeleteRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRelationshipRequest>;
 
 export interface DeleteRelationshipResponse {}
-export const DeleteRelationshipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRelationshipResponse",
-}) as any as S.Schema<DeleteRelationshipResponse>;
+export const DeleteRelationshipResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteRelationshipResponse>;
 
 export interface DeleteRelationshipLinkRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -851,9 +838,8 @@ export const DeleteRelationshipLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRelationshipLinkRequest>;
 
 export interface DeleteRelationshipLinkResponse {}
-export const DeleteRelationshipLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRelationshipLinkResponse",
-}) as any as S.Schema<DeleteRelationshipLinkResponse>;
+export const DeleteRelationshipLinkResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteRelationshipLinkResponse>;
 
 export interface DeleteRoleAssignmentRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -884,9 +870,8 @@ export const DeleteRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRoleAssignmentRequest>;
 
 export interface DeleteRoleAssignmentResponse {}
-export const DeleteRoleAssignmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleAssignmentResponse",
-}) as any as S.Schema<DeleteRoleAssignmentResponse>;
+export const DeleteRoleAssignmentResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteRoleAssignmentResponse>;
 
 export interface DeleteViewRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -918,9 +903,7 @@ export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteViewRequest" }) as any as S.Schema<DeleteViewRequest>;
 
 export interface DeleteViewResponse {}
-export const DeleteViewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteViewResponse",
-}) as any as S.Schema<DeleteViewResponse>;
+export const DeleteViewResponse = DeleteConnectorResponse as any as S.Schema<DeleteViewResponse>;
 
 export interface GetAuthorizationPolicyRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -959,16 +942,8 @@ export interface GetAuthorizationPolicyResponse {
   type?: string;
   properties?: AuthorizationPolicy;
 }
-export const GetAuthorizationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationPolicy),
-  }),
-).annotate({
-  identifier: "GetAuthorizationPolicyResponse",
-}) as any as S.Schema<GetAuthorizationPolicyResponse>;
+export const GetAuthorizationPolicyResponse =
+  AuthorizationPoliciesCreateOrUpdateResponse as any as S.Schema<GetAuthorizationPolicyResponse>;
 
 export interface GetConnectorRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1054,16 +1029,8 @@ export interface GetConnectorMappingResponse {
   type?: string;
   properties?: ConnectorMapping;
 }
-export const GetConnectorMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ConnectorMapping),
-  }),
-).annotate({
-  identifier: "GetConnectorMappingResponse",
-}) as any as S.Schema<GetConnectorMappingResponse>;
+export const GetConnectorMappingResponse =
+  ConnectorMappingsCreateOrUpdateResponse as any as S.Schema<GetConnectorMappingResponse>;
 
 export interface GetHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1204,25 +1171,19 @@ export const InteractionTypeDefinitionAttributesMap = /*@__PURE__*/ S.Record(
 
 /** Localized descriptions for the property. */
 export type InteractionTypeDefinitionDescriptionMap = { [key: string]: string | undefined };
-export const InteractionTypeDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionDescriptionMap>;
+export const InteractionTypeDefinitionDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionDescriptionMap>;
 
 /** Localized display names for the property. */
 export type InteractionTypeDefinitionDisplayNameMap = { [key: string]: string | undefined };
-export const InteractionTypeDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionDisplayNameMap>;
+export const InteractionTypeDefinitionDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionDisplayNameMap>;
 
 export type InteractionTypeDefinitionLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
-export const InteractionTypeDefinitionLocalizedAttributesValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionLocalizedAttributesValueMap>;
+export const InteractionTypeDefinitionLocalizedAttributesValueMap =
+  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionLocalizedAttributesValueMap>;
 
 /** Any custom localized attributes for the Type. */
 export type InteractionTypeDefinitionLocalizedAttributesMap = {
@@ -1245,10 +1206,8 @@ export const InteractionTypeDefinitionEntityType = S.String;
 export type ProfileEnumValidValuesFormatLocalizedValueNamesMap = {
   [key: string]: string | undefined;
 };
-export const ProfileEnumValidValuesFormatLocalizedValueNamesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileEnumValidValuesFormatLocalizedValueNamesMap>;
+export const ProfileEnumValidValuesFormatLocalizedValueNamesMap =
+  GetHubResponseTagsMap as any as S.Schema<ProfileEnumValidValuesFormatLocalizedValueNamesMap>;
 
 /** Valid enum values in case of an enum property. */
 export interface ProfileEnumValidValuesFormat {
@@ -1396,9 +1355,8 @@ export const ProvisioningState = S.String;
 
 /** The id property names. Properties which uniquely identify an interaction instance. */
 export type InteractionTypeDefinitionIdPropertyNamesList = Array<string>;
-export const InteractionTypeDefinitionIdPropertyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionIdPropertyNamesList>;
+export const InteractionTypeDefinitionIdPropertyNamesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<InteractionTypeDefinitionIdPropertyNamesList>;
 
 /** The participant property reference. */
 export interface ParticipantPropertyReference {
@@ -1424,17 +1382,13 @@ export const ParticipantParticipantPropertyReferencesList = /*@__PURE__*/ S.Arra
 
 /** Localized display name. */
 export type ParticipantDisplayNameMap = { [key: string]: string | undefined };
-export const ParticipantDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ParticipantDisplayNameMap>;
+export const ParticipantDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<ParticipantDisplayNameMap>;
 
 /** Localized descriptions. */
 export type ParticipantDescriptionMap = { [key: string]: string | undefined };
-export const ParticipantDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ParticipantDescriptionMap>;
+export const ParticipantDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<ParticipantDescriptionMap>;
 
 /** Describes a profile type participating in an interaction. */
 export interface Participant {
@@ -1470,9 +1424,8 @@ export const InteractionTypeDefinitionParticipantProfilesList = /*@__PURE__*/ S.
 
 /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
 export type InteractionTypeDefinitionDataSourcePrecedenceRulesList = Array<DataSourcePrecedence>;
-export const InteractionTypeDefinitionDataSourcePrecedenceRulesList = /*@__PURE__*/ S.Array(
-  DataSourcePrecedence,
-) as any as S.Schema<InteractionTypeDefinitionDataSourcePrecedenceRulesList>;
+export const InteractionTypeDefinitionDataSourcePrecedenceRulesList =
+  PropertyDefinitionDataSourcePrecedenceRulesList as any as S.Schema<InteractionTypeDefinitionDataSourcePrecedenceRulesList>;
 
 /** The Interaction Type Definition */
 export interface InteractionTypeDefinition {
@@ -1603,17 +1556,13 @@ export const KpiDefinitionEntityType = S.String;
 
 /** Localized display name for the KPI. */
 export type KpiDefinitionDisplayNameMap = { [key: string]: string | undefined };
-export const KpiDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiDefinitionDisplayNameMap>;
+export const KpiDefinitionDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionDisplayNameMap>;
 
 /** Localized description for the KPI. */
 export type KpiDefinitionDescriptionMap = { [key: string]: string | undefined };
-export const KpiDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiDefinitionDescriptionMap>;
+export const KpiDefinitionDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionDescriptionMap>;
 
 /** The calculation window. */
 export type KpiDefinitionCalculationWindow = "Lifetime" | "Hour" | "Day" | "Week" | "Month";
@@ -1633,16 +1582,13 @@ export const KpiDefinitionFunction = S.String;
 
 /** the group by properties for the KPI. */
 export type KpiDefinitionGroupByList = Array<string>;
-export const KpiDefinitionGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KpiDefinitionGroupByList>;
+export const KpiDefinitionGroupByList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<KpiDefinitionGroupByList>;
 
 /** The display name. */
 export type KpiGroupByMetadataDisplayNameMap = { [key: string]: string | undefined };
-export const KpiGroupByMetadataDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiGroupByMetadataDisplayNameMap>;
+export const KpiGroupByMetadataDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<KpiGroupByMetadataDisplayNameMap>;
 
 /** The KPI GroupBy field metadata. */
 export interface KpiGroupByMetadata {
@@ -1862,17 +1808,13 @@ export const LinkDefinitionTargetEntityType = S.String;
 
 /** Localized display name for the Link. */
 export type LinkDefinitionDisplayNameMap = { [key: string]: string | undefined };
-export const LinkDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinkDefinitionDisplayNameMap>;
+export const LinkDefinitionDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionDisplayNameMap>;
 
 /** Localized descriptions for the Link. */
 export type LinkDefinitionDescriptionMap = { [key: string]: string | undefined };
-export const LinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinkDefinitionDescriptionMap>;
+export const LinkDefinitionDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionDescriptionMap>;
 
 /** Link type. */
 export type TypePropertiesMappingLinkType = "UpdateAlways" | "CopyIfNull";
@@ -1903,9 +1845,8 @@ export const LinkDefinitionMappingsList = /*@__PURE__*/ S.Array(
 
 /** The properties that represent the participating profile. */
 export type LinkDefinitionParticipantPropertyReferencesList = Array<ParticipantPropertyReference>;
-export const LinkDefinitionParticipantPropertyReferencesList = /*@__PURE__*/ S.Array(
-  ParticipantPropertyReference,
-) as any as S.Schema<LinkDefinitionParticipantPropertyReferencesList>;
+export const LinkDefinitionParticipantPropertyReferencesList =
+  ParticipantParticipantPropertyReferencesList as any as S.Schema<LinkDefinitionParticipantPropertyReferencesList>;
 
 /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
 export type LinkDefinitionOperationType = "Upsert" | "Delete";
@@ -2004,35 +1945,28 @@ export const GetPredictionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Description of the prediction. */
 export type PredictionDescriptionMap = { [key: string]: string | undefined };
-export const PredictionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PredictionDescriptionMap>;
+export const PredictionDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<PredictionDescriptionMap>;
 
 /** Display name of the prediction. */
 export type PredictionDisplayNameMap = { [key: string]: string | undefined };
-export const PredictionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PredictionDisplayNameMap>;
+export const PredictionDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<PredictionDisplayNameMap>;
 
 /** Interaction types involved in the prediction. */
 export type PredictionInvolvedInteractionTypesList = Array<string>;
-export const PredictionInvolvedInteractionTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInvolvedInteractionTypesList>;
+export const PredictionInvolvedInteractionTypesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInvolvedInteractionTypesList>;
 
 /** KPI types involved in the prediction. */
 export type PredictionInvolvedKpiTypesList = Array<string>;
-export const PredictionInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInvolvedKpiTypesList>;
+export const PredictionInvolvedKpiTypesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInvolvedKpiTypesList>;
 
 /** Relationships involved in the prediction. */
 export type PredictionInvolvedRelationshipsList = Array<string>;
-export const PredictionInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInvolvedRelationshipsList>;
+export const PredictionInvolvedRelationshipsList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInvolvedRelationshipsList>;
 
 /** Definition of the link mapping of prediction. */
 export interface PredictionMappings {
@@ -2076,24 +2010,20 @@ export const PredictionGradesList = /*@__PURE__*/ S.Array(
 
 /** Generated interaction types. */
 export type PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList = Array<string>;
-export const PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList>;
+export const PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList>;
 
 /** Generated links. */
 export type PredictionSystemGeneratedEntitiesGeneratedLinksList = Array<string>;
-export const PredictionSystemGeneratedEntitiesGeneratedLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedLinksList>;
+export const PredictionSystemGeneratedEntitiesGeneratedLinksList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedLinksList>;
 
 /** Generated KPIs. */
 export type PredictionSystemGeneratedEntitiesGeneratedKpisMap = {
   [key: string]: string | undefined;
 };
-export const PredictionSystemGeneratedEntitiesGeneratedKpisMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedKpisMap>;
+export const PredictionSystemGeneratedEntitiesGeneratedKpisMap =
+  GetHubResponseTagsMap as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedKpisMap>;
 
 /** System generated entities. */
 export interface PredictionSystemGeneratedEntities {
@@ -2480,49 +2410,38 @@ export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProfileRequest" }) as any as S.Schema<GetProfileRequest>;
 
 export type ProfileTypeDefinitionAttributesValueList = Array<string>;
-export const ProfileTypeDefinitionAttributesValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionAttributesValueList>;
+export const ProfileTypeDefinitionAttributesValueList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<ProfileTypeDefinitionAttributesValueList>;
 
 /** The attributes for the Type. */
 export type ProfileTypeDefinitionAttributesMap = {
   [key: string]: ProfileTypeDefinitionAttributesValueList | undefined;
 };
-export const ProfileTypeDefinitionAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProfileTypeDefinitionAttributesValueList,
-) as any as S.Schema<ProfileTypeDefinitionAttributesMap>;
+export const ProfileTypeDefinitionAttributesMap =
+  InteractionTypeDefinitionAttributesMap as any as S.Schema<ProfileTypeDefinitionAttributesMap>;
 
 /** Localized descriptions for the property. */
 export type ProfileTypeDefinitionDescriptionMap = { [key: string]: string | undefined };
-export const ProfileTypeDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionDescriptionMap>;
+export const ProfileTypeDefinitionDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionDescriptionMap>;
 
 /** Localized display names for the property. */
 export type ProfileTypeDefinitionDisplayNameMap = { [key: string]: string | undefined };
-export const ProfileTypeDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionDisplayNameMap>;
+export const ProfileTypeDefinitionDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionDisplayNameMap>;
 
 export type ProfileTypeDefinitionLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
-export const ProfileTypeDefinitionLocalizedAttributesValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesValueMap>;
+export const ProfileTypeDefinitionLocalizedAttributesValueMap =
+  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesValueMap>;
 
 /** Any custom localized attributes for the Type. */
 export type ProfileTypeDefinitionLocalizedAttributesMap = {
   [key: string]: ProfileTypeDefinitionLocalizedAttributesValueMap | undefined;
 };
-export const ProfileTypeDefinitionLocalizedAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProfileTypeDefinitionLocalizedAttributesValueMap,
-) as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesMap>;
+export const ProfileTypeDefinitionLocalizedAttributesMap =
+  InteractionTypeDefinitionLocalizedAttributesMap as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesMap>;
 
 /** Type of entity. */
 export type ProfileTypeDefinitionEntityType = "None" | "Profile" | "Interaction" | "Relationship";
@@ -2530,29 +2449,23 @@ export const ProfileTypeDefinitionEntityType = S.String;
 
 /** The properties of the Profile. */
 export type ProfileTypeDefinitionFieldsList = Array<PropertyDefinition>;
-export const ProfileTypeDefinitionFieldsList = /*@__PURE__*/ S.Array(
-  PropertyDefinition,
-) as any as S.Schema<ProfileTypeDefinitionFieldsList>;
+export const ProfileTypeDefinitionFieldsList =
+  InteractionTypeDefinitionFieldsList as any as S.Schema<ProfileTypeDefinitionFieldsList>;
 
 /** The properties which make up the unique ID. */
 export type StrongIdKeyPropertyNamesList = Array<string>;
-export const StrongIdKeyPropertyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StrongIdKeyPropertyNamesList>;
+export const StrongIdKeyPropertyNamesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<StrongIdKeyPropertyNamesList>;
 
 /** Localized display name. */
 export type StrongIdDisplayNameMap = { [key: string]: string | undefined };
-export const StrongIdDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StrongIdDisplayNameMap>;
+export const StrongIdDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<StrongIdDisplayNameMap>;
 
 /** Localized descriptions. */
 export type StrongIdDescriptionMap = { [key: string]: string | undefined };
-export const StrongIdDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StrongIdDescriptionMap>;
+export const StrongIdDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<StrongIdDescriptionMap>;
 
 /** Property/Properties which represent a unique ID. */
 export interface StrongId {
@@ -2732,23 +2645,18 @@ export const RelationshipDefinitionCardinality = S.String;
 
 /** Localized display name for the Relationship. */
 export type RelationshipDefinitionDisplayNameMap = { [key: string]: string | undefined };
-export const RelationshipDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipDefinitionDisplayNameMap>;
+export const RelationshipDefinitionDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionDisplayNameMap>;
 
 /** Localized descriptions for the Relationship. */
 export type RelationshipDefinitionDescriptionMap = { [key: string]: string | undefined };
-export const RelationshipDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipDefinitionDescriptionMap>;
+export const RelationshipDefinitionDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionDescriptionMap>;
 
 /** The properties of the Relationship. */
 export type RelationshipDefinitionFieldsList = Array<PropertyDefinition>;
-export const RelationshipDefinitionFieldsList = /*@__PURE__*/ S.Array(
-  PropertyDefinition,
-) as any as S.Schema<RelationshipDefinitionFieldsList>;
+export const RelationshipDefinitionFieldsList =
+  InteractionTypeDefinitionFieldsList as any as S.Schema<RelationshipDefinitionFieldsList>;
 
 /** Map a field of profile to its corresponding StrongId in Related Profile. */
 export interface RelationshipTypeFieldMapping {
@@ -2881,17 +2789,13 @@ export const GetRelationshipLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Localized display name for the Relationship Link. */
 export type RelationshipLinkDefinitionDisplayNameMap = { [key: string]: string | undefined };
-export const RelationshipLinkDefinitionDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipLinkDefinitionDisplayNameMap>;
+export const RelationshipLinkDefinitionDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionDisplayNameMap>;
 
 /** Localized descriptions for the Relationship Link. */
 export type RelationshipLinkDefinitionDescriptionMap = { [key: string]: string | undefined };
-export const RelationshipLinkDefinitionDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipLinkDefinitionDescriptionMap>;
+export const RelationshipLinkDefinitionDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionDescriptionMap>;
 
 /** Link type. */
 export type RelationshipLinkFieldMappingLinkType = "UpdateAlways" | "CopyIfNull";
@@ -2948,9 +2852,8 @@ export const RelationshipLinkDefinitionProfilePropertyReferencesList = /*@__PURE
 /** The property references for the Related Profile of the Relationship. */
 export type RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-export const RelationshipLinkDefinitionRelatedProfilePropertyReferencesList = /*@__PURE__*/ S.Array(
-  ParticipantProfilePropertyReference,
-) as any as S.Schema<RelationshipLinkDefinitionRelatedProfilePropertyReferencesList>;
+export const RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
+  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipLinkDefinitionRelatedProfilePropertyReferencesList>;
 
 /** The definition of relationship link. */
 export interface RelationshipLinkDefinition {
@@ -3044,17 +2947,13 @@ export const GetRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Localized display names for the metadata. */
 export type RoleAssignmentDisplayNameMap = { [key: string]: string | undefined };
-export const RoleAssignmentDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RoleAssignmentDisplayNameMap>;
+export const RoleAssignmentDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentDisplayNameMap>;
 
 /** Localized description for the metadata. */
 export type RoleAssignmentDescriptionMap = { [key: string]: string | undefined };
-export const RoleAssignmentDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RoleAssignmentDescriptionMap>;
+export const RoleAssignmentDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentDescriptionMap>;
 
 /** Type of roles. */
 export type RoleAssignmentRole =
@@ -3068,10 +2967,8 @@ export const RoleAssignmentRole = S.String;
 
 /** Other metadata for the principal. */
 export type AssignmentPrincipalPrincipalMetadataMap = { [key: string]: string | undefined };
-export const AssignmentPrincipalPrincipalMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssignmentPrincipalPrincipalMetadataMap>;
+export const AssignmentPrincipalPrincipalMetadataMap =
+  GetHubResponseTagsMap as any as S.Schema<AssignmentPrincipalPrincipalMetadataMap>;
 
 /** The AssignmentPrincipal */
 export interface AssignmentPrincipal {
@@ -3098,15 +2995,13 @@ export const RoleAssignmentPrincipalsList = /*@__PURE__*/ S.Array(
 
 /** The elements included in the set. */
 export type ResourceSetDescriptionElementsList = Array<string>;
-export const ResourceSetDescriptionElementsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSetDescriptionElementsList>;
+export const ResourceSetDescriptionElementsList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<ResourceSetDescriptionElementsList>;
 
 /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
 export type ResourceSetDescriptionExceptionsList = Array<string>;
-export const ResourceSetDescriptionExceptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSetDescriptionExceptionsList>;
+export const ResourceSetDescriptionExceptionsList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<ResourceSetDescriptionExceptionsList>;
 
 /** The resource set description. */
 export interface ResourceSetDescription {
@@ -3241,10 +3136,7 @@ export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Localized display name for the view. */
 export type ViewDisplayNameMap = { [key: string]: string | undefined };
-export const ViewDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ViewDisplayNameMap>;
+export const ViewDisplayNameMap = GetHubResponseTagsMap as any as S.Schema<ViewDisplayNameMap>;
 
 /** The view in Customer 360 web application. */
 export interface View {
@@ -3321,10 +3213,8 @@ export const GetWidgetTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Localized display name for the widget type. */
 export type WidgetTypeDisplayNameMap = { [key: string]: string | undefined };
-export const WidgetTypeDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WidgetTypeDisplayNameMap>;
+export const WidgetTypeDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<WidgetTypeDisplayNameMap>;
 
 /** Definition of WidgetType. */
 export interface WidgetType {
@@ -3381,10 +3271,8 @@ export const GetWidgetTypeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type HubsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const HubsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HubsCreateOrUpdateRequestTagsMap>;
+export const HubsCreateOrUpdateRequestTagsMap =
+  GetHubResponseTagsMap as any as S.Schema<HubsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of hub. */
 export interface HubPropertiesFormatInput {
@@ -3435,10 +3323,8 @@ export const HubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type HubsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const HubsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HubsCreateOrUpdateResponseTagsMap>;
+export const HubsCreateOrUpdateResponseTagsMap =
+  GetHubResponseTagsMap as any as S.Schema<HubsCreateOrUpdateResponseTagsMap>;
 
 export interface HubsCreateOrUpdateResponse {
   /** Resource ID. */
@@ -3552,49 +3438,38 @@ export const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ImagesGetUploadUrlForEntityTypeRequest>;
 
 export type InteractionTypeDefinitionInputAttributesValueList = Array<string>;
-export const InteractionTypeDefinitionInputAttributesValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionInputAttributesValueList>;
+export const InteractionTypeDefinitionInputAttributesValueList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<InteractionTypeDefinitionInputAttributesValueList>;
 
 /** The attributes for the Type. */
 export type InteractionTypeDefinitionInputAttributesMap = {
   [key: string]: InteractionTypeDefinitionInputAttributesValueList | undefined;
 };
-export const InteractionTypeDefinitionInputAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InteractionTypeDefinitionInputAttributesValueList,
-) as any as S.Schema<InteractionTypeDefinitionInputAttributesMap>;
+export const InteractionTypeDefinitionInputAttributesMap =
+  InteractionTypeDefinitionAttributesMap as any as S.Schema<InteractionTypeDefinitionInputAttributesMap>;
 
 /** Localized descriptions for the property. */
 export type InteractionTypeDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-export const InteractionTypeDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionInputDescriptionMap>;
+export const InteractionTypeDefinitionInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionInputDescriptionMap>;
 
 /** Localized display names for the property. */
 export type InteractionTypeDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-export const InteractionTypeDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionInputDisplayNameMap>;
+export const InteractionTypeDefinitionInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionInputDisplayNameMap>;
 
 export type InteractionTypeDefinitionInputLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
-export const InteractionTypeDefinitionInputLocalizedAttributesValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesValueMap>;
+export const InteractionTypeDefinitionInputLocalizedAttributesValueMap =
+  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesValueMap>;
 
 /** Any custom localized attributes for the Type. */
 export type InteractionTypeDefinitionInputLocalizedAttributesMap = {
   [key: string]: InteractionTypeDefinitionInputLocalizedAttributesValueMap | undefined;
 };
-export const InteractionTypeDefinitionInputLocalizedAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InteractionTypeDefinitionInputLocalizedAttributesValueMap,
-) as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesMap>;
+export const InteractionTypeDefinitionInputLocalizedAttributesMap =
+  InteractionTypeDefinitionLocalizedAttributesMap as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesMap>;
 
 /** Type of entity. */
 export type InteractionTypeDefinitionInputEntityType =
@@ -3606,9 +3481,8 @@ export const InteractionTypeDefinitionInputEntityType = S.String;
 
 /** Describes valid values for an enum property. */
 export type PropertyDefinitionInputEnumValidValuesList = Array<ProfileEnumValidValuesFormat>;
-export const PropertyDefinitionInputEnumValidValuesList = /*@__PURE__*/ S.Array(
-  ProfileEnumValidValuesFormat,
-) as any as S.Schema<PropertyDefinitionInputEnumValidValuesList>;
+export const PropertyDefinitionInputEnumValidValuesList =
+  PropertyDefinitionEnumValidValuesList as any as S.Schema<PropertyDefinitionInputEnumValidValuesList>;
 
 /** Property definition. */
 export interface PropertyDefinitionInput {
@@ -3671,21 +3545,17 @@ export const InteractionTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
 
 /** The id property names. Properties which uniquely identify an interaction instance. */
 export type InteractionTypeDefinitionInputIdPropertyNamesList = Array<string>;
-export const InteractionTypeDefinitionInputIdPropertyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InteractionTypeDefinitionInputIdPropertyNamesList>;
+export const InteractionTypeDefinitionInputIdPropertyNamesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<InteractionTypeDefinitionInputIdPropertyNamesList>;
 
 /** Profiles that participated in the interaction. */
 export type InteractionTypeDefinitionInputParticipantProfilesList = Array<Participant>;
-export const InteractionTypeDefinitionInputParticipantProfilesList = /*@__PURE__*/ S.Array(
-  Participant,
-) as any as S.Schema<InteractionTypeDefinitionInputParticipantProfilesList>;
+export const InteractionTypeDefinitionInputParticipantProfilesList =
+  InteractionTypeDefinitionParticipantProfilesList as any as S.Schema<InteractionTypeDefinitionInputParticipantProfilesList>;
 
 /** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
 export interface DataSourceInput {}
-export const DataSourceInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DataSourceInput",
-}) as any as S.Schema<DataSourceInput>;
+export const DataSourceInput = DeleteConnectorResponse as any as S.Schema<DataSourceInput>;
 
 /** The Interaction Type Definition */
 export interface InteractionTypeDefinitionInput {
@@ -3835,16 +3705,14 @@ export const InteractionsSuggestRelationshipLinksRequest = /*@__PURE__*/ S.suspe
 /** The property references for the profile type. */
 export type RelationshipsLookupProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-export const RelationshipsLookupProfilePropertyReferencesList = /*@__PURE__*/ S.Array(
-  ParticipantProfilePropertyReference,
-) as any as S.Schema<RelationshipsLookupProfilePropertyReferencesList>;
+export const RelationshipsLookupProfilePropertyReferencesList =
+  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipsLookupProfilePropertyReferencesList>;
 
 /** The property references for the related profile type. */
 export type RelationshipsLookupRelatedProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-export const RelationshipsLookupRelatedProfilePropertyReferencesList = /*@__PURE__*/ S.Array(
-  ParticipantProfilePropertyReference,
-) as any as S.Schema<RelationshipsLookupRelatedProfilePropertyReferencesList>;
+export const RelationshipsLookupRelatedProfilePropertyReferencesList =
+  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipsLookupRelatedProfilePropertyReferencesList>;
 
 /** The definition of suggested relationship for the type. */
 export interface RelationshipsLookup {
@@ -3899,17 +3767,13 @@ export const KpiDefinitionInputEntityType = S.String;
 
 /** Localized display name for the KPI. */
 export type KpiDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-export const KpiDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiDefinitionInputDisplayNameMap>;
+export const KpiDefinitionInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionInputDisplayNameMap>;
 
 /** Localized description for the KPI. */
 export type KpiDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-export const KpiDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KpiDefinitionInputDescriptionMap>;
+export const KpiDefinitionInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionInputDescriptionMap>;
 
 /** The calculation window. */
 export type KpiDefinitionInputCalculationWindow = "Lifetime" | "Hour" | "Day" | "Week" | "Month";
@@ -3929,21 +3793,18 @@ export const KpiDefinitionInputFunction = S.String;
 
 /** the group by properties for the KPI. */
 export type KpiDefinitionInputGroupByList = Array<string>;
-export const KpiDefinitionInputGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KpiDefinitionInputGroupByList>;
+export const KpiDefinitionInputGroupByList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<KpiDefinitionInputGroupByList>;
 
 /** The aliases. */
 export type KpiDefinitionInputAliasesList = Array<KpiAlias>;
-export const KpiDefinitionInputAliasesList = /*@__PURE__*/ S.Array(
-  KpiAlias,
-) as any as S.Schema<KpiDefinitionInputAliasesList>;
+export const KpiDefinitionInputAliasesList =
+  KpiDefinitionAliasesList as any as S.Schema<KpiDefinitionInputAliasesList>;
 
 /** The KPI extracts. */
 export type KpiDefinitionInputExtractsList = Array<KpiExtract>;
-export const KpiDefinitionInputExtractsList = /*@__PURE__*/ S.Array(
-  KpiExtract,
-) as any as S.Schema<KpiDefinitionInputExtractsList>;
+export const KpiDefinitionInputExtractsList =
+  KpiDefinitionExtractsList as any as S.Schema<KpiDefinitionInputExtractsList>;
 
 /** Defines the KPI Threshold limits. */
 export interface KpiDefinitionInput {
@@ -4070,9 +3931,8 @@ export const KpiReprocessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KpiReprocessRequest" }) as any as S.Schema<KpiReprocessRequest>;
 
 export interface KpiReprocessResponse {}
-export const KpiReprocessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "KpiReprocessResponse",
-}) as any as S.Schema<KpiReprocessResponse>;
+export const KpiReprocessResponse =
+  DeleteConnectorResponse as any as S.Schema<KpiReprocessResponse>;
 
 /** Type of source entity. */
 export type LinkDefinitionInputSourceEntityType =
@@ -4092,30 +3952,24 @@ export const LinkDefinitionInputTargetEntityType = S.String;
 
 /** Localized display name for the Link. */
 export type LinkDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-export const LinkDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinkDefinitionInputDisplayNameMap>;
+export const LinkDefinitionInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionInputDisplayNameMap>;
 
 /** Localized descriptions for the Link. */
 export type LinkDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-export const LinkDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LinkDefinitionInputDescriptionMap>;
+export const LinkDefinitionInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionInputDescriptionMap>;
 
 /** The set of properties mappings between the source and target Types. */
 export type LinkDefinitionInputMappingsList = Array<TypePropertiesMapping>;
-export const LinkDefinitionInputMappingsList = /*@__PURE__*/ S.Array(
-  TypePropertiesMapping,
-) as any as S.Schema<LinkDefinitionInputMappingsList>;
+export const LinkDefinitionInputMappingsList =
+  LinkDefinitionMappingsList as any as S.Schema<LinkDefinitionInputMappingsList>;
 
 /** The properties that represent the participating profile. */
 export type LinkDefinitionInputParticipantPropertyReferencesList =
   Array<ParticipantPropertyReference>;
-export const LinkDefinitionInputParticipantPropertyReferencesList = /*@__PURE__*/ S.Array(
-  ParticipantPropertyReference,
-) as any as S.Schema<LinkDefinitionInputParticipantPropertyReferencesList>;
+export const LinkDefinitionInputParticipantPropertyReferencesList =
+  ParticipantParticipantPropertyReferencesList as any as S.Schema<LinkDefinitionInputParticipantPropertyReferencesList>;
 
 /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
 export type LinkDefinitionInputOperationType = "Upsert" | "Delete";
@@ -4244,16 +4098,8 @@ export interface AuthorizationPolicyResourceFormat {
   type?: string;
   properties?: AuthorizationPolicy;
 }
-export const AuthorizationPolicyResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationPolicy),
-  }),
-).annotate({
-  identifier: "AuthorizationPolicyResourceFormat",
-}) as any as S.Schema<AuthorizationPolicyResourceFormat>;
+export const AuthorizationPolicyResourceFormat =
+  AuthorizationPoliciesCreateOrUpdateResponse as any as S.Schema<AuthorizationPolicyResourceFormat>;
 
 /** Results of the list operation. */
 export type AuthorizationPolicyListResultValueList = Array<AuthorizationPolicyResourceFormat>;
@@ -4312,14 +4158,8 @@ export interface ConnectorResourceFormat {
   type?: string;
   properties?: Connector;
 }
-export const ConnectorResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(Connector),
-  }),
-).annotate({ identifier: "ConnectorResourceFormat" }) as any as S.Schema<ConnectorResourceFormat>;
+export const ConnectorResourceFormat =
+  GetConnectorResponse as any as S.Schema<ConnectorResourceFormat>;
 
 /** Results of the list operation. */
 export type ConnectorListResultValueList = Array<ConnectorResourceFormat>;
@@ -4379,16 +4219,8 @@ export interface ConnectorMappingResourceFormat {
   type?: string;
   properties?: ConnectorMapping;
 }
-export const ConnectorMappingResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ConnectorMapping),
-  }),
-).annotate({
-  identifier: "ConnectorMappingResourceFormat",
-}) as any as S.Schema<ConnectorMappingResourceFormat>;
+export const ConnectorMappingResourceFormat =
+  ConnectorMappingsCreateOrUpdateResponse as any as S.Schema<ConnectorMappingResourceFormat>;
 
 /** Results of the list operation. */
 export type ConnectorMappingListResultValueList = Array<ConnectorMappingResourceFormat>;
@@ -4538,16 +4370,8 @@ export interface InteractionResourceFormat {
   type?: string;
   properties?: InteractionTypeDefinition;
 }
-export const InteractionResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(InteractionTypeDefinition),
-  }),
-).annotate({
-  identifier: "InteractionResourceFormat",
-}) as any as S.Schema<InteractionResourceFormat>;
+export const InteractionResourceFormat =
+  InteractionsCreateOrUpdateResponse as any as S.Schema<InteractionResourceFormat>;
 
 /** Results of the list operation. */
 export type InteractionListResultValueList = Array<InteractionResourceFormat>;
@@ -4602,14 +4426,7 @@ export interface KpiResourceFormat {
   type?: string;
   properties?: KpiDefinition;
 }
-export const KpiResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(KpiDefinition),
-  }),
-).annotate({ identifier: "KpiResourceFormat" }) as any as S.Schema<KpiResourceFormat>;
+export const KpiResourceFormat = GetKpiResponse as any as S.Schema<KpiResourceFormat>;
 
 /** Results of the list operation. */
 export type KpiListResultValueList = Array<KpiResourceFormat>;
@@ -4664,14 +4481,7 @@ export interface LinkResourceFormat {
   type?: string;
   properties?: LinkDefinition;
 }
-export const LinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LinkDefinition),
-  }),
-).annotate({ identifier: "LinkResourceFormat" }) as any as S.Schema<LinkResourceFormat>;
+export const LinkResourceFormat = GetLinkResponse as any as S.Schema<LinkResourceFormat>;
 
 /** Results of the list operation. */
 export type LinkListResultValueList = Array<LinkResourceFormat>;
@@ -4791,14 +4601,8 @@ export interface PredictionResourceFormat {
   type?: string;
   properties?: Prediction;
 }
-export const PredictionResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(Prediction),
-  }),
-).annotate({ identifier: "PredictionResourceFormat" }) as any as S.Schema<PredictionResourceFormat>;
+export const PredictionResourceFormat =
+  GetPredictionResponse as any as S.Schema<PredictionResourceFormat>;
 
 /** Results of the list operation. */
 export type PredictionListResultValueList = Array<PredictionResourceFormat>;
@@ -4856,14 +4660,7 @@ export interface ProfileResourceFormat {
   type?: string;
   properties?: ProfileTypeDefinition;
 }
-export const ProfileResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProfileTypeDefinition),
-  }),
-).annotate({ identifier: "ProfileResourceFormat" }) as any as S.Schema<ProfileResourceFormat>;
+export const ProfileResourceFormat = GetProfileResponse as any as S.Schema<ProfileResourceFormat>;
 
 /** Results of the list operation. */
 export type ProfileListResultValueList = Array<ProfileResourceFormat>;
@@ -4986,16 +4783,8 @@ export interface RelationshipLinkResourceFormat {
   type?: string;
   properties?: RelationshipLinkDefinition;
 }
-export const RelationshipLinkResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RelationshipLinkDefinition),
-  }),
-).annotate({
-  identifier: "RelationshipLinkResourceFormat",
-}) as any as S.Schema<RelationshipLinkResourceFormat>;
+export const RelationshipLinkResourceFormat =
+  GetRelationshipLinkResponse as any as S.Schema<RelationshipLinkResourceFormat>;
 
 /** Results of the list operation. */
 export type RelationshipLinkListResultValueList = Array<RelationshipLinkResourceFormat>;
@@ -5054,16 +4843,8 @@ export interface RoleAssignmentResourceFormat {
   type?: string;
   properties?: RoleAssignment;
 }
-export const RoleAssignmentResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RoleAssignment),
-  }),
-).annotate({
-  identifier: "RoleAssignmentResourceFormat",
-}) as any as S.Schema<RoleAssignmentResourceFormat>;
+export const RoleAssignmentResourceFormat =
+  GetRoleAssignmentResponse as any as S.Schema<RoleAssignmentResourceFormat>;
 
 /** Results of the list operation. */
 export type RoleAssignmentListResultValueList = Array<RoleAssignmentResourceFormat>;
@@ -5197,14 +4978,7 @@ export interface ViewResourceFormat {
   type?: string;
   properties?: View;
 }
-export const ViewResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(View),
-  }),
-).annotate({ identifier: "ViewResourceFormat" }) as any as S.Schema<ViewResourceFormat>;
+export const ViewResourceFormat = GetViewResponse as any as S.Schema<ViewResourceFormat>;
 
 /** Results of the list operation. */
 export type ViewListResultValueList = Array<ViewResourceFormat>;
@@ -5261,14 +5035,8 @@ export interface WidgetTypeResourceFormat {
   type?: string;
   properties?: WidgetType;
 }
-export const WidgetTypeResourceFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WidgetType),
-  }),
-).annotate({ identifier: "WidgetTypeResourceFormat" }) as any as S.Schema<WidgetTypeResourceFormat>;
+export const WidgetTypeResourceFormat =
+  GetWidgetTypeResponse as any as S.Schema<WidgetTypeResourceFormat>;
 
 /** Results of the list operation. */
 export type WidgetTypeListResultValueList = Array<WidgetTypeResourceFormat>;
@@ -5292,35 +5060,28 @@ export const WidgetTypeListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Description of the prediction. */
 export type PredictionInputDescriptionMap = { [key: string]: string | undefined };
-export const PredictionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PredictionInputDescriptionMap>;
+export const PredictionInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<PredictionInputDescriptionMap>;
 
 /** Display name of the prediction. */
 export type PredictionInputDisplayNameMap = { [key: string]: string | undefined };
-export const PredictionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PredictionInputDisplayNameMap>;
+export const PredictionInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<PredictionInputDisplayNameMap>;
 
 /** Interaction types involved in the prediction. */
 export type PredictionInputInvolvedInteractionTypesList = Array<string>;
-export const PredictionInputInvolvedInteractionTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInputInvolvedInteractionTypesList>;
+export const PredictionInputInvolvedInteractionTypesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInputInvolvedInteractionTypesList>;
 
 /** KPI types involved in the prediction. */
 export type PredictionInputInvolvedKpiTypesList = Array<string>;
-export const PredictionInputInvolvedKpiTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInputInvolvedKpiTypesList>;
+export const PredictionInputInvolvedKpiTypesList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInputInvolvedKpiTypesList>;
 
 /** Relationships involved in the prediction. */
 export type PredictionInputInvolvedRelationshipsList = Array<string>;
-export const PredictionInputInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PredictionInputInvolvedRelationshipsList>;
+export const PredictionInputInvolvedRelationshipsList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInputInvolvedRelationshipsList>;
 
 /** Definition of the link mapping of prediction. */
 export type PredictionInputMappings = PredictionMappings;
@@ -5332,9 +5093,8 @@ export const PredictionInputGradesItem = PredictionGradesItem;
 
 /** The prediction grades. */
 export type PredictionInputGradesList = Array<PredictionGradesItem>;
-export const PredictionInputGradesList = /*@__PURE__*/ S.Array(
-  PredictionGradesItem,
-) as any as S.Schema<PredictionInputGradesList>;
+export const PredictionInputGradesList =
+  PredictionGradesList as any as S.Schema<PredictionInputGradesList>;
 
 /** The prediction definition. */
 export interface PredictionInput {
@@ -5490,54 +5250,42 @@ export const PredictionsModelStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictionsModelStatusRequest>;
 
 export interface PredictionsModelStatusResponse {}
-export const PredictionsModelStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PredictionsModelStatusResponse",
-}) as any as S.Schema<PredictionsModelStatusResponse>;
+export const PredictionsModelStatusResponse =
+  DeleteConnectorResponse as any as S.Schema<PredictionsModelStatusResponse>;
 
 export type ProfileTypeDefinitionInputAttributesValueList = Array<string>;
-export const ProfileTypeDefinitionInputAttributesValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionInputAttributesValueList>;
+export const ProfileTypeDefinitionInputAttributesValueList =
+  InteractionTypeDefinitionAttributesValueList as any as S.Schema<ProfileTypeDefinitionInputAttributesValueList>;
 
 /** The attributes for the Type. */
 export type ProfileTypeDefinitionInputAttributesMap = {
   [key: string]: ProfileTypeDefinitionInputAttributesValueList | undefined;
 };
-export const ProfileTypeDefinitionInputAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProfileTypeDefinitionInputAttributesValueList,
-) as any as S.Schema<ProfileTypeDefinitionInputAttributesMap>;
+export const ProfileTypeDefinitionInputAttributesMap =
+  InteractionTypeDefinitionAttributesMap as any as S.Schema<ProfileTypeDefinitionInputAttributesMap>;
 
 /** Localized descriptions for the property. */
 export type ProfileTypeDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-export const ProfileTypeDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionInputDescriptionMap>;
+export const ProfileTypeDefinitionInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionInputDescriptionMap>;
 
 /** Localized display names for the property. */
 export type ProfileTypeDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-export const ProfileTypeDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionInputDisplayNameMap>;
+export const ProfileTypeDefinitionInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionInputDisplayNameMap>;
 
 export type ProfileTypeDefinitionInputLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
-export const ProfileTypeDefinitionInputLocalizedAttributesValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTypeDefinitionInputLocalizedAttributesValueMap>;
+export const ProfileTypeDefinitionInputLocalizedAttributesValueMap =
+  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionInputLocalizedAttributesValueMap>;
 
 /** Any custom localized attributes for the Type. */
 export type ProfileTypeDefinitionInputLocalizedAttributesMap = {
   [key: string]: ProfileTypeDefinitionInputLocalizedAttributesValueMap | undefined;
 };
-export const ProfileTypeDefinitionInputLocalizedAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProfileTypeDefinitionInputLocalizedAttributesValueMap,
-) as any as S.Schema<ProfileTypeDefinitionInputLocalizedAttributesMap>;
+export const ProfileTypeDefinitionInputLocalizedAttributesMap =
+  InteractionTypeDefinitionLocalizedAttributesMap as any as S.Schema<ProfileTypeDefinitionInputLocalizedAttributesMap>;
 
 /** Type of entity. */
 export type ProfileTypeDefinitionInputEntityType =
@@ -5549,15 +5297,13 @@ export const ProfileTypeDefinitionInputEntityType = S.String;
 
 /** The properties of the Profile. */
 export type ProfileTypeDefinitionInputFieldsList = Array<PropertyDefinitionInput>;
-export const ProfileTypeDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
-  PropertyDefinitionInput,
-) as any as S.Schema<ProfileTypeDefinitionInputFieldsList>;
+export const ProfileTypeDefinitionInputFieldsList =
+  InteractionTypeDefinitionInputFieldsList as any as S.Schema<ProfileTypeDefinitionInputFieldsList>;
 
 /** The strong IDs. */
 export type ProfileTypeDefinitionInputStrongIdsList = Array<StrongId>;
-export const ProfileTypeDefinitionInputStrongIdsList = /*@__PURE__*/ S.Array(
-  StrongId,
-) as any as S.Schema<ProfileTypeDefinitionInputStrongIdsList>;
+export const ProfileTypeDefinitionInputStrongIdsList =
+  ProfileTypeDefinitionStrongIdsList as any as S.Schema<ProfileTypeDefinitionInputStrongIdsList>;
 
 /** The profile type definition. */
 export interface ProfileTypeDefinitionInput {
@@ -5722,30 +5468,24 @@ export const RegenerateAuthorizationPolicySecondaryKeyRequest = /*@__PURE__*/ S.
 
 /** Localized display name for the Relationship Link. */
 export type RelationshipLinkDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-export const RelationshipLinkDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipLinkDefinitionInputDisplayNameMap>;
+export const RelationshipLinkDefinitionInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionInputDisplayNameMap>;
 
 /** Localized descriptions for the Relationship Link. */
 export type RelationshipLinkDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-export const RelationshipLinkDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipLinkDefinitionInputDescriptionMap>;
+export const RelationshipLinkDefinitionInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionInputDescriptionMap>;
 
 /** The mappings between Interaction and Relationship fields. */
 export type RelationshipLinkDefinitionInputMappingsList = Array<RelationshipLinkFieldMapping>;
-export const RelationshipLinkDefinitionInputMappingsList = /*@__PURE__*/ S.Array(
-  RelationshipLinkFieldMapping,
-) as any as S.Schema<RelationshipLinkDefinitionInputMappingsList>;
+export const RelationshipLinkDefinitionInputMappingsList =
+  RelationshipLinkDefinitionMappingsList as any as S.Schema<RelationshipLinkDefinitionInputMappingsList>;
 
 /** The property references for the Profile of the Relationship. */
 export type RelationshipLinkDefinitionInputProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-export const RelationshipLinkDefinitionInputProfilePropertyReferencesList = /*@__PURE__*/ S.Array(
-  ParticipantProfilePropertyReference,
-) as any as S.Schema<RelationshipLinkDefinitionInputProfilePropertyReferencesList>;
+export const RelationshipLinkDefinitionInputProfilePropertyReferencesList =
+  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipLinkDefinitionInputProfilePropertyReferencesList>;
 
 /** The property references for the Related Profile of the Relationship. */
 export type RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList =
@@ -5826,16 +5566,8 @@ export interface RelationshipLinksCreateOrUpdateResponse {
   type?: string;
   properties?: RelationshipLinkDefinition;
 }
-export const RelationshipLinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RelationshipLinkDefinition),
-  }),
-).annotate({
-  identifier: "RelationshipLinksCreateOrUpdateResponse",
-}) as any as S.Schema<RelationshipLinksCreateOrUpdateResponse>;
+export const RelationshipLinksCreateOrUpdateResponse =
+  GetRelationshipLinkResponse as any as S.Schema<RelationshipLinksCreateOrUpdateResponse>;
 
 /** The Relationship Cardinality. */
 export type RelationshipDefinitionInputCardinality = "OneToOne" | "OneToMany" | "ManyToMany";
@@ -5843,29 +5575,23 @@ export const RelationshipDefinitionInputCardinality = S.String;
 
 /** Localized display name for the Relationship. */
 export type RelationshipDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-export const RelationshipDefinitionInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipDefinitionInputDisplayNameMap>;
+export const RelationshipDefinitionInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionInputDisplayNameMap>;
 
 /** Localized descriptions for the Relationship. */
 export type RelationshipDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-export const RelationshipDefinitionInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelationshipDefinitionInputDescriptionMap>;
+export const RelationshipDefinitionInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionInputDescriptionMap>;
 
 /** The properties of the Relationship. */
 export type RelationshipDefinitionInputFieldsList = Array<PropertyDefinitionInput>;
-export const RelationshipDefinitionInputFieldsList = /*@__PURE__*/ S.Array(
-  PropertyDefinitionInput,
-) as any as S.Schema<RelationshipDefinitionInputFieldsList>;
+export const RelationshipDefinitionInputFieldsList =
+  InteractionTypeDefinitionInputFieldsList as any as S.Schema<RelationshipDefinitionInputFieldsList>;
 
 /** Optional property to be used to map fields in profile to their strong ids in related profile. */
 export type RelationshipDefinitionInputLookupMappingsList = Array<RelationshipTypeMapping>;
-export const RelationshipDefinitionInputLookupMappingsList = /*@__PURE__*/ S.Array(
-  RelationshipTypeMapping,
-) as any as S.Schema<RelationshipDefinitionInputLookupMappingsList>;
+export const RelationshipDefinitionInputLookupMappingsList =
+  RelationshipDefinitionLookupMappingsList as any as S.Schema<RelationshipDefinitionInputLookupMappingsList>;
 
 /** The definition of Relationship. */
 export interface RelationshipDefinitionInput {
@@ -5940,30 +5666,18 @@ export interface RelationshipsCreateOrUpdateResponse {
   type?: string;
   properties?: RelationshipDefinition;
 }
-export const RelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RelationshipDefinition),
-  }),
-).annotate({
-  identifier: "RelationshipsCreateOrUpdateResponse",
-}) as any as S.Schema<RelationshipsCreateOrUpdateResponse>;
+export const RelationshipsCreateOrUpdateResponse =
+  RelationshipResourceFormat as any as S.Schema<RelationshipsCreateOrUpdateResponse>;
 
 /** Localized display names for the metadata. */
 export type RoleAssignmentInputDisplayNameMap = { [key: string]: string | undefined };
-export const RoleAssignmentInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RoleAssignmentInputDisplayNameMap>;
+export const RoleAssignmentInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentInputDisplayNameMap>;
 
 /** Localized description for the metadata. */
 export type RoleAssignmentInputDescriptionMap = { [key: string]: string | undefined };
-export const RoleAssignmentInputDescriptionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RoleAssignmentInputDescriptionMap>;
+export const RoleAssignmentInputDescriptionMap =
+  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentInputDescriptionMap>;
 
 /** Type of roles. */
 export type RoleAssignmentInputRole =
@@ -5977,9 +5691,8 @@ export const RoleAssignmentInputRole = S.String;
 
 /** The principals being assigned to. */
 export type RoleAssignmentInputPrincipalsList = Array<AssignmentPrincipal>;
-export const RoleAssignmentInputPrincipalsList = /*@__PURE__*/ S.Array(
-  AssignmentPrincipal,
-) as any as S.Schema<RoleAssignmentInputPrincipalsList>;
+export const RoleAssignmentInputPrincipalsList =
+  RoleAssignmentPrincipalsList as any as S.Schema<RoleAssignmentInputPrincipalsList>;
 
 /** The Role Assignment definition. */
 export interface RoleAssignmentInput {
@@ -6079,23 +5792,13 @@ export interface RoleAssignmentsCreateOrUpdateResponse {
   type?: string;
   properties?: RoleAssignment;
 }
-export const RoleAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RoleAssignment),
-  }),
-).annotate({
-  identifier: "RoleAssignmentsCreateOrUpdateResponse",
-}) as any as S.Schema<RoleAssignmentsCreateOrUpdateResponse>;
+export const RoleAssignmentsCreateOrUpdateResponse =
+  GetRoleAssignmentResponse as any as S.Schema<RoleAssignmentsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type UpdateHubRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateHubRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateHubRequestTagsMap>;
+export const UpdateHubRequestTagsMap =
+  GetHubResponseTagsMap as any as S.Schema<UpdateHubRequestTagsMap>;
 
 export interface UpdateHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -6130,10 +5833,8 @@ export const UpdateHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateHubResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateHubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateHubResponseTagsMap>;
+export const UpdateHubResponseTagsMap =
+  GetHubResponseTagsMap as any as S.Schema<UpdateHubResponseTagsMap>;
 
 export interface UpdateHubResponse {
   /** Resource ID. */
@@ -6148,23 +5849,12 @@ export interface UpdateHubResponse {
   tags?: UpdateHubResponseTagsMap;
   properties?: HubPropertiesFormat;
 }
-export const UpdateHubResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateHubResponseTagsMap),
-    properties: S.optional(HubPropertiesFormat),
-  }),
-).annotate({ identifier: "UpdateHubResponse" }) as any as S.Schema<UpdateHubResponse>;
+export const UpdateHubResponse = GetHubResponse as any as S.Schema<UpdateHubResponse>;
 
 /** Localized display name for the view. */
 export type ViewInputDisplayNameMap = { [key: string]: string | undefined };
-export const ViewInputDisplayNameMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ViewInputDisplayNameMap>;
+export const ViewInputDisplayNameMap =
+  GetHubResponseTagsMap as any as S.Schema<ViewInputDisplayNameMap>;
 
 /** The view in Customer 360 web application. */
 export interface ViewInput {

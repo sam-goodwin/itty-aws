@@ -795,11 +795,8 @@ export const CreateProjectVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateProjectVersionResponse {
   ProjectVersionArn?: string;
 }
-export const CreateProjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProjectVersionArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateProjectVersionResponse",
-}) as any as S.Schema<CreateProjectVersionResponse>;
+export const CreateProjectVersionResponse =
+  CopyProjectVersionResponse as any as S.Schema<CreateProjectVersionResponse>;
 export type KinesisVideoArn = string;
 export interface KinesisVideoStream {
   Arn?: string;
@@ -817,9 +814,7 @@ export type KinesisDataArn = string;
 export interface KinesisDataStream {
   Arn?: string;
 }
-export const KinesisDataStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "KinesisDataStream" }) as any as S.Schema<KinesisDataStream>;
+export const KinesisDataStream = KinesisVideoStream as any as S.Schema<KinesisDataStream>;
 export interface S3Destination {
   Bucket?: string;
   KeyPrefix?: string;
@@ -847,7 +842,7 @@ export const FaceSearchSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FaceSearchSettings" }) as any as S.Schema<FaceSearchSettings>;
 export type ConnectedHomeLabel = string;
 export type ConnectedHomeLabels = string[];
-export const ConnectedHomeLabels = /*@__PURE__*/ S.Array(S.String);
+export const ConnectedHomeLabels = UserFaceIdList as any as S.Schema<ConnectedHomeLabels>;
 export interface ConnectedHomeSettings {
   Labels: string[];
   MinConfidence?: number;
@@ -977,11 +972,9 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDatasetRequest" }) as any as S.Schema<DeleteDatasetRequest>;
 export interface DeleteDatasetResponse {}
-export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatasetResponse",
-}) as any as S.Schema<DeleteDatasetResponse>;
+export const DeleteDatasetResponse = CreateUserResponse as any as S.Schema<DeleteDatasetResponse>;
 export type FaceIdList = string[];
-export const FaceIdList = /*@__PURE__*/ S.Array(S.String);
+export const FaceIdList = UserFaceIdList as any as S.Schema<FaceIdList>;
 export interface DeleteFacesRequest {
   CollectionId: string;
   FaceIds: string[];
@@ -1059,9 +1052,8 @@ export const DeleteProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectPolicyRequest",
 }) as any as S.Schema<DeleteProjectPolicyRequest>;
 export interface DeleteProjectPolicyResponse {}
-export const DeleteProjectPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectPolicyResponse",
-}) as any as S.Schema<DeleteProjectPolicyResponse>;
+export const DeleteProjectPolicyResponse =
+  CreateUserResponse as any as S.Schema<DeleteProjectPolicyResponse>;
 export interface DeleteProjectVersionRequest {
   ProjectVersionArn: string;
 }
@@ -1109,9 +1101,8 @@ export const DeleteStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStreamProcessorRequest",
 }) as any as S.Schema<DeleteStreamProcessorRequest>;
 export interface DeleteStreamProcessorResponse {}
-export const DeleteStreamProcessorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStreamProcessorResponse",
-}) as any as S.Schema<DeleteStreamProcessorResponse>;
+export const DeleteStreamProcessorResponse =
+  CreateUserResponse as any as S.Schema<DeleteStreamProcessorResponse>;
 export interface DeleteUserRequest {
   CollectionId: string;
   UserId: string;
@@ -1125,9 +1116,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = CreateUserResponse as any as S.Schema<DeleteUserResponse>;
 export interface DescribeCollectionRequest {
   CollectionId: string;
 }
@@ -1221,7 +1210,7 @@ export const DescribeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 export type ExtendedPaginationToken = string;
 export type ProjectsPageSize = number;
 export type ProjectNames = string[];
-export const ProjectNames = /*@__PURE__*/ S.Array(S.String);
+export const ProjectNames = UserFaceIdList as any as S.Schema<ProjectNames>;
 export type CustomizationFeatures = CustomizationFeature[];
 export const CustomizationFeatures = /*@__PURE__*/ S.Array(CustomizationFeature);
 export interface DescribeProjectsRequest {
@@ -1289,7 +1278,7 @@ export const DescribeProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DescribeProjectsResponse" }) as any as S.Schema<DescribeProjectsResponse>;
 export type VersionNames = string[];
-export const VersionNames = /*@__PURE__*/ S.Array(S.String);
+export const VersionNames = UserFaceIdList as any as S.Schema<VersionNames>;
 export type ProjectVersionsPageSize = number;
 export interface DescribeProjectVersionsRequest {
   ProjectArn: string;
@@ -1311,9 +1300,7 @@ export type InferenceUnits = number;
 export interface ValidationData {
   Assets?: Asset[];
 }
-export const ValidationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Assets: S.optional(Assets) }),
-).annotate({ identifier: "ValidationData" }) as any as S.Schema<ValidationData>;
+export const ValidationData = TrainingData as any as S.Schema<ValidationData>;
 export interface TrainingDataResult {
   Input?: TrainingData;
   Output?: TrainingData;
@@ -1341,9 +1328,7 @@ export const TestingDataResult = /*@__PURE__*/ S.suspend(() =>
 export interface Summary {
   S3Object?: S3Object;
 }
-export const Summary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Object: S.optional(S3Object) }),
-).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
+export const Summary = GroundTruthManifest as any as S.Schema<Summary>;
 export interface EvaluationResult {
   F1Score?: number;
   Summary?: Summary;
@@ -1487,9 +1472,7 @@ export interface Geometry {
   BoundingBox?: BoundingBox;
   Polygon?: Point[];
 }
-export const Geometry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BoundingBox: S.optional(BoundingBox), Polygon: S.optional(Polygon) }),
-).annotate({ identifier: "Geometry" }) as any as S.Schema<Geometry>;
+export const Geometry = RegionOfInterest as any as S.Schema<Geometry>;
 export interface CustomLabel {
   Name?: string;
   Confidence?: number;
@@ -1552,16 +1535,12 @@ export interface Eyeglasses {
   Value?: boolean;
   Confidence?: number;
 }
-export const Eyeglasses = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "Eyeglasses" }) as any as S.Schema<Eyeglasses>;
+export const Eyeglasses = Smile as any as S.Schema<Eyeglasses>;
 export interface Sunglasses {
   Value?: boolean;
   Confidence?: number;
 }
-export const Sunglasses = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "Sunglasses" }) as any as S.Schema<Sunglasses>;
+export const Sunglasses = Smile as any as S.Schema<Sunglasses>;
 export type GenderType = "Male" | "Female" | (string & {});
 export const GenderType = S.String;
 
@@ -1576,37 +1555,27 @@ export interface Beard {
   Value?: boolean;
   Confidence?: number;
 }
-export const Beard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "Beard" }) as any as S.Schema<Beard>;
+export const Beard = Smile as any as S.Schema<Beard>;
 export interface Mustache {
   Value?: boolean;
   Confidence?: number;
 }
-export const Mustache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "Mustache" }) as any as S.Schema<Mustache>;
+export const Mustache = Smile as any as S.Schema<Mustache>;
 export interface EyeOpen {
   Value?: boolean;
   Confidence?: number;
 }
-export const EyeOpen = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "EyeOpen" }) as any as S.Schema<EyeOpen>;
+export const EyeOpen = Smile as any as S.Schema<EyeOpen>;
 export interface MouthOpen {
   Value?: boolean;
   Confidence?: number;
 }
-export const MouthOpen = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "MouthOpen" }) as any as S.Schema<MouthOpen>;
+export const MouthOpen = Smile as any as S.Schema<MouthOpen>;
 export interface FaceOccluded {
   Value?: boolean;
   Confidence?: number;
 }
-export const FaceOccluded = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Boolean), Confidence: S.optional(S.Number) }),
-).annotate({ identifier: "FaceOccluded" }) as any as S.Schema<FaceOccluded>;
+export const FaceOccluded = Smile as any as S.Schema<FaceOccluded>;
 export interface EyeDirection {
   Yaw?: number;
   Pitch?: number;
@@ -1678,7 +1647,7 @@ export type DetectLabelsFeatureList = DetectLabelsFeatureName[];
 export const DetectLabelsFeatureList = /*@__PURE__*/ S.Array(DetectLabelsFeatureName);
 export type GeneralLabelsFilterValue = string;
 export type GeneralLabelsFilterList = string[];
-export const GeneralLabelsFilterList = /*@__PURE__*/ S.Array(S.String);
+export const GeneralLabelsFilterList = UserFaceIdList as any as S.Schema<GeneralLabelsFilterList>;
 export interface GeneralLabelsSettings {
   LabelInclusionFilters?: string[];
   LabelExclusionFilters?: string[];
@@ -1775,19 +1744,15 @@ export const Parents = /*@__PURE__*/ S.Array(Parent);
 export interface LabelAlias {
   Name?: string;
 }
-export const LabelAlias = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "LabelAlias" }) as any as S.Schema<LabelAlias>;
+export const LabelAlias = Parent as any as S.Schema<LabelAlias>;
 export type LabelAliases = LabelAlias[];
-export const LabelAliases = /*@__PURE__*/ S.Array(LabelAlias);
+export const LabelAliases = Parents as any as S.Schema<LabelAliases>;
 export interface LabelCategory {
   Name?: string;
 }
-export const LabelCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "LabelCategory" }) as any as S.Schema<LabelCategory>;
+export const LabelCategory = Parent as any as S.Schema<LabelCategory>;
 export type LabelCategories = LabelCategory[];
-export const LabelCategories = /*@__PURE__*/ S.Array(LabelCategory);
+export const LabelCategories = Parents as any as S.Schema<LabelCategories>;
 export interface Label {
   Name?: string;
   Confidence?: number;
@@ -1836,14 +1801,8 @@ export interface DetectLabelsImageBackground {
   Quality?: DetectLabelsImageQuality;
   DominantColors?: DominantColor[];
 }
-export const DetectLabelsImageBackground = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Quality: S.optional(DetectLabelsImageQuality),
-    DominantColors: S.optional(DominantColors),
-  }),
-).annotate({
-  identifier: "DetectLabelsImageBackground",
-}) as any as S.Schema<DetectLabelsImageBackground>;
+export const DetectLabelsImageBackground =
+  DetectLabelsImageForeground as any as S.Schema<DetectLabelsImageBackground>;
 export interface DetectLabelsImageProperties {
   Quality?: DetectLabelsImageQuality;
   DominantColors?: DominantColor[];
@@ -1938,7 +1897,8 @@ export const ModerationLabels = /*@__PURE__*/ S.Array(ModerationLabel);
 export type HumanLoopArn = string;
 export type HumanLoopActivationReason = string;
 export type HumanLoopActivationReasons = string[];
-export const HumanLoopActivationReasons = /*@__PURE__*/ S.Array(S.String);
+export const HumanLoopActivationReasons =
+  UserFaceIdList as any as S.Schema<HumanLoopActivationReasons>;
 export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults = string;
 export interface HumanLoopActivationOutput {
   HumanLoopArn?: string;
@@ -2180,11 +2140,10 @@ export const DisassociateFacesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociatedFace {
   FaceId?: string;
 }
-export const DisassociatedFace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FaceId: S.optional(S.String) }),
-).annotate({ identifier: "DisassociatedFace" }) as any as S.Schema<DisassociatedFace>;
+export const DisassociatedFace = AssociatedFace as any as S.Schema<DisassociatedFace>;
 export type DisassociatedFacesList = DisassociatedFace[];
-export const DisassociatedFacesList = /*@__PURE__*/ S.Array(DisassociatedFace);
+export const DisassociatedFacesList =
+  AssociatedFacesList as any as S.Schema<DisassociatedFacesList>;
 export type UnsuccessfulFaceDisassociationReason =
   | "FACE_NOT_FOUND"
   | "ASSOCIATED_TO_A_DIFFERENT_USER"
@@ -2262,7 +2221,7 @@ export const GetCelebrityInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCelebrityInfoRequest" }) as any as S.Schema<GetCelebrityInfoRequest>;
 export type Url = string;
 export type Urls = string[];
-export const Urls = /*@__PURE__*/ S.Array(S.String);
+export const Urls = UserFaceIdList as any as S.Schema<Urls>;
 export type KnownGenderType = "Male" | "Female" | "Nonbinary" | "Unlisted" | (string & {});
 export const KnownGenderType = S.String;
 
@@ -2364,9 +2323,7 @@ export const CelebrityRecognitions = /*@__PURE__*/ S.Array(CelebrityRecognition)
 export interface Video {
   S3Object?: S3Object;
 }
-export const Video = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Object: S.optional(S3Object) }),
-).annotate({ identifier: "Video" }) as any as S.Schema<Video>;
+export const Video = GroundTruthManifest as any as S.Schema<Video>;
 export type JobTag = string;
 export interface GetCelebrityRecognitionResponse {
   JobStatus?: VideoJobStatus;
@@ -3227,9 +3184,9 @@ export const ListCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListCollectionsRequest" }) as any as S.Schema<ListCollectionsRequest>;
 export type CollectionIdList = string[];
-export const CollectionIdList = /*@__PURE__*/ S.Array(S.String);
+export const CollectionIdList = UserFaceIdList as any as S.Schema<CollectionIdList>;
 export type FaceModelVersionList = string[];
-export const FaceModelVersionList = /*@__PURE__*/ S.Array(S.String);
+export const FaceModelVersionList = UserFaceIdList as any as S.Schema<FaceModelVersionList>;
 export interface ListCollectionsResponse {
   CollectionIds?: string[];
   NextToken?: string;
@@ -3244,7 +3201,7 @@ export const ListCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCollectionsResponse" }) as any as S.Schema<ListCollectionsResponse>;
 export type DatasetLabel = string;
 export type DatasetLabels = string[];
-export const DatasetLabels = /*@__PURE__*/ S.Array(S.String);
+export const DatasetLabels = UserFaceIdList as any as S.Schema<DatasetLabels>;
 export type IsLabeled = boolean;
 export type QueryString = string;
 export type HasErrors = boolean;
@@ -3273,7 +3230,7 @@ export const ListDatasetEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetEntriesRequest>;
 export type DatasetEntry = string;
 export type DatasetEntries = string[];
-export const DatasetEntries = /*@__PURE__*/ S.Array(S.String);
+export const DatasetEntries = UserFaceIdList as any as S.Schema<DatasetEntries>;
 export interface ListDatasetEntriesResponse {
   DatasetEntries?: string[];
   NextToken?: string;
@@ -3380,24 +3337,8 @@ export interface MediaAnalysisJobDescription {
   Results?: MediaAnalysisResults;
   ManifestSummary?: MediaAnalysisManifestSummary;
 }
-export const MediaAnalysisJobDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JobId: S.String,
-    JobName: S.optional(S.String),
-    OperationsConfig: MediaAnalysisOperationsConfig,
-    Status: MediaAnalysisJobStatus,
-    FailureDetails: S.optional(MediaAnalysisJobFailureDetails),
-    CreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    CompletionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Input: MediaAnalysisInput,
-    OutputConfig: MediaAnalysisOutputConfig,
-    KmsKeyId: S.optional(S.String),
-    Results: S.optional(MediaAnalysisResults),
-    ManifestSummary: S.optional(MediaAnalysisManifestSummary),
-  }),
-).annotate({
-  identifier: "MediaAnalysisJobDescription",
-}) as any as S.Schema<MediaAnalysisJobDescription>;
+export const MediaAnalysisJobDescription =
+  GetMediaAnalysisJobResponse as any as S.Schema<MediaAnalysisJobDescription>;
 export type MediaAnalysisJobDescriptions = MediaAnalysisJobDescription[];
 export const MediaAnalysisJobDescriptions = /*@__PURE__*/ S.Array(MediaAnalysisJobDescription);
 export interface ListMediaAnalysisJobsResponse {
@@ -3582,7 +3523,7 @@ export const Celebrity = /*@__PURE__*/ S.suspend(() =>
 export type CelebrityList = Celebrity[];
 export const CelebrityList = /*@__PURE__*/ S.Array(Celebrity);
 export type ComparedFaceList = ComparedFace[];
-export const ComparedFaceList = /*@__PURE__*/ S.Array(ComparedFace);
+export const ComparedFaceList = CompareFacesUnmatchList as any as S.Schema<ComparedFaceList>;
 export interface RecognizeCelebritiesResponse {
   CelebrityFaces?: Celebrity[];
   UnrecognizedFaces?: ComparedFace[];
@@ -3678,9 +3619,7 @@ export interface MatchedUser {
   UserId?: string;
   UserStatus?: UserStatus;
 }
-export const MatchedUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserId: S.optional(S.String), UserStatus: S.optional(UserStatus) }),
-).annotate({ identifier: "MatchedUser" }) as any as S.Schema<MatchedUser>;
+export const MatchedUser = User as any as S.Schema<MatchedUser>;
 export interface UserMatch {
   Similarity?: number;
   User?: MatchedUser;
@@ -3693,9 +3632,7 @@ export const UserMatchList = /*@__PURE__*/ S.Array(UserMatch);
 export interface SearchedFace {
   FaceId?: string;
 }
-export const SearchedFace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FaceId: S.optional(S.String) }),
-).annotate({ identifier: "SearchedFace" }) as any as S.Schema<SearchedFace>;
+export const SearchedFace = AssociatedFace as any as S.Schema<SearchedFace>;
 export interface SearchedUser {
   UserId?: string;
 }
@@ -3831,11 +3768,8 @@ export const StartContentModerationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartContentModerationResponse {
   JobId?: string;
 }
-export const StartContentModerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartContentModerationResponse",
-}) as any as S.Schema<StartContentModerationResponse>;
+export const StartContentModerationResponse =
+  StartCelebrityRecognitionResponse as any as S.Schema<StartContentModerationResponse>;
 export type FaceAttributes = "DEFAULT" | "ALL" | (string & {});
 export const FaceAttributes = S.String;
 
@@ -3860,11 +3794,8 @@ export const StartFaceDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartFaceDetectionResponse {
   JobId?: string;
 }
-export const StartFaceDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartFaceDetectionResponse",
-}) as any as S.Schema<StartFaceDetectionResponse>;
+export const StartFaceDetectionResponse =
+  StartCelebrityRecognitionResponse as any as S.Schema<StartFaceDetectionResponse>;
 export interface StartFaceSearchRequest {
   Video: Video;
   ClientRequestToken?: string;
@@ -3925,11 +3856,8 @@ export const StartLabelDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartLabelDetectionResponse {
   JobId?: string;
 }
-export const StartLabelDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartLabelDetectionResponse",
-}) as any as S.Schema<StartLabelDetectionResponse>;
+export const StartLabelDetectionResponse =
+  StartCelebrityRecognitionResponse as any as S.Schema<StartLabelDetectionResponse>;
 export interface StartMediaAnalysisJobRequest {
   ClientRequestToken?: string;
   JobName?: string;
@@ -3977,11 +3905,8 @@ export const StartPersonTrackingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartPersonTrackingResponse {
   JobId?: string;
 }
-export const StartPersonTrackingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartPersonTrackingResponse",
-}) as any as S.Schema<StartPersonTrackingResponse>;
+export const StartPersonTrackingResponse =
+  StartCelebrityRecognitionResponse as any as S.Schema<StartPersonTrackingResponse>;
 export interface StartProjectVersionRequest {
   ProjectVersionArn: string;
   MinInferenceUnits: number;
@@ -3999,11 +3924,8 @@ export const StartProjectVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartProjectVersionResponse {
   Status?: ProjectVersionStatus;
 }
-export const StartProjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(ProjectVersionStatus) }),
-).annotate({
-  identifier: "StartProjectVersionResponse",
-}) as any as S.Schema<StartProjectVersionResponse>;
+export const StartProjectVersionResponse =
+  DeleteProjectVersionResponse as any as S.Schema<StartProjectVersionResponse>;
 export type MaxPixelThreshold = number;
 export type MinCoveragePercentage = number;
 export interface BlackFrame {
@@ -4068,11 +3990,8 @@ export const StartSegmentDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartSegmentDetectionResponse {
   JobId?: string;
 }
-export const StartSegmentDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartSegmentDetectionResponse",
-}) as any as S.Schema<StartSegmentDetectionResponse>;
+export const StartSegmentDetectionResponse =
+  StartCelebrityRecognitionResponse as any as S.Schema<StartSegmentDetectionResponse>;
 export type KinesisVideoStreamFragmentNumber = string;
 export interface KinesisVideoStreamStartSelector {
   ProducerTimestamp?: number;
@@ -4156,11 +4075,8 @@ export const StartTextDetectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartTextDetectionResponse {
   JobId?: string;
 }
-export const StartTextDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartTextDetectionResponse",
-}) as any as S.Schema<StartTextDetectionResponse>;
+export const StartTextDetectionResponse =
+  StartCelebrityRecognitionResponse as any as S.Schema<StartTextDetectionResponse>;
 export interface StopProjectVersionRequest {
   ProjectVersionArn: string;
 }
@@ -4174,11 +4090,8 @@ export const StopProjectVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopProjectVersionResponse {
   Status?: ProjectVersionStatus;
 }
-export const StopProjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(ProjectVersionStatus) }),
-).annotate({
-  identifier: "StopProjectVersionResponse",
-}) as any as S.Schema<StopProjectVersionResponse>;
+export const StopProjectVersionResponse =
+  DeleteProjectVersionResponse as any as S.Schema<StopProjectVersionResponse>;
 export interface StopStreamProcessorRequest {
   Name: string;
 }
@@ -4190,9 +4103,8 @@ export const StopStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopStreamProcessorRequest",
 }) as any as S.Schema<StopStreamProcessorRequest>;
 export interface StopStreamProcessorResponse {}
-export const StopStreamProcessorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopStreamProcessorResponse",
-}) as any as S.Schema<StopStreamProcessorResponse>;
+export const StopStreamProcessorResponse =
+  CreateUserResponse as any as S.Schema<StopStreamProcessorResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -4203,11 +4115,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CreateUserResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = UserFaceIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -4218,9 +4128,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = CreateUserResponse as any as S.Schema<UntagResourceResponse>;
 export type GroundTruthBlob = Uint8Array;
 export interface DatasetChanges {
   GroundTruth: Uint8Array;
@@ -4240,9 +4148,8 @@ export const UpdateDatasetEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDatasetEntriesRequest",
 }) as any as S.Schema<UpdateDatasetEntriesRequest>;
 export interface UpdateDatasetEntriesResponse {}
-export const UpdateDatasetEntriesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatasetEntriesResponse",
-}) as any as S.Schema<UpdateDatasetEntriesResponse>;
+export const UpdateDatasetEntriesResponse =
+  CreateUserResponse as any as S.Schema<UpdateDatasetEntriesResponse>;
 export interface ConnectedHomeSettingsForUpdate {
   Labels?: string[];
   MinConfidence?: number;
@@ -4289,9 +4196,8 @@ export const UpdateStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateStreamProcessorRequest",
 }) as any as S.Schema<UpdateStreamProcessorRequest>;
 export interface UpdateStreamProcessorResponse {}
-export const UpdateStreamProcessorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateStreamProcessorResponse",
-}) as any as S.Schema<UpdateStreamProcessorResponse>;
+export const UpdateStreamProcessorResponse =
+  CreateUserResponse as any as S.Schema<UpdateStreamProcessorResponse>;
 export type AssociateFacesError =
   | AccessDeniedException
   | ConflictException

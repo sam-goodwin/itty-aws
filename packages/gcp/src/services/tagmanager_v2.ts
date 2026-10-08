@@ -2056,11 +2056,8 @@ export const DeleteAccountsContainersEnvironmentsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteAccountsContainersEnvironmentsRequest>;
 
 export interface DeleteAccountsContainersEnvironmentsResponse {}
-export const DeleteAccountsContainersEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersEnvironmentsResponse",
-}) as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>;
+export const DeleteAccountsContainersEnvironmentsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersEnvironmentsResponse>;
 
 export interface DeleteAccountsContainersVersionsRequest {
   /** GTM ContainerVersion's API relative path. */
@@ -2081,11 +2078,8 @@ export const DeleteAccountsContainersVersionsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteAccountsContainersVersionsRequest>;
 
 export interface DeleteAccountsContainersVersionsResponse {}
-export const DeleteAccountsContainersVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersVersionsResponse",
-}) as any as S.Schema<DeleteAccountsContainersVersionsResponse>;
+export const DeleteAccountsContainersVersionsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersVersionsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesRequest {
   /** GTM Workspace's API relative path. */
@@ -2106,11 +2100,8 @@ export const DeleteAccountsContainersWorkspacesRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesResponse {}
-export const DeleteAccountsContainersWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesResponse>;
+export const DeleteAccountsContainersWorkspacesResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesResponse>;
 
 export type DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "builtInVariableTypeUnspecified"
@@ -2290,11 +2281,8 @@ export const DeleteAccountsContainersWorkspacesClientsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesClientsResponse {}
-export const DeleteAccountsContainersWorkspacesClientsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesClientsResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesClientsResponse>;
+export const DeleteAccountsContainersWorkspacesClientsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesClientsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
@@ -2315,11 +2303,8 @@ export const DeleteAccountsContainersWorkspacesFoldersRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersRequest>;
 
 export interface DeleteAccountsContainersWorkspacesFoldersResponse {}
-export const DeleteAccountsContainersWorkspacesFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesFoldersResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
+export const DeleteAccountsContainersWorkspacesFoldersResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
 
 export interface DeleteAccountsContainersWorkspacesGtag_configRequest {
   /** Google tag config's API relative path. */
@@ -2340,11 +2325,8 @@ export const DeleteAccountsContainersWorkspacesGtag_configRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configRequest>;
 
 export interface DeleteAccountsContainersWorkspacesGtag_configResponse {}
-export const DeleteAccountsContainersWorkspacesGtag_configResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesGtag_configResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
+export const DeleteAccountsContainersWorkspacesGtag_configResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTagsRequest {
   /** GTM Tag's API relative path. */
@@ -2365,11 +2347,8 @@ export const DeleteAccountsContainersWorkspacesTagsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTagsResponse {}
-export const DeleteAccountsContainersWorkspacesTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesTagsResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesTagsResponse>;
+export const DeleteAccountsContainersWorkspacesTagsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTagsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTemplatesRequest {
   /** GTM Custom Template's API relative path. */
@@ -2390,11 +2369,8 @@ export const DeleteAccountsContainersWorkspacesTemplatesRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTemplatesResponse {}
-export const DeleteAccountsContainersWorkspacesTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesTemplatesResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>;
+export const DeleteAccountsContainersWorkspacesTemplatesResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTransformationsRequest {
   /** GTM Transformation's API relative path. */
@@ -2416,11 +2392,8 @@ export const DeleteAccountsContainersWorkspacesTransformationsRequest = /*@__PUR
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTransformationsResponse {}
-export const DeleteAccountsContainersWorkspacesTransformationsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesTransformationsResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>;
+export const DeleteAccountsContainersWorkspacesTransformationsResponse =
+  DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>;
 
 export interface DeleteAccountsContainersWorkspacesTriggersRequest {
   /** GTM Trigger's API relative path. */
@@ -2441,11 +2414,8 @@ export const DeleteAccountsContainersWorkspacesTriggersRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersRequest>;
 
 export interface DeleteAccountsContainersWorkspacesTriggersResponse {}
-export const DeleteAccountsContainersWorkspacesTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesTriggersResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>;
+export const DeleteAccountsContainersWorkspacesTriggersResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>;
 
 export interface DeleteAccountsContainersWorkspacesVariablesRequest {
   /** GTM Variable's API relative path. */
@@ -2466,11 +2436,8 @@ export const DeleteAccountsContainersWorkspacesVariablesRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesVariablesResponse {}
-export const DeleteAccountsContainersWorkspacesVariablesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesVariablesResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>;
+export const DeleteAccountsContainersWorkspacesVariablesResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>;
 
 export interface DeleteAccountsContainersWorkspacesZonesRequest {
   /** GTM Zone's API relative path. */
@@ -2491,11 +2458,8 @@ export const DeleteAccountsContainersWorkspacesZonesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesRequest>;
 
 export interface DeleteAccountsContainersWorkspacesZonesResponse {}
-export const DeleteAccountsContainersWorkspacesZonesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsContainersWorkspacesZonesResponse",
-}) as any as S.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
+export const DeleteAccountsContainersWorkspacesZonesResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
 
 export interface DeleteAccountsUser_permissionsRequest {
   /** GTM UserPermission's API relative path. */
@@ -2516,11 +2480,8 @@ export const DeleteAccountsUser_permissionsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteAccountsUser_permissionsRequest>;
 
 export interface DeleteAccountsUser_permissionsResponse {}
-export const DeleteAccountsUser_permissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountsUser_permissionsResponse",
-}) as any as S.Schema<DeleteAccountsUser_permissionsResponse>;
+export const DeleteAccountsUser_permissionsResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<DeleteAccountsUser_permissionsResponse>;
 
 export interface EntitiesAccountsContainersWorkspacesFoldersRequest {
   /** GTM Folder's API relative path. */
@@ -3957,11 +3918,8 @@ export const Resolve_conflictAccountsContainersWorkspacesRequest = /*@__PURE__*/
 }) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesRequest>;
 
 export interface Resolve_conflictAccountsContainersWorkspacesResponse {}
-export const Resolve_conflictAccountsContainersWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "Resolve_conflictAccountsContainersWorkspacesResponse",
-}) as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>;
+export const Resolve_conflictAccountsContainersWorkspacesResponse =
+  DeleteAccountsContainersResponse as any as S.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>;
 
 export type RevertAccountsContainersWorkspacesBuilt_in_variablesTypeEnum =
   | "builtInVariableTypeUnspecified"

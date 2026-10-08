@@ -124,9 +124,8 @@ export const TraceroutesCreateRequestTargetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TraceroutesCreateRequestTargetsList>;
 
 export type TraceroutesCreateRequestColosList = Array<string>;
-export const TraceroutesCreateRequestColosList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TraceroutesCreateRequestColosList>;
+export const TraceroutesCreateRequestColosList =
+  TraceroutesCreateRequestTargetsList as any as S.Schema<TraceroutesCreateRequestColosList>;
 
 export type TraceroutesCreateRequestOptionsPacketType = "icmp" | "tcp" | "udp" | "gre" | "gre+icmp";
 export const TraceroutesCreateRequestOptionsPacketType = S.String;

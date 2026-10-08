@@ -216,9 +216,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type CheckCompatibilityRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
@@ -2910,9 +2908,8 @@ export const PauseProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE_
 
 /** Response for PauseConnector. */
 export interface PauseConnectorResponse {}
-export const PauseConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PauseConnectorResponse",
-}) as any as S.Schema<PauseConnectorResponse>;
+export const PauseConnectorResponse =
+  CancelOperationRequest as any as S.Schema<PauseConnectorResponse>;
 
 export interface RemoveAclEntryProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to remove the acl entry from. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
@@ -2977,9 +2974,8 @@ export const RestartProjectsLocationsConnectClustersConnectorsRequest = /*@__PUR
 
 /** Response for RestartConnector. */
 export interface RestartConnectorResponse {}
-export const RestartConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartConnectorResponse",
-}) as any as S.Schema<RestartConnectorResponse>;
+export const RestartConnectorResponse =
+  CancelOperationRequest as any as S.Schema<RestartConnectorResponse>;
 
 /** Request for ResumeConnector. */
 export type ResumeConnectorRequest = CancelOperationRequest;
@@ -3008,9 +3004,8 @@ export const ResumeProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE
 
 /** Response for ResumeConnector. */
 export interface ResumeConnectorResponse {}
-export const ResumeConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeConnectorResponse",
-}) as any as S.Schema<ResumeConnectorResponse>;
+export const ResumeConnectorResponse =
+  CancelOperationRequest as any as S.Schema<ResumeConnectorResponse>;
 
 /** Request for StopConnector. */
 export type StopConnectorRequest = CancelOperationRequest;
@@ -3039,9 +3034,8 @@ export const StopProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__
 
 /** Response for StopConnector. */
 export interface StopConnectorResponse {}
-export const StopConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopConnectorResponse",
-}) as any as S.Schema<StopConnectorResponse>;
+export const StopConnectorResponse =
+  CancelOperationRequest as any as S.Schema<StopConnectorResponse>;
 
 export type UpdateSchemaConfigRequestCompatibilityEnum =
   | "NONE"

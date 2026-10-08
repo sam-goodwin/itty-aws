@@ -559,9 +559,7 @@ export const DeleteOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgRequest" }) as any as S.Schema<DeleteOrgRequest>;
 
 export interface DeleteOrgResponse {}
-export const DeleteOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgResponse",
-}) as any as S.Schema<DeleteOrgResponse>;
+export const DeleteOrgResponse = CreateOrgVariableResponse as any as S.Schema<DeleteOrgResponse>;
 
 export interface DeleteOrgRunnerRequest {
   /** name of the organization */
@@ -577,9 +575,8 @@ export const DeleteOrgRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgRunnerRequest" }) as any as S.Schema<DeleteOrgRunnerRequest>;
 
 export interface DeleteOrgRunnerResponse {}
-export const DeleteOrgRunnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgRunnerResponse",
-}) as any as S.Schema<DeleteOrgRunnerResponse>;
+export const DeleteOrgRunnerResponse =
+  CreateOrgVariableResponse as any as S.Schema<DeleteOrgRunnerResponse>;
 
 export interface DeleteOrgSecretRequest {
   /** name of organization */
@@ -595,9 +592,8 @@ export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgSecretRequest" }) as any as S.Schema<DeleteOrgSecretRequest>;
 
 export interface DeleteOrgSecretResponse {}
-export const DeleteOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgSecretResponse",
-}) as any as S.Schema<DeleteOrgSecretResponse>;
+export const DeleteOrgSecretResponse =
+  CreateOrgVariableResponse as any as S.Schema<DeleteOrgSecretResponse>;
 
 export interface DeleteOrgVariableRequest {
   /** name of the organization */
@@ -615,9 +611,8 @@ export const DeleteOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgVariableRequest" }) as any as S.Schema<DeleteOrgVariableRequest>;
 
 export interface DeleteOrgVariableResponse {}
-export const DeleteOrgVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgVariableResponse",
-}) as any as S.Schema<DeleteOrgVariableResponse>;
+export const DeleteOrgVariableResponse =
+  CreateOrgVariableResponse as any as S.Schema<DeleteOrgVariableResponse>;
 
 /** possible values are `public`, `limited` or `private` */
 export type EditOrgRequestVisibility = "public" | "limited" | "private";
@@ -673,9 +668,8 @@ export const GetOrgRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
-export const ActionRunnerLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunnerLabelsList>;
+export const ActionRunnerLabelsList =
+  RepositoryTopicsList as any as S.Schema<ActionRunnerLabelsList>;
 
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
@@ -827,9 +821,8 @@ export const OrgAddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgAddTeamMemberRequest" }) as any as S.Schema<OrgAddTeamMemberRequest>;
 
 export interface OrgAddTeamMemberResponse {}
-export const OrgAddTeamMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgAddTeamMemberResponse",
-}) as any as S.Schema<OrgAddTeamMemberResponse>;
+export const OrgAddTeamMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgAddTeamMemberResponse>;
 
 export interface OrgAddTeamRepositoryRequest {
   /** id of the team */
@@ -850,9 +843,8 @@ export const OrgAddTeamRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrgAddTeamRepositoryRequest>;
 
 export interface OrgAddTeamRepositoryResponse {}
-export const OrgAddTeamRepositoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgAddTeamRepositoryResponse",
-}) as any as S.Schema<OrgAddTeamRepositoryResponse>;
+export const OrgAddTeamRepositoryResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgAddTeamRepositoryResponse>;
 
 export interface OrgBlockUserRequest {
   /** name of the org */
@@ -868,9 +860,8 @@ export const OrgBlockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgBlockUserRequest" }) as any as S.Schema<OrgBlockUserRequest>;
 
 export interface OrgBlockUserResponse {}
-export const OrgBlockUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgBlockUserResponse",
-}) as any as S.Schema<OrgBlockUserResponse>;
+export const OrgBlockUserResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgBlockUserResponse>;
 
 export interface OrgCheckQuotaRequest {
   /** name of the organization */
@@ -904,21 +895,16 @@ export const OrgConcealMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgConcealMemberRequest" }) as any as S.Schema<OrgConcealMemberRequest>;
 
 export interface OrgConcealMemberResponse {}
-export const OrgConcealMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgConcealMemberResponse",
-}) as any as S.Schema<OrgConcealMemberResponse>;
+export const OrgConcealMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgConcealMemberResponse>;
 
 /** CreateHookOptionConfig has all config options in it required are "content_type" and "url" Required */
 export type CreateHookOptionConfig = { [key: string]: string | undefined };
-export const CreateHookOptionConfig = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateHookOptionConfig>;
+export const CreateHookOptionConfig = TeamUnitsMapMap as any as S.Schema<CreateHookOptionConfig>;
 
 export type OrgCreateHookRequestEventsList = Array<string>;
-export const OrgCreateHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgCreateHookRequestEventsList>;
+export const OrgCreateHookRequestEventsList =
+  RepositoryTopicsList as any as S.Schema<OrgCreateHookRequestEventsList>;
 
 export type OrgCreateHookRequestType =
   | "forgejo"
@@ -958,13 +944,10 @@ export const OrgCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-export const HookConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HookConfigMap>;
+export const HookConfigMap = TeamUnitsMapMap as any as S.Schema<HookConfigMap>;
 
 export type HookEventsList = Array<string>;
-export const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
+export const HookEventsList = TeamUnitsList as any as S.Schema<HookEventsList>;
 
 /** Hook a hook is a web hook when one repository changed */
 export interface Hook {
@@ -1045,15 +1028,12 @@ export type OrgCreateTeamRequestPermission = "read" | "write" | "admin";
 export const OrgCreateTeamRequestPermission = S.String;
 
 export type OrgCreateTeamRequestUnitsList = Array<string>;
-export const OrgCreateTeamRequestUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgCreateTeamRequestUnitsList>;
+export const OrgCreateTeamRequestUnitsList =
+  RepositoryTopicsList as any as S.Schema<OrgCreateTeamRequestUnitsList>;
 
 export type OrgCreateTeamRequestUnitsMapMap = { [key: string]: string | undefined };
-export const OrgCreateTeamRequestUnitsMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrgCreateTeamRequestUnitsMapMap>;
+export const OrgCreateTeamRequestUnitsMapMap =
+  TeamUnitsMapMap as any as S.Schema<OrgCreateTeamRequestUnitsMapMap>;
 
 export interface OrgCreateTeamRequest {
   /** name of the organization */
@@ -1090,9 +1070,8 @@ export const OrgDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgDeleteAvatarRequest" }) as any as S.Schema<OrgDeleteAvatarRequest>;
 
 export interface OrgDeleteAvatarResponse {}
-export const OrgDeleteAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgDeleteAvatarResponse",
-}) as any as S.Schema<OrgDeleteAvatarResponse>;
+export const OrgDeleteAvatarResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgDeleteAvatarResponse>;
 
 export interface OrgDeleteHookRequest {
   /** name of the organization */
@@ -1108,9 +1087,8 @@ export const OrgDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgDeleteHookRequest" }) as any as S.Schema<OrgDeleteHookRequest>;
 
 export interface OrgDeleteHookResponse {}
-export const OrgDeleteHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgDeleteHookResponse",
-}) as any as S.Schema<OrgDeleteHookResponse>;
+export const OrgDeleteHookResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgDeleteHookResponse>;
 
 export interface OrgDeleteLabelRequest {
   /** name of the organization */
@@ -1126,9 +1104,8 @@ export const OrgDeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgDeleteLabelRequest" }) as any as S.Schema<OrgDeleteLabelRequest>;
 
 export interface OrgDeleteLabelResponse {}
-export const OrgDeleteLabelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgDeleteLabelResponse",
-}) as any as S.Schema<OrgDeleteLabelResponse>;
+export const OrgDeleteLabelResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgDeleteLabelResponse>;
 
 export interface OrgDeleteMemberRequest {
   /** name of the organization */
@@ -1144,9 +1121,8 @@ export const OrgDeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgDeleteMemberRequest" }) as any as S.Schema<OrgDeleteMemberRequest>;
 
 export interface OrgDeleteMemberResponse {}
-export const OrgDeleteMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgDeleteMemberResponse",
-}) as any as S.Schema<OrgDeleteMemberResponse>;
+export const OrgDeleteMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgDeleteMemberResponse>;
 
 export interface OrgDeleteTeamRequest {
   /** id of the team to delete */
@@ -1159,20 +1135,16 @@ export const OrgDeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgDeleteTeamRequest" }) as any as S.Schema<OrgDeleteTeamRequest>;
 
 export interface OrgDeleteTeamResponse {}
-export const OrgDeleteTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgDeleteTeamResponse",
-}) as any as S.Schema<OrgDeleteTeamResponse>;
+export const OrgDeleteTeamResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgDeleteTeamResponse>;
 
 export type OrgEditHookRequestConfigMap = { [key: string]: string | undefined };
-export const OrgEditHookRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrgEditHookRequestConfigMap>;
+export const OrgEditHookRequestConfigMap =
+  TeamUnitsMapMap as any as S.Schema<OrgEditHookRequestConfigMap>;
 
 export type OrgEditHookRequestEventsList = Array<string>;
-export const OrgEditHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgEditHookRequestEventsList>;
+export const OrgEditHookRequestEventsList =
+  RepositoryTopicsList as any as S.Schema<OrgEditHookRequestEventsList>;
 
 export interface OrgEditHookRequest {
   /** name of the organization */
@@ -1224,15 +1196,12 @@ export type OrgEditTeamRequestPermission = "read" | "write" | "admin";
 export const OrgEditTeamRequestPermission = S.String;
 
 export type OrgEditTeamRequestUnitsList = Array<string>;
-export const OrgEditTeamRequestUnitsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgEditTeamRequestUnitsList>;
+export const OrgEditTeamRequestUnitsList =
+  RepositoryTopicsList as any as S.Schema<OrgEditTeamRequestUnitsList>;
 
 export type OrgEditTeamRequestUnitsMapMap = { [key: string]: string | undefined };
-export const OrgEditTeamRequestUnitsMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrgEditTeamRequestUnitsMapMap>;
+export const OrgEditTeamRequestUnitsMapMap =
+  TeamUnitsMapMap as any as S.Schema<OrgEditTeamRequestUnitsMapMap>;
 
 export interface OrgEditTeamRequest {
   /** id of the team to edit */
@@ -1319,9 +1288,8 @@ export const OrgGetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Subjects the rule affects */
 export type QuotaRuleInfoSubjectsList = Array<string>;
-export const QuotaRuleInfoSubjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuotaRuleInfoSubjectsList>;
+export const QuotaRuleInfoSubjectsList =
+  RepositoryTopicsList as any as S.Schema<QuotaRuleInfoSubjectsList>;
 
 /** QuotaRuleInfo contains information about a quota rule */
 export interface QuotaRuleInfo {
@@ -1526,9 +1494,8 @@ export const OrgIsMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgIsMemberRequest" }) as any as S.Schema<OrgIsMemberRequest>;
 
 export interface OrgIsMemberResponse {}
-export const OrgIsMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgIsMemberResponse",
-}) as any as S.Schema<OrgIsMemberResponse>;
+export const OrgIsMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgIsMemberResponse>;
 
 export interface OrgIsPublicMemberRequest {
   /** name of the organization */
@@ -1544,9 +1511,8 @@ export const OrgIsPublicMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgIsPublicMemberRequest" }) as any as S.Schema<OrgIsPublicMemberRequest>;
 
 export interface OrgIsPublicMemberResponse {}
-export const OrgIsPublicMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgIsPublicMemberResponse",
-}) as any as S.Schema<OrgIsPublicMemberResponse>;
+export const OrgIsPublicMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgIsPublicMemberResponse>;
 
 export interface OrgListActionsSecretsRequest {
   /** name of the organization */
@@ -1819,9 +1785,8 @@ export const OrgListCurrentUserOrgsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrgListCurrentUserOrgsRequest>;
 
 export type OrgListCurrentUserOrgsResponseBodyList = Array<Organization>;
-export const OrgListCurrentUserOrgsResponseBodyList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<OrgListCurrentUserOrgsResponseBodyList>;
+export const OrgListCurrentUserOrgsResponseBodyList =
+  OrgGetAllResponseBodyList as any as S.Schema<OrgListCurrentUserOrgsResponseBodyList>;
 
 export type OrgListCurrentUserOrgsResponse = OrgListCurrentUserOrgsResponseBodyList;
 export const OrgListCurrentUserOrgsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1933,9 +1898,8 @@ export const OrgListPublicMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrgListPublicMembersRequest>;
 
 export type OrgListPublicMembersResponseBodyList = Array<User>;
-export const OrgListPublicMembersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<OrgListPublicMembersResponseBodyList>;
+export const OrgListPublicMembersResponseBodyList =
+  OrgListMembersResponseBodyList as any as S.Schema<OrgListPublicMembersResponseBodyList>;
 
 export type OrgListPublicMembersResponse = OrgListPublicMembersResponseBodyList;
 export const OrgListPublicMembersResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2161,16 +2125,12 @@ export const OrgListTeamActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrgListTeamActivityFeedsRequest>;
 
 export type OrgListTeamActivityFeedsResponseBodyList = Array<Activity>;
-export const OrgListTeamActivityFeedsResponseBodyList = /*@__PURE__*/ S.Array(
-  Activity,
-) as any as S.Schema<OrgListTeamActivityFeedsResponseBodyList>;
+export const OrgListTeamActivityFeedsResponseBodyList =
+  OrgListActivityFeedsResponseBodyList as any as S.Schema<OrgListTeamActivityFeedsResponseBodyList>;
 
 export type OrgListTeamActivityFeedsResponse = OrgListTeamActivityFeedsResponseBodyList;
-export const OrgListTeamActivityFeedsResponse = /*@__PURE__*/ S.suspend(() =>
-  OrgListTeamActivityFeedsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "OrgListTeamActivityFeedsResponse",
-}) as any as S.Schema<OrgListTeamActivityFeedsResponse>;
+export const OrgListTeamActivityFeedsResponse =
+  OrgListActivityFeedsResponse as any as S.Schema<OrgListTeamActivityFeedsResponse>;
 
 export interface OrgListTeamMemberRequest {
   /** id of the team */
@@ -2204,16 +2164,12 @@ export const OrgListTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrgListTeamMembersRequest>;
 
 export type OrgListTeamMembersResponseBodyList = Array<User>;
-export const OrgListTeamMembersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<OrgListTeamMembersResponseBodyList>;
+export const OrgListTeamMembersResponseBodyList =
+  OrgListMembersResponseBodyList as any as S.Schema<OrgListTeamMembersResponseBodyList>;
 
 export type OrgListTeamMembersResponse = OrgListTeamMembersResponseBodyList;
-export const OrgListTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  OrgListTeamMembersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "OrgListTeamMembersResponse",
-}) as any as S.Schema<OrgListTeamMembersResponse>;
+export const OrgListTeamMembersResponse =
+  OrgListPublicMembersResponse as any as S.Schema<OrgListTeamMembersResponse>;
 
 export interface OrgListTeamRepoRequest {
   /** id of the team */
@@ -2248,14 +2204,12 @@ export const OrgListTeamReposRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgListTeamReposRequest" }) as any as S.Schema<OrgListTeamReposRequest>;
 
 export type OrgListTeamReposResponseBodyList = Array<Repository>;
-export const OrgListTeamReposResponseBodyList = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<OrgListTeamReposResponseBodyList>;
+export const OrgListTeamReposResponseBodyList =
+  OrgListReposResponseBodyList as any as S.Schema<OrgListTeamReposResponseBodyList>;
 
 export type OrgListTeamReposResponse = OrgListTeamReposResponseBodyList;
-export const OrgListTeamReposResponse = /*@__PURE__*/ S.suspend(() =>
-  OrgListTeamReposResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "OrgListTeamReposResponse" }) as any as S.Schema<OrgListTeamReposResponse>;
+export const OrgListTeamReposResponse =
+  OrgListReposResponse as any as S.Schema<OrgListTeamReposResponse>;
 
 export interface OrgListTeamsRequest {
   /** name of the organization */
@@ -2274,9 +2228,8 @@ export const OrgListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgListTeamsRequest" }) as any as S.Schema<OrgListTeamsRequest>;
 
 export type OrgListTeamsResponseBodyList = Array<Team>;
-export const OrgListTeamsResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<OrgListTeamsResponseBodyList>;
+export const OrgListTeamsResponseBodyList =
+  RepoTransferTeamsList as any as S.Schema<OrgListTeamsResponseBodyList>;
 
 export type OrgListTeamsResponse = OrgListTeamsResponseBodyList;
 export const OrgListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2300,14 +2253,12 @@ export const OrgListUserOrgsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgListUserOrgsRequest" }) as any as S.Schema<OrgListUserOrgsRequest>;
 
 export type OrgListUserOrgsResponseBodyList = Array<Organization>;
-export const OrgListUserOrgsResponseBodyList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<OrgListUserOrgsResponseBodyList>;
+export const OrgListUserOrgsResponseBodyList =
+  OrgGetAllResponseBodyList as any as S.Schema<OrgListUserOrgsResponseBodyList>;
 
 export type OrgListUserOrgsResponse = OrgListUserOrgsResponseBodyList;
-export const OrgListUserOrgsResponse = /*@__PURE__*/ S.suspend(() =>
-  OrgListUserOrgsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "OrgListUserOrgsResponse" }) as any as S.Schema<OrgListUserOrgsResponse>;
+export const OrgListUserOrgsResponse =
+  OrgGetAllResponse as any as S.Schema<OrgListUserOrgsResponse>;
 
 export interface OrgPublicizeMemberRequest {
   /** name of the organization */
@@ -2325,9 +2276,8 @@ export const OrgPublicizeMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrgPublicizeMemberRequest>;
 
 export interface OrgPublicizeMemberResponse {}
-export const OrgPublicizeMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgPublicizeMemberResponse",
-}) as any as S.Schema<OrgPublicizeMemberResponse>;
+export const OrgPublicizeMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgPublicizeMemberResponse>;
 
 export interface OrgRemoveTeamMemberRequest {
   /** id of the team */
@@ -2345,9 +2295,8 @@ export const OrgRemoveTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrgRemoveTeamMemberRequest>;
 
 export interface OrgRemoveTeamMemberResponse {}
-export const OrgRemoveTeamMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgRemoveTeamMemberResponse",
-}) as any as S.Schema<OrgRemoveTeamMemberResponse>;
+export const OrgRemoveTeamMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgRemoveTeamMemberResponse>;
 
 export interface OrgRemoveTeamRepositoryRequest {
   /** id of the team */
@@ -2387,15 +2336,12 @@ export const OrgSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-export const ActionRunJobNeedsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobNeedsList>;
+export const ActionRunJobNeedsList = RepositoryTopicsList as any as S.Schema<ActionRunJobNeedsList>;
 
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-export const ActionRunJobRunsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobRunsOnList>;
+export const ActionRunJobRunsOnList =
+  RepositoryTopicsList as any as S.Schema<ActionRunJobRunsOnList>;
 
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
@@ -2462,9 +2408,8 @@ export const OrgUnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgUnblockUserRequest" }) as any as S.Schema<OrgUnblockUserRequest>;
 
 export interface OrgUnblockUserResponse {}
-export const OrgUnblockUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgUnblockUserResponse",
-}) as any as S.Schema<OrgUnblockUserResponse>;
+export const OrgUnblockUserResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgUnblockUserResponse>;
 
 export interface OrgUpdateAvatarRequest {
   /** name of the organization */
@@ -2480,9 +2425,8 @@ export const OrgUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgUpdateAvatarRequest" }) as any as S.Schema<OrgUpdateAvatarRequest>;
 
 export interface OrgUpdateAvatarResponse {}
-export const OrgUpdateAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "OrgUpdateAvatarResponse",
-}) as any as S.Schema<OrgUpdateAvatarResponse>;
+export const OrgUpdateAvatarResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgUpdateAvatarResponse>;
 
 export interface RegisterOrgRunnerRequest {
   /** name of the organization */
@@ -2530,9 +2474,7 @@ export const RenameOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameOrgRequest" }) as any as S.Schema<RenameOrgRequest>;
 
 export interface RenameOrgResponse {}
-export const RenameOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RenameOrgResponse",
-}) as any as S.Schema<RenameOrgResponse>;
+export const RenameOrgResponse = CreateOrgVariableResponse as any as S.Schema<RenameOrgResponse>;
 
 export interface SearchTeamRequest {
   /** name of the organization */
@@ -2557,9 +2499,8 @@ export const SearchTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchTeamRequest" }) as any as S.Schema<SearchTeamRequest>;
 
 export type SearchTeamResponseDataList = Array<Team>;
-export const SearchTeamResponseDataList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<SearchTeamResponseDataList>;
+export const SearchTeamResponseDataList =
+  RepoTransferTeamsList as any as S.Schema<SearchTeamResponseDataList>;
 
 export interface SearchTeamResponse {
   data?: SearchTeamResponseDataList;
@@ -2589,9 +2530,8 @@ export const UpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateOrgSecretRequest" }) as any as S.Schema<UpdateOrgSecretRequest>;
 
 export interface UpdateOrgSecretResponse {}
-export const UpdateOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateOrgSecretResponse",
-}) as any as S.Schema<UpdateOrgSecretResponse>;
+export const UpdateOrgSecretResponse =
+  CreateOrgVariableResponse as any as S.Schema<UpdateOrgSecretResponse>;
 
 export interface UpdateOrgVariableRequest {
   /** name of the organization */
@@ -2615,9 +2555,8 @@ export const UpdateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateOrgVariableRequest" }) as any as S.Schema<UpdateOrgVariableRequest>;
 
 export interface UpdateOrgVariableResponse {}
-export const UpdateOrgVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateOrgVariableResponse",
-}) as any as S.Schema<UpdateOrgVariableResponse>;
+export const UpdateOrgVariableResponse =
+  CreateOrgVariableResponse as any as S.Schema<UpdateOrgVariableResponse>;
 
 export type CreateOrgError = Forbidden | UnprocessableEntity | ForgejoOpError;
 /** Create an organization */

@@ -157,14 +157,7 @@ export interface ReactionListItem {
   /** The user who left this reaction on the post. */
   user: ReactionUser;
 }
-export const ReactionListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emoji: S.NullOr(S.String),
-    id: S.String,
-    resource_id: S.String,
-    user: ReactionUser,
-  }),
-).annotate({ identifier: "ReactionListItem" }) as any as S.Schema<ReactionListItem>;
+export const ReactionListItem = Reaction as any as S.Schema<ReactionListItem>;
 
 /** A list of nodes. */
 export type ListReactionResponseDataList = Array<ReactionListItem>;

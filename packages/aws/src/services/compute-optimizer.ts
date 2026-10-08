@@ -192,7 +192,7 @@ export const JobFilterName = S.String;
 
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = JobIds as any as S.Schema<FilterValues>;
 export interface JobFilter {
   name?: JobFilterName;
   values?: string[];
@@ -283,7 +283,7 @@ export const DescribeRecommendationExportJobsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeRecommendationExportJobsResponse>;
 export type AccountId = string;
 export type AccountIds = string[];
-export const AccountIds = /*@__PURE__*/ S.Array(S.String);
+export const AccountIds = JobIds as any as S.Schema<AccountIds>;
 export type FilterName =
   | "Finding"
   | "FindingReasonCodes"
@@ -518,11 +518,8 @@ export interface ExportEBSVolumeRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-export const ExportEBSVolumeRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
-).annotate({
-  identifier: "ExportEBSVolumeRecommendationsResponse",
-}) as any as S.Schema<ExportEBSVolumeRecommendationsResponse>;
+export const ExportEBSVolumeRecommendationsResponse =
+  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportEBSVolumeRecommendationsResponse>;
 export type ExportableInstanceField =
   | "AccountId"
   | "InstanceArn"
@@ -626,11 +623,8 @@ export interface ExportEC2InstanceRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-export const ExportEC2InstanceRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
-).annotate({
-  identifier: "ExportEC2InstanceRecommendationsResponse",
-}) as any as S.Schema<ExportEC2InstanceRecommendationsResponse>;
+export const ExportEC2InstanceRecommendationsResponse =
+  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportEC2InstanceRecommendationsResponse>;
 export type ECSServiceRecommendationFilterName = "Finding" | "FindingReasonCode" | (string & {});
 export const ECSServiceRecommendationFilterName = S.String;
 
@@ -709,11 +703,8 @@ export interface ExportECSServiceRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-export const ExportECSServiceRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
-).annotate({
-  identifier: "ExportECSServiceRecommendationsResponse",
-}) as any as S.Schema<ExportECSServiceRecommendationsResponse>;
+export const ExportECSServiceRecommendationsResponse =
+  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportECSServiceRecommendationsResponse>;
 export type IdleRecommendationFilterName = "Finding" | "ResourceType" | (string & {});
 export const IdleRecommendationFilterName = S.String;
 
@@ -795,11 +786,8 @@ export interface ExportIdleRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-export const ExportIdleRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
-).annotate({
-  identifier: "ExportIdleRecommendationsResponse",
-}) as any as S.Schema<ExportIdleRecommendationsResponse>;
+export const ExportIdleRecommendationsResponse =
+  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportIdleRecommendationsResponse>;
 export type LambdaFunctionRecommendationFilterName =
   | "Finding"
   | "FindingReasonCode"
@@ -883,11 +871,8 @@ export interface ExportLambdaFunctionRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-export const ExportLambdaFunctionRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
-).annotate({
-  identifier: "ExportLambdaFunctionRecommendationsResponse",
-}) as any as S.Schema<ExportLambdaFunctionRecommendationsResponse>;
+export const ExportLambdaFunctionRecommendationsResponse =
+  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportLambdaFunctionRecommendationsResponse>;
 export type LicenseRecommendationFilterName =
   | "Finding"
   | "FindingReasonCode"
@@ -957,11 +942,8 @@ export interface ExportLicenseRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-export const ExportLicenseRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
-).annotate({
-  identifier: "ExportLicenseRecommendationsResponse",
-}) as any as S.Schema<ExportLicenseRecommendationsResponse>;
+export const ExportLicenseRecommendationsResponse =
+  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportLicenseRecommendationsResponse>;
 export type RDSDBRecommendationFilterName =
   | "InstanceFinding"
   | "InstanceFindingReasonCode"
@@ -1096,14 +1078,11 @@ export interface ExportRDSDatabaseRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-export const ExportRDSDatabaseRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
-).annotate({
-  identifier: "ExportRDSDatabaseRecommendationsResponse",
-}) as any as S.Schema<ExportRDSDatabaseRecommendationsResponse>;
+export const ExportRDSDatabaseRecommendationsResponse =
+  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportRDSDatabaseRecommendationsResponse>;
 export type AutoScalingGroupArn = string;
 export type AutoScalingGroupArns = string[];
-export const AutoScalingGroupArns = /*@__PURE__*/ S.Array(S.String);
+export const AutoScalingGroupArns = JobIds as any as S.Schema<AutoScalingGroupArns>;
 export interface GetAutoScalingGroupRecommendationsRequest {
   accountIds?: string[];
   autoScalingGroupArns?: string[];
@@ -1185,7 +1164,7 @@ export const AsgType = S.String;
 
 export type MixedInstanceType = string;
 export type MixedInstanceTypes = string[];
-export const MixedInstanceTypes = /*@__PURE__*/ S.Array(S.String);
+export const MixedInstanceTypes = JobIds as any as S.Schema<MixedInstanceTypes>;
 export interface AutoScalingGroupConfiguration {
   desiredCapacity?: number;
   minSize?: number;
@@ -1228,7 +1207,8 @@ export const GpuInfo = /*@__PURE__*/ S.suspend(() => S.Struct({ gpus: S.optional
   { identifier: "GpuInfo" },
 ) as any as S.Schema<GpuInfo>;
 export type ProjectedUtilizationMetrics = UtilizationMetric[];
-export const ProjectedUtilizationMetrics = /*@__PURE__*/ S.Array(UtilizationMetric);
+export const ProjectedUtilizationMetrics =
+  UtilizationMetrics as any as S.Schema<ProjectedUtilizationMetrics>;
 export type PerformanceRisk = number;
 export type Rank = number;
 export type SavingsOpportunityPercentage = number;
@@ -1377,7 +1357,7 @@ export const PreferredResourceName = S.String;
 
 export type PreferredResourceValue = string;
 export type PreferredResourceValues = string[];
-export const PreferredResourceValues = /*@__PURE__*/ S.Array(S.String);
+export const PreferredResourceValues = JobIds as any as S.Schema<PreferredResourceValues>;
 export interface EffectivePreferredResource {
   name?: PreferredResourceName;
   includeList?: string[];
@@ -1521,7 +1501,7 @@ export const GetAutoScalingGroupRecommendationsResponse = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetAutoScalingGroupRecommendationsResponse>;
 export type VolumeArn = string;
 export type VolumeArns = string[];
-export const VolumeArns = /*@__PURE__*/ S.Array(S.String);
+export const VolumeArns = JobIds as any as S.Schema<VolumeArns>;
 export interface GetEBSVolumeRecommendationsRequest {
   volumeArns?: string[];
   nextToken?: string;
@@ -1598,23 +1578,14 @@ export interface EBSEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-export const EBSEstimatedMonthlySavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "EBSEstimatedMonthlySavings",
-}) as any as S.Schema<EBSEstimatedMonthlySavings>;
+export const EBSEstimatedMonthlySavings =
+  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<EBSEstimatedMonthlySavings>;
 export interface EBSSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: EBSEstimatedMonthlySavings;
 }
-export const EBSSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsOpportunityPercentage: S.optional(S.Number),
-    estimatedMonthlySavings: S.optional(EBSEstimatedMonthlySavings),
-  }),
-).annotate({
-  identifier: "EBSSavingsOpportunityAfterDiscounts",
-}) as any as S.Schema<EBSSavingsOpportunityAfterDiscounts>;
+export const EBSSavingsOpportunityAfterDiscounts =
+  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<EBSSavingsOpportunityAfterDiscounts>;
 export interface VolumeRecommendationOption {
   configuration?: VolumeConfiguration;
   performanceRisk?: number;
@@ -1717,7 +1688,7 @@ export const GetEBSVolumeRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEBSVolumeRecommendationsResponse>;
 export type InstanceArn = string;
 export type InstanceArns = string[];
-export const InstanceArns = /*@__PURE__*/ S.Array(S.String);
+export const InstanceArns = JobIds as any as S.Schema<InstanceArns>;
 export interface GetEC2InstanceRecommendationsRequest {
   instanceArns?: string[];
   nextToken?: string;
@@ -1785,23 +1756,14 @@ export interface InstanceEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-export const InstanceEstimatedMonthlySavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "InstanceEstimatedMonthlySavings",
-}) as any as S.Schema<InstanceEstimatedMonthlySavings>;
+export const InstanceEstimatedMonthlySavings =
+  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<InstanceEstimatedMonthlySavings>;
 export interface InstanceSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: InstanceEstimatedMonthlySavings;
 }
-export const InstanceSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsOpportunityPercentage: S.optional(S.Number),
-    estimatedMonthlySavings: S.optional(InstanceEstimatedMonthlySavings),
-  }),
-).annotate({
-  identifier: "InstanceSavingsOpportunityAfterDiscounts",
-}) as any as S.Schema<InstanceSavingsOpportunityAfterDiscounts>;
+export const InstanceSavingsOpportunityAfterDiscounts =
+  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<InstanceSavingsOpportunityAfterDiscounts>;
 export interface InstanceRecommendationOption {
   instanceType?: string;
   instanceGpuInfo?: GpuInfo;
@@ -2101,7 +2063,7 @@ export const GetECSServiceRecommendationProjectedMetricsResponse = /*@__PURE__*/
   identifier: "GetECSServiceRecommendationProjectedMetricsResponse",
 }) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsResponse>;
 export type ServiceArns = string[];
-export const ServiceArns = /*@__PURE__*/ S.Array(S.String);
+export const ServiceArns = JobIds as any as S.Schema<ServiceArns>;
 export interface GetECSServiceRecommendationsRequest {
   serviceArns?: string[];
   nextToken?: string;
@@ -2214,23 +2176,14 @@ export interface ECSEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-export const ECSEstimatedMonthlySavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "ECSEstimatedMonthlySavings",
-}) as any as S.Schema<ECSEstimatedMonthlySavings>;
+export const ECSEstimatedMonthlySavings =
+  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<ECSEstimatedMonthlySavings>;
 export interface ECSSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: ECSEstimatedMonthlySavings;
 }
-export const ECSSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsOpportunityPercentage: S.optional(S.Number),
-    estimatedMonthlySavings: S.optional(ECSEstimatedMonthlySavings),
-  }),
-).annotate({
-  identifier: "ECSSavingsOpportunityAfterDiscounts",
-}) as any as S.Schema<ECSSavingsOpportunityAfterDiscounts>;
+export const ECSSavingsOpportunityAfterDiscounts =
+  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<ECSSavingsOpportunityAfterDiscounts>;
 export type LowerBoundValue = number;
 export type UpperBoundValue = number;
 export interface ECSServiceProjectedUtilizationMetric {
@@ -2258,15 +2211,11 @@ export interface ContainerRecommendation {
   memorySizeConfiguration?: MemorySizeConfiguration;
   cpu?: number;
 }
-export const ContainerRecommendation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    containerName: S.optional(S.String),
-    memorySizeConfiguration: S.optional(MemorySizeConfiguration),
-    cpu: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ContainerRecommendation" }) as any as S.Schema<ContainerRecommendation>;
+export const ContainerRecommendation =
+  ContainerConfiguration as any as S.Schema<ContainerRecommendation>;
 export type ContainerRecommendations = ContainerRecommendation[];
-export const ContainerRecommendations = /*@__PURE__*/ S.Array(ContainerRecommendation);
+export const ContainerRecommendations =
+  ContainerConfigurations as any as S.Schema<ContainerRecommendations>;
 export interface ECSServiceRecommendationOption {
   memory?: number;
   cpu?: number;
@@ -2478,7 +2427,7 @@ export const GetEnrollmentStatusesForOrganizationResponse = /*@__PURE__*/ S.susp
   identifier: "GetEnrollmentStatusesForOrganizationResponse",
 }) as any as S.Schema<GetEnrollmentStatusesForOrganizationResponse>;
 export type ResourceArns = string[];
-export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
+export const ResourceArns = JobIds as any as S.Schema<ResourceArns>;
 export type IdleMaxResults = number;
 export type Dimension = "SavingsValue" | "SavingsValueAfterDiscount" | (string & {});
 export const Dimension = S.String;
@@ -2538,11 +2487,8 @@ export interface IdleEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-export const IdleEstimatedMonthlySavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "IdleEstimatedMonthlySavings",
-}) as any as S.Schema<IdleEstimatedMonthlySavings>;
+export const IdleEstimatedMonthlySavings =
+  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<IdleEstimatedMonthlySavings>;
 export interface IdleSavingsOpportunity {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: IdleEstimatedMonthlySavings;
@@ -2557,14 +2503,8 @@ export interface IdleSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: IdleEstimatedMonthlySavings;
 }
-export const IdleSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsOpportunityPercentage: S.optional(S.Number),
-    estimatedMonthlySavings: S.optional(IdleEstimatedMonthlySavings),
-  }),
-).annotate({
-  identifier: "IdleSavingsOpportunityAfterDiscounts",
-}) as any as S.Schema<IdleSavingsOpportunityAfterDiscounts>;
+export const IdleSavingsOpportunityAfterDiscounts =
+  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<IdleSavingsOpportunityAfterDiscounts>;
 export type IdleMetricName =
   | "CPU"
   | "Memory"
@@ -2600,7 +2540,7 @@ export const IdleMetricName = S.String;
 export type IdleDimensionKey = string;
 export type IdleDimensionValue = string;
 export type IdleDimensionValues = string[];
-export const IdleDimensionValues = /*@__PURE__*/ S.Array(S.String);
+export const IdleDimensionValues = JobIds as any as S.Schema<IdleDimensionValues>;
 export interface IdleDimension {
   key?: string;
   values?: string[];
@@ -2690,7 +2630,7 @@ export const GetIdleRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIdleRecommendationsResponse>;
 export type FunctionArn = string;
 export type FunctionArns = string[];
-export const FunctionArns = /*@__PURE__*/ S.Array(S.String);
+export const FunctionArns = JobIds as any as S.Schema<FunctionArns>;
 export interface GetLambdaFunctionRecommendationsRequest {
   functionArns?: string[];
   accountIds?: string[];
@@ -2787,23 +2727,14 @@ export interface LambdaEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-export const LambdaEstimatedMonthlySavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "LambdaEstimatedMonthlySavings",
-}) as any as S.Schema<LambdaEstimatedMonthlySavings>;
+export const LambdaEstimatedMonthlySavings =
+  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<LambdaEstimatedMonthlySavings>;
 export interface LambdaSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: LambdaEstimatedMonthlySavings;
 }
-export const LambdaSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsOpportunityPercentage: S.optional(S.Number),
-    estimatedMonthlySavings: S.optional(LambdaEstimatedMonthlySavings),
-  }),
-).annotate({
-  identifier: "LambdaSavingsOpportunityAfterDiscounts",
-}) as any as S.Schema<LambdaSavingsOpportunityAfterDiscounts>;
+export const LambdaSavingsOpportunityAfterDiscounts =
+  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<LambdaSavingsOpportunityAfterDiscounts>;
 export interface LambdaFunctionMemoryRecommendationOption {
   rank?: number;
   memorySize?: number;
@@ -3268,23 +3199,14 @@ export interface RDSInstanceEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-export const RDSInstanceEstimatedMonthlySavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "RDSInstanceEstimatedMonthlySavings",
-}) as any as S.Schema<RDSInstanceEstimatedMonthlySavings>;
+export const RDSInstanceEstimatedMonthlySavings =
+  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<RDSInstanceEstimatedMonthlySavings>;
 export interface RDSInstanceSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: RDSInstanceEstimatedMonthlySavings;
 }
-export const RDSInstanceSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsOpportunityPercentage: S.optional(S.Number),
-    estimatedMonthlySavings: S.optional(RDSInstanceEstimatedMonthlySavings),
-  }),
-).annotate({
-  identifier: "RDSInstanceSavingsOpportunityAfterDiscounts",
-}) as any as S.Schema<RDSInstanceSavingsOpportunityAfterDiscounts>;
+export const RDSInstanceSavingsOpportunityAfterDiscounts =
+  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<RDSInstanceSavingsOpportunityAfterDiscounts>;
 export interface RDSDBInstanceRecommendationOption {
   dbInstanceClass?: string;
   projectedUtilizationMetrics?: RDSDBUtilizationMetric[];
@@ -3313,23 +3235,14 @@ export interface RDSStorageEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-export const RDSStorageEstimatedMonthlySavings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
-).annotate({
-  identifier: "RDSStorageEstimatedMonthlySavings",
-}) as any as S.Schema<RDSStorageEstimatedMonthlySavings>;
+export const RDSStorageEstimatedMonthlySavings =
+  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<RDSStorageEstimatedMonthlySavings>;
 export interface RDSStorageSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: RDSStorageEstimatedMonthlySavings;
 }
-export const RDSStorageSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savingsOpportunityPercentage: S.optional(S.Number),
-    estimatedMonthlySavings: S.optional(RDSStorageEstimatedMonthlySavings),
-  }),
-).annotate({
-  identifier: "RDSStorageSavingsOpportunityAfterDiscounts",
-}) as any as S.Schema<RDSStorageSavingsOpportunityAfterDiscounts>;
+export const RDSStorageSavingsOpportunityAfterDiscounts =
+  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<RDSStorageSavingsOpportunityAfterDiscounts>;
 export interface RDSDBStorageRecommendationOption {
   storageConfiguration?: DBStorageConfiguration;
   rank?: number;
@@ -3353,7 +3266,8 @@ export const RDSDBStorageRecommendationOptions = /*@__PURE__*/ S.Array(
   RDSDBStorageRecommendationOption,
 );
 export type RDSDBUtilizationMetrics = RDSDBUtilizationMetric[];
-export const RDSDBUtilizationMetrics = /*@__PURE__*/ S.Array(RDSDBUtilizationMetric);
+export const RDSDBUtilizationMetrics =
+  RDSDBProjectedUtilizationMetrics as any as S.Schema<RDSDBUtilizationMetrics>;
 export type RDSSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
@@ -3673,11 +3587,8 @@ export const PutRecommendationPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutRecommendationPreferencesRequest",
 }) as any as S.Schema<PutRecommendationPreferencesRequest>;
 export interface PutRecommendationPreferencesResponse {}
-export const PutRecommendationPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutRecommendationPreferencesResponse",
-}) as any as S.Schema<PutRecommendationPreferencesResponse>;
+export const PutRecommendationPreferencesResponse =
+  DeleteRecommendationPreferencesResponse as any as S.Schema<PutRecommendationPreferencesResponse>;
 export interface UpdateEnrollmentStatusRequest {
   status: Status;
   includeMemberAccounts?: boolean;

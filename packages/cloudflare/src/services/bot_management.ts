@@ -67,10 +67,8 @@ export const CreateFeedbackRequestRequestsByScoreMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreateFeedbackRequestRequestsByScoreMap>;
 
 export type CreateFeedbackRequestRequestsByScoreSrcMap = { [key: string]: number | undefined };
-export const CreateFeedbackRequestRequestsByScoreSrcMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<CreateFeedbackRequestRequestsByScoreSrcMap>;
+export const CreateFeedbackRequestRequestsByScoreSrcMap =
+  CreateFeedbackRequestRequestsByScoreMap as any as S.Schema<CreateFeedbackRequestRequestsByScoreSrcMap>;
 
 export type CreateFeedbackRequestType = "false_positive" | "false_negative";
 export const CreateFeedbackRequestType = S.String;
@@ -871,16 +869,12 @@ export type ListFeedbackResponseRequestsByAttribute = CreateFeedbackRequestReque
 export const ListFeedbackResponseRequestsByAttribute = CreateFeedbackRequestRequestsByAttribute;
 
 export type ListFeedbackResponseRequestsByScoreMap = { [key: string]: number | undefined };
-export const ListFeedbackResponseRequestsByScoreMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<ListFeedbackResponseRequestsByScoreMap>;
+export const ListFeedbackResponseRequestsByScoreMap =
+  CreateFeedbackRequestRequestsByScoreMap as any as S.Schema<ListFeedbackResponseRequestsByScoreMap>;
 
 export type ListFeedbackResponseRequestsByScoreSrcMap = { [key: string]: number | undefined };
-export const ListFeedbackResponseRequestsByScoreSrcMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<ListFeedbackResponseRequestsByScoreSrcMap>;
+export const ListFeedbackResponseRequestsByScoreSrcMap =
+  CreateFeedbackRequestRequestsByScoreMap as any as S.Schema<ListFeedbackResponseRequestsByScoreSrcMap>;
 
 export type ListFeedbackResponseType = "false_positive" | "false_negative";
 export const ListFeedbackResponseType = S.String;

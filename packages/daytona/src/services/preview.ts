@@ -97,9 +97,8 @@ export const IsSandboxPublicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IsSandboxPublicRequest" }) as any as S.Schema<IsSandboxPublicRequest>;
 
 export type IsSandboxPublicResponse = boolean;
-export const IsSandboxPublicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "IsSandboxPublicResponse" }) as any as S.Schema<IsSandboxPublicResponse>;
+export const IsSandboxPublicResponse =
+  HasSandboxAccessResponse as any as S.Schema<IsSandboxPublicResponse>;
 
 export interface IsValidAuthTokenRequest {
   /** ID of the sandbox */
@@ -115,9 +114,8 @@ export const IsValidAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IsValidAuthTokenRequest" }) as any as S.Schema<IsValidAuthTokenRequest>;
 
 export type IsValidAuthTokenResponse = boolean;
-export const IsValidAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "IsValidAuthTokenResponse" }) as any as S.Schema<IsValidAuthTokenResponse>;
+export const IsValidAuthTokenResponse =
+  HasSandboxAccessResponse as any as S.Schema<IsValidAuthTokenResponse>;
 
 export type GetSandboxIdFromSignedPreviewUrlTokenError = DaytonaOpError;
 /** Get sandbox ID from signed preview URL token */

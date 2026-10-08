@@ -118,21 +118,18 @@ export const Frequency = S.String;
 
 /** Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. Supported for CategoryType(s): Cost, ReservationUtilization. */
 export type NotificationContactEmailsList = Array<string>;
-export const NotificationContactEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationContactEmailsList>;
+export const NotificationContactEmailsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactEmailsList>;
 
 /** Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached. Supported for CategoryType(s): Cost. */
 export type NotificationContactRolesList = Array<string>;
-export const NotificationContactRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationContactRolesList>;
+export const NotificationContactRolesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactRolesList>;
 
 /** Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Supported for CategoryType(s): Cost. */
 export type NotificationContactGroupsList = Array<string>;
-export const NotificationContactGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationContactGroupsList>;
+export const NotificationContactGroupsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactGroupsList>;
 
 /** The type of threshold. Supported for CategoryType(s): Cost. */
 export type NotificationThresholdType = "Actual" | "Forecasted";
@@ -309,10 +306,8 @@ export const CurrentSpend = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of notifications associated with the budget. Supported for CategoryType(s): Cost, ReservationUtilization. - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted. - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable. */
 export type BudgetPropertiesNotificationsMap = { [key: string]: Notification | undefined };
-export const BudgetPropertiesNotificationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Notification,
-) as any as S.Schema<BudgetPropertiesNotificationsMap>;
+export const BudgetPropertiesNotificationsMap =
+  BudgetPropertiesInputNotificationsMap as any as S.Schema<BudgetPropertiesNotificationsMap>;
 
 /** The forecasted cost which is being tracked for a budget. Supported for CategoryType(s): Cost. */
 export interface ForecastSpend {
@@ -321,12 +316,7 @@ export interface ForecastSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
-export const ForecastSpend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "ForecastSpend" }) as any as S.Schema<ForecastSpend>;
+export const ForecastSpend = CurrentSpend as any as S.Schema<ForecastSpend>;
 
 /** The properties of the budget. */
 export interface BudgetProperties {
@@ -532,9 +522,8 @@ export const CostAllocationResourceType = S.String;
 
 /** Source Resources for cost allocation. This list cannot contain more than 25 values. */
 export type SourceCostAllocationResourceValuesList = Array<string>;
-export const SourceCostAllocationResourceValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceCostAllocationResourceValuesList>;
+export const SourceCostAllocationResourceValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<SourceCostAllocationResourceValuesList>;
 
 /** Source resources for cost allocation */
 export interface SourceCostAllocationResource {
@@ -1071,9 +1060,7 @@ export const DeleteExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExportRequest" }) as any as S.Schema<DeleteExportRequest>;
 
 export interface DeleteExportResponse {}
-export const DeleteExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteExportResponse",
-}) as any as S.Schema<DeleteExportResponse>;
+export const DeleteExportResponse = DeleteBudgetResponse as any as S.Schema<DeleteExportResponse>;
 
 export interface DeleteMarkupRuleRequest {
   /** BillingAccount ID */
@@ -1099,9 +1086,8 @@ export const DeleteMarkupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMarkupRuleRequest" }) as any as S.Schema<DeleteMarkupRuleRequest>;
 
 export interface DeleteMarkupRuleResponse {}
-export const DeleteMarkupRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMarkupRuleResponse",
-}) as any as S.Schema<DeleteMarkupRuleResponse>;
+export const DeleteMarkupRuleResponse =
+  DeleteBudgetResponse as any as S.Schema<DeleteMarkupRuleResponse>;
 
 export interface DeleteScheduledActionRequest {
   /** Scheduled action name. */
@@ -1123,9 +1109,8 @@ export const DeleteScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScheduledActionRequest>;
 
 export interface DeleteScheduledActionResponse {}
-export const DeleteScheduledActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduledActionResponse",
-}) as any as S.Schema<DeleteScheduledActionResponse>;
+export const DeleteScheduledActionResponse =
+  DeleteBudgetResponse as any as S.Schema<DeleteScheduledActionResponse>;
 
 export interface DeleteScheduledActionByScopeRequest {
   /** undefined */
@@ -1150,11 +1135,8 @@ export const DeleteScheduledActionByScopeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScheduledActionByScopeRequest>;
 
 export interface DeleteScheduledActionByScopeResponse {}
-export const DeleteScheduledActionByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteScheduledActionByScopeResponse",
-}) as any as S.Schema<DeleteScheduledActionByScopeResponse>;
+export const DeleteScheduledActionByScopeResponse =
+  DeleteCostAllocationRuleResponse as any as S.Schema<DeleteScheduledActionByScopeResponse>;
 
 export type DeleteSettingsByScopeRequestType = "taginheritance";
 export const DeleteSettingsByScopeRequestType = S.String;
@@ -1182,9 +1164,8 @@ export const DeleteSettingsByScopeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSettingsByScopeRequest>;
 
 export interface DeleteSettingsByScopeResponse {}
-export const DeleteSettingsByScopeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSettingsByScopeResponse",
-}) as any as S.Schema<DeleteSettingsByScopeResponse>;
+export const DeleteSettingsByScopeResponse =
+  DeleteBudgetResponse as any as S.Schema<DeleteSettingsByScopeResponse>;
 
 export interface DeleteViewRequest {
   /** View name */
@@ -1204,9 +1185,7 @@ export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteViewRequest" }) as any as S.Schema<DeleteViewRequest>;
 
 export interface DeleteViewResponse {}
-export const DeleteViewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteViewResponse",
-}) as any as S.Schema<DeleteViewResponse>;
+export const DeleteViewResponse = DeleteBudgetResponse as any as S.Schema<DeleteViewResponse>;
 
 export interface DeleteViewByScopeRequest {
   /** undefined */
@@ -1229,9 +1208,8 @@ export const DeleteViewByScopeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteViewByScopeRequest" }) as any as S.Schema<DeleteViewByScopeRequest>;
 
 export interface DeleteViewByScopeResponse {}
-export const DeleteViewByScopeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteViewByScopeResponse",
-}) as any as S.Schema<DeleteViewByScopeResponse>;
+export const DeleteViewByScopeResponse =
+  DeleteBudgetResponse as any as S.Schema<DeleteViewByScopeResponse>;
 
 export type DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType =
   | "externalSubscriptions"
@@ -1284,9 +1262,8 @@ export const DimensionTagsMap = /*@__PURE__*/ S.Record(
 
 /** Dimension data. */
 export type DimensionPropertiesDataList = Array<string>;
-export const DimensionPropertiesDataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DimensionPropertiesDataList>;
+export const DimensionPropertiesDataList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<DimensionPropertiesDataList>;
 
 /** Dimension properties. */
 export interface DimensionProperties {
@@ -1450,15 +1427,13 @@ export const AlertPropertiesDetailsResourceGroupFilterList = /*@__PURE__*/ S.Arr
 
 /** array of resources to filter by */
 export type AlertPropertiesDetailsResourceFilterList = Array<unknown>;
-export const AlertPropertiesDetailsResourceFilterList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AlertPropertiesDetailsResourceFilterList>;
+export const AlertPropertiesDetailsResourceFilterList =
+  AlertPropertiesDetailsResourceGroupFilterList as any as S.Schema<AlertPropertiesDetailsResourceFilterList>;
 
 /** array of meters to filter by */
 export type AlertPropertiesDetailsMeterFilterList = Array<unknown>;
-export const AlertPropertiesDetailsMeterFilterList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AlertPropertiesDetailsMeterFilterList>;
+export const AlertPropertiesDetailsMeterFilterList =
+  AlertPropertiesDetailsResourceGroupFilterList as any as S.Schema<AlertPropertiesDetailsMeterFilterList>;
 
 /** operator used to compare currentSpend with amount */
 export type AlertOperator =
@@ -1472,21 +1447,18 @@ export const AlertOperator = S.String;
 
 /** list of emails to contact */
 export type AlertPropertiesDetailsContactEmailsList = Array<string>;
-export const AlertPropertiesDetailsContactEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertPropertiesDetailsContactEmailsList>;
+export const AlertPropertiesDetailsContactEmailsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<AlertPropertiesDetailsContactEmailsList>;
 
 /** list of action groups to broadcast to */
 export type AlertPropertiesDetailsContactGroupsList = Array<string>;
-export const AlertPropertiesDetailsContactGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertPropertiesDetailsContactGroupsList>;
+export const AlertPropertiesDetailsContactGroupsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<AlertPropertiesDetailsContactGroupsList>;
 
 /** list of contact roles */
 export type AlertPropertiesDetailsContactRolesList = Array<string>;
-export const AlertPropertiesDetailsContactRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertPropertiesDetailsContactRolesList>;
+export const AlertPropertiesDetailsContactRolesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<AlertPropertiesDetailsContactRolesList>;
 
 /** Alert details */
 export interface AlertPropertiesDetails {
@@ -1914,9 +1886,7 @@ export const ExecuteExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecuteExportRequest" }) as any as S.Schema<ExecuteExportRequest>;
 
 export interface ExecuteExportResponse {}
-export const ExecuteExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecuteExportResponse",
-}) as any as S.Schema<ExecuteExportResponse>;
+export const ExecuteExportResponse = DeleteBudgetResponse as any as S.Schema<ExecuteExportResponse>;
 
 /** The format of the export being delivered. */
 export type FormatType = "Csv" | "Parquet";
@@ -1994,9 +1964,8 @@ export const GranularityType = S.String;
 
 /** Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples). */
 export type ExportDatasetConfigurationColumnsList = Array<string>;
-export const ExportDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportDatasetConfigurationColumnsList>;
+export const ExportDatasetConfigurationColumnsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ExportDatasetConfigurationColumnsList>;
 
 /** The name of the filter. This is currently only supported for Export Definition type of ReservationRecommendations. Supported names are ['ReservationScope', 'LookBackPeriod', 'ResourceType'] */
 export type FilterItemNames = "ReservationScope" | "ResourceType" | "LookBackPeriod";
@@ -2077,9 +2046,8 @@ export const ExportDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of listing the run history of an export. */
 export interface ExportExecutionListResultInput {}
-export const ExportExecutionListResultInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportExecutionListResultInput",
-}) as any as S.Schema<ExportExecutionListResultInput>;
+export const ExportExecutionListResultInput =
+  DeleteBudgetResponse as any as S.Schema<ExportExecutionListResultInput>;
 
 /** Allow customers to select overwrite data(OverwritePreviousReport) for exports. This setting will enable overwrite data for the same month in customer storage account. By default set to CreateNewReport. */
 export type DataOverwriteBehaviorType = "OverwritePreviousReport" | "CreateNewReport";
@@ -2481,18 +2449,12 @@ export interface ForecastTimePeriod {
   /** The end date to pull data to. */
   to: string;
 }
-export const ForecastTimePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.String,
-    to: S.String,
-  }),
-).annotate({ identifier: "ForecastTimePeriod" }) as any as S.Schema<ForecastTimePeriod>;
+export const ForecastTimePeriod = ExportTimePeriod as any as S.Schema<ForecastTimePeriod>;
 
 /** Array of column names to be included in the forecast. Any valid forecast column name is allowed. If not provided, then forecast includes all columns. */
 export type ForecastDatasetConfigurationColumnsList = Array<string>;
-export const ForecastDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ForecastDatasetConfigurationColumnsList>;
+export const ForecastDatasetConfigurationColumnsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ForecastDatasetConfigurationColumnsList>;
 
 /** The configuration of dataset in the forecast. */
 export interface ForecastDatasetConfiguration {
@@ -2544,9 +2506,7 @@ export const ForecastFilterAndList = /*@__PURE__*/ S.Array(
 
 /** The logical "OR" expression. Must have at least 2 items. */
 export type ForecastFilterOrList = Array<ForecastFilter>;
-export const ForecastFilterOrList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ForecastFilter),
-) as any as S.Schema<ForecastFilterOrList>;
+export const ForecastFilterOrList = ForecastFilterAndList as any as S.Schema<ForecastFilterOrList>;
 
 /** The operator to use for comparison. */
 export type ForecastOperatorType = "In";
@@ -2554,9 +2514,8 @@ export const ForecastOperatorType = S.String;
 
 /** Array of values to use for comparison */
 export type ForecastComparisonExpressionValuesList = Array<string>;
-export const ForecastComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ForecastComparisonExpressionValuesList>;
+export const ForecastComparisonExpressionValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ForecastComparisonExpressionValuesList>;
 
 /** The comparison expression to be used in the forecast. */
 export interface ForecastComparisonExpression {
@@ -2667,10 +2626,8 @@ export const ForecastExternalCloudProviderUsageRequest = /*@__PURE__*/ S.suspend
 export type ForecastExternalCloudProviderUsageResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ForecastExternalCloudProviderUsageResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ForecastExternalCloudProviderUsageResponseTagsMap>;
+export const ForecastExternalCloudProviderUsageResponseTagsMap =
+  DimensionTagsMap as any as S.Schema<ForecastExternalCloudProviderUsageResponseTagsMap>;
 
 /** Forecast column properties */
 export interface ForecastColumn {
@@ -2693,9 +2650,8 @@ export const ForecastPropertiesColumnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ForecastPropertiesColumnsList>;
 
 export type ForecastPropertiesRowsItemList = Array<unknown>;
-export const ForecastPropertiesRowsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ForecastPropertiesRowsItemList>;
+export const ForecastPropertiesRowsItemList =
+  AlertPropertiesDetailsResourceGroupFilterList as any as S.Schema<ForecastPropertiesRowsItemList>;
 
 /** Array of rows */
 export type ForecastPropertiesRowsList = Array<ForecastPropertiesRowsItemList>;
@@ -2793,10 +2749,8 @@ export const ForecastUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ForecastUsageResponseTagsMap = { [key: string]: string | undefined };
-export const ForecastUsageResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ForecastUsageResponseTagsMap>;
+export const ForecastUsageResponseTagsMap =
+  DimensionTagsMap as any as S.Schema<ForecastUsageResponseTagsMap>;
 
 export interface ForecastUsageResponse {
   /** Resource Id. */
@@ -3275,16 +3229,7 @@ export interface GetAlertResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const GetAlertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AlertProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetAlertResponse" }) as any as S.Schema<GetAlertResponse>;
+export const GetAlertResponse = DismissAlertResponse as any as S.Schema<GetAlertResponse>;
 
 export interface GetBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -3365,17 +3310,8 @@ export interface GetCostAllocationRuleResponse {
   /** Cost allocation rule properties */
   properties?: CostAllocationRuleProperties;
 }
-export const GetCostAllocationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CostAllocationRuleProperties),
-  }),
-).annotate({
-  identifier: "GetCostAllocationRuleResponse",
-}) as any as S.Schema<GetCostAllocationRuleResponse>;
+export const GetCostAllocationRuleResponse =
+  CostAllocationRulesCreateOrUpdateResponse as any as S.Schema<GetCostAllocationRuleResponse>;
 
 export interface GetExportRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -3513,17 +3449,8 @@ export interface GetGenerateDetailedCostReportOperationResultResponse {
   /** The properties of the resource generated. */
   properties?: DownloadURL;
 }
-export const GetGenerateDetailedCostReportOperationResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DownloadURL),
-  }),
-).annotate({
-  identifier: "GetGenerateDetailedCostReportOperationResultResponse",
-}) as any as S.Schema<GetGenerateDetailedCostReportOperationResultResponse>;
+export const GetGenerateDetailedCostReportOperationResultResponse =
+  CreateGenerateDetailedCostReportOperationResponse as any as S.Schema<GetGenerateDetailedCostReportOperationResultResponse>;
 
 export interface GetGenerateDetailedCostReportOperationStatusRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -3729,9 +3656,8 @@ export const FileDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of email addresses. */
 export type NotificationPropertiesToList = Array<string>;
-export const NotificationPropertiesToList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationPropertiesToList>;
+export const NotificationPropertiesToList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationPropertiesToList>;
 
 /** The properties of the scheduled action notification. */
 export interface NotificationProperties {
@@ -3926,19 +3852,8 @@ export interface GetScheduledActionByScopeResponse {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
-export const GetScheduledActionByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduledActionProperties),
-    eTag: S.optional(S.String),
-    kind: S.optional(ScheduledActionKind),
-  }),
-).annotate({
-  identifier: "GetScheduledActionByScopeResponse",
-}) as any as S.Schema<GetScheduledActionByScopeResponse>;
+export const GetScheduledActionByScopeResponse =
+  GetScheduledActionResponse as any as S.Schema<GetScheduledActionByScopeResponse>;
 
 export type GetSettingsByScopeRequestType = "taginheritance";
 export const GetSettingsByScopeRequestType = S.String;
@@ -4028,22 +3943,16 @@ export const ReportGranularityType = S.String;
 
 /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
 export type ReportConfigDatasetConfigurationColumnsList = Array<string>;
-export const ReportConfigDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportConfigDatasetConfigurationColumnsList>;
+export const ReportConfigDatasetConfigurationColumnsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ReportConfigDatasetConfigurationColumnsList>;
 
 /** The configuration of dataset in the report. */
 export interface ReportConfigDatasetConfiguration {
   /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
   columns?: ReportConfigDatasetConfigurationColumnsList;
 }
-export const ReportConfigDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(ReportConfigDatasetConfigurationColumnsList),
-  }),
-).annotate({
-  identifier: "ReportConfigDatasetConfiguration",
-}) as any as S.Schema<ReportConfigDatasetConfiguration>;
+export const ReportConfigDatasetConfiguration =
+  ForecastDatasetConfiguration as any as S.Schema<ReportConfigDatasetConfiguration>;
 
 /** The aggregation expression to be used in the report. */
 export interface ReportConfigAggregation {
@@ -4124,9 +4033,8 @@ export const ReportConfigFilterAndList = /*@__PURE__*/ S.Array(
 
 /** The logical "OR" expression. Must have at least 2 items. */
 export type ReportConfigFilterOrList = Array<ReportConfigFilter>;
-export const ReportConfigFilterOrList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ReportConfigFilter),
-) as any as S.Schema<ReportConfigFilterOrList>;
+export const ReportConfigFilterOrList =
+  ReportConfigFilterAndList as any as S.Schema<ReportConfigFilterOrList>;
 
 /** The operator to use for comparison. */
 export type OperatorType = "In" | "Contains";
@@ -4134,9 +4042,8 @@ export const OperatorType = S.String;
 
 /** Array of values to use for comparison */
 export type ReportConfigComparisonExpressionValuesList = Array<string>;
-export const ReportConfigComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportConfigComparisonExpressionValuesList>;
+export const ReportConfigComparisonExpressionValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ReportConfigComparisonExpressionValuesList>;
 
 /** The comparison expression to be used in the report. */
 export interface ReportConfigComparisonExpression {
@@ -4392,16 +4299,7 @@ export interface GetViewByScopeResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const GetViewByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ViewProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetViewByScopeResponse" }) as any as S.Schema<GetViewByScopeResponse>;
+export const GetViewByScopeResponse = GetViewResponse as any as S.Schema<GetViewByScopeResponse>;
 
 export type ListAlertExternalRequestExternalCloudProviderType =
   | "externalSubscriptions"
@@ -4443,16 +4341,7 @@ export interface Alert {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AlertProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
+export const Alert = DismissAlertResponse as any as S.Schema<Alert>;
 
 /** List of alerts. */
 export type AlertsResultValueList = Array<Alert>;
@@ -4935,16 +4824,7 @@ export interface Budget {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const Budget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BudgetProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
+export const Budget = GetBudgetResponse as any as S.Schema<Budget>;
 
 /** The list of budgets. */
 export type BudgetsListResultValueList = Array<Budget>;
@@ -4998,17 +4878,8 @@ export interface CostAllocationRuleDefinition {
   /** Cost allocation rule properties */
   properties?: CostAllocationRuleProperties;
 }
-export const CostAllocationRuleDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CostAllocationRuleProperties),
-  }),
-).annotate({
-  identifier: "CostAllocationRuleDefinition",
-}) as any as S.Schema<CostAllocationRuleDefinition>;
+export const CostAllocationRuleDefinition =
+  CostAllocationRulesCreateOrUpdateResponse as any as S.Schema<CostAllocationRuleDefinition>;
 
 /** The list of cost allocation rules. */
 export type CostAllocationRuleListValueList = Array<CostAllocationRuleDefinition>;
@@ -5102,18 +4973,7 @@ export interface Export {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const Export = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExportProperties),
-    identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
-    location: S.optional(S.String),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Export" }) as any as S.Schema<Export>;
+export const Export = GetExportResponse as any as S.Schema<Export>;
 
 /** The list of exports. */
 export type ExportListResultValueList = Array<Export>;
@@ -5165,15 +5025,7 @@ export interface MarkupRule {
   /** Markup rule properties */
   properties?: MarkupRuleProperties;
 }
-export const MarkupRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MarkupRuleProperties),
-  }),
-).annotate({ identifier: "MarkupRule" }) as any as S.Schema<MarkupRule>;
+export const MarkupRule = GetMarkupRuleResponse as any as S.Schema<MarkupRule>;
 
 /** The list of markup rules. */
 export type MarkupRulePagedResponseValueList = Array<MarkupRule>;
@@ -5464,16 +5316,7 @@ export interface View {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const View = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ViewProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "View" }) as any as S.Schema<View>;
+export const View = GetViewResponse as any as S.Schema<View>;
 
 /** The list of views. */
 export type ViewListResultValueList = Array<View>;
@@ -5565,22 +5408,16 @@ export const QueryTimePeriod = ForecastTimePeriod;
 
 /** Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns. */
 export type QueryDatasetConfigurationColumnsList = Array<string>;
-export const QueryDatasetConfigurationColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryDatasetConfigurationColumnsList>;
+export const QueryDatasetConfigurationColumnsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<QueryDatasetConfigurationColumnsList>;
 
 /** The configuration of dataset in the query. */
 export interface QueryDatasetConfiguration {
   /** Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns. */
   columns?: QueryDatasetConfigurationColumnsList;
 }
-export const QueryDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(QueryDatasetConfigurationColumnsList),
-  }),
-).annotate({
-  identifier: "QueryDatasetConfiguration",
-}) as any as S.Schema<QueryDatasetConfiguration>;
+export const QueryDatasetConfiguration =
+  ForecastDatasetConfiguration as any as S.Schema<QueryDatasetConfiguration>;
 
 /** The aggregation expression to be used in the query. */
 export type QueryAggregation = ReportConfigAggregation;
@@ -5588,10 +5425,8 @@ export const QueryAggregation = ReportConfigAggregation;
 
 /** Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses. */
 export type QueryDatasetAggregationMap = { [key: string]: ReportConfigAggregation | undefined };
-export const QueryDatasetAggregationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ReportConfigAggregation,
-) as any as S.Schema<QueryDatasetAggregationMap>;
+export const QueryDatasetAggregationMap =
+  ReportConfigDatasetAggregationMap as any as S.Schema<QueryDatasetAggregationMap>;
 
 /** The group by expression to be used in the query. */
 export interface QueryGrouping {
@@ -5600,18 +5435,12 @@ export interface QueryGrouping {
   /** The name of the column to group. */
   name: string;
 }
-export const QueryGrouping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: QueryColumnType,
-    name: S.String,
-  }),
-).annotate({ identifier: "QueryGrouping" }) as any as S.Schema<QueryGrouping>;
+export const QueryGrouping = ReportConfigGrouping as any as S.Schema<QueryGrouping>;
 
 /** Array of group by expression to use in the query. Query can have up to 2 group by clauses. */
 export type QueryDatasetGroupingList = Array<QueryGrouping>;
-export const QueryDatasetGroupingList = /*@__PURE__*/ S.Array(
-  QueryGrouping,
-) as any as S.Schema<QueryDatasetGroupingList>;
+export const QueryDatasetGroupingList =
+  ReportConfigDatasetGroupingList as any as S.Schema<QueryDatasetGroupingList>;
 
 /** The logical "AND" expression. Must have at least 2 items. */
 export type QueryFilterAndList = Array<QueryFilter>;
@@ -5621,9 +5450,7 @@ export const QueryFilterAndList = /*@__PURE__*/ S.Array(
 
 /** The logical "OR" expression. Must have at least 2 items. */
 export type QueryFilterOrList = Array<QueryFilter>;
-export const QueryFilterOrList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => QueryFilter),
-) as any as S.Schema<QueryFilterOrList>;
+export const QueryFilterOrList = QueryFilterAndList as any as S.Schema<QueryFilterOrList>;
 
 /** The operator to use for comparison. */
 export type QueryOperatorType = "In";
@@ -5631,9 +5458,8 @@ export const QueryOperatorType = S.String;
 
 /** Array of values to use for comparison */
 export type QueryComparisonExpressionValuesList = Array<string>;
-export const QueryComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryComparisonExpressionValuesList>;
+export const QueryComparisonExpressionValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<QueryComparisonExpressionValuesList>;
 
 /** The comparison expression to be used in the query. */
 export interface QueryComparisonExpression {
@@ -5728,10 +5554,8 @@ export const QueryUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type QueryUsageResponseTagsMap = { [key: string]: string | undefined };
-export const QueryUsageResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<QueryUsageResponseTagsMap>;
+export const QueryUsageResponseTagsMap =
+  DimensionTagsMap as any as S.Schema<QueryUsageResponseTagsMap>;
 
 /** QueryColumn properties */
 export type QueryColumn = ForecastColumn;
@@ -5739,20 +5563,17 @@ export const QueryColumn = ForecastColumn;
 
 /** Array of columns */
 export type QueryPropertiesColumnsList = Array<ForecastColumn>;
-export const QueryPropertiesColumnsList = /*@__PURE__*/ S.Array(
-  ForecastColumn,
-) as any as S.Schema<QueryPropertiesColumnsList>;
+export const QueryPropertiesColumnsList =
+  ForecastPropertiesColumnsList as any as S.Schema<QueryPropertiesColumnsList>;
 
 export type QueryPropertiesRowsItemList = Array<unknown>;
-export const QueryPropertiesRowsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<QueryPropertiesRowsItemList>;
+export const QueryPropertiesRowsItemList =
+  AlertPropertiesDetailsResourceGroupFilterList as any as S.Schema<QueryPropertiesRowsItemList>;
 
 /** Array of rows */
 export type QueryPropertiesRowsList = Array<QueryPropertiesRowsItemList>;
-export const QueryPropertiesRowsList = /*@__PURE__*/ S.Array(
-  QueryPropertiesRowsItemList,
-) as any as S.Schema<QueryPropertiesRowsList>;
+export const QueryPropertiesRowsList =
+  ForecastPropertiesRowsList as any as S.Schema<QueryPropertiesRowsList>;
 
 /** Query properties */
 export interface QueryProperties {
@@ -5763,13 +5584,7 @@ export interface QueryProperties {
   /** Array of rows */
   rows?: QueryPropertiesRowsList;
 }
-export const QueryProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    columns: S.optional(QueryPropertiesColumnsList),
-    rows: S.optional(QueryPropertiesRowsList),
-  }),
-).annotate({ identifier: "QueryProperties" }) as any as S.Schema<QueryProperties>;
+export const QueryProperties = ForecastProperties as any as S.Schema<QueryProperties>;
 
 export interface QueryUsageResponse {
   /** Resource Id. */
@@ -5789,18 +5604,7 @@ export interface QueryUsageResponse {
   /** Query properties */
   properties?: QueryProperties;
 }
-export const QueryUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    sku: S.optional(S.String),
-    eTag: S.optional(S.String),
-    tags: S.optional(QueryUsageResponseTagsMap),
-    properties: S.optional(QueryProperties),
-  }),
-).annotate({ identifier: "QueryUsageResponse" }) as any as S.Schema<QueryUsageResponse>;
+export const QueryUsageResponse = ForecastUsageResponse as any as S.Schema<QueryUsageResponse>;
 
 export type QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType =
   | "externalSubscriptions"
@@ -5848,10 +5652,8 @@ export const QueryUsageByExternalCloudProviderTypeRequest = /*@__PURE__*/ S.susp
 export type QueryUsageByExternalCloudProviderTypeResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const QueryUsageByExternalCloudProviderTypeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponseTagsMap>;
+export const QueryUsageByExternalCloudProviderTypeResponseTagsMap =
+  DimensionTagsMap as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponseTagsMap>;
 
 export interface QueryUsageByExternalCloudProviderTypeResponse {
   /** Resource Id. */
@@ -5871,20 +5673,8 @@ export interface QueryUsageByExternalCloudProviderTypeResponse {
   /** Query properties */
   properties?: QueryProperties;
 }
-export const QueryUsageByExternalCloudProviderTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    sku: S.optional(S.String),
-    eTag: S.optional(S.String),
-    tags: S.optional(QueryUsageByExternalCloudProviderTypeResponseTagsMap),
-    properties: S.optional(QueryProperties),
-  }),
-).annotate({
-  identifier: "QueryUsageByExternalCloudProviderTypeResponse",
-}) as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponse>;
+export const QueryUsageByExternalCloudProviderTypeResponse =
+  ForecastExternalCloudProviderUsageResponse as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponse>;
 
 export interface RunScheduledActionRequest {
   /** Scheduled action name. */
@@ -5906,9 +5696,8 @@ export const RunScheduledActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunScheduledActionRequest>;
 
 export interface RunScheduledActionResponse {}
-export const RunScheduledActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunScheduledActionResponse",
-}) as any as S.Schema<RunScheduledActionResponse>;
+export const RunScheduledActionResponse =
+  DeleteBudgetResponse as any as S.Schema<RunScheduledActionResponse>;
 
 export interface RunScheduledActionByScopeRequest {
   /** undefined */
@@ -5933,11 +5722,8 @@ export const RunScheduledActionByScopeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunScheduledActionByScopeRequest>;
 
 export interface RunScheduledActionByScopeResponse {}
-export const RunScheduledActionByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunScheduledActionByScopeResponse",
-}) as any as S.Schema<RunScheduledActionByScopeResponse>;
+export const RunScheduledActionByScopeResponse =
+  DeleteCostAllocationRuleResponse as any as S.Schema<RunScheduledActionByScopeResponse>;
 
 export interface ScheduledActionsCreateOrUpdateRequest {
   /** Scheduled action name. */
@@ -5983,19 +5769,8 @@ export interface ScheduledActionsCreateOrUpdateResponse {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
-export const ScheduledActionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduledActionProperties),
-    eTag: S.optional(S.String),
-    kind: S.optional(ScheduledActionKind),
-  }),
-).annotate({
-  identifier: "ScheduledActionsCreateOrUpdateResponse",
-}) as any as S.Schema<ScheduledActionsCreateOrUpdateResponse>;
+export const ScheduledActionsCreateOrUpdateResponse =
+  GetScheduledActionResponse as any as S.Schema<ScheduledActionsCreateOrUpdateResponse>;
 
 export interface ScheduledActionsCreateOrUpdateByScopeRequest {
   /** undefined */
@@ -6044,19 +5819,8 @@ export interface ScheduledActionsCreateOrUpdateByScopeResponse {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
-export const ScheduledActionsCreateOrUpdateByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduledActionProperties),
-    eTag: S.optional(S.String),
-    kind: S.optional(ScheduledActionKind),
-  }),
-).annotate({
-  identifier: "ScheduledActionsCreateOrUpdateByScopeResponse",
-}) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeResponse>;
+export const ScheduledActionsCreateOrUpdateByScopeResponse =
+  GetScheduledActionResponse as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeResponse>;
 
 export type SettingsCreateOrUpdateByScopeRequestType = "taginheritance";
 export const SettingsCreateOrUpdateByScopeRequestType = S.String;
@@ -6098,29 +5862,18 @@ export interface SettingsCreateOrUpdateByScopeResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: SettingsKind;
 }
-export const SettingsCreateOrUpdateByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: SettingsKind,
-  }),
-).annotate({
-  identifier: "SettingsCreateOrUpdateByScopeResponse",
-}) as any as S.Schema<SettingsCreateOrUpdateByScopeResponse>;
+export const SettingsCreateOrUpdateByScopeResponse =
+  GetSettingsByScopeResponse as any as S.Schema<SettingsCreateOrUpdateByScopeResponse>;
 
 /** List of KPIs to show in Cost Analysis UI. */
 export type ViewPropertiesInputKpisList = Array<KpiProperties>;
-export const ViewPropertiesInputKpisList = /*@__PURE__*/ S.Array(
-  KpiProperties,
-) as any as S.Schema<ViewPropertiesInputKpisList>;
+export const ViewPropertiesInputKpisList =
+  ViewPropertiesKpisList as any as S.Schema<ViewPropertiesInputKpisList>;
 
 /** Configuration of 3 sub-views in the Cost Analysis UI. */
 export type ViewPropertiesInputPivotsList = Array<PivotProperties>;
-export const ViewPropertiesInputPivotsList = /*@__PURE__*/ S.Array(
-  PivotProperties,
-) as any as S.Schema<ViewPropertiesInputPivotsList>;
+export const ViewPropertiesInputPivotsList =
+  ViewPropertiesPivotsList as any as S.Schema<ViewPropertiesInputPivotsList>;
 
 /** The properties of the view. */
 export interface ViewPropertiesInput {
@@ -6254,18 +6007,8 @@ export interface ViewsCreateOrUpdateByScopeResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const ViewsCreateOrUpdateByScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ViewProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ViewsCreateOrUpdateByScopeResponse",
-}) as any as S.Schema<ViewsCreateOrUpdateByScopeResponse>;
+export const ViewsCreateOrUpdateByScopeResponse =
+  ViewsCreateOrUpdateResponse as any as S.Schema<ViewsCreateOrUpdateByScopeResponse>;
 
 export type BudgetsCreateOrUpdateError = AzureOpError;
 /** The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation. */

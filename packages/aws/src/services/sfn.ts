@@ -471,11 +471,8 @@ export const DeleteStateMachineVersionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStateMachineVersionInput",
 }) as any as S.Schema<DeleteStateMachineVersionInput>;
 export interface DeleteStateMachineVersionOutput {}
-export const DeleteStateMachineVersionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteStateMachineVersionOutput",
-}) as any as S.Schema<DeleteStateMachineVersionOutput>;
+export const DeleteStateMachineVersionOutput =
+  DeleteStateMachineAliasOutput as any as S.Schema<DeleteStateMachineVersionOutput>;
 export interface DescribeActivityInput {
   activityArn: string;
 }
@@ -641,20 +638,7 @@ export interface MapRunExecutionCounts {
   failuresNotRedrivable?: number;
   pendingRedrive?: number;
 }
-export const MapRunExecutionCounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pending: S.Number,
-    running: S.Number,
-    succeeded: S.Number,
-    failed: S.Number,
-    timedOut: S.Number,
-    aborted: S.Number,
-    total: S.Number,
-    resultsWritten: S.Number,
-    failuresNotRedrivable: S.optional(S.Number),
-    pendingRedrive: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MapRunExecutionCounts" }) as any as S.Schema<MapRunExecutionCounts>;
+export const MapRunExecutionCounts = MapRunItemCounts as any as S.Schema<MapRunExecutionCounts>;
 export interface DescribeMapRunOutput {
   mapRunArn: string;
   executionArn: string;
@@ -939,11 +923,8 @@ export interface ActivityScheduleFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const ActivityScheduleFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ActivityScheduleFailedEventDetails",
-}) as any as S.Schema<ActivityScheduleFailedEventDetails>;
+export const ActivityScheduleFailedEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<ActivityScheduleFailedEventDetails>;
 export type Truncated = boolean;
 export interface HistoryEventExecutionDataDetails {
   truncated?: boolean;
@@ -997,11 +978,8 @@ export interface ActivityTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const ActivityTimedOutEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ActivityTimedOutEventDetails",
-}) as any as S.Schema<ActivityTimedOutEventDetails>;
+export const ActivityTimedOutEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<ActivityTimedOutEventDetails>;
 export interface TaskFailedEventDetails {
   resourceType: string;
   resource: string;
@@ -1074,16 +1052,8 @@ export interface TaskSubmitFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const TaskSubmitFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.String,
-    resource: S.String,
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "TaskSubmitFailedEventDetails",
-}) as any as S.Schema<TaskSubmitFailedEventDetails>;
+export const TaskSubmitFailedEventDetails =
+  TaskStartFailedEventDetails as any as S.Schema<TaskSubmitFailedEventDetails>;
 export interface TaskSubmittedEventDetails {
   resourceType: string;
   resource: string;
@@ -1106,39 +1076,22 @@ export interface TaskSucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-export const TaskSucceededEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.String,
-    resource: S.String,
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(HistoryEventExecutionDataDetails),
-  }),
-).annotate({
-  identifier: "TaskSucceededEventDetails",
-}) as any as S.Schema<TaskSucceededEventDetails>;
+export const TaskSucceededEventDetails =
+  TaskSubmittedEventDetails as any as S.Schema<TaskSucceededEventDetails>;
 export interface TaskTimedOutEventDetails {
   resourceType: string;
   resource: string;
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const TaskTimedOutEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.String,
-    resource: S.String,
-    error: S.optional(SensitiveString),
-    cause: S.optional(SensitiveString),
-  }),
-).annotate({ identifier: "TaskTimedOutEventDetails" }) as any as S.Schema<TaskTimedOutEventDetails>;
+export const TaskTimedOutEventDetails =
+  TaskFailedEventDetails as any as S.Schema<TaskTimedOutEventDetails>;
 export interface ExecutionFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const ExecutionFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ExecutionFailedEventDetails",
-}) as any as S.Schema<ExecutionFailedEventDetails>;
+export const ExecutionFailedEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<ExecutionFailedEventDetails>;
 export interface ExecutionStartedEventDetails {
   input?: string | redacted.Redacted<string>;
   inputDetails?: HistoryEventExecutionDataDetails;
@@ -1161,32 +1114,20 @@ export interface ExecutionSucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-export const ExecutionSucceededEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(HistoryEventExecutionDataDetails),
-  }),
-).annotate({
-  identifier: "ExecutionSucceededEventDetails",
-}) as any as S.Schema<ExecutionSucceededEventDetails>;
+export const ExecutionSucceededEventDetails =
+  ActivitySucceededEventDetails as any as S.Schema<ExecutionSucceededEventDetails>;
 export interface ExecutionAbortedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const ExecutionAbortedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ExecutionAbortedEventDetails",
-}) as any as S.Schema<ExecutionAbortedEventDetails>;
+export const ExecutionAbortedEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<ExecutionAbortedEventDetails>;
 export interface ExecutionTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const ExecutionTimedOutEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "ExecutionTimedOutEventDetails",
-}) as any as S.Schema<ExecutionTimedOutEventDetails>;
+export const ExecutionTimedOutEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<ExecutionTimedOutEventDetails>;
 export interface ExecutionRedrivenEventDetails {
   redriveCount?: number;
 }
@@ -1215,20 +1156,14 @@ export interface LambdaFunctionFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const LambdaFunctionFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "LambdaFunctionFailedEventDetails",
-}) as any as S.Schema<LambdaFunctionFailedEventDetails>;
+export const LambdaFunctionFailedEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionFailedEventDetails>;
 export interface LambdaFunctionScheduleFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const LambdaFunctionScheduleFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "LambdaFunctionScheduleFailedEventDetails",
-}) as any as S.Schema<LambdaFunctionScheduleFailedEventDetails>;
+export const LambdaFunctionScheduleFailedEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionScheduleFailedEventDetails>;
 export interface LambdaFunctionScheduledEventDetails {
   resource: string;
   input?: string | redacted.Redacted<string>;
@@ -1251,32 +1186,20 @@ export interface LambdaFunctionStartFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const LambdaFunctionStartFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "LambdaFunctionStartFailedEventDetails",
-}) as any as S.Schema<LambdaFunctionStartFailedEventDetails>;
+export const LambdaFunctionStartFailedEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionStartFailedEventDetails>;
 export interface LambdaFunctionSucceededEventDetails {
   output?: string | redacted.Redacted<string>;
   outputDetails?: HistoryEventExecutionDataDetails;
 }
-export const LambdaFunctionSucceededEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    output: S.optional(SensitiveString),
-    outputDetails: S.optional(HistoryEventExecutionDataDetails),
-  }),
-).annotate({
-  identifier: "LambdaFunctionSucceededEventDetails",
-}) as any as S.Schema<LambdaFunctionSucceededEventDetails>;
+export const LambdaFunctionSucceededEventDetails =
+  ActivitySucceededEventDetails as any as S.Schema<LambdaFunctionSucceededEventDetails>;
 export interface LambdaFunctionTimedOutEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const LambdaFunctionTimedOutEventDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "LambdaFunctionTimedOutEventDetails",
-}) as any as S.Schema<LambdaFunctionTimedOutEventDetails>;
+export const LambdaFunctionTimedOutEventDetails =
+  ActivityFailedEventDetails as any as S.Schema<LambdaFunctionTimedOutEventDetails>;
 export interface StateEnteredEventDetails {
   name: string;
   input?: string | redacted.Redacted<string>;
@@ -1767,9 +1690,7 @@ export const SendTaskFailureInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "SendTaskFailureInput" }) as any as S.Schema<SendTaskFailureInput>;
 export interface SendTaskFailureOutput {}
-export const SendTaskFailureOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "SendTaskFailureOutput",
-}) as any as S.Schema<SendTaskFailureOutput>;
+export const SendTaskFailureOutput = DeleteActivityOutput as any as S.Schema<SendTaskFailureOutput>;
 export interface SendTaskHeartbeatInput {
   taskToken: string;
 }
@@ -1779,9 +1700,8 @@ export const SendTaskHeartbeatInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SendTaskHeartbeatInput" }) as any as S.Schema<SendTaskHeartbeatInput>;
 export interface SendTaskHeartbeatOutput {}
-export const SendTaskHeartbeatOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "SendTaskHeartbeatOutput" }) as any as S.Schema<SendTaskHeartbeatOutput>;
+export const SendTaskHeartbeatOutput =
+  DeleteStateMachineOutput as any as S.Schema<SendTaskHeartbeatOutput>;
 export interface SendTaskSuccessInput {
   taskToken: string;
   output: string | redacted.Redacted<string>;
@@ -1792,9 +1712,7 @@ export const SendTaskSuccessInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SendTaskSuccessInput" }) as any as S.Schema<SendTaskSuccessInput>;
 export interface SendTaskSuccessOutput {}
-export const SendTaskSuccessOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "SendTaskSuccessOutput",
-}) as any as S.Schema<SendTaskSuccessOutput>;
+export const SendTaskSuccessOutput = DeleteActivityOutput as any as S.Schema<SendTaskSuccessOutput>;
 export interface StartExecutionInput {
   stateMachineArn: string;
   name?: string;
@@ -1912,9 +1830,7 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteActivityOutput as any as S.Schema<TagResourceOutput>;
 export type InspectionLevel = "INFO" | "DEBUG" | "TRACE" | (string & {});
 export const InspectionLevel = S.String;
 
@@ -1924,9 +1840,7 @@ export interface MockErrorOutput {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
 }
-export const MockErrorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ error: S.optional(SensitiveString), cause: S.optional(SensitiveString) }),
-).annotate({ identifier: "MockErrorOutput" }) as any as S.Schema<MockErrorOutput>;
+export const MockErrorOutput = MapRunFailedEventDetails as any as S.Schema<MockErrorOutput>;
 export type MockResponseValidationMode = "STRICT" | "PRESENT" | "NONE" | (string & {});
 export const MockResponseValidationMode = S.String;
 
@@ -2120,9 +2034,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteActivityOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMapRunInput {
   mapRunArn: string;
   maxConcurrency?: number;
@@ -2138,9 +2050,7 @@ export const UpdateMapRunInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateMapRunInput" }) as any as S.Schema<UpdateMapRunInput>;
 export interface UpdateMapRunOutput {}
-export const UpdateMapRunOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateMapRunOutput",
-}) as any as S.Schema<UpdateMapRunOutput>;
+export const UpdateMapRunOutput = DeleteActivityOutput as any as S.Schema<UpdateMapRunOutput>;
 export interface UpdateStateMachineInput {
   stateMachineArn: string;
   definition?: string | redacted.Redacted<string>;

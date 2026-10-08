@@ -198,13 +198,8 @@ export interface RichTextItemRequestMentionCase3Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase3Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase3Database",
-}) as any as S.Schema<RichTextItemRequestMentionCase3Database>;
+export const RichTextItemRequestMentionCase3Database =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<RichTextItemRequestMentionCase3Database>;
 
 export interface RichTextItemRequestMentionCase3 {
   /** Always `database` */
@@ -366,9 +361,8 @@ export const CreateDatabaseRequestTitleList = /*@__PURE__*/ S.Array(
 
 /** The description of the database. */
 export type CreateDatabaseRequestDescriptionList = Array<RichTextItemRequest>;
-export const CreateDatabaseRequestDescriptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<CreateDatabaseRequestDescriptionList>;
+export const CreateDatabaseRequestDescriptionList =
+  CreateDatabaseRequestTitleList as any as S.Schema<CreateDatabaseRequestDescriptionList>;
 
 export interface PropertyConfigurationRequestNumber {
   format?: string;
@@ -445,20 +439,14 @@ export const PropertyConfigurationRequestMultiSelectOptionsItem =
 
 export type PropertyConfigurationRequestMultiSelectOptionsList =
   Array<PropertyConfigurationRequestSelectOptionsItem>;
-export const PropertyConfigurationRequestMultiSelectOptionsList = /*@__PURE__*/ S.Array(
-  PropertyConfigurationRequestSelectOptionsItem,
-) as any as S.Schema<PropertyConfigurationRequestMultiSelectOptionsList>;
+export const PropertyConfigurationRequestMultiSelectOptionsList =
+  PropertyConfigurationRequestSelectOptionsList as any as S.Schema<PropertyConfigurationRequestMultiSelectOptionsList>;
 
 export interface PropertyConfigurationRequestMultiSelect {
   options?: PropertyConfigurationRequestMultiSelectOptionsList;
 }
-export const PropertyConfigurationRequestMultiSelect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(PropertyConfigurationRequestMultiSelectOptionsList),
-  }),
-).annotate({
-  identifier: "PropertyConfigurationRequestMultiSelect",
-}) as any as S.Schema<PropertyConfigurationRequestMultiSelect>;
+export const PropertyConfigurationRequestMultiSelect =
+  PropertyConfigurationRequestSelect as any as S.Schema<PropertyConfigurationRequestMultiSelect>;
 
 /** One of: `To-do`, `In progress`, `Complete` */
 export type StatusOptionGroup = "To-do" | "In progress" | "Complete";
@@ -679,13 +667,8 @@ export interface FileUploadPageIconRequestFileUpload {
   /** ID of a FileUpload object that has the status `uploaded`. */
   id: string;
 }
-export const FileUploadPageIconRequestFileUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "FileUploadPageIconRequestFileUpload",
-}) as any as S.Schema<FileUploadPageIconRequestFileUpload>;
+export const FileUploadPageIconRequestFileUpload =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<FileUploadPageIconRequestFileUpload>;
 
 export interface FileUploadPageIconRequest {
   /** Always `file_upload` */
@@ -718,13 +701,8 @@ export interface ExternalPageIconRequestExternal {
   /** The URL of the external file. */
   url: string;
 }
-export const ExternalPageIconRequestExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ExternalPageIconRequestExternal",
-}) as any as S.Schema<ExternalPageIconRequestExternal>;
+export const ExternalPageIconRequestExternal =
+  RichTextItemRequestTextLink as any as S.Schema<ExternalPageIconRequestExternal>;
 
 export interface ExternalPageIconRequest {
   /** Always `external` */
@@ -746,14 +724,8 @@ export interface CustomEmojiPageIconRequest {
   type?: string;
   custom_emoji: RichTextItemRequestMentionCase5CustomEmoji;
 }
-export const CustomEmojiPageIconRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    custom_emoji: RichTextItemRequestMentionCase5CustomEmoji,
-  }),
-).annotate({
-  identifier: "CustomEmojiPageIconRequest",
-}) as any as S.Schema<CustomEmojiPageIconRequest>;
+export const CustomEmojiPageIconRequest =
+  RichTextItemRequestMentionCase5 as any as S.Schema<CustomEmojiPageIconRequest>;
 
 /** One of: `gray`, `lightgray`, `brown`, `yellow`, `orange`, `green`, `blue`, `purple`, `pink`, `red` */
 export type NoticonColor =
@@ -814,14 +786,8 @@ export interface FileUploadPageCoverRequest {
   /** The file upload for the cover. */
   file_upload: FileUploadPageIconRequestFileUpload;
 }
-export const FileUploadPageCoverRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    file_upload: FileUploadPageIconRequestFileUpload,
-  }),
-).annotate({
-  identifier: "FileUploadPageCoverRequest",
-}) as any as S.Schema<FileUploadPageCoverRequest>;
+export const FileUploadPageCoverRequest =
+  FileUploadPageIconRequest as any as S.Schema<FileUploadPageCoverRequest>;
 
 /** External URL for the cover. */
 export type ExternalPageCoverRequestExternal = ExternalPageIconRequestExternal;
@@ -833,12 +799,8 @@ export interface ExternalPageCoverRequest {
   /** External URL for the cover. */
   external: ExternalPageIconRequestExternal;
 }
-export const ExternalPageCoverRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    external: ExternalPageIconRequestExternal,
-  }),
-).annotate({ identifier: "ExternalPageCoverRequest" }) as any as S.Schema<ExternalPageCoverRequest>;
+export const ExternalPageCoverRequest =
+  ExternalPageIconRequest as any as S.Schema<ExternalPageCoverRequest>;
 
 export type PageCoverRequest = FileUploadPageCoverRequest | ExternalPageCoverRequest;
 export const PageCoverRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageCoverRequest>;
@@ -1144,13 +1106,8 @@ export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LinkPreviewMentionResponse",
-}) as any as S.Schema<LinkPreviewMentionResponse>;
+export const LinkPreviewMentionResponse =
+  RichTextItemRequestTextLink as any as S.Schema<LinkPreviewMentionResponse>;
 
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
@@ -1399,9 +1356,8 @@ export const DatabaseObjectResponseTitleList = /*@__PURE__*/ S.Array(
 
 /** The description of the database. */
 export type DatabaseObjectResponseDescriptionList = Array<RichTextItemResponse>;
-export const DatabaseObjectResponseDescriptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<DatabaseObjectResponseDescriptionList>;
+export const DatabaseObjectResponseDescriptionList =
+  DatabaseObjectResponseTitleList as any as S.Schema<DatabaseObjectResponseDescriptionList>;
 
 export interface PageIdParentForBlockBasedObjectResponse {
   /** The parent type. */
@@ -1424,14 +1380,8 @@ export interface WorkspaceParentForBlockBasedObjectResponse {
   /** Always true for workspace parent. */
   workspace: boolean;
 }
-export const WorkspaceParentForBlockBasedObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "WorkspaceParentForBlockBasedObjectResponse",
-}) as any as S.Schema<WorkspaceParentForBlockBasedObjectResponse>;
+export const WorkspaceParentForBlockBasedObjectResponse =
+  BotInfoResponseOwnerCase1 as any as S.Schema<WorkspaceParentForBlockBasedObjectResponse>;
 
 export interface DatabaseParentResponse {
   /** The parent type. */
@@ -1547,13 +1497,8 @@ export interface ExternalPageIconResponseExternal {
   /** The URL of the external file or resource. */
   url: string;
 }
-export const ExternalPageIconResponseExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ExternalPageIconResponseExternal",
-}) as any as S.Schema<ExternalPageIconResponseExternal>;
+export const ExternalPageIconResponseExternal =
+  RichTextItemRequestTextLink as any as S.Schema<ExternalPageIconResponseExternal>;
 
 export interface ExternalPageIconResponse {
   /** Type of icon. In this case, an external URL. */
@@ -1574,14 +1519,8 @@ export interface CustomEmojiPageIconResponse {
   /** The custom emoji details for the icon. */
   custom_emoji: CustomEmojiResponse;
 }
-export const CustomEmojiPageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom_emoji: CustomEmojiResponse,
-  }),
-).annotate({
-  identifier: "CustomEmojiPageIconResponse",
-}) as any as S.Schema<CustomEmojiPageIconResponse>;
+export const CustomEmojiPageIconResponse =
+  RichTextItemResponseMentionCase7 as any as S.Schema<CustomEmojiPageIconResponse>;
 
 export interface NoticonIconResponse {
   /** The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names. */
@@ -1623,12 +1562,7 @@ export interface FilePageCoverResponse {
   /** The file URL for the cover. */
   file: InternalFileResponse;
 }
-export const FilePageCoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    file: InternalFileResponse,
-  }),
-).annotate({ identifier: "FilePageCoverResponse" }) as any as S.Schema<FilePageCoverResponse>;
+export const FilePageCoverResponse = FilePageIconResponse as any as S.Schema<FilePageCoverResponse>;
 
 /** The external URL for the cover. */
 export type ExternalPageCoverResponseExternal = ExternalPageIconResponseExternal;
@@ -1758,15 +1692,13 @@ export const UpdateDatabaseRequestParent = /*@__PURE__*/ S.suspend(() =>
 
 /** The updated title of the database, if any. If not provided, the title will not be updated. */
 export type UpdateDatabaseRequestTitleList = Array<RichTextItemRequest>;
-export const UpdateDatabaseRequestTitleList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateDatabaseRequestTitleList>;
+export const UpdateDatabaseRequestTitleList =
+  CreateDatabaseRequestTitleList as any as S.Schema<UpdateDatabaseRequestTitleList>;
 
 /** The updated description of the database, if any. If not provided, the description will not be updated. */
 export type UpdateDatabaseRequestDescriptionList = Array<RichTextItemRequest>;
-export const UpdateDatabaseRequestDescriptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateDatabaseRequestDescriptionList>;
+export const UpdateDatabaseRequestDescriptionList =
+  CreateDatabaseRequestTitleList as any as S.Schema<UpdateDatabaseRequestDescriptionList>;
 
 export interface UpdateDatabaseRequest {
   database_id: string;

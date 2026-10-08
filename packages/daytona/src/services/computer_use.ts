@@ -88,12 +88,7 @@ export interface MouseDragResponse {
   x?: number;
   y?: number;
 }
-export const MouseDragResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MouseDragResponse" }) as any as S.Schema<MouseDragResponse>;
+export const MouseDragResponse = MouseClickResponse as any as S.Schema<MouseDragResponse>;
 
 export type FindAccessibilityNodesRequestStatesList = Array<string>;
 export const FindAccessibilityNodesRequestStatesList = /*@__PURE__*/ S.Array(
@@ -125,9 +120,8 @@ export const FindAccessibilityNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FindAccessibilityNodesRequest>;
 
 export type ComputeruseAccessibilityNodeActionsList = Array<string>;
-export const ComputeruseAccessibilityNodeActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ComputeruseAccessibilityNodeActionsList>;
+export const ComputeruseAccessibilityNodeActionsList =
+  FindAccessibilityNodesRequestStatesList as any as S.Schema<ComputeruseAccessibilityNodeActionsList>;
 
 export interface AccessibilityBounds {
   height?: number;
@@ -150,9 +144,8 @@ export const ComputeruseAccessibilityNodeChildrenList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ComputeruseAccessibilityNodeChildrenList>;
 
 export type ComputeruseAccessibilityNodeStatesList = Array<string>;
-export const ComputeruseAccessibilityNodeStatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ComputeruseAccessibilityNodeStatesList>;
+export const ComputeruseAccessibilityNodeStatesList =
+  FindAccessibilityNodesRequestStatesList as any as S.Schema<ComputeruseAccessibilityNodeStatesList>;
 
 export interface ComputeruseAccessibilityNode {
   actions?: ComputeruseAccessibilityNodeActionsList;
@@ -209,11 +202,8 @@ export const FocusAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FocusAccessibilityNodeRequest>;
 
 export type FocusAccessibilityNodeResponse = unknown;
-export const FocusAccessibilityNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "FocusAccessibilityNodeResponse",
-}) as any as S.Schema<FocusAccessibilityNodeResponse>;
+export const FocusAccessibilityNodeResponse =
+  DownloadRecordingResponse as any as S.Schema<FocusAccessibilityNodeResponse>;
 
 export interface GetAccessibilityTreeRequest {
   /** Scope: focused | pid | all (default: focused) */
@@ -318,12 +308,7 @@ export interface MousePositionResponse {
   x?: number;
   y?: number;
 }
-export const MousePositionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MousePositionResponse" }) as any as S.Schema<MousePositionResponse>;
+export const MousePositionResponse = MouseClickResponse as any as S.Schema<MousePositionResponse>;
 
 export interface GetProcessErrorsRequest {
   /** Process name to get errors for */
@@ -475,11 +460,8 @@ export const InvokeAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvokeAccessibilityNodeRequest>;
 
 export type InvokeAccessibilityNodeResponse = unknown;
-export const InvokeAccessibilityNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "InvokeAccessibilityNodeResponse",
-}) as any as S.Schema<InvokeAccessibilityNodeResponse>;
+export const InvokeAccessibilityNodeResponse =
+  DownloadRecordingResponse as any as S.Schema<InvokeAccessibilityNodeResponse>;
 
 export interface ListRecordingsRequest {}
 export const ListRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -528,9 +510,8 @@ export const PressHotkeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** ctrl, alt, shift, cmd */
 export type PressKeyRequestModifiersList = Array<string>;
-export const PressKeyRequestModifiersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PressKeyRequestModifiersList>;
+export const PressKeyRequestModifiersList =
+  FindAccessibilityNodesRequestStatesList as any as S.Schema<PressKeyRequestModifiersList>;
 
 export interface PressKeyRequest {
   key?: string;
@@ -545,9 +526,7 @@ export const PressKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PressKeyRequest" }) as any as S.Schema<PressKeyRequest>;
 
 export type PressKeyResponse = unknown;
-export const PressKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PressKeyResponse" }) as any as S.Schema<PressKeyResponse>;
+export const PressKeyResponse = PressHotkeyResponse as any as S.Schema<PressKeyResponse>;
 
 export interface RestartProcessRequest {
   /** Process name to restart */
@@ -609,11 +588,8 @@ export const SetAccessibilityNodeValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetAccessibilityNodeValueRequest>;
 
 export type SetAccessibilityNodeValueResponse = unknown;
-export const SetAccessibilityNodeValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SetAccessibilityNodeValueResponse",
-}) as any as S.Schema<SetAccessibilityNodeValueResponse>;
+export const SetAccessibilityNodeValueResponse =
+  DownloadRecordingResponse as any as S.Schema<SetAccessibilityNodeValueResponse>;
 
 export interface StartComputerUseRequest {}
 export const StartComputerUseRequest = /*@__PURE__*/ S.suspend(() =>
@@ -667,21 +643,15 @@ export const StopComputerUseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopComputerUseRequest" }) as any as S.Schema<StopComputerUseRequest>;
 
 export type ComputerUseStopResponseStatusMap = { [key: string]: ProcessStatus | undefined };
-export const ComputerUseStopResponseStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProcessStatus,
-) as any as S.Schema<ComputerUseStopResponseStatusMap>;
+export const ComputerUseStopResponseStatusMap =
+  ComputerUseStartResponseStatusMap as any as S.Schema<ComputerUseStopResponseStatusMap>;
 
 export interface ComputerUseStopResponse {
   message?: string;
   status?: ComputerUseStopResponseStatusMap;
 }
-export const ComputerUseStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    status: S.optional(ComputerUseStopResponseStatusMap),
-  }),
-).annotate({ identifier: "ComputerUseStopResponse" }) as any as S.Schema<ComputerUseStopResponse>;
+export const ComputerUseStopResponse =
+  ComputerUseStartResponse as any as S.Schema<ComputerUseStopResponse>;
 
 export interface StopRecordingRequest {
   id: string;
@@ -729,12 +699,7 @@ export interface Position {
   x?: number;
   y?: number;
 }
-export const Position = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Position" }) as any as S.Schema<Position>;
+export const Position = MouseClickResponse as any as S.Schema<Position>;
 
 export interface ScreenshotResponse {
   cursorPosition?: Position;
@@ -817,9 +782,7 @@ export const TypeTextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypeTextRequest" }) as any as S.Schema<TypeTextRequest>;
 
 export type TypeTextResponse = unknown;
-export const TypeTextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TypeTextResponse" }) as any as S.Schema<TypeTextResponse>;
+export const TypeTextResponse = PressHotkeyResponse as any as S.Schema<TypeTextResponse>;
 
 export type ClickError = DaytonaOpError;
 /** Click mouse button Click the mouse button at the specified coordinates */

@@ -194,25 +194,7 @@ export interface CreateBackendResponse {
   Operation?: string;
   Status?: string;
 }
-export const CreateBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({ identifier: "CreateBackendResponse" }) as any as S.Schema<CreateBackendResponse>;
+export const CreateBackendResponse = CloneBackendResponse as any as S.Schema<CreateBackendResponse>;
 export type Mode =
   | "API_KEY"
   | "AWS_IAM"
@@ -344,25 +326,8 @@ export interface CreateBackendAPIResponse {
   Operation?: string;
   Status?: string;
 }
-export const CreateBackendAPIResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({ identifier: "CreateBackendAPIResponse" }) as any as S.Schema<CreateBackendAPIResponse>;
+export const CreateBackendAPIResponse =
+  CloneBackendResponse as any as S.Schema<CreateBackendAPIResponse>;
 export type AuthResources = "USER_POOL_ONLY" | "IDENTITY_POOL_AND_USER_POOL" | (string & {});
 export const AuthResources = S.String;
 
@@ -612,21 +577,8 @@ export interface CreateBackendAuthVerificationMessageConfig {
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
-export const CreateBackendAuthVerificationMessageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryMethod: S.optional(DeliveryMethod),
-    EmailSettings: S.optional(EmailSettings),
-    SmsSettings: S.optional(SmsSettings),
-  }).pipe(
-    S.encodeKeys({
-      DeliveryMethod: "deliveryMethod",
-      EmailSettings: "emailSettings",
-      SmsSettings: "smsSettings",
-    }),
-  ),
-).annotate({
-  identifier: "CreateBackendAuthVerificationMessageConfig",
-}) as any as S.Schema<CreateBackendAuthVerificationMessageConfig>;
+export const CreateBackendAuthVerificationMessageConfig =
+  CreateBackendAuthForgotPasswordConfig as any as S.Schema<CreateBackendAuthVerificationMessageConfig>;
 export interface CreateBackendAuthUserPoolConfig {
   ForgotPassword?: CreateBackendAuthForgotPasswordConfig;
   Mfa?: CreateBackendAuthMFAConfig;
@@ -868,23 +820,8 @@ export interface CreateBackendStorageResponse {
   JobId?: string;
   Status?: string;
 }
-export const CreateBackendStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      JobId: "jobId",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "CreateBackendStorageResponse",
-}) as any as S.Schema<CreateBackendStorageResponse>;
+export const CreateBackendStorageResponse =
+  CreateBackendConfigResponse as any as S.Schema<CreateBackendStorageResponse>;
 export interface CreateTokenRequest {
   AppId: string;
 }
@@ -951,25 +888,7 @@ export interface DeleteBackendResponse {
   Operation?: string;
   Status?: string;
 }
-export const DeleteBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({ identifier: "DeleteBackendResponse" }) as any as S.Schema<DeleteBackendResponse>;
+export const DeleteBackendResponse = CloneBackendResponse as any as S.Schema<DeleteBackendResponse>;
 export interface DeleteBackendAPIRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -1003,25 +922,8 @@ export interface DeleteBackendAPIResponse {
   Operation?: string;
   Status?: string;
 }
-export const DeleteBackendAPIResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({ identifier: "DeleteBackendAPIResponse" }) as any as S.Schema<DeleteBackendAPIResponse>;
+export const DeleteBackendAPIResponse =
+  CloneBackendResponse as any as S.Schema<DeleteBackendAPIResponse>;
 export interface DeleteBackendAuthRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -1053,27 +955,8 @@ export interface DeleteBackendAuthResponse {
   Operation?: string;
   Status?: string;
 }
-export const DeleteBackendAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteBackendAuthResponse",
-}) as any as S.Schema<DeleteBackendAuthResponse>;
+export const DeleteBackendAuthResponse =
+  CreateBackendAuthResponse as any as S.Schema<DeleteBackendAuthResponse>;
 export interface DeleteBackendStorageRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -1107,23 +990,8 @@ export interface DeleteBackendStorageResponse {
   JobId?: string;
   Status?: string;
 }
-export const DeleteBackendStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      JobId: "jobId",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteBackendStorageResponse",
-}) as any as S.Schema<DeleteBackendStorageResponse>;
+export const DeleteBackendStorageResponse =
+  CreateBackendConfigResponse as any as S.Schema<DeleteBackendStorageResponse>;
 export interface DeleteTokenRequest {
   AppId: string;
   SessionId: string;
@@ -1185,27 +1053,8 @@ export interface GenerateBackendAPIModelsResponse {
   Operation?: string;
   Status?: string;
 }
-export const GenerateBackendAPIModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "GenerateBackendAPIModelsResponse",
-}) as any as S.Schema<GenerateBackendAPIModelsResponse>;
+export const GenerateBackendAPIModelsResponse =
+  CreateBackendAuthResponse as any as S.Schema<GenerateBackendAPIModelsResponse>;
 export interface GetBackendRequest {
   AppId: string;
   BackendEnvironmentName?: string;
@@ -1580,21 +1429,7 @@ export interface GetTokenResponse {
   SessionId?: string;
   Ttl?: string;
 }
-export const GetTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    ChallengeCode: S.optional(S.String),
-    SessionId: S.optional(S.String),
-    Ttl: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      ChallengeCode: "challengeCode",
-      SessionId: "sessionId",
-      Ttl: "ttl",
-    }),
-  ),
-).annotate({ identifier: "GetTokenResponse" }) as any as S.Schema<GetTokenResponse>;
+export const GetTokenResponse = CreateTokenResponse as any as S.Schema<GetTokenResponse>;
 export interface ImportBackendAuthRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -1639,27 +1474,8 @@ export interface ImportBackendAuthResponse {
   Operation?: string;
   Status?: string;
 }
-export const ImportBackendAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "ImportBackendAuthResponse",
-}) as any as S.Schema<ImportBackendAuthResponse>;
+export const ImportBackendAuthResponse =
+  CreateBackendAuthResponse as any as S.Schema<ImportBackendAuthResponse>;
 export interface ImportBackendStorageRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -1693,23 +1509,8 @@ export interface ImportBackendStorageResponse {
   JobId?: string;
   Status?: string;
 }
-export const ImportBackendStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      JobId: "jobId",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "ImportBackendStorageResponse",
-}) as any as S.Schema<ImportBackendStorageResponse>;
+export const ImportBackendStorageResponse =
+  CreateBackendConfigResponse as any as S.Schema<ImportBackendStorageResponse>;
 export type __integerMin1Max25 = number;
 export interface ListBackendJobsRequest {
   AppId: string;
@@ -1760,29 +1561,7 @@ export interface BackendJobRespObj {
   Status?: string;
   UpdateTime?: string;
 }
-export const BackendJobRespObj = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    CreateTime: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-    UpdateTime: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      CreateTime: "createTime",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-      UpdateTime: "updateTime",
-    }),
-  ),
-).annotate({ identifier: "BackendJobRespObj" }) as any as S.Schema<BackendJobRespObj>;
+export const BackendJobRespObj = GetBackendJobResponse as any as S.Schema<BackendJobRespObj>;
 export type ListOfBackendJobRespObj = BackendJobRespObj[];
 export const ListOfBackendJobRespObj = /*@__PURE__*/ S.Array(BackendJobRespObj);
 export interface ListBackendJobsResponse {
@@ -1924,25 +1703,8 @@ export interface UpdateBackendAPIResponse {
   Operation?: string;
   Status?: string;
 }
-export const UpdateBackendAPIResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({ identifier: "UpdateBackendAPIResponse" }) as any as S.Schema<UpdateBackendAPIResponse>;
+export const UpdateBackendAPIResponse =
+  CloneBackendResponse as any as S.Schema<UpdateBackendAPIResponse>;
 export interface UpdateBackendAuthIdentityPoolConfig {
   UnauthenticatedLogin?: boolean;
 }
@@ -1958,32 +1720,14 @@ export interface UpdateBackendAuthForgotPasswordConfig {
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
-export const UpdateBackendAuthForgotPasswordConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryMethod: S.optional(DeliveryMethod),
-    EmailSettings: S.optional(EmailSettings),
-    SmsSettings: S.optional(SmsSettings),
-  }).pipe(
-    S.encodeKeys({
-      DeliveryMethod: "deliveryMethod",
-      EmailSettings: "emailSettings",
-      SmsSettings: "smsSettings",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBackendAuthForgotPasswordConfig",
-}) as any as S.Schema<UpdateBackendAuthForgotPasswordConfig>;
+export const UpdateBackendAuthForgotPasswordConfig =
+  CreateBackendAuthForgotPasswordConfig as any as S.Schema<UpdateBackendAuthForgotPasswordConfig>;
 export interface UpdateBackendAuthMFAConfig {
   MFAMode?: MFAMode;
   Settings?: Settings;
 }
-export const UpdateBackendAuthMFAConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MFAMode: S.optional(MFAMode), Settings: S.optional(Settings) }).pipe(
-    S.encodeKeys({ Settings: "settings" }),
-  ),
-).annotate({
-  identifier: "UpdateBackendAuthMFAConfig",
-}) as any as S.Schema<UpdateBackendAuthMFAConfig>;
+export const UpdateBackendAuthMFAConfig =
+  CreateBackendAuthMFAConfig as any as S.Schema<UpdateBackendAuthMFAConfig>;
 export interface UpdateBackendAuthOAuthConfig {
   DomainPrefix?: string;
   OAuthGrantType?: OAuthGrantType;
@@ -1992,64 +1736,21 @@ export interface UpdateBackendAuthOAuthConfig {
   RedirectSignOutURIs?: string[];
   SocialProviderSettings?: SocialProviderSettings;
 }
-export const UpdateBackendAuthOAuthConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainPrefix: S.optional(S.String),
-    OAuthGrantType: S.optional(OAuthGrantType),
-    OAuthScopes: S.optional(ListOfOAuthScopesElement),
-    RedirectSignInURIs: S.optional(ListOf__string),
-    RedirectSignOutURIs: S.optional(ListOf__string),
-    SocialProviderSettings: S.optional(SocialProviderSettings),
-  }).pipe(
-    S.encodeKeys({
-      DomainPrefix: "domainPrefix",
-      OAuthGrantType: "oAuthGrantType",
-      OAuthScopes: "oAuthScopes",
-      RedirectSignInURIs: "redirectSignInURIs",
-      RedirectSignOutURIs: "redirectSignOutURIs",
-      SocialProviderSettings: "socialProviderSettings",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBackendAuthOAuthConfig",
-}) as any as S.Schema<UpdateBackendAuthOAuthConfig>;
+export const UpdateBackendAuthOAuthConfig =
+  CreateBackendAuthOAuthConfig as any as S.Schema<UpdateBackendAuthOAuthConfig>;
 export interface UpdateBackendAuthPasswordPolicyConfig {
   AdditionalConstraints?: AdditionalConstraintsElement[];
   MinimumLength?: number;
 }
-export const UpdateBackendAuthPasswordPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdditionalConstraints: S.optional(ListOfAdditionalConstraintsElement),
-    MinimumLength: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      AdditionalConstraints: "additionalConstraints",
-      MinimumLength: "minimumLength",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBackendAuthPasswordPolicyConfig",
-}) as any as S.Schema<UpdateBackendAuthPasswordPolicyConfig>;
+export const UpdateBackendAuthPasswordPolicyConfig =
+  CreateBackendAuthPasswordPolicyConfig as any as S.Schema<UpdateBackendAuthPasswordPolicyConfig>;
 export interface UpdateBackendAuthVerificationMessageConfig {
   DeliveryMethod?: DeliveryMethod;
   EmailSettings?: EmailSettings;
   SmsSettings?: SmsSettings;
 }
-export const UpdateBackendAuthVerificationMessageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryMethod: S.optional(DeliveryMethod),
-    EmailSettings: S.optional(EmailSettings),
-    SmsSettings: S.optional(SmsSettings),
-  }).pipe(
-    S.encodeKeys({
-      DeliveryMethod: "deliveryMethod",
-      EmailSettings: "emailSettings",
-      SmsSettings: "smsSettings",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBackendAuthVerificationMessageConfig",
-}) as any as S.Schema<UpdateBackendAuthVerificationMessageConfig>;
+export const UpdateBackendAuthVerificationMessageConfig =
+  CreateBackendAuthForgotPasswordConfig as any as S.Schema<UpdateBackendAuthVerificationMessageConfig>;
 export interface UpdateBackendAuthUserPoolConfig {
   ForgotPassword?: UpdateBackendAuthForgotPasswordConfig;
   Mfa?: UpdateBackendAuthMFAConfig;
@@ -2132,27 +1833,8 @@ export interface UpdateBackendAuthResponse {
   Operation?: string;
   Status?: string;
 }
-export const UpdateBackendAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBackendAuthResponse",
-}) as any as S.Schema<UpdateBackendAuthResponse>;
+export const UpdateBackendAuthResponse =
+  CreateBackendAuthResponse as any as S.Schema<UpdateBackendAuthResponse>;
 export interface LoginAuthConfigReqObj {
   AwsCognitoIdentityPoolId?: string;
   AwsCognitoRegion?: string;
@@ -2257,29 +1939,8 @@ export interface UpdateBackendJobResponse {
   Status?: string;
   UpdateTime?: string;
 }
-export const UpdateBackendJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    CreateTime: S.optional(S.String),
-    Error: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Operation: S.optional(S.String),
-    Status: S.optional(S.String),
-    UpdateTime: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      CreateTime: "createTime",
-      Error: "error",
-      JobId: "jobId",
-      Operation: "operation",
-      Status: "status",
-      UpdateTime: "updateTime",
-    }),
-  ),
-).annotate({ identifier: "UpdateBackendJobResponse" }) as any as S.Schema<UpdateBackendJobResponse>;
+export const UpdateBackendJobResponse =
+  GetBackendJobResponse as any as S.Schema<UpdateBackendJobResponse>;
 export interface UpdateBackendStorageResourceConfig {
   Permissions?: BackendStoragePermissions;
   ServiceName?: ServiceName;
@@ -2325,23 +1986,8 @@ export interface UpdateBackendStorageResponse {
   JobId?: string;
   Status?: string;
 }
-export const UpdateBackendStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppId: S.optional(S.String),
-    BackendEnvironmentName: S.optional(S.String),
-    JobId: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AppId: "appId",
-      BackendEnvironmentName: "backendEnvironmentName",
-      JobId: "jobId",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateBackendStorageResponse",
-}) as any as S.Schema<UpdateBackendStorageResponse>;
+export const UpdateBackendStorageResponse =
+  CreateBackendConfigResponse as any as S.Schema<UpdateBackendStorageResponse>;
 export type CloneBackendError =
   | BadRequestException
   | GatewayTimeoutException

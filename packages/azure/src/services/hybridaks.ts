@@ -106,10 +106,8 @@ export const AgentPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type AgentPoolCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AgentPoolCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentPoolCreateOrUpdateRequestTagsMap>;
+export const AgentPoolCreateOrUpdateRequestTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolCreateOrUpdateRequestTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type ExtendedLocationType = "CustomLocation";
@@ -194,16 +192,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The node labels to be persisted across all nodes in agent pool. */
 export type AgentPoolPropertiesNodeLabelsMap = { [key: string]: string | undefined };
-export const AgentPoolPropertiesNodeLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentPoolPropertiesNodeLabelsMap>;
+export const AgentPoolPropertiesNodeLabelsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolPropertiesNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type AgentPoolPropertiesNodeTaintsList = Array<string>;
-export const AgentPoolPropertiesNodeTaintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentPoolPropertiesNodeTaintsList>;
+export const AgentPoolPropertiesNodeTaintsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<AgentPoolPropertiesNodeTaintsList>;
 
 /** Provisioning state of the resource */
 export type ProvisioningState =
@@ -305,10 +300,8 @@ export const AgentPoolProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type AgentPoolCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AgentPoolCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentPoolCreateOrUpdateResponseTagsMap>;
+export const AgentPoolCreateOrUpdateResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolCreateOrUpdateResponseTagsMap>;
 
 export interface AgentPoolCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -409,11 +402,8 @@ export const DeleteKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKubernetesVersionsRequest>;
 
 export interface DeleteKubernetesVersionsResponse {}
-export const DeleteKubernetesVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteKubernetesVersionsResponse",
-}) as any as S.Schema<DeleteKubernetesVersionsResponse>;
+export const DeleteKubernetesVersionsResponse =
+  DeleteHybridIdentityMetadataResponse as any as S.Schema<DeleteKubernetesVersionsResponse>;
 
 export interface DeleteProvisionedClusterInstanceRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
@@ -435,11 +425,8 @@ export const DeleteProvisionedClusterInstanceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteProvisionedClusterInstanceRequest>;
 
 export interface DeleteProvisionedClusterInstanceResponse {}
-export const DeleteProvisionedClusterInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProvisionedClusterInstanceResponse",
-}) as any as S.Schema<DeleteProvisionedClusterInstanceResponse>;
+export const DeleteProvisionedClusterInstanceResponse =
+  DeleteHybridIdentityMetadataResponse as any as S.Schema<DeleteProvisionedClusterInstanceResponse>;
 
 export interface DeleteVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -467,9 +454,8 @@ export const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualNetworkRequest>;
 
 export interface DeleteVirtualNetworkResponse {}
-export const DeleteVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVirtualNetworkResponse",
-}) as any as S.Schema<DeleteVirtualNetworkResponse>;
+export const DeleteVirtualNetworkResponse =
+  DeleteAgentPoolResponse as any as S.Schema<DeleteVirtualNetworkResponse>;
 
 export interface DeleteVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
@@ -489,9 +475,8 @@ export const DeleteVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVMSkusRequest" }) as any as S.Schema<DeleteVMSkusRequest>;
 
 export interface DeleteVMSkusResponse {}
-export const DeleteVMSkusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVMSkusResponse",
-}) as any as S.Schema<DeleteVMSkusResponse>;
+export const DeleteVMSkusResponse =
+  DeleteAgentPoolResponse as any as S.Schema<DeleteVMSkusResponse>;
 
 export interface GetAgentPoolRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
@@ -515,10 +500,8 @@ export const GetAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetAgentPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetAgentPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAgentPoolResponseTagsMap>;
+export const GetAgentPoolResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<GetAgentPoolResponseTagsMap>;
 
 export interface GetAgentPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -659,9 +642,8 @@ export const KubernetesPatchVersionsReadinessList = /*@__PURE__*/ S.Array(
 
 /** Possible upgrade paths for given patch version */
 export type KubernetesPatchVersionsUpgradesList = Array<string>;
-export const KubernetesPatchVersionsUpgradesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KubernetesPatchVersionsUpgradesList>;
+export const KubernetesPatchVersionsUpgradesList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<KubernetesPatchVersionsUpgradesList>;
 
 /** Kubernetes Patch Version profile */
 export interface KubernetesPatchVersions {
@@ -894,13 +876,8 @@ export interface StorageProfileNfsCSIDriver {
   /** Indicates whether to enable NFS CSI Driver. The default value is true. */
   enabled?: boolean;
 }
-export const StorageProfileNfsCSIDriver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StorageProfileNfsCSIDriver",
-}) as any as S.Schema<StorageProfileNfsCSIDriver>;
+export const StorageProfileNfsCSIDriver =
+  StorageProfileSmbCSIDriver as any as S.Schema<StorageProfileNfsCSIDriver>;
 
 /** The storage configuration profile for the provisioned cluster. */
 export interface StorageProfile {
@@ -929,16 +906,13 @@ export const ClusterVMAccessProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The node labels to be persisted across all nodes in agent pool. */
 export type NamedAgentPoolProfileNodeLabelsMap = { [key: string]: string | undefined };
-export const NamedAgentPoolProfileNodeLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamedAgentPoolProfileNodeLabelsMap>;
+export const NamedAgentPoolProfileNodeLabelsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<NamedAgentPoolProfileNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type NamedAgentPoolProfileNodeTaintsList = Array<string>;
-export const NamedAgentPoolProfileNodeTaintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamedAgentPoolProfileNodeTaintsList>;
+export const NamedAgentPoolProfileNodeTaintsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<NamedAgentPoolProfileNodeTaintsList>;
 
 /** Profile of the default agent pool along with a name parameter */
 export interface NamedAgentPoolProfile {
@@ -990,9 +964,8 @@ export const ProvisionedClusterPropertiesAgentPoolProfilesList = /*@__PURE__*/ S
 
 /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
 export type CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList = Array<string>;
-export const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList>;
+export const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList>;
 
 /** The profile for the infrastructure networks used by the provisioned cluster */
 export interface CloudProviderProfileInfraNetworkProfile {
@@ -1364,10 +1337,8 @@ export const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
+export const GetVirtualNetworkResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
 
 /** Infrastructure network profile for HCI platform */
 export interface VirtualNetworkPropertiesInfraVnetProfileHci {
@@ -1426,15 +1397,13 @@ export const VirtualNetworkPropertiesVmipPoolItem = VirtualNetworkPropertiesVipP
 
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesVmipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
-export const VirtualNetworkPropertiesVmipPoolList = /*@__PURE__*/ S.Array(
-  VirtualNetworkPropertiesVipPoolItem,
-) as any as S.Schema<VirtualNetworkPropertiesVmipPoolList>;
+export const VirtualNetworkPropertiesVmipPoolList =
+  VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
 export type VirtualNetworkPropertiesDnsServersList = Array<string>;
-export const VirtualNetworkPropertiesDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualNetworkPropertiesDnsServersList>;
+export const VirtualNetworkPropertiesDnsServersList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<VirtualNetworkPropertiesDnsServersList>;
 
 export type VirtualNetworkPropertiesProvisioningState =
   | "Succeeded"
@@ -1704,10 +1673,8 @@ export const ListAgentPoolByProvisionedClusterRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags */
 export type AgentPoolTagsMap = { [key: string]: string | undefined };
-export const AgentPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentPoolTagsMap>;
+export const AgentPoolTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolTagsMap>;
 
 /** The agentPool resource definition */
 export interface AgentPool {
@@ -1724,17 +1691,7 @@ export interface AgentPool {
   tags?: AgentPoolTagsMap;
   extendedLocation?: ExtendedLocation;
 }
-export const AgentPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AgentPoolProperties),
-    tags: S.optional(AgentPoolTagsMap),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({ identifier: "AgentPool" }) as any as S.Schema<AgentPool>;
+export const AgentPool = GetAgentPoolResponse as any as S.Schema<AgentPool>;
 
 export type AgentPoolListResultValueList = Array<AgentPool>;
 export const AgentPoolListResultValueList = /*@__PURE__*/ S.Array(
@@ -1838,23 +1795,16 @@ export const ListKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type KubernetesVersionProfilePropertiesValuesList = Array<KubernetesVersionProperties>;
-export const KubernetesVersionProfilePropertiesValuesList = /*@__PURE__*/ S.Array(
-  KubernetesVersionProperties,
-) as any as S.Schema<KubernetesVersionProfilePropertiesValuesList>;
+export const KubernetesVersionProfilePropertiesValuesList =
+  GetKubernetesVersionsResponsePropertiesValuesList as any as S.Schema<KubernetesVersionProfilePropertiesValuesList>;
 
 export interface KubernetesVersionProfileProperties {
   provisioningState?: ProvisioningState;
   /** List of supported Kubernetes versions */
   values?: KubernetesVersionProfilePropertiesValuesList;
 }
-export const KubernetesVersionProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-    values: S.optional(KubernetesVersionProfilePropertiesValuesList),
-  }),
-).annotate({
-  identifier: "KubernetesVersionProfileProperties",
-}) as any as S.Schema<KubernetesVersionProfileProperties>;
+export const KubernetesVersionProfileProperties =
+  GetKubernetesVersionsResponseProperties as any as S.Schema<KubernetesVersionProfileProperties>;
 
 /** The supported kubernetes versions. */
 export interface KubernetesVersionProfile {
@@ -2004,14 +1954,8 @@ export interface ListCredentialResponseError {
   code?: string;
   message?: string;
 }
-export const ListCredentialResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCredentialResponseError",
-}) as any as S.Schema<ListCredentialResponseError>;
+export const ListCredentialResponseError =
+  VirtualNetworkPropertiesStatusOperationStatusError as any as S.Schema<ListCredentialResponseError>;
 
 /** The credential result response. */
 export interface CredentialResult {
@@ -2020,18 +1964,12 @@ export interface CredentialResult {
   /** Base64-encoded Kubernetes configuration file. */
   value?: string;
 }
-export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "CredentialResult" }) as any as S.Schema<CredentialResult>;
+export const CredentialResult = VmSkuCapabilities as any as S.Schema<CredentialResult>;
 
 /** Base64-encoded Kubernetes configuration file. */
 export type ListCredentialResponsePropertiesKubeconfigsList = Array<CredentialResult>;
-export const ListCredentialResponsePropertiesKubeconfigsList = /*@__PURE__*/ S.Array(
-  CredentialResult,
-) as any as S.Schema<ListCredentialResponsePropertiesKubeconfigsList>;
+export const ListCredentialResponsePropertiesKubeconfigsList =
+  VmSkuPropertiesCapabilitiesList as any as S.Schema<ListCredentialResponsePropertiesKubeconfigsList>;
 
 export interface ListCredentialResponseProperties {
   /** Base64-encoded Kubernetes configuration file. */
@@ -2173,10 +2111,8 @@ export const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworkTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworkTagsMap>;
+export const VirtualNetworkTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworkTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworkExtendedLocationType = "CustomLocation";
@@ -2286,9 +2222,8 @@ export const ListVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported VM SKUs. */
 export type VmSkuProfilePropertiesValuesList = Array<VmSkuProperties>;
-export const VmSkuProfilePropertiesValuesList = /*@__PURE__*/ S.Array(
-  VmSkuProperties,
-) as any as S.Schema<VmSkuProfilePropertiesValuesList>;
+export const VmSkuProfilePropertiesValuesList =
+  GetVMSkusResponsePropertiesValuesList as any as S.Schema<VmSkuProfilePropertiesValuesList>;
 
 export interface VmSkuProfileProperties {
   provisioningState?: ProvisioningState;
@@ -2345,16 +2280,13 @@ export const VmSkuProfileList = /*@__PURE__*/ S.suspend(() =>
 
 /** The node labels to be persisted across all nodes in agent pool. */
 export type NamedAgentPoolProfileInputNodeLabelsMap = { [key: string]: string | undefined };
-export const NamedAgentPoolProfileInputNodeLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamedAgentPoolProfileInputNodeLabelsMap>;
+export const NamedAgentPoolProfileInputNodeLabelsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<NamedAgentPoolProfileInputNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type NamedAgentPoolProfileInputNodeTaintsList = Array<string>;
-export const NamedAgentPoolProfileInputNodeTaintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamedAgentPoolProfileInputNodeTaintsList>;
+export const NamedAgentPoolProfileInputNodeTaintsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<NamedAgentPoolProfileInputNodeTaintsList>;
 
 /** Profile of the default agent pool along with a name parameter */
 export interface NamedAgentPoolProfileInput {
@@ -2556,18 +2488,8 @@ export interface ProvisionedClusterInstancesCreateOrUpdateResponse {
   properties?: ProvisionedClusterProperties;
   extendedLocation?: ExtendedLocation;
 }
-export const ProvisionedClusterInstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProvisionedClusterProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "ProvisionedClusterInstancesCreateOrUpdateResponse",
-}) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateResponse>;
+export const ProvisionedClusterInstancesCreateOrUpdateResponse =
+  GetProvisionedClusterInstanceResponse as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateResponse>;
 
 /** Defines the resource properties for the hybrid identity metadata. */
 export interface HybridIdentityMetadataPropertiesInput {
@@ -2619,17 +2541,8 @@ export interface PutHybridIdentityMetadataResponse {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
-export const PutHybridIdentityMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: HybridIdentityMetadataProperties,
-  }),
-).annotate({
-  identifier: "PutHybridIdentityMetadataResponse",
-}) as any as S.Schema<PutHybridIdentityMetadataResponse>;
+export const PutHybridIdentityMetadataResponse =
+  GetHybridIdentityMetadataResponse as any as S.Schema<PutHybridIdentityMetadataResponse>;
 
 export interface PutKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
@@ -2654,23 +2567,16 @@ export const PutKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type PutKubernetesVersionsResponsePropertiesValuesList = Array<KubernetesVersionProperties>;
-export const PutKubernetesVersionsResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
-  KubernetesVersionProperties,
-) as any as S.Schema<PutKubernetesVersionsResponsePropertiesValuesList>;
+export const PutKubernetesVersionsResponsePropertiesValuesList =
+  GetKubernetesVersionsResponsePropertiesValuesList as any as S.Schema<PutKubernetesVersionsResponsePropertiesValuesList>;
 
 export interface PutKubernetesVersionsResponseProperties {
   provisioningState?: ProvisioningState;
   /** List of supported Kubernetes versions */
   values?: PutKubernetesVersionsResponsePropertiesValuesList;
 }
-export const PutKubernetesVersionsResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-    values: S.optional(PutKubernetesVersionsResponsePropertiesValuesList),
-  }),
-).annotate({
-  identifier: "PutKubernetesVersionsResponseProperties",
-}) as any as S.Schema<PutKubernetesVersionsResponseProperties>;
+export const PutKubernetesVersionsResponseProperties =
+  GetKubernetesVersionsResponseProperties as any as S.Schema<PutKubernetesVersionsResponseProperties>;
 
 export interface PutKubernetesVersionsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2684,18 +2590,8 @@ export interface PutKubernetesVersionsResponse {
   extendedLocation?: ExtendedLocation;
   properties?: PutKubernetesVersionsResponseProperties;
 }
-export const PutKubernetesVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    extendedLocation: S.optional(ExtendedLocation),
-    properties: S.optional(PutKubernetesVersionsResponseProperties),
-  }),
-).annotate({
-  identifier: "PutKubernetesVersionsResponse",
-}) as any as S.Schema<PutKubernetesVersionsResponse>;
+export const PutKubernetesVersionsResponse =
+  GetKubernetesVersionsResponse as any as S.Schema<PutKubernetesVersionsResponse>;
 
 export interface PutVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
@@ -2718,23 +2614,16 @@ export const PutVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported VM SKUs. */
 export type PutVMSkusResponsePropertiesValuesList = Array<VmSkuProperties>;
-export const PutVMSkusResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
-  VmSkuProperties,
-) as any as S.Schema<PutVMSkusResponsePropertiesValuesList>;
+export const PutVMSkusResponsePropertiesValuesList =
+  GetVMSkusResponsePropertiesValuesList as any as S.Schema<PutVMSkusResponsePropertiesValuesList>;
 
 export interface PutVMSkusResponseProperties {
   provisioningState?: ProvisioningState;
   /** List of supported VM SKUs. */
   values?: PutVMSkusResponsePropertiesValuesList;
 }
-export const PutVMSkusResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-    values: S.optional(PutVMSkusResponsePropertiesValuesList),
-  }),
-).annotate({
-  identifier: "PutVMSkusResponseProperties",
-}) as any as S.Schema<PutVMSkusResponseProperties>;
+export const PutVMSkusResponseProperties =
+  GetVMSkusResponseProperties as any as S.Schema<PutVMSkusResponseProperties>;
 
 export interface PutVMSkusResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2748,23 +2637,12 @@ export interface PutVMSkusResponse {
   extendedLocation?: ExtendedLocation;
   properties?: PutVMSkusResponseProperties;
 }
-export const PutVMSkusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    extendedLocation: S.optional(ExtendedLocation),
-    properties: S.optional(PutVMSkusResponseProperties),
-  }),
-).annotate({ identifier: "PutVMSkusResponse" }) as any as S.Schema<PutVMSkusResponse>;
+export const PutVMSkusResponse = GetVMSkusResponse as any as S.Schema<PutVMSkusResponse>;
 
 /** Resource tags */
 export type UpdateVirtualNetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
+export const UpdateVirtualNetworkRequestTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
 
 export interface UpdateVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2796,10 +2674,8 @@ export const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVirtualNetworkResponseTagsMap>;
+export const UpdateVirtualNetworkResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<UpdateVirtualNetworkResponseTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type UpdateVirtualNetworkResponseExtendedLocationType = "CustomLocation";
@@ -2855,10 +2731,8 @@ export const UpdateVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
+export const VirtualNetworksCreateOrUpdateRequestTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
 
 /** Infrastructure network profile for HCI platform */
 export type VirtualNetworkPropertiesInputInfraVnetProfileHci =
@@ -2876,24 +2750,21 @@ export const VirtualNetworkPropertiesInputVipPoolItem = VirtualNetworkProperties
 
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesInputVipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
-export const VirtualNetworkPropertiesInputVipPoolList = /*@__PURE__*/ S.Array(
-  VirtualNetworkPropertiesVipPoolItem,
-) as any as S.Schema<VirtualNetworkPropertiesInputVipPoolList>;
+export const VirtualNetworkPropertiesInputVipPoolList =
+  VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesInputVipPoolList>;
 
 export type VirtualNetworkPropertiesInputVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
 export const VirtualNetworkPropertiesInputVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
 
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesInputVmipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
-export const VirtualNetworkPropertiesInputVmipPoolList = /*@__PURE__*/ S.Array(
-  VirtualNetworkPropertiesVipPoolItem,
-) as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolList>;
+export const VirtualNetworkPropertiesInputVmipPoolList =
+  VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
 export type VirtualNetworkPropertiesInputDnsServersList = Array<string>;
-export const VirtualNetworkPropertiesInputDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualNetworkPropertiesInputDnsServersList>;
+export const VirtualNetworkPropertiesInputDnsServersList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<VirtualNetworkPropertiesInputDnsServersList>;
 
 /** Properties of the virtual network resource */
 export interface VirtualNetworkPropertiesInput {
@@ -2983,10 +2854,8 @@ export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
+export const VirtualNetworksCreateOrUpdateResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateResponseExtendedLocationType = "CustomLocation";

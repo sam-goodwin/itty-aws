@@ -375,10 +375,8 @@ export const CreateDeploymentCheckRunResponseBodyCase1ExpectationRef =
 export type CreateDeploymentCheckRunResponseBodyCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDeploymentCheckRunResponseBodyCase1OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1OutputMap>;
+export const CreateDeploymentCheckRunResponseBodyCase1OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1OutputMap>;
 
 export type CreateDeploymentCheckRunResponseBodyCase1Requires =
   | "build-ready"
@@ -390,9 +388,8 @@ export type CreateDeploymentCheckRunResponseBodyCase1Status = "completed" | "que
 export const CreateDeploymentCheckRunResponseBodyCase1Status = S.String;
 
 export type CreateDeploymentCheckRunResponseBodyCase1TargetsList = Array<string>;
-export const CreateDeploymentCheckRunResponseBodyCase1TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1TargetsList>;
+export const CreateDeploymentCheckRunResponseBodyCase1TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1TargetsList>;
 
 export type CreateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = "config";
 export const CreateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.String;
@@ -516,9 +513,8 @@ export type CreateProjectCheckRequestRequires = "build-ready" | "deployment-url"
 export const CreateProjectCheckRequestRequires = S.String;
 
 export type CreateProjectCheckRequestTargetsList = Array<string>;
-export const CreateProjectCheckRequestTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCheckRequestTargetsList>;
+export const CreateProjectCheckRequestTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateProjectCheckRequestTargetsList>;
 
 export type CreateProjectCheckRequestBlocks =
   | "build-start"
@@ -698,9 +694,8 @@ export type CreateProjectCheckResponseSourceKind =
 export const CreateProjectCheckResponseSourceKind = S.String;
 
 export type CreateProjectCheckResponseTargetsList = Array<string>;
-export const CreateProjectCheckResponseTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCheckResponseTargetsList>;
+export const CreateProjectCheckResponseTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateProjectCheckResponseTargetsList>;
 
 export interface CreateProjectCheckResponse {
   blocks: CreateProjectCheckResponseBlocks;
@@ -824,10 +819,8 @@ export const GetDeploymentCheckRunResponseBodyCase0ExpectationRef =
 export type GetDeploymentCheckRunResponseBodyCase0OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const GetDeploymentCheckRunResponseBodyCase0OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0OutputMap>;
+export const GetDeploymentCheckRunResponseBodyCase0OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0OutputMap>;
 
 export type GetDeploymentCheckRunResponseBodyCase0Requires =
   | "build-ready"
@@ -839,9 +832,8 @@ export type GetDeploymentCheckRunResponseBodyCase0Status = "completed" | "queued
 export const GetDeploymentCheckRunResponseBodyCase0Status = S.String;
 
 export type GetDeploymentCheckRunResponseBodyCase0TargetsList = Array<string>;
-export const GetDeploymentCheckRunResponseBodyCase0TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0TargetsList>;
+export const GetDeploymentCheckRunResponseBodyCase0TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0TargetsList>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase0Kind = "integration";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase0Kind = S.String;
@@ -963,9 +955,7 @@ export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 =
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList>;
 
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = "Turborepo";
 export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = S.String;
@@ -1108,10 +1098,8 @@ export const GetDeploymentCheckRunResponseBodyCase1ExpectationRef =
 export type GetDeploymentCheckRunResponseBodyCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const GetDeploymentCheckRunResponseBodyCase1OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1OutputMap>;
+export const GetDeploymentCheckRunResponseBodyCase1OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1OutputMap>;
 
 export type GetDeploymentCheckRunResponseBodyCase1Requires =
   | "build-ready"
@@ -1123,9 +1111,8 @@ export type GetDeploymentCheckRunResponseBodyCase1Status = "completed" | "queued
 export const GetDeploymentCheckRunResponseBodyCase1Status = S.String;
 
 export type GetDeploymentCheckRunResponseBodyCase1TargetsList = Array<string>;
-export const GetDeploymentCheckRunResponseBodyCase1TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1TargetsList>;
+export const GetDeploymentCheckRunResponseBodyCase1TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1TargetsList>;
 
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin = "config";
 export const GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.String;
@@ -1353,9 +1340,8 @@ export type GetProjectCheckResponseSourceKind =
 export const GetProjectCheckResponseSourceKind = S.String;
 
 export type GetProjectCheckResponseTargetsList = Array<string>;
-export const GetProjectCheckResponseTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectCheckResponseTargetsList>;
+export const GetProjectCheckResponseTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<GetProjectCheckResponseTargetsList>;
 
 export interface GetProjectCheckResponse {
   blocks: GetProjectCheckResponseBlocks;
@@ -1441,10 +1427,8 @@ export const ListCheckRunsResponseRunsItemCase0ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
 
 export type ListCheckRunsResponseRunsItemCase0OutputMap = { [key: string]: unknown | undefined };
-export const ListCheckRunsResponseRunsItemCase0OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListCheckRunsResponseRunsItemCase0OutputMap>;
+export const ListCheckRunsResponseRunsItemCase0OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListCheckRunsResponseRunsItemCase0OutputMap>;
 
 export type ListCheckRunsResponseRunsItemCase0Requires = "build-ready" | "deployment-url" | "none";
 export const ListCheckRunsResponseRunsItemCase0Requires = S.String;
@@ -1453,9 +1437,8 @@ export type ListCheckRunsResponseRunsItemCase0Status = "completed" | "queued" | 
 export const ListCheckRunsResponseRunsItemCase0Status = S.String;
 
 export type ListCheckRunsResponseRunsItemCase0TargetsList = Array<string>;
-export const ListCheckRunsResponseRunsItemCase0TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCheckRunsResponseRunsItemCase0TargetsList>;
+export const ListCheckRunsResponseRunsItemCase0TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListCheckRunsResponseRunsItemCase0TargetsList>;
 
 export type ListCheckRunsResponseRunsItemCase0SourceCase0Kind = "integration";
 export const ListCheckRunsResponseRunsItemCase0SourceCase0Kind = S.String;
@@ -1576,9 +1559,7 @@ export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1 = /*@__
 
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList = Array<string>;
 export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList>;
 
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = "Turborepo";
 export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = S.String;
@@ -1719,10 +1700,8 @@ export const ListCheckRunsResponseRunsItemCase1ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
 
 export type ListCheckRunsResponseRunsItemCase1OutputMap = { [key: string]: unknown | undefined };
-export const ListCheckRunsResponseRunsItemCase1OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListCheckRunsResponseRunsItemCase1OutputMap>;
+export const ListCheckRunsResponseRunsItemCase1OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListCheckRunsResponseRunsItemCase1OutputMap>;
 
 export type ListCheckRunsResponseRunsItemCase1Requires = "build-ready" | "deployment-url" | "none";
 export const ListCheckRunsResponseRunsItemCase1Requires = S.String;
@@ -1731,9 +1710,8 @@ export type ListCheckRunsResponseRunsItemCase1Status = "completed" | "queued" | 
 export const ListCheckRunsResponseRunsItemCase1Status = S.String;
 
 export type ListCheckRunsResponseRunsItemCase1TargetsList = Array<string>;
-export const ListCheckRunsResponseRunsItemCase1TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCheckRunsResponseRunsItemCase1TargetsList>;
+export const ListCheckRunsResponseRunsItemCase1TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListCheckRunsResponseRunsItemCase1TargetsList>;
 
 export type ListCheckRunsResponseRunsItemCase1SourceCase0Origin = "config";
 export const ListCheckRunsResponseRunsItemCase1SourceCase0Origin = S.String;
@@ -1902,10 +1880,8 @@ export const ListDeploymentCheckRunsResponseRunsItemCase0ExpectationRef =
 export type ListDeploymentCheckRunsResponseRunsItemCase0OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const ListDeploymentCheckRunsResponseRunsItemCase0OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0OutputMap>;
+export const ListDeploymentCheckRunsResponseRunsItemCase0OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0OutputMap>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0Requires =
   | "build-ready"
@@ -1917,9 +1893,8 @@ export type ListDeploymentCheckRunsResponseRunsItemCase0Status = "completed" | "
 export const ListDeploymentCheckRunsResponseRunsItemCase0Status = S.String;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0TargetsList = Array<string>;
-export const ListDeploymentCheckRunsResponseRunsItemCase0TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0TargetsList>;
+export const ListDeploymentCheckRunsResponseRunsItemCase0TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0TargetsList>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0Kind = "integration";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0Kind = S.String;
@@ -2042,9 +2017,7 @@ export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCas
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = "Turborepo";
 export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = S.String;
@@ -2187,10 +2160,8 @@ export const ListDeploymentCheckRunsResponseRunsItemCase1ExpectationRef =
 export type ListDeploymentCheckRunsResponseRunsItemCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const ListDeploymentCheckRunsResponseRunsItemCase1OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1OutputMap>;
+export const ListDeploymentCheckRunsResponseRunsItemCase1OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1OutputMap>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase1Requires =
   | "build-ready"
@@ -2202,9 +2173,8 @@ export type ListDeploymentCheckRunsResponseRunsItemCase1Status = "completed" | "
 export const ListDeploymentCheckRunsResponseRunsItemCase1Status = S.String;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase1TargetsList = Array<string>;
-export const ListDeploymentCheckRunsResponseRunsItemCase1TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1TargetsList>;
+export const ListDeploymentCheckRunsResponseRunsItemCase1TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1TargetsList>;
 
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin = "config";
 export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin = S.String;
@@ -2360,9 +2330,8 @@ export const ListProjectChecksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectChecksRequest" }) as any as S.Schema<ListProjectChecksRequest>;
 
 export type ListProjectChecksResponseAvailableNativeChecksList = Array<string>;
-export const ListProjectChecksResponseAvailableNativeChecksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectChecksResponseAvailableNativeChecksList>;
+export const ListProjectChecksResponseAvailableNativeChecksList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListProjectChecksResponseAvailableNativeChecksList>;
 
 export type ListProjectChecksResponseChecksItemBlocks =
   | "build-start"
@@ -2455,9 +2424,8 @@ export type ListProjectChecksResponseChecksItemSourceKind =
 export const ListProjectChecksResponseChecksItemSourceKind = S.String;
 
 export type ListProjectChecksResponseChecksItemTargetsList = Array<string>;
-export const ListProjectChecksResponseChecksItemTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectChecksResponseChecksItemTargetsList>;
+export const ListProjectChecksResponseChecksItemTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListProjectChecksResponseChecksItemTargetsList>;
 
 export interface ListProjectChecksResponseChecksItem {
   blocks: ListProjectChecksResponseChecksItemBlocks;
@@ -2592,10 +2560,8 @@ export const UpdateDeploymentCheckRunResponseBodyCase0ExpectationRef =
 export type UpdateDeploymentCheckRunResponseBodyCase0OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDeploymentCheckRunResponseBodyCase0OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0OutputMap>;
+export const UpdateDeploymentCheckRunResponseBodyCase0OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0OutputMap>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0Requires =
   | "build-ready"
@@ -2607,9 +2573,8 @@ export type UpdateDeploymentCheckRunResponseBodyCase0Status = "completed" | "que
 export const UpdateDeploymentCheckRunResponseBodyCase0Status = S.String;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0TargetsList = Array<string>;
-export const UpdateDeploymentCheckRunResponseBodyCase0TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0TargetsList>;
+export const UpdateDeploymentCheckRunResponseBodyCase0TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0TargetsList>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase0Kind = "integration";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase0Kind = S.String;
@@ -2731,9 +2696,7 @@ export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList>;
+  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = "Turborepo";
 export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = S.String;
@@ -2876,10 +2839,8 @@ export const UpdateDeploymentCheckRunResponseBodyCase1ExpectationRef =
 export type UpdateDeploymentCheckRunResponseBodyCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDeploymentCheckRunResponseBodyCase1OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1OutputMap>;
+export const UpdateDeploymentCheckRunResponseBodyCase1OutputMap =
+  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1OutputMap>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase1Requires =
   | "build-ready"
@@ -2891,9 +2852,8 @@ export type UpdateDeploymentCheckRunResponseBodyCase1Status = "completed" | "que
 export const UpdateDeploymentCheckRunResponseBodyCase1Status = S.String;
 
 export type UpdateDeploymentCheckRunResponseBodyCase1TargetsList = Array<string>;
-export const UpdateDeploymentCheckRunResponseBodyCase1TargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1TargetsList>;
+export const UpdateDeploymentCheckRunResponseBodyCase1TargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1TargetsList>;
 
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = "config";
 export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.String;
@@ -3017,9 +2977,8 @@ export type UpdateProjectCheckRequestRequires = "build-ready" | "deployment-url"
 export const UpdateProjectCheckRequestRequires = S.String;
 
 export type UpdateProjectCheckRequestTargetsList = Array<string>;
-export const UpdateProjectCheckRequestTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCheckRequestTargetsList>;
+export const UpdateProjectCheckRequestTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateProjectCheckRequestTargetsList>;
 
 export type UpdateProjectCheckRequestBlocks =
   | "build-start"
@@ -3150,9 +3109,8 @@ export type UpdateProjectCheckResponseSourceKind =
 export const UpdateProjectCheckResponseSourceKind = S.String;
 
 export type UpdateProjectCheckResponseTargetsList = Array<string>;
-export const UpdateProjectCheckResponseTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCheckResponseTargetsList>;
+export const UpdateProjectCheckResponseTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateProjectCheckResponseTargetsList>;
 
 export interface UpdateProjectCheckResponse {
   blocks: UpdateProjectCheckResponseBlocks;

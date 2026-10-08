@@ -490,16 +490,13 @@ export const UpdateAdConversionValueRuleRequestFixedValue =
   CreateAdConversionValueRuleRequestFixedValue;
 
 export type UpdateAdConversionValueRuleRequestMetadataMap = { [key: string]: string | undefined };
-export const UpdateAdConversionValueRuleRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAdConversionValueRuleRequestMetadataMap>;
+export const UpdateAdConversionValueRuleRequestMetadataMap =
+  CreateAdConversionValueRuleRequestMetadataMap as any as S.Schema<UpdateAdConversionValueRuleRequestMetadataMap>;
 
 /** Exact IDs of active rules whose overlapping selections will be replaced. Other selections keep their values; remaining selections may split into separate rules. Broader rules remain as fallbacks for other items. Stale or incomplete conflict selections fail. */
 export type UpdateAdConversionValueRuleRequestReplaceRuleIdsList = Array<string>;
-export const UpdateAdConversionValueRuleRequestReplaceRuleIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAdConversionValueRuleRequestReplaceRuleIdsList>;
+export const UpdateAdConversionValueRuleRequestReplaceRuleIdsList =
+  CreateAdConversionValueRuleRequestReplaceRuleIdsList as any as S.Schema<UpdateAdConversionValueRuleRequestReplaceRuleIdsList>;
 
 export type UpdateAdConversionValueRuleRequestTargetsItemPlatform = "tiktok" | "meta" | "google";
 export const UpdateAdConversionValueRuleRequestTargetsItemPlatform = S.String;

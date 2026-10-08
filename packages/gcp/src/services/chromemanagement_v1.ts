@@ -6750,11 +6750,8 @@ export const SetFailureCustomersCertificateProvisioningProcessesRequest = /*@__P
 
 /** Response message for publishing a failure for a certificate provisioning process. */
 export interface GoogleChromeManagementVersionsV1SetFailureResponse {}
-export const GoogleChromeManagementVersionsV1SetFailureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleChromeManagementVersionsV1SetFailureResponse",
-}) as any as S.Schema<GoogleChromeManagementVersionsV1SetFailureResponse>;
+export const GoogleChromeManagementVersionsV1SetFailureResponse =
+  GoogleLongrunningCancelOperationRequest as any as S.Schema<GoogleChromeManagementVersionsV1SetFailureResponse>;
 
 export type GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum =
   | "SIGNATURE_ALGORITHM_UNSPECIFIED"

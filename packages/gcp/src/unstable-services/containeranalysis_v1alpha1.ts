@@ -1166,22 +1166,14 @@ export interface DSSEHint {
   /** Required. The human readable name of this attestation authority, for example "cloudbuild-prod". */
   humanReadableName?: string;
 }
-export const DSSEHint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    humanReadableName: S.optional(S.String),
-  }),
-).annotate({ identifier: "DSSEHint" }) as any as S.Schema<DSSEHint>;
+export const DSSEHint = AttestationAuthorityHint as any as S.Schema<DSSEHint>;
 
 /** A note describing an attestation */
 export interface DSSEAttestationNote {
   /** DSSEHint hints at the purpose of the attestation authority. */
   hint?: DSSEHint;
 }
-export const DSSEAttestationNote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hint: S.optional(DSSEHint),
-  }),
-).annotate({ identifier: "DSSEAttestationNote" }) as any as S.Schema<DSSEAttestationNote>;
+export const DSSEAttestationNote = AttestationAuthority as any as S.Schema<DSSEAttestationNote>;
 
 export type BuildSignatureKeyTypeEnum = "KEY_TYPE_UNSPECIFIED" | "PGP_ASCII_ARMORED" | "PKIX_PEM";
 export const BuildSignatureKeyTypeEnum = S.String;
@@ -1738,11 +1730,7 @@ export interface SlsaBuilder {
   /** id is the id of the slsa provenance builder */
   id?: string;
 }
-export const SlsaBuilder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "SlsaBuilder" }) as any as S.Schema<SlsaBuilder>;
+export const SlsaBuilder = BuilderConfig as any as S.Schema<SlsaBuilder>;
 
 /** Indicates that the builder claims certain fields in this message to be complete. */
 export interface SlsaCompleteness {
@@ -2682,15 +2670,10 @@ export interface File {
   /** Optional. The digest(s) of the file. */
   digest?: StringMap;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    digest: S.optional(StringMap),
-  }),
-).annotate({ identifier: "File" }) as any as S.Schema<File>;
+export const File = Subject as any as S.Schema<File>;
 
 export type FileList = Array<File>;
-export const FileList = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList>;
+export const FileList = SubjectList as any as S.Schema<FileList>;
 
 export type DiscoveredContinuousAnalysisEnum =
   | "CONTINUOUS_ANALYSIS_UNSPECIFIED"
@@ -3736,9 +3719,7 @@ export const DeleteProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = SecretNote as any as S.Schema<Empty>;
 
 export interface DeleteProjectsOccurrencesRequest {
   /** The name of the occurrence in the form of "projects/{project_id}/occurrences/{OCCURRENCE_ID}" */
@@ -4594,13 +4575,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsOccurrencesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

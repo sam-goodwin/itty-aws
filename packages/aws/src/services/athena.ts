@@ -198,7 +198,8 @@ export const BatchGetNamedQueryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BatchGetNamedQueryOutput" }) as any as S.Schema<BatchGetNamedQueryOutput>;
 export type StatementName = string;
 export type PreparedStatementNameList = string[];
-export const PreparedStatementNameList = /*@__PURE__*/ S.Array(S.String);
+export const PreparedStatementNameList =
+  NamedQueryIdList as any as S.Schema<PreparedStatementNameList>;
 export interface BatchGetPreparedStatementInput {
   PreparedStatementNames: string[];
   WorkGroup: string;
@@ -260,7 +261,7 @@ export const BatchGetPreparedStatementOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetPreparedStatementOutput>;
 export type QueryExecutionId = string;
 export type QueryExecutionIdList = string[];
-export const QueryExecutionIdList = /*@__PURE__*/ S.Array(S.String);
+export const QueryExecutionIdList = NamedQueryIdList as any as S.Schema<QueryExecutionIdList>;
 export interface BatchGetQueryExecutionInput {
   QueryExecutionIds: string[];
 }
@@ -440,7 +441,7 @@ export const EngineVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EngineVersion" }) as any as S.Schema<EngineVersion>;
 export type ExecutionParameter = string;
 export type ExecutionParameters = string[];
-export const ExecutionParameters = /*@__PURE__*/ S.Array(S.String);
+export const ExecutionParameters = NamedQueryIdList as any as S.Schema<ExecutionParameters>;
 export type BoxedBoolean = boolean;
 export type AuthenticationType = "DIRECTORY_IDENTITY" | (string & {});
 export const AuthenticationType = S.String;
@@ -563,9 +564,8 @@ export const CreateCapacityReservationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCapacityReservationInput",
 }) as any as S.Schema<CreateCapacityReservationInput>;
 export interface CreateCapacityReservationOutput {}
-export const CreateCapacityReservationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateCapacityReservationOutput" },
-) as any as S.Schema<CreateCapacityReservationOutput>;
+export const CreateCapacityReservationOutput =
+  CancelCapacityReservationOutput as any as S.Schema<CreateCapacityReservationOutput>;
 export type DataCatalogType = "LAMBDA" | "GLUE" | "HIVE" | "FEDERATED" | (string & {});
 export const DataCatalogType = S.String;
 
@@ -748,7 +748,7 @@ export type LogStreamNamePrefix = string;
 export type LogTypeKey = string;
 export type LogTypeValue = string;
 export type LogTypeValuesList = string[];
-export const LogTypeValuesList = /*@__PURE__*/ S.Array(S.String);
+export const LogTypeValuesList = NamedQueryIdList as any as S.Schema<LogTypeValuesList>;
 export type LogTypesMap = { [key: string]: string[] | undefined };
 export const LogTypesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -833,11 +833,8 @@ export const EngineConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CustomerContentEncryptionConfiguration {
   KmsKey: string;
 }
-export const CustomerContentEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KmsKey: S.String }),
-).annotate({
-  identifier: "CustomerContentEncryptionConfiguration",
-}) as any as S.Schema<CustomerContentEncryptionConfiguration>;
+export const CustomerContentEncryptionConfiguration =
+  ManagedQueryResultsEncryptionConfiguration as any as S.Schema<CustomerContentEncryptionConfiguration>;
 export type IdentityCenterInstanceArn = string;
 export interface IdentityCenterConfiguration {
   EnableIdentityCenter?: boolean;
@@ -903,9 +900,8 @@ export const CreateWorkGroupInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateWorkGroupInput" }) as any as S.Schema<CreateWorkGroupInput>;
 export interface CreateWorkGroupOutput {}
-export const CreateWorkGroupOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateWorkGroupOutput",
-}) as any as S.Schema<CreateWorkGroupOutput>;
+export const CreateWorkGroupOutput =
+  CreatePreparedStatementOutput as any as S.Schema<CreateWorkGroupOutput>;
 export interface DeleteCapacityReservationInput {
   Name: string;
 }
@@ -917,9 +913,8 @@ export const DeleteCapacityReservationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCapacityReservationInput",
 }) as any as S.Schema<DeleteCapacityReservationInput>;
 export interface DeleteCapacityReservationOutput {}
-export const DeleteCapacityReservationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteCapacityReservationOutput" },
-) as any as S.Schema<DeleteCapacityReservationOutput>;
+export const DeleteCapacityReservationOutput =
+  CancelCapacityReservationOutput as any as S.Schema<DeleteCapacityReservationOutput>;
 export interface DeleteDataCatalogInput {
   Name: string;
   DeleteCatalogOnly?: boolean;
@@ -932,9 +927,8 @@ export const DeleteDataCatalogInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDataCatalogOutput {
   DataCatalog?: DataCatalog;
 }
-export const DeleteDataCatalogOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataCatalog: S.optional(DataCatalog) }),
-).annotate({ identifier: "DeleteDataCatalogOutput" }) as any as S.Schema<DeleteDataCatalogOutput>;
+export const DeleteDataCatalogOutput =
+  CreateDataCatalogOutput as any as S.Schema<DeleteDataCatalogOutput>;
 export interface DeleteNamedQueryInput {
   NamedQueryId: string;
 }
@@ -944,9 +938,8 @@ export const DeleteNamedQueryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteNamedQueryInput" }) as any as S.Schema<DeleteNamedQueryInput>;
 export interface DeleteNamedQueryOutput {}
-export const DeleteNamedQueryOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamedQueryOutput",
-}) as any as S.Schema<DeleteNamedQueryOutput>;
+export const DeleteNamedQueryOutput =
+  CreatePreparedStatementOutput as any as S.Schema<DeleteNamedQueryOutput>;
 export interface DeleteNotebookInput {
   NotebookId: string;
 }
@@ -956,9 +949,8 @@ export const DeleteNotebookInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteNotebookInput" }) as any as S.Schema<DeleteNotebookInput>;
 export interface DeleteNotebookOutput {}
-export const DeleteNotebookOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotebookOutput",
-}) as any as S.Schema<DeleteNotebookOutput>;
+export const DeleteNotebookOutput =
+  CreatePreparedStatementOutput as any as S.Schema<DeleteNotebookOutput>;
 export interface DeletePreparedStatementInput {
   StatementName: string;
   WorkGroup: string;
@@ -971,9 +963,8 @@ export const DeletePreparedStatementInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePreparedStatementInput",
 }) as any as S.Schema<DeletePreparedStatementInput>;
 export interface DeletePreparedStatementOutput {}
-export const DeletePreparedStatementOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePreparedStatementOutput",
-}) as any as S.Schema<DeletePreparedStatementOutput>;
+export const DeletePreparedStatementOutput =
+  CreatePreparedStatementOutput as any as S.Schema<DeletePreparedStatementOutput>;
 export interface DeleteWorkGroupInput {
   WorkGroup: string;
   RecursiveDeleteOption?: boolean;
@@ -984,9 +975,8 @@ export const DeleteWorkGroupInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkGroupInput" }) as any as S.Schema<DeleteWorkGroupInput>;
 export interface DeleteWorkGroupOutput {}
-export const DeleteWorkGroupOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkGroupOutput",
-}) as any as S.Schema<DeleteWorkGroupOutput>;
+export const DeleteWorkGroupOutput =
+  CreatePreparedStatementOutput as any as S.Schema<DeleteWorkGroupOutput>;
 export interface ExportNotebookInput {
   NotebookId: string;
 }
@@ -1158,7 +1148,7 @@ export const GetCapacityAssignmentConfigurationInput = /*@__PURE__*/ S.suspend((
   identifier: "GetCapacityAssignmentConfigurationInput",
 }) as any as S.Schema<GetCapacityAssignmentConfigurationInput>;
 export type WorkGroupNamesList = string[];
-export const WorkGroupNamesList = /*@__PURE__*/ S.Array(S.String);
+export const WorkGroupNamesList = NamedQueryIdList as any as S.Schema<WorkGroupNamesList>;
 export interface CapacityAssignment {
   WorkGroupNames?: string[];
 }
@@ -1293,9 +1283,8 @@ export const GetDataCatalogInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataCatalogOutput {
   DataCatalog?: DataCatalog;
 }
-export const GetDataCatalogOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataCatalog: S.optional(DataCatalog) }),
-).annotate({ identifier: "GetDataCatalogOutput" }) as any as S.Schema<GetDataCatalogOutput>;
+export const GetDataCatalogOutput =
+  CreateDataCatalogOutput as any as S.Schema<GetDataCatalogOutput>;
 export interface GetNamedQueryInput {
   NamedQueryId: string;
 }
@@ -1504,7 +1493,7 @@ export const QueryStagePlanNodes = /*@__PURE__*/ S.Array(
   }),
 ) as any as S.Schema<QueryStagePlanNodes>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = NamedQueryIdList as any as S.Schema<StringList>;
 export interface QueryStagePlanNode {
   Name?: string;
   Identifier?: string;
@@ -1830,9 +1819,7 @@ export const ImportNotebookInput = /*@__PURE__*/ S.suspend(() =>
 export interface ImportNotebookOutput {
   NotebookId?: string;
 }
-export const ImportNotebookOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NotebookId: S.optional(S.String) }),
-).annotate({ identifier: "ImportNotebookOutput" }) as any as S.Schema<ImportNotebookOutput>;
+export const ImportNotebookOutput = CreateNotebookOutput as any as S.Schema<ImportNotebookOutput>;
 export type MaxApplicationDPUSizesCount = number;
 export interface ListApplicationDPUSizesInput {
   MaxResults?: number;
@@ -2508,9 +2495,8 @@ export const StopQueryExecutionInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopQueryExecutionInput" }) as any as S.Schema<StopQueryExecutionInput>;
 export interface StopQueryExecutionOutput {}
-export const StopQueryExecutionOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopQueryExecutionOutput",
-}) as any as S.Schema<StopQueryExecutionOutput>;
+export const StopQueryExecutionOutput =
+  CreatePreparedStatementOutput as any as S.Schema<StopQueryExecutionOutput>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: Tag[];
@@ -2521,9 +2507,8 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput =
+  CreatePreparedStatementOutput as any as S.Schema<TagResourceOutput>;
 export interface TerminateSessionRequest {
   SessionId: string;
 }
@@ -2539,7 +2524,7 @@ export const TerminateSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ State: S.optional(SessionState) }),
 ).annotate({ identifier: "TerminateSessionResponse" }) as any as S.Schema<TerminateSessionResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = NamedQueryIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceARN: string;
   TagKeys: string[];
@@ -2550,9 +2535,8 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateCapacityReservationInput {
   TargetDpus: number;
   Name: string;
@@ -2565,9 +2549,8 @@ export const UpdateCapacityReservationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCapacityReservationInput",
 }) as any as S.Schema<UpdateCapacityReservationInput>;
 export interface UpdateCapacityReservationOutput {}
-export const UpdateCapacityReservationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateCapacityReservationOutput" },
-) as any as S.Schema<UpdateCapacityReservationOutput>;
+export const UpdateCapacityReservationOutput =
+  CancelCapacityReservationOutput as any as S.Schema<UpdateCapacityReservationOutput>;
 export interface UpdateDataCatalogInput {
   Name: string;
   Type: DataCatalogType;
@@ -2583,9 +2566,8 @@ export const UpdateDataCatalogInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateDataCatalogInput" }) as any as S.Schema<UpdateDataCatalogInput>;
 export interface UpdateDataCatalogOutput {}
-export const UpdateDataCatalogOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDataCatalogOutput",
-}) as any as S.Schema<UpdateDataCatalogOutput>;
+export const UpdateDataCatalogOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateDataCatalogOutput>;
 export type NamedQueryDescriptionString = string;
 export interface UpdateNamedQueryInput {
   NamedQueryId: string;
@@ -2602,9 +2584,8 @@ export const UpdateNamedQueryInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateNamedQueryInput" }) as any as S.Schema<UpdateNamedQueryInput>;
 export interface UpdateNamedQueryOutput {}
-export const UpdateNamedQueryOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNamedQueryOutput",
-}) as any as S.Schema<UpdateNamedQueryOutput>;
+export const UpdateNamedQueryOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateNamedQueryOutput>;
 export interface UpdateNotebookInput {
   NotebookId: string;
   Payload: string;
@@ -2622,9 +2603,8 @@ export const UpdateNotebookInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateNotebookInput" }) as any as S.Schema<UpdateNotebookInput>;
 export interface UpdateNotebookOutput {}
-export const UpdateNotebookOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNotebookOutput",
-}) as any as S.Schema<UpdateNotebookOutput>;
+export const UpdateNotebookOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateNotebookOutput>;
 export interface UpdateNotebookMetadataInput {
   NotebookId: string;
   ClientRequestToken?: string;
@@ -2638,9 +2618,8 @@ export const UpdateNotebookMetadataInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNotebookMetadataInput",
 }) as any as S.Schema<UpdateNotebookMetadataInput>;
 export interface UpdateNotebookMetadataOutput {}
-export const UpdateNotebookMetadataOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNotebookMetadataOutput",
-}) as any as S.Schema<UpdateNotebookMetadataOutput>;
+export const UpdateNotebookMetadataOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateNotebookMetadataOutput>;
 export interface UpdatePreparedStatementInput {
   StatementName: string;
   WorkGroup: string;
@@ -2658,9 +2637,8 @@ export const UpdatePreparedStatementInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePreparedStatementInput",
 }) as any as S.Schema<UpdatePreparedStatementInput>;
 export interface UpdatePreparedStatementOutput {}
-export const UpdatePreparedStatementOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePreparedStatementOutput",
-}) as any as S.Schema<UpdatePreparedStatementOutput>;
+export const UpdatePreparedStatementOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdatePreparedStatementOutput>;
 export interface ResultConfigurationUpdates {
   OutputLocation?: string;
   RemoveOutputLocation?: boolean;
@@ -2754,9 +2732,8 @@ export const UpdateWorkGroupInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateWorkGroupInput" }) as any as S.Schema<UpdateWorkGroupInput>;
 export interface UpdateWorkGroupOutput {}
-export const UpdateWorkGroupOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWorkGroupOutput",
-}) as any as S.Schema<UpdateWorkGroupOutput>;
+export const UpdateWorkGroupOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateWorkGroupOutput>;
 export type ThrottleReason = "CONCURRENT_QUERY_LIMIT_EXCEEDED" | (string & {});
 export const ThrottleReason = S.String;
 

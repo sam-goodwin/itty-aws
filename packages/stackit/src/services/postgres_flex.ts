@@ -248,11 +248,8 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstanceResponse {
   id: string;
 }
-export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "CreateInstanceResponse" }) as any as S.Schema<CreateInstanceResponse>;
+export const CreateInstanceResponse =
+  CloneInstanceResponse as any as S.Schema<CreateInstanceResponse>;
 
 export type CreateUserRequestRegion = "eu01" | "eu02";
 export const CreateUserRequestRegion = S.String;
@@ -367,9 +364,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  DeleteDatabaseResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export type DeleteUserRequestRegion = "eu01" | "eu02";
 export const DeleteUserRequestRegion = S.String;
@@ -401,9 +397,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteDatabaseResponse as any as S.Schema<DeleteUserResponse>;
 
 export type GetBackupRequestRegion = "eu01" | "eu02";
 export const GetBackupRequestRegion = S.String;
@@ -643,9 +637,8 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of user roles. */
 export type GetUserResponseRolesList = Array<string>;
-export const GetUserResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserResponseRolesList>;
+export const GetUserResponseRolesList =
+  CreateUserRequestRolesList as any as S.Schema<GetUserResponseRolesList>;
 
 export interface GetUserResponse {
   id: number;
@@ -776,9 +769,8 @@ export const ListCollationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of collations available for the instance. */
 export type ListCollationsResponseCollationsList = Array<string>;
-export const ListCollationsResponseCollationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCollationsResponseCollationsList>;
+export const ListCollationsResponseCollationsList =
+  CreateUserRequestRolesList as any as S.Schema<ListCollationsResponseCollationsList>;
 
 export interface ListCollationsResponse {
   /** List of collations available for the instance. */
@@ -841,13 +833,7 @@ export interface ListDatabase {
   name: string;
   owner: string;
 }
-export const ListDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    owner: S.String,
-  }),
-).annotate({ identifier: "ListDatabase" }) as any as S.Schema<ListDatabase>;
+export const ListDatabase = GetDatabaseResponse as any as S.Schema<ListDatabase>;
 
 /** A list containing all databases for the instance. */
 export type ListDatabasesResponseDatabasesList = Array<ListDatabase>;
@@ -1086,9 +1072,8 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all role names available in the instance */
 export type ListRolesResponseRolesList = Array<string>;
-export const ListRolesResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRolesResponseRolesList>;
+export const ListRolesResponseRolesList =
+  CreateUserRequestRolesList as any as S.Schema<ListRolesResponseRolesList>;
 
 export interface ListRolesResponse {
   /** List of all role names available in the instance */
@@ -1264,16 +1249,15 @@ export const PartialUpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateDatabaseRequest>;
 
 export interface PartialUpdateDatabaseResponse {}
-export const PartialUpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateDatabaseResponse",
-}) as any as S.Schema<PartialUpdateDatabaseResponse>;
+export const PartialUpdateDatabaseResponse =
+  DeleteDatabaseResponse as any as S.Schema<PartialUpdateDatabaseResponse>;
 
 export type PartialUpdateInstanceRequestRegion = "eu01" | "eu02";
 export const PartialUpdateInstanceRequestRegion = S.String;
 
 /** List of IPV4 cidr. */
 export type AclOpt = Array<string>;
-export const AclOpt = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<AclOpt>;
+export const AclOpt = Acl as any as S.Schema<AclOpt>;
 
 /** The access configuration of the instance */
 export interface InstanceNetworkOpt {
@@ -1337,18 +1321,16 @@ export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateInstanceRequest>;
 
 export interface PartialUpdateInstanceResponse {}
-export const PartialUpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateInstanceResponse",
-}) as any as S.Schema<PartialUpdateInstanceResponse>;
+export const PartialUpdateInstanceResponse =
+  DeleteDatabaseResponse as any as S.Schema<PartialUpdateInstanceResponse>;
 
 export type PartialUpdateUserRequestRegion = "eu01" | "eu02";
 export const PartialUpdateUserRequestRegion = S.String;
 
 /** A list containing the user roles for the instance. Please refer to the List Roles endpoint for a list of all available Roles. */
 export type PartialUpdateUserRequestRolesList = Array<string>;
-export const PartialUpdateUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartialUpdateUserRequestRolesList>;
+export const PartialUpdateUserRequestRolesList =
+  CreateUserRequestRolesList as any as S.Schema<PartialUpdateUserRequestRolesList>;
 
 export interface PartialUpdateUserRequest {
   /** The STACKIT project ID. */
@@ -1382,9 +1364,8 @@ export const PartialUpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartialUpdateUserRequest" }) as any as S.Schema<PartialUpdateUserRequest>;
 
 export interface PartialUpdateUserResponse {}
-export const PartialUpdateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateUserResponse",
-}) as any as S.Schema<PartialUpdateUserResponse>;
+export const PartialUpdateUserResponse =
+  DeleteDatabaseResponse as any as S.Schema<PartialUpdateUserResponse>;
 
 export type ResetUserPasswordRequestRegion = "eu01" | "eu02";
 export const ResetUserPasswordRequestRegion = S.String;
@@ -1464,9 +1445,8 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDatabaseRequest" }) as any as S.Schema<UpdateDatabaseRequest>;
 
 export interface UpdateDatabaseResponse {}
-export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatabaseResponse",
-}) as any as S.Schema<UpdateDatabaseResponse>;
+export const UpdateDatabaseResponse =
+  DeleteDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
 
 export type UpdateInstanceRequestRegion = "eu01" | "eu02";
 export const UpdateInstanceRequestRegion = S.String;
@@ -1521,9 +1501,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstanceResponse",
-}) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  DeleteDatabaseResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export type UpdateInstanceProtectionRequestRegion = "eu01" | "eu02";
 export const UpdateInstanceProtectionRequestRegion = S.String;
@@ -1571,9 +1550,8 @@ export const UpdateUserRequestRegion = S.String;
 
 /** A list containing the user roles for the instance. Please refer to the List Roles endpoint for a list of all available Roles. */
 export type UpdateUserRequestRolesList = Array<string>;
-export const UpdateUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUserRequestRolesList>;
+export const UpdateUserRequestRolesList =
+  CreateUserRequestRolesList as any as S.Schema<UpdateUserRequestRolesList>;
 
 export interface UpdateUserRequest {
   /** The STACKIT project ID. */
@@ -1607,9 +1585,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 
 export interface UpdateUserResponse {}
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserResponse",
-}) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = DeleteDatabaseResponse as any as S.Schema<UpdateUserResponse>;
 
 export type CloneInstanceError =
   | BadRequest

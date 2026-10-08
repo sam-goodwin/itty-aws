@@ -62,12 +62,7 @@ export interface UpdateViewResponse {
   ok: boolean;
   view: unknown;
 }
-export const UpdateViewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    view: S.Unknown,
-  }),
-).annotate({ identifier: "UpdateViewResponse" }) as any as S.Schema<UpdateViewResponse>;
+export const UpdateViewResponse = PublishViewResponse as any as S.Schema<UpdateViewResponse>;
 
 export type ViewsOpenRequestViewMap = { [key: string]: unknown | undefined };
 export const ViewsOpenRequestViewMap = /*@__PURE__*/ S.Record(
@@ -96,12 +91,7 @@ export interface ViewsOpenResponse {
   ok: boolean;
   view: unknown;
 }
-export const ViewsOpenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    view: S.Unknown,
-  }),
-).annotate({ identifier: "ViewsOpenResponse" }) as any as S.Schema<ViewsOpenResponse>;
+export const ViewsOpenResponse = PublishViewResponse as any as S.Schema<ViewsOpenResponse>;
 
 export interface ViewsPushRequest {
   /** Exchange a trigger to post to the user. */
@@ -124,12 +114,7 @@ export interface ViewsPushResponse {
   ok: boolean;
   view: unknown;
 }
-export const ViewsPushResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    view: S.Unknown,
-  }),
-).annotate({ identifier: "ViewsPushResponse" }) as any as S.Schema<ViewsPushResponse>;
+export const ViewsPushResponse = PublishViewResponse as any as S.Schema<ViewsPushResponse>;
 
 export type PublishViewError = SlackOpError;
 /** Publish a static view for a User. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` -- Error returned when the given `external_id` has already be used. - `hash_conflict` -- Error returned when the provided `hash` doesn't match the current stored value. - `missing_profile_id` -- A profile id was not provided when trying to publish a view of type profile. - `not_allowed_token_type` -- The type of token your app used when requesting this method is not allowed. - `not_enabled` -- Error returned if a `home` view is published but the Home tab isn't enabled for the app. - `not_implemented` -- The profile view experiment is not enabled for this user. - `view_too_large` -- Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.publish */

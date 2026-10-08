@@ -1048,7 +1048,8 @@ export type CapacityProviderSubnetIds = string[];
 export const CapacityProviderSubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type CapacityProviderSecurityGroupIds = string[];
-export const CapacityProviderSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const CapacityProviderSecurityGroupIds =
+  CapacityProviderSubnetIds as any as S.Schema<CapacityProviderSecurityGroupIds>;
 export interface CapacityProviderVpcConfig {
   SubnetIds: string[];
   SecurityGroupIds: string[];
@@ -1077,7 +1078,7 @@ export type ArchitecturesList = Architecture[];
 export const ArchitecturesList = /*@__PURE__*/ S.Array(Architecture);
 export type InstanceType = string;
 export type InstanceTypeSet = string[];
-export const InstanceTypeSet = /*@__PURE__*/ S.Array(S.String);
+export const InstanceTypeSet = CapacityProviderSubnetIds as any as S.Schema<InstanceTypeSet>;
 export interface InstanceRequirements {
   Architectures?: Architecture[];
   AllowedInstanceTypes?: string[];
@@ -1238,7 +1239,8 @@ export const CreateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCapacityProviderResponse",
 }) as any as S.Schema<CreateCapacityProviderResponse>;
 export type SigningProfileVersionArns = string[];
-export const SigningProfileVersionArns = /*@__PURE__*/ S.Array(S.String);
+export const SigningProfileVersionArns =
+  CapacityProviderSubnetIds as any as S.Schema<SigningProfileVersionArns>;
 export interface AllowedPublishers {
   SigningProfileVersionArns: string[];
 }
@@ -1370,9 +1372,7 @@ export const OnSuccess = /*@__PURE__*/ S.suspend(() =>
 export interface OnFailure {
   Destination?: string;
 }
-export const OnFailure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Destination: S.optional(S.String) }),
-).annotate({ identifier: "OnFailure" }) as any as S.Schema<OnFailure>;
+export const OnFailure = OnSuccess as any as S.Schema<OnFailure>;
 export interface DestinationConfig {
   OnSuccess?: OnSuccess;
   OnFailure?: OnFailure;
@@ -1386,10 +1386,10 @@ export type MaximumRetryAttemptsEventSourceMapping = number;
 export type TumblingWindowInSeconds = number;
 export type Topic = string;
 export type Topics = string[];
-export const Topics = /*@__PURE__*/ S.Array(S.String);
+export const Topics = CapacityProviderSubnetIds as any as S.Schema<Topics>;
 export type Queue = string;
 export type Queues = string[];
-export const Queues = /*@__PURE__*/ S.Array(S.String);
+export const Queues = CapacityProviderSubnetIds as any as S.Schema<Queues>;
 export type SourceAccessType =
   | "BASIC_AUTH"
   | "VPC_SUBNET"
@@ -1419,7 +1419,7 @@ export const EndPointType = S.String;
 
 export type Endpoint = string;
 export type EndpointLists = string[];
-export const EndpointLists = /*@__PURE__*/ S.Array(S.String);
+export const EndpointLists = CapacityProviderSubnetIds as any as S.Schema<EndpointLists>;
 export type Endpoints = { [key in EndPointType]?: string[] };
 export const Endpoints = /*@__PURE__*/ S.Record(
   EndPointType,
@@ -1505,14 +1505,8 @@ export interface SelfManagedKafkaEventSourceConfig {
   ConsumerGroupId?: string;
   SchemaRegistryConfig?: KafkaSchemaRegistryConfig;
 }
-export const SelfManagedKafkaEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConsumerGroupId: S.optional(S.String),
-    SchemaRegistryConfig: S.optional(KafkaSchemaRegistryConfig),
-  }),
-).annotate({
-  identifier: "SelfManagedKafkaEventSourceConfig",
-}) as any as S.Schema<SelfManagedKafkaEventSourceConfig>;
+export const SelfManagedKafkaEventSourceConfig =
+  AmazonManagedKafkaEventSourceConfig as any as S.Schema<SelfManagedKafkaEventSourceConfig>;
 export type DatabaseName = string;
 export type CollectionName = string;
 export type FullDocument = "UpdateLookup" | "Default" | (string & {});
@@ -1793,9 +1787,9 @@ export type FunctionVersionLatestPublished = "LATEST_PUBLISHED" | (string & {});
 export const FunctionVersionLatestPublished = S.String;
 
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = CapacityProviderSubnetIds as any as S.Schema<SubnetIds>;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = CapacityProviderSubnetIds as any as S.Schema<SecurityGroupIds>;
 export interface VpcConfig {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -1844,7 +1838,7 @@ export const TracingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TracingConfig" }) as any as S.Schema<TracingConfig>;
 export type LayerVersionArn = string;
 export type LayerList = string[];
-export const LayerList = /*@__PURE__*/ S.Array(S.String);
+export const LayerList = CapacityProviderSubnetIds as any as S.Schema<LayerList>;
 export type FileSystemArn = string;
 export type LocalMountPath = string;
 export type DirectS3Read = "ENABLED" | "DISABLED" | "AUTO" | (string & {});
@@ -1867,7 +1861,7 @@ export const FileSystemConfig = /*@__PURE__*/ S.suspend(() =>
 export type FileSystemConfigList = FileSystemConfig[];
 export const FileSystemConfigList = /*@__PURE__*/ S.Array(FileSystemConfig);
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = CapacityProviderSubnetIds as any as S.Schema<StringList>;
 export type WorkingDirectory = string;
 export interface ImageConfig {
   EntryPoint?: string[];
@@ -2069,9 +2063,7 @@ export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TracingConfigResponse {
   Mode?: TracingMode;
 }
-export const TracingConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Mode: S.optional(TracingMode) }),
-).annotate({ identifier: "TracingConfigResponse" }) as any as S.Schema<TracingConfigResponse>;
+export const TracingConfigResponse = TracingConfig as any as S.Schema<TracingConfigResponse>;
 export interface Layer {
   Arn?: string;
   CodeSize?: number;
@@ -2194,9 +2186,7 @@ export interface ImageConfigError {
   ErrorCode?: string;
   Message?: string | redacted.Redacted<string>;
 }
-export const ImageConfigError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(SensitiveString) }),
-).annotate({ identifier: "ImageConfigError" }) as any as S.Schema<ImageConfigError>;
+export const ImageConfigError = EnvironmentError as any as S.Schema<ImageConfigError>;
 export interface ImageConfigResponse {
   ImageConfig?: ImageConfig;
   Error?: ImageConfigError;
@@ -2222,9 +2212,7 @@ export interface RuntimeVersionError {
   ErrorCode?: string;
   Message?: string | redacted.Redacted<string>;
 }
-export const RuntimeVersionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(SensitiveString) }),
-).annotate({ identifier: "RuntimeVersionError" }) as any as S.Schema<RuntimeVersionError>;
+export const RuntimeVersionError = EnvironmentError as any as S.Schema<RuntimeVersionError>;
 export interface RuntimeVersionConfig {
   RuntimeVersionArn?: string;
   Error?: RuntimeVersionError;
@@ -2323,13 +2311,13 @@ export type FunctionUrlQualifier = string;
 export type AllowCredentials = boolean;
 export type Header = string;
 export type HeadersList = string[];
-export const HeadersList = /*@__PURE__*/ S.Array(S.String);
+export const HeadersList = CapacityProviderSubnetIds as any as S.Schema<HeadersList>;
 export type Method = string;
 export type AllowMethodsList = string[];
-export const AllowMethodsList = /*@__PURE__*/ S.Array(S.String);
+export const AllowMethodsList = CapacityProviderSubnetIds as any as S.Schema<AllowMethodsList>;
 export type Origin = string;
 export type AllowOriginsList = string[];
-export const AllowOriginsList = /*@__PURE__*/ S.Array(S.String);
+export const AllowOriginsList = CapacityProviderSubnetIds as any as S.Schema<AllowOriginsList>;
 export type MaxAge = number;
 export interface Cors {
   AllowCredentials?: boolean;
@@ -2443,11 +2431,8 @@ export const DeleteCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCapacityProviderResponse {
   CapacityProvider: CapacityProvider;
 }
-export const DeleteCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CapacityProvider: CapacityProvider }),
-).annotate({
-  identifier: "DeleteCapacityProviderResponse",
-}) as any as S.Schema<DeleteCapacityProviderResponse>;
+export const DeleteCapacityProviderResponse =
+  CreateCapacityProviderResponse as any as S.Schema<DeleteCapacityProviderResponse>;
 export interface DeleteCodeSigningConfigRequest {
   CodeSigningConfigArn: string;
 }
@@ -2552,11 +2537,8 @@ export const DeleteFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFunctionConcurrencyRequest",
 }) as any as S.Schema<DeleteFunctionConcurrencyRequest>;
 export interface DeleteFunctionConcurrencyResponse {}
-export const DeleteFunctionConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFunctionConcurrencyResponse",
-}) as any as S.Schema<DeleteFunctionConcurrencyResponse>;
+export const DeleteFunctionConcurrencyResponse =
+  DeleteFunctionCodeSigningConfigResponse as any as S.Schema<DeleteFunctionConcurrencyResponse>;
 export interface DeleteFunctionEventInvokeConfigRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -2579,11 +2561,8 @@ export const DeleteFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteFunctionEventInvokeConfigRequest",
 }) as any as S.Schema<DeleteFunctionEventInvokeConfigRequest>;
 export interface DeleteFunctionEventInvokeConfigResponse {}
-export const DeleteFunctionEventInvokeConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFunctionEventInvokeConfigResponse",
-}) as any as S.Schema<DeleteFunctionEventInvokeConfigResponse>;
+export const DeleteFunctionEventInvokeConfigResponse =
+  DeleteFunctionCodeSigningConfigResponse as any as S.Schema<DeleteFunctionEventInvokeConfigResponse>;
 export interface DeleteFunctionUrlConfigRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -2606,9 +2585,8 @@ export const DeleteFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFunctionUrlConfigRequest",
 }) as any as S.Schema<DeleteFunctionUrlConfigRequest>;
 export interface DeleteFunctionUrlConfigResponse {}
-export const DeleteFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteFunctionUrlConfigResponse" },
-) as any as S.Schema<DeleteFunctionUrlConfigResponse>;
+export const DeleteFunctionUrlConfigResponse =
+  DeleteCodeSigningConfigResponse as any as S.Schema<DeleteFunctionUrlConfigResponse>;
 export interface DeleteLayerVersionRequest {
   LayerName: string;
   VersionNumber: number;
@@ -2631,9 +2609,8 @@ export const DeleteLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLayerVersionRequest",
 }) as any as S.Schema<DeleteLayerVersionRequest>;
 export interface DeleteLayerVersionResponse {}
-export const DeleteLayerVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLayerVersionResponse",
-}) as any as S.Schema<DeleteLayerVersionResponse>;
+export const DeleteLayerVersionResponse =
+  DeleteAliasResponse as any as S.Schema<DeleteLayerVersionResponse>;
 export type Qualifier = string;
 export interface DeleteProvisionedConcurrencyConfigRequest {
   FunctionName: string;
@@ -2660,11 +2637,8 @@ export const DeleteProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteProvisionedConcurrencyConfigRequest",
 }) as any as S.Schema<DeleteProvisionedConcurrencyConfigRequest>;
 export interface DeleteProvisionedConcurrencyConfigResponse {}
-export const DeleteProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProvisionedConcurrencyConfigResponse",
-}) as any as S.Schema<DeleteProvisionedConcurrencyConfigResponse>;
+export const DeleteProvisionedConcurrencyConfigResponse =
+  DeleteFunctionCodeSigningConfigResponse as any as S.Schema<DeleteProvisionedConcurrencyConfigResponse>;
 export type PolicyResourceArn = string;
 export type RevisionId = string;
 export interface DeleteResourcePolicyRequest {
@@ -2689,9 +2663,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DeleteAliasResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -2779,11 +2752,8 @@ export const GetCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCapacityProviderResponse {
   CapacityProvider: CapacityProvider;
 }
-export const GetCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CapacityProvider: CapacityProvider }),
-).annotate({
-  identifier: "GetCapacityProviderResponse",
-}) as any as S.Schema<GetCapacityProviderResponse>;
+export const GetCapacityProviderResponse =
+  CreateCapacityProviderResponse as any as S.Schema<GetCapacityProviderResponse>;
 export interface GetCodeSigningConfigRequest {
   CodeSigningConfigArn: string;
 }
@@ -2804,11 +2774,8 @@ export const GetCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCodeSigningConfigResponse {
   CodeSigningConfig: CodeSigningConfig;
 }
-export const GetCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeSigningConfig: CodeSigningConfig }),
-).annotate({
-  identifier: "GetCodeSigningConfigResponse",
-}) as any as S.Schema<GetCodeSigningConfigResponse>;
+export const GetCodeSigningConfigResponse =
+  CreateCodeSigningConfigResponse as any as S.Schema<GetCodeSigningConfigResponse>;
 export type IncludeExecutionData = boolean;
 export interface GetDurableExecutionRequest {
   DurableExecutionArn: string;
@@ -2964,9 +2931,7 @@ export interface EventResult {
   Payload?: string | redacted.Redacted<string>;
   Truncated?: boolean;
 }
-export const EventResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Payload: S.optional(SensitiveString), Truncated: S.optional(S.Boolean) }),
-).annotate({ identifier: "EventResult" }) as any as S.Schema<EventResult>;
+export const EventResult = EventInput as any as S.Schema<EventResult>;
 export interface ExecutionSucceededDetails {
   Result: EventResult;
 }
@@ -2997,13 +2962,10 @@ export const ExecutionTimedOutDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ExecutionStoppedDetails {
   Error: EventError;
 }
-export const ExecutionStoppedDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Error: EventError }),
-).annotate({ identifier: "ExecutionStoppedDetails" }) as any as S.Schema<ExecutionStoppedDetails>;
+export const ExecutionStoppedDetails =
+  ExecutionFailedDetails as any as S.Schema<ExecutionStoppedDetails>;
 export interface ContextStartedDetails {}
-export const ContextStartedDetails = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ContextStartedDetails",
-}) as any as S.Schema<ContextStartedDetails>;
+export const ContextStartedDetails = DeleteAliasResponse as any as S.Schema<ContextStartedDetails>;
 export interface ContextSucceededDetails {
   Result: EventResult;
 }
@@ -3013,9 +2975,7 @@ export const ContextSucceededDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ContextFailedDetails {
   Error: EventError;
 }
-export const ContextFailedDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Error: EventError }),
-).annotate({ identifier: "ContextFailedDetails" }) as any as S.Schema<ContextFailedDetails>;
+export const ContextFailedDetails = ExecutionFailedDetails as any as S.Schema<ContextFailedDetails>;
 export interface WaitStartedDetails {
   Duration: number;
   ScheduledEndTimestamp: Date;
@@ -3035,13 +2995,10 @@ export const WaitSucceededDetails = /*@__PURE__*/ S.suspend(() =>
 export interface WaitCancelledDetails {
   Error?: EventError;
 }
-export const WaitCancelledDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Error: S.optional(EventError) }),
-).annotate({ identifier: "WaitCancelledDetails" }) as any as S.Schema<WaitCancelledDetails>;
+export const WaitCancelledDetails =
+  ExecutionTimedOutDetails as any as S.Schema<WaitCancelledDetails>;
 export interface StepStartedDetails {}
-export const StepStartedDetails = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StepStartedDetails",
-}) as any as S.Schema<StepStartedDetails>;
+export const StepStartedDetails = DeleteAliasResponse as any as S.Schema<StepStartedDetails>;
 export interface RetryDetails {
   CurrentAttempt?: number;
   NextAttemptDelaySeconds?: number;
@@ -3084,11 +3041,8 @@ export const ChainedInvokeStartedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ChainedInvokeSucceededDetails {
   Result: EventResult;
 }
-export const ChainedInvokeSucceededDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Result: EventResult }),
-).annotate({
-  identifier: "ChainedInvokeSucceededDetails",
-}) as any as S.Schema<ChainedInvokeSucceededDetails>;
+export const ChainedInvokeSucceededDetails =
+  ExecutionSucceededDetails as any as S.Schema<ChainedInvokeSucceededDetails>;
 export interface ChainedInvokeFailedDetails {
   Error: EventError;
 }
@@ -3100,19 +3054,13 @@ export const ChainedInvokeFailedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ChainedInvokeTimedOutDetails {
   Error: EventError;
 }
-export const ChainedInvokeTimedOutDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Error: EventError }),
-).annotate({
-  identifier: "ChainedInvokeTimedOutDetails",
-}) as any as S.Schema<ChainedInvokeTimedOutDetails>;
+export const ChainedInvokeTimedOutDetails =
+  ChainedInvokeFailedDetails as any as S.Schema<ChainedInvokeTimedOutDetails>;
 export interface ChainedInvokeStoppedDetails {
   Error: EventError;
 }
-export const ChainedInvokeStoppedDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Error: EventError }),
-).annotate({
-  identifier: "ChainedInvokeStoppedDetails",
-}) as any as S.Schema<ChainedInvokeStoppedDetails>;
+export const ChainedInvokeStoppedDetails =
+  ChainedInvokeFailedDetails as any as S.Schema<ChainedInvokeStoppedDetails>;
 export interface CallbackStartedDetails {
   CallbackId: string;
   HeartbeatTimeout?: number;
@@ -3128,21 +3076,18 @@ export const CallbackStartedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface CallbackSucceededDetails {
   Result: EventResult;
 }
-export const CallbackSucceededDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Result: EventResult }),
-).annotate({ identifier: "CallbackSucceededDetails" }) as any as S.Schema<CallbackSucceededDetails>;
+export const CallbackSucceededDetails =
+  ContextSucceededDetails as any as S.Schema<CallbackSucceededDetails>;
 export interface CallbackFailedDetails {
   Error: EventError;
 }
-export const CallbackFailedDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Error: EventError }),
-).annotate({ identifier: "CallbackFailedDetails" }) as any as S.Schema<CallbackFailedDetails>;
+export const CallbackFailedDetails =
+  ExecutionFailedDetails as any as S.Schema<CallbackFailedDetails>;
 export interface CallbackTimedOutDetails {
   Error: EventError;
 }
-export const CallbackTimedOutDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Error: EventError }),
-).annotate({ identifier: "CallbackTimedOutDetails" }) as any as S.Schema<CallbackTimedOutDetails>;
+export const CallbackTimedOutDetails =
+  ExecutionFailedDetails as any as S.Schema<CallbackTimedOutDetails>;
 export interface InvocationCompletedDetails {
   StartTimestamp: Date;
   EndTimestamp: Date;
@@ -3658,7 +3603,8 @@ export const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LayerVersionContentOutput>;
 export type LayerArn = string;
 export type CompatibleArchitectures = Architecture[];
-export const CompatibleArchitectures = /*@__PURE__*/ S.Array(Architecture);
+export const CompatibleArchitectures =
+  ArchitecturesList as any as S.Schema<CompatibleArchitectures>;
 export type CompatibleRuntimes = Runtime[];
 export const CompatibleRuntimes = /*@__PURE__*/ S.Array(Runtime);
 export type LicenseInfo = string;
@@ -3831,11 +3777,8 @@ export interface GetResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
-).annotate({
-  identifier: "GetResourcePolicyResponse",
-}) as any as S.Schema<GetResourcePolicyResponse>;
+export const GetResourcePolicyResponse =
+  GetLayerVersionPolicyResponse as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetRuntimeManagementConfigRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -4355,7 +4298,7 @@ export const ListFunctionsByCodeSigningConfigRequest = /*@__PURE__*/ S.suspend((
   identifier: "ListFunctionsByCodeSigningConfigRequest",
 }) as any as S.Schema<ListFunctionsByCodeSigningConfigRequest>;
 export type FunctionArnList = string[];
-export const FunctionArnList = /*@__PURE__*/ S.Array(S.String);
+export const FunctionArnList = CapacityProviderSubnetIds as any as S.Schema<FunctionArnList>;
 export interface ListFunctionsByCodeSigningConfigResponse {
   NextMarker?: string;
   FunctionArns?: string[];
@@ -4807,11 +4750,8 @@ export interface PutFunctionCodeSigningConfigResponse {
   CodeSigningConfigArn: string;
   FunctionName: string;
 }
-export const PutFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeSigningConfigArn: S.String, FunctionName: S.String }),
-).annotate({
-  identifier: "PutFunctionCodeSigningConfigResponse",
-}) as any as S.Schema<PutFunctionCodeSigningConfigResponse>;
+export const PutFunctionCodeSigningConfigResponse =
+  GetFunctionCodeSigningConfigResponse as any as S.Schema<PutFunctionCodeSigningConfigResponse>;
 export interface PutFunctionConcurrencyRequest {
   FunctionName: string;
   ReservedConcurrentExecutions: number;
@@ -4884,11 +4824,8 @@ export const PutFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutFunctionRecursionConfigResponse {
   RecursiveLoop?: RecursiveLoop;
 }
-export const PutFunctionRecursionConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RecursiveLoop: S.optional(RecursiveLoop) }),
-).annotate({
-  identifier: "PutFunctionRecursionConfigResponse",
-}) as any as S.Schema<PutFunctionRecursionConfigResponse>;
+export const PutFunctionRecursionConfigResponse =
+  GetFunctionRecursionConfigResponse as any as S.Schema<PutFunctionRecursionConfigResponse>;
 export interface PutFunctionScalingConfigRequest {
   FunctionName: string;
   Qualifier: string;
@@ -4994,11 +4931,8 @@ export interface PutResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  GetLayerVersionPolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface PutRuntimeManagementConfigRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -5070,11 +5004,8 @@ export const RemoveLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveLayerVersionPermissionRequest",
 }) as any as S.Schema<RemoveLayerVersionPermissionRequest>;
 export interface RemoveLayerVersionPermissionResponse {}
-export const RemoveLayerVersionPermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveLayerVersionPermissionResponse",
-}) as any as S.Schema<RemoveLayerVersionPermissionResponse>;
+export const RemoveLayerVersionPermissionResponse =
+  DeleteFunctionCodeSigningConfigResponse as any as S.Schema<RemoveLayerVersionPermissionResponse>;
 export type NamespacedStatementId = string;
 export interface RemovePermissionRequest {
   FunctionName: string;
@@ -5103,9 +5034,8 @@ export const RemovePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemovePermissionRequest" }) as any as S.Schema<RemovePermissionRequest>;
 export interface RemovePermissionResponse {}
-export const RemovePermissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemovePermissionResponse",
-}) as any as S.Schema<RemovePermissionResponse>;
+export const RemovePermissionResponse =
+  DeleteAliasResponse as any as S.Schema<RemovePermissionResponse>;
 export interface SendDurableExecutionCallbackFailureRequest {
   CallbackId: string;
   Error?: ErrorObject;
@@ -5128,11 +5058,8 @@ export const SendDurableExecutionCallbackFailureRequest = /*@__PURE__*/ S.suspen
   identifier: "SendDurableExecutionCallbackFailureRequest",
 }) as any as S.Schema<SendDurableExecutionCallbackFailureRequest>;
 export interface SendDurableExecutionCallbackFailureResponse {}
-export const SendDurableExecutionCallbackFailureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendDurableExecutionCallbackFailureResponse",
-}) as any as S.Schema<SendDurableExecutionCallbackFailureResponse>;
+export const SendDurableExecutionCallbackFailureResponse =
+  DeleteFunctionCodeSigningConfigResponse as any as S.Schema<SendDurableExecutionCallbackFailureResponse>;
 export interface SendDurableExecutionCallbackHeartbeatRequest {
   CallbackId: string;
 }
@@ -5154,11 +5081,8 @@ export const SendDurableExecutionCallbackHeartbeatRequest = /*@__PURE__*/ S.susp
   identifier: "SendDurableExecutionCallbackHeartbeatRequest",
 }) as any as S.Schema<SendDurableExecutionCallbackHeartbeatRequest>;
 export interface SendDurableExecutionCallbackHeartbeatResponse {}
-export const SendDurableExecutionCallbackHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendDurableExecutionCallbackHeartbeatResponse",
-}) as any as S.Schema<SendDurableExecutionCallbackHeartbeatResponse>;
+export const SendDurableExecutionCallbackHeartbeatResponse =
+  DeleteFunctionCodeSigningConfigResponse as any as S.Schema<SendDurableExecutionCallbackHeartbeatResponse>;
 export interface SendDurableExecutionCallbackSuccessRequest {
   CallbackId: string;
   Result?: T.StreamingInputBody;
@@ -5184,11 +5108,8 @@ export const SendDurableExecutionCallbackSuccessRequest = /*@__PURE__*/ S.suspen
   identifier: "SendDurableExecutionCallbackSuccessRequest",
 }) as any as S.Schema<SendDurableExecutionCallbackSuccessRequest>;
 export interface SendDurableExecutionCallbackSuccessResponse {}
-export const SendDurableExecutionCallbackSuccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendDurableExecutionCallbackSuccessResponse",
-}) as any as S.Schema<SendDurableExecutionCallbackSuccessResponse>;
+export const SendDurableExecutionCallbackSuccessResponse =
+  DeleteFunctionCodeSigningConfigResponse as any as S.Schema<SendDurableExecutionCallbackSuccessResponse>;
 export interface StopDurableExecutionRequest {
   DurableExecutionArn: string;
   Error?: ErrorObject;
@@ -5235,9 +5156,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAliasResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
@@ -5262,9 +5181,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteAliasResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAliasRequest {
   FunctionName: string;
   Name: string;
@@ -5320,11 +5237,8 @@ export const UpdateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCapacityProviderResponse {
   CapacityProvider: CapacityProvider;
 }
-export const UpdateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CapacityProvider: CapacityProvider }),
-).annotate({
-  identifier: "UpdateCapacityProviderResponse",
-}) as any as S.Schema<UpdateCapacityProviderResponse>;
+export const UpdateCapacityProviderResponse =
+  CreateCapacityProviderResponse as any as S.Schema<UpdateCapacityProviderResponse>;
 export interface UpdateCodeSigningConfigRequest {
   CodeSigningConfigArn: string;
   Description?: string;
@@ -5353,11 +5267,8 @@ export const UpdateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCodeSigningConfigResponse {
   CodeSigningConfig: CodeSigningConfig;
 }
-export const UpdateCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeSigningConfig: CodeSigningConfig }),
-).annotate({
-  identifier: "UpdateCodeSigningConfigResponse",
-}) as any as S.Schema<UpdateCodeSigningConfigResponse>;
+export const UpdateCodeSigningConfigResponse =
+  CreateCodeSigningConfigResponse as any as S.Schema<UpdateCodeSigningConfigResponse>;
 export interface UpdateEventSourceMappingRequest {
   UUID: string;
   FunctionName?: string;
@@ -5584,19 +5495,8 @@ export interface UpdateFunctionUrlConfigResponse {
   LastModifiedTime: string;
   InvokeMode?: InvokeMode;
 }
-export const UpdateFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionUrl: S.String,
-    FunctionArn: S.String,
-    AuthType: FunctionUrlAuthType,
-    Cors: S.optional(Cors),
-    CreationTime: S.String,
-    LastModifiedTime: S.String,
-    InvokeMode: S.optional(InvokeMode),
-  }),
-).annotate({
-  identifier: "UpdateFunctionUrlConfigResponse",
-}) as any as S.Schema<UpdateFunctionUrlConfigResponse>;
+export const UpdateFunctionUrlConfigResponse =
+  GetFunctionUrlConfigResponse as any as S.Schema<UpdateFunctionUrlConfigResponse>;
 export type ThrottleReason =
   | "ConcurrentInvocationLimitExceeded"
   | "FunctionInvocationRateLimitExceeded"

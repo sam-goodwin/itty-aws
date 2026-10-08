@@ -303,24 +303,14 @@ export interface DataIntegrationFlowS3TargetConfiguration {
   prefix: string;
   options?: DataIntegrationFlowS3Options;
 }
-export const DataIntegrationFlowS3TargetConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketName: S.String,
-    prefix: S.String,
-    options: S.optional(DataIntegrationFlowS3Options),
-  }),
-).annotate({
-  identifier: "DataIntegrationFlowS3TargetConfiguration",
-}) as any as S.Schema<DataIntegrationFlowS3TargetConfiguration>;
+export const DataIntegrationFlowS3TargetConfiguration =
+  DataIntegrationFlowS3SourceConfiguration as any as S.Schema<DataIntegrationFlowS3TargetConfiguration>;
 export interface DataIntegrationFlowDatasetTargetConfiguration {
   datasetIdentifier: string;
   options?: DataIntegrationFlowDatasetOptions;
 }
-export const DataIntegrationFlowDatasetTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasetIdentifier: S.String, options: S.optional(DataIntegrationFlowDatasetOptions) }),
-).annotate({
-  identifier: "DataIntegrationFlowDatasetTargetConfiguration",
-}) as any as S.Schema<DataIntegrationFlowDatasetTargetConfiguration>;
+export const DataIntegrationFlowDatasetTargetConfiguration =
+  DataIntegrationFlowDatasetSourceConfiguration as any as S.Schema<DataIntegrationFlowDatasetTargetConfiguration>;
 export interface DataIntegrationFlowTarget {
   targetType: DataIntegrationFlowTargetType;
   s3Target?: DataIntegrationFlowS3TargetConfiguration;
@@ -682,11 +672,8 @@ export interface DeleteDataIntegrationFlowResponse {
   instanceId: string;
   name: string;
 }
-export const DeleteDataIntegrationFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String, name: S.String }),
-).annotate({
-  identifier: "DeleteDataIntegrationFlowResponse",
-}) as any as S.Schema<DeleteDataIntegrationFlowResponse>;
+export const DeleteDataIntegrationFlowResponse =
+  CreateDataIntegrationFlowResponse as any as S.Schema<DeleteDataIntegrationFlowResponse>;
 export interface DeleteDataLakeDatasetRequest {
   instanceId: string;
   namespace: string;
@@ -748,11 +735,8 @@ export interface DeleteDataLakeNamespaceResponse {
   instanceId: string;
   name: string;
 }
-export const DeleteDataLakeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceId: S.String, name: S.String }),
-).annotate({
-  identifier: "DeleteDataLakeNamespaceResponse",
-}) as any as S.Schema<DeleteDataLakeNamespaceResponse>;
+export const DeleteDataLakeNamespaceResponse =
+  CreateDataIntegrationFlowResponse as any as S.Schema<DeleteDataLakeNamespaceResponse>;
 export interface DeleteInstanceRequest {
   instanceId: string;
 }
@@ -771,9 +755,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInstanceResponse {
   instance: Instance;
 }
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instance: Instance }),
-).annotate({ identifier: "DeleteInstanceResponse" }) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  CreateInstanceResponse as any as S.Schema<DeleteInstanceResponse>;
 export interface GetBillOfMaterialsImportJobRequest {
   instanceId: string;
   jobId: string;
@@ -1129,11 +1112,8 @@ export const GetDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
-export const GetDataLakeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataset: DataLakeDataset }),
-).annotate({
-  identifier: "GetDataLakeDatasetResponse",
-}) as any as S.Schema<GetDataLakeDatasetResponse>;
+export const GetDataLakeDatasetResponse =
+  CreateDataLakeDatasetResponse as any as S.Schema<GetDataLakeDatasetResponse>;
 export interface GetDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
@@ -1158,11 +1138,8 @@ export const GetDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
-export const GetDataLakeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespace: DataLakeNamespace }),
-).annotate({
-  identifier: "GetDataLakeNamespaceResponse",
-}) as any as S.Schema<GetDataLakeNamespaceResponse>;
+export const GetDataLakeNamespaceResponse =
+  CreateDataLakeNamespaceResponse as any as S.Schema<GetDataLakeNamespaceResponse>;
 export interface GetInstanceRequest {
   instanceId: string;
 }
@@ -1181,9 +1158,7 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetInstanceResponse {
   instance: Instance;
 }
-export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instance: Instance }),
-).annotate({ identifier: "GetInstanceResponse" }) as any as S.Schema<GetInstanceResponse>;
+export const GetInstanceResponse = CreateInstanceResponse as any as S.Schema<GetInstanceResponse>;
 export type DataIntegrationEventNextToken = string;
 export type DataIntegrationEventMaxResults = number;
 export interface ListDataIntegrationEventsRequest {
@@ -1498,7 +1473,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = InstanceNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1519,9 +1494,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
@@ -1555,11 +1528,8 @@ export const UpdateDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataIntegrationFlowResponse {
   flow: DataIntegrationFlow;
 }
-export const UpdateDataIntegrationFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ flow: DataIntegrationFlow }),
-).annotate({
-  identifier: "UpdateDataIntegrationFlowResponse",
-}) as any as S.Schema<UpdateDataIntegrationFlowResponse>;
+export const UpdateDataIntegrationFlowResponse =
+  GetDataIntegrationFlowResponse as any as S.Schema<UpdateDataIntegrationFlowResponse>;
 export interface UpdateDataLakeDatasetRequest {
   instanceId: string;
   namespace: string;
@@ -1591,11 +1561,8 @@ export const UpdateDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
-export const UpdateDataLakeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataset: DataLakeDataset }),
-).annotate({
-  identifier: "UpdateDataLakeDatasetResponse",
-}) as any as S.Schema<UpdateDataLakeDatasetResponse>;
+export const UpdateDataLakeDatasetResponse =
+  CreateDataLakeDatasetResponse as any as S.Schema<UpdateDataLakeDatasetResponse>;
 export interface UpdateDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
@@ -1622,11 +1589,8 @@ export const UpdateDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
-export const UpdateDataLakeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ namespace: DataLakeNamespace }),
-).annotate({
-  identifier: "UpdateDataLakeNamespaceResponse",
-}) as any as S.Schema<UpdateDataLakeNamespaceResponse>;
+export const UpdateDataLakeNamespaceResponse =
+  CreateDataLakeNamespaceResponse as any as S.Schema<UpdateDataLakeNamespaceResponse>;
 export interface UpdateInstanceRequest {
   instanceId: string;
   instanceName?: string;
@@ -1651,9 +1615,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInstanceResponse {
   instance: Instance;
 }
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instance: Instance }),
-).annotate({ identifier: "UpdateInstanceResponse" }) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  CreateInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 export type CreateBillOfMaterialsImportJobError =
   | AccessDeniedException
   | ConflictException

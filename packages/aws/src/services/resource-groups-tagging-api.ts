@@ -130,13 +130,13 @@ export type TargetIdFilterList = string[];
 export const TargetIdFilterList = /*@__PURE__*/ S.Array(S.String);
 export type Region = string;
 export type RegionFilterList = string[];
-export const RegionFilterList = /*@__PURE__*/ S.Array(S.String);
+export const RegionFilterList = TargetIdFilterList as any as S.Schema<RegionFilterList>;
 export type AmazonResourceType = string;
 export type ResourceTypeFilterList = string[];
-export const ResourceTypeFilterList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypeFilterList = TargetIdFilterList as any as S.Schema<ResourceTypeFilterList>;
 export type TagKey = string;
 export type TagKeyFilterList = string[];
-export const TagKeyFilterList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyFilterList = TargetIdFilterList as any as S.Schema<TagKeyFilterList>;
 export type GroupByAttribute = "TARGET_ID" | "REGION" | "RESOURCE_TYPE" | (string & {});
 export const GroupByAttribute = S.String;
 
@@ -204,7 +204,7 @@ export const GetComplianceSummaryOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetComplianceSummaryOutput>;
 export type TagValue = string;
 export type TagValueList = string[];
-export const TagValueList = /*@__PURE__*/ S.Array(S.String);
+export const TagValueList = TargetIdFilterList as any as S.Schema<TagValueList>;
 export interface TagFilter {
   Key?: string;
   Values?: string[];
@@ -220,7 +220,7 @@ export type IncludeComplianceDetails = boolean;
 export type ExcludeCompliantResources = boolean;
 export type ResourceARN = string;
 export type ResourceARNListForGet = string[];
-export const ResourceARNListForGet = /*@__PURE__*/ S.Array(S.String);
+export const ResourceARNListForGet = TargetIdFilterList as any as S.Schema<ResourceARNListForGet>;
 export interface GetResourcesInput {
   PaginationToken?: string;
   TagFilters?: TagFilter[];
@@ -253,7 +253,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TargetIdFilterList as any as S.Schema<TagKeyList>;
 export type ComplianceStatus = boolean;
 export interface ComplianceDetails {
   NoncompliantKeys?: string[];
@@ -318,7 +318,7 @@ export const GetTagValuesInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetTagValuesInput" }) as any as S.Schema<GetTagValuesInput>;
 export type TagValuesOutputList = string[];
-export const TagValuesOutputList = /*@__PURE__*/ S.Array(S.String);
+export const TagValuesOutputList = TargetIdFilterList as any as S.Schema<TagValuesOutputList>;
 export interface GetTagValuesOutput {
   PaginationToken?: string;
   TagValues?: string[];
@@ -339,9 +339,10 @@ export const ListRequiredTagsInput = /*@__PURE__*/ S.suspend(() =>
 export type ResourceType = string;
 export type CloudFormationResourceType = string;
 export type CloudFormationResourceTypes = string[];
-export const CloudFormationResourceTypes = /*@__PURE__*/ S.Array(S.String);
+export const CloudFormationResourceTypes =
+  TargetIdFilterList as any as S.Schema<CloudFormationResourceTypes>;
 export type ReportingTagKeys = string[];
-export const ReportingTagKeys = /*@__PURE__*/ S.Array(S.String);
+export const ReportingTagKeys = TargetIdFilterList as any as S.Schema<ReportingTagKeys>;
 export interface RequiredTag {
   ResourceType?: string;
   CloudFormationResourceTypes?: string[];
@@ -380,7 +381,8 @@ export const StartReportCreationOutput = /*@__PURE__*/ S.suspend(() => S.Struct(
   identifier: "StartReportCreationOutput",
 }) as any as S.Schema<StartReportCreationOutput>;
 export type ResourceARNListForTagUntag = string[];
-export const ResourceARNListForTagUntag = /*@__PURE__*/ S.Array(S.String);
+export const ResourceARNListForTagUntag =
+  TargetIdFilterList as any as S.Schema<ResourceARNListForTagUntag>;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface TagResourcesInput {
@@ -420,7 +422,7 @@ export const TagResourcesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FailedResourcesMap: S.optional(FailedResourcesMap) }),
 ).annotate({ identifier: "TagResourcesOutput" }) as any as S.Schema<TagResourcesOutput>;
 export type TagKeyListForUntag = string[];
-export const TagKeyListForUntag = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyListForUntag = TargetIdFilterList as any as S.Schema<TagKeyListForUntag>;
 export interface UntagResourcesInput {
   ResourceARNList: string[];
   TagKeys: string[];
@@ -433,9 +435,7 @@ export const UntagResourcesInput = /*@__PURE__*/ S.suspend(() =>
 export interface UntagResourcesOutput {
   FailedResourcesMap?: { [key: string]: FailureInfo | undefined };
 }
-export const UntagResourcesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FailedResourcesMap: S.optional(FailedResourcesMap) }),
-).annotate({ identifier: "UntagResourcesOutput" }) as any as S.Schema<UntagResourcesOutput>;
+export const UntagResourcesOutput = TagResourcesOutput as any as S.Schema<UntagResourcesOutput>;
 export type ExceptionMessage = string;
 export type DescribeReportCreationError =
   | ConstraintViolationException

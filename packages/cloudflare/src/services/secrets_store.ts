@@ -360,11 +360,8 @@ export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStoreSecretRequest" }) as any as S.Schema<DeleteStoreSecretRequest>;
 
 export type DeleteStoreSecretResponse = unknown;
-export const DeleteStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteStoreSecretResponse",
-}) as any as S.Schema<DeleteStoreSecretResponse>;
+export const DeleteStoreSecretResponse =
+  BulkDeleteStoreSecretsResponse as any as S.Schema<DeleteStoreSecretResponse>;
 
 export type StoresSecretsDuplicateRequestScopesItem =
   | "workers"
@@ -531,15 +528,7 @@ export interface GetStoreResponse {
   /** Account Identifier. */
   accountId?: string | null;
 }
-export const GetStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetStoreResponse" }) as any as S.Schema<GetStoreResponse>;
+export const GetStoreResponse = CreateStoreResponse as any as S.Schema<GetStoreResponse>;
 
 export interface GetStoreSecretRequest {
   accountId: string;

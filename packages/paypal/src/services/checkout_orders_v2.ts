@@ -2107,27 +2107,23 @@ export const CardVaultResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CardVaultResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const CardVaultResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemSchemaAllOfList>;
+export const CardVaultResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CardVaultResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const CardVaultResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemSchemaAnyOfList>;
+export const CardVaultResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CardVaultResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const CardVaultResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemSchemaOneOfList>;
+export const CardVaultResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CardVaultResponseLinksItemSchemaLinksList = Array<unknown>;
-export const CardVaultResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemSchemaLinksList>;
+export const CardVaultResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export interface CardVaultResponseLinksItemSchemaMedia {
@@ -2198,27 +2194,23 @@ export const CardVaultResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CardVaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const CardVaultResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemTargetSchemaAllOfList>;
+export const CardVaultResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CardVaultResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const CardVaultResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemTargetSchemaAnyOfList>;
+export const CardVaultResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CardVaultResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const CardVaultResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemTargetSchemaOneOfList>;
+export const CardVaultResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CardVaultResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const CardVaultResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CardVaultResponseLinksItemTargetSchemaLinksList>;
+export const CardVaultResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CardVaultResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CardVaultResponseLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -2254,26 +2246,8 @@ export interface CardVaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CardVaultResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CardVaultResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(CardVaultResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(CardVaultResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CardVaultResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CardVaultResponseLinksItemTargetSchema",
-}) as any as S.Schema<CardVaultResponseLinksItemTargetSchema>;
+export const CardVaultResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<CardVaultResponseLinksItemTargetSchema>;
 
 export interface CardVaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -2479,27 +2453,23 @@ export const PaypalWalletVaultResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type PaypalWalletVaultResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaAllOfList>;
+export const PaypalWalletVaultResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type PaypalWalletVaultResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaAnyOfList>;
+export const PaypalWalletVaultResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type PaypalWalletVaultResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaOneOfList>;
+export const PaypalWalletVaultResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type PaypalWalletVaultResponseLinksItemSchemaLinksList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaLinksList>;
+export const PaypalWalletVaultResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type PaypalWalletVaultResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -2535,50 +2505,28 @@ export interface PaypalWalletVaultResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const PaypalWalletVaultResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(PaypalWalletVaultResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(PaypalWalletVaultResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(PaypalWalletVaultResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(PaypalWalletVaultResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PaypalWalletVaultResponseLinksItemSchema",
-}) as any as S.Schema<PaypalWalletVaultResponseLinksItemSchema>;
+export const PaypalWalletVaultResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<PaypalWalletVaultResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type PaypalWalletVaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaAllOfList>;
+export const PaypalWalletVaultResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type PaypalWalletVaultResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaAnyOfList>;
+export const PaypalWalletVaultResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type PaypalWalletVaultResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaOneOfList>;
+export const PaypalWalletVaultResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type PaypalWalletVaultResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const PaypalWalletVaultResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaLinksList>;
+export const PaypalWalletVaultResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type PaypalWalletVaultResponseLinksItemTargetSchemaMedia =
@@ -2616,26 +2564,8 @@ export interface PaypalWalletVaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const PaypalWalletVaultResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(PaypalWalletVaultResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(PaypalWalletVaultResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(PaypalWalletVaultResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(PaypalWalletVaultResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PaypalWalletVaultResponseLinksItemTargetSchema",
-}) as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchema>;
+export const PaypalWalletVaultResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<PaypalWalletVaultResponseLinksItemTargetSchema>;
 
 export interface PaypalWalletVaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -2697,9 +2627,8 @@ export const PaypalWalletVaultResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of labels for the cobranded card. */
 export type PaypalWalletAttributesResponseCobrandedCardsItemLabelsList = Array<string>;
-export const PaypalWalletAttributesResponseCobrandedCardsItemLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaypalWalletAttributesResponseCobrandedCardsItemLabelsList>;
+export const PaypalWalletAttributesResponseCobrandedCardsItemLabelsList =
+  CardResponseBinDetailsProductsList as any as S.Schema<PaypalWalletAttributesResponseCobrandedCardsItemLabelsList>;
 
 export interface PaypalWalletAttributesResponseCobrandedCardsItemPayee {
   email_address?: unknown;
@@ -2939,15 +2868,13 @@ export const ApplePayPhoneNumber =
 
 /** Array of brands or networks associated with the card. */
 export type ApplePayCardAvailableNetworksList = Array<unknown>;
-export const ApplePayCardAvailableNetworksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ApplePayCardAvailableNetworksList>;
+export const ApplePayCardAvailableNetworksList =
+  CardResponseAvailableNetworksList as any as S.Schema<ApplePayCardAvailableNetworksList>;
 
 /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
 export type ApplePayCardBinDetailsProductsList = Array<string>;
-export const ApplePayCardBinDetailsProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApplePayCardBinDetailsProductsList>;
+export const ApplePayCardBinDetailsProductsList =
+  CardResponseBinDetailsProductsList as any as S.Schema<ApplePayCardBinDetailsProductsList>;
 
 export interface ApplePayCardBinDetails {
   /** The Bank Identification Number (BIN) signifies the number that is being used to identify the granular level details (except the PII information) of the card. */
@@ -2958,14 +2885,8 @@ export interface ApplePayCardBinDetails {
   /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
   products?: ApplePayCardBinDetailsProductsList;
 }
-export const ApplePayCardBinDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bin: S.optional(S.String),
-    issuing_bank: S.optional(S.String),
-    bin_country_code: S.optional(S.Unknown),
-    products: S.optional(ApplePayCardBinDetailsProductsList),
-  }),
-).annotate({ identifier: "ApplePayCardBinDetails" }) as any as S.Schema<ApplePayCardBinDetails>;
+export const ApplePayCardBinDetails =
+  CardResponseBinDetails as any as S.Schema<ApplePayCardBinDetails>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ApplePayCardBillingAddressAddressDetails = CardRequestInputBillingAddressAddressDetails;
@@ -3041,27 +2962,23 @@ export const VaultResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VaultResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const VaultResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemSchemaAllOfList>;
+export const VaultResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type VaultResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const VaultResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemSchemaAnyOfList>;
+export const VaultResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type VaultResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const VaultResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemSchemaOneOfList>;
+export const VaultResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type VaultResponseLinksItemSchemaLinksList = Array<unknown>;
-export const VaultResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemSchemaLinksList>;
+export const VaultResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type VaultResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -3097,50 +3014,28 @@ export interface VaultResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const VaultResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(VaultResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(VaultResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(VaultResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(VaultResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VaultResponseLinksItemSchema",
-}) as any as S.Schema<VaultResponseLinksItemSchema>;
+export const VaultResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<VaultResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const VaultResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemTargetSchemaAllOfList>;
+export const VaultResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type VaultResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const VaultResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemTargetSchemaAnyOfList>;
+export const VaultResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type VaultResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const VaultResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemTargetSchemaOneOfList>;
+export const VaultResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type VaultResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const VaultResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VaultResponseLinksItemTargetSchemaLinksList>;
+export const VaultResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<VaultResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type VaultResponseLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -3176,26 +3071,8 @@ export interface VaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const VaultResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(VaultResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(VaultResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(VaultResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(VaultResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VaultResponseLinksItemTargetSchema",
-}) as any as S.Schema<VaultResponseLinksItemTargetSchema>;
+export const VaultResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<VaultResponseLinksItemTargetSchema>;
 
 export interface VaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -3385,27 +3262,23 @@ export const VenmoVaultResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VenmoVaultResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const VenmoVaultResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemSchemaAllOfList>;
+export const VenmoVaultResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type VenmoVaultResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const VenmoVaultResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemSchemaAnyOfList>;
+export const VenmoVaultResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type VenmoVaultResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const VenmoVaultResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemSchemaOneOfList>;
+export const VenmoVaultResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type VenmoVaultResponseLinksItemSchemaLinksList = Array<unknown>;
-export const VenmoVaultResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemSchemaLinksList>;
+export const VenmoVaultResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type VenmoVaultResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -3441,50 +3314,28 @@ export interface VenmoVaultResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const VenmoVaultResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(VenmoVaultResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(VenmoVaultResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(VenmoVaultResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(VenmoVaultResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VenmoVaultResponseLinksItemSchema",
-}) as any as S.Schema<VenmoVaultResponseLinksItemSchema>;
+export const VenmoVaultResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<VenmoVaultResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type VenmoVaultResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const VenmoVaultResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaAllOfList>;
+export const VenmoVaultResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type VenmoVaultResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const VenmoVaultResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaAnyOfList>;
+export const VenmoVaultResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type VenmoVaultResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const VenmoVaultResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaOneOfList>;
+export const VenmoVaultResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type VenmoVaultResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const VenmoVaultResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaLinksList>;
+export const VenmoVaultResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<VenmoVaultResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type VenmoVaultResponseLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -3520,26 +3371,8 @@ export interface VenmoVaultResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const VenmoVaultResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(VenmoVaultResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(VenmoVaultResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(VenmoVaultResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(VenmoVaultResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VenmoVaultResponseLinksItemTargetSchema",
-}) as any as S.Schema<VenmoVaultResponseLinksItemTargetSchema>;
+export const VenmoVaultResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<VenmoVaultResponseLinksItemTargetSchema>;
 
 export interface VenmoVaultResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -4208,27 +4041,23 @@ export const TrackerLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type TrackerLinksItemSchemaAllOfList = Array<unknown>;
-export const TrackerLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemSchemaAllOfList>;
+export const TrackerLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type TrackerLinksItemSchemaAnyOfList = Array<unknown>;
-export const TrackerLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemSchemaAnyOfList>;
+export const TrackerLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type TrackerLinksItemSchemaOneOfList = Array<unknown>;
-export const TrackerLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemSchemaOneOfList>;
+export const TrackerLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type TrackerLinksItemSchemaLinksList = Array<unknown>;
-export const TrackerLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemSchemaLinksList>;
+export const TrackerLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type TrackerLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -4285,27 +4114,23 @@ export const TrackerLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type TrackerLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const TrackerLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemTargetSchemaAllOfList>;
+export const TrackerLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type TrackerLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const TrackerLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemTargetSchemaAnyOfList>;
+export const TrackerLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type TrackerLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const TrackerLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemTargetSchemaOneOfList>;
+export const TrackerLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type TrackerLinksItemTargetSchemaLinksList = Array<unknown>;
-export const TrackerLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TrackerLinksItemTargetSchemaLinksList>;
+export const TrackerLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<TrackerLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type TrackerLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -4341,26 +4166,8 @@ export interface TrackerLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const TrackerLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(TrackerLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(TrackerLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(TrackerLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(TrackerLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TrackerLinksItemTargetSchema",
-}) as any as S.Schema<TrackerLinksItemTargetSchema>;
+export const TrackerLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<TrackerLinksItemTargetSchema>;
 
 export interface TrackerLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -4786,25 +4593,19 @@ export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLi
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaMedia =
@@ -4876,33 +4677,25 @@ export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLi
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaMedia =
@@ -5544,33 +5337,25 @@ export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksIte
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaMedia =
@@ -5609,66 +5394,31 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLink
   pathStart?: string;
 }
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema",
-  }) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaMedia =
@@ -5707,34 +5457,7 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLink
   pathStart?: string;
 }
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema",
-  }) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
 
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -6178,9 +5901,7 @@ export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPay
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
 
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -6299,33 +6020,25 @@ export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaMedia =
@@ -6364,66 +6077,31 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinks
   pathStart?: string;
 }
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema",
-  }) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaMedia =
@@ -6462,34 +6140,7 @@ export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinks
   pathStart?: string;
 }
 export const AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema",
-  }) as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
 
 export interface AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -6671,27 +6322,23 @@ export const AuthorizeOrderResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaAllOfList>;
+export const AuthorizeOrderResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaAnyOfList>;
+export const AuthorizeOrderResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaOneOfList>;
+export const AuthorizeOrderResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponseLinksItemSchemaLinksList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaLinksList>;
+export const AuthorizeOrderResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -6727,50 +6374,28 @@ export interface AuthorizeOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const AuthorizeOrderResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(AuthorizeOrderResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(AuthorizeOrderResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(AuthorizeOrderResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(AuthorizeOrderResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthorizeOrderResponseLinksItemSchema",
-}) as any as S.Schema<AuthorizeOrderResponseLinksItemSchema>;
+export const AuthorizeOrderResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<AuthorizeOrderResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type AuthorizeOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaAllOfList>;
+export const AuthorizeOrderResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type AuthorizeOrderResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaAnyOfList>;
+export const AuthorizeOrderResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type AuthorizeOrderResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaOneOfList>;
+export const AuthorizeOrderResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type AuthorizeOrderResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const AuthorizeOrderResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaLinksList>;
+export const AuthorizeOrderResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type AuthorizeOrderResponseLinksItemTargetSchemaMedia =
@@ -6808,26 +6433,8 @@ export interface AuthorizeOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const AuthorizeOrderResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(AuthorizeOrderResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(AuthorizeOrderResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(AuthorizeOrderResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(AuthorizeOrderResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthorizeOrderResponseLinksItemTargetSchema",
-}) as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchema>;
+export const AuthorizeOrderResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<AuthorizeOrderResponseLinksItemTargetSchema>;
 
 export interface AuthorizeOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -6977,9 +6584,7 @@ export const CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOption
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
 export const CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-  ) as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList>;
+  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList as any as S.Schema<CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderRequestPaymentSourcePaypalAttributesVaultShippingAddressAddressDetails =
@@ -8179,9 +7784,8 @@ export const CaptureOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CaptureOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const CaptureOrderResponsePurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemShippingOptionsList>;
+export const CaptureOrderResponsePurchaseUnitsItemShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CaptureOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
@@ -8194,9 +7798,8 @@ export const CaptureOrderResponsePurchaseUnitsItemShippingAddress = CardRequestI
 
 /** An array of trackers for a transaction. */
 export type CaptureOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-export const CaptureOrderResponsePurchaseUnitsItemShippingTrackersList = /*@__PURE__*/ S.Array(
-  Tracker,
-) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemShippingTrackersList>;
+export const CaptureOrderResponsePurchaseUnitsItemShippingTrackersList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemShippingTrackersList>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
@@ -8338,33 +7941,25 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLink
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaMedia =
@@ -8403,66 +7998,31 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   pathStart?: string;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaMedia =
@@ -8501,35 +8061,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   pathStart?: string;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -9026,9 +8558,7 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerRece
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown {
   gross_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -9041,33 +8571,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   platform_fees?: CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount:
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      receivable_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      exchange_rate: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate,
-      ),
-      platform_fees: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
 
 /** The HTTP method required to make the related call. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
@@ -9085,33 +8589,25 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemM
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaMedia =
@@ -9150,66 +8646,31 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   pathStart?: string;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaMedia =
@@ -9248,34 +8709,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   pathStart?: string;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -9713,9 +9147,7 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayab
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
 
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -9741,9 +9173,7 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayab
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
 
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownTotalRefundedAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -9764,36 +9194,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerP
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      platform_fees: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList,
-      ),
-      net_amount_breakdown: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList,
-      ),
-      total_refunded_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
 
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -9816,33 +9217,25 @@ export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMe
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaMedia =
@@ -9881,66 +9274,31 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   pathStart?: string;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaMedia =
@@ -9979,34 +9337,7 @@ export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   pathStart?: string;
 }
 export const CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema",
-  }) as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
 
 export interface CaptureOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -10187,27 +9518,23 @@ export const CaptureOrderResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const CaptureOrderResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemSchemaAllOfList>;
+export const CaptureOrderResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const CaptureOrderResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemSchemaAnyOfList>;
+export const CaptureOrderResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const CaptureOrderResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemSchemaOneOfList>;
+export const CaptureOrderResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponseLinksItemSchemaLinksList = Array<unknown>;
-export const CaptureOrderResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemSchemaLinksList>;
+export const CaptureOrderResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -10243,50 +9570,28 @@ export interface CaptureOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CaptureOrderResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CaptureOrderResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(CaptureOrderResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(CaptureOrderResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CaptureOrderResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CaptureOrderResponseLinksItemSchema",
-}) as any as S.Schema<CaptureOrderResponseLinksItemSchema>;
+export const CaptureOrderResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<CaptureOrderResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CaptureOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const CaptureOrderResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaAllOfList>;
+export const CaptureOrderResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CaptureOrderResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const CaptureOrderResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaAnyOfList>;
+export const CaptureOrderResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CaptureOrderResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const CaptureOrderResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaOneOfList>;
+export const CaptureOrderResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CaptureOrderResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const CaptureOrderResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaLinksList>;
+export const CaptureOrderResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CaptureOrderResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CaptureOrderResponseLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -10322,26 +9627,8 @@ export interface CaptureOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CaptureOrderResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CaptureOrderResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(CaptureOrderResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(CaptureOrderResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CaptureOrderResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CaptureOrderResponseLinksItemTargetSchema",
-}) as any as S.Schema<CaptureOrderResponseLinksItemTargetSchema>;
+export const CaptureOrderResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<CaptureOrderResponseLinksItemTargetSchema>;
 
 export interface CaptureOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -10490,9 +9777,8 @@ export const PaymentSourceInputPaypalAttributesVaultShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type PaymentSourceInputPaypalAttributesVaultShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const PaymentSourceInputPaypalAttributesVaultShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<PaymentSourceInputPaypalAttributesVaultShippingOptionsList>;
+export const PaymentSourceInputPaypalAttributesVaultShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<PaymentSourceInputPaypalAttributesVaultShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type PaymentSourceInputPaypalAttributesVaultShippingAddressAddressDetails =
@@ -11636,9 +10922,8 @@ export const ConfirmOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList>;
+export const ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ConfirmOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
@@ -11651,9 +10936,8 @@ export const ConfirmOrderResponsePurchaseUnitsItemShippingAddress = CardRequestI
 
 /** An array of trackers for a transaction. */
 export type ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-export const ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList = /*@__PURE__*/ S.Array(
-  Tracker,
-) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList>;
+export const ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemShippingTrackersList>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
@@ -11795,33 +11079,25 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLink
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaMedia =
@@ -11860,66 +11136,31 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   pathStart?: string;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaMedia =
@@ -11958,35 +11199,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItem
   pathStart?: string;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -12483,9 +11696,7 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerRece
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown {
   gross_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -12498,33 +11709,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSeller
   platform_fees?: ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount:
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      receivable_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      exchange_rate: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate,
-      ),
-      platform_fees: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
 
 /** The HTTP method required to make the related call. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
@@ -12542,33 +11727,25 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemM
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaMedia =
@@ -12607,66 +11784,31 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   pathStart?: string;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaMedia =
@@ -12705,34 +11847,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksI
   pathStart?: string;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -13170,9 +12285,7 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayab
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -13198,9 +12311,7 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayab
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownTotalRefundedAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -13221,36 +12332,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerP
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      platform_fees: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList,
-      ),
-      net_amount_breakdown: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList,
-      ),
-      total_refunded_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
 
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -13273,33 +12355,25 @@ export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMe
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaMedia =
@@ -13338,66 +12412,31 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   pathStart?: string;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaMedia =
@@ -13436,34 +12475,7 @@ export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIt
   pathStart?: string;
 }
 export const ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema",
-  }) as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
 
 export interface ConfirmOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -13644,27 +12656,23 @@ export const ConfirmOrderResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemSchemaAllOfList>;
+export const ConfirmOrderResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemSchemaAnyOfList>;
+export const ConfirmOrderResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemSchemaOneOfList>;
+export const ConfirmOrderResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponseLinksItemSchemaLinksList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemSchemaLinksList>;
+export const ConfirmOrderResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -13700,50 +12708,28 @@ export interface ConfirmOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const ConfirmOrderResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(ConfirmOrderResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(ConfirmOrderResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(ConfirmOrderResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(ConfirmOrderResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfirmOrderResponseLinksItemSchema",
-}) as any as S.Schema<ConfirmOrderResponseLinksItemSchema>;
+export const ConfirmOrderResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<ConfirmOrderResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type ConfirmOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaAllOfList>;
+export const ConfirmOrderResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type ConfirmOrderResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaAnyOfList>;
+export const ConfirmOrderResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type ConfirmOrderResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaOneOfList>;
+export const ConfirmOrderResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type ConfirmOrderResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const ConfirmOrderResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaLinksList>;
+export const ConfirmOrderResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type ConfirmOrderResponseLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -13779,26 +12765,8 @@ export interface ConfirmOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const ConfirmOrderResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(ConfirmOrderResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(ConfirmOrderResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(ConfirmOrderResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(ConfirmOrderResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfirmOrderResponseLinksItemTargetSchema",
-}) as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchema>;
+export const ConfirmOrderResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<ConfirmOrderResponseLinksItemTargetSchema>;
 
 export interface ConfirmOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -14050,9 +13018,8 @@ export const CreateOrderRequestPurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CreateOrderRequestPurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const CreateOrderRequestPurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<CreateOrderRequestPurchaseUnitsItemShippingOptionsList>;
+export const CreateOrderRequestPurchaseUnitsItemShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CreateOrderRequestPurchaseUnitsItemShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderRequestPurchaseUnitsItemShippingAddressAddressDetails =
@@ -14444,9 +13411,8 @@ export const CreateOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CreateOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const CreateOrderResponsePurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemShippingOptionsList>;
+export const CreateOrderResponsePurchaseUnitsItemShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
@@ -14459,9 +13425,8 @@ export const CreateOrderResponsePurchaseUnitsItemShippingAddress = CardRequestIn
 
 /** An array of trackers for a transaction. */
 export type CreateOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-export const CreateOrderResponsePurchaseUnitsItemShippingTrackersList = /*@__PURE__*/ S.Array(
-  Tracker,
-) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemShippingTrackersList>;
+export const CreateOrderResponsePurchaseUnitsItemShippingTrackersList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemShippingTrackersList>;
 
 export interface CreateOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
@@ -14603,33 +13568,25 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinks
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaMedia =
@@ -14668,66 +13625,31 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemL
   pathStart?: string;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaMedia =
@@ -14766,35 +13688,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemL
   pathStart?: string;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -15289,9 +14183,7 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerRecei
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown {
   gross_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -15347,33 +14239,25 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMe
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaMedia =
@@ -15412,66 +14296,31 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksIt
   pathStart?: string;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaMedia =
@@ -15510,34 +14359,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksIt
   pathStart?: string;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -15975,9 +14797,7 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayabl
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
 
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -16003,9 +14823,7 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayabl
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
 
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownTotalRefundedAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -16026,36 +14844,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPa
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      platform_fees: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList,
-      ),
-      net_amount_breakdown: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList,
-      ),
-      total_refunded_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
 
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -16078,33 +14867,25 @@ export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMet
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaMedia =
@@ -16143,66 +14924,31 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIte
   pathStart?: string;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaMedia =
@@ -16241,34 +14987,7 @@ export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksIte
   pathStart?: string;
 }
 export const CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema",
-  }) as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
 
 export interface CreateOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -16448,27 +15167,23 @@ export const CreateOrderResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const CreateOrderResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemSchemaAllOfList>;
+export const CreateOrderResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const CreateOrderResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemSchemaAnyOfList>;
+export const CreateOrderResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const CreateOrderResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemSchemaOneOfList>;
+export const CreateOrderResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponseLinksItemSchemaLinksList = Array<unknown>;
-export const CreateOrderResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemSchemaLinksList>;
+export const CreateOrderResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -16504,50 +15219,28 @@ export interface CreateOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CreateOrderResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CreateOrderResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(CreateOrderResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(CreateOrderResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CreateOrderResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOrderResponseLinksItemSchema",
-}) as any as S.Schema<CreateOrderResponseLinksItemSchema>;
+export const CreateOrderResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrderResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const CreateOrderResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaAllOfList>;
+export const CreateOrderResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrderResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const CreateOrderResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaAnyOfList>;
+export const CreateOrderResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrderResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const CreateOrderResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaOneOfList>;
+export const CreateOrderResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrderResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const CreateOrderResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaLinksList>;
+export const CreateOrderResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrderResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrderResponseLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -16583,26 +15276,8 @@ export interface CreateOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CreateOrderResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CreateOrderResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(CreateOrderResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(CreateOrderResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CreateOrderResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOrderResponseLinksItemTargetSchema",
-}) as any as S.Schema<CreateOrderResponseLinksItemTargetSchema>;
+export const CreateOrderResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrderResponseLinksItemTargetSchema>;
 
 export interface CreateOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -18358,9 +17033,8 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList>;
+export const CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingAddressAddressDetails =
@@ -18375,9 +17049,8 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemShippingAddress =
 
 /** An array of trackers for a transaction. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-export const CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList = /*@__PURE__*/ S.Array(
-  Tracker,
-) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList>;
+export const CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemShippingTrackersList>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
@@ -18520,33 +17193,25 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsIte
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaMedia =
@@ -18585,67 +17250,31 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   pathStart?: string;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaMedia =
@@ -18684,35 +17313,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorization
   pathStart?: string;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -19216,9 +17817,7 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSelle
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown {
   gross_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -19231,33 +17830,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemS
   platform_fees?: CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount:
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      receivable_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      exchange_rate: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate,
-      ),
-      platform_fees: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
 
 /** The HTTP method required to make the related call. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
@@ -19276,33 +17849,25 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinks
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaMedia =
@@ -19341,66 +17906,31 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemL
   pathStart?: string;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaMedia =
@@ -19439,35 +17969,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemL
   pathStart?: string;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -19911,9 +18413,7 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSeller
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -19939,9 +18439,7 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSeller
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
 
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownTotalRefundedAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -20016,33 +18514,25 @@ export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksI
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaMedia =
@@ -20081,66 +18571,31 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLi
   pathStart?: string;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaMedia =
@@ -20179,35 +18634,7 @@ export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLi
   pathStart?: string;
 }
 export const CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema",
-  }) as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema as any as S.Schema<CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
 
 export interface CreateOrdersTrackResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -20395,27 +18822,23 @@ export const CreateOrdersTrackResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaAllOfList>;
+export const CreateOrdersTrackResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaAnyOfList>;
+export const CreateOrdersTrackResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaOneOfList>;
+export const CreateOrdersTrackResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponseLinksItemSchemaLinksList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaLinksList>;
+export const CreateOrdersTrackResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -20451,50 +18874,28 @@ export interface CreateOrdersTrackResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CreateOrdersTrackResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CreateOrdersTrackResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(CreateOrdersTrackResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(CreateOrdersTrackResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CreateOrdersTrackResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOrdersTrackResponseLinksItemSchema",
-}) as any as S.Schema<CreateOrdersTrackResponseLinksItemSchema>;
+export const CreateOrdersTrackResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrdersTrackResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type CreateOrdersTrackResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaAllOfList>;
+export const CreateOrdersTrackResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type CreateOrdersTrackResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaAnyOfList>;
+export const CreateOrdersTrackResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type CreateOrdersTrackResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaOneOfList>;
+export const CreateOrdersTrackResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type CreateOrdersTrackResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const CreateOrdersTrackResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaLinksList>;
+export const CreateOrdersTrackResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type CreateOrdersTrackResponseLinksItemTargetSchemaMedia =
@@ -20532,26 +18933,8 @@ export interface CreateOrdersTrackResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const CreateOrdersTrackResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(CreateOrdersTrackResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(CreateOrdersTrackResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(CreateOrdersTrackResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(CreateOrdersTrackResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOrdersTrackResponseLinksItemTargetSchema",
-}) as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchema>;
+export const CreateOrdersTrackResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<CreateOrdersTrackResponseLinksItemTargetSchema>;
 
 export interface CreateOrdersTrackResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -20818,9 +19201,8 @@ export const GetOrderResponsePurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type GetOrderResponsePurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const GetOrderResponsePurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemShippingOptionsList>;
+export const GetOrderResponsePurchaseUnitsItemShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<GetOrderResponsePurchaseUnitsItemShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type GetOrderResponsePurchaseUnitsItemShippingAddressAddressDetails =
@@ -20833,9 +19215,8 @@ export const GetOrderResponsePurchaseUnitsItemShippingAddress = CardRequestInput
 
 /** An array of trackers for a transaction. */
 export type GetOrderResponsePurchaseUnitsItemShippingTrackersList = Array<Tracker>;
-export const GetOrderResponsePurchaseUnitsItemShippingTrackersList = /*@__PURE__*/ S.Array(
-  Tracker,
-) as any as S.Schema<GetOrderResponsePurchaseUnitsItemShippingTrackersList>;
+export const GetOrderResponsePurchaseUnitsItemShippingTrackersList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingTrackersList as any as S.Schema<GetOrderResponsePurchaseUnitsItemShippingTrackersList>;
 
 export interface GetOrderResponsePurchaseUnitsItemShipping {
   name?: CardCustomerName;
@@ -20975,33 +19356,25 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksIte
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaMedia =
@@ -21040,66 +19413,31 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLink
   pathStart?: string;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaMedia =
@@ -21138,34 +19476,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLink
   pathStart?: string;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemTargetSchema>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -21657,9 +19968,7 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivab
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown {
   gross_amount: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -21672,32 +19981,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerRece
   platform_fees?: GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount:
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      receivable_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      exchange_rate: S.optional(
-        AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownExchangeRate,
-      ),
-      platform_fees: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
+  CreateOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdown>;
 
 /** The HTTP method required to make the related call. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMethod =
@@ -21715,33 +19999,25 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemMetho
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaMedia =
@@ -21780,66 +20056,31 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemS
   pathStart?: string;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaMedia =
@@ -21878,34 +20119,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemT
   pathStart?: string;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItemTargetSchema>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsCapturesItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -22337,9 +20551,7 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBr
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
   Array<PaymentInstructionPlatformFeesItem>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList =
-  /*@__PURE__*/ S.Array(
-    PaymentInstructionPlatformFeesItem,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsCapturesItemSellerReceivableBreakdownPlatformFeesList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList>;
 
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItemPayableAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -22365,9 +20577,7 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBr
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
   Array<AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList =
-  /*@__PURE__*/ S.Array(
-    AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownItem,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList>;
 
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownTotalRefundedAmount =
   AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
@@ -22388,36 +20598,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayab
   total_refunded_amount?: AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gross_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      paypal_fee_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      net_amount_in_receivable_currency: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-      platform_fees: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownPlatformFeesList,
-      ),
-      net_amount_breakdown: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdownNetAmountBreakdownList,
-      ),
-      total_refunded_amount: S.optional(
-        AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItemAmount,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemSellerPayableBreakdown>;
 
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemPayer =
   PaypalWalletAttributesResponseCobrandedCardsItemPayee;
@@ -22440,33 +20621,25 @@ export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemMethod
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaMedia =
@@ -22505,66 +20678,31 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSc
   pathStart?: string;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
   Array<unknown>;
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchemaAllOfList as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaMedia =
@@ -22603,34 +20741,7 @@ export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTa
   pathStart?: string;
 }
 export const GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      additionalItems: S.optional(S.Unknown),
-      dependencies: S.optional(S.Unknown),
-      items: S.optional(S.Unknown),
-      definitions: S.optional(S.Unknown),
-      patternProperties: S.optional(S.Unknown),
-      properties: S.optional(S.Unknown),
-      allOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAllOfList,
-      ),
-      anyOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaAnyOfList,
-      ),
-      oneOf: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaOneOfList,
-      ),
-      not: S.optional(S.Unknown),
-      links: S.optional(
-        GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchemaLinksList,
-      ),
-      fragmentResolution: S.optional(S.String),
-      media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-      pathStart: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema",
-  }) as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
+  AuthorizeOrderResponsePurchaseUnitsItemPaymentsAuthorizationsItemLinksItemSchema as any as S.Schema<GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItemTargetSchema>;
 
 export interface GetOrderResponsePurchaseUnitsItemPaymentsRefundsItemLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -22807,27 +20918,23 @@ export const GetOrderResponseLinksItemMethod = S.String;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponseLinksItemSchemaAllOfList = Array<unknown>;
-export const GetOrderResponseLinksItemSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemSchemaAllOfList>;
+export const GetOrderResponseLinksItemSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponseLinksItemSchemaAnyOfList = Array<unknown>;
-export const GetOrderResponseLinksItemSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemSchemaAnyOfList>;
+export const GetOrderResponseLinksItemSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponseLinksItemSchemaOneOfList = Array<unknown>;
-export const GetOrderResponseLinksItemSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemSchemaOneOfList>;
+export const GetOrderResponseLinksItemSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponseLinksItemSchemaLinksList = Array<unknown>;
-export const GetOrderResponseLinksItemSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemSchemaLinksList>;
+export const GetOrderResponseLinksItemSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponseLinksItemSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -22863,50 +20970,28 @@ export interface GetOrderResponseLinksItemSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetOrderResponseLinksItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetOrderResponseLinksItemSchemaAllOfList),
-    anyOf: S.optional(GetOrderResponseLinksItemSchemaAnyOfList),
-    oneOf: S.optional(GetOrderResponseLinksItemSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetOrderResponseLinksItemSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOrderResponseLinksItemSchema",
-}) as any as S.Schema<GetOrderResponseLinksItemSchema>;
+export const GetOrderResponseLinksItemSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<GetOrderResponseLinksItemSchema>;
 
 /** An array of sub-schemas. The data must validate against all sub-schemas. */
 export type GetOrderResponseLinksItemTargetSchemaAllOfList = Array<unknown>;
-export const GetOrderResponseLinksItemTargetSchemaAllOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemTargetSchemaAllOfList>;
+export const GetOrderResponseLinksItemTargetSchemaAllOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemTargetSchemaAllOfList>;
 
 /** An array of sub-schemas. The data must validate against one or more sub-schemas. */
 export type GetOrderResponseLinksItemTargetSchemaAnyOfList = Array<unknown>;
-export const GetOrderResponseLinksItemTargetSchemaAnyOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemTargetSchemaAnyOfList>;
+export const GetOrderResponseLinksItemTargetSchemaAnyOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemTargetSchemaAnyOfList>;
 
 /** An array of sub-schemas. The data must validate against one sub-schema. */
 export type GetOrderResponseLinksItemTargetSchemaOneOfList = Array<unknown>;
-export const GetOrderResponseLinksItemTargetSchemaOneOfList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemTargetSchemaOneOfList>;
+export const GetOrderResponseLinksItemTargetSchemaOneOfList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemTargetSchemaOneOfList>;
 
 /** An array of links. */
 export type GetOrderResponseLinksItemTargetSchemaLinksList = Array<unknown>;
-export const GetOrderResponseLinksItemTargetSchemaLinksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrderResponseLinksItemTargetSchemaLinksList>;
+export const GetOrderResponseLinksItemTargetSchemaLinksList =
+  CardResponseAvailableNetworksList as any as S.Schema<GetOrderResponseLinksItemTargetSchemaLinksList>;
 
 /** The media type and context-encoding scheme. */
 export type GetOrderResponseLinksItemTargetSchemaMedia = CardVaultResponseLinksItemSchemaMedia;
@@ -22942,26 +21027,8 @@ export interface GetOrderResponseLinksItemTargetSchema {
   /** To apply this schema to the instances' URIs, start the URIs with this value. */
   pathStart?: string;
 }
-export const GetOrderResponseLinksItemTargetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalItems: S.optional(S.Unknown),
-    dependencies: S.optional(S.Unknown),
-    items: S.optional(S.Unknown),
-    definitions: S.optional(S.Unknown),
-    patternProperties: S.optional(S.Unknown),
-    properties: S.optional(S.Unknown),
-    allOf: S.optional(GetOrderResponseLinksItemTargetSchemaAllOfList),
-    anyOf: S.optional(GetOrderResponseLinksItemTargetSchemaAnyOfList),
-    oneOf: S.optional(GetOrderResponseLinksItemTargetSchemaOneOfList),
-    not: S.optional(S.Unknown),
-    links: S.optional(GetOrderResponseLinksItemTargetSchemaLinksList),
-    fragmentResolution: S.optional(S.String),
-    media: S.optional(CardVaultResponseLinksItemSchemaMedia),
-    pathStart: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOrderResponseLinksItemTargetSchema",
-}) as any as S.Schema<GetOrderResponseLinksItemTargetSchema>;
+export const GetOrderResponseLinksItemTargetSchema =
+  CardVaultResponseLinksItemSchema as any as S.Schema<GetOrderResponseLinksItemTargetSchema>;
 
 export interface GetOrderResponseLinksItem {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -23073,9 +21140,7 @@ export const PatchOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchOrderRequest" }) as any as S.Schema<PatchOrderRequest>;
 
 export interface PatchOrderResponse {}
-export const PatchOrderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchOrderResponse",
-}) as any as S.Schema<PatchOrderResponse>;
+export const PatchOrderResponse = NativeAppContextInput as any as S.Schema<PatchOrderResponse>;
 
 export interface PatchOrdersTrackerRequest {
   /** The ID of the order that the tracking information is associated with. */
@@ -23100,9 +21165,8 @@ export const PatchOrdersTrackerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchOrdersTrackerRequest>;
 
 export interface PatchOrdersTrackerResponse {}
-export const PatchOrdersTrackerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchOrdersTrackerResponse",
-}) as any as S.Schema<PatchOrdersTrackerResponse>;
+export const PatchOrdersTrackerResponse =
+  NativeAppContextInput as any as S.Schema<PatchOrdersTrackerResponse>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ServerCallbackRequestShippingAddressAddressDetails =
@@ -23250,9 +21314,8 @@ export const ServerCallbackRequestPurchaseUnitsItemShippingOptionsItem =
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type ServerCallbackRequestPurchaseUnitsItemShippingOptionsList =
   Array<AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem>;
-export const ServerCallbackRequestPurchaseUnitsItemShippingOptionsList = /*@__PURE__*/ S.Array(
-  AuthorizeOrderRequestPaymentSourcePaypalAttributesVaultShippingOptionsItem,
-) as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemShippingOptionsList>;
+export const ServerCallbackRequestPurchaseUnitsItemShippingOptionsList =
+  AuthorizeOrderResponsePurchaseUnitsItemShippingOptionsList as any as S.Schema<ServerCallbackRequestPurchaseUnitsItemShippingOptionsList>;
 
 /** The non-portable additional address details include fine-grain address information for Compliance, Risk, and other scenarios. This isn't portable with common third-party and open source applications. This can include data that is redundant with core fields. For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export type ServerCallbackRequestPurchaseUnitsItemShippingAddressAddressDetails =

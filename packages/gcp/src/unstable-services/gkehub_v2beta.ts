@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type LifecycleStateStateEnum =
   | "STATE_UNSPECIFIED"
@@ -476,18 +474,12 @@ export interface ConfigManagementInstallError {
   /** A string representing the user facing error message. */
   errorMessage?: string;
 }
-export const ConfigManagementInstallError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigManagementInstallError",
-}) as any as S.Schema<ConfigManagementInstallError>;
+export const ConfigManagementInstallError =
+  ConfigManagementConfigSyncError as any as S.Schema<ConfigManagementInstallError>;
 
 export type ConfigManagementInstallErrorList = Array<ConfigManagementInstallError>;
-export const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(
-  ConfigManagementInstallError,
-) as any as S.Schema<ConfigManagementInstallErrorList>;
+export const ConfigManagementInstallErrorList =
+  ConfigManagementConfigSyncErrorList as any as S.Schema<ConfigManagementInstallErrorList>;
 
 export type ConfigManagementOperatorStateDeploymentStateEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"

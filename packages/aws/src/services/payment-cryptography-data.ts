@@ -461,13 +461,7 @@ export interface SessionKeyEmv2000 {
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
 }
-export const SessionKeyEmv2000 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-    ApplicationTransactionCounter: S.String,
-  }),
-).annotate({ identifier: "SessionKeyEmv2000" }) as any as S.Schema<SessionKeyEmv2000>;
+export const SessionKeyEmv2000 = SessionKeyEmvCommon as any as S.Schema<SessionKeyEmv2000>;
 export interface SessionKeyAmex {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
@@ -479,21 +473,13 @@ export interface SessionKeyVisa {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
 }
-export const SessionKeyVisa = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrimaryAccountNumber: SensitiveString, PanSequenceNumber: S.String }),
-).annotate({ identifier: "SessionKeyVisa" }) as any as S.Schema<SessionKeyVisa>;
+export const SessionKeyVisa = SessionKeyAmex as any as S.Schema<SessionKeyVisa>;
 export interface SessionKeyUnionPay {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
 }
-export const SessionKeyUnionPay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-    ApplicationTransactionCounter: S.String,
-  }),
-).annotate({ identifier: "SessionKeyUnionPay" }) as any as S.Schema<SessionKeyUnionPay>;
+export const SessionKeyUnionPay = SessionKeyEmvCommon as any as S.Schema<SessionKeyUnionPay>;
 export type SessionKeyDerivation =
   | {
       EmvCommon: SessionKeyEmvCommon;
@@ -969,16 +955,7 @@ export interface VisaAttributes {
   AuthorizationRequestKeyIdentifier: string;
   CurrentPinAttributes?: CurrentPinAttributes;
 }
-export const VisaAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MajorKeyDerivationMode: MajorKeyDerivationMode,
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-    ApplicationTransactionCounter: S.String,
-    AuthorizationRequestKeyIdentifier: S.String,
-    CurrentPinAttributes: S.optional(CurrentPinAttributes),
-  }),
-).annotate({ identifier: "VisaAttributes" }) as any as S.Schema<VisaAttributes>;
+export const VisaAttributes = AmexAttributes as any as S.Schema<VisaAttributes>;
 export interface Emv2000Attributes {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
@@ -1161,13 +1138,7 @@ export interface Ibm3624RandomPin {
   PinValidationDataPadCharacter: string;
   PinValidationData: string | redacted.Redacted<string>;
 }
-export const Ibm3624RandomPin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DecimalizationTable: SensitiveString,
-    PinValidationDataPadCharacter: S.String,
-    PinValidationData: SensitiveString,
-  }),
-).annotate({ identifier: "Ibm3624RandomPin" }) as any as S.Schema<Ibm3624RandomPin>;
+export const Ibm3624RandomPin = Ibm3624NaturalPin as any as S.Schema<Ibm3624RandomPin>;
 export type PinOffsetType = string | redacted.Redacted<string>;
 export interface Ibm3624PinFromOffset {
   DecimalizationTable: string | redacted.Redacted<string>;
@@ -1438,11 +1409,8 @@ export const TranslationPinDataIsoFormat1 = /*@__PURE__*/ S.suspend(() => S.Stru
 export interface TranslationPinDataAs2805Format0 {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
 }
-export const TranslationPinDataAs2805Format0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrimaryAccountNumber: SensitiveString }),
-).annotate({
-  identifier: "TranslationPinDataAs2805Format0",
-}) as any as S.Schema<TranslationPinDataAs2805Format0>;
+export const TranslationPinDataAs2805Format0 =
+  TranslationPinDataIsoFormat034 as any as S.Schema<TranslationPinDataAs2805Format0>;
 export type TranslationIsoFormats =
   | {
       IsoFormat0: TranslationPinDataIsoFormat034;
@@ -1791,14 +1759,8 @@ export interface Ibm3624PinVerification {
   PinValidationData: string | redacted.Redacted<string>;
   PinOffset: string | redacted.Redacted<string>;
 }
-export const Ibm3624PinVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DecimalizationTable: SensitiveString,
-    PinValidationDataPadCharacter: S.String,
-    PinValidationData: SensitiveString,
-    PinOffset: SensitiveString,
-  }),
-).annotate({ identifier: "Ibm3624PinVerification" }) as any as S.Schema<Ibm3624PinVerification>;
+export const Ibm3624PinVerification =
+  Ibm3624PinFromOffset as any as S.Schema<Ibm3624PinVerification>;
 export type PinVerificationAttributes =
   | { VisaPin: VisaPinVerification; Ibm3624Pin?: never }
   | { VisaPin?: never; Ibm3624Pin: Ibm3624PinVerification };

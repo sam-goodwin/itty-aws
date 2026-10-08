@@ -236,11 +236,8 @@ export const CustomPropertySourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomPropertySourcesDestroyRequest>;
 
 export interface CustomPropertySourcesDestroyResponse {}
-export const CustomPropertySourcesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomPropertySourcesDestroyResponse",
-}) as any as S.Schema<CustomPropertySourcesDestroyResponse>;
+export const CustomPropertySourcesDestroyResponse =
+  CustomPropertySourcesBackfillResponse as any as S.Schema<CustomPropertySourcesDestroyResponse>;
 
 export interface GetCustomPropertySourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -380,11 +377,8 @@ export const SyncCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncCustomPropertySourceRequest>;
 
 export interface SyncCustomPropertySourceResponse {}
-export const SyncCustomPropertySourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SyncCustomPropertySourceResponse",
-}) as any as S.Schema<SyncCustomPropertySourceResponse>;
+export const SyncCustomPropertySourceResponse =
+  CustomPropertySourcesBackfillResponse as any as S.Schema<SyncCustomPropertySourceResponse>;
 
 export interface UpdateCustomPropertySourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

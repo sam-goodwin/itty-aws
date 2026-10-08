@@ -639,9 +639,7 @@ export const GetIdMappingFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** File returned to https://developers.google.com/search-ads/v2/reference/reports/getIdMappingFile. */
 export interface IdMappingFile {}
-export const IdMappingFile = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IdMappingFile",
-}) as any as S.Schema<IdMappingFile>;
+export const IdMappingFile = GetFileReportsResponse as any as S.Schema<IdMappingFile>;
 
 export interface GetReportsRequest {
   /** ID of the report request being polled. */
@@ -816,13 +814,8 @@ export interface UpdateAvailabilityResponse {
   /** The availabilities being returned. */
   availabilities?: AvailabilityList;
 }
-export const UpdateAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availabilities: S.optional(AvailabilityList),
-  }),
-).annotate({
-  identifier: "UpdateAvailabilityResponse",
-}) as any as S.Schema<UpdateAvailabilityResponse>;
+export const UpdateAvailabilityResponse =
+  UpdateAvailabilityRequest as any as S.Schema<UpdateAvailabilityResponse>;
 
 export interface UpdateConversionRequest {
   /** Request body */

@@ -116,15 +116,13 @@ export const CreateWarehouseSavedQueriesCheckIncrementalRequest = /*@__PURE__*/ 
 
 /** Output columns that could be used as the incremental key. Excludes aggregates, columns whose type cannot serve as an advancing watermark (strings, booleans, arrays), and for a union only includes columns every branch produces. */
 export type IncrementalEligibilityKeyCandidatesList = Array<string>;
-export const IncrementalEligibilityKeyCandidatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IncrementalEligibilityKeyCandidatesList>;
+export const IncrementalEligibilityKeyCandidatesList =
+  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityKeyCandidatesList>;
 
 /** Output columns the unique key may be built from. A superset of key_candidates: identifying a row only needs equality, so strings qualify here even though they cannot be the incremental key. */
 export type IncrementalEligibilityUniqueKeyCandidatesList = Array<string>;
-export const IncrementalEligibilityUniqueKeyCandidatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IncrementalEligibilityUniqueKeyCandidatesList>;
+export const IncrementalEligibilityUniqueKeyCandidatesList =
+  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityUniqueKeyCandidatesList>;
 
 /** Coarse type per candidate, keyed by column name: datetime, date, integer, decimal, float, string, or uuid. A candidate with no entry has a type the check could not determine. */
 export type IncrementalEligibilityKeyCandidateTypesMap = { [key: string]: string | undefined };
@@ -135,15 +133,13 @@ export const IncrementalEligibilityKeyCandidateTypesMap = /*@__PURE__*/ S.Record
 
 /** Reasons this query cannot be incremental. Each names the construct responsible. */
 export type IncrementalEligibilityBlockersList = Array<string>;
-export const IncrementalEligibilityBlockersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IncrementalEligibilityBlockersList>;
+export const IncrementalEligibilityBlockersList =
+  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityBlockersList>;
 
 /** Things that still work but are worth knowing, such as a filter that cannot be pushed down so each run reads as much data as a full refresh. */
 export type IncrementalEligibilityWarningsList = Array<string>;
-export const IncrementalEligibilityWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IncrementalEligibilityWarningsList>;
+export const IncrementalEligibilityWarningsList =
+  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityWarningsList>;
 
 /** Whether a query can be materialized incrementally, and what stands in the way. */
 export interface IncrementalEligibility {
@@ -197,9 +193,8 @@ export const CreateWarehouseSavedQueriesDescendantRequest = /*@__PURE__*/ S.susp
 
 /** Ids of the saved queries that read from this query, directly or through other queries. */
 export type SavedQueryDescendantsDescendantsList = Array<string>;
-export const SavedQueryDescendantsDescendantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SavedQueryDescendantsDescendantsList>;
+export const SavedQueryDescendantsDescendantsList =
+  SavedQueryAncestorsAncestorsList as any as S.Schema<SavedQueryDescendantsDescendantsList>;
 
 export interface SavedQueryDescendants {
   /** Ids of the saved queries that read from this query, directly or through other queries. */
@@ -274,9 +269,8 @@ export const CreateWarehouseSavedQueriesRevertMaterializationRequestQuery = /*@_
 
 /** Output columns that identify a row, used to match recomputed rows against stored ones. Must include every GROUP BY column. These columns can never be null. */
 export type IncrementalConfigUniqueKeyList = Array<string>;
-export const IncrementalConfigUniqueKeyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IncrementalConfigUniqueKeyList>;
+export const IncrementalConfigUniqueKeyList =
+  SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalConfigUniqueKeyList>;
 
 /** How a view updates its materialized table in place rather than rebuilding it. */
 export interface IncrementalConfig {
@@ -546,10 +540,8 @@ export const SyncFrequencyBounds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncFrequencyBounds" }) as any as S.Schema<SyncFrequencyBounds>;
 
 export type DataWarehouseSavedQueryOutputColumnsItemMap = { [key: string]: unknown | undefined };
-export const DataWarehouseSavedQueryOutputColumnsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataWarehouseSavedQueryOutputColumnsItemMap>;
+export const DataWarehouseSavedQueryOutputColumnsItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<DataWarehouseSavedQueryOutputColumnsItemMap>;
 
 export type DataWarehouseSavedQueryOutputColumnsList =
   Array<DataWarehouseSavedQueryOutputColumnsItemMap>;
@@ -701,11 +693,8 @@ export const CreateWarehouseSavedQueriesRunRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateWarehouseSavedQueriesRunRequest>;
 
 export interface CreateWarehouseSavedQueriesRunResponse {}
-export const CreateWarehouseSavedQueriesRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateWarehouseSavedQueriesRunResponse",
-}) as any as S.Schema<CreateWarehouseSavedQueriesRunResponse>;
+export const CreateWarehouseSavedQueriesRunResponse =
+  CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<CreateWarehouseSavedQueriesRunResponse>;
 
 export type CreateWarehouseSavedQueryRequestQueryKind = "HogQLQuery";
 export const CreateWarehouseSavedQueryRequestQueryKind = S.String;
@@ -897,16 +886,13 @@ export const ListWarehouseSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWarehouseSavedQueriesRequest>;
 
 export type DataWarehouseSavedQueryMinimalColumnsItemMap = { [key: string]: unknown | undefined };
-export const DataWarehouseSavedQueryMinimalColumnsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsItemMap>;
+export const DataWarehouseSavedQueryMinimalColumnsItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsItemMap>;
 
 export type DataWarehouseSavedQueryMinimalColumnsList =
   Array<DataWarehouseSavedQueryMinimalColumnsItemMap>;
-export const DataWarehouseSavedQueryMinimalColumnsList = /*@__PURE__*/ S.Array(
-  DataWarehouseSavedQueryMinimalColumnsItemMap,
-) as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsList>;
+export const DataWarehouseSavedQueryMinimalColumnsList =
+  DataWarehouseSavedQueryOutputColumnsList as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsList>;
 
 /** Lightweight serializer for list views - excludes large query field to reduce memory usage. */
 export interface DataWarehouseSavedQueryMinimal {
@@ -1213,11 +1199,8 @@ export const WarehouseSavedQueriesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseSavedQueriesDestroyRequest>;
 
 export interface WarehouseSavedQueriesDestroyResponse {}
-export const WarehouseSavedQueriesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WarehouseSavedQueriesDestroyResponse",
-}) as any as S.Schema<WarehouseSavedQueriesDestroyResponse>;
+export const WarehouseSavedQueriesDestroyResponse =
+  CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<WarehouseSavedQueriesDestroyResponse>;
 
 export interface WarehouseSavedQueriesResumeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1252,9 +1235,8 @@ export const SavedQueryResume = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of the saved queries to resume. An id is ignored when it is not in this project, has been deleted, or you cannot edit it. */
 export type WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList = Array<string>;
-export const WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList>;
+export const WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList =
+  SavedQueryAncestorsAncestorsList as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList>;
 
 export interface WarehouseSavedQueriesResumeSchedulesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1278,11 +1260,8 @@ export const WarehouseSavedQueriesResumeSchedulesCreateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequest>;
 
 export interface WarehouseSavedQueriesResumeSchedulesCreateResponse {}
-export const WarehouseSavedQueriesResumeSchedulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WarehouseSavedQueriesResumeSchedulesCreateResponse",
-}) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateResponse>;
+export const WarehouseSavedQueriesResumeSchedulesCreateResponse =
+  CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateResponse>;
 
 export type CreateWarehouseSavedQueriesAncestorError =
   | BadRequest

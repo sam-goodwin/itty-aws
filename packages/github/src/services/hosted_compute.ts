@@ -61,15 +61,13 @@ export const NetworkConfigurationComputeService = S.String;
 
 /** The unique identifier of each network settings in the configuration. */
 export type NetworkConfigurationNetworkSettingsIdsList = Array<string>;
-export const NetworkConfigurationNetworkSettingsIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkConfigurationNetworkSettingsIdsList>;
+export const NetworkConfigurationNetworkSettingsIdsList =
+  CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<NetworkConfigurationNetworkSettingsIdsList>;
 
 /** The unique identifier of each failover network settings in the configuration. */
 export type NetworkConfigurationFailoverNetworkSettingsIdsList = Array<string>;
-export const NetworkConfigurationFailoverNetworkSettingsIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkConfigurationFailoverNetworkSettingsIdsList>;
+export const NetworkConfigurationFailoverNetworkSettingsIdsList =
+  CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<NetworkConfigurationFailoverNetworkSettingsIdsList>;
 
 /** A hosted compute network configuration. */
 export interface NetworkConfiguration {
@@ -237,16 +235,13 @@ export const UpdateNetworkConfigurationForOrgRequestComputeService = S.String;
 
 /** A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = Array<string>;
-export const UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList>;
+export const UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList =
+  CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList>;
 
 /** A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList = Array<string>;
 export const UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList>;
+  CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList as any as S.Schema<UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList>;
 
 export interface UpdateNetworkConfigurationForOrgRequest {
   /** The organization name. The name is not case sensitive. */

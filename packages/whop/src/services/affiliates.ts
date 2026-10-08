@@ -371,24 +371,8 @@ export interface GetOverrideAffiliateResponse {
   /** The total earnings paid to this affiliate for referrals to this specific plan, in USD. */
   total_referral_earnings_usd: number;
 }
-export const GetOverrideAffiliateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applies_to_payments: S.NullOr(AffiliateAppliesToPayments),
-    applies_to_products: S.NullOr(AffiliateAppliesToProducts),
-    checkout_direct_link: S.NullOr(S.String),
-    commission_type: AffiliatePayoutTypes,
-    commission_value: S.Number,
-    id: S.String,
-    override_type: AffiliateOverrideRoles,
-    plan_id: S.NullOr(S.String),
-    product_direct_link: S.NullOr(S.String),
-    product_id: S.NullOr(S.String),
-    revenue_basis: S.NullOr(AffiliateRevenueBases),
-    total_referral_earnings_usd: S.Number,
-  }),
-).annotate({
-  identifier: "GetOverrideAffiliateResponse",
-}) as any as S.Schema<GetOverrideAffiliateResponse>;
+export const GetOverrideAffiliateResponse =
+  CreateOverrideAffiliateResponse as any as S.Schema<GetOverrideAffiliateResponse>;
 
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
@@ -466,24 +450,7 @@ export interface AffiliateListItem {
   /** The user attached to this affiliate */
   user: AffiliateUser;
 }
-export const AffiliateListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active_members_count: S.Number,
-    company: AffiliateCompany,
-    created_at: S.String,
-    customer_retention_rate: S.String,
-    customer_retention_rate_ninety_days: S.String,
-    id: S.String,
-    monthly_recurring_revenue_usd: S.String,
-    status: S.NullOr(Status),
-    total_overrides_count: S.Number,
-    total_referral_earnings_usd: S.String,
-    total_referrals_count: S.Number,
-    total_revenue_usd: S.String,
-    updated_at: S.String,
-    user: AffiliateUser,
-  }),
-).annotate({ identifier: "AffiliateListItem" }) as any as S.Schema<AffiliateListItem>;
+export const AffiliateListItem = Affiliate as any as S.Schema<AffiliateListItem>;
 
 /** A list of nodes. */
 export type ListAffiliateResponseDataList = Array<AffiliateListItem>;
@@ -573,24 +540,8 @@ export interface ListOverridesAffiliateResponseDataItem {
   /** The total earnings paid to this affiliate for referrals to this specific plan, in USD. */
   total_referral_earnings_usd: number;
 }
-export const ListOverridesAffiliateResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applies_to_payments: S.NullOr(AffiliateAppliesToPayments),
-    applies_to_products: S.NullOr(AffiliateAppliesToProducts),
-    checkout_direct_link: S.NullOr(S.String),
-    commission_type: AffiliatePayoutTypes,
-    commission_value: S.Number,
-    id: S.String,
-    override_type: AffiliateOverrideRoles,
-    plan_id: S.NullOr(S.String),
-    product_direct_link: S.NullOr(S.String),
-    product_id: S.NullOr(S.String),
-    revenue_basis: S.NullOr(AffiliateRevenueBases),
-    total_referral_earnings_usd: S.Number,
-  }),
-).annotate({
-  identifier: "ListOverridesAffiliateResponseDataItem",
-}) as any as S.Schema<ListOverridesAffiliateResponseDataItem>;
+export const ListOverridesAffiliateResponseDataItem =
+  CreateOverrideAffiliateResponse as any as S.Schema<ListOverridesAffiliateResponseDataItem>;
 
 /** A list of nodes. */
 export type ListOverridesAffiliateResponseDataList = Array<ListOverridesAffiliateResponseDataItem>;
@@ -626,11 +577,8 @@ export const UnarchiveAffiliateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnarchiveAffiliateRequest>;
 
 export type UnarchiveAffiliateResponse = boolean;
-export const UnarchiveAffiliateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UnarchiveAffiliateResponse",
-}) as any as S.Schema<UnarchiveAffiliateResponse>;
+export const UnarchiveAffiliateResponse =
+  DeleteOverrideAffiliateResponse as any as S.Schema<UnarchiveAffiliateResponse>;
 
 export interface UpdateOverrideAffiliateRequest {
   /** The affiliate ID. */
@@ -685,24 +633,8 @@ export interface UpdateOverrideAffiliateResponse {
   /** The total earnings paid to this affiliate for referrals to this specific plan, in USD. */
   total_referral_earnings_usd: number;
 }
-export const UpdateOverrideAffiliateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applies_to_payments: S.NullOr(AffiliateAppliesToPayments),
-    applies_to_products: S.NullOr(AffiliateAppliesToProducts),
-    checkout_direct_link: S.NullOr(S.String),
-    commission_type: AffiliatePayoutTypes,
-    commission_value: S.Number,
-    id: S.String,
-    override_type: AffiliateOverrideRoles,
-    plan_id: S.NullOr(S.String),
-    product_direct_link: S.NullOr(S.String),
-    product_id: S.NullOr(S.String),
-    revenue_basis: S.NullOr(AffiliateRevenueBases),
-    total_referral_earnings_usd: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateOverrideAffiliateResponse",
-}) as any as S.Schema<UpdateOverrideAffiliateResponse>;
+export const UpdateOverrideAffiliateResponse =
+  CreateOverrideAffiliateResponse as any as S.Schema<UpdateOverrideAffiliateResponse>;
 
 export type ArchiveAffiliateError =
   | BadRequest

@@ -146,10 +146,8 @@ export const FinAgentConversationMetadataHistoryList = /*@__PURE__*/ S.Array(
 
 /** A hash of attributes associated with the conversation. These attributes can be used by Fin to provide more contextual responses. Limit to 10 attributes. */
 export type FinAgentConversationMetadataAttributesMap = { [key: string]: unknown | undefined };
-export const FinAgentConversationMetadataAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FinAgentConversationMetadataAttributesMap>;
+export const FinAgentConversationMetadataAttributesMap =
+  FinAgentUserAttributesMap as any as S.Schema<FinAgentConversationMetadataAttributesMap>;
 
 /** Metadata about the conversation, including history and attributes. */
 export interface FinAgentConversationMetadata {
@@ -247,23 +245,16 @@ export const FinAgentAttributeErrorsUser = /*@__PURE__*/ S.suspend(() =>
 export type FinAgentAttributeErrorsConversationAttributesMap = {
   [key: string]: string | undefined;
 };
-export const FinAgentAttributeErrorsConversationAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FinAgentAttributeErrorsConversationAttributesMap>;
+export const FinAgentAttributeErrorsConversationAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<FinAgentAttributeErrorsConversationAttributesMap>;
 
 /** Conversation-related attribute errors. */
 export interface FinAgentAttributeErrorsConversation {
   /** Map of conversation attribute names to error messages. */
   attributes?: FinAgentAttributeErrorsConversationAttributesMap;
 }
-export const FinAgentAttributeErrorsConversation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: S.optional(FinAgentAttributeErrorsConversationAttributesMap),
-  }),
-).annotate({
-  identifier: "FinAgentAttributeErrorsConversation",
-}) as any as S.Schema<FinAgentAttributeErrorsConversation>;
+export const FinAgentAttributeErrorsConversation =
+  FinAgentAttributeErrorsUser as any as S.Schema<FinAgentAttributeErrorsConversation>;
 
 /** Contains error details if any user or conversation attribute updates failed. */
 export interface FinAgentAttributeErrors {
@@ -343,10 +334,8 @@ export const CompanyPlan = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom attributes you have set on the company. */
 export type CompanyCustomAttributesMap = { [key: string]: string | undefined };
-export const CompanyCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CompanyCustomAttributesMap>;
+export const CompanyCustomAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<CompanyCustomAttributesMap>;
 
 /** The type of the object */
 export type CompanyTagsType = "tag.list";
@@ -361,13 +350,7 @@ export interface TagBasic {
   /** The name of the tag */
   name?: string;
 }
-export const TagBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "TagBasic" }) as any as S.Schema<TagBasic>;
+export const TagBasic = CompanyPlan as any as S.Schema<TagBasic>;
 
 export type CompanyTagsTagsList = Array<TagBasic>;
 export const CompanyTagsTagsList = /*@__PURE__*/ S.Array(
@@ -472,15 +455,13 @@ export const AdminTeamIdsList = /*@__PURE__*/ S.Array(
 
 /** The primary team ids for the team */
 export type TeamPriorityLevelPrimaryTeamIdsList = Array<number>;
-export const TeamPriorityLevelPrimaryTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TeamPriorityLevelPrimaryTeamIdsList>;
+export const TeamPriorityLevelPrimaryTeamIdsList =
+  AdminTeamIdsList as any as S.Schema<TeamPriorityLevelPrimaryTeamIdsList>;
 
 /** The secondary team ids for the team */
 export type TeamPriorityLevelSecondaryTeamIdsList = Array<number>;
-export const TeamPriorityLevelSecondaryTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TeamPriorityLevelSecondaryTeamIdsList>;
+export const TeamPriorityLevelSecondaryTeamIdsList =
+  AdminTeamIdsList as any as S.Schema<TeamPriorityLevelSecondaryTeamIdsList>;
 
 /** Admin priority levels for teams */
 export interface TeamPriorityLevel {
@@ -505,13 +486,7 @@ export interface AdminRole {
   /** The name of the role. */
   name?: string;
 }
-export const AdminRole = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "AdminRole" }) as any as S.Schema<AdminRole>;
+export const AdminRole = CompanyPlan as any as S.Schema<AdminRole>;
 
 /** Admins are teammate accounts that have access to a workspace. */
 export interface Admin {
@@ -1125,15 +1100,13 @@ export const BulkContentActionsRequestAvailability = /*@__PURE__*/ S.suspend(() 
 
 /** Segment IDs to assign to the selected content. */
 export type BulkContentActionsRequestAudienceAddSegmentIdsList = Array<number>;
-export const BulkContentActionsRequestAudienceAddSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BulkContentActionsRequestAudienceAddSegmentIdsList>;
+export const BulkContentActionsRequestAudienceAddSegmentIdsList =
+  AdminTeamIdsList as any as S.Schema<BulkContentActionsRequestAudienceAddSegmentIdsList>;
 
 /** Segment IDs to remove from the selected content. */
 export type BulkContentActionsRequestAudienceRemoveSegmentIdsList = Array<number>;
-export const BulkContentActionsRequestAudienceRemoveSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BulkContentActionsRequestAudienceRemoveSegmentIdsList>;
+export const BulkContentActionsRequestAudienceRemoveSegmentIdsList =
+  AdminTeamIdsList as any as S.Schema<BulkContentActionsRequestAudienceRemoveSegmentIdsList>;
 
 /** Required when `action` is `set_audience`. Manages segment membership. */
 export interface BulkContentActionsRequestAudience {
@@ -1156,15 +1129,13 @@ export const BulkContentActionsRequestAudience = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag IDs to apply to the selected content. */
 export type BulkContentActionsRequestTagsAddTagIdsList = Array<number>;
-export const BulkContentActionsRequestTagsAddTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BulkContentActionsRequestTagsAddTagIdsList>;
+export const BulkContentActionsRequestTagsAddTagIdsList =
+  AdminTeamIdsList as any as S.Schema<BulkContentActionsRequestTagsAddTagIdsList>;
 
 /** Tag IDs to remove from the selected content. */
 export type BulkContentActionsRequestTagsRemoveTagIdsList = Array<number>;
-export const BulkContentActionsRequestTagsRemoveTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BulkContentActionsRequestTagsRemoveTagIdsList>;
+export const BulkContentActionsRequestTagsRemoveTagIdsList =
+  AdminTeamIdsList as any as S.Schema<BulkContentActionsRequestTagsRemoveTagIdsList>;
 
 /** Required when `action` is `update_tags`. Applies and/or removes existing tags. Supply at least one of `add_tag_ids` / `remove_tag_ids`. At most 100 distinct tag IDs may be supplied across `add_tag_ids` and `remove_tag_ids` combined. Tag IDs must reference existing, non-archived tags; exceeding the limit or referencing unknown or archived IDs is rejected with `parameter_invalid` (HTTP 422). */
 export interface BulkContentActionsRequestTags {
@@ -1660,17 +1631,7 @@ export interface PartAttachment {
   /** The height of the attachment */
   height?: number;
 }
-export const PartAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    name: S.optional(S.String),
-    url: S.optional(S.String),
-    content_type: S.optional(S.String),
-    filesize: S.optional(S.Number),
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PartAttachment" }) as any as S.Schema<PartAttachment>;
+export const PartAttachment = FileAttribute as any as S.Schema<PartAttachment>;
 
 /** A list of attachments for the part. */
 export type TicketPartAttachmentsList = Array<PartAttachment>;
@@ -1718,9 +1679,8 @@ export const TicketPartUpdatedAttributeDataValueType = S.String;
 
 /** Array of file IDs for file attributes. */
 export type TicketPartUpdatedAttributeDataValueIdCase1List = Array<number>;
-export const TicketPartUpdatedAttributeDataValueIdCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TicketPartUpdatedAttributeDataValueIdCase1List>;
+export const TicketPartUpdatedAttributeDataValueIdCase1List =
+  AdminTeamIdsList as any as S.Schema<TicketPartUpdatedAttributeDataValueIdCase1List>;
 
 export type TicketPartUpdatedAttributeDataValueId =
   | string
@@ -1919,15 +1879,13 @@ export const CollectFinVoiceCallByExternalIdRequest = /*@__PURE__*/ S.suspend(()
 
 /** Array of transcript entries for the call */
 export type AiCallResponseCallTranscriptList = Array<unknown>;
-export const AiCallResponseCallTranscriptList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AiCallResponseCallTranscriptList>;
+export const AiCallResponseCallTranscriptList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<AiCallResponseCallTranscriptList>;
 
 /** Array of intent classifications for the call */
 export type AiCallResponseIntentList = Array<unknown>;
-export const AiCallResponseIntentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AiCallResponseIntentList>;
+export const AiCallResponseIntentList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<AiCallResponseIntentList>;
 
 /** Response containing information about a Fin Voice call */
 export interface AiCallResponse {
@@ -2024,9 +1982,8 @@ export const CollectFinVoiceCallsByConversationIdResponse = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CollectFinVoiceCallsByConversationIdResponse>;
 
 export type TicketRequestCustomAttributesValueCase3List = Array<unknown>;
-export const TicketRequestCustomAttributesValueCase3List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TicketRequestCustomAttributesValueCase3List>;
+export const TicketRequestCustomAttributesValueCase3List =
+  TicketCustomAttributesValueCase3List as any as S.Schema<TicketRequestCustomAttributesValueCase3List>;
 
 export type TicketRequestCustomAttributesValue =
   | string
@@ -2139,9 +2096,7 @@ export const ContactTags = /*@__PURE__*/ S.suspend(() =>
 
 /** This object represents the notes attached to a contact. */
 export type ContactNotesDataList = Array<AddressableList>;
-export const ContactNotesDataList = /*@__PURE__*/ S.Array(
-  AddressableList,
-) as any as S.Schema<ContactNotesDataList>;
+export const ContactNotesDataList = ContactTagsDataList as any as S.Schema<ContactNotesDataList>;
 
 /** An object containing notes meta data about the notes that a contact has. Up to 10 will be displayed here. Use the url to get more. */
 export interface ContactNotes {
@@ -2154,14 +2109,7 @@ export interface ContactNotes {
   /** Whether there's more Addressable Objects to be viewed. If true, use the url to view all */
   has_more?: boolean;
 }
-export const ContactNotes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(ContactNotesDataList),
-    url: S.optional(S.String),
-    total_count: S.optional(S.Number),
-    has_more: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ContactNotes" }) as any as S.Schema<ContactNotes>;
+export const ContactNotes = ContactTags as any as S.Schema<ContactNotes>;
 
 /** The type of the object. Always company. */
 export type CompanyDataType = "company";
@@ -2452,9 +2400,8 @@ export const ArticleContentInputState = S.String;
 
 /** The list of audience IDs this article content is targeted to for Fin AI Agent. On multilingual help centers this field appears per-locale inside `translated_content`. On single-language help centers it appears at the article root level. Empty array means no audience targeting is set. */
 export type ArticleContentInputAudienceIdsList = Array<number>;
-export const ArticleContentInputAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ArticleContentInputAudienceIdsList>;
+export const ArticleContentInputAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<ArticleContentInputAudienceIdsList>;
 
 /** The Content of an Article. */
 export interface ArticleContentInput {
@@ -2638,9 +2585,8 @@ export const ArticleTranslatedContentInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of audience IDs to assign to this article for Fin AI Agent targeting. Sending a top-level `audience_ids` broadcasts the same set to every locale. For per-locale targeting, use `translated_content.<locale>.audience_ids` instead. Sending both top-level and per-locale in the same request causes top-level to win. Unknown audience IDs return a 404 error. No partial commit occurs. */
 export type CreateArticleRequestAudienceIdsList = Array<number>;
-export const CreateArticleRequestAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateArticleRequestAudienceIdsList>;
+export const CreateArticleRequestAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<CreateArticleRequestAudienceIdsList>;
 
 export interface CreateArticleRequest {
   /** The title of the article.For multilingual articles, this will be the title of the default language's content. */
@@ -2703,9 +2649,8 @@ export const CreateArticleResponseState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type CreateArticleResponseParentIdsList = Array<number>;
-export const CreateArticleResponseParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateArticleResponseParentIdsList>;
+export const CreateArticleResponseParentIdsList =
+  AdminTeamIdsList as any as S.Schema<CreateArticleResponseParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type CreateArticleResponseHelpCenterAudience =
@@ -2731,9 +2676,8 @@ export const ArticleContentState = S.String;
 
 /** The list of audience IDs this article content is targeted to for Fin AI Agent. On multilingual help centers this field appears per-locale inside `translated_content`. On single-language help centers it appears at the article root level. Empty array means no audience targeting is set. */
 export type ArticleContentAudienceIdsList = Array<number>;
-export const ArticleContentAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ArticleContentAudienceIdsList>;
+export const ArticleContentAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<ArticleContentAudienceIdsList>;
 
 /** The Content of an Article. */
 export interface ArticleContent {
@@ -3099,9 +3043,8 @@ export const CreateAudienceRequestPredicatesList = /*@__PURE__*/ S.Array(
 
 /** Role-based predicates that further filter audience membership by contact role. */
 export type CreateAudienceRequestRolePredicatesList = Array<Predicate>;
-export const CreateAudienceRequestRolePredicatesList = /*@__PURE__*/ S.Array(
-  Predicate,
-) as any as S.Schema<CreateAudienceRequestRolePredicatesList>;
+export const CreateAudienceRequestRolePredicatesList =
+  CreateAudienceRequestPredicatesList as any as S.Schema<CreateAudienceRequestRolePredicatesList>;
 
 export interface CreateAudienceRequest {
   /** The name of the audience. */
@@ -3125,15 +3068,13 @@ export const AudienceType = S.String;
 
 /** The predicates that define which contacts belong to the audience. */
 export type AudiencePredicatesList = Array<Predicate>;
-export const AudiencePredicatesList = /*@__PURE__*/ S.Array(
-  Predicate,
-) as any as S.Schema<AudiencePredicatesList>;
+export const AudiencePredicatesList =
+  CreateAudienceRequestPredicatesList as any as S.Schema<AudiencePredicatesList>;
 
 /** Role-based predicates that further filter audience membership by contact role. */
 export type AudienceRolePredicatesList = Array<Predicate>;
-export const AudienceRolePredicatesList = /*@__PURE__*/ S.Array(
-  Predicate,
-) as any as S.Schema<AudienceRolePredicatesList>;
+export const AudienceRolePredicatesList =
+  CreateAudienceRequestPredicatesList as any as S.Schema<AudienceRolePredicatesList>;
 
 /** An audience represents a group of contacts that can be targeted by Fin. */
 export interface Audience {
@@ -3401,12 +3342,7 @@ export interface NoteContact {
   /** The id of the contact. */
   id?: string;
 }
-export const NoteContact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "NoteContact" }) as any as S.Schema<NoteContact>;
+export const NoteContact = CompanyNoteCompany as any as S.Schema<NoteContact>;
 
 /** Represents the company that the note was created about. */
 export type NoteCompany = CompanyNoteCompany;
@@ -3451,9 +3387,8 @@ export const CreateContactResponseAvatar = ContactAvatar;
 
 /** A list of contacts that were merged into this contact. Only included in the response when `include_merge_history=true` is passed as a query parameter. Only available for contacts with a `user` role. */
 export type CreateContactResponseMergeHistoryList = Array<MergeHistoryItem>;
-export const CreateContactResponseMergeHistoryList = /*@__PURE__*/ S.Array(
-  MergeHistoryItem,
-) as any as S.Schema<CreateContactResponseMergeHistoryList>;
+export const CreateContactResponseMergeHistoryList =
+  ContactMergeHistoryList as any as S.Schema<CreateContactResponseMergeHistoryList>;
 
 export interface CreateContactResponse {
   /** The type of object. */
@@ -3606,9 +3541,8 @@ export type CreateContentImportSourceRequestStatus = "active" | "deactivated";
 export const CreateContentImportSourceRequestStatus = S.String;
 
 export type CreateContentImportSourceRequestAudienceIdsCase1List = Array<number>;
-export const CreateContentImportSourceRequestAudienceIdsCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateContentImportSourceRequestAudienceIdsCase1List>;
+export const CreateContentImportSourceRequestAudienceIdsCase1List =
+  AdminTeamIdsList as any as S.Schema<CreateContentImportSourceRequestAudienceIdsCase1List>;
 
 /** The unique identifiers for the audiences to associate with this content import source. Can be a single integer or an array of integers. */
 export type CreateContentImportSourceRequestAudienceIds =
@@ -3652,9 +3586,8 @@ export const ContentImportSourceStatus = S.String;
 
 /** The unique identifiers for the audiences associated with this content import source. */
 export type ContentImportSourceAudienceIdsList = Array<number>;
-export const ContentImportSourceAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ContentImportSourceAudienceIdsList>;
+export const ContentImportSourceAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<ContentImportSourceAudienceIdsList>;
 
 /** An external source for External Pages that you add to your Fin Content Library. */
 export interface ContentImportSource {
@@ -3693,15 +3626,13 @@ export const ContentImportSource = /*@__PURE__*/ S.suspend(() =>
 
 /** The content blocks that make up the body of the snippet. Mutually exclusive with `body_markdown`. */
 export type CreateContentSnippetRequestJsonBlocksList = Array<unknown>;
-export const CreateContentSnippetRequestJsonBlocksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateContentSnippetRequestJsonBlocksList>;
+export const CreateContentSnippetRequestJsonBlocksList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<CreateContentSnippetRequestJsonBlocksList>;
 
 /** The list of audience IDs to target this content snippet to for Fin AI Agent. Pass an empty array or omit the field for no audience targeting. Unknown audience IDs return a `404` error with no partial commit. */
 export type CreateContentSnippetRequestAudienceIdsList = Array<number>;
-export const CreateContentSnippetRequestAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateContentSnippetRequestAudienceIdsList>;
+export const CreateContentSnippetRequestAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<CreateContentSnippetRequestAudienceIdsList>;
 
 export interface CreateContentSnippetRequest {
   /** The title of the content snippet. */
@@ -3738,15 +3669,13 @@ export const CreateContentSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The content blocks that make up the body of the snippet. */
 export type ContentSnippetJsonBlocksList = Array<unknown>;
-export const ContentSnippetJsonBlocksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ContentSnippetJsonBlocksList>;
+export const ContentSnippetJsonBlocksList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<ContentSnippetJsonBlocksList>;
 
 /** The list of audience IDs this content snippet is targeted to for Fin AI Agent. Empty array means no audience targeting is set. */
 export type ContentSnippetAudienceIdsList = Array<number>;
-export const ContentSnippetAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ContentSnippetAudienceIdsList>;
+export const ContentSnippetAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<ContentSnippetAudienceIdsList>;
 
 /** A content snippet is a reusable piece of content for your AI agent and Copilot. */
 export interface ContentSnippet {
@@ -3819,9 +3748,8 @@ export const CreateConversationRequestFrom = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of image URLs that will be added as attachments. You can include up to 10 URLs. */
 export type CreateConversationRequestAttachmentUrlsList = Array<string>;
-export const CreateConversationRequestAttachmentUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationRequestAttachmentUrlsList>;
+export const CreateConversationRequestAttachmentUrlsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationRequestAttachmentUrlsList>;
 
 export interface CreateConversationRequest {
   from: CreateConversationRequestFrom;
@@ -3897,9 +3825,8 @@ export const CreateConversationAttributeStringRequestDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type CreateConversationAttributeStringRequestVisibleToTeamIdsList = Array<string>;
-export const CreateConversationAttributeStringRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationAttributeStringRequestVisibleToTeamIdsList>;
+export const CreateConversationAttributeStringRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationAttributeStringRequestVisibleToTeamIdsList>;
 
 export interface CreateConversationAttributeStringRequest {
   /** Name of the attribute. */
@@ -3942,9 +3869,8 @@ export const CreateConversationAttributeIntegerRequestDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type CreateConversationAttributeIntegerRequestVisibleToTeamIdsList = Array<string>;
-export const CreateConversationAttributeIntegerRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationAttributeIntegerRequestVisibleToTeamIdsList>;
+export const CreateConversationAttributeIntegerRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationAttributeIntegerRequestVisibleToTeamIdsList>;
 
 export interface CreateConversationAttributeIntegerRequest {
   /** Name of the attribute. */
@@ -3984,9 +3910,8 @@ export const CreateConversationAttributeListRequestDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type CreateConversationAttributeListRequestVisibleToTeamIdsList = Array<string>;
-export const CreateConversationAttributeListRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationAttributeListRequestVisibleToTeamIdsList>;
+export const CreateConversationAttributeListRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationAttributeListRequestVisibleToTeamIdsList>;
 
 /** Payload for adding a new option to a list-type conversation attribute. */
 export interface CreateConversationAttributeOptionRequest {
@@ -4049,9 +3974,8 @@ export const CreateConversationAttributeDecimalRequestDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type CreateConversationAttributeDecimalRequestVisibleToTeamIdsList = Array<string>;
-export const CreateConversationAttributeDecimalRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationAttributeDecimalRequestVisibleToTeamIdsList>;
+export const CreateConversationAttributeDecimalRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationAttributeDecimalRequestVisibleToTeamIdsList>;
 
 export interface CreateConversationAttributeDecimalRequest {
   /** Name of the attribute. */
@@ -4091,9 +4015,8 @@ export const CreateConversationAttributeBooleanRequestDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type CreateConversationAttributeBooleanRequestVisibleToTeamIdsList = Array<string>;
-export const CreateConversationAttributeBooleanRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationAttributeBooleanRequestVisibleToTeamIdsList>;
+export const CreateConversationAttributeBooleanRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationAttributeBooleanRequestVisibleToTeamIdsList>;
 
 export interface CreateConversationAttributeBooleanRequest {
   /** Name of the attribute. */
@@ -4133,9 +4056,8 @@ export const CreateConversationAttributeDatetimeRequestDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type CreateConversationAttributeDatetimeRequestVisibleToTeamIdsList = Array<string>;
-export const CreateConversationAttributeDatetimeRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationAttributeDatetimeRequestVisibleToTeamIdsList>;
+export const CreateConversationAttributeDatetimeRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationAttributeDatetimeRequestVisibleToTeamIdsList>;
 
 export interface CreateConversationAttributeDatetimeRequest {
   /** Name of the attribute. */
@@ -4243,9 +4165,8 @@ export const CreateConversationAttributeFilesRequestDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type CreateConversationAttributeFilesRequestVisibleToTeamIdsList = Array<string>;
-export const CreateConversationAttributeFilesRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationAttributeFilesRequestVisibleToTeamIdsList>;
+export const CreateConversationAttributeFilesRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateConversationAttributeFilesRequestVisibleToTeamIdsList>;
 
 export interface CreateConversationAttributeFilesRequest {
   /** Name of the attribute. */
@@ -4313,9 +4234,8 @@ export const ConversationAttributeStringTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeStringTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeStringTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeStringTypeVisibleToTeamIdsList>;
+export const ConversationAttributeStringTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeStringTypeVisibleToTeamIdsList>;
 
 export interface ConversationAttributeStringType {
   /** Value is `conversation_attribute`. */
@@ -4380,9 +4300,8 @@ export const ConversationAttributeIntegerTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeIntegerTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeIntegerTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeIntegerTypeVisibleToTeamIdsList>;
+export const ConversationAttributeIntegerTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeIntegerTypeVisibleToTeamIdsList>;
 
 export interface ConversationAttributeIntegerType {
   /** Value is `conversation_attribute`. */
@@ -4444,9 +4363,8 @@ export const ConversationAttributeListTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeListTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeListTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeListTypeVisibleToTeamIdsList>;
+export const ConversationAttributeListTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeListTypeVisibleToTeamIdsList>;
 
 /** A single option on a list-type conversation attribute. */
 export interface ConversationAttributeOption {
@@ -4536,9 +4454,8 @@ export const ConversationAttributeDecimalTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeDecimalTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeDecimalTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeDecimalTypeVisibleToTeamIdsList>;
+export const ConversationAttributeDecimalTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeDecimalTypeVisibleToTeamIdsList>;
 
 export interface ConversationAttributeDecimalType {
   /** Value is `conversation_attribute`. */
@@ -4600,9 +4517,8 @@ export const ConversationAttributeBooleanTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeBooleanTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeBooleanTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeBooleanTypeVisibleToTeamIdsList>;
+export const ConversationAttributeBooleanTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeBooleanTypeVisibleToTeamIdsList>;
 
 export interface ConversationAttributeBooleanType {
   /** Value is `conversation_attribute`. */
@@ -4664,9 +4580,8 @@ export const ConversationAttributeDatetimeTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeDatetimeTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeDatetimeTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeDatetimeTypeVisibleToTeamIdsList>;
+export const ConversationAttributeDatetimeTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeDatetimeTypeVisibleToTeamIdsList>;
 
 export interface ConversationAttributeDatetimeType {
   /** Value is `conversation_attribute`. */
@@ -4728,9 +4643,8 @@ export const ConversationAttributeRelationshipTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeRelationshipTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeRelationshipTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeRelationshipTypeVisibleToTeamIdsList>;
+export const ConversationAttributeRelationshipTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeRelationshipTypeVisibleToTeamIdsList>;
 
 /** The cardinality of the relationship: `one` or `many`. */
 export type ConversationAttributeRelationshipTypeReferenceType = "one" | "many";
@@ -4815,9 +4729,8 @@ export const ConversationAttributeFilesTypeDataType = S.String;
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type ConversationAttributeFilesTypeVisibleToTeamIdsList = Array<string>;
-export const ConversationAttributeFilesTypeVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationAttributeFilesTypeVisibleToTeamIdsList>;
+export const ConversationAttributeFilesTypeVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationAttributeFilesTypeVisibleToTeamIdsList>;
 
 export interface ConversationAttributeFilesType {
   /** Value is `conversation_attribute`. */
@@ -4896,20 +4809,15 @@ export const CreateConversationAttributeOptionRequest2 = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateConversationAttributeOptionRequest2>;
 
 export type CreateConversationAttributeOptionResponse = ConversationAttribute;
-export const CreateConversationAttributeOptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ConversationAttribute.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateConversationAttributeOptionResponse",
-}) as any as S.Schema<CreateConversationAttributeOptionResponse>;
+export const CreateConversationAttributeOptionResponse =
+  CreateConversationAttributeResponse as any as S.Schema<CreateConversationAttributeOptionResponse>;
 
 /** The custom attributes which are set for the Custom Object instance. */
 export type CreateCustomObjectInstancesRequestCustomAttributesMap = {
   [key: string]: string | undefined;
 };
-export const CreateCustomObjectInstancesRequestCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCustomObjectInstancesRequestCustomAttributesMap>;
+export const CreateCustomObjectInstancesRequestCustomAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<CreateCustomObjectInstancesRequestCustomAttributesMap>;
 
 export interface CreateCustomObjectInstancesRequest {
   /** The unique identifier of the custom object type that defines the structure of the custom object instance. */
@@ -4943,10 +4851,8 @@ export const CreateCustomObjectInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom attributes you have set on the custom object instance. */
 export type CustomObjectInstanceCustomAttributesMap = { [key: string]: string | undefined };
-export const CustomObjectInstanceCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CustomObjectInstanceCustomAttributesMap>;
+export const CustomObjectInstanceCustomAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<CustomObjectInstanceCustomAttributesMap>;
 
 /** A Custom Object Instance represents an instance of a custom object type. This allows you to create and set custom attributes to store data about your customers that is not already captured by Intercom. The parent object includes recommended default attributes and you can add your own custom attributes. */
 export interface CustomObjectInstance {
@@ -5019,9 +4925,8 @@ export const DataAttributeDataType = S.String;
 
 /** List of predefined options for attribute value. */
 export type DataAttributeOptionsList = Array<string>;
-export const DataAttributeOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataAttributeOptionsList>;
+export const DataAttributeOptionsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<DataAttributeOptionsList>;
 
 /** Data Attributes are metadata used to describe your contact and company models. These include standard and custom attributes. By using the data attributes endpoint, you can get the global list of attributes for your workspace, as well as create and archive custom attributes. */
 export interface DataAttribute {
@@ -5159,9 +5064,8 @@ export const CreateDataConnectorRequestDataInputsList = /*@__PURE__*/ S.Array(
 
 /** IDs of authentication tokens to attach to this data connector. */
 export type CreateDataConnectorRequestTokenIdsList = Array<string>;
-export const CreateDataConnectorRequestTokenIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDataConnectorRequestTokenIdsList>;
+export const CreateDataConnectorRequestTokenIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateDataConnectorRequestTokenIdsList>;
 
 export interface CreateDataConnectorRequest {
   /** The name of the data connector. */
@@ -5228,20 +5132,13 @@ export interface DataConnectorDetailHeadersItem {
   /** Always `"****"` in responses. */
   value?: string;
 }
-export const DataConnectorDetailHeadersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataConnectorDetailHeadersItem",
-}) as any as S.Schema<DataConnectorDetailHeadersItem>;
+export const DataConnectorDetailHeadersItem =
+  CreateDataConnectorRequestHeadersItem as any as S.Schema<DataConnectorDetailHeadersItem>;
 
 /** HTTP headers for the request. Header values are always redacted as `"****"` in responses. */
 export type DataConnectorDetailHeadersList = Array<DataConnectorDetailHeadersItem>;
-export const DataConnectorDetailHeadersList = /*@__PURE__*/ S.Array(
-  DataConnectorDetailHeadersItem,
-) as any as S.Schema<DataConnectorDetailHeadersList>;
+export const DataConnectorDetailHeadersList =
+  CreateDataConnectorRequestHeadersList as any as S.Schema<DataConnectorDetailHeadersList>;
 
 /** The HTTP method used by the data connector. */
 export type DataConnectorDetailHttpMethod = "get" | "post" | "put" | "delete" | "patch";
@@ -5429,9 +5326,8 @@ export const DataConnectorDetailObjectMappingsList = /*@__PURE__*/ S.Array(
 
 /** IDs of authentication tokens associated with this connector. */
 export type DataConnectorDetailTokenIdsList = Array<string>;
-export const DataConnectorDetailTokenIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataConnectorDetailTokenIdsList>;
+export const DataConnectorDetailTokenIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<DataConnectorDetailTokenIdsList>;
 
 /** Full detail view of a data connector, returned by `GET /data_connectors/{id}`. Includes configuration, data inputs, response fields, and object mappings. */
 export interface DataConnectorDetail {
@@ -5527,10 +5423,8 @@ export const DataConnectorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional metadata about the event. */
 export type CreateDataEventRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateDataEventRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDataEventRequestMetadataMap>;
+export const CreateDataEventRequestMetadataMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<CreateDataEventRequestMetadataMap>;
 
 export interface CreateDataEventRequest {
   /** The name of the event that occurred. This is presented to your App's admins when filtering and creating segments - a good event name is typically a past tense 'verb-noun' combination, to improve readability, for example `updated-plan`. */
@@ -5558,9 +5452,8 @@ export const CreateDataEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDataEventRequest" }) as any as S.Schema<CreateDataEventRequest>;
 
 export interface CreateDataEventResponse {}
-export const CreateDataEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDataEventResponse",
-}) as any as S.Schema<CreateDataEventResponse>;
+export const CreateDataEventResponse =
+  BulkContentActionsResponse as any as S.Schema<CreateDataEventResponse>;
 
 export interface CreateDataExportRequest {
   /** The start date that you request data for. It must be formatted as a unix timestamp. */
@@ -5576,9 +5469,8 @@ export const CreateDataExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDataExportRequest" }) as any as S.Schema<CreateDataExportRequest>;
 
 export type CreateExportReportingDataEnqueueRequestAttributeIdsList = Array<string>;
-export const CreateExportReportingDataEnqueueRequestAttributeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExportReportingDataEnqueueRequestAttributeIdsList>;
+export const CreateExportReportingDataEnqueueRequestAttributeIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateExportReportingDataEnqueueRequestAttributeIdsList>;
 
 export interface CreateExportReportingDataEnqueueRequest {
   dataset_id: string;
@@ -5791,9 +5683,8 @@ export const HelpCenterRedirect = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of audience IDs to target this internal article to for Fin AI Agent. Pass an empty array or omit the field for no audience targeting. Unknown audience IDs return a `404` error with no partial commit. */
 export type CreateInternalArticleRequestAudienceIdsList = Array<number>;
-export const CreateInternalArticleRequestAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateInternalArticleRequestAudienceIdsList>;
+export const CreateInternalArticleRequestAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<CreateInternalArticleRequestAudienceIdsList>;
 
 export interface CreateInternalArticleRequest {
   /** The title of the article. */
@@ -5837,9 +5728,8 @@ export const CreateInternalArticleResponseType = S.String;
 
 /** The list of audience IDs this internal article is targeted to for Fin AI Agent. Empty array means no audience targeting is set. */
 export type CreateInternalArticleResponseAudienceIdsList = Array<number>;
-export const CreateInternalArticleResponseAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateInternalArticleResponseAudienceIdsList>;
+export const CreateInternalArticleResponseAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<CreateInternalArticleResponseAudienceIdsList>;
 
 export interface CreateInternalArticleResponse {
   /** The type of object - `internal_article`. */
@@ -5943,18 +5833,16 @@ export const CreateMessageRequestTo = S.Unknown as any as S.Schema<CreateMessage
 
 /** The CC recipients of the message. */
 export type CreateMessageRequestCcCase1List = Array<Recipient>;
-export const CreateMessageRequestCcCase1List = /*@__PURE__*/ S.Array(
-  Recipient,
-) as any as S.Schema<CreateMessageRequestCcCase1List>;
+export const CreateMessageRequestCcCase1List =
+  CreateMessageRequestToCase1List as any as S.Schema<CreateMessageRequestCcCase1List>;
 
 export type CreateMessageRequestCc = Recipient | CreateMessageRequestCcCase1List;
 export const CreateMessageRequestCc = S.Unknown as any as S.Schema<CreateMessageRequestCc>;
 
 /** The BCC recipients of the message. */
 export type CreateMessageRequestBccCase1List = Array<Recipient>;
-export const CreateMessageRequestBccCase1List = /*@__PURE__*/ S.Array(
-  Recipient,
-) as any as S.Schema<CreateMessageRequestBccCase1List>;
+export const CreateMessageRequestBccCase1List =
+  CreateMessageRequestToCase1List as any as S.Schema<CreateMessageRequestBccCase1List>;
 
 export type CreateMessageRequestBcc = Recipient | CreateMessageRequestBccCase1List;
 export const CreateMessageRequestBcc = S.Unknown as any as S.Schema<CreateMessageRequestBcc>;
@@ -6032,9 +5920,8 @@ export const CreateNewsItemRequestState = S.String;
 
 /** Label names displayed to users to categorize the news item. */
 export type CreateNewsItemRequestLabelsList = Array<string>;
-export const CreateNewsItemRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNewsItemRequestLabelsList>;
+export const CreateNewsItemRequestLabelsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<CreateNewsItemRequestLabelsList>;
 
 /** Ordered list of emoji reactions to the news item. When empty, reactions are disabled. */
 export type CreateNewsItemRequestReactionsList = Array<string | null>;
@@ -6103,21 +5990,18 @@ export const NewsItemState = S.String;
 
 /** A list of newsfeed_assignments to assign to the specified newsfeed. */
 export type NewsItemNewsfeedAssignmentsList = Array<NewsfeedAssignment>;
-export const NewsItemNewsfeedAssignmentsList = /*@__PURE__*/ S.Array(
-  NewsfeedAssignment,
-) as any as S.Schema<NewsItemNewsfeedAssignmentsList>;
+export const NewsItemNewsfeedAssignmentsList =
+  CreateNewsItemRequestNewsfeedAssignmentsList as any as S.Schema<NewsItemNewsfeedAssignmentsList>;
 
 /** Label names displayed to users to categorize the news item. */
 export type NewsItemLabelsList = Array<string | null>;
-export const NewsItemLabelsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<NewsItemLabelsList>;
+export const NewsItemLabelsList =
+  CreateNewsItemRequestReactionsList as any as S.Schema<NewsItemLabelsList>;
 
 /** Ordered list of emoji reactions to the news item. When empty, reactions are disabled. */
 export type NewsItemReactionsList = Array<string | null>;
-export const NewsItemReactionsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<NewsItemReactionsList>;
+export const NewsItemReactionsList =
+  CreateNewsItemRequestReactionsList as any as S.Schema<NewsItemReactionsList>;
 
 /** A News Item is a content type in Intercom enabling you to announce product updates, company news, promotions, events and more with your customers. */
 export interface NewsItem {
@@ -6312,9 +6196,8 @@ export const OfficeHoursException = /*@__PURE__*/ S.suspend(() =>
 
 /** The open intervals for the schedule. `start_minute` and `end_minute` must be on a 15-minute boundary. */
 export type CreateOfficeHoursScheduleRequestTimeIntervalsList = Array<OfficeHoursTimeIntervalInput>;
-export const CreateOfficeHoursScheduleRequestTimeIntervalsList = /*@__PURE__*/ S.Array(
-  OfficeHoursTimeIntervalInput,
-) as any as S.Schema<CreateOfficeHoursScheduleRequestTimeIntervalsList>;
+export const CreateOfficeHoursScheduleRequestTimeIntervalsList =
+  CreateOfficeHoursExceptionRequestTimeIntervalsList as any as S.Schema<CreateOfficeHoursScheduleRequestTimeIntervalsList>;
 
 export interface CreateOfficeHoursScheduleRequest {
   /** The name of the office hours schedule. */
@@ -6336,9 +6219,8 @@ export const CreateOfficeHoursScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The open intervals that make up the weekly schedule. */
 export type OfficeHoursScheduleTimeIntervalsList = Array<OfficeHoursTimeInterval>;
-export const OfficeHoursScheduleTimeIntervalsList = /*@__PURE__*/ S.Array(
-  OfficeHoursTimeInterval,
-) as any as S.Schema<OfficeHoursScheduleTimeIntervalsList>;
+export const OfficeHoursScheduleTimeIntervalsList =
+  OfficeHoursExceptionTimeIntervalsList as any as S.Schema<OfficeHoursScheduleTimeIntervalsList>;
 
 /** An office hours schedule defines the recurring weekly hours during which the workspace is open. */
 export interface OfficeHoursSchedule {
@@ -6374,10 +6256,8 @@ export const OfficeHoursSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** A hash of key/value pairs containing any other data about the company you want Intercom to store. */
 export type CreateOrUpdateCompanyRequestCustomAttributesMap = { [key: string]: string | undefined };
-export const CreateOrUpdateCompanyRequestCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrUpdateCompanyRequestCustomAttributesMap>;
+export const CreateOrUpdateCompanyRequestCustomAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<CreateOrUpdateCompanyRequestCustomAttributesMap>;
 
 export interface CreateOrUpdateCompanyRequest {
   /** The name of the Company */
@@ -6638,20 +6518,13 @@ export interface CreateTagResponseCompaniesItem {
   /** Whether the company was tagged (true) or untagged (false). */
   tagged?: boolean;
 }
-export const CreateTagResponseCompaniesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tagged: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateTagResponseCompaniesItem",
-}) as any as S.Schema<CreateTagResponseCompaniesItem>;
+export const CreateTagResponseCompaniesItem =
+  CreateTagResponseUsersItem as any as S.Schema<CreateTagResponseCompaniesItem>;
 
 /** The companies that were tagged or untagged. */
 export type CreateTagResponseCompaniesList = Array<CreateTagResponseCompaniesItem>;
-export const CreateTagResponseCompaniesList = /*@__PURE__*/ S.Array(
-  CreateTagResponseCompaniesItem,
-) as any as S.Schema<CreateTagResponseCompaniesList>;
+export const CreateTagResponseCompaniesList =
+  CreateTagResponseUsersList as any as S.Schema<CreateTagResponseCompaniesList>;
 
 export interface CreateTagResponse {
   /** value is "tag" */
@@ -6885,9 +6758,8 @@ export const DataEventSummariesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataEventSummariesRequest>;
 
 export interface DataEventSummariesResponse {}
-export const DataEventSummariesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DataEventSummariesResponse",
-}) as any as S.Schema<DataEventSummariesResponse>;
+export const DataEventSummariesResponse =
+  BulkContentActionsResponse as any as S.Schema<DataEventSummariesResponse>;
 
 export interface DeleteArticleRequest {
   /** The unique identifier for the article which is given by Intercom. */
@@ -6931,9 +6803,8 @@ export const DeleteAudienceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAudienceRequest" }) as any as S.Schema<DeleteAudienceRequest>;
 
 export interface DeleteAudienceResponse {}
-export const DeleteAudienceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAudienceResponse",
-}) as any as S.Schema<DeleteAudienceResponse>;
+export const DeleteAudienceResponse =
+  BulkContentActionsResponse as any as S.Schema<DeleteAudienceResponse>;
 
 export interface DeleteCollectionRequest {
   /** The unique identifier for the collection which is given by Intercom. */
@@ -7043,11 +6914,8 @@ export const DeleteContentImportSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContentImportSourceRequest>;
 
 export interface DeleteContentImportSourceResponse {}
-export const DeleteContentImportSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContentImportSourceResponse",
-}) as any as S.Schema<DeleteContentImportSourceResponse>;
+export const DeleteContentImportSourceResponse =
+  CollectFinVoiceCallByPhoneNumberResponse as any as S.Schema<DeleteContentImportSourceResponse>;
 
 export interface DeleteContentSnippetRequest {
   /** The unique identifier for the content snippet. */
@@ -7062,9 +6930,8 @@ export const DeleteContentSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContentSnippetRequest>;
 
 export interface DeleteContentSnippetResponse {}
-export const DeleteContentSnippetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContentSnippetResponse",
-}) as any as S.Schema<DeleteContentSnippetResponse>;
+export const DeleteContentSnippetResponse =
+  BulkContentActionsResponse as any as S.Schema<DeleteContentSnippetResponse>;
 
 export interface DeleteConversationRequest {
   /** id */
@@ -7115,11 +6982,8 @@ export const DeleteConversationAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConversationAttributeRequest>;
 
 export type DeleteConversationAttributeResponse = ConversationAttribute;
-export const DeleteConversationAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  ConversationAttribute.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteConversationAttributeResponse",
-}) as any as S.Schema<DeleteConversationAttributeResponse>;
+export const DeleteConversationAttributeResponse =
+  CreateConversationAttributeResponse as any as S.Schema<DeleteConversationAttributeResponse>;
 
 export interface DeleteConversationAttributeOptionRequest {
   /** The conversation attribute id */
@@ -7143,11 +7007,8 @@ export const DeleteConversationAttributeOptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteConversationAttributeOptionRequest>;
 
 export type DeleteConversationAttributeOptionResponse = ConversationAttribute;
-export const DeleteConversationAttributeOptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ConversationAttribute.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteConversationAttributeOptionResponse",
-}) as any as S.Schema<DeleteConversationAttributeOptionResponse>;
+export const DeleteConversationAttributeOptionResponse =
+  CreateConversationAttributeResponse as any as S.Schema<DeleteConversationAttributeOptionResponse>;
 
 export interface DeleteCustomObjectInstancesByExternalIdRequest {
   /** The unique identifier of the custom object type that defines the structure of the custom object instance. */
@@ -7193,13 +7054,8 @@ export const CustomObjectInstanceDeleted = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCustomObjectInstancesByIdRequestExternalId {
   external_id: string;
 }
-export const DeleteCustomObjectInstancesByIdRequestExternalId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    external_id: S.String,
-  }),
-).annotate({
-  identifier: "DeleteCustomObjectInstancesByIdRequestExternalId",
-}) as any as S.Schema<DeleteCustomObjectInstancesByIdRequestExternalId>;
+export const DeleteCustomObjectInstancesByIdRequestExternalId =
+  CreateTicketRequestContactsItemCase1 as any as S.Schema<DeleteCustomObjectInstancesByIdRequestExternalId>;
 
 export interface DeleteCustomObjectInstancesByIdRequest {
   /** The unique identifier of the custom object type that defines the structure of the custom object instance. */
@@ -7431,15 +7287,8 @@ export interface DeleteOfficeHoursScheduleResponse {
   object?: string;
   deleted?: boolean;
 }
-export const DeleteOfficeHoursScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    object: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DeleteOfficeHoursScheduleResponse",
-}) as any as S.Schema<DeleteOfficeHoursScheduleResponse>;
+export const DeleteOfficeHoursScheduleResponse =
+  DeleteOfficeHoursExceptionResponse as any as S.Schema<DeleteOfficeHoursScheduleResponse>;
 
 export interface DeleteTagRequest {
   /** The unique identifier of a given tag */
@@ -7452,9 +7301,7 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRequest" }) as any as S.Schema<DeleteTagRequest>;
 
 export interface DeleteTagResponse {}
-export const DeleteTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagResponse",
-}) as any as S.Schema<DeleteTagResponse>;
+export const DeleteTagResponse = BulkContentActionsResponse as any as S.Schema<DeleteTagResponse>;
 
 export interface DeleteTicketRequest {
   /** The unique identifier for the ticket which is given by Intercom. {% admonition type="info" name="Not the Inbox ticket ID" %} This is the internal `id` field from the API response, not the `ticket_id` displayed in the Intercom Inbox (e.g., #12345). Use the `id` value from the ticket object returned by the API. {% /admonition %} */
@@ -7704,9 +7551,8 @@ export const DownloadDataExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadDataExportRequest>;
 
 export interface DownloadDataExportResponse {}
-export const DownloadDataExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadDataExportResponse",
-}) as any as S.Schema<DownloadDataExportResponse>;
+export const DownloadDataExportResponse =
+  BulkContentActionsResponse as any as S.Schema<DownloadDataExportResponse>;
 
 export type EnqueueCreateTicketRequestContactsItemCase0 = CreateTicketRequestContactsItemCase0;
 export const EnqueueCreateTicketRequestContactsItemCase0 = CreateTicketRequestContactsItemCase0;
@@ -7805,10 +7651,8 @@ export const Jobs = /*@__PURE__*/ S.suspend(() =>
 export type EscalateFinConversationRequestUserAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const EscalateFinConversationRequestUserAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EscalateFinConversationRequestUserAttributesMap>;
+export const EscalateFinConversationRequestUserAttributesMap =
+  FinAgentUserAttributesMap as any as S.Schema<EscalateFinConversationRequestUserAttributesMap>;
 
 export interface EscalateFinConversationRequestUser {
   /** The ID of the user. This value will be used to uniquely identify the user during a conversation with Fin. Maps to the user_id field on the Intercom User object. */
@@ -7889,27 +7733,23 @@ export const WorkflowExportWorkflowState = S.String;
 
 /** The channels this workflow targets. */
 export type WorkflowExportWorkflowTargetChannelsList = Array<string>;
-export const WorkflowExportWorkflowTargetChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkflowExportWorkflowTargetChannelsList>;
+export const WorkflowExportWorkflowTargetChannelsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<WorkflowExportWorkflowTargetChannelsList>;
 
 /** The preferred devices for this workflow. */
 export type WorkflowExportWorkflowPreferredDevicesList = Array<string>;
-export const WorkflowExportWorkflowPreferredDevicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkflowExportWorkflowPreferredDevicesList>;
+export const WorkflowExportWorkflowPreferredDevicesList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<WorkflowExportWorkflowPreferredDevicesList>;
 
 /** Custom attributes defined for this workflow. */
 export type WorkflowExportWorkflowAttributesList = Array<unknown>;
-export const WorkflowExportWorkflowAttributesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<WorkflowExportWorkflowAttributesList>;
+export const WorkflowExportWorkflowAttributesList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<WorkflowExportWorkflowAttributesList>;
 
 /** Rules embedded within the workflow steps. */
 export type WorkflowExportWorkflowEmbeddedRulesList = Array<unknown>;
-export const WorkflowExportWorkflowEmbeddedRulesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<WorkflowExportWorkflowEmbeddedRulesList>;
+export const WorkflowExportWorkflowEmbeddedRulesList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<WorkflowExportWorkflowEmbeddedRulesList>;
 
 /** The workflow configuration. */
 export interface WorkflowExportWorkflow {
@@ -8028,9 +7868,8 @@ export const GetArticleResponseState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type GetArticleResponseParentIdsList = Array<number>;
-export const GetArticleResponseParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetArticleResponseParentIdsList>;
+export const GetArticleResponseParentIdsList =
+  AdminTeamIdsList as any as S.Schema<GetArticleResponseParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type GetArticleResponseHelpCenterAudience =
@@ -8150,9 +7989,8 @@ export const GetArticleDraftResponseState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type GetArticleDraftResponseParentIdsList = Array<number>;
-export const GetArticleDraftResponseParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetArticleDraftResponseParentIdsList>;
+export const GetArticleDraftResponseParentIdsList =
+  AdminTeamIdsList as any as S.Schema<GetArticleDraftResponseParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type GetArticleDraftResponseHelpCenterAudience =
@@ -8459,9 +8297,8 @@ export const GetCallRecordingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCallRecordingRequest" }) as any as S.Schema<GetCallRecordingRequest>;
 
 export interface GetCallRecordingResponse {}
-export const GetCallRecordingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCallRecordingResponse",
-}) as any as S.Schema<GetCallRecordingResponse>;
+export const GetCallRecordingResponse =
+  BulkContentActionsResponse as any as S.Schema<GetCallRecordingResponse>;
 
 export interface GetCallTranscriptRequest {
   /** The id of the call */
@@ -8474,9 +8311,8 @@ export const GetCallTranscriptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCallTranscriptRequest" }) as any as S.Schema<GetCallTranscriptRequest>;
 
 export interface GetCallTranscriptResponse {}
-export const GetCallTranscriptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCallTranscriptResponse",
-}) as any as S.Schema<GetCallTranscriptResponse>;
+export const GetCallTranscriptResponse =
+  BulkContentActionsResponse as any as S.Schema<GetCallTranscriptResponse>;
 
 export interface GetCollectionRequest {
   /** The unique identifier for the collection which is given by Intercom. */
@@ -8599,9 +8435,8 @@ export const GetContactResponseAvatar = ContactAvatar;
 
 /** A list of contacts that were merged into this contact. Only included in the response when `include_merge_history=true` is passed as a query parameter. Only available for contacts with a `user` role. */
 export type GetContactResponseMergeHistoryList = Array<MergeHistoryItem>;
-export const GetContactResponseMergeHistoryList = /*@__PURE__*/ S.Array(
-  MergeHistoryItem,
-) as any as S.Schema<GetContactResponseMergeHistoryList>;
+export const GetContactResponseMergeHistoryList =
+  ContactMergeHistoryList as any as S.Schema<GetContactResponseMergeHistoryList>;
 
 export interface GetContactResponse {
   /** The type of object. */
@@ -8693,57 +8528,7 @@ export interface GetContactResponse {
   /** If the user has enabled push messaging. */
   enabled_push_messaging?: boolean | null;
 }
-export const GetContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-    external_id: S.optional(S.NullOr(S.String)),
-    workspace_id: S.optional(S.String),
-    role: S.optional(S.String),
-    email: S.optional(S.String),
-    email_domain: S.optional(S.String),
-    phone: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    owner_id: S.optional(S.NullOr(S.String)),
-    has_hard_bounced: S.optional(S.Boolean),
-    marked_email_as_spam: S.optional(S.Boolean),
-    unsubscribed_from_emails: S.optional(S.Boolean),
-    created_at: S.optional(S.Number),
-    updated_at: S.optional(S.Number),
-    signed_up_at: S.optional(S.NullOr(S.Number)),
-    last_seen_at: S.optional(S.NullOr(S.Number)),
-    last_replied_at: S.optional(S.NullOr(S.Number)),
-    last_contacted_at: S.optional(S.NullOr(S.Number)),
-    last_email_opened_at: S.optional(S.NullOr(S.Number)),
-    last_email_clicked_at: S.optional(S.NullOr(S.Number)),
-    language_override: S.optional(S.NullOr(S.String)),
-    browser: S.optional(S.NullOr(S.String)),
-    browser_version: S.optional(S.NullOr(S.String)),
-    browser_language: S.optional(S.NullOr(S.String)),
-    os: S.optional(S.NullOr(S.String)),
-    android_app_name: S.optional(S.NullOr(S.String)),
-    android_app_version: S.optional(S.NullOr(S.String)),
-    android_device: S.optional(S.NullOr(S.String)),
-    android_os_version: S.optional(S.NullOr(S.String)),
-    android_sdk_version: S.optional(S.NullOr(S.String)),
-    android_last_seen_at: S.optional(S.NullOr(S.Number)),
-    ios_app_name: S.optional(S.NullOr(S.String)),
-    ios_app_version: S.optional(S.NullOr(S.String)),
-    ios_device: S.optional(S.NullOr(S.String)),
-    ios_os_version: S.optional(S.NullOr(S.String)),
-    ios_sdk_version: S.optional(S.NullOr(S.String)),
-    ios_last_seen_at: S.optional(S.NullOr(S.Number)),
-    custom_attributes: S.optional(S.Unknown),
-    avatar: S.optional(S.NullOr(ContactAvatar)),
-    tags: S.optional(S.NullOr(ContactTags)),
-    notes: S.optional(ContactNotes),
-    companies: S.optional(ContactCompanies),
-    location: S.optional(ContactLocation),
-    social_profiles: S.optional(ContactSocialProfiles),
-    merge_history: S.optional(S.NullOr(GetContactResponseMergeHistoryList)),
-    enabled_push_messaging: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "GetContactResponse" }) as any as S.Schema<GetContactResponse>;
+export const GetContactResponse = CreateContactResponse as any as S.Schema<GetContactResponse>;
 
 export interface GetContactByExternalIdRequest {
   /** The external ID of the user that you want to retrieve */
@@ -8765,9 +8550,8 @@ export const GetContactByExternalIdResponseAvatar = ContactAvatar;
 
 /** A list of contacts that were merged into this contact. Only included in the response when `include_merge_history=true` is passed as a query parameter. Only available for contacts with a `user` role. */
 export type GetContactByExternalIdResponseMergeHistoryList = Array<MergeHistoryItem>;
-export const GetContactByExternalIdResponseMergeHistoryList = /*@__PURE__*/ S.Array(
-  MergeHistoryItem,
-) as any as S.Schema<GetContactByExternalIdResponseMergeHistoryList>;
+export const GetContactByExternalIdResponseMergeHistoryList =
+  ContactMergeHistoryList as any as S.Schema<GetContactByExternalIdResponseMergeHistoryList>;
 
 export interface GetContactByExternalIdResponse {
   /** The type of object. */
@@ -9050,9 +8834,8 @@ export const ConversationSourceAuthor = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of attachments for the part. */
 export type ConversationSourceAttachmentsList = Array<PartAttachment>;
-export const ConversationSourceAttachmentsList = /*@__PURE__*/ S.Array(
-  PartAttachment,
-) as any as S.Schema<ConversationSourceAttachmentsList>;
+export const ConversationSourceAttachmentsList =
+  TicketPartAttachmentsList as any as S.Schema<ConversationSourceAttachmentsList>;
 
 /** Contains data for an email address header for a conversation part that was sent as an email. */
 export interface EmailAddressHeader {
@@ -9146,9 +8929,8 @@ export const ConversationContactsType = S.String;
 
 /** The list of contacts (users or leads) involved in this conversation. This will only contain one customer unless more were added via the group conversation feature. */
 export type ConversationContactsContactsList = Array<ContactReference>;
-export const ConversationContactsContactsList = /*@__PURE__*/ S.Array(
-  ContactReference,
-) as any as S.Schema<ConversationContactsContactsList>;
+export const ConversationContactsContactsList =
+  TicketContactsContactsList as any as S.Schema<ConversationContactsContactsList>;
 
 /** The list of contacts (users or leads) involved in this conversation. This will only contain one customer unless more were added via the group conversation feature. */
 export interface ConversationContacts {
@@ -9363,15 +9145,13 @@ export const ConversationPartAuthor = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of attachments for the part. */
 export type ConversationPartAttachmentsList = Array<PartAttachment>;
-export const ConversationPartAttachmentsList = /*@__PURE__*/ S.Array(
-  PartAttachment,
-) as any as S.Schema<ConversationPartAttachmentsList>;
+export const ConversationPartAttachmentsList =
+  TicketPartAttachmentsList as any as S.Schema<ConversationPartAttachmentsList>;
 
 /** A list of an email address headers. */
 export type EmailMessageMetadataEmailAddressHeadersList = Array<EmailAddressHeader>;
-export const EmailMessageMetadataEmailAddressHeadersList = /*@__PURE__*/ S.Array(
-  EmailAddressHeader,
-) as any as S.Schema<EmailMessageMetadataEmailAddressHeadersList>;
+export const EmailMessageMetadataEmailAddressHeadersList =
+  SourceEmailMessageMetadataEmailAddressHeadersList as any as S.Schema<EmailMessageMetadataEmailAddressHeadersList>;
 
 /** Contains metadata if the message was sent as an email */
 export interface EmailMessageMetadata {
@@ -9435,9 +9215,8 @@ export const ConversationPartState = S.String;
 
 /** A list of tags objects associated with the conversation part. */
 export type ConversationPartTagsList = Array<TagBasic>;
-export const ConversationPartTagsList = /*@__PURE__*/ S.Array(
-  TagBasic,
-) as any as S.Schema<ConversationPartTagsList>;
+export const ConversationPartTagsList =
+  CompanyTagsTagsList as any as S.Schema<ConversationPartTagsList>;
 
 export interface ConversationAttributeUpdatedByWorkflowWorkflow {
   /** Name of the workflow */
@@ -9455,25 +9234,15 @@ export interface ConversationAttributeUpdatedByWorkflowAttribute {
   /** Name of the CDA updated */
   name?: string;
 }
-export const ConversationAttributeUpdatedByWorkflowAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConversationAttributeUpdatedByWorkflowAttribute",
-}) as any as S.Schema<ConversationAttributeUpdatedByWorkflowAttribute>;
+export const ConversationAttributeUpdatedByWorkflowAttribute =
+  ConversationAttributeUpdatedByWorkflowWorkflow as any as S.Schema<ConversationAttributeUpdatedByWorkflowAttribute>;
 
 export interface ConversationAttributeUpdatedByWorkflowValue {
   /** Value of the CDA updated */
   name?: string;
 }
-export const ConversationAttributeUpdatedByWorkflowValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConversationAttributeUpdatedByWorkflowValue",
-}) as any as S.Schema<ConversationAttributeUpdatedByWorkflowValue>;
+export const ConversationAttributeUpdatedByWorkflowValue =
+  ConversationAttributeUpdatedByWorkflowWorkflow as any as S.Schema<ConversationAttributeUpdatedByWorkflowValue>;
 
 /** Contains details about the workflow that was triggered and any Custom Data Attributes (CDAs) that were modified during the workflow execution for conversation part type <code>conversation_attribute_updated_by_workflow</code>. */
 export interface ConversationAttributeUpdatedByWorkflow {
@@ -9536,40 +9305,23 @@ export interface ConversationAttributeUpdatedByUserValue {
   /** Previous value of the CDA (null for older events) */
   previous?: string | null;
 }
-export const ConversationAttributeUpdatedByUserValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    previous: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ConversationAttributeUpdatedByUserValue",
-}) as any as S.Schema<ConversationAttributeUpdatedByUserValue>;
+export const ConversationAttributeUpdatedByUserValue =
+  ConversationAttributeUpdatedByAdminValue as any as S.Schema<ConversationAttributeUpdatedByUserValue>;
 
 /** Contains details about Custom Data Attributes (CDAs) that were modified by a user for conversation part type <code>conversation_attribute_updated_by_user</code>. */
 export interface ConversationAttributeUpdatedByUser {
   attribute?: ConversationAttributeUpdatedByWorkflowAttribute;
   value?: ConversationAttributeUpdatedByUserValue;
 }
-export const ConversationAttributeUpdatedByUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(ConversationAttributeUpdatedByWorkflowAttribute),
-    value: S.optional(ConversationAttributeUpdatedByUserValue),
-  }),
-).annotate({
-  identifier: "ConversationAttributeUpdatedByUser",
-}) as any as S.Schema<ConversationAttributeUpdatedByUser>;
+export const ConversationAttributeUpdatedByUser =
+  ConversationAttributeUpdatedByAdmin as any as S.Schema<ConversationAttributeUpdatedByUser>;
 
 export interface CustomActionStartedAction {
   /** Name of the action */
   name?: string;
 }
-export const CustomActionStartedAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomActionStartedAction",
-}) as any as S.Schema<CustomActionStartedAction>;
+export const CustomActionStartedAction =
+  ConversationAttributeUpdatedByWorkflowWorkflow as any as S.Schema<CustomActionStartedAction>;
 
 /** Contains details about name of the action that was initiated for conversation part type <code>custom_action_started</code>. */
 export interface CustomActionStarted {
@@ -9614,13 +9366,8 @@ export interface OperatorWorkflowEventWorkflow {
   /** The name of the workflow */
   name?: string;
 }
-export const OperatorWorkflowEventWorkflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperatorWorkflowEventWorkflow",
-}) as any as S.Schema<OperatorWorkflowEventWorkflow>;
+export const OperatorWorkflowEventWorkflow =
+  ConversationAttributeUpdatedByWorkflowWorkflow as any as S.Schema<OperatorWorkflowEventWorkflow>;
 
 export interface OperatorWorkflowEventEvent {
   /** Type of the workflow event initiated */
@@ -9864,10 +9611,8 @@ export const SalesAgentOutcome = S.String;
 
 /** A flat key-value map of memory fields collected by the sales agent during the conversation. */
 export type SalesAgentCollectedDataMap = { [key: string]: string | undefined };
-export const SalesAgentCollectedDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SalesAgentCollectedDataMap>;
+export const SalesAgentCollectedDataMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<SalesAgentCollectedDataMap>;
 
 /** Data related to Sales Agent involvement in the conversation. */
 export interface SalesAgent {
@@ -9978,9 +9723,8 @@ export const ConversationScorecardReviewedTeammate = /*@__PURE__*/ S.suspend(() 
 
 /** Identifiers for structured reasons assigned to the result, if any. */
 export type ConversationScorecardEvaluatorResultReasonIdsList = Array<string>;
-export const ConversationScorecardEvaluatorResultReasonIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationScorecardEvaluatorResultReasonIdsList>;
+export const ConversationScorecardEvaluatorResultReasonIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ConversationScorecardEvaluatorResultReasonIdsList>;
 
 /** The outcome of a single evaluator within a scorecard. */
 export interface ConversationScorecardEvaluatorResult {
@@ -10179,11 +9923,8 @@ export const GetConversationAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConversationAttributeRequest>;
 
 export type GetConversationAttributeResponse = ConversationAttribute;
-export const GetConversationAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  ConversationAttribute.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetConversationAttributeResponse",
-}) as any as S.Schema<GetConversationAttributeResponse>;
+export const GetConversationAttributeResponse =
+  CreateConversationAttributeResponse as any as S.Schema<GetConversationAttributeResponse>;
 
 export interface GetCustomObjectInstanceRequest {
   /** The unique identifier of the custom object type that defines the structure of the custom object instance. */
@@ -10364,11 +10105,8 @@ export const GetDownloadReportingDataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDownloadReportingDataRequest>;
 
 export interface GetDownloadReportingDataResponse {}
-export const GetDownloadReportingDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDownloadReportingDataResponse",
-}) as any as S.Schema<GetDownloadReportingDataResponse>;
+export const GetDownloadReportingDataResponse =
+  CollectFinVoiceCallByPhoneNumberResponse as any as S.Schema<GetDownloadReportingDataResponse>;
 
 export interface GetEmailRequest {
   /** The unique identifier of the email setting */
@@ -10440,16 +10178,8 @@ export interface GetExportReportingDataResponse {
   download_url?: string;
   download_expires_at?: string;
 }
-export const GetExportReportingDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job_identifier: S.optional(S.String),
-    status: S.optional(S.String),
-    download_url: S.optional(S.String),
-    download_expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetExportReportingDataResponse",
-}) as any as S.Schema<GetExportReportingDataResponse>;
+export const GetExportReportingDataResponse =
+  CreateExportReportingDataEnqueueResponse as any as S.Schema<GetExportReportingDataResponse>;
 
 export interface GetExternalPageRequest {
   /** The unique identifier for the external page which is given by Intercom. */
@@ -10473,9 +10203,8 @@ export const GetHelpCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The locales in which the help center is available. */
 export type HelpCenterLocalesList = Array<string>;
-export const HelpCenterLocalesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HelpCenterLocalesList>;
+export const HelpCenterLocalesList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<HelpCenterLocalesList>;
 
 /** Help Centers contain collections */
 export interface HelpCenter {
@@ -10557,9 +10286,8 @@ export const GetInternalArticleResponseType = S.String;
 
 /** The list of audience IDs this internal article is targeted to for Fin AI Agent. Empty array means no audience targeting is set. */
 export type GetInternalArticleResponseAudienceIdsList = Array<number>;
-export const GetInternalArticleResponseAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetInternalArticleResponseAudienceIdsList>;
+export const GetInternalArticleResponseAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<GetInternalArticleResponseAudienceIdsList>;
 
 export interface GetInternalArticleResponse {
   /** The type of object - `internal_article`. */
@@ -10619,9 +10347,8 @@ export const GetIpAllowlistRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of allowed IP addresses and/or IP ranges in CIDR notation. Examples: - Single IP: `192.168.0.1` - IP range: `192.168.0.1/24` (allows 192.168.0.0 - 192.168.0.255) */
 export type IpAllowlistIpAllowlistList = Array<string>;
-export const IpAllowlistIpAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpAllowlistIpAllowlistList>;
+export const IpAllowlistIpAllowlistList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<IpAllowlistIpAllowlistList>;
 
 /** IP allowlist settings for the workspace. */
 export interface IpAllowlist {
@@ -10660,9 +10387,8 @@ export const MacroVisibleTo = S.String;
 
 /** The team IDs that can view this macro when visible_to is set to specific_teams. */
 export type MacroVisibleToTeamIdsList = Array<string>;
-export const MacroVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MacroVisibleToTeamIdsList>;
+export const MacroVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<MacroVisibleToTeamIdsList>;
 
 export type MacroAvailableOnItem = "inbox" | "messenger";
 export const MacroAvailableOnItem = S.String;
@@ -10823,21 +10549,17 @@ export const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of admin IDs that are a part of the team. */
 export type TeamAdminIdsList = Array<number>;
-export const TeamAdminIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TeamAdminIdsList>;
+export const TeamAdminIdsList = AdminTeamIdsList as any as S.Schema<TeamAdminIdsList>;
 
 /** The primary admin ids for the team */
 export type AdminPriorityLevelPrimaryAdminIdsList = Array<number>;
-export const AdminPriorityLevelPrimaryAdminIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AdminPriorityLevelPrimaryAdminIdsList>;
+export const AdminPriorityLevelPrimaryAdminIdsList =
+  AdminTeamIdsList as any as S.Schema<AdminPriorityLevelPrimaryAdminIdsList>;
 
 /** The secondary admin ids for the team */
 export type AdminPriorityLevelSecondaryAdminIdsList = Array<number>;
-export const AdminPriorityLevelSecondaryAdminIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AdminPriorityLevelSecondaryAdminIdsList>;
+export const AdminPriorityLevelSecondaryAdminIdsList =
+  AdminTeamIdsList as any as S.Schema<AdminPriorityLevelSecondaryAdminIdsList>;
 
 /** Admin priority levels for the team */
 export interface AdminPriorityLevel {
@@ -10970,21 +10692,15 @@ export interface VisitorAvatar {
   /** This object represents the avatar associated with the visitor. */
   image_url?: string | null;
 }
-export const VisitorAvatar = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    image_url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VisitorAvatar" }) as any as S.Schema<VisitorAvatar>;
+export const VisitorAvatar = ContactAvatar as any as S.Schema<VisitorAvatar>;
 
 /** The type of the object */
 export type VisitorCompaniesType = "company.list";
 export const VisitorCompaniesType = S.String;
 
 export type VisitorCompaniesCompaniesList = Array<Company>;
-export const VisitorCompaniesCompaniesList = /*@__PURE__*/ S.Array(
-  Company,
-) as any as S.Schema<VisitorCompaniesCompaniesList>;
+export const VisitorCompaniesCompaniesList =
+  CompanyListDataList as any as S.Schema<VisitorCompaniesCompaniesList>;
 
 export interface VisitorCompanies {
   /** The type of the object */
@@ -11033,9 +10749,8 @@ export type VisitorSocialProfilesType = "social_profile.list";
 export const VisitorSocialProfilesType = S.String;
 
 export type VisitorSocialProfilesSocialProfilesList = Array<string>;
-export const VisitorSocialProfilesSocialProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VisitorSocialProfilesSocialProfilesList>;
+export const VisitorSocialProfilesSocialProfilesList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<VisitorSocialProfilesSocialProfilesList>;
 
 export interface VisitorSocialProfiles {
   /** The type of the object */
@@ -11095,9 +10810,8 @@ export type VisitorSegmentsType = "segment.list";
 export const VisitorSegmentsType = S.String;
 
 export type VisitorSegmentsSegmentsList = Array<string>;
-export const VisitorSegmentsSegmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VisitorSegmentsSegmentsList>;
+export const VisitorSegmentsSegmentsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<VisitorSegmentsSegmentsList>;
 
 export interface VisitorSegments {
   /** The type of the object */
@@ -11113,10 +10827,8 @@ export const VisitorSegments = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom attributes you have set on the Visitor. */
 export type VisitorCustomAttributesMap = { [key: string]: string | undefined };
-export const VisitorCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VisitorCustomAttributesMap>;
+export const VisitorCustomAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<VisitorCustomAttributesMap>;
 
 /** Visitors are useful for representing anonymous people that have not yet been identified. They usually represent website visitors. Visitors are not visible in Intercom platform. The Visitors resource provides methods to fetch, update, convert and delete. */
 export interface Visitor {
@@ -11414,9 +11126,7 @@ export const IdentifyAdminRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This is a list of ids of the teams that this admin is part of. */
 export type AdminWithAppTeamIdsList = Array<number>;
-export const AdminWithAppTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AdminWithAppTeamIdsList>;
+export const AdminWithAppTeamIdsList = AdminTeamIdsList as any as S.Schema<AdminWithAppTeamIdsList>;
 
 /** This object represents the avatar associated with the admin. */
 export interface AdminWithAppAvatar {
@@ -11425,12 +11135,7 @@ export interface AdminWithAppAvatar {
   /** This object represents the avatar associated with the admin. */
   image_url?: string | null;
 }
-export const AdminWithAppAvatar = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    image_url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "AdminWithAppAvatar" }) as any as S.Schema<AdminWithAppAvatar>;
+export const AdminWithAppAvatar = ContactAvatar as any as S.Schema<AdminWithAppAvatar>;
 
 /** App is a workspace on Intercom */
 export interface App {
@@ -11594,13 +11299,8 @@ export const LisDataEventsRequestFilterCase1 = /*@__PURE__*/ S.suspend(() =>
 export interface LisDataEventsRequestFilterCase2 {
   email: string;
 }
-export const LisDataEventsRequestFilterCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.String,
-  }),
-).annotate({
-  identifier: "LisDataEventsRequestFilterCase2",
-}) as any as S.Schema<LisDataEventsRequestFilterCase2>;
+export const LisDataEventsRequestFilterCase2 =
+  CreateTicketRequestContactsItemCase2 as any as S.Schema<LisDataEventsRequestFilterCase2>;
 
 export type LisDataEventsRequestFilter =
   | LisDataEventsRequestFilterCase0
@@ -11688,9 +11388,8 @@ export const ListActivityLogEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of activity log event type strings. */
 export type ActivityLogEventTypeListEventTypesList = Array<string>;
-export const ActivityLogEventTypeListEventTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActivityLogEventTypeListEventTypesList>;
+export const ActivityLogEventTypeListEventTypesList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ActivityLogEventTypeListEventTypesList>;
 
 /** A list of all activity log event types. */
 export interface ActivityLogEventTypeList {
@@ -12127,9 +11826,8 @@ export const ArticleListItemState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type ArticleListItemParentIdsList = Array<number>;
-export const ArticleListItemParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ArticleListItemParentIdsList>;
+export const ArticleListItemParentIdsList =
+  AdminTeamIdsList as any as S.Schema<ArticleListItemParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type ArticleListItemHelpCenterAudience =
@@ -12411,9 +12109,8 @@ export const CompanyAttachedSegmentsType = S.String;
 
 /** An array containing Segment Objects */
 export type CompanyAttachedSegmentsDataList = Array<Segment>;
-export const CompanyAttachedSegmentsDataList = /*@__PURE__*/ S.Array(
-  Segment,
-) as any as S.Schema<CompanyAttachedSegmentsDataList>;
+export const CompanyAttachedSegmentsDataList =
+  CompanySegmentsSegmentsList as any as S.Schema<CompanyAttachedSegmentsDataList>;
 
 /** A list of Segment Objects */
 export interface CompanyAttachedSegments {
@@ -12598,9 +12295,8 @@ export const CallList = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of conversation ids to fetch calls for. Maximum 20. */
 export type ListCallsWithTranscriptsRequestConversationIdsList = Array<string>;
-export const ListCallsWithTranscriptsRequestConversationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCallsWithTranscriptsRequestConversationIdsList>;
+export const ListCallsWithTranscriptsRequestConversationIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ListCallsWithTranscriptsRequestConversationIdsList>;
 
 export interface ListCallsWithTranscriptsRequest {
   /** A list of conversation ids to fetch calls for. Maximum 20. */
@@ -12617,10 +12313,8 @@ export const ListCallsWithTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListCallsWithTranscriptsResponseDataItemTranscriptItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ListCallsWithTranscriptsResponseDataItemTranscriptItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListCallsWithTranscriptsResponseDataItemTranscriptItemMap>;
+export const ListCallsWithTranscriptsResponseDataItemTranscriptItemMap =
+  FinAgentUserAttributesMap as any as S.Schema<ListCallsWithTranscriptsResponseDataItemTranscriptItemMap>;
 
 /** The call transcript if available, otherwise an empty array. */
 export type ListCallsWithTranscriptsResponseDataItemTranscriptList =
@@ -12733,9 +12427,8 @@ export const ContactAttachedCompaniesType = S.String;
 
 /** An array containing Company Objects */
 export type ContactAttachedCompaniesCompaniesList = Array<Company>;
-export const ContactAttachedCompaniesCompaniesList = /*@__PURE__*/ S.Array(
-  Company,
-) as any as S.Schema<ContactAttachedCompaniesCompaniesList>;
+export const ContactAttachedCompaniesCompaniesList =
+  CompanyListDataList as any as S.Schema<ContactAttachedCompaniesCompaniesList>;
 
 export type PagesLinkType = "pages";
 export const PagesLinkType = S.String;
@@ -12872,9 +12565,8 @@ export const BannerAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Reserved for future use. Always `null` in the current version -- banners that depend on client-side targeting rules (such as page URL or time on page) are not returned by this endpoint. */
 export type BannerClientTargetingList = Array<unknown>;
-export const BannerClientTargetingList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<BannerClientTargetingList>;
+export const BannerClientTargetingList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<BannerClientTargetingList>;
 
 /** A banner the contact currently matches, with the content and view identifier needed to display and dismiss it. */
 export interface Banner {
@@ -12967,9 +12659,8 @@ export const MergeHistoryListType = S.String;
 
 /** An array of merge history entries. */
 export type MergeHistoryListDataList = Array<MergeHistoryItem>;
-export const MergeHistoryListDataList = /*@__PURE__*/ S.Array(
-  MergeHistoryItem,
-) as any as S.Schema<MergeHistoryListDataList>;
+export const MergeHistoryListDataList =
+  ContactMergeHistoryList as any as S.Schema<MergeHistoryListDataList>;
 
 /** A paginated list of merge history entries for a contact. */
 export interface MergeHistoryList {
@@ -13007,9 +12698,8 @@ export const ContactListType = S.String;
 
 /** The list of contact objects */
 export type ContactListDataList = Array<Contact>;
-export const ContactListDataList = /*@__PURE__*/ S.Array(
-  Contact,
-) as any as S.Schema<ContactListDataList>;
+export const ContactListDataList =
+  CompanyAttachedContactsDataList as any as S.Schema<ContactListDataList>;
 
 /** Contacts are your users in Intercom. */
 export interface ContactList {
@@ -13180,21 +12870,18 @@ export const ConversationListItemPriority = S.String;
 
 /** References linking this conversation to records in an external helpdesk or CRM system. Populated for Fin Standalone workspaces synced from an external platform; an empty array otherwise. Sorted alphabetically by `type` and capped at 20 entries. */
 export type ConversationListItemExternalReferencesList = Array<ConversationExternalReference>;
-export const ConversationListItemExternalReferencesList = /*@__PURE__*/ S.Array(
-  ConversationExternalReference,
-) as any as S.Schema<ConversationListItemExternalReferencesList>;
+export const ConversationListItemExternalReferencesList =
+  ConversationExternalReferencesList as any as S.Schema<ConversationListItemExternalReferencesList>;
 
 /** QA monitor evaluations that flagged this conversation. Only included when `include_monitors=true` is passed as a query parameter. */
 export type ConversationListItemMonitorEvaluationsList = Array<ConversationMonitorEvaluation>;
-export const ConversationListItemMonitorEvaluationsList = /*@__PURE__*/ S.Array(
-  ConversationMonitorEvaluation,
-) as any as S.Schema<ConversationListItemMonitorEvaluationsList>;
+export const ConversationListItemMonitorEvaluationsList =
+  ConversationMonitorEvaluationsList as any as S.Schema<ConversationListItemMonitorEvaluationsList>;
 
 /** QA scorecard results for this conversation. Only included when `include_scorecards=true` is passed as a query parameter. */
 export type ConversationListItemScorecardsList = Array<ConversationScorecard>;
-export const ConversationListItemScorecardsList = /*@__PURE__*/ S.Array(
-  ConversationScorecard,
-) as any as S.Schema<ConversationListItemScorecardsList>;
+export const ConversationListItemScorecardsList =
+  ConversationScorecardsList as any as S.Schema<ConversationListItemScorecardsList>;
 
 /** The data returned about your conversations when you list or search them. */
 export interface ConversationListItem {
@@ -13352,9 +13039,8 @@ export const CustomObjectInstancesPaginatedListType = S.String;
 
 /** An array of Custom Object Instance objects. */
 export type CustomObjectInstancesPaginatedListDataList = Array<CustomObjectInstance | null>;
-export const CustomObjectInstancesPaginatedListDataList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(CustomObjectInstance),
-) as any as S.Schema<CustomObjectInstancesPaginatedListDataList>;
+export const CustomObjectInstancesPaginatedListDataList =
+  CustomObjectInstanceListInstancesList as any as S.Schema<CustomObjectInstancesPaginatedListDataList>;
 
 /** A paginated list of custom object instances. */
 export interface CustomObjectInstancesPaginatedList {
@@ -13448,13 +13134,8 @@ export interface DataConnectorExecutionResultListPagesNext {
   /** The cursor value to use for the next page. */
   starting_after?: string;
 }
-export const DataConnectorExecutionResultListPagesNext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    starting_after: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DataConnectorExecutionResultListPagesNext",
-}) as any as S.Schema<DataConnectorExecutionResultListPagesNext>;
+export const DataConnectorExecutionResultListPagesNext =
+  WhatsappMessageStatusListPagesNext as any as S.Schema<DataConnectorExecutionResultListPagesNext>;
 
 /** Pagination information. */
 export interface DataConnectorExecutionResultListPages {
@@ -13808,10 +13489,8 @@ export const ExternalPagesList = /*@__PURE__*/ S.suspend(() =>
 
 /** A hash of attributes associated with the user. Attributes can be used by Fin to target content and responses. Limit to 10 attributes. */
 export type ListFinCapabilitiesRequestUserAttributesMap = { [key: string]: unknown | undefined };
-export const ListFinCapabilitiesRequestUserAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListFinCapabilitiesRequestUserAttributesMap>;
+export const ListFinCapabilitiesRequestUserAttributesMap =
+  FinAgentUserAttributesMap as any as S.Schema<ListFinCapabilitiesRequestUserAttributesMap>;
 
 export interface ListFinCapabilitiesRequestUser {
   /** The ID of the user. This value will be used to uniquely identify the user during a conversation with Fin. Maps to the user_id field on the Intercom User object. */
@@ -13823,16 +13502,8 @@ export interface ListFinCapabilitiesRequestUser {
   /** A hash of attributes associated with the user. Attributes can be used by Fin to target content and responses. Limit to 10 attributes. */
   attributes?: ListFinCapabilitiesRequestUserAttributesMap;
 }
-export const ListFinCapabilitiesRequestUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    email: S.optional(S.String),
-    attributes: S.optional(ListFinCapabilitiesRequestUserAttributesMap),
-  }),
-).annotate({
-  identifier: "ListFinCapabilitiesRequestUser",
-}) as any as S.Schema<ListFinCapabilitiesRequestUser>;
+export const ListFinCapabilitiesRequestUser =
+  EscalateFinConversationRequestUser as any as S.Schema<ListFinCapabilitiesRequestUser>;
 
 export interface ListFinCapabilitiesRequest {
   user: ListFinCapabilitiesRequestUser;
@@ -14069,9 +13740,8 @@ export const InternalArticleListItemType = S.String;
 
 /** The list of audience IDs this internal article is targeted to for Fin AI Agent. Empty array means no audience targeting is set. */
 export type InternalArticleListItemAudienceIdsList = Array<number>;
-export const InternalArticleListItemAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InternalArticleListItemAudienceIdsList>;
+export const InternalArticleListItemAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<InternalArticleListItemAudienceIdsList>;
 
 /** The data returned about your internal articles when you list them. */
 export interface InternalArticleListItem {
@@ -14368,9 +14038,8 @@ export const SegmentListType = S.String;
 
 /** A list of Segment objects */
 export type SegmentListSegmentsList = Array<Segment>;
-export const SegmentListSegmentsList = /*@__PURE__*/ S.Array(
-  Segment,
-) as any as S.Schema<SegmentListSegmentsList>;
+export const SegmentListSegmentsList =
+  CompanySegmentsSegmentsList as any as S.Schema<SegmentListSegmentsList>;
 
 /** This will return a list of Segment Objects. The result may also have a pages object if the response is paginated. */
 export interface SegmentList {
@@ -14407,9 +14076,8 @@ export const ContactSegmentsType = S.String;
 
 /** Segment objects associated with the contact. */
 export type ContactSegmentsDataList = Array<Segment>;
-export const ContactSegmentsDataList = /*@__PURE__*/ S.Array(
-  Segment,
-) as any as S.Schema<ContactSegmentsDataList>;
+export const ContactSegmentsDataList =
+  CompanySegmentsSegmentsList as any as S.Schema<ContactSegmentsDataList>;
 
 /** A list of segments objects attached to a specific contact. */
 export interface ContactSegments {
@@ -14449,9 +14117,8 @@ export const SideConversationListType = S.String;
 
 /** The conversation parts (messages) in this side conversation. */
 export type SideConversationSummaryConversationPartsList = Array<ConversationPart>;
-export const SideConversationSummaryConversationPartsList = /*@__PURE__*/ S.Array(
-  ConversationPart,
-) as any as S.Schema<SideConversationSummaryConversationPartsList>;
+export const SideConversationSummaryConversationPartsList =
+  ConversationPartsConversationPartsList as any as S.Schema<SideConversationSummaryConversationPartsList>;
 
 /** A side conversation with its conversation parts. */
 export interface SideConversationSummary {
@@ -14574,7 +14241,7 @@ export const TagListType = S.String;
 
 /** A list of tags objects associated with the workspace . */
 export type TagListDataList = Array<Tag>;
-export const TagListDataList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagListDataList>;
+export const TagListDataList = TagsTagsList as any as S.Schema<TagListDataList>;
 
 /** A list of tags objects in the workspace. */
 export interface TagList {
@@ -14720,9 +14387,8 @@ export const ListTicketTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of ticket_types associated with a given workspace. */
 export type TicketTypeListDataList = Array<TicketType2 | null>;
-export const TicketTypeListDataList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(TicketType2),
-) as any as S.Schema<TicketTypeListDataList>;
+export const TicketTypeListDataList =
+  TicketStateDetailedTicketTypesDataList as any as S.Schema<TicketTypeListDataList>;
 
 /** A list of ticket types associated with a given workspace. */
 export interface TicketTypeList {
@@ -14874,9 +14540,8 @@ export const MergeContactResponseAvatar = ContactAvatar;
 
 /** A list of contacts that were merged into this contact. Only included in the response when `include_merge_history=true` is passed as a query parameter. Only available for contacts with a `user` role. */
 export type MergeContactResponseMergeHistoryList = Array<MergeHistoryItem>;
-export const MergeContactResponseMergeHistoryList = /*@__PURE__*/ S.Array(
-  MergeHistoryItem,
-) as any as S.Schema<MergeContactResponseMergeHistoryList>;
+export const MergeContactResponseMergeHistoryList =
+  ContactMergeHistoryList as any as S.Schema<MergeContactResponseMergeHistoryList>;
 
 export interface MergeContactResponse {
   /** The type of object. */
@@ -14968,57 +14633,7 @@ export interface MergeContactResponse {
   /** If the user has enabled push messaging. */
   enabled_push_messaging?: boolean | null;
 }
-export const MergeContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-    external_id: S.optional(S.NullOr(S.String)),
-    workspace_id: S.optional(S.String),
-    role: S.optional(S.String),
-    email: S.optional(S.String),
-    email_domain: S.optional(S.String),
-    phone: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    owner_id: S.optional(S.NullOr(S.String)),
-    has_hard_bounced: S.optional(S.Boolean),
-    marked_email_as_spam: S.optional(S.Boolean),
-    unsubscribed_from_emails: S.optional(S.Boolean),
-    created_at: S.optional(S.Number),
-    updated_at: S.optional(S.Number),
-    signed_up_at: S.optional(S.NullOr(S.Number)),
-    last_seen_at: S.optional(S.NullOr(S.Number)),
-    last_replied_at: S.optional(S.NullOr(S.Number)),
-    last_contacted_at: S.optional(S.NullOr(S.Number)),
-    last_email_opened_at: S.optional(S.NullOr(S.Number)),
-    last_email_clicked_at: S.optional(S.NullOr(S.Number)),
-    language_override: S.optional(S.NullOr(S.String)),
-    browser: S.optional(S.NullOr(S.String)),
-    browser_version: S.optional(S.NullOr(S.String)),
-    browser_language: S.optional(S.NullOr(S.String)),
-    os: S.optional(S.NullOr(S.String)),
-    android_app_name: S.optional(S.NullOr(S.String)),
-    android_app_version: S.optional(S.NullOr(S.String)),
-    android_device: S.optional(S.NullOr(S.String)),
-    android_os_version: S.optional(S.NullOr(S.String)),
-    android_sdk_version: S.optional(S.NullOr(S.String)),
-    android_last_seen_at: S.optional(S.NullOr(S.Number)),
-    ios_app_name: S.optional(S.NullOr(S.String)),
-    ios_app_version: S.optional(S.NullOr(S.String)),
-    ios_device: S.optional(S.NullOr(S.String)),
-    ios_os_version: S.optional(S.NullOr(S.String)),
-    ios_sdk_version: S.optional(S.NullOr(S.String)),
-    ios_last_seen_at: S.optional(S.NullOr(S.Number)),
-    custom_attributes: S.optional(S.Unknown),
-    avatar: S.optional(S.NullOr(ContactAvatar)),
-    tags: S.optional(S.NullOr(ContactTags)),
-    notes: S.optional(ContactNotes),
-    companies: S.optional(ContactCompanies),
-    location: S.optional(ContactLocation),
-    social_profiles: S.optional(ContactSocialProfiles),
-    merge_history: S.optional(S.NullOr(MergeContactResponseMergeHistoryList)),
-    enabled_push_messaging: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "MergeContactResponse" }) as any as S.Schema<MergeContactResponse>;
+export const MergeContactResponse = CreateContactResponse as any as S.Schema<MergeContactResponse>;
 
 export interface MergeConversationRequest {
   /** The identifier for the secondary (source) conversation to merge away. */
@@ -15035,9 +14650,8 @@ export const MergeConversationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The locales whose staged drafts should be published. Required on multilingual workspaces; each locale must have a pending draft. */
 export type PublishArticleDraftRequestLocalesList = Array<string>;
-export const PublishArticleDraftRequestLocalesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublishArticleDraftRequestLocalesList>;
+export const PublishArticleDraftRequestLocalesList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<PublishArticleDraftRequestLocalesList>;
 
 export interface PublishArticleDraftRequest {
   /** The unique identifier for the article which is given by Intercom. */
@@ -15064,9 +14678,8 @@ export const PublishArticleDraftResponseState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type PublishArticleDraftResponseParentIdsList = Array<number>;
-export const PublishArticleDraftResponseParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PublishArticleDraftResponseParentIdsList>;
+export const PublishArticleDraftResponseParentIdsList =
+  AdminTeamIdsList as any as S.Schema<PublishArticleDraftResponseParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type PublishArticleDraftResponseHelpCenterAudience =
@@ -15263,9 +14876,8 @@ export const ContactReplyIntercomUserIdRequestType = S.String;
 
 /** A list of image URLs that will be added as attachments. You can include up to 10 URLs. */
 export type ContactReplyIntercomUserIdRequestAttachmentUrlsList = Array<string>;
-export const ContactReplyIntercomUserIdRequestAttachmentUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContactReplyIntercomUserIdRequestAttachmentUrlsList>;
+export const ContactReplyIntercomUserIdRequestAttachmentUrlsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ContactReplyIntercomUserIdRequestAttachmentUrlsList>;
 
 export interface ContactReplyIntercomUserIdRequestReplyOptionsItem {
   /** The text of the chosen reply option. */
@@ -15355,9 +14967,8 @@ export const ContactReplyEmailRequestType = S.String;
 
 /** A list of image URLs that will be added as attachments. You can include up to 10 URLs. */
 export type ContactReplyEmailRequestAttachmentUrlsList = Array<string>;
-export const ContactReplyEmailRequestAttachmentUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContactReplyEmailRequestAttachmentUrlsList>;
+export const ContactReplyEmailRequestAttachmentUrlsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ContactReplyEmailRequestAttachmentUrlsList>;
 
 export type ContactReplyEmailRequestReplyOptionsItem =
   ContactReplyIntercomUserIdRequestReplyOptionsItem;
@@ -15367,15 +14978,13 @@ export const ContactReplyEmailRequestReplyOptionsItem =
 /** The quick reply selection the contact wishes to respond with. These map to buttons displayed in the Messenger UI if sent by a bot, or the reply options sent by an Admin via the API. */
 export type ContactReplyEmailRequestReplyOptionsList =
   Array<ContactReplyIntercomUserIdRequestReplyOptionsItem>;
-export const ContactReplyEmailRequestReplyOptionsList = /*@__PURE__*/ S.Array(
-  ContactReplyIntercomUserIdRequestReplyOptionsItem,
-) as any as S.Schema<ContactReplyEmailRequestReplyOptionsList>;
+export const ContactReplyEmailRequestReplyOptionsList =
+  ContactReplyIntercomUserIdRequestReplyOptionsList as any as S.Schema<ContactReplyEmailRequestReplyOptionsList>;
 
 /** A list of files that will be added as attachments. */
 export type ContactReplyEmailRequestAttachmentFilesList = Array<ConversationAttachmentFiles>;
-export const ContactReplyEmailRequestAttachmentFilesList = /*@__PURE__*/ S.Array(
-  ConversationAttachmentFiles,
-) as any as S.Schema<ContactReplyEmailRequestAttachmentFilesList>;
+export const ContactReplyEmailRequestAttachmentFilesList =
+  ContactReplyIntercomUserIdRequestAttachmentFilesList as any as S.Schema<ContactReplyEmailRequestAttachmentFilesList>;
 
 /** Payload of the request to reply on behalf of a contact using their `email` */
 export interface ContactReplyEmailRequest {
@@ -15415,9 +15024,8 @@ export const ContactReplyUserIdRequestType = S.String;
 
 /** A list of image URLs that will be added as attachments. You can include up to 10 URLs. */
 export type ContactReplyUserIdRequestAttachmentUrlsList = Array<string>;
-export const ContactReplyUserIdRequestAttachmentUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContactReplyUserIdRequestAttachmentUrlsList>;
+export const ContactReplyUserIdRequestAttachmentUrlsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<ContactReplyUserIdRequestAttachmentUrlsList>;
 
 export type ContactReplyUserIdRequestReplyOptionsItem =
   ContactReplyIntercomUserIdRequestReplyOptionsItem;
@@ -15427,15 +15035,13 @@ export const ContactReplyUserIdRequestReplyOptionsItem =
 /** The quick reply selection the contact wishes to respond with. These map to buttons displayed in the Messenger UI if sent by a bot, or the reply options sent by an Admin via the API. */
 export type ContactReplyUserIdRequestReplyOptionsList =
   Array<ContactReplyIntercomUserIdRequestReplyOptionsItem>;
-export const ContactReplyUserIdRequestReplyOptionsList = /*@__PURE__*/ S.Array(
-  ContactReplyIntercomUserIdRequestReplyOptionsItem,
-) as any as S.Schema<ContactReplyUserIdRequestReplyOptionsList>;
+export const ContactReplyUserIdRequestReplyOptionsList =
+  ContactReplyIntercomUserIdRequestReplyOptionsList as any as S.Schema<ContactReplyUserIdRequestReplyOptionsList>;
 
 /** A list of files that will be added as attachments. You can include up to 10 files. */
 export type ContactReplyUserIdRequestAttachmentFilesList = Array<ConversationAttachmentFiles>;
-export const ContactReplyUserIdRequestAttachmentFilesList = /*@__PURE__*/ S.Array(
-  ConversationAttachmentFiles,
-) as any as S.Schema<ContactReplyUserIdRequestAttachmentFilesList>;
+export const ContactReplyUserIdRequestAttachmentFilesList =
+  ContactReplyIntercomUserIdRequestAttachmentFilesList as any as S.Schema<ContactReplyUserIdRequestAttachmentFilesList>;
 
 /** Payload of the request to reply on behalf of a contact using their `user_id` */
 export interface ContactReplyUserIdRequest {
@@ -15503,15 +15109,13 @@ export const AdminReplyConversationRequestReplyOptionsList = /*@__PURE__*/ S.Arr
 
 /** A list of image URLs that will be added as attachments. You can include up to 10 URLs. */
 export type AdminReplyConversationRequestAttachmentUrlsList = Array<string>;
-export const AdminReplyConversationRequestAttachmentUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdminReplyConversationRequestAttachmentUrlsList>;
+export const AdminReplyConversationRequestAttachmentUrlsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<AdminReplyConversationRequestAttachmentUrlsList>;
 
 /** A list of files that will be added as attachments. You can include up to 10 files */
 export type AdminReplyConversationRequestAttachmentFilesList = Array<ConversationAttachmentFiles>;
-export const AdminReplyConversationRequestAttachmentFilesList = /*@__PURE__*/ S.Array(
-  ConversationAttachmentFiles,
-) as any as S.Schema<AdminReplyConversationRequestAttachmentFilesList>;
+export const AdminReplyConversationRequestAttachmentFilesList =
+  ContactReplyIntercomUserIdRequestAttachmentFilesList as any as S.Schema<AdminReplyConversationRequestAttachmentFilesList>;
 
 /** Payload of the request to reply on behalf of an admin */
 export interface AdminReplyConversationRequest {
@@ -15589,9 +15193,8 @@ export const TicketReplyPartType = S.String;
 
 /** A list of attachments for the part. */
 export type TicketReplyAttachmentsList = Array<PartAttachment>;
-export const TicketReplyAttachmentsList = /*@__PURE__*/ S.Array(
-  PartAttachment,
-) as any as S.Schema<TicketReplyAttachmentsList>;
+export const TicketReplyAttachmentsList =
+  TicketPartAttachmentsList as any as S.Schema<TicketReplyAttachmentsList>;
 
 /** A map of the reply text keyed by locale code. Backs the `ticket.admin.replied.translated` webhook topic. `original` holds the locale code the reply was written in; every other key holds the reply translated into that locale. */
 export type TicketReplyTranslations = TicketPartTranslations;
@@ -15636,9 +15239,8 @@ export const TicketReply = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of attachments to include with the message. Maximum of 10 attachments. */
 export type ReplyToFinRequestAttachmentsList = Array<FinAgentAttachment>;
-export const ReplyToFinRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  FinAgentAttachment,
-) as any as S.Schema<ReplyToFinRequestAttachmentsList>;
+export const ReplyToFinRequestAttachmentsList =
+  AskFinRequestAttachmentsList as any as S.Schema<ReplyToFinRequestAttachmentsList>;
 
 export interface ReplyToFinRequest {
   /** The ID of the conversation. */
@@ -15698,10 +15300,8 @@ export const ReplyToFinResponse = /*@__PURE__*/ S.suspend(() =>
 export type RunFinProcedureRequestConversationMetadataAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const RunFinProcedureRequestConversationMetadataAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RunFinProcedureRequestConversationMetadataAttributesMap>;
+export const RunFinProcedureRequestConversationMetadataAttributesMap =
+  FinAgentUserAttributesMap as any as S.Schema<RunFinProcedureRequestConversationMetadataAttributesMap>;
 
 /** Metadata about the conversation. Only attributes are accepted (no history). */
 export interface RunFinProcedureRequestConversationMetadata {
@@ -15792,9 +15392,7 @@ export type CompanyScrollType = "list";
 export const CompanyScrollType = S.String;
 
 export type CompanyScrollDataList = Array<Company>;
-export const CompanyScrollDataList = /*@__PURE__*/ S.Array(
-  Company,
-) as any as S.Schema<CompanyScrollDataList>;
+export const CompanyScrollDataList = CompanyListDataList as any as S.Schema<CompanyScrollDataList>;
 
 /** Companies allow you to represent organizations using your product. Each company will have its own description and be associated with contacts. You can fetch, create, update and list companies. */
 export interface CompanyScroll {
@@ -15819,9 +15417,8 @@ export const CompanyScroll = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional list of event types to filter activity logs by. Use the list all activity log event types endpoint to retrieve available values. */
 export type SearchActivityLogsRequestEventTypesList = Array<string>;
-export const SearchActivityLogsRequestEventTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchActivityLogsRequestEventTypesList>;
+export const SearchActivityLogsRequestEventTypesList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<SearchActivityLogsRequestEventTypesList>;
 
 export interface SearchActivityLogsRequest {
   /** The start date that you request data for. It must be formatted as a UNIX timestamp. */
@@ -15880,9 +15477,7 @@ export const ArticleState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type ArticleParentIdsList = Array<number>;
-export const ArticleParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ArticleParentIdsList>;
+export const ArticleParentIdsList = AdminTeamIdsList as any as S.Schema<ArticleParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type ArticleHelpCenterAudience =
@@ -16248,27 +15843,23 @@ export const SearchContentRequestStatesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchContentRequestStatesList>;
 
 export type SearchContentRequestLocalesList = Array<string>;
-export const SearchContentRequestLocalesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchContentRequestLocalesList>;
+export const SearchContentRequestLocalesList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<SearchContentRequestLocalesList>;
 
 export type SearchContentRequestTagIdsList = Array<number>;
-export const SearchContentRequestTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchContentRequestTagIdsList>;
+export const SearchContentRequestTagIdsList =
+  AdminTeamIdsList as any as S.Schema<SearchContentRequestTagIdsList>;
 
 export type SearchContentRequestTagOperator = "IN" | "NIN";
 export const SearchContentRequestTagOperator = S.String;
 
 export type SearchContentRequestAnyTagIdsList = Array<number>;
-export const SearchContentRequestAnyTagIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchContentRequestAnyTagIdsList>;
+export const SearchContentRequestAnyTagIdsList =
+  AdminTeamIdsList as any as S.Schema<SearchContentRequestAnyTagIdsList>;
 
 export type SearchContentRequestFolderIdsList = Array<number>;
-export const SearchContentRequestFolderIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchContentRequestFolderIdsList>;
+export const SearchContentRequestFolderIdsList =
+  AdminTeamIdsList as any as S.Schema<SearchContentRequestFolderIdsList>;
 
 export type SearchContentRequestFolderEntityType = "folder";
 export const SearchContentRequestFolderEntityType = S.String;
@@ -16298,14 +15889,12 @@ export type SearchContentRequestFinSalesState = "on" | "off";
 export const SearchContentRequestFinSalesState = S.String;
 
 export type SearchContentRequestCreatedByIdsList = Array<number>;
-export const SearchContentRequestCreatedByIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchContentRequestCreatedByIdsList>;
+export const SearchContentRequestCreatedByIdsList =
+  AdminTeamIdsList as any as S.Schema<SearchContentRequestCreatedByIdsList>;
 
 export type SearchContentRequestLastUpdatedByIdsList = Array<number>;
-export const SearchContentRequestLastUpdatedByIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchContentRequestLastUpdatedByIdsList>;
+export const SearchContentRequestLastUpdatedByIdsList =
+  AdminTeamIdsList as any as S.Schema<SearchContentRequestLastUpdatedByIdsList>;
 
 export interface SearchContentRequest {
   /** A free-text search term matched against the title and body of each content item. When omitted, returns the most recent content items. */
@@ -16562,9 +16151,8 @@ export const InternalArticleSearchResponseType = S.String;
 
 /** An array of Internal Article objects */
 export type InternalArticleSearchResponseDataInternalArticlesList = Array<InternalArticleListItem>;
-export const InternalArticleSearchResponseDataInternalArticlesList = /*@__PURE__*/ S.Array(
-  InternalArticleListItem,
-) as any as S.Schema<InternalArticleSearchResponseDataInternalArticlesList>;
+export const InternalArticleSearchResponseDataInternalArticlesList =
+  InternalArticleListDataList as any as S.Schema<InternalArticleSearchResponseDataInternalArticlesList>;
 
 /** An object containing the results of the search. */
 export interface InternalArticleSearchResponseData {
@@ -16668,9 +16256,8 @@ export const StageArticleDraftRequestState = S.String;
 
 /** The list of audience IDs to assign to this article for Fin AI Agent targeting. Sending a top-level `audience_ids` broadcasts the same set to every locale. Sending `audience_ids: []` clears all audience memberships from every locale. For per-locale targeting, use `translated_content.<locale>.audience_ids` instead. Sending both top-level and per-locale in the same request causes top-level to win. Unknown audience IDs return a 404 error. No partial commit occurs. */
 export type StageArticleDraftRequestAudienceIdsList = Array<number>;
-export const StageArticleDraftRequestAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<StageArticleDraftRequestAudienceIdsList>;
+export const StageArticleDraftRequestAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<StageArticleDraftRequestAudienceIdsList>;
 
 export interface StageArticleDraftRequest {
   /** The unique identifier for the article which is given by Intercom. */
@@ -16736,9 +16323,8 @@ export const StageArticleDraftResponseState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type StageArticleDraftResponseParentIdsList = Array<number>;
-export const StageArticleDraftResponseParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<StageArticleDraftResponseParentIdsList>;
+export const StageArticleDraftResponseParentIdsList =
+  AdminTeamIdsList as any as S.Schema<StageArticleDraftResponseParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type StageArticleDraftResponseHelpCenterAudience =
@@ -16842,9 +16428,8 @@ export const StageArticleDraftResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of attachments to include with the message. Maximum of 10 attachments. */
 export type StartFinConversationRequestAttachmentsList = Array<FinAgentAttachment>;
-export const StartFinConversationRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  FinAgentAttachment,
-) as any as S.Schema<StartFinConversationRequestAttachmentsList>;
+export const StartFinConversationRequestAttachmentsList =
+  AskFinRequestAttachmentsList as any as S.Schema<StartFinConversationRequestAttachmentsList>;
 
 export interface StartFinConversationRequest {
   /** The ID of the conversation that is calling Fin via this API. */
@@ -17006,9 +16591,8 @@ export const UpdateArticleRequestState = S.String;
 
 /** The list of audience IDs to assign to this article for Fin AI Agent targeting. Sending a top-level `audience_ids` broadcasts the same set to every locale. Sending `audience_ids: []` clears all audience memberships from every locale. For per-locale targeting, use `translated_content.<locale>.audience_ids` instead. Sending both top-level and per-locale in the same request causes top-level to win. Unknown audience IDs return a 404 error. No partial commit occurs. */
 export type UpdateArticleRequestAudienceIdsList = Array<number>;
-export const UpdateArticleRequestAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateArticleRequestAudienceIdsList>;
+export const UpdateArticleRequestAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<UpdateArticleRequestAudienceIdsList>;
 
 export interface UpdateArticleRequest {
   /** The unique identifier for the article which is given by Intercom. */
@@ -17074,9 +16658,8 @@ export const UpdateArticleResponseState = S.String;
 
 /** The ids of the article's parent collections or sections. An article without this field stands alone. */
 export type UpdateArticleResponseParentIdsList = Array<number>;
-export const UpdateArticleResponseParentIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateArticleResponseParentIdsList>;
+export const UpdateArticleResponseParentIdsList =
+  AdminTeamIdsList as any as S.Schema<UpdateArticleResponseParentIdsList>;
 
 /** The audience that can view this article in the Help Center. `everyone` means all users and visitors can view it; `restricted` indicates a custom audience ruleset. For multilingual articles, this is the article-level audience. */
 export type UpdateArticleResponseHelpCenterAudience =
@@ -17178,15 +16761,13 @@ export const UpdateArticleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The predicates that define which contacts belong to the audience. */
 export type UpdateAudienceRequestPredicatesList = Array<Predicate>;
-export const UpdateAudienceRequestPredicatesList = /*@__PURE__*/ S.Array(
-  Predicate,
-) as any as S.Schema<UpdateAudienceRequestPredicatesList>;
+export const UpdateAudienceRequestPredicatesList =
+  CreateAudienceRequestPredicatesList as any as S.Schema<UpdateAudienceRequestPredicatesList>;
 
 /** Role-based predicates that further filter audience membership by contact role. */
 export type UpdateAudienceRequestRolePredicatesList = Array<Predicate>;
-export const UpdateAudienceRequestRolePredicatesList = /*@__PURE__*/ S.Array(
-  Predicate,
-) as any as S.Schema<UpdateAudienceRequestRolePredicatesList>;
+export const UpdateAudienceRequestRolePredicatesList =
+  CreateAudienceRequestPredicatesList as any as S.Schema<UpdateAudienceRequestRolePredicatesList>;
 
 export interface UpdateAudienceRequest {
   /** The unique identifier for the audience. */
@@ -17230,10 +16811,8 @@ export const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A hash of key/value pairs containing any other data about the company you want Intercom to store. */
 export type UpdateCompanyRequestCustomAttributesMap = { [key: string]: string | undefined };
-export const UpdateCompanyRequestCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCompanyRequestCustomAttributesMap>;
+export const UpdateCompanyRequestCustomAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<UpdateCompanyRequestCustomAttributesMap>;
 
 export interface UpdateCompanyRequest {
   /** The unique identifier for the company which is given by Intercom */
@@ -17330,9 +16909,8 @@ export const UpdateContactResponseAvatar = ContactAvatar;
 
 /** A list of contacts that were merged into this contact. Only included in the response when `include_merge_history=true` is passed as a query parameter. Only available for contacts with a `user` role. */
 export type UpdateContactResponseMergeHistoryList = Array<MergeHistoryItem>;
-export const UpdateContactResponseMergeHistoryList = /*@__PURE__*/ S.Array(
-  MergeHistoryItem,
-) as any as S.Schema<UpdateContactResponseMergeHistoryList>;
+export const UpdateContactResponseMergeHistoryList =
+  ContactMergeHistoryList as any as S.Schema<UpdateContactResponseMergeHistoryList>;
 
 export interface UpdateContactResponse {
   /** The type of object. */
@@ -17424,57 +17002,8 @@ export interface UpdateContactResponse {
   /** If the user has enabled push messaging. */
   enabled_push_messaging?: boolean | null;
 }
-export const UpdateContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-    external_id: S.optional(S.NullOr(S.String)),
-    workspace_id: S.optional(S.String),
-    role: S.optional(S.String),
-    email: S.optional(S.String),
-    email_domain: S.optional(S.String),
-    phone: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    owner_id: S.optional(S.NullOr(S.String)),
-    has_hard_bounced: S.optional(S.Boolean),
-    marked_email_as_spam: S.optional(S.Boolean),
-    unsubscribed_from_emails: S.optional(S.Boolean),
-    created_at: S.optional(S.Number),
-    updated_at: S.optional(S.Number),
-    signed_up_at: S.optional(S.NullOr(S.Number)),
-    last_seen_at: S.optional(S.NullOr(S.Number)),
-    last_replied_at: S.optional(S.NullOr(S.Number)),
-    last_contacted_at: S.optional(S.NullOr(S.Number)),
-    last_email_opened_at: S.optional(S.NullOr(S.Number)),
-    last_email_clicked_at: S.optional(S.NullOr(S.Number)),
-    language_override: S.optional(S.NullOr(S.String)),
-    browser: S.optional(S.NullOr(S.String)),
-    browser_version: S.optional(S.NullOr(S.String)),
-    browser_language: S.optional(S.NullOr(S.String)),
-    os: S.optional(S.NullOr(S.String)),
-    android_app_name: S.optional(S.NullOr(S.String)),
-    android_app_version: S.optional(S.NullOr(S.String)),
-    android_device: S.optional(S.NullOr(S.String)),
-    android_os_version: S.optional(S.NullOr(S.String)),
-    android_sdk_version: S.optional(S.NullOr(S.String)),
-    android_last_seen_at: S.optional(S.NullOr(S.Number)),
-    ios_app_name: S.optional(S.NullOr(S.String)),
-    ios_app_version: S.optional(S.NullOr(S.String)),
-    ios_device: S.optional(S.NullOr(S.String)),
-    ios_os_version: S.optional(S.NullOr(S.String)),
-    ios_sdk_version: S.optional(S.NullOr(S.String)),
-    ios_last_seen_at: S.optional(S.NullOr(S.Number)),
-    custom_attributes: S.optional(S.Unknown),
-    avatar: S.optional(S.NullOr(ContactAvatar)),
-    tags: S.optional(S.NullOr(ContactTags)),
-    notes: S.optional(ContactNotes),
-    companies: S.optional(ContactCompanies),
-    location: S.optional(ContactLocation),
-    social_profiles: S.optional(ContactSocialProfiles),
-    merge_history: S.optional(S.NullOr(UpdateContactResponseMergeHistoryList)),
-    enabled_push_messaging: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "UpdateContactResponse" }) as any as S.Schema<UpdateContactResponse>;
+export const UpdateContactResponse =
+  CreateContactResponse as any as S.Schema<UpdateContactResponse>;
 
 /** If you intend to create or update External Pages via the API, this should be set to `api`. You can not change the value to or from api. */
 export type UpdateContentImportSourceRequestSyncBehavior = "api" | "automated" | "manual";
@@ -17485,9 +17014,8 @@ export type UpdateContentImportSourceRequestStatus = "active" | "deactivated";
 export const UpdateContentImportSourceRequestStatus = S.String;
 
 export type UpdateContentImportSourceRequestAudienceIdsCase1List = Array<number>;
-export const UpdateContentImportSourceRequestAudienceIdsCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateContentImportSourceRequestAudienceIdsCase1List>;
+export const UpdateContentImportSourceRequestAudienceIdsCase1List =
+  AdminTeamIdsList as any as S.Schema<UpdateContentImportSourceRequestAudienceIdsCase1List>;
 
 /** The unique identifiers for the audiences to associate with this content import source. Can be a single integer or an array of integers. Set to null or an empty array to remove all audiences. */
 export type UpdateContentImportSourceRequestAudienceIds =
@@ -17525,15 +17053,13 @@ export const UpdateContentImportSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The content blocks that make up the body of the snippet. Mutually exclusive with `body_markdown`. */
 export type UpdateContentSnippetRequestJsonBlocksList = Array<unknown>;
-export const UpdateContentSnippetRequestJsonBlocksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateContentSnippetRequestJsonBlocksList>;
+export const UpdateContentSnippetRequestJsonBlocksList =
+  TicketCustomAttributesValueCase3List as any as S.Schema<UpdateContentSnippetRequestJsonBlocksList>;
 
 /** The list of audience IDs to target this content snippet to for Fin AI Agent. Omitting the field leaves existing audience memberships unchanged (PATCH semantics). Pass `[]` to clear all audience memberships. Unknown audience IDs return a `404` error with no partial commit. */
 export type UpdateContentSnippetRequestAudienceIdsList = Array<number>;
-export const UpdateContentSnippetRequestAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateContentSnippetRequestAudienceIdsList>;
+export const UpdateContentSnippetRequestAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<UpdateContentSnippetRequestAudienceIdsList>;
 
 export interface UpdateContentSnippetRequest {
   /** The unique identifier for the content snippet. */
@@ -17599,9 +17125,8 @@ export const UpdateConversationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Team IDs that can see this attribute. Empty array means all teams. */
 export type UpdateConversationAttributeRequestVisibleToTeamIdsList = Array<string>;
-export const UpdateConversationAttributeRequestVisibleToTeamIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConversationAttributeRequestVisibleToTeamIdsList>;
+export const UpdateConversationAttributeRequestVisibleToTeamIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<UpdateConversationAttributeRequestVisibleToTeamIdsList>;
 
 /** The cardinality of the relationship: `one` or `many`. */
 export type UpdateConversationAttributeRequestReferenceType = "one" | "many";
@@ -17654,11 +17179,8 @@ export const UpdateConversationAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateConversationAttributeRequest>;
 
 export type UpdateConversationAttributeResponse = ConversationAttribute;
-export const UpdateConversationAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  ConversationAttribute.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateConversationAttributeResponse",
-}) as any as S.Schema<UpdateConversationAttributeResponse>;
+export const UpdateConversationAttributeResponse =
+  CreateConversationAttributeResponse as any as S.Schema<UpdateConversationAttributeResponse>;
 
 export interface UpdateConversationAttributeOptionRequest {
   /** The conversation attribute id */
@@ -17681,11 +17203,8 @@ export const UpdateConversationAttributeOptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateConversationAttributeOptionRequest>;
 
 export type UpdateConversationAttributeOptionResponse = ConversationAttribute;
-export const UpdateConversationAttributeOptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ConversationAttribute.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateConversationAttributeOptionResponse",
-}) as any as S.Schema<UpdateConversationAttributeOptionResponse>;
+export const UpdateConversationAttributeOptionResponse =
+  CreateConversationAttributeResponse as any as S.Schema<UpdateConversationAttributeOptionResponse>;
 
 export interface UpdateDataAttributeRequest {
   /** The data attribute id */
@@ -17732,9 +17251,8 @@ export const UpdateDataConnectorRequestHeadersItem = CreateDataConnectorRequestH
 
 /** HTTP headers to include in the request. */
 export type UpdateDataConnectorRequestHeadersList = Array<CreateDataConnectorRequestHeadersItem>;
-export const UpdateDataConnectorRequestHeadersList = /*@__PURE__*/ S.Array(
-  CreateDataConnectorRequestHeadersItem,
-) as any as S.Schema<UpdateDataConnectorRequestHeadersList>;
+export const UpdateDataConnectorRequestHeadersList =
+  CreateDataConnectorRequestHeadersList as any as S.Schema<UpdateDataConnectorRequestHeadersList>;
 
 /** The data type of the input. */
 export type UpdateDataConnectorRequestDataInputsItemType =
@@ -17777,9 +17295,8 @@ export const UpdateDataConnectorRequestDataInputsList = /*@__PURE__*/ S.Array(
 
 /** IDs of authentication tokens to attach to this data connector. An empty array removes all tokens. */
 export type UpdateDataConnectorRequestTokenIdsList = Array<string>;
-export const UpdateDataConnectorRequestTokenIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDataConnectorRequestTokenIdsList>;
+export const UpdateDataConnectorRequestTokenIdsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<UpdateDataConnectorRequestTokenIdsList>;
 
 export interface UpdateDataConnectorRequest {
   /** The unique identifier of the data connector. */
@@ -17877,9 +17394,8 @@ export const UpdateExternalPageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of audience IDs to target this internal article to for Fin AI Agent. Omitting the field leaves existing audience memberships unchanged (PATCH semantics). Pass `[]` to clear all audience memberships. Unknown audience IDs return a `404` error with no partial commit. */
 export type UpdateInternalArticleRequestAudienceIdsList = Array<number>;
-export const UpdateInternalArticleRequestAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateInternalArticleRequestAudienceIdsList>;
+export const UpdateInternalArticleRequestAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<UpdateInternalArticleRequestAudienceIdsList>;
 
 export interface UpdateInternalArticleRequest {
   /** The unique identifier for the internal article which is given by Intercom. */
@@ -17926,9 +17442,8 @@ export const UpdateInternalArticleResponseType = S.String;
 
 /** The list of audience IDs this internal article is targeted to for Fin AI Agent. Empty array means no audience targeting is set. */
 export type UpdateInternalArticleResponseAudienceIdsList = Array<number>;
-export const UpdateInternalArticleResponseAudienceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateInternalArticleResponseAudienceIdsList>;
+export const UpdateInternalArticleResponseAudienceIdsList =
+  AdminTeamIdsList as any as S.Schema<UpdateInternalArticleResponseAudienceIdsList>;
 
 export interface UpdateInternalArticleResponse {
   /** The type of object - `internal_article`. */
@@ -17983,9 +17498,8 @@ export const UpdateInternalArticleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of allowed IP addresses and/or IP ranges in CIDR notation. Examples: - Single IP: `192.168.0.1` - IP range: `192.168.0.1/24` (allows 192.168.0.0 - 192.168.0.255) */
 export type UpdateIpAllowlistRequestIpAllowlistList = Array<string>;
-export const UpdateIpAllowlistRequestIpAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateIpAllowlistRequestIpAllowlistList>;
+export const UpdateIpAllowlistRequestIpAllowlistList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<UpdateIpAllowlistRequestIpAllowlistList>;
 
 export interface UpdateIpAllowlistRequest {
   /** String representing the object's type. Always has the value `ip_allowlist`. */
@@ -18009,21 +17523,18 @@ export const UpdateNewsItemRequestState = S.String;
 
 /** Label names displayed to users to categorize the news item. */
 export type UpdateNewsItemRequestLabelsList = Array<string>;
-export const UpdateNewsItemRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateNewsItemRequestLabelsList>;
+export const UpdateNewsItemRequestLabelsList =
+  TicketPartUpdatedAttributeDataValueLabelCase1List as any as S.Schema<UpdateNewsItemRequestLabelsList>;
 
 /** Ordered list of emoji reactions to the news item. When empty, reactions are disabled. */
 export type UpdateNewsItemRequestReactionsList = Array<string | null>;
-export const UpdateNewsItemRequestReactionsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<UpdateNewsItemRequestReactionsList>;
+export const UpdateNewsItemRequestReactionsList =
+  CreateNewsItemRequestReactionsList as any as S.Schema<UpdateNewsItemRequestReactionsList>;
 
 /** A list of newsfeed_assignments to assign to the specified newsfeed. */
 export type UpdateNewsItemRequestNewsfeedAssignmentsList = Array<NewsfeedAssignment>;
-export const UpdateNewsItemRequestNewsfeedAssignmentsList = /*@__PURE__*/ S.Array(
-  NewsfeedAssignment,
-) as any as S.Schema<UpdateNewsItemRequestNewsfeedAssignmentsList>;
+export const UpdateNewsItemRequestNewsfeedAssignmentsList =
+  CreateNewsItemRequestNewsfeedAssignmentsList as any as S.Schema<UpdateNewsItemRequestNewsfeedAssignmentsList>;
 
 export interface UpdateNewsItemRequest {
   /** The unique identifier for the news item which is given by Intercom. */
@@ -18066,9 +17577,8 @@ export const UpdateOfficeHoursExceptionRequestExceptionType = S.String;
 /** The open intervals for the exception date. Required for `custom_hours`; omit for `closed`. */
 export type UpdateOfficeHoursExceptionRequestTimeIntervalsList =
   Array<OfficeHoursTimeIntervalInput>;
-export const UpdateOfficeHoursExceptionRequestTimeIntervalsList = /*@__PURE__*/ S.Array(
-  OfficeHoursTimeIntervalInput,
-) as any as S.Schema<UpdateOfficeHoursExceptionRequestTimeIntervalsList>;
+export const UpdateOfficeHoursExceptionRequestTimeIntervalsList =
+  CreateOfficeHoursExceptionRequestTimeIntervalsList as any as S.Schema<UpdateOfficeHoursExceptionRequestTimeIntervalsList>;
 
 export interface UpdateOfficeHoursExceptionRequest {
   /** The unique identifier for the office hours schedule. */
@@ -18108,9 +17618,8 @@ export const UpdateOfficeHoursExceptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The open intervals for the schedule. `start_minute` and `end_minute` must be on a 15-minute boundary. */
 export type UpdateOfficeHoursScheduleRequestTimeIntervalsList = Array<OfficeHoursTimeIntervalInput>;
-export const UpdateOfficeHoursScheduleRequestTimeIntervalsList = /*@__PURE__*/ S.Array(
-  OfficeHoursTimeIntervalInput,
-) as any as S.Schema<UpdateOfficeHoursScheduleRequestTimeIntervalsList>;
+export const UpdateOfficeHoursScheduleRequestTimeIntervalsList =
+  CreateOfficeHoursExceptionRequestTimeIntervalsList as any as S.Schema<UpdateOfficeHoursScheduleRequestTimeIntervalsList>;
 
 export interface UpdateOfficeHoursScheduleRequest {
   /** The unique identifier for the office hours schedule. */
@@ -18255,10 +17764,8 @@ export const UpdateTicketTypeAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom attributes which are set for the visitor. */
 export type UpdateVisitorRequestCustomAttributesMap = { [key: string]: string | undefined };
-export const UpdateVisitorRequestCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateVisitorRequestCustomAttributesMap>;
+export const UpdateVisitorRequestCustomAttributesMap =
+  FinAgentAttributeErrorsUserAttributesMap as any as S.Schema<UpdateVisitorRequestCustomAttributesMap>;
 
 export interface UpdateVisitorRequest {
   /** A unique identified for the visitor which is given by Intercom. */

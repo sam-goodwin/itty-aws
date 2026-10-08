@@ -152,10 +152,8 @@ export const EarlyAccessFeatureSerializerCreateOnlyOutputAssignee = /*@__PURE__*
 }) as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutputAssignee>;
 
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
+export const MinimalFeatureFlagFiltersMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
@@ -304,10 +302,8 @@ export const GetEarlyAccessFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Feature flag payload for this early access feature */
 export type EarlyAccessFeaturePayloadMap = { [key: string]: unknown | undefined };
-export const EarlyAccessFeaturePayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EarlyAccessFeaturePayloadMap>;
+export const EarlyAccessFeaturePayloadMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<EarlyAccessFeaturePayloadMap>;
 
 export type EarlyAccessFeatureAssigneeType = "user" | "role";
 export const EarlyAccessFeatureAssigneeType = S.String;

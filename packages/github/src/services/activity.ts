@@ -92,11 +92,8 @@ export const DeleteThreadSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThreadSubscriptionRequest>;
 
 export interface DeleteThreadSubscriptionResponse {}
-export const DeleteThreadSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteThreadSubscriptionResponse",
-}) as any as S.Schema<DeleteThreadSubscriptionResponse>;
+export const DeleteThreadSubscriptionResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<DeleteThreadSubscriptionResponse>;
 
 export interface GetFeedsRequest {}
 export const GetFeedsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -366,9 +363,8 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleUser" }) as any as S.Schema<SimpleUser>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
+export const MinimalRepositoryTopicsList =
+  FeedCurrentUserOrganizationUrlsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1488,9 +1484,8 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  FeedCurrentUserOrganizationUrlsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1819,9 +1814,8 @@ export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableIntegrationEventsList>;
+export const NullableIntegrationEventsList =
+  FeedCurrentUserOrganizationUrlsList as any as S.Schema<NullableIntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
@@ -2168,14 +2162,11 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export type IssuesEventAssigneesList = Array<SimpleUser>;
-export const IssuesEventAssigneesList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<IssuesEventAssigneesList>;
+export const IssuesEventAssigneesList =
+  IssueAssigneesList as any as S.Schema<IssuesEventAssigneesList>;
 
 export type IssuesEventLabelsList = Array<Label>;
-export const IssuesEventLabelsList = /*@__PURE__*/ S.Array(
-  Label,
-) as any as S.Schema<IssuesEventLabelsList>;
+export const IssuesEventLabelsList = DiscussionLabelsList as any as S.Schema<IssuesEventLabelsList>;
 
 export interface IssuesEvent {
   action: string;
@@ -2218,9 +2209,8 @@ export type ForkEventForkeePullRequestCreationPolicy = "all" | "collaborators_on
 export const ForkEventForkeePullRequestCreationPolicy = S.String;
 
 export type ForkEventForkeeTopicsList = Array<string>;
-export const ForkEventForkeeTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ForkEventForkeeTopicsList>;
+export const ForkEventForkeeTopicsList =
+  FeedCurrentUserOrganizationUrlsList as any as S.Schema<ForkEventForkeeTopicsList>;
 
 export interface ForkEventForkee {
   id?: number;
@@ -2518,14 +2508,12 @@ export const PullRequestMinimal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullRequestMinimal" }) as any as S.Schema<PullRequestMinimal>;
 
 export type PullRequestEventAssigneesList = Array<SimpleUser>;
-export const PullRequestEventAssigneesList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<PullRequestEventAssigneesList>;
+export const PullRequestEventAssigneesList =
+  IssueAssigneesList as any as S.Schema<PullRequestEventAssigneesList>;
 
 export type PullRequestEventLabelsList = Array<Label>;
-export const PullRequestEventLabelsList = /*@__PURE__*/ S.Array(
-  Label,
-) as any as S.Schema<PullRequestEventLabelsList>;
+export const PullRequestEventLabelsList =
+  DiscussionLabelsList as any as S.Schema<PullRequestEventLabelsList>;
 
 export interface PullRequestEvent {
   action: string;
@@ -3095,17 +3083,13 @@ export const ListOrgEventsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrgEventsForAuthenticatedUserRequest>;
 
 export type ListOrgEventsForAuthenticatedUserResponseBodyList = Array<Event>;
-export const ListOrgEventsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListOrgEventsForAuthenticatedUserResponseBodyList>;
+export const ListOrgEventsForAuthenticatedUserResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListOrgEventsForAuthenticatedUserResponseBodyList>;
 
 export type ListOrgEventsForAuthenticatedUserResponse =
   ListOrgEventsForAuthenticatedUserResponseBodyList;
-export const ListOrgEventsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOrgEventsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOrgEventsForAuthenticatedUserResponse",
-}) as any as S.Schema<ListOrgEventsForAuthenticatedUserResponse>;
+export const ListOrgEventsForAuthenticatedUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListOrgEventsForAuthenticatedUserResponse>;
 
 export interface ListPublicEventsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
@@ -3121,9 +3105,8 @@ export const ListPublicEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPublicEventsRequest" }) as any as S.Schema<ListPublicEventsRequest>;
 
 export type ListPublicEventsResponseBodyList = Array<Event>;
-export const ListPublicEventsResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListPublicEventsResponseBodyList>;
+export const ListPublicEventsResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEventsResponseBodyList>;
 
 export type ListPublicEventsResponse = ListPublicEventsResponseBodyList;
 export const ListPublicEventsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3152,16 +3135,12 @@ export const ListPublicEventsForRepoNetworkRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListPublicEventsForRepoNetworkRequest>;
 
 export type ListPublicEventsForRepoNetworkResponseBodyList = Array<Event>;
-export const ListPublicEventsForRepoNetworkResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListPublicEventsForRepoNetworkResponseBodyList>;
+export const ListPublicEventsForRepoNetworkResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEventsForRepoNetworkResponseBodyList>;
 
 export type ListPublicEventsForRepoNetworkResponse = ListPublicEventsForRepoNetworkResponseBodyList;
-export const ListPublicEventsForRepoNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicEventsForRepoNetworkResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicEventsForRepoNetworkResponse",
-}) as any as S.Schema<ListPublicEventsForRepoNetworkResponse>;
+export const ListPublicEventsForRepoNetworkResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicEventsForRepoNetworkResponse>;
 
 export interface ListPublicEventsForUserRequest {
   /** The handle for the GitHub user account. */
@@ -3182,16 +3161,12 @@ export const ListPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPublicEventsForUserRequest>;
 
 export type ListPublicEventsForUserResponseBodyList = Array<Event>;
-export const ListPublicEventsForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListPublicEventsForUserResponseBodyList>;
+export const ListPublicEventsForUserResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEventsForUserResponseBodyList>;
 
 export type ListPublicEventsForUserResponse = ListPublicEventsForUserResponseBodyList;
-export const ListPublicEventsForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicEventsForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicEventsForUserResponse",
-}) as any as S.Schema<ListPublicEventsForUserResponse>;
+export const ListPublicEventsForUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicEventsForUserResponse>;
 
 export interface ListPublicOrgEventsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -3212,16 +3187,12 @@ export const ListPublicOrgEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPublicOrgEventsRequest>;
 
 export type ListPublicOrgEventsResponseBodyList = Array<Event>;
-export const ListPublicOrgEventsResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListPublicOrgEventsResponseBodyList>;
+export const ListPublicOrgEventsResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicOrgEventsResponseBodyList>;
 
 export type ListPublicOrgEventsResponse = ListPublicOrgEventsResponseBodyList;
-export const ListPublicOrgEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicOrgEventsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicOrgEventsResponse",
-}) as any as S.Schema<ListPublicOrgEventsResponse>;
+export const ListPublicOrgEventsResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicOrgEventsResponse>;
 
 export interface ListReceivedEventsForUserRequest {
   /** The handle for the GitHub user account. */
@@ -3242,16 +3213,12 @@ export const ListReceivedEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReceivedEventsForUserRequest>;
 
 export type ListReceivedEventsForUserResponseBodyList = Array<Event>;
-export const ListReceivedEventsForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListReceivedEventsForUserResponseBodyList>;
+export const ListReceivedEventsForUserResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListReceivedEventsForUserResponseBodyList>;
 
 export type ListReceivedEventsForUserResponse = ListReceivedEventsForUserResponseBodyList;
-export const ListReceivedEventsForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListReceivedEventsForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListReceivedEventsForUserResponse",
-}) as any as S.Schema<ListReceivedEventsForUserResponse>;
+export const ListReceivedEventsForUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListReceivedEventsForUserResponse>;
 
 export interface ListReceivedPublicEventsForUserRequest {
   /** The handle for the GitHub user account. */
@@ -3272,17 +3239,13 @@ export const ListReceivedPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListReceivedPublicEventsForUserRequest>;
 
 export type ListReceivedPublicEventsForUserResponseBodyList = Array<Event>;
-export const ListReceivedPublicEventsForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListReceivedPublicEventsForUserResponseBodyList>;
+export const ListReceivedPublicEventsForUserResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListReceivedPublicEventsForUserResponseBodyList>;
 
 export type ListReceivedPublicEventsForUserResponse =
   ListReceivedPublicEventsForUserResponseBodyList;
-export const ListReceivedPublicEventsForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListReceivedPublicEventsForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListReceivedPublicEventsForUserResponse",
-}) as any as S.Schema<ListReceivedPublicEventsForUserResponse>;
+export const ListReceivedPublicEventsForUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListReceivedPublicEventsForUserResponse>;
 
 export interface ListRepoEventsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3304,14 +3267,12 @@ export const ListRepoEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoEventsRequest" }) as any as S.Schema<ListRepoEventsRequest>;
 
 export type ListRepoEventsResponseBodyList = Array<Event>;
-export const ListRepoEventsResponseBodyList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<ListRepoEventsResponseBodyList>;
+export const ListRepoEventsResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListRepoEventsResponseBodyList>;
 
 export type ListRepoEventsResponse = ListRepoEventsResponseBodyList;
-export const ListRepoEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListRepoEventsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListRepoEventsResponse" }) as any as S.Schema<ListRepoEventsResponse>;
+export const ListRepoEventsResponse =
+  ListPublicEventsResponse as any as S.Schema<ListRepoEventsResponse>;
 
 export interface ListRepoNotificationsForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3347,17 +3308,13 @@ export const ListRepoNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListRepoNotificationsForAuthenticatedUserRequest>;
 
 export type ListRepoNotificationsForAuthenticatedUserResponseBodyList = Array<Thread>;
-export const ListRepoNotificationsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Thread,
-) as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponseBodyList>;
+export const ListRepoNotificationsForAuthenticatedUserResponseBodyList =
+  ListNotificationsForAuthenticatedUserResponseBodyList as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponseBodyList>;
 
 export type ListRepoNotificationsForAuthenticatedUserResponse =
   ListRepoNotificationsForAuthenticatedUserResponseBodyList;
-export const ListRepoNotificationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListRepoNotificationsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListRepoNotificationsForAuthenticatedUserResponse",
-}) as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponse>;
+export const ListRepoNotificationsForAuthenticatedUserResponse =
+  ListNotificationsForAuthenticatedUserResponse as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponse>;
 
 export type ListReposStarredByAuthenticatedUserRequestSort = "created" | "updated";
 export const ListReposStarredByAuthenticatedUserRequestSort = S.String;
@@ -3447,9 +3404,8 @@ export const ListReposStarredByUserResponseBodyCase0List = /*@__PURE__*/ S.Array
 ) as any as S.Schema<ListReposStarredByUserResponseBodyCase0List>;
 
 export type ListReposStarredByUserResponseBodyCase1List = Array<Repository>;
-export const ListReposStarredByUserResponseBodyCase1List = /*@__PURE__*/ S.Array(
-  Repository,
-) as any as S.Schema<ListReposStarredByUserResponseBodyCase1List>;
+export const ListReposStarredByUserResponseBodyCase1List =
+  ListReposStarredByAuthenticatedUserResponseBodyList as any as S.Schema<ListReposStarredByUserResponseBodyCase1List>;
 
 export type ListReposStarredByUserResponseBody =
   | ListReposStarredByUserResponseBodyCase0List
@@ -3516,9 +3472,8 @@ export const ListStargazersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStargazersForRepoRequest>;
 
 export type ListStargazersForRepoResponseBodyCase0List = Array<SimpleUser>;
-export const ListStargazersForRepoResponseBodyCase0List = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<ListStargazersForRepoResponseBodyCase0List>;
+export const ListStargazersForRepoResponseBodyCase0List =
+  IssueAssigneesList as any as S.Schema<ListStargazersForRepoResponseBodyCase0List>;
 
 /** Stargazer */
 export interface Stargazer {
@@ -3566,17 +3521,13 @@ export const ListWatchedReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListWatchedReposForAuthenticatedUserRequest>;
 
 export type ListWatchedReposForAuthenticatedUserResponseBodyList = Array<MinimalRepository>;
-export const ListWatchedReposForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
-  MinimalRepository,
-) as any as S.Schema<ListWatchedReposForAuthenticatedUserResponseBodyList>;
+export const ListWatchedReposForAuthenticatedUserResponseBodyList =
+  ListReposWatchedByUserResponseBodyList as any as S.Schema<ListWatchedReposForAuthenticatedUserResponseBodyList>;
 
 export type ListWatchedReposForAuthenticatedUserResponse =
   ListWatchedReposForAuthenticatedUserResponseBodyList;
-export const ListWatchedReposForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListWatchedReposForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListWatchedReposForAuthenticatedUserResponse",
-}) as any as S.Schema<ListWatchedReposForAuthenticatedUserResponse>;
+export const ListWatchedReposForAuthenticatedUserResponse =
+  ListReposWatchedByUserResponse as any as S.Schema<ListWatchedReposForAuthenticatedUserResponse>;
 
 export interface ListWatchersForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3600,9 +3551,8 @@ export const ListWatchersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWatchersForRepoRequest>;
 
 export type ListWatchersForRepoResponseBodyList = Array<SimpleUser>;
-export const ListWatchersForRepoResponseBodyList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<ListWatchersForRepoResponseBodyList>;
+export const ListWatchersForRepoResponseBodyList =
+  IssueAssigneesList as any as S.Schema<ListWatchersForRepoResponseBodyList>;
 
 export type ListWatchersForRepoResponse = ListWatchersForRepoResponseBodyList;
 export const ListWatchersForRepoResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3622,9 +3572,8 @@ export const MarkThreadAsDoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarkThreadAsDoneRequest" }) as any as S.Schema<MarkThreadAsDoneRequest>;
 
 export interface MarkThreadAsDoneResponse {}
-export const MarkThreadAsDoneResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MarkThreadAsDoneResponse",
-}) as any as S.Schema<MarkThreadAsDoneResponse>;
+export const MarkThreadAsDoneResponse =
+  DeleteRepoSubscriptionResponse as any as S.Schema<MarkThreadAsDoneResponse>;
 
 export interface ReadMarkNotificationsAsRequest {
   /** Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp. */
@@ -3665,11 +3614,8 @@ export const ReadMarkRepoNotificationsAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadMarkRepoNotificationsAsRequest>;
 
 export interface ReadMarkRepoNotificationsAsResponse {}
-export const ReadMarkRepoNotificationsAsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReadMarkRepoNotificationsAsResponse",
-}) as any as S.Schema<ReadMarkRepoNotificationsAsResponse>;
+export const ReadMarkRepoNotificationsAsResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<ReadMarkRepoNotificationsAsResponse>;
 
 export interface ReadMarkThreadAsRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
@@ -3682,9 +3628,8 @@ export const ReadMarkThreadAsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadMarkThreadAsRequest" }) as any as S.Schema<ReadMarkThreadAsRequest>;
 
 export interface ReadMarkThreadAsResponse {}
-export const ReadMarkThreadAsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReadMarkThreadAsResponse",
-}) as any as S.Schema<ReadMarkThreadAsResponse>;
+export const ReadMarkThreadAsResponse =
+  DeleteRepoSubscriptionResponse as any as S.Schema<ReadMarkThreadAsResponse>;
 
 export interface SetRepoSubscriptionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3740,11 +3685,8 @@ export const StarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StarRepoForAuthenticatedUserRequest>;
 
 export interface StarRepoForAuthenticatedUserResponse {}
-export const StarRepoForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StarRepoForAuthenticatedUserResponse",
-}) as any as S.Schema<StarRepoForAuthenticatedUserResponse>;
+export const StarRepoForAuthenticatedUserResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<StarRepoForAuthenticatedUserResponse>;
 
 export interface UnstarRepoForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3762,11 +3704,8 @@ export const UnstarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UnstarRepoForAuthenticatedUserRequest>;
 
 export interface UnstarRepoForAuthenticatedUserResponse {}
-export const UnstarRepoForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnstarRepoForAuthenticatedUserResponse",
-}) as any as S.Schema<UnstarRepoForAuthenticatedUserResponse>;
+export const UnstarRepoForAuthenticatedUserResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<UnstarRepoForAuthenticatedUserResponse>;
 
 export type CheckRepoIsStarredByAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Check if a repository is starred by the authenticated user Whether the authenticated user has starred the repository. */

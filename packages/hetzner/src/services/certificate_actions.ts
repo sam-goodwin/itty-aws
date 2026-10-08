@@ -179,9 +179,8 @@ export const ListCertificateActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListCertificateActionsResponseActionsItemResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-export const ListCertificateActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  GetCertificatesActionResponseActionResourcesItem,
-) as any as S.Schema<ListCertificateActionsResponseActionsItemResourcesList>;
+export const ListCertificateActionsResponseActionsItemResourcesList =
+  GetCertificatesActionResponseActionResourcesList as any as S.Schema<ListCertificateActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListCertificateActionsResponseActionsItemError =
@@ -358,9 +357,8 @@ export const ListCertificatesActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListCertificatesActionsResponseActionsItemResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-export const ListCertificatesActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  GetCertificatesActionResponseActionResourcesItem,
-) as any as S.Schema<ListCertificatesActionsResponseActionsItemResourcesList>;
+export const ListCertificatesActionsResponseActionsItemResourcesList =
+  GetCertificatesActionResponseActionResourcesList as any as S.Schema<ListCertificatesActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListCertificatesActionsResponseActionsItemError =
@@ -451,9 +449,8 @@ export const RetryCertificateResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type RetryCertificateResponseActionResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-export const RetryCertificateResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  GetCertificatesActionResponseActionResourcesItem,
-) as any as S.Schema<RetryCertificateResponseActionResourcesList>;
+export const RetryCertificateResponseActionResourcesList =
+  GetCertificatesActionResponseActionResourcesList as any as S.Schema<RetryCertificateResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RetryCertificateResponseActionError = GetCertificatesActionResponseActionError;

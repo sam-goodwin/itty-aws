@@ -234,13 +234,8 @@ export interface GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
   /** Required. The email addresses of the testers to be removed from the group. A maximum of 999 and a minimum of 1 testers can be removed in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emails: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleFirebaseAppdistroV1BatchLeaveGroupRequest",
-}) as any as S.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest>;
+export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest =
+  GoogleFirebaseAppdistroV1BatchAddTestersRequest as any as S.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest>;
 
 export interface BatchLeaveProjectsGroupsRequest {
   /** Required. The name of the group resource from which testers are removed. Format: `projects/{project_number}/groups/{group_alias}` */
@@ -268,13 +263,8 @@ export interface GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
   /** Required. The email addresses of the tester resources to removed. A maximum of 999 and a minimum of 1 testers can be deleted in a batch. */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emails: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersRequest",
-}) as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest>;
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest =
+  GoogleFirebaseAppdistroV1BatchAddTestersRequest as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest>;
 
 export interface BatchRemoveProjectsTestersRequest {
   /** Required. The name of the project resource. Format: `projects/{project_number}` */
@@ -302,13 +292,8 @@ export interface GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
   /** List of deleted tester emails */
   emails?: StringList;
 }
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emails: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersResponse",
-}) as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse>;
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse =
+  GoogleFirebaseAppdistroV1BatchAddTestersRequest as any as S.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
@@ -481,11 +466,8 @@ export const DistributeProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The response message for `DistributeRelease`. */
 export interface GoogleFirebaseAppdistroV1DistributeReleaseResponse {}
-export const GoogleFirebaseAppdistroV1DistributeReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleFirebaseAppdistroV1DistributeReleaseResponse",
-}) as any as S.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse>;
+export const GoogleFirebaseAppdistroV1DistributeReleaseResponse =
+  GoogleLongrunningCancelOperationRequest as any as S.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse>;
 
 export interface GetAabInfoProjectsAppsRequest {
   /** Required. The name of the `AabInfo` resource to retrieve. Format: `projects/{project_number}/apps/{app}/aabInfo` */

@@ -982,16 +982,10 @@ export interface TrustAnchor {
   /** PEM certificate of the PKI used for validation. Must only contain one ca certificate (either root or intermediate cert). */
   pemCertificate?: string;
 }
-export const TrustAnchor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pemCertificate: S.optional(S.String),
-  }),
-).annotate({ identifier: "TrustAnchor" }) as any as S.Schema<TrustAnchor>;
+export const TrustAnchor = IntermediateCA as any as S.Schema<TrustAnchor>;
 
 export type TrustAnchorList = Array<TrustAnchor>;
-export const TrustAnchorList = /*@__PURE__*/ S.Array(
-  TrustAnchor,
-) as any as S.Schema<TrustAnchorList>;
+export const TrustAnchorList = IntermediateCAList as any as S.Schema<TrustAnchorList>;
 
 /** Trust store that contains trust anchors and optional intermediate CAs used in PKI to build a trust chain(trust hierarchy) and verify a client's identity. */
 export interface TrustStore {
@@ -1865,9 +1859,7 @@ export const DeleteProjectsServiceAccountsKeysRequest = /*@__PURE__*/ S.suspend(
 
 /** The service account disable request. */
 export interface DisableServiceAccountRequest {}
-export const DisableServiceAccountRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableServiceAccountRequest",
-}) as any as S.Schema<DisableServiceAccountRequest>;
+export const DisableServiceAccountRequest = Empty as any as S.Schema<DisableServiceAccountRequest>;
 
 export interface DisableProjectsServiceAccountsRequest {
   /** The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to access the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error. */
@@ -3881,13 +3873,8 @@ export interface RemoveAttestationRuleRequest {
   /** Required. The attestation rule to be removed. */
   attestationRule?: AttestationRule;
 }
-export const RemoveAttestationRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attestationRule: S.optional(AttestationRule),
-  }),
-).annotate({
-  identifier: "RemoveAttestationRuleRequest",
-}) as any as S.Schema<RemoveAttestationRuleRequest>;
+export const RemoveAttestationRuleRequest =
+  AddAttestationRuleRequest as any as S.Schema<RemoveAttestationRuleRequest>;
 
 export interface RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest {
   /** Required. The resource name of the managed identity or namespace resource to remove an attestation rule from. */
@@ -4240,13 +4227,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsLocationsWorkforcePoolsProvidersScimTenantsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

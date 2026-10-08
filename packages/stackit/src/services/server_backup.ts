@@ -82,9 +82,8 @@ export const BackupJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupJob" }) as any as S.Schema<BackupJob>;
 
 export type BackupPropertiesVolumeIdsList = Array<string>;
-export const BackupPropertiesVolumeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupPropertiesVolumeIdsList>;
+export const BackupPropertiesVolumeIdsList =
+  CreateBackupRequestVolumeIdsList as any as S.Schema<BackupPropertiesVolumeIdsList>;
 
 export interface BackupProperties {
   /** Max 255 characters */
@@ -217,9 +216,8 @@ export const DeleteBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBackupScheduleRequest>;
 
 export interface DeleteBackupScheduleResponse {}
-export const DeleteBackupScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupScheduleResponse",
-}) as any as S.Schema<DeleteBackupScheduleResponse>;
+export const DeleteBackupScheduleResponse =
+  DeleteBackupResponse as any as S.Schema<DeleteBackupScheduleResponse>;
 
 export interface DeleteVolumeBackupRequest {
   /** project id */
@@ -256,9 +254,8 @@ export const DeleteVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeBackupRequest>;
 
 export interface DeleteVolumeBackupResponse {}
-export const DeleteVolumeBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeBackupResponse",
-}) as any as S.Schema<DeleteVolumeBackupResponse>;
+export const DeleteVolumeBackupResponse =
+  DeleteBackupResponse as any as S.Schema<DeleteVolumeBackupResponse>;
 
 export interface DisableServiceResourceRequest {
   /** project id */
@@ -286,9 +283,8 @@ export const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableServiceResourceRequest>;
 
 export interface DisableServiceResourceResponse {}
-export const DisableServiceResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableServiceResourceResponse",
-}) as any as S.Schema<DisableServiceResourceResponse>;
+export const DisableServiceResourceResponse =
+  DeleteBackupResponse as any as S.Schema<DisableServiceResourceResponse>;
 
 export interface EnableServiceResourceRequest {
   /** project id */
@@ -318,9 +314,8 @@ export const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableServiceResourceRequest>;
 
 export interface EnableServiceResourceResponse {}
-export const EnableServiceResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableServiceResourceResponse",
-}) as any as S.Schema<EnableServiceResourceResponse>;
+export const EnableServiceResourceResponse =
+  DeleteBackupResponse as any as S.Schema<EnableServiceResourceResponse>;
 
 export interface GetBackupRequest {
   /** project id */
@@ -627,9 +622,8 @@ export const GetBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBackupSchedulesResponse>;
 
 export type RestoreBackupRequestVolumeIdsList = Array<string>;
-export const RestoreBackupRequestVolumeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreBackupRequestVolumeIdsList>;
+export const RestoreBackupRequestVolumeIdsList =
+  CreateBackupRequestVolumeIdsList as any as S.Schema<RestoreBackupRequestVolumeIdsList>;
 
 export interface RestoreBackupRequest {
   /** project id */
@@ -662,9 +656,7 @@ export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreBackupRequest" }) as any as S.Schema<RestoreBackupRequest>;
 
 export interface RestoreBackupResponse {}
-export const RestoreBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreBackupResponse",
-}) as any as S.Schema<RestoreBackupResponse>;
+export const RestoreBackupResponse = DeleteBackupResponse as any as S.Schema<RestoreBackupResponse>;
 
 export interface RestoreVolumeBackupRequest {
   /** project id */
@@ -700,9 +692,8 @@ export const RestoreVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreVolumeBackupRequest>;
 
 export interface RestoreVolumeBackupResponse {}
-export const RestoreVolumeBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreVolumeBackupResponse",
-}) as any as S.Schema<RestoreVolumeBackupResponse>;
+export const RestoreVolumeBackupResponse =
+  DeleteBackupResponse as any as S.Schema<RestoreVolumeBackupResponse>;
 
 export interface UpdateBackupScheduleRequest {
   /** project id */

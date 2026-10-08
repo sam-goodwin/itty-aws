@@ -162,14 +162,13 @@ export const PutActionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutActionsRequest" }) as any as S.Schema<PutActionsRequest>;
 export interface PutActionsResponse {}
-export const PutActionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutActionsResponse",
-}) as any as S.Schema<PutActionsResponse>;
+export const PutActionsResponse =
+  PutActionInteractionsResponse as any as S.Schema<PutActionsResponse>;
 export type FloatType = number;
 export type ItemId = string | redacted.Redacted<string>;
 export type SynthesizedJsonEventPropertiesJSON = string | redacted.Redacted<string>;
 export type Impression = (string | redacted.Redacted<string>)[];
-export const Impression = /*@__PURE__*/ S.Array(SensitiveString);
+export const Impression = ActionImpression as any as S.Schema<Impression>;
 export type EventAttributionSource = string;
 export interface MetricAttribution {
   eventAttributionSource: string;
@@ -218,9 +217,8 @@ export const PutEventsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/events" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "PutEventsRequest" }) as any as S.Schema<PutEventsRequest>;
 export interface PutEventsResponse {}
-export const PutEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEventsResponse",
-}) as any as S.Schema<PutEventsResponse>;
+export const PutEventsResponse =
+  PutActionInteractionsResponse as any as S.Schema<PutEventsResponse>;
 export type SynthesizedJsonItemProperties = string | redacted.Redacted<string>;
 export interface Item {
   itemId: string;
@@ -241,9 +239,7 @@ export const PutItemsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutItemsRequest" }) as any as S.Schema<PutItemsRequest>;
 export interface PutItemsResponse {}
-export const PutItemsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutItemsResponse",
-}) as any as S.Schema<PutItemsResponse>;
+export const PutItemsResponse = PutActionInteractionsResponse as any as S.Schema<PutItemsResponse>;
 export type SynthesizedJsonUserProperties = string | redacted.Redacted<string>;
 export interface User {
   userId: string;
@@ -264,9 +260,7 @@ export const PutUsersRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutUsersRequest" }) as any as S.Schema<PutUsersRequest>;
 export interface PutUsersResponse {}
-export const PutUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutUsersResponse",
-}) as any as S.Schema<PutUsersResponse>;
+export const PutUsersResponse = PutActionInteractionsResponse as any as S.Schema<PutUsersResponse>;
 export type ErrorMessage = string;
 export type PutActionInteractionsError =
   | InvalidInputException

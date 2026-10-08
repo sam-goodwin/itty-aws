@@ -222,13 +222,8 @@ export interface AccessSessionSparkApplicationEnvironmentInfoResponse {
   /** Details about the Environment that the application is running in. */
   applicationEnvironmentInfo?: ApplicationEnvironmentInfo;
 }
-export const AccessSessionSparkApplicationEnvironmentInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationEnvironmentInfo: S.optional(ApplicationEnvironmentInfo),
-  }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationEnvironmentInfoResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationEnvironmentInfoResponse>;
+export const AccessSessionSparkApplicationEnvironmentInfoResponse =
+  AccessSparkApplicationEnvironmentInfoResponse as any as S.Schema<AccessSessionSparkApplicationEnvironmentInfoResponse>;
 
 export interface AccessJobProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -367,13 +362,8 @@ export interface AccessSessionSparkApplicationJobResponse {
   /** Output only. Data corresponding to a spark job. */
   jobData?: JobData;
 }
-export const AccessSessionSparkApplicationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobData: S.optional(JobData),
-  }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationJobResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationJobResponse>;
+export const AccessSessionSparkApplicationJobResponse =
+  AccessSparkApplicationJobResponse as any as S.Schema<AccessSessionSparkApplicationJobResponse>;
 
 export interface AccessNativeBuildInfoProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -588,13 +578,8 @@ export interface AccessSessionSparkApplicationNativeSqlQueryResponse {
   /** Native SQL Execution Data */
   executionData?: NativeSqlExecutionUiData;
 }
-export const AccessSessionSparkApplicationNativeSqlQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionData: S.optional(NativeSqlExecutionUiData),
-  }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationNativeSqlQueryResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationNativeSqlQueryResponse>;
+export const AccessSessionSparkApplicationNativeSqlQueryResponse =
+  AccessSparkApplicationNativeSqlQueryResponse as any as S.Schema<AccessSessionSparkApplicationNativeSqlQueryResponse>;
 
 export interface AccessProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -729,13 +714,8 @@ export interface AccessSessionSparkApplicationResponse {
   /** Output only. High level information corresponding to an application. */
   application?: ApplicationInfo;
 }
-export const AccessSessionSparkApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    application: S.optional(ApplicationInfo),
-  }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationResponse>;
+export const AccessSessionSparkApplicationResponse =
+  AccessSparkApplicationResponse as any as S.Schema<AccessSessionSparkApplicationResponse>;
 
 export interface AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -914,13 +894,8 @@ export interface AccessSessionSparkApplicationSqlSparkPlanGraphResponse {
   /** SparkPlanGraph for a Spark Application execution. */
   sparkPlanGraph?: SparkPlanGraph;
 }
-export const AccessSessionSparkApplicationSqlSparkPlanGraphResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkPlanGraph: S.optional(SparkPlanGraph),
-  }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationSqlSparkPlanGraphResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationSqlSparkPlanGraphResponse>;
+export const AccessSessionSparkApplicationSqlSparkPlanGraphResponse =
+  AccessSparkApplicationSqlSparkPlanGraphResponse as any as S.Schema<AccessSessionSparkApplicationSqlSparkPlanGraphResponse>;
 
 export interface AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -1054,13 +1029,8 @@ export interface AccessSessionSparkApplicationSqlQueryResponse {
   /** SQL Execution Data */
   executionData?: SqlExecutionUiData;
 }
-export const AccessSessionSparkApplicationSqlQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    executionData: S.optional(SqlExecutionUiData),
-  }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationSqlQueryResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationSqlQueryResponse>;
+export const AccessSessionSparkApplicationSqlQueryResponse =
+  AccessSparkApplicationSqlQueryResponse as any as S.Schema<AccessSessionSparkApplicationSqlQueryResponse>;
 
 export interface AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -1464,7 +1434,7 @@ export const SpeculationStageSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpeculationStageSummary" }) as any as S.Schema<SpeculationStageSummary>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 export type ExecutorMetricsList = Array<ExecutorMetrics>;
 export const ExecutorMetricsList = /*@__PURE__*/ S.Array(
@@ -1857,13 +1827,8 @@ export interface AccessSessionSparkApplicationStageAttemptResponse {
   /** Output only. Data corresponding to a stage. */
   stageData?: StageData;
 }
-export const AccessSessionSparkApplicationStageAttemptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stageData: S.optional(StageData),
-  }),
-).annotate({
-  identifier: "AccessSessionSparkApplicationStageAttemptResponse",
-}) as any as S.Schema<AccessSessionSparkApplicationStageAttemptResponse>;
+export const AccessSessionSparkApplicationStageAttemptResponse =
+  AccessSparkApplicationStageAttemptResponse as any as S.Schema<AccessSessionSparkApplicationStageAttemptResponse>;
 
 export interface AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. The fully qualified name of the batch to retrieve in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" */
@@ -2142,9 +2107,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 
 /** A request to cancel a job. */
 export interface CancelJobRequest {}
-export const CancelJobRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelJobRequest",
-}) as any as S.Schema<CancelJobRequest>;
+export const CancelJobRequest = Empty as any as S.Schema<CancelJobRequest>;
 
 export interface CancelProjectsRegionsJobsRequest {
   /** Required. The job ID. */
@@ -6950,14 +6913,8 @@ export interface SearchSessionSparkApplicationExecutorsResponse {
   /** Details about executors used by the application. */
   sparkApplicationExecutors?: ExecutorSummaryList;
 }
-export const SearchSessionSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    sparkApplicationExecutors: S.optional(ExecutorSummaryList),
-  }),
-).annotate({
-  identifier: "SearchSessionSparkApplicationExecutorsResponse",
-}) as any as S.Schema<SearchSessionSparkApplicationExecutorsResponse>;
+export const SearchSessionSparkApplicationExecutorsResponse =
+  SearchSparkApplicationExecutorsResponse as any as S.Schema<SearchSessionSparkApplicationExecutorsResponse>;
 
 export interface SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. A page token received from a previous AccessSparkApplicationExecutorsList call. Provide this token to retrieve the subsequent page. */
@@ -7269,14 +7226,8 @@ export interface SearchSessionSparkApplicationNativeSqlQueriesResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationSqlQueriesRequest. */
   nextPageToken?: string;
 }
-export const SearchSessionSparkApplicationNativeSqlQueriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkApplicationNativeSqlQueries: S.optional(NativeSqlExecutionUiDataList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchSessionSparkApplicationNativeSqlQueriesResponse",
-}) as any as S.Schema<SearchSessionSparkApplicationNativeSqlQueriesResponse>;
+export const SearchSessionSparkApplicationNativeSqlQueriesResponse =
+  SearchSparkApplicationNativeSqlQueriesResponse as any as S.Schema<SearchSessionSparkApplicationNativeSqlQueriesResponse>;
 
 export type SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum =
   | "APPLICATION_STATUS_UNSPECIFIED"
@@ -7526,14 +7477,8 @@ export interface SearchSessionSparkApplicationSqlQueriesResponse {
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationSqlQueriesRequest. */
   nextPageToken?: string;
 }
-export const SearchSessionSparkApplicationSqlQueriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkApplicationSqlQueries: S.optional(SqlExecutionUiDataList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchSessionSparkApplicationSqlQueriesResponse",
-}) as any as S.Schema<SearchSessionSparkApplicationSqlQueriesResponse>;
+export const SearchSessionSparkApplicationSqlQueriesResponse =
+  SearchSparkApplicationSqlQueriesResponse as any as S.Schema<SearchSessionSparkApplicationSqlQueriesResponse>;
 
 export interface SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest {
   /** Optional. The list of summary metrics fields to include. Empty list will default to skip all summary metrics fields. Example, if the response should include TaskQuantileMetrics, the request should have task_quantile_metrics in summary_metrics_mask field */
@@ -7629,14 +7574,8 @@ export interface SearchSessionSparkApplicationStageAttemptsResponse {
   /** Output only. Data corresponding to a stage attempts */
   sparkApplicationStageAttempts?: StageDataList;
 }
-export const SearchSessionSparkApplicationStageAttemptsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    sparkApplicationStageAttempts: S.optional(StageDataList),
-  }),
-).annotate({
-  identifier: "SearchSessionSparkApplicationStageAttemptsResponse",
-}) as any as S.Schema<SearchSessionSparkApplicationStageAttemptsResponse>;
+export const SearchSessionSparkApplicationStageAttemptsResponse =
+  SearchSparkApplicationStageAttemptsResponse as any as S.Schema<SearchSessionSparkApplicationStageAttemptsResponse>;
 
 export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum =
   | "TASK_STATUS_UNSPECIFIED"
@@ -8120,12 +8059,7 @@ export interface StopClusterRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two StopClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.StopClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
 }
-export const StopClusterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterUuid: S.optional(S.String),
-    requestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "StopClusterRequest" }) as any as S.Schema<StopClusterRequest>;
+export const StopClusterRequest = StartClusterRequest as any as S.Schema<StopClusterRequest>;
 
 export interface StopProjectsRegionsClustersRequest {
   /** Required. The cluster name. */
@@ -8439,13 +8373,8 @@ export interface SummarizeSessionSparkApplicationJobsResponse {
   /** Summary of a Spark Application Jobs */
   jobsSummary?: JobsSummary;
 }
-export const SummarizeSessionSparkApplicationJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobsSummary: S.optional(JobsSummary),
-  }),
-).annotate({
-  identifier: "SummarizeSessionSparkApplicationJobsResponse",
-}) as any as S.Schema<SummarizeSessionSparkApplicationJobsResponse>;
+export const SummarizeSessionSparkApplicationJobsResponse =
+  SummarizeSparkApplicationJobsResponse as any as S.Schema<SummarizeSessionSparkApplicationJobsResponse>;
 
 export interface SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -8641,13 +8570,8 @@ export interface SummarizeSessionSparkApplicationStagesResponse {
   /** Summary of a Spark Application Stages */
   stagesSummary?: StagesSummary;
 }
-export const SummarizeSessionSparkApplicationStagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stagesSummary: S.optional(StagesSummary),
-  }),
-).annotate({
-  identifier: "SummarizeSessionSparkApplicationStagesResponse",
-}) as any as S.Schema<SummarizeSessionSparkApplicationStagesResponse>;
+export const SummarizeSessionSparkApplicationStagesResponse =
+  SummarizeSparkApplicationStagesResponse as any as S.Schema<SummarizeSessionSparkApplicationStagesResponse>;
 
 /** A request to terminate an interactive session. */
 export interface TerminateSessionRequest {
@@ -8721,13 +8645,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -9440,11 +9359,8 @@ export const WriteProjectsLocationsSessionsSparkApplicationsRequest = /*@__PURE_
 
 /** Response returned as an acknowledgement of receipt of data. */
 export interface WriteSessionSparkApplicationContextResponse {}
-export const WriteSessionSparkApplicationContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WriteSessionSparkApplicationContextResponse",
-}) as any as S.Schema<WriteSessionSparkApplicationContextResponse>;
+export const WriteSessionSparkApplicationContextResponse =
+  WriteSparkApplicationContextResponse as any as S.Schema<WriteSessionSparkApplicationContextResponse>;
 
 export type AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsError =
   | NotFound

@@ -55,14 +55,12 @@ export const GetMetricRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetMetricRequestAdCampaignIdsList>;
 
 export type GetMetricRequestAdGroupIdsList = Array<string>;
-export const GetMetricRequestAdGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetMetricRequestAdGroupIdsList>;
+export const GetMetricRequestAdGroupIdsList =
+  GetMetricRequestAdCampaignIdsList as any as S.Schema<GetMetricRequestAdGroupIdsList>;
 
 export type GetMetricRequestAdIdsList = Array<string>;
-export const GetMetricRequestAdIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetMetricRequestAdIdsList>;
+export const GetMetricRequestAdIdsList =
+  GetMetricRequestAdCampaignIdsList as any as S.Schema<GetMetricRequestAdIdsList>;
 
 export type GetMetricRequestSnapshotWindow = "7d" | "28d" | "30d";
 export const GetMetricRequestSnapshotWindow = S.String;
@@ -409,9 +407,8 @@ export const GetMetricResponseDataPointsItemBreakdownList = /*@__PURE__*/ S.Arra
 
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataPointsItemStepsList = Array<FunnelStepResult>;
-export const GetMetricResponseDataPointsItemStepsList = /*@__PURE__*/ S.Array(
-  FunnelStepResult,
-) as any as S.Schema<GetMetricResponseDataPointsItemStepsList>;
+export const GetMetricResponseDataPointsItemStepsList =
+  GetMetricResponseDataPointsItemBreakdownItemStepsList as any as S.Schema<GetMetricResponseDataPointsItemStepsList>;
 
 export interface GetMetricResponseDataPointsItem {
   /** Present only when broken down: one entry per property value in this period. */
@@ -474,9 +471,8 @@ export const FunnelComparison = /*@__PURE__*/ S.suspend(() =>
 
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataTotalsItemStepsList = Array<FunnelStepResult>;
-export const GetMetricResponseDataTotalsItemStepsList = /*@__PURE__*/ S.Array(
-  FunnelStepResult,
-) as any as S.Schema<GetMetricResponseDataTotalsItemStepsList>;
+export const GetMetricResponseDataTotalsItemStepsList =
+  GetMetricResponseDataPointsItemBreakdownItemStepsList as any as S.Schema<GetMetricResponseDataTotalsItemStepsList>;
 
 export interface GetMetricResponseDataTotalsItem {
   comparison?: FunnelComparison | null;
@@ -539,15 +535,13 @@ export const ListMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported breakdown_by values when they differ from the filter properties. */
 export type ListMetricsResponseDataItemBreakdownsList = Array<string>;
-export const ListMetricsResponseDataItemBreakdownsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMetricsResponseDataItemBreakdownsList>;
+export const ListMetricsResponseDataItemBreakdownsList =
+  GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemBreakdownsList>;
 
 /** The properties you can use with this metric -- pass one as a filter (property=value) to narrow the series, or as breakdown_by=property to split it. */
 export type ListMetricsResponseDataItemPropertiesList = Array<string>;
-export const ListMetricsResponseDataItemPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMetricsResponseDataItemPropertiesList>;
+export const ListMetricsResponseDataItemPropertiesList =
+  GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemPropertiesList>;
 
 /** How to read the metric's values: count is an integer, currency is a decimal amount, and percent is a number where 1.6 means 1.6%. */
 export type ListMetricsResponseDataItemUnit = "count" | "currency" | "percent";
@@ -555,9 +549,8 @@ export const ListMetricsResponseDataItemUnit = S.String;
 
 /** Snapshot metrics only: the trailing windows you can pass as snapshot_window, for example 30d. Absent on live metrics, which use from/to instead. */
 export type ListMetricsResponseDataItemWindowsList = Array<string>;
-export const ListMetricsResponseDataItemWindowsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMetricsResponseDataItemWindowsList>;
+export const ListMetricsResponseDataItemWindowsList =
+  GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemWindowsList>;
 
 export interface ListMetricsResponseDataItem {
   /** Supported breakdown_by values when they differ from the filter properties. */

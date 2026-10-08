@@ -492,9 +492,8 @@ export const ListAccountTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountTypesRequest" }) as any as S.Schema<ListAccountTypesRequest>;
 
 export type AccountTypesListResultList = Array<string>;
-export const AccountTypesListResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountTypesListResultList>;
+export const AccountTypesListResultList =
+  GetResponseTenantLabelsList as any as S.Schema<AccountTypesListResultList>;
 
 export interface ListAccountTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */

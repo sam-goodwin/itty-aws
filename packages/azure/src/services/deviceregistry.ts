@@ -218,10 +218,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AssetEndpointProfilesCreateOrReplaceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AssetEndpointProfilesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceResponseTagsMap>;
+export const AssetEndpointProfilesCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<AssetEndpointProfilesCreateOrReplaceResponseTagsMap>;
 
 /** Defines the asset endpoint profile status error properties. */
 export interface AssetEndpointProfileStatusError {
@@ -331,10 +329,8 @@ export const AssetEndpointProfilesCreateOrReplaceResponse = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type AssetsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const AssetsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssetsCreateOrReplaceRequestTagsMap>;
+export const AssetsCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<AssetsCreateOrReplaceRequestTagsMap>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type AssetPropertiesInputAttributesMap = { [key: string]: unknown | undefined };
@@ -563,35 +559,28 @@ export const AssetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AssetsCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const AssetsCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssetsCreateOrReplaceResponseTagsMap>;
+export const AssetsCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<AssetsCreateOrReplaceResponseTagsMap>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type AssetPropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const AssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AssetPropertiesAttributesMap>;
+export const AssetPropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<AssetPropertiesAttributesMap>;
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
 export type AssetPropertiesDiscoveredAssetRefsList = Array<string>;
-export const AssetPropertiesDiscoveredAssetRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssetPropertiesDiscoveredAssetRefsList>;
+export const AssetPropertiesDiscoveredAssetRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<AssetPropertiesDiscoveredAssetRefsList>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
 export type AssetPropertiesDatasetsList = Array<Dataset>;
-export const AssetPropertiesDatasetsList = /*@__PURE__*/ S.Array(
-  Dataset,
-) as any as S.Schema<AssetPropertiesDatasetsList>;
+export const AssetPropertiesDatasetsList =
+  AssetPropertiesInputDatasetsList as any as S.Schema<AssetPropertiesDatasetsList>;
 
 /** Array of events that are part of the asset. Each event can have per-event configuration. */
 export type AssetPropertiesEventsList = Array<Event>;
-export const AssetPropertiesEventsList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<AssetPropertiesEventsList>;
+export const AssetPropertiesEventsList =
+  AssetPropertiesInputEventsList as any as S.Schema<AssetPropertiesEventsList>;
 
 /** Defines the asset status error properties. */
 export interface AssetStatusError {
@@ -657,18 +646,12 @@ export interface AssetStatusEvent {
   /** The message schema reference object. */
   messageSchemaReference?: MessageSchemaReference;
 }
-export const AssetStatusEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    messageSchemaReference: S.optional(MessageSchemaReference),
-  }),
-).annotate({ identifier: "AssetStatusEvent" }) as any as S.Schema<AssetStatusEvent>;
+export const AssetStatusEvent = AssetStatusDataset as any as S.Schema<AssetStatusEvent>;
 
 /** Array of event statuses that describe the status of each event. */
 export type AssetStatusEventsList = Array<AssetStatusEvent>;
-export const AssetStatusEventsList = /*@__PURE__*/ S.Array(
-  AssetStatusEvent,
-) as any as S.Schema<AssetStatusEventsList>;
+export const AssetStatusEventsList =
+  AssetStatusDatasetsList as any as S.Schema<AssetStatusEventsList>;
 
 /** Defines the asset status properties. */
 export interface AssetStatus {
@@ -807,10 +790,8 @@ export const AssetsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
 export type CertificateAuthoritiesCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const CertificateAuthoritiesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CertificateAuthoritiesCreateOrReplaceRequestTagsMap>;
+export const CertificateAuthoritiesCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<CertificateAuthoritiesCreateOrReplaceRequestTagsMap>;
 
 /** Supported Certificate Authority types. */
 export type CertificateAuthorityType = "Root" | "ICA";
@@ -877,10 +858,8 @@ export const CertificateAuthoritiesCreateOrReplaceRequest = /*@__PURE__*/ S.susp
 export type CertificateAuthoritiesCreateOrReplaceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CertificateAuthoritiesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CertificateAuthoritiesCreateOrReplaceResponseTagsMap>;
+export const CertificateAuthoritiesCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<CertificateAuthoritiesCreateOrReplaceResponseTagsMap>;
 
 /** Details of the Certificate Authority resource. */
 export interface CertificateAuthorityProperties {
@@ -972,11 +951,8 @@ export const CertificateAuthoritiesRevokeAndRotateRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CertificateAuthoritiesRevokeAndRotateRequest>;
 
 export interface CertificateAuthoritiesRevokeAndRotateResponse {}
-export const CertificateAuthoritiesRevokeAndRotateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CertificateAuthoritiesRevokeAndRotateResponse",
-}) as any as S.Schema<CertificateAuthoritiesRevokeAndRotateResponse>;
+export const CertificateAuthoritiesRevokeAndRotateResponse =
+  ActivateCertificateAuthorityResponse as any as S.Schema<CertificateAuthoritiesRevokeAndRotateResponse>;
 
 /** The Certificate Policy certificate configuration. */
 export interface CertificatePolicyConfiguration {
@@ -1135,11 +1111,8 @@ export const DeleteAssetEndpointProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssetEndpointProfileRequest>;
 
 export interface DeleteAssetEndpointProfileResponse {}
-export const DeleteAssetEndpointProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAssetEndpointProfileResponse",
-}) as any as S.Schema<DeleteAssetEndpointProfileResponse>;
+export const DeleteAssetEndpointProfileResponse =
+  ActivateCertificateAuthorityResponse as any as S.Schema<DeleteAssetEndpointProfileResponse>;
 
 export interface DeleteCertificateAuthorityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1170,11 +1143,8 @@ export const DeleteCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCertificateAuthorityRequest>;
 
 export interface DeleteCertificateAuthorityResponse {}
-export const DeleteCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCertificateAuthorityResponse",
-}) as any as S.Schema<DeleteCertificateAuthorityResponse>;
+export const DeleteCertificateAuthorityResponse =
+  ActivateCertificateAuthorityResponse as any as S.Schema<DeleteCertificateAuthorityResponse>;
 
 export interface DeleteCertificatePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1236,9 +1206,8 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNamespaceRequest" }) as any as S.Schema<DeleteNamespaceRequest>;
 
 export interface DeleteNamespaceResponse {}
-export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamespaceResponse",
-}) as any as S.Schema<DeleteNamespaceResponse>;
+export const DeleteNamespaceResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteNamespaceResponse>;
 
 export interface DeleteNamespaceAssetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1269,9 +1238,8 @@ export const DeleteNamespaceAssetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNamespaceAssetRequest>;
 
 export interface DeleteNamespaceAssetResponse {}
-export const DeleteNamespaceAssetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamespaceAssetResponse",
-}) as any as S.Schema<DeleteNamespaceAssetResponse>;
+export const DeleteNamespaceAssetResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteNamespaceAssetResponse>;
 
 export interface DeleteNamespaceDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1302,9 +1270,8 @@ export const DeleteNamespaceDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNamespaceDeviceRequest>;
 
 export interface DeleteNamespaceDeviceResponse {}
-export const DeleteNamespaceDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamespaceDeviceResponse",
-}) as any as S.Schema<DeleteNamespaceDeviceResponse>;
+export const DeleteNamespaceDeviceResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteNamespaceDeviceResponse>;
 
 export interface DeleteNamespaceDiscoveredAssetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1335,11 +1302,8 @@ export const DeleteNamespaceDiscoveredAssetRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteNamespaceDiscoveredAssetRequest>;
 
 export interface DeleteNamespaceDiscoveredAssetResponse {}
-export const DeleteNamespaceDiscoveredAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNamespaceDiscoveredAssetResponse",
-}) as any as S.Schema<DeleteNamespaceDiscoveredAssetResponse>;
+export const DeleteNamespaceDiscoveredAssetResponse =
+  ActivateCertificateAuthorityResponse as any as S.Schema<DeleteNamespaceDiscoveredAssetResponse>;
 
 export interface DeleteNamespaceDiscoveredDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1370,11 +1334,8 @@ export const DeleteNamespaceDiscoveredDeviceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteNamespaceDiscoveredDeviceRequest>;
 
 export interface DeleteNamespaceDiscoveredDeviceResponse {}
-export const DeleteNamespaceDiscoveredDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNamespaceDiscoveredDeviceResponse",
-}) as any as S.Schema<DeleteNamespaceDiscoveredDeviceResponse>;
+export const DeleteNamespaceDiscoveredDeviceResponse =
+  ActivateCertificateAuthorityResponse as any as S.Schema<DeleteNamespaceDiscoveredDeviceResponse>;
 
 export interface DeleteRegistryDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1405,9 +1366,8 @@ export const DeleteRegistryDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistryDeviceRequest>;
 
 export interface DeleteRegistryDeviceResponse {}
-export const DeleteRegistryDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegistryDeviceResponse",
-}) as any as S.Schema<DeleteRegistryDeviceResponse>;
+export const DeleteRegistryDeviceResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteRegistryDeviceResponse>;
 
 export interface DeleteSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1436,9 +1396,7 @@ export const DeleteSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSchemaRequest" }) as any as S.Schema<DeleteSchemaRequest>;
 
 export interface DeleteSchemaResponse {}
-export const DeleteSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaResponse",
-}) as any as S.Schema<DeleteSchemaResponse>;
+export const DeleteSchemaResponse = DeleteAssetResponse as any as S.Schema<DeleteSchemaResponse>;
 
 export interface DeleteSchemaRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1466,9 +1424,8 @@ export const DeleteSchemaRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSchemaRegistryRequest>;
 
 export interface DeleteSchemaRegistryResponse {}
-export const DeleteSchemaRegistryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaRegistryResponse",
-}) as any as S.Schema<DeleteSchemaRegistryResponse>;
+export const DeleteSchemaRegistryResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteSchemaRegistryResponse>;
 
 export interface DeleteSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1502,16 +1459,13 @@ export const DeleteSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSchemaVersionRequest>;
 
 export interface DeleteSchemaVersionResponse {}
-export const DeleteSchemaVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemaVersionResponse",
-}) as any as S.Schema<DeleteSchemaVersionResponse>;
+export const DeleteSchemaVersionResponse =
+  DeleteAssetResponse as any as S.Schema<DeleteSchemaVersionResponse>;
 
 /** Payload required for executing the management action. */
 export type ExecuteNamespaceAssetActionRequestPayloadMap = { [key: string]: unknown | undefined };
-export const ExecuteNamespaceAssetActionRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExecuteNamespaceAssetActionRequestPayloadMap>;
+export const ExecuteNamespaceAssetActionRequestPayloadMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<ExecuteNamespaceAssetActionRequestPayloadMap>;
 
 export interface ExecuteNamespaceAssetActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1650,10 +1604,8 @@ export const GetAssetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAssetResponseTagsMap = { [key: string]: string | undefined };
-export const GetAssetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAssetResponseTagsMap>;
+export const GetAssetResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetAssetResponseTagsMap>;
 
 export interface GetAssetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1713,10 +1665,8 @@ export const GetAssetEndpointProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAssetEndpointProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetAssetEndpointProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAssetEndpointProfileResponseTagsMap>;
+export const GetAssetEndpointProfileResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetAssetEndpointProfileResponseTagsMap>;
 
 export interface GetAssetEndpointProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1736,20 +1686,8 @@ export interface GetAssetEndpointProfileResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const GetAssetEndpointProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAssetEndpointProfileResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AssetEndpointProfileProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "GetAssetEndpointProfileResponse",
-}) as any as S.Schema<GetAssetEndpointProfileResponse>;
+export const GetAssetEndpointProfileResponse =
+  AssetEndpointProfilesCreateOrReplaceResponse as any as S.Schema<GetAssetEndpointProfileResponse>;
 
 export interface GetAsyncOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2000,10 +1938,8 @@ export const GetCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCertificateAuthorityResponseTagsMap = { [key: string]: string | undefined };
-export const GetCertificateAuthorityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCertificateAuthorityResponseTagsMap>;
+export const GetCertificateAuthorityResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetCertificateAuthorityResponseTagsMap>;
 
 export interface GetCertificateAuthorityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2021,19 +1957,8 @@ export interface GetCertificateAuthorityResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateAuthorityProperties;
 }
-export const GetCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetCertificateAuthorityResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateAuthorityProperties),
-  }),
-).annotate({
-  identifier: "GetCertificateAuthorityResponse",
-}) as any as S.Schema<GetCertificateAuthorityResponse>;
+export const GetCertificateAuthorityResponse =
+  CertificateAuthoritiesCreateOrReplaceResponse as any as S.Schema<GetCertificateAuthorityResponse>;
 
 export interface GetCertificatePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2078,17 +2003,8 @@ export interface GetCertificatePolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificatePolicyProperties;
 }
-export const GetCertificatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CertificatePolicyProperties),
-  }),
-).annotate({
-  identifier: "GetCertificatePolicyResponse",
-}) as any as S.Schema<GetCertificatePolicyResponse>;
+export const GetCertificatePolicyResponse =
+  CertificatePoliciesCreateOrReplaceResponse as any as S.Schema<GetCertificatePolicyResponse>;
 
 export interface GetNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2115,10 +2031,8 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceResponseTagsMap>;
+export const GetNamespaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetNamespaceResponseTagsMap>;
 
 /** The type of identity used for inbound calls to the ADR namespace. */
 export type InboundCallerIdentityType = "SystemAssigned" | "UserAssigned";
@@ -2461,10 +2375,8 @@ export const GetNamespaceAssetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNamespaceAssetResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceAssetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceAssetResponseTagsMap>;
+export const GetNamespaceAssetResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetNamespaceAssetResponseTagsMap>;
 
 /** Defines which device and endpoint to use for this asset */
 export interface DeviceRef {
@@ -2482,22 +2394,18 @@ export const DeviceRef = /*@__PURE__*/ S.suspend(() =>
 
 /** URIs or type definition IDs. */
 export type NamespaceAssetPropertiesAssetTypeRefsList = Array<string>;
-export const NamespaceAssetPropertiesAssetTypeRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceAssetPropertiesAssetTypeRefsList>;
+export const NamespaceAssetPropertiesAssetTypeRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceAssetPropertiesAssetTypeRefsList>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type NamespaceAssetPropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const NamespaceAssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceAssetPropertiesAttributesMap>;
+export const NamespaceAssetPropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceAssetPropertiesAttributesMap>;
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
 export type NamespaceAssetPropertiesDiscoveredAssetRefsList = Array<string>;
-export const NamespaceAssetPropertiesDiscoveredAssetRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceAssetPropertiesDiscoveredAssetRefsList>;
+export const NamespaceAssetPropertiesDiscoveredAssetRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceAssetPropertiesDiscoveredAssetRefsList>;
 
 /** The set of supported dataset destinations for an asset. */
 export type DatasetDestinationTarget = "Mqtt" | "BrokerStateStore" | "Storage";
@@ -2564,9 +2472,8 @@ export const NamespaceAssetPropertiesDefaultStreamsDestinationsList = /*@__PURE_
 
 /** Destinations for a dataset. */
 export type NamespaceDatasetDestinationsList = Array<DatasetDestination>;
-export const NamespaceDatasetDestinationsList = /*@__PURE__*/ S.Array(
-  DatasetDestination,
-) as any as S.Schema<NamespaceDatasetDestinationsList>;
+export const NamespaceDatasetDestinationsList =
+  NamespaceAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceDatasetDestinationsList>;
 
 /** Defines the dataset data point properties. */
 export interface NamespaceDatasetDataPoint {
@@ -2630,15 +2537,13 @@ export const NamespaceAssetPropertiesDatasetsList = /*@__PURE__*/ S.Array(
 
 /** Destinations for events. Default destinations when destinations is not defined at the event level. */
 export type NamespaceEventGroupDefaultDestinationsList = Array<EventDestination>;
-export const NamespaceEventGroupDefaultDestinationsList = /*@__PURE__*/ S.Array(
-  EventDestination,
-) as any as S.Schema<NamespaceEventGroupDefaultDestinationsList>;
+export const NamespaceEventGroupDefaultDestinationsList =
+  NamespaceAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceEventGroupDefaultDestinationsList>;
 
 /** Destinations for an event. */
 export type NamespaceEventDestinationsList = Array<EventDestination>;
-export const NamespaceEventDestinationsList = /*@__PURE__*/ S.Array(
-  EventDestination,
-) as any as S.Schema<NamespaceEventDestinationsList>;
+export const NamespaceEventDestinationsList =
+  NamespaceAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceEventDestinationsList>;
 
 /** Defines the event properties. */
 export interface NamespaceEvent {
@@ -2703,9 +2608,8 @@ export const NamespaceAssetPropertiesEventGroupsList = /*@__PURE__*/ S.Array(
 
 /** Destinations for a stream. */
 export type NamespaceStreamDestinationsList = Array<StreamDestination>;
-export const NamespaceStreamDestinationsList = /*@__PURE__*/ S.Array(
-  StreamDestination,
-) as any as S.Schema<NamespaceStreamDestinationsList>;
+export const NamespaceStreamDestinationsList =
+  NamespaceAssetPropertiesDefaultStreamsDestinationsList as any as S.Schema<NamespaceStreamDestinationsList>;
 
 /** Defines the stream properties. */
 export interface NamespaceStream {
@@ -2809,9 +2713,7 @@ export const NamespaceAssetPropertiesManagementGroupsList = /*@__PURE__*/ S.Arra
 
 /** Array of error details that describe the status of each error. */
 export type StatusErrorDetailsList = Array<ErrorDetails>;
-export const StatusErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetails,
-) as any as S.Schema<StatusErrorDetailsList>;
+export const StatusErrorDetailsList = ErrorDetailsList as any as S.Schema<StatusErrorDetailsList>;
 
 /** Defines the status config error properties. */
 export interface StatusError {
@@ -2822,13 +2724,7 @@ export interface StatusError {
   /** Array of error details that describe the status of each error. */
   details?: StatusErrorDetailsList;
 }
-export const StatusError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    details: S.optional(StatusErrorDetailsList),
-  }),
-).annotate({ identifier: "StatusError" }) as any as S.Schema<StatusError>;
+export const StatusError = Error as any as S.Schema<StatusError>;
 
 /** Defines the status config properties. */
 export interface StatusConfig {
@@ -2885,21 +2781,13 @@ export interface NamespaceAssetStatusEvent {
   /** Object to transfer and persist errors that originate from the edge. */
   error?: StatusError;
 }
-export const NamespaceAssetStatusEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    messageSchemaReference: S.optional(MessageSchemaReference),
-    error: S.optional(StatusError),
-  }),
-).annotate({
-  identifier: "NamespaceAssetStatusEvent",
-}) as any as S.Schema<NamespaceAssetStatusEvent>;
+export const NamespaceAssetStatusEvent =
+  NamespaceAssetStatusDataset as any as S.Schema<NamespaceAssetStatusEvent>;
 
 /** Array of event statuses that describe the status of each event in the event group. */
 export type NamespaceAssetStatusEventGroupEventsList = Array<NamespaceAssetStatusEvent>;
-export const NamespaceAssetStatusEventGroupEventsList = /*@__PURE__*/ S.Array(
-  NamespaceAssetStatusEvent,
-) as any as S.Schema<NamespaceAssetStatusEventGroupEventsList>;
+export const NamespaceAssetStatusEventGroupEventsList =
+  NamespaceAssetStatusDatasetsList as any as S.Schema<NamespaceAssetStatusEventGroupEventsList>;
 
 /** Defines the asset status event group properties. */
 export interface NamespaceAssetStatusEventGroup {
@@ -2932,21 +2820,13 @@ export interface NamespaceAssetStatusStream {
   /** Object to transfer and persist errors that originate from the edge. */
   error?: StatusError;
 }
-export const NamespaceAssetStatusStream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    messageSchemaReference: S.optional(MessageSchemaReference),
-    error: S.optional(StatusError),
-  }),
-).annotate({
-  identifier: "NamespaceAssetStatusStream",
-}) as any as S.Schema<NamespaceAssetStatusStream>;
+export const NamespaceAssetStatusStream =
+  NamespaceAssetStatusDataset as any as S.Schema<NamespaceAssetStatusStream>;
 
 /** Array of stream statuses that describe the status of each stream. */
 export type NamespaceAssetStatusStreamsList = Array<NamespaceAssetStatusStream>;
-export const NamespaceAssetStatusStreamsList = /*@__PURE__*/ S.Array(
-  NamespaceAssetStatusStream,
-) as any as S.Schema<NamespaceAssetStatusStreamsList>;
+export const NamespaceAssetStatusStreamsList =
+  NamespaceAssetStatusDatasetsList as any as S.Schema<NamespaceAssetStatusStreamsList>;
 
 /** Defines the asset status action properties. */
 export interface NamespaceAssetStatusManagementAction {
@@ -3221,10 +3101,8 @@ export const GetNamespaceDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNamespaceDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceDeviceResponseTagsMap>;
+export const GetNamespaceDeviceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetNamespaceDeviceResponseTagsMap>;
 
 /** Defines the method to authenticate the user of the client at the server. */
 export type HostAuthenticationMethod = "Anonymous" | "Certificate" | "UsernamePassword";
@@ -3333,10 +3211,8 @@ export const OutboundEndpointsAssignedMap = /*@__PURE__*/ S.Record(
 
 /** Set of most recently removed endpoints. */
 export type OutboundEndpointsUnassignedMap = { [key: string]: DeviceMessagingEndpoint | undefined };
-export const OutboundEndpointsUnassignedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DeviceMessagingEndpoint,
-) as any as S.Schema<OutboundEndpointsUnassignedMap>;
+export const OutboundEndpointsUnassignedMap =
+  OutboundEndpointsAssignedMap as any as S.Schema<OutboundEndpointsUnassignedMap>;
 
 /** Property bag contains the device's outbound endpoints */
 export interface OutboundEndpoints {
@@ -3368,10 +3244,8 @@ export const MessagingEndpoints = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type NamespaceDevicePropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const NamespaceDevicePropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDevicePropertiesAttributesMap>;
+export const NamespaceDevicePropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDevicePropertiesAttributesMap>;
 
 /** Defines the device status properties. */
 export interface DeviceStatusEndpoint {
@@ -3537,25 +3411,20 @@ export const GetNamespaceDiscoveredAssetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNamespaceDiscoveredAssetResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceDiscoveredAssetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceDiscoveredAssetResponseTagsMap>;
+export const GetNamespaceDiscoveredAssetResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetNamespaceDiscoveredAssetResponseTagsMap>;
 
 /** URIs or type definition IDs. */
 export type NamespaceDiscoveredAssetPropertiesAssetTypeRefsList = Array<string>;
-export const NamespaceDiscoveredAssetPropertiesAssetTypeRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesAssetTypeRefsList>;
+export const NamespaceDiscoveredAssetPropertiesAssetTypeRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesAssetTypeRefsList>;
 
 /** A set of key-value pairs that contain custom attributes. */
 export type NamespaceDiscoveredAssetPropertiesAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespaceDiscoveredAssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesAttributesMap>;
+export const NamespaceDiscoveredAssetPropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDiscoveredAssetPropertiesAttributesMap>;
 
 /** Default destinations for a dataset. */
 export type NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
@@ -3583,9 +3452,8 @@ export const NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
 
 /** Destinations for a dataset. */
 export type NamespaceDiscoveredDatasetDestinationsList = Array<DatasetDestination>;
-export const NamespaceDiscoveredDatasetDestinationsList = /*@__PURE__*/ S.Array(
-  DatasetDestination,
-) as any as S.Schema<NamespaceDiscoveredDatasetDestinationsList>;
+export const NamespaceDiscoveredDatasetDestinationsList =
+  NamespaceAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceDiscoveredDatasetDestinationsList>;
 
 /** Defines the discovered dataset data point properties. */
 export interface NamespaceDiscoveredDatasetDataPoint {
@@ -3657,15 +3525,13 @@ export const NamespaceDiscoveredAssetPropertiesDatasetsList = /*@__PURE__*/ S.Ar
 
 /** Destinations for events. Default destinations when destinations is not defined at the event level. */
 export type NamespaceDiscoveredEventGroupDefaultDestinationsList = Array<EventDestination>;
-export const NamespaceDiscoveredEventGroupDefaultDestinationsList = /*@__PURE__*/ S.Array(
-  EventDestination,
-) as any as S.Schema<NamespaceDiscoveredEventGroupDefaultDestinationsList>;
+export const NamespaceDiscoveredEventGroupDefaultDestinationsList =
+  NamespaceAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceDiscoveredEventGroupDefaultDestinationsList>;
 
 /** Destinations for an event. */
 export type NamespaceDiscoveredEventDestinationsList = Array<EventDestination>;
-export const NamespaceDiscoveredEventDestinationsList = /*@__PURE__*/ S.Array(
-  EventDestination,
-) as any as S.Schema<NamespaceDiscoveredEventDestinationsList>;
+export const NamespaceDiscoveredEventDestinationsList =
+  NamespaceAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceDiscoveredEventDestinationsList>;
 
 /** Defines the event properties. */
 export interface NamespaceDiscoveredEvent {
@@ -3736,9 +3602,8 @@ export const NamespaceDiscoveredAssetPropertiesEventGroupsList = /*@__PURE__*/ S
 
 /** Destinations for a stream. */
 export type NamespaceDiscoveredStreamDestinationsList = Array<StreamDestination>;
-export const NamespaceDiscoveredStreamDestinationsList = /*@__PURE__*/ S.Array(
-  StreamDestination,
-) as any as S.Schema<NamespaceDiscoveredStreamDestinationsList>;
+export const NamespaceDiscoveredStreamDestinationsList =
+  NamespaceAssetPropertiesDefaultStreamsDestinationsList as any as S.Schema<NamespaceDiscoveredStreamDestinationsList>;
 
 /** Defines the stream properties. */
 export interface NamespaceDiscoveredStream {
@@ -4020,10 +3885,8 @@ export const GetNamespaceDiscoveredDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNamespaceDiscoveredDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceDiscoveredDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceDiscoveredDeviceResponseTagsMap>;
+export const GetNamespaceDiscoveredDeviceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetNamespaceDiscoveredDeviceResponseTagsMap>;
 
 /** The method to authenticate the user of the client at the server. */
 export type AuthenticationMethod2 = "Anonymous" | "Certificate" | "UsernamePassword";
@@ -4080,10 +3943,8 @@ export const DiscoveredMessagingEndpointsInboundMap = /*@__PURE__*/ S.Record(
 export type DiscoveredOutboundEndpointsAssignedMap = {
   [key: string]: DeviceMessagingEndpoint | undefined;
 };
-export const DiscoveredOutboundEndpointsAssignedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DeviceMessagingEndpoint,
-) as any as S.Schema<DiscoveredOutboundEndpointsAssignedMap>;
+export const DiscoveredOutboundEndpointsAssignedMap =
+  OutboundEndpointsAssignedMap as any as S.Schema<DiscoveredOutboundEndpointsAssignedMap>;
 
 /** Property bag contains the device's outbound endpoints */
 export interface DiscoveredOutboundEndpoints {
@@ -4118,10 +3979,8 @@ export const DiscoveredMessagingEndpoints = /*@__PURE__*/ S.suspend(() =>
 export type NamespaceDiscoveredDevicePropertiesAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespaceDiscoveredDevicePropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDiscoveredDevicePropertiesAttributesMap>;
+export const NamespaceDiscoveredDevicePropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDiscoveredDevicePropertiesAttributesMap>;
 
 /** Defines the discovered device properties. */
 export interface NamespaceDiscoveredDeviceProperties {
@@ -4223,9 +4082,8 @@ export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetOperationStatusResponseOperationsList = Array<OperationStatusResult>;
-export const GetOperationStatusResponseOperationsList = /*@__PURE__*/ S.Array(
-  OperationStatusResult,
-) as any as S.Schema<GetOperationStatusResponseOperationsList>;
+export const GetOperationStatusResponseOperationsList =
+  GetAsyncOperationStatusResponseOperationsList as any as S.Schema<GetOperationStatusResponseOperationsList>;
 
 export interface GetOperationStatusResponse {
   /** Fully qualified ID for the async operation. */
@@ -4247,21 +4105,8 @@ export interface GetOperationStatusResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.String,
-    percentComplete: S.optional(S.Number),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    operations: S.optional(GetOperationStatusResponseOperationsList),
-    error: S.optional(ErrorDetail),
-  }),
-).annotate({
-  identifier: "GetOperationStatusResponse",
-}) as any as S.Schema<GetOperationStatusResponse>;
+export const GetOperationStatusResponse =
+  GetAsyncOperationStatusResponse as any as S.Schema<GetOperationStatusResponse>;
 
 export interface GetRegistryDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4291,10 +4136,8 @@ export const GetRegistryDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRegistryDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const GetRegistryDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRegistryDeviceResponseTagsMap>;
+export const GetRegistryDeviceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetRegistryDeviceResponseTagsMap>;
 
 /** Represents the enablement state of a device. */
 export type RegistryDeviceEnablementState = "Enabled" | "Disabled";
@@ -4401,10 +4244,8 @@ export const SchemaType = S.String;
 
 /** Schema tags. */
 export type SchemaPropertiesTagsMap = { [key: string]: string | undefined };
-export const SchemaPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaPropertiesTagsMap>;
+export const SchemaPropertiesTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<SchemaPropertiesTagsMap>;
 
 /** Defines the schema properties. */
 export interface SchemaProperties {
@@ -4482,10 +4323,8 @@ export const GetSchemaRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSchemaRegistryResponseTagsMap = { [key: string]: string | undefined };
-export const GetSchemaRegistryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSchemaRegistryResponseTagsMap>;
+export const GetSchemaRegistryResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<GetSchemaRegistryResponseTagsMap>;
 
 /** Defines the schema registry properties. */
 export interface SchemaRegistryProperties {
@@ -4651,10 +4490,8 @@ export const ListAssetByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AssetTagsMap = { [key: string]: string | undefined };
-export const AssetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssetTagsMap>;
+export const AssetTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<AssetTagsMap>;
 
 /** Asset definition. */
 export interface Asset {
@@ -4675,18 +4512,7 @@ export interface Asset {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const Asset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AssetTagsMap),
-    location: S.String,
-    properties: S.optional(AssetProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
+export const Asset = GetAssetResponse as any as S.Schema<Asset>;
 
 /** The Asset items on this page */
 export type AssetListResultValueList = Array<Asset>;
@@ -4751,10 +4577,8 @@ export const ListAssetEndpointProfileByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type AssetEndpointProfileTagsMap = { [key: string]: string | undefined };
-export const AssetEndpointProfileTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AssetEndpointProfileTagsMap>;
+export const AssetEndpointProfileTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<AssetEndpointProfileTagsMap>;
 
 /** Asset Endpoint Profile definition. */
 export interface AssetEndpointProfile {
@@ -4923,10 +4747,8 @@ export const ListCertificateAuthorityByNamespaceRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type CertificateAuthorityTagsMap = { [key: string]: string | undefined };
-export const CertificateAuthorityTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CertificateAuthorityTagsMap>;
+export const CertificateAuthorityTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<CertificateAuthorityTagsMap>;
 
 /** A Certificate Authority resource. */
 export interface CertificateAuthority {
@@ -5079,10 +4901,8 @@ export const ListNamespaceAssetByNamespaceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type NamespaceAssetTagsMap = { [key: string]: string | undefined };
-export const NamespaceAssetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceAssetTagsMap>;
+export const NamespaceAssetTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceAssetTagsMap>;
 
 /** Asset definition. */
 export interface NamespaceAsset {
@@ -5160,10 +4980,8 @@ export const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespaceTagsMap = { [key: string]: string | undefined };
-export const NamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceTagsMap>;
+export const NamespaceTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NamespaceIdentity = GetNamespaceResponseIdentity;
@@ -5188,18 +5006,7 @@ export interface Namespace {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNamespaceResponseIdentity;
 }
-export const Namespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NamespaceTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceProperties),
-    identity: S.optional(GetNamespaceResponseIdentity),
-  }),
-).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
+export const Namespace = GetNamespaceResponse as any as S.Schema<Namespace>;
 
 /** The Namespace items on this page */
 export type NamespaceListResultValueList = Array<Namespace>;
@@ -5267,10 +5074,8 @@ export const ListNamespaceDeviceByNamespaceRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type NamespaceDeviceTagsMap = { [key: string]: string | undefined };
-export const NamespaceDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDeviceTagsMap>;
+export const NamespaceDeviceTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDeviceTagsMap>;
 
 /** Device definition. */
 export interface NamespaceDevice {
@@ -5356,10 +5161,8 @@ export const ListNamespaceDiscoveredAssetByNamespaceRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type NamespaceDiscoveredAssetTagsMap = { [key: string]: string | undefined };
-export const NamespaceDiscoveredAssetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredAssetTagsMap>;
+export const NamespaceDiscoveredAssetTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDiscoveredAssetTagsMap>;
 
 /** Discovered asset definition. */
 export interface NamespaceDiscoveredAsset {
@@ -5442,10 +5245,8 @@ export const ListNamespaceDiscoveredDeviceByNamespaceRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type NamespaceDiscoveredDeviceTagsMap = { [key: string]: string | undefined };
-export const NamespaceDiscoveredDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredDeviceTagsMap>;
+export const NamespaceDiscoveredDeviceTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDiscoveredDeviceTagsMap>;
 
 /** Discovered device definition. */
 export interface NamespaceDiscoveredDevice {
@@ -5466,20 +5267,8 @@ export interface NamespaceDiscoveredDevice {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const NamespaceDiscoveredDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NamespaceDiscoveredDeviceTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceDiscoveredDeviceProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "NamespaceDiscoveredDevice",
-}) as any as S.Schema<NamespaceDiscoveredDevice>;
+export const NamespaceDiscoveredDevice =
+  GetNamespaceDiscoveredDeviceResponse as any as S.Schema<NamespaceDiscoveredDevice>;
 
 /** The NamespaceDiscoveredDevice items on this page */
 export type NamespaceDiscoveredDeviceListResultValueList = Array<NamespaceDiscoveredDevice>;
@@ -5612,10 +5401,8 @@ export const ListRegistryDeviceByNamespaceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type RegistryDeviceTagsMap = { [key: string]: string | undefined };
-export const RegistryDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegistryDeviceTagsMap>;
+export const RegistryDeviceTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<RegistryDeviceTagsMap>;
 
 /** A Registry Device resource is a tracked resource with a provisioning lifecycle. The different capabilities of the device are defined through child Device Capability resources. */
 export interface RegistryDevice {
@@ -5761,10 +5548,8 @@ export const ListSchemaRegistryByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type SchemaRegistryTagsMap = { [key: string]: string | undefined };
-export const SchemaRegistryTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaRegistryTagsMap>;
+export const SchemaRegistryTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<SchemaRegistryTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SchemaRegistryIdentity = GetNamespaceResponseIdentity;
@@ -5882,15 +5667,7 @@ export interface SchemaVersion {
   /** The resource-specific properties for this resource. */
   properties?: SchemaVersionProperties;
 }
-export const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-  }),
-).annotate({ identifier: "SchemaVersion" }) as any as S.Schema<SchemaVersion>;
+export const SchemaVersion = GetSchemaVersionResponse as any as S.Schema<SchemaVersion>;
 
 /** The SchemaVersion items on this page */
 export type SchemaVersionListResultValueList = Array<SchemaVersion>;
@@ -5918,9 +5695,8 @@ export const Scope = S.String;
 
 /** List of asset resources to be migrated. */
 export type MigrateNamespaceRequestResourceIdsList = Array<string>;
-export const MigrateNamespaceRequestResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrateNamespaceRequestResourceIdsList>;
+export const MigrateNamespaceRequestResourceIdsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<MigrateNamespaceRequestResourceIdsList>;
 
 export interface MigrateNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5991,72 +5767,59 @@ export const NamespaceMigrateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespaceAssetsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const NamespaceAssetsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceAssetsCreateOrReplaceRequestTagsMap>;
+export const NamespaceAssetsCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceAssetsCreateOrReplaceRequestTagsMap>;
 
 /** URIs or type definition IDs. */
 export type NamespaceAssetPropertiesInputAssetTypeRefsList = Array<string>;
-export const NamespaceAssetPropertiesInputAssetTypeRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceAssetPropertiesInputAssetTypeRefsList>;
+export const NamespaceAssetPropertiesInputAssetTypeRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceAssetPropertiesInputAssetTypeRefsList>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type NamespaceAssetPropertiesInputAttributesMap = { [key: string]: unknown | undefined };
-export const NamespaceAssetPropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceAssetPropertiesInputAttributesMap>;
+export const NamespaceAssetPropertiesInputAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceAssetPropertiesInputAttributesMap>;
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
 export type NamespaceAssetPropertiesInputDiscoveredAssetRefsList = Array<string>;
-export const NamespaceAssetPropertiesInputDiscoveredAssetRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceAssetPropertiesInputDiscoveredAssetRefsList>;
+export const NamespaceAssetPropertiesInputDiscoveredAssetRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceAssetPropertiesInputDiscoveredAssetRefsList>;
 
 /** Default destinations for a dataset. */
 export type NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList =
   Array<DatasetDestination>;
-export const NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList = /*@__PURE__*/ S.Array(
-  DatasetDestination,
-) as any as S.Schema<NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList>;
+export const NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList =
+  NamespaceAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList>;
 
 /** Default destinations for an event. */
 export type NamespaceAssetPropertiesInputDefaultEventsDestinationsList = Array<EventDestination>;
-export const NamespaceAssetPropertiesInputDefaultEventsDestinationsList = /*@__PURE__*/ S.Array(
-  EventDestination,
-) as any as S.Schema<NamespaceAssetPropertiesInputDefaultEventsDestinationsList>;
+export const NamespaceAssetPropertiesInputDefaultEventsDestinationsList =
+  NamespaceAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceAssetPropertiesInputDefaultEventsDestinationsList>;
 
 /** Default destinations for a stream. */
 export type NamespaceAssetPropertiesInputDefaultStreamsDestinationsList = Array<StreamDestination>;
-export const NamespaceAssetPropertiesInputDefaultStreamsDestinationsList = /*@__PURE__*/ S.Array(
-  StreamDestination,
-) as any as S.Schema<NamespaceAssetPropertiesInputDefaultStreamsDestinationsList>;
+export const NamespaceAssetPropertiesInputDefaultStreamsDestinationsList =
+  NamespaceAssetPropertiesDefaultStreamsDestinationsList as any as S.Schema<NamespaceAssetPropertiesInputDefaultStreamsDestinationsList>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
 export type NamespaceAssetPropertiesInputDatasetsList = Array<NamespaceDataset>;
-export const NamespaceAssetPropertiesInputDatasetsList = /*@__PURE__*/ S.Array(
-  NamespaceDataset,
-) as any as S.Schema<NamespaceAssetPropertiesInputDatasetsList>;
+export const NamespaceAssetPropertiesInputDatasetsList =
+  NamespaceAssetPropertiesDatasetsList as any as S.Schema<NamespaceAssetPropertiesInputDatasetsList>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceAssetPropertiesInputEventGroupsList = Array<NamespaceEventGroup>;
-export const NamespaceAssetPropertiesInputEventGroupsList = /*@__PURE__*/ S.Array(
-  NamespaceEventGroup,
-) as any as S.Schema<NamespaceAssetPropertiesInputEventGroupsList>;
+export const NamespaceAssetPropertiesInputEventGroupsList =
+  NamespaceAssetPropertiesEventGroupsList as any as S.Schema<NamespaceAssetPropertiesInputEventGroupsList>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
 export type NamespaceAssetPropertiesInputStreamsList = Array<NamespaceStream>;
-export const NamespaceAssetPropertiesInputStreamsList = /*@__PURE__*/ S.Array(
-  NamespaceStream,
-) as any as S.Schema<NamespaceAssetPropertiesInputStreamsList>;
+export const NamespaceAssetPropertiesInputStreamsList =
+  NamespaceAssetPropertiesStreamsList as any as S.Schema<NamespaceAssetPropertiesInputStreamsList>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceAssetPropertiesInputManagementGroupsList = Array<ManagementGroup>;
-export const NamespaceAssetPropertiesInputManagementGroupsList = /*@__PURE__*/ S.Array(
-  ManagementGroup,
-) as any as S.Schema<NamespaceAssetPropertiesInputManagementGroupsList>;
+export const NamespaceAssetPropertiesInputManagementGroupsList =
+  NamespaceAssetPropertiesManagementGroupsList as any as S.Schema<NamespaceAssetPropertiesInputManagementGroupsList>;
 
 /** Defines the asset properties. */
 export interface NamespaceAssetPropertiesInput {
@@ -6197,10 +5960,8 @@ export const NamespaceAssetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type NamespaceAssetsCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const NamespaceAssetsCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceAssetsCreateOrReplaceResponseTagsMap>;
+export const NamespaceAssetsCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceAssetsCreateOrReplaceResponseTagsMap>;
 
 export interface NamespaceAssetsCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6220,34 +5981,18 @@ export interface NamespaceAssetsCreateOrReplaceResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const NamespaceAssetsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NamespaceAssetsCreateOrReplaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceAssetProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "NamespaceAssetsCreateOrReplaceResponse",
-}) as any as S.Schema<NamespaceAssetsCreateOrReplaceResponse>;
+export const NamespaceAssetsCreateOrReplaceResponse =
+  GetNamespaceAssetResponse as any as S.Schema<NamespaceAssetsCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type NamespaceDevicesCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const NamespaceDevicesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDevicesCreateOrReplaceRequestTagsMap>;
+export const NamespaceDevicesCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDevicesCreateOrReplaceRequestTagsMap>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type NamespaceDevicePropertiesInputAttributesMap = { [key: string]: unknown | undefined };
-export const NamespaceDevicePropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDevicePropertiesInputAttributesMap>;
+export const NamespaceDevicePropertiesInputAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDevicePropertiesInputAttributesMap>;
 
 /** Defines the device properties. */
 export interface NamespaceDevicePropertiesInput {
@@ -6328,10 +6073,8 @@ export const NamespaceDevicesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type NamespaceDevicesCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const NamespaceDevicesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDevicesCreateOrReplaceResponseTagsMap>;
+export const NamespaceDevicesCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDevicesCreateOrReplaceResponseTagsMap>;
 
 export interface NamespaceDevicesCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6353,95 +6096,67 @@ export interface NamespaceDevicesCreateOrReplaceResponse {
   /** The extended location. */
   extendedLocation?: ExtendedLocation;
 }
-export const NamespaceDevicesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NamespaceDevicesCreateOrReplaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceDeviceProperties),
-    etag: S.optional(S.String),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "NamespaceDevicesCreateOrReplaceResponse",
-}) as any as S.Schema<NamespaceDevicesCreateOrReplaceResponse>;
+export const NamespaceDevicesCreateOrReplaceResponse =
+  GetNamespaceDeviceResponse as any as S.Schema<NamespaceDevicesCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap>;
+export const NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap>;
 
 /** URIs or type definition IDs. */
 export type NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList = Array<string>;
-export const NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList>;
+export const NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList>;
 
 /** A set of key-value pairs that contain custom attributes. */
 export type NamespaceDiscoveredAssetPropertiesInputAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespaceDiscoveredAssetPropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputAttributesMap>;
+export const NamespaceDiscoveredAssetPropertiesInputAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputAttributesMap>;
 
 /** Default destinations for a dataset. */
 export type NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList =
   Array<DatasetDestination>;
 export const NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    DatasetDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList>;
 
 /** Default destinations for an event. */
 export type NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList =
   Array<EventDestination>;
 export const NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    EventDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList>;
 
 /** Default destinations for a stream. */
 export type NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList =
   Array<StreamDestination>;
 export const NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    StreamDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList>;
 
 /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
 export type NamespaceDiscoveredAssetPropertiesInputDatasetsList = Array<NamespaceDiscoveredDataset>;
-export const NamespaceDiscoveredAssetPropertiesInputDatasetsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredDataset,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDatasetsList>;
+export const NamespaceDiscoveredAssetPropertiesInputDatasetsList =
+  NamespaceDiscoveredAssetPropertiesDatasetsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDatasetsList>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceDiscoveredAssetPropertiesInputEventGroupsList =
   Array<NamespaceDiscoveredEventGroup>;
-export const NamespaceDiscoveredAssetPropertiesInputEventGroupsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredEventGroup,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputEventGroupsList>;
+export const NamespaceDiscoveredAssetPropertiesInputEventGroupsList =
+  NamespaceDiscoveredAssetPropertiesEventGroupsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputEventGroupsList>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
 export type NamespaceDiscoveredAssetPropertiesInputStreamsList = Array<NamespaceDiscoveredStream>;
-export const NamespaceDiscoveredAssetPropertiesInputStreamsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredStream,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputStreamsList>;
+export const NamespaceDiscoveredAssetPropertiesInputStreamsList =
+  NamespaceDiscoveredAssetPropertiesStreamsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputStreamsList>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceDiscoveredAssetPropertiesInputManagementGroupsList =
   Array<NamespaceDiscoveredManagementGroup>;
-export const NamespaceDiscoveredAssetPropertiesInputManagementGroupsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredManagementGroup,
-) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputManagementGroupsList>;
+export const NamespaceDiscoveredAssetPropertiesInputManagementGroupsList =
+  NamespaceDiscoveredAssetPropertiesManagementGroupsList as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputManagementGroupsList>;
 
 /** Defines the discovered asset properties. */
 export interface NamespaceDiscoveredAssetPropertiesInput {
@@ -6584,10 +6299,8 @@ export const NamespaceDiscoveredAssetsCreateOrReplaceRequest = /*@__PURE__*/ S.s
 export type NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap>;
+export const NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap>;
 
 export interface NamespaceDiscoveredAssetsCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6607,38 +6320,22 @@ export interface NamespaceDiscoveredAssetsCreateOrReplaceResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const NamespaceDiscoveredAssetsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceDiscoveredAssetProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "NamespaceDiscoveredAssetsCreateOrReplaceResponse",
-}) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponse>;
+export const NamespaceDiscoveredAssetsCreateOrReplaceResponse =
+  GetNamespaceDiscoveredAssetResponse as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap>;
+export const NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap>;
 
 /** A set of key-value pairs that contain custom attributes. */
 export type NamespaceDiscoveredDevicePropertiesInputAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespaceDiscoveredDevicePropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDiscoveredDevicePropertiesInputAttributesMap>;
+export const NamespaceDiscoveredDevicePropertiesInputAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDiscoveredDevicePropertiesInputAttributesMap>;
 
 /** Defines the discovered device properties. */
 export interface NamespaceDiscoveredDevicePropertiesInput {
@@ -6721,10 +6418,8 @@ export const NamespaceDiscoveredDevicesCreateOrReplaceRequest = /*@__PURE__*/ S.
 export type NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap>;
+export const NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap>;
 
 export interface NamespaceDiscoveredDevicesCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6744,27 +6439,13 @@ export interface NamespaceDiscoveredDevicesCreateOrReplaceResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const NamespaceDiscoveredDevicesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceDiscoveredDeviceProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "NamespaceDiscoveredDevicesCreateOrReplaceResponse",
-}) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponse>;
+export const NamespaceDiscoveredDevicesCreateOrReplaceResponse =
+  GetNamespaceDiscoveredDeviceResponse as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type NamespacesCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrReplaceRequestTagsMap>;
+export const NamespacesCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespacesCreateOrReplaceRequestTagsMap>;
 
 /** Namespace messaging endpoint model used by a device to connect to a service. */
 export interface MessagingEndpointInput {
@@ -6870,9 +6551,8 @@ export const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  DeleteAssetResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
@@ -6936,10 +6616,8 @@ export const NamespacesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespacesCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrReplaceResponseTagsMap>;
+export const NamespacesCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<NamespacesCreateOrReplaceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NamespacesCreateOrReplaceResponseIdentity = GetNamespaceResponseIdentity;
@@ -6980,10 +6658,8 @@ export const NamespacesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RegistryDevicesCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const RegistryDevicesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegistryDevicesCreateOrReplaceRequestTagsMap>;
+export const RegistryDevicesCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<RegistryDevicesCreateOrReplaceRequestTagsMap>;
 
 /** The properties of a registry device. */
 export interface RegistryDevicePropertiesInput {
@@ -7052,10 +6728,8 @@ export const RegistryDevicesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type RegistryDevicesCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const RegistryDevicesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegistryDevicesCreateOrReplaceResponseTagsMap>;
+export const RegistryDevicesCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<RegistryDevicesCreateOrReplaceResponseTagsMap>;
 
 export interface RegistryDevicesCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7075,27 +6749,13 @@ export interface RegistryDevicesCreateOrReplaceResponse {
   /** Resource etag. */
   etag?: string;
 }
-export const RegistryDevicesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RegistryDevicesCreateOrReplaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RegistryDeviceProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegistryDevicesCreateOrReplaceResponse",
-}) as any as S.Schema<RegistryDevicesCreateOrReplaceResponse>;
+export const RegistryDevicesCreateOrReplaceResponse =
+  GetRegistryDeviceResponse as any as S.Schema<RegistryDevicesCreateOrReplaceResponse>;
 
 /** Resource tags. */
 export type SchemaRegistriesCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
-export const SchemaRegistriesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaRegistriesCreateOrReplaceRequestTagsMap>;
+export const SchemaRegistriesCreateOrReplaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<SchemaRegistriesCreateOrReplaceRequestTagsMap>;
 
 /** Defines the schema registry properties. */
 export interface SchemaRegistryPropertiesInput {
@@ -7167,10 +6827,8 @@ export const SchemaRegistriesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type SchemaRegistriesCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const SchemaRegistriesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaRegistriesCreateOrReplaceResponseTagsMap>;
+export const SchemaRegistriesCreateOrReplaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<SchemaRegistriesCreateOrReplaceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SchemaRegistriesCreateOrReplaceResponseIdentity = GetNamespaceResponseIdentity;
@@ -7194,27 +6852,13 @@ export interface SchemaRegistriesCreateOrReplaceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNamespaceResponseIdentity;
 }
-export const SchemaRegistriesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SchemaRegistriesCreateOrReplaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SchemaRegistryProperties),
-    identity: S.optional(GetNamespaceResponseIdentity),
-  }),
-).annotate({
-  identifier: "SchemaRegistriesCreateOrReplaceResponse",
-}) as any as S.Schema<SchemaRegistriesCreateOrReplaceResponse>;
+export const SchemaRegistriesCreateOrReplaceResponse =
+  GetSchemaRegistryResponse as any as S.Schema<SchemaRegistriesCreateOrReplaceResponse>;
 
 /** Schema tags. */
 export type SchemaPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const SchemaPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SchemaPropertiesInputTagsMap>;
+export const SchemaPropertiesInputTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<SchemaPropertiesInputTagsMap>;
 
 /** Defines the schema properties. */
 export interface SchemaPropertiesInput {
@@ -7370,17 +7014,13 @@ export const SchemaVersionsCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateAssetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAssetRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAssetRequestTagsMap>;
+export const UpdateAssetRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateAssetRequestTagsMap>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type AssetUpdatePropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const AssetUpdatePropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AssetUpdatePropertiesAttributesMap>;
+export const AssetUpdatePropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<AssetUpdatePropertiesAttributesMap>;
 
 /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
 export type TopicUpdateRetain = "Keep" | "Never";
@@ -7402,15 +7042,13 @@ export const TopicUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
 export type AssetUpdatePropertiesDatasetsList = Array<Dataset>;
-export const AssetUpdatePropertiesDatasetsList = /*@__PURE__*/ S.Array(
-  Dataset,
-) as any as S.Schema<AssetUpdatePropertiesDatasetsList>;
+export const AssetUpdatePropertiesDatasetsList =
+  AssetPropertiesInputDatasetsList as any as S.Schema<AssetUpdatePropertiesDatasetsList>;
 
 /** Array of events that are part of the asset. Each event can have per-event configuration. */
 export type AssetUpdatePropertiesEventsList = Array<Event>;
-export const AssetUpdatePropertiesEventsList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<AssetUpdatePropertiesEventsList>;
+export const AssetUpdatePropertiesEventsList =
+  AssetPropertiesInputEventsList as any as S.Schema<AssetUpdatePropertiesEventsList>;
 
 /** The updatable properties of the Asset. */
 export interface AssetUpdateProperties {
@@ -7502,10 +7140,8 @@ export const UpdateAssetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAssetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAssetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAssetResponseTagsMap>;
+export const UpdateAssetResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateAssetResponseTagsMap>;
 
 export interface UpdateAssetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7525,25 +7161,12 @@ export interface UpdateAssetResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAssetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AssetProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({ identifier: "UpdateAssetResponse" }) as any as S.Schema<UpdateAssetResponse>;
+export const UpdateAssetResponse = GetAssetResponse as any as S.Schema<UpdateAssetResponse>;
 
 /** Resource tags. */
 export type UpdateAssetEndpointProfileRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAssetEndpointProfileRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAssetEndpointProfileRequestTagsMap>;
+export const UpdateAssetEndpointProfileRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateAssetEndpointProfileRequestTagsMap>;
 
 /** Defines the method to authenticate the user of the client at the server. */
 export type AuthenticationUpdateMethod = "Anonymous" | "Certificate" | "UsernamePassword";
@@ -7648,10 +7271,8 @@ export const UpdateAssetEndpointProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAssetEndpointProfileResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAssetEndpointProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAssetEndpointProfileResponseTagsMap>;
+export const UpdateAssetEndpointProfileResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateAssetEndpointProfileResponseTagsMap>;
 
 export interface UpdateAssetEndpointProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7671,27 +7292,13 @@ export interface UpdateAssetEndpointProfileResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateAssetEndpointProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAssetEndpointProfileResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AssetEndpointProfileProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateAssetEndpointProfileResponse",
-}) as any as S.Schema<UpdateAssetEndpointProfileResponse>;
+export const UpdateAssetEndpointProfileResponse =
+  AssetEndpointProfilesCreateOrReplaceResponse as any as S.Schema<UpdateAssetEndpointProfileResponse>;
 
 /** Resource tags. */
 export type UpdateCertificateAuthorityRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCertificateAuthorityRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCertificateAuthorityRequestTagsMap>;
+export const UpdateCertificateAuthorityRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateCertificateAuthorityRequestTagsMap>;
 
 export interface UpdateCertificateAuthorityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7726,10 +7333,8 @@ export const UpdateCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCertificateAuthorityResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCertificateAuthorityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCertificateAuthorityResponseTagsMap>;
+export const UpdateCertificateAuthorityResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateCertificateAuthorityResponseTagsMap>;
 
 export interface UpdateCertificateAuthorityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7747,19 +7352,8 @@ export interface UpdateCertificateAuthorityResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateAuthorityProperties;
 }
-export const UpdateCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCertificateAuthorityResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateAuthorityProperties),
-  }),
-).annotate({
-  identifier: "UpdateCertificateAuthorityResponse",
-}) as any as S.Schema<UpdateCertificateAuthorityResponse>;
+export const UpdateCertificateAuthorityResponse =
+  CertificateAuthoritiesCreateOrReplaceResponse as any as S.Schema<UpdateCertificateAuthorityResponse>;
 
 /** The certificate configuration. */
 export interface CertificatePolicyUpdatePropertiesCertificate {
@@ -7833,17 +7427,8 @@ export interface UpdateCertificatePolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificatePolicyProperties;
 }
-export const UpdateCertificatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CertificatePolicyProperties),
-  }),
-).annotate({
-  identifier: "UpdateCertificatePolicyResponse",
-}) as any as S.Schema<UpdateCertificatePolicyResponse>;
+export const UpdateCertificatePolicyResponse =
+  CertificatePoliciesCreateOrReplaceResponse as any as S.Schema<UpdateCertificatePolicyResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateNamespaceRequestIdentity = NamespacesCreateOrReplaceRequestIdentity;
@@ -7851,10 +7436,8 @@ export const UpdateNamespaceRequestIdentity = NamespacesCreateOrReplaceRequestId
 
 /** Resource tags. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceRequestTagsMap>;
+export const UpdateNamespaceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
 
 /** The updatable properties of the Namespace. */
 export type NamespaceUpdatePropertiesInput = NamespacePropertiesInput;
@@ -7894,10 +7477,8 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceResponseTagsMap>;
+export const UpdateNamespaceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateNamespaceResponseIdentity = GetNamespaceResponseIdentity;
@@ -7921,81 +7502,59 @@ export interface UpdateNamespaceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNamespaceResponseIdentity;
 }
-export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNamespaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceProperties),
-    identity: S.optional(GetNamespaceResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateNamespaceResponse" }) as any as S.Schema<UpdateNamespaceResponse>;
+export const UpdateNamespaceResponse =
+  GetNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
 
 /** Resource tags. */
 export type UpdateNamespaceAssetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceAssetRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceAssetRequestTagsMap>;
+export const UpdateNamespaceAssetRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceAssetRequestTagsMap>;
 
 /** URIs or type definition IDs. */
 export type NamespaceAssetUpdatePropertiesAssetTypeRefsList = Array<string>;
-export const NamespaceAssetUpdatePropertiesAssetTypeRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesAssetTypeRefsList>;
+export const NamespaceAssetUpdatePropertiesAssetTypeRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceAssetUpdatePropertiesAssetTypeRefsList>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type NamespaceAssetUpdatePropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const NamespaceAssetUpdatePropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesAttributesMap>;
+export const NamespaceAssetUpdatePropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceAssetUpdatePropertiesAttributesMap>;
 
 /** Default destinations for a dataset. */
 export type NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList =
   Array<DatasetDestination>;
-export const NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList = /*@__PURE__*/ S.Array(
-  DatasetDestination,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList>;
+export const NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList =
+  NamespaceAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList>;
 
 /** Default destinations for an event. */
 export type NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList = Array<EventDestination>;
-export const NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList = /*@__PURE__*/ S.Array(
-  EventDestination,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList>;
+export const NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList =
+  NamespaceAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList>;
 
 /** Default destinations for a stream. */
 export type NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList = Array<StreamDestination>;
-export const NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList = /*@__PURE__*/ S.Array(
-  StreamDestination,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList>;
+export const NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList =
+  NamespaceAssetPropertiesDefaultStreamsDestinationsList as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
 export type NamespaceAssetUpdatePropertiesDatasetsList = Array<NamespaceDataset>;
-export const NamespaceAssetUpdatePropertiesDatasetsList = /*@__PURE__*/ S.Array(
-  NamespaceDataset,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesDatasetsList>;
+export const NamespaceAssetUpdatePropertiesDatasetsList =
+  NamespaceAssetPropertiesDatasetsList as any as S.Schema<NamespaceAssetUpdatePropertiesDatasetsList>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceAssetUpdatePropertiesEventGroupsList = Array<NamespaceEventGroup>;
-export const NamespaceAssetUpdatePropertiesEventGroupsList = /*@__PURE__*/ S.Array(
-  NamespaceEventGroup,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesEventGroupsList>;
+export const NamespaceAssetUpdatePropertiesEventGroupsList =
+  NamespaceAssetPropertiesEventGroupsList as any as S.Schema<NamespaceAssetUpdatePropertiesEventGroupsList>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
 export type NamespaceAssetUpdatePropertiesStreamsList = Array<NamespaceStream>;
-export const NamespaceAssetUpdatePropertiesStreamsList = /*@__PURE__*/ S.Array(
-  NamespaceStream,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesStreamsList>;
+export const NamespaceAssetUpdatePropertiesStreamsList =
+  NamespaceAssetPropertiesStreamsList as any as S.Schema<NamespaceAssetUpdatePropertiesStreamsList>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceAssetUpdatePropertiesManagementGroupsList = Array<ManagementGroup>;
-export const NamespaceAssetUpdatePropertiesManagementGroupsList = /*@__PURE__*/ S.Array(
-  ManagementGroup,
-) as any as S.Schema<NamespaceAssetUpdatePropertiesManagementGroupsList>;
+export const NamespaceAssetUpdatePropertiesManagementGroupsList =
+  NamespaceAssetPropertiesManagementGroupsList as any as S.Schema<NamespaceAssetUpdatePropertiesManagementGroupsList>;
 
 /** The updatable properties of the NamespaceAsset. */
 export interface NamespaceAssetUpdateProperties {
@@ -8121,10 +7680,8 @@ export const UpdateNamespaceAssetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNamespaceAssetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceAssetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceAssetResponseTagsMap>;
+export const UpdateNamespaceAssetResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceAssetResponseTagsMap>;
 
 export interface UpdateNamespaceAssetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8144,27 +7701,13 @@ export interface UpdateNamespaceAssetResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateNamespaceAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNamespaceAssetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceAssetProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateNamespaceAssetResponse",
-}) as any as S.Schema<UpdateNamespaceAssetResponse>;
+export const UpdateNamespaceAssetResponse =
+  GetNamespaceAssetResponse as any as S.Schema<UpdateNamespaceAssetResponse>;
 
 /** Resource tags. */
 export type UpdateNamespaceDeviceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceDeviceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceDeviceRequestTagsMap>;
+export const UpdateNamespaceDeviceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceDeviceRequestTagsMap>;
 
 /** Defines the method to authenticate the user of the client at the server. */
 export type HostAuthenticationUpdateMethod = "Anonymous" | "Certificate" | "UsernamePassword";
@@ -8270,10 +7813,8 @@ export const OutboundEndpointsUpdateAssignedMap = /*@__PURE__*/ S.Record(
 export type OutboundEndpointsUpdateUnassignedMap = {
   [key: string]: DeviceMessagingEndpointUpdate | undefined;
 };
-export const OutboundEndpointsUpdateUnassignedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DeviceMessagingEndpointUpdate,
-) as any as S.Schema<OutboundEndpointsUpdateUnassignedMap>;
+export const OutboundEndpointsUpdateUnassignedMap =
+  OutboundEndpointsUpdateAssignedMap as any as S.Schema<OutboundEndpointsUpdateUnassignedMap>;
 
 /** Property bag contains the device's outbound endpoints */
 export interface OutboundEndpointsUpdate {
@@ -8305,10 +7846,8 @@ export const MessagingEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type NamespaceDeviceUpdatePropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const NamespaceDeviceUpdatePropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDeviceUpdatePropertiesAttributesMap>;
+export const NamespaceDeviceUpdatePropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDeviceUpdatePropertiesAttributesMap>;
 
 /** The updatable properties of the NamespaceDevice. */
 export interface NamespaceDeviceUpdateProperties {
@@ -8368,10 +7907,8 @@ export const UpdateNamespaceDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNamespaceDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceDeviceResponseTagsMap>;
+export const UpdateNamespaceDeviceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceDeviceResponseTagsMap>;
 
 export interface UpdateNamespaceDeviceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8393,28 +7930,13 @@ export interface UpdateNamespaceDeviceResponse {
   /** The extended location. */
   extendedLocation?: ExtendedLocation;
 }
-export const UpdateNamespaceDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNamespaceDeviceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceDeviceProperties),
-    etag: S.optional(S.String),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "UpdateNamespaceDeviceResponse",
-}) as any as S.Schema<UpdateNamespaceDeviceResponse>;
+export const UpdateNamespaceDeviceResponse =
+  GetNamespaceDeviceResponse as any as S.Schema<UpdateNamespaceDeviceResponse>;
 
 /** Resource tags. */
 export type UpdateNamespaceDiscoveredAssetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceDiscoveredAssetRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceDiscoveredAssetRequestTagsMap>;
+export const UpdateNamespaceDiscoveredAssetRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceDiscoveredAssetRequestTagsMap>;
 
 /** Defines which device and endpoint to use for this asset */
 export interface DeviceRefUpdate {
@@ -8432,69 +7954,56 @@ export const DeviceRefUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** URIs or type definition IDs. */
 export type NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList = Array<string>;
-export const NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList>;
+export const NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList =
+  AssetPropertiesInputDiscoveredAssetRefsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList>;
 
 /** A set of key-value pairs that contain custom attributes. */
 export type NamespaceDiscoveredAssetUpdatePropertiesAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespaceDiscoveredAssetUpdatePropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesAttributesMap>;
+export const NamespaceDiscoveredAssetUpdatePropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesAttributesMap>;
 
 /** Default destinations for a dataset. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList =
   Array<DatasetDestination>;
 export const NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    DatasetDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList>;
 
 /** Default destinations for an event. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList =
   Array<EventDestination>;
 export const NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    EventDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList>;
 
 /** Default destinations for a stream. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList =
   Array<StreamDestination>;
 export const NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    StreamDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList>;
+  NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList>;
 
 /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
 export type NamespaceDiscoveredAssetUpdatePropertiesDatasetsList =
   Array<NamespaceDiscoveredDataset>;
-export const NamespaceDiscoveredAssetUpdatePropertiesDatasetsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredDataset,
-) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDatasetsList>;
+export const NamespaceDiscoveredAssetUpdatePropertiesDatasetsList =
+  NamespaceDiscoveredAssetPropertiesDatasetsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDatasetsList>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
 export type NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList =
   Array<NamespaceDiscoveredEventGroup>;
-export const NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredEventGroup,
-) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList>;
+export const NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList =
+  NamespaceDiscoveredAssetPropertiesEventGroupsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
 export type NamespaceDiscoveredAssetUpdatePropertiesStreamsList = Array<NamespaceDiscoveredStream>;
-export const NamespaceDiscoveredAssetUpdatePropertiesStreamsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredStream,
-) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesStreamsList>;
+export const NamespaceDiscoveredAssetUpdatePropertiesStreamsList =
+  NamespaceDiscoveredAssetPropertiesStreamsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesStreamsList>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList =
   Array<NamespaceDiscoveredManagementGroup>;
-export const NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList = /*@__PURE__*/ S.Array(
-  NamespaceDiscoveredManagementGroup,
-) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList>;
+export const NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList =
+  NamespaceDiscoveredAssetPropertiesManagementGroupsList as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList>;
 
 /** The updatable properties of the NamespaceDiscoveredAsset. */
 export interface NamespaceDiscoveredAssetUpdateProperties {
@@ -8626,10 +8135,8 @@ export const UpdateNamespaceDiscoveredAssetRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateNamespaceDiscoveredAssetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceDiscoveredAssetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceDiscoveredAssetResponseTagsMap>;
+export const UpdateNamespaceDiscoveredAssetResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceDiscoveredAssetResponseTagsMap>;
 
 export interface UpdateNamespaceDiscoveredAssetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8649,27 +8156,13 @@ export interface UpdateNamespaceDiscoveredAssetResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateNamespaceDiscoveredAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNamespaceDiscoveredAssetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceDiscoveredAssetProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateNamespaceDiscoveredAssetResponse",
-}) as any as S.Schema<UpdateNamespaceDiscoveredAssetResponse>;
+export const UpdateNamespaceDiscoveredAssetResponse =
+  GetNamespaceDiscoveredAssetResponse as any as S.Schema<UpdateNamespaceDiscoveredAssetResponse>;
 
 /** Resource tags. */
 export type UpdateNamespaceDiscoveredDeviceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceDiscoveredDeviceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceDiscoveredDeviceRequestTagsMap>;
+export const UpdateNamespaceDiscoveredDeviceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceDiscoveredDeviceRequestTagsMap>;
 
 /** List of supported authentication methods supported by device for Inbound connections. */
 export type DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList = Array<
@@ -8723,10 +8216,8 @@ export const DiscoveredMessagingEndpointsUpdateInboundMap = /*@__PURE__*/ S.Reco
 export type DiscoveredOutboundEndpointsUpdateAssignedMap = {
   [key: string]: DeviceMessagingEndpointUpdate | undefined;
 };
-export const DiscoveredOutboundEndpointsUpdateAssignedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DeviceMessagingEndpointUpdate,
-) as any as S.Schema<DiscoveredOutboundEndpointsUpdateAssignedMap>;
+export const DiscoveredOutboundEndpointsUpdateAssignedMap =
+  OutboundEndpointsUpdateAssignedMap as any as S.Schema<DiscoveredOutboundEndpointsUpdateAssignedMap>;
 
 /** Property bag contains the device's outbound endpoints */
 export interface DiscoveredOutboundEndpointsUpdate {
@@ -8761,10 +8252,8 @@ export const DiscoveredMessagingEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
 export type NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap>;
+export const NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap =
+  AssetPropertiesInputAttributesMap as any as S.Schema<NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap>;
 
 /** The updatable properties of the NamespaceDiscoveredDevice. */
 export interface NamespaceDiscoveredDeviceUpdateProperties {
@@ -8830,10 +8319,8 @@ export const UpdateNamespaceDiscoveredDeviceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateNamespaceDiscoveredDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceDiscoveredDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceDiscoveredDeviceResponseTagsMap>;
+export const UpdateNamespaceDiscoveredDeviceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateNamespaceDiscoveredDeviceResponseTagsMap>;
 
 export interface UpdateNamespaceDiscoveredDeviceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8853,27 +8340,13 @@ export interface UpdateNamespaceDiscoveredDeviceResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateNamespaceDiscoveredDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNamespaceDiscoveredDeviceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NamespaceDiscoveredDeviceProperties),
-    extendedLocation: ExtendedLocation,
-  }),
-).annotate({
-  identifier: "UpdateNamespaceDiscoveredDeviceResponse",
-}) as any as S.Schema<UpdateNamespaceDiscoveredDeviceResponse>;
+export const UpdateNamespaceDiscoveredDeviceResponse =
+  GetNamespaceDiscoveredDeviceResponse as any as S.Schema<UpdateNamespaceDiscoveredDeviceResponse>;
 
 /** Resource tags. */
 export type UpdateRegistryDeviceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateRegistryDeviceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRegistryDeviceRequestTagsMap>;
+export const UpdateRegistryDeviceRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateRegistryDeviceRequestTagsMap>;
 
 /** The updatable properties of the RegistryDevice. */
 export interface RegistryDeviceUpdateProperties {
@@ -8936,10 +8409,8 @@ export const UpdateRegistryDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRegistryDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRegistryDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRegistryDeviceResponseTagsMap>;
+export const UpdateRegistryDeviceResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateRegistryDeviceResponseTagsMap>;
 
 export interface UpdateRegistryDeviceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8959,20 +8430,8 @@ export interface UpdateRegistryDeviceResponse {
   /** Resource etag. */
   etag?: string;
 }
-export const UpdateRegistryDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateRegistryDeviceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RegistryDeviceProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRegistryDeviceResponse",
-}) as any as S.Schema<UpdateRegistryDeviceResponse>;
+export const UpdateRegistryDeviceResponse =
+  GetRegistryDeviceResponse as any as S.Schema<UpdateRegistryDeviceResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateSchemaRegistryRequestIdentity = NamespacesCreateOrReplaceRequestIdentity;
@@ -8980,10 +8439,8 @@ export const UpdateSchemaRegistryRequestIdentity = NamespacesCreateOrReplaceRequ
 
 /** Resource tags. */
 export type UpdateSchemaRegistryRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSchemaRegistryRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSchemaRegistryRequestTagsMap>;
+export const UpdateSchemaRegistryRequestTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateSchemaRegistryRequestTagsMap>;
 
 /** The updatable properties of the SchemaRegistry. */
 export interface SchemaRegistryUpdateProperties {
@@ -9040,10 +8497,8 @@ export const UpdateSchemaRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSchemaRegistryResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSchemaRegistryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSchemaRegistryResponseTagsMap>;
+export const UpdateSchemaRegistryResponseTagsMap =
+  AssetEndpointProfilesCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateSchemaRegistryResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateSchemaRegistryResponseIdentity = GetNamespaceResponseIdentity;
@@ -9067,20 +8522,8 @@ export interface UpdateSchemaRegistryResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNamespaceResponseIdentity;
 }
-export const UpdateSchemaRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSchemaRegistryResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SchemaRegistryProperties),
-    identity: S.optional(GetNamespaceResponseIdentity),
-  }),
-).annotate({
-  identifier: "UpdateSchemaRegistryResponse",
-}) as any as S.Schema<UpdateSchemaRegistryResponse>;
+export const UpdateSchemaRegistryResponse =
+  GetSchemaRegistryResponse as any as S.Schema<UpdateSchemaRegistryResponse>;
 
 export type ActivateCertificateAuthorityError = AzureOpError;
 /** Activates a Certificate Authority of type `ICA` and issuer type `External`. If the Certificate Authority is an invalid type, the API responds with HTTP 400. */

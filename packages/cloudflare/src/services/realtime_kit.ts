@@ -985,9 +985,8 @@ export const MeetingsCreateResponseDataAiConfigSummarization = /*@__PURE__*/ S.s
 }) as any as S.Schema<MeetingsCreateResponseDataAiConfigSummarization>;
 
 export type MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList = Array<string>;
-export const MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList>;
+export const MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList =
+  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
@@ -1558,9 +1557,8 @@ export const CreateMeetingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeetingResponse" }) as any as S.Schema<CreateMeetingResponse>;
 
 export type ActiveSessionCreatePollRequestOptionsList = Array<string>;
-export const ActiveSessionCreatePollRequestOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveSessionCreatePollRequestOptionsList>;
+export const ActiveSessionCreatePollRequestOptionsList =
+  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionCreatePollRequestOptionsList>;
 
 export interface CreatePollActiveSessionRequest {
   /** The account identifier tag. */
@@ -1642,9 +1640,8 @@ export const ActiveSessionCreatePollResponseDataPollOptionsList = /*@__PURE__*/ 
 ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsList>;
 
 export type ActiveSessionCreatePollResponseDataPollVotedList = Array<string>;
-export const ActiveSessionCreatePollResponseDataPollVotedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveSessionCreatePollResponseDataPollVotedList>;
+export const ActiveSessionCreatePollResponseDataPollVotedList =
+  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionCreatePollResponseDataPollVotedList>;
 
 export interface ActiveSessionCreatePollResponseDataPoll {
   /** ID of the poll */
@@ -2326,9 +2323,8 @@ export type PresetsCreateResponseDataConfigViewType =
 export const PresetsCreateResponseDataConfigViewType = S.String;
 
 export type PresetsCreateResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-export const PresetsCreateResponseDataConfigLivestreamViewerQualitiesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PresetsCreateResponseDataConfigLivestreamViewerQualitiesList>;
+export const PresetsCreateResponseDataConfigLivestreamViewerQualitiesList =
+  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsCreateResponseDataConfigLivestreamViewerQualitiesList>;
 
 export interface PresetsCreateResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
@@ -2932,9 +2928,8 @@ export type PresetsDeleteResponseDataConfigViewType =
 export const PresetsDeleteResponseDataConfigViewType = S.String;
 
 export type PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-export const PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList>;
+export const PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList =
+  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList>;
 
 export interface PresetsDeleteResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
@@ -3386,13 +3381,8 @@ export interface EditParticipantMeetingResponse {
   /** Represents a participant. */
   data?: MeetingsAddParticipantResponseData | null;
 }
-export const EditParticipantMeetingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.NullOr(MeetingsAddParticipantResponseData)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "EditParticipantMeetingResponse",
-}) as any as S.Schema<EditParticipantMeetingResponse>;
+export const EditParticipantMeetingResponse =
+  AddParticipantMeetingResponse as any as S.Schema<EditParticipantMeetingResponse>;
 
 export type WebhooksEditWebhookRequestEventsItem =
   | "meeting.started"
@@ -6655,9 +6645,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem {
   /** Devices that became available. */
@@ -6821,9 +6809,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs {
   consumingTransport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList | null;
@@ -6985,9 +6971,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
   Array<string>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList>;
+  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem {
   effectiveNetworkType?: string | null;
@@ -7063,9 +7047,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem;
@@ -7075,9 +7057,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem {
   /** Devices that became available. */
@@ -7088,31 +7068,12 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      added: S.optional(
-        S.NullOr(
-          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList,
-        ),
-      ),
-      removed: S.optional(
-        S.NullOr(
-          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList,
-        ),
-      ),
-      timestamp: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem",
-  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem;
@@ -7122,9 +7083,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem;
@@ -7134,9 +7093,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem {
   /** Devices that became available. */
@@ -7147,31 +7104,12 @@ export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeer
   timestamp?: string | null;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      added: S.optional(
-        S.NullOr(
-          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList,
-        ),
-      ),
-      removed: S.optional(
-        S.NullOr(
-          SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList,
-        ),
-      ),
-      timestamp: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem",
-  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata {
   audioDevicesUpdates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList | null;
@@ -7503,9 +7441,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay;
@@ -7535,9 +7471,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss;
@@ -7936,9 +7870,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
   Array<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
-  /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList>;
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond =
   SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos;
@@ -9920,9 +9852,8 @@ export type SessionsGetSessionDetailsResponseDataType = "meeting" | "livestream"
 export const SessionsGetSessionDetailsResponseDataType = S.String;
 
 export type SessionsGetSessionDetailsResponseDataBreakoutRoomsList = Array<unknown>;
-export const SessionsGetSessionDetailsResponseDataBreakoutRoomsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SessionsGetSessionDetailsResponseDataBreakoutRoomsList>;
+export const SessionsGetSessionDetailsResponseDataBreakoutRoomsList =
+  ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList as any as S.Schema<SessionsGetSessionDetailsResponseDataBreakoutRoomsList>;
 
 export interface SessionsGetSessionDetailsResponseData {
   /** ID of the session */
@@ -10431,9 +10362,8 @@ export type SessionsGetSessionsResponseDataSessionsItemType =
 export const SessionsGetSessionsResponseDataSessionsItemType = S.String;
 
 export type SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList = Array<unknown>;
-export const SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList>;
+export const SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList =
+  ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList as any as S.Schema<SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList>;
 
 export interface SessionsGetSessionsResponseDataSessionsItem {
   /** ID of the session */
@@ -10863,14 +10793,12 @@ export const KickAllParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<KickAllParticipantsActiveSessionResponse>;
 
 export type ActiveSessionKickParticipantsRequestCustomParticipantIdsList = Array<string>;
-export const ActiveSessionKickParticipantsRequestCustomParticipantIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveSessionKickParticipantsRequestCustomParticipantIdsList>;
+export const ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
+  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionKickParticipantsRequestCustomParticipantIdsList>;
 
 export type ActiveSessionKickParticipantsRequestParticipantIdsList = Array<string>;
-export const ActiveSessionKickParticipantsRequestParticipantIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveSessionKickParticipantsRequestParticipantIdsList>;
+export const ActiveSessionKickParticipantsRequestParticipantIdsList =
+  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<ActiveSessionKickParticipantsRequestParticipantIdsList>;
 
 export interface KickParticipantsActiveSessionRequest {
   /** The account identifier tag. */
@@ -11036,9 +10964,8 @@ export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
 
 export type LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
   Array<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
-export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList = /*@__PURE__*/ S.Array(
-  AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
-) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList>;
+export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
+  AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList>;
 
 export interface LivestreamsGetOrgAnalyticsResponseDataSessionStats {
   /** Day wise session stats */
@@ -11048,21 +10975,8 @@ export interface LivestreamsGetOrgAnalyticsResponseDataSessionStats {
   /** Total session minutes during the range specified */
   sessionsMinutesConsumed?: number | null;
 }
-export const LivestreamsGetOrgAnalyticsResponseDataSessionStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dayStats: S.optional(
-      S.NullOr(LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList).pipe(
-        T.Body("day_stats"),
-      ),
-    ),
-    sessionsCount: S.optional(S.NullOr(S.Number).pipe(T.Body("sessions_count"))),
-    sessionsMinutesConsumed: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("sessions_minutes_consumed")),
-    ),
-  }),
-).annotate({
-  identifier: "LivestreamsGetOrgAnalyticsResponseDataSessionStats",
-}) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStats>;
+export const LivestreamsGetOrgAnalyticsResponseDataSessionStats =
+  AnalyticsGetOrgAnalyticsResponseDataSessionStats as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStats>;
 
 export interface LivestreamsGetOrgAnalyticsResponseData {
   /** Recording statistics of an App during the range specified */
@@ -11098,9 +11012,8 @@ export const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>;
 
 export type PresetsUpdateRequestConfigLivestreamViewerQualitiesList = Array<number>;
-export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PresetsUpdateRequestConfigLivestreamViewerQualitiesList>;
+export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
+  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsUpdateRequestConfigLivestreamViewerQualitiesList>;
 
 export interface PresetsUpdateRequestConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
@@ -11722,9 +11635,8 @@ export type PresetsUpdateResponseDataConfigViewType =
 export const PresetsUpdateResponseDataConfigViewType = S.String;
 
 export type PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
-export const PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList>;
+export const PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
+  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList>;
 
 export interface PresetsUpdateResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
@@ -12696,9 +12608,7 @@ export const MeetingsReplaceMeetingByIdRequestAiConfigSummarization = /*@__PURE_
 
 export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList = Array<string>;
 export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
+  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "en-US"
@@ -13303,9 +13213,7 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization = /*@__
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList = Array<string>;
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
+  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
@@ -13984,9 +13892,8 @@ export type ReplacePresetByIdRequestConfigViewType =
 export const ReplacePresetByIdRequestConfigViewType = S.String;
 
 export type ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList = Array<number>;
-export const ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList>;
+export const ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList =
+  PresetsCreateRequestConfigLivestreamViewerQualitiesList as any as S.Schema<ReplacePresetByIdRequestConfigLivestreamViewerQualitiesList>;
 
 export interface ReplacePresetByIdRequestConfig {
   /** Maximum number of screen shares that can be active at a given time */
@@ -14434,9 +14341,7 @@ export const ReplacePresetByIdResponseDataConfigViewType = S.String;
 
 export type ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList = Array<number>;
 export const ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList>;
+  PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList as any as S.Schema<ReplacePresetByIdResponseDataConfigLivestreamViewerQualitiesList>;
 
 export interface ReplacePresetByIdResponseDataConfig {
   /** Maximum number of screen shares that can be active at a given time */
@@ -15961,9 +15866,8 @@ export const RecordingsStartTrackRecordingRequestLayersMap = /*@__PURE__*/ S.Rec
 ) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersMap>;
 
 export type RecordingsStartTrackRecordingRequestUserIdsList = Array<string>;
-export const RecordingsStartTrackRecordingRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecordingsStartTrackRecordingRequestUserIdsList>;
+export const RecordingsStartTrackRecordingRequestUserIdsList =
+  MeetingsCreateRequestAiConfigTranscriptionKeywordsList as any as S.Schema<RecordingsStartTrackRecordingRequestUserIdsList>;
 
 export interface StartTrackRecordingRecordingRequest {
   /** The account identifier tag. */
@@ -16164,9 +16068,7 @@ export const MeetingsUpdateMeetingByIdRequestAiConfigSummarization = /*@__PURE__
 
 export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList = Array<string>;
 export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
+  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "en-US"
@@ -16772,9 +16674,7 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization = /*@__P
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList = Array<string>;
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
+  MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "en-US"

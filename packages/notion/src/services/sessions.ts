@@ -262,14 +262,12 @@ export const GetSessionResponseTypeLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetSessionResponseTypeLabelsList>;
 
 export type GetSessionResponseChatUserEmailsList = Array<string>;
-export const GetSessionResponseChatUserEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSessionResponseChatUserEmailsList>;
+export const GetSessionResponseChatUserEmailsList =
+  GetSessionResponseTypeLabelsList as any as S.Schema<GetSessionResponseChatUserEmailsList>;
 
 export type GetSessionResponseToolTypesList = Array<string>;
-export const GetSessionResponseToolTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSessionResponseToolTypesList>;
+export const GetSessionResponseToolTypesList =
+  GetSessionResponseTypeLabelsList as any as S.Schema<GetSessionResponseToolTypesList>;
 
 export interface GetSessionResponse {
   /** Always `session` */
@@ -3181,13 +3179,8 @@ export interface QuerySessionsRequestFilterCase0String {
   /** Return sessions with this exact value. */
   equals: string;
 }
-export const QuerySessionsRequestFilterCase0String = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    equals: S.String,
-  }),
-).annotate({
-  identifier: "QuerySessionsRequestFilterCase0String",
-}) as any as S.Schema<QuerySessionsRequestFilterCase0String>;
+export const QuerySessionsRequestFilterCase0String =
+  QuerySessionEventsRequestFilterCase0String as any as S.Schema<QuerySessionsRequestFilterCase0String>;
 
 export interface QuerySessionsRequestFilterCase0 {
   /** Filter sessions by id. */
@@ -4444,23 +4437,16 @@ export type QuerySessionsResponseResultsItemModelsCase0 = GetSessionResponseMode
 export const QuerySessionsResponseResultsItemModelsCase0 = GetSessionResponseModelsCase0;
 
 export type QuerySessionsResponseResultsItemModelsCase1IdsList = Array<string | null>;
-export const QuerySessionsResponseResultsItemModelsCase1IdsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<QuerySessionsResponseResultsItemModelsCase1IdsList>;
+export const QuerySessionsResponseResultsItemModelsCase1IdsList =
+  GetSessionResponseModelsCase1IdsList as any as S.Schema<QuerySessionsResponseResultsItemModelsCase1IdsList>;
 
 export interface QuerySessionsResponseResultsItemModelsCase1 {
   /** Always `pinned` */
   type: string;
   ids: QuerySessionsResponseResultsItemModelsCase1IdsList;
 }
-export const QuerySessionsResponseResultsItemModelsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    ids: QuerySessionsResponseResultsItemModelsCase1IdsList,
-  }),
-).annotate({
-  identifier: "QuerySessionsResponseResultsItemModelsCase1",
-}) as any as S.Schema<QuerySessionsResponseResultsItemModelsCase1>;
+export const QuerySessionsResponseResultsItemModelsCase1 =
+  GetSessionResponseModelsCase1 as any as S.Schema<QuerySessionsResponseResultsItemModelsCase1>;
 
 export type QuerySessionsResponseResultsItemModels =
   | GetSessionResponseModelsCase0
@@ -4518,19 +4504,16 @@ export type QuerySessionsResponseResultsItemError = CancelSessionResponseError;
 export const QuerySessionsResponseResultsItemError = CancelSessionResponseError;
 
 export type QuerySessionsResponseResultsItemTypeLabelsList = Array<string>;
-export const QuerySessionsResponseResultsItemTypeLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySessionsResponseResultsItemTypeLabelsList>;
+export const QuerySessionsResponseResultsItemTypeLabelsList =
+  GetSessionResponseTypeLabelsList as any as S.Schema<QuerySessionsResponseResultsItemTypeLabelsList>;
 
 export type QuerySessionsResponseResultsItemChatUserEmailsList = Array<string>;
-export const QuerySessionsResponseResultsItemChatUserEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySessionsResponseResultsItemChatUserEmailsList>;
+export const QuerySessionsResponseResultsItemChatUserEmailsList =
+  GetSessionResponseTypeLabelsList as any as S.Schema<QuerySessionsResponseResultsItemChatUserEmailsList>;
 
 export type QuerySessionsResponseResultsItemToolTypesList = Array<string>;
-export const QuerySessionsResponseResultsItemToolTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySessionsResponseResultsItemToolTypesList>;
+export const QuerySessionsResponseResultsItemToolTypesList =
+  GetSessionResponseTypeLabelsList as any as S.Schema<QuerySessionsResponseResultsItemToolTypesList>;
 
 export interface QuerySessionsResponseResultsItem {
   /** Always `session` */
@@ -4659,10 +4642,8 @@ export const UpdateSessionRequestBodyCase0AttachmentsList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<UpdateSessionRequestBodyCase0AttachmentsList>;
 
 export type UpdateSessionRequestBodyCase0MetadataMap = { [key: string]: string | undefined };
-export const UpdateSessionRequestBodyCase0MetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSessionRequestBodyCase0MetadataMap>;
+export const UpdateSessionRequestBodyCase0MetadataMap =
+  QuerySessionEventsResponseResultsItemCase0MetadataMap as any as S.Schema<UpdateSessionRequestBodyCase0MetadataMap>;
 
 export interface UpdateSessionRequestBodyCase0 {
   message: string;
@@ -4710,10 +4691,8 @@ export const UpdateSessionRequestBodyCase1ActionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateSessionRequestBodyCase1ActionsList>;
 
 export type UpdateSessionRequestBodyCase1MetadataMap = { [key: string]: string | undefined };
-export const UpdateSessionRequestBodyCase1MetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSessionRequestBodyCase1MetadataMap>;
+export const UpdateSessionRequestBodyCase1MetadataMap =
+  QuerySessionEventsResponseResultsItemCase0MetadataMap as any as S.Schema<UpdateSessionRequestBodyCase1MetadataMap>;
 
 export interface UpdateSessionRequestBodyCase1 {
   session_id: string;

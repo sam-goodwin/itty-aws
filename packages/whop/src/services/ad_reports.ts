@@ -52,15 +52,13 @@ export const GetAdReportRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
 
 /** Scope the report to these ad groups (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adCampaignIds`, and `adIds`. */
 export type GetAdReportRequestAdGroupIdsList = Array<string>;
-export const GetAdReportRequestAdGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAdReportRequestAdGroupIdsList>;
+export const GetAdReportRequestAdGroupIdsList =
+  GetAdReportRequestAdCampaignIdsList as any as S.Schema<GetAdReportRequestAdGroupIdsList>;
 
 /** Scope the report to these ads (max 100); stats are summed across them. Mutually exclusive with `companyId`, `adCampaignIds`, and `adGroupIds`. */
 export type GetAdReportRequestAdIdsList = Array<string>;
-export const GetAdReportRequestAdIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAdReportRequestAdIdsList>;
+export const GetAdReportRequestAdIdsList =
+  GetAdReportRequestAdCampaignIdsList as any as S.Schema<GetAdReportRequestAdIdsList>;
 
 /** Entity level to group an ad report by. */
 export type AdReportBreakdownLevels = "campaign" | "ad_group" | "ad";
@@ -366,9 +364,8 @@ export const AdReportGranularityItem = AdReportBreakdownItemGranularityItem;
 
 /** Per-bucket time series over the date range, ordered ascending by `bucketStart`. `null` when the `granularity` arg on `adReport` is omitted; otherwise contains rows at the requested grain (`daily` or `hourly`). */
 export type AdReportGranularityList = Array<AdReportBreakdownItemGranularityItem>;
-export const AdReportGranularityList = /*@__PURE__*/ S.Array(
-  AdReportBreakdownItemGranularityItem,
-) as any as S.Schema<AdReportGranularityList>;
+export const AdReportGranularityList =
+  AdReportBreakdownItemGranularityList as any as S.Schema<AdReportGranularityList>;
 
 /** Aggregate totals and rates over the date range. */
 export type AdReportSummary = AdReportBreakdownItemSummary;

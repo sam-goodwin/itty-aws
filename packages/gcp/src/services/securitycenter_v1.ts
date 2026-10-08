@@ -2595,7 +2595,7 @@ export type Network = OrgPolicy;
 export const Network = OrgPolicy;
 
 export type NetworkList = Array<OrgPolicy>;
-export const NetworkList = /*@__PURE__*/ S.Array(OrgPolicy) as any as S.Schema<NetworkList>;
+export const NetworkList = OrgPolicyList as any as S.Schema<NetworkList>;
 
 export interface TicketInfo {
   updateTime?: string;
@@ -2659,7 +2659,7 @@ export type Node = OrgPolicy;
 export const Node = OrgPolicy;
 
 export type NodeList = Array<OrgPolicy>;
-export const NodeList = /*@__PURE__*/ S.Array(OrgPolicy) as any as S.Schema<NodeList>;
+export const NodeList = OrgPolicyList as any as S.Schema<NodeList>;
 
 export interface Securitycenter_Object {
   ns?: string;
@@ -4357,9 +4357,8 @@ export type ResourceValueConfigMetadata = OrgPolicy;
 export const ResourceValueConfigMetadata = OrgPolicy;
 
 export type ResourceValueConfigMetadataList = Array<OrgPolicy>;
-export const ResourceValueConfigMetadataList = /*@__PURE__*/ S.Array(
-  OrgPolicy,
-) as any as S.Schema<ResourceValueConfigMetadataList>;
+export const ResourceValueConfigMetadataList =
+  LoadBalancerList as any as S.Schema<ResourceValueConfigMetadataList>;
 
 export interface Simulation {
   name?: string;
@@ -7161,9 +7160,7 @@ export const PatchProjectsSourcesFindingsExternalSystemsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<PatchProjectsSourcesFindingsExternalSystemsRequest>;
 
 export interface RunAssetDiscoveryRequest {}
-export const RunAssetDiscoveryRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunAssetDiscoveryRequest",
-}) as any as S.Schema<RunAssetDiscoveryRequest>;
+export const RunAssetDiscoveryRequest = Empty as any as S.Schema<RunAssetDiscoveryRequest>;
 
 export interface RunDiscoveryOrganizationsAssetsRequest {
   parent: string;
@@ -7509,13 +7506,8 @@ export const TestIamPermissionsOrganizationsSourcesRequest = /*@__PURE__*/ S.sus
 export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateOrganizationSettingsOrganizationsRequest {
   updateMask?: string;

@@ -1142,15 +1142,13 @@ export const CreateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails to be CCed on invoice notifications/reminders. */
 export type ApiV1ArInvoiceResponseCcEmailsList = Array<string>;
-export const ApiV1ArInvoiceResponseCcEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiV1ArInvoiceResponseCcEmailsList>;
+export const ApiV1ArInvoiceResponseCcEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiV1ArInvoiceResponseCcEmailsList>;
 
 /** The line items for the invoice. */
 export type ApiV1ArInvoiceResponseLineItemsList = Array<ApiV1ArLineItemData>;
-export const ApiV1ArInvoiceResponseLineItemsList = /*@__PURE__*/ S.Array(
-  ApiV1ArLineItemData,
-) as any as S.Schema<ApiV1ArInvoiceResponseLineItemsList>;
+export const ApiV1ArInvoiceResponseLineItemsList =
+  CreateInvoiceRequestLineItemsList as any as S.Schema<ApiV1ArInvoiceResponseLineItemsList>;
 
 /** The response type for an invoice in the api. */
 export interface ApiV1ArInvoiceResponse {
@@ -1270,9 +1268,8 @@ export const ElectronicRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElectronicRoutingInfoRaw" }) as any as S.Schema<ElectronicRoutingInfoRaw>;
 
 export type CreateRecipientRequestEmailsList = Array<string>;
-export const CreateRecipientRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRecipientRequestEmailsList>;
+export const CreateRecipientRequestEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<CreateRecipientRequestEmailsList>;
 
 export type RealTimePaymentRoutingInfoRawAddress = AddressWithoutName;
 export const RealTimePaymentRoutingInfoRawAddress = AddressWithoutName;
@@ -1285,15 +1282,8 @@ export interface RealTimePaymentRoutingInfoRaw {
   /** The routing number of the bank account to use for real-time payments. */
   routingNumber: string;
 }
-export const RealTimePaymentRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountNumber: S.String,
-    address: AddressWithoutName,
-    routingNumber: S.String,
-  }),
-).annotate({
-  identifier: "RealTimePaymentRoutingInfoRaw",
-}) as any as S.Schema<RealTimePaymentRoutingInfoRaw>;
+export const RealTimePaymentRoutingInfoRaw =
+  DomesticWireRoutingInfoRaw as any as S.Schema<RealTimePaymentRoutingInfoRaw>;
 
 export interface CreateRecipientRequest {
   /** Deprecated. Use checkInfo instead. */
@@ -1381,9 +1371,8 @@ export type PaymentMethod =
 export const PaymentMethod = S.String;
 
 export type RecipientInfoEmailsList = Array<string>;
-export const RecipientInfoEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecipientInfoEmailsList>;
+export const RecipientInfoEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<RecipientInfoEmailsList>;
 
 export type RealTimePaymentRoutingInfo = DomesticWireRoutingInfo;
 export const RealTimePaymentRoutingInfo = DomesticWireRoutingInfo;
@@ -1473,9 +1462,8 @@ export const CreateRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Payment methods the recipient may submit details for. */
 export type RecipientInviteApiResponsePaymentMethodsList = Array<PaymentMethod>;
-export const RecipientInviteApiResponsePaymentMethodsList = /*@__PURE__*/ S.Array(
-  PaymentMethod,
-) as any as S.Schema<RecipientInviteApiResponsePaymentMethodsList>;
+export const RecipientInviteApiResponsePaymentMethodsList =
+  CreateRecipientInviteRequestPaymentMethodsList as any as S.Schema<RecipientInviteApiResponsePaymentMethodsList>;
 
 export interface RecipientInviteApiResponse {
   contactEmail: unknown;
@@ -1660,15 +1648,13 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional array of event types this webhook is subscribed to. Nothing means all events. */
 export type ApiWebhookResponseEventTypesList = Array<WebhookEventType>;
-export const ApiWebhookResponseEventTypesList = /*@__PURE__*/ S.Array(
-  WebhookEventType,
-) as any as S.Schema<ApiWebhookResponseEventTypesList>;
+export const ApiWebhookResponseEventTypesList =
+  CreateWebhookRequestEventTypesList as any as S.Schema<ApiWebhookResponseEventTypesList>;
 
 /** Optional array of resource field paths to filter events by. Nothing means no filtering. */
 export type ApiWebhookResponseFilterPathsList = Array<ResourceField>;
-export const ApiWebhookResponseFilterPathsList = /*@__PURE__*/ S.Array(
-  ResourceField,
-) as any as S.Schema<ApiWebhookResponseFilterPathsList>;
+export const ApiWebhookResponseFilterPathsList =
+  CreateWebhookRequestFilterPathsList as any as S.Schema<ApiWebhookResponseFilterPathsList>;
 
 /** Webhook configuration details */
 export interface ApiWebhookResponse {
@@ -1708,9 +1694,8 @@ export const DeleteCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCategoryRequest" }) as any as S.Schema<DeleteCategoryRequest>;
 
 export interface DeleteCategoryResponse {}
-export const DeleteCategoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCategoryResponse",
-}) as any as S.Schema<DeleteCategoryResponse>;
+export const DeleteCategoryResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteCategoryResponse>;
 
 export interface DeleteCustomerRequest {
   customerId: string;
@@ -1722,9 +1707,8 @@ export const DeleteCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCustomerRequest" }) as any as S.Schema<DeleteCustomerRequest>;
 
 export interface DeleteCustomerResponse {}
-export const DeleteCustomerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomerResponse",
-}) as any as S.Schema<DeleteCustomerResponse>;
+export const DeleteCustomerResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteCustomerResponse>;
 
 export interface DeleteRecipientRequest {
   recipientId: string;
@@ -1736,9 +1720,8 @@ export const DeleteRecipientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRecipientRequest" }) as any as S.Schema<DeleteRecipientRequest>;
 
 export interface DeleteRecipientResponse {}
-export const DeleteRecipientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRecipientResponse",
-}) as any as S.Schema<DeleteRecipientResponse>;
+export const DeleteRecipientResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteRecipientResponse>;
 
 export interface DeleteRecipientInviteRequest {
   inviteId: string;
@@ -1752,9 +1735,8 @@ export const DeleteRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRecipientInviteRequest>;
 
 export interface DeleteRecipientInviteResponse {}
-export const DeleteRecipientInviteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRecipientInviteResponse",
-}) as any as S.Schema<DeleteRecipientInviteResponse>;
+export const DeleteRecipientInviteResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteRecipientInviteResponse>;
 
 export interface DeleteWebhookRequest {
   webhookEndpointId: string;
@@ -1766,9 +1748,8 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface EditCategoryRequest {
   expenseCategoryId: string;
@@ -2124,9 +2105,8 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of JSON paths that were modified in this event */
 export type ApiEventResponseChangedPathsList = Array<string>;
-export const ApiEventResponseChangedPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiEventResponseChangedPathsList>;
+export const ApiEventResponseChangedPathsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiEventResponseChangedPathsList>;
 
 /** Represents a single event in the Mercury API event stream. Events track changes to resources over time, providing an audit trail of all modifications with before/after values and metadata about what changed. */
 export interface ApiEventResponse {
@@ -2234,9 +2214,8 @@ export const GetInvoicePdfRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetInvoicePdfRequest" }) as any as S.Schema<GetInvoicePdfRequest>;
 
 export interface GetInvoicePdfResponse {}
-export const GetInvoicePdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetInvoicePdfResponse",
-}) as any as S.Schema<GetInvoicePdfResponse>;
+export const GetInvoicePdfResponse =
+  CancelInvoiceResponse as any as S.Schema<GetInvoicePdfResponse>;
 
 export interface GetOrganizationRequest {}
 export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2477,9 +2456,8 @@ export const GetSafeRequestDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSafeRequestDocumentRequest>;
 
 export interface GetSafeRequestDocumentResponse {}
-export const GetSafeRequestDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSafeRequestDocumentResponse",
-}) as any as S.Schema<GetSafeRequestDocumentResponse>;
+export const GetSafeRequestDocumentResponse =
+  CancelInvoiceResponse as any as S.Schema<GetSafeRequestDocumentResponse>;
 
 export interface GetSafeRequestsRequest {}
 export const GetSafeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2589,9 +2567,8 @@ export const GetStatementPdfRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStatementPdfRequest" }) as any as S.Schema<GetStatementPdfRequest>;
 
 export interface GetStatementPdfResponse {}
-export const GetStatementPdfResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetStatementPdfResponse",
-}) as any as S.Schema<GetStatementPdfResponse>;
+export const GetStatementPdfResponse =
+  CancelInvoiceResponse as any as S.Schema<GetStatementPdfResponse>;
 
 export interface GetTransactionRequest {
   accountId: string;
@@ -3155,9 +3132,8 @@ export const TransactionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter cards by one or more account IDs. */
 export type ListCardsRequestAccountIdList = Array<string>;
-export const ListCardsRequestAccountIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCardsRequestAccountIdList>;
+export const ListCardsRequestAccountIdList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ListCardsRequestAccountIdList>;
 
 export type ListCardsRequestStatusItem =
   | "active"
@@ -3433,9 +3409,8 @@ export const ListInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails to be CCed on invoice notifications/reminders. */
 export type ApiV1ArInvoicesDataCcEmailsList = Array<string>;
-export const ApiV1ArInvoicesDataCcEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiV1ArInvoicesDataCcEmailsList>;
+export const ApiV1ArInvoicesDataCcEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiV1ArInvoicesDataCcEmailsList>;
 
 /** Response data for Accounts Receivable invoices API Endpoint */
 export interface ApiV1ArInvoicesData {
@@ -3755,14 +3730,12 @@ export const ListTransactionsRequestStatusList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListTransactionsRequestStatusList>;
 
 export type ListTransactionsRequestAccountIdList = Array<string>;
-export const ListTransactionsRequestAccountIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTransactionsRequestAccountIdList>;
+export const ListTransactionsRequestAccountIdList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ListTransactionsRequestAccountIdList>;
 
 export type ListTransactionsRequestCardIdList = Array<string>;
-export const ListTransactionsRequestCardIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTransactionsRequestCardIdList>;
+export const ListTransactionsRequestCardIdList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ListTransactionsRequestCardIdList>;
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListTransactionsRequestOrder = "asc" | "desc";
@@ -3809,9 +3782,8 @@ export type TransactionsPaginatedResponsePage = AccountsPaginatedResponsePage;
 export const TransactionsPaginatedResponsePage = AccountsPaginatedResponsePage;
 
 export type TransactionsPaginatedResponseTransactionsList = Array<Transaction>;
-export const TransactionsPaginatedResponseTransactionsList = /*@__PURE__*/ S.Array(
-  Transaction,
-) as any as S.Schema<TransactionsPaginatedResponseTransactionsList>;
+export const TransactionsPaginatedResponseTransactionsList =
+  TransactionsResponseTransactionsList as any as S.Schema<TransactionsPaginatedResponseTransactionsList>;
 
 export interface TransactionsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
@@ -3935,9 +3907,8 @@ export const RequestTransferMoneyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Approval decisions recorded on this request, oldest first. */
 export type TransferMoneyApprovalRequestResponseReviewsList = Array<PaymentApprovalReview>;
-export const TransferMoneyApprovalRequestResponseReviewsList = /*@__PURE__*/ S.Array(
-  PaymentApprovalReview,
-) as any as S.Schema<TransferMoneyApprovalRequestResponseReviewsList>;
+export const TransferMoneyApprovalRequestResponseReviewsList =
+  SendMoneyApprovalRequestResponseReviewsList as any as S.Schema<TransferMoneyApprovalRequestResponseReviewsList>;
 
 /** An approval request for a transfer between accounts. */
 export interface TransferMoneyApprovalRequestResponse {
@@ -4035,9 +4006,8 @@ export const StartOAuth2FlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartOAuth2FlowRequest" }) as any as S.Schema<StartOAuth2FlowRequest>;
 
 export interface StartOAuth2FlowResponse {}
-export const StartOAuth2FlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartOAuth2FlowResponse",
-}) as any as S.Schema<StartOAuth2FlowResponse>;
+export const StartOAuth2FlowResponse =
+  CancelInvoiceResponse as any as S.Schema<StartOAuth2FlowResponse>;
 
 export interface UnfreezeCardRequest {
   cardId: string;
@@ -4088,15 +4058,13 @@ export const UpdateCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of emails to be CCed on notifications/reminders. */
 export type UpdateInvoiceRequestCcEmailsList = Array<string>;
-export const UpdateInvoiceRequestCcEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInvoiceRequestCcEmailsList>;
+export const UpdateInvoiceRequestCcEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<UpdateInvoiceRequestCcEmailsList>;
 
 /** The line items for the invoice */
 export type UpdateInvoiceRequestLineItemsList = Array<ApiV1ArLineItemData>;
-export const UpdateInvoiceRequestLineItemsList = /*@__PURE__*/ S.Array(
-  ApiV1ArLineItemData,
-) as any as S.Schema<UpdateInvoiceRequestLineItemsList>;
+export const UpdateInvoiceRequestLineItemsList =
+  CreateInvoiceRequestLineItemsList as any as S.Schema<UpdateInvoiceRequestLineItemsList>;
 
 export interface UpdateInvoiceRequest {
   invoiceId: string;
@@ -4143,9 +4111,8 @@ export const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInvoiceRequest" }) as any as S.Schema<UpdateInvoiceRequest>;
 
 export type UpdateRecipientRequestEmailsList = Array<string>;
-export const UpdateRecipientRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRecipientRequestEmailsList>;
+export const UpdateRecipientRequestEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<UpdateRecipientRequestEmailsList>;
 
 export interface UpdateRecipientRequest {
   recipientId: string;
@@ -4195,15 +4162,13 @@ export const UpdateTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Event types to subscribe to. Send null to subscribe to all event types. Send an array to subscribe to specific types. Omit to leave unchanged. */
 export type UpdateWebhookRequestEventTypesList = Array<WebhookEventType | (string & {})>;
-export const UpdateWebhookRequestEventTypesList = /*@__PURE__*/ S.Array(
-  WebhookEventType,
-) as any as S.Schema<UpdateWebhookRequestEventTypesList>;
+export const UpdateWebhookRequestEventTypesList =
+  CreateWebhookRequestEventTypesList as any as S.Schema<UpdateWebhookRequestEventTypesList>;
 
 /** Resource field paths to filter events by. When specified, webhook events will only be sent when one of these fields changes. Send null for no filtering. Send an array to filter by specific fields. Omit to leave unchanged. */
 export type UpdateWebhookRequestFilterPathsList = Array<ResourceField | (string & {})>;
-export const UpdateWebhookRequestFilterPathsList = /*@__PURE__*/ S.Array(
-  ResourceField,
-) as any as S.Schema<UpdateWebhookRequestFilterPathsList>;
+export const UpdateWebhookRequestFilterPathsList =
+  CreateWebhookRequestFilterPathsList as any as S.Schema<UpdateWebhookRequestFilterPathsList>;
 
 export interface UpdateWebhookRequest {
   webhookEndpointId: string;
@@ -4284,11 +4249,8 @@ export const UploadTransactionAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadTransactionAttachmentRequest>;
 
 export interface UploadTransactionAttachmentResponse {}
-export const UploadTransactionAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadTransactionAttachmentResponse",
-}) as any as S.Schema<UploadTransactionAttachmentResponse>;
+export const UploadTransactionAttachmentResponse =
+  UploadRecipientAttachmentResponse as any as S.Schema<UploadTransactionAttachmentResponse>;
 
 export interface VerifyWebhookRequest {
   webhookEndpointId: string;
@@ -4302,9 +4264,8 @@ export const VerifyWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyWebhookRequest" }) as any as S.Schema<VerifyWebhookRequest>;
 
 export interface VerifyWebhookResponse {}
-export const VerifyWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifyWebhookResponse",
-}) as any as S.Schema<VerifyWebhookResponse>;
+export const VerifyWebhookResponse =
+  CancelInvoiceResponse as any as S.Schema<VerifyWebhookResponse>;
 
 export type CancelCardError = NotFound | MercuryOpError;
 /** Cancel a card Permanently cancel a card. This action cannot be undone. */

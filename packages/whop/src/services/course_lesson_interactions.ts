@@ -94,13 +94,8 @@ export interface CourseLessonInteractionLessonChapter {
   /** The unique identifier for the chapter. */
   id: string;
 }
-export const CourseLessonInteractionLessonChapter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "CourseLessonInteractionLessonChapter",
-}) as any as S.Schema<CourseLessonInteractionLessonChapter>;
+export const CourseLessonInteractionLessonChapter =
+  CourseLessonInteractionCourseExperience as any as S.Schema<CourseLessonInteractionLessonChapter>;
 
 /** The lesson that this progress record belongs to. */
 export interface CourseLessonInteractionLesson {

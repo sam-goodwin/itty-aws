@@ -226,11 +226,8 @@ export const DeleteServiceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceConfigurationRequest>;
 
 export interface DeleteServiceConfigurationResponse {}
-export const DeleteServiceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceConfigurationResponse",
-}) as any as S.Schema<DeleteServiceConfigurationResponse>;
+export const DeleteServiceConfigurationResponse =
+  DeletePublicCloudConnectorResponse as any as S.Schema<DeleteServiceConfigurationResponse>;
 
 export interface DeleteSolutionConfigurationRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -255,11 +252,8 @@ export const DeleteSolutionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSolutionConfigurationRequest>;
 
 export interface DeleteSolutionConfigurationResponse {}
-export const DeleteSolutionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSolutionConfigurationResponse",
-}) as any as S.Schema<DeleteSolutionConfigurationResponse>;
+export const DeleteSolutionConfigurationResponse =
+  DeletePublicCloudConnectorResponse as any as S.Schema<DeleteSolutionConfigurationResponse>;
 
 /** The type of endpoint. */
 export type Type = "default" | "custom";
@@ -541,15 +535,13 @@ export const GcpProjectProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of GCP projects which need to be excluded. */
 export type GcpOrganizationPropertiesExcludedProjectNumbersList = Array<string>;
-export const GcpOrganizationPropertiesExcludedProjectNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GcpOrganizationPropertiesExcludedProjectNumbersList>;
+export const GcpOrganizationPropertiesExcludedProjectNumbersList =
+  AwsCloudProfileExcludedAccountsList as any as S.Schema<GcpOrganizationPropertiesExcludedProjectNumbersList>;
 
 /** List of GCP folders which need to be excluded. */
 export type GcpOrganizationPropertiesExcludedFolderIdsList = Array<string>;
-export const GcpOrganizationPropertiesExcludedFolderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GcpOrganizationPropertiesExcludedFolderIdsList>;
+export const GcpOrganizationPropertiesExcludedFolderIdsList =
+  AwsCloudProfileExcludedAccountsList as any as S.Schema<GcpOrganizationPropertiesExcludedFolderIdsList>;
 
 /** GCP organization properties. */
 export interface GcpOrganizationProperties {
@@ -689,17 +681,8 @@ export interface GetServiceConfigurationResponse {
   /** The service configuration properties. */
   properties?: ServiceConfigurationProperties;
 }
-export const GetServiceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceConfigurationProperties),
-  }),
-).annotate({
-  identifier: "GetServiceConfigurationResponse",
-}) as any as S.Schema<GetServiceConfigurationResponse>;
+export const GetServiceConfigurationResponse =
+  CreateServiceConfigurationOrupdateResponse as any as S.Schema<GetServiceConfigurationResponse>;
 
 export interface GetSolutionConfigurationRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -725,10 +708,8 @@ export const GetSolutionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Solution settings */
 export type SolutionSettings = { [key: string]: string | undefined };
-export const SolutionSettings = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SolutionSettings>;
+export const SolutionSettings =
+  GetPublicCloudConnectorResponseTagsMap as any as S.Schema<SolutionSettings>;
 
 /** Solution configuration resource. */
 export interface SolutionConfigurationProperties {
@@ -807,9 +788,8 @@ export const GetSolutionTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The locations this solution is supported in. */
 export type SolutionTypePropertiesSupportedAzureRegionsList = Array<string>;
-export const SolutionTypePropertiesSupportedAzureRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolutionTypePropertiesSupportedAzureRegionsList>;
+export const SolutionTypePropertiesSupportedAzureRegionsList =
+  AwsCloudProfileExcludedAccountsList as any as S.Schema<SolutionTypePropertiesSupportedAzureRegionsList>;
 
 /** The supported host types for the current solution type. */
 export type SolutionTypePropertiesHostTypesList = Array<HostType>;
@@ -819,15 +799,13 @@ export const SolutionTypePropertiesHostTypesList = /*@__PURE__*/ S.Array(
 
 /** Array of allowed values for this solution settings property. */
 export type SolutionTypeSettingsPropertiesAllowedValuesList = Array<string>;
-export const SolutionTypeSettingsPropertiesAllowedValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SolutionTypeSettingsPropertiesAllowedValuesList>;
+export const SolutionTypeSettingsPropertiesAllowedValuesList =
+  AwsCloudProfileExcludedAccountsList as any as S.Schema<SolutionTypeSettingsPropertiesAllowedValuesList>;
 
 /** The supported host types for the current solution setting */
 export type SolutionTypeSettingsPropertiesHostTypesList = Array<HostType>;
-export const SolutionTypeSettingsPropertiesHostTypesList = /*@__PURE__*/ S.Array(
-  HostType,
-) as any as S.Schema<SolutionTypeSettingsPropertiesHostTypesList>;
+export const SolutionTypeSettingsPropertiesHostTypesList =
+  SolutionTypePropertiesHostTypesList as any as S.Schema<SolutionTypeSettingsPropertiesHostTypesList>;
 
 /** Represent Solution settings properties description array. */
 export interface SolutionTypeSettingsProperties {
@@ -1123,15 +1101,7 @@ export interface EndpointResource {
   /** The endpoint properties. */
   properties?: EndpointProperties;
 }
-export const EndpointResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({ identifier: "EndpointResource" }) as any as S.Schema<EndpointResource>;
+export const EndpointResource = GetEndpointResponse as any as S.Schema<EndpointResource>;
 
 /** The list of endpoint. */
 export type EndpointsListValueList = Array<EndpointResource>;
@@ -1188,15 +1158,7 @@ export interface InventoryResource {
   /** The resource-specific properties for this resource. */
   properties?: InventoryProperties;
 }
-export const InventoryResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(InventoryProperties),
-  }),
-).annotate({ identifier: "InventoryResource" }) as any as S.Schema<InventoryResource>;
+export const InventoryResource = GetInventoryResponse as any as S.Schema<InventoryResource>;
 
 /** The InventoryResource items on this page */
 export type InventoryResourceListResultValueList = Array<InventoryResource>;
@@ -1326,10 +1288,8 @@ export const ListPublicCloudConnectorByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type PublicCloudConnectorTagsMap = { [key: string]: string | undefined };
-export const PublicCloudConnectorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudConnectorTagsMap>;
+export const PublicCloudConnectorTagsMap =
+  GetPublicCloudConnectorResponseTagsMap as any as S.Schema<PublicCloudConnectorTagsMap>;
 
 /** Public Cloud Connector */
 export interface PublicCloudConnector {
@@ -1439,17 +1399,8 @@ export interface ServiceConfigurationResource {
   /** The service configuration properties. */
   properties?: ServiceConfigurationProperties;
 }
-export const ServiceConfigurationResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceConfigurationProperties),
-  }),
-).annotate({
-  identifier: "ServiceConfigurationResource",
-}) as any as S.Schema<ServiceConfigurationResource>;
+export const ServiceConfigurationResource =
+  CreateServiceConfigurationOrupdateResponse as any as S.Schema<ServiceConfigurationResource>;
 
 /** The list of service configuration */
 export type ServiceConfigurationListValueList = Array<ServiceConfigurationResource>;
@@ -1570,15 +1521,8 @@ export interface SolutionTypeResource {
   /** The resource-specific properties for this resource. */
   properties?: SolutionTypeProperties;
 }
-export const SolutionTypeResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionTypeProperties),
-  }),
-).annotate({ identifier: "SolutionTypeResource" }) as any as S.Schema<SolutionTypeResource>;
+export const SolutionTypeResource =
+  GetSolutionTypeResponse as any as S.Schema<SolutionTypeResource>;
 
 /** The SolutionTypeResource items on this page */
 export type SolutionTypeResourceListResultValueList = Array<SolutionTypeResource>;
@@ -1675,9 +1619,8 @@ export const PostGenerateAwsTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of solution types and their settings */
 export type PostGenerateGcpTemplateRequestSolutionTypesList = Array<SolutionTypeSettings>;
-export const PostGenerateGcpTemplateRequestSolutionTypesList = /*@__PURE__*/ S.Array(
-  SolutionTypeSettings,
-) as any as S.Schema<PostGenerateGcpTemplateRequestSolutionTypesList>;
+export const PostGenerateGcpTemplateRequestSolutionTypesList =
+  PostGenerateAwsTemplateRequestSolutionTypesList as any as S.Schema<PostGenerateGcpTemplateRequestSolutionTypesList>;
 
 /** GCP template format. */
 export type GcpTemplateFormat = "terraform" | "shellscript";
@@ -1715,20 +1658,15 @@ export const PostGenerateGcpTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostGenerateGcpTemplateRequest>;
 
 export type PostGenerateGcpTemplateResponse = unknown;
-export const PostGenerateGcpTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PostGenerateGcpTemplateResponse",
-}) as any as S.Schema<PostGenerateGcpTemplateResponse>;
+export const PostGenerateGcpTemplateResponse =
+  PostGenerateAwsTemplateResponse as any as S.Schema<PostGenerateGcpTemplateResponse>;
 
 /** Resource tags. */
 export type PublicCloudConnectorsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudConnectorsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateRequestTagsMap>;
+export const PublicCloudConnectorsCreateOrUpdateRequestTagsMap =
+  GetPublicCloudConnectorResponseTagsMap as any as S.Schema<PublicCloudConnectorsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of public cloud connectors. */
 export interface PublicCloudConnectorPropertiesInput {
@@ -1787,10 +1725,8 @@ export const PublicCloudConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 export type PublicCloudConnectorsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudConnectorsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponseTagsMap>;
+export const PublicCloudConnectorsCreateOrUpdateResponseTagsMap =
+  GetPublicCloudConnectorResponseTagsMap as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponseTagsMap>;
 
 export interface PublicCloudConnectorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1810,20 +1746,8 @@ export interface PublicCloudConnectorsCreateOrUpdateResponse {
   /** The kind of the public cloud connector. */
   kind?: HostType;
 }
-export const PublicCloudConnectorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PublicCloudConnectorsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PublicCloudConnectorProperties),
-    kind: S.optional(HostType),
-  }),
-).annotate({
-  identifier: "PublicCloudConnectorsCreateOrUpdateResponse",
-}) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponse>;
+export const PublicCloudConnectorsCreateOrUpdateResponse =
+  GetPublicCloudConnectorResponse as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponse>;
 
 /** Solution configuration resource. */
 export type SolutionConfigurationPropertiesInput = SolutionTypeSettings;
@@ -1866,17 +1790,8 @@ export interface SolutionConfigurationsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SolutionConfigurationProperties;
 }
-export const SolutionConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionConfigurationProperties),
-  }),
-).annotate({
-  identifier: "SolutionConfigurationsCreateOrUpdateResponse",
-}) as any as S.Schema<SolutionConfigurationsCreateOrUpdateResponse>;
+export const SolutionConfigurationsCreateOrUpdateResponse =
+  GetSolutionConfigurationResponse as any as S.Schema<SolutionConfigurationsCreateOrUpdateResponse>;
 
 export interface SyncSolutionConfigurationNowRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -2060,9 +1975,8 @@ export const TestPublicCloudConnectorPermissionsRequest = /*@__PURE__*/ S.suspen
 /** The operations list. */
 export type TestPublicCloudConnectorPermissionsResponseOperationsList =
   Array<OperationStatusResult>;
-export const TestPublicCloudConnectorPermissionsResponseOperationsList = /*@__PURE__*/ S.Array(
-  OperationStatusResult,
-) as any as S.Schema<TestPublicCloudConnectorPermissionsResponseOperationsList>;
+export const TestPublicCloudConnectorPermissionsResponseOperationsList =
+  SyncSolutionConfigurationNowResponseOperationsList as any as S.Schema<TestPublicCloudConnectorPermissionsResponseOperationsList>;
 
 export interface TestPublicCloudConnectorPermissionsResponse {
   /** Fully qualified ID for the async operation. */
@@ -2084,21 +1998,8 @@ export interface TestPublicCloudConnectorPermissionsResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const TestPublicCloudConnectorPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.String,
-    percentComplete: S.optional(S.Number),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    operations: S.optional(TestPublicCloudConnectorPermissionsResponseOperationsList),
-    error: S.optional(ErrorDetail),
-  }),
-).annotate({
-  identifier: "TestPublicCloudConnectorPermissionsResponse",
-}) as any as S.Schema<TestPublicCloudConnectorPermissionsResponse>;
+export const TestPublicCloudConnectorPermissionsResponse =
+  SyncSolutionConfigurationNowResponse as any as S.Schema<TestPublicCloudConnectorPermissionsResponse>;
 
 export interface UpdateEndpointRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -2135,28 +2036,18 @@ export interface UpdateEndpointResponse {
   /** The endpoint properties. */
   properties?: EndpointProperties;
 }
-export const UpdateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({ identifier: "UpdateEndpointResponse" }) as any as S.Schema<UpdateEndpointResponse>;
+export const UpdateEndpointResponse =
+  GetEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
 
 /** Resource tags. */
 export type UpdatePublicCloudConnectorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePublicCloudConnectorRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePublicCloudConnectorRequestTagsMap>;
+export const UpdatePublicCloudConnectorRequestTagsMap =
+  GetPublicCloudConnectorResponseTagsMap as any as S.Schema<UpdatePublicCloudConnectorRequestTagsMap>;
 
 /** List of AWS accounts which need to be excluded. */
 export type AwsCloudProfileUpdateExcludedAccountsList = Array<string>;
-export const AwsCloudProfileUpdateExcludedAccountsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AwsCloudProfileUpdateExcludedAccountsList>;
+export const AwsCloudProfileUpdateExcludedAccountsList =
+  AwsCloudProfileExcludedAccountsList as any as S.Schema<AwsCloudProfileUpdateExcludedAccountsList>;
 
 /** cloud profile for AWS. */
 export interface AwsCloudProfileUpdate {
@@ -2171,15 +2062,13 @@ export const AwsCloudProfileUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** List of GCP projects which need to be excluded. */
 export type GcpOrganizationPropertiesUpdateExcludedProjectNumbersList = Array<string>;
-export const GcpOrganizationPropertiesUpdateExcludedProjectNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GcpOrganizationPropertiesUpdateExcludedProjectNumbersList>;
+export const GcpOrganizationPropertiesUpdateExcludedProjectNumbersList =
+  AwsCloudProfileExcludedAccountsList as any as S.Schema<GcpOrganizationPropertiesUpdateExcludedProjectNumbersList>;
 
 /** List of GCP folders which need to be excluded. */
 export type GcpOrganizationPropertiesUpdateExcludedFolderIdsList = Array<string>;
-export const GcpOrganizationPropertiesUpdateExcludedFolderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GcpOrganizationPropertiesUpdateExcludedFolderIdsList>;
+export const GcpOrganizationPropertiesUpdateExcludedFolderIdsList =
+  AwsCloudProfileExcludedAccountsList as any as S.Schema<GcpOrganizationPropertiesUpdateExcludedFolderIdsList>;
 
 /** GCP organization properties for update. */
 export interface GcpOrganizationPropertiesUpdate {
@@ -2257,10 +2146,8 @@ export const UpdatePublicCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePublicCloudConnectorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePublicCloudConnectorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePublicCloudConnectorResponseTagsMap>;
+export const UpdatePublicCloudConnectorResponseTagsMap =
+  GetPublicCloudConnectorResponseTagsMap as any as S.Schema<UpdatePublicCloudConnectorResponseTagsMap>;
 
 export interface UpdatePublicCloudConnectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2280,20 +2167,8 @@ export interface UpdatePublicCloudConnectorResponse {
   /** The kind of the public cloud connector. */
   kind?: HostType;
 }
-export const UpdatePublicCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdatePublicCloudConnectorResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PublicCloudConnectorProperties),
-    kind: S.optional(HostType),
-  }),
-).annotate({
-  identifier: "UpdatePublicCloudConnectorResponse",
-}) as any as S.Schema<UpdatePublicCloudConnectorResponse>;
+export const UpdatePublicCloudConnectorResponse =
+  GetPublicCloudConnectorResponse as any as S.Schema<UpdatePublicCloudConnectorResponse>;
 
 /** Service configuration details */
 export interface ServiceConfigurationPropertiesPatch {
@@ -2348,17 +2223,8 @@ export interface UpdateServiceConfigurationResponse {
   /** The service configuration properties. */
   properties?: ServiceConfigurationProperties;
 }
-export const UpdateServiceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateServiceConfigurationResponse",
-}) as any as S.Schema<UpdateServiceConfigurationResponse>;
+export const UpdateServiceConfigurationResponse =
+  CreateServiceConfigurationOrupdateResponse as any as S.Schema<UpdateServiceConfigurationResponse>;
 
 /** Solution configuration resource. */
 export interface SolutionConfigurationPropertiesUpdate {
@@ -2413,17 +2279,8 @@ export interface UpdateSolutionConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: SolutionConfigurationProperties;
 }
-export const UpdateSolutionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SolutionConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateSolutionConfigurationResponse",
-}) as any as S.Schema<UpdateSolutionConfigurationResponse>;
+export const UpdateSolutionConfigurationResponse =
+  GetSolutionConfigurationResponse as any as S.Schema<UpdateSolutionConfigurationResponse>;
 
 export type CreateServiceConfigurationOrupdateError = AzureOpError;
 /** Create or update a service in serviceConfiguration for the endpoint resource. */

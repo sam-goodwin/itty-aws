@@ -219,23 +219,13 @@ export interface CancelChannelHandshakeDetail {
   arn?: string;
   status?: HandshakeStatus;
 }
-export const CancelChannelHandshakeDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    status: S.optional(HandshakeStatus),
-  }),
-).annotate({
-  identifier: "CancelChannelHandshakeDetail",
-}) as any as S.Schema<CancelChannelHandshakeDetail>;
+export const CancelChannelHandshakeDetail =
+  AcceptChannelHandshakeDetail as any as S.Schema<CancelChannelHandshakeDetail>;
 export interface CancelChannelHandshakeResponse {
   channelHandshakeDetail?: CancelChannelHandshakeDetail;
 }
-export const CancelChannelHandshakeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ channelHandshakeDetail: S.optional(CancelChannelHandshakeDetail) }),
-).annotate({
-  identifier: "CancelChannelHandshakeResponse",
-}) as any as S.Schema<CancelChannelHandshakeResponse>;
+export const CancelChannelHandshakeResponse =
+  AcceptChannelHandshakeResponse as any as S.Schema<CancelChannelHandshakeResponse>;
 export type HandshakeType =
   | "START_SERVICE_PERIOD"
   | "REVOKE_SERVICE_PERIOD"
@@ -374,11 +364,8 @@ export interface CreateProgramManagementAccountDetail {
   id?: string;
   arn?: string;
 }
-export const CreateProgramManagementAccountDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), arn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateProgramManagementAccountDetail",
-}) as any as S.Schema<CreateProgramManagementAccountDetail>;
+export const CreateProgramManagementAccountDetail =
+  CreateChannelHandshakeDetail as any as S.Schema<CreateProgramManagementAccountDetail>;
 export interface CreateProgramManagementAccountResponse {
   programManagementAccountDetail?: CreateProgramManagementAccountDetail;
 }
@@ -428,9 +415,7 @@ export interface ResoldUnifiedOperations {
   tamLocation: string;
   chargeAccountId?: string;
 }
-export const ResoldUnifiedOperations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ coverage: Coverage, tamLocation: S.String, chargeAccountId: S.optional(S.String) }),
-).annotate({ identifier: "ResoldUnifiedOperations" }) as any as S.Schema<ResoldUnifiedOperations>;
+export const ResoldUnifiedOperations = ResoldEnterprise as any as S.Schema<ResoldUnifiedOperations>;
 export type SupportPlan =
   | {
       resoldEnterprise: ResoldEnterprise;
@@ -621,11 +606,8 @@ export const StartServicePeriodTypeFilters = /*@__PURE__*/ S.suspend(() =>
 export interface RevokeServicePeriodTypeFilters {
   servicePeriodTypes?: ServicePeriodType[];
 }
-export const RevokeServicePeriodTypeFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ servicePeriodTypes: S.optional(ServicePeriodTypeList) }),
-).annotate({
-  identifier: "RevokeServicePeriodTypeFilters",
-}) as any as S.Schema<RevokeServicePeriodTypeFilters>;
+export const RevokeServicePeriodTypeFilters =
+  StartServicePeriodTypeFilters as any as S.Schema<RevokeServicePeriodTypeFilters>;
 export type ProgramList = Program[];
 export const ProgramList = /*@__PURE__*/ S.Array(Program);
 export interface ProgramManagementAccountTypeFilters {
@@ -775,17 +757,8 @@ export interface RevokeServicePeriodHandshakeDetail {
   startDate?: Date;
   endDate?: Date;
 }
-export const RevokeServicePeriodHandshakeDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    note: S.optional(S.String),
-    servicePeriodType: S.optional(ServicePeriodType),
-    minimumNoticeDays: S.optional(S.String),
-    startDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "RevokeServicePeriodHandshakeDetail",
-}) as any as S.Schema<RevokeServicePeriodHandshakeDetail>;
+export const RevokeServicePeriodHandshakeDetail =
+  StartServicePeriodHandshakeDetail as any as S.Schema<RevokeServicePeriodHandshakeDetail>;
 export interface ProgramManagementAccountHandshakeDetail {
   program?: Program;
 }
@@ -863,9 +836,10 @@ export const ListChannelHandshakesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChannelHandshakesResponse",
 }) as any as S.Schema<ListChannelHandshakesResponse>;
 export type ProgramManagementAccountDisplayNameList = string[];
-export const ProgramManagementAccountDisplayNameList = /*@__PURE__*/ S.Array(S.String);
+export const ProgramManagementAccountDisplayNameList =
+  AssociatedResourceIdentifierList as any as S.Schema<ProgramManagementAccountDisplayNameList>;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const AccountIdList = AssociatedResourceIdentifierList as any as S.Schema<AccountIdList>;
 export type ProgramManagementAccountStatus = "PENDING" | "ACTIVE" | "INACTIVE" | (string & {});
 export const ProgramManagementAccountStatus = S.String;
 
@@ -967,9 +941,11 @@ export const ListProgramManagementAccountsResponse = /*@__PURE__*/ S.suspend(() 
 export type AssociationTypeList = AssociationType[];
 export const AssociationTypeList = /*@__PURE__*/ S.Array(AssociationType);
 export type RelationshipDisplayNameList = string[];
-export const RelationshipDisplayNameList = /*@__PURE__*/ S.Array(S.String);
+export const RelationshipDisplayNameList =
+  AssociatedResourceIdentifierList as any as S.Schema<RelationshipDisplayNameList>;
 export type ProgramManagementAccountIdentifierList = string[];
-export const ProgramManagementAccountIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const ProgramManagementAccountIdentifierList =
+  AssociatedResourceIdentifierList as any as S.Schema<ProgramManagementAccountIdentifierList>;
 export type ListRelationshipsSortName = "UpdatedAt" | (string & {});
 export const ListRelationshipsSortName = S.String;
 
@@ -1082,23 +1058,13 @@ export interface RejectChannelHandshakeDetail {
   arn?: string;
   status?: HandshakeStatus;
 }
-export const RejectChannelHandshakeDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    status: S.optional(HandshakeStatus),
-  }),
-).annotate({
-  identifier: "RejectChannelHandshakeDetail",
-}) as any as S.Schema<RejectChannelHandshakeDetail>;
+export const RejectChannelHandshakeDetail =
+  AcceptChannelHandshakeDetail as any as S.Schema<RejectChannelHandshakeDetail>;
 export interface RejectChannelHandshakeResponse {
   channelHandshakeDetail?: RejectChannelHandshakeDetail;
 }
-export const RejectChannelHandshakeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ channelHandshakeDetail: S.optional(RejectChannelHandshakeDetail) }),
-).annotate({
-  identifier: "RejectChannelHandshakeResponse",
-}) as any as S.Schema<RejectChannelHandshakeResponse>;
+export const RejectChannelHandshakeResponse =
+  AcceptChannelHandshakeResponse as any as S.Schema<RejectChannelHandshakeResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -1109,11 +1075,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteRelationshipResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AssociatedResourceIdentifierList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1124,9 +1089,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteRelationshipResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateProgramManagementAccountRequest {
   catalog: string;
   identifier: string;

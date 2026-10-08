@@ -953,15 +953,10 @@ export interface EntityKey {
   /** The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`. */
   namespace?: string;
 }
-export const EntityKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    namespace: S.optional(S.String),
-  }),
-).annotate({ identifier: "EntityKey" }) as any as S.Schema<EntityKey>;
+export const EntityKey = ExternalId as any as S.Schema<EntityKey>;
 
 export type EntityKeyList = Array<EntityKey>;
-export const EntityKeyList = /*@__PURE__*/ S.Array(EntityKey) as any as S.Schema<EntityKeyList>;
+export const EntityKeyList = ExternalIdList as any as S.Schema<EntityKeyList>;
 
 /** POSIX Group definition to represent a group in a POSIX compliant system. Caution: POSIX groups are deprecated. As of September 26, 2024, you can no longer create new POSIX groups. For more information, see https://cloud.google.com/identity/docs/deprecations/posix-groups */
 export interface PosixGroup {
@@ -2120,11 +2115,7 @@ export interface DsaPublicKeyInfo {
   /** Key size in bits (size of parameter P). */
   keySize?: number;
 }
-export const DsaPublicKeyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keySize: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DsaPublicKeyInfo" }) as any as S.Schema<DsaPublicKeyInfo>;
+export const DsaPublicKeyInfo = RsaPublicKeyInfo as any as S.Schema<DsaPublicKeyInfo>;
 
 /** Credential for verifying signatures produced by the Identity Provider. */
 export interface IdpCredential {
@@ -3375,12 +3366,7 @@ export interface SearchGroupsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
   nextPageToken?: string;
 }
-export const SearchGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: S.optional(GroupList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "SearchGroupsResponse" }) as any as S.Schema<SearchGroupsResponse>;
+export const SearchGroupsResponse = ListGroupsResponse as any as S.Schema<SearchGroupsResponse>;
 
 export interface SearchTransitiveGroupsGroupsMembershipsRequest {
   /** The `next_page_token` value returned from a previous list request, if any. */

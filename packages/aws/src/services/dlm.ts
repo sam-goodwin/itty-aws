@@ -150,9 +150,9 @@ export const TargetTagList = /*@__PURE__*/ S.Array(Tag);
 export type ScheduleName = string;
 export type CopyTags = boolean;
 export type TagsToAddList = Tag[];
-export const TagsToAddList = /*@__PURE__*/ S.Array(Tag);
+export const TagsToAddList = TargetTagList as any as S.Schema<TagsToAddList>;
 export type VariableTagsList = Tag[];
-export const VariableTagsList = /*@__PURE__*/ S.Array(Tag);
+export const VariableTagsList = TargetTagList as any as S.Schema<VariableTagsList>;
 export type LocationValues = "CLOUD" | "OUTPOST_LOCAL" | "LOCAL_ZONE" | (string & {});
 export const LocationValues = S.String;
 
@@ -233,10 +233,10 @@ export const RetainRule = /*@__PURE__*/ S.suspend(() =>
 export type Count = number;
 export type AvailabilityZone = string;
 export type AvailabilityZoneList = string[];
-export const AvailabilityZoneList = /*@__PURE__*/ S.Array(S.String);
+export const AvailabilityZoneList = TimesList as any as S.Schema<AvailabilityZoneList>;
 export type AvailabilityZoneId = string;
 export type AvailabilityZoneIdList = string[];
-export const AvailabilityZoneIdList = /*@__PURE__*/ S.Array(S.String);
+export const AvailabilityZoneIdList = TimesList as any as S.Schema<AvailabilityZoneIdList>;
 export interface FastRestoreRule {
   Count?: number;
   Interval?: number;
@@ -274,14 +274,8 @@ export interface CrossRegionCopyDeprecateRule {
   Interval?: number;
   IntervalUnit?: RetentionIntervalUnitValues;
 }
-export const CrossRegionCopyDeprecateRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Interval: S.optional(S.Number),
-    IntervalUnit: S.optional(RetentionIntervalUnitValues),
-  }),
-).annotate({
-  identifier: "CrossRegionCopyDeprecateRule",
-}) as any as S.Schema<CrossRegionCopyDeprecateRule>;
+export const CrossRegionCopyDeprecateRule =
+  CrossRegionCopyRetainRule as any as S.Schema<CrossRegionCopyDeprecateRule>;
 export interface CrossRegionCopyRule {
   TargetRegion?: string;
   Target?: string;
@@ -306,7 +300,7 @@ export type CrossRegionCopyRules = CrossRegionCopyRule[];
 export const CrossRegionCopyRules = /*@__PURE__*/ S.Array(CrossRegionCopyRule);
 export type AwsAccountId = string;
 export type ShareTargetAccountList = string[];
-export const ShareTargetAccountList = /*@__PURE__*/ S.Array(S.String);
+export const ShareTargetAccountList = TimesList as any as S.Schema<ShareTargetAccountList>;
 export interface ShareRule {
   TargetAccounts?: string[];
   UnshareInterval?: number;
@@ -326,25 +320,13 @@ export interface DeprecateRule {
   Interval?: number;
   IntervalUnit?: RetentionIntervalUnitValues;
 }
-export const DeprecateRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Count: S.optional(S.Number),
-    Interval: S.optional(S.Number),
-    IntervalUnit: S.optional(RetentionIntervalUnitValues),
-  }),
-).annotate({ identifier: "DeprecateRule" }) as any as S.Schema<DeprecateRule>;
+export const DeprecateRule = RetainRule as any as S.Schema<DeprecateRule>;
 export interface RetentionArchiveTier {
   Count?: number;
   Interval?: number;
   IntervalUnit?: RetentionIntervalUnitValues;
 }
-export const RetentionArchiveTier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Count: S.optional(S.Number),
-    Interval: S.optional(S.Number),
-    IntervalUnit: S.optional(RetentionIntervalUnitValues),
-  }),
-).annotate({ identifier: "RetentionArchiveTier" }) as any as S.Schema<RetentionArchiveTier>;
+export const RetentionArchiveTier = RetainRule as any as S.Schema<RetentionArchiveTier>;
 export interface ArchiveRetainRule {
   RetentionArchiveTier?: RetentionArchiveTier;
 }
@@ -390,7 +372,7 @@ export const ScheduleList = /*@__PURE__*/ S.Array(Schedule);
 export type ExcludeBootVolume = boolean;
 export type NoReboot = boolean;
 export type ExcludeDataVolumeTagList = Tag[];
-export const ExcludeDataVolumeTagList = /*@__PURE__*/ S.Array(Tag);
+export const ExcludeDataVolumeTagList = TargetTagList as any as S.Schema<ExcludeDataVolumeTagList>;
 export interface Parameters {
   ExcludeBootVolume?: boolean;
   NoReboot?: boolean;
@@ -410,7 +392,7 @@ export type EventTypeValues = "shareSnapshot" | (string & {});
 export const EventTypeValues = S.String;
 
 export type SnapshotOwnerList = string[];
-export const SnapshotOwnerList = /*@__PURE__*/ S.Array(S.String);
+export const SnapshotOwnerList = TimesList as any as S.Schema<SnapshotOwnerList>;
 export type DescriptionRegex = string;
 export interface EventParameters {
   EventType?: EventTypeValues;
@@ -479,9 +461,9 @@ export type ExtendDeletion = boolean;
 export type ExcludeBootVolumes = boolean;
 export type VolumeTypeValues = string;
 export type ExcludeVolumeTypesList = string[];
-export const ExcludeVolumeTypesList = /*@__PURE__*/ S.Array(S.String);
+export const ExcludeVolumeTypesList = TimesList as any as S.Schema<ExcludeVolumeTypesList>;
 export type ExcludeTagsList = Tag[];
-export const ExcludeTagsList = /*@__PURE__*/ S.Array(Tag);
+export const ExcludeTagsList = TargetTagList as any as S.Schema<ExcludeTagsList>;
 export interface Exclusions {
   ExcludeBootVolumes?: boolean;
   ExcludeVolumeTypes?: string[];
@@ -595,15 +577,15 @@ export const DeleteLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Str
   identifier: "DeleteLifecyclePolicyResponse",
 }) as any as S.Schema<DeleteLifecyclePolicyResponse>;
 export type PolicyIdList = string[];
-export const PolicyIdList = /*@__PURE__*/ S.Array(S.String);
+export const PolicyIdList = TimesList as any as S.Schema<PolicyIdList>;
 export type GettablePolicyStateValues = "ENABLED" | "DISABLED" | "ERROR" | (string & {});
 export const GettablePolicyStateValues = S.String;
 
 export type TagFilter = string;
 export type TargetTagsFilterList = string[];
-export const TargetTagsFilterList = /*@__PURE__*/ S.Array(S.String);
+export const TargetTagsFilterList = TimesList as any as S.Schema<TargetTagsFilterList>;
 export type TagsToAddFilterList = string[];
-export const TagsToAddFilterList = /*@__PURE__*/ S.Array(S.String);
+export const TagsToAddFilterList = TimesList as any as S.Schema<TagsToAddFilterList>;
 export type DefaultPoliciesTypeValues = "VOLUME" | "INSTANCE" | "ALL" | (string & {});
 export const DefaultPoliciesTypeValues = S.String;
 
@@ -766,11 +748,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteLifecyclePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TimesList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -784,9 +765,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteLifecyclePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLifecyclePolicyRequest {
   PolicyId: string;
   ExecutionRoleArn?: string;
@@ -820,14 +800,13 @@ export const UpdateLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLifecyclePolicyRequest",
 }) as any as S.Schema<UpdateLifecyclePolicyRequest>;
 export interface UpdateLifecyclePolicyResponse {}
-export const UpdateLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLifecyclePolicyResponse",
-}) as any as S.Schema<UpdateLifecyclePolicyResponse>;
+export const UpdateLifecyclePolicyResponse =
+  DeleteLifecyclePolicyResponse as any as S.Schema<UpdateLifecyclePolicyResponse>;
 export type ErrorMessage = string;
 export type ErrorCode = string;
 export type Parameter = string;
 export type ParameterList = string[];
-export const ParameterList = /*@__PURE__*/ S.Array(S.String);
+export const ParameterList = TimesList as any as S.Schema<ParameterList>;
 export type CreateLifecyclePolicyError =
   | InternalServerException
   | InvalidRequestException

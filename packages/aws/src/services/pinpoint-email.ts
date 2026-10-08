@@ -347,9 +347,8 @@ export const CreateDedicatedIpPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDedicatedIpPoolRequest",
 }) as any as S.Schema<CreateDedicatedIpPoolRequest>;
 export interface CreateDedicatedIpPoolResponse {}
-export const CreateDedicatedIpPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDedicatedIpPoolResponse",
-}) as any as S.Schema<CreateDedicatedIpPoolResponse>;
+export const CreateDedicatedIpPoolResponse =
+  CreateConfigurationSetResponse as any as S.Schema<CreateDedicatedIpPoolResponse>;
 export type ReportName = string;
 export type EmailAddress = string;
 export type MessageData = string;
@@ -512,9 +511,8 @@ export const DeleteConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigurationSetRequest",
 }) as any as S.Schema<DeleteConfigurationSetRequest>;
 export interface DeleteConfigurationSetResponse {}
-export const DeleteConfigurationSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConfigurationSetResponse",
-}) as any as S.Schema<DeleteConfigurationSetResponse>;
+export const DeleteConfigurationSetResponse =
+  CreateConfigurationSetResponse as any as S.Schema<DeleteConfigurationSetResponse>;
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
@@ -540,11 +538,8 @@ export const DeleteConfigurationSetEventDestinationRequest = /*@__PURE__*/ S.sus
   identifier: "DeleteConfigurationSetEventDestinationRequest",
 }) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>;
 export interface DeleteConfigurationSetEventDestinationResponse {}
-export const DeleteConfigurationSetEventDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationSetEventDestinationResponse",
-}) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
+export const DeleteConfigurationSetEventDestinationResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
 export interface DeleteDedicatedIpPoolRequest {
   PoolName: string;
 }
@@ -563,9 +558,8 @@ export const DeleteDedicatedIpPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDedicatedIpPoolRequest",
 }) as any as S.Schema<DeleteDedicatedIpPoolRequest>;
 export interface DeleteDedicatedIpPoolResponse {}
-export const DeleteDedicatedIpPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDedicatedIpPoolResponse",
-}) as any as S.Schema<DeleteDedicatedIpPoolResponse>;
+export const DeleteDedicatedIpPoolResponse =
+  CreateConfigurationSetResponse as any as S.Schema<DeleteDedicatedIpPoolResponse>;
 export interface DeleteEmailIdentityRequest {
   EmailIdentity: string;
 }
@@ -584,9 +578,8 @@ export const DeleteEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEmailIdentityRequest",
 }) as any as S.Schema<DeleteEmailIdentityRequest>;
 export interface DeleteEmailIdentityResponse {}
-export const DeleteEmailIdentityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailIdentityResponse",
-}) as any as S.Schema<DeleteEmailIdentityResponse>;
+export const DeleteEmailIdentityResponse =
+  CreateConfigurationSetResponse as any as S.Schema<DeleteEmailIdentityResponse>;
 export interface GetAccountRequest {}
 export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -627,7 +620,7 @@ export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccountResponse" }) as any as S.Schema<GetAccountResponse>;
 export type BlacklistItemName = string;
 export type BlacklistItemNames = string[];
-export const BlacklistItemNames = /*@__PURE__*/ S.Array(S.String);
+export const BlacklistItemNames = DnsTokenList as any as S.Schema<BlacklistItemNames>;
 export interface GetBlacklistReportsRequest {
   BlacklistItemNames: string[];
 }
@@ -851,7 +844,7 @@ export const DeliverabilityDashboardAccountStatus = S.String;
 export type Domain = string;
 export type IspName = string;
 export type IspNameList = string[];
-export const IspNameList = /*@__PURE__*/ S.Array(S.String);
+export const IspNameList = DnsTokenList as any as S.Schema<IspNameList>;
 export interface InboxPlacementTrackingOption {
   Global?: boolean;
   TrackedIsps?: string[];
@@ -999,11 +992,11 @@ export const GetDomainDeliverabilityCampaignRequest = /*@__PURE__*/ S.suspend(()
 export type ImageUrl = string;
 export type Subject = string;
 export type IpList = string[];
-export const IpList = /*@__PURE__*/ S.Array(S.String);
+export const IpList = DnsTokenList as any as S.Schema<IpList>;
 export type Volume = number;
 export type Esp = string;
 export type Esps = string[];
-export const Esps = /*@__PURE__*/ S.Array(S.String);
+export const Esps = DnsTokenList as any as S.Schema<Esps>;
 export interface DomainDeliverabilityCampaign {
   CampaignId?: string;
   ImageUrl?: string;
@@ -1220,7 +1213,7 @@ export const ListConfigurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConfigurationSetsRequest",
 }) as any as S.Schema<ListConfigurationSetsRequest>;
 export type ConfigurationSetNameList = string[];
-export const ConfigurationSetNameList = /*@__PURE__*/ S.Array(S.String);
+export const ConfigurationSetNameList = DnsTokenList as any as S.Schema<ConfigurationSetNameList>;
 export interface ListConfigurationSetsResponse {
   ConfigurationSets?: string[];
   NextToken?: string;
@@ -1255,7 +1248,7 @@ export const ListDedicatedIpPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDedicatedIpPoolsRequest",
 }) as any as S.Schema<ListDedicatedIpPoolsRequest>;
 export type ListOfDedicatedIpPools = string[];
-export const ListOfDedicatedIpPools = /*@__PURE__*/ S.Array(S.String);
+export const ListOfDedicatedIpPools = DnsTokenList as any as S.Schema<ListOfDedicatedIpPools>;
 export interface ListDedicatedIpPoolsResponse {
   DedicatedIpPools?: string[];
   NextToken?: string;
@@ -1420,11 +1413,8 @@ export const PutAccountDedicatedIpWarmupAttributesRequest = /*@__PURE__*/ S.susp
   identifier: "PutAccountDedicatedIpWarmupAttributesRequest",
 }) as any as S.Schema<PutAccountDedicatedIpWarmupAttributesRequest>;
 export interface PutAccountDedicatedIpWarmupAttributesResponse {}
-export const PutAccountDedicatedIpWarmupAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutAccountDedicatedIpWarmupAttributesResponse",
-}) as any as S.Schema<PutAccountDedicatedIpWarmupAttributesResponse>;
+export const PutAccountDedicatedIpWarmupAttributesResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutAccountDedicatedIpWarmupAttributesResponse>;
 export interface PutAccountSendingAttributesRequest {
   SendingEnabled?: boolean;
 }
@@ -1443,11 +1433,8 @@ export const PutAccountSendingAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAccountSendingAttributesRequest",
 }) as any as S.Schema<PutAccountSendingAttributesRequest>;
 export interface PutAccountSendingAttributesResponse {}
-export const PutAccountSendingAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutAccountSendingAttributesResponse",
-}) as any as S.Schema<PutAccountSendingAttributesResponse>;
+export const PutAccountSendingAttributesResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutAccountSendingAttributesResponse>;
 export type SendingPoolName = string;
 export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
@@ -1476,11 +1463,8 @@ export const PutConfigurationSetDeliveryOptionsRequest = /*@__PURE__*/ S.suspend
   identifier: "PutConfigurationSetDeliveryOptionsRequest",
 }) as any as S.Schema<PutConfigurationSetDeliveryOptionsRequest>;
 export interface PutConfigurationSetDeliveryOptionsResponse {}
-export const PutConfigurationSetDeliveryOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutConfigurationSetDeliveryOptionsResponse",
-}) as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>;
+export const PutConfigurationSetDeliveryOptionsResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>;
 export interface PutConfigurationSetReputationOptionsRequest {
   ConfigurationSetName: string;
   ReputationMetricsEnabled?: boolean;
@@ -1506,11 +1490,8 @@ export const PutConfigurationSetReputationOptionsRequest = /*@__PURE__*/ S.suspe
   identifier: "PutConfigurationSetReputationOptionsRequest",
 }) as any as S.Schema<PutConfigurationSetReputationOptionsRequest>;
 export interface PutConfigurationSetReputationOptionsResponse {}
-export const PutConfigurationSetReputationOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutConfigurationSetReputationOptionsResponse",
-}) as any as S.Schema<PutConfigurationSetReputationOptionsResponse>;
+export const PutConfigurationSetReputationOptionsResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutConfigurationSetReputationOptionsResponse>;
 export interface PutConfigurationSetSendingOptionsRequest {
   ConfigurationSetName: string;
   SendingEnabled?: boolean;
@@ -1533,11 +1514,8 @@ export const PutConfigurationSetSendingOptionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "PutConfigurationSetSendingOptionsRequest",
 }) as any as S.Schema<PutConfigurationSetSendingOptionsRequest>;
 export interface PutConfigurationSetSendingOptionsResponse {}
-export const PutConfigurationSetSendingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutConfigurationSetSendingOptionsResponse",
-}) as any as S.Schema<PutConfigurationSetSendingOptionsResponse>;
+export const PutConfigurationSetSendingOptionsResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutConfigurationSetSendingOptionsResponse>;
 export interface PutConfigurationSetTrackingOptionsRequest {
   ConfigurationSetName: string;
   CustomRedirectDomain?: string;
@@ -1563,11 +1541,8 @@ export const PutConfigurationSetTrackingOptionsRequest = /*@__PURE__*/ S.suspend
   identifier: "PutConfigurationSetTrackingOptionsRequest",
 }) as any as S.Schema<PutConfigurationSetTrackingOptionsRequest>;
 export interface PutConfigurationSetTrackingOptionsResponse {}
-export const PutConfigurationSetTrackingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutConfigurationSetTrackingOptionsResponse",
-}) as any as S.Schema<PutConfigurationSetTrackingOptionsResponse>;
+export const PutConfigurationSetTrackingOptionsResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutConfigurationSetTrackingOptionsResponse>;
 export interface PutDedicatedIpInPoolRequest {
   Ip: string;
   DestinationPoolName: string;
@@ -1587,9 +1562,8 @@ export const PutDedicatedIpInPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutDedicatedIpInPoolRequest",
 }) as any as S.Schema<PutDedicatedIpInPoolRequest>;
 export interface PutDedicatedIpInPoolResponse {}
-export const PutDedicatedIpInPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDedicatedIpInPoolResponse",
-}) as any as S.Schema<PutDedicatedIpInPoolResponse>;
+export const PutDedicatedIpInPoolResponse =
+  CreateConfigurationSetResponse as any as S.Schema<PutDedicatedIpInPoolResponse>;
 export interface PutDedicatedIpWarmupAttributesRequest {
   Ip: string;
   WarmupPercentage: number;
@@ -1609,11 +1583,8 @@ export const PutDedicatedIpWarmupAttributesRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "PutDedicatedIpWarmupAttributesRequest",
 }) as any as S.Schema<PutDedicatedIpWarmupAttributesRequest>;
 export interface PutDedicatedIpWarmupAttributesResponse {}
-export const PutDedicatedIpWarmupAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDedicatedIpWarmupAttributesResponse",
-}) as any as S.Schema<PutDedicatedIpWarmupAttributesResponse>;
+export const PutDedicatedIpWarmupAttributesResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutDedicatedIpWarmupAttributesResponse>;
 export interface PutDeliverabilityDashboardOptionRequest {
   DashboardEnabled: boolean;
   SubscribedDomains?: DomainDeliverabilityTrackingOption[];
@@ -1636,11 +1607,8 @@ export const PutDeliverabilityDashboardOptionRequest = /*@__PURE__*/ S.suspend((
   identifier: "PutDeliverabilityDashboardOptionRequest",
 }) as any as S.Schema<PutDeliverabilityDashboardOptionRequest>;
 export interface PutDeliverabilityDashboardOptionResponse {}
-export const PutDeliverabilityDashboardOptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDeliverabilityDashboardOptionResponse",
-}) as any as S.Schema<PutDeliverabilityDashboardOptionResponse>;
+export const PutDeliverabilityDashboardOptionResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutDeliverabilityDashboardOptionResponse>;
 export interface PutEmailIdentityDkimAttributesRequest {
   EmailIdentity: string;
   SigningEnabled?: boolean;
@@ -1663,11 +1631,8 @@ export const PutEmailIdentityDkimAttributesRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "PutEmailIdentityDkimAttributesRequest",
 }) as any as S.Schema<PutEmailIdentityDkimAttributesRequest>;
 export interface PutEmailIdentityDkimAttributesResponse {}
-export const PutEmailIdentityDkimAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEmailIdentityDkimAttributesResponse",
-}) as any as S.Schema<PutEmailIdentityDkimAttributesResponse>;
+export const PutEmailIdentityDkimAttributesResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutEmailIdentityDkimAttributesResponse>;
 export interface PutEmailIdentityFeedbackAttributesRequest {
   EmailIdentity: string;
   EmailForwardingEnabled?: boolean;
@@ -1690,11 +1655,8 @@ export const PutEmailIdentityFeedbackAttributesRequest = /*@__PURE__*/ S.suspend
   identifier: "PutEmailIdentityFeedbackAttributesRequest",
 }) as any as S.Schema<PutEmailIdentityFeedbackAttributesRequest>;
 export interface PutEmailIdentityFeedbackAttributesResponse {}
-export const PutEmailIdentityFeedbackAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEmailIdentityFeedbackAttributesResponse",
-}) as any as S.Schema<PutEmailIdentityFeedbackAttributesResponse>;
+export const PutEmailIdentityFeedbackAttributesResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutEmailIdentityFeedbackAttributesResponse>;
 export interface PutEmailIdentityMailFromAttributesRequest {
   EmailIdentity: string;
   MailFromDomain?: string;
@@ -1719,13 +1681,10 @@ export const PutEmailIdentityMailFromAttributesRequest = /*@__PURE__*/ S.suspend
   identifier: "PutEmailIdentityMailFromAttributesRequest",
 }) as any as S.Schema<PutEmailIdentityMailFromAttributesRequest>;
 export interface PutEmailIdentityMailFromAttributesResponse {}
-export const PutEmailIdentityMailFromAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEmailIdentityMailFromAttributesResponse",
-}) as any as S.Schema<PutEmailIdentityMailFromAttributesResponse>;
+export const PutEmailIdentityMailFromAttributesResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<PutEmailIdentityMailFromAttributesResponse>;
 export type EmailAddressList = string[];
-export const EmailAddressList = /*@__PURE__*/ S.Array(S.String);
+export const EmailAddressList = DnsTokenList as any as S.Schema<EmailAddressList>;
 export interface Destination {
   ToAddresses?: string[];
   CcAddresses?: string[];
@@ -1795,11 +1754,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CreateConfigurationSetResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = DnsTokenList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1811,9 +1769,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/v1/email/tags" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CreateConfigurationSetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
@@ -1841,11 +1798,8 @@ export const UpdateConfigurationSetEventDestinationRequest = /*@__PURE__*/ S.sus
   identifier: "UpdateConfigurationSetEventDestinationRequest",
 }) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>;
 export interface UpdateConfigurationSetEventDestinationResponse {}
-export const UpdateConfigurationSetEventDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateConfigurationSetEventDestinationResponse",
-}) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
+export const UpdateConfigurationSetEventDestinationResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
 export type ErrorMessage = string;
 export type CreateConfigurationSetError =
   | AlreadyExistsException

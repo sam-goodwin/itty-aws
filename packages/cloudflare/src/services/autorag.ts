@@ -547,9 +547,8 @@ export type SearchAiResponseDataItemContentItem = SearchResponseDataItemContentI
 export const SearchAiResponseDataItemContentItem = SearchResponseDataItemContentItem;
 
 export type SearchAiResponseDataItemContentList = Array<SearchResponseDataItemContentItem>;
-export const SearchAiResponseDataItemContentList = /*@__PURE__*/ S.Array(
-  SearchResponseDataItemContentItem,
-) as any as S.Schema<SearchAiResponseDataItemContentList>;
+export const SearchAiResponseDataItemContentList =
+  SearchResponseDataItemContentList as any as S.Schema<SearchAiResponseDataItemContentList>;
 
 export interface SearchAiResponseDataItem {
   score: number;
@@ -558,20 +557,12 @@ export interface SearchAiResponseDataItem {
   fileId?: string | null;
   filename?: string | null;
 }
-export const SearchAiResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.Number,
-    attributes: S.optional(S.NullOr(S.Unknown)),
-    content: S.optional(S.NullOr(SearchAiResponseDataItemContentList)),
-    fileId: S.optional(S.NullOr(S.String).pipe(T.Body("file_id"))),
-    filename: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "SearchAiResponseDataItem" }) as any as S.Schema<SearchAiResponseDataItem>;
+export const SearchAiResponseDataItem =
+  SearchResponseDataItem as any as S.Schema<SearchAiResponseDataItem>;
 
 export type SearchAiResponseDataList = Array<SearchAiResponseDataItem>;
-export const SearchAiResponseDataList = /*@__PURE__*/ S.Array(
-  SearchAiResponseDataItem,
-) as any as S.Schema<SearchAiResponseDataList>;
+export const SearchAiResponseDataList =
+  SearchResponseDataList as any as S.Schema<SearchAiResponseDataList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SearchAiResponse {

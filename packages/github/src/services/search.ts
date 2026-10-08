@@ -596,9 +596,8 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepository" }) as any as S.Schema<MinimalRepository>;
 
 export type CodeSearchResultItemLineNumbersList = Array<string>;
-export const CodeSearchResultItemLineNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodeSearchResultItemLineNumbersList>;
+export const CodeSearchResultItemLineNumbersList =
+  MinimalRepositoryTopicsList as any as S.Schema<CodeSearchResultItemLineNumbersList>;
 
 export type SearchResultTextMatchesItemMatchesItemIndicesList = Array<number>;
 export const SearchResultTextMatchesItemMatchesItemIndicesList = /*@__PURE__*/ S.Array(
@@ -1185,9 +1184,8 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1560,9 +1558,8 @@ export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableIntegrationEventsList>;
+export const NullableIntegrationEventsList =
+  MinimalRepositoryTopicsList as any as S.Schema<NullableIntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
@@ -1949,9 +1946,8 @@ export const ReposRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReposRequest" }) as any as S.Schema<ReposRequest>;
 
 export type RepoSearchResultItemTopicsList = Array<string>;
-export const RepoSearchResultItemTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepoSearchResultItemTopicsList>;
+export const RepoSearchResultItemTopicsList =
+  MinimalRepositoryTopicsList as any as S.Schema<RepoSearchResultItemTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepoSearchResultItemPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -2245,9 +2241,8 @@ export type TopicSearchResultItemAliasesItem = TopicSearchResultItemRelatedItem;
 export const TopicSearchResultItemAliasesItem = TopicSearchResultItemRelatedItem;
 
 export type TopicSearchResultItemAliasesList = Array<TopicSearchResultItemRelatedItem>;
-export const TopicSearchResultItemAliasesList = /*@__PURE__*/ S.Array(
-  TopicSearchResultItemRelatedItem,
-) as any as S.Schema<TopicSearchResultItemAliasesList>;
+export const TopicSearchResultItemAliasesList =
+  TopicSearchResultItemRelatedList as any as S.Schema<TopicSearchResultItemAliasesList>;
 
 /** Topic Search Result Item */
 export interface TopicSearchResultItem {

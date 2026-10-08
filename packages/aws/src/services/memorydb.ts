@@ -991,7 +991,7 @@ export const CopySnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CopySnapshotResponse" }) as any as S.Schema<CopySnapshotResponse>;
 export type UserName = string;
 export type UserNameListInput = string[];
-export const UserNameListInput = /*@__PURE__*/ S.Array(S.String);
+export const UserNameListInput = ClusterNameList as any as S.Schema<UserNameListInput>;
 export interface CreateACLRequest {
   ACLName: string;
   UserNames?: string[];
@@ -1005,7 +1005,7 @@ export const CreateACLRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateACLRequest" }) as any as S.Schema<CreateACLRequest>;
 export type UserNameList = string[];
-export const UserNameList = /*@__PURE__*/ S.Array(S.String);
+export const UserNameList = ClusterNameList as any as S.Schema<UserNameList>;
 export interface ACLPendingChanges {
   UserNamesToRemove?: string[];
   UserNamesToAdd?: string[];
@@ -1017,7 +1017,7 @@ export const ACLPendingChanges = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ACLPendingChanges" }) as any as S.Schema<ACLPendingChanges>;
 export type ACLClusterNameList = string[];
-export const ACLClusterNameList = /*@__PURE__*/ S.Array(S.String);
+export const ACLClusterNameList = ClusterNameList as any as S.Schema<ACLClusterNameList>;
 export interface ACL {
   Name?: string;
   Status?: string;
@@ -1253,9 +1253,8 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSnapshotResponse {
   Snapshot?: Snapshot;
 }
-export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
-).annotate({ identifier: "CreateSnapshotResponse" }) as any as S.Schema<CreateSnapshotResponse>;
+export const CreateSnapshotResponse =
+  CopySnapshotResponse as any as S.Schema<CreateSnapshotResponse>;
 export type SubnetIdentifierList = string[];
 export const SubnetIdentifierList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")),
@@ -1328,7 +1327,7 @@ export type InputAuthenticationType = "password" | "iam" | (string & {});
 export const InputAuthenticationType = S.String;
 
 export type PasswordListInput = string[];
-export const PasswordListInput = /*@__PURE__*/ S.Array(S.String);
+export const PasswordListInput = ClusterNameList as any as S.Schema<PasswordListInput>;
 export interface AuthenticationMode {
   Type?: InputAuthenticationType;
   Passwords?: Array<string | redacted.Redacted<string>>;
@@ -1355,7 +1354,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 export type ACLNameList = string[];
-export const ACLNameList = /*@__PURE__*/ S.Array(S.String);
+export const ACLNameList = ClusterNameList as any as S.Schema<ACLNameList>;
 export type AuthenticationType = "password" | "no-password" | "iam" | (string & {});
 export const AuthenticationType = S.String;
 
@@ -1403,9 +1402,7 @@ export const DeleteACLRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteACLResponse {
   ACL?: ACL;
 }
-export const DeleteACLResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ACL: S.optional(ACL) }).pipe(ns),
-).annotate({ identifier: "DeleteACLResponse" }) as any as S.Schema<DeleteACLResponse>;
+export const DeleteACLResponse = CreateACLResponse as any as S.Schema<DeleteACLResponse>;
 export interface DeleteClusterRequest {
   ClusterName: string;
   MultiRegionClusterName?: string;
@@ -1421,9 +1418,8 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterResponse {
   Cluster?: Cluster;
 }
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "DeleteClusterResponse" }) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse =
+  CreateClusterResponse as any as S.Schema<DeleteClusterResponse>;
 export interface DeleteMultiRegionClusterRequest {
   MultiRegionClusterName: string;
 }
@@ -1437,11 +1433,8 @@ export const DeleteMultiRegionClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
-export const DeleteMultiRegionClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
-).annotate({
-  identifier: "DeleteMultiRegionClusterResponse",
-}) as any as S.Schema<DeleteMultiRegionClusterResponse>;
+export const DeleteMultiRegionClusterResponse =
+  CreateMultiRegionClusterResponse as any as S.Schema<DeleteMultiRegionClusterResponse>;
 export interface DeleteParameterGroupRequest {
   ParameterGroupName: string;
 }
@@ -1455,11 +1448,8 @@ export const DeleteParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const DeleteParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-).annotate({
-  identifier: "DeleteParameterGroupResponse",
-}) as any as S.Schema<DeleteParameterGroupResponse>;
+export const DeleteParameterGroupResponse =
+  CreateParameterGroupResponse as any as S.Schema<DeleteParameterGroupResponse>;
 export interface DeleteSnapshotRequest {
   SnapshotName: string;
 }
@@ -1471,9 +1461,8 @@ export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSnapshotResponse {
   Snapshot?: Snapshot;
 }
-export const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
-).annotate({ identifier: "DeleteSnapshotResponse" }) as any as S.Schema<DeleteSnapshotResponse>;
+export const DeleteSnapshotResponse =
+  CopySnapshotResponse as any as S.Schema<DeleteSnapshotResponse>;
 export interface DeleteSubnetGroupRequest {
   SubnetGroupName: string;
 }
@@ -1485,11 +1474,8 @@ export const DeleteSubnetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
-export const DeleteSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
-).annotate({
-  identifier: "DeleteSubnetGroupResponse",
-}) as any as S.Schema<DeleteSubnetGroupResponse>;
+export const DeleteSubnetGroupResponse =
+  CreateSubnetGroupResponse as any as S.Schema<DeleteSubnetGroupResponse>;
 export interface DeleteUserRequest {
   UserName: string;
 }
@@ -1501,9 +1487,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteUserResponse {
   User?: User;
 }
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }).pipe(ns),
-).annotate({ identifier: "DeleteUserResponse" }) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = CreateUserResponse as any as S.Schema<DeleteUserResponse>;
 export interface DescribeACLsRequest {
   ACLName?: string;
   MaxResults?: number;
@@ -2126,7 +2110,7 @@ export const DescribeSubnetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValueList = ClusterNameList as any as S.Schema<FilterValueList>;
 export interface Filter {
   Name: string;
   Values: string[];
@@ -2171,9 +2155,8 @@ export const FailoverShardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FailoverShardResponse {
   Cluster?: Cluster;
 }
-export const FailoverShardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "FailoverShardResponse" }) as any as S.Schema<FailoverShardResponse>;
+export const FailoverShardResponse =
+  CreateClusterResponse as any as S.Schema<FailoverShardResponse>;
 export interface ListAllowedMultiRegionClusterUpdatesRequest {
   MultiRegionClusterName: string;
 }
@@ -2185,7 +2168,7 @@ export const ListAllowedMultiRegionClusterUpdatesRequest = /*@__PURE__*/ S.suspe
   identifier: "ListAllowedMultiRegionClusterUpdatesRequest",
 }) as any as S.Schema<ListAllowedMultiRegionClusterUpdatesRequest>;
 export type NodeTypeList = string[];
-export const NodeTypeList = /*@__PURE__*/ S.Array(S.String);
+export const NodeTypeList = ClusterNameList as any as S.Schema<NodeTypeList>;
 export interface ListAllowedMultiRegionClusterUpdatesResponse {
   ScaleUpNodeTypes?: string[];
   ScaleDownNodeTypes?: string[];
@@ -2212,14 +2195,8 @@ export interface ListAllowedNodeTypeUpdatesResponse {
   ScaleUpNodeTypes?: string[];
   ScaleDownNodeTypes?: string[];
 }
-export const ListAllowedNodeTypeUpdatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ScaleUpNodeTypes: S.optional(NodeTypeList),
-    ScaleDownNodeTypes: S.optional(NodeTypeList),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListAllowedNodeTypeUpdatesResponse",
-}) as any as S.Schema<ListAllowedNodeTypeUpdatesResponse>;
+export const ListAllowedNodeTypeUpdatesResponse =
+  ListAllowedMultiRegionClusterUpdatesResponse as any as S.Schema<ListAllowedNodeTypeUpdatesResponse>;
 export interface ListTagsRequest {
   ResourceArn: string;
 }
@@ -2259,7 +2236,7 @@ export const PurchaseReservedNodesOfferingResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "PurchaseReservedNodesOfferingResponse",
 }) as any as S.Schema<PurchaseReservedNodesOfferingResponse>;
 export type ParameterNameList = string[];
-export const ParameterNameList = /*@__PURE__*/ S.Array(S.String);
+export const ParameterNameList = ClusterNameList as any as S.Schema<ParameterNameList>;
 export interface ResetParameterGroupRequest {
   ParameterGroupName: string;
   AllParameters?: boolean;
@@ -2277,11 +2254,8 @@ export const ResetParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResetParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const ResetParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-).annotate({
-  identifier: "ResetParameterGroupResponse",
-}) as any as S.Schema<ResetParameterGroupResponse>;
+export const ResetParameterGroupResponse =
+  CreateParameterGroupResponse as any as S.Schema<ResetParameterGroupResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -2294,11 +2268,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TagResourceResponse {
   TagList?: Tag[];
 }
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
-).annotate({ identifier: "TagResourceResponse" }) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = ListTagsResponse as any as S.Schema<TagResourceResponse>;
 export type KeyList = string[];
-export const KeyList = /*@__PURE__*/ S.Array(S.String);
+export const KeyList = ClusterNameList as any as S.Schema<KeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2311,9 +2283,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UntagResourceResponse {
   TagList?: Tag[];
 }
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
-).annotate({ identifier: "UntagResourceResponse" }) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = ListTagsResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateACLRequest {
   ACLName: string;
   UserNamesToAdd?: string[];
@@ -2329,9 +2299,7 @@ export const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateACLResponse {
   ACL?: ACL;
 }
-export const UpdateACLResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ACL: S.optional(ACL) }).pipe(ns),
-).annotate({ identifier: "UpdateACLResponse" }) as any as S.Schema<UpdateACLResponse>;
+export const UpdateACLResponse = CreateACLResponse as any as S.Schema<UpdateACLResponse>;
 export interface ReplicaConfigurationRequest {
   ReplicaCount?: number;
 }
@@ -2389,9 +2357,8 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateClusterResponse {
   Cluster?: Cluster;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse =
+  CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
 export type UpdateStrategy = "coordinated" | "uncoordinated" | (string & {});
 export const UpdateStrategy = S.String;
 
@@ -2420,11 +2387,8 @@ export const UpdateMultiRegionClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
-export const UpdateMultiRegionClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
-).annotate({
-  identifier: "UpdateMultiRegionClusterResponse",
-}) as any as S.Schema<UpdateMultiRegionClusterResponse>;
+export const UpdateMultiRegionClusterResponse =
+  CreateMultiRegionClusterResponse as any as S.Schema<UpdateMultiRegionClusterResponse>;
 export interface ParameterNameValue {
   ParameterName?: string;
   ParameterValue?: string;
@@ -2452,11 +2416,8 @@ export const UpdateParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const UpdateParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-).annotate({
-  identifier: "UpdateParameterGroupResponse",
-}) as any as S.Schema<UpdateParameterGroupResponse>;
+export const UpdateParameterGroupResponse =
+  CreateParameterGroupResponse as any as S.Schema<UpdateParameterGroupResponse>;
 export interface UpdateSubnetGroupRequest {
   SubnetGroupName: string;
   Description?: string;
@@ -2472,11 +2433,8 @@ export const UpdateSubnetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
-export const UpdateSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns),
-).annotate({
-  identifier: "UpdateSubnetGroupResponse",
-}) as any as S.Schema<UpdateSubnetGroupResponse>;
+export const UpdateSubnetGroupResponse =
+  CreateSubnetGroupResponse as any as S.Schema<UpdateSubnetGroupResponse>;
 export interface UpdateUserRequest {
   UserName: string;
   AuthenticationMode?: AuthenticationMode;
@@ -2492,9 +2450,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUserResponse {
   User?: User;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }).pipe(ns),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = CreateUserResponse as any as S.Schema<UpdateUserResponse>;
 export type AwsQueryErrorMessage = string;
 export type ExceptionMessage = string;
 export type BatchUpdateClusterError =

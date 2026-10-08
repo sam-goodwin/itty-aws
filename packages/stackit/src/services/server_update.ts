@@ -200,9 +200,8 @@ export const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableServiceResourceRequest>;
 
 export interface DisableServiceResourceResponse {}
-export const DisableServiceResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableServiceResourceResponse",
-}) as any as S.Schema<DisableServiceResourceResponse>;
+export const DisableServiceResourceResponse =
+  DeleteUpdateScheduleResponse as any as S.Schema<DisableServiceResourceResponse>;
 
 export interface EnableServiceResourceRequest {
   /** project id */
@@ -232,9 +231,8 @@ export const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableServiceResourceRequest>;
 
 export interface EnableServiceResourceResponse {}
-export const EnableServiceResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableServiceResourceResponse",
-}) as any as S.Schema<EnableServiceResourceResponse>;
+export const EnableServiceResourceResponse =
+  DeleteUpdateScheduleResponse as any as S.Schema<EnableServiceResourceResponse>;
 
 export interface GetServiceResourceRequest {
   /** project id */
@@ -331,17 +329,8 @@ export interface GetUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
-export const GetUpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    maintenanceWindow: S.Number,
-    name: S.String,
-    rrule: S.String,
-    id: S.Number,
-  }),
-).annotate({
-  identifier: "GetUpdateScheduleResponse",
-}) as any as S.Schema<GetUpdateScheduleResponse>;
+export const GetUpdateScheduleResponse =
+  CreateUpdateScheduleResponse as any as S.Schema<GetUpdateScheduleResponse>;
 
 export interface ListUpdatePoliciesRequest {
   /** project id */
@@ -545,17 +534,8 @@ export interface UpdateUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
-export const UpdateUpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    maintenanceWindow: S.Number,
-    name: S.String,
-    rrule: S.String,
-    id: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateUpdateScheduleResponse",
-}) as any as S.Schema<UpdateUpdateScheduleResponse>;
+export const UpdateUpdateScheduleResponse =
+  CreateUpdateScheduleResponse as any as S.Schema<UpdateUpdateScheduleResponse>;
 
 export type CreateUpdateError = BadRequest | NotFound | Conflict | StackitOpError;
 /** create update */

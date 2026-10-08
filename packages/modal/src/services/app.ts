@@ -1075,13 +1075,7 @@ export interface AppRolloverResponse {
   serverWarnings?: WarningList;
   deployedAt?: number;
 }
-export const AppRolloverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    serverWarnings: S.optional(WarningList),
-    deployedAt: S.optional(S.Number),
-  }),
-).annotate({ identifier: "AppRolloverResponse" }) as any as S.Schema<AppRolloverResponse>;
+export const AppRolloverResponse = AppRollbackResponse as any as S.Schema<AppRolloverResponse>;
 
 export interface AppSetObjectsRequest {
   appId?: string;
@@ -1101,9 +1095,7 @@ export const AppSetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppSetObjectsRequest" }) as any as S.Schema<AppSetObjectsRequest>;
 
 export interface AppSetObjectsResponse {}
-export const AppSetObjectsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AppSetObjectsResponse",
-}) as any as S.Schema<AppSetObjectsResponse>;
+export const AppSetObjectsResponse = AppHeartbeatResponse as any as S.Schema<AppSetObjectsResponse>;
 
 export interface AppSetTagsRequest {
   appId?: string;
@@ -1117,9 +1109,7 @@ export const AppSetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppSetTagsRequest" }) as any as S.Schema<AppSetTagsRequest>;
 
 export interface AppSetTagsResponse {}
-export const AppSetTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AppSetTagsResponse",
-}) as any as S.Schema<AppSetTagsResponse>;
+export const AppSetTagsResponse = AppHeartbeatResponse as any as S.Schema<AppSetTagsResponse>;
 
 export interface CreateAppRequest {
   clientId?: string;
@@ -1213,9 +1203,8 @@ export const DisconnectAppClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisconnectAppClientRequest>;
 
 export interface DisconnectAppClientResponse {}
-export const DisconnectAppClientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisconnectAppClientResponse",
-}) as any as S.Schema<DisconnectAppClientResponse>;
+export const DisconnectAppClientResponse =
+  AppHeartbeatResponse as any as S.Schema<DisconnectAppClientResponse>;
 
 export interface ListAppRequest {
   environmentName?: string;
@@ -1301,13 +1290,7 @@ export interface PromoteAppResponse {
   serverWarnings?: WarningList;
   deployedAt?: number;
 }
-export const PromoteAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    serverWarnings: S.optional(WarningList),
-    deployedAt: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PromoteAppResponse" }) as any as S.Schema<PromoteAppResponse>;
+export const PromoteAppResponse = AppRollbackResponse as any as S.Schema<PromoteAppResponse>;
 
 export interface PublishAppRequest {
   appId?: string;
@@ -1356,13 +1339,7 @@ export interface PublishAppResponse {
   serverWarnings?: WarningList;
   deployedAt?: number;
 }
-export const PublishAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    serverWarnings: S.optional(WarningList),
-    deployedAt: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PublishAppResponse" }) as any as S.Schema<PublishAppResponse>;
+export const PublishAppResponse = AppRollbackResponse as any as S.Schema<PublishAppResponse>;
 
 export type AppStopSource =
   | "APP_STOP_SOURCE_UNSPECIFIED"
@@ -1383,9 +1360,7 @@ export const StopAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopAppRequest" }) as any as S.Schema<StopAppRequest>;
 
 export interface StopAppResponse {}
-export const StopAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopAppResponse",
-}) as any as S.Schema<StopAppResponse>;
+export const StopAppResponse = AppHeartbeatResponse as any as S.Schema<StopAppResponse>;
 
 export type AppCountLogsError = ModalOpError;
 export const appCountLogs: API.OperationMethod<

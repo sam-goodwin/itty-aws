@@ -178,9 +178,8 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type PropertiesRequiredList = Array<string>;
-export const PropertiesRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PropertiesRequiredList>;
+export const PropertiesRequiredList =
+  CommandTemplateSchemaOsTypeList as any as S.Schema<PropertiesRequiredList>;
 
 export interface Properties {
   ConfirmPassword?: Field;
@@ -306,9 +305,8 @@ export const ListCommandTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommandTemplatesRequest>;
 
 export type CommandTemplateOsTypeList = Array<string>;
-export const CommandTemplateOsTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommandTemplateOsTypeList>;
+export const CommandTemplateOsTypeList =
+  CommandTemplateSchemaOsTypeList as any as S.Schema<CommandTemplateOsTypeList>;
 
 export interface CommandTemplate {
   name?: string;

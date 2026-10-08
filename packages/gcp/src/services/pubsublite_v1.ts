@@ -104,9 +104,7 @@ export const CancelAdminProjectsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** A cursor that describes the position of a message within a topic partition. */
 export interface Cursor {
@@ -156,9 +154,7 @@ export const CommitCursorCursorProjectsLocationsSubscriptionsRequest = /*@__PURE
 
 /** Response for CommitCursor. */
 export interface CommitCursorResponse {}
-export const CommitCursorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CommitCursorResponse",
-}) as any as S.Schema<CommitCursorResponse>;
+export const CommitCursorResponse = CancelOperationRequest as any as S.Schema<CommitCursorResponse>;
 
 /** Compute the current head cursor for a partition. */
 export interface ComputeHeadCursorRequest {

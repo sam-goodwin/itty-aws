@@ -3067,15 +3067,8 @@ export interface SkinTemperatureRollupValue {
   /** Average skin temperature in Celsius. */
   temperatureCelsiusAvg?: number;
 }
-export const SkinTemperatureRollupValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    temperatureCelsiusMax: S.optional(S.Number),
-    temperatureCelsiusMin: S.optional(S.Number),
-    temperatureCelsiusAvg: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SkinTemperatureRollupValue",
-}) as any as S.Schema<SkinTemperatureRollupValue>;
+export const SkinTemperatureRollupValue =
+  CoreBodyTemperatureRollupValue as any as S.Schema<SkinTemperatureRollupValue>;
 
 /** Represents the result of the rollup of the blood glucose data type. LINT: LEGACY_NAMES */
 export interface BloodGlucoseRollupValue {
@@ -3385,11 +3378,7 @@ export interface StepsRollupValue {
   /** Total number of steps in the interval. */
   countSum?: string;
 }
-export const StepsRollupValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    countSum: S.optional(S.String),
-  }),
-).annotate({ identifier: "StepsRollupValue" }) as any as S.Schema<StepsRollupValue>;
+export const StepsRollupValue = FloorsRollupValue as any as S.Schema<StepsRollupValue>;
 
 /** Result of the rollup of the user's distance. */
 export interface DistanceRollupValue {

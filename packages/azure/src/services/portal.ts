@@ -244,16 +244,13 @@ export const DashboardsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DashboardsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DashboardsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DashboardsCreateOrUpdateResponseTagsMap>;
+export const DashboardsCreateOrUpdateResponseTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<DashboardsCreateOrUpdateResponseTagsMap>;
 
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateLensesList = Array<DashboardLens>;
-export const DashboardPropertiesWithProvisioningStateLensesList = /*@__PURE__*/ S.Array(
-  DashboardLens,
-) as any as S.Schema<DashboardPropertiesWithProvisioningStateLensesList>;
+export const DashboardPropertiesWithProvisioningStateLensesList =
+  DashboardPropertiesWithProvisioningStateInputLensesList as any as S.Schema<DashboardPropertiesWithProvisioningStateLensesList>;
 
 /** Dashboard Properties with Provisioning state */
 export interface DashboardPropertiesWithProvisioningState {
@@ -383,10 +380,8 @@ export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDashboardResponseTagsMap = { [key: string]: string | undefined };
-export const GetDashboardResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDashboardResponseTagsMap>;
+export const GetDashboardResponseTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<GetDashboardResponseTagsMap>;
 
 export interface GetDashboardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -447,17 +442,8 @@ export interface GetTenantConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
-export const GetTenantConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigurationProperties),
-  }),
-).annotate({
-  identifier: "GetTenantConfigurationResponse",
-}) as any as S.Schema<GetTenantConfigurationResponse>;
+export const GetTenantConfigurationResponse =
+  CreateTenantConfigurationResponse as any as S.Schema<GetTenantConfigurationResponse>;
 
 export interface ListDashboardByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -483,10 +469,8 @@ export const ListDashboardByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DashboardTagsMap = { [key: string]: string | undefined };
-export const DashboardTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DashboardTagsMap>;
+export const DashboardTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<DashboardTagsMap>;
 
 /** The shared dashboard resource definition. */
 export interface Dashboard {
@@ -505,17 +489,7 @@ export interface Dashboard {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
-export const Dashboard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DashboardTagsMap),
-    location: S.String,
-    properties: S.optional(DashboardPropertiesWithProvisioningState),
-  }),
-).annotate({ identifier: "Dashboard" }) as any as S.Schema<Dashboard>;
+export const Dashboard = GetDashboardResponse as any as S.Schema<Dashboard>;
 
 /** The Dashboard items on this page */
 export type ListDashboardByResourceGroupResponseValueList = Array<Dashboard>;
@@ -559,9 +533,8 @@ export const ListDashboardBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Dashboard items on this page */
 export type ListDashboardBySubscriptionResponseValueList = Array<Dashboard>;
-export const ListDashboardBySubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  Dashboard,
-) as any as S.Schema<ListDashboardBySubscriptionResponseValueList>;
+export const ListDashboardBySubscriptionResponseValueList =
+  ListDashboardByResourceGroupResponseValueList as any as S.Schema<ListDashboardBySubscriptionResponseValueList>;
 
 export interface ListDashboardBySubscriptionResponse {
   /** The Dashboard items on this page */
@@ -569,14 +542,8 @@ export interface ListDashboardBySubscriptionResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListDashboardBySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ListDashboardBySubscriptionResponseValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDashboardBySubscriptionResponse",
-}) as any as S.Schema<ListDashboardBySubscriptionResponse>;
+export const ListDashboardBySubscriptionResponse =
+  ListDashboardByResourceGroupResponse as any as S.Schema<ListDashboardBySubscriptionResponse>;
 
 export interface ListListTenantConfigurationViolationsRequest {}
 export const ListListTenantConfigurationViolationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -772,9 +739,8 @@ export const ListTenantConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The dashboard lenses. */
 export type DashboardPropertiesLensesList = Array<DashboardLens>;
-export const DashboardPropertiesLensesList = /*@__PURE__*/ S.Array(
-  DashboardLens,
-) as any as S.Schema<DashboardPropertiesLensesList>;
+export const DashboardPropertiesLensesList =
+  DashboardPropertiesWithProvisioningStateInputLensesList as any as S.Schema<DashboardPropertiesLensesList>;
 
 /** The shared dashboard properties. */
 export interface DashboardProperties {
@@ -792,10 +758,8 @@ export const DashboardProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateDashboardRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDashboardRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDashboardRequestTagsMap>;
+export const UpdateDashboardRequestTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDashboardRequestTagsMap>;
 
 export interface UpdateDashboardRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -828,10 +792,8 @@ export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDashboardResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDashboardResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDashboardResponseTagsMap>;
+export const UpdateDashboardResponseTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDashboardResponseTagsMap>;
 
 export interface UpdateDashboardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -849,17 +811,8 @@ export interface UpdateDashboardResponse {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
-export const UpdateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDashboardResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DashboardPropertiesWithProvisioningState),
-  }),
-).annotate({ identifier: "UpdateDashboardResponse" }) as any as S.Schema<UpdateDashboardResponse>;
+export const UpdateDashboardResponse =
+  GetDashboardResponse as any as S.Schema<UpdateDashboardResponse>;
 
 export type CreateTenantConfigurationError = AzureOpError;
 /** Create the tenant configuration. If configuration already exists - update it. User has to be a Tenant Admin for this operation. */

@@ -396,11 +396,9 @@ export interface ContainerAttribute {
   Key: string;
   Value: string;
 }
-export const ContainerAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "ContainerAttribute" }) as any as S.Schema<ContainerAttribute>;
+export const ContainerAttribute = Tag as any as S.Schema<ContainerAttribute>;
 export type ContainerAttributes = ContainerAttribute[];
-export const ContainerAttributes = /*@__PURE__*/ S.Array(ContainerAttribute);
+export const ContainerAttributes = TagList as any as S.Schema<ContainerAttributes>;
 export interface ContainerMonitoringConfiguration {
   ClusterArn: string;
   AttributeFilters?: ContainerAttribute[];
@@ -859,7 +857,7 @@ export const StatefulRuleGroupReference = /*@__PURE__*/ S.suspend(() =>
 export type StatefulRuleGroupReferences = StatefulRuleGroupReference[];
 export const StatefulRuleGroupReferences = /*@__PURE__*/ S.Array(StatefulRuleGroupReference);
 export type StatefulActions = string[];
-export const StatefulActions = /*@__PURE__*/ S.Array(S.String);
+export const StatefulActions = StatelessActions as any as S.Schema<StatefulActions>;
 export type RuleOrder = "DEFAULT_ACTION_ORDER" | "STRICT_ORDER" | (string & {});
 export const RuleOrder = S.String;
 
@@ -888,7 +886,7 @@ export const StatefulEngineOptions = /*@__PURE__*/ S.suspend(() =>
 export type RuleVariableName = string;
 export type VariableDefinition = string;
 export type VariableDefinitionList = string[];
-export const VariableDefinitionList = /*@__PURE__*/ S.Array(S.String);
+export const VariableDefinitionList = StatelessActions as any as S.Schema<VariableDefinitionList>;
 export interface IPSet {
   Definition: string[];
 }
@@ -1102,9 +1100,9 @@ export const CreateProxyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Proxy: S.optional(Proxy), UpdateToken: S.optional(S.String) }),
 ).annotate({ identifier: "CreateProxyResponse" }) as any as S.Schema<CreateProxyResponse>;
 export type ResourceNameList = string[];
-export const ResourceNameList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceNameList = StatelessActions as any as S.Schema<ResourceNameList>;
 export type ResourceArnList = string[];
-export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceArnList = StatelessActions as any as S.Schema<ResourceArnList>;
 export interface CreateProxyConfigurationRequest {
   ProxyConfigurationName: string;
   Description?: string;
@@ -1129,19 +1127,13 @@ export interface CreateProxyConfigurationResponse {
   ProxyConfiguration?: ProxyConfiguration;
   UpdateToken?: string;
 }
-export const CreateProxyConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProxyConfiguration: S.optional(ProxyConfiguration),
-    UpdateToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateProxyConfigurationResponse",
-}) as any as S.Schema<CreateProxyConfigurationResponse>;
+export const CreateProxyConfigurationResponse =
+  AttachRuleGroupsToProxyConfigurationResponse as any as S.Schema<CreateProxyConfigurationResponse>;
 export type ConditionOperator = string;
 export type ConditionKey = string;
 export type ProxyConditionValue = string;
 export type ProxyConditionValueList = string[];
-export const ProxyConditionValueList = /*@__PURE__*/ S.Array(S.String);
+export const ProxyConditionValueList = StatelessActions as any as S.Schema<ProxyConditionValueList>;
 export interface ProxyRuleCondition {
   ConditionOperator?: string;
   ConditionKey?: string;
@@ -1315,7 +1307,7 @@ export const ReferenceSets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReferenceSets" }) as any as S.Schema<ReferenceSets>;
 export type RulesString = string;
 export type RuleTargets = string[];
-export const RuleTargets = /*@__PURE__*/ S.Array(S.String);
+export const RuleTargets = StatelessActions as any as S.Schema<RuleTargets>;
 export type TargetType = "TLS_SNI" | "HTTP_HOST" | (string & {});
 export const TargetType = S.String;
 
@@ -1396,7 +1388,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
 export type Keyword = string;
 export type Setting = string;
 export type Settings = string[];
-export const Settings = /*@__PURE__*/ S.Array(S.String);
+export const Settings = StatelessActions as any as S.Schema<Settings>;
 export interface RuleOption {
   Keyword: string;
   Settings?: string[];
@@ -1581,7 +1573,7 @@ export const CreateRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateRuleGroupRequest" }) as any as S.Schema<CreateRuleGroupRequest>;
 export type RuleIdList = string[];
-export const RuleIdList = /*@__PURE__*/ S.Array(S.String);
+export const RuleIdList = StatelessActions as any as S.Schema<RuleIdList>;
 export type IdentifiedType =
   | "STATELESS_RULE_FORWARDING_ASYMMETRICALLY"
   | "STATELESS_RULE_CONTAINS_TCP_FLAGS"
@@ -1901,9 +1893,8 @@ export interface DeleteFirewallResponse {
   Firewall?: Firewall;
   FirewallStatus?: FirewallStatus;
 }
-export const DeleteFirewallResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Firewall: S.optional(Firewall), FirewallStatus: S.optional(FirewallStatus) }),
-).annotate({ identifier: "DeleteFirewallResponse" }) as any as S.Schema<DeleteFirewallResponse>;
+export const DeleteFirewallResponse =
+  CreateFirewallResponse as any as S.Schema<DeleteFirewallResponse>;
 export interface DeleteFirewallPolicyRequest {
   FirewallPolicyName?: string;
   FirewallPolicyArn?: string;
@@ -1938,14 +1929,8 @@ export interface DeleteNetworkFirewallTransitGatewayAttachmentResponse {
   TransitGatewayAttachmentId: string;
   TransitGatewayAttachmentStatus: TransitGatewayAttachmentStatus;
 }
-export const DeleteNetworkFirewallTransitGatewayAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayAttachmentId: S.String,
-    TransitGatewayAttachmentStatus: TransitGatewayAttachmentStatus,
-  }),
-).annotate({
-  identifier: "DeleteNetworkFirewallTransitGatewayAttachmentResponse",
-}) as any as S.Schema<DeleteNetworkFirewallTransitGatewayAttachmentResponse>;
+export const DeleteNetworkFirewallTransitGatewayAttachmentResponse =
+  AcceptNetworkFirewallTransitGatewayAttachmentResponse as any as S.Schema<DeleteNetworkFirewallTransitGatewayAttachmentResponse>;
 export interface DeleteProxyRequest {
   NatGatewayId: string;
   ProxyName?: string;
@@ -2099,14 +2084,8 @@ export interface DeleteVpcEndpointAssociationResponse {
   VpcEndpointAssociation?: VpcEndpointAssociation;
   VpcEndpointAssociationStatus?: VpcEndpointAssociationStatus;
 }
-export const DeleteVpcEndpointAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VpcEndpointAssociation: S.optional(VpcEndpointAssociation),
-    VpcEndpointAssociationStatus: S.optional(VpcEndpointAssociationStatus),
-  }),
-).annotate({
-  identifier: "DeleteVpcEndpointAssociationResponse",
-}) as any as S.Schema<DeleteVpcEndpointAssociationResponse>;
+export const DeleteVpcEndpointAssociationResponse =
+  CreateVpcEndpointAssociationResponse as any as S.Schema<DeleteVpcEndpointAssociationResponse>;
 export interface DescribeContainerAssociationRequest {
   ContainerAssociationName?: string;
   ContainerAssociationArn?: string;
@@ -2271,7 +2250,7 @@ export type FlowRequestTimestamp = Date;
 export type Age = number;
 export type ProtocolString = string;
 export type ProtocolStrings = string[];
-export const ProtocolStrings = /*@__PURE__*/ S.Array(S.String);
+export const ProtocolStrings = StatelessActions as any as S.Schema<ProtocolStrings>;
 export interface FlowFilter {
   SourceAddress?: Address;
   DestinationAddress?: Address;
@@ -2458,14 +2437,8 @@ export interface DescribeProxyConfigurationResponse {
   ProxyConfiguration?: ProxyConfiguration;
   UpdateToken?: string;
 }
-export const DescribeProxyConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProxyConfiguration: S.optional(ProxyConfiguration),
-    UpdateToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DescribeProxyConfigurationResponse",
-}) as any as S.Schema<DescribeProxyConfigurationResponse>;
+export const DescribeProxyConfigurationResponse =
+  AttachRuleGroupsToProxyConfigurationResponse as any as S.Schema<DescribeProxyConfigurationResponse>;
 export interface DescribeProxyRuleRequest {
   ProxyRuleName: string;
   ProxyRuleGroupName?: string;
@@ -2503,11 +2476,8 @@ export interface DescribeProxyRuleGroupResponse {
   ProxyRuleGroup?: ProxyRuleGroup;
   UpdateToken?: string;
 }
-export const DescribeProxyRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProxyRuleGroup: S.optional(ProxyRuleGroup), UpdateToken: S.optional(S.String) }),
-).annotate({
-  identifier: "DescribeProxyRuleGroupResponse",
-}) as any as S.Schema<DescribeProxyRuleGroupResponse>;
+export const DescribeProxyRuleGroupResponse =
+  CreateProxyRuleGroupResponse as any as S.Schema<DescribeProxyRuleGroupResponse>;
 export interface DescribeResourcePolicyRequest {
   ResourceArn: string;
 }
@@ -2688,14 +2658,8 @@ export interface DescribeVpcEndpointAssociationResponse {
   VpcEndpointAssociation?: VpcEndpointAssociation;
   VpcEndpointAssociationStatus?: VpcEndpointAssociationStatus;
 }
-export const DescribeVpcEndpointAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    VpcEndpointAssociation: S.optional(VpcEndpointAssociation),
-    VpcEndpointAssociationStatus: S.optional(VpcEndpointAssociationStatus),
-  }),
-).annotate({
-  identifier: "DescribeVpcEndpointAssociationResponse",
-}) as any as S.Schema<DescribeVpcEndpointAssociationResponse>;
+export const DescribeVpcEndpointAssociationResponse =
+  CreateVpcEndpointAssociationResponse as any as S.Schema<DescribeVpcEndpointAssociationResponse>;
 export interface DetachRuleGroupsFromProxyConfigurationRequest {
   ProxyConfigurationName?: string;
   ProxyConfigurationArn?: string;
@@ -2718,14 +2682,8 @@ export interface DetachRuleGroupsFromProxyConfigurationResponse {
   ProxyConfiguration?: ProxyConfiguration;
   UpdateToken?: string;
 }
-export const DetachRuleGroupsFromProxyConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProxyConfiguration: S.optional(ProxyConfiguration),
-    UpdateToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DetachRuleGroupsFromProxyConfigurationResponse",
-}) as any as S.Schema<DetachRuleGroupsFromProxyConfigurationResponse>;
+export const DetachRuleGroupsFromProxyConfigurationResponse =
+  AttachRuleGroupsToProxyConfigurationResponse as any as S.Schema<DetachRuleGroupsFromProxyConfigurationResponse>;
 export interface DisassociateAvailabilityZonesRequest {
   UpdateToken?: string;
   FirewallArn?: string;
@@ -2748,18 +2706,10 @@ export interface DisassociateAvailabilityZonesResponse {
   AvailabilityZoneMappings?: AvailabilityZoneMapping[];
   UpdateToken?: string;
 }
-export const DisassociateAvailabilityZonesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallArn: S.optional(S.String),
-    FirewallName: S.optional(S.String),
-    AvailabilityZoneMappings: S.optional(AvailabilityZoneMappings),
-    UpdateToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisassociateAvailabilityZonesResponse",
-}) as any as S.Schema<DisassociateAvailabilityZonesResponse>;
+export const DisassociateAvailabilityZonesResponse =
+  AssociateAvailabilityZonesResponse as any as S.Schema<DisassociateAvailabilityZonesResponse>;
 export type AzSubnets = string[];
-export const AzSubnets = /*@__PURE__*/ S.Array(S.String);
+export const AzSubnets = StatelessActions as any as S.Schema<AzSubnets>;
 export interface DisassociateSubnetsRequest {
   UpdateToken?: string;
   FirewallArn?: string;
@@ -2830,9 +2780,7 @@ export const Hits = /*@__PURE__*/ S.suspend(() =>
 export interface UniqueSources {
   Count?: number;
 }
-export const UniqueSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Count: S.optional(S.Number) }),
-).annotate({ identifier: "UniqueSources" }) as any as S.Schema<UniqueSources>;
+export const UniqueSources = Hits as any as S.Schema<UniqueSources>;
 export interface AnalysisTypeReportResult {
   Protocol?: string;
   FirstAccessed?: Date;
@@ -2981,7 +2929,7 @@ export const ListFirewallPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFirewallPoliciesResponse",
 }) as any as S.Schema<ListFirewallPoliciesResponse>;
 export type VpcIds = string[];
-export const VpcIds = /*@__PURE__*/ S.Array(S.String);
+export const VpcIds = StatelessActions as any as S.Schema<VpcIds>;
 export interface ListFirewallsRequest {
   NextToken?: string;
   VpcIds?: string[];
@@ -3151,11 +3099,9 @@ export interface ProxyMetadata {
   Name?: string;
   Arn?: string;
 }
-export const ProxyMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({ identifier: "ProxyMetadata" }) as any as S.Schema<ProxyMetadata>;
+export const ProxyMetadata = FirewallPolicyMetadata as any as S.Schema<ProxyMetadata>;
 export type Proxies = ProxyMetadata[];
-export const Proxies = /*@__PURE__*/ S.Array(ProxyMetadata);
+export const Proxies = FirewallPolicies as any as S.Schema<Proxies>;
 export interface ListProxiesResponse {
   Proxies?: ProxyMetadata[];
   NextToken?: string;
@@ -3212,11 +3158,10 @@ export interface ProxyRuleGroupMetadata {
   Name?: string;
   Arn?: string;
 }
-export const ProxyRuleGroupMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({ identifier: "ProxyRuleGroupMetadata" }) as any as S.Schema<ProxyRuleGroupMetadata>;
+export const ProxyRuleGroupMetadata =
+  FirewallPolicyMetadata as any as S.Schema<ProxyRuleGroupMetadata>;
 export type ProxyRuleGroups = ProxyRuleGroupMetadata[];
-export const ProxyRuleGroups = /*@__PURE__*/ S.Array(ProxyRuleGroupMetadata);
+export const ProxyRuleGroups = FirewallPolicies as any as S.Schema<ProxyRuleGroups>;
 export interface ListProxyRuleGroupsResponse {
   ProxyRuleGroups?: ProxyRuleGroupMetadata[];
   NextToken?: string;
@@ -3318,11 +3263,8 @@ export interface TLSInspectionConfigurationMetadata {
   Name?: string;
   Arn?: string;
 }
-export const TLSInspectionConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "TLSInspectionConfigurationMetadata",
-}) as any as S.Schema<TLSInspectionConfigurationMetadata>;
+export const TLSInspectionConfigurationMetadata =
+  ProxyConfigurationMetadata as any as S.Schema<TLSInspectionConfigurationMetadata>;
 export type TLSInspectionConfigurations = TLSInspectionConfigurationMetadata[];
 export const TLSInspectionConfigurations = /*@__PURE__*/ S.Array(
   TLSInspectionConfigurationMetadata,
@@ -3385,9 +3327,8 @@ export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RejectNetworkFirewallTransitGatewayAttachmentRequest {
   TransitGatewayAttachmentId: string;
 }
@@ -3402,14 +3343,8 @@ export interface RejectNetworkFirewallTransitGatewayAttachmentResponse {
   TransitGatewayAttachmentId: string;
   TransitGatewayAttachmentStatus: TransitGatewayAttachmentStatus;
 }
-export const RejectNetworkFirewallTransitGatewayAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransitGatewayAttachmentId: S.String,
-    TransitGatewayAttachmentStatus: TransitGatewayAttachmentStatus,
-  }),
-).annotate({
-  identifier: "RejectNetworkFirewallTransitGatewayAttachmentResponse",
-}) as any as S.Schema<RejectNetworkFirewallTransitGatewayAttachmentResponse>;
+export const RejectNetworkFirewallTransitGatewayAttachmentResponse =
+  AcceptNetworkFirewallTransitGatewayAttachmentResponse as any as S.Schema<RejectNetworkFirewallTransitGatewayAttachmentResponse>;
 export interface StartAnalysisReportRequest {
   FirewallName?: string;
   FirewallArn?: string;
@@ -3485,13 +3420,8 @@ export interface StartFlowFlushResponse {
   FlowOperationId?: string;
   FlowOperationStatus?: FlowOperationStatus;
 }
-export const StartFlowFlushResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallArn: S.optional(S.String),
-    FlowOperationId: S.optional(S.String),
-    FlowOperationStatus: S.optional(FlowOperationStatus),
-  }),
-).annotate({ identifier: "StartFlowFlushResponse" }) as any as S.Schema<StartFlowFlushResponse>;
+export const StartFlowFlushResponse =
+  StartFlowCaptureResponse as any as S.Schema<StartFlowFlushResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -3502,11 +3432,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StatelessActions as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -3517,9 +3446,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAvailabilityZoneChangeProtectionRequest {
   UpdateToken?: string;
   FirewallArn?: string;
@@ -3584,20 +3512,8 @@ export interface UpdateContainerAssociationResponse {
   Tags?: Tag[];
   UpdateToken?: string;
 }
-export const UpdateContainerAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContainerAssociationName: S.optional(S.String),
-    ContainerAssociationArn: S.optional(S.String),
-    Description: S.optional(S.String),
-    Type: S.optional(ContainerMonitoringType),
-    ContainerMonitoringConfigurations: S.optional(ContainerMonitoringConfigurations),
-    Status: S.optional(ContainerAssociationStatus),
-    Tags: S.optional(TagList),
-    UpdateToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateContainerAssociationResponse",
-}) as any as S.Schema<UpdateContainerAssociationResponse>;
+export const UpdateContainerAssociationResponse =
+  CreateContainerAssociationResponse as any as S.Schema<UpdateContainerAssociationResponse>;
 export interface UpdateFirewallAnalysisSettingsRequest {
   EnabledAnalysisTypes?: EnabledAnalysisType[];
   FirewallArn?: string;
@@ -3752,11 +3668,8 @@ export interface UpdateFirewallPolicyResponse {
   UpdateToken: string;
   FirewallPolicyResponse: FirewallPolicyResponse;
 }
-export const UpdateFirewallPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UpdateToken: S.String, FirewallPolicyResponse: FirewallPolicyResponse }),
-).annotate({
-  identifier: "UpdateFirewallPolicyResponse",
-}) as any as S.Schema<UpdateFirewallPolicyResponse>;
+export const UpdateFirewallPolicyResponse =
+  CreateFirewallPolicyResponse as any as S.Schema<UpdateFirewallPolicyResponse>;
 export interface UpdateFirewallPolicyChangeProtectionRequest {
   UpdateToken?: string;
   FirewallArn?: string;
@@ -3845,9 +3758,7 @@ export interface UpdateProxyResponse {
   Proxy?: Proxy;
   UpdateToken?: string;
 }
-export const UpdateProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Proxy: S.optional(Proxy), UpdateToken: S.optional(S.String) }),
-).annotate({ identifier: "UpdateProxyResponse" }) as any as S.Schema<UpdateProxyResponse>;
+export const UpdateProxyResponse = CreateProxyResponse as any as S.Schema<UpdateProxyResponse>;
 export interface UpdateProxyConfigurationRequest {
   ProxyConfigurationName?: string;
   ProxyConfigurationArn?: string;
@@ -3868,14 +3779,8 @@ export interface UpdateProxyConfigurationResponse {
   ProxyConfiguration?: ProxyConfiguration;
   UpdateToken?: string;
 }
-export const UpdateProxyConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProxyConfiguration: S.optional(ProxyConfiguration),
-    UpdateToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProxyConfigurationResponse",
-}) as any as S.Schema<UpdateProxyConfigurationResponse>;
+export const UpdateProxyConfigurationResponse =
+  AttachRuleGroupsToProxyConfigurationResponse as any as S.Schema<UpdateProxyConfigurationResponse>;
 export interface UpdateProxyRuleRequest {
   ProxyRuleGroupName?: string;
   ProxyRuleGroupArn?: string;
@@ -4073,9 +3978,8 @@ export interface UpdateRuleGroupResponse {
   UpdateToken: string;
   RuleGroupResponse: RuleGroupResponse;
 }
-export const UpdateRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UpdateToken: S.String, RuleGroupResponse: RuleGroupResponse }),
-).annotate({ identifier: "UpdateRuleGroupResponse" }) as any as S.Schema<UpdateRuleGroupResponse>;
+export const UpdateRuleGroupResponse =
+  CreateRuleGroupResponse as any as S.Schema<UpdateRuleGroupResponse>;
 export interface UpdateSubnetChangeProtectionRequest {
   UpdateToken?: string;
   FirewallArn?: string;
@@ -4132,14 +4036,8 @@ export interface UpdateTLSInspectionConfigurationResponse {
   UpdateToken: string;
   TLSInspectionConfigurationResponse: TLSInspectionConfigurationResponse;
 }
-export const UpdateTLSInspectionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    UpdateToken: S.String,
-    TLSInspectionConfigurationResponse: TLSInspectionConfigurationResponse,
-  }),
-).annotate({
-  identifier: "UpdateTLSInspectionConfigurationResponse",
-}) as any as S.Schema<UpdateTLSInspectionConfigurationResponse>;
+export const UpdateTLSInspectionConfigurationResponse =
+  CreateTLSInspectionConfigurationResponse as any as S.Schema<UpdateTLSInspectionConfigurationResponse>;
 export type ErrorMessage = string;
 export type AcceptNetworkFirewallTransitGatewayAttachmentError =
   | InternalServerError

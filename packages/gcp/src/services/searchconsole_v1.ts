@@ -102,9 +102,7 @@ export const DeleteSitemapsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSitemapsRequest" }) as any as S.Schema<DeleteSitemapsRequest>;
 
 export interface DeleteSitemapsResponse {}
-export const DeleteSitemapsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSitemapsResponse",
-}) as any as S.Schema<DeleteSitemapsResponse>;
+export const DeleteSitemapsResponse = AddSitesResponse as any as S.Schema<DeleteSitemapsResponse>;
 
 export interface DeleteSitesRequest {
   /** The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. */
@@ -123,9 +121,7 @@ export const DeleteSitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSitesRequest" }) as any as S.Schema<DeleteSitesRequest>;
 
 export interface DeleteSitesResponse {}
-export const DeleteSitesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSitesResponse",
-}) as any as S.Schema<DeleteSitesResponse>;
+export const DeleteSitesResponse = AddSitesResponse as any as S.Schema<DeleteSitesResponse>;
 
 export interface GetSitemapsRequest {
   /** The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. */
@@ -1116,9 +1112,7 @@ export const SubmitSitemapsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubmitSitemapsRequest" }) as any as S.Schema<SubmitSitemapsRequest>;
 
 export interface SubmitSitemapsResponse {}
-export const SubmitSitemapsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubmitSitemapsResponse",
-}) as any as S.Schema<SubmitSitemapsResponse>;
+export const SubmitSitemapsResponse = AddSitesResponse as any as S.Schema<SubmitSitemapsResponse>;
 
 export type AddSitesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Adds a site to the set of the user's sites in Search Console. */

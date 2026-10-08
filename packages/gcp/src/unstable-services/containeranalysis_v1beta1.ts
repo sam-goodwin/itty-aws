@@ -3218,13 +3218,8 @@ export interface BatchCreateOccurrencesResponse {
   /** The occurrences that were created. */
   occurrences?: OccurrenceList;
 }
-export const BatchCreateOccurrencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    occurrences: S.optional(OccurrenceList),
-  }),
-).annotate({
-  identifier: "BatchCreateOccurrencesResponse",
-}) as any as S.Schema<BatchCreateOccurrencesResponse>;
+export const BatchCreateOccurrencesResponse =
+  BatchCreateOccurrencesRequest as any as S.Schema<BatchCreateOccurrencesResponse>;
 
 export interface BatchCreateProjectsNotesRequest {
   /** Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. */
@@ -3378,9 +3373,7 @@ export const DeleteProjectsLocationsNotesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = AISkillAnalysisNote as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsOccurrencesRequest {
   /** Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. */
@@ -4393,13 +4386,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsOccurrencesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

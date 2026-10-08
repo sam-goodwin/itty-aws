@@ -62,9 +62,8 @@ export const SecretScanningCustomPatternToCreateMustMatchList = /*@__PURE__*/ S.
 
 /** List of regexes that the secret must not match. */
 export type SecretScanningCustomPatternToCreateMustNotMatchList = Array<string>;
-export const SecretScanningCustomPatternToCreateMustNotMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SecretScanningCustomPatternToCreateMustNotMatchList>;
+export const SecretScanningCustomPatternToCreateMustNotMatchList =
+  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternToCreateMustNotMatchList>;
 
 /** A custom pattern to create in a bulk operation. */
 export interface SecretScanningCustomPatternToCreate {
@@ -124,15 +123,13 @@ export const SecretScanningCustomPatternState = S.String;
 
 /** List of regexes that the secret must match. */
 export type SecretScanningCustomPatternMustMatchList = Array<string>;
-export const SecretScanningCustomPatternMustMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SecretScanningCustomPatternMustMatchList>;
+export const SecretScanningCustomPatternMustMatchList =
+  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternMustMatchList>;
 
 /** List of regexes that the secret must not match. */
 export type SecretScanningCustomPatternMustNotMatchList = Array<string>;
-export const SecretScanningCustomPatternMustNotMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SecretScanningCustomPatternMustNotMatchList>;
+export const SecretScanningCustomPatternMustNotMatchList =
+  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternMustNotMatchList>;
 
 /** A custom pattern for secret scanning. */
 export interface SecretScanningCustomPattern {
@@ -204,9 +201,8 @@ export const BulkCreateOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
 /** The list of custom patterns to create (maximum 100). */
 export type BulkCreateRepoCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToCreate>;
-export const BulkCreateRepoCustomPatternsRequestPatternsList = /*@__PURE__*/ S.Array(
-  SecretScanningCustomPatternToCreate,
-) as any as S.Schema<BulkCreateRepoCustomPatternsRequestPatternsList>;
+export const BulkCreateRepoCustomPatternsRequestPatternsList =
+  BulkCreateOrgCustomPatternsRequestPatternsList as any as S.Schema<BulkCreateRepoCustomPatternsRequestPatternsList>;
 
 export interface BulkCreateRepoCustomPatternsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -235,21 +231,15 @@ export const BulkCreateRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 /** The list of successfully created custom patterns. */
 export type BulkCreateRepoCustomPatternsResponseCreatedPatternsList =
   Array<SecretScanningCustomPattern>;
-export const BulkCreateRepoCustomPatternsResponseCreatedPatternsList = /*@__PURE__*/ S.Array(
-  SecretScanningCustomPattern,
-) as any as S.Schema<BulkCreateRepoCustomPatternsResponseCreatedPatternsList>;
+export const BulkCreateRepoCustomPatternsResponseCreatedPatternsList =
+  BulkCreateOrgCustomPatternsResponseCreatedPatternsList as any as S.Schema<BulkCreateRepoCustomPatternsResponseCreatedPatternsList>;
 
 export interface BulkCreateRepoCustomPatternsResponse {
   /** The list of successfully created custom patterns. */
   created_patterns?: BulkCreateRepoCustomPatternsResponseCreatedPatternsList;
 }
-export const BulkCreateRepoCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_patterns: S.optional(BulkCreateRepoCustomPatternsResponseCreatedPatternsList),
-  }),
-).annotate({
-  identifier: "BulkCreateRepoCustomPatternsResponse",
-}) as any as S.Schema<BulkCreateRepoCustomPatternsResponse>;
+export const BulkCreateRepoCustomPatternsResponse =
+  BulkCreateOrgCustomPatternsResponse as any as S.Schema<BulkCreateRepoCustomPatternsResponse>;
 
 /** A custom pattern to delete in a bulk operation. */
 export interface SecretScanningCustomPatternToDelete {
@@ -307,9 +297,8 @@ export const BulkDeleteOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
 /** The list of custom patterns to delete. */
 export type BulkDeleteRepoCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToDelete>;
-export const BulkDeleteRepoCustomPatternsRequestPatternsList = /*@__PURE__*/ S.Array(
-  SecretScanningCustomPatternToDelete,
-) as any as S.Schema<BulkDeleteRepoCustomPatternsRequestPatternsList>;
+export const BulkDeleteRepoCustomPatternsRequestPatternsList =
+  BulkDeleteOrgCustomPatternsRequestPatternsList as any as S.Schema<BulkDeleteRepoCustomPatternsRequestPatternsList>;
 
 /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
 export type BulkDeleteRepoCustomPatternsRequestPostDeleteAction =
@@ -345,11 +334,8 @@ export const BulkDeleteRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteRepoCustomPatternsRequest>;
 
 export interface BulkDeleteRepoCustomPatternsResponse {}
-export const BulkDeleteRepoCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BulkDeleteRepoCustomPatternsResponse",
-}) as any as S.Schema<BulkDeleteRepoCustomPatternsResponse>;
+export const BulkDeleteRepoCustomPatternsResponse =
+  BulkDeleteOrgCustomPatternsResponse as any as S.Schema<BulkDeleteRepoCustomPatternsResponse>;
 
 /** The reason for bypassing push protection. */
 export type SecretScanningPushProtectionBypassReason =
@@ -914,14 +900,12 @@ export const SecretScanningScanHistoryIncrementalScansList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<SecretScanningScanHistoryIncrementalScansList>;
 
 export type SecretScanningScanHistoryPatternUpdateScansList = Array<SecretScanningScan>;
-export const SecretScanningScanHistoryPatternUpdateScansList = /*@__PURE__*/ S.Array(
-  SecretScanningScan,
-) as any as S.Schema<SecretScanningScanHistoryPatternUpdateScansList>;
+export const SecretScanningScanHistoryPatternUpdateScansList =
+  SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryPatternUpdateScansList>;
 
 export type SecretScanningScanHistoryBackfillScansList = Array<SecretScanningScan>;
-export const SecretScanningScanHistoryBackfillScansList = /*@__PURE__*/ S.Array(
-  SecretScanningScan,
-) as any as S.Schema<SecretScanningScanHistoryBackfillScansList>;
+export const SecretScanningScanHistoryBackfillScansList =
+  SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryBackfillScansList>;
 
 export interface SecretScanningScanHistoryCustomPatternBackfillScansItem {
   /** The type of scan */
@@ -957,9 +941,8 @@ export const SecretScanningScanHistoryCustomPatternBackfillScansList = /*@__PURE
 ) as any as S.Schema<SecretScanningScanHistoryCustomPatternBackfillScansList>;
 
 export type SecretScanningScanHistoryGenericSecretsBackfillScansList = Array<SecretScanningScan>;
-export const SecretScanningScanHistoryGenericSecretsBackfillScansList = /*@__PURE__*/ S.Array(
-  SecretScanningScan,
-) as any as S.Schema<SecretScanningScanHistoryGenericSecretsBackfillScansList>;
+export const SecretScanningScanHistoryGenericSecretsBackfillScansList =
+  SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryGenericSecretsBackfillScansList>;
 
 export interface SecretScanningScanHistory {
   incremental_scans?: SecretScanningScanHistoryIncrementalScansList;
@@ -1648,9 +1631,8 @@ export const ListOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrgCustomPatternsRequest>;
 
 export type ListOrgCustomPatternsResponseBodyList = Array<SecretScanningCustomPattern>;
-export const ListOrgCustomPatternsResponseBodyList = /*@__PURE__*/ S.Array(
-  SecretScanningCustomPattern,
-) as any as S.Schema<ListOrgCustomPatternsResponseBodyList>;
+export const ListOrgCustomPatternsResponseBodyList =
+  BulkCreateOrgCustomPatternsResponseCreatedPatternsList as any as S.Schema<ListOrgCustomPatternsResponseBodyList>;
 
 export type ListOrgCustomPatternsResponse = ListOrgCustomPatternsResponseBodyList;
 export const ListOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1740,9 +1722,8 @@ export const SecretScanningPatternConfigurationProviderPatternOverridesList = /*
 /** Overrides for custom patterns defined by the organization. */
 export type SecretScanningPatternConfigurationCustomPatternOverridesList =
   Array<SecretScanningPatternOverride>;
-export const SecretScanningPatternConfigurationCustomPatternOverridesList = /*@__PURE__*/ S.Array(
-  SecretScanningPatternOverride,
-) as any as S.Schema<SecretScanningPatternConfigurationCustomPatternOverridesList>;
+export const SecretScanningPatternConfigurationCustomPatternOverridesList =
+  SecretScanningPatternConfigurationProviderPatternOverridesList as any as S.Schema<SecretScanningPatternConfigurationCustomPatternOverridesList>;
 
 /** A collection of secret scanning patterns and their settings related to push protection. */
 export interface SecretScanningPatternConfiguration {
@@ -1818,16 +1799,12 @@ export const ListRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRepoCustomPatternsRequest>;
 
 export type ListRepoCustomPatternsResponseBodyList = Array<SecretScanningCustomPattern>;
-export const ListRepoCustomPatternsResponseBodyList = /*@__PURE__*/ S.Array(
-  SecretScanningCustomPattern,
-) as any as S.Schema<ListRepoCustomPatternsResponseBodyList>;
+export const ListRepoCustomPatternsResponseBodyList =
+  BulkCreateOrgCustomPatternsResponseCreatedPatternsList as any as S.Schema<ListRepoCustomPatternsResponseBodyList>;
 
 export type ListRepoCustomPatternsResponse = ListRepoCustomPatternsResponseBodyList;
-export const ListRepoCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListRepoCustomPatternsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListRepoCustomPatternsResponse",
-}) as any as S.Schema<ListRepoCustomPatternsResponse>;
+export const ListRepoCustomPatternsResponse =
+  ListOrgCustomPatternsResponse as any as S.Schema<ListRepoCustomPatternsResponse>;
 
 /** Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override. */
 export type UpdateAlertRequestValidity = "active" | "inactive";
@@ -1868,15 +1845,13 @@ export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of regexes that the secret must match. */
 export type UpdateOrgCustomPatternRequestMustMatchList = Array<string>;
-export const UpdateOrgCustomPatternRequestMustMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrgCustomPatternRequestMustMatchList>;
+export const UpdateOrgCustomPatternRequestMustMatchList =
+  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateOrgCustomPatternRequestMustMatchList>;
 
 /** Updated list of regexes that the secret must not match. */
 export type UpdateOrgCustomPatternRequestMustNotMatchList = Array<string>;
-export const UpdateOrgCustomPatternRequestMustNotMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrgCustomPatternRequestMustNotMatchList>;
+export const UpdateOrgCustomPatternRequestMustNotMatchList =
+  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateOrgCustomPatternRequestMustNotMatchList>;
 
 export interface UpdateOrgCustomPatternRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2028,15 +2003,13 @@ export const UpdateOrgPatternConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of regexes that the secret must match. */
 export type UpdateRepoCustomPatternRequestMustMatchList = Array<string>;
-export const UpdateRepoCustomPatternRequestMustMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRepoCustomPatternRequestMustMatchList>;
+export const UpdateRepoCustomPatternRequestMustMatchList =
+  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateRepoCustomPatternRequestMustMatchList>;
 
 /** Updated list of regexes that the secret must not match. */
 export type UpdateRepoCustomPatternRequestMustNotMatchList = Array<string>;
-export const UpdateRepoCustomPatternRequestMustNotMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRepoCustomPatternRequestMustNotMatchList>;
+export const UpdateRepoCustomPatternRequestMustNotMatchList =
+  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateRepoCustomPatternRequestMustNotMatchList>;
 
 export interface UpdateRepoCustomPatternRequest {
   /** The account owner of the repository. The name is not case sensitive. */

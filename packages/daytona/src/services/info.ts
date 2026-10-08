@@ -46,11 +46,7 @@ export const GetWorkDirRequest = /*@__PURE__*/ S.suspend(() =>
 export interface WorkDirResponse {
   dir: string;
 }
-export const WorkDirResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dir: S.String,
-  }),
-).annotate({ identifier: "WorkDirResponse" }) as any as S.Schema<WorkDirResponse>;
+export const WorkDirResponse = UserHomeDirResponse as any as S.Schema<WorkDirResponse>;
 
 export type GetUserHomeDirError = DaytonaOpError;
 /** Get user home directory Get the current user home directory path. */

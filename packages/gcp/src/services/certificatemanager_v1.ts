@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type CertificateIssuanceConfigKeyAlgorithmEnum =
   | "KEY_ALGORITHM_UNSPECIFIED"
@@ -803,16 +801,10 @@ export interface TrustAnchor {
   /** PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB. */
   pemCertificate?: string;
 }
-export const TrustAnchor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pemCertificate: S.optional(S.String),
-  }),
-).annotate({ identifier: "TrustAnchor" }) as any as S.Schema<TrustAnchor>;
+export const TrustAnchor = IntermediateCA as any as S.Schema<TrustAnchor>;
 
 export type TrustAnchorList = Array<TrustAnchor>;
-export const TrustAnchorList = /*@__PURE__*/ S.Array(
-  TrustAnchor,
-) as any as S.Schema<TrustAnchorList>;
+export const TrustAnchorList = IntermediateCAList as any as S.Schema<TrustAnchorList>;
 
 /** Defines a trust store. */
 export interface TrustStore {
@@ -842,16 +834,11 @@ export interface AllowlistedCertificate {
   /** Required. PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate. */
   pemCertificate?: string;
 }
-export const AllowlistedCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pemCertificate: S.optional(S.String),
-  }),
-).annotate({ identifier: "AllowlistedCertificate" }) as any as S.Schema<AllowlistedCertificate>;
+export const AllowlistedCertificate = IntermediateCA as any as S.Schema<AllowlistedCertificate>;
 
 export type AllowlistedCertificateList = Array<AllowlistedCertificate>;
-export const AllowlistedCertificateList = /*@__PURE__*/ S.Array(
-  AllowlistedCertificate,
-) as any as S.Schema<AllowlistedCertificateList>;
+export const AllowlistedCertificateList =
+  IntermediateCAList as any as S.Schema<AllowlistedCertificateList>;
 
 /** Defines a trust config. */
 export interface TrustConfig {

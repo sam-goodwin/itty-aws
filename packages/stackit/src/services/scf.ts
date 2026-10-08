@@ -345,16 +345,8 @@ export interface OrganizationDeleteResponse {
   projectId: string;
   region: string;
 }
-export const OrganizationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guid: S.String,
-    platformId: S.String,
-    projectId: S.String,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "OrganizationDeleteResponse",
-}) as any as S.Schema<OrganizationDeleteResponse>;
+export const OrganizationDeleteResponse =
+  OrganizationCreateResponse as any as S.Schema<OrganizationDeleteResponse>;
 
 export interface DeleteOrgManagerRequest {
   projectId: string;
@@ -410,11 +402,7 @@ export const DeleteSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SpaceDeleteResponse {
   message: string;
 }
-export const SpaceDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-  }),
-).annotate({ identifier: "SpaceDeleteResponse" }) as any as S.Schema<SpaceDeleteResponse>;
+export const SpaceDeleteResponse = OrgManagerDeleteResponse as any as S.Schema<SpaceDeleteResponse>;
 
 export interface GetOrganizationRequest {
   projectId: string;
@@ -907,16 +895,12 @@ export const ListPlatformQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlatformQuotasRequest>;
 
 export type ListPlatformQuotasResponseBodyList = Array<Quota>;
-export const ListPlatformQuotasResponseBodyList = /*@__PURE__*/ S.Array(
-  Quota,
-) as any as S.Schema<ListPlatformQuotasResponseBodyList>;
+export const ListPlatformQuotasResponseBodyList =
+  ListOrganizationQuotasResponseBodyList as any as S.Schema<ListPlatformQuotasResponseBodyList>;
 
 export type ListPlatformQuotasResponse = ListPlatformQuotasResponseBodyList;
-export const ListPlatformQuotasResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPlatformQuotasResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPlatformQuotasResponse",
-}) as any as S.Schema<ListPlatformQuotasResponse>;
+export const ListPlatformQuotasResponse =
+  ListOrganizationQuotasResponse as any as S.Schema<ListPlatformQuotasResponse>;
 
 export interface ListPlatformsRequest {
   projectId: string;

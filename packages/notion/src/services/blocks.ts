@@ -177,13 +177,8 @@ export interface RichTextItemRequestMentionCase3Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase3Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase3Database",
-}) as any as S.Schema<RichTextItemRequestMentionCase3Database>;
+export const RichTextItemRequestMentionCase3Database =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<RichTextItemRequestMentionCase3Database>;
 
 export interface RichTextItemRequestMentionCase3 {
   /** Always `database` */
@@ -365,9 +360,8 @@ export const FileUploadIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileUploadIdRequest" }) as any as S.Schema<FileUploadIdRequest>;
 
 export type EmbedFileUploadRequestCaptionList = Array<RichTextItemRequest>;
-export const EmbedFileUploadRequestCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<EmbedFileUploadRequestCaptionList>;
+export const EmbedFileUploadRequestCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<EmbedFileUploadRequestCaptionList>;
 
 export interface EmbedFileUploadRequest {
   file_upload: FileUploadIdRequest;
@@ -424,9 +418,8 @@ export const ExternalFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalFileRequest" }) as any as S.Schema<ExternalFileRequest>;
 
 export type MediaContentWithFileAndCaptionRequestCase0CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileAndCaptionRequestCase0CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileAndCaptionRequestCase0CaptionList>;
+export const MediaContentWithFileAndCaptionRequestCase0CaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<MediaContentWithFileAndCaptionRequestCase0CaptionList>;
 
 export interface MediaContentWithFileAndCaptionRequestCase0 {
   external: ExternalFileRequest;
@@ -444,9 +437,8 @@ export const MediaContentWithFileAndCaptionRequestCase0 = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<MediaContentWithFileAndCaptionRequestCase0>;
 
 export type MediaContentWithFileAndCaptionRequestCase1CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileAndCaptionRequestCase1CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileAndCaptionRequestCase1CaptionList>;
+export const MediaContentWithFileAndCaptionRequestCase1CaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<MediaContentWithFileAndCaptionRequestCase1CaptionList>;
 
 export interface MediaContentWithFileAndCaptionRequestCase1 {
   file_upload: FileUploadIdRequest;
@@ -509,9 +501,8 @@ export const BlockObjectRequestCase4 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase4" }) as any as S.Schema<BlockObjectRequestCase4>;
 
 export type MediaContentWithFileNameAndCaptionRequestCase0CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileNameAndCaptionRequestCase0CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase0CaptionList>;
+export const MediaContentWithFileNameAndCaptionRequestCase0CaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase0CaptionList>;
 
 export interface MediaContentWithFileNameAndCaptionRequestCase0 {
   external: ExternalFileRequest;
@@ -531,9 +522,8 @@ export const MediaContentWithFileNameAndCaptionRequestCase0 = /*@__PURE__*/ S.su
 }) as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase0>;
 
 export type MediaContentWithFileNameAndCaptionRequestCase1CaptionList = Array<RichTextItemRequest>;
-export const MediaContentWithFileNameAndCaptionRequestCase1CaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase1CaptionList>;
+export const MediaContentWithFileNameAndCaptionRequestCase1CaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<MediaContentWithFileNameAndCaptionRequestCase1CaptionList>;
 
 export interface MediaContentWithFileNameAndCaptionRequestCase1 {
   file_upload: FileUploadIdRequest;
@@ -585,9 +575,8 @@ export const BlockObjectRequestCase6 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase6" }) as any as S.Schema<BlockObjectRequestCase6>;
 
 export type BlockObjectRequestCase7CodeRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase7CodeRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase7CodeRichTextList>;
+export const BlockObjectRequestCase7CodeRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase7CodeRichTextList>;
 
 export type LanguageRequest =
   | "abap"
@@ -683,9 +672,8 @@ export type LanguageRequest =
 export const LanguageRequest = S.String;
 
 export type BlockObjectRequestCase7CodeCaptionList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase7CodeCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase7CodeCaptionList>;
+export const BlockObjectRequestCase7CodeCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase7CodeCaptionList>;
 
 export interface BlockObjectRequestCase7Code {
   rich_text: BlockObjectRequestCase7CodeRichTextList;
@@ -718,13 +706,8 @@ export const BlockObjectRequestCase7 = /*@__PURE__*/ S.suspend(() =>
 export interface ContentWithExpressionRequest {
   expression: string;
 }
-export const ContentWithExpressionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.String,
-  }),
-).annotate({
-  identifier: "ContentWithExpressionRequest",
-}) as any as S.Schema<ContentWithExpressionRequest>;
+export const ContentWithExpressionRequest =
+  RichTextItemRequestEquation as any as S.Schema<ContentWithExpressionRequest>;
 
 export interface BlockObjectRequestCase8 {
   equation: ContentWithExpressionRequest;
@@ -766,21 +749,15 @@ export const BlockObjectRequestCase10 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase10" }) as any as S.Schema<BlockObjectRequestCase10>;
 
 export type ParagraphWithSingleLevelOfChildrenRequestRichTextList = Array<RichTextItemRequest>;
-export const ParagraphWithSingleLevelOfChildrenRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ParagraphWithSingleLevelOfChildrenRequestRichTextList>;
+export const ParagraphWithSingleLevelOfChildrenRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<ParagraphWithSingleLevelOfChildrenRequestRichTextList>;
 
 export interface FileUploadPageIconRequestFileUpload {
   /** ID of a FileUpload object that has the status `uploaded`. */
   id: string;
 }
-export const FileUploadPageIconRequestFileUpload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "FileUploadPageIconRequestFileUpload",
-}) as any as S.Schema<FileUploadPageIconRequestFileUpload>;
+export const FileUploadPageIconRequestFileUpload =
+  RichTextItemRequestMentionCase2Page as any as S.Schema<FileUploadPageIconRequestFileUpload>;
 
 export interface FileUploadPageIconRequest {
   /** Always `file_upload` */
@@ -813,13 +790,8 @@ export interface ExternalPageIconRequestExternal {
   /** The URL of the external file. */
   url: string;
 }
-export const ExternalPageIconRequestExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ExternalPageIconRequestExternal",
-}) as any as S.Schema<ExternalPageIconRequestExternal>;
+export const ExternalPageIconRequestExternal =
+  RichTextItemRequestTextLink as any as S.Schema<ExternalPageIconRequestExternal>;
 
 export interface ExternalPageIconRequest {
   /** Always `external` */
@@ -841,14 +813,8 @@ export interface CustomEmojiPageIconRequest {
   type?: string;
   custom_emoji: RichTextItemRequestMentionCase5CustomEmoji;
 }
-export const CustomEmojiPageIconRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    custom_emoji: RichTextItemRequestMentionCase5CustomEmoji,
-  }),
-).annotate({
-  identifier: "CustomEmojiPageIconRequest",
-}) as any as S.Schema<CustomEmojiPageIconRequest>;
+export const CustomEmojiPageIconRequest =
+  RichTextItemRequestMentionCase5 as any as S.Schema<CustomEmojiPageIconRequest>;
 
 /** One of: `gray`, `lightgray`, `brown`, `yellow`, `orange`, `green`, `blue`, `purple`, `pink`, `red` */
 export type NoticonColor =
@@ -939,29 +905,20 @@ export type BlockObjectRequestWithoutChildrenCase6 = BlockObjectRequestCase6;
 export const BlockObjectRequestWithoutChildrenCase6 = BlockObjectRequestCase6;
 
 export type BlockObjectRequestWithoutChildrenCase7CodeRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase7CodeRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeRichTextList>;
+export const BlockObjectRequestWithoutChildrenCase7CodeRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeRichTextList>;
 
 export type BlockObjectRequestWithoutChildrenCase7CodeCaptionList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase7CodeCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeCaptionList>;
+export const BlockObjectRequestWithoutChildrenCase7CodeCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestWithoutChildrenCase7CodeCaptionList>;
 
 export interface BlockObjectRequestWithoutChildrenCase7Code {
   rich_text: BlockObjectRequestWithoutChildrenCase7CodeRichTextList;
   language: LanguageRequest | (string & {});
   caption?: BlockObjectRequestWithoutChildrenCase7CodeCaptionList;
 }
-export const BlockObjectRequestWithoutChildrenCase7Code = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestWithoutChildrenCase7CodeRichTextList,
-    language: LanguageRequest,
-    caption: S.optional(BlockObjectRequestWithoutChildrenCase7CodeCaptionList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestWithoutChildrenCase7Code",
-}) as any as S.Schema<BlockObjectRequestWithoutChildrenCase7Code>;
+export const BlockObjectRequestWithoutChildrenCase7Code =
+  BlockObjectRequestCase7Code as any as S.Schema<BlockObjectRequestWithoutChildrenCase7Code>;
 
 export interface BlockObjectRequestWithoutChildrenCase7 {
   code: BlockObjectRequestWithoutChildrenCase7Code;
@@ -1090,9 +1047,8 @@ export const BlockObjectRequestWithoutChildrenCase13 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase13>;
 
 export type ContentWithTableRowRequestCellsItemList = Array<RichTextItemRequest>;
-export const ContentWithTableRowRequestCellsItemList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithTableRowRequestCellsItemList>;
+export const ContentWithTableRowRequestCellsItemList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<ContentWithTableRowRequestCellsItemList>;
 
 export type ContentWithTableRowRequestCellsList = Array<ContentWithTableRowRequestCellsItemList>;
 export const ContentWithTableRowRequestCellsList = /*@__PURE__*/ S.Array(
@@ -1126,9 +1082,8 @@ export const BlockObjectRequestWithoutChildrenCase14 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase14>;
 
 export type HeaderContentWithRichTextAndColorRequestRichTextList = Array<RichTextItemRequest>;
-export const HeaderContentWithRichTextAndColorRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<HeaderContentWithRichTextAndColorRequestRichTextList>;
+export const HeaderContentWithRichTextAndColorRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<HeaderContentWithRichTextAndColorRequestRichTextList>;
 
 export interface HeaderContentWithRichTextAndColorRequest {
   rich_text: HeaderContentWithRichTextAndColorRequestRichTextList;
@@ -1206,9 +1161,8 @@ export const BlockObjectRequestWithoutChildrenCase18 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase18>;
 
 export type ContentWithRichTextColorAndIconRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithRichTextColorAndIconRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithRichTextColorAndIconRequestRichTextList>;
+export const ContentWithRichTextColorAndIconRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<ContentWithRichTextColorAndIconRequestRichTextList>;
 
 export interface ContentWithRichTextColorAndIconRequest {
   rich_text: ContentWithRichTextColorAndIconRequestRichTextList;
@@ -1241,9 +1195,8 @@ export const BlockObjectRequestWithoutChildrenCase19 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase19>;
 
 export type ContentWithRichTextAndColorRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithRichTextAndColorRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithRichTextAndColorRequestRichTextList>;
+export const ContentWithRichTextAndColorRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<ContentWithRichTextAndColorRequestRichTextList>;
 
 export interface ContentWithRichTextAndColorRequest {
   rich_text: ContentWithRichTextAndColorRequestRichTextList;
@@ -1304,9 +1257,8 @@ export const BlockObjectRequestWithoutChildrenCase22 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase22>;
 
 export type BlockObjectRequestWithoutChildrenCase23ToDoRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase23ToDoRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase23ToDoRichTextList>;
+export const BlockObjectRequestWithoutChildrenCase23ToDoRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestWithoutChildrenCase23ToDoRichTextList>;
 
 export interface BlockObjectRequestWithoutChildrenCase23ToDo {
   rich_text: BlockObjectRequestWithoutChildrenCase23ToDoRichTextList;
@@ -1354,9 +1306,8 @@ export const BlockObjectRequestWithoutChildrenCase24 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase24>;
 
 export type ContentWithRichTextRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithRichTextRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithRichTextRequestRichTextList>;
+export const ContentWithRichTextRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<ContentWithRichTextRequestRichTextList>;
 
 export interface ContentWithRichTextRequest {
   rich_text: ContentWithRichTextRequestRichTextList;
@@ -1385,9 +1336,8 @@ export const BlockObjectRequestWithoutChildrenCase25 = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<BlockObjectRequestWithoutChildrenCase25>;
 
 export type BlockObjectRequestWithoutChildrenCase26CalloutRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestWithoutChildrenCase26CalloutRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestWithoutChildrenCase26CalloutRichTextList>;
+export const BlockObjectRequestWithoutChildrenCase26CalloutRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestWithoutChildrenCase26CalloutRichTextList>;
 
 export interface BlockObjectRequestWithoutChildrenCase26Callout {
   rich_text: BlockObjectRequestWithoutChildrenCase26CalloutRichTextList;
@@ -1693,9 +1643,7 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList =
 export type BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase7CodeCaptionList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase7Code {
   rich_text: BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList;
@@ -1824,15 +1772,13 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase14 =
   BlockObjectRequestWithoutChildrenCase14;
 
 export type HeaderContentWithSingleLevelOfChildrenRequestRichTextList = Array<RichTextItemRequest>;
-export const HeaderContentWithSingleLevelOfChildrenRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestRichTextList>;
+export const HeaderContentWithSingleLevelOfChildrenRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestRichTextList>;
 
 export type HeaderContentWithSingleLevelOfChildrenRequestChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
-export const HeaderContentWithSingleLevelOfChildrenRequestChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectRequestWithoutChildren,
-) as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestChildrenList>;
+export const HeaderContentWithSingleLevelOfChildrenRequestChildrenList =
+  ParagraphWithSingleLevelOfChildrenRequestChildrenList as any as S.Schema<HeaderContentWithSingleLevelOfChildrenRequestChildrenList>;
 
 export interface HeaderContentWithSingleLevelOfChildrenRequest {
   rich_text: HeaderContentWithSingleLevelOfChildrenRequestRichTextList;
@@ -1917,15 +1863,13 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase19 =
   TabItemRequestWithSingleLevelOfChildren;
 
 export type ContentWithSingleLevelOfChildrenRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithSingleLevelOfChildrenRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithSingleLevelOfChildrenRequestRichTextList>;
+export const ContentWithSingleLevelOfChildrenRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<ContentWithSingleLevelOfChildrenRequestRichTextList>;
 
 export type ContentWithSingleLevelOfChildrenRequestChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
-export const ContentWithSingleLevelOfChildrenRequestChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectRequestWithoutChildren,
-) as any as S.Schema<ContentWithSingleLevelOfChildrenRequestChildrenList>;
+export const ContentWithSingleLevelOfChildrenRequestChildrenList =
+  ParagraphWithSingleLevelOfChildrenRequestChildrenList as any as S.Schema<ContentWithSingleLevelOfChildrenRequestChildrenList>;
 
 export interface ContentWithSingleLevelOfChildrenRequest {
   rich_text: ContentWithSingleLevelOfChildrenRequestRichTextList;
@@ -1993,9 +1937,7 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase23 = BlockObjectRequ
 export type BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoRichTextList>;
 
 export type BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
@@ -2054,16 +1996,12 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase25 = /*@__PURE__*/ S
 export type BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList>;
 
 export type BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList =
-  /*@__PURE__*/ S.Array(
-    BlockObjectRequestWithoutChildren,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateChildrenList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase26Template {
   rich_text: BlockObjectWithSingleLevelOfChildrenRequestCase26TemplateRichTextList;
@@ -2097,16 +2035,12 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase26 = /*@__PURE__*/ S
 export type BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList =
   Array<RichTextItemRequest>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList =
-  /*@__PURE__*/ S.Array(
-    RichTextItemRequest,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase7CodeRichTextList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList>;
 
 export type BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList =
-  /*@__PURE__*/ S.Array(
-    BlockObjectRequestWithoutChildren,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutChildrenList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase27Callout {
   rich_text: BlockObjectWithSingleLevelOfChildrenRequestCase27CalloutRichTextList;
@@ -2149,9 +2083,7 @@ export const BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockSyncedF
 export type BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList =
   Array<BlockObjectRequestWithoutChildren>;
 export const BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList =
-  /*@__PURE__*/ S.Array(
-    BlockObjectRequestWithoutChildren,
-  ) as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList>;
+  BlockObjectWithSingleLevelOfChildrenRequestCase24ToDoChildrenList as any as S.Schema<BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlockChildrenList>;
 
 export interface BlockObjectWithSingleLevelOfChildrenRequestCase28SyncedBlock {
   synced_from: BlockObjectRequestWithoutChildrenCase27SyncedBlockSyncedFrom | null;
@@ -2283,15 +2215,13 @@ export type BlockObjectRequestCase17 = ColumnBlockWithChildrenRequest;
 export const BlockObjectRequestCase17 = ColumnBlockWithChildrenRequest;
 
 export type BlockObjectRequestCase18Heading1RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase18Heading1RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase18Heading1RichTextList>;
+export const BlockObjectRequestCase18Heading1RichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase18Heading1RichTextList>;
 
 export type BlockObjectRequestCase18Heading1ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase18Heading1ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase18Heading1ChildrenList>;
+export const BlockObjectRequestCase18Heading1ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase18Heading1ChildrenList>;
 
 export interface BlockObjectRequestCase18Heading1 {
   rich_text: BlockObjectRequestCase18Heading1RichTextList;
@@ -2324,15 +2254,13 @@ export const BlockObjectRequestCase18 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase18" }) as any as S.Schema<BlockObjectRequestCase18>;
 
 export type BlockObjectRequestCase19Heading2RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase19Heading2RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase19Heading2RichTextList>;
+export const BlockObjectRequestCase19Heading2RichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase19Heading2RichTextList>;
 
 export type BlockObjectRequestCase19Heading2ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase19Heading2ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase19Heading2ChildrenList>;
+export const BlockObjectRequestCase19Heading2ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase19Heading2ChildrenList>;
 
 export interface BlockObjectRequestCase19Heading2 {
   rich_text: BlockObjectRequestCase19Heading2RichTextList;
@@ -2340,16 +2268,8 @@ export interface BlockObjectRequestCase19Heading2 {
   is_toggleable?: boolean;
   children?: BlockObjectRequestCase19Heading2ChildrenList;
 }
-export const BlockObjectRequestCase19Heading2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase19Heading2RichTextList,
-    color: S.optional(ApiColor),
-    is_toggleable: S.optional(S.Boolean),
-    children: S.optional(BlockObjectRequestCase19Heading2ChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase19Heading2",
-}) as any as S.Schema<BlockObjectRequestCase19Heading2>;
+export const BlockObjectRequestCase19Heading2 =
+  BlockObjectRequestCase18Heading1 as any as S.Schema<BlockObjectRequestCase19Heading2>;
 
 export interface BlockObjectRequestCase19 {
   heading_2: BlockObjectRequestCase19Heading2;
@@ -2365,15 +2285,13 @@ export const BlockObjectRequestCase19 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase19" }) as any as S.Schema<BlockObjectRequestCase19>;
 
 export type BlockObjectRequestCase20Heading3RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase20Heading3RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase20Heading3RichTextList>;
+export const BlockObjectRequestCase20Heading3RichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase20Heading3RichTextList>;
 
 export type BlockObjectRequestCase20Heading3ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase20Heading3ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase20Heading3ChildrenList>;
+export const BlockObjectRequestCase20Heading3ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase20Heading3ChildrenList>;
 
 export interface BlockObjectRequestCase20Heading3 {
   rich_text: BlockObjectRequestCase20Heading3RichTextList;
@@ -2381,16 +2299,8 @@ export interface BlockObjectRequestCase20Heading3 {
   is_toggleable?: boolean;
   children?: BlockObjectRequestCase20Heading3ChildrenList;
 }
-export const BlockObjectRequestCase20Heading3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase20Heading3RichTextList,
-    color: S.optional(ApiColor),
-    is_toggleable: S.optional(S.Boolean),
-    children: S.optional(BlockObjectRequestCase20Heading3ChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase20Heading3",
-}) as any as S.Schema<BlockObjectRequestCase20Heading3>;
+export const BlockObjectRequestCase20Heading3 =
+  BlockObjectRequestCase18Heading1 as any as S.Schema<BlockObjectRequestCase20Heading3>;
 
 export interface BlockObjectRequestCase20 {
   heading_3: BlockObjectRequestCase20Heading3;
@@ -2406,15 +2316,13 @@ export const BlockObjectRequestCase20 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase20" }) as any as S.Schema<BlockObjectRequestCase20>;
 
 export type BlockObjectRequestCase21Heading4RichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase21Heading4RichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase21Heading4RichTextList>;
+export const BlockObjectRequestCase21Heading4RichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase21Heading4RichTextList>;
 
 export type BlockObjectRequestCase21Heading4ChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase21Heading4ChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase21Heading4ChildrenList>;
+export const BlockObjectRequestCase21Heading4ChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase21Heading4ChildrenList>;
 
 export interface BlockObjectRequestCase21Heading4 {
   rich_text: BlockObjectRequestCase21Heading4RichTextList;
@@ -2422,16 +2330,8 @@ export interface BlockObjectRequestCase21Heading4 {
   is_toggleable?: boolean;
   children?: BlockObjectRequestCase21Heading4ChildrenList;
 }
-export const BlockObjectRequestCase21Heading4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase21Heading4RichTextList,
-    color: S.optional(ApiColor),
-    is_toggleable: S.optional(S.Boolean),
-    children: S.optional(BlockObjectRequestCase21Heading4ChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase21Heading4",
-}) as any as S.Schema<BlockObjectRequestCase21Heading4>;
+export const BlockObjectRequestCase21Heading4 =
+  BlockObjectRequestCase18Heading1 as any as S.Schema<BlockObjectRequestCase21Heading4>;
 
 export interface BlockObjectRequestCase21 {
   heading_4: BlockObjectRequestCase21Heading4;
@@ -2447,15 +2347,13 @@ export const BlockObjectRequestCase21 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase21" }) as any as S.Schema<BlockObjectRequestCase21>;
 
 export type BlockObjectRequestCase22ParagraphRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase22ParagraphRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase22ParagraphRichTextList>;
+export const BlockObjectRequestCase22ParagraphRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase22ParagraphRichTextList>;
 
 export type BlockObjectRequestCase22ParagraphChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase22ParagraphChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase22ParagraphChildrenList>;
+export const BlockObjectRequestCase22ParagraphChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase22ParagraphChildrenList>;
 
 export interface BlockObjectRequestCase22Paragraph {
   rich_text: BlockObjectRequestCase22ParagraphRichTextList;
@@ -2488,15 +2386,13 @@ export const BlockObjectRequestCase22 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase22" }) as any as S.Schema<BlockObjectRequestCase22>;
 
 export type BlockObjectRequestCase23BulletedListItemRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase23BulletedListItemRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase23BulletedListItemRichTextList>;
+export const BlockObjectRequestCase23BulletedListItemRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase23BulletedListItemRichTextList>;
 
 export type BlockObjectRequestCase23BulletedListItemChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase23BulletedListItemChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase23BulletedListItemChildrenList>;
+export const BlockObjectRequestCase23BulletedListItemChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase23BulletedListItemChildrenList>;
 
 export interface BlockObjectRequestCase23BulletedListItem {
   rich_text: BlockObjectRequestCase23BulletedListItemRichTextList;
@@ -2527,30 +2423,21 @@ export const BlockObjectRequestCase23 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase23" }) as any as S.Schema<BlockObjectRequestCase23>;
 
 export type BlockObjectRequestCase24NumberedListItemRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase24NumberedListItemRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase24NumberedListItemRichTextList>;
+export const BlockObjectRequestCase24NumberedListItemRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase24NumberedListItemRichTextList>;
 
 export type BlockObjectRequestCase24NumberedListItemChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase24NumberedListItemChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase24NumberedListItemChildrenList>;
+export const BlockObjectRequestCase24NumberedListItemChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase24NumberedListItemChildrenList>;
 
 export interface BlockObjectRequestCase24NumberedListItem {
   rich_text: BlockObjectRequestCase24NumberedListItemRichTextList;
   color?: ApiColor | (string & {});
   children?: BlockObjectRequestCase24NumberedListItemChildrenList;
 }
-export const BlockObjectRequestCase24NumberedListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase24NumberedListItemRichTextList,
-    color: S.optional(ApiColor),
-    children: S.optional(BlockObjectRequestCase24NumberedListItemChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase24NumberedListItem",
-}) as any as S.Schema<BlockObjectRequestCase24NumberedListItem>;
+export const BlockObjectRequestCase24NumberedListItem =
+  BlockObjectRequestCase23BulletedListItem as any as S.Schema<BlockObjectRequestCase24NumberedListItem>;
 
 export interface BlockObjectRequestCase24 {
   numbered_list_item: BlockObjectRequestCase24NumberedListItem;
@@ -2566,30 +2453,21 @@ export const BlockObjectRequestCase24 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase24" }) as any as S.Schema<BlockObjectRequestCase24>;
 
 export type BlockObjectRequestCase25QuoteRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase25QuoteRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase25QuoteRichTextList>;
+export const BlockObjectRequestCase25QuoteRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase25QuoteRichTextList>;
 
 export type BlockObjectRequestCase25QuoteChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase25QuoteChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase25QuoteChildrenList>;
+export const BlockObjectRequestCase25QuoteChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase25QuoteChildrenList>;
 
 export interface BlockObjectRequestCase25Quote {
   rich_text: BlockObjectRequestCase25QuoteRichTextList;
   color?: ApiColor | (string & {});
   children?: BlockObjectRequestCase25QuoteChildrenList;
 }
-export const BlockObjectRequestCase25Quote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase25QuoteRichTextList,
-    color: S.optional(ApiColor),
-    children: S.optional(BlockObjectRequestCase25QuoteChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase25Quote",
-}) as any as S.Schema<BlockObjectRequestCase25Quote>;
+export const BlockObjectRequestCase25Quote =
+  BlockObjectRequestCase23BulletedListItem as any as S.Schema<BlockObjectRequestCase25Quote>;
 
 export interface BlockObjectRequestCase25 {
   quote: BlockObjectRequestCase25Quote;
@@ -2605,15 +2483,13 @@ export const BlockObjectRequestCase25 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase25" }) as any as S.Schema<BlockObjectRequestCase25>;
 
 export type BlockObjectRequestCase26ToDoRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase26ToDoRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase26ToDoRichTextList>;
+export const BlockObjectRequestCase26ToDoRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase26ToDoRichTextList>;
 
 export type BlockObjectRequestCase26ToDoChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase26ToDoChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase26ToDoChildrenList>;
+export const BlockObjectRequestCase26ToDoChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase26ToDoChildrenList>;
 
 export interface BlockObjectRequestCase26ToDo {
   rich_text: BlockObjectRequestCase26ToDoRichTextList;
@@ -2646,30 +2522,21 @@ export const BlockObjectRequestCase26 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase26" }) as any as S.Schema<BlockObjectRequestCase26>;
 
 export type BlockObjectRequestCase27ToggleRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase27ToggleRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase27ToggleRichTextList>;
+export const BlockObjectRequestCase27ToggleRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase27ToggleRichTextList>;
 
 export type BlockObjectRequestCase27ToggleChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase27ToggleChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase27ToggleChildrenList>;
+export const BlockObjectRequestCase27ToggleChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase27ToggleChildrenList>;
 
 export interface BlockObjectRequestCase27Toggle {
   rich_text: BlockObjectRequestCase27ToggleRichTextList;
   color?: ApiColor | (string & {});
   children?: BlockObjectRequestCase27ToggleChildrenList;
 }
-export const BlockObjectRequestCase27Toggle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: BlockObjectRequestCase27ToggleRichTextList,
-    color: S.optional(ApiColor),
-    children: S.optional(BlockObjectRequestCase27ToggleChildrenList),
-  }),
-).annotate({
-  identifier: "BlockObjectRequestCase27Toggle",
-}) as any as S.Schema<BlockObjectRequestCase27Toggle>;
+export const BlockObjectRequestCase27Toggle =
+  BlockObjectRequestCase23BulletedListItem as any as S.Schema<BlockObjectRequestCase27Toggle>;
 
 export interface BlockObjectRequestCase27 {
   toggle: BlockObjectRequestCase27Toggle;
@@ -2685,15 +2552,13 @@ export const BlockObjectRequestCase27 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase27" }) as any as S.Schema<BlockObjectRequestCase27>;
 
 export type BlockObjectRequestCase28TemplateRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase28TemplateRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase28TemplateRichTextList>;
+export const BlockObjectRequestCase28TemplateRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase28TemplateRichTextList>;
 
 export type BlockObjectRequestCase28TemplateChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase28TemplateChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase28TemplateChildrenList>;
+export const BlockObjectRequestCase28TemplateChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase28TemplateChildrenList>;
 
 export interface BlockObjectRequestCase28Template {
   rich_text: BlockObjectRequestCase28TemplateRichTextList;
@@ -2722,15 +2587,13 @@ export const BlockObjectRequestCase28 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockObjectRequestCase28" }) as any as S.Schema<BlockObjectRequestCase28>;
 
 export type BlockObjectRequestCase29CalloutRichTextList = Array<RichTextItemRequest>;
-export const BlockObjectRequestCase29CalloutRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<BlockObjectRequestCase29CalloutRichTextList>;
+export const BlockObjectRequestCase29CalloutRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<BlockObjectRequestCase29CalloutRichTextList>;
 
 export type BlockObjectRequestCase29CalloutChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase29CalloutChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase29CalloutChildrenList>;
+export const BlockObjectRequestCase29CalloutChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase29CalloutChildrenList>;
 
 export interface BlockObjectRequestCase29Callout {
   rich_text: BlockObjectRequestCase29CalloutRichTextList;
@@ -2769,9 +2632,8 @@ export const BlockObjectRequestCase30SyncedBlockSyncedFrom =
 
 export type BlockObjectRequestCase30SyncedBlockChildrenList =
   Array<BlockObjectWithSingleLevelOfChildrenRequest>;
-export const BlockObjectRequestCase30SyncedBlockChildrenList = /*@__PURE__*/ S.Array(
-  BlockObjectWithSingleLevelOfChildrenRequest,
-) as any as S.Schema<BlockObjectRequestCase30SyncedBlockChildrenList>;
+export const BlockObjectRequestCase30SyncedBlockChildrenList =
+  ColumnWithChildrenRequestChildrenList as any as S.Schema<BlockObjectRequestCase30SyncedBlockChildrenList>;
 
 export interface BlockObjectRequestCase30SyncedBlock {
   synced_from: BlockObjectRequestWithoutChildrenCase27SyncedBlockSyncedFrom | null;
@@ -3158,13 +3020,8 @@ export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LinkPreviewMentionResponse",
-}) as any as S.Schema<LinkPreviewMentionResponse>;
+export const LinkPreviewMentionResponse =
+  RichTextItemRequestTextLink as any as S.Schema<LinkPreviewMentionResponse>;
 
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
@@ -3454,13 +3311,8 @@ export interface ExternalPageIconResponseExternal {
   /** The URL of the external file or resource. */
   url: string;
 }
-export const ExternalPageIconResponseExternal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "ExternalPageIconResponseExternal",
-}) as any as S.Schema<ExternalPageIconResponseExternal>;
+export const ExternalPageIconResponseExternal =
+  RichTextItemRequestTextLink as any as S.Schema<ExternalPageIconResponseExternal>;
 
 export interface ExternalPageIconResponse {
   /** Type of icon. In this case, an external URL. */
@@ -3481,14 +3333,8 @@ export interface CustomEmojiPageIconResponse {
   /** The custom emoji details for the icon. */
   custom_emoji: CustomEmojiResponse;
 }
-export const CustomEmojiPageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom_emoji: CustomEmojiResponse,
-  }),
-).annotate({
-  identifier: "CustomEmojiPageIconResponse",
-}) as any as S.Schema<CustomEmojiPageIconResponse>;
+export const CustomEmojiPageIconResponse =
+  RichTextItemResponseMentionCase7 as any as S.Schema<CustomEmojiPageIconResponse>;
 
 export interface NoticonIconResponse {
   /** The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names. */
@@ -3619,14 +3465,8 @@ export interface WorkspaceParentForBlockBasedObjectResponse {
   /** Always true for workspace parent. */
   workspace: boolean;
 }
-export const WorkspaceParentForBlockBasedObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "WorkspaceParentForBlockBasedObjectResponse",
-}) as any as S.Schema<WorkspaceParentForBlockBasedObjectResponse>;
+export const WorkspaceParentForBlockBasedObjectResponse =
+  BotInfoResponseOwnerCase1 as any as S.Schema<WorkspaceParentForBlockBasedObjectResponse>;
 
 export type ParentForBlockBasedObjectResponse =
   | DatabaseParentResponse
@@ -3670,9 +3510,8 @@ export const ParagraphBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParagraphBlockObjectResponse>;
 
 export type HeaderContentWithRichTextAndColorResponseRichTextList = Array<RichTextItemResponse>;
-export const HeaderContentWithRichTextAndColorResponseRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<HeaderContentWithRichTextAndColorResponseRichTextList>;
+export const HeaderContentWithRichTextAndColorResponseRichTextList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<HeaderContentWithRichTextAndColorResponseRichTextList>;
 
 export interface HeaderContentWithRichTextAndColorResponse {
   rich_text: HeaderContentWithRichTextAndColorResponseRichTextList;
@@ -3814,9 +3653,8 @@ export const Heading4BlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Heading4BlockObjectResponse>;
 
 export type ContentWithRichTextAndColorResponseRichTextList = Array<RichTextItemResponse>;
-export const ContentWithRichTextAndColorResponseRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<ContentWithRichTextAndColorResponseRichTextList>;
+export const ContentWithRichTextAndColorResponseRichTextList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<ContentWithRichTextAndColorResponseRichTextList>;
 
 export interface ContentWithRichTextAndColorResponse {
   rich_text: ContentWithRichTextAndColorResponseRichTextList;
@@ -3863,9 +3701,8 @@ export const BulletedListItemBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulletedListItemBlockObjectResponse>;
 
 export type ContentWithRichTextAndColorAndListResponseRichTextList = Array<RichTextItemResponse>;
-export const ContentWithRichTextAndColorAndListResponseRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<ContentWithRichTextAndColorAndListResponseRichTextList>;
+export const ContentWithRichTextAndColorAndListResponseRichTextList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<ContentWithRichTextAndColorAndListResponseRichTextList>;
 
 export type NumberedListFormat = "numbers" | "letters" | "roman";
 export const NumberedListFormat = S.String;
@@ -3948,9 +3785,8 @@ export const QuoteBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuoteBlockObjectResponse" }) as any as S.Schema<QuoteBlockObjectResponse>;
 
 export type ToDoBlockObjectResponseToDoRichTextList = Array<RichTextItemResponse>;
-export const ToDoBlockObjectResponseToDoRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<ToDoBlockObjectResponseToDoRichTextList>;
+export const ToDoBlockObjectResponseToDoRichTextList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<ToDoBlockObjectResponseToDoRichTextList>;
 
 export interface ToDoBlockObjectResponseToDo {
   rich_text: ToDoBlockObjectResponseToDoRichTextList;
@@ -4028,9 +3864,8 @@ export const ToggleBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToggleBlockObjectResponse>;
 
 export type TemplateBlockObjectResponseTemplateRichTextList = Array<RichTextItemResponse>;
-export const TemplateBlockObjectResponseTemplateRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<TemplateBlockObjectResponseTemplateRichTextList>;
+export const TemplateBlockObjectResponseTemplateRichTextList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<TemplateBlockObjectResponseTemplateRichTextList>;
 
 export interface TemplateBlockObjectResponseTemplate {
   rich_text: TemplateBlockObjectResponseTemplateRichTextList;
@@ -4078,14 +3913,8 @@ export interface SyncedBlockBlockObjectResponseSyncedBlockSyncedFrom {
   type: string;
   block_id: string;
 }
-export const SyncedBlockBlockObjectResponseSyncedBlockSyncedFrom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    block_id: S.String,
-  }),
-).annotate({
-  identifier: "SyncedBlockBlockObjectResponseSyncedBlockSyncedFrom",
-}) as any as S.Schema<SyncedBlockBlockObjectResponseSyncedBlockSyncedFrom>;
+export const SyncedBlockBlockObjectResponseSyncedBlockSyncedFrom =
+  BlockIdParentForBlockBasedObjectResponse as any as S.Schema<SyncedBlockBlockObjectResponseSyncedBlockSyncedFrom>;
 
 export interface SyncedBlockBlockObjectResponseSyncedBlock {
   synced_from: SyncedBlockBlockObjectResponseSyncedBlockSyncedFrom | null;
@@ -4235,14 +4064,12 @@ export const EquationBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EquationBlockObjectResponse>;
 
 export type CodeBlockObjectResponseCodeRichTextList = Array<RichTextItemResponse>;
-export const CodeBlockObjectResponseCodeRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<CodeBlockObjectResponseCodeRichTextList>;
+export const CodeBlockObjectResponseCodeRichTextList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<CodeBlockObjectResponseCodeRichTextList>;
 
 export type CodeBlockObjectResponseCodeCaptionList = Array<RichTextItemResponse>;
-export const CodeBlockObjectResponseCodeCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<CodeBlockObjectResponseCodeCaptionList>;
+export const CodeBlockObjectResponseCodeCaptionList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<CodeBlockObjectResponseCodeCaptionList>;
 
 export interface CodeBlockObjectResponseCode {
   rich_text: CodeBlockObjectResponseCodeRichTextList;
@@ -4289,24 +4116,16 @@ export const CodeBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeBlockObjectResponse" }) as any as S.Schema<CodeBlockObjectResponse>;
 
 export type CalloutBlockObjectResponseCalloutRichTextList = Array<RichTextItemResponse>;
-export const CalloutBlockObjectResponseCalloutRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<CalloutBlockObjectResponseCalloutRichTextList>;
+export const CalloutBlockObjectResponseCalloutRichTextList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<CalloutBlockObjectResponseCalloutRichTextList>;
 
 export interface CalloutBlockObjectResponseCallout {
   rich_text: CalloutBlockObjectResponseCalloutRichTextList;
   color: ApiColor;
   icon: PageIconResponse | null;
 }
-export const CalloutBlockObjectResponseCallout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: CalloutBlockObjectResponseCalloutRichTextList,
-    color: ApiColor,
-    icon: S.NullOr(PageIconResponse),
-  }),
-).annotate({
-  identifier: "CalloutBlockObjectResponseCallout",
-}) as any as S.Schema<CalloutBlockObjectResponseCallout>;
+export const CalloutBlockObjectResponseCallout =
+  ContentWithRichTextColorAndIconResponse as any as S.Schema<CalloutBlockObjectResponseCallout>;
 
 export interface CalloutBlockObjectResponse {
   type: string;
@@ -4548,14 +4367,8 @@ export interface LinkToPageBlockObjectResponseLinkToPageCase0 {
   type: string;
   page_id: string;
 }
-export const LinkToPageBlockObjectResponseLinkToPageCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    page_id: S.String,
-  }),
-).annotate({
-  identifier: "LinkToPageBlockObjectResponseLinkToPageCase0",
-}) as any as S.Schema<LinkToPageBlockObjectResponseLinkToPageCase0>;
+export const LinkToPageBlockObjectResponseLinkToPageCase0 =
+  PageIdParentForBlockBasedObjectResponse as any as S.Schema<LinkToPageBlockObjectResponseLinkToPageCase0>;
 
 export interface LinkToPageBlockObjectResponseLinkToPageCase1 {
   type: string;
@@ -4664,9 +4477,8 @@ export const TableBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableBlockObjectResponse" }) as any as S.Schema<TableBlockObjectResponse>;
 
 export type ContentWithTableRowResponseCellsItemList = Array<RichTextItemResponse>;
-export const ContentWithTableRowResponseCellsItemList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<ContentWithTableRowResponseCellsItemList>;
+export const ContentWithTableRowResponseCellsItemList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<ContentWithTableRowResponseCellsItemList>;
 
 export type ContentWithTableRowResponseCellsList = Array<ContentWithTableRowResponseCellsItemList>;
 export const ContentWithTableRowResponseCellsList = /*@__PURE__*/ S.Array(
@@ -4716,9 +4528,8 @@ export const TableRowBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableRowBlockObjectResponse>;
 
 export type TranscriptionBlockResponseTitleList = Array<RichTextItemResponse>;
-export const TranscriptionBlockResponseTitleList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<TranscriptionBlockResponseTitleList>;
+export const TranscriptionBlockResponseTitleList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<TranscriptionBlockResponseTitleList>;
 
 export type ApiTranscriptionStatus =
   | "transcription_not_started"
@@ -4828,9 +4639,8 @@ export const MeetingNotesBlockObjectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MeetingNotesBlockObjectResponse>;
 
 export type MediaContentWithUrlAndCaptionResponseCaptionList = Array<RichTextItemResponse>;
-export const MediaContentWithUrlAndCaptionResponseCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<MediaContentWithUrlAndCaptionResponseCaptionList>;
+export const MediaContentWithUrlAndCaptionResponseCaptionList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<MediaContentWithUrlAndCaptionResponseCaptionList>;
 
 export interface MediaContentWithUrlAndCaptionResponse {
   url: string;
@@ -4909,9 +4719,8 @@ export type ExternalMediaContentWithFileAndCaptionResponseExternal = ExternalFil
 export const ExternalMediaContentWithFileAndCaptionResponseExternal = ExternalFileRequest;
 
 export type ExternalMediaContentWithFileAndCaptionResponseCaptionList = Array<RichTextItemResponse>;
-export const ExternalMediaContentWithFileAndCaptionResponseCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<ExternalMediaContentWithFileAndCaptionResponseCaptionList>;
+export const ExternalMediaContentWithFileAndCaptionResponseCaptionList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<ExternalMediaContentWithFileAndCaptionResponseCaptionList>;
 
 export interface ExternalMediaContentWithFileAndCaptionResponse {
   type: string;
@@ -4929,9 +4738,8 @@ export const ExternalMediaContentWithFileAndCaptionResponse = /*@__PURE__*/ S.su
 }) as any as S.Schema<ExternalMediaContentWithFileAndCaptionResponse>;
 
 export type FileMediaContentWithFileAndCaptionResponseCaptionList = Array<RichTextItemResponse>;
-export const FileMediaContentWithFileAndCaptionResponseCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<FileMediaContentWithFileAndCaptionResponseCaptionList>;
+export const FileMediaContentWithFileAndCaptionResponseCaptionList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<FileMediaContentWithFileAndCaptionResponseCaptionList>;
 
 export interface FileMediaContentWithFileAndCaptionResponse {
   type: string;
@@ -5046,9 +4854,8 @@ export const ExternalMediaContentWithFileNameAndCaptionResponseExternal = Extern
 
 export type ExternalMediaContentWithFileNameAndCaptionResponseCaptionList =
   Array<RichTextItemResponse>;
-export const ExternalMediaContentWithFileNameAndCaptionResponseCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<ExternalMediaContentWithFileNameAndCaptionResponseCaptionList>;
+export const ExternalMediaContentWithFileNameAndCaptionResponseCaptionList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<ExternalMediaContentWithFileNameAndCaptionResponseCaptionList>;
 
 export interface ExternalMediaContentWithFileNameAndCaptionResponse {
   type: string;
@@ -5068,9 +4875,8 @@ export const ExternalMediaContentWithFileNameAndCaptionResponse = /*@__PURE__*/ 
 }) as any as S.Schema<ExternalMediaContentWithFileNameAndCaptionResponse>;
 
 export type FileMediaContentWithFileNameAndCaptionResponseCaptionList = Array<RichTextItemResponse>;
-export const FileMediaContentWithFileNameAndCaptionResponseCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<FileMediaContentWithFileNameAndCaptionResponseCaptionList>;
+export const FileMediaContentWithFileNameAndCaptionResponseCaptionList =
+  ContentWithRichTextColorAndIconResponseRichTextList as any as S.Schema<FileMediaContentWithFileNameAndCaptionResponseCaptionList>;
 
 export interface FileMediaContentWithFileNameAndCaptionResponse {
   type: string;
@@ -5381,9 +5187,8 @@ export const ListBlockChildrenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBlockChildrenResponse>;
 
 export type UpdateMediaContentWithUrlAndCaptionRequestCaptionList = Array<RichTextItemRequest>;
-export const UpdateMediaContentWithUrlAndCaptionRequestCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateMediaContentWithUrlAndCaptionRequestCaptionList>;
+export const UpdateMediaContentWithUrlAndCaptionRequestCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateMediaContentWithUrlAndCaptionRequestCaptionList>;
 
 export interface UpdateMediaContentWithUrlAndCaptionRequest {
   url?: string;
@@ -5399,9 +5204,8 @@ export const UpdateMediaContentWithUrlAndCaptionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateMediaContentWithUrlAndCaptionRequest>;
 
 export type UpdateEmbedFileUploadRequestCaptionList = Array<RichTextItemRequest>;
-export const UpdateEmbedFileUploadRequestCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateEmbedFileUploadRequestCaptionList>;
+export const UpdateEmbedFileUploadRequestCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateEmbedFileUploadRequestCaptionList>;
 
 export interface UpdateEmbedFileUploadRequest {
   file_upload: FileUploadIdRequest;
@@ -5453,9 +5257,8 @@ export const UpdateBlockRequestBodyCase0Case1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBlockRequestBodyCase0Case1>;
 
 export type UpdateMediaContentWithFileAndCaptionRequestCaptionList = Array<RichTextItemRequest>;
-export const UpdateMediaContentWithFileAndCaptionRequestCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateMediaContentWithFileAndCaptionRequestCaptionList>;
+export const UpdateMediaContentWithFileAndCaptionRequestCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateMediaContentWithFileAndCaptionRequestCaptionList>;
 
 export interface UpdateMediaContentWithFileAndCaptionRequest {
   caption?: UpdateMediaContentWithFileAndCaptionRequestCaptionList;
@@ -5518,9 +5321,8 @@ export const UpdateBlockRequestBodyCase0Case4 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBlockRequestBodyCase0Case4>;
 
 export type UpdateMediaContentWithFileNameAndCaptionRequestCaptionList = Array<RichTextItemRequest>;
-export const UpdateMediaContentWithFileNameAndCaptionRequestCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateMediaContentWithFileNameAndCaptionRequestCaptionList>;
+export const UpdateMediaContentWithFileNameAndCaptionRequestCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateMediaContentWithFileNameAndCaptionRequestCaptionList>;
 
 export interface UpdateMediaContentWithFileNameAndCaptionRequest {
   caption?: UpdateMediaContentWithFileNameAndCaptionRequestCaptionList;
@@ -5570,14 +5372,12 @@ export const UpdateBlockRequestBodyCase0Case6 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBlockRequestBodyCase0Case6>;
 
 export type UpdateBlockRequestBodyCase0Case7CodeRichTextList = Array<RichTextItemRequest>;
-export const UpdateBlockRequestBodyCase0Case7CodeRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateBlockRequestBodyCase0Case7CodeRichTextList>;
+export const UpdateBlockRequestBodyCase0Case7CodeRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateBlockRequestBodyCase0Case7CodeRichTextList>;
 
 export type UpdateBlockRequestBodyCase0Case7CodeCaptionList = Array<RichTextItemRequest>;
-export const UpdateBlockRequestBodyCase0Case7CodeCaptionList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateBlockRequestBodyCase0Case7CodeCaptionList>;
+export const UpdateBlockRequestBodyCase0Case7CodeCaptionList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateBlockRequestBodyCase0Case7CodeCaptionList>;
 
 export interface UpdateBlockRequestBodyCase0Case7Code {
   rich_text?: UpdateBlockRequestBodyCase0Case7CodeRichTextList;
@@ -5802,9 +5602,8 @@ export const UpdateBlockRequestBodyCase0Case18 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBlockRequestBodyCase0Case18>;
 
 export type ContentWithRichTextColorAndIconUpdateRequestRichTextList = Array<RichTextItemRequest>;
-export const ContentWithRichTextColorAndIconUpdateRequestRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<ContentWithRichTextColorAndIconUpdateRequestRichTextList>;
+export const ContentWithRichTextColorAndIconUpdateRequestRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<ContentWithRichTextColorAndIconUpdateRequestRichTextList>;
 
 export interface ContentWithRichTextColorAndIconUpdateRequest {
   rich_text?: ContentWithRichTextColorAndIconUpdateRequestRichTextList;
@@ -5882,9 +5681,8 @@ export const UpdateBlockRequestBodyCase0Case22 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBlockRequestBodyCase0Case22>;
 
 export type UpdateBlockRequestBodyCase0Case23ToDoRichTextList = Array<RichTextItemRequest>;
-export const UpdateBlockRequestBodyCase0Case23ToDoRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateBlockRequestBodyCase0Case23ToDoRichTextList>;
+export const UpdateBlockRequestBodyCase0Case23ToDoRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateBlockRequestBodyCase0Case23ToDoRichTextList>;
 
 export interface UpdateBlockRequestBodyCase0Case23ToDo {
   rich_text?: UpdateBlockRequestBodyCase0Case23ToDoRichTextList;
@@ -5947,24 +5745,16 @@ export const UpdateBlockRequestBodyCase0Case25 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBlockRequestBodyCase0Case25>;
 
 export type UpdateBlockRequestBodyCase0Case26CalloutRichTextList = Array<RichTextItemRequest>;
-export const UpdateBlockRequestBodyCase0Case26CalloutRichTextList = /*@__PURE__*/ S.Array(
-  RichTextItemRequest,
-) as any as S.Schema<UpdateBlockRequestBodyCase0Case26CalloutRichTextList>;
+export const UpdateBlockRequestBodyCase0Case26CalloutRichTextList =
+  MediaContentWithUrlAndCaptionRequestCaptionList as any as S.Schema<UpdateBlockRequestBodyCase0Case26CalloutRichTextList>;
 
 export interface UpdateBlockRequestBodyCase0Case26Callout {
   rich_text?: UpdateBlockRequestBodyCase0Case26CalloutRichTextList;
   icon?: PageIconRequest;
   color?: ApiColor | (string & {});
 }
-export const UpdateBlockRequestBodyCase0Case26Callout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: S.optional(UpdateBlockRequestBodyCase0Case26CalloutRichTextList),
-    icon: S.optional(PageIconRequest),
-    color: S.optional(ApiColor),
-  }),
-).annotate({
-  identifier: "UpdateBlockRequestBodyCase0Case26Callout",
-}) as any as S.Schema<UpdateBlockRequestBodyCase0Case26Callout>;
+export const UpdateBlockRequestBodyCase0Case26Callout =
+  ContentWithRichTextColorAndIconUpdateRequest as any as S.Schema<UpdateBlockRequestBodyCase0Case26Callout>;
 
 export interface UpdateBlockRequestBodyCase0Case26 {
   callout: UpdateBlockRequestBodyCase0Case26Callout;

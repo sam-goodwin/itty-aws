@@ -1569,21 +1569,12 @@ export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFoo
   text?: string;
 }
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSpan: S.optional(GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan),
-      text: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter",
-  }) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
 
 export type GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
   Array<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter>;
 export const GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter,
-  ) as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList>;
+  GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeaderList as any as S.Schema<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooterList>;
 
 /** Represents a chunk. */
 export interface GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk {
@@ -1886,20 +1877,15 @@ export const GoogleCloudContentwarehouseV1TextArray = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GoogleCloudContentwarehouseV1TextArray>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** Float values. */
 export interface GoogleCloudContentwarehouseV1FloatArray {
   /** List of float values. */
   values?: DoubleList;
 }
-export const GoogleCloudContentwarehouseV1FloatArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "GoogleCloudContentwarehouseV1FloatArray",
-}) as any as S.Schema<GoogleCloudContentwarehouseV1FloatArray>;
+export const GoogleCloudContentwarehouseV1FloatArray =
+  GoogleCloudContentwarehouseV1IntegerArray as any as S.Schema<GoogleCloudContentwarehouseV1FloatArray>;
 
 export type GoogleTypeDateTimeList = Array<GoogleTypeDateTime>;
 export const GoogleTypeDateTimeList = /*@__PURE__*/ S.Array(
@@ -1937,13 +1923,8 @@ export interface GoogleCloudContentwarehouseV1EnumArray {
   /** List of enum values. */
   values?: StringList;
 }
-export const GoogleCloudContentwarehouseV1EnumArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudContentwarehouseV1EnumArray",
-}) as any as S.Schema<GoogleCloudContentwarehouseV1EnumArray>;
+export const GoogleCloudContentwarehouseV1EnumArray =
+  GoogleCloudContentwarehouseV1TextArray as any as S.Schema<GoogleCloudContentwarehouseV1EnumArray>;
 
 export type GoogleCloudContentwarehouseV1TimestampValueList =
   Array<GoogleCloudContentwarehouseV1TimestampValue>;
@@ -3123,13 +3104,8 @@ export interface GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest {
   /** The meta information collected about the document creator, used to enforce access control for the service. */
   requestMetadata?: GoogleCloudContentwarehouseV1RequestMetadata;
 }
-export const GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestMetadata: S.optional(GoogleCloudContentwarehouseV1RequestMetadata),
-  }),
-).annotate({
-  identifier: "GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest",
-}) as any as S.Schema<GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest>;
+export const GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest =
+  GoogleCloudContentwarehouseV1DeleteDocumentRequest as any as S.Schema<GoogleCloudContentwarehouseV1DeleteDocumentLinkRequest>;
 
 export interface DeleteProjectsLocationsDocumentsDocumentLinksRequest {
   /** Required. The name of the document-link to be deleted. Format: projects/{project_number}/locations/{location}/documents/{source_document_id}/documentLinks/{document_link_id}. */

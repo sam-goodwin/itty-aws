@@ -723,19 +723,8 @@ export interface AttemptPhoneNumberVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-export const AttemptPhoneNumberVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(S.String),
-    strategy: S.optional(S.String),
-    attempts: S.optional(S.NullOr(S.Number)),
-    expire_at: S.optional(S.NullOr(S.Number)),
-    channel: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AttemptPhoneNumberVerificationResponse",
-}) as any as S.Schema<AttemptPhoneNumberVerificationResponse>;
+export const AttemptPhoneNumberVerificationResponse =
+  AttemptEmailAddressVerificationResponse as any as S.Schema<AttemptPhoneNumberVerificationResponse>;
 
 export interface BanUserRequest {
   /** The ID of the user to ban */
@@ -758,16 +747,12 @@ export const UserPublicMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UserPublicMetadataMap>;
 
 export type UserPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const UserPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserPrivateMetadataMap>;
+export const UserPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UserPrivateMetadataMap>;
 
 export type UserUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const UserUnsafeMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserUnsafeMetadataMap>;
+export const UserUnsafeMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UserUnsafeMetadataMap>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type EmailAddressObject = "email_address";
@@ -839,10 +824,7 @@ export type VerificationFromOauthStatus = "unverified" | "verified";
 export const VerificationFromOauthStatus = S.String;
 
 export type ClerkErrorMetaMap = { [key: string]: unknown | undefined };
-export const ClerkErrorMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClerkErrorMetaMap>;
+export const ClerkErrorMetaMap = UserPublicMetadataMap as any as S.Schema<ClerkErrorMetaMap>;
 
 export interface ClerkError {
   message: string;
@@ -1067,14 +1049,12 @@ export type PhoneNumberVerification = VerificationOtp | VerificationAdmin;
 export const PhoneNumberVerification = S.Unknown as any as S.Schema<PhoneNumberVerification>;
 
 export type PhoneNumberLinkedToList = Array<IdentificationLink>;
-export const PhoneNumberLinkedToList = /*@__PURE__*/ S.Array(
-  IdentificationLink,
-) as any as S.Schema<PhoneNumberLinkedToList>;
+export const PhoneNumberLinkedToList =
+  EmailAddressLinkedToList as any as S.Schema<PhoneNumberLinkedToList>;
 
 export type PhoneNumberBackupCodesList = Array<string>;
-export const PhoneNumberBackupCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PhoneNumberBackupCodesList>;
+export const PhoneNumberBackupCodesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<PhoneNumberBackupCodesList>;
 
 export interface PhoneNumber {
   id?: string;
@@ -1255,10 +1235,8 @@ export const ExternalAccountWithVerificationObject = S.String;
 export type ExternalAccountWithVerificationPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ExternalAccountWithVerificationPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExternalAccountWithVerificationPublicMetadataMap>;
+export const ExternalAccountWithVerificationPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<ExternalAccountWithVerificationPublicMetadataMap>;
 
 export type VerificationOauthObject = "verification_oauth";
 export const VerificationOauthObject = S.String;
@@ -1393,10 +1371,8 @@ export type SAMLAccountObject = "saml_account";
 export const SAMLAccountObject = S.String;
 
 export type SAMLAccountPublicMetadataMap = { [key: string]: unknown | undefined };
-export const SAMLAccountPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SAMLAccountPublicMetadataMap>;
+export const SAMLAccountPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<SAMLAccountPublicMetadataMap>;
 
 export type SAMLAccountVerification = VerificationSaml | VerificationTicket;
 export const SAMLAccountVerification = S.Unknown as any as S.Schema<SAMLAccountVerification>;
@@ -1448,10 +1424,8 @@ export type EnterpriseAccountProtocol = "oauth" | "saml";
 export const EnterpriseAccountProtocol = S.String;
 
 export type EnterpriseAccountPublicMetadataMap = { [key: string]: unknown | undefined };
-export const EnterpriseAccountPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EnterpriseAccountPublicMetadataMap>;
+export const EnterpriseAccountPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<EnterpriseAccountPublicMetadataMap>;
 
 export type EnterpriseAccountVerification =
   | VerificationTicket
@@ -1509,38 +1483,29 @@ export type OrganizationMembershipObject = "organization_membership";
 export const OrganizationMembershipObject = S.String;
 
 export type OrganizationMembershipPermissionsList = Array<string>;
-export const OrganizationMembershipPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationMembershipPermissionsList>;
+export const OrganizationMembershipPermissionsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OrganizationMembershipPermissionsList>;
 
 /** Metadata saved on the organization membership, accessible from both Frontend and Backend APIs */
 export type OrganizationMembershipPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationMembershipPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationMembershipPublicMetadataMap>;
+export const OrganizationMembershipPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<OrganizationMembershipPublicMetadataMap>;
 
 /** Metadata saved on the organization membership, accessible only from the Backend API */
 export type OrganizationMembershipPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationMembershipPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationMembershipPrivateMetadataMap>;
+export const OrganizationMembershipPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<OrganizationMembershipPrivateMetadataMap>;
 
 export type OrganizationObject = "organization";
 export const OrganizationObject = S.String;
 
 export type OrganizationPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationPublicMetadataMap>;
+export const OrganizationPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<OrganizationPublicMetadataMap>;
 
 export type OrganizationPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationPrivateMetadataMap>;
+export const OrganizationPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<OrganizationPrivateMetadataMap>;
 
 export interface Organization {
   object: OrganizationObject;
@@ -1844,9 +1809,8 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user IDs to ban */
 export type BanUserRequestUserIdsList = Array<string>;
-export const BanUserRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BanUserRequestUserIdsList>;
+export const BanUserRequestUserIdsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<BanUserRequestUserIdsList>;
 
 export interface BanUserRequest2 {
   /** Array of user IDs to ban */
@@ -2231,9 +2195,8 @@ export const CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList = /*@_
 ) as any as S.Schema<CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList>;
 
 export type CommerceTotalsResponsePerUnitTotalsList = Array<CommercePerUnitTotal>;
-export const CommerceTotalsResponsePerUnitTotalsList = /*@__PURE__*/ S.Array(
-  CommercePerUnitTotal,
-) as any as S.Schema<CommerceTotalsResponsePerUnitTotalsList>;
+export const CommerceTotalsResponsePerUnitTotalsList =
+  CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList as any as S.Schema<CommerceTotalsResponsePerUnitTotalsList>;
 
 export interface CommerceProrationDiscountResponse {
   amount: CommerceMoneyResponse;
@@ -2398,9 +2361,8 @@ export const CommerceSubscriptionItemSeatsResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Computed totals for each pricing tier */
 export type CommercePerUnitTotal2TiersList = Array<CommercePerUnitTotalTier2>;
-export const CommercePerUnitTotal2TiersList = /*@__PURE__*/ S.Array(
-  CommercePerUnitTotalTier2,
-) as any as S.Schema<CommercePerUnitTotal2TiersList>;
+export const CommercePerUnitTotal2TiersList =
+  CommerceSubscriptionItemSeatsResponseTiersList as any as S.Schema<CommercePerUnitTotal2TiersList>;
 
 export interface CommercePerUnitTotal2 {
   /** Name of the billable unit (for example, seats) */
@@ -2433,16 +2395,8 @@ export interface BillingProrationDiscountDetail {
   /** Percentage of the billing cycle that has passed */
   cycle_passed_percent: number;
 }
-export const BillingProrationDiscountDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: CommerceMoneyResponse,
-    cycle_days_passed: S.Number,
-    cycle_days_total: S.Number,
-    cycle_passed_percent: S.Number,
-  }),
-).annotate({
-  identifier: "BillingProrationDiscountDetail",
-}) as any as S.Schema<BillingProrationDiscountDetail>;
+export const BillingProrationDiscountDetail =
+  CommerceProrationDiscountResponse as any as S.Schema<BillingProrationDiscountDetail>;
 
 export interface BillingDiscountsResponse {
   /** Proration details from passed subscription time */
@@ -2652,9 +2606,8 @@ export const ActorToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActorToken" }) as any as S.Schema<ActorToken>;
 
 export type CreateAdminPortalLinkTokenRequestScopesList = Array<string>;
-export const CreateAdminPortalLinkTokenRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAdminPortalLinkTokenRequestScopesList>;
+export const CreateAdminPortalLinkTokenRequestScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateAdminPortalLinkTokenRequestScopesList>;
 
 export interface CreateAdminPortalLinkTokenRequest {
   organization_id?: string;
@@ -2678,9 +2631,8 @@ export const CreateAdminPortalLinkTokenResponseObject = S.String;
 
 /** Caller-provided scopes for this token. */
 export type CreateAdminPortalLinkTokenResponseScopesList = Array<string>;
-export const CreateAdminPortalLinkTokenResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAdminPortalLinkTokenResponseScopesList>;
+export const CreateAdminPortalLinkTokenResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateAdminPortalLinkTokenResponseScopesList>;
 
 export interface CreateAdminPortalLinkTokenResponse {
   object: CreateAdminPortalLinkTokenResponseObject;
@@ -2846,9 +2798,8 @@ export const AllowlistIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllowlistIdentifier" }) as any as S.Schema<AllowlistIdentifier>;
 
 export type CreateApiKeyRequestScopesList = Array<string>;
-export const CreateApiKeyRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApiKeyRequestScopesList>;
+export const CreateApiKeyRequestScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateApiKeyRequestScopesList>;
 
 export interface CreateApiKeyRequest {
   type?: string;
@@ -2877,9 +2828,8 @@ export type CreateApiKeyResponseObject = "api_key";
 export const CreateApiKeyResponseObject = S.String;
 
 export type CreateApiKeyResponseScopesList = Array<string>;
-export const CreateApiKeyResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApiKeyResponseScopesList>;
+export const CreateApiKeyResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateApiKeyResponseScopesList>;
 
 export interface CreateApiKeyResponse {
   object: CreateApiKeyResponseObject;
@@ -3060,9 +3010,8 @@ export const CommercePlan2Object = S.String;
 
 /** The types of payers that can use this plan. */
 export type CommercePlan2PayerTypeList = Array<string>;
-export const CommercePlan2PayerTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommercePlan2PayerTypeList>;
+export const CommercePlan2PayerTypeList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CommercePlan2PayerTypeList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type FeatureResponse2Object = "feature";
@@ -3512,10 +3461,8 @@ export const BlocklistIdentifier = /*@__PURE__*/ S.suspend(() =>
 export type CreateBulkInvitationsRequestBodyItemPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateBulkInvitationsRequestBodyItemPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateBulkInvitationsRequestBodyItemPublicMetadataMap>;
+export const CreateBulkInvitationsRequestBodyItemPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateBulkInvitationsRequestBodyItemPublicMetadataMap>;
 
 /** The slug of the email template to use for the invitation email. */
 export type CreateBulkInvitationsRequestBodyItemTemplateSlug = "invitation" | "waitlist_invitation";
@@ -3571,10 +3518,8 @@ export type InvitationObject = "invitation";
 export const InvitationObject = S.String;
 
 export type InvitationPublicMetadataMap = { [key: string]: unknown | undefined };
-export const InvitationPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InvitationPublicMetadataMap>;
+export const InvitationPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<InvitationPublicMetadataMap>;
 
 export type InvitationStatus = "pending" | "accepted" | "revoked" | "expired";
 export const InvitationStatus = S.String;
@@ -3756,10 +3701,8 @@ export const DirectoryObject = S.String;
 
 /** Mapping of user attributes to the directory attribute paths they are extracted from. */
 export type DirectoryAttributeMappingMap = { [key: string]: string | undefined };
-export const DirectoryAttributeMappingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DirectoryAttributeMappingMap>;
+export const DirectoryAttributeMappingMap =
+  RoleSetMigrationMappingsMap as any as S.Schema<DirectoryAttributeMappingMap>;
 
 export interface DirectoryCustomAttributesItem {
   /** Display name for the custom attribute */
@@ -3953,15 +3896,13 @@ export const CreateEnterpriseConnectionRequestProvider = S.String;
 
 /** Domains associated with the enterprise connection (required; at least one). Values are normalized to lowercase. Each domain must be a valid fully qualified domain name. */
 export type CreateEnterpriseConnectionRequestDomainsList = Array<string>;
-export const CreateEnterpriseConnectionRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEnterpriseConnectionRequestDomainsList>;
+export const CreateEnterpriseConnectionRequestDomainsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateEnterpriseConnectionRequestDomainsList>;
 
 /** The IdP X.509 signing certificates the connection trusts, one per entry, in PEM or bare base64. Replaces the connection's whole certificate set and takes precedence over idp_certificate */
 export type CreateEnterpriseConnectionRequestSamlIdpCertificatesList = Array<string>;
-export const CreateEnterpriseConnectionRequestSamlIdpCertificatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateEnterpriseConnectionRequestSamlIdpCertificatesList>;
+export const CreateEnterpriseConnectionRequestSamlIdpCertificatesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateEnterpriseConnectionRequestSamlIdpCertificatesList>;
 
 /** Attribute mapping for SAML attributes */
 export interface CreateEnterpriseConnectionRequestSamlAttributeMapping {
@@ -4150,9 +4091,8 @@ export const EnterpriseConnectionObject = S.String;
 
 /** Domains associated with the enterprise connection */
 export type EnterpriseConnectionDomainsList = Array<string>;
-export const EnterpriseConnectionDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnterpriseConnectionDomainsList>;
+export const EnterpriseConnectionDomainsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<EnterpriseConnectionDomainsList>;
 
 export interface EnterpriseConnectionCustomAttributesItem {
   /** Display name for the custom attribute */
@@ -4168,25 +4108,14 @@ export interface EnterpriseConnectionCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-export const EnterpriseConnectionCustomAttributesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    key: S.String,
-    sso_path: S.optional(S.String),
-    scim_path: S.optional(S.String),
-    directory_path: S.optional(S.String),
-    multi_valued: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EnterpriseConnectionCustomAttributesItem",
-}) as any as S.Schema<EnterpriseConnectionCustomAttributesItem>;
+export const EnterpriseConnectionCustomAttributesItem =
+  CreateEnterpriseConnectionRequestCustomAttributesItem as any as S.Schema<EnterpriseConnectionCustomAttributesItem>;
 
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning */
 export type EnterpriseConnectionCustomAttributesList =
   Array<EnterpriseConnectionCustomAttributesItem>;
-export const EnterpriseConnectionCustomAttributesList = /*@__PURE__*/ S.Array(
-  EnterpriseConnectionCustomAttributesItem,
-) as any as S.Schema<EnterpriseConnectionCustomAttributesList>;
+export const EnterpriseConnectionCustomAttributesList =
+  CreateEnterpriseConnectionRequestCustomAttributesList as any as S.Schema<EnterpriseConnectionCustomAttributesList>;
 
 export interface EnterpriseConnectionSamlConnectionIdpCertificatesItem {
   /** The X.509 certificate, base64 DER without PEM armor */
@@ -4427,10 +4356,8 @@ export const EnterpriseConnectionTestRunResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata that will be attached to the newly created invitation. The value of this property should be a well-formed JSON object. Once the user accepts the invitation and signs up, these metadata will end up in the user's public metadata. */
 export type CreateInvitationRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const CreateInvitationRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateInvitationRequestPublicMetadataMap>;
+export const CreateInvitationRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateInvitationRequestPublicMetadataMap>;
 
 /** The slug of the email template to use for the invitation email. */
 export type CreateInvitationRequestTemplateSlug = "invitation" | "waitlist_invitation";
@@ -4547,9 +4474,8 @@ export type CreateM2MTokenResponseObject = "machine_to_machine_token";
 export const CreateM2MTokenResponseObject = S.String;
 
 export type CreateM2MTokenResponseScopesList = Array<string>;
-export const CreateM2MTokenResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateM2MTokenResponseScopesList>;
+export const CreateM2MTokenResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateM2MTokenResponseScopesList>;
 
 export interface CreateM2MTokenResponse {
   object: CreateM2MTokenResponseObject;
@@ -4590,9 +4516,8 @@ export const CreateM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of machine IDs that this machine will have access to. Maximum of 150 scopes per machine. */
 export type CreateMachineRequestScopedMachinesList = Array<string>;
-export const CreateMachineRequestScopedMachinesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMachineRequestScopedMachinesList>;
+export const CreateMachineRequestScopedMachinesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateMachineRequestScopedMachinesList>;
 
 export interface CreateMachineRequest {
   /** The name of the machine */
@@ -4722,9 +4647,8 @@ export const MachineScope = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of redirect URIs of the new OAuth application */
 export type CreateOAuthApplicationRequestRedirectUrisList = Array<string>;
-export const CreateOAuthApplicationRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOAuthApplicationRequestRedirectUrisList>;
+export const CreateOAuthApplicationRequestRedirectUrisList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOAuthApplicationRequestRedirectUrisList>;
 
 export interface CreateOAuthApplicationRequest {
   /** The name of the new OAuth application. Max length: 256 */
@@ -4763,9 +4687,8 @@ export type CreateOAuthApplicationResponseObject = "oauth_application";
 export const CreateOAuthApplicationResponseObject = S.String;
 
 export type CreateOAuthApplicationResponseRedirectUrisList = Array<string>;
-export const CreateOAuthApplicationResponseRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOAuthApplicationResponseRedirectUrisList>;
+export const CreateOAuthApplicationResponseRedirectUrisList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOAuthApplicationResponseRedirectUrisList>;
 
 export interface CreateOAuthApplicationResponse {
   object: CreateOAuthApplicationResponseObject;
@@ -4829,17 +4752,13 @@ export const CreateOAuthApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata saved on the organization, accessible only from the Backend API */
 export type CreateOrganizationRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationRequestPrivateMetadataMap>;
+export const CreateOrganizationRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateOrganizationRequestPrivateMetadataMap>;
 
 /** Metadata saved on the organization, read-only from the Frontend API and fully accessible (read/write) from the Backend API */
 export type CreateOrganizationRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationRequestPublicMetadataMap>;
+export const CreateOrganizationRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateOrganizationRequestPublicMetadataMap>;
 
 export interface CreateOrganizationRequest {
   /** The name of the new organization. May not contain URLs or HTML. Max length: 256 */
@@ -5005,19 +4924,15 @@ export const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
 export type CreateOrganizationInvitationRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationInvitationRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationInvitationRequestPublicMetadataMap>;
+export const CreateOrganizationInvitationRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization invitation, fully accessible (read/write) from the Backend API but not visible from the Frontend API. When the organization invitation is accepted, the metadata will be transferred to the newly created organization membership. */
 export type CreateOrganizationInvitationRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationInvitationRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationInvitationRequestPrivateMetadataMap>;
+export const CreateOrganizationInvitationRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationRequestPrivateMetadataMap>;
 
 export interface CreateOrganizationInvitationRequest {
   /** The ID of the organization for which to send the invitation */
@@ -5084,16 +4999,12 @@ export const OrganizationInvitationPublicUserData = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<OrganizationInvitationPublicUserData>;
 
 export type OrganizationInvitationPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationInvitationPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationInvitationPublicMetadataMap>;
+export const OrganizationInvitationPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<OrganizationInvitationPublicMetadataMap>;
 
 export type OrganizationInvitationPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationInvitationPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OrganizationInvitationPrivateMetadataMap>;
+export const OrganizationInvitationPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<OrganizationInvitationPrivateMetadataMap>;
 
 /** An organization invitation */
 export interface OrganizationInvitation {
@@ -5152,10 +5063,7 @@ export type CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap = 
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap>;
+  CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap>;
 
 export interface CreateOrganizationInvitationBulkRequestBodyItem {
   /** The email address of the new member that is going to be invited to the organization */
@@ -5237,19 +5145,15 @@ export const OrganizationInvitations = /*@__PURE__*/ S.suspend(() =>
 export type CreateOrganizationMembershipRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationMembershipRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationMembershipRequestPublicMetadataMap>;
+export const CreateOrganizationMembershipRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateOrganizationMembershipRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization membership that is only visible to your backend. */
 export type CreateOrganizationMembershipRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationMembershipRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationMembershipRequestPrivateMetadataMap>;
+export const CreateOrganizationMembershipRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateOrganizationMembershipRequestPrivateMetadataMap>;
 
 export interface CreateOrganizationMembershipRequest {
   /** The ID of the organization where the new membership will be created */
@@ -5297,9 +5201,8 @@ export const CreateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of permission IDs to assign to the role */
 export type CreateOrganizationRoleRequestPermissionsList = Array<string>;
-export const CreateOrganizationRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationRoleRequestPermissionsList>;
+export const CreateOrganizationRoleRequestPermissionsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOrganizationRoleRequestPermissionsList>;
 
 export interface CreateOrganizationRoleRequest {
   /** The name of the new organization role */
@@ -5385,9 +5288,8 @@ export const CreateRoleSetRequestType = S.String;
 
 /** Array of role keys to include in the role set. Must contain at least one role and no more than 10 roles. */
 export type CreateRoleSetRequestRolesList = Array<string>;
-export const CreateRoleSetRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRoleSetRequestRolesList>;
+export const CreateRoleSetRequestRolesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateRoleSetRequestRolesList>;
 
 export interface CreateRoleSetRequest {
   /** The name of the new role set */
@@ -5472,10 +5374,8 @@ export const SCIMDirectoryObject = S.String;
 
 /** Mapping of user attributes to the SCIM attribute paths they are extracted from. */
 export type SCIMDirectoryAttributeMappingMap = { [key: string]: string | undefined };
-export const SCIMDirectoryAttributeMappingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SCIMDirectoryAttributeMappingMap>;
+export const SCIMDirectoryAttributeMappingMap =
+  RoleSetMigrationMappingsMap as any as S.Schema<SCIMDirectoryAttributeMappingMap>;
 
 export interface SCIMDirectoryCustomAttributesItem {
   /** Display name for the custom attribute */
@@ -5491,24 +5391,13 @@ export interface SCIMDirectoryCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-export const SCIMDirectoryCustomAttributesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    key: S.optional(S.String),
-    sso_path: S.optional(S.String),
-    scim_path: S.optional(S.String),
-    directory_path: S.optional(S.String),
-    multi_valued: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SCIMDirectoryCustomAttributesItem",
-}) as any as S.Schema<SCIMDirectoryCustomAttributesItem>;
+export const SCIMDirectoryCustomAttributesItem =
+  DirectoryCustomAttributesItem as any as S.Schema<SCIMDirectoryCustomAttributesItem>;
 
 /** Custom attributes to map from the IdP to the user's profile via SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type SCIMDirectoryCustomAttributesList = Array<SCIMDirectoryCustomAttributesItem>;
-export const SCIMDirectoryCustomAttributesList = /*@__PURE__*/ S.Array(
-  SCIMDirectoryCustomAttributesItem,
-) as any as S.Schema<SCIMDirectoryCustomAttributesList>;
+export const SCIMDirectoryCustomAttributesList =
+  DirectoryCustomAttributesList as any as S.Schema<SCIMDirectoryCustomAttributesList>;
 
 /** A directory configuration for provisioning users via SCIM protocol. */
 export interface SCIMDirectory {
@@ -5954,9 +5843,8 @@ export const TestingToken = /*@__PURE__*/ S.suspend(() =>
 
 /** Email addresses to add to the user. Must be unique across your instance. The first email address will be set as the user's primary email address. Created verified by default; see `email_address_identification_status` to create them reserved. */
 export type CreateUserRequestEmailAddressList = Array<string>;
-export const CreateUserRequestEmailAddressList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserRequestEmailAddressList>;
+export const CreateUserRequestEmailAddressList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestEmailAddressList>;
 
 export type CreateUserRequestEmailAddressIdentificationStatusItem = "verified" | "reserved";
 export const CreateUserRequestEmailAddressIdentificationStatusItem = S.String;
@@ -5971,9 +5859,8 @@ export const CreateUserRequestEmailAddressIdentificationStatusList = /*@__PURE__
 
 /** Phone numbers to add to the user. Must be unique across your instance. The first phone number will be set as the user's primary phone number. Created verified by default; see `phone_number_identification_status` to create them reserved. */
 export type CreateUserRequestPhoneNumberList = Array<string>;
-export const CreateUserRequestPhoneNumberList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserRequestPhoneNumberList>;
+export const CreateUserRequestPhoneNumberList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestPhoneNumberList>;
 
 export type CreateUserRequestPhoneNumberIdentificationStatusItem = "verified" | "reserved";
 export const CreateUserRequestPhoneNumberIdentificationStatusItem = S.String;
@@ -5988,36 +5875,28 @@ export const CreateUserRequestPhoneNumberIdentificationStatusList = /*@__PURE__*
 
 /** Web3 wallets to add to the user. Must be unique across your instance. The first wallet will be set as the user's primary wallet. */
 export type CreateUserRequestWeb3WalletList = Array<string>;
-export const CreateUserRequestWeb3WalletList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserRequestWeb3WalletList>;
+export const CreateUserRequestWeb3WalletList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestWeb3WalletList>;
 
 /** If Backup Codes are configured on the instance, you can provide them to enable it on the newly created user without the need to reset them. You must provide the backup codes in plain format or the corresponding bcrypt digest. */
 export type CreateUserRequestBackupCodesList = Array<string>;
-export const CreateUserRequestBackupCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserRequestBackupCodesList>;
+export const CreateUserRequestBackupCodesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestBackupCodesList>;
 
 /** Metadata saved on the user, that is visible to both your Frontend and Backend APIs */
 export type CreateUserRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const CreateUserRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateUserRequestPublicMetadataMap>;
+export const CreateUserRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateUserRequestPublicMetadataMap>;
 
 /** Metadata saved on the user, that is only visible to your Backend API */
 export type CreateUserRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const CreateUserRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateUserRequestPrivateMetadataMap>;
+export const CreateUserRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateUserRequestPrivateMetadataMap>;
 
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type CreateUserRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const CreateUserRequestUnsafeMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateUserRequestUnsafeMetadataMap>;
+export const CreateUserRequestUnsafeMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<CreateUserRequestUnsafeMetadataMap>;
 
 export interface CreateUserRequest {
   /** The ID of the user as used in your external systems or your previous authentication solution. Must be unique across your instance. */
@@ -6653,11 +6532,7 @@ export const DeleteTOTPRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTOTPResponse {
   user_id?: string;
 }
-export const DeleteTOTPResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteTOTPResponse" }) as any as S.Schema<DeleteTOTPResponse>;
+export const DeleteTOTPResponse = DeleteBackupCodeResponse as any as S.Schema<DeleteTOTPResponse>;
 
 export interface DeleteUserRequest {
   /** The ID of the user to delete */
@@ -6746,11 +6621,7 @@ export const DisableMFARequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisableMFAResponse {
   user_id?: string;
 }
-export const DisableMFAResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "DisableMFAResponse" }) as any as S.Schema<DisableMFAResponse>;
+export const DisableMFAResponse = DeleteBackupCodeResponse as any as S.Schema<DisableMFAResponse>;
 
 export interface ExtendBillingSubscriptionItemFreeTrialRequest {
   /** The ID of the subscription item to extend the free trial for */
@@ -6793,9 +6664,8 @@ export type GetApiKeyResponseObject = "api_key";
 export const GetApiKeyResponseObject = S.String;
 
 export type GetApiKeyResponseScopesList = Array<string>;
-export const GetApiKeyResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApiKeyResponseScopesList>;
+export const GetApiKeyResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetApiKeyResponseScopesList>;
 
 export interface GetApiKeyResponse {
   object: GetApiKeyResponseObject;
@@ -6863,9 +6733,8 @@ export type GetApiKeysResponseDataItemObject = "api_key";
 export const GetApiKeysResponseDataItemObject = S.String;
 
 export type GetApiKeysResponseDataItemScopesList = Array<string>;
-export const GetApiKeysResponseDataItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApiKeysResponseDataItemScopesList>;
+export const GetApiKeysResponseDataItemScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetApiKeysResponseDataItemScopesList>;
 
 export interface GetApiKeysResponseDataItem {
   object: GetApiKeysResponseDataItemObject;
@@ -7242,9 +7111,8 @@ export const GetBillingStatementPaymentAttemptsRequest = /*@__PURE__*/ S.suspend
 
 /** Array of billing payment attempts. */
 export type PaginatedBillingPaymentAttemptResponseDataList = Array<BillingPaymentAttempt>;
-export const PaginatedBillingPaymentAttemptResponseDataList = /*@__PURE__*/ S.Array(
-  BillingPaymentAttempt,
-) as any as S.Schema<PaginatedBillingPaymentAttemptResponseDataList>;
+export const PaginatedBillingPaymentAttemptResponseDataList =
+  BillingStatementGroupsItemItemsList as any as S.Schema<PaginatedBillingPaymentAttemptResponseDataList>;
 
 export interface PaginatedBillingPaymentAttemptResponse {
   /** Array of billing payment attempts. */
@@ -7276,9 +7144,8 @@ export type ClientObject = "client";
 export const ClientObject = S.String;
 
 export type ClientSessionIdsList = Array<string>;
-export const ClientSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSessionIdsList>;
+export const ClientSessionIdsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ClientSessionIdsList>;
 
 export type ClientSessionsList = Array<Session>;
 export const ClientSessionsList = /*@__PURE__*/ S.Array(
@@ -7472,15 +7339,13 @@ export type InstanceObject = "instance";
 export const InstanceObject = S.String;
 
 export type InstanceAllowedOriginsList = Array<string>;
-export const InstanceAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceAllowedOriginsList>;
+export const InstanceAllowedOriginsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceAllowedOriginsList>;
 
 /** Subdomains of the instance's own domains that may originate requests, when the subdomain allowlist is enabled. Production instances only; always empty on a development instance. */
 export type InstanceAllowedSubdomainsList = Array<string>;
-export const InstanceAllowedSubdomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceAllowedSubdomainsList>;
+export const InstanceAllowedSubdomainsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceAllowedSubdomainsList>;
 
 export interface Instance {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -7519,9 +7384,8 @@ export const InstanceCommunicationObject = S.String;
 
 /** ISO 3166-1 alpha-2 country codes that are blocked for SMS delivery on this instance. Codes that aren't recognized are silently dropped. */
 export type InstanceCommunicationBlockedCountryCodesList = Array<string>;
-export const InstanceCommunicationBlockedCountryCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceCommunicationBlockedCountryCodesList>;
+export const InstanceCommunicationBlockedCountryCodesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceCommunicationBlockedCountryCodesList>;
 
 /** Per-instance SMS communication settings, including the SMS country blocklist. */
 export interface InstanceCommunication {
@@ -7551,9 +7415,8 @@ export const OAuthApplicationSettingsObject = S.String;
 
 /** Default scopes assigned when a dynamically registered or first-contact CIMD client omits `scope`. Contains built-in keys and custom catalog keys. Null means Clerk-provided defaults. `advertised` does not affect eligibility. An empty input array is stored and returned as null. */
 export type OAuthApplicationSettingsDefaultScopesList = Array<string>;
-export const OAuthApplicationSettingsDefaultScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuthApplicationSettingsDefaultScopesList>;
+export const OAuthApplicationSettingsDefaultScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthApplicationSettingsDefaultScopesList>;
 
 export interface OAuthApplicationSettings {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -7715,9 +7578,8 @@ export const GetInterstitialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetInterstitialRequest" }) as any as S.Schema<GetInterstitialRequest>;
 
 export interface GetInterstitialResponse {}
-export const GetInterstitialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetInterstitialResponse",
-}) as any as S.Schema<GetInterstitialResponse>;
+export const GetInterstitialResponse =
+  DeleteSvixAppResponse as any as S.Schema<GetInterstitialResponse>;
 
 export interface GetJWKSRequest {}
 export const GetJWKSRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7731,9 +7593,8 @@ export type JWKSEd25519PublicKeyCrv = "Ed25519";
 export const JWKSEd25519PublicKeyCrv = S.String;
 
 export type JWKSEd25519PublicKeyX5cList = Array<string>;
-export const JWKSEd25519PublicKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JWKSEd25519PublicKeyX5cList>;
+export const JWKSEd25519PublicKeyX5cList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEd25519PublicKeyX5cList>;
 
 export interface JWKSEd25519PublicKey {
   kid: string;
@@ -7766,9 +7627,8 @@ export type JWKSEcdsaPublicKeyKty = "EC";
 export const JWKSEcdsaPublicKeyKty = S.String;
 
 export type JWKSEcdsaPublicKeyX5cList = Array<string>;
-export const JWKSEcdsaPublicKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JWKSEcdsaPublicKeyX5cList>;
+export const JWKSEcdsaPublicKeyX5cList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEcdsaPublicKeyX5cList>;
 
 export interface JWKSEcdsaPublicKey {
   kid: string;
@@ -7803,9 +7663,8 @@ export type JWKSRsaPublicKeyKty = "RSA";
 export const JWKSRsaPublicKeyKty = S.String;
 
 export type JWKSRsaPublicKeyX5cList = Array<string>;
-export const JWKSRsaPublicKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JWKSRsaPublicKeyX5cList>;
+export const JWKSRsaPublicKeyX5cList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSRsaPublicKeyX5cList>;
 
 export interface JWKSRsaPublicKey {
   kid: string;
@@ -7841,9 +7700,8 @@ export type JWKSEd25519PrivateKeyCrv = "Ed25519";
 export const JWKSEd25519PrivateKeyCrv = S.String;
 
 export type JWKSEd25519PrivateKeyX5cList = Array<string>;
-export const JWKSEd25519PrivateKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JWKSEd25519PrivateKeyX5cList>;
+export const JWKSEd25519PrivateKeyX5cList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEd25519PrivateKeyX5cList>;
 
 export interface JWKSEd25519PrivateKey {
   kid: string;
@@ -7878,9 +7736,8 @@ export type JWKSEcdsaPrivateKeyKty = "EC";
 export const JWKSEcdsaPrivateKeyKty = S.String;
 
 export type JWKSEcdsaPrivateKeyX5cList = Array<string>;
-export const JWKSEcdsaPrivateKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JWKSEcdsaPrivateKeyX5cList>;
+export const JWKSEcdsaPrivateKeyX5cList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEcdsaPrivateKeyX5cList>;
 
 export interface JWKSEcdsaPrivateKey {
   kid: string;
@@ -7917,9 +7774,8 @@ export type JWKSRsaPrivateKeyKty = "RSA";
 export const JWKSRsaPrivateKeyKty = S.String;
 
 export type JWKSRsaPrivateKeyX5cList = Array<string>;
-export const JWKSRsaPrivateKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JWKSRsaPrivateKeyX5cList>;
+export const JWKSRsaPrivateKeyX5cList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSRsaPrivateKeyX5cList>;
 
 export interface JWKSRsaPrivateKey {
   kid: string;
@@ -7964,9 +7820,8 @@ export type JWKSSymmetricKeyKty = "oct";
 export const JWKSSymmetricKeyKty = S.String;
 
 export type JWKSSymmetricKeyX5cList = Array<string>;
-export const JWKSSymmetricKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JWKSSymmetricKeyX5cList>;
+export const JWKSSymmetricKeyX5cList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSSymmetricKeyX5cList>;
 
 export interface JWKSSymmetricKey {
   kid: string;
@@ -8046,9 +7901,8 @@ export type GetM2MTokensResponseM2mTokensItemObject = "machine_to_machine_token"
 export const GetM2MTokensResponseM2mTokensItemObject = S.String;
 
 export type GetM2MTokensResponseM2mTokensItemScopesList = Array<string>;
-export const GetM2MTokensResponseM2mTokensItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetM2MTokensResponseM2mTokensItemScopesList>;
+export const GetM2MTokensResponseM2mTokensItemScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetM2MTokensResponseM2mTokensItemScopesList>;
 
 export interface GetM2MTokensResponseM2mTokensItem {
   object: GetM2MTokensResponseM2mTokensItemObject;
@@ -8118,9 +7972,8 @@ export const GetMachineResponseObject = S.String;
 
 /** Array of machines this machine has access to. */
 export type GetMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-export const GetMachineResponseScopedMachinesList = /*@__PURE__*/ S.Array(
-  MachineWithoutScopedMachines,
-) as any as S.Schema<GetMachineResponseScopedMachinesList>;
+export const GetMachineResponseScopedMachinesList =
+  CreateMachineResponseScopedMachinesList as any as S.Schema<GetMachineResponseScopedMachinesList>;
 
 export interface GetMachineResponse {
   object: GetMachineResponseObject;
@@ -8213,16 +8066,13 @@ export type OAuthAccessTokenItemObject = "oauth_access_token";
 export const OAuthAccessTokenItemObject = S.String;
 
 export type OAuthAccessTokenItemPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OAuthAccessTokenItemPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OAuthAccessTokenItemPublicMetadataMap>;
+export const OAuthAccessTokenItemPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<OAuthAccessTokenItemPublicMetadataMap>;
 
 /** The list of scopes that the token is valid for. Only present for OAuth 2.0 tokens. */
 export type OAuthAccessTokenItemScopesList = Array<string>;
-export const OAuthAccessTokenItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuthAccessTokenItemScopesList>;
+export const OAuthAccessTokenItemScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthAccessTokenItemScopesList>;
 
 export interface OAuthAccessTokenItem {
   object: OAuthAccessTokenItemObject;
@@ -8289,9 +8139,8 @@ export type OAuthApplicationObject = "oauth_application";
 export const OAuthApplicationObject = S.String;
 
 export type OAuthApplicationRedirectUrisList = Array<string>;
-export const OAuthApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuthApplicationRedirectUrisList>;
+export const OAuthApplicationRedirectUrisList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthApplicationRedirectUrisList>;
 
 export interface OAuthApplication {
   object: OAuthApplicationObject;
@@ -8427,15 +8276,13 @@ export const CommerceSubscriptionStatus = S.String;
 
 /** Array of subscription items in this subscription. */
 export type CommerceSubscriptionSubscriptionItemsList = Array<CommerceSubscriptionItem>;
-export const CommerceSubscriptionSubscriptionItemsList = /*@__PURE__*/ S.Array(
-  CommerceSubscriptionItem,
-) as any as S.Schema<CommerceSubscriptionSubscriptionItemsList>;
+export const CommerceSubscriptionSubscriptionItemsList =
+  PaginatedCommerceSubscriptionItemResponseDataList as any as S.Schema<CommerceSubscriptionSubscriptionItemsList>;
 
 /** Per-unit total breakdown (for example, seats) for the next payment. */
 export type CommerceSubscriptionNextPaymentPerUnitTotalsList = Array<CommercePerUnitTotal2>;
-export const CommerceSubscriptionNextPaymentPerUnitTotalsList = /*@__PURE__*/ S.Array(
-  CommercePerUnitTotal2,
-) as any as S.Schema<CommerceSubscriptionNextPaymentPerUnitTotalsList>;
+export const CommerceSubscriptionNextPaymentPerUnitTotalsList =
+  CommerceTotalsResponse2PerUnitTotalsList as any as S.Schema<CommerceSubscriptionNextPaymentPerUnitTotalsList>;
 
 export interface CommerceSubscriptionNextPayment {
   /** Unix timestamp (milliseconds) of the next payment date. */
@@ -8696,9 +8543,8 @@ export const GetSessionListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSessionListRequest" }) as any as S.Schema<GetSessionListRequest>;
 
 export type GetSessionListResponseBodyList = Array<Session>;
-export const GetSessionListResponseBodyList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<GetSessionListResponseBodyList>;
+export const GetSessionListResponseBodyList =
+  ClientSessionsList as any as S.Schema<GetSessionListResponseBodyList>;
 
 export type GetSessionListResponse = GetSessionListResponseBodyList;
 export const GetSessionListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8722,32 +8568,27 @@ export type SignUpStatus = "missing_requirements" | "complete" | "abandoned";
 export const SignUpStatus = S.String;
 
 export type SignUpRequiredFieldsList = Array<string>;
-export const SignUpRequiredFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignUpRequiredFieldsList>;
+export const SignUpRequiredFieldsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpRequiredFieldsList>;
 
 export type SignUpOptionalFieldsList = Array<string>;
-export const SignUpOptionalFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignUpOptionalFieldsList>;
+export const SignUpOptionalFieldsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpOptionalFieldsList>;
 
 export type SignUpMissingFieldsList = Array<string>;
-export const SignUpMissingFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignUpMissingFieldsList>;
+export const SignUpMissingFieldsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpMissingFieldsList>;
 
 export type SignUpUnverifiedFieldsList = Array<string>;
-export const SignUpUnverifiedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignUpUnverifiedFieldsList>;
+export const SignUpUnverifiedFieldsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpUnverifiedFieldsList>;
 
 export type SignUpVerificationNextAction = "needs_prepare" | "needs_attempt" | "";
 export const SignUpVerificationNextAction = S.String;
 
 export type SignUpVerificationSupportedStrategiesList = Array<string>;
-export const SignUpVerificationSupportedStrategiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignUpVerificationSupportedStrategiesList>;
+export const SignUpVerificationSupportedStrategiesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpVerificationSupportedStrategiesList>;
 
 export interface SignUpVerification {
   next_action?: SignUpVerificationNextAction;
@@ -8776,16 +8617,12 @@ export const SignUpVerifications = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignUpVerifications" }) as any as S.Schema<SignUpVerifications>;
 
 export type SignUpUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const SignUpUnsafeMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SignUpUnsafeMetadataMap>;
+export const SignUpUnsafeMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<SignUpUnsafeMetadataMap>;
 
 export type SignUpPublicMetadataMap = { [key: string]: unknown | undefined };
-export const SignUpPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SignUpPublicMetadataMap>;
+export const SignUpPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<SignUpPublicMetadataMap>;
 
 export interface SignUp {
   object: SignUpObject;
@@ -8885,44 +8722,36 @@ export const GetUserBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserBillingSubscriptionRequest>;
 
 export type GetUserListRequestEmailAddressList = Array<string>;
-export const GetUserListRequestEmailAddressList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestEmailAddressList>;
+export const GetUserListRequestEmailAddressList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestEmailAddressList>;
 
 export type GetUserListRequestPhoneNumberList = Array<string>;
-export const GetUserListRequestPhoneNumberList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestPhoneNumberList>;
+export const GetUserListRequestPhoneNumberList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestPhoneNumberList>;
 
 export type GetUserListRequestExternalIdList = Array<string>;
-export const GetUserListRequestExternalIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestExternalIdList>;
+export const GetUserListRequestExternalIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestExternalIdList>;
 
 export type GetUserListRequestUsernameList = Array<string>;
-export const GetUserListRequestUsernameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestUsernameList>;
+export const GetUserListRequestUsernameList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestUsernameList>;
 
 export type GetUserListRequestWeb3WalletList = Array<string>;
-export const GetUserListRequestWeb3WalletList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestWeb3WalletList>;
+export const GetUserListRequestWeb3WalletList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestWeb3WalletList>;
 
 export type GetUserListRequestUserIdList = Array<string>;
-export const GetUserListRequestUserIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestUserIdList>;
+export const GetUserListRequestUserIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestUserIdList>;
 
 export type GetUserListRequestOrganizationIdList = Array<string>;
-export const GetUserListRequestOrganizationIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestOrganizationIdList>;
+export const GetUserListRequestOrganizationIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestOrganizationIdList>;
 
 export type GetUserListRequestProviderUserIdList = Array<string>;
-export const GetUserListRequestProviderUserIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserListRequestProviderUserIdList>;
+export const GetUserListRequestProviderUserIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestProviderUserIdList>;
 
 export interface GetUserListRequest {
   /** Returns users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored. */
@@ -9010,54 +8839,43 @@ export const GetUserListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserListRequest" }) as any as S.Schema<GetUserListRequest>;
 
 export type GetUserListResponseBodyList = Array<User>;
-export const GetUserListResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<GetUserListResponseBodyList>;
+export const GetUserListResponseBodyList =
+  BanUserResponseBodyList as any as S.Schema<GetUserListResponseBodyList>;
 
 export type GetUserListResponse = GetUserListResponseBodyList;
-export const GetUserListResponse = /*@__PURE__*/ S.suspend(() =>
-  GetUserListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetUserListResponse" }) as any as S.Schema<GetUserListResponse>;
+export const GetUserListResponse = BanUserResponse as any as S.Schema<GetUserListResponse>;
 
 export type GetUsersCountRequestEmailAddressList = Array<string>;
-export const GetUsersCountRequestEmailAddressList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestEmailAddressList>;
+export const GetUsersCountRequestEmailAddressList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestEmailAddressList>;
 
 export type GetUsersCountRequestPhoneNumberList = Array<string>;
-export const GetUsersCountRequestPhoneNumberList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestPhoneNumberList>;
+export const GetUsersCountRequestPhoneNumberList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestPhoneNumberList>;
 
 export type GetUsersCountRequestExternalIdList = Array<string>;
-export const GetUsersCountRequestExternalIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestExternalIdList>;
+export const GetUsersCountRequestExternalIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestExternalIdList>;
 
 export type GetUsersCountRequestUsernameList = Array<string>;
-export const GetUsersCountRequestUsernameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestUsernameList>;
+export const GetUsersCountRequestUsernameList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestUsernameList>;
 
 export type GetUsersCountRequestWeb3WalletList = Array<string>;
-export const GetUsersCountRequestWeb3WalletList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestWeb3WalletList>;
+export const GetUsersCountRequestWeb3WalletList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestWeb3WalletList>;
 
 export type GetUsersCountRequestUserIdList = Array<string>;
-export const GetUsersCountRequestUserIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestUserIdList>;
+export const GetUsersCountRequestUserIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestUserIdList>;
 
 export type GetUsersCountRequestOrganizationIdList = Array<string>;
-export const GetUsersCountRequestOrganizationIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestOrganizationIdList>;
+export const GetUsersCountRequestOrganizationIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestOrganizationIdList>;
 
 export type GetUsersCountRequestProviderUserIdList = Array<string>;
-export const GetUsersCountRequestProviderUserIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUsersCountRequestProviderUserIdList>;
+export const GetUsersCountRequestProviderUserIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestProviderUserIdList>;
 
 export interface GetUsersCountRequest {
   /** Counts users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored. */
@@ -9167,9 +8985,8 @@ export const InstanceGetOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<InstanceGetOrganizationMembershipsRequest>;
 
 export type OrganizationMembershipsDataList = Array<OrganizationMembership>;
-export const OrganizationMembershipsDataList = /*@__PURE__*/ S.Array(
-  OrganizationMembership,
-) as any as S.Schema<OrganizationMembershipsDataList>;
+export const OrganizationMembershipsDataList =
+  UserOrganizationMembershipsList as any as S.Schema<OrganizationMembershipsDataList>;
 
 export interface OrganizationMemberships {
   data: OrganizationMembershipsDataList;
@@ -9219,9 +9036,8 @@ export const ListAllOrganizationDomainsRequestEnrollmentModeList = /*@__PURE__*/
 ) as any as S.Schema<ListAllOrganizationDomainsRequestEnrollmentModeList>;
 
 export type ListAllOrganizationDomainsRequestDomainsList = Array<string>;
-export const ListAllOrganizationDomainsRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAllOrganizationDomainsRequestDomainsList>;
+export const ListAllOrganizationDomainsRequestDomainsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListAllOrganizationDomainsRequestDomainsList>;
 
 export interface ListAllOrganizationDomainsRequest {
   /** The ID of the organization to filter domains by */
@@ -9657,19 +9473,13 @@ export type OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap = 
   [key: string]: unknown | undefined;
 };
 export const OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap>;
+  CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap>;
 
 export type OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
 export const OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap>;
+  CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap>;
 
 /** An organization invitation with public organization data populated */
 export interface OrganizationInvitationWithPublicOrganizationData {
@@ -9768,9 +9578,8 @@ export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInvitationsRequest" }) as any as S.Schema<ListInvitationsRequest>;
 
 export type ListInvitationsResponseBodyList = Array<Invitation>;
-export const ListInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
-  Invitation,
-) as any as S.Schema<ListInvitationsResponseBodyList>;
+export const ListInvitationsResponseBodyList =
+  CreateBulkInvitationsResponseBodyList as any as S.Schema<ListInvitationsResponseBodyList>;
 
 export type ListInvitationsResponse = ListInvitationsResponseBodyList;
 export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9827,9 +9636,8 @@ export const MachineObject = S.String;
 
 /** Array of machines this machine has access to. */
 export type MachineScopedMachinesList = Array<MachineWithoutScopedMachines>;
-export const MachineScopedMachinesList = /*@__PURE__*/ S.Array(
-  MachineWithoutScopedMachines,
-) as any as S.Schema<MachineScopedMachinesList>;
+export const MachineScopedMachinesList =
+  CreateMachineResponseScopedMachinesList as any as S.Schema<MachineScopedMachinesList>;
 
 export interface Machine {
   object: MachineObject;
@@ -9977,34 +9785,28 @@ export const ListOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationInvitationsRequest>;
 
 export type ListOrganizationMembershipsRequestUserIdList = Array<string>;
-export const ListOrganizationMembershipsRequestUserIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMembershipsRequestUserIdList>;
+export const ListOrganizationMembershipsRequestUserIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestUserIdList>;
 
 export type ListOrganizationMembershipsRequestEmailAddressList = Array<string>;
-export const ListOrganizationMembershipsRequestEmailAddressList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMembershipsRequestEmailAddressList>;
+export const ListOrganizationMembershipsRequestEmailAddressList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestEmailAddressList>;
 
 export type ListOrganizationMembershipsRequestPhoneNumberList = Array<string>;
-export const ListOrganizationMembershipsRequestPhoneNumberList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMembershipsRequestPhoneNumberList>;
+export const ListOrganizationMembershipsRequestPhoneNumberList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestPhoneNumberList>;
 
 export type ListOrganizationMembershipsRequestUsernameList = Array<string>;
-export const ListOrganizationMembershipsRequestUsernameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMembershipsRequestUsernameList>;
+export const ListOrganizationMembershipsRequestUsernameList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestUsernameList>;
 
 export type ListOrganizationMembershipsRequestWeb3WalletList = Array<string>;
-export const ListOrganizationMembershipsRequestWeb3WalletList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMembershipsRequestWeb3WalletList>;
+export const ListOrganizationMembershipsRequestWeb3WalletList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestWeb3WalletList>;
 
 export type ListOrganizationMembershipsRequestRoleList = Array<string>;
-export const ListOrganizationMembershipsRequestRoleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMembershipsRequestRoleList>;
+export const ListOrganizationMembershipsRequestRoleList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestRoleList>;
 
 export interface ListOrganizationMembershipsRequest {
   /** The organization ID. */
@@ -10096,9 +9898,7 @@ export const ListOrganizationPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationPermissionsRequest>;
 
 export type PermissionsDataList = Array<Permission>;
-export const PermissionsDataList = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<PermissionsDataList>;
+export const PermissionsDataList = RolePermissionsList as any as S.Schema<PermissionsDataList>;
 
 export interface Permissions {
   data: PermissionsDataList;
@@ -10149,14 +9949,12 @@ export const Roles = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Roles" }) as any as S.Schema<Roles>;
 
 export type ListOrganizationsRequestUserIdList = Array<string>;
-export const ListOrganizationsRequestUserIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationsRequestUserIdList>;
+export const ListOrganizationsRequestUserIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationsRequestUserIdList>;
 
 export type ListOrganizationsRequestOrganizationIdList = Array<string>;
-export const ListOrganizationsRequestOrganizationIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationsRequestOrganizationIdList>;
+export const ListOrganizationsRequestOrganizationIdList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationsRequestOrganizationIdList>;
 
 export interface ListOrganizationsRequest {
   /** Flag to denote whether the member counts of each organization should be included in the response or not. */
@@ -10468,9 +10266,8 @@ export const ListWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWaitlistEntriesRequest>;
 
 export type ListWaitlistEntriesResponseDataList = Array<WaitlistEntry>;
-export const ListWaitlistEntriesResponseDataList = /*@__PURE__*/ S.Array(
-  WaitlistEntry,
-) as any as S.Schema<ListWaitlistEntriesResponseDataList>;
+export const ListWaitlistEntriesResponseDataList =
+  CreateBulkWaitlistEntriesResponseBodyList as any as S.Schema<ListWaitlistEntriesResponseDataList>;
 
 export interface ListWaitlistEntriesResponse {
   data: ListWaitlistEntriesResponseDataList;
@@ -10500,19 +10297,15 @@ export const LockUserRequest = /*@__PURE__*/ S.suspend(() =>
 export type MergeOrganizationMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const MergeOrganizationMetadataRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MergeOrganizationMetadataRequestPublicMetadataMap>;
+export const MergeOrganizationMetadataRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<MergeOrganizationMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization that is only visible to your backend. The new object will be merged with the existing value. */
 export type MergeOrganizationMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const MergeOrganizationMetadataRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MergeOrganizationMetadataRequestPrivateMetadataMap>;
+export const MergeOrganizationMetadataRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<MergeOrganizationMetadataRequestPrivateMetadataMap>;
 
 export interface MergeOrganizationMetadataRequest {
   /** The ID of the organization for which metadata will be merged or updated */
@@ -10566,19 +10359,8 @@ export interface PrepareEmailAddressVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-export const PrepareEmailAddressVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(S.String),
-    strategy: S.optional(S.String),
-    attempts: S.optional(S.NullOr(S.Number)),
-    expire_at: S.optional(S.NullOr(S.Number)),
-    channel: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PrepareEmailAddressVerificationResponse",
-}) as any as S.Schema<PrepareEmailAddressVerificationResponse>;
+export const PrepareEmailAddressVerificationResponse =
+  AttemptEmailAddressVerificationResponse as any as S.Schema<PrepareEmailAddressVerificationResponse>;
 
 export interface PreparePhoneNumberVerificationRequest {
   /** The ID of the phone number to send the verification code to */
@@ -10614,26 +10396,13 @@ export interface PreparePhoneNumberVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-export const PreparePhoneNumberVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(S.String),
-    strategy: S.optional(S.String),
-    attempts: S.optional(S.NullOr(S.Number)),
-    expire_at: S.optional(S.NullOr(S.Number)),
-    channel: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PreparePhoneNumberVerificationResponse",
-}) as any as S.Schema<PreparePhoneNumberVerificationResponse>;
+export const PreparePhoneNumberVerificationResponse =
+  AttemptEmailAddressVerificationResponse as any as S.Schema<PreparePhoneNumberVerificationResponse>;
 
 /** The headers of the request. */
 export type RefreshSessionRequestRequestHeadersMap = { [key: string]: unknown | undefined };
-export const RefreshSessionRequestRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RefreshSessionRequestRequestHeadersMap>;
+export const RefreshSessionRequestRequestHeadersMap =
+  UserPublicMetadataMap as any as S.Schema<RefreshSessionRequestRequestHeadersMap>;
 
 /** The format of the response. */
 export type RefreshSessionRequestFormat = "token" | "cookie";
@@ -10690,9 +10459,8 @@ export const CookiesObject = S.String;
 
 /** Array of cookie directives. */
 export type CookiesCookiesList = Array<string>;
-export const CookiesCookiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CookiesCookiesList>;
+export const CookiesCookiesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CookiesCookiesList>;
 
 export interface Cookies {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -10833,32 +10601,22 @@ export interface ReplaceDirectoryGroupRoleMappingsResponse {
   /** Total number of directory group role mappings in the directory. */
   total_count: number;
 }
-export const ReplaceDirectoryGroupRoleMappingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DirectoryGroupRoleMappings,
-    total_count: S.Number,
-  }),
-).annotate({
-  identifier: "ReplaceDirectoryGroupRoleMappingsResponse",
-}) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsResponse>;
+export const ReplaceDirectoryGroupRoleMappingsResponse =
+  ListDirectoryGroupRoleMappingsResponse as any as S.Schema<ReplaceDirectoryGroupRoleMappingsResponse>;
 
 /** Metadata saved on the organization, that is visible to both your frontend and backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceOrganizationMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ReplaceOrganizationMetadataRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ReplaceOrganizationMetadataRequestPublicMetadataMap>;
+export const ReplaceOrganizationMetadataRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<ReplaceOrganizationMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization that is only visible to your backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceOrganizationMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ReplaceOrganizationMetadataRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ReplaceOrganizationMetadataRequestPrivateMetadataMap>;
+export const ReplaceOrganizationMetadataRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<ReplaceOrganizationMetadataRequestPrivateMetadataMap>;
 
 export interface ReplaceOrganizationMetadataRequest {
   /** The ID of the organization whose metadata will be replaced */
@@ -10900,10 +10658,8 @@ export const ReplaceRoleInRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Mappings from source role keys to destination role keys for role reassignment */
 export type ReassignmentMappings = { [key: string]: string | undefined };
-export const ReassignmentMappings = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReassignmentMappings>;
+export const ReassignmentMappings =
+  RoleSetMigrationMappingsMap as any as S.Schema<ReassignmentMappings>;
 
 export interface ReplaceRoleSetRequest {
   /** The key or ID of the role set to replace */
@@ -10969,14 +10725,8 @@ export interface ReplaceSCIMGroupRoleMappingsResponse {
   /** Total number of SCIM group role mappings in the directory. */
   total_count: number;
 }
-export const ReplaceSCIMGroupRoleMappingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: SCIMGroupRoleMappings,
-    total_count: S.Number,
-  }),
-).annotate({
-  identifier: "ReplaceSCIMGroupRoleMappingsResponse",
-}) as any as S.Schema<ReplaceSCIMGroupRoleMappingsResponse>;
+export const ReplaceSCIMGroupRoleMappingsResponse =
+  ListSCIMGroupRoleMappingsResponse as any as S.Schema<ReplaceSCIMGroupRoleMappingsResponse>;
 
 /** Controls the status of the replacement email address. Defaults to `verified`. Set to `reserved` to create it reserved (unverified but usable for sign-in and locked so no other user can claim it), or to `unverified` to create it neither usable for sign-in nor locked. **Warning:** `unverified` can lock the user out of their account. An unverified email address cannot be used to sign in, so if the user has no other verified or reserved identifier, they will be unable to authenticate and unable to verify this address. Prefer `reserved` unless you specifically need the address left unclaimed -- for example so that another user can also hold it until one of them verifies it. */
 export type ReplaceUserEmailAddressRequestIdentificationStatus =
@@ -11008,24 +10758,18 @@ export const ReplaceUserEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata saved on the user, that is visible to both your frontend and backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceUserMetadataRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const ReplaceUserMetadataRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ReplaceUserMetadataRequestPublicMetadataMap>;
+export const ReplaceUserMetadataRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the user that is only visible to your backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceUserMetadataRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const ReplaceUserMetadataRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ReplaceUserMetadataRequestPrivateMetadataMap>;
+export const ReplaceUserMetadataRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestPrivateMetadataMap>;
 
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The existing value will be replaced entirely with the new object. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type ReplaceUserMetadataRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const ReplaceUserMetadataRequestUnsafeMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ReplaceUserMetadataRequestUnsafeMetadataMap>;
+export const ReplaceUserMetadataRequestUnsafeMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestUnsafeMetadataMap>;
 
 export interface ReplaceUserMetadataRequest {
   /** The ID of the user whose metadata will be replaced */
@@ -11107,9 +10851,8 @@ export const RevokeAdminPortalLinkTokenResponseObject = S.String;
 
 /** Caller-provided scopes for this token. */
 export type RevokeAdminPortalLinkTokenResponseScopesList = Array<string>;
-export const RevokeAdminPortalLinkTokenResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RevokeAdminPortalLinkTokenResponseScopesList>;
+export const RevokeAdminPortalLinkTokenResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeAdminPortalLinkTokenResponseScopesList>;
 
 export interface RevokeAdminPortalLinkTokenResponse {
   object: RevokeAdminPortalLinkTokenResponseObject;
@@ -11178,9 +10921,8 @@ export type RevokeApiKeyResponseObject = "api_key";
 export const RevokeApiKeyResponseObject = S.String;
 
 export type RevokeApiKeyResponseScopesList = Array<string>;
-export const RevokeApiKeyResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RevokeApiKeyResponseScopesList>;
+export const RevokeApiKeyResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeApiKeyResponseScopesList>;
 
 export interface RevokeApiKeyResponse {
   object: RevokeApiKeyResponseObject;
@@ -11239,10 +10981,8 @@ export type RevokeInvitationResponseObject = "invitation";
 export const RevokeInvitationResponseObject = S.String;
 
 export type RevokeInvitationResponsePublicMetadataMap = { [key: string]: unknown | undefined };
-export const RevokeInvitationResponsePublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RevokeInvitationResponsePublicMetadataMap>;
+export const RevokeInvitationResponsePublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<RevokeInvitationResponsePublicMetadataMap>;
 
 export type RevokeInvitationResponseStatus = "pending" | "accepted" | "revoked" | "expired";
 export const RevokeInvitationResponseStatus = S.String;
@@ -11292,9 +11032,8 @@ export type RevokeM2MTokenResponseObject = "machine_to_machine_token";
 export const RevokeM2MTokenResponseObject = S.String;
 
 export type RevokeM2MTokenResponseScopesList = Array<string>;
-export const RevokeM2MTokenResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RevokeM2MTokenResponseScopesList>;
+export const RevokeM2MTokenResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeM2MTokenResponseScopesList>;
 
 export interface RevokeM2MTokenResponse {
   object: RevokeM2MTokenResponseObject;
@@ -11353,11 +11092,8 @@ export const RevokeOAuthApplicationTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeOAuthApplicationTokenRequest>;
 
 export interface RevokeOAuthApplicationTokenResponse {}
-export const RevokeOAuthApplicationTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeOAuthApplicationTokenResponse",
-}) as any as S.Schema<RevokeOAuthApplicationTokenResponse>;
+export const RevokeOAuthApplicationTokenResponse =
+  ChangeProductionInstanceDomainResponse as any as S.Schema<RevokeOAuthApplicationTokenResponse>;
 
 export interface RevokeOrganizationInvitationRequest {
   /** The organization ID. */
@@ -11492,9 +11228,8 @@ export type RotateOAuthApplicationSecretResponseObject = "oauth_application";
 export const RotateOAuthApplicationSecretResponseObject = S.String;
 
 export type RotateOAuthApplicationSecretResponseRedirectUrisList = Array<string>;
-export const RotateOAuthApplicationSecretResponseRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateOAuthApplicationSecretResponseRedirectUrisList>;
+export const RotateOAuthApplicationSecretResponseRedirectUrisList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RotateOAuthApplicationSecretResponseRedirectUrisList>;
 
 export interface RotateOAuthApplicationSecretResponse {
   object: RotateOAuthApplicationSecretResponseObject;
@@ -11621,9 +11356,8 @@ export const UnbanUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user IDs to unban */
 export type UnbanUserRequestUserIdsList = Array<string>;
-export const UnbanUserRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UnbanUserRequestUserIdsList>;
+export const UnbanUserRequestUserIdsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UnbanUserRequestUserIdsList>;
 
 export interface UnbanUserRequest2 {
   /** Array of user IDs to unban */
@@ -11636,14 +11370,11 @@ export const UnbanUserRequest2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnbanUserRequest2" }) as any as S.Schema<UnbanUserRequest2>;
 
 export type UnbanUserResponseBodyList = Array<User>;
-export const UnbanUserResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<UnbanUserResponseBodyList>;
+export const UnbanUserResponseBodyList =
+  BanUserResponseBodyList as any as S.Schema<UnbanUserResponseBodyList>;
 
 export type UnbanUserResponse = UnbanUserResponseBodyList;
-export const UnbanUserResponse = /*@__PURE__*/ S.suspend(() =>
-  UnbanUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UnbanUserResponse" }) as any as S.Schema<UnbanUserResponse>;
+export const UnbanUserResponse = BanUserResponse as any as S.Schema<UnbanUserResponse>;
 
 export interface UnlockUserRequest {
   /** The ID of the user to unlock */
@@ -11670,9 +11401,8 @@ export const UnsetUserPasswordCompromisedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnsetUserPasswordCompromisedRequest>;
 
 export type UpdateApiKeyRequestScopesList = Array<string>;
-export const UpdateApiKeyRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApiKeyRequestScopesList>;
+export const UpdateApiKeyRequestScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateApiKeyRequestScopesList>;
 
 export interface UpdateApiKeyRequest {
   apiKeyID: string;
@@ -11697,9 +11427,8 @@ export type UpdateApiKeyResponseObject = "api_key";
 export const UpdateApiKeyResponseObject = S.String;
 
 export type UpdateApiKeyResponseScopesList = Array<string>;
-export const UpdateApiKeyResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApiKeyResponseScopesList>;
+export const UpdateApiKeyResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateApiKeyResponseScopesList>;
 
 export interface UpdateApiKeyResponse {
   object: UpdateApiKeyResponseObject;
@@ -11820,15 +11549,13 @@ export const UpdateEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains associated with the enterprise connection. Values are normalized to lowercase. Empty array means ignored (no change); non-empty array means set domains to the given list (replaces existing). */
 export type UpdateEnterpriseConnectionRequestDomainsList = Array<string>;
-export const UpdateEnterpriseConnectionRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEnterpriseConnectionRequestDomainsList>;
+export const UpdateEnterpriseConnectionRequestDomainsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateEnterpriseConnectionRequestDomainsList>;
 
 /** The IdP X.509 signing certificates the connection trusts, one per entry, in PEM or bare base64. Replaces the connection's whole certificate set and takes precedence over idp_certificate */
 export type UpdateEnterpriseConnectionRequestSamlIdpCertificatesList = Array<string>;
-export const UpdateEnterpriseConnectionRequestSamlIdpCertificatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEnterpriseConnectionRequestSamlIdpCertificatesList>;
+export const UpdateEnterpriseConnectionRequestSamlIdpCertificatesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateEnterpriseConnectionRequestSamlIdpCertificatesList>;
 
 /** Attribute mapping for SAML attributes */
 export type UpdateEnterpriseConnectionRequestSamlAttributeMapping =
@@ -11914,9 +11641,8 @@ export const UpdateEnterpriseConnectionRequestCustomAttributesItem =
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type UpdateEnterpriseConnectionRequestCustomAttributesList =
   Array<CreateEnterpriseConnectionRequestCustomAttributesItem>;
-export const UpdateEnterpriseConnectionRequestCustomAttributesList = /*@__PURE__*/ S.Array(
-  CreateEnterpriseConnectionRequestCustomAttributesItem,
-) as any as S.Schema<UpdateEnterpriseConnectionRequestCustomAttributesList>;
+export const UpdateEnterpriseConnectionRequestCustomAttributesList =
+  CreateEnterpriseConnectionRequestCustomAttributesList as any as S.Schema<UpdateEnterpriseConnectionRequestCustomAttributesList>;
 
 export interface UpdateEnterpriseConnectionRequest {
   /** The ID of the enterprise connection to update */
@@ -11968,15 +11694,13 @@ export const UpdateEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** For browser-like stacks such as browser extensions, Electron, or Capacitor.js (not officially supported), the instance allowed origins need to be updated with the request origin value. For Chrome extensions popup, background, or service worker pages, the origin is chrome-extension://extension_uuid. For Electron apps using `@clerk/electron`, the origins are the custom renderer scheme registered with `createClerkBridge()`, for example `my-app://renderer`, and, during development, the renderer's dev server origin, for example `http://localhost:5173`. For Capacitor, the origin is capacitor://localhost. Send an empty array to remove all allowed origins. A null value leaves the current list unchanged. */
 export type UpdateInstanceRequestAllowedOriginsList = Array<string>;
-export const UpdateInstanceRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInstanceRequestAllowedOriginsList>;
+export const UpdateInstanceRequestAllowedOriginsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceRequestAllowedOriginsList>;
 
 /** Subdomains of the instance's own domains that may originate requests while `subdomain_allowlist_enabled` is true. Each entry is either an exact host (`app.example.com`) or a wildcard anchored on a host beneath one of the instance's domains (`*.preview.example.com`), which covers every host under that anchor but not the anchor itself. Entries are stored folded to lower case with any trailing dot removed, the form the origin check compares against, so entries differing only in those respects are one entry. Entries already stored are not validated again, so a list read back from the instance can always be written again unchanged. Send an empty array to remove all entries. A null value leaves the current list unchanged. Production instances only. */
 export type UpdateInstanceRequestAllowedSubdomainsList = Array<string>;
-export const UpdateInstanceRequestAllowedSubdomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInstanceRequestAllowedSubdomainsList>;
+export const UpdateInstanceRequestAllowedSubdomainsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceRequestAllowedSubdomainsList>;
 
 /** When password is required at the instance level, sets the preferred sign-in strategy surfaced to Clerk components. Has no effect when password is not required. Defaults to `password`. Set to an empty string to clear the override. */
 export type UpdateInstanceRequestPreferredSignInStrategyWhenPasswordRequired =
@@ -12028,9 +11752,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstanceResponse",
-}) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  DeleteSvixAppResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export interface UpdateInstanceAuthConfigRequest {
   /** Whether sign up is restricted to email addresses, phone numbers and usernames that are on the allowlist. */
@@ -12082,9 +11805,8 @@ export const UpdateInstanceAuthConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** ISO 3166-1 alpha-2 country codes to block for SMS delivery. Whole-list replacement. Codes must be uppercase, 2-letter, and unique within the array. */
 export type UpdateInstanceCommunicationRequestBlockedCountryCodesList = Array<string>;
-export const UpdateInstanceCommunicationRequestBlockedCountryCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInstanceCommunicationRequestBlockedCountryCodesList>;
+export const UpdateInstanceCommunicationRequestBlockedCountryCodesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceCommunicationRequestBlockedCountryCodesList>;
 
 export interface UpdateInstanceCommunicationRequest {
   /** ISO 3166-1 alpha-2 country codes to block for SMS delivery. Whole-list replacement. Codes must be uppercase, 2-letter, and unique within the array. */
@@ -12102,9 +11824,8 @@ export const UpdateInstanceCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Default scopes assigned when a dynamically registered or first-contact CIMD client omits `scope`. Accepts built-in keys and current custom catalog keys. `advertised` does not affect eligibility. Duplicate keys, unknown keys, and `offline_access` are rejected. An empty array or null resets to Clerk-provided defaults. */
 export type UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList = Array<string>;
-export const UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList>;
+export const UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList>;
 
 export interface UpdateInstanceOAuthApplicationSettingsRequest {
   /** Whether dynamic OAuth client registration is enabled for the instance (RFC 7591). */
@@ -12287,9 +12008,8 @@ export const UpdateMachineResponseObject = S.String;
 
 /** Array of machines this machine has access to. */
 export type UpdateMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-export const UpdateMachineResponseScopedMachinesList = /*@__PURE__*/ S.Array(
-  MachineWithoutScopedMachines,
-) as any as S.Schema<UpdateMachineResponseScopedMachinesList>;
+export const UpdateMachineResponseScopedMachinesList =
+  CreateMachineResponseScopedMachinesList as any as S.Schema<UpdateMachineResponseScopedMachinesList>;
 
 export interface UpdateMachineResponse {
   object: UpdateMachineResponseObject;
@@ -12323,9 +12043,8 @@ export const UpdateMachineResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of redirect URIs of the new OAuth application */
 export type UpdateOAuthApplicationRequestRedirectUrisList = Array<string>;
-export const UpdateOAuthApplicationRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOAuthApplicationRequestRedirectUrisList>;
+export const UpdateOAuthApplicationRequestRedirectUrisList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateOAuthApplicationRequestRedirectUrisList>;
 
 export interface UpdateOAuthApplicationRequest {
   /** The ID of the OAuth application to update */
@@ -12456,19 +12175,15 @@ export const UpdateOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateOrganizationMembershipMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationMembershipMetadataRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPublicMetadataMap>;
+export const UpdateOrganizationMembershipMetadataRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization membership that is only visible to your backend. The new object will be merged with the existing value. */
 export type UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap>;
+export const UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap>;
 
 export interface UpdateOrganizationMembershipMetadataRequest {
   /** The ID of the organization to which this membership belongs */
@@ -12520,9 +12235,8 @@ export const UpdateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of permission IDs to assign to the role. If provided, this will replace the existing permissions. */
 export type UpdateOrganizationRoleRequestPermissionsList = Array<string>;
-export const UpdateOrganizationRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationRoleRequestPermissionsList>;
+export const UpdateOrganizationRoleRequestPermissionsList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateOrganizationRoleRequestPermissionsList>;
 
 export interface UpdateOrganizationRoleRequest {
   /** The ID of the organization role to update */
@@ -12605,10 +12319,8 @@ export const UpdateRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateSCIMDirectoryRequestAttributeMappingMap = {
   [key: string]: string | null | undefined;
 };
-export const UpdateSCIMDirectoryRequestAttributeMappingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<UpdateSCIMDirectoryRequestAttributeMappingMap>;
+export const UpdateSCIMDirectoryRequestAttributeMappingMap =
+  UpdateDirectoryRequestAttributeMappingMap as any as S.Schema<UpdateSCIMDirectoryRequestAttributeMappingMap>;
 
 export interface UpdateSCIMDirectoryRequest {
   /** The ID of the directory to update */
@@ -12655,9 +12367,8 @@ export const UpdateSignUpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If Backup Codes are configured on the instance, you can provide them to enable it on the specific user without the need to reset them. */
 export type UpdateUserRequestBackupCodesList = Array<string>;
-export const UpdateUserRequestBackupCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUserRequestBackupCodesList>;
+export const UpdateUserRequestBackupCodesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateUserRequestBackupCodesList>;
 
 export interface UpdateUserRequest {
   /** The ID of the user to update */
@@ -12745,24 +12456,18 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata saved on the user, that is visible to both your frontend and backend. The new object will be merged with the existing value. */
 export type UpdateUserMetadataRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateUserMetadataRequestPublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateUserMetadataRequestPublicMetadataMap>;
+export const UpdateUserMetadataRequestPublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the user that is only visible to your backend. The new object will be merged with the existing value. */
 export type UpdateUserMetadataRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateUserMetadataRequestPrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateUserMetadataRequestPrivateMetadataMap>;
+export const UpdateUserMetadataRequestPrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestPrivateMetadataMap>;
 
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The new object will be merged with the existing value. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type UpdateUserMetadataRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateUserMetadataRequestUnsafeMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateUserMetadataRequestUnsafeMetadataMap>;
+export const UpdateUserMetadataRequestUnsafeMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestUnsafeMetadataMap>;
 
 export interface UpdateUserMetadataRequest {
   /** The ID of the user whose metadata will be updated and merged */
@@ -12839,18 +12544,14 @@ export const UploadOrganizationLogoResponseObject = S.String;
 export type UploadOrganizationLogoResponsePublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UploadOrganizationLogoResponsePublicMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UploadOrganizationLogoResponsePublicMetadataMap>;
+export const UploadOrganizationLogoResponsePublicMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UploadOrganizationLogoResponsePublicMetadataMap>;
 
 export type UploadOrganizationLogoResponsePrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UploadOrganizationLogoResponsePrivateMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UploadOrganizationLogoResponsePrivateMetadataMap>;
+export const UploadOrganizationLogoResponsePrivateMetadataMap =
+  UserPublicMetadataMap as any as S.Schema<UploadOrganizationLogoResponsePrivateMetadataMap>;
 
 export interface UploadOrganizationLogoResponse {
   object: UploadOrganizationLogoResponseObject;
@@ -12965,9 +12666,8 @@ export type VerifyApiKeyResponseObject = "api_key";
 export const VerifyApiKeyResponseObject = S.String;
 
 export type VerifyApiKeyResponseScopesList = Array<string>;
-export const VerifyApiKeyResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VerifyApiKeyResponseScopesList>;
+export const VerifyApiKeyResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyApiKeyResponseScopesList>;
 
 export interface VerifyApiKeyResponse {
   object: VerifyApiKeyResponseObject;
@@ -13077,9 +12777,8 @@ export type VerifyM2MTokenResponseObject = "machine_to_machine_token";
 export const VerifyM2MTokenResponseObject = S.String;
 
 export type VerifyM2MTokenResponseScopesList = Array<string>;
-export const VerifyM2MTokenResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VerifyM2MTokenResponseScopesList>;
+export const VerifyM2MTokenResponseScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyM2MTokenResponseScopesList>;
 
 export interface VerifyM2MTokenResponse {
   object: VerifyM2MTokenResponseObject;
@@ -13135,15 +12834,13 @@ export type VerifyOAuthAccessTokenResponseBodyCase0Object = "clerk_idp_oauth_acc
 export const VerifyOAuthAccessTokenResponseBodyCase0Object = S.String;
 
 export type VerifyOAuthAccessTokenResponseBodyCase0ScopesList = Array<string>;
-export const VerifyOAuthAccessTokenResponseBodyCase0ScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase0ScopesList>;
+export const VerifyOAuthAccessTokenResponseBodyCase0ScopesList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase0ScopesList>;
 
 /** The audiences of the access token. Omitted when no audience is set. */
 export type VerifyOAuthAccessTokenResponseBodyCase0AudList = Array<string>;
-export const VerifyOAuthAccessTokenResponseBodyCase0AudList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase0AudList>;
+export const VerifyOAuthAccessTokenResponseBodyCase0AudList =
+  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase0AudList>;
 
 export interface VerifyOAuthAccessTokenResponseBodyCase0 {
   object: VerifyOAuthAccessTokenResponseBodyCase0Object;

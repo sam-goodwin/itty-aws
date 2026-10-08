@@ -249,11 +249,7 @@ export interface RemoveStarResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveStarResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "RemoveStarResponse" }) as any as S.Schema<RemoveStarResponse>;
+export const RemoveStarResponse = AddStarResponse as any as S.Schema<RemoveStarResponse>;
 
 export type AddStarError = SlackOpError;
 /** Save an item for later. Formerly known as adding a star. Required scopes -- user: `stars:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `already_starred` -- The specified item has already been starred by the authenticated user. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Channel, private group, or DM specified by `channel` does not exist - `external_channel_migrating` -- Channel is undergoing active migration - `file_comment_not_found` -- File comment specified by `file_comment` does not exist. - `file_not_found` -- File specified by `file` does not exist. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- `file`, `file_comment`, `channel` and `timestamp` was not specified. See https://docs.slack.dev/reference/methods/stars.add */

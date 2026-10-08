@@ -704,22 +704,12 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   content?: string;
 }
 export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageIdentifier: S.optional(S.String),
-      content: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
 export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList>;
+  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList>;
 
 /** Document context. */
 export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext {
@@ -4110,7 +4100,7 @@ export const GoogleCloudDiscoveryengineV1betaReplyReferenceList = /*@__PURE__*/ 
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaReplyReferenceList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** Safety Attribute categories and their associated confidence scores. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes {
@@ -15095,13 +15085,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInl
   identityMappingEntries?: GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList;
 }
 export const GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identityMappingEntries: S.optional(GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource>;
+  GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource>;
 
 /** Request message for IdentityMappingStoreService.PurgeIdentityMappings */
 export interface GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest {
@@ -15154,13 +15138,8 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeErrorConfig {
   /** Cloud Storage prefix for purge errors. This must be an empty, existing Cloud Storage directory. Purge errors are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaPurgeErrorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsPrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1betaPurgeErrorConfig",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeErrorConfig>;
+export const GoogleCloudDiscoveryengineV1betaPurgeErrorConfig =
+  GoogleCloudDiscoveryengineV1betaImportErrorConfig as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeErrorConfig>;
 
 /** The inline source for the input config for DocumentService.PurgeDocuments method. */
 export interface GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource {
@@ -16068,16 +16047,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   expressions?: GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList;
 }
 export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expressions: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
+  GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
 
 /** Constraint of a geolocation field. Name of the geolocation field as defined in the schema. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint {

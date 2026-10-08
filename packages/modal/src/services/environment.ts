@@ -76,9 +76,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface EnvironmentBillingSummaryRequest {
   /** all query intervals are implicitly one month long (to line up with billing cycles) */
@@ -364,9 +363,8 @@ export const EnvironmentSetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentSetBudgetRequest>;
 
 export interface EnvironmentSetBudgetResponse {}
-export const EnvironmentSetBudgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnvironmentSetBudgetResponse",
-}) as any as S.Schema<EnvironmentSetBudgetResponse>;
+export const EnvironmentSetBudgetResponse =
+  CreateEnvironmentResponse as any as S.Schema<EnvironmentSetBudgetResponse>;
 
 export interface EnvironmentSetDefaultMemberRoleRequest {
   environmentId?: string;
@@ -412,9 +410,8 @@ export const EnvironmentSetManagedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentSetManagedRequest>;
 
 export interface EnvironmentSetManagedResponse {}
-export const EnvironmentSetManagedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnvironmentSetManagedResponse",
-}) as any as S.Schema<EnvironmentSetManagedResponse>;
+export const EnvironmentSetManagedResponse =
+  CreateEnvironmentResponse as any as S.Schema<EnvironmentSetManagedResponse>;
 
 export interface ListEnvironmentRequest {}
 export const ListEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -503,9 +500,8 @@ export const SetEnvironmentRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetEnvironmentRoleRequest>;
 
 export interface SetEnvironmentRoleResponse {}
-export const SetEnvironmentRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetEnvironmentRoleResponse",
-}) as any as S.Schema<SetEnvironmentRoleResponse>;
+export const SetEnvironmentRoleResponse =
+  CreateEnvironmentResponse as any as S.Schema<SetEnvironmentRoleResponse>;
 
 /** Partial-update signal for EnvironmentUpdateRequest. Omitted means no-op. INHERIT clears the environment override so the workspace default applies. */
 export type EnvironmentBlockUnauthenticatedResources =

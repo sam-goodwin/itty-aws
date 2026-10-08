@@ -38,9 +38,7 @@ export const RenderRawRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderRawRequest" }) as any as S.Schema<RenderRawRequest>;
 
 export interface RenderRawResponse {}
-export const RenderRawResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RenderRawResponse",
-}) as any as S.Schema<RenderRawResponse>;
+export const RenderRawResponse = RenderResponse as any as S.Schema<RenderRawResponse>;
 
 export type RenderError = GithubOpError;
 /** Render a Markdown document Depending on what is rendered in the Markdown, you may need to provide additional token scopes for labels, such as `issues:read` or `pull_requests:read`. */

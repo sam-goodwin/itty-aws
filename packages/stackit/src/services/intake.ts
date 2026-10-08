@@ -149,10 +149,8 @@ export const CreateIntakeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are a set of key-value pairs assigned to resources. */
 export type IntakeResponseLabelsMap = { [key: string]: string | undefined };
-export const IntakeResponseLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IntakeResponseLabelsMap>;
+export const IntakeResponseLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<IntakeResponseLabelsMap>;
 
 /** The current state of the resource. */
 export type IntakeResponseState = "reconciling" | "active" | "deleting" | "failed";
@@ -208,10 +206,8 @@ export const CreateIntakeRunnerRequestRegionId = S.String;
 
 /** Labels are a set of key-value pairs assigned to resources. */
 export type CreateIntakeRunnerRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateIntakeRunnerRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateIntakeRunnerRequestLabelsMap>;
+export const CreateIntakeRunnerRequestLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<CreateIntakeRunnerRequestLabelsMap>;
 
 export interface CreateIntakeRunnerRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -252,10 +248,8 @@ export const CreateIntakeRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are a set of key-value pairs assigned to resources. */
 export type IntakeRunnerResponseLabelsMap = { [key: string]: string | undefined };
-export const IntakeRunnerResponseLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IntakeRunnerResponseLabelsMap>;
+export const IntakeRunnerResponseLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<IntakeRunnerResponseLabelsMap>;
 
 /** The current state of the resource. */
 export type IntakeRunnerResponseState = "reconciling" | "active" | "deleting";
@@ -300,10 +294,8 @@ export const CreateIntakeUserRequestRegionId = S.String;
 
 /** Labels are key-value pairs associated with the resource. */
 export type CreateIntakeUserRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateIntakeUserRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateIntakeUserRequestLabelsMap>;
+export const CreateIntakeUserRequestLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<CreateIntakeUserRequestLabelsMap>;
 
 /** Type of user, 'intake' allows writing to the Intake, 'dead-letter' allows reading from the dead-letter queue */
 export type UserType = "intake" | "dead-letter";
@@ -362,10 +354,8 @@ export const ClientConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are a set of key-value pairs assigned to resources. */
 export type IntakeUserResponseLabelsMap = { [key: string]: string | undefined };
-export const IntakeUserResponseLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IntakeUserResponseLabelsMap>;
+export const IntakeUserResponseLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<IntakeUserResponseLabelsMap>;
 
 /** The current state of the resource. */
 export type IntakeUserResponseState = "reconciling" | "active" | "deleting";
@@ -469,9 +459,8 @@ export const DeleteIntakeRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntakeRunnerRequest>;
 
 export interface DeleteIntakeRunnerResponse {}
-export const DeleteIntakeRunnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIntakeRunnerResponse",
-}) as any as S.Schema<DeleteIntakeRunnerResponse>;
+export const DeleteIntakeRunnerResponse =
+  DeleteIntakeResponse as any as S.Schema<DeleteIntakeRunnerResponse>;
 
 export type DeleteIntakeUserRequestRegionId = "eu01" | "eu02";
 export const DeleteIntakeUserRequestRegionId = S.String;
@@ -503,9 +492,8 @@ export const DeleteIntakeUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIntakeUserRequest" }) as any as S.Schema<DeleteIntakeUserRequest>;
 
 export interface DeleteIntakeUserResponse {}
-export const DeleteIntakeUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIntakeUserResponse",
-}) as any as S.Schema<DeleteIntakeUserResponse>;
+export const DeleteIntakeUserResponse =
+  DeleteIntakeResponse as any as S.Schema<DeleteIntakeUserResponse>;
 
 export type GetIntakeRequestRegionId = "eu01" | "eu02";
 export const GetIntakeRequestRegionId = S.String;
@@ -761,9 +749,8 @@ export const CatalogAuthPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Iceberg partitioning expressions to use when creating the target table. This setting can only be used when `partitioning` is set to `manual`. See the [Apache Iceberg spec](https://iceberg.apache.org/spec/#partitioning) for more details. */
 export type IntakeCatalogPatchPartitionByList = Array<string>;
-export const IntakeCatalogPatchPartitionByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntakeCatalogPatchPartitionByList>;
+export const IntakeCatalogPatchPartitionByList =
+  IntakeCatalogPartitionByList as any as S.Schema<IntakeCatalogPatchPartitionByList>;
 
 /** The target table's partitioning. * `none` disables partitioning. * `intake-time` configures daily partitioning based on the automatically created ingestion time column `__intake_ts`. * `manual` allows arbitrary Iceberg partitioning expression to be set via `partitionBy`. */
 export type PartitioningUpdateType = "none" | "intake-time" | "manual";
@@ -798,10 +785,8 @@ export const IntakeCatalogPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are key-value pairs associated with the resource. To update labels: - Provide a new set of key-value pairs to replace the existing labels. - Send empty object `{}` to remove all labels. - Omit this field to leave the labels unchanged. */
 export type UpdateIntakeRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateIntakeRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateIntakeRequestLabelsMap>;
+export const UpdateIntakeRequestLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<UpdateIntakeRequestLabelsMap>;
 
 export interface UpdateIntakeRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -845,10 +830,8 @@ export const UpdateIntakeRunnerRequestRegionId = S.String;
 
 /** Labels are key-value pairs associated with the resource. To update labels: - Provide a new set of key-value pairs to replace the existing labels. - Send empty object `{}` to remove all labels. - Omit this field to leave the labels unchanged. */
 export type UpdateIntakeRunnerRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateIntakeRunnerRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateIntakeRunnerRequestLabelsMap>;
+export const UpdateIntakeRunnerRequestLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<UpdateIntakeRunnerRequestLabelsMap>;
 
 export interface UpdateIntakeRunnerRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -895,10 +878,8 @@ export const UpdateIntakeUserRequestRegionId = S.String;
 
 /** Labels are key-value pairs associated with the resource. To update labels: - Provide a new set of key-value pairs to replace the existing labels. - Send empty object `{}` to remove all labels. - Omit this field to leave the labels unchanged. */
 export type UpdateIntakeUserRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateIntakeUserRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateIntakeUserRequestLabelsMap>;
+export const UpdateIntakeUserRequestLabelsMap =
+  CreateIntakeRequestLabelsMap as any as S.Schema<UpdateIntakeUserRequestLabelsMap>;
 
 export interface UpdateIntakeUserRequest {
   /** The STACKIT portal project UUID the resource is located in. */

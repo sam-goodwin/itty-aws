@@ -78,9 +78,8 @@ export const CreateSavedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Viewport widths (CSS pixels) the screenshot is rendered at. */
 export type HeatmapScreenshotResponseTargetWidthsList = Array<number>;
-export const HeatmapScreenshotResponseTargetWidthsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<HeatmapScreenshotResponseTargetWidthsList>;
+export const HeatmapScreenshotResponseTargetWidthsList =
+  CreateSavedRequestWidthsList as any as S.Schema<HeatmapScreenshotResponseTargetWidthsList>;
 
 /** * `server` - Server * `toolbar` - Toolbar */
 export type SavedHeatmapSourceEnum = "server" | "toolbar";
@@ -228,9 +227,8 @@ export const CreateSavedCaptureRequestImagesList = /*@__PURE__*/ S.Array(
 
 /** Viewport widths (CSS pixels) the 'images' were captured at, parallel to 'images'. */
 export type CreateSavedCaptureRequestWidthsList = Array<number>;
-export const CreateSavedCaptureRequestWidthsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateSavedCaptureRequestWidthsList>;
+export const CreateSavedCaptureRequestWidthsList =
+  CreateSavedRequestWidthsList as any as S.Schema<CreateSavedCaptureRequestWidthsList>;
 
 export interface CreateSavedCaptureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -447,9 +445,8 @@ export const SavedRegenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at -- one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
 export type UpdateSavedPartialRequestWidthsList = Array<number>;
-export const UpdateSavedPartialRequestWidthsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateSavedPartialRequestWidthsList>;
+export const UpdateSavedPartialRequestWidthsList =
+  CreateSavedRequestWidthsList as any as S.Schema<UpdateSavedPartialRequestWidthsList>;
 
 export interface UpdateSavedPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

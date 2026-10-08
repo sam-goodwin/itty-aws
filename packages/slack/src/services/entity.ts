@@ -46,10 +46,8 @@ export const AcknowledgeCommentActionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcknowledgeCommentActionResponse>;
 
 export type PresentCommentsRequestCommentsItemMap = { [key: string]: unknown | undefined };
-export const PresentCommentsRequestCommentsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PresentCommentsRequestCommentsItemMap>;
+export const PresentCommentsRequestCommentsItemMap =
+  AcknowledgeCommentActionRequestCommentMap as any as S.Schema<PresentCommentsRequestCommentsItemMap>;
 
 /** Array of comments to present to the user. See the [comment schema](/messaging/work-objects-comments#entity-present-comments-method) for the full list of properties. */
 export type PresentCommentsRequestCommentsList = Array<PresentCommentsRequestCommentsItemMap>;
@@ -115,10 +113,8 @@ export const PresentCommentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** URL-encoded JSON object containing flexpane metadata from the app that will be conformed to a Work Object metadata schema, keyed by entity ID. */
 export type PresentDetailsRequestMetadataMap = { [key: string]: unknown | undefined };
-export const PresentDetailsRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PresentDetailsRequestMetadataMap>;
+export const PresentDetailsRequestMetadataMap =
+  AcknowledgeCommentActionRequestCommentMap as any as S.Schema<PresentDetailsRequestMetadataMap>;
 
 export interface PresentDetailsRequest {
   /** URL-encoded JSON object containing flexpane metadata from the app that will be conformed to a Work Object metadata schema, keyed by entity ID. */

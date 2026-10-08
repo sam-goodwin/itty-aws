@@ -242,10 +242,8 @@ export const CreateConfigurationStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateConfigurationStoreResponseTagsMap = { [key: string]: string | undefined };
-export const CreateConfigurationStoreResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateConfigurationStoreResponseTagsMap>;
+export const CreateConfigurationStoreResponseTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<CreateConfigurationStoreResponseTagsMap>;
 
 /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities. */
 export type ResourceIdentityType =
@@ -684,10 +682,8 @@ export const SnapshotPropertiesInputCompositionType = S.String;
 
 /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
 export type SnapshotPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const SnapshotPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SnapshotPropertiesInputTagsMap>;
+export const SnapshotPropertiesInputTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<SnapshotPropertiesInputTagsMap>;
 
 /** All snapshot properties. */
 export interface SnapshotPropertiesInput {
@@ -754,9 +750,8 @@ export const SnapshotPropertiesStatus = S.String;
 
 /** A list of filters used to filter the key-values included in the snapshot. */
 export type SnapshotPropertiesFiltersList = Array<KeyValueFilter>;
-export const SnapshotPropertiesFiltersList = /*@__PURE__*/ S.Array(
-  KeyValueFilter,
-) as any as S.Schema<SnapshotPropertiesFiltersList>;
+export const SnapshotPropertiesFiltersList =
+  SnapshotPropertiesInputFiltersList as any as S.Schema<SnapshotPropertiesFiltersList>;
 
 /** The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label. */
 export type SnapshotPropertiesCompositionType = "Key" | "Key_Label";
@@ -764,10 +759,8 @@ export const SnapshotPropertiesCompositionType = S.String;
 
 /** The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags. */
 export type SnapshotPropertiesTagsMap = { [key: string]: string | undefined };
-export const SnapshotPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SnapshotPropertiesTagsMap>;
+export const SnapshotPropertiesTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<SnapshotPropertiesTagsMap>;
 
 /** All snapshot properties. */
 export interface SnapshotProperties {
@@ -889,9 +882,7 @@ export const DeleteKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyValueRequest" }) as any as S.Schema<DeleteKeyValueRequest>;
 
 export interface DeleteKeyValueResponse {}
-export const DeleteKeyValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyValueResponse",
-}) as any as S.Schema<DeleteKeyValueResponse>;
+export const DeleteKeyValueResponse = UserIdentityInput as any as S.Schema<DeleteKeyValueResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The Microsoft Azure subscription ID. */
@@ -922,11 +913,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteConfigurationStoreResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteReplicasRequest {
   /** The Microsoft Azure subscription ID. */
@@ -955,9 +943,7 @@ export const DeleteReplicasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReplicasRequest" }) as any as S.Schema<DeleteReplicasRequest>;
 
 export interface DeleteReplicasResponse {}
-export const DeleteReplicasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReplicasResponse",
-}) as any as S.Schema<DeleteReplicasResponse>;
+export const DeleteReplicasResponse = UserIdentityInput as any as S.Schema<DeleteReplicasResponse>;
 
 export interface GetConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
@@ -986,10 +972,8 @@ export const GetConfigurationStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConfigurationStoreResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationStoreResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConfigurationStoreResponseTagsMap>;
+export const GetConfigurationStoreResponseTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<GetConfigurationStoreResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetConfigurationStoreResponseSystemDataCreatedByType =
@@ -1098,10 +1082,8 @@ export const GetConfigurationStoreDeletedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the original configuration store. */
 export type DeletedConfigurationStorePropertiesTagsMap = { [key: string]: string | undefined };
-export const DeletedConfigurationStorePropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeletedConfigurationStorePropertiesTagsMap>;
+export const DeletedConfigurationStorePropertiesTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<DeletedConfigurationStorePropertiesTagsMap>;
 
 /** Properties of the deleted configuration store. */
 export interface DeletedConfigurationStoreProperties {
@@ -1181,10 +1163,8 @@ export const GetKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A dictionary of tags that can help identify what a key-value may be applicable for. */
 export type KeyValuePropertiesTagsMap = { [key: string]: string | undefined };
-export const KeyValuePropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KeyValuePropertiesTagsMap>;
+export const KeyValuePropertiesTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<KeyValuePropertiesTagsMap>;
 
 /** All key-value properties. */
 export interface KeyValueProperties {
@@ -1277,16 +1257,8 @@ export interface PrivateEndpointConnection {
   /** The properties of a private endpoint. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnection",
-}) as any as S.Schema<PrivateEndpointConnection>;
+export const PrivateEndpointConnection =
+  PrivateEndpointConnectionReference as any as S.Schema<PrivateEndpointConnection>;
 
 export interface GetPrivateLinkResourceRequest {
   /** The Microsoft Azure subscription ID. */
@@ -1324,9 +1296,8 @@ export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.
 
 /** The list of required DNS zone names of the private link resource. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -1421,10 +1392,8 @@ export const GetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A dictionary of tags that can help identify what a key-value may be applicable for. */
 export type KeyValuePropertiesInputTagsMap = { [key: string]: string | undefined };
-export const KeyValuePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KeyValuePropertiesInputTagsMap>;
+export const KeyValuePropertiesInputTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<KeyValuePropertiesInputTagsMap>;
 
 /** All key-value properties. */
 export interface KeyValuePropertiesInput {
@@ -1501,10 +1470,8 @@ export const ListConfigurationStoreByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type ConfigurationStoreTagsMap = { [key: string]: string | undefined };
-export const ConfigurationStoreTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationStoreTagsMap>;
+export const ConfigurationStoreTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<ConfigurationStoreTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ConfigurationStoreSystemDataCreatedByType =
@@ -1965,9 +1932,8 @@ export const ListPrivateEndpointConnectionByConfigurationStoreRequest = /*@__PUR
 
 /** The collection value. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  ConfigurationStorePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionListResult {
@@ -2210,11 +2176,8 @@ export const PurgeConfigurationStoreDeletedRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PurgeConfigurationStoreDeletedRequest>;
 
 export interface PurgeConfigurationStoreDeletedResponse {}
-export const PurgeConfigurationStoreDeletedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PurgeConfigurationStoreDeletedResponse",
-}) as any as S.Schema<PurgeConfigurationStoreDeletedResponse>;
+export const PurgeConfigurationStoreDeletedResponse =
+  DeleteConfigurationStoreResponse as any as S.Schema<PurgeConfigurationStoreDeletedResponse>;
 
 export interface RegenerateConfigurationStoreKeyRequest {
   /** The Microsoft Azure subscription ID. */
@@ -2284,10 +2247,8 @@ export const ConfigurationStorePropertiesUpdateParameters = /*@__PURE__*/ S.susp
 
 /** The ARM resource tags. */
 export type UpdateConfigurationStoreRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationStoreRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigurationStoreRequestTagsMap>;
+export const UpdateConfigurationStoreRequestTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<UpdateConfigurationStoreRequestTagsMap>;
 
 export interface UpdateConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
@@ -2328,10 +2289,8 @@ export const UpdateConfigurationStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConfigurationStoreResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationStoreResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigurationStoreResponseTagsMap>;
+export const UpdateConfigurationStoreResponseTagsMap =
+  CreateConfigurationStoreRequestTagsMap as any as S.Schema<UpdateConfigurationStoreResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateConfigurationStoreResponseSystemDataCreatedByType =

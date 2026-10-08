@@ -271,9 +271,8 @@ export const GetBulkAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** an array of at most 50 item(s) */
 export type GetBulkPriceRequestDomainsList = Array<string>;
-export const GetBulkPriceRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBulkPriceRequestDomainsList>;
+export const GetBulkPriceRequestDomainsList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetBulkPriceRequestDomainsList>;
 
 export interface GetBulkPriceRequest {
   teamId?: string;
@@ -1436,9 +1435,8 @@ export type GetOrderResponseErrorCase0Case4Code = "claims-required";
 export const GetOrderResponseErrorCase0Case4Code = S.String;
 
 export type GetOrderResponseErrorCase0Case4DetailsDomainNamesList = Array<string>;
-export const GetOrderResponseErrorCase0Case4DetailsDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrderResponseErrorCase0Case4DetailsDomainNamesList>;
+export const GetOrderResponseErrorCase0Case4DetailsDomainNamesList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetOrderResponseErrorCase0Case4DetailsDomainNamesList>;
 
 export interface GetOrderResponseErrorCase0Case4Details {
   message: string;
@@ -1523,9 +1521,8 @@ export const GetSupportedTldsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the TLDs supported by Vercel. */
 export type GetSupportedTldsResponseBodyList = Array<string>;
-export const GetSupportedTldsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSupportedTldsResponseBodyList>;
+export const GetSupportedTldsResponseBodyList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetSupportedTldsResponseBodyList>;
 
 export type GetSupportedTldsResponse = GetSupportedTldsResponseBodyList;
 export const GetSupportedTldsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1690,9 +1687,8 @@ export const RenewDomainResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** an array of at most 200 item(s) */
 export type SearchDomainsRequestDomainsList = Array<string>;
-export const SearchDomainsRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchDomainsRequestDomainsList>;
+export const SearchDomainsRequestDomainsList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<SearchDomainsRequestDomainsList>;
 
 export interface SearchDomainsRequest {
   teamId?: string;
@@ -1711,14 +1707,8 @@ export interface SearchDomainsResponseResultsItemCase0 {
   /** `false` means the domain is unavailable or its availability could not be confirmed. */
   available: boolean;
 }
-export const SearchDomainsResponseResultsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String,
-    available: S.Boolean,
-  }),
-).annotate({
-  identifier: "SearchDomainsResponseResultsItemCase0",
-}) as any as S.Schema<SearchDomainsResponseResultsItemCase0>;
+export const SearchDomainsResponseResultsItemCase0 =
+  GetBulkAvailabilityResponseResultsItem as any as S.Schema<SearchDomainsResponseResultsItemCase0>;
 
 export interface SearchDomainsResponseResultsItemCase1 {
   domain: string;
@@ -1844,9 +1834,8 @@ export const UpdateDomainAutoRenewResponse = /*@__PURE__*/ S.suspend(() => S.Str
 }) as any as S.Schema<UpdateDomainAutoRenewResponse>;
 
 export type UpdateDomainNameserversRequestNameserversList = Array<string>;
-export const UpdateDomainNameserversRequestNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDomainNameserversRequestNameserversList>;
+export const UpdateDomainNameserversRequestNameserversList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<UpdateDomainNameserversRequestNameserversList>;
 
 export interface UpdateDomainNameserversRequest {
   domain: string;

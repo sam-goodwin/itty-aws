@@ -166,18 +166,8 @@ export interface GetHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-export const GetHybridUseBenefitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    sku: Sku,
-    etag: S.optional(S.Number),
-    properties: S.optional(HybridUseBenefitProperties),
-  }),
-).annotate({
-  identifier: "GetHybridUseBenefitResponse",
-}) as any as S.Schema<GetHybridUseBenefitResponse>;
+export const GetHybridUseBenefitResponse =
+  CreateHybridUseBenefitResponse as any as S.Schema<GetHybridUseBenefitResponse>;
 
 export interface ListHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
@@ -365,9 +355,8 @@ export const RegisterSoftwarePlanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisterSoftwarePlanRequest>;
 
 export interface RegisterSoftwarePlanResponse {}
-export const RegisterSoftwarePlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegisterSoftwarePlanResponse",
-}) as any as S.Schema<RegisterSoftwarePlanResponse>;
+export const RegisterSoftwarePlanResponse =
+  DeleteHybridUseBenefitResponse as any as S.Schema<RegisterSoftwarePlanResponse>;
 
 export interface UpdateHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
@@ -411,18 +400,8 @@ export interface UpdateHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-export const UpdateHybridUseBenefitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    sku: Sku,
-    etag: S.optional(S.Number),
-    properties: S.optional(HybridUseBenefitProperties),
-  }),
-).annotate({
-  identifier: "UpdateHybridUseBenefitResponse",
-}) as any as S.Schema<UpdateHybridUseBenefitResponse>;
+export const UpdateHybridUseBenefitResponse =
+  CreateHybridUseBenefitResponse as any as S.Schema<UpdateHybridUseBenefitResponse>;
 
 export type CreateHybridUseBenefitError = AzureOpError;
 /** Create a new hybrid use benefit under a given scope */

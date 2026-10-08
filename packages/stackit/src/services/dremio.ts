@@ -181,9 +181,8 @@ export const OauthOutputJwtClaims = OauthInputJwtClaims;
 
 /** Any additional parameters the Identity Provider requires. */
 export type OauthOutputParametersList = Array<AuthParameters>;
-export const OauthOutputParametersList = /*@__PURE__*/ S.Array(
-  AuthParameters,
-) as any as S.Schema<OauthOutputParametersList>;
+export const OauthOutputParametersList =
+  OauthInputParametersList as any as S.Schema<OauthOutputParametersList>;
 
 /** OIDC authentication configuration. */
 export interface OauthOutput {
@@ -423,9 +422,8 @@ export const DeleteDremioUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDremioUserRequest" }) as any as S.Schema<DeleteDremioUserRequest>;
 
 export interface DeleteDremioUserResponse {}
-export const DeleteDremioUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDremioUserResponse",
-}) as any as S.Schema<DeleteDremioUserResponse>;
+export const DeleteDremioUserResponse =
+  DeleteDremioInstanceResponse as any as S.Schema<DeleteDremioUserResponse>;
 
 export type GetDremioInstanceRequestRegionId = "eu01" | "eu02";
 export const GetDremioInstanceRequestRegionId = S.String;

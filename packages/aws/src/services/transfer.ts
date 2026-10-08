@@ -358,11 +358,13 @@ export const As2ConnectorConfig = /*@__PURE__*/ S.suspend(() =>
 export type SecretId = string;
 export type SftpConnectorTrustedHostKey = string;
 export type SftpConnectorTrustedHostKeyList = string[];
-export const SftpConnectorTrustedHostKeyList = /*@__PURE__*/ S.Array(S.String);
+export const SftpConnectorTrustedHostKeyList =
+  As2AsyncMdnServerIds as any as S.Schema<SftpConnectorTrustedHostKeyList>;
 export type MaxConcurrentConnections = number;
 export type SecretVersionStage = string;
 export type SecretVersionStageList = string[];
-export const SecretVersionStageList = /*@__PURE__*/ S.Array(S.String);
+export const SecretVersionStageList =
+  As2AsyncMdnServerIds as any as S.Schema<SecretVersionStageList>;
 export interface SftpConnectorConfig {
   UserSecretId?: string;
   TrustedHostKeys?: string[];
@@ -433,7 +435,7 @@ export const ProfileType = S.String;
 
 export type CertificateId = string;
 export type CertificateIds = string[];
-export const CertificateIds = /*@__PURE__*/ S.Array(S.String);
+export const CertificateIds = As2AsyncMdnServerIds as any as S.Schema<CertificateIds>;
 export interface CreateProfileRequest {
   As2Id: string;
   ProfileType: ProfileType;
@@ -460,15 +462,15 @@ export const Domain = S.String;
 
 export type AddressAllocationId = string;
 export type AddressAllocationIds = string[];
-export const AddressAllocationIds = /*@__PURE__*/ S.Array(S.String);
+export const AddressAllocationIds = As2AsyncMdnServerIds as any as S.Schema<AddressAllocationIds>;
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = As2AsyncMdnServerIds as any as S.Schema<SubnetIds>;
 export type VpcEndpointId = string;
 export type VpcId = string;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = As2AsyncMdnServerIds as any as S.Schema<SecurityGroupIds>;
 export interface EndpointDetails {
   AddressAllocationIds?: string[];
   SubnetIds?: string[];
@@ -593,7 +595,8 @@ export const WorkflowDetail = /*@__PURE__*/ S.suspend(() =>
 export type OnUploadWorkflowDetails = WorkflowDetail[];
 export const OnUploadWorkflowDetails = /*@__PURE__*/ S.Array(WorkflowDetail);
 export type OnPartialUploadWorkflowDetails = WorkflowDetail[];
-export const OnPartialUploadWorkflowDetails = /*@__PURE__*/ S.Array(WorkflowDetail);
+export const OnPartialUploadWorkflowDetails =
+  OnUploadWorkflowDetails as any as S.Schema<OnPartialUploadWorkflowDetails>;
 export interface WorkflowDetails {
   OnUpload?: WorkflowDetail[];
   OnPartialUpload?: WorkflowDetail[];
@@ -606,7 +609,8 @@ export const WorkflowDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowDetails" }) as any as S.Schema<WorkflowDetails>;
 export type Arn = string;
 export type StructuredLogDestinations = string[];
-export const StructuredLogDestinations = /*@__PURE__*/ S.Array(S.String);
+export const StructuredLogDestinations =
+  As2AsyncMdnServerIds as any as S.Schema<StructuredLogDestinations>;
 export type DirectoryListingOptimization = "ENABLED" | "DISABLED" | (string & {});
 export const DirectoryListingOptimization = S.String;
 
@@ -849,11 +853,9 @@ export interface S3Tag {
   Key: string;
   Value: string;
 }
-export const S3Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "S3Tag" }) as any as S.Schema<S3Tag>;
+export const S3Tag = Tag as any as S.Schema<S3Tag>;
 export type S3Tags = S3Tag[];
-export const S3Tags = /*@__PURE__*/ S.Array(S3Tag);
+export const S3Tags = Tags as any as S.Schema<S3Tags>;
 export interface TagStepDetails {
   Name?: string;
   Tags?: S3Tag[];
@@ -950,9 +952,8 @@ export const DeleteAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAgreementRequest" }) as any as S.Schema<DeleteAgreementRequest>;
 export interface DeleteAgreementResponse {}
-export const DeleteAgreementResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgreementResponse",
-}) as any as S.Schema<DeleteAgreementResponse>;
+export const DeleteAgreementResponse =
+  DeleteAccessResponse as any as S.Schema<DeleteAgreementResponse>;
 export interface DeleteCertificateRequest {
   CertificateId: string;
 }
@@ -962,9 +963,8 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCertificateResponse",
-}) as any as S.Schema<DeleteCertificateResponse>;
+export const DeleteCertificateResponse =
+  DeleteAccessResponse as any as S.Schema<DeleteCertificateResponse>;
 export interface DeleteConnectorRequest {
   ConnectorId: string;
 }
@@ -974,9 +974,8 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
 export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectorResponse",
-}) as any as S.Schema<DeleteConnectorResponse>;
+export const DeleteConnectorResponse =
+  DeleteAccessResponse as any as S.Schema<DeleteConnectorResponse>;
 export type HostKeyId = string;
 export interface DeleteHostKeyRequest {
   ServerId: string;
@@ -988,9 +987,7 @@ export const DeleteHostKeyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteHostKeyRequest" }) as any as S.Schema<DeleteHostKeyRequest>;
 export interface DeleteHostKeyResponse {}
-export const DeleteHostKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHostKeyResponse",
-}) as any as S.Schema<DeleteHostKeyResponse>;
+export const DeleteHostKeyResponse = DeleteAccessResponse as any as S.Schema<DeleteHostKeyResponse>;
 export interface DeleteProfileRequest {
   ProfileId: string;
 }
@@ -1000,9 +997,7 @@ export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProfileRequest" }) as any as S.Schema<DeleteProfileRequest>;
 export interface DeleteProfileResponse {}
-export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProfileResponse",
-}) as any as S.Schema<DeleteProfileResponse>;
+export const DeleteProfileResponse = DeleteAccessResponse as any as S.Schema<DeleteProfileResponse>;
 export interface DeleteServerRequest {
   ServerId: string;
 }
@@ -1012,9 +1007,7 @@ export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteServerRequest" }) as any as S.Schema<DeleteServerRequest>;
 export interface DeleteServerResponse {}
-export const DeleteServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServerResponse",
-}) as any as S.Schema<DeleteServerResponse>;
+export const DeleteServerResponse = DeleteAccessResponse as any as S.Schema<DeleteServerResponse>;
 export type SshPublicKeyId = string;
 export interface DeleteSshPublicKeyRequest {
   ServerId: string;
@@ -1029,9 +1022,8 @@ export const DeleteSshPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSshPublicKeyRequest",
 }) as any as S.Schema<DeleteSshPublicKeyRequest>;
 export interface DeleteSshPublicKeyResponse {}
-export const DeleteSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSshPublicKeyResponse",
-}) as any as S.Schema<DeleteSshPublicKeyResponse>;
+export const DeleteSshPublicKeyResponse =
+  DeleteAccessResponse as any as S.Schema<DeleteSshPublicKeyResponse>;
 export interface DeleteUserRequest {
   ServerId: string;
   UserName: string;
@@ -1042,9 +1034,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteAccessResponse as any as S.Schema<DeleteUserResponse>;
 export interface DeleteWebAppRequest {
   WebAppId: string;
 }
@@ -1054,9 +1044,7 @@ export const DeleteWebAppRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWebAppRequest" }) as any as S.Schema<DeleteWebAppRequest>;
 export interface DeleteWebAppResponse {}
-export const DeleteWebAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppResponse",
-}) as any as S.Schema<DeleteWebAppResponse>;
+export const DeleteWebAppResponse = DeleteAccessResponse as any as S.Schema<DeleteWebAppResponse>;
 export interface DeleteWebAppCustomizationRequest {
   WebAppId: string;
 }
@@ -1089,9 +1077,8 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 export interface DeleteWorkflowResponse {}
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkflowResponse",
-}) as any as S.Schema<DeleteWorkflowResponse>;
+export const DeleteWorkflowResponse =
+  DeleteAccessResponse as any as S.Schema<DeleteWorkflowResponse>;
 export interface DescribeAccessRequest {
   ServerId: string;
   ExternalId: string;
@@ -1252,22 +1239,19 @@ export const DescribeConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DescribeConnectorRequest" }) as any as S.Schema<DescribeConnectorRequest>;
 export type ServiceManagedEgressIpAddress = string;
 export type ServiceManagedEgressIpAddresses = string[];
-export const ServiceManagedEgressIpAddresses = /*@__PURE__*/ S.Array(S.String);
+export const ServiceManagedEgressIpAddresses =
+  As2AsyncMdnServerIds as any as S.Schema<ServiceManagedEgressIpAddresses>;
 export interface DescribedConnectorVpcLatticeEgressConfig {
   ResourceConfigurationArn: string;
   PortNumber?: number;
 }
-export const DescribedConnectorVpcLatticeEgressConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceConfigurationArn: S.String, PortNumber: S.optional(S.Number) }),
-).annotate({
-  identifier: "DescribedConnectorVpcLatticeEgressConfig",
-}) as any as S.Schema<DescribedConnectorVpcLatticeEgressConfig>;
+export const DescribedConnectorVpcLatticeEgressConfig =
+  ConnectorVpcLatticeEgressConfig as any as S.Schema<DescribedConnectorVpcLatticeEgressConfig>;
 export type DescribedConnectorEgressConfig = {
   VpcLattice: DescribedConnectorVpcLatticeEgressConfig;
 };
-export const DescribedConnectorEgressConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ VpcLattice: DescribedConnectorVpcLatticeEgressConfig }),
-]);
+export const DescribedConnectorEgressConfig =
+  ConnectorEgressConfig as any as S.Schema<DescribedConnectorEgressConfig>;
 export type ConnectorEgressType = "SERVICE_MANAGED" | "VPC_LATTICE" | (string & {});
 export const ConnectorEgressType = S.String;
 
@@ -1546,7 +1530,7 @@ export const DescribeSecurityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type Fips = boolean;
 export type SecurityPolicyOption = string;
 export type SecurityPolicyOptions = string[];
-export const SecurityPolicyOptions = /*@__PURE__*/ S.Array(S.String);
+export const SecurityPolicyOptions = As2AsyncMdnServerIds as any as S.Schema<SecurityPolicyOptions>;
 export type SecurityPolicyResourceType = "SERVER" | "CONNECTOR" | (string & {});
 export const SecurityPolicyResourceType = S.String;
 
@@ -2286,7 +2270,7 @@ export const ListSecurityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSecurityPoliciesRequest",
 }) as any as S.Schema<ListSecurityPoliciesRequest>;
 export type SecurityPolicyNames = string[];
-export const SecurityPolicyNames = /*@__PURE__*/ S.Array(S.String);
+export const SecurityPolicyNames = As2AsyncMdnServerIds as any as S.Schema<SecurityPolicyNames>;
 export interface ListSecurityPoliciesResponse {
   NextToken?: string;
   SecurityPolicyNames: string[];
@@ -2486,9 +2470,8 @@ export const SendWorkflowStepStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendWorkflowStepStateRequest",
 }) as any as S.Schema<SendWorkflowStepStateRequest>;
 export interface SendWorkflowStepStateResponse {}
-export const SendWorkflowStepStateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendWorkflowStepStateResponse",
-}) as any as S.Schema<SendWorkflowStepStateResponse>;
+export const SendWorkflowStepStateResponse =
+  DeleteAccessResponse as any as S.Schema<SendWorkflowStepStateResponse>;
 export type MaxItems = number;
 export interface StartDirectoryListingRequest {
   ConnectorId: string;
@@ -2518,7 +2501,7 @@ export const StartDirectoryListingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartDirectoryListingResponse",
 }) as any as S.Schema<StartDirectoryListingResponse>;
 export type FilePaths = string[];
-export const FilePaths = /*@__PURE__*/ S.Array(S.String);
+export const FilePaths = As2AsyncMdnServerIds as any as S.Schema<FilePaths>;
 export type CustomHttpHeaderKeyType = string | redacted.Redacted<string>;
 export type CustomHttpHeaderValueType = string | redacted.Redacted<string>;
 export interface CustomHttpHeader {
@@ -2600,9 +2583,7 @@ export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartServerRequest" }) as any as S.Schema<StartServerRequest>;
 export interface StartServerResponse {}
-export const StartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartServerResponse",
-}) as any as S.Schema<StartServerResponse>;
+export const StartServerResponse = DeleteAccessResponse as any as S.Schema<StartServerResponse>;
 export interface StopServerRequest {
   ServerId: string;
 }
@@ -2612,9 +2593,7 @@ export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopServerRequest" }) as any as S.Schema<StopServerRequest>;
 export interface StopServerResponse {}
-export const StopServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServerResponse",
-}) as any as S.Schema<StopServerResponse>;
+export const StopServerResponse = DeleteAccessResponse as any as S.Schema<StopServerResponse>;
 export interface TagResourceRequest {
   Arn: string;
   Tags: Tag[];
@@ -2625,9 +2604,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAccessResponse as any as S.Schema<TagResourceResponse>;
 export interface TestConnectionRequest {
   ConnectorId: string;
 }
@@ -2699,7 +2676,7 @@ export const TestIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestIdentityProviderResponse",
 }) as any as S.Schema<TestIdentityProviderResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = As2AsyncMdnServerIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   Arn: string;
   TagKeys: string[];
@@ -2710,9 +2687,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteAccessResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccessRequest {
   HomeDirectory?: string;
   HomeDirectoryType?: HomeDirectoryType;
@@ -2739,9 +2714,7 @@ export interface UpdateAccessResponse {
   ServerId: string;
   ExternalId: string;
 }
-export const UpdateAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServerId: S.String, ExternalId: S.String }),
-).annotate({ identifier: "UpdateAccessResponse" }) as any as S.Schema<UpdateAccessResponse>;
+export const UpdateAccessResponse = CreateAccessResponse as any as S.Schema<UpdateAccessResponse>;
 export interface UpdateAgreementRequest {
   AgreementId: string;
   ServerId: string;
@@ -2773,9 +2746,8 @@ export const UpdateAgreementRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgreementResponse {
   AgreementId: string;
 }
-export const UpdateAgreementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AgreementId: S.String }),
-).annotate({ identifier: "UpdateAgreementResponse" }) as any as S.Schema<UpdateAgreementResponse>;
+export const UpdateAgreementResponse =
+  CreateAgreementResponse as any as S.Schema<UpdateAgreementResponse>;
 export interface UpdateCertificateRequest {
   CertificateId: string;
   ActiveDate?: Date;
@@ -2793,11 +2765,8 @@ export const UpdateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCertificateResponse {
   CertificateId: string;
 }
-export const UpdateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CertificateId: S.String }),
-).annotate({
-  identifier: "UpdateCertificateResponse",
-}) as any as S.Schema<UpdateCertificateResponse>;
+export const UpdateCertificateResponse =
+  ImportCertificateResponse as any as S.Schema<UpdateCertificateResponse>;
 export interface UpdateConnectorVpcLatticeEgressConfig {
   ResourceConfigurationArn?: string;
   PortNumber?: number;
@@ -2838,9 +2807,8 @@ export const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectorResponse {
   ConnectorId: string;
 }
-export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectorId: S.String }),
-).annotate({ identifier: "UpdateConnectorResponse" }) as any as S.Schema<UpdateConnectorResponse>;
+export const UpdateConnectorResponse =
+  CreateConnectorResponse as any as S.Schema<UpdateConnectorResponse>;
 export interface UpdateHostKeyRequest {
   ServerId: string;
   HostKeyId: string;
@@ -2855,9 +2823,8 @@ export interface UpdateHostKeyResponse {
   ServerId: string;
   HostKeyId: string;
 }
-export const UpdateHostKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServerId: S.String, HostKeyId: S.String }),
-).annotate({ identifier: "UpdateHostKeyResponse" }) as any as S.Schema<UpdateHostKeyResponse>;
+export const UpdateHostKeyResponse =
+  ImportHostKeyResponse as any as S.Schema<UpdateHostKeyResponse>;
 export interface UpdateProfileRequest {
   ProfileId: string;
   CertificateIds?: string[];
@@ -2870,9 +2837,8 @@ export const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProfileResponse {
   ProfileId: string;
 }
-export const UpdateProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProfileId: S.String }),
-).annotate({ identifier: "UpdateProfileResponse" }) as any as S.Schema<UpdateProfileResponse>;
+export const UpdateProfileResponse =
+  CreateProfileResponse as any as S.Schema<UpdateProfileResponse>;
 export interface UpdateServerRequest {
   Certificate?: string;
   ProtocolDetails?: ProtocolDetails;
@@ -2916,9 +2882,7 @@ export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateServerResponse {
   ServerId: string;
 }
-export const UpdateServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServerId: S.String }),
-).annotate({ identifier: "UpdateServerResponse" }) as any as S.Schema<UpdateServerResponse>;
+export const UpdateServerResponse = CreateServerResponse as any as S.Schema<UpdateServerResponse>;
 export interface UpdateUserRequest {
   HomeDirectory?: string;
   HomeDirectoryType?: HomeDirectoryType;
@@ -2945,9 +2909,7 @@ export interface UpdateUserResponse {
   ServerId: string;
   UserName: string;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServerId: S.String, UserName: S.String }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = CreateUserResponse as any as S.Schema<UpdateUserResponse>;
 export interface UpdateWebAppIdentityCenterConfig {
   Role?: string;
 }
@@ -2995,9 +2957,7 @@ export const UpdateWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWebAppResponse {
   WebAppId: string;
 }
-export const UpdateWebAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WebAppId: S.String }),
-).annotate({ identifier: "UpdateWebAppResponse" }) as any as S.Schema<UpdateWebAppResponse>;
+export const UpdateWebAppResponse = CreateWebAppResponse as any as S.Schema<UpdateWebAppResponse>;
 export interface UpdateWebAppCustomizationRequest {
   WebAppId: string;
   Title?: string;

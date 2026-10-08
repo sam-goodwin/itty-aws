@@ -149,9 +149,8 @@ export const CreateProjectLabels = /*@__PURE__*/ S.Record(
 
 /** The initial members assigned to the project. At least one subject needs to be a user, and not a client or service account. */
 export type CreateProjectRequestMembersList = Array<Member>;
-export const CreateProjectRequestMembersList = /*@__PURE__*/ S.Array(
-  Member,
-) as any as S.Schema<CreateProjectRequestMembersList>;
+export const CreateProjectRequestMembersList =
+  CreateFolderRequestMembersList as any as S.Schema<CreateProjectRequestMembersList>;
 
 export interface CreateProjectRequest {
   /** Identifier of the parent resource container - containerId as well as UUID identifier is supported. */
@@ -263,14 +262,12 @@ export const DeleteFolderLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFolderLabelsRequest>;
 
 export interface DeleteFolderLabelsResponse {}
-export const DeleteFolderLabelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFolderLabelsResponse",
-}) as any as S.Schema<DeleteFolderLabelsResponse>;
+export const DeleteFolderLabelsResponse =
+  DeleteFolderResponse as any as S.Schema<DeleteFolderLabelsResponse>;
 
 export type DeleteOrganizationLabelsRequestKeysList = Array<string>;
-export const DeleteOrganizationLabelsRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationLabelsRequestKeysList>;
+export const DeleteOrganizationLabelsRequestKeysList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<DeleteOrganizationLabelsRequestKeysList>;
 
 export interface DeleteOrganizationLabelsRequest {
   /** Organization identifier - containerId as well as UUID identifier is supported. */
@@ -319,14 +316,11 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse = DeleteFolderResponse as any as S.Schema<DeleteProjectResponse>;
 
 export type DeleteProjectLabelsRequestKeysList = Array<string>;
-export const DeleteProjectLabelsRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteProjectLabelsRequestKeysList>;
+export const DeleteProjectLabelsRequestKeysList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<DeleteProjectLabelsRequestKeysList>;
 
 export interface DeleteProjectLabelsRequest {
   /** Project identifier - containerId as well as UUID identifier is supported. */
@@ -351,9 +345,8 @@ export const DeleteProjectLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectLabelsRequest>;
 
 export interface DeleteProjectLabelsResponse {}
-export const DeleteProjectLabelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectLabelsResponse",
-}) as any as S.Schema<DeleteProjectLabelsResponse>;
+export const DeleteProjectLabelsResponse =
+  DeleteFolderResponse as any as S.Schema<DeleteProjectLabelsResponse>;
 
 export interface GetFolderDetailsRequest {
   /** Folder identifier - containerId as well as UUID identifier is supported. */
@@ -527,9 +520,8 @@ export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectResponse" }) as any as S.Schema<GetProjectResponse>;
 
 export type ListFoldersRequestContainerIdsList = Array<string>;
-export const ListFoldersRequestContainerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListFoldersRequestContainerIdsList>;
+export const ListFoldersRequestContainerIdsList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<ListFoldersRequestContainerIdsList>;
 
 export interface ListFoldersRequest {
   /** Identifier of the parent resource container - containerId as well as UUID identifier is supported. */
@@ -610,9 +602,8 @@ export const ListFoldersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFoldersResponse" }) as any as S.Schema<ListFoldersResponse>;
 
 export type ListOrganizationsRequestContainerIdsList = Array<string>;
-export const ListOrganizationsRequestContainerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationsRequestContainerIdsList>;
+export const ListOrganizationsRequestContainerIdsList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<ListOrganizationsRequestContainerIdsList>;
 
 export interface ListOrganizationsRequest {
   /** Organization identifiers - containerId as well as UUID identifier is supported. A combination of both is not allowed. */
@@ -692,9 +683,8 @@ export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsResponse>;
 
 export type ListProjectsRequestContainerIdsList = Array<string>;
-export const ListProjectsRequestContainerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectsRequestContainerIdsList>;
+export const ListProjectsRequestContainerIdsList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<ListProjectsRequestContainerIdsList>;
 
 export interface ListProjectsRequest {
   /** Identifier of the parent resource container - containerId as well as UUID identifier is supported. */

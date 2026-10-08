@@ -202,9 +202,7 @@ export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -2950,19 +2948,13 @@ export interface MirroringDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124. */
   name?: string;
 }
-export const MirroringDeploymentGroupConnectedEndpointGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MirroringDeploymentGroupConnectedEndpointGroup",
-}) as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
+export const MirroringDeploymentGroupConnectedEndpointGroup =
+  InterceptDeploymentGroupConnectedEndpointGroup as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
 
 export type MirroringDeploymentGroupConnectedEndpointGroupList =
   Array<MirroringDeploymentGroupConnectedEndpointGroup>;
-export const MirroringDeploymentGroupConnectedEndpointGroupList = /*@__PURE__*/ S.Array(
-  MirroringDeploymentGroupConnectedEndpointGroup,
-) as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroupList>;
+export const MirroringDeploymentGroupConnectedEndpointGroupList =
+  InterceptDeploymentGroupConnectedEndpointGroupList as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroupList>;
 
 export type MirroringDeploymentGroupDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
@@ -3652,17 +3644,8 @@ export interface RateLimitPolicyRateLimitRuleStringMatch {
   /** Checks if the input string contains the substring specified here. Note: empty contains match is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def`` */
   contains?: string;
 }
-export const RateLimitPolicyRateLimitRuleStringMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefix: S.optional(S.String),
-    suffix: S.optional(S.String),
-    exact: S.optional(S.String),
-    ignoreCase: S.optional(S.Boolean),
-    contains: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RateLimitPolicyRateLimitRuleStringMatch",
-}) as any as S.Schema<RateLimitPolicyRateLimitRuleStringMatch>;
+export const RateLimitPolicyRateLimitRuleStringMatch =
+  AuthzPolicyAuthzRuleStringMatch as any as S.Schema<RateLimitPolicyRateLimitRuleStringMatch>;
 
 /** Describes the properties of a principal for matching. */
 export interface RateLimitPolicyRateLimitRulePrincipal {
@@ -3717,9 +3700,8 @@ export const RateLimitPolicyRateLimitRuleFrom = /*@__PURE__*/ S.suspend(() =>
 
 export type RateLimitPolicyRateLimitRuleStringMatchList =
   Array<RateLimitPolicyRateLimitRuleStringMatch>;
-export const RateLimitPolicyRateLimitRuleStringMatchList = /*@__PURE__*/ S.Array(
-  RateLimitPolicyRateLimitRuleStringMatch,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleStringMatchList>;
+export const RateLimitPolicyRateLimitRuleStringMatchList =
+  AuthzPolicyAuthzRuleStringMatchList as any as S.Schema<RateLimitPolicyRateLimitRuleStringMatchList>;
 
 /** Determines how an HTTP header is matched. */
 export interface RateLimitPolicyRateLimitRuleHeaderMatch {
@@ -3728,33 +3710,21 @@ export interface RateLimitPolicyRateLimitRuleHeaderMatch {
   /** Optional. Specifies how the header match is performed. */
   value?: RateLimitPolicyRateLimitRuleStringMatch;
 }
-export const RateLimitPolicyRateLimitRuleHeaderMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(RateLimitPolicyRateLimitRuleStringMatch),
-  }),
-).annotate({
-  identifier: "RateLimitPolicyRateLimitRuleHeaderMatch",
-}) as any as S.Schema<RateLimitPolicyRateLimitRuleHeaderMatch>;
+export const RateLimitPolicyRateLimitRuleHeaderMatch =
+  AuthzPolicyAuthzRuleHeaderMatch as any as S.Schema<RateLimitPolicyRateLimitRuleHeaderMatch>;
 
 export type RateLimitPolicyRateLimitRuleHeaderMatchList =
   Array<RateLimitPolicyRateLimitRuleHeaderMatch>;
-export const RateLimitPolicyRateLimitRuleHeaderMatchList = /*@__PURE__*/ S.Array(
-  RateLimitPolicyRateLimitRuleHeaderMatch,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleHeaderMatchList>;
+export const RateLimitPolicyRateLimitRuleHeaderMatchList =
+  AuthzPolicyAuthzRuleHeaderMatchList as any as S.Schema<RateLimitPolicyRateLimitRuleHeaderMatchList>;
 
 /** Describes a set of HTTP headers to match against. */
 export interface RateLimitPolicyRateLimitRuleToDestinationHeaderSet {
   /** Required. Contains a list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. */
   headers?: RateLimitPolicyRateLimitRuleHeaderMatchList;
 }
-export const RateLimitPolicyRateLimitRuleToDestinationHeaderSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(RateLimitPolicyRateLimitRuleHeaderMatchList),
-  }),
-).annotate({
-  identifier: "RateLimitPolicyRateLimitRuleToDestinationHeaderSet",
-}) as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationHeaderSet>;
+export const RateLimitPolicyRateLimitRuleToDestinationHeaderSet =
+  AuthzPolicyAuthzRuleToRequestOperationHeaderSet as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationHeaderSet>;
 
 /** Describes a set of MCP methods to match against. This field is only valid if the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it. */
 export interface RateLimitPolicyRateLimitRuleToDestinationMCPMethod {
@@ -3763,20 +3733,13 @@ export interface RateLimitPolicyRateLimitRuleToDestinationMCPMethod {
   /** Optional. Specifies a list of MCP method parameter names to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. */
   params?: RateLimitPolicyRateLimitRuleStringMatchList;
 }
-export const RateLimitPolicyRateLimitRuleToDestinationMCPMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    params: S.optional(RateLimitPolicyRateLimitRuleStringMatchList),
-  }),
-).annotate({
-  identifier: "RateLimitPolicyRateLimitRuleToDestinationMCPMethod",
-}) as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationMCPMethod>;
+export const RateLimitPolicyRateLimitRuleToDestinationMCPMethod =
+  AuthzPolicyAuthzRuleToRequestOperationMCPMethod as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationMCPMethod>;
 
 export type RateLimitPolicyRateLimitRuleToDestinationMCPMethodList =
   Array<RateLimitPolicyRateLimitRuleToDestinationMCPMethod>;
-export const RateLimitPolicyRateLimitRuleToDestinationMCPMethodList = /*@__PURE__*/ S.Array(
-  RateLimitPolicyRateLimitRuleToDestinationMCPMethod,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationMCPMethodList>;
+export const RateLimitPolicyRateLimitRuleToDestinationMCPMethodList =
+  AuthzPolicyAuthzRuleToRequestOperationMCPMethodList as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationMCPMethodList>;
 
 export type RateLimitPolicyRateLimitRuleToDestinationMCPBaseProtocolMethodsOptionEnum =
   | "BASE_PROTOCOL_METHODS_OPTION_UNSPECIFIED"
@@ -8635,13 +8598,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsAddressGroupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

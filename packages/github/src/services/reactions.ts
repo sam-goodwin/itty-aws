@@ -365,9 +365,8 @@ export const DeleteForIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteForIssueRequest" }) as any as S.Schema<DeleteForIssueRequest>;
 
 export interface DeleteForIssueResponse {}
-export const DeleteForIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteForIssueResponse",
-}) as any as S.Schema<DeleteForIssueResponse>;
+export const DeleteForIssueResponse =
+  DeleteForCommitCommentResponse as any as S.Schema<DeleteForIssueResponse>;
 
 export interface DeleteForIssueCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -397,9 +396,8 @@ export const DeleteForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteForIssueCommentRequest>;
 
 export interface DeleteForIssueCommentResponse {}
-export const DeleteForIssueCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteForIssueCommentResponse",
-}) as any as S.Schema<DeleteForIssueCommentResponse>;
+export const DeleteForIssueCommentResponse =
+  DeleteForCommitCommentResponse as any as S.Schema<DeleteForIssueCommentResponse>;
 
 export interface DeleteForPullRequestCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -461,9 +459,8 @@ export const DeleteForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteForReleaseRequest" }) as any as S.Schema<DeleteForReleaseRequest>;
 
 export interface DeleteForReleaseResponse {}
-export const DeleteForReleaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteForReleaseResponse",
-}) as any as S.Schema<DeleteForReleaseResponse>;
+export const DeleteForReleaseResponse =
+  DeleteForCommitCommentResponse as any as S.Schema<DeleteForReleaseResponse>;
 
 export type ListForCommitCommentRequestContent =
   | "+1"
@@ -564,9 +561,8 @@ export const ListForIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForIssueRequest" }) as any as S.Schema<ListForIssueRequest>;
 
 export type ListForIssueResponseBodyList = Array<Reaction>;
-export const ListForIssueResponseBodyList = /*@__PURE__*/ S.Array(
-  Reaction,
-) as any as S.Schema<ListForIssueResponseBodyList>;
+export const ListForIssueResponseBodyList =
+  ListForCommitCommentResponseBodyList as any as S.Schema<ListForIssueResponseBodyList>;
 
 export type ListForIssueResponse = ListForIssueResponseBodyList;
 export const ListForIssueResponse = /*@__PURE__*/ S.suspend(() =>
@@ -618,16 +614,12 @@ export const ListForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForIssueCommentRequest>;
 
 export type ListForIssueCommentResponseBodyList = Array<Reaction>;
-export const ListForIssueCommentResponseBodyList = /*@__PURE__*/ S.Array(
-  Reaction,
-) as any as S.Schema<ListForIssueCommentResponseBodyList>;
+export const ListForIssueCommentResponseBodyList =
+  ListForCommitCommentResponseBodyList as any as S.Schema<ListForIssueCommentResponseBodyList>;
 
 export type ListForIssueCommentResponse = ListForIssueCommentResponseBodyList;
-export const ListForIssueCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForIssueCommentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListForIssueCommentResponse",
-}) as any as S.Schema<ListForIssueCommentResponse>;
+export const ListForIssueCommentResponse =
+  ListForCommitCommentResponse as any as S.Schema<ListForIssueCommentResponse>;
 
 export type ListForPullRequestReviewCommentRequestContent =
   | "+1"
@@ -674,17 +666,13 @@ export const ListForPullRequestReviewCommentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListForPullRequestReviewCommentRequest>;
 
 export type ListForPullRequestReviewCommentResponseBodyList = Array<Reaction>;
-export const ListForPullRequestReviewCommentResponseBodyList = /*@__PURE__*/ S.Array(
-  Reaction,
-) as any as S.Schema<ListForPullRequestReviewCommentResponseBodyList>;
+export const ListForPullRequestReviewCommentResponseBodyList =
+  ListForCommitCommentResponseBodyList as any as S.Schema<ListForPullRequestReviewCommentResponseBodyList>;
 
 export type ListForPullRequestReviewCommentResponse =
   ListForPullRequestReviewCommentResponseBodyList;
-export const ListForPullRequestReviewCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForPullRequestReviewCommentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListForPullRequestReviewCommentResponse",
-}) as any as S.Schema<ListForPullRequestReviewCommentResponse>;
+export const ListForPullRequestReviewCommentResponse =
+  ListForCommitCommentResponse as any as S.Schema<ListForPullRequestReviewCommentResponse>;
 
 export type ListForReleaseRequestContent = "+1" | "laugh" | "heart" | "hooray" | "rocket" | "eyes";
 export const ListForReleaseRequestContent = S.String;
@@ -721,14 +709,12 @@ export const ListForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForReleaseRequest" }) as any as S.Schema<ListForReleaseRequest>;
 
 export type ListForReleaseResponseBodyList = Array<Reaction>;
-export const ListForReleaseResponseBodyList = /*@__PURE__*/ S.Array(
-  Reaction,
-) as any as S.Schema<ListForReleaseResponseBodyList>;
+export const ListForReleaseResponseBodyList =
+  ListForCommitCommentResponseBodyList as any as S.Schema<ListForReleaseResponseBodyList>;
 
 export type ListForReleaseResponse = ListForReleaseResponseBodyList;
-export const ListForReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForReleaseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListForReleaseResponse" }) as any as S.Schema<ListForReleaseResponse>;
+export const ListForReleaseResponse =
+  ListForIssueResponse as any as S.Schema<ListForReleaseResponse>;
 
 export type CreateForCommitCommentError = UnprocessableEntity | GithubOpError;
 /** Create reaction for a commit comment Create a reaction to a [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment). A response with an HTTP `200` status means that you already added the reaction type to this commit comment. */

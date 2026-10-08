@@ -158,30 +158,24 @@ export const DataSecurityFindingsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 export type DataSecurityFindingsSummaryResponseCurrentTotalItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DataSecurityFindingsSummaryResponseCurrentTotalItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataSecurityFindingsSummaryResponseCurrentTotalItemMap>;
+export const DataSecurityFindingsSummaryResponseCurrentTotalItemMap =
+  DataSecurityContentFindingsTopNResultItemMap as any as S.Schema<DataSecurityFindingsSummaryResponseCurrentTotalItemMap>;
 
 export type DataSecurityFindingsSummaryResponseCurrentTotalList =
   Array<DataSecurityFindingsSummaryResponseCurrentTotalItemMap>;
-export const DataSecurityFindingsSummaryResponseCurrentTotalList = /*@__PURE__*/ S.Array(
-  DataSecurityFindingsSummaryResponseCurrentTotalItemMap,
-) as any as S.Schema<DataSecurityFindingsSummaryResponseCurrentTotalList>;
+export const DataSecurityFindingsSummaryResponseCurrentTotalList =
+  DataSecurityContentFindingsTopNResultList as any as S.Schema<DataSecurityFindingsSummaryResponseCurrentTotalList>;
 
 export type DataSecurityFindingsSummaryResponsePreviousTotalItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DataSecurityFindingsSummaryResponsePreviousTotalItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataSecurityFindingsSummaryResponsePreviousTotalItemMap>;
+export const DataSecurityFindingsSummaryResponsePreviousTotalItemMap =
+  DataSecurityContentFindingsTopNResultItemMap as any as S.Schema<DataSecurityFindingsSummaryResponsePreviousTotalItemMap>;
 
 export type DataSecurityFindingsSummaryResponsePreviousTotalList =
   Array<DataSecurityFindingsSummaryResponsePreviousTotalItemMap>;
-export const DataSecurityFindingsSummaryResponsePreviousTotalList = /*@__PURE__*/ S.Array(
-  DataSecurityFindingsSummaryResponsePreviousTotalItemMap,
-) as any as S.Schema<DataSecurityFindingsSummaryResponsePreviousTotalList>;
+export const DataSecurityFindingsSummaryResponsePreviousTotalList =
+  DataSecurityContentFindingsTopNResultList as any as S.Schema<DataSecurityFindingsSummaryResponsePreviousTotalList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DataSecurityFindingsSummaryResponse {
@@ -262,16 +256,13 @@ export const DataSecurityFindingsTimeseriesRequest = /*@__PURE__*/ S.suspend(() 
 export type DataSecurityFindingsTimeseriesResponseSlotsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DataSecurityFindingsTimeseriesResponseSlotsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataSecurityFindingsTimeseriesResponseSlotsItemMap>;
+export const DataSecurityFindingsTimeseriesResponseSlotsItemMap =
+  DataSecurityContentFindingsTopNResultItemMap as any as S.Schema<DataSecurityFindingsTimeseriesResponseSlotsItemMap>;
 
 export type DataSecurityFindingsTimeseriesResponseSlotsList =
   Array<DataSecurityFindingsTimeseriesResponseSlotsItemMap>;
-export const DataSecurityFindingsTimeseriesResponseSlotsList = /*@__PURE__*/ S.Array(
-  DataSecurityFindingsTimeseriesResponseSlotsItemMap,
-) as any as S.Schema<DataSecurityFindingsTimeseriesResponseSlotsList>;
+export const DataSecurityFindingsTimeseriesResponseSlotsList =
+  DataSecurityContentFindingsTopNResultList as any as S.Schema<DataSecurityFindingsTimeseriesResponseSlotsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DataSecurityFindingsTimeseriesResponse {
@@ -328,9 +319,8 @@ export const SummaryRequestGroupByList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SummaryRequestGroupByList>;
 
 export type SummaryRequestStatsList = Array<string>;
-export const SummaryRequestStatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SummaryRequestStatsList>;
+export const SummaryRequestStatsList =
+  SummaryRequestGroupByList as any as S.Schema<SummaryRequestStatsList>;
 
 export interface SummaryRequest {
   accountId: string;
@@ -365,26 +355,20 @@ export const SummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SummaryRequest" }) as any as S.Schema<SummaryRequest>;
 
 export type SummaryResponseCurrentTotalItemMap = { [key: string]: unknown | undefined };
-export const SummaryResponseCurrentTotalItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SummaryResponseCurrentTotalItemMap>;
+export const SummaryResponseCurrentTotalItemMap =
+  DataSecurityContentFindingsTopNResultItemMap as any as S.Schema<SummaryResponseCurrentTotalItemMap>;
 
 export type SummaryResponseCurrentTotalList = Array<SummaryResponseCurrentTotalItemMap>;
-export const SummaryResponseCurrentTotalList = /*@__PURE__*/ S.Array(
-  SummaryResponseCurrentTotalItemMap,
-) as any as S.Schema<SummaryResponseCurrentTotalList>;
+export const SummaryResponseCurrentTotalList =
+  DataSecurityContentFindingsTopNResultList as any as S.Schema<SummaryResponseCurrentTotalList>;
 
 export type SummaryResponsePreviousTotalItemMap = { [key: string]: unknown | undefined };
-export const SummaryResponsePreviousTotalItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SummaryResponsePreviousTotalItemMap>;
+export const SummaryResponsePreviousTotalItemMap =
+  DataSecurityContentFindingsTopNResultItemMap as any as S.Schema<SummaryResponsePreviousTotalItemMap>;
 
 export type SummaryResponsePreviousTotalList = Array<SummaryResponsePreviousTotalItemMap>;
-export const SummaryResponsePreviousTotalList = /*@__PURE__*/ S.Array(
-  SummaryResponsePreviousTotalItemMap,
-) as any as S.Schema<SummaryResponsePreviousTotalList>;
+export const SummaryResponsePreviousTotalList =
+  DataSecurityContentFindingsTopNResultList as any as S.Schema<SummaryResponsePreviousTotalList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SummaryResponse {
@@ -434,14 +418,12 @@ export const TimeseriesRequestFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TimeseriesRequestFiltersList>;
 
 export type TimeseriesRequestGroupByList = Array<string>;
-export const TimeseriesRequestGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TimeseriesRequestGroupByList>;
+export const TimeseriesRequestGroupByList =
+  SummaryRequestGroupByList as any as S.Schema<TimeseriesRequestGroupByList>;
 
 export type TimeseriesRequestStatsList = Array<string>;
-export const TimeseriesRequestStatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TimeseriesRequestStatsList>;
+export const TimeseriesRequestStatsList =
+  SummaryRequestGroupByList as any as S.Schema<TimeseriesRequestStatsList>;
 
 export interface TimeseriesRequest {
   accountId: string;
@@ -479,15 +461,12 @@ export const TimeseriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeseriesRequest" }) as any as S.Schema<TimeseriesRequest>;
 
 export type TimeseriesResponseSlotsItemMap = { [key: string]: unknown | undefined };
-export const TimeseriesResponseSlotsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TimeseriesResponseSlotsItemMap>;
+export const TimeseriesResponseSlotsItemMap =
+  DataSecurityContentFindingsTopNResultItemMap as any as S.Schema<TimeseriesResponseSlotsItemMap>;
 
 export type TimeseriesResponseSlotsList = Array<TimeseriesResponseSlotsItemMap>;
-export const TimeseriesResponseSlotsList = /*@__PURE__*/ S.Array(
-  TimeseriesResponseSlotsItemMap,
-) as any as S.Schema<TimeseriesResponseSlotsList>;
+export const TimeseriesResponseSlotsList =
+  DataSecurityContentFindingsTopNResultList as any as S.Schema<TimeseriesResponseSlotsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesResponse {
@@ -535,14 +514,12 @@ export const TopNRequestFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TopNRequestFiltersList>;
 
 export type TopNRequestGroupByList = Array<string>;
-export const TopNRequestGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopNRequestGroupByList>;
+export const TopNRequestGroupByList =
+  SummaryRequestGroupByList as any as S.Schema<TopNRequestGroupByList>;
 
 export type TopNRequestStatsList = Array<string>;
-export const TopNRequestStatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopNRequestStatsList>;
+export const TopNRequestStatsList =
+  SummaryRequestGroupByList as any as S.Schema<TopNRequestStatsList>;
 
 export interface TopNRequest {
   accountId: string;
@@ -583,15 +560,12 @@ export const TopNRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopNRequest" }) as any as S.Schema<TopNRequest>;
 
 export type TopNResultItemMap = { [key: string]: unknown | undefined };
-export const TopNResultItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TopNResultItemMap>;
+export const TopNResultItemMap =
+  DataSecurityContentFindingsTopNResultItemMap as any as S.Schema<TopNResultItemMap>;
 
 export type TopNResultList = Array<TopNResultItemMap>;
-export const TopNResultList = /*@__PURE__*/ S.Array(
-  TopNResultItemMap,
-) as any as S.Schema<TopNResultList>;
+export const TopNResultList =
+  DataSecurityContentFindingsTopNResultList as any as S.Schema<TopNResultList>;
 
 export type TopNResponse = TopNResultList;
 export const TopNResponse = /*@__PURE__*/ S.suspend(() =>

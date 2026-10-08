@@ -662,9 +662,7 @@ export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface LiftAndShiftConfig {}
-export const LiftAndShiftConfig = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LiftAndShiftConfig",
-}) as any as S.Schema<LiftAndShiftConfig>;
+export const LiftAndShiftConfig = CancelFunctionCallResponse as any as S.Schema<LiftAndShiftConfig>;
 
 /** (?) */
 export interface HTTPConfig {
@@ -1464,9 +1462,8 @@ export const FunctionCallPutDataOutRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionCallPutDataOutRequest>;
 
 export interface FunctionCallPutDataOutResponse {}
-export const FunctionCallPutDataOutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FunctionCallPutDataOutResponse",
-}) as any as S.Schema<FunctionCallPutDataOutResponse>;
+export const FunctionCallPutDataOutResponse =
+  CancelFunctionCallResponse as any as S.Schema<FunctionCallPutDataOutResponse>;
 
 export interface FunctionFinishInputsRequest {
   functionId?: string;
@@ -1486,9 +1483,8 @@ export const FunctionFinishInputsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionFinishInputsRequest>;
 
 export interface FunctionFinishInputsResponse {}
-export const FunctionFinishInputsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FunctionFinishInputsResponse",
-}) as any as S.Schema<FunctionFinishInputsResponse>;
+export const FunctionFinishInputsResponse =
+  CancelFunctionCallResponse as any as S.Schema<FunctionFinishInputsResponse>;
 
 export interface FunctionGetByIdRequest {
   functionId?: string;
@@ -2245,9 +2241,8 @@ export const FunctionPutOutputsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionPutOutputsRequest>;
 
 export interface FunctionPutOutputsResponse {}
-export const FunctionPutOutputsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FunctionPutOutputsResponse",
-}) as any as S.Schema<FunctionPutOutputsResponse>;
+export const FunctionPutOutputsResponse =
+  CancelFunctionCallResponse as any as S.Schema<FunctionPutOutputsResponse>;
 
 /** Used for waypoints. */
 export interface FunctionRetryInputsItem {
@@ -2304,9 +2299,8 @@ export const FunctionStartPtyShellRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionStartPtyShellRequest>;
 
 export interface FunctionStartPtyShellResponse {}
-export const FunctionStartPtyShellResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FunctionStartPtyShellResponse",
-}) as any as S.Schema<FunctionStartPtyShellResponse>;
+export const FunctionStartPtyShellResponse =
+  CancelFunctionCallResponse as any as S.Schema<FunctionStartPtyShellResponse>;
 
 export interface FunctionUpdateSchedulingParamsRequest {
   functionId?: string;

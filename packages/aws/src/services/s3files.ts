@@ -382,11 +382,8 @@ export const DeleteFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFileSystemPolicyRequest",
 }) as any as S.Schema<DeleteFileSystemPolicyRequest>;
 export interface DeleteFileSystemPolicyResponse {}
-export const DeleteFileSystemPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteFileSystemPolicyResponse",
-}) as any as S.Schema<DeleteFileSystemPolicyResponse>;
+export const DeleteFileSystemPolicyResponse =
+  DeleteAccessPointResponse as any as S.Schema<DeleteFileSystemPolicyResponse>;
 export interface DeleteMountTargetRequest {
   mountTargetId: string;
 }
@@ -404,11 +401,8 @@ export const DeleteMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMountTargetRequest" }) as any as S.Schema<DeleteMountTargetRequest>;
 export interface DeleteMountTargetResponse {}
-export const DeleteMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteMountTargetResponse",
-}) as any as S.Schema<DeleteMountTargetResponse>;
+export const DeleteMountTargetResponse =
+  DeleteAccessPointResponse as any as S.Schema<DeleteMountTargetResponse>;
 export interface GetAccessPointRequest {
   accessPointId: string;
 }
@@ -482,23 +476,8 @@ export interface GetFileSystemResponse {
   tags?: Tag[];
   name?: string;
 }
-export const GetFileSystemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    fileSystemArn: S.optional(S.String),
-    fileSystemId: S.optional(S.String),
-    bucket: S.optional(S.String),
-    prefix: S.optional(S.String),
-    clientToken: S.optional(S.String),
-    kmsKeyId: S.optional(S.String),
-    status: S.optional(LifeCycleState),
-    statusMessage: S.optional(S.String),
-    roleArn: S.optional(S.String),
-    ownerId: S.optional(S.String),
-    tags: S.optional(TagList),
-    name: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "GetFileSystemResponse" }) as any as S.Schema<GetFileSystemResponse>;
+export const GetFileSystemResponse =
+  CreateFileSystemResponse as any as S.Schema<GetFileSystemResponse>;
 export interface GetFileSystemPolicyRequest {
   fileSystemId: string;
 }
@@ -828,11 +807,8 @@ export const PutFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutFileSystemPolicyRequest",
 }) as any as S.Schema<PutFileSystemPolicyRequest>;
 export interface PutFileSystemPolicyResponse {}
-export const PutFileSystemPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutFileSystemPolicyResponse",
-}) as any as S.Schema<PutFileSystemPolicyResponse>;
+export const PutFileSystemPolicyResponse =
+  DeleteAccessPointResponse as any as S.Schema<PutFileSystemPolicyResponse>;
 export interface PutSynchronizationConfigurationRequest {
   fileSystemId: string;
   latestVersionNumber?: number;
@@ -860,11 +836,8 @@ export const PutSynchronizationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "PutSynchronizationConfigurationRequest",
 }) as any as S.Schema<PutSynchronizationConfigurationRequest>;
 export interface PutSynchronizationConfigurationResponse {}
-export const PutSynchronizationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutSynchronizationConfigurationResponse",
-}) as any as S.Schema<PutSynchronizationConfigurationResponse>;
+export const PutSynchronizationConfigurationResponse =
+  DeleteAccessPointResponse as any as S.Schema<PutSynchronizationConfigurationResponse>;
 export interface TagResourceRequest {
   resourceId: string;
   tags: Tag[];
@@ -887,7 +860,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = SecurityGroups as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceId: string;
   tagKeys: string[];
@@ -909,9 +882,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateMountTargetRequest {
   mountTargetId: string;
   securityGroups: string[];
@@ -946,24 +917,8 @@ export interface UpdateMountTargetResponse {
   status?: LifeCycleState;
   statusMessage?: string;
 }
-export const UpdateMountTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availabilityZoneId: S.optional(S.String),
-    ownerId: S.String,
-    mountTargetId: S.String,
-    fileSystemId: S.optional(S.String),
-    subnetId: S.String,
-    ipv4Address: S.optional(S.String),
-    ipv6Address: S.optional(S.String),
-    networkInterfaceId: S.optional(S.String),
-    vpcId: S.optional(S.String),
-    securityGroups: S.optional(SecurityGroups),
-    status: S.optional(LifeCycleState),
-    statusMessage: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateMountTargetResponse",
-}) as any as S.Schema<UpdateMountTargetResponse>;
+export const UpdateMountTargetResponse =
+  CreateMountTargetResponse as any as S.Schema<UpdateMountTargetResponse>;
 export type ErrorCode = string;
 export type CreateAccessPointError =
   | ConflictException

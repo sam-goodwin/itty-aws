@@ -243,9 +243,8 @@ export const DaprPropertiesInputMetadataList = /*@__PURE__*/ S.Array(
 
 /** The dapr component scopes */
 export type DaprPropertiesInputScopesList = Array<string>;
-export const DaprPropertiesInputScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DaprPropertiesInputScopesList>;
+export const DaprPropertiesInputScopesList =
+  FirewallRulesIpRangesList as any as S.Schema<DaprPropertiesInputScopesList>;
 
 /** Indicates some additional properties for dapr client type */
 export interface DaprPropertiesInput {
@@ -274,19 +273,15 @@ export const DaprPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type ConfigurationInfoInputAdditionalConfigurationsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationInfoInputAdditionalConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationInfoInputAdditionalConfigurationsMap>;
+export const ConfigurationInfoInputAdditionalConfigurationsMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoInputAdditionalConfigurationsMap>;
 
 /** A dictionary of additional properties to be added in the end of connection string. */
 export type ConfigurationInfoInputAdditionalConnectionStringPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationInfoInputAdditionalConnectionStringPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationInfoInputAdditionalConnectionStringPropertiesMap>;
+export const ConfigurationInfoInputAdditionalConnectionStringPropertiesMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoInputAdditionalConnectionStringPropertiesMap>;
 
 /** An option to store configuration into different place */
 export interface ConfigurationStore {
@@ -429,22 +424,18 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type ConfigurationInfoCustomizedKeysMap = { [key: string]: string | undefined };
-export const ConfigurationInfoCustomizedKeysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationInfoCustomizedKeysMap>;
+export const ConfigurationInfoCustomizedKeysMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoCustomizedKeysMap>;
 
 /** Additional dapr metadata */
 export type DaprPropertiesMetadataList = Array<DaprMetadata>;
-export const DaprPropertiesMetadataList = /*@__PURE__*/ S.Array(
-  DaprMetadata,
-) as any as S.Schema<DaprPropertiesMetadataList>;
+export const DaprPropertiesMetadataList =
+  DaprPropertiesInputMetadataList as any as S.Schema<DaprPropertiesMetadataList>;
 
 /** The dapr component scopes */
 export type DaprPropertiesScopesList = Array<string>;
-export const DaprPropertiesScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DaprPropertiesScopesList>;
+export const DaprPropertiesScopesList =
+  FirewallRulesIpRangesList as any as S.Schema<DaprPropertiesScopesList>;
 
 /** The direction supported by the dapr binding component */
 export type DaprPropertiesBindingComponentDirection = "input" | "output";
@@ -481,19 +472,15 @@ export const DaprProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type ConfigurationInfoAdditionalConfigurationsMap = { [key: string]: string | undefined };
-export const ConfigurationInfoAdditionalConfigurationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationInfoAdditionalConfigurationsMap>;
+export const ConfigurationInfoAdditionalConfigurationsMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoAdditionalConfigurationsMap>;
 
 /** A dictionary of additional properties to be added in the end of connection string. */
 export type ConfigurationInfoAdditionalConnectionStringPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationInfoAdditionalConnectionStringPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigurationInfoAdditionalConnectionStringPropertiesMap>;
+export const ConfigurationInfoAdditionalConnectionStringPropertiesMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoAdditionalConnectionStringPropertiesMap>;
 
 /** The configuration information, used to generate configurations or save to applications */
 export interface ConfigurationInfo {
@@ -778,17 +765,8 @@ export interface CreateLinkerDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
-export const CreateLinkerDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "CreateLinkerDryrunResponse",
-}) as any as S.Schema<CreateLinkerDryrunResponse>;
+export const CreateLinkerDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<CreateLinkerDryrunResponse>;
 
 export interface DeleteConnectorRequest {
   /** The ID of the target subscription. */
@@ -850,9 +828,8 @@ export const DeleteConnectorDryrunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectorDryrunRequest>;
 
 export interface DeleteConnectorDryrunResponse {}
-export const DeleteConnectorDryrunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectorDryrunResponse",
-}) as any as S.Schema<DeleteConnectorDryrunResponse>;
+export const DeleteConnectorDryrunResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteConnectorDryrunResponse>;
 
 export interface DeleteLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
@@ -875,9 +852,8 @@ export const DeleteLinkerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLinkerRequest" }) as any as S.Schema<DeleteLinkerRequest>;
 
 export interface DeleteLinkerResponse {}
-export const DeleteLinkerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLinkerResponse",
-}) as any as S.Schema<DeleteLinkerResponse>;
+export const DeleteLinkerResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteLinkerResponse>;
 
 export interface DeleteLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
@@ -902,18 +878,15 @@ export const DeleteLinkerDryrunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkerDryrunRequest>;
 
 export interface DeleteLinkerDryrunResponse {}
-export const DeleteLinkerDryrunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLinkerDryrunResponse",
-}) as any as S.Schema<DeleteLinkerDryrunResponse>;
+export const DeleteLinkerDryrunResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteLinkerDryrunResponse>;
 
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type GenerateConnectorConfigurationsRequestCustomizedKeysMap = {
   [key: string]: string | undefined;
 };
-export const GenerateConnectorConfigurationsRequestCustomizedKeysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GenerateConnectorConfigurationsRequestCustomizedKeysMap>;
+export const GenerateConnectorConfigurationsRequestCustomizedKeysMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<GenerateConnectorConfigurationsRequestCustomizedKeysMap>;
 
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap = {
@@ -930,10 +903,7 @@ export type GenerateConnectorConfigurationsRequestAdditionalConnectionStringProp
   [key: string]: string | undefined;
 };
 export const GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+  GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap as any as S.Schema<GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
 
 export interface GenerateConnectorConfigurationsRequest {
   /** The ID of the target subscription. */
@@ -1036,30 +1006,22 @@ export const ConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 export type GenerateLinkerConfigurationsRequestCustomizedKeysMap = {
   [key: string]: string | undefined;
 };
-export const GenerateLinkerConfigurationsRequestCustomizedKeysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GenerateLinkerConfigurationsRequestCustomizedKeysMap>;
+export const GenerateLinkerConfigurationsRequestCustomizedKeysMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<GenerateLinkerConfigurationsRequestCustomizedKeysMap>;
 
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap = {
   [key: string]: string | undefined;
 };
 export const GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap>;
+  GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap as any as S.Schema<GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap>;
 
 /** A dictionary of additional properties to be added in the end of connection string. */
 export type GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap = {
   [key: string]: string | undefined;
 };
 export const GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+  GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap as any as S.Schema<GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
 
 export interface GenerateLinkerConfigurationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
@@ -1196,17 +1158,8 @@ export interface GetConnectorDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
-export const GetConnectorDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "GetConnectorDryrunResponse",
-}) as any as S.Schema<GetConnectorDryrunResponse>;
+export const GetConnectorDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<GetConnectorDryrunResponse>;
 
 export interface GetLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
@@ -1240,15 +1193,7 @@ export interface GetLinkerResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
-export const GetLinkerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({ identifier: "GetLinkerResponse" }) as any as S.Schema<GetLinkerResponse>;
+export const GetLinkerResponse = GetConnectorResponse as any as S.Schema<GetLinkerResponse>;
 
 export interface GetLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
@@ -1329,17 +1274,8 @@ export interface LinkerCreateOrUpdateResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
-export const LinkerCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({
-  identifier: "LinkerCreateOrUpdateResponse",
-}) as any as S.Schema<LinkerCreateOrUpdateResponse>;
+export const LinkerCreateOrUpdateResponse =
+  ConnectorCreateOrUpdateResponse as any as S.Schema<LinkerCreateOrUpdateResponse>;
 
 export interface ListConfigurationNamesRequest {
   /** OData filter options. */
@@ -1481,15 +1417,7 @@ export interface LinkerResource {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
-export const LinkerResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({ identifier: "LinkerResource" }) as any as S.Schema<LinkerResource>;
+export const LinkerResource = GetConnectorResponse as any as S.Schema<LinkerResource>;
 
 /** The list of Linkers. */
 export type ResourceListValueList = Array<LinkerResource>;
@@ -1549,15 +1477,7 @@ export interface DryrunResource {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
-export const DryrunResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({ identifier: "DryrunResource" }) as any as S.Schema<DryrunResource>;
+export const DryrunResource = GetLinkerDryrunResponse as any as S.Schema<DryrunResource>;
 
 /** The list of dryrun. */
 export type DryrunListValueList = Array<DryrunResource>;
@@ -1826,15 +1746,8 @@ export interface UpdateConnectorResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
-export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({ identifier: "UpdateConnectorResponse" }) as any as S.Schema<UpdateConnectorResponse>;
+export const UpdateConnectorResponse =
+  GetConnectorResponse as any as S.Schema<UpdateConnectorResponse>;
 
 export interface UpdateConnectorDryrunRequest {
   /** The ID of the target subscription. */
@@ -1879,17 +1792,8 @@ export interface UpdateConnectorDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
-export const UpdateConnectorDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "UpdateConnectorDryrunResponse",
-}) as any as S.Schema<UpdateConnectorDryrunResponse>;
+export const UpdateConnectorDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<UpdateConnectorDryrunResponse>;
 
 export interface UpdateLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
@@ -1926,15 +1830,7 @@ export interface UpdateLinkerResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
-export const UpdateLinkerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({ identifier: "UpdateLinkerResponse" }) as any as S.Schema<UpdateLinkerResponse>;
+export const UpdateLinkerResponse = GetConnectorResponse as any as S.Schema<UpdateLinkerResponse>;
 
 export interface UpdateLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
@@ -1973,17 +1869,8 @@ export interface UpdateLinkerDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
-export const UpdateLinkerDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "UpdateLinkerDryrunResponse",
-}) as any as S.Schema<UpdateLinkerDryrunResponse>;
+export const UpdateLinkerDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<UpdateLinkerDryrunResponse>;
 
 export interface ValidateConnectorRequest {
   /** The ID of the target subscription. */

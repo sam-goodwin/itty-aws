@@ -1055,15 +1055,8 @@ export interface EmailProAccountSendOnBehalfTo {
   /** Pending task id */
   taskPendingId?: number;
 }
-export const EmailProAccountSendOnBehalfTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedAccountId: S.optional(S.Number),
-    creationDate: S.optional(S.String),
-    taskPendingId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EmailProAccountSendOnBehalfTo",
-}) as any as S.Schema<EmailProAccountSendOnBehalfTo>;
+export const EmailProAccountSendOnBehalfTo =
+  EmailProAccountFullAccess as any as S.Schema<EmailProAccountSendOnBehalfTo>;
 
 export interface GetEmailProAccountTaskRequest {
   /** Service */
@@ -1172,27 +1165,23 @@ export const EmailProDomainNativeDomainAliasesList = /*@__PURE__*/ S.Array(
 
 /** Expected MX record(s) on this domain */
 export type EmailProDomainNativeExpectedMXList = Array<string>;
-export const EmailProDomainNativeExpectedMXList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmailProDomainNativeExpectedMXList>;
+export const EmailProDomainNativeExpectedMXList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeExpectedMXList>;
 
 /** Domain MX record configured in DNS */
 export type EmailProDomainNativeMxRecordList = Array<string>;
-export const EmailProDomainNativeMxRecordList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmailProDomainNativeMxRecordList>;
+export const EmailProDomainNativeMxRecordList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeMxRecordList>;
 
 /** Domain's SPF record configured in the DNS */
 export type EmailProDomainNativeSpfRecordList = Array<string>;
-export const EmailProDomainNativeSpfRecordList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmailProDomainNativeSpfRecordList>;
+export const EmailProDomainNativeSpfRecordList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeSpfRecordList>;
 
 /** Domain SRV record configured in DNS */
 export type EmailProDomainNativeSrvRecordList = Array<string>;
-export const EmailProDomainNativeSrvRecordList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmailProDomainNativeSrvRecordList>;
+export const EmailProDomainNativeSrvRecordList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<EmailProDomainNativeSrvRecordList>;
 
 /** Domain */
 export interface EmailProDomainNative {
@@ -1507,9 +1496,8 @@ export const GetEmailProServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1635,9 +1623,8 @@ export const ListEmailProRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEmailProRequest" }) as any as S.Schema<ListEmailProRequest>;
 
 export type ListEmailProResponseBodyList = Array<string>;
-export const ListEmailProResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailProResponseBodyList>;
+export const ListEmailProResponseBodyList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProResponseBodyList>;
 
 export type ListEmailProResponse = ListEmailProResponseBodyList;
 export const ListEmailProResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1663,9 +1650,8 @@ export const ListEmailProAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailProAccountRequest>;
 
 export type ListEmailProAccountResponseBodyList = Array<string>;
-export const ListEmailProAccountResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailProAccountResponseBodyList>;
+export const ListEmailProAccountResponseBodyList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProAccountResponseBodyList>;
 
 export type ListEmailProAccountResponse = ListEmailProAccountResponseBodyList;
 export const ListEmailProAccountResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1690,16 +1676,12 @@ export const ListEmailProAccountAliasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailProAccountAliasRequest>;
 
 export type ListEmailProAccountAliasResponseBodyList = Array<string>;
-export const ListEmailProAccountAliasResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailProAccountAliasResponseBodyList>;
+export const ListEmailProAccountAliasResponseBodyList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProAccountAliasResponseBodyList>;
 
 export type ListEmailProAccountAliasResponse = ListEmailProAccountAliasResponseBodyList;
-export const ListEmailProAccountAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProAccountAliasResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProAccountAliasResponse",
-}) as any as S.Schema<ListEmailProAccountAliasResponse>;
+export const ListEmailProAccountAliasResponse =
+  ListEmailProAccountResponse as any as S.Schema<ListEmailProAccountAliasResponse>;
 
 export interface ListEmailProAccountFullAccessRequest {
   /** Service */
@@ -1719,16 +1701,12 @@ export const ListEmailProAccountFullAccessRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListEmailProAccountFullAccessRequest>;
 
 export type ListEmailProAccountFullAccessResponseBodyList = Array<number>;
-export const ListEmailProAccountFullAccessResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailProAccountFullAccessResponseBodyList>;
+export const ListEmailProAccountFullAccessResponseBodyList =
+  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ListEmailProAccountFullAccessResponseBodyList>;
 
 export type ListEmailProAccountFullAccessResponse = ListEmailProAccountFullAccessResponseBodyList;
-export const ListEmailProAccountFullAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProAccountFullAccessResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProAccountFullAccessResponse",
-}) as any as S.Schema<ListEmailProAccountFullAccessResponse>;
+export const ListEmailProAccountFullAccessResponse =
+  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountFullAccessResponse>;
 
 export interface ListEmailProAccountSendAsRequest {
   /** Service */
@@ -1746,16 +1724,12 @@ export const ListEmailProAccountSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailProAccountSendAsRequest>;
 
 export type ListEmailProAccountSendAsResponseBodyList = Array<number>;
-export const ListEmailProAccountSendAsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailProAccountSendAsResponseBodyList>;
+export const ListEmailProAccountSendAsResponseBodyList =
+  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ListEmailProAccountSendAsResponseBodyList>;
 
 export type ListEmailProAccountSendAsResponse = ListEmailProAccountSendAsResponseBodyList;
-export const ListEmailProAccountSendAsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProAccountSendAsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProAccountSendAsResponse",
-}) as any as S.Schema<ListEmailProAccountSendAsResponse>;
+export const ListEmailProAccountSendAsResponse =
+  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountSendAsResponse>;
 
 export interface ListEmailProAccountSendOnBehalfToRequest {
   /** Service */
@@ -1779,17 +1753,13 @@ export const ListEmailProAccountSendOnBehalfToRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListEmailProAccountSendOnBehalfToRequest>;
 
 export type ListEmailProAccountSendOnBehalfToResponseBodyList = Array<number>;
-export const ListEmailProAccountSendOnBehalfToResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailProAccountSendOnBehalfToResponseBodyList>;
+export const ListEmailProAccountSendOnBehalfToResponseBodyList =
+  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ListEmailProAccountSendOnBehalfToResponseBodyList>;
 
 export type ListEmailProAccountSendOnBehalfToResponse =
   ListEmailProAccountSendOnBehalfToResponseBodyList;
-export const ListEmailProAccountSendOnBehalfToResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProAccountSendOnBehalfToResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProAccountSendOnBehalfToResponse",
-}) as any as S.Schema<ListEmailProAccountSendOnBehalfToResponse>;
+export const ListEmailProAccountSendOnBehalfToResponse =
+  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountSendOnBehalfToResponse>;
 
 export interface ListEmailProAccountTasksRequest {
   /** Service */
@@ -1807,16 +1777,12 @@ export const ListEmailProAccountTasksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailProAccountTasksRequest>;
 
 export type ListEmailProAccountTasksResponseBodyList = Array<number>;
-export const ListEmailProAccountTasksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailProAccountTasksResponseBodyList>;
+export const ListEmailProAccountTasksResponseBodyList =
+  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ListEmailProAccountTasksResponseBodyList>;
 
 export type ListEmailProAccountTasksResponse = ListEmailProAccountTasksResponseBodyList;
-export const ListEmailProAccountTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProAccountTasksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProAccountTasksResponse",
-}) as any as S.Schema<ListEmailProAccountTasksResponse>;
+export const ListEmailProAccountTasksResponse =
+  CreateEmailProChangeContactResponse as any as S.Schema<ListEmailProAccountTasksResponse>;
 
 export interface ListEmailProDomainRequest {
   /** Service */
@@ -1834,16 +1800,12 @@ export const ListEmailProDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailProDomainRequest>;
 
 export type ListEmailProDomainResponseBodyList = Array<string>;
-export const ListEmailProDomainResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailProDomainResponseBodyList>;
+export const ListEmailProDomainResponseBodyList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProDomainResponseBodyList>;
 
 export type ListEmailProDomainResponse = ListEmailProDomainResponseBodyList;
-export const ListEmailProDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProDomainResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProDomainResponse",
-}) as any as S.Schema<ListEmailProDomainResponse>;
+export const ListEmailProDomainResponse =
+  ListEmailProAccountResponse as any as S.Schema<ListEmailProDomainResponse>;
 
 export interface ListEmailProDomainDisclaimerAttributeRequest {
   /** Service */
@@ -1927,16 +1889,12 @@ export const ListEmailProDomainDkimRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailProDomainDkimRequest>;
 
 export type ListEmailProDomainDkimResponseBodyList = Array<string>;
-export const ListEmailProDomainDkimResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailProDomainDkimResponseBodyList>;
+export const ListEmailProDomainDkimResponseBodyList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProDomainDkimResponseBodyList>;
 
 export type ListEmailProDomainDkimResponse = ListEmailProDomainDkimResponseBodyList;
-export const ListEmailProDomainDkimResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProDomainDkimResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProDomainDkimResponse",
-}) as any as S.Schema<ListEmailProDomainDkimResponse>;
+export const ListEmailProDomainDkimResponse =
+  ListEmailProAccountResponse as any as S.Schema<ListEmailProDomainDkimResponse>;
 
 export interface ListEmailProDomainDkimSelectorRequest {
   /** The internal name of your pro organization */
@@ -1960,16 +1918,12 @@ export const ListEmailProDomainDkimSelectorRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEmailProDomainDkimSelectorRequest>;
 
 export type ListEmailProDomainDkimSelectorResponseBodyList = Array<string>;
-export const ListEmailProDomainDkimSelectorResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailProDomainDkimSelectorResponseBodyList>;
+export const ListEmailProDomainDkimSelectorResponseBodyList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProDomainDkimSelectorResponseBodyList>;
 
 export type ListEmailProDomainDkimSelectorResponse = ListEmailProDomainDkimSelectorResponseBodyList;
-export const ListEmailProDomainDkimSelectorResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProDomainDkimSelectorResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProDomainDkimSelectorResponse",
-}) as any as S.Schema<ListEmailProDomainDkimSelectorResponse>;
+export const ListEmailProDomainDkimSelectorResponse =
+  ListEmailProAccountResponse as any as S.Schema<ListEmailProDomainDkimSelectorResponse>;
 
 export interface ListEmailProExternalContactRequest {
   /** Service */
@@ -1999,16 +1953,12 @@ export const ListEmailProExternalContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailProExternalContactRequest>;
 
 export type ListEmailProExternalContactResponseBodyList = Array<string>;
-export const ListEmailProExternalContactResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailProExternalContactResponseBodyList>;
+export const ListEmailProExternalContactResponseBodyList =
+  EmailProDomainNativeDomainAliasesList as any as S.Schema<ListEmailProExternalContactResponseBodyList>;
 
 export type ListEmailProExternalContactResponse = ListEmailProExternalContactResponseBodyList;
-export const ListEmailProExternalContactResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailProExternalContactResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailProExternalContactResponse",
-}) as any as S.Schema<ListEmailProExternalContactResponse>;
+export const ListEmailProExternalContactResponse =
+  ListEmailProAccountResponse as any as S.Schema<ListEmailProExternalContactResponse>;
 
 export interface ListEmailProTaskRequest {
   /** Service */
@@ -2021,9 +1971,8 @@ export const ListEmailProTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEmailProTaskRequest" }) as any as S.Schema<ListEmailProTaskRequest>;
 
 export type ListEmailProTaskResponseBodyList = Array<number>;
-export const ListEmailProTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailProTaskResponseBodyList>;
+export const ListEmailProTaskResponseBodyList =
+  CreateEmailProChangeContactResponseBodyList as any as S.Schema<ListEmailProTaskResponseBodyList>;
 
 export type ListEmailProTaskResponse = ListEmailProTaskResponseBodyList;
 export const ListEmailProTaskResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2078,17 +2027,15 @@ export const PutEmailProRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEmailProRequest" }) as any as S.Schema<PutEmailProRequest>;
 
 export interface PutEmailProResponse {}
-export const PutEmailProResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmailProResponse",
-}) as any as S.Schema<PutEmailProResponse>;
+export const PutEmailProResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailProResponse>;
 
 /** Enable or disable anti-virus and anti-spam */
 export type PutEmailProAccountRequestMailingFilterList = Array<
   EmailProMailingFilterEnum | (string & {})
 >;
-export const PutEmailProAccountRequestMailingFilterList = /*@__PURE__*/ S.Array(
-  EmailProMailingFilterEnum,
-) as any as S.Schema<PutEmailProAccountRequestMailingFilterList>;
+export const PutEmailProAccountRequestMailingFilterList =
+  EmailProAccountNativeMailingFilterList as any as S.Schema<PutEmailProAccountRequestMailingFilterList>;
 
 export interface PutEmailProAccountRequest {
   /** The internal name of your pro organization */
@@ -2142,9 +2089,8 @@ export const PutEmailProAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailProAccountRequest>;
 
 export interface PutEmailProAccountResponse {}
-export const PutEmailProAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmailProAccountResponse",
-}) as any as S.Schema<PutEmailProAccountResponse>;
+export const PutEmailProAccountResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailProAccountResponse>;
 
 export interface PutEmailProDomainRequest {
   /** The internal name of your pro organization */
@@ -2166,9 +2112,8 @@ export const PutEmailProDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEmailProDomainRequest" }) as any as S.Schema<PutEmailProDomainRequest>;
 
 export interface PutEmailProDomainResponse {}
-export const PutEmailProDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmailProDomainResponse",
-}) as any as S.Schema<PutEmailProDomainResponse>;
+export const PutEmailProDomainResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailProDomainResponse>;
 
 export interface PutEmailProDomainDisclaimerRequest {
   /** The internal name of your pro organization */
@@ -2241,11 +2186,8 @@ export const PutEmailProExternalContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailProExternalContactRequest>;
 
 export interface PutEmailProExternalContactResponse {}
-export const PutEmailProExternalContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEmailProExternalContactResponse",
-}) as any as S.Schema<PutEmailProExternalContactResponse>;
+export const PutEmailProExternalContactResponse =
+  PutEmailProDomainDisclaimerResponse as any as S.Schema<PutEmailProExternalContactResponse>;
 
 export interface PutEmailProServiceInfosRequest {
   /** The internal name of your pro organization */
@@ -2329,11 +2271,8 @@ export const TerminateEmailProAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateEmailProAccountRequest>;
 
 export type TerminateEmailProAccountResponse = string;
-export const TerminateEmailProAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateEmailProAccountResponse",
-}) as any as S.Schema<TerminateEmailProAccountResponse>;
+export const TerminateEmailProAccountResponse =
+  GetEmailProBillingPlanResponse as any as S.Schema<TerminateEmailProAccountResponse>;
 
 export interface UpdateEmailProFlagsOnAllAccountsRequest {
   /** The internal name of your pro organization */
@@ -2350,11 +2289,8 @@ export const UpdateEmailProFlagsOnAllAccountsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsRequest>;
 
 export interface UpdateEmailProFlagsOnAllAccountsResponse {}
-export const UpdateEmailProFlagsOnAllAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEmailProFlagsOnAllAccountsResponse",
-}) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsResponse>;
+export const UpdateEmailProFlagsOnAllAccountsResponse =
+  PutEmailProDomainDisclaimerResponse as any as S.Schema<UpdateEmailProFlagsOnAllAccountsResponse>;
 
 export type CreateEmailProAccountAliasError = OvhOpError;
 /** Create new alias */

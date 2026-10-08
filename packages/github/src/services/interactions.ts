@@ -191,15 +191,8 @@ export interface GetPullRequestCreationCapForRepoResponse {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-export const GetPullRequestCreationCapForRepoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    max_open_pull_requests: S.Number,
-    include_drafts: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetPullRequestCreationCapForRepoResponse",
-}) as any as S.Schema<GetPullRequestCreationCapForRepoResponse>;
+export const GetPullRequestCreationCapForRepoResponse =
+  GetPullRequestCreationCapForOrgResponse as any as S.Schema<GetPullRequestCreationCapForRepoResponse>;
 
 export interface GetRestrictionsForAuthenticatedUserRequest {}
 export const GetRestrictionsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
@@ -332,11 +325,8 @@ export const RemoveRestrictionsForAuthenticatedUserRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserRequest>;
 
 export interface RemoveRestrictionsForAuthenticatedUserResponse {}
-export const RemoveRestrictionsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveRestrictionsForAuthenticatedUserResponse",
-}) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserResponse>;
+export const RemoveRestrictionsForAuthenticatedUserResponse =
+  RemovePullRequestBypassListForRepoResponse as any as S.Schema<RemoveRestrictionsForAuthenticatedUserResponse>;
 
 export interface RemoveRestrictionsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -351,11 +341,8 @@ export const RemoveRestrictionsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveRestrictionsForOrgRequest>;
 
 export interface RemoveRestrictionsForOrgResponse {}
-export const RemoveRestrictionsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveRestrictionsForOrgResponse",
-}) as any as S.Schema<RemoveRestrictionsForOrgResponse>;
+export const RemoveRestrictionsForOrgResponse =
+  RemovePullRequestBypassListForRepoResponse as any as S.Schema<RemoveRestrictionsForOrgResponse>;
 
 export interface RemoveRestrictionsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -373,17 +360,13 @@ export const RemoveRestrictionsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveRestrictionsForRepoRequest>;
 
 export interface RemoveRestrictionsForRepoResponse {}
-export const RemoveRestrictionsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveRestrictionsForRepoResponse",
-}) as any as S.Schema<RemoveRestrictionsForRepoResponse>;
+export const RemoveRestrictionsForRepoResponse =
+  RemovePullRequestBypassListForRepoResponse as any as S.Schema<RemoveRestrictionsForRepoResponse>;
 
 /** A list of user logins to add or remove from the bypass list. */
 export type SetPullRequestBypassListForRepoRequestUsersList = Array<string>;
-export const SetPullRequestBypassListForRepoRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetPullRequestBypassListForRepoRequestUsersList>;
+export const SetPullRequestBypassListForRepoRequestUsersList =
+  RemovePullRequestBypassListForRepoRequestUsersList as any as S.Schema<SetPullRequestBypassListForRepoRequestUsersList>;
 
 export interface SetPullRequestBypassListForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -410,11 +393,8 @@ export const SetPullRequestBypassListForRepoRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SetPullRequestBypassListForRepoRequest>;
 
 export interface SetPullRequestBypassListForRepoResponse {}
-export const SetPullRequestBypassListForRepoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetPullRequestBypassListForRepoResponse",
-}) as any as S.Schema<SetPullRequestBypassListForRepoResponse>;
+export const SetPullRequestBypassListForRepoResponse =
+  RemovePullRequestBypassListForRepoResponse as any as S.Schema<SetPullRequestBypassListForRepoResponse>;
 
 /** The duration of the interaction restriction. Default: `one_day`. */
 export type InteractionExpiry = "one_day" | "three_days" | "one_week" | "one_month" | "six_months";
@@ -503,15 +483,8 @@ export interface UpdatePullRequestCreationCapForOrgResponse {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-export const UpdatePullRequestCreationCapForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    max_open_pull_requests: S.Number,
-    include_drafts: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdatePullRequestCreationCapForOrgResponse",
-}) as any as S.Schema<UpdatePullRequestCreationCapForOrgResponse>;
+export const UpdatePullRequestCreationCapForOrgResponse =
+  GetPullRequestCreationCapForOrgResponse as any as S.Schema<UpdatePullRequestCreationCapForOrgResponse>;
 
 export interface UpdatePullRequestCreationCapForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -551,15 +524,8 @@ export interface UpdatePullRequestCreationCapForRepoResponse {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-export const UpdatePullRequestCreationCapForRepoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    max_open_pull_requests: S.Number,
-    include_drafts: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdatePullRequestCreationCapForRepoResponse",
-}) as any as S.Schema<UpdatePullRequestCreationCapForRepoResponse>;
+export const UpdatePullRequestCreationCapForRepoResponse =
+  GetPullRequestCreationCapForOrgResponse as any as S.Schema<UpdatePullRequestCreationCapForRepoResponse>;
 
 export type GetPullRequestBypassListForRepoError = Forbidden | NotFound | GithubOpError;
 /** Get pull request creation cap bypass list for a repository Lists the users that are on the pull request creation cap bypass list for a repository. Users on this list can create pull requests regardless of any configured pull request creation cap. Only users with maintainer permissions can view the bypass list. */

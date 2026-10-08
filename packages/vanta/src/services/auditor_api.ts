@@ -38,9 +38,8 @@ export const InformationRequestAdditionalControlIdsList = /*@__PURE__*/ S.Array(
 
 /** The complete current set of control IDs linked to this request, including controls linked through framework codes and controls added directly. Each ID is returned by the audit controls endpoint. */
 export type InformationRequestLinkedControlIdsList = Array<string>;
-export const InformationRequestLinkedControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InformationRequestLinkedControlIdsList>;
+export const InformationRequestLinkedControlIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<InformationRequestLinkedControlIdsList>;
 
 /** Current approval status of the information request, tracking its lifecycle through the audit process. The status progresses through the workflow: initial state -> awaiting review -> approved or flagged. Status can move between awaiting review and flagged states as evidence is reviewed and resubmitted. */
 export type InformationRequestApprovalStatus =
@@ -56,15 +55,13 @@ export const InformationRequestCadence = S.String;
 
 /** Always empty on read. Use `linkedControlIds` for control linkage and `segmentIds` for request assignment. */
 export type InformationRequestFrameworkCodesList = Array<string>;
-export const InformationRequestFrameworkCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InformationRequestFrameworkCodesList>;
+export const InformationRequestFrameworkCodesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<InformationRequestFrameworkCodesList>;
 
 /** Audit segments this request is assigned to. Empty means unassigned. Resolved against the current audit scope -- stale IDs are dropped. This field is a current-scope projection, not a stored watermark. An audit-scope change that drops or adds IDs here does not update creationDate, modificationDate, or deletionDate, so it does not appear in `changedSinceDate` delta sync on its own. Re-fetch the list without that parameter, or GET the request by id, to see the current projection. */
 export type InformationRequestSegmentIdsList = Array<string>;
-export const InformationRequestSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InformationRequestSegmentIdsList>;
+export const InformationRequestSegmentIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<InformationRequestSegmentIdsList>;
 
 /** Type of information request, defining what scope of evidence is needed. - POINT_IN_TIME: Evidence for a specific moment (e.g., current state of a policy) - POPULATION: Evidence covering all items in a category (e.g., all employees) - SAMPLE: Evidence for a representative sample (e.g., 10 random customer records) */
 export type InformationRequestType = "POINT_IN_TIME" | "POPULATION" | "SAMPLE";
@@ -517,9 +514,8 @@ export const ControlSource = S.String;
 
 /** The security domains that the control belongs to. */
 export type AuditorApiControlDomainsList = Array<string>;
-export const AuditorApiControlDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditorApiControlDomainsList>;
+export const AuditorApiControlDomainsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditorApiControlDomainsList>;
 
 export interface Owner {
   /** Unique identifier for the person. */
@@ -538,9 +534,8 @@ export const Owner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Owner" }) as any as S.Schema<Owner>;
 
 export type CustomFieldValueCase1List = Array<string>;
-export const CustomFieldValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomFieldValueCase1List>;
+export const CustomFieldValueCase1List =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<CustomFieldValueCase1List>;
 
 export type CustomFieldValue = string | CustomFieldValueCase1List;
 export const CustomFieldValue = S.Unknown as any as S.Schema<CustomFieldValue>;
@@ -604,9 +599,8 @@ export const AuditorApiControl = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of controls, referenced by id, to map the evidence to */
 export type CreateCustomEvidenceRequestRequestControlIdsList = Array<string>;
-export const CreateCustomEvidenceRequestRequestControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCustomEvidenceRequestRequestControlIdsList>;
+export const CreateCustomEvidenceRequestRequestControlIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<CreateCustomEvidenceRequestRequestControlIdsList>;
 
 export type RecurrenceDuration = "P0D" | "P1D" | "P1W" | "P1M" | "P3M" | "P6M" | "P1Y" | "P2Y";
 export const RecurrenceDuration = S.String;
@@ -651,9 +645,8 @@ export const CreateCustomEvidenceRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of controls, referenced by id, to map the evidence to */
 export type CustomEvidenceRequestControlIdsList = Array<string>;
-export const CustomEvidenceRequestControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomEvidenceRequestControlIdsList>;
+export const CustomEvidenceRequestControlIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<CustomEvidenceRequestControlIdsList>;
 
 export interface CustomEvidenceRequest {
   /** Internal id of the custom evidence request within Vanta */
@@ -685,15 +678,13 @@ export const CustomEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Framework codes this request addresses. An empty array if no framework codes are associated. */
 export type CreateInformationRequestRequestFrameworkCodesList = Array<string>;
-export const CreateInformationRequestRequestFrameworkCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInformationRequestRequestFrameworkCodesList>;
+export const CreateInformationRequestRequestFrameworkCodesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<CreateInformationRequestRequestFrameworkCodesList>;
 
 /** Control IDs to link directly to this request, beyond those automatically mapped from framework codes. Each must be the `id` of an existing control in the customer's organization (the identifier returned by the controls endpoints). Unknown IDs and controls without an active mapping to a framework in the audit are skipped. Omit or pass an empty array for no direct control links. */
 export type CreateInformationRequestRequestAdditionalControlIdsList = Array<string>;
-export const CreateInformationRequestRequestAdditionalControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInformationRequestRequestAdditionalControlIdsList>;
+export const CreateInformationRequestRequestAdditionalControlIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<CreateInformationRequestRequestAdditionalControlIdsList>;
 
 export interface CreateInformationRequestRequest {
   auditId: string;
@@ -813,17 +804,13 @@ export const DeleteInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInformationRequestRequest>;
 
 export interface DeleteInformationRequestResponse {}
-export const DeleteInformationRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInformationRequestResponse",
-}) as any as S.Schema<DeleteInformationRequestResponse>;
+export const DeleteInformationRequestResponse =
+  DeleteCommentForInformationRequestResponse as any as S.Schema<DeleteInformationRequestResponse>;
 
 /** Emails of auditors who may access the new audit. Minimum one entry required. Each email must match an active user in the authenticated audit firm's domain. */
 export type DuplicateRequestAllowAuditorEmailsList = Array<string>;
-export const DuplicateRequestAllowAuditorEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DuplicateRequestAllowAuditorEmailsList>;
+export const DuplicateRequestAllowAuditorEmailsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<DuplicateRequestAllowAuditorEmailsList>;
 
 export interface DuplicateRequest {
   /** ID of the source IRL audit to duplicate. */
@@ -852,9 +839,8 @@ export const DuplicateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails of auditors with access to audit */
 export type AuditAllowAuditorEmailsList = Array<string>;
-export const AuditAllowAuditorEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditAllowAuditorEmailsList>;
+export const AuditAllowAuditorEmailsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditAllowAuditorEmailsList>;
 
 export type AuditFocus = "EXTERNAL" | "INTERNAL";
 export const AuditFocus = S.String;
@@ -1094,9 +1080,8 @@ export const AuditEvidenceType = S.String;
 
 /** A list sections associated to the control */
 export type EvidenceControlSectionNamesList = Array<string>;
-export const EvidenceControlSectionNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvidenceControlSectionNamesList>;
+export const EvidenceControlSectionNamesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<EvidenceControlSectionNamesList>;
 
 export interface EvidenceControl {
   /** Name of control associated to this evidence */
@@ -1213,15 +1198,13 @@ export const GetFrameworkCodesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Valid framework codes for this audit. */
 export type FrameworkCodesFrameworkCodesList = Array<string>;
-export const FrameworkCodesFrameworkCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FrameworkCodesFrameworkCodesList>;
+export const FrameworkCodesFrameworkCodesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<FrameworkCodesFrameworkCodesList>;
 
 /** Valid codes for this framework, sorted. */
 export type FrameworkCodesByFrameworkCodesList = Array<string>;
-export const FrameworkCodesByFrameworkCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FrameworkCodesByFrameworkCodesList>;
+export const FrameworkCodesByFrameworkCodesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<FrameworkCodesByFrameworkCodesList>;
 
 export interface FrameworkCodesByFramework {
   /** Display name of the in-scope framework these codes belong to. */
@@ -1774,9 +1757,8 @@ export const VantaTestSnapshotOutOfScopeResourcesTestLevelList = /*@__PURE__*/ S
 
 export type VantaTestSnapshotFrameworkExclusionGroupedByReasonList =
   Array<VantaTestSnapshotExcludedItemGroup>;
-export const VantaTestSnapshotFrameworkExclusionGroupedByReasonList = /*@__PURE__*/ S.Array(
-  VantaTestSnapshotExcludedItemGroup,
-) as any as S.Schema<VantaTestSnapshotFrameworkExclusionGroupedByReasonList>;
+export const VantaTestSnapshotFrameworkExclusionGroupedByReasonList =
+  VantaTestSnapshotOutOfScopeResourcesTestLevelList as any as S.Schema<VantaTestSnapshotFrameworkExclusionGroupedByReasonList>;
 
 export interface VantaTestSnapshotFrameworkExclusion {
   frameworkId: string;
@@ -1957,9 +1939,8 @@ export const GetOrganizationNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Channels on which the personnel reminder digest is delivered (e.g. `["EMAIL"]` or `["EMAIL", "SLACK"]`). */
 export type AuditOrganizationNotificationsSubscribedChannelTypesList = Array<string>;
-export const AuditOrganizationNotificationsSubscribedChannelTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditOrganizationNotificationsSubscribedChannelTypesList>;
+export const AuditOrganizationNotificationsSubscribedChannelTypesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditOrganizationNotificationsSubscribedChannelTypesList>;
 
 /** A single external-notification subscription row returned by the auditor organization notifications API. Represents one mailing-list address + notification-category pairing. */
 export interface AuditOrganizationNotificationSubscription {
@@ -2155,9 +2136,8 @@ export const PaginatedResponseComment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaginatedResponseComment" }) as any as S.Schema<PaginatedResponseComment>;
 
 export type ListAuditControlsRequestExternalIdMatchesAnyList = Array<string>;
-export const ListAuditControlsRequestExternalIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAuditControlsRequestExternalIdMatchesAnyList>;
+export const ListAuditControlsRequestExternalIdMatchesAnyList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<ListAuditControlsRequestExternalIdMatchesAnyList>;
 
 export interface ListAuditControlsRequest {
   auditId: string;
@@ -2179,15 +2159,13 @@ export const ListAuditControlsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The security domains that the control belongs to. */
 export type AuditorControlDomainsList = Array<string>;
-export const AuditorControlDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditorControlDomainsList>;
+export const AuditorControlDomainsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditorControlDomainsList>;
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type AuditorControlCustomFieldsList = Array<CustomField>;
-export const AuditorControlCustomFieldsList = /*@__PURE__*/ S.Array(
-  CustomField,
-) as any as S.Schema<AuditorControlCustomFieldsList>;
+export const AuditorControlCustomFieldsList =
+  AuditorApiControlCustomFieldsList as any as S.Schema<AuditorControlCustomFieldsList>;
 
 export interface SectionPrinciple {
   /** The principle's unique ID. */
@@ -2226,9 +2204,8 @@ export const AuditorControlSectionsList = /*@__PURE__*/ S.Array(
 
 /** Audit segments in which this control is in scope. This can differ from current framework mappings, and the array can be empty. */
 export type AuditorControlInScopeSegmentIdsList = Array<string>;
-export const AuditorControlInScopeSegmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditorControlInScopeSegmentIdsList>;
+export const AuditorControlInScopeSegmentIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditorControlInScopeSegmentIdsList>;
 
 /** An auditor's assessment of a control within an audit. This is the full flat union of every framework's assessment states (the superset); the selected segment's framework determines which subset applies. `NOT_ASSESSED` is shared by all frameworks and is the default for a control that has not yet been assessed. Which states apply to which framework: - Most frameworks (e.g. SOC 2): `IN_PLACE`, `NOT_IN_PLACE`, `PARTIAL`, `NOT_ASSESSED` - ISO 27001: `CONFORMING`, `MINOR_NON_CONFORMITY`, `MAJOR_NON_CONFORMITY`, `NOT_ASSESSED` - FedRAMP: `SATISFIED`, `NOT_SATISFIED`, `OTHER_THAN_SATISFIED`, `NOT_ASSESSED` - FedRAMP Key Security Indicators (KSI): `TRUE`, `FALSE`, `PARTIAL`, `NOT_ASSESSED` Distinct from `ControlStatus`, which is the computed tests/documents-passing status -- a different concept. */
 export type AuditControlAssessmentState =
@@ -2466,9 +2443,8 @@ export const PaginatedResponseEvidenceUrl = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseEvidenceUrl>;
 
 export type ListAuditIssuesRequestSnapshotIdMatchesAnyList = Array<string>;
-export const ListAuditIssuesRequestSnapshotIdMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAuditIssuesRequestSnapshotIdMatchesAnyList>;
+export const ListAuditIssuesRequestSnapshotIdMatchesAnyList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<ListAuditIssuesRequestSnapshotIdMatchesAnyList>;
 
 /** Allowed values for the `orderBy` query parameter on issue snapshot item endpoints. */
 export type IssueSnapshotItemOrderBy = "createdAt" | "lastModifiedAt" | "detectedAt";
@@ -2690,9 +2666,8 @@ export const AuditRiskOwner = /*@__PURE__*/ S.suspend(() =>
 
 /** Risk category names, or empty array if not categorized. */
 export type AuditRiskCategoriesList = Array<string>;
-export const AuditRiskCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditRiskCategoriesList>;
+export const AuditRiskCategoriesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditRiskCategoriesList>;
 
 /** CIA triad category returned by the auditor API. */
 export type AuditRiskCia = "AVAILABILITY" | "CONFIDENTIALITY" | "INTEGRITY";
@@ -2706,9 +2681,8 @@ export const AuditRiskCiaCategoriesList = /*@__PURE__*/ S.Array(
 
 /** IDs of controls linked to this risk scenario, or empty array if none. Full Audit View only - omitted in Controlled Audit View. */
 export type AuditRiskLinkedControlIdsList = Array<string>;
-export const AuditRiskLinkedControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditRiskLinkedControlIdsList>;
+export const AuditRiskLinkedControlIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditRiskLinkedControlIdsList>;
 
 /** A risk record from the risk population. `id` and `riskId` are required. All other fields are optional to support customizable field visibility. Omitted keys mean the column is not in the response; `null` means the column is present but empty. */
 export interface AuditRisk {
@@ -3314,9 +3288,8 @@ export const PaginatedResponseInformationRequestEvidence = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PaginatedResponseInformationRequestEvidence>;
 
 export type ListInformationRequestsRequestSegmentIdsMatchesAnyList = Array<string>;
-export const ListInformationRequestsRequestSegmentIdsMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListInformationRequestsRequestSegmentIdsMatchesAnyList>;
+export const ListInformationRequestsRequestSegmentIdsMatchesAnyList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<ListInformationRequestsRequestSegmentIdsMatchesAnyList>;
 
 export interface ListInformationRequestsRequest {
   auditId: string;
@@ -3487,15 +3460,13 @@ export const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Integration tag display names describing what data this integration provides. */
 export type AuditIntegrationTagsList = Array<string>;
-export const AuditIntegrationTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditIntegrationTagsList>;
+export const AuditIntegrationTagsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditIntegrationTagsList>;
 
 /** Category display names describing what the integration is used for. */
 export type AuditIntegrationCategoriesList = Array<string>;
-export const AuditIntegrationCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditIntegrationCategoriesList>;
+export const AuditIntegrationCategoriesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AuditIntegrationCategoriesList>;
 
 /** Integration row returned by the auditor integrations API. `id` and `name` are always present. Other fields are optional to support controlled audits where only approved columns are returned. */
 export interface AuditIntegration {
@@ -3585,9 +3556,8 @@ export const ListPersonnelAccountAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Account roles; empty array when the column is visible but has no roles. */
 export type AccountAccessRoleList = Array<string>;
-export const AccountAccessRoleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountAccessRoleList>;
+export const AccountAccessRoleList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<AccountAccessRoleList>;
 
 /** Account access record from personnel population. This unified interface represents account access data from all service types: - IDP services (Okta, Azure AD, Google Workspace, etc.) - First-party account services (AWS, Azure, GCP, Oracle Cloud, etc.) - Role grants services (GCP, Azure role grants) - Received/third-party applications Only `id` and `accountName` are always present. Other fields are optional so disallowed columns can be omitted (for example under controlled audit view). When an optional field is present, `null` means the column is visible but empty (only fields that are nullable in population data use `null`). */
 export interface AccountAccess {
@@ -3651,9 +3621,8 @@ export const PaginatedResponseAccountAccess = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseAccountAccess>;
 
 export type ListPersonnelGroupsRequestSourcesMatchesAnyList = Array<string>;
-export const ListPersonnelGroupsRequestSourcesMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPersonnelGroupsRequestSourcesMatchesAnyList>;
+export const ListPersonnelGroupsRequestSourcesMatchesAnyList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<ListPersonnelGroupsRequestSourcesMatchesAnyList>;
 
 export type GroupOrderBy = "name" | "members" | "source" | "tasksLastUpdated" | "pointOfContact";
 export const GroupOrderBy = S.String;
@@ -3774,9 +3743,8 @@ export type PeopleEmploymentStatus =
 export const PeopleEmploymentStatus = S.String;
 
 export type ListPersonnelPeopleRequestGroupsMatchesAnyList = Array<string>;
-export const ListPersonnelPeopleRequestGroupsMatchesAnyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPersonnelPeopleRequestGroupsMatchesAnyList>;
+export const ListPersonnelPeopleRequestGroupsMatchesAnyList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<ListPersonnelPeopleRequestGroupsMatchesAnyList>;
 
 export type PeopleOrderBy = "name" | "employmentStatus";
 export const PeopleOrderBy = S.String;
@@ -4305,21 +4273,18 @@ export const UpdateCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend
 
 /** Framework codes are assigned only at creation; on update this field is a silent no-op -- a value sent here is accepted for backwards compatibility but ignored, leaving the request's framework codes unchanged. */
 export type UpdateInformationRequestRequestFrameworkCodesList = Array<string>;
-export const UpdateInformationRequestRequestFrameworkCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInformationRequestRequestFrameworkCodesList>;
+export const UpdateInformationRequestRequestFrameworkCodesList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<UpdateInformationRequestRequestFrameworkCodesList>;
 
 /** This legacy field is accepted for backwards compatibility but ignored. Use `linkedControlIds` to replace the complete set of linked controls. */
 export type UpdateInformationRequestRequestAdditionalControlIdsList = Array<string>;
-export const UpdateInformationRequestRequestAdditionalControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInformationRequestRequestAdditionalControlIdsList>;
+export const UpdateInformationRequestRequestAdditionalControlIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<UpdateInformationRequestRequestAdditionalControlIdsList>;
 
 /** The complete desired set of control IDs linked to this request. Send the full list to replace the set, an empty array to clear it, or omit the property to leave links unchanged. Each ID must identify an existing control in the customer's organization and is returned by the audit controls endpoint. The request is rejected if any ID does not match a control. */
 export type UpdateInformationRequestRequestLinkedControlIdsList = Array<string>;
-export const UpdateInformationRequestRequestLinkedControlIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateInformationRequestRequestLinkedControlIdsList>;
+export const UpdateInformationRequestRequestLinkedControlIdsList =
+  InformationRequestAdditionalControlIdsList as any as S.Schema<UpdateInformationRequestRequestLinkedControlIdsList>;
 
 export interface UpdateInformationRequestRequest {
   auditId: string;

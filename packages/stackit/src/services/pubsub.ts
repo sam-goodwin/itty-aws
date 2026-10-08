@@ -304,9 +304,8 @@ export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicRequest" }) as any as S.Schema<DeleteTopicRequest>;
 
 export interface DeleteTopicResponse {}
-export const DeleteTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTopicResponse",
-}) as any as S.Schema<DeleteTopicResponse>;
+export const DeleteTopicResponse =
+  DeleteSubscriptionResponse as any as S.Schema<DeleteTopicResponse>;
 
 export type GetSubscriptionRequestRegionId = "eu01";
 export const GetSubscriptionRequestRegionId = S.String;
@@ -436,11 +435,8 @@ export const GrantTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GrantTopicPublisherAccessRequest>;
 
 export interface GrantTopicPublisherAccessResponse {}
-export const GrantTopicPublisherAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GrantTopicPublisherAccessResponse",
-}) as any as S.Schema<GrantTopicPublisherAccessResponse>;
+export const GrantTopicPublisherAccessResponse =
+  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<GrantTopicPublisherAccessResponse>;
 
 export type ListSubscriptionsRequestRegionId = "eu01";
 export const ListSubscriptionsRequestRegionId = S.String;
@@ -528,9 +524,8 @@ export const ListSubscriptionSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubscriptionSubscribersRequest>;
 
 export type ListEmailAddressesResponseEmailAddressesList = Array<string>;
-export const ListEmailAddressesResponseEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailAddressesResponseEmailAddressesList>;
+export const ListEmailAddressesResponseEmailAddressesList =
+  TopicSettingsAclList as any as S.Schema<ListEmailAddressesResponseEmailAddressesList>;
 
 export interface ListEmailAddressesResponse {
   emailAddresses: ListEmailAddressesResponseEmailAddressesList;
@@ -652,11 +647,8 @@ export const RevokeSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RevokeSubscriptionSubscriberAccessRequest>;
 
 export interface RevokeSubscriptionSubscriberAccessResponse {}
-export const RevokeSubscriptionSubscriberAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeSubscriptionSubscriberAccessResponse",
-}) as any as S.Schema<RevokeSubscriptionSubscriberAccessResponse>;
+export const RevokeSubscriptionSubscriberAccessResponse =
+  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<RevokeSubscriptionSubscriberAccessResponse>;
 
 export type RevokeTopicPublisherAccessRequestRegionId = "eu01";
 export const RevokeTopicPublisherAccessRequestRegionId = S.String;
@@ -687,20 +679,16 @@ export const RevokeTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeTopicPublisherAccessRequest>;
 
 export interface RevokeTopicPublisherAccessResponse {}
-export const RevokeTopicPublisherAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeTopicPublisherAccessResponse",
-}) as any as S.Schema<RevokeTopicPublisherAccessResponse>;
+export const RevokeTopicPublisherAccessResponse =
+  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<RevokeTopicPublisherAccessResponse>;
 
 export type UpdatePublisherAccessRequestRegionId = "eu01";
 export const UpdatePublisherAccessRequestRegionId = S.String;
 
 /** A list of valid subscriber email addresses. */
 export type UpdatePublisherAccessRequestEmailAddressesList = Array<string>;
-export const UpdatePublisherAccessRequestEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePublisherAccessRequestEmailAddressesList>;
+export const UpdatePublisherAccessRequestEmailAddressesList =
+  TopicSettingsAclList as any as S.Schema<UpdatePublisherAccessRequestEmailAddressesList>;
 
 export interface UpdatePublisherAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -731,9 +719,8 @@ export const UpdatePublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePublisherAccessRequest>;
 
 export interface UpdatePublisherAccessResponse {}
-export const UpdatePublisherAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePublisherAccessResponse",
-}) as any as S.Schema<UpdatePublisherAccessResponse>;
+export const UpdatePublisherAccessResponse =
+  DeleteSubscriptionResponse as any as S.Schema<UpdatePublisherAccessResponse>;
 
 export type UpdateSubscriptionRequestRegionId = "eu01";
 export const UpdateSubscriptionRequestRegionId = S.String;
@@ -777,18 +764,16 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionRequest>;
 
 export interface UpdateSubscriptionResponse {}
-export const UpdateSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSubscriptionResponse",
-}) as any as S.Schema<UpdateSubscriptionResponse>;
+export const UpdateSubscriptionResponse =
+  DeleteSubscriptionResponse as any as S.Schema<UpdateSubscriptionResponse>;
 
 export type UpdateSubscriptionSubscriberAccessRequestRegionId = "eu01";
 export const UpdateSubscriptionSubscriberAccessRequestRegionId = S.String;
 
 /** A list of valid subscriber email addresses. */
 export type UpdateSubscriptionSubscriberAccessRequestEmailAddressesList = Array<string>;
-export const UpdateSubscriptionSubscriberAccessRequestEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSubscriptionSubscriberAccessRequestEmailAddressesList>;
+export const UpdateSubscriptionSubscriberAccessRequestEmailAddressesList =
+  TopicSettingsAclList as any as S.Schema<UpdateSubscriptionSubscriberAccessRequestEmailAddressesList>;
 
 export interface UpdateSubscriptionSubscriberAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -822,11 +807,8 @@ export const UpdateSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<UpdateSubscriptionSubscriberAccessRequest>;
 
 export interface UpdateSubscriptionSubscriberAccessResponse {}
-export const UpdateSubscriptionSubscriberAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateSubscriptionSubscriberAccessResponse",
-}) as any as S.Schema<UpdateSubscriptionSubscriberAccessResponse>;
+export const UpdateSubscriptionSubscriberAccessResponse =
+  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<UpdateSubscriptionSubscriberAccessResponse>;
 
 export type UpdateTopicRequestRegionId = "eu01";
 export const UpdateTopicRequestRegionId = S.String;
@@ -865,9 +847,8 @@ export const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTopicRequest" }) as any as S.Schema<UpdateTopicRequest>;
 
 export interface UpdateTopicResponse {}
-export const UpdateTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTopicResponse",
-}) as any as S.Schema<UpdateTopicResponse>;
+export const UpdateTopicResponse =
+  DeleteSubscriptionResponse as any as S.Schema<UpdateTopicResponse>;
 
 export type CreateSubscriptionError =
   | BadRequest

@@ -325,9 +325,8 @@ export const ListMessageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of user IDs that are explicitly mentioned in this message. */
 export type MessageListItemMentionsList = Array<string>;
-export const MessageListItemMentionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MessageListItemMentionsList>;
+export const MessageListItemMentionsList =
+  MessageMentionsList as any as S.Schema<MessageListItemMentionsList>;
 
 /** Represents a single poll option */
 export type MessageListItemPollOptionsItem = MessagePollOptionsItem;
@@ -335,20 +334,15 @@ export const MessageListItemPollOptionsItem = MessagePollOptionsItem;
 
 /** The options for the poll */
 export type MessageListItemPollOptionsList = Array<MessagePollOptionsItem>;
-export const MessageListItemPollOptionsList = /*@__PURE__*/ S.Array(
-  MessagePollOptionsItem,
-) as any as S.Schema<MessageListItemPollOptionsList>;
+export const MessageListItemPollOptionsList =
+  MessagePollOptionsList as any as S.Schema<MessageListItemPollOptionsList>;
 
 /** A poll attached to this message. Null if the message does not contain a poll. */
 export interface MessageListItemPoll {
   /** The options for the poll */
   options: MessageListItemPollOptionsList | null;
 }
-export const MessageListItemPoll = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.NullOr(MessageListItemPollOptionsList),
-  }),
-).annotate({ identifier: "MessageListItemPoll" }) as any as S.Schema<MessageListItemPoll>;
+export const MessageListItemPoll = MessagePoll as any as S.Schema<MessageListItemPoll>;
 
 /** Represents a reaction count for a feed post */
 export type MessageListItemPollVotesItem = MessagePollVotesItem;
@@ -356,9 +350,8 @@ export const MessageListItemPollVotesItem = MessagePollVotesItem;
 
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessageListItemPollVotesList = Array<MessagePollVotesItem>;
-export const MessageListItemPollVotesList = /*@__PURE__*/ S.Array(
-  MessagePollVotesItem,
-) as any as S.Schema<MessageListItemPollVotesList>;
+export const MessageListItemPollVotesList =
+  MessagePollVotesList as any as S.Schema<MessageListItemPollVotesList>;
 
 /** Represents a reaction count for a feed post */
 export type MessageListItemReactionCountsItem = MessageReactionCountsItem;
@@ -366,9 +359,8 @@ export const MessageListItemReactionCountsItem = MessageReactionCountsItem;
 
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessageListItemReactionCountsList = Array<MessageReactionCountsItem>;
-export const MessageListItemReactionCountsList = /*@__PURE__*/ S.Array(
-  MessageReactionCountsItem,
-) as any as S.Schema<MessageListItemReactionCountsList>;
+export const MessageListItemReactionCountsList =
+  MessageReactionCountsList as any as S.Schema<MessageListItemReactionCountsList>;
 
 /** The user who authored this message. */
 export type MessageListItemUser = MessageUser;
@@ -407,25 +399,7 @@ export interface MessageListItem {
   /** The number of unique views this message has received. Null if view tracking is not enabled for this channel. */
   view_count: number | null;
 }
-export const MessageListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.NullOr(S.String),
-    created_at: S.String,
-    id: S.String,
-    is_edited: S.Boolean,
-    is_pinned: S.Boolean,
-    mentions: MessageListItemMentionsList,
-    mentions_everyone: S.Boolean,
-    message_type: DmsPostTypes,
-    poll: S.NullOr(MessageListItemPoll),
-    poll_votes: MessageListItemPollVotesList,
-    reaction_counts: MessageListItemReactionCountsList,
-    replying_to_message_id: S.NullOr(S.String),
-    updated_at: S.String,
-    user: MessageUser,
-    view_count: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "MessageListItem" }) as any as S.Schema<MessageListItem>;
+export const MessageListItem = Message as any as S.Schema<MessageListItem>;
 
 /** A list of nodes. */
 export type ListMessageResponseDataList = Array<MessageListItem>;
@@ -472,9 +446,8 @@ export const UpdateMessageRequestAttachmentsItem = CreateMessageRequestAttachmen
 
 /** A replacement list of file attachments for this message, such as images or videos. */
 export type UpdateMessageRequestAttachmentsList = Array<CreateMessageRequestAttachmentsItem>;
-export const UpdateMessageRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  CreateMessageRequestAttachmentsItem,
-) as any as S.Schema<UpdateMessageRequestAttachmentsList>;
+export const UpdateMessageRequestAttachmentsList =
+  CreateMessageRequestAttachmentsList as any as S.Schema<UpdateMessageRequestAttachmentsList>;
 
 export interface UpdateMessageRequest {
   /** The unique identifier of the message to update. */

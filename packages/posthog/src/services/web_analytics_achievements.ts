@@ -188,9 +188,8 @@ export const AchievementsListResponseUserProgressList = /*@__PURE__*/ S.Array(
 
 /** The team's progress on per-team tracks. */
 export type AchievementsListResponseTeamProgressList = Array<AchievementProgress>;
-export const AchievementsListResponseTeamProgressList = /*@__PURE__*/ S.Array(
-  AchievementProgress,
-) as any as S.Schema<AchievementsListResponseTeamProgressList>;
+export const AchievementsListResponseTeamProgressList =
+  AchievementsListResponseUserProgressList as any as S.Schema<AchievementsListResponseTeamProgressList>;
 
 export interface PendingCelebration {
   /** Track whose stage was newly unlocked. */

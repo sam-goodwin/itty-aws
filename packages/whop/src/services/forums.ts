@@ -143,15 +143,7 @@ export interface ForumListItem {
   /** The permission level controlling who can create new posts. One of: everyone, admins. */
   who_can_post: ForumWhoCanPostTypes;
 }
-export const ForumListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email_notification_preference: ForumEmailNotificationPreferences,
-    experience: ForumExperience,
-    id: S.String,
-    who_can_comment: ForumWhoCanCommentTypes,
-    who_can_post: ForumWhoCanPostTypes,
-  }),
-).annotate({ identifier: "ForumListItem" }) as any as S.Schema<ForumListItem>;
+export const ForumListItem = Forum as any as S.Schema<ForumListItem>;
 
 /** A list of nodes. */
 export type ListForumResponseDataList = Array<ForumListItem>;

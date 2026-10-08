@@ -184,9 +184,8 @@ export type RulesBulkCreateResultItemAction = "log" | "block";
 export const RulesBulkCreateResultItemAction = S.String;
 
 export type RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList>;
+export const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkCreateResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
@@ -211,9 +210,8 @@ export const RulesBulkCreateResultItemSelectorExcludeList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeList>;
 
 export type RulesBulkCreateResultItemSelectorIncludeItemHostList = Array<string>;
-export const RulesBulkCreateResultItemSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItemHostList>;
+export const RulesBulkCreateResultItemSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItemHostList>;
 
 export interface RulesBulkCreateResultItemSelectorIncludeItem {
   /** Included hostnames. */
@@ -349,9 +347,7 @@ export const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.Unknown.pipe
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList = Array<string>;
 export const RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList>;
+  RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkEditRequestBodyItemSelectorExcludeItem {
   /** Excluded operation IDs. */
@@ -374,27 +370,20 @@ export const RulesBulkEditRequestBodyItemSelectorExcludeList = /*@__PURE__*/ S.A
 ) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeList>;
 
 export type RulesBulkEditRequestBodyItemSelectorIncludeItemHostList = Array<string>;
-export const RulesBulkEditRequestBodyItemSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItemHostList>;
+export const RulesBulkEditRequestBodyItemSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItemHostList>;
 
 export interface RulesBulkEditRequestBodyItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkEditRequestBodyItemSelectorIncludeItemHostList;
 }
-export const RulesBulkEditRequestBodyItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(RulesBulkEditRequestBodyItemSelectorIncludeItemHostList),
-  }),
-).annotate({
-  identifier: "RulesBulkEditRequestBodyItemSelectorIncludeItem",
-}) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
+export const RulesBulkEditRequestBodyItemSelectorIncludeItem =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItem as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
 
 export type RulesBulkEditRequestBodyItemSelectorIncludeList =
   Array<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
-export const RulesBulkEditRequestBodyItemSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesBulkEditRequestBodyItemSelectorIncludeItem,
-) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeList>;
+export const RulesBulkEditRequestBodyItemSelectorIncludeList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeList>;
 
 export interface RulesBulkEditRequestBodyItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
@@ -469,54 +458,36 @@ export type RulesBulkEditResultItemAction = "log" | "block";
 export const RulesBulkEditResultItemAction = S.String;
 
 export type RulesBulkEditResultItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesBulkEditResultItemSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItemOperationIdsList>;
+export const RulesBulkEditResultItemSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkEditResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkEditResultItemSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesBulkEditResultItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationIds: S.optional(
-      S.NullOr(RulesBulkEditResultItemSelectorExcludeItemOperationIdsList).pipe(
-        T.Body("operation_ids"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "RulesBulkEditResultItemSelectorExcludeItem",
-}) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItem>;
+export const RulesBulkEditResultItemSelectorExcludeItem =
+  RulesBulkCreateResultItemSelectorExcludeItem as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItem>;
 
 export type RulesBulkEditResultItemSelectorExcludeList =
   Array<RulesBulkEditResultItemSelectorExcludeItem>;
-export const RulesBulkEditResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
-  RulesBulkEditResultItemSelectorExcludeItem,
-) as any as S.Schema<RulesBulkEditResultItemSelectorExcludeList>;
+export const RulesBulkEditResultItemSelectorExcludeList =
+  RulesBulkCreateResultItemSelectorExcludeList as any as S.Schema<RulesBulkEditResultItemSelectorExcludeList>;
 
 export type RulesBulkEditResultItemSelectorIncludeItemHostList = Array<string>;
-export const RulesBulkEditResultItemSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItemHostList>;
+export const RulesBulkEditResultItemSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItemHostList>;
 
 export interface RulesBulkEditResultItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkEditResultItemSelectorIncludeItemHostList | null;
 }
-export const RulesBulkEditResultItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(RulesBulkEditResultItemSelectorIncludeItemHostList)),
-  }),
-).annotate({
-  identifier: "RulesBulkEditResultItemSelectorIncludeItem",
-}) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItem>;
+export const RulesBulkEditResultItemSelectorIncludeItem =
+  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItem>;
 
 export type RulesBulkEditResultItemSelectorIncludeList =
   Array<RulesBulkEditResultItemSelectorIncludeItem>;
-export const RulesBulkEditResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesBulkEditResultItemSelectorIncludeItem,
-) as any as S.Schema<RulesBulkEditResultItemSelectorIncludeList>;
+export const RulesBulkEditResultItemSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesBulkEditResultItemSelectorIncludeList>;
 
 export interface RulesBulkEditResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
@@ -524,14 +495,8 @@ export interface RulesBulkEditResultItemSelector {
   /** Select all matching operations. */
   include?: RulesBulkEditResultItemSelectorIncludeList | null;
 }
-export const RulesBulkEditResultItemSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclude: S.optional(S.NullOr(RulesBulkEditResultItemSelectorExcludeList)),
-    include: S.optional(S.NullOr(RulesBulkEditResultItemSelectorIncludeList)),
-  }),
-).annotate({
-  identifier: "RulesBulkEditResultItemSelector",
-}) as any as S.Schema<RulesBulkEditResultItemSelector>;
+export const RulesBulkEditResultItemSelector =
+  RulesBulkCreateResultItemSelector as any as S.Schema<RulesBulkEditResultItemSelector>;
 
 export interface RulesBulkEditResultItem {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
@@ -778,9 +743,8 @@ export const ConfigurationCreateRequestCredentials = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ConfigurationCreateRequestCredentials>;
 
 export type ConfigurationCreateRequestTokenSourcesList = Array<string>;
-export const ConfigurationCreateRequestTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationCreateRequestTokenSourcesList>;
+export const ConfigurationCreateRequestTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationCreateRequestTokenSourcesList>;
 
 export type ConfigurationCreateRequestTokenType = "JWT";
 export const ConfigurationCreateRequestTokenType = S.String;
@@ -999,9 +963,8 @@ export const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ConfigurationCreateResponseCredentials>;
 
 export type ConfigurationCreateResponseTokenSourcesList = Array<string>;
-export const ConfigurationCreateResponseTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationCreateResponseTokenSourcesList>;
+export const ConfigurationCreateResponseTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationCreateResponseTokenSourcesList>;
 
 export type ConfigurationCreateResponseTokenType = "JWT";
 export const ConfigurationCreateResponseTokenType = S.String;
@@ -1037,9 +1000,8 @@ export type RulesCreateRequestAction = "log" | "block";
 export const RulesCreateRequestAction = S.String;
 
 export type RulesCreateRequestSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesCreateRequestSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateRequestSelectorExcludeItemOperationIdsList>;
+export const RulesCreateRequestSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateRequestSelectorExcludeItemOperationIdsList>;
 
 export interface RulesCreateRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
@@ -1061,26 +1023,19 @@ export const RulesCreateRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesCreateRequestSelectorExcludeList>;
 
 export type RulesCreateRequestSelectorIncludeItemHostList = Array<string>;
-export const RulesCreateRequestSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateRequestSelectorIncludeItemHostList>;
+export const RulesCreateRequestSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateRequestSelectorIncludeItemHostList>;
 
 export interface RulesCreateRequestSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesCreateRequestSelectorIncludeItemHostList;
 }
-export const RulesCreateRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(RulesCreateRequestSelectorIncludeItemHostList),
-  }),
-).annotate({
-  identifier: "RulesCreateRequestSelectorIncludeItem",
-}) as any as S.Schema<RulesCreateRequestSelectorIncludeItem>;
+export const RulesCreateRequestSelectorIncludeItem =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItem as any as S.Schema<RulesCreateRequestSelectorIncludeItem>;
 
 export type RulesCreateRequestSelectorIncludeList = Array<RulesCreateRequestSelectorIncludeItem>;
-export const RulesCreateRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesCreateRequestSelectorIncludeItem,
-) as any as S.Schema<RulesCreateRequestSelectorIncludeList>;
+export const RulesCreateRequestSelectorIncludeList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesCreateRequestSelectorIncludeList>;
 
 export interface RulesCreateRequestSelector {
   /** Ignore operations that were otherwise included by `include`. */
@@ -1131,52 +1086,34 @@ export type RulesCreateResponseAction = "log" | "block";
 export const RulesCreateResponseAction = S.String;
 
 export type RulesCreateResponseSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesCreateResponseSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateResponseSelectorExcludeItemOperationIdsList>;
+export const RulesCreateResponseSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateResponseSelectorExcludeItemOperationIdsList>;
 
 export interface RulesCreateResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesCreateResponseSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesCreateResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationIds: S.optional(
-      S.NullOr(RulesCreateResponseSelectorExcludeItemOperationIdsList).pipe(
-        T.Body("operation_ids"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "RulesCreateResponseSelectorExcludeItem",
-}) as any as S.Schema<RulesCreateResponseSelectorExcludeItem>;
+export const RulesCreateResponseSelectorExcludeItem =
+  RulesBulkCreateResultItemSelectorExcludeItem as any as S.Schema<RulesCreateResponseSelectorExcludeItem>;
 
 export type RulesCreateResponseSelectorExcludeList = Array<RulesCreateResponseSelectorExcludeItem>;
-export const RulesCreateResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
-  RulesCreateResponseSelectorExcludeItem,
-) as any as S.Schema<RulesCreateResponseSelectorExcludeList>;
+export const RulesCreateResponseSelectorExcludeList =
+  RulesBulkCreateResultItemSelectorExcludeList as any as S.Schema<RulesCreateResponseSelectorExcludeList>;
 
 export type RulesCreateResponseSelectorIncludeItemHostList = Array<string>;
-export const RulesCreateResponseSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateResponseSelectorIncludeItemHostList>;
+export const RulesCreateResponseSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateResponseSelectorIncludeItemHostList>;
 
 export interface RulesCreateResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesCreateResponseSelectorIncludeItemHostList | null;
 }
-export const RulesCreateResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(RulesCreateResponseSelectorIncludeItemHostList)),
-  }),
-).annotate({
-  identifier: "RulesCreateResponseSelectorIncludeItem",
-}) as any as S.Schema<RulesCreateResponseSelectorIncludeItem>;
+export const RulesCreateResponseSelectorIncludeItem =
+  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesCreateResponseSelectorIncludeItem>;
 
 export type RulesCreateResponseSelectorIncludeList = Array<RulesCreateResponseSelectorIncludeItem>;
-export const RulesCreateResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesCreateResponseSelectorIncludeItem,
-) as any as S.Schema<RulesCreateResponseSelectorIncludeList>;
+export const RulesCreateResponseSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesCreateResponseSelectorIncludeList>;
 
 export interface RulesCreateResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
@@ -1184,14 +1121,8 @@ export interface RulesCreateResponseSelector {
   /** Select all matching operations. */
   include?: RulesCreateResponseSelectorIncludeList | null;
 }
-export const RulesCreateResponseSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclude: S.optional(S.NullOr(RulesCreateResponseSelectorExcludeList)),
-    include: S.optional(S.NullOr(RulesCreateResponseSelectorIncludeList)),
-  }),
-).annotate({
-  identifier: "RulesCreateResponseSelector",
-}) as any as S.Schema<RulesCreateResponseSelector>;
+export const RulesCreateResponseSelector =
+  RulesBulkCreateResultItemSelector as any as S.Schema<RulesCreateResponseSelector>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
@@ -1882,9 +1813,8 @@ export const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationGetResponseCredentials>;
 
 export type ConfigurationGetResponseTokenSourcesList = Array<string>;
-export const ConfigurationGetResponseTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
+export const ConfigurationGetResponseTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
 
 export type ConfigurationGetResponseTokenType = "JWT";
 export const ConfigurationGetResponseTokenType = S.String;
@@ -1939,9 +1869,8 @@ export type RulesGetResponseAction = "log" | "block";
 export const RulesGetResponseAction = S.String;
 
 export type RulesGetResponseSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesGetResponseSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesGetResponseSelectorExcludeItemOperationIdsList>;
+export const RulesGetResponseSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesGetResponseSelectorExcludeItemOperationIdsList>;
 
 export interface RulesGetResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
@@ -1963,26 +1892,19 @@ export const RulesGetResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RulesGetResponseSelectorExcludeList>;
 
 export type RulesGetResponseSelectorIncludeItemHostList = Array<string>;
-export const RulesGetResponseSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesGetResponseSelectorIncludeItemHostList>;
+export const RulesGetResponseSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesGetResponseSelectorIncludeItemHostList>;
 
 export interface RulesGetResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesGetResponseSelectorIncludeItemHostList | null;
 }
-export const RulesGetResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(RulesGetResponseSelectorIncludeItemHostList)),
-  }),
-).annotate({
-  identifier: "RulesGetResponseSelectorIncludeItem",
-}) as any as S.Schema<RulesGetResponseSelectorIncludeItem>;
+export const RulesGetResponseSelectorIncludeItem =
+  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesGetResponseSelectorIncludeItem>;
 
 export type RulesGetResponseSelectorIncludeList = Array<RulesGetResponseSelectorIncludeItem>;
-export const RulesGetResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesGetResponseSelectorIncludeItem,
-) as any as S.Schema<RulesGetResponseSelectorIncludeList>;
+export const RulesGetResponseSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesGetResponseSelectorIncludeList>;
 
 export interface RulesGetResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
@@ -2239,9 +2161,8 @@ export const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ConfigurationListResultItemCredentials>;
 
 export type ConfigurationListResultItemTokenSourcesList = Array<string>;
-export const ConfigurationListResultItemTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationListResultItemTokenSourcesList>;
+export const ConfigurationListResultItemTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationListResultItemTokenSourcesList>;
 
 export type ConfigurationListResultItemTokenType = "JWT";
 export const ConfigurationListResultItemTokenType = S.String;
@@ -2296,9 +2217,8 @@ export type RulesListRequestAction = "log" | "block";
 export const RulesListRequestAction = S.String;
 
 export type RulesListRequestTokenConfigurationList = Array<string>;
-export const RulesListRequestTokenConfigurationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesListRequestTokenConfigurationList>;
+export const RulesListRequestTokenConfigurationList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesListRequestTokenConfigurationList>;
 
 export interface ListRulesRequest {
   /** Identifier. */
@@ -2345,52 +2265,34 @@ export type RulesListResultItemAction = "log" | "block";
 export const RulesListResultItemAction = S.String;
 
 export type RulesListResultItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesListResultItemSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesListResultItemSelectorExcludeItemOperationIdsList>;
+export const RulesListResultItemSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesListResultItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesListResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesListResultItemSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesListResultItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationIds: S.optional(
-      S.NullOr(RulesListResultItemSelectorExcludeItemOperationIdsList).pipe(
-        T.Body("operation_ids"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "RulesListResultItemSelectorExcludeItem",
-}) as any as S.Schema<RulesListResultItemSelectorExcludeItem>;
+export const RulesListResultItemSelectorExcludeItem =
+  RulesBulkCreateResultItemSelectorExcludeItem as any as S.Schema<RulesListResultItemSelectorExcludeItem>;
 
 export type RulesListResultItemSelectorExcludeList = Array<RulesListResultItemSelectorExcludeItem>;
-export const RulesListResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
-  RulesListResultItemSelectorExcludeItem,
-) as any as S.Schema<RulesListResultItemSelectorExcludeList>;
+export const RulesListResultItemSelectorExcludeList =
+  RulesBulkCreateResultItemSelectorExcludeList as any as S.Schema<RulesListResultItemSelectorExcludeList>;
 
 export type RulesListResultItemSelectorIncludeItemHostList = Array<string>;
-export const RulesListResultItemSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesListResultItemSelectorIncludeItemHostList>;
+export const RulesListResultItemSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesListResultItemSelectorIncludeItemHostList>;
 
 export interface RulesListResultItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesListResultItemSelectorIncludeItemHostList | null;
 }
-export const RulesListResultItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(RulesListResultItemSelectorIncludeItemHostList)),
-  }),
-).annotate({
-  identifier: "RulesListResultItemSelectorIncludeItem",
-}) as any as S.Schema<RulesListResultItemSelectorIncludeItem>;
+export const RulesListResultItemSelectorIncludeItem =
+  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesListResultItemSelectorIncludeItem>;
 
 export type RulesListResultItemSelectorIncludeList = Array<RulesListResultItemSelectorIncludeItem>;
-export const RulesListResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesListResultItemSelectorIncludeItem,
-) as any as S.Schema<RulesListResultItemSelectorIncludeList>;
+export const RulesListResultItemSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesListResultItemSelectorIncludeList>;
 
 export interface RulesListResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
@@ -2398,14 +2300,8 @@ export interface RulesListResultItemSelector {
   /** Select all matching operations. */
   include?: RulesListResultItemSelectorIncludeList | null;
 }
-export const RulesListResultItemSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclude: S.optional(S.NullOr(RulesListResultItemSelectorExcludeList)),
-    include: S.optional(S.NullOr(RulesListResultItemSelectorIncludeList)),
-  }),
-).annotate({
-  identifier: "RulesListResultItemSelector",
-}) as any as S.Schema<RulesListResultItemSelector>;
+export const RulesListResultItemSelector =
+  RulesBulkCreateResultItemSelector as any as S.Schema<RulesListResultItemSelector>;
 
 export interface RulesListResultItem {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
@@ -2458,9 +2354,8 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
 
 export type ConfigurationEditRequestTokenSourcesList = Array<string>;
-export const ConfigurationEditRequestTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
+export const ConfigurationEditRequestTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
 
 export interface PatchConfigurationRequest {
   /** Identifier. */
@@ -2494,9 +2389,8 @@ export const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchConfigurationRequest>;
 
 export type ConfigurationEditResponseTokenSourcesList = Array<string>;
-export const ConfigurationEditResponseTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationEditResponseTokenSourcesList>;
+export const ConfigurationEditResponseTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationEditResponseTokenSourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchConfigurationResponse {
@@ -2546,50 +2440,34 @@ export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type RulesEditRequestSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesEditRequestSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesEditRequestSelectorExcludeItemOperationIdsList>;
+export const RulesEditRequestSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditRequestSelectorExcludeItemOperationIdsList>;
 
 export interface RulesEditRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList;
 }
-export const RulesEditRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationIds: S.optional(
-      RulesEditRequestSelectorExcludeItemOperationIdsList.pipe(T.Body("operation_ids")),
-    ),
-  }),
-).annotate({
-  identifier: "RulesEditRequestSelectorExcludeItem",
-}) as any as S.Schema<RulesEditRequestSelectorExcludeItem>;
+export const RulesEditRequestSelectorExcludeItem =
+  RulesCreateRequestSelectorExcludeItem as any as S.Schema<RulesEditRequestSelectorExcludeItem>;
 
 export type RulesEditRequestSelectorExcludeList = Array<RulesEditRequestSelectorExcludeItem>;
-export const RulesEditRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
-  RulesEditRequestSelectorExcludeItem,
-) as any as S.Schema<RulesEditRequestSelectorExcludeList>;
+export const RulesEditRequestSelectorExcludeList =
+  RulesCreateRequestSelectorExcludeList as any as S.Schema<RulesEditRequestSelectorExcludeList>;
 
 export type RulesEditRequestSelectorIncludeItemHostList = Array<string>;
-export const RulesEditRequestSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesEditRequestSelectorIncludeItemHostList>;
+export const RulesEditRequestSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditRequestSelectorIncludeItemHostList>;
 
 export interface RulesEditRequestSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesEditRequestSelectorIncludeItemHostList;
 }
-export const RulesEditRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(RulesEditRequestSelectorIncludeItemHostList),
-  }),
-).annotate({
-  identifier: "RulesEditRequestSelectorIncludeItem",
-}) as any as S.Schema<RulesEditRequestSelectorIncludeItem>;
+export const RulesEditRequestSelectorIncludeItem =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItem as any as S.Schema<RulesEditRequestSelectorIncludeItem>;
 
 export type RulesEditRequestSelectorIncludeList = Array<RulesEditRequestSelectorIncludeItem>;
-export const RulesEditRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesEditRequestSelectorIncludeItem,
-) as any as S.Schema<RulesEditRequestSelectorIncludeList>;
+export const RulesEditRequestSelectorIncludeList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesEditRequestSelectorIncludeList>;
 
 export interface RulesEditRequestSelector {
   /** Ignore operations that were otherwise included by `include`. */
@@ -2650,50 +2528,34 @@ export type RulesEditResponseAction = "log" | "block";
 export const RulesEditResponseAction = S.String;
 
 export type RulesEditResponseSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesEditResponseSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesEditResponseSelectorExcludeItemOperationIdsList>;
+export const RulesEditResponseSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditResponseSelectorExcludeItemOperationIdsList>;
 
 export interface RulesEditResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesEditResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationIds: S.optional(
-      S.NullOr(RulesEditResponseSelectorExcludeItemOperationIdsList).pipe(T.Body("operation_ids")),
-    ),
-  }),
-).annotate({
-  identifier: "RulesEditResponseSelectorExcludeItem",
-}) as any as S.Schema<RulesEditResponseSelectorExcludeItem>;
+export const RulesEditResponseSelectorExcludeItem =
+  RulesGetResponseSelectorExcludeItem as any as S.Schema<RulesEditResponseSelectorExcludeItem>;
 
 export type RulesEditResponseSelectorExcludeList = Array<RulesEditResponseSelectorExcludeItem>;
-export const RulesEditResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
-  RulesEditResponseSelectorExcludeItem,
-) as any as S.Schema<RulesEditResponseSelectorExcludeList>;
+export const RulesEditResponseSelectorExcludeList =
+  RulesGetResponseSelectorExcludeList as any as S.Schema<RulesEditResponseSelectorExcludeList>;
 
 export type RulesEditResponseSelectorIncludeItemHostList = Array<string>;
-export const RulesEditResponseSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesEditResponseSelectorIncludeItemHostList>;
+export const RulesEditResponseSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditResponseSelectorIncludeItemHostList>;
 
 export interface RulesEditResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesEditResponseSelectorIncludeItemHostList | null;
 }
-export const RulesEditResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.NullOr(RulesEditResponseSelectorIncludeItemHostList)),
-  }),
-).annotate({
-  identifier: "RulesEditResponseSelectorIncludeItem",
-}) as any as S.Schema<RulesEditResponseSelectorIncludeItem>;
+export const RulesEditResponseSelectorIncludeItem =
+  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesEditResponseSelectorIncludeItem>;
 
 export type RulesEditResponseSelectorIncludeList = Array<RulesEditResponseSelectorIncludeItem>;
-export const RulesEditResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesEditResponseSelectorIncludeItem,
-) as any as S.Schema<RulesEditResponseSelectorIncludeList>;
+export const RulesEditResponseSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesEditResponseSelectorIncludeList>;
 
 export interface RulesEditResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */

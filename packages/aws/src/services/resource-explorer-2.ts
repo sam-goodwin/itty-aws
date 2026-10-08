@@ -243,7 +243,7 @@ export const CreateIndexOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateIndexOutput" }) as any as S.Schema<CreateIndexOutput>;
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export const RegionList = ViewArnList as any as S.Schema<RegionList>;
 export interface CreateResourceExplorerSetupInput {
   RegionList: string[];
   AggregatorRegions?: string[];
@@ -340,11 +340,8 @@ export const DeleteResourceExplorerSetupInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResourceExplorerSetupOutput {
   TaskId: string;
 }
-export const DeleteResourceExplorerSetupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TaskId: S.String }),
-).annotate({
-  identifier: "DeleteResourceExplorerSetupOutput",
-}) as any as S.Schema<DeleteResourceExplorerSetupOutput>;
+export const DeleteResourceExplorerSetupOutput =
+  CreateResourceExplorerSetupOutput as any as S.Schema<DeleteResourceExplorerSetupOutput>;
 export interface DeleteViewInput {
   ViewArn: string;
 }
@@ -418,9 +415,7 @@ export const GetDefaultViewRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDefaultViewOutput {
   ViewArn?: string;
 }
-export const GetDefaultViewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ViewArn: S.optional(S.String) }),
-).annotate({ identifier: "GetDefaultViewOutput" }) as any as S.Schema<GetDefaultViewOutput>;
+export const GetDefaultViewOutput = DeleteViewOutput as any as S.Schema<GetDefaultViewOutput>;
 export interface GetIndexRequest {}
 export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -679,7 +674,7 @@ export const ListIndexesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIndexesOutput" }) as any as S.Schema<ListIndexesOutput>;
 export type AccountId = string;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const AccountIdList = ViewArnList as any as S.Schema<AccountIdList>;
 export interface ListIndexesForMembersInput {
   AccountIdList: string[];
   MaxResults?: number;
@@ -736,7 +731,7 @@ export const ListManagedViewsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListManagedViewsInput" }) as any as S.Schema<ListManagedViewsInput>;
 export type ManagedViewArnList = string[];
-export const ManagedViewArnList = /*@__PURE__*/ S.Array(S.String);
+export const ManagedViewArnList = ViewArnList as any as S.Schema<ManagedViewArnList>;
 export interface ListManagedViewsOutput {
   NextToken?: string;
   ManagedViews?: string[];
@@ -826,9 +821,8 @@ export interface ListServiceIndexesOutput {
   Indexes?: Index[];
   NextToken?: string;
 }
-export const ListServiceIndexesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Indexes: S.optional(IndexList), NextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListServiceIndexesOutput" }) as any as S.Schema<ListServiceIndexesOutput>;
+export const ListServiceIndexesOutput =
+  ListIndexesOutput as any as S.Schema<ListServiceIndexesOutput>;
 export interface ListServiceViewsInput {
   MaxResults?: number;
   NextToken?: string;
@@ -839,7 +833,7 @@ export const ListServiceViewsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListServiceViewsInput" }) as any as S.Schema<ListServiceViewsInput>;
 export type ServiceViewArnList = string[];
-export const ServiceViewArnList = /*@__PURE__*/ S.Array(S.String);
+export const ServiceViewArnList = ViewArnList as any as S.Schema<ServiceViewArnList>;
 export interface ListServiceViewsOutput {
   NextToken?: string;
   ServiceViews?: string[];
@@ -908,7 +902,7 @@ export const ListSupportedResourceTypesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSupportedResourceTypesInput",
 }) as any as S.Schema<ListSupportedResourceTypesInput>;
 export type CFNResourceTypeList = string[];
-export const CFNResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const CFNResourceTypeList = ViewArnList as any as S.Schema<CFNResourceTypeList>;
 export interface SupportedResourceType {
   Service?: string;
   ResourceType?: string;
@@ -1017,7 +1011,7 @@ export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).ann
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = ViewArnList as any as S.Schema<StringList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -1031,9 +1025,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateIndexTypeInput {
   Arn: string;
   Type: string;
@@ -1072,9 +1064,7 @@ export const UpdateViewInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateViewOutput {
   View?: View;
 }
-export const UpdateViewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ View: S.optional(View) }),
-).annotate({ identifier: "UpdateViewOutput" }) as any as S.Schema<UpdateViewOutput>;
+export const UpdateViewOutput = CreateViewOutput as any as S.Schema<UpdateViewOutput>;
 export interface ValidationExceptionField {
   Name: string;
   ValidationIssue: string;

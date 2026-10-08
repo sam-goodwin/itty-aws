@@ -246,9 +246,8 @@ export const DefaultBillingEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultBillingEntityRequest>;
 
 export interface DefaultBillingEntityResponse {}
-export const DefaultBillingEntityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DefaultBillingEntityResponse",
-}) as any as S.Schema<DefaultBillingEntityResponse>;
+export const DefaultBillingEntityResponse =
+  CreateProviderMappingResponse as any as S.Schema<DefaultBillingEntityResponse>;
 
 export type ListProviderMappingsRequestProvider =
   | "baseten"
@@ -288,9 +287,8 @@ export const ListProviderMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProviderMappingsRequest>;
 
 export interface ListProviderMappingsResponse {}
-export const ListProviderMappingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListProviderMappingsResponse",
-}) as any as S.Schema<ListProviderMappingsResponse>;
+export const ListProviderMappingsResponse =
+  CreateProviderMappingResponse as any as S.Schema<ListProviderMappingsResponse>;
 
 export interface ReorderInferenceProvidersRequestBodyValue {
   enabled: boolean;
@@ -363,9 +361,8 @@ export const SetProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetProviderKeyRequest" }) as any as S.Schema<SetProviderKeyRequest>;
 
 export interface SetProviderKeyResponse {}
-export const SetProviderKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetProviderKeyResponse",
-}) as any as S.Schema<SetProviderKeyResponse>;
+export const SetProviderKeyResponse =
+  CreateProviderMappingResponse as any as S.Schema<SetProviderKeyResponse>;
 
 export interface SetSpendingLimitRequest {
   spendingLimitCents: number;
@@ -379,9 +376,8 @@ export const SetSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSpendingLimitRequest" }) as any as S.Schema<SetSpendingLimitRequest>;
 
 export interface SetSpendingLimitResponse {}
-export const SetSpendingLimitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetSpendingLimitResponse",
-}) as any as S.Schema<SetSpendingLimitResponse>;
+export const SetSpendingLimitResponse =
+  CreateProviderMappingResponse as any as S.Schema<SetSpendingLimitResponse>;
 
 export type UpdateMappingStatusRequestProvider =
   | "baseten"
@@ -425,9 +421,8 @@ export const UpdateMappingStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMappingStatusRequest>;
 
 export interface UpdateMappingStatusResponse {}
-export const UpdateMappingStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMappingStatusResponse",
-}) as any as S.Schema<UpdateMappingStatusResponse>;
+export const UpdateMappingStatusResponse =
+  CreateProviderMappingResponse as any as S.Schema<UpdateMappingStatusResponse>;
 
 export type CreateProviderMappingError = HuggingFaceOpError;
 /** Create provider mapping Register a model mapping for your inference provider. Requires a write token of the provider organization. */

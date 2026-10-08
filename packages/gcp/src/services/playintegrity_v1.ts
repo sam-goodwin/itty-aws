@@ -507,11 +507,7 @@ export interface PcTestingDetails {
   /** Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
   isTestingResponse?: boolean;
 }
-export const PcTestingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isTestingResponse: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PcTestingDetails" }) as any as S.Schema<PcTestingDetails>;
+export const PcTestingDetails = TestingDetails as any as S.Schema<PcTestingDetails>;
 
 export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnum =
   | "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED"

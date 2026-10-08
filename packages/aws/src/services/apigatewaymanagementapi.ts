@@ -179,9 +179,8 @@ export const PostToConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PostToConnectionRequest" }) as any as S.Schema<PostToConnectionRequest>;
 export interface PostToConnectionResponse {}
-export const PostToConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostToConnectionResponse",
-}) as any as S.Schema<PostToConnectionResponse>;
+export const PostToConnectionResponse =
+  DeleteConnectionResponse as any as S.Schema<PostToConnectionResponse>;
 export type DeleteConnectionError =
   | ForbiddenException
   | GoneException

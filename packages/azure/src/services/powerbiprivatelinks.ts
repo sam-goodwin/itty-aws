@@ -271,10 +271,8 @@ export const TenantProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the tags of the resource. */
 export type TenantResourceTagsMap = { [key: string]: string | undefined };
-export const TenantResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TenantResourceTagsMap>;
+export const TenantResourceTagsMap =
+  CreatePowerBIResourceRequestTagsMap as any as S.Schema<TenantResourceTagsMap>;
 
 export interface TenantResource {
   /** Specifies the resource identifier of the resource. */
@@ -464,9 +462,8 @@ export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -586,9 +583,8 @@ export const AsyncOperationDetailErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type AsyncOperationDetailErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const AsyncOperationDetailErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<AsyncOperationDetailErrorAdditionalInfoList>;
+export const AsyncOperationDetailErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<AsyncOperationDetailErrorAdditionalInfoList>;
 
 /** The error detail. */
 export interface AsyncOperationDetailError {
@@ -787,9 +783,8 @@ export const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.su
 
 /** Specifies the name of the private endpoint connection. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  TenantPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** List of private endpoint connections. */
 export interface PrivateEndpointConnectionListResult {
@@ -877,17 +872,13 @@ export const ListPrivateLinkServiceByResourceGroupRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListPrivateLinkServiceByResourceGroupRequest>;
 
 export type ListPrivateLinkServiceByResourceGroupResponseBodyList = Array<TenantResource>;
-export const ListPrivateLinkServiceByResourceGroupResponseBodyList = /*@__PURE__*/ S.Array(
-  TenantResource,
-) as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponseBodyList>;
+export const ListPrivateLinkServiceByResourceGroupResponseBodyList =
+  ListPowerBIResourceByResourceNameResponseBodyList as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponseBodyList>;
 
 export type ListPrivateLinkServiceByResourceGroupResponse =
   ListPrivateLinkServiceByResourceGroupResponseBodyList;
-export const ListPrivateLinkServiceByResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPrivateLinkServiceByResourceGroupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPrivateLinkServiceByResourceGroupResponse",
-}) as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponse>;
+export const ListPrivateLinkServiceByResourceGroupResponse =
+  ListPowerBIResourceByResourceNameResponse as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponse>;
 
 export interface ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
@@ -926,10 +917,8 @@ export const ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse = /*@__PU
 
 /** Specifies the tags of the resource. */
 export type UpdatePowerBIResourceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePowerBIResourceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePowerBIResourceRequestTagsMap>;
+export const UpdatePowerBIResourceRequestTagsMap =
+  CreatePowerBIResourceRequestTagsMap as any as S.Schema<UpdatePowerBIResourceRequestTagsMap>;
 
 export interface UpdatePowerBIResourceRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */

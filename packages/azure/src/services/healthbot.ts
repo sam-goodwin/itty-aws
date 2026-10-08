@@ -172,10 +172,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateBotResponseTagsMap = { [key: string]: string | undefined };
-export const CreateBotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateBotResponseTagsMap>;
+export const CreateBotResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<CreateBotResponseTagsMap>;
 
 /** The properties of a Azure Health Bot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs. */
 export interface HealthBotProperties {
@@ -296,9 +294,7 @@ export const DeleteBotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBotRequest" }) as any as S.Schema<DeleteBotRequest>;
 
 export interface DeleteBotResponse {}
-export const DeleteBotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBotResponse",
-}) as any as S.Schema<DeleteBotResponse>;
+export const DeleteBotResponse = UserAssignedIdentityInput as any as S.Schema<DeleteBotResponse>;
 
 export interface GetBotRequest {
   /** The ID of the target subscription. */
@@ -325,10 +321,8 @@ export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBotResponseTagsMap = { [key: string]: string | undefined };
-export const GetBotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBotResponseTagsMap>;
+export const GetBotResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<GetBotResponseTagsMap>;
 
 export interface GetBotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -350,19 +344,7 @@ export interface GetBotResponse {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
-export const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetBotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(HealthBotProperties),
-    sku: Sku,
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
+export const GetBotResponse = CreateBotResponse as any as S.Schema<GetBotResponse>;
 
 export interface ListBotByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -388,10 +370,7 @@ export const ListBotByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type HealthBotTagsMap = { [key: string]: string | undefined };
-export const HealthBotTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HealthBotTagsMap>;
+export const HealthBotTagsMap = CreateBotRequestTagsMap as any as S.Schema<HealthBotTagsMap>;
 
 /** Azure Health Bot resource definition */
 export interface HealthBot {
@@ -414,19 +393,7 @@ export interface HealthBot {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
-export const HealthBot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(HealthBotTagsMap),
-    location: S.String,
-    properties: S.optional(HealthBotProperties),
-    sku: Sku,
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "HealthBot" }) as any as S.Schema<HealthBot>;
+export const HealthBot = CreateBotResponse as any as S.Schema<HealthBot>;
 
 /** The HealthBot items on this page */
 export type BotResponseListValueList = Array<HealthBot>;
@@ -621,10 +588,8 @@ export const RegenerateBotApiJwtSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for a Azure Health Bot. */
 export type UpdateBotRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBotRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBotRequestTagsMap>;
+export const UpdateBotRequestTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateBotRequestTagsMap>;
 
 export interface UpdateBotRequest {
   /** The ID of the target subscription. */
@@ -665,10 +630,8 @@ export const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBotResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBotResponseTagsMap>;
+export const UpdateBotResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<UpdateBotResponseTagsMap>;
 
 export interface UpdateBotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -690,19 +653,7 @@ export interface UpdateBotResponse {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
-export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(HealthBotProperties),
-    sku: Sku,
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "UpdateBotResponse" }) as any as S.Schema<UpdateBotResponse>;
+export const UpdateBotResponse = CreateBotResponse as any as S.Schema<UpdateBotResponse>;
 
 export type CreateBotError = AzureOpError;
 /** Create a new Azure Health Bot. */

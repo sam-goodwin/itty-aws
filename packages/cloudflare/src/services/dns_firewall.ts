@@ -127,14 +127,12 @@ export const CreateDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDnsFirewallRequest" }) as any as S.Schema<CreateDnsFirewallRequest>;
 
 export type CreateResponseDnsFirewallIpsList = Array<string>;
-export const CreateResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseDnsFirewallIpsList>;
+export const CreateResponseDnsFirewallIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<CreateResponseDnsFirewallIpsList>;
 
 export type CreateResponseUpstreamIpsList = Array<string>;
-export const CreateResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseUpstreamIpsList>;
+export const CreateResponseUpstreamIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<CreateResponseUpstreamIpsList>;
 
 export interface CreateResponseAttackMitigation {
   /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
@@ -279,9 +277,8 @@ export const GetAnalyticReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAnalyticReportRequest" }) as any as S.Schema<GetAnalyticReportRequest>;
 
 export type AnalyticsReportsGetResponseDataItemDimensionsList = Array<string>;
-export const AnalyticsReportsGetResponseDataItemDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
+export const AnalyticsReportsGetResponseDataItemDimensionsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
 
 export type AnalyticsReportsGetResponseDataItemMetricsList = Array<number>;
 export const AnalyticsReportsGetResponseDataItemMetricsList = /*@__PURE__*/ S.Array(
@@ -309,19 +306,16 @@ export const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
 
 export type AnalyticsReportsGetResponseQueryDimensionsList = Array<string>;
-export const AnalyticsReportsGetResponseQueryDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
+export const AnalyticsReportsGetResponseQueryDimensionsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
 
 export type AnalyticsReportsGetResponseQueryMetricsList = Array<string>;
-export const AnalyticsReportsGetResponseQueryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
+export const AnalyticsReportsGetResponseQueryMetricsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
 
 export type AnalyticsReportsGetResponseQuerySortList = Array<string>;
-export const AnalyticsReportsGetResponseQuerySortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
+export const AnalyticsReportsGetResponseQuerySortList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
 
 export interface AnalyticsReportsGetResponseQuery {
   /** Array of dimension names. */
@@ -444,14 +438,12 @@ export const GetAnalyticReportBytimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticReportBytimeRequest>;
 
 export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList = Array<string>;
-export const AnalyticsReportsBytimesGetResponseDataItemDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
+export const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
 
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsItemList = Array<number>;
-export const AnalyticsReportsBytimesGetResponseDataItemMetricsItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
+export const AnalyticsReportsBytimesGetResponseDataItemMetricsItemList =
+  AnalyticsReportsGetResponseDataItemMetricsList as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
 
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsList =
   Array<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
@@ -481,14 +473,12 @@ export const AnalyticsReportsBytimesGetResponseDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataList>;
 
 export type AnalyticsReportsBytimesGetResponseQueryDimensionsList = Array<string>;
-export const AnalyticsReportsBytimesGetResponseQueryDimensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
+export const AnalyticsReportsBytimesGetResponseQueryDimensionsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
 
 export type AnalyticsReportsBytimesGetResponseQueryMetricsList = Array<string>;
-export const AnalyticsReportsBytimesGetResponseQueryMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryMetricsList>;
+export const AnalyticsReportsBytimesGetResponseQueryMetricsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryMetricsList>;
 
 export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "all"
@@ -504,9 +494,8 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
 export const AnalyticsReportsBytimesGetResponseQueryTimeDelta = S.String;
 
 export type AnalyticsReportsBytimesGetResponseQuerySortList = Array<string>;
-export const AnalyticsReportsBytimesGetResponseQuerySortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
+export const AnalyticsReportsBytimesGetResponseQuerySortList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
 
 export interface AnalyticsReportsBytimesGetResponseQuery {
   /** Array of dimension names. */
@@ -542,9 +531,8 @@ export const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
 
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsItemList = Array<string>;
-export const AnalyticsReportsBytimesGetResponseTimeIntervalsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
+export const AnalyticsReportsBytimesGetResponseTimeIntervalsItemList =
+  CreateRequestUpstreamIpsList as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
 
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsList =
   Array<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
@@ -609,14 +597,12 @@ export const GetDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDnsFirewallRequest" }) as any as S.Schema<GetDnsFirewallRequest>;
 
 export type GetResponseDnsFirewallIpsList = Array<string>;
-export const GetResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseDnsFirewallIpsList>;
+export const GetResponseDnsFirewallIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<GetResponseDnsFirewallIpsList>;
 
 export type GetResponseUpstreamIpsList = Array<string>;
-export const GetResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseUpstreamIpsList>;
+export const GetResponseUpstreamIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<GetResponseUpstreamIpsList>;
 
 export type GetResponseAttackMitigation = CreateResponseAttackMitigation;
 export const GetResponseAttackMitigation = CreateResponseAttackMitigation;
@@ -725,14 +711,12 @@ export const ListDnsFirewallsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDnsFirewallsRequest" }) as any as S.Schema<ListDnsFirewallsRequest>;
 
 export type ListResultItemDnsFirewallIpsList = Array<string>;
-export const ListResultItemDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemDnsFirewallIpsList>;
+export const ListResultItemDnsFirewallIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<ListResultItemDnsFirewallIpsList>;
 
 export type ListResultItemUpstreamIpsList = Array<string>;
-export const ListResultItemUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemUpstreamIpsList>;
+export const ListResultItemUpstreamIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<ListResultItemUpstreamIpsList>;
 
 export type ListResultItemAttackMitigation = CreateResponseAttackMitigation;
 export const ListResultItemAttackMitigation = CreateResponseAttackMitigation;
@@ -805,9 +789,8 @@ export type EditRequestAttackMitigation = CreateRequestAttackMitigation;
 export const EditRequestAttackMitigation = CreateRequestAttackMitigation;
 
 export type EditRequestUpstreamIpsList = Array<string>;
-export const EditRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestUpstreamIpsList>;
+export const EditRequestUpstreamIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<EditRequestUpstreamIpsList>;
 
 export interface PatchDnsFirewallRequest {
   /** Identifier. */
@@ -860,14 +843,12 @@ export const PatchDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchDnsFirewallRequest" }) as any as S.Schema<PatchDnsFirewallRequest>;
 
 export type EditResponseDnsFirewallIpsList = Array<string>;
-export const EditResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseDnsFirewallIpsList>;
+export const EditResponseDnsFirewallIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<EditResponseDnsFirewallIpsList>;
 
 export type EditResponseUpstreamIpsList = Array<string>;
-export const EditResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseUpstreamIpsList>;
+export const EditResponseUpstreamIpsList =
+  CreateRequestUpstreamIpsList as any as S.Schema<EditResponseUpstreamIpsList>;
 
 export type EditResponseAttackMitigation = CreateResponseAttackMitigation;
 export const EditResponseAttackMitigation = CreateResponseAttackMitigation;
@@ -899,31 +880,12 @@ export interface PatchDnsFirewallResponse {
   /** Attack mitigation settings */
   attackMitigation?: CreateResponseAttackMitigation | null;
 }
-export const PatchDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-    dnsFirewallIps: EditResponseDnsFirewallIpsList.pipe(T.Body("dns_firewall_ips")),
-    ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
-    maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
-    minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
-    ratelimit: S.Number,
-    retries: S.Number,
-    upstreamIps: EditResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
-    attackMitigation: S.optional(
-      S.NullOr(CreateResponseAttackMitigation).pipe(T.Body("attack_mitigation")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchDnsFirewallResponse" }) as any as S.Schema<PatchDnsFirewallResponse>;
+export const PatchDnsFirewallResponse =
+  GetDnsFirewallResponse as any as S.Schema<PatchDnsFirewallResponse>;
 
 export type ReverseDnsEditRequestPtrMap = { [key: string]: string | undefined };
-export const ReverseDnsEditRequestPtrMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReverseDnsEditRequestPtrMap>;
+export const ReverseDnsEditRequestPtrMap =
+  ReverseDnsGetResponsePtrMap as any as S.Schema<ReverseDnsEditRequestPtrMap>;
 
 export interface PatchReverseDnRequest {
   /** Identifier. */
@@ -950,21 +912,16 @@ export const PatchReverseDnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchReverseDnRequest" }) as any as S.Schema<PatchReverseDnRequest>;
 
 export type ReverseDnsEditResponsePtrMap = { [key: string]: string | undefined };
-export const ReverseDnsEditResponsePtrMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReverseDnsEditResponsePtrMap>;
+export const ReverseDnsEditResponsePtrMap =
+  ReverseDnsGetResponsePtrMap as any as S.Schema<ReverseDnsEditResponsePtrMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchReverseDnResponse {
   /** Map of cluster IP addresses to PTR record contents */
   ptr: ReverseDnsEditResponsePtrMap;
 }
-export const PatchReverseDnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ptr: ReverseDnsEditResponsePtrMap,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchReverseDnResponse" }) as any as S.Schema<PatchReverseDnResponse>;
+export const PatchReverseDnResponse =
+  GetReverseDnResponse as any as S.Schema<PatchReverseDnResponse>;
 
 export type CreateDnsFirewallError = DnsFirewallNotEntitled | Forbidden | CloudflareOpError;
 /** Create a DNS Firewall cluster */

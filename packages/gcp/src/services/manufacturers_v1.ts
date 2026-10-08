@@ -329,12 +329,7 @@ export interface Capacity {
   /** The unit of the capacity, i.e., MB, GB, or TB. */
   unit?: string;
 }
-export const Capacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "Capacity" }) as any as S.Schema<Capacity>;
+export const Capacity = Count as any as S.Schema<Capacity>;
 
 export type ImageTypeEnum = "TYPE_UNSPECIFIED" | "CRAWLED" | "UPLOADED";
 export const ImageTypeEnum = S.String;

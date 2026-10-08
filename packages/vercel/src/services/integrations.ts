@@ -238,9 +238,7 @@ export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders 
 
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList = Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProjectFilterGit {
   owners?: CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList;
@@ -272,9 +270,7 @@ export const CreateIntegrationStoreDirectResponseStoreProjectFilter = /*@__PURE_
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem {
   environments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList;
@@ -316,16 +312,12 @@ export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploy
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework =
   | "actix-web"
@@ -485,9 +477,7 @@ export const CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDeta
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
 export const CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList>;
+  CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem {
   amount: string;
@@ -625,9 +615,7 @@ export const CreateIntegrationStoreDirectResponseStoreExternalResourceStatus = S
 
 export type CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List = Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List>;
 
 export type CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List = Array<number>;
 export const CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List =
@@ -678,9 +666,7 @@ export const CreateIntegrationStoreDirectResponseStoreOwnership = S.String;
 /** URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration. */
 export type CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList = Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotationCase0 =
   CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0;
@@ -744,9 +730,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductCapabilities = /*@_
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0Type =
   "string";
@@ -1189,9 +1173,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList =
   Array<number>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList>;
+  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3ItemsType =
   "number";
@@ -1306,9 +1288,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList =
   Array<number>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList>;
+  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3 {
   default?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList;
@@ -1383,9 +1363,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4Type =
   "string";
@@ -1611,9 +1589,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5Type =
   "string";
@@ -1839,23 +1815,17 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsType =
   "string";
@@ -2116,9 +2086,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7Type =
   "string";
@@ -2410,23 +2378,17 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsType =
   "string";
@@ -2753,9 +2715,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9Type =
   "string";
@@ -3047,9 +3007,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10Type =
   "string";
@@ -3385,9 +3343,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType = "object";
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType = S.String;
@@ -3395,9 +3351,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList =
   Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchema {
   properties: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap;
@@ -3683,9 +3637,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabili
 
 export type CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList = Array<string>;
 export const CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductIntegration {
   capabilities?: CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities;
@@ -4079,9 +4031,8 @@ export const GetBillingPlansResponsePlansItemHighlightedDetailsItem =
 
 export type GetBillingPlansResponsePlansItemHighlightedDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-export const GetBillingPlansResponsePlansItemHighlightedDetailsList = /*@__PURE__*/ S.Array(
-  CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem,
-) as any as S.Schema<GetBillingPlansResponsePlansItemHighlightedDetailsList>;
+export const GetBillingPlansResponsePlansItemHighlightedDetailsList =
+  GetBillingPlansResponsePlansItemDetailsList as any as S.Schema<GetBillingPlansResponsePlansItemHighlightedDetailsList>;
 
 export type GetBillingPlansResponsePlansItemQuoteItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem;
@@ -4090,9 +4041,8 @@ export const GetBillingPlansResponsePlansItemQuoteItem =
 
 export type GetBillingPlansResponsePlansItemQuoteList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
-export const GetBillingPlansResponsePlansItemQuoteList = /*@__PURE__*/ S.Array(
-  CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem,
-) as any as S.Schema<GetBillingPlansResponsePlansItemQuoteList>;
+export const GetBillingPlansResponsePlansItemQuoteList =
+  CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList as any as S.Schema<GetBillingPlansResponsePlansItemQuoteList>;
 
 export type GetBillingPlansResponsePlansItemScope = "installation" | "resource";
 export const GetBillingPlansResponsePlansItemScope = S.String;
@@ -4208,9 +4158,8 @@ export const GetConfigurationResponseBodyCase0Notification = /*@__PURE__*/ S.sus
 
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationResponseBodyCase0ProjectsList = Array<string>;
-export const GetConfigurationResponseBodyCase0ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationResponseBodyCase0ProjectsList>;
+export const GetConfigurationResponseBodyCase0ProjectsList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase0ProjectsList>;
 
 /** A string representing the permission for projects. Possible values are `all` or `selected`. */
 export type GetConfigurationResponseBodyCase0ProjectSelection = "all" | "selected";
@@ -4218,9 +4167,8 @@ export const GetConfigurationResponseBodyCase0ProjectSelection = S.String;
 
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationResponseBodyCase0ScopesList = Array<string>;
-export const GetConfigurationResponseBodyCase0ScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationResponseBodyCase0ScopesList>;
+export const GetConfigurationResponseBodyCase0ScopesList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase0ScopesList>;
 
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationResponseBodyCase0Source =
@@ -4487,15 +4435,13 @@ export const GetConfigurationResponseBodyCase1InstallationType = S.String;
 
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationResponseBodyCase1ProjectsList = Array<string>;
-export const GetConfigurationResponseBodyCase1ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationResponseBodyCase1ProjectsList>;
+export const GetConfigurationResponseBodyCase1ProjectsList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase1ProjectsList>;
 
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationResponseBodyCase1ScopesList = Array<string>;
-export const GetConfigurationResponseBodyCase1ScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationResponseBodyCase1ScopesList>;
+export const GetConfigurationResponseBodyCase1ScopesList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase1ScopesList>;
 
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationResponseBodyCase1Source =
@@ -4614,15 +4560,13 @@ export const GetConfigurationResponseBodyCase2InstallationType = S.String;
 
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationResponseBodyCase2ProjectsList = Array<string>;
-export const GetConfigurationResponseBodyCase2ProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationResponseBodyCase2ProjectsList>;
+export const GetConfigurationResponseBodyCase2ProjectsList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase2ProjectsList>;
 
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationResponseBodyCase2ScopesList = Array<string>;
-export const GetConfigurationResponseBodyCase2ScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationResponseBodyCase2ScopesList>;
+export const GetConfigurationResponseBodyCase2ScopesList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase2ScopesList>;
 
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationResponseBodyCase2Source =
@@ -4787,9 +4731,7 @@ export const GetConfigurationProductsResponseIntegration = /*@__PURE__*/ S.suspe
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0Type =
   "string";
@@ -5221,9 +5163,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList =
   Array<number>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList>;
+  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3ItemsType =
   "number";
@@ -5338,9 +5278,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList =
   Array<number>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList>;
+  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList>;
 
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3 {
   default?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList;
@@ -5413,9 +5351,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4Type =
   "string";
@@ -5640,9 +5576,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5Type =
   "string";
@@ -5867,23 +5801,17 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsType =
   "string";
@@ -6142,9 +6070,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7Type =
   "string";
@@ -6435,23 +6361,17 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsType =
   "string";
@@ -6776,9 +6696,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9Type =
   "string";
@@ -7069,9 +6987,7 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList =
   Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10Type =
   "string";
@@ -7404,18 +7320,14 @@ export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertie
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList = Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaType = "object";
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaType = S.String;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList = Array<string>;
 export const GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList>;
+  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList>;
 
 export interface GetConfigurationProductsResponseProductsItemMetadataSchema {
   properties: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap;
@@ -7643,10 +7555,7 @@ export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeade
   [key: string]: string | undefined;
 };
 export const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap>;
+  GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat =
   | "json"
@@ -7825,15 +7734,13 @@ export const GetConfigurationsResponseBodyCase0ItemInstallationType = S.String;
 
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationsResponseBodyCase0ItemProjectsList = Array<string>;
-export const GetConfigurationsResponseBodyCase0ItemProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationsResponseBodyCase0ItemProjectsList>;
+export const GetConfigurationsResponseBodyCase0ItemProjectsList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase0ItemProjectsList>;
 
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationsResponseBodyCase0ItemScopesList = Array<string>;
-export const GetConfigurationsResponseBodyCase0ItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationsResponseBodyCase0ItemScopesList>;
+export const GetConfigurationsResponseBodyCase0ItemScopesList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase0ItemScopesList>;
 
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationsResponseBodyCase0ItemSource =
@@ -7957,9 +7864,8 @@ export type GetConfigurationsResponseBodyCase1ItemInstallationType = "external" 
 export const GetConfigurationsResponseBodyCase1ItemInstallationType = S.String;
 
 export type GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList = Array<string>;
-export const GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList>;
+export const GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList>;
 
 export type GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem =
   | "tag_agents"
@@ -8021,15 +7927,13 @@ export const GetConfigurationsResponseBodyCase1ItemIntegration = /*@__PURE__*/ S
 
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationsResponseBodyCase1ItemProjectsList = Array<string>;
-export const GetConfigurationsResponseBodyCase1ItemProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationsResponseBodyCase1ItemProjectsList>;
+export const GetConfigurationsResponseBodyCase1ItemProjectsList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase1ItemProjectsList>;
 
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationsResponseBodyCase1ItemScopesList = Array<string>;
-export const GetConfigurationsResponseBodyCase1ItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConfigurationsResponseBodyCase1ItemScopesList>;
+export const GetConfigurationsResponseBodyCase1ItemScopesList =
+  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase1ItemScopesList>;
 
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationsResponseBodyCase1ItemSource =

@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -284,17 +282,13 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConv
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList =
   Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList>;
 
 /** shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList =
   Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList>;
 
 /** CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition */
 export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
@@ -376,9 +370,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAll
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap = {
   [key: string]: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps | undefined;
@@ -423,42 +415,30 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentat
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap = {
   [key: string]: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps | undefined;
 };
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap = {
   [key: string]: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps | undefined;
 };
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =
   Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList>;
 
 /** x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying the keys used as the index of the map. This tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported). The properties specified must either be required or have a default value, to ensure those properties are present for all list items. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList =
   Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList>;
 
 /** ValidationRule describes a validation rule written in the CEL expression language. */
 export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule {
@@ -830,9 +810,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList =
   Array<string>;
 export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList>;
+  IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList>;
 
 /** CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition */
 export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
@@ -1285,21 +1263,18 @@ export const GetApiextensionsV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {

@@ -671,11 +671,8 @@ export const GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment = /*@__PURE__
 
 /** Information about the evaluation of a `ChallengeRule`. */
 export interface GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation {}
-export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation>;
+export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation =
+  GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation>;
 
 /** Information about the policy evaluation. */
 export interface GoogleCloudRecaptchaenterpriseV1PolicyEvaluation {
@@ -1286,13 +1283,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTe
   risk?: number;
 }
 export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      risk: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict>;
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict>;
 
 export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum =
   | "REASON_UNSPECIFIED"
@@ -2492,13 +2483,8 @@ export interface GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest {
   /** Required. IP override to be removed from the key. */
   ipOverrideData?: GoogleCloudRecaptchaenterpriseV1IpOverrideData;
 }
-export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipOverrideData: S.optional(GoogleCloudRecaptchaenterpriseV1IpOverrideData),
-  }),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest>;
+export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest =
+  GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideRequest>;
 
 export interface RemoveIpOverrideProjectsKeysRequest {
   /** Required. The name of the key from which the IP override is removed, in the format `projects/{project}/keys/{key}`. */
@@ -2523,11 +2509,8 @@ export const RemoveIpOverrideProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for RemoveIpOverride. */
 export interface GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse {}
-export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse",
-}) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>;
+export const GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse =
+  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse>;
 
 /** The reorder firewall policies request message. */
 export interface GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest {
@@ -2629,16 +2612,7 @@ export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMember
   nextPageToken?: string;
 }
 export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relatedAccountGroupMemberships: S.optional(
-        GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse",
-  }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>;
+  GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse as any as S.Schema<GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse>;
 
 export interface UpdatePolicyProjectsKeysRequest {
   /** Identifier. Resource name for this policy. Format: "projects/{project}/keys/{key}/policy" for a policy under a key. */

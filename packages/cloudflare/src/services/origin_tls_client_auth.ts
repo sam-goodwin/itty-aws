@@ -419,16 +419,8 @@ export interface DeleteOriginTlsClientAuthResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const DeleteOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteOriginTlsClientAuthResponse",
-}) as any as S.Schema<DeleteOriginTlsClientAuthResponse>;
+export const DeleteOriginTlsClientAuthResponse =
+  CreateZoneCertificateResponse as any as S.Schema<DeleteOriginTlsClientAuthResponse>;
 
 export interface DeleteZoneCertificateRequest {
   /** Identifier. */
@@ -464,16 +456,8 @@ export interface DeleteZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const DeleteZoneCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteZoneCertificateResponse",
-}) as any as S.Schema<DeleteZoneCertificateResponse>;
+export const DeleteZoneCertificateResponse =
+  CreateZoneCertificateResponse as any as S.Schema<DeleteZoneCertificateResponse>;
 
 export interface GetHostnameRequest {
   /** Identifier. */
@@ -672,21 +656,8 @@ export interface GetOriginTlsClientAuthResponse {
   status?: string | null;
   uploadedOn?: string | null;
 }
-export const GetOriginTlsClientAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-    expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-    issuer: S.optional(S.NullOr(S.String)),
-    signature: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(S.String)),
-    uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetOriginTlsClientAuthResponse",
-}) as any as S.Schema<GetOriginTlsClientAuthResponse>;
+export const GetOriginTlsClientAuthResponse =
+  CreateOriginTlsClientAuthResponse as any as S.Schema<GetOriginTlsClientAuthResponse>;
 
 export interface GetSettingRequest {
   /** Identifier. */
@@ -747,16 +718,8 @@ export interface GetZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-export const GetZoneCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    certificate: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    privateKey: S.optional(S.NullOr(S.String).pipe(T.Body("private_key"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetZoneCertificateResponse",
-}) as any as S.Schema<GetZoneCertificateResponse>;
+export const GetZoneCertificateResponse =
+  CreateZoneCertificateResponse as any as S.Schema<GetZoneCertificateResponse>;
 
 export interface ListHostnameCertificatesRequest {
   /** Identifier. */
@@ -1069,11 +1032,7 @@ export interface PutSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
 }
-export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutSettingResponse" }) as any as S.Schema<PutSettingResponse>;
+export const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
 
 export type CreateHostnameCertificateError =
   | CertificateAlreadyExists

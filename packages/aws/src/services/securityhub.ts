@@ -280,7 +280,8 @@ export const BatchDeleteAutomationRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeleteAutomationRulesResponse",
 }) as any as S.Schema<BatchDeleteAutomationRulesResponse>;
 export type StandardsSubscriptionArns = string[];
-export const StandardsSubscriptionArns = /*@__PURE__*/ S.Array(S.String);
+export const StandardsSubscriptionArns =
+  AutomationRulesArnsList as any as S.Schema<StandardsSubscriptionArns>;
 export interface BatchDisableStandardsRequest {
   StandardsSubscriptionArns?: string[];
 }
@@ -397,11 +398,8 @@ export interface BatchEnableStandardsResponse {
     StandardsStatusReason: StandardsStatusReason & { StatusReasonCode: StatusReasonCode };
   })[];
 }
-export const BatchEnableStandardsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ StandardsSubscriptions: S.optional(StandardsSubscriptions) }),
-).annotate({
-  identifier: "BatchEnableStandardsResponse",
-}) as any as S.Schema<BatchEnableStandardsResponse>;
+export const BatchEnableStandardsResponse =
+  BatchDisableStandardsResponse as any as S.Schema<BatchEnableStandardsResponse>;
 export interface BatchGetAutomationRulesRequest {
   AutomationRulesArns?: string[];
 }
@@ -639,7 +637,7 @@ export type VerificationState =
 export const VerificationState = S.String;
 
 export type TypeList = string[];
-export const TypeList = /*@__PURE__*/ S.Array(S.String);
+export const TypeList = AutomationRulesArnsList as any as S.Schema<TypeList>;
 export type FieldMap = { [key: string]: string | undefined };
 export const FieldMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type WorkflowStatus = "NEW" | "NOTIFIED" | "RESOLVED" | "SUPPRESSED" | (string & {});
@@ -856,7 +854,7 @@ export const BatchGetConfigurationPolicyAssociationsResponse = /*@__PURE__*/ S.s
   identifier: "BatchGetConfigurationPolicyAssociationsResponse",
 }) as any as S.Schema<BatchGetConfigurationPolicyAssociationsResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = AutomationRulesArnsList as any as S.Schema<StringList>;
 export interface BatchGetSecurityControlsRequest {
   SecurityControlIds?: string[];
 }
@@ -1101,9 +1099,11 @@ export type AssociationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AssociationStatus = S.String;
 
 export type RelatedRequirementsList = string[];
-export const RelatedRequirementsList = /*@__PURE__*/ S.Array(S.String);
+export const RelatedRequirementsList =
+  AutomationRulesArnsList as any as S.Schema<RelatedRequirementsList>;
 export type StandardsControlArnList = string[];
-export const StandardsControlArnList = /*@__PURE__*/ S.Array(S.String);
+export const StandardsControlArnList =
+  AutomationRulesArnsList as any as S.Schema<StandardsControlArnList>;
 export interface StandardsControlAssociationDetail {
   StandardsArn?: string;
   SecurityControlId?: string;
@@ -1438,9 +1438,7 @@ export const ResourceOwnerAccount = /*@__PURE__*/ S.suspend(() =>
 export interface ResourceOwnerOrg {
   Id?: string;
 }
-export const ResourceOwnerOrg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({ identifier: "ResourceOwnerOrg" }) as any as S.Schema<ResourceOwnerOrg>;
+export const ResourceOwnerOrg = ResourceOwnerAccount as any as S.Schema<ResourceOwnerOrg>;
 export interface ResourceOwner {
   Account?: ResourceOwnerAccount;
   Org?: ResourceOwnerOrg;
@@ -1894,7 +1892,7 @@ export const AwsCodeBuildProjectLogsConfigDetails = /*@__PURE__*/ S.suspend(() =
   identifier: "AwsCodeBuildProjectLogsConfigDetails",
 }) as any as S.Schema<AwsCodeBuildProjectLogsConfigDetails>;
 export type NonEmptyStringList = string[];
-export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
+export const NonEmptyStringList = AutomationRulesArnsList as any as S.Schema<NonEmptyStringList>;
 export interface AwsCodeBuildProjectVpcConfig {
   VpcId?: string;
   Subnets?: string[];
@@ -1959,11 +1957,8 @@ export const AwsCloudFrontDistributionCacheBehaviors = /*@__PURE__*/ S.suspend((
 export interface AwsCloudFrontDistributionDefaultCacheBehavior {
   ViewerProtocolPolicy?: string;
 }
-export const AwsCloudFrontDistributionDefaultCacheBehavior = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ViewerProtocolPolicy: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsCloudFrontDistributionDefaultCacheBehavior",
-}) as any as S.Schema<AwsCloudFrontDistributionDefaultCacheBehavior>;
+export const AwsCloudFrontDistributionDefaultCacheBehavior =
+  AwsCloudFrontDistributionCacheBehavior as any as S.Schema<AwsCloudFrontDistributionDefaultCacheBehavior>;
 export interface AwsCloudFrontDistributionLogging {
   Bucket?: string;
   Enabled?: boolean;
@@ -2049,7 +2044,7 @@ export const AwsCloudFrontDistributionOrigins = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsCloudFrontDistributionOrigins>;
 export type AwsCloudFrontDistributionOriginGroupFailoverStatusCodesItemList = number[];
 export const AwsCloudFrontDistributionOriginGroupFailoverStatusCodesItemList =
-  /*@__PURE__*/ S.Array(S.Number);
+  IntegerList as any as S.Schema<AwsCloudFrontDistributionOriginGroupFailoverStatusCodesItemList>;
 export interface AwsCloudFrontDistributionOriginGroupFailoverStatusCodes {
   Items?: number[];
   Quantity?: number;
@@ -2627,14 +2622,12 @@ export const AvailabilityZone = /*@__PURE__*/ S.suspend(() =>
 export type AvailabilityZones = AvailabilityZone[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(AvailabilityZone);
 export type SecurityGroups = string[];
-export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroups = AutomationRulesArnsList as any as S.Schema<SecurityGroups>;
 export interface LoadBalancerState {
   Code?: string;
   Reason?: string;
 }
-export const LoadBalancerState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(S.String), Reason: S.optional(S.String) }),
-).annotate({ identifier: "LoadBalancerState" }) as any as S.Schema<LoadBalancerState>;
+export const LoadBalancerState = ClassificationStatus as any as S.Schema<LoadBalancerState>;
 export interface AwsElbv2LoadBalancerAttribute {
   Key?: string;
   Value?: string;
@@ -2991,11 +2984,7 @@ export interface AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagD
   Value?: string;
 }
 export const AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-  ).annotate({
-    identifier: "AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails",
-  }) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails>;
+  AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsTagDetails as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails>;
 export interface AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateDetails {
   Operands?: AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsDetails[];
   Prefix?: string;
@@ -3205,7 +3194,8 @@ export const AwsS3BucketWebsiteConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsS3BucketWebsiteConfiguration",
 }) as any as S.Schema<AwsS3BucketWebsiteConfiguration>;
 export type AwsS3BucketNotificationConfigurationEvents = string[];
-export const AwsS3BucketNotificationConfigurationEvents = /*@__PURE__*/ S.Array(S.String);
+export const AwsS3BucketNotificationConfigurationEvents =
+  AutomationRulesArnsList as any as S.Schema<AwsS3BucketNotificationConfigurationEvents>;
 export type AwsS3BucketNotificationConfigurationS3KeyFilterRuleName =
   | "Prefix"
   | "Suffix"
@@ -4719,20 +4709,14 @@ export const AwsElbLoadBalancerConnectionSettings = /*@__PURE__*/ S.suspend(() =
 export interface AwsElbLoadBalancerCrossZoneLoadBalancing {
   Enabled?: boolean;
 }
-export const AwsElbLoadBalancerCrossZoneLoadBalancing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsElbLoadBalancerCrossZoneLoadBalancing",
-}) as any as S.Schema<AwsElbLoadBalancerCrossZoneLoadBalancing>;
+export const AwsElbLoadBalancerCrossZoneLoadBalancing =
+  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsElbLoadBalancerCrossZoneLoadBalancing>;
 export interface AwsElbLoadBalancerAdditionalAttribute {
   Key?: string;
   Value?: string;
 }
-export const AwsElbLoadBalancerAdditionalAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsElbLoadBalancerAdditionalAttribute",
-}) as any as S.Schema<AwsElbLoadBalancerAdditionalAttribute>;
+export const AwsElbLoadBalancerAdditionalAttribute =
+  AwsElbv2LoadBalancerAttribute as any as S.Schema<AwsElbLoadBalancerAdditionalAttribute>;
 export type AwsElbLoadBalancerAdditionalAttributeList = AwsElbLoadBalancerAdditionalAttribute[];
 export const AwsElbLoadBalancerAdditionalAttributeList = /*@__PURE__*/ S.Array(
   AwsElbLoadBalancerAdditionalAttribute,
@@ -4849,11 +4833,9 @@ export const AwsElbLoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AwsIamGroupPolicy {
   PolicyName?: string;
 }
-export const AwsIamGroupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyName: S.optional(S.String) }),
-).annotate({ identifier: "AwsIamGroupPolicy" }) as any as S.Schema<AwsIamGroupPolicy>;
+export const AwsIamGroupPolicy = AwsIamUserPolicy as any as S.Schema<AwsIamGroupPolicy>;
 export type AwsIamGroupPolicyList = AwsIamGroupPolicy[];
-export const AwsIamGroupPolicyList = /*@__PURE__*/ S.Array(AwsIamGroupPolicy);
+export const AwsIamGroupPolicyList = AwsIamUserPolicyList as any as S.Schema<AwsIamGroupPolicyList>;
 export interface AwsIamGroupDetails {
   AttachedManagedPolicies?: AwsIamAttachedManagedPolicy[];
   CreateDate?: string;
@@ -4918,11 +4900,9 @@ export const AwsIamInstanceProfileList = /*@__PURE__*/ S.Array(AwsIamInstancePro
 export interface AwsIamRolePolicy {
   PolicyName?: string;
 }
-export const AwsIamRolePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyName: S.optional(S.String) }),
-).annotate({ identifier: "AwsIamRolePolicy" }) as any as S.Schema<AwsIamRolePolicy>;
+export const AwsIamRolePolicy = AwsIamUserPolicy as any as S.Schema<AwsIamRolePolicy>;
 export type AwsIamRolePolicyList = AwsIamRolePolicy[];
-export const AwsIamRolePolicyList = /*@__PURE__*/ S.Array(AwsIamRolePolicy);
+export const AwsIamRolePolicyList = AwsIamUserPolicyList as any as S.Schema<AwsIamRolePolicyList>;
 export interface AwsIamRoleDetails {
   AssumeRolePolicyDocument?: string;
   AttachedManagedPolicies?: AwsIamAttachedManagedPolicy[];
@@ -5164,11 +5144,8 @@ export const AwsRdsDbParameterGroups = /*@__PURE__*/ S.Array(AwsRdsDbParameterGr
 export interface AwsRdsDbSubnetGroupSubnetAvailabilityZone {
   Name?: string;
 }
-export const AwsRdsDbSubnetGroupSubnetAvailabilityZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsRdsDbSubnetGroupSubnetAvailabilityZone",
-}) as any as S.Schema<AwsRdsDbSubnetGroupSubnetAvailabilityZone>;
+export const AwsRdsDbSubnetGroupSubnetAvailabilityZone =
+  AwsCertificateManagerCertificateKeyUsage as any as S.Schema<AwsRdsDbSubnetGroupSubnetAvailabilityZone>;
 export interface AwsRdsDbSubnetGroupSubnet {
   SubnetIdentifier?: string;
   SubnetAvailabilityZone?: AwsRdsDbSubnetGroupSubnetAvailabilityZone;
@@ -5490,9 +5467,7 @@ export const WafExcludedRuleList = /*@__PURE__*/ S.Array(WafExcludedRule);
 export interface WafOverrideAction {
   Type?: string;
 }
-export const WafOverrideAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String) }),
-).annotate({ identifier: "WafOverrideAction" }) as any as S.Schema<WafOverrideAction>;
+export const WafOverrideAction = WafAction as any as S.Schema<WafOverrideAction>;
 export interface AwsWafWebAclRule {
   Action?: WafAction;
   ExcludedRules?: WafExcludedRule[];
@@ -6145,11 +6120,7 @@ export interface AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDet
   Value?: string;
 }
 export const AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
-  ).annotate({
-    identifier: "AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails",
-  }) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails>;
+  AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsList =
   AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails[];
 export const AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsList =
@@ -6551,20 +6522,12 @@ export interface AwsEcsServiceCapacityProviderStrategyDetails {
   CapacityProvider?: string;
   Weight?: number;
 }
-export const AwsEcsServiceCapacityProviderStrategyDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Base: S.optional(S.Number),
-    CapacityProvider: S.optional(S.String),
-    Weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AwsEcsServiceCapacityProviderStrategyDetails",
-}) as any as S.Schema<AwsEcsServiceCapacityProviderStrategyDetails>;
+export const AwsEcsServiceCapacityProviderStrategyDetails =
+  AwsEcsClusterDefaultCapacityProviderStrategyDetails as any as S.Schema<AwsEcsServiceCapacityProviderStrategyDetails>;
 export type AwsEcsServiceCapacityProviderStrategyList =
   AwsEcsServiceCapacityProviderStrategyDetails[];
-export const AwsEcsServiceCapacityProviderStrategyList = /*@__PURE__*/ S.Array(
-  AwsEcsServiceCapacityProviderStrategyDetails,
-);
+export const AwsEcsServiceCapacityProviderStrategyList =
+  AwsEcsClusterDefaultCapacityProviderStrategyList as any as S.Schema<AwsEcsServiceCapacityProviderStrategyList>;
 export interface AwsEcsServiceDeploymentConfigurationDeploymentCircuitBreakerDetails {
   Enable?: boolean;
   Rollback?: boolean;
@@ -6648,15 +6611,11 @@ export interface AwsEcsServicePlacementConstraintsDetails {
   Expression?: string;
   Type?: string;
 }
-export const AwsEcsServicePlacementConstraintsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Expression: S.optional(S.String), Type: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsEcsServicePlacementConstraintsDetails",
-}) as any as S.Schema<AwsEcsServicePlacementConstraintsDetails>;
+export const AwsEcsServicePlacementConstraintsDetails =
+  AwsEcsTaskDefinitionPlacementConstraintsDetails as any as S.Schema<AwsEcsServicePlacementConstraintsDetails>;
 export type AwsEcsServicePlacementConstraintsList = AwsEcsServicePlacementConstraintsDetails[];
-export const AwsEcsServicePlacementConstraintsList = /*@__PURE__*/ S.Array(
-  AwsEcsServicePlacementConstraintsDetails,
-);
+export const AwsEcsServicePlacementConstraintsList =
+  AwsEcsTaskDefinitionPlacementConstraintsList as any as S.Schema<AwsEcsServicePlacementConstraintsList>;
 export interface AwsEcsServicePlacementStrategiesDetails {
   Field?: string;
   Type?: string;
@@ -7007,11 +6966,8 @@ export const AwsOpenSearchServiceDomainEncryptionAtRestOptionsDetails = /*@__PUR
 export interface AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails {
   Enabled?: boolean;
 }
-export const AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails",
-}) as any as S.Schema<AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails>;
+export const AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails =
+  AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails as any as S.Schema<AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails>;
 export interface AwsOpenSearchServiceDomainServiceSoftwareOptionsDetails {
   AutomatedUpdateDate?: string;
   Cancellable?: boolean;
@@ -7040,9 +6996,7 @@ export interface AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetai
   AvailabilityZoneCount?: number;
 }
 export const AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ AvailabilityZoneCount: S.optional(S.Number) })).annotate(
-    { identifier: "AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails" },
-  ) as any as S.Schema<AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails>;
+  AwsElasticsearchDomainElasticsearchClusterConfigZoneAwarenessConfigDetails as any as S.Schema<AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails>;
 export interface AwsOpenSearchServiceDomainClusterConfigDetails {
   InstanceCount?: number;
   WarmEnabled?: boolean;
@@ -7107,25 +7061,15 @@ export interface AwsOpenSearchServiceDomainLogPublishingOption {
   CloudWatchLogsLogGroupArn?: string;
   Enabled?: boolean;
 }
-export const AwsOpenSearchServiceDomainLogPublishingOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CloudWatchLogsLogGroupArn: S.optional(S.String), Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsOpenSearchServiceDomainLogPublishingOption",
-}) as any as S.Schema<AwsOpenSearchServiceDomainLogPublishingOption>;
+export const AwsOpenSearchServiceDomainLogPublishingOption =
+  AwsElasticsearchDomainLogPublishingOptionsLogConfig as any as S.Schema<AwsOpenSearchServiceDomainLogPublishingOption>;
 export interface AwsOpenSearchServiceDomainLogPublishingOptionsDetails {
   IndexSlowLogs?: AwsOpenSearchServiceDomainLogPublishingOption;
   SearchSlowLogs?: AwsOpenSearchServiceDomainLogPublishingOption;
   AuditLogs?: AwsOpenSearchServiceDomainLogPublishingOption;
 }
-export const AwsOpenSearchServiceDomainLogPublishingOptionsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IndexSlowLogs: S.optional(AwsOpenSearchServiceDomainLogPublishingOption),
-    SearchSlowLogs: S.optional(AwsOpenSearchServiceDomainLogPublishingOption),
-    AuditLogs: S.optional(AwsOpenSearchServiceDomainLogPublishingOption),
-  }),
-).annotate({
-  identifier: "AwsOpenSearchServiceDomainLogPublishingOptionsDetails",
-}) as any as S.Schema<AwsOpenSearchServiceDomainLogPublishingOptionsDetails>;
+export const AwsOpenSearchServiceDomainLogPublishingOptionsDetails =
+  AwsElasticsearchDomainLogPublishingOptions as any as S.Schema<AwsOpenSearchServiceDomainLogPublishingOptionsDetails>;
 export interface AwsOpenSearchServiceDomainMasterUserOptionsDetails {
   MasterUserArn?: string;
   MasterUserName?: string;
@@ -7294,20 +7238,12 @@ export interface AwsWafRegionalRateBasedRuleMatchPredicate {
   Negated?: boolean;
   Type?: string;
 }
-export const AwsWafRegionalRateBasedRuleMatchPredicate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataId: S.optional(S.String),
-    Negated: S.optional(S.Boolean),
-    Type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AwsWafRegionalRateBasedRuleMatchPredicate",
-}) as any as S.Schema<AwsWafRegionalRateBasedRuleMatchPredicate>;
+export const AwsWafRegionalRateBasedRuleMatchPredicate =
+  AwsWafRateBasedRuleMatchPredicate as any as S.Schema<AwsWafRegionalRateBasedRuleMatchPredicate>;
 export type AwsWafRegionalRateBasedRuleMatchPredicateList =
   AwsWafRegionalRateBasedRuleMatchPredicate[];
-export const AwsWafRegionalRateBasedRuleMatchPredicateList = /*@__PURE__*/ S.Array(
-  AwsWafRegionalRateBasedRuleMatchPredicate,
-);
+export const AwsWafRegionalRateBasedRuleMatchPredicateList =
+  AwsWafRateBasedRuleMatchPredicateList as any as S.Schema<AwsWafRegionalRateBasedRuleMatchPredicateList>;
 export interface AwsWafRegionalRateBasedRuleDetails {
   MetricName?: string;
   Name?: string;
@@ -7316,18 +7252,8 @@ export interface AwsWafRegionalRateBasedRuleDetails {
   RuleId?: string;
   MatchPredicates?: AwsWafRegionalRateBasedRuleMatchPredicate[];
 }
-export const AwsWafRegionalRateBasedRuleDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MetricName: S.optional(S.String),
-    Name: S.optional(S.String),
-    RateKey: S.optional(S.String),
-    RateLimit: S.optional(S.Number),
-    RuleId: S.optional(S.String),
-    MatchPredicates: S.optional(AwsWafRegionalRateBasedRuleMatchPredicateList),
-  }),
-).annotate({
-  identifier: "AwsWafRegionalRateBasedRuleDetails",
-}) as any as S.Schema<AwsWafRegionalRateBasedRuleDetails>;
+export const AwsWafRegionalRateBasedRuleDetails =
+  AwsWafRateBasedRuleDetails as any as S.Schema<AwsWafRegionalRateBasedRuleDetails>;
 export interface AwsEcrRepositoryImageScanningConfigurationDetails {
   ScanOnPush?: boolean;
 }
@@ -7581,11 +7507,8 @@ export const RuleGroupVariablesIpSetsDetails = /*@__PURE__*/ S.suspend(() =>
 export interface RuleGroupVariablesPortSetsDetails {
   Definition?: string[];
 }
-export const RuleGroupVariablesPortSetsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Definition: S.optional(NonEmptyStringList) }),
-).annotate({
-  identifier: "RuleGroupVariablesPortSetsDetails",
-}) as any as S.Schema<RuleGroupVariablesPortSetsDetails>;
+export const RuleGroupVariablesPortSetsDetails =
+  RuleGroupVariablesIpSetsDetails as any as S.Schema<RuleGroupVariablesPortSetsDetails>;
 export interface RuleGroupVariables {
   IpSets?: RuleGroupVariablesIpSetsDetails;
   PortSets?: RuleGroupVariablesPortSetsDetails;
@@ -7631,7 +7554,8 @@ export const RuleGroupSourceStatefulRulesHeaderDetails = /*@__PURE__*/ S.suspend
   identifier: "RuleGroupSourceStatefulRulesHeaderDetails",
 }) as any as S.Schema<RuleGroupSourceStatefulRulesHeaderDetails>;
 export type RuleGroupSourceStatefulRulesRuleOptionsSettingsList = string[];
-export const RuleGroupSourceStatefulRulesRuleOptionsSettingsList = /*@__PURE__*/ S.Array(S.String);
+export const RuleGroupSourceStatefulRulesRuleOptionsSettingsList =
+  AutomationRulesArnsList as any as S.Schema<RuleGroupSourceStatefulRulesRuleOptionsSettingsList>;
 export interface RuleGroupSourceStatefulRulesOptionsDetails {
   Keyword?: string;
   Settings?: string[];
@@ -7670,18 +7594,11 @@ export interface RuleGroupSourceCustomActionsDetails {
   ActionDefinition?: StatelessCustomActionDefinition;
   ActionName?: string;
 }
-export const RuleGroupSourceCustomActionsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActionDefinition: S.optional(StatelessCustomActionDefinition),
-    ActionName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RuleGroupSourceCustomActionsDetails",
-}) as any as S.Schema<RuleGroupSourceCustomActionsDetails>;
+export const RuleGroupSourceCustomActionsDetails =
+  FirewallPolicyStatelessCustomActionsDetails as any as S.Schema<RuleGroupSourceCustomActionsDetails>;
 export type RuleGroupSourceCustomActionsList = RuleGroupSourceCustomActionsDetails[];
-export const RuleGroupSourceCustomActionsList = /*@__PURE__*/ S.Array(
-  RuleGroupSourceCustomActionsDetails,
-);
+export const RuleGroupSourceCustomActionsList =
+  FirewallPolicyStatelessCustomActionsList as any as S.Schema<RuleGroupSourceCustomActionsList>;
 export interface RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts {
   FromPort?: number;
   ToPort?: number;
@@ -7729,16 +7646,12 @@ export const RuleGroupSourceStatelessRuleMatchAttributesSourcePortsList = /*@__P
 export interface RuleGroupSourceStatelessRuleMatchAttributesSources {
   AddressDefinition?: string;
 }
-export const RuleGroupSourceStatelessRuleMatchAttributesSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AddressDefinition: S.optional(S.String) }),
-).annotate({
-  identifier: "RuleGroupSourceStatelessRuleMatchAttributesSources",
-}) as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesSources>;
+export const RuleGroupSourceStatelessRuleMatchAttributesSources =
+  RuleGroupSourceStatelessRuleMatchAttributesDestinations as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesSources>;
 export type RuleGroupSourceStatelessRuleMatchAttributesSourcesList =
   RuleGroupSourceStatelessRuleMatchAttributesSources[];
-export const RuleGroupSourceStatelessRuleMatchAttributesSourcesList = /*@__PURE__*/ S.Array(
-  RuleGroupSourceStatelessRuleMatchAttributesSources,
-);
+export const RuleGroupSourceStatelessRuleMatchAttributesSourcesList =
+  RuleGroupSourceStatelessRuleMatchAttributesDestinationsList as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesSourcesList>;
 export interface RuleGroupSourceStatelessRuleMatchAttributesTcpFlags {
   Flags?: string[];
   Masks?: string[];
@@ -8097,15 +8010,11 @@ export interface AwsCloudWatchAlarmDimensionsDetails {
   Name?: string;
   Value?: string;
 }
-export const AwsCloudWatchAlarmDimensionsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsCloudWatchAlarmDimensionsDetails",
-}) as any as S.Schema<AwsCloudWatchAlarmDimensionsDetails>;
+export const AwsCloudWatchAlarmDimensionsDetails =
+  AwsEcsClusterClusterSettingsDetails as any as S.Schema<AwsCloudWatchAlarmDimensionsDetails>;
 export type AwsCloudWatchAlarmDimensionsList = AwsCloudWatchAlarmDimensionsDetails[];
-export const AwsCloudWatchAlarmDimensionsList = /*@__PURE__*/ S.Array(
-  AwsCloudWatchAlarmDimensionsDetails,
-);
+export const AwsCloudWatchAlarmDimensionsList =
+  AwsEcsClusterClusterSettingsList as any as S.Schema<AwsCloudWatchAlarmDimensionsList>;
 export interface AwsCloudWatchAlarmDetails {
   ActionsEnabled?: boolean;
   AlarmActions?: string[];
@@ -8244,11 +8153,8 @@ export const AwsEc2VpcPeeringConnectionDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AwsWafRegionalRuleGroupRulesActionDetails {
   Type?: string;
 }
-export const AwsWafRegionalRuleGroupRulesActionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsWafRegionalRuleGroupRulesActionDetails",
-}) as any as S.Schema<AwsWafRegionalRuleGroupRulesActionDetails>;
+export const AwsWafRegionalRuleGroupRulesActionDetails =
+  AwsEcsServiceDeploymentControllerDetails as any as S.Schema<AwsWafRegionalRuleGroupRulesActionDetails>;
 export interface AwsWafRegionalRuleGroupRulesDetails {
   Action?: AwsWafRegionalRuleGroupRulesActionDetails;
   Priority?: number;
@@ -8290,19 +8196,11 @@ export interface AwsWafRegionalRulePredicateListDetails {
   Negated?: boolean;
   Type?: string;
 }
-export const AwsWafRegionalRulePredicateListDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataId: S.optional(S.String),
-    Negated: S.optional(S.Boolean),
-    Type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AwsWafRegionalRulePredicateListDetails",
-}) as any as S.Schema<AwsWafRegionalRulePredicateListDetails>;
+export const AwsWafRegionalRulePredicateListDetails =
+  AwsWafRateBasedRuleMatchPredicate as any as S.Schema<AwsWafRegionalRulePredicateListDetails>;
 export type AwsWafRegionalRulePredicateList = AwsWafRegionalRulePredicateListDetails[];
-export const AwsWafRegionalRulePredicateList = /*@__PURE__*/ S.Array(
-  AwsWafRegionalRulePredicateListDetails,
-);
+export const AwsWafRegionalRulePredicateList =
+  AwsWafRateBasedRuleMatchPredicateList as any as S.Schema<AwsWafRegionalRulePredicateList>;
 export interface AwsWafRegionalRuleDetails {
   MetricName?: string;
   Name?: string;
@@ -8322,19 +8220,13 @@ export const AwsWafRegionalRuleDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AwsWafRegionalWebAclRulesListActionDetails {
   Type?: string;
 }
-export const AwsWafRegionalWebAclRulesListActionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsWafRegionalWebAclRulesListActionDetails",
-}) as any as S.Schema<AwsWafRegionalWebAclRulesListActionDetails>;
+export const AwsWafRegionalWebAclRulesListActionDetails =
+  AwsEcsServiceDeploymentControllerDetails as any as S.Schema<AwsWafRegionalWebAclRulesListActionDetails>;
 export interface AwsWafRegionalWebAclRulesListOverrideActionDetails {
   Type?: string;
 }
-export const AwsWafRegionalWebAclRulesListOverrideActionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsWafRegionalWebAclRulesListOverrideActionDetails",
-}) as any as S.Schema<AwsWafRegionalWebAclRulesListOverrideActionDetails>;
+export const AwsWafRegionalWebAclRulesListOverrideActionDetails =
+  AwsEcsServiceDeploymentControllerDetails as any as S.Schema<AwsWafRegionalWebAclRulesListOverrideActionDetails>;
 export interface AwsWafRegionalWebAclRulesListDetails {
   Action?: AwsWafRegionalWebAclRulesListActionDetails;
   OverrideAction?: AwsWafRegionalWebAclRulesListOverrideActionDetails;
@@ -8380,15 +8272,8 @@ export interface AwsWafRulePredicateListDetails {
   Negated?: boolean;
   Type?: string;
 }
-export const AwsWafRulePredicateListDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DataId: S.optional(S.String),
-    Negated: S.optional(S.Boolean),
-    Type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AwsWafRulePredicateListDetails",
-}) as any as S.Schema<AwsWafRulePredicateListDetails>;
+export const AwsWafRulePredicateListDetails =
+  AwsWafRateBasedRuleMatchPredicate as any as S.Schema<AwsWafRulePredicateListDetails>;
 export type AwsWafRulePredicateList = AwsWafRulePredicateListDetails[];
 export const AwsWafRulePredicateList = /*@__PURE__*/ S.Array(AwsWafRulePredicateListDetails);
 export interface AwsWafRuleDetails {
@@ -8408,27 +8293,16 @@ export const AwsWafRuleDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AwsWafRuleGroupRulesActionDetails {
   Type?: string;
 }
-export const AwsWafRuleGroupRulesActionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsWafRuleGroupRulesActionDetails",
-}) as any as S.Schema<AwsWafRuleGroupRulesActionDetails>;
+export const AwsWafRuleGroupRulesActionDetails =
+  AwsEcsServiceDeploymentControllerDetails as any as S.Schema<AwsWafRuleGroupRulesActionDetails>;
 export interface AwsWafRuleGroupRulesDetails {
   Action?: AwsWafRuleGroupRulesActionDetails;
   Priority?: number;
   RuleId?: string;
   Type?: string;
 }
-export const AwsWafRuleGroupRulesDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(AwsWafRuleGroupRulesActionDetails),
-    Priority: S.optional(S.Number),
-    RuleId: S.optional(S.String),
-    Type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AwsWafRuleGroupRulesDetails",
-}) as any as S.Schema<AwsWafRuleGroupRulesDetails>;
+export const AwsWafRuleGroupRulesDetails =
+  AwsWafRegionalRuleGroupRulesDetails as any as S.Schema<AwsWafRuleGroupRulesDetails>;
 export type AwsWafRuleGroupRulesList = AwsWafRuleGroupRulesDetails[];
 export const AwsWafRuleGroupRulesList = /*@__PURE__*/ S.Array(AwsWafRuleGroupRulesDetails);
 export interface AwsWafRuleGroupDetails {
@@ -8448,11 +8322,8 @@ export const AwsWafRuleGroupDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AwsEcsTaskVolumeHostDetails {
   SourcePath?: string;
 }
-export const AwsEcsTaskVolumeHostDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SourcePath: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsEcsTaskVolumeHostDetails",
-}) as any as S.Schema<AwsEcsTaskVolumeHostDetails>;
+export const AwsEcsTaskVolumeHostDetails =
+  AwsEcsTaskDefinitionVolumesHostDetails as any as S.Schema<AwsEcsTaskVolumeHostDetails>;
 export interface AwsEcsTaskVolumeDetails {
   Name?: string;
   Host?: AwsEcsTaskVolumeHostDetails;
@@ -8647,14 +8518,8 @@ export interface AwsBackupRecoveryPointLifecycleDetails {
   DeleteAfterDays?: number;
   MoveToColdStorageAfterDays?: number;
 }
-export const AwsBackupRecoveryPointLifecycleDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeleteAfterDays: S.optional(S.Number),
-    MoveToColdStorageAfterDays: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AwsBackupRecoveryPointLifecycleDetails",
-}) as any as S.Schema<AwsBackupRecoveryPointLifecycleDetails>;
+export const AwsBackupRecoveryPointLifecycleDetails =
+  AwsBackupBackupPlanLifecycleDetails as any as S.Schema<AwsBackupRecoveryPointLifecycleDetails>;
 export interface AwsBackupRecoveryPointDetails {
   BackupSizeInBytes?: number;
   BackupVaultArn?: string;
@@ -8823,11 +8688,8 @@ export const AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetList = /*@__P
 export interface AwsEc2LaunchTemplateDataEnclaveOptionsDetails {
   Enabled?: boolean;
 }
-export const AwsEc2LaunchTemplateDataEnclaveOptionsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsEc2LaunchTemplateDataEnclaveOptionsDetails",
-}) as any as S.Schema<AwsEc2LaunchTemplateDataEnclaveOptionsDetails>;
+export const AwsEc2LaunchTemplateDataEnclaveOptionsDetails =
+  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsEc2LaunchTemplateDataEnclaveOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataHibernationOptionsDetails {
   Configured?: boolean;
 }
@@ -8891,31 +8753,19 @@ export interface AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMem
   Min?: number;
 }
 export const AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Max: S.optional(S.Number), Min: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails",
-  }) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails>;
+  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails {
   Max?: number;
   Min?: number;
 }
 export const AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Max: S.optional(S.Number), Min: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails",
-  }) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails>;
+  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails {
   Max?: number;
   Min?: number;
 }
 export const AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Max: S.optional(S.Number), Min: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails",
-  }) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails>;
+  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails {
   Max?: number;
   Min?: number;
@@ -8930,30 +8780,19 @@ export interface AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCou
   Min?: number;
 }
 export const AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Max: S.optional(S.Number), Min: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails",
-  }) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails>;
+  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails {
   Max?: number;
   Min?: number;
 }
 export const AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Max: S.optional(S.Number), Min: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails",
-  }) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails>;
+  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails {
   Max?: number;
   Min?: number;
 }
-export const AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ Max: S.optional(S.Number), Min: S.optional(S.Number) }),
-).annotate({
-  identifier: "AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails",
-}) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails>;
+export const AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails =
+  AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsDetails {
   AcceleratorCount?: AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails;
   AcceleratorManufacturers?: string[];
@@ -9057,11 +8896,8 @@ export const AwsEc2LaunchTemplateDataMetadataOptionsDetails = /*@__PURE__*/ S.su
 export interface AwsEc2LaunchTemplateDataMonitoringDetails {
   Enabled?: boolean;
 }
-export const AwsEc2LaunchTemplateDataMonitoringDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsEc2LaunchTemplateDataMonitoringDetails",
-}) as any as S.Schema<AwsEc2LaunchTemplateDataMonitoringDetails>;
+export const AwsEc2LaunchTemplateDataMonitoringDetails =
+  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsEc2LaunchTemplateDataMonitoringDetails>;
 export interface AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails {
   Ipv4Prefix?: string;
 }
@@ -9374,11 +9210,11 @@ export interface AwsWafv2CustomHttpHeader {
   Name?: string;
   Value?: string;
 }
-export const AwsWafv2CustomHttpHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "AwsWafv2CustomHttpHeader" }) as any as S.Schema<AwsWafv2CustomHttpHeader>;
+export const AwsWafv2CustomHttpHeader =
+  AwsRdsDbProcessorFeature as any as S.Schema<AwsWafv2CustomHttpHeader>;
 export type AwsWafv2InsertHeadersList = AwsWafv2CustomHttpHeader[];
-export const AwsWafv2InsertHeadersList = /*@__PURE__*/ S.Array(AwsWafv2CustomHttpHeader);
+export const AwsWafv2InsertHeadersList =
+  AwsRdsDbProcessorFeatures as any as S.Schema<AwsWafv2InsertHeadersList>;
 export interface AwsWafv2CustomRequestHandlingDetails {
   InsertHeaders?: AwsWafv2CustomHttpHeader[];
 }
@@ -9432,19 +9268,13 @@ export const AwsWafv2WebAclActionDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AwsWafv2RulesActionCaptchaDetails {
   CustomRequestHandling?: AwsWafv2CustomRequestHandlingDetails;
 }
-export const AwsWafv2RulesActionCaptchaDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CustomRequestHandling: S.optional(AwsWafv2CustomRequestHandlingDetails) }),
-).annotate({
-  identifier: "AwsWafv2RulesActionCaptchaDetails",
-}) as any as S.Schema<AwsWafv2RulesActionCaptchaDetails>;
+export const AwsWafv2RulesActionCaptchaDetails =
+  AwsWafv2ActionAllowDetails as any as S.Schema<AwsWafv2RulesActionCaptchaDetails>;
 export interface AwsWafv2RulesActionCountDetails {
   CustomRequestHandling?: AwsWafv2CustomRequestHandlingDetails;
 }
-export const AwsWafv2RulesActionCountDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CustomRequestHandling: S.optional(AwsWafv2CustomRequestHandlingDetails) }),
-).annotate({
-  identifier: "AwsWafv2RulesActionCountDetails",
-}) as any as S.Schema<AwsWafv2RulesActionCountDetails>;
+export const AwsWafv2RulesActionCountDetails =
+  AwsWafv2ActionAllowDetails as any as S.Schema<AwsWafv2RulesActionCountDetails>;
 export interface AwsWafv2RulesActionDetails {
   Allow?: AwsWafv2ActionAllowDetails;
   Block?: AwsWafv2ActionBlockDetails;
@@ -9906,19 +9736,13 @@ export const AwsGuardDutyDetectorDataSourcesCloudTrailDetails = /*@__PURE__*/ S.
 export interface AwsGuardDutyDetectorDataSourcesDnsLogsDetails {
   Status?: string;
 }
-export const AwsGuardDutyDetectorDataSourcesDnsLogsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsGuardDutyDetectorDataSourcesDnsLogsDetails",
-}) as any as S.Schema<AwsGuardDutyDetectorDataSourcesDnsLogsDetails>;
+export const AwsGuardDutyDetectorDataSourcesDnsLogsDetails =
+  AwsGuardDutyDetectorDataSourcesCloudTrailDetails as any as S.Schema<AwsGuardDutyDetectorDataSourcesDnsLogsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesFlowLogsDetails {
   Status?: string;
 }
-export const AwsGuardDutyDetectorDataSourcesFlowLogsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsGuardDutyDetectorDataSourcesFlowLogsDetails",
-}) as any as S.Schema<AwsGuardDutyDetectorDataSourcesFlowLogsDetails>;
+export const AwsGuardDutyDetectorDataSourcesFlowLogsDetails =
+  AwsGuardDutyDetectorDataSourcesCloudTrailDetails as any as S.Schema<AwsGuardDutyDetectorDataSourcesFlowLogsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails {
   Status?: string;
 }
@@ -9977,11 +9801,8 @@ export const AwsGuardDutyDetectorDataSourcesMalwareProtectionDetails = /*@__PURE
 export interface AwsGuardDutyDetectorDataSourcesS3LogsDetails {
   Status?: string;
 }
-export const AwsGuardDutyDetectorDataSourcesS3LogsDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsGuardDutyDetectorDataSourcesS3LogsDetails",
-}) as any as S.Schema<AwsGuardDutyDetectorDataSourcesS3LogsDetails>;
+export const AwsGuardDutyDetectorDataSourcesS3LogsDetails =
+  AwsGuardDutyDetectorDataSourcesCloudTrailDetails as any as S.Schema<AwsGuardDutyDetectorDataSourcesS3LogsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesDetails {
   CloudTrail?: AwsGuardDutyDetectorDataSourcesCloudTrailDetails;
   DnsLogs?: AwsGuardDutyDetectorDataSourcesDnsLogsDetails;
@@ -10075,11 +9896,8 @@ export const AwsStepFunctionStateMachineLoggingConfigurationDetails = /*@__PURE_
 export interface AwsStepFunctionStateMachineTracingConfigurationDetails {
   Enabled?: boolean;
 }
-export const AwsStepFunctionStateMachineTracingConfigurationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsStepFunctionStateMachineTracingConfigurationDetails",
-}) as any as S.Schema<AwsStepFunctionStateMachineTracingConfigurationDetails>;
+export const AwsStepFunctionStateMachineTracingConfigurationDetails =
+  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsStepFunctionStateMachineTracingConfigurationDetails>;
 export interface AwsStepFunctionStateMachineDetails {
   Label?: string;
   LoggingConfiguration?: AwsStepFunctionStateMachineLoggingConfigurationDetails;
@@ -10208,11 +10026,8 @@ export const AwsEventsEndpointEventBusesList = /*@__PURE__*/ S.Array(
 export interface AwsEventsEndpointReplicationConfigDetails {
   State?: string;
 }
-export const AwsEventsEndpointReplicationConfigDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: S.optional(S.String) }),
-).annotate({
-  identifier: "AwsEventsEndpointReplicationConfigDetails",
-}) as any as S.Schema<AwsEventsEndpointReplicationConfigDetails>;
+export const AwsEventsEndpointReplicationConfigDetails =
+  AwsEc2InstanceMonitoringDetails as any as S.Schema<AwsEventsEndpointReplicationConfigDetails>;
 export interface AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails {
   HealthCheck?: string;
 }
@@ -10398,7 +10213,8 @@ export const AwsRoute53HostedZoneVpcDetails = /*@__PURE__*/ S.suspend(() =>
 export type AwsRoute53HostedZoneVpcsList = AwsRoute53HostedZoneVpcDetails[];
 export const AwsRoute53HostedZoneVpcsList = /*@__PURE__*/ S.Array(AwsRoute53HostedZoneVpcDetails);
 export type AwsRoute53HostedZoneNameServersList = string[];
-export const AwsRoute53HostedZoneNameServersList = /*@__PURE__*/ S.Array(S.String);
+export const AwsRoute53HostedZoneNameServersList =
+  AutomationRulesArnsList as any as S.Schema<AwsRoute53HostedZoneNameServersList>;
 export interface CloudWatchLogsLogGroupArnConfigDetails {
   CloudWatchLogsLogGroupArn?: string;
   HostedZoneId?: string;
@@ -10471,19 +10287,13 @@ export const AwsMskClusterClusterInfoEncryptionInfoDetails = /*@__PURE__*/ S.sus
 export interface AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails {
   Enabled?: boolean;
 }
-export const AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails",
-}) as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails>;
+export const AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails =
+  AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails {
   Enabled?: boolean;
 }
-export const AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails",
-}) as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails>;
+export const AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails =
+  AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationSaslDetails {
   Iam?: AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails;
   Scram?: AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails;
@@ -11034,9 +10844,7 @@ export const WorkflowState = S.String;
 export interface Workflow {
   Status?: WorkflowStatus;
 }
-export const Workflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(WorkflowStatus) }),
-).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
+export const Workflow = WorkflowUpdate as any as S.Schema<Workflow>;
 export type RecordState = "ACTIVE" | "ARCHIVED" | (string & {});
 export const RecordState = S.String;
 
@@ -11284,9 +11092,8 @@ export interface ActionLocalPortDetails {
   Port?: number;
   PortName?: string;
 }
-export const ActionLocalPortDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Port: S.optional(S.Number), PortName: S.optional(S.String) }),
-).annotate({ identifier: "ActionLocalPortDetails" }) as any as S.Schema<ActionLocalPortDetails>;
+export const ActionLocalPortDetails =
+  ActionRemotePortDetails as any as S.Schema<ActionLocalPortDetails>;
 export interface NetworkConnectionAction {
   ConnectionDirection?: string;
   RemoteIpDetails?: ActionRemoteIpDetails;
@@ -11798,14 +11605,8 @@ export interface BatchUpdateAutomationRulesResponse {
   ProcessedAutomationRules?: string[];
   UnprocessedAutomationRules?: UnprocessedAutomationRule[];
 }
-export const BatchUpdateAutomationRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProcessedAutomationRules: S.optional(AutomationRulesArnsList),
-    UnprocessedAutomationRules: S.optional(UnprocessedAutomationRulesList),
-  }),
-).annotate({
-  identifier: "BatchUpdateAutomationRulesResponse",
-}) as any as S.Schema<BatchUpdateAutomationRulesResponse>;
+export const BatchUpdateAutomationRulesResponse =
+  BatchDeleteAutomationRulesResponse as any as S.Schema<BatchUpdateAutomationRulesResponse>;
 export interface AwsSecurityFindingIdentifier {
   Id?: string;
   ProductArn?: string;
@@ -11888,7 +11689,7 @@ export const BatchUpdateFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdateFindingsResponse",
 }) as any as S.Schema<BatchUpdateFindingsResponse>;
 export type MetadataUidList = string[];
-export const MetadataUidList = /*@__PURE__*/ S.Array(S.String);
+export const MetadataUidList = AutomationRulesArnsList as any as S.Schema<MetadataUidList>;
 export interface OcsfFindingIdentifier {
   CloudAccountUid?: string;
   FindingInfoUid?: string;
@@ -12090,7 +11891,7 @@ export const CreateActionTargetResponse = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const TagMap = FieldMap as any as S.Schema<TagMap>;
 export type ClientToken = string;
 export interface CreateAggregatorV2Request {
   RegionLinkingMode?: string;
@@ -12489,11 +12290,14 @@ export const CreateAutomationRuleV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAutomationRuleV2Response",
 }) as any as S.Schema<CreateAutomationRuleV2Response>;
 export type EnabledStandardIdentifierList = string[];
-export const EnabledStandardIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const EnabledStandardIdentifierList =
+  AutomationRulesArnsList as any as S.Schema<EnabledStandardIdentifierList>;
 export type EnabledSecurityControlIdentifierList = string[];
-export const EnabledSecurityControlIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const EnabledSecurityControlIdentifierList =
+  AutomationRulesArnsList as any as S.Schema<EnabledSecurityControlIdentifierList>;
 export type DisabledSecurityControlIdentifierList = string[];
-export const DisabledSecurityControlIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const DisabledSecurityControlIdentifierList =
+  AutomationRulesArnsList as any as S.Schema<DisabledSecurityControlIdentifierList>;
 export interface SecurityControlCustomParameter {
   SecurityControlId?: string;
   Parameters?: { [key: string]: ParameterConfiguration | undefined };
@@ -12588,7 +12392,7 @@ export type ScopeType = "TENANT" | "SUBSCRIPTION" | (string & {});
 export const ScopeType = S.String;
 
 export type ScopeValueList = string[];
-export const ScopeValueList = /*@__PURE__*/ S.Array(S.String);
+export const ScopeValueList = AutomationRulesArnsList as any as S.Schema<ScopeValueList>;
 export interface AzureScopeConfiguration {
   ScopeType?: ScopeType;
   ScopeValues?: string[];
@@ -12597,7 +12401,7 @@ export const AzureScopeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScopeType: S.optional(ScopeType), ScopeValues: S.optional(ScopeValueList) }),
 ).annotate({ identifier: "AzureScopeConfiguration" }) as any as S.Schema<AzureScopeConfiguration>;
 export type AzureRegionList = string[];
-export const AzureRegionList = /*@__PURE__*/ S.Array(S.String);
+export const AzureRegionList = AutomationRulesArnsList as any as S.Schema<AzureRegionList>;
 export interface AzureProviderConfiguration {
   AWSConfigConnectorArn?: string;
   ScopeConfiguration?: AzureScopeConfiguration;
@@ -13089,7 +12893,7 @@ export const CreateTicketV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TicketId: S.optional(S.String), TicketSrcUrl: S.optional(S.String) }),
 ).annotate({ identifier: "CreateTicketV2Response" }) as any as S.Schema<CreateTicketV2Response>;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const AccountIdList = AutomationRulesArnsList as any as S.Schema<AccountIdList>;
 export interface DeclineInvitationsRequest {
   AccountIds?: string[];
 }
@@ -13128,11 +12932,8 @@ export const DeleteActionTargetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteActionTargetResponse {
   ActionTargetArn: string;
 }
-export const DeleteActionTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ActionTargetArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteActionTargetResponse",
-}) as any as S.Schema<DeleteActionTargetResponse>;
+export const DeleteActionTargetResponse =
+  CreateActionTargetResponse as any as S.Schema<DeleteActionTargetResponse>;
 export interface DeleteAggregatorV2Request {
   AggregatorV2Arn: string;
 }
@@ -13151,9 +12952,8 @@ export const DeleteAggregatorV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAggregatorV2Request",
 }) as any as S.Schema<DeleteAggregatorV2Request>;
 export interface DeleteAggregatorV2Response {}
-export const DeleteAggregatorV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAggregatorV2Response",
-}) as any as S.Schema<DeleteAggregatorV2Response>;
+export const DeleteAggregatorV2Response =
+  AcceptInvitationResponse as any as S.Schema<DeleteAggregatorV2Response>;
 export interface DeleteAutomationRuleV2Request {
   Identifier: string;
 }
@@ -13172,9 +12972,8 @@ export const DeleteAutomationRuleV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAutomationRuleV2Request",
 }) as any as S.Schema<DeleteAutomationRuleV2Request>;
 export interface DeleteAutomationRuleV2Response {}
-export const DeleteAutomationRuleV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAutomationRuleV2Response",
-}) as any as S.Schema<DeleteAutomationRuleV2Response>;
+export const DeleteAutomationRuleV2Response =
+  AcceptInvitationResponse as any as S.Schema<DeleteAutomationRuleV2Response>;
 export interface DeleteConfigurationPolicyRequest {
   Identifier: string;
 }
@@ -13193,11 +12992,8 @@ export const DeleteConfigurationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigurationPolicyRequest",
 }) as any as S.Schema<DeleteConfigurationPolicyRequest>;
 export interface DeleteConfigurationPolicyResponse {}
-export const DeleteConfigurationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConfigurationPolicyResponse",
-}) as any as S.Schema<DeleteConfigurationPolicyResponse>;
+export const DeleteConfigurationPolicyResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DeleteConfigurationPolicyResponse>;
 export interface DeleteConnectorRequest {
   ConnectorId: string;
 }
@@ -13281,9 +13077,8 @@ export const DeleteInsightRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInsightResponse {
   InsightArn: string;
 }
-export const DeleteInsightResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightArn: S.optional(S.String) }),
-).annotate({ identifier: "DeleteInsightResponse" }) as any as S.Schema<DeleteInsightResponse>;
+export const DeleteInsightResponse =
+  CreateInsightResponse as any as S.Schema<DeleteInsightResponse>;
 export interface DeleteInvitationsRequest {
   AccountIds?: string[];
 }
@@ -13295,11 +13090,8 @@ export const DeleteInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInvitationsResponse {
   UnprocessedAccounts?: Result[];
 }
-export const DeleteInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(ResultList) }),
-).annotate({
-  identifier: "DeleteInvitationsResponse",
-}) as any as S.Schema<DeleteInvitationsResponse>;
+export const DeleteInvitationsResponse =
+  DeclineInvitationsResponse as any as S.Schema<DeleteInvitationsResponse>;
 export interface DeleteMembersRequest {
   AccountIds?: string[];
 }
@@ -13311,11 +13103,10 @@ export const DeleteMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMembersResponse {
   UnprocessedAccounts?: Result[];
 }
-export const DeleteMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(ResultList) }),
-).annotate({ identifier: "DeleteMembersResponse" }) as any as S.Schema<DeleteMembersResponse>;
+export const DeleteMembersResponse =
+  CreateMembersResponse as any as S.Schema<DeleteMembersResponse>;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = AutomationRulesArnsList as any as S.Schema<ArnList>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface DescribeActionTargetsRequest {
@@ -13453,7 +13244,7 @@ export const DescribeProductsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/products" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DescribeProductsRequest" }) as any as S.Schema<DescribeProductsRequest>;
 export type CategoryList = string[];
-export const CategoryList = /*@__PURE__*/ S.Array(S.String);
+export const CategoryList = AutomationRulesArnsList as any as S.Schema<CategoryList>;
 export type IntegrationType =
   | "SEND_FINDINGS_TO_SECURITY_HUB"
   | "RECEIVE_FINDINGS_FROM_SECURITY_HUB"
@@ -13719,11 +13510,8 @@ export const DisableImportFindingsForProductRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DisableImportFindingsForProductRequest",
 }) as any as S.Schema<DisableImportFindingsForProductRequest>;
 export interface DisableImportFindingsForProductResponse {}
-export const DisableImportFindingsForProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableImportFindingsForProductResponse",
-}) as any as S.Schema<DisableImportFindingsForProductResponse>;
+export const DisableImportFindingsForProductResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisableImportFindingsForProductResponse>;
 export type SecurityHubFeature = "SecurityHub" | "SecurityHubV2" | (string & {});
 export const SecurityHubFeature = S.String;
 
@@ -13746,11 +13534,8 @@ export const DisableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DisableOrganizationAdminAccountRequest",
 }) as any as S.Schema<DisableOrganizationAdminAccountRequest>;
 export interface DisableOrganizationAdminAccountResponse {}
-export const DisableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableOrganizationAdminAccountResponse",
-}) as any as S.Schema<DisableOrganizationAdminAccountResponse>;
+export const DisableOrganizationAdminAccountResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisableOrganizationAdminAccountResponse>;
 export interface DisableSecurityHubRequest {}
 export const DisableSecurityHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -13760,9 +13545,8 @@ export const DisableSecurityHubRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableSecurityHubRequest",
 }) as any as S.Schema<DisableSecurityHubRequest>;
 export interface DisableSecurityHubResponse {}
-export const DisableSecurityHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableSecurityHubResponse",
-}) as any as S.Schema<DisableSecurityHubResponse>;
+export const DisableSecurityHubResponse =
+  AcceptInvitationResponse as any as S.Schema<DisableSecurityHubResponse>;
 export type FeatureName = "NETWORK_SCANNING" | (string & {});
 export const FeatureName = S.String;
 
@@ -13784,11 +13568,8 @@ export const DisableSecurityHubFeatureV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableSecurityHubFeatureV2Request",
 }) as any as S.Schema<DisableSecurityHubFeatureV2Request>;
 export interface DisableSecurityHubFeatureV2Response {}
-export const DisableSecurityHubFeatureV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableSecurityHubFeatureV2Response",
-}) as any as S.Schema<DisableSecurityHubFeatureV2Response>;
+export const DisableSecurityHubFeatureV2Response =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisableSecurityHubFeatureV2Response>;
 export interface DisableSecurityHubV2Request {}
 export const DisableSecurityHubV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -13798,9 +13579,8 @@ export const DisableSecurityHubV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableSecurityHubV2Request",
 }) as any as S.Schema<DisableSecurityHubV2Request>;
 export interface DisableSecurityHubV2Response {}
-export const DisableSecurityHubV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableSecurityHubV2Response",
-}) as any as S.Schema<DisableSecurityHubV2Response>;
+export const DisableSecurityHubV2Response =
+  AcceptInvitationResponse as any as S.Schema<DisableSecurityHubV2Response>;
 export interface DisassociateFromAdministratorAccountRequest {}
 export const DisassociateFromAdministratorAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -13817,11 +13597,8 @@ export const DisassociateFromAdministratorAccountRequest = /*@__PURE__*/ S.suspe
   identifier: "DisassociateFromAdministratorAccountRequest",
 }) as any as S.Schema<DisassociateFromAdministratorAccountRequest>;
 export interface DisassociateFromAdministratorAccountResponse {}
-export const DisassociateFromAdministratorAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateFromAdministratorAccountResponse",
-}) as any as S.Schema<DisassociateFromAdministratorAccountResponse>;
+export const DisassociateFromAdministratorAccountResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisassociateFromAdministratorAccountResponse>;
 export interface DisassociateFromMasterAccountRequest {}
 export const DisassociateFromMasterAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -13831,11 +13608,8 @@ export const DisassociateFromMasterAccountRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DisassociateFromMasterAccountRequest",
 }) as any as S.Schema<DisassociateFromMasterAccountRequest>;
 export interface DisassociateFromMasterAccountResponse {}
-export const DisassociateFromMasterAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateFromMasterAccountResponse",
-}) as any as S.Schema<DisassociateFromMasterAccountResponse>;
+export const DisassociateFromMasterAccountResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisassociateFromMasterAccountResponse>;
 export interface DisassociateMembersRequest {
   AccountIds?: string[];
 }
@@ -13847,9 +13621,8 @@ export const DisassociateMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateMembersRequest",
 }) as any as S.Schema<DisassociateMembersRequest>;
 export interface DisassociateMembersResponse {}
-export const DisassociateMembersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateMembersResponse",
-}) as any as S.Schema<DisassociateMembersResponse>;
+export const DisassociateMembersResponse =
+  AcceptInvitationResponse as any as S.Schema<DisassociateMembersResponse>;
 export interface EnableImportFindingsForProductRequest {
   ProductArn?: string;
 }
@@ -13908,9 +13681,8 @@ export const EnableSecurityHubRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/accounts" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "EnableSecurityHubRequest" }) as any as S.Schema<EnableSecurityHubRequest>;
 export interface EnableSecurityHubResponse {}
-export const EnableSecurityHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableSecurityHubResponse",
-}) as any as S.Schema<EnableSecurityHubResponse>;
+export const EnableSecurityHubResponse =
+  AcceptInvitationResponse as any as S.Schema<EnableSecurityHubResponse>;
 export interface EnableSecurityHubFeatureV2Request {
   FeatureName: FeatureName;
 }
@@ -13929,11 +13701,8 @@ export const EnableSecurityHubFeatureV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableSecurityHubFeatureV2Request",
 }) as any as S.Schema<EnableSecurityHubFeatureV2Request>;
 export interface EnableSecurityHubFeatureV2Response {}
-export const EnableSecurityHubFeatureV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableSecurityHubFeatureV2Response",
-}) as any as S.Schema<EnableSecurityHubFeatureV2Response>;
+export const EnableSecurityHubFeatureV2Response =
+  AcceptAdministratorInvitationResponse as any as S.Schema<EnableSecurityHubFeatureV2Response>;
 export interface EnableSecurityHubV2Request {
   Tags?: { [key: string]: string | undefined };
 }
@@ -13970,11 +13739,8 @@ export const GenerateRecommendedPolicyV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateRecommendedPolicyV2Request",
 }) as any as S.Schema<GenerateRecommendedPolicyV2Request>;
 export interface GenerateRecommendedPolicyV2Response {}
-export const GenerateRecommendedPolicyV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateRecommendedPolicyV2Response",
-}) as any as S.Schema<GenerateRecommendedPolicyV2Response>;
+export const GenerateRecommendedPolicyV2Response =
+  AcceptAdministratorInvitationResponse as any as S.Schema<GenerateRecommendedPolicyV2Response>;
 export interface GetAdministratorAccountRequest {}
 export const GetAdministratorAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -14105,19 +13871,8 @@ export interface GetConfigurationPolicyResponse {
   CreatedAt?: Date;
   ConfigurationPolicy?: Policy;
 }
-export const GetConfigurationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ConfigurationPolicy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "GetConfigurationPolicyResponse",
-}) as any as S.Schema<GetConfigurationPolicyResponse>;
+export const GetConfigurationPolicyResponse =
+  CreateConfigurationPolicyResponse as any as S.Schema<GetConfigurationPolicyResponse>;
 export interface GetConfigurationPolicyAssociationRequest {
   Target?: Target;
 }
@@ -14144,19 +13899,8 @@ export interface GetConfigurationPolicyAssociationResponse {
   AssociationStatus?: ConfigurationPolicyAssociationStatus;
   AssociationStatusMessage?: string;
 }
-export const GetConfigurationPolicyAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConfigurationPolicyId: S.optional(S.String),
-    TargetId: S.optional(S.String),
-    TargetType: S.optional(TargetType),
-    AssociationType: S.optional(AssociationType),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    AssociationStatus: S.optional(ConfigurationPolicyAssociationStatus),
-    AssociationStatusMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationPolicyAssociationResponse",
-}) as any as S.Schema<GetConfigurationPolicyAssociationResponse>;
+export const GetConfigurationPolicyAssociationResponse =
+  ConfigurationPolicyAssociationSummary as any as S.Schema<GetConfigurationPolicyAssociationResponse>;
 export interface GetConnectorRequest {
   ConnectorId: string;
 }
@@ -14410,16 +14154,8 @@ export interface GetFindingAggregatorResponse {
   RegionLinkingMode?: string;
   Regions?: string[];
 }
-export const GetFindingAggregatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FindingAggregatorArn: S.optional(S.String),
-    FindingAggregationRegion: S.optional(S.String),
-    RegionLinkingMode: S.optional(S.String),
-    Regions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GetFindingAggregatorResponse",
-}) as any as S.Schema<GetFindingAggregatorResponse>;
+export const GetFindingAggregatorResponse =
+  CreateFindingAggregatorResponse as any as S.Schema<GetFindingAggregatorResponse>;
 export interface GetFindingHistoryRequest {
   FindingIdentifier?: AwsSecurityFindingIdentifier;
   StartTime?: Date;
@@ -14528,7 +14264,8 @@ export const GetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/findings" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetFindingsRequest" }) as any as S.Schema<GetFindingsRequest>;
 export type AwsSecurityFindingList = AwsSecurityFinding[];
-export const AwsSecurityFindingList = /*@__PURE__*/ S.Array(AwsSecurityFinding);
+export const AwsSecurityFindingList =
+  BatchImportFindingsRequestFindingList as any as S.Schema<AwsSecurityFindingList>;
 export interface GetFindingsResponse {
   Findings: (AwsSecurityFinding & {
     SchemaVersion: NonEmptyString;
@@ -15091,11 +14828,8 @@ export const RemediationStringField = S.String;
 export interface RemediationStringFilterCondition {
   Value?: string;
 }
-export const RemediationStringFilterCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.String) }),
-).annotate({
-  identifier: "RemediationStringFilterCondition",
-}) as any as S.Schema<RemediationStringFilterCondition>;
+export const RemediationStringFilterCondition =
+  StatelessCustomPublishMetricActionDimension as any as S.Schema<RemediationStringFilterCondition>;
 export interface RemediationStringFilter {
   FieldName?: RemediationStringField;
   Filter?: RemediationStringFilterCondition;
@@ -15175,7 +14909,8 @@ export type RemediationPriority = "Critical" | "High" | "Medium" | "Low" | (stri
 export const RemediationPriority = S.String;
 
 export type RemediationStringList = string[];
-export const RemediationStringList = /*@__PURE__*/ S.Array(S.String);
+export const RemediationStringList =
+  AutomationRulesArnsList as any as S.Schema<RemediationStringList>;
 export interface KbArticle {
   Title?: string;
   Url?: string;
@@ -15630,9 +15365,7 @@ export const ResourceGroupByRules = /*@__PURE__*/ S.Array(ResourceGroupByRule);
 export interface ResourceScopes {
   AwsOrganizations?: AwsOrganizationScope[];
 }
-export const ResourceScopes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AwsOrganizations: S.optional(AwsOrganizationScopeList) }),
-).annotate({ identifier: "ResourceScopes" }) as any as S.Schema<ResourceScopes>;
+export const ResourceScopes = FindingScopes as any as S.Schema<ResourceScopes>;
 export interface GetResourcesStatisticsV2Request {
   GroupByRules?: ResourceGroupByRule[];
   Scopes?: ResourceScopes;
@@ -15654,11 +15387,8 @@ export const GetResourcesStatisticsV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourcesStatisticsV2Response {
   GroupByResults: GroupByResult[];
 }
-export const GetResourcesStatisticsV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GroupByResults: S.optional(GroupByResults) }),
-).annotate({
-  identifier: "GetResourcesStatisticsV2Response",
-}) as any as S.Schema<GetResourcesStatisticsV2Response>;
+export const GetResourcesStatisticsV2Response =
+  GetFindingStatisticsV2Response as any as S.Schema<GetResourcesStatisticsV2Response>;
 export type ResourcesTrendsStringField =
   | "account_id"
   | "region"
@@ -16042,15 +15772,8 @@ export interface DoubleConfigurationOptions {
   Min?: number;
   Max?: number;
 }
-export const DoubleConfigurationOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DefaultValue: S.optional(S.Number),
-    Min: S.optional(S.Number),
-    Max: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DoubleConfigurationOptions",
-}) as any as S.Schema<DoubleConfigurationOptions>;
+export const DoubleConfigurationOptions =
+  IntegerConfigurationOptions as any as S.Schema<DoubleConfigurationOptions>;
 export interface StringConfigurationOptions {
   DefaultValue?: string;
   Re2Expression?: string;
@@ -16276,9 +15999,8 @@ export const InviteMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InviteMembersResponse {
   UnprocessedAccounts?: Result[];
 }
-export const InviteMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(ResultList) }),
-).annotate({ identifier: "InviteMembersResponse" }) as any as S.Schema<InviteMembersResponse>;
+export const InviteMembersResponse =
+  CreateMembersResponse as any as S.Schema<InviteMembersResponse>;
 export interface ListAggregatorsV2Request {
   NextToken?: string;
   MaxResults?: number;
@@ -16514,9 +16236,8 @@ export const ListConfigurationPolicyAssociationsRequest = /*@__PURE__*/ S.suspen
   identifier: "ListConfigurationPolicyAssociationsRequest",
 }) as any as S.Schema<ListConfigurationPolicyAssociationsRequest>;
 export type ConfigurationPolicyAssociationSummaryList = ConfigurationPolicyAssociationSummary[];
-export const ConfigurationPolicyAssociationSummaryList = /*@__PURE__*/ S.Array(
-  ConfigurationPolicyAssociationSummary,
-);
+export const ConfigurationPolicyAssociationSummaryList =
+  ConfigurationPolicyAssociationList as any as S.Schema<ConfigurationPolicyAssociationSummaryList>;
 export interface ListConfigurationPolicyAssociationsResponse {
   ConfigurationPolicyAssociationSummaries?: ConfigurationPolicyAssociationSummary[];
   NextToken?: string;
@@ -16673,7 +16394,8 @@ export const ListEnabledProductsForImportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnabledProductsForImportRequest",
 }) as any as S.Schema<ListEnabledProductsForImportRequest>;
 export type ProductSubscriptionArnList = string[];
-export const ProductSubscriptionArnList = /*@__PURE__*/ S.Array(S.String);
+export const ProductSubscriptionArnList =
+  AutomationRulesArnsList as any as S.Schema<ProductSubscriptionArnList>;
 export interface ListEnabledProductsForImportResponse {
   ProductSubscriptions?: string[];
   NextToken?: string;
@@ -16808,7 +16530,8 @@ export const ListFindingAggregatorsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFindingAggregatorsResponse>;
 export type FreeTrialAccountId = string;
 export type FreeTrialAccountIdList = string[];
-export const FreeTrialAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const FreeTrialAccountIdList =
+  AutomationRulesArnsList as any as S.Schema<FreeTrialAccountIdList>;
 export type FreeTrialStatusValue = "ACTIVE" | "INACTIVE" | (string & {});
 export const FreeTrialStatusValue = S.String;
 
@@ -17161,19 +16884,8 @@ export interface StartConfigurationPolicyAssociationResponse {
   AssociationStatus?: ConfigurationPolicyAssociationStatus;
   AssociationStatusMessage?: string;
 }
-export const StartConfigurationPolicyAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConfigurationPolicyId: S.optional(S.String),
-    TargetId: S.optional(S.String),
-    TargetType: S.optional(TargetType),
-    AssociationType: S.optional(AssociationType),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    AssociationStatus: S.optional(ConfigurationPolicyAssociationStatus),
-    AssociationStatusMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartConfigurationPolicyAssociationResponse",
-}) as any as S.Schema<StartConfigurationPolicyAssociationResponse>;
+export const StartConfigurationPolicyAssociationResponse =
+  ConfigurationPolicyAssociationSummary as any as S.Schema<StartConfigurationPolicyAssociationResponse>;
 export interface StartConfigurationPolicyDisassociationRequest {
   Target?: Target;
   ConfigurationPolicyIdentifier?: string;
@@ -17196,11 +16908,8 @@ export const StartConfigurationPolicyDisassociationRequest = /*@__PURE__*/ S.sus
   identifier: "StartConfigurationPolicyDisassociationRequest",
 }) as any as S.Schema<StartConfigurationPolicyDisassociationRequest>;
 export interface StartConfigurationPolicyDisassociationResponse {}
-export const StartConfigurationPolicyDisassociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartConfigurationPolicyDisassociationResponse",
-}) as any as S.Schema<StartConfigurationPolicyDisassociationResponse>;
+export const StartConfigurationPolicyDisassociationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<StartConfigurationPolicyDisassociationResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
@@ -17214,11 +16923,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AcceptInvitationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AutomationRulesArnsList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -17232,9 +16939,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AcceptInvitationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateActionTargetRequest {
   ActionTargetArn: string;
   Name?: string;
@@ -17259,9 +16965,8 @@ export const UpdateActionTargetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateActionTargetRequest",
 }) as any as S.Schema<UpdateActionTargetRequest>;
 export interface UpdateActionTargetResponse {}
-export const UpdateActionTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateActionTargetResponse",
-}) as any as S.Schema<UpdateActionTargetResponse>;
+export const UpdateActionTargetResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateActionTargetResponse>;
 export interface UpdateAggregatorV2Request {
   AggregatorV2Arn: string;
   RegionLinkingMode?: string;
@@ -17291,16 +16996,8 @@ export interface UpdateAggregatorV2Response {
   RegionLinkingMode?: string;
   LinkedRegions?: string[];
 }
-export const UpdateAggregatorV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AggregatorV2Arn: S.optional(S.String),
-    AggregationRegion: S.optional(S.String),
-    RegionLinkingMode: S.optional(S.String),
-    LinkedRegions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UpdateAggregatorV2Response",
-}) as any as S.Schema<UpdateAggregatorV2Response>;
+export const UpdateAggregatorV2Response =
+  CreateAggregatorV2Response as any as S.Schema<UpdateAggregatorV2Response>;
 export interface UpdateAutomationRuleV2Request {
   Identifier: string;
   RuleStatus?: RuleStatusV2;
@@ -17333,9 +17030,8 @@ export const UpdateAutomationRuleV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAutomationRuleV2Request",
 }) as any as S.Schema<UpdateAutomationRuleV2Request>;
 export interface UpdateAutomationRuleV2Response {}
-export const UpdateAutomationRuleV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAutomationRuleV2Response",
-}) as any as S.Schema<UpdateAutomationRuleV2Response>;
+export const UpdateAutomationRuleV2Response =
+  AcceptInvitationResponse as any as S.Schema<UpdateAutomationRuleV2Response>;
 export interface UpdateConfigurationPolicyRequest {
   Identifier: string;
   Name?: string;
@@ -17372,19 +17068,8 @@ export interface UpdateConfigurationPolicyResponse {
   CreatedAt?: Date;
   ConfigurationPolicy?: Policy;
 }
-export const UpdateConfigurationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ConfigurationPolicy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationPolicyResponse",
-}) as any as S.Schema<UpdateConfigurationPolicyResponse>;
+export const UpdateConfigurationPolicyResponse =
+  CreateConfigurationPolicyResponse as any as S.Schema<UpdateConfigurationPolicyResponse>;
 export interface AzureUpdateConfiguration {
   ScopeConfiguration?: AzureScopeConfiguration;
   AzureRegions?: string[];
@@ -17433,11 +17118,8 @@ export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 export interface JiraCloudUpdateConfiguration {
   ProjectKey?: string;
 }
-export const JiraCloudUpdateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProjectKey: S.optional(S.String) }),
-).annotate({
-  identifier: "JiraCloudUpdateConfiguration",
-}) as any as S.Schema<JiraCloudUpdateConfiguration>;
+export const JiraCloudUpdateConfiguration =
+  JiraCloudProviderConfiguration as any as S.Schema<JiraCloudUpdateConfiguration>;
 export interface ServiceNowUpdateConfiguration {
   SecretArn?: string;
 }
@@ -17517,16 +17199,8 @@ export interface UpdateFindingAggregatorResponse {
   RegionLinkingMode?: string;
   Regions?: string[];
 }
-export const UpdateFindingAggregatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FindingAggregatorArn: S.optional(S.String),
-    FindingAggregationRegion: S.optional(S.String),
-    RegionLinkingMode: S.optional(S.String),
-    Regions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UpdateFindingAggregatorResponse",
-}) as any as S.Schema<UpdateFindingAggregatorResponse>;
+export const UpdateFindingAggregatorResponse =
+  CreateFindingAggregatorResponse as any as S.Schema<UpdateFindingAggregatorResponse>;
 export interface UpdateFindingsRequest {
   Filters?: AwsSecurityFindingFilters;
   Note?: NoteUpdate;
@@ -17540,9 +17214,8 @@ export const UpdateFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "PATCH", uri: "/findings" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateFindingsRequest" }) as any as S.Schema<UpdateFindingsRequest>;
 export interface UpdateFindingsResponse {}
-export const UpdateFindingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateFindingsResponse",
-}) as any as S.Schema<UpdateFindingsResponse>;
+export const UpdateFindingsResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateFindingsResponse>;
 export interface UpdateInsightRequest {
   InsightArn: string;
   Name?: string;
@@ -17567,9 +17240,8 @@ export const UpdateInsightRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateInsightRequest" }) as any as S.Schema<UpdateInsightRequest>;
 export interface UpdateInsightResponse {}
-export const UpdateInsightResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInsightResponse",
-}) as any as S.Schema<UpdateInsightResponse>;
+export const UpdateInsightResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateInsightResponse>;
 export interface UpdateOrganizationConfigurationRequest {
   AutoEnable?: boolean;
   AutoEnableStandards?: AutoEnableStandards;
@@ -17594,11 +17266,8 @@ export const UpdateOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateOrganizationConfigurationRequest",
 }) as any as S.Schema<UpdateOrganizationConfigurationRequest>;
 export interface UpdateOrganizationConfigurationResponse {}
-export const UpdateOrganizationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationConfigurationResponse",
-}) as any as S.Schema<UpdateOrganizationConfigurationResponse>;
+export const UpdateOrganizationConfigurationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateOrganizationConfigurationResponse>;
 export interface UpdateSecurityControlRequest {
   SecurityControlId?: string;
   Parameters?: { [key: string]: ParameterConfiguration | undefined };
@@ -17623,9 +17292,8 @@ export const UpdateSecurityControlRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSecurityControlRequest",
 }) as any as S.Schema<UpdateSecurityControlRequest>;
 export interface UpdateSecurityControlResponse {}
-export const UpdateSecurityControlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSecurityControlResponse",
-}) as any as S.Schema<UpdateSecurityControlResponse>;
+export const UpdateSecurityControlResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateSecurityControlResponse>;
 export interface UpdateSecurityHubConfigurationRequest {
   AutoEnableControls?: boolean;
   ControlFindingGenerator?: ControlFindingGenerator;
@@ -17639,11 +17307,8 @@ export const UpdateSecurityHubConfigurationRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateSecurityHubConfigurationRequest",
 }) as any as S.Schema<UpdateSecurityHubConfigurationRequest>;
 export interface UpdateSecurityHubConfigurationResponse {}
-export const UpdateSecurityHubConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateSecurityHubConfigurationResponse",
-}) as any as S.Schema<UpdateSecurityHubConfigurationResponse>;
+export const UpdateSecurityHubConfigurationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateSecurityHubConfigurationResponse>;
 export interface UpdateStandardsControlRequest {
   StandardsControlArn: string;
   ControlStatus?: ControlStatus;
@@ -17668,9 +17333,8 @@ export const UpdateStandardsControlRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateStandardsControlRequest",
 }) as any as S.Schema<UpdateStandardsControlRequest>;
 export interface UpdateStandardsControlResponse {}
-export const UpdateStandardsControlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateStandardsControlResponse",
-}) as any as S.Schema<UpdateStandardsControlResponse>;
+export const UpdateStandardsControlResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateStandardsControlResponse>;
 export type AcceptAdministratorInvitationError =
   | InternalException
   | InvalidAccessException

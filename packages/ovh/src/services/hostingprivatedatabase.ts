@@ -894,14 +894,8 @@ export interface HostingPrivateDatabaseTemporaryUrlInformations {
   /** Temporary url */
   url?: string;
 }
-export const HostingPrivateDatabaseTemporaryUrlInformations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expirationDate: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HostingPrivateDatabaseTemporaryUrlInformations",
-}) as any as S.Schema<HostingPrivateDatabaseTemporaryUrlInformations>;
+export const HostingPrivateDatabaseTemporaryUrlInformations =
+  DbaasLogsTemporaryLogsLink as any as S.Schema<HostingPrivateDatabaseTemporaryUrlInformations>;
 
 export interface GetHostingPrivateDatabaseRequest {
   /** Service name */
@@ -1412,9 +1406,8 @@ export const GetHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend((
 
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-export const DbaasLogsLogKindAdditionalReturnedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
+export const DbaasLogsLogKindAdditionalReturnedFieldsList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
 
 /** Log kind */
 export interface DbaasLogsLogKind {
@@ -1562,9 +1555,8 @@ export const GetHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.susp
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1936,9 +1928,8 @@ export const ListHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingPrivateDatabaseRequest>;
 
 export type ListHostingPrivateDatabaseResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseResponseBodyList>;
+export const ListHostingPrivateDatabaseResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseResponseBodyList>;
 
 export type ListHostingPrivateDatabaseResponse = ListHostingPrivateDatabaseResponseBodyList;
 export const ListHostingPrivateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2032,9 +2023,8 @@ export const ListHostingPrivateDatabaseAvailableVersionsRequest = /*@__PURE__*/ 
 
 export type ListHostingPrivateDatabaseAvailableVersionsResponseBodyList =
   Array<HostingPrivateDatabaseAvailableVersionEnum>;
-export const ListHostingPrivateDatabaseAvailableVersionsResponseBodyList = /*@__PURE__*/ S.Array(
-  HostingPrivateDatabaseAvailableVersionEnum,
-) as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsResponseBodyList>;
+export const ListHostingPrivateDatabaseAvailableVersionsResponseBodyList =
+  HostingPrivateDatabaseAvailableOrderCapacitiesVersionList as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsResponseBodyList>;
 
 export type ListHostingPrivateDatabaseAvailableVersionsResponse =
   ListHostingPrivateDatabaseAvailableVersionsResponseBodyList;
@@ -2060,9 +2050,8 @@ export const ListHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ S.suspend((
 
 /** Configuration available values */
 export type HostingPrivateDatabaseConfigDetailAvailableValuesList = Array<string>;
-export const HostingPrivateDatabaseConfigDetailAvailableValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostingPrivateDatabaseConfigDetailAvailableValuesList>;
+export const HostingPrivateDatabaseConfigDetailAvailableValuesList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<HostingPrivateDatabaseConfigDetailAvailableValuesList>;
 
 /** Web Cloud Database config type */
 export type HostingPrivateDatabaseConfigTypeEnum = "boolean" | "number" | "string";
@@ -2193,17 +2182,13 @@ export const ListHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseDatabaseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponseBodyList>;
+export const ListHostingPrivateDatabaseDatabaseResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponseBodyList>;
 
 export type ListHostingPrivateDatabaseDatabaseResponse =
   ListHostingPrivateDatabaseDatabaseResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseDatabaseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseDatabaseResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponse>;
+export const ListHostingPrivateDatabaseDatabaseResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponse>;
 
 export interface ListHostingPrivateDatabaseDatabaseCopyRequest {
   /** Service name */
@@ -2227,17 +2212,13 @@ export const ListHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseCopyResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseDatabaseCopyResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponseBodyList>;
+export const ListHostingPrivateDatabaseDatabaseCopyResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponseBodyList>;
 
 export type ListHostingPrivateDatabaseDatabaseCopyResponse =
   ListHostingPrivateDatabaseDatabaseCopyResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseCopyResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseDatabaseCopyResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseDatabaseCopyResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponse>;
+export const ListHostingPrivateDatabaseDatabaseCopyResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponse>;
 
 export interface ListHostingPrivateDatabaseDatabaseDumpRequest {
   /** Service name */
@@ -2261,17 +2242,13 @@ export const ListHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseDumpResponseBodyList = Array<number>;
-export const ListHostingPrivateDatabaseDatabaseDumpResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponseBodyList>;
+export const ListHostingPrivateDatabaseDatabaseDumpResponseBodyList =
+  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponseBodyList>;
 
 export type ListHostingPrivateDatabaseDatabaseDumpResponse =
   ListHostingPrivateDatabaseDatabaseDumpResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseDumpResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseDatabaseDumpResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseDatabaseDumpResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponse>;
+export const ListHostingPrivateDatabaseDatabaseDumpResponse =
+  CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponse>;
 
 export interface ListHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Service name */
@@ -2301,17 +2278,13 @@ export const ListHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList>;
+export const ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList>;
 
 export type ListHostingPrivateDatabaseDatabaseExtensionResponse =
   ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseExtensionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseDatabaseExtensionResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponse>;
+export const ListHostingPrivateDatabaseDatabaseExtensionResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponse>;
 
 export interface ListHostingPrivateDatabaseDumpRequest {
   /** Service name */
@@ -2332,16 +2305,12 @@ export const ListHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingPrivateDatabaseDumpRequest>;
 
 export type ListHostingPrivateDatabaseDumpResponseBodyList = Array<number>;
-export const ListHostingPrivateDatabaseDumpResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListHostingPrivateDatabaseDumpResponseBodyList>;
+export const ListHostingPrivateDatabaseDumpResponseBodyList =
+  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ListHostingPrivateDatabaseDumpResponseBodyList>;
 
 export type ListHostingPrivateDatabaseDumpResponse = ListHostingPrivateDatabaseDumpResponseBodyList;
-export const ListHostingPrivateDatabaseDumpResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseDumpResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseDumpResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseDumpResponse>;
+export const ListHostingPrivateDatabaseDumpResponse =
+  CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseDumpResponse>;
 
 export interface ListHostingPrivateDatabaseLogKindRequest {
   /** Service name */
@@ -2358,17 +2327,13 @@ export const ListHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListHostingPrivateDatabaseLogKindRequest>;
 
 export type ListHostingPrivateDatabaseLogKindResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseLogKindResponseBodyList>;
+export const ListHostingPrivateDatabaseLogKindResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseLogKindResponseBodyList>;
 
 export type ListHostingPrivateDatabaseLogKindResponse =
   ListHostingPrivateDatabaseLogKindResponseBodyList;
-export const ListHostingPrivateDatabaseLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseLogKindResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseLogKindResponse>;
+export const ListHostingPrivateDatabaseLogKindResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseLogKindResponse>;
 
 export interface ListHostingPrivateDatabaseLogSubscriptionRequest {
   /** Service name */
@@ -2392,17 +2357,13 @@ export const ListHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionRequest>;
 
 export type ListHostingPrivateDatabaseLogSubscriptionResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponseBodyList>;
+export const ListHostingPrivateDatabaseLogSubscriptionResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponseBodyList>;
 
 export type ListHostingPrivateDatabaseLogSubscriptionResponse =
   ListHostingPrivateDatabaseLogSubscriptionResponseBodyList;
-export const ListHostingPrivateDatabaseLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseLogSubscriptionResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponse>;
+export const ListHostingPrivateDatabaseLogSubscriptionResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponse>;
 
 export interface ListHostingPrivateDatabaseOomRequest {
   /** Service name */
@@ -2465,17 +2426,13 @@ export const ListHostingPrivateDatabaseTasksRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListHostingPrivateDatabaseTasksRequest>;
 
 export type ListHostingPrivateDatabaseTasksResponseBodyList = Array<number>;
-export const ListHostingPrivateDatabaseTasksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListHostingPrivateDatabaseTasksResponseBodyList>;
+export const ListHostingPrivateDatabaseTasksResponseBodyList =
+  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ListHostingPrivateDatabaseTasksResponseBodyList>;
 
 export type ListHostingPrivateDatabaseTasksResponse =
   ListHostingPrivateDatabaseTasksResponseBodyList;
-export const ListHostingPrivateDatabaseTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseTasksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseTasksResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseTasksResponse>;
+export const ListHostingPrivateDatabaseTasksResponse =
+  CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseTasksResponse>;
 
 export interface ListHostingPrivateDatabaseUserRequest {
   /** Service name */
@@ -2490,16 +2447,12 @@ export const ListHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingPrivateDatabaseUserRequest>;
 
 export type ListHostingPrivateDatabaseUserResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseUserResponseBodyList>;
+export const ListHostingPrivateDatabaseUserResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseUserResponseBodyList>;
 
 export type ListHostingPrivateDatabaseUserResponse = ListHostingPrivateDatabaseUserResponseBodyList;
-export const ListHostingPrivateDatabaseUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseUserResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseUserResponse>;
+export const ListHostingPrivateDatabaseUserResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseUserResponse>;
 
 export interface ListHostingPrivateDatabaseUserGrantRequest {
   /** Service name */
@@ -2523,17 +2476,13 @@ export const ListHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingPrivateDatabaseUserGrantRequest>;
 
 export type ListHostingPrivateDatabaseUserGrantResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseUserGrantResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponseBodyList>;
+export const ListHostingPrivateDatabaseUserGrantResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponseBodyList>;
 
 export type ListHostingPrivateDatabaseUserGrantResponse =
   ListHostingPrivateDatabaseUserGrantResponseBodyList;
-export const ListHostingPrivateDatabaseUserGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseUserGrantResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseUserGrantResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponse>;
+export const ListHostingPrivateDatabaseUserGrantResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponse>;
 
 export interface ListHostingPrivateDatabaseWebsRequest {
   /** Service name */
@@ -2548,16 +2497,12 @@ export const ListHostingPrivateDatabaseWebsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingPrivateDatabaseWebsRequest>;
 
 export type ListHostingPrivateDatabaseWebsResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseWebsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseWebsResponseBodyList>;
+export const ListHostingPrivateDatabaseWebsResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseWebsResponseBodyList>;
 
 export type ListHostingPrivateDatabaseWebsResponse = ListHostingPrivateDatabaseWebsResponseBodyList;
-export const ListHostingPrivateDatabaseWebsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseWebsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseWebsResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseWebsResponse>;
+export const ListHostingPrivateDatabaseWebsResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseWebsResponse>;
 
 export interface ListHostingPrivateDatabaseWhitelistRequest {
   /** Service name */
@@ -2583,17 +2528,13 @@ export const ListHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingPrivateDatabaseWhitelistRequest>;
 
 export type ListHostingPrivateDatabaseWhitelistResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseWhitelistResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponseBodyList>;
+export const ListHostingPrivateDatabaseWhitelistResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponseBodyList>;
 
 export type ListHostingPrivateDatabaseWhitelistResponse =
   ListHostingPrivateDatabaseWhitelistResponseBodyList;
-export const ListHostingPrivateDatabaseWhitelistResponse = /*@__PURE__*/ S.suspend(() =>
-  ListHostingPrivateDatabaseWhitelistResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListHostingPrivateDatabaseWhitelistResponse",
-}) as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponse>;
+export const ListHostingPrivateDatabaseWhitelistResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponse>;
 
 export interface PutHostingPrivateDatabaseRequest {
   /** Service name */
@@ -2611,11 +2552,8 @@ export const PutHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingPrivateDatabaseRequest>;
 
 export interface PutHostingPrivateDatabaseResponse {}
-export const PutHostingPrivateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutHostingPrivateDatabaseResponse",
-}) as any as S.Schema<PutHostingPrivateDatabaseResponse>;
+export const PutHostingPrivateDatabaseResponse =
+  DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseResponse>;
 
 export interface PutHostingPrivateDatabaseServiceInfosRequest {
   /** Service name */
@@ -2639,11 +2577,8 @@ export const PutHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<PutHostingPrivateDatabaseServiceInfosRequest>;
 
 export interface PutHostingPrivateDatabaseServiceInfosResponse {}
-export const PutHostingPrivateDatabaseServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutHostingPrivateDatabaseServiceInfosResponse",
-}) as any as S.Schema<PutHostingPrivateDatabaseServiceInfosResponse>;
+export const PutHostingPrivateDatabaseServiceInfosResponse =
+  DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseServiceInfosResponse>;
 
 export interface PutHostingPrivateDatabaseWhitelistRequest {
   /** Service name */
@@ -2676,11 +2611,8 @@ export const PutHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PutHostingPrivateDatabaseWhitelistRequest>;
 
 export interface PutHostingPrivateDatabaseWhitelistResponse {}
-export const PutHostingPrivateDatabaseWhitelistResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutHostingPrivateDatabaseWhitelistResponse",
-}) as any as S.Schema<PutHostingPrivateDatabaseWhitelistResponse>;
+export const PutHostingPrivateDatabaseWhitelistResponse =
+  DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseWhitelistResponse>;
 
 export interface RestartHostingPrivateDatabaseRequest {
   /** Service name */
@@ -2759,11 +2691,8 @@ export const TerminateHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<TerminateHostingPrivateDatabaseRequest>;
 
 export type TerminateHostingPrivateDatabaseResponse = string;
-export const TerminateHostingPrivateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateHostingPrivateDatabaseResponse",
-}) as any as S.Schema<TerminateHostingPrivateDatabaseResponse>;
+export const TerminateHostingPrivateDatabaseResponse =
+  ConfirmHostingPrivateDatabaseTerminationResponse as any as S.Schema<TerminateHostingPrivateDatabaseResponse>;
 
 /** ConfigKeyValue */
 export interface HostingPrivateDatabaseConfigKeyValue {

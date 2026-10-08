@@ -86,9 +86,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Request message for cancelling a rollout. */
 export type CancelRolloutRequest = CancelOperationRequest;
@@ -1803,9 +1801,8 @@ export type ConfigManagementInstallError = ConfigManagementConfigSyncError;
 export const ConfigManagementInstallError = ConfigManagementConfigSyncError;
 
 export type ConfigManagementInstallErrorList = Array<ConfigManagementConfigSyncError>;
-export const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(
-  ConfigManagementConfigSyncError,
-) as any as S.Schema<ConfigManagementInstallErrorList>;
+export const ConfigManagementInstallErrorList =
+  ConfigManagementConfigSyncErrorList as any as S.Schema<ConfigManagementInstallErrorList>;
 
 export type ConfigManagementOperatorStateDeploymentStateEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -3294,11 +3291,7 @@ export interface EdgeCluster {
   /** Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster */
   resourceLink?: string;
 }
-export const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "EdgeCluster" }) as any as S.Schema<EdgeCluster>;
+export const EdgeCluster = ApplianceCluster as any as S.Schema<EdgeCluster>;
 
 /** MultiCloudCluster contains information specific to GKE Multi-Cloud clusters. */
 export interface MultiCloudCluster {
@@ -3307,12 +3300,7 @@ export interface MultiCloudCluster {
   /** Output only. If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists. */
   clusterMissing?: boolean;
 }
-export const MultiCloudCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceLink: S.optional(S.String),
-    clusterMissing: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MultiCloudCluster" }) as any as S.Schema<MultiCloudCluster>;
+export const MultiCloudCluster = GkeCluster as any as S.Schema<MultiCloudCluster>;
 
 /** ResourceManifest represents a single Kubernetes resource to be applied to the cluster. */
 export interface ResourceManifest {
@@ -6033,13 +6021,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

@@ -396,9 +396,8 @@ export const VpsVnc = /*@__PURE__*/ S.suspend(() =>
 
 /** Id of the vps.Software type fetched in /template/{id}/software */
 export type CreateVpsReinstallRequestSoftwareIdList = Array<number>;
-export const CreateVpsReinstallRequestSoftwareIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateVpsReinstallRequestSoftwareIdList>;
+export const CreateVpsReinstallRequestSoftwareIdList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<CreateVpsReinstallRequestSoftwareIdList>;
 
 /** SSH key names to pre-install on your VPS (name from /me/sshKey) */
 export type CreateVpsReinstallRequestSshKeyList = Array<string>;
@@ -517,9 +516,8 @@ export const DeleteVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVpsIpsRequest" }) as any as S.Schema<DeleteVpsIpsRequest>;
 
 export interface DeleteVpsIpsResponse {}
-export const DeleteVpsIpsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVpsIpsResponse",
-}) as any as S.Schema<DeleteVpsIpsResponse>;
+export const DeleteVpsIpsResponse =
+  AbortVpsSnapshotResponse as any as S.Schema<DeleteVpsIpsResponse>;
 
 export interface DeleteVpsSecondaryDnsDomainRequest {
   /** Service name */
@@ -539,11 +537,8 @@ export const DeleteVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVpsSecondaryDnsDomainRequest>;
 
 export interface DeleteVpsSecondaryDnsDomainResponse {}
-export const DeleteVpsSecondaryDnsDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteVpsSecondaryDnsDomainResponse",
-}) as any as S.Schema<DeleteVpsSecondaryDnsDomainResponse>;
+export const DeleteVpsSecondaryDnsDomainResponse =
+  CreateVpsSecondaryDnsDomainResponse as any as S.Schema<DeleteVpsSecondaryDnsDomainResponse>;
 
 export interface DeleteVpsSnapshotRequest {
   /** Service name */
@@ -643,9 +638,8 @@ export const VpsModelAvailableOptionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VpsModelAvailableOptionsList>;
 
 export type VpsModelDatacenterList = Array<string>;
-export const VpsModelDatacenterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VpsModelDatacenterList>;
+export const VpsModelDatacenterList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<VpsModelDatacenterList>;
 
 /** All versions that VPS can have */
 export type VpsVpsVersionEnum =
@@ -689,9 +683,8 @@ export const VpsModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Ip blocks for OVH monitoring servers */
 export type VpsVPSWithIAMMonitoringIpBlocksList = Array<string>;
-export const VpsVPSWithIAMMonitoringIpBlocksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VpsVPSWithIAMMonitoringIpBlocksList>;
+export const VpsVPSWithIAMMonitoringIpBlocksList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<VpsVPSWithIAMMonitoringIpBlocksList>;
 
 /** All values a VPS netboot mode can be in */
 export type VpsVpsNetbootEnum = "local" | "rescue";
@@ -1269,14 +1262,8 @@ export interface ComplexTypeUnitAndValueDouble {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unit: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ComplexTypeUnitAndValueDouble",
-}) as any as S.Schema<ComplexTypeUnitAndValueDouble>;
+export const ComplexTypeUnitAndValueDouble =
+  ComplexTypeUnitAndValueLong as any as S.Schema<ComplexTypeUnitAndValueDouble>;
 
 export interface GetVpsDistributionRequest {
   /** Service name */
@@ -1291,9 +1278,8 @@ export const GetVpsDistributionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetVpsDistributionRequest>;
 
 export type VpsTemplateAvailableLanguageList = Array<string>;
-export const VpsTemplateAvailableLanguageList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VpsTemplateAvailableLanguageList>;
+export const VpsTemplateAvailableLanguageList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<VpsTemplateAvailableLanguageList>;
 
 /** Bitness of a VPS template */
 export type VpsTemplateBitFormatEnum = 32 | 64;
@@ -1616,9 +1602,8 @@ export const GetVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1979,9 +1964,8 @@ export const VpsVpsBillingVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IamResourceTagFilterInput",
-}) as any as S.Schema<IamResourceTagFilterInput>;
+export const IamResourceTagFilterInput =
+  AbortVpsSnapshotResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListVpsRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export const ListVpsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
@@ -2007,9 +1991,8 @@ export const ListVpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsRequest" }) as any as S.Schema<ListVpsRequest>;
 
 export type ListVpsResponseBodyList = Array<string>;
-export const ListVpsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsResponseBodyList>;
+export const ListVpsResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsResponseBodyList>;
 
 export type ListVpsResponse = ListVpsResponseBodyList;
 export const ListVpsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2100,9 +2083,8 @@ export const ListVpsAutomatedBackupRestorePointsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListVpsAutomatedBackupRestorePointsRequest>;
 
 export type ListVpsAutomatedBackupRestorePointsResponseBodyList = Array<string>;
-export const ListVpsAutomatedBackupRestorePointsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsAutomatedBackupRestorePointsResponseBodyList>;
+export const ListVpsAutomatedBackupRestorePointsResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsAutomatedBackupRestorePointsResponseBodyList>;
 
 export type ListVpsAutomatedBackupRestorePointsResponse =
   ListVpsAutomatedBackupRestorePointsResponseBodyList;
@@ -2149,16 +2131,12 @@ export const ListVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsBackupftpAccessRequest>;
 
 export type ListVpsBackupftpAccessResponseBodyList = Array<string>;
-export const ListVpsBackupftpAccessResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsBackupftpAccessResponseBodyList>;
+export const ListVpsBackupftpAccessResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsBackupftpAccessResponseBodyList>;
 
 export type ListVpsBackupftpAccessResponse = ListVpsBackupftpAccessResponseBodyList;
-export const ListVpsBackupftpAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsBackupftpAccessResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsBackupftpAccessResponse",
-}) as any as S.Schema<ListVpsBackupftpAccessResponse>;
+export const ListVpsBackupftpAccessResponse =
+  ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsBackupftpAccessResponse>;
 
 export interface ListVpsBackupftpAuthorizableBlocksRequest {
   /** Service name */
@@ -2175,17 +2153,13 @@ export const ListVpsBackupftpAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksRequest>;
 
 export type ListVpsBackupftpAuthorizableBlocksResponseBodyList = Array<string>;
-export const ListVpsBackupftpAuthorizableBlocksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponseBodyList>;
+export const ListVpsBackupftpAuthorizableBlocksResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponseBodyList>;
 
 export type ListVpsBackupftpAuthorizableBlocksResponse =
   ListVpsBackupftpAuthorizableBlocksResponseBodyList;
-export const ListVpsBackupftpAuthorizableBlocksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsBackupftpAuthorizableBlocksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsBackupftpAuthorizableBlocksResponse",
-}) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponse>;
+export const ListVpsBackupftpAuthorizableBlocksResponse =
+  ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponse>;
 
 /** Countries a nichandle can choose */
 export type NichandleCountryEnum =
@@ -2456,16 +2430,12 @@ export const ListVpsDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsDatacenterRequest" }) as any as S.Schema<ListVpsDatacenterRequest>;
 
 export type ListVpsDatacenterResponseBodyList = Array<string>;
-export const ListVpsDatacenterResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsDatacenterResponseBodyList>;
+export const ListVpsDatacenterResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsDatacenterResponseBodyList>;
 
 export type ListVpsDatacenterResponse = ListVpsDatacenterResponseBodyList;
-export const ListVpsDatacenterResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsDatacenterResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsDatacenterResponse",
-}) as any as S.Schema<ListVpsDatacenterResponse>;
+export const ListVpsDatacenterResponse =
+  ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsDatacenterResponse>;
 
 /** Available periods for the VPS monitoring */
 export type VpsVpsMonitoringPeriodEnum =
@@ -2539,9 +2509,8 @@ export const ListVpsDisksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsDisksRequest" }) as any as S.Schema<ListVpsDisksRequest>;
 
 export type ListVpsDisksResponseBodyList = Array<number>;
-export const ListVpsDisksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListVpsDisksResponseBodyList>;
+export const ListVpsDisksResponseBodyList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsDisksResponseBodyList>;
 
 export type ListVpsDisksResponse = ListVpsDisksResponseBodyList;
 export const ListVpsDisksResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2561,16 +2530,12 @@ export const ListVpsDistributionSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsDistributionSoftwareRequest>;
 
 export type ListVpsDistributionSoftwareResponseBodyList = Array<number>;
-export const ListVpsDistributionSoftwareResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListVpsDistributionSoftwareResponseBodyList>;
+export const ListVpsDistributionSoftwareResponseBodyList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsDistributionSoftwareResponseBodyList>;
 
 export type ListVpsDistributionSoftwareResponse = ListVpsDistributionSoftwareResponseBodyList;
-export const ListVpsDistributionSoftwareResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsDistributionSoftwareResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsDistributionSoftwareResponse",
-}) as any as S.Schema<ListVpsDistributionSoftwareResponse>;
+export const ListVpsDistributionSoftwareResponse =
+  CreateVpsChangeContactResponse as any as S.Schema<ListVpsDistributionSoftwareResponse>;
 
 export interface ListVpsImageAvailableRequest {
   /** Service name */
@@ -2585,16 +2550,12 @@ export const ListVpsImageAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsImageAvailableRequest>;
 
 export type ListVpsImageAvailableResponseBodyList = Array<string>;
-export const ListVpsImageAvailableResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsImageAvailableResponseBodyList>;
+export const ListVpsImageAvailableResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsImageAvailableResponseBodyList>;
 
 export type ListVpsImageAvailableResponse = ListVpsImageAvailableResponseBodyList;
-export const ListVpsImageAvailableResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsImageAvailableResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsImageAvailableResponse",
-}) as any as S.Schema<ListVpsImageAvailableResponse>;
+export const ListVpsImageAvailableResponse =
+  ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsImageAvailableResponse>;
 
 export interface ListVpsIpCountryAvailableRequest {
   /** Service name */
@@ -2631,14 +2592,11 @@ export const ListVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsIpsRequest" }) as any as S.Schema<ListVpsIpsRequest>;
 
 export type ListVpsIpsResponseBodyList = Array<string>;
-export const ListVpsIpsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsIpsResponseBodyList>;
+export const ListVpsIpsResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsIpsResponseBodyList>;
 
 export type ListVpsIpsResponse = ListVpsIpsResponseBodyList;
-export const ListVpsIpsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsIpsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListVpsIpsResponse" }) as any as S.Schema<ListVpsIpsResponse>;
+export const ListVpsIpsResponse = ListVpsResponse as any as S.Schema<ListVpsIpsResponse>;
 
 export interface ListVpsMigration2018Request {
   /** Service name */
@@ -2787,9 +2745,8 @@ export const ListVpsModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsModelsRequest" }) as any as S.Schema<ListVpsModelsRequest>;
 
 export type ListVpsModelsResponseBodyList = Array<VpsModel>;
-export const ListVpsModelsResponseBodyList = /*@__PURE__*/ S.Array(
-  VpsModel,
-) as any as S.Schema<ListVpsModelsResponseBodyList>;
+export const ListVpsModelsResponseBodyList =
+  ListVpsAvailableUpgradeResponseBodyList as any as S.Schema<ListVpsModelsResponseBodyList>;
 
 export type ListVpsModelsResponse = ListVpsModelsResponseBodyList;
 export const ListVpsModelsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2807,9 +2764,8 @@ export const ListVpsOptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsOptionRequest" }) as any as S.Schema<ListVpsOptionRequest>;
 
 export type ListVpsOptionResponseBodyList = Array<VpsVpsOptionEnum>;
-export const ListVpsOptionResponseBodyList = /*@__PURE__*/ S.Array(
-  VpsVpsOptionEnum,
-) as any as S.Schema<ListVpsOptionResponseBodyList>;
+export const ListVpsOptionResponseBodyList =
+  VpsModelAvailableOptionsList as any as S.Schema<ListVpsOptionResponseBodyList>;
 
 export type ListVpsOptionResponse = ListVpsOptionResponseBodyList;
 export const ListVpsOptionResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2944,16 +2900,12 @@ export const ListVpsSecondaryDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsSecondaryDnsDomainsRequest>;
 
 export type ListVpsSecondaryDnsDomainsResponseBodyList = Array<string>;
-export const ListVpsSecondaryDnsDomainsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVpsSecondaryDnsDomainsResponseBodyList>;
+export const ListVpsSecondaryDnsDomainsResponseBodyList =
+  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsSecondaryDnsDomainsResponseBodyList>;
 
 export type ListVpsSecondaryDnsDomainsResponse = ListVpsSecondaryDnsDomainsResponseBodyList;
-export const ListVpsSecondaryDnsDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsSecondaryDnsDomainsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsSecondaryDnsDomainsResponse",
-}) as any as S.Schema<ListVpsSecondaryDnsDomainsResponse>;
+export const ListVpsSecondaryDnsDomainsResponse =
+  ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsSecondaryDnsDomainsResponse>;
 
 export interface ListVpsTasksRequest {
   /** Service name */
@@ -2972,14 +2924,11 @@ export const ListVpsTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsTasksRequest" }) as any as S.Schema<ListVpsTasksRequest>;
 
 export type ListVpsTasksResponseBodyList = Array<number>;
-export const ListVpsTasksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListVpsTasksResponseBodyList>;
+export const ListVpsTasksResponseBodyList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsTasksResponseBodyList>;
 
 export type ListVpsTasksResponse = ListVpsTasksResponseBodyList;
-export const ListVpsTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsTasksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListVpsTasksResponse" }) as any as S.Schema<ListVpsTasksResponse>;
+export const ListVpsTasksResponse = ListVpsDisksResponse as any as S.Schema<ListVpsTasksResponse>;
 
 export interface ListVpsTemplatesRequest {
   /** Service name */
@@ -2992,14 +2941,12 @@ export const ListVpsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsTemplatesRequest" }) as any as S.Schema<ListVpsTemplatesRequest>;
 
 export type ListVpsTemplatesResponseBodyList = Array<number>;
-export const ListVpsTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListVpsTemplatesResponseBodyList>;
+export const ListVpsTemplatesResponseBodyList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsTemplatesResponseBodyList>;
 
 export type ListVpsTemplatesResponse = ListVpsTemplatesResponseBodyList;
-export const ListVpsTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListVpsTemplatesResponse" }) as any as S.Schema<ListVpsTemplatesResponse>;
+export const ListVpsTemplatesResponse =
+  ListVpsDisksResponse as any as S.Schema<ListVpsTemplatesResponse>;
 
 export interface ListVpsTemplateSoftwareRequest {
   /** Service name */
@@ -3017,16 +2964,12 @@ export const ListVpsTemplateSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsTemplateSoftwareRequest>;
 
 export type ListVpsTemplateSoftwareResponseBodyList = Array<number>;
-export const ListVpsTemplateSoftwareResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListVpsTemplateSoftwareResponseBodyList>;
+export const ListVpsTemplateSoftwareResponseBodyList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsTemplateSoftwareResponseBodyList>;
 
 export type ListVpsTemplateSoftwareResponse = ListVpsTemplateSoftwareResponseBodyList;
-export const ListVpsTemplateSoftwareResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsTemplateSoftwareResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsTemplateSoftwareResponse",
-}) as any as S.Schema<ListVpsTemplateSoftwareResponse>;
+export const ListVpsTemplateSoftwareResponse =
+  CreateVpsChangeContactResponse as any as S.Schema<ListVpsTemplateSoftwareResponse>;
 
 export interface ListVpsVeeamRestorePointsRequest {
   /** Service name */
@@ -3044,16 +2987,12 @@ export const ListVpsVeeamRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsVeeamRestorePointsRequest>;
 
 export type ListVpsVeeamRestorePointsResponseBodyList = Array<number>;
-export const ListVpsVeeamRestorePointsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListVpsVeeamRestorePointsResponseBodyList>;
+export const ListVpsVeeamRestorePointsResponseBodyList =
+  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsVeeamRestorePointsResponseBodyList>;
 
 export type ListVpsVeeamRestorePointsResponse = ListVpsVeeamRestorePointsResponseBodyList;
-export const ListVpsVeeamRestorePointsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListVpsVeeamRestorePointsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListVpsVeeamRestorePointsResponse",
-}) as any as S.Schema<ListVpsVeeamRestorePointsResponse>;
+export const ListVpsVeeamRestorePointsResponse =
+  CreateVpsChangeContactResponse as any as S.Schema<ListVpsVeeamRestorePointsResponse>;
 
 export interface PutVpsRequest {
   /** Service name */
@@ -3077,9 +3016,7 @@ export const PutVpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsRequest" }) as any as S.Schema<PutVpsRequest>;
 
 export interface PutVpsResponse {}
-export const PutVpsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVpsResponse",
-}) as any as S.Schema<PutVpsResponse>;
+export const PutVpsResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsResponse>;
 
 export interface PutVpsBackupftpAccessRequest {
   /** Service name */
@@ -3108,9 +3045,8 @@ export const PutVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVpsBackupftpAccessRequest>;
 
 export interface PutVpsBackupftpAccessResponse {}
-export const PutVpsBackupftpAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVpsBackupftpAccessResponse",
-}) as any as S.Schema<PutVpsBackupftpAccessResponse>;
+export const PutVpsBackupftpAccessResponse =
+  AbortVpsSnapshotResponse as any as S.Schema<PutVpsBackupftpAccessResponse>;
 
 export interface PutVpsDiskRequest {
   /** Service name */
@@ -3132,9 +3068,7 @@ export const PutVpsDiskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsDiskRequest" }) as any as S.Schema<PutVpsDiskRequest>;
 
 export interface PutVpsDiskResponse {}
-export const PutVpsDiskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVpsDiskResponse",
-}) as any as S.Schema<PutVpsDiskResponse>;
+export const PutVpsDiskResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsDiskResponse>;
 
 export interface PutVpsIpsRequest {
   /** Service name */
@@ -3152,9 +3086,7 @@ export const PutVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsIpsRequest" }) as any as S.Schema<PutVpsIpsRequest>;
 
 export interface PutVpsIpsResponse {}
-export const PutVpsIpsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVpsIpsResponse",
-}) as any as S.Schema<PutVpsIpsResponse>;
+export const PutVpsIpsResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsIpsResponse>;
 
 export interface PutVpsSecondaryDnsDomainRequest {
   /** Service name */
@@ -3177,11 +3109,8 @@ export const PutVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVpsSecondaryDnsDomainRequest>;
 
 export interface PutVpsSecondaryDnsDomainResponse {}
-export const PutVpsSecondaryDnsDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutVpsSecondaryDnsDomainResponse",
-}) as any as S.Schema<PutVpsSecondaryDnsDomainResponse>;
+export const PutVpsSecondaryDnsDomainResponse =
+  CreateVpsSecondaryDnsDomainResponse as any as S.Schema<PutVpsSecondaryDnsDomainResponse>;
 
 export interface PutVpsServiceInfosRequest {
   /** Service name */
@@ -3199,9 +3128,8 @@ export const PutVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVpsServiceInfosRequest>;
 
 export interface PutVpsServiceInfosResponse {}
-export const PutVpsServiceInfosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVpsServiceInfosResponse",
-}) as any as S.Schema<PutVpsServiceInfosResponse>;
+export const PutVpsServiceInfosResponse =
+  AbortVpsSnapshotResponse as any as S.Schema<PutVpsServiceInfosResponse>;
 
 export interface PutVpsSnapshotRequest {
   /** Service name */
@@ -3216,9 +3144,8 @@ export const PutVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsSnapshotRequest" }) as any as S.Schema<PutVpsSnapshotRequest>;
 
 export interface PutVpsSnapshotResponse {}
-export const PutVpsSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVpsSnapshotResponse",
-}) as any as S.Schema<PutVpsSnapshotResponse>;
+export const PutVpsSnapshotResponse =
+  AbortVpsSnapshotResponse as any as S.Schema<PutVpsSnapshotResponse>;
 
 export interface RebootVpsRequest {
   /** Service name */
@@ -3355,9 +3282,8 @@ export const TerminateVpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TerminateVpsRequest" }) as any as S.Schema<TerminateVpsRequest>;
 
 export type TerminateVpsResponse = string;
-export const TerminateVpsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TerminateVpsResponse" }) as any as S.Schema<TerminateVpsResponse>;
+export const TerminateVpsResponse =
+  GetVpsConsoleUrlResponse as any as S.Schema<TerminateVpsResponse>;
 
 export type AbortVpsSnapshotError = OvhOpError;
 /** Abort ongoing snapshot or autobackup */

@@ -293,14 +293,8 @@ export interface ApplicationServicePodLogs2Response {
   error?: RuntimeStreamError;
   result?: ApplicationLogEntry;
 }
-export const ApplicationServicePodLogs2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(RuntimeStreamError),
-    result: S.optional(ApplicationLogEntry),
-  }),
-).annotate({
-  identifier: "ApplicationServicePodLogs2Response",
-}) as any as S.Schema<ApplicationServicePodLogs2Response>;
+export const ApplicationServicePodLogs2Response =
+  ApplicationServicePodLogsResponse as any as S.Schema<ApplicationServicePodLogs2Response>;
 
 export interface ApplicationServiceResourceTreeRequest {
   applicationName: string;
@@ -479,9 +473,8 @@ export const V1alpha1ResourceNodeInfoList = /*@__PURE__*/ S.Array(
 
 /** ExternalURLs holds a list of URLs that should be accessible externally. This field is typically populated for Ingress resources based on their hostname rules. */
 export type V1alpha1ResourceNetworkingInfoExternalURLsList = Array<string>;
-export const V1alpha1ResourceNetworkingInfoExternalURLsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ResourceNetworkingInfoExternalURLsList>;
+export const V1alpha1ResourceNetworkingInfoExternalURLsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceNetworkingInfoExternalURLsList>;
 
 export interface V1PortStatus {
   error?: string;
@@ -525,17 +518,13 @@ export const V1alpha1ResourceNetworkingInfoIngressList = /*@__PURE__*/ S.Array(
 
 /** Labels holds the labels associated with this networking resource. */
 export type V1alpha1ResourceNetworkingInfoLabelsMap = { [key: string]: string | undefined };
-export const V1alpha1ResourceNetworkingInfoLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ResourceNetworkingInfoLabelsMap>;
+export const V1alpha1ResourceNetworkingInfoLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ResourceNetworkingInfoLabelsMap>;
 
 /** TargetLabels represents labels associated with the target resources that this resource communicates with. */
 export type V1alpha1ResourceNetworkingInfoTargetLabelsMap = { [key: string]: string | undefined };
-export const V1alpha1ResourceNetworkingInfoTargetLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ResourceNetworkingInfoTargetLabelsMap>;
+export const V1alpha1ResourceNetworkingInfoTargetLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ResourceNetworkingInfoTargetLabelsMap>;
 
 export interface V1alpha1ResourceRef {
   group?: string;
@@ -589,9 +578,8 @@ export const V1alpha1ResourceNetworkingInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** ParentRefs lists the parent resources that reference this resource. This helps in understanding ownership and hierarchical relationships. */
 export type V1alpha1ResourceNodeParentRefsList = Array<V1alpha1ResourceRef>;
-export const V1alpha1ResourceNodeParentRefsList = /*@__PURE__*/ S.Array(
-  V1alpha1ResourceRef,
-) as any as S.Schema<V1alpha1ResourceNodeParentRefsList>;
+export const V1alpha1ResourceNodeParentRefsList =
+  V1alpha1ResourceNetworkingInfoTargetRefsList as any as S.Schema<V1alpha1ResourceNodeParentRefsList>;
 
 /** ResourceNode contains information about a live Kubernetes resource and its relationships with other resources. */
 export interface V1alpha1ResourceNode {
@@ -639,9 +627,8 @@ export const V1alpha1ApplicationTreeNodesList = /*@__PURE__*/ S.Array(
 
 /** OrphanedNodes contains resources that exist in the same namespace as the application but are not managed by it. This list is populated only if orphaned resource tracking is enabled in the application's project settings. */
 export type V1alpha1ApplicationTreeOrphanedNodesList = Array<V1alpha1ResourceNode>;
-export const V1alpha1ApplicationTreeOrphanedNodesList = /*@__PURE__*/ S.Array(
-  V1alpha1ResourceNode,
-) as any as S.Schema<V1alpha1ApplicationTreeOrphanedNodesList>;
+export const V1alpha1ApplicationTreeOrphanedNodesList =
+  V1alpha1ApplicationTreeNodesList as any as S.Schema<V1alpha1ApplicationTreeOrphanedNodesList>;
 
 /** ApplicationTree represents the hierarchical structure of resources associated with an Argo CD application. */
 export interface V1alpha1ApplicationTree {
@@ -696,9 +683,8 @@ export const ApplicationServiceRevisionChartDetailsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ApplicationServiceRevisionChartDetailsRequest>;
 
 export type V1alpha1ChartDetailsMaintainersList = Array<string>;
-export const V1alpha1ChartDetailsMaintainersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ChartDetailsMaintainersList>;
+export const V1alpha1ChartDetailsMaintainersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ChartDetailsMaintainersList>;
 
 export interface V1alpha1ChartDetails {
   description?: string;
@@ -791,9 +777,8 @@ export const V1alpha1RevisionMetadataReferencesList = /*@__PURE__*/ S.Array(
 
 /** Problems is a list of messages explaining why the check failed. Empty list means the check has succeeded. */
 export type V1alpha1SourceIntegrityCheckResultItemProblemsList = Array<string>;
-export const V1alpha1SourceIntegrityCheckResultItemProblemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SourceIntegrityCheckResultItemProblemsList>;
+export const V1alpha1SourceIntegrityCheckResultItemProblemsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SourceIntegrityCheckResultItemProblemsList>;
 
 export interface V1alpha1SourceIntegrityCheckResultItem {
   /** Name of the check that is human-understandable pointing out to the kind of verification performed. */
@@ -831,9 +816,8 @@ export const V1alpha1SourceIntegrityCheckResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1SourceIntegrityCheckResult>;
 
 export type V1alpha1RevisionMetadataTagsList = Array<string>;
-export const V1alpha1RevisionMetadataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1RevisionMetadataTagsList>;
+export const V1alpha1RevisionMetadataTagsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1RevisionMetadataTagsList>;
 
 /** RevisionMetadata contains metadata for a specific revision in a Git repository. This field is used by the Source Hydrator feature which may be removed in the future. */
 export interface V1alpha1RevisionMetadata {
@@ -882,21 +866,16 @@ export const ApplicationServiceRollbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationServiceRollbackRequest>;
 
 export type V1ObjectMetaAnnotationsMap = { [key: string]: string | undefined };
-export const V1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1ObjectMetaAnnotationsMap>;
+export const V1ObjectMetaAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1ObjectMetaAnnotationsMap>;
 
 export type V1ObjectMetaFinalizersList = Array<string>;
-export const V1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1ObjectMetaFinalizersList>;
+export const V1ObjectMetaFinalizersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1ObjectMetaFinalizersList>;
 
 export type V1ObjectMetaLabelsMap = { [key: string]: string | undefined };
-export const V1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1ObjectMetaLabelsMap>;
+export const V1ObjectMetaLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1ObjectMetaLabelsMap>;
 
 /** FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format. Each key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set. The exact format is defined in sigs.k8s.io/structured-merge-diff +k8s:deepcopy-gen=false +protobuf.options.marshal=false +protobuf.options.(gogoproto.goproto_stringer)=false */
 export interface V1FieldsV1 {
@@ -1011,17 +990,11 @@ export interface V1alpha1Info {
   name?: string;
   value?: string;
 }
-export const V1alpha1Info = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "V1alpha1Info" }) as any as S.Schema<V1alpha1Info>;
+export const V1alpha1Info = V1alpha1InfoItem as any as S.Schema<V1alpha1Info>;
 
 export type V1alpha1OperationInfoList = Array<V1alpha1Info>;
-export const V1alpha1OperationInfoList = /*@__PURE__*/ S.Array(
-  V1alpha1Info,
-) as any as S.Schema<V1alpha1OperationInfoList>;
+export const V1alpha1OperationInfoList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<V1alpha1OperationInfoList>;
 
 export interface V1alpha1OperationInitiator {
   /** Automated is set to true if operation was initiated automatically by the application controller. */
@@ -1065,9 +1038,8 @@ export const V1alpha1RetryStrategy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1RetryStrategy" }) as any as S.Schema<V1alpha1RetryStrategy>;
 
 export type V1alpha1SyncOperationManifestsList = Array<string>;
-export const V1alpha1SyncOperationManifestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SyncOperationManifestsList>;
+export const V1alpha1SyncOperationManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationManifestsList>;
 
 /** SyncOperationResource contains resources to sync. */
 export interface V1alpha1SyncOperationResource {
@@ -1094,9 +1066,8 @@ export const V1alpha1SyncOperationResourcesList = /*@__PURE__*/ S.Array(
 
 /** Revisions is the list of revision (Git) or chart version (Helm) which to sync each source in sources field for the application to If omitted, will use the revision specified in app spec. */
 export type V1alpha1SyncOperationRevisionsList = Array<string>;
-export const V1alpha1SyncOperationRevisionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SyncOperationRevisionsList>;
+export const V1alpha1SyncOperationRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationRevisionsList>;
 
 export interface V1alpha1JsonnetVar {
   code?: boolean;
@@ -1117,14 +1088,12 @@ export const V1alpha1ApplicationSourceJsonnetExtVarsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<V1alpha1ApplicationSourceJsonnetExtVarsList>;
 
 export type V1alpha1ApplicationSourceJsonnetLibsList = Array<string>;
-export const V1alpha1ApplicationSourceJsonnetLibsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceJsonnetLibsList>;
+export const V1alpha1ApplicationSourceJsonnetLibsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceJsonnetLibsList>;
 
 export type V1alpha1ApplicationSourceJsonnetTlasList = Array<V1alpha1JsonnetVar>;
-export const V1alpha1ApplicationSourceJsonnetTlasList = /*@__PURE__*/ S.Array(
-  V1alpha1JsonnetVar,
-) as any as S.Schema<V1alpha1ApplicationSourceJsonnetTlasList>;
+export const V1alpha1ApplicationSourceJsonnetTlasList =
+  V1alpha1ApplicationSourceJsonnetExtVarsList as any as S.Schema<V1alpha1ApplicationSourceJsonnetTlasList>;
 
 export interface V1alpha1ApplicationSourceJsonnet {
   extVars?: V1alpha1ApplicationSourceJsonnetExtVarsList;
@@ -1163,9 +1132,8 @@ export const V1alpha1ApplicationSourceDirectory = /*@__PURE__*/ S.suspend(() =>
 
 /** APIVersions specifies the Kubernetes resource API versions to pass to Helm when templating manifests. By default, Argo CD uses the API versions of the target cluster. The format is [group/]version/kind. */
 export type V1alpha1ApplicationSourceHelmApiVersionsList = Array<string>;
-export const V1alpha1ApplicationSourceHelmApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceHelmApiVersionsList>;
+export const V1alpha1ApplicationSourceHelmApiVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceHelmApiVersionsList>;
 
 export interface V1alpha1HelmFileParameter {
   name?: string;
@@ -1204,9 +1172,8 @@ export const V1alpha1ApplicationSourceHelmParametersList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<V1alpha1ApplicationSourceHelmParametersList>;
 
 export type V1alpha1ApplicationSourceHelmValueFilesList = Array<string>;
-export const V1alpha1ApplicationSourceHelmValueFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceHelmValueFilesList>;
+export const V1alpha1ApplicationSourceHelmValueFilesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceHelmValueFilesList>;
 
 /** RawExtension is used to hold extensions in external versions. To use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types. // Internal package: type MyAPIObject struct { runtime.TypeMeta `json:""` MyPlugin runtime.Object `json:"myPlugin"` } type PluginA struct { AOption string `json:"aOption"` } // External package: type MyAPIObject struct { runtime.TypeMeta `json:""` MyPlugin runtime.RawExtension `json:"myPlugin"` } type PluginA struct { AOption string `json:"aOption"` } // On the wire, the JSON will look something like this: { "kind":"MyAPIObject", "apiVersion":"v1", "myPlugin": { "kind":"PluginA", "aOption":"foo", }, } So what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.) +k8s:deepcopy-gen=true +protobuf=true +k8s:openapi-gen=true */
 export interface RuntimeRawExtension {
@@ -1264,35 +1231,28 @@ export const V1alpha1ApplicationSourceHelm = /*@__PURE__*/ S.suspend(() =>
 
 /** APIVersions specifies the Kubernetes resource API versions to pass to Helm when templating manifests. By default, Argo CD uses the API versions of the target cluster. The format is [group/]version/kind. */
 export type V1alpha1ApplicationSourceKustomizeApiVersionsList = Array<string>;
-export const V1alpha1ApplicationSourceKustomizeApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceKustomizeApiVersionsList>;
+export const V1alpha1ApplicationSourceKustomizeApiVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceKustomizeApiVersionsList>;
 
 export type V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap>;
+export const V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap>;
 
 export type V1alpha1ApplicationSourceKustomizeCommonLabelsMap = {
   [key: string]: string | undefined;
 };
-export const V1alpha1ApplicationSourceKustomizeCommonLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceKustomizeCommonLabelsMap>;
+export const V1alpha1ApplicationSourceKustomizeCommonLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSourceKustomizeCommonLabelsMap>;
 
 export type V1alpha1ApplicationSourceKustomizeComponentsList = Array<string>;
-export const V1alpha1ApplicationSourceKustomizeComponentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceKustomizeComponentsList>;
+export const V1alpha1ApplicationSourceKustomizeComponentsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceKustomizeComponentsList>;
 
 export type V1alpha1ApplicationSourceKustomizeImagesList = Array<string>;
-export const V1alpha1ApplicationSourceKustomizeImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourceKustomizeImagesList>;
+export const V1alpha1ApplicationSourceKustomizeImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceKustomizeImagesList>;
 
 export type V1alpha1KustomizePatchOptionsMap = { [key: string]: boolean | undefined };
 export const V1alpha1KustomizePatchOptionsMap = /*@__PURE__*/ S.Record(
@@ -1442,22 +1402,18 @@ export type Applicationv1alpha1EnvEntry = V1alpha1Info;
 export const Applicationv1alpha1EnvEntry = V1alpha1Info;
 
 export type V1alpha1ApplicationSourcePluginEnvList = Array<V1alpha1Info>;
-export const V1alpha1ApplicationSourcePluginEnvList = /*@__PURE__*/ S.Array(
-  V1alpha1Info,
-) as any as S.Schema<V1alpha1ApplicationSourcePluginEnvList>;
+export const V1alpha1ApplicationSourcePluginEnvList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<V1alpha1ApplicationSourcePluginEnvList>;
 
 /** Array is the value of an array type parameter. */
 export type V1alpha1ApplicationSourcePluginParameterArrayList = Array<string>;
-export const V1alpha1ApplicationSourcePluginParameterArrayList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourcePluginParameterArrayList>;
+export const V1alpha1ApplicationSourcePluginParameterArrayList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourcePluginParameterArrayList>;
 
 /** Map is the value of a map type parameter. */
 export type V1alpha1ApplicationSourcePluginParameterMapMap = { [key: string]: string | undefined };
-export const V1alpha1ApplicationSourcePluginParameterMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSourcePluginParameterMapMap>;
+export const V1alpha1ApplicationSourcePluginParameterMapMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSourcePluginParameterMapMap>;
 
 export interface V1alpha1ApplicationSourcePluginParameter {
   /** Array is the value of an array type parameter. */
@@ -1544,9 +1500,8 @@ export const V1alpha1SyncOperationSourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V1alpha1SyncOperationSourcesList>;
 
 export type V1alpha1SyncOperationSyncOptionsList = Array<string>;
-export const V1alpha1SyncOperationSyncOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SyncOperationSyncOptionsList>;
+export const V1alpha1SyncOperationSyncOptionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationSyncOptionsList>;
 
 export interface V1alpha1SyncStrategyApply {
   /** Force indicates whether or not to supply the --force flag to `kubectl apply`. The --force flag deletes and re-create the resource, when PATCH encounters conflict and has retried for 5 times. */
@@ -1646,19 +1601,16 @@ export const V1alpha1ApplicationDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1ApplicationDestination>;
 
 export type V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList = Array<string>;
-export const V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList>;
+export const V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList>;
 
 export type V1alpha1ResourceIgnoreDifferencesJsonPointersList = Array<string>;
-export const V1alpha1ResourceIgnoreDifferencesJsonPointersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ResourceIgnoreDifferencesJsonPointersList>;
+export const V1alpha1ResourceIgnoreDifferencesJsonPointersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceIgnoreDifferencesJsonPointersList>;
 
 export type V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList = Array<string>;
-export const V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList>;
+export const V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList>;
 
 /** ResourceIgnoreDifferences contains resource filter and list of json paths which should be ignored during comparison with live state. */
 export interface V1alpha1ResourceIgnoreDifferences {
@@ -1690,9 +1642,8 @@ export const V1alpha1ApplicationSpecIgnoreDifferencesList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<V1alpha1ApplicationSpecIgnoreDifferencesList>;
 
 export type V1alpha1ApplicationSpecInfoList = Array<V1alpha1Info>;
-export const V1alpha1ApplicationSpecInfoList = /*@__PURE__*/ S.Array(
-  V1alpha1Info,
-) as any as S.Schema<V1alpha1ApplicationSpecInfoList>;
+export const V1alpha1ApplicationSpecInfoList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<V1alpha1ApplicationSpecInfoList>;
 
 /** DrySource specifies a location for dry "don't repeat yourself" manifest source information. */
 export interface V1alpha1DrySource {
@@ -1758,9 +1709,8 @@ export const V1alpha1SourceHydrator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1SourceHydrator" }) as any as S.Schema<V1alpha1SourceHydrator>;
 
 export type V1alpha1ApplicationSpecSourcesList = Array<V1alpha1ApplicationSource>;
-export const V1alpha1ApplicationSpecSourcesList = /*@__PURE__*/ S.Array(
-  V1alpha1ApplicationSource,
-) as any as S.Schema<V1alpha1ApplicationSpecSourcesList>;
+export const V1alpha1ApplicationSpecSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1ApplicationSpecSourcesList>;
 
 export interface V1alpha1SyncPolicyAutomated {
   allowEmpty?: boolean;
@@ -1780,16 +1730,12 @@ export const V1alpha1SyncPolicyAutomated = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1SyncPolicyAutomated>;
 
 export type V1alpha1ManagedNamespaceMetadataAnnotationsMap = { [key: string]: string | undefined };
-export const V1alpha1ManagedNamespaceMetadataAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ManagedNamespaceMetadataAnnotationsMap>;
+export const V1alpha1ManagedNamespaceMetadataAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ManagedNamespaceMetadataAnnotationsMap>;
 
 export type V1alpha1ManagedNamespaceMetadataLabelsMap = { [key: string]: string | undefined };
-export const V1alpha1ManagedNamespaceMetadataLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ManagedNamespaceMetadataLabelsMap>;
+export const V1alpha1ManagedNamespaceMetadataLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ManagedNamespaceMetadataLabelsMap>;
 
 export interface V1alpha1ManagedNamespaceMetadata {
   annotations?: V1alpha1ManagedNamespaceMetadataAnnotationsMap;
@@ -1805,9 +1751,8 @@ export const V1alpha1ManagedNamespaceMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1ManagedNamespaceMetadata>;
 
 export type V1alpha1SyncPolicySyncOptionsList = Array<string>;
-export const V1alpha1SyncPolicySyncOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SyncPolicySyncOptionsList>;
+export const V1alpha1SyncPolicySyncOptionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncPolicySyncOptionsList>;
 
 export interface V1alpha1SyncPolicy {
   automated?: V1alpha1SyncPolicyAutomated;
@@ -1876,14 +1821,12 @@ export type V1alpha1AppHealthStatus = V1alpha1HealthStatus;
 export const V1alpha1AppHealthStatus = V1alpha1HealthStatus;
 
 export type V1alpha1RevisionHistoryRevisionsList = Array<string>;
-export const V1alpha1RevisionHistoryRevisionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1RevisionHistoryRevisionsList>;
+export const V1alpha1RevisionHistoryRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1RevisionHistoryRevisionsList>;
 
 export type V1alpha1RevisionHistorySourcesList = Array<V1alpha1ApplicationSource>;
-export const V1alpha1RevisionHistorySourcesList = /*@__PURE__*/ S.Array(
-  V1alpha1ApplicationSource,
-) as any as S.Schema<V1alpha1RevisionHistorySourcesList>;
+export const V1alpha1RevisionHistorySourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1RevisionHistorySourcesList>;
 
 export interface V1alpha1RevisionHistory {
   deployStartedAt?: string;
@@ -1914,9 +1857,8 @@ export const V1alpha1ApplicationStatusHistoryList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V1alpha1ApplicationStatusHistoryList>;
 
 export type V1alpha1ResourceResultImagesList = Array<string>;
-export const V1alpha1ResourceResultImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ResourceResultImagesList>;
+export const V1alpha1ResourceResultImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceResultImagesList>;
 
 export interface V1alpha1ResourceResult {
   group?: string;
@@ -1954,14 +1896,12 @@ export const V1alpha1SyncOperationResultResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V1alpha1SyncOperationResultResourcesList>;
 
 export type V1alpha1SyncOperationResultRevisionsList = Array<string>;
-export const V1alpha1SyncOperationResultRevisionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SyncOperationResultRevisionsList>;
+export const V1alpha1SyncOperationResultRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationResultRevisionsList>;
 
 export type V1alpha1SyncOperationResultSourcesList = Array<V1alpha1ApplicationSource>;
-export const V1alpha1SyncOperationResultSourcesList = /*@__PURE__*/ S.Array(
-  V1alpha1ApplicationSource,
-) as any as S.Schema<V1alpha1SyncOperationResultSourcesList>;
+export const V1alpha1SyncOperationResultSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1SyncOperationResultSourcesList>;
 
 export interface V1alpha1SyncOperationResult {
   managedNamespaceMetadata?: V1alpha1ManagedNamespaceMetadata;
@@ -2106,21 +2046,18 @@ export const V1alpha1SourceHydratorStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1SourceHydratorStatus>;
 
 export type V1alpha1ApplicationStatusSourceTypesList = Array<string>;
-export const V1alpha1ApplicationStatusSourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationStatusSourceTypesList>;
+export const V1alpha1ApplicationStatusSourceTypesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationStatusSourceTypesList>;
 
 /** ExternalURLs holds all external URLs of application child resources. */
 export type V1alpha1ApplicationSummaryExternalURLsList = Array<string>;
-export const V1alpha1ApplicationSummaryExternalURLsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSummaryExternalURLsList>;
+export const V1alpha1ApplicationSummaryExternalURLsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSummaryExternalURLsList>;
 
 /** Images holds all images of application child resources. */
 export type V1alpha1ApplicationSummaryImagesList = Array<string>;
-export const V1alpha1ApplicationSummaryImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSummaryImagesList>;
+export const V1alpha1ApplicationSummaryImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSummaryImagesList>;
 
 export interface V1alpha1ApplicationSummary {
   /** ExternalURLs holds all external URLs of application child resources. */
@@ -2141,14 +2078,12 @@ export const V1alpha1ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1ApplicationSummary>;
 
 export type V1alpha1ComparedToIgnoreDifferencesList = Array<V1alpha1ResourceIgnoreDifferences>;
-export const V1alpha1ComparedToIgnoreDifferencesList = /*@__PURE__*/ S.Array(
-  V1alpha1ResourceIgnoreDifferences,
-) as any as S.Schema<V1alpha1ComparedToIgnoreDifferencesList>;
+export const V1alpha1ComparedToIgnoreDifferencesList =
+  V1alpha1ApplicationSpecIgnoreDifferencesList as any as S.Schema<V1alpha1ComparedToIgnoreDifferencesList>;
 
 export type V1alpha1ComparedToSourcesList = Array<V1alpha1ApplicationSource>;
-export const V1alpha1ComparedToSourcesList = /*@__PURE__*/ S.Array(
-  V1alpha1ApplicationSource,
-) as any as S.Schema<V1alpha1ComparedToSourcesList>;
+export const V1alpha1ComparedToSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1ComparedToSourcesList>;
 
 export interface V1alpha1ComparedTo {
   destination?: V1alpha1ApplicationDestination;
@@ -2166,9 +2101,8 @@ export const V1alpha1ComparedTo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1ComparedTo" }) as any as S.Schema<V1alpha1ComparedTo>;
 
 export type V1alpha1SyncStatusRevisionsList = Array<string>;
-export const V1alpha1SyncStatusRevisionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SyncStatusRevisionsList>;
+export const V1alpha1SyncStatusRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncStatusRevisionsList>;
 
 export interface V1alpha1SyncStatus {
   comparedTo?: V1alpha1ComparedTo;
@@ -2238,9 +2172,8 @@ export const V1alpha1Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1Application" }) as any as S.Schema<V1alpha1Application>;
 
 export type ApplicationServiceServerSideDiffRequestTargetManifestsList = Array<string>;
-export const ApplicationServiceServerSideDiffRequestTargetManifestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApplicationServiceServerSideDiffRequestTargetManifestsList>;
+export const ApplicationServiceServerSideDiffRequestTargetManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ApplicationServiceServerSideDiffRequestTargetManifestsList>;
 
 export interface ApplicationServiceServerSideDiffRequest {
   appName: string;
@@ -2264,9 +2197,8 @@ export const ApplicationServiceServerSideDiffRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ApplicationServiceServerSideDiffRequest>;
 
 export type ApplicationApplicationServerSideDiffResponseItemsList = Array<V1alpha1ResourceDiff>;
-export const ApplicationApplicationServerSideDiffResponseItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1ResourceDiff,
-) as any as S.Schema<ApplicationApplicationServerSideDiffResponseItemsList>;
+export const ApplicationApplicationServerSideDiffResponseItemsList =
+  ApplicationManagedResourcesResponseItemsList as any as S.Schema<ApplicationApplicationServerSideDiffResponseItemsList>;
 
 export interface ApplicationApplicationServerSideDiffResponse {
   items?: ApplicationApplicationServerSideDiffResponseItemsList;
@@ -2298,9 +2230,8 @@ export const ApplicationSetServiceResourceTreeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApplicationSetServiceResourceTreeRequest>;
 
 export type V1alpha1ApplicationSetTreeNodesList = Array<V1alpha1ResourceNode>;
-export const V1alpha1ApplicationSetTreeNodesList = /*@__PURE__*/ S.Array(
-  V1alpha1ResourceNode,
-) as any as S.Schema<V1alpha1ApplicationSetTreeNodesList>;
+export const V1alpha1ApplicationSetTreeNodesList =
+  V1alpha1ApplicationTreeNodesList as any as S.Schema<V1alpha1ApplicationSetTreeNodesList>;
 
 export interface V1alpha1ApplicationSetTree {
   nodes?: V1alpha1ApplicationSetTreeNodesList;
@@ -2361,9 +2292,8 @@ export const CreateApplicationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateApplicationServiceRequest>;
 
 export type V1LabelSelectorRequirementValuesList = Array<string>;
-export const V1LabelSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1LabelSelectorRequirementValuesList>;
+export const V1LabelSelectorRequirementValuesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1LabelSelectorRequirementValuesList>;
 
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface V1LabelSelectorRequirement {
@@ -2389,10 +2319,8 @@ export const V1LabelSelectorMatchExpressionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V1LabelSelectorMatchExpressionsList>;
 
 export type V1LabelSelectorMatchLabelsMap = { [key: string]: string | undefined };
-export const V1LabelSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1LabelSelectorMatchLabelsMap>;
+export const V1LabelSelectorMatchLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1LabelSelectorMatchLabelsMap>;
 
 export interface V1LabelSelector {
   matchExpressions?: V1LabelSelectorMatchExpressionsList;
@@ -2408,21 +2336,16 @@ export const V1LabelSelector = /*@__PURE__*/ S.suspend(() =>
 export type V1alpha1ApplicationSetTemplateMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const V1alpha1ApplicationSetTemplateMetaAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSetTemplateMetaAnnotationsMap>;
+export const V1alpha1ApplicationSetTemplateMetaAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSetTemplateMetaAnnotationsMap>;
 
 export type V1alpha1ApplicationSetTemplateMetaFinalizersList = Array<string>;
-export const V1alpha1ApplicationSetTemplateMetaFinalizersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSetTemplateMetaFinalizersList>;
+export const V1alpha1ApplicationSetTemplateMetaFinalizersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSetTemplateMetaFinalizersList>;
 
 export type V1alpha1ApplicationSetTemplateMetaLabelsMap = { [key: string]: string | undefined };
-export const V1alpha1ApplicationSetTemplateMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSetTemplateMetaLabelsMap>;
+export const V1alpha1ApplicationSetTemplateMetaLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSetTemplateMetaLabelsMap>;
 
 export interface V1alpha1ApplicationSetTemplateMeta {
   annotations?: V1alpha1ApplicationSetTemplateMetaAnnotationsMap;
@@ -2457,10 +2380,8 @@ export const V1alpha1ApplicationSetTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1ApplicationSetTemplate>;
 
 export type V1alpha1DuckTypeGeneratorValuesMap = { [key: string]: string | undefined };
-export const V1alpha1DuckTypeGeneratorValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1DuckTypeGeneratorValuesMap>;
+export const V1alpha1DuckTypeGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1DuckTypeGeneratorValuesMap>;
 
 /** DuckType defines a generator to match against clusters registered with ArgoCD. */
 export interface V1alpha1DuckTypeGenerator {
@@ -2485,10 +2406,8 @@ export const V1alpha1DuckTypeGenerator = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1DuckTypeGenerator>;
 
 export type V1alpha1ClusterGeneratorValuesMap = { [key: string]: string | undefined };
-export const V1alpha1ClusterGeneratorValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ClusterGeneratorValuesMap>;
+export const V1alpha1ClusterGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ClusterGeneratorValuesMap>;
 
 /** ClusterGenerator defines a generator to match against clusters registered with ArgoCD. */
 export interface V1alpha1ClusterGenerator {
@@ -2528,15 +2447,12 @@ export type V1alpha1GitFileGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
 export const V1alpha1GitFileGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
 
 export type V1alpha1GitGeneratorFilesList = Array<V1alpha1GitDirectoryGeneratorItem>;
-export const V1alpha1GitGeneratorFilesList = /*@__PURE__*/ S.Array(
-  V1alpha1GitDirectoryGeneratorItem,
-) as any as S.Schema<V1alpha1GitGeneratorFilesList>;
+export const V1alpha1GitGeneratorFilesList =
+  V1alpha1GitGeneratorDirectoriesList as any as S.Schema<V1alpha1GitGeneratorFilesList>;
 
 export type V1alpha1GitGeneratorValuesMap = { [key: string]: string | undefined };
-export const V1alpha1GitGeneratorValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1GitGeneratorValuesMap>;
+export const V1alpha1GitGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1GitGeneratorValuesMap>;
 
 export interface V1alpha1GitGenerator {
   directories?: V1alpha1GitGeneratorDirectoriesList;
@@ -2565,11 +2481,7 @@ export const V1alpha1GitGenerator = /*@__PURE__*/ S.suspend(() =>
 export interface V1JSON {
   raw?: string;
 }
-export const V1JSON = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    raw: S.optional(S.String),
-  }),
-).annotate({ identifier: "V1JSON" }) as any as S.Schema<V1JSON>;
+export const V1JSON = RuntimeRawExtension as any as S.Schema<V1JSON>;
 
 export type V1alpha1ListGeneratorElementsList = Array<V1JSON>;
 export const V1alpha1ListGeneratorElementsList = /*@__PURE__*/ S.Array(
@@ -2593,23 +2505,19 @@ export type V1alpha1OciDirectoryGeneratorItem = V1alpha1GitDirectoryGeneratorIte
 export const V1alpha1OciDirectoryGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
 
 export type V1alpha1OciGeneratorDirectoriesList = Array<V1alpha1GitDirectoryGeneratorItem>;
-export const V1alpha1OciGeneratorDirectoriesList = /*@__PURE__*/ S.Array(
-  V1alpha1GitDirectoryGeneratorItem,
-) as any as S.Schema<V1alpha1OciGeneratorDirectoriesList>;
+export const V1alpha1OciGeneratorDirectoriesList =
+  V1alpha1GitGeneratorDirectoriesList as any as S.Schema<V1alpha1OciGeneratorDirectoriesList>;
 
 export type V1alpha1OciFileGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
 export const V1alpha1OciFileGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
 
 export type V1alpha1OciGeneratorFilesList = Array<V1alpha1GitDirectoryGeneratorItem>;
-export const V1alpha1OciGeneratorFilesList = /*@__PURE__*/ S.Array(
-  V1alpha1GitDirectoryGeneratorItem,
-) as any as S.Schema<V1alpha1OciGeneratorFilesList>;
+export const V1alpha1OciGeneratorFilesList =
+  V1alpha1GitGeneratorDirectoriesList as any as S.Schema<V1alpha1OciGeneratorFilesList>;
 
 export type V1alpha1OciGeneratorValuesMap = { [key: string]: string | undefined };
-export const V1alpha1OciGeneratorValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1OciGeneratorValuesMap>;
+export const V1alpha1OciGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1OciGeneratorValuesMap>;
 
 export interface V1alpha1OciGenerator {
   directories?: V1alpha1OciGeneratorDirectoriesList;
@@ -2621,18 +2529,7 @@ export interface V1alpha1OciGenerator {
   template?: V1alpha1ApplicationSetTemplate;
   values?: V1alpha1OciGeneratorValuesMap;
 }
-export const V1alpha1OciGenerator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directories: S.optional(V1alpha1OciGeneratorDirectoriesList),
-    files: S.optional(V1alpha1OciGeneratorFilesList),
-    pathParamPrefix: S.optional(S.String),
-    repoURL: S.optional(S.String),
-    requeueAfterSeconds: S.optional(S.Number),
-    revision: S.optional(S.String),
-    template: S.optional(V1alpha1ApplicationSetTemplate),
-    values: S.optional(V1alpha1OciGeneratorValuesMap),
-  }),
-).annotate({ identifier: "V1alpha1OciGenerator" }) as any as S.Schema<V1alpha1OciGenerator>;
+export const V1alpha1OciGenerator = V1alpha1GitGenerator as any as S.Schema<V1alpha1OciGenerator>;
 
 export interface V1alpha1PluginConfigMapRef {
   name?: string;
@@ -2664,10 +2561,8 @@ export const V1alpha1PluginInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Values contains key/value pairs which are passed directly as parameters to the template. These values will not be sent as parameters to the plugin. */
 export type V1alpha1PluginGeneratorValuesMap = { [key: string]: string | undefined };
-export const V1alpha1PluginGeneratorValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1PluginGeneratorValuesMap>;
+export const V1alpha1PluginGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1PluginGeneratorValuesMap>;
 
 /** PluginGenerator defines connection info specific to Plugin. */
 export interface V1alpha1PluginGenerator {
@@ -2690,9 +2585,8 @@ export const V1alpha1PluginGenerator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1PluginGenerator" }) as any as S.Schema<V1alpha1PluginGenerator>;
 
 export type V1alpha1PullRequestGeneratorAzureDevOpsLabelsList = Array<string>;
-export const V1alpha1PullRequestGeneratorAzureDevOpsLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1PullRequestGeneratorAzureDevOpsLabelsList>;
+export const V1alpha1PullRequestGeneratorAzureDevOpsLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorAzureDevOpsLabelsList>;
 
 /** SecretRef struct for a reference to a secret key. */
 export interface V1alpha1SecretRef {
@@ -2847,9 +2741,8 @@ export const V1alpha1PullRequestGeneratorFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V1alpha1PullRequestGeneratorFiltersList>;
 
 export type V1alpha1PullRequestGeneratorGiteaLabelsList = Array<string>;
-export const V1alpha1PullRequestGeneratorGiteaLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1PullRequestGeneratorGiteaLabelsList>;
+export const V1alpha1PullRequestGeneratorGiteaLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorGiteaLabelsList>;
 
 /** PullRequestGeneratorGitea defines connection info specific to Gitea. */
 export interface V1alpha1PullRequestGeneratorGitea {
@@ -2877,9 +2770,8 @@ export const V1alpha1PullRequestGeneratorGitea = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1PullRequestGeneratorGitea>;
 
 export type V1alpha1PullRequestGeneratorGithubLabelsList = Array<string>;
-export const V1alpha1PullRequestGeneratorGithubLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1PullRequestGeneratorGithubLabelsList>;
+export const V1alpha1PullRequestGeneratorGithubLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorGithubLabelsList>;
 
 /** PullRequestGeneratorGithub defines connection info specific to GitHub. */
 export interface V1alpha1PullRequestGeneratorGithub {
@@ -2908,9 +2800,8 @@ export const V1alpha1PullRequestGeneratorGithub = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1PullRequestGeneratorGithub>;
 
 export type V1alpha1PullRequestGeneratorGitLabLabelsList = Array<string>;
-export const V1alpha1PullRequestGeneratorGitLabLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1PullRequestGeneratorGitLabLabelsList>;
+export const V1alpha1PullRequestGeneratorGitLabLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorGitLabLabelsList>;
 
 /** PullRequestGeneratorGitLab defines connection info specific to GitLab. */
 export interface V1alpha1PullRequestGeneratorGitLab {
@@ -2940,10 +2831,8 @@ export const V1alpha1PullRequestGeneratorGitLab = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1PullRequestGeneratorGitLab>;
 
 export type V1alpha1PullRequestGeneratorValuesMap = { [key: string]: string | undefined };
-export const V1alpha1PullRequestGeneratorValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1PullRequestGeneratorValuesMap>;
+export const V1alpha1PullRequestGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1PullRequestGeneratorValuesMap>;
 
 /** PullRequestGenerator defines a generator that scrapes a PullRequest API to find candidate pull requests. */
 export interface V1alpha1PullRequestGenerator {
@@ -3090,15 +2979,13 @@ export const V1alpha1SCMProviderGeneratorBitbucketServer = /*@__PURE__*/ S.suspe
 
 /** An array of paths, all of which must not exist. */
 export type V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList = Array<string>;
-export const V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList>;
+export const V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList>;
 
 /** An array of paths, all of which must exist. */
 export type V1alpha1SCMProviderGeneratorFilterPathsExistList = Array<string>;
-export const V1alpha1SCMProviderGeneratorFilterPathsExistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SCMProviderGeneratorFilterPathsExistList>;
+export const V1alpha1SCMProviderGeneratorFilterPathsExistList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SCMProviderGeneratorFilterPathsExistList>;
 
 /** SCMProviderGeneratorFilter is a single repository filter. If multiple filter types are set on a single struct, they will be AND'd together. All filters must pass for a repo to be included. */
 export interface V1alpha1SCMProviderGeneratorFilter {
@@ -3220,10 +3107,8 @@ export const V1alpha1SCMProviderGeneratorGitlab = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1SCMProviderGeneratorGitlab>;
 
 export type V1alpha1SCMProviderGeneratorValuesMap = { [key: string]: string | undefined };
-export const V1alpha1SCMProviderGeneratorValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1SCMProviderGeneratorValuesMap>;
+export const V1alpha1SCMProviderGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1SCMProviderGeneratorValuesMap>;
 
 /** SCMProviderGenerator defines a generator that scrapes a SCMaaS API to find candidate repos. */
 export interface V1alpha1SCMProviderGenerator {
@@ -3312,14 +3197,12 @@ export const V1alpha1MatrixGenerator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1MatrixGenerator" }) as any as S.Schema<V1alpha1MatrixGenerator>;
 
 export type V1alpha1MergeGeneratorGeneratorsList = Array<V1alpha1ApplicationSetNestedGenerator>;
-export const V1alpha1MergeGeneratorGeneratorsList = /*@__PURE__*/ S.Array(
-  V1alpha1ApplicationSetNestedGenerator,
-) as any as S.Schema<V1alpha1MergeGeneratorGeneratorsList>;
+export const V1alpha1MergeGeneratorGeneratorsList =
+  V1alpha1MatrixGeneratorGeneratorsList as any as S.Schema<V1alpha1MergeGeneratorGeneratorsList>;
 
 export type V1alpha1MergeGeneratorMergeKeysList = Array<string>;
-export const V1alpha1MergeGeneratorMergeKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1MergeGeneratorMergeKeysList>;
+export const V1alpha1MergeGeneratorMergeKeysList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1MergeGeneratorMergeKeysList>;
 
 /** MergeGenerator merges the output of two or more generators. Where the values for all specified merge keys are equal between two sets of generated parameters, the parameter sets will be merged with the parameters from the latter generator taking precedence. Parameter sets with merge keys not present in the base generator's params will be ignored. For example, if the first generator produced [{a: '1', b: '2'}, {c: '1', d: '1'}] and the second generator produced [{'a': 'override'}], the united parameters for merge keys = ['a'] would be [{a: 'override', b: '1'}, {c: '1', d: '1'}]. MergeGenerator supports template overriding. If a MergeGenerator is one of multiple top-level generators, its template will be merged with the top-level generator before the parameters are applied. */
 export interface V1alpha1MergeGenerator {
@@ -3373,9 +3256,8 @@ export const V1alpha1ApplicationSetSpecGeneratorsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V1alpha1ApplicationSetSpecGeneratorsList>;
 
 export type V1alpha1ApplicationSetSpecGoTemplateOptionsList = Array<string>;
-export const V1alpha1ApplicationSetSpecGoTemplateOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSetSpecGoTemplateOptionsList>;
+export const V1alpha1ApplicationSetSpecGoTemplateOptionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSetSpecGoTemplateOptionsList>;
 
 /** JQPathExpressions is a list of JQ path expressions to fields to ignore differences for. */
 export type V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsList = Array<string>;
@@ -3387,9 +3269,7 @@ export const V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsLis
 /** JSONPointers is a list of JSON pointers to fields to ignore differences for. */
 export type V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList = Array<string>;
 export const V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList>;
+  V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsList as any as S.Schema<V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList>;
 
 /** ApplicationSetResourceIgnoreDifferences configures how the ApplicationSet controller will ignore differences in live applications when applying changes from generated applications. */
 export interface V1alpha1ApplicationSetResourceIgnoreDifferences {
@@ -3419,14 +3299,12 @@ export const V1alpha1ApplicationSetSpecIgnoreApplicationDifferencesList = /*@__P
 ) as any as S.Schema<V1alpha1ApplicationSetSpecIgnoreApplicationDifferencesList>;
 
 export type V1alpha1ApplicationPreservedFieldsAnnotationsList = Array<string>;
-export const V1alpha1ApplicationPreservedFieldsAnnotationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationPreservedFieldsAnnotationsList>;
+export const V1alpha1ApplicationPreservedFieldsAnnotationsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationPreservedFieldsAnnotationsList>;
 
 export type V1alpha1ApplicationPreservedFieldsLabelsList = Array<string>;
-export const V1alpha1ApplicationPreservedFieldsLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationPreservedFieldsLabelsList>;
+export const V1alpha1ApplicationPreservedFieldsLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationPreservedFieldsLabelsList>;
 
 export interface V1alpha1ApplicationPreservedFields {
   annotations?: V1alpha1ApplicationPreservedFieldsAnnotationsList;
@@ -3442,30 +3320,21 @@ export const V1alpha1ApplicationPreservedFields = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1ApplicationPreservedFields>;
 
 export type V1alpha1ApplicationMatchExpressionValuesList = Array<string>;
-export const V1alpha1ApplicationMatchExpressionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationMatchExpressionValuesList>;
+export const V1alpha1ApplicationMatchExpressionValuesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationMatchExpressionValuesList>;
 
 export interface V1alpha1ApplicationMatchExpression {
   key?: string;
   operator?: string;
   values?: V1alpha1ApplicationMatchExpressionValuesList;
 }
-export const V1alpha1ApplicationMatchExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    operator: S.optional(S.String),
-    values: S.optional(V1alpha1ApplicationMatchExpressionValuesList),
-  }),
-).annotate({
-  identifier: "V1alpha1ApplicationMatchExpression",
-}) as any as S.Schema<V1alpha1ApplicationMatchExpression>;
+export const V1alpha1ApplicationMatchExpression =
+  V1LabelSelectorRequirement as any as S.Schema<V1alpha1ApplicationMatchExpression>;
 
 export type V1alpha1ApplicationSetRolloutStepMatchExpressionsList =
   Array<V1alpha1ApplicationMatchExpression>;
-export const V1alpha1ApplicationSetRolloutStepMatchExpressionsList = /*@__PURE__*/ S.Array(
-  V1alpha1ApplicationMatchExpression,
-) as any as S.Schema<V1alpha1ApplicationSetRolloutStepMatchExpressionsList>;
+export const V1alpha1ApplicationSetRolloutStepMatchExpressionsList =
+  V1LabelSelectorMatchExpressionsList as any as S.Schema<V1alpha1ApplicationSetRolloutStepMatchExpressionsList>;
 
 export interface V1alpha1ApplicationSetRolloutStep {
   matchExpressions?: V1alpha1ApplicationSetRolloutStepMatchExpressionsList;
@@ -3563,9 +3432,8 @@ export const V1alpha1ApplicationSetSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** TargetRevision tracks the desired revisions the Application should be synced to. */
 export type V1alpha1ApplicationSetApplicationStatusTargetrevisionsList = Array<string>;
-export const V1alpha1ApplicationSetApplicationStatusTargetrevisionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ApplicationSetApplicationStatusTargetrevisionsList>;
+export const V1alpha1ApplicationSetApplicationStatusTargetrevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSetApplicationStatusTargetrevisionsList>;
 
 export interface V1alpha1ApplicationSetApplicationStatus {
   application?: string;
@@ -3621,9 +3489,8 @@ export const V1alpha1ApplicationSetStatusConditionsList = /*@__PURE__*/ S.Array(
 
 /** Resources is a list of Applications resources managed by this application set. */
 export type V1alpha1ApplicationSetStatusResourcesList = Array<Applicationv1alpha1ResourceStatus>;
-export const V1alpha1ApplicationSetStatusResourcesList = /*@__PURE__*/ S.Array(
-  Applicationv1alpha1ResourceStatus,
-) as any as S.Schema<V1alpha1ApplicationSetStatusResourcesList>;
+export const V1alpha1ApplicationSetStatusResourcesList =
+  V1alpha1ApplicationStatusResourcesList as any as S.Schema<V1alpha1ApplicationSetStatusResourcesList>;
 
 export interface V1alpha1ApplicationSetStatus {
   applicationStatus?: V1alpha1ApplicationSetStatusApplicationStatusList;
@@ -3749,9 +3616,8 @@ export const CreateCertificateServiceCertificateRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateCertificateServiceCertificateRequest>;
 
 export type V1alpha1RepositoryCertificateListItemsList = Array<V1alpha1RepositoryCertificate>;
-export const V1alpha1RepositoryCertificateListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1RepositoryCertificate,
-) as any as S.Schema<V1alpha1RepositoryCertificateListItemsList>;
+export const V1alpha1RepositoryCertificateListItemsList =
+  CreateCertificateServiceCertificateRequestItemsList as any as S.Schema<V1alpha1RepositoryCertificateListItemsList>;
 
 export interface V1alpha1RepositoryCertificateList {
   items?: V1alpha1RepositoryCertificateListItemsList;
@@ -3767,10 +3633,8 @@ export const V1alpha1RepositoryCertificateList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1RepositoryCertificateList>;
 
 export type CreateClusterServiceRequestAnnotationsMap = { [key: string]: string | undefined };
-export const CreateClusterServiceRequestAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateClusterServiceRequestAnnotationsMap>;
+export const CreateClusterServiceRequestAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<CreateClusterServiceRequestAnnotationsMap>;
 
 export interface V1alpha1AWSAuthConfig {
   clusterName?: string;
@@ -3788,15 +3652,12 @@ export const V1alpha1AWSAuthConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1AWSAuthConfig" }) as any as S.Schema<V1alpha1AWSAuthConfig>;
 
 export type V1alpha1ExecProviderConfigArgsList = Array<string>;
-export const V1alpha1ExecProviderConfigArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ExecProviderConfigArgsList>;
+export const V1alpha1ExecProviderConfigArgsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ExecProviderConfigArgsList>;
 
 export type V1alpha1ExecProviderConfigEnvMap = { [key: string]: string | undefined };
-export const V1alpha1ExecProviderConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ExecProviderConfigEnvMap>;
+export const V1alpha1ExecProviderConfigEnvMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ExecProviderConfigEnvMap>;
 
 export interface V1alpha1ExecProviderConfig {
   apiVersion?: string;
@@ -3886,9 +3747,8 @@ export const V1alpha1ConnectionState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1ConnectionState" }) as any as S.Schema<V1alpha1ConnectionState>;
 
 export type V1alpha1ClusterInfoApiVersionsList = Array<string>;
-export const V1alpha1ClusterInfoApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ClusterInfoApiVersionsList>;
+export const V1alpha1ClusterInfoApiVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ClusterInfoApiVersionsList>;
 
 export interface V1alpha1ClusterCacheInfo {
   apisCount?: number;
@@ -3921,16 +3781,13 @@ export const V1alpha1ClusterInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1ClusterInfo" }) as any as S.Schema<V1alpha1ClusterInfo>;
 
 export type CreateClusterServiceRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateClusterServiceRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateClusterServiceRequestLabelsMap>;
+export const CreateClusterServiceRequestLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<CreateClusterServiceRequestLabelsMap>;
 
 /** Holds list of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty. */
 export type CreateClusterServiceRequestNamespacesList = Array<string>;
-export const CreateClusterServiceRequestNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClusterServiceRequestNamespacesList>;
+export const CreateClusterServiceRequestNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<CreateClusterServiceRequestNamespacesList>;
 
 export interface CreateClusterServiceRequest {
   upsert?: boolean;
@@ -3975,22 +3832,17 @@ export const CreateClusterServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateClusterServiceRequest>;
 
 export type V1alpha1ClusterAnnotationsMap = { [key: string]: string | undefined };
-export const V1alpha1ClusterAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ClusterAnnotationsMap>;
+export const V1alpha1ClusterAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ClusterAnnotationsMap>;
 
 export type V1alpha1ClusterLabelsMap = { [key: string]: string | undefined };
-export const V1alpha1ClusterLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V1alpha1ClusterLabelsMap>;
+export const V1alpha1ClusterLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ClusterLabelsMap>;
 
 /** Holds list of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty. */
 export type V1alpha1ClusterNamespacesList = Array<string>;
-export const V1alpha1ClusterNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ClusterNamespacesList>;
+export const V1alpha1ClusterNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ClusterNamespacesList>;
 
 export interface V1alpha1Cluster {
   annotations?: V1alpha1ClusterAnnotationsMap;
@@ -4092,9 +3944,8 @@ export const V1alpha1GnuPGPublicKeyList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1alpha1GnuPGPublicKeyList>;
 
 export type GpgkeyGnuPGPublicKeyCreateResponseSkippedList = Array<string>;
-export const GpgkeyGnuPGPublicKeyCreateResponseSkippedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GpgkeyGnuPGPublicKeyCreateResponseSkippedList>;
+export const GpgkeyGnuPGPublicKeyCreateResponseSkippedList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GpgkeyGnuPGPublicKeyCreateResponseSkippedList>;
 
 export interface GpgkeyGnuPGPublicKeyCreateResponse {
   created?: V1alpha1GnuPGPublicKeyList;
@@ -4133,9 +3984,8 @@ export const V1alpha1AppProjectSpecClusterResourceBlacklistList = /*@__PURE__*/ 
 
 export type V1alpha1AppProjectSpecClusterResourceWhitelistList =
   Array<V1alpha1ClusterResourceRestrictionItem>;
-export const V1alpha1AppProjectSpecClusterResourceWhitelistList = /*@__PURE__*/ S.Array(
-  V1alpha1ClusterResourceRestrictionItem,
-) as any as S.Schema<V1alpha1AppProjectSpecClusterResourceWhitelistList>;
+export const V1alpha1AppProjectSpecClusterResourceWhitelistList =
+  V1alpha1AppProjectSpecClusterResourceBlacklistList as any as S.Schema<V1alpha1AppProjectSpecClusterResourceWhitelistList>;
 
 /** ApplicationDestinationServiceAccount holds information about the service account to be impersonated for the application sync operation. */
 export interface V1alpha1ApplicationDestinationServiceAccount {
@@ -4185,29 +4035,20 @@ export const V1alpha1AppProjectSpecNamespaceResourceBlacklistList = /*@__PURE__*
 ) as any as S.Schema<V1alpha1AppProjectSpecNamespaceResourceBlacklistList>;
 
 export type V1alpha1AppProjectSpecNamespaceResourceWhitelistList = Array<V1GroupKind>;
-export const V1alpha1AppProjectSpecNamespaceResourceWhitelistList = /*@__PURE__*/ S.Array(
-  V1GroupKind,
-) as any as S.Schema<V1alpha1AppProjectSpecNamespaceResourceWhitelistList>;
+export const V1alpha1AppProjectSpecNamespaceResourceWhitelistList =
+  V1alpha1AppProjectSpecNamespaceResourceBlacklistList as any as S.Schema<V1alpha1AppProjectSpecNamespaceResourceWhitelistList>;
 
 export interface V1alpha1OrphanedResourceKey {
   group?: string;
   kind?: string;
   name?: string;
 }
-export const V1alpha1OrphanedResourceKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.optional(S.String),
-    kind: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "V1alpha1OrphanedResourceKey",
-}) as any as S.Schema<V1alpha1OrphanedResourceKey>;
+export const V1alpha1OrphanedResourceKey =
+  V1alpha1ClusterResourceRestrictionItem as any as S.Schema<V1alpha1OrphanedResourceKey>;
 
 export type V1alpha1OrphanedResourcesMonitorSettingsIgnoreList = Array<V1alpha1OrphanedResourceKey>;
-export const V1alpha1OrphanedResourcesMonitorSettingsIgnoreList = /*@__PURE__*/ S.Array(
-  V1alpha1OrphanedResourceKey,
-) as any as S.Schema<V1alpha1OrphanedResourcesMonitorSettingsIgnoreList>;
+export const V1alpha1OrphanedResourcesMonitorSettingsIgnoreList =
+  V1alpha1AppProjectSpecClusterResourceBlacklistList as any as S.Schema<V1alpha1OrphanedResourcesMonitorSettingsIgnoreList>;
 
 export interface V1alpha1OrphanedResourcesMonitorSettings {
   ignore?: V1alpha1OrphanedResourcesMonitorSettingsIgnoreList;
@@ -4223,9 +4064,8 @@ export const V1alpha1OrphanedResourcesMonitorSettings = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1alpha1OrphanedResourcesMonitorSettings>;
 
 export type V1alpha1ProjectRoleGroupsList = Array<string>;
-export const V1alpha1ProjectRoleGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ProjectRoleGroupsList>;
+export const V1alpha1ProjectRoleGroupsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ProjectRoleGroupsList>;
 
 export interface V1alpha1JWTToken {
   exp?: number;
@@ -4246,9 +4086,8 @@ export const V1alpha1ProjectRoleJwtTokensList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V1alpha1ProjectRoleJwtTokensList>;
 
 export type V1alpha1ProjectRolePoliciesList = Array<string>;
-export const V1alpha1ProjectRolePoliciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1ProjectRolePoliciesList>;
+export const V1alpha1ProjectRolePoliciesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ProjectRolePoliciesList>;
 
 export interface V1alpha1ProjectRole {
   description?: string;
@@ -4290,9 +4129,8 @@ export const V1alpha1AppProjectSpecSignatureKeysList = /*@__PURE__*/ S.Array(
 
 /** List of key IDs to trust. The keys need to be in the repository server keyring. */
 export type V1alpha1SourceIntegrityGitPolicyGPGKeysList = Array<string>;
-export const V1alpha1SourceIntegrityGitPolicyGPGKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1SourceIntegrityGitPolicyGPGKeysList>;
+export const V1alpha1SourceIntegrityGitPolicyGPGKeysList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SourceIntegrityGitPolicyGPGKeysList>;
 
 /** SourceIntegrityGitPolicyGPG verifies that the commit(s) are both correctly signed by a key in the repo-server keyring, and that they are signed by one of the key listed in Keys. This policy can be deactivated through the ARGOCD_GPG_ENABLED environment variable. Note the listing of problematic commits/signatures reported when "strict" mode validation fails may not be complete. This means that a user that has addressed all problems reported by source integrity check can run into further problematic signatures on a subsequent attempt. That happens namely when history contains seal commits signed with gpg keys that are in the keyring, but not listed in Keys. */
 export interface V1alpha1SourceIntegrityGitPolicyGPG {
@@ -4365,29 +4203,24 @@ export const V1alpha1SourceIntegrity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1SourceIntegrity" }) as any as S.Schema<V1alpha1SourceIntegrity>;
 
 export type V1alpha1AppProjectSpecSourceNamespacesList = Array<string>;
-export const V1alpha1AppProjectSpecSourceNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1AppProjectSpecSourceNamespacesList>;
+export const V1alpha1AppProjectSpecSourceNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1AppProjectSpecSourceNamespacesList>;
 
 export type V1alpha1AppProjectSpecSourceReposList = Array<string>;
-export const V1alpha1AppProjectSpecSourceReposList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1AppProjectSpecSourceReposList>;
+export const V1alpha1AppProjectSpecSourceReposList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1AppProjectSpecSourceReposList>;
 
 export type V1alpha1InlineSyncWindowApplicationsList = Array<string>;
-export const V1alpha1InlineSyncWindowApplicationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1InlineSyncWindowApplicationsList>;
+export const V1alpha1InlineSyncWindowApplicationsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1InlineSyncWindowApplicationsList>;
 
 export type V1alpha1InlineSyncWindowClustersList = Array<string>;
-export const V1alpha1InlineSyncWindowClustersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1InlineSyncWindowClustersList>;
+export const V1alpha1InlineSyncWindowClustersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1InlineSyncWindowClustersList>;
 
 export type V1alpha1InlineSyncWindowNamespacesList = Array<string>;
-export const V1alpha1InlineSyncWindowNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1InlineSyncWindowNamespacesList>;
+export const V1alpha1InlineSyncWindowNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1InlineSyncWindowNamespacesList>;
 
 export interface V1alpha1InlineSyncWindow {
   andOperator?: boolean;
@@ -4463,9 +4296,8 @@ export const V1alpha1AppProjectSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1AppProjectSpec" }) as any as S.Schema<V1alpha1AppProjectSpec>;
 
 export type V1alpha1JWTTokensItemsList = Array<V1alpha1JWTToken>;
-export const V1alpha1JWTTokensItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1JWTToken,
-) as any as S.Schema<V1alpha1JWTTokensItemsList>;
+export const V1alpha1JWTTokensItemsList =
+  V1alpha1ProjectRoleJwtTokensList as any as S.Schema<V1alpha1JWTTokensItemsList>;
 
 export interface V1alpha1JWTTokens {
   items?: V1alpha1JWTTokensItemsList;
@@ -4544,13 +4376,8 @@ export const CreateProjectServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectProjectTokenResponse {
   token?: string;
 }
-export const ProjectProjectTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectProjectTokenResponse",
-}) as any as S.Schema<ProjectProjectTokenResponse>;
+export const ProjectProjectTokenResponse =
+  AccountCreateTokenResponse as any as S.Schema<ProjectProjectTokenResponse>;
 
 export interface CreateRepoCredsServiceRepositoryCredentialsRequest {
   /** Whether to create in upsert mode. */
@@ -5039,11 +4866,8 @@ export const DeleteApplicationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationServiceRequest>;
 
 export type DeleteApplicationServiceResponse = unknown;
-export const DeleteApplicationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteApplicationServiceResponse",
-}) as any as S.Schema<DeleteApplicationServiceResponse>;
+export const DeleteApplicationServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteApplicationServiceResponse>;
 
 export interface DeleteApplicationServiceResourceRequest {
   name: string;
@@ -5075,11 +4899,8 @@ export const DeleteApplicationServiceResourceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteApplicationServiceResourceRequest>;
 
 export type DeleteApplicationServiceResourceResponse = unknown;
-export const DeleteApplicationServiceResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteApplicationServiceResourceResponse",
-}) as any as S.Schema<DeleteApplicationServiceResourceResponse>;
+export const DeleteApplicationServiceResourceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteApplicationServiceResourceResponse>;
 
 export interface DeleteApplicationSetServiceRequest {
   name: string;
@@ -5146,11 +4967,8 @@ export const DeleteClusterServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteClusterServiceRequest>;
 
 export type DeleteClusterServiceResponse = unknown;
-export const DeleteClusterServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteClusterServiceResponse",
-}) as any as S.Schema<DeleteClusterServiceResponse>;
+export const DeleteClusterServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteClusterServiceResponse>;
 
 export interface DeleteGPGKeyServiceRequest {
   /** The GPG key ID to query for. */
@@ -5165,11 +4983,8 @@ export const DeleteGPGKeyServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGPGKeyServiceRequest>;
 
 export type DeleteGPGKeyServiceResponse = unknown;
-export const DeleteGPGKeyServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteGPGKeyServiceResponse",
-}) as any as S.Schema<DeleteGPGKeyServiceResponse>;
+export const DeleteGPGKeyServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteGPGKeyServiceResponse>;
 
 export interface DeleteProjectServiceRequest {
   name: string;
@@ -5183,11 +4998,8 @@ export const DeleteProjectServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectServiceRequest>;
 
 export type DeleteProjectServiceResponse = unknown;
-export const DeleteProjectServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteProjectServiceResponse",
-}) as any as S.Schema<DeleteProjectServiceResponse>;
+export const DeleteProjectServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteProjectServiceResponse>;
 
 export interface DeleteProjectServiceTokenRequest {
   project: string;
@@ -5213,11 +5025,8 @@ export const DeleteProjectServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectServiceTokenRequest>;
 
 export type DeleteProjectServiceTokenResponse = unknown;
-export const DeleteProjectServiceTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteProjectServiceTokenResponse",
-}) as any as S.Schema<DeleteProjectServiceTokenResponse>;
+export const DeleteProjectServiceTokenResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteProjectServiceTokenResponse>;
 
 export interface DeleteRepoCredsServiceRepositoryCredentialsRequest {
   url: string;
@@ -5231,11 +5040,8 @@ export const DeleteRepoCredsServiceRepositoryCredentialsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsRequest>;
 
 export type DeleteRepoCredsServiceRepositoryCredentialsResponse = unknown;
-export const DeleteRepoCredsServiceRepositoryCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteRepoCredsServiceRepositoryCredentialsResponse",
-}) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsResponse>;
+export const DeleteRepoCredsServiceRepositoryCredentialsResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsResponse>;
 
 export interface DeleteRepoCredsServiceWriteRepositoryCredentialsRequest {
   url: string;
@@ -5274,11 +5080,8 @@ export const DeleteRepositoryServiceRepositoryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteRepositoryServiceRepositoryRequest>;
 
 export type DeleteRepositoryServiceRepositoryResponse = unknown;
-export const DeleteRepositoryServiceRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteRepositoryServiceRepositoryResponse",
-}) as any as S.Schema<DeleteRepositoryServiceRepositoryResponse>;
+export const DeleteRepositoryServiceRepositoryResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteRepositoryServiceRepositoryResponse>;
 
 export interface DeleteRepositoryServiceWriteRepositoryRequest {
   /** Repo URL for query */
@@ -5299,11 +5102,8 @@ export const DeleteRepositoryServiceWriteRepositoryRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryRequest>;
 
 export type DeleteRepositoryServiceWriteRepositoryResponse = unknown;
-export const DeleteRepositoryServiceWriteRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteRepositoryServiceWriteRepositoryResponse",
-}) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryResponse>;
+export const DeleteRepositoryServiceWriteRepositoryResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteRepositoryServiceWriteRepositoryResponse>;
 
 export interface DeleteSessionServiceRequest {}
 export const DeleteSessionServiceRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5352,9 +5152,8 @@ export const GetAccountServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountServiceAccountRequest>;
 
 export type AccountAccountCapabilitiesList = Array<string>;
-export const AccountAccountCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountAccountCapabilitiesList>;
+export const AccountAccountCapabilitiesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<AccountAccountCapabilitiesList>;
 
 export interface AccountToken {
   expiresAt?: number;
@@ -5390,19 +5189,16 @@ export const AccountAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountAccount" }) as any as S.Schema<AccountAccount>;
 
 export type GetApplicationServiceRequestProjectsList = Array<string>;
-export const GetApplicationServiceRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApplicationServiceRequestProjectsList>;
+export const GetApplicationServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceRequestProjectsList>;
 
 export type GetApplicationServiceRequestProjectList = Array<string>;
-export const GetApplicationServiceRequestProjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApplicationServiceRequestProjectList>;
+export const GetApplicationServiceRequestProjectList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceRequestProjectList>;
 
 export type GetApplicationServiceRequestNamesList = Array<string>;
-export const GetApplicationServiceRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApplicationServiceRequestNamesList>;
+export const GetApplicationServiceRequestNamesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceRequestNamesList>;
 
 export interface GetApplicationServiceRequest {
   /** the application's name */
@@ -5480,9 +5276,8 @@ export const ApplicationApplicationSyncWindowsResponseActiveWindowsList = /*@__P
 
 export type ApplicationApplicationSyncWindowsResponseAssignedWindowsList =
   Array<ApplicationApplicationSyncWindow>;
-export const ApplicationApplicationSyncWindowsResponseAssignedWindowsList = /*@__PURE__*/ S.Array(
-  ApplicationApplicationSyncWindow,
-) as any as S.Schema<ApplicationApplicationSyncWindowsResponseAssignedWindowsList>;
+export const ApplicationApplicationSyncWindowsResponseAssignedWindowsList =
+  ApplicationApplicationSyncWindowsResponseActiveWindowsList as any as S.Schema<ApplicationApplicationSyncWindowsResponseAssignedWindowsList>;
 
 export interface ApplicationApplicationSyncWindowsResponse {
   activeWindows?: ApplicationApplicationSyncWindowsResponseActiveWindowsList;
@@ -5500,14 +5295,12 @@ export const ApplicationApplicationSyncWindowsResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ApplicationApplicationSyncWindowsResponse>;
 
 export type GetApplicationServiceManifestsRequestSourcePositionsList = Array<string>;
-export const GetApplicationServiceManifestsRequestSourcePositionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApplicationServiceManifestsRequestSourcePositionsList>;
+export const GetApplicationServiceManifestsRequestSourcePositionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceManifestsRequestSourcePositionsList>;
 
 export type GetApplicationServiceManifestsRequestRevisionsList = Array<string>;
-export const GetApplicationServiceManifestsRequestRevisionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApplicationServiceManifestsRequestRevisionsList>;
+export const GetApplicationServiceManifestsRequestRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceManifestsRequestRevisionsList>;
 
 export interface GetApplicationServiceManifestsRequest {
   name: string;
@@ -5535,14 +5328,12 @@ export const GetApplicationServiceManifestsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetApplicationServiceManifestsRequest>;
 
 export type RepositoryManifestResponseCommandsList = Array<string>;
-export const RepositoryManifestResponseCommandsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryManifestResponseCommandsList>;
+export const RepositoryManifestResponseCommandsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryManifestResponseCommandsList>;
 
 export type RepositoryManifestResponseManifestsList = Array<string>;
-export const RepositoryManifestResponseManifestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryManifestResponseManifestsList>;
+export const RepositoryManifestResponseManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryManifestResponseManifestsList>;
 
 export interface RepositoryManifestResponse {
   commands?: RepositoryManifestResponseCommandsList;
@@ -5804,9 +5595,8 @@ export const GetProjectServiceGlobalProjectsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetProjectServiceGlobalProjectsRequest>;
 
 export type ProjectGlobalProjectsResponseItemsList = Array<V1alpha1AppProject>;
-export const ProjectGlobalProjectsResponseItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1AppProject,
-) as any as S.Schema<ProjectGlobalProjectsResponseItemsList>;
+export const ProjectGlobalProjectsResponseItemsList =
+  ProjectDetailedProjectsResponseGlobalProjectsList as any as S.Schema<ProjectGlobalProjectsResponseItemsList>;
 
 export interface ProjectGlobalProjectsResponse {
   items?: ProjectGlobalProjectsResponseItemsList;
@@ -5831,9 +5621,8 @@ export const GetProjectServiceSyncWindowsStateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectServiceSyncWindowsStateRequest>;
 
 export type ProjectSyncWindowsResponseWindowsList = Array<V1alpha1InlineSyncWindow>;
-export const ProjectSyncWindowsResponseWindowsList = /*@__PURE__*/ S.Array(
-  V1alpha1InlineSyncWindow,
-) as any as S.Schema<ProjectSyncWindowsResponseWindowsList>;
+export const ProjectSyncWindowsResponseWindowsList =
+  V1alpha1AppProjectSpecSyncWindowsList as any as S.Schema<ProjectSyncWindowsResponseWindowsList>;
 
 export interface ProjectSyncWindowsResponse {
   windows?: ProjectSyncWindowsResponseWindowsList;
@@ -5889,19 +5678,16 @@ export const GetRepositoryServiceAppDetailsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetRepositoryServiceAppDetailsRequest>;
 
 export type RepositoryHelmAppSpecFileParametersList = Array<V1alpha1HelmFileParameter>;
-export const RepositoryHelmAppSpecFileParametersList = /*@__PURE__*/ S.Array(
-  V1alpha1HelmFileParameter,
-) as any as S.Schema<RepositoryHelmAppSpecFileParametersList>;
+export const RepositoryHelmAppSpecFileParametersList =
+  V1alpha1ApplicationSourceHelmFileParametersList as any as S.Schema<RepositoryHelmAppSpecFileParametersList>;
 
 export type RepositoryHelmAppSpecParametersList = Array<V1alpha1HelmParameter>;
-export const RepositoryHelmAppSpecParametersList = /*@__PURE__*/ S.Array(
-  V1alpha1HelmParameter,
-) as any as S.Schema<RepositoryHelmAppSpecParametersList>;
+export const RepositoryHelmAppSpecParametersList =
+  V1alpha1ApplicationSourceHelmParametersList as any as S.Schema<RepositoryHelmAppSpecParametersList>;
 
 export type RepositoryHelmAppSpecValueFilesList = Array<string>;
-export const RepositoryHelmAppSpecValueFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryHelmAppSpecValueFilesList>;
+export const RepositoryHelmAppSpecValueFilesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryHelmAppSpecValueFilesList>;
 
 export interface RepositoryHelmAppSpec {
   fileParameters?: RepositoryHelmAppSpecFileParametersList;
@@ -5922,9 +5708,8 @@ export const RepositoryHelmAppSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** images is a list of available images. */
 export type RepositoryKustomizeAppSpecImagesList = Array<string>;
-export const RepositoryKustomizeAppSpecImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryKustomizeAppSpecImagesList>;
+export const RepositoryKustomizeAppSpecImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryKustomizeAppSpecImagesList>;
 
 export interface RepositoryKustomizeAppSpec {
   /** images is a list of available images. */
@@ -5940,16 +5725,13 @@ export const RepositoryKustomizeAppSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** array is the default value of the parameter if the parameter is an array. */
 export type RepositoryParameterAnnouncementArrayList = Array<string>;
-export const RepositoryParameterAnnouncementArrayList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryParameterAnnouncementArrayList>;
+export const RepositoryParameterAnnouncementArrayList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryParameterAnnouncementArrayList>;
 
 /** map is the default value of the parameter if the parameter is a map. */
 export type RepositoryParameterAnnouncementMapMap = { [key: string]: string | undefined };
-export const RepositoryParameterAnnouncementMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RepositoryParameterAnnouncementMapMap>;
+export const RepositoryParameterAnnouncementMapMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<RepositoryParameterAnnouncementMapMap>;
 
 export interface RepositoryParameterAnnouncement {
   /** array is the default value of the parameter if the parameter is an array. */
@@ -6040,9 +5822,8 @@ export const GetRepositoryServiceHelmChartsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetRepositoryServiceHelmChartsRequest>;
 
 export type RepositoryHelmChartVersionsList = Array<string>;
-export const RepositoryHelmChartVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryHelmChartVersionsList>;
+export const RepositoryHelmChartVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryHelmChartVersionsList>;
 
 export interface RepositoryHelmChart {
   name?: string;
@@ -6097,9 +5878,8 @@ export const GetSessionServiceUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSessionServiceUserInfoRequest>;
 
 export type SessionGetUserInfoResponseGroupsList = Array<string>;
-export const SessionGetUserInfoResponseGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionGetUserInfoResponseGroupsList>;
+export const SessionGetUserInfoResponseGroupsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SessionGetUserInfoResponseGroupsList>;
 
 export interface SessionGetUserInfoResponse {
   groups?: SessionGetUserInfoResponseGroupsList;
@@ -6126,19 +5906,16 @@ export const GetSettingsServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSettingsServiceRequest>;
 
 export type ClusterSettingsAdditionalUrlsList = Array<string>;
-export const ClusterSettingsAdditionalUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterSettingsAdditionalUrlsList>;
+export const ClusterSettingsAdditionalUrlsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ClusterSettingsAdditionalUrlsList>;
 
 export type V1alpha1CommandArgsList = Array<string>;
-export const V1alpha1CommandArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1CommandArgsList>;
+export const V1alpha1CommandArgsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1CommandArgsList>;
 
 export type V1alpha1CommandCommandList = Array<string>;
-export const V1alpha1CommandCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1CommandCommandList>;
+export const V1alpha1CommandCommandList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1CommandCommandList>;
 
 export interface V1alpha1Command {
   args?: V1alpha1CommandArgsList;
@@ -6217,10 +5994,8 @@ export const ClusterGoogleAnalyticsConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterGoogleAnalyticsConfig>;
 
 export type ClusterHelpBinaryUrlsMap = { [key: string]: string | undefined };
-export const ClusterHelpBinaryUrlsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterHelpBinaryUrlsMap>;
+export const ClusterHelpBinaryUrlsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<ClusterHelpBinaryUrlsMap>;
 
 export interface ClusterHelp {
   binaryUrls?: ClusterHelpBinaryUrlsMap;
@@ -6270,14 +6045,12 @@ export const V1alpha1KustomizeOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1alpha1KustomizeOptions" }) as any as S.Schema<V1alpha1KustomizeOptions>;
 
 export type ClusterSettingsKustomizeVersionsList = Array<string>;
-export const ClusterSettingsKustomizeVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterSettingsKustomizeVersionsList>;
+export const ClusterSettingsKustomizeVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ClusterSettingsKustomizeVersionsList>;
 
 export type OidcClaimValuesList = Array<string>;
-export const OidcClaimValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OidcClaimValuesList>;
+export const OidcClaimValuesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<OidcClaimValuesList>;
 
 export interface OidcClaim {
   essential?: boolean;
@@ -6299,9 +6072,8 @@ export const ClusterOIDCConfigIdTokenClaimsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterOIDCConfigIdTokenClaimsMap>;
 
 export type ClusterOIDCConfigScopesList = Array<string>;
-export const ClusterOIDCConfigScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterOIDCConfigScopesList>;
+export const ClusterOIDCConfigScopesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ClusterOIDCConfigScopesList>;
 
 export interface ClusterOIDCConfig {
   cliClientID?: string;
@@ -6333,19 +6105,16 @@ export const ClusterSettingsPluginsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterSettingsPluginsList>;
 
 export type V1alpha1OverrideIgnoreDiffJSONPointersList = Array<string>;
-export const V1alpha1OverrideIgnoreDiffJSONPointersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1OverrideIgnoreDiffJSONPointersList>;
+export const V1alpha1OverrideIgnoreDiffJSONPointersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1OverrideIgnoreDiffJSONPointersList>;
 
 export type V1alpha1OverrideIgnoreDiffJqPathExpressionsList = Array<string>;
-export const V1alpha1OverrideIgnoreDiffJqPathExpressionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1OverrideIgnoreDiffJqPathExpressionsList>;
+export const V1alpha1OverrideIgnoreDiffJqPathExpressionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1OverrideIgnoreDiffJqPathExpressionsList>;
 
 export type V1alpha1OverrideIgnoreDiffManagedFieldsManagersList = Array<string>;
-export const V1alpha1OverrideIgnoreDiffManagedFieldsManagersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1alpha1OverrideIgnoreDiffManagedFieldsManagersList>;
+export const V1alpha1OverrideIgnoreDiffManagedFieldsManagersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1OverrideIgnoreDiffManagedFieldsManagersList>;
 
 export interface V1alpha1OverrideIgnoreDiff {
   jSONPointers?: V1alpha1OverrideIgnoreDiffJSONPointersList;
@@ -6490,9 +6259,8 @@ export const GetSettingsServicePluginsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSettingsServicePluginsRequest>;
 
 export type ClusterSettingsPluginsResponsePluginsList = Array<V1alpha1PluginConfigMapRef>;
-export const ClusterSettingsPluginsResponsePluginsList = /*@__PURE__*/ S.Array(
-  V1alpha1PluginConfigMapRef,
-) as any as S.Schema<ClusterSettingsPluginsResponsePluginsList>;
+export const ClusterSettingsPluginsResponsePluginsList =
+  ClusterSettingsPluginsList as any as S.Schema<ClusterSettingsPluginsResponsePluginsList>;
 
 export interface ClusterSettingsPluginsResponse {
   plugins?: ClusterSettingsPluginsResponsePluginsList;
@@ -6541,19 +6309,16 @@ export const AccountAccountsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountAccountsList" }) as any as S.Schema<AccountAccountsList>;
 
 export type ListApplicationServiceRequestProjectsList = Array<string>;
-export const ListApplicationServiceRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListApplicationServiceRequestProjectsList>;
+export const ListApplicationServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationServiceRequestProjectsList>;
 
 export type ListApplicationServiceRequestProjectList = Array<string>;
-export const ListApplicationServiceRequestProjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListApplicationServiceRequestProjectList>;
+export const ListApplicationServiceRequestProjectList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationServiceRequestProjectList>;
 
 export type ListApplicationServiceRequestNamesList = Array<string>;
-export const ListApplicationServiceRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListApplicationServiceRequestNamesList>;
+export const ListApplicationServiceRequestNamesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationServiceRequestNamesList>;
 
 export interface ListApplicationServiceRequest {
   /** the application's name. */
@@ -6592,9 +6357,8 @@ export const ListApplicationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApplicationServiceRequest>;
 
 export type V1alpha1ApplicationListItemsList = Array<V1alpha1Application>;
-export const V1alpha1ApplicationListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1Application,
-) as any as S.Schema<V1alpha1ApplicationListItemsList>;
+export const V1alpha1ApplicationListItemsList =
+  ApplicationsetApplicationSetGenerateResponseApplicationsList as any as S.Schema<V1alpha1ApplicationListItemsList>;
 
 export interface V1alpha1ApplicationList {
   items?: V1alpha1ApplicationListItemsList;
@@ -6683,19 +6447,13 @@ export interface V1alpha1ResourceActionParam {
   /** Name is the name of the parameter. */
   name?: string;
 }
-export const V1alpha1ResourceActionParam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "V1alpha1ResourceActionParam",
-}) as any as S.Schema<V1alpha1ResourceActionParam>;
+export const V1alpha1ResourceActionParam =
+  V1alpha1PluginConfigMapRef as any as S.Schema<V1alpha1ResourceActionParam>;
 
 /** Params contains the parameters required to execute the action. */
 export type V1alpha1ResourceActionParamsList = Array<V1alpha1ResourceActionParam>;
-export const V1alpha1ResourceActionParamsList = /*@__PURE__*/ S.Array(
-  V1alpha1ResourceActionParam,
-) as any as S.Schema<V1alpha1ResourceActionParamsList>;
+export const V1alpha1ResourceActionParamsList =
+  ClusterSettingsPluginsList as any as S.Schema<V1alpha1ResourceActionParamsList>;
 
 /** ResourceAction represents an individual action that can be performed on a resource. It includes parameters, an optional disabled flag, an icon for display, and a name for the action. */
 export interface V1alpha1ResourceAction {
@@ -6917,9 +6675,8 @@ export const ListApplicationServiceResourceLinksRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListApplicationServiceResourceLinksRequest>;
 
 export type ListApplicationSetServiceRequestProjectsList = Array<string>;
-export const ListApplicationSetServiceRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListApplicationSetServiceRequestProjectsList>;
+export const ListApplicationSetServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationSetServiceRequestProjectsList>;
 
 export interface ListApplicationSetServiceRequest {
   /** the project names to restrict returned list applicationsets. */
@@ -7010,9 +6767,8 @@ export const ListClusterServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListClusterServiceRequest>;
 
 export type V1alpha1ClusterListItemsList = Array<V1alpha1Cluster>;
-export const V1alpha1ClusterListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1Cluster,
-) as any as S.Schema<V1alpha1ClusterListItemsList>;
+export const V1alpha1ClusterListItemsList =
+  ProjectDetailedProjectsResponseClustersList as any as S.Schema<V1alpha1ClusterListItemsList>;
 
 /** ClusterList is a collection of Clusters. */
 export interface V1alpha1ClusterList {
@@ -7047,9 +6803,8 @@ export type NotificationService = V1alpha1PluginConfigMapRef;
 export const NotificationService = V1alpha1PluginConfigMapRef;
 
 export type NotificationServiceListItemsList = Array<V1alpha1PluginConfigMapRef>;
-export const NotificationServiceListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1PluginConfigMapRef,
-) as any as S.Schema<NotificationServiceListItemsList>;
+export const NotificationServiceListItemsList =
+  ClusterSettingsPluginsList as any as S.Schema<NotificationServiceListItemsList>;
 
 export interface NotificationServiceList {
   items?: NotificationServiceListItemsList;
@@ -7071,18 +6826,14 @@ export type NotificationTemplate = V1alpha1PluginConfigMapRef;
 export const NotificationTemplate = V1alpha1PluginConfigMapRef;
 
 export type NotificationTemplateListItemsList = Array<V1alpha1PluginConfigMapRef>;
-export const NotificationTemplateListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1PluginConfigMapRef,
-) as any as S.Schema<NotificationTemplateListItemsList>;
+export const NotificationTemplateListItemsList =
+  ClusterSettingsPluginsList as any as S.Schema<NotificationTemplateListItemsList>;
 
 export interface NotificationTemplateList {
   items?: NotificationTemplateListItemsList;
 }
-export const NotificationTemplateList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(NotificationTemplateListItemsList),
-  }),
-).annotate({ identifier: "NotificationTemplateList" }) as any as S.Schema<NotificationTemplateList>;
+export const NotificationTemplateList =
+  NotificationServiceList as any as S.Schema<NotificationTemplateList>;
 
 export interface ListNotificationServiceTriggersRequest {}
 export const ListNotificationServiceTriggersRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7095,18 +6846,14 @@ export type NotificationTrigger = V1alpha1PluginConfigMapRef;
 export const NotificationTrigger = V1alpha1PluginConfigMapRef;
 
 export type NotificationTriggerListItemsList = Array<V1alpha1PluginConfigMapRef>;
-export const NotificationTriggerListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1PluginConfigMapRef,
-) as any as S.Schema<NotificationTriggerListItemsList>;
+export const NotificationTriggerListItemsList =
+  ClusterSettingsPluginsList as any as S.Schema<NotificationTriggerListItemsList>;
 
 export interface NotificationTriggerList {
   items?: NotificationTriggerListItemsList;
 }
-export const NotificationTriggerList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: S.optional(NotificationTriggerListItemsList),
-  }),
-).annotate({ identifier: "NotificationTriggerList" }) as any as S.Schema<NotificationTriggerList>;
+export const NotificationTriggerList =
+  NotificationServiceList as any as S.Schema<NotificationTriggerList>;
 
 export interface ListProjectServiceRequest {
   name?: string;
@@ -7120,9 +6867,8 @@ export const ListProjectServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectServiceRequest>;
 
 export type V1alpha1AppProjectListItemsList = Array<V1alpha1AppProject>;
-export const V1alpha1AppProjectListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1AppProject,
-) as any as S.Schema<V1alpha1AppProjectListItemsList>;
+export const V1alpha1AppProjectListItemsList =
+  ProjectDetailedProjectsResponseGlobalProjectsList as any as S.Schema<V1alpha1AppProjectListItemsList>;
 
 export interface V1alpha1AppProjectList {
   items?: V1alpha1AppProjectListItemsList;
@@ -7261,14 +7007,12 @@ export const ListRepositoryServiceOCITagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRepositoryServiceOCITagsRequest>;
 
 export type RepositoryRefsBranchesList = Array<string>;
-export const RepositoryRefsBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryRefsBranchesList>;
+export const RepositoryRefsBranchesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryRefsBranchesList>;
 
 export type RepositoryRefsTagsList = Array<string>;
-export const RepositoryRefsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryRefsTagsList>;
+export const RepositoryRefsTagsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryRefsTagsList>;
 
 export interface RepositoryRefs {
   branches?: RepositoryRefsBranchesList;
@@ -7318,9 +7062,8 @@ export const ListRepositoryServiceRepositoriesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListRepositoryServiceRepositoriesRequest>;
 
 export type V1alpha1RepositoryListItemsList = Array<V1alpha1Repository>;
-export const V1alpha1RepositoryListItemsList = /*@__PURE__*/ S.Array(
-  V1alpha1Repository,
-) as any as S.Schema<V1alpha1RepositoryListItemsList>;
+export const V1alpha1RepositoryListItemsList =
+  ProjectDetailedProjectsResponseRepositoriesList as any as S.Schema<V1alpha1RepositoryListItemsList>;
 
 /** RepositoryList is a collection of Repositories. */
 export interface V1alpha1RepositoryList {
@@ -7413,11 +7156,8 @@ export const RotateClusterServiceAuthRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RotateClusterServiceAuthRequest>;
 
 export type RotateClusterServiceAuthResponse = unknown;
-export const RotateClusterServiceAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RotateClusterServiceAuthResponse",
-}) as any as S.Schema<RotateClusterServiceAuthResponse>;
+export const RotateClusterServiceAuthResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<RotateClusterServiceAuthResponse>;
 
 export interface RunApplicationServiceResourceActionRequest {
   name: string;
@@ -7449,11 +7189,8 @@ export const RunApplicationServiceResourceActionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RunApplicationServiceResourceActionRequest>;
 
 export type RunApplicationServiceResourceActionResponse = unknown;
-export const RunApplicationServiceResourceActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RunApplicationServiceResourceActionResponse",
-}) as any as S.Schema<RunApplicationServiceResourceActionResponse>;
+export const RunApplicationServiceResourceActionResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<RunApplicationServiceResourceActionResponse>;
 
 export type ApplicationResourceActionParameters = V1alpha1Info;
 export const ApplicationResourceActionParameters = V1alpha1Info;
@@ -7499,41 +7236,32 @@ export const RunApplicationServiceResourceActionV2Request = /*@__PURE__*/ S.susp
 }) as any as S.Schema<RunApplicationServiceResourceActionV2Request>;
 
 export type RunApplicationServiceResourceActionV2Response = unknown;
-export const RunApplicationServiceResourceActionV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RunApplicationServiceResourceActionV2Response",
-}) as any as S.Schema<RunApplicationServiceResourceActionV2Response>;
+export const RunApplicationServiceResourceActionV2Response =
+  DeleteAccountServiceTokenResponse as any as S.Schema<RunApplicationServiceResourceActionV2Response>;
 
 export type SyncApplicationServiceRequestInfosList = Array<V1alpha1Info>;
-export const SyncApplicationServiceRequestInfosList = /*@__PURE__*/ S.Array(
-  V1alpha1Info,
-) as any as S.Schema<SyncApplicationServiceRequestInfosList>;
+export const SyncApplicationServiceRequestInfosList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<SyncApplicationServiceRequestInfosList>;
 
 export type SyncApplicationServiceRequestManifestsList = Array<string>;
-export const SyncApplicationServiceRequestManifestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyncApplicationServiceRequestManifestsList>;
+export const SyncApplicationServiceRequestManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SyncApplicationServiceRequestManifestsList>;
 
 export type SyncApplicationServiceRequestResourcesList = Array<V1alpha1SyncOperationResource>;
-export const SyncApplicationServiceRequestResourcesList = /*@__PURE__*/ S.Array(
-  V1alpha1SyncOperationResource,
-) as any as S.Schema<SyncApplicationServiceRequestResourcesList>;
+export const SyncApplicationServiceRequestResourcesList =
+  V1alpha1SyncOperationResourcesList as any as S.Schema<SyncApplicationServiceRequestResourcesList>;
 
 export type SyncApplicationServiceRequestRevisionsList = Array<string>;
-export const SyncApplicationServiceRequestRevisionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyncApplicationServiceRequestRevisionsList>;
+export const SyncApplicationServiceRequestRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SyncApplicationServiceRequestRevisionsList>;
 
 export type SyncApplicationServiceRequestSourcePositionsList = Array<string>;
-export const SyncApplicationServiceRequestSourcePositionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SyncApplicationServiceRequestSourcePositionsList>;
+export const SyncApplicationServiceRequestSourcePositionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SyncApplicationServiceRequestSourcePositionsList>;
 
 export type ApplicationSyncOptionsItemsList = Array<string>;
-export const ApplicationSyncOptionsItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApplicationSyncOptionsItemsList>;
+export const ApplicationSyncOptionsItemsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ApplicationSyncOptionsItemsList>;
 
 export interface ApplicationSyncOptions {
   items?: ApplicationSyncOptionsItemsList;
@@ -7597,11 +7325,8 @@ export const TerminateApplicationServiceOperationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<TerminateApplicationServiceOperationRequest>;
 
 export type TerminateApplicationServiceOperationResponse = unknown;
-export const TerminateApplicationServiceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateApplicationServiceOperationResponse",
-}) as any as S.Schema<TerminateApplicationServiceOperationResponse>;
+export const TerminateApplicationServiceOperationResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<TerminateApplicationServiceOperationResponse>;
 
 export interface UpdateAccountServicePasswordRequest {
   currentPassword?: string | Redacted.Redacted<string>;
@@ -7619,11 +7344,8 @@ export const UpdateAccountServicePasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccountServicePasswordRequest>;
 
 export type UpdateAccountServicePasswordResponse = unknown;
-export const UpdateAccountServicePasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateAccountServicePasswordResponse",
-}) as any as S.Schema<UpdateAccountServicePasswordResponse>;
+export const UpdateAccountServicePasswordResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<UpdateAccountServicePasswordResponse>;
 
 export interface UpdateApplicationServiceRequest {
   /** Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names +optional */
@@ -7653,19 +7375,16 @@ export const UpdateApplicationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateApplicationServiceSpecRequestIgnoreDifferencesList =
   Array<V1alpha1ResourceIgnoreDifferences>;
-export const UpdateApplicationServiceSpecRequestIgnoreDifferencesList = /*@__PURE__*/ S.Array(
-  V1alpha1ResourceIgnoreDifferences,
-) as any as S.Schema<UpdateApplicationServiceSpecRequestIgnoreDifferencesList>;
+export const UpdateApplicationServiceSpecRequestIgnoreDifferencesList =
+  V1alpha1ApplicationSpecIgnoreDifferencesList as any as S.Schema<UpdateApplicationServiceSpecRequestIgnoreDifferencesList>;
 
 export type UpdateApplicationServiceSpecRequestInfoList = Array<V1alpha1Info>;
-export const UpdateApplicationServiceSpecRequestInfoList = /*@__PURE__*/ S.Array(
-  V1alpha1Info,
-) as any as S.Schema<UpdateApplicationServiceSpecRequestInfoList>;
+export const UpdateApplicationServiceSpecRequestInfoList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<UpdateApplicationServiceSpecRequestInfoList>;
 
 export type UpdateApplicationServiceSpecRequestSourcesList = Array<V1alpha1ApplicationSource>;
-export const UpdateApplicationServiceSpecRequestSourcesList = /*@__PURE__*/ S.Array(
-  V1alpha1ApplicationSource,
-) as any as S.Schema<UpdateApplicationServiceSpecRequestSourcesList>;
+export const UpdateApplicationServiceSpecRequestSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<UpdateApplicationServiceSpecRequestSourcesList>;
 
 export interface UpdateApplicationServiceSpecRequest {
   name: string;
@@ -7702,27 +7421,21 @@ export const UpdateApplicationServiceSpecRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateApplicationServiceSpecRequest>;
 
 export type UpdateClusterServiceRequestUpdatedFieldsList = Array<string>;
-export const UpdateClusterServiceRequestUpdatedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClusterServiceRequestUpdatedFieldsList>;
+export const UpdateClusterServiceRequestUpdatedFieldsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<UpdateClusterServiceRequestUpdatedFieldsList>;
 
 export type UpdateClusterServiceRequestAnnotationsMap = { [key: string]: string | undefined };
-export const UpdateClusterServiceRequestAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterServiceRequestAnnotationsMap>;
+export const UpdateClusterServiceRequestAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<UpdateClusterServiceRequestAnnotationsMap>;
 
 export type UpdateClusterServiceRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateClusterServiceRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateClusterServiceRequestLabelsMap>;
+export const UpdateClusterServiceRequestLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<UpdateClusterServiceRequestLabelsMap>;
 
 /** Holds list of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty. */
 export type UpdateClusterServiceRequestNamespacesList = Array<string>;
-export const UpdateClusterServiceRequestNamespacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClusterServiceRequestNamespacesList>;
+export const UpdateClusterServiceRequestNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<UpdateClusterServiceRequestNamespacesList>;
 
 export interface UpdateClusterServiceRequest {
   /** value holds the cluster server URL or cluster name */
@@ -8157,11 +7870,8 @@ export const ValidateRepositoryServiceAccessRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ValidateRepositoryServiceAccessRequest>;
 
 export type ValidateRepositoryServiceAccessResponse = unknown;
-export const ValidateRepositoryServiceAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ValidateRepositoryServiceAccessResponse",
-}) as any as S.Schema<ValidateRepositoryServiceAccessResponse>;
+export const ValidateRepositoryServiceAccessResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<ValidateRepositoryServiceAccessResponse>;
 
 export interface ValidateRepositoryServiceWriteAccessRequest {
   /** The URL to the repo */
@@ -8250,11 +7960,8 @@ export const ValidateRepositoryServiceWriteAccessRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ValidateRepositoryServiceWriteAccessRequest>;
 
 export type ValidateRepositoryServiceWriteAccessResponse = unknown;
-export const ValidateRepositoryServiceWriteAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ValidateRepositoryServiceWriteAccessResponse",
-}) as any as S.Schema<ValidateRepositoryServiceWriteAccessResponse>;
+export const ValidateRepositoryServiceWriteAccessResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<ValidateRepositoryServiceWriteAccessResponse>;
 
 export interface VersionServiceVersionRequest {}
 export const VersionServiceVersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8297,19 +8004,16 @@ export const VersionVersionMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionVersionMessage" }) as any as S.Schema<VersionVersionMessage>;
 
 export type WatchApplicationServiceRequestProjectsList = Array<string>;
-export const WatchApplicationServiceRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchApplicationServiceRequestProjectsList>;
+export const WatchApplicationServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationServiceRequestProjectsList>;
 
 export type WatchApplicationServiceRequestProjectList = Array<string>;
-export const WatchApplicationServiceRequestProjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchApplicationServiceRequestProjectList>;
+export const WatchApplicationServiceRequestProjectList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationServiceRequestProjectList>;
 
 export type WatchApplicationServiceRequestNamesList = Array<string>;
-export const WatchApplicationServiceRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchApplicationServiceRequestNamesList>;
+export const WatchApplicationServiceRequestNamesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationServiceRequestNamesList>;
 
 export interface WatchApplicationServiceRequest {
   /** the application's name. */
@@ -8419,9 +8123,8 @@ export const WatchApplicationServiceResourceTreeResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<WatchApplicationServiceResourceTreeResponse>;
 
 export type WatchApplicationSetServiceRequestProjectsList = Array<string>;
-export const WatchApplicationSetServiceRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WatchApplicationSetServiceRequestProjectsList>;
+export const WatchApplicationSetServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationSetServiceRequestProjectsList>;
 
 export interface WatchApplicationSetServiceRequest {
   name?: string;

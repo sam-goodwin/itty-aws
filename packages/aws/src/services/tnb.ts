@@ -289,11 +289,8 @@ export const DeleteSolFunctionPackageInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSolFunctionPackageInput",
 }) as any as S.Schema<DeleteSolFunctionPackageInput>;
 export interface DeleteSolFunctionPackageResponse {}
-export const DeleteSolFunctionPackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSolFunctionPackageResponse",
-}) as any as S.Schema<DeleteSolFunctionPackageResponse>;
+export const DeleteSolFunctionPackageResponse =
+  CancelSolNetworkOperationResponse as any as S.Schema<DeleteSolFunctionPackageResponse>;
 export interface DeleteSolNetworkInstanceInput {
   nsInstanceId: string;
 }
@@ -312,11 +309,8 @@ export const DeleteSolNetworkInstanceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSolNetworkInstanceInput",
 }) as any as S.Schema<DeleteSolNetworkInstanceInput>;
 export interface DeleteSolNetworkInstanceResponse {}
-export const DeleteSolNetworkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSolNetworkInstanceResponse",
-}) as any as S.Schema<DeleteSolNetworkInstanceResponse>;
+export const DeleteSolNetworkInstanceResponse =
+  CancelSolNetworkOperationResponse as any as S.Schema<DeleteSolNetworkInstanceResponse>;
 export interface DeleteSolNetworkPackageInput {
   nsdInfoId: string;
 }
@@ -631,14 +625,8 @@ export interface GetSolNetworkInstanceMetadata {
   createdAt: Date;
   lastModified: Date;
 }
-export const GetSolNetworkInstanceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetSolNetworkInstanceMetadata",
-}) as any as S.Schema<GetSolNetworkInstanceMetadata>;
+export const GetSolNetworkInstanceMetadata =
+  GetSolFunctionInstanceMetadata as any as S.Schema<GetSolNetworkInstanceMetadata>;
 export interface GetSolNetworkInstanceOutput {
   id: string;
   arn: string;
@@ -725,9 +713,7 @@ export interface InstantiateMetadata {
   nsdInfoId: string;
   additionalParamsForNs?: any;
 }
-export const InstantiateMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nsdInfoId: S.String, additionalParamsForNs: S.optional(S.Any) }),
-).annotate({ identifier: "InstantiateMetadata" }) as any as S.Schema<InstantiateMetadata>;
+export const InstantiateMetadata = UpdateNsMetadata as any as S.Schema<InstantiateMetadata>;
 export interface GetSolNetworkOperationMetadata {
   updateNsMetadata?: UpdateNsMetadata;
   modifyVnfInfoMetadata?: ModifyVnfInfoMetadata;
@@ -747,7 +733,7 @@ export const GetSolNetworkOperationMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSolNetworkOperationMetadata",
 }) as any as S.Schema<GetSolNetworkOperationMetadata>;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const StringMap = TagMap as any as S.Schema<StringMap>;
 export type ErrorCause = string;
 export type ErrorDetails = string;
 export interface ErrorInfo {
@@ -842,9 +828,7 @@ export const VnfPkgIdList = /*@__PURE__*/ S.Array(S.String);
 export interface NetworkArtifactMeta {
   overrides?: ToscaOverride[];
 }
-export const NetworkArtifactMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ overrides: S.optional(OverrideList) }),
-).annotate({ identifier: "NetworkArtifactMeta" }) as any as S.Schema<NetworkArtifactMeta>;
+export const NetworkArtifactMeta = FunctionArtifactMeta as any as S.Schema<NetworkArtifactMeta>;
 export interface GetSolNetworkPackageMetadata {
   nsd?: NetworkArtifactMeta;
   createdAt: Date;
@@ -1019,14 +1003,8 @@ export interface ListSolFunctionInstanceMetadata {
   createdAt: Date;
   lastModified: Date;
 }
-export const ListSolFunctionInstanceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "ListSolFunctionInstanceMetadata",
-}) as any as S.Schema<ListSolFunctionInstanceMetadata>;
+export const ListSolFunctionInstanceMetadata =
+  GetSolFunctionInstanceMetadata as any as S.Schema<ListSolFunctionInstanceMetadata>;
 export interface ListSolFunctionInstanceInfo {
   id: string;
   arn: string;
@@ -1090,14 +1068,8 @@ export interface ListSolFunctionPackageMetadata {
   createdAt: Date;
   lastModified: Date;
 }
-export const ListSolFunctionPackageMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "ListSolFunctionPackageMetadata",
-}) as any as S.Schema<ListSolFunctionPackageMetadata>;
+export const ListSolFunctionPackageMetadata =
+  GetSolFunctionInstanceMetadata as any as S.Schema<ListSolFunctionPackageMetadata>;
 export interface ListSolFunctionPackageInfo {
   id: string;
   arn: string;
@@ -1162,14 +1134,8 @@ export interface ListSolNetworkInstanceMetadata {
   createdAt: Date;
   lastModified: Date;
 }
-export const ListSolNetworkInstanceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "ListSolNetworkInstanceMetadata",
-}) as any as S.Schema<ListSolNetworkInstanceMetadata>;
+export const ListSolNetworkInstanceMetadata =
+  GetSolFunctionInstanceMetadata as any as S.Schema<ListSolNetworkInstanceMetadata>;
 export interface ListSolNetworkInstanceInfo {
   id: string;
   arn: string;
@@ -1312,14 +1278,8 @@ export interface ListSolNetworkPackageMetadata {
   createdAt: Date;
   lastModified: Date;
 }
-export const ListSolNetworkPackageMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModified: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "ListSolNetworkPackageMetadata",
-}) as any as S.Schema<ListSolNetworkPackageMetadata>;
+export const ListSolNetworkPackageMetadata =
+  GetSolFunctionInstanceMetadata as any as S.Schema<ListSolNetworkPackageMetadata>;
 export interface ListSolNetworkPackageInfo {
   id: string;
   arn: string;
@@ -1528,7 +1488,7 @@ export const TerminateSolNetworkInstanceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateSolNetworkInstanceOutput",
 }) as any as S.Schema<TerminateSolNetworkInstanceOutput>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = VnfPkgIdList as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -1542,9 +1502,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateSolFunctionPackageInput {
   vnfPkgId: string;
   operationalState: OperationalState;
@@ -1578,9 +1536,8 @@ export interface UpdateSolNetworkModify {
   vnfInstanceId: string;
   vnfConfigurableProperties: any;
 }
-export const UpdateSolNetworkModify = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vnfInstanceId: S.String, vnfConfigurableProperties: S.Any }),
-).annotate({ identifier: "UpdateSolNetworkModify" }) as any as S.Schema<UpdateSolNetworkModify>;
+export const UpdateSolNetworkModify =
+  ModifyVnfInfoMetadata as any as S.Schema<UpdateSolNetworkModify>;
 export interface UpdateSolNetworkServiceData {
   nsdInfoId: string;
   additionalParamsForNs?: any;
@@ -1621,11 +1578,8 @@ export interface UpdateSolNetworkInstanceOutput {
   nsLcmOpOccId?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateSolNetworkInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nsLcmOpOccId: S.optional(S.String), tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "UpdateSolNetworkInstanceOutput",
-}) as any as S.Schema<UpdateSolNetworkInstanceOutput>;
+export const UpdateSolNetworkInstanceOutput =
+  TerminateSolNetworkInstanceOutput as any as S.Schema<UpdateSolNetworkInstanceOutput>;
 export interface UpdateSolNetworkPackageInput {
   nsdInfoId: string;
   nsdOperationalState: NsdOperationalState;
@@ -1684,11 +1638,8 @@ export const ValidateSolFunctionPackageContentInput = /*@__PURE__*/ S.suspend(()
 export interface ValidateSolFunctionPackageContentMetadata {
   vnfd?: FunctionArtifactMeta;
 }
-export const ValidateSolFunctionPackageContentMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vnfd: S.optional(FunctionArtifactMeta) }),
-).annotate({
-  identifier: "ValidateSolFunctionPackageContentMetadata",
-}) as any as S.Schema<ValidateSolFunctionPackageContentMetadata>;
+export const ValidateSolFunctionPackageContentMetadata =
+  PutSolFunctionPackageContentMetadata as any as S.Schema<ValidateSolFunctionPackageContentMetadata>;
 export interface ValidateSolFunctionPackageContentOutput {
   id: string;
   vnfdId: string;
@@ -1697,18 +1648,8 @@ export interface ValidateSolFunctionPackageContentOutput {
   vnfdVersion: string;
   metadata: ValidateSolFunctionPackageContentMetadata;
 }
-export const ValidateSolFunctionPackageContentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    vnfdId: S.String,
-    vnfProductName: S.String,
-    vnfProvider: S.String,
-    vnfdVersion: S.String,
-    metadata: ValidateSolFunctionPackageContentMetadata,
-  }),
-).annotate({
-  identifier: "ValidateSolFunctionPackageContentOutput",
-}) as any as S.Schema<ValidateSolFunctionPackageContentOutput>;
+export const ValidateSolFunctionPackageContentOutput =
+  PutSolFunctionPackageContentOutput as any as S.Schema<ValidateSolFunctionPackageContentOutput>;
 export interface ValidateSolNetworkPackageContentInput {
   nsdInfoId: string;
   contentType?: PackageContentType;
@@ -1735,11 +1676,8 @@ export const ValidateSolNetworkPackageContentInput = /*@__PURE__*/ S.suspend(() 
 export interface ValidateSolNetworkPackageContentMetadata {
   nsd?: NetworkArtifactMeta;
 }
-export const ValidateSolNetworkPackageContentMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nsd: S.optional(NetworkArtifactMeta) }),
-).annotate({
-  identifier: "ValidateSolNetworkPackageContentMetadata",
-}) as any as S.Schema<ValidateSolNetworkPackageContentMetadata>;
+export const ValidateSolNetworkPackageContentMetadata =
+  PutSolNetworkPackageContentMetadata as any as S.Schema<ValidateSolNetworkPackageContentMetadata>;
 export interface ValidateSolNetworkPackageContentOutput {
   id: string;
   arn: string;
@@ -1749,19 +1687,8 @@ export interface ValidateSolNetworkPackageContentOutput {
   vnfPkgIds: string[];
   metadata: ValidateSolNetworkPackageContentMetadata;
 }
-export const ValidateSolNetworkPackageContentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    arn: S.String,
-    nsdId: S.String,
-    nsdName: S.String,
-    nsdVersion: S.String,
-    vnfPkgIds: VnfPkgIdList,
-    metadata: ValidateSolNetworkPackageContentMetadata,
-  }),
-).annotate({
-  identifier: "ValidateSolNetworkPackageContentOutput",
-}) as any as S.Schema<ValidateSolNetworkPackageContentOutput>;
+export const ValidateSolNetworkPackageContentOutput =
+  PutSolNetworkPackageContentOutput as any as S.Schema<ValidateSolNetworkPackageContentOutput>;
 export type CancelSolNetworkOperationError =
   | AccessDeniedException
   | InternalServerException

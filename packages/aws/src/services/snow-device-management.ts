@@ -136,9 +136,7 @@ export const Unlock = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Unlock",
 }) as any as S.Schema<Unlock>;
 export interface Reboot {}
-export const Reboot = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Reboot",
-}) as any as S.Schema<Reboot>;
+export const Reboot = Unlock as any as S.Schema<Reboot>;
 export type Command = { unlock: Unlock; reboot?: never } | { unlock?: never; reboot: Reboot };
 export const Command = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ unlock: Unlock }),
@@ -271,7 +269,7 @@ export const DescribeDeviceOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DescribeDeviceOutput" }) as any as S.Schema<DescribeDeviceOutput>;
 export type InstanceIdsList = string[];
-export const InstanceIdsList = /*@__PURE__*/ S.Array(S.String);
+export const InstanceIdsList = TargetList as any as S.Schema<InstanceIdsList>;
 export interface DescribeDeviceEc2Input {
   managedDeviceId: string;
   instanceIds: string[];
@@ -641,11 +639,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = Unlock as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = TargetList as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -659,9 +655,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = Unlock as any as S.Schema<UntagResourceResponse>;
 export type CancelTaskError =
   | AccessDeniedException
   | InternalServerException

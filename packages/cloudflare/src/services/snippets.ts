@@ -210,14 +210,10 @@ export type RulesGetResultItem = RulesDeleteResultItem;
 export const RulesGetResultItem = RulesDeleteResultItem;
 
 export type RulesGetResultList = Array<RulesDeleteResultItem>;
-export const RulesGetResultList = /*@__PURE__*/ S.Array(
-  RulesDeleteResultItem,
-) as any as S.Schema<RulesGetResultList>;
+export const RulesGetResultList = RulesDeleteResultList as any as S.Schema<RulesGetResultList>;
 
 export type ListRulesResponse = RulesGetResultList;
-export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  RulesGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
+export const ListRulesResponse = DeleteRuleResponse as any as S.Schema<ListRulesResponse>;
 
 export interface ListSnippetsRequest {
   /** Use this field to specify the unique ID of the zone. */
@@ -316,14 +312,11 @@ export type RulesUpdateResultItem = RulesDeleteResultItem;
 export const RulesUpdateResultItem = RulesDeleteResultItem;
 
 export type RulesUpdateResultList = Array<RulesDeleteResultItem>;
-export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
-  RulesDeleteResultItem,
-) as any as S.Schema<RulesUpdateResultList>;
+export const RulesUpdateResultList =
+  RulesDeleteResultList as any as S.Schema<RulesUpdateResultList>;
 
 export type PutRuleResponse = RulesUpdateResultList;
-export const PutRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  RulesUpdateResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutRuleResponse" }) as any as S.Schema<PutRuleResponse>;
+export const PutRuleResponse = DeleteRuleResponse as any as S.Schema<PutRuleResponse>;
 
 export interface PutSnippetRequest {
   /** Use this field to specify the unique ID of the zone. */
@@ -362,13 +355,7 @@ export interface PutSnippetResponse {
   /** Indicates when the snippet was last modified. */
   modifiedOn?: string | null;
 }
-export const PutSnippetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdOn: S.String.pipe(T.Body("created_on")),
-    snippetName: S.String.pipe(T.Body("snippet_name")),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutSnippetResponse" }) as any as S.Schema<PutSnippetResponse>;
+export const PutSnippetResponse = GetSnippetResponse as any as S.Schema<PutSnippetResponse>;
 
 export type DeleteRuleError =
   | SnippetRulesNotFound

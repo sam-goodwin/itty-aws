@@ -296,22 +296,12 @@ export interface SystemTemplateSummary {
   revisionNumber?: number;
   createdAt?: Date;
 }
-export const SystemTemplateSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    arn: S.optional(S.String),
-    revisionNumber: S.optional(S.Number),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "SystemTemplateSummary" }) as any as S.Schema<SystemTemplateSummary>;
+export const SystemTemplateSummary = FlowTemplateSummary as any as S.Schema<SystemTemplateSummary>;
 export interface CreateSystemTemplateResponse {
   summary?: SystemTemplateSummary;
 }
-export const CreateSystemTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: S.optional(SystemTemplateSummary) }),
-).annotate({
-  identifier: "CreateSystemTemplateResponse",
-}) as any as S.Schema<CreateSystemTemplateResponse>;
+export const CreateSystemTemplateResponse =
+  CreateFlowTemplateResponse as any as S.Schema<CreateSystemTemplateResponse>;
 export interface DeleteFlowTemplateRequest {
   id: string;
 }
@@ -323,9 +313,8 @@ export const DeleteFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFlowTemplateRequest",
 }) as any as S.Schema<DeleteFlowTemplateRequest>;
 export interface DeleteFlowTemplateResponse {}
-export const DeleteFlowTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFlowTemplateResponse",
-}) as any as S.Schema<DeleteFlowTemplateResponse>;
+export const DeleteFlowTemplateResponse =
+  AssociateEntityToThingResponse as any as S.Schema<DeleteFlowTemplateResponse>;
 export interface DeleteNamespaceRequest {}
 export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -349,9 +338,8 @@ export const DeleteSystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSystemInstanceRequest",
 }) as any as S.Schema<DeleteSystemInstanceRequest>;
 export interface DeleteSystemInstanceResponse {}
-export const DeleteSystemInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSystemInstanceResponse",
-}) as any as S.Schema<DeleteSystemInstanceResponse>;
+export const DeleteSystemInstanceResponse =
+  AssociateEntityToThingResponse as any as S.Schema<DeleteSystemInstanceResponse>;
 export interface DeleteSystemTemplateRequest {
   id: string;
 }
@@ -363,9 +351,8 @@ export const DeleteSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSystemTemplateRequest",
 }) as any as S.Schema<DeleteSystemTemplateRequest>;
 export interface DeleteSystemTemplateResponse {}
-export const DeleteSystemTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSystemTemplateResponse",
-}) as any as S.Schema<DeleteSystemTemplateResponse>;
+export const DeleteSystemTemplateResponse =
+  AssociateEntityToThingResponse as any as S.Schema<DeleteSystemTemplateResponse>;
 export interface DeploySystemInstanceRequest {
   id?: string;
 }
@@ -397,9 +384,8 @@ export const DeprecateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeprecateFlowTemplateRequest",
 }) as any as S.Schema<DeprecateFlowTemplateRequest>;
 export interface DeprecateFlowTemplateResponse {}
-export const DeprecateFlowTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeprecateFlowTemplateResponse",
-}) as any as S.Schema<DeprecateFlowTemplateResponse>;
+export const DeprecateFlowTemplateResponse =
+  AssociateEntityToThingResponse as any as S.Schema<DeprecateFlowTemplateResponse>;
 export interface DeprecateSystemTemplateRequest {
   id: string;
 }
@@ -683,16 +669,14 @@ export const GetSystemTemplateRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSystemTemplateRevisionsRequest",
 }) as any as S.Schema<GetSystemTemplateRevisionsRequest>;
 export type SystemTemplateSummaries = SystemTemplateSummary[];
-export const SystemTemplateSummaries = /*@__PURE__*/ S.Array(SystemTemplateSummary);
+export const SystemTemplateSummaries =
+  FlowTemplateSummaries as any as S.Schema<SystemTemplateSummaries>;
 export interface GetSystemTemplateRevisionsResponse {
   summaries?: SystemTemplateSummary[];
   nextToken?: string;
 }
-export const GetSystemTemplateRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summaries: S.optional(SystemTemplateSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "GetSystemTemplateRevisionsResponse",
-}) as any as S.Schema<GetSystemTemplateRevisionsResponse>;
+export const GetSystemTemplateRevisionsResponse =
+  GetFlowTemplateRevisionsResponse as any as S.Schema<GetSystemTemplateRevisionsResponse>;
 export type UploadId = string;
 export interface GetUploadStatusRequest {
   uploadId: string;
@@ -706,7 +690,7 @@ export type UploadStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {}
 export const UploadStatus = S.String;
 
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = Urns as any as S.Schema<StringList>;
 export interface GetUploadStatusResponse {
   uploadId: string;
   uploadStatus: UploadStatus;
@@ -826,7 +810,7 @@ export const EntityFilterName = S.String;
 
 export type EntityFilterValue = string;
 export type EntityFilterValues = string[];
-export const EntityFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const EntityFilterValues = Urns as any as S.Schema<EntityFilterValues>;
 export interface EntityFilter {
   name?: EntityFilterName;
   value?: string[];
@@ -916,7 +900,7 @@ export const FlowTemplateFilterName = S.String;
 
 export type FlowTemplateFilterValue = string;
 export type FlowTemplateFilterValues = string[];
-export const FlowTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FlowTemplateFilterValues = Urns as any as S.Schema<FlowTemplateFilterValues>;
 export interface FlowTemplateFilter {
   name: FlowTemplateFilterName;
   value: string[];
@@ -944,11 +928,8 @@ export interface SearchFlowTemplatesResponse {
   summaries?: FlowTemplateSummary[];
   nextToken?: string;
 }
-export const SearchFlowTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summaries: S.optional(FlowTemplateSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "SearchFlowTemplatesResponse",
-}) as any as S.Schema<SearchFlowTemplatesResponse>;
+export const SearchFlowTemplatesResponse =
+  GetFlowTemplateRevisionsResponse as any as S.Schema<SearchFlowTemplatesResponse>;
 export type SystemInstanceFilterName =
   | "SYSTEM_TEMPLATE_ID"
   | "STATUS"
@@ -958,7 +939,7 @@ export const SystemInstanceFilterName = S.String;
 
 export type SystemInstanceFilterValue = string;
 export type SystemInstanceFilterValues = string[];
-export const SystemInstanceFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const SystemInstanceFilterValues = Urns as any as S.Schema<SystemInstanceFilterValues>;
 export interface SystemInstanceFilter {
   name?: SystemInstanceFilterName;
   value?: string[];
@@ -1001,7 +982,7 @@ export const SystemTemplateFilterName = S.String;
 
 export type SystemTemplateFilterValue = string;
 export type SystemTemplateFilterValues = string[];
-export const SystemTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const SystemTemplateFilterValues = Urns as any as S.Schema<SystemTemplateFilterValues>;
 export interface SystemTemplateFilter {
   name: SystemTemplateFilterName;
   value: string[];
@@ -1029,11 +1010,8 @@ export interface SearchSystemTemplatesResponse {
   summaries?: SystemTemplateSummary[];
   nextToken?: string;
 }
-export const SearchSystemTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summaries: S.optional(SystemTemplateSummaries), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "SearchSystemTemplatesResponse",
-}) as any as S.Schema<SearchSystemTemplatesResponse>;
+export const SearchSystemTemplatesResponse =
+  GetFlowTemplateRevisionsResponse as any as S.Schema<SearchSystemTemplatesResponse>;
 export interface SearchThingsRequest {
   entityId: string;
   nextToken?: string;
@@ -1075,9 +1053,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AssociateEntityToThingResponse as any as S.Schema<TagResourceResponse>;
 export interface UndeploySystemInstanceRequest {
   id?: string;
 }
@@ -1091,13 +1068,10 @@ export const UndeploySystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UndeploySystemInstanceResponse {
   summary?: SystemInstanceSummary;
 }
-export const UndeploySystemInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: S.optional(SystemInstanceSummary) }),
-).annotate({
-  identifier: "UndeploySystemInstanceResponse",
-}) as any as S.Schema<UndeploySystemInstanceResponse>;
+export const UndeploySystemInstanceResponse =
+  CreateSystemInstanceResponse as any as S.Schema<UndeploySystemInstanceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = Urns as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1108,9 +1082,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssociateEntityToThingResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateFlowTemplateRequest {
   id: string;
   definition: DefinitionDocument;
@@ -1128,11 +1101,8 @@ export const UpdateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFlowTemplateResponse {
   summary?: FlowTemplateSummary;
 }
-export const UpdateFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: S.optional(FlowTemplateSummary) }),
-).annotate({
-  identifier: "UpdateFlowTemplateResponse",
-}) as any as S.Schema<UpdateFlowTemplateResponse>;
+export const UpdateFlowTemplateResponse =
+  CreateFlowTemplateResponse as any as S.Schema<UpdateFlowTemplateResponse>;
 export interface UpdateSystemTemplateRequest {
   id: string;
   definition: DefinitionDocument;
@@ -1150,11 +1120,8 @@ export const UpdateSystemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSystemTemplateResponse {
   summary?: SystemTemplateSummary;
 }
-export const UpdateSystemTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ summary: S.optional(SystemTemplateSummary) }),
-).annotate({
-  identifier: "UpdateSystemTemplateResponse",
-}) as any as S.Schema<UpdateSystemTemplateResponse>;
+export const UpdateSystemTemplateResponse =
+  CreateFlowTemplateResponse as any as S.Schema<UpdateSystemTemplateResponse>;
 export type SyncWithPublicNamespace = boolean;
 export type DeprecateExistingEntities = boolean;
 export interface UploadEntityDefinitionsRequest {

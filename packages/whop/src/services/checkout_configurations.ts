@@ -187,9 +187,7 @@ export type CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledL
   PaymentMethodTypes | (string & {})
 >;
 export const CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    PaymentMethodTypes,
-  ) as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for this checkout. `null` uses the plan or platform defaults. */
 export interface CreateCheckoutConfigurationRequestPaymentMethodConfiguration {
@@ -218,18 +216,14 @@ export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisa
   PaymentMethodTypes | (string & {})
 >;
 export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList =
-  /*@__PURE__*/ S.Array(
-    PaymentMethodTypes,
-  ) as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList>;
+  CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList>;
 
 /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
 export const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    PaymentMethodTypes,
-  ) as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for the inline plan. `null` uses platform defaults. */
 export interface CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration {
@@ -413,9 +407,7 @@ export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurat
 export type CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
   Array<string>;
 export const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
 
 /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration {
@@ -449,17 +441,13 @@ export const CreateCheckoutConfigurationResponseMode = S.String;
 export type CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
   Array<string>;
 export const CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
 
 /** Payment methods explicitly enabled for checkout. */
 export type CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
   Array<string>;
 export const CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
 export interface CreateCheckoutConfigurationResponsePaymentMethodConfiguration {
@@ -657,17 +645,13 @@ export const GetCheckoutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
 export const GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList>;
 
 /** Payment methods explicitly enabled. */
 export type GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
   Array<string>;
 export const GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
 
 /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration {
@@ -679,19 +663,7 @@ export interface GetCheckoutConfigurationResponseEffectivePaymentMethodConfigura
   include_platform_defaults?: boolean;
 }
 export const GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(
-        GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList,
-      ),
-      enabled: S.optional(
-        GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList,
-      ),
-      include_platform_defaults: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration",
-  }) as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration>;
 
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type GetCheckoutConfigurationResponseMode = "payment" | "setup";
@@ -700,16 +672,12 @@ export const GetCheckoutConfigurationResponseMode = S.String;
 /** Payment methods explicitly disabled for checkout. */
 export type GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList = Array<string>;
 export const GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
 
 /** Payment methods explicitly enabled for checkout. */
 export type GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList = Array<string>;
 export const GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
 export interface GetCheckoutConfigurationResponsePaymentMethodConfiguration {
@@ -905,17 +873,13 @@ export const ListCheckoutConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
 export const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList>;
 
 /** Payment methods explicitly enabled. */
 export type ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList =
   Array<string>;
 export const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList>;
 
 /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration {
@@ -927,19 +891,7 @@ export interface ListCheckoutConfigurationsResponseDataItemEffectivePaymentMetho
   include_platform_defaults?: boolean;
 }
 export const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(
-        ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList,
-      ),
-      enabled: S.optional(
-        ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationEnabledList,
-      ),
-      include_platform_defaults: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration",
-  }) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration>;
 
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type ListCheckoutConfigurationsResponseDataItemMode = "payment" | "setup";
@@ -949,17 +901,13 @@ export const ListCheckoutConfigurationsResponseDataItemMode = S.String;
 export type ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList =
   Array<string>;
 export const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList>;
 
 /** Payment methods explicitly enabled for checkout. */
 export type ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList =
   Array<string>;
 export const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList>;
 
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
 export interface ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration {
@@ -971,19 +919,7 @@ export interface ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigur
   include_platform_defaults?: boolean;
 }
 export const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disabled: S.optional(
-        ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList,
-      ),
-      enabled: S.optional(
-        ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationEnabledList,
-      ),
-      include_platform_defaults: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration",
-  }) as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration>;
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration>;
 
 /** Billing model for the plan. */
 export type ListCheckoutConfigurationsResponseDataItemPlanPlanType = "renewal" | "one_time";

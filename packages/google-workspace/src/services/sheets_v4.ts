@@ -4034,11 +4034,7 @@ export interface DeleteSheetRequest {
   /** The ID of the sheet to delete. If the sheet is of DATA_SOURCE type, the associated DataSource is also deleted. */
   sheetId?: number;
 }
-export const DeleteSheetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sheetId: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DeleteSheetRequest" }) as any as S.Schema<DeleteSheetRequest>;
+export const DeleteSheetRequest = ClearBasicFilterRequest as any as S.Schema<DeleteSheetRequest>;
 
 /** Removes the table with the given ID from the spreadsheet. */
 export interface DeleteTableRequest {
@@ -4422,11 +4418,7 @@ export interface UnmergeCellsRequest {
   /** The range within which all cells should be unmerged. If the range spans multiple merges, all will be unmerged. The range must not partially span any merge. */
   range?: GridRange;
 }
-export const UnmergeCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(GridRange),
-  }),
-).annotate({ identifier: "UnmergeCellsRequest" }) as any as S.Schema<UnmergeCellsRequest>;
+export const UnmergeCellsRequest = RandomizeRangeRequest as any as S.Schema<UnmergeCellsRequest>;
 
 export type CutPasteRequestPasteTypeEnum =
   | "PASTE_NORMAL"
@@ -4520,11 +4512,8 @@ export interface TrimWhitespaceRequest {
   /** The range whose cells to trim. */
   range?: GridRange;
 }
-export const TrimWhitespaceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(GridRange),
-  }),
-).annotate({ identifier: "TrimWhitespaceRequest" }) as any as S.Schema<TrimWhitespaceRequest>;
+export const TrimWhitespaceRequest =
+  RandomizeRangeRequest as any as S.Schema<TrimWhitespaceRequest>;
 
 export type SpreadsheetPropertiesAutoRecalcEnum =
   | "RECALCULATION_INTERVAL_UNSPECIFIED"
@@ -5109,11 +5098,8 @@ export interface AddDimensionGroupRequest {
   /** The range over which to create a group. */
   range?: DimensionRange;
 }
-export const AddDimensionGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(DimensionRange),
-  }),
-).annotate({ identifier: "AddDimensionGroupRequest" }) as any as S.Schema<AddDimensionGroupRequest>;
+export const AddDimensionGroupRequest =
+  DeleteDimensionRequest as any as S.Schema<AddDimensionGroupRequest>;
 
 /** Moves one or more rows or columns. */
 export interface MoveDimensionRequest {
@@ -5538,22 +5524,14 @@ export interface AddTableResponse {
   /** Output only. The table that was added. */
   table?: Table;
 }
-export const AddTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    table: S.optional(Table),
-  }),
-).annotate({ identifier: "AddTableResponse" }) as any as S.Schema<AddTableResponse>;
+export const AddTableResponse = AddTableRequest as any as S.Schema<AddTableResponse>;
 
 /** The result of adding a filter view. */
 export interface AddFilterViewResponse {
   /** The newly added filter view. */
   filter?: FilterView;
 }
-export const AddFilterViewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(FilterView),
-  }),
-).annotate({ identifier: "AddFilterViewResponse" }) as any as S.Schema<AddFilterViewResponse>;
+export const AddFilterViewResponse = AddFilterViewRequest as any as S.Schema<AddFilterViewResponse>;
 
 export type PostList = Array<Post>;
 export const PostList = /*@__PURE__*/ S.Array(Post) as any as S.Schema<PostList>;
@@ -5603,11 +5581,7 @@ export interface AddBandingResponse {
   /** The banded range that was added. */
   bandedRange?: BandedRange;
 }
-export const AddBandingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bandedRange: S.optional(BandedRange),
-  }),
-).annotate({ identifier: "AddBandingResponse" }) as any as S.Schema<AddBandingResponse>;
+export const AddBandingResponse = AddBandingRequest as any as S.Schema<AddBandingResponse>;
 
 /** The result of deleting a conditional format rule. */
 export interface DeleteConditionalFormatRuleResponse {
@@ -5627,11 +5601,7 @@ export interface AddSheetResponse {
   /** The properties of the newly added sheet. */
   properties?: SheetProperties;
 }
-export const AddSheetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(SheetProperties),
-  }),
-).annotate({ identifier: "AddSheetResponse" }) as any as S.Schema<AddSheetResponse>;
+export const AddSheetResponse = AddSheetRequest as any as S.Schema<AddSheetResponse>;
 
 /** The response from updating data source. */
 export interface UpdateDataSourceResponse {
@@ -5665,13 +5635,8 @@ export interface CreateDeveloperMetadataResponse {
   /** The developer metadata that was created. */
   developerMetadata?: DeveloperMetadata;
 }
-export const CreateDeveloperMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    developerMetadata: S.optional(DeveloperMetadata),
-  }),
-).annotate({
-  identifier: "CreateDeveloperMetadataResponse",
-}) as any as S.Schema<CreateDeveloperMetadataResponse>;
+export const CreateDeveloperMetadataResponse =
+  CreateDeveloperMetadataRequest as any as S.Schema<CreateDeveloperMetadataResponse>;
 
 /** The result of creating a reply. */
 export interface AddCommentReplyResponse {
@@ -5816,11 +5781,7 @@ export interface AddChartResponse {
   /** The newly added chart. */
   chart?: EmbeddedChart;
 }
-export const AddChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chart: S.optional(EmbeddedChart),
-  }),
-).annotate({ identifier: "AddChartResponse" }) as any as S.Schema<AddChartResponse>;
+export const AddChartResponse = AddChartRequest as any as S.Schema<AddChartResponse>;
 
 export type DimensionGroupList = Array<DimensionGroup>;
 export const DimensionGroupList = /*@__PURE__*/ S.Array(
@@ -5847,34 +5808,22 @@ export interface AddDataSourceResponse {
   /** The data source that was created. */
   dataSource?: DataSource;
 }
-export const AddDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataExecutionStatus: S.optional(DataExecutionStatus),
-    dataSource: S.optional(DataSource),
-  }),
-).annotate({ identifier: "AddDataSourceResponse" }) as any as S.Schema<AddDataSourceResponse>;
+export const AddDataSourceResponse =
+  UpdateDataSourceResponse as any as S.Schema<AddDataSourceResponse>;
 
 /** The result of adding a named range. */
 export interface AddNamedRangeResponse {
   /** The named range to add. */
   namedRange?: NamedRange;
 }
-export const AddNamedRangeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namedRange: S.optional(NamedRange),
-  }),
-).annotate({ identifier: "AddNamedRangeResponse" }) as any as S.Schema<AddNamedRangeResponse>;
+export const AddNamedRangeResponse = AddNamedRangeRequest as any as S.Schema<AddNamedRangeResponse>;
 
 /** The result of adding a slicer to a spreadsheet. */
 export interface AddSlicerResponse {
   /** The newly added slicer. */
   slicer?: Slicer;
 }
-export const AddSlicerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slicer: S.optional(Slicer),
-  }),
-).annotate({ identifier: "AddSlicerResponse" }) as any as S.Schema<AddSlicerResponse>;
+export const AddSlicerResponse = AddSlicerRequest as any as S.Schema<AddSlicerResponse>;
 
 /** The result of removing duplicates in a range. */
 export interface DeleteDuplicatesResponse {
@@ -5914,11 +5863,7 @@ export interface DuplicateSheetResponse {
   /** The properties of the duplicate sheet. */
   properties?: SheetProperties;
 }
-export const DuplicateSheetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(SheetProperties),
-  }),
-).annotate({ identifier: "DuplicateSheetResponse" }) as any as S.Schema<DuplicateSheetResponse>;
+export const DuplicateSheetResponse = AddSheetRequest as any as S.Schema<DuplicateSheetResponse>;
 
 /** The execution status of refreshing one data source object. */
 export interface RefreshDataSourceObjectExecutionStatus {
@@ -5960,13 +5905,8 @@ export interface DeleteDimensionGroupResponse {
   /** All groups of a dimension after deleting a group from that dimension. */
   dimensionGroups?: DimensionGroupList;
 }
-export const DeleteDimensionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionGroups: S.optional(DimensionGroupList),
-  }),
-).annotate({
-  identifier: "DeleteDimensionGroupResponse",
-}) as any as S.Schema<DeleteDimensionGroupResponse>;
+export const DeleteDimensionGroupResponse =
+  AddDimensionGroupResponse as any as S.Schema<DeleteDimensionGroupResponse>;
 
 /** The response from deleting developer metadata. */
 export interface DeleteDeveloperMetadataResponse {
@@ -6777,13 +6717,8 @@ export interface SearchDeveloperMetadataRequest {
   /** The data filters describing the criteria used to determine which DeveloperMetadata entries to return. DeveloperMetadata matching any of the specified filters are included in the response. */
   dataFilters?: DataFilterList;
 }
-export const SearchDeveloperMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataFilters: S.optional(DataFilterList),
-  }),
-).annotate({
-  identifier: "SearchDeveloperMetadataRequest",
-}) as any as S.Schema<SearchDeveloperMetadataRequest>;
+export const SearchDeveloperMetadataRequest =
+  BatchClearValuesByDataFilterRequest as any as S.Schema<SearchDeveloperMetadataRequest>;
 
 export interface SearchSpreadsheetsDeveloperMetadataRequest {
   /** The ID of the spreadsheet to retrieve metadata from. */

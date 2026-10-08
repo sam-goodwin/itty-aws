@@ -105,11 +105,8 @@ export const DeleteLeaderboardConfigurationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteLeaderboardConfigurationsRequest>;
 
 export interface DeleteLeaderboardConfigurationsResponse {}
-export const DeleteLeaderboardConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLeaderboardConfigurationsResponse",
-}) as any as S.Schema<DeleteLeaderboardConfigurationsResponse>;
+export const DeleteLeaderboardConfigurationsResponse =
+  DeleteAchievementConfigurationsResponse as any as S.Schema<DeleteLeaderboardConfigurationsResponse>;
 
 export interface GetAchievementConfigurationsRequest {
   /** The ID of the achievement used by this method. */

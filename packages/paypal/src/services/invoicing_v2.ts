@@ -326,9 +326,8 @@ export const InvoicerInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The invoice recipient's phone numbers. Extension number is not supported. */
 export type DefinitionsPhoneDetailList = Array<PhoneDetail>;
-export const DefinitionsPhoneDetailList = /*@__PURE__*/ S.Array(
-  PhoneDetail,
-) as any as S.Schema<DefinitionsPhoneDetailList>;
+export const DefinitionsPhoneDetailList =
+  PhoneDetailList as any as S.Schema<DefinitionsPhoneDetailList>;
 
 /** The billing information of the invoice recipient. Includes name, address, email, phone, and language. */
 export interface BillingInfo {
@@ -605,9 +604,7 @@ export const AmountSummaryDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of payments registered against the invoice. */
 export interface PaymentsInput {}
-export const PaymentsInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PaymentsInput",
-}) as any as S.Schema<PaymentsInput>;
+export const PaymentsInput = CancelInvoiceResponse as any as S.Schema<PaymentsInput>;
 
 /** The invoicing refund details. Includes the refund type, date, amount, and method. */
 export type RefundsInput = PaymentsInput;
@@ -1025,9 +1022,8 @@ export const TemplateDetailInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing and shipping information. Includes name, email, address, phone, and language. */
 export type DefinitionsRecipientInfoList = Array<RecipientInfo>;
-export const DefinitionsRecipientInfoList = /*@__PURE__*/ S.Array(
-  RecipientInfo,
-) as any as S.Schema<DefinitionsRecipientInfoList>;
+export const DefinitionsRecipientInfoList =
+  RecipientInfoList as any as S.Schema<DefinitionsRecipientInfoList>;
 
 /** An array of invoice line-item information. */
 export type DefinitionsItemListInput = Array<ItemInput>;
@@ -1312,9 +1308,8 @@ export const DeleteInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInvoiceRequest" }) as any as S.Schema<DeleteInvoiceRequest>;
 
 export interface DeleteInvoiceResponse {}
-export const DeleteInvoiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInvoiceResponse",
-}) as any as S.Schema<DeleteInvoiceResponse>;
+export const DeleteInvoiceResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteInvoiceResponse>;
 
 export interface DeleteInvoicesPaymentRequest {
   /** The ID of the draft invoice to delete. */
@@ -1338,9 +1333,8 @@ export const DeleteInvoicesPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInvoicesPaymentRequest>;
 
 export interface DeleteInvoicesPaymentResponse {}
-export const DeleteInvoicesPaymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInvoicesPaymentResponse",
-}) as any as S.Schema<DeleteInvoicesPaymentResponse>;
+export const DeleteInvoicesPaymentResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteInvoicesPaymentResponse>;
 
 export interface DeleteInvoicesRefundRequest {
   /** The ID of the draft invoice to delete. */
@@ -1364,9 +1358,8 @@ export const DeleteInvoicesRefundRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInvoicesRefundRequest>;
 
 export interface DeleteInvoicesRefundResponse {}
-export const DeleteInvoicesRefundResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInvoicesRefundResponse",
-}) as any as S.Schema<DeleteInvoicesRefundResponse>;
+export const DeleteInvoicesRefundResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteInvoicesRefundResponse>;
 
 export interface DeleteTemplateRequest {
   /** The ID of the template to delete. */
@@ -1379,9 +1372,8 @@ export const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTemplateRequest" }) as any as S.Schema<DeleteTemplateRequest>;
 
 export interface DeleteTemplateResponse {}
-export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTemplateResponse",
-}) as any as S.Schema<DeleteTemplateResponse>;
+export const DeleteTemplateResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteTemplateResponse>;
 
 export interface GetConnectionRequest {}
 export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1510,9 +1502,8 @@ export const InvoicesGenerateQrCodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoicesGenerateQrCodeRequest>;
 
 export interface InvoicesGenerateQrCodeResponse {}
-export const InvoicesGenerateQrCodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InvoicesGenerateQrCodeResponse",
-}) as any as S.Schema<InvoicesGenerateQrCodeResponse>;
+export const InvoicesGenerateQrCodeResponse =
+  CancelInvoiceResponse as any as S.Schema<InvoicesGenerateQrCodeResponse>;
 
 export interface InvoicesPaymentsRequest {
   /** The ID of the draft invoice to delete. */
@@ -1612,9 +1603,8 @@ export const InvoicesRemindRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvoicesRemindRequest" }) as any as S.Schema<InvoicesRemindRequest>;
 
 export interface InvoicesRemindResponse {}
-export const InvoicesRemindResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InvoicesRemindResponse",
-}) as any as S.Schema<InvoicesRemindResponse>;
+export const InvoicesRemindResponse =
+  CancelInvoiceResponse as any as S.Schema<InvoicesRemindResponse>;
 
 export interface InvoicingGenerateNextInvoiceNumberRequest {
   /** Optional to decide the number or ID. */
@@ -1707,9 +1697,8 @@ export const AddressPortableList = /*@__PURE__*/ S.Array(
 
 /** An array of phone numbers in the user's PayPal profile. */
 export type TemplatesDefinitionsPhoneDetailList = Array<PhoneDetail>;
-export const TemplatesDefinitionsPhoneDetailList = /*@__PURE__*/ S.Array(
-  PhoneDetail,
-) as any as S.Schema<TemplatesDefinitionsPhoneDetailList>;
+export const TemplatesDefinitionsPhoneDetailList =
+  PhoneDetailList as any as S.Schema<TemplatesDefinitionsPhoneDetailList>;
 
 /** An array of details for each template. If `fields` is `none`, returns only the template name, ID, and default status. */
 export type TemplateList = Array<Template>;
@@ -1775,12 +1764,7 @@ export interface DateTimeRange {
   /** The end date of the range. Filters invoices by creation date, invoice date, due date, and payment date. <blockquote><strong>Note: The regular expression provides guidance but does not reject all invalid dates.</strong></blockquote><br/>Minimum length: 20.<br/>Maximum length: 64<br/>Pattern: <code>^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$</code> */
   end: string;
 }
-export const DateTimeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.String,
-    end: S.String,
-  }),
-).annotate({ identifier: "DateTimeRange" }) as any as S.Schema<DateTimeRange>;
+export const DateTimeRange = DateRange as any as S.Schema<DateTimeRange>;
 
 /** A CSV file of fields to return for the user, if available. Because the invoice object can be very large, field filtering is required. Valid collection fields are <code>items</code>, <code>payments</code>, <code>refunds</code>, <code>additional_recipients_info</code>, and <code>attachments</code>. */
 export type FieldsList = Array<string>;

@@ -91,9 +91,7 @@ export const MacaroonNonceKidList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MacaroonNonceKidList>;
 
 export type MacaroonNonceRndList = Array<number>;
-export const MacaroonNonceRndList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MacaroonNonceRndList>;
+export const MacaroonNonceRndList = MacaroonNonceKidList as any as S.Schema<MacaroonNonceRndList>;
 
 export interface MacaroonNonce {
   kid?: MacaroonNonceKidList;
@@ -109,9 +107,8 @@ export const MacaroonNonce = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MacaroonNonce" }) as any as S.Schema<MacaroonNonce>;
 
 export type RootVerifiedTokenPermissionTokenList = Array<number>;
-export const RootVerifiedTokenPermissionTokenList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RootVerifiedTokenPermissionTokenList>;
+export const RootVerifiedTokenPermissionTokenList =
+  MacaroonNonceKidList as any as S.Schema<RootVerifiedTokenPermissionTokenList>;
 
 export interface RootVerifiedToken {
   caveats?: MacaroonCaveatSet;
@@ -204,9 +201,8 @@ export const AuthorizeTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizeTokenRequest" }) as any as S.Schema<AuthorizeTokenRequest>;
 
 export type FlyioAccessCommandList = Array<string>;
-export const FlyioAccessCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyioAccessCommandList>;
+export const FlyioAccessCommandList =
+  MainTokenAccessCommandList as any as S.Schema<FlyioAccessCommandList>;
 
 export interface FlyioAccess {
   action?: RessetAction;
@@ -328,19 +324,15 @@ export type DNSRecordsAList = Array<string>;
 export const DNSRecordsAList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DNSRecordsAList>;
 
 export type DNSRecordsAaaaList = Array<string>;
-export const DNSRecordsAaaaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordsAaaaList>;
+export const DNSRecordsAaaaList = MainTokenAccessCommandList as any as S.Schema<DNSRecordsAaaaList>;
 
 export type DNSRecordsCnameList = Array<string>;
-export const DNSRecordsCnameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordsCnameList>;
+export const DNSRecordsCnameList =
+  MainTokenAccessCommandList as any as S.Schema<DNSRecordsCnameList>;
 
 export type DNSRecordsResolvedAddressesList = Array<string>;
-export const DNSRecordsResolvedAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordsResolvedAddressesList>;
+export const DNSRecordsResolvedAddressesList =
+  MainTokenAccessCommandList as any as S.Schema<DNSRecordsResolvedAddressesList>;
 
 export interface DNSRecords {
   a?: DNSRecordsAList;
@@ -364,14 +356,12 @@ export const DNSRecords = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DNSRecords" }) as any as S.Schema<DNSRecords>;
 
 export type DNSRequirementsAList = Array<string>;
-export const DNSRequirementsAList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRequirementsAList>;
+export const DNSRequirementsAList =
+  MainTokenAccessCommandList as any as S.Schema<DNSRequirementsAList>;
 
 export type DNSRequirementsAaaaList = Array<string>;
-export const DNSRequirementsAaaaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRequirementsAaaaList>;
+export const DNSRequirementsAaaaList =
+  MainTokenAccessCommandList as any as S.Schema<DNSRequirementsAaaaList>;
 
 export interface AcmeChallenge {
   name?: string;
@@ -546,14 +536,12 @@ export const CreateAppAcmeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppAcmeCertificateRequest>;
 
 export type CertificateDetailCertificatesList = Array<CertificateEntry>;
-export const CertificateDetailCertificatesList = /*@__PURE__*/ S.Array(
-  CertificateEntry,
-) as any as S.Schema<CertificateDetailCertificatesList>;
+export const CertificateDetailCertificatesList =
+  CertificateCheckResponseCertificatesList as any as S.Schema<CertificateDetailCertificatesList>;
 
 export type CertificateDetailValidationErrorsList = Array<CertificateValidationError>;
-export const CertificateDetailValidationErrorsList = /*@__PURE__*/ S.Array(
-  CertificateValidationError,
-) as any as S.Schema<CertificateDetailValidationErrorsList>;
+export const CertificateDetailValidationErrorsList =
+  CertificateCheckResponseValidationErrorsList as any as S.Schema<CertificateDetailValidationErrorsList>;
 
 export interface CertificateDetail {
   acme_requested?: boolean;
@@ -717,9 +705,8 @@ export const FlyMachineCacheDrive = /*@__PURE__*/ S.suspend(() =>
 
 /** The header value */
 export type FlyMachineHTTPHeaderValuesList = Array<string>;
-export const FlyMachineHTTPHeaderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineHTTPHeaderValuesList>;
+export const FlyMachineHTTPHeaderValuesList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineHTTPHeaderValuesList>;
 
 /** For http checks, an array of objects with string field Name and array of strings field Values. The key/value pairs specify header and header values that will get passed with the check call. */
 export interface FlyMachineHTTPHeader {
@@ -795,9 +782,8 @@ export const FlyMachineConfigChecksMap = /*@__PURE__*/ S.Record(
 
 /** CmdOverride is used to override the default command of the image. */
 export type FlyContainerConfigCmdList = Array<string>;
-export const FlyContainerConfigCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyContainerConfigCmdList>;
+export const FlyContainerConfigCmdList =
+  MainTokenAccessCommandList as any as S.Schema<FlyContainerConfigCmdList>;
 
 export type FlyContainerDependencyCondition = "exited_successfully" | "healthy" | "started";
 export const FlyContainerDependencyCondition = S.String;
@@ -821,9 +807,8 @@ export const FlyContainerConfigDependsOnList = /*@__PURE__*/ S.Array(
 
 /** EntrypointOverride is used to override the default entrypoint of the image. */
 export type FlyContainerConfigEntrypointList = Array<string>;
-export const FlyContainerConfigEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyContainerConfigEntrypointList>;
+export const FlyContainerConfigEntrypointList =
+  MainTokenAccessCommandList as any as S.Schema<FlyContainerConfigEntrypointList>;
 
 /** ExtraEnv is used to add additional environment variables to the container. */
 export type FlyContainerConfigEnvMap = { [key: string]: string | undefined };
@@ -858,9 +843,8 @@ export const FlyContainerConfigEnvFromList = /*@__PURE__*/ S.Array(
 
 /** Image Config overrides - these fields are used to override the image configuration. If not provided, the image configuration will be used. ExecOverride is used to override the default command of the image. */
 export type FlyContainerConfigExecList = Array<string>;
-export const FlyContainerConfigExecList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyContainerConfigExecList>;
+export const FlyContainerConfigExecList =
+  MainTokenAccessCommandList as any as S.Schema<FlyContainerConfigExecList>;
 
 /** A file that will be written to the Machine. One of RawValue or SecretName must be set. */
 export interface FlyFile {
@@ -893,9 +877,8 @@ export const FlyContainerConfigFilesList = /*@__PURE__*/ S.Array(
 
 /** The command to run to check the health of the container (e.g. ["cat", "/tmp/healthy"]) */
 export type FlyExecHealthcheckCommandList = Array<string>;
-export const FlyExecHealthcheckCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyExecHealthcheckCommandList>;
+export const FlyExecHealthcheckCommandList =
+  MainTokenAccessCommandList as any as S.Schema<FlyExecHealthcheckCommandList>;
 
 export interface FlyExecHealthcheck {
   /** The command to run to check the health of the container (e.g. ["cat", "/tmp/healthy"]) */
@@ -909,9 +892,8 @@ export const FlyExecHealthcheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional headers to send with the request */
 export type FlyHTTPHealthcheckHeadersList = Array<FlyMachineHTTPHeader>;
-export const FlyHTTPHealthcheckHeadersList = /*@__PURE__*/ S.Array(
-  FlyMachineHTTPHeader,
-) as any as S.Schema<FlyHTTPHealthcheckHeadersList>;
+export const FlyHTTPHealthcheckHeadersList =
+  FlyMachineCheckHeadersList as any as S.Schema<FlyHTTPHealthcheckHeadersList>;
 
 export type FlyContainerHealthcheckScheme = "http" | "https";
 export const FlyContainerHealthcheckScheme = S.String;
@@ -1134,9 +1116,8 @@ export const FlyDNSConfigDnsForwardRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlyDNSConfigDnsForwardRulesList>;
 
 export type FlyDNSConfigNameserversList = Array<string>;
-export const FlyDNSConfigNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyDNSConfigNameserversList>;
+export const FlyDNSConfigNameserversList =
+  MainTokenAccessCommandList as any as S.Schema<FlyDNSConfigNameserversList>;
 
 export interface FlyDnsOption {
   name?: string;
@@ -1155,9 +1136,8 @@ export const FlyDNSConfigOptionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlyDNSConfigOptionsList>;
 
 export type FlyDNSConfigSearchesList = Array<string>;
-export const FlyDNSConfigSearchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyDNSConfigSearchesList>;
+export const FlyDNSConfigSearchesList =
+  MainTokenAccessCommandList as any as S.Schema<FlyDNSConfigSearchesList>;
 
 export interface FlyDNSConfig {
   dns_forward_rules?: FlyDNSConfigDnsForwardRulesList;
@@ -1182,29 +1162,24 @@ export const FlyDNSConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** An object filled with key/value pairs to be set as environment variables */
 export type FlyMachineConfigEnvMap = { [key: string]: string | undefined };
-export const FlyMachineConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlyMachineConfigEnvMap>;
+export const FlyMachineConfigEnvMap =
+  FlyContainerConfigEnvMap as any as S.Schema<FlyMachineConfigEnvMap>;
 
 export type FlyMachineConfigFilesList = Array<FlyFile>;
-export const FlyMachineConfigFilesList = /*@__PURE__*/ S.Array(
-  FlyFile,
-) as any as S.Schema<FlyMachineConfigFilesList>;
+export const FlyMachineConfigFilesList =
+  FlyContainerConfigFilesList as any as S.Schema<FlyMachineConfigFilesList>;
 
 export type FlyMachineGuestKernelArgsList = Array<string>;
-export const FlyMachineGuestKernelArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineGuestKernelArgsList>;
+export const FlyMachineGuestKernelArgsList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineGuestKernelArgsList>;
 
 /** Deprecated: use MachineConfig.Rootfs instead */
 export type FlyMachineGuestPersistRootfs = "never" | "always" | "restart";
 export const FlyMachineGuestPersistRootfs = S.String;
 
 export type FlyMachineGuestRequiredHostFeaturesList = Array<string>;
-export const FlyMachineGuestRequiredHostFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineGuestRequiredHostFeaturesList>;
+export const FlyMachineGuestRequiredHostFeaturesList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineGuestRequiredHostFeaturesList>;
 
 export interface FlyMachineGuest {
   cpu_kind?: string;
@@ -1235,24 +1210,20 @@ export const FlyMachineGuest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineGuest" }) as any as S.Schema<FlyMachineGuest>;
 
 export type FlyMachineInitCmdList = Array<string>;
-export const FlyMachineInitCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitCmdList>;
+export const FlyMachineInitCmdList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineInitCmdList>;
 
 export type FlyMachineInitEntrypointList = Array<string>;
-export const FlyMachineInitEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitEntrypointList>;
+export const FlyMachineInitEntrypointList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineInitEntrypointList>;
 
 export type FlyMachineInitExecList = Array<string>;
-export const FlyMachineInitExecList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitExecList>;
+export const FlyMachineInitExecList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineInitExecList>;
 
 export type FlyMachineInitKernelArgsList = Array<string>;
-export const FlyMachineInitKernelArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineInitKernelArgsList>;
+export const FlyMachineInitKernelArgsList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineInitKernelArgsList>;
 
 export interface FlyMachineInit {
   cmd?: FlyMachineInitCmdList;
@@ -1274,10 +1245,8 @@ export const FlyMachineInit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyMachineInit" }) as any as S.Schema<FlyMachineInit>;
 
 export type FlyMachineConfigMetadataMap = { [key: string]: string | undefined };
-export const FlyMachineConfigMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlyMachineConfigMetadataMap>;
+export const FlyMachineConfigMetadataMap =
+  FlyContainerConfigEnvMap as any as S.Schema<FlyMachineConfigMetadataMap>;
 
 export interface FlyMachineMetrics {
   https?: boolean;
@@ -1327,37 +1296,30 @@ export const FlyMachineConfigMountsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlyMachineConfigMountsList>;
 
 export type FlyMachineProcessCmdList = Array<string>;
-export const FlyMachineProcessCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineProcessCmdList>;
+export const FlyMachineProcessCmdList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineProcessCmdList>;
 
 export type FlyMachineProcessEntrypointList = Array<string>;
-export const FlyMachineProcessEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineProcessEntrypointList>;
+export const FlyMachineProcessEntrypointList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineProcessEntrypointList>;
 
 export type FlyMachineProcessEnvMap = { [key: string]: string | undefined };
-export const FlyMachineProcessEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FlyMachineProcessEnvMap>;
+export const FlyMachineProcessEnvMap =
+  FlyContainerConfigEnvMap as any as S.Schema<FlyMachineProcessEnvMap>;
 
 /** EnvFrom can be provided to set environment variables from machine fields. */
 export type FlyMachineProcessEnvFromList = Array<FlyEnvFrom>;
-export const FlyMachineProcessEnvFromList = /*@__PURE__*/ S.Array(
-  FlyEnvFrom,
-) as any as S.Schema<FlyMachineProcessEnvFromList>;
+export const FlyMachineProcessEnvFromList =
+  FlyContainerConfigEnvFromList as any as S.Schema<FlyMachineProcessEnvFromList>;
 
 export type FlyMachineProcessExecList = Array<string>;
-export const FlyMachineProcessExecList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineProcessExecList>;
+export const FlyMachineProcessExecList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineProcessExecList>;
 
 /** Secrets can be provided at the process level to explicitly indicate which secrets should be used for the process. If not provided, the secrets provided at the machine level will be used. */
 export type FlyMachineProcessSecretsList = Array<FlyMachineSecret>;
-export const FlyMachineProcessSecretsList = /*@__PURE__*/ S.Array(
-  FlyMachineSecret,
-) as any as S.Schema<FlyMachineProcessSecretsList>;
+export const FlyMachineProcessSecretsList =
+  FlyContainerConfigSecretsList as any as S.Schema<FlyMachineProcessSecretsList>;
 
 export interface FlyMachineProcess {
   cmd?: FlyMachineProcessCmdList;
@@ -1416,9 +1378,8 @@ export const FlyMachineServiceAutostop: S.Codec<FlyMachineServiceAutostop> = /*@
 ]);
 
 export type FlyMachineServiceCheckHeadersList = Array<FlyMachineHTTPHeader>;
-export const FlyMachineServiceCheckHeadersList = /*@__PURE__*/ S.Array(
-  FlyMachineHTTPHeader,
-) as any as S.Schema<FlyMachineServiceCheckHeadersList>;
+export const FlyMachineServiceCheckHeadersList =
+  FlyMachineCheckHeadersList as any as S.Schema<FlyMachineServiceCheckHeadersList>;
 
 export interface FlyMachineServiceCheck {
   /** The time to wait after a VM starts before checking its health */
@@ -1481,9 +1442,8 @@ export const FlyMachineServiceConcurrency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlyMachineServiceConcurrency>;
 
 export type FlyMachinePortHandlersList = Array<string>;
-export const FlyMachinePortHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachinePortHandlersList>;
+export const FlyMachinePortHandlersList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachinePortHandlersList>;
 
 /** Currently either "cookie" or "header" */
 export type FlyReplayCacheType = "cookie" | "header";
@@ -1559,14 +1519,12 @@ export const FlyProxyProtoOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlyProxyProtoOptions" }) as any as S.Schema<FlyProxyProtoOptions>;
 
 export type FlyTLSOptionsAlpnList = Array<string>;
-export const FlyTLSOptionsAlpnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyTLSOptionsAlpnList>;
+export const FlyTLSOptionsAlpnList =
+  MainTokenAccessCommandList as any as S.Schema<FlyTLSOptionsAlpnList>;
 
 export type FlyTLSOptionsVersionsList = Array<string>;
-export const FlyTLSOptionsVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyTLSOptionsVersionsList>;
+export const FlyTLSOptionsVersionsList =
+  MainTokenAccessCommandList as any as S.Schema<FlyTLSOptionsVersionsList>;
 
 export interface FlyTLSOptions {
   alpn?: FlyTLSOptionsAlpnList;
@@ -1655,9 +1613,8 @@ export const FlyMachineSpot = /*@__PURE__*/ S.suspend(() =>
 
 /** Standbys enable a machine to be a standby for another. In the event of a hardware failure, the standby machine will be started. */
 export type FlyMachineConfigStandbysList = Array<string>;
-export const FlyMachineConfigStandbysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlyMachineConfigStandbysList>;
+export const FlyMachineConfigStandbysList =
+  MainTokenAccessCommandList as any as S.Schema<FlyMachineConfigStandbysList>;
 
 export interface FlyStatic {
   guest_path: string;
@@ -1816,18 +1773,14 @@ export const MachineEventsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MachineEventsList>;
 
 export type MachineHostFeaturesList = Array<string>;
-export const MachineHostFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MachineHostFeaturesList>;
+export const MachineHostFeaturesList =
+  MainTokenAccessCommandList as any as S.Schema<MachineHostFeaturesList>;
 
 export type MachineHostStatus = "ok" | "unknown" | "unreachable";
 export const MachineHostStatus = S.String;
 
 export type ImageRefLabelsMap = { [key: string]: string | undefined };
-export const ImageRefLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageRefLabelsMap>;
+export const ImageRefLabelsMap = FlyContainerConfigEnvMap as any as S.Schema<ImageRefLabelsMap>;
 
 export interface ImageRef {
   digest?: string;
@@ -2231,9 +2184,8 @@ export const CreatePostgresBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostgresBackupRequest>;
 
 export interface CreatePostgresBackupResponse {}
-export const CreatePostgresBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePostgresBackupResponse",
-}) as any as S.Schema<CreatePostgresBackupResponse>;
+export const CreatePostgresBackupResponse =
+  CordonMachineResponse as any as S.Schema<CreatePostgresBackupResponse>;
 
 export interface CreatePostgresDatabaseRequest {
   /** Managed Postgres Cluster ID */
@@ -2256,11 +2208,7 @@ export interface PostgresDatabase {
   /** Database name. */
   name?: string;
 }
-export const PostgresDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "PostgresDatabase" }) as any as S.Schema<PostgresDatabase>;
+export const PostgresDatabase = PostgresAttachedApp as any as S.Schema<PostgresDatabase>;
 
 export interface PostgresDatabaseResponse {
   data?: PostgresDatabase;
@@ -2398,17 +2346,15 @@ export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVolumeRequest" }) as any as S.Schema<CreateVolumeRequest>;
 
 export type VolumeHostFeaturesList = Array<string>;
-export const VolumeHostFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeHostFeaturesList>;
+export const VolumeHostFeaturesList =
+  MainTokenAccessCommandList as any as S.Schema<VolumeHostFeaturesList>;
 
 export type VolumeHostStatus = "ok" | "unknown" | "unreachable";
 export const VolumeHostStatus = S.String;
 
 export type VolumeRequiredHostFeaturesList = Array<string>;
-export const VolumeRequiredHostFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeRequiredHostFeaturesList>;
+export const VolumeRequiredHostFeaturesList =
+  MainTokenAccessCommandList as any as S.Schema<VolumeRequiredHostFeaturesList>;
 
 export type VolumeType = "local" | "cache";
 export const VolumeType = S.String;
@@ -2484,9 +2430,8 @@ export const CreateVolumeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVolumeSnapshotRequest>;
 
 export interface CreateVolumeSnapshotResponse {}
-export const CreateVolumeSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateVolumeSnapshotResponse",
-}) as any as S.Schema<CreateVolumeSnapshotResponse>;
+export const CreateVolumeSnapshotResponse =
+  CordonMachineResponse as any as S.Schema<CreateVolumeSnapshotResponse>;
 
 export interface DecryptSecretKeyRequest {
   /** Fly App Name */
@@ -2534,9 +2479,7 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAppRequest" }) as any as S.Schema<DeleteAppRequest>;
 
 export interface DeleteAppResponse {}
-export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppResponse",
-}) as any as S.Schema<DeleteAppResponse>;
+export const DeleteAppResponse = CordonMachineResponse as any as S.Schema<DeleteAppResponse>;
 
 export interface DeleteAppAcmeCertificateRequest {
   /** Fly App Name */
@@ -2577,9 +2520,8 @@ export const DeleteAppCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppCertificateRequest>;
 
 export interface DeleteAppCertificateResponse {}
-export const DeleteAppCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppCertificateResponse",
-}) as any as S.Schema<DeleteAppCertificateResponse>;
+export const DeleteAppCertificateResponse =
+  CordonMachineResponse as any as S.Schema<DeleteAppCertificateResponse>;
 
 export interface DeleteAppCustomCertificateRequest {
   /** Fly App Name */
@@ -2603,15 +2545,13 @@ export const DeleteAppCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppCustomCertificateRequest>;
 
 export type DestroyCustomCertificateResponseCertificatesList = Array<CertificateEntry>;
-export const DestroyCustomCertificateResponseCertificatesList = /*@__PURE__*/ S.Array(
-  CertificateEntry,
-) as any as S.Schema<DestroyCustomCertificateResponseCertificatesList>;
+export const DestroyCustomCertificateResponseCertificatesList =
+  CertificateCheckResponseCertificatesList as any as S.Schema<DestroyCustomCertificateResponseCertificatesList>;
 
 export type DestroyCustomCertificateResponseValidationErrorsList =
   Array<CertificateValidationError>;
-export const DestroyCustomCertificateResponseValidationErrorsList = /*@__PURE__*/ S.Array(
-  CertificateValidationError,
-) as any as S.Schema<DestroyCustomCertificateResponseValidationErrorsList>;
+export const DestroyCustomCertificateResponseValidationErrorsList =
+  CertificateCheckResponseValidationErrorsList as any as S.Schema<DestroyCustomCertificateResponseValidationErrorsList>;
 
 export interface DestroyCustomCertificateResponse {
   acme_requested?: boolean;
@@ -2660,9 +2600,8 @@ export const DeleteAppIPAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppIPAssignmentRequest>;
 
 export interface DeleteAppIPAssignmentResponse {}
-export const DeleteAppIPAssignmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppIPAssignmentResponse",
-}) as any as S.Schema<DeleteAppIPAssignmentResponse>;
+export const DeleteAppIPAssignmentResponse =
+  CordonMachineResponse as any as S.Schema<DeleteAppIPAssignmentResponse>;
 
 export interface DeleteMachineRequest {
   /** Fly App Name */
@@ -2685,9 +2624,8 @@ export const DeleteMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMachineRequest" }) as any as S.Schema<DeleteMachineRequest>;
 
 export interface DeleteMachineResponse {}
-export const DeleteMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMachineResponse",
-}) as any as S.Schema<DeleteMachineResponse>;
+export const DeleteMachineResponse =
+  CordonMachineResponse as any as S.Schema<DeleteMachineResponse>;
 
 export interface DeleteMachineMetadataRequest {
   /** Fly App Name */
@@ -2714,9 +2652,8 @@ export const DeleteMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMachineMetadataRequest>;
 
 export interface DeleteMachineMetadataResponse {}
-export const DeleteMachineMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMachineMetadataResponse",
-}) as any as S.Schema<DeleteMachineMetadataResponse>;
+export const DeleteMachineMetadataResponse =
+  CordonMachineResponse as any as S.Schema<DeleteMachineMetadataResponse>;
 
 export interface DeletePostgresRequest {
   /** Managed Postgres Cluster ID */
@@ -2729,9 +2666,8 @@ export const DeletePostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePostgresRequest" }) as any as S.Schema<DeletePostgresRequest>;
 
 export interface DeletePostgresResponse {}
-export const DeletePostgresResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePostgresResponse",
-}) as any as S.Schema<DeletePostgresResponse>;
+export const DeletePostgresResponse =
+  CordonMachineResponse as any as S.Schema<DeletePostgresResponse>;
 
 export interface DeletePostgresAttachmentRequest {
   /** Managed Postgres Cluster ID */
@@ -2804,9 +2740,8 @@ export const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePostgresUserRequest>;
 
 export interface DeletePostgresUserResponse {}
-export const DeletePostgresUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePostgresUserResponse",
-}) as any as S.Schema<DeletePostgresUserResponse>;
+export const DeletePostgresUserResponse =
+  CordonMachineResponse as any as S.Schema<DeletePostgresUserResponse>;
 
 export interface DeleteSecretRequest {
   /** Fly App Name */
@@ -2855,12 +2790,8 @@ export interface DeleteSecretkeyResponse {
   Version?: number;
   version?: number;
 }
-export const DeleteSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Version: S.optional(S.Number),
-    version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DeleteSecretkeyResponse" }) as any as S.Schema<DeleteSecretkeyResponse>;
+export const DeleteSecretkeyResponse =
+  DeleteAppSecretResponse as any as S.Schema<DeleteSecretkeyResponse>;
 
 export interface DeleteVolumeRequest {
   /** Fly App Name */
@@ -2903,11 +2834,8 @@ export const DisablePostgresExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisablePostgresExtensionRequest>;
 
 export interface DisablePostgresExtensionResponse {}
-export const DisablePostgresExtensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisablePostgresExtensionResponse",
-}) as any as S.Schema<DisablePostgresExtensionResponse>;
+export const DisablePostgresExtensionResponse =
+  DeletePostgresAttachmentResponse as any as S.Schema<DisablePostgresExtensionResponse>;
 
 export interface EnablePostgresExtensionRequest {
   /** Managed Postgres Cluster ID */
@@ -2980,9 +2908,8 @@ export const EncryptSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EncryptSecretkeyResponse" }) as any as S.Schema<EncryptSecretkeyResponse>;
 
 export type ExecMachineRequestCommandList = Array<string>;
-export const ExecMachineRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExecMachineRequestCommandList>;
+export const ExecMachineRequestCommandList =
+  MainTokenAccessCommandList as any as S.Schema<ExecMachineRequestCommandList>;
 
 export interface ExecMachineRequest {
   /** Fly App Name */
@@ -3070,9 +2997,8 @@ export const ForkPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForkPostgresRequest" }) as any as S.Schema<ForkPostgresRequest>;
 
 export type GenerateSecretKeyRequestValueList = Array<number>;
-export const GenerateSecretKeyRequestValueList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GenerateSecretKeyRequestValueList>;
+export const GenerateSecretKeyRequestValueList =
+  MacaroonNonceKidList as any as S.Schema<GenerateSecretKeyRequestValueList>;
 
 export interface GenerateSecretKeyRequest {
   /** Fly App Name */
@@ -3186,9 +3112,8 @@ export const GetCurrentTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCurrentTokenRequest" }) as any as S.Schema<GetCurrentTokenRequest>;
 
 export type MainTokenInfoAppsList = Array<string>;
-export const MainTokenInfoAppsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MainTokenInfoAppsList>;
+export const MainTokenInfoAppsList =
+  MainTokenAccessCommandList as any as S.Schema<MainTokenInfoAppsList>;
 
 export interface MainTokenInfo {
   apps?: MainTokenInfoAppsList;
@@ -3306,10 +3231,8 @@ export const GetMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMachineMetadataRequest>;
 
 export type GetMachineMetadataResponseBodyMap = { [key: string]: string | undefined };
-export const GetMachineMetadataResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetMachineMetadataResponseBodyMap>;
+export const GetMachineMetadataResponseBodyMap =
+  FlyContainerConfigEnvMap as any as S.Schema<GetMachineMetadataResponseBodyMap>;
 
 export type GetMachineMetadataResponse = GetMachineMetadataResponseBodyMap;
 export const GetMachineMetadataResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3732,9 +3655,8 @@ export const ListMachineEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMachineEventsRequest" }) as any as S.Schema<ListMachineEventsRequest>;
 
 export type ListMachineEventsResponseBodyList = Array<MachineEvent>;
-export const ListMachineEventsResponseBodyList = /*@__PURE__*/ S.Array(
-  MachineEvent,
-) as any as S.Schema<ListMachineEventsResponseBodyList>;
+export const ListMachineEventsResponseBodyList =
+  MachineEventsList as any as S.Schema<ListMachineEventsResponseBodyList>;
 
 export type ListMachineEventsResponse = ListMachineEventsResponseBodyList;
 export const ListMachineEventsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3893,15 +3815,12 @@ export const ListMachinesOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMachinesOrgRequest" }) as any as S.Schema<ListMachinesOrgRequest>;
 
 export type OrgMachinesResponseErrorRegionsList = Array<string>;
-export const OrgMachinesResponseErrorRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgMachinesResponseErrorRegionsList>;
+export const OrgMachinesResponseErrorRegionsList =
+  MainTokenAccessCommandList as any as S.Schema<OrgMachinesResponseErrorRegionsList>;
 
 export type MachineOverviewConfigMetadataMap = { [key: string]: string | undefined };
-export const MachineOverviewConfigMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MachineOverviewConfigMetadataMap>;
+export const MachineOverviewConfigMetadataMap =
+  FlyContainerConfigEnvMap as any as S.Schema<MachineOverviewConfigMetadataMap>;
 
 export interface MachineOverviewConfig {
   guest?: FlyMachineGuest;
@@ -4020,9 +3939,8 @@ export const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Apps attached to the cluster. */
 export type PostgresClusterSummaryAttachedAppsList = Array<PostgresAttachedApp>;
-export const PostgresClusterSummaryAttachedAppsList = /*@__PURE__*/ S.Array(
-  PostgresAttachedApp,
-) as any as S.Schema<PostgresClusterSummaryAttachedAppsList>;
+export const PostgresClusterSummaryAttachedAppsList =
+  PostgresClusterAttachedAppsList as any as S.Schema<PostgresClusterSummaryAttachedAppsList>;
 
 /** Plan slug. */
 export type PostgresClusterSummaryPlan = "basic" | "starter" | "launch" | "scale" | "Performance";
@@ -4157,9 +4075,8 @@ export const ListPostgresDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPostgresDatabasesRequest>;
 
 export type ListPostgresDatabasesResponseDataList = Array<PostgresDatabase>;
-export const ListPostgresDatabasesResponseDataList = /*@__PURE__*/ S.Array(
-  PostgresDatabase,
-) as any as S.Schema<ListPostgresDatabasesResponseDataList>;
+export const ListPostgresDatabasesResponseDataList =
+  PostgresClusterAttachedAppsList as any as S.Schema<ListPostgresDatabasesResponseDataList>;
 
 export interface ListPostgresDatabasesResponse {
   data?: ListPostgresDatabasesResponseDataList;
@@ -4444,17 +4361,15 @@ export const ListVolumesOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVolumesOrgRequest" }) as any as S.Schema<ListVolumesOrgRequest>;
 
 export type OrgVolumeHostFeaturesList = Array<string>;
-export const OrgVolumeHostFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgVolumeHostFeaturesList>;
+export const OrgVolumeHostFeaturesList =
+  MainTokenAccessCommandList as any as S.Schema<OrgVolumeHostFeaturesList>;
 
 export type OrgVolumeHostStatus = "ok" | "unknown" | "unreachable";
 export const OrgVolumeHostStatus = S.String;
 
 export type OrgVolumeRequiredHostFeaturesList = Array<string>;
-export const OrgVolumeRequiredHostFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgVolumeRequiredHostFeaturesList>;
+export const OrgVolumeRequiredHostFeaturesList =
+  MainTokenAccessCommandList as any as S.Schema<OrgVolumeRequiredHostFeaturesList>;
 
 export type OrgVolumeType = "local" | "cache";
 export const OrgVolumeType = S.String;
@@ -4557,15 +4472,12 @@ export const MachinesReleaseLeaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinesReleaseLeaseRequest>;
 
 export interface MachinesReleaseLeaseResponse {}
-export const MachinesReleaseLeaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MachinesReleaseLeaseResponse",
-}) as any as S.Schema<MachinesReleaseLeaseResponse>;
+export const MachinesReleaseLeaseResponse =
+  CordonMachineResponse as any as S.Schema<MachinesReleaseLeaseResponse>;
 
 export type PatchMachineMetadataRequestMetadataMap = { [key: string]: string | undefined };
-export const PatchMachineMetadataRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchMachineMetadataRequestMetadataMap>;
+export const PatchMachineMetadataRequestMetadataMap =
+  FlyContainerConfigEnvMap as any as S.Schema<PatchMachineMetadataRequestMetadataMap>;
 
 export interface PatchMachineMetadataRequest {
   /** Fly App Name */
@@ -4595,9 +4507,8 @@ export const PatchMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchMachineMetadataRequest>;
 
 export interface PatchMachineMetadataResponse {}
-export const PatchMachineMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchMachineMetadataResponse",
-}) as any as S.Schema<PatchMachineMetadataResponse>;
+export const PatchMachineMetadataResponse =
+  CordonMachineResponse as any as S.Schema<PatchMachineMetadataResponse>;
 
 export interface PostgresQueriesActiveRequest {
   /** Managed Postgres Cluster ID */
@@ -4821,9 +4732,8 @@ export const RequestKmsTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestKmsTokenRequest" }) as any as S.Schema<RequestKmsTokenRequest>;
 
 export interface RequestKmsTokenResponse {}
-export const RequestKmsTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RequestKmsTokenResponse",
-}) as any as S.Schema<RequestKmsTokenResponse>;
+export const RequestKmsTokenResponse =
+  CordonMachineResponse as any as S.Schema<RequestKmsTokenResponse>;
 
 export interface RequestOidcTokenRequest {
   aud?: string;
@@ -4837,9 +4747,8 @@ export const RequestOidcTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestOidcTokenRequest" }) as any as S.Schema<RequestOidcTokenRequest>;
 
 export interface RequestOidcTokenResponse {}
-export const RequestOidcTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RequestOidcTokenResponse",
-}) as any as S.Schema<RequestOidcTokenResponse>;
+export const RequestOidcTokenResponse =
+  CordonMachineResponse as any as S.Schema<RequestOidcTokenResponse>;
 
 export type RestartMachineRequestSignal =
   | "SIGHUP"
@@ -4875,9 +4784,8 @@ export const RestartMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartMachineRequest" }) as any as S.Schema<RestartMachineRequest>;
 
 export interface RestartMachineResponse {}
-export const RestartMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartMachineResponse",
-}) as any as S.Schema<RestartMachineResponse>;
+export const RestartMachineResponse =
+  CordonMachineResponse as any as S.Schema<RestartMachineResponse>;
 
 export interface RestorePostgresRequest {
   /** Managed Postgres Cluster ID */
@@ -4925,13 +4833,8 @@ export const RotatePostgresUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RotatePostgresPasswordResponse {
   data?: PostgresUserCredentials;
 }
-export const RotatePostgresPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(PostgresUserCredentials),
-  }),
-).annotate({
-  identifier: "RotatePostgresPasswordResponse",
-}) as any as S.Schema<RotatePostgresPasswordResponse>;
+export const RotatePostgresPasswordResponse =
+  GetPostgresUserCredentialsResponse as any as S.Schema<RotatePostgresPasswordResponse>;
 
 export interface SetMachineMemoryLimitRequest {
   /** Fly App Name */
@@ -4953,9 +4856,8 @@ export const SetMachineMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetMachineMemoryLimitRequest>;
 
 export type SetSecretKeyRequestValueList = Array<number>;
-export const SetSecretKeyRequestValueList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetSecretKeyRequestValueList>;
+export const SetSecretKeyRequestValueList =
+  MacaroonNonceKidList as any as S.Schema<SetSecretKeyRequestValueList>;
 
 export interface SetSecretKeyRequest {
   /** Fly App Name */
@@ -5011,9 +4913,8 @@ export const SignalMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalMachineRequest" }) as any as S.Schema<SignalMachineRequest>;
 
 export interface SignalMachineResponse {}
-export const SignalMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SignalMachineResponse",
-}) as any as S.Schema<SignalMachineResponse>;
+export const SignalMachineResponse =
+  CordonMachineResponse as any as S.Schema<SignalMachineResponse>;
 
 export interface SignSecretKeyRequest {
   /** Fly App Name */
@@ -5062,9 +4963,7 @@ export const StartMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartMachineRequest" }) as any as S.Schema<StartMachineRequest>;
 
 export interface StartMachineResponse {}
-export const StartMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartMachineResponse",
-}) as any as S.Schema<StartMachineResponse>;
+export const StartMachineResponse = CordonMachineResponse as any as S.Schema<StartMachineResponse>;
 
 export type StopMachineRequestSignal =
   | "SIGHUP"
@@ -5098,9 +4997,7 @@ export const StopMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopMachineRequest" }) as any as S.Schema<StopMachineRequest>;
 
 export interface StopMachineResponse {}
-export const StopMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopMachineResponse",
-}) as any as S.Schema<StopMachineResponse>;
+export const StopMachineResponse = CordonMachineResponse as any as S.Schema<StopMachineResponse>;
 
 export interface SuspendMachineRequest {
   /** Fly App Name */
@@ -5120,9 +5017,8 @@ export const SuspendMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendMachineRequest" }) as any as S.Schema<SuspendMachineRequest>;
 
 export interface SuspendMachineResponse {}
-export const SuspendMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendMachineResponse",
-}) as any as S.Schema<SuspendMachineResponse>;
+export const SuspendMachineResponse =
+  CordonMachineResponse as any as S.Schema<SuspendMachineResponse>;
 
 export interface UncordonMachineRequest {
   /** Fly App Name */
@@ -5146,9 +5042,8 @@ export const UncordonMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UncordonMachineRequest" }) as any as S.Schema<UncordonMachineRequest>;
 
 export interface UncordonMachineResponse {}
-export const UncordonMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UncordonMachineResponse",
-}) as any as S.Schema<UncordonMachineResponse>;
+export const UncordonMachineResponse =
+  CordonMachineResponse as any as S.Schema<UncordonMachineResponse>;
 
 export interface UpdateMachineRequest {
   /** Fly App Name */
@@ -5216,15 +5111,12 @@ export const UpdatePostgresUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePostgresUserRoleRequest>;
 
 export interface UpdatePostgresUserRoleResponse {}
-export const UpdatePostgresUserRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePostgresUserRoleResponse",
-}) as any as S.Schema<UpdatePostgresUserRoleResponse>;
+export const UpdatePostgresUserRoleResponse =
+  CordonMachineResponse as any as S.Schema<UpdatePostgresUserRoleResponse>;
 
 export type UpdateSecretsRequestValuesMap = { [key: string]: string | undefined };
-export const UpdateSecretsRequestValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSecretsRequestValuesMap>;
+export const UpdateSecretsRequestValuesMap =
+  FlyContainerConfigEnvMap as any as S.Schema<UpdateSecretsRequestValuesMap>;
 
 export interface UpdateSecretsRequest {
   /** Fly App Name */
@@ -5239,9 +5131,8 @@ export const UpdateSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSecretsRequest" }) as any as S.Schema<UpdateSecretsRequest>;
 
 export type AppSecretsUpdateRespSecretsList = Array<AppSecret>;
-export const AppSecretsUpdateRespSecretsList = /*@__PURE__*/ S.Array(
-  AppSecret,
-) as any as S.Schema<AppSecretsUpdateRespSecretsList>;
+export const AppSecretsUpdateRespSecretsList =
+  AppSecretsSecretsList as any as S.Schema<AppSecretsUpdateRespSecretsList>;
 
 export interface AppSecretsUpdateResp {
   /** DEPRECATED */
@@ -5303,9 +5194,8 @@ export const UpsertMachineMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertMachineMetadataRequest>;
 
 export interface UpsertMachineMetadataResponse {}
-export const UpsertMachineMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpsertMachineMetadataResponse",
-}) as any as S.Schema<UpsertMachineMetadataResponse>;
+export const UpsertMachineMetadataResponse =
+  CordonMachineResponse as any as S.Schema<UpsertMachineMetadataResponse>;
 
 export interface VerifySecretKeyRequest {
   /** Fly App Name */
@@ -5334,9 +5224,8 @@ export const VerifySecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifySecretKeyRequest" }) as any as S.Schema<VerifySecretKeyRequest>;
 
 export interface VerifySecretKeyResponse {}
-export const VerifySecretKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifySecretKeyResponse",
-}) as any as S.Schema<VerifySecretKeyResponse>;
+export const VerifySecretKeyResponse =
+  CordonMachineResponse as any as S.Schema<VerifySecretKeyResponse>;
 
 export type WaitMachineRequestState =
   | "started"

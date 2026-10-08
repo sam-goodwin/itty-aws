@@ -180,10 +180,8 @@ export const B2CTenantResourceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource Tags */
 export type B2CTenantResourceTagsMap = { [key: string]: string | undefined };
-export const B2CTenantResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<B2CTenantResourceTagsMap>;
+export const B2CTenantResourceTagsMap =
+  CreateB2CTenantRequestTagsMap as any as S.Schema<B2CTenantResourceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type B2CTenantResourceSystemDataCreatedByType =
@@ -261,10 +259,8 @@ export const B2CTenantResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateGuestUsageRequestTagsMap = { [key: string]: string | undefined };
-export const CreateGuestUsageRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateGuestUsageRequestTagsMap>;
+export const CreateGuestUsageRequestTagsMap =
+  CreateB2CTenantRequestTagsMap as any as S.Schema<CreateGuestUsageRequestTagsMap>;
 
 /** Guest Usages Resource Properties */
 export interface GuestUsagesResourceProperties {
@@ -313,10 +309,8 @@ export const CreateGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type GuestUsagesResourceTagsMap = { [key: string]: string | undefined };
-export const GuestUsagesResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GuestUsagesResourceTagsMap>;
+export const GuestUsagesResourceTagsMap =
+  CreateB2CTenantRequestTagsMap as any as S.Schema<GuestUsagesResourceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GuestUsagesResourceSystemDataCreatedByType =
@@ -443,9 +437,8 @@ export const DeleteGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGuestUsageRequest" }) as any as S.Schema<DeleteGuestUsageRequest>;
 
 export interface DeleteGuestUsageResponse {}
-export const DeleteGuestUsageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGuestUsageResponse",
-}) as any as S.Schema<DeleteGuestUsageResponse>;
+export const DeleteGuestUsageResponse =
+  DeleteB2CTenantResponse as any as S.Schema<DeleteGuestUsageResponse>;
 
 export interface GetB2CTenantRequest {
   /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -716,10 +709,8 @@ export const B2CTenantResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource Tags */
 export type UpdateB2CTenantRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateB2CTenantRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateB2CTenantRequestTagsMap>;
+export const UpdateB2CTenantRequestTagsMap =
+  CreateB2CTenantRequestTagsMap as any as S.Schema<UpdateB2CTenantRequestTagsMap>;
 
 export interface UpdateB2CTenantRequest {
   /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -754,10 +745,8 @@ export const UpdateB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type UpdateGuestUsageRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateGuestUsageRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateGuestUsageRequestTagsMap>;
+export const UpdateGuestUsageRequestTagsMap =
+  CreateB2CTenantRequestTagsMap as any as S.Schema<UpdateGuestUsageRequestTagsMap>;
 
 export interface UpdateGuestUsageRequest {
   /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */

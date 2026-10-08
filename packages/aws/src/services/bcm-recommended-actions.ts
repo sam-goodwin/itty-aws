@@ -200,7 +200,7 @@ export type Context = { [key: string]: string | undefined };
 export const Context = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type NextStep = string;
 export type NextSteps = string[];
-export const NextSteps = /*@__PURE__*/ S.Array(S.String);
+export const NextSteps = FilterValues as any as S.Schema<NextSteps>;
 export interface RecommendedAction {
   id?: string;
   type?: ActionType;

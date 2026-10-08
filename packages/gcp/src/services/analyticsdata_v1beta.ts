@@ -723,16 +723,10 @@ export interface MetricValue {
   /** Measurement value. See MetricHeader for type. */
   value?: string;
 }
-export const MetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
+export const MetricValue = DimensionValue as any as S.Schema<MetricValue>;
 
 export type MetricValueList = Array<MetricValue>;
-export const MetricValueList = /*@__PURE__*/ S.Array(
-  MetricValue,
-) as any as S.Schema<MetricValueList>;
+export const MetricValueList = DimensionValueList as any as S.Schema<MetricValueList>;
 
 /** Report data for each row. For example if RunReportRequest contains: ```none "dimensions": [ { "name": "eventName" }, { "name": "countryId" } ], "metrics": [ { "name": "eventCount" } ] ``` One row with 'in_app_purchase' as the eventName, 'JP' as the countryId, and 15 as the eventCount, would be: ```none "dimensionValues": [ { "value": "in_app_purchase" }, { "value": "JP" } ], "metricValues": [ { "value": "15" } ] ``` */
 export interface Row {
@@ -1384,11 +1378,7 @@ export interface V1betaAudienceDimension {
   /** Optional. The API name of the dimension. See the [API Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-api-schema#dimensions) for the list of dimension names. */
   dimensionName?: string;
 }
-export const V1betaAudienceDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionName: S.optional(S.String),
-  }),
-).annotate({ identifier: "V1betaAudienceDimension" }) as any as S.Schema<V1betaAudienceDimension>;
+export const V1betaAudienceDimension = CaseExpression as any as S.Schema<V1betaAudienceDimension>;
 
 export type V1betaAudienceDimensionList = Array<V1betaAudienceDimension>;
 export const V1betaAudienceDimensionList = /*@__PURE__*/ S.Array(
@@ -1680,25 +1670,19 @@ export type V1betaAudienceDimensionValue = DimensionValue;
 export const V1betaAudienceDimensionValue = DimensionValue;
 
 export type V1betaAudienceDimensionValueList = Array<DimensionValue>;
-export const V1betaAudienceDimensionValueList = /*@__PURE__*/ S.Array(
-  DimensionValue,
-) as any as S.Schema<V1betaAudienceDimensionValueList>;
+export const V1betaAudienceDimensionValueList =
+  DimensionValueList as any as S.Schema<V1betaAudienceDimensionValueList>;
 
 /** Dimension value attributes for the audience user row. */
 export interface V1betaAudienceRow {
   /** Each dimension value attribute for an audience user. One dimension value will be added for each dimension column requested. */
   dimensionValues?: V1betaAudienceDimensionValueList;
 }
-export const V1betaAudienceRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionValues: S.optional(V1betaAudienceDimensionValueList),
-  }),
-).annotate({ identifier: "V1betaAudienceRow" }) as any as S.Schema<V1betaAudienceRow>;
+export const V1betaAudienceRow = PivotDimensionHeader as any as S.Schema<V1betaAudienceRow>;
 
 export type V1betaAudienceRowList = Array<V1betaAudienceRow>;
-export const V1betaAudienceRowList = /*@__PURE__*/ S.Array(
-  V1betaAudienceRow,
-) as any as S.Schema<V1betaAudienceRowList>;
+export const V1betaAudienceRowList =
+  PivotDimensionHeaderList as any as S.Schema<V1betaAudienceRowList>;
 
 /** A list of users in an audience export. */
 export interface QueryAudienceExportResponse {

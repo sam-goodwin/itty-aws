@@ -205,9 +205,8 @@ export const ProjectCostWithSummarizedServices = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed service costs which are ONLY included if granularity is provided */
 export type DetailedServiceCostReportDataList = Array<ReportData>;
-export const DetailedServiceCostReportDataList = /*@__PURE__*/ S.Array(
-  ReportData,
-) as any as S.Schema<DetailedServiceCostReportDataList>;
+export const DetailedServiceCostReportDataList =
+  ProjectCostWithReportsReportDataList as any as S.Schema<DetailedServiceCostReportDataList>;
 
 /** Costs for a single service */
 export interface DetailedServiceCost {
@@ -392,16 +391,12 @@ export const ListCostsForResellerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCostsForResellerRequest>;
 
 export type ListCostsForResellerResponseBodyList = Array<ProjectCost>;
-export const ListCostsForResellerResponseBodyList = /*@__PURE__*/ S.Array(
-  ProjectCost,
-) as any as S.Schema<ListCostsForResellerResponseBodyList>;
+export const ListCostsForResellerResponseBodyList =
+  ListCostsForCustomerResponseBodyList as any as S.Schema<ListCostsForResellerResponseBodyList>;
 
 export type ListCostsForResellerResponse = ListCostsForResellerResponseBodyList;
-export const ListCostsForResellerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCostsForResellerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCostsForResellerResponse",
-}) as any as S.Schema<ListCostsForResellerResponse>;
+export const ListCostsForResellerResponse =
+  ListCostsForCustomerResponse as any as S.Schema<ListCostsForResellerResponse>;
 
 export type GetCostsForProjectError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** V3 Costs for a certain project Get costs for a certain project in a customer account */

@@ -250,9 +250,8 @@ export const ActivateContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivateContactChannelRequest",
 }) as any as S.Schema<ActivateContactChannelRequest>;
 export interface ActivateContactChannelResult {}
-export const ActivateContactChannelResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ActivateContactChannelResult",
-}) as any as S.Schema<ActivateContactChannelResult>;
+export const ActivateContactChannelResult =
+  AcceptPageResult as any as S.Schema<ActivateContactChannelResult>;
 export type ContactAlias = string;
 export type ContactName = string;
 export type ContactType = "PERSONAL" | "ESCALATION" | "ONCALL_SCHEDULE" | (string & {});
@@ -383,7 +382,8 @@ export const CreateContactChannelResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContactChannelResult>;
 export type RotationName = string;
 export type RotationContactsArnList = string[];
-export const RotationContactsArnList = /*@__PURE__*/ S.Array(S.String);
+export const RotationContactsArnList =
+  SsmContactsArnList as any as S.Schema<RotationContactsArnList>;
 export type TimeZoneId = string;
 export type DayOfMonth = number;
 export type HourOfDay = number;
@@ -479,7 +479,8 @@ export const CreateRotationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RotationArn: S.String }),
 ).annotate({ identifier: "CreateRotationResult" }) as any as S.Schema<CreateRotationResult>;
 export type RotationOverrideContactsArnList = string[];
-export const RotationOverrideContactsArnList = /*@__PURE__*/ S.Array(S.String);
+export const RotationOverrideContactsArnList =
+  SsmContactsArnList as any as S.Schema<RotationOverrideContactsArnList>;
 export interface CreateRotationOverrideRequest {
   RotationId: string;
   NewContactIds: string[];
@@ -518,9 +519,8 @@ export const DeactivateContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeactivateContactChannelRequest",
 }) as any as S.Schema<DeactivateContactChannelRequest>;
 export interface DeactivateContactChannelResult {}
-export const DeactivateContactChannelResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivateContactChannelResult",
-}) as any as S.Schema<DeactivateContactChannelResult>;
+export const DeactivateContactChannelResult =
+  AcceptPageResult as any as S.Schema<DeactivateContactChannelResult>;
 export interface DeleteContactRequest {
   ContactId: string;
 }
@@ -530,9 +530,7 @@ export const DeleteContactRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteContactRequest" }) as any as S.Schema<DeleteContactRequest>;
 export interface DeleteContactResult {}
-export const DeleteContactResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContactResult",
-}) as any as S.Schema<DeleteContactResult>;
+export const DeleteContactResult = AcceptPageResult as any as S.Schema<DeleteContactResult>;
 export interface DeleteContactChannelRequest {
   ContactChannelId: string;
 }
@@ -544,9 +542,8 @@ export const DeleteContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteContactChannelRequest",
 }) as any as S.Schema<DeleteContactChannelRequest>;
 export interface DeleteContactChannelResult {}
-export const DeleteContactChannelResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContactChannelResult",
-}) as any as S.Schema<DeleteContactChannelResult>;
+export const DeleteContactChannelResult =
+  AcceptPageResult as any as S.Schema<DeleteContactChannelResult>;
 export interface DeleteRotationRequest {
   RotationId: string;
 }
@@ -556,9 +553,7 @@ export const DeleteRotationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRotationRequest" }) as any as S.Schema<DeleteRotationRequest>;
 export interface DeleteRotationResult {}
-export const DeleteRotationResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRotationResult",
-}) as any as S.Schema<DeleteRotationResult>;
+export const DeleteRotationResult = AcceptPageResult as any as S.Schema<DeleteRotationResult>;
 export interface DeleteRotationOverrideRequest {
   RotationId: string;
   RotationOverrideId: string;
@@ -571,9 +566,8 @@ export const DeleteRotationOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRotationOverrideRequest",
 }) as any as S.Schema<DeleteRotationOverrideRequest>;
 export interface DeleteRotationOverrideResult {}
-export const DeleteRotationOverrideResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRotationOverrideResult",
-}) as any as S.Schema<DeleteRotationOverrideResult>;
+export const DeleteRotationOverrideResult =
+  AcceptPageResult as any as S.Schema<DeleteRotationOverrideResult>;
 export interface DescribeEngagementRequest {
   EngagementId: string;
 }
@@ -1052,9 +1046,11 @@ export const ListPagesByEngagementResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPagesByEngagementResult>;
 export type Member = string;
 export type RotationPreviewMemberList = string[];
-export const RotationPreviewMemberList = /*@__PURE__*/ S.Array(S.String);
+export const RotationPreviewMemberList =
+  SsmContactsArnList as any as S.Schema<RotationPreviewMemberList>;
 export type RotationOverridePreviewMemberList = string[];
-export const RotationOverridePreviewMemberList = /*@__PURE__*/ S.Array(S.String);
+export const RotationOverridePreviewMemberList =
+  SsmContactsArnList as any as S.Schema<RotationOverridePreviewMemberList>;
 export interface PreviewOverride {
   NewMembers?: string[];
   StartTime?: Date;
@@ -1269,9 +1265,7 @@ export const PutContactPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutContactPolicyRequest" }) as any as S.Schema<PutContactPolicyRequest>;
 export interface PutContactPolicyResult {}
-export const PutContactPolicyResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutContactPolicyResult",
-}) as any as S.Schema<PutContactPolicyResult>;
+export const PutContactPolicyResult = AcceptPageResult as any as S.Schema<PutContactPolicyResult>;
 export interface SendActivationCodeRequest {
   ContactChannelId: string;
 }
@@ -1283,9 +1277,8 @@ export const SendActivationCodeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendActivationCodeRequest",
 }) as any as S.Schema<SendActivationCodeRequest>;
 export interface SendActivationCodeResult {}
-export const SendActivationCodeResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendActivationCodeResult",
-}) as any as S.Schema<SendActivationCodeResult>;
+export const SendActivationCodeResult =
+  AcceptPageResult as any as S.Schema<SendActivationCodeResult>;
 export interface StartEngagementRequest {
   ContactId: string;
   Sender: string;
@@ -1325,9 +1318,7 @@ export const StopEngagementRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopEngagementRequest" }) as any as S.Schema<StopEngagementRequest>;
 export interface StopEngagementResult {}
-export const StopEngagementResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopEngagementResult",
-}) as any as S.Schema<StopEngagementResult>;
+export const StopEngagementResult = AcceptPageResult as any as S.Schema<StopEngagementResult>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -1338,11 +1329,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResult {}
-export const TagResourceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResult",
-}) as any as S.Schema<TagResourceResult>;
+export const TagResourceResult = AcceptPageResult as any as S.Schema<TagResourceResult>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SsmContactsArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1353,9 +1342,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
-export const UntagResourceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResult",
-}) as any as S.Schema<UntagResourceResult>;
+export const UntagResourceResult = AcceptPageResult as any as S.Schema<UntagResourceResult>;
 export interface UpdateContactRequest {
   ContactId: string;
   DisplayName?: string;
@@ -1367,9 +1354,7 @@ export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateContactRequest" }) as any as S.Schema<UpdateContactRequest>;
 export interface UpdateContactResult {}
-export const UpdateContactResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateContactResult",
-}) as any as S.Schema<UpdateContactResult>;
+export const UpdateContactResult = AcceptPageResult as any as S.Schema<UpdateContactResult>;
 export interface UpdateContactChannelRequest {
   ContactChannelId: string;
   Name?: string;
@@ -1385,9 +1370,8 @@ export const UpdateContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactChannelRequest",
 }) as any as S.Schema<UpdateContactChannelRequest>;
 export interface UpdateContactChannelResult {}
-export const UpdateContactChannelResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateContactChannelResult",
-}) as any as S.Schema<UpdateContactChannelResult>;
+export const UpdateContactChannelResult =
+  AcceptPageResult as any as S.Schema<UpdateContactChannelResult>;
 export interface UpdateRotationRequest {
   RotationId: string;
   ContactIds?: string[];
@@ -1405,9 +1389,7 @@ export const UpdateRotationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateRotationRequest" }) as any as S.Schema<UpdateRotationRequest>;
 export interface UpdateRotationResult {}
-export const UpdateRotationResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRotationResult",
-}) as any as S.Schema<UpdateRotationResult>;
+export const UpdateRotationResult = AcceptPageResult as any as S.Schema<UpdateRotationResult>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"

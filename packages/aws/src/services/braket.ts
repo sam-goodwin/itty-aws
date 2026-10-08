@@ -559,7 +559,8 @@ export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
 export type QuantumTaskAdditionalAttributeName = string;
 export type QuantumTaskAdditionalAttributeNamesList = string[];
-export const QuantumTaskAdditionalAttributeNamesList = /*@__PURE__*/ S.Array(S.String);
+export const QuantumTaskAdditionalAttributeNamesList =
+  HybridJobAdditionalAttributeNamesList as any as S.Schema<QuantumTaskAdditionalAttributeNamesList>;
 export interface GetQuantumTaskRequest {
   quantumTaskArn: string;
   additionalAttributeNames?: string[];
@@ -667,7 +668,8 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type String256List = string[];
-export const String256List = /*@__PURE__*/ S.Array(S.String);
+export const String256List =
+  HybridJobAdditionalAttributeNamesList as any as S.Schema<String256List>;
 export interface SearchDevicesFilter {
   name: string;
   values: string[];
@@ -774,11 +776,11 @@ export interface SearchQuantumTasksFilter {
   values: string[];
   operator: string;
 }
-export const SearchQuantumTasksFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, values: String256List, operator: S.String }),
-).annotate({ identifier: "SearchQuantumTasksFilter" }) as any as S.Schema<SearchQuantumTasksFilter>;
+export const SearchQuantumTasksFilter =
+  SearchJobsFilter as any as S.Schema<SearchQuantumTasksFilter>;
 export type SearchQuantumTasksFilterList = SearchQuantumTasksFilter[];
-export const SearchQuantumTasksFilterList = /*@__PURE__*/ S.Array(SearchQuantumTasksFilter);
+export const SearchQuantumTasksFilterList =
+  SearchJobsFilterList as any as S.Schema<SearchQuantumTasksFilterList>;
 export interface SearchQuantumTasksRequest {
   nextToken?: string;
   maxResults?: number;
@@ -900,11 +902,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteSpendingLimitResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = HybridJobAdditionalAttributeNamesList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -918,9 +919,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteSpendingLimitResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateSpendingLimitRequest {
   spendingLimitArn: string;
   clientToken: string;
@@ -947,12 +947,12 @@ export const UpdateSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSpendingLimitRequest",
 }) as any as S.Schema<UpdateSpendingLimitRequest>;
 export interface UpdateSpendingLimitResponse {}
-export const UpdateSpendingLimitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSpendingLimitResponse",
-}) as any as S.Schema<UpdateSpendingLimitResponse>;
+export const UpdateSpendingLimitResponse =
+  DeleteSpendingLimitResponse as any as S.Schema<UpdateSpendingLimitResponse>;
 export type ValidationExceptionReason = string;
 export type ProgramValidationFailuresList = string[];
-export const ProgramValidationFailuresList = /*@__PURE__*/ S.Array(S.String);
+export const ProgramValidationFailuresList =
+  HybridJobAdditionalAttributeNamesList as any as S.Schema<ProgramValidationFailuresList>;
 export interface ProgramSetValidationFailure {
   programIndex: number;
   inputsIndex?: number;

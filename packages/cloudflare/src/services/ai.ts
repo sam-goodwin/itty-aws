@@ -385,9 +385,7 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTasksRequest" }) as any as S.Schema<ListTasksRequest>;
 
 export type TasksListResultList = Array<unknown>;
-export const TasksListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TasksListResultList>;
+export const TasksListResultList = AuthorsListResultList as any as S.Schema<TasksListResultList>;
 
 export interface ListTasksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -395,12 +393,7 @@ export interface ListTasksResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: TasksListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListTasksResponse" }) as any as S.Schema<ListTasksResponse>;
+export const ListTasksResponse = ListAuthorsResponse as any as S.Schema<ListTasksResponse>;
 
 export type RunRequestTextTextEmbeddingsCase1List = Array<string>;
 export const RunRequestTextTextEmbeddingsCase1List = /*@__PURE__*/ S.Array(
@@ -413,9 +406,8 @@ export const RunRequestTextTextEmbeddings = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type RunRequestTextMultimodalEmbeddingsList = Array<string>;
-export const RunRequestTextMultimodalEmbeddingsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunRequestTextMultimodalEmbeddingsList>;
+export const RunRequestTextMultimodalEmbeddingsList =
+  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<RunRequestTextMultimodalEmbeddingsList>;
 
 export type RunRequestText =
   | string
@@ -434,14 +426,12 @@ export type RunRequestImage = string | RunRequestImageTextToImageList;
 export const RunRequestImage = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type RunRequestMaskList = Array<number>;
-export const RunRequestMaskList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunRequestMaskList>;
+export const RunRequestMaskList =
+  RunRequestImageTextToImageList as any as S.Schema<RunRequestMaskList>;
 
 export type RunRequestAudioList = Array<number>;
-export const RunRequestAudioList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunRequestAudioList>;
+export const RunRequestAudioList =
+  RunRequestImageTextToImageList as any as S.Schema<RunRequestAudioList>;
 
 export type RunRequestResponseFormatType = "json_object" | "json_schema";
 export const RunRequestResponseFormatType = S.String;
@@ -618,9 +608,8 @@ export const RunRequestToolsItemCase0ParametersPropertiesMap = /*@__PURE__*/ S.R
 ) as any as S.Schema<RunRequestToolsItemCase0ParametersPropertiesMap>;
 
 export type RunRequestToolsItemCase0ParametersRequiredList = Array<string>;
-export const RunRequestToolsItemCase0ParametersRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunRequestToolsItemCase0ParametersRequiredList>;
+export const RunRequestToolsItemCase0ParametersRequiredList =
+  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<RunRequestToolsItemCase0ParametersRequiredList>;
 
 export interface RunRequestToolsItemCase0Parameters {
   /** Definitions of each parameter. */
@@ -664,15 +653,12 @@ export const RunRequestToolsItemFunctionFunctionParametersPropertiesValue =
 export type RunRequestToolsItemFunctionFunctionParametersPropertiesMap = {
   [key: string]: RunRequestToolsItemCase0ParametersPropertiesValue | undefined;
 };
-export const RunRequestToolsItemFunctionFunctionParametersPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RunRequestToolsItemCase0ParametersPropertiesValue,
-) as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersPropertiesMap>;
+export const RunRequestToolsItemFunctionFunctionParametersPropertiesMap =
+  RunRequestToolsItemCase0ParametersPropertiesMap as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersPropertiesMap>;
 
 export type RunRequestToolsItemFunctionFunctionParametersRequiredList = Array<string>;
-export const RunRequestToolsItemFunctionFunctionParametersRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersRequiredList>;
+export const RunRequestToolsItemFunctionFunctionParametersRequiredList =
+  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersRequiredList>;
 
 export interface RunRequestToolsItemFunctionFunctionParameters {
   /** Definitions of each parameter. */
@@ -682,15 +668,8 @@ export interface RunRequestToolsItemFunctionFunctionParameters {
   /** List of required parameter names. */
   required?: RunRequestToolsItemFunctionFunctionParametersRequiredList;
 }
-export const RunRequestToolsItemFunctionFunctionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: RunRequestToolsItemFunctionFunctionParametersPropertiesMap,
-    type: S.String,
-    required: S.optional(RunRequestToolsItemFunctionFunctionParametersRequiredList),
-  }),
-).annotate({
-  identifier: "RunRequestToolsItemFunctionFunctionParameters",
-}) as any as S.Schema<RunRequestToolsItemFunctionFunctionParameters>;
+export const RunRequestToolsItemFunctionFunctionParameters =
+  RunRequestToolsItemCase0Parameters as any as S.Schema<RunRequestToolsItemFunctionFunctionParameters>;
 
 export interface RunRequestToolsItemFunctionFunction {
   /** A brief description of what the function does. */
@@ -881,9 +860,8 @@ export const RunResultAudio = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunResultAudio" }) as any as S.Schema<RunResultAudio>;
 
 export type RunResultTextEmbeddingsDataItemList = Array<number>;
-export const RunResultTextEmbeddingsDataItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunResultTextEmbeddingsDataItemList>;
+export const RunResultTextEmbeddingsDataItemList =
+  RunRequestImageTextToImageList as any as S.Schema<RunResultTextEmbeddingsDataItemList>;
 
 export type RunResultTextEmbeddingsDataList = Array<RunResultTextEmbeddingsDataItemList>;
 export const RunResultTextEmbeddingsDataList = /*@__PURE__*/ S.Array(
@@ -891,9 +869,8 @@ export const RunResultTextEmbeddingsDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunResultTextEmbeddingsDataList>;
 
 export type RunResultTextEmbeddingsShapeList = Array<number>;
-export const RunResultTextEmbeddingsShapeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunResultTextEmbeddingsShapeList>;
+export const RunResultTextEmbeddingsShapeList =
+  RunRequestImageTextToImageList as any as S.Schema<RunResultTextEmbeddingsShapeList>;
 
 export interface RunResultTextEmbeddings {
   /** Embeddings of the requested text values */
@@ -954,19 +931,12 @@ export interface RunResultImageClassificationItem {
   /** A confidence value, between 0 and 1, indicating how certain the model is about the predicted label */
   score?: number | null;
 }
-export const RunResultImageClassificationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    score: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RunResultImageClassificationItem",
-}) as any as S.Schema<RunResultImageClassificationItem>;
+export const RunResultImageClassificationItem =
+  RunResultTextClassificationItem as any as S.Schema<RunResultImageClassificationItem>;
 
 export type RunResultImageClassificationList = Array<RunResultImageClassificationItem>;
-export const RunResultImageClassificationList = /*@__PURE__*/ S.Array(
-  RunResultImageClassificationItem,
-) as any as S.Schema<RunResultImageClassificationList>;
+export const RunResultImageClassificationList =
+  RunResultTextClassificationList as any as S.Schema<RunResultImageClassificationList>;
 
 export interface RunResultObjectDetectionItemBox {
   /** The x-coordinate of the bottom-right corner of the bounding box */
@@ -1097,20 +1067,17 @@ export type RunResultImageTextToText = RunResultImageToText;
 export const RunResultImageTextToText = RunResultImageToText;
 
 export type RunResultMultimodalEmbeddingsDataItemList = Array<number>;
-export const RunResultMultimodalEmbeddingsDataItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunResultMultimodalEmbeddingsDataItemList>;
+export const RunResultMultimodalEmbeddingsDataItemList =
+  RunRequestImageTextToImageList as any as S.Schema<RunResultMultimodalEmbeddingsDataItemList>;
 
 export type RunResultMultimodalEmbeddingsDataList =
   Array<RunResultMultimodalEmbeddingsDataItemList>;
-export const RunResultMultimodalEmbeddingsDataList = /*@__PURE__*/ S.Array(
-  RunResultMultimodalEmbeddingsDataItemList,
-) as any as S.Schema<RunResultMultimodalEmbeddingsDataList>;
+export const RunResultMultimodalEmbeddingsDataList =
+  RunResultTextEmbeddingsDataList as any as S.Schema<RunResultMultimodalEmbeddingsDataList>;
 
 export type RunResultMultimodalEmbeddingsShapeList = Array<number>;
-export const RunResultMultimodalEmbeddingsShapeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RunResultMultimodalEmbeddingsShapeList>;
+export const RunResultMultimodalEmbeddingsShapeList =
+  RunRequestImageTextToImageList as any as S.Schema<RunResultMultimodalEmbeddingsShapeList>;
 
 export interface RunResultMultimodalEmbeddings {
   data?: RunResultMultimodalEmbeddingsDataList | null;
@@ -1212,9 +1179,8 @@ export const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedToMarkdownResponse>;
 
 export type ToMarkdownTransformRequestFileFilesList = Array<string>;
-export const ToMarkdownTransformRequestFileFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ToMarkdownTransformRequestFileFilesList>;
+export const ToMarkdownTransformRequestFileFilesList =
+  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<ToMarkdownTransformRequestFileFilesList>;
 
 export interface ToMarkdownTransformRequestFile {
   /** Files to convert, supplied as multipart file uploads. */

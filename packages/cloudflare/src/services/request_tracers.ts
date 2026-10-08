@@ -102,10 +102,8 @@ export const TracesCreateRequestCookiesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TracesCreateRequestCookiesMap>;
 
 export type TracesCreateRequestHeadersMap = { [key: string]: string | undefined };
-export const TracesCreateRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TracesCreateRequestHeadersMap>;
+export const TracesCreateRequestHeadersMap =
+  TracesCreateRequestCookiesMap as any as S.Schema<TracesCreateRequestHeadersMap>;
 
 export interface CreateTraceRequest {
   /** Identifier. */

@@ -351,9 +351,7 @@ export const DownloadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S
 
 /** The response to download a file. */
 export interface DownloadFileResponse {}
-export const DownloadFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadFileResponse",
-}) as any as S.Schema<DownloadFileResponse>;
+export const DownloadFileResponse = Empty as any as S.Schema<DownloadFileResponse>;
 
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1258,13 +1256,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateProjectSettingsProjectsRequest {
   /** Field mask to support partial updates. */
@@ -1292,9 +1285,7 @@ export const UpdateProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The request to upload an artifact. */
 export interface UploadAptArtifactRequest {}
-export const UploadAptArtifactRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadAptArtifactRequest",
-}) as any as S.Schema<UploadAptArtifactRequest>;
+export const UploadAptArtifactRequest = Empty as any as S.Schema<UploadAptArtifactRequest>;
 
 export interface UploadProjectsLocationsRepositoriesAptArtifactsRequest {
   /** The name of the parent resource where the artifacts will be uploaded. */
@@ -1360,13 +1351,8 @@ export interface UploadYumArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
-export const UploadYumArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operation: S.optional(Operation),
-  }),
-).annotate({
-  identifier: "UploadYumArtifactMediaResponse",
-}) as any as S.Schema<UploadYumArtifactMediaResponse>;
+export const UploadYumArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadYumArtifactMediaResponse>;
 
 export type CreateProjectsLocationsRepositoriesError =
   | NotFound

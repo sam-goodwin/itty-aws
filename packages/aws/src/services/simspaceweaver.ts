@@ -155,9 +155,7 @@ export const DeleteAppInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/deleteapp" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteAppInput" }) as any as S.Schema<DeleteAppInput>;
 export interface DeleteAppOutput {}
-export const DeleteAppOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppOutput",
-}) as any as S.Schema<DeleteAppOutput>;
+export const DeleteAppOutput = CreateSnapshotOutput as any as S.Schema<DeleteAppOutput>;
 export interface DeleteSimulationInput {
   Simulation: string;
 }
@@ -169,9 +167,8 @@ export const DeleteSimulationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSimulationInput",
 }) as any as S.Schema<DeleteSimulationInput>;
 export interface DeleteSimulationOutput {}
-export const DeleteSimulationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSimulationOutput",
-}) as any as S.Schema<DeleteSimulationOutput>;
+export const DeleteSimulationOutput =
+  CreateSnapshotOutput as any as S.Schema<DeleteSimulationOutput>;
 export type SimSpaceWeaverLongResourceName = string;
 export interface DescribeAppInput {
   Simulation: string;
@@ -528,9 +525,7 @@ export const StartClockInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartClockInput",
 }) as any as S.Schema<StartClockInput>;
 export interface StartClockOutput {}
-export const StartClockOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartClockOutput",
-}) as any as S.Schema<StartClockOutput>;
+export const StartClockOutput = CreateSnapshotOutput as any as S.Schema<StartClockOutput>;
 export interface StartSimulationInput {
   ClientToken?: string | redacted.Redacted<string>;
   Name: string;
@@ -580,9 +575,7 @@ export const StopAppInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopAppInput" }) as any as S.Schema<StopAppInput>;
 export interface StopAppOutput {}
-export const StopAppOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopAppOutput",
-}) as any as S.Schema<StopAppOutput>;
+export const StopAppOutput = CreateSnapshotOutput as any as S.Schema<StopAppOutput>;
 export interface StopClockInput {
   Simulation: string;
 }
@@ -592,9 +585,7 @@ export const StopClockInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopClockInput" }) as any as S.Schema<StopClockInput>;
 export interface StopClockOutput {}
-export const StopClockOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopClockOutput",
-}) as any as S.Schema<StopClockOutput>;
+export const StopClockOutput = CreateSnapshotOutput as any as S.Schema<StopClockOutput>;
 export interface StopSimulationInput {
   Simulation: string;
 }
@@ -606,9 +597,7 @@ export const StopSimulationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopSimulationInput",
 }) as any as S.Schema<StopSimulationInput>;
 export interface StopSimulationOutput {}
-export const StopSimulationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopSimulationOutput",
-}) as any as S.Schema<StopSimulationOutput>;
+export const StopSimulationOutput = CreateSnapshotOutput as any as S.Schema<StopSimulationOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -624,11 +613,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = CreateSnapshotOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = LaunchCommandList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -644,9 +631,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = CreateSnapshotOutput as any as S.Schema<UntagResourceOutput>;
 export type CreateSnapshotError =
   | AccessDeniedException
   | ConflictException

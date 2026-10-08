@@ -333,15 +333,13 @@ export const CreateActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateActionRequest" }) as any as S.Schema<CreateActionRequest>;
 
 export type ActionOutputTagsList = Array<unknown>;
-export const ActionOutputTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ActionOutputTagsList>;
+export const ActionOutputTagsList =
+  CreateActionRequestTagsList as any as S.Schema<ActionOutputTagsList>;
 
 /** Event or person property filters. Each item should have 'key' (string), 'value' (string, number, boolean, or array), optional 'operator' (exact, is_not, is_set, is_not_set, icontains, not_icontains, regex, not_regex, gt, gte, lt, lte), and optional 'type' (event, person). */
 export type ActionStepJSONPropertiesList = Array<ActionStepPropertyFilter>;
-export const ActionStepJSONPropertiesList = /*@__PURE__*/ S.Array(
-  ActionStepPropertyFilter,
-) as any as S.Schema<ActionStepJSONPropertiesList>;
+export const ActionStepJSONPropertiesList =
+  ActionStepJSONInputPropertiesList as any as S.Schema<ActionStepJSONPropertiesList>;
 
 export interface ActionStepJSON {
   /** Event name to match (e.g. '$pageview', '$autocapture', or a custom event name). */
@@ -630,15 +628,13 @@ export type UpdateActionRequestFormat = "csv" | "json";
 export const UpdateActionRequestFormat = S.String;
 
 export type UpdateActionRequestTagsList = Array<unknown>;
-export const UpdateActionRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateActionRequestTagsList>;
+export const UpdateActionRequestTagsList =
+  CreateActionRequestTagsList as any as S.Schema<UpdateActionRequestTagsList>;
 
 /** Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together. */
 export type UpdateActionRequestStepsList = Array<ActionStepJSONInput>;
-export const UpdateActionRequestStepsList = /*@__PURE__*/ S.Array(
-  ActionStepJSONInput,
-) as any as S.Schema<UpdateActionRequestStepsList>;
+export const UpdateActionRequestStepsList =
+  CreateActionRequestStepsList as any as S.Schema<UpdateActionRequestStepsList>;
 
 export interface UpdateActionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -685,15 +681,13 @@ export type UpdateActionsPartialRequestFormat = "csv" | "json";
 export const UpdateActionsPartialRequestFormat = S.String;
 
 export type UpdateActionsPartialRequestTagsList = Array<unknown>;
-export const UpdateActionsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateActionsPartialRequestTagsList>;
+export const UpdateActionsPartialRequestTagsList =
+  CreateActionRequestTagsList as any as S.Schema<UpdateActionsPartialRequestTagsList>;
 
 /** Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together. */
 export type UpdateActionsPartialRequestStepsList = Array<ActionStepJSONInput>;
-export const UpdateActionsPartialRequestStepsList = /*@__PURE__*/ S.Array(
-  ActionStepJSONInput,
-) as any as S.Schema<UpdateActionsPartialRequestStepsList>;
+export const UpdateActionsPartialRequestStepsList =
+  CreateActionRequestStepsList as any as S.Schema<UpdateActionsPartialRequestStepsList>;
 
 export interface UpdateActionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

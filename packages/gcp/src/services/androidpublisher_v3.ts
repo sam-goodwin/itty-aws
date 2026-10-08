@@ -166,11 +166,8 @@ export const AcknowledgePurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AcknowledgePurchasesSubscriptionsRequest>;
 
 export interface AcknowledgePurchasesSubscriptionsResponse {}
-export const AcknowledgePurchasesSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AcknowledgePurchasesSubscriptionsResponse",
-}) as any as S.Schema<AcknowledgePurchasesSubscriptionsResponse>;
+export const AcknowledgePurchasesSubscriptionsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<AcknowledgePurchasesSubscriptionsResponse>;
 
 export type ActivateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -273,11 +270,8 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 
 /** Options for one-time product offers without a regional price override. */
 export interface OneTimeProductOfferNoPriceOverrideOptions {}
-export const OneTimeProductOfferNoPriceOverrideOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OneTimeProductOfferNoPriceOverrideOptions",
-}) as any as S.Schema<OneTimeProductOfferNoPriceOverrideOptions>;
+export const OneTimeProductOfferNoPriceOverrideOptions =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<OneTimeProductOfferNoPriceOverrideOptions>;
 
 /** Regional pricing and availability configuration for a one-time product offer. */
 export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
@@ -1276,13 +1270,8 @@ export interface ApksAddExternallyHostedResponse {
   /** The definition of the externally-hosted APK and where it is located. */
   externallyHostedApk?: ExternallyHostedApk;
 }
-export const ApksAddExternallyHostedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externallyHostedApk: S.optional(ExternallyHostedApk),
-  }),
-).annotate({
-  identifier: "ApksAddExternallyHostedResponse",
-}) as any as S.Schema<ApksAddExternallyHostedResponse>;
+export const ApksAddExternallyHostedResponse =
+  ApksAddExternallyHostedRequest as any as S.Schema<ApksAddExternallyHostedResponse>;
 
 /** Android api level targeting data for app recovery action targeting. */
 export interface AndroidSdks {
@@ -1468,11 +1457,8 @@ export const BatchDeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeleteInappproductsRequest>;
 
 export interface BatchDeleteInappproductsResponse {}
-export const BatchDeleteInappproductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchDeleteInappproductsResponse",
-}) as any as S.Schema<BatchDeleteInappproductsResponse>;
+export const BatchDeleteInappproductsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<BatchDeleteInappproductsResponse>;
 
 export type DeleteOneTimeProductRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -1539,11 +1525,8 @@ export const BatchDeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchDeleteMonetizationOnetimeproductsResponse",
-}) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
+export const BatchDeleteMonetizationOnetimeproductsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
 
 export type DeletePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -1704,9 +1687,7 @@ export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest 
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse {}
 export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
+  BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
 
 export interface BatchGetInappproductsRequest {
   /** Package name of the app. */
@@ -2513,11 +2494,7 @@ export interface ProcessedEvent {
   /** The time when the order was processed. */
   eventTime?: string;
 }
-export const ProcessedEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProcessedEvent" }) as any as S.Schema<ProcessedEvent>;
+export const ProcessedEvent = CancellationEvent as any as S.Schema<ProcessedEvent>;
 
 /** Details about events which modified the order. */
 export interface OrderHistory {
@@ -2932,9 +2909,8 @@ export const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest = /*@__
 
 /** Response message for MigrateBasePlanPrices. */
 export interface MigrateBasePlanPricesResponse {}
-export const MigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MigrateBasePlanPricesResponse",
-}) as any as S.Schema<MigrateBasePlanPricesResponse>;
+export const MigrateBasePlanPricesResponse =
+  AddTargetingResponse as any as S.Schema<MigrateBasePlanPricesResponse>;
 
 export type MigrateBasePlanPricesResponseList = Array<MigrateBasePlanPricesResponse>;
 export const MigrateBasePlanPricesResponseList = /*@__PURE__*/ S.Array(
@@ -3115,13 +3091,8 @@ export interface BatchUpdateOneTimeProductsResponse {
   /** The list of updated one-time products list, in the same order as the request. */
   oneTimeProducts?: OneTimeProductList;
 }
-export const BatchUpdateOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProducts: S.optional(OneTimeProductList),
-  }),
-).annotate({
-  identifier: "BatchUpdateOneTimeProductsResponse",
-}) as any as S.Schema<BatchUpdateOneTimeProductsResponse>;
+export const BatchUpdateOneTimeProductsResponse =
+  BatchGetOneTimeProductsResponse as any as S.Schema<BatchUpdateOneTimeProductsResponse>;
 
 export type UpdateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -3205,13 +3176,8 @@ export interface BatchUpdateOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchUpdateOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProductOffers: S.optional(OneTimeProductOfferList),
-  }),
-).annotate({
-  identifier: "BatchUpdateOneTimeProductOffersResponse",
-}) as any as S.Schema<BatchUpdateOneTimeProductOffersResponse>;
+export const BatchUpdateOneTimeProductOffersResponse =
+  BatchGetOneTimeProductOffersResponse as any as S.Schema<BatchUpdateOneTimeProductOffersResponse>;
 
 export type UpdateSubscriptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -3288,13 +3254,8 @@ export interface BatchUpdateSubscriptionsResponse {
   /** The updated subscriptions list. */
   subscriptions?: SubscriptionList;
 }
-export const BatchUpdateSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "BatchUpdateSubscriptionsResponse",
-}) as any as S.Schema<BatchUpdateSubscriptionsResponse>;
+export const BatchUpdateSubscriptionsResponse =
+  BatchGetSubscriptionsResponse as any as S.Schema<BatchUpdateSubscriptionsResponse>;
 
 export type UpdateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -3378,13 +3339,8 @@ export interface BatchUpdateSubscriptionOffersResponse {
   /** The updated subscription offers list. */
   subscriptionOffers?: SubscriptionOfferList;
 }
-export const BatchUpdateSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionOffers: S.optional(SubscriptionOfferList),
-  }),
-).annotate({
-  identifier: "BatchUpdateSubscriptionOffersResponse",
-}) as any as S.Schema<BatchUpdateSubscriptionOffersResponse>;
+export const BatchUpdateSubscriptionOffersResponse =
+  BatchGetSubscriptionOffersResponse as any as S.Schema<BatchUpdateSubscriptionOffersResponse>;
 
 export type ActivatePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -3506,13 +3462,8 @@ export interface BatchUpdatePurchaseOptionStatesResponse {
   /** The list of updated one-time products. This list will match the requests one to one, in the same order. */
   oneTimeProducts?: OneTimeProductList;
 }
-export const BatchUpdatePurchaseOptionStatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProducts: S.optional(OneTimeProductList),
-  }),
-).annotate({
-  identifier: "BatchUpdatePurchaseOptionStatesResponse",
-}) as any as S.Schema<BatchUpdatePurchaseOptionStatesResponse>;
+export const BatchUpdatePurchaseOptionStatesResponse =
+  BatchGetOneTimeProductsResponse as any as S.Schema<BatchUpdatePurchaseOptionStatesResponse>;
 
 export type DeactivateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -3647,13 +3598,8 @@ export interface BatchUpdateOneTimeProductOfferStatesResponse {
   /** The updated one-time product offers list, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchUpdateOneTimeProductOfferStatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oneTimeProductOffers: S.optional(OneTimeProductOfferList),
-  }),
-).annotate({
-  identifier: "BatchUpdateOneTimeProductOfferStatesResponse",
-}) as any as S.Schema<BatchUpdateOneTimeProductOfferStatesResponse>;
+export const BatchUpdateOneTimeProductOfferStatesResponse =
+  BatchGetOneTimeProductOffersResponse as any as S.Schema<BatchUpdateOneTimeProductOfferStatesResponse>;
 
 export type DeactivateBasePlanRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -3747,13 +3693,8 @@ export interface BatchUpdateBasePlanStatesResponse {
   /** The list of updated subscriptions. This list will match the requests one to one, in the same order. */
   subscriptions?: SubscriptionList;
 }
-export const BatchUpdateBasePlanStatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptions: S.optional(SubscriptionList),
-  }),
-).annotate({
-  identifier: "BatchUpdateBasePlanStatesResponse",
-}) as any as S.Schema<BatchUpdateBasePlanStatesResponse>;
+export const BatchUpdateBasePlanStatesResponse =
+  BatchGetSubscriptionsResponse as any as S.Schema<BatchUpdateBasePlanStatesResponse>;
 
 export type DeactivateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -3853,13 +3794,8 @@ export interface BatchUpdateSubscriptionOfferStatesResponse {
   /** The updated subscription offers list. */
   subscriptionOffers?: SubscriptionOfferList;
 }
-export const BatchUpdateSubscriptionOfferStatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionOffers: S.optional(SubscriptionOfferList),
-  }),
-).annotate({
-  identifier: "BatchUpdateSubscriptionOfferStatesResponse",
-}) as any as S.Schema<BatchUpdateSubscriptionOfferStatesResponse>;
+export const BatchUpdateSubscriptionOfferStatesResponse =
+  BatchGetSubscriptionOffersResponse as any as S.Schema<BatchUpdateSubscriptionOfferStatesResponse>;
 
 /** Request message for CancelAppRecovery. */
 export type CancelAppRecoveryRequest = OneTimeProductOfferNoPriceOverrideOptions;
@@ -3889,9 +3825,8 @@ export const CancelApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for CancelAppRecovery. */
 export interface CancelAppRecoveryResponse {}
-export const CancelAppRecoveryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelAppRecoveryResponse",
-}) as any as S.Schema<CancelAppRecoveryResponse>;
+export const CancelAppRecoveryResponse =
+  AddTargetingResponse as any as S.Schema<CancelAppRecoveryResponse>;
 
 export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The parent one-time product (ID) of the offer to cancel. */
@@ -3949,11 +3884,8 @@ export const CancelPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelPurchasesSubscriptionsRequest>;
 
 export interface CancelPurchasesSubscriptionsResponse {}
-export const CancelPurchasesSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelPurchasesSubscriptionsResponse",
-}) as any as S.Schema<CancelPurchasesSubscriptionsResponse>;
+export const CancelPurchasesSubscriptionsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<CancelPurchasesSubscriptionsResponse>;
 
 export type CancellationContextCancellationTypeEnum =
   | "CANCELLATION_TYPE_UNSPECIFIED"
@@ -4011,11 +3943,8 @@ export const CancelPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() 
 
 /** Response for the purchases.subscriptionsv2.cancel API. */
 export interface CancelSubscriptionPurchaseResponse {}
-export const CancelSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelSubscriptionPurchaseResponse",
-}) as any as S.Schema<CancelSubscriptionPurchaseResponse>;
+export const CancelSubscriptionPurchaseResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<CancelSubscriptionPurchaseResponse>;
 
 export type CommitEditsChangesInReviewBehaviorEnum =
   | "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED"
@@ -4087,11 +4016,8 @@ export const ConsumePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumePurchasesProductsRequest>;
 
 export interface ConsumePurchasesProductsResponse {}
-export const ConsumePurchasesProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConsumePurchasesProductsResponse",
-}) as any as S.Schema<ConsumePurchasesProductsResponse>;
+export const ConsumePurchasesProductsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<ConsumePurchasesProductsResponse>;
 
 /** Request message for ConvertRegionPrices. */
 export interface ConvertRegionPricesRequest {
@@ -4137,14 +4063,8 @@ export interface ConvertedOtherRegionsPrice {
   /** Price in EUR to use for the "Other regions" location exclusive of taxes. */
   eurPrice?: Money;
 }
-export const ConvertedOtherRegionsPrice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usdPrice: S.optional(Money),
-    eurPrice: S.optional(Money),
-  }),
-).annotate({
-  identifier: "ConvertedOtherRegionsPrice",
-}) as any as S.Schema<ConvertedOtherRegionsPrice>;
+export const ConvertedOtherRegionsPrice =
+  OtherRegionsSubscriptionOfferPhasePrices as any as S.Schema<ConvertedOtherRegionsPrice>;
 
 /** A converted region price. */
 export interface ConvertedRegionPrice {
@@ -5303,9 +5223,8 @@ export const DataSafetyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for SafetyLabelsUpdate rpc. */
 export interface SafetyLabelsUpdateResponse {}
-export const SafetyLabelsUpdateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SafetyLabelsUpdateResponse",
-}) as any as S.Schema<SafetyLabelsUpdateResponse>;
+export const SafetyLabelsUpdateResponse =
+  AddTargetingResponse as any as S.Schema<SafetyLabelsUpdateResponse>;
 
 export interface DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Required. The offer ID of the offer to deactivate. */
@@ -5653,9 +5572,8 @@ export const DeleteallEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteallEditsListingsRequest>;
 
 export interface DeleteallEditsListingsResponse {}
-export const DeleteallEditsListingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteallEditsListingsResponse",
-}) as any as S.Schema<DeleteallEditsListingsResponse>;
+export const DeleteallEditsListingsResponse =
+  AddTargetingResponse as any as S.Schema<DeleteallEditsListingsResponse>;
 
 export interface DeleteEditsRequest {
   /** Identifier of the edit. */
@@ -5677,9 +5595,7 @@ export const DeleteEditsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEditsRequest" }) as any as S.Schema<DeleteEditsRequest>;
 
 export interface DeleteEditsResponse {}
-export const DeleteEditsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEditsResponse",
-}) as any as S.Schema<DeleteEditsResponse>;
+export const DeleteEditsResponse = AddTargetingResponse as any as S.Schema<DeleteEditsResponse>;
 
 export type DeleteEditsImagesImageTypeEnum =
   | "appImageTypeUnspecified"
@@ -5722,9 +5638,8 @@ export const DeleteEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEditsImagesRequest" }) as any as S.Schema<DeleteEditsImagesRequest>;
 
 export interface DeleteEditsImagesResponse {}
-export const DeleteEditsImagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEditsImagesResponse",
-}) as any as S.Schema<DeleteEditsImagesResponse>;
+export const DeleteEditsImagesResponse =
+  AddTargetingResponse as any as S.Schema<DeleteEditsImagesResponse>;
 
 export interface DeleteEditsListingsRequest {
   /** Identifier of the edit. */
@@ -5751,9 +5666,8 @@ export const DeleteEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEditsListingsRequest>;
 
 export interface DeleteEditsListingsResponse {}
-export const DeleteEditsListingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEditsListingsResponse",
-}) as any as S.Schema<DeleteEditsListingsResponse>;
+export const DeleteEditsListingsResponse =
+  AddTargetingResponse as any as S.Schema<DeleteEditsListingsResponse>;
 
 export interface DeleteGrantsRequest {
   /** Required. The name of the grant to delete. Format: developers/{developer}/users/{email}/grants/{package_name} */
@@ -5772,9 +5686,7 @@ export const DeleteGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGrantsRequest" }) as any as S.Schema<DeleteGrantsRequest>;
 
 export interface DeleteGrantsResponse {}
-export const DeleteGrantsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGrantsResponse",
-}) as any as S.Schema<DeleteGrantsResponse>;
+export const DeleteGrantsResponse = AddTargetingResponse as any as S.Schema<DeleteGrantsResponse>;
 
 export type DeleteInappproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -5807,9 +5719,8 @@ export const DeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInappproductsRequest>;
 
 export interface DeleteInappproductsResponse {}
-export const DeleteInappproductsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInappproductsResponse",
-}) as any as S.Schema<DeleteInappproductsResponse>;
+export const DeleteInappproductsResponse =
+  AddTargetingResponse as any as S.Schema<DeleteInappproductsResponse>;
 
 export type DeleteMonetizationOnetimeproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
@@ -5844,11 +5755,8 @@ export const DeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteMonetizationOnetimeproductsRequest>;
 
 export interface DeleteMonetizationOnetimeproductsResponse {}
-export const DeleteMonetizationOnetimeproductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMonetizationOnetimeproductsResponse",
-}) as any as S.Schema<DeleteMonetizationOnetimeproductsResponse>;
+export const DeleteMonetizationOnetimeproductsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationOnetimeproductsResponse>;
 
 export interface DeleteMonetizationSubscriptionsRequest {
   /** Required. The parent app (package name) of the app of the subscription to delete. */
@@ -5872,11 +5780,8 @@ export const DeleteMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteMonetizationSubscriptionsRequest>;
 
 export interface DeleteMonetizationSubscriptionsResponse {}
-export const DeleteMonetizationSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMonetizationSubscriptionsResponse",
-}) as any as S.Schema<DeleteMonetizationSubscriptionsResponse>;
+export const DeleteMonetizationSubscriptionsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationSubscriptionsResponse>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansRequest {
   /** Required. The unique offer ID of the base plan to delete. */
@@ -5903,11 +5808,8 @@ export const DeleteMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMonetizationSubscriptionsBasePlansResponse",
-}) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>;
+export const DeleteMonetizationSubscriptionsBasePlansResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The unique offer ID of the offer to delete. */
@@ -5937,11 +5839,8 @@ export const DeleteMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__
 }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansOffersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMonetizationSubscriptionsBasePlansOffersResponse",
-}) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
+export const DeleteMonetizationSubscriptionsBasePlansOffersResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
 
 export interface DeleteUsersRequest {
   /** Required. The name of the user to delete. Format: developers/{developer}/users/{email} */
@@ -5960,9 +5859,7 @@ export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersRequest" }) as any as S.Schema<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
-export const DeleteUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersResponse",
-}) as any as S.Schema<DeleteUsersResponse>;
+export const DeleteUsersResponse = AddTargetingResponse as any as S.Schema<DeleteUsersResponse>;
 
 /** Request message for DeployAppRecovery. */
 export type DeployAppRecoveryRequest = OneTimeProductOfferNoPriceOverrideOptions;
@@ -5992,9 +5889,8 @@ export const DeployApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for DeployAppRecovery. */
 export interface DeployAppRecoveryResponse {}
-export const DeployAppRecoveryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeployAppRecoveryResponse",
-}) as any as S.Schema<DeployAppRecoveryResponse>;
+export const DeployAppRecoveryResponse =
+  AddTargetingResponse as any as S.Schema<DeployAppRecoveryResponse>;
 
 export interface DownloadGeneratedapksRequest {
   /** Download ID, which uniquely identifies the APK to download. Can be obtained from the response of `generatedapks.list` method. */
@@ -6021,9 +5917,8 @@ export const DownloadGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadGeneratedapksRequest>;
 
 export interface DownloadGeneratedapksResponse {}
-export const DownloadGeneratedapksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadGeneratedapksResponse",
-}) as any as S.Schema<DownloadGeneratedapksResponse>;
+export const DownloadGeneratedapksResponse =
+  AddTargetingResponse as any as S.Schema<DownloadGeneratedapksResponse>;
 
 export interface DownloadSystemapksVariantsRequest {
   /** Package name of the app. */
@@ -6050,11 +5945,8 @@ export const DownloadSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadSystemapksVariantsRequest>;
 
 export interface DownloadSystemapksVariantsResponse {}
-export const DownloadSystemapksVariantsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DownloadSystemapksVariantsResponse",
-}) as any as S.Schema<DownloadSystemapksVariantsResponse>;
+export const DownloadSystemapksVariantsResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<DownloadSystemapksVariantsResponse>;
 
 /** Reference to a private key hosted in developer-managed Google Cloud KMS. */
 export interface CloudKmsKey {
@@ -6317,17 +6209,10 @@ export interface CatalogPermission {
   /** The `maxSdkVersion` attribute indicating up to which Android SDK version the permission is requested. */
   maxSdkVersion?: number;
 }
-export const CatalogPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    maxSdkVersion: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CatalogPermission" }) as any as S.Schema<CatalogPermission>;
+export const CatalogPermission = UsesPermission as any as S.Schema<CatalogPermission>;
 
 export type CatalogPermissionList = Array<CatalogPermission>;
-export const CatalogPermissionList = /*@__PURE__*/ S.Array(
-  CatalogPermission,
-) as any as S.Schema<CatalogPermissionList>;
+export const CatalogPermissionList = UsesPermissionList as any as S.Schema<CatalogPermissionList>;
 
 /** A video asset. */
 export interface VideoAsset {
@@ -10269,9 +10154,7 @@ export const RefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RefundOrdersRequest" }) as any as S.Schema<RefundOrdersRequest>;
 
 export interface RefundOrdersResponse {}
-export const RefundOrdersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RefundOrdersResponse",
-}) as any as S.Schema<RefundOrdersResponse>;
+export const RefundOrdersResponse = AddTargetingResponse as any as S.Schema<RefundOrdersResponse>;
 
 /** Request to reply to review or update existing reply. */
 export interface ReviewsReplyRequest {
@@ -10439,9 +10322,8 @@ export const ReviewrefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewrefundOrdersRequest>;
 
 export interface ReviewrefundOrdersResponse {}
-export const ReviewrefundOrdersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReviewrefundOrdersResponse",
-}) as any as S.Schema<ReviewrefundOrdersResponse>;
+export const ReviewrefundOrdersResponse =
+  AddTargetingResponse as any as S.Schema<ReviewrefundOrdersResponse>;
 
 /** Used to determine if the refund type in the RevocationContext is a full refund. */
 export type RevocationContextFullRefund = OneTimeProductOfferNoPriceOverrideOptions;
@@ -10520,11 +10402,8 @@ export const RevokePurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() 
 
 /** Response for the purchases.subscriptionsv2.revoke API. */
 export interface RevokeSubscriptionPurchaseResponse {}
-export const RevokeSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeSubscriptionPurchaseResponse",
-}) as any as S.Schema<RevokeSubscriptionPurchaseResponse>;
+export const RevokeSubscriptionPurchaseResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<RevokeSubscriptionPurchaseResponse>;
 
 /** Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and its associated proof of rotation. */
 export interface RotatedCloudKmsKey {
@@ -10998,11 +10877,8 @@ export const UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest =
 
 /** Response for updating the publish status of an app store hosted app. */
 export interface UpdateAppStoreHostedAppPublishStatusResponse {}
-export const UpdateAppStoreHostedAppPublishStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAppStoreHostedAppPublishStatusResponse",
-}) as any as S.Schema<UpdateAppStoreHostedAppPublishStatusResponse>;
+export const UpdateAppStoreHostedAppPublishStatusResponse =
+  AcknowledgePurchasesProductsResponse as any as S.Schema<UpdateAppStoreHostedAppPublishStatusResponse>;
 
 export interface UpdateEditsDetailsRequest {
   /** Package name of the app. */

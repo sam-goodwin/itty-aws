@@ -502,9 +502,8 @@ export const CreateBackupAndExportResponseErrorDetailsList = /*@__PURE__*/ S.Arr
 
 /** The error additional info. */
 export type CreateBackupAndExportResponseErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const CreateBackupAndExportResponseErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<CreateBackupAndExportResponseErrorAdditionalInfoList>;
+export const CreateBackupAndExportResponseErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<CreateBackupAndExportResponseErrorAdditionalInfoList>;
 
 /** The error detail. */
 export interface CreateBackupAndExportResponseError {
@@ -1040,10 +1039,8 @@ export const CreateServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateServerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServerResponseTagsMap>;
+export const CreateServerResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<CreateServerResponseTagsMap>;
 
 /** The state of a server. */
 export type ServerState =
@@ -1512,9 +1509,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1545,9 +1541,8 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRuleRequest>;
 
 export interface DeleteFirewallRuleResponse {}
-export const DeleteFirewallRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallRuleResponse",
-}) as any as S.Schema<DeleteFirewallRuleResponse>;
+export const DeleteFirewallRuleResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteFirewallRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1578,11 +1573,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteAzureADAdministratorResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1608,9 +1600,8 @@ export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServerRequest" }) as any as S.Schema<DeleteServerRequest>;
 
 export interface DeleteServerResponse {}
-export const DeleteServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServerResponse",
-}) as any as S.Schema<DeleteServerResponse>;
+export const DeleteServerResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteServerResponse>;
 
 export interface DeleteServerKeyRequest {
   /** The ID of the target subscription. */
@@ -1639,9 +1630,8 @@ export const DeleteServerKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServerKeyRequest" }) as any as S.Schema<DeleteServerKeyRequest>;
 
 export interface DeleteServerKeyResponse {}
-export const DeleteServerKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServerKeyResponse",
-}) as any as S.Schema<DeleteServerKeyResponse>;
+export const DeleteServerKeyResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteServerKeyResponse>;
 
 export interface DetachServerVNetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1671,10 +1661,8 @@ export const DetachServerVNetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DetachServerVNetResponseTagsMap = { [key: string]: string | undefined };
-export const DetachServerVNetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DetachServerVNetResponseTagsMap>;
+export const DetachServerVNetResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<DetachServerVNetResponseTagsMap>;
 
 export interface DetachServerVNetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1696,19 +1684,8 @@ export interface DetachServerVNetResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
-export const DetachServerVNetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DetachServerVNetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ServerProperties),
-    identity: S.optional(MySQLServerIdentity),
-    sku: S.optional(MySQLServerSku),
-  }),
-).annotate({ identifier: "DetachServerVNetResponse" }) as any as S.Schema<DetachServerVNetResponse>;
+export const DetachServerVNetResponse =
+  CreateServerResponse as any as S.Schema<DetachServerVNetResponse>;
 
 export interface ExecuteCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1986,17 +1963,8 @@ export interface GetAdvancedThreatProtectionSettingsResponse {
   /** Resource properties. */
   properties?: AdvancedThreatProtectionProperties;
 }
-export const GetAdvancedThreatProtectionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AdvancedThreatProtectionProperties),
-  }),
-).annotate({
-  identifier: "GetAdvancedThreatProtectionSettingsResponse",
-}) as any as S.Schema<GetAdvancedThreatProtectionSettingsResponse>;
+export const GetAdvancedThreatProtectionSettingsResponse =
+  AdvancedThreatProtectionSettingsUpdatePutResponse as any as S.Schema<GetAdvancedThreatProtectionSettingsResponse>;
 
 export type GetAzureADAdministratorRequestAdministratorName = "ActiveDirectory";
 export const GetAzureADAdministratorRequestAdministratorName = S.String;
@@ -2041,17 +2009,8 @@ export interface GetAzureADAdministratorResponse {
   /** The properties of an administrator. */
   properties?: AdministratorProperties;
 }
-export const GetAzureADAdministratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AdministratorProperties),
-  }),
-).annotate({
-  identifier: "GetAzureADAdministratorResponse",
-}) as any as S.Schema<GetAzureADAdministratorResponse>;
+export const GetAzureADAdministratorResponse =
+  AzureADAdministratorsCreateOrUpdateResponse as any as S.Schema<GetAzureADAdministratorResponse>;
 
 export interface GetBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2289,9 +2248,8 @@ export const GetLocationBasedCapabilitySetRequest = /*@__PURE__*/ S.suspend(() =
 
 /** supported geo backup regions */
 export type CapabilityPropertiesV2SupportedGeoBackupRegionsList = Array<string>;
-export const CapabilityPropertiesV2SupportedGeoBackupRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityPropertiesV2SupportedGeoBackupRegionsList>;
+export const CapabilityPropertiesV2SupportedGeoBackupRegionsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<CapabilityPropertiesV2SupportedGeoBackupRegionsList>;
 
 /** storage edition capability */
 export interface StorageEditionCapability {
@@ -2330,15 +2288,13 @@ export const ServerEditionCapabilityV2SupportedStorageEditionsList = /*@__PURE__
 
 /** Supported zones */
 export type SkuCapabilityV2SupportedZonesList = Array<string>;
-export const SkuCapabilityV2SupportedZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuCapabilityV2SupportedZonesList>;
+export const SkuCapabilityV2SupportedZonesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SkuCapabilityV2SupportedZonesList>;
 
 /** Supported high availability mode */
 export type SkuCapabilityV2SupportedHAModeList = Array<string>;
-export const SkuCapabilityV2SupportedHAModeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuCapabilityV2SupportedHAModeList>;
+export const SkuCapabilityV2SupportedHAModeList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SkuCapabilityV2SupportedHAModeList>;
 
 /** Sku capability */
 export interface SkuCapabilityV2 {
@@ -2529,17 +2485,8 @@ export interface GetLongRunningBackupResponse {
   /** The properties of a server backup. */
   properties?: ServerBackupPropertiesV2;
 }
-export const GetLongRunningBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServerBackupPropertiesV2),
-  }),
-).annotate({
-  identifier: "GetLongRunningBackupResponse",
-}) as any as S.Schema<GetLongRunningBackupResponse>;
+export const GetLongRunningBackupResponse =
+  CreateLongRunningBackupResponse as any as S.Schema<GetLongRunningBackupResponse>;
 
 export interface GetOperationProgressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2696,9 +2643,8 @@ export const GetOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type GetOperationResultResponseOperationsList = Array<OperationStatusResult>;
-export const GetOperationResultResponseOperationsList = /*@__PURE__*/ S.Array(
-  OperationStatusResult,
-) as any as S.Schema<GetOperationResultResponseOperationsList>;
+export const GetOperationResultResponseOperationsList =
+  GetOperationProgressResponseOperationsList as any as S.Schema<GetOperationResultResponseOperationsList>;
 
 /** The extended properties of Operation Results */
 export type GetOperationResultResponsePropertiesMap = { [key: string]: unknown | undefined };
@@ -2786,17 +2732,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  ServerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2828,15 +2765,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -2906,10 +2841,8 @@ export const GetServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServerResponseTagsMap = { [key: string]: string | undefined };
-export const GetServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServerResponseTagsMap>;
+export const GetServerResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<GetServerResponseTagsMap>;
 
 export interface GetServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2931,19 +2864,7 @@ export interface GetServerResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
-export const GetServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetServerResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ServerProperties),
-    identity: S.optional(MySQLServerIdentity),
-    sku: S.optional(MySQLServerSku),
-  }),
-).annotate({ identifier: "GetServerResponse" }) as any as S.Schema<GetServerResponse>;
+export const GetServerResponse = CreateServerResponse as any as S.Schema<GetServerResponse>;
 
 export interface GetServerKeyRequest {
   /** The ID of the target subscription. */
@@ -3190,15 +3111,7 @@ export interface ServerBackup {
   /** The properties of a server backup. */
   properties?: ServerBackupProperties;
 }
-export const ServerBackup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServerBackupProperties),
-  }),
-).annotate({ identifier: "ServerBackup" }) as any as S.Schema<ServerBackup>;
+export const ServerBackup = GetBackupResponse as any as S.Schema<ServerBackup>;
 
 /** The ServerBackup items on this page */
 export type ServerBackupListResultValueList = Array<ServerBackup>;
@@ -3270,15 +3183,7 @@ export interface Configuration {
   /** The properties of a configuration. */
   properties?: ConfigurationProperties;
 }
-export const Configuration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigurationProperties),
-  }),
-).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
+export const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
 export type ConfigurationListResultValueList = Array<Configuration>;
@@ -3338,15 +3243,7 @@ export interface Database {
   /** The properties of a database. */
   properties?: DatabaseProperties;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseProperties),
-  }),
-).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
+export const Database = GetDatabaseResponse as any as S.Schema<Database>;
 
 /** The Database items on this page */
 export type DatabaseListResultValueList = Array<Database>;
@@ -3406,15 +3303,7 @@ export interface FirewallRule {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
-export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: FirewallRuleProperties,
-  }),
-).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
+export const FirewallRule = GetFirewallRuleResponse as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
 export type FirewallRuleListResultValueList = Array<FirewallRule>;
@@ -3460,21 +3349,18 @@ export const ListLocationBasedCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Supported high availability mode */
 export type CapabilityPropertiesSupportedHAModeList = Array<string>;
-export const CapabilityPropertiesSupportedHAModeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityPropertiesSupportedHAModeList>;
+export const CapabilityPropertiesSupportedHAModeList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<CapabilityPropertiesSupportedHAModeList>;
 
 /** supported geo backup regions */
 export type CapabilityPropertiesSupportedGeoBackupRegionsList = Array<string>;
-export const CapabilityPropertiesSupportedGeoBackupRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityPropertiesSupportedGeoBackupRegionsList>;
+export const CapabilityPropertiesSupportedGeoBackupRegionsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<CapabilityPropertiesSupportedGeoBackupRegionsList>;
 
 /** A list of supported storage editions */
 export type ServerEditionCapabilitySupportedStorageEditionsList = Array<StorageEditionCapability>;
-export const ServerEditionCapabilitySupportedStorageEditionsList = /*@__PURE__*/ S.Array(
-  StorageEditionCapability,
-) as any as S.Schema<ServerEditionCapabilitySupportedStorageEditionsList>;
+export const ServerEditionCapabilitySupportedStorageEditionsList =
+  ServerEditionCapabilityV2SupportedStorageEditionsList as any as S.Schema<ServerEditionCapabilitySupportedStorageEditionsList>;
 
 /** Sku capability */
 export interface SkuCapability {
@@ -3979,10 +3865,8 @@ export const Origin = S.String;
 
 /** Additional descriptions for the operation. */
 export type OperationPropertiesMap = { [key: string]: unknown | undefined };
-export const OperationPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationPropertiesMap>;
+export const OperationPropertiesMap =
+  GetOperationResultResponsePropertiesMap as any as S.Schema<OperationPropertiesMap>;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -4058,9 +3942,8 @@ export const PrivateEndpointConnectionListResultValueItem =
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<ServerPropertiesPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  ServerPropertiesPrivateEndpointConnectionsItem,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  ServerPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
@@ -4171,10 +4054,7 @@ export const ListReplicasByServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServerTagsMap = { [key: string]: string | undefined };
-export const ServerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServerTagsMap>;
+export const ServerTagsMap = CreateServerRequestTagsMap as any as S.Schema<ServerTagsMap>;
 
 /** Represents a server. */
 export interface Server {
@@ -4197,19 +4077,7 @@ export interface Server {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
-export const Server = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ServerTagsMap),
-    location: S.String,
-    properties: S.optional(ServerProperties),
-    identity: S.optional(MySQLServerIdentity),
-    sku: S.optional(MySQLServerSku),
-  }),
-).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
+export const Server = CreateServerResponse as any as S.Schema<Server>;
 
 /** The Server items on this page */
 export type ServerListResultValueList = Array<Server>;
@@ -4289,15 +4157,7 @@ export interface ServerKey {
   /** Properties of the ServerKey Resource. */
   properties?: ServerKeyProperties;
 }
-export const ServerKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(ServerKeyProperties),
-  }),
-).annotate({ identifier: "ServerKey" }) as any as S.Schema<ServerKey>;
+export const ServerKey = GetServerKeyResponse as any as S.Schema<ServerKey>;
 
 /** A list of MySQL Server keys. */
 export type ServerKeyListResultValueList = Array<ServerKey>;
@@ -4399,17 +4259,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  ServerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export interface PutBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4449,15 +4300,7 @@ export interface PutBackupResponse {
   /** The properties of a server backup. */
   properties?: ServerBackupProperties;
 }
-export const PutBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServerBackupProperties),
-  }),
-).annotate({ identifier: "PutBackupResponse" }) as any as S.Schema<PutBackupResponse>;
+export const PutBackupResponse = GetBackupResponse as any as S.Schema<PutBackupResponse>;
 
 export interface ReadMaintenanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4497,15 +4340,7 @@ export interface ReadMaintenanceResponse {
   /** The properties of a maintenance */
   properties: MaintenanceProperties;
 }
-export const ReadMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: MaintenanceProperties,
-  }),
-).annotate({ identifier: "ReadMaintenanceResponse" }) as any as S.Schema<ReadMaintenanceResponse>;
+export const ReadMaintenanceResponse = Maintenance as any as S.Schema<ReadMaintenanceResponse>;
 
 export interface ResetServerGtidRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4534,9 +4369,8 @@ export const ResetServerGtidRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetServerGtidRequest" }) as any as S.Schema<ResetServerGtidRequest>;
 
 export interface ResetServerGtidResponse {}
-export const ResetServerGtidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetServerGtidResponse",
-}) as any as S.Schema<ResetServerGtidResponse>;
+export const ResetServerGtidResponse =
+  UserAssignedIdentityInput as any as S.Schema<ResetServerGtidResponse>;
 
 export interface RestartServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4568,9 +4402,8 @@ export const RestartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartServerRequest" }) as any as S.Schema<RestartServerRequest>;
 
 export interface RestartServerResponse {}
-export const RestartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartServerResponse",
-}) as any as S.Schema<RestartServerResponse>;
+export const RestartServerResponse =
+  UserAssignedIdentityInput as any as S.Schema<RestartServerResponse>;
 
 /** The key type like 'AzureKeyVault'. */
 export type ServerKeyPropertiesInputServerKeyType = "AzureKeyVault";
@@ -4669,9 +4502,8 @@ export const ServersFailoverRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServersFailoverRequest" }) as any as S.Schema<ServersFailoverRequest>;
 
 export interface ServersFailoverResponse {}
-export const ServersFailoverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ServersFailoverResponse",
-}) as any as S.Schema<ServersFailoverResponse>;
+export const ServersFailoverResponse =
+  UserAssignedIdentityInput as any as S.Schema<ServersFailoverResponse>;
 
 export interface ServersMigrationCutoverMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4700,10 +4532,8 @@ export const ServersMigrationCutoverMigrationRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type ServersMigrationCutoverMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const ServersMigrationCutoverMigrationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServersMigrationCutoverMigrationResponseTagsMap>;
+export const ServersMigrationCutoverMigrationResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<ServersMigrationCutoverMigrationResponseTagsMap>;
 
 export interface ServersMigrationCutoverMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4781,9 +4611,8 @@ export const ServersUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServersUpgradeRequest" }) as any as S.Schema<ServersUpgradeRequest>;
 
 export interface ServersUpgradeResponse {}
-export const ServersUpgradeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ServersUpgradeResponse",
-}) as any as S.Schema<ServersUpgradeResponse>;
+export const ServersUpgradeResponse =
+  UserAssignedIdentityInput as any as S.Schema<ServersUpgradeResponse>;
 
 export interface StartServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4809,9 +4638,8 @@ export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServerRequest" }) as any as S.Schema<StartServerRequest>;
 
 export interface StartServerResponse {}
-export const StartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartServerResponse",
-}) as any as S.Schema<StartServerResponse>;
+export const StartServerResponse =
+  UserAssignedIdentityInput as any as S.Schema<StartServerResponse>;
 
 export interface StopServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4837,9 +4665,7 @@ export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServerRequest" }) as any as S.Schema<StopServerRequest>;
 
 export interface StopServerResponse {}
-export const StopServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServerResponse",
-}) as any as S.Schema<StopServerResponse>;
+export const StopServerResponse = UserAssignedIdentityInput as any as S.Schema<StopServerResponse>;
 
 export type UpdateAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName = "Default";
 export const UpdateAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName = S.String;
@@ -4903,17 +4729,8 @@ export interface UpdateAdvancedThreatProtectionSettingsResponse {
   /** Resource properties. */
   properties?: AdvancedThreatProtectionProperties;
 }
-export const UpdateAdvancedThreatProtectionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AdvancedThreatProtectionProperties),
-  }),
-).annotate({
-  identifier: "UpdateAdvancedThreatProtectionSettingsResponse",
-}) as any as S.Schema<UpdateAdvancedThreatProtectionSettingsResponse>;
+export const UpdateAdvancedThreatProtectionSettingsResponse =
+  AdvancedThreatProtectionSettingsUpdatePutResponse as any as S.Schema<UpdateAdvancedThreatProtectionSettingsResponse>;
 
 export interface UpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4958,17 +4775,8 @@ export interface UpdateConfigurationResponse {
   /** The properties of a configuration. */
   properties?: ConfigurationProperties;
 }
-export const UpdateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConfigurationProperties),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationResponse",
-}) as any as S.Schema<UpdateConfigurationResponse>;
+export const UpdateConfigurationResponse =
+  ConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationResponse>;
 
 /** The properties can be updated for a configuration. */
 export interface ConfigurationForBatchUpdateProperties {
@@ -5151,10 +4959,8 @@ export const ServerPropertiesForUpdateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateServerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerRequestTagsMap>;
+export const UpdateServerRequestTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<UpdateServerRequestTagsMap>;
 
 export interface UpdateServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5193,10 +4999,8 @@ export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerResponseTagsMap>;
+export const UpdateServerResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<UpdateServerResponseTagsMap>;
 
 export interface UpdateServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5218,19 +5022,7 @@ export interface UpdateServerResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
-export const UpdateServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateServerResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ServerProperties),
-    identity: S.optional(MySQLServerIdentity),
-    sku: S.optional(MySQLServerSku),
-  }),
-).annotate({ identifier: "UpdateServerResponse" }) as any as S.Schema<UpdateServerResponse>;
+export const UpdateServerResponse = CreateServerResponse as any as S.Schema<UpdateServerResponse>;
 
 export interface ValidateBackupAndExportBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */

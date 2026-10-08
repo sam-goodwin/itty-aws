@@ -126,7 +126,7 @@ export type RecordIdentifiers = string[];
 export const RecordIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export type FeatureName = string;
 export type FeatureNames = string[];
-export const FeatureNames = /*@__PURE__*/ S.Array(S.String);
+export const FeatureNames = RecordIdentifiers as any as S.Schema<FeatureNames>;
 export interface BatchGetRecordIdentifier {
   FeatureGroupName?: string;
   RecordIdentifiersValueAsString?: string[];
@@ -155,7 +155,7 @@ export const BatchGetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/BatchGetRecord" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "BatchGetRecordRequest" }) as any as S.Schema<BatchGetRecordRequest>;
 export type ValueAsStringList = string[];
-export const ValueAsStringList = /*@__PURE__*/ S.Array(S.String);
+export const ValueAsStringList = RecordIdentifiers as any as S.Schema<ValueAsStringList>;
 export interface FeatureValue {
   FeatureName?: string;
   ValueAsString?: string;
@@ -207,7 +207,8 @@ export const BatchGetRecordError_ = /*@__PURE__*/ S.suspend(() =>
 export type BatchGetRecordErrors = BatchGetRecordError_[];
 export const BatchGetRecordErrors = /*@__PURE__*/ S.Array(BatchGetRecordError_);
 export type UnprocessedIdentifiers = BatchGetRecordIdentifier[];
-export const UnprocessedIdentifiers = /*@__PURE__*/ S.Array(BatchGetRecordIdentifier);
+export const UnprocessedIdentifiers =
+  BatchGetRecordIdentifiers as any as S.Schema<UnprocessedIdentifiers>;
 export interface BatchGetRecordResponse {
   Records: (BatchGetRecordResultDetail & {
     FeatureGroupName: ValueAsString;
@@ -291,7 +292,8 @@ export const BatchWriteRecordError_ = /*@__PURE__*/ S.suspend(() =>
 export type BatchWriteRecordErrors = BatchWriteRecordError_[];
 export const BatchWriteRecordErrors = /*@__PURE__*/ S.Array(BatchWriteRecordError_);
 export type UnprocessedBatchWriteRecordEntries = BatchWriteRecordEntry[];
-export const UnprocessedBatchWriteRecordEntries = /*@__PURE__*/ S.Array(BatchWriteRecordEntry);
+export const UnprocessedBatchWriteRecordEntries =
+  BatchWriteRecordEntries as any as S.Schema<UnprocessedBatchWriteRecordEntries>;
 export interface BatchWriteRecordResponse {
   Errors: (BatchWriteRecordError & {
     Entry: BatchWriteRecordEntry & {
@@ -408,7 +410,7 @@ export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListRecordsRequest" }) as any as S.Schema<ListRecordsRequest>;
 export type RecordIdentifierList = string[];
-export const RecordIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const RecordIdentifierList = RecordIdentifiers as any as S.Schema<RecordIdentifierList>;
 export interface ListRecordsResponse {
   RecordIdentifiers: string[];
   NextToken?: string;
@@ -443,9 +445,7 @@ export const PutRecordRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutRecordRequest" }) as any as S.Schema<PutRecordRequest>;
 export interface PutRecordResponse {}
-export const PutRecordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutRecordResponse",
-}) as any as S.Schema<PutRecordResponse>;
+export const PutRecordResponse = DeleteRecordResponse as any as S.Schema<PutRecordResponse>;
 export interface UpdateRecordRequest {
   FeatureGroupName: string;
   RecordIdentifierValueAsString?: string;
@@ -472,9 +472,7 @@ export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRecordRequest" }) as any as S.Schema<UpdateRecordRequest>;
 export interface UpdateRecordResponse {}
-export const UpdateRecordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRecordResponse",
-}) as any as S.Schema<UpdateRecordResponse>;
+export const UpdateRecordResponse = DeleteRecordResponse as any as S.Schema<UpdateRecordResponse>;
 export type BatchGetRecordError =
   | AccessForbidden
   | InternalFailure

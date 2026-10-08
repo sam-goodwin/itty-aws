@@ -178,7 +178,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 export type ReferenceUrls = string[];
 export const ReferenceUrls = /*@__PURE__*/ S.Array(S.String);
 export type RelatedVulnerabilities = string[];
-export const RelatedVulnerabilities = /*@__PURE__*/ S.Array(S.String);
+export const RelatedVulnerabilities = ReferenceUrls as any as S.Schema<RelatedVulnerabilities>;
 export interface CodeLine {
   number?: number;
   content?: string;
@@ -250,7 +250,7 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 export type DetectorTags = string[];
-export const DetectorTags = /*@__PURE__*/ S.Array(S.String);
+export const DetectorTags = ReferenceUrls as any as S.Schema<DetectorTags>;
 export interface Finding {
   createdAt?: Date;
   description?: string;
@@ -496,7 +496,8 @@ export const ScanNameWithFindingNum = /*@__PURE__*/ S.suspend(() =>
 export type ScansWithMostOpenFindings = ScanNameWithFindingNum[];
 export const ScansWithMostOpenFindings = /*@__PURE__*/ S.Array(ScanNameWithFindingNum);
 export type ScansWithMostOpenCriticalFindings = ScanNameWithFindingNum[];
-export const ScansWithMostOpenCriticalFindings = /*@__PURE__*/ S.Array(ScanNameWithFindingNum);
+export const ScansWithMostOpenCriticalFindings =
+  ScansWithMostOpenFindings as any as S.Schema<ScansWithMostOpenCriticalFindings>;
 export interface MetricsSummary {
   date?: Date;
   openFindings?: FindingMetricsValuePerSeverity;
@@ -668,7 +669,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ReferenceUrls as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -682,9 +683,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountConfigurationRequest {
   encryptionConfig: EncryptionConfig;
 }
@@ -705,11 +704,8 @@ export const UpdateAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountConfigurationResponse {
   encryptionConfig: EncryptionConfig;
 }
-export const UpdateAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ encryptionConfig: EncryptionConfig }),
-).annotate({
-  identifier: "UpdateAccountConfigurationResponse",
-}) as any as S.Schema<UpdateAccountConfigurationResponse>;
+export const UpdateAccountConfigurationResponse =
+  GetAccountConfigurationResponse as any as S.Schema<UpdateAccountConfigurationResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"

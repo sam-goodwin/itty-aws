@@ -121,10 +121,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+export const AccountsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
 
 /** This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created. */
 export type AccountPropertiesRegionalAffinity = "Enabled" | "Disabled";
@@ -308,10 +306,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 export interface GetAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -546,10 +542,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsMap>;
+export const AccountTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountTagsMap>;
 
 /** A Playwright service account resource. */
 export interface Account {
@@ -568,17 +562,7 @@ export interface Account {
   /** The resource-specific properties for this resource. */
   properties?: AccountProperties;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AccountTagsMap),
-    location: S.String,
-    properties: S.optional(AccountProperties),
-  }),
-).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
+export const Account = GetAccountResponse as any as S.Schema<Account>;
 
 /** The Account items on this page */
 export type AccountListResultValueList = Array<Account>;
@@ -657,15 +641,7 @@ export interface AccountQuota {
   /** The resource-specific properties for this resource. */
   properties?: AccountQuotaProperties;
 }
-export const AccountQuota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AccountQuotaProperties),
-  }),
-).annotate({ identifier: "AccountQuota" }) as any as S.Schema<AccountQuota>;
+export const AccountQuota = GetAccountQuotasResponse as any as S.Schema<AccountQuota>;
 
 /** The AccountQuota items on this page */
 export type AccountQuotaListResultValueList = Array<AccountQuota>;
@@ -804,15 +780,7 @@ export interface Quota {
   /** The resource-specific properties for this resource. */
   properties?: QuotaProperties;
 }
-export const Quota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(QuotaProperties),
-  }),
-).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
+export const Quota = GetQuotasResponse as any as S.Schema<Quota>;
 
 /** The Quota items on this page */
 export type QuotaListResultValueList = Array<Quota>;
@@ -836,10 +804,8 @@ export const QuotaListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** The enablement status of a feature. */
 export type EnablementStatus = "Enabled" | "Disabled";
@@ -896,10 +862,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 export interface UpdateAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -917,17 +881,7 @@ export interface UpdateAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: AccountProperties;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAccountResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AccountProperties),
-  }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Create a Account */

@@ -230,15 +230,13 @@ export const CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList = /*@__
 
 /** Matches if the route carries any one of these BGP standard communities (logical OR within the list). Format is 'asn:value' per RFC 1997 (both halves must fit in a uint32, i.e. 0..4294967295). Extended, large and well-known communities are not supported. */
 export type CreateGatewayBGPFilterRuleRequestMatchCommunitiesList = Array<string>;
-export const CreateGatewayBGPFilterRuleRequestMatchCommunitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchCommunitiesList>;
+export const CreateGatewayBGPFilterRuleRequestMatchCommunitiesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchCommunitiesList>;
 
 /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type CreateGatewayBGPFilterRuleRequestMatchPrefixesList = Array<string>;
-export const CreateGatewayBGPFilterRuleRequestMatchPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchPrefixesList>;
+export const CreateGatewayBGPFilterRuleRequestMatchPrefixesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayBGPFilterRuleRequestMatchPrefixesList>;
 
 /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
 export interface CreateGatewayBGPFilterRuleRequestMatch {
@@ -326,21 +324,18 @@ export const BGPFilterRuleAction = S.String;
 
 /** Matches if the AS-PATH contains any one of the listed ASNs (logical OR within the list). Treated as an unordered set; ordering is not preserved by the storage layer. When combined with firstASN, both conditions must hold (logical AND, consistent with the rest of the match block). If firstASN is also listed here, its presence as the first hop is sufficient to satisfy this list; no duplicate hop is required. */
 export type BGPFilterRuleMatchAsPathContainsAnyList = Array<number>;
-export const BGPFilterRuleMatchAsPathContainsAnyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BGPFilterRuleMatchAsPathContainsAnyList>;
+export const BGPFilterRuleMatchAsPathContainsAnyList =
+  CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList as any as S.Schema<BGPFilterRuleMatchAsPathContainsAnyList>;
 
 /** Matches if the route carries any one of these BGP standard communities (logical OR within the list). Format is 'asn:value' per RFC 1997 (both halves must fit in a uint32, i.e. 0..4294967295). Extended, large and well-known communities are not supported. */
 export type BGPFilterRuleMatchCommunitiesList = Array<string>;
-export const BGPFilterRuleMatchCommunitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BGPFilterRuleMatchCommunitiesList>;
+export const BGPFilterRuleMatchCommunitiesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<BGPFilterRuleMatchCommunitiesList>;
 
 /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type BGPFilterRuleMatchPrefixesList = Array<string>;
-export const BGPFilterRuleMatchPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BGPFilterRuleMatchPrefixesList>;
+export const BGPFilterRuleMatchPrefixesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<BGPFilterRuleMatchPrefixesList>;
 
 /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
 export interface BGPFilterRuleMatch {
@@ -404,21 +399,18 @@ export const CreateGatewayConnectionRequestRegion = S.String;
 
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type CreateGatewayConnectionRequestLocalSubnetsList = Array<string>;
-export const CreateGatewayConnectionRequestLocalSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGatewayConnectionRequestLocalSubnetsList>;
+export const CreateGatewayConnectionRequestLocalSubnetsList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayConnectionRequestLocalSubnetsList>;
 
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type CreateGatewayConnectionRequestRemoteSubnetsList = Array<string>;
-export const CreateGatewayConnectionRequestRemoteSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGatewayConnectionRequestRemoteSubnetsList>;
+export const CreateGatewayConnectionRequestRemoteSubnetsList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayConnectionRequestRemoteSubnetsList>;
 
 /** Optional. Use this for route-based VPN. */
 export type CreateGatewayConnectionRequestStaticRoutesList = Array<string>;
-export const CreateGatewayConnectionRequestStaticRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGatewayConnectionRequestStaticRoutesList>;
+export const CreateGatewayConnectionRequestStaticRoutesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<CreateGatewayConnectionRequestStaticRoutesList>;
 
 export interface BGPTunnelConfig {
   /** UUID of the BGPFilter to apply to incoming routes from this tunnel's BGP neighbor. The filter must exist in the same gateway. Multiple tunnels may reference the same BGPFilter; in that case the rules' 'match.peer' field can be used to scope behavior per neighbor. Outbound filtering is not yet supported; use gateway.bgp.overrideAdvertisedRoutes to control what is advertised. */
@@ -651,21 +643,18 @@ export const CreateGatewayConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type ConnectionResponseOutputLocalSubnetsList = Array<string>;
-export const ConnectionResponseOutputLocalSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionResponseOutputLocalSubnetsList>;
+export const ConnectionResponseOutputLocalSubnetsList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<ConnectionResponseOutputLocalSubnetsList>;
 
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type ConnectionResponseOutputRemoteSubnetsList = Array<string>;
-export const ConnectionResponseOutputRemoteSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionResponseOutputRemoteSubnetsList>;
+export const ConnectionResponseOutputRemoteSubnetsList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<ConnectionResponseOutputRemoteSubnetsList>;
 
 /** Optional. Use this for route-based VPN. */
 export type ConnectionResponseOutputStaticRoutesList = Array<string>;
-export const ConnectionResponseOutputStaticRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionResponseOutputStaticRoutesList>;
+export const ConnectionResponseOutputStaticRoutesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<ConnectionResponseOutputStaticRoutesList>;
 
 export type TunnelConfigurationOutputPhase1DhGroupsItem =
   | "modp1024"
@@ -911,9 +900,8 @@ export const DeleteGatewayBGPFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGatewayBGPFilterRequest>;
 
 export interface DeleteGatewayBGPFilterResponse {}
-export const DeleteGatewayBGPFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGatewayBGPFilterResponse",
-}) as any as S.Schema<DeleteGatewayBGPFilterResponse>;
+export const DeleteGatewayBGPFilterResponse =
+  DeleteGatewayResponse as any as S.Schema<DeleteGatewayBGPFilterResponse>;
 
 /** The region in which the resource is located. */
 export type DeleteGatewayBGPFilterRuleRequestRegion = "eu01" | "eu02";
@@ -1026,19 +1014,7 @@ export interface GetGatewayResponse {
   id?: string;
   state?: GatewayStatus;
 }
-export const GetGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availabilityZones: CreateGatewayRequestAvailabilityZones,
-    bgp: S.optional(BGPGatewayConfig),
-    displayName: S.String,
-    labels: S.optional(Label),
-    networkConfig: S.optional(NetworkConfig),
-    planId: S.String,
-    routingType: RoutingType,
-    id: S.optional(S.String),
-    state: S.optional(GatewayStatus),
-  }),
-).annotate({ identifier: "GetGatewayResponse" }) as any as S.Schema<GetGatewayResponse>;
+export const GetGatewayResponse = CreateGatewayResponse as any as S.Schema<GetGatewayResponse>;
 
 /** The region in which the resource is located. */
 export type GetGatewayBGPFilterRequestRegion = "eu01" | "eu02";
@@ -1573,19 +1549,7 @@ export interface GatewayResponse {
   id?: string;
   state?: GatewayStatus;
 }
-export const GatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availabilityZones: CreateGatewayRequestAvailabilityZones,
-    bgp: S.optional(BGPGatewayConfig),
-    displayName: S.String,
-    labels: S.optional(Label),
-    networkConfig: S.optional(NetworkConfig),
-    planId: S.String,
-    routingType: RoutingType,
-    id: S.optional(S.String),
-    state: S.optional(GatewayStatus),
-  }),
-).annotate({ identifier: "GatewayResponse" }) as any as S.Schema<GatewayResponse>;
+export const GatewayResponse = CreateGatewayResponse as any as S.Schema<GatewayResponse>;
 
 export type GatewayListGatewaysList = Array<GatewayResponse>;
 export const GatewayListGatewaysList = /*@__PURE__*/ S.Array(
@@ -1768,19 +1732,8 @@ export interface UpdateGatewayResponse {
   id?: string;
   state?: GatewayStatus;
 }
-export const UpdateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availabilityZones: CreateGatewayRequestAvailabilityZones,
-    bgp: S.optional(BGPGatewayConfig),
-    displayName: S.String,
-    labels: S.optional(Label),
-    networkConfig: S.optional(NetworkConfig),
-    planId: S.String,
-    routingType: RoutingType,
-    id: S.optional(S.String),
-    state: S.optional(GatewayStatus),
-  }),
-).annotate({ identifier: "UpdateGatewayResponse" }) as any as S.Schema<UpdateGatewayResponse>;
+export const UpdateGatewayResponse =
+  CreateGatewayResponse as any as S.Schema<UpdateGatewayResponse>;
 
 /** The region in which the resource is located. */
 export type UpdateGatewayBGPFilterRequestRegion = "eu01" | "eu02";
@@ -1823,21 +1776,18 @@ export const UpdateGatewayBGPFilterRuleRequestAction = S.String;
 
 /** Matches if the AS-PATH contains any one of the listed ASNs (logical OR within the list). Treated as an unordered set; ordering is not preserved by the storage layer. When combined with firstASN, both conditions must hold (logical AND, consistent with the rest of the match block). If firstASN is also listed here, its presence as the first hop is sufficient to satisfy this list; no duplicate hop is required. */
 export type UpdateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList = Array<number>;
-export const UpdateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList>;
+export const UpdateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList =
+  CreateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList>;
 
 /** Matches if the route carries any one of these BGP standard communities (logical OR within the list). Format is 'asn:value' per RFC 1997 (both halves must fit in a uint32, i.e. 0..4294967295). Extended, large and well-known communities are not supported. */
 export type UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList = Array<string>;
-export const UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList>;
+export const UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList>;
 
 /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
 export type UpdateGatewayBGPFilterRuleRequestMatchPrefixesList = Array<string>;
-export const UpdateGatewayBGPFilterRuleRequestMatchPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatchPrefixesList>;
+export const UpdateGatewayBGPFilterRuleRequestMatchPrefixesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatchPrefixesList>;
 
 /** Optional matching criteria. If omitted entirely, the rule acts as match-all. All non-empty fields in this block must match (logical AND). */
 export interface UpdateGatewayBGPFilterRuleRequestMatch {
@@ -1856,19 +1806,8 @@ export interface UpdateGatewayBGPFilterRuleRequestMatch {
   /** List of IPv4 networks to match. A route's prefix matches if it equals one of these (subject to minPrefixLength/maxPrefixLength refinement). If omitted, an implicit 0.0.0.0/0 base is used when minPrefixLength or maxPrefixLength is set; if all three are omitted, prefix matching is not performed at all. Each entry must parse as a valid IPv4 CIDR; the network portion is normalised (10.0.0.5/24 -> 10.0.0.0/24). */
   prefixes?: UpdateGatewayBGPFilterRuleRequestMatchPrefixesList;
 }
-export const UpdateGatewayBGPFilterRuleRequestMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asPathContainsAny: S.optional(UpdateGatewayBGPFilterRuleRequestMatchAsPathContainsAnyList),
-    communities: S.optional(UpdateGatewayBGPFilterRuleRequestMatchCommunitiesList),
-    firstASN: S.optional(S.Number),
-    maxPrefixLength: S.optional(S.Number),
-    minPrefixLength: S.optional(S.Number),
-    peer: S.optional(S.String),
-    prefixes: S.optional(UpdateGatewayBGPFilterRuleRequestMatchPrefixesList),
-  }),
-).annotate({
-  identifier: "UpdateGatewayBGPFilterRuleRequestMatch",
-}) as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatch>;
+export const UpdateGatewayBGPFilterRuleRequestMatch =
+  CreateGatewayBGPFilterRuleRequestMatch as any as S.Schema<UpdateGatewayBGPFilterRuleRequestMatch>;
 
 /** Optional BGP attributes to apply when 'action' is PERMIT. Ignored for DENY rules. */
 export type UpdateGatewayBGPFilterRuleRequestSet = CreateGatewayBGPFilterRuleRequestSet;
@@ -1918,21 +1857,18 @@ export const UpdateGatewayConnectionRequestRegion = S.String;
 
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type UpdateGatewayConnectionRequestLocalSubnetsList = Array<string>;
-export const UpdateGatewayConnectionRequestLocalSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGatewayConnectionRequestLocalSubnetsList>;
+export const UpdateGatewayConnectionRequestLocalSubnetsList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayConnectionRequestLocalSubnetsList>;
 
 /** Optional. Defaults to 0.0.0.0/0 for Route-based VPN configurations. Mandatory for Policy-based. */
 export type UpdateGatewayConnectionRequestRemoteSubnetsList = Array<string>;
-export const UpdateGatewayConnectionRequestRemoteSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGatewayConnectionRequestRemoteSubnetsList>;
+export const UpdateGatewayConnectionRequestRemoteSubnetsList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayConnectionRequestRemoteSubnetsList>;
 
 /** Optional. Use this for route-based VPN. */
 export type UpdateGatewayConnectionRequestStaticRoutesList = Array<string>;
-export const UpdateGatewayConnectionRequestStaticRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGatewayConnectionRequestStaticRoutesList>;
+export const UpdateGatewayConnectionRequestStaticRoutesList =
+  BGPGatewayConfigOverrideAdvertisedRoutesList as any as S.Schema<UpdateGatewayConnectionRequestStaticRoutesList>;
 
 export interface UpdateGatewayConnectionRequest {
   projectId: string;

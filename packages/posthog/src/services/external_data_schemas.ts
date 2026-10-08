@@ -85,11 +85,8 @@ export const CreateExternalDataSchemasReloadRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateExternalDataSchemasReloadRequest>;
 
 export interface CreateExternalDataSchemasReloadResponse {}
-export const CreateExternalDataSchemasReloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateExternalDataSchemasReloadResponse",
-}) as any as S.Schema<CreateExternalDataSchemasReloadResponse>;
+export const CreateExternalDataSchemasReloadResponse =
+  CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<CreateExternalDataSchemasReloadResponse>;
 
 export interface CreateExternalDataSchemasResyncRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -113,11 +110,8 @@ export const CreateExternalDataSchemasResyncRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateExternalDataSchemasResyncRequest>;
 
 export interface CreateExternalDataSchemasResyncResponse {}
-export const CreateExternalDataSchemasResyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateExternalDataSchemasResyncResponse",
-}) as any as S.Schema<CreateExternalDataSchemasResyncResponse>;
+export const CreateExternalDataSchemasResyncResponse =
+  CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<CreateExternalDataSchemasResyncResponse>;
 
 export interface DeleteExternalDataSchemaDataDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -141,11 +135,8 @@ export const DeleteExternalDataSchemaDataDestroyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteExternalDataSchemaDataDestroyRequest>;
 
 export interface DeleteExternalDataSchemaDataDestroyResponse {}
-export const DeleteExternalDataSchemaDataDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteExternalDataSchemaDataDestroyResponse",
-}) as any as S.Schema<DeleteExternalDataSchemaDataDestroyResponse>;
+export const DeleteExternalDataSchemaDataDestroyResponse =
+  CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<DeleteExternalDataSchemaDataDestroyResponse>;
 
 export interface ExternalDataSchemasCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -201,11 +192,8 @@ export const ExternalDataSchemasDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSchemasDestroyRequest>;
 
 export interface ExternalDataSchemasDestroyResponse {}
-export const ExternalDataSchemasDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExternalDataSchemasDestroyResponse",
-}) as any as S.Schema<ExternalDataSchemasDestroyResponse>;
+export const ExternalDataSchemasDestroyResponse =
+  CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<ExternalDataSchemasDestroyResponse>;
 
 export interface GetExternalDataSchemaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -285,9 +273,8 @@ export const IncrementalSyncBlockedReasonEnum = S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemaEnabledColumnsList = Array<string>;
-export const ExternalDataSchemaEnabledColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
+export const ExternalDataSchemaEnabledColumnsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
 
 export interface ExternalDataSchemaRowFiltersItem {
   column: string;
@@ -334,9 +321,8 @@ export const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
 
 export type ExternalDataSchemaSourceSupportedApiVersionsList = Array<string>;
-export const ExternalDataSchemaSourceSupportedApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
+export const ExternalDataSchemaSourceSupportedApiVersionsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
 
 /** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint -- `null` elsewhere -- so read-only views can render without fetching the full source and all its schemas. */
 export interface ExternalDataSchemaSource {
@@ -494,15 +480,13 @@ export const GetExternalDataSchemasDestinationRequest = /*@__PURE__*/ S.suspend(
 
 /** The table's own destinations, or null when it follows its source. */
 export type SchemaDestinationsDestinationIdsList = Array<string>;
-export const SchemaDestinationsDestinationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SchemaDestinationsDestinationIdsList>;
+export const SchemaDestinationsDestinationIdsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<SchemaDestinationsDestinationIdsList>;
 
 /** Where the table actually syncs, after inheritance is resolved. */
 export type SchemaDestinationsEffectiveDestinationIdsList = Array<string>;
-export const SchemaDestinationsEffectiveDestinationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SchemaDestinationsEffectiveDestinationIdsList>;
+export const SchemaDestinationsEffectiveDestinationIdsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<SchemaDestinationsEffectiveDestinationIdsList>;
 
 /** Response shape for a table's destination override. */
 export interface SchemaDestinations {
@@ -561,11 +545,8 @@ export const GetExternalDataSchemasLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExternalDataSchemasLogRequest>;
 
 export interface GetExternalDataSchemasLogResponse {}
-export const GetExternalDataSchemasLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetExternalDataSchemasLogResponse",
-}) as any as S.Schema<GetExternalDataSchemasLogResponse>;
+export const GetExternalDataSchemasLogResponse =
+  CreateExternalDataSchemasIncrementalFieldResponse as any as S.Schema<GetExternalDataSchemasLogResponse>;
 
 export interface ListExternalDataSchemasRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -614,24 +595,21 @@ export const PaginatedExternalDataSchemaList = /*@__PURE__*/ S.suspend(() =>
 
 /** Column names for primary key deduplication. */
 export type UpdateExternalDataSchemaRequestPrimaryKeyColumnsList = Array<string>;
-export const UpdateExternalDataSchemaRequestPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExternalDataSchemaRequestPrimaryKeyColumnsList>;
+export const UpdateExternalDataSchemaRequestPrimaryKeyColumnsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemaRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type UpdateExternalDataSchemaRequestEnabledColumnsList = Array<string>;
-export const UpdateExternalDataSchemaRequestEnabledColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExternalDataSchemaRequestEnabledColumnsList>;
+export const UpdateExternalDataSchemaRequestEnabledColumnsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemaRequestEnabledColumnsList>;
 
 export type UpdateExternalDataSchemaRequestRowFiltersItem = ExternalDataSchemaRowFiltersItem;
 export const UpdateExternalDataSchemaRequestRowFiltersItem = ExternalDataSchemaRowFiltersItem;
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type UpdateExternalDataSchemaRequestRowFiltersList = Array<ExternalDataSchemaRowFiltersItem>;
-export const UpdateExternalDataSchemaRequestRowFiltersList = /*@__PURE__*/ S.Array(
-  ExternalDataSchemaRowFiltersItem,
-) as any as S.Schema<UpdateExternalDataSchemaRequestRowFiltersList>;
+export const UpdateExternalDataSchemaRequestRowFiltersList =
+  ExternalDataSchemaRowFiltersList as any as S.Schema<UpdateExternalDataSchemaRequestRowFiltersList>;
 
 export interface UpdateExternalDataSchemaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -730,15 +708,13 @@ export const UpdateExternalDataSchemasDestinationsPartialRequest = /*@__PURE__*/
 
 /** Column names for primary key deduplication. */
 export type UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList = Array<string>;
-export const UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList>;
+export const UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemasPartialRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type UpdateExternalDataSchemasPartialRequestEnabledColumnsList = Array<string>;
-export const UpdateExternalDataSchemasPartialRequestEnabledColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExternalDataSchemasPartialRequestEnabledColumnsList>;
+export const UpdateExternalDataSchemasPartialRequestEnabledColumnsList =
+  ExternalDataSchemaPrimaryKeyColumnsList as any as S.Schema<UpdateExternalDataSchemasPartialRequestEnabledColumnsList>;
 
 export type UpdateExternalDataSchemasPartialRequestRowFiltersItem =
   ExternalDataSchemaRowFiltersItem;
@@ -748,9 +724,8 @@ export const UpdateExternalDataSchemasPartialRequestRowFiltersItem =
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type UpdateExternalDataSchemasPartialRequestRowFiltersList =
   Array<ExternalDataSchemaRowFiltersItem>;
-export const UpdateExternalDataSchemasPartialRequestRowFiltersList = /*@__PURE__*/ S.Array(
-  ExternalDataSchemaRowFiltersItem,
-) as any as S.Schema<UpdateExternalDataSchemasPartialRequestRowFiltersList>;
+export const UpdateExternalDataSchemasPartialRequestRowFiltersList =
+  ExternalDataSchemaRowFiltersList as any as S.Schema<UpdateExternalDataSchemasPartialRequestRowFiltersList>;
 
 export interface UpdateExternalDataSchemasPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

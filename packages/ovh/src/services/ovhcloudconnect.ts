@@ -378,11 +378,8 @@ export const CreateOvhCloudConnectLoaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOvhCloudConnectLoaRequest>;
 
 export type CreateOvhCloudConnectLoaResponse = string;
-export const CreateOvhCloudConnectLoaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateOvhCloudConnectLoaResponse",
-}) as any as S.Schema<CreateOvhCloudConnectLoaResponse>;
+export const CreateOvhCloudConnectLoaResponse =
+  ConfirmOvhCloudConnectTerminationResponse as any as S.Schema<CreateOvhCloudConnectLoaResponse>;
 
 export interface CreateOvhCloudConnectLogSubscriptionRequest {
   /** Service name */
@@ -587,11 +584,8 @@ export const DeleteOvhCloudConnectMonitoringRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteOvhCloudConnectMonitoringRequest>;
 
 export interface DeleteOvhCloudConnectMonitoringResponse {}
-export const DeleteOvhCloudConnectMonitoringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOvhCloudConnectMonitoringResponse",
-}) as any as S.Schema<DeleteOvhCloudConnectMonitoringResponse>;
+export const DeleteOvhCloudConnectMonitoringResponse =
+  CreateOvhCloudConnectMonitoringResponse as any as S.Schema<DeleteOvhCloudConnectMonitoringResponse>;
 
 export interface GetOvhCloudConnectRequest {
   /** Service name */
@@ -647,9 +641,8 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** List of interfaces linked to a service */
 export type OvhcloudconnectServiceWithIAMInterfaceListList = Array<number>;
-export const OvhcloudconnectServiceWithIAMInterfaceListList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<OvhcloudconnectServiceWithIAMInterfaceListList>;
+export const OvhcloudconnectServiceWithIAMInterfaceListList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<OvhcloudconnectServiceWithIAMInterfaceListList>;
 
 /** Enum values for port quantity */
 export type OvhcloudconnectServicePortEnum = "1" | "2";
@@ -1213,9 +1206,8 @@ export const GetOvhCloudConnectLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-export const DbaasLogsLogKindAdditionalReturnedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
+export const DbaasLogsLogKindAdditionalReturnedFieldsList =
+  CreateOvhCloudConnectMonitoringRequestSubscriptionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
 
 /** Log kind */
 export interface DbaasLogsLogKind {
@@ -1323,9 +1315,8 @@ export const GetOvhCloudConnectServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1505,9 +1496,8 @@ export const ListOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOvhCloudConnectRequest>;
 
 export type ListOvhCloudConnectResponseBodyList = Array<string>;
-export const ListOvhCloudConnectResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOvhCloudConnectResponseBodyList>;
+export const ListOvhCloudConnectResponseBodyList =
+  CreateOvhCloudConnectMonitoringRequestSubscriptionsList as any as S.Schema<ListOvhCloudConnectResponseBodyList>;
 
 export type ListOvhCloudConnectResponse = ListOvhCloudConnectResponseBodyList;
 export const ListOvhCloudConnectResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1529,16 +1519,12 @@ export const ListOvhCloudConnectConfigPopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOvhCloudConnectConfigPopRequest>;
 
 export type ListOvhCloudConnectConfigPopResponseBodyList = Array<number>;
-export const ListOvhCloudConnectConfigPopResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectConfigPopResponseBodyList>;
+export const ListOvhCloudConnectConfigPopResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectConfigPopResponseBodyList>;
 
 export type ListOvhCloudConnectConfigPopResponse = ListOvhCloudConnectConfigPopResponseBodyList;
-export const ListOvhCloudConnectConfigPopResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectConfigPopResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectConfigPopResponse",
-}) as any as S.Schema<ListOvhCloudConnectConfigPopResponse>;
+export const ListOvhCloudConnectConfigPopResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectConfigPopResponse>;
 
 export interface ListOvhCloudConnectConfigPopDatacenterRequest {
   /** Service name */
@@ -1562,17 +1548,13 @@ export const ListOvhCloudConnectConfigPopDatacenterRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterRequest>;
 
 export type ListOvhCloudConnectConfigPopDatacenterResponseBodyList = Array<number>;
-export const ListOvhCloudConnectConfigPopDatacenterResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponseBodyList>;
+export const ListOvhCloudConnectConfigPopDatacenterResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponseBodyList>;
 
 export type ListOvhCloudConnectConfigPopDatacenterResponse =
   ListOvhCloudConnectConfigPopDatacenterResponseBodyList;
-export const ListOvhCloudConnectConfigPopDatacenterResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectConfigPopDatacenterResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectConfigPopDatacenterResponse",
-}) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponse>;
+export const ListOvhCloudConnectConfigPopDatacenterResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponse>;
 
 export interface ListOvhCloudConnectConfigPopDatacenterExtraRequest {
   /** Service name */
@@ -1599,17 +1581,13 @@ export const ListOvhCloudConnectConfigPopDatacenterExtraRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraRequest>;
 
 export type ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList = Array<number>;
-export const ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList>;
+export const ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList>;
 
 export type ListOvhCloudConnectConfigPopDatacenterExtraResponse =
   ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList;
-export const ListOvhCloudConnectConfigPopDatacenterExtraResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectConfigPopDatacenterExtraResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectConfigPopDatacenterExtraResponse",
-}) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponse>;
+export const ListOvhCloudConnectConfigPopDatacenterExtraResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponse>;
 
 /** Enum values for the period of the statistics */
 export type OvhcloudconnectInterfaceMetricsPeriodEnum = "daily" | "hourly" | "weekly";
@@ -1709,16 +1687,12 @@ export const ListOvhCloudConnectDatacenterRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListOvhCloudConnectDatacenterRequest>;
 
 export type ListOvhCloudConnectDatacenterResponseBodyList = Array<number>;
-export const ListOvhCloudConnectDatacenterResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectDatacenterResponseBodyList>;
+export const ListOvhCloudConnectDatacenterResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectDatacenterResponseBodyList>;
 
 export type ListOvhCloudConnectDatacenterResponse = ListOvhCloudConnectDatacenterResponseBodyList;
-export const ListOvhCloudConnectDatacenterResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectDatacenterResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectDatacenterResponse",
-}) as any as S.Schema<ListOvhCloudConnectDatacenterResponse>;
+export const ListOvhCloudConnectDatacenterResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectDatacenterResponse>;
 
 export interface ListOvhCloudConnectDiagnosticRequest {
   /** Service name */
@@ -1733,16 +1707,12 @@ export const ListOvhCloudConnectDiagnosticRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListOvhCloudConnectDiagnosticRequest>;
 
 export type ListOvhCloudConnectDiagnosticResponseBodyList = Array<number>;
-export const ListOvhCloudConnectDiagnosticResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectDiagnosticResponseBodyList>;
+export const ListOvhCloudConnectDiagnosticResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectDiagnosticResponseBodyList>;
 
 export type ListOvhCloudConnectDiagnosticResponse = ListOvhCloudConnectDiagnosticResponseBodyList;
-export const ListOvhCloudConnectDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectDiagnosticResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectDiagnosticResponse",
-}) as any as S.Schema<ListOvhCloudConnectDiagnosticResponse>;
+export const ListOvhCloudConnectDiagnosticResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectDiagnosticResponse>;
 
 export interface ListOvhCloudConnectIncidentRequest {
   /** Service name */
@@ -1757,16 +1727,12 @@ export const ListOvhCloudConnectIncidentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOvhCloudConnectIncidentRequest>;
 
 export type ListOvhCloudConnectIncidentResponseBodyList = Array<number>;
-export const ListOvhCloudConnectIncidentResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectIncidentResponseBodyList>;
+export const ListOvhCloudConnectIncidentResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectIncidentResponseBodyList>;
 
 export type ListOvhCloudConnectIncidentResponse = ListOvhCloudConnectIncidentResponseBodyList;
-export const ListOvhCloudConnectIncidentResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectIncidentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectIncidentResponse",
-}) as any as S.Schema<ListOvhCloudConnectIncidentResponse>;
+export const ListOvhCloudConnectIncidentResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectIncidentResponse>;
 
 export interface ListOvhCloudConnectInterfaceRequest {
   /** Service name */
@@ -1781,16 +1747,12 @@ export const ListOvhCloudConnectInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOvhCloudConnectInterfaceRequest>;
 
 export type ListOvhCloudConnectInterfaceResponseBodyList = Array<number>;
-export const ListOvhCloudConnectInterfaceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectInterfaceResponseBodyList>;
+export const ListOvhCloudConnectInterfaceResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectInterfaceResponseBodyList>;
 
 export type ListOvhCloudConnectInterfaceResponse = ListOvhCloudConnectInterfaceResponseBodyList;
-export const ListOvhCloudConnectInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectInterfaceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectInterfaceResponse",
-}) as any as S.Schema<ListOvhCloudConnectInterfaceResponse>;
+export const ListOvhCloudConnectInterfaceResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectInterfaceResponse>;
 
 /** Enum values for the type of the statistics */
 export type OvhcloudconnectInterfaceMetricsTypeEnum =
@@ -1830,17 +1792,13 @@ export const ListOvhCloudConnectInterfaceStatisticsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsRequest>;
 
 export type ListOvhCloudConnectInterfaceStatisticsResponseBodyList = Array<OvhcloudconnectMetrics>;
-export const ListOvhCloudConnectInterfaceStatisticsResponseBodyList = /*@__PURE__*/ S.Array(
-  OvhcloudconnectMetrics,
-) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponseBodyList>;
+export const ListOvhCloudConnectInterfaceStatisticsResponseBodyList =
+  ListOvhCloudConnectConfigPopStatisticsResponseBodyList as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponseBodyList>;
 
 export type ListOvhCloudConnectInterfaceStatisticsResponse =
   ListOvhCloudConnectInterfaceStatisticsResponseBodyList;
-export const ListOvhCloudConnectInterfaceStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectInterfaceStatisticsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectInterfaceStatisticsResponse",
-}) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponse>;
+export const ListOvhCloudConnectInterfaceStatisticsResponse =
+  ListOvhCloudConnectConfigPopStatisticsResponse as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponse>;
 
 export interface ListOvhCloudConnectLogKindRequest {
   /** Service name */
@@ -1855,16 +1813,12 @@ export const ListOvhCloudConnectLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOvhCloudConnectLogKindRequest>;
 
 export type ListOvhCloudConnectLogKindResponseBodyList = Array<string>;
-export const ListOvhCloudConnectLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOvhCloudConnectLogKindResponseBodyList>;
+export const ListOvhCloudConnectLogKindResponseBodyList =
+  CreateOvhCloudConnectMonitoringRequestSubscriptionsList as any as S.Schema<ListOvhCloudConnectLogKindResponseBodyList>;
 
 export type ListOvhCloudConnectLogKindResponse = ListOvhCloudConnectLogKindResponseBodyList;
-export const ListOvhCloudConnectLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectLogKindResponse",
-}) as any as S.Schema<ListOvhCloudConnectLogKindResponse>;
+export const ListOvhCloudConnectLogKindResponse =
+  ListOvhCloudConnectResponse as any as S.Schema<ListOvhCloudConnectLogKindResponse>;
 
 export interface ListOvhCloudConnectLogSubscriptionRequest {
   /** Service name */
@@ -1884,17 +1838,13 @@ export const ListOvhCloudConnectLogSubscriptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListOvhCloudConnectLogSubscriptionRequest>;
 
 export type ListOvhCloudConnectLogSubscriptionResponseBodyList = Array<string>;
-export const ListOvhCloudConnectLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponseBodyList>;
+export const ListOvhCloudConnectLogSubscriptionResponseBodyList =
+  CreateOvhCloudConnectMonitoringRequestSubscriptionsList as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponseBodyList>;
 
 export type ListOvhCloudConnectLogSubscriptionResponse =
   ListOvhCloudConnectLogSubscriptionResponseBodyList;
-export const ListOvhCloudConnectLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectLogSubscriptionResponse",
-}) as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponse>;
+export const ListOvhCloudConnectLogSubscriptionResponse =
+  ListOvhCloudConnectResponse as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponse>;
 
 export interface ListOvhCloudConnectMonitoringRequest {
   /** Service name */
@@ -1955,16 +1905,12 @@ export const ListOvhCloudConnectServiceKeyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListOvhCloudConnectServiceKeyRequest>;
 
 export type ListOvhCloudConnectServiceKeyResponseBodyList = Array<number>;
-export const ListOvhCloudConnectServiceKeyResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectServiceKeyResponseBodyList>;
+export const ListOvhCloudConnectServiceKeyResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectServiceKeyResponseBodyList>;
 
 export type ListOvhCloudConnectServiceKeyResponse = ListOvhCloudConnectServiceKeyResponseBodyList;
-export const ListOvhCloudConnectServiceKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectServiceKeyResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectServiceKeyResponse",
-}) as any as S.Schema<ListOvhCloudConnectServiceKeyResponse>;
+export const ListOvhCloudConnectServiceKeyResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectServiceKeyResponse>;
 
 export interface ListOvhCloudConnectTaskRequest {
   /** Service name */
@@ -1979,16 +1925,12 @@ export const ListOvhCloudConnectTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOvhCloudConnectTaskRequest>;
 
 export type ListOvhCloudConnectTaskResponseBodyList = Array<number>;
-export const ListOvhCloudConnectTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOvhCloudConnectTaskResponseBodyList>;
+export const ListOvhCloudConnectTaskResponseBodyList =
+  CreateOvhCloudConnectChangeContactResponseBodyList as any as S.Schema<ListOvhCloudConnectTaskResponseBodyList>;
 
 export type ListOvhCloudConnectTaskResponse = ListOvhCloudConnectTaskResponseBodyList;
-export const ListOvhCloudConnectTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOvhCloudConnectTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOvhCloudConnectTaskResponse",
-}) as any as S.Schema<ListOvhCloudConnectTaskResponse>;
+export const ListOvhCloudConnectTaskResponse =
+  CreateOvhCloudConnectChangeContactResponse as any as S.Schema<ListOvhCloudConnectTaskResponse>;
 
 export interface LockOvhCloudConnectInterfaceRequest {
   /** Service name */
@@ -2027,9 +1969,8 @@ export const PutOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutOvhCloudConnectRequest>;
 
 export interface PutOvhCloudConnectResponse {}
-export const PutOvhCloudConnectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutOvhCloudConnectResponse",
-}) as any as S.Schema<PutOvhCloudConnectResponse>;
+export const PutOvhCloudConnectResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutOvhCloudConnectResponse>;
 
 export interface PutOvhCloudConnectServiceInfosRequest {
   /** Service name */
@@ -2047,11 +1988,8 @@ export const PutOvhCloudConnectServiceInfosRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutOvhCloudConnectServiceInfosRequest>;
 
 export interface PutOvhCloudConnectServiceInfosResponse {}
-export const PutOvhCloudConnectServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutOvhCloudConnectServiceInfosResponse",
-}) as any as S.Schema<PutOvhCloudConnectServiceInfosResponse>;
+export const PutOvhCloudConnectServiceInfosResponse =
+  CreateOvhCloudConnectMonitoringResponse as any as S.Schema<PutOvhCloudConnectServiceInfosResponse>;
 
 export interface RegenerateOvhCloudConnectServiceKeyRequest {
   /** Service name */
@@ -2128,11 +2066,8 @@ export const TerminateOvhCloudConnectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateOvhCloudConnectRequest>;
 
 export type TerminateOvhCloudConnectResponse = string;
-export const TerminateOvhCloudConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateOvhCloudConnectResponse",
-}) as any as S.Schema<TerminateOvhCloudConnectResponse>;
+export const TerminateOvhCloudConnectResponse =
+  ConfirmOvhCloudConnectTerminationResponse as any as S.Schema<TerminateOvhCloudConnectResponse>;
 
 export interface UnlockOvhCloudConnectInterfaceRequest {
   /** Service name */

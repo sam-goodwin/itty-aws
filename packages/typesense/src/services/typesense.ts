@@ -112,9 +112,8 @@ export type AnalyticsRuleType = "popular_queries" | "nohits_queries" | "counter"
 export const AnalyticsRuleType = S.String;
 
 export type AnalyticsRuleCreateParamsMetaFieldsList = Array<string>;
-export const AnalyticsRuleCreateParamsMetaFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsRuleCreateParamsMetaFieldsList>;
+export const AnalyticsRuleCreateParamsMetaFieldsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<AnalyticsRuleCreateParamsMetaFieldsList>;
 
 export interface AnalyticsRuleCreateParams {
   destination_collection?: string;
@@ -185,9 +184,8 @@ export const CreateAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnalyticsRuleRequest>;
 
 export type AnalyticsRuleParamsMetaFieldsList = Array<string>;
-export const AnalyticsRuleParamsMetaFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsRuleParamsMetaFieldsList>;
+export const AnalyticsRuleParamsMetaFieldsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<AnalyticsRuleParamsMetaFieldsList>;
 
 export interface AnalyticsRuleParams {
   destination_collection?: string;
@@ -275,20 +273,17 @@ export const CreateAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type FieldTokenSeparatorsList = Array<string>;
-export const FieldTokenSeparatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FieldTokenSeparatorsList>;
+export const FieldTokenSeparatorsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<FieldTokenSeparatorsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type FieldSymbolsToIndexList = Array<string>;
-export const FieldSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FieldSymbolsToIndexList>;
+export const FieldSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<FieldSymbolsToIndexList>;
 
 export type FieldEmbedFromList = Array<string>;
-export const FieldEmbedFromList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FieldEmbedFromList>;
+export const FieldEmbedFromList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<FieldEmbedFromList>;
 
 export interface FieldEmbedModelConfig {
   model_name: string;
@@ -392,21 +387,18 @@ export const CreateCollectionRequestFieldsList = /*@__PURE__*/ S.Array(
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type CreateCollectionRequestTokenSeparatorsList = Array<string>;
-export const CreateCollectionRequestTokenSeparatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionRequestTokenSeparatorsList>;
+export const CreateCollectionRequestTokenSeparatorsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionRequestTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
 export type CreateCollectionRequestSynonymSetsList = Array<string>;
-export const CreateCollectionRequestSynonymSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionRequestSynonymSetsList>;
+export const CreateCollectionRequestSynonymSetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionRequestSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type CreateCollectionRequestSymbolsToIndexList = Array<string>;
-export const CreateCollectionRequestSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionRequestSymbolsToIndexList>;
+export const CreateCollectionRequestSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionRequestSymbolsToIndexList>;
 
 /** Configuration for the voice query model */
 export interface VoiceQueryModelCollectionConfig {
@@ -455,27 +447,23 @@ export const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type CreateCollectionResponseFieldsList = Array<Field>;
-export const CreateCollectionResponseFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<CreateCollectionResponseFieldsList>;
+export const CreateCollectionResponseFieldsList =
+  CreateCollectionRequestFieldsList as any as S.Schema<CreateCollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type CreateCollectionResponseTokenSeparatorsList = Array<string>;
-export const CreateCollectionResponseTokenSeparatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseTokenSeparatorsList>;
+export const CreateCollectionResponseTokenSeparatorsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
 export type CreateCollectionResponseSynonymSetsList = Array<string>;
-export const CreateCollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseSynonymSetsList>;
+export const CreateCollectionResponseSynonymSetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type CreateCollectionResponseSymbolsToIndexList = Array<string>;
-export const CreateCollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateCollectionResponseSymbolsToIndexList>;
+export const CreateCollectionResponseSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateCollectionResponseSymbolsToIndexList>;
 
 export interface CreateCollectionResponse {
   /** Name of the collection */
@@ -589,14 +577,12 @@ export const CreateConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConversationModelResponse>;
 
 export type CreateKeyRequestActionsList = Array<string>;
-export const CreateKeyRequestActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateKeyRequestActionsList>;
+export const CreateKeyRequestActionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyRequestActionsList>;
 
 export type CreateKeyRequestCollectionsList = Array<string>;
-export const CreateKeyRequestCollectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateKeyRequestCollectionsList>;
+export const CreateKeyRequestCollectionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyRequestCollectionsList>;
 
 export interface CreateKeyRequest {
   value?: string;
@@ -616,14 +602,12 @@ export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateKeyRequest" }) as any as S.Schema<CreateKeyRequest>;
 
 export type CreateKeyResponseActionsList = Array<string>;
-export const CreateKeyResponseActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateKeyResponseActionsList>;
+export const CreateKeyResponseActionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyResponseActionsList>;
 
 export type CreateKeyResponseCollectionsList = Array<string>;
-export const CreateKeyResponseCollectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateKeyResponseCollectionsList>;
+export const CreateKeyResponseCollectionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateKeyResponseCollectionsList>;
 
 export interface CreateKeyResponse {
   value?: string;
@@ -648,9 +632,8 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type CreateNLSearchModelRequestStopSequencesList = Array<string>;
-export const CreateNLSearchModelRequestStopSequencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNLSearchModelRequestStopSequencesList>;
+export const CreateNLSearchModelRequestStopSequencesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateNLSearchModelRequestStopSequencesList>;
 
 export interface CreateNLSearchModelRequest {
   /** Name of the NL model to use */
@@ -720,9 +703,8 @@ export const CreateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type CreateNLSearchModelResponseStopSequencesList = Array<string>;
-export const CreateNLSearchModelResponseStopSequencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNLSearchModelResponseStopSequencesList>;
+export const CreateNLSearchModelResponseStopSequencesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CreateNLSearchModelResponseStopSequencesList>;
 
 export interface CreateNLSearchModelResponse {
   /** Name of the NL model to use */
@@ -840,9 +822,8 @@ export const DeleteAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAnalyticsRuleRequest>;
 
 export type DeleteAnalyticsRuleResponseParamsMetaFieldsList = Array<string>;
-export const DeleteAnalyticsRuleResponseParamsMetaFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteAnalyticsRuleResponseParamsMetaFieldsList>;
+export const DeleteAnalyticsRuleResponseParamsMetaFieldsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteAnalyticsRuleResponseParamsMetaFieldsList>;
 
 export interface DeleteAnalyticsRuleResponseParams {
   destination_collection?: string;
@@ -853,19 +834,8 @@ export interface DeleteAnalyticsRuleResponseParams {
   counter_field?: string;
   weight?: number;
 }
-export const DeleteAnalyticsRuleResponseParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination_collection: S.optional(S.String),
-    limit: S.optional(S.Number),
-    capture_search_requests: S.optional(S.Boolean),
-    meta_fields: S.optional(DeleteAnalyticsRuleResponseParamsMetaFieldsList),
-    expand_query: S.optional(S.Boolean),
-    counter_field: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DeleteAnalyticsRuleResponseParams",
-}) as any as S.Schema<DeleteAnalyticsRuleResponseParams>;
+export const DeleteAnalyticsRuleResponseParams =
+  AnalyticsRuleCreateParams as any as S.Schema<DeleteAnalyticsRuleResponseParams>;
 
 export interface DeleteAnalyticsRuleResponse {
   name: string;
@@ -900,27 +870,23 @@ export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type DeleteCollectionResponseFieldsList = Array<Field>;
-export const DeleteCollectionResponseFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<DeleteCollectionResponseFieldsList>;
+export const DeleteCollectionResponseFieldsList =
+  CreateCollectionRequestFieldsList as any as S.Schema<DeleteCollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type DeleteCollectionResponseTokenSeparatorsList = Array<string>;
-export const DeleteCollectionResponseTokenSeparatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteCollectionResponseTokenSeparatorsList>;
+export const DeleteCollectionResponseTokenSeparatorsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteCollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
 export type DeleteCollectionResponseSynonymSetsList = Array<string>;
-export const DeleteCollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteCollectionResponseSynonymSetsList>;
+export const DeleteCollectionResponseSynonymSetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteCollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type DeleteCollectionResponseSymbolsToIndexList = Array<string>;
-export const DeleteCollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteCollectionResponseSymbolsToIndexList>;
+export const DeleteCollectionResponseSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<DeleteCollectionResponseSymbolsToIndexList>;
 
 export interface DeleteCollectionResponse {
   /** Name of the collection */
@@ -945,21 +911,8 @@ export interface DeleteCollectionResponse {
   /** Timestamp of when the collection was created (Unix epoch in seconds) */
   created_at: number;
 }
-export const DeleteCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    fields: DeleteCollectionResponseFieldsList,
-    default_sorting_field: S.optional(S.String),
-    token_separators: S.optional(DeleteCollectionResponseTokenSeparatorsList),
-    synonym_sets: S.optional(DeleteCollectionResponseSynonymSetsList),
-    enable_nested_fields: S.optional(S.Boolean),
-    symbols_to_index: S.optional(DeleteCollectionResponseSymbolsToIndexList),
-    voice_query_model: S.optional(VoiceQueryModelCollectionConfig),
-    metadata: S.optional(S.Unknown),
-    num_documents: S.Number,
-    created_at: S.Number,
-  }),
-).annotate({ identifier: "DeleteCollectionResponse" }) as any as S.Schema<DeleteCollectionResponse>;
+export const DeleteCollectionResponse =
+  CreateCollectionResponse as any as S.Schema<DeleteCollectionResponse>;
 
 export interface DeleteConversationModelRequest {
   /** The id of the conversation model to delete */
@@ -993,21 +946,8 @@ export interface DeleteConversationModelResponse {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const DeleteConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    model_name: S.String,
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    history_collection: S.String,
-    account_id: S.optional(S.String),
-    system_prompt: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    max_bytes: S.Number,
-    vllm_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteConversationModelResponse",
-}) as any as S.Schema<DeleteConversationModelResponse>;
+export const DeleteConversationModelResponse =
+  CreateConversationModelResponse as any as S.Schema<DeleteConversationModelResponse>;
 
 export interface DeleteCurationSetRequest {
   /** The name of the curation set to delete */
@@ -1179,11 +1119,7 @@ export const DeletePresetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PresetDeleteSchema {
   name: string;
 }
-export const PresetDeleteSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "PresetDeleteSchema" }) as any as S.Schema<PresetDeleteSchema>;
+export const PresetDeleteSchema = CurationSetDeleteSchema as any as S.Schema<PresetDeleteSchema>;
 
 export interface DeleteStopwordsSetRequest {
   /** The ID of the stopwords set to delete. */
@@ -1200,13 +1136,8 @@ export const DeleteStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteStopwordsSetResponse {
   id: string;
 }
-export const DeleteStopwordsSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "DeleteStopwordsSetResponse",
-}) as any as S.Schema<DeleteStopwordsSetResponse>;
+export const DeleteStopwordsSetResponse =
+  NLSearchModelDeleteSchema as any as S.Schema<DeleteStopwordsSetResponse>;
 
 export interface DeleteSynonymSetRequest {
   /** The name of the synonym set to delete */
@@ -1222,11 +1153,8 @@ export interface SynonymSetDeleteSchema {
   /** Name of the deleted synonym set */
   name: string;
 }
-export const SynonymSetDeleteSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "SynonymSetDeleteSchema" }) as any as S.Schema<SynonymSetDeleteSchema>;
+export const SynonymSetDeleteSchema =
+  CurationSetDeleteSchema as any as S.Schema<SynonymSetDeleteSchema>;
 
 export interface DeleteSynonymSetItemRequest {
   /** The name of the synonym set */
@@ -1249,11 +1177,8 @@ export interface SynonymItemDeleteSchema {
   /** ID of the deleted synonym item */
   id: string;
 }
-export const SynonymItemDeleteSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "SynonymItemDeleteSchema" }) as any as S.Schema<SynonymItemDeleteSchema>;
+export const SynonymItemDeleteSchema =
+  CurationItemDeleteSchema as any as S.Schema<SynonymItemDeleteSchema>;
 
 export interface ExportDocumentsRequestExportDocumentsParameters {
   /** Filter conditions for refining your search results. Separate multiple conditions with &&. */
@@ -1392,9 +1317,8 @@ export const GetAllNLSearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type NLSearchModelSchemaStopSequencesList = Array<string>;
-export const NLSearchModelSchemaStopSequencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NLSearchModelSchemaStopSequencesList>;
+export const NLSearchModelSchemaStopSequencesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<NLSearchModelSchemaStopSequencesList>;
 
 export interface NLSearchModelSchema {
   /** Name of the NL model to use */
@@ -2121,9 +2045,8 @@ export const GetAnalyticsEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnalyticsEventsRequest>;
 
 export type AnalyticsEventsResponseEventsItemDocIdsList = Array<string>;
-export const AnalyticsEventsResponseEventsItemDocIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsEventsResponseEventsItemDocIdsList>;
+export const AnalyticsEventsResponseEventsItemDocIdsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<AnalyticsEventsResponseEventsItemDocIdsList>;
 
 export interface AnalyticsEventsResponseEventsItem {
   name?: string;
@@ -2175,9 +2098,8 @@ export const GetAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAnalyticsRuleRequest" }) as any as S.Schema<GetAnalyticsRuleRequest>;
 
 export type GetAnalyticsRuleResponseParamsMetaFieldsList = Array<string>;
-export const GetAnalyticsRuleResponseParamsMetaFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAnalyticsRuleResponseParamsMetaFieldsList>;
+export const GetAnalyticsRuleResponseParamsMetaFieldsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetAnalyticsRuleResponseParamsMetaFieldsList>;
 
 export interface GetAnalyticsRuleResponseParams {
   destination_collection?: string;
@@ -2188,19 +2110,8 @@ export interface GetAnalyticsRuleResponseParams {
   counter_field?: string;
   weight?: number;
 }
-export const GetAnalyticsRuleResponseParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination_collection: S.optional(S.String),
-    limit: S.optional(S.Number),
-    capture_search_requests: S.optional(S.Boolean),
-    meta_fields: S.optional(GetAnalyticsRuleResponseParamsMetaFieldsList),
-    expand_query: S.optional(S.Boolean),
-    counter_field: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetAnalyticsRuleResponseParams",
-}) as any as S.Schema<GetAnalyticsRuleResponseParams>;
+export const GetAnalyticsRuleResponseParams =
+  AnalyticsRuleCreateParams as any as S.Schema<GetAnalyticsRuleResponseParams>;
 
 export interface GetAnalyticsRuleResponse {
   name: string;
@@ -2210,16 +2121,8 @@ export interface GetAnalyticsRuleResponse {
   rule_tag?: string;
   params?: GetAnalyticsRuleResponseParams;
 }
-export const GetAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: AnalyticsRuleType,
-    collection: S.String,
-    event_type: S.String,
-    rule_tag: S.optional(S.String),
-    params: S.optional(GetAnalyticsRuleResponseParams),
-  }),
-).annotate({ identifier: "GetAnalyticsRuleResponse" }) as any as S.Schema<GetAnalyticsRuleResponse>;
+export const GetAnalyticsRuleResponse =
+  AnalyticsRuleCreate as any as S.Schema<GetAnalyticsRuleResponse>;
 
 export interface GetAnalyticsRulesRequest {
   /** Filter rules by rule_tag */
@@ -2321,27 +2224,23 @@ export const GetCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type GetCollectionResponseFieldsList = Array<Field>;
-export const GetCollectionResponseFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<GetCollectionResponseFieldsList>;
+export const GetCollectionResponseFieldsList =
+  CreateCollectionRequestFieldsList as any as S.Schema<GetCollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type GetCollectionResponseTokenSeparatorsList = Array<string>;
-export const GetCollectionResponseTokenSeparatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseTokenSeparatorsList>;
+export const GetCollectionResponseTokenSeparatorsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetCollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
 export type GetCollectionResponseSynonymSetsList = Array<string>;
-export const GetCollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseSynonymSetsList>;
+export const GetCollectionResponseSynonymSetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetCollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type GetCollectionResponseSymbolsToIndexList = Array<string>;
-export const GetCollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCollectionResponseSymbolsToIndexList>;
+export const GetCollectionResponseSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetCollectionResponseSymbolsToIndexList>;
 
 export interface GetCollectionResponse {
   /** Name of the collection */
@@ -2366,21 +2265,8 @@ export interface GetCollectionResponse {
   /** Timestamp of when the collection was created (Unix epoch in seconds) */
   created_at: number;
 }
-export const GetCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    fields: GetCollectionResponseFieldsList,
-    default_sorting_field: S.optional(S.String),
-    token_separators: S.optional(GetCollectionResponseTokenSeparatorsList),
-    synonym_sets: S.optional(GetCollectionResponseSynonymSetsList),
-    enable_nested_fields: S.optional(S.Boolean),
-    symbols_to_index: S.optional(GetCollectionResponseSymbolsToIndexList),
-    voice_query_model: S.optional(VoiceQueryModelCollectionConfig),
-    metadata: S.optional(S.Unknown),
-    num_documents: S.Number,
-    created_at: S.Number,
-  }),
-).annotate({ identifier: "GetCollectionResponse" }) as any as S.Schema<GetCollectionResponse>;
+export const GetCollectionResponse =
+  CreateCollectionResponse as any as S.Schema<GetCollectionResponse>;
 
 export interface GetCollectionsRequestGetCollectionsParameters {
   /** Comma-separated list of fields from the collection to exclude from the response */
@@ -2413,27 +2299,23 @@ export const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type CollectionResponseFieldsList = Array<Field>;
-export const CollectionResponseFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<CollectionResponseFieldsList>;
+export const CollectionResponseFieldsList =
+  CreateCollectionRequestFieldsList as any as S.Schema<CollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
 export type CollectionResponseTokenSeparatorsList = Array<string>;
-export const CollectionResponseTokenSeparatorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CollectionResponseTokenSeparatorsList>;
+export const CollectionResponseTokenSeparatorsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
 export type CollectionResponseSynonymSetsList = Array<string>;
-export const CollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CollectionResponseSynonymSetsList>;
+export const CollectionResponseSynonymSetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
 export type CollectionResponseSymbolsToIndexList = Array<string>;
-export const CollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CollectionResponseSymbolsToIndexList>;
+export const CollectionResponseSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionResponseSymbolsToIndexList>;
 
 export interface CollectionResponse {
   /** Name of the collection */
@@ -2458,21 +2340,7 @@ export interface CollectionResponse {
   /** Timestamp of when the collection was created (Unix epoch in seconds) */
   created_at: number;
 }
-export const CollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    fields: CollectionResponseFieldsList,
-    default_sorting_field: S.optional(S.String),
-    token_separators: S.optional(CollectionResponseTokenSeparatorsList),
-    synonym_sets: S.optional(CollectionResponseSynonymSetsList),
-    enable_nested_fields: S.optional(S.Boolean),
-    symbols_to_index: S.optional(CollectionResponseSymbolsToIndexList),
-    voice_query_model: S.optional(VoiceQueryModelCollectionConfig),
-    metadata: S.optional(S.Unknown),
-    num_documents: S.Number,
-    created_at: S.Number,
-  }),
-).annotate({ identifier: "CollectionResponse" }) as any as S.Schema<CollectionResponse>;
+export const CollectionResponse = CreateCollectionResponse as any as S.Schema<CollectionResponse>;
 
 export type GetCollectionsResponseBodyList = Array<CollectionResponse>;
 export const GetCollectionsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -2516,21 +2384,8 @@ export interface GetConversationModelResponse {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const GetConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    model_name: S.String,
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    history_collection: S.String,
-    account_id: S.optional(S.String),
-    system_prompt: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    max_bytes: S.Number,
-    vllm_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConversationModelResponse",
-}) as any as S.Schema<GetConversationModelResponse>;
+export const GetConversationModelResponse =
+  CreateConversationModelResponse as any as S.Schema<GetConversationModelResponse>;
 
 export interface GetCurationSetRequest {
   /** The name of the curation set to retrieve */
@@ -2544,9 +2399,8 @@ export const GetCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tag values to associate with this curation rule. */
 export type CurationRuleTagsList = Array<string>;
-export const CurationRuleTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CurationRuleTagsList>;
+export const CurationRuleTagsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CurationRuleTagsList>;
 
 /** Indicates whether the match on the query term should be `exact` or `contains`. If we want to match all queries that contained the word `apple`, we will use the `contains` match instead. */
 export type CurationRuleMatch = "exact" | "contains";
@@ -2594,11 +2448,7 @@ export interface CurationExclude {
   /** document id that should be excluded from the search results. */
   id: string;
 }
-export const CurationExclude = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "CurationExclude" }) as any as S.Schema<CurationExclude>;
+export const CurationExclude = CurationItemDeleteSchema as any as S.Schema<CurationExclude>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type CurationItemCreateSchemaExcludesList = Array<CurationExclude>;
@@ -2691,15 +2541,13 @@ export const GetCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type GetCurationSetItemResponseIncludesList = Array<CurationInclude>;
-export const GetCurationSetItemResponseIncludesList = /*@__PURE__*/ S.Array(
-  CurationInclude,
-) as any as S.Schema<GetCurationSetItemResponseIncludesList>;
+export const GetCurationSetItemResponseIncludesList =
+  CurationItemCreateSchemaIncludesList as any as S.Schema<GetCurationSetItemResponseIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type GetCurationSetItemResponseExcludesList = Array<CurationExclude>;
-export const GetCurationSetItemResponseExcludesList = /*@__PURE__*/ S.Array(
-  CurationExclude,
-) as any as S.Schema<GetCurationSetItemResponseExcludesList>;
+export const GetCurationSetItemResponseExcludesList =
+  CurationItemCreateSchemaExcludesList as any as S.Schema<GetCurationSetItemResponseExcludesList>;
 
 export interface GetCurationSetItemResponse {
   rule: CurationRule;
@@ -2762,15 +2610,13 @@ export const GetCurationSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type CurationItemSchemaIncludesList = Array<CurationInclude>;
-export const CurationItemSchemaIncludesList = /*@__PURE__*/ S.Array(
-  CurationInclude,
-) as any as S.Schema<CurationItemSchemaIncludesList>;
+export const CurationItemSchemaIncludesList =
+  CurationItemCreateSchemaIncludesList as any as S.Schema<CurationItemSchemaIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type CurationItemSchemaExcludesList = Array<CurationExclude>;
-export const CurationItemSchemaExcludesList = /*@__PURE__*/ S.Array(
-  CurationExclude,
-) as any as S.Schema<CurationItemSchemaExcludesList>;
+export const CurationItemSchemaExcludesList =
+  CurationItemCreateSchemaExcludesList as any as S.Schema<CurationItemSchemaExcludesList>;
 
 export interface CurationItemSchema {
   rule: CurationRule;
@@ -2836,9 +2682,8 @@ export const GetCurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of curation items */
 export type CurationSetSchemaItemsList = Array<CurationItemCreateSchema>;
-export const CurationSetSchemaItemsList = /*@__PURE__*/ S.Array(
-  CurationItemCreateSchema,
-) as any as S.Schema<CurationSetSchemaItemsList>;
+export const CurationSetSchemaItemsList =
+  GetCurationSetResponseItemsList as any as S.Schema<CurationSetSchemaItemsList>;
 
 export interface CurationSetSchema {
   /** Array of curation items */
@@ -2847,13 +2692,7 @@ export interface CurationSetSchema {
   description?: string;
   name: string;
 }
-export const CurationSetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: CurationSetSchemaItemsList,
-    description: S.optional(S.String),
-    name: S.String,
-  }),
-).annotate({ identifier: "CurationSetSchema" }) as any as S.Schema<CurationSetSchema>;
+export const CurationSetSchema = GetCurationSetResponse as any as S.Schema<CurationSetSchema>;
 
 export type GetCurationSetsResponseBodyList = Array<CurationSetSchema>;
 export const GetCurationSetsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -2885,9 +2724,7 @@ export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDocumentRequest" }) as any as S.Schema<GetDocumentRequest>;
 
 export type GetDocumentResponse = unknown;
-export const GetDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetDocumentResponse" }) as any as S.Schema<GetDocumentResponse>;
+export const GetDocumentResponse = DeleteDocumentResponse as any as S.Schema<GetDocumentResponse>;
 
 export interface GetKeyRequest {
   /** The ID of the key to retrieve */
@@ -2900,14 +2737,12 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
 
 export type GetKeyResponseActionsList = Array<string>;
-export const GetKeyResponseActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetKeyResponseActionsList>;
+export const GetKeyResponseActionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetKeyResponseActionsList>;
 
 export type GetKeyResponseCollectionsList = Array<string>;
-export const GetKeyResponseCollectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetKeyResponseCollectionsList>;
+export const GetKeyResponseCollectionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetKeyResponseCollectionsList>;
 
 export interface GetKeyResponse {
   value?: string;
@@ -2918,17 +2753,7 @@ export interface GetKeyResponse {
   id?: number;
   value_prefix?: string;
 }
-export const GetKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    description: S.String,
-    actions: GetKeyResponseActionsList,
-    collections: GetKeyResponseCollectionsList,
-    expires_at: S.optional(S.Number),
-    id: S.optional(S.Number),
-    value_prefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetKeyResponse" }) as any as S.Schema<GetKeyResponse>;
+export const GetKeyResponse = CreateKeyResponse as any as S.Schema<GetKeyResponse>;
 
 export interface GetKeysRequest {}
 export const GetKeysRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2936,14 +2761,12 @@ export const GetKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKeysRequest" }) as any as S.Schema<GetKeysRequest>;
 
 export type ApiKeyActionsList = Array<string>;
-export const ApiKeyActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiKeyActionsList>;
+export const ApiKeyActionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<ApiKeyActionsList>;
 
 export type ApiKeyCollectionsList = Array<string>;
-export const ApiKeyCollectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiKeyCollectionsList>;
+export const ApiKeyCollectionsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<ApiKeyCollectionsList>;
 
 export interface ApiKey {
   value?: string;
@@ -2954,17 +2777,7 @@ export interface ApiKey {
   id?: number;
   value_prefix?: string;
 }
-export const ApiKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    description: S.String,
-    actions: ApiKeyActionsList,
-    collections: ApiKeyCollectionsList,
-    expires_at: S.optional(S.Number),
-    id: S.optional(S.Number),
-    value_prefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "ApiKey" }) as any as S.Schema<ApiKey>;
+export const ApiKey = CreateKeyResponse as any as S.Schema<ApiKey>;
 
 export type ApiKeysResponseKeysList = Array<ApiKey>;
 export const ApiKeysResponseKeysList = /*@__PURE__*/ S.Array(
@@ -2986,9 +2799,7 @@ export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMetricsRequest" }) as any as S.Schema<GetMetricsRequest>;
 
 export type GetMetricsResponse = unknown;
-export const GetMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetMetricsResponse" }) as any as S.Schema<GetMetricsResponse>;
+export const GetMetricsResponse = DeleteDocumentResponse as any as S.Schema<GetMetricsResponse>;
 
 export interface GetNLSearchModelRequest {
   /** The ID of the NL search model to retrieve */
@@ -3002,9 +2813,8 @@ export const GetNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type GetNLSearchModelResponseStopSequencesList = Array<string>;
-export const GetNLSearchModelResponseStopSequencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetNLSearchModelResponseStopSequencesList>;
+export const GetNLSearchModelResponseStopSequencesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetNLSearchModelResponseStopSequencesList>;
 
 export interface GetNLSearchModelResponse {
   /** Name of the NL model to use */
@@ -3046,29 +2856,8 @@ export interface GetNLSearchModelResponse {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const GetNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    model_name: S.optional(S.String),
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    api_url: S.optional(S.String),
-    max_bytes: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    system_prompt: S.optional(S.String),
-    top_p: S.optional(S.Number),
-    top_k: S.optional(S.Number),
-    stop_sequences: S.optional(GetNLSearchModelResponseStopSequencesList),
-    api_version: S.optional(S.String),
-    project_id: S.optional(S.String),
-    access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    client_id: S.optional(S.String),
-    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(S.String),
-    max_output_tokens: S.optional(S.Number),
-    account_id: S.optional(S.String),
-    id: S.String,
-  }),
-).annotate({ identifier: "GetNLSearchModelResponse" }) as any as S.Schema<GetNLSearchModelResponse>;
+export const GetNLSearchModelResponse =
+  NLSearchModelSchema as any as S.Schema<GetNLSearchModelResponse>;
 
 export interface GetPresetRequest {
   /** The ID of the preset to retrieve. */
@@ -3269,9 +3058,8 @@ export const GetStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStopwordsSetRequest" }) as any as S.Schema<GetStopwordsSetRequest>;
 
 export type StopwordsSetSchemaStopwordsList = Array<string>;
-export const StopwordsSetSchemaStopwordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StopwordsSetSchemaStopwordsList>;
+export const StopwordsSetSchemaStopwordsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<StopwordsSetSchemaStopwordsList>;
 
 export interface StopwordsSetSchema {
   id: string;
@@ -3330,15 +3118,13 @@ export const GetSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of words that should be considered as synonyms */
 export type SynonymItemSchemaSynonymsList = Array<string>;
-export const SynonymItemSchemaSynonymsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SynonymItemSchemaSynonymsList>;
+export const SynonymItemSchemaSynonymsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SynonymItemSchemaSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type SynonymItemSchemaSymbolsToIndexList = Array<string>;
-export const SynonymItemSchemaSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SynonymItemSchemaSymbolsToIndexList>;
+export const SynonymItemSchemaSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SynonymItemSchemaSymbolsToIndexList>;
 
 export interface SynonymItemSchema {
   /** Unique identifier for the synonym item */
@@ -3398,15 +3184,13 @@ export const GetSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of words that should be considered as synonyms */
 export type GetSynonymSetItemResponseSynonymsList = Array<string>;
-export const GetSynonymSetItemResponseSynonymsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSynonymSetItemResponseSynonymsList>;
+export const GetSynonymSetItemResponseSynonymsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetSynonymSetItemResponseSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type GetSynonymSetItemResponseSymbolsToIndexList = Array<string>;
-export const GetSynonymSetItemResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSynonymSetItemResponseSymbolsToIndexList>;
+export const GetSynonymSetItemResponseSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<GetSynonymSetItemResponseSymbolsToIndexList>;
 
 export interface GetSynonymSetItemResponse {
   /** Unique identifier for the synonym item */
@@ -3445,9 +3229,8 @@ export const GetSynonymSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSynonymSetItemsRequest>;
 
 export type GetSynonymSetItemsResponseBodyList = Array<SynonymItemSchema>;
-export const GetSynonymSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
-  SynonymItemSchema,
-) as any as S.Schema<GetSynonymSetItemsResponseBodyList>;
+export const GetSynonymSetItemsResponseBodyList =
+  GetSynonymSetResponseItemsList as any as S.Schema<GetSynonymSetItemsResponseBodyList>;
 
 export type GetSynonymSetItemsResponse = GetSynonymSetItemsResponseBodyList;
 export const GetSynonymSetItemsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3463,9 +3246,8 @@ export const GetSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of synonym items */
 export type SynonymSetSchemaItemsList = Array<SynonymItemSchema>;
-export const SynonymSetSchemaItemsList = /*@__PURE__*/ S.Array(
-  SynonymItemSchema,
-) as any as S.Schema<SynonymSetSchemaItemsList>;
+export const SynonymSetSchemaItemsList =
+  GetSynonymSetResponseItemsList as any as S.Schema<SynonymSetSchemaItemsList>;
 
 export interface SynonymSetSchema {
   /** Array of synonym items */
@@ -3473,12 +3255,7 @@ export interface SynonymSetSchema {
   /** Name of the synonym set */
   name: string;
 }
-export const SynonymSetSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: SynonymSetSchemaItemsList,
-    name: S.String,
-  }),
-).annotate({ identifier: "SynonymSetSchema" }) as any as S.Schema<SynonymSetSchema>;
+export const SynonymSetSchema = GetSynonymSetResponse as any as S.Schema<SynonymSetSchema>;
 
 export type GetSynonymSetsResponseBodyList = Array<SynonymSetSchema>;
 export const GetSynonymSetsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -3549,9 +3326,8 @@ export const ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDocumentsRequest" }) as any as S.Schema<ImportDocumentsRequest>;
 
 export interface ImportDocumentsResponse {}
-export const ImportDocumentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImportDocumentsResponse",
-}) as any as S.Schema<ImportDocumentsResponse>;
+export const ImportDocumentsResponse =
+  ExportDocumentsResponse as any as S.Schema<ImportDocumentsResponse>;
 
 export interface ImportStemmingDictionaryRequest {
   /** The ID to assign to the dictionary */
@@ -3591,9 +3367,8 @@ export const IndexDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexDocumentRequest" }) as any as S.Schema<IndexDocumentRequest>;
 
 export type IndexDocumentResponse = unknown;
-export const IndexDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "IndexDocumentResponse" }) as any as S.Schema<IndexDocumentResponse>;
+export const IndexDocumentResponse =
+  DeleteDocumentResponse as any as S.Schema<IndexDocumentResponse>;
 
 export interface ListStemmingDictionariesRequest {}
 export const ListStemmingDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3603,9 +3378,8 @@ export const ListStemmingDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStemmingDictionariesRequest>;
 
 export type ListStemmingDictionariesResponseDictionariesList = Array<string>;
-export const ListStemmingDictionariesResponseDictionariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListStemmingDictionariesResponseDictionariesList>;
+export const ListStemmingDictionariesResponseDictionariesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<ListStemmingDictionariesResponseDictionariesList>;
 
 export interface ListStemmingDictionariesResponse {
   dictionaries?: ListStemmingDictionariesResponseDictionariesList;
@@ -3696,15 +3470,13 @@ export const SearchGroupedHitGroupKeyList = /*@__PURE__*/ S.Array(
 
 /** Present only for (array) string[] fields */
 export type SearchHighlightSnippetsList = Array<string>;
-export const SearchHighlightSnippetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchHighlightSnippetsList>;
+export const SearchHighlightSnippetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SearchHighlightSnippetsList>;
 
 /** Full field value with highlighting, present only for (array) string[] fields */
 export type SearchHighlightValuesList = Array<string>;
-export const SearchHighlightValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchHighlightValuesList>;
+export const SearchHighlightValuesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<SearchHighlightValuesList>;
 
 /** The indices property will be present only for string[] fields and will contain the corresponding indices of the snippets in the search field */
 export type SearchHighlightIndicesList = Array<number>;
@@ -3713,9 +3485,8 @@ export const SearchHighlightIndicesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchHighlightIndicesList>;
 
 export type SearchHighlightMatchedTokensList = Array<unknown>;
-export const SearchHighlightMatchedTokensList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SearchHighlightMatchedTokensList>;
+export const SearchHighlightMatchedTokensList =
+  SearchGroupedHitGroupKeyList as any as S.Schema<SearchHighlightMatchedTokensList>;
 
 export interface SearchHighlight {
   field?: string;
@@ -3758,10 +3529,8 @@ export const SearchResultHitHighlightMap = /*@__PURE__*/ S.Record(
 
 /** Can be any key-value pair */
 export type SearchResultHitDocumentMap = { [key: string]: unknown | undefined };
-export const SearchResultHitDocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchResultHitDocumentMap>;
+export const SearchResultHitDocumentMap =
+  SearchResultHitHighlightMap as any as S.Schema<SearchResultHitDocumentMap>;
 
 export interface SearchResultHitTextMatchInfo {
   best_field_score?: string;
@@ -3865,9 +3634,8 @@ export const SearchResultGroupedHitsList = /*@__PURE__*/ S.Array(
 
 /** The documents that matched the search query */
 export type SearchResultHitsList = Array<SearchResultHit>;
-export const SearchResultHitsList = /*@__PURE__*/ S.Array(
-  SearchResultHit,
-) as any as S.Schema<SearchResultHitsList>;
+export const SearchResultHitsList =
+  SearchGroupedHitHitsList as any as S.Schema<SearchResultHitsList>;
 
 export interface SearchRequestParamsVoiceQuery {
   transcribed_query?: string;
@@ -3898,9 +3666,8 @@ export const SearchRequestParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRequestParams" }) as any as S.Schema<SearchRequestParams>;
 
 export type SearchResultConversationConversationHistoryList = Array<unknown>;
-export const SearchResultConversationConversationHistoryList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SearchResultConversationConversationHistoryList>;
+export const SearchResultConversationConversationHistoryList =
+  SearchGroupedHitGroupKeyList as any as S.Schema<SearchResultConversationConversationHistoryList>;
 
 export interface SearchResultConversation {
   answer: string;
@@ -3925,10 +3692,8 @@ export const SearchResultUnionRequestParamsList = /*@__PURE__*/ S.Array(
 
 /** Custom JSON object that can be returned in the search response */
 export type SearchResultMetadataMap = { [key: string]: unknown | undefined };
-export const SearchResultMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchResultMetadataMap>;
+export const SearchResultMetadataMap =
+  SearchResultHitHighlightMap as any as S.Schema<SearchResultMetadataMap>;
 
 export interface SearchResult {
   facet_counts?: SearchResultFacetCountsList;
@@ -4204,9 +3969,8 @@ export const MultiSearchParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MultiSearchParameters" }) as any as S.Schema<MultiSearchParameters>;
 
 export type SearchMultiRequestSearchesList = Array<MultiSearchCollectionParameters>;
-export const SearchMultiRequestSearchesList = /*@__PURE__*/ S.Array(
-  MultiSearchCollectionParameters,
-) as any as S.Schema<SearchMultiRequestSearchesList>;
+export const SearchMultiRequestSearchesList =
+  MultiSearchSearchesParameterSearchesList as any as S.Schema<SearchMultiRequestSearchesList>;
 
 export interface SearchMultiRequest {
   multiSearchParameters: MultiSearchParameters;
@@ -4223,33 +3987,27 @@ export const SearchMultiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchMultiRequest" }) as any as S.Schema<SearchMultiRequest>;
 
 export type MultiSearchResultItemFacetCountsList = Array<FacetCounts>;
-export const MultiSearchResultItemFacetCountsList = /*@__PURE__*/ S.Array(
-  FacetCounts,
-) as any as S.Schema<MultiSearchResultItemFacetCountsList>;
+export const MultiSearchResultItemFacetCountsList =
+  SearchResultFacetCountsList as any as S.Schema<MultiSearchResultItemFacetCountsList>;
 
 export type MultiSearchResultItemGroupedHitsList = Array<SearchGroupedHit>;
-export const MultiSearchResultItemGroupedHitsList = /*@__PURE__*/ S.Array(
-  SearchGroupedHit,
-) as any as S.Schema<MultiSearchResultItemGroupedHitsList>;
+export const MultiSearchResultItemGroupedHitsList =
+  SearchResultGroupedHitsList as any as S.Schema<MultiSearchResultItemGroupedHitsList>;
 
 /** The documents that matched the search query */
 export type MultiSearchResultItemHitsList = Array<SearchResultHit>;
-export const MultiSearchResultItemHitsList = /*@__PURE__*/ S.Array(
-  SearchResultHit,
-) as any as S.Schema<MultiSearchResultItemHitsList>;
+export const MultiSearchResultItemHitsList =
+  SearchGroupedHitHitsList as any as S.Schema<MultiSearchResultItemHitsList>;
 
 /** Returned only for union query response. */
 export type MultiSearchResultItemUnionRequestParamsList = Array<SearchRequestParams>;
-export const MultiSearchResultItemUnionRequestParamsList = /*@__PURE__*/ S.Array(
-  SearchRequestParams,
-) as any as S.Schema<MultiSearchResultItemUnionRequestParamsList>;
+export const MultiSearchResultItemUnionRequestParamsList =
+  SearchResultUnionRequestParamsList as any as S.Schema<MultiSearchResultItemUnionRequestParamsList>;
 
 /** Custom JSON object that can be returned in the search response */
 export type MultiSearchResultItemMetadataMap = { [key: string]: unknown | undefined };
-export const MultiSearchResultItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MultiSearchResultItemMetadataMap>;
+export const MultiSearchResultItemMetadataMap =
+  SearchResultHitHighlightMap as any as S.Schema<MultiSearchResultItemMetadataMap>;
 
 export interface MultiSearchResultItem {
   facet_counts?: MultiSearchResultItemFacetCountsList;
@@ -4337,15 +4095,13 @@ export const ToggleSlowRequestLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type UpdateCollectionRequestFieldsList = Array<Field>;
-export const UpdateCollectionRequestFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<UpdateCollectionRequestFieldsList>;
+export const UpdateCollectionRequestFieldsList =
+  CreateCollectionRequestFieldsList as any as S.Schema<UpdateCollectionRequestFieldsList>;
 
 /** List of synonym set names to associate with this collection */
 export type UpdateCollectionRequestSynonymSetsList = Array<string>;
-export const UpdateCollectionRequestSynonymSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCollectionRequestSynonymSetsList>;
+export const UpdateCollectionRequestSynonymSetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpdateCollectionRequestSynonymSetsList>;
 
 export interface UpdateCollectionRequest {
   /** The name of the collection to update */
@@ -4368,15 +4124,13 @@ export const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of fields for querying, filtering and faceting */
 export type CollectionUpdateSchemaFieldsList = Array<Field>;
-export const CollectionUpdateSchemaFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<CollectionUpdateSchemaFieldsList>;
+export const CollectionUpdateSchemaFieldsList =
+  CreateCollectionRequestFieldsList as any as S.Schema<CollectionUpdateSchemaFieldsList>;
 
 /** List of synonym set names to associate with this collection */
 export type CollectionUpdateSchemaSynonymSetsList = Array<string>;
-export const CollectionUpdateSchemaSynonymSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CollectionUpdateSchemaSynonymSetsList>;
+export const CollectionUpdateSchemaSynonymSetsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<CollectionUpdateSchemaSynonymSetsList>;
 
 export interface CollectionUpdateSchema {
   /** A list of fields for querying, filtering and faceting */
@@ -4453,21 +4207,8 @@ export interface UpdateConversationModelResponse {
   /** URL of vLLM service */
   vllm_url?: string;
 }
-export const UpdateConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    model_name: S.String,
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    history_collection: S.String,
-    account_id: S.optional(S.String),
-    system_prompt: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    max_bytes: S.Number,
-    vllm_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateConversationModelResponse",
-}) as any as S.Schema<UpdateConversationModelResponse>;
+export const UpdateConversationModelResponse =
+  CreateConversationModelResponse as any as S.Schema<UpdateConversationModelResponse>;
 
 export interface UpdateDocumentRequest {
   /** The name of the collection to search for the document under */
@@ -4492,9 +4233,8 @@ export const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDocumentRequest" }) as any as S.Schema<UpdateDocumentRequest>;
 
 export type UpdateDocumentResponse = unknown;
-export const UpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UpdateDocumentResponse" }) as any as S.Schema<UpdateDocumentResponse>;
+export const UpdateDocumentResponse =
+  DeleteDocumentResponse as any as S.Schema<UpdateDocumentResponse>;
 
 export interface UpdateDocumentsRequestUpdateDocumentsParameters {
   filter_by?: string;
@@ -4533,9 +4273,8 @@ export const UpdateDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type UpdateNLSearchModelRequestStopSequencesList = Array<string>;
-export const UpdateNLSearchModelRequestStopSequencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateNLSearchModelRequestStopSequencesList>;
+export const UpdateNLSearchModelRequestStopSequencesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpdateNLSearchModelRequestStopSequencesList>;
 
 export interface UpdateNLSearchModelRequest {
   /** The ID of the NL search model to update */
@@ -4608,9 +4347,8 @@ export const UpdateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stop sequences for the NL model (Google-specific) */
 export type UpdateNLSearchModelResponseStopSequencesList = Array<string>;
-export const UpdateNLSearchModelResponseStopSequencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateNLSearchModelResponseStopSequencesList>;
+export const UpdateNLSearchModelResponseStopSequencesList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpdateNLSearchModelResponseStopSequencesList>;
 
 export interface UpdateNLSearchModelResponse {
   /** Name of the NL model to use */
@@ -4652,31 +4390,8 @@ export interface UpdateNLSearchModelResponse {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const UpdateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    model_name: S.optional(S.String),
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    api_url: S.optional(S.String),
-    max_bytes: S.optional(S.Number),
-    temperature: S.optional(S.Number),
-    system_prompt: S.optional(S.String),
-    top_p: S.optional(S.Number),
-    top_k: S.optional(S.Number),
-    stop_sequences: S.optional(UpdateNLSearchModelResponseStopSequencesList),
-    api_version: S.optional(S.String),
-    project_id: S.optional(S.String),
-    access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    client_id: S.optional(S.String),
-    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    region: S.optional(S.String),
-    max_output_tokens: S.optional(S.Number),
-    account_id: S.optional(S.String),
-    id: S.String,
-  }),
-).annotate({
-  identifier: "UpdateNLSearchModelResponse",
-}) as any as S.Schema<UpdateNLSearchModelResponse>;
+export const UpdateNLSearchModelResponse =
+  CreateNLSearchModelResponse as any as S.Schema<UpdateNLSearchModelResponse>;
 
 export interface UpsertAliasRequest {
   /** The name of the alias to create/update */
@@ -4692,9 +4407,8 @@ export const UpsertAliasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertAliasRequest" }) as any as S.Schema<UpsertAliasRequest>;
 
 export type UpsertAnalyticsRuleRequestParamsMetaFieldsList = Array<string>;
-export const UpsertAnalyticsRuleRequestParamsMetaFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertAnalyticsRuleRequestParamsMetaFieldsList>;
+export const UpsertAnalyticsRuleRequestParamsMetaFieldsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertAnalyticsRuleRequestParamsMetaFieldsList>;
 
 export interface UpsertAnalyticsRuleRequestParams {
   destination_collection?: string;
@@ -4705,19 +4419,8 @@ export interface UpsertAnalyticsRuleRequestParams {
   counter_field?: string;
   weight?: number;
 }
-export const UpsertAnalyticsRuleRequestParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination_collection: S.optional(S.String),
-    limit: S.optional(S.Number),
-    capture_search_requests: S.optional(S.Boolean),
-    meta_fields: S.optional(UpsertAnalyticsRuleRequestParamsMetaFieldsList),
-    expand_query: S.optional(S.Boolean),
-    counter_field: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpsertAnalyticsRuleRequestParams",
-}) as any as S.Schema<UpsertAnalyticsRuleRequestParams>;
+export const UpsertAnalyticsRuleRequestParams =
+  AnalyticsRuleCreateParams as any as S.Schema<UpsertAnalyticsRuleRequestParams>;
 
 export interface UpsertAnalyticsRuleRequest {
   /** The name of the analytics rule to upsert */
@@ -4738,9 +4441,8 @@ export const UpsertAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertAnalyticsRuleRequest>;
 
 export type UpsertAnalyticsRuleResponseParamsMetaFieldsList = Array<string>;
-export const UpsertAnalyticsRuleResponseParamsMetaFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertAnalyticsRuleResponseParamsMetaFieldsList>;
+export const UpsertAnalyticsRuleResponseParamsMetaFieldsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertAnalyticsRuleResponseParamsMetaFieldsList>;
 
 export interface UpsertAnalyticsRuleResponseParams {
   destination_collection?: string;
@@ -4751,19 +4453,8 @@ export interface UpsertAnalyticsRuleResponseParams {
   counter_field?: string;
   weight?: number;
 }
-export const UpsertAnalyticsRuleResponseParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination_collection: S.optional(S.String),
-    limit: S.optional(S.Number),
-    capture_search_requests: S.optional(S.Boolean),
-    meta_fields: S.optional(UpsertAnalyticsRuleResponseParamsMetaFieldsList),
-    expand_query: S.optional(S.Boolean),
-    counter_field: S.optional(S.String),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpsertAnalyticsRuleResponseParams",
-}) as any as S.Schema<UpsertAnalyticsRuleResponseParams>;
+export const UpsertAnalyticsRuleResponseParams =
+  AnalyticsRuleCreateParams as any as S.Schema<UpsertAnalyticsRuleResponseParams>;
 
 export interface UpsertAnalyticsRuleResponse {
   name: string;
@@ -4773,24 +4464,13 @@ export interface UpsertAnalyticsRuleResponse {
   rule_tag?: string;
   params?: UpsertAnalyticsRuleResponseParams;
 }
-export const UpsertAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: AnalyticsRuleType,
-    collection: S.String,
-    event_type: S.String,
-    rule_tag: S.optional(S.String),
-    params: S.optional(UpsertAnalyticsRuleResponseParams),
-  }),
-).annotate({
-  identifier: "UpsertAnalyticsRuleResponse",
-}) as any as S.Schema<UpsertAnalyticsRuleResponse>;
+export const UpsertAnalyticsRuleResponse =
+  DeleteAnalyticsRuleResponse as any as S.Schema<UpsertAnalyticsRuleResponse>;
 
 /** Array of curation items */
 export type UpsertCurationSetRequestItemsList = Array<CurationItemCreateSchema>;
-export const UpsertCurationSetRequestItemsList = /*@__PURE__*/ S.Array(
-  CurationItemCreateSchema,
-) as any as S.Schema<UpsertCurationSetRequestItemsList>;
+export const UpsertCurationSetRequestItemsList =
+  GetCurationSetResponseItemsList as any as S.Schema<UpsertCurationSetRequestItemsList>;
 
 export interface UpsertCurationSetRequest {
   /** The name of the curation set to create/update */
@@ -4810,9 +4490,8 @@ export const UpsertCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of curation items */
 export type UpsertCurationSetResponseItemsList = Array<CurationItemCreateSchema>;
-export const UpsertCurationSetResponseItemsList = /*@__PURE__*/ S.Array(
-  CurationItemCreateSchema,
-) as any as S.Schema<UpsertCurationSetResponseItemsList>;
+export const UpsertCurationSetResponseItemsList =
+  GetCurationSetResponseItemsList as any as S.Schema<UpsertCurationSetResponseItemsList>;
 
 export interface UpsertCurationSetResponse {
   /** Array of curation items */
@@ -4833,15 +4512,13 @@ export const UpsertCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type UpsertCurationSetItemRequestIncludesList = Array<CurationInclude>;
-export const UpsertCurationSetItemRequestIncludesList = /*@__PURE__*/ S.Array(
-  CurationInclude,
-) as any as S.Schema<UpsertCurationSetItemRequestIncludesList>;
+export const UpsertCurationSetItemRequestIncludesList =
+  CurationItemCreateSchemaIncludesList as any as S.Schema<UpsertCurationSetItemRequestIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type UpsertCurationSetItemRequestExcludesList = Array<CurationExclude>;
-export const UpsertCurationSetItemRequestExcludesList = /*@__PURE__*/ S.Array(
-  CurationExclude,
-) as any as S.Schema<UpsertCurationSetItemRequestExcludesList>;
+export const UpsertCurationSetItemRequestExcludesList =
+  CurationItemCreateSchemaExcludesList as any as S.Schema<UpsertCurationSetItemRequestExcludesList>;
 
 export interface UpsertCurationSetItemRequest {
   /** The name of the curation set */
@@ -4900,15 +4577,13 @@ export const UpsertCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
 export type UpsertCurationSetItemResponseIncludesList = Array<CurationInclude>;
-export const UpsertCurationSetItemResponseIncludesList = /*@__PURE__*/ S.Array(
-  CurationInclude,
-) as any as S.Schema<UpsertCurationSetItemResponseIncludesList>;
+export const UpsertCurationSetItemResponseIncludesList =
+  CurationItemCreateSchemaIncludesList as any as S.Schema<UpsertCurationSetItemResponseIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type UpsertCurationSetItemResponseExcludesList = Array<CurationExclude>;
-export const UpsertCurationSetItemResponseExcludesList = /*@__PURE__*/ S.Array(
-  CurationExclude,
-) as any as S.Schema<UpsertCurationSetItemResponseExcludesList>;
+export const UpsertCurationSetItemResponseExcludesList =
+  CurationItemCreateSchemaExcludesList as any as S.Schema<UpsertCurationSetItemResponseExcludesList>;
 
 export interface UpsertCurationSetItemResponse {
   rule: CurationRule;
@@ -4937,25 +4612,8 @@ export interface UpsertCurationSetItemResponse {
   /** ID of the curation item */
   id: string;
 }
-export const UpsertCurationSetItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rule: CurationRule,
-    includes: S.optional(UpsertCurationSetItemResponseIncludesList),
-    excludes: S.optional(UpsertCurationSetItemResponseExcludesList),
-    filter_by: S.optional(S.String),
-    remove_matched_tokens: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    sort_by: S.optional(S.String),
-    replace_query: S.optional(S.String),
-    filter_curated_hits: S.optional(S.Boolean),
-    effective_from_ts: S.optional(S.Number),
-    effective_to_ts: S.optional(S.Number),
-    stop_processing: S.optional(S.Boolean),
-    id: S.String,
-  }),
-).annotate({
-  identifier: "UpsertCurationSetItemResponse",
-}) as any as S.Schema<UpsertCurationSetItemResponse>;
+export const UpsertCurationSetItemResponse =
+  GetCurationSetItemResponse as any as S.Schema<UpsertCurationSetItemResponse>;
 
 export type UpsertPresetRequestValue = SearchParameters | MultiSearchSearchesParameter;
 export const UpsertPresetRequestValue = /*@__PURE__*/ S.Unknown.pipe(
@@ -5161,9 +4819,8 @@ export const UpsertPresetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertPresetResponse" }) as any as S.Schema<UpsertPresetResponse>;
 
 export type UpsertStopwordsSetRequestStopwordsList = Array<string>;
-export const UpsertStopwordsSetRequestStopwordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertStopwordsSetRequestStopwordsList>;
+export const UpsertStopwordsSetRequestStopwordsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertStopwordsSetRequestStopwordsList>;
 
 export interface UpsertStopwordsSetRequest {
   /** The ID of the stopwords set to upsert. */
@@ -5183,9 +4840,8 @@ export const UpsertStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of synonym items */
 export type UpsertSynonymSetRequestItemsList = Array<SynonymItemSchema>;
-export const UpsertSynonymSetRequestItemsList = /*@__PURE__*/ S.Array(
-  SynonymItemSchema,
-) as any as S.Schema<UpsertSynonymSetRequestItemsList>;
+export const UpsertSynonymSetRequestItemsList =
+  GetSynonymSetResponseItemsList as any as S.Schema<UpsertSynonymSetRequestItemsList>;
 
 export interface UpsertSynonymSetRequest {
   /** The name of the synonym set to create/update */
@@ -5202,9 +4858,8 @@ export const UpsertSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of synonym items */
 export type UpsertSynonymSetResponseItemsList = Array<SynonymItemSchema>;
-export const UpsertSynonymSetResponseItemsList = /*@__PURE__*/ S.Array(
-  SynonymItemSchema,
-) as any as S.Schema<UpsertSynonymSetResponseItemsList>;
+export const UpsertSynonymSetResponseItemsList =
+  GetSynonymSetResponseItemsList as any as S.Schema<UpsertSynonymSetResponseItemsList>;
 
 export interface UpsertSynonymSetResponse {
   /** Array of synonym items */
@@ -5212,24 +4867,18 @@ export interface UpsertSynonymSetResponse {
   /** Name of the synonym set */
   name: string;
 }
-export const UpsertSynonymSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: UpsertSynonymSetResponseItemsList,
-    name: S.String,
-  }),
-).annotate({ identifier: "UpsertSynonymSetResponse" }) as any as S.Schema<UpsertSynonymSetResponse>;
+export const UpsertSynonymSetResponse =
+  GetSynonymSetResponse as any as S.Schema<UpsertSynonymSetResponse>;
 
 /** Array of words that should be considered as synonyms */
 export type UpsertSynonymSetItemRequestSynonymsList = Array<string>;
-export const UpsertSynonymSetItemRequestSynonymsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertSynonymSetItemRequestSynonymsList>;
+export const UpsertSynonymSetItemRequestSynonymsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemRequestSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type UpsertSynonymSetItemRequestSymbolsToIndexList = Array<string>;
-export const UpsertSynonymSetItemRequestSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertSynonymSetItemRequestSymbolsToIndexList>;
+export const UpsertSynonymSetItemRequestSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemRequestSymbolsToIndexList>;
 
 export interface UpsertSynonymSetItemRequest {
   /** The name of the synonym set */
@@ -5262,15 +4911,13 @@ export const UpsertSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of words that should be considered as synonyms */
 export type UpsertSynonymSetItemResponseSynonymsList = Array<string>;
-export const UpsertSynonymSetItemResponseSynonymsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertSynonymSetItemResponseSynonymsList>;
+export const UpsertSynonymSetItemResponseSynonymsList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemResponseSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
 export type UpsertSynonymSetItemResponseSymbolsToIndexList = Array<string>;
-export const UpsertSynonymSetItemResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertSynonymSetItemResponseSymbolsToIndexList>;
+export const UpsertSynonymSetItemResponseSymbolsToIndexList =
+  CreateAnalyticsEventRequestDataDocIdsList as any as S.Schema<UpsertSynonymSetItemResponseSymbolsToIndexList>;
 
 export interface UpsertSynonymSetItemResponse {
   /** Unique identifier for the synonym item */
@@ -5284,17 +4931,8 @@ export interface UpsertSynonymSetItemResponse {
   /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
   symbols_to_index?: UpsertSynonymSetItemResponseSymbolsToIndexList;
 }
-export const UpsertSynonymSetItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    synonyms: UpsertSynonymSetItemResponseSynonymsList,
-    root: S.optional(S.String),
-    locale: S.optional(S.String),
-    symbols_to_index: S.optional(UpsertSynonymSetItemResponseSymbolsToIndexList),
-  }),
-).annotate({
-  identifier: "UpsertSynonymSetItemResponse",
-}) as any as S.Schema<UpsertSynonymSetItemResponse>;
+export const UpsertSynonymSetItemResponse =
+  GetSynonymSetItemResponse as any as S.Schema<UpsertSynonymSetItemResponse>;
 
 export interface VoteRequest {}
 export const VoteRequest = /*@__PURE__*/ S.suspend(() =>

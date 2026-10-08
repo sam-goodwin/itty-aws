@@ -213,11 +213,8 @@ export interface CancelApprovalRequest {
   /** Optional. A message to accompany the cancellation of the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-export const CancelApprovalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "CancelApprovalRequest" }) as any as S.Schema<CancelApprovalRequest>;
+export const CancelApprovalRequest =
+  ApproveApprovalRequest as any as S.Schema<CancelApprovalRequest>;
 
 export interface CancelApprovalsRequest {
   /** Required. The ID of the approval to cancel. */
@@ -246,11 +243,8 @@ export interface CommentApprovalRequest {
   /** Required. A message to comment on the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-export const CommentApprovalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "CommentApprovalRequest" }) as any as S.Schema<CommentApprovalRequest>;
+export const CommentApprovalRequest =
+  ApproveApprovalRequest as any as S.Schema<CommentApprovalRequest>;
 
 export interface CommentApprovalsRequest {
   /** Required. The ID of the approval to comment on. */
@@ -1784,9 +1778,7 @@ export const DeleteDrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDrivesRequest" }) as any as S.Schema<DeleteDrivesRequest>;
 
 export interface DeleteDrivesResponse {}
-export const DeleteDrivesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDrivesResponse",
-}) as any as S.Schema<DeleteDrivesResponse>;
+export const DeleteDrivesResponse = DeleteCommentsResponse as any as S.Schema<DeleteDrivesResponse>;
 
 export interface DeleteFilesRequest {
   /** Deprecated: If an item isn't in a shared drive and its last parent is deleted but the item itself isn't, the item will be placed under its owner's root. */
@@ -1814,9 +1806,7 @@ export const DeleteFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFilesRequest" }) as any as S.Schema<DeleteFilesRequest>;
 
 export interface DeleteFilesResponse {}
-export const DeleteFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFilesResponse",
-}) as any as S.Schema<DeleteFilesResponse>;
+export const DeleteFilesResponse = DeleteCommentsResponse as any as S.Schema<DeleteFilesResponse>;
 
 export interface DeletePermissionsRequest {
   /** Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators). */
@@ -1850,9 +1840,8 @@ export const DeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePermissionsRequest" }) as any as S.Schema<DeletePermissionsRequest>;
 
 export interface DeletePermissionsResponse {}
-export const DeletePermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePermissionsResponse",
-}) as any as S.Schema<DeletePermissionsResponse>;
+export const DeletePermissionsResponse =
+  DeleteCommentsResponse as any as S.Schema<DeletePermissionsResponse>;
 
 export interface DeleteRepliesRequest {
   /** The ID of the comment. */
@@ -1877,9 +1866,8 @@ export const DeleteRepliesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepliesRequest" }) as any as S.Schema<DeleteRepliesRequest>;
 
 export interface DeleteRepliesResponse {}
-export const DeleteRepliesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepliesResponse",
-}) as any as S.Schema<DeleteRepliesResponse>;
+export const DeleteRepliesResponse =
+  DeleteCommentsResponse as any as S.Schema<DeleteRepliesResponse>;
 
 export interface DeleteRevisionsRequest {
   /** The ID of the revision. */
@@ -1901,9 +1889,8 @@ export const DeleteRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRevisionsRequest" }) as any as S.Schema<DeleteRevisionsRequest>;
 
 export interface DeleteRevisionsResponse {}
-export const DeleteRevisionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRevisionsResponse",
-}) as any as S.Schema<DeleteRevisionsResponse>;
+export const DeleteRevisionsResponse =
+  DeleteCommentsResponse as any as S.Schema<DeleteRevisionsResponse>;
 
 export interface DeleteTeamdrivesRequest {
   /** The ID of the Team Drive */
@@ -1922,9 +1909,8 @@ export const DeleteTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamdrivesRequest" }) as any as S.Schema<DeleteTeamdrivesRequest>;
 
 export interface DeleteTeamdrivesResponse {}
-export const DeleteTeamdrivesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTeamdrivesResponse",
-}) as any as S.Schema<DeleteTeamdrivesResponse>;
+export const DeleteTeamdrivesResponse =
+  DeleteCommentsResponse as any as S.Schema<DeleteTeamdrivesResponse>;
 
 export interface DownloadFilesRequest {
   /** Optional. The MIME type the file should be downloaded as. This field can only be set when downloading Google Workspace documents. For a list of supported MIME types, see [Export MIME types for Google Workspace documents](/workspace/drive/api/guides/ref-export-formats). If not set, a Google Workspace document is downloaded with a default MIME type. The default MIME type might change in the future. */
@@ -2019,9 +2005,8 @@ export const EmptyTrashFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmptyTrashFilesRequest" }) as any as S.Schema<EmptyTrashFilesRequest>;
 
 export interface EmptyTrashFilesResponse {}
-export const EmptyTrashFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EmptyTrashFilesResponse",
-}) as any as S.Schema<EmptyTrashFilesResponse>;
+export const EmptyTrashFilesResponse =
+  DeleteCommentsResponse as any as S.Schema<EmptyTrashFilesResponse>;
 
 export interface ExportFilesRequest {
   /** Required. The MIME type of the format requested for this export. For a list of supported MIME types, see [Export MIME types for Google Workspace documents](/workspace/drive/api/guides/ref-export-formats). */
@@ -2043,9 +2028,7 @@ export const ExportFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportFilesRequest" }) as any as S.Schema<ExportFilesRequest>;
 
 export interface ExportFilesResponse {}
-export const ExportFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportFilesResponse",
-}) as any as S.Schema<ExportFilesResponse>;
+export const ExportFilesResponse = DeleteCommentsResponse as any as S.Schema<ExportFilesResponse>;
 
 export interface GenerateCseTokenFilesRequest {
   /** The ID of the file for which the JWT should be generated. If not provided, an id will be generated. */
@@ -3599,9 +3582,8 @@ export const ResolveAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolveAccessproposalsRequest>;
 
 export interface ResolveAccessproposalsResponse {}
-export const ResolveAccessproposalsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResolveAccessproposalsResponse",
-}) as any as S.Schema<ResolveAccessproposalsResponse>;
+export const ResolveAccessproposalsResponse =
+  DeleteCommentsResponse as any as S.Schema<ResolveAccessproposalsResponse>;
 
 export type StartApprovalRequestFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
@@ -3706,9 +3688,7 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopChannelsResponse",
-}) as any as S.Schema<StopChannelsResponse>;
+export const StopChannelsResponse = DeleteCommentsResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface UnhideDrivesRequest {
   /** The ID of the shared drive. */

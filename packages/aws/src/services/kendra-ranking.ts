@@ -323,7 +323,7 @@ export type Tokens = string;
 export type TitleTokensList = string[];
 export const TitleTokensList = /*@__PURE__*/ S.Array(S.String);
 export type BodyTokensList = string[];
-export const BodyTokensList = /*@__PURE__*/ S.Array(S.String);
+export const BodyTokensList = TitleTokensList as any as S.Schema<BodyTokensList>;
 export interface Document {
   Id: string;
   GroupId?: string;
@@ -398,7 +398,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TitleTokensList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -409,9 +409,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateRescoreExecutionPlanRequest {
   Id: string;
   Name?: string;
@@ -438,11 +436,8 @@ export const UpdateRescoreExecutionPlanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRescoreExecutionPlanRequest",
 }) as any as S.Schema<UpdateRescoreExecutionPlanRequest>;
 export interface UpdateRescoreExecutionPlanResponse {}
-export const UpdateRescoreExecutionPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRescoreExecutionPlanResponse",
-}) as any as S.Schema<UpdateRescoreExecutionPlanResponse>;
+export const UpdateRescoreExecutionPlanResponse =
+  DeleteRescoreExecutionPlanResponse as any as S.Schema<UpdateRescoreExecutionPlanResponse>;
 export type CreateRescoreExecutionPlanError =
   | AccessDeniedException
   | ConflictException

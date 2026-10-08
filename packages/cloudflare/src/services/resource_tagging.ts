@@ -103,9 +103,8 @@ export const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteZoneTagRequest" }) as any as S.Schema<DeleteZoneTagRequest>;
 
 export interface DeleteZoneTagResponse {}
-export const DeleteZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteZoneTagResponse" }) as any as S.Schema<DeleteZoneTagResponse>;
+export const DeleteZoneTagResponse =
+  DeleteAccountTagResponse as any as S.Schema<DeleteZoneTagResponse>;
 
 export type AccountTagsGetRequestResourceType =
   | "access_application"
@@ -200,10 +199,8 @@ export const AccountTagsGetResultAccessApplication = /*@__PURE__*/ S.suspend(() 
 export type AccountTagsGetResultAccessApplicationPolicyTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsGetResultAccessApplicationPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAccessApplicationPolicyTagsMap>;
+export const AccountTagsGetResultAccessApplicationPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccessApplicationPolicyTagsMap>;
 
 export type AccountTagsGetResultAccessApplicationPolicyType = "access_application_policy";
 export const AccountTagsGetResultAccessApplicationPolicyType = S.String;
@@ -241,10 +238,8 @@ export const AccountTagsGetResultAccessApplicationPolicy = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<AccountTagsGetResultAccessApplicationPolicy>;
 
 export type AccountTagsGetResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAccessGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAccessGroupTagsMap>;
+export const AccountTagsGetResultAccessGroupTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccessGroupTagsMap>;
 
 export type AccountTagsGetResultAccessGroupType = "access_group";
 export const AccountTagsGetResultAccessGroupType = S.String;
@@ -276,10 +271,8 @@ export const AccountTagsGetResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultAccessGroup>;
 
 export type AccountTagsGetResultAccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAccountTagsMap>;
+export const AccountTagsGetResultAccountTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccountTagsMap>;
 
 export type AccountTagsGetResultAccountType = "account";
 export const AccountTagsGetResultAccountType = S.String;
@@ -311,10 +304,8 @@ export const AccountTagsGetResultAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultAccount>;
 
 export type AccountTagsGetResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAccountRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAccountRulesetTagsMap>;
+export const AccountTagsGetResultAccountRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccountRulesetTagsMap>;
 
 export type AccountTagsGetResultAccountRulesetType = "account_ruleset";
 export const AccountTagsGetResultAccountRulesetType = S.String;
@@ -346,10 +337,8 @@ export const AccountTagsGetResultAccountRuleset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultAccountRuleset>;
 
 export type AccountTagsGetResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAIGatewayTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAIGatewayTagsMap>;
+export const AccountTagsGetResultAIGatewayTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAIGatewayTagsMap>;
 
 export type AccountTagsGetResultAIGatewayType = "ai_gateway";
 export const AccountTagsGetResultAIGatewayType = S.String;
@@ -381,10 +370,8 @@ export const AccountTagsGetResultAIGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultAIGateway>;
 
 export type AccountTagsGetResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAlertingPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAlertingPolicyTagsMap>;
+export const AccountTagsGetResultAlertingPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAlertingPolicyTagsMap>;
 
 export type AccountTagsGetResultAlertingPolicyType = "alerting_policy";
 export const AccountTagsGetResultAlertingPolicyType = S.String;
@@ -416,10 +403,8 @@ export const AccountTagsGetResultAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultAlertingPolicy>;
 
 export type AccountTagsGetResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAlertingWebhookTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAlertingWebhookTagsMap>;
+export const AccountTagsGetResultAlertingWebhookTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAlertingWebhookTagsMap>;
 
 export type AccountTagsGetResultAlertingWebhookType = "alerting_webhook";
 export const AccountTagsGetResultAlertingWebhookType = S.String;
@@ -451,10 +436,8 @@ export const AccountTagsGetResultAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultAlertingWebhook>;
 
 export type AccountTagsGetResultAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAPIGatewayOperationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultAPIGatewayOperationTagsMap>;
+export const AccountTagsGetResultAPIGatewayOperationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAPIGatewayOperationTagsMap>;
 
 export type AccountTagsGetResultAPIGatewayOperationType = "api_gateway_operation";
 export const AccountTagsGetResultAPIGatewayOperationType = S.String;
@@ -489,10 +472,8 @@ export const AccountTagsGetResultAPIGatewayOperation = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<AccountTagsGetResultAPIGatewayOperation>;
 
 export type AccountTagsGetResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCloudflaredTunnelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultCloudflaredTunnelTagsMap>;
+export const AccountTagsGetResultCloudflaredTunnelTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCloudflaredTunnelTagsMap>;
 
 export type AccountTagsGetResultCloudflaredTunnelType = "cloudflared_tunnel";
 export const AccountTagsGetResultCloudflaredTunnelType = S.String;
@@ -524,10 +505,8 @@ export const AccountTagsGetResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountTagsGetResultCloudflaredTunnel>;
 
 export type AccountTagsGetResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCustomCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultCustomCertificateTagsMap>;
+export const AccountTagsGetResultCustomCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCustomCertificateTagsMap>;
 
 export type AccountTagsGetResultCustomCertificateType = "custom_certificate";
 export const AccountTagsGetResultCustomCertificateType = S.String;
@@ -562,10 +541,8 @@ export const AccountTagsGetResultCustomCertificate = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountTagsGetResultCustomCertificate>;
 
 export type AccountTagsGetResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCustomHostnameTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultCustomHostnameTagsMap>;
+export const AccountTagsGetResultCustomHostnameTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCustomHostnameTagsMap>;
 
 export type AccountTagsGetResultCustomHostnameType = "custom_hostname";
 export const AccountTagsGetResultCustomHostnameType = S.String;
@@ -600,10 +577,8 @@ export const AccountTagsGetResultCustomHostname = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultCustomHostname>;
 
 export type AccountTagsGetResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsDeploymentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultCwsDeploymentTagsMap>;
+export const AccountTagsGetResultCwsDeploymentTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsDeploymentTagsMap>;
 
 export type AccountTagsGetResultCwsDeploymentType = "cws_deployment";
 export const AccountTagsGetResultCwsDeploymentType = S.String;
@@ -635,10 +610,8 @@ export const AccountTagsGetResultCwsDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultCwsDeployment>;
 
 export type AccountTagsGetResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultCwsPolicyTagsMap>;
+export const AccountTagsGetResultCwsPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsPolicyTagsMap>;
 
 export type AccountTagsGetResultCwsPolicyType = "cws_policy";
 export const AccountTagsGetResultCwsPolicyType = S.String;
@@ -670,10 +643,8 @@ export const AccountTagsGetResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultCwsPolicy>;
 
 export type AccountTagsGetResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsPolicySetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultCwsPolicySetTagsMap>;
+export const AccountTagsGetResultCwsPolicySetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsPolicySetTagsMap>;
 
 export type AccountTagsGetResultCwsPolicySetType = "cws_policy_set";
 export const AccountTagsGetResultCwsPolicySetType = S.String;
@@ -705,10 +676,8 @@ export const AccountTagsGetResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultCwsPolicySet>;
 
 export type AccountTagsGetResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsWorkloadTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultCwsWorkloadTagsMap>;
+export const AccountTagsGetResultCwsWorkloadTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsWorkloadTagsMap>;
 
 export type AccountTagsGetResultCwsWorkloadType = "cws_workload";
 export const AccountTagsGetResultCwsWorkloadType = S.String;
@@ -740,10 +709,8 @@ export const AccountTagsGetResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultCwsWorkload>;
 
 export type AccountTagsGetResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultD1DatabaseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultD1DatabaseTagsMap>;
+export const AccountTagsGetResultD1DatabaseTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultD1DatabaseTagsMap>;
 
 export type AccountTagsGetResultD1DatabaseType = "d1_database";
 export const AccountTagsGetResultD1DatabaseType = S.String;
@@ -775,10 +742,8 @@ export const AccountTagsGetResultD1Database = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultD1Database>;
 
 export type AccountTagsGetResultDeviceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultDeviceTagsMap>;
+export const AccountTagsGetResultDeviceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultDeviceTagsMap>;
 
 export type AccountTagsGetResultDeviceType = "device";
 export const AccountTagsGetResultDeviceType = S.String;
@@ -810,10 +775,8 @@ export const AccountTagsGetResultDevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultDevice>;
 
 export type AccountTagsGetResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultDNSRecordTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultDNSRecordTagsMap>;
+export const AccountTagsGetResultDNSRecordTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultDNSRecordTagsMap>;
 
 export type AccountTagsGetResultDNSRecordType = "dns_record";
 export const AccountTagsGetResultDNSRecordType = S.String;
@@ -850,10 +813,8 @@ export const AccountTagsGetResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
 export type AccountTagsGetResultDurableObjectNamespaceTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsGetResultDurableObjectNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultDurableObjectNamespaceTagsMap>;
+export const AccountTagsGetResultDurableObjectNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultDurableObjectNamespaceTagsMap>;
 
 export type AccountTagsGetResultDurableObjectNamespaceType = "durable_object_namespace";
 export const AccountTagsGetResultDurableObjectNamespaceType = S.String;
@@ -885,10 +846,8 @@ export const AccountTagsGetResultDurableObjectNamespace = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<AccountTagsGetResultDurableObjectNamespace>;
 
 export type AccountTagsGetResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultGatewayListTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultGatewayListTagsMap>;
+export const AccountTagsGetResultGatewayListTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultGatewayListTagsMap>;
 
 export type AccountTagsGetResultGatewayListType = "gateway_list";
 export const AccountTagsGetResultGatewayListType = S.String;
@@ -920,10 +879,8 @@ export const AccountTagsGetResultGatewayList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultGatewayList>;
 
 export type AccountTagsGetResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultGatewayRuleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultGatewayRuleTagsMap>;
+export const AccountTagsGetResultGatewayRuleTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultGatewayRuleTagsMap>;
 
 export type AccountTagsGetResultGatewayRuleType = "gateway_rule";
 export const AccountTagsGetResultGatewayRuleType = S.String;
@@ -955,10 +912,8 @@ export const AccountTagsGetResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultGatewayRule>;
 
 export type AccountTagsGetResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultHealthcheckTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultHealthcheckTagsMap>;
+export const AccountTagsGetResultHealthcheckTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultHealthcheckTagsMap>;
 
 export type AccountTagsGetResultHealthcheckType = "healthcheck";
 export const AccountTagsGetResultHealthcheckType = S.String;
@@ -993,10 +948,8 @@ export const AccountTagsGetResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultHealthcheck>;
 
 export type AccountTagsGetResultImageTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultImageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultImageTagsMap>;
+export const AccountTagsGetResultImageTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultImageTagsMap>;
 
 export type AccountTagsGetResultImageType = "image";
 export const AccountTagsGetResultImageType = S.String;
@@ -1028,10 +981,8 @@ export const AccountTagsGetResultImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultImage>;
 
 export type AccountTagsGetResultInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultInfrastructureTargetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultInfrastructureTargetTagsMap>;
+export const AccountTagsGetResultInfrastructureTargetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultInfrastructureTargetTagsMap>;
 
 export type AccountTagsGetResultInfrastructureTargetType = "infrastructure_target";
 export const AccountTagsGetResultInfrastructureTargetType = S.String;
@@ -1063,10 +1014,8 @@ export const AccountTagsGetResultInfrastructureTarget = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountTagsGetResultInfrastructureTarget>;
 
 export type AccountTagsGetResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultKVNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultKVNamespaceTagsMap>;
+export const AccountTagsGetResultKVNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultKVNamespaceTagsMap>;
 
 export type AccountTagsGetResultKVNamespaceType = "kv_namespace";
 export const AccountTagsGetResultKVNamespaceType = S.String;
@@ -1098,10 +1047,8 @@ export const AccountTagsGetResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultKVNamespace>;
 
 export type AccountTagsGetResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultLoadBalancerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultLoadBalancerTagsMap>;
+export const AccountTagsGetResultLoadBalancerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultLoadBalancerTagsMap>;
 
 export type AccountTagsGetResultLoadBalancerType = "load_balancer";
 export const AccountTagsGetResultLoadBalancerType = S.String;
@@ -1136,10 +1083,8 @@ export const AccountTagsGetResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultLoadBalancer>;
 
 export type AccountTagsGetResultLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultLoadBalancerMonitorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultLoadBalancerMonitorTagsMap>;
+export const AccountTagsGetResultLoadBalancerMonitorTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultLoadBalancerMonitorTagsMap>;
 
 export type AccountTagsGetResultLoadBalancerMonitorType = "load_balancer_monitor";
 export const AccountTagsGetResultLoadBalancerMonitorType = S.String;
@@ -1171,10 +1116,8 @@ export const AccountTagsGetResultLoadBalancerMonitor = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<AccountTagsGetResultLoadBalancerMonitor>;
 
 export type AccountTagsGetResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultLoadBalancerPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultLoadBalancerPoolTagsMap>;
+export const AccountTagsGetResultLoadBalancerPoolTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultLoadBalancerPoolTagsMap>;
 
 export type AccountTagsGetResultLoadBalancerPoolType = "load_balancer_pool";
 export const AccountTagsGetResultLoadBalancerPoolType = S.String;
@@ -1208,10 +1151,8 @@ export const AccountTagsGetResultLoadBalancerPool = /*@__PURE__*/ S.suspend(() =
 export type AccountTagsGetResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsGetResultManagedClientCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultManagedClientCertificateTagsMap>;
+export const AccountTagsGetResultManagedClientCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultManagedClientCertificateTagsMap>;
 
 export type AccountTagsGetResultManagedClientCertificateType = "managed_client_certificate";
 export const AccountTagsGetResultManagedClientCertificateType = S.String;
@@ -1246,10 +1187,8 @@ export const AccountTagsGetResultManagedClientCertificate = /*@__PURE__*/ S.susp
 }) as any as S.Schema<AccountTagsGetResultManagedClientCertificate>;
 
 export type AccountTagsGetResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultPagesProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultPagesProjectTagsMap>;
+export const AccountTagsGetResultPagesProjectTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultPagesProjectTagsMap>;
 
 export type AccountTagsGetResultPagesProjectType = "pages_project";
 export const AccountTagsGetResultPagesProjectType = S.String;
@@ -1281,10 +1220,8 @@ export const AccountTagsGetResultPagesProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultPagesProject>;
 
 export type AccountTagsGetResultQueueTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultQueueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultQueueTagsMap>;
+export const AccountTagsGetResultQueueTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultQueueTagsMap>;
 
 export type AccountTagsGetResultQueueType = "queue";
 export const AccountTagsGetResultQueueType = S.String;
@@ -1316,10 +1253,8 @@ export const AccountTagsGetResultQueue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultQueue>;
 
 export type AccountTagsGetResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultR2BucketTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultR2BucketTagsMap>;
+export const AccountTagsGetResultR2BucketTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultR2BucketTagsMap>;
 
 export type AccountTagsGetResultR2BucketType = "r2_bucket";
 export const AccountTagsGetResultR2BucketType = S.String;
@@ -1351,10 +1286,8 @@ export const AccountTagsGetResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultR2Bucket>;
 
 export type AccountTagsGetResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultResourceShareTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultResourceShareTagsMap>;
+export const AccountTagsGetResultResourceShareTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultResourceShareTagsMap>;
 
 export type AccountTagsGetResultResourceShareType = "resource_share";
 export const AccountTagsGetResultResourceShareType = S.String;
@@ -1386,10 +1319,8 @@ export const AccountTagsGetResultResourceShare = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultResourceShare>;
 
 export type AccountTagsGetResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultStreamLiveInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultStreamLiveInputTagsMap>;
+export const AccountTagsGetResultStreamLiveInputTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultStreamLiveInputTagsMap>;
 
 export type AccountTagsGetResultStreamLiveInputType = "stream_live_input";
 export const AccountTagsGetResultStreamLiveInputType = S.String;
@@ -1421,10 +1352,8 @@ export const AccountTagsGetResultStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultStreamLiveInput>;
 
 export type AccountTagsGetResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultStreamVideoTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultStreamVideoTagsMap>;
+export const AccountTagsGetResultStreamVideoTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultStreamVideoTagsMap>;
 
 export type AccountTagsGetResultStreamVideoType = "stream_video";
 export const AccountTagsGetResultStreamVideoType = S.String;
@@ -1456,10 +1385,8 @@ export const AccountTagsGetResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultStreamVideo>;
 
 export type AccountTagsGetResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultVectorizeIndexTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultVectorizeIndexTagsMap>;
+export const AccountTagsGetResultVectorizeIndexTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultVectorizeIndexTagsMap>;
 
 export type AccountTagsGetResultVectorizeIndexType = "vectorize_index";
 export const AccountTagsGetResultVectorizeIndexType = S.String;
@@ -1491,10 +1418,8 @@ export const AccountTagsGetResultVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultVectorizeIndex>;
 
 export type AccountTagsGetResultWorkerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultWorkerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultWorkerTagsMap>;
+export const AccountTagsGetResultWorkerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultWorkerTagsMap>;
 
 export type AccountTagsGetResultWorkerType = "worker";
 export const AccountTagsGetResultWorkerType = S.String;
@@ -1526,10 +1451,8 @@ export const AccountTagsGetResultWorker = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultWorker>;
 
 export type AccountTagsGetResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultWorkerRouteTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultWorkerRouteTagsMap>;
+export const AccountTagsGetResultWorkerRouteTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultWorkerRouteTagsMap>;
 
 export type AccountTagsGetResultWorkerRouteType = "worker_route";
 export const AccountTagsGetResultWorkerRouteType = S.String;
@@ -1564,10 +1487,8 @@ export const AccountTagsGetResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultWorkerRoute>;
 
 export type AccountTagsGetResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultWorkerVersionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultWorkerVersionTagsMap>;
+export const AccountTagsGetResultWorkerVersionTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultWorkerVersionTagsMap>;
 
 export type AccountTagsGetResultWorkerVersionType = "worker_version";
 export const AccountTagsGetResultWorkerVersionType = S.String;
@@ -1602,10 +1523,8 @@ export const AccountTagsGetResultWorkerVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsGetResultWorkerVersion>;
 
 export type AccountTagsGetResultZoneTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultZoneTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultZoneTagsMap>;
+export const AccountTagsGetResultZoneTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultZoneTagsMap>;
 
 export type AccountTagsGetResultZoneType = "zone";
 export const AccountTagsGetResultZoneType = S.String;
@@ -1638,10 +1557,8 @@ export const AccountTagsGetResultZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountTagsGetResultZone" }) as any as S.Schema<AccountTagsGetResultZone>;
 
 export type AccountTagsGetResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultZoneRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsGetResultZoneRulesetTagsMap>;
+export const AccountTagsGetResultZoneRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultZoneRulesetTagsMap>;
 
 export type AccountTagsGetResultZoneRulesetType = "zone_ruleset";
 export const AccountTagsGetResultZoneRulesetType = S.String;
@@ -1898,10 +1815,8 @@ export const GetZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetZoneTagRequest" }) as any as S.Schema<GetZoneTagRequest>;
 
 export type ZoneTagsGetResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccessApplicationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAccessApplicationTagsMap>;
+export const ZoneTagsGetResultAccessApplicationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccessApplicationTagsMap>;
 
 export type ZoneTagsGetResultAccessApplicationType = "access_application";
 export const ZoneTagsGetResultAccessApplicationType = S.String;
@@ -1933,10 +1848,8 @@ export const ZoneTagsGetResultAccessApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultAccessApplication>;
 
 export type ZoneTagsGetResultAccessApplicationPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccessApplicationPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAccessApplicationPolicyTagsMap>;
+export const ZoneTagsGetResultAccessApplicationPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccessApplicationPolicyTagsMap>;
 
 export type ZoneTagsGetResultAccessApplicationPolicyType = "access_application_policy";
 export const ZoneTagsGetResultAccessApplicationPolicyType = S.String;
@@ -1974,10 +1887,8 @@ export const ZoneTagsGetResultAccessApplicationPolicy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ZoneTagsGetResultAccessApplicationPolicy>;
 
 export type ZoneTagsGetResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccessGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAccessGroupTagsMap>;
+export const ZoneTagsGetResultAccessGroupTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccessGroupTagsMap>;
 
 export type ZoneTagsGetResultAccessGroupType = "access_group";
 export const ZoneTagsGetResultAccessGroupType = S.String;
@@ -2009,10 +1920,8 @@ export const ZoneTagsGetResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultAccessGroup>;
 
 export type ZoneTagsGetResultAccountTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAccountTagsMap>;
+export const ZoneTagsGetResultAccountTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccountTagsMap>;
 
 export type ZoneTagsGetResultAccountType = "account";
 export const ZoneTagsGetResultAccountType = S.String;
@@ -2042,10 +1951,8 @@ export const ZoneTagsGetResultAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZoneTagsGetResultAccount" }) as any as S.Schema<ZoneTagsGetResultAccount>;
 
 export type ZoneTagsGetResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccountRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAccountRulesetTagsMap>;
+export const ZoneTagsGetResultAccountRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccountRulesetTagsMap>;
 
 export type ZoneTagsGetResultAccountRulesetType = "account_ruleset";
 export const ZoneTagsGetResultAccountRulesetType = S.String;
@@ -2077,10 +1984,8 @@ export const ZoneTagsGetResultAccountRuleset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultAccountRuleset>;
 
 export type ZoneTagsGetResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAIGatewayTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAIGatewayTagsMap>;
+export const ZoneTagsGetResultAIGatewayTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAIGatewayTagsMap>;
 
 export type ZoneTagsGetResultAIGatewayType = "ai_gateway";
 export const ZoneTagsGetResultAIGatewayType = S.String;
@@ -2112,10 +2017,8 @@ export const ZoneTagsGetResultAIGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultAIGateway>;
 
 export type ZoneTagsGetResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAlertingPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAlertingPolicyTagsMap>;
+export const ZoneTagsGetResultAlertingPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAlertingPolicyTagsMap>;
 
 export type ZoneTagsGetResultAlertingPolicyType = "alerting_policy";
 export const ZoneTagsGetResultAlertingPolicyType = S.String;
@@ -2147,10 +2050,8 @@ export const ZoneTagsGetResultAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultAlertingPolicy>;
 
 export type ZoneTagsGetResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAlertingWebhookTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAlertingWebhookTagsMap>;
+export const ZoneTagsGetResultAlertingWebhookTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAlertingWebhookTagsMap>;
 
 export type ZoneTagsGetResultAlertingWebhookType = "alerting_webhook";
 export const ZoneTagsGetResultAlertingWebhookType = S.String;
@@ -2182,10 +2083,8 @@ export const ZoneTagsGetResultAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultAlertingWebhook>;
 
 export type ZoneTagsGetResultAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAPIGatewayOperationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultAPIGatewayOperationTagsMap>;
+export const ZoneTagsGetResultAPIGatewayOperationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAPIGatewayOperationTagsMap>;
 
 export type ZoneTagsGetResultAPIGatewayOperationType = "api_gateway_operation";
 export const ZoneTagsGetResultAPIGatewayOperationType = S.String;
@@ -2220,10 +2119,8 @@ export const ZoneTagsGetResultAPIGatewayOperation = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ZoneTagsGetResultAPIGatewayOperation>;
 
 export type ZoneTagsGetResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCloudflaredTunnelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultCloudflaredTunnelTagsMap>;
+export const ZoneTagsGetResultCloudflaredTunnelTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCloudflaredTunnelTagsMap>;
 
 export type ZoneTagsGetResultCloudflaredTunnelType = "cloudflared_tunnel";
 export const ZoneTagsGetResultCloudflaredTunnelType = S.String;
@@ -2255,10 +2152,8 @@ export const ZoneTagsGetResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultCloudflaredTunnel>;
 
 export type ZoneTagsGetResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCustomCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultCustomCertificateTagsMap>;
+export const ZoneTagsGetResultCustomCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCustomCertificateTagsMap>;
 
 export type ZoneTagsGetResultCustomCertificateType = "custom_certificate";
 export const ZoneTagsGetResultCustomCertificateType = S.String;
@@ -2293,10 +2188,8 @@ export const ZoneTagsGetResultCustomCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultCustomCertificate>;
 
 export type ZoneTagsGetResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCustomHostnameTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultCustomHostnameTagsMap>;
+export const ZoneTagsGetResultCustomHostnameTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCustomHostnameTagsMap>;
 
 export type ZoneTagsGetResultCustomHostnameType = "custom_hostname";
 export const ZoneTagsGetResultCustomHostnameType = S.String;
@@ -2331,10 +2224,8 @@ export const ZoneTagsGetResultCustomHostname = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultCustomHostname>;
 
 export type ZoneTagsGetResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsDeploymentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultCwsDeploymentTagsMap>;
+export const ZoneTagsGetResultCwsDeploymentTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsDeploymentTagsMap>;
 
 export type ZoneTagsGetResultCwsDeploymentType = "cws_deployment";
 export const ZoneTagsGetResultCwsDeploymentType = S.String;
@@ -2366,10 +2257,8 @@ export const ZoneTagsGetResultCwsDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultCwsDeployment>;
 
 export type ZoneTagsGetResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultCwsPolicyTagsMap>;
+export const ZoneTagsGetResultCwsPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsPolicyTagsMap>;
 
 export type ZoneTagsGetResultCwsPolicyType = "cws_policy";
 export const ZoneTagsGetResultCwsPolicyType = S.String;
@@ -2401,10 +2290,8 @@ export const ZoneTagsGetResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultCwsPolicy>;
 
 export type ZoneTagsGetResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsPolicySetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultCwsPolicySetTagsMap>;
+export const ZoneTagsGetResultCwsPolicySetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsPolicySetTagsMap>;
 
 export type ZoneTagsGetResultCwsPolicySetType = "cws_policy_set";
 export const ZoneTagsGetResultCwsPolicySetType = S.String;
@@ -2436,10 +2323,8 @@ export const ZoneTagsGetResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultCwsPolicySet>;
 
 export type ZoneTagsGetResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsWorkloadTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultCwsWorkloadTagsMap>;
+export const ZoneTagsGetResultCwsWorkloadTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsWorkloadTagsMap>;
 
 export type ZoneTagsGetResultCwsWorkloadType = "cws_workload";
 export const ZoneTagsGetResultCwsWorkloadType = S.String;
@@ -2471,10 +2356,8 @@ export const ZoneTagsGetResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultCwsWorkload>;
 
 export type ZoneTagsGetResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultD1DatabaseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultD1DatabaseTagsMap>;
+export const ZoneTagsGetResultD1DatabaseTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultD1DatabaseTagsMap>;
 
 export type ZoneTagsGetResultD1DatabaseType = "d1_database";
 export const ZoneTagsGetResultD1DatabaseType = S.String;
@@ -2506,10 +2389,8 @@ export const ZoneTagsGetResultD1Database = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultD1Database>;
 
 export type ZoneTagsGetResultDeviceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultDeviceTagsMap>;
+export const ZoneTagsGetResultDeviceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultDeviceTagsMap>;
 
 export type ZoneTagsGetResultDeviceType = "device";
 export const ZoneTagsGetResultDeviceType = S.String;
@@ -2539,10 +2420,8 @@ export const ZoneTagsGetResultDevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZoneTagsGetResultDevice" }) as any as S.Schema<ZoneTagsGetResultDevice>;
 
 export type ZoneTagsGetResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultDNSRecordTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultDNSRecordTagsMap>;
+export const ZoneTagsGetResultDNSRecordTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultDNSRecordTagsMap>;
 
 export type ZoneTagsGetResultDNSRecordType = "dns_record";
 export const ZoneTagsGetResultDNSRecordType = S.String;
@@ -2577,10 +2456,8 @@ export const ZoneTagsGetResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultDNSRecord>;
 
 export type ZoneTagsGetResultDurableObjectNamespaceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultDurableObjectNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultDurableObjectNamespaceTagsMap>;
+export const ZoneTagsGetResultDurableObjectNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultDurableObjectNamespaceTagsMap>;
 
 export type ZoneTagsGetResultDurableObjectNamespaceType = "durable_object_namespace";
 export const ZoneTagsGetResultDurableObjectNamespaceType = S.String;
@@ -2612,10 +2489,8 @@ export const ZoneTagsGetResultDurableObjectNamespace = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ZoneTagsGetResultDurableObjectNamespace>;
 
 export type ZoneTagsGetResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultGatewayListTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultGatewayListTagsMap>;
+export const ZoneTagsGetResultGatewayListTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultGatewayListTagsMap>;
 
 export type ZoneTagsGetResultGatewayListType = "gateway_list";
 export const ZoneTagsGetResultGatewayListType = S.String;
@@ -2647,10 +2522,8 @@ export const ZoneTagsGetResultGatewayList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultGatewayList>;
 
 export type ZoneTagsGetResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultGatewayRuleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultGatewayRuleTagsMap>;
+export const ZoneTagsGetResultGatewayRuleTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultGatewayRuleTagsMap>;
 
 export type ZoneTagsGetResultGatewayRuleType = "gateway_rule";
 export const ZoneTagsGetResultGatewayRuleType = S.String;
@@ -2682,10 +2555,8 @@ export const ZoneTagsGetResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultGatewayRule>;
 
 export type ZoneTagsGetResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultHealthcheckTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultHealthcheckTagsMap>;
+export const ZoneTagsGetResultHealthcheckTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultHealthcheckTagsMap>;
 
 export type ZoneTagsGetResultHealthcheckType = "healthcheck";
 export const ZoneTagsGetResultHealthcheckType = S.String;
@@ -2720,10 +2591,8 @@ export const ZoneTagsGetResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultHealthcheck>;
 
 export type ZoneTagsGetResultImageTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultImageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultImageTagsMap>;
+export const ZoneTagsGetResultImageTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultImageTagsMap>;
 
 export type ZoneTagsGetResultImageType = "image";
 export const ZoneTagsGetResultImageType = S.String;
@@ -2753,10 +2622,8 @@ export const ZoneTagsGetResultImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZoneTagsGetResultImage" }) as any as S.Schema<ZoneTagsGetResultImage>;
 
 export type ZoneTagsGetResultInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultInfrastructureTargetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultInfrastructureTargetTagsMap>;
+export const ZoneTagsGetResultInfrastructureTargetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultInfrastructureTargetTagsMap>;
 
 export type ZoneTagsGetResultInfrastructureTargetType = "infrastructure_target";
 export const ZoneTagsGetResultInfrastructureTargetType = S.String;
@@ -2788,10 +2655,8 @@ export const ZoneTagsGetResultInfrastructureTarget = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ZoneTagsGetResultInfrastructureTarget>;
 
 export type ZoneTagsGetResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultKVNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultKVNamespaceTagsMap>;
+export const ZoneTagsGetResultKVNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultKVNamespaceTagsMap>;
 
 export type ZoneTagsGetResultKVNamespaceType = "kv_namespace";
 export const ZoneTagsGetResultKVNamespaceType = S.String;
@@ -2823,10 +2688,8 @@ export const ZoneTagsGetResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultKVNamespace>;
 
 export type ZoneTagsGetResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultLoadBalancerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultLoadBalancerTagsMap>;
+export const ZoneTagsGetResultLoadBalancerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultLoadBalancerTagsMap>;
 
 export type ZoneTagsGetResultLoadBalancerType = "load_balancer";
 export const ZoneTagsGetResultLoadBalancerType = S.String;
@@ -2861,10 +2724,8 @@ export const ZoneTagsGetResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultLoadBalancer>;
 
 export type ZoneTagsGetResultLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultLoadBalancerMonitorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultLoadBalancerMonitorTagsMap>;
+export const ZoneTagsGetResultLoadBalancerMonitorTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultLoadBalancerMonitorTagsMap>;
 
 export type ZoneTagsGetResultLoadBalancerMonitorType = "load_balancer_monitor";
 export const ZoneTagsGetResultLoadBalancerMonitorType = S.String;
@@ -2896,10 +2757,8 @@ export const ZoneTagsGetResultLoadBalancerMonitor = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ZoneTagsGetResultLoadBalancerMonitor>;
 
 export type ZoneTagsGetResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultLoadBalancerPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultLoadBalancerPoolTagsMap>;
+export const ZoneTagsGetResultLoadBalancerPoolTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultLoadBalancerPoolTagsMap>;
 
 export type ZoneTagsGetResultLoadBalancerPoolType = "load_balancer_pool";
 export const ZoneTagsGetResultLoadBalancerPoolType = S.String;
@@ -2933,10 +2792,8 @@ export const ZoneTagsGetResultLoadBalancerPool = /*@__PURE__*/ S.suspend(() =>
 export type ZoneTagsGetResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsGetResultManagedClientCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultManagedClientCertificateTagsMap>;
+export const ZoneTagsGetResultManagedClientCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultManagedClientCertificateTagsMap>;
 
 export type ZoneTagsGetResultManagedClientCertificateType = "managed_client_certificate";
 export const ZoneTagsGetResultManagedClientCertificateType = S.String;
@@ -2971,10 +2828,8 @@ export const ZoneTagsGetResultManagedClientCertificate = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ZoneTagsGetResultManagedClientCertificate>;
 
 export type ZoneTagsGetResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultPagesProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultPagesProjectTagsMap>;
+export const ZoneTagsGetResultPagesProjectTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultPagesProjectTagsMap>;
 
 export type ZoneTagsGetResultPagesProjectType = "pages_project";
 export const ZoneTagsGetResultPagesProjectType = S.String;
@@ -3006,10 +2861,8 @@ export const ZoneTagsGetResultPagesProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultPagesProject>;
 
 export type ZoneTagsGetResultQueueTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultQueueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultQueueTagsMap>;
+export const ZoneTagsGetResultQueueTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultQueueTagsMap>;
 
 export type ZoneTagsGetResultQueueType = "queue";
 export const ZoneTagsGetResultQueueType = S.String;
@@ -3039,10 +2892,8 @@ export const ZoneTagsGetResultQueue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZoneTagsGetResultQueue" }) as any as S.Schema<ZoneTagsGetResultQueue>;
 
 export type ZoneTagsGetResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultR2BucketTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultR2BucketTagsMap>;
+export const ZoneTagsGetResultR2BucketTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultR2BucketTagsMap>;
 
 export type ZoneTagsGetResultR2BucketType = "r2_bucket";
 export const ZoneTagsGetResultR2BucketType = S.String;
@@ -3074,10 +2925,8 @@ export const ZoneTagsGetResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultR2Bucket>;
 
 export type ZoneTagsGetResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultResourceShareTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultResourceShareTagsMap>;
+export const ZoneTagsGetResultResourceShareTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultResourceShareTagsMap>;
 
 export type ZoneTagsGetResultResourceShareType = "resource_share";
 export const ZoneTagsGetResultResourceShareType = S.String;
@@ -3109,10 +2958,8 @@ export const ZoneTagsGetResultResourceShare = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultResourceShare>;
 
 export type ZoneTagsGetResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultStreamLiveInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultStreamLiveInputTagsMap>;
+export const ZoneTagsGetResultStreamLiveInputTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultStreamLiveInputTagsMap>;
 
 export type ZoneTagsGetResultStreamLiveInputType = "stream_live_input";
 export const ZoneTagsGetResultStreamLiveInputType = S.String;
@@ -3144,10 +2991,8 @@ export const ZoneTagsGetResultStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultStreamLiveInput>;
 
 export type ZoneTagsGetResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultStreamVideoTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultStreamVideoTagsMap>;
+export const ZoneTagsGetResultStreamVideoTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultStreamVideoTagsMap>;
 
 export type ZoneTagsGetResultStreamVideoType = "stream_video";
 export const ZoneTagsGetResultStreamVideoType = S.String;
@@ -3179,10 +3024,8 @@ export const ZoneTagsGetResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultStreamVideo>;
 
 export type ZoneTagsGetResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultVectorizeIndexTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultVectorizeIndexTagsMap>;
+export const ZoneTagsGetResultVectorizeIndexTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultVectorizeIndexTagsMap>;
 
 export type ZoneTagsGetResultVectorizeIndexType = "vectorize_index";
 export const ZoneTagsGetResultVectorizeIndexType = S.String;
@@ -3214,10 +3057,8 @@ export const ZoneTagsGetResultVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultVectorizeIndex>;
 
 export type ZoneTagsGetResultWorkerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultWorkerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultWorkerTagsMap>;
+export const ZoneTagsGetResultWorkerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultWorkerTagsMap>;
 
 export type ZoneTagsGetResultWorkerType = "worker";
 export const ZoneTagsGetResultWorkerType = S.String;
@@ -3247,10 +3088,8 @@ export const ZoneTagsGetResultWorker = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZoneTagsGetResultWorker" }) as any as S.Schema<ZoneTagsGetResultWorker>;
 
 export type ZoneTagsGetResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultWorkerRouteTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultWorkerRouteTagsMap>;
+export const ZoneTagsGetResultWorkerRouteTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultWorkerRouteTagsMap>;
 
 export type ZoneTagsGetResultWorkerRouteType = "worker_route";
 export const ZoneTagsGetResultWorkerRouteType = S.String;
@@ -3285,10 +3124,8 @@ export const ZoneTagsGetResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultWorkerRoute>;
 
 export type ZoneTagsGetResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultWorkerVersionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultWorkerVersionTagsMap>;
+export const ZoneTagsGetResultWorkerVersionTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultWorkerVersionTagsMap>;
 
 export type ZoneTagsGetResultWorkerVersionType = "worker_version";
 export const ZoneTagsGetResultWorkerVersionType = S.String;
@@ -3323,10 +3160,8 @@ export const ZoneTagsGetResultWorkerVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsGetResultWorkerVersion>;
 
 export type ZoneTagsGetResultZoneTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultZoneTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultZoneTagsMap>;
+export const ZoneTagsGetResultZoneTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultZoneTagsMap>;
 
 export type ZoneTagsGetResultZoneType = "zone";
 export const ZoneTagsGetResultZoneType = S.String;
@@ -3359,10 +3194,8 @@ export const ZoneTagsGetResultZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZoneTagsGetResultZone" }) as any as S.Schema<ZoneTagsGetResultZone>;
 
 export type ZoneTagsGetResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultZoneRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsGetResultZoneRulesetTagsMap>;
+export const ZoneTagsGetResultZoneRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultZoneRulesetTagsMap>;
 
 export type ZoneTagsGetResultZoneRulesetType = "zone_ruleset";
 export const ZoneTagsGetResultZoneRulesetType = S.String;
@@ -3556,9 +3389,8 @@ export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListKeysRequest" }) as any as S.Schema<ListKeysRequest>;
 
 export type KeysListResultList = Array<string>;
-export const KeysListResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeysListResultList>;
+export const KeysListResultList =
+  GetSummaryResultItemValuesList as any as S.Schema<KeysListResultList>;
 
 export interface ListKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -3574,14 +3406,12 @@ export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListKeysResponse" }) as any as S.Schema<ListKeysResponse>;
 
 export type ListRequestIdList = Array<string>;
-export const ListRequestIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestIdList>;
+export const ListRequestIdList =
+  GetSummaryResultItemValuesList as any as S.Schema<ListRequestIdList>;
 
 export type ListRequestTagList = Array<string>;
-export const ListRequestTagList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestTagList>;
+export const ListRequestTagList =
+  GetSummaryResultItemValuesList as any as S.Schema<ListRequestTagList>;
 
 export type ListRequestType =
   | "access_application"
@@ -3666,10 +3496,8 @@ export const ListResourceTaggingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceTaggingsRequest>;
 
 export type ListResultItemAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccessApplicationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAccessApplicationTagsMap>;
+export const ListResultItemAccessApplicationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccessApplicationTagsMap>;
 
 export type ListResultItemAccessApplicationType = "access_application";
 export const ListResultItemAccessApplicationType = S.String;
@@ -3701,10 +3529,8 @@ export const ListResultItemAccessApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemAccessApplication>;
 
 export type ListResultItemAccessApplicationPolicyTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccessApplicationPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAccessApplicationPolicyTagsMap>;
+export const ListResultItemAccessApplicationPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccessApplicationPolicyTagsMap>;
 
 export type ListResultItemAccessApplicationPolicyType = "access_application_policy";
 export const ListResultItemAccessApplicationPolicyType = S.String;
@@ -3742,10 +3568,8 @@ export const ListResultItemAccessApplicationPolicy = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListResultItemAccessApplicationPolicy>;
 
 export type ListResultItemAccessGroupTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccessGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAccessGroupTagsMap>;
+export const ListResultItemAccessGroupTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccessGroupTagsMap>;
 
 export type ListResultItemAccessGroupType = "access_group";
 export const ListResultItemAccessGroupType = S.String;
@@ -3777,10 +3601,8 @@ export const ListResultItemAccessGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemAccessGroup>;
 
 export type ListResultItemAccountTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAccountTagsMap>;
+export const ListResultItemAccountTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccountTagsMap>;
 
 export type ListResultItemAccountType = "account";
 export const ListResultItemAccountType = S.String;
@@ -3810,10 +3632,8 @@ export const ListResultItemAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemAccount" }) as any as S.Schema<ListResultItemAccount>;
 
 export type ListResultItemAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccountRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAccountRulesetTagsMap>;
+export const ListResultItemAccountRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccountRulesetTagsMap>;
 
 export type ListResultItemAccountRulesetType = "account_ruleset";
 export const ListResultItemAccountRulesetType = S.String;
@@ -3845,10 +3665,8 @@ export const ListResultItemAccountRuleset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemAccountRuleset>;
 
 export type ListResultItemAIGatewayTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAIGatewayTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAIGatewayTagsMap>;
+export const ListResultItemAIGatewayTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAIGatewayTagsMap>;
 
 export type ListResultItemAIGatewayType = "ai_gateway";
 export const ListResultItemAIGatewayType = S.String;
@@ -3878,10 +3696,8 @@ export const ListResultItemAIGateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemAIGateway" }) as any as S.Schema<ListResultItemAIGateway>;
 
 export type ListResultItemAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAlertingPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAlertingPolicyTagsMap>;
+export const ListResultItemAlertingPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAlertingPolicyTagsMap>;
 
 export type ListResultItemAlertingPolicyType = "alerting_policy";
 export const ListResultItemAlertingPolicyType = S.String;
@@ -3913,10 +3729,8 @@ export const ListResultItemAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemAlertingPolicy>;
 
 export type ListResultItemAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAlertingWebhookTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAlertingWebhookTagsMap>;
+export const ListResultItemAlertingWebhookTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAlertingWebhookTagsMap>;
 
 export type ListResultItemAlertingWebhookType = "alerting_webhook";
 export const ListResultItemAlertingWebhookType = S.String;
@@ -3948,10 +3762,8 @@ export const ListResultItemAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemAlertingWebhook>;
 
 export type ListResultItemAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAPIGatewayOperationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemAPIGatewayOperationTagsMap>;
+export const ListResultItemAPIGatewayOperationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAPIGatewayOperationTagsMap>;
 
 export type ListResultItemAPIGatewayOperationType = "api_gateway_operation";
 export const ListResultItemAPIGatewayOperationType = S.String;
@@ -3986,10 +3798,8 @@ export const ListResultItemAPIGatewayOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemAPIGatewayOperation>;
 
 export type ListResultItemCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCloudflaredTunnelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemCloudflaredTunnelTagsMap>;
+export const ListResultItemCloudflaredTunnelTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCloudflaredTunnelTagsMap>;
 
 export type ListResultItemCloudflaredTunnelType = "cloudflared_tunnel";
 export const ListResultItemCloudflaredTunnelType = S.String;
@@ -4021,10 +3831,8 @@ export const ListResultItemCloudflaredTunnel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemCloudflaredTunnel>;
 
 export type ListResultItemCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCustomCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemCustomCertificateTagsMap>;
+export const ListResultItemCustomCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCustomCertificateTagsMap>;
 
 export type ListResultItemCustomCertificateType = "custom_certificate";
 export const ListResultItemCustomCertificateType = S.String;
@@ -4059,10 +3867,8 @@ export const ListResultItemCustomCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemCustomCertificate>;
 
 export type ListResultItemCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCustomHostnameTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemCustomHostnameTagsMap>;
+export const ListResultItemCustomHostnameTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCustomHostnameTagsMap>;
 
 export type ListResultItemCustomHostnameType = "custom_hostname";
 export const ListResultItemCustomHostnameType = S.String;
@@ -4097,10 +3903,8 @@ export const ListResultItemCustomHostname = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemCustomHostname>;
 
 export type ListResultItemCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsDeploymentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemCwsDeploymentTagsMap>;
+export const ListResultItemCwsDeploymentTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsDeploymentTagsMap>;
 
 export type ListResultItemCwsDeploymentType = "cws_deployment";
 export const ListResultItemCwsDeploymentType = S.String;
@@ -4132,10 +3936,8 @@ export const ListResultItemCwsDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemCwsDeployment>;
 
 export type ListResultItemCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemCwsPolicyTagsMap>;
+export const ListResultItemCwsPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsPolicyTagsMap>;
 
 export type ListResultItemCwsPolicyType = "cws_policy";
 export const ListResultItemCwsPolicyType = S.String;
@@ -4165,10 +3967,8 @@ export const ListResultItemCwsPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemCwsPolicy" }) as any as S.Schema<ListResultItemCwsPolicy>;
 
 export type ListResultItemCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsPolicySetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemCwsPolicySetTagsMap>;
+export const ListResultItemCwsPolicySetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsPolicySetTagsMap>;
 
 export type ListResultItemCwsPolicySetType = "cws_policy_set";
 export const ListResultItemCwsPolicySetType = S.String;
@@ -4200,10 +4000,8 @@ export const ListResultItemCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemCwsPolicySet>;
 
 export type ListResultItemCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsWorkloadTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemCwsWorkloadTagsMap>;
+export const ListResultItemCwsWorkloadTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsWorkloadTagsMap>;
 
 export type ListResultItemCwsWorkloadType = "cws_workload";
 export const ListResultItemCwsWorkloadType = S.String;
@@ -4235,10 +4033,8 @@ export const ListResultItemCwsWorkload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemCwsWorkload>;
 
 export type ListResultItemD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const ListResultItemD1DatabaseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemD1DatabaseTagsMap>;
+export const ListResultItemD1DatabaseTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemD1DatabaseTagsMap>;
 
 export type ListResultItemD1DatabaseType = "d1_database";
 export const ListResultItemD1DatabaseType = S.String;
@@ -4268,10 +4064,8 @@ export const ListResultItemD1Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemD1Database" }) as any as S.Schema<ListResultItemD1Database>;
 
 export type ListResultItemDeviceTagsMap = { [key: string]: string | undefined };
-export const ListResultItemDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemDeviceTagsMap>;
+export const ListResultItemDeviceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemDeviceTagsMap>;
 
 export type ListResultItemDeviceType = "device";
 export const ListResultItemDeviceType = S.String;
@@ -4301,10 +4095,8 @@ export const ListResultItemDevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemDevice" }) as any as S.Schema<ListResultItemDevice>;
 
 export type ListResultItemDNSRecordTagsMap = { [key: string]: string | undefined };
-export const ListResultItemDNSRecordTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemDNSRecordTagsMap>;
+export const ListResultItemDNSRecordTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemDNSRecordTagsMap>;
 
 export type ListResultItemDNSRecordType = "dns_record";
 export const ListResultItemDNSRecordType = S.String;
@@ -4337,10 +4129,8 @@ export const ListResultItemDNSRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemDNSRecord" }) as any as S.Schema<ListResultItemDNSRecord>;
 
 export type ListResultItemDurableObjectNamespaceTagsMap = { [key: string]: string | undefined };
-export const ListResultItemDurableObjectNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemDurableObjectNamespaceTagsMap>;
+export const ListResultItemDurableObjectNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemDurableObjectNamespaceTagsMap>;
 
 export type ListResultItemDurableObjectNamespaceType = "durable_object_namespace";
 export const ListResultItemDurableObjectNamespaceType = S.String;
@@ -4372,10 +4162,8 @@ export const ListResultItemDurableObjectNamespace = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListResultItemDurableObjectNamespace>;
 
 export type ListResultItemGatewayListTagsMap = { [key: string]: string | undefined };
-export const ListResultItemGatewayListTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemGatewayListTagsMap>;
+export const ListResultItemGatewayListTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemGatewayListTagsMap>;
 
 export type ListResultItemGatewayListType = "gateway_list";
 export const ListResultItemGatewayListType = S.String;
@@ -4407,10 +4195,8 @@ export const ListResultItemGatewayList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemGatewayList>;
 
 export type ListResultItemGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const ListResultItemGatewayRuleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemGatewayRuleTagsMap>;
+export const ListResultItemGatewayRuleTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemGatewayRuleTagsMap>;
 
 export type ListResultItemGatewayRuleType = "gateway_rule";
 export const ListResultItemGatewayRuleType = S.String;
@@ -4442,10 +4228,8 @@ export const ListResultItemGatewayRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemGatewayRule>;
 
 export type ListResultItemHealthcheckTagsMap = { [key: string]: string | undefined };
-export const ListResultItemHealthcheckTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemHealthcheckTagsMap>;
+export const ListResultItemHealthcheckTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemHealthcheckTagsMap>;
 
 export type ListResultItemHealthcheckType = "healthcheck";
 export const ListResultItemHealthcheckType = S.String;
@@ -4480,10 +4264,8 @@ export const ListResultItemHealthcheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemHealthcheck>;
 
 export type ListResultItemImageTagsMap = { [key: string]: string | undefined };
-export const ListResultItemImageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemImageTagsMap>;
+export const ListResultItemImageTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemImageTagsMap>;
 
 export type ListResultItemImageType = "image";
 export const ListResultItemImageType = S.String;
@@ -4513,10 +4295,8 @@ export const ListResultItemImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemImage" }) as any as S.Schema<ListResultItemImage>;
 
 export type ListResultItemInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemInfrastructureTargetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemInfrastructureTargetTagsMap>;
+export const ListResultItemInfrastructureTargetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemInfrastructureTargetTagsMap>;
 
 export type ListResultItemInfrastructureTargetType = "infrastructure_target";
 export const ListResultItemInfrastructureTargetType = S.String;
@@ -4548,10 +4328,8 @@ export const ListResultItemInfrastructureTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemInfrastructureTarget>;
 
 export type ListResultItemKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const ListResultItemKVNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemKVNamespaceTagsMap>;
+export const ListResultItemKVNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemKVNamespaceTagsMap>;
 
 export type ListResultItemKVNamespaceType = "kv_namespace";
 export const ListResultItemKVNamespaceType = S.String;
@@ -4583,10 +4361,8 @@ export const ListResultItemKVNamespace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemKVNamespace>;
 
 export type ListResultItemLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const ListResultItemLoadBalancerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemLoadBalancerTagsMap>;
+export const ListResultItemLoadBalancerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemLoadBalancerTagsMap>;
 
 export type ListResultItemLoadBalancerType = "load_balancer";
 export const ListResultItemLoadBalancerType = S.String;
@@ -4621,10 +4397,8 @@ export const ListResultItemLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemLoadBalancer>;
 
 export type ListResultItemLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const ListResultItemLoadBalancerMonitorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemLoadBalancerMonitorTagsMap>;
+export const ListResultItemLoadBalancerMonitorTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemLoadBalancerMonitorTagsMap>;
 
 export type ListResultItemLoadBalancerMonitorType = "load_balancer_monitor";
 export const ListResultItemLoadBalancerMonitorType = S.String;
@@ -4656,10 +4430,8 @@ export const ListResultItemLoadBalancerMonitor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemLoadBalancerMonitor>;
 
 export type ListResultItemLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const ListResultItemLoadBalancerPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemLoadBalancerPoolTagsMap>;
+export const ListResultItemLoadBalancerPoolTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemLoadBalancerPoolTagsMap>;
 
 export type ListResultItemLoadBalancerPoolType = "load_balancer_pool";
 export const ListResultItemLoadBalancerPoolType = S.String;
@@ -4691,10 +4463,8 @@ export const ListResultItemLoadBalancerPool = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemLoadBalancerPool>;
 
 export type ListResultItemManagedClientCertificateTagsMap = { [key: string]: string | undefined };
-export const ListResultItemManagedClientCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemManagedClientCertificateTagsMap>;
+export const ListResultItemManagedClientCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemManagedClientCertificateTagsMap>;
 
 export type ListResultItemManagedClientCertificateType = "managed_client_certificate";
 export const ListResultItemManagedClientCertificateType = S.String;
@@ -4729,10 +4499,8 @@ export const ListResultItemManagedClientCertificate = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListResultItemManagedClientCertificate>;
 
 export type ListResultItemPagesProjectTagsMap = { [key: string]: string | undefined };
-export const ListResultItemPagesProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemPagesProjectTagsMap>;
+export const ListResultItemPagesProjectTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemPagesProjectTagsMap>;
 
 export type ListResultItemPagesProjectType = "pages_project";
 export const ListResultItemPagesProjectType = S.String;
@@ -4764,10 +4532,8 @@ export const ListResultItemPagesProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemPagesProject>;
 
 export type ListResultItemQueueTagsMap = { [key: string]: string | undefined };
-export const ListResultItemQueueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemQueueTagsMap>;
+export const ListResultItemQueueTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemQueueTagsMap>;
 
 export type ListResultItemQueueType = "queue";
 export const ListResultItemQueueType = S.String;
@@ -4797,10 +4563,8 @@ export const ListResultItemQueue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemQueue" }) as any as S.Schema<ListResultItemQueue>;
 
 export type ListResultItemR2BucketTagsMap = { [key: string]: string | undefined };
-export const ListResultItemR2BucketTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemR2BucketTagsMap>;
+export const ListResultItemR2BucketTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemR2BucketTagsMap>;
 
 export type ListResultItemR2BucketType = "r2_bucket";
 export const ListResultItemR2BucketType = S.String;
@@ -4830,10 +4594,8 @@ export const ListResultItemR2Bucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemR2Bucket" }) as any as S.Schema<ListResultItemR2Bucket>;
 
 export type ListResultItemResourceShareTagsMap = { [key: string]: string | undefined };
-export const ListResultItemResourceShareTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemResourceShareTagsMap>;
+export const ListResultItemResourceShareTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemResourceShareTagsMap>;
 
 export type ListResultItemResourceShareType = "resource_share";
 export const ListResultItemResourceShareType = S.String;
@@ -4865,10 +4627,8 @@ export const ListResultItemResourceShare = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemResourceShare>;
 
 export type ListResultItemStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const ListResultItemStreamLiveInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemStreamLiveInputTagsMap>;
+export const ListResultItemStreamLiveInputTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemStreamLiveInputTagsMap>;
 
 export type ListResultItemStreamLiveInputType = "stream_live_input";
 export const ListResultItemStreamLiveInputType = S.String;
@@ -4900,10 +4660,8 @@ export const ListResultItemStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemStreamLiveInput>;
 
 export type ListResultItemStreamVideoTagsMap = { [key: string]: string | undefined };
-export const ListResultItemStreamVideoTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemStreamVideoTagsMap>;
+export const ListResultItemStreamVideoTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemStreamVideoTagsMap>;
 
 export type ListResultItemStreamVideoType = "stream_video";
 export const ListResultItemStreamVideoType = S.String;
@@ -4935,10 +4693,8 @@ export const ListResultItemStreamVideo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemStreamVideo>;
 
 export type ListResultItemVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const ListResultItemVectorizeIndexTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemVectorizeIndexTagsMap>;
+export const ListResultItemVectorizeIndexTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemVectorizeIndexTagsMap>;
 
 export type ListResultItemVectorizeIndexType = "vectorize_index";
 export const ListResultItemVectorizeIndexType = S.String;
@@ -4970,10 +4726,8 @@ export const ListResultItemVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemVectorizeIndex>;
 
 export type ListResultItemWorkerTagsMap = { [key: string]: string | undefined };
-export const ListResultItemWorkerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemWorkerTagsMap>;
+export const ListResultItemWorkerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemWorkerTagsMap>;
 
 export type ListResultItemWorkerType = "worker";
 export const ListResultItemWorkerType = S.String;
@@ -5003,10 +4757,8 @@ export const ListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemWorker" }) as any as S.Schema<ListResultItemWorker>;
 
 export type ListResultItemWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const ListResultItemWorkerRouteTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemWorkerRouteTagsMap>;
+export const ListResultItemWorkerRouteTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemWorkerRouteTagsMap>;
 
 export type ListResultItemWorkerRouteType = "worker_route";
 export const ListResultItemWorkerRouteType = S.String;
@@ -5041,10 +4793,8 @@ export const ListResultItemWorkerRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemWorkerRoute>;
 
 export type ListResultItemWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const ListResultItemWorkerVersionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemWorkerVersionTagsMap>;
+export const ListResultItemWorkerVersionTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemWorkerVersionTagsMap>;
 
 export type ListResultItemWorkerVersionType = "worker_version";
 export const ListResultItemWorkerVersionType = S.String;
@@ -5079,10 +4829,8 @@ export const ListResultItemWorkerVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemWorkerVersion>;
 
 export type ListResultItemZoneTagsMap = { [key: string]: string | undefined };
-export const ListResultItemZoneTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemZoneTagsMap>;
+export const ListResultItemZoneTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemZoneTagsMap>;
 
 export type ListResultItemZoneType = "zone";
 export const ListResultItemZoneType = S.String;
@@ -5115,10 +4863,8 @@ export const ListResultItemZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemZone" }) as any as S.Schema<ListResultItemZone>;
 
 export type ListResultItemZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemZoneRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListResultItemZoneRulesetTagsMap>;
+export const ListResultItemZoneRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemZoneRulesetTagsMap>;
 
 export type ListResultItemZoneRulesetType = "zone_ruleset";
 export const ListResultItemZoneRulesetType = S.String;
@@ -5377,9 +5123,8 @@ export const ListValuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListValuesRequest" }) as any as S.Schema<ListValuesRequest>;
 
 export type ValuesListResultList = Array<string>;
-export const ValuesListResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValuesListResultList>;
+export const ValuesListResultList =
+  GetSummaryResultItemValuesList as any as S.Schema<ValuesListResultList>;
 
 export interface ListValuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -5387,12 +5132,7 @@ export interface ListValuesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: ValuesListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListValuesResponse" }) as any as S.Schema<ListValuesResponse>;
+export const ListValuesResponse = ListKeysResponse as any as S.Schema<ListValuesResponse>;
 
 export type AccountTagsUpdateRequestResourceType =
   | "worker_version"
@@ -5429,10 +5169,8 @@ export type AccountTagsUpdateRequestResourceType =
 export const AccountTagsUpdateRequestResourceType = S.String;
 
 export type AccountTagsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateRequestTagsMap>;
+export const AccountTagsUpdateRequestTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateRequestTagsMap>;
 
 export interface PutAccountTagRequest {
   /** Identifier. */
@@ -5461,10 +5199,8 @@ export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAccountTagRequest" }) as any as S.Schema<PutAccountTagRequest>;
 
 export type AccountTagsUpdateResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccessApplicationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAccessApplicationTagsMap>;
+export const AccountTagsUpdateResultAccessApplicationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccessApplicationTagsMap>;
 
 export type AccountTagsUpdateResultAccessApplicationType = "access_application";
 export const AccountTagsUpdateResultAccessApplicationType = S.String;
@@ -5498,10 +5234,8 @@ export const AccountTagsUpdateResultAccessApplication = /*@__PURE__*/ S.suspend(
 export type AccountTagsUpdateResultAccessApplicationPolicyTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultAccessApplicationPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAccessApplicationPolicyTagsMap>;
+export const AccountTagsUpdateResultAccessApplicationPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccessApplicationPolicyTagsMap>;
 
 export type AccountTagsUpdateResultAccessApplicationPolicyType = "access_application_policy";
 export const AccountTagsUpdateResultAccessApplicationPolicyType = S.String;
@@ -5539,10 +5273,8 @@ export const AccountTagsUpdateResultAccessApplicationPolicy = /*@__PURE__*/ S.su
 }) as any as S.Schema<AccountTagsUpdateResultAccessApplicationPolicy>;
 
 export type AccountTagsUpdateResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccessGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAccessGroupTagsMap>;
+export const AccountTagsUpdateResultAccessGroupTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccessGroupTagsMap>;
 
 export type AccountTagsUpdateResultAccessGroupType = "access_group";
 export const AccountTagsUpdateResultAccessGroupType = S.String;
@@ -5574,10 +5306,8 @@ export const AccountTagsUpdateResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultAccessGroup>;
 
 export type AccountTagsUpdateResultAccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAccountTagsMap>;
+export const AccountTagsUpdateResultAccountTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccountTagsMap>;
 
 export type AccountTagsUpdateResultAccountType = "account";
 export const AccountTagsUpdateResultAccountType = S.String;
@@ -5609,10 +5339,8 @@ export const AccountTagsUpdateResultAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultAccount>;
 
 export type AccountTagsUpdateResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccountRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAccountRulesetTagsMap>;
+export const AccountTagsUpdateResultAccountRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccountRulesetTagsMap>;
 
 export type AccountTagsUpdateResultAccountRulesetType = "account_ruleset";
 export const AccountTagsUpdateResultAccountRulesetType = S.String;
@@ -5644,10 +5372,8 @@ export const AccountTagsUpdateResultAccountRuleset = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountTagsUpdateResultAccountRuleset>;
 
 export type AccountTagsUpdateResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAIGatewayTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAIGatewayTagsMap>;
+export const AccountTagsUpdateResultAIGatewayTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAIGatewayTagsMap>;
 
 export type AccountTagsUpdateResultAIGatewayType = "ai_gateway";
 export const AccountTagsUpdateResultAIGatewayType = S.String;
@@ -5679,10 +5405,8 @@ export const AccountTagsUpdateResultAIGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultAIGateway>;
 
 export type AccountTagsUpdateResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAlertingPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAlertingPolicyTagsMap>;
+export const AccountTagsUpdateResultAlertingPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAlertingPolicyTagsMap>;
 
 export type AccountTagsUpdateResultAlertingPolicyType = "alerting_policy";
 export const AccountTagsUpdateResultAlertingPolicyType = S.String;
@@ -5714,10 +5438,8 @@ export const AccountTagsUpdateResultAlertingPolicy = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountTagsUpdateResultAlertingPolicy>;
 
 export type AccountTagsUpdateResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAlertingWebhookTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAlertingWebhookTagsMap>;
+export const AccountTagsUpdateResultAlertingWebhookTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAlertingWebhookTagsMap>;
 
 export type AccountTagsUpdateResultAlertingWebhookType = "alerting_webhook";
 export const AccountTagsUpdateResultAlertingWebhookType = S.String;
@@ -5751,10 +5473,8 @@ export const AccountTagsUpdateResultAlertingWebhook = /*@__PURE__*/ S.suspend(()
 export type AccountTagsUpdateResultAPIGatewayOperationTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultAPIGatewayOperationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultAPIGatewayOperationTagsMap>;
+export const AccountTagsUpdateResultAPIGatewayOperationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAPIGatewayOperationTagsMap>;
 
 export type AccountTagsUpdateResultAPIGatewayOperationType = "api_gateway_operation";
 export const AccountTagsUpdateResultAPIGatewayOperationType = S.String;
@@ -5789,10 +5509,8 @@ export const AccountTagsUpdateResultAPIGatewayOperation = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<AccountTagsUpdateResultAPIGatewayOperation>;
 
 export type AccountTagsUpdateResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCloudflaredTunnelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultCloudflaredTunnelTagsMap>;
+export const AccountTagsUpdateResultCloudflaredTunnelTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCloudflaredTunnelTagsMap>;
 
 export type AccountTagsUpdateResultCloudflaredTunnelType = "cloudflared_tunnel";
 export const AccountTagsUpdateResultCloudflaredTunnelType = S.String;
@@ -5824,10 +5542,8 @@ export const AccountTagsUpdateResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountTagsUpdateResultCloudflaredTunnel>;
 
 export type AccountTagsUpdateResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCustomCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultCustomCertificateTagsMap>;
+export const AccountTagsUpdateResultCustomCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCustomCertificateTagsMap>;
 
 export type AccountTagsUpdateResultCustomCertificateType = "custom_certificate";
 export const AccountTagsUpdateResultCustomCertificateType = S.String;
@@ -5862,10 +5578,8 @@ export const AccountTagsUpdateResultCustomCertificate = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountTagsUpdateResultCustomCertificate>;
 
 export type AccountTagsUpdateResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCustomHostnameTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultCustomHostnameTagsMap>;
+export const AccountTagsUpdateResultCustomHostnameTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCustomHostnameTagsMap>;
 
 export type AccountTagsUpdateResultCustomHostnameType = "custom_hostname";
 export const AccountTagsUpdateResultCustomHostnameType = S.String;
@@ -5900,10 +5614,8 @@ export const AccountTagsUpdateResultCustomHostname = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountTagsUpdateResultCustomHostname>;
 
 export type AccountTagsUpdateResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsDeploymentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultCwsDeploymentTagsMap>;
+export const AccountTagsUpdateResultCwsDeploymentTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsDeploymentTagsMap>;
 
 export type AccountTagsUpdateResultCwsDeploymentType = "cws_deployment";
 export const AccountTagsUpdateResultCwsDeploymentType = S.String;
@@ -5935,10 +5647,8 @@ export const AccountTagsUpdateResultCwsDeployment = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AccountTagsUpdateResultCwsDeployment>;
 
 export type AccountTagsUpdateResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultCwsPolicyTagsMap>;
+export const AccountTagsUpdateResultCwsPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsPolicyTagsMap>;
 
 export type AccountTagsUpdateResultCwsPolicyType = "cws_policy";
 export const AccountTagsUpdateResultCwsPolicyType = S.String;
@@ -5970,10 +5680,8 @@ export const AccountTagsUpdateResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultCwsPolicy>;
 
 export type AccountTagsUpdateResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsPolicySetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultCwsPolicySetTagsMap>;
+export const AccountTagsUpdateResultCwsPolicySetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsPolicySetTagsMap>;
 
 export type AccountTagsUpdateResultCwsPolicySetType = "cws_policy_set";
 export const AccountTagsUpdateResultCwsPolicySetType = S.String;
@@ -6005,10 +5713,8 @@ export const AccountTagsUpdateResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultCwsPolicySet>;
 
 export type AccountTagsUpdateResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsWorkloadTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultCwsWorkloadTagsMap>;
+export const AccountTagsUpdateResultCwsWorkloadTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsWorkloadTagsMap>;
 
 export type AccountTagsUpdateResultCwsWorkloadType = "cws_workload";
 export const AccountTagsUpdateResultCwsWorkloadType = S.String;
@@ -6040,10 +5746,8 @@ export const AccountTagsUpdateResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultCwsWorkload>;
 
 export type AccountTagsUpdateResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultD1DatabaseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultD1DatabaseTagsMap>;
+export const AccountTagsUpdateResultD1DatabaseTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultD1DatabaseTagsMap>;
 
 export type AccountTagsUpdateResultD1DatabaseType = "d1_database";
 export const AccountTagsUpdateResultD1DatabaseType = S.String;
@@ -6075,10 +5779,8 @@ export const AccountTagsUpdateResultD1Database = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultD1Database>;
 
 export type AccountTagsUpdateResultDeviceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultDeviceTagsMap>;
+export const AccountTagsUpdateResultDeviceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultDeviceTagsMap>;
 
 export type AccountTagsUpdateResultDeviceType = "device";
 export const AccountTagsUpdateResultDeviceType = S.String;
@@ -6110,10 +5812,8 @@ export const AccountTagsUpdateResultDevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultDevice>;
 
 export type AccountTagsUpdateResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultDNSRecordTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultDNSRecordTagsMap>;
+export const AccountTagsUpdateResultDNSRecordTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultDNSRecordTagsMap>;
 
 export type AccountTagsUpdateResultDNSRecordType = "dns_record";
 export const AccountTagsUpdateResultDNSRecordType = S.String;
@@ -6150,10 +5850,8 @@ export const AccountTagsUpdateResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
 export type AccountTagsUpdateResultDurableObjectNamespaceTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultDurableObjectNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultDurableObjectNamespaceTagsMap>;
+export const AccountTagsUpdateResultDurableObjectNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultDurableObjectNamespaceTagsMap>;
 
 export type AccountTagsUpdateResultDurableObjectNamespaceType = "durable_object_namespace";
 export const AccountTagsUpdateResultDurableObjectNamespaceType = S.String;
@@ -6185,10 +5883,8 @@ export const AccountTagsUpdateResultDurableObjectNamespace = /*@__PURE__*/ S.sus
 }) as any as S.Schema<AccountTagsUpdateResultDurableObjectNamespace>;
 
 export type AccountTagsUpdateResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultGatewayListTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultGatewayListTagsMap>;
+export const AccountTagsUpdateResultGatewayListTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultGatewayListTagsMap>;
 
 export type AccountTagsUpdateResultGatewayListType = "gateway_list";
 export const AccountTagsUpdateResultGatewayListType = S.String;
@@ -6220,10 +5916,8 @@ export const AccountTagsUpdateResultGatewayList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultGatewayList>;
 
 export type AccountTagsUpdateResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultGatewayRuleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultGatewayRuleTagsMap>;
+export const AccountTagsUpdateResultGatewayRuleTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultGatewayRuleTagsMap>;
 
 export type AccountTagsUpdateResultGatewayRuleType = "gateway_rule";
 export const AccountTagsUpdateResultGatewayRuleType = S.String;
@@ -6255,10 +5949,8 @@ export const AccountTagsUpdateResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultGatewayRule>;
 
 export type AccountTagsUpdateResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultHealthcheckTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultHealthcheckTagsMap>;
+export const AccountTagsUpdateResultHealthcheckTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultHealthcheckTagsMap>;
 
 export type AccountTagsUpdateResultHealthcheckType = "healthcheck";
 export const AccountTagsUpdateResultHealthcheckType = S.String;
@@ -6293,10 +5985,8 @@ export const AccountTagsUpdateResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultHealthcheck>;
 
 export type AccountTagsUpdateResultImageTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultImageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultImageTagsMap>;
+export const AccountTagsUpdateResultImageTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultImageTagsMap>;
 
 export type AccountTagsUpdateResultImageType = "image";
 export const AccountTagsUpdateResultImageType = S.String;
@@ -6330,10 +6020,8 @@ export const AccountTagsUpdateResultImage = /*@__PURE__*/ S.suspend(() =>
 export type AccountTagsUpdateResultInfrastructureTargetTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultInfrastructureTargetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultInfrastructureTargetTagsMap>;
+export const AccountTagsUpdateResultInfrastructureTargetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultInfrastructureTargetTagsMap>;
 
 export type AccountTagsUpdateResultInfrastructureTargetType = "infrastructure_target";
 export const AccountTagsUpdateResultInfrastructureTargetType = S.String;
@@ -6365,10 +6053,8 @@ export const AccountTagsUpdateResultInfrastructureTarget = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<AccountTagsUpdateResultInfrastructureTarget>;
 
 export type AccountTagsUpdateResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultKVNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultKVNamespaceTagsMap>;
+export const AccountTagsUpdateResultKVNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultKVNamespaceTagsMap>;
 
 export type AccountTagsUpdateResultKVNamespaceType = "kv_namespace";
 export const AccountTagsUpdateResultKVNamespaceType = S.String;
@@ -6400,10 +6086,8 @@ export const AccountTagsUpdateResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultKVNamespace>;
 
 export type AccountTagsUpdateResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultLoadBalancerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultLoadBalancerTagsMap>;
+export const AccountTagsUpdateResultLoadBalancerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultLoadBalancerTagsMap>;
 
 export type AccountTagsUpdateResultLoadBalancerType = "load_balancer";
 export const AccountTagsUpdateResultLoadBalancerType = S.String;
@@ -6440,10 +6124,8 @@ export const AccountTagsUpdateResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 export type AccountTagsUpdateResultLoadBalancerMonitorTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultLoadBalancerMonitorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultLoadBalancerMonitorTagsMap>;
+export const AccountTagsUpdateResultLoadBalancerMonitorTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultLoadBalancerMonitorTagsMap>;
 
 export type AccountTagsUpdateResultLoadBalancerMonitorType = "load_balancer_monitor";
 export const AccountTagsUpdateResultLoadBalancerMonitorType = S.String;
@@ -6475,10 +6157,8 @@ export const AccountTagsUpdateResultLoadBalancerMonitor = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<AccountTagsUpdateResultLoadBalancerMonitor>;
 
 export type AccountTagsUpdateResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultLoadBalancerPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultLoadBalancerPoolTagsMap>;
+export const AccountTagsUpdateResultLoadBalancerPoolTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultLoadBalancerPoolTagsMap>;
 
 export type AccountTagsUpdateResultLoadBalancerPoolType = "load_balancer_pool";
 export const AccountTagsUpdateResultLoadBalancerPoolType = S.String;
@@ -6512,10 +6192,8 @@ export const AccountTagsUpdateResultLoadBalancerPool = /*@__PURE__*/ S.suspend((
 export type AccountTagsUpdateResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultManagedClientCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultManagedClientCertificateTagsMap>;
+export const AccountTagsUpdateResultManagedClientCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultManagedClientCertificateTagsMap>;
 
 export type AccountTagsUpdateResultManagedClientCertificateType = "managed_client_certificate";
 export const AccountTagsUpdateResultManagedClientCertificateType = S.String;
@@ -6550,10 +6228,8 @@ export const AccountTagsUpdateResultManagedClientCertificate = /*@__PURE__*/ S.s
 }) as any as S.Schema<AccountTagsUpdateResultManagedClientCertificate>;
 
 export type AccountTagsUpdateResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultPagesProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultPagesProjectTagsMap>;
+export const AccountTagsUpdateResultPagesProjectTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultPagesProjectTagsMap>;
 
 export type AccountTagsUpdateResultPagesProjectType = "pages_project";
 export const AccountTagsUpdateResultPagesProjectType = S.String;
@@ -6585,10 +6261,8 @@ export const AccountTagsUpdateResultPagesProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultPagesProject>;
 
 export type AccountTagsUpdateResultQueueTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultQueueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultQueueTagsMap>;
+export const AccountTagsUpdateResultQueueTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultQueueTagsMap>;
 
 export type AccountTagsUpdateResultQueueType = "queue";
 export const AccountTagsUpdateResultQueueType = S.String;
@@ -6620,10 +6294,8 @@ export const AccountTagsUpdateResultQueue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultQueue>;
 
 export type AccountTagsUpdateResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultR2BucketTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultR2BucketTagsMap>;
+export const AccountTagsUpdateResultR2BucketTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultR2BucketTagsMap>;
 
 export type AccountTagsUpdateResultR2BucketType = "r2_bucket";
 export const AccountTagsUpdateResultR2BucketType = S.String;
@@ -6655,10 +6327,8 @@ export const AccountTagsUpdateResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultR2Bucket>;
 
 export type AccountTagsUpdateResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultResourceShareTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultResourceShareTagsMap>;
+export const AccountTagsUpdateResultResourceShareTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultResourceShareTagsMap>;
 
 export type AccountTagsUpdateResultResourceShareType = "resource_share";
 export const AccountTagsUpdateResultResourceShareType = S.String;
@@ -6690,10 +6360,8 @@ export const AccountTagsUpdateResultResourceShare = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AccountTagsUpdateResultResourceShare>;
 
 export type AccountTagsUpdateResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultStreamLiveInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultStreamLiveInputTagsMap>;
+export const AccountTagsUpdateResultStreamLiveInputTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultStreamLiveInputTagsMap>;
 
 export type AccountTagsUpdateResultStreamLiveInputType = "stream_live_input";
 export const AccountTagsUpdateResultStreamLiveInputType = S.String;
@@ -6725,10 +6393,8 @@ export const AccountTagsUpdateResultStreamLiveInput = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AccountTagsUpdateResultStreamLiveInput>;
 
 export type AccountTagsUpdateResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultStreamVideoTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultStreamVideoTagsMap>;
+export const AccountTagsUpdateResultStreamVideoTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultStreamVideoTagsMap>;
 
 export type AccountTagsUpdateResultStreamVideoType = "stream_video";
 export const AccountTagsUpdateResultStreamVideoType = S.String;
@@ -6760,10 +6426,8 @@ export const AccountTagsUpdateResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultStreamVideo>;
 
 export type AccountTagsUpdateResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultVectorizeIndexTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultVectorizeIndexTagsMap>;
+export const AccountTagsUpdateResultVectorizeIndexTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultVectorizeIndexTagsMap>;
 
 export type AccountTagsUpdateResultVectorizeIndexType = "vectorize_index";
 export const AccountTagsUpdateResultVectorizeIndexType = S.String;
@@ -6795,10 +6459,8 @@ export const AccountTagsUpdateResultVectorizeIndex = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountTagsUpdateResultVectorizeIndex>;
 
 export type AccountTagsUpdateResultWorkerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultWorkerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultWorkerTagsMap>;
+export const AccountTagsUpdateResultWorkerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultWorkerTagsMap>;
 
 export type AccountTagsUpdateResultWorkerType = "worker";
 export const AccountTagsUpdateResultWorkerType = S.String;
@@ -6830,10 +6492,8 @@ export const AccountTagsUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultWorker>;
 
 export type AccountTagsUpdateResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultWorkerRouteTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultWorkerRouteTagsMap>;
+export const AccountTagsUpdateResultWorkerRouteTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultWorkerRouteTagsMap>;
 
 export type AccountTagsUpdateResultWorkerRouteType = "worker_route";
 export const AccountTagsUpdateResultWorkerRouteType = S.String;
@@ -6868,10 +6528,8 @@ export const AccountTagsUpdateResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultWorkerRoute>;
 
 export type AccountTagsUpdateResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultWorkerVersionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultWorkerVersionTagsMap>;
+export const AccountTagsUpdateResultWorkerVersionTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultWorkerVersionTagsMap>;
 
 export type AccountTagsUpdateResultWorkerVersionType = "worker_version";
 export const AccountTagsUpdateResultWorkerVersionType = S.String;
@@ -6906,10 +6564,8 @@ export const AccountTagsUpdateResultWorkerVersion = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AccountTagsUpdateResultWorkerVersion>;
 
 export type AccountTagsUpdateResultZoneTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultZoneTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultZoneTagsMap>;
+export const AccountTagsUpdateResultZoneTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultZoneTagsMap>;
 
 export type AccountTagsUpdateResultZoneType = "zone";
 export const AccountTagsUpdateResultZoneType = S.String;
@@ -6944,10 +6600,8 @@ export const AccountTagsUpdateResultZone = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTagsUpdateResultZone>;
 
 export type AccountTagsUpdateResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultZoneRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsUpdateResultZoneRulesetTagsMap>;
+export const AccountTagsUpdateResultZoneRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultZoneRulesetTagsMap>;
 
 export type AccountTagsUpdateResultZoneRulesetType = "zone_ruleset";
 export const AccountTagsUpdateResultZoneRulesetType = S.String;
@@ -7140,10 +6794,8 @@ export type ZoneTagsUpdateRequestResourceType =
 export const ZoneTagsUpdateRequestResourceType = S.String;
 
 export type ZoneTagsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateRequestTagsMap>;
+export const ZoneTagsUpdateRequestTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateRequestTagsMap>;
 
 export interface PutZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
@@ -7172,10 +6824,8 @@ export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutZoneTagRequest" }) as any as S.Schema<PutZoneTagRequest>;
 
 export type ZoneTagsUpdateResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccessApplicationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAccessApplicationTagsMap>;
+export const ZoneTagsUpdateResultAccessApplicationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccessApplicationTagsMap>;
 
 export type ZoneTagsUpdateResultAccessApplicationType = "access_application";
 export const ZoneTagsUpdateResultAccessApplicationType = S.String;
@@ -7209,10 +6859,8 @@ export const ZoneTagsUpdateResultAccessApplication = /*@__PURE__*/ S.suspend(() 
 export type ZoneTagsUpdateResultAccessApplicationPolicyTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsUpdateResultAccessApplicationPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAccessApplicationPolicyTagsMap>;
+export const ZoneTagsUpdateResultAccessApplicationPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccessApplicationPolicyTagsMap>;
 
 export type ZoneTagsUpdateResultAccessApplicationPolicyType = "access_application_policy";
 export const ZoneTagsUpdateResultAccessApplicationPolicyType = S.String;
@@ -7250,10 +6898,8 @@ export const ZoneTagsUpdateResultAccessApplicationPolicy = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ZoneTagsUpdateResultAccessApplicationPolicy>;
 
 export type ZoneTagsUpdateResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccessGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAccessGroupTagsMap>;
+export const ZoneTagsUpdateResultAccessGroupTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccessGroupTagsMap>;
 
 export type ZoneTagsUpdateResultAccessGroupType = "access_group";
 export const ZoneTagsUpdateResultAccessGroupType = S.String;
@@ -7285,10 +6931,8 @@ export const ZoneTagsUpdateResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultAccessGroup>;
 
 export type ZoneTagsUpdateResultAccountTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAccountTagsMap>;
+export const ZoneTagsUpdateResultAccountTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccountTagsMap>;
 
 export type ZoneTagsUpdateResultAccountType = "account";
 export const ZoneTagsUpdateResultAccountType = S.String;
@@ -7320,10 +6964,8 @@ export const ZoneTagsUpdateResultAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultAccount>;
 
 export type ZoneTagsUpdateResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccountRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAccountRulesetTagsMap>;
+export const ZoneTagsUpdateResultAccountRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccountRulesetTagsMap>;
 
 export type ZoneTagsUpdateResultAccountRulesetType = "account_ruleset";
 export const ZoneTagsUpdateResultAccountRulesetType = S.String;
@@ -7355,10 +6997,8 @@ export const ZoneTagsUpdateResultAccountRuleset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultAccountRuleset>;
 
 export type ZoneTagsUpdateResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAIGatewayTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAIGatewayTagsMap>;
+export const ZoneTagsUpdateResultAIGatewayTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAIGatewayTagsMap>;
 
 export type ZoneTagsUpdateResultAIGatewayType = "ai_gateway";
 export const ZoneTagsUpdateResultAIGatewayType = S.String;
@@ -7390,10 +7030,8 @@ export const ZoneTagsUpdateResultAIGateway = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultAIGateway>;
 
 export type ZoneTagsUpdateResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAlertingPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAlertingPolicyTagsMap>;
+export const ZoneTagsUpdateResultAlertingPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAlertingPolicyTagsMap>;
 
 export type ZoneTagsUpdateResultAlertingPolicyType = "alerting_policy";
 export const ZoneTagsUpdateResultAlertingPolicyType = S.String;
@@ -7425,10 +7063,8 @@ export const ZoneTagsUpdateResultAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultAlertingPolicy>;
 
 export type ZoneTagsUpdateResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAlertingWebhookTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAlertingWebhookTagsMap>;
+export const ZoneTagsUpdateResultAlertingWebhookTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAlertingWebhookTagsMap>;
 
 export type ZoneTagsUpdateResultAlertingWebhookType = "alerting_webhook";
 export const ZoneTagsUpdateResultAlertingWebhookType = S.String;
@@ -7460,10 +7096,8 @@ export const ZoneTagsUpdateResultAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultAlertingWebhook>;
 
 export type ZoneTagsUpdateResultAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAPIGatewayOperationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultAPIGatewayOperationTagsMap>;
+export const ZoneTagsUpdateResultAPIGatewayOperationTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAPIGatewayOperationTagsMap>;
 
 export type ZoneTagsUpdateResultAPIGatewayOperationType = "api_gateway_operation";
 export const ZoneTagsUpdateResultAPIGatewayOperationType = S.String;
@@ -7498,10 +7132,8 @@ export const ZoneTagsUpdateResultAPIGatewayOperation = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ZoneTagsUpdateResultAPIGatewayOperation>;
 
 export type ZoneTagsUpdateResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCloudflaredTunnelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultCloudflaredTunnelTagsMap>;
+export const ZoneTagsUpdateResultCloudflaredTunnelTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCloudflaredTunnelTagsMap>;
 
 export type ZoneTagsUpdateResultCloudflaredTunnelType = "cloudflared_tunnel";
 export const ZoneTagsUpdateResultCloudflaredTunnelType = S.String;
@@ -7533,10 +7165,8 @@ export const ZoneTagsUpdateResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ZoneTagsUpdateResultCloudflaredTunnel>;
 
 export type ZoneTagsUpdateResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCustomCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultCustomCertificateTagsMap>;
+export const ZoneTagsUpdateResultCustomCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCustomCertificateTagsMap>;
 
 export type ZoneTagsUpdateResultCustomCertificateType = "custom_certificate";
 export const ZoneTagsUpdateResultCustomCertificateType = S.String;
@@ -7571,10 +7201,8 @@ export const ZoneTagsUpdateResultCustomCertificate = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ZoneTagsUpdateResultCustomCertificate>;
 
 export type ZoneTagsUpdateResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCustomHostnameTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultCustomHostnameTagsMap>;
+export const ZoneTagsUpdateResultCustomHostnameTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCustomHostnameTagsMap>;
 
 export type ZoneTagsUpdateResultCustomHostnameType = "custom_hostname";
 export const ZoneTagsUpdateResultCustomHostnameType = S.String;
@@ -7609,10 +7237,8 @@ export const ZoneTagsUpdateResultCustomHostname = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultCustomHostname>;
 
 export type ZoneTagsUpdateResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsDeploymentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultCwsDeploymentTagsMap>;
+export const ZoneTagsUpdateResultCwsDeploymentTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsDeploymentTagsMap>;
 
 export type ZoneTagsUpdateResultCwsDeploymentType = "cws_deployment";
 export const ZoneTagsUpdateResultCwsDeploymentType = S.String;
@@ -7644,10 +7270,8 @@ export const ZoneTagsUpdateResultCwsDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultCwsDeployment>;
 
 export type ZoneTagsUpdateResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultCwsPolicyTagsMap>;
+export const ZoneTagsUpdateResultCwsPolicyTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsPolicyTagsMap>;
 
 export type ZoneTagsUpdateResultCwsPolicyType = "cws_policy";
 export const ZoneTagsUpdateResultCwsPolicyType = S.String;
@@ -7679,10 +7303,8 @@ export const ZoneTagsUpdateResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultCwsPolicy>;
 
 export type ZoneTagsUpdateResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsPolicySetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultCwsPolicySetTagsMap>;
+export const ZoneTagsUpdateResultCwsPolicySetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsPolicySetTagsMap>;
 
 export type ZoneTagsUpdateResultCwsPolicySetType = "cws_policy_set";
 export const ZoneTagsUpdateResultCwsPolicySetType = S.String;
@@ -7714,10 +7336,8 @@ export const ZoneTagsUpdateResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultCwsPolicySet>;
 
 export type ZoneTagsUpdateResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsWorkloadTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultCwsWorkloadTagsMap>;
+export const ZoneTagsUpdateResultCwsWorkloadTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsWorkloadTagsMap>;
 
 export type ZoneTagsUpdateResultCwsWorkloadType = "cws_workload";
 export const ZoneTagsUpdateResultCwsWorkloadType = S.String;
@@ -7749,10 +7369,8 @@ export const ZoneTagsUpdateResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultCwsWorkload>;
 
 export type ZoneTagsUpdateResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultD1DatabaseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultD1DatabaseTagsMap>;
+export const ZoneTagsUpdateResultD1DatabaseTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultD1DatabaseTagsMap>;
 
 export type ZoneTagsUpdateResultD1DatabaseType = "d1_database";
 export const ZoneTagsUpdateResultD1DatabaseType = S.String;
@@ -7784,10 +7402,8 @@ export const ZoneTagsUpdateResultD1Database = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultD1Database>;
 
 export type ZoneTagsUpdateResultDeviceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultDeviceTagsMap>;
+export const ZoneTagsUpdateResultDeviceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultDeviceTagsMap>;
 
 export type ZoneTagsUpdateResultDeviceType = "device";
 export const ZoneTagsUpdateResultDeviceType = S.String;
@@ -7819,10 +7435,8 @@ export const ZoneTagsUpdateResultDevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultDevice>;
 
 export type ZoneTagsUpdateResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultDNSRecordTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultDNSRecordTagsMap>;
+export const ZoneTagsUpdateResultDNSRecordTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultDNSRecordTagsMap>;
 
 export type ZoneTagsUpdateResultDNSRecordType = "dns_record";
 export const ZoneTagsUpdateResultDNSRecordType = S.String;
@@ -7859,10 +7473,8 @@ export const ZoneTagsUpdateResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
 export type ZoneTagsUpdateResultDurableObjectNamespaceTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsUpdateResultDurableObjectNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultDurableObjectNamespaceTagsMap>;
+export const ZoneTagsUpdateResultDurableObjectNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultDurableObjectNamespaceTagsMap>;
 
 export type ZoneTagsUpdateResultDurableObjectNamespaceType = "durable_object_namespace";
 export const ZoneTagsUpdateResultDurableObjectNamespaceType = S.String;
@@ -7894,10 +7506,8 @@ export const ZoneTagsUpdateResultDurableObjectNamespace = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ZoneTagsUpdateResultDurableObjectNamespace>;
 
 export type ZoneTagsUpdateResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultGatewayListTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultGatewayListTagsMap>;
+export const ZoneTagsUpdateResultGatewayListTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultGatewayListTagsMap>;
 
 export type ZoneTagsUpdateResultGatewayListType = "gateway_list";
 export const ZoneTagsUpdateResultGatewayListType = S.String;
@@ -7929,10 +7539,8 @@ export const ZoneTagsUpdateResultGatewayList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultGatewayList>;
 
 export type ZoneTagsUpdateResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultGatewayRuleTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultGatewayRuleTagsMap>;
+export const ZoneTagsUpdateResultGatewayRuleTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultGatewayRuleTagsMap>;
 
 export type ZoneTagsUpdateResultGatewayRuleType = "gateway_rule";
 export const ZoneTagsUpdateResultGatewayRuleType = S.String;
@@ -7964,10 +7572,8 @@ export const ZoneTagsUpdateResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultGatewayRule>;
 
 export type ZoneTagsUpdateResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultHealthcheckTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultHealthcheckTagsMap>;
+export const ZoneTagsUpdateResultHealthcheckTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultHealthcheckTagsMap>;
 
 export type ZoneTagsUpdateResultHealthcheckType = "healthcheck";
 export const ZoneTagsUpdateResultHealthcheckType = S.String;
@@ -8002,10 +7608,8 @@ export const ZoneTagsUpdateResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultHealthcheck>;
 
 export type ZoneTagsUpdateResultImageTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultImageTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultImageTagsMap>;
+export const ZoneTagsUpdateResultImageTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultImageTagsMap>;
 
 export type ZoneTagsUpdateResultImageType = "image";
 export const ZoneTagsUpdateResultImageType = S.String;
@@ -8037,10 +7641,8 @@ export const ZoneTagsUpdateResultImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultImage>;
 
 export type ZoneTagsUpdateResultInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultInfrastructureTargetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultInfrastructureTargetTagsMap>;
+export const ZoneTagsUpdateResultInfrastructureTargetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultInfrastructureTargetTagsMap>;
 
 export type ZoneTagsUpdateResultInfrastructureTargetType = "infrastructure_target";
 export const ZoneTagsUpdateResultInfrastructureTargetType = S.String;
@@ -8072,10 +7674,8 @@ export const ZoneTagsUpdateResultInfrastructureTarget = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ZoneTagsUpdateResultInfrastructureTarget>;
 
 export type ZoneTagsUpdateResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultKVNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultKVNamespaceTagsMap>;
+export const ZoneTagsUpdateResultKVNamespaceTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultKVNamespaceTagsMap>;
 
 export type ZoneTagsUpdateResultKVNamespaceType = "kv_namespace";
 export const ZoneTagsUpdateResultKVNamespaceType = S.String;
@@ -8107,10 +7707,8 @@ export const ZoneTagsUpdateResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultKVNamespace>;
 
 export type ZoneTagsUpdateResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultLoadBalancerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultLoadBalancerTagsMap>;
+export const ZoneTagsUpdateResultLoadBalancerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultLoadBalancerTagsMap>;
 
 export type ZoneTagsUpdateResultLoadBalancerType = "load_balancer";
 export const ZoneTagsUpdateResultLoadBalancerType = S.String;
@@ -8145,10 +7743,8 @@ export const ZoneTagsUpdateResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultLoadBalancer>;
 
 export type ZoneTagsUpdateResultLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultLoadBalancerMonitorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultLoadBalancerMonitorTagsMap>;
+export const ZoneTagsUpdateResultLoadBalancerMonitorTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultLoadBalancerMonitorTagsMap>;
 
 export type ZoneTagsUpdateResultLoadBalancerMonitorType = "load_balancer_monitor";
 export const ZoneTagsUpdateResultLoadBalancerMonitorType = S.String;
@@ -8180,10 +7776,8 @@ export const ZoneTagsUpdateResultLoadBalancerMonitor = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ZoneTagsUpdateResultLoadBalancerMonitor>;
 
 export type ZoneTagsUpdateResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultLoadBalancerPoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultLoadBalancerPoolTagsMap>;
+export const ZoneTagsUpdateResultLoadBalancerPoolTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultLoadBalancerPoolTagsMap>;
 
 export type ZoneTagsUpdateResultLoadBalancerPoolType = "load_balancer_pool";
 export const ZoneTagsUpdateResultLoadBalancerPoolType = S.String;
@@ -8217,10 +7811,8 @@ export const ZoneTagsUpdateResultLoadBalancerPool = /*@__PURE__*/ S.suspend(() =
 export type ZoneTagsUpdateResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsUpdateResultManagedClientCertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultManagedClientCertificateTagsMap>;
+export const ZoneTagsUpdateResultManagedClientCertificateTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultManagedClientCertificateTagsMap>;
 
 export type ZoneTagsUpdateResultManagedClientCertificateType = "managed_client_certificate";
 export const ZoneTagsUpdateResultManagedClientCertificateType = S.String;
@@ -8255,10 +7847,8 @@ export const ZoneTagsUpdateResultManagedClientCertificate = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ZoneTagsUpdateResultManagedClientCertificate>;
 
 export type ZoneTagsUpdateResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultPagesProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultPagesProjectTagsMap>;
+export const ZoneTagsUpdateResultPagesProjectTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultPagesProjectTagsMap>;
 
 export type ZoneTagsUpdateResultPagesProjectType = "pages_project";
 export const ZoneTagsUpdateResultPagesProjectType = S.String;
@@ -8290,10 +7880,8 @@ export const ZoneTagsUpdateResultPagesProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultPagesProject>;
 
 export type ZoneTagsUpdateResultQueueTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultQueueTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultQueueTagsMap>;
+export const ZoneTagsUpdateResultQueueTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultQueueTagsMap>;
 
 export type ZoneTagsUpdateResultQueueType = "queue";
 export const ZoneTagsUpdateResultQueueType = S.String;
@@ -8325,10 +7913,8 @@ export const ZoneTagsUpdateResultQueue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultQueue>;
 
 export type ZoneTagsUpdateResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultR2BucketTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultR2BucketTagsMap>;
+export const ZoneTagsUpdateResultR2BucketTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultR2BucketTagsMap>;
 
 export type ZoneTagsUpdateResultR2BucketType = "r2_bucket";
 export const ZoneTagsUpdateResultR2BucketType = S.String;
@@ -8360,10 +7946,8 @@ export const ZoneTagsUpdateResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultR2Bucket>;
 
 export type ZoneTagsUpdateResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultResourceShareTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultResourceShareTagsMap>;
+export const ZoneTagsUpdateResultResourceShareTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultResourceShareTagsMap>;
 
 export type ZoneTagsUpdateResultResourceShareType = "resource_share";
 export const ZoneTagsUpdateResultResourceShareType = S.String;
@@ -8395,10 +7979,8 @@ export const ZoneTagsUpdateResultResourceShare = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultResourceShare>;
 
 export type ZoneTagsUpdateResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultStreamLiveInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultStreamLiveInputTagsMap>;
+export const ZoneTagsUpdateResultStreamLiveInputTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultStreamLiveInputTagsMap>;
 
 export type ZoneTagsUpdateResultStreamLiveInputType = "stream_live_input";
 export const ZoneTagsUpdateResultStreamLiveInputType = S.String;
@@ -8430,10 +8012,8 @@ export const ZoneTagsUpdateResultStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultStreamLiveInput>;
 
 export type ZoneTagsUpdateResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultStreamVideoTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultStreamVideoTagsMap>;
+export const ZoneTagsUpdateResultStreamVideoTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultStreamVideoTagsMap>;
 
 export type ZoneTagsUpdateResultStreamVideoType = "stream_video";
 export const ZoneTagsUpdateResultStreamVideoType = S.String;
@@ -8465,10 +8045,8 @@ export const ZoneTagsUpdateResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultStreamVideo>;
 
 export type ZoneTagsUpdateResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultVectorizeIndexTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultVectorizeIndexTagsMap>;
+export const ZoneTagsUpdateResultVectorizeIndexTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultVectorizeIndexTagsMap>;
 
 export type ZoneTagsUpdateResultVectorizeIndexType = "vectorize_index";
 export const ZoneTagsUpdateResultVectorizeIndexType = S.String;
@@ -8500,10 +8078,8 @@ export const ZoneTagsUpdateResultVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultVectorizeIndex>;
 
 export type ZoneTagsUpdateResultWorkerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultWorkerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultWorkerTagsMap>;
+export const ZoneTagsUpdateResultWorkerTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultWorkerTagsMap>;
 
 export type ZoneTagsUpdateResultWorkerType = "worker";
 export const ZoneTagsUpdateResultWorkerType = S.String;
@@ -8535,10 +8111,8 @@ export const ZoneTagsUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultWorker>;
 
 export type ZoneTagsUpdateResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultWorkerRouteTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultWorkerRouteTagsMap>;
+export const ZoneTagsUpdateResultWorkerRouteTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultWorkerRouteTagsMap>;
 
 export type ZoneTagsUpdateResultWorkerRouteType = "worker_route";
 export const ZoneTagsUpdateResultWorkerRouteType = S.String;
@@ -8573,10 +8147,8 @@ export const ZoneTagsUpdateResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultWorkerRoute>;
 
 export type ZoneTagsUpdateResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultWorkerVersionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultWorkerVersionTagsMap>;
+export const ZoneTagsUpdateResultWorkerVersionTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultWorkerVersionTagsMap>;
 
 export type ZoneTagsUpdateResultWorkerVersionType = "worker_version";
 export const ZoneTagsUpdateResultWorkerVersionType = S.String;
@@ -8611,10 +8183,8 @@ export const ZoneTagsUpdateResultWorkerVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneTagsUpdateResultWorkerVersion>;
 
 export type ZoneTagsUpdateResultZoneTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultZoneTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultZoneTagsMap>;
+export const ZoneTagsUpdateResultZoneTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultZoneTagsMap>;
 
 export type ZoneTagsUpdateResultZoneType = "zone";
 export const ZoneTagsUpdateResultZoneType = S.String;
@@ -8647,10 +8217,8 @@ export const ZoneTagsUpdateResultZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ZoneTagsUpdateResultZone" }) as any as S.Schema<ZoneTagsUpdateResultZone>;
 
 export type ZoneTagsUpdateResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultZoneRulesetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsUpdateResultZoneRulesetTagsMap>;
+export const ZoneTagsUpdateResultZoneRulesetTagsMap =
+  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultZoneRulesetTagsMap>;
 
 export type ZoneTagsUpdateResultZoneRulesetType = "zone_ruleset";
 export const ZoneTagsUpdateResultZoneRulesetType = S.String;

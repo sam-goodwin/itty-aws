@@ -238,9 +238,7 @@ export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTagRequest" }) as any as S.Schema<CreateTagRequest>;
 
 export interface CreateTagResponse {}
-export const CreateTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTagResponse",
-}) as any as S.Schema<CreateTagResponse>;
+export const CreateTagResponse = CreateBranchResponse as any as S.Schema<CreateTagResponse>;
 
 export interface DeleteBranchRequest {
   namespace: string;
@@ -258,9 +256,7 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchRequest" }) as any as S.Schema<DeleteBranchRequest>;
 
 export interface DeleteBranchResponse {}
-export const DeleteBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBranchResponse",
-}) as any as S.Schema<DeleteBranchResponse>;
+export const DeleteBranchResponse = CreateBranchResponse as any as S.Schema<DeleteBranchResponse>;
 
 export interface DeleteLargeFileRequest {
   namespace: string;
@@ -280,9 +276,8 @@ export const DeleteLargeFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLargeFileRequest" }) as any as S.Schema<DeleteLargeFileRequest>;
 
 export interface DeleteLargeFileResponse {}
-export const DeleteLargeFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLargeFileResponse",
-}) as any as S.Schema<DeleteLargeFileResponse>;
+export const DeleteLargeFileResponse =
+  CreateBranchResponse as any as S.Schema<DeleteLargeFileResponse>;
 
 export type DeleteLargeFilesRequestDeletionsShaList = Array<string>;
 export const DeleteLargeFilesRequestDeletionsShaList = /*@__PURE__*/ S.Array(
@@ -318,9 +313,8 @@ export const DeleteLargeFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLargeFilesRequest" }) as any as S.Schema<DeleteLargeFilesRequest>;
 
 export interface DeleteLargeFilesResponse {}
-export const DeleteLargeFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLargeFilesResponse",
-}) as any as S.Schema<DeleteLargeFilesResponse>;
+export const DeleteLargeFilesResponse =
+  CreateBranchResponse as any as S.Schema<DeleteLargeFilesResponse>;
 
 export interface DeleteSecretRequest {
   namespace: string;
@@ -336,9 +330,7 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecretResponse",
-}) as any as S.Schema<DeleteSecretResponse>;
+export const DeleteSecretResponse = CreateBranchResponse as any as S.Schema<DeleteSecretResponse>;
 
 export interface DeleteSpaceVolumesRequest {
   namespace: string;
@@ -354,9 +346,8 @@ export const DeleteSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSpaceVolumesRequest>;
 
 export interface DeleteSpaceVolumesResponse {}
-export const DeleteSpaceVolumesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSpaceVolumesResponse",
-}) as any as S.Schema<DeleteSpaceVolumesResponse>;
+export const DeleteSpaceVolumesResponse =
+  CreateBranchResponse as any as S.Schema<DeleteSpaceVolumesResponse>;
 
 export interface DeleteTagRequest {
   namespace: string;
@@ -372,9 +363,7 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRequest" }) as any as S.Schema<DeleteTagRequest>;
 
 export interface DeleteTagResponse {}
-export const DeleteTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagResponse",
-}) as any as S.Schema<DeleteTagResponse>;
+export const DeleteTagResponse = CreateBranchResponse as any as S.Schema<DeleteTagResponse>;
 
 export interface DeleteVariableRequest {
   namespace: string;
@@ -390,9 +379,8 @@ export const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVariableRequest" }) as any as S.Schema<DeleteVariableRequest>;
 
 export interface DeleteVariableResponse {}
-export const DeleteVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVariableResponse",
-}) as any as S.Schema<DeleteVariableResponse>;
+export const DeleteVariableResponse =
+  CreateBranchResponse as any as S.Schema<DeleteVariableResponse>;
 
 export type DuplicateXetFilesRequestTargetType = "model" | "space" | "dataset" | "kernel";
 export const DuplicateXetFilesRequestTargetType = S.String;
@@ -506,9 +494,8 @@ export const FeaturedSpacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeaturedSpacesRequest" }) as any as S.Schema<FeaturedSpacesRequest>;
 
 export interface FeaturedSpacesResponse {}
-export const FeaturedSpacesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FeaturedSpacesResponse",
-}) as any as S.Schema<FeaturedSpacesResponse>;
+export const FeaturedSpacesResponse =
+  CreateBranchResponse as any as S.Schema<FeaturedSpacesResponse>;
 
 export interface GenerateJwtRequest {
   namespace: string;
@@ -1528,14 +1515,11 @@ export const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLikersRequest" }) as any as S.Schema<ListLikersRequest>;
 
 export interface ListLikersResponse {}
-export const ListLikersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListLikersResponse",
-}) as any as S.Schema<ListLikersResponse>;
+export const ListLikersResponse = CreateBranchResponse as any as S.Schema<ListLikersResponse>;
 
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
-export const ListPathsInfoRequestPathsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
+export const ListPathsInfoRequestPathsCase0List =
+  DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
 
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
 export const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
@@ -2004,25 +1988,22 @@ export type ListReferencesResponseBranchesItem = ListReferencesResponseTagsItem;
 export const ListReferencesResponseBranchesItem = ListReferencesResponseTagsItem;
 
 export type ListReferencesResponseBranchesList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponseBranchesList = /*@__PURE__*/ S.Array(
-  ListReferencesResponseTagsItem,
-) as any as S.Schema<ListReferencesResponseBranchesList>;
+export const ListReferencesResponseBranchesList =
+  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseBranchesList>;
 
 export type ListReferencesResponseConvertsItem = ListReferencesResponseTagsItem;
 export const ListReferencesResponseConvertsItem = ListReferencesResponseTagsItem;
 
 export type ListReferencesResponseConvertsList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponseConvertsList = /*@__PURE__*/ S.Array(
-  ListReferencesResponseTagsItem,
-) as any as S.Schema<ListReferencesResponseConvertsList>;
+export const ListReferencesResponseConvertsList =
+  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseConvertsList>;
 
 export type ListReferencesResponsePullRequestsItem = ListReferencesResponseTagsItem;
 export const ListReferencesResponsePullRequestsItem = ListReferencesResponseTagsItem;
 
 export type ListReferencesResponsePullRequestsList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponsePullRequestsList = /*@__PURE__*/ S.Array(
-  ListReferencesResponseTagsItem,
-) as any as S.Schema<ListReferencesResponsePullRequestsList>;
+export const ListReferencesResponsePullRequestsList =
+  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponsePullRequestsList>;
 
 export interface ListReferencesResponse {
   tags: ListReferencesResponseTagsList;
@@ -2375,9 +2356,8 @@ export const SearchSemanticRequestSdkList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchSemanticRequestSdkList>;
 
 export type SearchSemanticRequestFilterList = Array<string>;
-export const SearchSemanticRequestFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchSemanticRequestFilterList>;
+export const SearchSemanticRequestFilterList =
+  DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<SearchSemanticRequestFilterList>;
 
 export interface SearchSemanticRequest {
   q?: string;
@@ -2399,9 +2379,8 @@ export const SearchSemanticRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchSemanticRequest" }) as any as S.Schema<SearchSemanticRequest>;
 
 export interface SearchSemanticResponse {}
-export const SearchSemanticResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SearchSemanticResponse",
-}) as any as S.Schema<SearchSemanticResponse>;
+export const SearchSemanticResponse =
+  CreateBranchResponse as any as S.Schema<SearchSemanticResponse>;
 
 export interface SetCustomDomainRequest {
   namespace: string;
@@ -2419,9 +2398,8 @@ export const SetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetCustomDomainRequest" }) as any as S.Schema<SetCustomDomainRequest>;
 
 export interface SetCustomDomainResponse {}
-export const SetCustomDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetCustomDomainResponse",
-}) as any as S.Schema<SetCustomDomainResponse>;
+export const SetCustomDomainResponse =
+  CreateBranchResponse as any as S.Schema<SetCustomDomainResponse>;
 
 export type SetSleepTimeRequestSeconds = number | number;
 export const SetSleepTimeRequestSeconds = S.Unknown as any as S.Schema<SetSleepTimeRequestSeconds>;
@@ -2440,9 +2418,7 @@ export const SetSleepTimeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSleepTimeRequest" }) as any as S.Schema<SetSleepTimeRequest>;
 
 export interface SetSleepTimeResponse {}
-export const SetSleepTimeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetSleepTimeResponse",
-}) as any as S.Schema<SetSleepTimeResponse>;
+export const SetSleepTimeResponse = CreateBranchResponse as any as S.Schema<SetSleepTimeResponse>;
 
 export type SetSpaceVolumesRequestVolumesItemType = "bucket" | "model" | "dataset" | "space";
 export const SetSpaceVolumesRequestVolumesItemType = S.String;
@@ -2492,9 +2468,8 @@ export const SetSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSpaceVolumesRequest" }) as any as S.Schema<SetSpaceVolumesRequest>;
 
 export interface SetSpaceVolumesResponse {}
-export const SetSpaceVolumesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetSpaceVolumesResponse",
-}) as any as S.Schema<SetSpaceVolumesResponse>;
+export const SetSpaceVolumesResponse =
+  CreateBranchResponse as any as S.Schema<SetSpaceVolumesResponse>;
 
 export interface SquashRefRequest {
   namespace: string;
@@ -2537,9 +2512,7 @@ export const StreamEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamEventsRequest" }) as any as S.Schema<StreamEventsRequest>;
 
 export interface StreamEventsResponse {}
-export const StreamEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StreamEventsResponse",
-}) as any as S.Schema<StreamEventsResponse>;
+export const StreamEventsResponse = CreateBranchResponse as any as S.Schema<StreamEventsResponse>;
 
 export type StreamLogsRequestLogType = "build" | "run";
 export const StreamLogsRequestLogType = S.String;
@@ -2562,9 +2535,7 @@ export const StreamLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamLogsRequest" }) as any as S.Schema<StreamLogsRequest>;
 
 export interface StreamLogsResponse {}
-export const StreamLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StreamLogsResponse",
-}) as any as S.Schema<StreamLogsResponse>;
+export const StreamLogsResponse = CreateBranchResponse as any as S.Schema<StreamLogsResponse>;
 
 export interface StreamMetricsRequest {
   namespace: string;
@@ -2578,9 +2549,7 @@ export const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamMetricsRequest" }) as any as S.Schema<StreamMetricsRequest>;
 
 export interface StreamMetricsResponse {}
-export const StreamMetricsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StreamMetricsResponse",
-}) as any as S.Schema<StreamMetricsResponse>;
+export const StreamMetricsResponse = CreateBranchResponse as any as S.Schema<StreamMetricsResponse>;
 
 export interface ToggleDevModeRequest {
   namespace: string;
@@ -2596,9 +2565,7 @@ export const ToggleDevModeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToggleDevModeRequest" }) as any as S.Schema<ToggleDevModeRequest>;
 
 export interface ToggleDevModeResponse {}
-export const ToggleDevModeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ToggleDevModeResponse",
-}) as any as S.Schema<ToggleDevModeResponse>;
+export const ToggleDevModeResponse = CreateBranchResponse as any as S.Schema<ToggleDevModeResponse>;
 
 export type UpdateHardwareFlavorRequestFlavor =
   | "cpu-basic"
@@ -2654,9 +2621,8 @@ export const UpdateHardwareFlavorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateHardwareFlavorRequest>;
 
 export interface UpdateHardwareFlavorResponse {}
-export const UpdateHardwareFlavorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateHardwareFlavorResponse",
-}) as any as S.Schema<UpdateHardwareFlavorResponse>;
+export const UpdateHardwareFlavorResponse =
+  CreateBranchResponse as any as S.Schema<UpdateHardwareFlavorResponse>;
 
 /** Repository visibility. `protected` is only supported for Spaces. */
 export type UpdateRepoSettingsRequestVisibility = "private" | "public" | "protected";
@@ -2774,9 +2740,7 @@ export const UpsertSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertSecretRequest" }) as any as S.Schema<UpsertSecretRequest>;
 
 export interface UpsertSecretResponse {}
-export const UpsertSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpsertSecretResponse",
-}) as any as S.Schema<UpsertSecretResponse>;
+export const UpsertSecretResponse = CreateBranchResponse as any as S.Schema<UpsertSecretResponse>;
 
 export interface UpsertVariableRequest {
   namespace: string;
@@ -2796,9 +2760,8 @@ export const UpsertVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertVariableRequest" }) as any as S.Schema<UpsertVariableRequest>;
 
 export interface UpsertVariableResponse {}
-export const UpsertVariableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpsertVariableResponse",
-}) as any as S.Schema<UpsertVariableResponse>;
+export const UpsertVariableResponse =
+  CreateBranchResponse as any as S.Schema<UpsertVariableResponse>;
 
 export interface XetReadTokenRequest {
   namespace: string;
@@ -2856,13 +2819,7 @@ export interface XetWriteTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    casUrl: S.String,
-    exp: S.Number,
-    accessToken: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({ identifier: "XetWriteTokenResponse" }) as any as S.Schema<XetWriteTokenResponse>;
+export const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
 
 export type AddResourceGroupError = HuggingFaceOpError;
 /** Add resource group Add the repository to a resource group */

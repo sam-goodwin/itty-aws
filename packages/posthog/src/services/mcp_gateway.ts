@@ -353,10 +353,8 @@ export type MCPAuthTypeEnum = "api_key" | "oauth";
 export const MCPAuthTypeEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  ResolvedToolPolicyInputSchemaMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -570,9 +568,8 @@ export const MCPGatewayServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request. */
 export type CreateMcpGatewayServiceAccountsAccessRequestPoliciesList = Array<ToolPolicyEntry>;
-export const CreateMcpGatewayServiceAccountsAccessRequestPoliciesList = /*@__PURE__*/ S.Array(
-  ToolPolicyEntry,
-) as any as S.Schema<CreateMcpGatewayServiceAccountsAccessRequestPoliciesList>;
+export const CreateMcpGatewayServiceAccountsAccessRequestPoliciesList =
+  CreateMcpGatewayServersPolicyRequestPoliciesList as any as S.Schema<CreateMcpGatewayServiceAccountsAccessRequestPoliciesList>;
 
 export interface CreateMcpGatewayServiceAccountsAccessRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -615,9 +612,8 @@ export const AgentKeyEnum = S.String;
 
 /** Gateway servers configured for this agent. */
 export type MCPServiceAccountServerIdsList = Array<string>;
-export const MCPServiceAccountServerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MCPServiceAccountServerIdsList>;
+export const MCPServiceAccountServerIdsList =
+  TeamMCPGatewayConfigRegisteredTemplateIdsList as any as S.Schema<MCPServiceAccountServerIdsList>;
 
 /** * `ready` - ready * `pending_oauth` - pending_oauth * `needs_reauth` - needs_reauth * `disabled` - disabled * `missing_credential` - missing_credential */
 export type ConnectionStateEnum =
@@ -845,15 +841,13 @@ export const GetMcpGatewayMemberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gateway servers the member has a personal connection to. */
 export type GatewayMemberSummaryConnectedServerIdsList = Array<string>;
-export const GatewayMemberSummaryConnectedServerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GatewayMemberSummaryConnectedServerIdsList>;
+export const GatewayMemberSummaryConnectedServerIdsList =
+  TeamMCPGatewayConfigRegisteredTemplateIdsList as any as S.Schema<GatewayMemberSummaryConnectedServerIdsList>;
 
 /** Gateway servers an admin turned off for this member. */
 export type GatewayMemberSummaryRevokedServerIdsList = Array<string>;
-export const GatewayMemberSummaryRevokedServerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GatewayMemberSummaryRevokedServerIdsList>;
+export const GatewayMemberSummaryRevokedServerIdsList =
+  TeamMCPGatewayConfigRegisteredTemplateIdsList as any as S.Schema<GatewayMemberSummaryRevokedServerIdsList>;
 
 /** One team member's gateway posture (admin overview). */
 export interface GatewayMemberSummary {
@@ -1325,11 +1319,8 @@ export const McpGatewayServersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<McpGatewayServersDestroyRequest>;
 
 export interface McpGatewayServersDestroyResponse {}
-export const McpGatewayServersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "McpGatewayServersDestroyResponse",
-}) as any as S.Schema<McpGatewayServersDestroyResponse>;
+export const McpGatewayServersDestroyResponse =
+  CreateMcpGatewayMembersSetAccessResponse as any as S.Schema<McpGatewayServersDestroyResponse>;
 
 export interface UpdateMcpGatewayRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

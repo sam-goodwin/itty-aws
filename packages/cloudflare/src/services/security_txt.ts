@@ -75,29 +75,24 @@ export const GetResponseAcknowledgmentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseAcknowledgmentsList>;
 
 export type GetResponseCanonicalList = Array<string>;
-export const GetResponseCanonicalList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseCanonicalList>;
+export const GetResponseCanonicalList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseCanonicalList>;
 
 export type GetResponseContactList = Array<string>;
-export const GetResponseContactList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseContactList>;
+export const GetResponseContactList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseContactList>;
 
 export type GetResponseEncryptionList = Array<string>;
-export const GetResponseEncryptionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseEncryptionList>;
+export const GetResponseEncryptionList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseEncryptionList>;
 
 export type GetResponseHiringList = Array<string>;
-export const GetResponseHiringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseHiringList>;
+export const GetResponseHiringList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseHiringList>;
 
 export type GetResponsePolicyList = Array<string>;
-export const GetResponsePolicyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponsePolicyList>;
+export const GetResponsePolicyList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponsePolicyList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SecurityTxtFile {
@@ -131,34 +126,28 @@ export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSecurityTxtResponse" }) as any as S.Schema<GetSecurityTxtResponse>;
 
 export type UpdateRequestAcknowledgmentsList = Array<string>;
-export const UpdateRequestAcknowledgmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestAcknowledgmentsList>;
+export const UpdateRequestAcknowledgmentsList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestAcknowledgmentsList>;
 
 export type UpdateRequestCanonicalList = Array<string>;
-export const UpdateRequestCanonicalList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestCanonicalList>;
+export const UpdateRequestCanonicalList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestCanonicalList>;
 
 export type UpdateRequestContactList = Array<string>;
-export const UpdateRequestContactList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestContactList>;
+export const UpdateRequestContactList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestContactList>;
 
 export type UpdateRequestEncryptionList = Array<string>;
-export const UpdateRequestEncryptionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestEncryptionList>;
+export const UpdateRequestEncryptionList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestEncryptionList>;
 
 export type UpdateRequestHiringList = Array<string>;
-export const UpdateRequestHiringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestHiringList>;
+export const UpdateRequestHiringList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestHiringList>;
 
 export type UpdateRequestPolicyList = Array<string>;
-export const UpdateRequestPolicyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestPolicyList>;
+export const UpdateRequestPolicyList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestPolicyList>;
 
 export interface PutSecurityTxtRequest {
   /** Identifier. */

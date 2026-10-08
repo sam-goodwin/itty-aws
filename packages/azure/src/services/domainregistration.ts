@@ -328,10 +328,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
+export const DomainsCreateOrUpdateResponseTagsMap =
+  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
 
 /** Domain registration status. */
 export type DomainStatus =
@@ -364,15 +362,13 @@ export const ProvisioningState = S.String;
 
 /** Name servers. */
 export type DomainPropertiesNameServersList = Array<string>;
-export const DomainPropertiesNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainPropertiesNameServersList>;
+export const DomainPropertiesNameServersList =
+  DomainPurchaseConsentAgreementKeysList as any as S.Schema<DomainPropertiesNameServersList>;
 
 /** List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager. */
 export type HostNameSiteNamesList = Array<string>;
-export const HostNameSiteNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostNameSiteNamesList>;
+export const HostNameSiteNamesList =
+  DomainPurchaseConsentAgreementKeysList as any as S.Schema<HostNameSiteNamesList>;
 
 /** Type of the Azure resource the hostname is assigned to. */
 export type AzureResourceType = "Website" | "TrafficManager";
@@ -631,10 +627,8 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
-export const GetDomainResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDomainResponseTagsMap>;
+export const GetDomainResponseTagsMap =
+  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
 
 export interface GetDomainResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -747,18 +741,8 @@ export interface GetDomainOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const GetDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DomainOwnershipIdentifierProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDomainOwnershipIdentifierResponse",
-}) as any as S.Schema<GetDomainOwnershipIdentifierResponse>;
+export const GetDomainOwnershipIdentifierResponse =
+  DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<GetDomainOwnershipIdentifierResponse>;
 
 export interface GetTopLevelDomainRequest {
   /** The ID of the target subscription. */
@@ -842,10 +826,7 @@ export const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DomainTagsMap = { [key: string]: string | undefined };
-export const DomainTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainTagsMap>;
+export const DomainTagsMap = DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<DomainTagsMap>;
 
 /** Information about a domain. */
 export interface Domain {
@@ -866,18 +847,7 @@ export interface Domain {
   /** Kind of resource */
   kind?: string;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DomainTagsMap),
-    location: S.String,
-    properties: S.optional(DomainProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
+export const Domain = GetDomainResponse as any as S.Schema<Domain>;
 
 /** The Domain items on this page */
 export type DomainCollectionValueList = Array<Domain>;
@@ -939,18 +909,8 @@ export interface DomainOwnershipIdentifier {
   /** Kind of resource */
   kind?: string;
 }
-export const DomainOwnershipIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DomainOwnershipIdentifierProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DomainOwnershipIdentifier",
-}) as any as S.Schema<DomainOwnershipIdentifier>;
+export const DomainOwnershipIdentifier =
+  DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<DomainOwnershipIdentifier>;
 
 /** The DomainOwnershipIdentifier items on this page */
 export type DomainOwnershipIdentifierCollectionValueList = Array<DomainOwnershipIdentifier>;
@@ -1112,15 +1072,13 @@ export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
 
 /** Resource metric supported time grain types. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+export const MetricSpecificationSupportedTimeGrainTypesList =
+  DomainPurchaseConsentAgreementKeysList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Resource metric supported aggregation types. */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
+export const MetricSpecificationSupportedAggregationTypesList =
+  DomainPurchaseConsentAgreementKeysList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Definition of a single resource metric. */
 export interface MetricSpecification {
@@ -1459,9 +1417,7 @@ export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenewDomainRequest" }) as any as S.Schema<RenewDomainRequest>;
 
 export interface RenewDomainResponse {}
-export const RenewDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RenewDomainResponse",
-}) as any as S.Schema<RenewDomainResponse>;
+export const RenewDomainResponse = DeleteDomainResponse as any as S.Schema<RenewDomainResponse>;
 
 export interface TransferDomainOutRequest {
   /** The ID of the target subscription. */
@@ -1488,10 +1444,8 @@ export const TransferDomainOutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type TransferDomainOutResponseTagsMap = { [key: string]: string | undefined };
-export const TransferDomainOutResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TransferDomainOutResponseTagsMap>;
+export const TransferDomainOutResponseTagsMap =
+  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<TransferDomainOutResponseTagsMap>;
 
 export interface TransferDomainOutResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1511,20 +1465,8 @@ export interface TransferDomainOutResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const TransferDomainOutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(TransferDomainOutResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DomainProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TransferDomainOutResponse",
-}) as any as S.Schema<TransferDomainOutResponse>;
+export const TransferDomainOutResponse =
+  DomainsCreateOrUpdateResponse as any as S.Schema<TransferDomainOutResponse>;
 
 /** DomainPatchResource resource specific properties */
 export type DomainPatchResourcePropertiesInput = DomainPropertiesInput;
@@ -1561,10 +1503,8 @@ export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDomainResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDomainResponseTagsMap>;
+export const UpdateDomainResponseTagsMap =
+  DomainsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDomainResponseTagsMap>;
 
 export interface UpdateDomainResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1584,18 +1524,7 @@ export interface UpdateDomainResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const UpdateDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDomainResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DomainProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateDomainResponse" }) as any as S.Schema<UpdateDomainResponse>;
+export const UpdateDomainResponse = GetDomainResponse as any as S.Schema<UpdateDomainResponse>;
 
 export interface UpdateDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. */
@@ -1645,18 +1574,8 @@ export interface UpdateDomainOwnershipIdentifierResponse {
   /** Kind of resource */
   kind?: string;
 }
-export const UpdateDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DomainOwnershipIdentifierProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDomainOwnershipIdentifierResponse",
-}) as any as S.Schema<UpdateDomainOwnershipIdentifierResponse>;
+export const UpdateDomainOwnershipIdentifierResponse =
+  DomainsCreateOrUpdateOwnershipIdentifierResponse as any as S.Schema<UpdateDomainOwnershipIdentifierResponse>;
 
 export type CheckDomainAvailabilityError = AzureOpError;
 /** Check if a domain is available for registration. Description for Check if a domain is available for registration. */

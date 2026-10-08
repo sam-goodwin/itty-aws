@@ -1103,28 +1103,20 @@ export const ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList =
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList = Array<string>;
 export const ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList = Array<string>;
 export const ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList = Array<string>;
 export const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList =
   Array<string>;
 export const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList>;
 
 export interface ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem {
   amount?: ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList;
@@ -1149,32 +1141,24 @@ export const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsList = /*@
 ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList>;
+export const ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList =
+  ProductFeaturesList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList = Array<string>;
 export const ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList>;
+export const ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList =
+  ProductFeaturesList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList = Array<string>;
 export const ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList = Array<string>;
 export const ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList>;
 
 export interface ContractorInvoiceScheduleCreateResponseFailureErrors {
   currency?: ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList;
@@ -1208,9 +1192,8 @@ export const ContractorInvoiceScheduleCreateResponseFailureErrors = /*@__PURE__*
 /** List of invoice items that composes the overall invoice amount. */
 export type ContractorInvoiceScheduleCreateResponseFailureItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const ContractorInvoiceScheduleCreateResponseFailureItemsList = /*@__PURE__*/ S.Array(
-  ContractorInvoiceScheduleItem,
-) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureItemsList>;
+export const ContractorInvoiceScheduleCreateResponseFailureItemsList =
+  ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureItemsList>;
 
 /** Set of invoice schedule attributes with failed validation. */
 export interface ContractorInvoiceScheduleCreateResponseFailure {
@@ -1257,9 +1240,8 @@ export const CreateContractorInvoiceScheduleResponseDataFailuresList = /*@__PURE
 /** List of invoice items that composes the overall invoice amount. */
 export type ContractorInvoiceScheduleCreateResponseSuccessItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const ContractorInvoiceScheduleCreateResponseSuccessItemsList = /*@__PURE__*/ S.Array(
-  ContractorInvoiceScheduleItem,
-) as any as S.Schema<ContractorInvoiceScheduleCreateResponseSuccessItemsList>;
+export const ContractorInvoiceScheduleCreateResponseSuccessItemsList =
+  ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<ContractorInvoiceScheduleCreateResponseSuccessItemsList>;
 
 /** Set of invoice schedule attributes that were successfully created. */
 export interface ContractorInvoiceScheduleCreateResponseSuccess {
@@ -1909,9 +1891,8 @@ export const CreateCostCalculatorEstimationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Feature flags indicating which Remote services are available in this country. */
 export type MinimalCountryFeaturesList = Array<string>;
-export const MinimalCountryFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalCountryFeaturesList>;
+export const MinimalCountryFeaturesList =
+  ProductFeaturesList as any as S.Schema<MinimalCountryFeaturesList>;
 
 /** A lightweight country representation with basic identification fields. */
 export interface MinimalCountry {
@@ -1967,9 +1948,8 @@ export const CostCalculatorCostsAnnualBenefitsBreakdownList = /*@__PURE__*/ S.Ar
 
 /** The list of all annual employer contribution costs */
 export type CostCalculatorCostsAnnualContributionsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsAnnualContributionsBreakdownList = /*@__PURE__*/ S.Array(
-  CostCalculatorCost,
-) as any as S.Schema<CostCalculatorCostsAnnualContributionsBreakdownList>;
+export const CostCalculatorCostsAnnualContributionsBreakdownList =
+  CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsAnnualContributionsBreakdownList>;
 
 /** The type of money in general use in a particular country */
 export interface Currency {
@@ -2011,33 +1991,28 @@ export const CostCalculatorDiscountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of all annual extra statutory payment costs */
 export type CostCalculatorCostsExtraStatutoryPaymentsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsExtraStatutoryPaymentsBreakdownList = /*@__PURE__*/ S.Array(
-  CostCalculatorCost,
-) as any as S.Schema<CostCalculatorCostsExtraStatutoryPaymentsBreakdownList>;
+export const CostCalculatorCostsExtraStatutoryPaymentsBreakdownList =
+  CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsExtraStatutoryPaymentsBreakdownList>;
 
 /** The list of all annual fringe benefits tax costs */
 export type CostCalculatorCostsFringeBenefitsTaxBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsFringeBenefitsTaxBreakdownList = /*@__PURE__*/ S.Array(
-  CostCalculatorCost,
-) as any as S.Schema<CostCalculatorCostsFringeBenefitsTaxBreakdownList>;
+export const CostCalculatorCostsFringeBenefitsTaxBreakdownList =
+  CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsFringeBenefitsTaxBreakdownList>;
 
 /** The list of all monthly benefit costs */
 export type CostCalculatorCostsMonthlyBenefitsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsMonthlyBenefitsBreakdownList = /*@__PURE__*/ S.Array(
-  CostCalculatorCost,
-) as any as S.Schema<CostCalculatorCostsMonthlyBenefitsBreakdownList>;
+export const CostCalculatorCostsMonthlyBenefitsBreakdownList =
+  CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsMonthlyBenefitsBreakdownList>;
 
 /** The list of all monthly employer contribution costs */
 export type CostCalculatorCostsMonthlyContributionsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsMonthlyContributionsBreakdownList = /*@__PURE__*/ S.Array(
-  CostCalculatorCost,
-) as any as S.Schema<CostCalculatorCostsMonthlyContributionsBreakdownList>;
+export const CostCalculatorCostsMonthlyContributionsBreakdownList =
+  CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsMonthlyContributionsBreakdownList>;
 
 /** The list of all monthly fringe benefits tax costs */
 export type CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList = /*@__PURE__*/ S.Array(
-  CostCalculatorCost,
-) as any as S.Schema<CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList>;
+export const CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList =
+  CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList>;
 
 export interface CostCalculatorCosts {
   /** The list of all annual benefit costs */
@@ -2211,9 +2186,8 @@ export const CostCalculatorEstimateResponse = /*@__PURE__*/ S.suspend(() =>
 /** One or more employments to estimate costs for. */
 export type CreateCostCalculatorEstimationCsvRequestEmploymentsList =
   Array<CostCalculatorEmploymentParam>;
-export const CreateCostCalculatorEstimationCsvRequestEmploymentsList = /*@__PURE__*/ S.Array(
-  CostCalculatorEmploymentParam,
-) as any as S.Schema<CreateCostCalculatorEstimationCsvRequestEmploymentsList>;
+export const CreateCostCalculatorEstimationCsvRequestEmploymentsList =
+  CreateCostCalculatorEstimationRequestEmploymentsList as any as S.Schema<CreateCostCalculatorEstimationCsvRequestEmploymentsList>;
 
 export interface CreateCostCalculatorEstimationCsvRequest {
   /** The company name, used for labeling in PDF/CSV exports. */
@@ -2272,9 +2246,8 @@ export const CostCalculatorEstimateCSVResponse = /*@__PURE__*/ S.suspend(() =>
 /** One or more employments to estimate costs for. */
 export type CreateCostCalculatorEstimationPdfRequestEmploymentsList =
   Array<CostCalculatorEmploymentParam>;
-export const CreateCostCalculatorEstimationPdfRequestEmploymentsList = /*@__PURE__*/ S.Array(
-  CostCalculatorEmploymentParam,
-) as any as S.Schema<CreateCostCalculatorEstimationPdfRequestEmploymentsList>;
+export const CreateCostCalculatorEstimationPdfRequestEmploymentsList =
+  CreateCostCalculatorEstimationRequestEmploymentsList as any as S.Schema<CreateCostCalculatorEstimationPdfRequestEmploymentsList>;
 
 export interface CreateCostCalculatorEstimationPdfRequest {
   /** The company name, used for labeling in PDF/CSV exports. */
@@ -2314,13 +2287,8 @@ export const CostCalculatorEstimatePDFResponseData = CostCalculatorEstimateCSVRe
 export interface CostCalculatorEstimatePDFResponse {
   data: CostCalculatorEstimateCSVResponseData;
 }
-export const CostCalculatorEstimatePDFResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CostCalculatorEstimateCSVResponseData,
-  }),
-).annotate({
-  identifier: "CostCalculatorEstimatePDFResponse",
-}) as any as S.Schema<CostCalculatorEstimatePDFResponse>;
+export const CostCalculatorEstimatePDFResponse =
+  CostCalculatorEstimateCSVResponse as any as S.Schema<CostCalculatorEstimatePDFResponse>;
 
 export interface CreateCurrencyConverterEffectiveRequest {
   /** The amount to convert in cents */
@@ -2441,9 +2409,8 @@ export const CreateGeneralCustomFieldDefinitionParams = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateGeneralCustomFieldDefinitionParams>;
 
 export type SingleSelectMetadataOptionsList = Array<string>;
-export const SingleSelectMetadataOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SingleSelectMetadataOptionsList>;
+export const SingleSelectMetadataOptionsList =
+  ProductFeaturesList as any as S.Schema<SingleSelectMetadataOptionsList>;
 
 /** The metadata for a single select custom field */
 export interface SingleSelectMetadata {
@@ -2766,12 +2733,7 @@ export interface TimeoffDocumentParams {
   /** The file name of the document */
   name: string;
 }
-export const TimeoffDocumentParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "TimeoffDocumentParams" }) as any as S.Schema<TimeoffDocumentParams>;
+export const TimeoffDocumentParams = Base64File as any as S.Schema<TimeoffDocumentParams>;
 
 /** Timeoff days params */
 export interface TimeoffDaysParams {
@@ -3213,9 +3175,8 @@ export const CreateEmploymentContractOriginRequest = /*@__PURE__*/ S.suspend(() 
 /** List of invoice items that composes the overall invoice amount. */
 export type CreateEmploymentContractorInvoicesPreviewRequestItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const CreateEmploymentContractorInvoicesPreviewRequestItemsList = /*@__PURE__*/ S.Array(
-  ContractorInvoiceScheduleItem,
-) as any as S.Schema<CreateEmploymentContractorInvoicesPreviewRequestItemsList>;
+export const CreateEmploymentContractorInvoicesPreviewRequestItemsList =
+  ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<CreateEmploymentContractorInvoicesPreviewRequestItemsList>;
 
 export interface CreateEmploymentContractorInvoicesPreviewRequest {
   /** Employment identifier */
@@ -3288,9 +3249,7 @@ export const ContractorInvoicePreviewResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList =
   Array<string>;
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList>;
 
 /** A file attached to the engagement agreement details. To upload a new file, send its `name` and its base64-encoded `content`. To keep a file uploaded previously, send back the `name` and `id` returned by the show endpoint instead. Every entry must do one or the other -- an entry carrying neither is rejected, and an `id` that does not belong to this record is rejected too. Files that are not included in the payload are deleted. Only the properties below are accepted; any other one is rejected. In particular a file's `sub_type` is derived from the field it is attached to and cannot be set by the caller. */
 export interface EngagementAgreementDetailsFileParams {
@@ -3327,16 +3286,12 @@ export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreement
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList =
   Array<string>;
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList>;
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList =
   Array<string>;
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList>;
 
 export interface CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails {
   allowances_details?: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList | null;
@@ -3451,30 +3406,22 @@ export const CreateEmploymentEngagementAgreementDetailRequest = /*@__PURE__*/ S.
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2 =
   Array<string>;
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2 =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2>;
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2 =
   Array<EngagementAgreementDetailsFileParams>;
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2 =
-  /*@__PURE__*/ S.Array(
-    EngagementAgreementDetailsFileParams,
-  ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2>;
+  CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2>;
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2 =
   Array<string>;
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2 =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2>;
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2 =
   Array<string>;
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2 =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2>;
 
 export interface CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2 {
   allowances_details?: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2 | null;
@@ -3510,59 +3457,7 @@ export interface CreateEmploymentEngagementAgreementDetailRequestEngagementAgree
   working_days?: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2 | null;
 }
 export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowances_details: S.optional(
-        S.NullOr(
-          CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2,
-        ),
-      ),
-      available_pto: S.optional(S.NullOr(S.Number)),
-      break_time_per_day: S.optional(S.NullOr(S.Number)),
-      business_expenses: S.optional(S.NullOr(S.String)),
-      cba: S.optional(S.NullOr(S.String)),
-      cba_document: S.optional(
-        S.NullOr(
-          CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2,
-        ),
-      ),
-      covenants: S.optional(
-        S.NullOr(
-          CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2,
-        ),
-      ),
-      has_allowances: S.optional(S.NullOr(S.String)),
-      has_bonus: S.optional(S.NullOr(S.String)),
-      has_business_expenses: S.optional(S.NullOr(S.String)),
-      has_business_presence: S.optional(S.String),
-      has_cba: S.optional(S.NullOr(S.String)),
-      has_commissions: S.optional(S.NullOr(S.String)),
-      has_covenants: S.optional(S.NullOr(S.String)),
-      has_illness_remuneration: S.optional(S.NullOr(S.String)),
-      has_overtime_compensation: S.optional(S.NullOr(S.String)),
-      has_pension_scheme: S.optional(S.NullOr(S.String)),
-      has_signing_bonus: S.optional(S.NullOr(S.String)),
-      has_similar_roles: S.optional(S.String),
-      has_similar_work_conditions: S.optional(S.NullOr(S.String)),
-      illness_remuneration_details: S.optional(S.NullOr(S.String)),
-      max_annual_gross_salary: S.optional(S.NullOr(S.Number)),
-      min_annual_gross_salary: S.optional(S.NullOr(S.Number)),
-      overtime_compensation_begins: S.optional(S.NullOr(S.Number)),
-      overtime_compensation_type: S.optional(S.NullOr(S.String)),
-      overtime_pay_percentage: S.optional(S.NullOr(S.Number)),
-      pension_scheme: S.optional(S.NullOr(S.String)),
-      similar_roles: S.optional(S.NullOr(S.String)),
-      similar_work_conditions_details: S.optional(S.NullOr(S.String)),
-      work_hours_per_week: S.optional(S.NullOr(S.Number)),
-      working_days: S.optional(
-        S.NullOr(
-          CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2",
-  }) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2>;
+  CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2>;
 
 export interface CreateEmploymentEngagementAgreementDetailRequest2 {
   /** Employment ID */
@@ -3719,9 +3614,8 @@ export type CreateExpensRequestCategory =
 export const CreateExpensRequestCategory = S.String;
 
 export type CreateExpensRequestReceiptsList = Array<Base64File>;
-export const CreateExpensRequestReceiptsList = /*@__PURE__*/ S.Array(
-  Base64File,
-) as any as S.Schema<CreateExpensRequestReceiptsList>;
+export const CreateExpensRequestReceiptsList =
+  CreateEmployeeExpensRequestReceiptsList as any as S.Schema<CreateExpensRequestReceiptsList>;
 
 export interface CreateExpensRequest {
   /** The expense amount in the specified currency, in cents. */
@@ -3945,9 +3839,8 @@ export const DraftExpenseExpenseCategory = ExpenseExpenseCategory;
 
 /** Uploaded receipt files. May be empty for drafts. Maximum 5 receipts. */
 export type DraftExpenseReceiptsList = Array<File>;
-export const DraftExpenseReceiptsList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<DraftExpenseReceiptsList>;
+export const DraftExpenseReceiptsList =
+  ExpenseReceiptsList as any as S.Schema<DraftExpenseReceiptsList>;
 
 /** Not applicable for draft expenses. Always null. */
 export type DraftExpenseReviewer = ExpenseReviewer;
@@ -4380,9 +4273,8 @@ export const CreateJobTitleScreeningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateJobTitleScreeningRequest>;
 
 export interface CreateJobTitleScreeningResponse {}
-export const CreateJobTitleScreeningResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateJobTitleScreeningResponse" },
-) as any as S.Schema<CreateJobTitleScreeningResponse>;
+export const CreateJobTitleScreeningResponse =
+  CreateBulkEmploymentJobResponse as any as S.Schema<CreateJobTitleScreeningResponse>;
 
 export interface MagicLinkParamsCase0 {
   /** The path to which the user will be redirected to after login. This field has a max length of 2000 characters. If not specified, `/dashboard` will be used by default. Must begin with a forward slash (`/`) and, at least one path segment is required (`/dashboard` e.g.). An ending forward slash (`/`) is not allowed and path segments can only include alphanumeric characters, underscore (`_`) and hyphen (`-`). An optional query string can be specified too. If present, the query string must start with a question mark (`?`) and must include at least one key value pair. Both, keys and values, can only include alphanumeric characters, underscore (`_`), hyphen (`-`) or percent encoded values such as `%20` (space character). Additional key value pairs are allowed using ampersand (`&`). Query keys require at least one alphanumeric, underscore (`_`), hyphen (`-`) or valid percent encoded. Query values are optional, the actual value may be empty and the equals sign (`=`) may be missing too. Some **Valid** examples for `path`: - o `/dashboard` - o `/dashboard/people/new/full_time/663e0b79-c893-45ff-a1b2-f6dcabc098b5` - o `/dashboard/people/hiring?filters%5B0%5D%5Bid%5D=status&filters%5B0%5D%5Bvalue%5D=active` - o `/dashboard?key=value&foo=bar` Some **Invalid** examples for `path`: - x `missing_forward_slash` - x `/invalid//path` - x `//some` - x `/?key=value` - x `/some/i.n:valid*` - x `/invalid/end/slash/` - x `/some?malformed_percent_encoded_key%1=value` */
@@ -4506,18 +4398,12 @@ export interface OffboardingFile {
   /** The file name */
   name: string;
 }
-export const OffboardingFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "OffboardingFile" }) as any as S.Schema<OffboardingFile>;
+export const OffboardingFile = Base64File as any as S.Schema<OffboardingFile>;
 
 /** Any supporting documents regarding the termination reason */
 export type TerminationDetailsParamsTerminationReasonFilesList = Array<OffboardingFile>;
-export const TerminationDetailsParamsTerminationReasonFilesList = /*@__PURE__*/ S.Array(
-  OffboardingFile,
-) as any as S.Schema<TerminationDetailsParamsTerminationReasonFilesList>;
+export const TerminationDetailsParamsTerminationReasonFilesList =
+  CreateEmployeeExpensRequestReceiptsList as any as S.Schema<TerminationDetailsParamsTerminationReasonFilesList>;
 
 export interface TerminationDetailsParams {
   /** Whether the employer acknowledges and agrees to follow Remote's termination procedure for this jurisdiction. */
@@ -4686,14 +4572,8 @@ export interface TerminationOffboardingEmployeeAwareness {
   /** Notes about how the termination was communicated to the employee. */
   note?: string | null;
 }
-export const TerminationOffboardingEmployeeAwareness = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.optional(S.NullOr(S.String)),
-    note: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "TerminationOffboardingEmployeeAwareness",
-}) as any as S.Schema<TerminationOffboardingEmployeeAwareness>;
+export const TerminationOffboardingEmployeeAwareness =
+  TerminationDetailsParamsEmployeeAwareness as any as S.Schema<TerminationOffboardingEmployeeAwareness>;
 
 export type TerminationOffboardingRiskAssessmentReasonsItem =
   | "caring_responsibilities"
@@ -5135,9 +5015,8 @@ export const PayItemProviderData = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of pay items this one has replaced, oldest first. Empty if this pay item has never been edited. */
 export type PayItemReplacedIdsList = Array<string>;
-export const PayItemReplacedIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PayItemReplacedIdsList>;
+export const PayItemReplacedIdsList =
+  ProductFeaturesList as any as S.Schema<PayItemReplacedIdsList>;
 
 export interface PayItem {
   /** Value of the pay item. Its unit depends on the `type` of the pay code (see GET /v1/companies/:company_id/legal-entities/:legal_entity_id/pay-codes): `amount` in cents, `percentage` in basis points, `unit` as a raw count, `hours` as a whole number of hours, `duration` in seconds. */
@@ -5353,12 +5232,7 @@ export interface ProbationExtensionFile {
   /** The name of the file. */
   name: string;
 }
-export const ProbationExtensionFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "ProbationExtensionFile" }) as any as S.Schema<ProbationExtensionFile>;
+export const ProbationExtensionFile = Base64File as any as S.Schema<ProbationExtensionFile>;
 
 export interface CreateProbationExtensionRequest {
   /** Any additional details that need to be considered for the probation extension. */
@@ -5479,18 +5353,15 @@ export const ProjectBudget = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs of the company admins assigned as the project's leads. These are user IDs, unlike `team_member_ids`, which are employment IDs. */
 export type ProjectLeadIdsList = Array<string>;
-export const ProjectLeadIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectLeadIdsList>;
+export const ProjectLeadIdsList = ProductFeaturesList as any as S.Schema<ProjectLeadIdsList>;
 
 export type ProjectStatus = "active" | "archived" | "completed";
 export const ProjectStatus = S.String;
 
 /** Employment IDs of the contractors assigned to the project as team members. These are employment IDs, unlike `lead_ids`, which are user IDs. */
 export type ProjectTeamMemberIdsList = Array<string>;
-export const ProjectTeamMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectTeamMemberIdsList>;
+export const ProjectTeamMemberIdsList =
+  ProductFeaturesList as any as S.Schema<ProjectTeamMemberIdsList>;
 
 /** Company project */
 export interface Project {
@@ -6254,9 +6125,8 @@ export const CreateSdkTelemetryErrorRequestErrorCategory = S.String;
 
 /** Component Stack */
 export type CreateSdkTelemetryErrorRequestErrorComponentStackList = Array<string>;
-export const CreateSdkTelemetryErrorRequestErrorComponentStackList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSdkTelemetryErrorRequestErrorComponentStackList>;
+export const CreateSdkTelemetryErrorRequestErrorComponentStackList =
+  ProductFeaturesList as any as S.Schema<CreateSdkTelemetryErrorRequestErrorComponentStackList>;
 
 /** Error severity */
 export type CreateSdkTelemetryErrorRequestErrorSeverity = "critical" | "error" | "warning" | "info";
@@ -6339,9 +6209,8 @@ export const CreateSdkTelemetryErrorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSdkTelemetryErrorRequest>;
 
 export interface CreateSdkTelemetryErrorResponse {}
-export const CreateSdkTelemetryErrorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateSdkTelemetryErrorResponse" },
-) as any as S.Schema<CreateSdkTelemetryErrorResponse>;
+export const CreateSdkTelemetryErrorResponse =
+  CreateBulkEmploymentJobResponse as any as S.Schema<CreateSdkTelemetryErrorResponse>;
 
 export interface CreateSsoConfigurationRequest {
   /** The SAML signing certificate from your identity provider, base64-encoded. */
@@ -6392,9 +6261,8 @@ export const CreateSSOConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSSOConfigurationResponse>;
 
 export type CreateTimeoffRequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const CreateTimeoffRequestTimeoffDaysList = /*@__PURE__*/ S.Array(
-  TimeoffDaysParams,
-) as any as S.Schema<CreateTimeoffRequestTimeoffDaysList>;
+export const CreateTimeoffRequestTimeoffDaysList =
+  CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<CreateTimeoffRequestTimeoffDaysList>;
 
 /** The type of leave accepted when creating a time off record. It is fixed once the record exists and cannot be changed by updating it. */
 export type TimeoffType =
@@ -6966,9 +6834,8 @@ export const WebhookCallbackResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of webhook event IDs to replay. */
 export type IdsRequiredParamsIdsList = Array<string>;
-export const IdsRequiredParamsIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdsRequiredParamsIdsList>;
+export const IdsRequiredParamsIdsList =
+  ProductFeaturesList as any as S.Schema<IdsRequiredParamsIdsList>;
 
 export interface IdsRequiredParams {
   /** A list of webhook event IDs to replay. */
@@ -7415,9 +7282,8 @@ export const CountryCountrySubdivisionsList = /*@__PURE__*/ S.Array(
 
 /** The list of JSON schema form names available for this country (e.g., "address_details", "contract_details"). Use these with the Show form schema endpoint to get country-specific field requirements. */
 export type CountrySupportedJsonSchemasList = Array<string>;
-export const CountrySupportedJsonSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CountrySupportedJsonSchemasList>;
+export const CountrySupportedJsonSchemasList =
+  ProductFeaturesList as any as S.Schema<CountrySupportedJsonSchemasList>;
 
 /** A supported country on Remote */
 export interface Country {
@@ -8132,9 +7998,8 @@ export const GetBulkEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The column names that have been automatically mapped by Tiger (rawr!) and maybe also by AI. */
 export type BulkEmploymentImportJobColumnMappingAutoMappedColumnsList = Array<string>;
-export const BulkEmploymentImportJobColumnMappingAutoMappedColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkEmploymentImportJobColumnMappingAutoMappedColumnsList>;
+export const BulkEmploymentImportJobColumnMappingAutoMappedColumnsList =
+  ProductFeaturesList as any as S.Schema<BulkEmploymentImportJobColumnMappingAutoMappedColumnsList>;
 
 export interface BulkEmploymentImportJobColumnMappingSourceColumnsItem {
   /** The index of the data column in the file */
@@ -8187,20 +8052,17 @@ export const BulkEmploymentImportJobColumnMapping = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BulkEmploymentImportJobColumnMapping>;
 
 export type BulkEmploymentImportJobErrorsList = Array<string>;
-export const BulkEmploymentImportJobErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkEmploymentImportJobErrorsList>;
+export const BulkEmploymentImportJobErrorsList =
+  ProductFeaturesList as any as S.Schema<BulkEmploymentImportJobErrorsList>;
 
 export type PersonalDetailsNationalityList = Array<string>;
-export const PersonalDetailsNationalityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PersonalDetailsNationalityList>;
+export const PersonalDetailsNationalityList =
+  ProductFeaturesList as any as S.Schema<PersonalDetailsNationalityList>;
 
 /** Names of fields redacted because the caller lacks the required attribute permission */
 export type PersonalDetailsRedactedFieldsList = Array<string>;
-export const PersonalDetailsRedactedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PersonalDetailsRedactedFieldsList>;
+export const PersonalDetailsRedactedFieldsList =
+  ProductFeaturesList as any as S.Schema<PersonalDetailsRedactedFieldsList>;
 
 export type PersonalDetailsTitle = "mr" | "mrs" | "miss" | "ms" | "mx";
 export const PersonalDetailsTitle = S.String;
@@ -8679,9 +8541,8 @@ export const ImportJobRowsResponseDataCountsByStatus = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ImportJobRowsResponseDataCountsByStatus>;
 
 export type ImportJobRowsResponseDataOrderedRowsList = Array<number>;
-export const ImportJobRowsResponseDataOrderedRowsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ImportJobRowsResponseDataOrderedRowsList>;
+export const ImportJobRowsResponseDataOrderedRowsList =
+  ContractorInvoiceScheduleCustomDays as any as S.Schema<ImportJobRowsResponseDataOrderedRowsList>;
 
 export type ImportDataRow = { [key: string]: unknown | undefined };
 export const ImportDataRow = /*@__PURE__*/ S.Record(
@@ -8691,9 +8552,8 @@ export const ImportDataRow = /*@__PURE__*/ S.Record(
 
 /** An array of error messages for the given field */
 export type ImportJobRowErrorsValueCase0List = Array<string>;
-export const ImportJobRowErrorsValueCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportJobRowErrorsValueCase0List>;
+export const ImportJobRowErrorsValueCase0List =
+  ProductFeaturesList as any as S.Schema<ImportJobRowErrorsValueCase0List>;
 
 export type ImportJobRowErrorsValue = ImportJobRowErrorsValueCase0List | unknown;
 export const ImportJobRowErrorsValue = S.Unknown as any as S.Schema<ImportJobRowErrorsValue>;
@@ -8817,9 +8677,8 @@ export type ImportJobRowStatus =
 export const ImportJobRowStatus = S.String;
 
 export type ImportJobRowErrorMessagesList = Array<string>;
-export const ImportJobRowErrorMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportJobRowErrorMessagesList>;
+export const ImportJobRowErrorMessagesList =
+  ProductFeaturesList as any as S.Schema<ImportJobRowErrorMessagesList>;
 
 export interface ImportJobRowError {
   error?: string | null;
@@ -8873,34 +8732,28 @@ export const ImportJobRowsResponseDataRowsFailuresList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ImportJobRowsResponseDataRowsFailuresList>;
 
 export type ImportJobRowsResponseDataRowsImportedList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsImportedList = /*@__PURE__*/ S.Array(
-  ImportJobRow,
-) as any as S.Schema<ImportJobRowsResponseDataRowsImportedList>;
+export const ImportJobRowsResponseDataRowsImportedList =
+  ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsImportedList>;
 
 export type ImportJobRowsResponseDataRowsPendingList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsPendingList = /*@__PURE__*/ S.Array(
-  ImportJobRow,
-) as any as S.Schema<ImportJobRowsResponseDataRowsPendingList>;
+export const ImportJobRowsResponseDataRowsPendingList =
+  ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsPendingList>;
 
 export type ImportJobRowsResponseDataRowsRetryableList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsRetryableList = /*@__PURE__*/ S.Array(
-  ImportJobRow,
-) as any as S.Schema<ImportJobRowsResponseDataRowsRetryableList>;
+export const ImportJobRowsResponseDataRowsRetryableList =
+  ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsRetryableList>;
 
 export type ImportJobRowsResponseDataRowsSkippedList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsSkippedList = /*@__PURE__*/ S.Array(
-  ImportJobRow,
-) as any as S.Schema<ImportJobRowsResponseDataRowsSkippedList>;
+export const ImportJobRowsResponseDataRowsSkippedList =
+  ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsSkippedList>;
 
 export type ImportJobRowsResponseDataRowsSuccessesList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsSuccessesList = /*@__PURE__*/ S.Array(
-  ImportJobRow,
-) as any as S.Schema<ImportJobRowsResponseDataRowsSuccessesList>;
+export const ImportJobRowsResponseDataRowsSuccessesList =
+  ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsSuccessesList>;
 
 export type ImportJobRowsResponseDataRowsUnprocessableList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsUnprocessableList = /*@__PURE__*/ S.Array(
-  ImportJobRow,
-) as any as S.Schema<ImportJobRowsResponseDataRowsUnprocessableList>;
+export const ImportJobRowsResponseDataRowsUnprocessableList =
+  ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsUnprocessableList>;
 
 export interface ImportJobRowsResponseDataRows {
   failures: ImportJobRowsResponseDataRowsFailuresList;
@@ -9432,9 +9285,8 @@ export const GetCompanyEmploymentOnboardingReservesStatusRequest = /*@__PURE__*/
 
 /** List of applicable onboarding reserves policies */
 export type OnboardingReservesStatusPoliciesList = Array<string>;
-export const OnboardingReservesStatusPoliciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnboardingReservesStatusPoliciesList>;
+export const OnboardingReservesStatusPoliciesList =
+  ProductFeaturesList as any as S.Schema<OnboardingReservesStatusPoliciesList>;
 
 /** Onboarding reserves status (same as credit risk status but takes onboarding reserves policies into account) */
 export type OnboardingReservesStatusStatus =
@@ -9604,23 +9456,17 @@ export const GetCompanyLegalEntityContractorEligibilityRequest = /*@__PURE__*/ S
 export type ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList =
   Array<string>;
 export const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList>;
 
 export type ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList =
   Array<string>;
 export const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList>;
 
 export type ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList =
   Array<string>;
 export const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList>;
 
 /** Per-product lists of reasons why the legal entity is ineligible. Empty list means eligible. */
 export interface ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasons {
@@ -9662,9 +9508,8 @@ export const ContractorEligibilityResponseDataContractorEligibility = /*@__PURE_
 
 /** ISO 3166-1 alpha-3 country codes where COR is supported for this legal entity. Empty when not COR-eligible. */
 export type ContractorEligibilityResponseDataCorSupportedCountryCodesList = Array<string>;
-export const ContractorEligibilityResponseDataCorSupportedCountryCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContractorEligibilityResponseDataCorSupportedCountryCodesList>;
+export const ContractorEligibilityResponseDataCorSupportedCountryCodesList =
+  ProductFeaturesList as any as S.Schema<ContractorEligibilityResponseDataCorSupportedCountryCodesList>;
 
 export interface ContractorEligibilityResponseData {
   /** Which contractor products the legal entity can use (standard, plus, cor). */
@@ -10126,13 +9971,8 @@ export const GetContractAmendmentsSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ContractAmendmentFormResponse {
   data?: unknown;
 }
-export const ContractAmendmentFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "ContractAmendmentFormResponse",
-}) as any as S.Schema<ContractAmendmentFormResponse>;
+export const ContractAmendmentFormResponse =
+  BenefitRenewalRequestsBenefitRenewalRequestFormResponse as any as S.Schema<ContractAmendmentFormResponse>;
 
 export interface GetContractorInvoiceRequest {
   /** Resource unique identifier */
@@ -10452,9 +10292,8 @@ export const GetContractorInvoiceScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of invoice items that composes the overall invoice amount. */
 export type ContractorInvoiceScheduleItemsList = Array<ContractorInvoiceScheduleItem>;
-export const ContractorInvoiceScheduleItemsList = /*@__PURE__*/ S.Array(
-  ContractorInvoiceScheduleItem,
-) as any as S.Schema<ContractorInvoiceScheduleItemsList>;
+export const ContractorInvoiceScheduleItemsList =
+  ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<ContractorInvoiceScheduleItemsList>;
 
 /** Current record state. - `active`: Once an invoice is generated, and a withdrawal method has been set, then it's set to active. - `processing`: Ephemeral status indicating that we are currently attempting to generate a contractor invoice from the scheduled contractor invoice. - `pending_company_action`: Company needs to trigger some actions related to payment configuration. - `pending_contractor_action`: When schedule is blocked by contractor onboarding or invoice generation failed due to withdrawal methods issues that needs contractor action. - `generation_failed_unrelated_to_withdrawal_method`: Generation failed for any other reason. - `completed`: Number of generated contractor invoices has been reached. - `inactive`: Does not create any further contractor invoices but it's still possible for the employer to activate it again. - `deleted`: The schedule was cancelled and will not generate any further contractor invoices. */
 export type ContractorInvoiceScheduleStatus =
@@ -11227,20 +11066,16 @@ export const GetCostCalculatorRegionFieldsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetCostCalculatorRegionFieldsRequest>;
 
 export type JSONSchemaResponseDataSchemaPropertiesMap = { [key: string]: unknown | undefined };
-export const JSONSchemaResponseDataSchemaPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<JSONSchemaResponseDataSchemaPropertiesMap>;
+export const JSONSchemaResponseDataSchemaPropertiesMap =
+  ImportDataRow as any as S.Schema<JSONSchemaResponseDataSchemaPropertiesMap>;
 
 export type JSONSchemaResponseDataSchemaRequiredList = Array<string>;
-export const JSONSchemaResponseDataSchemaRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JSONSchemaResponseDataSchemaRequiredList>;
+export const JSONSchemaResponseDataSchemaRequiredList =
+  ProductFeaturesList as any as S.Schema<JSONSchemaResponseDataSchemaRequiredList>;
 
 export type JSONSchemaResponseDataSchemaXJsfOrderList = Array<string>;
-export const JSONSchemaResponseDataSchemaXJsfOrderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JSONSchemaResponseDataSchemaXJsfOrderList>;
+export const JSONSchemaResponseDataSchemaXJsfOrderList =
+  ProductFeaturesList as any as S.Schema<JSONSchemaResponseDataSchemaXJsfOrderList>;
 
 export interface JSONSchemaResponseDataSchema {
   properties: JSONSchemaResponseDataSchemaPropertiesMap;
@@ -11340,11 +11175,7 @@ export const GetCountryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CountryFormResponse {
   data?: unknown;
 }
-export const CountryFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "CountryFormResponse" }) as any as S.Schema<CountryFormResponse>;
+export const CountryFormResponse = CompanyFormResponse as any as S.Schema<CountryFormResponse>;
 
 /** Use latest version */
 export type GetCountryContractorContractDetailsRequestJsonSchemaVersionCase1 = "latest";
@@ -11384,10 +11215,8 @@ export const GetCountryContractorContractDetailsRequest = /*@__PURE__*/ S.suspen
 
 /** Contract details schema object with variable fields based on country */
 export type ContractorContractDetailsResponseDataSchemaMap = { [key: string]: unknown | undefined };
-export const ContractorContractDetailsResponseDataSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ContractorContractDetailsResponseDataSchemaMap>;
+export const ContractorContractDetailsResponseDataSchemaMap =
+  ImportDataRow as any as S.Schema<ContractorContractDetailsResponseDataSchemaMap>;
 
 /** Contractor contract details response data */
 export interface ContractorContractDetailsResponseData {
@@ -12048,9 +11877,8 @@ export const GetEmployeeDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeDocumentsRequest>;
 
 export type ListDocumentsResponseDataDocumentsList = Array<File>;
-export const ListDocumentsResponseDataDocumentsList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<ListDocumentsResponseDataDocumentsList>;
+export const ListDocumentsResponseDataDocumentsList =
+  ExpenseReceiptsList as any as S.Schema<ListDocumentsResponseDataDocumentsList>;
 
 export interface ListDocumentsResponseData {
   /** The current page among all of the total_pages */
@@ -13084,15 +12912,13 @@ export const NullableCountryContractorProductsAvailableList = /*@__PURE__*/ S.Ar
 
 /** Administrative subdivisions of the country (e.g., states, provinces, districts). Null if the country has no subdivisions relevant to Remote's services. */
 export type NullableCountryCountrySubdivisionsList = Array<CountrySubdivision>;
-export const NullableCountryCountrySubdivisionsList = /*@__PURE__*/ S.Array(
-  CountrySubdivision,
-) as any as S.Schema<NullableCountryCountrySubdivisionsList>;
+export const NullableCountryCountrySubdivisionsList =
+  CountryCountrySubdivisionsList as any as S.Schema<NullableCountryCountrySubdivisionsList>;
 
 /** The list of JSON schema form names available for this country (e.g., "address_details", "contract_details"). Use these with the Show form schema endpoint to get country-specific field requirements. */
 export type NullableCountrySupportedJsonSchemasList = Array<string>;
-export const NullableCountrySupportedJsonSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableCountrySupportedJsonSchemasList>;
+export const NullableCountrySupportedJsonSchemasList =
+  ProductFeaturesList as any as S.Schema<NullableCountrySupportedJsonSchemasList>;
 
 /** A supported country on Remote */
 export interface NullableCountry {
@@ -13142,9 +12968,8 @@ export const EmploymentShowResponseDataEmploymentBankAccountDetailsList = /*@__P
 
 /** Documents associated with this employment (e.g., contracts, tax forms, identity documents). */
 export type EmploymentShowResponseDataEmploymentFilesList = Array<File>;
-export const EmploymentShowResponseDataEmploymentFilesList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<EmploymentShowResponseDataEmploymentFilesList>;
+export const EmploymentShowResponseDataEmploymentFilesList =
+  ExpenseReceiptsList as any as S.Schema<EmploymentShowResponseDataEmploymentFilesList>;
 
 /** The status of the task */
 export type TaskDescriptionStatus = "completed" | "pending";
@@ -13646,16 +13471,12 @@ export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaProperti
 
 export type UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList = Array<string>;
 export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList>;
 
 export type UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList =
   Array<string>;
 export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList>;
 
 export interface UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema {
   properties: UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaPropertiesMap;
@@ -13724,10 +13545,8 @@ export const GetEmploymentCompanyStructureNodesRequest = /*@__PURE__*/ S.suspend
 
 /** Arbitrary attributes including legal entity code */
 export type CompanyStructureNodeAttributesMap = { [key: string]: unknown | undefined };
-export const CompanyStructureNodeAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CompanyStructureNodeAttributesMap>;
+export const CompanyStructureNodeAttributesMap =
+  ImportDataRow as any as S.Schema<CompanyStructureNodeAttributesMap>;
 
 export interface CompanyStructureNodeCompanyStructure {
   id?: string;
@@ -13744,10 +13563,8 @@ export const CompanyStructureNodeCompanyStructure = /*@__PURE__*/ S.suspend(() =
 
 /** Arbitrary attributes including cost_center */
 export type CompanyStructureNodeParentAttributesMap = { [key: string]: unknown | undefined };
-export const CompanyStructureNodeParentAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CompanyStructureNodeParentAttributesMap>;
+export const CompanyStructureNodeParentAttributesMap =
+  ImportDataRow as any as S.Schema<CompanyStructureNodeParentAttributesMap>;
 
 export interface CompanyStructureNodeParent {
   /** Arbitrary attributes including cost_center */
@@ -13819,9 +13636,8 @@ export const GetEmploymentContractDocumentsRequestStatusesList = /*@__PURE__*/ S
 export type GetEmploymentContractDocumentsRequestExceptStatusesList = Array<
   ContractorContractDocumentStatus | (string & {})
 >;
-export const GetEmploymentContractDocumentsRequestExceptStatusesList = /*@__PURE__*/ S.Array(
-  ContractorContractDocumentStatus,
-) as any as S.Schema<GetEmploymentContractDocumentsRequestExceptStatusesList>;
+export const GetEmploymentContractDocumentsRequestExceptStatusesList =
+  GetEmploymentContractDocumentsRequestStatusesList as any as S.Schema<GetEmploymentContractDocumentsRequestExceptStatusesList>;
 
 export interface GetEmploymentContractDocumentsRequest {
   /** Employment ID */
@@ -14145,9 +13961,8 @@ export const GetEmploymentCostCenterAllocationsRequest = /*@__PURE__*/ S.suspend
 
 export type ListCostCenterAllocationsResponseDataCostCenterAllocationsList =
   Array<CostCenterAllocation>;
-export const ListCostCenterAllocationsResponseDataCostCenterAllocationsList = /*@__PURE__*/ S.Array(
-  CostCenterAllocation,
-) as any as S.Schema<ListCostCenterAllocationsResponseDataCostCenterAllocationsList>;
+export const ListCostCenterAllocationsResponseDataCostCenterAllocationsList =
+  EmploymentWithCostCenterAllocationsCostCenterAllocationsList as any as S.Schema<ListCostCenterAllocationsResponseDataCostCenterAllocationsList>;
 
 export interface ListCostCenterAllocationsResponseData {
   cost_center_allocations: ListCostCenterAllocationsResponseDataCostCenterAllocationsList;
@@ -14282,11 +14097,8 @@ export const GetEmploymentEmploymentAgreementDownloadRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetEmploymentEmploymentAgreementDownloadRequest>;
 
 export type GetEmploymentEmploymentAgreementDownloadResponse = string;
-export const GetEmploymentEmploymentAgreementDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetEmploymentEmploymentAgreementDownloadResponse",
-}) as any as S.Schema<GetEmploymentEmploymentAgreementDownloadResponse>;
+export const GetEmploymentEmploymentAgreementDownloadResponse =
+  GetBillingDocumentPdfResponse as any as S.Schema<GetEmploymentEmploymentAgreementDownloadResponse>;
 
 export interface GetEmploymentEmploymentAgreementPreviewRequest {
   /** Employment ID */
@@ -14355,9 +14167,7 @@ export const GetEmploymentEngagementAgreementDetailsRequest = /*@__PURE__*/ S.su
 export type EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList =
   Array<string>;
 export const EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList>;
 
 /** A file attached to the engagement agreement details. */
 export interface EngagementAgreementDetailsFile {
@@ -14384,15 +14194,11 @@ export const EmploymentEngagementAgreementDetailsResponseDataDetailsCbaDocumentL
 
 export type EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList = Array<string>;
 export const EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList>;
 
 export type EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList = Array<string>;
 export const EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList>;
+  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList>;
 
 export interface EmploymentEngagementAgreementDetailsResponseDataDetails {
   allowances_details?: EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList | null;
@@ -15069,15 +14875,12 @@ export type EmploymentEmploymentModel = "global_payroll" | "peo" | "eor";
 export const EmploymentEmploymentModel = S.String;
 
 export type EmploymentBankAccountDetailsList = Array<unknown>;
-export const EmploymentBankAccountDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EmploymentBankAccountDetailsList>;
+export const EmploymentBankAccountDetailsList =
+  EmploymentShowResponseDataEmploymentBankAccountDetailsList as any as S.Schema<EmploymentBankAccountDetailsList>;
 
 /** Documents associated with this employment (e.g., contracts, tax forms, identity documents). */
 export type EmploymentFilesList = Array<File>;
-export const EmploymentFilesList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<EmploymentFilesList>;
+export const EmploymentFilesList = ExpenseReceiptsList as any as S.Schema<EmploymentFilesList>;
 
 /** Complete information of an employment, including all onboarding task statuses, country-specific form data (address, contract, administrative, etc.), and contractor-specific settings where applicable. */
 export interface Employment {
@@ -15494,12 +15297,7 @@ export interface IdentityCompany {
   /** The registered name of the company on the Remote platform. */
   name: string;
 }
-export const IdentityCompany = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "IdentityCompany" }) as any as S.Schema<IdentityCompany>;
+export const IdentityCompany = BenefitProvider as any as S.Schema<IdentityCompany>;
 
 /** The user (company manager) associated with the current authentication token. Represents the person who authorized access to the company's data. */
 export interface IdentityUser {
@@ -15934,20 +15732,13 @@ export interface V2TerminationRequestEmployeeAwareness {
   date?: string | null;
   note?: string | null;
 }
-export const V2TerminationRequestEmployeeAwareness = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.optional(S.NullOr(S.String)),
-    note: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "V2TerminationRequestEmployeeAwareness",
-}) as any as S.Schema<V2TerminationRequestEmployeeAwareness>;
+export const V2TerminationRequestEmployeeAwareness =
+  TerminationDetailsParamsEmployeeAwareness as any as S.Schema<V2TerminationRequestEmployeeAwareness>;
 
 /** Risk-assessment flags submitted by the requester. */
 export type V2TerminationRequestRiskAssessmentReasonsList = Array<string>;
-export const V2TerminationRequestRiskAssessmentReasonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2TerminationRequestRiskAssessmentReasonsList>;
+export const V2TerminationRequestRiskAssessmentReasonsList =
+  ProductFeaturesList as any as S.Schema<V2TerminationRequestRiskAssessmentReasonsList>;
 
 /** Snapshot of the inputs submitted when a `termination` offboarding was created. These fields do not change as the offboarding progresses. */
 export interface V2TerminationRequest {
@@ -16545,9 +16336,8 @@ export const GetPayrollCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPayrollCalendarsRequest>;
 
 export type PayrollCalendarEORCyclesList = Array<Cycle>;
-export const PayrollCalendarEORCyclesList = /*@__PURE__*/ S.Array(
-  Cycle,
-) as any as S.Schema<PayrollCalendarEORCyclesList>;
+export const PayrollCalendarEORCyclesList =
+  PayrollCalendarCyclesList as any as S.Schema<PayrollCalendarEORCyclesList>;
 
 export interface PayrollCalendarEOR {
   country: Country;
@@ -16824,9 +16614,8 @@ export const GetPayrollRunEmployeeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of per-employee cost breakdowns for the payroll run. */
 export type EmployeeDetailsResponseDataEmployeeDetailsList = Array<EmployeeDetails>;
-export const EmployeeDetailsResponseDataEmployeeDetailsList = /*@__PURE__*/ S.Array(
-  EmployeeDetails,
-) as any as S.Schema<EmployeeDetailsResponseDataEmployeeDetailsList>;
+export const EmployeeDetailsResponseDataEmployeeDetailsList =
+  PayrollRunEmployeeDetailsList as any as S.Schema<EmployeeDetailsResponseDataEmployeeDetailsList>;
 
 export interface EmployeeDetailsResponseData {
   /** List of per-employee cost breakdowns for the payroll run. */
@@ -16893,11 +16682,8 @@ export const GetPayrollRunGlReportDownloadRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetPayrollRunGlReportDownloadRequest>;
 
 export type GetPayrollRunGlReportDownloadResponse = string;
-export const GetPayrollRunGlReportDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetPayrollRunGlReportDownloadResponse",
-}) as any as S.Schema<GetPayrollRunGlReportDownloadResponse>;
+export const GetPayrollRunGlReportDownloadResponse =
+  GetBillingDocumentPdfResponse as any as S.Schema<GetPayrollRunGlReportDownloadResponse>;
 
 export interface GetPayrollRunsRequest {
   /** Filters payroll runs where period_start or period_end match the given date */
@@ -17200,12 +16986,7 @@ export interface EligibleLead {
   /** Name of the user. */
   name: string;
 }
-export const EligibleLead = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "EligibleLead" }) as any as S.Schema<EligibleLead>;
+export const EligibleLead = BenefitProvider as any as S.Schema<EligibleLead>;
 
 export type ListEligibleLeadsResponseDataList = Array<EligibleLead>;
 export const ListEligibleLeadsResponseDataList = /*@__PURE__*/ S.Array(
@@ -17307,9 +17088,8 @@ export const ResignationBeforeStartDate = /*@__PURE__*/ S.suspend(() =>
 
 /** Human-readable breakdown of the employee's paid time off usage and balance (e.g., "Used until today: 60 days", "Waiting for approval: 0 days"). */
 export type ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList = Array<string>;
-export const ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList>;
+export const ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList =
+  ProductFeaturesList as any as S.Schema<ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList>;
 
 /** Resignation details for an employee who resigned after their employment start date. Includes contract terms, notice period calculations, and PTO breakdown needed for the employer to validate the resignation. */
 export interface ResignationAfterStartDate {
@@ -17453,9 +17233,8 @@ export const IntegrationsScimGroupMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** SCIM schema identifiers */
 export type IntegrationsScimGroupSchemasList = Array<string>;
-export const IntegrationsScimGroupSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationsScimGroupSchemasList>;
+export const IntegrationsScimGroupSchemasList =
+  ProductFeaturesList as any as S.Schema<IntegrationsScimGroupSchemasList>;
 
 export interface IntegrationsScimGroup {
   /** Display name of the group */
@@ -17502,9 +17281,8 @@ export const IntegrationsScimGroupListResponseResourcesList = /*@__PURE__*/ S.Ar
 
 /** SCIM schema identifiers */
 export type IntegrationsScimGroupListResponseSchemasList = Array<string>;
-export const IntegrationsScimGroupListResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationsScimGroupListResponseSchemasList>;
+export const IntegrationsScimGroupListResponseSchemasList =
+  ProductFeaturesList as any as S.Schema<IntegrationsScimGroupListResponseSchemasList>;
 
 export interface IntegrationsScimGroupListResponse {
   /** Array of group resources */
@@ -17587,9 +17365,8 @@ export const IntegrationsScimUserName = /*@__PURE__*/ S.suspend(() =>
 
 /** SCIM schema identifiers */
 export type IntegrationsScimUserSchemasList = Array<string>;
-export const IntegrationsScimUserSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationsScimUserSchemasList>;
+export const IntegrationsScimUserSchemasList =
+  ProductFeaturesList as any as S.Schema<IntegrationsScimUserSchemasList>;
 
 /** The user's manager */
 export interface IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20UserManager {
@@ -17695,9 +17472,8 @@ export const IntegrationsScimUserListResponseResourcesList = /*@__PURE__*/ S.Arr
 
 /** SCIM schema identifiers */
 export type IntegrationsScimUserListResponseSchemasList = Array<string>;
-export const IntegrationsScimUserListResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationsScimUserListResponseSchemasList>;
+export const IntegrationsScimUserListResponseSchemasList =
+  ProductFeaturesList as any as S.Schema<IntegrationsScimUserListResponseSchemasList>;
 
 export interface IntegrationsScimUserListResponse {
   /** Array of user resources */
@@ -18994,9 +18770,8 @@ export const PatchV1CompanyManagersUserIdRequest = /*@__PURE__*/ S.suspend(() =>
 /** The legal entities to assign or unassign this manager as billing contact for. */
 export type PatchV1CompanyManagersUserId2RequestBillingContactForList =
   Array<CompanyManagerBillingContact>;
-export const PatchV1CompanyManagersUserId2RequestBillingContactForList = /*@__PURE__*/ S.Array(
-  CompanyManagerBillingContact,
-) as any as S.Schema<PatchV1CompanyManagersUserId2RequestBillingContactForList>;
+export const PatchV1CompanyManagersUserId2RequestBillingContactForList =
+  PatchV1CompanyManagersUserIdRequestBillingContactForList as any as S.Schema<PatchV1CompanyManagersUserId2RequestBillingContactForList>;
 
 export interface PatchV1CompanyManagersUserId2Request {
   /** User ID */
@@ -19016,9 +18791,8 @@ export const PatchV1CompanyManagersUserId2Request = /*@__PURE__*/ S.suspend(() =
 /** List of invoice items that composes the overall invoice amount. */
 export type PatchV1ContractorInvoiceSchedulesIdRequestItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const PatchV1ContractorInvoiceSchedulesIdRequestItemsList = /*@__PURE__*/ S.Array(
-  ContractorInvoiceScheduleItem,
-) as any as S.Schema<PatchV1ContractorInvoiceSchedulesIdRequestItemsList>;
+export const PatchV1ContractorInvoiceSchedulesIdRequestItemsList =
+  ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<PatchV1ContractorInvoiceSchedulesIdRequestItemsList>;
 
 export type PatchV1ContractorInvoiceSchedulesIdRequestStatus =
   | "inactive"
@@ -19064,9 +18838,8 @@ export const PatchV1ContractorInvoiceSchedulesIdRequest = /*@__PURE__*/ S.suspen
 /** List of invoice items that composes the overall invoice amount. */
 export type PatchV1ContractorInvoiceSchedulesId2RequestItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const PatchV1ContractorInvoiceSchedulesId2RequestItemsList = /*@__PURE__*/ S.Array(
-  ContractorInvoiceScheduleItem,
-) as any as S.Schema<PatchV1ContractorInvoiceSchedulesId2RequestItemsList>;
+export const PatchV1ContractorInvoiceSchedulesId2RequestItemsList =
+  ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<PatchV1ContractorInvoiceSchedulesId2RequestItemsList>;
 
 export type PatchV1ContractorInvoiceSchedulesId2RequestStatus =
   | "inactive"
@@ -19172,9 +18945,8 @@ export const PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request = /*@__P
 }) as any as S.Schema<PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request>;
 
 export type PatchV1EmployeeTimeoffIdRequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1EmployeeTimeoffIdRequestTimeoffDaysList = /*@__PURE__*/ S.Array(
-  TimeoffDaysParams,
-) as any as S.Schema<PatchV1EmployeeTimeoffIdRequestTimeoffDaysList>;
+export const PatchV1EmployeeTimeoffIdRequestTimeoffDaysList =
+  CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1EmployeeTimeoffIdRequestTimeoffDaysList>;
 
 export interface PatchV1EmployeeTimeoffIdRequest {
   /** Timeoff ID */
@@ -19206,9 +18978,8 @@ export const PatchV1EmployeeTimeoffIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchV1EmployeeTimeoffIdRequest>;
 
 export type PatchV1EmployeeTimeoffId2RequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1EmployeeTimeoffId2RequestTimeoffDaysList = /*@__PURE__*/ S.Array(
-  TimeoffDaysParams,
-) as any as S.Schema<PatchV1EmployeeTimeoffId2RequestTimeoffDaysList>;
+export const PatchV1EmployeeTimeoffId2RequestTimeoffDaysList =
+  CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1EmployeeTimeoffId2RequestTimeoffDaysList>;
 
 export interface PatchV1EmployeeTimeoffId2Request {
   /** Timeoff ID */
@@ -19865,9 +19636,8 @@ export type PatchV1TimeoffIdRequestStatus = "approved" | "cancelled";
 export const PatchV1TimeoffIdRequestStatus = S.String;
 
 export type PatchV1TimeoffIdRequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1TimeoffIdRequestTimeoffDaysList = /*@__PURE__*/ S.Array(
-  TimeoffDaysParams,
-) as any as S.Schema<PatchV1TimeoffIdRequestTimeoffDaysList>;
+export const PatchV1TimeoffIdRequestTimeoffDaysList =
+  CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1TimeoffIdRequestTimeoffDaysList>;
 
 export interface PatchV1TimeoffIdRequest {
   /** Timeoff ID */
@@ -19907,9 +19677,8 @@ export type PatchV1TimeoffId2RequestStatus = "approved" | "cancelled";
 export const PatchV1TimeoffId2RequestStatus = S.String;
 
 export type PatchV1TimeoffId2RequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1TimeoffId2RequestTimeoffDaysList = /*@__PURE__*/ S.Array(
-  TimeoffDaysParams,
-) as any as S.Schema<PatchV1TimeoffId2RequestTimeoffDaysList>;
+export const PatchV1TimeoffId2RequestTimeoffDaysList =
+  CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1TimeoffId2RequestTimeoffDaysList>;
 
 export interface PatchV1TimeoffId2Request {
   /** Timeoff ID */
@@ -20278,13 +20047,8 @@ export const PutCompanyLegalEntityAdministrativeDetailsRequest = /*@__PURE__*/ S
 export interface PutCompanyLegalEntityAdministrativeDetailsResponse {
   data: unknown;
 }
-export const PutCompanyLegalEntityAdministrativeDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "PutCompanyLegalEntityAdministrativeDetailsResponse",
-}) as any as S.Schema<PutCompanyLegalEntityAdministrativeDetailsResponse>;
+export const PutCompanyLegalEntityAdministrativeDetailsResponse =
+  GetCompanyLegalEntityAdministrativeDetailsResponse as any as S.Schema<PutCompanyLegalEntityAdministrativeDetailsResponse>;
 
 /** Use latest version */
 export type PutEmployeeAddressRequestAddressDetailsJsonSchemaVersionCase1 = "latest";
@@ -21104,15 +20868,13 @@ export const PayItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs of the company admins to assign as the project's leads, replacing the current set. These are user IDs, unlike `team_member_ids`, which are employment IDs. */
 export type UpdateProjectRequestLeadIdsList = Array<string>;
-export const UpdateProjectRequestLeadIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectRequestLeadIdsList>;
+export const UpdateProjectRequestLeadIdsList =
+  ProductFeaturesList as any as S.Schema<UpdateProjectRequestLeadIdsList>;
 
 /** Employment IDs of the contractors to assign as the project's team members, replacing the current set. These are employment IDs, unlike `lead_ids`, which are user IDs. Each must be an active contractor of the project's company. */
 export type UpdateProjectRequestTeamMemberIdsList = Array<string>;
-export const UpdateProjectRequestTeamMemberIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectRequestTeamMemberIdsList>;
+export const UpdateProjectRequestTeamMemberIdsList =
+  ProductFeaturesList as any as S.Schema<UpdateProjectRequestTeamMemberIdsList>;
 
 export interface UpdateProjectRequest {
   /** Project identifier */

@@ -124,9 +124,8 @@ export const GetActionsResponseActionsItemResourcesItem = GetActionResponseActio
 /** Resources the Action relates to. */
 export type GetActionsResponseActionsItemResourcesList =
   Array<GetActionResponseActionResourcesItem>;
-export const GetActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  GetActionResponseActionResourcesItem,
-) as any as S.Schema<GetActionsResponseActionsItemResourcesList>;
+export const GetActionsResponseActionsItemResourcesList =
+  GetActionResponseActionResourcesList as any as S.Schema<GetActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetActionsResponseActionsItemError = GetActionResponseActionError;

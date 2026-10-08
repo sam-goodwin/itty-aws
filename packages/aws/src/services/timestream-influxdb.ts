@@ -253,7 +253,7 @@ export type VpcSubnetIdList = string[];
 export const VpcSubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type VpcSecurityGroupId = string;
 export type VpcSecurityGroupIdList = string[];
-export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const VpcSecurityGroupIdList = VpcSubnetIdList as any as S.Schema<VpcSecurityGroupIdList>;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
 export const NetworkType = S.String;
 
@@ -992,35 +992,7 @@ export interface DeleteDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-export const DeleteDbBackupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    arn: S.String,
-    status: S.optional(DbBackupStatus),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    expiresAfter: S.optional(S.String),
-    dbResourceId: S.optional(S.String),
-    type: S.optional(DbBackupType),
-    engineType: S.optional(EngineType),
-    deploymentType: S.optional(ResourceDeploymentType),
-    kmsKeyId: S.optional(S.String),
-    clusterConfiguration: S.optional(ClusterConfiguration),
-    dbParameterGroupId: S.optional(S.String),
-    dbInstanceType: S.optional(DbInstanceType),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    failoverMode: S.optional(FailoverMode),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    vpcSubnetIds: S.optional(VpcSubnetIdList),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    publiclyAccessible: S.optional(S.Boolean),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-  }),
-).annotate({ identifier: "DeleteDbBackupOutput" }) as any as S.Schema<DeleteDbBackupOutput>;
+export const DeleteDbBackupOutput = CreateDbBackupOutput as any as S.Schema<DeleteDbBackupOutput>;
 export interface DeleteDbClusterInput {
   dbClusterId: string;
   retainAutomatedBackups?: boolean;
@@ -1075,37 +1047,8 @@ export interface DeleteDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const DeleteDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    nextMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    dbBackupConfigurations: S.optional(DbBackupConfigurationOutputList),
-    kmsKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteDbInstanceOutput" }) as any as S.Schema<DeleteDbInstanceOutput>;
+export const DeleteDbInstanceOutput =
+  CreateDbInstanceOutput as any as S.Schema<DeleteDbInstanceOutput>;
 export interface GetDbBackupInput {
   identifier: string;
 }
@@ -1141,35 +1084,7 @@ export interface GetDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-export const GetDbBackupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    arn: S.String,
-    status: S.optional(DbBackupStatus),
-    createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    expiresAfter: S.optional(S.String),
-    dbResourceId: S.optional(S.String),
-    type: S.optional(DbBackupType),
-    engineType: S.optional(EngineType),
-    deploymentType: S.optional(ResourceDeploymentType),
-    kmsKeyId: S.optional(S.String),
-    clusterConfiguration: S.optional(ClusterConfiguration),
-    dbParameterGroupId: S.optional(S.String),
-    dbInstanceType: S.optional(DbInstanceType),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    failoverMode: S.optional(FailoverMode),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    vpcSubnetIds: S.optional(VpcSubnetIdList),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    publiclyAccessible: S.optional(S.Boolean),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-  }),
-).annotate({ identifier: "GetDbBackupOutput" }) as any as S.Schema<GetDbBackupOutput>;
+export const GetDbBackupOutput = CreateDbBackupOutput as any as S.Schema<GetDbBackupOutput>;
 export interface GetDbClusterInput {
   dbClusterId: string;
 }
@@ -1275,37 +1190,7 @@ export interface GetDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const GetDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    nextMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    dbBackupConfigurations: S.optional(DbBackupConfigurationOutputList),
-    kmsKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetDbInstanceOutput" }) as any as S.Schema<GetDbInstanceOutput>;
+export const GetDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<GetDbInstanceOutput>;
 export interface GetDbParameterGroupInput {
   identifier: string;
 }
@@ -1321,17 +1206,8 @@ export interface GetDbParameterGroupOutput {
   description?: string;
   parameters?: Parameters;
 }
-export const GetDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    description: S.optional(S.String),
-    parameters: S.optional(Parameters),
-  }),
-).annotate({
-  identifier: "GetDbParameterGroupOutput",
-}) as any as S.Schema<GetDbParameterGroupOutput>;
+export const GetDbParameterGroupOutput =
+  CreateDbParameterGroupOutput as any as S.Schema<GetDbParameterGroupOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListDbBackupsInput {
@@ -1580,10 +1456,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ResponseTagMap = RequestTagMap as any as S.Schema<ResponseTagMap>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
@@ -1593,7 +1466,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type DbInstanceIdList = string[];
-export const DbInstanceIdList = /*@__PURE__*/ S.Array(S.String);
+export const DbInstanceIdList = VpcSubnetIdList as any as S.Schema<DbInstanceIdList>;
 export interface RebootDbClusterInput {
   dbClusterId: string;
   instanceIds?: string[];
@@ -1606,9 +1479,8 @@ export const RebootDbClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface RebootDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const RebootDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
-).annotate({ identifier: "RebootDbClusterOutput" }) as any as S.Schema<RebootDbClusterOutput>;
+export const RebootDbClusterOutput =
+  DeleteDbClusterOutput as any as S.Schema<RebootDbClusterOutput>;
 export interface RebootDbInstanceInput {
   identifier: string;
 }
@@ -1646,37 +1518,8 @@ export interface RebootDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const RebootDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    nextMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    dbBackupConfigurations: S.optional(DbBackupConfigurationOutputList),
-    kmsKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "RebootDbInstanceOutput" }) as any as S.Schema<RebootDbInstanceOutput>;
+export const RebootDbInstanceOutput =
+  CreateDbInstanceOutput as any as S.Schema<RebootDbInstanceOutput>;
 export type DbResourceName = string;
 export type RestoreMode = "NEW_RESOURCE" | "REPLACE_EXISTING" | (string & {});
 export const RestoreMode = S.String;
@@ -1755,7 +1598,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = VpcSubnetIdList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1766,9 +1609,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDbClusterInput {
   dbClusterId: string;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
@@ -1794,9 +1635,8 @@ export const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const UpdateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
-).annotate({ identifier: "UpdateDbClusterOutput" }) as any as S.Schema<UpdateDbClusterOutput>;
+export const UpdateDbClusterOutput =
+  DeleteDbClusterOutput as any as S.Schema<UpdateDbClusterOutput>;
 export interface UpdateDbInstanceInput {
   identifier: string;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
@@ -1852,37 +1692,8 @@ export interface UpdateDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const UpdateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    nextMaintenanceTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    dbBackupConfigurations: S.optional(DbBackupConfigurationOutputList),
-    kmsKeyId: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateDbInstanceOutput" }) as any as S.Schema<UpdateDbInstanceOutput>;
+export const UpdateDbInstanceOutput =
+  CreateDbInstanceOutput as any as S.Schema<UpdateDbInstanceOutput>;
 export type ValidationExceptionReason = "FIELD_VALIDATION_FAILED" | "OTHER" | (string & {});
 export const ValidationExceptionReason = S.String;
 

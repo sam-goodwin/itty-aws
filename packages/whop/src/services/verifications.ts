@@ -423,9 +423,7 @@ export const CreateVerificationResponseRequestedInformationItemSupportingDocumen
 export type CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
 export const CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<CreateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
 
 export interface CreateVerificationResponseRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */
@@ -617,9 +615,7 @@ export const GetVerificationResponseKind = S.String;
 /** Selected option values that make the follow-up prompt visible. */
 export type GetVerificationResponseRequestedInformationItemDetailsVisibleForList = Array<string>;
 export const GetVerificationResponseRequestedInformationItemDetailsVisibleForList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetVerificationResponseRequestedInformationItemDetailsVisibleForList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<GetVerificationResponseRequestedInformationItemDetailsVisibleForList>;
 
 export type GetVerificationResponseRequestedInformationItemErrorsItem =
   CreateVerificationResponseRequestedInformationItemErrorsItem;
@@ -629,15 +625,13 @@ export const GetVerificationResponseRequestedInformationItemErrorsItem =
 /** Present after a rejected submission. */
 export type GetVerificationResponseRequestedInformationItemErrorsList =
   Array<CreateVerificationResponseRequestedInformationItemErrorsItem>;
-export const GetVerificationResponseRequestedInformationItemErrorsList = /*@__PURE__*/ S.Array(
-  CreateVerificationResponseRequestedInformationItemErrorsItem,
-) as any as S.Schema<GetVerificationResponseRequestedInformationItemErrorsList>;
+export const GetVerificationResponseRequestedInformationItemErrorsList =
+  CreateVerificationResponseRequestedInformationItemErrorsList as any as S.Schema<GetVerificationResponseRequestedInformationItemErrorsList>;
 
 /** The values `value` may take on a `select` item. On an `id_document` item these are the ID types accepted, and the chosen one decides which `documents` slots to send. Absent when the item has no choice to make. */
 export type GetVerificationResponseRequestedInformationItemOptionsList = Array<string>;
-export const GetVerificationResponseRequestedInformationItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVerificationResponseRequestedInformationItemOptionsList>;
+export const GetVerificationResponseRequestedInformationItemOptionsList =
+  CreateVerificationResponseRequestedInformationItemOptionsList as any as S.Schema<GetVerificationResponseRequestedInformationItemOptionsList>;
 
 /** Optional native input format for a text response. */
 export type GetVerificationResponseRequestedInformationItemResponseType =
@@ -656,17 +650,13 @@ export const GetVerificationResponseRequestedInformationItemSelectionMode = S.St
 /** Documents supplied with the requirement for context. */
 export type GetVerificationResponseRequestedInformationItemSupportingDocumentsList = Array<File>;
 export const GetVerificationResponseRequestedInformationItemSupportingDocumentsList =
-  /*@__PURE__*/ S.Array(
-    File,
-  ) as any as S.Schema<GetVerificationResponseRequestedInformationItemSupportingDocumentsList>;
+  CreateVerificationResponseRequestedInformationItemSupportingDocumentsList as any as S.Schema<GetVerificationResponseRequestedInformationItemSupportingDocumentsList>;
 
 /** Selected option values that make the supporting-file input visible. */
 export type GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
 export const GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<GetVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
 
 export interface GetVerificationResponseRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */
@@ -872,9 +862,7 @@ export const ListVerificationsResponseDataItemKind = S.String;
 export type ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList =
   Array<string>;
 export const ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemDetailsVisibleForList>;
 
 export type ListVerificationsResponseDataItemRequestedInformationItemErrorsItem =
   CreateVerificationResponseRequestedInformationItemErrorsItem;
@@ -892,9 +880,7 @@ export const ListVerificationsResponseDataItemRequestedInformationItemErrorsList
 /** The values `value` may take on a `select` item. On an `id_document` item these are the ID types accepted, and the chosen one decides which `documents` slots to send. Absent when the item has no choice to make. */
 export type ListVerificationsResponseDataItemRequestedInformationItemOptionsList = Array<string>;
 export const ListVerificationsResponseDataItemRequestedInformationItemOptionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemOptionsList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemOptionsList>;
 
 /** Optional native input format for a text response. */
 export type ListVerificationsResponseDataItemRequestedInformationItemResponseType =
@@ -916,17 +902,13 @@ export const ListVerificationsResponseDataItemRequestedInformationItemSelectionM
 export type ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList =
   Array<File>;
 export const ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList =
-  /*@__PURE__*/ S.Array(
-    File,
-  ) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList>;
+  CreateVerificationResponseRequestedInformationItemSupportingDocumentsList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemSupportingDocumentsList>;
 
 /** Selected option values that make the supporting-file input visible. */
 export type ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
 export const ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<ListVerificationsResponseDataItemRequestedInformationItemSupportingFilesVisibleForList>;
 
 export interface ListVerificationsResponseDataItemRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */
@@ -1168,9 +1150,7 @@ export const UpdateVerificationRequestBodyCase0RequestedInformationItemDocuments
 /** Answer for a `files` item, or optional supporting documents for `text_with_files` -- a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
 export type UpdateVerificationRequestBodyCase0RequestedInformationItemFilesList = Array<string>;
 export const UpdateVerificationRequestBodyCase0RequestedInformationItemFilesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateVerificationRequestBodyCase0RequestedInformationItemFilesList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationRequestBodyCase0RequestedInformationItemFilesList>;
 
 /** Whether `value` is raw input or a vault token. */
 export type UpdateVerificationRequestBodyCase0RequestedInformationItemValueType =
@@ -1181,9 +1161,7 @@ export const UpdateVerificationRequestBodyCase0RequestedInformationItemValueType
 /** Every chosen option for a `select` item that accepts more than one answer, such as the countries an advertising certification covers. Use `value` for every other item. */
 export type UpdateVerificationRequestBodyCase0RequestedInformationItemValuesList = Array<string>;
 export const UpdateVerificationRequestBodyCase0RequestedInformationItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateVerificationRequestBodyCase0RequestedInformationItemValuesList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationRequestBodyCase0RequestedInformationItemValuesList>;
 
 export interface UpdateVerificationRequestBodyCase0RequestedInformationItem {
   /** Answer for `address` items. */
@@ -1288,9 +1266,7 @@ export const UpdateVerificationRequestBodyCase1RequestedInformationItemDocuments
 /** Answer for a `files` item, or optional supporting documents for `text_with_files` -- a list of pages, first page first. Each entry is a direct upload ID, or a `file_`-prefixed attachment ID to reuse an uploaded document. */
 export type UpdateVerificationRequestBodyCase1RequestedInformationItemFilesList = Array<string>;
 export const UpdateVerificationRequestBodyCase1RequestedInformationItemFilesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateVerificationRequestBodyCase1RequestedInformationItemFilesList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationRequestBodyCase1RequestedInformationItemFilesList>;
 
 /** Whether `value` is raw input or a vault token. */
 export type UpdateVerificationRequestBodyCase1RequestedInformationItemValueType =
@@ -1301,9 +1277,7 @@ export const UpdateVerificationRequestBodyCase1RequestedInformationItemValueType
 /** Every chosen option for a `select` item that accepts more than one answer, such as the countries an advertising certification covers. Use `value` for every other item. */
 export type UpdateVerificationRequestBodyCase1RequestedInformationItemValuesList = Array<string>;
 export const UpdateVerificationRequestBodyCase1RequestedInformationItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateVerificationRequestBodyCase1RequestedInformationItemValuesList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationRequestBodyCase1RequestedInformationItemValuesList>;
 
 export interface UpdateVerificationRequestBodyCase1RequestedInformationItem {
   /** Answer for `address` items. */
@@ -1419,9 +1393,7 @@ export const UpdateVerificationResponseKind = S.String;
 /** Selected option values that make the follow-up prompt visible. */
 export type UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList = Array<string>;
 export const UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemDetailsVisibleForList>;
 
 export type UpdateVerificationResponseRequestedInformationItemErrorsItem =
   CreateVerificationResponseRequestedInformationItemErrorsItem;
@@ -1431,15 +1403,13 @@ export const UpdateVerificationResponseRequestedInformationItemErrorsItem =
 /** Present after a rejected submission. */
 export type UpdateVerificationResponseRequestedInformationItemErrorsList =
   Array<CreateVerificationResponseRequestedInformationItemErrorsItem>;
-export const UpdateVerificationResponseRequestedInformationItemErrorsList = /*@__PURE__*/ S.Array(
-  CreateVerificationResponseRequestedInformationItemErrorsItem,
-) as any as S.Schema<UpdateVerificationResponseRequestedInformationItemErrorsList>;
+export const UpdateVerificationResponseRequestedInformationItemErrorsList =
+  CreateVerificationResponseRequestedInformationItemErrorsList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemErrorsList>;
 
 /** The values `value` may take on a `select` item. On an `id_document` item these are the ID types accepted, and the chosen one decides which `documents` slots to send. Absent when the item has no choice to make. */
 export type UpdateVerificationResponseRequestedInformationItemOptionsList = Array<string>;
-export const UpdateVerificationResponseRequestedInformationItemOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVerificationResponseRequestedInformationItemOptionsList>;
+export const UpdateVerificationResponseRequestedInformationItemOptionsList =
+  CreateVerificationResponseRequestedInformationItemOptionsList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemOptionsList>;
 
 /** Optional native input format for a text response. */
 export type UpdateVerificationResponseRequestedInformationItemResponseType =
@@ -1458,17 +1428,13 @@ export const UpdateVerificationResponseRequestedInformationItemSelectionMode = S
 /** Documents supplied with the requirement for context. */
 export type UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList = Array<File>;
 export const UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList =
-  /*@__PURE__*/ S.Array(
-    File,
-  ) as any as S.Schema<UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList>;
+  CreateVerificationResponseRequestedInformationItemSupportingDocumentsList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemSupportingDocumentsList>;
 
 /** Selected option values that make the supporting-file input visible. */
 export type UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
   Array<string>;
 export const UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
+  CreateVerificationResponseRequestedInformationItemDetailsVisibleForList as any as S.Schema<UpdateVerificationResponseRequestedInformationItemSupportingFilesVisibleForList>;
 
 export interface UpdateVerificationResponseRequestedInformationItem {
   /** URL for a related action, such as completing liveness verification or viewing a payment. Absent when no action is available. */

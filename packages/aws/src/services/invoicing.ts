@@ -220,7 +220,7 @@ export type InvoiceUnitName = string;
 export type DescriptionString = string;
 export type TaxInheritanceDisabledFlag = boolean;
 export type RuleAccountIdList = string[];
-export const RuleAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const RuleAccountIdList = AccountIdList as any as S.Schema<RuleAccountIdList>;
 export interface InvoiceUnitRule {
   LinkedAccounts?: string[];
   BillSourceAccounts?: string[];
@@ -281,9 +281,9 @@ export type SupplierDomain = "NetworkID" | (string & {});
 export const SupplierDomain = S.String;
 
 export type InvoiceUnitArns = string[];
-export const InvoiceUnitArns = /*@__PURE__*/ S.Array(S.String);
+export const InvoiceUnitArns = AccountIdList as any as S.Schema<InvoiceUnitArns>;
 export type SellerOfRecords = string[];
-export const SellerOfRecords = /*@__PURE__*/ S.Array(S.String);
+export const SellerOfRecords = AccountIdList as any as S.Schema<SellerOfRecords>;
 export interface ProcurementPortalPreferenceSelector {
   InvoiceUnitArns?: string[];
   SellerOfRecords?: string[];
@@ -461,11 +461,8 @@ export const DeleteInvoiceUnitRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInvoiceUnitResponse {
   InvoiceUnitArn?: string;
 }
-export const DeleteInvoiceUnitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InvoiceUnitArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteInvoiceUnitResponse",
-}) as any as S.Schema<DeleteInvoiceUnitResponse>;
+export const DeleteInvoiceUnitResponse =
+  CreateInvoiceUnitResponse as any as S.Schema<DeleteInvoiceUnitResponse>;
 export interface DeleteProcurementPortalPreferenceRequest {
   ProcurementPortalPreferenceArn: string;
   ClientToken?: string;
@@ -481,11 +478,8 @@ export const DeleteProcurementPortalPreferenceRequest = /*@__PURE__*/ S.suspend(
 export interface DeleteProcurementPortalPreferenceResponse {
   ProcurementPortalPreferenceArn: string;
 }
-export const DeleteProcurementPortalPreferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProcurementPortalPreferenceArn: S.String }),
-).annotate({
-  identifier: "DeleteProcurementPortalPreferenceResponse",
-}) as any as S.Schema<DeleteProcurementPortalPreferenceResponse>;
+export const DeleteProcurementPortalPreferenceResponse =
+  CreateProcurementPortalPreferenceResponse as any as S.Schema<DeleteProcurementPortalPreferenceResponse>;
 export type StringWithoutNewLine = string;
 export interface GetInvoicePDFRequest {
   InvoiceId: string;
@@ -743,7 +737,7 @@ export const ListInvoiceSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvoiceSummariesRequest",
 }) as any as S.Schema<ListInvoiceSummariesRequest>;
 export type BillSourceAccountList = string[];
-export const BillSourceAccountList = /*@__PURE__*/ S.Array(S.String);
+export const BillSourceAccountList = AccountIdList as any as S.Schema<BillSourceAccountList>;
 export type BillingEntity = "AWS" | "AWS_MARKETPLACE" | (string & {});
 export const BillingEntity = S.String;
 
@@ -799,15 +793,11 @@ export interface TaxesBreakdownAmount {
   Amount?: string;
   Rate?: string;
 }
-export const TaxesBreakdownAmount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    Amount: S.optional(S.String),
-    Rate: S.optional(S.String),
-  }),
-).annotate({ identifier: "TaxesBreakdownAmount" }) as any as S.Schema<TaxesBreakdownAmount>;
+export const TaxesBreakdownAmount =
+  DiscountsBreakdownAmount as any as S.Schema<TaxesBreakdownAmount>;
 export type TaxesBreakdownAmountList = TaxesBreakdownAmount[];
-export const TaxesBreakdownAmountList = /*@__PURE__*/ S.Array(TaxesBreakdownAmount);
+export const TaxesBreakdownAmountList =
+  DiscountsBreakdownAmountList as any as S.Schema<TaxesBreakdownAmountList>;
 export interface TaxesBreakdown {
   Breakdown?: TaxesBreakdownAmount[];
   TotalAmount?: string;
@@ -820,22 +810,15 @@ export interface FeesBreakdownAmount {
   Amount?: string;
   Rate?: string;
 }
-export const FeesBreakdownAmount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    Amount: S.optional(S.String),
-    Rate: S.optional(S.String),
-  }),
-).annotate({ identifier: "FeesBreakdownAmount" }) as any as S.Schema<FeesBreakdownAmount>;
+export const FeesBreakdownAmount = DiscountsBreakdownAmount as any as S.Schema<FeesBreakdownAmount>;
 export type FeesBreakdownAmountList = FeesBreakdownAmount[];
-export const FeesBreakdownAmountList = /*@__PURE__*/ S.Array(FeesBreakdownAmount);
+export const FeesBreakdownAmountList =
+  DiscountsBreakdownAmountList as any as S.Schema<FeesBreakdownAmountList>;
 export interface FeesBreakdown {
   Breakdown?: FeesBreakdownAmount[];
   TotalAmount?: string;
 }
-export const FeesBreakdown = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Breakdown: S.optional(FeesBreakdownAmountList), TotalAmount: S.optional(S.String) }),
-).annotate({ identifier: "FeesBreakdown" }) as any as S.Schema<FeesBreakdown>;
+export const FeesBreakdown = TaxesBreakdown as any as S.Schema<FeesBreakdown>;
 export interface AmountBreakdown {
   SubTotalAmount?: string;
   Discounts?: DiscountsBreakdown;
@@ -936,7 +919,7 @@ export const ListInvoiceSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvoiceSummariesResponse",
 }) as any as S.Schema<ListInvoiceSummariesResponse>;
 export type InvoiceUnitNames = string[];
-export const InvoiceUnitNames = /*@__PURE__*/ S.Array(S.String);
+export const InvoiceUnitNames = AccountIdList as any as S.Schema<InvoiceUnitNames>;
 export interface Filters {
   Names?: string[];
   InvoiceReceivers?: string[];
@@ -975,17 +958,7 @@ export interface InvoiceUnit {
   Rule?: InvoiceUnitRule;
   LastModified?: Date;
 }
-export const InvoiceUnit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InvoiceUnitArn: S.optional(S.String),
-    InvoiceReceiver: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    TaxInheritanceDisabled: S.optional(S.Boolean),
-    Rule: S.optional(InvoiceUnitRule),
-    LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "InvoiceUnit" }) as any as S.Schema<InvoiceUnit>;
+export const InvoiceUnit = GetInvoiceUnitResponse as any as S.Schema<InvoiceUnit>;
 export type InvoiceUnits = InvoiceUnit[];
 export const InvoiceUnits = /*@__PURE__*/ S.Array(InvoiceUnit);
 export interface ListInvoiceUnitsResponse {
@@ -1223,11 +1196,8 @@ export const PutProcurementPortalPreferenceRequest = /*@__PURE__*/ S.suspend(() 
 export interface PutProcurementPortalPreferenceResponse {
   ProcurementPortalPreferenceArn: string;
 }
-export const PutProcurementPortalPreferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProcurementPortalPreferenceArn: S.String }),
-).annotate({
-  identifier: "PutProcurementPortalPreferenceResponse",
-}) as any as S.Schema<PutProcurementPortalPreferenceResponse>;
+export const PutProcurementPortalPreferenceResponse =
+  CreateProcurementPortalPreferenceResponse as any as S.Schema<PutProcurementPortalPreferenceResponse>;
 export interface SendProcurementPortalValidationRequest {
   ProcurementPortalPreferenceArn: string;
   ClientToken?: string;
@@ -1243,11 +1213,8 @@ export const SendProcurementPortalValidationRequest = /*@__PURE__*/ S.suspend(()
 export interface SendProcurementPortalValidationResponse {
   ProcurementPortalPreferenceArn: string;
 }
-export const SendProcurementPortalValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProcurementPortalPreferenceArn: S.String }),
-).annotate({
-  identifier: "SendProcurementPortalValidationResponse",
-}) as any as S.Schema<SendProcurementPortalValidationResponse>;
+export const SendProcurementPortalValidationResponse =
+  CreateProcurementPortalPreferenceResponse as any as S.Schema<SendProcurementPortalValidationResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   ResourceTags: ResourceTag[];
@@ -1262,7 +1229,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
-export const ResourceTagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTagKeyList = AccountIdList as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   ResourceTagKeys: string[];
@@ -1273,9 +1240,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateInvoiceUnitRequest {
   InvoiceUnitArn: string;
   Description?: string;
@@ -1295,11 +1260,8 @@ export const UpdateInvoiceUnitRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInvoiceUnitResponse {
   InvoiceUnitArn?: string;
 }
-export const UpdateInvoiceUnitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InvoiceUnitArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateInvoiceUnitResponse",
-}) as any as S.Schema<UpdateInvoiceUnitResponse>;
+export const UpdateInvoiceUnitResponse =
+  CreateInvoiceUnitResponse as any as S.Schema<UpdateInvoiceUnitResponse>;
 export interface UpdateProcurementPortalPreferenceStatusRequest {
   ProcurementPortalPreferenceArn: string;
   EinvoiceDeliveryPreferenceStatus?: ProcurementPortalPreferenceStatus;
@@ -1323,11 +1285,8 @@ export const UpdateProcurementPortalPreferenceStatusRequest = /*@__PURE__*/ S.su
 export interface UpdateProcurementPortalPreferenceStatusResponse {
   ProcurementPortalPreferenceArn: string;
 }
-export const UpdateProcurementPortalPreferenceStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProcurementPortalPreferenceArn: S.String }),
-).annotate({
-  identifier: "UpdateProcurementPortalPreferenceStatusResponse",
-}) as any as S.Schema<UpdateProcurementPortalPreferenceStatusResponse>;
+export const UpdateProcurementPortalPreferenceStatusResponse =
+  CreateProcurementPortalPreferenceResponse as any as S.Schema<UpdateProcurementPortalPreferenceStatusResponse>;
 export interface VerifyProcurementPortalValidationRequest {
   ProcurementPortalPreferenceArn: string;
   Code: string;
@@ -1345,11 +1304,8 @@ export const VerifyProcurementPortalValidationRequest = /*@__PURE__*/ S.suspend(
 export interface VerifyProcurementPortalValidationResponse {
   ProcurementPortalPreferenceArn: string;
 }
-export const VerifyProcurementPortalValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProcurementPortalPreferenceArn: S.String }),
-).annotate({
-  identifier: "VerifyProcurementPortalValidationResponse",
-}) as any as S.Schema<VerifyProcurementPortalValidationResponse>;
+export const VerifyProcurementPortalValidationResponse =
+  CreateProcurementPortalPreferenceResponse as any as S.Schema<VerifyProcurementPortalValidationResponse>;
 export type ValidationExceptionReason =
   | "nonMemberPresent"
   | "maxAccountsExceeded"

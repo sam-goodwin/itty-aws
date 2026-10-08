@@ -221,11 +221,8 @@ export const AssociateWirelessDeviceWithFuotaTaskRequest = /*@__PURE__*/ S.suspe
   identifier: "AssociateWirelessDeviceWithFuotaTaskRequest",
 }) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskRequest>;
 export interface AssociateWirelessDeviceWithFuotaTaskResponse {}
-export const AssociateWirelessDeviceWithFuotaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateWirelessDeviceWithFuotaTaskResponse",
-}) as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskResponse>;
+export const AssociateWirelessDeviceWithFuotaTaskResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessDeviceWithFuotaTaskResponse>;
 export interface AssociateWirelessDeviceWithMulticastGroupRequest {
   Id: string;
   WirelessDeviceId: string;
@@ -245,11 +242,8 @@ export const AssociateWirelessDeviceWithMulticastGroupRequest = /*@__PURE__*/ S.
   identifier: "AssociateWirelessDeviceWithMulticastGroupRequest",
 }) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupRequest>;
 export interface AssociateWirelessDeviceWithMulticastGroupResponse {}
-export const AssociateWirelessDeviceWithMulticastGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateWirelessDeviceWithMulticastGroupResponse",
-}) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupResponse>;
+export const AssociateWirelessDeviceWithMulticastGroupResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupResponse>;
 export type ThingArn = string;
 export interface AssociateWirelessDeviceWithThingRequest {
   Id: string;
@@ -270,11 +264,8 @@ export const AssociateWirelessDeviceWithThingRequest = /*@__PURE__*/ S.suspend((
   identifier: "AssociateWirelessDeviceWithThingRequest",
 }) as any as S.Schema<AssociateWirelessDeviceWithThingRequest>;
 export interface AssociateWirelessDeviceWithThingResponse {}
-export const AssociateWirelessDeviceWithThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateWirelessDeviceWithThingResponse",
-}) as any as S.Schema<AssociateWirelessDeviceWithThingResponse>;
+export const AssociateWirelessDeviceWithThingResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessDeviceWithThingResponse>;
 export type WirelessGatewayId = string;
 export type IotCertificateId = string;
 export interface AssociateWirelessGatewayWithCertificateRequest {
@@ -322,11 +313,8 @@ export const AssociateWirelessGatewayWithThingRequest = /*@__PURE__*/ S.suspend(
   identifier: "AssociateWirelessGatewayWithThingRequest",
 }) as any as S.Schema<AssociateWirelessGatewayWithThingRequest>;
 export interface AssociateWirelessGatewayWithThingResponse {}
-export const AssociateWirelessGatewayWithThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateWirelessGatewayWithThingResponse",
-}) as any as S.Schema<AssociateWirelessGatewayWithThingResponse>;
+export const AssociateWirelessGatewayWithThingResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<AssociateWirelessGatewayWithThingResponse>;
 export interface CancelMulticastGroupSessionRequest {
   Id: string;
 }
@@ -345,11 +333,8 @@ export const CancelMulticastGroupSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelMulticastGroupSessionRequest",
 }) as any as S.Schema<CancelMulticastGroupSessionRequest>;
 export interface CancelMulticastGroupSessionResponse {}
-export const CancelMulticastGroupSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelMulticastGroupSessionResponse",
-}) as any as S.Schema<CancelMulticastGroupSessionResponse>;
+export const CancelMulticastGroupSessionResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<CancelMulticastGroupSessionResponse>;
 export type DestinationName = string;
 export type ExpressionType = "RuleName" | "MqttTopic" | (string & {});
 export const ExpressionType = S.String;
@@ -621,11 +606,8 @@ export interface CreateMulticastGroupResponse {
   Arn?: string;
   Id?: string;
 }
-export const CreateMulticastGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateMulticastGroupResponse",
-}) as any as S.Schema<CreateMulticastGroupResponse>;
+export const CreateMulticastGroupResponse =
+  CreateDeviceProfileResponse as any as S.Schema<CreateMulticastGroupResponse>;
 export type NetworkAnalyzerConfigurationName = string;
 export type WirelessDeviceFrameInfo = "ENABLED" | "DISABLED" | (string & {});
 export const WirelessDeviceFrameInfo = S.String;
@@ -649,11 +631,12 @@ export const TraceContent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraceContent" }) as any as S.Schema<TraceContent>;
 export type WirelessDeviceList = string[];
-export const WirelessDeviceList = /*@__PURE__*/ S.Array(S.String);
+export const WirelessDeviceList = GatewayListMulticast as any as S.Schema<WirelessDeviceList>;
 export type WirelessGatewayList = string[];
-export const WirelessGatewayList = /*@__PURE__*/ S.Array(S.String);
+export const WirelessGatewayList = GatewayListMulticast as any as S.Schema<WirelessGatewayList>;
 export type NetworkAnalyzerMulticastGroupList = string[];
-export const NetworkAnalyzerMulticastGroupList = /*@__PURE__*/ S.Array(S.String);
+export const NetworkAnalyzerMulticastGroupList =
+  GatewayListMulticast as any as S.Schema<NetworkAnalyzerMulticastGroupList>;
 export interface CreateNetworkAnalyzerConfigurationRequest {
   Name: string;
   TraceContent?: TraceContent;
@@ -692,11 +675,8 @@ export interface CreateNetworkAnalyzerConfigurationResponse {
   Arn?: string;
   Name?: string;
 }
-export const CreateNetworkAnalyzerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateNetworkAnalyzerConfigurationResponse",
-}) as any as S.Schema<CreateNetworkAnalyzerConfigurationResponse>;
+export const CreateNetworkAnalyzerConfigurationResponse =
+  CreateDestinationResponse as any as S.Schema<CreateNetworkAnalyzerConfigurationResponse>;
 export type ServiceProfileName = string;
 export type AddGwMetadata = boolean;
 export type DrMinBox = number;
@@ -755,11 +735,8 @@ export interface CreateServiceProfileResponse {
   Arn?: string;
   Id?: string;
 }
-export const CreateServiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateServiceProfileResponse",
-}) as any as S.Schema<CreateServiceProfileResponse>;
+export const CreateServiceProfileResponse =
+  CreateDeviceProfileResponse as any as S.Schema<CreateServiceProfileResponse>;
 export type WirelessDeviceType = "Sidewalk" | "LoRaWAN" | (string & {});
 export const WirelessDeviceType = S.String;
 
@@ -973,27 +950,24 @@ export interface CreateWirelessDeviceResponse {
   Arn?: string;
   Id?: string;
 }
-export const CreateWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateWirelessDeviceResponse",
-}) as any as S.Schema<CreateWirelessDeviceResponse>;
+export const CreateWirelessDeviceResponse =
+  CreateDeviceProfileResponse as any as S.Schema<CreateWirelessDeviceResponse>;
 export type WirelessGatewayName = string;
 export type GatewayEui = string;
 export type JoinEuiRange = string[];
-export const JoinEuiRange = /*@__PURE__*/ S.Array(S.String);
+export const JoinEuiRange = GatewayListMulticast as any as S.Schema<JoinEuiRange>;
 export type JoinEuiFilters = string[][];
 export const JoinEuiFilters = /*@__PURE__*/ S.Array(JoinEuiRange);
 export type NetId = string;
 export type NetIdFilters = string[];
-export const NetIdFilters = /*@__PURE__*/ S.Array(S.String);
+export const NetIdFilters = GatewayListMulticast as any as S.Schema<NetIdFilters>;
 export type SubBand = number;
 export type SubBands = number[];
-export const SubBands = /*@__PURE__*/ S.Array(S.Number);
+export const SubBands = FactoryPresetFreqsList as any as S.Schema<SubBands>;
 export type BeaconingDataRate = number;
 export type BeaconingFrequency = number;
 export type BeaconingFrequencies = number[];
-export const BeaconingFrequencies = /*@__PURE__*/ S.Array(S.Number);
+export const BeaconingFrequencies = FactoryPresetFreqsList as any as S.Schema<BeaconingFrequencies>;
 export interface Beaconing {
   DataRate?: number;
   Frequencies?: number[];
@@ -1047,11 +1021,8 @@ export interface CreateWirelessGatewayResponse {
   Arn?: string;
   Id?: string;
 }
-export const CreateWirelessGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateWirelessGatewayResponse",
-}) as any as S.Schema<CreateWirelessGatewayResponse>;
+export const CreateWirelessGatewayResponse =
+  CreateDeviceProfileResponse as any as S.Schema<CreateWirelessGatewayResponse>;
 export type WirelessGatewayTaskDefinitionId = string;
 export interface CreateWirelessGatewayTaskRequest {
   Id: string;
@@ -1192,9 +1163,8 @@ export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDestinationRequest" }) as any as S.Schema<DeleteDestinationRequest>;
 export interface DeleteDestinationResponse {}
-export const DeleteDestinationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDestinationResponse",
-}) as any as S.Schema<DeleteDestinationResponse>;
+export const DeleteDestinationResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteDestinationResponse>;
 export interface DeleteDeviceProfileRequest {
   Id: string;
 }
@@ -1206,9 +1176,8 @@ export const DeleteDeviceProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDeviceProfileRequest",
 }) as any as S.Schema<DeleteDeviceProfileRequest>;
 export interface DeleteDeviceProfileResponse {}
-export const DeleteDeviceProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeviceProfileResponse",
-}) as any as S.Schema<DeleteDeviceProfileResponse>;
+export const DeleteDeviceProfileResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteDeviceProfileResponse>;
 export interface DeleteFuotaTaskRequest {
   Id: string;
 }
@@ -1218,9 +1187,8 @@ export const DeleteFuotaTaskRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFuotaTaskRequest" }) as any as S.Schema<DeleteFuotaTaskRequest>;
 export interface DeleteFuotaTaskResponse {}
-export const DeleteFuotaTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFuotaTaskResponse",
-}) as any as S.Schema<DeleteFuotaTaskResponse>;
+export const DeleteFuotaTaskResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteFuotaTaskResponse>;
 export interface DeleteMulticastGroupRequest {
   Id: string;
 }
@@ -1239,9 +1207,8 @@ export const DeleteMulticastGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMulticastGroupRequest",
 }) as any as S.Schema<DeleteMulticastGroupRequest>;
 export interface DeleteMulticastGroupResponse {}
-export const DeleteMulticastGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMulticastGroupResponse",
-}) as any as S.Schema<DeleteMulticastGroupResponse>;
+export const DeleteMulticastGroupResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteMulticastGroupResponse>;
 export interface DeleteNetworkAnalyzerConfigurationRequest {
   ConfigurationName: string;
 }
@@ -1260,11 +1227,8 @@ export const DeleteNetworkAnalyzerConfigurationRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteNetworkAnalyzerConfigurationRequest",
 }) as any as S.Schema<DeleteNetworkAnalyzerConfigurationRequest>;
 export interface DeleteNetworkAnalyzerConfigurationResponse {}
-export const DeleteNetworkAnalyzerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNetworkAnalyzerConfigurationResponse",
-}) as any as S.Schema<DeleteNetworkAnalyzerConfigurationResponse>;
+export const DeleteNetworkAnalyzerConfigurationResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteNetworkAnalyzerConfigurationResponse>;
 export type MessageId = string;
 export interface DeleteQueuedMessagesRequest {
   Id: string;
@@ -1290,9 +1254,8 @@ export const DeleteQueuedMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteQueuedMessagesRequest",
 }) as any as S.Schema<DeleteQueuedMessagesRequest>;
 export interface DeleteQueuedMessagesResponse {}
-export const DeleteQueuedMessagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQueuedMessagesResponse",
-}) as any as S.Schema<DeleteQueuedMessagesResponse>;
+export const DeleteQueuedMessagesResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteQueuedMessagesResponse>;
 export interface DeleteServiceProfileRequest {
   Id: string;
 }
@@ -1311,9 +1274,8 @@ export const DeleteServiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteServiceProfileRequest",
 }) as any as S.Schema<DeleteServiceProfileRequest>;
 export interface DeleteServiceProfileResponse {}
-export const DeleteServiceProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceProfileResponse",
-}) as any as S.Schema<DeleteServiceProfileResponse>;
+export const DeleteServiceProfileResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteServiceProfileResponse>;
 export interface DeleteWirelessDeviceRequest {
   Id: string;
 }
@@ -1332,9 +1294,8 @@ export const DeleteWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWirelessDeviceRequest",
 }) as any as S.Schema<DeleteWirelessDeviceRequest>;
 export interface DeleteWirelessDeviceResponse {}
-export const DeleteWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWirelessDeviceResponse",
-}) as any as S.Schema<DeleteWirelessDeviceResponse>;
+export const DeleteWirelessDeviceResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteWirelessDeviceResponse>;
 export type ImportTaskId = string;
 export interface DeleteWirelessDeviceImportTaskRequest {
   Id: string;
@@ -1354,11 +1315,8 @@ export const DeleteWirelessDeviceImportTaskRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteWirelessDeviceImportTaskRequest",
 }) as any as S.Schema<DeleteWirelessDeviceImportTaskRequest>;
 export interface DeleteWirelessDeviceImportTaskResponse {}
-export const DeleteWirelessDeviceImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWirelessDeviceImportTaskResponse",
-}) as any as S.Schema<DeleteWirelessDeviceImportTaskResponse>;
+export const DeleteWirelessDeviceImportTaskResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteWirelessDeviceImportTaskResponse>;
 export interface DeleteWirelessGatewayRequest {
   Id: string;
 }
@@ -1377,9 +1335,8 @@ export const DeleteWirelessGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWirelessGatewayRequest",
 }) as any as S.Schema<DeleteWirelessGatewayRequest>;
 export interface DeleteWirelessGatewayResponse {}
-export const DeleteWirelessGatewayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWirelessGatewayResponse",
-}) as any as S.Schema<DeleteWirelessGatewayResponse>;
+export const DeleteWirelessGatewayResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<DeleteWirelessGatewayResponse>;
 export interface DeleteWirelessGatewayTaskRequest {
   Id: string;
 }
@@ -1398,11 +1355,8 @@ export const DeleteWirelessGatewayTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWirelessGatewayTaskRequest",
 }) as any as S.Schema<DeleteWirelessGatewayTaskRequest>;
 export interface DeleteWirelessGatewayTaskResponse {}
-export const DeleteWirelessGatewayTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWirelessGatewayTaskResponse",
-}) as any as S.Schema<DeleteWirelessGatewayTaskResponse>;
+export const DeleteWirelessGatewayTaskResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteWirelessGatewayTaskResponse>;
 export interface DeleteWirelessGatewayTaskDefinitionRequest {
   Id: string;
 }
@@ -1421,11 +1375,8 @@ export const DeleteWirelessGatewayTaskDefinitionRequest = /*@__PURE__*/ S.suspen
   identifier: "DeleteWirelessGatewayTaskDefinitionRequest",
 }) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionRequest>;
 export interface DeleteWirelessGatewayTaskDefinitionResponse {}
-export const DeleteWirelessGatewayTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWirelessGatewayTaskDefinitionResponse",
-}) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionResponse>;
+export const DeleteWirelessGatewayTaskDefinitionResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeleteWirelessGatewayTaskDefinitionResponse>;
 export type Identifier = string;
 export interface DeregisterWirelessDeviceRequest {
   Identifier: string;
@@ -1449,11 +1400,8 @@ export const DeregisterWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterWirelessDeviceRequest",
 }) as any as S.Schema<DeregisterWirelessDeviceRequest>;
 export interface DeregisterWirelessDeviceResponse {}
-export const DeregisterWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeregisterWirelessDeviceResponse",
-}) as any as S.Schema<DeregisterWirelessDeviceResponse>;
+export const DeregisterWirelessDeviceResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DeregisterWirelessDeviceResponse>;
 export type PartnerAccountId = string;
 export type PartnerType = "Sidewalk" | (string & {});
 export const PartnerType = S.String;
@@ -1480,11 +1428,8 @@ export const DisassociateAwsAccountFromPartnerAccountRequest = /*@__PURE__*/ S.s
   identifier: "DisassociateAwsAccountFromPartnerAccountRequest",
 }) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountRequest>;
 export interface DisassociateAwsAccountFromPartnerAccountResponse {}
-export const DisassociateAwsAccountFromPartnerAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateAwsAccountFromPartnerAccountResponse",
-}) as any as S.Schema<DisassociateAwsAccountFromPartnerAccountResponse>;
+export const DisassociateAwsAccountFromPartnerAccountResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateAwsAccountFromPartnerAccountResponse>;
 export interface DisassociateMulticastGroupFromFuotaTaskRequest {
   Id: string;
   MulticastGroupId: string;
@@ -1507,11 +1452,8 @@ export const DisassociateMulticastGroupFromFuotaTaskRequest = /*@__PURE__*/ S.su
   identifier: "DisassociateMulticastGroupFromFuotaTaskRequest",
 }) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskRequest>;
 export interface DisassociateMulticastGroupFromFuotaTaskResponse {}
-export const DisassociateMulticastGroupFromFuotaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateMulticastGroupFromFuotaTaskResponse",
-}) as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskResponse>;
+export const DisassociateMulticastGroupFromFuotaTaskResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateMulticastGroupFromFuotaTaskResponse>;
 export interface DisassociateWirelessDeviceFromFuotaTaskRequest {
   Id: string;
   WirelessDeviceId: string;
@@ -1534,11 +1476,8 @@ export const DisassociateWirelessDeviceFromFuotaTaskRequest = /*@__PURE__*/ S.su
   identifier: "DisassociateWirelessDeviceFromFuotaTaskRequest",
 }) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskRequest>;
 export interface DisassociateWirelessDeviceFromFuotaTaskResponse {}
-export const DisassociateWirelessDeviceFromFuotaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateWirelessDeviceFromFuotaTaskResponse",
-}) as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskResponse>;
+export const DisassociateWirelessDeviceFromFuotaTaskResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessDeviceFromFuotaTaskResponse>;
 export interface DisassociateWirelessDeviceFromMulticastGroupRequest {
   Id: string;
   WirelessDeviceId: string;
@@ -1564,11 +1503,8 @@ export const DisassociateWirelessDeviceFromMulticastGroupRequest = /*@__PURE__*/
   identifier: "DisassociateWirelessDeviceFromMulticastGroupRequest",
 }) as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupRequest>;
 export interface DisassociateWirelessDeviceFromMulticastGroupResponse {}
-export const DisassociateWirelessDeviceFromMulticastGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateWirelessDeviceFromMulticastGroupResponse",
-}) as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupResponse>;
+export const DisassociateWirelessDeviceFromMulticastGroupResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessDeviceFromMulticastGroupResponse>;
 export interface DisassociateWirelessDeviceFromThingRequest {
   Id: string;
 }
@@ -1587,11 +1523,8 @@ export const DisassociateWirelessDeviceFromThingRequest = /*@__PURE__*/ S.suspen
   identifier: "DisassociateWirelessDeviceFromThingRequest",
 }) as any as S.Schema<DisassociateWirelessDeviceFromThingRequest>;
 export interface DisassociateWirelessDeviceFromThingResponse {}
-export const DisassociateWirelessDeviceFromThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateWirelessDeviceFromThingResponse",
-}) as any as S.Schema<DisassociateWirelessDeviceFromThingResponse>;
+export const DisassociateWirelessDeviceFromThingResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessDeviceFromThingResponse>;
 export interface DisassociateWirelessGatewayFromCertificateRequest {
   Id: string;
 }
@@ -1610,11 +1543,8 @@ export const DisassociateWirelessGatewayFromCertificateRequest = /*@__PURE__*/ S
   identifier: "DisassociateWirelessGatewayFromCertificateRequest",
 }) as any as S.Schema<DisassociateWirelessGatewayFromCertificateRequest>;
 export interface DisassociateWirelessGatewayFromCertificateResponse {}
-export const DisassociateWirelessGatewayFromCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateWirelessGatewayFromCertificateResponse",
-}) as any as S.Schema<DisassociateWirelessGatewayFromCertificateResponse>;
+export const DisassociateWirelessGatewayFromCertificateResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessGatewayFromCertificateResponse>;
 export interface DisassociateWirelessGatewayFromThingRequest {
   Id: string;
 }
@@ -1633,11 +1563,8 @@ export const DisassociateWirelessGatewayFromThingRequest = /*@__PURE__*/ S.suspe
   identifier: "DisassociateWirelessGatewayFromThingRequest",
 }) as any as S.Schema<DisassociateWirelessGatewayFromThingRequest>;
 export interface DisassociateWirelessGatewayFromThingResponse {}
-export const DisassociateWirelessGatewayFromThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateWirelessGatewayFromThingResponse",
-}) as any as S.Schema<DisassociateWirelessGatewayFromThingResponse>;
+export const DisassociateWirelessGatewayFromThingResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<DisassociateWirelessGatewayFromThingResponse>;
 export interface GetDestinationRequest {
   Name: string;
 }
@@ -1762,19 +1689,13 @@ export const DeviceRegistrationStateResourceTypeEventConfiguration = /*@__PURE__
 export interface ProximityResourceTypeEventConfiguration {
   Sidewalk?: SidewalkResourceTypeEventConfiguration;
 }
-export const ProximityResourceTypeEventConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Sidewalk: S.optional(SidewalkResourceTypeEventConfiguration) }),
-).annotate({
-  identifier: "ProximityResourceTypeEventConfiguration",
-}) as any as S.Schema<ProximityResourceTypeEventConfiguration>;
+export const ProximityResourceTypeEventConfiguration =
+  DeviceRegistrationStateResourceTypeEventConfiguration as any as S.Schema<ProximityResourceTypeEventConfiguration>;
 export interface LoRaWANJoinResourceTypeEventConfiguration {
   WirelessDeviceEventTopic?: EventNotificationTopicStatus;
 }
-export const LoRaWANJoinResourceTypeEventConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WirelessDeviceEventTopic: S.optional(EventNotificationTopicStatus) }),
-).annotate({
-  identifier: "LoRaWANJoinResourceTypeEventConfiguration",
-}) as any as S.Schema<LoRaWANJoinResourceTypeEventConfiguration>;
+export const LoRaWANJoinResourceTypeEventConfiguration =
+  SidewalkResourceTypeEventConfiguration as any as S.Schema<LoRaWANJoinResourceTypeEventConfiguration>;
 export interface JoinResourceTypeEventConfiguration {
   LoRaWAN?: LoRaWANJoinResourceTypeEventConfiguration;
 }
@@ -1802,11 +1723,8 @@ export const ConnectionStatusResourceTypeEventConfiguration = /*@__PURE__*/ S.su
 export interface MessageDeliveryStatusResourceTypeEventConfiguration {
   Sidewalk?: SidewalkResourceTypeEventConfiguration;
 }
-export const MessageDeliveryStatusResourceTypeEventConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Sidewalk: S.optional(SidewalkResourceTypeEventConfiguration) }),
-).annotate({
-  identifier: "MessageDeliveryStatusResourceTypeEventConfiguration",
-}) as any as S.Schema<MessageDeliveryStatusResourceTypeEventConfiguration>;
+export const MessageDeliveryStatusResourceTypeEventConfiguration =
+  DeviceRegistrationStateResourceTypeEventConfiguration as any as S.Schema<MessageDeliveryStatusResourceTypeEventConfiguration>;
 export interface GetEventConfigurationByResourceTypesResponse {
   DeviceRegistrationState?: DeviceRegistrationStateResourceTypeEventConfiguration;
   Proximity?: ProximityResourceTypeEventConfiguration;
@@ -2393,7 +2311,7 @@ export const GetPositionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPositionRequest" }) as any as S.Schema<GetPositionRequest>;
 export type PositionCoordinateValue = number;
 export type PositionCoordinate = number[];
-export const PositionCoordinate = /*@__PURE__*/ S.Array(S.Number);
+export const PositionCoordinate = FactoryPresetFreqsList as any as S.Schema<PositionCoordinate>;
 export type HorizontalAccuracy = number;
 export type VerticalAccuracy = number;
 export interface Accuracy {
@@ -2813,7 +2731,7 @@ export type GPST = number;
 export type CaptureTimeAccuracy = number;
 export type Coordinate = number;
 export type AssistPosition = number[];
-export const AssistPosition = /*@__PURE__*/ S.Array(S.Number);
+export const AssistPosition = FactoryPresetFreqsList as any as S.Schema<AssistPosition>;
 export type Use2DSolver = boolean;
 export interface Gnss {
   Payload: string;
@@ -2963,14 +2881,8 @@ export interface ProximityEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
   WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
 }
-export const ProximityEventConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Sidewalk: S.optional(SidewalkEventNotificationConfigurations),
-    WirelessDeviceIdEventTopic: S.optional(EventNotificationTopicStatus),
-  }),
-).annotate({
-  identifier: "ProximityEventConfiguration",
-}) as any as S.Schema<ProximityEventConfiguration>;
+export const ProximityEventConfiguration =
+  DeviceRegistrationStateEventConfiguration as any as S.Schema<ProximityEventConfiguration>;
 export interface LoRaWANJoinEventNotificationConfigurations {
   DevEuiEventTopic?: EventNotificationTopicStatus;
 }
@@ -3013,14 +2925,8 @@ export interface MessageDeliveryStatusEventConfiguration {
   Sidewalk?: SidewalkEventNotificationConfigurations;
   WirelessDeviceIdEventTopic?: EventNotificationTopicStatus;
 }
-export const MessageDeliveryStatusEventConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Sidewalk: S.optional(SidewalkEventNotificationConfigurations),
-    WirelessDeviceIdEventTopic: S.optional(EventNotificationTopicStatus),
-  }),
-).annotate({
-  identifier: "MessageDeliveryStatusEventConfiguration",
-}) as any as S.Schema<MessageDeliveryStatusEventConfiguration>;
+export const MessageDeliveryStatusEventConfiguration =
+  DeviceRegistrationStateEventConfiguration as any as S.Schema<MessageDeliveryStatusEventConfiguration>;
 export interface GetResourceEventConfigurationResponse {
   DeviceRegistrationState?: DeviceRegistrationStateEventConfiguration;
   Proximity?: ProximityEventConfiguration;
@@ -3094,11 +3000,8 @@ export const GetResourcePositionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourcePositionResponse {
   GeoJsonPayload?: T.StreamingOutputBody;
 }
-export const GetResourcePositionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GeoJsonPayload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
-).annotate({
-  identifier: "GetResourcePositionResponse",
-}) as any as S.Schema<GetResourcePositionResponse>;
+export const GetResourcePositionResponse =
+  GetPositionEstimateResponse as any as S.Schema<GetResourcePositionResponse>;
 export type WirelessGatewayServiceType = "CUPS" | "LNS" | (string & {});
 export const WirelessGatewayServiceType = S.String;
 
@@ -3265,7 +3168,7 @@ export const CertificateList = /*@__PURE__*/ S.suspend(() =>
 export type DeviceCertificateList = CertificateList[];
 export const DeviceCertificateList = /*@__PURE__*/ S.Array(CertificateList);
 export type PrivateKeysList = CertificateList[];
-export const PrivateKeysList = /*@__PURE__*/ S.Array(CertificateList);
+export const PrivateKeysList = DeviceCertificateList as any as S.Schema<PrivateKeysList>;
 export type WirelessDeviceSidewalkStatus =
   | "PROVISIONED"
   | "REGISTERED"
@@ -3348,7 +3251,8 @@ export const GetWirelessDeviceImportTaskRequest = /*@__PURE__*/ S.suspend(() =>
 export type ImportTaskArn = string;
 export type DeviceCreationFile = string;
 export type DeviceCreationFileList = string[];
-export const DeviceCreationFileList = /*@__PURE__*/ S.Array(S.String);
+export const DeviceCreationFileList =
+  GatewayListMulticast as any as S.Schema<DeviceCreationFileList>;
 export type Role = string;
 export interface SidewalkGetStartImportInfo {
   DeviceCreationFileList?: string[];
@@ -3926,17 +3830,8 @@ export interface EventNotificationItemConfigurations {
   ConnectionStatus?: ConnectionStatusEventConfiguration;
   MessageDeliveryStatus?: MessageDeliveryStatusEventConfiguration;
 }
-export const EventNotificationItemConfigurations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeviceRegistrationState: S.optional(DeviceRegistrationStateEventConfiguration),
-    Proximity: S.optional(ProximityEventConfiguration),
-    Join: S.optional(JoinEventConfiguration),
-    ConnectionStatus: S.optional(ConnectionStatusEventConfiguration),
-    MessageDeliveryStatus: S.optional(MessageDeliveryStatusEventConfiguration),
-  }),
-).annotate({
-  identifier: "EventNotificationItemConfigurations",
-}) as any as S.Schema<EventNotificationItemConfigurations>;
+export const EventNotificationItemConfigurations =
+  GetResourceEventConfigurationResponse as any as S.Schema<EventNotificationItemConfigurations>;
 export interface EventConfigurationItem {
   Identifier?: string;
   IdentifierType?: IdentifierType;
@@ -4009,11 +3904,9 @@ export interface MulticastGroup {
   Arn?: string;
   Name?: string;
 }
-export const MulticastGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({ identifier: "MulticastGroup" }) as any as S.Schema<MulticastGroup>;
+export const MulticastGroup = FuotaTask as any as S.Schema<MulticastGroup>;
 export type MulticastGroupList = MulticastGroup[];
-export const MulticastGroupList = /*@__PURE__*/ S.Array(MulticastGroup);
+export const MulticastGroupList = FuotaTaskList as any as S.Schema<MulticastGroupList>;
 export interface ListMulticastGroupsResponse {
   NextToken?: string;
   MulticastGroupList?: MulticastGroup[];
@@ -4093,11 +3986,8 @@ export interface NetworkAnalyzerConfigurations {
   Arn?: string;
   Name?: string;
 }
-export const NetworkAnalyzerConfigurations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({
-  identifier: "NetworkAnalyzerConfigurations",
-}) as any as S.Schema<NetworkAnalyzerConfigurations>;
+export const NetworkAnalyzerConfigurations =
+  CreateDestinationResponse as any as S.Schema<NetworkAnalyzerConfigurations>;
 export type NetworkAnalyzerConfigurationList = NetworkAnalyzerConfigurations[];
 export const NetworkAnalyzerConfigurationList = /*@__PURE__*/ S.Array(
   NetworkAnalyzerConfigurations,
@@ -4290,11 +4180,9 @@ export interface ServiceProfile {
   Name?: string;
   Id?: string;
 }
-export const ServiceProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String), Id: S.optional(S.String) }),
-).annotate({ identifier: "ServiceProfile" }) as any as S.Schema<ServiceProfile>;
+export const ServiceProfile = DeviceProfile as any as S.Schema<ServiceProfile>;
 export type ServiceProfileList = ServiceProfile[];
-export const ServiceProfileList = /*@__PURE__*/ S.Array(ServiceProfile);
+export const ServiceProfileList = DeviceProfileList as any as S.Schema<ServiceProfileList>;
 export interface ListServiceProfilesResponse {
   NextToken?: string;
   ServiceProfileList?: ServiceProfile[];
@@ -4659,11 +4547,8 @@ export const PutPositionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutPositionConfigurationRequest",
 }) as any as S.Schema<PutPositionConfigurationRequest>;
 export interface PutPositionConfigurationResponse {}
-export const PutPositionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutPositionConfigurationResponse",
-}) as any as S.Schema<PutPositionConfigurationResponse>;
+export const PutPositionConfigurationResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<PutPositionConfigurationResponse>;
 export interface PutResourceLogLevelRequest {
   ResourceIdentifier: string;
   ResourceType: string;
@@ -4688,9 +4573,8 @@ export const PutResourceLogLevelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutResourceLogLevelRequest",
 }) as any as S.Schema<PutResourceLogLevelRequest>;
 export interface PutResourceLogLevelResponse {}
-export const PutResourceLogLevelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutResourceLogLevelResponse",
-}) as any as S.Schema<PutResourceLogLevelResponse>;
+export const PutResourceLogLevelResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<PutResourceLogLevelResponse>;
 export interface ResetAllResourceLogLevelsRequest {}
 export const ResetAllResourceLogLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -4700,11 +4584,8 @@ export const ResetAllResourceLogLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetAllResourceLogLevelsRequest",
 }) as any as S.Schema<ResetAllResourceLogLevelsRequest>;
 export interface ResetAllResourceLogLevelsResponse {}
-export const ResetAllResourceLogLevelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetAllResourceLogLevelsResponse",
-}) as any as S.Schema<ResetAllResourceLogLevelsResponse>;
+export const ResetAllResourceLogLevelsResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<ResetAllResourceLogLevelsResponse>;
 export interface ResetResourceLogLevelRequest {
   ResourceIdentifier: string;
   ResourceType: string;
@@ -4727,9 +4608,8 @@ export const ResetResourceLogLevelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetResourceLogLevelRequest",
 }) as any as S.Schema<ResetResourceLogLevelRequest>;
 export interface ResetResourceLogLevelResponse {}
-export const ResetResourceLogLevelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetResourceLogLevelResponse",
-}) as any as S.Schema<ResetResourceLogLevelResponse>;
+export const ResetResourceLogLevelResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<ResetResourceLogLevelResponse>;
 export type PayloadData = string;
 export interface LoRaWANMulticastMetadata {
   FPort?: number;
@@ -4837,11 +4717,8 @@ export const SendDataToWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SendDataToWirelessDeviceResponse {
   MessageId?: string;
 }
-export const SendDataToWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MessageId: S.optional(S.String) }),
-).annotate({
-  identifier: "SendDataToWirelessDeviceResponse",
-}) as any as S.Schema<SendDataToWirelessDeviceResponse>;
+export const SendDataToWirelessDeviceResponse =
+  SendDataToMulticastGroupResponse as any as S.Schema<SendDataToWirelessDeviceResponse>;
 export type QueryString = string;
 export interface StartBulkAssociateWirelessDeviceWithMulticastGroupRequest {
   Id: string;
@@ -4919,9 +4796,8 @@ export const StartFuotaTaskRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "PUT", uri: "/fuota-tasks/{Id}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "StartFuotaTaskRequest" }) as any as S.Schema<StartFuotaTaskRequest>;
 export interface StartFuotaTaskResponse {}
-export const StartFuotaTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartFuotaTaskResponse",
-}) as any as S.Schema<StartFuotaTaskResponse>;
+export const StartFuotaTaskResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<StartFuotaTaskResponse>;
 export interface StartMulticastGroupSessionRequest {
   Id: string;
   LoRaWAN: LoRaWANMulticastSession;
@@ -4941,11 +4817,8 @@ export const StartMulticastGroupSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartMulticastGroupSessionRequest",
 }) as any as S.Schema<StartMulticastGroupSessionRequest>;
 export interface StartMulticastGroupSessionResponse {}
-export const StartMulticastGroupSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartMulticastGroupSessionResponse",
-}) as any as S.Schema<StartMulticastGroupSessionResponse>;
+export const StartMulticastGroupSessionResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<StartMulticastGroupSessionResponse>;
 export type DeviceName = string;
 export interface SidewalkSingleStartImportInfo {
   SidewalkManufacturingSn?: string;
@@ -4992,11 +4865,8 @@ export interface StartSingleWirelessDeviceImportTaskResponse {
   Id?: string;
   Arn?: string;
 }
-export const StartSingleWirelessDeviceImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "StartSingleWirelessDeviceImportTaskResponse",
-}) as any as S.Schema<StartSingleWirelessDeviceImportTaskResponse>;
+export const StartSingleWirelessDeviceImportTaskResponse =
+  CreateWirelessGatewayTaskDefinitionResponse as any as S.Schema<StartSingleWirelessDeviceImportTaskResponse>;
 export interface SidewalkStartImportInfo {
   DeviceCreationFile?: string;
   Role?: string;
@@ -5040,11 +4910,8 @@ export interface StartWirelessDeviceImportTaskResponse {
   Id?: string;
   Arn?: string;
 }
-export const StartWirelessDeviceImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "StartWirelessDeviceImportTaskResponse",
-}) as any as S.Schema<StartWirelessDeviceImportTaskResponse>;
+export const StartWirelessDeviceImportTaskResponse =
+  CreateWirelessGatewayTaskDefinitionResponse as any as S.Schema<StartWirelessDeviceImportTaskResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -5055,9 +4922,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<TagResourceResponse>;
 export interface TestWirelessDeviceRequest {
   Id: string;
 }
@@ -5085,7 +4951,7 @@ export const TestWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestWirelessDeviceResponse",
 }) as any as S.Schema<TestWirelessDeviceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = GatewayListMulticast as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -5097,9 +4963,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDestinationRequest {
   Name: string;
   ExpressionType?: ExpressionType;
@@ -5119,9 +4984,8 @@ export const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateDestinationRequest" }) as any as S.Schema<UpdateDestinationRequest>;
 export interface UpdateDestinationResponse {}
-export const UpdateDestinationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDestinationResponse",
-}) as any as S.Schema<UpdateDestinationResponse>;
+export const UpdateDestinationResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdateDestinationResponse>;
 export interface UpdateEventConfigurationByResourceTypesRequest {
   DeviceRegistrationState?: DeviceRegistrationStateResourceTypeEventConfiguration;
   Proximity?: ProximityResourceTypeEventConfiguration;
@@ -5150,11 +5014,8 @@ export const UpdateEventConfigurationByResourceTypesRequest = /*@__PURE__*/ S.su
   identifier: "UpdateEventConfigurationByResourceTypesRequest",
 }) as any as S.Schema<UpdateEventConfigurationByResourceTypesRequest>;
 export interface UpdateEventConfigurationByResourceTypesResponse {}
-export const UpdateEventConfigurationByResourceTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEventConfigurationByResourceTypesResponse",
-}) as any as S.Schema<UpdateEventConfigurationByResourceTypesResponse>;
+export const UpdateEventConfigurationByResourceTypesResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateEventConfigurationByResourceTypesResponse>;
 export interface UpdateFuotaTaskRequest {
   Id: string;
   Name?: string;
@@ -5184,9 +5045,8 @@ export const UpdateFuotaTaskRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateFuotaTaskRequest" }) as any as S.Schema<UpdateFuotaTaskRequest>;
 export interface UpdateFuotaTaskResponse {}
-export const UpdateFuotaTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateFuotaTaskResponse",
-}) as any as S.Schema<UpdateFuotaTaskResponse>;
+export const UpdateFuotaTaskResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdateFuotaTaskResponse>;
 export interface UpdateLogLevelsByResourceTypesRequest {
   DefaultLogLevel?: LogLevel;
   FuotaTaskLogOptions?: FuotaTaskLogOption[];
@@ -5204,11 +5064,8 @@ export const UpdateLogLevelsByResourceTypesRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateLogLevelsByResourceTypesRequest",
 }) as any as S.Schema<UpdateLogLevelsByResourceTypesRequest>;
 export interface UpdateLogLevelsByResourceTypesResponse {}
-export const UpdateLogLevelsByResourceTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateLogLevelsByResourceTypesResponse",
-}) as any as S.Schema<UpdateLogLevelsByResourceTypesResponse>;
+export const UpdateLogLevelsByResourceTypesResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateLogLevelsByResourceTypesResponse>;
 export interface UpdateMetricConfigurationRequest {
   SummaryMetric?: SummaryMetricConfiguration;
 }
@@ -5220,11 +5077,8 @@ export const UpdateMetricConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMetricConfigurationRequest",
 }) as any as S.Schema<UpdateMetricConfigurationRequest>;
 export interface UpdateMetricConfigurationResponse {}
-export const UpdateMetricConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateMetricConfigurationResponse",
-}) as any as S.Schema<UpdateMetricConfigurationResponse>;
+export const UpdateMetricConfigurationResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateMetricConfigurationResponse>;
 export interface UpdateMulticastGroupRequest {
   Id: string;
   Name?: string;
@@ -5244,9 +5098,8 @@ export const UpdateMulticastGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMulticastGroupRequest",
 }) as any as S.Schema<UpdateMulticastGroupRequest>;
 export interface UpdateMulticastGroupResponse {}
-export const UpdateMulticastGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMulticastGroupResponse",
-}) as any as S.Schema<UpdateMulticastGroupResponse>;
+export const UpdateMulticastGroupResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdateMulticastGroupResponse>;
 export interface UpdateNetworkAnalyzerConfigurationRequest {
   ConfigurationName: string;
   TraceContent?: TraceContent;
@@ -5283,11 +5136,8 @@ export const UpdateNetworkAnalyzerConfigurationRequest = /*@__PURE__*/ S.suspend
   identifier: "UpdateNetworkAnalyzerConfigurationRequest",
 }) as any as S.Schema<UpdateNetworkAnalyzerConfigurationRequest>;
 export interface UpdateNetworkAnalyzerConfigurationResponse {}
-export const UpdateNetworkAnalyzerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateNetworkAnalyzerConfigurationResponse",
-}) as any as S.Schema<UpdateNetworkAnalyzerConfigurationResponse>;
+export const UpdateNetworkAnalyzerConfigurationResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateNetworkAnalyzerConfigurationResponse>;
 export interface SidewalkUpdateAccount {
   AppServerPrivateKey?: string | redacted.Redacted<string>;
 }
@@ -5318,9 +5168,8 @@ export const UpdatePartnerAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePartnerAccountRequest",
 }) as any as S.Schema<UpdatePartnerAccountRequest>;
 export interface UpdatePartnerAccountResponse {}
-export const UpdatePartnerAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePartnerAccountResponse",
-}) as any as S.Schema<UpdatePartnerAccountResponse>;
+export const UpdatePartnerAccountResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdatePartnerAccountResponse>;
 export interface UpdatePositionRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
@@ -5343,9 +5192,8 @@ export const UpdatePositionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdatePositionRequest" }) as any as S.Schema<UpdatePositionRequest>;
 export interface UpdatePositionResponse {}
-export const UpdatePositionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePositionResponse",
-}) as any as S.Schema<UpdatePositionResponse>;
+export const UpdatePositionResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdatePositionResponse>;
 export interface UpdateResourceEventConfigurationRequest {
   Identifier: string;
   IdentifierType: IdentifierType;
@@ -5380,11 +5228,8 @@ export const UpdateResourceEventConfigurationRequest = /*@__PURE__*/ S.suspend((
   identifier: "UpdateResourceEventConfigurationRequest",
 }) as any as S.Schema<UpdateResourceEventConfigurationRequest>;
 export interface UpdateResourceEventConfigurationResponse {}
-export const UpdateResourceEventConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateResourceEventConfigurationResponse",
-}) as any as S.Schema<UpdateResourceEventConfigurationResponse>;
+export const UpdateResourceEventConfigurationResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateResourceEventConfigurationResponse>;
 export interface UpdateResourcePositionRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
@@ -5409,9 +5254,8 @@ export const UpdateResourcePositionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourcePositionRequest",
 }) as any as S.Schema<UpdateResourcePositionRequest>;
 export interface UpdateResourcePositionResponse {}
-export const UpdateResourcePositionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateResourcePositionResponse",
-}) as any as S.Schema<UpdateResourcePositionResponse>;
+export const UpdateResourcePositionResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdateResourcePositionResponse>;
 export interface UpdateAbpV1_1 {
   FCntStart?: number;
 }
@@ -5421,9 +5265,7 @@ export const UpdateAbpV1_1 = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAbpV1_0_x {
   FCntStart?: number;
 }
-export const UpdateAbpV1_0_x = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FCntStart: S.optional(S.Number) }),
-).annotate({ identifier: "UpdateAbpV1_0_x" }) as any as S.Schema<UpdateAbpV1_0_x>;
+export const UpdateAbpV1_0_x = UpdateAbpV1_1 as any as S.Schema<UpdateAbpV1_0_x>;
 export interface UpdateFPorts {
   Positioning?: Positioning;
   Applications?: ApplicationConfig[];
@@ -5450,11 +5292,8 @@ export const LoRaWANUpdateDevice = /*@__PURE__*/ S.suspend(() =>
 export interface SidewalkUpdateWirelessDevice {
   Positioning?: SidewalkPositioning;
 }
-export const SidewalkUpdateWirelessDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Positioning: S.optional(SidewalkPositioning) }),
-).annotate({
-  identifier: "SidewalkUpdateWirelessDevice",
-}) as any as S.Schema<SidewalkUpdateWirelessDevice>;
+export const SidewalkUpdateWirelessDevice =
+  SidewalkListDevicesForImportInfo as any as S.Schema<SidewalkUpdateWirelessDevice>;
 export interface UpdateWirelessDeviceRequest {
   Id: string;
   DestinationName?: string;
@@ -5480,9 +5319,8 @@ export const UpdateWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWirelessDeviceRequest",
 }) as any as S.Schema<UpdateWirelessDeviceRequest>;
 export interface UpdateWirelessDeviceResponse {}
-export const UpdateWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWirelessDeviceResponse",
-}) as any as S.Schema<UpdateWirelessDeviceResponse>;
+export const UpdateWirelessDeviceResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdateWirelessDeviceResponse>;
 export interface SidewalkUpdateImportInfo {
   DeviceCreationFile?: string;
 }
@@ -5508,11 +5346,8 @@ export const UpdateWirelessDeviceImportTaskRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateWirelessDeviceImportTaskRequest",
 }) as any as S.Schema<UpdateWirelessDeviceImportTaskRequest>;
 export interface UpdateWirelessDeviceImportTaskResponse {}
-export const UpdateWirelessDeviceImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateWirelessDeviceImportTaskResponse",
-}) as any as S.Schema<UpdateWirelessDeviceImportTaskResponse>;
+export const UpdateWirelessDeviceImportTaskResponse =
+  AssociateMulticastGroupWithFuotaTaskResponse as any as S.Schema<UpdateWirelessDeviceImportTaskResponse>;
 export interface UpdateWirelessGatewayRequest {
   Id: string;
   Name?: string;
@@ -5543,9 +5378,8 @@ export const UpdateWirelessGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWirelessGatewayRequest",
 }) as any as S.Schema<UpdateWirelessGatewayRequest>;
 export interface UpdateWirelessGatewayResponse {}
-export const UpdateWirelessGatewayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWirelessGatewayResponse",
-}) as any as S.Schema<UpdateWirelessGatewayResponse>;
+export const UpdateWirelessGatewayResponse =
+  SidewalkCreateDeviceProfile as any as S.Schema<UpdateWirelessGatewayResponse>;
 export type Message = string;
 export type ResourceId = string;
 export type AssociateAwsAccountWithPartnerAccountError =

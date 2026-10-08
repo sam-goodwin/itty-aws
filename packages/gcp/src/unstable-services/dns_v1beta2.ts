@@ -907,9 +907,8 @@ export const PolicyAlternativeNameServerConfigOutboundEndpoint =
 
 export type PolicyAlternativeNameServerConfigOutboundEndpointList =
   Array<ManagedZoneForwardingConfigOutboundEndpoint>;
-export const PolicyAlternativeNameServerConfigOutboundEndpointList = /*@__PURE__*/ S.Array(
-  ManagedZoneForwardingConfigOutboundEndpoint,
-) as any as S.Schema<PolicyAlternativeNameServerConfigOutboundEndpointList>;
+export const PolicyAlternativeNameServerConfigOutboundEndpointList =
+  ManagedZoneForwardingConfigOutboundEndpointList as any as S.Schema<PolicyAlternativeNameServerConfigOutboundEndpointList>;
 
 export interface PolicyAlternativeNameServerConfig {
   kind?: string;
@@ -1041,17 +1040,11 @@ export interface ResponsePolicyNetwork {
   /** The fully qualified URL of the VPC network to bind to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
   networkUrl?: string;
 }
-export const ResponsePolicyNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    networkUrl: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResponsePolicyNetwork" }) as any as S.Schema<ResponsePolicyNetwork>;
+export const ResponsePolicyNetwork = PolicyNetwork as any as S.Schema<ResponsePolicyNetwork>;
 
 export type ResponsePolicyNetworkList = Array<ResponsePolicyNetwork>;
-export const ResponsePolicyNetworkList = /*@__PURE__*/ S.Array(
-  ResponsePolicyNetwork,
-) as any as S.Schema<ResponsePolicyNetworkList>;
+export const ResponsePolicyNetworkList =
+  PolicyNetworkList as any as S.Schema<ResponsePolicyNetworkList>;
 
 export interface ResponsePolicyGKECluster {
   /** The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*\/locations/*\/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
@@ -1211,9 +1204,7 @@ export const DeleteManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedZonesRequest>;
 
 export interface DeleteManagedZonesResponse {}
-export const DeleteManagedZonesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteManagedZonesResponse",
-}) as any as S.Schema<DeleteManagedZonesResponse>;
+export const DeleteManagedZonesResponse = Empty as any as S.Schema<DeleteManagedZonesResponse>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
@@ -1278,9 +1269,7 @@ export const DeletePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePoliciesRequest" }) as any as S.Schema<DeletePoliciesRequest>;
 
 export interface DeletePoliciesResponse {}
-export const DeletePoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePoliciesResponse",
-}) as any as S.Schema<DeletePoliciesResponse>;
+export const DeletePoliciesResponse = Empty as any as S.Schema<DeletePoliciesResponse>;
 
 export interface DeleteResourceRecordSetsRequest {
   /** RRSet type. */
@@ -1344,9 +1333,8 @@ export const DeleteResponsePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResponsePoliciesRequest>;
 
 export interface DeleteResponsePoliciesResponse {}
-export const DeleteResponsePoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResponsePoliciesResponse",
-}) as any as S.Schema<DeleteResponsePoliciesResponse>;
+export const DeleteResponsePoliciesResponse =
+  Empty as any as S.Schema<DeleteResponsePoliciesResponse>;
 
 export interface DeleteResponsePolicyRulesRequest {
   /** User assigned name of the Response Policy containing the Response Policy Rule. */
@@ -1376,11 +1364,8 @@ export const DeleteResponsePolicyRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResponsePolicyRulesRequest>;
 
 export interface DeleteResponsePolicyRulesResponse {}
-export const DeleteResponsePolicyRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResponsePolicyRulesResponse",
-}) as any as S.Schema<DeleteResponsePolicyRulesResponse>;
+export const DeleteResponsePolicyRulesResponse =
+  DeleteResourceRecordSetsResponse as any as S.Schema<DeleteResponsePolicyRulesResponse>;
 
 export interface GetChangesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
@@ -2874,13 +2859,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface UpdateManagedZonesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
@@ -2937,11 +2917,8 @@ export const UpdatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PoliciesUpdateResponse {
   policy?: Policy;
 }
-export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({ identifier: "PoliciesUpdateResponse" }) as any as S.Schema<PoliciesUpdateResponse>;
+export const PoliciesUpdateResponse =
+  PoliciesPatchResponse as any as S.Schema<PoliciesUpdateResponse>;
 
 export interface UpdateResponsePoliciesRequest {
   /** User assigned name of the Response Policy addressed by this request. */
@@ -2973,13 +2950,8 @@ export const UpdateResponsePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResponsePoliciesUpdateResponse {
   responsePolicy?: ResponsePolicy;
 }
-export const ResponsePoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responsePolicy: S.optional(ResponsePolicy),
-  }),
-).annotate({
-  identifier: "ResponsePoliciesUpdateResponse",
-}) as any as S.Schema<ResponsePoliciesUpdateResponse>;
+export const ResponsePoliciesUpdateResponse =
+  ResponsePoliciesPatchResponse as any as S.Schema<ResponsePoliciesUpdateResponse>;
 
 export interface UpdateResponsePolicyRulesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
@@ -3014,13 +2986,8 @@ export const UpdateResponsePolicyRulesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResponsePolicyRulesUpdateResponse {
   responsePolicyRule?: ResponsePolicyRule;
 }
-export const ResponsePolicyRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    responsePolicyRule: S.optional(ResponsePolicyRule),
-  }),
-).annotate({
-  identifier: "ResponsePolicyRulesUpdateResponse",
-}) as any as S.Schema<ResponsePolicyRulesUpdateResponse>;
+export const ResponsePolicyRulesUpdateResponse =
+  ResponsePolicyRulesPatchResponse as any as S.Schema<ResponsePolicyRulesUpdateResponse>;
 
 export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */

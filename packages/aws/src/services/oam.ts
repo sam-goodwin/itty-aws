@@ -181,9 +181,7 @@ export type MetricsFilter = string;
 export interface MetricConfiguration {
   Filter: string;
 }
-export const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Filter: S.String }),
-).annotate({ identifier: "MetricConfiguration" }) as any as S.Schema<MetricConfiguration>;
+export const MetricConfiguration = LogGroupConfiguration as any as S.Schema<MetricConfiguration>;
 export interface LinkConfiguration {
   LogGroupConfiguration?: LogGroupConfiguration;
   MetricConfiguration?: MetricConfiguration;
@@ -213,10 +211,7 @@ export const CreateLinkInput = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTypesOutput = string[];
 export const ResourceTypesOutput = /*@__PURE__*/ S.Array(S.String);
 export type TagMapOutput = { [key: string]: string | undefined };
-export const TagMapOutput = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TagMapOutput = TagMapInput as any as S.Schema<TagMapOutput>;
 export interface CreateLinkOutput {
   Arn?: string;
   Id?: string;
@@ -284,9 +279,7 @@ export const DeleteSinkInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteSinkInput" }) as any as S.Schema<DeleteSinkInput>;
 export interface DeleteSinkOutput {}
-export const DeleteSinkOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSinkOutput",
-}) as any as S.Schema<DeleteSinkOutput>;
+export const DeleteSinkOutput = DeleteLinkOutput as any as S.Schema<DeleteSinkOutput>;
 export type IncludeTags = boolean;
 export interface GetLinkInput {
   Identifier: string;
@@ -307,18 +300,7 @@ export interface GetLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-export const GetLinkOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Label: S.optional(S.String),
-    LabelTemplate: S.optional(S.String),
-    ResourceTypes: S.optional(ResourceTypesOutput),
-    SinkArn: S.optional(S.String),
-    Tags: S.optional(TagMapOutput),
-    LinkConfiguration: S.optional(LinkConfiguration),
-  }),
-).annotate({ identifier: "GetLinkOutput" }) as any as S.Schema<GetLinkOutput>;
+export const GetLinkOutput = CreateLinkOutput as any as S.Schema<GetLinkOutput>;
 export interface GetSinkInput {
   Identifier: string;
   IncludeTags?: boolean;
@@ -334,14 +316,7 @@ export interface GetSinkOutput {
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetSinkOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Tags: S.optional(TagMapOutput),
-  }),
-).annotate({ identifier: "GetSinkOutput" }) as any as S.Schema<GetSinkOutput>;
+export const GetSinkOutput = CreateSinkOutput as any as S.Schema<GetSinkOutput>;
 export interface GetSinkPolicyInput {
   SinkIdentifier: string;
 }
@@ -493,13 +468,7 @@ export interface PutSinkPolicyOutput {
   SinkId?: string;
   Policy?: string;
 }
-export const PutSinkPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SinkArn: S.optional(S.String),
-    SinkId: S.optional(S.String),
-    Policy: S.optional(S.String),
-  }),
-).annotate({ identifier: "PutSinkPolicyOutput" }) as any as S.Schema<PutSinkPolicyOutput>;
+export const PutSinkPolicyOutput = GetSinkPolicyOutput as any as S.Schema<PutSinkPolicyOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -510,11 +479,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteLinkOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = ResourceTypesOutput as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -528,9 +495,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteLinkOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateLinkInput {
   Identifier: string;
   ResourceTypes: ResourceType[];
@@ -555,18 +520,7 @@ export interface UpdateLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-export const UpdateLinkOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Id: S.optional(S.String),
-    Label: S.optional(S.String),
-    LabelTemplate: S.optional(S.String),
-    ResourceTypes: S.optional(ResourceTypesOutput),
-    SinkArn: S.optional(S.String),
-    Tags: S.optional(TagMapOutput),
-    LinkConfiguration: S.optional(LinkConfiguration),
-  }),
-).annotate({ identifier: "UpdateLinkOutput" }) as any as S.Schema<UpdateLinkOutput>;
+export const UpdateLinkOutput = CreateLinkOutput as any as S.Schema<UpdateLinkOutput>;
 export type CreateLinkError =
   | ConflictException
   | InternalServiceFault

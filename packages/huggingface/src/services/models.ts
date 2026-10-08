@@ -324,9 +324,8 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBranchRequest" }) as any as S.Schema<CreateBranchRequest>;
 
 export interface CreateBranchResponse {}
-export const CreateBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateBranchResponse",
-}) as any as S.Schema<CreateBranchResponse>;
+export const CreateBranchResponse =
+  CancelAccessRequestResponse as any as S.Schema<CreateBranchResponse>;
 
 export interface CreateTagRequest {
   namespace: string;
@@ -346,9 +345,7 @@ export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTagRequest" }) as any as S.Schema<CreateTagRequest>;
 
 export interface CreateTagResponse {}
-export const CreateTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTagResponse",
-}) as any as S.Schema<CreateTagResponse>;
+export const CreateTagResponse = CancelAccessRequestResponse as any as S.Schema<CreateTagResponse>;
 
 export interface DeleteBranchRequest {
   namespace: string;
@@ -366,9 +363,8 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchRequest" }) as any as S.Schema<DeleteBranchRequest>;
 
 export interface DeleteBranchResponse {}
-export const DeleteBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBranchResponse",
-}) as any as S.Schema<DeleteBranchResponse>;
+export const DeleteBranchResponse =
+  CancelAccessRequestResponse as any as S.Schema<DeleteBranchResponse>;
 
 export interface DeleteLargeFileRequest {
   namespace: string;
@@ -388,9 +384,8 @@ export const DeleteLargeFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLargeFileRequest" }) as any as S.Schema<DeleteLargeFileRequest>;
 
 export interface DeleteLargeFileResponse {}
-export const DeleteLargeFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLargeFileResponse",
-}) as any as S.Schema<DeleteLargeFileResponse>;
+export const DeleteLargeFileResponse =
+  CancelAccessRequestResponse as any as S.Schema<DeleteLargeFileResponse>;
 
 export type DeleteLargeFilesRequestDeletionsShaList = Array<string>;
 export const DeleteLargeFilesRequestDeletionsShaList = /*@__PURE__*/ S.Array(
@@ -426,9 +421,8 @@ export const DeleteLargeFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLargeFilesRequest" }) as any as S.Schema<DeleteLargeFilesRequest>;
 
 export interface DeleteLargeFilesResponse {}
-export const DeleteLargeFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLargeFilesResponse",
-}) as any as S.Schema<DeleteLargeFilesResponse>;
+export const DeleteLargeFilesResponse =
+  CancelAccessRequestResponse as any as S.Schema<DeleteLargeFilesResponse>;
 
 export interface DeleteTagRequest {
   namespace: string;
@@ -444,9 +438,7 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRequest" }) as any as S.Schema<DeleteTagRequest>;
 
 export interface DeleteTagResponse {}
-export const DeleteTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagResponse",
-}) as any as S.Schema<DeleteTagResponse>;
+export const DeleteTagResponse = CancelAccessRequestResponse as any as S.Schema<DeleteTagResponse>;
 
 export type DuplicateXetFilesRequestTargetType = "model" | "space" | "dataset" | "kernel";
 export const DuplicateXetFilesRequestTargetType = S.String;
@@ -1845,9 +1837,8 @@ export const GetTrendingResponseRecentlyTrendingItemCase2RepoDataResourceGroup =
   GetTrendingResponseRecentlyTrendingItemCase0RepoDataResourceGroup;
 
 export type GetTrendingResponseRecentlyTrendingItemCase2RepoDataTagsList = Array<string>;
-export const GetTrendingResponseRecentlyTrendingItemCase2RepoDataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataTagsList>;
+export const GetTrendingResponseRecentlyTrendingItemCase2RepoDataTagsList =
+  DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<GetTrendingResponseRecentlyTrendingItemCase2RepoDataTagsList>;
 
 export type GetTrendingResponseRecentlyTrendingItemCase2RepoDataAuthorDataCase0Plan =
   | "team"
@@ -2111,9 +2102,8 @@ export const GrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GrantAccessRequest" }) as any as S.Schema<GrantAccessRequest>;
 
 export interface GrantAccessResponse {}
-export const GrantAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GrantAccessResponse",
-}) as any as S.Schema<GrantAccessResponse>;
+export const GrantAccessResponse =
+  CancelAccessRequestResponse as any as S.Schema<GrantAccessResponse>;
 
 export type HandleAccessRequestRequestStatus = "accepted" | "rejected" | "pending" | "reset";
 export const HandleAccessRequestRequestStatus = S.String;
@@ -2150,9 +2140,8 @@ export const HandleAccessRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HandleAccessRequestRequest>;
 
 export interface HandleAccessRequestResponse {}
-export const HandleAccessRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HandleAccessRequestResponse",
-}) as any as S.Schema<HandleAccessRequestResponse>;
+export const HandleAccessRequestResponse =
+  CancelAccessRequestResponse as any as S.Schema<HandleAccessRequestResponse>;
 
 export type ListAccessRequestsRequestStatus = "pending" | "accepted" | "rejected" | "reset";
 export const ListAccessRequestsRequestStatus = S.String;
@@ -2229,9 +2218,8 @@ export const ListAccessRequestsResponseBodyItemUserServiceAccount = /*@__PURE__*
 }) as any as S.Schema<ListAccessRequestsResponseBodyItemUserServiceAccount>;
 
 export type ListAccessRequestsResponseBodyItemUserVerifiedOrgNamesList = Array<string>;
-export const ListAccessRequestsResponseBodyItemUserVerifiedOrgNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAccessRequestsResponseBodyItemUserVerifiedOrgNamesList>;
+export const ListAccessRequestsResponseBodyItemUserVerifiedOrgNamesList =
+  DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<ListAccessRequestsResponseBodyItemUserVerifiedOrgNamesList>;
 
 export interface ListAccessRequestsResponseBodyItemUser {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -2303,9 +2291,8 @@ export const ListAccessRequestsResponseBodyItemGrantedByCase0OrgsItem =
 
 export type ListAccessRequestsResponseBodyItemGrantedByCase0OrgsList =
   Array<ListAccessRequestsResponseBodyItemUserOrgsItem>;
-export const ListAccessRequestsResponseBodyItemGrantedByCase0OrgsList = /*@__PURE__*/ S.Array(
-  ListAccessRequestsResponseBodyItemUserOrgsItem,
-) as any as S.Schema<ListAccessRequestsResponseBodyItemGrantedByCase0OrgsList>;
+export const ListAccessRequestsResponseBodyItemGrantedByCase0OrgsList =
+  ListAccessRequestsResponseBodyItemUserOrgsList as any as S.Schema<ListAccessRequestsResponseBodyItemGrantedByCase0OrgsList>;
 
 /** Set when the user is a service account */
 export type ListAccessRequestsResponseBodyItemGrantedByCase0ServiceAccount =
@@ -3134,14 +3121,12 @@ export const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLikersRequest" }) as any as S.Schema<ListLikersRequest>;
 
 export interface ListLikersResponse {}
-export const ListLikersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListLikersResponse",
-}) as any as S.Schema<ListLikersResponse>;
+export const ListLikersResponse =
+  CancelAccessRequestResponse as any as S.Schema<ListLikersResponse>;
 
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
-export const ListPathsInfoRequestPathsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
+export const ListPathsInfoRequestPathsCase0List =
+  DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
 
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
 export const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
@@ -3610,25 +3595,22 @@ export type ListReferencesResponseBranchesItem = ListReferencesResponseTagsItem;
 export const ListReferencesResponseBranchesItem = ListReferencesResponseTagsItem;
 
 export type ListReferencesResponseBranchesList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponseBranchesList = /*@__PURE__*/ S.Array(
-  ListReferencesResponseTagsItem,
-) as any as S.Schema<ListReferencesResponseBranchesList>;
+export const ListReferencesResponseBranchesList =
+  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseBranchesList>;
 
 export type ListReferencesResponseConvertsItem = ListReferencesResponseTagsItem;
 export const ListReferencesResponseConvertsItem = ListReferencesResponseTagsItem;
 
 export type ListReferencesResponseConvertsList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponseConvertsList = /*@__PURE__*/ S.Array(
-  ListReferencesResponseTagsItem,
-) as any as S.Schema<ListReferencesResponseConvertsList>;
+export const ListReferencesResponseConvertsList =
+  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseConvertsList>;
 
 export type ListReferencesResponsePullRequestsItem = ListReferencesResponseTagsItem;
 export const ListReferencesResponsePullRequestsItem = ListReferencesResponseTagsItem;
 
 export type ListReferencesResponsePullRequestsList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponsePullRequestsList = /*@__PURE__*/ S.Array(
-  ListReferencesResponseTagsItem,
-) as any as S.Schema<ListReferencesResponsePullRequestsList>;
+export const ListReferencesResponsePullRequestsList =
+  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponsePullRequestsList>;
 
 export interface ListReferencesResponse {
   tags: ListReferencesResponseTagsList;
@@ -3665,9 +3647,8 @@ export const RequestAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestAccessRequest" }) as any as S.Schema<RequestAccessRequest>;
 
 export interface RequestAccessResponse {}
-export const RequestAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RequestAccessResponse",
-}) as any as S.Schema<RequestAccessResponse>;
+export const RequestAccessResponse =
+  CancelAccessRequestResponse as any as S.Schema<RequestAccessResponse>;
 
 export interface ResolveFileRequest {
   namespace: string;
@@ -3940,13 +3921,7 @@ export interface XetWriteTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    casUrl: S.String,
-    exp: S.Number,
-    accessToken: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({ identifier: "XetWriteTokenResponse" }) as any as S.Schema<XetWriteTokenResponse>;
+export const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
 
 export type AddResourceGroupError = HuggingFaceOpError;
 /** Add resource group Add the repository to a resource group */

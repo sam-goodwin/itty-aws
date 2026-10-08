@@ -160,7 +160,7 @@ export const AssociateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "AssociateAccountsRequest" }) as any as S.Schema<AssociateAccountsRequest>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = AccountIdList as any as S.Schema<StringList>;
 export interface AssociateAccountsResponse {
   accountIds?: string[];
   errors?: string[];
@@ -179,7 +179,8 @@ export type RuleApplyOrder = "BeforeAccountRules" | "AfterAccountRules" | (strin
 export const RuleApplyOrder = S.String;
 
 export type OrganizationConfigurationAccountIds = string[];
-export const OrganizationConfigurationAccountIds = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationConfigurationAccountIds =
+  AccountIdList as any as S.Schema<OrganizationConfigurationAccountIds>;
 export interface OrganizationConfiguration {
   ruleApplyOrder?: RuleApplyOrder;
   accountIds?: string[];
@@ -230,7 +231,7 @@ export const ComparisonOperator = S.String;
 
 export type StringCriteriaValue = string;
 export type StringCriteriaValues = string[];
-export const StringCriteriaValues = /*@__PURE__*/ S.Array(S.String);
+export const StringCriteriaValues = AccountIdList as any as S.Schema<StringCriteriaValues>;
 export interface StringCriteriaCondition {
   comparison?: ComparisonOperator;
   values?: string[];
@@ -255,16 +256,16 @@ export const IntegerCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
 export type IntegerCriteriaConditionList = IntegerCriteriaCondition[];
 export const IntegerCriteriaConditionList = /*@__PURE__*/ S.Array(IntegerCriteriaCondition);
 export type DoubleList = number[];
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number);
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 export interface DoubleCriteriaCondition {
   comparison?: ComparisonOperator;
   values?: number[];
 }
-export const DoubleCriteriaCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: S.optional(ComparisonOperator), values: S.optional(DoubleList) }),
-).annotate({ identifier: "DoubleCriteriaCondition" }) as any as S.Schema<DoubleCriteriaCondition>;
+export const DoubleCriteriaCondition =
+  IntegerCriteriaCondition as any as S.Schema<DoubleCriteriaCondition>;
 export type DoubleCriteriaConditionList = DoubleCriteriaCondition[];
-export const DoubleCriteriaConditionList = /*@__PURE__*/ S.Array(DoubleCriteriaCondition);
+export const DoubleCriteriaConditionList =
+  IntegerCriteriaConditionList as any as S.Schema<DoubleCriteriaConditionList>;
 export interface ResourceTagsCriteriaCondition {
   comparison?: ComparisonOperator;
   key?: string;
@@ -433,11 +434,8 @@ export interface DisassociateAccountsResponse {
   accountIds?: string[];
   errors?: string[];
 }
-export const DisassociateAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountIds: S.optional(AccountIdList), errors: S.optional(StringList) }),
-).annotate({
-  identifier: "DisassociateAccountsResponse",
-}) as any as S.Schema<DisassociateAccountsResponse>;
+export const DisassociateAccountsResponse =
+  AssociateAccountsResponse as any as S.Schema<DisassociateAccountsResponse>;
 export type EventId = string;
 export interface GetAutomationEventRequest {
   eventId: string;
@@ -643,7 +641,7 @@ export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 export type AutomationEventFilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = AccountIdList as any as S.Schema<FilterValues>;
 export interface AutomationEventFilter {
   name: string;
   values: string[];
@@ -803,11 +801,9 @@ export interface SummaryDimension {
   key: string;
   value: string;
 }
-export const SummaryDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String }),
-).annotate({ identifier: "SummaryDimension" }) as any as S.Schema<SummaryDimension>;
+export const SummaryDimension = Tag as any as S.Schema<SummaryDimension>;
 export type SummaryDimensions = SummaryDimension[];
-export const SummaryDimensions = /*@__PURE__*/ S.Array(SummaryDimension);
+export const SummaryDimensions = TagList as any as S.Schema<SummaryDimensions>;
 export interface TimePeriod {
   startTimeInclusive?: Date;
   endTimeExclusive?: Date;
@@ -1006,11 +1002,9 @@ export interface Filter {
   name: string;
   values: string[];
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, values: FilterValues }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+export const Filter = AutomationEventFilter as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
+export const FilterList = AutomationEventFilterList as any as S.Schema<FilterList>;
 export interface ListAutomationRulesRequest {
   filters?: Filter[];
   maxResults?: number;
@@ -1075,11 +1069,11 @@ export interface RecommendedActionFilter {
   name: string;
   values: string[];
 }
-export const RecommendedActionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, values: FilterValues }),
-).annotate({ identifier: "RecommendedActionFilter" }) as any as S.Schema<RecommendedActionFilter>;
+export const RecommendedActionFilter =
+  AutomationEventFilter as any as S.Schema<RecommendedActionFilter>;
 export type RecommendedActionFilterList = RecommendedActionFilter[];
-export const RecommendedActionFilterList = /*@__PURE__*/ S.Array(RecommendedActionFilter);
+export const RecommendedActionFilterList =
+  AutomationEventFilterList as any as S.Schema<RecommendedActionFilterList>;
 export interface ListRecommendedActionsRequest {
   filters?: RecommendedActionFilter[];
   maxResults?: number;
@@ -1111,27 +1105,9 @@ export interface RecommendedAction {
   estimatedMonthlySavings?: EstimatedMonthlySavings;
   resourceTags?: Tag[];
 }
-export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recommendedActionId: S.optional(S.String),
-    resourceArn: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    accountId: S.optional(S.String),
-    region: S.optional(S.String),
-    resourceType: S.optional(ResourceType),
-    lookBackPeriodInDays: S.optional(S.Number),
-    recommendedActionType: S.optional(RecommendedActionType),
-    currentResourceSummary: S.optional(S.String),
-    currentResourceDetails: S.optional(ResourceDetails),
-    recommendedResourceSummary: S.optional(S.String),
-    recommendedResourceDetails: S.optional(ResourceDetails),
-    restartNeeded: S.optional(S.Boolean),
-    estimatedMonthlySavings: S.optional(EstimatedMonthlySavings),
-    resourceTags: S.optional(TagList),
-  }),
-).annotate({ identifier: "RecommendedAction" }) as any as S.Schema<RecommendedAction>;
+export const RecommendedAction = PreviewResult as any as S.Schema<RecommendedAction>;
 export type RecommendedActions = RecommendedAction[];
-export const RecommendedActions = /*@__PURE__*/ S.Array(RecommendedAction);
+export const RecommendedActions = PreviewResults as any as S.Schema<RecommendedActions>;
 export interface ListRecommendedActionsResponse {
   recommendedActions?: RecommendedAction[];
   nextToken?: string;
@@ -1159,18 +1135,16 @@ export interface RecommendedActionTotal {
   recommendedActionCount: number;
   estimatedMonthlySavings: EstimatedMonthlySavings;
 }
-export const RecommendedActionTotal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recommendedActionCount: S.Number, estimatedMonthlySavings: EstimatedMonthlySavings }),
-).annotate({ identifier: "RecommendedActionTotal" }) as any as S.Schema<RecommendedActionTotal>;
+export const RecommendedActionTotal = RulePreviewTotal as any as S.Schema<RecommendedActionTotal>;
 export interface RecommendedActionSummary {
   key: string;
   total: RecommendedActionTotal;
 }
-export const RecommendedActionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, total: RecommendedActionTotal }),
-).annotate({ identifier: "RecommendedActionSummary" }) as any as S.Schema<RecommendedActionSummary>;
+export const RecommendedActionSummary =
+  PreviewResultSummary as any as S.Schema<RecommendedActionSummary>;
 export type RecommendedActionSummaries = RecommendedActionSummary[];
-export const RecommendedActionSummaries = /*@__PURE__*/ S.Array(RecommendedActionSummary);
+export const RecommendedActionSummaries =
+  PreviewResultSummaries as any as S.Schema<RecommendedActionSummaries>;
 export interface ListRecommendedActionSummariesResponse {
   recommendedActionSummaries?: RecommendedActionSummary[];
   nextToken?: string;
@@ -1263,11 +1237,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteAutomationRuleResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AccountIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   ruleRevision: number;
@@ -1283,9 +1256,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAutomationRuleResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAutomationRuleRequest {
   ruleArn: string;
   ruleRevision: number;

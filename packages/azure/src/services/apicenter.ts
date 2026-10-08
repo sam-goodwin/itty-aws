@@ -471,9 +471,8 @@ export const DeleteApisRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApisRequest" }) as any as S.Schema<DeleteApisRequest>;
 
 export interface DeleteApisResponse {}
-export const DeleteApisResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApisResponse",
-}) as any as S.Schema<DeleteApisResponse>;
+export const DeleteApisResponse =
+  DeleteApiDefinitionResponse as any as S.Schema<DeleteApisResponse>;
 
 export interface DeleteApiVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -508,9 +507,8 @@ export const DeleteApiVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiVersionRequest" }) as any as S.Schema<DeleteApiVersionRequest>;
 
 export interface DeleteApiVersionResponse {}
-export const DeleteApiVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiVersionResponse",
-}) as any as S.Schema<DeleteApiVersionResponse>;
+export const DeleteApiVersionResponse =
+  DeleteApiDefinitionResponse as any as S.Schema<DeleteApiVersionResponse>;
 
 export interface DeleteDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -545,9 +543,8 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeploymentResponse",
-}) as any as S.Schema<DeleteDeploymentResponse>;
+export const DeleteDeploymentResponse =
+  DeleteApiDefinitionResponse as any as S.Schema<DeleteDeploymentResponse>;
 
 export interface DeleteEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -579,9 +576,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  DeleteApiDefinitionResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteMetadataSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -612,9 +608,8 @@ export const DeleteMetadataSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMetadataSchemaRequest>;
 
 export interface DeleteMetadataSchemaResponse {}
-export const DeleteMetadataSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMetadataSchemaResponse",
-}) as any as S.Schema<DeleteMetadataSchemaResponse>;
+export const DeleteMetadataSchemaResponse =
+  DeleteApiDefinitionResponse as any as S.Schema<DeleteMetadataSchemaResponse>;
 
 export interface DeleteServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -640,9 +635,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  DeleteApiDefinitionResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -671,9 +665,8 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceResponse",
-}) as any as S.Schema<DeleteWorkspaceResponse>;
+export const DeleteWorkspaceResponse =
+  DeleteApiDefinitionResponse as any as S.Schema<DeleteWorkspaceResponse>;
 
 /** State of the Deployment */
 export type DeploymentState = "active" | "inactive";
@@ -803,9 +796,8 @@ export const EnvironmentServerType = S.String;
 
 /** The location of the management portal */
 export type EnvironmentServerManagementPortalUriList = Array<string>;
-export const EnvironmentServerManagementPortalUriList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentServerManagementPortalUriList>;
+export const EnvironmentServerManagementPortalUriList =
+  DeploymentServerRuntimeUriList as any as S.Schema<EnvironmentServerManagementPortalUriList>;
 
 /** Server information of the environment. */
 export interface EnvironmentServer {
@@ -823,9 +815,8 @@ export const EnvironmentServer = /*@__PURE__*/ S.suspend(() =>
 
 /** The location of the development portal */
 export type OnboardingDeveloperPortalUriList = Array<string>;
-export const OnboardingDeveloperPortalUriList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnboardingDeveloperPortalUriList>;
+export const OnboardingDeveloperPortalUriList =
+  DeploymentServerRuntimeUriList as any as S.Schema<OnboardingDeveloperPortalUriList>;
 
 /** Onboarding information */
 export interface Onboarding {
@@ -1684,15 +1675,7 @@ export interface ApiDefinition {
   /** The resource-specific properties for this resource. */
   properties?: ApiDefinitionProperties;
 }
-export const ApiDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApiDefinitionProperties),
-  }),
-).annotate({ identifier: "ApiDefinition" }) as any as S.Schema<ApiDefinition>;
+export const ApiDefinition = GetApiDefinitionResponse as any as S.Schema<ApiDefinition>;
 
 /** The ApiDefinition items on this page */
 export type ApiDefinitionListResultValueList = Array<ApiDefinition>;
@@ -1756,15 +1739,7 @@ export interface Api {
   /** The resource-specific properties for this resource. */
   properties?: ApiProperties;
 }
-export const Api = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApiProperties),
-  }),
-).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
+export const Api = GetApisResponse as any as S.Schema<Api>;
 
 /** The Api items on this page */
 export type ApiListResultValueList = Array<Api>;
@@ -1831,15 +1806,7 @@ export interface ApiVersion {
   /** The resource-specific properties for this resource. */
   properties?: ApiVersionProperties;
 }
-export const ApiVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApiVersionProperties),
-  }),
-).annotate({ identifier: "ApiVersion" }) as any as S.Schema<ApiVersion>;
+export const ApiVersion = GetApiVersionResponse as any as S.Schema<ApiVersion>;
 
 /** The ApiVersion items on this page */
 export type ApiVersionListResultValueList = Array<ApiVersion>;
@@ -1906,15 +1873,7 @@ export interface Deployment {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+export const Deployment = GetDeploymentResponse as any as S.Schema<Deployment>;
 
 /** The Deployment items on this page */
 export type DeploymentListResultValueList = Array<Deployment>;
@@ -1978,15 +1937,7 @@ export interface Environment {
   /** The resource-specific properties for this resource. */
   properties?: EnvironmentProperties;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EnvironmentProperties),
-  }),
-).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
+export const Environment = GetEnvironmentResponse as any as S.Schema<Environment>;
 
 /** The Environment items on this page */
 export type EnvironmentListResultValueList = Array<Environment>;
@@ -2185,10 +2136,7 @@ export const ListServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServiceTagsMap = { [key: string]: string | undefined };
-export const ServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceTagsMap>;
+export const ServiceTagsMap = GetServiceResponseTagsMap as any as S.Schema<ServiceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ServiceIdentity = GetServiceResponseIdentity;
@@ -2213,18 +2161,7 @@ export interface Service {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetServiceResponseIdentity;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ServiceTagsMap),
-    location: S.String,
-    properties: S.optional(ServiceProperties),
-    identity: S.optional(GetServiceResponseIdentity),
-  }),
-).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+export const Service = GetServiceResponse as any as S.Schema<Service>;
 
 /** The Service items on this page */
 export type ServiceListResultValueList = Array<Service>;
@@ -2304,15 +2241,7 @@ export interface Workspace {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
-export const Workspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkspaceProperties),
-  }),
-).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
+export const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
@@ -2377,30 +2306,18 @@ export interface MetadataSchemasCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: MetadataSchemaProperties;
 }
-export const MetadataSchemasCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MetadataSchemaProperties),
-  }),
-).annotate({
-  identifier: "MetadataSchemasCreateOrUpdateResponse",
-}) as any as S.Schema<MetadataSchemasCreateOrUpdateResponse>;
+export const MetadataSchemasCreateOrUpdateResponse =
+  GetMetadataSchemaResponse as any as S.Schema<MetadataSchemasCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+export const ServicesCreateOrUpdateRequestTagsMap =
+  GetServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
 
 /** The properties of the service. */
 export interface ServicePropertiesInput {}
-export const ServicePropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ServicePropertiesInput",
-}) as any as S.Schema<ServicePropertiesInput>;
+export const ServicePropertiesInput =
+  DeleteApiDefinitionResponse as any as S.Schema<ServicePropertiesInput>;
 
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = ServicePropertiesInput;
@@ -2468,10 +2385,8 @@ export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
+export const ServicesCreateOrUpdateResponseTagsMap =
+  GetServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ServicesCreateOrUpdateResponseIdentity = GetServiceResponseIdentity;
@@ -2516,10 +2431,8 @@ export const UpdateServiceRequestIdentity = ServicesCreateOrUpdateRequestIdentit
 
 /** Resource tags. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceRequestTagsMap>;
+export const UpdateServiceRequestTagsMap =
+  GetServiceResponseTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
 
 export interface UpdateServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2552,10 +2465,8 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceResponseTagsMap>;
+export const UpdateServiceResponseTagsMap =
+  GetServiceResponseTagsMap as any as S.Schema<UpdateServiceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateServiceResponseIdentity = GetServiceResponseIdentity;
@@ -2579,18 +2490,7 @@ export interface UpdateServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetServiceResponseIdentity;
 }
-export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ServiceProperties),
-    identity: S.optional(GetServiceResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateServiceResponse" }) as any as S.Schema<UpdateServiceResponse>;
+export const UpdateServiceResponse = GetServiceResponse as any as S.Schema<UpdateServiceResponse>;
 
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */

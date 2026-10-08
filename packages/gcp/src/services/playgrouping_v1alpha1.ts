@@ -129,13 +129,8 @@ export interface CreateOrUpdateTagsResponse {
   /** All requested tags are returned, including pre-existing ones. */
   tags?: TagList;
 }
-export const CreateOrUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(TagList),
-  }),
-).annotate({
-  identifier: "CreateOrUpdateTagsResponse",
-}) as any as S.Schema<CreateOrUpdateTagsResponse>;
+export const CreateOrUpdateTagsResponse =
+  CreateOrUpdateTagsRequest as any as S.Schema<CreateOrUpdateTagsResponse>;
 
 /** Request message for VerifyToken. */
 export interface VerifyTokenRequest {

@@ -166,17 +166,13 @@ export const Gateway = /*@__PURE__*/ S.suspend(() =>
 
 /** The configuration settings for the feature that do not contain any sensitive or secret information. */
 export type ArcAgentryConfigurationsSettingsMap = { [key: string]: string | undefined };
-export const ArcAgentryConfigurationsSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ArcAgentryConfigurationsSettingsMap>;
+export const ArcAgentryConfigurationsSettingsMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ArcAgentryConfigurationsSettingsMap>;
 
 /** The configuration settings for the feature that contain any sensitive or secret information. */
 export type ArcAgentryConfigurationsProtectedSettingsMap = { [key: string]: string | undefined };
-export const ArcAgentryConfigurationsProtectedSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ArcAgentryConfigurationsProtectedSettingsMap>;
+export const ArcAgentryConfigurationsProtectedSettingsMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ArcAgentryConfigurationsProtectedSettingsMap>;
 
 export interface ArcAgentryConfigurations {
   /** Specifies the name of the feature for the configuration setting. */
@@ -352,10 +348,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConnectedClusterCreateOrReplaceResponseTagsMap = { [key: string]: string | undefined };
-export const ConnectedClusterCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectedClusterCreateOrReplaceResponseTagsMap>;
+export const ConnectedClusterCreateOrReplaceResponseTagsMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ConnectedClusterCreateOrReplaceResponseTagsMap>;
 
 /** Represents the connectivity status of the connected cluster. */
 export type ConnectivityStatus =
@@ -473,18 +467,15 @@ export const OidcIssuerProfile = /*@__PURE__*/ S.suspend(() =>
 /** Configuration settings for customizing the behavior of the connected cluster. */
 export type ConnectedClusterPropertiesArcAgentryConfigurationsList =
   Array<ArcAgentryConfigurations>;
-export const ConnectedClusterPropertiesArcAgentryConfigurationsList = /*@__PURE__*/ S.Array(
-  ArcAgentryConfigurations,
-) as any as S.Schema<ConnectedClusterPropertiesArcAgentryConfigurationsList>;
+export const ConnectedClusterPropertiesArcAgentryConfigurationsList =
+  ConnectedClusterPropertiesInputArcAgentryConfigurationsList as any as S.Schema<ConnectedClusterPropertiesArcAgentryConfigurationsList>;
 
 /** More properties related to the Connected Cluster */
 export type ConnectedClusterPropertiesMiscellaneousPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ConnectedClusterPropertiesMiscellaneousPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectedClusterPropertiesMiscellaneousPropertiesMap>;
+export const ConnectedClusterPropertiesMiscellaneousPropertiesMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ConnectedClusterPropertiesMiscellaneousPropertiesMap>;
 
 /** Properties of the connected cluster. */
 export interface ConnectedClusterProperties {
@@ -650,9 +641,8 @@ export const DeleteConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectedClusterRequest>;
 
 export interface DeleteConnectedClusterResponse {}
-export const DeleteConnectedClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectedClusterResponse",
-}) as any as S.Schema<DeleteConnectedClusterResponse>;
+export const DeleteConnectedClusterResponse =
+  AgentErrorInput as any as S.Schema<DeleteConnectedClusterResponse>;
 
 export interface GetConnectedClusterRequest {
   /** The ID of the target subscription. */
@@ -681,10 +671,8 @@ export const GetConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConnectedClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetConnectedClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetConnectedClusterResponseTagsMap>;
+export const GetConnectedClusterResponseTagsMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<GetConnectedClusterResponseTagsMap>;
 
 export interface GetConnectedClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -706,21 +694,8 @@ export interface GetConnectedClusterResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const GetConnectedClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetConnectedClusterResponseTagsMap),
-    location: S.String,
-    properties: ConnectedClusterProperties,
-    identity: ConnectedClusterIdentity,
-    kind: S.optional(ConnectedClusterKind),
-  }),
-).annotate({
-  identifier: "GetConnectedClusterResponse",
-}) as any as S.Schema<GetConnectedClusterResponse>;
+export const GetConnectedClusterResponse =
+  ConnectedClusterCreateOrReplaceResponse as any as S.Schema<GetConnectedClusterResponse>;
 
 export interface GetOperationRequest {}
 export const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -831,10 +806,8 @@ export const ListConnectedClusterByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type ConnectedClusterTagsMap = { [key: string]: string | undefined };
-export const ConnectedClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectedClusterTagsMap>;
+export const ConnectedClusterTagsMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<ConnectedClusterTagsMap>;
 
 /** Represents a connected cluster. */
 export interface ConnectedCluster {
@@ -1007,10 +980,8 @@ export const CredentialResults = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConnectedClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectedClusterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConnectedClusterRequestTagsMap>;
+export const UpdateConnectedClusterRequestTagsMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateConnectedClusterRequestTagsMap>;
 
 /** Indicates whether Azure Hybrid Benefit is opted in */
 export type AzureHybridBenefit = "True" | "False" | "NotApplicable";
@@ -1071,10 +1042,8 @@ export const UpdateConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConnectedClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectedClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConnectedClusterResponseTagsMap>;
+export const UpdateConnectedClusterResponseTagsMap =
+  ConnectedClusterCreateOrReplaceRequestTagsMap as any as S.Schema<UpdateConnectedClusterResponseTagsMap>;
 
 export interface UpdateConnectedClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1096,21 +1065,8 @@ export interface UpdateConnectedClusterResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const UpdateConnectedClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateConnectedClusterResponseTagsMap),
-    location: S.String,
-    properties: ConnectedClusterProperties,
-    identity: ConnectedClusterIdentity,
-    kind: S.optional(ConnectedClusterKind),
-  }),
-).annotate({
-  identifier: "UpdateConnectedClusterResponse",
-}) as any as S.Schema<UpdateConnectedClusterResponse>;
+export const UpdateConnectedClusterResponse =
+  ConnectedClusterCreateOrReplaceResponse as any as S.Schema<UpdateConnectedClusterResponse>;
 
 export type ConnectedClusterCreateOrReplaceError = AzureOpError;
 /** Register a new Kubernetes cluster with Azure Resource Manager. API to register a new Kubernetes cluster and create or replace a connected cluster tracked resource in Azure Resource Manager (ARM). */

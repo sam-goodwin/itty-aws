@@ -163,18 +163,11 @@ export interface QueryParameter {
   /** Parameter name. */
   name?: string;
 }
-export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exactMatch: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
+export const QueryParameter = HttpHeader as any as S.Schema<QueryParameter>;
 
 /** Query parameters for the rule. */
 export type RuleQueryParametersList = Array<QueryParameter>;
-export const RuleQueryParametersList = /*@__PURE__*/ S.Array(
-  QueryParameter,
-) as any as S.Schema<RuleQueryParametersList>;
+export const RuleQueryParametersList = RuleHeadersList as any as S.Schema<RuleQueryParametersList>;
 
 export interface Rule {
   cookiePersistence?: CookiePersistence;
@@ -324,9 +317,8 @@ export const CreateLoadBalancerRequestNetworksList = /*@__PURE__*/ S.Array(
 
 /** Application Load Balancer is accessible only from an IP address in this range. May be combined with `ipBlockListName`; `allowedSourceRanges` is evaluated first, then `ipBlockListName`. */
 export type LoadbalancerOptionAccessControlAllowedSourceRangesList = Array<string>;
-export const LoadbalancerOptionAccessControlAllowedSourceRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadbalancerOptionAccessControlAllowedSourceRangesList>;
+export const LoadbalancerOptionAccessControlAllowedSourceRangesList =
+  CertificateConfigCertificateIdsList as any as S.Schema<LoadbalancerOptionAccessControlAllowedSourceRangesList>;
 
 /** Use this option to limit the IP ranges that can use the Application Load Balancer. `allowed_source_ranges` and `ip_block_list_name` may be set together. When both are set, `allowed_source_ranges` is evaluated first, then `ip_block_list_name` is evaluated. */
 export interface LoadbalancerOptionAccessControl {
@@ -408,9 +400,8 @@ export const LoadBalancerOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** List of HTTP status codes that indicate a healthy response */
 export type HttpHealthChecksOkStatusesList = Array<string>;
-export const HttpHealthChecksOkStatusesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HttpHealthChecksOkStatusesList>;
+export const HttpHealthChecksOkStatusesList =
+  CertificateConfigCertificateIdsList as any as S.Schema<HttpHealthChecksOkStatusesList>;
 
 /** Set this to configure TLS settings. */
 export interface TlsConfig {
@@ -602,16 +593,13 @@ export const LoadBalancerErrorsList = /*@__PURE__*/ S.Array(
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per ALB. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type LoadBalancerLabelsMap = { [key: string]: string | undefined };
-export const LoadBalancerLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LoadBalancerLabelsMap>;
+export const LoadBalancerLabelsMap =
+  CreateLoadBalancerRequestLabelsMap as any as S.Schema<LoadBalancerLabelsMap>;
 
 /** There is a maximum listener count of 20. */
 export type LoadBalancerListenersList = Array<Listener>;
-export const LoadBalancerListenersList = /*@__PURE__*/ S.Array(
-  Listener,
-) as any as S.Schema<LoadBalancerListenersList>;
+export const LoadBalancerListenersList =
+  CreateLoadBalancerRequestListenersList as any as S.Schema<LoadBalancerListenersList>;
 
 export interface SecurityGroup {
   /** ID of the security Group */
@@ -628,9 +616,8 @@ export const SecurityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of networks that listeners and targets reside in. Currently limited to one. Not changeable after creation. */
 export type LoadBalancerNetworksList = Array<Network>;
-export const LoadBalancerNetworksList = /*@__PURE__*/ S.Array(
-  Network,
-) as any as S.Schema<LoadBalancerNetworksList>;
+export const LoadBalancerNetworksList =
+  CreateLoadBalancerRequestNetworksList as any as S.Schema<LoadBalancerNetworksList>;
 
 export type LoadBalancerStatus =
   | "STATUS_UNSPECIFIED"
@@ -642,9 +629,8 @@ export const LoadBalancerStatus = S.String;
 
 /** List of all target pools which will be used in the Application Load Balancer. Limited to 20. */
 export type LoadBalancerTargetPoolsList = Array<TargetPool>;
-export const LoadBalancerTargetPoolsList = /*@__PURE__*/ S.Array(
-  TargetPool,
-) as any as S.Schema<LoadBalancerTargetPoolsList>;
+export const LoadBalancerTargetPoolsList =
+  CreateLoadBalancerRequestTargetPoolsList as any as S.Schema<LoadBalancerTargetPoolsList>;
 
 export interface LoadBalancer {
   /** Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation. */
@@ -749,11 +735,8 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 export type DeleteLoadBalancerResponse2 = unknown;
-export const DeleteLoadBalancerResponse2 = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteLoadBalancerResponse2",
-}) as any as S.Schema<DeleteLoadBalancerResponse2>;
+export const DeleteLoadBalancerResponse2 =
+  DeleteCredentialsResponse2 as any as S.Schema<DeleteLoadBalancerResponse2>;
 
 export interface GetCredentialsRequest {
   projectId: string;
@@ -1011,38 +994,28 @@ export const UpdateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCredentialsResponse {
   credential?: CredentialsResponse;
 }
-export const UpdateCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credential: S.optional(CredentialsResponse),
-  }),
-).annotate({
-  identifier: "UpdateCredentialsResponse",
-}) as any as S.Schema<UpdateCredentialsResponse>;
+export const UpdateCredentialsResponse =
+  CreateCredentialsResponse as any as S.Schema<UpdateCredentialsResponse>;
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per ALB. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type UpdateLoadBalancerRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateLoadBalancerRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLoadBalancerRequestLabelsMap>;
+export const UpdateLoadBalancerRequestLabelsMap =
+  CreateLoadBalancerRequestLabelsMap as any as S.Schema<UpdateLoadBalancerRequestLabelsMap>;
 
 /** There is a maximum listener count of 20. */
 export type UpdateLoadBalancerRequestListenersList = Array<Listener>;
-export const UpdateLoadBalancerRequestListenersList = /*@__PURE__*/ S.Array(
-  Listener,
-) as any as S.Schema<UpdateLoadBalancerRequestListenersList>;
+export const UpdateLoadBalancerRequestListenersList =
+  CreateLoadBalancerRequestListenersList as any as S.Schema<UpdateLoadBalancerRequestListenersList>;
 
 /** List of networks that listeners and targets reside in. Currently limited to one. Not changeable after creation. */
 export type UpdateLoadBalancerRequestNetworksList = Array<Network>;
-export const UpdateLoadBalancerRequestNetworksList = /*@__PURE__*/ S.Array(
-  Network,
-) as any as S.Schema<UpdateLoadBalancerRequestNetworksList>;
+export const UpdateLoadBalancerRequestNetworksList =
+  CreateLoadBalancerRequestNetworksList as any as S.Schema<UpdateLoadBalancerRequestNetworksList>;
 
 /** List of all target pools which will be used in the Application Load Balancer. Limited to 20. */
 export type UpdateLoadBalancerRequestTargetPoolsList = Array<TargetPool>;
-export const UpdateLoadBalancerRequestTargetPoolsList = /*@__PURE__*/ S.Array(
-  TargetPool,
-) as any as S.Schema<UpdateLoadBalancerRequestTargetPoolsList>;
+export const UpdateLoadBalancerRequestTargetPoolsList =
+  CreateLoadBalancerRequestTargetPoolsList as any as S.Schema<UpdateLoadBalancerRequestTargetPoolsList>;
 
 export interface UpdateLoadBalancerRequest {
   projectId: string;
@@ -1094,9 +1067,8 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all targets which will be used in the pool. Limited to 250. */
 export type UpdateTargetPoolRequestTargetsList = Array<Target>;
-export const UpdateTargetPoolRequestTargetsList = /*@__PURE__*/ S.Array(
-  Target,
-) as any as S.Schema<UpdateTargetPoolRequestTargetsList>;
+export const UpdateTargetPoolRequestTargetsList =
+  TargetPoolTargetsList as any as S.Schema<UpdateTargetPoolRequestTargetsList>;
 
 export interface UpdateTargetPoolRequest {
   projectId: string;

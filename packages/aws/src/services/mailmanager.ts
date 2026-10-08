@@ -600,7 +600,7 @@ export const RuleIpOperator = S.String;
 
 export type RuleIpStringValue = string;
 export type RuleIpValueList = string[];
-export const RuleIpValueList = /*@__PURE__*/ S.Array(S.String);
+export const RuleIpValueList = RuleAddressListArnList as any as S.Schema<RuleIpValueList>;
 export interface RuleIpExpression {
   Evaluate: RuleIpToEvaluate;
   Operator: RuleIpOperator;
@@ -714,9 +714,7 @@ export const RuleCondition = /*@__PURE__*/ S.Union([
 export type RuleConditions = RuleCondition[];
 export const RuleConditions = /*@__PURE__*/ S.Array(RuleCondition);
 export interface DropAction {}
-export const DropAction = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DropAction",
-}) as any as S.Schema<DropAction>;
+export const DropAction = NoAuthentication as any as S.Schema<DropAction>;
 export type ActionFailurePolicy = "CONTINUE" | "DROP" | (string & {});
 export const ActionFailurePolicy = S.String;
 
@@ -782,7 +780,7 @@ export const AddHeaderAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddHeaderAction" }) as any as S.Schema<AddHeaderAction>;
 export type EmailAddress = string | redacted.Redacted<string>;
 export type Recipients = (string | redacted.Redacted<string>)[];
-export const Recipients = /*@__PURE__*/ S.Array(SensitiveString);
+export const Recipients = RuleStringList as any as S.Schema<Recipients>;
 export interface ReplaceRecipientAction {
   ReplaceWith?: (string | redacted.Redacted<string>)[];
 }
@@ -1114,9 +1112,7 @@ export interface IngressAnalysis {
   Analyzer: string;
   ResultField: string;
 }
-export const IngressAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Analyzer: S.String, ResultField: S.String }),
-).annotate({ identifier: "IngressAnalysis" }) as any as S.Schema<IngressAnalysis>;
+export const IngressAnalysis = Analysis as any as S.Schema<IngressAnalysis>;
 export type IngressStringToEvaluate =
   | { Attribute: IngressStringEmailAttribute; Analysis?: never }
   | { Attribute?: never; Analysis: IngressAnalysis };
@@ -1134,7 +1130,7 @@ export type IngressStringOperator =
 export const IngressStringOperator = S.String;
 
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = RuleAddressListArnList as any as S.Schema<StringList>;
 export interface IngressStringExpression {
   Evaluate: IngressStringToEvaluate;
   Operator: IngressStringOperator;
@@ -1159,7 +1155,7 @@ export const IngressIpOperator = S.String;
 
 export type Ipv4Cidr = string;
 export type Ipv4Cidrs = string[];
-export const Ipv4Cidrs = /*@__PURE__*/ S.Array(S.String);
+export const Ipv4Cidrs = RuleAddressListArnList as any as S.Schema<Ipv4Cidrs>;
 export interface IngressIpv4Expression {
   Evaluate: IngressIpToEvaluate;
   Operator: IngressIpOperator;
@@ -1177,7 +1173,7 @@ export const IngressIpv6ToEvaluate = /*@__PURE__*/ S.Union([
 ]);
 export type Ipv6Cidr = string;
 export type Ipv6Cidrs = string[];
-export const Ipv6Cidrs = /*@__PURE__*/ S.Array(S.String);
+export const Ipv6Cidrs = RuleAddressListArnList as any as S.Schema<Ipv6Cidrs>;
 export interface IngressIpv6Expression {
   Evaluate: IngressIpv6ToEvaluate;
   Operator: IngressIpOperator;
@@ -1217,7 +1213,8 @@ export type IngressAddressListEmailAttribute = "RECIPIENT" | (string & {});
 export const IngressAddressListEmailAttribute = S.String;
 
 export type IngressAddressListArnList = string[];
-export const IngressAddressListArnList = /*@__PURE__*/ S.Array(S.String);
+export const IngressAddressListArnList =
+  RuleAddressListArnList as any as S.Schema<IngressAddressListArnList>;
 export interface IngressIsInAddressList {
   Attribute: IngressAddressListEmailAttribute;
   AddressLists: string[];
@@ -1342,9 +1339,8 @@ export const DeleteAddonInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAddonInstanceRequest",
 }) as any as S.Schema<DeleteAddonInstanceRequest>;
 export interface DeleteAddonInstanceResponse {}
-export const DeleteAddonInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAddonInstanceResponse",
-}) as any as S.Schema<DeleteAddonInstanceResponse>;
+export const DeleteAddonInstanceResponse =
+  NoAuthentication as any as S.Schema<DeleteAddonInstanceResponse>;
 export interface DeleteAddonSubscriptionRequest {
   AddonSubscriptionId: string;
 }
@@ -1368,9 +1364,8 @@ export const DeleteAddressListRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAddressListRequest" }) as any as S.Schema<DeleteAddressListRequest>;
 export interface DeleteAddressListResponse {}
-export const DeleteAddressListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAddressListResponse",
-}) as any as S.Schema<DeleteAddressListResponse>;
+export const DeleteAddressListResponse =
+  NoAuthentication as any as S.Schema<DeleteAddressListResponse>;
 export interface DeleteArchiveRequest {
   ArchiveId: string;
 }
@@ -1380,9 +1375,7 @@ export const DeleteArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteArchiveRequest" }) as any as S.Schema<DeleteArchiveRequest>;
 export interface DeleteArchiveResponse {}
-export const DeleteArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteArchiveResponse",
-}) as any as S.Schema<DeleteArchiveResponse>;
+export const DeleteArchiveResponse = NoAuthentication as any as S.Schema<DeleteArchiveResponse>;
 export interface DeleteIngressPointRequest {
   IngressPointId: string;
 }
@@ -1394,9 +1387,8 @@ export const DeleteIngressPointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIngressPointRequest",
 }) as any as S.Schema<DeleteIngressPointRequest>;
 export interface DeleteIngressPointResponse {}
-export const DeleteIngressPointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIngressPointResponse",
-}) as any as S.Schema<DeleteIngressPointResponse>;
+export const DeleteIngressPointResponse =
+  NoAuthentication as any as S.Schema<DeleteIngressPointResponse>;
 export interface DeleteRelayRequest {
   RelayId: string;
 }
@@ -1406,9 +1398,7 @@ export const DeleteRelayRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRelayRequest" }) as any as S.Schema<DeleteRelayRequest>;
 export interface DeleteRelayResponse {}
-export const DeleteRelayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRelayResponse",
-}) as any as S.Schema<DeleteRelayResponse>;
+export const DeleteRelayResponse = NoAuthentication as any as S.Schema<DeleteRelayResponse>;
 export interface DeleteRuleSetRequest {
   RuleSetId: string;
 }
@@ -1418,9 +1408,7 @@ export const DeleteRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRuleSetRequest" }) as any as S.Schema<DeleteRuleSetRequest>;
 export interface DeleteRuleSetResponse {}
-export const DeleteRuleSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRuleSetResponse",
-}) as any as S.Schema<DeleteRuleSetResponse>;
+export const DeleteRuleSetResponse = NoAuthentication as any as S.Schema<DeleteRuleSetResponse>;
 export interface DeleteTrafficPolicyRequest {
   TrafficPolicyId: string;
 }
@@ -1432,9 +1420,8 @@ export const DeleteTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTrafficPolicyRequest",
 }) as any as S.Schema<DeleteTrafficPolicyRequest>;
 export interface DeleteTrafficPolicyResponse {}
-export const DeleteTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrafficPolicyResponse",
-}) as any as S.Schema<DeleteTrafficPolicyResponse>;
+export const DeleteTrafficPolicyResponse =
+  NoAuthentication as any as S.Schema<DeleteTrafficPolicyResponse>;
 export type Address = string | redacted.Redacted<string>;
 export interface DeregisterMemberFromAddressListRequest {
   AddressListId: string;
@@ -1641,7 +1628,7 @@ export const ArchiveStringOperator = S.String;
 
 export type StringValue = string;
 export type StringValueList = string[];
-export const StringValueList = /*@__PURE__*/ S.Array(S.String);
+export const StringValueList = RuleAddressListArnList as any as S.Schema<StringValueList>;
 export interface ArchiveStringExpression {
   Evaluate: ArchiveStringToEvaluate;
   Operator: ArchiveStringOperator;
@@ -1905,7 +1892,8 @@ export const GetArchiveSearchResultsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetArchiveSearchResultsRequest",
 }) as any as S.Schema<GetArchiveSearchResultsRequest>;
 export type EmailReceivedHeadersList = string[];
-export const EmailReceivedHeadersList = /*@__PURE__*/ S.Array(S.String);
+export const EmailReceivedHeadersList =
+  RuleAddressListArnList as any as S.Schema<EmailReceivedHeadersList>;
 export interface Row {
   ArchivedMessageId?: string;
   ReceivedTimestamp?: Date;
@@ -2307,15 +2295,7 @@ export interface AddressList {
   CreatedTimestamp: Date;
   LastUpdatedTimestamp: Date;
 }
-export const AddressList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AddressListId: S.String,
-    AddressListArn: S.String,
-    AddressListName: S.String,
-    CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    LastUpdatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "AddressList" }) as any as S.Schema<AddressList>;
+export const AddressList = GetAddressListResponse as any as S.Schema<AddressList>;
 export type AddressLists = AddressList[];
 export const AddressLists = /*@__PURE__*/ S.Array(AddressList);
 export interface ListAddressListsResponse {
@@ -2623,11 +2603,8 @@ export const RegisterMemberToAddressListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterMemberToAddressListRequest",
 }) as any as S.Schema<RegisterMemberToAddressListRequest>;
 export interface RegisterMemberToAddressListResponse {}
-export const RegisterMemberToAddressListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegisterMemberToAddressListResponse",
-}) as any as S.Schema<RegisterMemberToAddressListResponse>;
+export const RegisterMemberToAddressListResponse =
+  DeregisterMemberFromAddressListResponse as any as S.Schema<RegisterMemberToAddressListResponse>;
 export interface StartAddressListImportJobRequest {
   JobId: string;
 }
@@ -2639,11 +2616,8 @@ export const StartAddressListImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartAddressListImportJobRequest",
 }) as any as S.Schema<StartAddressListImportJobRequest>;
 export interface StartAddressListImportJobResponse {}
-export const StartAddressListImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartAddressListImportJobResponse",
-}) as any as S.Schema<StartAddressListImportJobResponse>;
+export const StartAddressListImportJobResponse =
+  DeregisterMemberFromAddressListResponse as any as S.Schema<StartAddressListImportJobResponse>;
 export interface StartArchiveExportRequest {
   ArchiveId: string;
   Filters?: ArchiveFilters;
@@ -2711,11 +2685,8 @@ export const StopAddressListImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopAddressListImportJobRequest",
 }) as any as S.Schema<StopAddressListImportJobRequest>;
 export interface StopAddressListImportJobResponse {}
-export const StopAddressListImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopAddressListImportJobResponse",
-}) as any as S.Schema<StopAddressListImportJobResponse>;
+export const StopAddressListImportJobResponse =
+  DeregisterMemberFromAddressListResponse as any as S.Schema<StopAddressListImportJobResponse>;
 export interface StopArchiveExportRequest {
   ExportId: string;
 }
@@ -2725,9 +2696,8 @@ export const StopArchiveExportRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopArchiveExportRequest" }) as any as S.Schema<StopArchiveExportRequest>;
 export interface StopArchiveExportResponse {}
-export const StopArchiveExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopArchiveExportResponse",
-}) as any as S.Schema<StopArchiveExportResponse>;
+export const StopArchiveExportResponse =
+  NoAuthentication as any as S.Schema<StopArchiveExportResponse>;
 export interface StopArchiveSearchRequest {
   SearchId: string;
 }
@@ -2737,9 +2707,8 @@ export const StopArchiveSearchRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopArchiveSearchRequest" }) as any as S.Schema<StopArchiveSearchRequest>;
 export interface StopArchiveSearchResponse {}
-export const StopArchiveSearchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopArchiveSearchResponse",
-}) as any as S.Schema<StopArchiveSearchResponse>;
+export const StopArchiveSearchResponse =
+  NoAuthentication as any as S.Schema<StopArchiveSearchResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -2750,11 +2719,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = NoAuthentication as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = RuleAddressListArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2765,9 +2732,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = NoAuthentication as any as S.Schema<UntagResourceResponse>;
 export interface UpdateArchiveRequest {
   ArchiveId: string;
   ArchiveName?: string;
@@ -2781,9 +2746,7 @@ export const UpdateArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateArchiveRequest" }) as any as S.Schema<UpdateArchiveRequest>;
 export interface UpdateArchiveResponse {}
-export const UpdateArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateArchiveResponse",
-}) as any as S.Schema<UpdateArchiveResponse>;
+export const UpdateArchiveResponse = NoAuthentication as any as S.Schema<UpdateArchiveResponse>;
 export type IngressPointStatusToUpdate = "ACTIVE" | "CLOSED" | (string & {});
 export const IngressPointStatusToUpdate = S.String;
 
@@ -2810,9 +2773,8 @@ export const UpdateIngressPointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateIngressPointRequest",
 }) as any as S.Schema<UpdateIngressPointRequest>;
 export interface UpdateIngressPointResponse {}
-export const UpdateIngressPointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateIngressPointResponse",
-}) as any as S.Schema<UpdateIngressPointResponse>;
+export const UpdateIngressPointResponse =
+  NoAuthentication as any as S.Schema<UpdateIngressPointResponse>;
 export interface UpdateRelayRequest {
   RelayId: string;
   RelayName?: string;
@@ -2830,9 +2792,7 @@ export const UpdateRelayRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateRelayRequest" }) as any as S.Schema<UpdateRelayRequest>;
 export interface UpdateRelayResponse {}
-export const UpdateRelayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRelayResponse",
-}) as any as S.Schema<UpdateRelayResponse>;
+export const UpdateRelayResponse = NoAuthentication as any as S.Schema<UpdateRelayResponse>;
 export interface UpdateRuleSetRequest {
   RuleSetId: string;
   RuleSetName?: string;
@@ -2846,9 +2806,7 @@ export const UpdateRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateRuleSetRequest" }) as any as S.Schema<UpdateRuleSetRequest>;
 export interface UpdateRuleSetResponse {}
-export const UpdateRuleSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRuleSetResponse",
-}) as any as S.Schema<UpdateRuleSetResponse>;
+export const UpdateRuleSetResponse = NoAuthentication as any as S.Schema<UpdateRuleSetResponse>;
 export interface UpdateTrafficPolicyRequest {
   TrafficPolicyId: string;
   TrafficPolicyName?: string;
@@ -2868,9 +2826,8 @@ export const UpdateTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTrafficPolicyRequest",
 }) as any as S.Schema<UpdateTrafficPolicyRequest>;
 export interface UpdateTrafficPolicyResponse {}
-export const UpdateTrafficPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTrafficPolicyResponse",
-}) as any as S.Schema<UpdateTrafficPolicyResponse>;
+export const UpdateTrafficPolicyResponse =
+  NoAuthentication as any as S.Schema<UpdateTrafficPolicyResponse>;
 export type CreateAddonInstanceError =
   | ConflictException
   | ResourceNotFoundException

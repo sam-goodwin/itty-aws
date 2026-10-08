@@ -260,10 +260,8 @@ export const CreateMoveCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MoveCollectionTagsMap = { [key: string]: string | undefined };
-export const MoveCollectionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MoveCollectionTagsMap>;
+export const MoveCollectionTagsMap =
+  CreateMoveCollectionRequestTagsMap as any as S.Schema<MoveCollectionTagsMap>;
 
 /** Defines the provisioning states. */
 export type ProvisioningState = "Succeeded" | "Updating" | "Creating" | "Failed";
@@ -617,9 +615,8 @@ export const MoveResourcePropertiesDependsOnList = /*@__PURE__*/ S.Array(
 
 /** Gets or sets the move resource dependencies overrides. */
 export type MoveResourcePropertiesDependsOnOverridesList = Array<MoveResourceDependencyOverride>;
-export const MoveResourcePropertiesDependsOnOverridesList = /*@__PURE__*/ S.Array(
-  MoveResourceDependencyOverride,
-) as any as S.Schema<MoveResourcePropertiesDependsOnOverridesList>;
+export const MoveResourcePropertiesDependsOnOverridesList =
+  MoveResourcePropertiesInputDependsOnOverridesList as any as S.Schema<MoveResourcePropertiesDependsOnOverridesList>;
 
 /** Defines the move resource properties. */
 export interface MoveResourceProperties {
@@ -1047,9 +1044,8 @@ export const ListMoveCollectionRequiredForRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Gets or sets the list of source Ids for which the input resource is required. */
 export type RequiredForResourcesCollectionSourceIdsList = Array<string>;
-export const RequiredForResourcesCollectionSourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RequiredForResourcesCollectionSourceIdsList>;
+export const RequiredForResourcesCollectionSourceIdsList =
+  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<RequiredForResourcesCollectionSourceIdsList>;
 
 /** Required for resources collection. */
 export interface RequiredForResourcesCollection {
@@ -1118,9 +1114,8 @@ export const MoveResourceCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsBulkRemoveRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsBulkRemoveRequestMoveResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
+export const MoveCollectionsBulkRemoveRequestMoveResourcesList =
+  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
 
 export interface MoveCollectionsBulkRemoveRequest {
   /** The Subscription ID. */
@@ -1155,9 +1150,8 @@ export const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsDiscardRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsDiscardRequestMoveResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MoveCollectionsDiscardRequestMoveResourcesList>;
+export const MoveCollectionsDiscardRequestMoveResourcesList =
+  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsDiscardRequestMoveResourcesList>;
 
 export interface MoveCollectionsDiscardRequest {
   /** The Subscription ID. */
@@ -1194,9 +1188,8 @@ export const MoveCollectionsDiscardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsInitiateMoveRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsInitiateMoveRequestMoveResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MoveCollectionsInitiateMoveRequestMoveResourcesList>;
+export const MoveCollectionsInitiateMoveRequestMoveResourcesList =
+  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsInitiateMoveRequestMoveResourcesList>;
 
 export interface MoveCollectionsInitiateMoveRequest {
   /** The Subscription ID. */
@@ -1295,9 +1288,8 @@ export const MoveCollectionsListMoveCollectionsBySubscriptionRequest = /*@__PURE
 
 /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
 export type MoveCollectionsPrepareRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsPrepareRequestMoveResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MoveCollectionsPrepareRequestMoveResourcesList>;
+export const MoveCollectionsPrepareRequestMoveResourcesList =
+  CommitMoveCollectionRequestMoveResourcesList as any as S.Schema<MoveCollectionsPrepareRequestMoveResourcesList>;
 
 export interface MoveCollectionsPrepareRequest {
   /** The Subscription ID. */
@@ -1359,10 +1351,8 @@ export const MoveCollectionsResolveDependenciesRequest = /*@__PURE__*/ S.suspend
 
 /** Gets or sets the Resource tags. */
 export type UpdateMoveCollectionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMoveCollectionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMoveCollectionRequestTagsMap>;
+export const UpdateMoveCollectionRequestTagsMap =
+  CreateMoveCollectionRequestTagsMap as any as S.Schema<UpdateMoveCollectionRequestTagsMap>;
 
 export interface UpdateMoveCollectionRequest {
   /** The Subscription ID. */

@@ -535,26 +535,16 @@ export interface GoogleCloudDataplexV1DeleteGlossaryTermRequest {
   /** Required. The name of the GlossaryTerm to delete. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id} */
   name?: string;
 }
-export const GoogleCloudDataplexV1DeleteGlossaryTermRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDataplexV1DeleteGlossaryTermRequest",
-}) as any as S.Schema<GoogleCloudDataplexV1DeleteGlossaryTermRequest>;
+export const GoogleCloudDataplexV1DeleteGlossaryTermRequest =
+  GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DeleteGlossaryTermRequest>;
 
 /** Request message for DeleteEntryLink. */
 export interface GoogleCloudDataplexV1DeleteEntryLinkRequest {
   /** Required. The resource name of the Entry Link: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}. */
   name?: string;
 }
-export const GoogleCloudDataplexV1DeleteEntryLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDataplexV1DeleteEntryLinkRequest",
-}) as any as S.Schema<GoogleCloudDataplexV1DeleteEntryLinkRequest>;
+export const GoogleCloudDataplexV1DeleteEntryLinkRequest =
+  GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DeleteEntryLinkRequest>;
 
 /** Update GlossaryCategory Request */
 export interface GoogleCloudDataplexV1UpdateGlossaryCategoryRequest {
@@ -712,13 +702,8 @@ export interface GoogleCloudDataplexV1DeleteEntryRequest {
   /** Required. The resource name of the Entry: projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}. */
   name?: string;
 }
-export const GoogleCloudDataplexV1DeleteEntryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDataplexV1DeleteEntryRequest",
-}) as any as S.Schema<GoogleCloudDataplexV1DeleteEntryRequest>;
+export const GoogleCloudDataplexV1DeleteEntryRequest =
+  GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DeleteEntryRequest>;
 
 /** Represents a proposed change to a metadata resource. */
 export interface GoogleCloudDataplexV1ChangeRequest {
@@ -880,11 +865,8 @@ export const CancelProjectsLocationsDataScansJobsRequest = /*@__PURE__*/ S.suspe
 
 /** Response message for the CancelDataScanJob method. */
 export interface GoogleCloudDataplexV1CancelDataScanJobResponse {}
-export const GoogleCloudDataplexV1CancelDataScanJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudDataplexV1CancelDataScanJobResponse",
-}) as any as S.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse>;
+export const GoogleCloudDataplexV1CancelDataScanJobResponse =
+  GoogleLongrunningCancelOperationRequest as any as S.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse>;
 
 /** Cancel task jobs. */
 export type GoogleCloudDataplexV1CancelJobRequest = GoogleLongrunningCancelOperationRequest;
@@ -1973,13 +1955,8 @@ export interface GoogleCloudDataplexV1DataQualityDimension {
   /** Output only. The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters. */
   name?: string;
 }
-export const GoogleCloudDataplexV1DataQualityDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDataplexV1DataQualityDimension",
-}) as any as S.Schema<GoogleCloudDataplexV1DataQualityDimension>;
+export const GoogleCloudDataplexV1DataQualityDimension =
+  GoogleCloudDataplexV1DeleteGlossaryCategoryRequest as any as S.Schema<GoogleCloudDataplexV1DataQualityDimension>;
 
 /** DataQualityDimensionResult provides a more detailed, per-dimension view of the results. */
 export interface GoogleCloudDataplexV1DataQualityDimensionResult {
@@ -3327,13 +3304,7 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExpo
   resultsTable?: string;
 }
 export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resultsTable: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport",
-  }) as any as S.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport>;
+  GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport as any as S.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport>;
 
 /** The individuals or groups who are designated to receive notifications upon triggers. */
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
@@ -3760,13 +3731,8 @@ export interface GoogleCloudDataplexV1EntryTypeAuthorization {
   /** Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex Universal Catalog owned Entry Types, only settable for Dataplex Universal Catalog owned Types. */
   alternateUsePermission?: string;
 }
-export const GoogleCloudDataplexV1EntryTypeAuthorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alternateUsePermission: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDataplexV1EntryTypeAuthorization",
-}) as any as S.Schema<GoogleCloudDataplexV1EntryTypeAuthorization>;
+export const GoogleCloudDataplexV1EntryTypeAuthorization =
+  GoogleCloudDataplexV1AspectTypeAuthorization as any as S.Schema<GoogleCloudDataplexV1EntryTypeAuthorization>;
 
 /** Entry Type is a template for creating Entries. */
 export interface GoogleCloudDataplexV1EntryType {
@@ -10253,13 +10219,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsAgentTasksRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

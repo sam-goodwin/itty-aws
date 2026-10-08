@@ -228,9 +228,7 @@ export const DeleteHsmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteHsmResponse {
   Status: string;
 }
-export const DeleteHsmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.String }),
-).annotate({ identifier: "DeleteHsmResponse" }) as any as S.Schema<DeleteHsmResponse>;
+export const DeleteHsmResponse = DeleteHapgResponse as any as S.Schema<DeleteHsmResponse>;
 export interface DeleteLunaClientRequest {
   ClientArn: string;
 }
@@ -242,9 +240,8 @@ export const DeleteLunaClientRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLunaClientResponse {
   Status: string;
 }
-export const DeleteLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.String }),
-).annotate({ identifier: "DeleteLunaClientResponse" }) as any as S.Schema<DeleteLunaClientResponse>;
+export const DeleteLunaClientResponse =
+  DeleteHapgResponse as any as S.Schema<DeleteLunaClientResponse>;
 export interface DescribeHapgRequest {
   HapgArn: string;
 }
@@ -257,7 +254,7 @@ export type HsmList = string[];
 export const HsmList = /*@__PURE__*/ S.Array(S.String);
 export type PartitionSerial = string;
 export type PartitionSerialList = string[];
-export const PartitionSerialList = /*@__PURE__*/ S.Array(S.String);
+export const PartitionSerialList = HsmList as any as S.Schema<PartitionSerialList>;
 export type CloudHsmObjectState = "READY" | "UPDATING" | "DEGRADED" | (string & {});
 export const CloudHsmObjectState = S.String;
 
@@ -311,7 +308,7 @@ export type EniId = string;
 export type VpcId = string;
 export type PartitionArn = string;
 export type PartitionList = string[];
-export const PartitionList = /*@__PURE__*/ S.Array(S.String);
+export const PartitionList = HsmList as any as S.Schema<PartitionList>;
 export interface DescribeHsmResponse {
   HsmArn?: string;
   Status?: HsmStatus;
@@ -394,7 +391,7 @@ export type ClientVersion = "5.1" | "5.3" | (string & {});
 export const ClientVersion = S.String;
 
 export type HapgList = string[];
-export const HapgList = /*@__PURE__*/ S.Array(S.String);
+export const HapgList = HsmList as any as S.Schema<HapgList>;
 export interface GetConfigRequest {
   ClientArn: string;
   ClientVersion: ClientVersion;
@@ -424,7 +421,7 @@ export const ListAvailableZonesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAvailableZonesRequest",
 }) as any as S.Schema<ListAvailableZonesRequest>;
 export type AZList = string[];
-export const AZList = /*@__PURE__*/ S.Array(S.String);
+export const AZList = HsmList as any as S.Schema<AZList>;
 export interface ListAvailableZonesResponse {
   AZList?: string[];
 }
@@ -473,7 +470,7 @@ export const ListLunaClientsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListLunaClientsRequest" }) as any as S.Schema<ListLunaClientsRequest>;
 export type ClientList = string[];
-export const ClientList = /*@__PURE__*/ S.Array(S.String);
+export const ClientList = HsmList as any as S.Schema<ClientList>;
 export interface ListLunaClientsResponse {
   ClientList: string[];
   NextToken?: string;
@@ -514,9 +511,7 @@ export const ModifyHapgRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyHapgResponse {
   HapgArn?: string;
 }
-export const ModifyHapgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HapgArn: S.optional(S.String) }),
-).annotate({ identifier: "ModifyHapgResponse" }) as any as S.Schema<ModifyHapgResponse>;
+export const ModifyHapgResponse = CreateHapgResponse as any as S.Schema<ModifyHapgResponse>;
 export interface ModifyHsmRequest {
   HsmArn: string;
   SubnetId?: string;
@@ -548,9 +543,7 @@ export const ModifyHsmRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyHsmResponse {
   HsmArn?: string;
 }
-export const ModifyHsmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HsmArn: S.optional(S.String) }),
-).annotate({ identifier: "ModifyHsmResponse" }) as any as S.Schema<ModifyHsmResponse>;
+export const ModifyHsmResponse = CreateHsmResponse as any as S.Schema<ModifyHsmResponse>;
 export interface ModifyLunaClientRequest {
   ClientArn: string;
   Certificate: string;
@@ -563,11 +556,10 @@ export const ModifyLunaClientRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyLunaClientResponse {
   ClientArn?: string;
 }
-export const ModifyLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ClientArn: S.optional(S.String) }),
-).annotate({ identifier: "ModifyLunaClientResponse" }) as any as S.Schema<ModifyLunaClientResponse>;
+export const ModifyLunaClientResponse =
+  CreateLunaClientResponse as any as S.Schema<ModifyLunaClientResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = HsmList as any as S.Schema<TagKeyList>;
 export interface RemoveTagsFromResourceRequest {
   ResourceArn: string;
   TagKeyList: string[];
@@ -582,11 +574,8 @@ export const RemoveTagsFromResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveTagsFromResourceResponse {
   Status: string;
 }
-export const RemoveTagsFromResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.String }),
-).annotate({
-  identifier: "RemoveTagsFromResourceResponse",
-}) as any as S.Schema<RemoveTagsFromResourceResponse>;
+export const RemoveTagsFromResourceResponse =
+  AddTagsToResourceResponse as any as S.Schema<RemoveTagsFromResourceResponse>;
 export type AddTagsToResourceError =
   | CloudHsmInternalException
   | CloudHsmServiceException

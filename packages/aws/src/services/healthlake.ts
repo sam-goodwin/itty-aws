@@ -219,7 +219,7 @@ export type ProfileNameString = string;
 export type DataTransformationTagKey = string;
 export type DataTransformationTagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const TagMap = StringMap as any as S.Schema<TagMap>;
 export type ClientToken = string;
 export interface CreateDataTransformationProfileRequest {
   SourceFormat: SourceFormat;
@@ -507,16 +507,8 @@ export interface DeleteFHIRDatastoreResponse {
   DatastoreStatus: DatastoreStatus;
   DatastoreEndpoint: string;
 }
-export const DeleteFHIRDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DatastoreId: S.String,
-    DatastoreArn: S.String,
-    DatastoreStatus: DatastoreStatus,
-    DatastoreEndpoint: S.String,
-  }),
-).annotate({
-  identifier: "DeleteFHIRDatastoreResponse",
-}) as any as S.Schema<DeleteFHIRDatastoreResponse>;
+export const DeleteFHIRDatastoreResponse =
+  CreateFHIRDatastoreResponse as any as S.Schema<DeleteFHIRDatastoreResponse>;
 export type DataTransformationJobId = string;
 export interface DescribeDataTransformationJobRequest {
   JobId: string;
@@ -1342,16 +1334,8 @@ export interface RestoreFHIRDatastoreResponse {
   DatastoreStatus: DatastoreStatus;
   DatastoreEndpoint: string;
 }
-export const RestoreFHIRDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DatastoreId: S.String,
-    DatastoreArn: S.String,
-    DatastoreStatus: DatastoreStatus,
-    DatastoreEndpoint: S.String,
-  }),
-).annotate({
-  identifier: "RestoreFHIRDatastoreResponse",
-}) as any as S.Schema<RestoreFHIRDatastoreResponse>;
+export const RestoreFHIRDatastoreResponse =
+  CreateFHIRDatastoreResponse as any as S.Schema<RestoreFHIRDatastoreResponse>;
 export interface StartDataTransformationJobRequest {
   InputDataConfig: TransformationInputDataConfig;
   OutputDataConfig: TransformationOutputDataConfig;
@@ -1458,11 +1442,8 @@ export interface StartFHIRImportJobResponse {
   JobStatus: JobStatus;
   DatastoreId?: string;
 }
-export const StartFHIRImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.String, JobStatus: JobStatus, DatastoreId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartFHIRImportJobResponse",
-}) as any as S.Schema<StartFHIRImportJobResponse>;
+export const StartFHIRImportJobResponse =
+  StartFHIRExportJobResponse as any as S.Schema<StartFHIRImportJobResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -1477,7 +1458,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = DefaultProfiles as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1488,9 +1469,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDataTransformationProfileRequest {
   ProfileId: string;
   ProfileMapping: { [key: string]: string | undefined };
@@ -1557,11 +1536,8 @@ export const UpdateFHIRDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFHIRDatastoreResponse {
   DatastoreProperties: DatastoreProperties;
 }
-export const UpdateFHIRDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DatastoreProperties: DatastoreProperties }),
-).annotate({
-  identifier: "UpdateFHIRDatastoreResponse",
-}) as any as S.Schema<UpdateFHIRDatastoreResponse>;
+export const UpdateFHIRDatastoreResponse =
+  DescribeFHIRDatastoreResponse as any as S.Schema<UpdateFHIRDatastoreResponse>;
 export type AgentMessageString = string | redacted.Redacted<string>;
 export type AgentInputMessageType = "normal" | "confirmation_response" | (string & {});
 export const AgentInputMessageType = S.String;

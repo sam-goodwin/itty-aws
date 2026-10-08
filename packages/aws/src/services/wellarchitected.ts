@@ -230,7 +230,7 @@ export const AssociateLensesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}
 }) as any as S.Schema<AssociateLensesResponse>;
 export type ProfileArn = string;
 export type ProfileArns = string[];
-export const ProfileArns = /*@__PURE__*/ S.Array(S.String);
+export const ProfileArns = LensAliases as any as S.Schema<ProfileArns>;
 export interface AssociateProfilesInput {
   WorkloadId: string;
   ProfileArns?: string[];
@@ -251,22 +251,21 @@ export const AssociateProfilesInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AssociateProfilesInput" }) as any as S.Schema<AssociateProfilesInput>;
 export interface AssociateProfilesResponse {}
-export const AssociateProfilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateProfilesResponse",
-}) as any as S.Schema<AssociateProfilesResponse>;
+export const AssociateProfilesResponse =
+  AssociateLensesResponse as any as S.Schema<AssociateProfilesResponse>;
 export type AgentProfileArn = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type ContextType = "APPLICATION" | (string & {});
 export const ContextType = S.String;
 
 export type ContextAccountIdList = string[];
-export const ContextAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const ContextAccountIdList = LensAliases as any as S.Schema<ContextAccountIdList>;
 export type ContextRegionList = string[];
-export const ContextRegionList = /*@__PURE__*/ S.Array(S.String);
+export const ContextRegionList = LensAliases as any as S.Schema<ContextRegionList>;
 export type ContextAwsServiceList = string[];
-export const ContextAwsServiceList = /*@__PURE__*/ S.Array(S.String);
+export const ContextAwsServiceList = LensAliases as any as S.Schema<ContextAwsServiceList>;
 export type ContextResourceTypeList = string[];
-export const ContextResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const ContextResourceTypeList = LensAliases as any as S.Schema<ContextResourceTypeList>;
 export interface ContextResourceTag {
   key: string;
   value: string;
@@ -451,7 +450,7 @@ export type RoleArn = string;
 export type AccountId = string;
 export type Region = string;
 export type Regions = string[];
-export const Regions = /*@__PURE__*/ S.Array(S.String);
+export const Regions = LensAliases as any as S.Schema<Regions>;
 export interface AggregationConfiguration {
   accountId: string;
   regions: string[];
@@ -466,11 +465,9 @@ export interface Tag {
   key: string;
   value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+export const Tag = ContextResourceTag as any as S.Schema<Tag>;
 export type Tags = Tag[];
-export const Tags = /*@__PURE__*/ S.Array(Tag);
+export const Tags = ContextResourceTagList as any as S.Schema<Tags>;
 export interface CreateAgentProfileRequest {
   name: string;
   displayName?: string | redacted.Redacted<string>;
@@ -656,7 +653,7 @@ export type ProfileDescription = string;
 export type QuestionId = string;
 export type ChoiceId = string;
 export type SelectedProfileChoiceIds = string[];
-export const SelectedProfileChoiceIds = /*@__PURE__*/ S.Array(S.String);
+export const SelectedProfileChoiceIds = LensAliases as any as S.Schema<SelectedProfileChoiceIds>;
 export interface ProfileQuestionUpdate {
   QuestionId?: string;
   SelectedChoiceIds?: string[];
@@ -728,7 +725,7 @@ export const CreateProfileShareOutput = /*@__PURE__*/ S.suspend(() =>
 export type TemplateName = string;
 export type TemplateDescription = string;
 export type ReviewTemplateLenses = string[];
-export const ReviewTemplateLenses = /*@__PURE__*/ S.Array(S.String);
+export const ReviewTemplateLenses = LensAliases as any as S.Schema<ReviewTemplateLenses>;
 export type Notes = string;
 export interface CreateReviewTemplateInput {
   TemplateName?: string;
@@ -796,22 +793,22 @@ export const WorkloadEnvironment = S.String;
 
 export type AwsAccountId = string;
 export type WorkloadAccountIds = string[];
-export const WorkloadAccountIds = /*@__PURE__*/ S.Array(S.String);
+export const WorkloadAccountIds = LensAliases as any as S.Schema<WorkloadAccountIds>;
 export type AwsRegion = string;
 export type WorkloadAwsRegions = string[];
-export const WorkloadAwsRegions = /*@__PURE__*/ S.Array(S.String);
+export const WorkloadAwsRegions = LensAliases as any as S.Schema<WorkloadAwsRegions>;
 export type WorkloadNonAwsRegion = string;
 export type WorkloadNonAwsRegions = string[];
-export const WorkloadNonAwsRegions = /*@__PURE__*/ S.Array(S.String);
+export const WorkloadNonAwsRegions = LensAliases as any as S.Schema<WorkloadNonAwsRegions>;
 export type PillarId = string;
 export type WorkloadPillarPriorities = string[];
-export const WorkloadPillarPriorities = /*@__PURE__*/ S.Array(S.String);
+export const WorkloadPillarPriorities = LensAliases as any as S.Schema<WorkloadPillarPriorities>;
 export type WorkloadArchitecturalDesign = string;
 export type WorkloadReviewOwner = string;
 export type WorkloadIndustryType = string;
 export type WorkloadIndustry = string;
 export type WorkloadLenses = string[];
-export const WorkloadLenses = /*@__PURE__*/ S.Array(S.String);
+export const WorkloadLenses = LensAliases as any as S.Schema<WorkloadLenses>;
 export type TrustedAdvisorIntegrationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const TrustedAdvisorIntegrationStatus = S.String;
 
@@ -832,11 +829,11 @@ export const WorkloadDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkloadDiscoveryConfig" }) as any as S.Schema<WorkloadDiscoveryConfig>;
 export type ApplicationArn = string;
 export type WorkloadApplications = string[];
-export const WorkloadApplications = /*@__PURE__*/ S.Array(S.String);
+export const WorkloadApplications = LensAliases as any as S.Schema<WorkloadApplications>;
 export type WorkloadProfileArns = string[];
-export const WorkloadProfileArns = /*@__PURE__*/ S.Array(S.String);
+export const WorkloadProfileArns = LensAliases as any as S.Schema<WorkloadProfileArns>;
 export type ReviewTemplateArns = string[];
-export const ReviewTemplateArns = /*@__PURE__*/ S.Array(S.String);
+export const ReviewTemplateArns = LensAliases as any as S.Schema<ReviewTemplateArns>;
 export type WorkloadIssueManagementStatus = "ENABLED" | "DISABLED" | "INHERIT" | (string & {});
 export const WorkloadIssueManagementStatus = S.String;
 
@@ -970,9 +967,8 @@ export const DeleteAgentContextRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAgentContextRequest",
 }) as any as S.Schema<DeleteAgentContextRequest>;
 export interface DeleteAgentContextResponse {}
-export const DeleteAgentContextResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentContextResponse",
-}) as any as S.Schema<DeleteAgentContextResponse>;
+export const DeleteAgentContextResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteAgentContextResponse>;
 export interface DeleteAgentGoalRequest {
   profileArn: string;
   id: string;
@@ -994,9 +990,8 @@ export const DeleteAgentGoalRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAgentGoalRequest" }) as any as S.Schema<DeleteAgentGoalRequest>;
 export interface DeleteAgentGoalResponse {}
-export const DeleteAgentGoalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentGoalResponse",
-}) as any as S.Schema<DeleteAgentGoalResponse>;
+export const DeleteAgentGoalResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteAgentGoalResponse>;
 export interface DeleteAgentProfileRequest {
   profileArn: string;
 }
@@ -1016,9 +1011,8 @@ export const DeleteAgentProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAgentProfileRequest",
 }) as any as S.Schema<DeleteAgentProfileRequest>;
 export interface DeleteAgentProfileResponse {}
-export const DeleteAgentProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentProfileResponse",
-}) as any as S.Schema<DeleteAgentProfileResponse>;
+export const DeleteAgentProfileResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteAgentProfileResponse>;
 export type LensStatusType = "ALL" | "DRAFT" | "PUBLISHED" | (string & {});
 export const LensStatusType = S.String;
 
@@ -1040,9 +1034,7 @@ export const DeleteLensInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLensInput" }) as any as S.Schema<DeleteLensInput>;
 export interface DeleteLensResponse {}
-export const DeleteLensResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLensResponse",
-}) as any as S.Schema<DeleteLensResponse>;
+export const DeleteLensResponse = AssociateLensesResponse as any as S.Schema<DeleteLensResponse>;
 export interface DeleteLensShareInput {
   ShareId: string;
   LensAlias: string;
@@ -1068,9 +1060,8 @@ export const DeleteLensShareInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLensShareInput" }) as any as S.Schema<DeleteLensShareInput>;
 export interface DeleteLensShareResponse {}
-export const DeleteLensShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLensShareResponse",
-}) as any as S.Schema<DeleteLensShareResponse>;
+export const DeleteLensShareResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteLensShareResponse>;
 export interface DeleteProfileInput {
   ProfileArn: string;
   ClientRequestToken?: string;
@@ -1094,9 +1085,8 @@ export const DeleteProfileInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProfileInput" }) as any as S.Schema<DeleteProfileInput>;
 export interface DeleteProfileResponse {}
-export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProfileResponse",
-}) as any as S.Schema<DeleteProfileResponse>;
+export const DeleteProfileResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteProfileResponse>;
 export interface DeleteProfileShareInput {
   ShareId: string;
   ProfileArn: string;
@@ -1122,9 +1112,8 @@ export const DeleteProfileShareInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProfileShareInput" }) as any as S.Schema<DeleteProfileShareInput>;
 export interface DeleteProfileShareResponse {}
-export const DeleteProfileShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProfileShareResponse",
-}) as any as S.Schema<DeleteProfileShareResponse>;
+export const DeleteProfileShareResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteProfileShareResponse>;
 export interface DeleteReviewTemplateInput {
   TemplateArn: string;
   ClientRequestToken?: string;
@@ -1150,9 +1139,8 @@ export const DeleteReviewTemplateInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteReviewTemplateInput",
 }) as any as S.Schema<DeleteReviewTemplateInput>;
 export interface DeleteReviewTemplateResponse {}
-export const DeleteReviewTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReviewTemplateResponse",
-}) as any as S.Schema<DeleteReviewTemplateResponse>;
+export const DeleteReviewTemplateResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteReviewTemplateResponse>;
 export interface DeleteTemplateShareInput {
   ShareId: string;
   TemplateArn: string;
@@ -1178,9 +1166,8 @@ export const DeleteTemplateShareInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTemplateShareInput" }) as any as S.Schema<DeleteTemplateShareInput>;
 export interface DeleteTemplateShareResponse {}
-export const DeleteTemplateShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTemplateShareResponse",
-}) as any as S.Schema<DeleteTemplateShareResponse>;
+export const DeleteTemplateShareResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteTemplateShareResponse>;
 export interface DeleteWorkloadInput {
   WorkloadId: string;
   ClientRequestToken?: string;
@@ -1204,9 +1191,8 @@ export const DeleteWorkloadInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkloadInput" }) as any as S.Schema<DeleteWorkloadInput>;
 export interface DeleteWorkloadResponse {}
-export const DeleteWorkloadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkloadResponse",
-}) as any as S.Schema<DeleteWorkloadResponse>;
+export const DeleteWorkloadResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteWorkloadResponse>;
 export interface DeleteWorkloadShareInput {
   ShareId: string;
   WorkloadId: string;
@@ -1232,9 +1218,8 @@ export const DeleteWorkloadShareInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkloadShareInput" }) as any as S.Schema<DeleteWorkloadShareInput>;
 export interface DeleteWorkloadShareResponse {}
-export const DeleteWorkloadShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkloadShareResponse",
-}) as any as S.Schema<DeleteWorkloadShareResponse>;
+export const DeleteWorkloadShareResponse =
+  AssociateLensesResponse as any as S.Schema<DeleteWorkloadShareResponse>;
 export interface DisassociateLensesInput {
   WorkloadId: string;
   LensAliases?: string[];
@@ -1255,9 +1240,8 @@ export const DisassociateLensesInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisassociateLensesInput" }) as any as S.Schema<DisassociateLensesInput>;
 export interface DisassociateLensesResponse {}
-export const DisassociateLensesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateLensesResponse",
-}) as any as S.Schema<DisassociateLensesResponse>;
+export const DisassociateLensesResponse =
+  AssociateLensesResponse as any as S.Schema<DisassociateLensesResponse>;
 export interface DisassociateProfilesInput {
   WorkloadId: string;
   ProfileArns?: string[];
@@ -1280,9 +1264,8 @@ export const DisassociateProfilesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateProfilesInput",
 }) as any as S.Schema<DisassociateProfilesInput>;
 export interface DisassociateProfilesResponse {}
-export const DisassociateProfilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateProfilesResponse",
-}) as any as S.Schema<DisassociateProfilesResponse>;
+export const DisassociateProfilesResponse =
+  AssociateLensesResponse as any as S.Schema<DisassociateProfilesResponse>;
 export interface ExportLensInput {
   LensAlias: string;
   LensVersion?: string;
@@ -1358,9 +1341,8 @@ export const GetAgentGoalRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAgentGoalResponse {
   goal: GoalSummary;
 }
-export const GetAgentGoalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ goal: GoalSummary }),
-).annotate({ identifier: "GetAgentGoalResponse" }) as any as S.Schema<GetAgentGoalResponse>;
+export const GetAgentGoalResponse =
+  CreateAgentGoalResponse as any as S.Schema<GetAgentGoalResponse>;
 export interface GetAgentProfileRequest {
   profileArn: string;
 }
@@ -1477,10 +1459,10 @@ export const Roi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ estimate: S.optional(S.String), detail: S.String }),
 ).annotate({ identifier: "Roi" }) as any as S.Schema<Roi>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = LensAliases as any as S.Schema<StringList>;
 export type ImpactDetail = string;
 export type ImpactDetails = string[];
-export const ImpactDetails = /*@__PURE__*/ S.Array(S.String);
+export const ImpactDetails = LensAliases as any as S.Schema<ImpactDetails>;
 export interface Insight {
   usagePattern: string;
   signalsDetected?: string;
@@ -1492,10 +1474,10 @@ export type InsightList = Insight[];
 export const InsightList = /*@__PURE__*/ S.Array(Insight);
 export type Highlight = string;
 export type Highlights = string[];
-export const Highlights = /*@__PURE__*/ S.Array(S.String);
+export const Highlights = LensAliases as any as S.Schema<Highlights>;
 export type RecommendedFixStep = string;
 export type RecommendedFixSteps = string[];
-export const RecommendedFixSteps = /*@__PURE__*/ S.Array(S.String);
+export const RecommendedFixSteps = LensAliases as any as S.Schema<RecommendedFixSteps>;
 export interface RemediationSummary {
   recommendation: string;
   steps: string[];
@@ -1704,10 +1686,10 @@ export type GenerationStatus = "QUEUED" | "IN_PROGRESS" | "COMPLETED" | "ERROR" 
 export const GenerationStatus = S.String;
 
 export type GoalIdList = string[];
-export const GoalIdList = /*@__PURE__*/ S.Array(S.String);
+export const GoalIdList = LensAliases as any as S.Schema<GoalIdList>;
 export type ItemId = string;
 export type ItemIds = string[];
-export const ItemIds = /*@__PURE__*/ S.Array(S.String);
+export const ItemIds = LensAliases as any as S.Schema<ItemIds>;
 export interface PillarItem {
   pillar: Pillar;
   ids: string[];
@@ -1855,7 +1837,7 @@ export const Choice = /*@__PURE__*/ S.suspend(() =>
 export type Choices = Choice[];
 export const Choices = /*@__PURE__*/ S.Array(Choice);
 export type SelectedChoices = string[];
-export const SelectedChoices = /*@__PURE__*/ S.Array(S.String);
+export const SelectedChoices = LensAliases as any as S.Schema<SelectedChoices>;
 export type ChoiceStatus = "SELECTED" | "NOT_APPLICABLE" | "UNSELECTED" | (string & {});
 export const ChoiceStatus = S.String;
 
@@ -2227,7 +2209,7 @@ export type PillarReviewSummaries = PillarReviewSummary[];
 export const PillarReviewSummaries = /*@__PURE__*/ S.Array(PillarReviewSummary);
 export type SelectedQuestionId = string;
 export type SelectedQuestionIds = string[];
-export const SelectedQuestionIds = /*@__PURE__*/ S.Array(S.String);
+export const SelectedQuestionIds = LensAliases as any as S.Schema<SelectedQuestionIds>;
 export interface SelectedPillar {
   PillarId?: string;
   SelectedQuestionIds?: string[];
@@ -2252,9 +2234,7 @@ export interface WorkloadProfile {
   ProfileArn?: string;
   ProfileVersion?: string;
 }
-export const WorkloadProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProfileArn: S.optional(S.String), ProfileVersion: S.optional(S.String) }),
-).annotate({ identifier: "WorkloadProfile" }) as any as S.Schema<WorkloadProfile>;
+export const WorkloadProfile = CreateProfileOutput as any as S.Schema<WorkloadProfile>;
 export type WorkloadProfiles = WorkloadProfile[];
 export const WorkloadProfiles = /*@__PURE__*/ S.Array(WorkloadProfile);
 export interface LensReview {
@@ -2585,7 +2565,7 @@ export const ProfileChoice = /*@__PURE__*/ S.suspend(() =>
 export type ProfileQuestionChoices = ProfileChoice[];
 export const ProfileQuestionChoices = /*@__PURE__*/ S.Array(ProfileChoice);
 export type SelectedChoiceIds = string[];
-export const SelectedChoiceIds = /*@__PURE__*/ S.Array(S.String);
+export const SelectedChoiceIds = LensAliases as any as S.Schema<SelectedChoiceIds>;
 export type MinSelectedProfileChoices = number;
 export type MaxSelectedProfileChoices = number;
 export interface ProfileQuestion {
@@ -2653,15 +2633,10 @@ export interface ProfileTemplateChoice {
   ChoiceTitle?: string;
   ChoiceDescription?: string;
 }
-export const ProfileTemplateChoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChoiceId: S.optional(S.String),
-    ChoiceTitle: S.optional(S.String),
-    ChoiceDescription: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProfileTemplateChoice" }) as any as S.Schema<ProfileTemplateChoice>;
+export const ProfileTemplateChoice = ProfileChoice as any as S.Schema<ProfileTemplateChoice>;
 export type ProfileTemplateQuestionChoices = ProfileTemplateChoice[];
-export const ProfileTemplateQuestionChoices = /*@__PURE__*/ S.Array(ProfileTemplateChoice);
+export const ProfileTemplateQuestionChoices =
+  ProfileQuestionChoices as any as S.Schema<ProfileTemplateQuestionChoices>;
 export interface ProfileTemplateQuestion {
   QuestionId?: string;
   QuestionTitle?: string;
@@ -3056,27 +3031,7 @@ export interface AgentProfileSummary {
   lastModifiedBy?: string;
   lastModifiedAt?: Date;
 }
-export const AgentProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    businessOverview: S.optional(SensitiveString),
-    pillars: Pillars,
-    deletionProtection: S.optional(S.Boolean),
-    executionRoleArn: S.String,
-    aggregationConfiguration: AggregationConfigurations,
-    arn: S.String,
-    eligibleForScheduledGeneration: S.optional(S.Boolean),
-    eligibleForArchitectureGeneration: S.optional(S.Boolean),
-    fieldErrors: S.optional(FieldErrors),
-    tags: S.optional(Tags),
-    createdBy: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "AgentProfileSummary" }) as any as S.Schema<AgentProfileSummary>;
+export const AgentProfileSummary = GetAgentProfileResponse as any as S.Schema<AgentProfileSummary>;
 export type AgentProfileSummaries = AgentProfileSummary[];
 export const AgentProfileSummaries = /*@__PURE__*/ S.Array(AgentProfileSummary);
 export interface ListAgentProfilesResponse {
@@ -4111,16 +4066,9 @@ export interface ProfileShareSummary {
   Status?: ShareStatus;
   StatusMessage?: string;
 }
-export const ProfileShareSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ShareId: S.optional(S.String),
-    SharedWith: S.optional(S.String),
-    Status: S.optional(ShareStatus),
-    StatusMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProfileShareSummary" }) as any as S.Schema<ProfileShareSummary>;
+export const ProfileShareSummary = LensShareSummary as any as S.Schema<ProfileShareSummary>;
 export type ProfileShareSummaries = ProfileShareSummary[];
-export const ProfileShareSummaries = /*@__PURE__*/ S.Array(ProfileShareSummary);
+export const ProfileShareSummaries = LensShareSummaries as any as S.Schema<ProfileShareSummaries>;
 export interface ListProfileSharesOutput {
   ProfileShareSummaries?: ProfileShareSummary[];
   NextToken?: string;
@@ -4369,16 +4317,9 @@ export interface TemplateShareSummary {
   Status?: ShareStatus;
   StatusMessage?: string;
 }
-export const TemplateShareSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ShareId: S.optional(S.String),
-    SharedWith: S.optional(S.String),
-    Status: S.optional(ShareStatus),
-    StatusMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "TemplateShareSummary" }) as any as S.Schema<TemplateShareSummary>;
+export const TemplateShareSummary = LensShareSummary as any as S.Schema<TemplateShareSummary>;
 export type TemplateShareSummaries = TemplateShareSummary[];
-export const TemplateShareSummaries = /*@__PURE__*/ S.Array(TemplateShareSummary);
+export const TemplateShareSummaries = LensShareSummaries as any as S.Schema<TemplateShareSummaries>;
 export interface ListTemplateSharesOutput {
   TemplateArn?: string;
   TemplateShareSummaries?: TemplateShareSummary[];
@@ -4554,21 +4495,8 @@ export interface StartAgentRecommendationGenerationResponse {
   lastModifiedBy?: string;
   lastModifiedAt?: Date;
 }
-export const StartAgentRecommendationGenerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    profileArn: S.String,
-    name: S.optional(S.String),
-    status: GenerationStatus,
-    estimatedCompletionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    createdBy: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "StartAgentRecommendationGenerationResponse",
-}) as any as S.Schema<StartAgentRecommendationGenerationResponse>;
+export const StartAgentRecommendationGenerationResponse =
+  AgentRecommendationGenerationSummary as any as S.Schema<StartAgentRecommendationGenerationResponse>;
 export interface TagResourceInput {
   WorkloadArn: string;
   Tags?: { [key: string]: string | undefined };
@@ -4582,11 +4510,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = AssociateLensesResponse as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = LensAliases as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   WorkloadArn: string;
   TagKeys?: string[];
@@ -4600,9 +4526,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = AssociateLensesResponse as any as S.Schema<UntagResourceOutput>;
 export interface UpdateAgentContextRequest {
   clientToken?: string;
   profileArn: string;
@@ -4634,11 +4558,8 @@ export const UpdateAgentContextRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentContextResponse {
   context: ContextSummary;
 }
-export const UpdateAgentContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ context: ContextSummary }),
-).annotate({
-  identifier: "UpdateAgentContextResponse",
-}) as any as S.Schema<UpdateAgentContextResponse>;
+export const UpdateAgentContextResponse =
+  CreateAgentContextResponse as any as S.Schema<UpdateAgentContextResponse>;
 export interface UpdateAgentGoalRequest {
   clientToken?: string;
   profileArn: string;
@@ -4670,9 +4591,8 @@ export const UpdateAgentGoalRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentGoalResponse {
   goal: GoalSummary;
 }
-export const UpdateAgentGoalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ goal: GoalSummary }),
-).annotate({ identifier: "UpdateAgentGoalResponse" }) as any as S.Schema<UpdateAgentGoalResponse>;
+export const UpdateAgentGoalResponse =
+  CreateAgentGoalResponse as any as S.Schema<UpdateAgentGoalResponse>;
 export interface UpdateAgentProfileRequest {
   clientToken?: string;
   profileArn: string;
@@ -4728,29 +4648,8 @@ export interface UpdateAgentProfileResponse {
   lastModifiedBy?: string;
   lastModifiedAt?: Date;
 }
-export const UpdateAgentProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    displayName: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    businessOverview: S.optional(SensitiveString),
-    pillars: Pillars,
-    deletionProtection: S.optional(S.Boolean),
-    executionRoleArn: S.String,
-    aggregationConfiguration: AggregationConfigurations,
-    arn: S.String,
-    eligibleForScheduledGeneration: S.optional(S.Boolean),
-    eligibleForArchitectureGeneration: S.optional(S.Boolean),
-    fieldErrors: S.optional(FieldErrors),
-    tags: S.optional(Tags),
-    createdBy: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "UpdateAgentProfileResponse",
-}) as any as S.Schema<UpdateAgentProfileResponse>;
+export const UpdateAgentProfileResponse =
+  CreateAgentProfileResponse as any as S.Schema<UpdateAgentProfileResponse>;
 export interface UpdateAgentRecommendationStatusRequest {
   recommendationArn: string;
   status: RecommendationStatus;
@@ -4776,11 +4675,8 @@ export const UpdateAgentRecommendationStatusRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateAgentRecommendationStatusRequest",
 }) as any as S.Schema<UpdateAgentRecommendationStatusRequest>;
 export interface UpdateAgentRecommendationStatusResponse {}
-export const UpdateAgentRecommendationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAgentRecommendationStatusResponse",
-}) as any as S.Schema<UpdateAgentRecommendationStatusResponse>;
+export const UpdateAgentRecommendationStatusResponse =
+  PutAgentRecommendationFeedbackResponse as any as S.Schema<UpdateAgentRecommendationStatusResponse>;
 export interface ChoiceUpdate {
   Status?: ChoiceStatus;
   Reason?: ChoiceReason;
@@ -4882,9 +4778,8 @@ export const UpdateGlobalSettingsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGlobalSettingsInput",
 }) as any as S.Schema<UpdateGlobalSettingsInput>;
 export interface UpdateGlobalSettingsResponse {}
-export const UpdateGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateGlobalSettingsResponse",
-}) as any as S.Schema<UpdateGlobalSettingsResponse>;
+export const UpdateGlobalSettingsResponse =
+  AssociateLensesResponse as any as S.Schema<UpdateGlobalSettingsResponse>;
 export type IntegratingService = "JIRA" | (string & {});
 export const IntegratingService = S.String;
 
@@ -4910,14 +4805,10 @@ export const UpdateIntegrationInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateIntegrationInput" }) as any as S.Schema<UpdateIntegrationInput>;
 export interface UpdateIntegrationResponse {}
-export const UpdateIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateIntegrationResponse",
-}) as any as S.Schema<UpdateIntegrationResponse>;
+export const UpdateIntegrationResponse =
+  AssociateLensesResponse as any as S.Schema<UpdateIntegrationResponse>;
 export type PillarNotes = { [key: string]: string | undefined };
-export const PillarNotes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const PillarNotes = FieldErrors as any as S.Schema<PillarNotes>;
 export interface UpdateLensReviewInput {
   WorkloadId: string;
   LensAlias: string;
@@ -4967,11 +4858,9 @@ export const UpdateProfileInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProfileOutput {
   Profile?: Profile;
 }
-export const UpdateProfileOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Profile: S.optional(Profile) }),
-).annotate({ identifier: "UpdateProfileOutput" }) as any as S.Schema<UpdateProfileOutput>;
+export const UpdateProfileOutput = GetProfileOutput as any as S.Schema<UpdateProfileOutput>;
 export type ReviewTemplateLensAliases = string[];
-export const ReviewTemplateLensAliases = /*@__PURE__*/ S.Array(S.String);
+export const ReviewTemplateLensAliases = LensAliases as any as S.Schema<ReviewTemplateLensAliases>;
 export interface UpdateReviewTemplateInput {
   TemplateArn: string;
   TemplateName?: string;
@@ -5050,15 +4939,8 @@ export interface UpdateReviewTemplateAnswerOutput {
   LensAlias?: string;
   Answer?: ReviewTemplateAnswer;
 }
-export const UpdateReviewTemplateAnswerOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TemplateArn: S.optional(S.String),
-    LensAlias: S.optional(S.String),
-    Answer: S.optional(ReviewTemplateAnswer),
-  }),
-).annotate({
-  identifier: "UpdateReviewTemplateAnswerOutput",
-}) as any as S.Schema<UpdateReviewTemplateAnswerOutput>;
+export const UpdateReviewTemplateAnswerOutput =
+  GetReviewTemplateAnswerOutput as any as S.Schema<UpdateReviewTemplateAnswerOutput>;
 export interface UpdateReviewTemplateLensReviewInput {
   TemplateArn: string;
   LensAlias: string;
@@ -5088,11 +4970,8 @@ export interface UpdateReviewTemplateLensReviewOutput {
   TemplateArn?: string;
   LensReview?: ReviewTemplateLensReview;
 }
-export const UpdateReviewTemplateLensReviewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TemplateArn: S.optional(S.String), LensReview: S.optional(ReviewTemplateLensReview) }),
-).annotate({
-  identifier: "UpdateReviewTemplateLensReviewOutput",
-}) as any as S.Schema<UpdateReviewTemplateLensReviewOutput>;
+export const UpdateReviewTemplateLensReviewOutput =
+  GetReviewTemplateLensReviewOutput as any as S.Schema<UpdateReviewTemplateLensReviewOutput>;
 export type ShareInvitationAction = "ACCEPT" | "REJECT" | (string & {});
 export const ShareInvitationAction = S.String;
 
@@ -5199,9 +5078,7 @@ export const UpdateWorkloadInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWorkloadOutput {
   Workload?: Workload;
 }
-export const UpdateWorkloadOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Workload: S.optional(Workload) }),
-).annotate({ identifier: "UpdateWorkloadOutput" }) as any as S.Schema<UpdateWorkloadOutput>;
+export const UpdateWorkloadOutput = GetWorkloadOutput as any as S.Schema<UpdateWorkloadOutput>;
 export interface UpdateWorkloadShareInput {
   ShareId: string;
   WorkloadId: string;
@@ -5276,9 +5153,8 @@ export const UpgradeLensReviewInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpgradeLensReviewInput" }) as any as S.Schema<UpgradeLensReviewInput>;
 export interface UpgradeLensReviewResponse {}
-export const UpgradeLensReviewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpgradeLensReviewResponse",
-}) as any as S.Schema<UpgradeLensReviewResponse>;
+export const UpgradeLensReviewResponse =
+  AssociateLensesResponse as any as S.Schema<UpgradeLensReviewResponse>;
 export interface UpgradeProfileVersionInput {
   WorkloadId: string;
   ProfileArn: string;
@@ -5305,9 +5181,8 @@ export const UpgradeProfileVersionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradeProfileVersionInput",
 }) as any as S.Schema<UpgradeProfileVersionInput>;
 export interface UpgradeProfileVersionResponse {}
-export const UpgradeProfileVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpgradeProfileVersionResponse",
-}) as any as S.Schema<UpgradeProfileVersionResponse>;
+export const UpgradeProfileVersionResponse =
+  AssociateLensesResponse as any as S.Schema<UpgradeProfileVersionResponse>;
 export interface UpgradeReviewTemplateLensReviewInput {
   TemplateArn: string;
   LensAlias: string;
@@ -5335,11 +5210,8 @@ export const UpgradeReviewTemplateLensReviewInput = /*@__PURE__*/ S.suspend(() =
   identifier: "UpgradeReviewTemplateLensReviewInput",
 }) as any as S.Schema<UpgradeReviewTemplateLensReviewInput>;
 export interface UpgradeReviewTemplateLensReviewResponse {}
-export const UpgradeReviewTemplateLensReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpgradeReviewTemplateLensReviewResponse",
-}) as any as S.Schema<UpgradeReviewTemplateLensReviewResponse>;
+export const UpgradeReviewTemplateLensReviewResponse =
+  PutAgentRecommendationFeedbackResponse as any as S.Schema<UpgradeReviewTemplateLensReviewResponse>;
 export type ExceptionMessage = string;
 export type ExceptionResourceId = string;
 export type ExceptionResourceType = string;

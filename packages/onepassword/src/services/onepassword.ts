@@ -294,14 +294,12 @@ export type CreateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 export const CreateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 
 export type CreateVaultItemResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const CreateVaultItemResponseUrlsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestUrlsItem,
-) as any as S.Schema<CreateVaultItemResponseUrlsList>;
+export const CreateVaultItemResponseUrlsList =
+  CreateVaultItemRequestUrlsList as any as S.Schema<CreateVaultItemResponseUrlsList>;
 
 export type CreateVaultItemResponseTagsList = Array<string>;
-export const CreateVaultItemResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVaultItemResponseTagsList>;
+export const CreateVaultItemResponseTagsList =
+  CreateVaultItemRequestTagsList as any as S.Schema<CreateVaultItemResponseTagsList>;
 
 export type CreateVaultItemResponseState = "ARCHIVED" | "DELETED";
 export const CreateVaultItemResponseState = S.String;
@@ -310,9 +308,8 @@ export type CreateVaultItemResponseSectionsItem = CreateVaultItemRequestSections
 export const CreateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
 
 export type CreateVaultItemResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const CreateVaultItemResponseSectionsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestSectionsItem,
-) as any as S.Schema<CreateVaultItemResponseSectionsList>;
+export const CreateVaultItemResponseSectionsList =
+  CreateVaultItemRequestSectionsList as any as S.Schema<CreateVaultItemResponseSectionsList>;
 
 export type FieldSection = FieldInputSection;
 export const FieldSection = FieldInputSection;
@@ -477,9 +474,8 @@ export const DownloadFileByIDRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadFileByIDRequest" }) as any as S.Schema<DownloadFileByIDRequest>;
 
 export interface DownloadFileByIDResponse {}
-export const DownloadFileByIDResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadFileByIDResponse",
-}) as any as S.Schema<DownloadFileByIDResponse>;
+export const DownloadFileByIDResponse =
+  DeleteVaultItemResponse as any as S.Schema<DownloadFileByIDResponse>;
 
 export interface GetApiActivityRequest {
   /** How many API Events should be retrieved in a single request. */
@@ -606,9 +602,8 @@ export const GetHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetHeartbeatRequest" }) as any as S.Schema<GetHeartbeatRequest>;
 
 export interface GetHeartbeatResponse {}
-export const GetHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetHeartbeatResponse",
-}) as any as S.Schema<GetHeartbeatResponse>;
+export const GetHeartbeatResponse =
+  DeleteVaultItemResponse as any as S.Schema<GetHeartbeatResponse>;
 
 export interface GetItemFilesRequest {
   /** The UUID of the Vault to fetch Items from */
@@ -627,9 +622,8 @@ export const GetItemFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetItemFilesRequest" }) as any as S.Schema<GetItemFilesRequest>;
 
 export type GetItemFilesResponseBodyList = Array<File>;
-export const GetItemFilesResponseBodyList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<GetItemFilesResponseBodyList>;
+export const GetItemFilesResponseBodyList =
+  CreateVaultItemResponseFilesList as any as S.Schema<GetItemFilesResponseBodyList>;
 
 export type GetItemFilesResponse = GetItemFilesResponseBodyList;
 export const GetItemFilesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -644,9 +638,8 @@ export const GetPrometheusMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPrometheusMetricsRequest>;
 
 export interface GetPrometheusMetricsResponse {}
-export const GetPrometheusMetricsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetPrometheusMetricsResponse",
-}) as any as S.Schema<GetPrometheusMetricsResponse>;
+export const GetPrometheusMetricsResponse =
+  DeleteVaultItemResponse as any as S.Schema<GetPrometheusMetricsResponse>;
 
 export interface GetServerHealthRequest {}
 export const GetServerHealthRequest = /*@__PURE__*/ S.suspend(() =>
@@ -773,14 +766,12 @@ export type GetVaultItemByIdResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 export const GetVaultItemByIdResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 
 export type GetVaultItemByIdResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const GetVaultItemByIdResponseUrlsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestUrlsItem,
-) as any as S.Schema<GetVaultItemByIdResponseUrlsList>;
+export const GetVaultItemByIdResponseUrlsList =
+  CreateVaultItemRequestUrlsList as any as S.Schema<GetVaultItemByIdResponseUrlsList>;
 
 export type GetVaultItemByIdResponseTagsList = Array<string>;
-export const GetVaultItemByIdResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVaultItemByIdResponseTagsList>;
+export const GetVaultItemByIdResponseTagsList =
+  CreateVaultItemRequestTagsList as any as S.Schema<GetVaultItemByIdResponseTagsList>;
 
 export type GetVaultItemByIdResponseState = "ARCHIVED" | "DELETED";
 export const GetVaultItemByIdResponseState = S.String;
@@ -789,19 +780,16 @@ export type GetVaultItemByIdResponseSectionsItem = CreateVaultItemRequestSection
 export const GetVaultItemByIdResponseSectionsItem = CreateVaultItemRequestSectionsItem;
 
 export type GetVaultItemByIdResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const GetVaultItemByIdResponseSectionsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestSectionsItem,
-) as any as S.Schema<GetVaultItemByIdResponseSectionsList>;
+export const GetVaultItemByIdResponseSectionsList =
+  CreateVaultItemRequestSectionsList as any as S.Schema<GetVaultItemByIdResponseSectionsList>;
 
 export type GetVaultItemByIdResponseFieldsList = Array<Field>;
-export const GetVaultItemByIdResponseFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<GetVaultItemByIdResponseFieldsList>;
+export const GetVaultItemByIdResponseFieldsList =
+  CreateVaultItemResponseFieldsList as any as S.Schema<GetVaultItemByIdResponseFieldsList>;
 
 export type GetVaultItemByIdResponseFilesList = Array<File>;
-export const GetVaultItemByIdResponseFilesList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<GetVaultItemByIdResponseFilesList>;
+export const GetVaultItemByIdResponseFilesList =
+  CreateVaultItemResponseFilesList as any as S.Schema<GetVaultItemByIdResponseFilesList>;
 
 export interface GetVaultItemByIdResponse {
   id?: string;
@@ -885,9 +873,7 @@ export type ItemUrlsItem = CreateVaultItemRequestUrlsItem;
 export const ItemUrlsItem = CreateVaultItemRequestUrlsItem;
 
 export type ItemUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const ItemUrlsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestUrlsItem,
-) as any as S.Schema<ItemUrlsList>;
+export const ItemUrlsList = CreateVaultItemRequestUrlsList as any as S.Schema<ItemUrlsList>;
 
 export type ItemTagsList = Array<string>;
 export const ItemTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ItemTagsList>;
@@ -988,32 +974,27 @@ export type UpdateVaultItemRequestUrlsItem = CreateVaultItemRequestUrlsItem;
 export const UpdateVaultItemRequestUrlsItem = CreateVaultItemRequestUrlsItem;
 
 export type UpdateVaultItemRequestUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const UpdateVaultItemRequestUrlsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestUrlsItem,
-) as any as S.Schema<UpdateVaultItemRequestUrlsList>;
+export const UpdateVaultItemRequestUrlsList =
+  CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemRequestUrlsList>;
 
 export type UpdateVaultItemRequestTagsList = Array<string>;
-export const UpdateVaultItemRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVaultItemRequestTagsList>;
+export const UpdateVaultItemRequestTagsList =
+  CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemRequestTagsList>;
 
 export type UpdateVaultItemRequestSectionsItem = CreateVaultItemRequestSectionsItem;
 export const UpdateVaultItemRequestSectionsItem = CreateVaultItemRequestSectionsItem;
 
 export type UpdateVaultItemRequestSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const UpdateVaultItemRequestSectionsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestSectionsItem,
-) as any as S.Schema<UpdateVaultItemRequestSectionsList>;
+export const UpdateVaultItemRequestSectionsList =
+  CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemRequestSectionsList>;
 
 export type UpdateVaultItemRequestFieldsList = Array<FieldInput>;
-export const UpdateVaultItemRequestFieldsList = /*@__PURE__*/ S.Array(
-  FieldInput,
-) as any as S.Schema<UpdateVaultItemRequestFieldsList>;
+export const UpdateVaultItemRequestFieldsList =
+  CreateVaultItemRequestFieldsList as any as S.Schema<UpdateVaultItemRequestFieldsList>;
 
 export type UpdateVaultItemRequestFilesList = Array<FileInput>;
-export const UpdateVaultItemRequestFilesList = /*@__PURE__*/ S.Array(
-  FileInput,
-) as any as S.Schema<UpdateVaultItemRequestFilesList>;
+export const UpdateVaultItemRequestFilesList =
+  CreateVaultItemRequestFilesList as any as S.Schema<UpdateVaultItemRequestFilesList>;
 
 export interface UpdateVaultItemRequest {
   /** The UUID of the Item's Vault */
@@ -1082,14 +1063,12 @@ export type UpdateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 export const UpdateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 
 export type UpdateVaultItemResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const UpdateVaultItemResponseUrlsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestUrlsItem,
-) as any as S.Schema<UpdateVaultItemResponseUrlsList>;
+export const UpdateVaultItemResponseUrlsList =
+  CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemResponseUrlsList>;
 
 export type UpdateVaultItemResponseTagsList = Array<string>;
-export const UpdateVaultItemResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVaultItemResponseTagsList>;
+export const UpdateVaultItemResponseTagsList =
+  CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemResponseTagsList>;
 
 export type UpdateVaultItemResponseState = "ARCHIVED" | "DELETED";
 export const UpdateVaultItemResponseState = S.String;
@@ -1098,19 +1077,16 @@ export type UpdateVaultItemResponseSectionsItem = CreateVaultItemRequestSections
 export const UpdateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
 
 export type UpdateVaultItemResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const UpdateVaultItemResponseSectionsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestSectionsItem,
-) as any as S.Schema<UpdateVaultItemResponseSectionsList>;
+export const UpdateVaultItemResponseSectionsList =
+  CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemResponseSectionsList>;
 
 export type UpdateVaultItemResponseFieldsList = Array<Field>;
-export const UpdateVaultItemResponseFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<UpdateVaultItemResponseFieldsList>;
+export const UpdateVaultItemResponseFieldsList =
+  CreateVaultItemResponseFieldsList as any as S.Schema<UpdateVaultItemResponseFieldsList>;
 
 export type UpdateVaultItemResponseFilesList = Array<File>;
-export const UpdateVaultItemResponseFilesList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<UpdateVaultItemResponseFilesList>;
+export const UpdateVaultItemResponseFilesList =
+  CreateVaultItemResponseFilesList as any as S.Schema<UpdateVaultItemResponseFilesList>;
 
 export interface UpdateVaultItemResponse {
   id?: string;
@@ -1218,14 +1194,12 @@ export type UpdateVaultItemByItemUuidResponseUrlsItem = CreateVaultItemRequestUr
 export const UpdateVaultItemByItemUuidResponseUrlsItem = CreateVaultItemRequestUrlsItem;
 
 export type UpdateVaultItemByItemUuidResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const UpdateVaultItemByItemUuidResponseUrlsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestUrlsItem,
-) as any as S.Schema<UpdateVaultItemByItemUuidResponseUrlsList>;
+export const UpdateVaultItemByItemUuidResponseUrlsList =
+  CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemByItemUuidResponseUrlsList>;
 
 export type UpdateVaultItemByItemUuidResponseTagsList = Array<string>;
-export const UpdateVaultItemByItemUuidResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVaultItemByItemUuidResponseTagsList>;
+export const UpdateVaultItemByItemUuidResponseTagsList =
+  CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemByItemUuidResponseTagsList>;
 
 export type UpdateVaultItemByItemUuidResponseState = "ARCHIVED" | "DELETED";
 export const UpdateVaultItemByItemUuidResponseState = S.String;
@@ -1235,19 +1209,16 @@ export const UpdateVaultItemByItemUuidResponseSectionsItem = CreateVaultItemRequ
 
 export type UpdateVaultItemByItemUuidResponseSectionsList =
   Array<CreateVaultItemRequestSectionsItem>;
-export const UpdateVaultItemByItemUuidResponseSectionsList = /*@__PURE__*/ S.Array(
-  CreateVaultItemRequestSectionsItem,
-) as any as S.Schema<UpdateVaultItemByItemUuidResponseSectionsList>;
+export const UpdateVaultItemByItemUuidResponseSectionsList =
+  CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemByItemUuidResponseSectionsList>;
 
 export type UpdateVaultItemByItemUuidResponseFieldsList = Array<Field>;
-export const UpdateVaultItemByItemUuidResponseFieldsList = /*@__PURE__*/ S.Array(
-  Field,
-) as any as S.Schema<UpdateVaultItemByItemUuidResponseFieldsList>;
+export const UpdateVaultItemByItemUuidResponseFieldsList =
+  CreateVaultItemResponseFieldsList as any as S.Schema<UpdateVaultItemByItemUuidResponseFieldsList>;
 
 export type UpdateVaultItemByItemUuidResponseFilesList = Array<File>;
-export const UpdateVaultItemByItemUuidResponseFilesList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<UpdateVaultItemByItemUuidResponseFilesList>;
+export const UpdateVaultItemByItemUuidResponseFilesList =
+  CreateVaultItemResponseFilesList as any as S.Schema<UpdateVaultItemByItemUuidResponseFilesList>;
 
 export interface UpdateVaultItemByItemUuidResponse {
   id?: string;

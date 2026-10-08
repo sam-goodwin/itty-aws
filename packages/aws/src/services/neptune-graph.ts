@@ -559,7 +559,7 @@ export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
 export interface CreatePrivateGraphEndpointInput {
   graphIdentifier: string;
   vpcId?: string;
@@ -648,25 +648,7 @@ export interface DeleteGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const DeleteGraphOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(GraphStatus),
-    statusReason: S.optional(S.String),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    provisionedMemory: S.optional(S.Number),
-    endpoint: S.optional(S.String),
-    publicConnectivity: S.optional(S.Boolean),
-    vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
-    replicaCount: S.optional(S.Number),
-    kmsKeyIdentifier: S.optional(S.String),
-    sourceSnapshotId: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    buildNumber: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteGraphOutput" }) as any as S.Schema<DeleteGraphOutput>;
+export const DeleteGraphOutput = CreateGraphOutput as any as S.Schema<DeleteGraphOutput>;
 export type SnapshotIdentifier = string;
 export interface DeleteGraphSnapshotInput {
   snapshotIdentifier: string;
@@ -693,19 +675,8 @@ export interface DeleteGraphSnapshotOutput {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-export const DeleteGraphSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    sourceGraphId: S.optional(S.String),
-    snapshotCreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(SnapshotStatus),
-    kmsKeyIdentifier: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteGraphSnapshotOutput",
-}) as any as S.Schema<DeleteGraphSnapshotOutput>;
+export const DeleteGraphSnapshotOutput =
+  CreateGraphSnapshotOutput as any as S.Schema<DeleteGraphSnapshotOutput>;
 export interface DeletePrivateGraphEndpointInput {
   graphIdentifier: string;
   vpcId: string;
@@ -734,16 +705,8 @@ export interface DeletePrivateGraphEndpointOutput {
   status: PrivateGraphEndpointStatus;
   vpcEndpointId?: string;
 }
-export const DeletePrivateGraphEndpointOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpcId: S.String,
-    subnetIds: SubnetIds,
-    status: PrivateGraphEndpointStatus,
-    vpcEndpointId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePrivateGraphEndpointOutput",
-}) as any as S.Schema<DeletePrivateGraphEndpointOutput>;
+export const DeletePrivateGraphEndpointOutput =
+  CreatePrivateGraphEndpointOutput as any as S.Schema<DeletePrivateGraphEndpointOutput>;
 export type QueryLanguage = "OPEN_CYPHER" | (string & {});
 export const QueryLanguage = S.String;
 
@@ -936,25 +899,7 @@ export interface GetGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const GetGraphOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(GraphStatus),
-    statusReason: S.optional(S.String),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    provisionedMemory: S.optional(S.Number),
-    endpoint: S.optional(S.String),
-    publicConnectivity: S.optional(S.Boolean),
-    vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
-    replicaCount: S.optional(S.Number),
-    kmsKeyIdentifier: S.optional(S.String),
-    sourceSnapshotId: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    buildNumber: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetGraphOutput" }) as any as S.Schema<GetGraphOutput>;
+export const GetGraphOutput = CreateGraphOutput as any as S.Schema<GetGraphOutput>;
 export interface GetGraphSnapshotInput {
   snapshotIdentifier: string;
 }
@@ -1015,9 +960,9 @@ export const GetGraphSummaryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetGraphSummaryInput" }) as any as S.Schema<GetGraphSummaryInput>;
 export type NodeLabels = string[];
-export const NodeLabels = /*@__PURE__*/ S.Array(S.String);
+export const NodeLabels = SubnetIds as any as S.Schema<NodeLabels>;
 export type EdgeLabels = string[];
-export const EdgeLabels = /*@__PURE__*/ S.Array(S.String);
+export const EdgeLabels = SubnetIds as any as S.Schema<EdgeLabels>;
 export type LongValuedMap = { [key: string]: number | undefined };
 export const LongValuedMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1026,9 +971,9 @@ export const LongValuedMap = /*@__PURE__*/ S.Record(
 export type LongValuedMapList = { [key: string]: number | undefined }[];
 export const LongValuedMapList = /*@__PURE__*/ S.Array(LongValuedMap);
 export type NodeProperties = string[];
-export const NodeProperties = /*@__PURE__*/ S.Array(S.String);
+export const NodeProperties = SubnetIds as any as S.Schema<NodeProperties>;
 export type OutgoingEdgeLabels = string[];
-export const OutgoingEdgeLabels = /*@__PURE__*/ S.Array(S.String);
+export const OutgoingEdgeLabels = SubnetIds as any as S.Schema<OutgoingEdgeLabels>;
 export interface NodeStructure {
   count?: number;
   nodeProperties?: string[];
@@ -1044,7 +989,7 @@ export const NodeStructure = /*@__PURE__*/ S.suspend(() =>
 export type NodeStructures = NodeStructure[];
 export const NodeStructures = /*@__PURE__*/ S.Array(NodeStructure);
 export type EdgeProperties = string[];
-export const EdgeProperties = /*@__PURE__*/ S.Array(S.String);
+export const EdgeProperties = SubnetIds as any as S.Schema<EdgeProperties>;
 export interface EdgeStructure {
   count?: number;
   edgeProperties?: string[];
@@ -1196,16 +1141,8 @@ export interface GetPrivateGraphEndpointOutput {
   status: PrivateGraphEndpointStatus;
   vpcEndpointId?: string;
 }
-export const GetPrivateGraphEndpointOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpcId: S.String,
-    subnetIds: SubnetIds,
-    status: PrivateGraphEndpointStatus,
-    vpcEndpointId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateGraphEndpointOutput",
-}) as any as S.Schema<GetPrivateGraphEndpointOutput>;
+export const GetPrivateGraphEndpointOutput =
+  CreatePrivateGraphEndpointOutput as any as S.Schema<GetPrivateGraphEndpointOutput>;
 export interface GetQueryInput {
   graphIdentifier: string;
   queryId: string;
@@ -1280,19 +1217,7 @@ export interface ExportTaskSummary {
   parquetType?: ParquetType;
   statusReason?: string;
 }
-export const ExportTaskSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    graphId: S.String,
-    roleArn: S.String,
-    taskId: S.String,
-    status: ExportTaskStatus,
-    format: ExportFormat,
-    destination: S.String,
-    kmsKeyIdentifier: S.String,
-    parquetType: S.optional(ParquetType),
-    statusReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExportTaskSummary" }) as any as S.Schema<ExportTaskSummary>;
+export const ExportTaskSummary = CancelExportTaskOutput as any as S.Schema<ExportTaskSummary>;
 export type ExportTaskSummaryList = ExportTaskSummary[];
 export const ExportTaskSummaryList = /*@__PURE__*/ S.Array(ExportTaskSummary);
 export interface ListExportTasksOutput {
@@ -1388,17 +1313,7 @@ export interface GraphSnapshotSummary {
   status?: SnapshotStatus;
   kmsKeyIdentifier?: string;
 }
-export const GraphSnapshotSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    sourceGraphId: S.optional(S.String),
-    snapshotCreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(SnapshotStatus),
-    kmsKeyIdentifier: S.optional(S.String),
-  }),
-).annotate({ identifier: "GraphSnapshotSummary" }) as any as S.Schema<GraphSnapshotSummary>;
+export const GraphSnapshotSummary = GetGraphSnapshotOutput as any as S.Schema<GraphSnapshotSummary>;
 export type GraphSnapshotSummaryList = GraphSnapshotSummary[];
 export const GraphSnapshotSummaryList = /*@__PURE__*/ S.Array(GraphSnapshotSummary);
 export interface ListGraphSnapshotsOutput {
@@ -1439,17 +1354,7 @@ export interface ImportTaskSummary {
   roleArn: string;
   status: ImportTaskStatus;
 }
-export const ImportTaskSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    graphId: S.optional(S.String),
-    taskId: S.String,
-    source: S.String,
-    format: S.optional(Format),
-    parquetType: S.optional(ParquetType),
-    roleArn: S.String,
-    status: ImportTaskStatus,
-  }),
-).annotate({ identifier: "ImportTaskSummary" }) as any as S.Schema<ImportTaskSummary>;
+export const ImportTaskSummary = CancelImportTaskOutput as any as S.Schema<ImportTaskSummary>;
 export type ImportTaskSummaryList = ImportTaskSummary[];
 export const ImportTaskSummaryList = /*@__PURE__*/ S.Array(ImportTaskSummary);
 export interface ListImportTasksOutput {
@@ -1489,16 +1394,8 @@ export interface PrivateGraphEndpointSummary {
   status: PrivateGraphEndpointStatus;
   vpcEndpointId?: string;
 }
-export const PrivateGraphEndpointSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpcId: S.String,
-    subnetIds: SubnetIds,
-    status: PrivateGraphEndpointStatus,
-    vpcEndpointId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateGraphEndpointSummary",
-}) as any as S.Schema<PrivateGraphEndpointSummary>;
+export const PrivateGraphEndpointSummary =
+  CreatePrivateGraphEndpointOutput as any as S.Schema<PrivateGraphEndpointSummary>;
 export type PrivateGraphEndpointSummaryList = PrivateGraphEndpointSummary[];
 export const PrivateGraphEndpointSummaryList = /*@__PURE__*/ S.Array(PrivateGraphEndpointSummary);
 export interface ListPrivateGraphEndpointsOutput {
@@ -1545,15 +1442,7 @@ export interface QuerySummary {
   elapsed?: number;
   state?: QueryState;
 }
-export const QuerySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    queryString: S.optional(S.String),
-    waited: S.optional(S.Number),
-    elapsed: S.optional(S.Number),
-    state: S.optional(QueryState),
-  }),
-).annotate({ identifier: "QuerySummary" }) as any as S.Schema<QuerySummary>;
+export const QuerySummary = GetQueryOutput as any as S.Schema<QuerySummary>;
 export type QuerySummaryList = QuerySummary[];
 export const QuerySummaryList = /*@__PURE__*/ S.Array(QuerySummary);
 export interface ListQueriesOutput {
@@ -1624,25 +1513,7 @@ export interface ResetGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const ResetGraphOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(GraphStatus),
-    statusReason: S.optional(S.String),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    provisionedMemory: S.optional(S.Number),
-    endpoint: S.optional(S.String),
-    publicConnectivity: S.optional(S.Boolean),
-    vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
-    replicaCount: S.optional(S.Number),
-    kmsKeyIdentifier: S.optional(S.String),
-    sourceSnapshotId: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    buildNumber: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResetGraphOutput" }) as any as S.Schema<ResetGraphOutput>;
+export const ResetGraphOutput = CreateGraphOutput as any as S.Schema<ResetGraphOutput>;
 export interface RestoreGraphFromSnapshotInput {
   snapshotIdentifier: string;
   graphName: string;
@@ -1804,25 +1675,7 @@ export interface StartGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const StartGraphOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(GraphStatus),
-    statusReason: S.optional(S.String),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    provisionedMemory: S.optional(S.Number),
-    endpoint: S.optional(S.String),
-    publicConnectivity: S.optional(S.Boolean),
-    vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
-    replicaCount: S.optional(S.Number),
-    kmsKeyIdentifier: S.optional(S.String),
-    sourceSnapshotId: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    buildNumber: S.optional(S.String),
-  }),
-).annotate({ identifier: "StartGraphOutput" }) as any as S.Schema<StartGraphOutput>;
+export const StartGraphOutput = CreateGraphOutput as any as S.Schema<StartGraphOutput>;
 export interface StartImportTaskInput {
   importOptions?: ImportOptions;
   failOnError?: boolean;
@@ -1910,25 +1763,7 @@ export interface StopGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const StopGraphOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(GraphStatus),
-    statusReason: S.optional(S.String),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    provisionedMemory: S.optional(S.Number),
-    endpoint: S.optional(S.String),
-    publicConnectivity: S.optional(S.Boolean),
-    vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
-    replicaCount: S.optional(S.Number),
-    kmsKeyIdentifier: S.optional(S.String),
-    sourceSnapshotId: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    buildNumber: S.optional(S.String),
-  }),
-).annotate({ identifier: "StopGraphOutput" }) as any as S.Schema<StopGraphOutput>;
+export const StopGraphOutput = CreateGraphOutput as any as S.Schema<StopGraphOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1947,11 +1782,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = CancelQueryResponse as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SubnetIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -1973,9 +1806,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = CancelQueryResponse as any as S.Schema<UntagResourceOutput>;
 export interface UpdateGraphInput {
   graphIdentifier: string;
   publicConnectivity?: boolean;
@@ -2017,25 +1848,7 @@ export interface UpdateGraphOutput {
   deletionProtection?: boolean;
   buildNumber?: string;
 }
-export const UpdateGraphOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(GraphStatus),
-    statusReason: S.optional(S.String),
-    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    provisionedMemory: S.optional(S.Number),
-    endpoint: S.optional(S.String),
-    publicConnectivity: S.optional(S.Boolean),
-    vectorSearchConfiguration: S.optional(VectorSearchConfiguration),
-    replicaCount: S.optional(S.Number),
-    kmsKeyIdentifier: S.optional(S.String),
-    sourceSnapshotId: S.optional(S.String),
-    deletionProtection: S.optional(S.Boolean),
-    buildNumber: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateGraphOutput" }) as any as S.Schema<UpdateGraphOutput>;
+export const UpdateGraphOutput = CreateGraphOutput as any as S.Schema<UpdateGraphOutput>;
 export type ConflictExceptionReason = "CONCURRENT_MODIFICATION" | (string & {});
 export const ConflictExceptionReason = S.String;
 

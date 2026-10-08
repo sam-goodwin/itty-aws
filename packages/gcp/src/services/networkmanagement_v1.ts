@@ -90,9 +90,7 @@ export const CancelOrganizationsLocationsGlobalOperationsRequest = /*@__PURE__*/
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -2100,11 +2098,8 @@ export interface CloudFunctionEndpoint {
   /** A [Cloud Function](https://cloud.google.com/functions) name. */
   uri?: string;
 }
-export const CloudFunctionEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "CloudFunctionEndpoint" }) as any as S.Schema<CloudFunctionEndpoint>;
+export const CloudFunctionEndpoint =
+  PrivateConnectionInfo as any as S.Schema<CloudFunctionEndpoint>;
 
 /** Wrapper for Cloud Run revision attributes. */
 export interface CloudRunRevisionEndpoint {
@@ -2136,11 +2131,8 @@ export interface AppEngineVersionEndpoint {
   /** An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name. */
   uri?: string;
 }
-export const AppEngineVersionEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "AppEngineVersionEndpoint" }) as any as S.Schema<AppEngineVersionEndpoint>;
+export const AppEngineVersionEndpoint =
+  PrivateConnectionInfo as any as S.Schema<AppEngineVersionEndpoint>;
 
 export type EndpointLoadBalancerTypeEnum =
   | "LOAD_BALANCER_TYPE_UNSPECIFIED"
@@ -4156,15 +4148,8 @@ export interface QueryOrgVpcFlowLogsConfigsResponse {
   /** List of VPC Flow Log configurations. */
   vpcFlowLogsConfigs?: VpcFlowLogsConfigList;
 }
-export const QueryOrgVpcFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    vpcFlowLogsConfigs: S.optional(VpcFlowLogsConfigList),
-  }),
-).annotate({
-  identifier: "QueryOrgVpcFlowLogsConfigsResponse",
-}) as any as S.Schema<QueryOrgVpcFlowLogsConfigsResponse>;
+export const QueryOrgVpcFlowLogsConfigsResponse =
+  ListVpcFlowLogsConfigsResponse as any as S.Schema<QueryOrgVpcFlowLogsConfigsResponse>;
 
 /** Request for the `RerunConnectivityTest` method. */
 export type RerunConnectivityTestRequest = CancelOperationRequest;
@@ -4267,13 +4252,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export type CancelOrganizationsLocationsGlobalOperationsError =
   | NotFound

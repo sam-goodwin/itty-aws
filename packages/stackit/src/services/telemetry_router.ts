@@ -421,9 +421,8 @@ export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDestinationRequest" }) as any as S.Schema<DeleteDestinationRequest>;
 
 export interface DeleteDestinationResponse {}
-export const DeleteDestinationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDestinationResponse",
-}) as any as S.Schema<DeleteDestinationResponse>;
+export const DeleteDestinationResponse =
+  DeleteAccessTokenResponse as any as S.Schema<DeleteDestinationResponse>;
 
 export type DeleteTelemetryRouterRequestRegionId = "eu01" | "eu02";
 export const DeleteTelemetryRouterRequestRegionId = S.String;
@@ -457,9 +456,8 @@ export const DeleteTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelemetryRouterRequest>;
 
 export interface DeleteTelemetryRouterResponse {}
-export const DeleteTelemetryRouterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTelemetryRouterResponse",
-}) as any as S.Schema<DeleteTelemetryRouterResponse>;
+export const DeleteTelemetryRouterResponse =
+  DeleteAccessTokenResponse as any as S.Schema<DeleteTelemetryRouterResponse>;
 
 export type GetAccessTokenRequestRegionId = "eu01" | "eu02";
 export const GetAccessTokenRequestRegionId = S.String;

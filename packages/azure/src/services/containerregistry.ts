@@ -267,9 +267,8 @@ export const ConnectedRegistryPropertiesInputClientTokenIdsList = /*@__PURE__*/ 
 
 /** The login server properties of the connected registry. */
 export interface LoginServerPropertiesInput {}
-export const LoginServerPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LoginServerPropertiesInput",
-}) as any as S.Schema<LoginServerPropertiesInput>;
+export const LoginServerPropertiesInput =
+  CancelRunResponse as any as S.Schema<LoginServerPropertiesInput>;
 
 /** The verbosity of logs persisted on the connected registry. */
 export type LoggingPropertiesLogLevel = "Debug" | "Information" | "Warning" | "Error" | "None";
@@ -295,9 +294,8 @@ export const LoggingProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryPropertiesInputNotificationsListList = Array<string>;
-export const ConnectedRegistryPropertiesInputNotificationsListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedRegistryPropertiesInputNotificationsListList>;
+export const ConnectedRegistryPropertiesInputNotificationsListList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryPropertiesInputNotificationsListList>;
 
 /** The garbage collection properties of the connected registry. */
 export interface GarbageCollectionProperties {
@@ -438,9 +436,8 @@ export const ParentProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
 export type ConnectedRegistryPropertiesClientTokenIdsList = Array<string>;
-export const ConnectedRegistryPropertiesClientTokenIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedRegistryPropertiesClientTokenIdsList>;
+export const ConnectedRegistryPropertiesClientTokenIdsList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryPropertiesClientTokenIdsList>;
 
 /** Indicates whether HTTPS is enabled for the login server. */
 export type TlsStatus = "Enabled" | "Disabled";
@@ -523,9 +520,8 @@ export const ConnectedRegistryPropertiesStatusDetailsList = /*@__PURE__*/ S.Arra
 
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryPropertiesNotificationsListList = Array<string>;
-export const ConnectedRegistryPropertiesNotificationsListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedRegistryPropertiesNotificationsListList>;
+export const ConnectedRegistryPropertiesNotificationsListList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryPropertiesNotificationsListList>;
 
 /** The properties of a connected registry. */
 export interface ConnectedRegistryProperties {
@@ -737,9 +733,8 @@ export const CreateCredentialSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
 export type CredentialSetPropertiesAuthCredentialsList = Array<AuthCredential>;
-export const CredentialSetPropertiesAuthCredentialsList = /*@__PURE__*/ S.Array(
-  AuthCredential,
-) as any as S.Schema<CredentialSetPropertiesAuthCredentialsList>;
+export const CredentialSetPropertiesAuthCredentialsList =
+  CredentialSetPropertiesInputAuthCredentialsList as any as S.Schema<CredentialSetPropertiesAuthCredentialsList>;
 
 /** The properties of a credential set resource. */
 export interface CredentialSetProperties {
@@ -1140,10 +1135,8 @@ export const CreateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateRegistryResponseTagsMap = { [key: string]: string | undefined };
-export const CreateRegistryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateRegistryResponseTagsMap>;
+export const CreateRegistryResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CreateRegistryResponseTagsMap>;
 
 /** The status of an Azure resource at the time the operation was called. */
 export interface Status {
@@ -1243,9 +1236,8 @@ export const EncryptionProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** List of host names that will serve data when dataEndpointEnabled is true. */
 export type RegistryPropertiesDataEndpointHostNamesList = Array<string>;
-export const RegistryPropertiesDataEndpointHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegistryPropertiesDataEndpointHostNamesList>;
+export const RegistryPropertiesDataEndpointHostNamesList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<RegistryPropertiesDataEndpointHostNamesList>;
 
 /** The Private Endpoint resource. */
 export interface PrivateEndpoint {
@@ -1448,10 +1440,8 @@ export const CreateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateReplicationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateReplicationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateReplicationRequestTagsMap>;
+export const CreateReplicationRequestTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CreateReplicationRequestTagsMap>;
 
 /** Whether or not zone redundancy is enabled for this container registry replication */
 export type ReplicationPropertiesInputZoneRedundancy = "Enabled" | "Disabled";
@@ -1510,10 +1500,8 @@ export const CreateReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateReplicationResponseTagsMap = { [key: string]: string | undefined };
-export const CreateReplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateReplicationResponseTagsMap>;
+export const CreateReplicationResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CreateReplicationResponseTagsMap>;
 
 /** Whether or not zone redundancy is enabled for this container registry replication */
 export type ReplicationPropertiesZoneRedundancy = "Enabled" | "Disabled";
@@ -1571,9 +1559,8 @@ export const CreateReplicationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
 export type ScopeMapPropertiesInputActionsList = Array<string>;
-export const ScopeMapPropertiesInputActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScopeMapPropertiesInputActionsList>;
+export const ScopeMapPropertiesInputActionsList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ScopeMapPropertiesInputActionsList>;
 
 /** The properties of a scope map. */
 export interface ScopeMapPropertiesInput {
@@ -1620,9 +1607,8 @@ export const CreateScopeMapRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
 export type ScopeMapPropertiesActionsList = Array<string>;
-export const ScopeMapPropertiesActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScopeMapPropertiesActionsList>;
+export const ScopeMapPropertiesActionsList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ScopeMapPropertiesActionsList>;
 
 /** The properties of a scope map. */
 export interface ScopeMapProperties {
@@ -1671,10 +1657,8 @@ export const CreateScopeMapResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type CreateTaskRequestTagsMap = { [key: string]: string | undefined };
-export const CreateTaskRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateTaskRequestTagsMap>;
+export const CreateTaskRequestTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CreateTaskRequestTagsMap>;
 
 /** The identity type. */
 export type IdentityPropertiesType =
@@ -1688,10 +1672,8 @@ export const IdentityPropertiesType = S.String;
 export type IdentityPropertiesUserAssignedIdentitiesMap_2 = {
   [key: string]: UserIdentityProperties | undefined;
 };
-export const IdentityPropertiesUserAssignedIdentitiesMap_2 = /*@__PURE__*/ S.Record(
-  S.String,
-  UserIdentityProperties,
-) as any as S.Schema<IdentityPropertiesUserAssignedIdentitiesMap_2>;
+export const IdentityPropertiesUserAssignedIdentitiesMap_2 =
+  IdentityPropertiesUserAssignedIdentitiesMap as any as S.Schema<IdentityPropertiesUserAssignedIdentitiesMap_2>;
 
 /** Managed identity for the resource. */
 export interface IdentityProperties_2 {
@@ -2118,10 +2100,8 @@ export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type CreateTaskResponseTagsMap = { [key: string]: string | undefined };
-export const CreateTaskResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateTaskResponseTagsMap>;
+export const CreateTaskResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CreateTaskResponseTagsMap>;
 
 /** The provisioning state of the task. */
 export type TaskPropertiesProvisioningState =
@@ -2408,9 +2388,8 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTokenRequest" }) as any as S.Schema<CreateTokenRequest>;
 
 export type TokenCredentialsPropertiesCertificatesList = Array<TokenCertificate>;
-export const TokenCredentialsPropertiesCertificatesList = /*@__PURE__*/ S.Array(
-  TokenCertificate,
-) as any as S.Schema<TokenCredentialsPropertiesCertificatesList>;
+export const TokenCredentialsPropertiesCertificatesList =
+  TokenCredentialsPropertiesInputCertificatesList as any as S.Schema<TokenCredentialsPropertiesCertificatesList>;
 
 /** The password that will be used for authenticating the token of a container registry. */
 export interface TokenPassword {
@@ -2498,19 +2477,15 @@ export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags for the webhook. */
 export type CreateWebhookRequestTagsMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookRequestTagsMap>;
+export const CreateWebhookRequestTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CreateWebhookRequestTagsMap>;
 
 /** Custom headers that will be added to the webhook notifications. */
 export type WebhookPropertiesCreateParametersCustomHeadersMap = {
   [key: string]: string | undefined;
 };
-export const WebhookPropertiesCreateParametersCustomHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookPropertiesCreateParametersCustomHeadersMap>;
+export const WebhookPropertiesCreateParametersCustomHeadersMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<WebhookPropertiesCreateParametersCustomHeadersMap>;
 
 /** The status of the webhook at the time the operation was called. */
 export type WebhookStatus = "enabled" | "disabled";
@@ -2587,16 +2562,13 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateWebhookResponseTagsMap = { [key: string]: string | undefined };
-export const CreateWebhookResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookResponseTagsMap>;
+export const CreateWebhookResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CreateWebhookResponseTagsMap>;
 
 /** The list of actions that trigger the webhook to post notifications. */
 export type WebhookPropertiesActionsList = Array<WebhookAction>;
-export const WebhookPropertiesActionsList = /*@__PURE__*/ S.Array(
-  WebhookAction,
-) as any as S.Schema<WebhookPropertiesActionsList>;
+export const WebhookPropertiesActionsList =
+  WebhookPropertiesCreateParametersActionsList as any as S.Schema<WebhookPropertiesActionsList>;
 
 /** The properties of a webhook. */
 export interface WebhookProperties {
@@ -2708,9 +2680,8 @@ export const DeleteCacheRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCacheRuleRequest" }) as any as S.Schema<DeleteCacheRuleRequest>;
 
 export interface DeleteCacheRuleResponse {}
-export const DeleteCacheRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCacheRuleResponse",
-}) as any as S.Schema<DeleteCacheRuleResponse>;
+export const DeleteCacheRuleResponse =
+  CancelRunResponse as any as S.Schema<DeleteCacheRuleResponse>;
 
 export interface DeleteConnectedRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2774,9 +2745,8 @@ export const DeleteCredentialSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCredentialSetRequest>;
 
 export interface DeleteCredentialSetResponse {}
-export const DeleteCredentialSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCredentialSetResponse",
-}) as any as S.Schema<DeleteCredentialSetResponse>;
+export const DeleteCredentialSetResponse =
+  CancelRunResponse as any as S.Schema<DeleteCredentialSetResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2807,11 +2777,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeactivateConnectedRegistryResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2837,9 +2804,7 @@ export const DeleteRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRegistryRequest" }) as any as S.Schema<DeleteRegistryRequest>;
 
 export interface DeleteRegistryResponse {}
-export const DeleteRegistryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegistryResponse",
-}) as any as S.Schema<DeleteRegistryResponse>;
+export const DeleteRegistryResponse = CancelRunResponse as any as S.Schema<DeleteRegistryResponse>;
 
 export interface DeleteReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2868,9 +2833,8 @@ export const DeleteReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReplicationRequest" }) as any as S.Schema<DeleteReplicationRequest>;
 
 export interface DeleteReplicationResponse {}
-export const DeleteReplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReplicationResponse",
-}) as any as S.Schema<DeleteReplicationResponse>;
+export const DeleteReplicationResponse =
+  CancelRunResponse as any as S.Schema<DeleteReplicationResponse>;
 
 export interface DeleteScopeMapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2899,9 +2863,7 @@ export const DeleteScopeMapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScopeMapRequest" }) as any as S.Schema<DeleteScopeMapRequest>;
 
 export interface DeleteScopeMapResponse {}
-export const DeleteScopeMapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScopeMapResponse",
-}) as any as S.Schema<DeleteScopeMapResponse>;
+export const DeleteScopeMapResponse = CancelRunResponse as any as S.Schema<DeleteScopeMapResponse>;
 
 export interface DeleteTaskRequest {
   /** The Microsoft Azure subscription ID. */
@@ -2930,9 +2892,7 @@ export const DeleteTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTaskRequest" }) as any as S.Schema<DeleteTaskRequest>;
 
 export interface DeleteTaskResponse {}
-export const DeleteTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTaskResponse",
-}) as any as S.Schema<DeleteTaskResponse>;
+export const DeleteTaskResponse = CancelRunResponse as any as S.Schema<DeleteTaskResponse>;
 
 export interface DeleteTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2961,9 +2921,7 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTokenRequest" }) as any as S.Schema<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {}
-export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTokenResponse",
-}) as any as S.Schema<DeleteTokenResponse>;
+export const DeleteTokenResponse = CancelRunResponse as any as S.Schema<DeleteTokenResponse>;
 
 export interface DeleteWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2992,9 +2950,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse = CancelRunResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface GenerateRegistryCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3032,9 +2988,8 @@ export const GenerateRegistryCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of passwords for a container registry. */
 export type GenerateCredentialsResultPasswordsList = Array<TokenPassword>;
-export const GenerateCredentialsResultPasswordsList = /*@__PURE__*/ S.Array(
-  TokenPassword,
-) as any as S.Schema<GenerateCredentialsResultPasswordsList>;
+export const GenerateCredentialsResultPasswordsList =
+  TokenCredentialsPropertiesPasswordsList as any as S.Schema<GenerateCredentialsResultPasswordsList>;
 
 /** The response from the GenerateCredentials operation. */
 export interface GenerateCredentialsResult {
@@ -3090,15 +3045,8 @@ export interface GetCacheRuleResponse {
   /** The properties of the cache rule. */
   properties?: CacheRuleProperties;
 }
-export const GetCacheRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CacheRuleProperties),
-  }),
-).annotate({ identifier: "GetCacheRuleResponse" }) as any as S.Schema<GetCacheRuleResponse>;
+export const GetCacheRuleResponse =
+  CreateCacheRuleResponse as any as S.Schema<GetCacheRuleResponse>;
 
 export interface GetConnectedRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3140,17 +3088,8 @@ export interface GetConnectedRegistryResponse {
   /** The properties of the connected registry. */
   properties?: ConnectedRegistryProperties;
 }
-export const GetConnectedRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConnectedRegistryProperties),
-  }),
-).annotate({
-  identifier: "GetConnectedRegistryResponse",
-}) as any as S.Schema<GetConnectedRegistryResponse>;
+export const GetConnectedRegistryResponse =
+  CreateConnectedRegistryResponse as any as S.Schema<GetConnectedRegistryResponse>;
 
 export interface GetCredentialSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3243,17 +3182,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3280,10 +3210,8 @@ export const GetRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRegistryResponseTagsMap = { [key: string]: string | undefined };
-export const GetRegistryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRegistryResponseTagsMap>;
+export const GetRegistryResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<GetRegistryResponseTagsMap>;
 
 export interface GetRegistryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3305,19 +3233,7 @@ export interface GetRegistryResponse {
   /** The identity of the container registry. */
   identity?: IdentityProperties;
 }
-export const GetRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetRegistryResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RegistryProperties),
-    sku: Sku,
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({ identifier: "GetRegistryResponse" }) as any as S.Schema<GetRegistryResponse>;
+export const GetRegistryResponse = CreateRegistryResponse as any as S.Schema<GetRegistryResponse>;
 
 export interface GetRegistryPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3349,15 +3265,13 @@ export const GetRegistryPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -3430,10 +3344,8 @@ export const GetReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetReplicationResponseTagsMap = { [key: string]: string | undefined };
-export const GetReplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetReplicationResponseTagsMap>;
+export const GetReplicationResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<GetReplicationResponseTagsMap>;
 
 export interface GetReplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3533,9 +3445,8 @@ export const RunPropertiesOutputImagesList = /*@__PURE__*/ S.Array(
 
 /** The list of image updates that caused the build. */
 export type ImageUpdateTriggerImagesList = Array<ImageDescriptor>;
-export const ImageUpdateTriggerImagesList = /*@__PURE__*/ S.Array(
-  ImageDescriptor,
-) as any as S.Schema<ImageUpdateTriggerImagesList>;
+export const ImageUpdateTriggerImagesList =
+  RunPropertiesOutputImagesList as any as S.Schema<ImageUpdateTriggerImagesList>;
 
 /** The image update trigger that caused a build. */
 export interface ImageUpdateTrigger {
@@ -3585,9 +3496,8 @@ export const SourceTriggerDescriptor = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of custom registries that were logged in during this run. */
 export type RunPropertiesCustomRegistriesList = Array<string>;
-export const RunPropertiesCustomRegistriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunPropertiesCustomRegistriesList>;
+export const RunPropertiesCustomRegistriesList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<RunPropertiesCustomRegistriesList>;
 
 /** The provisioning state of a run. */
 export type RunPropertiesProvisioningState =
@@ -3771,15 +3681,7 @@ export interface GetScopeMapResponse {
   /** The properties of the scope map. */
   properties?: ScopeMapProperties;
 }
-export const GetScopeMapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScopeMapProperties),
-  }),
-).annotate({ identifier: "GetScopeMapResponse" }) as any as S.Schema<GetScopeMapResponse>;
+export const GetScopeMapResponse = CreateScopeMapResponse as any as S.Schema<GetScopeMapResponse>;
 
 export interface GetTaskRequest {
   /** The Microsoft Azure subscription ID. */
@@ -3809,10 +3711,8 @@ export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetTaskResponseTagsMap = { [key: string]: string | undefined };
-export const GetTaskResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTaskResponseTagsMap>;
+export const GetTaskResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<GetTaskResponseTagsMap>;
 
 export interface GetTaskResponse {
   /** The resource ID. */
@@ -3830,17 +3730,7 @@ export interface GetTaskResponse {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-export const GetTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(GetTaskResponseTagsMap),
-    identity: S.optional(IdentityProperties_2),
-    properties: S.optional(TaskProperties),
-  }),
-).annotate({ identifier: "GetTaskResponse" }) as any as S.Schema<GetTaskResponse>;
+export const GetTaskResponse = CreateTaskResponse as any as S.Schema<GetTaskResponse>;
 
 export interface GetTaskDetailsRequest {
   /** The Microsoft Azure subscription ID. */
@@ -3870,10 +3760,8 @@ export const GetTaskDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetTaskDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const GetTaskDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetTaskDetailsResponseTagsMap>;
+export const GetTaskDetailsResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<GetTaskDetailsResponseTagsMap>;
 
 export interface GetTaskDetailsResponse {
   /** The resource ID. */
@@ -3891,17 +3779,7 @@ export interface GetTaskDetailsResponse {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-export const GetTaskDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(GetTaskDetailsResponseTagsMap),
-    identity: S.optional(IdentityProperties_2),
-    properties: S.optional(TaskProperties),
-  }),
-).annotate({ identifier: "GetTaskDetailsResponse" }) as any as S.Schema<GetTaskDetailsResponse>;
+export const GetTaskDetailsResponse = CreateTaskResponse as any as S.Schema<GetTaskDetailsResponse>;
 
 export interface GetTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3941,15 +3819,7 @@ export interface GetTokenResponse {
   /** The properties of the token. */
   properties?: TokenProperties;
 }
-export const GetTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TokenProperties),
-  }),
-).annotate({ identifier: "GetTokenResponse" }) as any as S.Schema<GetTokenResponse>;
+export const GetTokenResponse = CreateTokenResponse as any as S.Schema<GetTokenResponse>;
 
 export interface GetWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3979,10 +3849,8 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWebhookResponseTagsMap = { [key: string]: string | undefined };
-export const GetWebhookResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebhookResponseTagsMap>;
+export const GetWebhookResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<GetWebhookResponseTagsMap>;
 
 export interface GetWebhookResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4000,17 +3868,7 @@ export interface GetWebhookResponse {
   /** The properties of the webhook. */
   properties?: WebhookProperties;
 }
-export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetWebhookResponseTagsMap),
-    location: S.String,
-    properties: S.optional(WebhookProperties),
-  }),
-).annotate({ identifier: "GetWebhookResponse" }) as any as S.Schema<GetWebhookResponse>;
+export const GetWebhookResponse = CreateWebhookResponse as any as S.Schema<GetWebhookResponse>;
 
 export interface GetWebhookCallbackConfigRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4042,10 +3900,8 @@ export const GetWebhookCallbackConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom headers that will be added to the webhook notifications. */
 export type CallbackConfigCustomHeadersMap = { [key: string]: string | undefined };
-export const CallbackConfigCustomHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CallbackConfigCustomHeadersMap>;
+export const CallbackConfigCustomHeadersMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<CallbackConfigCustomHeadersMap>;
 
 /** The configuration of service URI and custom headers for the webhook. */
 export interface CallbackConfig {
@@ -4095,15 +3951,13 @@ export const ImportSource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted). */
 export type ImportRegistryImageRequestTargetTagsList = Array<string>;
-export const ImportRegistryImageRequestTargetTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportRegistryImageRequestTargetTagsList>;
+export const ImportRegistryImageRequestTargetTagsList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ImportRegistryImageRequestTargetTagsList>;
 
 /** List of strings of repository names to do a manifest only copy. No tag will be created. */
 export type ImportRegistryImageRequestUntaggedTargetRepositoriesList = Array<string>;
-export const ImportRegistryImageRequestUntaggedTargetRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportRegistryImageRequestUntaggedTargetRepositoriesList>;
+export const ImportRegistryImageRequestUntaggedTargetRepositoriesList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ImportRegistryImageRequestUntaggedTargetRepositoriesList>;
 
 /** When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins. */
 export type ImportRegistryImageRequestMode = "NoForce" | "Force";
@@ -4149,9 +4003,8 @@ export const ImportRegistryImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportRegistryImageRequest>;
 
 export interface ImportRegistryImageResponse {}
-export const ImportRegistryImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImportRegistryImageResponse",
-}) as any as S.Schema<ImportRegistryImageResponse>;
+export const ImportRegistryImageResponse =
+  CancelRunResponse as any as S.Schema<ImportRegistryImageResponse>;
 
 export interface ListCacheRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4189,15 +4042,7 @@ export interface CacheRule {
   /** The properties of the cache rule. */
   properties?: CacheRuleProperties;
 }
-export const CacheRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CacheRuleProperties),
-  }),
-).annotate({ identifier: "CacheRule" }) as any as S.Schema<CacheRule>;
+export const CacheRule = CreateCacheRuleResponse as any as S.Schema<CacheRule>;
 
 /** The list of cache rules. Since this list may be incomplete, the nextLink field should be used to request the next list of cache rules. */
 export type CacheRulesListResultValueList = Array<CacheRule>;
@@ -4332,16 +4177,7 @@ export interface CredentialSet {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityProperties;
 }
-export const CredentialSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CredentialSetProperties),
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({ identifier: "CredentialSet" }) as any as S.Schema<CredentialSet>;
+export const CredentialSet = GetCredentialSetResponse as any as S.Schema<CredentialSet>;
 
 /** The list of credential sets. Since this list may be incomplete, the nextLink field should be used to request the next list of credential sets. */
 export type CredentialSetListResultValueList = Array<CredentialSet>;
@@ -4560,9 +4396,8 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The list of private endpoint connections. Since this list may be incomplete, the nextLink field should be used to request the next list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  RegistryPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The result of a request to list private endpoint connections for a container registry. */
 export interface PrivateEndpointConnectionListResult {
@@ -4599,10 +4434,7 @@ export const ListRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RegistryTagsMap = { [key: string]: string | undefined };
-export const RegistryTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegistryTagsMap>;
+export const RegistryTagsMap = CreateRegistryRequestTagsMap as any as S.Schema<RegistryTagsMap>;
 
 /** An object that represents a container registry. */
 export interface Registry {
@@ -4625,19 +4457,7 @@ export interface Registry {
   /** The identity of the container registry. */
   identity?: IdentityProperties;
 }
-export const Registry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RegistryTagsMap),
-    location: S.String,
-    properties: S.optional(RegistryProperties),
-    sku: Sku,
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({ identifier: "Registry" }) as any as S.Schema<Registry>;
+export const Registry = CreateRegistryResponse as any as S.Schema<Registry>;
 
 /** The list of container registries. Since this list may be incomplete, the nextLink field should be used to request the next list of container registries. */
 export type RegistryListResultValueList = Array<Registry>;
@@ -4784,17 +4604,8 @@ export interface PrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceListResultValueItem",
-}) as any as S.Schema<PrivateLinkResourceListResultValueItem>;
+export const PrivateLinkResourceListResultValueItem =
+  GetRegistryPrivateLinkResourceResponse as any as S.Schema<PrivateLinkResourceListResultValueItem>;
 
 /** The list of private link resources. Since this list may be incomplete, the nextLink field should be used to request the next list of private link resources. */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceListResultValueItem>;
@@ -4909,10 +4720,8 @@ export const ListReplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReplicationTagsMap = { [key: string]: string | undefined };
-export const ReplicationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplicationTagsMap>;
+export const ReplicationTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<ReplicationTagsMap>;
 
 /** An object that represents a replication for a container registry. */
 export interface Replication {
@@ -4931,17 +4740,7 @@ export interface Replication {
   /** The properties of the replication. */
   properties?: ReplicationProperties;
 }
-export const Replication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ReplicationTagsMap),
-    location: S.String,
-    properties: S.optional(ReplicationProperties),
-  }),
-).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
+export const Replication = GetReplicationResponse as any as S.Schema<Replication>;
 
 /** The list of replications. Since this list may be incomplete, the nextLink field should be used to request the next list of replications. */
 export type ReplicationListResultValueList = Array<Replication>;
@@ -5003,14 +4802,7 @@ export interface Run {
   /** The properties of a run. */
   properties?: RunProperties;
 }
-export const Run = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RunProperties),
-  }),
-).annotate({ identifier: "Run" }) as any as S.Schema<Run>;
+export const Run = GetRunResponse as any as S.Schema<Run>;
 
 /** The collection value. */
 export type RunListResultValueList = Array<Run>;
@@ -5068,15 +4860,7 @@ export interface ScopeMap {
   /** The properties of the scope map. */
   properties?: ScopeMapProperties;
 }
-export const ScopeMap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScopeMapProperties),
-  }),
-).annotate({ identifier: "ScopeMap" }) as any as S.Schema<ScopeMap>;
+export const ScopeMap = CreateScopeMapResponse as any as S.Schema<ScopeMap>;
 
 /** The list of scope maps. Since this list may be incomplete, the nextLink field should be used to request the next list of scope maps. */
 export type ScopeMapListResultValueList = Array<ScopeMap>;
@@ -5123,10 +4907,7 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type TaskTagsMap = { [key: string]: string | undefined };
-export const TaskTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TaskTagsMap>;
+export const TaskTagsMap = CreateRegistryRequestTagsMap as any as S.Schema<TaskTagsMap>;
 
 /** The task that has the ARM resource and task properties. The task will have all information to schedule a run against it. */
 export interface Task {
@@ -5145,17 +4926,7 @@ export interface Task {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-export const Task = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(TaskTagsMap),
-    identity: S.optional(IdentityProperties_2),
-    properties: S.optional(TaskProperties),
-  }),
-).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
+export const Task = CreateTaskResponse as any as S.Schema<Task>;
 
 /** The collection value. */
 export type TaskListResultValueList = Array<Task>;
@@ -5213,15 +4984,7 @@ export interface Token {
   /** The properties of the token. */
   properties?: TokenProperties;
 }
-export const Token = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TokenProperties),
-  }),
-).annotate({ identifier: "Token" }) as any as S.Schema<Token>;
+export const Token = CreateTokenResponse as any as S.Schema<Token>;
 
 /** The list of tokens. Since this list may be incomplete, the nextLink field should be used to request the next list of tokens. */
 export type TokenListResultValueList = Array<Token>;
@@ -5383,10 +5146,8 @@ export const EventContent = /*@__PURE__*/ S.suspend(() =>
 
 /** The headers of the event request message. */
 export type EventRequestMessageHeadersMap = { [key: string]: string | undefined };
-export const EventRequestMessageHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EventRequestMessageHeadersMap>;
+export const EventRequestMessageHeadersMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<EventRequestMessageHeadersMap>;
 
 /** The event request message sent to the service URI. */
 export interface EventRequestMessage {
@@ -5413,10 +5174,8 @@ export const EventRequestMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** The headers of the event response message. */
 export type EventResponseMessageHeadersMap = { [key: string]: string | undefined };
-export const EventResponseMessageHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EventResponseMessageHeadersMap>;
+export const EventResponseMessageHeadersMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<EventResponseMessageHeadersMap>;
 
 /** The event response message received from the service URI. */
 export interface EventResponseMessage {
@@ -5503,10 +5262,7 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebhookTagsMap = { [key: string]: string | undefined };
-export const WebhookTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookTagsMap>;
+export const WebhookTagsMap = CreateRegistryRequestTagsMap as any as S.Schema<WebhookTagsMap>;
 
 /** An object that represents a webhook for a container registry. */
 export interface Webhook {
@@ -5525,17 +5281,7 @@ export interface Webhook {
   /** The properties of the webhook. */
   properties?: WebhookProperties;
 }
-export const Webhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebhookTagsMap),
-    location: S.String,
-    properties: S.optional(WebhookProperties),
-  }),
-).annotate({ identifier: "Webhook" }) as any as S.Schema<Webhook>;
+export const Webhook = CreateWebhookResponse as any as S.Schema<Webhook>;
 
 /** The list of webhooks. Since this list may be incomplete, the nextLink field should be used to request the next list of webhooks. */
 export type WebhookListResultValueList = Array<Webhook>;
@@ -5588,11 +5334,7 @@ export interface EventInfo {
   /** The event ID. */
   id?: string;
 }
-export const EventInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "EventInfo" }) as any as S.Schema<EventInfo>;
+export const EventInfo = PrivateEndpoint as any as S.Schema<EventInfo>;
 
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5637,17 +5379,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export interface RegenerateRegistryCredentialRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5822,15 +5555,8 @@ export interface UpdateCacheRuleResponse {
   /** The properties of the cache rule. */
   properties?: CacheRuleProperties;
 }
-export const UpdateCacheRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CacheRuleProperties),
-  }),
-).annotate({ identifier: "UpdateCacheRuleResponse" }) as any as S.Schema<UpdateCacheRuleResponse>;
+export const UpdateCacheRuleResponse =
+  CreateCacheRuleResponse as any as S.Schema<UpdateCacheRuleResponse>;
 
 /** The parameters for updating the sync properties of the connected registry with its parent. */
 export interface SyncUpdateProperties {
@@ -5851,15 +5577,13 @@ export const SyncUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
 export type ConnectedRegistryUpdatePropertiesClientTokenIdsList = Array<string>;
-export const ConnectedRegistryUpdatePropertiesClientTokenIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedRegistryUpdatePropertiesClientTokenIdsList>;
+export const ConnectedRegistryUpdatePropertiesClientTokenIdsList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryUpdatePropertiesClientTokenIdsList>;
 
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryUpdatePropertiesNotificationsListList = Array<string>;
-export const ConnectedRegistryUpdatePropertiesNotificationsListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedRegistryUpdatePropertiesNotificationsListList>;
+export const ConnectedRegistryUpdatePropertiesNotificationsListList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryUpdatePropertiesNotificationsListList>;
 
 /** The parameters for updating token properties. */
 export interface ConnectedRegistryUpdateProperties {
@@ -5929,23 +5653,13 @@ export interface UpdateConnectedRegistryResponse {
   /** The properties of the connected registry. */
   properties?: ConnectedRegistryProperties;
 }
-export const UpdateConnectedRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ConnectedRegistryProperties),
-  }),
-).annotate({
-  identifier: "UpdateConnectedRegistryResponse",
-}) as any as S.Schema<UpdateConnectedRegistryResponse>;
+export const UpdateConnectedRegistryResponse =
+  CreateConnectedRegistryResponse as any as S.Schema<UpdateConnectedRegistryResponse>;
 
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
 export type CredentialSetUpdatePropertiesAuthCredentialsList = Array<AuthCredential>;
-export const CredentialSetUpdatePropertiesAuthCredentialsList = /*@__PURE__*/ S.Array(
-  AuthCredential,
-) as any as S.Schema<CredentialSetUpdatePropertiesAuthCredentialsList>;
+export const CredentialSetUpdatePropertiesAuthCredentialsList =
+  CredentialSetPropertiesInputAuthCredentialsList as any as S.Schema<CredentialSetUpdatePropertiesAuthCredentialsList>;
 
 /** The parameters for updating credential set properties. */
 export interface CredentialSetUpdateProperties {
@@ -6008,25 +5722,13 @@ export interface UpdateCredentialSetResponse {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityProperties;
 }
-export const UpdateCredentialSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CredentialSetProperties),
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({
-  identifier: "UpdateCredentialSetResponse",
-}) as any as S.Schema<UpdateCredentialSetResponse>;
+export const UpdateCredentialSetResponse =
+  CreateCredentialSetResponse as any as S.Schema<UpdateCredentialSetResponse>;
 
 /** The tags for the container registry. */
 export type UpdateRegistryRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateRegistryRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRegistryRequestTagsMap>;
+export const UpdateRegistryRequestTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateRegistryRequestTagsMap>;
 
 /** Whether or not public network access is allowed for the container registry. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
@@ -6123,10 +5825,8 @@ export const UpdateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateRegistryResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRegistryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRegistryResponseTagsMap>;
+export const UpdateRegistryResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateRegistryResponseTagsMap>;
 
 export interface UpdateRegistryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6148,26 +5848,13 @@ export interface UpdateRegistryResponse {
   /** The identity of the container registry. */
   identity?: IdentityProperties;
 }
-export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateRegistryResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RegistryProperties),
-    sku: Sku,
-    identity: S.optional(IdentityProperties),
-  }),
-).annotate({ identifier: "UpdateRegistryResponse" }) as any as S.Schema<UpdateRegistryResponse>;
+export const UpdateRegistryResponse =
+  CreateRegistryResponse as any as S.Schema<UpdateRegistryResponse>;
 
 /** The tags for the replication. */
 export type UpdateReplicationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateReplicationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateReplicationRequestTagsMap>;
+export const UpdateReplicationRequestTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateReplicationRequestTagsMap>;
 
 export interface ReplicationUpdateParametersProperties {
   /** Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications. */
@@ -6215,10 +5902,8 @@ export const UpdateReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateReplicationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateReplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateReplicationResponseTagsMap>;
+export const UpdateReplicationResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateReplicationResponseTagsMap>;
 
 export interface UpdateReplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6236,19 +5921,8 @@ export interface UpdateReplicationResponse {
   /** The properties of the replication. */
   properties?: ReplicationProperties;
 }
-export const UpdateReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateReplicationResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ReplicationProperties),
-  }),
-).annotate({
-  identifier: "UpdateReplicationResponse",
-}) as any as S.Schema<UpdateReplicationResponse>;
+export const UpdateReplicationResponse =
+  CreateReplicationResponse as any as S.Schema<UpdateReplicationResponse>;
 
 export interface UpdateRunRequest {
   /** The Microsoft Azure subscription ID. */
@@ -6289,20 +5963,12 @@ export interface UpdateRunResponse {
   /** The properties of a run. */
   properties?: RunProperties;
 }
-export const UpdateRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RunProperties),
-  }),
-).annotate({ identifier: "UpdateRunResponse" }) as any as S.Schema<UpdateRunResponse>;
+export const UpdateRunResponse = GetRunResponse as any as S.Schema<UpdateRunResponse>;
 
 /** The list of scope permissions for registry artifacts. E.g. repositories/repository-name/pull, repositories/repository-name/delete */
 export type ScopeMapPropertiesUpdateParametersActionsList = Array<string>;
-export const ScopeMapPropertiesUpdateParametersActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScopeMapPropertiesUpdateParametersActionsList>;
+export const ScopeMapPropertiesUpdateParametersActionsList =
+  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ScopeMapPropertiesUpdateParametersActionsList>;
 
 /** The update parameters for scope map properties. */
 export interface ScopeMapPropertiesUpdateParameters {
@@ -6361,15 +6027,8 @@ export interface UpdateScopeMapResponse {
   /** The properties of the scope map. */
   properties?: ScopeMapProperties;
 }
-export const UpdateScopeMapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScopeMapProperties),
-  }),
-).annotate({ identifier: "UpdateScopeMapResponse" }) as any as S.Schema<UpdateScopeMapResponse>;
+export const UpdateScopeMapResponse =
+  CreateScopeMapResponse as any as S.Schema<UpdateScopeMapResponse>;
 
 /** The current status of task. */
 export type TaskPropertiesUpdateParametersStatus = "Disabled" | "Enabled";
@@ -6658,10 +6317,8 @@ export const TaskPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** The ARM resource tags. */
 export type UpdateTaskRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateTaskRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTaskRequestTagsMap>;
+export const UpdateTaskRequestTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateTaskRequestTagsMap>;
 
 export interface UpdateTaskRequest {
   /** The Microsoft Azure subscription ID. */
@@ -6700,10 +6357,8 @@ export const UpdateTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdateTaskResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateTaskResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateTaskResponseTagsMap>;
+export const UpdateTaskResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateTaskResponseTagsMap>;
 
 export interface UpdateTaskResponse {
   /** The resource ID. */
@@ -6721,17 +6376,7 @@ export interface UpdateTaskResponse {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-export const UpdateTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(UpdateTaskResponseTagsMap),
-    identity: S.optional(IdentityProperties_2),
-    properties: S.optional(TaskProperties),
-  }),
-).annotate({ identifier: "UpdateTaskResponse" }) as any as S.Schema<UpdateTaskResponse>;
+export const UpdateTaskResponse = CreateTaskResponse as any as S.Schema<UpdateTaskResponse>;
 
 /** The parameters for updating token properties. */
 export interface TokenUpdatePropertiesInput {
@@ -6793,37 +6438,24 @@ export interface UpdateTokenResponse {
   /** The properties of the token. */
   properties?: TokenProperties;
 }
-export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TokenProperties),
-  }),
-).annotate({ identifier: "UpdateTokenResponse" }) as any as S.Schema<UpdateTokenResponse>;
+export const UpdateTokenResponse = CreateTokenResponse as any as S.Schema<UpdateTokenResponse>;
 
 /** The tags for the webhook. */
 export type UpdateWebhookRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestTagsMap>;
+export const UpdateWebhookRequestTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateWebhookRequestTagsMap>;
 
 /** Custom headers that will be added to the webhook notifications. */
 export type WebhookPropertiesUpdateParametersCustomHeadersMap = {
   [key: string]: string | undefined;
 };
-export const WebhookPropertiesUpdateParametersCustomHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookPropertiesUpdateParametersCustomHeadersMap>;
+export const WebhookPropertiesUpdateParametersCustomHeadersMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<WebhookPropertiesUpdateParametersCustomHeadersMap>;
 
 /** The list of actions that trigger the webhook to post notifications. */
 export type WebhookPropertiesUpdateParametersActionsList = Array<WebhookAction | (string & {})>;
-export const WebhookPropertiesUpdateParametersActionsList = /*@__PURE__*/ S.Array(
-  WebhookAction,
-) as any as S.Schema<WebhookPropertiesUpdateParametersActionsList>;
+export const WebhookPropertiesUpdateParametersActionsList =
+  WebhookPropertiesCreateParametersActionsList as any as S.Schema<WebhookPropertiesUpdateParametersActionsList>;
 
 /** The parameters for updating the properties of a webhook. */
 export interface WebhookPropertiesUpdateParameters {
@@ -6884,10 +6516,8 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWebhookResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWebhookResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseTagsMap>;
+export const UpdateWebhookResponseTagsMap =
+  CreateRegistryRequestTagsMap as any as S.Schema<UpdateWebhookResponseTagsMap>;
 
 export interface UpdateWebhookResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6905,17 +6535,8 @@ export interface UpdateWebhookResponse {
   /** The properties of the webhook. */
   properties?: WebhookProperties;
 }
-export const UpdateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateWebhookResponseTagsMap),
-    location: S.String,
-    properties: S.optional(WebhookProperties),
-  }),
-).annotate({ identifier: "UpdateWebhookResponse" }) as any as S.Schema<UpdateWebhookResponse>;
+export const UpdateWebhookResponse =
+  CreateWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
 
 export type CancelRunError = AzureOpError;
 /** Cancel an existing run. */

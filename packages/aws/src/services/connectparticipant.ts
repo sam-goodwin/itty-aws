@@ -185,11 +185,8 @@ export const CompleteAttachmentUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompleteAttachmentUploadRequest",
 }) as any as S.Schema<CompleteAttachmentUploadRequest>;
 export interface CompleteAttachmentUploadResponse {}
-export const CompleteAttachmentUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CompleteAttachmentUploadResponse",
-}) as any as S.Schema<CompleteAttachmentUploadResponse>;
+export const CompleteAttachmentUploadResponse =
+  CancelParticipantAuthenticationResponse as any as S.Schema<CompleteAttachmentUploadResponse>;
 export type ConnectionType =
   | "WEBSOCKET"
   | "CONNECTION_CREDENTIALS"

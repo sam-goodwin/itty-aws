@@ -171,13 +171,8 @@ export interface GetPricingResponsePricingVolume {
   /** Price of [Volumes](#tag/volumes) per GB/month. */
   price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-export const GetPricingResponsePricingVolume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
-  }),
-).annotate({
-  identifier: "GetPricingResponsePricingVolume",
-}) as any as S.Schema<GetPricingResponsePricingVolume>;
+export const GetPricingResponsePricingVolume =
+  GetPricingResponsePricingImage as any as S.Schema<GetPricingResponsePricingVolume>;
 
 /** Price of [Server](#tag/servers) backups. */
 export interface GetPricingResponsePricingServerBackup {
@@ -292,9 +287,8 @@ export const GetPricingResponsePricingLoadBalancerTypesItemPricesItem =
 /** Price of the [Load Balancer Types](#tag/load-balancer-types) per [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesItemPricesList =
   Array<GetPricingResponsePricingServerTypesItemPricesItem>;
-export const GetPricingResponsePricingLoadBalancerTypesItemPricesList = /*@__PURE__*/ S.Array(
-  GetPricingResponsePricingServerTypesItemPricesItem,
-) as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesItemPricesList>;
+export const GetPricingResponsePricingLoadBalancerTypesItemPricesList =
+  GetPricingResponsePricingServerTypesItemPricesList as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesItemPricesList>;
 
 export interface GetPricingResponsePricingLoadBalancerTypesItem {
   /** ID of the [Load Balancer Types](#tag/load-balancer-types) the price is for. */
@@ -304,22 +298,14 @@ export interface GetPricingResponsePricingLoadBalancerTypesItem {
   /** Price of the [Load Balancer Types](#tag/load-balancer-types) per [Location](#tag/locations). */
   prices: GetPricingResponsePricingLoadBalancerTypesItemPricesList;
 }
-export const GetPricingResponsePricingLoadBalancerTypesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    prices: GetPricingResponsePricingLoadBalancerTypesItemPricesList,
-  }),
-).annotate({
-  identifier: "GetPricingResponsePricingLoadBalancerTypesItem",
-}) as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesItem>;
+export const GetPricingResponsePricingLoadBalancerTypesItem =
+  GetPricingResponsePricingServerTypesItem as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesItem>;
 
 /** Price of Load Balancer per [type](#tag/load-balancer-types) and per [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesList =
   Array<GetPricingResponsePricingLoadBalancerTypesItem>;
-export const GetPricingResponsePricingLoadBalancerTypesList = /*@__PURE__*/ S.Array(
-  GetPricingResponsePricingLoadBalancerTypesItem,
-) as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesList>;
+export const GetPricingResponsePricingLoadBalancerTypesList =
+  GetPricingResponsePricingServerTypesList as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesList>;
 
 /** Price of one [Floating IP](#tag/floating-ips) per month. */
 export type GetPricingResponsePricingFloatingIpPriceMonthly =

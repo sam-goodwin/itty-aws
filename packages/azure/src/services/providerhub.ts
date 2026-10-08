@@ -274,10 +274,8 @@ export const CreateProviderMonitorSettingsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type CreateProviderMonitorSettingsResponseTagsMap = { [key: string]: string | undefined };
-export const CreateProviderMonitorSettingsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateProviderMonitorSettingsResponseTagsMap>;
+export const CreateProviderMonitorSettingsResponseTagsMap =
+  CreateProviderMonitorSettingsRequestTagsMap as any as S.Schema<CreateProviderMonitorSettingsResponseTagsMap>;
 
 export interface CreateProviderMonitorSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -323,9 +321,8 @@ export const CustomRolloutSpecificationAutoProvisionConfig = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CustomRolloutSpecificationAutoProvisionConfig>;
 
 export type TrafficRegionsRegionsList = Array<string>;
-export const TrafficRegionsRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrafficRegionsRegionsList>;
+export const TrafficRegionsRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<TrafficRegionsRegionsList>;
 
 export interface TrafficRegions {
   regions?: TrafficRegionsRegionsList;
@@ -338,15 +335,13 @@ export const TrafficRegions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of ARM regions scoped for the release. */
 export type CustomRolloutSpecificationInputReleaseScopesList = Array<string>;
-export const CustomRolloutSpecificationInputReleaseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomRolloutSpecificationInputReleaseScopesList>;
+export const CustomRolloutSpecificationInputReleaseScopesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<CustomRolloutSpecificationInputReleaseScopesList>;
 
 /** The allowed audiences. */
 export type ResourceProviderAuthenticationAllowedAudiencesList = Array<string>;
-export const ResourceProviderAuthenticationAllowedAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderAuthenticationAllowedAudiencesList>;
+export const ResourceProviderAuthenticationAllowedAudiencesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderAuthenticationAllowedAudiencesList>;
 
 export interface ResourceProviderAuthentication {
   /** The allowed audiences. */
@@ -490,9 +485,8 @@ export const ResourceProviderType = S.String;
 
 /** The required features. */
 export type ProviderRegistrationPropertiesRequiredFeaturesList = Array<string>;
-export const ProviderRegistrationPropertiesRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderRegistrationPropertiesRequiredFeaturesList>;
+export const ProviderRegistrationPropertiesRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ProviderRegistrationPropertiesRequiredFeaturesList>;
 
 /** The required feature policy. */
 export type FeaturesPolicy = "Any" | "All";
@@ -543,21 +537,18 @@ export const RequestHeaderOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The schema owners. */
 export type ResourceProviderManagementSchemaOwnersList = Array<string>;
-export const ResourceProviderManagementSchemaOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderManagementSchemaOwnersList>;
+export const ResourceProviderManagementSchemaOwnersList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderManagementSchemaOwnersList>;
 
 /** The manifest owners. */
 export type ResourceProviderManagementManifestOwnersList = Array<string>;
-export const ResourceProviderManagementManifestOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderManagementManifestOwnersList>;
+export const ResourceProviderManagementManifestOwnersList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderManagementManifestOwnersList>;
 
 /** The authorization owners. */
 export type ResourceProviderManagementAuthorizationOwnersList = Array<string>;
-export const ResourceProviderManagementAuthorizationOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderManagementAuthorizationOwnersList>;
+export const ResourceProviderManagementAuthorizationOwnersList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderManagementAuthorizationOwnersList>;
 
 /** The resource access policy. */
 export type ResourceAccessPolicy = "NotSpecified";
@@ -565,15 +556,13 @@ export const ResourceAccessPolicy = S.String;
 
 /** The allowed group claims. */
 export type ResourceAccessRoleAllowedGroupClaimsList = Array<string>;
-export const ResourceAccessRoleAllowedGroupClaimsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceAccessRoleAllowedGroupClaimsList>;
+export const ResourceAccessRoleAllowedGroupClaimsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceAccessRoleAllowedGroupClaimsList>;
 
 /** The actions. */
 export type ResourceAccessRoleActionsList = Array<string>;
-export const ResourceAccessRoleActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceAccessRoleActionsList>;
+export const ResourceAccessRoleActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceAccessRoleActionsList>;
 
 export interface ResourceAccessRole {
   /** The allowed group claims. */
@@ -596,9 +585,8 @@ export const ResourceProviderManagementResourceAccessRolesList = /*@__PURE__*/ S
 
 /** List of expedited rollout submitters. */
 export type ResourceProviderManagementExpeditedRolloutSubmittersList = Array<string>;
-export const ResourceProviderManagementExpeditedRolloutSubmittersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderManagementExpeditedRolloutSubmittersList>;
+export const ResourceProviderManagementExpeditedRolloutSubmittersList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderManagementExpeditedRolloutSubmittersList>;
 
 /** Type of server failure response message. */
 export type ServerFailureResponseMessageType = "NotSpecified" | "OutageReporting";
@@ -639,15 +627,13 @@ export const ResourceProviderManagementExpeditedRolloutMetadata = /*@__PURE__*/ 
 
 /** List of manifest owners for canary. */
 export type ResourceProviderManagementCanaryManifestOwnersList = Array<string>;
-export const ResourceProviderManagementCanaryManifestOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderManagementCanaryManifestOwnersList>;
+export const ResourceProviderManagementCanaryManifestOwnersList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderManagementCanaryManifestOwnersList>;
 
 /** List of feature management owners. */
 export type ResourceProviderManagementFeatureManagementOwnersList = Array<string>;
-export const ResourceProviderManagementFeatureManagementOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderManagementFeatureManagementOwnersList>;
+export const ResourceProviderManagementFeatureManagementOwnersList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderManagementFeatureManagementOwnersList>;
 
 export interface ResourceProviderManagement {
   /** The schema owners. */
@@ -711,9 +697,8 @@ export const ResourceProviderCapabilitiesEffect = S.String;
 
 /** The required features. */
 export type ResourceProviderCapabilitiesRequiredFeaturesList = Array<string>;
-export const ResourceProviderCapabilitiesRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderCapabilitiesRequiredFeaturesList>;
+export const ResourceProviderCapabilitiesRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderCapabilitiesRequiredFeaturesList>;
 
 export interface ResourceProviderCapabilities {
   /** The quota id. */
@@ -769,21 +754,18 @@ export const TemplateDeploymentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The api versions. */
 export type ResourceProviderEndpointApiVersionsList = Array<string>;
-export const ResourceProviderEndpointApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderEndpointApiVersionsList>;
+export const ResourceProviderEndpointApiVersionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderEndpointApiVersionsList>;
 
 /** The locations. */
 export type ResourceProviderEndpointLocationsList = Array<string>;
-export const ResourceProviderEndpointLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderEndpointLocationsList>;
+export const ResourceProviderEndpointLocationsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderEndpointLocationsList>;
 
 /** The required features. */
 export type ResourceProviderEndpointRequiredFeaturesList = Array<string>;
-export const ResourceProviderEndpointRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderEndpointRequiredFeaturesList>;
+export const ResourceProviderEndpointRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderEndpointRequiredFeaturesList>;
 
 /** The endpoint type. */
 export type EndpointType = "NotSpecified" | "Canary" | "Production" | "TestInProduction";
@@ -883,15 +865,13 @@ export const TokenAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The actions. */
 export type FanoutLinkedNotificationRuleActionsList = Array<string>;
-export const FanoutLinkedNotificationRuleActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FanoutLinkedNotificationRuleActionsList>;
+export const FanoutLinkedNotificationRuleActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<FanoutLinkedNotificationRuleActionsList>;
 
 /** The endpoints. */
 export type FanoutLinkedNotificationRuleEndpointsList = Array<ResourceProviderEndpoint>;
-export const FanoutLinkedNotificationRuleEndpointsList = /*@__PURE__*/ S.Array(
-  ResourceProviderEndpoint,
-) as any as S.Schema<FanoutLinkedNotificationRuleEndpointsList>;
+export const FanoutLinkedNotificationRuleEndpointsList =
+  ProviderRegistrationPropertiesGlobalNotificationEndpointsList as any as S.Schema<FanoutLinkedNotificationRuleEndpointsList>;
 
 export interface FanoutLinkedNotificationRule {
   /** The token auth configuration. */
@@ -920,9 +900,8 @@ export const ProviderRegistrationPropertiesLinkedNotificationRulesList = /*@__PU
 
 /** The authorization actions. */
 export type AsyncOperationPollingRulesAuthorizationActionsList = Array<string>;
-export const AsyncOperationPollingRulesAuthorizationActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AsyncOperationPollingRulesAuthorizationActionsList>;
+export const AsyncOperationPollingRulesAuthorizationActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<AsyncOperationPollingRulesAuthorizationActionsList>;
 
 /** The additional options. */
 export type AdditionalOptionsAsyncOperation =
@@ -1073,9 +1052,8 @@ export const ProviderRegistrationPropertiesManagementGroupGlobalNotificationEndp
 
 /** Optional features. */
 export type ProviderRegistrationPropertiesOptionalFeaturesList = Array<string>;
-export const ProviderRegistrationPropertiesOptionalFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderRegistrationPropertiesOptionalFeaturesList>;
+export const ProviderRegistrationPropertiesOptionalFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ProviderRegistrationPropertiesOptionalFeaturesList>;
 
 /** The action verb that will be blocked when the resource group is locked during move. */
 export type BlockActionVerb =
@@ -1118,15 +1096,13 @@ export const ResourceProviderManifestPropertiesResponseOptions = /*@__PURE__*/ S
 
 /** Legacy registrations. */
 export type ProviderRegistrationPropertiesLegacyRegistrationsList = Array<string>;
-export const ProviderRegistrationPropertiesLegacyRegistrationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderRegistrationPropertiesLegacyRegistrationsList>;
+export const ProviderRegistrationPropertiesLegacyRegistrationsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ProviderRegistrationPropertiesLegacyRegistrationsList>;
 
 /** The provider authorizations. */
 export type ProviderHubMetadataProviderAuthorizationsList = Array<ResourceProviderAuthorization>;
-export const ProviderHubMetadataProviderAuthorizationsList = /*@__PURE__*/ S.Array(
-  ResourceProviderAuthorization,
-) as any as S.Schema<ProviderHubMetadataProviderAuthorizationsList>;
+export const ProviderHubMetadataProviderAuthorizationsList =
+  ProviderRegistrationPropertiesProviderAuthorizationsList as any as S.Schema<ProviderHubMetadataProviderAuthorizationsList>;
 
 export interface LightHouseAuthorization {
   /** The principal id. */
@@ -1256,9 +1232,8 @@ export const SubscriptionLifecycleNotificationSpecifications = /*@__PURE__*/ S.s
 
 /** The allowed subscriptions. */
 export type PrivateResourceProviderConfigurationAllowedSubscriptionsList = Array<string>;
-export const PrivateResourceProviderConfigurationAllowedSubscriptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateResourceProviderConfigurationAllowedSubscriptionsList>;
+export const PrivateResourceProviderConfigurationAllowedSubscriptionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<PrivateResourceProviderConfigurationAllowedSubscriptionsList>;
 
 export interface PrivateResourceProviderConfiguration {
   /** The allowed subscriptions. */
@@ -1455,21 +1430,18 @@ export const ResourceTypeEndpointKind = S.String;
 
 /** The api versions. */
 export type ResourceTypeEndpointApiVersionsList = Array<string>;
-export const ResourceTypeEndpointApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeEndpointApiVersionsList>;
+export const ResourceTypeEndpointApiVersionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeEndpointApiVersionsList>;
 
 /** The locations. */
 export type ResourceTypeEndpointLocationsList = Array<string>;
-export const ResourceTypeEndpointLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeEndpointLocationsList>;
+export const ResourceTypeEndpointLocationsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeEndpointLocationsList>;
 
 /** The required features. */
 export type ResourceTypeEndpointRequiredFeaturesList = Array<string>;
-export const ResourceTypeEndpointRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeEndpointRequiredFeaturesList>;
+export const ResourceTypeEndpointRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeEndpointRequiredFeaturesList>;
 
 export type ExtensionCategory =
   | "NotSpecified"
@@ -1531,9 +1503,8 @@ export const EndpointTypeResourceType = S.String;
 
 /** List of zones. */
 export type ResourceTypeEndpointZonesList = Array<string>;
-export const ResourceTypeEndpointZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeEndpointZonesList>;
+export const ResourceTypeEndpointZonesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeEndpointZonesList>;
 
 /** The data boundary. */
 export type DataBoundary = "NotDefined" | "Global" | "EU" | "US";
@@ -1611,9 +1582,8 @@ export const ExtensionOptionsRequestList = /*@__PURE__*/ S.Array(
 
 /** The response. */
 export type ExtensionOptionsResponseList = Array<ExtensionOptionType | (string & {})>;
-export const ExtensionOptionsResponseList = /*@__PURE__*/ S.Array(
-  ExtensionOptionType,
-) as any as S.Schema<ExtensionOptionsResponseList>;
+export const ExtensionOptionsResponseList =
+  ExtensionOptionsRequestList as any as S.Schema<ExtensionOptionsResponseList>;
 
 export interface ExtensionOptions {
   /** The request. */
@@ -1646,9 +1616,8 @@ export const MarketplaceType = S.String;
 
 /** The api versions. */
 export type SwaggerSpecificationApiVersionsList = Array<string>;
-export const SwaggerSpecificationApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SwaggerSpecificationApiVersionsList>;
+export const SwaggerSpecificationApiVersionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SwaggerSpecificationApiVersionsList>;
 
 export interface SwaggerSpecification {
   /** The api versions. */
@@ -1772,15 +1741,13 @@ export const LoggingDetails = S.String;
 
 /** The hidden paths on request. */
 export type LoggingHiddenPropertyPathHiddenPathsOnRequestList = Array<string>;
-export const LoggingHiddenPropertyPathHiddenPathsOnRequestList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoggingHiddenPropertyPathHiddenPathsOnRequestList>;
+export const LoggingHiddenPropertyPathHiddenPathsOnRequestList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<LoggingHiddenPropertyPathHiddenPathsOnRequestList>;
 
 /** The hidden paths on response. */
 export type LoggingHiddenPropertyPathHiddenPathsOnResponseList = Array<string>;
-export const LoggingHiddenPropertyPathHiddenPathsOnResponseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoggingHiddenPropertyPathHiddenPathsOnResponseList>;
+export const LoggingHiddenPropertyPathHiddenPathsOnResponseList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<LoggingHiddenPropertyPathHiddenPathsOnResponseList>;
 
 export interface LoggingHiddenPropertyPath {
   /** The hidden paths on request. */
@@ -1853,15 +1820,13 @@ export const ThrottlingRuleMetricsList = /*@__PURE__*/ S.Array(
 
 /** The required features. */
 export type ThrottlingRuleRequiredFeaturesList = Array<string>;
-export const ThrottlingRuleRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ThrottlingRuleRequiredFeaturesList>;
+export const ThrottlingRuleRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ThrottlingRuleRequiredFeaturesList>;
 
 /** The application id. */
 export type ThrottlingRuleApplicationIdList = Array<string>;
-export const ThrottlingRuleApplicationIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ThrottlingRuleApplicationIdList>;
+export const ThrottlingRuleApplicationIdList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ThrottlingRuleApplicationIdList>;
 
 export interface ThrottlingRule {
   /** The action. */
@@ -1890,9 +1855,8 @@ export const ResourceTypeRegistrationPropertiesThrottlingRulesList = /*@__PURE__
 
 /** The required features. */
 export type ResourceTypeRegistrationPropertiesRequiredFeaturesList = Array<string>;
-export const ResourceTypeRegistrationPropertiesRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeRegistrationPropertiesRequiredFeaturesList>;
+export const ResourceTypeRegistrationPropertiesRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeRegistrationPropertiesRequiredFeaturesList>;
 
 /** The type. */
 export type IdentityManagementTypes =
@@ -1905,15 +1869,13 @@ export const IdentityManagementTypes = S.String;
 
 /** The application ids. */
 export type IdentityManagementPropertiesApplicationIdsList = Array<string>;
-export const IdentityManagementPropertiesApplicationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityManagementPropertiesApplicationIdsList>;
+export const IdentityManagementPropertiesApplicationIdsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<IdentityManagementPropertiesApplicationIdsList>;
 
 /** The delegation app ids. */
 export type IdentityManagementPropertiesDelegationAppIdsList = Array<string>;
-export const IdentityManagementPropertiesDelegationAppIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityManagementPropertiesDelegationAppIdsList>;
+export const IdentityManagementPropertiesDelegationAppIdsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<IdentityManagementPropertiesDelegationAppIdsList>;
 
 export interface IdentityManagementProperties {
   /** The type. */
@@ -1940,9 +1902,7 @@ export const IdentityManagementProperties = /*@__PURE__*/ S.suspend(() =>
 export type CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList =
   Array<string>;
 export const CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList>;
+  ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList as any as S.Schema<CheckNameAvailabilitySpecificationsResourceTypesWithCustomValidationList>;
 
 export interface CheckNameAvailabilitySpecifications {
   /** Whether default validation is enabled. */
@@ -1963,9 +1923,8 @@ export const CheckNameAvailabilitySpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The disallowed action verbs. */
 export type ResourceTypeRegistrationPropertiesDisallowedActionVerbsList = Array<string>;
-export const ResourceTypeRegistrationPropertiesDisallowedActionVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeRegistrationPropertiesDisallowedActionVerbsList>;
+export const ResourceTypeRegistrationPropertiesDisallowedActionVerbsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeRegistrationPropertiesDisallowedActionVerbsList>;
 
 /** The subscription state. */
 export type SubscriptionState =
@@ -1979,9 +1938,8 @@ export const SubscriptionState = S.String;
 
 /** The allowed actions. */
 export type SubscriptionStateRuleAllowedActionsList = Array<string>;
-export const SubscriptionStateRuleAllowedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionStateRuleAllowedActionsList>;
+export const SubscriptionStateRuleAllowedActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SubscriptionStateRuleAllowedActionsList>;
 
 export interface SubscriptionStateRule {
   /** The subscription state. */
@@ -2100,15 +2058,12 @@ export const ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList = /*
 /** The application ids. */
 export type ResourceTypeManagedResourceGroupConfigurationApplicationIdsList = Array<string>;
 export const ResourceTypeManagedResourceGroupConfigurationApplicationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ResourceTypeManagedResourceGroupConfigurationApplicationIdsList>;
+  ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList as any as S.Schema<ResourceTypeManagedResourceGroupConfigurationApplicationIdsList>;
 
 /** The actions excluded from the deny assignment. */
 export type ManagedResourceGroupDenyAssignmentConfigurationNotActionsList = Array<string>;
-export const ManagedResourceGroupDenyAssignmentConfigurationNotActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ManagedResourceGroupDenyAssignmentConfigurationNotActionsList>;
+export const ManagedResourceGroupDenyAssignmentConfigurationNotActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ManagedResourceGroupDenyAssignmentConfigurationNotActionsList>;
 
 /** The deny assignment configuration for the managed resource group. */
 export interface ManagedResourceGroupDenyAssignmentConfiguration {
@@ -2150,15 +2105,13 @@ export const ResourceTypeManagedResourceGroupConfiguration = /*@__PURE__*/ S.sus
 
 /** List of required members for the group id. */
 export type GroupConnectivityInformationRequiredMembersList = Array<string>;
-export const GroupConnectivityInformationRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupConnectivityInformationRequiredMembersList>;
+export const GroupConnectivityInformationRequiredMembersList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<GroupConnectivityInformationRequiredMembersList>;
 
 /** List of required zone names for the group id. */
 export type GroupConnectivityInformationRequiredZoneNamesList = Array<string>;
-export const GroupConnectivityInformationRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupConnectivityInformationRequiredZoneNamesList>;
+export const GroupConnectivityInformationRequiredZoneNamesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<GroupConnectivityInformationRequiredZoneNamesList>;
 
 export interface GroupConnectivityInformation {
   /** The group id. */
@@ -2306,9 +2259,7 @@ export const ResourceValidation = S.String;
 /** The disallowed end user operations. */
 export type ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList = Array<string>;
 export const ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList>;
+  ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList as any as S.Schema<ResourceTypeRegistrationPropertiesDisallowedEndUserOperationsList>;
 
 /** The metadata. */
 export type ResourceTypeRegistrationPropertiesMetadataMap = { [key: string]: unknown | undefined };
@@ -2344,9 +2295,8 @@ export const QuotaRuleLocationRulesList = /*@__PURE__*/ S.Array(
 
 /** The required features. */
 export type QuotaRuleRequiredFeaturesList = Array<string>;
-export const QuotaRuleRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuotaRuleRequiredFeaturesList>;
+export const QuotaRuleRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<QuotaRuleRequiredFeaturesList>;
 
 export interface QuotaRule {
   /** The quota policy. */
@@ -2366,33 +2316,28 @@ export const QuotaRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The notifications. */
 export type ResourceTypeRegistrationPropertiesNotificationsList = Array<Notification>;
-export const ResourceTypeRegistrationPropertiesNotificationsList = /*@__PURE__*/ S.Array(
-  Notification,
-) as any as S.Schema<ResourceTypeRegistrationPropertiesNotificationsList>;
+export const ResourceTypeRegistrationPropertiesNotificationsList =
+  ProviderRegistrationPropertiesNotificationsList as any as S.Schema<ResourceTypeRegistrationPropertiesNotificationsList>;
 
 /** The actions. */
 export type LinkedNotificationRuleActionsList = Array<string>;
-export const LinkedNotificationRuleActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkedNotificationRuleActionsList>;
+export const LinkedNotificationRuleActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<LinkedNotificationRuleActionsList>;
 
 /** The actions on failed operation. */
 export type LinkedNotificationRuleActionsOnFailedOperationList = Array<string>;
-export const LinkedNotificationRuleActionsOnFailedOperationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkedNotificationRuleActionsOnFailedOperationList>;
+export const LinkedNotificationRuleActionsOnFailedOperationList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<LinkedNotificationRuleActionsOnFailedOperationList>;
 
 /** The fast path actions. */
 export type LinkedNotificationRuleFastPathActionsList = Array<string>;
-export const LinkedNotificationRuleFastPathActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkedNotificationRuleFastPathActionsList>;
+export const LinkedNotificationRuleFastPathActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<LinkedNotificationRuleFastPathActionsList>;
 
 /** The fast path action on failed operation. */
 export type LinkedNotificationRuleFastPathActionsOnFailedOperationList = Array<string>;
-export const LinkedNotificationRuleFastPathActionsOnFailedOperationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkedNotificationRuleFastPathActionsOnFailedOperationList>;
+export const LinkedNotificationRuleFastPathActionsOnFailedOperationList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<LinkedNotificationRuleFastPathActionsOnFailedOperationList>;
 
 export interface LinkedNotificationRule {
   /** The actions. */
@@ -2501,9 +2446,8 @@ export const ResourceTypeRegistrationPropertiesAsyncTimeoutRulesList = /*@__PURE
 
 /** Common API versions for the resource type. */
 export type ResourceTypeRegistrationPropertiesCommonApiVersionsList = Array<string>;
-export const ResourceTypeRegistrationPropertiesCommonApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeRegistrationPropertiesCommonApiVersionsList>;
+export const ResourceTypeRegistrationPropertiesCommonApiVersionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeRegistrationPropertiesCommonApiVersionsList>;
 
 export interface ApiProfile {
   /** Profile version. */
@@ -2537,9 +2481,8 @@ export const LinkedAction = S.String;
 
 /** Depends on types. */
 export type LinkedOperationRuleDependsOnTypesList = Array<string>;
-export const LinkedOperationRuleDependsOnTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinkedOperationRuleDependsOnTypesList>;
+export const LinkedOperationRuleDependsOnTypesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<LinkedOperationRuleDependsOnTypesList>;
 
 export interface LinkedOperationRule {
   /** The linked operation. */
@@ -2565,17 +2508,14 @@ export const ResourceTypeRegistrationPropertiesLinkedOperationRulesList = /*@__P
 
 /** The legacy names. */
 export type ResourceTypeRegistrationPropertiesLegacyNamesList = Array<string>;
-export const ResourceTypeRegistrationPropertiesLegacyNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeRegistrationPropertiesLegacyNamesList>;
+export const ResourceTypeRegistrationPropertiesLegacyNamesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeRegistrationPropertiesLegacyNamesList>;
 
 /** Allowed template deployment reference actions. */
 export type ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList =
   Array<string>;
 export const ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList>;
+  ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList as any as S.Schema<ResourceTypeRegistrationPropertiesAllowedTemplateDeploymentReferenceActionsList>;
 
 export type LegacyOperation =
   | "NotSpecified"
@@ -2740,9 +2680,7 @@ export const SupportedOperations = S.String;
 export type ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList =
   Array<string>;
 export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList>;
+  ResourceTypeRegistrationPropertiesAllowedUnauthorizedActionsList as any as S.Schema<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportRequiredFeaturesList>;
 
 /** Batch action configuration. */
 export interface ActionConfiguration {
@@ -2802,9 +2740,8 @@ export const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchPro
 
 /** Required features. */
 export type DeleteDependencyRequiredFeaturesList = Array<string>;
-export const DeleteDependencyRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteDependencyRequiredFeaturesList>;
+export const DeleteDependencyRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<DeleteDependencyRequiredFeaturesList>;
 
 export interface DeleteDependency {
   /** Required features. */
@@ -3278,9 +3215,8 @@ export const CustomRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The completed regions. */
 export type CustomRolloutStatusInputCompletedRegionsList = Array<string>;
-export const CustomRolloutStatusInputCompletedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomRolloutStatusInputCompletedRegionsList>;
+export const CustomRolloutStatusInputCompletedRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<CustomRolloutStatusInputCompletedRegionsList>;
 
 /** The error details. */
 export type ExtendedErrorInfoInputDetailsList = Array<ExtendedErrorInfoInput>;
@@ -3427,9 +3363,8 @@ export const CustomRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of ARM regions scoped for the release. */
 export type CustomRolloutSpecificationReleaseScopesList = Array<string>;
-export const CustomRolloutSpecificationReleaseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomRolloutSpecificationReleaseScopesList>;
+export const CustomRolloutSpecificationReleaseScopesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<CustomRolloutSpecificationReleaseScopesList>;
 
 /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
 export type ProviderRegistrationKind = "Managed" | "Hybrid" | "Direct";
@@ -3534,9 +3469,8 @@ export const CustomRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The completed regions. */
 export type CustomRolloutStatusCompletedRegionsList = Array<string>;
-export const CustomRolloutStatusCompletedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomRolloutStatusCompletedRegionsList>;
+export const CustomRolloutStatusCompletedRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<CustomRolloutStatusCompletedRegionsList>;
 
 /** The error details. */
 export type ExtendedErrorInfoDetailsList = Array<ExtendedErrorInfo>;
@@ -3598,9 +3532,8 @@ export const CustomRolloutStatusFailedOrSkippedRegionsMap = /*@__PURE__*/ S.Reco
 
 /** Information about the manifests applied to the completed regions. */
 export type CustomRolloutStatusCompletedRegionsInfoList = Array<AppliedManifestInfo>;
-export const CustomRolloutStatusCompletedRegionsInfoList = /*@__PURE__*/ S.Array(
-  AppliedManifestInfo,
-) as any as S.Schema<CustomRolloutStatusCompletedRegionsInfoList>;
+export const CustomRolloutStatusCompletedRegionsInfoList =
+  CustomRolloutStatusInputCompletedRegionsInfoList as any as S.Schema<CustomRolloutStatusCompletedRegionsInfoList>;
 
 export interface CustomRolloutStatus {
   /** The completed regions. */
@@ -3675,15 +3608,13 @@ export const ExpeditedRolloutDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The skip regions. */
 export type CanaryTrafficRegionRolloutConfigurationSkipRegionsList = Array<string>;
-export const CanaryTrafficRegionRolloutConfigurationSkipRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanaryTrafficRegionRolloutConfigurationSkipRegionsList>;
+export const CanaryTrafficRegionRolloutConfigurationSkipRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<CanaryTrafficRegionRolloutConfigurationSkipRegionsList>;
 
 /** The regions. */
 export type CanaryTrafficRegionRolloutConfigurationRegionsList = Array<string>;
-export const CanaryTrafficRegionRolloutConfigurationRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanaryTrafficRegionRolloutConfigurationRegionsList>;
+export const CanaryTrafficRegionRolloutConfigurationRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<CanaryTrafficRegionRolloutConfigurationRegionsList>;
 
 export interface CanaryTrafficRegionRolloutConfiguration {
   /** The skip regions. */
@@ -3701,9 +3632,8 @@ export const CanaryTrafficRegionRolloutConfiguration = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CanaryTrafficRegionRolloutConfiguration>;
 
 export type TrafficRegionRolloutConfigurationRegionsList = Array<string>;
-export const TrafficRegionRolloutConfigurationRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TrafficRegionRolloutConfigurationRegionsList>;
+export const TrafficRegionRolloutConfigurationRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<TrafficRegionRolloutConfigurationRegionsList>;
 
 export interface TrafficRegionRolloutConfiguration {
   regions?: TrafficRegionRolloutConfigurationRegionsList;
@@ -3722,9 +3652,8 @@ export const TrafficRegionRolloutConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** The resource type registrations. */
 export type DefaultRolloutSpecificationInputResourceTypeRegistrationsList =
   Array<ResourceTypeRegistrationInput>;
-export const DefaultRolloutSpecificationInputResourceTypeRegistrationsList = /*@__PURE__*/ S.Array(
-  ResourceTypeRegistrationInput,
-) as any as S.Schema<DefaultRolloutSpecificationInputResourceTypeRegistrationsList>;
+export const DefaultRolloutSpecificationInputResourceTypeRegistrationsList =
+  CustomRolloutSpecificationInputResourceTypeRegistrationsList as any as S.Schema<DefaultRolloutSpecificationInputResourceTypeRegistrationsList>;
 
 /** The auto provisioning config. */
 export interface DefaultRolloutSpecificationAutoProvisionConfig {
@@ -3733,14 +3662,8 @@ export interface DefaultRolloutSpecificationAutoProvisionConfig {
   /** Whether auto provisioning for resource graph is enabled. */
   resourceGraph?: boolean;
 }
-export const DefaultRolloutSpecificationAutoProvisionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storage: S.optional(S.Boolean),
-    resourceGraph: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultRolloutSpecificationAutoProvisionConfig",
-}) as any as S.Schema<DefaultRolloutSpecificationAutoProvisionConfig>;
+export const DefaultRolloutSpecificationAutoProvisionConfig =
+  CustomRolloutSpecificationAutoProvisionConfig as any as S.Schema<DefaultRolloutSpecificationAutoProvisionConfig>;
 
 export interface DefaultRolloutSpecificationInput {
   /** The expedited rollout definition. */
@@ -3788,18 +3711,15 @@ export const DefaultRolloutSpecificationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The completed regions. */
 export type DefaultRolloutStatusInputCompletedRegionsList = Array<string>;
-export const DefaultRolloutStatusInputCompletedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DefaultRolloutStatusInputCompletedRegionsList>;
+export const DefaultRolloutStatusInputCompletedRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<DefaultRolloutStatusInputCompletedRegionsList>;
 
 /** The failed or skipped regions. */
 export type DefaultRolloutStatusInputFailedOrSkippedRegionsMap = {
   [key: string]: ExtendedErrorInfoInput | undefined;
 };
-export const DefaultRolloutStatusInputFailedOrSkippedRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ExtendedErrorInfoInput,
-) as any as S.Schema<DefaultRolloutStatusInputFailedOrSkippedRegionsMap>;
+export const DefaultRolloutStatusInputFailedOrSkippedRegionsMap =
+  CustomRolloutStatusInputFailedOrSkippedRegionsMap as any as S.Schema<DefaultRolloutStatusInputFailedOrSkippedRegionsMap>;
 
 /** The next traffic region. */
 export type TrafficRegionCategory =
@@ -3894,9 +3814,8 @@ export const DefaultRolloutsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 /** The resource type registrations. */
 export type DefaultRolloutSpecificationResourceTypeRegistrationsList =
   Array<ResourceTypeRegistration>;
-export const DefaultRolloutSpecificationResourceTypeRegistrationsList = /*@__PURE__*/ S.Array(
-  ResourceTypeRegistration,
-) as any as S.Schema<DefaultRolloutSpecificationResourceTypeRegistrationsList>;
+export const DefaultRolloutSpecificationResourceTypeRegistrationsList =
+  CustomRolloutSpecificationResourceTypeRegistrationsList as any as S.Schema<DefaultRolloutSpecificationResourceTypeRegistrationsList>;
 
 export interface DefaultRolloutSpecification {
   /** The expedited rollout definition. */
@@ -3942,18 +3861,15 @@ export const DefaultRolloutSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The completed regions. */
 export type DefaultRolloutStatusCompletedRegionsList = Array<string>;
-export const DefaultRolloutStatusCompletedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DefaultRolloutStatusCompletedRegionsList>;
+export const DefaultRolloutStatusCompletedRegionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<DefaultRolloutStatusCompletedRegionsList>;
 
 /** The failed or skipped regions. */
 export type DefaultRolloutStatusFailedOrSkippedRegionsMap = {
   [key: string]: ExtendedErrorInfo | undefined;
 };
-export const DefaultRolloutStatusFailedOrSkippedRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ExtendedErrorInfo,
-) as any as S.Schema<DefaultRolloutStatusFailedOrSkippedRegionsMap>;
+export const DefaultRolloutStatusFailedOrSkippedRegionsMap =
+  CustomRolloutStatusFailedOrSkippedRegionsMap as any as S.Schema<DefaultRolloutStatusFailedOrSkippedRegionsMap>;
 
 export interface DefaultRolloutStatus {
   /** The completed regions. */
@@ -4108,9 +4024,8 @@ export const DeleteDefaultRolloutRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDefaultRolloutRequest>;
 
 export interface DeleteDefaultRolloutResponse {}
-export const DeleteDefaultRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDefaultRolloutResponse",
-}) as any as S.Schema<DeleteDefaultRolloutResponse>;
+export const DeleteDefaultRolloutResponse =
+  DeleteCustomRolloutResponse as any as S.Schema<DeleteDefaultRolloutResponse>;
 
 export interface DeleteNotificationRegistrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4138,11 +4053,8 @@ export const DeleteNotificationRegistrationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteNotificationRegistrationRequest>;
 
 export interface DeleteNotificationRegistrationResponse {}
-export const DeleteNotificationRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNotificationRegistrationResponse",
-}) as any as S.Schema<DeleteNotificationRegistrationResponse>;
+export const DeleteNotificationRegistrationResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteNotificationRegistrationResponse>;
 
 export interface DeleteOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4165,9 +4077,8 @@ export const DeleteOperationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOperationRequest" }) as any as S.Schema<DeleteOperationRequest>;
 
 export interface DeleteOperationResponse {}
-export const DeleteOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOperationResponse",
-}) as any as S.Schema<DeleteOperationResponse>;
+export const DeleteOperationResponse =
+  DeleteCustomRolloutResponse as any as S.Schema<DeleteOperationResponse>;
 
 export interface DeleteProviderMonitorSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4195,11 +4106,8 @@ export const DeleteProviderMonitorSettingsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteProviderMonitorSettingsRequest>;
 
 export interface DeleteProviderMonitorSettingsResponse {}
-export const DeleteProviderMonitorSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProviderMonitorSettingsResponse",
-}) as any as S.Schema<DeleteProviderMonitorSettingsResponse>;
+export const DeleteProviderMonitorSettingsResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteProviderMonitorSettingsResponse>;
 
 export interface DeleteProviderRegistrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4224,11 +4132,8 @@ export const DeleteProviderRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProviderRegistrationRequest>;
 
 export interface DeleteProviderRegistrationResponse {}
-export const DeleteProviderRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProviderRegistrationResponse",
-}) as any as S.Schema<DeleteProviderRegistrationResponse>;
+export const DeleteProviderRegistrationResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteProviderRegistrationResponse>;
 
 export interface ResourceManagementEntityInput {
   /** The resource id. */
@@ -4284,11 +4189,8 @@ export const DeleteResourceActionResourcesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteResourceActionResourcesRequest>;
 
 export interface DeleteResourceActionResourcesResponse {}
-export const DeleteResourceActionResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourceActionResourcesResponse",
-}) as any as S.Schema<DeleteResourceActionResourcesResponse>;
+export const DeleteResourceActionResourcesResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteResourceActionResourcesResponse>;
 
 export interface DeleteResourceTypeRegistrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4316,11 +4218,8 @@ export const DeleteResourceTypeRegistrationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteResourceTypeRegistrationRequest>;
 
 export interface DeleteResourceTypeRegistrationResponse {}
-export const DeleteResourceTypeRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourceTypeRegistrationResponse",
-}) as any as S.Schema<DeleteResourceTypeRegistrationResponse>;
+export const DeleteResourceTypeRegistrationResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteResourceTypeRegistrationResponse>;
 
 export interface DeleteSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4349,9 +4248,8 @@ export const DeleteSkusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSkusRequest" }) as any as S.Schema<DeleteSkusRequest>;
 
 export interface DeleteSkusResponse {}
-export const DeleteSkusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSkusResponse",
-}) as any as S.Schema<DeleteSkusResponse>;
+export const DeleteSkusResponse =
+  DeleteCustomRolloutResponse as any as S.Schema<DeleteSkusResponse>;
 
 export interface DeleteSkusNestedResourceTypeFirstRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4385,11 +4283,8 @@ export const DeleteSkusNestedResourceTypeFirstRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteSkusNestedResourceTypeFirstRequest>;
 
 export interface DeleteSkusNestedResourceTypeFirstResponse {}
-export const DeleteSkusNestedResourceTypeFirstResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSkusNestedResourceTypeFirstResponse",
-}) as any as S.Schema<DeleteSkusNestedResourceTypeFirstResponse>;
+export const DeleteSkusNestedResourceTypeFirstResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteSkusNestedResourceTypeFirstResponse>;
 
 export interface DeleteSkusNestedResourceTypeSecondRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4426,11 +4321,8 @@ export const DeleteSkusNestedResourceTypeSecondRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteSkusNestedResourceTypeSecondRequest>;
 
 export interface DeleteSkusNestedResourceTypeSecondResponse {}
-export const DeleteSkusNestedResourceTypeSecondResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSkusNestedResourceTypeSecondResponse",
-}) as any as S.Schema<DeleteSkusNestedResourceTypeSecondResponse>;
+export const DeleteSkusNestedResourceTypeSecondResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteSkusNestedResourceTypeSecondResponse>;
 
 export interface DeleteSkusNestedResourceTypeThirdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4470,11 +4362,8 @@ export const DeleteSkusNestedResourceTypeThirdRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteSkusNestedResourceTypeThirdRequest>;
 
 export interface DeleteSkusNestedResourceTypeThirdResponse {}
-export const DeleteSkusNestedResourceTypeThirdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSkusNestedResourceTypeThirdResponse",
-}) as any as S.Schema<DeleteSkusNestedResourceTypeThirdResponse>;
+export const DeleteSkusNestedResourceTypeThirdResponse =
+  DeleteAuthorizedApplicationResponse as any as S.Schema<DeleteSkusNestedResourceTypeThirdResponse>;
 
 export interface GenerateManifestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4499,21 +4388,18 @@ export const GenerateManifestRequest = /*@__PURE__*/ S.suspend(() =>
 /** The provider authorizations. */
 export type ResourceProviderManifestProviderAuthorizationsList =
   Array<ResourceProviderAuthorization>;
-export const ResourceProviderManifestProviderAuthorizationsList = /*@__PURE__*/ S.Array(
-  ResourceProviderAuthorization,
-) as any as S.Schema<ResourceProviderManifestProviderAuthorizationsList>;
+export const ResourceProviderManifestProviderAuthorizationsList =
+  ProviderRegistrationPropertiesProviderAuthorizationsList as any as S.Schema<ResourceProviderManifestProviderAuthorizationsList>;
 
 /** The services. */
 export type ResourceProviderManifestServicesList = Array<ResourceProviderService>;
-export const ResourceProviderManifestServicesList = /*@__PURE__*/ S.Array(
-  ResourceProviderService,
-) as any as S.Schema<ResourceProviderManifestServicesList>;
+export const ResourceProviderManifestServicesList =
+  ProviderRegistrationPropertiesServicesList as any as S.Schema<ResourceProviderManifestServicesList>;
 
 /** The required features. */
 export type ResourceProviderManifestRequiredFeaturesList = Array<string>;
-export const ResourceProviderManifestRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceProviderManifestRequiredFeaturesList>;
+export const ResourceProviderManifestRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceProviderManifestRequiredFeaturesList>;
 
 /** The additional options. */
 export type AdditionalOptions =
@@ -4523,9 +4409,8 @@ export const AdditionalOptions = S.String;
 
 /** The allowed unauthorized actions. */
 export type ResourceTypeAllowedUnauthorizedActionsList = Array<string>;
-export const ResourceTypeAllowedUnauthorizedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeAllowedUnauthorizedActionsList>;
+export const ResourceTypeAllowedUnauthorizedActionsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeAllowedUnauthorizedActionsList>;
 
 /** The allowed unauthorized actions extensions. */
 export type ResourceTypeAllowedUnauthorizedActionsExtensionsList =
@@ -4542,27 +4427,23 @@ export const ResourceTypeAuthorizationActionMappingsList = /*@__PURE__*/ S.Array
 
 /** The linked access checks. */
 export type ResourceTypeLinkedAccessChecksList = Array<LinkedAccessCheck>;
-export const ResourceTypeLinkedAccessChecksList = /*@__PURE__*/ S.Array(
-  LinkedAccessCheck,
-) as any as S.Schema<ResourceTypeLinkedAccessChecksList>;
+export const ResourceTypeLinkedAccessChecksList =
+  ResourceTypeRegistrationPropertiesLinkedAccessChecksList as any as S.Schema<ResourceTypeLinkedAccessChecksList>;
 
 /** The logging rules. */
 export type ResourceTypeLoggingRulesList = Array<LoggingRule>;
-export const ResourceTypeLoggingRulesList = /*@__PURE__*/ S.Array(
-  LoggingRule,
-) as any as S.Schema<ResourceTypeLoggingRulesList>;
+export const ResourceTypeLoggingRulesList =
+  ResourceTypeRegistrationPropertiesLoggingRulesList as any as S.Schema<ResourceTypeLoggingRulesList>;
 
 /** The throttling rules. */
 export type ResourceTypeThrottlingRulesList = Array<ThrottlingRule>;
-export const ResourceTypeThrottlingRulesList = /*@__PURE__*/ S.Array(
-  ThrottlingRule,
-) as any as S.Schema<ResourceTypeThrottlingRulesList>;
+export const ResourceTypeThrottlingRulesList =
+  ResourceTypeRegistrationPropertiesThrottlingRulesList as any as S.Schema<ResourceTypeThrottlingRulesList>;
 
 /** The endpoints. */
 export type ResourceTypeEndpointsList = Array<ResourceProviderEndpoint>;
-export const ResourceTypeEndpointsList = /*@__PURE__*/ S.Array(
-  ResourceProviderEndpoint,
-) as any as S.Schema<ResourceTypeEndpointsList>;
+export const ResourceTypeEndpointsList =
+  ProviderRegistrationPropertiesGlobalNotificationEndpointsList as any as S.Schema<ResourceTypeEndpointsList>;
 
 export interface IdentityManagement {
   /** The type. */
@@ -4576,51 +4457,43 @@ export const IdentityManagement = /*@__PURE__*/ S.suspend(() =>
 
 /** The required features. */
 export type ResourceTypeRequiredFeaturesList = Array<string>;
-export const ResourceTypeRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeRequiredFeaturesList>;
+export const ResourceTypeRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeRequiredFeaturesList>;
 
 /** The subscription state rules. */
 export type ResourceTypeSubscriptionStateRulesList = Array<SubscriptionStateRule>;
-export const ResourceTypeSubscriptionStateRulesList = /*@__PURE__*/ S.Array(
-  SubscriptionStateRule,
-) as any as S.Schema<ResourceTypeSubscriptionStateRulesList>;
+export const ResourceTypeSubscriptionStateRulesList =
+  ResourceTypeRegistrationPropertiesSubscriptionStateRulesList as any as S.Schema<ResourceTypeSubscriptionStateRulesList>;
 
 /** The disallowed action verbs. */
 export type ResourceTypeDisallowedActionVerbsList = Array<string>;
-export const ResourceTypeDisallowedActionVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceTypeDisallowedActionVerbsList>;
+export const ResourceTypeDisallowedActionVerbsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<ResourceTypeDisallowedActionVerbsList>;
 
 /** The extended locations. */
 export type ResourceTypeExtendedLocationsList = Array<ExtendedLocationOptions>;
-export const ResourceTypeExtendedLocationsList = /*@__PURE__*/ S.Array(
-  ExtendedLocationOptions,
-) as any as S.Schema<ResourceTypeExtendedLocationsList>;
+export const ResourceTypeExtendedLocationsList =
+  ResourceTypeRegistrationPropertiesExtendedLocationsList as any as S.Schema<ResourceTypeExtendedLocationsList>;
 
 /** The linked operation rules. */
 export type ResourceTypeLinkedOperationRulesList = Array<LinkedOperationRule>;
-export const ResourceTypeLinkedOperationRulesList = /*@__PURE__*/ S.Array(
-  LinkedOperationRule,
-) as any as S.Schema<ResourceTypeLinkedOperationRulesList>;
+export const ResourceTypeLinkedOperationRulesList =
+  ResourceTypeRegistrationPropertiesLinkedOperationRulesList as any as S.Schema<ResourceTypeLinkedOperationRulesList>;
 
 /** List of resource deletion policies added. */
 export type ResourceTypeResourceDeletionPoliciesList = Array<ResourceDeletionPolicyAndProperties>;
-export const ResourceTypeResourceDeletionPoliciesList = /*@__PURE__*/ S.Array(
-  ResourceDeletionPolicyAndProperties,
-) as any as S.Schema<ResourceTypeResourceDeletionPoliciesList>;
+export const ResourceTypeResourceDeletionPoliciesList =
+  ResourceTypeRegistrationPropertiesResourceDeletionPoliciesList as any as S.Schema<ResourceTypeResourceDeletionPoliciesList>;
 
 /** The notifications. */
 export type ResourceTypeNotificationsList = Array<Notification>;
-export const ResourceTypeNotificationsList = /*@__PURE__*/ S.Array(
-  Notification,
-) as any as S.Schema<ResourceTypeNotificationsList>;
+export const ResourceTypeNotificationsList =
+  ProviderRegistrationPropertiesNotificationsList as any as S.Schema<ResourceTypeNotificationsList>;
 
 /** The linked notification rules. */
 export type ResourceTypeLinkedNotificationRulesList = Array<LinkedNotificationRule>;
-export const ResourceTypeLinkedNotificationRulesList = /*@__PURE__*/ S.Array(
-  LinkedNotificationRule,
-) as any as S.Schema<ResourceTypeLinkedNotificationRulesList>;
+export const ResourceTypeLinkedNotificationRulesList =
+  ResourceTypeRegistrationPropertiesLinkedNotificationRulesList as any as S.Schema<ResourceTypeLinkedNotificationRulesList>;
 
 export interface ResourceType {
   /** The resource type name. */
@@ -4732,16 +4605,14 @@ export const ResourceProviderManifestResourceTypesList = /*@__PURE__*/ S.Array(
 
 /** The capabilities. */
 export type ResourceProviderManifestCapabilitiesList = Array<ResourceProviderCapabilities>;
-export const ResourceProviderManifestCapabilitiesList = /*@__PURE__*/ S.Array(
-  ResourceProviderCapabilities,
-) as any as S.Schema<ResourceProviderManifestCapabilitiesList>;
+export const ResourceProviderManifestCapabilitiesList =
+  ProviderRegistrationPropertiesCapabilitiesList as any as S.Schema<ResourceProviderManifestCapabilitiesList>;
 
 /** The global notification endpoints. */
 export type ResourceProviderManifestGlobalNotificationEndpointsList =
   Array<ResourceProviderEndpoint>;
-export const ResourceProviderManifestGlobalNotificationEndpointsList = /*@__PURE__*/ S.Array(
-  ResourceProviderEndpoint,
-) as any as S.Schema<ResourceProviderManifestGlobalNotificationEndpointsList>;
+export const ResourceProviderManifestGlobalNotificationEndpointsList =
+  ProviderRegistrationPropertiesGlobalNotificationEndpointsList as any as S.Schema<ResourceProviderManifestGlobalNotificationEndpointsList>;
 
 export interface ReRegisterSubscriptionMetadata {
   /** Whether it's enabled or not. */
@@ -4760,16 +4631,14 @@ export const ReRegisterSubscriptionMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The notifications. */
 export type ResourceProviderManifestNotificationsList = Array<Notification>;
-export const ResourceProviderManifestNotificationsList = /*@__PURE__*/ S.Array(
-  Notification,
-) as any as S.Schema<ResourceProviderManifestNotificationsList>;
+export const ResourceProviderManifestNotificationsList =
+  ProviderRegistrationPropertiesNotificationsList as any as S.Schema<ResourceProviderManifestNotificationsList>;
 
 /** The linked notification rules. */
 export type ResourceProviderManifestLinkedNotificationRulesList =
   Array<FanoutLinkedNotificationRule>;
-export const ResourceProviderManifestLinkedNotificationRulesList = /*@__PURE__*/ S.Array(
-  FanoutLinkedNotificationRule,
-) as any as S.Schema<ResourceProviderManifestLinkedNotificationRulesList>;
+export const ResourceProviderManifestLinkedNotificationRulesList =
+  ProviderRegistrationPropertiesLinkedNotificationRulesList as any as S.Schema<ResourceProviderManifestLinkedNotificationRulesList>;
 
 export interface ResourceProviderManifest {
   /** The provider authentication. */
@@ -4972,17 +4841,8 @@ export interface GetAuthorizedApplicationResponse {
   systemData?: SystemData;
   properties?: AuthorizedApplicationProperties;
 }
-export const GetAuthorizedApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizedApplicationProperties),
-  }),
-).annotate({
-  identifier: "GetAuthorizedApplicationResponse",
-}) as any as S.Schema<GetAuthorizedApplicationResponse>;
+export const GetAuthorizedApplicationResponse =
+  AuthorizedApplicationsCreateOrUpdateResponse as any as S.Schema<GetAuthorizedApplicationResponse>;
 
 export interface GetCustomRolloutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5064,17 +4924,8 @@ export interface GetDefaultRolloutResponse {
   /** Properties of the rollout. */
   properties?: DefaultRolloutProperties;
 }
-export const GetDefaultRolloutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DefaultRolloutProperties),
-  }),
-).annotate({
-  identifier: "GetDefaultRolloutResponse",
-}) as any as S.Schema<GetDefaultRolloutResponse>;
+export const GetDefaultRolloutResponse =
+  DefaultRolloutsCreateOrUpdateResponse as any as S.Schema<GetDefaultRolloutResponse>;
 
 export interface GetManifestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5173,15 +5024,13 @@ export const MessageScope = S.String;
 
 /** The included events. */
 export type NotificationRegistrationPropertiesIncludedEventsList = Array<string>;
-export const NotificationRegistrationPropertiesIncludedEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationRegistrationPropertiesIncludedEventsList>;
+export const NotificationRegistrationPropertiesIncludedEventsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<NotificationRegistrationPropertiesIncludedEventsList>;
 
 /** The locations. */
 export type NotificationEndpointLocationsList = Array<string>;
-export const NotificationEndpointLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationEndpointLocationsList>;
+export const NotificationEndpointLocationsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<NotificationEndpointLocationsList>;
 
 export interface NotificationEndpoint {
   /** The notification destination. */
@@ -5277,10 +5126,8 @@ export const GetProviderMonitorSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetProviderMonitorSettingsResponseTagsMap = { [key: string]: string | undefined };
-export const GetProviderMonitorSettingsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetProviderMonitorSettingsResponseTagsMap>;
+export const GetProviderMonitorSettingsResponseTagsMap =
+  CreateProviderMonitorSettingsRequestTagsMap as any as S.Schema<GetProviderMonitorSettingsResponseTagsMap>;
 
 export interface GetProviderMonitorSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5297,19 +5144,8 @@ export interface GetProviderMonitorSettingsResponse {
   location: string;
   properties?: ProviderMonitorSettingProperties;
 }
-export const GetProviderMonitorSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetProviderMonitorSettingsResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProviderMonitorSettingProperties),
-  }),
-).annotate({
-  identifier: "GetProviderMonitorSettingsResponse",
-}) as any as S.Schema<GetProviderMonitorSettingsResponse>;
+export const GetProviderMonitorSettingsResponse =
+  CreateProviderMonitorSettingsResponse as any as S.Schema<GetProviderMonitorSettingsResponse>;
 
 export interface GetProviderRegistrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5446,21 +5282,18 @@ export const GetSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The locations. */
 export type SkuSettingLocationsList = Array<string>;
-export const SkuSettingLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSettingLocationsList>;
+export const SkuSettingLocationsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SkuSettingLocationsList>;
 
 /** The zones. */
 export type SkuLocationInfoZonesList = Array<string>;
-export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuLocationInfoZonesList>;
+export const SkuLocationInfoZonesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The name. */
 export type SkuZoneDetailNameList = Array<string>;
-export const SkuZoneDetailNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuZoneDetailNameList>;
+export const SkuZoneDetailNameList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SkuZoneDetailNameList>;
 
 export interface SkuCapability {
   /** The name. */
@@ -5502,9 +5335,8 @@ export const SkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
 
 /** The extended locations. */
 export type SkuLocationInfoExtendedLocationsList = Array<string>;
-export const SkuLocationInfoExtendedLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuLocationInfoExtendedLocationsList>;
+export const SkuLocationInfoExtendedLocationsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SkuLocationInfoExtendedLocationsList>;
 
 export interface SkuLocationInfo {
   /** The location. */
@@ -5536,15 +5368,13 @@ export const SkuSettingLocationInfoList = /*@__PURE__*/ S.Array(
 
 /** The required quota ids. */
 export type SkuSettingRequiredQuotaIdsList = Array<string>;
-export const SkuSettingRequiredQuotaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSettingRequiredQuotaIdsList>;
+export const SkuSettingRequiredQuotaIdsList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SkuSettingRequiredQuotaIdsList>;
 
 /** The required features. */
 export type SkuSettingRequiredFeaturesList = Array<string>;
-export const SkuSettingRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSettingRequiredFeaturesList>;
+export const SkuSettingRequiredFeaturesList =
+  ApplicationDataAuthorizationResourceTypesList as any as S.Schema<SkuSettingRequiredFeaturesList>;
 
 /** The scale type. */
 export type SkuScaleType = "None" | "Manual" | "Automatic";
@@ -5593,9 +5423,8 @@ export const SkuSettingCostsList = /*@__PURE__*/ S.Array(
 
 /** The capabilities. */
 export type SkuSettingCapabilitiesList = Array<SkuCapability>;
-export const SkuSettingCapabilitiesList = /*@__PURE__*/ S.Array(
-  SkuCapability,
-) as any as S.Schema<SkuSettingCapabilitiesList>;
+export const SkuSettingCapabilitiesList =
+  SkuZoneDetailCapabilitiesList as any as S.Schema<SkuSettingCapabilitiesList>;
 
 export interface SkuSetting {
   /** The name. */
@@ -5779,17 +5608,8 @@ export interface GetSkusNestedResourceTypeSecondResponse {
   systemData?: SystemData;
   properties?: ResourceTypeSku;
 }
-export const GetSkusNestedResourceTypeSecondResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({
-  identifier: "GetSkusNestedResourceTypeSecondResponse",
-}) as any as S.Schema<GetSkusNestedResourceTypeSecondResponse>;
+export const GetSkusNestedResourceTypeSecondResponse =
+  GetSkusNestedResourceTypeFirstResponse as any as S.Schema<GetSkusNestedResourceTypeSecondResponse>;
 
 export interface GetSkusNestedResourceTypeThirdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5839,17 +5659,8 @@ export interface GetSkusNestedResourceTypeThirdResponse {
   systemData?: SystemData;
   properties?: ResourceTypeSku;
 }
-export const GetSkusNestedResourceTypeThirdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({
-  identifier: "GetSkusNestedResourceTypeThirdResponse",
-}) as any as S.Schema<GetSkusNestedResourceTypeThirdResponse>;
+export const GetSkusNestedResourceTypeThirdResponse =
+  GetSkusNestedResourceTypeFirstResponse as any as S.Schema<GetSkusNestedResourceTypeThirdResponse>;
 
 export interface ListAuthorizedApplicationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5953,15 +5764,7 @@ export interface CustomRollout {
   /** Properties of the rollout. */
   properties: CustomRolloutProperties;
 }
-export const CustomRollout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CustomRolloutProperties,
-  }),
-).annotate({ identifier: "CustomRollout" }) as any as S.Schema<CustomRollout>;
+export const CustomRollout = GetCustomRolloutResponse as any as S.Schema<CustomRollout>;
 
 /** The CustomRollout items on this page */
 export type CustomRolloutArrayResponseWithContinuationValueList = Array<CustomRollout>;
@@ -6291,9 +6094,8 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 /** The value. */
 export type OperationsDefinitionArrayResponseWithContinuationValueList =
   Array<OperationsDefinition>;
-export const OperationsDefinitionArrayResponseWithContinuationValueList = /*@__PURE__*/ S.Array(
-  OperationsDefinition,
-) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuationValueList>;
+export const OperationsDefinitionArrayResponseWithContinuationValueList =
+  GenerateProviderRegistrationOperationsResponseBodyList as any as S.Schema<OperationsDefinitionArrayResponseWithContinuationValueList>;
 
 export interface OperationsDefinitionArrayResponseWithContinuation {
   /** The value. */
@@ -6334,10 +6136,8 @@ export const ListProviderMonitorSettingsByResourceGroupRequest = /*@__PURE__*/ S
 
 /** Resource tags. */
 export type ProviderMonitorSettingTagsMap = { [key: string]: string | undefined };
-export const ProviderMonitorSettingTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProviderMonitorSettingTagsMap>;
+export const ProviderMonitorSettingTagsMap =
+  CreateProviderMonitorSettingsRequestTagsMap as any as S.Schema<ProviderMonitorSettingTagsMap>;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface ProviderMonitorSetting {
@@ -6477,9 +6277,8 @@ export const ListResourceTypeRegistrationByProviderRegistrationRequest = /*@__PU
 /** The ResourceTypeRegistration items on this page */
 export type ResourceTypeRegistrationArrayResponseWithContinuationValueList =
   Array<ResourceTypeRegistration>;
-export const ResourceTypeRegistrationArrayResponseWithContinuationValueList = /*@__PURE__*/ S.Array(
-  ResourceTypeRegistration,
-) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuationValueList>;
+export const ResourceTypeRegistrationArrayResponseWithContinuationValueList =
+  CustomRolloutSpecificationResourceTypeRegistrationsList as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuationValueList>;
 
 /** Paged collection of ResourceTypeRegistration items */
 export interface ResourceTypeRegistrationArrayResponseWithContinuation {
@@ -6534,15 +6333,7 @@ export interface SkuResource {
   systemData?: SystemData;
   properties?: ResourceTypeSku;
 }
-export const SkuResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({ identifier: "SkuResource" }) as any as S.Schema<SkuResource>;
+export const SkuResource = GetSkusResponse as any as S.Schema<SkuResource>;
 
 /** The SkuResource items on this page */
 export type SkuResourceArrayResponseWithContinuationValueList = Array<SkuResource>;
@@ -6768,17 +6559,8 @@ export interface NotificationRegistrationsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: NotificationRegistrationProperties;
 }
-export const NotificationRegistrationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NotificationRegistrationProperties),
-  }),
-).annotate({
-  identifier: "NotificationRegistrationsCreateOrUpdateResponse",
-}) as any as S.Schema<NotificationRegistrationsCreateOrUpdateResponse>;
+export const NotificationRegistrationsCreateOrUpdateResponse =
+  GetNotificationRegistrationResponse as any as S.Schema<NotificationRegistrationsCreateOrUpdateResponse>;
 
 export interface OperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6815,17 +6597,8 @@ export interface OperationsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: OperationsContentProperties;
 }
-export const OperationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OperationsContentProperties),
-  }),
-).annotate({
-  identifier: "OperationsCreateOrUpdateResponse",
-}) as any as S.Schema<OperationsCreateOrUpdateResponse>;
+export const OperationsCreateOrUpdateResponse =
+  ListOperationByProviderRegistrationResponse as any as S.Schema<OperationsCreateOrUpdateResponse>;
 
 /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
 export type ProviderRegistrationsCreateOrUpdateRequestKind = "Managed" | "Hybrid" | "Direct";
@@ -6993,17 +6766,8 @@ export interface SkusCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ResourceTypeSku;
 }
-export const SkusCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({
-  identifier: "SkusCreateOrUpdateResponse",
-}) as any as S.Schema<SkusCreateOrUpdateResponse>;
+export const SkusCreateOrUpdateResponse =
+  GetSkusNestedResourceTypeFirstResponse as any as S.Schema<SkusCreateOrUpdateResponse>;
 
 export interface SkusCreateOrUpdateNestedResourceTypeFirstRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7049,17 +6813,8 @@ export interface SkusCreateOrUpdateNestedResourceTypeFirstResponse {
   systemData?: SystemData;
   properties?: ResourceTypeSku;
 }
-export const SkusCreateOrUpdateNestedResourceTypeFirstResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({
-  identifier: "SkusCreateOrUpdateNestedResourceTypeFirstResponse",
-}) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstResponse>;
+export const SkusCreateOrUpdateNestedResourceTypeFirstResponse =
+  GetSkusNestedResourceTypeFirstResponse as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstResponse>;
 
 export interface SkusCreateOrUpdateNestedResourceTypeSecondRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7108,17 +6863,8 @@ export interface SkusCreateOrUpdateNestedResourceTypeSecondResponse {
   systemData?: SystemData;
   properties?: ResourceTypeSku;
 }
-export const SkusCreateOrUpdateNestedResourceTypeSecondResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({
-  identifier: "SkusCreateOrUpdateNestedResourceTypeSecondResponse",
-}) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondResponse>;
+export const SkusCreateOrUpdateNestedResourceTypeSecondResponse =
+  GetSkusNestedResourceTypeFirstResponse as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondResponse>;
 
 export interface SkusCreateOrUpdateNestedResourceTypeThirdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7170,17 +6916,8 @@ export interface SkusCreateOrUpdateNestedResourceTypeThirdResponse {
   systemData?: SystemData;
   properties?: ResourceTypeSku;
 }
-export const SkusCreateOrUpdateNestedResourceTypeThirdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({
-  identifier: "SkusCreateOrUpdateNestedResourceTypeThirdResponse",
-}) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdResponse>;
+export const SkusCreateOrUpdateNestedResourceTypeThirdResponse =
+  GetSkusNestedResourceTypeFirstResponse as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdResponse>;
 
 export interface StopCustomRolloutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7206,9 +6943,8 @@ export const StopCustomRolloutRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopCustomRolloutRequest" }) as any as S.Schema<StopCustomRolloutRequest>;
 
 export interface StopCustomRolloutResponse {}
-export const StopCustomRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCustomRolloutResponse",
-}) as any as S.Schema<StopCustomRolloutResponse>;
+export const StopCustomRolloutResponse =
+  DeleteCustomRolloutResponse as any as S.Schema<StopCustomRolloutResponse>;
 
 export interface StopDefaultRolloutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7236,9 +6972,8 @@ export const StopDefaultRolloutRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopDefaultRolloutRequest>;
 
 export interface StopDefaultRolloutResponse {}
-export const StopDefaultRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopDefaultRolloutResponse",
-}) as any as S.Schema<StopDefaultRolloutResponse>;
+export const StopDefaultRolloutResponse =
+  DeleteCustomRolloutResponse as any as S.Schema<StopDefaultRolloutResponse>;
 
 export interface UpdateProviderMonitorSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7267,10 +7002,8 @@ export const UpdateProviderMonitorSettingsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type UpdateProviderMonitorSettingsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProviderMonitorSettingsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProviderMonitorSettingsResponseTagsMap>;
+export const UpdateProviderMonitorSettingsResponseTagsMap =
+  CreateProviderMonitorSettingsRequestTagsMap as any as S.Schema<UpdateProviderMonitorSettingsResponseTagsMap>;
 
 export interface UpdateProviderMonitorSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7287,19 +7020,8 @@ export interface UpdateProviderMonitorSettingsResponse {
   location: string;
   properties?: ProviderMonitorSettingProperties;
 }
-export const UpdateProviderMonitorSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateProviderMonitorSettingsResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProviderMonitorSettingProperties),
-  }),
-).annotate({
-  identifier: "UpdateProviderMonitorSettingsResponse",
-}) as any as S.Schema<UpdateProviderMonitorSettingsResponse>;
+export const UpdateProviderMonitorSettingsResponse =
+  CreateProviderMonitorSettingsResponse as any as S.Schema<UpdateProviderMonitorSettingsResponse>;
 
 export type AuthorizedApplicationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates the authorized application. */

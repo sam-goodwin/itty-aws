@@ -79,9 +79,7 @@ export const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteZoneRequest" }) as any as S.Schema<DeleteZoneRequest>;
 
 export interface DeleteZoneResponse {}
-export const DeleteZoneResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteZoneResponse",
-}) as any as S.Schema<DeleteZoneResponse>;
+export const DeleteZoneResponse = DeleteRecordSetResponse as any as S.Schema<DeleteZoneResponse>;
 
 /** A reference to a another resource */
 export interface SubResource {
@@ -137,9 +135,8 @@ export const GetDnsResourceReferenceByTargetResourcesRequest = /*@__PURE__*/ S.s
 
 /** A list of dns Records */
 export type DnsResourceReferenceDnsResourcesList = Array<SubResource>;
-export const DnsResourceReferenceDnsResourcesList = /*@__PURE__*/ S.Array(
-  SubResource,
-) as any as S.Schema<DnsResourceReferenceDnsResourcesList>;
+export const DnsResourceReferenceDnsResourcesList =
+  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<DnsResourceReferenceDnsResourcesList>;
 
 /** Represents a single Azure resource and its referencing DNS records. */
 export interface DnsResourceReference {
@@ -540,16 +537,13 @@ export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetZoneResponseTagsMap = { [key: string]: string | undefined };
-export const GetZoneResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetZoneResponseTagsMap>;
+export const GetZoneResponseTagsMap =
+  RecordSetPropertiesMetadataMap as any as S.Schema<GetZoneResponseTagsMap>;
 
 /** The name servers for this DNS zone. This is a read-only property and any attempt to set this value will be ignored. */
 export type ZonePropertiesNameServersList = Array<string>;
-export const ZonePropertiesNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZonePropertiesNameServersList>;
+export const ZonePropertiesNameServersList =
+  TxtRecordValueList as any as S.Schema<ZonePropertiesNameServersList>;
 
 /** The type of this DNS zone (Public or Private). */
 export type ZonePropertiesZoneType = "Public" | "Private";
@@ -557,15 +551,13 @@ export const ZonePropertiesZoneType = S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesRegistrationVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesRegistrationVirtualNetworksList = /*@__PURE__*/ S.Array(
-  SubResource,
-) as any as S.Schema<ZonePropertiesRegistrationVirtualNetworksList>;
+export const ZonePropertiesRegistrationVirtualNetworksList =
+  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesRegistrationVirtualNetworksList>;
 
 /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesResolutionVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesResolutionVirtualNetworksList = /*@__PURE__*/ S.Array(
-  SubResource,
-) as any as S.Schema<ZonePropertiesResolutionVirtualNetworksList>;
+export const ZonePropertiesResolutionVirtualNetworksList =
+  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesResolutionVirtualNetworksList>;
 
 /** Represents the properties of the zone. */
 export interface ZoneProperties {
@@ -780,10 +772,7 @@ export const ListZoneByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ZoneTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZoneTagsMap>;
+export const ZoneTagsMap = RecordSetPropertiesMetadataMap as any as S.Schema<ZoneTagsMap>;
 
 /** Describes a DNS zone. */
 export interface Zone {
@@ -802,17 +791,7 @@ export interface Zone {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-export const Zone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(ZoneTagsMap),
-    etag: S.optional(S.String),
-    properties: S.optional(ZoneProperties),
-  }),
-).annotate({ identifier: "Zone" }) as any as S.Schema<Zone>;
+export const Zone = GetZoneResponse as any as S.Schema<Zone>;
 
 /** Information about the DNS zones. */
 export type ZoneListResultValueList = Array<Zone>;
@@ -869,58 +848,48 @@ export const RecordSetsCreateOrUpdateRequestRecordType = S.String;
 
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesInputMetadataMap = { [key: string]: string | undefined };
-export const RecordSetPropertiesInputMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RecordSetPropertiesInputMetadataMap>;
+export const RecordSetPropertiesInputMetadataMap =
+  RecordSetPropertiesMetadataMap as any as S.Schema<RecordSetPropertiesInputMetadataMap>;
 
 /** The list of A records in the record set. */
 export type RecordSetPropertiesInputARecordsList = Array<ARecord>;
-export const RecordSetPropertiesInputARecordsList = /*@__PURE__*/ S.Array(
-  ARecord,
-) as any as S.Schema<RecordSetPropertiesInputARecordsList>;
+export const RecordSetPropertiesInputARecordsList =
+  RecordSetPropertiesARecordsList as any as S.Schema<RecordSetPropertiesInputARecordsList>;
 
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesInputAAAARecordsList = Array<AaaaRecord>;
-export const RecordSetPropertiesInputAAAARecordsList = /*@__PURE__*/ S.Array(
-  AaaaRecord,
-) as any as S.Schema<RecordSetPropertiesInputAAAARecordsList>;
+export const RecordSetPropertiesInputAAAARecordsList =
+  RecordSetPropertiesAAAARecordsList as any as S.Schema<RecordSetPropertiesInputAAAARecordsList>;
 
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesInputMXRecordsList = Array<MxRecord>;
-export const RecordSetPropertiesInputMXRecordsList = /*@__PURE__*/ S.Array(
-  MxRecord,
-) as any as S.Schema<RecordSetPropertiesInputMXRecordsList>;
+export const RecordSetPropertiesInputMXRecordsList =
+  RecordSetPropertiesMXRecordsList as any as S.Schema<RecordSetPropertiesInputMXRecordsList>;
 
 /** The list of NS records in the record set. */
 export type RecordSetPropertiesInputNSRecordsList = Array<NsRecord>;
-export const RecordSetPropertiesInputNSRecordsList = /*@__PURE__*/ S.Array(
-  NsRecord,
-) as any as S.Schema<RecordSetPropertiesInputNSRecordsList>;
+export const RecordSetPropertiesInputNSRecordsList =
+  RecordSetPropertiesNSRecordsList as any as S.Schema<RecordSetPropertiesInputNSRecordsList>;
 
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesInputPTRRecordsList = Array<PtrRecord>;
-export const RecordSetPropertiesInputPTRRecordsList = /*@__PURE__*/ S.Array(
-  PtrRecord,
-) as any as S.Schema<RecordSetPropertiesInputPTRRecordsList>;
+export const RecordSetPropertiesInputPTRRecordsList =
+  RecordSetPropertiesPTRRecordsList as any as S.Schema<RecordSetPropertiesInputPTRRecordsList>;
 
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesInputSRVRecordsList = Array<SrvRecord>;
-export const RecordSetPropertiesInputSRVRecordsList = /*@__PURE__*/ S.Array(
-  SrvRecord,
-) as any as S.Schema<RecordSetPropertiesInputSRVRecordsList>;
+export const RecordSetPropertiesInputSRVRecordsList =
+  RecordSetPropertiesSRVRecordsList as any as S.Schema<RecordSetPropertiesInputSRVRecordsList>;
 
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesInputTXTRecordsList = Array<TxtRecord>;
-export const RecordSetPropertiesInputTXTRecordsList = /*@__PURE__*/ S.Array(
-  TxtRecord,
-) as any as S.Schema<RecordSetPropertiesInputTXTRecordsList>;
+export const RecordSetPropertiesInputTXTRecordsList =
+  RecordSetPropertiesTXTRecordsList as any as S.Schema<RecordSetPropertiesInputTXTRecordsList>;
 
 /** The list of CAA records in the record set. */
 export type RecordSetPropertiesInputCaaRecordsList = Array<CaaRecord>;
-export const RecordSetPropertiesInputCaaRecordsList = /*@__PURE__*/ S.Array(
-  CaaRecord,
-) as any as S.Schema<RecordSetPropertiesInputCaaRecordsList>;
+export const RecordSetPropertiesInputCaaRecordsList =
+  RecordSetPropertiesCaaRecordsList as any as S.Schema<RecordSetPropertiesInputCaaRecordsList>;
 
 /** Represents the properties of the records in the record set. */
 export interface RecordSetPropertiesInput {
@@ -1056,10 +1025,8 @@ export const UpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateZoneRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateZoneRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateZoneRequestTagsMap>;
+export const UpdateZoneRequestTagsMap =
+  RecordSetPropertiesMetadataMap as any as S.Schema<UpdateZoneRequestTagsMap>;
 
 export interface UpdateZoneRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
@@ -1089,10 +1056,8 @@ export const UpdateZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateZoneResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateZoneResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateZoneResponseTagsMap>;
+export const UpdateZoneResponseTagsMap =
+  RecordSetPropertiesMetadataMap as any as S.Schema<UpdateZoneResponseTagsMap>;
 
 export interface UpdateZoneResponse {
   /** Resource ID. */
@@ -1110,24 +1075,12 @@ export interface UpdateZoneResponse {
   /** The properties of the zone. */
   properties?: ZoneProperties;
 }
-export const UpdateZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(UpdateZoneResponseTagsMap),
-    etag: S.optional(S.String),
-    properties: S.optional(ZoneProperties),
-  }),
-).annotate({ identifier: "UpdateZoneResponse" }) as any as S.Schema<UpdateZoneResponse>;
+export const UpdateZoneResponse = GetZoneResponse as any as S.Schema<UpdateZoneResponse>;
 
 /** Resource tags. */
 export type ZonesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ZonesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZonesCreateOrUpdateRequestTagsMap>;
+export const ZonesCreateOrUpdateRequestTagsMap =
+  RecordSetPropertiesMetadataMap as any as S.Schema<ZonesCreateOrUpdateRequestTagsMap>;
 
 /** The type of this DNS zone (Public or Private). */
 export type ZonePropertiesInputZoneType = "Public" | "Private";
@@ -1135,15 +1088,13 @@ export const ZonePropertiesInputZoneType = S.String;
 
 /** A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesInputRegistrationVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesInputRegistrationVirtualNetworksList = /*@__PURE__*/ S.Array(
-  SubResource,
-) as any as S.Schema<ZonePropertiesInputRegistrationVirtualNetworksList>;
+export const ZonePropertiesInputRegistrationVirtualNetworksList =
+  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesInputRegistrationVirtualNetworksList>;
 
 /** A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private. */
 export type ZonePropertiesInputResolutionVirtualNetworksList = Array<SubResource>;
-export const ZonePropertiesInputResolutionVirtualNetworksList = /*@__PURE__*/ S.Array(
-  SubResource,
-) as any as S.Schema<ZonePropertiesInputResolutionVirtualNetworksList>;
+export const ZonePropertiesInputResolutionVirtualNetworksList =
+  DnsResourceReferenceRequestPropertiesTargetResourcesList as any as S.Schema<ZonePropertiesInputResolutionVirtualNetworksList>;
 
 /** Represents the properties of the zone. */
 export interface ZonePropertiesInput {
@@ -1201,10 +1152,8 @@ export const ZonesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ZonesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ZonesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ZonesCreateOrUpdateResponseTagsMap>;
+export const ZonesCreateOrUpdateResponseTagsMap =
+  RecordSetPropertiesMetadataMap as any as S.Schema<ZonesCreateOrUpdateResponseTagsMap>;
 
 export interface ZonesCreateOrUpdateResponse {
   /** Resource ID. */

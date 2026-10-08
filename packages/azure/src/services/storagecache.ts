@@ -214,11 +214,8 @@ export const AmlFilesystemIdentityType = S.String;
 
 /** User-assigned identity properties. */
 export interface UserAssignedIdentitiesValueInput {}
-export const UserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentitiesValueInput",
-}) as any as S.Schema<UserAssignedIdentitiesValueInput>;
+export const UserAssignedIdentitiesValueInput =
+  AmlFilesystemsCancelArchiveResponse as any as S.Schema<UserAssignedIdentitiesValueInput>;
 
 /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
 export type AmlFilesystemIdentityInputUserAssignedIdentitiesMap = {
@@ -258,9 +255,8 @@ export const SkuName = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type AmlFilesystemsCreateOrUpdateRequestZonesList = Array<string>;
-export const AmlFilesystemsCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequestZonesList>;
+export const AmlFilesystemsCreateOrUpdateRequestZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<AmlFilesystemsCreateOrUpdateRequestZonesList>;
 
 export interface AmlFilesystemsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -341,10 +337,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AmlFilesystemsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AmlFilesystemsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponseTagsMap>;
+export const AmlFilesystemsCreateOrUpdateResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AmlFilesystemsCreateOrUpdateResponseTagsMap>;
 
 /** List of AML file system health states. */
 export type AmlFilesystemHealthStateType =
@@ -614,9 +608,8 @@ export const AmlFilesystemIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type AmlFilesystemsCreateOrUpdateResponseZonesList = Array<string>;
-export const AmlFilesystemsCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponseZonesList>;
+export const AmlFilesystemsCreateOrUpdateResponseZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<AmlFilesystemsCreateOrUpdateResponseZonesList>;
 
 export interface AmlFilesystemsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -692,10 +685,8 @@ export const ArchiveAmlFilesystemResponse = /*@__PURE__*/ S.suspend(() => S.Stru
 
 /** Resource tags. */
 export type AutoExportJobsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AutoExportJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoExportJobsCreateOrUpdateRequestTagsMap>;
+export const AutoExportJobsCreateOrUpdateRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AutoExportJobsCreateOrUpdateRequestTagsMap>;
 
 /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
 export type AutoExportJobPropertiesInputAdminStatus = "Enable" | "Disable";
@@ -703,9 +694,8 @@ export const AutoExportJobPropertiesInputAdminStatus = S.String;
 
 /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
 export type AutoExportJobPropertiesInputAutoExportPrefixesList = Array<string>;
-export const AutoExportJobPropertiesInputAutoExportPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoExportJobPropertiesInputAutoExportPrefixesList>;
+export const AutoExportJobPropertiesInputAutoExportPrefixesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<AutoExportJobPropertiesInputAutoExportPrefixesList>;
 
 /** Properties of the auto export job. */
 export interface AutoExportJobPropertiesInput {
@@ -762,10 +752,8 @@ export const AutoExportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AutoExportJobsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AutoExportJobsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoExportJobsCreateOrUpdateResponseTagsMap>;
+export const AutoExportJobsCreateOrUpdateResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AutoExportJobsCreateOrUpdateResponseTagsMap>;
 
 /** ARM provisioning state. */
 export type AutoExportJobProvisioningStateType =
@@ -783,9 +771,8 @@ export const AutoExportJobPropertiesAdminStatus = S.String;
 
 /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
 export type AutoExportJobPropertiesAutoExportPrefixesList = Array<string>;
-export const AutoExportJobPropertiesAutoExportPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoExportJobPropertiesAutoExportPrefixesList>;
+export const AutoExportJobPropertiesAutoExportPrefixesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<AutoExportJobPropertiesAutoExportPrefixesList>;
 
 /** The operational state of auto export. InProgress indicates the export is running. Disabling indicates the user has requested to disable the export but the disabling is still in progress. Disabled indicates auto export has been disabled. DisableFailed indicates the disabling has failed. Failed means the export was unable to continue, due to a fatal error. */
 export type AutoExportStatusType =
@@ -903,10 +890,8 @@ export const AutoExportJobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type AutoImportJobsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AutoImportJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoImportJobsCreateOrUpdateRequestTagsMap>;
+export const AutoImportJobsCreateOrUpdateRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AutoImportJobsCreateOrUpdateRequestTagsMap>;
 
 /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
 export type AutoImportJobPropertiesInputAdminStatus = "Enable" | "Disable";
@@ -914,9 +899,8 @@ export const AutoImportJobPropertiesInputAdminStatus = S.String;
 
 /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
 export type AutoImportJobPropertiesInputAutoImportPrefixesList = Array<string>;
-export const AutoImportJobPropertiesInputAutoImportPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoImportJobPropertiesInputAutoImportPrefixesList>;
+export const AutoImportJobPropertiesInputAutoImportPrefixesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<AutoImportJobPropertiesInputAutoImportPrefixesList>;
 
 /** How the auto import job will handle conflicts. For example, if the auto import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the auto import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the auto import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or is currently released. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/blob-integration#conflict-resolution-mode for a thorough explanation of these resolution modes. */
 export type AutoImportJobPropertiesInputConflictResolutionMode =
@@ -990,10 +974,8 @@ export const AutoImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AutoImportJobsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AutoImportJobsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoImportJobsCreateOrUpdateResponseTagsMap>;
+export const AutoImportJobsCreateOrUpdateResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AutoImportJobsCreateOrUpdateResponseTagsMap>;
 
 /** ARM provisioning state. */
 export type AutoImportJobPropertiesProvisioningState =
@@ -1011,9 +993,8 @@ export const AutoImportJobPropertiesAdminStatus = S.String;
 
 /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
 export type AutoImportJobPropertiesAutoImportPrefixesList = Array<string>;
-export const AutoImportJobPropertiesAutoImportPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoImportJobPropertiesAutoImportPrefixesList>;
+export const AutoImportJobPropertiesAutoImportPrefixesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<AutoImportJobPropertiesAutoImportPrefixesList>;
 
 /** How the auto import job will handle conflicts. For example, if the auto import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the auto import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the auto import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or is currently released. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/blob-integration#conflict-resolution-mode for a thorough explanation of these resolution modes. */
 export type AutoImportJobPropertiesConflictResolutionMode =
@@ -1221,9 +1202,8 @@ export const CacheUpgradeSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
 export type CacheNetworkSettingsInputDnsServersList = Array<string>;
-export const CacheNetworkSettingsInputDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheNetworkSettingsInputDnsServersList>;
+export const CacheNetworkSettingsInputDnsServersList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<CacheNetworkSettingsInputDnsServersList>;
 
 /** Cache network settings. */
 export interface CacheNetworkSettingsInput {
@@ -1475,9 +1455,8 @@ export const CacheDirectorySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability zones for resources. This field should only contain a single element in the array. */
 export type CachePropertiesInputZonesList = Array<string>;
-export const CachePropertiesInputZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CachePropertiesInputZonesList>;
+export const CachePropertiesInputZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<CachePropertiesInputZonesList>;
 
 /** A priming job instance. */
 export interface PrimingJobInput {
@@ -1536,10 +1515,8 @@ export const CachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CachesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CachesCreateOrUpdateRequestTagsMap>;
+export const CachesCreateOrUpdateRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesCreateOrUpdateRequestTagsMap>;
 
 /** The type of identity used for the cache */
 export type CacheIdentityType =
@@ -1553,10 +1530,8 @@ export const CacheIdentityType = S.String;
 export type CacheIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesValueInput | undefined;
 };
-export const CacheIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserAssignedIdentitiesValueInput,
-) as any as S.Schema<CacheIdentityInputUserAssignedIdentitiesMap>;
+export const CacheIdentityInputUserAssignedIdentitiesMap =
+  AmlFilesystemIdentityInputUserAssignedIdentitiesMap as any as S.Schema<CacheIdentityInputUserAssignedIdentitiesMap>;
 
 /** Cache identity properties. */
 export interface CacheIdentityInput {
@@ -1577,11 +1552,7 @@ export interface CacheSku {
   /** SKU name for this cache. */
   name?: string;
 }
-export const CacheSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "CacheSku" }) as any as S.Schema<CacheSku>;
+export const CacheSku = SkuName as any as S.Schema<CacheSku>;
 
 export interface CachesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1678,9 +1649,8 @@ export const CacheHealth = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IPv4 addresses that can be used by clients mounting this cache. */
 export type CachePropertiesMountAddressesList = Array<string>;
-export const CachePropertiesMountAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CachePropertiesMountAddressesList>;
+export const CachePropertiesMountAddressesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<CachePropertiesMountAddressesList>;
 
 /** ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property */
 export type ProvisioningStateType =
@@ -1721,15 +1691,13 @@ export const CacheUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of additional IP addresses used by this cache. */
 export type CacheNetworkSettingsUtilityAddressesList = Array<string>;
-export const CacheNetworkSettingsUtilityAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheNetworkSettingsUtilityAddressesList>;
+export const CacheNetworkSettingsUtilityAddressesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<CacheNetworkSettingsUtilityAddressesList>;
 
 /** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
 export type CacheNetworkSettingsDnsServersList = Array<string>;
-export const CacheNetworkSettingsDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheNetworkSettingsDnsServersList>;
+export const CacheNetworkSettingsDnsServersList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<CacheNetworkSettingsDnsServersList>;
 
 /** Cache network settings. */
 export interface CacheNetworkSettings {
@@ -1756,9 +1724,8 @@ export const CacheNetworkSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability zones for resources. This field should only contain a single element in the array. */
 export type CachePropertiesZonesList = Array<string>;
-export const CachePropertiesZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CachePropertiesZonesList>;
+export const CachePropertiesZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<CachePropertiesZonesList>;
 
 /** The state of the priming operation. */
 export type PrimingJobState = "Queued" | "Running" | "Paused" | "Complete";
@@ -1873,19 +1840,15 @@ export const CacheProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CachesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CachesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CachesCreateOrUpdateResponseTagsMap>;
+export const CachesCreateOrUpdateResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesCreateOrUpdateResponseTagsMap>;
 
 /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
 export type CacheIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesValue | undefined;
 };
-export const CacheIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserAssignedIdentitiesValue,
-) as any as S.Schema<CacheIdentityUserAssignedIdentitiesMap>;
+export const CacheIdentityUserAssignedIdentitiesMap =
+  AmlFilesystemIdentityUserAssignedIdentitiesMap as any as S.Schema<CacheIdentityUserAssignedIdentitiesMap>;
 
 /** Cache identity properties. */
 export interface CacheIdentity {
@@ -1967,14 +1930,12 @@ export const CachesDebugInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CachesDebugInfoRequest" }) as any as S.Schema<CachesDebugInfoRequest>;
 
 export interface CachesDebugInfoResponse {}
-export const CachesDebugInfoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CachesDebugInfoResponse",
-}) as any as S.Schema<CachesDebugInfoResponse>;
+export const CachesDebugInfoResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<CachesDebugInfoResponse>;
 
 export type CachesSpaceAllocationRequestBodyList = Array<StorageTargetSpaceAllocation>;
-export const CachesSpaceAllocationRequestBodyList = /*@__PURE__*/ S.Array(
-  StorageTargetSpaceAllocation,
-) as any as S.Schema<CachesSpaceAllocationRequestBodyList>;
+export const CachesSpaceAllocationRequestBodyList =
+  CachePropertiesSpaceAllocationList as any as S.Schema<CachesSpaceAllocationRequestBodyList>;
 
 export interface CachesSpaceAllocationRequest {
   /** The ID of the target subscription. */
@@ -2004,9 +1965,8 @@ export const CachesSpaceAllocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CachesSpaceAllocationRequest>;
 
 export interface CachesSpaceAllocationResponse {}
-export const CachesSpaceAllocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CachesSpaceAllocationResponse",
-}) as any as S.Schema<CachesSpaceAllocationResponse>;
+export const CachesSpaceAllocationResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<CachesSpaceAllocationResponse>;
 
 export interface CachesUpgradeFirmwareRequest {
   /** The ID of the target subscription. */
@@ -2034,9 +1994,8 @@ export const CachesUpgradeFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CachesUpgradeFirmwareRequest>;
 
 export interface CachesUpgradeFirmwareResponse {}
-export const CachesUpgradeFirmwareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CachesUpgradeFirmwareResponse",
-}) as any as S.Schema<CachesUpgradeFirmwareResponse>;
+export const CachesUpgradeFirmwareResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<CachesUpgradeFirmwareResponse>;
 
 export interface CheckAmlFSSubnetsRequest {
   /** The ID of the target subscription. */
@@ -2068,9 +2027,8 @@ export const CheckAmlFSSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckAmlFSSubnetsRequest" }) as any as S.Schema<CheckAmlFSSubnetsRequest>;
 
 export interface CheckAmlFSSubnetsResponse {}
-export const CheckAmlFSSubnetsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CheckAmlFSSubnetsResponse",
-}) as any as S.Schema<CheckAmlFSSubnetsResponse>;
+export const CheckAmlFSSubnetsResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<CheckAmlFSSubnetsResponse>;
 
 export interface DeleteAmlFilesystemRequest {
   /** The ID of the target subscription. */
@@ -2098,9 +2056,8 @@ export const DeleteAmlFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAmlFilesystemRequest>;
 
 export interface DeleteAmlFilesystemResponse {}
-export const DeleteAmlFilesystemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAmlFilesystemResponse",
-}) as any as S.Schema<DeleteAmlFilesystemResponse>;
+export const DeleteAmlFilesystemResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteAmlFilesystemResponse>;
 
 export interface DeleteAutoExportJobRequest {
   /** The ID of the target subscription. */
@@ -2131,9 +2088,8 @@ export const DeleteAutoExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutoExportJobRequest>;
 
 export interface DeleteAutoExportJobResponse {}
-export const DeleteAutoExportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAutoExportJobResponse",
-}) as any as S.Schema<DeleteAutoExportJobResponse>;
+export const DeleteAutoExportJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteAutoExportJobResponse>;
 
 export interface DeleteAutoImportJobRequest {
   /** The ID of the target subscription. */
@@ -2164,9 +2120,8 @@ export const DeleteAutoImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutoImportJobRequest>;
 
 export interface DeleteAutoImportJobResponse {}
-export const DeleteAutoImportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAutoImportJobResponse",
-}) as any as S.Schema<DeleteAutoImportJobResponse>;
+export const DeleteAutoImportJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteAutoImportJobResponse>;
 
 export interface DeleteCachRequest {
   /** The ID of the target subscription. */
@@ -2192,9 +2147,8 @@ export const DeleteCachRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCachRequest" }) as any as S.Schema<DeleteCachRequest>;
 
 export interface DeleteCachResponse {}
-export const DeleteCachResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCachResponse",
-}) as any as S.Schema<DeleteCachResponse>;
+export const DeleteCachResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteCachResponse>;
 
 export interface DeleteExpansionJobRequest {
   /** The ID of the target subscription. */
@@ -2225,9 +2179,8 @@ export const DeleteExpansionJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteExpansionJobRequest>;
 
 export interface DeleteExpansionJobResponse {}
-export const DeleteExpansionJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteExpansionJobResponse",
-}) as any as S.Schema<DeleteExpansionJobResponse>;
+export const DeleteExpansionJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteExpansionJobResponse>;
 
 export interface DeleteImportJobRequest {
   /** The ID of the target subscription. */
@@ -2256,9 +2209,8 @@ export const DeleteImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteImportJobRequest" }) as any as S.Schema<DeleteImportJobRequest>;
 
 export interface DeleteImportJobResponse {}
-export const DeleteImportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImportJobResponse",
-}) as any as S.Schema<DeleteImportJobResponse>;
+export const DeleteImportJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteImportJobResponse>;
 
 export interface DeleteRebalanceJobRequest {
   /** The ID of the target subscription. */
@@ -2289,9 +2241,8 @@ export const DeleteRebalanceJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRebalanceJobRequest>;
 
 export interface DeleteRebalanceJobResponse {}
-export const DeleteRebalanceJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRebalanceJobResponse",
-}) as any as S.Schema<DeleteRebalanceJobResponse>;
+export const DeleteRebalanceJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteRebalanceJobResponse>;
 
 export interface DeleteStorageTargetRequest {
   /** The ID of the target subscription. */
@@ -2325,16 +2276,13 @@ export const DeleteStorageTargetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageTargetRequest>;
 
 export interface DeleteStorageTargetResponse {}
-export const DeleteStorageTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStorageTargetResponse",
-}) as any as S.Schema<DeleteStorageTargetResponse>;
+export const DeleteStorageTargetResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<DeleteStorageTargetResponse>;
 
 /** Resource tags. */
 export type ExpansionJobsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ExpansionJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExpansionJobsCreateOrUpdateRequestTagsMap>;
+export const ExpansionJobsCreateOrUpdateRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<ExpansionJobsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of the expansion job. */
 export interface ExpansionJobPropertiesInput {
@@ -2391,10 +2339,8 @@ export const ExpansionJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExpansionJobsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ExpansionJobsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExpansionJobsCreateOrUpdateResponseTagsMap>;
+export const ExpansionJobsCreateOrUpdateResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<ExpansionJobsCreateOrUpdateResponseTagsMap>;
 
 /** ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property */
 export type ExpansionJobPropertiesProvisioningState =
@@ -2520,9 +2466,7 @@ export const FlushCachRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlushCachRequest" }) as any as S.Schema<FlushCachRequest>;
 
 export interface FlushCachResponse {}
-export const FlushCachResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FlushCachResponse",
-}) as any as S.Schema<FlushCachResponse>;
+export const FlushCachResponse = ArchiveAmlFilesystemResponse as any as S.Schema<FlushCachResponse>;
 
 export interface FlushStorageTargetRequest {
   /** The ID of the target subscription. */
@@ -2553,9 +2497,8 @@ export const FlushStorageTargetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlushStorageTargetRequest>;
 
 export interface FlushStorageTargetResponse {}
-export const FlushStorageTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FlushStorageTargetResponse",
-}) as any as S.Schema<FlushStorageTargetResponse>;
+export const FlushStorageTargetResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<FlushStorageTargetResponse>;
 
 export interface GetAmlFilesystemRequest {
   /** The ID of the target subscription. */
@@ -2582,16 +2525,13 @@ export const GetAmlFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAmlFilesystemResponseTagsMap = { [key: string]: string | undefined };
-export const GetAmlFilesystemResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAmlFilesystemResponseTagsMap>;
+export const GetAmlFilesystemResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAmlFilesystemResponseTagsMap>;
 
 /** The availability zones. */
 export type GetAmlFilesystemResponseZonesList = Array<string>;
-export const GetAmlFilesystemResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAmlFilesystemResponseZonesList>;
+export const GetAmlFilesystemResponseZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<GetAmlFilesystemResponseZonesList>;
 
 export interface GetAmlFilesystemResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2744,10 +2684,8 @@ export const GetAutoExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAutoExportJobResponseTagsMap = { [key: string]: string | undefined };
-export const GetAutoExportJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAutoExportJobResponseTagsMap>;
+export const GetAutoExportJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAutoExportJobResponseTagsMap>;
 
 export interface GetAutoExportJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2805,10 +2743,8 @@ export const GetAutoImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAutoImportJobResponseTagsMap = { [key: string]: string | undefined };
-export const GetAutoImportJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAutoImportJobResponseTagsMap>;
+export const GetAutoImportJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAutoImportJobResponseTagsMap>;
 
 export interface GetAutoImportJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2863,10 +2799,8 @@ export const GetCachRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCachResponseTagsMap = { [key: string]: string | undefined };
-export const GetCachResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCachResponseTagsMap>;
+export const GetCachResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCachResponseTagsMap>;
 
 export interface GetCachResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2930,10 +2864,8 @@ export const GetExpansionJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetExpansionJobResponseTagsMap = { [key: string]: string | undefined };
-export const GetExpansionJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetExpansionJobResponseTagsMap>;
+export const GetExpansionJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<GetExpansionJobResponseTagsMap>;
 
 export interface GetExpansionJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2991,10 +2923,8 @@ export const GetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetImportJobResponseTagsMap = { [key: string]: string | undefined };
-export const GetImportJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetImportJobResponseTagsMap>;
+export const GetImportJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<GetImportJobResponseTagsMap>;
 
 /** ARM provisioning state. */
 export type ImportJobProvisioningStateType =
@@ -3012,9 +2942,8 @@ export const ImportJobPropertiesAdminStatus = S.String;
 
 /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
 export type ImportJobPropertiesImportPrefixesList = Array<string>;
-export const ImportJobPropertiesImportPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportJobPropertiesImportPrefixesList>;
+export const ImportJobPropertiesImportPrefixesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<ImportJobPropertiesImportPrefixesList>;
 
 /** How the import job will handle conflicts. For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes. */
 export type ImportJobPropertiesConflictResolutionMode =
@@ -3425,10 +3354,8 @@ export const ClfsTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of string->string pairs containing information about the Storage Target. */
 export type UnknownTargetAttributesMap = { [key: string]: string | undefined };
-export const UnknownTargetAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UnknownTargetAttributesMap>;
+export const UnknownTargetAttributesMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UnknownTargetAttributesMap>;
 
 /** Properties pertaining to the UnknownTarget */
 export interface UnknownTarget {
@@ -3452,14 +3379,7 @@ export interface BlobNfsTarget {
   /** Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage. */
   writeBackTimer?: number;
 }
-export const BlobNfsTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    usageModel: S.optional(S.String),
-    verificationTimer: S.optional(S.Number),
-    writeBackTimer: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BlobNfsTarget" }) as any as S.Schema<BlobNfsTarget>;
+export const BlobNfsTarget = Nfs3Target as any as S.Schema<BlobNfsTarget>;
 
 /** Properties of the Storage Target. */
 export interface StorageTargetProperties {
@@ -3523,10 +3443,8 @@ export const GetStorageTargetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ImportJobsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ImportJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImportJobsCreateOrUpdateRequestTagsMap>;
+export const ImportJobsCreateOrUpdateRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<ImportJobsCreateOrUpdateRequestTagsMap>;
 
 /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
 export type ImportJobPropertiesInputAdminStatus = "Active" | "Cancel";
@@ -3534,9 +3452,8 @@ export const ImportJobPropertiesInputAdminStatus = S.String;
 
 /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
 export type ImportJobPropertiesInputImportPrefixesList = Array<string>;
-export const ImportJobPropertiesInputImportPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportJobPropertiesInputImportPrefixesList>;
+export const ImportJobPropertiesInputImportPrefixesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<ImportJobPropertiesInputImportPrefixesList>;
 
 /** How the import job will handle conflicts. For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes. */
 export type ImportJobPropertiesInputConflictResolutionMode =
@@ -3605,10 +3522,8 @@ export const ImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ImportJobsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ImportJobsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImportJobsCreateOrUpdateResponseTagsMap>;
+export const ImportJobsCreateOrUpdateResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<ImportJobsCreateOrUpdateResponseTagsMap>;
 
 export interface ImportJobsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3697,16 +3612,13 @@ export const ListAmlFilesystemByResourceGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type AmlFilesystemTagsMap = { [key: string]: string | undefined };
-export const AmlFilesystemTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AmlFilesystemTagsMap>;
+export const AmlFilesystemTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AmlFilesystemTagsMap>;
 
 /** The availability zones. */
 export type AmlFilesystemZonesList = Array<string>;
-export const AmlFilesystemZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AmlFilesystemZonesList>;
+export const AmlFilesystemZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<AmlFilesystemZonesList>;
 
 /** An AML file system instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md */
 export interface AmlFilesystem {
@@ -3731,20 +3643,7 @@ export interface AmlFilesystem {
   /** The availability zones. */
   zones?: AmlFilesystemZonesList;
 }
-export const AmlFilesystem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AmlFilesystemTagsMap),
-    location: S.String,
-    properties: S.optional(AmlFilesystemProperties),
-    identity: S.optional(AmlFilesystemIdentity),
-    sku: S.optional(SkuName),
-    zones: S.optional(AmlFilesystemZonesList),
-  }),
-).annotate({ identifier: "AmlFilesystem" }) as any as S.Schema<AmlFilesystem>;
+export const AmlFilesystem = GetAmlFilesystemResponse as any as S.Schema<AmlFilesystem>;
 
 /** List of AML file systems. */
 export type AmlFilesystemsListResultValueList = Array<AmlFilesystem>;
@@ -3886,10 +3785,8 @@ export const ListAutoExportJobByAmlFilesystemRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type AutoExportJobTagsMap = { [key: string]: string | undefined };
-export const AutoExportJobTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoExportJobTagsMap>;
+export const AutoExportJobTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AutoExportJobTagsMap>;
 
 /** An auto export job instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md */
 export interface AutoExportJob {
@@ -3908,17 +3805,7 @@ export interface AutoExportJob {
   /** Properties of the auto export job. */
   properties?: AutoExportJobProperties;
 }
-export const AutoExportJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutoExportJobTagsMap),
-    location: S.String,
-    properties: S.optional(AutoExportJobProperties),
-  }),
-).annotate({ identifier: "AutoExportJob" }) as any as S.Schema<AutoExportJob>;
+export const AutoExportJob = GetAutoExportJobResponse as any as S.Schema<AutoExportJob>;
 
 /** List of auto export jobs. */
 export type AutoExportJobsListResultValueList = Array<AutoExportJob>;
@@ -3967,10 +3854,8 @@ export const ListAutoImportJobByAmlFilesystemRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type AutoImportJobTagsMap = { [key: string]: string | undefined };
-export const AutoImportJobTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoImportJobTagsMap>;
+export const AutoImportJobTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<AutoImportJobTagsMap>;
 
 /** An auto import job instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md */
 export interface AutoImportJob {
@@ -3989,17 +3874,7 @@ export interface AutoImportJob {
   /** Properties of the auto import job. */
   properties?: AutoImportJobProperties;
 }
-export const AutoImportJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutoImportJobTagsMap),
-    location: S.String,
-    properties: S.optional(AutoImportJobProperties),
-  }),
-).annotate({ identifier: "AutoImportJob" }) as any as S.Schema<AutoImportJob>;
+export const AutoImportJob = GetAutoImportJobResponse as any as S.Schema<AutoImportJob>;
 
 /** List of auto import jobs. */
 export type AutoImportJobsListResultValueList = Array<AutoImportJob>;
@@ -4045,10 +3920,8 @@ export const ListCachByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CacheTagsMap = { [key: string]: string | undefined };
-export const CacheTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CacheTagsMap>;
+export const CacheTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<CacheTagsMap>;
 
 /** A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md */
 export interface Cache {
@@ -4071,19 +3944,7 @@ export interface Cache {
   /** SKU for the cache. */
   sku?: CacheSku;
 }
-export const Cache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CacheProperties),
-    tags: S.optional(CacheTagsMap),
-    location: S.optional(S.String),
-    identity: S.optional(CacheIdentity),
-    sku: S.optional(CacheSku),
-  }),
-).annotate({ identifier: "Cache" }) as any as S.Schema<Cache>;
+export const Cache = GetCachResponse as any as S.Schema<Cache>;
 
 /** List of caches. */
 export type CachesListResultValueList = Array<Cache>;
@@ -4149,10 +4010,8 @@ export const ListExpansionJobByAmlFilesystemRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type ExpansionJobTagsMap = { [key: string]: string | undefined };
-export const ExpansionJobTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExpansionJobTagsMap>;
+export const ExpansionJobTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<ExpansionJobTagsMap>;
 
 /** An expansion job instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md */
 export interface ExpansionJob {
@@ -4171,17 +4030,7 @@ export interface ExpansionJob {
   /** Properties of the expansion job. */
   properties?: ExpansionJobProperties;
 }
-export const ExpansionJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ExpansionJobTagsMap),
-    location: S.String,
-    properties: S.optional(ExpansionJobProperties),
-  }),
-).annotate({ identifier: "ExpansionJob" }) as any as S.Schema<ExpansionJob>;
+export const ExpansionJob = GetExpansionJobResponse as any as S.Schema<ExpansionJob>;
 
 /** List of expansion jobs. */
 export type ExpansionJobsListResultValueList = Array<ExpansionJob>;
@@ -4230,10 +4079,8 @@ export const ListImportJobByAmlFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ImportJobTagsMap = { [key: string]: string | undefined };
-export const ImportJobTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImportJobTagsMap>;
+export const ImportJobTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<ImportJobTagsMap>;
 
 /** An import job instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md */
 export interface ImportJob {
@@ -4252,17 +4099,7 @@ export interface ImportJob {
   /** Properties of the import job. */
   properties?: ImportJobProperties;
 }
-export const ImportJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ImportJobTagsMap),
-    location: S.String,
-    properties: S.optional(ImportJobProperties),
-  }),
-).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
+export const ImportJob = GetImportJobResponse as any as S.Schema<ImportJob>;
 
 /** List of import jobs. */
 export type ImportJobsListResultValueList = Array<ImportJob>;
@@ -4531,15 +4368,7 @@ export interface RebalanceJob {
   /** Properties of the rebalance job. */
   properties?: RebalanceJobProperties;
 }
-export const RebalanceJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RebalanceJobProperties),
-  }),
-).annotate({ identifier: "RebalanceJob" }) as any as S.Schema<RebalanceJob>;
+export const RebalanceJob = GetRebalanceJobResponse as any as S.Schema<RebalanceJob>;
 
 /** List of rebalance jobs. */
 export type RebalanceJobsListResultValueList = Array<RebalanceJob>;
@@ -4600,15 +4429,13 @@ export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
 
 /** The set of locations where the SKU is available. This is the supported and registered Azure Geo Regions (e.g., West US, East US, Southeast Asia, etc.). */
 export type ResourceSkuLocationsList = Array<string>;
-export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationsList>;
+export const ResourceSkuLocationsList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<ResourceSkuLocationsList>;
 
 /** Zones if any. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
-export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
+export const ResourceSkuLocationInfoZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** Resource SKU location information. */
 export interface ResourceSkuLocationInfo {
@@ -4632,9 +4459,8 @@ export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
 
 /** The value of restrictions. If the restriction type is set to location, then this would be the different locations where the SKU is restricted. */
 export type RestrictionValuesList = Array<string>;
-export const RestrictionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestrictionValuesList>;
+export const RestrictionValuesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<RestrictionValuesList>;
 
 /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". "QuotaId" is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. "NotAvailableForSubscription" is related to capacity at the datacenter. */
 export type ReasonCode = "QuotaId" | "NotAvailableForSubscription";
@@ -4749,16 +4575,7 @@ export interface StorageTarget {
   /** Region name string. */
   location?: string;
 }
-export const StorageTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StorageTargetProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "StorageTarget" }) as any as S.Schema<StorageTarget>;
+export const StorageTarget = GetStorageTargetResponse as any as S.Schema<StorageTarget>;
 
 /** The list of Storage Targets defined for the cache. */
 export type StorageTargetsResultValueList = Array<StorageTarget>;
@@ -4874,9 +4691,8 @@ export const PauseCachPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseCachPrimingJobRequest>;
 
 export interface PauseCachPrimingJobResponse {}
-export const PauseCachPrimingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PauseCachPrimingJobResponse",
-}) as any as S.Schema<PauseCachPrimingJobResponse>;
+export const PauseCachPrimingJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<PauseCachPrimingJobResponse>;
 
 export interface RefreshStorageTargetsDnsRequest {
   /** The ID of the target subscription. */
@@ -4907,11 +4723,8 @@ export const RefreshStorageTargetsDnsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshStorageTargetsDnsRequest>;
 
 export interface RefreshStorageTargetsDnsResponse {}
-export const RefreshStorageTargetsDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RefreshStorageTargetsDnsResponse",
-}) as any as S.Schema<RefreshStorageTargetsDnsResponse>;
+export const RefreshStorageTargetsDnsResponse =
+  AmlFilesystemsCancelArchiveResponse as any as S.Schema<RefreshStorageTargetsDnsResponse>;
 
 export interface RestoreStorageTargetDefaultsRequest {
   /** The ID of the target subscription. */
@@ -4942,11 +4755,8 @@ export const RestoreStorageTargetDefaultsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreStorageTargetDefaultsRequest>;
 
 export interface RestoreStorageTargetDefaultsResponse {}
-export const RestoreStorageTargetDefaultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreStorageTargetDefaultsResponse",
-}) as any as S.Schema<RestoreStorageTargetDefaultsResponse>;
+export const RestoreStorageTargetDefaultsResponse =
+  AmlFilesystemsCancelArchiveResponse as any as S.Schema<RestoreStorageTargetDefaultsResponse>;
 
 export interface ResumeCachPrimingJobRequest {
   /** The ID of the target subscription. */
@@ -4977,9 +4787,8 @@ export const ResumeCachPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeCachPrimingJobRequest>;
 
 export interface ResumeCachPrimingJobResponse {}
-export const ResumeCachPrimingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeCachPrimingJobResponse",
-}) as any as S.Schema<ResumeCachPrimingJobResponse>;
+export const ResumeCachPrimingJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<ResumeCachPrimingJobResponse>;
 
 export interface ResumeStorageTargetRequest {
   /** The ID of the target subscription. */
@@ -5010,9 +4819,8 @@ export const ResumeStorageTargetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeStorageTargetRequest>;
 
 export interface ResumeStorageTargetResponse {}
-export const ResumeStorageTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeStorageTargetResponse",
-}) as any as S.Schema<ResumeStorageTargetResponse>;
+export const ResumeStorageTargetResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<ResumeStorageTargetResponse>;
 
 export interface StartCachRequest {
   /** The ID of the target subscription. */
@@ -5038,9 +4846,7 @@ export const StartCachRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartCachRequest" }) as any as S.Schema<StartCachRequest>;
 
 export interface StartCachResponse {}
-export const StartCachResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCachResponse",
-}) as any as S.Schema<StartCachResponse>;
+export const StartCachResponse = ArchiveAmlFilesystemResponse as any as S.Schema<StartCachResponse>;
 
 export interface StartCachPrimingJobRequest {
   /** The ID of the target subscription. */
@@ -5074,9 +4880,8 @@ export const StartCachPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartCachPrimingJobRequest>;
 
 export interface StartCachPrimingJobResponse {}
-export const StartCachPrimingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCachPrimingJobResponse",
-}) as any as S.Schema<StartCachPrimingJobResponse>;
+export const StartCachPrimingJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<StartCachPrimingJobResponse>;
 
 export interface StopCachRequest {
   /** The ID of the target subscription. */
@@ -5102,9 +4907,7 @@ export const StopCachRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopCachRequest" }) as any as S.Schema<StopCachRequest>;
 
 export interface StopCachResponse {}
-export const StopCachResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCachResponse",
-}) as any as S.Schema<StopCachResponse>;
+export const StopCachResponse = ArchiveAmlFilesystemResponse as any as S.Schema<StopCachResponse>;
 
 export interface StopCachPrimingJobRequest {
   /** The ID of the target subscription. */
@@ -5135,15 +4938,13 @@ export const StopCachPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopCachPrimingJobRequest>;
 
 export interface StopCachPrimingJobResponse {}
-export const StopCachPrimingJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCachPrimingJobResponse",
-}) as any as S.Schema<StopCachPrimingJobResponse>;
+export const StopCachPrimingJobResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<StopCachPrimingJobResponse>;
 
 /** List of cache namespace junctions to target for namespace associations. */
 export type StorageTargetPropertiesInputJunctionsList = Array<NamespaceJunction>;
-export const StorageTargetPropertiesInputJunctionsList = /*@__PURE__*/ S.Array(
-  NamespaceJunction,
-) as any as S.Schema<StorageTargetPropertiesInputJunctionsList>;
+export const StorageTargetPropertiesInputJunctionsList =
+  StorageTargetPropertiesJunctionsList as any as S.Schema<StorageTargetPropertiesInputJunctionsList>;
 
 /** Properties of the Storage Target. */
 export interface StorageTargetPropertiesInput {
@@ -5263,16 +5064,13 @@ export const SuspendStorageTargetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendStorageTargetRequest>;
 
 export interface SuspendStorageTargetResponse {}
-export const SuspendStorageTargetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendStorageTargetResponse",
-}) as any as S.Schema<SuspendStorageTargetResponse>;
+export const SuspendStorageTargetResponse =
+  ArchiveAmlFilesystemResponse as any as S.Schema<SuspendStorageTargetResponse>;
 
 /** Resource tags. */
 export type UpdateAmlFilesystemRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAmlFilesystemRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAmlFilesystemRequestTagsMap>;
+export const UpdateAmlFilesystemRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAmlFilesystemRequestTagsMap>;
 
 /** Start time of a 30-minute weekly maintenance window. */
 export type AmlFilesystemUpdatePropertiesMaintenanceWindow =
@@ -5332,16 +5130,13 @@ export const UpdateAmlFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAmlFilesystemResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAmlFilesystemResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAmlFilesystemResponseTagsMap>;
+export const UpdateAmlFilesystemResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAmlFilesystemResponseTagsMap>;
 
 /** The availability zones. */
 export type UpdateAmlFilesystemResponseZonesList = Array<string>;
-export const UpdateAmlFilesystemResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAmlFilesystemResponseZonesList>;
+export const UpdateAmlFilesystemResponseZonesList =
+  AmlFilesystemHsmSettingsImportPrefixesInitialList as any as S.Schema<UpdateAmlFilesystemResponseZonesList>;
 
 export interface UpdateAmlFilesystemResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5365,29 +5160,13 @@ export interface UpdateAmlFilesystemResponse {
   /** The availability zones. */
   zones?: UpdateAmlFilesystemResponseZonesList;
 }
-export const UpdateAmlFilesystemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAmlFilesystemResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AmlFilesystemProperties),
-    identity: S.optional(AmlFilesystemIdentity),
-    sku: S.optional(SkuName),
-    zones: S.optional(UpdateAmlFilesystemResponseZonesList),
-  }),
-).annotate({
-  identifier: "UpdateAmlFilesystemResponse",
-}) as any as S.Schema<UpdateAmlFilesystemResponse>;
+export const UpdateAmlFilesystemResponse =
+  AmlFilesystemsCreateOrUpdateResponse as any as S.Schema<UpdateAmlFilesystemResponse>;
 
 /** Resource tags. */
 export type UpdateAutoExportJobRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoExportJobRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAutoExportJobRequestTagsMap>;
+export const UpdateAutoExportJobRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAutoExportJobRequestTagsMap>;
 
 /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
 export type AutoExportJobAdminStatus = "Enable" | "Disable";
@@ -5441,10 +5220,8 @@ export const UpdateAutoExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAutoExportJobResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoExportJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAutoExportJobResponseTagsMap>;
+export const UpdateAutoExportJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAutoExportJobResponseTagsMap>;
 
 export interface UpdateAutoExportJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5462,26 +5239,13 @@ export interface UpdateAutoExportJobResponse {
   /** Properties of the auto export job. */
   properties?: AutoExportJobProperties;
 }
-export const UpdateAutoExportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAutoExportJobResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutoExportJobProperties),
-  }),
-).annotate({
-  identifier: "UpdateAutoExportJobResponse",
-}) as any as S.Schema<UpdateAutoExportJobResponse>;
+export const UpdateAutoExportJobResponse =
+  AutoExportJobsCreateOrUpdateResponse as any as S.Schema<UpdateAutoExportJobResponse>;
 
 /** Resource tags. */
 export type UpdateAutoImportJobRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoImportJobRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAutoImportJobRequestTagsMap>;
+export const UpdateAutoImportJobRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAutoImportJobRequestTagsMap>;
 
 /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
 export type AutoImportJobUpdatePropertiesAdminStatus = "Enable" | "Disable";
@@ -5535,10 +5299,8 @@ export const UpdateAutoImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAutoImportJobResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoImportJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAutoImportJobResponseTagsMap>;
+export const UpdateAutoImportJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAutoImportJobResponseTagsMap>;
 
 export interface UpdateAutoImportJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5556,26 +5318,13 @@ export interface UpdateAutoImportJobResponse {
   /** Properties of the auto import job. */
   properties?: AutoImportJobProperties;
 }
-export const UpdateAutoImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAutoImportJobResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutoImportJobProperties),
-  }),
-).annotate({
-  identifier: "UpdateAutoImportJobResponse",
-}) as any as S.Schema<UpdateAutoImportJobResponse>;
+export const UpdateAutoImportJobResponse =
+  AutoImportJobsCreateOrUpdateResponse as any as S.Schema<UpdateAutoImportJobResponse>;
 
 /** Resource tags. */
 export type UpdateCachRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCachRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCachRequestTagsMap>;
+export const UpdateCachRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCachRequestTagsMap>;
 
 export interface UpdateCachRequest {
   /** The ID of the target subscription. */
@@ -5617,10 +5366,8 @@ export const UpdateCachRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCachResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCachResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCachResponseTagsMap>;
+export const UpdateCachResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCachResponseTagsMap>;
 
 export interface UpdateCachResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5642,26 +5389,12 @@ export interface UpdateCachResponse {
   /** SKU for the cache. */
   sku?: CacheSku;
 }
-export const UpdateCachResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CacheProperties),
-    tags: S.optional(UpdateCachResponseTagsMap),
-    location: S.optional(S.String),
-    identity: S.optional(CacheIdentity),
-    sku: S.optional(CacheSku),
-  }),
-).annotate({ identifier: "UpdateCachResponse" }) as any as S.Schema<UpdateCachResponse>;
+export const UpdateCachResponse = GetCachResponse as any as S.Schema<UpdateCachResponse>;
 
 /** Resource tags. */
 export type UpdateExpansionJobRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateExpansionJobRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExpansionJobRequestTagsMap>;
+export const UpdateExpansionJobRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExpansionJobRequestTagsMap>;
 
 export interface UpdateExpansionJobRequest {
   /** The ID of the target subscription. */
@@ -5696,10 +5429,8 @@ export const UpdateExpansionJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateExpansionJobResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateExpansionJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExpansionJobResponseTagsMap>;
+export const UpdateExpansionJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExpansionJobResponseTagsMap>;
 
 export interface UpdateExpansionJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5717,26 +5448,13 @@ export interface UpdateExpansionJobResponse {
   /** Properties of the expansion job. */
   properties?: ExpansionJobProperties;
 }
-export const UpdateExpansionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateExpansionJobResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ExpansionJobProperties),
-  }),
-).annotate({
-  identifier: "UpdateExpansionJobResponse",
-}) as any as S.Schema<UpdateExpansionJobResponse>;
+export const UpdateExpansionJobResponse =
+  ExpansionJobsCreateOrUpdateResponse as any as S.Schema<UpdateExpansionJobResponse>;
 
 /** Resource tags. */
 export type UpdateImportJobRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateImportJobRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateImportJobRequestTagsMap>;
+export const UpdateImportJobRequestTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateImportJobRequestTagsMap>;
 
 /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
 export type ImportJobAdminStatus = "Active" | "Cancel";
@@ -5788,10 +5506,8 @@ export const UpdateImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateImportJobResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateImportJobResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateImportJobResponseTagsMap>;
+export const UpdateImportJobResponseTagsMap =
+  AmlFilesystemsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateImportJobResponseTagsMap>;
 
 export interface UpdateImportJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5809,17 +5525,8 @@ export interface UpdateImportJobResponse {
   /** Properties of the import job. */
   properties?: ImportJobProperties;
 }
-export const UpdateImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateImportJobResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ImportJobProperties),
-  }),
-).annotate({ identifier: "UpdateImportJobResponse" }) as any as S.Schema<UpdateImportJobResponse>;
+export const UpdateImportJobResponse =
+  GetImportJobResponse as any as S.Schema<UpdateImportJobResponse>;
 
 /** Properties for updating a rebalance job. */
 export interface RebalanceJobUpdateProperties {

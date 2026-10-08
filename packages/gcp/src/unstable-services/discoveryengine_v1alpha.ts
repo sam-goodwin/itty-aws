@@ -1142,22 +1142,12 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSe
   pageIdentifier?: string;
 }
 export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.optional(S.String),
-      pageIdentifier: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
+  GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext as any as S.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
 
 export type GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
   Array<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
 export const GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList>;
+  GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList as any as S.Schema<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList>;
 
 /** Unstructured document information. */
 export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo {
@@ -3737,13 +3727,8 @@ export interface GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest {
   /** Required. Names of sources to be deleted. Format: projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source} */
   names?: StringList;
 }
-export const GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest",
-}) as any as S.Schema<GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest>;
+export const GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest =
+  GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest as any as S.Schema<GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest>;
 
 export interface BatchDeleteProjectsLocationsNotebooksSourcesRequest {
   /** Required. The parent resource where the sources will be deleted. Format: projects/{project}/locations/{location}/notebooks/{notebook} */
@@ -4434,7 +4419,7 @@ export const GoogleApiDistributionExemplarList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GoogleApiDistributionExemplarList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** Specifies a set of buckets with arbitrary widths. There are `size(bounds) + 1` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 <= i < N-1): bounds[i] Lower bound (1 <= i < N); bounds[i - 1] The `bounds` field must contain at least one element. If `bounds` has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets. */
 export interface GoogleApiDistributionBucketOptionsExplicit {
@@ -9547,14 +9532,8 @@ export interface GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition {
   /** Required. Resource name of the underlying Dialogflow Agent. Format: `projects/{project}/locations/{location}/agents/{agent}` */
   dialogflowAgent?: string;
 }
-export const GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dialogflowAgent: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition>;
+export const GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition =
+  GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata as any as S.Schema<GoogleCloudDiscoveryengineV1alphaDialogflowAgentDefinition>;
 
 /** Represents an image. */
 export interface GoogleCloudDiscoveryengineV1alphaAgentImage {
@@ -11454,13 +11433,8 @@ export interface GoogleCloudNotebooklmV1alphaCmekConfig {
   /** Required. KMS key resource name which will be used to encrypt resources `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`. */
   kmsKey?: string;
 }
-export const GoogleCloudNotebooklmV1alphaCmekConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudNotebooklmV1alphaCmekConfig",
-}) as any as S.Schema<GoogleCloudNotebooklmV1alphaCmekConfig>;
+export const GoogleCloudNotebooklmV1alphaCmekConfig =
+  GoogleCloudDiscoveryengineV1alphaSingleRegionKey as any as S.Schema<GoogleCloudNotebooklmV1alphaCmekConfig>;
 
 /** Notebook is a resource where users can store their content (as sources) and interacts with the content. */
 export interface GoogleCloudNotebooklmV1alphaNotebook {
@@ -14452,14 +14426,7 @@ export interface GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigN
   policy?: string;
 }
 export const GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policy: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy>;
+  GoogleCloudDiscoveryengineV1alphaDataProtectionPolicySensitiveDataProtectionPolicy as any as S.Schema<GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicySensitiveDataProtectionPolicy>;
 
 /** Data protection policy config for NotebookLM. */
 export interface GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfigDataProtectionPolicy {
@@ -16456,20 +16423,7 @@ export interface GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperi
   name: string;
 }
 export const GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsAlphaEvolveProgramsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsAlphaEvolveProgramsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsAlphaEvolveProgramsRequest>;
+  GetProjectsLocationsCollectionsEnginesCollaborativeProjectsKnowledgeSpacesOperationsRequest as any as S.Schema<GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsAlphaEvolveProgramsRequest>;
 
 export interface GetProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsOperationsRequest {
   /** The name of the operation resource. */
@@ -22897,13 +22851,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestIn
   identityMappingEntries?: GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryList;
 }
 export const GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identityMappingEntries: S.optional(GoogleCloudDiscoveryengineV1alphaIdentityMappingEntryList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource>;
+  GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsRequestInlineSource as any as S.Schema<GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequestInlineSource>;
 
 /** Request message for IdentityMappingStoreService.PurgeIdentityMappings */
 export interface GoogleCloudDiscoveryengineV1alphaPurgeIdentityMappingsRequest {
@@ -22956,13 +22904,8 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig {
   /** Cloud Storage prefix for purge errors. This must be an empty, existing Cloud Storage directory. Purge errors are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
-export const GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsPrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig>;
+export const GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig =
+  GoogleCloudDiscoveryengineV1alphaImportErrorConfig as any as S.Schema<GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig>;
 
 /** The inline source for the input config for DocumentService.PurgeDocuments method. */
 export interface GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSource {
@@ -23688,15 +23631,8 @@ export interface GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a NOT_FOUND error will be returned */
   dataStore?: string;
 }
-export const GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filterGroups: S.optional(StringList),
-      dataStore: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest>;
+export const GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest =
+  GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest as any as S.Schema<GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest>;
 
 export interface RemovePatientFilterProjectsLocationsCollectionsDataStoresRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a NOT_FOUND error will be returned */
@@ -23808,15 +23744,8 @@ export interface GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will be returned. */
   dataStore?: string;
 }
-export const GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filterGroups: S.optional(StringList),
-      dataStore: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest>;
+export const GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest =
+  GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest as any as S.Schema<GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest>;
 
 export interface ReplacePatientFilterProjectsLocationsCollectionsDataStoresRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will be returned. */
@@ -24023,13 +23952,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse {
   licenseConfig?: GoogleCloudDiscoveryengineV1alphaLicenseConfig;
 }
 export const GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      licenseConfig: S.optional(GoogleCloudDiscoveryengineV1alphaLicenseConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse>;
+  GoogleCloudDiscoveryengineV1alphaDistributeLicenseConfigResponse as any as S.Schema<GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigResponse>;
 
 export interface SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest {
   /** Required. The resource name of the Search serving config, such as `projects/*\/locations/global/collections/default_collection/engines/*\/servingConfigs/default_serving_config`, or `projects/*\/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. */
@@ -24282,16 +24205,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQ
   expressions?: GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList;
 }
 export const GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expressions: S.optional(
-        GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
+  GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression as any as S.Schema<GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
 
 /** Constraint of a geolocation field. Name of the geolocation field as defined in the schema. */
 export interface GoogleCloudDiscoveryengineV1alphaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint {
@@ -24983,11 +24897,8 @@ export const ShareProjectsLocationsNotebooksRequest = /*@__PURE__*/ S.suspend(()
 
 /** Response for NotebookService.ShareNotebook method. */
 export interface GoogleCloudNotebooklmV1alphaShareNotebookResponse {}
-export const GoogleCloudNotebooklmV1alphaShareNotebookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudNotebooklmV1alphaShareNotebookResponse",
-}) as any as S.Schema<GoogleCloudNotebooklmV1alphaShareNotebookResponse>;
+export const GoogleCloudNotebooklmV1alphaShareNotebookResponse =
+  GoogleCloudNotebooklmV1alphaFailureReasonUploadError as any as S.Schema<GoogleCloudNotebooklmV1alphaShareNotebookResponse>;
 
 /** Request message for DataConnectorService.StartConnectorRun method. */
 export interface GoogleCloudDiscoveryengineV1alphaStartConnectorRunRequest {
@@ -25044,13 +24955,8 @@ export interface GoogleCloudDiscoveryengineV1alphaStartExperimentRequest {
   /** Required. Experiment to start. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}` */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1alphaStartExperimentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1alphaStartExperimentRequest",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1alphaStartExperimentRequest>;
+export const GoogleCloudDiscoveryengineV1alphaStartExperimentRequest =
+  GoogleCloudDiscoveryengineV1alphaSiteSearchEngine as any as S.Schema<GoogleCloudDiscoveryengineV1alphaStartExperimentRequest>;
 
 export interface StartProjectsLocationsCollectionsEnginesSessionsAlphaEvolveExperimentsRequest {
   /** Required. Experiment to start. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}` */

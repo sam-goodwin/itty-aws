@@ -33,9 +33,8 @@ export const BulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** attribute names and values of the items that failed to be processed */
 export type BulkDeleteResponseFailedItemsList = Array<string>;
-export const BulkDeleteResponseFailedItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkDeleteResponseFailedItemsList>;
+export const BulkDeleteResponseFailedItemsList =
+  BulkDeleteRequestIdsList as any as S.Schema<BulkDeleteResponseFailedItemsList>;
 
 export interface BulkDeleteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -52,9 +51,8 @@ export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** items' ids */
 export type BulkGetRequestIdsList = Array<string>;
-export const BulkGetRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkGetRequestIdsList>;
+export const BulkGetRequestIdsList =
+  BulkDeleteRequestIdsList as any as S.Schema<BulkGetRequestIdsList>;
 
 export interface BulkGetRequest {
   /** name of the datastore */
@@ -85,9 +83,8 @@ export const BulkGetResponseItemsList = /*@__PURE__*/ S.Array(
 
 /** attribute names and values of the items that failed to be processed */
 export type BulkGetResponseFailedItemsList = Array<string>;
-export const BulkGetResponseFailedItemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkGetResponseFailedItemsList>;
+export const BulkGetResponseFailedItemsList =
+  BulkDeleteRequestIdsList as any as S.Schema<BulkGetResponseFailedItemsList>;
 
 export interface BulkGetResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -106,16 +103,13 @@ export const BulkGetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkGetResponse" }) as any as S.Schema<BulkGetResponse>;
 
 export type BulkPutRequestItemsItemMap = { [key: string]: unknown | undefined };
-export const BulkPutRequestItemsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BulkPutRequestItemsItemMap>;
+export const BulkPutRequestItemsItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<BulkPutRequestItemsItemMap>;
 
 /** attribute names and values of the items; limit of 25 */
 export type BulkPutRequestItemsList = Array<BulkPutRequestItemsItemMap>;
-export const BulkPutRequestItemsList = /*@__PURE__*/ S.Array(
-  BulkPutRequestItemsItemMap,
-) as any as S.Schema<BulkPutRequestItemsList>;
+export const BulkPutRequestItemsList =
+  BulkGetResponseItemsList as any as S.Schema<BulkPutRequestItemsList>;
 
 export interface BulkPutRequest {
   /** name of the datastore */
@@ -133,16 +127,13 @@ export const BulkPutRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkPutRequest" }) as any as S.Schema<BulkPutRequest>;
 
 export type BulkPutResponseFailedItemsItemMap = { [key: string]: unknown | undefined };
-export const BulkPutResponseFailedItemsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BulkPutResponseFailedItemsItemMap>;
+export const BulkPutResponseFailedItemsItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<BulkPutResponseFailedItemsItemMap>;
 
 /** attribute names and values of the items that failed to be processed */
 export type BulkPutResponseFailedItemsList = Array<BulkPutResponseFailedItemsItemMap>;
-export const BulkPutResponseFailedItemsList = /*@__PURE__*/ S.Array(
-  BulkPutResponseFailedItemsItemMap,
-) as any as S.Schema<BulkPutResponseFailedItemsList>;
+export const BulkPutResponseFailedItemsList =
+  BulkGetResponseItemsList as any as S.Schema<BulkPutResponseFailedItemsList>;
 
 export interface BulkPutResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -234,17 +225,13 @@ export const CreateManifestResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A map of attributes referenced in expression */
 export type DatastoreCountRequestExpressionAttributesMap = { [key: string]: unknown | undefined };
-export const DatastoreCountRequestExpressionAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatastoreCountRequestExpressionAttributesMap>;
+export const DatastoreCountRequestExpressionAttributesMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreCountRequestExpressionAttributesMap>;
 
 /** A map of values referenced in expression */
 export type DatastoreCountRequestExpressionValuesMap = { [key: string]: unknown | undefined };
-export const DatastoreCountRequestExpressionValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatastoreCountRequestExpressionValuesMap>;
+export const DatastoreCountRequestExpressionValuesMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreCountRequestExpressionValuesMap>;
 
 export interface DatastoreCountRequest {
   /** Name of the datastore */
@@ -286,17 +273,13 @@ export const DatastoreCountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A map of attributes referenced in expression */
 export type DatastoreQueryRequestExpressionAttributesMap = { [key: string]: unknown | undefined };
-export const DatastoreQueryRequestExpressionAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatastoreQueryRequestExpressionAttributesMap>;
+export const DatastoreQueryRequestExpressionAttributesMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreQueryRequestExpressionAttributesMap>;
 
 /** A map of values referenced in expression */
 export type DatastoreQueryRequestExpressionValuesMap = { [key: string]: unknown | undefined };
-export const DatastoreQueryRequestExpressionValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatastoreQueryRequestExpressionValuesMap>;
+export const DatastoreQueryRequestExpressionValuesMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreQueryRequestExpressionValuesMap>;
 
 export interface DatastoreQueryRequest {
   /** Name of the datastore */
@@ -327,16 +310,13 @@ export const DatastoreQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatastoreQueryRequest" }) as any as S.Schema<DatastoreQueryRequest>;
 
 export type DatastoreQueryResponseItemsItemMap = { [key: string]: unknown | undefined };
-export const DatastoreQueryResponseItemsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DatastoreQueryResponseItemsItemMap>;
+export const DatastoreQueryResponseItemsItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreQueryResponseItemsItemMap>;
 
 /** attribute names and values of the items */
 export type DatastoreQueryResponseItemsList = Array<DatastoreQueryResponseItemsItemMap>;
-export const DatastoreQueryResponseItemsList = /*@__PURE__*/ S.Array(
-  DatastoreQueryResponseItemsItemMap,
-) as any as S.Schema<DatastoreQueryResponseItemsList>;
+export const DatastoreQueryResponseItemsList =
+  BulkGetResponseItemsList as any as S.Schema<DatastoreQueryResponseItemsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface DatastoreQueryResponseResponseMetadata {
@@ -439,11 +419,8 @@ export interface DeleteManifestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteManifestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "DeleteManifestResponse" }) as any as S.Schema<DeleteManifestResponse>;
+export const DeleteManifestResponse =
+  DeleteDatastoreResponse as any as S.Schema<DeleteManifestResponse>;
 
 export interface ExportManifestRequest {
   /** The ID of the app whose configuration you want to export as a manifest. */
@@ -511,10 +488,8 @@ export const GetDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** attribute names and values of the item */
 export type GetDatastoreResponseItemMap = { [key: string]: unknown | undefined };
-export const GetDatastoreResponseItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetDatastoreResponseItemMap>;
+export const GetDatastoreResponseItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<GetDatastoreResponseItemMap>;
 
 export interface GetDatastoreResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -681,10 +656,8 @@ export const ListEventAuthorizationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** attribute names and values of the item */
 export type PutDatastoreRequestItemMap = { [key: string]: unknown | undefined };
-export const PutDatastoreRequestItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutDatastoreRequestItemMap>;
+export const PutDatastoreRequestItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<PutDatastoreRequestItemMap>;
 
 export interface PutDatastoreRequest {
   /** name of the datastore */
@@ -703,10 +676,8 @@ export const PutDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** attribute names and values of the item */
 export type PutDatastoreResponseItemMap = { [key: string]: unknown | undefined };
-export const PutDatastoreResponseItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PutDatastoreResponseItemMap>;
+export const PutDatastoreResponseItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<PutDatastoreResponseItemMap>;
 
 export interface PutDatastoreResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -716,13 +687,7 @@ export interface PutDatastoreResponse {
   /** attribute names and values of the item */
   item?: PutDatastoreResponseItemMap;
 }
-export const PutDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    datastore: S.optional(S.String),
-    item: S.optional(PutDatastoreResponseItemMap),
-  }),
-).annotate({ identifier: "PutDatastoreResponse" }) as any as S.Schema<PutDatastoreResponse>;
+export const PutDatastoreResponse = GetDatastoreResponse as any as S.Schema<PutDatastoreResponse>;
 
 export interface SetIconRequest {
   /** The ID of the app whose icon you want to set. */
@@ -744,11 +709,7 @@ export interface SetIconResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetIconResponse" }) as any as S.Schema<SetIconResponse>;
+export const SetIconResponse = DeleteDatastoreResponse as any as S.Schema<SetIconResponse>;
 
 /** Who can interact with the app. Use everyone to allow all members, or app_owner to restrict access to the app's owner. */
 export type SetManagedPermissionsRequestPermissions = "everyone" | "app_owner";
@@ -773,13 +734,8 @@ export interface SetManagedPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetManagedPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetManagedPermissionsResponse",
-}) as any as S.Schema<SetManagedPermissionsResponse>;
+export const SetManagedPermissionsResponse =
+  DeleteAuthExternalResponse as any as S.Schema<SetManagedPermissionsResponse>;
 
 export interface UninstallAppRequest {
   /** Issued when you created your application. */
@@ -810,10 +766,8 @@ export const UninstallAppResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** attribute names and values to be updated */
 export type UpdateDatastoreRequestItemMap = { [key: string]: unknown | undefined };
-export const UpdateDatastoreRequestItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDatastoreRequestItemMap>;
+export const UpdateDatastoreRequestItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<UpdateDatastoreRequestItemMap>;
 
 export interface UpdateDatastoreRequest {
   /** name of the datastore */
@@ -832,10 +786,8 @@ export const UpdateDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** attribute names and values of the item, including those updated */
 export type UpdateDatastoreResponseItemMap = { [key: string]: unknown | undefined };
-export const UpdateDatastoreResponseItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDatastoreResponseItemMap>;
+export const UpdateDatastoreResponseItemMap =
+  BulkGetResponseItemsItemMap as any as S.Schema<UpdateDatastoreResponseItemMap>;
 
 export interface UpdateDatastoreResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -845,13 +797,8 @@ export interface UpdateDatastoreResponse {
   /** attribute names and values of the item, including those updated */
   item?: UpdateDatastoreResponseItemMap;
 }
-export const UpdateDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    datastore: S.optional(S.String),
-    item: S.optional(UpdateDatastoreResponseItemMap),
-  }),
-).annotate({ identifier: "UpdateDatastoreResponse" }) as any as S.Schema<UpdateDatastoreResponse>;
+export const UpdateDatastoreResponse =
+  GetDatastoreResponse as any as S.Schema<UpdateDatastoreResponse>;
 
 export interface UpdateManifestRequest {
   /** A JSON app manifest encoded as a string. This manifest **must** use a valid [app manifest schema - read our guide to creating one](/app-manifests/configuring-apps-with-app-manifests#fields). As this method entirely _replaces_ any previous configuration, manifest must contain both unmodified and modified fields. */
@@ -903,13 +850,8 @@ export interface UpdateUserConnectionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UpdateUserConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateUserConnectionResponse",
-}) as any as S.Schema<UpdateUserConnectionResponse>;
+export const UpdateUserConnectionResponse =
+  DeleteAuthExternalResponse as any as S.Schema<UpdateUserConnectionResponse>;
 
 export interface ValidateManifestRequest {
   /** The manifest to be validated. Will be validated against the [app manifest schema - read our guide](/app-manifests/configuring-apps-with-app-manifests#fields). */
@@ -925,9 +867,8 @@ export const ValidateManifestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidateManifestRequest" }) as any as S.Schema<ValidateManifestRequest>;
 
 export type ValidateManifestResponseErrorsList = Array<string>;
-export const ValidateManifestResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateManifestResponseErrorsList>;
+export const ValidateManifestResponseErrorsList =
+  BulkDeleteRequestIdsList as any as S.Schema<ValidateManifestResponseErrorsList>;
 
 export interface ValidateManifestResponseWarningsItem {
   code: string;

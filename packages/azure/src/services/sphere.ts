@@ -128,10 +128,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CatalogsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CatalogsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogsCreateOrUpdateResponseTagsMap>;
+export const CatalogsCreateOrUpdateResponseTagsMap =
+  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<CatalogsCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of resource. */
 export type ProvisioningState =
@@ -257,9 +255,8 @@ export const DeleteCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCatalogRequest" }) as any as S.Schema<DeleteCatalogRequest>;
 
 export interface DeleteCatalogResponse {}
-export const DeleteCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCatalogResponse",
-}) as any as S.Schema<DeleteCatalogResponse>;
+export const DeleteCatalogResponse =
+  CatalogPropertiesInput as any as S.Schema<DeleteCatalogResponse>;
 
 export interface DeleteDeploymentRequest {
   /** The ID of the target subscription. */
@@ -294,9 +291,8 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeploymentResponse",
-}) as any as S.Schema<DeleteDeploymentResponse>;
+export const DeleteDeploymentResponse =
+  CatalogPropertiesInput as any as S.Schema<DeleteDeploymentResponse>;
 
 export interface DeleteDeviceRequest {
   /** The ID of the target subscription. */
@@ -331,9 +327,7 @@ export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeviceRequest" }) as any as S.Schema<DeleteDeviceRequest>;
 
 export interface DeleteDeviceResponse {}
-export const DeleteDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeviceResponse",
-}) as any as S.Schema<DeleteDeviceResponse>;
+export const DeleteDeviceResponse = CatalogPropertiesInput as any as S.Schema<DeleteDeviceResponse>;
 
 export interface DeleteDeviceGroupRequest {
   /** The ID of the target subscription. */
@@ -365,9 +359,8 @@ export const DeleteDeviceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeviceGroupRequest" }) as any as S.Schema<DeleteDeviceGroupRequest>;
 
 export interface DeleteDeviceGroupResponse {}
-export const DeleteDeviceGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeviceGroupResponse",
-}) as any as S.Schema<DeleteDeviceGroupResponse>;
+export const DeleteDeviceGroupResponse =
+  CatalogPropertiesInput as any as S.Schema<DeleteDeviceGroupResponse>;
 
 export interface DeleteImageRequest {
   /** The ID of the target subscription. */
@@ -396,9 +389,7 @@ export const DeleteImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteImageRequest" }) as any as S.Schema<DeleteImageRequest>;
 
 export interface DeleteImageResponse {}
-export const DeleteImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImageResponse",
-}) as any as S.Schema<DeleteImageResponse>;
+export const DeleteImageResponse = CatalogPropertiesInput as any as S.Schema<DeleteImageResponse>;
 
 export interface DeleteProductRequest {
   /** The ID of the target subscription. */
@@ -427,9 +418,8 @@ export const DeleteProductRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProductRequest" }) as any as S.Schema<DeleteProductRequest>;
 
 export interface DeleteProductResponse {}
-export const DeleteProductResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductResponse",
-}) as any as S.Schema<DeleteProductResponse>;
+export const DeleteProductResponse =
+  CatalogPropertiesInput as any as S.Schema<DeleteProductResponse>;
 
 /** Regional data boundary values. */
 export type RegionalDataBoundary = "None" | "EU";
@@ -693,13 +683,8 @@ export interface DeviceGroupsCountDevicesResponse {
   /** Number of children resources in parent resource. */
   value: number;
 }
-export const DeviceGroupsCountDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-  }),
-).annotate({
-  identifier: "DeviceGroupsCountDevicesResponse",
-}) as any as S.Schema<DeviceGroupsCountDevicesResponse>;
+export const DeviceGroupsCountDevicesResponse =
+  CatalogsCountDevicesResponse as any as S.Schema<DeviceGroupsCountDevicesResponse>;
 
 /** OS feed type values. */
 export type OSFeedType = "Retail" | "RetailEval";
@@ -1084,10 +1069,8 @@ export const GetCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCatalogResponseTagsMap = { [key: string]: string | undefined };
-export const GetCatalogResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCatalogResponseTagsMap>;
+export const GetCatalogResponseTagsMap =
+  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCatalogResponseTagsMap>;
 
 export interface GetCatalogResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1447,15 +1430,7 @@ export interface GetDeviceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
 }
-export const GetDeviceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeviceGroupProperties),
-  }),
-).annotate({ identifier: "GetDeviceGroupResponse" }) as any as S.Schema<GetDeviceGroupResponse>;
+export const GetDeviceGroupResponse = DeviceGroup as any as S.Schema<GetDeviceGroupResponse>;
 
 export interface GetImageRequest {
   /** The ID of the target subscription. */
@@ -1495,15 +1470,7 @@ export interface GetImageResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
 }
-export const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ImageProperties),
-  }),
-).annotate({ identifier: "GetImageResponse" }) as any as S.Schema<GetImageResponse>;
+export const GetImageResponse = Image as any as S.Schema<GetImageResponse>;
 
 export interface GetProductRequest {
   /** The ID of the target subscription. */
@@ -1646,10 +1613,8 @@ export const ListCatalogByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CatalogTagsMap = { [key: string]: string | undefined };
-export const CatalogTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogTagsMap>;
+export const CatalogTagsMap =
+  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<CatalogTagsMap>;
 
 /** An Azure Sphere catalog */
 export interface Catalog {
@@ -1668,17 +1633,7 @@ export interface Catalog {
   /** The resource-specific properties for this resource. */
   properties?: CatalogProperties;
 }
-export const Catalog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CatalogTagsMap),
-    location: S.String,
-    properties: S.optional(CatalogProperties),
-  }),
-).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
+export const Catalog = GetCatalogResponse as any as S.Schema<Catalog>;
 
 /** The Catalog items on this page */
 export type CatalogListResultValueList = Array<Catalog>;
@@ -1769,15 +1724,7 @@ export interface Deployment {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+export const Deployment = GetDeploymentResponse as any as S.Schema<Deployment>;
 
 /** The Deployment items on this page */
 export type DeploymentListResultValueList = Array<Deployment>;
@@ -1978,15 +1925,7 @@ export interface Device {
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
 }
-export const Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeviceProperties),
-  }),
-).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
+export const Device = GetDeviceResponse as any as S.Schema<Device>;
 
 /** The Device items on this page */
 export type DeviceListResultValueList = Array<Device>;
@@ -2058,15 +1997,7 @@ export interface Certificate {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProperties;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CertificateProperties),
-  }),
-).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+export const Certificate = GetCertificateResponse as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
 export type CertificateListResultValueList = Array<Certificate>;
@@ -2241,9 +2172,8 @@ export const ListImageByCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Image items on this page */
 export type ImageListResultValueList = Array<Image>;
-export const ImageListResultValueList = /*@__PURE__*/ S.Array(
-  Image,
-) as any as S.Schema<ImageListResultValueList>;
+export const ImageListResultValueList =
+  DeploymentPropertiesDeployedImagesList as any as S.Schema<ImageListResultValueList>;
 
 /** The response of a Image list operation. */
 export interface ImageListResult {
@@ -2379,15 +2309,7 @@ export interface Product {
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProductProperties),
-  }),
-).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
+export const Product = GetProductResponse as any as S.Schema<Product>;
 
 /** The Product items on this page */
 export type ProductListResultValueList = Array<Product>;
@@ -2441,13 +2363,8 @@ export interface ProductsCountDevicesResponse {
   /** Number of children resources in parent resource. */
   value: number;
 }
-export const ProductsCountDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-  }),
-).annotate({
-  identifier: "ProductsCountDevicesResponse",
-}) as any as S.Schema<ProductsCountDevicesResponse>;
+export const ProductsCountDevicesResponse =
+  CatalogsCountDevicesResponse as any as S.Schema<ProductsCountDevicesResponse>;
 
 export interface ProductsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2506,10 +2423,8 @@ export const ProductsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCatalogRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCatalogRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCatalogRequestTagsMap>;
+export const UpdateCatalogRequestTagsMap =
+  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCatalogRequestTagsMap>;
 
 export interface UpdateCatalogRequest {
   /** The ID of the target subscription. */
@@ -2539,10 +2454,8 @@ export const UpdateCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCatalogResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCatalogResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCatalogResponseTagsMap>;
+export const UpdateCatalogResponseTagsMap =
+  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCatalogResponseTagsMap>;
 
 export interface UpdateCatalogResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2560,17 +2473,7 @@ export interface UpdateCatalogResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogProperties;
 }
-export const UpdateCatalogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCatalogResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CatalogProperties),
-  }),
-).annotate({ identifier: "UpdateCatalogResponse" }) as any as S.Schema<UpdateCatalogResponse>;
+export const UpdateCatalogResponse = GetCatalogResponse as any as S.Schema<UpdateCatalogResponse>;
 
 /** The updatable properties of the Device. */
 export interface DeviceUpdateProperties {
@@ -2630,15 +2533,7 @@ export interface UpdateDeviceResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
 }
-export const UpdateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeviceProperties),
-  }),
-).annotate({ identifier: "UpdateDeviceResponse" }) as any as S.Schema<UpdateDeviceResponse>;
+export const UpdateDeviceResponse = GetDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
 
 /** The updatable properties of the DeviceGroup. */
 export type DeviceGroupUpdateProperties = DeviceGroupPropertiesInput;
@@ -2688,17 +2583,8 @@ export interface UpdateDeviceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
 }
-export const UpdateDeviceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeviceGroupProperties),
-  }),
-).annotate({
-  identifier: "UpdateDeviceGroupResponse",
-}) as any as S.Schema<UpdateDeviceGroupResponse>;
+export const UpdateDeviceGroupResponse =
+  DeviceGroupsCreateOrUpdateResponse as any as S.Schema<UpdateDeviceGroupResponse>;
 
 /** The updatable properties of the Product. */
 export interface ProductUpdateProperties {
@@ -2752,15 +2638,7 @@ export interface UpdateProductResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
 }
-export const UpdateProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProductProperties),
-  }),
-).annotate({ identifier: "UpdateProductResponse" }) as any as S.Schema<UpdateProductResponse>;
+export const UpdateProductResponse = GetProductResponse as any as S.Schema<UpdateProductResponse>;
 
 export interface UploadCatalogImageRequest {
   /** The ID of the target subscription. */
@@ -2791,9 +2669,8 @@ export const UploadCatalogImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadCatalogImageRequest>;
 
 export interface UploadCatalogImageResponse {}
-export const UploadCatalogImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadCatalogImageResponse",
-}) as any as S.Schema<UploadCatalogImageResponse>;
+export const UploadCatalogImageResponse =
+  CatalogPropertiesInput as any as S.Schema<UploadCatalogImageResponse>;
 
 export type CatalogsCountDevicesError = AzureOpError;
 /** Counts devices in catalog. */

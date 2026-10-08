@@ -108,9 +108,7 @@ export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse =
 /** Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC. */
 export interface GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest {}
 export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest",
-  }) as any as S.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest>;
+  GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse as any as S.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest>;
 
 export interface ApprovePropertiesDisplayVideo360AdvertiserLinkProposalsRequest {
   /** Required. The name of the DisplayVideo360AdvertiserLinkProposal to approve. Example format: properties/1234/displayVideo360AdvertiserLinkProposals/5678 */
@@ -511,14 +509,8 @@ export interface GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse {
   /** The requested access bindings. */
   accessBindings?: GoogleAnalyticsAdminV1alphaAccessBindingList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessBindings: S.optional(GoogleAnalyticsAdminV1alphaAccessBindingList),
-    }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse",
-}) as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse>;
+export const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse =
+  GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse>;
 
 export interface BatchGetPropertiesAccessBindingsRequest {
   /** Required. The names of the access bindings to retrieve. A maximum of 1000 access bindings can be retrieved in a batch. Formats: - accounts/{account}/accessBindings/{accessBinding} - properties/{property}/accessBindings/{accessBinding} */
@@ -602,14 +594,8 @@ export interface GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse {
   /** The access bindings updated. */
   accessBindings?: GoogleAnalyticsAdminV1alphaAccessBindingList;
 }
-export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessBindings: S.optional(GoogleAnalyticsAdminV1alphaAccessBindingList),
-    }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse",
-}) as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse>;
+export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse =
+  GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse as any as S.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse>;
 
 export interface BatchUpdatePropertiesAccessBindingsRequest {
   /** Required. The account or property that owns the access bindings. The parent of all provided AccessBinding in UpdateAccessBindingRequest messages must match this field. Formats: - accounts/{account} - properties/{property} */
@@ -6772,13 +6758,8 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetric {
   /** The API name of the metric. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of metrics supported in this API. Metrics are referenced by name in `metricFilter` & `orderBys`. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1alphaAccessMetric",
-}) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetric>;
+export const GoogleAnalyticsAdminV1alphaAccessMetric =
+  GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetric>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricList =
   Array<GoogleAnalyticsAdminV1alphaAccessMetric>;
@@ -7067,19 +7048,13 @@ export interface GoogleAnalyticsAdminV1alphaAccessDimensionHeader {
   /** The dimension's name; for example 'userEmail'. */
   dimensionName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1alphaAccessDimensionHeader",
-}) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
+export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader =
+  GoogleAnalyticsAdminV1alphaAccessDimension as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
   Array<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
-export const GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList = /*@__PURE__*/ S.Array(
-  GoogleAnalyticsAdminV1alphaAccessDimensionHeader,
-) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList>;
+export const GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
+  GoogleAnalyticsAdminV1alphaAccessDimensionList as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList>;
 
 /** The value of a metric. */
 export interface GoogleAnalyticsAdminV1alphaAccessMetricValue {
@@ -7105,19 +7080,13 @@ export interface GoogleAnalyticsAdminV1alphaAccessDimensionValue {
   /** The dimension value. For example, this value may be 'France' for the 'country' dimension. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessDimensionValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1alphaAccessDimensionValue",
-}) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
+export const GoogleAnalyticsAdminV1alphaAccessDimensionValue =
+  GoogleAnalyticsAdminV1alphaAccessMetricValue as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
   Array<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
-export const GoogleAnalyticsAdminV1alphaAccessDimensionValueList = /*@__PURE__*/ S.Array(
-  GoogleAnalyticsAdminV1alphaAccessDimensionValue,
-) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValueList>;
+export const GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
+  GoogleAnalyticsAdminV1alphaAccessMetricValueList as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValueList>;
 
 /** Access report data for each row. */
 export interface GoogleAnalyticsAdminV1alphaAccessRow {
@@ -7145,19 +7114,13 @@ export interface GoogleAnalyticsAdminV1alphaAccessMetricHeader {
   /** The metric's name; for example 'accessCount'. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1alphaAccessMetricHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1alphaAccessMetricHeader",
-}) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
+export const GoogleAnalyticsAdminV1alphaAccessMetricHeader =
+  GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
   Array<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
-export const GoogleAnalyticsAdminV1alphaAccessMetricHeaderList = /*@__PURE__*/ S.Array(
-  GoogleAnalyticsAdminV1alphaAccessMetricHeader,
-) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeaderList>;
+export const GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
+  GoogleAnalyticsAdminV1alphaAccessMetricList as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeaderList>;
 
 /** The customized Data Access Record Report response. */
 export interface GoogleAnalyticsAdminV1alphaRunAccessReportResponse {

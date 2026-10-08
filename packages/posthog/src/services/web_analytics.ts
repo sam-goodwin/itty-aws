@@ -60,15 +60,13 @@ export const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ S.Array(
 
 /** Site paths authorized for this run. */
 export type ContentAutopilotSnapshotContentBoundariesList = Array<string>;
-export const ContentAutopilotSnapshotContentBoundariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
+export const ContentAutopilotSnapshotContentBoundariesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
 
 /** Editorial rules captured for this run. */
 export type ContentAutopilotSnapshotBrandRulesList = Array<string>;
-export const ContentAutopilotSnapshotBrandRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
+export const ContentAutopilotSnapshotBrandRulesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
 
 export interface ContentAutopilotSnapshot {
   /** Site domain used for the run. */
@@ -203,39 +201,33 @@ export const ContentAutopilotOpportunityEvidenceList = /*@__PURE__*/ S.Array(
 
 /** Engines that answered the prompt. */
 export type ContentAutopilotCitationGapEnginesList = Array<string>;
-export const ContentAutopilotCitationGapEnginesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapEnginesList>;
+export const ContentAutopilotCitationGapEnginesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEnginesList>;
 
 /** Engines that never cited the site in the window. */
 export type ContentAutopilotCitationGapEnginesNotCitingList = Array<string>;
-export const ContentAutopilotCitationGapEnginesNotCitingList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
+export const ContentAutopilotCitationGapEnginesNotCitingList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
 
 /** Other sites' pages the engines cited, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorUrlsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
+export const ContentAutopilotCitationGapCompetitorUrlsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
 
 /** Domains the engines cited instead, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorDomainsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
+export const ContentAutopilotCitationGapCompetitorDomainsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
 
 /** Web searches the engines ran while answering. */
 export type ContentAutopilotCitationGapEngineSearchQueriesList = Array<string>;
-export const ContentAutopilotCitationGapEngineSearchQueriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
+export const ContentAutopilotCitationGapEngineSearchQueriesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
 
 /** Site pages the engines cited when they did cite the site. */
 export type ContentAutopilotCitationGapOurCitedUrlsList = Array<string>;
-export const ContentAutopilotCitationGapOurCitedUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
+export const ContentAutopilotCitationGapOurCitedUrlsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
 
 export interface ContentAutopilotEngineAnswer {
   /** Answer engine that gave the answer. */
@@ -384,15 +376,13 @@ export const ContentAutopilotPackageFrontmatterList = /*@__PURE__*/ S.Array(
 
 /** Validated same-origin internal links included in the content. */
 export type ContentAutopilotPackageInternalLinksList = Array<string>;
-export const ContentAutopilotPackageInternalLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotPackageInternalLinksList>;
+export const ContentAutopilotPackageInternalLinksList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotPackageInternalLinksList>;
 
 /** Portable source notes included with the export. */
 export type ContentAutopilotPackageSourceNotesList = Array<string>;
-export const ContentAutopilotPackageSourceNotesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
+export const ContentAutopilotPackageSourceNotesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
 
 export interface ContentAutopilotPackage {
   /** Repository-relative Markdown or MDX file path. */
@@ -466,9 +456,8 @@ export const ContentAutopilotProposalLifecycleStatusEnum = S.String;
 
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalEvidenceList = Array<ContentAutopilotEvidence>;
-export const ContentAutopilotProposalEvidenceList = /*@__PURE__*/ S.Array(
-  ContentAutopilotEvidence,
-) as any as S.Schema<ContentAutopilotProposalEvidenceList>;
+export const ContentAutopilotProposalEvidenceList =
+  ContentAutopilotOpportunityEvidenceList as any as S.Schema<ContentAutopilotProposalEvidenceList>;
 
 export interface ContentAutopilotValidationCheck {
   /** Stable identifier for the validation gate. */
@@ -517,9 +506,8 @@ export const ContentAutopilotValidationReport = /*@__PURE__*/ S.suspend(() =>
 
 /** Site pages the brief asked to read for facts. */
 export type ContentAutopilotBriefSitePagesToReadList = Array<string>;
-export const ContentAutopilotBriefSitePagesToReadList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
+export const ContentAutopilotBriefSitePagesToReadList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
 
 export interface ContentAutopilotBriefCompetitor {
   /** Product to compare against. */
@@ -544,21 +532,18 @@ export const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ S.Ar
 
 /** Planned sections, in order. */
 export type ContentAutopilotBriefOutlineList = Array<string>;
-export const ContentAutopilotBriefOutlineList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefOutlineList>;
+export const ContentAutopilotBriefOutlineList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefOutlineList>;
 
 /** Questions the page must answer. */
 export type ContentAutopilotBriefQuestionsToAnswerList = Array<string>;
-export const ContentAutopilotBriefQuestionsToAnswerList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
+export const ContentAutopilotBriefQuestionsToAnswerList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
 
 /** Topics the cited competitor pages cover that the site's pages don't. */
 export type ContentAutopilotBriefCompetitorCoverageList = Array<string>;
-export const ContentAutopilotBriefCompetitorCoverageList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
+export const ContentAutopilotBriefCompetitorCoverageList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
 
 export interface ContentAutopilotBrief {
   /** What the person asking wants to know or decide. */
@@ -865,11 +850,8 @@ export const StartWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<StartWebAnalyticsContentAutopilotRunRequest>;
 
 export interface StartWebAnalyticsContentAutopilotRunResponse {}
-export const StartWebAnalyticsContentAutopilotRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartWebAnalyticsContentAutopilotRunResponse",
-}) as any as S.Schema<StartWebAnalyticsContentAutopilotRunResponse>;
+export const StartWebAnalyticsContentAutopilotRunResponse =
+  RegenerateWebAnalyticsContentAutopilotProposalResponse as any as S.Schema<StartWebAnalyticsContentAutopilotRunResponse>;
 
 /** Opportunities to draft, up to 5 at a time. */
 export type WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList = Array<string>;
@@ -903,11 +885,8 @@ export const WebAnalyticsContentAutopilotOpportunitiesDraftRequest = /*@__PURE__
 }) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequest>;
 
 export interface WebAnalyticsContentAutopilotOpportunitiesDraftResponse {}
-export const WebAnalyticsContentAutopilotOpportunitiesDraftResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WebAnalyticsContentAutopilotOpportunitiesDraftResponse",
-}) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftResponse>;
+export const WebAnalyticsContentAutopilotOpportunitiesDraftResponse =
+  RegenerateWebAnalyticsContentAutopilotProposalResponse as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftResponse>;
 
 export interface WebAnalyticsContentAutopilotProfilesDiscoverRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -932,21 +911,18 @@ export const WebAnalyticsContentAutopilotProfilesDiscoverRequest = /*@__PURE__*/
 
 /** Detected sitemap URLs or an editable conventional suggestion. */
 export type ContentAutopilotSiteDiscoveryResponseSourceUrlsList = Array<string>;
-export const ContentAutopilotSiteDiscoveryResponseSourceUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSiteDiscoveryResponseSourceUrlsList>;
+export const ContentAutopilotSiteDiscoveryResponseSourceUrlsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseSourceUrlsList>;
 
 /** Editable same-origin path boundaries. */
 export type ContentAutopilotSiteDiscoveryResponseContentBoundariesList = Array<string>;
-export const ContentAutopilotSiteDiscoveryResponseContentBoundariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSiteDiscoveryResponseContentBoundariesList>;
+export const ContentAutopilotSiteDiscoveryResponseContentBoundariesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseContentBoundariesList>;
 
 /** Non-blocking discovery warnings. */
 export type ContentAutopilotSiteDiscoveryResponseWarningsList = Array<string>;
-export const ContentAutopilotSiteDiscoveryResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotSiteDiscoveryResponseWarningsList>;
+export const ContentAutopilotSiteDiscoveryResponseWarningsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseWarningsList>;
 
 export interface ContentAutopilotSiteDiscoveryResponse {
   /** Site name inferred from the homepage or hostname. */
@@ -1126,9 +1102,8 @@ export const DigestDataStatusEnum = S.String;
 
 /** Metric definitions to use when you compare the digest with a direct query. */
 export type DigestMetadataNotesList = Array<string>;
-export const DigestMetadataNotesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DigestMetadataNotesList>;
+export const DigestMetadataNotesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<DigestMetadataNotesList>;
 
 export interface DigestMetadata {
   /** How to read the headline numbers. 'ok': the headline has pageviews or sessions in the period. 'no_web_sessions': the headline is zero, but the project has sessions in the period. None of them contain a $pageview or $screen event from a non-test account. Query the sessions table directly to count them. 'no_sessions': the project has no sessions in the period. 'unknown': the headline is zero, and the check for other sessions in the period failed. Query the sessions table directly to count them. * `ok` - OK * `no_web_sessions` - No web sessions * `no_sessions` - No sessions * `unknown` - Unknown */
@@ -1291,21 +1266,18 @@ export const WebAnalyticsWeeklyDigestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Top 5 pages by unique visitors. */
 export type WeeklyDigestResponseTopPagesList = Array<TopPage>;
-export const WeeklyDigestResponseTopPagesList = /*@__PURE__*/ S.Array(
-  TopPage,
-) as any as S.Schema<WeeklyDigestResponseTopPagesList>;
+export const WeeklyDigestResponseTopPagesList =
+  WebAnalyticsRecapResponseTopPagesList as any as S.Schema<WeeklyDigestResponseTopPagesList>;
 
 /** Top 5 traffic sources by unique visitors. */
 export type WeeklyDigestResponseTopSourcesList = Array<TopSource>;
-export const WeeklyDigestResponseTopSourcesList = /*@__PURE__*/ S.Array(
-  TopSource,
-) as any as S.Schema<WeeklyDigestResponseTopSourcesList>;
+export const WeeklyDigestResponseTopSourcesList =
+  WebAnalyticsRecapResponseTopSourcesList as any as S.Schema<WeeklyDigestResponseTopSourcesList>;
 
 /** Goal conversions. */
 export type WeeklyDigestResponseGoalsList = Array<Goal>;
-export const WeeklyDigestResponseGoalsList = /*@__PURE__*/ S.Array(
-  Goal,
-) as any as S.Schema<WeeklyDigestResponseGoalsList>;
+export const WeeklyDigestResponseGoalsList =
+  WebAnalyticsRecapResponseGoalsList as any as S.Schema<WeeklyDigestResponseGoalsList>;
 
 export interface WeeklyDigestResponse {
   /** Unique visitors. */

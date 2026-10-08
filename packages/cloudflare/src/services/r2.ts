@@ -260,11 +260,8 @@ export const AbortSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AbortSuperSlurperJobRequest>;
 
 export type AbortSuperSlurperJobResponse = string;
-export const AbortSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "AbortSuperSlurperJobResponse",
-}) as any as S.Schema<AbortSuperSlurperJobResponse>;
+export const AbortSuperSlurperJobResponse =
+  AbortAllSuperSlurperJobResponse as any as S.Schema<AbortSuperSlurperJobResponse>;
 
 export type BucketsCreateRequestLocationHint = "apac" | "eeur" | "enam" | "weur" | "wnam" | "oc";
 export const BucketsCreateRequestLocationHint = S.String;
@@ -403,9 +400,8 @@ export const CreateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBucketDomainCustomRequest>;
 
 export type BucketsDomainsCustomCreateResponseCiphersList = Array<string>;
-export const BucketsDomainsCustomCreateResponseCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsDomainsCustomCreateResponseCiphersList>;
+export const BucketsDomainsCustomCreateResponseCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomCreateResponseCiphersList>;
 
 export type BucketsDomainsCustomCreateResponseMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
 export const BucketsDomainsCustomCreateResponseMinTLS = S.String;
@@ -502,9 +498,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaVendor =
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList = Array<string>;
 export const SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaKeysList>;
 
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema {
   bucket: string;
@@ -543,9 +537,7 @@ export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaJurisdict
 
 export type SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList = Array<string>;
 export const SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchemaKeysList>;
 
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema {
   bucket: string;
@@ -655,14 +647,12 @@ export type TemporaryCredentialsCreateRequestPermission =
 export const TemporaryCredentialsCreateRequestPermission = S.String;
 
 export type TemporaryCredentialsCreateRequestObjectsList = Array<string>;
-export const TemporaryCredentialsCreateRequestObjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemporaryCredentialsCreateRequestObjectsList>;
+export const TemporaryCredentialsCreateRequestObjectsList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<TemporaryCredentialsCreateRequestObjectsList>;
 
 export type TemporaryCredentialsCreateRequestPrefixesList = Array<string>;
-export const TemporaryCredentialsCreateRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemporaryCredentialsCreateRequestPrefixesList>;
+export const TemporaryCredentialsCreateRequestPrefixesList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<TemporaryCredentialsCreateRequestPrefixesList>;
 
 export interface CreateTemporaryCredentialRequest {
   /** Cloudflare account ID that owns the R2 resource. */
@@ -793,9 +783,8 @@ export const DeleteBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBucketCorsRequest" }) as any as S.Schema<DeleteBucketCorsRequest>;
 
 export type DeleteBucketCorsResponse = unknown;
-export const DeleteBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteBucketCorsResponse" }) as any as S.Schema<DeleteBucketCorsResponse>;
+export const DeleteBucketCorsResponse =
+  DeleteBucketResponse as any as S.Schema<DeleteBucketCorsResponse>;
 
 export type BucketsDomainsCustomDeleteRequestCfR2Jurisdiction =
   | "default"
@@ -990,9 +979,8 @@ export const DeleteBucketSippyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBucketSippyResponse>;
 
 export type DeleteObjectsKeyList = Array<string>;
-export const DeleteObjectsKeyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteObjectsKeyList>;
+export const DeleteObjectsKeyList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<DeleteObjectsKeyList>;
 
 export interface DeleteObjectsRequest {
   /** Account ID. */
@@ -1022,9 +1010,7 @@ export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteObjectsRequest" }) as any as S.Schema<DeleteObjectsRequest>;
 
 export type DeleteObjectsResponse = unknown;
-export const DeleteObjectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteObjectsResponse" }) as any as S.Schema<DeleteObjectsResponse>;
+export const DeleteObjectsResponse = DeleteBucketResponse as any as S.Schema<DeleteObjectsResponse>;
 
 export type BucketsGetRequestCfR2Jurisdiction =
   | "default"
@@ -1137,14 +1123,12 @@ export const BucketsCorsGetResponseRulesItemAllowedMethodsList = /*@__PURE__*/ S
 ) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedMethodsList>;
 
 export type BucketsCorsGetResponseRulesItemAllowedOriginsList = Array<string>;
-export const BucketsCorsGetResponseRulesItemAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedOriginsList>;
+export const BucketsCorsGetResponseRulesItemAllowedOriginsList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedOriginsList>;
 
 export type BucketsCorsGetResponseRulesItemAllowedHeadersList = Array<string>;
-export const BucketsCorsGetResponseRulesItemAllowedHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedHeadersList>;
+export const BucketsCorsGetResponseRulesItemAllowedHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedHeadersList>;
 
 export interface BucketsCorsGetResponseRulesItemAllowed {
   /** Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser. */
@@ -1165,9 +1149,8 @@ export const BucketsCorsGetResponseRulesItemAllowed = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowed>;
 
 export type BucketsCorsGetResponseRulesItemExposeHeadersList = Array<string>;
-export const BucketsCorsGetResponseRulesItemExposeHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsCorsGetResponseRulesItemExposeHeadersList>;
+export const BucketsCorsGetResponseRulesItemExposeHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsGetResponseRulesItemExposeHeadersList>;
 
 export interface BucketsCorsGetResponseRulesItem {
   /** Object specifying allowed origins, methods and headers for this CORS rule. */
@@ -1277,9 +1260,8 @@ export const BucketsDomainsCustomGetResponseStatus = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<BucketsDomainsCustomGetResponseStatus>;
 
 export type BucketsDomainsCustomGetResponseCiphersList = Array<string>;
-export const BucketsDomainsCustomGetResponseCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsDomainsCustomGetResponseCiphersList>;
+export const BucketsDomainsCustomGetResponseCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomGetResponseCiphersList>;
 
 export type BucketsDomainsCustomGetResponseMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
 export const BucketsDomainsCustomGetResponseMinTLS = S.String;
@@ -2032,9 +2014,7 @@ export const GetSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList = Array<string>;
 export const SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor = "s3";
 export const SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor = S.String;
@@ -2060,9 +2040,7 @@ export const SuperSlurperJobsGetResponseSourceS3SourceResponseSchema = /*@__PURE
 
 export type SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList = Array<string>;
 export const SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor = "gcs";
 export const SuperSlurperJobsGetResponseSourceGcsSourceResponseSchemaVendor = S.String;
@@ -2094,9 +2072,7 @@ export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaJurisdiction
 
 export type SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList = Array<string>;
 export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor = "r2";
 export const SuperSlurperJobsGetResponseSourceR2SourceResponseSchemaVendor = S.String;
@@ -2254,9 +2230,8 @@ export const BucketsDomainsCustomListResponseDomainsItemStatus = /*@__PURE__*/ S
 }) as any as S.Schema<BucketsDomainsCustomListResponseDomainsItemStatus>;
 
 export type BucketsDomainsCustomListResponseDomainsItemCiphersList = Array<string>;
-export const BucketsDomainsCustomListResponseDomainsItemCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsDomainsCustomListResponseDomainsItemCiphersList>;
+export const BucketsDomainsCustomListResponseDomainsItemCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomListResponseDomainsItemCiphersList>;
 
 export type BucketsDomainsCustomListResponseDomainsItemMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
 export const BucketsDomainsCustomListResponseDomainsItemMinTLS = S.String;
@@ -2917,9 +2892,7 @@ export const ListSuperSlurperJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList = Array<string>;
 export const SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor = "s3";
 export const SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor = S.String;
@@ -2950,9 +2923,7 @@ export const SuperSlurperJobsListResultItemSourceS3SourceResponseSchema = /*@__P
 
 export type SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList = Array<string>;
 export const SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor = "gcs";
 export const SuperSlurperJobsListResultItemSourceGcsSourceResponseSchemaVendor = S.String;
@@ -2988,9 +2959,7 @@ export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaJurisdict
 
 export type SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList = Array<string>;
 export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList>;
+  SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList as any as S.Schema<SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaKeysList>;
 
 export type SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor = "r2";
 export const SuperSlurperJobsListResultItemSourceR2SourceResponseSchemaVendor = S.String;
@@ -3198,11 +3167,8 @@ export const PauseSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseSuperSlurperJobRequest>;
 
 export type PauseSuperSlurperJobResponse = string;
-export const PauseSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PauseSuperSlurperJobResponse",
-}) as any as S.Schema<PauseSuperSlurperJobResponse>;
+export const PauseSuperSlurperJobResponse =
+  AbortAllSuperSlurperJobResponse as any as S.Schema<PauseSuperSlurperJobResponse>;
 
 export interface ProgressSuperSlurperJobRequest {
   accountId: string;
@@ -3268,14 +3234,12 @@ export const BucketsCorsUpdateRequestRulesItemAllowedMethodsList = /*@__PURE__*/
 ) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedMethodsList>;
 
 export type BucketsCorsUpdateRequestRulesItemAllowedOriginsList = Array<string>;
-export const BucketsCorsUpdateRequestRulesItemAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedOriginsList>;
+export const BucketsCorsUpdateRequestRulesItemAllowedOriginsList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedOriginsList>;
 
 export type BucketsCorsUpdateRequestRulesItemAllowedHeadersList = Array<string>;
-export const BucketsCorsUpdateRequestRulesItemAllowedHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedHeadersList>;
+export const BucketsCorsUpdateRequestRulesItemAllowedHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedHeadersList>;
 
 export interface BucketsCorsUpdateRequestRulesItemAllowed {
   /** Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser. */
@@ -3296,9 +3260,8 @@ export const BucketsCorsUpdateRequestRulesItemAllowed = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowed>;
 
 export type BucketsCorsUpdateRequestRulesItemExposeHeadersList = Array<string>;
-export const BucketsCorsUpdateRequestRulesItemExposeHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsCorsUpdateRequestRulesItemExposeHeadersList>;
+export const BucketsCorsUpdateRequestRulesItemExposeHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsUpdateRequestRulesItemExposeHeadersList>;
 
 export interface BucketsCorsUpdateRequestRulesItem {
   /** Object specifying allowed origins, methods and headers for this CORS rule. */
@@ -3362,9 +3325,7 @@ export const PutBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutBucketCorsRequest" }) as any as S.Schema<PutBucketCorsRequest>;
 
 export type PutBucketCorsResponse = unknown;
-export const PutBucketCorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutBucketCorsResponse" }) as any as S.Schema<PutBucketCorsResponse>;
+export const PutBucketCorsResponse = DeleteBucketResponse as any as S.Schema<PutBucketCorsResponse>;
 
 export type BucketsDomainsManagedUpdateRequestCfR2Jurisdiction =
   | "default"
@@ -3413,15 +3374,8 @@ export interface PutBucketDomainManagedResponse {
   /** Whether this bucket is publicly accessible at the r2.dev domain. */
   enabled: boolean;
 }
-export const PutBucketDomainManagedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketId: S.String,
-    domain: S.String,
-    enabled: S.Boolean,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutBucketDomainManagedResponse",
-}) as any as S.Schema<PutBucketDomainManagedResponse>;
+export const PutBucketDomainManagedResponse =
+  ListBucketDomainManagedsResponse as any as S.Schema<PutBucketDomainManagedResponse>;
 
 export type BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
   | "PutObject"
@@ -3507,11 +3461,8 @@ export const PutBucketEventNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutBucketEventNotificationRequest>;
 
 export type PutBucketEventNotificationResponse = unknown;
-export const PutBucketEventNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutBucketEventNotificationResponse",
-}) as any as S.Schema<PutBucketEventNotificationResponse>;
+export const PutBucketEventNotificationResponse =
+  DeleteBucketEventNotificationResponse as any as S.Schema<PutBucketEventNotificationResponse>;
 
 export type BucketsLifecycleUpdateRequestRulesItemConditions =
   BucketsLifecycleGetResponseRulesItemConditions;
@@ -3780,11 +3731,8 @@ export const PutBucketLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutBucketLifecycleRequest>;
 
 export type PutBucketLifecycleResponse = unknown;
-export const PutBucketLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutBucketLifecycleResponse",
-}) as any as S.Schema<PutBucketLifecycleResponse>;
+export const PutBucketLifecycleResponse =
+  DeleteBucketEventNotificationResponse as any as S.Schema<PutBucketLifecycleResponse>;
 
 export type BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType = "Age";
 export const BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType = S.String;
@@ -3910,9 +3858,7 @@ export const PutBucketLockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutBucketLockRequest" }) as any as S.Schema<PutBucketLockRequest>;
 
 export type PutBucketLockResponse = unknown;
-export const PutBucketLockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutBucketLockResponse" }) as any as S.Schema<PutBucketLockResponse>;
+export const PutBucketLockResponse = DeleteBucketResponse as any as S.Schema<PutBucketLockResponse>;
 
 export type BucketsSippyUpdateRequestDestinationProvider = "r2";
 export const BucketsSippyUpdateRequestDestinationProvider = S.String;
@@ -4175,11 +4121,8 @@ export const ResumeSuperSlurperJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeSuperSlurperJobRequest>;
 
 export type ResumeSuperSlurperJobResponse = string;
-export const ResumeSuperSlurperJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "ResumeSuperSlurperJobResponse",
-}) as any as S.Schema<ResumeSuperSlurperJobResponse>;
+export const ResumeSuperSlurperJobResponse =
+  AbortAllSuperSlurperJobResponse as any as S.Schema<ResumeSuperSlurperJobResponse>;
 
 export type SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema =
   SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
@@ -4205,9 +4148,8 @@ export type SuperSlurperConnectivityPrecheckSourceRequestVendor = "s3" | "gcs" |
 export const SuperSlurperConnectivityPrecheckSourceRequestVendor = S.String;
 
 export type SuperSlurperConnectivityPrecheckSourceRequestKeysList = Array<string>;
-export const SuperSlurperConnectivityPrecheckSourceRequestKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestKeysList>;
+export const SuperSlurperConnectivityPrecheckSourceRequestKeysList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestKeysList>;
 
 export type SuperSlurperConnectivityPrecheckSourceRequestJurisdiction =
   | "default"
@@ -4329,9 +4271,8 @@ export const TargetSuperSlurperConnectivityPrecheckResponse = /*@__PURE__*/ S.su
 }) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckResponse>;
 
 export type BucketsDomainsCustomUpdateRequestCiphersList = Array<string>;
-export const BucketsDomainsCustomUpdateRequestCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsDomainsCustomUpdateRequestCiphersList>;
+export const BucketsDomainsCustomUpdateRequestCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomUpdateRequestCiphersList>;
 
 export type BucketsDomainsCustomUpdateRequestMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
 export const BucketsDomainsCustomUpdateRequestMinTLS = S.String;
@@ -4384,9 +4325,8 @@ export const UpdateBucketDomainCustomRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBucketDomainCustomRequest>;
 
 export type BucketsDomainsCustomUpdateResponseCiphersList = Array<string>;
-export const BucketsDomainsCustomUpdateResponseCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketsDomainsCustomUpdateResponseCiphersList>;
+export const BucketsDomainsCustomUpdateResponseCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomUpdateResponseCiphersList>;
 
 export type BucketsDomainsCustomUpdateResponseMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
 export const BucketsDomainsCustomUpdateResponseMinTLS = S.String;

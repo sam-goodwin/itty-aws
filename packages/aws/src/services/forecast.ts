@@ -114,7 +114,7 @@ export type ForecastType = string;
 export type ForecastTypes = string[];
 export const ForecastTypes = /*@__PURE__*/ S.Array(S.String);
 export type ForecastDimensions = string[];
-export const ForecastDimensions = /*@__PURE__*/ S.Array(S.String);
+export const ForecastDimensions = ForecastTypes as any as S.Schema<ForecastDimensions>;
 export type Frequency = string;
 export type Arn = string;
 export type Value = string;
@@ -133,7 +133,7 @@ export const AttributeConfig = /*@__PURE__*/ S.suspend(() =>
 export type AttributeConfigs = AttributeConfig[];
 export const AttributeConfigs = /*@__PURE__*/ S.Array(AttributeConfig);
 export type Values = string[];
-export const Values = /*@__PURE__*/ S.Array(S.String);
+export const Values = ForecastTypes as any as S.Schema<Values>;
 export type Configuration = { [key: string]: string[] | undefined };
 export const Configuration = /*@__PURE__*/ S.Record(
   S.String,
@@ -348,7 +348,7 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatasetArn: S.optional(S.String) }),
 ).annotate({ identifier: "CreateDatasetResponse" }) as any as S.Schema<CreateDatasetResponse>;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = ForecastTypes as any as S.Schema<ArnList>;
 export interface CreateDatasetGroupRequest {
   DatasetGroupName: string;
   Domain: Domain;
@@ -603,10 +603,7 @@ export const AutoMLOverrideStrategy = S.String;
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type TrainingParameters = { [key: string]: string | undefined };
-export const TrainingParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TrainingParameters = Transformations as any as S.Schema<TrainingParameters>;
 export interface EvaluationParameters {
   NumberOfBacktestWindows?: number;
   BackTestWindowOffset?: number;
@@ -653,16 +650,11 @@ export interface IntegerParameterRange {
   MinValue: number;
   ScalingType?: ScalingType;
 }
-export const IntegerParameterRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    MaxValue: S.Number,
-    MinValue: S.Number,
-    ScalingType: S.optional(ScalingType),
-  }),
-).annotate({ identifier: "IntegerParameterRange" }) as any as S.Schema<IntegerParameterRange>;
+export const IntegerParameterRange =
+  ContinuousParameterRange as any as S.Schema<IntegerParameterRange>;
 export type IntegerParameterRanges = IntegerParameterRange[];
-export const IntegerParameterRanges = /*@__PURE__*/ S.Array(IntegerParameterRange);
+export const IntegerParameterRanges =
+  ContinuousParameterRanges as any as S.Schema<IntegerParameterRanges>;
 export interface ParameterRanges {
   CategoricalParameterRanges?: CategoricalParameterRange[];
   ContinuousParameterRanges?: ContinuousParameterRange[];
@@ -703,10 +695,8 @@ export type FeaturizationMethodName = "filling" | (string & {});
 export const FeaturizationMethodName = S.String;
 
 export type FeaturizationMethodParameters = { [key: string]: string | undefined };
-export const FeaturizationMethodParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const FeaturizationMethodParameters =
+  Transformations as any as S.Schema<FeaturizationMethodParameters>;
 export interface FeaturizationMethod {
   FeaturizationMethodName: FeaturizationMethodName;
   FeaturizationMethodParameters?: { [key: string]: string | undefined };
@@ -910,7 +900,8 @@ export const CreateWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateWhatIfForecastResponse",
 }) as any as S.Schema<CreateWhatIfForecastResponse>;
 export type WhatIfForecastArnListForExport = string[];
-export const WhatIfForecastArnListForExport = /*@__PURE__*/ S.Array(S.String);
+export const WhatIfForecastArnListForExport =
+  ForecastTypes as any as S.Schema<WhatIfForecastArnListForExport>;
 export interface CreateWhatIfForecastExportRequest {
   WhatIfForecastExportName: string;
   WhatIfForecastArns: string[];
@@ -960,9 +951,8 @@ export const DeleteDatasetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDatasetGroupRequest",
 }) as any as S.Schema<DeleteDatasetGroupRequest>;
 export interface DeleteDatasetGroupResponse {}
-export const DeleteDatasetGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatasetGroupResponse",
-}) as any as S.Schema<DeleteDatasetGroupResponse>;
+export const DeleteDatasetGroupResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteDatasetGroupResponse>;
 export interface DeleteDatasetImportJobRequest {
   DatasetImportJobArn: string;
 }
@@ -974,9 +964,8 @@ export const DeleteDatasetImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDatasetImportJobRequest",
 }) as any as S.Schema<DeleteDatasetImportJobRequest>;
 export interface DeleteDatasetImportJobResponse {}
-export const DeleteDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatasetImportJobResponse",
-}) as any as S.Schema<DeleteDatasetImportJobResponse>;
+export const DeleteDatasetImportJobResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteDatasetImportJobResponse>;
 export interface DeleteExplainabilityRequest {
   ExplainabilityArn: string;
 }
@@ -988,9 +977,8 @@ export const DeleteExplainabilityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteExplainabilityRequest",
 }) as any as S.Schema<DeleteExplainabilityRequest>;
 export interface DeleteExplainabilityResponse {}
-export const DeleteExplainabilityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteExplainabilityResponse",
-}) as any as S.Schema<DeleteExplainabilityResponse>;
+export const DeleteExplainabilityResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteExplainabilityResponse>;
 export interface DeleteExplainabilityExportRequest {
   ExplainabilityExportArn: string;
 }
@@ -1016,9 +1004,8 @@ export const DeleteForecastRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteForecastRequest" }) as any as S.Schema<DeleteForecastRequest>;
 export interface DeleteForecastResponse {}
-export const DeleteForecastResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteForecastResponse",
-}) as any as S.Schema<DeleteForecastResponse>;
+export const DeleteForecastResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteForecastResponse>;
 export interface DeleteForecastExportJobRequest {
   ForecastExportJobArn: string;
 }
@@ -1042,9 +1029,8 @@ export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMonitorRequest" }) as any as S.Schema<DeleteMonitorRequest>;
 export interface DeleteMonitorResponse {}
-export const DeleteMonitorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMonitorResponse",
-}) as any as S.Schema<DeleteMonitorResponse>;
+export const DeleteMonitorResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteMonitorResponse>;
 export interface DeletePredictorRequest {
   PredictorArn: string;
 }
@@ -1054,9 +1040,8 @@ export const DeletePredictorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePredictorRequest" }) as any as S.Schema<DeletePredictorRequest>;
 export interface DeletePredictorResponse {}
-export const DeletePredictorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePredictorResponse",
-}) as any as S.Schema<DeletePredictorResponse>;
+export const DeletePredictorResponse =
+  DeleteDatasetResponse as any as S.Schema<DeletePredictorResponse>;
 export interface DeletePredictorBacktestExportJobRequest {
   PredictorBacktestExportJobArn: string;
 }
@@ -1068,11 +1053,8 @@ export const DeletePredictorBacktestExportJobRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeletePredictorBacktestExportJobRequest",
 }) as any as S.Schema<DeletePredictorBacktestExportJobRequest>;
 export interface DeletePredictorBacktestExportJobResponse {}
-export const DeletePredictorBacktestExportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePredictorBacktestExportJobResponse",
-}) as any as S.Schema<DeletePredictorBacktestExportJobResponse>;
+export const DeletePredictorBacktestExportJobResponse =
+  DeleteExplainabilityExportResponse as any as S.Schema<DeletePredictorBacktestExportJobResponse>;
 export interface DeleteResourceTreeRequest {
   ResourceArn: string;
 }
@@ -1084,9 +1066,8 @@ export const DeleteResourceTreeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceTreeRequest",
 }) as any as S.Schema<DeleteResourceTreeRequest>;
 export interface DeleteResourceTreeResponse {}
-export const DeleteResourceTreeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceTreeResponse",
-}) as any as S.Schema<DeleteResourceTreeResponse>;
+export const DeleteResourceTreeResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteResourceTreeResponse>;
 export interface DeleteWhatIfAnalysisRequest {
   WhatIfAnalysisArn: string;
 }
@@ -1098,9 +1079,8 @@ export const DeleteWhatIfAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWhatIfAnalysisRequest",
 }) as any as S.Schema<DeleteWhatIfAnalysisRequest>;
 export interface DeleteWhatIfAnalysisResponse {}
-export const DeleteWhatIfAnalysisResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWhatIfAnalysisResponse",
-}) as any as S.Schema<DeleteWhatIfAnalysisResponse>;
+export const DeleteWhatIfAnalysisResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteWhatIfAnalysisResponse>;
 export interface DeleteWhatIfForecastRequest {
   WhatIfForecastArn: string;
 }
@@ -1112,9 +1092,8 @@ export const DeleteWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWhatIfForecastRequest",
 }) as any as S.Schema<DeleteWhatIfForecastRequest>;
 export interface DeleteWhatIfForecastResponse {}
-export const DeleteWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWhatIfForecastResponse",
-}) as any as S.Schema<DeleteWhatIfForecastResponse>;
+export const DeleteWhatIfForecastResponse =
+  DeleteDatasetResponse as any as S.Schema<DeleteWhatIfForecastResponse>;
 export interface DeleteWhatIfForecastExportRequest {
   WhatIfForecastExportArn: string;
 }
@@ -1126,11 +1105,8 @@ export const DeleteWhatIfForecastExportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWhatIfForecastExportRequest",
 }) as any as S.Schema<DeleteWhatIfForecastExportRequest>;
 export interface DeleteWhatIfForecastExportResponse {}
-export const DeleteWhatIfForecastExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWhatIfForecastExportResponse",
-}) as any as S.Schema<DeleteWhatIfForecastExportResponse>;
+export const DeleteWhatIfForecastExportResponse =
+  DeleteExplainabilityExportResponse as any as S.Schema<DeleteWhatIfForecastExportResponse>;
 export interface DescribeAutoPredictorRequest {
   PredictorArn: string;
 }
@@ -1801,7 +1777,7 @@ export const DescribeWhatIfForecastExportRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeWhatIfForecastExportRequest",
 }) as any as S.Schema<DescribeWhatIfForecastExportRequest>;
 export type LongArnList = string[];
-export const LongArnList = /*@__PURE__*/ S.Array(S.String);
+export const LongArnList = ForecastTypes as any as S.Schema<LongArnList>;
 export interface DescribeWhatIfForecastExportResponse {
   WhatIfForecastExportArn?: string;
   WhatIfForecastExportName?: string;
@@ -2642,9 +2618,8 @@ export const ResumeResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ResumeResourceRequest" }) as any as S.Schema<ResumeResourceRequest>;
 export interface ResumeResourceResponse {}
-export const ResumeResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeResourceResponse",
-}) as any as S.Schema<ResumeResourceResponse>;
+export const ResumeResourceResponse =
+  DeleteDatasetResponse as any as S.Schema<ResumeResourceResponse>;
 export interface StopResourceRequest {
   ResourceArn: string;
 }
@@ -2654,9 +2629,7 @@ export const StopResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopResourceRequest" }) as any as S.Schema<StopResourceRequest>;
 export interface StopResourceResponse {}
-export const StopResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopResourceResponse",
-}) as any as S.Schema<StopResourceResponse>;
+export const StopResourceResponse = DeleteDatasetResponse as any as S.Schema<StopResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -2667,9 +2640,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteDatasetResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = (string | redacted.Redacted<string>)[];
 export const TagKeys = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
@@ -2682,9 +2653,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteDatasetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDatasetGroupRequest {
   DatasetGroupArn: string;
   DatasetArns: string[];
@@ -2697,9 +2667,8 @@ export const UpdateDatasetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDatasetGroupRequest",
 }) as any as S.Schema<UpdateDatasetGroupRequest>;
 export interface UpdateDatasetGroupResponse {}
-export const UpdateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatasetGroupResponse",
-}) as any as S.Schema<UpdateDatasetGroupResponse>;
+export const UpdateDatasetGroupResponse =
+  DeleteDatasetResponse as any as S.Schema<UpdateDatasetGroupResponse>;
 export type CreateAutoPredictorError =
   | InvalidInputException
   | LimitExceededException

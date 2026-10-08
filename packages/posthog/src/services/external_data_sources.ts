@@ -1495,9 +1495,8 @@ export const CreateExternalDataSourcesCheckCdcPrerequisiteRequest = /*@__PURE__*
 
 /** Unmet prerequisites, empty when valid is true. */
 export type CdcPrerequisitesResponseErrorsList = Array<string>;
-export const CdcPrerequisitesResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CdcPrerequisitesResponseErrorsList>;
+export const CdcPrerequisitesResponseErrorsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CdcPrerequisitesResponseErrorsList>;
 
 export interface CdcPrerequisitesResponse {
   /** Whether the source satisfies every CDC prerequisite. */
@@ -1617,9 +1616,8 @@ export const CreateExternalDataSourcesCredentialAccountRequest = /*@__PURE__*/ S
 
 /** Short status chips for the account, e.g. ['Active'] or ['Pause']. */
 export type IntegrationAccountBadgesList = Array<string>;
-export const IntegrationAccountBadgesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationAccountBadgesList>;
+export const IntegrationAccountBadgesList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<IntegrationAccountBadgesList>;
 
 /** A selectable account/resource exposed by an OAuth integration, in the shared shape every ad platform produces (see ``IntegrationAccount`` in the data-imports common module). One serializer and one frontend selector work across all platforms. */
 export interface IntegrationAccount {
@@ -1726,9 +1724,8 @@ export const DraftStatusEnum = S.String;
 
 /** Names of the resources (tables) the validated manifest exposes. Empty unless draft_status is 'ok'. */
 export type DraftCustomManifestResponseResourceNamesList = Array<string>;
-export const DraftCustomManifestResponseResourceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DraftCustomManifestResponseResourceNamesList>;
+export const DraftCustomManifestResponseResourceNamesList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<DraftCustomManifestResponseResourceNamesList>;
 
 export interface DraftCustomManifestResponse {
   /** 'ok' = a manifest validated; 'invalid' = a manifest was drafted but never validated within the budget (see error; manifest_json holds the last attempt to fix by hand); 'model_error' = the model returned no usable JSON. * `ok` - ok * `invalid` - invalid * `model_error` - model_error */
@@ -1758,10 +1755,8 @@ export const DraftCustomManifestResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateExternalDataSourcesPreviewResourceRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExternalDataSourcesPreviewResourceRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequestPayloadMap>;
+export const CreateExternalDataSourcesPreviewResourceRequestPayloadMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequestPayloadMap>;
 
 export interface CreateExternalDataSourcesPreviewResourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1794,10 +1789,8 @@ export const CreateExternalDataSourcesPreviewResourceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequest>;
 
 export type SourcePreviewResponseRowsItemMap = { [key: string]: unknown | undefined };
-export const SourcePreviewResponseRowsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SourcePreviewResponseRowsItemMap>;
+export const SourcePreviewResponseRowsItemMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<SourcePreviewResponseRowsItemMap>;
 
 /** Up to `limit` sample rows, after data_selector extraction -- the raw records the sync would ingest. */
 export type SourcePreviewResponseRowsList = Array<SourcePreviewResponseRowsItemMap>;
@@ -1846,9 +1839,7 @@ export const SourcePreviewResponse = /*@__PURE__*/ S.suspend(() =>
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList = Array<string>;
 export const CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList>;
 
 export interface CreateExternalDataSourcesReloadRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1896,11 +1887,8 @@ export const CreateExternalDataSourcesReloadRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateExternalDataSourcesReloadRequest>;
 
 export interface CreateExternalDataSourcesReloadResponse {}
-export const CreateExternalDataSourcesReloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateExternalDataSourcesReloadResponse",
-}) as any as S.Schema<CreateExternalDataSourcesReloadResponse>;
+export const CreateExternalDataSourcesReloadResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<CreateExternalDataSourcesReloadResponse>;
 
 export interface CreateExternalDataSourcesRepairCdcRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1940,10 +1928,8 @@ export const CreateExternalDataSourcesRepairCdcResponse = /*@__PURE__*/ S.suspen
 export type CreateExternalDataSourcesSetupRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExternalDataSourcesSetupRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateExternalDataSourcesSetupRequestPayloadMap>;
+export const CreateExternalDataSourcesSetupRequestPayloadMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesSetupRequestPayloadMap>;
 
 export interface CreateExternalDataSourcesSetupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1980,9 +1966,8 @@ export const CreateExternalDataSourcesSetupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Webhook input names the user still needs to provide (e.g. a signing secret the external API did not return on create). Submit them via the update_webhook_inputs endpoint. */
 export type SourceSetupWebhookPendingInputsList = Array<string>;
-export const SourceSetupWebhookPendingInputsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceSetupWebhookPendingInputsList>;
+export const SourceSetupWebhookPendingInputsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceSetupWebhookPendingInputsList>;
 
 export interface SourceSetupWebhook {
   /** Whether the webhook was registered with the external service. When true, webhook-capable tables (including webhook-only ones) sync via real-time webhooks; when false, tables fall back to the polling sync defaults and webhook-only tables stay disabled. */
@@ -2019,9 +2004,7 @@ export const SourceSetupResponse = /*@__PURE__*/ S.suspend(() =>
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList = Array<string>;
 export const CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList>;
 
 export interface CreateExternalDataSourcesSourcePrefixRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2066,20 +2049,15 @@ export const CreateExternalDataSourcesSourcePrefixRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequest>;
 
 export interface CreateExternalDataSourcesSourcePrefixResponse {}
-export const CreateExternalDataSourcesSourcePrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateExternalDataSourcesSourcePrefixResponse",
-}) as any as S.Schema<CreateExternalDataSourcesSourcePrefixResponse>;
+export const CreateExternalDataSourcesSourcePrefixResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<CreateExternalDataSourcesSourcePrefixResponse>;
 
 /** Connection details as flat keys for the source_type -- the same fields the create flow accepts (host, port, password, API key, ...). Checked against a live connection before being stored. */
 export type CreateExternalDataSourcesStoreCredentialsRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExternalDataSourcesStoreCredentialsRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequestPayloadMap>;
+export const CreateExternalDataSourcesStoreCredentialsRequestPayloadMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequestPayloadMap>;
 
 export interface CreateExternalDataSourcesStoreCredentialsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2136,9 +2114,8 @@ export const ExternalDataSchemaSyncTypeEnum = S.String;
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList = Array<string>;
-export const ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList>;
+export const ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList>;
 
 /** * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
 export type CdcTableModeEnum = "consolidated" | "cdc_only" | "both";
@@ -2146,9 +2123,8 @@ export const CdcTableModeEnum = S.String;
 
 /** Columns to sync. Null means sync all columns. */
 export type ExternalDataSourceBulkUpdateSchemaEnabledColumnsList = Array<string>;
-export const ExternalDataSourceBulkUpdateSchemaEnabledColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSourceBulkUpdateSchemaEnabledColumnsList>;
+export const ExternalDataSourceBulkUpdateSchemaEnabledColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceBulkUpdateSchemaEnabledColumnsList>;
 
 export interface ExternalDataSourceBulkUpdateSchemaRowFiltersItem {
   column: string;
@@ -2261,10 +2237,8 @@ export const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest = /*@__PUR
 }) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest>;
 
 export type ExternalDataSchemaTableMap = { [key: string]: unknown | undefined };
-export const ExternalDataSchemaTableMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExternalDataSchemaTableMap>;
+export const ExternalDataSchemaTableMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<ExternalDataSchemaTableMap>;
 
 /** * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
 export type IncrementalFieldTypeEnum =
@@ -2293,9 +2267,8 @@ export const ExternalDataSchemaSyncFrequencyEnum = S.String;
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemaPrimaryKeyColumnsList = Array<string>;
-export const ExternalDataSchemaPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
+export const ExternalDataSchemaPrimaryKeyColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
 
 /** * `missing_primary_key` - Missing primary key * `duplicate_primary_key` - Duplicate primary key */
 export type IncrementalSyncBlockedReasonEnum = "missing_primary_key" | "duplicate_primary_key";
@@ -2303,9 +2276,8 @@ export const IncrementalSyncBlockedReasonEnum = S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemaEnabledColumnsList = Array<string>;
-export const ExternalDataSchemaEnabledColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
+export const ExternalDataSchemaEnabledColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
 
 export type ExternalDataSchemaRowFiltersItem = ExternalDataSourceBulkUpdateSchemaRowFiltersItem;
 export const ExternalDataSchemaRowFiltersItem = ExternalDataSourceBulkUpdateSchemaRowFiltersItem;
@@ -2313,9 +2285,8 @@ export const ExternalDataSchemaRowFiltersItem = ExternalDataSourceBulkUpdateSche
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList =
   Array<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
-export const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
-  ExternalDataSourceBulkUpdateSchemaRowFiltersItem,
-) as any as S.Schema<ExternalDataSchemaRowFiltersList>;
+export const ExternalDataSchemaRowFiltersList =
+  ExternalDataSourceBulkUpdateSchemaRowFiltersList as any as S.Schema<ExternalDataSchemaRowFiltersList>;
 
 export interface ExternalDataSchemaAvailableColumnsItem {
   name: string;
@@ -2339,9 +2310,8 @@ export const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
 
 export type ExternalDataSchemaSourceSupportedApiVersionsList = Array<string>;
-export const ExternalDataSchemaSourceSupportedApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
+export const ExternalDataSchemaSourceSupportedApiVersionsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
 
 /** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint -- `null` elsewhere -- so read-only views can render without fetching the full source and all its schemas. */
 export interface ExternalDataSchemaSource {
@@ -2538,9 +2508,7 @@ export const SourceConnectLink = /*@__PURE__*/ S.suspend(() =>
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList = Array<string>;
 export const ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesCreateWebhookCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2589,9 +2557,8 @@ export const ExternalDataSourcesCreateWebhookCreateRequest = /*@__PURE__*/ S.sus
 
 /** Inputs the external service needs before delivery works. Submit via update_webhook_inputs. */
 export type CreateWebhookResponsePendingInputsList = Array<string>;
-export const CreateWebhookResponsePendingInputsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookResponsePendingInputsList>;
+export const CreateWebhookResponsePendingInputsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CreateWebhookResponsePendingInputsList>;
 
 export interface CreateWebhookResponse {
   /** Whether the webhook was created and registered with the source. */
@@ -2603,21 +2570,12 @@ export interface CreateWebhookResponse {
   /** Inputs the external service needs before delivery works. Submit via update_webhook_inputs. */
   pending_inputs: CreateWebhookResponsePendingInputsList;
 }
-export const CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    webhook_url: S.NullOr(S.String),
-    error: S.NullOr(S.String),
-    pending_inputs: CreateWebhookResponsePendingInputsList,
-  }),
-).annotate({ identifier: "CreateWebhookResponse" }) as any as S.Schema<CreateWebhookResponse>;
+export const CreateWebhookResponse = SourceSetupWebhook as any as S.Schema<CreateWebhookResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList = Array<string>;
 export const ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesDeleteWebhookCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2702,18 +2660,13 @@ export const ExternalDataSourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataSourcesDestroyRequest>;
 
 export interface ExternalDataSourcesDestroyResponse {}
-export const ExternalDataSourcesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExternalDataSourcesDestroyResponse",
-}) as any as S.Schema<ExternalDataSourcesDestroyResponse>;
+export const ExternalDataSourcesDestroyResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesDestroyResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList = Array<string>;
 export const ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesDisableCdcCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2761,18 +2714,13 @@ export const ExternalDataSourcesDisableCdcCreateRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequest>;
 
 export interface ExternalDataSourcesDisableCdcCreateResponse {}
-export const ExternalDataSourcesDisableCdcCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExternalDataSourcesDisableCdcCreateResponse",
-}) as any as S.Schema<ExternalDataSourcesDisableCdcCreateResponse>;
+export const ExternalDataSourcesDisableCdcCreateResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesDisableCdcCreateResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList = Array<string>;
 export const ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesEnableCdcCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2836,9 +2784,7 @@ export const CdcEnableResponse = /*@__PURE__*/ S.suspend(() =>
 export type ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
 export const ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesRefreshSchemasCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2886,11 +2832,8 @@ export const ExternalDataSourcesRefreshSchemasCreateRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequest>;
 
 export interface ExternalDataSourcesRefreshSchemasCreateResponse {}
-export const ExternalDataSourcesRefreshSchemasCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExternalDataSourcesRefreshSchemasCreateResponse",
-}) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateResponse>;
+export const ExternalDataSourcesRefreshSchemasCreateResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateResponse>;
 
 export interface ExternalDataSourcesResumeCdcCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2928,9 +2871,7 @@ export const ExternalDataSourcesResumeCdcCreateResponse = /*@__PURE__*/ S.suspen
 export type ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
 export const ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesUpdateCdcSettingsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2978,19 +2919,14 @@ export const ExternalDataSourcesUpdateCdcSettingsCreateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequest>;
 
 export interface ExternalDataSourcesUpdateCdcSettingsCreateResponse {}
-export const ExternalDataSourcesUpdateCdcSettingsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExternalDataSourcesUpdateCdcSettingsCreateResponse",
-}) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateResponse>;
+export const ExternalDataSourcesUpdateCdcSettingsCreateResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateResponse>;
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
 export const ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList>;
 
 export interface ExternalDataSourcesUpdateWebhookInputsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3072,9 +3008,8 @@ export const GetExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList = Array<string>;
-export const ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList>;
+export const ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList>;
 
 /** * `duckdb` - duckdb * `postgres` - postgres * `mysql` - mysql * `snowflake` - snowflake * `redshift` - redshift * `clickhouse` - clickhouse * `motherduck` - motherduck * `trino` - trino */
 export type EngineEnum =
@@ -3091,16 +3026,13 @@ export const EngineEnum = S.String;
 export type ExternalDataSourceSerializersOutputSchemasItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ExternalDataSourceSerializersOutputSchemasItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExternalDataSourceSerializersOutputSchemasItemMap>;
+export const ExternalDataSourceSerializersOutputSchemasItemMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<ExternalDataSourceSerializersOutputSchemasItemMap>;
 
 export type ExternalDataSourceSerializersOutputSchemasList =
   Array<ExternalDataSourceSerializersOutputSchemasItemMap>;
-export const ExternalDataSourceSerializersOutputSchemasList = /*@__PURE__*/ S.Array(
-  ExternalDataSourceSerializersOutputSchemasItemMap,
-) as any as S.Schema<ExternalDataSourceSerializersOutputSchemasList>;
+export const ExternalDataSourceSerializersOutputSchemasList =
+  SourcePreviewResponseRowsList as any as S.Schema<ExternalDataSourceSerializersOutputSchemasList>;
 
 export interface ExternalDataSourceRevenueAnalyticsConfig {
   enabled?: boolean;
@@ -3209,9 +3141,8 @@ export const ManagementModeEnum = S.String;
 
 /** Tables in the publication, when the source was reachable and a publication exists. */
 export type CdcStatusPublishedTablesList = Array<string>;
-export const CdcStatusPublishedTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CdcStatusPublishedTablesList>;
+export const CdcStatusPublishedTablesList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CdcStatusPublishedTablesList>;
 
 export interface CdcStatus {
   /** Whether CDC is enabled on this source. */
@@ -3276,9 +3207,8 @@ export const GetExternalDataSourcesDestinationRequest = /*@__PURE__*/ S.suspend(
 
 /** Destinations every table on this source syncs to. */
 export type SourceDestinationsDestinationIdsList = Array<string>;
-export const SourceDestinationsDestinationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceDestinationsDestinationIdsList>;
+export const SourceDestinationsDestinationIdsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDestinationsDestinationIdsList>;
 
 /** Response shape for a source's destination set. */
 export interface SourceDestinations {
@@ -3341,10 +3271,8 @@ export const GetExternalDataSourcesWebhookInfoRequest = /*@__PURE__*/ S.suspend(
 
 /** Delivery health reported by the pipeline: `state` and `tokens` counters. */
 export type WebhookHogFunctionStatusMap = { [key: string]: unknown | undefined };
-export const WebhookHogFunctionStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WebhookHogFunctionStatusMap>;
+export const WebhookHogFunctionStatusMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<WebhookHogFunctionStatusMap>;
 
 export interface WebhookHogFunction {
   /** ID of the webhook delivery hog function. */
@@ -3412,9 +3340,8 @@ export const WebhookInfoResponseInputsMap = /*@__PURE__*/ S.Record(
 
 /** Events the external webhook is subscribed to. */
 export type WebhookExternalStatusEnabledEventsList = Array<string>;
-export const WebhookExternalStatusEnabledEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhookExternalStatusEnabledEventsList>;
+export const WebhookExternalStatusEnabledEventsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookExternalStatusEnabledEventsList>;
 
 export interface WebhookExternalStatus {
   /** Whether the webhook exists on the external service. */
@@ -3449,15 +3376,13 @@ export const WebhookExternalStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Desired provider events not yet on the webhook (manual setup, or created before a new table). */
 export type WebhookInfoResponseMissingEventsList = Array<string>;
-export const WebhookInfoResponseMissingEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhookInfoResponseMissingEventsList>;
+export const WebhookInfoResponseMissingEventsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookInfoResponseMissingEventsList>;
 
 /** Required webhook field names with no value yet. Deliveries are dropped while any is missing. */
 export type WebhookInfoResponseMissingInputsList = Array<string>;
-export const WebhookInfoResponseMissingInputsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhookInfoResponseMissingInputsList>;
+export const WebhookInfoResponseMissingInputsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookInfoResponseMissingInputsList>;
 
 export interface WebhookInfoResponse {
   /** Whether the source type supports webhooks at all. When false, the other fields are absent. */
@@ -3629,9 +3554,8 @@ export const SourceFieldOauthAccountSelectConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the sibling fields whose values the account listing needs. The form sends exactly these, and the listing endpoint accepts exactly these. */
 export type SourceFieldCredentialAccountSelectConfigCredentialFieldsList = Array<string>;
-export const SourceFieldCredentialAccountSelectConfigCredentialFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceFieldCredentialAccountSelectConfigCredentialFieldsList>;
+export const SourceFieldCredentialAccountSelectConfigCredentialFieldsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceFieldCredentialAccountSelectConfigCredentialFieldsList>;
 
 /** Account picker for a source whose credentials are typed into the form, not held by an `Integration` row. Same `IntegrationAccount` shape and same picker as `oauth-account-select`; only where the credentials come from differs. `credentialFields` is the security boundary. The listing endpoint accepts those field names and no others, so the picker cannot be used to push arbitrary connection details into a source's client. */
 export interface SourceFieldCredentialAccountSelectConfig {
@@ -3659,9 +3583,8 @@ export const SourceFieldCredentialAccountSelectConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SourceFieldCredentialAccountSelectConfig>;
 
 export type SourceFieldFileUploadJsonFormatConfigKeysCase1List = Array<string>;
-export const SourceFieldFileUploadJsonFormatConfigKeysCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceFieldFileUploadJsonFormatConfigKeysCase1List>;
+export const SourceFieldFileUploadJsonFormatConfigKeysCase1List =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceFieldFileUploadJsonFormatConfigKeysCase1List>;
 
 export type SourceFieldFileUploadJsonFormatConfigKeys =
   | string
@@ -3836,9 +3759,8 @@ export const SourceConfigResponseFieldsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SourceConfigResponseFieldsList>;
 
 export type SourceConfigResponseKeywordsList = Array<string>;
-export const SourceConfigResponseKeywordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceConfigResponseKeywordsList>;
+export const SourceConfigResponseKeywordsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceConfigResponseKeywordsList>;
 
 export type ReleaseStatus = "alpha" | "beta" | "ga";
 export const ReleaseStatus = S.String;
@@ -3878,9 +3800,8 @@ export const SourceConfigResponseWebhookFieldsList = /*@__PURE__*/ S.Array(
 
 /** Vendor API version labels this source supports. */
 export type SourceConfigResponseVersionsList = Array<string>;
-export const SourceConfigResponseVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceConfigResponseVersionsList>;
+export const SourceConfigResponseVersionsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceConfigResponseVersionsList>;
 
 export interface SourceVersionDeprecation {
   version: string;
@@ -3900,19 +3821,16 @@ export const SourceConfigResponseDeprecatedVersionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SourceConfigResponseDeprecatedVersionsList>;
 
 export type SourceDocumentedTableSyncMethodsList = Array<string>;
-export const SourceDocumentedTableSyncMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceDocumentedTableSyncMethodsList>;
+export const SourceDocumentedTableSyncMethodsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTableSyncMethodsList>;
 
 export type SourceDocumentedTableIncrementalFieldsList = Array<string>;
-export const SourceDocumentedTableIncrementalFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceDocumentedTableIncrementalFieldsList>;
+export const SourceDocumentedTableIncrementalFieldsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTableIncrementalFieldsList>;
 
 export type SourceDocumentedTablePrimaryKeysList = Array<string>;
-export const SourceDocumentedTablePrimaryKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceDocumentedTablePrimaryKeysList>;
+export const SourceDocumentedTablePrimaryKeysList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTablePrimaryKeysList>;
 
 export interface SourceDocumentedTable {
   name: string;
@@ -4186,9 +4104,8 @@ export const ListExternalDataSourcesDirectConnectionOptionsResponse = /*@__PURE_
 }) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsResponse>;
 
 export type ListExternalDataSourcesJobsRequestSchemasList = Array<string>;
-export const ListExternalDataSourcesJobsRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListExternalDataSourcesJobsRequestSchemasList>;
+export const ListExternalDataSourcesJobsRequestSchemasList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ListExternalDataSourcesJobsRequestSchemasList>;
 
 export interface ListExternalDataSourcesJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4251,9 +4168,8 @@ export const SimpleExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Destinations this run delivered to, snapshotted when it started. Empty on runs that predate destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts the rows read from the source once, not once per destination. */
 export type ExternalDataJobSerializersDestinationIdsList = Array<string>;
-export const ExternalDataJobSerializersDestinationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalDataJobSerializersDestinationIdsList>;
+export const ExternalDataJobSerializersDestinationIdsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataJobSerializersDestinationIdsList>;
 
 export interface ExternalDataJobSerializers {
   id: string;
@@ -4343,9 +4259,8 @@ export const ListExternalDataSourcesStoredCredentialsResponse = /*@__PURE__*/ S.
 
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList = Array<string>;
-export const UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList>;
+export const UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList>;
 
 export interface UpdateExternalDataSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4395,9 +4310,7 @@ export const UpdateExternalDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 /** Destinations to sync to. On a table, null clears the override so the table follows its source again. */
 export type UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList = Array<string>;
 export const UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList>;
 
 export interface UpdateExternalDataSourcesDestinationsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4428,9 +4341,7 @@ export const UpdateExternalDataSourcesDestinationsPartialRequest = /*@__PURE__*/
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList = Array<string>;
 export const UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList>;
 
 export interface UpdateExternalDataSourcesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4481,9 +4392,7 @@ export const UpdateExternalDataSourcesPartialRequest = /*@__PURE__*/ S.suspend((
 export type UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList =
   Array<string>;
 export const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList>;
 
 export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4535,9 +4444,7 @@ export const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest =
 
 export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse {}
 export const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse",
-  }) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse>;
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse>;
 
 export type CreateExternalDataSourceError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create, Read, Update and Delete External data Sources. */

@@ -197,9 +197,8 @@ export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItem =
 /** Price per [Location](#tag/locations). */
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList =
   Array<GetLoadBalancerTypeResponseLoadBalancerTypePricesItem>;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList = /*@__PURE__*/ S.Array(
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesItem,
-) as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList>;
+export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList =
+  GetLoadBalancerTypeResponseLoadBalancerTypePricesList as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList>;
 
 export interface ListLoadBalancerTypesResponseLoadBalancerTypesItem {
   /** ID of the Load Balancer type. */
@@ -223,22 +222,8 @@ export interface ListLoadBalancerTypesResponseLoadBalancerTypesItem {
   /** Price per [Location](#tag/locations). */
   prices: ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList;
 }
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    description: S.String,
-    max_connections: S.Number,
-    max_services: S.Number,
-    max_targets: S.Number,
-    max_assigned_certificates: S.Number,
-    deprecated: S.NullOr(S.String),
-    deprecation: S.NullOr(GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation),
-    prices: ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList,
-  }),
-).annotate({
-  identifier: "ListLoadBalancerTypesResponseLoadBalancerTypesItem",
-}) as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesItem>;
+export const ListLoadBalancerTypesResponseLoadBalancerTypesItem =
+  GetLoadBalancerTypeResponseLoadBalancerType as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesItem>;
 
 export type ListLoadBalancerTypesResponseLoadBalancerTypesList =
   Array<ListLoadBalancerTypesResponseLoadBalancerTypesItem>;

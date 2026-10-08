@@ -291,17 +291,8 @@ export interface CustomizedLoadMetricSpecification {
   Statistic: MetricStatistic;
   Unit?: string;
 }
-export const CustomizedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MetricName: S.String,
-    Namespace: S.String,
-    Dimensions: S.optional(MetricDimensions),
-    Statistic: MetricStatistic,
-    Unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomizedLoadMetricSpecification",
-}) as any as S.Schema<CustomizedLoadMetricSpecification>;
+export const CustomizedLoadMetricSpecification =
+  CustomizedScalingMetricSpecification as any as S.Schema<CustomizedLoadMetricSpecification>;
 export type ScheduledActionBufferTime = number;
 export type PredictiveScalingMaxCapacityBehavior =
   | "SetForecastCapacityToMaxCapacity"
@@ -466,7 +457,7 @@ export const DescribeScalingPlanResourcesResponse = /*@__PURE__*/ S.suspend(() =
   identifier: "DescribeScalingPlanResourcesResponse",
 }) as any as S.Schema<DescribeScalingPlanResourcesResponse>;
 export type ScalingPlanNames = string[];
-export const ScalingPlanNames = /*@__PURE__*/ S.Array(S.String);
+export const ScalingPlanNames = TagValues as any as S.Schema<ScalingPlanNames>;
 export type ApplicationSources = ApplicationSource[];
 export const ApplicationSources = /*@__PURE__*/ S.Array(ApplicationSource);
 export interface DescribeScalingPlansRequest {
@@ -599,9 +590,8 @@ export const UpdateScalingPlanRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateScalingPlanRequest" }) as any as S.Schema<UpdateScalingPlanRequest>;
 export interface UpdateScalingPlanResponse {}
-export const UpdateScalingPlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateScalingPlanResponse",
-}) as any as S.Schema<UpdateScalingPlanResponse>;
+export const UpdateScalingPlanResponse =
+  DeleteScalingPlanResponse as any as S.Schema<UpdateScalingPlanResponse>;
 export type ErrorMessage = string;
 export type CreateScalingPlanError =
   | ConcurrentUpdateException

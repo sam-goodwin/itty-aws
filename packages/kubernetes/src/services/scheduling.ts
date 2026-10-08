@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -454,14 +452,8 @@ export interface IoK8sApiSchedulingV1alpha3DisruptionMode {
   /** single specifies that children can be disrupted independently from each other. */
   single?: unknown;
 }
-export const IoK8sApiSchedulingV1alpha3DisruptionMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    all: S.optional(S.Unknown),
-    single: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1alpha3DisruptionMode",
-}) as any as S.Schema<IoK8sApiSchedulingV1alpha3DisruptionMode>;
+export const IoK8sApiSchedulingV1alpha3DisruptionMode =
+  IoK8sApiSchedulingV1alpha3CompositeDisruptionMode as any as S.Schema<IoK8sApiSchedulingV1alpha3DisruptionMode>;
 
 /** PodGroupResourceClaim references exactly one ResourceClaim, either directly or by naming a ResourceClaimTemplate which is then turned into a ResourceClaim for the PodGroup. It adds a name to it that uniquely identifies the ResourceClaim inside the PodGroup. Pods that need access to the ResourceClaim define a matching reference in its own Spec.ResourceClaims. The Pod's claim must match all fields of the PodGroup's claim exactly. */
 export interface IoK8sApiSchedulingV1alpha3PodGroupResourceClaim {
@@ -493,9 +485,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList = /*@__PUR
 export type IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
 export const IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1alpha3TopologyConstraint,
-  ) as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList>;
+  IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList>;
 
 /** PodGroupSchedulingConstraints defines scheduling constraints (e.g. topology) for a PodGroup. */
 export interface IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraints {
@@ -706,9 +696,8 @@ export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGrou
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
-export const IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList = /*@__PURE__*/ S.Array(
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaim,
-) as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList>;
+export const IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList =
+  IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList>;
 
 /** PodGroupTemplate represents a template for a set of pods with a scheduling policy. */
 export interface IoK8sApiSchedulingV1alpha3PodGroupTemplate {
@@ -927,9 +916,8 @@ export const IoK8sApiSchedulingV1beta1PodGroupResourceClaim =
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
-export const IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList = /*@__PURE__*/ S.Array(
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaim,
-) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList>;
+export const IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList =
+  IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList>;
 
 /** TopologyConstraint defines a topology constraint for a PodGroup. */
 export type IoK8sApiSchedulingV1beta1TopologyConstraint =
@@ -941,22 +929,15 @@ export const IoK8sApiSchedulingV1beta1TopologyConstraint =
 export type IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
 export const IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1alpha3TopologyConstraint,
-  ) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList>;
+  IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList>;
 
 /** PodGroupSchedulingConstraints defines scheduling constraints (e.g. topology) for a PodGroup. */
 export interface IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints {
   /** topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future. */
   topology?: IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topology: S.optional(IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList),
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints",
-}) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints>;
+export const IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints =
+  IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraints as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints>;
 
 /** GangSchedulingPolicy defines the parameters for gang scheduling. */
 export type IoK8sApiSchedulingV1beta1GangSchedulingPolicy =
@@ -997,28 +978,14 @@ export interface IoK8sApiSchedulingV1beta1PodGroupSpec {
   /** workloadRef references an optional PodGroup template within the Workload object that was used to create the PodGroup. This field is immutable. */
   workloadRef?: IoK8sApiSchedulingV1alpha3WorkloadReference;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disruptionMode: S.optional(IoK8sApiSchedulingV1alpha3DisruptionMode),
-    parentCompositePodGroupName: S.optional(S.String),
-    preemptionPolicy: S.optional(S.String),
-    priority: S.optional(S.Number),
-    priorityClassName: S.optional(S.String),
-    resourceClaims: S.optional(IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList),
-    schedulingConstraints: S.optional(IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints),
-    schedulingPolicy: IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy,
-    workloadRef: S.optional(IoK8sApiSchedulingV1alpha3WorkloadReference),
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1beta1PodGroupSpec",
-}) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSpec>;
+export const IoK8sApiSchedulingV1beta1PodGroupSpec =
+  IoK8sApiSchedulingV1alpha3PodGroupSpec as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSpec>;
 
 /** conditions represent the latest observations of the PodGroup's state. Known condition types: - "PodGroupInitiallyScheduled": Indicates whether the scheduling requirement has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently evicted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the PodGroup is about to be terminated due to disruption such as preemption. Known reasons for the PodGroupInitiallyScheduled condition: - "Scheduled": All required pods in the PodGroup have been successfully scheduled. - "Unschedulable": The PodGroup cannot be scheduled due to resource constraints, affinity/anti-affinity rules, or insufficient capacity for the gang. - "SchedulerError": The PodGroup cannot be scheduled due to some internal error that happened during scheduling, for example due to nodeAffinity parsing errors. - "PodGroupError": The PodGroup cannot be scheduled due to an invalid group configuration detected during runtime validation (such as conflicting scheduler names, or priority/preemption policy conflicts). Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The PodGroup was preempted by the scheduler to make room for higher-priority CompositePodGroups, PodGroups or Pods. */
 export type IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList>;
+export const IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList =
+  IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList>;
 
 /** PodGroupResourceClaimStatus is stored in the PodGroupStatus for each PodGroupResourceClaim which references a ResourceClaimTemplate. It stores the generated name for the corresponding ResourceClaim. */
 export type IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus =
@@ -1030,9 +997,7 @@ export const IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus =
 export type IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus>;
 export const IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus,
-  ) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList>;
+  IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList>;
 
 /** PodGroupStatus represents information about the status of a pod group. */
 export interface IoK8sApiSchedulingV1beta1PodGroupStatus {
@@ -1041,16 +1006,8 @@ export interface IoK8sApiSchedulingV1beta1PodGroupStatus {
   /** resourceClaimStatuses is status of resource claims. */
   resourceClaimStatuses?: IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions: S.optional(IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList),
-    resourceClaimStatuses: S.optional(
-      IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList,
-    ),
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1beta1PodGroupStatus",
-}) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatus>;
+export const IoK8sApiSchedulingV1beta1PodGroupStatus =
+  IoK8sApiSchedulingV1alpha3PodGroupStatus as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatus>;
 
 export interface CreateSchedulingV1beta1NamespacedPodGroupRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1110,17 +1067,8 @@ export interface IoK8sApiSchedulingV1beta1PodGroup {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1beta1PodGroupStatus;
 }
-export const IoK8sApiSchedulingV1beta1PodGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: IoK8sApiSchedulingV1beta1PodGroupSpec,
-    status: S.optional(IoK8sApiSchedulingV1beta1PodGroupStatus),
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1beta1PodGroup",
-}) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroup>;
+export const IoK8sApiSchedulingV1beta1PodGroup =
+  IoK8sApiSchedulingV1alpha3PodGroup as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroup>;
 
 /** compositePodGroupTemplates is the list of templates for children CompositePodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList =
@@ -1139,9 +1087,8 @@ export const IoK8sApiSchedulingV1beta1CompositeDisruptionMode =
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
-export const IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList = /*@__PURE__*/ S.Array(
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaim,
-) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList>;
+export const IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList =
+  IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList>;
 
 /** PodGroupTemplate represents a template for a set of pods with a scheduling policy. */
 export interface IoK8sApiSchedulingV1beta1PodGroupTemplate {
@@ -1162,36 +1109,20 @@ export interface IoK8sApiSchedulingV1beta1PodGroupTemplate {
   /** schedulingPolicy defines the scheduling policy for this PodGroupTemplate. */
   schedulingPolicy: IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disruptionMode: S.optional(IoK8sApiSchedulingV1alpha3DisruptionMode),
-    name: S.String,
-    preemptionPolicy: S.optional(S.String),
-    priority: S.optional(S.Number),
-    priorityClassName: S.optional(S.String),
-    resourceClaims: S.optional(IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList),
-    schedulingConstraints: S.optional(IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints),
-    schedulingPolicy: IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy,
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1beta1PodGroupTemplate",
-}) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
+export const IoK8sApiSchedulingV1beta1PodGroupTemplate =
+  IoK8sApiSchedulingV1alpha3PodGroupTemplate as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
 
 /** podGroupTemplates is the list of templates for children PodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
 export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1beta1PodGroupTemplate,
-  ) as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList>;
+  IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList>;
 
 /** topology defines the topology constraints for the composite pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
 export const IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1alpha3TopologyConstraint,
-  ) as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList>;
+  IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList>;
 
 /** CompositePodGroupSchedulingConstraints defines scheduling constraints (e.g. topology) for a CompositePodGroup. */
 export interface IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints {
@@ -1199,15 +1130,7 @@ export interface IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints
   topology?: IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList;
 }
 export const IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topology: S.optional(
-        IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList,
-      ),
-    }),
-  ).annotate({
-    identifier: "IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints",
-  }) as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints>;
+  IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints>;
 
 /** CompositeGangSchedulingPolicy indicates that the groups belonging to the composite group should be scheduled using all-or-nothing semantics. */
 export type IoK8sApiSchedulingV1beta1CompositeGangSchedulingPolicy =
@@ -1281,22 +1204,14 @@ export interface IoK8sApiSchedulingV1beta1TypedLocalObjectReference {
   /** name is the name of resource being referenced. It must be a path segment name. */
   name: string;
 }
-export const IoK8sApiSchedulingV1beta1TypedLocalObjectReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiGroup: S.optional(S.String),
-    kind: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1beta1TypedLocalObjectReference",
-}) as any as S.Schema<IoK8sApiSchedulingV1beta1TypedLocalObjectReference>;
+export const IoK8sApiSchedulingV1beta1TypedLocalObjectReference =
+  IoK8sApiSchedulingV1alpha3TypedLocalObjectReference as any as S.Schema<IoK8sApiSchedulingV1beta1TypedLocalObjectReference>;
 
 /** podGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
-export const IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList = /*@__PURE__*/ S.Array(
-  IoK8sApiSchedulingV1beta1PodGroupTemplate,
-) as any as S.Schema<IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList>;
+export const IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList =
+  IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList as any as S.Schema<IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList>;
 
 /** WorkloadSpec defines the desired state of a Workload. */
 export interface IoK8sApiSchedulingV1beta1WorkloadSpec {
@@ -2407,21 +2322,18 @@ export const GetSchedulingV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -2955,9 +2867,8 @@ export const ListSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.su
 /** Items is the list of PodGroups. */
 export type IoK8sApiSchedulingV1beta1PodGroupListItemsList =
   Array<IoK8sApiSchedulingV1beta1PodGroup>;
-export const IoK8sApiSchedulingV1beta1PodGroupListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiSchedulingV1beta1PodGroup,
-) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupListItemsList>;
+export const IoK8sApiSchedulingV1beta1PodGroupListItemsList =
+  IoK8sApiSchedulingV1alpha3PodGroupListItemsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupListItemsList>;
 
 /** PodGroupList contains a list of PodGroup resources. */
 export interface IoK8sApiSchedulingV1beta1PodGroupList {
@@ -2970,16 +2881,8 @@ export interface IoK8sApiSchedulingV1beta1PodGroupList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiSchedulingV1beta1PodGroupListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiSchedulingV1beta1PodGroupList",
-}) as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupList>;
+export const IoK8sApiSchedulingV1beta1PodGroupList =
+  IoK8sApiSchedulingV1alpha3PodGroupList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupList>;
 
 export interface ListSchedulingV1beta1NamespacedWorkloadRequest {
   /** object name and auth scope, such as for teams and projects */

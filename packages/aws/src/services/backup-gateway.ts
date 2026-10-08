@@ -168,9 +168,7 @@ export const DeleteGatewayInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGatewayOutput {
   GatewayArn?: string;
 }
-export const DeleteGatewayOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({ identifier: "DeleteGatewayOutput" }) as any as S.Schema<DeleteGatewayOutput>;
+export const DeleteGatewayOutput = CreateGatewayOutput as any as S.Schema<DeleteGatewayOutput>;
 export interface DeleteHypervisorInput {
   HypervisorArn: string;
 }
@@ -198,11 +196,8 @@ export const DisassociateGatewayFromServerInput = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateGatewayFromServerOutput {
   GatewayArn?: string;
 }
-export const DisassociateGatewayFromServerOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DisassociateGatewayFromServerOutput",
-}) as any as S.Schema<DisassociateGatewayFromServerOutput>;
+export const DisassociateGatewayFromServerOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<DisassociateGatewayFromServerOutput>;
 export interface GetBandwidthRateLimitScheduleInput {
   GatewayArn: string;
 }
@@ -618,11 +613,8 @@ export const PutBandwidthRateLimitScheduleInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutBandwidthRateLimitScheduleOutput {
   GatewayArn?: string;
 }
-export const PutBandwidthRateLimitScheduleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({
-  identifier: "PutBandwidthRateLimitScheduleOutput",
-}) as any as S.Schema<PutBandwidthRateLimitScheduleOutput>;
+export const PutBandwidthRateLimitScheduleOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<PutBandwidthRateLimitScheduleOutput>;
 export interface PutHypervisorPropertyMappingsInput {
   HypervisorArn: string;
   VmwareToAwsTagMappings: VmwareToAwsTagMapping[];
@@ -640,11 +632,8 @@ export const PutHypervisorPropertyMappingsInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutHypervisorPropertyMappingsOutput {
   HypervisorArn?: string;
 }
-export const PutHypervisorPropertyMappingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.optional(S.String) }),
-).annotate({
-  identifier: "PutHypervisorPropertyMappingsOutput",
-}) as any as S.Schema<PutHypervisorPropertyMappingsOutput>;
+export const PutHypervisorPropertyMappingsOutput =
+  ImportHypervisorConfigurationOutput as any as S.Schema<PutHypervisorPropertyMappingsOutput>;
 export interface PutMaintenanceStartTimeInput {
   GatewayArn: string;
   HourOfDay: number;
@@ -666,11 +655,8 @@ export const PutMaintenanceStartTimeInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutMaintenanceStartTimeOutput {
   GatewayArn?: string;
 }
-export const PutMaintenanceStartTimeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({
-  identifier: "PutMaintenanceStartTimeOutput",
-}) as any as S.Schema<PutMaintenanceStartTimeOutput>;
+export const PutMaintenanceStartTimeOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<PutMaintenanceStartTimeOutput>;
 export interface StartVirtualMachinesMetadataSyncInput {
   HypervisorArn: string;
 }
@@ -684,11 +670,8 @@ export const StartVirtualMachinesMetadataSyncInput = /*@__PURE__*/ S.suspend(() 
 export interface StartVirtualMachinesMetadataSyncOutput {
   HypervisorArn?: string;
 }
-export const StartVirtualMachinesMetadataSyncOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.optional(S.String) }),
-).annotate({
-  identifier: "StartVirtualMachinesMetadataSyncOutput",
-}) as any as S.Schema<StartVirtualMachinesMetadataSyncOutput>;
+export const StartVirtualMachinesMetadataSyncOutput =
+  ImportHypervisorConfigurationOutput as any as S.Schema<StartVirtualMachinesMetadataSyncOutput>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: Tag[];
@@ -740,9 +723,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
 export interface UntagResourceOutput {
   ResourceARN?: string;
 }
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.optional(S.String) }),
-).annotate({ identifier: "UntagResourceOutput" }) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateGatewayInformationInput {
   GatewayArn: string;
   GatewayDisplayName?: string;
@@ -757,11 +738,8 @@ export const UpdateGatewayInformationInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGatewayInformationOutput {
   GatewayArn?: string;
 }
-export const UpdateGatewayInformationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateGatewayInformationOutput",
-}) as any as S.Schema<UpdateGatewayInformationOutput>;
+export const UpdateGatewayInformationOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<UpdateGatewayInformationOutput>;
 export interface UpdateGatewaySoftwareNowInput {
   GatewayArn: string;
 }
@@ -775,11 +753,8 @@ export const UpdateGatewaySoftwareNowInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGatewaySoftwareNowOutput {
   GatewayArn?: string;
 }
-export const UpdateGatewaySoftwareNowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateGatewaySoftwareNowOutput",
-}) as any as S.Schema<UpdateGatewaySoftwareNowOutput>;
+export const UpdateGatewaySoftwareNowOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<UpdateGatewaySoftwareNowOutput>;
 export interface UpdateHypervisorInput {
   HypervisorArn: string;
   Host?: string;
@@ -801,9 +776,8 @@ export const UpdateHypervisorInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateHypervisorOutput {
   HypervisorArn?: string;
 }
-export const UpdateHypervisorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HypervisorArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateHypervisorOutput" }) as any as S.Schema<UpdateHypervisorOutput>;
+export const UpdateHypervisorOutput =
+  DeleteHypervisorOutput as any as S.Schema<UpdateHypervisorOutput>;
 export type AssociateGatewayToServerError = ConflictException | CommonErrors;
 /**
  * Associates a backup gateway with your server. After you complete the association process, you can back up and restore your VMs through the gateway.

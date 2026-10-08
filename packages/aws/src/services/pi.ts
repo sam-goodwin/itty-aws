@@ -162,7 +162,7 @@ export const DimensionGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DimensionGroup" }) as any as S.Schema<DimensionGroup>;
 export type AdditionalMetricsList = string[];
-export const AdditionalMetricsList = /*@__PURE__*/ S.Array(S.String);
+export const AdditionalMetricsList = SanitizedStringList as any as S.Schema<AdditionalMetricsList>;
 export type MetricQueryFilterMap = { [key: string]: string | undefined };
 export const MetricQueryFilterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -203,10 +203,7 @@ export const DescribeDimensionKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDimensionKeysRequest",
 }) as any as S.Schema<DescribeDimensionKeysRequest>;
 export type DimensionMap = { [key: string]: string | undefined };
-export const DimensionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DimensionMap = MetricQueryFilterMap as any as S.Schema<DimensionMap>;
 export interface ResponsePartitionKey {
   Dimensions: { [key: string]: string | undefined };
 }
@@ -257,7 +254,8 @@ export const DescribeDimensionKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDimensionKeysResponse",
 }) as any as S.Schema<DescribeDimensionKeysResponse>;
 export type RequestedDimensionList = string[];
-export const RequestedDimensionList = /*@__PURE__*/ S.Array(S.String);
+export const RequestedDimensionList =
+  SanitizedStringList as any as S.Schema<RequestedDimensionList>;
 export interface GetDimensionKeyDetailsRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -351,10 +349,7 @@ export type RecommendationList = Recommendation[];
 export const RecommendationList = /*@__PURE__*/ S.Array(Recommendation);
 export type DescriptiveString = string;
 export type DescriptiveMap = { [key: string]: string | undefined };
-export const DescriptiveMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DescriptiveMap = MetricQueryFilterMap as any as S.Schema<DescriptiveMap>;
 export interface PerformanceInsightsMetric {
   Metric?: string;
   DisplayName?: string;
@@ -575,7 +570,7 @@ export const GetResourceMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourceMetricsResponse",
 }) as any as S.Schema<GetResourceMetricsResponse>;
 export type DimensionsMetricList = string[];
-export const DimensionsMetricList = /*@__PURE__*/ S.Array(S.String);
+export const DimensionsMetricList = SanitizedStringList as any as S.Schema<DimensionsMetricList>;
 export type FineGrainedAction =
   | "DescribeDimensionKeys"
   | "GetDimensionKeyDetails"
@@ -644,7 +639,7 @@ export const ListAvailableResourceDimensionsResponse = /*@__PURE__*/ S.suspend((
   identifier: "ListAvailableResourceDimensionsResponse",
 }) as any as S.Schema<ListAvailableResourceDimensionsResponse>;
 export type MetricTypeList = string[];
-export const MetricTypeList = /*@__PURE__*/ S.Array(S.String);
+export const MetricTypeList = SanitizedStringList as any as S.Schema<MetricTypeList>;
 export interface ListAvailableResourceMetricsRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -691,7 +686,7 @@ export const ListAvailableResourceMetricsResponse = /*@__PURE__*/ S.suspend(() =
   identifier: "ListAvailableResourceMetricsResponse",
 }) as any as S.Schema<ListAvailableResourceMetricsResponse>;
 export type RecommendationIdList = string[];
-export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
+export const RecommendationIdList = SanitizedStringList as any as S.Schema<RecommendationIdList>;
 export interface ListPerformanceAnalysisReportRecommendationsRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -809,7 +804,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SanitizedStringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ServiceType: ServiceType;
   ResourceARN: string;
@@ -821,9 +816,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorString = string;
 export type CreatePerformanceAnalysisReportError =
   | InternalServiceError

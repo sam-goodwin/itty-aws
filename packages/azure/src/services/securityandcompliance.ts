@@ -72,11 +72,8 @@ export const DeletePrivateEndpointConnectionsCompRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeletePrivateEndpointConnectionsCompRequest>;
 
 export interface DeletePrivateEndpointConnectionsCompResponse {}
-export const DeletePrivateEndpointConnectionsCompResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionsCompResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionsCompResponse>;
+export const DeletePrivateEndpointConnectionsCompResponse =
+  DeletePrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<DeletePrivateEndpointConnectionsCompResponse>;
 
 export interface DeletePrivateEndpointConnectionsForEDMRequest {
   /** The subscription identifier. */
@@ -107,11 +104,8 @@ export const DeletePrivateEndpointConnectionsForEDMRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeletePrivateEndpointConnectionsForEDMRequest>;
 
 export interface DeletePrivateEndpointConnectionsForEDMResponse {}
-export const DeletePrivateEndpointConnectionsForEDMResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionsForEDMResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionsForEDMResponse>;
+export const DeletePrivateEndpointConnectionsForEDMResponse =
+  DeletePrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<DeletePrivateEndpointConnectionsForEDMResponse>;
 
 export interface DeletePrivateEndpointConnectionsForMIPPolicySyncRequest {
   /** The subscription identifier. */
@@ -177,11 +171,8 @@ export const DeletePrivateEndpointConnectionsForSCCPowershellRequest = /*@__PURE
 }) as any as S.Schema<DeletePrivateEndpointConnectionsForSCCPowershellRequest>;
 
 export interface DeletePrivateEndpointConnectionsForSCCPowershellResponse {}
-export const DeletePrivateEndpointConnectionsForSCCPowershellResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionsForSCCPowershellResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionsForSCCPowershellResponse>;
+export const DeletePrivateEndpointConnectionsForSCCPowershellResponse =
+  DeletePrivateEndpointConnectionsForMIPPolicySyncResponse as any as S.Schema<DeletePrivateEndpointConnectionsForSCCPowershellResponse>;
 
 export interface DeletePrivateEndpointConnectionsSecRequest {
   /** The subscription identifier. */
@@ -212,11 +203,8 @@ export const DeletePrivateEndpointConnectionsSecRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeletePrivateEndpointConnectionsSecRequest>;
 
 export interface DeletePrivateEndpointConnectionsSecResponse {}
-export const DeletePrivateEndpointConnectionsSecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionsSecResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionsSecResponse>;
+export const DeletePrivateEndpointConnectionsSecResponse =
+  DeletePrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<DeletePrivateEndpointConnectionsSecResponse>;
 
 export interface DeletePrivateLinkServicesForM365ComplianceCenterRequest {
   /** The subscription identifier. */
@@ -244,11 +232,8 @@ export const DeletePrivateLinkServicesForM365ComplianceCenterRequest = /*@__PURE
 }) as any as S.Schema<DeletePrivateLinkServicesForM365ComplianceCenterRequest>;
 
 export interface DeletePrivateLinkServicesForM365ComplianceCenterResponse {}
-export const DeletePrivateLinkServicesForM365ComplianceCenterResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateLinkServicesForM365ComplianceCenterResponse",
-}) as any as S.Schema<DeletePrivateLinkServicesForM365ComplianceCenterResponse>;
+export const DeletePrivateLinkServicesForM365ComplianceCenterResponse =
+  DeletePrivateEndpointConnectionsForMIPPolicySyncResponse as any as S.Schema<DeletePrivateLinkServicesForM365ComplianceCenterResponse>;
 
 export interface DeletePrivateLinkServicesForM365SecurityCenterRequest {
   /** The subscription identifier. */
@@ -276,11 +261,8 @@ export const DeletePrivateLinkServicesForM365SecurityCenterRequest = /*@__PURE__
 }) as any as S.Schema<DeletePrivateLinkServicesForM365SecurityCenterRequest>;
 
 export interface DeletePrivateLinkServicesForM365SecurityCenterResponse {}
-export const DeletePrivateLinkServicesForM365SecurityCenterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateLinkServicesForM365SecurityCenterResponse",
-}) as any as S.Schema<DeletePrivateLinkServicesForM365SecurityCenterResponse>;
+export const DeletePrivateLinkServicesForM365SecurityCenterResponse =
+  DeletePrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<DeletePrivateLinkServicesForM365SecurityCenterResponse>;
 
 export interface DeletePrivateLinkServicesForMIPPolicySyncRequest {
   /** The subscription identifier. */
@@ -308,11 +290,8 @@ export const DeletePrivateLinkServicesForMIPPolicySyncRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeletePrivateLinkServicesForMIPPolicySyncRequest>;
 
 export interface DeletePrivateLinkServicesForMIPPolicySyncResponse {}
-export const DeletePrivateLinkServicesForMIPPolicySyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateLinkServicesForMIPPolicySyncResponse",
-}) as any as S.Schema<DeletePrivateLinkServicesForMIPPolicySyncResponse>;
+export const DeletePrivateLinkServicesForMIPPolicySyncResponse =
+  DeletePrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<DeletePrivateLinkServicesForMIPPolicySyncResponse>;
 
 export interface DeletePrivateLinkServicesForO365ManagementActivityAPIRequest {
   /** The subscription identifier. */
@@ -372,11 +351,8 @@ export const DeletePrivateLinkServicesForSCCPowershellRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeletePrivateLinkServicesForSCCPowershellRequest>;
 
 export interface DeletePrivateLinkServicesForSCCPowershellResponse {}
-export const DeletePrivateLinkServicesForSCCPowershellResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateLinkServicesForSCCPowershellResponse",
-}) as any as S.Schema<DeletePrivateLinkServicesForSCCPowershellResponse>;
+export const DeletePrivateLinkServicesForSCCPowershellResponse =
+  DeletePrivateEndpointConnectionsAdtAPIResponse as any as S.Schema<DeletePrivateLinkServicesForSCCPowershellResponse>;
 
 export interface DeleteServiceRequest {
   /** The subscription identifier. */
@@ -1204,9 +1180,8 @@ export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -1917,21 +1892,18 @@ export const ServiceAuthenticationConfigurationInfo = /*@__PURE__*/ S.suspend(()
 
 /** The origins to be allowed via CORS. */
 export type ServiceCorsConfigurationInfoOriginsList = Array<string>;
-export const ServiceCorsConfigurationInfoOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCorsConfigurationInfoOriginsList>;
+export const ServiceCorsConfigurationInfoOriginsList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<ServiceCorsConfigurationInfoOriginsList>;
 
 /** The headers to be allowed via CORS. */
 export type ServiceCorsConfigurationInfoHeadersList = Array<string>;
-export const ServiceCorsConfigurationInfoHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCorsConfigurationInfoHeadersList>;
+export const ServiceCorsConfigurationInfoHeadersList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<ServiceCorsConfigurationInfoHeadersList>;
 
 /** The methods to be allowed via CORS. */
 export type ServiceCorsConfigurationInfoMethodsList = Array<string>;
-export const ServiceCorsConfigurationInfoMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCorsConfigurationInfoMethodsList>;
+export const ServiceCorsConfigurationInfoMethodsList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<ServiceCorsConfigurationInfoMethodsList>;
 
 /** The settings for the CORS configuration of the service instance. */
 export interface ServiceCorsConfigurationInfo {
@@ -2220,10 +2192,8 @@ export const GetPrivateLinkServicesForM365ComplianceCenterResponseKind = S.Strin
 export type GetPrivateLinkServicesForM365ComplianceCenterResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetPrivateLinkServicesForM365ComplianceCenterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterResponseTagsMap>;
+export const GetPrivateLinkServicesForM365ComplianceCenterResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetPrivateLinkServicesForM365ComplianceCenterResponseIdentityType =
@@ -2269,9 +2239,7 @@ export const GetPrivateLinkServicesForM365ComplianceCenterResponsePropertiesProv
 export type GetPrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const GetPrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type GetPrivateLinkServicesForM365ComplianceCenterResponsePropertiesPublicNetworkAccess =
@@ -2446,10 +2414,8 @@ export const GetPrivateLinkServicesForM365SecurityCenterResponseKind = S.String;
 export type GetPrivateLinkServicesForM365SecurityCenterResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetPrivateLinkServicesForM365SecurityCenterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponseTagsMap>;
+export const GetPrivateLinkServicesForM365SecurityCenterResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetPrivateLinkServicesForM365SecurityCenterResponseIdentityType =
@@ -2495,9 +2461,7 @@ export const GetPrivateLinkServicesForM365SecurityCenterResponsePropertiesProvis
 export type GetPrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const GetPrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type GetPrivateLinkServicesForM365SecurityCenterResponsePropertiesPublicNetworkAccess =
@@ -2668,10 +2632,8 @@ export const GetPrivateLinkServicesForMIPPolicySyncResponseKind = S.String;
 export type GetPrivateLinkServicesForMIPPolicySyncResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetPrivateLinkServicesForMIPPolicySyncResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponseTagsMap>;
+export const GetPrivateLinkServicesForMIPPolicySyncResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetPrivateLinkServicesForMIPPolicySyncResponseIdentityType = "SystemAssigned" | "None";
@@ -2713,9 +2675,7 @@ export const GetPrivateLinkServicesForMIPPolicySyncResponsePropertiesProvisionin
 export type GetPrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const GetPrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type GetPrivateLinkServicesForMIPPolicySyncResponsePropertiesPublicNetworkAccess =
@@ -2941,9 +2901,7 @@ export const GetPrivateLinkServicesForO365ManagementActivityAPIResponsePropertie
 export type GetPrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const GetPrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type GetPrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPublicNetworkAccess =
@@ -3115,10 +3073,8 @@ export const GetPrivateLinkServicesForSCCPowershellResponseKind = S.String;
 export type GetPrivateLinkServicesForSCCPowershellResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetPrivateLinkServicesForSCCPowershellResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponseTagsMap>;
+export const GetPrivateLinkServicesForSCCPowershellResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type GetPrivateLinkServicesForSCCPowershellResponseIdentityType = "SystemAssigned" | "None";
@@ -3160,9 +3116,7 @@ export const GetPrivateLinkServicesForSCCPowershellResponsePropertiesProvisionin
 export type GetPrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const GetPrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type GetPrivateLinkServicesForSCCPowershellResponsePropertiesPublicNetworkAccess =
@@ -3397,9 +3351,8 @@ export const ListPrivateEndpointConnectionsCompByServiceRequest = /*@__PURE__*/ 
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsCompByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
-export const ListPrivateEndpointConnectionsCompByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceResponseValueList>;
+export const ListPrivateEndpointConnectionsCompByServiceResponseValueList =
+  ListPrivateEndpointConnectionsAdtAPIByServiceResponseValueList as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsCompByServiceResponse {
   /** Array of private endpoint connections */
@@ -3407,14 +3360,8 @@ export interface ListPrivateEndpointConnectionsCompByServiceResponse {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ListPrivateEndpointConnectionsCompByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPrivateEndpointConnectionsCompByServiceResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrivateEndpointConnectionsCompByServiceResponse",
-}) as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceResponse>;
+export const ListPrivateEndpointConnectionsCompByServiceResponse =
+  ListPrivateEndpointConnectionsAdtAPIByServiceResponse as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceResponse>;
 
 export interface ListPrivateEndpointConnectionsForEDMByServiceRequest {
   /** The subscription identifier. */
@@ -3444,9 +3391,8 @@ export const ListPrivateEndpointConnectionsForEDMByServiceRequest = /*@__PURE__*
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsForEDMByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
-export const ListPrivateEndpointConnectionsForEDMByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<ListPrivateEndpointConnectionsForEDMByServiceResponseValueList>;
+export const ListPrivateEndpointConnectionsForEDMByServiceResponseValueList =
+  ListPrivateEndpointConnectionsAdtAPIByServiceResponseValueList as any as S.Schema<ListPrivateEndpointConnectionsForEDMByServiceResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsForEDMByServiceResponse {
   /** Array of private endpoint connections */
@@ -3454,14 +3400,8 @@ export interface ListPrivateEndpointConnectionsForEDMByServiceResponse {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ListPrivateEndpointConnectionsForEDMByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPrivateEndpointConnectionsForEDMByServiceResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrivateEndpointConnectionsForEDMByServiceResponse",
-}) as any as S.Schema<ListPrivateEndpointConnectionsForEDMByServiceResponse>;
+export const ListPrivateEndpointConnectionsForEDMByServiceResponse =
+  ListPrivateEndpointConnectionsAdtAPIByServiceResponse as any as S.Schema<ListPrivateEndpointConnectionsForEDMByServiceResponse>;
 
 export interface ListPrivateEndpointConnectionsForMIPPolicySyncByServiceRequest {
   /** The subscription identifier. */
@@ -3493,9 +3433,7 @@ export const ListPrivateEndpointConnectionsForMIPPolicySyncByServiceRequest =
 export type ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export const ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponseValueList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponseValueList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponse {
   /** Array of private endpoint connections */
@@ -3543,9 +3481,7 @@ export const ListPrivateEndpointConnectionsForSCCPowershellByServiceRequest =
 export type ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export const ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse {
   /** Array of private endpoint connections */
@@ -3554,14 +3490,7 @@ export interface ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse
   nextLink?: string;
 }
 export const ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList),
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse",
-  }) as any as S.Schema<ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse>;
+  ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponse as any as S.Schema<ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse>;
 
 export interface ListPrivateEndpointConnectionsSecByServiceRequest {
   /** The subscription identifier. */
@@ -3591,9 +3520,8 @@ export const ListPrivateEndpointConnectionsSecByServiceRequest = /*@__PURE__*/ S
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsSecByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
-export const ListPrivateEndpointConnectionsSecByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceResponseValueList>;
+export const ListPrivateEndpointConnectionsSecByServiceResponseValueList =
+  ListPrivateEndpointConnectionsAdtAPIByServiceResponseValueList as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceResponseValueList>;
 
 export interface ListPrivateEndpointConnectionsSecByServiceResponse {
   /** Array of private endpoint connections */
@@ -3601,14 +3529,8 @@ export interface ListPrivateEndpointConnectionsSecByServiceResponse {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ListPrivateEndpointConnectionsSecByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPrivateEndpointConnectionsSecByServiceResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrivateEndpointConnectionsSecByServiceResponse",
-}) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceResponse>;
+export const ListPrivateEndpointConnectionsSecByServiceResponse =
+  ListPrivateEndpointConnectionsAdtAPIByServiceResponse as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceResponse>;
 
 export interface ListPrivateLinkResourceByServiceRequest {
   /** The subscription identifier. */
@@ -3750,9 +3672,8 @@ export const ListPrivateLinkResourcesAdtAPIByServiceRequest = /*@__PURE__*/ S.su
 
 /** Array of private link resources */
 export type ListPrivateLinkResourcesAdtAPIByServiceResponseValueList = Array<PrivateLinkResource>;
-export const ListPrivateLinkResourcesAdtAPIByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PrivateLinkResource,
-) as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceResponseValueList>;
+export const ListPrivateLinkResourcesAdtAPIByServiceResponseValueList =
+  ListPrivateLinkResourceByServiceResponseValueList as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceResponseValueList>;
 
 export interface ListPrivateLinkResourcesAdtAPIByServiceResponse {
   /** Array of private link resources */
@@ -3760,14 +3681,8 @@ export interface ListPrivateLinkResourcesAdtAPIByServiceResponse {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ListPrivateLinkResourcesAdtAPIByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPrivateLinkResourcesAdtAPIByServiceResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrivateLinkResourcesAdtAPIByServiceResponse",
-}) as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceResponse>;
+export const ListPrivateLinkResourcesAdtAPIByServiceResponse =
+  ListPrivateLinkResourceByServiceResponse as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceResponse>;
 
 export interface ListPrivateLinkResourcesCompByServiceRequest {
   /** The subscription identifier. */
@@ -3796,9 +3711,8 @@ export const ListPrivateLinkResourcesCompByServiceRequest = /*@__PURE__*/ S.susp
 
 /** Array of private link resources */
 export type ListPrivateLinkResourcesCompByServiceResponseValueList = Array<PrivateLinkResource>;
-export const ListPrivateLinkResourcesCompByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PrivateLinkResource,
-) as any as S.Schema<ListPrivateLinkResourcesCompByServiceResponseValueList>;
+export const ListPrivateLinkResourcesCompByServiceResponseValueList =
+  ListPrivateLinkResourceByServiceResponseValueList as any as S.Schema<ListPrivateLinkResourcesCompByServiceResponseValueList>;
 
 export interface ListPrivateLinkResourcesCompByServiceResponse {
   /** Array of private link resources */
@@ -3806,14 +3720,8 @@ export interface ListPrivateLinkResourcesCompByServiceResponse {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ListPrivateLinkResourcesCompByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPrivateLinkResourcesCompByServiceResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrivateLinkResourcesCompByServiceResponse",
-}) as any as S.Schema<ListPrivateLinkResourcesCompByServiceResponse>;
+export const ListPrivateLinkResourcesCompByServiceResponse =
+  ListPrivateLinkResourceByServiceResponse as any as S.Schema<ListPrivateLinkResourcesCompByServiceResponse>;
 
 export interface ListPrivateLinkResourcesForMIPPolicySyncByServiceRequest {
   /** The subscription identifier. */
@@ -3895,9 +3803,7 @@ export const ListPrivateLinkResourcesForSCCPowershellByServiceRequest = /*@__PUR
 export type ListPrivateLinkResourcesForSCCPowershellByServiceResponseValueList =
   Array<PrivateLinkResource>;
 export const ListPrivateLinkResourcesForSCCPowershellByServiceResponseValueList =
-  /*@__PURE__*/ S.Array(
-    PrivateLinkResource,
-  ) as any as S.Schema<ListPrivateLinkResourcesForSCCPowershellByServiceResponseValueList>;
+  ListPrivateLinkResourcesForMIPPolicySyncByServiceResponseValueList as any as S.Schema<ListPrivateLinkResourcesForSCCPowershellByServiceResponseValueList>;
 
 export interface ListPrivateLinkResourcesForSCCPowershellByServiceResponse {
   /** Array of private link resources */
@@ -3905,15 +3811,8 @@ export interface ListPrivateLinkResourcesForSCCPowershellByServiceResponse {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ListPrivateLinkResourcesForSCCPowershellByServiceResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(ListPrivateLinkResourcesForSCCPowershellByServiceResponseValueList),
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListPrivateLinkResourcesForSCCPowershellByServiceResponse",
-}) as any as S.Schema<ListPrivateLinkResourcesForSCCPowershellByServiceResponse>;
+export const ListPrivateLinkResourcesForSCCPowershellByServiceResponse =
+  ListPrivateLinkResourcesForMIPPolicySyncByServiceResponse as any as S.Schema<ListPrivateLinkResourcesForSCCPowershellByServiceResponse>;
 
 export interface ListPrivateLinkResourcesSecByServiceRequest {
   /** The subscription identifier. */
@@ -3942,9 +3841,8 @@ export const ListPrivateLinkResourcesSecByServiceRequest = /*@__PURE__*/ S.suspe
 
 /** Array of private link resources */
 export type ListPrivateLinkResourcesSecByServiceResponseValueList = Array<PrivateLinkResource>;
-export const ListPrivateLinkResourcesSecByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PrivateLinkResource,
-) as any as S.Schema<ListPrivateLinkResourcesSecByServiceResponseValueList>;
+export const ListPrivateLinkResourcesSecByServiceResponseValueList =
+  ListPrivateLinkResourceByServiceResponseValueList as any as S.Schema<ListPrivateLinkResourcesSecByServiceResponseValueList>;
 
 export interface ListPrivateLinkResourcesSecByServiceResponse {
   /** Array of private link resources */
@@ -3952,14 +3850,8 @@ export interface ListPrivateLinkResourcesSecByServiceResponse {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ListPrivateLinkResourcesSecByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPrivateLinkResourcesSecByServiceResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPrivateLinkResourcesSecByServiceResponse",
-}) as any as S.Schema<ListPrivateLinkResourcesSecByServiceResponse>;
+export const ListPrivateLinkResourcesSecByServiceResponse =
+  ListPrivateLinkResourceByServiceResponse as any as S.Schema<ListPrivateLinkResourcesSecByServiceResponse>;
 
 export interface ListPrivateLinkServicesForEDMUploadRequest {
   /** The subscription identifier. */
@@ -4034,10 +3926,8 @@ export const PrivateLinkServicesForEDMUploadDescriptionKind = S.String;
 export type PrivateLinkServicesForEDMUploadDescriptionTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrivateLinkServicesForEDMUploadDescriptionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionTagsMap>;
+export const PrivateLinkServicesForEDMUploadDescriptionTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForEDMUploadDescriptionIdentityType = "SystemAssigned" | "None";
@@ -4079,9 +3969,7 @@ export const PrivateLinkServicesForEDMUploadDescriptionPropertiesProvisioningSta
 export type PrivateLinkServicesForEDMUploadDescriptionPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForEDMUploadDescriptionPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionPropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForEDMUploadDescriptionPropertiesPublicNetworkAccess =
@@ -4296,10 +4184,8 @@ export const PrivateLinkServicesForM365ComplianceCenterDescriptionKind = S.Strin
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrivateLinkServicesForM365ComplianceCenterDescriptionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionTagsMap>;
+export const PrivateLinkServicesForM365ComplianceCenterDescriptionTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionIdentityType =
@@ -4345,9 +4231,7 @@ export const PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesProv
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionPropertiesPublicNetworkAccess =
@@ -4565,10 +4449,8 @@ export const PrivateLinkServicesForM365SecurityCenterDescriptionKind = S.String;
 export type PrivateLinkServicesForM365SecurityCenterDescriptionTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrivateLinkServicesForM365SecurityCenterDescriptionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionTagsMap>;
+export const PrivateLinkServicesForM365SecurityCenterDescriptionTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForM365SecurityCenterDescriptionIdentityType =
@@ -4614,9 +4496,7 @@ export const PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesProvis
 export type PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForM365SecurityCenterDescriptionPropertiesPublicNetworkAccess =
@@ -4830,10 +4710,8 @@ export const PrivateLinkServicesForMIPPolicySyncDescriptionKind = S.String;
 export type PrivateLinkServicesForMIPPolicySyncDescriptionTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrivateLinkServicesForMIPPolicySyncDescriptionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionTagsMap>;
+export const PrivateLinkServicesForMIPPolicySyncDescriptionTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForMIPPolicySyncDescriptionIdentityType = "SystemAssigned" | "None";
@@ -4875,9 +4753,7 @@ export const PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesProvisionin
 export type PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForMIPPolicySyncDescriptionPropertiesPublicNetworkAccess =
@@ -5097,10 +4973,7 @@ export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionTagsMap = 
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionIdentityType =
@@ -5146,9 +5019,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertie
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionPropertiesPublicNetworkAccess =
@@ -5365,10 +5236,8 @@ export const PrivateLinkServicesForSCCPowershellDescriptionKind = S.String;
 export type PrivateLinkServicesForSCCPowershellDescriptionTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrivateLinkServicesForSCCPowershellDescriptionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionTagsMap>;
+export const PrivateLinkServicesForSCCPowershellDescriptionTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForSCCPowershellDescriptionIdentityType = "SystemAssigned" | "None";
@@ -5410,9 +5279,7 @@ export const PrivateLinkServicesForSCCPowershellDescriptionPropertiesProvisionin
 export type PrivateLinkServicesForSCCPowershellDescriptionPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForSCCPowershellDescriptionPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionPropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForSCCPowershellDescriptionPropertiesPublicNetworkAccess =
@@ -5551,9 +5418,7 @@ export const ListPrivateLinkServicesForSCCPowershellByResourceGroupRequest =
 
 /** The Private Endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export const PrivateEndpointInput = DeleteServiceResponse as any as S.Schema<PrivateEndpointInput>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -6224,10 +6089,8 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateRequestKind = S.String
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrivateLinkServicesForEDMUploadCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateRequestTagsMap>;
+export const PrivateLinkServicesForEDMUploadCreateOrUpdateRequestTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateRequestIdentityType =
@@ -6420,10 +6283,8 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponseKind = S.Strin
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponseTagsMap>;
+export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateResponseIdentityType =
@@ -6469,9 +6330,7 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesProv
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateResponsePropertiesPublicNetworkAccess =
@@ -6572,10 +6431,7 @@ export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestTagsM
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentityType =
@@ -6603,9 +6459,7 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIden
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionInput,
-  ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
+  PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPublicNetworkAccess =
@@ -6761,10 +6615,7 @@ export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseTags
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseIdentityType =
@@ -6813,9 +6664,7 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePro
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponsePropertiesPublicNetworkAccess =
@@ -6923,10 +6772,7 @@ export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestTagsMap
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentityType =
@@ -6952,9 +6798,7 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdenti
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionInput,
-  ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
+  PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPublicNetworkAccess =
@@ -7110,10 +6954,7 @@ export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseTagsMa
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseIdentityType =
@@ -7159,9 +7000,7 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePrope
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponsePropertiesPublicNetworkAccess =
@@ -7267,10 +7106,7 @@ export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentityType =
@@ -7296,9 +7132,7 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity =
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionInput,
-  ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
+  PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPublicNetworkAccess =
@@ -7452,10 +7286,7 @@ export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseIdentityType =
@@ -7501,9 +7332,7 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseProperties
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponsePropertiesPublicNetworkAccess =
@@ -7605,10 +7434,7 @@ export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequest
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestIdentityType =
@@ -7639,9 +7465,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateReques
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionInput,
-  ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
+  PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPublicNetworkAccess =
@@ -7799,10 +7623,7 @@ export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRespons
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseIdentityType =
@@ -7851,9 +7672,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRespon
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponsePropertiesPublicNetworkAccess =
@@ -7963,10 +7782,7 @@ export type PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentityType =
@@ -7992,9 +7808,7 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity =
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionInput,
-  ) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
+  PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPublicNetworkAccess =
@@ -8148,10 +7962,7 @@ export type PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseIdentityType =
@@ -8197,9 +8008,7 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseProperties
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateResponsePropertiesPublicNetworkAccess =
@@ -8293,10 +8102,8 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateResponse = /*@__PU
 export type UpdatePrivateLinkServicesForEDMUploadRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForEDMUploadRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadRequestTagsMap>;
+export const UpdatePrivateLinkServicesForEDMUploadRequestTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadRequestTagsMap>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type ServicesPropertiesUpdateParametersPublicNetworkAccess = "Enabled" | "Disabled";
@@ -8400,10 +8207,8 @@ export const UpdatePrivateLinkServicesForEDMUploadResponseKind = S.String;
 export type UpdatePrivateLinkServicesForEDMUploadResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForEDMUploadResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponseTagsMap>;
+export const UpdatePrivateLinkServicesForEDMUploadResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdatePrivateLinkServicesForEDMUploadResponseIdentityType = "SystemAssigned" | "None";
@@ -8445,9 +8250,7 @@ export const UpdatePrivateLinkServicesForEDMUploadResponsePropertiesProvisioning
 export type UpdatePrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const UpdatePrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type UpdatePrivateLinkServicesForEDMUploadResponsePropertiesPublicNetworkAccess =
@@ -8539,10 +8342,7 @@ export type UpdatePrivateLinkServicesForM365ComplianceCenterRequestTagsMap = {
   [key: string]: string | undefined;
 };
 export const UpdatePrivateLinkServicesForM365ComplianceCenterRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterRequestTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterRequestTagsMap>;
 
 export interface UpdatePrivateLinkServicesForM365ComplianceCenterRequest {
   /** The subscription identifier. */
@@ -8638,10 +8438,7 @@ export type UpdatePrivateLinkServicesForM365ComplianceCenterResponseTagsMap = {
   [key: string]: string | undefined;
 };
 export const UpdatePrivateLinkServicesForM365ComplianceCenterResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponseTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdatePrivateLinkServicesForM365ComplianceCenterResponseIdentityType =
@@ -8687,9 +8484,7 @@ export const UpdatePrivateLinkServicesForM365ComplianceCenterResponsePropertiesP
 export type UpdatePrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const UpdatePrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type UpdatePrivateLinkServicesForM365ComplianceCenterResponsePropertiesPublicNetworkAccess =
@@ -8783,10 +8578,8 @@ export const UpdatePrivateLinkServicesForM365ComplianceCenterResponse = /*@__PUR
 export type UpdatePrivateLinkServicesForM365SecurityCenterRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForM365SecurityCenterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterRequestTagsMap>;
+export const UpdatePrivateLinkServicesForM365SecurityCenterRequestTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterRequestTagsMap>;
 
 export interface UpdatePrivateLinkServicesForM365SecurityCenterRequest {
   /** The subscription identifier. */
@@ -8881,10 +8674,8 @@ export const UpdatePrivateLinkServicesForM365SecurityCenterResponseKind = S.Stri
 export type UpdatePrivateLinkServicesForM365SecurityCenterResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForM365SecurityCenterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponseTagsMap>;
+export const UpdatePrivateLinkServicesForM365SecurityCenterResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdatePrivateLinkServicesForM365SecurityCenterResponseIdentityType =
@@ -8930,9 +8721,7 @@ export const UpdatePrivateLinkServicesForM365SecurityCenterResponsePropertiesPro
 export type UpdatePrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const UpdatePrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type UpdatePrivateLinkServicesForM365SecurityCenterResponsePropertiesPublicNetworkAccess =
@@ -9025,10 +8814,8 @@ export const UpdatePrivateLinkServicesForM365SecurityCenterResponse = /*@__PURE_
 export type UpdatePrivateLinkServicesForMIPPolicySyncRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForMIPPolicySyncRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncRequestTagsMap>;
+export const UpdatePrivateLinkServicesForMIPPolicySyncRequestTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncRequestTagsMap>;
 
 export interface UpdatePrivateLinkServicesForMIPPolicySyncRequest {
   /** The subscription identifier. */
@@ -9122,10 +8909,8 @@ export const UpdatePrivateLinkServicesForMIPPolicySyncResponseKind = S.String;
 export type UpdatePrivateLinkServicesForMIPPolicySyncResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForMIPPolicySyncResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponseTagsMap>;
+export const UpdatePrivateLinkServicesForMIPPolicySyncResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdatePrivateLinkServicesForMIPPolicySyncResponseIdentityType =
@@ -9171,9 +8956,7 @@ export const UpdatePrivateLinkServicesForMIPPolicySyncResponsePropertiesProvisio
 export type UpdatePrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const UpdatePrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type UpdatePrivateLinkServicesForMIPPolicySyncResponsePropertiesPublicNetworkAccess =
@@ -9267,10 +9050,7 @@ export type UpdatePrivateLinkServicesForO365ManagementActivityAPIRequestTagsMap 
   [key: string]: string | undefined;
 };
 export const UpdatePrivateLinkServicesForO365ManagementActivityAPIRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIRequestTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIRequestTagsMap>;
 
 export interface UpdatePrivateLinkServicesForO365ManagementActivityAPIRequest {
   /** The subscription identifier. */
@@ -9367,10 +9147,7 @@ export type UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap
   [key: string]: string | undefined;
 };
 export const UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap>;
+  GetPrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseIdentityType =
@@ -9416,9 +9193,7 @@ export const UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseProper
 export type UpdatePrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const UpdatePrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type UpdatePrivateLinkServicesForO365ManagementActivityAPIResponsePropertiesPublicNetworkAccess =
@@ -9516,10 +9291,8 @@ export const UpdatePrivateLinkServicesForO365ManagementActivityAPIResponse =
 export type UpdatePrivateLinkServicesForSCCPowershellRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForSCCPowershellRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellRequestTagsMap>;
+export const UpdatePrivateLinkServicesForSCCPowershellRequestTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellRequestTagsMap>;
 
 export interface UpdatePrivateLinkServicesForSCCPowershellRequest {
   /** The subscription identifier. */
@@ -9613,10 +9386,8 @@ export const UpdatePrivateLinkServicesForSCCPowershellResponseKind = S.String;
 export type UpdatePrivateLinkServicesForSCCPowershellResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePrivateLinkServicesForSCCPowershellResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponseTagsMap>;
+export const UpdatePrivateLinkServicesForSCCPowershellResponseTagsMap =
+  GetPrivateLinkServicesForEDMUploadResponseTagsMap as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponseTagsMap>;
 
 /** Type of identity being specified, currently SystemAssigned and None are allowed. */
 export type UpdatePrivateLinkServicesForSCCPowershellResponseIdentityType =
@@ -9662,9 +9433,7 @@ export const UpdatePrivateLinkServicesForSCCPowershellResponsePropertiesProvisio
 export type UpdatePrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
 export const UpdatePrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
-  ) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList>;
+  GetPrivateLinkServicesForEDMUploadResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
 export type UpdatePrivateLinkServicesForSCCPowershellResponsePropertiesPublicNetworkAccess =

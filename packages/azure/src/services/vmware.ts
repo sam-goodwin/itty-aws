@@ -581,9 +581,8 @@ export const ClusterProvisioningState = S.String;
 
 /** The hosts */
 export type ClusterPropertiesHostsList = Array<string>;
-export const ClusterPropertiesHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterPropertiesHostsList>;
+export const ClusterPropertiesHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ClusterPropertiesHostsList>;
 
 /** The properties of a cluster */
 export interface ClusterProperties {
@@ -620,17 +619,8 @@ export interface ClustersCreateOrUpdateResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const ClustersCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ClustersCreateOrUpdateResponseSku",
-}) as any as S.Schema<ClustersCreateOrUpdateResponseSku>;
+export const ClustersCreateOrUpdateResponseSku =
+  ClustersCreateOrUpdateRequestSku as any as S.Schema<ClustersCreateOrUpdateResponseSku>;
 
 export interface ClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -665,9 +655,8 @@ export const DhcpTypeEnum = S.String;
 
 /** DNS Server IP array of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList>;
+export const WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList>;
 
 /** Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from */
 export interface WorkloadNetworkDhcpEntityInput {
@@ -730,9 +719,8 @@ export const CreateWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** NSX Segments consuming DHCP. */
 export type WorkloadNetworkDhcpEntitySegmentsList = Array<string>;
-export const WorkloadNetworkDhcpEntitySegmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkDhcpEntitySegmentsList>;
+export const WorkloadNetworkDhcpEntitySegmentsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDhcpEntitySegmentsList>;
 
 /** Workload Network DHCP provisioning state */
 export type WorkloadNetworkDhcpProvisioningState =
@@ -804,9 +792,8 @@ export const CreateWorkloadNetworkDhcpResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesInputFqdnZonesList = Array<string>;
-export const WorkloadNetworkDnsServicePropertiesInputFqdnZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkDnsServicePropertiesInputFqdnZonesList>;
+export const WorkloadNetworkDnsServicePropertiesInputFqdnZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsServicePropertiesInputFqdnZonesList>;
 
 /** DNS service log level */
 export type DnsServiceLogLevelEnum = "DEBUG" | "INFO" | "WARNING" | "ERROR" | "FATAL";
@@ -873,9 +860,8 @@ export const CreateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(()
 
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesFqdnZonesList = Array<string>;
-export const WorkloadNetworkDnsServicePropertiesFqdnZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkDnsServicePropertiesFqdnZonesList>;
+export const WorkloadNetworkDnsServicePropertiesFqdnZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsServicePropertiesFqdnZonesList>;
 
 /** DNS service status */
 export type DnsServiceStatusEnum = "SUCCESS" | "FAILURE";
@@ -951,9 +937,8 @@ export const CreateWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ S.suspend((
 
 /** Domain names of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDomainList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesInputDomainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDomainList>;
+export const WorkloadNetworkDnsZonePropertiesInputDomainList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDomainList>;
 
 /** NSX DNS Zone Properties */
 export interface WorkloadNetworkDnsZonePropertiesInput {
@@ -1016,15 +1001,13 @@ export const CreateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Domain names of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesDomainList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesDomainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkDnsZonePropertiesDomainList>;
+export const WorkloadNetworkDnsZonePropertiesDomainList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesDomainList>;
 
 /** DNS Server IP array of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesDnsServerIpsList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesDnsServerIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkDnsZonePropertiesDnsServerIpsList>;
+export const WorkloadNetworkDnsZonePropertiesDnsServerIpsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesDnsServerIpsList>;
 
 /** Workload Network DNS Zone provisioning state */
 export type WorkloadNetworkDnsZoneProvisioningState =
@@ -1325,9 +1308,8 @@ export const CreateWorkloadNetworkPublicIPResponse = /*@__PURE__*/ S.suspend(() 
 
 /** DHCP Range assigned for subnet. */
 export type WorkloadNetworkSegmentSubnetDhcpRangesList = Array<string>;
-export const WorkloadNetworkSegmentSubnetDhcpRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkSegmentSubnetDhcpRangesList>;
+export const WorkloadNetworkSegmentSubnetDhcpRangesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkSegmentSubnetDhcpRangesList>;
 
 /** Subnet configuration for segment */
 export interface WorkloadNetworkSegmentSubnet {
@@ -1488,9 +1470,8 @@ export const CreateWorkloadNetworkSegmentsResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Virtual machine members of this group. */
 export type WorkloadNetworkVMGroupPropertiesInputMembersList = Array<string>;
-export const WorkloadNetworkVMGroupPropertiesInputMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkVMGroupPropertiesInputMembersList>;
+export const WorkloadNetworkVMGroupPropertiesInputMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkVMGroupPropertiesInputMembersList>;
 
 /** NSX VM Group Properties */
 export interface WorkloadNetworkVMGroupPropertiesInput {
@@ -1544,9 +1525,8 @@ export const CreateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Virtual machine members of this group. */
 export type WorkloadNetworkVMGroupPropertiesMembersList = Array<string>;
-export const WorkloadNetworkVMGroupPropertiesMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkloadNetworkVMGroupPropertiesMembersList>;
+export const WorkloadNetworkVMGroupPropertiesMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkVMGroupPropertiesMembersList>;
 
 /** VM group status */
 export type VMGroupStatusEnum = "SUCCESS" | "FAILURE";
@@ -1879,9 +1859,8 @@ export const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizationRequest>;
 
 export interface DeleteAuthorizationResponse {}
-export const DeleteAuthorizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAuthorizationResponse",
-}) as any as S.Schema<DeleteAuthorizationResponse>;
+export const DeleteAuthorizationResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteAuthorizationResponse>;
 
 export interface DeleteCloudLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1910,9 +1889,8 @@ export const DeleteCloudLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCloudLinkRequest" }) as any as S.Schema<DeleteCloudLinkRequest>;
 
 export interface DeleteCloudLinkResponse {}
-export const DeleteCloudLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCloudLinkResponse",
-}) as any as S.Schema<DeleteCloudLinkResponse>;
+export const DeleteCloudLinkResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteCloudLinkResponse>;
 
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1941,9 +1919,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClusterResponse",
-}) as any as S.Schema<DeleteClusterResponse>;
+export const DeleteClusterResponse = DeleteAddonResponse as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteDatastoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1975,9 +1951,8 @@ export const DeleteDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatastoreRequest" }) as any as S.Schema<DeleteDatastoreRequest>;
 
 export interface DeleteDatastoreResponse {}
-export const DeleteDatastoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatastoreResponse",
-}) as any as S.Schema<DeleteDatastoreResponse>;
+export const DeleteDatastoreResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteDatastoreResponse>;
 
 export interface DeleteGlobalReachConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2008,11 +1983,8 @@ export const DeleteGlobalReachConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalReachConnectionRequest>;
 
 export interface DeleteGlobalReachConnectionResponse {}
-export const DeleteGlobalReachConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGlobalReachConnectionResponse",
-}) as any as S.Schema<DeleteGlobalReachConnectionResponse>;
+export const DeleteGlobalReachConnectionResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteGlobalReachConnectionResponse>;
 
 export interface DeleteHcxEnterpriseSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2071,9 +2043,8 @@ export const DeleteIscsiPathRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIscsiPathRequest" }) as any as S.Schema<DeleteIscsiPathRequest>;
 
 export interface DeleteIscsiPathResponse {}
-export const DeleteIscsiPathResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIscsiPathResponse",
-}) as any as S.Schema<DeleteIscsiPathResponse>;
+export const DeleteIscsiPathResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteIscsiPathResponse>;
 
 export type DeleteLicenseRequestLicenseName = "VmwareFirewall";
 export const DeleteLicenseRequestLicenseName = S.String;
@@ -2105,9 +2076,7 @@ export const DeleteLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLicenseRequest" }) as any as S.Schema<DeleteLicenseRequest>;
 
 export interface DeleteLicenseResponse {}
-export const DeleteLicenseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLicenseResponse",
-}) as any as S.Schema<DeleteLicenseResponse>;
+export const DeleteLicenseResponse = DeleteAddonResponse as any as S.Schema<DeleteLicenseResponse>;
 
 export interface DeletePlacementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2141,9 +2110,8 @@ export const DeletePlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlacementPolicyRequest>;
 
 export interface DeletePlacementPolicyResponse {}
-export const DeletePlacementPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePlacementPolicyResponse",
-}) as any as S.Schema<DeletePlacementPolicyResponse>;
+export const DeletePlacementPolicyResponse =
+  DeleteAddonResponse as any as S.Schema<DeletePlacementPolicyResponse>;
 
 export interface DeletePrivateCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2171,9 +2139,8 @@ export const DeletePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateCloudRequest>;
 
 export interface DeletePrivateCloudResponse {}
-export const DeletePrivateCloudResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePrivateCloudResponse",
-}) as any as S.Schema<DeletePrivateCloudResponse>;
+export const DeletePrivateCloudResponse =
+  DeleteAddonResponse as any as S.Schema<DeletePrivateCloudResponse>;
 
 export interface DeletePureStoragePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2204,9 +2171,8 @@ export const DeletePureStoragePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePureStoragePolicyRequest>;
 
 export interface DeletePureStoragePolicyResponse {}
-export const DeletePureStoragePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeletePureStoragePolicyResponse" },
-) as any as S.Schema<DeletePureStoragePolicyResponse>;
+export const DeletePureStoragePolicyResponse =
+  DeleteHcxEnterpriseSiteResponse as any as S.Schema<DeletePureStoragePolicyResponse>;
 
 export interface DeleteScriptExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2237,9 +2203,8 @@ export const DeleteScriptExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScriptExecutionRequest>;
 
 export interface DeleteScriptExecutionResponse {}
-export const DeleteScriptExecutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScriptExecutionResponse",
-}) as any as S.Schema<DeleteScriptExecutionResponse>;
+export const DeleteScriptExecutionResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteScriptExecutionResponse>;
 
 export interface DeleteWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2270,11 +2235,8 @@ export const DeleteWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkDhcpRequest>;
 
 export interface DeleteWorkloadNetworkDhcpResponse {}
-export const DeleteWorkloadNetworkDhcpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadNetworkDhcpResponse",
-}) as any as S.Schema<DeleteWorkloadNetworkDhcpResponse>;
+export const DeleteWorkloadNetworkDhcpResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDhcpResponse>;
 
 export interface DeleteWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2305,11 +2267,8 @@ export const DeleteWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWorkloadNetworkDnsServiceRequest>;
 
 export interface DeleteWorkloadNetworkDnsServiceResponse {}
-export const DeleteWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadNetworkDnsServiceResponse",
-}) as any as S.Schema<DeleteWorkloadNetworkDnsServiceResponse>;
+export const DeleteWorkloadNetworkDnsServiceResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDnsServiceResponse>;
 
 export interface DeleteWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2340,11 +2299,8 @@ export const DeleteWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkDnsZoneRequest>;
 
 export interface DeleteWorkloadNetworkDnsZoneResponse {}
-export const DeleteWorkloadNetworkDnsZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadNetworkDnsZoneResponse",
-}) as any as S.Schema<DeleteWorkloadNetworkDnsZoneResponse>;
+export const DeleteWorkloadNetworkDnsZoneResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDnsZoneResponse>;
 
 export interface DeleteWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2375,11 +2331,8 @@ export const DeleteWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteWorkloadNetworkPortMirroringRequest>;
 
 export interface DeleteWorkloadNetworkPortMirroringResponse {}
-export const DeleteWorkloadNetworkPortMirroringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadNetworkPortMirroringResponse",
-}) as any as S.Schema<DeleteWorkloadNetworkPortMirroringResponse>;
+export const DeleteWorkloadNetworkPortMirroringResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkPortMirroringResponse>;
 
 export interface DeleteWorkloadNetworkPublicIPRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2410,11 +2363,8 @@ export const DeleteWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWorkloadNetworkPublicIPRequest>;
 
 export interface DeleteWorkloadNetworkPublicIPResponse {}
-export const DeleteWorkloadNetworkPublicIPResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadNetworkPublicIPResponse",
-}) as any as S.Schema<DeleteWorkloadNetworkPublicIPResponse>;
+export const DeleteWorkloadNetworkPublicIPResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkPublicIPResponse>;
 
 export interface DeleteWorkloadNetworkSegmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2445,11 +2395,8 @@ export const DeleteWorkloadNetworkSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkSegmentRequest>;
 
 export interface DeleteWorkloadNetworkSegmentResponse {}
-export const DeleteWorkloadNetworkSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadNetworkSegmentResponse",
-}) as any as S.Schema<DeleteWorkloadNetworkSegmentResponse>;
+export const DeleteWorkloadNetworkSegmentResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkSegmentResponse>;
 
 export interface DeleteWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2480,11 +2427,8 @@ export const DeleteWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkVMGroupRequest>;
 
 export interface DeleteWorkloadNetworkVMGroupResponse {}
-export const DeleteWorkloadNetworkVMGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadNetworkVMGroupResponse",
-}) as any as S.Schema<DeleteWorkloadNetworkVMGroupResponse>;
+export const DeleteWorkloadNetworkVMGroupResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkVMGroupResponse>;
 
 export interface GetAddonRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3002,9 +2946,8 @@ export const HostProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type GetHostResponseZonesList = Array<string>;
-export const GetHostResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetHostResponseZonesList>;
+export const GetHostResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<GetHostResponseZonesList>;
 
 /** The resource model definition representing SKU */
 export type GetHostResponseSku = ClustersCreateOrUpdateResponseSku;
@@ -3310,15 +3253,13 @@ export const MaintenanceGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dependent group identifiers */
 export type MaintenanceRelationshipsDependenciesList = Array<string>;
-export const MaintenanceRelationshipsDependenciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MaintenanceRelationshipsDependenciesList>;
+export const MaintenanceRelationshipsDependenciesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<MaintenanceRelationshipsDependenciesList>;
 
 /** List of prerequisite group identifiers */
 export type MaintenanceRelationshipsPrerequisitesList = Array<string>;
-export const MaintenanceRelationshipsPrerequisitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MaintenanceRelationshipsPrerequisitesList>;
+export const MaintenanceRelationshipsPrerequisitesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<MaintenanceRelationshipsPrerequisitesList>;
 
 /** Defines relationship details between maintenance groups */
 export interface MaintenanceRelationships {
@@ -3408,9 +3349,8 @@ export const MaintenanceReadinessStatus = S.String;
 
 /** Steps to resolve the error */
 export type ImpactedMaintenanceResourceErrorResolutionStepsList = Array<string>;
-export const ImpactedMaintenanceResourceErrorResolutionStepsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImpactedMaintenanceResourceErrorResolutionStepsList>;
+export const ImpactedMaintenanceResourceErrorResolutionStepsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ImpactedMaintenanceResourceErrorResolutionStepsList>;
 
 /** Details about an error affecting a resource */
 export interface ImpactedMaintenanceResourceError {
@@ -3634,15 +3574,13 @@ export const PlacementPolicyProvisioningState = S.String;
 
 /** Virtual machine members list */
 export type PlacementPolicyUpdatePropertiesVmMembersList = Array<string>;
-export const PlacementPolicyUpdatePropertiesVmMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlacementPolicyUpdatePropertiesVmMembersList>;
+export const PlacementPolicyUpdatePropertiesVmMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PlacementPolicyUpdatePropertiesVmMembersList>;
 
 /** Host members list */
 export type PlacementPolicyUpdatePropertiesHostMembersList = Array<string>;
-export const PlacementPolicyUpdatePropertiesHostMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlacementPolicyUpdatePropertiesHostMembersList>;
+export const PlacementPolicyUpdatePropertiesHostMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PlacementPolicyUpdatePropertiesHostMembersList>;
 
 /** Placement policy affinity type */
 export type AffinityType = "Affinity" | "AntiAffinity";
@@ -3749,9 +3687,8 @@ export const GetPrivateCloudResponseTagsMap = /*@__PURE__*/ S.Record(
 
 /** The hosts */
 export type ManagementClusterHostsList = Array<string>;
-export const ManagementClusterHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ManagementClusterHostsList>;
+export const ManagementClusterHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ManagementClusterHostsList>;
 
 /** The properties of a management cluster */
 export interface ManagementCluster {
@@ -3766,15 +3703,7 @@ export interface ManagementCluster {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
-export const ManagementCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterSize: S.optional(S.Number),
-    provisioningState: S.optional(ClusterProvisioningState),
-    clusterId: S.optional(S.Number),
-    hosts: S.optional(ManagementClusterHostsList),
-    vsanDatastoreName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ManagementCluster" }) as any as S.Schema<ManagementCluster>;
+export const ManagementCluster = ClusterProperties as any as S.Schema<ManagementCluster>;
 
 /** Connectivity to internet is enabled or disabled */
 export type PrivateCloudPropertiesInternet = "Enabled" | "Disabled";
@@ -3905,9 +3834,8 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudPropertiesExtendedNetworkBlocksList = Array<string>;
-export const PrivateCloudPropertiesExtendedNetworkBlocksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudPropertiesExtendedNetworkBlocksList>;
+export const PrivateCloudPropertiesExtendedNetworkBlocksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesExtendedNetworkBlocksList>;
 
 /** private cloud provisioning state */
 export type PrivateCloudProvisioningState =
@@ -3969,9 +3897,8 @@ export const Endpoints = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of cloud link IDs from other clouds that connect to this one */
 export type PrivateCloudPropertiesExternalCloudLinksList = Array<string>;
-export const PrivateCloudPropertiesExternalCloudLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudPropertiesExternalCloudLinksList>;
+export const PrivateCloudPropertiesExternalCloudLinksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesExternalCloudLinksList>;
 
 /** NSX public IP quota raised */
 export type NsxPublicIpQuotaRaisedEnum = "Enabled" | "Disabled";
@@ -4104,9 +4031,8 @@ export const GetPrivateCloudResponseIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type GetPrivateCloudResponseZonesList = Array<string>;
-export const GetPrivateCloudResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPrivateCloudResponseZonesList>;
+export const GetPrivateCloudResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<GetPrivateCloudResponseZonesList>;
 
 export interface GetPrivateCloudResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4519,9 +4445,8 @@ export const ScriptExecutionPropertiesParametersList = /*@__PURE__*/ S.Array(
 
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesHiddenParametersList = Array<ScriptExecutionParameter>;
-export const ScriptExecutionPropertiesHiddenParametersList = /*@__PURE__*/ S.Array(
-  ScriptExecutionParameter,
-) as any as S.Schema<ScriptExecutionPropertiesHiddenParametersList>;
+export const ScriptExecutionPropertiesHiddenParametersList =
+  ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesHiddenParametersList>;
 
 /** Script Execution provisioning state */
 export type ScriptExecutionProvisioningState =
@@ -4537,9 +4462,8 @@ export const ScriptExecutionProvisioningState = S.String;
 
 /** Standard output stream from the powershell execution */
 export type ScriptExecutionPropertiesOutputList = Array<string>;
-export const ScriptExecutionPropertiesOutputList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptExecutionPropertiesOutputList>;
+export const ScriptExecutionPropertiesOutputList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesOutputList>;
 
 /** User-defined dictionary. */
 export type ScriptExecutionPropertiesNamedOutputsMap = { [key: string]: unknown | undefined };
@@ -4550,21 +4474,18 @@ export const ScriptExecutionPropertiesNamedOutputsMap = /*@__PURE__*/ S.Record(
 
 /** Standard information out stream from the powershell execution */
 export type ScriptExecutionPropertiesInformationList = Array<string>;
-export const ScriptExecutionPropertiesInformationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptExecutionPropertiesInformationList>;
+export const ScriptExecutionPropertiesInformationList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesInformationList>;
 
 /** Standard warning out stream from the powershell execution */
 export type ScriptExecutionPropertiesWarningsList = Array<string>;
-export const ScriptExecutionPropertiesWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptExecutionPropertiesWarningsList>;
+export const ScriptExecutionPropertiesWarningsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesWarningsList>;
 
 /** Standard error output stream from the powershell execution */
 export type ScriptExecutionPropertiesErrorsList = Array<string>;
-export const ScriptExecutionPropertiesErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptExecutionPropertiesErrorsList>;
+export const ScriptExecutionPropertiesErrorsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesErrorsList>;
 
 /** Properties of a user-invoked script */
 export interface ScriptExecutionProperties {
@@ -4698,17 +4619,8 @@ export interface GetScriptExecutionExecutionLogsResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
-export const GetScriptExecutionExecutionLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScriptExecutionProperties),
-  }),
-).annotate({
-  identifier: "GetScriptExecutionExecutionLogsResponse",
-}) as any as S.Schema<GetScriptExecutionExecutionLogsResponse>;
+export const GetScriptExecutionExecutionLogsResponse =
+  GetScriptExecutionResponse as any as S.Schema<GetScriptExecutionExecutionLogsResponse>;
 
 export interface GetScriptPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4981,17 +4893,8 @@ export interface GetWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
-export const GetWorkloadNetworkDhcpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkDhcpEntity),
-  }),
-).annotate({
-  identifier: "GetWorkloadNetworkDhcpResponse",
-}) as any as S.Schema<GetWorkloadNetworkDhcpResponse>;
+export const GetWorkloadNetworkDhcpResponse =
+  CreateWorkloadNetworkDhcpResponse as any as S.Schema<GetWorkloadNetworkDhcpResponse>;
 
 export interface GetWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5033,17 +4936,8 @@ export interface GetWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
-export const GetWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkDnsServiceProperties),
-  }),
-).annotate({
-  identifier: "GetWorkloadNetworkDnsServiceResponse",
-}) as any as S.Schema<GetWorkloadNetworkDnsServiceResponse>;
+export const GetWorkloadNetworkDnsServiceResponse =
+  CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<GetWorkloadNetworkDnsServiceResponse>;
 
 export interface GetWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5085,17 +4979,8 @@ export interface GetWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
-export const GetWorkloadNetworkDnsZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkDnsZoneProperties),
-  }),
-).annotate({
-  identifier: "GetWorkloadNetworkDnsZoneResponse",
-}) as any as S.Schema<GetWorkloadNetworkDnsZoneResponse>;
+export const GetWorkloadNetworkDnsZoneResponse =
+  CreateWorkloadNetworkDnsZoneResponse as any as S.Schema<GetWorkloadNetworkDnsZoneResponse>;
 
 export interface GetWorkloadNetworkGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5208,17 +5093,8 @@ export interface GetWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
-export const GetWorkloadNetworkPortMirroringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkPortMirroringProperties),
-  }),
-).annotate({
-  identifier: "GetWorkloadNetworkPortMirroringResponse",
-}) as any as S.Schema<GetWorkloadNetworkPortMirroringResponse>;
+export const GetWorkloadNetworkPortMirroringResponse =
+  CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<GetWorkloadNetworkPortMirroringResponse>;
 
 export interface GetWorkloadNetworkPublicIPRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5260,17 +5136,8 @@ export interface GetWorkloadNetworkPublicIPResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
 }
-export const GetWorkloadNetworkPublicIPResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkPublicIPProperties),
-  }),
-).annotate({
-  identifier: "GetWorkloadNetworkPublicIPResponse",
-}) as any as S.Schema<GetWorkloadNetworkPublicIPResponse>;
+export const GetWorkloadNetworkPublicIPResponse =
+  CreateWorkloadNetworkPublicIPResponse as any as S.Schema<GetWorkloadNetworkPublicIPResponse>;
 
 export interface GetWorkloadNetworkSegmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5312,17 +5179,8 @@ export interface GetWorkloadNetworkSegmentResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
-export const GetWorkloadNetworkSegmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkSegmentProperties),
-  }),
-).annotate({
-  identifier: "GetWorkloadNetworkSegmentResponse",
-}) as any as S.Schema<GetWorkloadNetworkSegmentResponse>;
+export const GetWorkloadNetworkSegmentResponse =
+  CreateWorkloadNetworkSegmentsResponse as any as S.Schema<GetWorkloadNetworkSegmentResponse>;
 
 export interface GetWorkloadNetworkVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5439,17 +5297,8 @@ export interface GetWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
-export const GetWorkloadNetworkVMGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkVMGroupProperties),
-  }),
-).annotate({
-  identifier: "GetWorkloadNetworkVMGroupResponse",
-}) as any as S.Schema<GetWorkloadNetworkVMGroupResponse>;
+export const GetWorkloadNetworkVMGroupResponse =
+  CreateWorkloadNetworkVMGroupResponse as any as S.Schema<GetWorkloadNetworkVMGroupResponse>;
 
 /** The properties of a global reach connection */
 export interface GlobalReachConnectionPropertiesInput {
@@ -5513,25 +5362,13 @@ export interface GlobalReachConnectionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
 }
-export const GlobalReachConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(GlobalReachConnectionProperties),
-  }),
-).annotate({
-  identifier: "GlobalReachConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateResponse>;
+export const GlobalReachConnectionsCreateOrUpdateResponse =
+  GetGlobalReachConnectionResponse as any as S.Schema<GlobalReachConnectionsCreateOrUpdateResponse>;
 
 /** The properties of an HCX Enterprise Site */
 export interface HcxEnterpriseSitePropertiesInput {}
-export const HcxEnterpriseSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HcxEnterpriseSitePropertiesInput",
-}) as any as S.Schema<HcxEnterpriseSitePropertiesInput>;
+export const HcxEnterpriseSitePropertiesInput =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<HcxEnterpriseSitePropertiesInput>;
 
 export interface HcxEnterpriseSitesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5576,17 +5413,8 @@ export interface HcxEnterpriseSitesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSiteProperties;
 }
-export const HcxEnterpriseSitesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HcxEnterpriseSiteProperties),
-  }),
-).annotate({
-  identifier: "HcxEnterpriseSitesCreateOrUpdateResponse",
-}) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateResponse>;
+export const HcxEnterpriseSitesCreateOrUpdateResponse =
+  GetHcxEnterpriseSiteResponse as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateResponse>;
 
 /** The properties of an iSCSI path resource */
 export interface IscsiPathPropertiesInput {
@@ -5768,15 +5596,7 @@ export interface Addon {
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
 }
-export const Addon = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AddonProperties),
-  }),
-).annotate({ identifier: "Addon" }) as any as S.Schema<Addon>;
+export const Addon = GetAddonResponse as any as S.Schema<Addon>;
 
 /** The Addon items on this page */
 export type AddonListValueList = Array<Addon>;
@@ -5836,17 +5656,8 @@ export interface ExpressRouteAuthorization {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
 }
-export const ExpressRouteAuthorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ExpressRouteAuthorizationProperties),
-  }),
-).annotate({
-  identifier: "ExpressRouteAuthorization",
-}) as any as S.Schema<ExpressRouteAuthorization>;
+export const ExpressRouteAuthorization =
+  AuthorizationsCreateOrUpdateResponse as any as S.Schema<ExpressRouteAuthorization>;
 
 /** The ExpressRouteAuthorization items on this page */
 export type ExpressRouteAuthorizationListValueList = Array<ExpressRouteAuthorization>;
@@ -5906,15 +5717,7 @@ export interface CloudLink {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
 }
-export const CloudLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CloudLinkProperties),
-  }),
-).annotate({ identifier: "CloudLink" }) as any as S.Schema<CloudLink>;
+export const CloudLink = GetCloudLinkResponse as any as S.Schema<CloudLink>;
 
 /** The CloudLink items on this page */
 export type CloudLinkListValueList = Array<CloudLink>;
@@ -5978,16 +5781,7 @@ export interface Cluster {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ClusterProperties),
-    sku: ClustersCreateOrUpdateResponseSku,
-  }),
-).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
+export const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
 export type ClusterListValueList = Array<Cluster>;
@@ -6037,9 +5831,8 @@ export const ListClusterZonesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of hosts belonging to the availability zone in a cluster */
 export type ClusterZoneHostsList = Array<string>;
-export const ClusterZoneHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterZoneHostsList>;
+export const ClusterZoneHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ClusterZoneHostsList>;
 
 /** Zone and associated hosts info */
 export interface ClusterZone {
@@ -6111,15 +5904,7 @@ export interface Datastore {
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
 }
-export const Datastore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatastoreProperties),
-  }),
-).annotate({ identifier: "Datastore" }) as any as S.Schema<Datastore>;
+export const Datastore = GetDatastoreResponse as any as S.Schema<Datastore>;
 
 /** The Datastore items on this page */
 export type DatastoreListValueList = Array<Datastore>;
@@ -6400,15 +6185,7 @@ export interface IscsiPath {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
 }
-export const IscsiPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(IscsiPathProperties),
-  }),
-).annotate({ identifier: "IscsiPath" }) as any as S.Schema<IscsiPath>;
+export const IscsiPath = GetIscsiPathResponse as any as S.Schema<IscsiPath>;
 
 /** The IscsiPath items on this page */
 export type IscsiPathListResultValueList = Array<IscsiPath>;
@@ -6466,15 +6243,7 @@ export interface License {
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
 }
-export const License = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(LicenseProperties),
-  }),
-).annotate({ identifier: "License" }) as any as S.Schema<License>;
+export const License = GetLicenseResponse as any as S.Schema<License>;
 
 /** The License items on this page */
 export type LicenseListResultValueList = Array<License>;
@@ -6556,15 +6325,7 @@ export interface Maintenance {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const Maintenance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MaintenanceProperties),
-  }),
-).annotate({ identifier: "Maintenance" }) as any as S.Schema<Maintenance>;
+export const Maintenance = GetMaintenanceResponse as any as S.Schema<Maintenance>;
 
 /** The Maintenance items on this page */
 export type MaintenanceListResultValueList = Array<Maintenance>;
@@ -6805,10 +6566,8 @@ export const ListPrivateCloudInSubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type PrivateCloudTagsMap = { [key: string]: string | undefined };
-export const PrivateCloudTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateCloudTagsMap>;
+export const PrivateCloudTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudTagsMap>;
 
 /** The resource model definition representing SKU */
 export type PrivateCloudSku = ClustersCreateOrUpdateResponseSku;
@@ -6820,9 +6579,8 @@ export const PrivateCloudIdentity = GetPrivateCloudResponseIdentity;
 
 /** The availability zones. */
 export type PrivateCloudZonesList = Array<string>;
-export const PrivateCloudZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudZonesList>;
+export const PrivateCloudZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudZonesList>;
 
 /** A private cloud resource */
 export interface PrivateCloud {
@@ -6847,20 +6605,7 @@ export interface PrivateCloud {
   /** The availability zones. */
   zones?: PrivateCloudZonesList;
 }
-export const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PrivateCloudTagsMap),
-    location: S.String,
-    properties: S.optional(PrivateCloudProperties),
-    sku: ClustersCreateOrUpdateResponseSku,
-    identity: S.optional(GetPrivateCloudResponseIdentity),
-    zones: S.optional(PrivateCloudZonesList),
-  }),
-).annotate({ identifier: "PrivateCloud" }) as any as S.Schema<PrivateCloud>;
+export const PrivateCloud = GetPrivateCloudResponse as any as S.Schema<PrivateCloud>;
 
 /** The PrivateCloud items on this page */
 export type PrivateCloudListValueList = Array<PrivateCloud>;
@@ -7081,15 +6826,7 @@ export interface ScriptCmdlet {
   /** The resource-specific properties for this resource. */
   properties?: ScriptCmdletProperties;
 }
-export const ScriptCmdlet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScriptCmdletProperties),
-  }),
-).annotate({ identifier: "ScriptCmdlet" }) as any as S.Schema<ScriptCmdlet>;
+export const ScriptCmdlet = GetScriptCmdletResponse as any as S.Schema<ScriptCmdlet>;
 
 /** The ScriptCmdlet items on this page */
 export type ScriptCmdletsListValueList = Array<ScriptCmdlet>;
@@ -7217,15 +6954,7 @@ export interface ScriptPackage {
   /** The resource-specific properties for this resource. */
   properties?: ScriptPackageProperties;
 }
-export const ScriptPackage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScriptPackageProperties),
-  }),
-).annotate({ identifier: "ScriptPackage" }) as any as S.Schema<ScriptPackage>;
+export const ScriptPackage = GetScriptPackageResponse as any as S.Schema<ScriptPackage>;
 
 /** The ScriptPackage items on this page */
 export type ScriptPackagesListValueList = Array<ScriptPackage>;
@@ -7270,21 +6999,18 @@ export const ResourceSkuResourceType = S.String;
 
 /** The set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
-export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationsList>;
+export const ResourceSkuLocationsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuLocationsList>;
 
 /** List of availability zones where the SKU is supported. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
-export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
+export const ResourceSkuLocationInfoZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
-export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
+export const ResourceSkuZoneDetailsNameList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
 
 /** Describes The SKU capabilities object. */
 export interface ResourceSkuCapabilities {
@@ -7351,9 +7077,8 @@ export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
 
 /** Name value pairs to describe the capability. */
 export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
-export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
-  ResourceSkuCapabilities,
-) as any as S.Schema<ResourceSkuCapabilitiesList>;
+export const ResourceSkuCapabilitiesList =
+  ResourceSkuZoneDetailsCapabilitiesList as any as S.Schema<ResourceSkuCapabilitiesList>;
 
 /** Describes the kind of SKU restrictions that can exist */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
@@ -7361,21 +7086,18 @@ export const ResourceSkuRestrictionsType = S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
-export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+export const ResourceSkuRestrictionsValuesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
-export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
+export const ResourceSkuRestrictionInfoLocationsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
-export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
+export const ResourceSkuRestrictionInfoZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
 
 /** Describes an available Compute SKU Restriction Information. */
 export interface ResourceSkuRestrictionInfo {
@@ -7655,17 +7377,8 @@ export interface WorkloadNetworkDnsService {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
-export const WorkloadNetworkDnsService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkDnsServiceProperties),
-  }),
-).annotate({
-  identifier: "WorkloadNetworkDnsService",
-}) as any as S.Schema<WorkloadNetworkDnsService>;
+export const WorkloadNetworkDnsService =
+  CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<WorkloadNetworkDnsService>;
 
 /** The WorkloadNetworkDnsService items on this page */
 export type WorkloadNetworkDnsServicesListValueList = Array<WorkloadNetworkDnsService>;
@@ -7867,17 +7580,8 @@ export interface WorkloadNetworkPortMirroring {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
-export const WorkloadNetworkPortMirroring = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkPortMirroringProperties),
-  }),
-).annotate({
-  identifier: "WorkloadNetworkPortMirroring",
-}) as any as S.Schema<WorkloadNetworkPortMirroring>;
+export const WorkloadNetworkPortMirroring =
+  CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<WorkloadNetworkPortMirroring>;
 
 /** The WorkloadNetworkPortMirroring items on this page */
 export type WorkloadNetworkPortMirroringListValueList = Array<WorkloadNetworkPortMirroring>;
@@ -8147,17 +7851,8 @@ export interface WorkloadNetworkVirtualMachine {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVirtualMachineProperties;
 }
-export const WorkloadNetworkVirtualMachine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkVirtualMachineProperties),
-  }),
-).annotate({
-  identifier: "WorkloadNetworkVirtualMachine",
-}) as any as S.Schema<WorkloadNetworkVirtualMachine>;
+export const WorkloadNetworkVirtualMachine =
+  GetWorkloadNetworkVirtualMachineResponse as any as S.Schema<WorkloadNetworkVirtualMachine>;
 
 /** The WorkloadNetworkVirtualMachine items on this page */
 export type WorkloadNetworkVirtualMachinesListValueList = Array<WorkloadNetworkVirtualMachine>;
@@ -8349,17 +8044,8 @@ export interface MaintenancesRescheduleResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const MaintenancesRescheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MaintenanceProperties),
-  }),
-).annotate({
-  identifier: "MaintenancesRescheduleResponse",
-}) as any as S.Schema<MaintenancesRescheduleResponse>;
+export const MaintenancesRescheduleResponse =
+  MaintenancesInitiateChecksResponse as any as S.Schema<MaintenancesRescheduleResponse>;
 
 export interface MaintenancesScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8407,17 +8093,8 @@ export interface MaintenancesScheduleResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const MaintenancesScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MaintenanceProperties),
-  }),
-).annotate({
-  identifier: "MaintenancesScheduleResponse",
-}) as any as S.Schema<MaintenancesScheduleResponse>;
+export const MaintenancesScheduleResponse =
+  MaintenancesInitiateChecksResponse as any as S.Schema<MaintenancesScheduleResponse>;
 
 /** Abstract placement policy properties */
 export interface PlacementPolicyPropertiesInput {
@@ -8499,30 +8176,18 @@ export interface PlacementPoliciesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
-export const PlacementPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PlacementPolicyProperties),
-  }),
-).annotate({
-  identifier: "PlacementPoliciesCreateOrUpdateResponse",
-}) as any as S.Schema<PlacementPoliciesCreateOrUpdateResponse>;
+export const PlacementPoliciesCreateOrUpdateResponse =
+  GetPlacementPolicyResponse as any as S.Schema<PlacementPoliciesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type PrivateCloudsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PrivateCloudsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateCloudsCreateOrUpdateRequestTagsMap>;
+export const PrivateCloudsCreateOrUpdateRequestTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudsCreateOrUpdateRequestTagsMap>;
 
 /** The hosts */
 export type ManagementClusterInputHostsList = Array<string>;
-export const ManagementClusterInputHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ManagementClusterInputHostsList>;
+export const ManagementClusterInputHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ManagementClusterInputHostsList>;
 
 /** The properties of a management cluster */
 export interface ManagementClusterInput {
@@ -8533,13 +8198,8 @@ export interface ManagementClusterInput {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
-export const ManagementClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterSize: S.optional(S.Number),
-    hosts: S.optional(ManagementClusterInputHostsList),
-    vsanDatastoreName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ManagementClusterInput" }) as any as S.Schema<ManagementClusterInput>;
+export const ManagementClusterInput =
+  ClusterPropertiesInput as any as S.Schema<ManagementClusterInput>;
 
 /** Connectivity to internet is enabled or disabled */
 export type PrivateCloudPropertiesInputInternet = "Enabled" | "Disabled";
@@ -8547,9 +8207,8 @@ export const PrivateCloudPropertiesInputInternet = S.String;
 
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudPropertiesInputIdentitySourcesList = Array<IdentitySource>;
-export const PrivateCloudPropertiesInputIdentitySourcesList = /*@__PURE__*/ S.Array(
-  IdentitySource,
-) as any as S.Schema<PrivateCloudPropertiesInputIdentitySourcesList>;
+export const PrivateCloudPropertiesInputIdentitySourcesList =
+  PrivateCloudPropertiesIdentitySourcesList as any as S.Schema<PrivateCloudPropertiesInputIdentitySourcesList>;
 
 /** An Encryption Key */
 export interface EncryptionKeyVaultPropertiesInput {
@@ -8586,9 +8245,8 @@ export const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudPropertiesInputExtendedNetworkBlocksList = Array<string>;
-export const PrivateCloudPropertiesInputExtendedNetworkBlocksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudPropertiesInputExtendedNetworkBlocksList>;
+export const PrivateCloudPropertiesInputExtendedNetworkBlocksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesInputExtendedNetworkBlocksList>;
 
 /** An ExpressRoute Circuit */
 export type CircuitInput = HcxEnterpriseSitePropertiesInput;
@@ -8675,9 +8333,8 @@ export const PrivateCloudsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspen
 
 /** The availability zones. */
 export type PrivateCloudsCreateOrUpdateRequestZonesList = Array<string>;
-export const PrivateCloudsCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudsCreateOrUpdateRequestZonesList>;
+export const PrivateCloudsCreateOrUpdateRequestZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudsCreateOrUpdateRequestZonesList>;
 
 export interface PrivateCloudsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8724,10 +8381,8 @@ export const PrivateCloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PrivateCloudsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PrivateCloudsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrivateCloudsCreateOrUpdateResponseTagsMap>;
+export const PrivateCloudsCreateOrUpdateResponseTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudsCreateOrUpdateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
 export type PrivateCloudsCreateOrUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
@@ -8739,9 +8394,8 @@ export const PrivateCloudsCreateOrUpdateResponseIdentity = GetPrivateCloudRespon
 
 /** The availability zones. */
 export type PrivateCloudsCreateOrUpdateResponseZonesList = Array<string>;
-export const PrivateCloudsCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudsCreateOrUpdateResponseZonesList>;
+export const PrivateCloudsCreateOrUpdateResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudsCreateOrUpdateResponseZonesList>;
 
 export interface PrivateCloudsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8841,17 +8495,8 @@ export interface PureStoragePoliciesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
 }
-export const PureStoragePoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PureStoragePolicyProperties),
-  }),
-).annotate({
-  identifier: "PureStoragePoliciesCreateOrUpdateResponse",
-}) as any as S.Schema<PureStoragePoliciesCreateOrUpdateResponse>;
+export const PureStoragePoliciesCreateOrUpdateResponse =
+  GetPureStoragePolicyResponse as any as S.Schema<PureStoragePoliciesCreateOrUpdateResponse>;
 
 export interface RotatePrivateCloudNsxtPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8879,11 +8524,8 @@ export const RotatePrivateCloudNsxtPasswordRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RotatePrivateCloudNsxtPasswordRequest>;
 
 export interface RotatePrivateCloudNsxtPasswordResponse {}
-export const RotatePrivateCloudNsxtPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RotatePrivateCloudNsxtPasswordResponse",
-}) as any as S.Schema<RotatePrivateCloudNsxtPasswordResponse>;
+export const RotatePrivateCloudNsxtPasswordResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<RotatePrivateCloudNsxtPasswordResponse>;
 
 export interface RotatePrivateCloudVcenterPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8911,36 +8553,28 @@ export const RotatePrivateCloudVcenterPasswordRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RotatePrivateCloudVcenterPasswordRequest>;
 
 export interface RotatePrivateCloudVcenterPasswordResponse {}
-export const RotatePrivateCloudVcenterPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RotatePrivateCloudVcenterPasswordResponse",
-}) as any as S.Schema<RotatePrivateCloudVcenterPasswordResponse>;
+export const RotatePrivateCloudVcenterPasswordResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<RotatePrivateCloudVcenterPasswordResponse>;
 
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesInputParametersList = Array<ScriptExecutionParameter>;
-export const ScriptExecutionPropertiesInputParametersList = /*@__PURE__*/ S.Array(
-  ScriptExecutionParameter,
-) as any as S.Schema<ScriptExecutionPropertiesInputParametersList>;
+export const ScriptExecutionPropertiesInputParametersList =
+  ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesInputParametersList>;
 
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesInputHiddenParametersList = Array<ScriptExecutionParameter>;
-export const ScriptExecutionPropertiesInputHiddenParametersList = /*@__PURE__*/ S.Array(
-  ScriptExecutionParameter,
-) as any as S.Schema<ScriptExecutionPropertiesInputHiddenParametersList>;
+export const ScriptExecutionPropertiesInputHiddenParametersList =
+  ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesInputHiddenParametersList>;
 
 /** Standard output stream from the powershell execution */
 export type ScriptExecutionPropertiesInputOutputList = Array<string>;
-export const ScriptExecutionPropertiesInputOutputList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptExecutionPropertiesInputOutputList>;
+export const ScriptExecutionPropertiesInputOutputList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesInputOutputList>;
 
 /** User-defined dictionary. */
 export type ScriptExecutionPropertiesInputNamedOutputsMap = { [key: string]: unknown | undefined };
-export const ScriptExecutionPropertiesInputNamedOutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ScriptExecutionPropertiesInputNamedOutputsMap>;
+export const ScriptExecutionPropertiesInputNamedOutputsMap =
+  ScriptExecutionPropertiesNamedOutputsMap as any as S.Schema<ScriptExecutionPropertiesInputNamedOutputsMap>;
 
 /** Properties of a user-invoked script */
 export interface ScriptExecutionPropertiesInput {
@@ -9019,17 +8653,8 @@ export interface ScriptExecutionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
-export const ScriptExecutionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScriptExecutionProperties),
-  }),
-).annotate({
-  identifier: "ScriptExecutionsCreateOrUpdateResponse",
-}) as any as S.Schema<ScriptExecutionsCreateOrUpdateResponse>;
+export const ScriptExecutionsCreateOrUpdateResponse =
+  GetScriptExecutionResponse as any as S.Schema<ScriptExecutionsCreateOrUpdateResponse>;
 
 /** The resource model definition representing SKU */
 export type UpdateClusterRequestSku = ClustersCreateOrUpdateRequestSku;
@@ -9037,9 +8662,8 @@ export const UpdateClusterRequestSku = ClustersCreateOrUpdateRequestSku;
 
 /** The hosts */
 export type ClusterUpdatePropertiesHostsList = Array<string>;
-export const ClusterUpdatePropertiesHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterUpdatePropertiesHostsList>;
+export const ClusterUpdatePropertiesHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ClusterUpdatePropertiesHostsList>;
 
 /** The properties of a cluster that may be updated */
 export interface ClusterUpdateProperties {
@@ -9105,22 +8729,12 @@ export interface UpdateClusterResponse {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ClusterProperties),
-    sku: ClustersCreateOrUpdateResponseSku,
-  }),
-).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
+export const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 /** The licenses assigned to the host. */
 export type HostUpdatePropertiesLicensesList = Array<HostLicense>;
-export const HostUpdatePropertiesLicensesList = /*@__PURE__*/ S.Array(
-  HostLicense,
-) as any as S.Schema<HostUpdatePropertiesLicensesList>;
+export const HostUpdatePropertiesLicensesList =
+  HostPropertiesLicensesList as any as S.Schema<HostUpdatePropertiesLicensesList>;
 
 /** The properties for updating a host. */
 export interface HostUpdateProperties {
@@ -9167,9 +8781,8 @@ export const UpdateHostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type UpdateHostResponseZonesList = Array<string>;
-export const UpdateHostResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateHostResponseZonesList>;
+export const UpdateHostResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<UpdateHostResponseZonesList>;
 
 /** The resource model definition representing SKU */
 export type UpdateHostResponseSku = ClustersCreateOrUpdateResponseSku;
@@ -9191,17 +8804,7 @@ export interface UpdateHostResponse {
   /** The resource model definition representing SKU */
   sku?: ClustersCreateOrUpdateResponseSku;
 }
-export const UpdateHostResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HostProperties),
-    zones: S.optional(UpdateHostResponseZonesList),
-    sku: S.optional(ClustersCreateOrUpdateResponseSku),
-  }),
-).annotate({ identifier: "UpdateHostResponse" }) as any as S.Schema<UpdateHostResponse>;
+export const UpdateHostResponse = GetHostResponse as any as S.Schema<UpdateHostResponse>;
 
 /** The properties of a placement policy resource that may be updated */
 export interface PlacementPolicyUpdateProperties {
@@ -9274,24 +8877,13 @@ export interface UpdatePlacementPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
-export const UpdatePlacementPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PlacementPolicyProperties),
-  }),
-).annotate({
-  identifier: "UpdatePlacementPolicyResponse",
-}) as any as S.Schema<UpdatePlacementPolicyResponse>;
+export const UpdatePlacementPolicyResponse =
+  GetPlacementPolicyResponse as any as S.Schema<UpdatePlacementPolicyResponse>;
 
 /** Resource tags. */
 export type UpdatePrivateCloudRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateCloudRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateCloudRequestTagsMap>;
+export const UpdatePrivateCloudRequestTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<UpdatePrivateCloudRequestTagsMap>;
 
 /** The resource model definition representing SKU */
 export type UpdatePrivateCloudRequestSku = ClustersCreateOrUpdateRequestSku;
@@ -9307,15 +8899,13 @@ export const InternetEnum = S.String;
 
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudUpdatePropertiesInputIdentitySourcesList = Array<IdentitySource>;
-export const PrivateCloudUpdatePropertiesInputIdentitySourcesList = /*@__PURE__*/ S.Array(
-  IdentitySource,
-) as any as S.Schema<PrivateCloudUpdatePropertiesInputIdentitySourcesList>;
+export const PrivateCloudUpdatePropertiesInputIdentitySourcesList =
+  PrivateCloudPropertiesIdentitySourcesList as any as S.Schema<PrivateCloudUpdatePropertiesInputIdentitySourcesList>;
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList = Array<string>;
-export const PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList>;
+export const PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList>;
 
 /** The properties of a private cloud resource that may be updated */
 export interface PrivateCloudUpdatePropertiesInput {
@@ -9387,10 +8977,8 @@ export const UpdatePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePrivateCloudResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateCloudResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePrivateCloudResponseTagsMap>;
+export const UpdatePrivateCloudResponseTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<UpdatePrivateCloudResponseTagsMap>;
 
 /** The resource model definition representing SKU */
 export type UpdatePrivateCloudResponseSku = ClustersCreateOrUpdateResponseSku;
@@ -9402,9 +8990,8 @@ export const UpdatePrivateCloudResponseIdentity = GetPrivateCloudResponseIdentit
 
 /** The availability zones. */
 export type UpdatePrivateCloudResponseZonesList = Array<string>;
-export const UpdatePrivateCloudResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdatePrivateCloudResponseZonesList>;
+export const UpdatePrivateCloudResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<UpdatePrivateCloudResponseZonesList>;
 
 export interface UpdatePrivateCloudResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9428,22 +9015,8 @@ export interface UpdatePrivateCloudResponse {
   /** The availability zones. */
   zones?: UpdatePrivateCloudResponseZonesList;
 }
-export const UpdatePrivateCloudResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdatePrivateCloudResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PrivateCloudProperties),
-    sku: ClustersCreateOrUpdateResponseSku,
-    identity: S.optional(GetPrivateCloudResponseIdentity),
-    zones: S.optional(UpdatePrivateCloudResponseZonesList),
-  }),
-).annotate({
-  identifier: "UpdatePrivateCloudResponse",
-}) as any as S.Schema<UpdatePrivateCloudResponse>;
+export const UpdatePrivateCloudResponse =
+  PrivateCloudsCreateOrUpdateResponse as any as S.Schema<UpdatePrivateCloudResponse>;
 
 export interface UpdateWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9488,17 +9061,8 @@ export interface UpdateWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
-export const UpdateWorkloadNetworkDhcpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkDhcpEntity),
-  }),
-).annotate({
-  identifier: "UpdateWorkloadNetworkDhcpResponse",
-}) as any as S.Schema<UpdateWorkloadNetworkDhcpResponse>;
+export const UpdateWorkloadNetworkDhcpResponse =
+  CreateWorkloadNetworkDhcpResponse as any as S.Schema<UpdateWorkloadNetworkDhcpResponse>;
 
 export interface UpdateWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9543,17 +9107,8 @@ export interface UpdateWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
-export const UpdateWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkDnsServiceProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkloadNetworkDnsServiceResponse",
-}) as any as S.Schema<UpdateWorkloadNetworkDnsServiceResponse>;
+export const UpdateWorkloadNetworkDnsServiceResponse =
+  CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<UpdateWorkloadNetworkDnsServiceResponse>;
 
 export interface UpdateWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9598,17 +9153,8 @@ export interface UpdateWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
-export const UpdateWorkloadNetworkDnsZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkDnsZoneProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkloadNetworkDnsZoneResponse",
-}) as any as S.Schema<UpdateWorkloadNetworkDnsZoneResponse>;
+export const UpdateWorkloadNetworkDnsZoneResponse =
+  CreateWorkloadNetworkDnsZoneResponse as any as S.Schema<UpdateWorkloadNetworkDnsZoneResponse>;
 
 export interface UpdateWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9653,17 +9199,8 @@ export interface UpdateWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
-export const UpdateWorkloadNetworkPortMirroringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkPortMirroringProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkloadNetworkPortMirroringResponse",
-}) as any as S.Schema<UpdateWorkloadNetworkPortMirroringResponse>;
+export const UpdateWorkloadNetworkPortMirroringResponse =
+  CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<UpdateWorkloadNetworkPortMirroringResponse>;
 
 export interface UpdateWorkloadNetworkSegmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9708,17 +9245,8 @@ export interface UpdateWorkloadNetworkSegmentsResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
-export const UpdateWorkloadNetworkSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkSegmentProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkloadNetworkSegmentsResponse",
-}) as any as S.Schema<UpdateWorkloadNetworkSegmentsResponse>;
+export const UpdateWorkloadNetworkSegmentsResponse =
+  CreateWorkloadNetworkSegmentsResponse as any as S.Schema<UpdateWorkloadNetworkSegmentsResponse>;
 
 export interface UpdateWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9763,17 +9291,8 @@ export interface UpdateWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
-export const UpdateWorkloadNetworkVMGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkloadNetworkVMGroupProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkloadNetworkVMGroupResponse",
-}) as any as S.Schema<UpdateWorkloadNetworkVMGroupResponse>;
+export const UpdateWorkloadNetworkVMGroupResponse =
+  CreateWorkloadNetworkVMGroupResponse as any as S.Schema<UpdateWorkloadNetworkVMGroupResponse>;
 
 export interface VirtualMachinesRestrictMovementRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9810,11 +9329,8 @@ export const VirtualMachinesRestrictMovementRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<VirtualMachinesRestrictMovementRequest>;
 
 export interface VirtualMachinesRestrictMovementResponse {}
-export const VirtualMachinesRestrictMovementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VirtualMachinesRestrictMovementResponse",
-}) as any as S.Schema<VirtualMachinesRestrictMovementResponse>;
+export const VirtualMachinesRestrictMovementResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<VirtualMachinesRestrictMovementResponse>;
 
 export type AddonsCreateOrUpdateError = AzureOpError;
 /** Create a Addon */

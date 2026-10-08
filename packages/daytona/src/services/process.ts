@@ -68,9 +68,8 @@ export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSessionRequest" }) as any as S.Schema<CreateSessionRequest>;
 
 export interface CreateSessionResponse {}
-export const CreateSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSessionResponse",
-}) as any as S.Schema<CreateSessionResponse>;
+export const CreateSessionResponse =
+  ConnectPtySessionResponse as any as S.Schema<CreateSessionResponse>;
 
 export interface DeletePtySessionRequest {
   /** PTY session ID */
@@ -101,16 +100,13 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSessionResponse",
-}) as any as S.Schema<DeleteSessionResponse>;
+export const DeleteSessionResponse =
+  ConnectPtySessionResponse as any as S.Schema<DeleteSessionResponse>;
 
 /** Environment variables to set for the command */
 export type ExecuteCommandRequestEnvsMap = { [key: string]: string | undefined };
-export const ExecuteCommandRequestEnvsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExecuteCommandRequestEnvsMap>;
+export const ExecuteCommandRequestEnvsMap =
+  CreatePtySessionRequestEnvsMap as any as S.Schema<ExecuteCommandRequestEnvsMap>;
 
 export interface ExecuteCommandRequest {
   command: string;
@@ -213,10 +209,8 @@ export const GetPtySessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPtySessionRequest" }) as any as S.Schema<GetPtySessionRequest>;
 
 export type PtySessionInfoEnvsMap = { [key: string]: string | undefined };
-export const PtySessionInfoEnvsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PtySessionInfoEnvsMap>;
+export const PtySessionInfoEnvsMap =
+  CreatePtySessionRequestEnvsMap as any as S.Schema<PtySessionInfoEnvsMap>;
 
 export interface PtySessionInfo {
   active: boolean;
@@ -345,10 +339,8 @@ export const RunCodeRequestArgvList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RunCodeRequestArgvList>;
 
 export type RunCodeRequestEnvsMap = { [key: string]: string | undefined };
-export const RunCodeRequestEnvsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RunCodeRequestEnvsMap>;
+export const RunCodeRequestEnvsMap =
+  CreatePtySessionRequestEnvsMap as any as S.Schema<RunCodeRequestEnvsMap>;
 
 export interface RunCodeRequest {
   argv?: RunCodeRequestArgvList;
@@ -374,9 +366,8 @@ export const ChartElementOutliersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ChartElementOutliersList>;
 
 export type ChartElementPointsItemList = Array<number>;
-export const ChartElementPointsItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ChartElementPointsItemList>;
+export const ChartElementPointsItemList =
+  ChartElementOutliersList as any as S.Schema<ChartElementPointsItemList>;
 
 export type ChartElementPointsList = Array<ChartElementPointsItemList>;
 export const ChartElementPointsList = /*@__PURE__*/ S.Array(
@@ -430,20 +421,16 @@ export const ChartElementsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ChartElementsList>;
 
 export type ChartXTickLabelsList = Array<string>;
-export const ChartXTickLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChartXTickLabelsList>;
+export const ChartXTickLabelsList = RunCodeRequestArgvList as any as S.Schema<ChartXTickLabelsList>;
 
 export type ChartXTicksList = Array<number>;
 export const ChartXTicksList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<ChartXTicksList>;
 
 export type ChartYTickLabelsList = Array<string>;
-export const ChartYTickLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChartYTickLabelsList>;
+export const ChartYTickLabelsList = RunCodeRequestArgvList as any as S.Schema<ChartYTickLabelsList>;
 
 export type ChartYTicksList = Array<number>;
-export const ChartYTicksList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<ChartYTicksList>;
+export const ChartYTicksList = ChartXTicksList as any as S.Schema<ChartYTicksList>;
 
 export interface Chart {
   elements?: ChartElementsList;
@@ -525,9 +512,7 @@ export const SendInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendInputRequest" }) as any as S.Schema<SendInputRequest>;
 
 export interface SendInputResponse {}
-export const SendInputResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendInputResponse",
-}) as any as S.Schema<SendInputResponse>;
+export const SendInputResponse = ConnectPtySessionResponse as any as S.Schema<SendInputResponse>;
 
 export interface SessionExecuteCommandRequest {
   /** Session ID */

@@ -77,12 +77,7 @@ export interface SsoOidcConfig {
   /** OIDC client ID for org-SSO logins */
   clientId: string;
 }
-export const SsoOidcConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuer: S.String,
-    clientId: S.String,
-  }),
-).annotate({ identifier: "SsoOidcConfig" }) as any as S.Schema<SsoOidcConfig>;
+export const SsoOidcConfig = CliOidcConfig as any as S.Schema<SsoOidcConfig>;
 
 /** Feature flags forced on for this deployment regardless of PostHog targeting. Lets environments without PostHog (previews, local dev) enable flag-gated dashboard features. */
 export type DaytonaConfigurationForcedFeatureFlagsList = Array<string>;
@@ -112,15 +107,13 @@ export const DaytonaConfigurationAnnouncementsMap = /*@__PURE__*/ S.Record(
 
 /** SSH host public keys presented by the SSH Gateway, as OpenSSH public key lines (`<type> <base64>`). To build a known_hosts entry, prefix each with `sshGatewayHost` when `sshGatewayPort` is 22, or with `[sshGatewayHost]:sshGatewayPort` otherwise. */
 export type DaytonaConfigurationSshGatewayHostKeysList = Array<string>;
-export const DaytonaConfigurationSshGatewayHostKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DaytonaConfigurationSshGatewayHostKeysList>;
+export const DaytonaConfigurationSshGatewayHostKeysList =
+  DaytonaConfigurationForcedFeatureFlagsList as any as S.Schema<DaytonaConfigurationSshGatewayHostKeysList>;
 
 /** SHA256 fingerprints of sshGatewayHostKeys, in the same order, in `ssh-keygen -lf` format. Compare against the fingerprint published at https://github.com/daytona/.github/blob/main/SECURITY.md#ssh-host-key-verification */
 export type DaytonaConfigurationSshGatewayHostKeyFingerprintsList = Array<string>;
-export const DaytonaConfigurationSshGatewayHostKeyFingerprintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DaytonaConfigurationSshGatewayHostKeyFingerprintsList>;
+export const DaytonaConfigurationSshGatewayHostKeyFingerprintsList =
+  DaytonaConfigurationForcedFeatureFlagsList as any as S.Schema<DaytonaConfigurationSshGatewayHostKeyFingerprintsList>;
 
 export interface RateLimitEntry {
   /** Rate limit TTL in seconds */

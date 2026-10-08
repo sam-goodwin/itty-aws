@@ -27,21 +27,18 @@ export const CapabilityHostKind = S.String;
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type CapabilityHostPropertiesInputStorageConnectionsList = Array<string>;
-export const CapabilityHostPropertiesInputStorageConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesInputStorageConnectionsList>;
+export const CapabilityHostPropertiesInputStorageConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesInputStorageConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type CapabilityHostPropertiesInputThreadStorageConnectionsList = Array<string>;
-export const CapabilityHostPropertiesInputThreadStorageConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesInputThreadStorageConnectionsList>;
+export const CapabilityHostPropertiesInputThreadStorageConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesInputThreadStorageConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type CapabilityHostPropertiesInputVectorStoreConnectionsList = Array<string>;
-export const CapabilityHostPropertiesInputVectorStoreConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesInputVectorStoreConnectionsList>;
+export const CapabilityHostPropertiesInputVectorStoreConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesInputVectorStoreConnectionsList>;
 
 export interface CapabilityHostPropertiesInput {
   /** The asset description text. */
@@ -152,16 +149,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CapabilityHostPropertiesTagsMap = { [key: string]: string | undefined };
-export const CapabilityHostPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesTagsMap>;
+export const CapabilityHostPropertiesTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CapabilityHostPropertiesTagsMap>;
 
 /** List of AI services connections. */
 export type CapabilityHostPropertiesAiServicesConnectionsList = Array<string>;
-export const CapabilityHostPropertiesAiServicesConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesAiServicesConnectionsList>;
+export const CapabilityHostPropertiesAiServicesConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesAiServicesConnectionsList>;
 
 /** Provisioning state of capability host. */
 export type CapabilityHostProvisioningState =
@@ -175,21 +169,18 @@ export const CapabilityHostProvisioningState = S.String;
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type CapabilityHostPropertiesStorageConnectionsList = Array<string>;
-export const CapabilityHostPropertiesStorageConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesStorageConnectionsList>;
+export const CapabilityHostPropertiesStorageConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesStorageConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type CapabilityHostPropertiesThreadStorageConnectionsList = Array<string>;
-export const CapabilityHostPropertiesThreadStorageConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesThreadStorageConnectionsList>;
+export const CapabilityHostPropertiesThreadStorageConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesThreadStorageConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type CapabilityHostPropertiesVectorStoreConnectionsList = Array<string>;
-export const CapabilityHostPropertiesVectorStoreConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityHostPropertiesVectorStoreConnectionsList>;
+export const CapabilityHostPropertiesVectorStoreConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesVectorStoreConnectionsList>;
 
 export interface CapabilityHostProperties {
   /** The asset description text. */
@@ -336,10 +327,8 @@ export const RaiBlocklistProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AddRaiBlocklistItemBatchResponseTagsMap = { [key: string]: string | undefined };
-export const AddRaiBlocklistItemBatchResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AddRaiBlocklistItemBatchResponseTagsMap>;
+export const AddRaiBlocklistItemBatchResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AddRaiBlocklistItemBatchResponseTagsMap>;
 
 export interface AddRaiBlocklistItemBatchResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -373,10 +362,8 @@ export const AddRaiBlocklistItemBatchResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgenticApplicationPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const AgenticApplicationPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgenticApplicationPropertiesInputTagsMap>;
+export const AgenticApplicationPropertiesInputTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgenticApplicationPropertiesInputTagsMap>;
 
 /** Type modeling a reference to a version of an agent definition. */
 export interface AgentReferenceProperties {
@@ -568,16 +555,13 @@ export const AgentApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgenticApplicationPropertiesTagsMap = { [key: string]: string | undefined };
-export const AgenticApplicationPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgenticApplicationPropertiesTagsMap>;
+export const AgenticApplicationPropertiesTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgenticApplicationPropertiesTagsMap>;
 
 /** The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application. */
 export type AgenticApplicationPropertiesAgentsList = Array<AgentReferenceProperties>;
-export const AgenticApplicationPropertiesAgentsList = /*@__PURE__*/ S.Array(
-  AgentReferenceProperties,
-) as any as S.Schema<AgenticApplicationPropertiesAgentsList>;
+export const AgenticApplicationPropertiesAgentsList =
+  AgenticApplicationPropertiesInputAgentsList as any as S.Schema<AgenticApplicationPropertiesAgentsList>;
 
 /** Represents the provisioning state of an identity resource. */
 export type IdentityProvisioningState =
@@ -697,10 +681,8 @@ export const AgentApplicationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend((
 
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgentDeploymentPropertiesInputTagsMap = { [key: string]: string | undefined };
-export const AgentDeploymentPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentDeploymentPropertiesInputTagsMap>;
+export const AgentDeploymentPropertiesInputTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgentDeploymentPropertiesInputTagsMap>;
 
 /** Current operational state of the agentic functionality represented by this deployment. */
 export type AgentDeploymentState =
@@ -838,22 +820,18 @@ export const AgentDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgentDeploymentPropertiesTagsMap = { [key: string]: string | undefined };
-export const AgentDeploymentPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AgentDeploymentPropertiesTagsMap>;
+export const AgentDeploymentPropertiesTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgentDeploymentPropertiesTagsMap>;
 
 /** Gets or sets the supported protocol types and versions exposed by this deployment. */
 export type AgentDeploymentPropertiesProtocolsList = Array<AgentProtocolVersion>;
-export const AgentDeploymentPropertiesProtocolsList = /*@__PURE__*/ S.Array(
-  AgentProtocolVersion,
-) as any as S.Schema<AgentDeploymentPropertiesProtocolsList>;
+export const AgentDeploymentPropertiesProtocolsList =
+  AgentDeploymentPropertiesInputProtocolsList as any as S.Schema<AgentDeploymentPropertiesProtocolsList>;
 
 /** Returns a flat list of agent:version deployed in this deployment. */
 export type AgentDeploymentPropertiesAgentsList = Array<VersionedAgentReference>;
-export const AgentDeploymentPropertiesAgentsList = /*@__PURE__*/ S.Array(
-  VersionedAgentReference,
-) as any as S.Schema<AgentDeploymentPropertiesAgentsList>;
+export const AgentDeploymentPropertiesAgentsList =
+  AgentDeploymentPropertiesInputAgentsList as any as S.Schema<AgentDeploymentPropertiesAgentsList>;
 
 /** Provisioning state of an agentic deployment, as an Azure resource. */
 export type AgentDeploymentProvisioningState =
@@ -1103,9 +1081,8 @@ export const DomainAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** The SKU of the resource. */
 export type CheckSkuAvailabilityRequestSkusList = Array<string>;
-export const CheckSkuAvailabilityRequestSkusList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckSkuAvailabilityRequestSkusList>;
+export const CheckSkuAvailabilityRequestSkusList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CheckSkuAvailabilityRequestSkusList>;
 
 export interface CheckSkuAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -1235,10 +1212,8 @@ export const CommitmentPlanPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CommitmentPlansCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateRequestTagsMap>;
+export const CommitmentPlansCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateRequestTagsMap>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
@@ -1360,9 +1335,8 @@ export const CommitmentPeriod = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of ProvisioningIssue. */
 export type CommitmentPlanPropertiesProvisioningIssuesList = Array<string>;
-export const CommitmentPlanPropertiesProvisioningIssuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommitmentPlanPropertiesProvisioningIssuesList>;
+export const CommitmentPlanPropertiesProvisioningIssuesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CommitmentPlanPropertiesProvisioningIssuesList>;
 
 /** Properties of Cognitive Services account commitment plan. */
 export interface CommitmentPlanProperties {
@@ -1401,10 +1375,8 @@ export const CommitmentPlanProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CommitmentPlansCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateResponseTagsMap>;
+export const CommitmentPlansCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateResponseTagsMap>;
 
 export interface CommitmentPlansCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1462,10 +1434,8 @@ export const CommitmentPlanAccountAssociationProperties = /*@__PURE__*/ S.suspen
 export type CommitmentPlansCreateOrUpdateAssociationRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const CommitmentPlansCreateOrUpdateAssociationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationRequestTagsMap>;
+export const CommitmentPlansCreateOrUpdateAssociationRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationRequestTagsMap>;
 
 export interface CommitmentPlansCreateOrUpdateAssociationRequest {
   /** The ID of the target subscription. */
@@ -1505,10 +1475,8 @@ export const CommitmentPlansCreateOrUpdateAssociationRequest = /*@__PURE__*/ S.s
 export type CommitmentPlansCreateOrUpdateAssociationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CommitmentPlansCreateOrUpdateAssociationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationResponseTagsMap>;
+export const CommitmentPlansCreateOrUpdateAssociationResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationResponseTagsMap>;
 
 export interface CommitmentPlansCreateOrUpdateAssociationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1542,10 +1510,8 @@ export const CommitmentPlansCreateOrUpdateAssociationResponse = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdatePlanRequestTagsMap = { [key: string]: string | undefined };
-export const CommitmentPlansCreateOrUpdatePlanRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanRequestTagsMap>;
+export const CommitmentPlansCreateOrUpdatePlanRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdatePlanRequestTagsMap>;
 
 export interface CommitmentPlansCreateOrUpdatePlanRequest {
   /** The ID of the target subscription. */
@@ -1591,10 +1557,8 @@ export const CommitmentPlansCreateOrUpdatePlanRequest = /*@__PURE__*/ S.suspend(
 export type CommitmentPlansCreateOrUpdatePlanResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CommitmentPlansCreateOrUpdatePlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponseTagsMap>;
+export const CommitmentPlansCreateOrUpdatePlanResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponseTagsMap>;
 
 export interface CommitmentPlansCreateOrUpdatePlanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1618,22 +1582,8 @@ export interface CommitmentPlansCreateOrUpdatePlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-export const CommitmentPlansCreateOrUpdatePlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CommitmentPlanProperties),
-    tags: S.optional(CommitmentPlansCreateOrUpdatePlanResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "CommitmentPlansCreateOrUpdatePlanResponse",
-}) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponse>;
+export const CommitmentPlansCreateOrUpdatePlanResponse =
+  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponse>;
 
 /** The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated. */
 export type NetworkRuleAction = "Allow" | "Deny";
@@ -1766,12 +1716,7 @@ export interface UserOwnedAmlWorkspace {
   /** Identity Client id of a AML account resource. */
   identityClientId?: string;
 }
-export const UserOwnedAmlWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String),
-    identityClientId: S.optional(S.String),
-  }),
-).annotate({ identifier: "UserOwnedAmlWorkspace" }) as any as S.Schema<UserOwnedAmlWorkspace>;
+export const UserOwnedAmlWorkspace = UserOwnedStorage as any as S.Schema<UserOwnedAmlWorkspace>;
 
 /** Whether or not public endpoint access is allowed for this account. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
@@ -1816,9 +1761,8 @@ export const ApiProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiProperties" }) as any as S.Schema<ApiProperties>;
 
 export type AccountPropertiesInputAllowedFqdnListList = Array<string>;
-export const AccountPropertiesInputAllowedFqdnListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountPropertiesInputAllowedFqdnListList>;
+export const AccountPropertiesInputAllowedFqdnListList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesInputAllowedFqdnListList>;
 
 /** Multiregion routing methods. */
 export type RoutingMethods = "Priority" | "Weighted" | "Performance";
@@ -1901,9 +1845,8 @@ export const AccountPropertiesInputNetworkInjectionsList = /*@__PURE__*/ S.Array
 
 /** Specifies the projects, by project name, that are associated with this resource. */
 export type AccountPropertiesInputAssociatedProjectsList = Array<string>;
-export const AccountPropertiesInputAssociatedProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountPropertiesInputAssociatedProjectsList>;
+export const AccountPropertiesInputAssociatedProjectsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesInputAssociatedProjectsList>;
 
 /** Properties of Cognitive Services account. */
 export interface AccountPropertiesInput {
@@ -1973,10 +1916,8 @@ export const AccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAccountRequestTagsMap>;
+export const CreateAccountRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateAccountRequestTagsMap>;
 
 /** The identity type. */
 export type ResourceIdentityType =
@@ -2107,9 +2048,8 @@ export const SkuChangeInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage accounts for this resource. */
 export type AccountPropertiesUserOwnedStorageList = Array<UserOwnedStorage>;
-export const AccountPropertiesUserOwnedStorageList = /*@__PURE__*/ S.Array(
-  UserOwnedStorage,
-) as any as S.Schema<AccountPropertiesUserOwnedStorageList>;
+export const AccountPropertiesUserOwnedStorageList =
+  AccountPropertiesInputUserOwnedStorageList as any as S.Schema<AccountPropertiesUserOwnedStorageList>;
 
 /** The Private Endpoint resource. */
 export interface PrivateEndpointConnectionPropertiesPrivateEndpoint {
@@ -2158,9 +2098,8 @@ export const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
 
 /** The private link resource group ids. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
@@ -2279,34 +2218,23 @@ export const CallRateLimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CallRateLimit" }) as any as S.Schema<CallRateLimit>;
 
 export type QuotaLimitRulesList = Array<ThrottlingRule>;
-export const QuotaLimitRulesList = /*@__PURE__*/ S.Array(
-  ThrottlingRule,
-) as any as S.Schema<QuotaLimitRulesList>;
+export const QuotaLimitRulesList = CallRateLimitRulesList as any as S.Schema<QuotaLimitRulesList>;
 
 export interface QuotaLimit {
   count?: number;
   renewalPeriod?: number;
   rules?: QuotaLimitRulesList;
 }
-export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    renewalPeriod: S.optional(S.Number),
-    rules: S.optional(QuotaLimitRulesList),
-  }),
-).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
+export const QuotaLimit = CallRateLimit as any as S.Schema<QuotaLimit>;
 
 export type AccountPropertiesAllowedFqdnListList = Array<string>;
-export const AccountPropertiesAllowedFqdnListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountPropertiesAllowedFqdnListList>;
+export const AccountPropertiesAllowedFqdnListList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesAllowedFqdnListList>;
 
 /** Dictionary of <string> */
 export type AccountPropertiesEndpointsMap = { [key: string]: string | undefined };
-export const AccountPropertiesEndpointsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountPropertiesEndpointsMap>;
+export const AccountPropertiesEndpointsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AccountPropertiesEndpointsMap>;
 
 /** The commitment plan association. */
 export interface CommitmentPlanAssociation {
@@ -2352,15 +2280,13 @@ export const AbusePenalty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AbusePenalty" }) as any as S.Schema<AbusePenalty>;
 
 export type AccountPropertiesNetworkInjectionsList = Array<NetworkInjection>;
-export const AccountPropertiesNetworkInjectionsList = /*@__PURE__*/ S.Array(
-  NetworkInjection,
-) as any as S.Schema<AccountPropertiesNetworkInjectionsList>;
+export const AccountPropertiesNetworkInjectionsList =
+  AccountPropertiesInputNetworkInjectionsList as any as S.Schema<AccountPropertiesNetworkInjectionsList>;
 
 /** Specifies the projects, by project name, that are associated with this resource. */
 export type AccountPropertiesAssociatedProjectsList = Array<string>;
-export const AccountPropertiesAssociatedProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountPropertiesAssociatedProjectsList>;
+export const AccountPropertiesAssociatedProjectsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesAssociatedProjectsList>;
 
 /** Properties of Cognitive Services account. */
 export interface AccountProperties {
@@ -2474,10 +2400,8 @@ export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAccountResponseTagsMap>;
+export const CreateAccountResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
 
 /** User-assigned managed identity. */
 export interface UserAssignedIdentity {
@@ -2709,10 +2633,8 @@ export const ConnectionCategory = S.String;
 
 /** Store user metadata for this connection */
 export type ConnectionPropertiesV2InputMetadataMap = { [key: string]: string | undefined };
-export const ConnectionPropertiesV2InputMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectionPropertiesV2InputMetadataMap>;
+export const ConnectionPropertiesV2InputMetadataMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ConnectionPropertiesV2InputMetadataMap>;
 
 export type ManagedPERequirement = "Required" | "NotRequired" | "NotApplicable";
 export const ManagedPERequirement = S.String;
@@ -2721,9 +2643,8 @@ export type ManagedPEStatus = "Inactive" | "Active" | "NotApplicable";
 export const ManagedPEStatus = S.String;
 
 export type ConnectionPropertiesV2InputSharedUserListList = Array<string>;
-export const ConnectionPropertiesV2InputSharedUserListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionPropertiesV2InputSharedUserListList>;
+export const ConnectionPropertiesV2InputSharedUserListList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ConnectionPropertiesV2InputSharedUserListList>;
 
 /** Connection property base schema. */
 export interface ConnectionPropertiesV2Input {
@@ -2811,15 +2732,12 @@ export const ConnectionGroup = S.String;
 
 /** Store user metadata for this connection */
 export type ConnectionPropertiesV2MetadataMap = { [key: string]: string | undefined };
-export const ConnectionPropertiesV2MetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectionPropertiesV2MetadataMap>;
+export const ConnectionPropertiesV2MetadataMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ConnectionPropertiesV2MetadataMap>;
 
 export type ConnectionPropertiesV2SharedUserListList = Array<string>;
-export const ConnectionPropertiesV2SharedUserListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionPropertiesV2SharedUserListList>;
+export const ConnectionPropertiesV2SharedUserListList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ConnectionPropertiesV2SharedUserListList>;
 
 /** Connection property base schema. */
 export interface ConnectionPropertiesV2 {
@@ -2904,10 +2822,8 @@ export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateProjectRequestTagsMap = { [key: string]: string | undefined };
-export const CreateProjectRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateProjectRequestTagsMap>;
+export const CreateProjectRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateProjectRequestTagsMap>;
 
 export interface CreateProjectRequest {
   /** The ID of the target subscription. */
@@ -2949,10 +2865,8 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of endpoint for this Cognitive Services Project. */
 export type ProjectPropertiesEndpointsMap = { [key: string]: string | undefined };
-export const ProjectPropertiesEndpointsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectPropertiesEndpointsMap>;
+export const ProjectPropertiesEndpointsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ProjectPropertiesEndpointsMap>;
 
 /** Properties of Cognitive Services Project'. */
 export interface ProjectProperties {
@@ -2979,10 +2893,8 @@ export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateProjectResponseTagsMap = { [key: string]: string | undefined };
-export const CreateProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateProjectResponseTagsMap>;
+export const CreateProjectResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateProjectResponseTagsMap>;
 
 export interface CreateProjectResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3064,17 +2976,8 @@ export interface CreateProjectConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-export const CreateProjectConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectionPropertiesV2,
-  }),
-).annotate({
-  identifier: "CreateProjectConnectionResponse",
-}) as any as S.Schema<CreateProjectConnectionResponse>;
+export const CreateProjectConnectionResponse =
+  CreateAccountConnectionResponse as any as S.Schema<CreateProjectConnectionResponse>;
 
 /** Defender for AI state on the AI resource. */
 export type DefenderForAISettingState = "Disabled" | "Enabled";
@@ -3097,10 +3000,8 @@ export const DefenderForAISettingProperties = /*@__PURE__*/ S.suspend(() =>
 export type DefenderForAISettingsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const DefenderForAISettingsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DefenderForAISettingsCreateOrUpdateRequestTagsMap>;
+export const DefenderForAISettingsCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DefenderForAISettingsCreateOrUpdateRequestTagsMap>;
 
 export interface DefenderForAISettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -3140,10 +3041,8 @@ export const DefenderForAISettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 export type DefenderForAISettingsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const DefenderForAISettingsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DefenderForAISettingsCreateOrUpdateResponseTagsMap>;
+export const DefenderForAISettingsCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DefenderForAISettingsCreateOrUpdateResponseTagsMap>;
 
 export interface DefenderForAISettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3199,9 +3098,8 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccountResponse",
-}) as any as S.Schema<DeleteAccountResponse>;
+export const DeleteAccountResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeleteAccountCapabilityHostRequest {
   /** The ID of the target subscription. */
@@ -3303,9 +3201,8 @@ export const DeleteAgentApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAgentApplicationRequest>;
 
 export interface DeleteAgentApplicationResponse {}
-export const DeleteAgentApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentApplicationResponse",
-}) as any as S.Schema<DeleteAgentApplicationResponse>;
+export const DeleteAgentApplicationResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteAgentApplicationResponse>;
 
 export interface DeleteAgentDeploymentRequest {
   /** The ID of the target subscription. */
@@ -3342,9 +3239,8 @@ export const DeleteAgentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAgentDeploymentRequest>;
 
 export interface DeleteAgentDeploymentResponse {}
-export const DeleteAgentDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentDeploymentResponse",
-}) as any as S.Schema<DeleteAgentDeploymentResponse>;
+export const DeleteAgentDeploymentResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteAgentDeploymentResponse>;
 
 export interface DeleteCommitmentPlanRequest {
   /** The ID of the target subscription. */
@@ -3375,9 +3271,8 @@ export const DeleteCommitmentPlanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommitmentPlanRequest>;
 
 export interface DeleteCommitmentPlanResponse {}
-export const DeleteCommitmentPlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCommitmentPlanResponse",
-}) as any as S.Schema<DeleteCommitmentPlanResponse>;
+export const DeleteCommitmentPlanResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteCommitmentPlanResponse>;
 
 export interface DeleteCommitmentPlanAssociationRequest {
   /** The ID of the target subscription. */
@@ -3408,11 +3303,8 @@ export const DeleteCommitmentPlanAssociationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCommitmentPlanAssociationRequest>;
 
 export interface DeleteCommitmentPlanAssociationResponse {}
-export const DeleteCommitmentPlanAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCommitmentPlanAssociationResponse",
-}) as any as S.Schema<DeleteCommitmentPlanAssociationResponse>;
+export const DeleteCommitmentPlanAssociationResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteCommitmentPlanAssociationResponse>;
 
 export interface DeleteCommitmentPlanPlanRequest {
   /** The ID of the target subscription. */
@@ -3440,11 +3332,8 @@ export const DeleteCommitmentPlanPlanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommitmentPlanPlanRequest>;
 
 export interface DeleteCommitmentPlanPlanResponse {}
-export const DeleteCommitmentPlanPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCommitmentPlanPlanResponse",
-}) as any as S.Schema<DeleteCommitmentPlanPlanResponse>;
+export const DeleteCommitmentPlanPlanResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteCommitmentPlanPlanResponse>;
 
 export interface DeleteDeploymentRequest {
   /** The ID of the target subscription. */
@@ -3473,9 +3362,8 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeploymentResponse",
-}) as any as S.Schema<DeleteDeploymentResponse>;
+export const DeleteDeploymentResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteDeploymentResponse>;
 
 export interface DeleteEncryptionScopeRequest {
   /** The ID of the target subscription. */
@@ -3506,9 +3394,8 @@ export const DeleteEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEncryptionScopeRequest>;
 
 export interface DeleteEncryptionScopeResponse {}
-export const DeleteEncryptionScopeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEncryptionScopeResponse",
-}) as any as S.Schema<DeleteEncryptionScopeResponse>;
+export const DeleteEncryptionScopeResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteEncryptionScopeResponse>;
 
 export interface DeleteManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
@@ -3539,11 +3426,8 @@ export const DeleteManagedNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedNetworkSettingsRequest>;
 
 export interface DeleteManagedNetworkSettingsResponse {}
-export const DeleteManagedNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteManagedNetworkSettingsResponse",
-}) as any as S.Schema<DeleteManagedNetworkSettingsResponse>;
+export const DeleteManagedNetworkSettingsResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteManagedNetworkSettingsResponse>;
 
 export interface DeleteOutboundRuleRequest {
   /** The ID of the target subscription. */
@@ -3577,9 +3461,8 @@ export const DeleteOutboundRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOutboundRuleRequest>;
 
 export interface DeleteOutboundRuleResponse {}
-export const DeleteOutboundRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOutboundRuleResponse",
-}) as any as S.Schema<DeleteOutboundRuleResponse>;
+export const DeleteOutboundRuleResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteOutboundRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -3610,11 +3493,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
@@ -3643,9 +3523,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectCapabilityHostRequest {
   /** The ID of the target subscription. */
@@ -3679,11 +3558,8 @@ export const DeleteProjectCapabilityHostRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectCapabilityHostRequest>;
 
 export interface DeleteProjectCapabilityHostResponse {}
-export const DeleteProjectCapabilityHostResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectCapabilityHostResponse",
-}) as any as S.Schema<DeleteProjectCapabilityHostResponse>;
+export const DeleteProjectCapabilityHostResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteProjectCapabilityHostResponse>;
 
 export interface DeleteProjectConnectionRequest {
   /** The ID of the target subscription. */
@@ -3717,9 +3593,8 @@ export const DeleteProjectConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectConnectionRequest>;
 
 export interface DeleteProjectConnectionResponse {}
-export const DeleteProjectConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteProjectConnectionResponse" },
-) as any as S.Schema<DeleteProjectConnectionResponse>;
+export const DeleteProjectConnectionResponse =
+  DeleteAccountConnectionResponse as any as S.Schema<DeleteProjectConnectionResponse>;
 
 export interface DeleteRaiBlocklistRequest {
   /** The ID of the target subscription. */
@@ -3750,9 +3625,8 @@ export const DeleteRaiBlocklistRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRaiBlocklistRequest>;
 
 export interface DeleteRaiBlocklistResponse {}
-export const DeleteRaiBlocklistResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRaiBlocklistResponse",
-}) as any as S.Schema<DeleteRaiBlocklistResponse>;
+export const DeleteRaiBlocklistResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteRaiBlocklistResponse>;
 
 export interface DeleteRaiBlocklistItemRequest {
   /** The ID of the target subscription. */
@@ -3786,15 +3660,13 @@ export const DeleteRaiBlocklistItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRaiBlocklistItemRequest>;
 
 export interface DeleteRaiBlocklistItemResponse {}
-export const DeleteRaiBlocklistItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRaiBlocklistItemResponse",
-}) as any as S.Schema<DeleteRaiBlocklistItemResponse>;
+export const DeleteRaiBlocklistItemResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteRaiBlocklistItemResponse>;
 
 /** The list of Cognitive Services RaiBlocklist Items Names. */
 export type RaiBlocklistItemsBulkDeleteRequest = Array<string>;
-export const RaiBlocklistItemsBulkDeleteRequest = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RaiBlocklistItemsBulkDeleteRequest>;
+export const RaiBlocklistItemsBulkDeleteRequest =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<RaiBlocklistItemsBulkDeleteRequest>;
 
 export interface DeleteRaiBlocklistItemBatchRequest {
   /** The ID of the target subscription. */
@@ -3827,11 +3699,8 @@ export const DeleteRaiBlocklistItemBatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRaiBlocklistItemBatchRequest>;
 
 export interface DeleteRaiBlocklistItemBatchResponse {}
-export const DeleteRaiBlocklistItemBatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRaiBlocklistItemBatchResponse",
-}) as any as S.Schema<DeleteRaiBlocklistItemBatchResponse>;
+export const DeleteRaiBlocklistItemBatchResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteRaiBlocklistItemBatchResponse>;
 
 export interface DeleteRaiExternalSafetyProviderRequest {
   /** The ID of the target subscription. */
@@ -3856,11 +3725,8 @@ export const DeleteRaiExternalSafetyProviderRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteRaiExternalSafetyProviderRequest>;
 
 export interface DeleteRaiExternalSafetyProviderResponse {}
-export const DeleteRaiExternalSafetyProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRaiExternalSafetyProviderResponse",
-}) as any as S.Schema<DeleteRaiExternalSafetyProviderResponse>;
+export const DeleteRaiExternalSafetyProviderResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteRaiExternalSafetyProviderResponse>;
 
 export interface DeleteRaiPolicyRequest {
   /** The ID of the target subscription. */
@@ -3889,9 +3755,8 @@ export const DeleteRaiPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRaiPolicyRequest" }) as any as S.Schema<DeleteRaiPolicyRequest>;
 
 export interface DeleteRaiPolicyResponse {}
-export const DeleteRaiPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRaiPolicyResponse",
-}) as any as S.Schema<DeleteRaiPolicyResponse>;
+export const DeleteRaiPolicyResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteRaiPolicyResponse>;
 
 export interface DeleteRaiToolLabelRequest {
   /** The ID of the target subscription. */
@@ -3922,9 +3787,8 @@ export const DeleteRaiToolLabelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRaiToolLabelRequest>;
 
 export interface DeleteRaiToolLabelResponse {}
-export const DeleteRaiToolLabelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRaiToolLabelResponse",
-}) as any as S.Schema<DeleteRaiToolLabelResponse>;
+export const DeleteRaiToolLabelResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteRaiToolLabelResponse>;
 
 export interface DeleteRaiTopicRequest {
   /** The ID of the target subscription. */
@@ -3953,9 +3817,8 @@ export const DeleteRaiTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRaiTopicRequest" }) as any as S.Schema<DeleteRaiTopicRequest>;
 
 export interface DeleteRaiTopicResponse {}
-export const DeleteRaiTopicResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRaiTopicResponse",
-}) as any as S.Schema<DeleteRaiTopicResponse>;
+export const DeleteRaiTopicResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteRaiTopicResponse>;
 
 export interface DeleteSubscriptionRaiPolicyRequest {
   /** The ID of the target subscription. */
@@ -3980,11 +3843,8 @@ export const DeleteSubscriptionRaiPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionRaiPolicyRequest>;
 
 export interface DeleteSubscriptionRaiPolicyResponse {}
-export const DeleteSubscriptionRaiPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSubscriptionRaiPolicyResponse",
-}) as any as S.Schema<DeleteSubscriptionRaiPolicyResponse>;
+export const DeleteSubscriptionRaiPolicyResponse =
+  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteSubscriptionRaiPolicyResponse>;
 
 /** Deployment scale type. */
 export type DeploymentScaleType = "Standard" | "Manual";
@@ -4109,10 +3969,8 @@ export const DeploymentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DeploymentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DeploymentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeploymentsCreateOrUpdateRequestTagsMap>;
+export const DeploymentsCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DeploymentsCreateOrUpdateRequestTagsMap>;
 
 export interface DeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -4182,15 +4040,12 @@ export const DeploymentScaleSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** The capabilities. */
 export type DeploymentPropertiesCapabilitiesMap = { [key: string]: string | undefined };
-export const DeploymentPropertiesCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeploymentPropertiesCapabilitiesMap>;
+export const DeploymentPropertiesCapabilitiesMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DeploymentPropertiesCapabilitiesMap>;
 
 export type DeploymentPropertiesRateLimitsList = Array<ThrottlingRule>;
-export const DeploymentPropertiesRateLimitsList = /*@__PURE__*/ S.Array(
-  ThrottlingRule,
-) as any as S.Schema<DeploymentPropertiesRateLimitsList>;
+export const DeploymentPropertiesRateLimitsList =
+  CallRateLimitRulesList as any as S.Schema<DeploymentPropertiesRateLimitsList>;
 
 /** Properties of Cognitive Services account deployment. */
 export interface DeploymentProperties {
@@ -4252,10 +4107,8 @@ export const DeploymentProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DeploymentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DeploymentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeploymentsCreateOrUpdateResponseTagsMap>;
+export const DeploymentsCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DeploymentsCreateOrUpdateResponseTagsMap>;
 
 export interface DeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4322,9 +4175,8 @@ export const DisableAgentApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableAgentApplicationRequest>;
 
 export interface DisableAgentApplicationResponse {}
-export const DisableAgentApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DisableAgentApplicationResponse" },
-) as any as S.Schema<DisableAgentApplicationResponse>;
+export const DisableAgentApplicationResponse =
+  DeleteAccountConnectionResponse as any as S.Schema<DisableAgentApplicationResponse>;
 
 export interface EnableAgentApplicationRequest {
   /** The ID of the target subscription. */
@@ -4358,9 +4210,8 @@ export const EnableAgentApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableAgentApplicationRequest>;
 
 export interface EnableAgentApplicationResponse {}
-export const EnableAgentApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableAgentApplicationResponse",
-}) as any as S.Schema<EnableAgentApplicationResponse>;
+export const EnableAgentApplicationResponse =
+  UserAssignedIdentityInput as any as S.Schema<EnableAgentApplicationResponse>;
 
 /** Enumerates the possible value of keySource for Encryption */
 export type EncryptionScopePropertiesInputKeySource =
@@ -4393,10 +4244,8 @@ export const EncryptionScopePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EncryptionScopesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EncryptionScopesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EncryptionScopesCreateOrUpdateRequestTagsMap>;
+export const EncryptionScopesCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<EncryptionScopesCreateOrUpdateRequestTagsMap>;
 
 export interface EncryptionScopesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -4473,10 +4322,8 @@ export const EncryptionScopeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EncryptionScopesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EncryptionScopesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EncryptionScopesCreateOrUpdateResponseTagsMap>;
+export const EncryptionScopesCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<EncryptionScopesCreateOrUpdateResponseTagsMap>;
 
 export interface EncryptionScopesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4533,10 +4380,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 export interface GetAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4562,21 +4407,7 @@ export interface GetAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AccountProperties),
-    tags: S.optional(GetAccountResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    sku: S.optional(Sku),
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "GetAccountResponse" }) as any as S.Schema<GetAccountResponse>;
+export const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
 
 export interface GetAccountCapabilityHostRequest {
   /** The ID of the target subscription. */
@@ -4618,17 +4449,8 @@ export interface GetAccountCapabilityHostResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostProperties;
 }
-export const GetAccountCapabilityHostResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CapabilityHostProperties,
-  }),
-).annotate({
-  identifier: "GetAccountCapabilityHostResponse",
-}) as any as S.Schema<GetAccountCapabilityHostResponse>;
+export const GetAccountCapabilityHostResponse =
+  AccountCapabilityHostsCreateOrUpdateResponse as any as S.Schema<GetAccountCapabilityHostResponse>;
 
 export interface GetAccountConnectionRequest {
   /** The ID of the target subscription. */
@@ -4670,17 +4492,8 @@ export interface GetAccountConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-export const GetAccountConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectionPropertiesV2,
-  }),
-).annotate({
-  identifier: "GetAccountConnectionResponse",
-}) as any as S.Schema<GetAccountConnectionResponse>;
+export const GetAccountConnectionResponse =
+  CreateAccountConnectionResponse as any as S.Schema<GetAccountConnectionResponse>;
 
 export interface GetAgentApplicationRequest {
   /** The ID of the target subscription. */
@@ -4725,17 +4538,8 @@ export interface GetAgentApplicationResponse {
   /** [Required] Additional attributes of the entity. */
   properties: AgenticApplicationProperties;
 }
-export const GetAgentApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AgenticApplicationProperties,
-  }),
-).annotate({
-  identifier: "GetAgentApplicationResponse",
-}) as any as S.Schema<GetAgentApplicationResponse>;
+export const GetAgentApplicationResponse =
+  AgentApplicationsCreateOrUpdateResponse as any as S.Schema<GetAgentApplicationResponse>;
 
 export interface GetAgentDeploymentRequest {
   /** The ID of the target subscription. */
@@ -4783,17 +4587,8 @@ export interface GetAgentDeploymentResponse {
   /** [Required] Additional attributes of the entity. */
   properties: AgentDeploymentProperties;
 }
-export const GetAgentDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AgentDeploymentProperties,
-  }),
-).annotate({
-  identifier: "GetAgentDeploymentResponse",
-}) as any as S.Schema<GetAgentDeploymentResponse>;
+export const GetAgentDeploymentResponse =
+  AgentDeploymentsCreateOrUpdateResponse as any as S.Schema<GetAgentDeploymentResponse>;
 
 export interface GetCommitmentPlanRequest {
   /** The ID of the target subscription. */
@@ -4823,10 +4618,8 @@ export const GetCommitmentPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCommitmentPlanResponseTagsMap = { [key: string]: string | undefined };
-export const GetCommitmentPlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCommitmentPlanResponseTagsMap>;
+export const GetCommitmentPlanResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetCommitmentPlanResponseTagsMap>;
 
 export interface GetCommitmentPlanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4850,22 +4643,8 @@ export interface GetCommitmentPlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-export const GetCommitmentPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CommitmentPlanProperties),
-    tags: S.optional(GetCommitmentPlanResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "GetCommitmentPlanResponse",
-}) as any as S.Schema<GetCommitmentPlanResponse>;
+export const GetCommitmentPlanResponse =
+  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<GetCommitmentPlanResponse>;
 
 export interface GetCommitmentPlanAssociationRequest {
   /** The ID of the target subscription. */
@@ -4897,10 +4676,8 @@ export const GetCommitmentPlanAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCommitmentPlanAssociationResponseTagsMap = { [key: string]: string | undefined };
-export const GetCommitmentPlanAssociationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCommitmentPlanAssociationResponseTagsMap>;
+export const GetCommitmentPlanAssociationResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetCommitmentPlanAssociationResponseTagsMap>;
 
 export interface GetCommitmentPlanAssociationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4918,19 +4695,8 @@ export interface GetCommitmentPlanAssociationResponse {
   /** Resource tags. */
   tags?: GetCommitmentPlanAssociationResponseTagsMap;
 }
-export const GetCommitmentPlanAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CommitmentPlanAccountAssociationProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(GetCommitmentPlanAssociationResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetCommitmentPlanAssociationResponse",
-}) as any as S.Schema<GetCommitmentPlanAssociationResponse>;
+export const GetCommitmentPlanAssociationResponse =
+  CommitmentPlansCreateOrUpdateAssociationResponse as any as S.Schema<GetCommitmentPlanAssociationResponse>;
 
 export interface GetCommitmentPlanPlanRequest {
   /** The ID of the target subscription. */
@@ -4959,10 +4725,8 @@ export const GetCommitmentPlanPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCommitmentPlanPlanResponseTagsMap = { [key: string]: string | undefined };
-export const GetCommitmentPlanPlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCommitmentPlanPlanResponseTagsMap>;
+export const GetCommitmentPlanPlanResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetCommitmentPlanPlanResponseTagsMap>;
 
 export interface GetCommitmentPlanPlanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4986,22 +4750,8 @@ export interface GetCommitmentPlanPlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-export const GetCommitmentPlanPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CommitmentPlanProperties),
-    tags: S.optional(GetCommitmentPlanPlanResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "GetCommitmentPlanPlanResponse",
-}) as any as S.Schema<GetCommitmentPlanPlanResponse>;
+export const GetCommitmentPlanPlanResponse =
+  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<GetCommitmentPlanPlanResponse>;
 
 export interface GetDefenderForAISettingsRequest {
   /** The ID of the target subscription. */
@@ -5033,10 +4783,8 @@ export const GetDefenderForAISettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDefenderForAISettingsResponseTagsMap = { [key: string]: string | undefined };
-export const GetDefenderForAISettingsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDefenderForAISettingsResponseTagsMap>;
+export const GetDefenderForAISettingsResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetDefenderForAISettingsResponseTagsMap>;
 
 export interface GetDefenderForAISettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5054,19 +4802,8 @@ export interface GetDefenderForAISettingsResponse {
   /** Resource tags. */
   tags?: GetDefenderForAISettingsResponseTagsMap;
 }
-export const GetDefenderForAISettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DefenderForAISettingProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(GetDefenderForAISettingsResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetDefenderForAISettingsResponse",
-}) as any as S.Schema<GetDefenderForAISettingsResponse>;
+export const GetDefenderForAISettingsResponse =
+  DefenderForAISettingsCreateOrUpdateResponse as any as S.Schema<GetDefenderForAISettingsResponse>;
 
 export interface GetDeletedAccountRequest {
   /** The ID of the target subscription. */
@@ -5096,10 +4833,8 @@ export const GetDeletedAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDeletedAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetDeletedAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeletedAccountResponseTagsMap>;
+export const GetDeletedAccountResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetDeletedAccountResponseTagsMap>;
 
 export interface GetDeletedAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5171,10 +4906,8 @@ export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDeploymentResponseTagsMap = { [key: string]: string | undefined };
-export const GetDeploymentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeploymentResponseTagsMap>;
+export const GetDeploymentResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetDeploymentResponseTagsMap>;
 
 export interface GetDeploymentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5237,10 +4970,8 @@ export const GetEncryptionScopeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEncryptionScopeResponseTagsMap = { [key: string]: string | undefined };
-export const GetEncryptionScopeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEncryptionScopeResponseTagsMap>;
+export const GetEncryptionScopeResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetEncryptionScopeResponseTagsMap>;
 
 export interface GetEncryptionScopeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5258,19 +4989,8 @@ export interface GetEncryptionScopeResponse {
   /** Resource tags. */
   tags?: GetEncryptionScopeResponseTagsMap;
 }
-export const GetEncryptionScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EncryptionScopeProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(GetEncryptionScopeResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetEncryptionScopeResponse",
-}) as any as S.Schema<GetEncryptionScopeResponse>;
+export const GetEncryptionScopeResponse =
+  EncryptionScopesCreateOrUpdateResponse as any as S.Schema<GetEncryptionScopeResponse>;
 
 export interface GetManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
@@ -5317,9 +5037,8 @@ export type RuleType = "FQDN" | "PrivateEndpoint" | "ServiceTag";
 export const RuleType = S.String;
 
 export type OutboundRuleParentRuleNamesList = Array<string>;
-export const OutboundRuleParentRuleNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OutboundRuleParentRuleNamesList>;
+export const OutboundRuleParentRuleNamesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<OutboundRuleParentRuleNamesList>;
 
 /** Outbound Rule for the managed network of a cognitive services account. */
 export interface OutboundRule {
@@ -5494,9 +5213,8 @@ export const GetNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ S.s
 
 /** IDs of resources that can be associated to the same perimeter to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
-export const ProvisioningIssuePropertiesSuggestedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
+export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Direction of Access Rule */
 export type NspAccessRuleDirection = "Inbound" | "Outbound";
@@ -5559,9 +5277,7 @@ export const NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimete
 export type NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList =
   Array<string>;
 export const NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList>;
+  NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList as any as S.Schema<NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** The Properties of Network Security Perimeter Rule */
 export interface NetworkSecurityPerimeterAccessRuleProperties {
@@ -5679,15 +5395,13 @@ export const NetworkSecurityPerimeterConfigurationAssociationInfo = /*@__PURE__*
 
 export type NetworkSecurityPerimeterProfileInfoAccessRulesList =
   Array<NetworkSecurityPerimeterAccessRule>;
-export const NetworkSecurityPerimeterProfileInfoAccessRulesList = /*@__PURE__*/ S.Array(
-  NetworkSecurityPerimeterAccessRule,
-) as any as S.Schema<NetworkSecurityPerimeterProfileInfoAccessRulesList>;
+export const NetworkSecurityPerimeterProfileInfoAccessRulesList =
+  ProvisioningIssuePropertiesSuggestedAccessRulesList as any as S.Schema<NetworkSecurityPerimeterProfileInfoAccessRulesList>;
 
 /** List of enabled log categories */
 export type NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList = Array<string>;
-export const NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList>;
+export const NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList>;
 
 /** Network Security Perimeter Profile Information */
 export interface NetworkSecurityPerimeterProfileInfo {
@@ -5859,19 +5573,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The location of the private endpoint connection */
   location?: string;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    etag: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetProjectRequest {
   /** The ID of the target subscription. */
@@ -5901,10 +5604,8 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetProjectResponseTagsMap = { [key: string]: string | undefined };
-export const GetProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetProjectResponseTagsMap>;
+export const GetProjectResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetProjectResponseTagsMap>;
 
 export interface GetProjectResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5926,19 +5627,7 @@ export interface GetProjectResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectProperties),
-    tags: S.optional(GetProjectResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "GetProjectResponse" }) as any as S.Schema<GetProjectResponse>;
+export const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
 
 export interface GetProjectCapabilityHostRequest {
   /** The ID of the target subscription. */
@@ -5973,27 +5662,23 @@ export const GetProjectCapabilityHostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of AI services connections. */
 export type ProjectCapabilityHostPropertiesAiServicesConnectionsList = Array<string>;
-export const ProjectCapabilityHostPropertiesAiServicesConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCapabilityHostPropertiesAiServicesConnectionsList>;
+export const ProjectCapabilityHostPropertiesAiServicesConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesAiServicesConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type ProjectCapabilityHostPropertiesVectorStoreConnectionsList = Array<string>;
-export const ProjectCapabilityHostPropertiesVectorStoreConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCapabilityHostPropertiesVectorStoreConnectionsList>;
+export const ProjectCapabilityHostPropertiesVectorStoreConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesVectorStoreConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type ProjectCapabilityHostPropertiesStorageConnectionsList = Array<string>;
-export const ProjectCapabilityHostPropertiesStorageConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCapabilityHostPropertiesStorageConnectionsList>;
+export const ProjectCapabilityHostPropertiesStorageConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesStorageConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type ProjectCapabilityHostPropertiesThreadStorageConnectionsList = Array<string>;
-export const ProjectCapabilityHostPropertiesThreadStorageConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCapabilityHostPropertiesThreadStorageConnectionsList>;
+export const ProjectCapabilityHostPropertiesThreadStorageConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesThreadStorageConnectionsList>;
 
 export interface ProjectCapabilityHostProperties {
   /** List of AI services connections. */
@@ -6092,17 +5777,8 @@ export interface GetProjectConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-export const GetProjectConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectionPropertiesV2,
-  }),
-).annotate({
-  identifier: "GetProjectConnectionResponse",
-}) as any as S.Schema<GetProjectConnectionResponse>;
+export const GetProjectConnectionResponse =
+  CreateAccountConnectionResponse as any as S.Schema<GetProjectConnectionResponse>;
 
 export interface GetQuotaTierRequest {
   /** The ID of the target subscription. */
@@ -6224,10 +5900,8 @@ export const GetRaiBlocklistRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRaiBlocklistResponseTagsMap = { [key: string]: string | undefined };
-export const GetRaiBlocklistResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRaiBlocklistResponseTagsMap>;
+export const GetRaiBlocklistResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiBlocklistResponseTagsMap>;
 
 export interface GetRaiBlocklistResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6290,10 +5964,8 @@ export const GetRaiBlocklistItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRaiBlocklistItemResponseTagsMap = { [key: string]: string | undefined };
-export const GetRaiBlocklistItemResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRaiBlocklistItemResponseTagsMap>;
+export const GetRaiBlocklistItemResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiBlocklistItemResponseTagsMap>;
 
 export interface GetRaiBlocklistItemResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6464,10 +6136,8 @@ export const RaiExternalSafetyProviderSchemaProperties = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type GetRaiExternalSafetyProviderResponseTagsMap = { [key: string]: string | undefined };
-export const GetRaiExternalSafetyProviderResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRaiExternalSafetyProviderResponseTagsMap>;
+export const GetRaiExternalSafetyProviderResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiExternalSafetyProviderResponseTagsMap>;
 
 export interface GetRaiExternalSafetyProviderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6844,10 +6514,8 @@ export const RaiPolicyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRaiPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetRaiPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRaiPolicyResponseTagsMap>;
+export const GetRaiPolicyResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiPolicyResponseTagsMap>;
 
 export interface GetRaiPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6907,10 +6575,8 @@ export const GetRaiToolLabelRequest = /*@__PURE__*/ S.suspend(() =>
 export type RaiToolLabelPropertiesAccountScopeLabelValuesMap = {
   [key: string]: string | undefined;
 };
-export const RaiToolLabelPropertiesAccountScopeLabelValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiToolLabelPropertiesAccountScopeLabelValuesMap>;
+export const RaiToolLabelPropertiesAccountScopeLabelValuesMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelPropertiesAccountScopeLabelValuesMap>;
 
 /** Account-level tool label definition. */
 export interface RaiToolLabelPropertiesAccountScope {
@@ -6929,10 +6595,8 @@ export const RaiToolLabelPropertiesAccountScope = /*@__PURE__*/ S.suspend(() =>
 export type RaiToolLabelPropertiesProjectScopesItemLabelValuesMap = {
   [key: string]: string | undefined;
 };
-export const RaiToolLabelPropertiesProjectScopesItemLabelValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiToolLabelPropertiesProjectScopesItemLabelValuesMap>;
+export const RaiToolLabelPropertiesProjectScopesItemLabelValuesMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelPropertiesProjectScopesItemLabelValuesMap>;
 
 export interface RaiToolLabelPropertiesProjectScopesItem {
   /** Project name to which this scope applies. */
@@ -6975,10 +6639,8 @@ export const RaiToolLabelProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRaiToolLabelResponseTagsMap = { [key: string]: string | undefined };
-export const GetRaiToolLabelResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRaiToolLabelResponseTagsMap>;
+export const GetRaiToolLabelResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiToolLabelResponseTagsMap>;
 
 export interface GetRaiToolLabelResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7068,10 +6730,8 @@ export const RaiTopicProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetRaiTopicResponseTagsMap = { [key: string]: string | undefined };
-export const GetRaiTopicResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetRaiTopicResponseTagsMap>;
+export const GetRaiTopicResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiTopicResponseTagsMap>;
 
 export interface GetRaiTopicResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7125,10 +6785,8 @@ export const GetSubscriptionRaiPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSubscriptionRaiPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetSubscriptionRaiPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSubscriptionRaiPolicyResponseTagsMap>;
+export const GetSubscriptionRaiPolicyResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetSubscriptionRaiPolicyResponseTagsMap>;
 
 export interface GetSubscriptionRaiPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7184,10 +6842,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsMap>;
+export const AccountTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AccountTagsMap>;
 
 /** Cognitive Services account is an Azure resource representing the provisioned account, it's type, location and SKU. */
 export interface Account {
@@ -7214,21 +6870,7 @@ export interface Account {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AccountProperties),
-    tags: S.optional(AccountTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    sku: S.optional(Sku),
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
+export const Account = CreateAccountResponse as any as S.Schema<Account>;
 
 /** Gets the list of Cognitive Services accounts and their properties. */
 export type AccountListResultValueList = Array<Account>;
@@ -7367,17 +7009,8 @@ export interface ConnectionPropertiesV2BasicResource {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-export const ConnectionPropertiesV2BasicResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectionPropertiesV2,
-  }),
-).annotate({
-  identifier: "ConnectionPropertiesV2BasicResource",
-}) as any as S.Schema<ConnectionPropertiesV2BasicResource>;
+export const ConnectionPropertiesV2BasicResource =
+  CreateAccountConnectionResponse as any as S.Schema<ConnectionPropertiesV2BasicResource>;
 
 export type ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
   Array<ConnectionPropertiesV2BasicResource>;
@@ -7546,17 +7179,13 @@ export const AccountModelSkusList = /*@__PURE__*/ S.Array(
 
 /** The capabilities. */
 export type AccountModelCapabilitiesMap = { [key: string]: string | undefined };
-export const AccountModelCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountModelCapabilitiesMap>;
+export const AccountModelCapabilitiesMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AccountModelCapabilitiesMap>;
 
 /** The capabilities for finetune models. */
 export type AccountModelFinetuneCapabilitiesMap = { [key: string]: string | undefined };
-export const AccountModelFinetuneCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountModelFinetuneCapabilitiesMap>;
+export const AccountModelFinetuneCapabilitiesMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AccountModelFinetuneCapabilitiesMap>;
 
 /** Indicates whether the deprecation date is a confirmed planned end-of-life date or an estimated deprecation date. When 'Planned', the deprecation date represents a confirmed and communicated model end-of-life date. When 'Tentative', the deprecation date is an estimated timeline that may be subject to change. */
 export type DeprecationStatus = "Planned" | "Tentative";
@@ -7995,9 +7624,8 @@ export const AgentReferenceResourceArmPaginatedResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AgentReferenceResourceArmPaginatedResult>;
 
 export type ListAgentApplicationsRequestNamesList = Array<string>;
-export const ListAgentApplicationsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAgentApplicationsRequestNamesList>;
+export const ListAgentApplicationsRequestNamesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ListAgentApplicationsRequestNamesList>;
 
 export interface ListAgentApplicationsRequest {
   /** The ID of the target subscription. */
@@ -8094,9 +7722,8 @@ export const AgentApplicationResourceArmPaginatedResult = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<AgentApplicationResourceArmPaginatedResult>;
 
 export type ListAgentDeploymentsRequestNamesList = Array<string>;
-export const ListAgentDeploymentsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAgentDeploymentsRequestNamesList>;
+export const ListAgentDeploymentsRequestNamesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ListAgentDeploymentsRequestNamesList>;
 
 export interface ListAgentDeploymentsRequest {
   /** The ID of the target subscription. */
@@ -8216,10 +7843,8 @@ export const ListCommitmentPlanAssociationsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type CommitmentPlanAccountAssociationTagsMap = { [key: string]: string | undefined };
-export const CommitmentPlanAccountAssociationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlanAccountAssociationTagsMap>;
+export const CommitmentPlanAccountAssociationTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlanAccountAssociationTagsMap>;
 
 /** The commitment plan association. */
 export interface CommitmentPlanAccountAssociation {
@@ -8238,19 +7863,8 @@ export interface CommitmentPlanAccountAssociation {
   /** Resource tags. */
   tags?: CommitmentPlanAccountAssociationTagsMap;
 }
-export const CommitmentPlanAccountAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CommitmentPlanAccountAssociationProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(CommitmentPlanAccountAssociationTagsMap),
-  }),
-).annotate({
-  identifier: "CommitmentPlanAccountAssociation",
-}) as any as S.Schema<CommitmentPlanAccountAssociation>;
+export const CommitmentPlanAccountAssociation =
+  CommitmentPlansCreateOrUpdateAssociationResponse as any as S.Schema<CommitmentPlanAccountAssociation>;
 
 /** Gets the list of Cognitive Services Commitment Plan Account Association and their properties. */
 export type CommitmentPlanAccountAssociationListResultValueList =
@@ -8299,10 +7913,8 @@ export const ListCommitmentPlanPlansByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type CommitmentPlanTagsMap = { [key: string]: string | undefined };
-export const CommitmentPlanTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommitmentPlanTagsMap>;
+export const CommitmentPlanTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlanTagsMap>;
 
 /** Cognitive Services account commitment plan. */
 export interface CommitmentPlan {
@@ -8521,10 +8133,8 @@ export const ListDefenderForAISettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DefenderForAISettingTagsMap = { [key: string]: string | undefined };
-export const DefenderForAISettingTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DefenderForAISettingTagsMap>;
+export const DefenderForAISettingTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DefenderForAISettingTagsMap>;
 
 /** The Defender for AI resource. */
 export interface DefenderForAISetting {
@@ -8621,10 +8231,8 @@ export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DeploymentTagsMap = { [key: string]: string | undefined };
-export const DeploymentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeploymentTagsMap>;
+export const DeploymentTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DeploymentTagsMap>;
 
 /** Cognitive Services account deployment. */
 export interface Deployment {
@@ -8645,18 +8253,7 @@ export interface Deployment {
   /** Resource tags. */
   tags?: DeploymentTagsMap;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-    tags: S.optional(DeploymentTagsMap),
-  }),
-).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
+export const Deployment = GetDeploymentResponse as any as S.Schema<Deployment>;
 
 /** Gets the list of Cognitive Services accounts Deployment and their properties. */
 export type DeploymentListResultValueList = Array<Deployment>;
@@ -8770,10 +8367,8 @@ export const ListEncryptionScopesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EncryptionScopeTagsMap = { [key: string]: string | undefined };
-export const EncryptionScopeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EncryptionScopeTagsMap>;
+export const EncryptionScopeTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<EncryptionScopeTagsMap>;
 
 /** Cognitive Services EncryptionScope */
 export interface EncryptionScope {
@@ -8969,17 +8564,8 @@ export interface ManagedNetworkSettingsPropertiesBasicResource {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsProperties;
 }
-export const ManagedNetworkSettingsPropertiesBasicResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedNetworkSettingsProperties),
-  }),
-).annotate({
-  identifier: "ManagedNetworkSettingsPropertiesBasicResource",
-}) as any as S.Schema<ManagedNetworkSettingsPropertiesBasicResource>;
+export const ManagedNetworkSettingsPropertiesBasicResource =
+  GetManagedNetworkSettingsResponse as any as S.Schema<ManagedNetworkSettingsPropertiesBasicResource>;
 
 /** The list of managed network settings of an account. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
 export type ManagedNetworkListResultValueList =
@@ -9128,17 +8714,8 @@ export interface NetworkSecurityPerimeterConfiguration {
   /** NSP Configuration properties. */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
-  }),
-).annotate({
-  identifier: "NetworkSecurityPerimeterConfiguration",
-}) as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
+export const NetworkSecurityPerimeterConfiguration =
+  GetNetworkSecurityPerimeterConfigurationResponse as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
 
 /** Array of NSP configurations List Result for an Cognitive Services account. */
 export type NetworkSecurityPerimeterConfigurationListValueList =
@@ -9343,9 +8920,8 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  AccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionListResult {
@@ -9387,15 +8963,13 @@ export const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -9596,10 +9170,8 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
-export const ProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectTagsMap>;
+export const ProjectTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ProjectTagsMap>;
 
 /** Cognitive Services project is an Azure resource representing the provisioned account's project, it's type, location and SKU. */
 export interface Project {
@@ -9622,19 +9194,7 @@ export interface Project {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectProperties),
-    tags: S.optional(ProjectTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
+export const Project = CreateProjectResponse as any as S.Schema<Project>;
 
 /** Gets the list of Cognitive Services projects and their properties. */
 export type ProjectListResultValueList = Array<Project>;
@@ -9688,15 +9248,7 @@ export interface QuotaTier {
   /** Properties of quota tier resource. */
   properties?: QuotaTierProperties;
 }
-export const QuotaTier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(QuotaTierProperties),
-  }),
-).annotate({ identifier: "QuotaTier" }) as any as S.Schema<QuotaTier>;
+export const QuotaTier = GetQuotaTierResponse as any as S.Schema<QuotaTier>;
 
 /** Gets the list of Quota Tiers and their properties. */
 export type QuotaTierListResultValueList = Array<QuotaTier>;
@@ -9748,10 +9300,8 @@ export const ListRaiBlocklistItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiBlocklistItemTagsMap = { [key: string]: string | undefined };
-export const RaiBlocklistItemTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiBlocklistItemTagsMap>;
+export const RaiBlocklistItemTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistItemTagsMap>;
 
 /** Cognitive Services RaiBlocklist Item. */
 export interface RaiBlocklistItem {
@@ -9827,10 +9377,8 @@ export const ListRaiBlocklistsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiBlocklistTagsMap = { [key: string]: string | undefined };
-export const RaiBlocklistTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiBlocklistTagsMap>;
+export const RaiBlocklistTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistTagsMap>;
 
 /** Cognitive Services RaiBlocklist. */
 export interface RaiBlocklist {
@@ -9849,17 +9397,7 @@ export interface RaiBlocklist {
   /** Resource tags. */
   tags?: RaiBlocklistTagsMap;
 }
-export const RaiBlocklist = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiBlocklistProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiBlocklistTagsMap),
-  }),
-).annotate({ identifier: "RaiBlocklist" }) as any as S.Schema<RaiBlocklist>;
+export const RaiBlocklist = GetRaiBlocklistResponse as any as S.Schema<RaiBlocklist>;
 
 /** The list of RaiBlocklist. */
 export type RaiBlockListResultValueList = Array<RaiBlocklist>;
@@ -9969,10 +9507,8 @@ export const ListRaiExternalSafetyProvidersRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type RaiExternalSafetyProviderSchemaTagsMap = { [key: string]: string | undefined };
-export const RaiExternalSafetyProviderSchemaTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiExternalSafetyProviderSchemaTagsMap>;
+export const RaiExternalSafetyProviderSchemaTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiExternalSafetyProviderSchemaTagsMap>;
 
 /** Cognitive Services Rai External Safety provider Schema. */
 export interface RaiExternalSafetyProviderSchema {
@@ -9991,19 +9527,8 @@ export interface RaiExternalSafetyProviderSchema {
   /** Resource tags. */
   tags?: RaiExternalSafetyProviderSchemaTagsMap;
 }
-export const RaiExternalSafetyProviderSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiExternalSafetyProviderSchemaProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiExternalSafetyProviderSchemaTagsMap),
-  }),
-).annotate({
-  identifier: "RaiExternalSafetyProviderSchema",
-}) as any as S.Schema<RaiExternalSafetyProviderSchema>;
+export const RaiExternalSafetyProviderSchema =
+  GetRaiExternalSafetyProviderResponse as any as S.Schema<RaiExternalSafetyProviderSchema>;
 
 /** The list of RaiExternalSafetyProvider. */
 export type RaiExternalSafetyProviderResultValueList = Array<RaiExternalSafetyProviderSchema>;
@@ -10052,10 +9577,8 @@ export const ListRaiPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiPolicyTagsMap = { [key: string]: string | undefined };
-export const RaiPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiPolicyTagsMap>;
+export const RaiPolicyTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiPolicyTagsMap>;
 
 /** Cognitive Services RaiPolicy. */
 export interface RaiPolicy {
@@ -10074,17 +9597,7 @@ export interface RaiPolicy {
   /** Resource tags. */
   tags?: RaiPolicyTagsMap;
 }
-export const RaiPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiPolicyProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiPolicyTagsMap),
-  }),
-).annotate({ identifier: "RaiPolicy" }) as any as S.Schema<RaiPolicy>;
+export const RaiPolicy = GetRaiPolicyResponse as any as S.Schema<RaiPolicy>;
 
 /** The list of RaiPolicy. */
 export type RaiPolicyListResultValueList = Array<RaiPolicy>;
@@ -10131,10 +9644,8 @@ export const ListRaiToolLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiToolLabelTagsMap = { [key: string]: string | undefined };
-export const RaiToolLabelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiToolLabelTagsMap>;
+export const RaiToolLabelTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelTagsMap>;
 
 /** Cognitive Services RAI Tool Label resource. */
 export interface RaiToolLabel {
@@ -10153,17 +9664,7 @@ export interface RaiToolLabel {
   /** Resource tags. */
   tags?: RaiToolLabelTagsMap;
 }
-export const RaiToolLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiToolLabelProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiToolLabelTagsMap),
-  }),
-).annotate({ identifier: "RaiToolLabel" }) as any as S.Schema<RaiToolLabel>;
+export const RaiToolLabel = GetRaiToolLabelResponse as any as S.Schema<RaiToolLabel>;
 
 /** The list of RAI Tool Labels. */
 export type RaiToolLabelResultValueList = Array<RaiToolLabel>;
@@ -10210,10 +9711,8 @@ export const ListRaiTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiTopicTagsMap = { [key: string]: string | undefined };
-export const RaiTopicTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiTopicTagsMap>;
+export const RaiTopicTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiTopicTagsMap>;
 
 /** Cognitive Services Rai Topic. */
 export interface RaiTopic {
@@ -10232,17 +9731,7 @@ export interface RaiTopic {
   /** Resource tags. */
   tags?: RaiTopicTagsMap;
 }
-export const RaiTopic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiTopicProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiTopicTagsMap),
-  }),
-).annotate({ identifier: "RaiTopic" }) as any as S.Schema<RaiTopic>;
+export const RaiTopic = GetRaiTopicResponse as any as S.Schema<RaiTopic>;
 
 /** The list of RaiTopic. */
 export type RaiTopicResultValueList = Array<RaiTopic>;
@@ -10283,9 +9772,8 @@ export const ListResourceSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
-export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationsList>;
+export const ResourceSkuLocationsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuLocationsList>;
 
 /** The type of restrictions. */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
@@ -10293,21 +9781,18 @@ export const ResourceSkuRestrictionsType = S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
-export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+export const ResourceSkuRestrictionsValuesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
-export const ResourceSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
+export const ResourceSkuRestrictionInfoLocationsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
-export const ResourceSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
+export const ResourceSkuRestrictionInfoZonesList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
 
 export interface ResourceSkuRestrictionInfo {
   /** Locations where the SKU is restricted */
@@ -10463,17 +9948,8 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileResponse {
   /** NSP Configuration properties. */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-export const NetworkSecurityPerimeterConfigurationsReconcileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
-  }),
-).annotate({
-  identifier: "NetworkSecurityPerimeterConfigurationsReconcileResponse",
-}) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>;
+export const NetworkSecurityPerimeterConfigurationsReconcileResponse =
+  GetNetworkSecurityPerimeterConfigurationResponse as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>;
 
 /** Outbound Rule for the managed network of a cognitive services account. */
 export interface OutboundRuleInput {
@@ -10541,17 +10017,8 @@ export interface OutboundRuleCreateOrUpdateResponse {
   /** Outbound Rule for the managed network of a cognitive services account. */
   properties: OutboundRule;
 }
-export const OutboundRuleCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: OutboundRule,
-  }),
-).annotate({
-  identifier: "OutboundRuleCreateOrUpdateResponse",
-}) as any as S.Schema<OutboundRuleCreateOrUpdateResponse>;
+export const OutboundRuleCreateOrUpdateResponse =
+  OutboundRuleBasicResource as any as S.Schema<OutboundRuleCreateOrUpdateResponse>;
 
 /** Dictionary of <OutboundRule> */
 export type ManagedNetworkSettingsExInputOutboundRulesMap = {
@@ -10642,17 +10109,8 @@ export interface PatchManagedNetworkSettingsResponse {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsProperties;
 }
-export const PatchManagedNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedNetworkSettingsProperties),
-  }),
-).annotate({
-  identifier: "PatchManagedNetworkSettingsResponse",
-}) as any as S.Schema<PatchManagedNetworkSettingsResponse>;
+export const PatchManagedNetworkSettingsResponse =
+  GetManagedNetworkSettingsResponse as any as S.Schema<PatchManagedNetworkSettingsResponse>;
 
 export interface PauseDeploymentRequest {
   /** The ID of the target subscription. */
@@ -10682,10 +10140,8 @@ export const PauseDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PauseDeploymentResponseTagsMap = { [key: string]: string | undefined };
-export const PauseDeploymentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PauseDeploymentResponseTagsMap>;
+export const PauseDeploymentResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<PauseDeploymentResponseTagsMap>;
 
 export interface PauseDeploymentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10705,27 +10161,15 @@ export interface PauseDeploymentResponse {
   /** Resource tags. */
   tags?: PauseDeploymentResponseTagsMap;
 }
-export const PauseDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-    tags: S.optional(PauseDeploymentResponseTagsMap),
-  }),
-).annotate({ identifier: "PauseDeploymentResponse" }) as any as S.Schema<PauseDeploymentResponse>;
+export const PauseDeploymentResponse =
+  GetDeploymentResponse as any as S.Schema<PauseDeploymentResponse>;
 
 /** Dictionary of <OutboundRule> */
 export type ManagedNetworkSettingsInputOutboundRulesMap = {
   [key: string]: OutboundRuleInput | undefined;
 };
-export const ManagedNetworkSettingsInputOutboundRulesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OutboundRuleInput,
-) as any as S.Schema<ManagedNetworkSettingsInputOutboundRulesMap>;
+export const ManagedNetworkSettingsInputOutboundRulesMap =
+  ManagedNetworkSettingsExInputOutboundRulesMap as any as S.Schema<ManagedNetworkSettingsInputOutboundRulesMap>;
 
 /** Managed Network settings for a cognitive services account. */
 export interface ManagedNetworkSettingsInput {
@@ -10740,17 +10184,8 @@ export interface ManagedNetworkSettingsInput {
   /** The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled. */
   managedNetworkKind?: ManagedNetworkKind | (string & {});
 }
-export const ManagedNetworkSettingsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isolationMode: S.optional(IsolationMode),
-    outboundRules: S.optional(S.NullOr(ManagedNetworkSettingsInputOutboundRulesMap)),
-    status: S.optional(ManagedNetworkProvisionStatus),
-    firewallSku: S.optional(FirewallSku),
-    managedNetworkKind: S.optional(ManagedNetworkKind),
-  }),
-).annotate({
-  identifier: "ManagedNetworkSettingsInput",
-}) as any as S.Schema<ManagedNetworkSettingsInput>;
+export const ManagedNetworkSettingsInput =
+  ManagedNetworkSettingsExInput as any as S.Schema<ManagedNetworkSettingsInput>;
 
 export interface PostOutboundRuleRequest {
   /** The ID of the target subscription. */
@@ -10795,21 +10230,12 @@ export interface PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConne
   actionsRequired?: string;
 }
 export const PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(PrivateEndpointServiceConnectionStatus),
-      description: S.optional(S.String),
-      actionsRequired: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState",
-  }) as any as S.Schema<PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState>;
+  PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState as any as S.Schema<PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState>;
 
 /** The private link resource group ids. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -10881,44 +10307,28 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The location of the private endpoint connection */
   location?: string;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    etag: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 /** List of AI services connections. */
 export type ProjectCapabilityHostPropertiesInputAiServicesConnectionsList = Array<string>;
-export const ProjectCapabilityHostPropertiesInputAiServicesConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCapabilityHostPropertiesInputAiServicesConnectionsList>;
+export const ProjectCapabilityHostPropertiesInputAiServicesConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesInputAiServicesConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList = Array<string>;
-export const ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList>;
+export const ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type ProjectCapabilityHostPropertiesInputStorageConnectionsList = Array<string>;
-export const ProjectCapabilityHostPropertiesInputStorageConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectCapabilityHostPropertiesInputStorageConnectionsList>;
+export const ProjectCapabilityHostPropertiesInputStorageConnectionsList =
+  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesInputStorageConnectionsList>;
 
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList = Array<string>;
 export const ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList>;
+  NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList as any as S.Schema<ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList>;
 
 export interface ProjectCapabilityHostPropertiesInput {
   /** List of AI services connections. */
@@ -10995,17 +10405,8 @@ export interface ProjectCapabilityHostsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ProjectCapabilityHostProperties;
 }
-export const ProjectCapabilityHostsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ProjectCapabilityHostProperties,
-  }),
-).annotate({
-  identifier: "ProjectCapabilityHostsCreateOrUpdateResponse",
-}) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateResponse>;
+export const ProjectCapabilityHostsCreateOrUpdateResponse =
+  GetProjectCapabilityHostResponse as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateResponse>;
 
 export interface ProvisionManagedNetworkProvisionManagedNetworkRequest {
   /** The ID of the target subscription. */
@@ -11064,9 +10465,8 @@ export const PurgeDeletedAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeDeletedAccountRequest>;
 
 export interface PurgeDeletedAccountResponse {}
-export const PurgeDeletedAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PurgeDeletedAccountResponse",
-}) as any as S.Schema<PurgeDeletedAccountResponse>;
+export const PurgeDeletedAccountResponse =
+  UserAssignedIdentityInput as any as S.Schema<PurgeDeletedAccountResponse>;
 
 export interface PutManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
@@ -11111,17 +10511,8 @@ export interface PutManagedNetworkSettingsResponse {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsProperties;
 }
-export const PutManagedNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedNetworkSettingsProperties),
-  }),
-).annotate({
-  identifier: "PutManagedNetworkSettingsResponse",
-}) as any as S.Schema<PutManagedNetworkSettingsResponse>;
+export const PutManagedNetworkSettingsResponse =
+  GetManagedNetworkSettingsResponse as any as S.Schema<PutManagedNetworkSettingsResponse>;
 
 /** Properties of Quota Tier resource'. */
 export interface QuotaTierPropertiesInput {
@@ -11185,10 +10576,8 @@ export const QuotaTiersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiBlocklistItemsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RaiBlocklistItemsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateRequestTagsMap>;
+export const RaiBlocklistItemsCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistItemsCreateOrUpdateRequestTagsMap>;
 
 export interface RaiBlocklistItemsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11229,10 +10618,8 @@ export const RaiBlocklistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type RaiBlocklistItemsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RaiBlocklistItemsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponseTagsMap>;
+export const RaiBlocklistItemsCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponseTagsMap>;
 
 export interface RaiBlocklistItemsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11250,26 +10637,13 @@ export interface RaiBlocklistItemsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiBlocklistItemsCreateOrUpdateResponseTagsMap;
 }
-export const RaiBlocklistItemsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiBlocklistItemProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiBlocklistItemsCreateOrUpdateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "RaiBlocklistItemsCreateOrUpdateResponse",
-}) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponse>;
+export const RaiBlocklistItemsCreateOrUpdateResponse =
+  GetRaiBlocklistItemResponse as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type RaiBlocklistsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RaiBlocklistsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiBlocklistsCreateOrUpdateRequestTagsMap>;
+export const RaiBlocklistsCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistsCreateOrUpdateRequestTagsMap>;
 
 export interface RaiBlocklistsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11307,10 +10681,8 @@ export const RaiBlocklistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiBlocklistsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RaiBlocklistsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiBlocklistsCreateOrUpdateResponseTagsMap>;
+export const RaiBlocklistsCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistsCreateOrUpdateResponseTagsMap>;
 
 export interface RaiBlocklistsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11328,19 +10700,8 @@ export interface RaiBlocklistsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiBlocklistsCreateOrUpdateResponseTagsMap;
 }
-export const RaiBlocklistsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiBlocklistProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiBlocklistsCreateOrUpdateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "RaiBlocklistsCreateOrUpdateResponse",
-}) as any as S.Schema<RaiBlocklistsCreateOrUpdateResponse>;
+export const RaiBlocklistsCreateOrUpdateResponse =
+  AddRaiBlocklistItemBatchResponse as any as S.Schema<RaiBlocklistsCreateOrUpdateResponse>;
 
 /** RAI External SafetyProvider schema properties. */
 export interface RaiExternalSafetyProviderSchemaPropertiesInput {
@@ -11402,10 +10763,8 @@ export const RaiExternalSafetyProviderCreateOrUpdateRequest = /*@__PURE__*/ S.su
 export type RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap>;
+export const RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap>;
 
 export interface RaiExternalSafetyProviderCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11423,26 +10782,13 @@ export interface RaiExternalSafetyProviderCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap;
 }
-export const RaiExternalSafetyProviderCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiExternalSafetyProviderSchemaProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "RaiExternalSafetyProviderCreateOrUpdateResponse",
-}) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponse>;
+export const RaiExternalSafetyProviderCreateOrUpdateResponse =
+  GetRaiExternalSafetyProviderResponse as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type RaiPoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RaiPoliciesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiPoliciesCreateOrUpdateRequestTagsMap>;
+export const RaiPoliciesCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiPoliciesCreateOrUpdateRequestTagsMap>;
 
 export interface RaiPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11480,10 +10826,8 @@ export const RaiPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiPoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RaiPoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiPoliciesCreateOrUpdateResponseTagsMap>;
+export const RaiPoliciesCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiPoliciesCreateOrUpdateResponseTagsMap>;
 
 export interface RaiPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11501,26 +10845,13 @@ export interface RaiPoliciesCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiPoliciesCreateOrUpdateResponseTagsMap;
 }
-export const RaiPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiPolicyProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(RaiPoliciesCreateOrUpdateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "RaiPoliciesCreateOrUpdateResponse",
-}) as any as S.Schema<RaiPoliciesCreateOrUpdateResponse>;
+export const RaiPoliciesCreateOrUpdateResponse =
+  GetSubscriptionRaiPolicyResponse as any as S.Schema<RaiPoliciesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type RaiToolLabelsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RaiToolLabelsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiToolLabelsCreateOrUpdateRequestTagsMap>;
+export const RaiToolLabelsCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelsCreateOrUpdateRequestTagsMap>;
 
 export interface RaiToolLabelsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11558,10 +10889,8 @@ export const RaiToolLabelsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiToolLabelsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RaiToolLabelsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiToolLabelsCreateOrUpdateResponseTagsMap>;
+export const RaiToolLabelsCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelsCreateOrUpdateResponseTagsMap>;
 
 export interface RaiToolLabelsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11595,10 +10924,8 @@ export const RaiToolLabelsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const RaiTopicsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiTopicsCreateOrUpdateRequestTagsMap>;
+export const RaiTopicsCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiTopicsCreateOrUpdateRequestTagsMap>;
 
 export interface RaiTopicsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11636,10 +10963,8 @@ export const RaiTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RaiTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RaiTopicsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RaiTopicsCreateOrUpdateResponseTagsMap>;
+export const RaiTopicsCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiTopicsCreateOrUpdateResponseTagsMap>;
 
 export interface RaiTopicsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11731,10 +11056,8 @@ export const ResumeDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ResumeDeploymentResponseTagsMap = { [key: string]: string | undefined };
-export const ResumeDeploymentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResumeDeploymentResponseTagsMap>;
+export const ResumeDeploymentResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ResumeDeploymentResponseTagsMap>;
 
 export interface ResumeDeploymentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11754,18 +11077,8 @@ export interface ResumeDeploymentResponse {
   /** Resource tags. */
   tags?: ResumeDeploymentResponseTagsMap;
 }
-export const ResumeDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-    tags: S.optional(ResumeDeploymentResponseTagsMap),
-  }),
-).annotate({ identifier: "ResumeDeploymentResponse" }) as any as S.Schema<ResumeDeploymentResponse>;
+export const ResumeDeploymentResponse =
+  GetDeploymentResponse as any as S.Schema<ResumeDeploymentResponse>;
 
 export interface StartAgentDeploymentRequest {
   /** The ID of the target subscription. */
@@ -11802,9 +11115,8 @@ export const StartAgentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartAgentDeploymentRequest>;
 
 export interface StartAgentDeploymentResponse {}
-export const StartAgentDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartAgentDeploymentResponse",
-}) as any as S.Schema<StartAgentDeploymentResponse>;
+export const StartAgentDeploymentResponse =
+  UserAssignedIdentityInput as any as S.Schema<StartAgentDeploymentResponse>;
 
 export interface StopAgentDeploymentRequest {
   /** The ID of the target subscription. */
@@ -11841,18 +11153,15 @@ export const StopAgentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopAgentDeploymentRequest>;
 
 export interface StopAgentDeploymentResponse {}
-export const StopAgentDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopAgentDeploymentResponse",
-}) as any as S.Schema<StopAgentDeploymentResponse>;
+export const StopAgentDeploymentResponse =
+  UserAssignedIdentityInput as any as S.Schema<StopAgentDeploymentResponse>;
 
 /** Resource tags. */
 export type SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap>;
+export const SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap>;
 
 export interface SubscriptionRaiPolicyCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11886,10 +11195,8 @@ export const SubscriptionRaiPolicyCreateOrUpdateRequest = /*@__PURE__*/ S.suspen
 export type SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap>;
+export const SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap>;
 
 export interface SubscriptionRaiPolicyCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11907,19 +11214,8 @@ export interface SubscriptionRaiPolicyCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap;
 }
-export const SubscriptionRaiPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiPolicyProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "SubscriptionRaiPolicyCreateOrUpdateResponse",
-}) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponse>;
+export const SubscriptionRaiPolicyCreateOrUpdateResponse =
+  GetSubscriptionRaiPolicyResponse as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponse>;
 
 export interface TestRaiExternalSafetyProviderCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11956,10 +11252,8 @@ export const TestRaiExternalSafetyProviderCreateOrUpdateRequest = /*@__PURE__*/ 
 export type TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap>;
+export const TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap>;
 
 export interface TestRaiExternalSafetyProviderCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11977,26 +11271,13 @@ export interface TestRaiExternalSafetyProviderCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap;
 }
-export const TestRaiExternalSafetyProviderCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RaiExternalSafetyProviderSchemaProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap),
-  }),
-).annotate({
-  identifier: "TestRaiExternalSafetyProviderCreateOrUpdateResponse",
-}) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateResponse>;
+export const TestRaiExternalSafetyProviderCreateOrUpdateResponse =
+  GetRaiExternalSafetyProviderResponse as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. */
@@ -12041,10 +11322,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 export interface UpdateAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12070,21 +11349,8 @@ export interface UpdateAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AccountProperties),
-    tags: S.optional(UpdateAccountResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    sku: S.optional(Sku),
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse =
+  CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export interface UpdateAccountConnectionRequest {
   /** The ID of the target subscription. */
@@ -12129,24 +11395,13 @@ export interface UpdateAccountConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-export const UpdateAccountConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectionPropertiesV2,
-  }),
-).annotate({
-  identifier: "UpdateAccountConnectionResponse",
-}) as any as S.Schema<UpdateAccountConnectionResponse>;
+export const UpdateAccountConnectionResponse =
+  CreateAccountConnectionResponse as any as S.Schema<UpdateAccountConnectionResponse>;
 
 /** Resource tags. */
 export type UpdateCommitmentPlanPlanRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCommitmentPlanPlanRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommitmentPlanPlanRequestTagsMap>;
+export const UpdateCommitmentPlanPlanRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateCommitmentPlanPlanRequestTagsMap>;
 
 export interface UpdateCommitmentPlanPlanRequest {
   /** The ID of the target subscription. */
@@ -12181,10 +11436,8 @@ export const UpdateCommitmentPlanPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCommitmentPlanPlanResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCommitmentPlanPlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommitmentPlanPlanResponseTagsMap>;
+export const UpdateCommitmentPlanPlanResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateCommitmentPlanPlanResponseTagsMap>;
 
 export interface UpdateCommitmentPlanPlanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12208,29 +11461,13 @@ export interface UpdateCommitmentPlanPlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-export const UpdateCommitmentPlanPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CommitmentPlanProperties),
-    tags: S.optional(UpdateCommitmentPlanPlanResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "UpdateCommitmentPlanPlanResponse",
-}) as any as S.Schema<UpdateCommitmentPlanPlanResponse>;
+export const UpdateCommitmentPlanPlanResponse =
+  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<UpdateCommitmentPlanPlanResponse>;
 
 /** Resource tags. */
 export type UpdateDefenderForAISettingsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDefenderForAISettingsRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDefenderForAISettingsRequestTagsMap>;
+export const UpdateDefenderForAISettingsRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateDefenderForAISettingsRequestTagsMap>;
 
 export interface UpdateDefenderForAISettingsRequest {
   /** The ID of the target subscription. */
@@ -12268,10 +11505,8 @@ export const UpdateDefenderForAISettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDefenderForAISettingsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDefenderForAISettingsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDefenderForAISettingsResponseTagsMap>;
+export const UpdateDefenderForAISettingsResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateDefenderForAISettingsResponseTagsMap>;
 
 export interface UpdateDefenderForAISettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12289,26 +11524,13 @@ export interface UpdateDefenderForAISettingsResponse {
   /** Resource tags. */
   tags?: UpdateDefenderForAISettingsResponseTagsMap;
 }
-export const UpdateDefenderForAISettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DefenderForAISettingProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(UpdateDefenderForAISettingsResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdateDefenderForAISettingsResponse",
-}) as any as S.Schema<UpdateDefenderForAISettingsResponse>;
+export const UpdateDefenderForAISettingsResponse =
+  DefenderForAISettingsCreateOrUpdateResponse as any as S.Schema<UpdateDefenderForAISettingsResponse>;
 
 /** Resource tags. */
 export type UpdateDeploymentRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDeploymentRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDeploymentRequestTagsMap>;
+export const UpdateDeploymentRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateDeploymentRequestTagsMap>;
 
 export interface UpdateDeploymentRequest {
   /** The ID of the target subscription. */
@@ -12344,10 +11566,8 @@ export const UpdateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDeploymentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDeploymentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDeploymentResponseTagsMap>;
+export const UpdateDeploymentResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateDeploymentResponseTagsMap>;
 
 export interface UpdateDeploymentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12367,25 +11587,13 @@ export interface UpdateDeploymentResponse {
   /** Resource tags. */
   tags?: UpdateDeploymentResponseTagsMap;
 }
-export const UpdateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-    tags: S.optional(UpdateDeploymentResponseTagsMap),
-  }),
-).annotate({ identifier: "UpdateDeploymentResponse" }) as any as S.Schema<UpdateDeploymentResponse>;
+export const UpdateDeploymentResponse =
+  GetDeploymentResponse as any as S.Schema<UpdateDeploymentResponse>;
 
 /** Resource tags. */
 export type UpdateProjectRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProjectRequestTagsMap>;
+export const UpdateProjectRequestTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateProjectRequestTagsMap>;
 
 export interface UpdateProjectRequest {
   /** The ID of the target subscription. */
@@ -12427,10 +11635,8 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateProjectResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProjectResponseTagsMap>;
+export const UpdateProjectResponseTagsMap =
+  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateProjectResponseTagsMap>;
 
 export interface UpdateProjectResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12452,19 +11658,8 @@ export interface UpdateProjectResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectProperties),
-    tags: S.optional(UpdateProjectResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    identity: S.optional(Identity),
-  }),
-).annotate({ identifier: "UpdateProjectResponse" }) as any as S.Schema<UpdateProjectResponse>;
+export const UpdateProjectResponse =
+  CreateProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 export interface UpdateProjectConnectionRequest {
   /** The ID of the target subscription. */
@@ -12512,17 +11707,8 @@ export interface UpdateProjectConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-export const UpdateProjectConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectionPropertiesV2,
-  }),
-).annotate({
-  identifier: "UpdateProjectConnectionResponse",
-}) as any as S.Schema<UpdateProjectConnectionResponse>;
+export const UpdateProjectConnectionResponse =
+  CreateAccountConnectionResponse as any as S.Schema<UpdateProjectConnectionResponse>;
 
 export interface UpdateQuotaTierRequest {
   /** The ID of the target subscription. */
@@ -12559,15 +11745,8 @@ export interface UpdateQuotaTierResponse {
   /** Properties of quota tier resource. */
   properties?: QuotaTierProperties;
 }
-export const UpdateQuotaTierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(QuotaTierProperties),
-  }),
-).annotate({ identifier: "UpdateQuotaTierResponse" }) as any as S.Schema<UpdateQuotaTierResponse>;
+export const UpdateQuotaTierResponse =
+  GetQuotaTierResponse as any as S.Schema<UpdateQuotaTierResponse>;
 
 export type AccountCapabilityHostsCreateOrUpdateError = AzureOpError;
 /** Create or update account capabilityHost. Create or update account capabilityHost. */

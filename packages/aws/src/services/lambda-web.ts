@@ -636,9 +636,8 @@ export const DeleteWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWebFunctionRequest" }) as any as S.Schema<DeleteWebFunctionRequest>;
 export interface DeleteWebFunctionResponse {}
-export const DeleteWebFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebFunctionResponse",
-}) as any as S.Schema<DeleteWebFunctionResponse>;
+export const DeleteWebFunctionResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<DeleteWebFunctionResponse>;
 export interface DeleteWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
@@ -694,11 +693,8 @@ export const DeleteWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebFunctionRevisionRequest",
 }) as any as S.Schema<DeleteWebFunctionRevisionRequest>;
 export interface DeleteWebFunctionRevisionResponse {}
-export const DeleteWebFunctionRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebFunctionRevisionResponse",
-}) as any as S.Schema<DeleteWebFunctionRevisionResponse>;
+export const DeleteWebFunctionRevisionResponse =
+  DeleteWebFunctionEndpointResponse as any as S.Schema<DeleteWebFunctionRevisionResponse>;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
@@ -848,31 +844,8 @@ export interface GetWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const GetWebFunctionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionArn: S.String,
-    endpointArn: S.String,
-    endpointName: S.String,
-    description: S.optional(S.String),
-    endpointType: EndpointType,
-    domainName: S.String,
-    authType: AuthType,
-    autoDeploymentMode: AutoDeploymentMode,
-    revisionWeights: RevisionWeightList,
-    regions: RegionList,
-    scalingConfig: S.optional(ScalingConfig),
-    throttleConfig: S.optional(ThrottleConfig),
-    state: EndpointState,
-    stateReason: S.String,
-    updateStatus: S.optional(EndpointUpdateStatus),
-    updateStatusReason: S.optional(S.String),
-    regionalEndpoints: RegionalEndpoints,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetWebFunctionEndpointResponse",
-}) as any as S.Schema<GetWebFunctionEndpointResponse>;
+export const GetWebFunctionEndpointResponse =
+  CreateWebFunctionEndpointResponse as any as S.Schema<GetWebFunctionEndpointResponse>;
 export interface GetWebFunctionRevisionRequest {
   functionName: string;
   revisionId: string;
@@ -910,23 +883,8 @@ export interface GetWebFunctionRevisionResponse {
   errors?: RevisionError[];
   createdAt: Date;
 }
-export const GetWebFunctionRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionArn: S.String,
-    revisionArn: S.String,
-    revisionId: S.String,
-    description: S.optional(S.String),
-    kmsKeyArn: S.optional(S.String),
-    buildConfig: BuildConfig,
-    serviceConfig: ServiceConfig,
-    state: RevisionState,
-    stateReason: S.String,
-    errors: S.optional(RevisionErrors),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetWebFunctionRevisionResponse",
-}) as any as S.Schema<GetWebFunctionRevisionResponse>;
+export const GetWebFunctionRevisionResponse =
+  CreateWebFunctionRevisionResponse as any as S.Schema<GetWebFunctionRevisionResponse>;
 export interface ListTagsRequest {
   resource: string;
 }
@@ -949,7 +907,7 @@ export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(Tags) }).pipe(S.encodeKeys({ tags: "Tags" })),
 ).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValueList = RegionList as any as S.Schema<FilterValueList>;
 export interface Filter {
   name: string;
   values: string[];
@@ -1062,16 +1020,7 @@ export interface FunctionSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-export const FunctionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionName: S.String,
-    functionArn: S.String,
-    state: FunctionState,
-    stateReason: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "FunctionSummary" }) as any as S.Schema<FunctionSummary>;
+export const FunctionSummary = GetWebFunctionResponse as any as S.Schema<FunctionSummary>;
 export type FunctionSummaryList = FunctionSummary[];
 export const FunctionSummaryList = /*@__PURE__*/ S.Array(FunctionSummary);
 export interface ListWebFunctionsResponse {
@@ -1108,13 +1057,8 @@ export interface PutResourcePolicyResponse {
   policy: string;
   revisionId: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.String, revisionId: S.String }).pipe(
-    S.encodeKeys({ policy: "Policy", revisionId: "RevisionId" }),
-  ),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface TagResourceRequest {
   resource: string;
   tags: { [key: string]: string | undefined };
@@ -1134,11 +1078,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = RegionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resource: string;
   tagKeys: string[];
@@ -1159,9 +1102,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
@@ -1219,31 +1161,8 @@ export interface UpdateWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const UpdateWebFunctionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionArn: S.String,
-    endpointArn: S.String,
-    endpointName: S.String,
-    description: S.optional(S.String),
-    endpointType: EndpointType,
-    domainName: S.String,
-    authType: AuthType,
-    autoDeploymentMode: AutoDeploymentMode,
-    revisionWeights: RevisionWeightList,
-    regions: RegionList,
-    scalingConfig: S.optional(ScalingConfig),
-    throttleConfig: S.optional(ThrottleConfig),
-    state: EndpointState,
-    stateReason: S.String,
-    updateStatus: S.optional(EndpointUpdateStatus),
-    updateStatusReason: S.optional(S.String),
-    regionalEndpoints: RegionalEndpoints,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdateWebFunctionEndpointResponse",
-}) as any as S.Schema<UpdateWebFunctionEndpointResponse>;
+export const UpdateWebFunctionEndpointResponse =
+  CreateWebFunctionEndpointResponse as any as S.Schema<UpdateWebFunctionEndpointResponse>;
 export type CreateWebFunctionError =
   | AccessDeniedException
   | ConflictException

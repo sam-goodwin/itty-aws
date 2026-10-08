@@ -330,11 +330,8 @@ export const CreateConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConnectorDestinationResponse {
   Id?: string;
 }
-export const CreateConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateConnectorDestinationResponse",
-}) as any as S.Schema<CreateConnectorDestinationResponse>;
+export const CreateConnectorDestinationResponse =
+  CreateCloudConnectorResponse as any as S.Schema<CreateConnectorDestinationResponse>;
 export type CredentialLockerName = string | redacted.Redacted<string>;
 export interface CreateCredentialLockerRequest {
   Name?: string | redacted.Redacted<string>;
@@ -438,11 +435,8 @@ export type LogConfigurationId = string;
 export interface CreateEventLogConfigurationResponse {
   Id?: string;
 }
-export const CreateEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateEventLogConfigurationResponse",
-}) as any as S.Schema<CreateEventLogConfigurationResponse>;
+export const CreateEventLogConfigurationResponse =
+  CreateCloudConnectorResponse as any as S.Schema<CreateEventLogConfigurationResponse>;
 export type Role = "CONTROLLER" | "DEVICE" | (string & {});
 export const Role = S.String;
 
@@ -490,13 +484,14 @@ export type CapabilityName = string;
 export type CapabilityVersion = string;
 export type PropertyName = string;
 export type CapabilityReportProperties = string[];
-export const CapabilityReportProperties = /*@__PURE__*/ S.Array(S.String);
+export const CapabilityReportProperties =
+  DeviceTypes as any as S.Schema<CapabilityReportProperties>;
 export type ActionName = string;
 export type CapabilityReportActions = string[];
-export const CapabilityReportActions = /*@__PURE__*/ S.Array(S.String);
+export const CapabilityReportActions = DeviceTypes as any as S.Schema<CapabilityReportActions>;
 export type EventName = string;
 export type CapabilityReportEvents = string[];
-export const CapabilityReportEvents = /*@__PURE__*/ S.Array(S.String);
+export const CapabilityReportEvents = DeviceTypes as any as S.Schema<CapabilityReportEvents>;
 export interface CapabilityReportCapability {
   id: string;
   name: string;
@@ -570,7 +565,7 @@ export type Classification = string | redacted.Redacted<string>;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type MetaData = { [key: string]: string | undefined };
-export const MetaData = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const MetaData = TagsMap as any as S.Schema<MetaData>;
 export interface CreateManagedThingRequest {
   Role: Role;
   Owner?: string | redacted.Redacted<string>;
@@ -621,15 +616,8 @@ export interface CreateManagedThingResponse {
   Arn?: string;
   CreatedAt?: Date;
 }
-export const CreateManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "CreateManagedThingResponse",
-}) as any as S.Schema<CreateManagedThingResponse>;
+export const CreateManagedThingResponse =
+  CreateCredentialLockerResponse as any as S.Schema<CreateManagedThingResponse>;
 export type EventType =
   | "DEVICE_COMMAND"
   | "DEVICE_COMMAND_REQUEST"
@@ -684,7 +672,7 @@ export type OtaProtocol = "HTTP" | (string & {});
 export const OtaProtocol = S.String;
 
 export type Target = string[];
-export const Target = /*@__PURE__*/ S.Array(S.String);
+export const Target = DeviceTypes as any as S.Schema<Target>;
 export type OtaTaskConfigurationId = string;
 export type OtaMechanism = "PUSH" | (string & {});
 export const OtaMechanism = S.String;
@@ -1045,11 +1033,8 @@ export const DeleteConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConnectorDestinationRequest",
 }) as any as S.Schema<DeleteConnectorDestinationRequest>;
 export interface DeleteConnectorDestinationResponse {}
-export const DeleteConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConnectorDestinationResponse",
-}) as any as S.Schema<DeleteConnectorDestinationResponse>;
+export const DeleteConnectorDestinationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<DeleteConnectorDestinationResponse>;
 export interface DeleteCredentialLockerRequest {
   Identifier: string;
 }
@@ -1068,9 +1053,8 @@ export const DeleteCredentialLockerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCredentialLockerRequest",
 }) as any as S.Schema<DeleteCredentialLockerRequest>;
 export interface DeleteCredentialLockerResponse {}
-export const DeleteCredentialLockerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCredentialLockerResponse",
-}) as any as S.Schema<DeleteCredentialLockerResponse>;
+export const DeleteCredentialLockerResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<DeleteCredentialLockerResponse>;
 export interface DeleteDestinationRequest {
   Name: string;
 }
@@ -1080,9 +1064,8 @@ export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDestinationRequest" }) as any as S.Schema<DeleteDestinationRequest>;
 export interface DeleteDestinationResponse {}
-export const DeleteDestinationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDestinationResponse",
-}) as any as S.Schema<DeleteDestinationResponse>;
+export const DeleteDestinationResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<DeleteDestinationResponse>;
 export interface DeleteEventLogConfigurationRequest {
   Id: string;
 }
@@ -1101,11 +1084,8 @@ export const DeleteEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEventLogConfigurationRequest",
 }) as any as S.Schema<DeleteEventLogConfigurationRequest>;
 export interface DeleteEventLogConfigurationResponse {}
-export const DeleteEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventLogConfigurationResponse",
-}) as any as S.Schema<DeleteEventLogConfigurationResponse>;
+export const DeleteEventLogConfigurationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<DeleteEventLogConfigurationResponse>;
 export interface DeleteManagedThingRequest {
   Identifier: string;
   Force?: boolean;
@@ -1128,9 +1108,8 @@ export const DeleteManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteManagedThingRequest",
 }) as any as S.Schema<DeleteManagedThingRequest>;
 export interface DeleteManagedThingResponse {}
-export const DeleteManagedThingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteManagedThingResponse",
-}) as any as S.Schema<DeleteManagedThingResponse>;
+export const DeleteManagedThingResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<DeleteManagedThingResponse>;
 export interface DeleteNotificationConfigurationRequest {
   EventType: EventType;
 }
@@ -1149,11 +1128,8 @@ export const DeleteNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeleteNotificationConfigurationRequest",
 }) as any as S.Schema<DeleteNotificationConfigurationRequest>;
 export interface DeleteNotificationConfigurationResponse {}
-export const DeleteNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNotificationConfigurationResponse",
-}) as any as S.Schema<DeleteNotificationConfigurationResponse>;
+export const DeleteNotificationConfigurationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<DeleteNotificationConfigurationResponse>;
 export interface DeleteOtaTaskRequest {
   Identifier: string;
 }
@@ -1170,9 +1146,8 @@ export const DeleteOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteOtaTaskRequest" }) as any as S.Schema<DeleteOtaTaskRequest>;
 export interface DeleteOtaTaskResponse {}
-export const DeleteOtaTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOtaTaskResponse",
-}) as any as S.Schema<DeleteOtaTaskResponse>;
+export const DeleteOtaTaskResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<DeleteOtaTaskResponse>;
 export interface DeleteOtaTaskConfigurationRequest {
   Identifier: string;
 }
@@ -1191,11 +1166,8 @@ export const DeleteOtaTaskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOtaTaskConfigurationRequest",
 }) as any as S.Schema<DeleteOtaTaskConfigurationRequest>;
 export interface DeleteOtaTaskConfigurationResponse {}
-export const DeleteOtaTaskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOtaTaskConfigurationResponse",
-}) as any as S.Schema<DeleteOtaTaskConfigurationResponse>;
+export const DeleteOtaTaskConfigurationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<DeleteOtaTaskConfigurationResponse>;
 export interface DeleteProvisioningProfileRequest {
   Identifier: string;
 }
@@ -1214,11 +1186,8 @@ export const DeleteProvisioningProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProvisioningProfileRequest",
 }) as any as S.Schema<DeleteProvisioningProfileRequest>;
 export interface DeleteProvisioningProfileResponse {}
-export const DeleteProvisioningProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProvisioningProfileResponse",
-}) as any as S.Schema<DeleteProvisioningProfileResponse>;
+export const DeleteProvisioningProfileResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<DeleteProvisioningProfileResponse>;
 export interface DeregisterAccountAssociationRequest {
   ManagedThingId: string;
   AccountAssociationId: string;
@@ -1238,11 +1207,8 @@ export const DeregisterAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterAccountAssociationRequest",
 }) as any as S.Schema<DeregisterAccountAssociationRequest>;
 export interface DeregisterAccountAssociationResponse {}
-export const DeregisterAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeregisterAccountAssociationResponse",
-}) as any as S.Schema<DeregisterAccountAssociationResponse>;
+export const DeregisterAccountAssociationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<DeregisterAccountAssociationResponse>;
 export interface GetAccountAssociationRequest {
   AccountAssociationId: string;
 }
@@ -2501,7 +2467,7 @@ export const ListDiscoveredDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDiscoveredDevicesRequest>;
 export type ConnectorDeviceName = string;
 export type DeviceTypeList = string[];
-export const DeviceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const DeviceTypeList = DeviceTypes as any as S.Schema<DeviceTypeList>;
 export type DiscoveryModification = "DISCOVERED" | "UPDATED" | "NO_CHANGE" | (string & {});
 export const DiscoveryModification = S.String;
 
@@ -2568,16 +2534,8 @@ export interface EventLogConfigurationSummary {
   ResourceId?: string;
   EventLogLevel?: LogLevel;
 }
-export const EventLogConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    EventLogLevel: S.optional(LogLevel),
-  }),
-).annotate({
-  identifier: "EventLogConfigurationSummary",
-}) as any as S.Schema<EventLogConfigurationSummary>;
+export const EventLogConfigurationSummary =
+  GetEventLogConfigurationResponse as any as S.Schema<EventLogConfigurationSummary>;
 export type EventLogConfigurationListDefinition = EventLogConfigurationSummary[];
 export const EventLogConfigurationListDefinition = /*@__PURE__*/ S.Array(
   EventLogConfigurationSummary,
@@ -3145,15 +3103,8 @@ export interface PutDefaultEncryptionConfigurationResponse {
   encryptionType: EncryptionType;
   kmsKeyArn?: string;
 }
-export const PutDefaultEncryptionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationStatus: ConfigurationStatus,
-    encryptionType: EncryptionType,
-    kmsKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutDefaultEncryptionConfigurationResponse",
-}) as any as S.Schema<PutDefaultEncryptionConfigurationResponse>;
+export const PutDefaultEncryptionConfigurationResponse =
+  GetDefaultEncryptionConfigurationResponse as any as S.Schema<PutDefaultEncryptionConfigurationResponse>;
 export interface PutHubConfigurationRequest {
   HubTokenTimerExpirySettingInSeconds: number;
 }
@@ -3194,11 +3145,8 @@ export const PutRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutRuntimeLogConfigurationRequest",
 }) as any as S.Schema<PutRuntimeLogConfigurationRequest>;
 export interface PutRuntimeLogConfigurationResponse {}
-export const PutRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutRuntimeLogConfigurationResponse",
-}) as any as S.Schema<PutRuntimeLogConfigurationResponse>;
+export const PutRuntimeLogConfigurationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<PutRuntimeLogConfigurationResponse>;
 export interface RegisterAccountAssociationRequest {
   ManagedThingId: string;
   AccountAssociationId: string;
@@ -3247,11 +3195,8 @@ export const RegisterCustomEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterCustomEndpointResponse {
   EndpointAddress: string;
 }
-export const RegisterCustomEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointAddress: S.String }),
-).annotate({
-  identifier: "RegisterCustomEndpointResponse",
-}) as any as S.Schema<RegisterCustomEndpointResponse>;
+export const RegisterCustomEndpointResponse =
+  GetCustomEndpointResponse as any as S.Schema<RegisterCustomEndpointResponse>;
 export interface ResetRuntimeLogConfigurationRequest {
   ManagedThingId: string;
 }
@@ -3270,11 +3215,8 @@ export const ResetRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetRuntimeLogConfigurationRequest",
 }) as any as S.Schema<ResetRuntimeLogConfigurationRequest>;
 export interface ResetRuntimeLogConfigurationResponse {}
-export const ResetRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetRuntimeLogConfigurationResponse",
-}) as any as S.Schema<ResetRuntimeLogConfigurationResponse>;
+export const ResetRuntimeLogConfigurationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<ResetRuntimeLogConfigurationResponse>;
 export type ConnectorId = string;
 export type ThirdPartyUserId = string | redacted.Redacted<string>;
 export type ConnectorEventOperation =
@@ -3309,13 +3251,16 @@ export const MatterCapabilityReportAttributes = /*@__PURE__*/ S.Array(
 );
 export type MatterCommandId = string;
 export type MatterCapabilityReportCommands = string[];
-export const MatterCapabilityReportCommands = /*@__PURE__*/ S.Array(S.String);
+export const MatterCapabilityReportCommands =
+  DeviceTypes as any as S.Schema<MatterCapabilityReportCommands>;
 export type MatterEventId = string;
 export type MatterCapabilityReportEvents = string[];
-export const MatterCapabilityReportEvents = /*@__PURE__*/ S.Array(S.String);
+export const MatterCapabilityReportEvents =
+  DeviceTypes as any as S.Schema<MatterCapabilityReportEvents>;
 export type MatterCapabilityReportFeatureMap = number;
 export type MatterCapabilityReportGeneratedCommands = string[];
-export const MatterCapabilityReportGeneratedCommands = /*@__PURE__*/ S.Array(S.String);
+export const MatterCapabilityReportGeneratedCommands =
+  DeviceTypes as any as S.Schema<MatterCapabilityReportGeneratedCommands>;
 export type MatterCapabilityReportFabricIndex = number;
 export interface MatterCapabilityReportCluster {
   id: string;
@@ -3350,12 +3295,15 @@ export const MatterCapabilityReportCluster = /*@__PURE__*/ S.suspend(() =>
 export type MatterCapabilityReportClusters = MatterCapabilityReportCluster[];
 export const MatterCapabilityReportClusters = /*@__PURE__*/ S.Array(MatterCapabilityReportCluster);
 export type MatterCapabilityReportEndpointParts = string[];
-export const MatterCapabilityReportEndpointParts = /*@__PURE__*/ S.Array(S.String);
+export const MatterCapabilityReportEndpointParts =
+  DeviceTypes as any as S.Schema<MatterCapabilityReportEndpointParts>;
 export type EndpointSemanticTag = string;
 export type MatterCapabilityReportEndpointSemanticTags = string[];
-export const MatterCapabilityReportEndpointSemanticTags = /*@__PURE__*/ S.Array(S.String);
+export const MatterCapabilityReportEndpointSemanticTags =
+  DeviceTypes as any as S.Schema<MatterCapabilityReportEndpointSemanticTags>;
 export type MatterCapabilityReportEndpointClientClusters = string[];
-export const MatterCapabilityReportEndpointClientClusters = /*@__PURE__*/ S.Array(S.String);
+export const MatterCapabilityReportEndpointClientClusters =
+  DeviceTypes as any as S.Schema<MatterCapabilityReportEndpointClientClusters>;
 export interface MatterCapabilityReportEndpoint {
   id: string;
   deviceTypes: string[];
@@ -3659,11 +3607,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = DeviceTypes as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -3677,9 +3624,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountAssociationRequest {
   AccountAssociationId: string;
   Name?: string;
@@ -3704,11 +3650,8 @@ export const UpdateAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAccountAssociationRequest",
 }) as any as S.Schema<UpdateAccountAssociationRequest>;
 export interface UpdateAccountAssociationResponse {}
-export const UpdateAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAccountAssociationResponse",
-}) as any as S.Schema<UpdateAccountAssociationResponse>;
+export const UpdateAccountAssociationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<UpdateAccountAssociationResponse>;
 export interface UpdateCloudConnectorRequest {
   Identifier: string;
   Name?: string;
@@ -3733,9 +3676,8 @@ export const UpdateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCloudConnectorRequest",
 }) as any as S.Schema<UpdateCloudConnectorRequest>;
 export interface UpdateCloudConnectorResponse {}
-export const UpdateCloudConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCloudConnectorResponse",
-}) as any as S.Schema<UpdateCloudConnectorResponse>;
+export const UpdateCloudConnectorResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<UpdateCloudConnectorResponse>;
 export interface OAuthUpdate {
   oAuthCompleteRedirectUrl?: string;
   proactiveRefreshTokenRenewal?: ProactiveRefreshTokenRenewal;
@@ -3798,11 +3740,8 @@ export const UpdateConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConnectorDestinationRequest",
 }) as any as S.Schema<UpdateConnectorDestinationRequest>;
 export interface UpdateConnectorDestinationResponse {}
-export const UpdateConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateConnectorDestinationResponse",
-}) as any as S.Schema<UpdateConnectorDestinationResponse>;
+export const UpdateConnectorDestinationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<UpdateConnectorDestinationResponse>;
 export interface UpdateDestinationRequest {
   Name: string;
   DeliveryDestinationArn?: string;
@@ -3822,9 +3761,8 @@ export const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateDestinationRequest" }) as any as S.Schema<UpdateDestinationRequest>;
 export interface UpdateDestinationResponse {}
-export const UpdateDestinationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDestinationResponse",
-}) as any as S.Schema<UpdateDestinationResponse>;
+export const UpdateDestinationResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<UpdateDestinationResponse>;
 export interface UpdateEventLogConfigurationRequest {
   Id: string;
   EventLogLevel: LogLevel;
@@ -3844,11 +3782,8 @@ export const UpdateEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEventLogConfigurationRequest",
 }) as any as S.Schema<UpdateEventLogConfigurationRequest>;
 export interface UpdateEventLogConfigurationResponse {}
-export const UpdateEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEventLogConfigurationResponse",
-}) as any as S.Schema<UpdateEventLogConfigurationResponse>;
+export const UpdateEventLogConfigurationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<UpdateEventLogConfigurationResponse>;
 export interface UpdateManagedThingRequest {
   Identifier: string;
   Owner?: string | redacted.Redacted<string>;
@@ -3895,9 +3830,8 @@ export const UpdateManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateManagedThingRequest",
 }) as any as S.Schema<UpdateManagedThingRequest>;
 export interface UpdateManagedThingResponse {}
-export const UpdateManagedThingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateManagedThingResponse",
-}) as any as S.Schema<UpdateManagedThingResponse>;
+export const UpdateManagedThingResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<UpdateManagedThingResponse>;
 export interface UpdateNotificationConfigurationRequest {
   EventType: EventType;
   DestinationName: string;
@@ -3917,11 +3851,8 @@ export const UpdateNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateNotificationConfigurationRequest",
 }) as any as S.Schema<UpdateNotificationConfigurationRequest>;
 export interface UpdateNotificationConfigurationResponse {}
-export const UpdateNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateNotificationConfigurationResponse",
-}) as any as S.Schema<UpdateNotificationConfigurationResponse>;
+export const UpdateNotificationConfigurationResponse =
+  DeleteAccountAssociationResponse as any as S.Schema<UpdateNotificationConfigurationResponse>;
 export interface UpdateOtaTaskRequest {
   Identifier: string;
   Description?: string;
@@ -3937,9 +3868,8 @@ export const UpdateOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateOtaTaskRequest" }) as any as S.Schema<UpdateOtaTaskRequest>;
 export interface UpdateOtaTaskResponse {}
-export const UpdateOtaTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateOtaTaskResponse",
-}) as any as S.Schema<UpdateOtaTaskResponse>;
+export const UpdateOtaTaskResponse =
+  DeleteCloudConnectorResponse as any as S.Schema<UpdateOtaTaskResponse>;
 export type ErrorMessage = string;
 export type ErrorResourceId = string;
 export type ErrorResourceType = string;

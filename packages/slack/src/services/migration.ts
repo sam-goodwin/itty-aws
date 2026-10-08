@@ -36,9 +36,8 @@ export const MigrationExchangeResponseUserIdMapMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MigrationExchangeResponseUserIdMapMap>;
 
 export type MigrationExchangeResponseInvalidUserIdsList = Array<string>;
-export const MigrationExchangeResponseInvalidUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationExchangeResponseInvalidUserIdsList>;
+export const MigrationExchangeResponseInvalidUserIdsList =
+  MigrationExchangeRequestUsersList as any as S.Schema<MigrationExchangeResponseInvalidUserIdsList>;
 
 export interface MigrationExchangeResponse {
   /** Always `true` (a failed call raises a typed error instead). */

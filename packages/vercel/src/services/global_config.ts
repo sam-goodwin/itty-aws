@@ -171,9 +171,8 @@ export const DeleteEdgeConfigSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEdgeConfigSchemaRequest>;
 
 export interface DeleteEdgeConfigSchemaResponse {}
-export const DeleteEdgeConfigSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEdgeConfigSchemaResponse",
-}) as any as S.Schema<DeleteEdgeConfigSchemaResponse>;
+export const DeleteEdgeConfigSchemaResponse =
+  DeleteEdgeConfigResponse as any as S.Schema<DeleteEdgeConfigSchemaResponse>;
 
 export type DeleteEdgeConfigTokensRequestTokensList = Array<string>;
 export const DeleteEdgeConfigTokensRequestTokensList = /*@__PURE__*/ S.Array(
@@ -181,9 +180,8 @@ export const DeleteEdgeConfigTokensRequestTokensList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DeleteEdgeConfigTokensRequestTokensList>;
 
 export type DeleteEdgeConfigTokensRequestIdsList = Array<string>;
-export const DeleteEdgeConfigTokensRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteEdgeConfigTokensRequestIdsList>;
+export const DeleteEdgeConfigTokensRequestIdsList =
+  DeleteEdgeConfigTokensRequestTokensList as any as S.Schema<DeleteEdgeConfigTokensRequestIdsList>;
 
 export interface DeleteEdgeConfigTokensRequest {
   edgeConfigId: string;
@@ -207,9 +205,8 @@ export const DeleteEdgeConfigTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEdgeConfigTokensRequest>;
 
 export interface DeleteEdgeConfigTokensResponse {}
-export const DeleteEdgeConfigTokensResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEdgeConfigTokensResponse",
-}) as any as S.Schema<DeleteEdgeConfigTokensResponse>;
+export const DeleteEdgeConfigTokensResponse =
+  DeleteEdgeConfigResponse as any as S.Schema<DeleteEdgeConfigTokensResponse>;
 
 export interface GetEdgeConfigRequest {
   edgeConfigId: string;
@@ -239,19 +236,8 @@ export interface GetEdgeConfigResponse {
   slug: string;
   updatedAt: number;
 }
-export const GetEdgeConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    createdBy: S.optional(S.String),
-    digest: S.String,
-    id: S.String,
-    itemCount: S.Number,
-    ownerId: S.String,
-    sizeInBytes: S.Number,
-    slug: S.String,
-    updatedAt: S.Number,
-  }),
-).annotate({ identifier: "GetEdgeConfigResponse" }) as any as S.Schema<GetEdgeConfigResponse>;
+export const GetEdgeConfigResponse =
+  CreateEdgeConfigResponse as any as S.Schema<GetEdgeConfigResponse>;
 
 export interface GetEdgeConfigBackupRequest {
   edgeConfigId: string;
@@ -404,10 +390,8 @@ export const GetEdgeConfigBackupResponseBodyCase1BackupItemsValue =
 export type GetEdgeConfigBackupResponseBodyCase1BackupItemsMap = {
   [key: string]: GetEdgeConfigBackupResponseBodyCase0BackupItemsValue | undefined;
 };
-export const GetEdgeConfigBackupResponseBodyCase1BackupItemsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetEdgeConfigBackupResponseBodyCase0BackupItemsValue,
-) as any as S.Schema<GetEdgeConfigBackupResponseBodyCase1BackupItemsMap>;
+export const GetEdgeConfigBackupResponseBodyCase1BackupItemsMap =
+  GetEdgeConfigBackupResponseBodyCase0BackupItemsMap as any as S.Schema<GetEdgeConfigBackupResponseBodyCase1BackupItemsMap>;
 
 export interface GetEdgeConfigBackupResponseBodyCase1Backup {
   digest: string;
@@ -416,16 +400,8 @@ export interface GetEdgeConfigBackupResponseBodyCase1Backup {
   slug: string;
   updatedAt: number;
 }
-export const GetEdgeConfigBackupResponseBodyCase1Backup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    digest: S.String,
-    items: GetEdgeConfigBackupResponseBodyCase1BackupItemsMap,
-    slug: S.String,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "GetEdgeConfigBackupResponseBodyCase1Backup",
-}) as any as S.Schema<GetEdgeConfigBackupResponseBodyCase1Backup>;
+export const GetEdgeConfigBackupResponseBodyCase1Backup =
+  GetEdgeConfigBackupResponseBodyCase0Backup as any as S.Schema<GetEdgeConfigBackupResponseBodyCase1Backup>;
 
 export type GetEdgeConfigBackupResponseBodyCase1Metadata =
   GetEdgeConfigBackupResponseBodyCase0Metadata;
@@ -885,11 +861,8 @@ export const PatchEdgeConfigSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchEdgeConfigSchemaRequest>;
 
 export type PatchEdgeConfigSchemaResponse = unknown;
-export const PatchEdgeConfigSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PatchEdgeConfigSchemaResponse",
-}) as any as S.Schema<PatchEdgeConfigSchemaResponse>;
+export const PatchEdgeConfigSchemaResponse =
+  GetEdgeConfigSchemaResponse as any as S.Schema<PatchEdgeConfigSchemaResponse>;
 
 export interface RestoreEdgeConfigBackupRequest {
   edgeConfigId: string;
@@ -964,19 +937,8 @@ export interface UpdateEdgeConfigResponse {
   slug: string;
   updatedAt: number;
 }
-export const UpdateEdgeConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    createdBy: S.optional(S.String),
-    digest: S.String,
-    id: S.String,
-    itemCount: S.Number,
-    ownerId: S.String,
-    sizeInBytes: S.Number,
-    slug: S.String,
-    updatedAt: S.Number,
-  }),
-).annotate({ identifier: "UpdateEdgeConfigResponse" }) as any as S.Schema<UpdateEdgeConfigResponse>;
+export const UpdateEdgeConfigResponse =
+  CreateEdgeConfigResponse as any as S.Schema<UpdateEdgeConfigResponse>;
 
 export type CreateEdgeConfigError =
   | BadRequest

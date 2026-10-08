@@ -1091,9 +1091,8 @@ export const DefinitionsTrackerIdentifierList = /*@__PURE__*/ S.Array(
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type TrackerIdentifierCollectionDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const TrackerIdentifierCollectionDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<TrackerIdentifierCollectionDefinitionsLinkDescriptionList>;
+export const TrackerIdentifierCollectionDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<TrackerIdentifierCollectionDefinitionsLinkDescriptionList>;
 
 /** The add tracking information for a PayPal transaction response details. */
 export interface TrackerIdentifierCollection {
@@ -1120,9 +1119,8 @@ export const PostTrackerBatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The batch header. */
 export type TrackerIdentifierList = Array<TrackerIdentifier>;
-export const TrackerIdentifierList = /*@__PURE__*/ S.Array(
-  TrackerIdentifier,
-) as any as S.Schema<TrackerIdentifierList>;
+export const TrackerIdentifierList =
+  DefinitionsTrackerIdentifierList as any as S.Schema<TrackerIdentifierList>;
 
 /** The HTTP method required to make the related call. */
 export type LinkDescription2Method =
@@ -1192,9 +1190,8 @@ export const ErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type ErrorDefinitionsLinkDescriptionList = Array<LinkDescription2>;
-export const ErrorDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription2,
-) as any as S.Schema<ErrorDefinitionsLinkDescriptionList>;
+export const ErrorDefinitionsLinkDescriptionList =
+  DefinitionsLinkDescriptionList as any as S.Schema<ErrorDefinitionsLinkDescriptionList>;
 
 /** The error details. */
 export interface Error {
@@ -1226,9 +1223,8 @@ export const ErrorList = /*@__PURE__*/ S.Array(Error) as any as S.Schema<ErrorLi
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type BatchTrackerCollectionDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const BatchTrackerCollectionDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<BatchTrackerCollectionDefinitionsLinkDescriptionList>;
+export const BatchTrackerCollectionDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<BatchTrackerCollectionDefinitionsLinkDescriptionList>;
 
 /** The add tracking information for multiple PayPal transactions response details. */
 export interface BatchTrackerCollection {

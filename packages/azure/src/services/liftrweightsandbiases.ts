@@ -348,10 +348,8 @@ export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstancesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const InstancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InstancesCreateOrUpdateRequestTagsMap>;
+export const InstancesCreateOrUpdateRequestTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<InstancesCreateOrUpdateRequestTagsMap>;
 
 /** Properties specific to Instance */
 export interface InstancePropertiesInput {
@@ -375,9 +373,8 @@ export const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  DeleteInstanceResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
@@ -441,10 +438,8 @@ export const InstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const InstancesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InstancesCreateOrUpdateResponseTagsMap>;
+export const InstancesCreateOrUpdateResponseTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<InstancesCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstancesCreateOrUpdateResponseIdentity = GetInstanceResponseIdentity;
@@ -507,10 +502,8 @@ export const ListInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstanceResourceTagsMap = { [key: string]: string | undefined };
-export const InstanceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InstanceResourceTagsMap>;
+export const InstanceResourceTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<InstanceResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstanceResourceIdentity = GetInstanceResponseIdentity;
@@ -535,18 +528,7 @@ export interface InstanceResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
-export const InstanceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(InstanceResourceTagsMap),
-    location: S.String,
-    properties: S.optional(InstanceProperties),
-    identity: S.optional(GetInstanceResponseIdentity),
-  }),
-).annotate({ identifier: "InstanceResource" }) as any as S.Schema<InstanceResource>;
+export const InstanceResource = GetInstanceResponse as any as S.Schema<InstanceResource>;
 
 /** The InstanceResource items on this page */
 export type InstanceResourceListResultValueList = Array<InstanceResource>;
@@ -673,10 +655,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateInstanceRequestTagsMap>;
+export const UpdateInstanceRequestTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<UpdateInstanceRequestTagsMap>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
@@ -751,10 +731,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateInstanceResponseTagsMap>;
+export const UpdateInstanceResponseTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<UpdateInstanceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateInstanceResponseIdentity = GetInstanceResponseIdentity;
@@ -778,18 +756,8 @@ export interface UpdateInstanceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateInstanceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(InstanceProperties),
-    identity: S.optional(GetInstanceResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateInstanceResponse" }) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export type DeleteInstanceError = AzureOpError;
 /** Delete a InstanceResource */

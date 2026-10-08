@@ -323,10 +323,8 @@ export const ApplicationDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 export type ApplicationDefinitionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseTagsMap>;
+export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -412,10 +410,8 @@ export const ApplicationDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.susp
 
 /** Resource tags */
 export type ApplicationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
+export const ApplicationsCreateOrUpdateRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
 
 /** The Jit approval mode. */
 export type JitApprovalMode = "NotSpecified" | "AutoApprove" | "ManualApprove";
@@ -605,10 +601,8 @@ export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type ApplicationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ApplicationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationsCreateOrUpdateResponseTagsMap>;
+export const ApplicationsCreateOrUpdateResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApplicationsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -682,9 +676,8 @@ export const ApplicationBillingDetailsDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The read-only authorizations property that is retrieved from the application package. */
 export type ApplicationPropertiesAuthorizationsList = Array<ApplicationAuthorization>;
-export const ApplicationPropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
-  ApplicationAuthorization,
-) as any as S.Schema<ApplicationPropertiesAuthorizationsList>;
+export const ApplicationPropertiesAuthorizationsList =
+  ApplicationDefinitionPropertiesAuthorizationsList as any as S.Schema<ApplicationPropertiesAuthorizationsList>;
 
 /** The application package contact information. */
 export interface ApplicationPackageContact {
@@ -922,10 +915,8 @@ export const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type ApplicationsCreateOrUpdateByIdRequestTagsMap = { [key: string]: string | undefined };
-export const ApplicationsCreateOrUpdateByIdRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationsCreateOrUpdateByIdRequestTagsMap>;
+export const ApplicationsCreateOrUpdateByIdRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateByIdRequestTagsMap>;
 
 export interface ApplicationsCreateOrUpdateByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
@@ -965,10 +956,8 @@ export const ApplicationsCreateOrUpdateByIdRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags */
 export type ApplicationsCreateOrUpdateByIdResponseTagsMap = { [key: string]: string | undefined };
-export const ApplicationsCreateOrUpdateByIdResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationsCreateOrUpdateByIdResponseTagsMap>;
+export const ApplicationsCreateOrUpdateByIdResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateByIdResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType =
@@ -1104,9 +1093,8 @@ export const DeleteApplicationByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationByIdRequest>;
 
 export interface DeleteApplicationByIdResponse {}
-export const DeleteApplicationByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationByIdResponse",
-}) as any as S.Schema<DeleteApplicationByIdResponse>;
+export const DeleteApplicationByIdResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteApplicationByIdResponse>;
 
 export interface DeleteApplicationDefinitionRequest {
   /** The ID of the target subscription. */
@@ -1134,11 +1122,8 @@ export const DeleteApplicationDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationDefinitionRequest>;
 
 export interface DeleteApplicationDefinitionResponse {}
-export const DeleteApplicationDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationDefinitionResponse",
-}) as any as S.Schema<DeleteApplicationDefinitionResponse>;
+export const DeleteApplicationDefinitionResponse =
+  UserAssignedResourceIdentityInput as any as S.Schema<DeleteApplicationDefinitionResponse>;
 
 export interface DeleteJitRequestRequest {
   /** The ID of the target subscription. */
@@ -1164,9 +1149,8 @@ export const DeleteJitRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteJitRequestRequest" }) as any as S.Schema<DeleteJitRequestRequest>;
 
 export interface DeleteJitRequestResponse {}
-export const DeleteJitRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteJitRequestResponse",
-}) as any as S.Schema<DeleteJitRequestResponse>;
+export const DeleteJitRequestResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteJitRequestResponse>;
 
 export interface GetApplicationRequest {
   /** The ID of the target subscription. */
@@ -1193,10 +1177,8 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetApplicationResponseTagsMap>;
+export const GetApplicationResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetApplicationResponseSystemDataCreatedByType =
@@ -1299,10 +1281,8 @@ export const GetApplicationByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetApplicationByIdResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationByIdResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetApplicationByIdResponseTagsMap>;
+export const GetApplicationByIdResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationByIdResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetApplicationByIdResponseSystemDataCreatedByType =
@@ -1420,10 +1400,8 @@ export const GetApplicationDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetApplicationDefinitionResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationDefinitionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetApplicationDefinitionResponseTagsMap>;
+export const GetApplicationDefinitionResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationDefinitionResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetApplicationDefinitionResponseSystemDataCreatedByType =
@@ -1530,10 +1508,8 @@ export const GetJitRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetJitRequestResponseTagsMap = { [key: string]: string | undefined };
-export const GetJitRequestResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetJitRequestResponseTagsMap>;
+export const GetJitRequestResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetJitRequestResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetJitRequestResponseSystemDataCreatedByType =
@@ -1586,18 +1562,13 @@ export interface JitAuthorizationPolicies {
   /** The role definition id that will be granted to the Principal. */
   roleDefinitionId: string;
 }
-export const JitAuthorizationPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.String,
-    roleDefinitionId: S.String,
-  }),
-).annotate({ identifier: "JitAuthorizationPolicies" }) as any as S.Schema<JitAuthorizationPolicies>;
+export const JitAuthorizationPolicies =
+  ApplicationAuthorization as any as S.Schema<JitAuthorizationPolicies>;
 
 /** The JIT authorization policies. */
 export type JitRequestPropertiesJitAuthorizationPoliciesList = Array<JitAuthorizationPolicies>;
-export const JitRequestPropertiesJitAuthorizationPoliciesList = /*@__PURE__*/ S.Array(
-  JitAuthorizationPolicies,
-) as any as S.Schema<JitRequestPropertiesJitAuthorizationPoliciesList>;
+export const JitRequestPropertiesJitAuthorizationPoliciesList =
+  ApplicationDefinitionPropertiesAuthorizationsList as any as S.Schema<JitRequestPropertiesJitAuthorizationPoliciesList>;
 
 /** The JIT request scheduling type. */
 export type JitSchedulingType = "NotSpecified" | "Once" | "Recurring";
@@ -1693,16 +1664,13 @@ export const GetJitRequestResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type JitRequestsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const JitRequestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JitRequestsCreateOrUpdateRequestTagsMap>;
+export const JitRequestsCreateOrUpdateRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<JitRequestsCreateOrUpdateRequestTagsMap>;
 
 /** The JIT authorization policies. */
 export type JitRequestPropertiesInputJitAuthorizationPoliciesList = Array<JitAuthorizationPolicies>;
-export const JitRequestPropertiesInputJitAuthorizationPoliciesList = /*@__PURE__*/ S.Array(
-  JitAuthorizationPolicies,
-) as any as S.Schema<JitRequestPropertiesInputJitAuthorizationPoliciesList>;
+export const JitRequestPropertiesInputJitAuthorizationPoliciesList =
+  ApplicationDefinitionPropertiesAuthorizationsList as any as S.Schema<JitRequestPropertiesInputJitAuthorizationPoliciesList>;
 
 /** Information about JIT request properties */
 export interface JitRequestPropertiesInput {
@@ -1759,10 +1727,8 @@ export const JitRequestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type JitRequestsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const JitRequestsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JitRequestsCreateOrUpdateResponseTagsMap>;
+export const JitRequestsCreateOrUpdateResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<JitRequestsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type JitRequestsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -1906,10 +1872,8 @@ export const ListApplicationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
-export const ApplicationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationTagsMap>;
+export const ApplicationTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApplicationSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -2056,10 +2020,8 @@ export const ListApplicationDefinitionByResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags */
 export type ApplicationDefinitionTagsMap = { [key: string]: string | undefined };
-export const ApplicationDefinitionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApplicationDefinitionTagsMap>;
+export const ApplicationDefinitionTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationDefinitionTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApplicationDefinitionSystemDataCreatedByType =
@@ -2183,9 +2145,8 @@ export const ListApplicationDefinitionBySubscriptionRequest = /*@__PURE__*/ S.su
 
 /** The user assigned identities. */
 export type ListApplicationTokensRequestUserAssignedIdentitiesList = Array<string>;
-export const ListApplicationTokensRequestUserAssignedIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListApplicationTokensRequestUserAssignedIdentitiesList>;
+export const ListApplicationTokensRequestUserAssignedIdentitiesList =
+  ApplicationPackageLockingPolicyDefinitionAllowedActionsList as any as S.Schema<ListApplicationTokensRequestUserAssignedIdentitiesList>;
 
 export interface ListApplicationTokensRequest {
   /** The ID of the target subscription. */
@@ -2290,10 +2251,8 @@ export const ListJitRequestByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags */
 export type JitRequestDefinitionTagsMap = { [key: string]: string | undefined };
-export const JitRequestDefinitionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JitRequestDefinitionTagsMap>;
+export const JitRequestDefinitionTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<JitRequestDefinitionTagsMap>;
 
 /** The type of identity that created the resource. */
 export type JitRequestDefinitionSystemDataCreatedByType =
@@ -2517,18 +2476,13 @@ export const RefreshApplicationPermissionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RefreshApplicationPermissionsRequest>;
 
 export interface RefreshApplicationPermissionsResponse {}
-export const RefreshApplicationPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RefreshApplicationPermissionsResponse",
-}) as any as S.Schema<RefreshApplicationPermissionsResponse>;
+export const RefreshApplicationPermissionsResponse =
+  UserAssignedResourceIdentityInput as any as S.Schema<RefreshApplicationPermissionsResponse>;
 
 /** Resource tags */
 export type UpdateApplicationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationRequestTagsMap>;
+export const UpdateApplicationRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationRequestTagsMap>;
 
 /** Plan for the managed application. */
 export interface PlanPatchable {
@@ -2602,10 +2556,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationResponseTagsMap>;
+export const UpdateApplicationResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateApplicationResponseSystemDataCreatedByType =
@@ -2768,10 +2720,8 @@ export const UpdateApplicationAccessResponse = /*@__PURE__*/ S.suspend(() => S.S
 
 /** Resource tags */
 export type UpdateApplicationByIdRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationByIdRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationByIdRequestTagsMap>;
+export const UpdateApplicationByIdRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationByIdRequestTagsMap>;
 
 export interface UpdateApplicationByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
@@ -2813,10 +2763,8 @@ export const UpdateApplicationByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateApplicationByIdResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationByIdResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationByIdResponseTagsMap>;
+export const UpdateApplicationByIdResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationByIdResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateApplicationByIdResponseSystemDataCreatedByType =
@@ -2909,10 +2857,8 @@ export const UpdateApplicationByIdResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Application definition tags */
 export type UpdateApplicationDefinitionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationDefinitionRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationDefinitionRequestTagsMap>;
+export const UpdateApplicationDefinitionRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationDefinitionRequestTagsMap>;
 
 export interface UpdateApplicationDefinitionRequest {
   /** The ID of the target subscription. */
@@ -2944,10 +2890,8 @@ export const UpdateApplicationDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateApplicationDefinitionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateApplicationDefinitionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApplicationDefinitionResponseTagsMap>;
+export const UpdateApplicationDefinitionResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationDefinitionResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateApplicationDefinitionResponseSystemDataCreatedByType =
@@ -3031,10 +2975,8 @@ export const UpdateApplicationDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Jit request tags */
 export type UpdateJitRequestRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateJitRequestRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateJitRequestRequestTagsMap>;
+export const UpdateJitRequestRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateJitRequestRequestTagsMap>;
 
 export interface UpdateJitRequestRequest {
   /** The ID of the target subscription. */
@@ -3064,10 +3006,8 @@ export const UpdateJitRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateJitRequestResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateJitRequestResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateJitRequestResponseTagsMap>;
+export const UpdateJitRequestResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateJitRequestResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateJitRequestResponseSystemDataCreatedByType =

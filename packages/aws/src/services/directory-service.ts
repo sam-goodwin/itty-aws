@@ -479,9 +479,7 @@ export const AddRegionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AddRegionRequest" }) as any as S.Schema<AddRegionRequest>;
 export interface AddRegionResult {}
-export const AddRegionResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "AddRegionResult",
-}) as any as S.Schema<AddRegionResult>;
+export const AddRegionResult = AddIpRoutesResult as any as S.Schema<AddRegionResult>;
 export type ResourceId = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -533,10 +531,10 @@ export const DirectorySize = S.String;
 
 export type IpAddr = string;
 export type DnsIpAddrs = string[];
-export const DnsIpAddrs = /*@__PURE__*/ S.Array(S.String);
+export const DnsIpAddrs = SubnetIds as any as S.Schema<DnsIpAddrs>;
 export type Ipv6Addr = string;
 export type DnsIpv6Addrs = string[];
-export const DnsIpv6Addrs = /*@__PURE__*/ S.Array(S.String);
+export const DnsIpv6Addrs = SubnetIds as any as S.Schema<DnsIpv6Addrs>;
 export type UserName = string;
 export interface DirectoryConnectSettings {
   VpcId: string;
@@ -669,11 +667,8 @@ export const CreateConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConditionalForwarderRequest",
 }) as any as S.Schema<CreateConditionalForwarderRequest>;
 export interface CreateConditionalForwarderResult {}
-export const CreateConditionalForwarderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateConditionalForwarderResult",
-}) as any as S.Schema<CreateConditionalForwarderResult>;
+export const CreateConditionalForwarderResult =
+  CancelSchemaExtensionResult as any as S.Schema<CreateConditionalForwarderResult>;
 export type Password = string | redacted.Redacted<string>;
 export interface CreateDirectoryRequest {
   Name: string;
@@ -700,9 +695,8 @@ export const CreateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDirectoryResult {
   DirectoryId?: string;
 }
-export const CreateDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateDirectoryResult" }) as any as S.Schema<CreateDirectoryResult>;
+export const CreateDirectoryResult =
+  ConnectDirectoryResult as any as S.Schema<CreateDirectoryResult>;
 export type SecretArn = string;
 export type AssessmentId = string;
 export interface CreateHybridADRequest {
@@ -718,9 +712,7 @@ export const CreateHybridADRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateHybridADResult {
   DirectoryId?: string;
 }
-export const CreateHybridADResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateHybridADResult" }) as any as S.Schema<CreateHybridADResult>;
+export const CreateHybridADResult = ConnectDirectoryResult as any as S.Schema<CreateHybridADResult>;
 export type LogGroupName = string;
 export interface CreateLogSubscriptionRequest {
   DirectoryId: string;
@@ -734,11 +726,8 @@ export const CreateLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLogSubscriptionRequest",
 }) as any as S.Schema<CreateLogSubscriptionRequest>;
 export interface CreateLogSubscriptionResult {}
-export const CreateLogSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CreateLogSubscriptionResult",
-}) as any as S.Schema<CreateLogSubscriptionResult>;
+export const CreateLogSubscriptionResult =
+  CancelSchemaExtensionResult as any as S.Schema<CreateLogSubscriptionResult>;
 export type DirectoryEdition = "Enterprise" | "Standard" | "Hybrid" | (string & {});
 export const DirectoryEdition = S.String;
 
@@ -767,9 +756,8 @@ export const CreateMicrosoftADRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMicrosoftADResult {
   DirectoryId?: string;
 }
-export const CreateMicrosoftADResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateMicrosoftADResult" }) as any as S.Schema<CreateMicrosoftADResult>;
+export const CreateMicrosoftADResult =
+  ConnectDirectoryResult as any as S.Schema<CreateMicrosoftADResult>;
 export type SnapshotName = string;
 export interface CreateSnapshotRequest {
   DirectoryId: string;
@@ -854,11 +842,8 @@ export const DeleteConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConditionalForwarderRequest",
 }) as any as S.Schema<DeleteConditionalForwarderRequest>;
 export interface DeleteConditionalForwarderResult {}
-export const DeleteConditionalForwarderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConditionalForwarderResult",
-}) as any as S.Schema<DeleteConditionalForwarderResult>;
+export const DeleteConditionalForwarderResult =
+  CancelSchemaExtensionResult as any as S.Schema<DeleteConditionalForwarderResult>;
 export interface DeleteDirectoryRequest {
   DirectoryId: string;
 }
@@ -870,9 +855,8 @@ export const DeleteDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDirectoryResult {
   DirectoryId?: string;
 }
-export const DeleteDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteDirectoryResult" }) as any as S.Schema<DeleteDirectoryResult>;
+export const DeleteDirectoryResult =
+  ConnectDirectoryResult as any as S.Schema<DeleteDirectoryResult>;
 export interface DeleteLogSubscriptionRequest {
   DirectoryId: string;
 }
@@ -884,11 +868,8 @@ export const DeleteLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLogSubscriptionRequest",
 }) as any as S.Schema<DeleteLogSubscriptionRequest>;
 export interface DeleteLogSubscriptionResult {}
-export const DeleteLogSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteLogSubscriptionResult",
-}) as any as S.Schema<DeleteLogSubscriptionResult>;
+export const DeleteLogSubscriptionResult =
+  CancelSchemaExtensionResult as any as S.Schema<DeleteLogSubscriptionResult>;
 export interface DeleteSnapshotRequest {
   SnapshotId: string;
 }
@@ -900,9 +881,7 @@ export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSnapshotResult {
   SnapshotId?: string;
 }
-export const DeleteSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SnapshotId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteSnapshotResult" }) as any as S.Schema<DeleteSnapshotResult>;
+export const DeleteSnapshotResult = CreateSnapshotResult as any as S.Schema<DeleteSnapshotResult>;
 export type DeleteAssociatedConditionalForwarder = boolean;
 export interface DeleteTrustRequest {
   TrustId: string;
@@ -916,9 +895,7 @@ export const DeleteTrustRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTrustResult {
   TrustId?: string;
 }
-export const DeleteTrustResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrustId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteTrustResult" }) as any as S.Schema<DeleteTrustResult>;
+export const DeleteTrustResult = CreateTrustResult as any as S.Schema<DeleteTrustResult>;
 export type CertificateId = string;
 export interface DeregisterCertificateRequest {
   DirectoryId: string;
@@ -932,11 +909,8 @@ export const DeregisterCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterCertificateRequest",
 }) as any as S.Schema<DeregisterCertificateRequest>;
 export interface DeregisterCertificateResult {}
-export const DeregisterCertificateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterCertificateResult",
-}) as any as S.Schema<DeregisterCertificateResult>;
+export const DeregisterCertificateResult =
+  CancelSchemaExtensionResult as any as S.Schema<DeregisterCertificateResult>;
 export type TopicName = string;
 export interface DeregisterEventTopicRequest {
   DirectoryId: string;
@@ -950,11 +924,8 @@ export const DeregisterEventTopicRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterEventTopicRequest",
 }) as any as S.Schema<DeregisterEventTopicRequest>;
 export interface DeregisterEventTopicResult {}
-export const DeregisterEventTopicResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterEventTopicResult",
-}) as any as S.Schema<DeregisterEventTopicResult>;
+export const DeregisterEventTopicResult =
+  CancelSchemaExtensionResult as any as S.Schema<DeregisterEventTopicResult>;
 export interface DescribeADAssessmentRequest {
   AssessmentId: string;
 }
@@ -971,13 +942,13 @@ export type AssessmentStatus = string;
 export type AssessmentStatusCode = string;
 export type AssessmentStatusReason = string;
 export type CustomerDnsIps = string[];
-export const CustomerDnsIps = /*@__PURE__*/ S.Array(S.String);
+export const CustomerDnsIps = SubnetIds as any as S.Schema<CustomerDnsIps>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
 export type AssessmentInstanceId = string;
 export type AssessmentInstanceIds = string[];
-export const AssessmentInstanceIds = /*@__PURE__*/ S.Array(S.String);
+export const AssessmentInstanceIds = SubnetIds as any as S.Schema<AssessmentInstanceIds>;
 export type AssessmentReportType = string;
 export type AssessmentVersion = string;
 export interface Assessment {
@@ -1228,7 +1199,7 @@ export const DescribeClientAuthenticationSettingsResult = /*@__PURE__*/ S.suspen
   identifier: "DescribeClientAuthenticationSettingsResult",
 }) as any as S.Schema<DescribeClientAuthenticationSettingsResult>;
 export type RemoteDomainNames = string[];
-export const RemoteDomainNames = /*@__PURE__*/ S.Array(S.String);
+export const RemoteDomainNames = SubnetIds as any as S.Schema<RemoteDomainNames>;
 export interface DescribeConditionalForwardersRequest {
   DirectoryId: string;
   RemoteDomainNames?: string[];
@@ -1268,7 +1239,7 @@ export const DescribeConditionalForwardersResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConditionalForwardersResult",
 }) as any as S.Schema<DescribeConditionalForwardersResult>;
 export type DirectoryIds = string[];
-export const DirectoryIds = /*@__PURE__*/ S.Array(S.String);
+export const DirectoryIds = SubnetIds as any as S.Schema<DirectoryIds>;
 export type Limit = number;
 export interface DescribeDirectoriesRequest {
   DirectoryIds?: string[];
@@ -1312,7 +1283,7 @@ export const DirectoryType = S.String;
 
 export type AvailabilityZone = string;
 export type AvailabilityZones = string[];
-export const AvailabilityZones = /*@__PURE__*/ S.Array(S.String);
+export const AvailabilityZones = SubnetIds as any as S.Schema<AvailabilityZones>;
 export interface DirectoryVpcSettingsDescription {
   VpcId?: string;
   SubnetIds?: string[];
@@ -1330,9 +1301,9 @@ export const DirectoryVpcSettingsDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectoryVpcSettingsDescription",
 }) as any as S.Schema<DirectoryVpcSettingsDescription>;
 export type IpAddrs = string[];
-export const IpAddrs = /*@__PURE__*/ S.Array(S.String);
+export const IpAddrs = SubnetIds as any as S.Schema<IpAddrs>;
 export type IpV6Addrs = string[];
-export const IpV6Addrs = /*@__PURE__*/ S.Array(S.String);
+export const IpV6Addrs = SubnetIds as any as S.Schema<IpV6Addrs>;
 export interface DirectoryConnectSettingsDescription {
   VpcId?: string;
   SubnetIds?: string[];
@@ -1357,7 +1328,7 @@ export const DirectoryConnectSettingsDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryConnectSettingsDescription>;
 export type Server = string;
 export type Servers = string[];
-export const Servers = /*@__PURE__*/ S.Array(S.String);
+export const Servers = SubnetIds as any as S.Schema<Servers>;
 export type PortNumber = number;
 export type RadiusTimeout = number;
 export type RadiusRetries = number;
@@ -1427,7 +1398,7 @@ export const OwnerDirectoryDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "OwnerDirectoryDescription",
 }) as any as S.Schema<OwnerDirectoryDescription>;
 export type AdditionalRegions = string[];
-export const AdditionalRegions = /*@__PURE__*/ S.Array(S.String);
+export const AdditionalRegions = SubnetIds as any as S.Schema<AdditionalRegions>;
 export interface RegionsInfo {
   PrimaryRegion?: string;
   AdditionalRegions?: string[];
@@ -1560,7 +1531,7 @@ export const DescribeDirectoryDataAccessResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDirectoryDataAccessResult>;
 export type DomainControllerId = string;
 export type DomainControllerIds = string[];
-export const DomainControllerIds = /*@__PURE__*/ S.Array(S.String);
+export const DomainControllerIds = SubnetIds as any as S.Schema<DomainControllerIds>;
 export interface DescribeDomainControllersRequest {
   DirectoryId: string;
   DomainControllerIds?: string[];
@@ -1633,7 +1604,7 @@ export const DescribeDomainControllersResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDomainControllersResult",
 }) as any as S.Schema<DescribeDomainControllersResult>;
 export type TopicNames = string[];
-export const TopicNames = /*@__PURE__*/ S.Array(S.String);
+export const TopicNames = SubnetIds as any as S.Schema<TopicNames>;
 export interface DescribeEventTopicsRequest {
   DirectoryId?: string;
   TopicNames?: string[];
@@ -1964,7 +1935,7 @@ export const DescribeSharedDirectoriesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSharedDirectoriesResult",
 }) as any as S.Schema<DescribeSharedDirectoriesResult>;
 export type SnapshotIds = string[];
-export const SnapshotIds = /*@__PURE__*/ S.Array(S.String);
+export const SnapshotIds = SubnetIds as any as S.Schema<SnapshotIds>;
 export interface DescribeSnapshotsRequest {
   DirectoryId?: string;
   SnapshotIds?: string[];
@@ -2014,7 +1985,7 @@ export const DescribeSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Snapshots: S.optional(Snapshots), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "DescribeSnapshotsResult" }) as any as S.Schema<DescribeSnapshotsResult>;
 export type TrustIds = string[];
-export const TrustIds = /*@__PURE__*/ S.Array(S.String);
+export const TrustIds = SubnetIds as any as S.Schema<TrustIds>;
 export interface DescribeTrustsRequest {
   DirectoryId?: string;
   TrustIds?: string[];
@@ -2160,11 +2131,8 @@ export const DisableCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableCAEnrollmentPolicyRequest",
 }) as any as S.Schema<DisableCAEnrollmentPolicyRequest>;
 export interface DisableCAEnrollmentPolicyResult {}
-export const DisableCAEnrollmentPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisableCAEnrollmentPolicyResult",
-}) as any as S.Schema<DisableCAEnrollmentPolicyResult>;
+export const DisableCAEnrollmentPolicyResult =
+  CancelSchemaExtensionResult as any as S.Schema<DisableCAEnrollmentPolicyResult>;
 export interface DisableClientAuthenticationRequest {
   DirectoryId: string;
   Type: ClientAuthenticationType;
@@ -2177,11 +2145,8 @@ export const DisableClientAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableClientAuthenticationRequest",
 }) as any as S.Schema<DisableClientAuthenticationRequest>;
 export interface DisableClientAuthenticationResult {}
-export const DisableClientAuthenticationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisableClientAuthenticationResult",
-}) as any as S.Schema<DisableClientAuthenticationResult>;
+export const DisableClientAuthenticationResult =
+  CancelSchemaExtensionResult as any as S.Schema<DisableClientAuthenticationResult>;
 export interface DisableDirectoryDataAccessRequest {
   DirectoryId: string;
 }
@@ -2193,11 +2158,8 @@ export const DisableDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableDirectoryDataAccessRequest",
 }) as any as S.Schema<DisableDirectoryDataAccessRequest>;
 export interface DisableDirectoryDataAccessResult {}
-export const DisableDirectoryDataAccessResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisableDirectoryDataAccessResult",
-}) as any as S.Schema<DisableDirectoryDataAccessResult>;
+export const DisableDirectoryDataAccessResult =
+  CancelSchemaExtensionResult as any as S.Schema<DisableDirectoryDataAccessResult>;
 export interface DisableLDAPSRequest {
   DirectoryId: string;
   Type: LDAPSType;
@@ -2208,9 +2170,7 @@ export const DisableLDAPSRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableLDAPSRequest" }) as any as S.Schema<DisableLDAPSRequest>;
 export interface DisableLDAPSResult {}
-export const DisableLDAPSResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DisableLDAPSResult",
-}) as any as S.Schema<DisableLDAPSResult>;
+export const DisableLDAPSResult = AddIpRoutesResult as any as S.Schema<DisableLDAPSResult>;
 export interface DisableRadiusRequest {
   DirectoryId: string;
 }
@@ -2220,9 +2180,7 @@ export const DisableRadiusRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableRadiusRequest" }) as any as S.Schema<DisableRadiusRequest>;
 export interface DisableRadiusResult {}
-export const DisableRadiusResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DisableRadiusResult",
-}) as any as S.Schema<DisableRadiusResult>;
+export const DisableRadiusResult = AddIpRoutesResult as any as S.Schema<DisableRadiusResult>;
 export interface DisableSsoRequest {
   DirectoryId: string;
   UserName?: string;
@@ -2236,9 +2194,7 @@ export const DisableSsoRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DisableSsoRequest" }) as any as S.Schema<DisableSsoRequest>;
 export interface DisableSsoResult {}
-export const DisableSsoResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DisableSsoResult",
-}) as any as S.Schema<DisableSsoResult>;
+export const DisableSsoResult = AddIpRoutesResult as any as S.Schema<DisableSsoResult>;
 export interface EnableCAEnrollmentPolicyRequest {
   DirectoryId: string;
   PcaConnectorArn: string;
@@ -2251,11 +2207,8 @@ export const EnableCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableCAEnrollmentPolicyRequest",
 }) as any as S.Schema<EnableCAEnrollmentPolicyRequest>;
 export interface EnableCAEnrollmentPolicyResult {}
-export const EnableCAEnrollmentPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "EnableCAEnrollmentPolicyResult",
-}) as any as S.Schema<EnableCAEnrollmentPolicyResult>;
+export const EnableCAEnrollmentPolicyResult =
+  CancelSchemaExtensionResult as any as S.Schema<EnableCAEnrollmentPolicyResult>;
 export interface EnableClientAuthenticationRequest {
   DirectoryId: string;
   Type: ClientAuthenticationType;
@@ -2268,11 +2221,8 @@ export const EnableClientAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableClientAuthenticationRequest",
 }) as any as S.Schema<EnableClientAuthenticationRequest>;
 export interface EnableClientAuthenticationResult {}
-export const EnableClientAuthenticationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "EnableClientAuthenticationResult",
-}) as any as S.Schema<EnableClientAuthenticationResult>;
+export const EnableClientAuthenticationResult =
+  CancelSchemaExtensionResult as any as S.Schema<EnableClientAuthenticationResult>;
 export interface EnableDirectoryDataAccessRequest {
   DirectoryId: string;
 }
@@ -2284,11 +2234,8 @@ export const EnableDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableDirectoryDataAccessRequest",
 }) as any as S.Schema<EnableDirectoryDataAccessRequest>;
 export interface EnableDirectoryDataAccessResult {}
-export const EnableDirectoryDataAccessResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "EnableDirectoryDataAccessResult",
-}) as any as S.Schema<EnableDirectoryDataAccessResult>;
+export const EnableDirectoryDataAccessResult =
+  CancelSchemaExtensionResult as any as S.Schema<EnableDirectoryDataAccessResult>;
 export interface EnableLDAPSRequest {
   DirectoryId: string;
   Type: LDAPSType;
@@ -2299,9 +2246,7 @@ export const EnableLDAPSRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EnableLDAPSRequest" }) as any as S.Schema<EnableLDAPSRequest>;
 export interface EnableLDAPSResult {}
-export const EnableLDAPSResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "EnableLDAPSResult",
-}) as any as S.Schema<EnableLDAPSResult>;
+export const EnableLDAPSResult = AddIpRoutesResult as any as S.Schema<EnableLDAPSResult>;
 export interface EnableRadiusRequest {
   DirectoryId: string;
   RadiusSettings: RadiusSettings;
@@ -2312,9 +2257,7 @@ export const EnableRadiusRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EnableRadiusRequest" }) as any as S.Schema<EnableRadiusRequest>;
 export interface EnableRadiusResult {}
-export const EnableRadiusResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "EnableRadiusResult",
-}) as any as S.Schema<EnableRadiusResult>;
+export const EnableRadiusResult = AddIpRoutesResult as any as S.Schema<EnableRadiusResult>;
 export interface EnableSsoRequest {
   DirectoryId: string;
   UserName?: string;
@@ -2328,9 +2271,7 @@ export const EnableSsoRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "EnableSsoRequest" }) as any as S.Schema<EnableSsoRequest>;
 export interface EnableSsoResult {}
-export const EnableSsoResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "EnableSsoResult",
-}) as any as S.Schema<EnableSsoResult>;
+export const EnableSsoResult = AddIpRoutesResult as any as S.Schema<EnableSsoResult>;
 export interface GetDirectoryLimitsRequest {}
 export const GetDirectoryLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2697,9 +2638,8 @@ export const RegisterEventTopicRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterEventTopicRequest",
 }) as any as S.Schema<RegisterEventTopicRequest>;
 export interface RegisterEventTopicResult {}
-export const RegisterEventTopicResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "RegisterEventTopicResult" }) as any as S.Schema<RegisterEventTopicResult>;
+export const RegisterEventTopicResult =
+  AddTagsToResourceResult as any as S.Schema<RegisterEventTopicResult>;
 export interface RejectSharedDirectoryRequest {
   SharedDirectoryId: string;
 }
@@ -2719,9 +2659,9 @@ export const RejectSharedDirectoryResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RejectSharedDirectoryResult",
 }) as any as S.Schema<RejectSharedDirectoryResult>;
 export type CidrIps = string[];
-export const CidrIps = /*@__PURE__*/ S.Array(S.String);
+export const CidrIps = SubnetIds as any as S.Schema<CidrIps>;
 export type CidrIpv6s = string[];
-export const CidrIpv6s = /*@__PURE__*/ S.Array(S.String);
+export const CidrIpv6s = SubnetIds as any as S.Schema<CidrIpv6s>;
 export interface RemoveIpRoutesRequest {
   DirectoryId: string;
   CidrIps?: string[];
@@ -2735,9 +2675,7 @@ export const RemoveIpRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "RemoveIpRoutesRequest" }) as any as S.Schema<RemoveIpRoutesRequest>;
 export interface RemoveIpRoutesResult {}
-export const RemoveIpRoutesResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RemoveIpRoutesResult",
-}) as any as S.Schema<RemoveIpRoutesResult>;
+export const RemoveIpRoutesResult = AddIpRoutesResult as any as S.Schema<RemoveIpRoutesResult>;
 export interface RemoveRegionRequest {
   DirectoryId: string;
 }
@@ -2747,11 +2685,9 @@ export const RemoveRegionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveRegionRequest" }) as any as S.Schema<RemoveRegionRequest>;
 export interface RemoveRegionResult {}
-export const RemoveRegionResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RemoveRegionResult",
-}) as any as S.Schema<RemoveRegionResult>;
+export const RemoveRegionResult = AddIpRoutesResult as any as S.Schema<RemoveRegionResult>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = SubnetIds as any as S.Schema<TagKeys>;
 export interface RemoveTagsFromResourceRequest {
   ResourceId: string;
   TagKeys: string[];
@@ -2764,11 +2700,8 @@ export const RemoveTagsFromResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromResourceRequest",
 }) as any as S.Schema<RemoveTagsFromResourceRequest>;
 export interface RemoveTagsFromResourceResult {}
-export const RemoveTagsFromResourceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveTagsFromResourceResult",
-}) as any as S.Schema<RemoveTagsFromResourceResult>;
+export const RemoveTagsFromResourceResult =
+  CancelSchemaExtensionResult as any as S.Schema<RemoveTagsFromResourceResult>;
 export type CustomerUserName = string;
 export type UserPassword = string | redacted.Redacted<string>;
 export interface ResetUserPasswordRequest {
@@ -2782,9 +2715,8 @@ export const ResetUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ResetUserPasswordRequest" }) as any as S.Schema<ResetUserPasswordRequest>;
 export interface ResetUserPasswordResult {}
-export const ResetUserPasswordResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "ResetUserPasswordResult" }) as any as S.Schema<ResetUserPasswordResult>;
+export const ResetUserPasswordResult =
+  AddTagsToResourceResult as any as S.Schema<ResetUserPasswordResult>;
 export interface RestoreFromSnapshotRequest {
   SnapshotId: string;
 }
@@ -2796,11 +2728,8 @@ export const RestoreFromSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreFromSnapshotRequest",
 }) as any as S.Schema<RestoreFromSnapshotRequest>;
 export interface RestoreFromSnapshotResult {}
-export const RestoreFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RestoreFromSnapshotResult",
-}) as any as S.Schema<RestoreFromSnapshotResult>;
+export const RestoreFromSnapshotResult =
+  CancelSchemaExtensionResult as any as S.Schema<RestoreFromSnapshotResult>;
 export type TargetId = string;
 export type TargetType = "ACCOUNT" | (string & {});
 export const TargetType = S.String;
@@ -2861,9 +2790,8 @@ export const StartADAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartADAssessmentResult {
   AssessmentId?: string;
 }
-export const StartADAssessmentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssessmentId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "StartADAssessmentResult" }) as any as S.Schema<StartADAssessmentResult>;
+export const StartADAssessmentResult =
+  DeleteADAssessmentResult as any as S.Schema<StartADAssessmentResult>;
 export type CreateSnapshotBeforeSchemaExtension = boolean;
 export type LdifContent = string;
 export interface StartSchemaExtensionRequest {
@@ -2894,9 +2822,7 @@ export interface UnshareTarget {
   Id: string;
   Type: TargetType;
 }
-export const UnshareTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String, Type: TargetType }),
-).annotate({ identifier: "UnshareTarget" }) as any as S.Schema<UnshareTarget>;
+export const UnshareTarget = ShareTarget as any as S.Schema<UnshareTarget>;
 export interface UnshareDirectoryRequest {
   DirectoryId: string;
   UnshareTarget: UnshareTarget;
@@ -2909,9 +2835,8 @@ export const UnshareDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UnshareDirectoryResult {
   SharedDirectoryId?: string;
 }
-export const UnshareDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SharedDirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UnshareDirectoryResult" }) as any as S.Schema<UnshareDirectoryResult>;
+export const UnshareDirectoryResult =
+  ShareDirectoryResult as any as S.Schema<UnshareDirectoryResult>;
 export interface UpdateConditionalForwarderRequest {
   DirectoryId: string;
   RemoteDomainName: string;
@@ -2929,11 +2854,8 @@ export const UpdateConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConditionalForwarderRequest",
 }) as any as S.Schema<UpdateConditionalForwarderRequest>;
 export interface UpdateConditionalForwarderResult {}
-export const UpdateConditionalForwarderResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateConditionalForwarderResult",
-}) as any as S.Schema<UpdateConditionalForwarderResult>;
+export const UpdateConditionalForwarderResult =
+  CancelSchemaExtensionResult as any as S.Schema<UpdateConditionalForwarderResult>;
 export interface DirectorySizeUpdateSettings {
   DirectorySize?: DirectorySize;
 }
@@ -2971,11 +2893,8 @@ export const UpdateDirectorySetupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDirectorySetupRequest",
 }) as any as S.Schema<UpdateDirectorySetupRequest>;
 export interface UpdateDirectorySetupResult {}
-export const UpdateDirectorySetupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateDirectorySetupResult",
-}) as any as S.Schema<UpdateDirectorySetupResult>;
+export const UpdateDirectorySetupResult =
+  CancelSchemaExtensionResult as any as S.Schema<UpdateDirectorySetupResult>;
 export interface HybridAdministratorAccountUpdate {
   SecretArn: string;
 }
@@ -3024,11 +2943,8 @@ export const UpdateNumberOfDomainControllersRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateNumberOfDomainControllersRequest",
 }) as any as S.Schema<UpdateNumberOfDomainControllersRequest>;
 export interface UpdateNumberOfDomainControllersResult {}
-export const UpdateNumberOfDomainControllersResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateNumberOfDomainControllersResult",
-}) as any as S.Schema<UpdateNumberOfDomainControllersResult>;
+export const UpdateNumberOfDomainControllersResult =
+  CancelSchemaExtensionResult as any as S.Schema<UpdateNumberOfDomainControllersResult>;
 export interface UpdateRadiusRequest {
   DirectoryId: string;
   RadiusSettings: RadiusSettings;
@@ -3039,9 +2955,7 @@ export const UpdateRadiusRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRadiusRequest" }) as any as S.Schema<UpdateRadiusRequest>;
 export interface UpdateRadiusResult {}
-export const UpdateRadiusResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateRadiusResult",
-}) as any as S.Schema<UpdateRadiusResult>;
+export const UpdateRadiusResult = AddIpRoutesResult as any as S.Schema<UpdateRadiusResult>;
 export interface Setting {
   Name: string;
   Value: string;
@@ -3063,9 +2977,7 @@ export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSettingsResult {
   DirectoryId?: string;
 }
-export const UpdateSettingsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DirectoryId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateSettingsResult" }) as any as S.Schema<UpdateSettingsResult>;
+export const UpdateSettingsResult = ConnectDirectoryResult as any as S.Schema<UpdateSettingsResult>;
 export interface UpdateTrustRequest {
   TrustId: string;
   SelectiveAuth?: SelectiveAuth;
@@ -3094,9 +3006,7 @@ export const VerifyTrustRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyTrustResult {
   TrustId?: string;
 }
-export const VerifyTrustResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TrustId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "VerifyTrustResult" }) as any as S.Schema<VerifyTrustResult>;
+export const VerifyTrustResult = CreateTrustResult as any as S.Schema<VerifyTrustResult>;
 export type ExceptionMessage = string;
 export type AcceptSharedDirectoryError =
   | ClientException

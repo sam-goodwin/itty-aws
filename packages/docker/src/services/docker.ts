@@ -93,9 +93,8 @@ export const AttachContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttachContainerRequest" }) as any as S.Schema<AttachContainerRequest>;
 
 export interface AttachContainerResponse {}
-export const AttachContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AttachContainerResponse",
-}) as any as S.Schema<AttachContainerResponse>;
+export const AttachContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<AttachContainerResponse>;
 
 export interface BuildPruneRequest {
   /** Amount of disk space in bytes to keep for cache */
@@ -145,21 +144,18 @@ export const CommitImageRequestExposedPortsMap = /*@__PURE__*/ S.Record(
 
 /** A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value. */
 export type CommitImageRequestEnvList = Array<string>;
-export const CommitImageRequestEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommitImageRequestEnvList>;
+export const CommitImageRequestEnvList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CommitImageRequestEnvList>;
 
 /** Command to run specified as a string or an array of strings. */
 export type CommitImageRequestCmdList = Array<string>;
-export const CommitImageRequestCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommitImageRequestCmdList>;
+export const CommitImageRequestCmdList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CommitImageRequestCmdList>;
 
 /** The test to perform. Possible values are: - `[]` inherit healthcheck from image or parent image - `["NONE"]` disable healthcheck - `["CMD", args...]` exec arguments directly - `["CMD-SHELL", command]` run command with system's default shell A non-zero exit code indicates a failed healthcheck: - `0` healthy - `1` unhealthy - `2` reserved (treated as unhealthy) - other values: error running probe */
 export type HealthConfigTestList = Array<string>;
-export const HealthConfigTestList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HealthConfigTestList>;
+export const HealthConfigTestList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HealthConfigTestList>;
 
 /** A test to perform to check that the container is healthy. Healthcheck commands should be side-effect free. */
 export interface HealthConfig {
@@ -189,22 +185,18 @@ export const HealthConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** An object mapping mount point paths inside the container to empty objects. */
 export type CommitImageRequestVolumesMap = { [key: string]: unknown | undefined };
-export const CommitImageRequestVolumesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CommitImageRequestVolumesMap>;
+export const CommitImageRequestVolumesMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<CommitImageRequestVolumesMap>;
 
 /** The entry point for the container as a string or an array of strings. If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`). */
 export type CommitImageRequestEntrypointList = Array<string>;
-export const CommitImageRequestEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommitImageRequestEntrypointList>;
+export const CommitImageRequestEntrypointList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CommitImageRequestEntrypointList>;
 
 /** `ONBUILD` metadata that were defined in the image's `Dockerfile`. */
 export type CommitImageRequestOnBuildList = Array<string>;
-export const CommitImageRequestOnBuildList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommitImageRequestOnBuildList>;
+export const CommitImageRequestOnBuildList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CommitImageRequestOnBuildList>;
 
 /** User-defined key/value metadata. */
 export type CommitImageRequestLabelsMap = { [key: string]: string | undefined };
@@ -215,9 +207,8 @@ export const CommitImageRequestLabelsMap = /*@__PURE__*/ S.Record(
 
 /** Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell. */
 export type CommitImageRequestShellList = Array<string>;
-export const CommitImageRequestShellList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommitImageRequestShellList>;
+export const CommitImageRequestShellList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CommitImageRequestShellList>;
 
 export interface CommitImageRequest {
   /** The ID or name of the container to commit */
@@ -351,17 +342,12 @@ export const ObjectVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type ConfigSpecLabelsMap = { [key: string]: string | undefined };
-export const ConfigSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigSpecLabelsMap>;
+export const ConfigSpecLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ConfigSpecLabelsMap>;
 
 /** Key/value map of driver-specific options. */
 export type DriverOptionsMap = { [key: string]: string | undefined };
-export const DriverOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DriverOptionsMap>;
+export const DriverOptionsMap = CommitImageRequestLabelsMap as any as S.Schema<DriverOptionsMap>;
 
 /** Driver represents a driver (network, logging, secrets). */
 export interface Driver {
@@ -414,9 +400,8 @@ export const Config = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
 export type EndpointIPAMConfigLinkLocalIPsList = Array<string>;
-export const EndpointIPAMConfigLinkLocalIPsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointIPAMConfigLinkLocalIPsList>;
+export const EndpointIPAMConfigLinkLocalIPsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<EndpointIPAMConfigLinkLocalIPsList>;
 
 /** EndpointIPAMConfig represents an endpoint's IPAM configuration. */
 export interface EndpointIPAMConfig {
@@ -433,27 +418,22 @@ export const EndpointIPAMConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointIPAMConfig" }) as any as S.Schema<EndpointIPAMConfig>;
 
 export type EndpointSettingsLinksList = Array<string>;
-export const EndpointSettingsLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointSettingsLinksList>;
+export const EndpointSettingsLinksList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<EndpointSettingsLinksList>;
 
 export type EndpointSettingsAliasesList = Array<string>;
-export const EndpointSettingsAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointSettingsAliasesList>;
+export const EndpointSettingsAliasesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<EndpointSettingsAliasesList>;
 
 /** DriverOpts is a mapping of driver options and values. These options are passed directly to the driver and are driver specific. */
 export type EndpointSettingsDriverOptsMap = { [key: string]: string | undefined };
-export const EndpointSettingsDriverOptsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EndpointSettingsDriverOptsMap>;
+export const EndpointSettingsDriverOptsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<EndpointSettingsDriverOptsMap>;
 
 /** List of all DNS names an endpoint has on a specific network. This list is based on the container name, network aliases, container short ID, and hostname. These DNS names are non-fully qualified but can contain several dots. You can get fully qualified DNS names by appending `.<network-name>`. For instance, if container name is `my.ctr` and the network is named `testnet`, `DNSNames` will contain `my.ctr` and the FQDN will be `my.ctr.testnet`. */
 export type EndpointSettingsDNSNamesList = Array<string>;
-export const EndpointSettingsDNSNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EndpointSettingsDNSNamesList>;
+export const EndpointSettingsDNSNamesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<EndpointSettingsDNSNamesList>;
 
 /** Configuration for a network endpoint. */
 export interface EndpointSettings {
@@ -521,9 +501,8 @@ export const ConnectNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectNetworkRequest" }) as any as S.Schema<ConnectNetworkRequest>;
 
 export interface ConnectNetworkResponse {}
-export const ConnectNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ConnectNetworkResponse",
-}) as any as S.Schema<ConnectNetworkResponse>;
+export const ConnectNetworkResponse =
+  ArchiveContainerResponse as any as S.Schema<ConnectNetworkResponse>;
 
 export interface ContainerAttachWebsocketRequest {
   /** ID or name of the container */
@@ -614,9 +593,8 @@ export const ContainerInspectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The arguments to the command being run */
 export type ContainerInspectResponseArgsList = Array<string>;
-export const ContainerInspectResponseArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerInspectResponseArgsList>;
+export const ContainerInspectResponseArgsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerInspectResponseArgsList>;
 
 /** String representation of the container state. Can be one of "created", "running", "paused", "restarting", "removing", "exited", or "dead". */
 export type ContainerStateStatus =
@@ -719,22 +697,18 @@ export const ContainerState = /*@__PURE__*/ S.suspend(() =>
 
 /** List of URLs from which this object MAY be downloaded. */
 export type OCIDescriptorUrlsList = Array<string>;
-export const OCIDescriptorUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OCIDescriptorUrlsList>;
+export const OCIDescriptorUrlsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<OCIDescriptorUrlsList>;
 
 /** Arbitrary metadata relating to the targeted content. */
 export type OCIDescriptorAnnotationsMap = { [key: string]: string | undefined };
-export const OCIDescriptorAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OCIDescriptorAnnotationsMap>;
+export const OCIDescriptorAnnotationsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<OCIDescriptorAnnotationsMap>;
 
 /** Optional field specifying an array of strings, each listing a required OS feature (for example on Windows `win32k`). */
 export type OCIPlatformOsFeaturesList = Array<string>;
-export const OCIPlatformOsFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OCIPlatformOsFeaturesList>;
+export const OCIPlatformOsFeaturesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<OCIPlatformOsFeaturesList>;
 
 /** Describes the platform which the image in the manifest runs on, as defined in the [OCI Image Index Specification](https://github.com/opencontainers/image-spec/blob/v1.0.1/image-index.md). */
 export interface OCIPlatform {
@@ -792,9 +766,8 @@ export const OCIDescriptor = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of exec instances that are running in the container. */
 export type ContainerInspectResponseExecIDsList = Array<string>;
-export const ContainerInspectResponseExecIDsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerInspectResponseExecIDsList>;
+export const ContainerInspectResponseExecIDsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerInspectResponseExecIDsList>;
 
 export interface HostConfigBlkioWeightDeviceItem {
   Path?: string;
@@ -836,21 +809,18 @@ export const HostConfigBlkioDeviceReadBpsList = /*@__PURE__*/ S.Array(
 
 /** Limit write rate (bytes per second) to a device, in the form: ``` [{"Path": "device_path", "Rate": rate}] ``` */
 export type HostConfigBlkioDeviceWriteBpsList = Array<ThrottleDevice>;
-export const HostConfigBlkioDeviceWriteBpsList = /*@__PURE__*/ S.Array(
-  ThrottleDevice,
-) as any as S.Schema<HostConfigBlkioDeviceWriteBpsList>;
+export const HostConfigBlkioDeviceWriteBpsList =
+  HostConfigBlkioDeviceReadBpsList as any as S.Schema<HostConfigBlkioDeviceWriteBpsList>;
 
 /** Limit read rate (IO per second) from a device, in the form: ``` [{"Path": "device_path", "Rate": rate}] ``` */
 export type HostConfigBlkioDeviceReadIOpsList = Array<ThrottleDevice>;
-export const HostConfigBlkioDeviceReadIOpsList = /*@__PURE__*/ S.Array(
-  ThrottleDevice,
-) as any as S.Schema<HostConfigBlkioDeviceReadIOpsList>;
+export const HostConfigBlkioDeviceReadIOpsList =
+  HostConfigBlkioDeviceReadBpsList as any as S.Schema<HostConfigBlkioDeviceReadIOpsList>;
 
 /** Limit write rate (IO per second) to a device, in the form: ``` [{"Path": "device_path", "Rate": rate}] ``` */
 export type HostConfigBlkioDeviceWriteIOpsList = Array<ThrottleDevice>;
-export const HostConfigBlkioDeviceWriteIOpsList = /*@__PURE__*/ S.Array(
-  ThrottleDevice,
-) as any as S.Schema<HostConfigBlkioDeviceWriteIOpsList>;
+export const HostConfigBlkioDeviceWriteIOpsList =
+  HostConfigBlkioDeviceReadBpsList as any as S.Schema<HostConfigBlkioDeviceWriteIOpsList>;
 
 /** A device mapping between the host and container */
 export interface DeviceMapping {
@@ -874,19 +844,16 @@ export const HostConfigDevicesList = /*@__PURE__*/ S.Array(
 
 /** a list of cgroup rules to apply to the container */
 export type HostConfigDeviceCgroupRulesList = Array<string>;
-export const HostConfigDeviceCgroupRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigDeviceCgroupRulesList>;
+export const HostConfigDeviceCgroupRulesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigDeviceCgroupRulesList>;
 
 export type DeviceRequestDeviceIDsList = Array<string>;
-export const DeviceRequestDeviceIDsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeviceRequestDeviceIDsList>;
+export const DeviceRequestDeviceIDsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<DeviceRequestDeviceIDsList>;
 
 export type DeviceRequestCapabilitiesItemList = Array<string>;
-export const DeviceRequestCapabilitiesItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeviceRequestCapabilitiesItemList>;
+export const DeviceRequestCapabilitiesItemList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<DeviceRequestCapabilitiesItemList>;
 
 /** A list of capabilities; an OR list of AND lists of capabilities. Note that if a driver is specified the capabilities have no effect on selecting a driver as the driver name is used directly. Note that if no driver is specified the capabilities are used to select a driver with the required capabilities. */
 export type DeviceRequestCapabilitiesList = Array<DeviceRequestCapabilitiesItemList>;
@@ -896,10 +863,8 @@ export const DeviceRequestCapabilitiesList = /*@__PURE__*/ S.Array(
 
 /** Driver-specific options, specified as a key/value pairs. These options are passed directly to the driver. */
 export type DeviceRequestOptionsMap = { [key: string]: string | undefined };
-export const DeviceRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeviceRequestOptionsMap>;
+export const DeviceRequestOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<DeviceRequestOptionsMap>;
 
 /** A request for devices to be sent to device drivers */
 export interface DeviceRequest {
@@ -952,9 +917,8 @@ export const HostConfigUlimitsList = /*@__PURE__*/ S.Array(
 
 /** A list of volume bindings for this container. Each volume binding is a string in one of these forms: - `host-src:container-dest[:options]` to bind-mount a host path into the container. Both `host-src`, and `container-dest` must be an _absolute_ path. - `volume-name:container-dest[:options]` to bind-mount a volume managed by a volume driver into the container. `container-dest` must be an _absolute_ path. `options` is an optional, comma-delimited list of: - `nocopy` disables automatic copying of data from the container path to the volume. The `nocopy` flag only applies to named volumes. - `[ro|rw]` mounts a volume read-only or read-write, respectively. If omitted or set to `rw`, volumes are mounted read-write. - `[z|Z]` applies SELinux labels to allow or deny multiple containers to read and write to the same volume. - `z`: a _shared_ content label is applied to the content. This label indicates that multiple containers can share the volume content, for both reading and writing. - `Z`: a _private unshared_ label is applied to the content. This label indicates that only the current container can use a private volume. Labeling systems such as SELinux require proper labels to be placed on volume content that is mounted into a container. Without a label, the security system can prevent a container's processes from using the content. By default, the labels set by the host operating system are not modified. - `[[r]shared|[r]slave|[r]private]` specifies mount [propagation behavior](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt). This only applies to bind-mounted volumes, not internal volumes or named volumes. Mount propagation requires the source mount point (the location where the source directory is mounted in the host operating system) to have the correct propagation properties. For shared volumes, the source mount point must be set to `shared`. For slave volumes, the mount must be set to either `shared` or `slave`. */
 export type HostConfigBindsList = Array<string>;
-export const HostConfigBindsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigBindsList>;
+export const HostConfigBindsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigBindsList>;
 
 /** Name of the logging driver used for the container or "none" if logging is disabled. */
 export type HostConfigLogConfigType =
@@ -972,10 +936,8 @@ export const HostConfigLogConfigType = S.String;
 
 /** Driver-specific configuration options for the logging driver. */
 export type HostConfigLogConfigConfigMap = { [key: string]: string | undefined };
-export const HostConfigLogConfigConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HostConfigLogConfigConfigMap>;
+export const HostConfigLogConfigConfigMap =
+  CommitImageRequestLabelsMap as any as S.Schema<HostConfigLogConfigConfigMap>;
 
 /** The logging configuration for this container */
 export interface HostConfigLogConfig {
@@ -1037,9 +999,8 @@ export const RestartPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of volumes to inherit from another container, specified in the form `<container name>[:<ro|rw>]`. */
 export type HostConfigVolumesFromList = Array<string>;
-export const HostConfigVolumesFromList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigVolumesFromList>;
+export const HostConfigVolumesFromList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigVolumesFromList>;
 
 /** The mount type. Available types: - `bind` a mount of a file or directory from the host into the container. - `cluster` a Swarm cluster volume. - `image` an OCI image. - `npipe` a named pipe from the host into the container. - `tmpfs` a `tmpfs`. - `volume` a docker volume with the given `Name`. */
 export type MountType = "bind" | "cluster" | "image" | "npipe" | "tmpfs" | "volume";
@@ -1080,17 +1041,13 @@ export const MountBindOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type MountVolumeOptionsLabelsMap = { [key: string]: string | undefined };
-export const MountVolumeOptionsLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MountVolumeOptionsLabelsMap>;
+export const MountVolumeOptionsLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<MountVolumeOptionsLabelsMap>;
 
 /** key/value map of driver specific options. */
 export type MountVolumeOptionsDriverConfigOptionsMap = { [key: string]: string | undefined };
-export const MountVolumeOptionsDriverConfigOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MountVolumeOptionsDriverConfigOptionsMap>;
+export const MountVolumeOptionsDriverConfigOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<MountVolumeOptionsDriverConfigOptionsMap>;
 
 /** Map of driver specific options */
 export interface MountVolumeOptionsDriverConfig {
@@ -1140,15 +1097,13 @@ export const MountImageOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MountImageOptions" }) as any as S.Schema<MountImageOptions>;
 
 export type MountTmpfsOptionsOptionsItemList = Array<string>;
-export const MountTmpfsOptionsOptionsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MountTmpfsOptionsOptionsItemList>;
+export const MountTmpfsOptionsOptionsItemList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<MountTmpfsOptionsOptionsItemList>;
 
 /** The options to be passed to the tmpfs mount. An array of arrays. Flag options should be provided as 1-length arrays. Other types should be provided as as 2-length arrays, where the first item is the key and the second the value. */
 export type MountTmpfsOptionsOptionsList = Array<MountTmpfsOptionsOptionsItemList>;
-export const MountTmpfsOptionsOptionsList = /*@__PURE__*/ S.Array(
-  MountTmpfsOptionsOptionsItemList,
-) as any as S.Schema<MountTmpfsOptionsOptionsList>;
+export const MountTmpfsOptionsOptionsList =
+  DeviceRequestCapabilitiesList as any as S.Schema<MountTmpfsOptionsOptionsList>;
 
 /** Optional configuration for the `tmpfs` type. */
 export interface MountTmpfsOptions {
@@ -1215,22 +1170,18 @@ export const HostConfigConsoleSizeList = /*@__PURE__*/ S.Array(
 
 /** Arbitrary non-identifying metadata attached to container and provided to the runtime when the container is started. */
 export type HostConfigAnnotationsMap = { [key: string]: string | undefined };
-export const HostConfigAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HostConfigAnnotationsMap>;
+export const HostConfigAnnotationsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<HostConfigAnnotationsMap>;
 
 /** A list of kernel capabilities to add to the container. Conflicts with option 'Capabilities'. */
 export type HostConfigCapAddList = Array<string>;
-export const HostConfigCapAddList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigCapAddList>;
+export const HostConfigCapAddList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigCapAddList>;
 
 /** A list of kernel capabilities to drop from the container. Conflicts with option 'Capabilities'. */
 export type HostConfigCapDropList = Array<string>;
-export const HostConfigCapDropList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigCapDropList>;
+export const HostConfigCapDropList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigCapDropList>;
 
 /** cgroup namespace mode for the container. Possible values are: - `"private"`: the container runs in its own private cgroup namespace - `"host"`: use the host system's cgroup namespace If not specified, the daemon default is used, which can either be `"private"` or `"host"`, depending on daemon version, kernel support and configuration. */
 export type HostConfigCgroupnsMode = "private" | "host";
@@ -1238,66 +1189,53 @@ export const HostConfigCgroupnsMode = S.String;
 
 /** A list of DNS servers for the container to use. */
 export type HostConfigDnsList = Array<string>;
-export const HostConfigDnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigDnsList>;
+export const HostConfigDnsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigDnsList>;
 
 /** A list of DNS options. */
 export type HostConfigDnsOptionsList = Array<string>;
-export const HostConfigDnsOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigDnsOptionsList>;
+export const HostConfigDnsOptionsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigDnsOptionsList>;
 
 /** A list of DNS search domains. */
 export type HostConfigDnsSearchList = Array<string>;
-export const HostConfigDnsSearchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigDnsSearchList>;
+export const HostConfigDnsSearchList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigDnsSearchList>;
 
 /** A list of hostnames/IP mappings to add to the container's `/etc/hosts` file. Specified in the form `["hostname:IP"]`. */
 export type HostConfigExtraHostsList = Array<string>;
-export const HostConfigExtraHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigExtraHostsList>;
+export const HostConfigExtraHostsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigExtraHostsList>;
 
 /** A list of additional groups that the container process will run as. */
 export type HostConfigGroupAddList = Array<string>;
-export const HostConfigGroupAddList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigGroupAddList>;
+export const HostConfigGroupAddList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigGroupAddList>;
 
 /** A list of links for the container in the form `container_name:alias`. */
 export type HostConfigLinksList = Array<string>;
-export const HostConfigLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigLinksList>;
+export const HostConfigLinksList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigLinksList>;
 
 /** A list of string values to customize labels for MLS systems, such as SELinux. */
 export type HostConfigSecurityOptList = Array<string>;
-export const HostConfigSecurityOptList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigSecurityOptList>;
+export const HostConfigSecurityOptList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigSecurityOptList>;
 
 /** Storage driver options for this container, in the form `{"size": "120G"}`. */
 export type HostConfigStorageOptMap = { [key: string]: string | undefined };
-export const HostConfigStorageOptMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HostConfigStorageOptMap>;
+export const HostConfigStorageOptMap =
+  CommitImageRequestLabelsMap as any as S.Schema<HostConfigStorageOptMap>;
 
 /** A map of container directories which should be replaced by tmpfs mounts, and their corresponding mount options. For example: ``` { "/run": "rw,noexec,nosuid,size=65536k" } ``` */
 export type HostConfigTmpfsMap = { [key: string]: string | undefined };
-export const HostConfigTmpfsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HostConfigTmpfsMap>;
+export const HostConfigTmpfsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<HostConfigTmpfsMap>;
 
 /** A list of kernel parameters (sysctls) to set in the container. This field is omitted if not set. */
 export type HostConfigSysctlsMap = { [key: string]: string | undefined };
-export const HostConfigSysctlsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HostConfigSysctlsMap>;
+export const HostConfigSysctlsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<HostConfigSysctlsMap>;
 
 /** Isolation technology of the container. (Windows only) */
 export type HostConfigIsolation = "default" | "process" | "hyperv" | "";
@@ -1305,15 +1243,13 @@ export const HostConfigIsolation = S.String;
 
 /** The list of paths to be masked inside the container (this overrides the default set of paths). */
 export type HostConfigMaskedPathsList = Array<string>;
-export const HostConfigMaskedPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigMaskedPathsList>;
+export const HostConfigMaskedPathsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigMaskedPathsList>;
 
 /** The list of paths to be set as read-only inside the container (this overrides the default set of paths). */
 export type HostConfigReadonlyPathsList = Array<string>;
-export const HostConfigReadonlyPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostConfigReadonlyPathsList>;
+export const HostConfigReadonlyPathsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<HostConfigReadonlyPathsList>;
 
 /** Container configuration that depends on the host we are running on */
 export interface HostConfig {
@@ -1533,10 +1469,7 @@ export const HostConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Low-level storage metadata, provided as key/value pairs. This information is driver-specific, and depends on the storage-driver in use, and should be used for informational purposes only. */
 export type DriverDataDataMap = { [key: string]: string | undefined };
-export const DriverDataDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DriverDataDataMap>;
+export const DriverDataDataMap = CommitImageRequestLabelsMap as any as S.Schema<DriverDataDataMap>;
 
 /** Information about the storage driver used to store the container's and image's filesystem. */
 export interface DriverData {
@@ -1625,54 +1558,43 @@ export const ContainerInspectResponseMountsList = /*@__PURE__*/ S.Array(
 
 /** An object mapping ports to an empty object in the form: `{"<port>/<tcp|udp|sctp>": {}}` */
 export type ContainerConfigExposedPortsMap = { [key: string]: unknown | undefined };
-export const ContainerConfigExposedPortsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ContainerConfigExposedPortsMap>;
+export const ContainerConfigExposedPortsMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<ContainerConfigExposedPortsMap>;
 
 /** A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value. */
 export type ContainerConfigEnvList = Array<string>;
-export const ContainerConfigEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerConfigEnvList>;
+export const ContainerConfigEnvList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerConfigEnvList>;
 
 /** Command to run specified as a string or an array of strings. */
 export type ContainerConfigCmdList = Array<string>;
-export const ContainerConfigCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerConfigCmdList>;
+export const ContainerConfigCmdList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerConfigCmdList>;
 
 /** An object mapping mount point paths inside the container to empty objects. */
 export type ContainerConfigVolumesMap = { [key: string]: unknown | undefined };
-export const ContainerConfigVolumesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ContainerConfigVolumesMap>;
+export const ContainerConfigVolumesMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<ContainerConfigVolumesMap>;
 
 /** The entry point for the container as a string or an array of strings. If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`). */
 export type ContainerConfigEntrypointList = Array<string>;
-export const ContainerConfigEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerConfigEntrypointList>;
+export const ContainerConfigEntrypointList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerConfigEntrypointList>;
 
 /** `ONBUILD` metadata that were defined in the image's `Dockerfile`. */
 export type ContainerConfigOnBuildList = Array<string>;
-export const ContainerConfigOnBuildList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerConfigOnBuildList>;
+export const ContainerConfigOnBuildList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerConfigOnBuildList>;
 
 /** User-defined key/value metadata. */
 export type ContainerConfigLabelsMap = { [key: string]: string | undefined };
-export const ContainerConfigLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContainerConfigLabelsMap>;
+export const ContainerConfigLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ContainerConfigLabelsMap>;
 
 /** Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell. */
 export type ContainerConfigShellList = Array<string>;
-export const ContainerConfigShellList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerConfigShellList>;
+export const ContainerConfigShellList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerConfigShellList>;
 
 /** Configuration for a container that is portable between hosts. */
 export interface ContainerConfig {
@@ -1909,9 +1831,8 @@ export const ContainerPruneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Container IDs that were deleted */
 export type ContainerPruneResponseContainersDeletedList = Array<string>;
-export const ContainerPruneResponseContainersDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerPruneResponseContainersDeletedList>;
+export const ContainerPruneResponseContainersDeletedList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerPruneResponseContainersDeletedList>;
 
 export interface ContainerPruneResponse {
   /** Container IDs that were deleted */
@@ -1944,9 +1865,8 @@ export const ContainerStatsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Total CPU time (in nanoseconds) consumed per core (Linux). This field is Linux-specific when using cgroups v1. It is omitted when using cgroups v2 and Windows containers. */
 export type ContainerCPUUsagePercpuUsageList = Array<number>;
-export const ContainerCPUUsagePercpuUsageList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ContainerCPUUsagePercpuUsageList>;
+export const ContainerCPUUsagePercpuUsageList =
+  HostConfigConsoleSizeList as any as S.Schema<ContainerCPUUsagePercpuUsageList>;
 
 /** All CPU stats aggregated since container inception. */
 export interface ContainerCPUUsage {
@@ -2126,45 +2046,38 @@ export const ContainerBlkioStatsIoServiceBytesRecursiveList = /*@__PURE__*/ S.Ar
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoServicedRecursiveList = Array<ContainerBlkioStatEntry | null>;
-export const ContainerBlkioStatsIoServicedRecursiveList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
-) as any as S.Schema<ContainerBlkioStatsIoServicedRecursiveList>;
+export const ContainerBlkioStatsIoServicedRecursiveList =
+  ContainerBlkioStatsIoServiceBytesRecursiveList as any as S.Schema<ContainerBlkioStatsIoServicedRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoQueueRecursiveList = Array<ContainerBlkioStatEntry | null>;
-export const ContainerBlkioStatsIoQueueRecursiveList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
-) as any as S.Schema<ContainerBlkioStatsIoQueueRecursiveList>;
+export const ContainerBlkioStatsIoQueueRecursiveList =
+  ContainerBlkioStatsIoServiceBytesRecursiveList as any as S.Schema<ContainerBlkioStatsIoQueueRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoServiceTimeRecursiveList = Array<ContainerBlkioStatEntry | null>;
-export const ContainerBlkioStatsIoServiceTimeRecursiveList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
-) as any as S.Schema<ContainerBlkioStatsIoServiceTimeRecursiveList>;
+export const ContainerBlkioStatsIoServiceTimeRecursiveList =
+  ContainerBlkioStatsIoServiceBytesRecursiveList as any as S.Schema<ContainerBlkioStatsIoServiceTimeRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoWaitTimeRecursiveList = Array<ContainerBlkioStatEntry | null>;
-export const ContainerBlkioStatsIoWaitTimeRecursiveList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
-) as any as S.Schema<ContainerBlkioStatsIoWaitTimeRecursiveList>;
+export const ContainerBlkioStatsIoWaitTimeRecursiveList =
+  ContainerBlkioStatsIoServiceBytesRecursiveList as any as S.Schema<ContainerBlkioStatsIoWaitTimeRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoMergedRecursiveList = Array<ContainerBlkioStatEntry | null>;
-export const ContainerBlkioStatsIoMergedRecursiveList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
-) as any as S.Schema<ContainerBlkioStatsIoMergedRecursiveList>;
+export const ContainerBlkioStatsIoMergedRecursiveList =
+  ContainerBlkioStatsIoServiceBytesRecursiveList as any as S.Schema<ContainerBlkioStatsIoMergedRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsIoTimeRecursiveList = Array<ContainerBlkioStatEntry | null>;
-export const ContainerBlkioStatsIoTimeRecursiveList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
-) as any as S.Schema<ContainerBlkioStatsIoTimeRecursiveList>;
+export const ContainerBlkioStatsIoTimeRecursiveList =
+  ContainerBlkioStatsIoServiceBytesRecursiveList as any as S.Schema<ContainerBlkioStatsIoTimeRecursiveList>;
 
 /** This field is only available when using Linux containers with cgroups v1. It is omitted or `null` when using cgroups v2. */
 export type ContainerBlkioStatsSectorsRecursiveList = Array<ContainerBlkioStatEntry | null>;
-export const ContainerBlkioStatsSectorsRecursiveList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(ContainerBlkioStatEntry),
-) as any as S.Schema<ContainerBlkioStatsSectorsRecursiveList>;
+export const ContainerBlkioStatsSectorsRecursiveList =
+  ContainerBlkioStatsIoServiceBytesRecursiveList as any as S.Schema<ContainerBlkioStatsSectorsRecursiveList>;
 
 /** BlkioStats stores all IO service stats for data read and write. This type is Linux-specific and holds many fields that are specific to cgroups v1. On a cgroup v2 host, all fields other than `io_service_bytes_recursive` are omitted or `null`. This type is only populated on Linux and omitted for Windows containers. */
 export interface ContainerBlkioStats {
@@ -2269,20 +2182,17 @@ export const ContainerTopRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ps column titles */
 export type ContainerTopResponseTitlesList = Array<string>;
-export const ContainerTopResponseTitlesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerTopResponseTitlesList>;
+export const ContainerTopResponseTitlesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerTopResponseTitlesList>;
 
 export type ContainerTopResponseProcessesItemList = Array<string>;
-export const ContainerTopResponseProcessesItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerTopResponseProcessesItemList>;
+export const ContainerTopResponseProcessesItemList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerTopResponseProcessesItemList>;
 
 /** Each process running in the container, where each process is an array of values corresponding to the titles. */
 export type ContainerTopResponseProcessesList = Array<ContainerTopResponseProcessesItemList>;
-export const ContainerTopResponseProcessesList = /*@__PURE__*/ S.Array(
-  ContainerTopResponseProcessesItemList,
-) as any as S.Schema<ContainerTopResponseProcessesList>;
+export const ContainerTopResponseProcessesList =
+  DeviceRequestCapabilitiesList as any as S.Schema<ContainerTopResponseProcessesList>;
 
 /** Container "top" response. */
 export interface ContainerTopResponse {
@@ -2300,10 +2210,8 @@ export const ContainerTopResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type CreateConfigRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateConfigRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateConfigRequestLabelsMap>;
+export const CreateConfigRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateConfigRequestLabelsMap>;
 
 export interface CreateConfigRequest {
   /** User-defined name of the config. */
@@ -2326,61 +2234,48 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An object mapping ports to an empty object in the form: `{"<port>/<tcp|udp|sctp>": {}}` */
 export type CreateContainerRequestExposedPortsMap = { [key: string]: unknown | undefined };
-export const CreateContainerRequestExposedPortsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateContainerRequestExposedPortsMap>;
+export const CreateContainerRequestExposedPortsMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<CreateContainerRequestExposedPortsMap>;
 
 /** A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value. */
 export type CreateContainerRequestEnvList = Array<string>;
-export const CreateContainerRequestEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContainerRequestEnvList>;
+export const CreateContainerRequestEnvList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CreateContainerRequestEnvList>;
 
 /** Command to run specified as a string or an array of strings. */
 export type CreateContainerRequestCmdList = Array<string>;
-export const CreateContainerRequestCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContainerRequestCmdList>;
+export const CreateContainerRequestCmdList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CreateContainerRequestCmdList>;
 
 /** An object mapping mount point paths inside the container to empty objects. */
 export type CreateContainerRequestVolumesMap = { [key: string]: unknown | undefined };
-export const CreateContainerRequestVolumesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateContainerRequestVolumesMap>;
+export const CreateContainerRequestVolumesMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<CreateContainerRequestVolumesMap>;
 
 /** The entry point for the container as a string or an array of strings. If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`). */
 export type CreateContainerRequestEntrypointList = Array<string>;
-export const CreateContainerRequestEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContainerRequestEntrypointList>;
+export const CreateContainerRequestEntrypointList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CreateContainerRequestEntrypointList>;
 
 /** `ONBUILD` metadata that were defined in the image's `Dockerfile`. */
 export type CreateContainerRequestOnBuildList = Array<string>;
-export const CreateContainerRequestOnBuildList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContainerRequestOnBuildList>;
+export const CreateContainerRequestOnBuildList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CreateContainerRequestOnBuildList>;
 
 /** User-defined key/value metadata. */
 export type CreateContainerRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateContainerRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateContainerRequestLabelsMap>;
+export const CreateContainerRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateContainerRequestLabelsMap>;
 
 /** Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell. */
 export type CreateContainerRequestShellList = Array<string>;
-export const CreateContainerRequestShellList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateContainerRequestShellList>;
+export const CreateContainerRequestShellList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CreateContainerRequestShellList>;
 
 /** A mapping of network name to endpoint configuration for that network. The endpoint configuration can be left empty to connect to that network with no particular endpoint configuration. */
 export type NetworkingConfigEndpointsConfigMap = { [key: string]: EndpointSettings | undefined };
-export const NetworkingConfigEndpointsConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  EndpointSettings,
-) as any as S.Schema<NetworkingConfigEndpointsConfigMap>;
+export const NetworkingConfigEndpointsConfigMap =
+  NetworkSettingsNetworksMap as any as S.Schema<NetworkingConfigEndpointsConfigMap>;
 
 /** NetworkingConfig represents the container's networking configuration for each of its interfaces. It is used for the networking configs specified in the `docker create` and `docker network connect` commands. */
 export interface NetworkingConfig {
@@ -2483,9 +2378,8 @@ export const CreateContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Warnings encountered when creating the container */
 export type ContainerCreateResponseWarningsList = Array<string>;
-export const ContainerCreateResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerCreateResponseWarningsList>;
+export const ContainerCreateResponseWarningsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerCreateResponseWarningsList>;
 
 /** OK response to ContainerCreate operation */
 export interface ContainerCreateResponse {
@@ -2502,9 +2396,8 @@ export const ContainerCreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerCreateResponse" }) as any as S.Schema<ContainerCreateResponse>;
 
 export type CreateImageRequestChangesList = Array<string>;
-export const CreateImageRequestChangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateImageRequestChangesList>;
+export const CreateImageRequestChangesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<CreateImageRequestChangesList>;
 
 export interface CreateImageRequest {
   /** Name of the image to pull. If the name includes a tag or digest, specific behavior applies: - If only `fromImage` includes a tag, that tag is used. - If both `fromImage` and `tag` are provided, `tag` takes precedence. - If `fromImage` includes a digest, the image is pulled by digest, and `tag` is ignored. - If neither a tag nor digest is specified, all tags are pulled. */
@@ -2540,9 +2433,7 @@ export const CreateImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateImageRequest" }) as any as S.Schema<CreateImageRequest>;
 
 export interface CreateImageResponse {}
-export const CreateImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateImageResponse",
-}) as any as S.Schema<CreateImageResponse>;
+export const CreateImageResponse = ArchiveContainerResponse as any as S.Schema<CreateImageResponse>;
 
 /** The config-only network source to provide the configuration for this network. */
 export interface ConfigReference {
@@ -2556,10 +2447,8 @@ export const ConfigReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigReference" }) as any as S.Schema<ConfigReference>;
 
 export type IPAMConfigAuxiliaryAddressesMap = { [key: string]: string | undefined };
-export const IPAMConfigAuxiliaryAddressesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IPAMConfigAuxiliaryAddressesMap>;
+export const IPAMConfigAuxiliaryAddressesMap =
+  CommitImageRequestLabelsMap as any as S.Schema<IPAMConfigAuxiliaryAddressesMap>;
 
 export interface IPAMConfig {
   Subnet?: string;
@@ -2582,10 +2471,7 @@ export const IPAMConfigList = /*@__PURE__*/ S.Array(IPAMConfig) as any as S.Sche
 
 /** Driver-specific options, specified as a map. */
 export type IPAMOptionsMap = { [key: string]: string | undefined };
-export const IPAMOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IPAMOptionsMap>;
+export const IPAMOptionsMap = CommitImageRequestLabelsMap as any as S.Schema<IPAMOptionsMap>;
 
 export interface IPAM {
   /** Name of the IPAM driver to use. */
@@ -2605,17 +2491,13 @@ export const IPAM = /*@__PURE__*/ S.suspend(() =>
 
 /** Network specific options to be used by the drivers. */
 export type CreateNetworkRequestOptionsMap = { [key: string]: string | undefined };
-export const CreateNetworkRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateNetworkRequestOptionsMap>;
+export const CreateNetworkRequestOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateNetworkRequestOptionsMap>;
 
 /** User-defined key/value metadata. */
 export type CreateNetworkRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateNetworkRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateNetworkRequestLabelsMap>;
+export const CreateNetworkRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateNetworkRequestLabelsMap>;
 
 export interface CreateNetworkRequest {
   /** The network's name. */
@@ -2690,16 +2572,13 @@ export const CreatePluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePluginRequest" }) as any as S.Schema<CreatePluginRequest>;
 
 export interface CreatePluginResponse {}
-export const CreatePluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePluginResponse",
-}) as any as S.Schema<CreatePluginResponse>;
+export const CreatePluginResponse =
+  ArchiveContainerResponse as any as S.Schema<CreatePluginResponse>;
 
 /** User-defined key/value metadata. */
 export type CreateSecretRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateSecretRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateSecretRequestLabelsMap>;
+export const CreateSecretRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateSecretRequestLabelsMap>;
 
 export interface CreateSecretRequest {
   /** User-defined name of the secret. */
@@ -2725,15 +2604,12 @@ export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type CreateServiceRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateServiceRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServiceRequestLabelsMap>;
+export const CreateServiceRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateServiceRequestLabelsMap>;
 
 export type PluginPrivilegeValueList = Array<string>;
-export const PluginPrivilegeValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginPrivilegeValueList>;
+export const PluginPrivilegeValueList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginPrivilegeValueList>;
 
 /** Describes a permission the user has to accept upon installing the plugin. */
 export interface PluginPrivilege {
@@ -2775,34 +2651,28 @@ export const TaskSpecPluginSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value data. */
 export type TaskSpecContainerSpecLabelsMap = { [key: string]: string | undefined };
-export const TaskSpecContainerSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecLabelsMap>;
+export const TaskSpecContainerSpecLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<TaskSpecContainerSpecLabelsMap>;
 
 /** The command to be run in the image. */
 export type TaskSpecContainerSpecCommandList = Array<string>;
-export const TaskSpecContainerSpecCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecCommandList>;
+export const TaskSpecContainerSpecCommandList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecCommandList>;
 
 /** Arguments to the command. */
 export type TaskSpecContainerSpecArgsList = Array<string>;
-export const TaskSpecContainerSpecArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecArgsList>;
+export const TaskSpecContainerSpecArgsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecArgsList>;
 
 /** A list of environment variables in the form `VAR=value`. */
 export type TaskSpecContainerSpecEnvList = Array<string>;
-export const TaskSpecContainerSpecEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecEnvList>;
+export const TaskSpecContainerSpecEnvList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecEnvList>;
 
 /** A list of additional groups that the container process will run as. */
 export type TaskSpecContainerSpecGroupsList = Array<string>;
-export const TaskSpecContainerSpecGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecGroupsList>;
+export const TaskSpecContainerSpecGroupsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecGroupsList>;
 
 /** CredentialSpec for managed service account (Windows only) */
 export interface TaskSpecContainerSpecPrivilegesCredentialSpec {
@@ -2908,33 +2778,28 @@ export const TaskSpecContainerSpecPrivileges = /*@__PURE__*/ S.suspend(() =>
 
 /** Specification for mounts to be added to containers created as part of the service. */
 export type TaskSpecContainerSpecMountsList = Array<Mount>;
-export const TaskSpecContainerSpecMountsList = /*@__PURE__*/ S.Array(
-  Mount,
-) as any as S.Schema<TaskSpecContainerSpecMountsList>;
+export const TaskSpecContainerSpecMountsList =
+  HostConfigMountsList as any as S.Schema<TaskSpecContainerSpecMountsList>;
 
 /** A list of hostname/IP mappings to add to the container's `hosts` file. The format of extra hosts is specified in the [hosts(5)](http://man7.org/linux/man-pages/man5/hosts.5.html) man page: IP_address canonical_hostname [aliases...] */
 export type TaskSpecContainerSpecHostsList = Array<string>;
-export const TaskSpecContainerSpecHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecHostsList>;
+export const TaskSpecContainerSpecHostsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecHostsList>;
 
 /** The IP addresses of the name servers. */
 export type TaskSpecContainerSpecDNSConfigNameserversList = Array<string>;
-export const TaskSpecContainerSpecDNSConfigNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecDNSConfigNameserversList>;
+export const TaskSpecContainerSpecDNSConfigNameserversList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecDNSConfigNameserversList>;
 
 /** A search list for host-name lookup. */
 export type TaskSpecContainerSpecDNSConfigSearchList = Array<string>;
-export const TaskSpecContainerSpecDNSConfigSearchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecDNSConfigSearchList>;
+export const TaskSpecContainerSpecDNSConfigSearchList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecDNSConfigSearchList>;
 
 /** A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.). */
 export type TaskSpecContainerSpecDNSConfigOptionsList = Array<string>;
-export const TaskSpecContainerSpecDNSConfigOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecDNSConfigOptionsList>;
+export const TaskSpecContainerSpecDNSConfigOptionsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecDNSConfigOptionsList>;
 
 /** Specification for DNS related configurations in resolver configuration file (`resolv.conf`). */
 export interface TaskSpecContainerSpecDNSConfig {
@@ -3038,31 +2903,26 @@ export const TaskSpecContainerSpecIsolation = S.String;
 
 /** Set kernel namedspaced parameters (sysctls) in the container. The Sysctls option on services accepts the same sysctls as the are supported on containers. Note that while the same sysctls are supported, no guarantees or checks are made about their suitability for a clustered environment, and it's up to the user to determine whether a given sysctl will work properly in a Service. */
 export type TaskSpecContainerSpecSysctlsMap = { [key: string]: string | undefined };
-export const TaskSpecContainerSpecSysctlsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecSysctlsMap>;
+export const TaskSpecContainerSpecSysctlsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<TaskSpecContainerSpecSysctlsMap>;
 
 /** A list of kernel capabilities to add to the default set for the container. */
 export type TaskSpecContainerSpecCapabilityAddList = Array<string>;
-export const TaskSpecContainerSpecCapabilityAddList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecCapabilityAddList>;
+export const TaskSpecContainerSpecCapabilityAddList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecCapabilityAddList>;
 
 /** A list of kernel capabilities to drop from the default set for the container. */
 export type TaskSpecContainerSpecCapabilityDropList = Array<string>;
-export const TaskSpecContainerSpecCapabilityDropList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecContainerSpecCapabilityDropList>;
+export const TaskSpecContainerSpecCapabilityDropList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecContainerSpecCapabilityDropList>;
 
 export type TaskSpecContainerSpecUlimitsItem = HostConfigUlimitsItem;
 export const TaskSpecContainerSpecUlimitsItem = HostConfigUlimitsItem;
 
 /** A list of resource limits to set in the container. For example: `{"Name": "nofile", "Soft": 1024, "Hard": 2048}`" */
 export type TaskSpecContainerSpecUlimitsList = Array<HostConfigUlimitsItem>;
-export const TaskSpecContainerSpecUlimitsList = /*@__PURE__*/ S.Array(
-  HostConfigUlimitsItem,
-) as any as S.Schema<TaskSpecContainerSpecUlimitsList>;
+export const TaskSpecContainerSpecUlimitsList =
+  HostConfigUlimitsList as any as S.Schema<TaskSpecContainerSpecUlimitsList>;
 
 /** Container spec for the service. <p><br /></p> > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are > mutually exclusive. PluginSpec is only used when the Runtime field > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime > field is set to `attachment`. */
 export interface TaskSpecContainerSpec {
@@ -3286,9 +3146,8 @@ export const TaskSpecRestartPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of constraint expressions to limit the set of nodes where a task can be scheduled. Constraint expressions can either use a _match_ (`==`) or _exclude_ (`!=`) rule. Multiple constraints find nodes that satisfy every expression (AND match). Constraints can match node or Docker Engine labels as follows: node attribute | matches | example ---------------------|--------------------------------|----------------------------------------------- `node.id` | Node ID | `node.id==2ivku8v2gvtg4` `node.hostname` | Node hostname | `node.hostname!=node-2` `node.role` | Node role (`manager`/`worker`) | `node.role==manager` `node.platform.os` | Node operating system | `node.platform.os==windows` `node.platform.arch` | Node architecture | `node.platform.arch==x86_64` `node.labels` | User-defined node labels | `node.labels.security==high` `engine.labels` | Docker Engine's labels | `engine.labels.operatingsystem==ubuntu-24.04` `engine.labels` apply to Docker Engine labels like operating system, drivers, etc. Swarm administrators add `node.labels` for operational purposes by using the [`node update endpoint`](#operation/NodeUpdate). */
 export type TaskSpecPlacementConstraintsList = Array<string>;
-export const TaskSpecPlacementConstraintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TaskSpecPlacementConstraintsList>;
+export const TaskSpecPlacementConstraintsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<TaskSpecPlacementConstraintsList>;
 
 export interface TaskSpecPlacementPreferencesItemSpread {
   /** label descriptor, such as `engine.labels.az`. */
@@ -3360,16 +3219,13 @@ export const TaskSpecPlacement = /*@__PURE__*/ S.suspend(() =>
 
 /** Discoverable alternate names for the service on this network. */
 export type NetworkAttachmentConfigAliasesList = Array<string>;
-export const NetworkAttachmentConfigAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAttachmentConfigAliasesList>;
+export const NetworkAttachmentConfigAliasesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<NetworkAttachmentConfigAliasesList>;
 
 /** Driver attachment options for the network target. */
 export type NetworkAttachmentConfigDriverOptsMap = { [key: string]: string | undefined };
-export const NetworkAttachmentConfigDriverOptsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkAttachmentConfigDriverOptsMap>;
+export const NetworkAttachmentConfigDriverOptsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<NetworkAttachmentConfigDriverOptsMap>;
 
 /** Specifies how a service should be attached to a particular network. */
 export interface NetworkAttachmentConfig {
@@ -3395,10 +3251,8 @@ export const TaskSpecNetworksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TaskSpecNetworksList>;
 
 export type TaskSpecLogDriverOptionsMap = { [key: string]: string | undefined };
-export const TaskSpecLogDriverOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TaskSpecLogDriverOptionsMap>;
+export const TaskSpecLogDriverOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<TaskSpecLogDriverOptionsMap>;
 
 /** Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified. */
 export interface TaskSpecLogDriver {
@@ -3568,9 +3422,8 @@ export const CreateServiceRequestRollbackConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which networks the service should attach to. Deprecated: This field is deprecated since v1.44. The Networks field in TaskSpec should be used instead. */
 export type CreateServiceRequestNetworksList = Array<NetworkAttachmentConfig>;
-export const CreateServiceRequestNetworksList = /*@__PURE__*/ S.Array(
-  NetworkAttachmentConfig,
-) as any as S.Schema<CreateServiceRequestNetworksList>;
+export const CreateServiceRequestNetworksList =
+  TaskSpecNetworksList as any as S.Schema<CreateServiceRequestNetworksList>;
 
 /** The mode of resolution to use for internal load balancing between tasks. */
 export type EndpointSpecMode = "vip" | "dnsrr";
@@ -3657,9 +3510,8 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional warning message. FIXME(thaJeztah): this should have "omitempty" in the generated type. */
 export type ServiceCreateResponseWarningsList = Array<string>;
-export const ServiceCreateResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceCreateResponseWarningsList>;
+export const ServiceCreateResponseWarningsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ServiceCreateResponseWarningsList>;
 
 /** contains the information returned to a client on the creation of a new service. */
 export interface ServiceCreateResponse {
@@ -3677,17 +3529,13 @@ export const ServiceCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A mapping of driver options and values. These options are passed directly to the driver and are driver specific. */
 export type CreateVolumeRequestDriverOptsMap = { [key: string]: string | undefined };
-export const CreateVolumeRequestDriverOptsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateVolumeRequestDriverOptsMap>;
+export const CreateVolumeRequestDriverOptsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateVolumeRequestDriverOptsMap>;
 
 /** User-defined key/value metadata. */
 export type CreateVolumeRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateVolumeRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateVolumeRequestLabelsMap>;
+export const CreateVolumeRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<CreateVolumeRequestLabelsMap>;
 
 /** The set of nodes this volume can be used on at one time. - `single` The volume may only be scheduled to one node at a time. - `multi` the volume may be scheduled to any supported number of nodes at a time. */
 export type ClusterVolumeSpecAccessModeScope = "single" | "multi";
@@ -3720,10 +3568,8 @@ export const ClusterVolumeSpecAccessModeSecretsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ClusterVolumeSpecAccessModeSecretsList>;
 
 export type TopologySegmentsMap = { [key: string]: string | undefined };
-export const TopologySegmentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TopologySegmentsMap>;
+export const TopologySegmentsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<TopologySegmentsMap>;
 
 /** A map of topological domains to topological segments. For in depth details, see documentation for the Topology object in the CSI specification. */
 export interface Topology {
@@ -3745,9 +3591,7 @@ export const ClusterVolumeSpecAccessModeAccessibilityRequirementsRequisiteList =
 /** A list of topologies that the volume should attempt to be provisioned in. */
 export type ClusterVolumeSpecAccessModeAccessibilityRequirementsPreferredList = Array<Topology>;
 export const ClusterVolumeSpecAccessModeAccessibilityRequirementsPreferredList =
-  /*@__PURE__*/ S.Array(
-    Topology,
-  ) as any as S.Schema<ClusterVolumeSpecAccessModeAccessibilityRequirementsPreferredList>;
+  ClusterVolumeSpecAccessModeAccessibilityRequirementsRequisiteList as any as S.Schema<ClusterVolumeSpecAccessModeAccessibilityRequirementsPreferredList>;
 
 /** Requirements for the accessible topology of the volume. These fields are optional. For an in-depth description of what these fields mean, see the CSI specification. */
 export interface ClusterVolumeSpecAccessModeAccessibilityRequirements {
@@ -3853,17 +3697,12 @@ export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Low-level details about the volume, provided by the volume driver. Details are returned as a map with key/value pairs: `{"key":"value","key2":"value2"}`. The `Status` field is optional, and is omitted if the volume driver does not support this feature. */
 export type VolumeStatusMap = { [key: string]: unknown | undefined };
-export const VolumeStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<VolumeStatusMap>;
+export const VolumeStatusMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<VolumeStatusMap>;
 
 /** User-defined key/value metadata. */
 export type VolumeLabelsMap = { [key: string]: string | undefined };
-export const VolumeLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeLabelsMap>;
+export const VolumeLabelsMap = CommitImageRequestLabelsMap as any as S.Schema<VolumeLabelsMap>;
 
 /** The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level. */
 export type VolumeScope = "local" | "global";
@@ -3871,10 +3710,8 @@ export const VolumeScope = S.String;
 
 /** A map of strings to strings returned from the storage plugin when the volume is created. */
 export type ClusterVolumeInfoVolumeContextMap = { [key: string]: string | undefined };
-export const ClusterVolumeInfoVolumeContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterVolumeInfoVolumeContextMap>;
+export const ClusterVolumeInfoVolumeContextMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ClusterVolumeInfoVolumeContextMap>;
 
 /** The topology this volume is actually accessible from. */
 export type ClusterVolumeInfoAccessibleTopologyList = Array<Topology>;
@@ -3912,10 +3749,8 @@ export const ClusterVolumePublishStatusItemState = S.String;
 
 /** A map of strings to strings returned by the CSI controller plugin when a volume is published. */
 export type ClusterVolumePublishStatusItemPublishContextMap = { [key: string]: string | undefined };
-export const ClusterVolumePublishStatusItemPublishContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ClusterVolumePublishStatusItemPublishContextMap>;
+export const ClusterVolumePublishStatusItemPublishContextMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ClusterVolumePublishStatusItemPublishContextMap>;
 
 export interface ClusterVolumePublishStatusItem {
   /** The ID of the Swarm node the volume is published on. */
@@ -3968,10 +3803,7 @@ export const ClusterVolume = /*@__PURE__*/ S.suspend(() =>
 
 /** The driver specific options used when creating the volume. */
 export type VolumeOptionsMap = { [key: string]: string | undefined };
-export const VolumeOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeOptionsMap>;
+export const VolumeOptionsMap = CommitImageRequestLabelsMap as any as S.Schema<VolumeOptionsMap>;
 
 /** Usage details about the volume. This information is used by the `GET /system/df` endpoint, and omitted in other endpoints. */
 export interface VolumeUsageData {
@@ -4034,9 +3866,8 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConfigRequest" }) as any as S.Schema<DeleteConfigRequest>;
 
 export interface DeleteConfigResponse {}
-export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConfigResponse",
-}) as any as S.Schema<DeleteConfigResponse>;
+export const DeleteConfigResponse =
+  ArchiveContainerResponse as any as S.Schema<DeleteConfigResponse>;
 
 export interface DeleteContainerRequest {
   /** ID or name of the container */
@@ -4058,14 +3889,12 @@ export const DeleteContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContainerRequest" }) as any as S.Schema<DeleteContainerRequest>;
 
 export interface DeleteContainerResponse {}
-export const DeleteContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContainerResponse",
-}) as any as S.Schema<DeleteContainerResponse>;
+export const DeleteContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<DeleteContainerResponse>;
 
 export type DeleteImageRequestPlatformsList = Array<string>;
-export const DeleteImageRequestPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteImageRequestPlatformsList>;
+export const DeleteImageRequestPlatformsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<DeleteImageRequestPlatformsList>;
 
 export interface DeleteImageRequest {
   /** Image name or ID */
@@ -4120,9 +3949,8 @@ export const DeleteNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNetworkRequest" }) as any as S.Schema<DeleteNetworkRequest>;
 
 export interface DeleteNetworkResponse {}
-export const DeleteNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkResponse",
-}) as any as S.Schema<DeleteNetworkResponse>;
+export const DeleteNetworkResponse =
+  ArchiveContainerResponse as any as S.Schema<DeleteNetworkResponse>;
 
 export interface DeleteNodeRequest {
   /** The ID or name of the node */
@@ -4138,9 +3966,7 @@ export const DeleteNodeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNodeRequest" }) as any as S.Schema<DeleteNodeRequest>;
 
 export interface DeleteNodeResponse {}
-export const DeleteNodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNodeResponse",
-}) as any as S.Schema<DeleteNodeResponse>;
+export const DeleteNodeResponse = ArchiveContainerResponse as any as S.Schema<DeleteNodeResponse>;
 
 export interface DeletePluginRequest {
   /** The name of the plugin. The `:latest` tag is optional, and is the default if omitted. */
@@ -4156,14 +3982,12 @@ export const DeletePluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePluginRequest" }) as any as S.Schema<DeletePluginRequest>;
 
 export type PluginMountSettableList = Array<string>;
-export const PluginMountSettableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginMountSettableList>;
+export const PluginMountSettableList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginMountSettableList>;
 
 export type PluginMountOptionsList = Array<string>;
-export const PluginMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginMountOptionsList>;
+export const PluginMountOptionsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginMountOptionsList>;
 
 export interface PluginMount {
   Name: string;
@@ -4192,19 +4016,16 @@ export const PluginSettingsMountsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PluginSettingsMountsList>;
 
 export type PluginSettingsEnvList = Array<string>;
-export const PluginSettingsEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginSettingsEnvList>;
+export const PluginSettingsEnvList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginSettingsEnvList>;
 
 export type PluginSettingsArgsList = Array<string>;
-export const PluginSettingsArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginSettingsArgsList>;
+export const PluginSettingsArgsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginSettingsArgsList>;
 
 export type PluginDeviceSettableList = Array<string>;
-export const PluginDeviceSettableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginDeviceSettableList>;
+export const PluginDeviceSettableList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginDeviceSettableList>;
 
 export interface PluginDevice {
   Name: string;
@@ -4243,9 +4064,8 @@ export const PluginSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginSettings" }) as any as S.Schema<PluginSettings>;
 
 export type PluginConfigInterfaceTypesList = Array<string>;
-export const PluginConfigInterfaceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginConfigInterfaceTypesList>;
+export const PluginConfigInterfaceTypesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginConfigInterfaceTypesList>;
 
 /** Protocol to use for clients connecting to the plugin. */
 export type PluginConfigInterfaceProtocolScheme = "" | "moby.plugins.http/v1";
@@ -4267,9 +4087,8 @@ export const PluginConfigInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginConfigInterface" }) as any as S.Schema<PluginConfigInterface>;
 
 export type PluginConfigEntrypointList = Array<string>;
-export const PluginConfigEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginConfigEntrypointList>;
+export const PluginConfigEntrypointList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginConfigEntrypointList>;
 
 export interface PluginConfigUser {
   UID?: number;
@@ -4292,14 +4111,12 @@ export const PluginConfigNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginConfigNetwork" }) as any as S.Schema<PluginConfigNetwork>;
 
 export type PluginConfigLinuxCapabilitiesList = Array<string>;
-export const PluginConfigLinuxCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginConfigLinuxCapabilitiesList>;
+export const PluginConfigLinuxCapabilitiesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginConfigLinuxCapabilitiesList>;
 
 export type PluginConfigLinuxDevicesList = Array<PluginDevice>;
-export const PluginConfigLinuxDevicesList = /*@__PURE__*/ S.Array(
-  PluginDevice,
-) as any as S.Schema<PluginConfigLinuxDevicesList>;
+export const PluginConfigLinuxDevicesList =
+  PluginSettingsDevicesList as any as S.Schema<PluginConfigLinuxDevicesList>;
 
 export interface PluginConfigLinux {
   Capabilities: PluginConfigLinuxCapabilitiesList;
@@ -4315,14 +4132,12 @@ export const PluginConfigLinux = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginConfigLinux" }) as any as S.Schema<PluginConfigLinux>;
 
 export type PluginConfigMountsList = Array<PluginMount>;
-export const PluginConfigMountsList = /*@__PURE__*/ S.Array(
-  PluginMount,
-) as any as S.Schema<PluginConfigMountsList>;
+export const PluginConfigMountsList =
+  PluginSettingsMountsList as any as S.Schema<PluginConfigMountsList>;
 
 export type PluginEnvSettableList = Array<string>;
-export const PluginEnvSettableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginEnvSettableList>;
+export const PluginEnvSettableList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginEnvSettableList>;
 
 export interface PluginEnv {
   Name: string;
@@ -4345,14 +4160,12 @@ export const PluginConfigEnvList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PluginConfigEnvList>;
 
 export type PluginConfigArgsSettableList = Array<string>;
-export const PluginConfigArgsSettableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginConfigArgsSettableList>;
+export const PluginConfigArgsSettableList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginConfigArgsSettableList>;
 
 export type PluginConfigArgsValueList = Array<string>;
-export const PluginConfigArgsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginConfigArgsValueList>;
+export const PluginConfigArgsValueList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginConfigArgsValueList>;
 
 export interface PluginConfigArgs {
   Name: string;
@@ -4370,9 +4183,8 @@ export const PluginConfigArgs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginConfigArgs" }) as any as S.Schema<PluginConfigArgs>;
 
 export type PluginConfigRootfsDiffIdsList = Array<string>;
-export const PluginConfigRootfsDiffIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginConfigRootfsDiffIdsList>;
+export const PluginConfigRootfsDiffIdsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginConfigRootfsDiffIdsList>;
 
 export interface PluginConfigRootfs {
   type?: string;
@@ -4459,9 +4271,8 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecretResponse",
-}) as any as S.Schema<DeleteSecretResponse>;
+export const DeleteSecretResponse =
+  ArchiveContainerResponse as any as S.Schema<DeleteSecretResponse>;
 
 export interface DeleteServiceRequest {
   /** ID or name of service. */
@@ -4474,9 +4285,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  ArchiveContainerResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteVolumeRequest {
   /** Volume name or ID */
@@ -4492,9 +4302,8 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeResponse",
-}) as any as S.Schema<DeleteVolumeResponse>;
+export const DeleteVolumeResponse =
+  ArchiveContainerResponse as any as S.Schema<DeleteVolumeResponse>;
 
 export interface DisablePluginRequest {
   /** The name of the plugin. The `:latest` tag is optional, and is the default if omitted. */
@@ -4510,9 +4319,8 @@ export const DisablePluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisablePluginRequest" }) as any as S.Schema<DisablePluginRequest>;
 
 export interface DisablePluginResponse {}
-export const DisablePluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisablePluginResponse",
-}) as any as S.Schema<DisablePluginResponse>;
+export const DisablePluginResponse =
+  ArchiveContainerResponse as any as S.Schema<DisablePluginResponse>;
 
 export interface DisconnectNetworkRequest {
   /** Network ID or name */
@@ -4531,9 +4339,8 @@ export const DisconnectNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisconnectNetworkRequest" }) as any as S.Schema<DisconnectNetworkRequest>;
 
 export interface DisconnectNetworkResponse {}
-export const DisconnectNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisconnectNetworkResponse",
-}) as any as S.Schema<DisconnectNetworkResponse>;
+export const DisconnectNetworkResponse =
+  ArchiveContainerResponse as any as S.Schema<DisconnectNetworkResponse>;
 
 export interface DistributionInspectRequest {
   /** Image name or id */
@@ -4580,27 +4387,23 @@ export const EnablePluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnablePluginRequest" }) as any as S.Schema<EnablePluginRequest>;
 
 export interface EnablePluginResponse {}
-export const EnablePluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnablePluginResponse",
-}) as any as S.Schema<EnablePluginResponse>;
+export const EnablePluginResponse =
+  ArchiveContainerResponse as any as S.Schema<EnablePluginResponse>;
 
 /** Initial console size, as an `[height, width]` array. */
 export type ExecContainerRequestConsoleSizeList = Array<number>;
-export const ExecContainerRequestConsoleSizeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExecContainerRequestConsoleSizeList>;
+export const ExecContainerRequestConsoleSizeList =
+  HostConfigConsoleSizeList as any as S.Schema<ExecContainerRequestConsoleSizeList>;
 
 /** A list of environment variables in the form `["VAR=value", ...]`. */
 export type ExecContainerRequestEnvList = Array<string>;
-export const ExecContainerRequestEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExecContainerRequestEnvList>;
+export const ExecContainerRequestEnvList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ExecContainerRequestEnvList>;
 
 /** Command to run, as a string or array of strings. */
 export type ExecContainerRequestCmdList = Array<string>;
-export const ExecContainerRequestCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExecContainerRequestCmdList>;
+export const ExecContainerRequestCmdList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ExecContainerRequestCmdList>;
 
 export interface ExecContainerRequest {
   /** ID or name of container */
@@ -4656,9 +4459,8 @@ export const ExecInspectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecInspectRequest" }) as any as S.Schema<ExecInspectRequest>;
 
 export type ProcessConfigArgumentsList = Array<string>;
-export const ProcessConfigArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProcessConfigArgumentsList>;
+export const ProcessConfigArgumentsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ProcessConfigArgumentsList>;
 
 export interface ProcessConfig {
   privileged?: boolean;
@@ -4724,15 +4526,12 @@ export const ExecResizeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecResizeRequest" }) as any as S.Schema<ExecResizeRequest>;
 
 export interface ExecResizeResponse {}
-export const ExecResizeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecResizeResponse",
-}) as any as S.Schema<ExecResizeResponse>;
+export const ExecResizeResponse = ArchiveContainerResponse as any as S.Schema<ExecResizeResponse>;
 
 /** Initial console size, as an `[height, width]` array. */
 export type ExecStartRequestConsoleSizeList = Array<number>;
-export const ExecStartRequestConsoleSizeList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExecStartRequestConsoleSizeList>;
+export const ExecStartRequestConsoleSizeList =
+  HostConfigConsoleSizeList as any as S.Schema<ExecStartRequestConsoleSizeList>;
 
 export interface ExecStartRequest {
   /** Exec instance ID */
@@ -4754,9 +4553,7 @@ export const ExecStartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecStartRequest" }) as any as S.Schema<ExecStartRequest>;
 
 export interface ExecStartResponse {}
-export const ExecStartResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExecStartResponse",
-}) as any as S.Schema<ExecStartResponse>;
+export const ExecStartResponse = ArchiveContainerResponse as any as S.Schema<ExecStartResponse>;
 
 export interface ExportContainerRequest {
   /** ID or name of the container */
@@ -4769,14 +4566,12 @@ export const ExportContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportContainerRequest" }) as any as S.Schema<ExportContainerRequest>;
 
 export interface ExportContainerResponse {}
-export const ExportContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportContainerResponse",
-}) as any as S.Schema<ExportContainerResponse>;
+export const ExportContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<ExportContainerResponse>;
 
 export type GetImageRequestPlatformList = Array<string>;
-export const GetImageRequestPlatformList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetImageRequestPlatformList>;
+export const GetImageRequestPlatformList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<GetImageRequestPlatformList>;
 
 export interface GetImageRequest {
   /** Image name or ID */
@@ -4792,9 +4587,7 @@ export const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetImageRequest" }) as any as S.Schema<GetImageRequest>;
 
 export type GetImageResponse = string;
-export const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetImageResponse" }) as any as S.Schema<GetImageResponse>;
+export const GetImageResponse = ContainerLogsResponse as any as S.Schema<GetImageResponse>;
 
 export interface GetPluginPrivilegesRequest {
   /** The name of the plugin. The `:latest` tag is optional, and is the default if omitted. */
@@ -4809,9 +4602,8 @@ export const GetPluginPrivilegesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPluginPrivilegesRequest>;
 
 export type GetPluginPrivilegesResponseBodyList = Array<PluginPrivilege>;
-export const GetPluginPrivilegesResponseBodyList = /*@__PURE__*/ S.Array(
-  PluginPrivilege,
-) as any as S.Schema<GetPluginPrivilegesResponseBodyList>;
+export const GetPluginPrivilegesResponseBodyList =
+  TaskSpecPluginSpecPluginPrivilegeList as any as S.Schema<GetPluginPrivilegesResponseBodyList>;
 
 export type GetPluginPrivilegesResponse = GetPluginPrivilegesResponseBodyList;
 export const GetPluginPrivilegesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4821,14 +4613,12 @@ export const GetPluginPrivilegesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPluginPrivilegesResponse>;
 
 export type ImageAttestationsRequestPlatformList = Array<string>;
-export const ImageAttestationsRequestPlatformList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageAttestationsRequestPlatformList>;
+export const ImageAttestationsRequestPlatformList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageAttestationsRequestPlatformList>;
 
 export type ImageAttestationsRequestTypeList = Array<string>;
-export const ImageAttestationsRequestTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageAttestationsRequestTypeList>;
+export const ImageAttestationsRequestTypeList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageAttestationsRequestTypeList>;
 
 export interface ImageAttestationsRequest {
   /** Image name or id */
@@ -4973,19 +4763,15 @@ export const ImageBuildRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageBuildRequest" }) as any as S.Schema<ImageBuildRequest>;
 
 export interface ImageBuildResponse {}
-export const ImageBuildResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImageBuildResponse",
-}) as any as S.Schema<ImageBuildResponse>;
+export const ImageBuildResponse = ArchiveContainerResponse as any as S.Schema<ImageBuildResponse>;
 
 export type ImageGetAllRequestNamesList = Array<string>;
-export const ImageGetAllRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageGetAllRequestNamesList>;
+export const ImageGetAllRequestNamesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageGetAllRequestNamesList>;
 
 export type ImageGetAllRequestPlatformList = Array<string>;
-export const ImageGetAllRequestPlatformList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageGetAllRequestPlatformList>;
+export const ImageGetAllRequestPlatformList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageGetAllRequestPlatformList>;
 
 export interface ImageGetAllRequest {
   /** Image names to filter by. Repeat the parameter for multiple images. */
@@ -5001,9 +4787,7 @@ export const ImageGetAllRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageGetAllRequest" }) as any as S.Schema<ImageGetAllRequest>;
 
 export type ImageGetAllResponse = string;
-export const ImageGetAllResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ImageGetAllResponse" }) as any as S.Schema<ImageGetAllResponse>;
+export const ImageGetAllResponse = ContainerLogsResponse as any as S.Schema<ImageGetAllResponse>;
 
 export interface ImageHistoryRequest {
   /** Image name or ID */
@@ -5019,9 +4803,8 @@ export const ImageHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageHistoryRequest" }) as any as S.Schema<ImageHistoryRequest>;
 
 export type ImageHistoryResponseItemTagsList = Array<string>;
-export const ImageHistoryResponseItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageHistoryResponseItemTagsList>;
+export const ImageHistoryResponseItemTagsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageHistoryResponseItemTagsList>;
 
 /** individual image layer information in response to ImageHistory operation */
 export interface ImageHistoryResponseItem {
@@ -5179,9 +4962,8 @@ export const SignatureType = S.String;
 
 /** Warnings contains any warnings that occurred during signature verification. For example, if there was no internet connectivity and cached trust roots were used. Warning does not indicate a failed verification but may point to configuration issues. */
 export type SignatureIdentityWarningsList = Array<string>;
-export const SignatureIdentityWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignatureIdentityWarningsList>;
+export const SignatureIdentityWarningsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SignatureIdentityWarningsList>;
 
 /** SignatureIdentity contains the properties of verified signatures for the image. */
 export interface SignatureIdentity {
@@ -5277,9 +5059,8 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the containers that are using this image. */
 export type ImageManifestSummaryImageDataContainersList = Array<string>;
-export const ImageManifestSummaryImageDataContainersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageManifestSummaryImageDataContainersList>;
+export const ImageManifestSummaryImageDataContainersList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageManifestSummaryImageDataContainersList>;
 
 export interface ImageManifestSummaryImageDataSize {
   /** Unpacked is the size (in bytes) of the locally unpacked (uncompressed) image content that's directly usable by the containers running this image. It's independent of the distributable content - e.g. the image might still have an unpacked data that's still used by some container even when the distributable/compressed content is already gone. */
@@ -5362,66 +5143,53 @@ export const ImageInspectManifestsList = /*@__PURE__*/ S.Array(
 
 /** List of image names/tags in the local image cache that reference this image. Multiple image tags can refer to the same image, and this list may be empty if no tags reference the image, in which case the image is "untagged", in which case it can still be referenced by its ID. */
 export type ImageInspectRepoTagsList = Array<string>;
-export const ImageInspectRepoTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageInspectRepoTagsList>;
+export const ImageInspectRepoTagsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageInspectRepoTagsList>;
 
 /** List of content-addressable digests of locally available image manifests that the image is referenced from. Multiple manifests can refer to the same image. These digests are usually only available if the image was either pulled from a registry, or if the image was pushed to a registry, which is when the manifest is generated and its digest calculated. */
 export type ImageInspectRepoDigestsList = Array<string>;
-export const ImageInspectRepoDigestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageInspectRepoDigestsList>;
+export const ImageInspectRepoDigestsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageInspectRepoDigestsList>;
 
 /** An object mapping ports to an empty object in the form: `{"<port>/<tcp|udp|sctp>": {}}` */
 export type ImageConfigExposedPortsMap = { [key: string]: unknown | undefined };
-export const ImageConfigExposedPortsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ImageConfigExposedPortsMap>;
+export const ImageConfigExposedPortsMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<ImageConfigExposedPortsMap>;
 
 /** A list of environment variables to set inside the container in the form `["VAR=value", ...]`. A variable without `=` is removed from the environment, rather than to have an empty value. */
 export type ImageConfigEnvList = Array<string>;
-export const ImageConfigEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageConfigEnvList>;
+export const ImageConfigEnvList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageConfigEnvList>;
 
 /** Command to run specified as a string or an array of strings. */
 export type ImageConfigCmdList = Array<string>;
-export const ImageConfigCmdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageConfigCmdList>;
+export const ImageConfigCmdList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageConfigCmdList>;
 
 /** An object mapping mount point paths inside the container to empty objects. */
 export type ImageConfigVolumesMap = { [key: string]: unknown | undefined };
-export const ImageConfigVolumesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ImageConfigVolumesMap>;
+export const ImageConfigVolumesMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<ImageConfigVolumesMap>;
 
 /** The entry point for the container as a string or an array of strings. If the array consists of exactly one empty string (`[""]`) then the entry point is reset to system default (i.e., the entry point used by docker when there is no `ENTRYPOINT` instruction in the `Dockerfile`). */
 export type ImageConfigEntrypointList = Array<string>;
-export const ImageConfigEntrypointList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageConfigEntrypointList>;
+export const ImageConfigEntrypointList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageConfigEntrypointList>;
 
 /** `ONBUILD` metadata that were defined in the image's `Dockerfile`. */
 export type ImageConfigOnBuildList = Array<string>;
-export const ImageConfigOnBuildList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageConfigOnBuildList>;
+export const ImageConfigOnBuildList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageConfigOnBuildList>;
 
 /** User-defined key/value metadata. */
 export type ImageConfigLabelsMap = { [key: string]: string | undefined };
-export const ImageConfigLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageConfigLabelsMap>;
+export const ImageConfigLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ImageConfigLabelsMap>;
 
 /** Shell for when `RUN`, `CMD`, and `ENTRYPOINT` uses a shell. */
 export type ImageConfigShellList = Array<string>;
-export const ImageConfigShellList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageConfigShellList>;
+export const ImageConfigShellList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageConfigShellList>;
 
 /** Configuration of the image. These fields are used as defaults when starting a container from the image. */
 export interface ImageConfig {
@@ -5470,9 +5238,8 @@ export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageConfig" }) as any as S.Schema<ImageConfig>;
 
 export type ImageInspectRootFSLayersList = Array<string>;
-export const ImageInspectRootFSLayersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageInspectRootFSLayersList>;
+export const ImageInspectRootFSLayersList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageInspectRootFSLayersList>;
 
 /** Information about the image's RootFS, including the layer IDs. */
 export interface ImageInspectRootFS {
@@ -5558,9 +5325,8 @@ export const ImageInspect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageInspect" }) as any as S.Schema<ImageInspect>;
 
 export type ImageLoadRequestPlatformList = Array<string>;
-export const ImageLoadRequestPlatformList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageLoadRequestPlatformList>;
+export const ImageLoadRequestPlatformList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageLoadRequestPlatformList>;
 
 export interface ImageLoadRequest {
   /** Suppress progress details during load. */
@@ -5578,9 +5344,7 @@ export const ImageLoadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageLoadRequest" }) as any as S.Schema<ImageLoadRequest>;
 
 export interface ImageLoadResponse {}
-export const ImageLoadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImageLoadResponse",
-}) as any as S.Schema<ImageLoadResponse>;
+export const ImageLoadResponse = ArchiveContainerResponse as any as S.Schema<ImageLoadResponse>;
 
 export interface ImagePruneRequest {
   /** Filters to process on the prune list, encoded as JSON (a `map[string][]string`). Available filters: - `dangling=<boolean>` When set to `true` (or `1`), prune only unused *and* untagged images. When set to `false` (or `0`), all unused images are pruned. - `until=<string>` Prune images created before this timestamp. The `<timestamp>` can be Unix timestamps, date formatted timestamps, or Go duration strings (e.g. `10m`, `1h30m`) computed relative to the daemon machine's time. - `label` (`label=<key>`, `label=<key>=<value>`, `label!=<key>`, or `label!=<key>=<value>`) Prune images with (or without, in case `label!=...` is used) the specified labels. */
@@ -5594,9 +5358,8 @@ export const ImagePruneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Images that were deleted */
 export type ImagePruneResponseImagesDeletedList = Array<ImageDeleteResponseItem>;
-export const ImagePruneResponseImagesDeletedList = /*@__PURE__*/ S.Array(
-  ImageDeleteResponseItem,
-) as any as S.Schema<ImagePruneResponseImagesDeletedList>;
+export const ImagePruneResponseImagesDeletedList =
+  DeleteImageResponseBodyList as any as S.Schema<ImagePruneResponseImagesDeletedList>;
 
 export interface ImagePruneResponse {
   /** Images that were deleted */
@@ -5631,9 +5394,7 @@ export const ImagePushRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImagePushRequest" }) as any as S.Schema<ImagePushRequest>;
 
 export interface ImagePushResponse {}
-export const ImagePushResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImagePushResponse",
-}) as any as S.Schema<ImagePushResponse>;
+export const ImagePushResponse = ArchiveContainerResponse as any as S.Schema<ImagePushResponse>;
 
 export interface ImageTagRequest {
   /** Image name or ID to tag. */
@@ -5652,15 +5413,12 @@ export const ImageTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageTagRequest" }) as any as S.Schema<ImageTagRequest>;
 
 export interface ImageTagResponse {}
-export const ImageTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImageTagResponse",
-}) as any as S.Schema<ImageTagResponse>;
+export const ImageTagResponse = ArchiveContainerResponse as any as S.Schema<ImageTagResponse>;
 
 /** Addresses of manager nodes already participating in the swarm. */
 export type JoinSwarmRequestRemoteAddrsList = Array<string>;
-export const JoinSwarmRequestRemoteAddrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JoinSwarmRequestRemoteAddrsList>;
+export const JoinSwarmRequestRemoteAddrsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<JoinSwarmRequestRemoteAddrsList>;
 
 export interface JoinSwarmRequest {
   /** Listen address used for inter-manager communication if the node gets promoted to manager, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP). This is required for joining a swarm. If the port number is omitted, the default swarm listening port is used. */
@@ -5685,9 +5443,7 @@ export const JoinSwarmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JoinSwarmRequest" }) as any as S.Schema<JoinSwarmRequest>;
 
 export interface JoinSwarmResponse {}
-export const JoinSwarmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "JoinSwarmResponse",
-}) as any as S.Schema<JoinSwarmResponse>;
+export const JoinSwarmResponse = ArchiveContainerResponse as any as S.Schema<JoinSwarmResponse>;
 
 export interface KillContainerRequest {
   /** ID or name of the container */
@@ -5703,9 +5459,8 @@ export const KillContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KillContainerRequest" }) as any as S.Schema<KillContainerRequest>;
 
 export interface KillContainerResponse {}
-export const KillContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "KillContainerResponse",
-}) as any as S.Schema<KillContainerResponse>;
+export const KillContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<KillContainerResponse>;
 
 export interface LeaveSwarmRequest {
   /** Force leave swarm, even if this is the last manager or that it will break the cluster. */
@@ -5718,9 +5473,7 @@ export const LeaveSwarmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LeaveSwarmRequest" }) as any as S.Schema<LeaveSwarmRequest>;
 
 export interface LeaveSwarmResponse {}
-export const LeaveSwarmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LeaveSwarmResponse",
-}) as any as S.Schema<LeaveSwarmResponse>;
+export const LeaveSwarmResponse = ArchiveContainerResponse as any as S.Schema<LeaveSwarmResponse>;
 
 export interface ListConfigRequest {
   /** A JSON encoded value of the filters (a `map[string][]string`) to process on the configs list. Available filters: - `id=<config id>` - `label=<key> or label=<key>=value` - `name=<config name>` matches all or part of a config name (prefix match) */
@@ -5763,9 +5516,8 @@ export const ListContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The names associated with this container. Most containers have a single name, but when using legacy "links", the container can have multiple names. For historic reasons, names are prefixed with a forward-slash (`/`). */
 export type ContainerSummaryNamesList = Array<string>;
-export const ContainerSummaryNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerSummaryNamesList>;
+export const ContainerSummaryNamesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerSummaryNamesList>;
 
 export type PortSummaryType = "tcp" | "udp" | "sctp";
 export const PortSummaryType = S.String;
@@ -5797,10 +5549,8 @@ export const ContainerSummaryPortsList = /*@__PURE__*/ S.Array(
 
 /** User-defined key/value metadata. */
 export type ContainerSummaryLabelsMap = { [key: string]: string | undefined };
-export const ContainerSummaryLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContainerSummaryLabelsMap>;
+export const ContainerSummaryLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ContainerSummaryLabelsMap>;
 
 /** The state of this container. */
 export type ContainerSummaryState =
@@ -5815,10 +5565,8 @@ export const ContainerSummaryState = S.String;
 
 /** Arbitrary key-value metadata attached to the container. */
 export type ContainerSummaryHostConfigAnnotationsMap = { [key: string]: string | undefined };
-export const ContainerSummaryHostConfigAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ContainerSummaryHostConfigAnnotationsMap>;
+export const ContainerSummaryHostConfigAnnotationsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ContainerSummaryHostConfigAnnotationsMap>;
 
 /** Summary of host-specific runtime information of the container. This is a reduced set of information in the container's "HostConfig" as available in the container "inspect" response. */
 export interface ContainerSummaryHostConfig {
@@ -5840,10 +5588,8 @@ export const ContainerSummaryHostConfig = /*@__PURE__*/ S.suspend(() =>
 export type ContainerSummaryNetworkSettingsNetworksMap = {
   [key: string]: EndpointSettings | undefined;
 };
-export const ContainerSummaryNetworkSettingsNetworksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  EndpointSettings,
-) as any as S.Schema<ContainerSummaryNetworkSettingsNetworksMap>;
+export const ContainerSummaryNetworkSettingsNetworksMap =
+  NetworkSettingsNetworksMap as any as S.Schema<ContainerSummaryNetworkSettingsNetworksMap>;
 
 /** Summary of the container's network settings */
 export interface ContainerSummaryNetworkSettings {
@@ -5860,9 +5606,8 @@ export const ContainerSummaryNetworkSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** List of mounts used by the container. */
 export type ContainerSummaryMountsList = Array<MountPoint>;
-export const ContainerSummaryMountsList = /*@__PURE__*/ S.Array(
-  MountPoint,
-) as any as S.Schema<ContainerSummaryMountsList>;
+export const ContainerSummaryMountsList =
+  ContainerInspectResponseMountsList as any as S.Schema<ContainerSummaryMountsList>;
 
 /** the health status of the container */
 export type ContainerSummaryHealthStatus = "none" | "starting" | "healthy" | "unhealthy";
@@ -5977,28 +5722,23 @@ export const ListImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of image names/tags in the local image cache that reference this image. Multiple image tags can refer to the same image, and this list may be empty if no tags reference the image, in which case the image is "untagged", in which case it can still be referenced by its ID. */
 export type ImageSummaryRepoTagsList = Array<string>;
-export const ImageSummaryRepoTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageSummaryRepoTagsList>;
+export const ImageSummaryRepoTagsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageSummaryRepoTagsList>;
 
 /** List of content-addressable digests of locally available image manifests that the image is referenced from. Multiple manifests can refer to the same image. These digests are usually only available if the image was either pulled from a registry, or if the image was pushed to a registry, which is when the manifest is generated and its digest calculated. */
 export type ImageSummaryRepoDigestsList = Array<string>;
-export const ImageSummaryRepoDigestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImageSummaryRepoDigestsList>;
+export const ImageSummaryRepoDigestsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ImageSummaryRepoDigestsList>;
 
 /** User-defined key/value metadata. */
 export type ImageSummaryLabelsMap = { [key: string]: string | undefined };
-export const ImageSummaryLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ImageSummaryLabelsMap>;
+export const ImageSummaryLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ImageSummaryLabelsMap>;
 
 /** Manifests is a list of manifests available in this image. It provides a more detailed view of the platform-specific image manifests or other image-attached data like build attestations. WARNING: This is experimental and may change at any time without any backward compatibility. */
 export type ImageSummaryManifestsList = Array<ImageManifestSummary>;
-export const ImageSummaryManifestsList = /*@__PURE__*/ S.Array(
-  ImageManifestSummary,
-) as any as S.Schema<ImageSummaryManifestsList>;
+export const ImageSummaryManifestsList =
+  ImageInspectManifestsList as any as S.Schema<ImageSummaryManifestsList>;
 
 export interface ImageSummary {
   /** ID is the content-addressable ID of an image. This identifier is a content-addressable digest calculated from the image's configuration (which includes the digests of layers used by the image). Note that this digest differs from the `RepoDigests` below, which holds digests of image manifests that reference the image. */
@@ -6062,17 +5802,11 @@ export const ListNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Network-specific options uses when creating the network. */
 export type NetworkOptionsMap = { [key: string]: string | undefined };
-export const NetworkOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkOptionsMap>;
+export const NetworkOptionsMap = CommitImageRequestLabelsMap as any as S.Schema<NetworkOptionsMap>;
 
 /** Metadata specific to the network being created. */
 export type NetworkLabelsMap = { [key: string]: string | undefined };
-export const NetworkLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkLabelsMap>;
+export const NetworkLabelsMap = CommitImageRequestLabelsMap as any as S.Schema<NetworkLabelsMap>;
 
 /** represents one peer of an overlay network. */
 export interface PeerInfo {
@@ -6170,10 +5904,7 @@ export const ListNodeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type NodeSpecLabelsMap = { [key: string]: string | undefined };
-export const NodeSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NodeSpecLabelsMap>;
+export const NodeSpecLabelsMap = CommitImageRequestLabelsMap as any as S.Schema<NodeSpecLabelsMap>;
 
 /** Role of the node. */
 export type NodeSpecRole = "worker" | "manager";
@@ -6203,10 +5934,8 @@ export const NodeSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeSpec" }) as any as S.Schema<NodeSpec>;
 
 export type EngineDescriptionLabelsMap = { [key: string]: string | undefined };
-export const EngineDescriptionLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EngineDescriptionLabelsMap>;
+export const EngineDescriptionLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<EngineDescriptionLabelsMap>;
 
 export interface EngineDescriptionPluginsItem {
   Type?: string;
@@ -6380,10 +6109,8 @@ export const ListSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type SecretSpecLabelsMap = { [key: string]: string | undefined };
-export const SecretSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SecretSpecLabelsMap>;
+export const SecretSpecLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<SecretSpecLabelsMap>;
 
 export interface SecretSpec {
   /** User-defined name of the secret. */
@@ -6449,10 +6176,8 @@ export const ListServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type ServiceSpecLabelsMap = { [key: string]: string | undefined };
-export const ServiceSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceSpecLabelsMap>;
+export const ServiceSpecLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<ServiceSpecLabelsMap>;
 
 export type ServiceSpecModeReplicated = CreateServiceRequestModeReplicated;
 export const ServiceSpecModeReplicated = CreateServiceRequestModeReplicated;
@@ -6537,9 +6262,8 @@ export const ServiceSpecRollbackConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which networks the service should attach to. Deprecated: This field is deprecated since v1.44. The Networks field in TaskSpec should be used instead. */
 export type ServiceSpecNetworksList = Array<NetworkAttachmentConfig>;
-export const ServiceSpecNetworksList = /*@__PURE__*/ S.Array(
-  NetworkAttachmentConfig,
-) as any as S.Schema<ServiceSpecNetworksList>;
+export const ServiceSpecNetworksList =
+  TaskSpecNetworksList as any as S.Schema<ServiceSpecNetworksList>;
 
 /** User modifiable configuration for a service. */
 export interface ServiceSpec {
@@ -6572,9 +6296,8 @@ export const ServiceSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceSpec" }) as any as S.Schema<ServiceSpec>;
 
 export type ServiceEndpointPortsList = Array<EndpointPortConfig>;
-export const ServiceEndpointPortsList = /*@__PURE__*/ S.Array(
-  EndpointPortConfig,
-) as any as S.Schema<ServiceEndpointPortsList>;
+export const ServiceEndpointPortsList =
+  EndpointSpecPortsList as any as S.Schema<ServiceEndpointPortsList>;
 
 export interface ServiceEndpointVirtualIPsItem {
   NetworkID?: string;
@@ -6707,10 +6430,7 @@ export const ListTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type TaskLabelsMap = { [key: string]: string | undefined };
-export const TaskLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TaskLabelsMap>;
+export const TaskLabelsMap = CommitImageRequestLabelsMap as any as S.Schema<TaskLabelsMap>;
 
 export type TaskState =
   | "new"
@@ -6745,9 +6465,7 @@ export const ContainerStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerStatus" }) as any as S.Schema<ContainerStatus>;
 
 export type PortStatusPortsList = Array<EndpointPortConfig>;
-export const PortStatusPortsList = /*@__PURE__*/ S.Array(
-  EndpointPortConfig,
-) as any as S.Schema<PortStatusPortsList>;
+export const PortStatusPortsList = EndpointSpecPortsList as any as S.Schema<PortStatusPortsList>;
 
 /** represents the port status of a task's host ports whose service has published host ports */
 export interface PortStatus {
@@ -6781,9 +6499,8 @@ export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP addresses (in CIDR notation) assigned to the task on this network. To maintain backward compatibility this field accepts CIDR notation, but only the IP address is used. */
 export type NetworkAttachmentAddressesList = Array<string>;
-export const NetworkAttachmentAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAttachmentAddressesList>;
+export const NetworkAttachmentAddressesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<NetworkAttachmentAddressesList>;
 
 /** Specifies how a task is attached to a network, and the addresses the task was assigned on that network. */
 export interface NetworkAttachment {
@@ -6876,9 +6593,8 @@ export const VolumeListResponseVolumesList = /*@__PURE__*/ S.Array(
 
 /** Warnings that occurred when fetching the list of volumes. */
 export type VolumeListResponseWarningsList = Array<string>;
-export const VolumeListResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeListResponseWarningsList>;
+export const VolumeListResponseWarningsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<VolumeListResponseWarningsList>;
 
 /** Volume list response */
 export interface VolumeListResponse {
@@ -6912,23 +6628,18 @@ export const NetworkInspectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Network-specific options uses when creating the network. */
 export type NetworkInspectResponseOptionsMap = { [key: string]: string | undefined };
-export const NetworkInspectResponseOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkInspectResponseOptionsMap>;
+export const NetworkInspectResponseOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<NetworkInspectResponseOptionsMap>;
 
 /** Metadata specific to the network being created. */
 export type NetworkInspectResponseLabelsMap = { [key: string]: string | undefined };
-export const NetworkInspectResponseLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkInspectResponseLabelsMap>;
+export const NetworkInspectResponseLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<NetworkInspectResponseLabelsMap>;
 
 /** List of peer nodes for an overlay network. This field is only present for overlay networks, and omitted for other network types. */
 export type NetworkInspectResponsePeersList = Array<PeerInfo>;
-export const NetworkInspectResponsePeersList = /*@__PURE__*/ S.Array(
-  PeerInfo,
-) as any as S.Schema<NetworkInspectResponsePeersList>;
+export const NetworkInspectResponsePeersList =
+  NetworkPeersList as any as S.Schema<NetworkInspectResponsePeersList>;
 
 /** contains network resources allocated and used for a container in a network. */
 export interface EndpointResource {
@@ -6957,10 +6668,8 @@ export const NetworkInspectResponseContainersMap = /*@__PURE__*/ S.Record(
 
 /** List of services using the network. This field is only present for swarm scope networks, and omitted for local scope networks. */
 export type NetworkInspectResponseServicesMap = { [key: string]: unknown | undefined };
-export const NetworkInspectResponseServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NetworkInspectResponseServicesMap>;
+export const NetworkInspectResponseServicesMap =
+  CommitImageRequestExposedPortsMap as any as S.Schema<NetworkInspectResponseServicesMap>;
 
 export interface SubnetStatus {
   /** Number of IP addresses in the subnet that are in use or reserved and are therefore unavailable for allocation, saturating at 2<sup>64</sup> - 1. */
@@ -7075,9 +6784,8 @@ export const NetworkPruneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Networks that were deleted */
 export type NetworkPruneResponseNetworksDeletedList = Array<string>;
-export const NetworkPruneResponseNetworksDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkPruneResponseNetworksDeletedList>;
+export const NetworkPruneResponseNetworksDeletedList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<NetworkPruneResponseNetworksDeletedList>;
 
 export interface NetworkPruneResponse {
   /** Networks that were deleted */
@@ -7110,9 +6818,8 @@ export const PauseContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PauseContainerRequest" }) as any as S.Schema<PauseContainerRequest>;
 
 export interface PauseContainerResponse {}
-export const PauseContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PauseContainerResponse",
-}) as any as S.Schema<PauseContainerResponse>;
+export const PauseContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<PauseContainerResponse>;
 
 export interface PingSystemRequest {}
 export const PingSystemRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7120,9 +6827,7 @@ export const PingSystemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PingSystemRequest" }) as any as S.Schema<PingSystemRequest>;
 
 export type PingSystemResponse = string;
-export const PingSystemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PingSystemResponse" }) as any as S.Schema<PingSystemResponse>;
+export const PingSystemResponse = ContainerLogsResponse as any as S.Schema<PingSystemResponse>;
 
 export interface PluginInspectRequest {
   /** The name of the plugin. The `:latest` tag is optional, and is the default if omitted. */
@@ -7135,9 +6840,8 @@ export const PluginInspectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginInspectRequest" }) as any as S.Schema<PluginInspectRequest>;
 
 export type PluginPullRequestBodyList = Array<PluginPrivilege>;
-export const PluginPullRequestBodyList = /*@__PURE__*/ S.Array(
-  PluginPrivilege,
-) as any as S.Schema<PluginPullRequestBodyList>;
+export const PluginPullRequestBodyList =
+  TaskSpecPluginSpecPluginPrivilegeList as any as S.Schema<PluginPullRequestBodyList>;
 
 export interface PluginPullRequest {
   /** Remote reference for plugin to install. The `:latest` tag is optional, and is used as the default if omitted. */
@@ -7158,9 +6862,7 @@ export const PluginPullRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginPullRequest" }) as any as S.Schema<PluginPullRequest>;
 
 export interface PluginPullResponse {}
-export const PluginPullResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PluginPullResponse",
-}) as any as S.Schema<PluginPullResponse>;
+export const PluginPullResponse = ArchiveContainerResponse as any as S.Schema<PluginPullResponse>;
 
 export interface PluginPushRequest {
   /** The name of the plugin. The `:latest` tag is optional, and is the default if omitted. */
@@ -7173,14 +6875,11 @@ export const PluginPushRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginPushRequest" }) as any as S.Schema<PluginPushRequest>;
 
 export interface PluginPushResponse {}
-export const PluginPushResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PluginPushResponse",
-}) as any as S.Schema<PluginPushResponse>;
+export const PluginPushResponse = ArchiveContainerResponse as any as S.Schema<PluginPushResponse>;
 
 export type PluginUpgradeRequestBodyList = Array<PluginPrivilege>;
-export const PluginUpgradeRequestBodyList = /*@__PURE__*/ S.Array(
-  PluginPrivilege,
-) as any as S.Schema<PluginUpgradeRequestBodyList>;
+export const PluginUpgradeRequestBodyList =
+  TaskSpecPluginSpecPluginPrivilegeList as any as S.Schema<PluginUpgradeRequestBodyList>;
 
 export interface PluginUpgradeRequest {
   /** The name of the plugin. The `:latest` tag is optional, and is the default if omitted. */
@@ -7201,9 +6900,8 @@ export const PluginUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginUpgradeRequest" }) as any as S.Schema<PluginUpgradeRequest>;
 
 export interface PluginUpgradeResponse {}
-export const PluginUpgradeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PluginUpgradeResponse",
-}) as any as S.Schema<PluginUpgradeResponse>;
+export const PluginUpgradeResponse =
+  ArchiveContainerResponse as any as S.Schema<PluginUpgradeResponse>;
 
 export interface PutContainerArchiveRequest {
   /** ID or name of the container */
@@ -7229,9 +6927,8 @@ export const PutContainerArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutContainerArchiveRequest>;
 
 export interface PutContainerArchiveResponse {}
-export const PutContainerArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutContainerArchiveResponse",
-}) as any as S.Schema<PutContainerArchiveResponse>;
+export const PutContainerArchiveResponse =
+  ArchiveContainerResponse as any as S.Schema<PutContainerArchiveResponse>;
 
 export interface RenameContainerRequest {
   /** ID or name of the container */
@@ -7247,9 +6944,8 @@ export const RenameContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameContainerRequest" }) as any as S.Schema<RenameContainerRequest>;
 
 export interface RenameContainerResponse {}
-export const RenameContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RenameContainerResponse",
-}) as any as S.Schema<RenameContainerResponse>;
+export const RenameContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<RenameContainerResponse>;
 
 export interface ResizeContainerRequest {
   /** ID or name of the container */
@@ -7268,9 +6964,8 @@ export const ResizeContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizeContainerRequest" }) as any as S.Schema<ResizeContainerRequest>;
 
 export interface ResizeContainerResponse {}
-export const ResizeContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResizeContainerResponse",
-}) as any as S.Schema<ResizeContainerResponse>;
+export const ResizeContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<ResizeContainerResponse>;
 
 export interface RestartContainerRequest {
   /** ID or name of the container */
@@ -7289,9 +6984,8 @@ export const RestartContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartContainerRequest" }) as any as S.Schema<RestartContainerRequest>;
 
 export interface RestartContainerResponse {}
-export const RestartContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartContainerResponse",
-}) as any as S.Schema<RestartContainerResponse>;
+export const RestartContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<RestartContainerResponse>;
 
 export interface SearchImageRequest {
   /** Term to search */
@@ -7394,9 +7088,7 @@ export const ServiceLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceLogsRequest" }) as any as S.Schema<ServiceLogsRequest>;
 
 export type ServiceLogsResponse = string;
-export const ServiceLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ServiceLogsResponse" }) as any as S.Schema<ServiceLogsResponse>;
+export const ServiceLogsResponse = ContainerLogsResponse as any as S.Schema<ServiceLogsResponse>;
 
 export interface SessionRequest {}
 export const SessionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7404,14 +7096,11 @@ export const SessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionRequest" }) as any as S.Schema<SessionRequest>;
 
 export interface SessionResponse {}
-export const SessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SessionResponse",
-}) as any as S.Schema<SessionResponse>;
+export const SessionResponse = ArchiveContainerResponse as any as S.Schema<SessionResponse>;
 
 export type SetPluginRequestBodyList = Array<string>;
-export const SetPluginRequestBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetPluginRequestBodyList>;
+export const SetPluginRequestBodyList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SetPluginRequestBodyList>;
 
 export interface SetPluginRequest {
   /** The name of the plugin. The `:latest` tag is optional, and is the default if omitted. */
@@ -7426,9 +7115,7 @@ export const SetPluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetPluginRequest" }) as any as S.Schema<SetPluginRequest>;
 
 export interface SetPluginResponse {}
-export const SetPluginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetPluginResponse",
-}) as any as S.Schema<SetPluginResponse>;
+export const SetPluginResponse = ArchiveContainerResponse as any as S.Schema<SetPluginResponse>;
 
 export interface StartContainerRequest {
   /** ID or name of the container */
@@ -7444,9 +7131,8 @@ export const StartContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartContainerRequest" }) as any as S.Schema<StartContainerRequest>;
 
 export interface StartContainerResponse {}
-export const StartContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartContainerResponse",
-}) as any as S.Schema<StartContainerResponse>;
+export const StartContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<StartContainerResponse>;
 
 export interface StopContainerRequest {
   /** ID or name of the container */
@@ -7465,22 +7151,18 @@ export const StopContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopContainerRequest" }) as any as S.Schema<StopContainerRequest>;
 
 export interface StopContainerResponse {}
-export const StopContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopContainerResponse",
-}) as any as S.Schema<StopContainerResponse>;
+export const StopContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<StopContainerResponse>;
 
 /** Default Address Pool specifies default subnet pools for global scope networks. */
 export type SwarmInitRequestDefaultAddrPoolList = Array<string>;
-export const SwarmInitRequestDefaultAddrPoolList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SwarmInitRequestDefaultAddrPoolList>;
+export const SwarmInitRequestDefaultAddrPoolList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SwarmInitRequestDefaultAddrPoolList>;
 
 /** User-defined key/value metadata. */
 export type SwarmSpecLabelsMap = { [key: string]: string | undefined };
-export const SwarmSpecLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SwarmSpecLabelsMap>;
+export const SwarmSpecLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<SwarmSpecLabelsMap>;
 
 /** Orchestration configuration. */
 export interface SwarmSpecOrchestration {
@@ -7533,10 +7215,8 @@ export const SwarmSpecCAConfigExternalCAsItemProtocol = S.String;
 
 /** An object with key/value pairs that are interpreted as protocol-specific options for the external CA driver. */
 export type SwarmSpecCAConfigExternalCAsItemOptionsMap = { [key: string]: string | undefined };
-export const SwarmSpecCAConfigExternalCAsItemOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SwarmSpecCAConfigExternalCAsItemOptionsMap>;
+export const SwarmSpecCAConfigExternalCAsItemOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<SwarmSpecCAConfigExternalCAsItemOptionsMap>;
 
 export interface SwarmSpecCAConfigExternalCAsItem {
   /** Protocol for communication with the external CA (currently only `cfssl` is supported). */
@@ -7603,10 +7283,8 @@ export const SwarmSpecEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Driver-specific options for the selected log driver, specified as key/value pairs. */
 export type SwarmSpecTaskDefaultsLogDriverOptionsMap = { [key: string]: string | undefined };
-export const SwarmSpecTaskDefaultsLogDriverOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SwarmSpecTaskDefaultsLogDriverOptionsMap>;
+export const SwarmSpecTaskDefaultsLogDriverOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<SwarmSpecTaskDefaultsLogDriverOptionsMap>;
 
 /** The log driver to use for tasks created in the orchestrator if unspecified by a service. Updating this value only affects new tasks. Existing tasks continue to use their previously configured log driver until recreated. */
 export interface SwarmSpecTaskDefaultsLogDriver {
@@ -7615,14 +7293,8 @@ export interface SwarmSpecTaskDefaultsLogDriver {
   /** Driver-specific options for the selected log driver, specified as key/value pairs. */
   Options?: SwarmSpecTaskDefaultsLogDriverOptionsMap;
 }
-export const SwarmSpecTaskDefaultsLogDriver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Options: S.optional(SwarmSpecTaskDefaultsLogDriverOptionsMap),
-  }),
-).annotate({
-  identifier: "SwarmSpecTaskDefaultsLogDriver",
-}) as any as S.Schema<SwarmSpecTaskDefaultsLogDriver>;
+export const SwarmSpecTaskDefaultsLogDriver =
+  MountVolumeOptionsDriverConfig as any as S.Schema<SwarmSpecTaskDefaultsLogDriver>;
 
 /** Defaults for creating tasks in this cluster. */
 export interface SwarmSpecTaskDefaults {
@@ -7698,9 +7370,7 @@ export const SwarmInitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SwarmInitRequest" }) as any as S.Schema<SwarmInitRequest>;
 
 export type SwarmInitResponse = string;
-export const SwarmInitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "SwarmInitResponse" }) as any as S.Schema<SwarmInitResponse>;
+export const SwarmInitResponse = ContainerLogsResponse as any as S.Schema<SwarmInitResponse>;
 
 export interface SwarmInspectRequest {}
 export const SwarmInspectRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7709,9 +7379,8 @@ export const SwarmInspectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Default Address Pool specifies default subnet pools for global scope networks. */
 export type SwarmInspectResponseDefaultAddrPoolList = Array<string>;
-export const SwarmInspectResponseDefaultAddrPoolList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SwarmInspectResponseDefaultAddrPoolList>;
+export const SwarmInspectResponseDefaultAddrPoolList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SwarmInspectResponseDefaultAddrPoolList>;
 
 /** JoinTokens contains the tokens workers and managers need to join the swarm. */
 export interface JoinTokens {
@@ -7857,9 +7526,8 @@ export const ImagesDiskUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** List of container summaries. */
 export type ContainersDiskUsageItemsList = Array<unknown>;
-export const ContainersDiskUsageItemsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ContainersDiskUsageItemsList>;
+export const ContainersDiskUsageItemsList =
+  ImagesDiskUsageItemsList as any as S.Schema<ContainersDiskUsageItemsList>;
 
 /** represents system data usage information for container resources. */
 export interface ContainersDiskUsage {
@@ -7874,21 +7542,12 @@ export interface ContainersDiskUsage {
   /** List of container summaries. */
   Items?: ContainersDiskUsageItemsList;
 }
-export const ContainersDiskUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActiveCount: S.optional(S.Number),
-    TotalCount: S.optional(S.Number),
-    Reclaimable: S.optional(S.Number),
-    TotalSize: S.optional(S.Number),
-    Items: S.optional(ContainersDiskUsageItemsList),
-  }),
-).annotate({ identifier: "ContainersDiskUsage" }) as any as S.Schema<ContainersDiskUsage>;
+export const ContainersDiskUsage = ImagesDiskUsage as any as S.Schema<ContainersDiskUsage>;
 
 /** List of volumes. */
 export type VolumesDiskUsageItemsList = Array<unknown>;
-export const VolumesDiskUsageItemsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VolumesDiskUsageItemsList>;
+export const VolumesDiskUsageItemsList =
+  ImagesDiskUsageItemsList as any as S.Schema<VolumesDiskUsageItemsList>;
 
 /** represents system data usage for volume resources. */
 export interface VolumesDiskUsage {
@@ -7903,21 +7562,12 @@ export interface VolumesDiskUsage {
   /** List of volumes. */
   Items?: VolumesDiskUsageItemsList;
 }
-export const VolumesDiskUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActiveCount: S.optional(S.Number),
-    TotalCount: S.optional(S.Number),
-    Reclaimable: S.optional(S.Number),
-    TotalSize: S.optional(S.Number),
-    Items: S.optional(VolumesDiskUsageItemsList),
-  }),
-).annotate({ identifier: "VolumesDiskUsage" }) as any as S.Schema<VolumesDiskUsage>;
+export const VolumesDiskUsage = ImagesDiskUsage as any as S.Schema<VolumesDiskUsage>;
 
 /** List of build cache records. */
 export type BuildCacheDiskUsageItemsList = Array<unknown>;
-export const BuildCacheDiskUsageItemsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<BuildCacheDiskUsageItemsList>;
+export const BuildCacheDiskUsageItemsList =
+  ImagesDiskUsageItemsList as any as S.Schema<BuildCacheDiskUsageItemsList>;
 
 /** represents system data usage for build cache resources. */
 export interface BuildCacheDiskUsage {
@@ -7932,15 +7582,7 @@ export interface BuildCacheDiskUsage {
   /** List of build cache records. */
   Items?: BuildCacheDiskUsageItemsList;
 }
-export const BuildCacheDiskUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ActiveCount: S.optional(S.Number),
-    TotalCount: S.optional(S.Number),
-    Reclaimable: S.optional(S.Number),
-    TotalSize: S.optional(S.Number),
-    Items: S.optional(BuildCacheDiskUsageItemsList),
-  }),
-).annotate({ identifier: "BuildCacheDiskUsage" }) as any as S.Schema<BuildCacheDiskUsage>;
+export const BuildCacheDiskUsage = ImagesDiskUsage as any as S.Schema<BuildCacheDiskUsage>;
 
 export interface SystemDataUsageResponse {
   ImageUsage?: ImagesDiskUsage;
@@ -7990,10 +7632,8 @@ export const EventMessageType = S.String;
 
 /** Various key/value attributes of the object, depending on its type. */
 export type EventActorAttributesMap = { [key: string]: string | undefined };
-export const EventActorAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EventActorAttributesMap>;
+export const EventActorAttributesMap =
+  CommitImageRequestLabelsMap as any as S.Schema<EventActorAttributesMap>;
 
 /** Actor describes something that generates events, like a container, network, or a volume. */
 export interface EventActor {
@@ -8044,39 +7684,33 @@ export const SystemInfo2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemInfo2Request" }) as any as S.Schema<SystemInfo2Request>;
 
 export type SystemInfoDriverStatusItemList = Array<string>;
-export const SystemInfoDriverStatusItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SystemInfoDriverStatusItemList>;
+export const SystemInfoDriverStatusItemList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SystemInfoDriverStatusItemList>;
 
 /** Information specific to the storage driver, provided as "label" / "value" pairs. This information is provided by the storage driver, and formatted in a way consistent with the output of `docker info` on the command line. <p><br /></p> > **Note**: The information returned in this field, including the > formatting of values and labels, should not be considered stable, > and may change without notice. */
 export type SystemInfoDriverStatusList = Array<SystemInfoDriverStatusItemList>;
-export const SystemInfoDriverStatusList = /*@__PURE__*/ S.Array(
-  SystemInfoDriverStatusItemList,
-) as any as S.Schema<SystemInfoDriverStatusList>;
+export const SystemInfoDriverStatusList =
+  DeviceRequestCapabilitiesList as any as S.Schema<SystemInfoDriverStatusList>;
 
 /** Names of available volume-drivers, and network-driver plugins. */
 export type PluginsInfoVolumeList = Array<string>;
-export const PluginsInfoVolumeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginsInfoVolumeList>;
+export const PluginsInfoVolumeList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginsInfoVolumeList>;
 
 /** Names of available network-drivers, and network-driver plugins. */
 export type PluginsInfoNetworkList = Array<string>;
-export const PluginsInfoNetworkList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginsInfoNetworkList>;
+export const PluginsInfoNetworkList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginsInfoNetworkList>;
 
 /** Names of available authorization plugins. */
 export type PluginsInfoAuthorizationList = Array<string>;
-export const PluginsInfoAuthorizationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginsInfoAuthorizationList>;
+export const PluginsInfoAuthorizationList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginsInfoAuthorizationList>;
 
 /** Names of available logging-drivers, and logging-driver plugins. */
 export type PluginsInfoLogList = Array<string>;
-export const PluginsInfoLogList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PluginsInfoLogList>;
+export const PluginsInfoLogList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<PluginsInfoLogList>;
 
 /** Available plugins per type. <p><br /></p> > **Note**: Only unmanaged (V1) plugins are included in this list. > V1 plugins are "lazily" loaded, and are not returned in this list > if there is no resource using the plugin. */
 export interface PluginsInfo {
@@ -8108,15 +7742,13 @@ export const SystemInfoCgroupVersion = S.String;
 
 /** List of IP ranges of insecure registries, using the CIDR syntax ([RFC 4632](https://tools.ietf.org/html/4632)). Insecure registries accept un-encrypted (HTTP) and/or untrusted (HTTPS with certificates from unknown CAs) communication. By default, local registries (`::1/128` and `127.0.0.0/8`) are configured as insecure. All other registries are secure. Communicating with an insecure registry is not possible if the daemon assumes that registry is secure. This configuration override this behavior, insecure communication with registries whose resolved IP address is within the subnet described by the CIDR syntax. Registries can also be marked insecure by hostname. Those registries are listed under `IndexConfigs` and have their `Secure` field set to `false`. > **Warning**: Using this option can be useful when running a local > registry, but introduces security vulnerabilities. This option > should therefore ONLY be used for testing purposes. For increased > security, users should add their CA to their system's list of trusted > CAs instead of enabling this option. */
 export type RegistryServiceConfigInsecureRegistryCIDRsList = Array<string>;
-export const RegistryServiceConfigInsecureRegistryCIDRsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegistryServiceConfigInsecureRegistryCIDRsList>;
+export const RegistryServiceConfigInsecureRegistryCIDRsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<RegistryServiceConfigInsecureRegistryCIDRsList>;
 
 /** List of mirrors, expressed as URIs. */
 export type IndexInfoMirrorsList = Array<string>;
-export const IndexInfoMirrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IndexInfoMirrorsList>;
+export const IndexInfoMirrorsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<IndexInfoMirrorsList>;
 
 /** IndexInfo contains information about a registry. */
 export interface IndexInfo {
@@ -8146,9 +7778,8 @@ export const RegistryServiceConfigIndexConfigsMap = /*@__PURE__*/ S.Record(
 
 /** List of registry URLs that act as a mirror for the official (`docker.io`) registry. */
 export type RegistryServiceConfigMirrorsList = Array<string>;
-export const RegistryServiceConfigMirrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegistryServiceConfigMirrorsList>;
+export const RegistryServiceConfigMirrorsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<RegistryServiceConfigMirrorsList>;
 
 /** RegistryServiceConfig stores daemon registry services configuration. */
 export interface RegistryServiceConfig {
@@ -8168,22 +7799,17 @@ export const RegistryServiceConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (key/value metadata) as set on the daemon. <p><br /></p> > **Note**: When part of a Swarm, nodes can both have _daemon_ labels, > set through the daemon configuration, and _node_ labels, set from a > manager node in the Swarm. Node labels are not included in this > field. Node labels can be retrieved using the `/nodes/(id)` endpoint > on a manager node in the Swarm. */
 export type SystemInfoLabelsList = Array<string>;
-export const SystemInfoLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SystemInfoLabelsList>;
+export const SystemInfoLabelsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SystemInfoLabelsList>;
 
 /** List of command-line arguments to pass to the runtime when invoked. */
 export type RuntimeRuntimeArgsList = Array<string>;
-export const RuntimeRuntimeArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RuntimeRuntimeArgsList>;
+export const RuntimeRuntimeArgsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<RuntimeRuntimeArgsList>;
 
 /** Information specific to the runtime. While this API specification does not define data provided by runtimes, the following well-known properties may be provided by runtimes: `org.opencontainers.runtime-spec.features`: features structure as defined in the [OCI Runtime Specification](https://github.com/opencontainers/runtime-spec/blob/main/features.md), in a JSON string representation. <p><br /></p> > **Note**: The information returned in this field, including the > formatting of values and labels, should not be considered stable, > and may change without notice. */
 export type RuntimeStatusMap = { [key: string]: string | undefined };
-export const RuntimeStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RuntimeStatusMap>;
+export const RuntimeStatusMap = CommitImageRequestLabelsMap as any as S.Schema<RuntimeStatusMap>;
 
 /** Runtime describes an [OCI compliant](https://github.com/opencontainers/runtime-spec) runtime. The runtime is invoked by the daemon via the `containerd` daemon. OCI runtimes act as an interface to the Linux kernel namespaces, cgroups, and SELinux. */
 export interface Runtime {
@@ -8235,9 +7861,8 @@ export const SwarmInfoRemoteManagersList = /*@__PURE__*/ S.Array(
 
 /** Default Address Pool specifies default subnet pools for global scope networks. */
 export type ClusterInfoDefaultAddrPoolList = Array<string>;
-export const ClusterInfoDefaultAddrPoolList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterInfoDefaultAddrPoolList>;
+export const ClusterInfoDefaultAddrPoolList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ClusterInfoDefaultAddrPoolList>;
 
 /** ClusterInfo represents information about the swarm as is returned by the "/info" endpoint. Join-tokens are not included. */
 export interface ClusterInfo {
@@ -8322,9 +7947,8 @@ export const Commit = /*@__PURE__*/ S.suspend(() =>
 
 /** List of security features that are enabled on the daemon, such as apparmor, seccomp, SELinux, user-namespaces (userns), rootless and no-new-privileges. Additional configuration options for each security feature may be present, and are included as a comma-separated list of key/value pairs. */
 export type SystemInfoSecurityOptionsList = Array<string>;
-export const SystemInfoSecurityOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SystemInfoSecurityOptionsList>;
+export const SystemInfoSecurityOptionsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SystemInfoSecurityOptionsList>;
 
 export interface SystemInfoDefaultAddressPoolsItem {
   /** The network address in CIDR format */
@@ -8348,15 +7972,13 @@ export const SystemInfoDefaultAddressPoolsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SystemInfoDefaultAddressPoolsList>;
 
 export type FirewallInfoInfoItemList = Array<string>;
-export const FirewallInfoInfoItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallInfoInfoItemList>;
+export const FirewallInfoInfoItemList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<FirewallInfoInfoItemList>;
 
 /** Information about the firewall backend, provided as "label" / "value" pairs. <p><br /></p> > **Note**: The information returned in this field, including the > formatting of values and labels, should not be considered stable, > and may change without notice. */
 export type FirewallInfoInfoList = Array<FirewallInfoInfoItemList>;
-export const FirewallInfoInfoList = /*@__PURE__*/ S.Array(
-  FirewallInfoInfoItemList,
-) as any as S.Schema<FirewallInfoInfoList>;
+export const FirewallInfoInfoList =
+  DeviceRequestCapabilitiesList as any as S.Schema<FirewallInfoInfoList>;
 
 /** Information about the daemon's firewalling configuration. This field is currently only used on Linux, and omitted on other platforms. */
 export interface FirewallInfo {
@@ -8393,15 +8015,12 @@ export const SystemInfoDiscoveredDevicesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SystemInfoDiscoveredDevicesList>;
 
 export type NRIInfoInfoItemList = Array<string>;
-export const NRIInfoInfoItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NRIInfoInfoItemList>;
+export const NRIInfoInfoItemList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<NRIInfoInfoItemList>;
 
 /** Information about NRI, provided as "label" / "value" pairs. <p><br /></p> > **Note**: The information returned in this field, including the > formatting of values and labels, should not be considered stable, > and may change without notice. */
 export type NRIInfoInfoList = Array<NRIInfoInfoItemList>;
-export const NRIInfoInfoList = /*@__PURE__*/ S.Array(
-  NRIInfoInfoItemList,
-) as any as S.Schema<NRIInfoInfoList>;
+export const NRIInfoInfoList = DeviceRequestCapabilitiesList as any as S.Schema<NRIInfoInfoList>;
 
 /** Information about the Node Resource Interface (NRI). This field is only present if NRI is enabled. */
 export interface NRIInfo {
@@ -8416,15 +8035,13 @@ export const NRIInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of warnings / informational messages about missing features, or issues related to the daemon configuration. These messages can be printed by the client as information to the user. */
 export type SystemInfoWarningsList = Array<string>;
-export const SystemInfoWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SystemInfoWarningsList>;
+export const SystemInfoWarningsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SystemInfoWarningsList>;
 
 /** List of directories where (Container Device Interface) CDI specifications are located. These specifications define vendor-specific modifications to an OCI runtime specification for a container being created. An empty list indicates that CDI device injection is disabled. Note that since using CDI device injection requires the daemon to have experimental enabled. For non-experimental daemons an empty list will always be returned. */
 export type SystemInfoCDISpecDirsList = Array<string>;
-export const SystemInfoCDISpecDirsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SystemInfoCDISpecDirsList>;
+export const SystemInfoCDISpecDirsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<SystemInfoCDISpecDirsList>;
 
 /** The namespaces that the daemon uses for running containers and plugins in containerd. These namespaces can be configured in the daemon configuration, and are considered to be used exclusively by the daemon, Tampering with the containerd instance may cause unexpected behavior. As these namespaces are considered to be exclusively accessed by the daemon, it is not recommended to change these values, or to change them to a value that is used by other systems, such as cri-containerd. */
 export interface ContainerdInfoNamespaces {
@@ -8760,9 +8377,7 @@ export const TaskLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskLogsRequest" }) as any as S.Schema<TaskLogsRequest>;
 
 export type TaskLogsResponse = string;
-export const TaskLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TaskLogsResponse" }) as any as S.Schema<TaskLogsResponse>;
+export const TaskLogsResponse = ContainerLogsResponse as any as S.Schema<TaskLogsResponse>;
 
 export interface UnlockSwarmRequest {
   /** The swarm's unlock key. */
@@ -8775,9 +8390,7 @@ export const UnlockSwarmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlockSwarmRequest" }) as any as S.Schema<UnlockSwarmRequest>;
 
 export interface UnlockSwarmResponse {}
-export const UnlockSwarmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnlockSwarmResponse",
-}) as any as S.Schema<UnlockSwarmResponse>;
+export const UnlockSwarmResponse = ArchiveContainerResponse as any as S.Schema<UnlockSwarmResponse>;
 
 export interface UnpauseContainerRequest {
   /** ID or name of the container */
@@ -8790,16 +8403,13 @@ export const UnpauseContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnpauseContainerRequest" }) as any as S.Schema<UnpauseContainerRequest>;
 
 export interface UnpauseContainerResponse {}
-export const UnpauseContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnpauseContainerResponse",
-}) as any as S.Schema<UnpauseContainerResponse>;
+export const UnpauseContainerResponse =
+  ArchiveContainerResponse as any as S.Schema<UnpauseContainerResponse>;
 
 /** User-defined key/value metadata. */
 export type UpdateConfigRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateConfigRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigRequestLabelsMap>;
+export const UpdateConfigRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<UpdateConfigRequestLabelsMap>;
 
 export interface UpdateConfigRequest {
   /** The ID or name of the config */
@@ -8827,69 +8437,59 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateConfigRequest" }) as any as S.Schema<UpdateConfigRequest>;
 
 export interface UpdateConfigResponse {}
-export const UpdateConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateConfigResponse",
-}) as any as S.Schema<UpdateConfigResponse>;
+export const UpdateConfigResponse =
+  ArchiveContainerResponse as any as S.Schema<UpdateConfigResponse>;
 
 export type UpdateContainerRequestBlkioWeightDeviceItem = HostConfigBlkioWeightDeviceItem;
 export const UpdateContainerRequestBlkioWeightDeviceItem = HostConfigBlkioWeightDeviceItem;
 
 /** Block IO weight (relative device weight) in the form: ``` [{"Path": "device_path", "Weight": weight}] ``` */
 export type UpdateContainerRequestBlkioWeightDeviceList = Array<HostConfigBlkioWeightDeviceItem>;
-export const UpdateContainerRequestBlkioWeightDeviceList = /*@__PURE__*/ S.Array(
-  HostConfigBlkioWeightDeviceItem,
-) as any as S.Schema<UpdateContainerRequestBlkioWeightDeviceList>;
+export const UpdateContainerRequestBlkioWeightDeviceList =
+  HostConfigBlkioWeightDeviceList as any as S.Schema<UpdateContainerRequestBlkioWeightDeviceList>;
 
 /** Limit read rate (bytes per second) from a device, in the form: ``` [{"Path": "device_path", "Rate": rate}] ``` */
 export type UpdateContainerRequestBlkioDeviceReadBpsList = Array<ThrottleDevice>;
-export const UpdateContainerRequestBlkioDeviceReadBpsList = /*@__PURE__*/ S.Array(
-  ThrottleDevice,
-) as any as S.Schema<UpdateContainerRequestBlkioDeviceReadBpsList>;
+export const UpdateContainerRequestBlkioDeviceReadBpsList =
+  HostConfigBlkioDeviceReadBpsList as any as S.Schema<UpdateContainerRequestBlkioDeviceReadBpsList>;
 
 /** Limit write rate (bytes per second) to a device, in the form: ``` [{"Path": "device_path", "Rate": rate}] ``` */
 export type UpdateContainerRequestBlkioDeviceWriteBpsList = Array<ThrottleDevice>;
-export const UpdateContainerRequestBlkioDeviceWriteBpsList = /*@__PURE__*/ S.Array(
-  ThrottleDevice,
-) as any as S.Schema<UpdateContainerRequestBlkioDeviceWriteBpsList>;
+export const UpdateContainerRequestBlkioDeviceWriteBpsList =
+  HostConfigBlkioDeviceReadBpsList as any as S.Schema<UpdateContainerRequestBlkioDeviceWriteBpsList>;
 
 /** Limit read rate (IO per second) from a device, in the form: ``` [{"Path": "device_path", "Rate": rate}] ``` */
 export type UpdateContainerRequestBlkioDeviceReadIOpsList = Array<ThrottleDevice>;
-export const UpdateContainerRequestBlkioDeviceReadIOpsList = /*@__PURE__*/ S.Array(
-  ThrottleDevice,
-) as any as S.Schema<UpdateContainerRequestBlkioDeviceReadIOpsList>;
+export const UpdateContainerRequestBlkioDeviceReadIOpsList =
+  HostConfigBlkioDeviceReadBpsList as any as S.Schema<UpdateContainerRequestBlkioDeviceReadIOpsList>;
 
 /** Limit write rate (IO per second) to a device, in the form: ``` [{"Path": "device_path", "Rate": rate}] ``` */
 export type UpdateContainerRequestBlkioDeviceWriteIOpsList = Array<ThrottleDevice>;
-export const UpdateContainerRequestBlkioDeviceWriteIOpsList = /*@__PURE__*/ S.Array(
-  ThrottleDevice,
-) as any as S.Schema<UpdateContainerRequestBlkioDeviceWriteIOpsList>;
+export const UpdateContainerRequestBlkioDeviceWriteIOpsList =
+  HostConfigBlkioDeviceReadBpsList as any as S.Schema<UpdateContainerRequestBlkioDeviceWriteIOpsList>;
 
 /** A list of devices to add to the container. */
 export type UpdateContainerRequestDevicesList = Array<DeviceMapping>;
-export const UpdateContainerRequestDevicesList = /*@__PURE__*/ S.Array(
-  DeviceMapping,
-) as any as S.Schema<UpdateContainerRequestDevicesList>;
+export const UpdateContainerRequestDevicesList =
+  HostConfigDevicesList as any as S.Schema<UpdateContainerRequestDevicesList>;
 
 /** a list of cgroup rules to apply to the container */
 export type UpdateContainerRequestDeviceCgroupRulesList = Array<string>;
-export const UpdateContainerRequestDeviceCgroupRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContainerRequestDeviceCgroupRulesList>;
+export const UpdateContainerRequestDeviceCgroupRulesList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<UpdateContainerRequestDeviceCgroupRulesList>;
 
 /** A list of requests for devices to be sent to device drivers. */
 export type UpdateContainerRequestDeviceRequestsList = Array<DeviceRequest>;
-export const UpdateContainerRequestDeviceRequestsList = /*@__PURE__*/ S.Array(
-  DeviceRequest,
-) as any as S.Schema<UpdateContainerRequestDeviceRequestsList>;
+export const UpdateContainerRequestDeviceRequestsList =
+  HostConfigDeviceRequestsList as any as S.Schema<UpdateContainerRequestDeviceRequestsList>;
 
 export type UpdateContainerRequestUlimitsItem = HostConfigUlimitsItem;
 export const UpdateContainerRequestUlimitsItem = HostConfigUlimitsItem;
 
 /** A list of resource limits to set in the container. For example: ``` {"Name": "nofile", "Soft": 1024, "Hard": 2048} ``` */
 export type UpdateContainerRequestUlimitsList = Array<HostConfigUlimitsItem>;
-export const UpdateContainerRequestUlimitsList = /*@__PURE__*/ S.Array(
-  HostConfigUlimitsItem,
-) as any as S.Schema<UpdateContainerRequestUlimitsList>;
+export const UpdateContainerRequestUlimitsList =
+  HostConfigUlimitsList as any as S.Schema<UpdateContainerRequestUlimitsList>;
 
 export interface UpdateContainerRequest {
   /** ID or name of the container */
@@ -8995,9 +8595,8 @@ export const UpdateContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Warnings encountered when updating the container. */
 export type ContainerUpdateResponseWarningsList = Array<string>;
-export const ContainerUpdateResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerUpdateResponseWarningsList>;
+export const ContainerUpdateResponseWarningsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ContainerUpdateResponseWarningsList>;
 
 /** Response for a successful container-update. */
 export interface ContainerUpdateResponse {
@@ -9012,10 +8611,8 @@ export const ContainerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined key/value metadata. */
 export type UpdateNodeRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateNodeRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNodeRequestLabelsMap>;
+export const UpdateNodeRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<UpdateNodeRequestLabelsMap>;
 
 /** Role of the node. */
 export type UpdateNodeRequestRole = "worker" | "manager";
@@ -9051,16 +8648,12 @@ export const UpdateNodeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateNodeRequest" }) as any as S.Schema<UpdateNodeRequest>;
 
 export interface UpdateNodeResponse {}
-export const UpdateNodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNodeResponse",
-}) as any as S.Schema<UpdateNodeResponse>;
+export const UpdateNodeResponse = ArchiveContainerResponse as any as S.Schema<UpdateNodeResponse>;
 
 /** User-defined key/value metadata. */
 export type UpdateSecretRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateSecretRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSecretRequestLabelsMap>;
+export const UpdateSecretRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<UpdateSecretRequestLabelsMap>;
 
 export interface UpdateSecretRequest {
   /** The ID or name of the secret */
@@ -9091,19 +8684,16 @@ export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSecretRequest" }) as any as S.Schema<UpdateSecretRequest>;
 
 export interface UpdateSecretResponse {}
-export const UpdateSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSecretResponse",
-}) as any as S.Schema<UpdateSecretResponse>;
+export const UpdateSecretResponse =
+  ArchiveContainerResponse as any as S.Schema<UpdateSecretResponse>;
 
 export type UpdateServiceRequestRegistryAuthFrom = "spec" | "previous-spec";
 export const UpdateServiceRequestRegistryAuthFrom = S.String;
 
 /** User-defined key/value metadata. */
 export type UpdateServiceRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceRequestLabelsMap>;
+export const UpdateServiceRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<UpdateServiceRequestLabelsMap>;
 
 export type UpdateServiceRequestModeReplicated = CreateServiceRequestModeReplicated;
 export const UpdateServiceRequestModeReplicated = CreateServiceRequestModeReplicated;
@@ -9190,9 +8780,8 @@ export const UpdateServiceRequestRollbackConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies which networks the service should attach to. Deprecated: This field is deprecated since v1.44. The Networks field in TaskSpec should be used instead. */
 export type UpdateServiceRequestNetworksList = Array<NetworkAttachmentConfig>;
-export const UpdateServiceRequestNetworksList = /*@__PURE__*/ S.Array(
-  NetworkAttachmentConfig,
-) as any as S.Schema<UpdateServiceRequestNetworksList>;
+export const UpdateServiceRequestNetworksList =
+  TaskSpecNetworksList as any as S.Schema<UpdateServiceRequestNetworksList>;
 
 export interface UpdateServiceRequest {
   /** ID or name of service. */
@@ -9240,26 +8829,20 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional warning messages */
 export type ServiceUpdateResponseWarningsList = Array<string>;
-export const ServiceUpdateResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceUpdateResponseWarningsList>;
+export const ServiceUpdateResponseWarningsList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<ServiceUpdateResponseWarningsList>;
 
 export interface ServiceUpdateResponse {
   /** Optional warning messages */
   Warnings?: ServiceUpdateResponseWarningsList;
 }
-export const ServiceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Warnings: S.optional(ServiceUpdateResponseWarningsList),
-  }),
-).annotate({ identifier: "ServiceUpdateResponse" }) as any as S.Schema<ServiceUpdateResponse>;
+export const ServiceUpdateResponse =
+  ContainerUpdateResponse as any as S.Schema<ServiceUpdateResponse>;
 
 /** User-defined key/value metadata. */
 export type UpdateSwarmRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateSwarmRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSwarmRequestLabelsMap>;
+export const UpdateSwarmRequestLabelsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<UpdateSwarmRequestLabelsMap>;
 
 /** Orchestration configuration. */
 export type UpdateSwarmRequestOrchestration = SwarmSpecOrchestration;
@@ -9281,10 +8864,8 @@ export const UpdateSwarmRequestCAConfigExternalCAsItemProtocol = S.String;
 export type UpdateSwarmRequestCAConfigExternalCAsItemOptionsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSwarmRequestCAConfigExternalCAsItemOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSwarmRequestCAConfigExternalCAsItemOptionsMap>;
+export const UpdateSwarmRequestCAConfigExternalCAsItemOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<UpdateSwarmRequestCAConfigExternalCAsItemOptionsMap>;
 
 export interface UpdateSwarmRequestCAConfigExternalCAsItem {
   /** Protocol for communication with the external CA (currently only `cfssl` is supported). */
@@ -9347,10 +8928,8 @@ export const UpdateSwarmRequestEncryptionConfig = SwarmSpecEncryptionConfig;
 export type UpdateSwarmRequestTaskDefaultsLogDriverOptionsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSwarmRequestTaskDefaultsLogDriverOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSwarmRequestTaskDefaultsLogDriverOptionsMap>;
+export const UpdateSwarmRequestTaskDefaultsLogDriverOptionsMap =
+  CommitImageRequestLabelsMap as any as S.Schema<UpdateSwarmRequestTaskDefaultsLogDriverOptionsMap>;
 
 /** The log driver to use for tasks created in the orchestrator if unspecified by a service. Updating this value only affects new tasks. Existing tasks continue to use their previously configured log driver until recreated. */
 export interface UpdateSwarmRequestTaskDefaultsLogDriver {
@@ -9359,14 +8938,8 @@ export interface UpdateSwarmRequestTaskDefaultsLogDriver {
   /** Driver-specific options for the selected log driver, specified as key/value pairs. */
   Options?: UpdateSwarmRequestTaskDefaultsLogDriverOptionsMap;
 }
-export const UpdateSwarmRequestTaskDefaultsLogDriver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Options: S.optional(UpdateSwarmRequestTaskDefaultsLogDriverOptionsMap),
-  }),
-).annotate({
-  identifier: "UpdateSwarmRequestTaskDefaultsLogDriver",
-}) as any as S.Schema<UpdateSwarmRequestTaskDefaultsLogDriver>;
+export const UpdateSwarmRequestTaskDefaultsLogDriver =
+  MountVolumeOptionsDriverConfig as any as S.Schema<UpdateSwarmRequestTaskDefaultsLogDriver>;
 
 /** Defaults for creating tasks in this cluster. */
 export interface UpdateSwarmRequestTaskDefaults {
@@ -9425,9 +8998,7 @@ export const UpdateSwarmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSwarmRequest" }) as any as S.Schema<UpdateSwarmRequest>;
 
 export interface UpdateSwarmResponse {}
-export const UpdateSwarmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSwarmResponse",
-}) as any as S.Schema<UpdateSwarmResponse>;
+export const UpdateSwarmResponse = ArchiveContainerResponse as any as S.Schema<UpdateSwarmResponse>;
 
 export interface UpdateVolumeRequest {
   /** The name or ID of the volume */
@@ -9445,9 +9016,8 @@ export const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateVolumeRequest" }) as any as S.Schema<UpdateVolumeRequest>;
 
 export interface UpdateVolumeResponse {}
-export const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateVolumeResponse",
-}) as any as S.Schema<UpdateVolumeResponse>;
+export const UpdateVolumeResponse =
+  ArchiveContainerResponse as any as S.Schema<UpdateVolumeResponse>;
 
 export interface VolumeInspectRequest {
   /** Volume name or ID */
@@ -9471,9 +9041,8 @@ export const VolumePruneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Volumes that were deleted */
 export type VolumePruneResponseVolumesDeletedList = Array<string>;
-export const VolumePruneResponseVolumesDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumePruneResponseVolumesDeletedList>;
+export const VolumePruneResponseVolumesDeletedList =
+  BuildPruneResponseCachesDeletedList as any as S.Schema<VolumePruneResponseVolumesDeletedList>;
 
 export interface VolumePruneResponse {
   /** Volumes that were deleted */

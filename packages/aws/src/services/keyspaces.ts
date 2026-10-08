@@ -204,11 +204,9 @@ export const ClusteringKeyList = /*@__PURE__*/ S.Array(ClusteringKey);
 export interface StaticColumn {
   name: string;
 }
-export const StaticColumn = /*@__PURE__*/ S.suspend(() => S.Struct({ name: S.String })).annotate({
-  identifier: "StaticColumn",
-}) as any as S.Schema<StaticColumn>;
+export const StaticColumn = PartitionKey as any as S.Schema<StaticColumn>;
 export type StaticColumnList = StaticColumn[];
-export const StaticColumnList = /*@__PURE__*/ S.Array(StaticColumn);
+export const StaticColumnList = PartitionKeyList as any as S.Schema<StaticColumnList>;
 export interface SchemaDefinition {
   allColumns: ColumnDefinition[];
   partitionKeys: PartitionKey[];
@@ -271,9 +269,7 @@ export type ClientSideTimestampsStatus = string;
 export interface ClientSideTimestamps {
   status: string;
 }
-export const ClientSideTimestamps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: S.String }),
-).annotate({ identifier: "ClientSideTimestamps" }) as any as S.Schema<ClientSideTimestamps>;
+export const ClientSideTimestamps = PointInTimeRecovery as any as S.Schema<ClientSideTimestamps>;
 export type IntegerObject = number;
 export type DoubleObject = number;
 export interface TargetTrackingScalingPolicyConfiguration {
@@ -403,19 +399,15 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTableResponse {
   resourceArn: string;
 }
-export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }),
-).annotate({ identifier: "CreateTableResponse" }) as any as S.Schema<CreateTableResponse>;
+export const CreateTableResponse = CreateKeyspaceResponse as any as S.Schema<CreateTableResponse>;
 export type TypeName = string;
 export interface FieldDefinition {
   name: string;
   type: string;
 }
-export const FieldDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, type: S.String }),
-).annotate({ identifier: "FieldDefinition" }) as any as S.Schema<FieldDefinition>;
+export const FieldDefinition = ColumnDefinition as any as S.Schema<FieldDefinition>;
 export type FieldList = FieldDefinition[];
-export const FieldList = /*@__PURE__*/ S.Array(FieldDefinition);
+export const FieldList = ColumnDefinitionList as any as S.Schema<FieldList>;
 export interface CreateTypeRequest {
   keyspaceName: string;
   typeName: string;
@@ -455,9 +447,7 @@ export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTableRequest" }) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
-export const DeleteTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableResponse",
-}) as any as S.Schema<DeleteTableResponse>;
+export const DeleteTableResponse = DeleteKeyspaceResponse as any as S.Schema<DeleteTableResponse>;
 export interface DeleteTypeRequest {
   keyspaceName: string;
   typeName: string;
@@ -471,9 +461,7 @@ export interface DeleteTypeResponse {
   keyspaceArn: string;
   typeName: string;
 }
-export const DeleteTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ keyspaceArn: S.String, typeName: S.String }),
-).annotate({ identifier: "DeleteTypeResponse" }) as any as S.Schema<DeleteTypeResponse>;
+export const DeleteTypeResponse = CreateTypeResponse as any as S.Schema<DeleteTypeResponse>;
 export interface GetKeyspaceRequest {
   keyspaceName: string;
 }
@@ -685,9 +673,9 @@ export const GetTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTypeRequest" }) as any as S.Schema<GetTypeRequest>;
 export type TypeStatus = string;
 export type TableNameList = string[];
-export const TableNameList = /*@__PURE__*/ S.Array(S.String);
+export const TableNameList = RegionList as any as S.Schema<TableNameList>;
 export type TypeNameList = string[];
-export const TypeNameList = /*@__PURE__*/ S.Array(S.String);
+export const TypeNameList = RegionList as any as S.Schema<TypeNameList>;
 export type Depth = number;
 export interface GetTypeResponse {
   keyspaceName: string;
@@ -862,9 +850,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteKeyspaceResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -875,9 +861,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteKeyspaceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateKeyspaceRequest {
   keyspaceName: string;
   replicationSpecification: ReplicationSpecification;
@@ -893,9 +878,8 @@ export const UpdateKeyspaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateKeyspaceResponse {
   resourceArn: string;
 }
-export const UpdateKeyspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }),
-).annotate({ identifier: "UpdateKeyspaceResponse" }) as any as S.Schema<UpdateKeyspaceResponse>;
+export const UpdateKeyspaceResponse =
+  CreateKeyspaceResponse as any as S.Schema<UpdateKeyspaceResponse>;
 export interface UpdateTableRequest {
   keyspaceName: string;
   tableName: string;
@@ -931,9 +915,7 @@ export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTableResponse {
   resourceArn: string;
 }
-export const UpdateTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }),
-).annotate({ identifier: "UpdateTableResponse" }) as any as S.Schema<UpdateTableResponse>;
+export const UpdateTableResponse = CreateKeyspaceResponse as any as S.Schema<UpdateTableResponse>;
 export type CreateKeyspaceError =
   | AccessDeniedException
   | ConflictException

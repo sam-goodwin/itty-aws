@@ -861,15 +861,10 @@ export interface ExternalId {
   /** Required. The unique identifier assigned by the external identity provider. The API does not enforce unique IDs across entities, but clients **must** ensure IDs are unique within their namespace. */
   id?: string;
 }
-export const ExternalId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExternalId" }) as any as S.Schema<ExternalId>;
+export const ExternalId = EntityKey as any as S.Schema<ExternalId>;
 
 export type ExternalIdList = Array<ExternalId>;
-export const ExternalIdList = /*@__PURE__*/ S.Array(ExternalId) as any as S.Schema<ExternalIdList>;
+export const ExternalIdList = EntityKeyList as any as S.Schema<ExternalIdList>;
 
 /** A group within the Cloud Identity Groups API. A `Group` is a collection of entities, where each entity is either a user, another group, or a service account. */
 export interface Group {
@@ -1913,11 +1908,7 @@ export interface DsaPublicKeyInfo {
   /** Key size in bits (size of parameter P). */
   keySize?: number;
 }
-export const DsaPublicKeyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keySize: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DsaPublicKeyInfo" }) as any as S.Schema<DsaPublicKeyInfo>;
+export const DsaPublicKeyInfo = RsaPublicKeyInfo as any as S.Schema<DsaPublicKeyInfo>;
 
 /** Credential for verifying signatures produced by the Identity Provider. */
 export interface IdpCredential {

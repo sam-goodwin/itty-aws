@@ -311,17 +311,8 @@ export interface CreateCommunicationsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const CreateCommunicationsNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CommunicationDetailsProperties,
-  }),
-).annotate({
-  identifier: "CreateCommunicationsNoSubscriptionResponse",
-}) as any as S.Schema<CreateCommunicationsNoSubscriptionResponse>;
+export const CreateCommunicationsNoSubscriptionResponse =
+  CreateCommunicationResponse as any as S.Schema<CreateCommunicationsNoSubscriptionResponse>;
 
 /** Describes the properties of a file. */
 export interface FileDetailsPropertiesInput {
@@ -552,17 +543,8 @@ export interface CreateFileWorkspacesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const CreateFileWorkspacesNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileWorkspaceDetailsProperties),
-  }),
-).annotate({
-  identifier: "CreateFileWorkspacesNoSubscriptionResponse",
-}) as any as S.Schema<CreateFileWorkspacesNoSubscriptionResponse>;
+export const CreateFileWorkspacesNoSubscriptionResponse =
+  CreateFileWorkspaceResponse as any as S.Schema<CreateFileWorkspacesNoSubscriptionResponse>;
 
 /** A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers. */
 export type SeverityLevel = "minimal" | "moderate" | "critical" | "highestcriticalimpact";
@@ -825,9 +807,8 @@ export const IsTemporaryTicket = S.String;
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesSecondaryConsentList = Array<SecondaryConsent>;
-export const SupportTicketDetailsPropertiesSecondaryConsentList = /*@__PURE__*/ S.Array(
-  SecondaryConsent,
-) as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
+export const SupportTicketDetailsPropertiesSecondaryConsentList =
+  SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
 
 /** Describes the properties of a support ticket. */
 export interface SupportTicketDetailsProperties {
@@ -978,17 +959,8 @@ export interface CreateSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const CreateSupportTicketsNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SupportTicketDetailsProperties,
-  }),
-).annotate({
-  identifier: "CreateSupportTicketsNoSubscriptionResponse",
-}) as any as S.Schema<CreateSupportTicketsNoSubscriptionResponse>;
+export const CreateSupportTicketsNoSubscriptionResponse =
+  CreateSupportTicketResponse as any as S.Schema<CreateSupportTicketsNoSubscriptionResponse>;
 
 export interface GetChatTranscriptRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1116,17 +1088,8 @@ export interface GetChatTranscriptsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties?: ChatTranscriptDetailsProperties;
 }
-export const GetChatTranscriptsNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ChatTranscriptDetailsProperties),
-  }),
-).annotate({
-  identifier: "GetChatTranscriptsNoSubscriptionResponse",
-}) as any as S.Schema<GetChatTranscriptsNoSubscriptionResponse>;
+export const GetChatTranscriptsNoSubscriptionResponse =
+  GetChatTranscriptResponse as any as S.Schema<GetChatTranscriptsNoSubscriptionResponse>;
 
 export interface GetCommunicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1207,17 +1170,8 @@ export interface GetCommunicationsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const GetCommunicationsNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CommunicationDetailsProperties,
-  }),
-).annotate({
-  identifier: "GetCommunicationsNoSubscriptionResponse",
-}) as any as S.Schema<GetCommunicationsNoSubscriptionResponse>;
+export const GetCommunicationsNoSubscriptionResponse =
+  CreateCommunicationResponse as any as S.Schema<GetCommunicationsNoSubscriptionResponse>;
 
 export interface GetFileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1254,15 +1208,7 @@ export interface GetFileResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const GetFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileDetailsProperties),
-  }),
-).annotate({ identifier: "GetFileResponse" }) as any as S.Schema<GetFileResponse>;
+export const GetFileResponse = CreateFileResponse as any as S.Schema<GetFileResponse>;
 
 export interface GetFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
@@ -1298,17 +1244,8 @@ export interface GetFilesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const GetFilesNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileDetailsProperties),
-  }),
-).annotate({
-  identifier: "GetFilesNoSubscriptionResponse",
-}) as any as S.Schema<GetFilesNoSubscriptionResponse>;
+export const GetFilesNoSubscriptionResponse =
+  CreateFilesNoSubscriptionResponse as any as S.Schema<GetFilesNoSubscriptionResponse>;
 
 export interface GetFileWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1383,17 +1320,8 @@ export interface GetFileWorkspacesNoSubscriptionResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const GetFileWorkspacesNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileWorkspaceDetailsProperties),
-  }),
-).annotate({
-  identifier: "GetFileWorkspacesNoSubscriptionResponse",
-}) as any as S.Schema<GetFileWorkspacesNoSubscriptionResponse>;
+export const GetFileWorkspacesNoSubscriptionResponse =
+  CreateFileWorkspaceResponse as any as S.Schema<GetFileWorkspacesNoSubscriptionResponse>;
 
 export interface GetProblemClassificationRequest {
   /** Name of the Azure service. */
@@ -1497,9 +1425,8 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ARM Resource types. */
 export type ServicePropertiesResourceTypesList = Array<string>;
-export const ServicePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServicePropertiesResourceTypesList>;
+export const ServicePropertiesResourceTypesList =
+  ContactProfileAdditionalEmailAddressesList as any as S.Schema<ServicePropertiesResourceTypesList>;
 
 /** Details about an Azure service available for support ticket creation. */
 export interface ServiceProperties {
@@ -1610,17 +1537,8 @@ export interface GetSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const GetSupportTicketsNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SupportTicketDetailsProperties,
-  }),
-).annotate({
-  identifier: "GetSupportTicketsNoSubscriptionResponse",
-}) as any as S.Schema<GetSupportTicketsNoSubscriptionResponse>;
+export const GetSupportTicketsNoSubscriptionResponse =
+  CreateSupportTicketResponse as any as S.Schema<GetSupportTicketsNoSubscriptionResponse>;
 
 export interface ListChatTranscriptsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1749,15 +1667,8 @@ export interface CommunicationDetails {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CommunicationDetailsProperties,
-  }),
-).annotate({ identifier: "CommunicationDetails" }) as any as S.Schema<CommunicationDetails>;
+export const CommunicationDetails =
+  GetCommunicationResponse as any as S.Schema<CommunicationDetails>;
 
 /** [Placeholder] Description for value property */
 export type CommunicationsListResultValueList = Array<CommunicationDetails>;
@@ -1837,15 +1748,7 @@ export interface FileDetails {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const FileDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileDetailsProperties),
-  }),
-).annotate({ identifier: "FileDetails" }) as any as S.Schema<FileDetails>;
+export const FileDetails = CreateFileResponse as any as S.Schema<FileDetails>;
 
 /** [Placeholder] Description for value property */
 export type FilesListResultValueList = Array<FileDetails>;
@@ -2057,15 +1960,7 @@ export interface Service {
   /** Properties of the resource. */
   properties?: ServiceProperties;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceProperties),
-  }),
-).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+export const Service = GetServiceResponse as any as S.Schema<Service>;
 
 /** List of Service resources. */
 export type ServicesListResultValueList = Array<Service>;
@@ -2125,15 +2020,8 @@ export interface SupportTicketDetails {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const SupportTicketDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SupportTicketDetailsProperties,
-  }),
-).annotate({ identifier: "SupportTicketDetails" }) as any as S.Schema<SupportTicketDetails>;
+export const SupportTicketDetails =
+  GetSupportTicketResponse as any as S.Schema<SupportTicketDetails>;
 
 /** [Placeholder] Description for value property */
 export type SupportTicketsListResultValueList = Array<SupportTicketDetails>;
@@ -2183,9 +2071,8 @@ export const Status = S.String;
 
 /** Email addresses listed will be copied on any correspondence about the support ticket. */
 export type UpdateContactProfileAdditionalEmailAddressesList = Array<string>;
-export const UpdateContactProfileAdditionalEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateContactProfileAdditionalEmailAddressesList>;
+export const UpdateContactProfileAdditionalEmailAddressesList =
+  ContactProfileAdditionalEmailAddressesList as any as S.Schema<UpdateContactProfileAdditionalEmailAddressesList>;
 
 /** Contact information associated with the support ticket. */
 export interface UpdateContactProfile {
@@ -2224,9 +2111,8 @@ export const UpdateContactProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates secondary consents for the support ticket */
 export type UpdateSupportTicketRequestSecondaryConsentList = Array<SecondaryConsent>;
-export const UpdateSupportTicketRequestSecondaryConsentList = /*@__PURE__*/ S.Array(
-  SecondaryConsent,
-) as any as S.Schema<UpdateSupportTicketRequestSecondaryConsentList>;
+export const UpdateSupportTicketRequestSecondaryConsentList =
+  SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<UpdateSupportTicketRequestSecondaryConsentList>;
 
 export interface UpdateSupportTicketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2277,23 +2163,13 @@ export interface UpdateSupportTicketResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const UpdateSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SupportTicketDetailsProperties,
-  }),
-).annotate({
-  identifier: "UpdateSupportTicketResponse",
-}) as any as S.Schema<UpdateSupportTicketResponse>;
+export const UpdateSupportTicketResponse =
+  CreateSupportTicketResponse as any as S.Schema<UpdateSupportTicketResponse>;
 
 /** This property indicates secondary consents for the support ticket */
 export type UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList = Array<SecondaryConsent>;
-export const UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList = /*@__PURE__*/ S.Array(
-  SecondaryConsent,
-) as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList>;
+export const UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList =
+  SupportTicketDetailsPropertiesInputSecondaryConsentList as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequestSecondaryConsentList>;
 
 export interface UpdateSupportTicketsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
@@ -2341,17 +2217,8 @@ export interface UpdateSupportTicketsNoSubscriptionResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const UpdateSupportTicketsNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SupportTicketDetailsProperties,
-  }),
-).annotate({
-  identifier: "UpdateSupportTicketsNoSubscriptionResponse",
-}) as any as S.Schema<UpdateSupportTicketsNoSubscriptionResponse>;
+export const UpdateSupportTicketsNoSubscriptionResponse =
+  CreateSupportTicketResponse as any as S.Schema<UpdateSupportTicketsNoSubscriptionResponse>;
 
 export interface UploadFileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2383,9 +2250,7 @@ export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadFileRequest" }) as any as S.Schema<UploadFileRequest>;
 
 export interface UploadFileResponse {}
-export const UploadFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadFileResponse",
-}) as any as S.Schema<UploadFileResponse>;
+export const UploadFileResponse = ServiceLevelAgreementInput as any as S.Schema<UploadFileResponse>;
 
 export interface UploadFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */

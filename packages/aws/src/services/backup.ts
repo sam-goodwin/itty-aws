@@ -307,7 +307,7 @@ export const Lifecycle = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Tags = TagMap as any as S.Schema<Tags>;
 export interface CopyAction {
   Lifecycle?: Lifecycle;
   DestinationBackupVaultArn: string;
@@ -381,10 +381,7 @@ export const BackupRulesInput = /*@__PURE__*/ S.Array(BackupRuleInput);
 export type BackupOptionKey = string;
 export type BackupOptionValue = string;
 export type BackupOptions = { [key: string]: string | undefined };
-export const BackupOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const BackupOptions = AccessPointMetadataMap as any as S.Schema<BackupOptions>;
 export interface AdvancedBackupSetting {
   ResourceType?: string;
   BackupOptions?: { [key: string]: string | undefined };
@@ -453,7 +450,7 @@ export const CreateBackupPlanOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBackupPlanOutput" }) as any as S.Schema<CreateBackupPlanOutput>;
 export type BackupSelectionName = string;
 export type ResourceArns = string[];
-export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
+export const ResourceArns = ResourceTypes as any as S.Schema<ResourceArns>;
 export type ConditionType = "STRINGEQUALS" | (string & {});
 export const ConditionType = S.String;
 
@@ -597,11 +594,11 @@ export const ControlInputParameter = /*@__PURE__*/ S.suspend(() =>
 export type ControlInputParameters = ControlInputParameter[];
 export const ControlInputParameters = /*@__PURE__*/ S.Array(ControlInputParameter);
 export type ComplianceResourceIdList = string[];
-export const ComplianceResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export const ComplianceResourceIdList = ResourceTypes as any as S.Schema<ComplianceResourceIdList>;
 export type ResourceTypeList = string[];
-export const ResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypeList = ResourceTypes as any as S.Schema<ResourceTypeList>;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const StringMap = TagMap as any as S.Schema<StringMap>;
 export interface ControlScope {
   ComplianceResourceIds?: string[];
   ComplianceResourceTypes?: string[];
@@ -654,9 +651,9 @@ export const CreateFrameworkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FrameworkName: S.optional(S.String), FrameworkArn: S.optional(S.String) }),
 ).annotate({ identifier: "CreateFrameworkOutput" }) as any as S.Schema<CreateFrameworkOutput>;
 export type VaultNames = string[];
-export const VaultNames = /*@__PURE__*/ S.Array(S.String);
+export const VaultNames = ResourceTypes as any as S.Schema<VaultNames>;
 export type ResourceIdentifiers = string[];
-export const ResourceIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const ResourceIdentifiers = ResourceTypes as any as S.Schema<ResourceIdentifiers>;
 export interface DateRange {
   FromDate: Date;
   ToDate: Date;
@@ -769,7 +766,7 @@ export const CreateLogicallyAirGappedBackupVaultOutput = /*@__PURE__*/ S.suspend
 export type ReportPlanName = string;
 export type ReportPlanDescription = string;
 export type FormatList = string[];
-export const FormatList = /*@__PURE__*/ S.Array(S.String);
+export const FormatList = ResourceTypes as any as S.Schema<FormatList>;
 export interface ReportDeliveryChannel {
   S3BucketName: string;
   S3KeyPrefix?: string;
@@ -783,7 +780,7 @@ export const ReportDeliveryChannel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportDeliveryChannel" }) as any as S.Schema<ReportDeliveryChannel>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = ResourceTypes as any as S.Schema<StringList>;
 export interface ReportSetting {
   ReportTemplate: string;
   FrameworkArns?: string[];
@@ -927,10 +924,7 @@ export const RestoreTestingPlanForCreate = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreTestingPlanForCreate",
 }) as any as S.Schema<RestoreTestingPlanForCreate>;
 export type SensitiveStringMap = { [key: string]: string | undefined };
-export const SensitiveStringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const SensitiveStringMap = AccessPointMetadataMap as any as S.Schema<SensitiveStringMap>;
 export interface CreateRestoreTestingPlanInput {
   CreatorRequestId?: string;
   RestoreTestingPlan: RestoreTestingPlanForCreate;
@@ -1174,9 +1168,8 @@ export const DeleteBackupSelectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBackupSelectionInput",
 }) as any as S.Schema<DeleteBackupSelectionInput>;
 export interface DeleteBackupSelectionResponse {}
-export const DeleteBackupSelectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupSelectionResponse",
-}) as any as S.Schema<DeleteBackupSelectionResponse>;
+export const DeleteBackupSelectionResponse =
+  CancelLegalHoldOutput as any as S.Schema<DeleteBackupSelectionResponse>;
 export interface DeleteBackupVaultInput {
   BackupVaultName: string;
 }
@@ -1193,9 +1186,8 @@ export const DeleteBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteBackupVaultInput" }) as any as S.Schema<DeleteBackupVaultInput>;
 export interface DeleteBackupVaultResponse {}
-export const DeleteBackupVaultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupVaultResponse",
-}) as any as S.Schema<DeleteBackupVaultResponse>;
+export const DeleteBackupVaultResponse =
+  CancelLegalHoldOutput as any as S.Schema<DeleteBackupVaultResponse>;
 export interface DeleteBackupVaultAccessPolicyInput {
   BackupVaultName: string;
 }
@@ -1214,11 +1206,8 @@ export const DeleteBackupVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBackupVaultAccessPolicyInput",
 }) as any as S.Schema<DeleteBackupVaultAccessPolicyInput>;
 export interface DeleteBackupVaultAccessPolicyResponse {}
-export const DeleteBackupVaultAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBackupVaultAccessPolicyResponse",
-}) as any as S.Schema<DeleteBackupVaultAccessPolicyResponse>;
+export const DeleteBackupVaultAccessPolicyResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DeleteBackupVaultAccessPolicyResponse>;
 export interface DeleteBackupVaultLockConfigurationInput {
   BackupVaultName: string;
 }
@@ -1237,11 +1226,8 @@ export const DeleteBackupVaultLockConfigurationInput = /*@__PURE__*/ S.suspend((
   identifier: "DeleteBackupVaultLockConfigurationInput",
 }) as any as S.Schema<DeleteBackupVaultLockConfigurationInput>;
 export interface DeleteBackupVaultLockConfigurationResponse {}
-export const DeleteBackupVaultLockConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBackupVaultLockConfigurationResponse",
-}) as any as S.Schema<DeleteBackupVaultLockConfigurationResponse>;
+export const DeleteBackupVaultLockConfigurationResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DeleteBackupVaultLockConfigurationResponse>;
 export interface DeleteBackupVaultNotificationsInput {
   BackupVaultName: string;
 }
@@ -1263,11 +1249,8 @@ export const DeleteBackupVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteBackupVaultNotificationsInput",
 }) as any as S.Schema<DeleteBackupVaultNotificationsInput>;
 export interface DeleteBackupVaultNotificationsResponse {}
-export const DeleteBackupVaultNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBackupVaultNotificationsResponse",
-}) as any as S.Schema<DeleteBackupVaultNotificationsResponse>;
+export const DeleteBackupVaultNotificationsResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DeleteBackupVaultNotificationsResponse>;
 export interface DeleteFrameworkInput {
   FrameworkName: string;
 }
@@ -1284,9 +1267,8 @@ export const DeleteFrameworkInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFrameworkInput" }) as any as S.Schema<DeleteFrameworkInput>;
 export interface DeleteFrameworkResponse {}
-export const DeleteFrameworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFrameworkResponse",
-}) as any as S.Schema<DeleteFrameworkResponse>;
+export const DeleteFrameworkResponse =
+  CancelLegalHoldOutput as any as S.Schema<DeleteFrameworkResponse>;
 export interface DeleteRecoveryPointInput {
   BackupVaultName: string;
   RecoveryPointArn: string;
@@ -1310,9 +1292,8 @@ export const DeleteRecoveryPointInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRecoveryPointInput" }) as any as S.Schema<DeleteRecoveryPointInput>;
 export interface DeleteRecoveryPointResponse {}
-export const DeleteRecoveryPointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRecoveryPointResponse",
-}) as any as S.Schema<DeleteRecoveryPointResponse>;
+export const DeleteRecoveryPointResponse =
+  CancelLegalHoldOutput as any as S.Schema<DeleteRecoveryPointResponse>;
 export interface DeleteReportPlanInput {
   ReportPlanName: string;
 }
@@ -1329,9 +1310,8 @@ export const DeleteReportPlanInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteReportPlanInput" }) as any as S.Schema<DeleteReportPlanInput>;
 export interface DeleteReportPlanResponse {}
-export const DeleteReportPlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReportPlanResponse",
-}) as any as S.Schema<DeleteReportPlanResponse>;
+export const DeleteReportPlanResponse =
+  CancelLegalHoldOutput as any as S.Schema<DeleteReportPlanResponse>;
 export interface DeleteRestoreTestingPlanInput {
   RestoreTestingPlanName: string;
 }
@@ -1350,11 +1330,8 @@ export const DeleteRestoreTestingPlanInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRestoreTestingPlanInput",
 }) as any as S.Schema<DeleteRestoreTestingPlanInput>;
 export interface DeleteRestoreTestingPlanResponse {}
-export const DeleteRestoreTestingPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRestoreTestingPlanResponse",
-}) as any as S.Schema<DeleteRestoreTestingPlanResponse>;
+export const DeleteRestoreTestingPlanResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DeleteRestoreTestingPlanResponse>;
 export interface DeleteRestoreTestingSelectionInput {
   RestoreTestingPlanName: string;
   RestoreTestingSelectionName: string;
@@ -1380,11 +1357,8 @@ export const DeleteRestoreTestingSelectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRestoreTestingSelectionInput",
 }) as any as S.Schema<DeleteRestoreTestingSelectionInput>;
 export interface DeleteRestoreTestingSelectionResponse {}
-export const DeleteRestoreTestingSelectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRestoreTestingSelectionResponse",
-}) as any as S.Schema<DeleteRestoreTestingSelectionResponse>;
+export const DeleteRestoreTestingSelectionResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DeleteRestoreTestingSelectionResponse>;
 export interface DeleteTieringConfigurationInput {
   TieringConfigurationName: string;
 }
@@ -1405,11 +1379,8 @@ export const DeleteTieringConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTieringConfigurationInput",
 }) as any as S.Schema<DeleteTieringConfigurationInput>;
 export interface DeleteTieringConfigurationOutput {}
-export const DeleteTieringConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTieringConfigurationOutput",
-}) as any as S.Schema<DeleteTieringConfigurationOutput>;
+export const DeleteTieringConfigurationOutput =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DeleteTieringConfigurationOutput>;
 export interface DescribeBackupAccessPointInput {
   AccessPointArn: string;
 }
@@ -1814,10 +1785,7 @@ export const DescribeGlobalSettingsInput = /*@__PURE__*/ S.suspend(() =>
 export type GlobalSettingsName = string;
 export type GlobalSettingsValue = string;
 export type GlobalSettings = { [key: string]: string | undefined };
-export const GlobalSettings = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const GlobalSettings = AccessPointMetadataMap as any as S.Schema<GlobalSettings>;
 export interface DescribeGlobalSettingsOutput {
   GlobalSettings?: { [key: string]: string | undefined };
   LastUpdateTime?: Date;
@@ -2031,10 +1999,8 @@ export const ResourceTypeOptInPreference = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ S.Boolean.pipe(S.optional),
 );
 export type ResourceTypeManagementPreference = { [key: string]: boolean | undefined };
-export const ResourceTypeManagementPreference = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Boolean.pipe(S.optional),
-);
+export const ResourceTypeManagementPreference =
+  ResourceTypeOptInPreference as any as S.Schema<ResourceTypeManagementPreference>;
 export interface DescribeRegionSettingsOutput {
   ResourceTypeOptInPreference?: { [key: string]: boolean | undefined };
   ResourceTypeManagementPreference?: { [key: string]: boolean | undefined };
@@ -2353,11 +2319,8 @@ export const DisassociateBackupVaultMpaApprovalTeamInput = /*@__PURE__*/ S.suspe
   identifier: "DisassociateBackupVaultMpaApprovalTeamInput",
 }) as any as S.Schema<DisassociateBackupVaultMpaApprovalTeamInput>;
 export interface DisassociateBackupVaultMpaApprovalTeamResponse {}
-export const DisassociateBackupVaultMpaApprovalTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateBackupVaultMpaApprovalTeamResponse",
-}) as any as S.Schema<DisassociateBackupVaultMpaApprovalTeamResponse>;
+export const DisassociateBackupVaultMpaApprovalTeamResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DisassociateBackupVaultMpaApprovalTeamResponse>;
 export interface DisassociateRecoveryPointInput {
   BackupVaultName: string;
   RecoveryPointArn: string;
@@ -2383,11 +2346,8 @@ export const DisassociateRecoveryPointInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateRecoveryPointInput",
 }) as any as S.Schema<DisassociateRecoveryPointInput>;
 export interface DisassociateRecoveryPointResponse {}
-export const DisassociateRecoveryPointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateRecoveryPointResponse",
-}) as any as S.Schema<DisassociateRecoveryPointResponse>;
+export const DisassociateRecoveryPointResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DisassociateRecoveryPointResponse>;
 export interface DisassociateRecoveryPointFromParentInput {
   BackupVaultName: string;
   RecoveryPointArn: string;
@@ -2413,11 +2373,8 @@ export const DisassociateRecoveryPointFromParentInput = /*@__PURE__*/ S.suspend(
   identifier: "DisassociateRecoveryPointFromParentInput",
 }) as any as S.Schema<DisassociateRecoveryPointFromParentInput>;
 export interface DisassociateRecoveryPointFromParentResponse {}
-export const DisassociateRecoveryPointFromParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateRecoveryPointFromParentResponse",
-}) as any as S.Schema<DisassociateRecoveryPointFromParentResponse>;
+export const DisassociateRecoveryPointFromParentResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<DisassociateRecoveryPointFromParentResponse>;
 export interface ExportBackupPlanTemplateInput {
   BackupPlanId: string;
 }
@@ -2913,7 +2870,7 @@ export const GetRecoveryPointRestoreMetadataInput = /*@__PURE__*/ S.suspend(() =
 export type MetadataKey = string;
 export type MetadataValue = string;
 export type Metadata = { [key: string]: string | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Metadata = TagMap as any as S.Schema<Metadata>;
 export interface GetRecoveryPointRestoreMetadataOutput {
   BackupVaultArn?: string;
   RecoveryPointArn?: string;
@@ -3250,11 +3207,8 @@ export interface ListBackupAccessPointsByRecoveryPointResponse {
   BackupAccessPoints: ListAccessPointsMember[];
   NextToken?: string;
 }
-export const ListBackupAccessPointsByRecoveryPointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BackupAccessPoints: BackupAccessPoints, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBackupAccessPointsByRecoveryPointResponse",
-}) as any as S.Schema<ListBackupAccessPointsByRecoveryPointResponse>;
+export const ListBackupAccessPointsByRecoveryPointResponse =
+  ListBackupAccessPointsResponse as any as S.Schema<ListBackupAccessPointsByRecoveryPointResponse>;
 export type ListBackupAccessPointsByResourceRequestMaxResultsInteger = number;
 export interface ListBackupAccessPointsByResourceRequest {
   MaxResults?: number;
@@ -3283,11 +3237,8 @@ export interface ListBackupAccessPointsByResourceResponse {
   BackupAccessPoints: ListAccessPointsMember[];
   NextToken?: string;
 }
-export const ListBackupAccessPointsByResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BackupAccessPoints: BackupAccessPoints, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBackupAccessPointsByResourceResponse",
-}) as any as S.Schema<ListBackupAccessPointsByResourceResponse>;
+export const ListBackupAccessPointsByResourceResponse =
+  ListBackupAccessPointsResponse as any as S.Schema<ListBackupAccessPointsByResourceResponse>;
 export type MaxResults = number;
 export interface ListBackupJobsInput {
   NextToken?: string;
@@ -3602,7 +3553,7 @@ export const ListBackupPlanVersionsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBackupPlanVersionsInput",
 }) as any as S.Schema<ListBackupPlanVersionsInput>;
 export type BackupPlanVersionsList = BackupPlansListMember[];
-export const BackupPlanVersionsList = /*@__PURE__*/ S.Array(BackupPlansListMember);
+export const BackupPlanVersionsList = BackupPlansList as any as S.Schema<BackupPlanVersionsList>;
 export interface ListBackupPlanVersionsOutput {
   NextToken?: string;
   BackupPlanVersionsList?: BackupPlansListMember[];
@@ -4075,11 +4026,8 @@ export interface ListProtectedResourcesByBackupVaultOutput {
   Results?: ProtectedResource[];
   NextToken?: string;
 }
-export const ListProtectedResourcesByBackupVaultOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Results: S.optional(ProtectedResourcesList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListProtectedResourcesByBackupVaultOutput",
-}) as any as S.Schema<ListProtectedResourcesByBackupVaultOutput>;
+export const ListProtectedResourcesByBackupVaultOutput =
+  ListProtectedResourcesOutput as any as S.Schema<ListProtectedResourcesByBackupVaultOutput>;
 export interface ListRecoveryPointsByBackupVaultInput {
   BackupVaultName: string;
   BackupVaultAccountId?: string;
@@ -5056,11 +5004,8 @@ export const PutBackupVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBackupVaultAccessPolicyInput",
 }) as any as S.Schema<PutBackupVaultAccessPolicyInput>;
 export interface PutBackupVaultAccessPolicyResponse {}
-export const PutBackupVaultAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutBackupVaultAccessPolicyResponse",
-}) as any as S.Schema<PutBackupVaultAccessPolicyResponse>;
+export const PutBackupVaultAccessPolicyResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<PutBackupVaultAccessPolicyResponse>;
 export interface PutBackupVaultLockConfigurationInput {
   BackupVaultName: string;
   MinRetentionDays?: number;
@@ -5087,11 +5032,8 @@ export const PutBackupVaultLockConfigurationInput = /*@__PURE__*/ S.suspend(() =
   identifier: "PutBackupVaultLockConfigurationInput",
 }) as any as S.Schema<PutBackupVaultLockConfigurationInput>;
 export interface PutBackupVaultLockConfigurationResponse {}
-export const PutBackupVaultLockConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutBackupVaultLockConfigurationResponse",
-}) as any as S.Schema<PutBackupVaultLockConfigurationResponse>;
+export const PutBackupVaultLockConfigurationResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<PutBackupVaultLockConfigurationResponse>;
 export interface PutBackupVaultNotificationsInput {
   BackupVaultName: string;
   SNSTopicArn: string;
@@ -5116,11 +5058,8 @@ export const PutBackupVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutBackupVaultNotificationsInput",
 }) as any as S.Schema<PutBackupVaultNotificationsInput>;
 export interface PutBackupVaultNotificationsResponse {}
-export const PutBackupVaultNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutBackupVaultNotificationsResponse",
-}) as any as S.Schema<PutBackupVaultNotificationsResponse>;
+export const PutBackupVaultNotificationsResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<PutBackupVaultNotificationsResponse>;
 export interface PutRestoreValidationResultInput {
   RestoreJobId: string;
   ValidationStatus: RestoreValidationStatus;
@@ -5145,11 +5084,8 @@ export const PutRestoreValidationResultInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutRestoreValidationResultInput",
 }) as any as S.Schema<PutRestoreValidationResultInput>;
 export interface PutRestoreValidationResultResponse {}
-export const PutRestoreValidationResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutRestoreValidationResultResponse",
-}) as any as S.Schema<PutRestoreValidationResultResponse>;
+export const PutRestoreValidationResultResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<PutRestoreValidationResultResponse>;
 export interface RevokeRestoreAccessBackupVaultInput {
   BackupVaultName: string;
   RestoreAccessBackupVaultArn: string;
@@ -5177,11 +5113,8 @@ export const RevokeRestoreAccessBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeRestoreAccessBackupVaultInput",
 }) as any as S.Schema<RevokeRestoreAccessBackupVaultInput>;
 export interface RevokeRestoreAccessBackupVaultResponse {}
-export const RevokeRestoreAccessBackupVaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeRestoreAccessBackupVaultResponse",
-}) as any as S.Schema<RevokeRestoreAccessBackupVaultResponse>;
+export const RevokeRestoreAccessBackupVaultResponse =
+  AssociateBackupVaultMpaApprovalTeamResponse as any as S.Schema<RevokeRestoreAccessBackupVaultResponse>;
 export type Index = "ENABLED" | "DISABLED" | (string & {});
 export const Index = S.String;
 
@@ -5353,9 +5286,8 @@ export const StopBackupJobInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopBackupJobInput" }) as any as S.Schema<StopBackupJobInput>;
 export interface StopBackupJobResponse {}
-export const StopBackupJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopBackupJobResponse",
-}) as any as S.Schema<StopBackupJobResponse>;
+export const StopBackupJobResponse =
+  CancelLegalHoldOutput as any as S.Schema<StopBackupJobResponse>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -5366,11 +5298,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CancelLegalHoldOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ResourceTypes as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeyList: string[];
@@ -5381,9 +5311,8 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelLegalHoldOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBackupPlanInput {
   BackupPlanId: string;
   BackupPlan: BackupPlanInput;
@@ -5467,9 +5396,8 @@ export const UpdateGlobalSettingsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGlobalSettingsInput",
 }) as any as S.Schema<UpdateGlobalSettingsInput>;
 export interface UpdateGlobalSettingsResponse {}
-export const UpdateGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateGlobalSettingsResponse",
-}) as any as S.Schema<UpdateGlobalSettingsResponse>;
+export const UpdateGlobalSettingsResponse =
+  CancelLegalHoldOutput as any as S.Schema<UpdateGlobalSettingsResponse>;
 export interface UpdateRecoveryPointIndexSettingsInput {
   BackupVaultName: string;
   RecoveryPointArn: string;
@@ -5569,9 +5497,8 @@ export const UpdateRegionSettingsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRegionSettingsInput",
 }) as any as S.Schema<UpdateRegionSettingsInput>;
 export interface UpdateRegionSettingsResponse {}
-export const UpdateRegionSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRegionSettingsResponse",
-}) as any as S.Schema<UpdateRegionSettingsResponse>;
+export const UpdateRegionSettingsResponse =
+  CancelLegalHoldOutput as any as S.Schema<UpdateRegionSettingsResponse>;
 export interface UpdateReportPlanInput {
   ReportPlanName: string;
   ReportPlanDescription?: string;
@@ -5602,13 +5529,8 @@ export interface UpdateReportPlanOutput {
   ReportPlanArn?: string;
   CreationTime?: Date;
 }
-export const UpdateReportPlanOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ReportPlanName: S.optional(S.String),
-    ReportPlanArn: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "UpdateReportPlanOutput" }) as any as S.Schema<UpdateReportPlanOutput>;
+export const UpdateReportPlanOutput =
+  CreateReportPlanOutput as any as S.Schema<UpdateReportPlanOutput>;
 export interface RestoreTestingPlanForUpdate {
   RecoveryPointSelection?: RestoreTestingRecoveryPointSelection;
   ScheduleExpression?: string;

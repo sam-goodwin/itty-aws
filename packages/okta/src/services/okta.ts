@@ -586,11 +586,8 @@ export const ActivateAuthorizationServerPolicyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ActivateAuthorizationServerPolicyRequest>;
 
 export interface ActivateAuthorizationServerPolicyResponse {}
-export const ActivateAuthorizationServerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActivateAuthorizationServerPolicyResponse",
-}) as any as S.Schema<ActivateAuthorizationServerPolicyResponse>;
+export const ActivateAuthorizationServerPolicyResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<ActivateAuthorizationServerPolicyResponse>;
 
 export interface ActivateAuthorizationServerPolicyRuleRequest {
   /** `id` of the Authorization Server */
@@ -617,11 +614,8 @@ export const ActivateAuthorizationServerPolicyRuleRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ActivateAuthorizationServerPolicyRuleRequest>;
 
 export interface ActivateAuthorizationServerPolicyRuleResponse {}
-export const ActivateAuthorizationServerPolicyRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ActivateAuthorizationServerPolicyRuleResponse",
-}) as any as S.Schema<ActivateAuthorizationServerPolicyRuleResponse>;
+export const ActivateAuthorizationServerPolicyRuleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<ActivateAuthorizationServerPolicyRuleResponse>;
 
 export interface ActivateBehaviorDetectionRuleRequest {
   /** ID of the Behavior Detection Rule */
@@ -889,9 +883,8 @@ export const ActivateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivateDeviceRequest" }) as any as S.Schema<ActivateDeviceRequest>;
 
 export interface ActivateDeviceResponse {}
-export const ActivateDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ActivateDeviceResponse",
-}) as any as S.Schema<ActivateDeviceResponse>;
+export const ActivateDeviceResponse =
+  ActivateApplicationResponse as any as S.Schema<ActivateDeviceResponse>;
 
 export interface ActivateDeviceIntegrationRequest {
   /** The ID of the device integration */
@@ -1395,9 +1388,8 @@ export const ActivateGroupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivateGroupRuleRequest" }) as any as S.Schema<ActivateGroupRuleRequest>;
 
 export interface ActivateGroupRuleResponse {}
-export const ActivateGroupRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ActivateGroupRuleResponse",
-}) as any as S.Schema<ActivateGroupRuleResponse>;
+export const ActivateGroupRuleResponse =
+  ActivateApplicationResponse as any as S.Schema<ActivateGroupRuleResponse>;
 
 export interface ActivateIdentityProviderRequest {
   /** `id` of IdP */
@@ -1421,9 +1413,8 @@ export const PolicyAccountLinkAction = S.String;
 
 /** Specifies the allowlist of Group identifiers to match against. Group memberships are restricted to type `OKTA_GROUP`. */
 export type PolicyAccountLinkFilterGroupsIncludeList = Array<string>;
-export const PolicyAccountLinkFilterGroupsIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PolicyAccountLinkFilterGroupsIncludeList>;
+export const PolicyAccountLinkFilterGroupsIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<PolicyAccountLinkFilterGroupsIncludeList>;
 
 /** Group memberships used to determine link candidates */
 export interface PolicyAccountLinkFilterGroups {
@@ -1440,9 +1431,8 @@ export const PolicyAccountLinkFilterGroups = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the blocklist of user identifiers to exclude from account linking */
 export type PolicyAccountLinkFilterUsersExcludeList = Array<string>;
-export const PolicyAccountLinkFilterUsersExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PolicyAccountLinkFilterUsersExcludeList>;
+export const PolicyAccountLinkFilterUsersExcludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<PolicyAccountLinkFilterUsersExcludeList>;
 
 /** Filters on which users are available for account linking */
 export interface PolicyAccountLinkFilterUsers {
@@ -1538,15 +1528,13 @@ export const ProvisioningGroupsAction = S.String;
 
 /** List of `OKTA_GROUP` group identifiers to add an IdP user as a member with the `ASSIGN` action */
 export type ProvisioningGroupsAssignmentsList = Array<string>;
-export const ProvisioningGroupsAssignmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProvisioningGroupsAssignmentsList>;
+export const ProvisioningGroupsAssignmentsList =
+  EventHookSubscribedEventTypes as any as S.Schema<ProvisioningGroupsAssignmentsList>;
 
 /** Allowlist of `OKTA_GROUP` group identifiers for the `APPEND` or `SYNC` provisioning action */
 export type ProvisioningGroupsFilterList = Array<string>;
-export const ProvisioningGroupsFilterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProvisioningGroupsFilterList>;
+export const ProvisioningGroupsFilterList =
+  EventHookSubscribedEventTypes as any as S.Schema<ProvisioningGroupsFilterList>;
 
 /** Provisioning settings for a user's group memberships */
 export interface ProvisioningGroups {
@@ -1789,9 +1777,8 @@ export const SamlSigningCredentials = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional IdP key credential reference to the Okta X.509 signature certificate */
 export type SamlTrustCredentialsAdditionalKidsList = Array<string>;
-export const SamlTrustCredentialsAdditionalKidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SamlTrustCredentialsAdditionalKidsList>;
+export const SamlTrustCredentialsAdditionalKidsList =
+  EventHookSubscribedEventTypes as any as S.Schema<SamlTrustCredentialsAdditionalKidsList>;
 
 /** Federation Trust Credentials for verifying assertions from the IdP */
 export interface SamlTrustCredentials {
@@ -2026,12 +2013,7 @@ export interface OidcJwksEndpoint {
   /** URL of the endpoint to the JWK Set */
   url?: string;
 }
-export const OidcJwksEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binding: S.optional(ProtocolEndpointBinding),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "OidcJwksEndpoint" }) as any as S.Schema<OidcJwksEndpoint>;
+export const OidcJwksEndpoint = SamlSloEndpoint as any as S.Schema<OidcJwksEndpoint>;
 
 /** OIDC IdP logout endpoint */
 export interface OidcSloEndpoint {
@@ -2050,12 +2032,7 @@ export interface OAuthTokenEndpoint {
   /** URL of the IdP Authorization Server (AS) token endpoint */
   url?: string;
 }
-export const OAuthTokenEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binding: S.optional(ProtocolEndpointBinding),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "OAuthTokenEndpoint" }) as any as S.Schema<OAuthTokenEndpoint>;
+export const OAuthTokenEndpoint = SamlSloEndpoint as any as S.Schema<OAuthTokenEndpoint>;
 
 /** Endpoint for getting identity information about the user. For more information on the `/userinfo` endpoint, see [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo). */
 export interface OidcUserInfoEndpoint {
@@ -2063,12 +2040,7 @@ export interface OidcUserInfoEndpoint {
   /** URL of the resource server's `/userinfo` endpoint */
   url?: string;
 }
-export const OidcUserInfoEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    binding: S.optional(ProtocolEndpointBinding),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "OidcUserInfoEndpoint" }) as any as S.Schema<OidcUserInfoEndpoint>;
+export const OidcUserInfoEndpoint = SamlSloEndpoint as any as S.Schema<OidcUserInfoEndpoint>;
 
 /** The `OAUTH2` and `OIDC` protocols support the `authorization` and `token` endpoints. Also, the `OIDC` protocol supports the `userInfo` and `jwks` endpoints. The IdP Authorization Server (AS) endpoints are currently defined as part of the [IdP provider]((https://developer.okta.com/docs/api/openapi/okta-management/management/tag/IdentityProvider/#tag/IdentityProvider/operation/createIdentityProvider!path=type&t=request)) and are read-only. */
 export interface OAuthEndpoints {
@@ -2154,17 +2126,12 @@ export interface OidcIssuer {
   /** Issuer URL identifying the external IdP (the expected `iss` value in OIDC tokens) */
   url?: string;
 }
-export const OidcIssuer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "OidcIssuer" }) as any as S.Schema<OidcIssuer>;
+export const OidcIssuer = OidcSloEndpoint as any as S.Schema<OidcIssuer>;
 
 /** OpenID Connect and IdP-defined permission bundles to request delegated access from the user > **Note:** The [IdP type](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/IdentityProvider/#tag/IdentityProvider/operation/createIdentityProvider!path=type&t=request) table lists the scopes that are supported for each IdP. */
 export type ProtocolOidcScopesList = Array<string>;
-export const ProtocolOidcScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProtocolOidcScopesList>;
+export const ProtocolOidcScopesList =
+  EventHookSubscribedEventTypes as any as S.Schema<ProtocolOidcScopesList>;
 
 /** Advanced settings for the OpenID Connect protocol */
 export interface OidcSettings {
@@ -2249,11 +2216,7 @@ export const MtlsCredentials = /*@__PURE__*/ S.suspend(() =>
 export interface MtlsSsoEndpoint {
   url?: string;
 }
-export const MtlsSsoEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "MtlsSsoEndpoint" }) as any as S.Schema<MtlsSsoEndpoint>;
+export const MtlsSsoEndpoint = OidcSloEndpoint as any as S.Schema<MtlsSsoEndpoint>;
 
 export interface MtlsEndpoints {
   sso?: MtlsSsoEndpoint;
@@ -3105,9 +3068,8 @@ export const ActivatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivatePolicyRequest" }) as any as S.Schema<ActivatePolicyRequest>;
 
 export interface ActivatePolicyResponse {}
-export const ActivatePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ActivatePolicyResponse",
-}) as any as S.Schema<ActivatePolicyResponse>;
+export const ActivatePolicyResponse =
+  ActivateApplicationResponse as any as S.Schema<ActivatePolicyResponse>;
 
 export interface ActivatePolicyRuleRequest {
   /** `id` of the policy */
@@ -3131,9 +3093,8 @@ export const ActivatePolicyRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivatePolicyRuleRequest>;
 
 export interface ActivatePolicyRuleResponse {}
-export const ActivatePolicyRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ActivatePolicyRuleResponse",
-}) as any as S.Schema<ActivatePolicyRuleResponse>;
+export const ActivatePolicyRuleResponse =
+  ActivateApplicationResponse as any as S.Schema<ActivatePolicyRuleResponse>;
 
 /** Credential response object for enrolled credential details, along with enrollment and key identifiers to associate the credential */
 export interface WebAuthnCredResponse {
@@ -3235,9 +3196,8 @@ export const ActivatePreregistrationEnrollmentRequest = /*@__PURE__*/ S.suspend(
 
 /** List of IDs for preregistered WebAuthn factors in Okta */
 export type EnrollmentActivationResponseAuthenticatorEnrollmentIdsList = Array<string>;
-export const EnrollmentActivationResponseAuthenticatorEnrollmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnrollmentActivationResponseAuthenticatorEnrollmentIdsList>;
+export const EnrollmentActivationResponseAuthenticatorEnrollmentIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<EnrollmentActivationResponseAuthenticatorEnrollmentIdsList>;
 
 /** Name of the fulfillment provider for the WebAuthn preregistration factor */
 export type EnrollmentActivationResponseFulfillmentProvider = "yubico";
@@ -3489,9 +3449,8 @@ export const AddGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines the group's `profile` */
 export type GroupObjectClassList = Array<string>;
-export const GroupObjectClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupObjectClassList>;
+export const GroupObjectClassList =
+  EventHookSubscribedEventTypes as any as S.Schema<GroupObjectClassList>;
 
 /** Profile for a group that is imported from Active Directory. The `objectClass` for such groups is `okta:windows_security_principal`. You can extend group profiles with custom properties, but you must first add the properties to the group profile schema before you can reference them. Use the Profile Editor in the Admin Console or the [Schemas API](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Schema/) to manage schema extensions. Custom properties can contain HTML tags. It is the client's responsibility to escape or encode this data before displaying it. Use [best-practices](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) to prevent cross-site scripting. */
 export interface OktaActiveDirectoryGroupProfile {
@@ -3782,9 +3741,8 @@ export const AddJwkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of member resources to add to the role resource set binding */
 export type AddMembersToBindingRequestAdditionsList = Array<string>;
-export const AddMembersToBindingRequestAdditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddMembersToBindingRequestAdditionsList>;
+export const AddMembersToBindingRequestAdditionsList =
+  EventHookSubscribedEventTypes as any as S.Schema<AddMembersToBindingRequestAdditionsList>;
 
 export interface AddMembersToBindingRequest {
   /** `id` or `label` of the resource set */
@@ -3884,9 +3842,8 @@ export const AddOAuth2ResourceServerJsonWebKeyRequest = /*@__PURE__*/ S.suspend(
 
 /** List of specific resources to exclude in ORN format */
 export type ResourceConditionsExcludeOktaORNList = Array<string>;
-export const ResourceConditionsExcludeOktaORNList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceConditionsExcludeOktaORNList>;
+export const ResourceConditionsExcludeOktaORNList =
+  EventHookSubscribedEventTypes as any as S.Schema<ResourceConditionsExcludeOktaORNList>;
 
 /** Specific resources to exclude */
 export interface ResourceConditionsExclude {
@@ -3989,9 +3946,8 @@ export const ResourceSetResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of resources to add to the resource set */
 export type AddResourceSetResourcesRequestAdditionsList = Array<string>;
-export const AddResourceSetResourcesRequestAdditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddResourceSetResourcesRequestAdditionsList>;
+export const AddResourceSetResourcesRequestAdditionsList =
+  EventHookSubscribedEventTypes as any as S.Schema<AddResourceSetResourcesRequestAdditionsList>;
 
 export interface AddResourceSetResourcesRequest {
   /** `id` or `label` of the resource set */
@@ -4076,11 +4032,8 @@ export const AssignAllAppsAsTargetToRoleForUserRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<AssignAllAppsAsTargetToRoleForUserRequest>;
 
 export interface AssignAllAppsAsTargetToRoleForUserResponse {}
-export const AssignAllAppsAsTargetToRoleForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignAllAppsAsTargetToRoleForUserResponse",
-}) as any as S.Schema<AssignAllAppsAsTargetToRoleForUserResponse>;
+export const AssignAllAppsAsTargetToRoleForUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignAllAppsAsTargetToRoleForUserResponse>;
 
 export interface AssignAppInstanceTargetToAppAdminRoleForGroupRequest {
   /** The `id` of the group */
@@ -4110,11 +4063,8 @@ export const AssignAppInstanceTargetToAppAdminRoleForGroupRequest = /*@__PURE__*
 }) as any as S.Schema<AssignAppInstanceTargetToAppAdminRoleForGroupRequest>;
 
 export interface AssignAppInstanceTargetToAppAdminRoleForGroupResponse {}
-export const AssignAppInstanceTargetToAppAdminRoleForGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignAppInstanceTargetToAppAdminRoleForGroupResponse",
-}) as any as S.Schema<AssignAppInstanceTargetToAppAdminRoleForGroupResponse>;
+export const AssignAppInstanceTargetToAppAdminRoleForGroupResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignAppInstanceTargetToAppAdminRoleForGroupResponse>;
 
 export interface AssignAppInstanceTargetToAppAdminRoleForUserRequest {
   /** ID of an existing Okta user */
@@ -4144,11 +4094,8 @@ export const AssignAppInstanceTargetToAppAdminRoleForUserRequest = /*@__PURE__*/
 }) as any as S.Schema<AssignAppInstanceTargetToAppAdminRoleForUserRequest>;
 
 export interface AssignAppInstanceTargetToAppAdminRoleForUserResponse {}
-export const AssignAppInstanceTargetToAppAdminRoleForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignAppInstanceTargetToAppAdminRoleForUserResponse",
-}) as any as S.Schema<AssignAppInstanceTargetToAppAdminRoleForUserResponse>;
+export const AssignAppInstanceTargetToAppAdminRoleForUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignAppInstanceTargetToAppAdminRoleForUserResponse>;
 
 export interface AssignApplicationPolicyRequest {
   /** Application ID */
@@ -4166,9 +4113,8 @@ export const AssignApplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignApplicationPolicyRequest>;
 
 export interface AssignApplicationPolicyResponse {}
-export const AssignApplicationPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "AssignApplicationPolicyResponse" },
-) as any as S.Schema<AssignApplicationPolicyResponse>;
+export const AssignApplicationPolicyResponse =
+  ActivateRealmAssignmentResponse as any as S.Schema<AssignApplicationPolicyResponse>;
 
 export interface AssignAppTargetInstanceRoleForClientRequest {
   /** `client_id` of the app */
@@ -4198,11 +4144,8 @@ export const AssignAppTargetInstanceRoleForClientRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<AssignAppTargetInstanceRoleForClientRequest>;
 
 export interface AssignAppTargetInstanceRoleForClientResponse {}
-export const AssignAppTargetInstanceRoleForClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignAppTargetInstanceRoleForClientResponse",
-}) as any as S.Schema<AssignAppTargetInstanceRoleForClientResponse>;
+export const AssignAppTargetInstanceRoleForClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignAppTargetInstanceRoleForClientResponse>;
 
 export interface AssignAppTargetRoleToClientRequest {
   /** `client_id` of the app */
@@ -4229,11 +4172,8 @@ export const AssignAppTargetRoleToClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignAppTargetRoleToClientRequest>;
 
 export interface AssignAppTargetRoleToClientResponse {}
-export const AssignAppTargetRoleToClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignAppTargetRoleToClientResponse",
-}) as any as S.Schema<AssignAppTargetRoleToClientResponse>;
+export const AssignAppTargetRoleToClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignAppTargetRoleToClientResponse>;
 
 export interface AssignAppTargetToAdminRoleForGroupRequest {
   /** The `id` of the group */
@@ -4260,11 +4200,8 @@ export const AssignAppTargetToAdminRoleForGroupRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<AssignAppTargetToAdminRoleForGroupRequest>;
 
 export interface AssignAppTargetToAdminRoleForGroupResponse {}
-export const AssignAppTargetToAdminRoleForGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignAppTargetToAdminRoleForGroupResponse",
-}) as any as S.Schema<AssignAppTargetToAdminRoleForGroupResponse>;
+export const AssignAppTargetToAdminRoleForGroupResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignAppTargetToAdminRoleForGroupResponse>;
 
 export interface AssignAppTargetToAdminRoleForUserRequest {
   /** ID of an existing Okta user */
@@ -4291,11 +4228,8 @@ export const AssignAppTargetToAdminRoleForUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AssignAppTargetToAdminRoleForUserRequest>;
 
 export interface AssignAppTargetToAdminRoleForUserResponse {}
-export const AssignAppTargetToAdminRoleForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignAppTargetToAdminRoleForUserResponse",
-}) as any as S.Schema<AssignAppTargetToAdminRoleForUserResponse>;
+export const AssignAppTargetToAdminRoleForUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignAppTargetToAdminRoleForUserResponse>;
 
 export interface AssignClientPrivilegesSettingRequest {
   /** If true, assigns the super admin role by default to new public client apps */
@@ -4345,11 +4279,8 @@ export const AssignFulfillmentErrorWebAuthnPreregistrationFactorRequest = /*@__P
 }) as any as S.Schema<AssignFulfillmentErrorWebAuthnPreregistrationFactorRequest>;
 
 export interface AssignFulfillmentErrorWebAuthnPreregistrationFactorResponse {}
-export const AssignFulfillmentErrorWebAuthnPreregistrationFactorResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "AssignFulfillmentErrorWebAuthnPreregistrationFactorResponse",
-}) as any as S.Schema<AssignFulfillmentErrorWebAuthnPreregistrationFactorResponse>;
+export const AssignFulfillmentErrorWebAuthnPreregistrationFactorResponse =
+  ActivateDefaultProvisioningConnectionForApplicationResponse as any as S.Schema<AssignFulfillmentErrorWebAuthnPreregistrationFactorResponse>;
 
 /** The entity type of the owner */
 export type GroupOwnerType = "GROUP" | "USER";
@@ -4425,11 +4356,8 @@ export const AssignGroupTargetRoleForClientRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AssignGroupTargetRoleForClientRequest>;
 
 export interface AssignGroupTargetRoleForClientResponse {}
-export const AssignGroupTargetRoleForClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignGroupTargetRoleForClientResponse",
-}) as any as S.Schema<AssignGroupTargetRoleForClientResponse>;
+export const AssignGroupTargetRoleForClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignGroupTargetRoleForClientResponse>;
 
 export interface AssignGroupTargetToGroupAdminRoleRequest {
   /** The `id` of the group */
@@ -4455,11 +4383,8 @@ export const AssignGroupTargetToGroupAdminRoleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AssignGroupTargetToGroupAdminRoleRequest>;
 
 export interface AssignGroupTargetToGroupAdminRoleResponse {}
-export const AssignGroupTargetToGroupAdminRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignGroupTargetToGroupAdminRoleResponse",
-}) as any as S.Schema<AssignGroupTargetToGroupAdminRoleResponse>;
+export const AssignGroupTargetToGroupAdminRoleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignGroupTargetToGroupAdminRoleResponse>;
 
 export interface AssignGroupTargetToUserRoleRequest {
   /** ID of an existing Okta user */
@@ -4486,11 +4411,8 @@ export const AssignGroupTargetToUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignGroupTargetToUserRoleRequest>;
 
 export interface AssignGroupTargetToUserRoleResponse {}
-export const AssignGroupTargetToUserRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignGroupTargetToUserRoleResponse",
-}) as any as S.Schema<AssignGroupTargetToUserRoleResponse>;
+export const AssignGroupTargetToUserRoleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignGroupTargetToUserRoleResponse>;
 
 /** Specifies the profile properties applied to [application users](https://developer.okta.com/docs/api/openapi/okta-management/management/tags/applicationusers) that are assigned to the app through group membership. Some reference properties are imported from the target app and can't be configured. See [profile](https://developer.okta.com/docs/api/openapi/okta-management/management/user/getuser#user/getuser/t=response&c=200&path=profile). */
 export type GroupAssignmentProfile = { [key: string]: unknown | undefined };
@@ -4556,10 +4478,8 @@ export const AssignGroupToApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Embedded resource related to the Application Group using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification. If the `expand=group` query parameter is specified, then the [group](openapi/okta-management/management/group) object is embedded. If the `expand=metadata` query parameter is specified, then the group assignment metadata is embedded. */
 export type ApplicationGroupAssignmentEmbeddedMap = { [key: string]: unknown | undefined };
-export const ApplicationGroupAssignmentEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApplicationGroupAssignmentEmbeddedMap>;
+export const ApplicationGroupAssignmentEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<ApplicationGroupAssignmentEmbeddedMap>;
 
 export type HrefObjectAppLink = HrefObjectSelfLink;
 export const HrefObjectAppLink = HrefObjectSelfLink;
@@ -4632,11 +4552,8 @@ export const AssignLinkedObjectValueForPrimaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AssignLinkedObjectValueForPrimaryRequest>;
 
 export interface AssignLinkedObjectValueForPrimaryResponse {}
-export const AssignLinkedObjectValueForPrimaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignLinkedObjectValueForPrimaryResponse",
-}) as any as S.Schema<AssignLinkedObjectValueForPrimaryResponse>;
+export const AssignLinkedObjectValueForPrimaryResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<AssignLinkedObjectValueForPrimaryResponse>;
 
 /** Specify a [standard admin role](/openapi/okta-management/guides/roles/#standard-roles), an [IAM-based standard role](/openapi/okta-management/guides/roles/#iam-based-standard-roles), or `CUSTOM` for a custom role type: */
 export type StandardRoleAssignmentSchemaType =
@@ -4737,15 +4654,13 @@ export const StandardRoleEmbeddedTargetsGroupsList = /*@__PURE__*/ S.Array(
 
 /** Features supported by the app. See app [features](/openapi/okta-management/management/application/listapplications#application/listapplications/t=response&c=200&path=&d=0/features). */
 export type CatalogApplicationFeaturesList = Array<string>;
-export const CatalogApplicationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogApplicationFeaturesList>;
+export const CatalogApplicationFeaturesList =
+  EventHookSubscribedEventTypes as any as S.Schema<CatalogApplicationFeaturesList>;
 
 /** Authentication mode for the app. See app [signOnMode](/openapi/okta-management/management/application/listapplications#application/listapplications/t=response&c=200&path=&d=0/signonmode). */
 export type CatalogApplicationSignOnModesList = Array<string>;
-export const CatalogApplicationSignOnModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogApplicationSignOnModesList>;
+export const CatalogApplicationSignOnModesList =
+  EventHookSubscribedEventTypes as any as S.Schema<CatalogApplicationSignOnModesList>;
 
 /** App status */
 export type CatalogApplicationStatus = "ACTIVE" | "INACTIVE";
@@ -4756,9 +4671,8 @@ export const HrefObjectLogoLink = HrefObjectSelfLink;
 
 /** List of app logo resources */
 export type CatalogApplicationLinksLogoList = Array<HrefObjectSelfLink>;
-export const CatalogApplicationLinksLogoList = /*@__PURE__*/ S.Array(
-  HrefObjectSelfLink,
-) as any as S.Schema<CatalogApplicationLinksLogoList>;
+export const CatalogApplicationLinksLogoList =
+  GroupLinksLogoList as any as S.Schema<CatalogApplicationLinksLogoList>;
 
 /** Specifies link relations (see [Web Linking](https://www.rfc-editor.org/rfc/rfc8288)) available using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification */
 export interface CatalogApplicationLinks {
@@ -5062,10 +4976,7 @@ export const AppUserCredentials = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the default and custom profile properties for a user. Properties that are visible in the Admin Console for an app assignment can also be assigned through the API. Some properties are reference properties that are imported from the target app and can't be configured. See [profile](/openapi/okta-management/management/user/getuser#user/getuser/t=response&c=200&path=profile). */
 export type AppUserProfile = { [key: string]: unknown | undefined };
-export const AppUserProfile = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AppUserProfile>;
+export const AppUserProfile = GroupAssignmentProfile as any as S.Schema<AppUserProfile>;
 
 /** Indicates if the assignment is direct (`USER`) or by group membership (`GROUP`). If not specified, Okta tries to determine the scope based on the assignment type. */
 export type AssignUserToApplicationRequestScope = "USER" | "GROUP";
@@ -5099,9 +5010,8 @@ export const AssignUserToApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The user's password. This is a write-only property. An empty `password` object is returned to indicate that a password value exists. */
 export interface AppUserPasswordCredentialOutput {}
-export const AppUserPasswordCredentialOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "AppUserPasswordCredentialOutput" },
-) as any as S.Schema<AppUserPasswordCredentialOutput>;
+export const AppUserPasswordCredentialOutput =
+  ActivateRealmAssignmentResponse as any as S.Schema<AppUserPasswordCredentialOutput>;
 
 /** Specifies a user's credentials for the app. This parameter can be omitted for apps with [sign-on mode](/openapi/okta-management/management/application/getapplication#application/getapplication/t=response&c=200&path=&d=0/signonmode) (`signOnMode`) or [authentication schemes](/openapi/okta-management/management/application/getapplication#application/getapplication/t=response&c=200&path=&d=0/credentials/scheme) (`credentials.scheme`) that don't require credentials. */
 export interface AppUserCredentialsOutput {
@@ -5143,10 +5053,8 @@ export const AppUserSyncState = S.String;
 
 /** Embedded resources related to the application user using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification */
 export type AppUserOutputEmbeddedMap = { [key: string]: unknown | undefined };
-export const AppUserOutputEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AppUserOutputEmbeddedMap>;
+export const AppUserOutputEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<AppUserOutputEmbeddedMap>;
 
 export type HrefObjectUserLink = HrefObjectSelfLink;
 export const HrefObjectUserLink = HrefObjectSelfLink;
@@ -5222,15 +5130,13 @@ export const AssignUserToGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssignUserToGroupRequest" }) as any as S.Schema<AssignUserToGroupRequest>;
 
 export interface AssignUserToGroupResponse {}
-export const AssignUserToGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssignUserToGroupResponse",
-}) as any as S.Schema<AssignUserToGroupResponse>;
+export const AssignUserToGroupResponse =
+  ActivateApplicationResponse as any as S.Schema<AssignUserToGroupResponse>;
 
 /** A list of email addresses to remove from the email-service bounce list */
 export type BulkRemoveEmailAddressBouncesRequestEmailAddressesList = Array<string>;
-export const BulkRemoveEmailAddressBouncesRequestEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkRemoveEmailAddressBouncesRequestEmailAddressesList>;
+export const BulkRemoveEmailAddressBouncesRequestEmailAddressesList =
+  EventHookSubscribedEventTypes as any as S.Schema<BulkRemoveEmailAddressBouncesRequestEmailAddressesList>;
 
 export interface BulkRemoveEmailAddressBouncesRequest {
   /** A list of email addresses to remove from the email-service bounce list */
@@ -5495,9 +5401,8 @@ export const CloneApplicationKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** X.509 certificate chain that contains a chain of one or more certificates */
 export type JsonWebKeyX5cList = Array<string>;
-export const JsonWebKeyX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JsonWebKeyX5cList>;
+export const JsonWebKeyX5cList =
+  EventHookSubscribedEventTypes as any as S.Schema<JsonWebKeyX5cList>;
 
 export interface JsonWebKey {
   created?: string;
@@ -5556,7 +5461,7 @@ export const CloneIdentityProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Base64-encoded X.509 certificate chain with DER encoding */
 export type X5c = Array<string>;
-export const X5c = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<X5c>;
+export const X5c = OAuthScopes as any as S.Schema<X5c>;
 
 /** A [JSON Web Key](https://tools.ietf.org/html/rfc7517) for a signature or encryption credential for an IdP */
 export interface IdPKeyCredential {
@@ -5619,10 +5524,7 @@ export type PolicyType =
 export const PolicyType = S.String;
 
 export type PolicyEmbeddedMap = { [key: string]: unknown | undefined };
-export const PolicyEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PolicyEmbeddedMap>;
+export const PolicyEmbeddedMap = GroupAssignmentProfile as any as S.Schema<PolicyEmbeddedMap>;
 
 export type HrefObjectMappingsLink = HrefObjectSelfLink;
 export const HrefObjectMappingsLink = HrefObjectSelfLink;
@@ -5763,9 +5665,8 @@ export const CreateAgentPoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Okta management scopes granted to the API Service Integration instance. See [Okta management OAuth 2.0 scopes](/oauth2/#okta-admin-management). */
 export type CreateApiServiceIntegrationInstanceRequestGrantedScopesList = Array<string>;
-export const CreateApiServiceIntegrationInstanceRequestGrantedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApiServiceIntegrationInstanceRequestGrantedScopesList>;
+export const CreateApiServiceIntegrationInstanceRequestGrantedScopesList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateApiServiceIntegrationInstanceRequestGrantedScopesList>;
 
 export interface AppPropertiesValue {
   /** Name of the property */
@@ -5806,9 +5707,8 @@ export const CreateApiServiceIntegrationInstanceRequest = /*@__PURE__*/ S.suspen
 
 /** The list of Okta management scopes granted to the API Service Integration instance. See [Okta management OAuth 2.0 scopes](/oauth2/#okta-admin-management). */
 export type CreateApiServiceIntegrationInstanceResponseGrantedScopesList = Array<string>;
-export const CreateApiServiceIntegrationInstanceResponseGrantedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApiServiceIntegrationInstanceResponseGrantedScopesList>;
+export const CreateApiServiceIntegrationInstanceResponseGrantedScopesList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateApiServiceIntegrationInstanceResponseGrantedScopesList>;
 
 export type HrefObjectClientLink = HrefObjectSelfLink;
 export const HrefObjectClientLink = HrefObjectSelfLink;
@@ -5914,10 +5814,8 @@ export const ApplicationLicensing = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains any valid JSON schema for specifying properties that can be referenced from a request (only available to OAuth 2.0 client apps). For example, add an app manager contact email address or define an allowlist of groups that you can then reference using the Okta Expression Language `getFilteredGroups` function. > **Notes:** > * `profile` isn't encrypted, so don't store sensitive data in it. > * `profile` doesn't limit the level of nesting in the JSON schema you created, but there is a practical size limit. Okta recommends a JSON schema size of 1 MB or less for best performance. */
 export type CreateApplicationRequestProfileMap = { [key: string]: unknown | undefined };
-export const CreateApplicationRequestProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateApplicationRequestProfileMap>;
+export const CreateApplicationRequestProfileMap =
+  GroupAssignmentProfile as any as S.Schema<CreateApplicationRequestProfileMap>;
 
 /** Authentication mode for the app | signOnMode | Description | | ---------- | ----------- | | AUTO_LOGIN | Secure Web Authentication (SWA) | | BASIC_AUTH | HTTP Basic Authentication with Okta Browser Plugin | | BOOKMARK | Just a bookmark (no-authentication) | | BROWSER_PLUGIN | Secure Web Authentication (SWA) with Okta Browser Plugin | | OPENID_CONNECT | Federated Authentication with OpenID Connect (OIDC) | | SAML_1_1 | Federated Authentication with SAML 1.1 WebSSO (not supported for custom apps) | | SAML_2_0 | Federated Authentication with SAML 2.0 WebSSO | | SECURE_PASSWORD_STORE | Secure Web Authentication (SWA) with POST (plugin not required) | | WS_FEDERATION | Federated Authentication with WS-Federation Passive Requestor Profile | Select the `signOnMode` for your custom app: */
 export type ApplicationSignOnMode =
@@ -6009,9 +5907,8 @@ export const ApplicationExpressConfigurationEnabledCapabilitiesList = /*@__PURE_
 
 /** Capabilities supported by the app */
 export type ApplicationExpressConfigurationSupportedCapabilitiesList = Array<ApplicationCapability>;
-export const ApplicationExpressConfigurationSupportedCapabilitiesList = /*@__PURE__*/ S.Array(
-  ApplicationCapability,
-) as any as S.Schema<ApplicationExpressConfigurationSupportedCapabilitiesList>;
+export const ApplicationExpressConfigurationSupportedCapabilitiesList =
+  ApplicationExpressConfigurationEnabledCapabilitiesList as any as S.Schema<ApplicationExpressConfigurationSupportedCapabilitiesList>;
 
 /** <div class="x-lifecycle-container"><x-lifecycle class="oie"></x-lifecycle></div> Indicates which Express Configuration capabilities the app supports and has enabled */
 export interface ApplicationExpressConfiguration {
@@ -6082,10 +5979,8 @@ export const ApplicationFeaturesList = /*@__PURE__*/ S.Array(
 
 /** Contains any valid JSON schema for specifying properties that can be referenced from a request (only available to OAuth 2.0 client apps). For example, add an app manager contact email address or define an allowlist of groups that you can then reference using the Okta Expression Language `getFilteredGroups` function. > **Notes:** > * `profile` isn't encrypted, so don't store sensitive data in it. > * `profile` doesn't limit the level of nesting in the JSON schema you created, but there is a practical size limit. Okta recommends a JSON schema size of 1 MB or less for best performance. */
 export type ApplicationProfileMap = { [key: string]: unknown | undefined };
-export const ApplicationProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApplicationProfileMap>;
+export const ApplicationProfileMap =
+  GroupAssignmentProfile as any as S.Schema<ApplicationProfileMap>;
 
 /** App instance status */
 export type ApplicationLifecycleStatus = "ACTIVE" | "DELETED" | "INACTIVE";
@@ -6131,10 +6026,8 @@ export const ApplicationUniversalLogout = /*@__PURE__*/ S.suspend(() =>
 
 /** The specified [Application User](/openapi/okta-management/management/tags/applicationusers) assigned to the app */
 export type ApplicationEmbeddedUserMap = { [key: string]: unknown | undefined };
-export const ApplicationEmbeddedUserMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApplicationEmbeddedUserMap>;
+export const ApplicationEmbeddedUserMap =
+  GroupAssignmentProfile as any as S.Schema<ApplicationEmbeddedUserMap>;
 
 /** Embedded resources related to the app using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification. If the `expand=user/{userId}` query parameter is specified, then the assigned [Application User](/openapi/okta-management/management/tags/applicationusers) is embedded. */
 export interface ApplicationEmbedded {
@@ -6152,9 +6045,8 @@ export const AccessPolicyLink = HrefObjectSelfLink;
 
 /** List of app link resources */
 export type ApplicationLinksAppLinksList = Array<HrefObjectSelfLink>;
-export const ApplicationLinksAppLinksList = /*@__PURE__*/ S.Array(
-  HrefObjectSelfLink,
-) as any as S.Schema<ApplicationLinksAppLinksList>;
+export const ApplicationLinksAppLinksList =
+  GroupLinksLogoList as any as S.Schema<ApplicationLinksAppLinksList>;
 
 export type GroupsLink = HrefObjectSelfLink;
 export const GroupsLink = HrefObjectSelfLink;
@@ -6164,9 +6056,8 @@ export const HelpLink = HrefObjectSelfLink;
 
 /** List of app logo resources */
 export type ApplicationLinksLogoList = Array<HrefObjectSelfLink>;
-export const ApplicationLinksLogoList = /*@__PURE__*/ S.Array(
-  HrefObjectSelfLink,
-) as any as S.Schema<ApplicationLinksLogoList>;
+export const ApplicationLinksLogoList =
+  GroupLinksLogoList as any as S.Schema<ApplicationLinksLogoList>;
 
 export type MetadataLink = HrefObjectSelfLink;
 export const MetadataLink = HrefObjectSelfLink;
@@ -6252,15 +6143,13 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IDs of the Okta groups who own the app service account */
 export type CreateAppServiceAccountRequestOwnerGroupIdsList = Array<string>;
-export const CreateAppServiceAccountRequestOwnerGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAppServiceAccountRequestOwnerGroupIdsList>;
+export const CreateAppServiceAccountRequestOwnerGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateAppServiceAccountRequestOwnerGroupIdsList>;
 
 /** A list of IDs of the Okta users who own the app service account */
 export type CreateAppServiceAccountRequestOwnerUserIdsList = Array<string>;
-export const CreateAppServiceAccountRequestOwnerUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAppServiceAccountRequestOwnerUserIdsList>;
+export const CreateAppServiceAccountRequestOwnerUserIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateAppServiceAccountRequestOwnerUserIdsList>;
 
 export interface CreateAppServiceAccountRequest {
   /** The [ORN](/openapi/okta-management/guides/roles/#okta-resource-name-orn) of the relevant resource. Use the specific app ORN format (`orn:{partition}:idp:{yourOrgId}:apps:{appType}:{appId}`) to identify an Okta app instance in your org. */
@@ -6294,15 +6183,13 @@ export const CreateAppServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IDs of the Okta groups who own the app service account */
 export type AppServiceAccountOutputOwnerGroupIdsList = Array<string>;
-export const AppServiceAccountOutputOwnerGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppServiceAccountOutputOwnerGroupIdsList>;
+export const AppServiceAccountOutputOwnerGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<AppServiceAccountOutputOwnerGroupIdsList>;
 
 /** A list of IDs of the Okta users who own the app service account */
 export type AppServiceAccountOutputOwnerUserIdsList = Array<string>;
-export const AppServiceAccountOutputOwnerUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppServiceAccountOutputOwnerUserIdsList>;
+export const AppServiceAccountOutputOwnerUserIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<AppServiceAccountOutputOwnerUserIdsList>;
 
 /** Describes the current status of a service account */
 export type ServiceAccountStatus = "ALERT" | "ERROR" | "INFO" | "NO_ISSUES" | "UNSECURED";
@@ -6367,9 +6254,8 @@ export const AppServiceAccountOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the authorization server IDs */
 export type CreateAssociatedServersRequestTrustedList = Array<string>;
-export const CreateAssociatedServersRequestTrustedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAssociatedServersRequestTrustedList>;
+export const CreateAssociatedServersRequestTrustedList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateAssociatedServersRequestTrustedList>;
 
 export interface CreateAssociatedServersRequest {
   /** `id` of the Authorization Server */
@@ -6398,9 +6284,8 @@ export const AccessTokenKeyEncryptionAlgorithm = S.String;
 
 /** The recipients that the tokens are intended for. This becomes the `aud` claim in an access token. Okta currently supports only one audience. */
 export type AuthorizationServerAudiencesList = Array<string>;
-export const AuthorizationServerAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorizationServerAudiencesList>;
+export const AuthorizationServerAudiencesList =
+  EventHookSubscribedEventTypes as any as S.Schema<AuthorizationServerAudiencesList>;
 
 /** The Key rotation mode for the authorization server */
 export type AuthorizationServerCredentialsRotationMode = "AUTO" | "MANUAL";
@@ -6500,9 +6385,8 @@ export const AuthServerLinksClaims = HrefObjectSelfLink;
 
 /** Link to the authorization server metadata */
 export type AuthServerLinksMetadataList = Array<HrefObjectSelfLink>;
-export const AuthServerLinksMetadataList = /*@__PURE__*/ S.Array(
-  HrefObjectSelfLink,
-) as any as S.Schema<AuthServerLinksMetadataList>;
+export const AuthServerLinksMetadataList =
+  GroupLinksLogoList as any as S.Schema<AuthServerLinksMetadataList>;
 
 export type AuthServerLinksPolicies = HrefObjectSelfLink;
 export const AuthServerLinksPolicies = HrefObjectSelfLink;
@@ -6729,9 +6613,8 @@ export const AuthenticatorEnrollment = /*@__PURE__*/ S.suspend(() =>
 
 /** The recipients that the tokens are intended for. This becomes the `aud` claim in an access token. Okta currently supports only one audience. */
 export type CreateAuthorizationServerRequestAudiencesList = Array<string>;
-export const CreateAuthorizationServerRequestAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAuthorizationServerRequestAudiencesList>;
+export const CreateAuthorizationServerRequestAudiencesList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateAuthorizationServerRequestAudiencesList>;
 
 export interface AuthorizationServerCredentialsSigningConfigInput {
   rotationMode?: AuthorizationServerCredentialsRotationMode | (string & {});
@@ -6840,9 +6723,8 @@ export const CreateAuthorizationServerPolicyRequestType = S.String;
 
 /** Which clients are included in the policy */
 export type ClientPolicyConditionIncludeList = Array<string>;
-export const ClientPolicyConditionIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientPolicyConditionIncludeList>;
+export const ClientPolicyConditionIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<ClientPolicyConditionIncludeList>;
 
 /** Specifies which clients are included in the policy */
 export interface ClientPolicyCondition {
@@ -7045,60 +6927,42 @@ export const AuthorizationServerPolicyRuleActions = /*@__PURE__*/ S.suspend(() =
 
 /** Array of grant types that this condition includes. */
 export type GrantTypePolicyRuleConditionIncludeList = Array<string>;
-export const GrantTypePolicyRuleConditionIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GrantTypePolicyRuleConditionIncludeList>;
+export const GrantTypePolicyRuleConditionIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<GrantTypePolicyRuleConditionIncludeList>;
 
 /** Array of grant types that this condition includes. Determines the mechanism that Okta uses to authorize the creation of the tokens. */
 export interface GrantTypePolicyRuleCondition {
   /** Array of grant types that this condition includes. */
   include?: GrantTypePolicyRuleConditionIncludeList;
 }
-export const GrantTypePolicyRuleCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(GrantTypePolicyRuleConditionIncludeList),
-  }),
-).annotate({
-  identifier: "GrantTypePolicyRuleCondition",
-}) as any as S.Schema<GrantTypePolicyRuleCondition>;
+export const GrantTypePolicyRuleCondition =
+  PolicyAccountLinkFilterGroups as any as S.Schema<GrantTypePolicyRuleCondition>;
 
 /** Groups to be included */
 export type AuthorizationServerPolicyRuleGroupConditionIncludeList = Array<string>;
-export const AuthorizationServerPolicyRuleGroupConditionIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorizationServerPolicyRuleGroupConditionIncludeList>;
+export const AuthorizationServerPolicyRuleGroupConditionIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<AuthorizationServerPolicyRuleGroupConditionIncludeList>;
 
 /** Specifies a set of Groups whose Users are to be included */
 export interface AuthorizationServerPolicyRuleGroupCondition {
   /** Groups to be included */
   include?: AuthorizationServerPolicyRuleGroupConditionIncludeList;
 }
-export const AuthorizationServerPolicyRuleGroupCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(AuthorizationServerPolicyRuleGroupConditionIncludeList),
-  }),
-).annotate({
-  identifier: "AuthorizationServerPolicyRuleGroupCondition",
-}) as any as S.Schema<AuthorizationServerPolicyRuleGroupCondition>;
+export const AuthorizationServerPolicyRuleGroupCondition =
+  PolicyAccountLinkFilterGroups as any as S.Schema<AuthorizationServerPolicyRuleGroupCondition>;
 
 /** Users to be included */
 export type AuthorizationServerPolicyRuleUserConditionIncludeList = Array<string>;
-export const AuthorizationServerPolicyRuleUserConditionIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorizationServerPolicyRuleUserConditionIncludeList>;
+export const AuthorizationServerPolicyRuleUserConditionIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<AuthorizationServerPolicyRuleUserConditionIncludeList>;
 
 /** Specifies a set of Users to be included */
 export interface AuthorizationServerPolicyRuleUserCondition {
   /** Users to be included */
   include?: AuthorizationServerPolicyRuleUserConditionIncludeList;
 }
-export const AuthorizationServerPolicyRuleUserCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(AuthorizationServerPolicyRuleUserConditionIncludeList),
-  }),
-).annotate({
-  identifier: "AuthorizationServerPolicyRuleUserCondition",
-}) as any as S.Schema<AuthorizationServerPolicyRuleUserCondition>;
+export const AuthorizationServerPolicyRuleUserCondition =
+  PolicyAccountLinkFilterGroups as any as S.Schema<AuthorizationServerPolicyRuleUserCondition>;
 
 /** Identifies Users and Groups that are used together */
 export interface AuthorizationServerPolicyPeopleCondition {
@@ -7115,21 +6979,15 @@ export const AuthorizationServerPolicyPeopleCondition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthorizationServerPolicyPeopleCondition>;
 
 export type OAuth2ScopesMediationPolicyRuleConditionIncludeList = Array<string>;
-export const OAuth2ScopesMediationPolicyRuleConditionIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuth2ScopesMediationPolicyRuleConditionIncludeList>;
+export const OAuth2ScopesMediationPolicyRuleConditionIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<OAuth2ScopesMediationPolicyRuleConditionIncludeList>;
 
 /** Array of scopes that the condition includes */
 export interface OAuth2ScopesMediationPolicyRuleCondition {
   include?: OAuth2ScopesMediationPolicyRuleConditionIncludeList;
 }
-export const OAuth2ScopesMediationPolicyRuleCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(OAuth2ScopesMediationPolicyRuleConditionIncludeList),
-  }),
-).annotate({
-  identifier: "OAuth2ScopesMediationPolicyRuleCondition",
-}) as any as S.Schema<OAuth2ScopesMediationPolicyRuleCondition>;
+export const OAuth2ScopesMediationPolicyRuleCondition =
+  PolicyAccountLinkFilterGroups as any as S.Schema<OAuth2ScopesMediationPolicyRuleCondition>;
 
 export interface AuthorizationServerPolicyRuleConditions {
   grantTypes?: GrantTypePolicyRuleCondition;
@@ -7381,13 +7239,8 @@ export interface OrgCreationAdminCredentialsPassword {
   /** Password value (which is validated by the password policy) */
   value?: string;
 }
-export const OrgCreationAdminCredentialsPassword = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrgCreationAdminCredentialsPassword",
-}) as any as S.Schema<OrgCreationAdminCredentialsPassword>;
+export const OrgCreationAdminCredentialsPassword =
+  AppUserPasswordCredential as any as S.Schema<OrgCreationAdminCredentialsPassword>;
 
 /** Specifies primary authentication and recovery credentials for a user. Credential types and requirements vary depending on the provider and security policy of the org. */
 export interface OrgCreationAdminCredentials {
@@ -7469,10 +7322,8 @@ export const ChildOrgOutputEdition = S.String;
 
 /** Settings associated with the created org */
 export type ChildOrgOutputSettingsMap = { [key: string]: unknown | undefined };
-export const ChildOrgOutputSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ChildOrgOutputSettingsMap>;
+export const ChildOrgOutputSettingsMap =
+  GroupAssignmentProfile as any as S.Schema<ChildOrgOutputSettingsMap>;
 
 /** Status of the org. `ACTIVE` is returned after the org is created. */
 export type ChildOrgOutputStatus = "ACTIVE";
@@ -7484,10 +7335,8 @@ export const ChildOrgOutputTokenType = S.String;
 
 /** Specifies available link relations (see [Web Linking](https://www.rfc-editor.org/rfc/rfc8288)) using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification */
 export type ChildOrgOutputLinksMap = { [key: string]: unknown | undefined };
-export const ChildOrgOutputLinksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ChildOrgOutputLinksMap>;
+export const ChildOrgOutputLinksMap =
+  GroupAssignmentProfile as any as S.Schema<ChildOrgOutputLinksMap>;
 
 export interface ChildOrgOutput {
   /** Timestamp when the org was created */
@@ -7717,9 +7566,8 @@ export const DNSRecordTypeDomains = S.String;
 
 /** DNS record value */
 export type DNSRecordDomainsValuesList = Array<string>;
-export const DNSRecordDomainsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DNSRecordDomainsValuesList>;
+export const DNSRecordDomainsValuesList =
+  EventHookSubscribedEventTypes as any as S.Schema<DNSRecordDomainsValuesList>;
 
 /** DNS records to be registered for the domain */
 export interface DNSRecordDomains {
@@ -8313,9 +8161,8 @@ export const EventHookChannelConfigAuthScheme = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional list of key/value pairs for headers that can be sent with the request to the external service. For example, `X-Other-Header` is an example of an optional header, with a value of `my-header-value`, that you want Okta to pass to your external service. */
 export type EventHookChannelConfigInputHeadersList = Array<EventHookChannelConfigHeader | null>;
-export const EventHookChannelConfigInputHeadersList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(EventHookChannelConfigHeader),
-) as any as S.Schema<EventHookChannelConfigInputHeadersList>;
+export const EventHookChannelConfigInputHeadersList =
+  EventHookChannelConfigOutputHeadersList as any as S.Schema<EventHookChannelConfigInputHeadersList>;
 
 export interface EventHookChannelConfigInput {
   authScheme?: EventHookChannelConfigAuthScheme;
@@ -8479,15 +8326,13 @@ export const FederatedClaim = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource set IDs for the custom role */
 export type IAMBundleEntitlementResourceSetsList = Array<string>;
-export const IAMBundleEntitlementResourceSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IAMBundleEntitlementResourceSetsList>;
+export const IAMBundleEntitlementResourceSetsList =
+  EventHookSubscribedEventTypes as any as S.Schema<IAMBundleEntitlementResourceSetsList>;
 
 /** List of target resource IDs to scope the entitlement with the role */
 export type IAMBundleEntitlementTargetsList = Array<string>;
-export const IAMBundleEntitlementTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IAMBundleEntitlementTargetsList>;
+export const IAMBundleEntitlementTargetsList =
+  EventHookSubscribedEventTypes as any as S.Schema<IAMBundleEntitlementTargetsList>;
 
 /** An entitlement in a governance bundle */
 export interface IAMBundleEntitlement {
@@ -8668,9 +8513,8 @@ export const GroupPushMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of `groupIds` to which users are added */
 export type GroupRuleGroupAssignmentGroupIdsList = Array<string>;
-export const GroupRuleGroupAssignmentGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupRuleGroupAssignmentGroupIdsList>;
+export const GroupRuleGroupAssignmentGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<GroupRuleGroupAssignmentGroupIdsList>;
 
 /** Contains the `groupIds` array */
 export interface GroupRuleGroupAssignment {
@@ -8709,9 +8553,8 @@ export const GroupRuleExpression = /*@__PURE__*/ S.suspend(() =>
 
 /** Currently not supported */
 export type GroupRuleGroupConditionExcludeList = Array<string>;
-export const GroupRuleGroupConditionExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupRuleGroupConditionExcludeList>;
+export const GroupRuleGroupConditionExcludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<GroupRuleGroupConditionExcludeList>;
 
 /** Currently not supported */
 export interface GroupRuleGroupCondition {
@@ -8726,20 +8569,16 @@ export const GroupRuleGroupCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** Excluded `userIds` when processing rules */
 export type GroupRuleUserConditionExcludeList = Array<string>;
-export const GroupRuleUserConditionExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupRuleUserConditionExcludeList>;
+export const GroupRuleUserConditionExcludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<GroupRuleUserConditionExcludeList>;
 
 /** Defines conditions specific to user exclusion */
 export interface GroupRuleUserCondition {
   /** Excluded `userIds` when processing rules */
   exclude?: GroupRuleUserConditionExcludeList;
 }
-export const GroupRuleUserCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclude: S.optional(GroupRuleUserConditionExcludeList),
-  }),
-).annotate({ identifier: "GroupRuleUserCondition" }) as any as S.Schema<GroupRuleUserCondition>;
+export const GroupRuleUserCondition =
+  GroupRuleGroupCondition as any as S.Schema<GroupRuleUserCondition>;
 
 /** Defines conditions for `people` in a group rule */
 export interface GroupRulePeopleCondition {
@@ -9076,11 +8915,8 @@ export const CreateIdentitySourceGroupsMembershipsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateIdentitySourceGroupsMembershipsRequest>;
 
 export interface CreateIdentitySourceGroupsMembershipsResponse {}
-export const CreateIdentitySourceGroupsMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateIdentitySourceGroupsMembershipsResponse",
-}) as any as S.Schema<CreateIdentitySourceGroupsMembershipsResponse>;
+export const CreateIdentitySourceGroupsMembershipsResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<CreateIdentitySourceGroupsMembershipsResponse>;
 
 export interface CreateIdentitySourceSessionRequest {
   /** The ID of the identity source for which the session is created */
@@ -9185,23 +9021,16 @@ export const CreateIdentitySourceUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIdentitySourceUserRequest>;
 
 export interface CreateIdentitySourceUserResponse {}
-export const CreateIdentitySourceUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateIdentitySourceUserResponse",
-}) as any as S.Schema<CreateIdentitySourceUserResponse>;
+export const CreateIdentitySourceUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<CreateIdentitySourceUserResponse>;
 
 export interface InlineHookChannelCreate {
   type?: InlineHookChannelType | (string & {});
   /** Version of the inline hook type. The currently supported version is `1.0.0`. */
   version?: string;
 }
-export const InlineHookChannelCreate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(InlineHookChannelType),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "InlineHookChannelCreate" }) as any as S.Schema<InlineHookChannelCreate>;
+export const InlineHookChannelCreate =
+  InlineHookChannel as any as S.Schema<InlineHookChannelCreate>;
 
 export interface CreateInlineHookRequest {
   channel?: InlineHookChannelCreate;
@@ -9412,9 +9241,8 @@ export type OAuth2ClaimType = "IDENTITY" | "RESOURCE";
 export const OAuth2ClaimType = S.String;
 
 export type OAuth2ClaimConditionsScopesList = Array<string>;
-export const OAuth2ClaimConditionsScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuth2ClaimConditionsScopesList>;
+export const OAuth2ClaimConditionsScopesList =
+  EventHookSubscribedEventTypes as any as S.Schema<OAuth2ClaimConditionsScopesList>;
 
 /** Specifies the scopes for the Claim */
 export interface OAuth2ClaimConditions {
@@ -9610,15 +9438,13 @@ export const OAuth2Scope = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IDs of the Okta groups who own the Okta managed user account */
 export type CreateOktaManagedUserAccountRequestOwnerGroupIdsList = Array<string>;
-export const CreateOktaManagedUserAccountRequestOwnerGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOktaManagedUserAccountRequestOwnerGroupIdsList>;
+export const CreateOktaManagedUserAccountRequestOwnerGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateOktaManagedUserAccountRequestOwnerGroupIdsList>;
 
 /** A list of IDs of the Okta users who own the Okta managed user account */
 export type CreateOktaManagedUserAccountRequestOwnerUserIdsList = Array<string>;
-export const CreateOktaManagedUserAccountRequestOwnerUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOktaManagedUserAccountRequestOwnerUserIdsList>;
+export const CreateOktaManagedUserAccountRequestOwnerUserIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateOktaManagedUserAccountRequestOwnerUserIdsList>;
 
 export interface CreateOktaManagedUserAccountRequest {
   /** The description of the Okta managed user account */
@@ -9648,15 +9474,13 @@ export const CreateOktaManagedUserAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IDs of the Okta groups who own the Okta managed user account */
 export type OktaManagedUserAccountResponseOwnerGroupIdsList = Array<string>;
-export const OktaManagedUserAccountResponseOwnerGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OktaManagedUserAccountResponseOwnerGroupIdsList>;
+export const OktaManagedUserAccountResponseOwnerGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<OktaManagedUserAccountResponseOwnerGroupIdsList>;
 
 /** A list of IDs of the Okta users who own the Okta managed user account */
 export type OktaManagedUserAccountResponseOwnerUserIdsList = Array<string>;
-export const OktaManagedUserAccountResponseOwnerUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OktaManagedUserAccountResponseOwnerUserIdsList>;
+export const OktaManagedUserAccountResponseOwnerUserIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<OktaManagedUserAccountResponseOwnerUserIdsList>;
 
 /** An Okta managed user account representing a Universal Directory user managed as a service account */
 export interface OktaManagedUserAccountResponse {
@@ -9729,10 +9553,8 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePolicyRequest" }) as any as S.Schema<CreatePolicyRequest>;
 
 export type CreateOrUpdatePolicyEmbeddedMap = { [key: string]: unknown | undefined };
-export const CreateOrUpdatePolicyEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrUpdatePolicyEmbeddedMap>;
+export const CreateOrUpdatePolicyEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<CreateOrUpdatePolicyEmbeddedMap>;
 
 export interface CreateOrUpdatePolicy {
   /** Timestamp when the policy was created */
@@ -9754,21 +9576,7 @@ export interface CreateOrUpdatePolicy {
   _embedded?: CreateOrUpdatePolicyEmbeddedMap;
   _links?: PolicyLinks;
 }
-export const CreateOrUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    description: S.optional(S.String),
-    id: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    name: S.String,
-    priority: S.optional(S.Number),
-    status: S.optional(S.Unknown),
-    system: S.optional(S.Boolean),
-    type: PolicyType,
-    _embedded: S.optional(CreateOrUpdatePolicyEmbeddedMap),
-    _links: S.optional(PolicyLinks),
-  }),
-).annotate({ identifier: "CreateOrUpdatePolicy" }) as any as S.Schema<CreateOrUpdatePolicy>;
+export const CreateOrUpdatePolicy = Policy as any as S.Schema<CreateOrUpdatePolicy>;
 
 /** Rule type */
 export type PolicyRuleType =
@@ -9866,9 +9674,8 @@ export const PolicyContextDevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyContextDevice" }) as any as S.Schema<PolicyContextDevice>;
 
 export type PolicyContextGroupsIdsList = Array<string>;
-export const PolicyContextGroupsIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PolicyContextGroupsIdsList>;
+export const PolicyContextGroupsIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<PolicyContextGroupsIdsList>;
 
 /** An array of Group IDs for the simulate operation. Only user IDs or Group IDs are allowed, not both. */
 export interface PolicyContextGroups {
@@ -9910,9 +9717,8 @@ export const PolicyContextUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyContextUser" }) as any as S.Schema<PolicyContextUser>;
 
 export type PolicyContextZonesIdsList = Array<string>;
-export const PolicyContextZonesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PolicyContextZonesIdsList>;
+export const PolicyContextZonesIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<PolicyContextZonesIdsList>;
 
 /** The zone ID under the network rule condition. */
 export interface PolicyContextZones {
@@ -10020,9 +9826,8 @@ export const SimulateResultPoliciesItemsConditionsList = /*@__PURE__*/ S.Array(
 
 /** List of all conditions involved for this rule evaluation */
 export type SimulateResultRulesConditionsList = Array<SimulateResultConditions>;
-export const SimulateResultRulesConditionsList = /*@__PURE__*/ S.Array(
-  SimulateResultConditions,
-) as any as S.Schema<SimulateResultRulesConditionsList>;
+export const SimulateResultRulesConditionsList =
+  SimulateResultPoliciesItemsConditionsList as any as S.Schema<SimulateResultRulesConditionsList>;
 
 export interface SimulateResultRules {
   /** List of all conditions involved for this rule evaluation */
@@ -10088,9 +9893,8 @@ export const SimulatePolicyEvaluationsEvaluated = /*@__PURE__*/ S.suspend(() =>
 
 /** The policy type of the simulate operation */
 export type SimulatePolicyEvaluationsPolicyTypeList = Array<PolicyTypeSimulation>;
-export const SimulatePolicyEvaluationsPolicyTypeList = /*@__PURE__*/ S.Array(
-  PolicyTypeSimulation,
-) as any as S.Schema<SimulatePolicyEvaluationsPolicyTypeList>;
+export const SimulatePolicyEvaluationsPolicyTypeList =
+  SimulatePolicyBodyPolicyTypesList as any as S.Schema<SimulatePolicyEvaluationsPolicyTypeList>;
 
 /** The result of the policy evaluation */
 export type SimulatePolicyResult = SimulatePolicyEvaluationsEvaluated;
@@ -10234,9 +10038,8 @@ export const PushProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of allowed domains. No user in this realm can be created or updated unless they have a username and email from one of these domains. The following characters aren't allowed in the domain name: `!$%^&()=*+,:;<>'[]|/?\` */
 export type RealmProfileDomainsList = Array<string>;
-export const RealmProfileDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RealmProfileDomainsList>;
+export const RealmProfileDomainsList =
+  EventHookSubscribedEventTypes as any as S.Schema<RealmProfileDomainsList>;
 
 /** Used to store partner users. This property must be set to `PARTNER` to access Okta's external partner portal. */
 export type RealmProfileRealmType = "PARTNER" | "DEFAULT";
@@ -10356,9 +10159,8 @@ export const CreateRealmAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of allowed domains. No user in this realm can be created or updated unless they have a username and email from one of these domains. The following characters aren't allowed in the domain name: `!$%^&()=*+,:;<>'[]|/?\` */
 export type RealmAssignmentDomainsList = Array<string>;
-export const RealmAssignmentDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RealmAssignmentDomainsList>;
+export const RealmAssignmentDomainsList =
+  EventHookSubscribedEventTypes as any as S.Schema<RealmAssignmentDomainsList>;
 
 export interface RealmAssignment {
   actions?: Actions;
@@ -10398,9 +10200,8 @@ export const RealmAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoint (URL) that references all resource objects included in the resource set. Resources are identified by either an Okta Resource Name (ORN) or by a REST URL format. See [Okta Resource Name](/openapi/okta-management/guides/roles/#okta-resource-name-orn). */
 export type CreateResourceSetRequestResourcesList = Array<string>;
-export const CreateResourceSetRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResourceSetRequestResourcesList>;
+export const CreateResourceSetRequestResourcesList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateResourceSetRequestResourcesList>;
 
 export interface CreateResourceSetRequest {
   /** Description of the resource set */
@@ -10420,9 +10221,8 @@ export const CreateResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** URLs to user and/or group instances that are assigned to the role */
 export type CreateResourceSetBindingRequestMembersList = Array<string>;
-export const CreateResourceSetBindingRequestMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResourceSetBindingRequestMembersList>;
+export const CreateResourceSetBindingRequestMembersList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateResourceSetBindingRequestMembersList>;
 
 export interface CreateResourceSetBindingRequest {
   /** `id` or `label` of the resource set */
@@ -10450,9 +10250,8 @@ export const CreateResourceSetBindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of permissions that the role grants. See [Permissions](/openapi/okta-management/guides/permissions). */
 export type CreateRoleRequestPermissionsList = Array<string>;
-export const CreateRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRoleRequestPermissionsList>;
+export const CreateRoleRequestPermissionsList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateRoleRequestPermissionsList>;
 
 export interface CreateRoleRequest {
   /** Description of the role */
@@ -10507,17 +10306,13 @@ export const IamRole = /*@__PURE__*/ S.suspend(() =>
 
 /** Exclude attributes with specific values for the permission */
 export type PermissionConditionsExcludeMap = { [key: string]: unknown | undefined };
-export const PermissionConditionsExcludeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PermissionConditionsExcludeMap>;
+export const PermissionConditionsExcludeMap =
+  GroupAssignmentProfile as any as S.Schema<PermissionConditionsExcludeMap>;
 
 /** Include attributes with specific values for the permission */
 export type PermissionConditionsIncludeMap = { [key: string]: unknown | undefined };
-export const PermissionConditionsIncludeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PermissionConditionsIncludeMap>;
+export const PermissionConditionsIncludeMap =
+  GroupAssignmentProfile as any as S.Schema<PermissionConditionsIncludeMap>;
 
 /** Conditions for further restricting a permission. See [Permission conditions](https://help.okta.com/okta_help.htm?type=oie&id=ext-permission-conditions). */
 export interface PermissionConditions {
@@ -10557,9 +10352,8 @@ export const CreateRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRolePermissionRequest>;
 
 export interface CreateRolePermissionResponse {}
-export const CreateRolePermissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateRolePermissionResponse",
-}) as any as S.Schema<CreateRolePermissionResponse>;
+export const CreateRolePermissionResponse =
+  ActivateApplicationResponse as any as S.Schema<CreateRolePermissionResponse>;
 
 /** Security events provider with well-known URL setting */
 export interface SecurityEventsProviderSettingsSSFCompliant {
@@ -10686,9 +10480,8 @@ export const StreamConfigurationDelivery = /*@__PURE__*/ S.suspend(() =>
 
 /** The events (mapped by the array of event type URIs) that the receiver wants to receive */
 export type CreateSsfStreamRequestEventsRequestedList = Array<string>;
-export const CreateSsfStreamRequestEventsRequestedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSsfStreamRequestEventsRequestedList>;
+export const CreateSsfStreamRequestEventsRequestedList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateSsfStreamRequestEventsRequestedList>;
 
 /** The subject identifier format expected for any SET transmitted. */
 export type CreateSsfStreamRequestFormat = "iss_sub";
@@ -10710,9 +10503,8 @@ export const CreateSsfStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSsfStreamRequest" }) as any as S.Schema<CreateSsfStreamRequest>;
 
 export type StreamConfigurationAudCase1List = Array<string>;
-export const StreamConfigurationAudCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamConfigurationAudCase1List>;
+export const StreamConfigurationAudCase1List =
+  EventHookSubscribedEventTypes as any as S.Schema<StreamConfigurationAudCase1List>;
 
 /** The audience used in the SET. This value is set as `aud` in the claim. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type StreamConfigurationAud = string | StreamConfigurationAudCase1List;
@@ -10720,21 +10512,18 @@ export const StreamConfigurationAud = S.Unknown as any as S.Schema<StreamConfigu
 
 /** The events (mapped by the array of event type URIs) that the transmitter actually delivers to the SSF stream. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type StreamConfigurationEventsDeliveredList = Array<string>;
-export const StreamConfigurationEventsDeliveredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamConfigurationEventsDeliveredList>;
+export const StreamConfigurationEventsDeliveredList =
+  EventHookSubscribedEventTypes as any as S.Schema<StreamConfigurationEventsDeliveredList>;
 
 /** The events (mapped by the array of event type URIs) that the receiver wants to receive */
 export type StreamConfigurationEventsRequestedList = Array<string>;
-export const StreamConfigurationEventsRequestedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamConfigurationEventsRequestedList>;
+export const StreamConfigurationEventsRequestedList =
+  EventHookSubscribedEventTypes as any as S.Schema<StreamConfigurationEventsRequestedList>;
 
 /** An array of event type URIs that the transmitter supports. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type StreamConfigurationEventsSupportedList = Array<string>;
-export const StreamConfigurationEventsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamConfigurationEventsSupportedList>;
+export const StreamConfigurationEventsSupportedList =
+  EventHookSubscribedEventTypes as any as S.Schema<StreamConfigurationEventsSupportedList>;
 
 /** The subject identifier format expected for any SET transmitted. */
 export type StreamConfigurationFormat = "iss_sub";
@@ -11020,9 +10809,8 @@ export const UserCredentialsWritable = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of group IDs of groups that the user is added to at the time of creation */
 export type CreateUserRequestGroupIdsList = Array<string>;
-export const CreateUserRequestGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserRequestGroupIdsList>;
+export const CreateUserRequestGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<CreateUserRequestGroupIdsList>;
 
 /** Specifies the default and custom profile properties for a user. The default user profile is based on the [System for Cross-domain Identity Management: Core Schema](https://datatracker.ietf.org/doc/html/rfc7643). The only permitted customizations of the default profile are to update permissions, change whether the `firstName` and `lastName` properties are nullable, and specify a [pattern](https://developer.okta.com/docs/reference/api/schemas/#login-pattern-validation) for `login`. You can use the Profile Editor in the Admin Console or the [Schemas API](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/UISchema/#tag/UISchema) to make schema modifications. You can extend user profiles with custom properties. You must first add the custom property to the user profile schema before you reference it. You can use the Profile Editor in the Admin Console or the [Schemas API](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/UISchema/#tag/UISchema) to manage schema extensions. Custom attributes can contain HTML tags. It's the client's responsibility to escape or encode this data before displaying it. Use [best-practices](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) to prevent cross-site scripting. */
 export interface UserProfile {
@@ -11187,10 +10975,8 @@ export const UserOutputType = CreateUserRequestType;
 
 /** Embedded resources related to the user using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification */
 export type UserOutputEmbeddedMap = { [key: string]: unknown | undefined };
-export const UserOutputEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserOutputEmbeddedMap>;
+export const UserOutputEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<UserOutputEmbeddedMap>;
 
 /** Specifies link relations (see [Web Linking](https://datatracker.ietf.org/doc/html/rfc8288) available for the current status of a user. The links object is used for dynamic discovery of related resources, lifecycle operations, and credential operations. The links object is read-only. For an individual user result, the links object contains a full set of link relations available for that user as determined by your policies. For a collection of users, the links object contains only the `self` link. Operations that return a collection of users include [List all users](https://developer.okta.com/docs/api/openapi/okta-management/management/user/listusers) and [List all group member users](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Group/#tag/Group/operation/listGroupUsers). */
 export interface UserOutputLinks {
@@ -11430,9 +11216,8 @@ export const DeactivateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeactivateApplicationRequest>;
 
 export interface DeactivateApplicationResponse {}
-export const DeactivateApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivateApplicationResponse",
-}) as any as S.Schema<DeactivateApplicationResponse>;
+export const DeactivateApplicationResponse =
+  ActivateApplicationResponse as any as S.Schema<DeactivateApplicationResponse>;
 
 export interface DeactivateAuthenticatorRequest {
   /** `id` of the authenticator */
@@ -11510,11 +11295,8 @@ export const DeactivateAuthorizationServerRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeactivateAuthorizationServerRequest>;
 
 export interface DeactivateAuthorizationServerResponse {}
-export const DeactivateAuthorizationServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeactivateAuthorizationServerResponse",
-}) as any as S.Schema<DeactivateAuthorizationServerResponse>;
+export const DeactivateAuthorizationServerResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeactivateAuthorizationServerResponse>;
 
 export interface DeactivateAuthorizationServerPolicyRequest {
   /** `id` of the Authorization Server */
@@ -11538,11 +11320,8 @@ export const DeactivateAuthorizationServerPolicyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeactivateAuthorizationServerPolicyRequest>;
 
 export interface DeactivateAuthorizationServerPolicyResponse {}
-export const DeactivateAuthorizationServerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeactivateAuthorizationServerPolicyResponse",
-}) as any as S.Schema<DeactivateAuthorizationServerPolicyResponse>;
+export const DeactivateAuthorizationServerPolicyResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeactivateAuthorizationServerPolicyResponse>;
 
 export interface DeactivateAuthorizationServerPolicyRuleRequest {
   /** `id` of the Authorization Server */
@@ -11569,11 +11348,8 @@ export const DeactivateAuthorizationServerPolicyRuleRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeactivateAuthorizationServerPolicyRuleRequest>;
 
 export interface DeactivateAuthorizationServerPolicyRuleResponse {}
-export const DeactivateAuthorizationServerPolicyRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeactivateAuthorizationServerPolicyRuleResponse",
-}) as any as S.Schema<DeactivateAuthorizationServerPolicyRuleResponse>;
+export const DeactivateAuthorizationServerPolicyRuleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeactivateAuthorizationServerPolicyRuleResponse>;
 
 export interface DeactivateBehaviorDetectionRuleRequest {
   /** ID of the Behavior Detection Rule */
@@ -11649,9 +11425,8 @@ export const DeactivateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeactivateDeviceRequest" }) as any as S.Schema<DeactivateDeviceRequest>;
 
 export interface DeactivateDeviceResponse {}
-export const DeactivateDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivateDeviceResponse",
-}) as any as S.Schema<DeactivateDeviceResponse>;
+export const DeactivateDeviceResponse =
+  ActivateApplicationResponse as any as S.Schema<DeactivateDeviceResponse>;
 
 export interface DeactivateDeviceIntegrationRequest {
   /** The ID of the device integration */
@@ -11708,9 +11483,8 @@ export const DeactivateGroupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeactivateGroupRuleRequest>;
 
 export interface DeactivateGroupRuleResponse {}
-export const DeactivateGroupRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivateGroupRuleResponse",
-}) as any as S.Schema<DeactivateGroupRuleResponse>;
+export const DeactivateGroupRuleResponse =
+  ActivateApplicationResponse as any as S.Schema<DeactivateGroupRuleResponse>;
 
 export interface DeactivateIdentityProviderRequest {
   /** `id` of IdP */
@@ -11857,9 +11631,8 @@ export const DeactivatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeactivatePolicyRequest" }) as any as S.Schema<DeactivatePolicyRequest>;
 
 export interface DeactivatePolicyResponse {}
-export const DeactivatePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivatePolicyResponse",
-}) as any as S.Schema<DeactivatePolicyResponse>;
+export const DeactivatePolicyResponse =
+  ActivateApplicationResponse as any as S.Schema<DeactivatePolicyResponse>;
 
 export interface DeactivatePolicyRuleRequest {
   /** `id` of the policy */
@@ -11883,9 +11656,8 @@ export const DeactivatePolicyRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeactivatePolicyRuleRequest>;
 
 export interface DeactivatePolicyRuleResponse {}
-export const DeactivatePolicyRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivatePolicyRuleResponse",
-}) as any as S.Schema<DeactivatePolicyRuleResponse>;
+export const DeactivatePolicyRuleResponse =
+  ActivateApplicationResponse as any as S.Schema<DeactivatePolicyRuleResponse>;
 
 export interface DeactivateRealmAssignmentRequest {
   /** ID of the realm assignment */
@@ -11906,11 +11678,8 @@ export const DeactivateRealmAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeactivateRealmAssignmentRequest>;
 
 export interface DeactivateRealmAssignmentResponse {}
-export const DeactivateRealmAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeactivateRealmAssignmentResponse",
-}) as any as S.Schema<DeactivateRealmAssignmentResponse>;
+export const DeactivateRealmAssignmentResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeactivateRealmAssignmentResponse>;
 
 export interface DeactivateSecurityEventsProviderInstanceRequest {
   /** `id` of the security events provider instance */
@@ -11962,9 +11731,8 @@ export const DeactivateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeactivateUserRequest" }) as any as S.Schema<DeactivateUserRequest>;
 
 export interface DeactivateUserResponse {}
-export const DeactivateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeactivateUserResponse",
-}) as any as S.Schema<DeactivateUserResponse>;
+export const DeactivateUserResponse =
+  ActivateApplicationResponse as any as S.Schema<DeactivateUserResponse>;
 
 export interface DeleteAgentPoolsUpdateRequest {
   /** ID of the agent pool for which the settings apply to */
@@ -11984,9 +11752,8 @@ export const DeleteAgentPoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAgentPoolsUpdateRequest>;
 
 export interface DeleteAgentPoolsUpdateResponse {}
-export const DeleteAgentPoolsUpdateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentPoolsUpdateResponse",
-}) as any as S.Schema<DeleteAgentPoolsUpdateResponse>;
+export const DeleteAgentPoolsUpdateResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteAgentPoolsUpdateResponse>;
 
 export interface DeleteAllCustomizationsRequest {
   /** The ID of the brand */
@@ -12010,9 +11777,8 @@ export const DeleteAllCustomizationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAllCustomizationsRequest>;
 
 export interface DeleteAllCustomizationsResponse {}
-export const DeleteAllCustomizationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAllCustomizationsResponse" },
-) as any as S.Schema<DeleteAllCustomizationsResponse>;
+export const DeleteAllCustomizationsResponse =
+  ActivateRealmAssignmentResponse as any as S.Schema<DeleteAllCustomizationsResponse>;
 
 export interface DeleteApiServiceIntegrationInstanceRequest {
   /** `id` of the API Service Integration instance */
@@ -12033,11 +11799,8 @@ export const DeleteApiServiceIntegrationInstanceRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteApiServiceIntegrationInstanceRequest>;
 
 export interface DeleteApiServiceIntegrationInstanceResponse {}
-export const DeleteApiServiceIntegrationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApiServiceIntegrationInstanceResponse",
-}) as any as S.Schema<DeleteApiServiceIntegrationInstanceResponse>;
+export const DeleteApiServiceIntegrationInstanceResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteApiServiceIntegrationInstanceResponse>;
 
 export interface DeleteApiServiceIntegrationInstanceSecretRequest {
   /** `id` of the API Service Integration instance */
@@ -12061,11 +11824,8 @@ export const DeleteApiServiceIntegrationInstanceSecretRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteApiServiceIntegrationInstanceSecretRequest>;
 
 export interface DeleteApiServiceIntegrationInstanceSecretResponse {}
-export const DeleteApiServiceIntegrationInstanceSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApiServiceIntegrationInstanceSecretResponse",
-}) as any as S.Schema<DeleteApiServiceIntegrationInstanceSecretResponse>;
+export const DeleteApiServiceIntegrationInstanceSecretResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteApiServiceIntegrationInstanceSecretResponse>;
 
 export interface DeleteApplicationRequest {
   /** Application ID */
@@ -12078,9 +11838,8 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+export const DeleteApplicationResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteApplicationResponse>;
 
 export interface DeleteAppServiceAccountRequest {
   /** ID of an existing service account */
@@ -12097,9 +11856,8 @@ export const DeleteAppServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppServiceAccountRequest>;
 
 export interface DeleteAppServiceAccountResponse {}
-export const DeleteAppServiceAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAppServiceAccountResponse" },
-) as any as S.Schema<DeleteAppServiceAccountResponse>;
+export const DeleteAppServiceAccountResponse =
+  ActivateRealmAssignmentResponse as any as S.Schema<DeleteAppServiceAccountResponse>;
 
 export interface DeleteAssociatedServerRequest {
   /** `id` of the Authorization Server */
@@ -12123,9 +11881,8 @@ export const DeleteAssociatedServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssociatedServerRequest>;
 
 export interface DeleteAssociatedServerResponse {}
-export const DeleteAssociatedServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssociatedServerResponse",
-}) as any as S.Schema<DeleteAssociatedServerResponse>;
+export const DeleteAssociatedServerResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteAssociatedServerResponse>;
 
 export interface DeleteAuthenticatorEnrollmentRequest {
   /** ID of an existing Okta user */
@@ -12149,11 +11906,8 @@ export const DeleteAuthenticatorEnrollmentRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteAuthenticatorEnrollmentRequest>;
 
 export interface DeleteAuthenticatorEnrollmentResponse {}
-export const DeleteAuthenticatorEnrollmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthenticatorEnrollmentResponse",
-}) as any as S.Schema<DeleteAuthenticatorEnrollmentResponse>;
+export const DeleteAuthenticatorEnrollmentResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteAuthenticatorEnrollmentResponse>;
 
 export interface DeleteAuthorizationServerRequest {
   /** `id` of the Authorization Server */
@@ -12170,11 +11924,8 @@ export const DeleteAuthorizationServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizationServerRequest>;
 
 export interface DeleteAuthorizationServerResponse {}
-export const DeleteAuthorizationServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationServerResponse",
-}) as any as S.Schema<DeleteAuthorizationServerResponse>;
+export const DeleteAuthorizationServerResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteAuthorizationServerResponse>;
 
 export interface DeleteAuthorizationServerPolicyRequest {
   /** `id` of the Authorization Server */
@@ -12198,11 +11949,8 @@ export const DeleteAuthorizationServerPolicyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteAuthorizationServerPolicyRequest>;
 
 export interface DeleteAuthorizationServerPolicyResponse {}
-export const DeleteAuthorizationServerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationServerPolicyResponse",
-}) as any as S.Schema<DeleteAuthorizationServerPolicyResponse>;
+export const DeleteAuthorizationServerPolicyResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteAuthorizationServerPolicyResponse>;
 
 export interface DeleteAuthorizationServerPolicyRuleRequest {
   /** `id` of the Authorization Server */
@@ -12229,11 +11977,8 @@ export const DeleteAuthorizationServerPolicyRuleRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteAuthorizationServerPolicyRuleRequest>;
 
 export interface DeleteAuthorizationServerPolicyRuleResponse {}
-export const DeleteAuthorizationServerPolicyRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationServerPolicyRuleResponse",
-}) as any as S.Schema<DeleteAuthorizationServerPolicyRuleResponse>;
+export const DeleteAuthorizationServerPolicyRuleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteAuthorizationServerPolicyRuleResponse>;
 
 export interface DeleteBehaviorDetectionRuleRequest {
   /** ID of the Behavior Detection Rule */
@@ -12248,11 +11993,8 @@ export const DeleteBehaviorDetectionRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBehaviorDetectionRuleRequest>;
 
 export interface DeleteBehaviorDetectionRuleResponse {}
-export const DeleteBehaviorDetectionRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBehaviorDetectionRuleResponse",
-}) as any as S.Schema<DeleteBehaviorDetectionRuleResponse>;
+export const DeleteBehaviorDetectionRuleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteBehaviorDetectionRuleResponse>;
 
 export interface DeleteBindingRequest {
   /** `id` or `label` of the resource set */
@@ -12274,9 +12016,8 @@ export const DeleteBindingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBindingRequest" }) as any as S.Schema<DeleteBindingRequest>;
 
 export interface DeleteBindingResponse {}
-export const DeleteBindingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBindingResponse",
-}) as any as S.Schema<DeleteBindingResponse>;
+export const DeleteBindingResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteBindingResponse>;
 
 export interface DeleteBrandRequest {
   /** The ID of the brand */
@@ -12289,9 +12030,8 @@ export const DeleteBrandRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBrandRequest" }) as any as S.Schema<DeleteBrandRequest>;
 
 export interface DeleteBrandResponse {}
-export const DeleteBrandResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBrandResponse",
-}) as any as S.Schema<DeleteBrandResponse>;
+export const DeleteBrandResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteBrandResponse>;
 
 export interface DeleteBrandThemeBackgroundImageRequest {
   /** The ID of the brand */
@@ -12315,11 +12055,8 @@ export const DeleteBrandThemeBackgroundImageRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteBrandThemeBackgroundImageRequest>;
 
 export interface DeleteBrandThemeBackgroundImageResponse {}
-export const DeleteBrandThemeBackgroundImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBrandThemeBackgroundImageResponse",
-}) as any as S.Schema<DeleteBrandThemeBackgroundImageResponse>;
+export const DeleteBrandThemeBackgroundImageResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteBrandThemeBackgroundImageResponse>;
 
 export interface DeleteBrandThemeFaviconRequest {
   /** The ID of the brand */
@@ -12343,9 +12080,8 @@ export const DeleteBrandThemeFaviconRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBrandThemeFaviconRequest>;
 
 export interface DeleteBrandThemeFaviconResponse {}
-export const DeleteBrandThemeFaviconResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteBrandThemeFaviconResponse" },
-) as any as S.Schema<DeleteBrandThemeFaviconResponse>;
+export const DeleteBrandThemeFaviconResponse =
+  ActivateRealmAssignmentResponse as any as S.Schema<DeleteBrandThemeFaviconResponse>;
 
 export interface DeleteBrandThemeLogoRequest {
   /** The ID of the brand */
@@ -12365,9 +12101,8 @@ export const DeleteBrandThemeLogoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBrandThemeLogoRequest>;
 
 export interface DeleteBrandThemeLogoResponse {}
-export const DeleteBrandThemeLogoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBrandThemeLogoResponse",
-}) as any as S.Schema<DeleteBrandThemeLogoResponse>;
+export const DeleteBrandThemeLogoResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteBrandThemeLogoResponse>;
 
 export interface DeleteCaptchaInstanceRequest {
   /** The unique key used to identify your CAPTCHA instance */
@@ -12382,9 +12117,8 @@ export const DeleteCaptchaInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCaptchaInstanceRequest>;
 
 export interface DeleteCaptchaInstanceResponse {}
-export const DeleteCaptchaInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCaptchaInstanceResponse",
-}) as any as S.Schema<DeleteCaptchaInstanceResponse>;
+export const DeleteCaptchaInstanceResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteCaptchaInstanceResponse>;
 
 export interface DeleteCrossAppAccessConnectionRequest {
   /** Application ID */
@@ -12408,11 +12142,8 @@ export const DeleteCrossAppAccessConnectionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteCrossAppAccessConnectionRequest>;
 
 export interface DeleteCrossAppAccessConnectionResponse {}
-export const DeleteCrossAppAccessConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCrossAppAccessConnectionResponse",
-}) as any as S.Schema<DeleteCrossAppAccessConnectionResponse>;
+export const DeleteCrossAppAccessConnectionResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteCrossAppAccessConnectionResponse>;
 
 export interface DeleteCustomAAGUIDRequest {
   /** `id` of the authenticator */
@@ -12436,9 +12167,8 @@ export const DeleteCustomAAGUIDRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomAAGUIDRequest>;
 
 export interface DeleteCustomAAGUIDResponse {}
-export const DeleteCustomAAGUIDResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomAAGUIDResponse",
-}) as any as S.Schema<DeleteCustomAAGUIDResponse>;
+export const DeleteCustomAAGUIDResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteCustomAAGUIDResponse>;
 
 export interface DeleteCustomDomainRequest {
   /** `id` of the Domain */
@@ -12453,9 +12183,8 @@ export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomDomainRequest>;
 
 export interface DeleteCustomDomainResponse {}
-export const DeleteCustomDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomDomainResponse",
-}) as any as S.Schema<DeleteCustomDomainResponse>;
+export const DeleteCustomDomainResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteCustomDomainResponse>;
 
 export interface DeleteCustomizedErrorPageRequest {
   /** The ID of the brand */
@@ -12472,11 +12201,8 @@ export const DeleteCustomizedErrorPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomizedErrorPageRequest>;
 
 export interface DeleteCustomizedErrorPageResponse {}
-export const DeleteCustomizedErrorPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomizedErrorPageResponse",
-}) as any as S.Schema<DeleteCustomizedErrorPageResponse>;
+export const DeleteCustomizedErrorPageResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteCustomizedErrorPageResponse>;
 
 export interface DeleteCustomizedSignInPageRequest {
   /** The ID of the brand */
@@ -12497,11 +12223,8 @@ export const DeleteCustomizedSignInPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomizedSignInPageRequest>;
 
 export interface DeleteCustomizedSignInPageResponse {}
-export const DeleteCustomizedSignInPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomizedSignInPageResponse",
-}) as any as S.Schema<DeleteCustomizedSignInPageResponse>;
+export const DeleteCustomizedSignInPageResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteCustomizedSignInPageResponse>;
 
 export interface DeleteCustomTelephonyProviderCredentialRequest {
   /** The ID of the custom telephony provider */
@@ -12522,11 +12245,8 @@ export const DeleteCustomTelephonyProviderCredentialRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteCustomTelephonyProviderCredentialRequest>;
 
 export interface DeleteCustomTelephonyProviderCredentialResponse {}
-export const DeleteCustomTelephonyProviderCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomTelephonyProviderCredentialResponse",
-}) as any as S.Schema<DeleteCustomTelephonyProviderCredentialResponse>;
+export const DeleteCustomTelephonyProviderCredentialResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteCustomTelephonyProviderCredentialResponse>;
 
 export interface DeleteDeviceRequest {
   /** `id` of the device */
@@ -12539,9 +12259,8 @@ export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeviceRequest" }) as any as S.Schema<DeleteDeviceRequest>;
 
 export interface DeleteDeviceResponse {}
-export const DeleteDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeviceResponse",
-}) as any as S.Schema<DeleteDeviceResponse>;
+export const DeleteDeviceResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteDeviceResponse>;
 
 export interface DeleteDeviceAssurancePolicyRequest {
   /** Id of the device assurance policy */
@@ -12558,11 +12277,8 @@ export const DeleteDeviceAssurancePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDeviceAssurancePolicyRequest>;
 
 export interface DeleteDeviceAssurancePolicyResponse {}
-export const DeleteDeviceAssurancePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDeviceAssurancePolicyResponse",
-}) as any as S.Schema<DeleteDeviceAssurancePolicyResponse>;
+export const DeleteDeviceAssurancePolicyResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteDeviceAssurancePolicyResponse>;
 
 export interface DeleteDevicePostureCheckRequest {
   /** ID of the device posture check */
@@ -12579,11 +12295,8 @@ export const DeleteDevicePostureCheckRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDevicePostureCheckRequest>;
 
 export interface DeleteDevicePostureCheckResponse {}
-export const DeleteDevicePostureCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDevicePostureCheckResponse",
-}) as any as S.Schema<DeleteDevicePostureCheckResponse>;
+export const DeleteDevicePostureCheckResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteDevicePostureCheckResponse>;
 
 export interface DeleteEmailCustomizationRequest {
   /** The ID of the brand */
@@ -12610,11 +12323,8 @@ export const DeleteEmailCustomizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmailCustomizationRequest>;
 
 export interface DeleteEmailCustomizationResponse {}
-export const DeleteEmailCustomizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEmailCustomizationResponse",
-}) as any as S.Schema<DeleteEmailCustomizationResponse>;
+export const DeleteEmailCustomizationResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteEmailCustomizationResponse>;
 
 export type DeleteEmailDomainRequestExpandItem = "brands";
 export const DeleteEmailDomainRequestExpandItem = S.String;
@@ -12639,9 +12349,8 @@ export const DeleteEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmailDomainRequest" }) as any as S.Schema<DeleteEmailDomainRequest>;
 
 export interface DeleteEmailDomainResponse {}
-export const DeleteEmailDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailDomainResponse",
-}) as any as S.Schema<DeleteEmailDomainResponse>;
+export const DeleteEmailDomainResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteEmailDomainResponse>;
 
 export interface DeleteEmailServerRequest {
   emailServerId: string;
@@ -12653,9 +12362,8 @@ export const DeleteEmailServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEmailServerRequest" }) as any as S.Schema<DeleteEmailServerRequest>;
 
 export interface DeleteEmailServerResponse {}
-export const DeleteEmailServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailServerResponse",
-}) as any as S.Schema<DeleteEmailServerResponse>;
+export const DeleteEmailServerResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteEmailServerResponse>;
 
 export interface DeleteEventHookRequest {
   /** `id` of the Event Hook */
@@ -12668,9 +12376,8 @@ export const DeleteEventHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEventHookRequest" }) as any as S.Schema<DeleteEventHookRequest>;
 
 export interface DeleteEventHookResponse {}
-export const DeleteEventHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventHookResponse",
-}) as any as S.Schema<DeleteEventHookResponse>;
+export const DeleteEventHookResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteEventHookResponse>;
 
 export interface DeleteFederatedClaimRequest {
   /** Application ID */
@@ -12690,9 +12397,8 @@ export const DeleteFederatedClaimRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFederatedClaimRequest>;
 
 export interface DeleteFederatedClaimResponse {}
-export const DeleteFederatedClaimResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFederatedClaimResponse",
-}) as any as S.Schema<DeleteFederatedClaimResponse>;
+export const DeleteFederatedClaimResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteFederatedClaimResponse>;
 
 export interface DeleteGovernanceBundleRequest {
   /** The `id` of a bundle */
@@ -12709,9 +12415,8 @@ export const DeleteGovernanceBundleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGovernanceBundleRequest>;
 
 export interface DeleteGovernanceBundleResponse {}
-export const DeleteGovernanceBundleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGovernanceBundleResponse",
-}) as any as S.Schema<DeleteGovernanceBundleResponse>;
+export const DeleteGovernanceBundleResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteGovernanceBundleResponse>;
 
 export interface DeleteGroupRequest {
   /** The `id` of the group */
@@ -12724,9 +12429,8 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteGroupResponse>;
 
 export interface DeleteGroupOwnerRequest {
   /** The `id` of the group */
@@ -12744,9 +12448,8 @@ export const DeleteGroupOwnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupOwnerRequest" }) as any as S.Schema<DeleteGroupOwnerRequest>;
 
 export interface DeleteGroupOwnerResponse {}
-export const DeleteGroupOwnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupOwnerResponse",
-}) as any as S.Schema<DeleteGroupOwnerResponse>;
+export const DeleteGroupOwnerResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteGroupOwnerResponse>;
 
 export interface DeleteGroupPushMappingRequest {
   /** Application ID */
@@ -12773,9 +12476,8 @@ export const DeleteGroupPushMappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupPushMappingRequest>;
 
 export interface DeleteGroupPushMappingResponse {}
-export const DeleteGroupPushMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupPushMappingResponse",
-}) as any as S.Schema<DeleteGroupPushMappingResponse>;
+export const DeleteGroupPushMappingResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteGroupPushMappingResponse>;
 
 export interface DeleteGroupRuleRequest {
   /** The `id` of the group rule */
@@ -12791,9 +12493,8 @@ export const DeleteGroupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupRuleRequest" }) as any as S.Schema<DeleteGroupRuleRequest>;
 
 export interface DeleteGroupRuleResponse {}
-export const DeleteGroupRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupRuleResponse",
-}) as any as S.Schema<DeleteGroupRuleResponse>;
+export const DeleteGroupRuleResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteGroupRuleResponse>;
 
 export interface DeleteHookKeyRequest {
   /** ID of the Hook Key */
@@ -12806,9 +12507,8 @@ export const DeleteHookKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHookKeyRequest" }) as any as S.Schema<DeleteHookKeyRequest>;
 
 export interface DeleteHookKeyResponse {}
-export const DeleteHookKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHookKeyResponse",
-}) as any as S.Schema<DeleteHookKeyResponse>;
+export const DeleteHookKeyResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteHookKeyResponse>;
 
 export interface DeleteIdentityProviderRequest {
   /** `id` of IdP */
@@ -12823,9 +12523,8 @@ export const DeleteIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIdentityProviderRequest>;
 
 export interface DeleteIdentityProviderResponse {}
-export const DeleteIdentityProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIdentityProviderResponse",
-}) as any as S.Schema<DeleteIdentityProviderResponse>;
+export const DeleteIdentityProviderResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteIdentityProviderResponse>;
 
 export interface DeleteIdentityProviderKeyRequest {
   /** Unique `id` of the IdP key credential */
@@ -12840,11 +12539,8 @@ export const DeleteIdentityProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIdentityProviderKeyRequest>;
 
 export interface DeleteIdentityProviderKeyResponse {}
-export const DeleteIdentityProviderKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIdentityProviderKeyResponse",
-}) as any as S.Schema<DeleteIdentityProviderKeyResponse>;
+export const DeleteIdentityProviderKeyResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteIdentityProviderKeyResponse>;
 
 export interface DeleteIdentitySourceGroupRequest {
   /** The ID of the identity source for which the session is created */
@@ -12868,11 +12564,8 @@ export const DeleteIdentitySourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIdentitySourceGroupRequest>;
 
 export interface DeleteIdentitySourceGroupResponse {}
-export const DeleteIdentitySourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIdentitySourceGroupResponse",
-}) as any as S.Schema<DeleteIdentitySourceGroupResponse>;
+export const DeleteIdentitySourceGroupResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteIdentitySourceGroupResponse>;
 
 export interface DeleteIdentitySourceGroupMembershipsRequest {
   /** The ID of the identity source for which the session is created */
@@ -12899,11 +12592,8 @@ export const DeleteIdentitySourceGroupMembershipsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteIdentitySourceGroupMembershipsRequest>;
 
 export interface DeleteIdentitySourceGroupMembershipsResponse {}
-export const DeleteIdentitySourceGroupMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIdentitySourceGroupMembershipsResponse",
-}) as any as S.Schema<DeleteIdentitySourceGroupMembershipsResponse>;
+export const DeleteIdentitySourceGroupMembershipsResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteIdentitySourceGroupMembershipsResponse>;
 
 export interface DeleteIdentitySourceSessionRequest {
   /** The ID of the identity source for which the session is created */
@@ -12927,11 +12617,8 @@ export const DeleteIdentitySourceSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIdentitySourceSessionRequest>;
 
 export interface DeleteIdentitySourceSessionResponse {}
-export const DeleteIdentitySourceSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIdentitySourceSessionResponse",
-}) as any as S.Schema<DeleteIdentitySourceSessionResponse>;
+export const DeleteIdentitySourceSessionResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteIdentitySourceSessionResponse>;
 
 export interface DeleteIdentitySourceUserRequest {
   /** The ID of the identity source for which the session is created */
@@ -12955,11 +12642,8 @@ export const DeleteIdentitySourceUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIdentitySourceUserRequest>;
 
 export interface DeleteIdentitySourceUserResponse {}
-export const DeleteIdentitySourceUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIdentitySourceUserResponse",
-}) as any as S.Schema<DeleteIdentitySourceUserResponse>;
+export const DeleteIdentitySourceUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteIdentitySourceUserResponse>;
 
 export interface DeleteInlineHookRequest {
   /** `id` of the inline hook */
@@ -12972,9 +12656,8 @@ export const DeleteInlineHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInlineHookRequest" }) as any as S.Schema<DeleteInlineHookRequest>;
 
 export interface DeleteInlineHookResponse {}
-export const DeleteInlineHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInlineHookResponse",
-}) as any as S.Schema<DeleteInlineHookResponse>;
+export const DeleteInlineHookResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteInlineHookResponse>;
 
 export interface DeleteInterclientTrustMappingRequest {
   /** Application ID */
@@ -12998,11 +12681,8 @@ export const DeleteInterclientTrustMappingRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteInterclientTrustMappingRequest>;
 
 export interface DeleteInterclientTrustMappingResponse {}
-export const DeleteInterclientTrustMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInterclientTrustMappingResponse",
-}) as any as S.Schema<DeleteInterclientTrustMappingResponse>;
+export const DeleteInterclientTrustMappingResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteInterclientTrustMappingResponse>;
 
 export interface DeletejwkRequest {
   /** Application ID */
@@ -13020,9 +12700,7 @@ export const DeletejwkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletejwkRequest" }) as any as S.Schema<DeletejwkRequest>;
 
 export interface DeletejwkResponse {}
-export const DeletejwkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletejwkResponse",
-}) as any as S.Schema<DeletejwkResponse>;
+export const DeletejwkResponse = ActivateApplicationResponse as any as S.Schema<DeletejwkResponse>;
 
 export interface DeleteLinkedObjectDefinitionRequest {
   /** Primary or Associated name */
@@ -13043,11 +12721,8 @@ export const DeleteLinkedObjectDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkedObjectDefinitionRequest>;
 
 export interface DeleteLinkedObjectDefinitionResponse {}
-export const DeleteLinkedObjectDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLinkedObjectDefinitionResponse",
-}) as any as S.Schema<DeleteLinkedObjectDefinitionResponse>;
+export const DeleteLinkedObjectDefinitionResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteLinkedObjectDefinitionResponse>;
 
 export interface DeleteLinkedObjectForUserRequest {
   /** If for the `self` link, this is the ID of the user for whom you want to get the primary user ID. If for the `associated` relation, this is the user ID or login value of the user assigned the associated relationship. This can be `me` to represent the current session user. */
@@ -13071,11 +12746,8 @@ export const DeleteLinkedObjectForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkedObjectForUserRequest>;
 
 export interface DeleteLinkedObjectForUserResponse {}
-export const DeleteLinkedObjectForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLinkedObjectForUserResponse",
-}) as any as S.Schema<DeleteLinkedObjectForUserResponse>;
+export const DeleteLinkedObjectForUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteLinkedObjectForUserResponse>;
 
 export interface DeleteLogStreamRequest {
   /** Unique identifier for the log stream */
@@ -13088,9 +12760,8 @@ export const DeleteLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLogStreamRequest" }) as any as S.Schema<DeleteLogStreamRequest>;
 
 export interface DeleteLogStreamResponse {}
-export const DeleteLogStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLogStreamResponse",
-}) as any as S.Schema<DeleteLogStreamResponse>;
+export const DeleteLogStreamResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteLogStreamResponse>;
 
 export interface DeleteNetworkZoneRequest {
   /** `id` of the Network Zone */
@@ -13103,9 +12774,8 @@ export const DeleteNetworkZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNetworkZoneRequest" }) as any as S.Schema<DeleteNetworkZoneRequest>;
 
 export interface DeleteNetworkZoneResponse {}
-export const DeleteNetworkZoneResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkZoneResponse",
-}) as any as S.Schema<DeleteNetworkZoneResponse>;
+export const DeleteNetworkZoneResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteNetworkZoneResponse>;
 
 export interface DeleteOAuth2ClaimRequest {
   /** `id` of the Authorization Server */
@@ -13127,9 +12797,8 @@ export const DeleteOAuth2ClaimRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOAuth2ClaimRequest" }) as any as S.Schema<DeleteOAuth2ClaimRequest>;
 
 export interface DeleteOAuth2ClaimResponse {}
-export const DeleteOAuth2ClaimResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOAuth2ClaimResponse",
-}) as any as S.Schema<DeleteOAuth2ClaimResponse>;
+export const DeleteOAuth2ClaimResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteOAuth2ClaimResponse>;
 
 export interface DeleteOAuth2ClientSecretRequest {
   /** Application ID */
@@ -13153,11 +12822,8 @@ export const DeleteOAuth2ClientSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOAuth2ClientSecretRequest>;
 
 export interface DeleteOAuth2ClientSecretResponse {}
-export const DeleteOAuth2ClientSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOAuth2ClientSecretResponse",
-}) as any as S.Schema<DeleteOAuth2ClientSecretResponse>;
+export const DeleteOAuth2ClientSecretResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteOAuth2ClientSecretResponse>;
 
 export interface DeleteOAuth2ResourceServerJsonWebKeyRequest {
   /** `id` of the Authorization Server */
@@ -13181,11 +12847,8 @@ export const DeleteOAuth2ResourceServerJsonWebKeyRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteOAuth2ResourceServerJsonWebKeyRequest>;
 
 export interface DeleteOAuth2ResourceServerJsonWebKeyResponse {}
-export const DeleteOAuth2ResourceServerJsonWebKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOAuth2ResourceServerJsonWebKeyResponse",
-}) as any as S.Schema<DeleteOAuth2ResourceServerJsonWebKeyResponse>;
+export const DeleteOAuth2ResourceServerJsonWebKeyResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteOAuth2ResourceServerJsonWebKeyResponse>;
 
 export interface DeleteOAuth2ScopeRequest {
   /** `id` of the Authorization Server */
@@ -13207,9 +12870,8 @@ export const DeleteOAuth2ScopeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOAuth2ScopeRequest" }) as any as S.Schema<DeleteOAuth2ScopeRequest>;
 
 export interface DeleteOAuth2ScopeResponse {}
-export const DeleteOAuth2ScopeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOAuth2ScopeResponse",
-}) as any as S.Schema<DeleteOAuth2ScopeResponse>;
+export const DeleteOAuth2ScopeResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteOAuth2ScopeResponse>;
 
 export interface DeleteOktaManagedUserAccountRequest {
   /** ID of an existing Okta managed user account */
@@ -13230,11 +12892,8 @@ export const DeleteOktaManagedUserAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOktaManagedUserAccountRequest>;
 
 export interface DeleteOktaManagedUserAccountResponse {}
-export const DeleteOktaManagedUserAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOktaManagedUserAccountResponse",
-}) as any as S.Schema<DeleteOktaManagedUserAccountResponse>;
+export const DeleteOktaManagedUserAccountResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteOktaManagedUserAccountResponse>;
 
 export interface DeleteOrgCaptchaSettingsRequest {}
 export const DeleteOrgCaptchaSettingsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13244,11 +12903,8 @@ export const DeleteOrgCaptchaSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrgCaptchaSettingsRequest>;
 
 export interface DeleteOrgCaptchaSettingsResponse {}
-export const DeleteOrgCaptchaSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrgCaptchaSettingsResponse",
-}) as any as S.Schema<DeleteOrgCaptchaSettingsResponse>;
+export const DeleteOrgCaptchaSettingsResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteOrgCaptchaSettingsResponse>;
 
 export interface DeletePolicyRequest {
   /** `id` of the policy */
@@ -13261,9 +12917,8 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+export const DeletePolicyResponse =
+  ActivateApplicationResponse as any as S.Schema<DeletePolicyResponse>;
 
 export interface DeletePolicyResourceMappingRequest {
   /** `id` of the policy */
@@ -13287,11 +12942,8 @@ export const DeletePolicyResourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePolicyResourceMappingRequest>;
 
 export interface DeletePolicyResourceMappingResponse {}
-export const DeletePolicyResourceMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePolicyResourceMappingResponse",
-}) as any as S.Schema<DeletePolicyResourceMappingResponse>;
+export const DeletePolicyResourceMappingResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeletePolicyResourceMappingResponse>;
 
 export interface DeletePolicyRuleRequest {
   /** `id` of the policy */
@@ -13309,9 +12961,8 @@ export const DeletePolicyRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRuleRequest" }) as any as S.Schema<DeletePolicyRuleRequest>;
 
 export interface DeletePolicyRuleResponse {}
-export const DeletePolicyRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyRuleResponse",
-}) as any as S.Schema<DeletePolicyRuleResponse>;
+export const DeletePolicyRuleResponse =
+  ActivateApplicationResponse as any as S.Schema<DeletePolicyRuleResponse>;
 
 export interface DeletePreviewErrorPageRequest {
   /** The ID of the brand */
@@ -13328,9 +12979,8 @@ export const DeletePreviewErrorPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePreviewErrorPageRequest>;
 
 export interface DeletePreviewErrorPageResponse {}
-export const DeletePreviewErrorPageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePreviewErrorPageResponse",
-}) as any as S.Schema<DeletePreviewErrorPageResponse>;
+export const DeletePreviewErrorPageResponse =
+  ActivateApplicationResponse as any as S.Schema<DeletePreviewErrorPageResponse>;
 
 export interface DeletePreviewSignInPageRequest {
   /** The ID of the brand */
@@ -13347,9 +12997,8 @@ export const DeletePreviewSignInPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePreviewSignInPageRequest>;
 
 export interface DeletePreviewSignInPageResponse {}
-export const DeletePreviewSignInPageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeletePreviewSignInPageResponse" },
-) as any as S.Schema<DeletePreviewSignInPageResponse>;
+export const DeletePreviewSignInPageResponse =
+  ActivateRealmAssignmentResponse as any as S.Schema<DeletePreviewSignInPageResponse>;
 
 export interface DeletePushProviderRequest {
   /** Id of the push provider */
@@ -13364,9 +13013,8 @@ export const DeletePushProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePushProviderRequest>;
 
 export interface DeletePushProviderResponse {}
-export const DeletePushProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePushProviderResponse",
-}) as any as S.Schema<DeletePushProviderResponse>;
+export const DeletePushProviderResponse =
+  ActivateApplicationResponse as any as S.Schema<DeletePushProviderResponse>;
 
 export interface DeleteRealmRequest {
   /** ID of the realm */
@@ -13379,9 +13027,8 @@ export const DeleteRealmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRealmRequest" }) as any as S.Schema<DeleteRealmRequest>;
 
 export interface DeleteRealmResponse {}
-export const DeleteRealmResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRealmResponse",
-}) as any as S.Schema<DeleteRealmResponse>;
+export const DeleteRealmResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteRealmResponse>;
 
 export interface DeleteRealmAssignmentRequest {
   /** ID of the realm assignment */
@@ -13396,9 +13043,8 @@ export const DeleteRealmAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRealmAssignmentRequest>;
 
 export interface DeleteRealmAssignmentResponse {}
-export const DeleteRealmAssignmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRealmAssignmentResponse",
-}) as any as S.Schema<DeleteRealmAssignmentResponse>;
+export const DeleteRealmAssignmentResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteRealmAssignmentResponse>;
 
 export interface DeleteResourceSetRequest {
   /** `id` or `label` of the resource set */
@@ -13417,9 +13063,8 @@ export const DeleteResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteResourceSetRequest" }) as any as S.Schema<DeleteResourceSetRequest>;
 
 export interface DeleteResourceSetResponse {}
-export const DeleteResourceSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceSetResponse",
-}) as any as S.Schema<DeleteResourceSetResponse>;
+export const DeleteResourceSetResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteResourceSetResponse>;
 
 export interface DeleteResourceSetResourceRequest {
   /** `id` or `label` of the resource set */
@@ -13443,11 +13088,8 @@ export const DeleteResourceSetResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceSetResourceRequest>;
 
 export interface DeleteResourceSetResourceResponse {}
-export const DeleteResourceSetResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourceSetResourceResponse",
-}) as any as S.Schema<DeleteResourceSetResourceResponse>;
+export const DeleteResourceSetResourceResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteResourceSetResourceResponse>;
 
 export interface DeleteRoleRequest {
   /** `id` or `label` of the role */
@@ -13460,9 +13102,8 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoleRequest" }) as any as S.Schema<DeleteRoleRequest>;
 
 export interface DeleteRoleResponse {}
-export const DeleteRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleResponse",
-}) as any as S.Schema<DeleteRoleResponse>;
+export const DeleteRoleResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteRoleResponse>;
 
 export interface DeleteRoleFromClientRequest {
   /** `client_id` of the app */
@@ -13486,9 +13127,8 @@ export const DeleteRoleFromClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRoleFromClientRequest>;
 
 export interface DeleteRoleFromClientResponse {}
-export const DeleteRoleFromClientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleFromClientResponse",
-}) as any as S.Schema<DeleteRoleFromClientResponse>;
+export const DeleteRoleFromClientResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteRoleFromClientResponse>;
 
 export interface DeleteRolePermissionRequest {
   /** `id` or `label` of the role */
@@ -13512,9 +13152,8 @@ export const DeleteRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRolePermissionRequest>;
 
 export interface DeleteRolePermissionResponse {}
-export const DeleteRolePermissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRolePermissionResponse",
-}) as any as S.Schema<DeleteRolePermissionResponse>;
+export const DeleteRolePermissionResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteRolePermissionResponse>;
 
 export interface DeleteSecurityEventsProviderInstanceRequest {
   /** `id` of the security events provider instance */
@@ -13535,11 +13174,8 @@ export const DeleteSecurityEventsProviderInstanceRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteSecurityEventsProviderInstanceRequest>;
 
 export interface DeleteSecurityEventsProviderInstanceResponse {}
-export const DeleteSecurityEventsProviderInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSecurityEventsProviderInstanceResponse",
-}) as any as S.Schema<DeleteSecurityEventsProviderInstanceResponse>;
+export const DeleteSecurityEventsProviderInstanceResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteSecurityEventsProviderInstanceResponse>;
 
 export interface DeleteSmsTemplateRequest {
   /** `id` of the Template */
@@ -13552,9 +13188,8 @@ export const DeleteSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSmsTemplateRequest" }) as any as S.Schema<DeleteSmsTemplateRequest>;
 
 export interface DeleteSmsTemplateResponse {}
-export const DeleteSmsTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSmsTemplateResponse",
-}) as any as S.Schema<DeleteSmsTemplateResponse>;
+export const DeleteSmsTemplateResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteSmsTemplateResponse>;
 
 export interface DeleteSsfStreamRequest {
   /** The ID of the specified SSF Stream configuration */
@@ -13567,9 +13202,8 @@ export const DeleteSsfStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSsfStreamRequest" }) as any as S.Schema<DeleteSsfStreamRequest>;
 
 export interface DeleteSsfStreamResponse {}
-export const DeleteSsfStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSsfStreamResponse",
-}) as any as S.Schema<DeleteSsfStreamResponse>;
+export const DeleteSsfStreamResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteSsfStreamResponse>;
 
 export interface DeleteTrustedOriginRequest {
   /** `id` of the trusted origin */
@@ -13584,9 +13218,8 @@ export const DeleteTrustedOriginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustedOriginRequest>;
 
 export interface DeleteTrustedOriginResponse {}
-export const DeleteTrustedOriginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrustedOriginResponse",
-}) as any as S.Schema<DeleteTrustedOriginResponse>;
+export const DeleteTrustedOriginResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteTrustedOriginResponse>;
 
 export interface DeleteUISchemasRequest {
   /** The unique ID of the UI Schema */
@@ -13599,9 +13232,8 @@ export const DeleteUISchemasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUISchemasRequest" }) as any as S.Schema<DeleteUISchemasRequest>;
 
 export interface DeleteUISchemasResponse {}
-export const DeleteUISchemasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUISchemasResponse",
-}) as any as S.Schema<DeleteUISchemasResponse>;
+export const DeleteUISchemasResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteUISchemasResponse>;
 
 export interface DeleteUserRequest {
   /** An ID, login, or login shortname (as long as the shortname is unambiguous) of an existing Okta user */
@@ -13617,9 +13249,8 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface DeleteUserTypeRequest {
   typeId: string;
@@ -13631,9 +13262,8 @@ export const DeleteUserTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserTypeRequest" }) as any as S.Schema<DeleteUserTypeRequest>;
 
 export interface DeleteUserTypeResponse {}
-export const DeleteUserTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserTypeResponse",
-}) as any as S.Schema<DeleteUserTypeResponse>;
+export const DeleteUserTypeResponse =
+  ActivateApplicationResponse as any as S.Schema<DeleteUserTypeResponse>;
 
 export interface DeleteWebAuthnPreregistrationFactorRequest {
   /** ID of an existing Okta user */
@@ -13657,11 +13287,8 @@ export const DeleteWebAuthnPreregistrationFactorRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteWebAuthnPreregistrationFactorRequest>;
 
 export interface DeleteWebAuthnPreregistrationFactorResponse {}
-export const DeleteWebAuthnPreregistrationFactorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAuthnPreregistrationFactorResponse",
-}) as any as S.Schema<DeleteWebAuthnPreregistrationFactorResponse>;
+export const DeleteWebAuthnPreregistrationFactorResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<DeleteWebAuthnPreregistrationFactorResponse>;
 
 /** Type of factor */
 export type UserFactorType =
@@ -13722,10 +13349,8 @@ export type UserFactorStatus =
 export const UserFactorStatus = S.String;
 
 export type UserFactorEmbeddedMap = { [key: string]: unknown | undefined };
-export const UserFactorEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserFactorEmbeddedMap>;
+export const UserFactorEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<UserFactorEmbeddedMap>;
 
 export type UserFactorLinksActivate = HrefObjectSelfLink;
 export const UserFactorLinksActivate = HrefObjectSelfLink;
@@ -13831,9 +13456,8 @@ export const UserFactor = /*@__PURE__*/ S.suspend(() =>
 
 /** List of relying party hostnames to register on the YubiKey */
 export type EnrollPreregistrationEnrollmentRequestEnrollmentRpIdsList = Array<string>;
-export const EnrollPreregistrationEnrollmentRequestEnrollmentRpIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnrollPreregistrationEnrollmentRequestEnrollmentRpIdsList>;
+export const EnrollPreregistrationEnrollmentRequestEnrollmentRpIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<EnrollPreregistrationEnrollmentRequestEnrollmentRpIdsList>;
 
 /** Name of the fulfillment provider for the WebAuthn preregistration factor */
 export type EnrollPreregistrationEnrollmentRequestFulfillmentProvider = "yubico";
@@ -13927,13 +13551,8 @@ export interface InlineHookRequestObjectUrl {
   /** The URL value of the API endpoint */
   value?: string;
 }
-export const InlineHookRequestObjectUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InlineHookRequestObjectUrl",
-}) as any as S.Schema<InlineHookRequestObjectUrl>;
+export const InlineHookRequestObjectUrl =
+  AppUserPasswordCredential as any as S.Schema<InlineHookRequestObjectUrl>;
 
 /** The API request that triggered the inline hook */
 export interface InlineHookRequestObject {
@@ -14164,9 +13783,8 @@ export const RegistrationInlineHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The authentication method reference */
 export type TokenRequestInputDataContextSessionAmrList = Array<string>;
-export const TokenRequestInputDataContextSessionAmrList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokenRequestInputDataContextSessionAmrList>;
+export const TokenRequestInputDataContextSessionAmrList =
+  EventHookSubscribedEventTypes as any as S.Schema<TokenRequestInputDataContextSessionAmrList>;
 
 export type SessionIdentityProviderType =
   | "ACTIVE_DIRECTORY"
@@ -14431,13 +14049,8 @@ export interface TokenRequestInputDataContextPolicyRule {
   /** The unique identifier for the policy rule */
   id?: string;
 }
-export const TokenRequestInputDataContextPolicyRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TokenRequestInputDataContextPolicyRule",
-}) as any as S.Schema<TokenRequestInputDataContextPolicyRule>;
+export const TokenRequestInputDataContextPolicyRule =
+  TokenAuthorizationServerPolicyRuleActionInlineHook as any as S.Schema<TokenRequestInputDataContextPolicyRule>;
 
 /** The authorization server policy used to mint the token */
 export interface TokenRequestInputDataContextPolicy {
@@ -14593,9 +14206,8 @@ export const TokenRequestInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The authentication method reference */
 export type SAMLPayloadExecuteInputDataContextSessionAmrList = Array<string>;
-export const SAMLPayloadExecuteInputDataContextSessionAmrList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SAMLPayloadExecuteInputDataContextSessionAmrList>;
+export const SAMLPayloadExecuteInputDataContextSessionAmrList =
+  EventHookSubscribedEventTypes as any as S.Schema<SAMLPayloadExecuteInputDataContextSessionAmrList>;
 
 /** Details of the user session */
 export interface SAMLPayloadExecuteInputDataContextSession {
@@ -14619,22 +14231,8 @@ export interface SAMLPayloadExecuteInputDataContextSession {
   /** Describes whether multifactor authentication was enabled */
   mfaActive?: boolean;
 }
-export const SAMLPayloadExecuteInputDataContextSession = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    userId: S.optional(S.String),
-    login: S.optional(S.String),
-    createdAt: S.optional(S.String),
-    expiresAt: S.optional(S.String),
-    status: S.optional(S.String),
-    lastPasswordVerification: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    amr: S.optional(SAMLPayloadExecuteInputDataContextSessionAmrList),
-    idp: S.optional(SessionIdentityProviderInput),
-    mfaActive: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SAMLPayloadExecuteInputDataContextSession",
-}) as any as S.Schema<SAMLPayloadExecuteInputDataContextSession>;
+export const SAMLPayloadExecuteInputDataContextSession =
+  TokenRequestInputDataContextSession as any as S.Schema<SAMLPayloadExecuteInputDataContextSession>;
 
 export type SAMLPayloadExecuteInputDataContextUserProfile = TokenRequestInputDataContextUserProfile;
 export const SAMLPayloadExecuteInputDataContextUserProfile =
@@ -14875,13 +14473,8 @@ export interface SAMLPayloadExecuteInputDataAssertionLifetime {
   /** The expiration time in seconds */
   expiration?: number;
 }
-export const SAMLPayloadExecuteInputDataAssertionLifetime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expiration: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SAMLPayloadExecuteInputDataAssertionLifetime",
-}) as any as S.Schema<SAMLPayloadExecuteInputDataAssertionLifetime>;
+export const SAMLPayloadExecuteInputDataAssertionLifetime =
+  TokenRequestInputDataIdentityTokenLifetime as any as S.Schema<SAMLPayloadExecuteInputDataAssertionLifetime>;
 
 /** Details of the SAML assertion that was generated */
 export interface SAMLPayloadExecuteInputDataAssertion {
@@ -14972,10 +14565,8 @@ export const UserImportRequestDataAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Provides the name-value pairs of the attributes contained in the app user profile of the user who is being imported. You can change the values of attributes in the user's app profile by means of the `commands` object you return. If you change attributes in the app profile, they then flow through to the Okta user profile, based on matching and mapping rules. */
 export type UserImportRequestDataAppUserProfileMap = { [key: string]: string | undefined };
-export const UserImportRequestDataAppUserProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserImportRequestDataAppUserProfileMap>;
+export const UserImportRequestDataAppUserProfileMap =
+  GroupRuleEmbeddedGroupIdToGroupNameMapMap as any as S.Schema<UserImportRequestDataAppUserProfileMap>;
 
 /** The app user profile being imported */
 export interface UserImportRequestDataAppUser {
@@ -14991,10 +14582,8 @@ export const UserImportRequestDataAppUser = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserImportRequestDataAppUser>;
 
 export type UserImportRequestDataContextConflictsItemMap = { [key: string]: unknown | undefined };
-export const UserImportRequestDataContextConflictsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserImportRequestDataContextConflictsItemMap>;
+export const UserImportRequestDataContextConflictsItemMap =
+  GroupAssignmentProfile as any as S.Schema<UserImportRequestDataContextConflictsItemMap>;
 
 /** An array of user profile attributes that are in conflict */
 export type UserImportRequestDataContextConflictsList =
@@ -15046,30 +14635,24 @@ export const UserImportRequestDataContextJob = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserImportRequestDataContextJob>;
 
 export type UserImportRequestDataContextMatchesItemMap = { [key: string]: unknown | undefined };
-export const UserImportRequestDataContextMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserImportRequestDataContextMatchesItemMap>;
+export const UserImportRequestDataContextMatchesItemMap =
+  GroupAssignmentProfile as any as S.Schema<UserImportRequestDataContextMatchesItemMap>;
 
 /** The list of Okta users currently matched to the app user based on import matching. There can be more than one match. */
 export type UserImportRequestDataContextMatchesList =
   Array<UserImportRequestDataContextMatchesItemMap>;
-export const UserImportRequestDataContextMatchesList = /*@__PURE__*/ S.Array(
-  UserImportRequestDataContextMatchesItemMap,
-) as any as S.Schema<UserImportRequestDataContextMatchesList>;
+export const UserImportRequestDataContextMatchesList =
+  UserImportRequestDataContextConflictsList as any as S.Schema<UserImportRequestDataContextMatchesList>;
 
 export type UserImportRequestDataContextPolicyItemMap = { [key: string]: unknown | undefined };
-export const UserImportRequestDataContextPolicyItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserImportRequestDataContextPolicyItemMap>;
+export const UserImportRequestDataContextPolicyItemMap =
+  GroupAssignmentProfile as any as S.Schema<UserImportRequestDataContextPolicyItemMap>;
 
 /** The list of any policies that apply to the import matching */
 export type UserImportRequestDataContextPolicyList =
   Array<UserImportRequestDataContextPolicyItemMap>;
-export const UserImportRequestDataContextPolicyList = /*@__PURE__*/ S.Array(
-  UserImportRequestDataContextPolicyItemMap,
-) as any as S.Schema<UserImportRequestDataContextPolicyList>;
+export const UserImportRequestDataContextPolicyList =
+  UserImportRequestDataContextConflictsList as any as S.Schema<UserImportRequestDataContextPolicyList>;
 
 export interface UserImportRequestDataContext {
   /** An array of user profile attributes that are in conflict */
@@ -15097,23 +14680,16 @@ export const UserImportRequestDataContext = /*@__PURE__*/ S.suspend(() =>
 
 /** The `data.user.profile` contains the name-value pairs of the attributes in the user profile. If the user has been matched to an existing Okta user, a `data.user.id` object is included, containing the unique identifier of the Okta user profile. You can change the values of the attributes by means of the `commands` object you return. */
 export type UserImportRequestDataUserProfileMap = { [key: string]: string | undefined };
-export const UserImportRequestDataUserProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserImportRequestDataUserProfileMap>;
+export const UserImportRequestDataUserProfileMap =
+  GroupRuleEmbeddedGroupIdToGroupNameMapMap as any as S.Schema<UserImportRequestDataUserProfileMap>;
 
 /** Provides information on the Okta user profile currently set to be used for the user who is being imported, based on the matching rules and attribute mappings that were applied. */
 export interface UserImportRequestDataUser {
   /** The `data.user.profile` contains the name-value pairs of the attributes in the user profile. If the user has been matched to an existing Okta user, a `data.user.id` object is included, containing the unique identifier of the Okta user profile. You can change the values of the attributes by means of the `commands` object you return. */
   profile?: UserImportRequestDataUserProfileMap;
 }
-export const UserImportRequestDataUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profile: S.optional(UserImportRequestDataUserProfileMap),
-  }),
-).annotate({
-  identifier: "UserImportRequestDataUser",
-}) as any as S.Schema<UserImportRequestDataUser>;
+export const UserImportRequestDataUser =
+  UserImportRequestDataAppUser as any as S.Schema<UserImportRequestDataUser>;
 
 export interface UserImportRequestData {
   /** The object that specifies the default action Okta is set to take */
@@ -15441,11 +15017,8 @@ export interface SAMLHookResponseError {
   /** A human-readable summary of the error */
   errorSummary?: string;
 }
-export const SAMLHookResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorSummary: S.optional(S.String),
-  }),
-).annotate({ identifier: "SAMLHookResponseError" }) as any as S.Schema<SAMLHookResponseError>;
+export const SAMLHookResponseError =
+  TokenHookResponseError as any as S.Schema<SAMLHookResponseError>;
 
 export interface SAMLHookResponse {
   /** The `commands` object is where you tell Okta to add additional claims to the assertion or to modify the existing assertion statements. `commands` is an array, allowing you to send multiple commands. In each array element, include a `type` property and a `value` property. The `type` property is where you specify which of the supported commands you want to execute, and `value` is where you supply an operand for that command. In the case of the SAML assertion inline hook, the `value` property is itself a nested object, in which you specify a particular operation, a path to act on, and a value. */
@@ -15470,10 +15043,8 @@ export const UserImportResponseCommandsItemType = S.String;
 
 /** The `value` object is the parameter to pass to the command. In the case of the `com.okta.appUser.profile.update` and `com.okta.user.profile.update` commands, the parameter should be a list of one or more profile attributes and the values you wish to set them to. In the case of the `com.okta.action.update` command, the parameter should be a `result` property set to either `CREATE_USER` or `LINK_USER`. */
 export type UserImportResponseCommandsItemValueMap = { [key: string]: string | undefined };
-export const UserImportResponseCommandsItemValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserImportResponseCommandsItemValueMap>;
+export const UserImportResponseCommandsItemValueMap =
+  GroupRuleEmbeddedGroupIdToGroupNameMapMap as any as S.Schema<UserImportResponseCommandsItemValueMap>;
 
 export interface UserImportResponseCommandsItem {
   /** The command types supported for the import inline hook. When using the `com.okta.action.update` command to specify that the user should be treated as a match, you need to also provide a `com.okta.user.update` command that sets the ID of the Okta user. */
@@ -15785,9 +15356,8 @@ export const CsrMetadataSubject = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS names of the subject */
 export type CsrMetadataSubjectAltNamesDnsNamesList = Array<string>;
-export const CsrMetadataSubjectAltNamesDnsNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CsrMetadataSubjectAltNamesDnsNamesList>;
+export const CsrMetadataSubjectAltNamesDnsNamesList =
+  EventHookSubscribedEventTypes as any as S.Schema<CsrMetadataSubjectAltNamesDnsNamesList>;
 
 export interface CsrMetadataSubjectAltNames {
   /** DNS names of the subject */
@@ -16010,11 +15580,8 @@ export const GenerateFulfillmentRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateFulfillmentRequestRequest>;
 
 export interface GenerateFulfillmentRequestResponse {}
-export const GenerateFulfillmentRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateFulfillmentRequestResponse",
-}) as any as S.Schema<GenerateFulfillmentRequestResponse>;
+export const GenerateFulfillmentRequestResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<GenerateFulfillmentRequestResponse>;
 
 export interface GenerateIdentityProviderSigningKeyRequest {
   /** `id` of IdP */
@@ -16248,9 +15815,8 @@ export const WellKnownURIsRootEmbeddedAppleAppSiteAssociation = /*@__PURE__*/ S.
 
 /** The well-known URI content in a JSON array of objects format */
 export type WellKnownURIArrayResponseRepresentationList = Array<unknown>;
-export const WellKnownURIArrayResponseRepresentationList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<WellKnownURIArrayResponseRepresentationList>;
+export const WellKnownURIArrayResponseRepresentationList =
+  RegistrationInlineHookResponseCommandsList as any as S.Schema<WellKnownURIArrayResponseRepresentationList>;
 
 export type WellKnownURIArrayResponseLinks = LinksSelf;
 export const WellKnownURIArrayResponseLinks = LinksSelf;
@@ -16351,9 +15917,8 @@ export const GetApiServiceIntegrationInstanceRequest = /*@__PURE__*/ S.suspend((
 
 /** The list of Okta management scopes granted to the API Service Integration instance. See [Okta management OAuth 2.0 scopes](/oauth2/#okta-admin-management). */
 export type APIServiceIntegrationInstanceGrantedScopesList = Array<string>;
-export const APIServiceIntegrationInstanceGrantedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<APIServiceIntegrationInstanceGrantedScopesList>;
+export const APIServiceIntegrationInstanceGrantedScopesList =
+  EventHookSubscribedEventTypes as any as S.Schema<APIServiceIntegrationInstanceGrantedScopesList>;
 
 export interface APIServiceIntegrationInstance {
   /** The URL to the API service integration configuration guide */
@@ -16401,15 +15966,13 @@ export const GetApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of included IP network zones */
 export type ApiTokenNetworkIncludeList = Array<string>;
-export const ApiTokenNetworkIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiTokenNetworkIncludeList>;
+export const ApiTokenNetworkIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<ApiTokenNetworkIncludeList>;
 
 /** List of excluded IP network zones */
 export type ApiTokenNetworkExcludeList = Array<string>;
-export const ApiTokenNetworkExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiTokenNetworkExcludeList>;
+export const ApiTokenNetworkExcludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<ApiTokenNetworkExcludeList>;
 
 /** The Network Condition of the API Token */
 export interface ApiTokenNetwork {
@@ -16550,9 +16113,8 @@ export const GetApplicationUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApplicationUserSchemaRequest>;
 
 export type UserSchemaAttributeDefaultCase3List = Array<unknown>;
-export const UserSchemaAttributeDefaultCase3List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UserSchemaAttributeDefaultCase3List>;
+export const UserSchemaAttributeDefaultCase3List =
+  RegistrationInlineHookResponseCommandsList as any as S.Schema<UserSchemaAttributeDefaultCase3List>;
 
 /** If specified, assigns the value as the default value for the custom attribute. This is a nullable property. If you don't specify a value for this custom attribute during user creation or update, the `default` is used instead of setting the value to `null` or empty. */
 export type UserSchemaAttributeDefault =
@@ -16836,9 +16398,8 @@ export const UserSchemaBaseProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection indicating required property names */
 export type UserSchemaBaseRequiredList = Array<string>;
-export const UserSchemaBaseRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSchemaBaseRequiredList>;
+export const UserSchemaBaseRequiredList =
+  EventHookSubscribedEventTypes as any as S.Schema<UserSchemaBaseRequiredList>;
 
 /** All Okta-defined profile properties are defined in a profile subschema with the resolution scope `#base`. You can't modify these properties, except to update permissions, to change the nullability of `firstName` and `lastName`, or to specify a pattern for `login`. They can't be removed. The base user profile is based on the [System for Cross-domain Identity Management: Core Schema](https://tools.ietf.org/html/draft-ietf-scim-core-schema-22#section-4.1.1) and has the standard properties detailed below. */
 export interface UserSchemaBase {
@@ -16869,9 +16430,8 @@ export const UserSchemaPublicPropertiesMap = /*@__PURE__*/ S.Record(
 
 /** A collection indicating required property names */
 export type UserSchemaPublicRequiredList = Array<string>;
-export const UserSchemaPublicRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSchemaPublicRequiredList>;
+export const UserSchemaPublicRequiredList =
+  EventHookSubscribedEventTypes as any as S.Schema<UserSchemaPublicRequiredList>;
 
 /** All custom profile properties are defined in a profile subschema with the resolution scope `#custom`. > **Notes:** > * When you refer to custom profile attributes that differ only by case, name collisions occur. This includes naming custom profile attributes the same as base profile attributes, for example, `firstName` and `FirstName`. > * Certain attributes are reserved and can't be used for custom user profiles. See [Review reserved attributes](https://help.okta.com/okta_help.htm?type=oie&id=reserved-attributes). */
 export interface UserSchemaPublic {
@@ -16999,9 +16559,8 @@ export const GetAssetLinksWellKnownURIRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The well-known URI content in a JSON array of objects format */
 export type PublicAssetLinksWellKnownURI = Array<unknown>;
-export const PublicAssetLinksWellKnownURI = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PublicAssetLinksWellKnownURI>;
+export const PublicAssetLinksWellKnownURI =
+  RegistrationInlineHookResponseCommandsList as any as S.Schema<PublicAssetLinksWellKnownURI>;
 
 export type GetAssetLinksWellKnownURIResponse = PublicAssetLinksWellKnownURI;
 export const GetAssetLinksWellKnownURIResponse = /*@__PURE__*/ S.suspend(() =>
@@ -17520,9 +17079,8 @@ export const GetBrandResponseEmbeddedDomainsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetBrandResponseEmbeddedDomainsList>;
 
 export type EmailDomainResponseDnsValidationRecordsList = Array<EmailDomainDNSRecord>;
-export const EmailDomainResponseDnsValidationRecordsList = /*@__PURE__*/ S.Array(
-  EmailDomainDNSRecord,
-) as any as S.Schema<EmailDomainResponseDnsValidationRecordsList>;
+export const EmailDomainResponseDnsValidationRecordsList =
+  CreateEmailDomainResponseDnsValidationRecordsList as any as S.Schema<EmailDomainResponseDnsValidationRecordsList>;
 
 export interface EmailDomainResponse {
   displayName: string;
@@ -17762,9 +17320,8 @@ export const ThreatInsightConfigurationAction = S.String;
 
 /** Accepts a list of [Network Zone](/openapi/okta-management/management/networkzone/) IDs. IPs in the excluded network zones aren't logged or blocked. This ensures that traffic from known, trusted IPs isn't accidentally logged or blocked. */
 export type ThreatInsightConfigurationExcludeZonesList = Array<string>;
-export const ThreatInsightConfigurationExcludeZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ThreatInsightConfigurationExcludeZonesList>;
+export const ThreatInsightConfigurationExcludeZonesList =
+  EventHookSubscribedEventTypes as any as S.Schema<ThreatInsightConfigurationExcludeZonesList>;
 
 export interface ThreatInsightConfiguration {
   /** Specifies how Okta responds to authentication requests from suspicious IP addresses */
@@ -17892,9 +17449,8 @@ export type ContentSecurityPolicySettingMode = "enforced" | "report_only";
 export const ContentSecurityPolicySettingMode = S.String;
 
 export type ContentSecurityPolicySettingSrcListList = Array<string>;
-export const ContentSecurityPolicySettingSrcListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentSecurityPolicySettingSrcListList>;
+export const ContentSecurityPolicySettingSrcListList =
+  EventHookSubscribedEventTypes as any as S.Schema<ContentSecurityPolicySettingSrcListList>;
 
 export interface ContentSecurityPolicySetting {
   mode?: ContentSecurityPolicySettingMode | (string & {});
@@ -18021,10 +17577,8 @@ export const WidgetConfigurationFeatures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WidgetConfigurationFeatures>;
 
 export type WidgetConfigurationHcaptchaScriptParamsMap = { [key: string]: string | undefined };
-export const WidgetConfigurationHcaptchaScriptParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WidgetConfigurationHcaptchaScriptParamsMap>;
+export const WidgetConfigurationHcaptchaScriptParamsMap =
+  GroupRuleEmbeddedGroupIdToGroupNameMapMap as any as S.Schema<WidgetConfigurationHcaptchaScriptParamsMap>;
 
 export interface WidgetConfigurationHcaptcha {
   scriptSource?: string;
@@ -18082,10 +17636,8 @@ export const WidgetConfigurationHelpLinks = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WidgetConfigurationHelpLinks>;
 
 export type WidgetConfigurationI18nValueMap = { [key: string]: string | undefined };
-export const WidgetConfigurationI18nValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WidgetConfigurationI18nValueMap>;
+export const WidgetConfigurationI18nValueMap =
+  GroupRuleEmbeddedGroupIdToGroupNameMapMap as any as S.Schema<WidgetConfigurationI18nValueMap>;
 
 /** Internationalization overrides. Keys are locale codes (e.g. "en", "ja", "fr"), values are objects mapping i18n keys to string overrides. */
 export type WidgetConfigurationI18n = {
@@ -18647,14 +18199,8 @@ export interface GetDefaultErrorPageResponse {
   pageContent?: string;
   contentSecurityPolicySetting?: ContentSecurityPolicySetting;
 }
-export const GetDefaultErrorPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-  }),
-).annotate({
-  identifier: "GetDefaultErrorPageResponse",
-}) as any as S.Schema<GetDefaultErrorPageResponse>;
+export const GetDefaultErrorPageResponse =
+  GetCustomizedErrorPageResponse as any as S.Schema<GetDefaultErrorPageResponse>;
 
 export interface GetDefaultProvisioningConnectionForApplicationRequest {
   /** Application ID */
@@ -18710,15 +18256,13 @@ export type ProvisioningConnectionStatus = "DISABLED" | "ENABLED" | "UNKNOWN";
 export const ProvisioningConnectionStatus = S.String;
 
 export type HrefHintsGuidanceObjectAllowList = Array<HttpMethod>;
-export const HrefHintsGuidanceObjectAllowList = /*@__PURE__*/ S.Array(
-  HttpMethod,
-) as any as S.Schema<HrefHintsGuidanceObjectAllowList>;
+export const HrefHintsGuidanceObjectAllowList =
+  HrefHintsAllowList as any as S.Schema<HrefHintsGuidanceObjectAllowList>;
 
 /** Specifies the URI to invoke for granting scope consent required to complete the OAuth 2.0 connection */
 export type HrefHintsGuidanceObjectGuidanceList = Array<string>;
-export const HrefHintsGuidanceObjectGuidanceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HrefHintsGuidanceObjectGuidanceList>;
+export const HrefHintsGuidanceObjectGuidanceList =
+  EventHookSubscribedEventTypes as any as S.Schema<HrefHintsGuidanceObjectGuidanceList>;
 
 export interface HrefHintsGuidanceObject {
   allow?: HrefHintsGuidanceObjectAllowList;
@@ -18809,17 +18353,8 @@ export interface GetDefaultSignInPageResponse {
   widgetCustomizations?: GetCustomizedSignInPageResponseWidgetCustomizations;
   widgetVersion?: string;
 }
-export const GetDefaultSignInPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-    widgetConfiguration: S.optional(WidgetConfiguration),
-    widgetCustomizations: S.optional(GetCustomizedSignInPageResponseWidgetCustomizations),
-    widgetVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDefaultSignInPageResponse",
-}) as any as S.Schema<GetDefaultSignInPageResponse>;
+export const GetDefaultSignInPageResponse =
+  GetCustomizedSignInPageResponse as any as S.Schema<GetDefaultSignInPageResponse>;
 
 export interface GetDeviceRequest {
   /** `id` of the device */
@@ -19082,12 +18617,7 @@ export interface OSAccountDisplayName {
   /** Display name of the OS account */
   value?: string;
 }
-export const OSAccountDisplayName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sensitive: S.optional(S.Boolean),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "OSAccountDisplayName" }) as any as S.Schema<OSAccountDisplayName>;
+export const OSAccountDisplayName = DeviceDisplayName as any as S.Schema<OSAccountDisplayName>;
 
 /** Status of the OS account */
 export type OSAccountWindowsOutputStatus = "ACTIVE" | "DELETED";
@@ -19415,9 +18945,8 @@ export const GetDRStatusByDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of domains and their disaster recovery status */
 export type GetDRStatusByDomainResponseStatusList = Array<DRStatusItem>;
-export const GetDRStatusByDomainResponseStatusList = /*@__PURE__*/ S.Array(
-  DRStatusItem,
-) as any as S.Schema<GetDRStatusByDomainResponseStatusList>;
+export const GetDRStatusByDomainResponseStatusList =
+  GetDRStatusResponseStatusList as any as S.Schema<GetDRStatusByDomainResponseStatusList>;
 
 export interface GetDRStatusByDomainResponse {
   /** List of domains and their disaster recovery status */
@@ -19474,20 +19003,8 @@ export interface GetEmailCustomizationResponse {
   lastUpdated?: string;
   _links?: CreateEmailCustomizationResponseLinks;
 }
-export const GetEmailCustomizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.String,
-    subject: S.String,
-    created: S.optional(S.String),
-    id: S.optional(S.String),
-    isDefault: S.optional(S.Boolean),
-    language: S.String,
-    lastUpdated: S.optional(S.String),
-    _links: S.optional(CreateEmailCustomizationResponseLinks),
-  }),
-).annotate({
-  identifier: "GetEmailCustomizationResponse",
-}) as any as S.Schema<GetEmailCustomizationResponse>;
+export const GetEmailCustomizationResponse =
+  CreateEmailCustomizationResponse as any as S.Schema<GetEmailCustomizationResponse>;
 
 export interface GetEmailDefaultContentRequest {
   /** The ID of the brand */
@@ -19580,9 +19097,8 @@ export const GetEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmailDomainRequest" }) as any as S.Schema<GetEmailDomainRequest>;
 
 export type GetEmailDomainResponseDnsValidationRecordsList = Array<EmailDomainDNSRecord>;
-export const GetEmailDomainResponseDnsValidationRecordsList = /*@__PURE__*/ S.Array(
-  EmailDomainDNSRecord,
-) as any as S.Schema<GetEmailDomainResponseDnsValidationRecordsList>;
+export const GetEmailDomainResponseDnsValidationRecordsList =
+  CreateEmailDomainResponseDnsValidationRecordsList as any as S.Schema<GetEmailDomainResponseDnsValidationRecordsList>;
 
 export type GetEmailDomainResponseEmbeddedBrandsList = Array<Brand>;
 export const GetEmailDomainResponseEmbeddedBrandsList = /*@__PURE__*/ S.Array(
@@ -20174,10 +19690,8 @@ export const GetGroupAttributeQueryResultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of requested attributes and their values */
 export type GroupProfileResultProfileMap = { [key: string]: unknown | undefined };
-export const GroupProfileResultProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GroupProfileResultProfileMap>;
+export const GroupProfileResultProfileMap =
+  GroupAssignmentProfile as any as S.Schema<GroupProfileResultProfileMap>;
 
 export interface GroupProfileResult {
   /** The ID of the group */
@@ -20247,14 +19761,12 @@ export const GroupSchemaAttributeEnumList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GroupSchemaAttributeEnumList>;
 
 export type UserSchemaAttributeItemsEnumList = Array<string>;
-export const UserSchemaAttributeItemsEnumList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSchemaAttributeItemsEnumList>;
+export const UserSchemaAttributeItemsEnumList =
+  EventHookSubscribedEventTypes as any as S.Schema<UserSchemaAttributeItemsEnumList>;
 
 export type UserSchemaAttributeItemsOneOfList = Array<UserSchemaAttributeEnum>;
-export const UserSchemaAttributeItemsOneOfList = /*@__PURE__*/ S.Array(
-  UserSchemaAttributeEnum,
-) as any as S.Schema<UserSchemaAttributeItemsOneOfList>;
+export const UserSchemaAttributeItemsOneOfList =
+  UserSchemaAttributeOneOfList as any as S.Schema<UserSchemaAttributeItemsOneOfList>;
 
 export interface UserSchemaAttributeItems {
   enum?: UserSchemaAttributeItemsEnumList;
@@ -20271,15 +19783,13 @@ export const UserSchemaAttributeItems = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty array of valid JSON schemas. The `oneOf` key is only supported in conjunction with `enum` and provides a mechanism to return a display name for the `enum` value.<br> Each schema has the following format: ``` { "const": "enumValue", "title": "display name" } ``` When `enum` is used in conjunction with `oneOf`, you must keep the set of enumerated values and their order.<br> For example: ``` "enum": ["S","M","L","XL"], "oneOf": [ {"const": "S", "title": "Small"}, {"const": "M", "title": "Medium"}, {"const": "L", "title": "Large"}, {"const": "XL", "title": "Extra Large"} ] ``` */
 export type GroupSchemaAttributeOneOfList = Array<UserSchemaAttributeEnum>;
-export const GroupSchemaAttributeOneOfList = /*@__PURE__*/ S.Array(
-  UserSchemaAttributeEnum,
-) as any as S.Schema<GroupSchemaAttributeOneOfList>;
+export const GroupSchemaAttributeOneOfList =
+  UserSchemaAttributeOneOfList as any as S.Schema<GroupSchemaAttributeOneOfList>;
 
 /** Access control permissions for the property */
 export type GroupSchemaAttributePermissionsList = Array<UserSchemaAttributePermission>;
-export const GroupSchemaAttributePermissionsList = /*@__PURE__*/ S.Array(
-  UserSchemaAttributePermission,
-) as any as S.Schema<GroupSchemaAttributePermissionsList>;
+export const GroupSchemaAttributePermissionsList =
+  UserSchemaAttributePermissionsList as any as S.Schema<GroupSchemaAttributePermissionsList>;
 
 export interface GroupSchemaAttribute {
   /** Description of the property */
@@ -20356,9 +19866,8 @@ export const GroupSchemaBaseProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection indicating required property names */
 export type GroupSchemaBaseRequiredList = Array<string>;
-export const GroupSchemaBaseRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupSchemaBaseRequiredList>;
+export const GroupSchemaBaseRequiredList =
+  EventHookSubscribedEventTypes as any as S.Schema<GroupSchemaBaseRequiredList>;
 
 export interface GroupSchemaBase {
   /** The subschema name */
@@ -20388,9 +19897,8 @@ export const GroupSchemaCustomPropertiesMap = /*@__PURE__*/ S.Record(
 
 /** A collection indicating required property names */
 export type GroupSchemaCustomRequiredList = Array<string>;
-export const GroupSchemaCustomRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupSchemaCustomRequiredList>;
+export const GroupSchemaCustomRequiredList =
+  EventHookSubscribedEventTypes as any as S.Schema<GroupSchemaCustomRequiredList>;
 
 /** All custom profile properties are defined in a profile subschema with the resolution scope `#custom` */
 export interface GroupSchemaCustom {
@@ -20526,17 +20034,13 @@ export const GetIdentityProviderApplicationUserRequest = /*@__PURE__*/ S.suspend
 
 /** IdP-specific profile for the user. IdP user profiles are IdP-specific but may be customized by the Profile Editor in the Admin Console. > **Note:** Okta variable names have reserved characters that may conflict with the name of an IdP assertion attribute. You can use the **External name** to define the attribute name as defined in an IdP assertion such as a SAML attribute name. */
 export type IdentityProviderApplicationUserProfileMap = { [key: string]: unknown | undefined };
-export const IdentityProviderApplicationUserProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IdentityProviderApplicationUserProfileMap>;
+export const IdentityProviderApplicationUserProfileMap =
+  GroupAssignmentProfile as any as S.Schema<IdentityProviderApplicationUserProfileMap>;
 
 /** Embedded resources related to the IdP user */
 export type IdentityProviderApplicationUserEmbeddedMap = { [key: string]: unknown | undefined };
-export const IdentityProviderApplicationUserEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IdentityProviderApplicationUserEmbeddedMap>;
+export const IdentityProviderApplicationUserEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<IdentityProviderApplicationUserEmbeddedMap>;
 
 export type HrefObjectNextLink = HrefObjectSelfLink;
 export const HrefObjectNextLink = HrefObjectSelfLink;
@@ -20664,9 +20168,8 @@ export const GetIdentitySourceGroupMembershipsRequest = /*@__PURE__*/ S.suspend(
 
 /** A list of app user external IDs that are members of the group in Okta */
 export type GroupMembershipsResponseSchemaMemberExternalIdsList = Array<string>;
-export const GroupMembershipsResponseSchemaMemberExternalIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GroupMembershipsResponseSchemaMemberExternalIdsList>;
+export const GroupMembershipsResponseSchemaMemberExternalIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<GroupMembershipsResponseSchemaMemberExternalIdsList>;
 
 export interface GroupMembershipsResponseSchema {
   /** A list of app user external IDs that are members of the group in Okta */
@@ -20858,15 +20361,13 @@ export const GetLogStreamSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty array of valid JSON schemas. Okta only supports `oneOf` for specifying display names for an `enum`. Each schema has the following format: ``` { "const": "enumValue", "title": "display name" } ``` */
 export type LogStreamSchemaOneOfList = Array<UserSchemaAttributeEnum>;
-export const LogStreamSchemaOneOfList = /*@__PURE__*/ S.Array(
-  UserSchemaAttributeEnum,
-) as any as S.Schema<LogStreamSchemaOneOfList>;
+export const LogStreamSchemaOneOfList =
+  UserSchemaAttributeOneOfList as any as S.Schema<LogStreamSchemaOneOfList>;
 
 /** Required properties for this log stream schema object */
 export type LogStreamSchemaRequiredList = Array<string>;
-export const LogStreamSchemaRequiredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogStreamSchemaRequiredList>;
+export const LogStreamSchemaRequiredList =
+  EventHookSubscribedEventTypes as any as S.Schema<LogStreamSchemaRequiredList>;
 
 export interface LogStreamSchema {
   /** JSON schema version identifier */
@@ -21056,9 +20557,8 @@ export const GetOAuth2TokenForApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scope names attached to the Token */
 export type OAuth2RefreshTokenScopesList = Array<string>;
-export const OAuth2RefreshTokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OAuth2RefreshTokenScopesList>;
+export const OAuth2RefreshTokenScopesList =
+  EventHookSubscribedEventTypes as any as S.Schema<OAuth2RefreshTokenScopesList>;
 
 /** Status */
 export type GrantOrTokenStatus = "ACTIVE" | "REVOKED";
@@ -21695,14 +21195,8 @@ export interface GetPreviewErrorPageResponse {
   pageContent?: string;
   contentSecurityPolicySetting?: ContentSecurityPolicySetting;
 }
-export const GetPreviewErrorPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-  }),
-).annotate({
-  identifier: "GetPreviewErrorPageResponse",
-}) as any as S.Schema<GetPreviewErrorPageResponse>;
+export const GetPreviewErrorPageResponse =
+  GetCustomizedErrorPageResponse as any as S.Schema<GetPreviewErrorPageResponse>;
 
 export interface GetPreviewSignInPageRequest {
   /** The ID of the brand */
@@ -21731,17 +21225,8 @@ export interface GetPreviewSignInPageResponse {
   widgetCustomizations?: GetCustomizedSignInPageResponseWidgetCustomizations;
   widgetVersion?: string;
 }
-export const GetPreviewSignInPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-    widgetConfiguration: S.optional(WidgetConfiguration),
-    widgetCustomizations: S.optional(GetCustomizedSignInPageResponseWidgetCustomizations),
-    widgetVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPreviewSignInPageResponse",
-}) as any as S.Schema<GetPreviewSignInPageResponse>;
+export const GetPreviewSignInPageResponse =
+  GetCustomizedSignInPageResponse as any as S.Schema<GetPreviewSignInPageResponse>;
 
 export interface GetPrincipalRateLimitEntityRequest {
   /** ID of the principal rate limit */
@@ -21823,14 +21308,7 @@ export interface ProfileMappingTarget {
   type?: string;
   _links?: UserTypeLinks;
 }
-export const ProfileMappingTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    _links: S.optional(UserTypeLinks),
-  }),
-).annotate({ identifier: "ProfileMappingTarget" }) as any as S.Schema<ProfileMappingTarget>;
+export const ProfileMappingTarget = ProfileMappingSource as any as S.Schema<ProfileMappingTarget>;
 
 /** The profile mapping object describes a mapping between an Okta user's and an app user's properties using [JSON Schema Draft 4](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04). > **Note:** Same type source/target mappings aren't supported by this API. Profile mappings must be between Okta and an app. */
 export interface ProfileMapping {
@@ -22399,13 +21877,8 @@ export interface OAuth2ScopeConsentGrantEmbeddedScope {
   /** The name of the Okta scope for which consent is granted */
   id?: string;
 }
-export const OAuth2ScopeConsentGrantEmbeddedScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OAuth2ScopeConsentGrantEmbeddedScope",
-}) as any as S.Schema<OAuth2ScopeConsentGrantEmbeddedScope>;
+export const OAuth2ScopeConsentGrantEmbeddedScope =
+  TokenAuthorizationServerPolicyRuleActionInlineHook as any as S.Schema<OAuth2ScopeConsentGrantEmbeddedScope>;
 
 /** Embedded resources related to the Grant */
 export interface OAuth2ScopeConsentGrantEmbedded {
@@ -22743,9 +22216,8 @@ export const GetSubscriptionsNotificationTypeRoleRequest = /*@__PURE__*/ S.suspe
 
 /** An array of sources send notifications to users. > **Note**: Currently, Okta only allows `email` channels. */
 export type SubscriptionChannelsList = Array<string>;
-export const SubscriptionChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionChannelsList>;
+export const SubscriptionChannelsList =
+  EventHookSubscribedEventTypes as any as S.Schema<SubscriptionChannelsList>;
 
 /** The type of notification */
 export type NotificationType =
@@ -22888,10 +22360,8 @@ export const GetUserResponseType = CreateUserRequestType;
 
 /** Embedded resources related to the user using the [JSON Hypertext Application Language](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-06) specification */
 export type GetUserResponseEmbeddedMap = { [key: string]: unknown | undefined };
-export const GetUserResponseEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetUserResponseEmbeddedMap>;
+export const GetUserResponseEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<GetUserResponseEmbeddedMap>;
 
 /** Specifies link relations (see [Web Linking](https://datatracker.ietf.org/doc/html/rfc8288) available for the current status of a user. The links object is used for dynamic discovery of related resources, lifecycle operations, and credential operations. The links object is read-only. For an individual user result, the links object contains a full set of link relations available for that user as determined by your policies. For a collection of users, the links object contains only the `self` link. Operations that return a collection of users include [List all users](https://developer.okta.com/docs/api/openapi/okta-management/management/user/listusers) and [List all group member users](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/Group/#tag/Group/operation/listGroupUsers). */
 export type GetUserResponseLinks = UserOutputLinks;
@@ -23191,11 +22661,8 @@ export const GetWebAuthnWellKnownURIRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAuthnWellKnownURIRequest>;
 
 export type GetWebAuthnWellKnownURIResponse = unknown;
-export const GetWebAuthnWellKnownURIResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAuthnWellKnownURIResponse",
-}) as any as S.Schema<GetWebAuthnWellKnownURIResponse>;
+export const GetWebAuthnWellKnownURIResponse =
+  GetAppleAppSiteAssociationWellKnownURIResponse as any as S.Schema<GetWebAuthnWellKnownURIResponse>;
 
 export interface GetWellKnownAppAuthenticatorConfigurationRequest {
   /** Filters app authenticator configurations by `oauthClientId` */
@@ -23419,9 +22886,8 @@ export const WellKnownSSFMetadataDefaultSubjects = S.String;
 
 /** An array of supported SET delivery methods */
 export type WellKnownSSFMetadataDeliveryMethodsSupportedList = Array<string>;
-export const WellKnownSSFMetadataDeliveryMethodsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WellKnownSSFMetadataDeliveryMethodsSupportedList>;
+export const WellKnownSSFMetadataDeliveryMethodsSupportedList =
+  EventHookSubscribedEventTypes as any as S.Schema<WellKnownSSFMetadataDeliveryMethodsSupportedList>;
 
 /** Metadata about Okta as a transmitter and relevant information for configuration. */
 export interface WellKnownSSFMetadata {
@@ -23471,10 +22937,8 @@ export const GetYubikeyOtpTokenByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specified profile information for token */
 export type UserFactorYubikeyOtpTokenProfileMap = { [key: string]: unknown | undefined };
-export const UserFactorYubikeyOtpTokenProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserFactorYubikeyOtpTokenProfileMap>;
+export const UserFactorYubikeyOtpTokenProfileMap =
+  GroupAssignmentProfile as any as S.Schema<UserFactorYubikeyOtpTokenProfileMap>;
 
 /** Token status */
 export type UserFactorYubikeyOtpTokenStatus =
@@ -23487,10 +22951,8 @@ export type UserFactorYubikeyOtpTokenStatus =
 export const UserFactorYubikeyOtpTokenStatus = S.String;
 
 export type UserFactorYubikeyOtpTokenEmbeddedMap = { [key: string]: unknown | undefined };
-export const UserFactorYubikeyOtpTokenEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserFactorYubikeyOtpTokenEmbeddedMap>;
+export const UserFactorYubikeyOtpTokenEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<UserFactorYubikeyOtpTokenEmbeddedMap>;
 
 export interface UserFactorYubikeyOtpToken {
   /** Timestamp when the token was created */
@@ -23643,9 +23105,8 @@ export const ListAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAgentPoolsRequest" }) as any as S.Schema<ListAgentPoolsRequest>;
 
 export type AgentPoolAgentsList = Array<Agent>;
-export const AgentPoolAgentsList = /*@__PURE__*/ S.Array(
-  Agent,
-) as any as S.Schema<AgentPoolAgentsList>;
+export const AgentPoolAgentsList =
+  AgentPoolUpdateAgentsList as any as S.Schema<AgentPoolAgentsList>;
 
 /** An agent pool is a collection of agents that serve a common purpose. An agent pool has a unique ID within an org, and contains a collection of agents disjoint to every other agent pool, meaning that no two agent pools share an agent. */
 export interface AgentPool {
@@ -23779,9 +23240,8 @@ export const ListAllSignInWidgetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAllSignInWidgetVersionsRequest>;
 
 export type ListAllSignInWidgetVersionsResponseBodyList = Array<string>;
-export const ListAllSignInWidgetVersionsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAllSignInWidgetVersionsResponseBodyList>;
+export const ListAllSignInWidgetVersionsResponseBodyList =
+  EventHookSubscribedEventTypes as any as S.Schema<ListAllSignInWidgetVersionsResponseBodyList>;
 
 export type ListAllSignInWidgetVersionsResponse = ListAllSignInWidgetVersionsResponseBodyList;
 export const ListAllSignInWidgetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -23913,9 +23373,8 @@ export const ListApplicationKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApplicationKeysRequest>;
 
 export type ListApplicationKeysResponseBodyList = Array<JsonWebKey>;
-export const ListApplicationKeysResponseBodyList = /*@__PURE__*/ S.Array(
-  JsonWebKey,
-) as any as S.Schema<ListApplicationKeysResponseBodyList>;
+export const ListApplicationKeysResponseBodyList =
+  AppConnectionUserProvisionJWKListKeysList as any as S.Schema<ListApplicationKeysResponseBodyList>;
 
 export type ListApplicationKeysResponse = ListApplicationKeysResponseBodyList;
 export const ListApplicationKeysResponse = /*@__PURE__*/ S.suspend(() =>
@@ -24042,20 +23501,12 @@ export const ListApplicationTargetsForApplicationAdministratorRoleForUserRequest
 export type ListApplicationTargetsForApplicationAdministratorRoleForUserResponseBodyList =
   Array<CatalogApplication>;
 export const ListApplicationTargetsForApplicationAdministratorRoleForUserResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CatalogApplication,
-  ) as any as S.Schema<ListApplicationTargetsForApplicationAdministratorRoleForUserResponseBodyList>;
+  ListApplicationTargetsForApplicationAdministratorRoleForGroupResponseBodyList as any as S.Schema<ListApplicationTargetsForApplicationAdministratorRoleForUserResponseBodyList>;
 
 export type ListApplicationTargetsForApplicationAdministratorRoleForUserResponse =
   ListApplicationTargetsForApplicationAdministratorRoleForUserResponseBodyList;
 export const ListApplicationTargetsForApplicationAdministratorRoleForUserResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListApplicationTargetsForApplicationAdministratorRoleForUserResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ListApplicationTargetsForApplicationAdministratorRoleForUserResponse",
-  }) as any as S.Schema<ListApplicationTargetsForApplicationAdministratorRoleForUserResponse>;
+  ListApplicationTargetsForApplicationAdministratorRoleForGroupResponse as any as S.Schema<ListApplicationTargetsForApplicationAdministratorRoleForUserResponse>;
 
 export interface ListApplicationUsersRequest {
   /** Application ID */
@@ -24198,9 +23649,8 @@ export const ListAppTargetRoleToClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAppTargetRoleToClientRequest>;
 
 export type ListAppTargetRoleToClientResponseBodyList = Array<CatalogApplication>;
-export const ListAppTargetRoleToClientResponseBodyList = /*@__PURE__*/ S.Array(
-  CatalogApplication,
-) as any as S.Schema<ListAppTargetRoleToClientResponseBodyList>;
+export const ListAppTargetRoleToClientResponseBodyList =
+  StandardRoleEmbeddedTargetsCatalogAppsList as any as S.Schema<ListAppTargetRoleToClientResponseBodyList>;
 
 export type ListAppTargetRoleToClientResponse = ListAppTargetRoleToClientResponseBodyList;
 export const ListAppTargetRoleToClientResponse = /*@__PURE__*/ S.suspend(() =>
@@ -24228,9 +23678,8 @@ export const ListAssignedApplicationsForGroupRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListAssignedApplicationsForGroupRequest>;
 
 export type ListAssignedApplicationsForGroupResponseBodyList = Array<Application>;
-export const ListAssignedApplicationsForGroupResponseBodyList = /*@__PURE__*/ S.Array(
-  Application,
-) as any as S.Schema<ListAssignedApplicationsForGroupResponseBodyList>;
+export const ListAssignedApplicationsForGroupResponseBodyList =
+  ListApplicationsResponseBodyList as any as S.Schema<ListAssignedApplicationsForGroupResponseBodyList>;
 
 export type ListAssignedApplicationsForGroupResponse =
   ListAssignedApplicationsForGroupResponseBodyList;
@@ -24303,17 +23752,13 @@ export const ListAssociatedServersByTrustedTypeRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListAssociatedServersByTrustedTypeRequest>;
 
 export type ListAssociatedServersByTrustedTypeResponseBodyList = Array<AuthorizationServer>;
-export const ListAssociatedServersByTrustedTypeResponseBodyList = /*@__PURE__*/ S.Array(
-  AuthorizationServer,
-) as any as S.Schema<ListAssociatedServersByTrustedTypeResponseBodyList>;
+export const ListAssociatedServersByTrustedTypeResponseBodyList =
+  CreateAssociatedServersResponseBodyList as any as S.Schema<ListAssociatedServersByTrustedTypeResponseBodyList>;
 
 export type ListAssociatedServersByTrustedTypeResponse =
   ListAssociatedServersByTrustedTypeResponseBodyList;
-export const ListAssociatedServersByTrustedTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListAssociatedServersByTrustedTypeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListAssociatedServersByTrustedTypeResponse",
-}) as any as S.Schema<ListAssociatedServersByTrustedTypeResponse>;
+export const ListAssociatedServersByTrustedTypeResponse =
+  CreateAssociatedServersResponse as any as S.Schema<ListAssociatedServersByTrustedTypeResponse>;
 
 export type ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersItem = "phone";
 export const ListAuthenticatorEnrollmentsRequestDiscloseIdentifiersItem = S.String;
@@ -24558,16 +24003,12 @@ export const ListAuthorizationServersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAuthorizationServersRequest>;
 
 export type ListAuthorizationServersResponseBodyList = Array<AuthorizationServer>;
-export const ListAuthorizationServersResponseBodyList = /*@__PURE__*/ S.Array(
-  AuthorizationServer,
-) as any as S.Schema<ListAuthorizationServersResponseBodyList>;
+export const ListAuthorizationServersResponseBodyList =
+  CreateAssociatedServersResponseBodyList as any as S.Schema<ListAuthorizationServersResponseBodyList>;
 
 export type ListAuthorizationServersResponse = ListAuthorizationServersResponseBodyList;
-export const ListAuthorizationServersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListAuthorizationServersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListAuthorizationServersResponse",
-}) as any as S.Schema<ListAuthorizationServersResponse>;
+export const ListAuthorizationServersResponse =
+  CreateAssociatedServersResponse as any as S.Schema<ListAuthorizationServersResponse>;
 
 export interface ListBehaviorDetectionRulesRequest {}
 export const ListBehaviorDetectionRulesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -24678,9 +24119,8 @@ export const ListBrandDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Each element of the array defines an individual domain */
 export type BrandDomainsDomainsList = Array<DomainResponse>;
-export const BrandDomainsDomainsList = /*@__PURE__*/ S.Array(
-  DomainResponse,
-) as any as S.Schema<BrandDomainsDomainsList>;
+export const BrandDomainsDomainsList =
+  GetBrandResponseEmbeddedDomainsList as any as S.Schema<BrandDomainsDomainsList>;
 
 /** Defines a list of domains with a subset of the properties for each domain */
 export interface BrandDomains {
@@ -24721,14 +24161,12 @@ export const ListBrandsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBrandsRequest" }) as any as S.Schema<ListBrandsRequest>;
 
 export type BrandWithEmbeddedEmbeddedThemesList = Array<ThemeResponse>;
-export const BrandWithEmbeddedEmbeddedThemesList = /*@__PURE__*/ S.Array(
-  ThemeResponse,
-) as any as S.Schema<BrandWithEmbeddedEmbeddedThemesList>;
+export const BrandWithEmbeddedEmbeddedThemesList =
+  GetBrandResponseEmbeddedThemesList as any as S.Schema<BrandWithEmbeddedEmbeddedThemesList>;
 
 export type BrandWithEmbeddedEmbeddedDomainsList = Array<DomainResponse>;
-export const BrandWithEmbeddedEmbeddedDomainsList = /*@__PURE__*/ S.Array(
-  DomainResponse,
-) as any as S.Schema<BrandWithEmbeddedEmbeddedDomainsList>;
+export const BrandWithEmbeddedEmbeddedDomainsList =
+  GetBrandResponseEmbeddedDomainsList as any as S.Schema<BrandWithEmbeddedEmbeddedDomainsList>;
 
 export interface BrandWithEmbeddedEmbedded {
   themes?: BrandWithEmbeddedEmbeddedThemesList;
@@ -24805,9 +24243,8 @@ export const ListBrandThemesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBrandThemesRequest" }) as any as S.Schema<ListBrandThemesRequest>;
 
 export type ListBrandThemesResponseBodyList = Array<ThemeResponse>;
-export const ListBrandThemesResponseBodyList = /*@__PURE__*/ S.Array(
-  ThemeResponse,
-) as any as S.Schema<ListBrandThemesResponseBodyList>;
+export const ListBrandThemesResponseBodyList =
+  GetBrandResponseEmbeddedThemesList as any as S.Schema<ListBrandThemesResponseBodyList>;
 
 export type ListBrandThemesResponse = ListBrandThemesResponseBodyList;
 export const ListBrandThemesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -25084,20 +24521,15 @@ export const ListCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Each element of the array defines an individual domain */
 export type DomainListResponseDomainsList = Array<DomainResponse>;
-export const DomainListResponseDomainsList = /*@__PURE__*/ S.Array(
-  DomainResponse,
-) as any as S.Schema<DomainListResponseDomainsList>;
+export const DomainListResponseDomainsList =
+  GetBrandResponseEmbeddedDomainsList as any as S.Schema<DomainListResponseDomainsList>;
 
 /** Defines a list of domains with a subset of the properties for each domain */
 export interface DomainListResponse {
   /** Each element of the array defines an individual domain */
   domains?: DomainListResponseDomainsList;
 }
-export const DomainListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domains: S.optional(DomainListResponseDomainsList),
-  }),
-).annotate({ identifier: "DomainListResponse" }) as any as S.Schema<DomainListResponse>;
+export const DomainListResponse = BrandDomains as any as S.Schema<DomainListResponse>;
 
 export interface ListDefaultDevicePostureChecksRequest {}
 export const ListDefaultDevicePostureChecksRequest = /*@__PURE__*/ S.suspend(() =>
@@ -25207,16 +24639,12 @@ export const ListDevicePostureChecksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDevicePostureChecksRequest>;
 
 export type ListDevicePostureChecksResponseBodyList = Array<DevicePostureCheck>;
-export const ListDevicePostureChecksResponseBodyList = /*@__PURE__*/ S.Array(
-  DevicePostureCheck,
-) as any as S.Schema<ListDevicePostureChecksResponseBodyList>;
+export const ListDevicePostureChecksResponseBodyList =
+  ListDefaultDevicePostureChecksResponseBodyList as any as S.Schema<ListDevicePostureChecksResponseBodyList>;
 
 export type ListDevicePostureChecksResponse = ListDevicePostureChecksResponseBodyList;
-export const ListDevicePostureChecksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDevicePostureChecksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDevicePostureChecksResponse",
-}) as any as S.Schema<ListDevicePostureChecksResponse>;
+export const ListDevicePostureChecksResponse =
+  ListDefaultDevicePostureChecksResponse as any as S.Schema<ListDevicePostureChecksResponse>;
 
 export type ListDevicesRequestExpand = "user" | "userSummary";
 export const ListDevicesRequestExpand = S.String;
@@ -25337,9 +24765,8 @@ export const ListDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDeviceUsersRequest" }) as any as S.Schema<ListDeviceUsersRequest>;
 
 export type ListDeviceUsersResponseBodyList = Array<DeviceUserOutput>;
-export const ListDeviceUsersResponseBodyList = /*@__PURE__*/ S.Array(
-  DeviceUserOutput,
-) as any as S.Schema<ListDeviceUsersResponseBodyList>;
+export const ListDeviceUsersResponseBodyList =
+  DeviceListOutputEmbeddedUsersList as any as S.Schema<ListDeviceUsersResponseBodyList>;
 
 export type ListDeviceUsersResponse = ListDeviceUsersResponseBodyList;
 export const ListDeviceUsersResponse = /*@__PURE__*/ S.suspend(() =>
@@ -25438,25 +24865,18 @@ export const ListEmailDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEmailDomainsRequest" }) as any as S.Schema<ListEmailDomainsRequest>;
 
 export type EmailDomainResponseWithEmbeddedDnsValidationRecordsList = Array<EmailDomainDNSRecord>;
-export const EmailDomainResponseWithEmbeddedDnsValidationRecordsList = /*@__PURE__*/ S.Array(
-  EmailDomainDNSRecord,
-) as any as S.Schema<EmailDomainResponseWithEmbeddedDnsValidationRecordsList>;
+export const EmailDomainResponseWithEmbeddedDnsValidationRecordsList =
+  CreateEmailDomainResponseDnsValidationRecordsList as any as S.Schema<EmailDomainResponseWithEmbeddedDnsValidationRecordsList>;
 
 export type EmailDomainResponseWithEmbeddedEmbeddedBrandsList = Array<Brand>;
-export const EmailDomainResponseWithEmbeddedEmbeddedBrandsList = /*@__PURE__*/ S.Array(
-  Brand,
-) as any as S.Schema<EmailDomainResponseWithEmbeddedEmbeddedBrandsList>;
+export const EmailDomainResponseWithEmbeddedEmbeddedBrandsList =
+  GetEmailDomainResponseEmbeddedBrandsList as any as S.Schema<EmailDomainResponseWithEmbeddedEmbeddedBrandsList>;
 
 export interface EmailDomainResponseWithEmbeddedEmbedded {
   brands?: EmailDomainResponseWithEmbeddedEmbeddedBrandsList;
 }
-export const EmailDomainResponseWithEmbeddedEmbedded = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brands: S.optional(EmailDomainResponseWithEmbeddedEmbeddedBrandsList),
-  }),
-).annotate({
-  identifier: "EmailDomainResponseWithEmbeddedEmbedded",
-}) as any as S.Schema<EmailDomainResponseWithEmbeddedEmbedded>;
+export const EmailDomainResponseWithEmbeddedEmbedded =
+  GetEmailDomainResponseEmbedded as any as S.Schema<EmailDomainResponseWithEmbeddedEmbedded>;
 
 export interface EmailDomainResponseWithEmbedded {
   displayName: string;
@@ -25632,16 +25052,12 @@ export const ListFeatureDependentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFeatureDependentsRequest>;
 
 export type ListFeatureDependentsResponseBodyList = Array<Feature>;
-export const ListFeatureDependentsResponseBodyList = /*@__PURE__*/ S.Array(
-  Feature,
-) as any as S.Schema<ListFeatureDependentsResponseBodyList>;
+export const ListFeatureDependentsResponseBodyList =
+  ListFeatureDependenciesResponseBodyList as any as S.Schema<ListFeatureDependentsResponseBodyList>;
 
 export type ListFeatureDependentsResponse = ListFeatureDependentsResponseBodyList;
-export const ListFeatureDependentsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListFeatureDependentsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListFeatureDependentsResponse",
-}) as any as S.Schema<ListFeatureDependentsResponse>;
+export const ListFeatureDependentsResponse =
+  ListFeatureDependenciesResponse as any as S.Schema<ListFeatureDependentsResponse>;
 
 export interface ListFeaturesRequest {}
 export const ListFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -25649,9 +25065,8 @@ export const ListFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFeaturesRequest" }) as any as S.Schema<ListFeaturesRequest>;
 
 export type ListFeaturesResponseBodyList = Array<Feature>;
-export const ListFeaturesResponseBodyList = /*@__PURE__*/ S.Array(
-  Feature,
-) as any as S.Schema<ListFeaturesResponseBodyList>;
+export const ListFeaturesResponseBodyList =
+  ListFeatureDependenciesResponseBodyList as any as S.Schema<ListFeaturesResponseBodyList>;
 
 export type ListFeaturesResponse = ListFeaturesResponseBodyList;
 export const ListFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -25946,9 +25361,8 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
 
 export type ListGroupsResponseBodyList = Array<Group>;
-export const ListGroupsResponseBodyList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListGroupsResponseBodyList>;
+export const ListGroupsResponseBodyList =
+  StandardRoleEmbeddedTargetsGroupsList as any as S.Schema<ListGroupsResponseBodyList>;
 
 export type ListGroupsResponse = ListGroupsResponseBodyList;
 export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -25983,9 +25397,8 @@ export const ListGroupTargetRoleForClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupTargetRoleForClientRequest>;
 
 export type ListGroupTargetRoleForClientResponseBodyList = Array<Group>;
-export const ListGroupTargetRoleForClientResponseBodyList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListGroupTargetRoleForClientResponseBodyList>;
+export const ListGroupTargetRoleForClientResponseBodyList =
+  StandardRoleEmbeddedTargetsGroupsList as any as S.Schema<ListGroupTargetRoleForClientResponseBodyList>;
 
 export type ListGroupTargetRoleForClientResponse = ListGroupTargetRoleForClientResponseBodyList;
 export const ListGroupTargetRoleForClientResponse = /*@__PURE__*/ S.suspend(() =>
@@ -26022,16 +25435,12 @@ export const ListGroupTargetsForGroupRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupTargetsForGroupRoleRequest>;
 
 export type ListGroupTargetsForGroupRoleResponseBodyList = Array<Group>;
-export const ListGroupTargetsForGroupRoleResponseBodyList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListGroupTargetsForGroupRoleResponseBodyList>;
+export const ListGroupTargetsForGroupRoleResponseBodyList =
+  StandardRoleEmbeddedTargetsGroupsList as any as S.Schema<ListGroupTargetsForGroupRoleResponseBodyList>;
 
 export type ListGroupTargetsForGroupRoleResponse = ListGroupTargetsForGroupRoleResponseBodyList;
-export const ListGroupTargetsForGroupRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  ListGroupTargetsForGroupRoleResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListGroupTargetsForGroupRoleResponse",
-}) as any as S.Schema<ListGroupTargetsForGroupRoleResponse>;
+export const ListGroupTargetsForGroupRoleResponse =
+  ListGroupTargetRoleForClientResponse as any as S.Schema<ListGroupTargetsForGroupRoleResponse>;
 
 export interface ListGroupTargetsForRoleRequest {
   /** ID of an existing Okta user */
@@ -26061,16 +25470,12 @@ export const ListGroupTargetsForRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupTargetsForRoleRequest>;
 
 export type ListGroupTargetsForRoleResponseBodyList = Array<Group>;
-export const ListGroupTargetsForRoleResponseBodyList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListGroupTargetsForRoleResponseBodyList>;
+export const ListGroupTargetsForRoleResponseBodyList =
+  StandardRoleEmbeddedTargetsGroupsList as any as S.Schema<ListGroupTargetsForRoleResponseBodyList>;
 
 export type ListGroupTargetsForRoleResponse = ListGroupTargetsForRoleResponseBodyList;
-export const ListGroupTargetsForRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  ListGroupTargetsForRoleResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListGroupTargetsForRoleResponse",
-}) as any as S.Schema<ListGroupTargetsForRoleResponse>;
+export const ListGroupTargetsForRoleResponse =
+  ListGroupTargetRoleForClientResponse as any as S.Schema<ListGroupTargetsForRoleResponse>;
 
 export interface ListGroupUsersRequest {
   /** The `id` of the group */
@@ -26089,9 +25494,8 @@ export const ListGroupUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGroupUsersRequest" }) as any as S.Schema<ListGroupUsersRequest>;
 
 export type ListGroupUsersResponseBodyList = Array<UserOutput>;
-export const ListGroupUsersResponseBodyList = /*@__PURE__*/ S.Array(
-  UserOutput,
-) as any as S.Schema<ListGroupUsersResponseBodyList>;
+export const ListGroupUsersResponseBodyList =
+  OSAccountEmbeddedOutputUsersList as any as S.Schema<ListGroupUsersResponseBodyList>;
 
 export type ListGroupUsersResponse = ListGroupUsersResponseBodyList;
 export const ListGroupUsersResponse = /*@__PURE__*/ S.suspend(() =>
@@ -26167,16 +25571,12 @@ export const ListIdentityProviderKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIdentityProviderKeysRequest>;
 
 export type ListIdentityProviderKeysResponseBodyList = Array<IdPKeyCredential>;
-export const ListIdentityProviderKeysResponseBodyList = /*@__PURE__*/ S.Array(
-  IdPKeyCredential,
-) as any as S.Schema<ListIdentityProviderKeysResponseBodyList>;
+export const ListIdentityProviderKeysResponseBodyList =
+  ListActiveIdentityProviderSigningKeyResponseBodyList as any as S.Schema<ListIdentityProviderKeysResponseBodyList>;
 
 export type ListIdentityProviderKeysResponse = ListIdentityProviderKeysResponseBodyList;
-export const ListIdentityProviderKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIdentityProviderKeysResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIdentityProviderKeysResponse",
-}) as any as S.Schema<ListIdentityProviderKeysResponse>;
+export const ListIdentityProviderKeysResponse =
+  ListActiveIdentityProviderSigningKeyResponse as any as S.Schema<ListIdentityProviderKeysResponse>;
 
 export interface ListIdentityProvidersRequest {
   /** Searches the `name` property of IdPs for matching value */
@@ -26224,17 +25624,13 @@ export const ListIdentityProviderSigningKeysRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListIdentityProviderSigningKeysRequest>;
 
 export type ListIdentityProviderSigningKeysResponseBodyList = Array<IdPKeyCredential>;
-export const ListIdentityProviderSigningKeysResponseBodyList = /*@__PURE__*/ S.Array(
-  IdPKeyCredential,
-) as any as S.Schema<ListIdentityProviderSigningKeysResponseBodyList>;
+export const ListIdentityProviderSigningKeysResponseBodyList =
+  ListActiveIdentityProviderSigningKeyResponseBodyList as any as S.Schema<ListIdentityProviderSigningKeysResponseBodyList>;
 
 export type ListIdentityProviderSigningKeysResponse =
   ListIdentityProviderSigningKeysResponseBodyList;
-export const ListIdentityProviderSigningKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIdentityProviderSigningKeysResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIdentityProviderSigningKeysResponse",
-}) as any as S.Schema<ListIdentityProviderSigningKeysResponse>;
+export const ListIdentityProviderSigningKeysResponse =
+  ListActiveIdentityProviderSigningKeyResponse as any as S.Schema<ListIdentityProviderSigningKeysResponse>;
 
 export interface ListIdentitySourceSessionsRequest {
   /** The ID of the identity source for which the session is created */
@@ -26311,17 +25707,13 @@ export const ListInterclientAllowedApplicationsRequest = /*@__PURE__*/ S.suspend
 
 /** A list of allowed app IDs */
 export type ListInterclientAllowedApplicationsResponseBodyList = Array<string>;
-export const ListInterclientAllowedApplicationsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListInterclientAllowedApplicationsResponseBodyList>;
+export const ListInterclientAllowedApplicationsResponseBodyList =
+  EventHookSubscribedEventTypes as any as S.Schema<ListInterclientAllowedApplicationsResponseBodyList>;
 
 export type ListInterclientAllowedApplicationsResponse =
   ListInterclientAllowedApplicationsResponseBodyList;
-export const ListInterclientAllowedApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListInterclientAllowedApplicationsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListInterclientAllowedApplicationsResponse",
-}) as any as S.Schema<ListInterclientAllowedApplicationsResponse>;
+export const ListInterclientAllowedApplicationsResponse =
+  ListAllSignInWidgetVersionsResponse as any as S.Schema<ListInterclientAllowedApplicationsResponse>;
 
 export interface ListInterclientTargetApplicationsRequest {
   /** Application ID */
@@ -26339,17 +25731,13 @@ export const ListInterclientTargetApplicationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A list of target app IDs */
 export type ListInterclientTargetApplicationsResponseBodyList = Array<string>;
-export const ListInterclientTargetApplicationsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListInterclientTargetApplicationsResponseBodyList>;
+export const ListInterclientTargetApplicationsResponseBodyList =
+  EventHookSubscribedEventTypes as any as S.Schema<ListInterclientTargetApplicationsResponseBodyList>;
 
 export type ListInterclientTargetApplicationsResponse =
   ListInterclientTargetApplicationsResponseBodyList;
-export const ListInterclientTargetApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListInterclientTargetApplicationsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListInterclientTargetApplicationsResponse",
-}) as any as S.Schema<ListInterclientTargetApplicationsResponse>;
+export const ListInterclientTargetApplicationsResponse =
+  ListAllSignInWidgetVersionsResponse as any as S.Schema<ListInterclientTargetApplicationsResponse>;
 
 export interface ListJwkRequest {
   /** Application ID */
@@ -26473,10 +25861,8 @@ export const ListLogEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Further details about the actor */
 export type LogActorDetailEntryMap = { [key: string]: unknown | undefined };
-export const LogActorDetailEntryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogActorDetailEntryMap>;
+export const LogActorDetailEntryMap =
+  GroupAssignmentProfile as any as S.Schema<LogActorDetailEntryMap>;
 
 /** Describes the user, app, client, or other entity (actor) who performs an action on a target. The actor is dependent on the action that is performed. All events have actors. */
 export interface LogActor {
@@ -26545,12 +25931,7 @@ export interface LogIssuer {
   /** Information on the `issuer` and source of the SAML assertion or token */
   type?: string;
 }
-export const LogIssuer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "LogIssuer" }) as any as S.Schema<LogIssuer>;
+export const LogIssuer = OAuth2Actor as any as S.Schema<LogIssuer>;
 
 /** All authentication relies on validating one or more credentials that prove the authenticity of the actor's identity. Credentials are sometimes provided by the actor, as is the case with passwords, and at other times provided by a third party, and validated by the authentication provider. The authenticationContext contains metadata about how the actor is authenticated. For example, an authenticationContext for an event, where a user authenticates with Integrated Windows Authentication (IWA), looks like the following: ``` { "authenticationProvider": "ACTIVE_DIRECTORY", "authenticationStep": 0, "credentialProvider": null, "credentialType": "IWA", "externalSessionId": "102N1EKyPFERROGvK9wizMAPQ", "interface": null, "issuer": null } ``` In this case, the user enters an IWA credential to authenticate against an Active Directory instance. All of the user's future-generated events in this sign-in session are going to share the same `externalSessionId`. Among other operations, this response object can be used to scan for suspicious sign-in activity or perform analytics on user authentication habits (for example, how often authentication scheme X is used versus authentication scheme Y). */
 export interface LogAuthenticationContext {
@@ -26656,10 +26037,8 @@ export const LogClient = /*@__PURE__*/ S.suspend(() =>
 
 /** A dynamic field that contains miscellaneous information that is dependent on the event type. */
 export type LogDebugContextDebugDataMap = { [key: string]: unknown | undefined };
-export const LogDebugContextDebugDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogDebugContextDebugDataMap>;
+export const LogDebugContextDebugDataMap =
+  GroupAssignmentProfile as any as S.Schema<LogDebugContextDebugDataMap>;
 
 /** For some kinds of events (for example, OLM provisioning, sign-in request, second factor SMS, and so on), the fields that are provided in other response objects aren't sufficient to adequately describe the operations that the event has performed. In such cases, the `debugContext` object provides a way to store additional information. For example, an event where a second factor SMS token is sent to a user may have a `debugContext` that looks like the following: ``` { "debugData": { "requestUri": "/api/v1/users/00u3gjksoiRGRAZHLSYV/factors/smsf8luacpZJAva10x45/verify", "smsProvider": "TELESIGN", "transactionId": "268632458E3C100F5F5F594C6DC689D4" } } ``` By inspecting the debugData field, you can find the URI that is used to trigger the second factor SMS (`/api/v1/users/00u3gjksoiRGRAZHLSYV/factors/smsf8luacpZJAva10x45/verify`), the SMS provider (`TELESIGN`), and the ID used by Telesign to identify this transaction (`268632458E3C100F5F5F594C6DC689D4`). If for some reason the information that is needed to implement a feature isn't provided in other response objects, you should scan the `debugContext.debugData` field for potentially useful fields. > **Important:** The information contained in `debugContext.debugData` is intended to add context when troubleshooting customer platform issues. Both key names and values may change from release to release and aren't guaranteed to be stable. Therefore, they shouldn't be viewed as a data contract but as a debugging aid instead. */
 export interface LogDebugContext {
@@ -26818,9 +26197,8 @@ export const LogRiskPreviousLevel = S.String;
 
 /** Reasons for the associated risk */
 export type LogRiskReasonsList = Array<string>;
-export const LogRiskReasonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogRiskReasonsList>;
+export const LogRiskReasonsList =
+  EventHookSubscribedEventTypes as any as S.Schema<LogRiskReasonsList>;
 
 /** Risk associated with the event */
 export interface LogRisk {
@@ -26910,17 +26288,13 @@ export const LogSeverity = S.String;
 
 /** The original properties of the target */
 export type LogTargetChangeDetailsFromMap = { [key: string]: unknown | undefined };
-export const LogTargetChangeDetailsFromMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogTargetChangeDetailsFromMap>;
+export const LogTargetChangeDetailsFromMap =
+  GroupAssignmentProfile as any as S.Schema<LogTargetChangeDetailsFromMap>;
 
 /** The updated properties of the target */
 export type LogTargetChangeDetailsToMap = { [key: string]: unknown | undefined };
-export const LogTargetChangeDetailsToMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogTargetChangeDetailsToMap>;
+export const LogTargetChangeDetailsToMap =
+  GroupAssignmentProfile as any as S.Schema<LogTargetChangeDetailsToMap>;
 
 /** Details on the target's changes. Not all event types support the `changeDetails` property, and not all `target` objects contain the `changeDetails` property. > **Note:** You can't run queries on `changeDetails` or the object's `to` or `from` properties. */
 export interface LogTargetChangeDetails {
@@ -26938,10 +26312,8 @@ export const LogTargetChangeDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Further details on the target */
 export type LogTargetDetailEntryMap = { [key: string]: unknown | undefined };
-export const LogTargetDetailEntryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogTargetDetailEntryMap>;
+export const LogTargetDetailEntryMap =
+  GroupAssignmentProfile as any as S.Schema<LogTargetDetailEntryMap>;
 
 export interface LogTarget {
   /** The alternate ID of the target */
@@ -26976,10 +26348,8 @@ export const LogEventTargetList = /*@__PURE__*/ S.Array(
 
 /** Details for this transaction. */
 export type LogTransactionDetailMap = { [key: string]: unknown | undefined };
-export const LogTransactionDetailMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogTransactionDetailMap>;
+export const LogTransactionDetailMap =
+  GroupAssignmentProfile as any as S.Schema<LogTransactionDetailMap>;
 
 /** A `transaction` object comprises contextual information associated with its respective event. This information is useful for understanding sequences of correlated events. For example, a `transaction` object such as the following: ``` { "id": "Wn4f-0RQ8D8lTSLkAmkKdQAADqo", "type": "WEB", "detail": null } ``` indicates that a `WEB` request with `id` `Wn4f-0RQ8D8lTSLkAmkKdQAADqo` has created this event. A `transaction` object with a `requestApiTokenId` in the `detail` object, for example : ``` { "id": "YjSlblAAqnKY7CdyCkXNBgAAAIU", "type": "WEB", "detail": { "requestApiTokenId": "00T94e3cn9kSEO3c51s5" } } ``` indicates that this event was the result of an action performed through an API using the token identified by 00T94e3cn9kSEO3c51s5. The token ID is visible in the Admin Console, **Security** > **API**. See [API token management](https://help.okta.com/okta_help.htm?id=Security_API). For more information on API tokens, see [Create an API token](https://developer.okta.com/docs/guides/create-an-api-token/). */
 export interface LogTransaction {
@@ -28015,17 +27385,13 @@ export const ListRefreshTokensForUserAndClientRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListRefreshTokensForUserAndClientRequest>;
 
 export type ListRefreshTokensForUserAndClientResponseBodyList = Array<OAuth2RefreshToken>;
-export const ListRefreshTokensForUserAndClientResponseBodyList = /*@__PURE__*/ S.Array(
-  OAuth2RefreshToken,
-) as any as S.Schema<ListRefreshTokensForUserAndClientResponseBodyList>;
+export const ListRefreshTokensForUserAndClientResponseBodyList =
+  ListOAuth2TokensForApplicationResponseBodyList as any as S.Schema<ListRefreshTokensForUserAndClientResponseBodyList>;
 
 export type ListRefreshTokensForUserAndClientResponse =
   ListRefreshTokensForUserAndClientResponseBodyList;
-export const ListRefreshTokensForUserAndClientResponse = /*@__PURE__*/ S.suspend(() =>
-  ListRefreshTokensForUserAndClientResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListRefreshTokensForUserAndClientResponse",
-}) as any as S.Schema<ListRefreshTokensForUserAndClientResponse>;
+export const ListRefreshTokensForUserAndClientResponse =
+  ListOAuth2TokensForApplicationResponse as any as S.Schema<ListRefreshTokensForUserAndClientResponse>;
 
 export interface ListResourceSetResourcesRequest {
   /** `id` or `label` of the resource set */
@@ -28217,16 +27583,12 @@ export const ListScopeConsentGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListScopeConsentGrantsRequest>;
 
 export type ListScopeConsentGrantsResponseBodyList = Array<OAuth2ScopeConsentGrant>;
-export const ListScopeConsentGrantsResponseBodyList = /*@__PURE__*/ S.Array(
-  OAuth2ScopeConsentGrant,
-) as any as S.Schema<ListScopeConsentGrantsResponseBodyList>;
+export const ListScopeConsentGrantsResponseBodyList =
+  ListGrantsForUserAndClientResponseBodyList as any as S.Schema<ListScopeConsentGrantsResponseBodyList>;
 
 export type ListScopeConsentGrantsResponse = ListScopeConsentGrantsResponseBodyList;
-export const ListScopeConsentGrantsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListScopeConsentGrantsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListScopeConsentGrantsResponse",
-}) as any as S.Schema<ListScopeConsentGrantsResponse>;
+export const ListScopeConsentGrantsResponse =
+  ListGrantsForUserAndClientResponse as any as S.Schema<ListScopeConsentGrantsResponse>;
 
 export interface ListSecurityEventsProviderInstancesRequest {}
 export const ListSecurityEventsProviderInstancesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -28291,9 +27653,8 @@ export const ListSocialAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes that the token is good for */
 export type SocialAuthTokenScopesList = Array<string>;
-export const SocialAuthTokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SocialAuthTokenScopesList>;
+export const SocialAuthTokenScopesList =
+  EventHookSubscribedEventTypes as any as S.Schema<SocialAuthTokenScopesList>;
 
 /** The social authentication token object provides the tokens and associated metadata provided by social providers during social authentication. */
 export interface SocialAuthToken {
@@ -28368,16 +27729,12 @@ export const ListSubscriptionsUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubscriptionsUserRequest>;
 
 export type ListSubscriptionsUserResponseBodyList = Array<Subscription>;
-export const ListSubscriptionsUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<ListSubscriptionsUserResponseBodyList>;
+export const ListSubscriptionsUserResponseBodyList =
+  ListSubscriptionsRoleResponseBodyList as any as S.Schema<ListSubscriptionsUserResponseBodyList>;
 
 export type ListSubscriptionsUserResponse = ListSubscriptionsUserResponseBodyList;
-export const ListSubscriptionsUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListSubscriptionsUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListSubscriptionsUserResponse",
-}) as any as S.Schema<ListSubscriptionsUserResponse>;
+export const ListSubscriptionsUserResponse =
+  ListSubscriptionsRoleResponse as any as S.Schema<ListSubscriptionsUserResponse>;
 
 export interface ListSupportedFactorsRequest {
   /** ID of an existing Okta user */
@@ -28408,10 +27765,8 @@ export const UserFactorProvider = S.String;
 
 /** Embedded resources related to the factor */
 export type UserFactorSupportedEmbeddedMap = { [key: string]: unknown | undefined };
-export const UserFactorSupportedEmbeddedMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserFactorSupportedEmbeddedMap>;
+export const UserFactorSupportedEmbeddedMap =
+  GroupAssignmentProfile as any as S.Schema<UserFactorSupportedEmbeddedMap>;
 
 export interface UserFactorSupported {
   /** Indicates if the factor is required for the specified user */
@@ -28614,9 +27969,8 @@ export const ListUserClientsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUserClientsRequest" }) as any as S.Schema<ListUserClientsRequest>;
 
 export type ListUserClientsResponseBodyList = Array<OAuth2Client>;
-export const ListUserClientsResponseBodyList = /*@__PURE__*/ S.Array(
-  OAuth2Client,
-) as any as S.Schema<ListUserClientsResponseBodyList>;
+export const ListUserClientsResponseBodyList =
+  ListOAuth2ClientsForAuthorizationServerResponseBodyList as any as S.Schema<ListUserClientsResponseBodyList>;
 
 export type ListUserClientsResponse = ListUserClientsResponseBodyList;
 export const ListUserClientsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -28712,9 +28066,8 @@ export const ListUserGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUserGrantsRequest" }) as any as S.Schema<ListUserGrantsRequest>;
 
 export type ListUserGrantsResponseBodyList = Array<OAuth2ScopeConsentGrant>;
-export const ListUserGrantsResponseBodyList = /*@__PURE__*/ S.Array(
-  OAuth2ScopeConsentGrant,
-) as any as S.Schema<ListUserGrantsResponseBodyList>;
+export const ListUserGrantsResponseBodyList =
+  ListGrantsForUserAndClientResponseBodyList as any as S.Schema<ListUserGrantsResponseBodyList>;
 
 export type ListUserGrantsResponse = ListUserGrantsResponseBodyList;
 export const ListUserGrantsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -28732,14 +28085,11 @@ export const ListUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUserGroupsRequest" }) as any as S.Schema<ListUserGroupsRequest>;
 
 export type ListUserGroupsResponseBodyList = Array<Group>;
-export const ListUserGroupsResponseBodyList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListUserGroupsResponseBodyList>;
+export const ListUserGroupsResponseBodyList =
+  StandardRoleEmbeddedTargetsGroupsList as any as S.Schema<ListUserGroupsResponseBodyList>;
 
 export type ListUserGroupsResponse = ListUserGroupsResponseBodyList;
-export const ListUserGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListUserGroupsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListUserGroupsResponse" }) as any as S.Schema<ListUserGroupsResponse>;
+export const ListUserGroupsResponse = ListGroupsResponse as any as S.Schema<ListUserGroupsResponse>;
 
 export interface ListUserIdentityProvidersRequest {
   /** An ID, login, or login shortname (as long as the shortname is unambiguous) of an existing Okta user */
@@ -28754,16 +28104,12 @@ export const ListUserIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserIdentityProvidersRequest>;
 
 export type ListUserIdentityProvidersResponseBodyList = Array<IdentityProvider>;
-export const ListUserIdentityProvidersResponseBodyList = /*@__PURE__*/ S.Array(
-  IdentityProvider,
-) as any as S.Schema<ListUserIdentityProvidersResponseBodyList>;
+export const ListUserIdentityProvidersResponseBodyList =
+  ListIdentityProvidersResponseBodyList as any as S.Schema<ListUserIdentityProvidersResponseBodyList>;
 
 export type ListUserIdentityProvidersResponse = ListUserIdentityProvidersResponseBodyList;
-export const ListUserIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListUserIdentityProvidersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListUserIdentityProvidersResponse",
-}) as any as S.Schema<ListUserIdentityProvidersResponse>;
+export const ListUserIdentityProvidersResponse =
+  ListIdentityProvidersResponse as any as S.Schema<ListUserIdentityProvidersResponse>;
 
 export interface ListUsersRequest {
   /** Searches for users with a supported filtering expression for most properties. Okta recommends this query parameter because it provides the largest range of search options and optimal performance. > **Note:** Using an overly complex or long search query can result in an error. This operation supports [pagination](https://developer.okta.com/docs/api/#pagination). Use an ID lookup for records that you update to ensure your results contain the latest data. Returned users include those with the `DEPROVISIONED` status. Property names in the search parameter are case sensitive, whereas operators (`eq`, `sw`, and so on) and string values are case insensitive. Unlike with user logins, diacritical marks are significant in search string values: a search for `isaac.brock` finds `Isaac.Brock`, but doesn't find a property whose value is `isáàc.bröck`. This operation requires [URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding). See [Special characters](https://developer.okta.com/docs/api/#special-characters). This operation searches many properties: * Any user profile attribute, including custom-defined attributes * The top-level properties: `id`, `status`, `created`, `activated`, `statusChanged`, and `lastUpdated` * The [user type](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/UserType/#tag/UserType/operation/updateUserType) accessed as `type.id` * Properties that have array values > **Note:** <x-lifecycle class="ea"></x-lifecycle> The ability to search by user classification is available as an [Early Access](https://developer.okta.com/docs/api/openapi/okta-management/guides/release-lifecycle/#early-access-ea) feature. The `classification.type` property cannot be used in conjunction with other search terms. You can search using `classification.type eq "LITE"` or `classification.type eq "STANDARD"`. You can also use `sortBy` and `sortOrder` parameters. The `ne` (not equal) operator isn't supported, but you can obtain the same result by using `lt ... or ... gt`. For example, to see all users except those that have a status of `STAGED`, use `(status lt "STAGED" or status gt "STAGED")`. You can search properties that are arrays. If any element matches the search term, the entire array (object) is returned. Okta follows the [SCIM Protocol Specification](https://tools.ietf.org/html/rfc7644#section-3.4.2.2) for searching arrays. You can search multiple arrays, multiple values in an array, as well as using the standard logical and filtering operators. See [Filter](https://developer.okta.com/docs/reference/core-okta-api/#filter). Searches for users can be filtered by the following operators: `sw`, `eq`, and `co`. You can only use `co` with these select user profile attributes: `profile.firstName`, `profile.lastName`, `profile.email`, and `profile.login`. See [Operators](https://developer.okta.com/docs/api/#operators). */
@@ -28800,14 +28146,11 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseBodyList = Array<UserOutput>;
-export const ListUsersResponseBodyList = /*@__PURE__*/ S.Array(
-  UserOutput,
-) as any as S.Schema<ListUsersResponseBodyList>;
+export const ListUsersResponseBodyList =
+  OSAccountEmbeddedOutputUsersList as any as S.Schema<ListUsersResponseBodyList>;
 
 export type ListUsersResponse = ListUsersResponseBodyList;
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListUsersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListUsersResponse" }) as any as S.Schema<ListUsersResponse>;
+export const ListUsersResponse = ListGroupUsersResponse as any as S.Schema<ListUsersResponse>;
 
 export interface ListUsersWithRoleAssignmentsRequest {
   /** Specifies the pagination cursor for the next page of targets */
@@ -29082,11 +28425,8 @@ export const PreviewSAMLmetadataForApplicationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PreviewSAMLmetadataForApplicationRequest>;
 
 export interface PreviewSAMLmetadataForApplicationResponse {}
-export const PreviewSAMLmetadataForApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PreviewSAMLmetadataForApplicationResponse",
-}) as any as S.Schema<PreviewSAMLmetadataForApplicationResponse>;
+export const PreviewSAMLmetadataForApplicationResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<PreviewSAMLmetadataForApplicationResponse>;
 
 export interface PublishCsrForIdentityProviderRequest {
   /** `id` of IdP */
@@ -29138,11 +28478,8 @@ export const PublishSecurityEventTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishSecurityEventTokensRequest>;
 
 export interface PublishSecurityEventTokensResponse {}
-export const PublishSecurityEventTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PublishSecurityEventTokensResponse",
-}) as any as S.Schema<PublishSecurityEventTokensResponse>;
+export const PublishSecurityEventTokensResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<PublishSecurityEventTokensResponse>;
 
 export interface ReactivateUserRequest {
   /** An ID, login, or login shortname (as long as the shortname is unambiguous) of an existing Okta user */
@@ -29197,11 +28534,8 @@ export const RemoveAppTargetInstanceRoleForClientRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RemoveAppTargetInstanceRoleForClientRequest>;
 
 export interface RemoveAppTargetInstanceRoleForClientResponse {}
-export const RemoveAppTargetInstanceRoleForClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveAppTargetInstanceRoleForClientResponse",
-}) as any as S.Schema<RemoveAppTargetInstanceRoleForClientResponse>;
+export const RemoveAppTargetInstanceRoleForClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RemoveAppTargetInstanceRoleForClientResponse>;
 
 export interface RemoveAppTargetRoleFromClientRequest {
   /** `client_id` of the app */
@@ -29228,11 +28562,8 @@ export const RemoveAppTargetRoleFromClientRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveAppTargetRoleFromClientRequest>;
 
 export interface RemoveAppTargetRoleFromClientResponse {}
-export const RemoveAppTargetRoleFromClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveAppTargetRoleFromClientResponse",
-}) as any as S.Schema<RemoveAppTargetRoleFromClientResponse>;
+export const RemoveAppTargetRoleFromClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RemoveAppTargetRoleFromClientResponse>;
 
 export interface RemoveGroupTargetRoleFromClientRequest {
   /** `client_id` of the app */
@@ -29259,18 +28590,13 @@ export const RemoveGroupTargetRoleFromClientRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveGroupTargetRoleFromClientRequest>;
 
 export interface RemoveGroupTargetRoleFromClientResponse {}
-export const RemoveGroupTargetRoleFromClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveGroupTargetRoleFromClientResponse",
-}) as any as S.Schema<RemoveGroupTargetRoleFromClientResponse>;
+export const RemoveGroupTargetRoleFromClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RemoveGroupTargetRoleFromClientResponse>;
 
 /** Contains any valid JSON schema for specifying properties that can be referenced from a request (only available to OAuth 2.0 client apps). For example, add an app manager contact email address or define an allowlist of groups that you can then reference using the Okta Expression Language `getFilteredGroups` function. > **Notes:** > * `profile` isn't encrypted, so don't store sensitive data in it. > * `profile` doesn't limit the level of nesting in the JSON schema you created, but there is a practical size limit. Okta recommends a JSON schema size of 1 MB or less for best performance. */
 export type ReplaceApplicationRequestProfileMap = { [key: string]: unknown | undefined };
-export const ReplaceApplicationRequestProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ReplaceApplicationRequestProfileMap>;
+export const ReplaceApplicationRequestProfileMap =
+  GroupAssignmentProfile as any as S.Schema<ReplaceApplicationRequestProfileMap>;
 
 export interface ReplaceApplicationRequest {
   /** Application ID */
@@ -29385,9 +28711,8 @@ export const ReplaceAuthenticatorSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The recipients that the tokens are intended for. This becomes the `aud` claim in an access token. Okta currently supports only one audience. */
 export type ReplaceAuthorizationServerRequestAudiencesList = Array<string>;
-export const ReplaceAuthorizationServerRequestAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceAuthorizationServerRequestAudiencesList>;
+export const ReplaceAuthorizationServerRequestAudiencesList =
+  EventHookSubscribedEventTypes as any as S.Schema<ReplaceAuthorizationServerRequestAudiencesList>;
 
 export interface ReplaceAuthorizationServerRequest {
   /** `id` of the Authorization Server */
@@ -29803,14 +29128,8 @@ export interface ReplaceCustomizedErrorPageResponse {
   pageContent?: string;
   contentSecurityPolicySetting?: ContentSecurityPolicySetting;
 }
-export const ReplaceCustomizedErrorPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-  }),
-).annotate({
-  identifier: "ReplaceCustomizedErrorPageResponse",
-}) as any as S.Schema<ReplaceCustomizedErrorPageResponse>;
+export const ReplaceCustomizedErrorPageResponse =
+  GetCustomizedErrorPageResponse as any as S.Schema<ReplaceCustomizedErrorPageResponse>;
 
 export interface ReplaceCustomizedSignInPageRequestWidgetCustomizations {
   /** The label for the sign in widget */
@@ -29859,36 +29178,8 @@ export interface ReplaceCustomizedSignInPageRequestWidgetCustomizations {
   classicFooterHelpTitle?: string;
   gracePeriodRequiredSoon?: GracePeriodRequiredSoon;
 }
-export const ReplaceCustomizedSignInPageRequestWidgetCustomizations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signInLabel: S.optional(S.String),
-    usernameLabel: S.optional(S.String),
-    usernameInfoTip: S.optional(S.String),
-    passwordLabel: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    passwordInfoTip: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    showPasswordVisibilityToggle: S.optional(S.Boolean),
-    showUserIdentifier: S.optional(S.Boolean),
-    forgotPasswordLabel: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    forgotPasswordUrl: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    unlockAccountLabel: S.optional(S.String),
-    unlockAccountUrl: S.optional(S.String),
-    helpLabel: S.optional(S.String),
-    helpUrl: S.optional(S.String),
-    customLink1Label: S.optional(S.String),
-    customLink1Url: S.optional(S.String),
-    customLink2Label: S.optional(S.String),
-    customLink2Url: S.optional(S.String),
-    authenticatorPageCustomLinkLabel: S.optional(S.String),
-    authenticatorPageCustomLinkUrl: S.optional(S.String),
-    classicRecoveryFlowEmailOrUsernameLabel: S.optional(S.String),
-    widgetGeneration: S.optional(WidgetGeneration),
-    postAuthKeepMeSignedInPrompt: S.optional(PostAuthKeepMeSignedInPrompt),
-    classicFooterHelpTitle: S.optional(S.String),
-    gracePeriodRequiredSoon: S.optional(GracePeriodRequiredSoon),
-  }),
-).annotate({
-  identifier: "ReplaceCustomizedSignInPageRequestWidgetCustomizations",
-}) as any as S.Schema<ReplaceCustomizedSignInPageRequestWidgetCustomizations>;
+export const ReplaceCustomizedSignInPageRequestWidgetCustomizations =
+  GetCustomizedSignInPageResponseWidgetCustomizations as any as S.Schema<ReplaceCustomizedSignInPageRequestWidgetCustomizations>;
 
 export interface ReplaceCustomizedSignInPageRequest {
   /** The ID of the brand */
@@ -29928,17 +29219,8 @@ export interface ReplaceCustomizedSignInPageResponse {
   widgetCustomizations?: GetCustomizedSignInPageResponseWidgetCustomizations;
   widgetVersion?: string;
 }
-export const ReplaceCustomizedSignInPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-    widgetConfiguration: S.optional(WidgetConfiguration),
-    widgetCustomizations: S.optional(GetCustomizedSignInPageResponseWidgetCustomizations),
-    widgetVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplaceCustomizedSignInPageResponse",
-}) as any as S.Schema<ReplaceCustomizedSignInPageResponse>;
+export const ReplaceCustomizedSignInPageResponse =
+  GetCustomizedSignInPageResponse as any as S.Schema<ReplaceCustomizedSignInPageResponse>;
 
 /** Represents the remediation mode of this device assurance policy when users are denied access due to device noncompliance */
 export type ReplaceDeviceAssurancePolicyRequestDisplayRemediationMode = "HIDE" | "SHOW";
@@ -30063,20 +29345,8 @@ export interface ReplaceEmailCustomizationResponse {
   lastUpdated?: string;
   _links?: CreateEmailCustomizationResponseLinks;
 }
-export const ReplaceEmailCustomizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.String,
-    subject: S.String,
-    created: S.optional(S.String),
-    id: S.optional(S.String),
-    isDefault: S.optional(S.Boolean),
-    language: S.String,
-    lastUpdated: S.optional(S.String),
-    _links: S.optional(CreateEmailCustomizationResponseLinks),
-  }),
-).annotate({
-  identifier: "ReplaceEmailCustomizationResponse",
-}) as any as S.Schema<ReplaceEmailCustomizationResponse>;
+export const ReplaceEmailCustomizationResponse =
+  CreateEmailCustomizationResponse as any as S.Schema<ReplaceEmailCustomizationResponse>;
 
 export type ReplaceEmailDomainRequestExpandItem = "brands";
 export const ReplaceEmailDomainRequestExpandItem = S.String;
@@ -30107,9 +29377,8 @@ export const ReplaceEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceEmailDomainRequest>;
 
 export type ReplaceEmailDomainResponseDnsValidationRecordsList = Array<EmailDomainDNSRecord>;
-export const ReplaceEmailDomainResponseDnsValidationRecordsList = /*@__PURE__*/ S.Array(
-  EmailDomainDNSRecord,
-) as any as S.Schema<ReplaceEmailDomainResponseDnsValidationRecordsList>;
+export const ReplaceEmailDomainResponseDnsValidationRecordsList =
+  CreateEmailDomainResponseDnsValidationRecordsList as any as S.Schema<ReplaceEmailDomainResponseDnsValidationRecordsList>;
 
 export interface ReplaceEmailDomainResponse {
   displayName: string;
@@ -30121,19 +29390,8 @@ export interface ReplaceEmailDomainResponse {
   /** The subdomain for the email sender's custom mail domain */
   validationSubdomain?: string;
 }
-export const ReplaceEmailDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    userName: S.String,
-    dnsValidationRecords: S.optional(ReplaceEmailDomainResponseDnsValidationRecordsList),
-    domain: S.optional(S.String),
-    id: S.optional(S.String),
-    validationStatus: S.optional(EmailDomainStatus),
-    validationSubdomain: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplaceEmailDomainResponse",
-}) as any as S.Schema<ReplaceEmailDomainResponse>;
+export const ReplaceEmailDomainResponse =
+  CreateEmailDomainResponse as any as S.Schema<ReplaceEmailDomainResponse>;
 
 export type ReplaceEmailSettingsRequestRecipients = "ALL_USERS" | "ADMINS_ONLY" | "NO_USERS";
 export const ReplaceEmailSettingsRequestRecipients = S.String;
@@ -30264,9 +29522,8 @@ export const ReplaceFirstPartyAppSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of entitlements to include in the governance bundle */
 export type ReplaceGovernanceBundleRequestEntitlementsList = Array<IAMBundleEntitlement>;
-export const ReplaceGovernanceBundleRequestEntitlementsList = /*@__PURE__*/ S.Array(
-  IAMBundleEntitlement,
-) as any as S.Schema<ReplaceGovernanceBundleRequestEntitlementsList>;
+export const ReplaceGovernanceBundleRequestEntitlementsList =
+  CreateGovernanceBundleRequestEntitlementsList as any as S.Schema<ReplaceGovernanceBundleRequestEntitlementsList>;
 
 export interface ReplaceGovernanceBundleRequest {
   /** The `id` of a bundle */
@@ -30685,14 +29942,8 @@ export interface ReplacePreviewErrorPageResponse {
   pageContent?: string;
   contentSecurityPolicySetting?: ContentSecurityPolicySetting;
 }
-export const ReplacePreviewErrorPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-  }),
-).annotate({
-  identifier: "ReplacePreviewErrorPageResponse",
-}) as any as S.Schema<ReplacePreviewErrorPageResponse>;
+export const ReplacePreviewErrorPageResponse =
+  GetCustomizedErrorPageResponse as any as S.Schema<ReplacePreviewErrorPageResponse>;
 
 export type ReplacePreviewSignInPageRequestWidgetCustomizations =
   ReplaceCustomizedSignInPageRequestWidgetCustomizations;
@@ -30737,17 +29988,8 @@ export interface ReplacePreviewSignInPageResponse {
   widgetCustomizations?: GetCustomizedSignInPageResponseWidgetCustomizations;
   widgetVersion?: string;
 }
-export const ReplacePreviewSignInPageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageContent: S.optional(S.String),
-    contentSecurityPolicySetting: S.optional(ContentSecurityPolicySetting),
-    widgetConfiguration: S.optional(WidgetConfiguration),
-    widgetCustomizations: S.optional(GetCustomizedSignInPageResponseWidgetCustomizations),
-    widgetVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplacePreviewSignInPageResponse",
-}) as any as S.Schema<ReplacePreviewSignInPageResponse>;
+export const ReplacePreviewSignInPageResponse =
+  GetCustomizedSignInPageResponse as any as S.Schema<ReplacePreviewSignInPageResponse>;
 
 export interface ReplacePrincipalRateLimitEntityRequest {
   /** ID of the principal rate limit */
@@ -31070,9 +30312,8 @@ export const ReplaceSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReplacesOrgCaptchaSettingsRequestEnabledPagesList = Array<
   EnabledPagesType | (string & {})
 >;
-export const ReplacesOrgCaptchaSettingsRequestEnabledPagesList = /*@__PURE__*/ S.Array(
-  EnabledPagesType,
-) as any as S.Schema<ReplacesOrgCaptchaSettingsRequestEnabledPagesList>;
+export const ReplacesOrgCaptchaSettingsRequestEnabledPagesList =
+  OrgCAPTCHASettingsEnabledPagesList as any as S.Schema<ReplacesOrgCaptchaSettingsRequestEnabledPagesList>;
 
 export interface ReplacesOrgCaptchaSettingsRequest {
   /** The unique key of the associated CAPTCHA instance */
@@ -31090,9 +30331,8 @@ export const ReplacesOrgCaptchaSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplacesOrgCaptchaSettingsRequest>;
 
 export type ReplaceSsfStreamRequestAudCase1List = Array<string>;
-export const ReplaceSsfStreamRequestAudCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceSsfStreamRequestAudCase1List>;
+export const ReplaceSsfStreamRequestAudCase1List =
+  EventHookSubscribedEventTypes as any as S.Schema<ReplaceSsfStreamRequestAudCase1List>;
 
 /** The audience used in the SET. This value is set as `aud` in the claim. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type ReplaceSsfStreamRequestAud = string | ReplaceSsfStreamRequestAudCase1List;
@@ -31100,21 +30340,18 @@ export const ReplaceSsfStreamRequestAud = S.Unknown as any as S.Schema<ReplaceSs
 
 /** The events (mapped by the array of event type URIs) that the transmitter actually delivers to the SSF stream. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type ReplaceSsfStreamRequestEventsDeliveredList = Array<string>;
-export const ReplaceSsfStreamRequestEventsDeliveredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceSsfStreamRequestEventsDeliveredList>;
+export const ReplaceSsfStreamRequestEventsDeliveredList =
+  EventHookSubscribedEventTypes as any as S.Schema<ReplaceSsfStreamRequestEventsDeliveredList>;
 
 /** The events (mapped by the array of event type URIs) that the receiver wants to receive */
 export type ReplaceSsfStreamRequestEventsRequestedList = Array<string>;
-export const ReplaceSsfStreamRequestEventsRequestedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceSsfStreamRequestEventsRequestedList>;
+export const ReplaceSsfStreamRequestEventsRequestedList =
+  EventHookSubscribedEventTypes as any as S.Schema<ReplaceSsfStreamRequestEventsRequestedList>;
 
 /** An array of event type URIs that the transmitter supports. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type ReplaceSsfStreamRequestEventsSupportedList = Array<string>;
-export const ReplaceSsfStreamRequestEventsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceSsfStreamRequestEventsSupportedList>;
+export const ReplaceSsfStreamRequestEventsSupportedList =
+  EventHookSubscribedEventTypes as any as S.Schema<ReplaceSsfStreamRequestEventsSupportedList>;
 
 /** The subject identifier format expected for any SET transmitted. */
 export type ReplaceSsfStreamRequestFormat = "iss_sub";
@@ -31330,9 +30567,8 @@ export const ResetFactorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetFactorsRequest" }) as any as S.Schema<ResetFactorsRequest>;
 
 export interface ResetFactorsResponse {}
-export const ResetFactorsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetFactorsResponse",
-}) as any as S.Schema<ResetFactorsResponse>;
+export const ResetFactorsResponse =
+  ActivateApplicationResponse as any as S.Schema<ResetFactorsResponse>;
 
 export interface ResetPasswordRequest {
   /** An ID, login, or login shortname (as long as the shortname is unambiguous) of an existing Okta user */
@@ -31354,11 +30590,7 @@ export const ResetPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResetPasswordToken {
   resetPasswordUrl?: string | Redacted.Redacted<string>;
 }
-export const ResetPasswordToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resetPasswordUrl: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({ identifier: "ResetPasswordToken" }) as any as S.Schema<ResetPasswordToken>;
+export const ResetPasswordToken = ForgotPasswordResponse as any as S.Schema<ResetPasswordToken>;
 
 export interface ResumeAgentPoolsUpdateRequest {
   /** ID of the agent pool for which the settings apply to */
@@ -31448,9 +30680,8 @@ export const RevokeApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeApiTokenRequest" }) as any as S.Schema<RevokeApiTokenRequest>;
 
 export interface RevokeApiTokenResponse {}
-export const RevokeApiTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeApiTokenResponse",
-}) as any as S.Schema<RevokeApiTokenResponse>;
+export const RevokeApiTokenResponse =
+  ActivateApplicationResponse as any as S.Schema<RevokeApiTokenResponse>;
 
 export interface RevokeCsrForIdentityProviderRequest {
   /** `id` of IdP */
@@ -31474,11 +30705,8 @@ export const RevokeCsrForIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeCsrForIdentityProviderRequest>;
 
 export interface RevokeCsrForIdentityProviderResponse {}
-export const RevokeCsrForIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeCsrForIdentityProviderResponse",
-}) as any as S.Schema<RevokeCsrForIdentityProviderResponse>;
+export const RevokeCsrForIdentityProviderResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RevokeCsrForIdentityProviderResponse>;
 
 export interface RevokeCsrFromApplicationRequest {
   /** Application ID */
@@ -31498,11 +30726,8 @@ export const RevokeCsrFromApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeCsrFromApplicationRequest>;
 
 export interface RevokeCsrFromApplicationResponse {}
-export const RevokeCsrFromApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeCsrFromApplicationResponse",
-}) as any as S.Schema<RevokeCsrFromApplicationResponse>;
+export const RevokeCsrFromApplicationResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RevokeCsrFromApplicationResponse>;
 
 export interface RevokeCurrentApiTokenRequest {}
 export const RevokeCurrentApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
@@ -31512,9 +30737,8 @@ export const RevokeCurrentApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeCurrentApiTokenRequest>;
 
 export interface RevokeCurrentApiTokenResponse {}
-export const RevokeCurrentApiTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeCurrentApiTokenResponse",
-}) as any as S.Schema<RevokeCurrentApiTokenResponse>;
+export const RevokeCurrentApiTokenResponse =
+  ActivateApplicationResponse as any as S.Schema<RevokeCurrentApiTokenResponse>;
 
 export interface RevokeGrantsForUserAndClientRequest {
   /** ID of an existing Okta user */
@@ -31538,11 +30762,8 @@ export const RevokeGrantsForUserAndClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeGrantsForUserAndClientRequest>;
 
 export interface RevokeGrantsForUserAndClientResponse {}
-export const RevokeGrantsForUserAndClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeGrantsForUserAndClientResponse",
-}) as any as S.Schema<RevokeGrantsForUserAndClientResponse>;
+export const RevokeGrantsForUserAndClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RevokeGrantsForUserAndClientResponse>;
 
 export interface RevokeOAuth2TokenForApplicationRequest {
   /** Application ID */
@@ -31560,11 +30781,8 @@ export const RevokeOAuth2TokenForApplicationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RevokeOAuth2TokenForApplicationRequest>;
 
 export interface RevokeOAuth2TokenForApplicationResponse {}
-export const RevokeOAuth2TokenForApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeOAuth2TokenForApplicationResponse",
-}) as any as S.Schema<RevokeOAuth2TokenForApplicationResponse>;
+export const RevokeOAuth2TokenForApplicationResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RevokeOAuth2TokenForApplicationResponse>;
 
 export interface RevokeOAuth2TokensForApplicationRequest {
   /** Application ID */
@@ -31579,11 +30797,8 @@ export const RevokeOAuth2TokensForApplicationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RevokeOAuth2TokensForApplicationRequest>;
 
 export interface RevokeOAuth2TokensForApplicationResponse {}
-export const RevokeOAuth2TokensForApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeOAuth2TokensForApplicationResponse",
-}) as any as S.Schema<RevokeOAuth2TokensForApplicationResponse>;
+export const RevokeOAuth2TokensForApplicationResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RevokeOAuth2TokensForApplicationResponse>;
 
 export interface RevokeRefreshTokenForAuthorizationServerAndClientRequest {
   /** `id` of the Authorization Server */
@@ -31611,11 +30826,8 @@ export const RevokeRefreshTokenForAuthorizationServerAndClientRequest = /*@__PUR
 }) as any as S.Schema<RevokeRefreshTokenForAuthorizationServerAndClientRequest>;
 
 export interface RevokeRefreshTokenForAuthorizationServerAndClientResponse {}
-export const RevokeRefreshTokenForAuthorizationServerAndClientResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RevokeRefreshTokenForAuthorizationServerAndClientResponse",
-}) as any as S.Schema<RevokeRefreshTokenForAuthorizationServerAndClientResponse>;
+export const RevokeRefreshTokenForAuthorizationServerAndClientResponse =
+  ActivateDefaultProvisioningConnectionForApplicationResponse as any as S.Schema<RevokeRefreshTokenForAuthorizationServerAndClientResponse>;
 
 export interface RevokeRefreshTokensForAuthorizationServerAndClientRequest {
   /** `id` of the Authorization Server */
@@ -31640,11 +30852,8 @@ export const RevokeRefreshTokensForAuthorizationServerAndClientRequest = /*@__PU
 }) as any as S.Schema<RevokeRefreshTokensForAuthorizationServerAndClientRequest>;
 
 export interface RevokeRefreshTokensForAuthorizationServerAndClientResponse {}
-export const RevokeRefreshTokensForAuthorizationServerAndClientResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RevokeRefreshTokensForAuthorizationServerAndClientResponse",
-}) as any as S.Schema<RevokeRefreshTokensForAuthorizationServerAndClientResponse>;
+export const RevokeRefreshTokensForAuthorizationServerAndClientResponse =
+  ActivateDefaultProvisioningConnectionForApplicationResponse as any as S.Schema<RevokeRefreshTokensForAuthorizationServerAndClientResponse>;
 
 export interface RevokeScopeConsentGrantRequest {
   /** Application ID */
@@ -31662,9 +30871,8 @@ export const RevokeScopeConsentGrantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeScopeConsentGrantRequest>;
 
 export interface RevokeScopeConsentGrantResponse {}
-export const RevokeScopeConsentGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RevokeScopeConsentGrantResponse" },
-) as any as S.Schema<RevokeScopeConsentGrantResponse>;
+export const RevokeScopeConsentGrantResponse =
+  ActivateRealmAssignmentResponse as any as S.Schema<RevokeScopeConsentGrantResponse>;
 
 export interface RevokeSessionRequest {
   /** `id` of the session */
@@ -31677,9 +30885,8 @@ export const RevokeSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeSessionRequest" }) as any as S.Schema<RevokeSessionRequest>;
 
 export interface RevokeSessionResponse {}
-export const RevokeSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeSessionResponse",
-}) as any as S.Schema<RevokeSessionResponse>;
+export const RevokeSessionResponse =
+  ActivateApplicationResponse as any as S.Schema<RevokeSessionResponse>;
 
 export interface RevokeTokenForUserAndClientRequest {
   /** ID of an existing Okta user */
@@ -31706,11 +30913,8 @@ export const RevokeTokenForUserAndClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeTokenForUserAndClientRequest>;
 
 export interface RevokeTokenForUserAndClientResponse {}
-export const RevokeTokenForUserAndClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeTokenForUserAndClientResponse",
-}) as any as S.Schema<RevokeTokenForUserAndClientResponse>;
+export const RevokeTokenForUserAndClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RevokeTokenForUserAndClientResponse>;
 
 export interface RevokeTokensForUserAndClientRequest {
   /** ID of an existing Okta user */
@@ -31734,11 +30938,8 @@ export const RevokeTokensForUserAndClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeTokensForUserAndClientRequest>;
 
 export interface RevokeTokensForUserAndClientResponse {}
-export const RevokeTokensForUserAndClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeTokensForUserAndClientResponse",
-}) as any as S.Schema<RevokeTokensForUserAndClientResponse>;
+export const RevokeTokensForUserAndClientResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<RevokeTokensForUserAndClientResponse>;
 
 export interface RevokeUserGrantRequest {
   /** ID of an existing Okta user */
@@ -31754,9 +30955,8 @@ export const RevokeUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeUserGrantRequest" }) as any as S.Schema<RevokeUserGrantRequest>;
 
 export interface RevokeUserGrantResponse {}
-export const RevokeUserGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeUserGrantResponse",
-}) as any as S.Schema<RevokeUserGrantResponse>;
+export const RevokeUserGrantResponse =
+  ActivateApplicationResponse as any as S.Schema<RevokeUserGrantResponse>;
 
 export interface RevokeUserGrantsRequest {
   /** ID of an existing Okta user */
@@ -31769,9 +30969,8 @@ export const RevokeUserGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeUserGrantsRequest" }) as any as S.Schema<RevokeUserGrantsRequest>;
 
 export interface RevokeUserGrantsResponse {}
-export const RevokeUserGrantsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeUserGrantsResponse",
-}) as any as S.Schema<RevokeUserGrantsResponse>;
+export const RevokeUserGrantsResponse =
+  ActivateApplicationResponse as any as S.Schema<RevokeUserGrantsResponse>;
 
 export interface RevokeUserSessionsRequest {
   /** ID of an existing Okta user */
@@ -31792,9 +30991,8 @@ export const RevokeUserSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeUserSessionsRequest>;
 
 export interface RevokeUserSessionsResponse {}
-export const RevokeUserSessionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeUserSessionsResponse",
-}) as any as S.Schema<RevokeUserSessionsResponse>;
+export const RevokeUserSessionsResponse =
+  ActivateApplicationResponse as any as S.Schema<RevokeUserSessionsResponse>;
 
 /** Purpose of the certificate. The only supported value is `sig`. */
 export type JwkUseType = "sig";
@@ -31821,16 +31019,12 @@ export const RotateAuthorizationServerKeysRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RotateAuthorizationServerKeysRequest>;
 
 export type RotateAuthorizationServerKeysResponseBodyList = Array<AuthorizationServerJsonWebKey>;
-export const RotateAuthorizationServerKeysResponseBodyList = /*@__PURE__*/ S.Array(
-  AuthorizationServerJsonWebKey,
-) as any as S.Schema<RotateAuthorizationServerKeysResponseBodyList>;
+export const RotateAuthorizationServerKeysResponseBodyList =
+  ListAuthorizationServerKeysResponseBodyList as any as S.Schema<RotateAuthorizationServerKeysResponseBodyList>;
 
 export type RotateAuthorizationServerKeysResponse = RotateAuthorizationServerKeysResponseBodyList;
-export const RotateAuthorizationServerKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  RotateAuthorizationServerKeysResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RotateAuthorizationServerKeysResponse",
-}) as any as S.Schema<RotateAuthorizationServerKeysResponse>;
+export const RotateAuthorizationServerKeysResponse =
+  ListAuthorizationServerKeysResponse as any as S.Schema<RotateAuthorizationServerKeysResponse>;
 
 /** Name of the fulfillment provider for the WebAuthn preregistration factor */
 export type SendPinRequestFulfillmentProvider = "yubico";
@@ -31853,9 +31047,7 @@ export const SendPinRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendPinRequest" }) as any as S.Schema<SendPinRequest>;
 
 export interface SendPinResponse {}
-export const SendPinResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendPinResponse",
-}) as any as S.Schema<SendPinResponse>;
+export const SendPinResponse = ActivateApplicationResponse as any as S.Schema<SendPinResponse>;
 
 /** The type of test message to send */
 export type SendTestCustomTelephonyProviderCredentialRequestFactor = "SMS" | "CALL";
@@ -31889,11 +31081,8 @@ export const SendTestCustomTelephonyProviderCredentialRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<SendTestCustomTelephonyProviderCredentialRequest>;
 
 export interface SendTestCustomTelephonyProviderCredentialResponse {}
-export const SendTestCustomTelephonyProviderCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendTestCustomTelephonyProviderCredentialResponse",
-}) as any as S.Schema<SendTestCustomTelephonyProviderCredentialResponse>;
+export const SendTestCustomTelephonyProviderCredentialResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<SendTestCustomTelephonyProviderCredentialResponse>;
 
 export interface SendTestEmailRequest {
   /** The ID of the brand */
@@ -31918,9 +31107,8 @@ export const SendTestEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendTestEmailRequest" }) as any as S.Schema<SendTestEmailRequest>;
 
 export interface SendTestEmailResponse {}
-export const SendTestEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendTestEmailResponse",
-}) as any as S.Schema<SendTestEmailResponse>;
+export const SendTestEmailResponse =
+  ActivateApplicationResponse as any as S.Schema<SendTestEmailResponse>;
 
 export interface SetAsPrimaryCustomTelephonyCredentialRequest {
   /** The ID of the custom telephony provider */
@@ -31981,9 +31169,8 @@ export const StartImportFromIdentitySourceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The Okta domain to failback */
 export type FailbackRequestSchemaDomainsList = Array<string>;
-export const FailbackRequestSchemaDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FailbackRequestSchemaDomainsList>;
+export const FailbackRequestSchemaDomainsList =
+  EventHookSubscribedEventTypes as any as S.Schema<FailbackRequestSchemaDomainsList>;
 
 export interface FailbackRequestSchema {
   /** The Okta domain to failback */
@@ -32041,19 +31228,15 @@ export const StartOrgFailbackResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The Okta domain to failover */
 export type FailoverRequestSchemaDomainsList = Array<string>;
-export const FailoverRequestSchemaDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FailoverRequestSchemaDomainsList>;
+export const FailoverRequestSchemaDomainsList =
+  EventHookSubscribedEventTypes as any as S.Schema<FailoverRequestSchemaDomainsList>;
 
 export interface FailoverRequestSchema {
   /** The Okta domain to failover */
   domains?: FailoverRequestSchemaDomainsList;
 }
-export const FailoverRequestSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domains: S.optional(FailoverRequestSchemaDomainsList),
-  }),
-).annotate({ identifier: "FailoverRequestSchema" }) as any as S.Schema<FailoverRequestSchema>;
+export const FailoverRequestSchema =
+  FailbackRequestSchema as any as S.Schema<FailoverRequestSchema>;
 
 export type StartOrgFailoverRequestBody = FailoverRequestSchema | unknown;
 export const StartOrgFailoverRequestBody =
@@ -32074,30 +31257,20 @@ export interface StartOrgFailoverResponseResultsItem {
   /** Domain failover message */
   message?: string;
 }
-export const StartOrgFailoverResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartOrgFailoverResponseResultsItem",
-}) as any as S.Schema<StartOrgFailoverResponseResultsItem>;
+export const StartOrgFailoverResponseResultsItem =
+  StartOrgFailbackResponseResultsItem as any as S.Schema<StartOrgFailoverResponseResultsItem>;
 
 /** Results of the failover operation */
 export type StartOrgFailoverResponseResultsList = Array<StartOrgFailoverResponseResultsItem>;
-export const StartOrgFailoverResponseResultsList = /*@__PURE__*/ S.Array(
-  StartOrgFailoverResponseResultsItem,
-) as any as S.Schema<StartOrgFailoverResponseResultsList>;
+export const StartOrgFailoverResponseResultsList =
+  StartOrgFailbackResponseResultsList as any as S.Schema<StartOrgFailoverResponseResultsList>;
 
 export interface StartOrgFailoverResponse {
   /** Results of the failover operation */
   results?: StartOrgFailoverResponseResultsList;
 }
-export const StartOrgFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(StartOrgFailoverResponseResultsList),
-  }),
-).annotate({ identifier: "StartOrgFailoverResponse" }) as any as S.Schema<StartOrgFailoverResponse>;
+export const StartOrgFailoverResponse =
+  StartOrgFailbackResponse as any as S.Schema<StartOrgFailoverResponse>;
 
 export interface StopAgentPoolsUpdateRequest {
   /** ID of the agent pool for which the settings apply to */
@@ -32122,9 +31295,8 @@ export const StopAgentPoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of LDAP group attribute names to retrieve. Restricted attributes: member, memberOf, * */
 export type SubmitGroupAttributeQueryRequestAttributesList = Array<string>;
-export const SubmitGroupAttributeQueryRequestAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubmitGroupAttributeQueryRequestAttributesList>;
+export const SubmitGroupAttributeQueryRequestAttributesList =
+  EventHookSubscribedEventTypes as any as S.Schema<SubmitGroupAttributeQueryRequestAttributesList>;
 
 export interface SubmitGroupAttributeQueryRequest {
   /** ID of the AD instance in Okta */
@@ -32151,11 +31323,8 @@ export const SubmitGroupAttributeQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitGroupAttributeQueryRequest>;
 
 export interface SubmitGroupAttributeQueryResponse {}
-export const SubmitGroupAttributeQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubmitGroupAttributeQueryResponse",
-}) as any as S.Schema<SubmitGroupAttributeQueryResponse>;
+export const SubmitGroupAttributeQueryResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<SubmitGroupAttributeQueryResponse>;
 
 /** The type of notification */
 export type SubscribeByNotificationTypeRoleRequestNotificationType =
@@ -32195,11 +31364,8 @@ export const SubscribeByNotificationTypeRoleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SubscribeByNotificationTypeRoleRequest>;
 
 export interface SubscribeByNotificationTypeRoleResponse {}
-export const SubscribeByNotificationTypeRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubscribeByNotificationTypeRoleResponse",
-}) as any as S.Schema<SubscribeByNotificationTypeRoleResponse>;
+export const SubscribeByNotificationTypeRoleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<SubscribeByNotificationTypeRoleResponse>;
 
 /** The type of notification */
 export type SubscribeByNotificationTypeUserRequestNotificationType =
@@ -32238,11 +31404,8 @@ export const SubscribeByNotificationTypeUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SubscribeByNotificationTypeUserRequest>;
 
 export interface SubscribeByNotificationTypeUserResponse {}
-export const SubscribeByNotificationTypeUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubscribeByNotificationTypeUserResponse",
-}) as any as S.Schema<SubscribeByNotificationTypeUserResponse>;
+export const SubscribeByNotificationTypeUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<SubscribeByNotificationTypeUserResponse>;
 
 export interface SuspendDeviceRequest {
   /** `id` of the device */
@@ -32257,9 +31420,8 @@ export const SuspendDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendDeviceRequest" }) as any as S.Schema<SuspendDeviceRequest>;
 
 export interface SuspendDeviceResponse {}
-export const SuspendDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendDeviceResponse",
-}) as any as S.Schema<SuspendDeviceResponse>;
+export const SuspendDeviceResponse =
+  ActivateApplicationResponse as any as S.Schema<SuspendDeviceResponse>;
 
 export interface SuspendUserRequest {
   /** An ID, login, or login shortname (as long as the shortname is unambiguous) of an existing Okta user */
@@ -32272,9 +31434,8 @@ export const SuspendUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendUserRequest" }) as any as S.Schema<SuspendUserRequest>;
 
 export interface SuspendUserResponse {}
-export const SuspendUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendUserResponse",
-}) as any as S.Schema<SuspendUserResponse>;
+export const SuspendUserResponse =
+  ActivateApplicationResponse as any as S.Schema<SuspendUserResponse>;
 
 export interface TestEmailServerRequest {
   emailServerId: string;
@@ -32292,9 +31453,8 @@ export const TestEmailServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestEmailServerRequest" }) as any as S.Schema<TestEmailServerRequest>;
 
 export interface TestEmailServerResponse {}
-export const TestEmailServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TestEmailServerResponse",
-}) as any as S.Schema<TestEmailServerResponse>;
+export const TestEmailServerResponse =
+  ActivateApplicationResponse as any as S.Schema<TestEmailServerResponse>;
 
 export interface UnassignAppInstanceTargetFromAdminRoleForUserRequest {
   /** ID of an existing Okta user */
@@ -32324,11 +31484,8 @@ export const UnassignAppInstanceTargetFromAdminRoleForUserRequest = /*@__PURE__*
 }) as any as S.Schema<UnassignAppInstanceTargetFromAdminRoleForUserRequest>;
 
 export interface UnassignAppInstanceTargetFromAdminRoleForUserResponse {}
-export const UnassignAppInstanceTargetFromAdminRoleForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignAppInstanceTargetFromAdminRoleForUserResponse",
-}) as any as S.Schema<UnassignAppInstanceTargetFromAdminRoleForUserResponse>;
+export const UnassignAppInstanceTargetFromAdminRoleForUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignAppInstanceTargetFromAdminRoleForUserResponse>;
 
 export interface UnassignAppInstanceTargetToAppAdminRoleForGroupRequest {
   /** The `id` of the group */
@@ -32358,11 +31515,8 @@ export const UnassignAppInstanceTargetToAppAdminRoleForGroupRequest = /*@__PURE_
 }) as any as S.Schema<UnassignAppInstanceTargetToAppAdminRoleForGroupRequest>;
 
 export interface UnassignAppInstanceTargetToAppAdminRoleForGroupResponse {}
-export const UnassignAppInstanceTargetToAppAdminRoleForGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignAppInstanceTargetToAppAdminRoleForGroupResponse",
-}) as any as S.Schema<UnassignAppInstanceTargetToAppAdminRoleForGroupResponse>;
+export const UnassignAppInstanceTargetToAppAdminRoleForGroupResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignAppInstanceTargetToAppAdminRoleForGroupResponse>;
 
 export interface UnassignApplicationFromGroupRequest {
   /** Application ID */
@@ -32380,11 +31534,8 @@ export const UnassignApplicationFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnassignApplicationFromGroupRequest>;
 
 export interface UnassignApplicationFromGroupResponse {}
-export const UnassignApplicationFromGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignApplicationFromGroupResponse",
-}) as any as S.Schema<UnassignApplicationFromGroupResponse>;
+export const UnassignApplicationFromGroupResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignApplicationFromGroupResponse>;
 
 export interface UnassignAppTargetFromAppAdminRoleForUserRequest {
   /** ID of an existing Okta user */
@@ -32411,11 +31562,8 @@ export const UnassignAppTargetFromAppAdminRoleForUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<UnassignAppTargetFromAppAdminRoleForUserRequest>;
 
 export interface UnassignAppTargetFromAppAdminRoleForUserResponse {}
-export const UnassignAppTargetFromAppAdminRoleForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignAppTargetFromAppAdminRoleForUserResponse",
-}) as any as S.Schema<UnassignAppTargetFromAppAdminRoleForUserResponse>;
+export const UnassignAppTargetFromAppAdminRoleForUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignAppTargetFromAppAdminRoleForUserResponse>;
 
 export interface UnassignAppTargetToAdminRoleForGroupRequest {
   /** The `id` of the group */
@@ -32442,11 +31590,8 @@ export const UnassignAppTargetToAdminRoleForGroupRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UnassignAppTargetToAdminRoleForGroupRequest>;
 
 export interface UnassignAppTargetToAdminRoleForGroupResponse {}
-export const UnassignAppTargetToAdminRoleForGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignAppTargetToAdminRoleForGroupResponse",
-}) as any as S.Schema<UnassignAppTargetToAdminRoleForGroupResponse>;
+export const UnassignAppTargetToAdminRoleForGroupResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignAppTargetToAdminRoleForGroupResponse>;
 
 export interface UnassignGroupTargetFromGroupAdminRoleRequest {
   /** The `id` of the group */
@@ -32472,11 +31617,8 @@ export const UnassignGroupTargetFromGroupAdminRoleRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<UnassignGroupTargetFromGroupAdminRoleRequest>;
 
 export interface UnassignGroupTargetFromGroupAdminRoleResponse {}
-export const UnassignGroupTargetFromGroupAdminRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignGroupTargetFromGroupAdminRoleResponse",
-}) as any as S.Schema<UnassignGroupTargetFromGroupAdminRoleResponse>;
+export const UnassignGroupTargetFromGroupAdminRoleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignGroupTargetFromGroupAdminRoleResponse>;
 
 export interface UnassignGroupTargetFromUserAdminRoleRequest {
   /** ID of an existing Okta user */
@@ -32503,11 +31645,8 @@ export const UnassignGroupTargetFromUserAdminRoleRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UnassignGroupTargetFromUserAdminRoleRequest>;
 
 export interface UnassignGroupTargetFromUserAdminRoleResponse {}
-export const UnassignGroupTargetFromUserAdminRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignGroupTargetFromUserAdminRoleResponse",
-}) as any as S.Schema<UnassignGroupTargetFromUserAdminRoleResponse>;
+export const UnassignGroupTargetFromUserAdminRoleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignGroupTargetFromUserAdminRoleResponse>;
 
 export interface UnassignMemberFromBindingRequest {
   /** `id` or `label` of the resource set */
@@ -32534,11 +31673,8 @@ export const UnassignMemberFromBindingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnassignMemberFromBindingRequest>;
 
 export interface UnassignMemberFromBindingResponse {}
-export const UnassignMemberFromBindingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignMemberFromBindingResponse",
-}) as any as S.Schema<UnassignMemberFromBindingResponse>;
+export const UnassignMemberFromBindingResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignMemberFromBindingResponse>;
 
 export interface UnassignRoleFromGroupRequest {
   /** The `id` of the group */
@@ -32562,9 +31698,8 @@ export const UnassignRoleFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnassignRoleFromGroupRequest>;
 
 export interface UnassignRoleFromGroupResponse {}
-export const UnassignRoleFromGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnassignRoleFromGroupResponse",
-}) as any as S.Schema<UnassignRoleFromGroupResponse>;
+export const UnassignRoleFromGroupResponse =
+  ActivateApplicationResponse as any as S.Schema<UnassignRoleFromGroupResponse>;
 
 export interface UnassignRoleFromUserRequest {
   /** ID of an existing Okta user */
@@ -32584,9 +31719,8 @@ export const UnassignRoleFromUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnassignRoleFromUserRequest>;
 
 export interface UnassignRoleFromUserResponse {}
-export const UnassignRoleFromUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnassignRoleFromUserResponse",
-}) as any as S.Schema<UnassignRoleFromUserResponse>;
+export const UnassignRoleFromUserResponse =
+  ActivateApplicationResponse as any as S.Schema<UnassignRoleFromUserResponse>;
 
 export interface UnassignUserFromApplicationRequest {
   /** Application ID */
@@ -32607,11 +31741,8 @@ export const UnassignUserFromApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnassignUserFromApplicationRequest>;
 
 export interface UnassignUserFromApplicationResponse {}
-export const UnassignUserFromApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnassignUserFromApplicationResponse",
-}) as any as S.Schema<UnassignUserFromApplicationResponse>;
+export const UnassignUserFromApplicationResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnassignUserFromApplicationResponse>;
 
 export interface UnassignUserFromGroupRequest {
   /** The `id` of the group */
@@ -32629,9 +31760,8 @@ export const UnassignUserFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnassignUserFromGroupRequest>;
 
 export interface UnassignUserFromGroupResponse {}
-export const UnassignUserFromGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnassignUserFromGroupResponse",
-}) as any as S.Schema<UnassignUserFromGroupResponse>;
+export const UnassignUserFromGroupResponse =
+  ActivateApplicationResponse as any as S.Schema<UnassignUserFromGroupResponse>;
 
 export interface UnenrollFactorRequest {
   /** ID of an existing Okta user */
@@ -32652,9 +31782,8 @@ export const UnenrollFactorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnenrollFactorRequest" }) as any as S.Schema<UnenrollFactorRequest>;
 
 export interface UnenrollFactorResponse {}
-export const UnenrollFactorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnenrollFactorResponse",
-}) as any as S.Schema<UnenrollFactorResponse>;
+export const UnenrollFactorResponse =
+  ActivateApplicationResponse as any as S.Schema<UnenrollFactorResponse>;
 
 export interface UnlinkUserFromIdentityProviderRequest {
   /** `id` of IdP */
@@ -32672,11 +31801,8 @@ export const UnlinkUserFromIdentityProviderRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UnlinkUserFromIdentityProviderRequest>;
 
 export interface UnlinkUserFromIdentityProviderResponse {}
-export const UnlinkUserFromIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnlinkUserFromIdentityProviderResponse",
-}) as any as S.Schema<UnlinkUserFromIdentityProviderResponse>;
+export const UnlinkUserFromIdentityProviderResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnlinkUserFromIdentityProviderResponse>;
 
 export interface UnlockUserRequest {
   /** An ID, login, or login shortname (as long as the shortname is unambiguous) of an existing Okta user */
@@ -32689,9 +31815,8 @@ export const UnlockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlockUserRequest" }) as any as S.Schema<UnlockUserRequest>;
 
 export interface UnlockUserResponse {}
-export const UnlockUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnlockUserResponse",
-}) as any as S.Schema<UnlockUserResponse>;
+export const UnlockUserResponse =
+  ActivateApplicationResponse as any as S.Schema<UnlockUserResponse>;
 
 /** The type of notification */
 export type UnsubscribeByNotificationTypeRoleRequestNotificationType =
@@ -32731,11 +31856,8 @@ export const UnsubscribeByNotificationTypeRoleRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UnsubscribeByNotificationTypeRoleRequest>;
 
 export interface UnsubscribeByNotificationTypeRoleResponse {}
-export const UnsubscribeByNotificationTypeRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnsubscribeByNotificationTypeRoleResponse",
-}) as any as S.Schema<UnsubscribeByNotificationTypeRoleResponse>;
+export const UnsubscribeByNotificationTypeRoleResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnsubscribeByNotificationTypeRoleResponse>;
 
 /** The type of notification */
 export type UnsubscribeByNotificationTypeUserRequestNotificationType =
@@ -32774,11 +31896,8 @@ export const UnsubscribeByNotificationTypeUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UnsubscribeByNotificationTypeUserRequest>;
 
 export interface UnsubscribeByNotificationTypeUserResponse {}
-export const UnsubscribeByNotificationTypeUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnsubscribeByNotificationTypeUserResponse",
-}) as any as S.Schema<UnsubscribeByNotificationTypeUserResponse>;
+export const UnsubscribeByNotificationTypeUserResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UnsubscribeByNotificationTypeUserResponse>;
 
 export interface UnsuspendDeviceRequest {
   /** `id` of the device */
@@ -32793,9 +31912,8 @@ export const UnsuspendDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnsuspendDeviceRequest" }) as any as S.Schema<UnsuspendDeviceRequest>;
 
 export interface UnsuspendDeviceResponse {}
-export const UnsuspendDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnsuspendDeviceResponse",
-}) as any as S.Schema<UnsuspendDeviceResponse>;
+export const UnsuspendDeviceResponse =
+  ActivateApplicationResponse as any as S.Schema<UnsuspendDeviceResponse>;
 
 export interface UnsuspendUserRequest {
   /** An ID, login, or login shortname (as long as the shortname is unambiguous) of an existing Okta user */
@@ -32808,14 +31926,12 @@ export const UnsuspendUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnsuspendUserRequest" }) as any as S.Schema<UnsuspendUserRequest>;
 
 export interface UnsuspendUserResponse {}
-export const UnsuspendUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnsuspendUserResponse",
-}) as any as S.Schema<UnsuspendUserResponse>;
+export const UnsuspendUserResponse =
+  ActivateApplicationResponse as any as S.Schema<UnsuspendUserResponse>;
 
 export type UpdateAgentPoolsUpdateRequestAgentsList = Array<AgentInput>;
-export const UpdateAgentPoolsUpdateRequestAgentsList = /*@__PURE__*/ S.Array(
-  AgentInput,
-) as any as S.Schema<UpdateAgentPoolsUpdateRequestAgentsList>;
+export const UpdateAgentPoolsUpdateRequestAgentsList =
+  CreateAgentPoolsUpdateRequestAgentsList as any as S.Schema<UpdateAgentPoolsUpdateRequestAgentsList>;
 
 export interface UpdateAgentPoolsUpdateRequest {
   /** ID of the agent pool for which the settings apply to */
@@ -32947,10 +32063,8 @@ export const UserSchemaBaseInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The `#custom` object properties */
 export type UserSchemaPublicInputPropertiesMap = { [key: string]: UserSchemaAttribute | undefined };
-export const UserSchemaPublicInputPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserSchemaAttribute,
-) as any as S.Schema<UserSchemaPublicInputPropertiesMap>;
+export const UserSchemaPublicInputPropertiesMap =
+  UserSchemaPublicPropertiesMap as any as S.Schema<UserSchemaPublicInputPropertiesMap>;
 
 /** All custom profile properties are defined in a profile subschema with the resolution scope `#custom`. > **Notes:** > * When you refer to custom profile attributes that differ only by case, name collisions occur. This includes naming custom profile attributes the same as base profile attributes, for example, `firstName` and `FirstName`. > * Certain attributes are reserved and can't be used for custom user profiles. See [Review reserved attributes](https://help.okta.com/okta_help.htm?type=oie&id=reserved-attributes). */
 export interface UserSchemaPublicInput {
@@ -32999,15 +32113,13 @@ export const UpdateApplicationUserProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IDs of the Okta groups who own the app service account */
 export type UpdateAppServiceAccountRequestOwnerGroupIdsList = Array<string>;
-export const UpdateAppServiceAccountRequestOwnerGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAppServiceAccountRequestOwnerGroupIdsList>;
+export const UpdateAppServiceAccountRequestOwnerGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateAppServiceAccountRequestOwnerGroupIdsList>;
 
 /** A list of IDs of the Okta users who own the app service account */
 export type UpdateAppServiceAccountRequestOwnerUserIdsList = Array<string>;
-export const UpdateAppServiceAccountRequestOwnerUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAppServiceAccountRequestOwnerUserIdsList>;
+export const UpdateAppServiceAccountRequestOwnerUserIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateAppServiceAccountRequestOwnerUserIdsList>;
 
 export interface UpdateAppServiceAccountRequest {
   /** ID of an existing service account */
@@ -33053,9 +32165,8 @@ export const UpdateAutoAssignAdminAppSettingRequest = /*@__PURE__*/ S.suspend(()
 export type UpdateBotProtectionConfigurationRequestSupportedFlowsList = Array<
   BotProtectionSupportedFlow | (string & {})
 >;
-export const UpdateBotProtectionConfigurationRequestSupportedFlowsList = /*@__PURE__*/ S.Array(
-  BotProtectionSupportedFlow,
-) as any as S.Schema<UpdateBotProtectionConfigurationRequestSupportedFlowsList>;
+export const UpdateBotProtectionConfigurationRequestSupportedFlowsList =
+  BotProtectionConfigurationSupportedFlowsList as any as S.Schema<UpdateBotProtectionConfigurationRequestSupportedFlowsList>;
 
 export interface UpdateBotProtectionConfigurationRequest {
   enforcementType?: BotProtectionEnforcementType | (string & {});
@@ -33104,9 +32215,8 @@ export const UpdateConfigurationRequestAction = S.String;
 
 /** Accepts a list of [Network Zone](/openapi/okta-management/management/networkzone/) IDs. IPs in the excluded network zones aren't logged or blocked. This ensures that traffic from known, trusted IPs isn't accidentally logged or blocked. */
 export type UpdateConfigurationRequestExcludeZonesList = Array<string>;
-export const UpdateConfigurationRequestExcludeZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigurationRequestExcludeZonesList>;
+export const UpdateConfigurationRequestExcludeZonesList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateConfigurationRequestExcludeZonesList>;
 
 export interface UpdateConfigurationRequest {
   /** Specifies how Okta responds to authentication requests from suspicious IP addresses */
@@ -33632,9 +32742,8 @@ export const ParametersAction = S.String;
 
 /** List of user IDs whose group memberships to update */
 export type ParametersValuesList = Array<string>;
-export const ParametersValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ParametersValuesList>;
+export const ParametersValuesList =
+  EventHookSubscribedEventTypes as any as S.Schema<ParametersValuesList>;
 
 /** Attributes used for processing Active Directory or LDAP group membership update */
 export interface Parameters {
@@ -33673,9 +32782,8 @@ export const UpdateGroupMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupMembershipRequest>;
 
 export interface UpdateGroupMembershipResponse {}
-export const UpdateGroupMembershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateGroupMembershipResponse",
-}) as any as S.Schema<UpdateGroupMembershipResponse>;
+export const UpdateGroupMembershipResponse =
+  ActivateApplicationResponse as any as S.Schema<UpdateGroupMembershipResponse>;
 
 export interface UpdateGroupPushMappingRequest {
   /** Application ID */
@@ -33715,10 +32823,8 @@ export const GroupSchemaBaseInput = /*@__PURE__*/ S.suspend(() =>
 export type GroupSchemaCustomInputPropertiesMap = {
   [key: string]: GroupSchemaAttribute | undefined;
 };
-export const GroupSchemaCustomInputPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GroupSchemaAttribute,
-) as any as S.Schema<GroupSchemaCustomInputPropertiesMap>;
+export const GroupSchemaCustomInputPropertiesMap =
+  GroupSchemaCustomPropertiesMap as any as S.Schema<GroupSchemaCustomInputPropertiesMap>;
 
 /** All custom profile properties are defined in a profile subschema with the resolution scope `#custom` */
 export interface GroupSchemaCustomInput {
@@ -33831,15 +32937,13 @@ export const UpdateInlineHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IDs of the Okta groups who own the Okta managed user account */
 export type UpdateOktaManagedUserAccountRequestOwnerGroupIdsList = Array<string>;
-export const UpdateOktaManagedUserAccountRequestOwnerGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOktaManagedUserAccountRequestOwnerGroupIdsList>;
+export const UpdateOktaManagedUserAccountRequestOwnerGroupIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateOktaManagedUserAccountRequestOwnerGroupIdsList>;
 
 /** A list of IDs of the Okta users who own the Okta managed user account */
 export type UpdateOktaManagedUserAccountRequestOwnerUserIdsList = Array<string>;
-export const UpdateOktaManagedUserAccountRequestOwnerUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOktaManagedUserAccountRequestOwnerUserIdsList>;
+export const UpdateOktaManagedUserAccountRequestOwnerUserIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateOktaManagedUserAccountRequestOwnerUserIdsList>;
 
 export interface UpdateOktaManagedUserAccountRequest {
   /** ID of an existing Okta managed user account */
@@ -33877,26 +32981,15 @@ export interface UpdateOktaSupportCaseRequestImpersonation {
   /** Expiration date of Okta Support access */
   expiration?: string | null;
 }
-export const UpdateOktaSupportCaseRequestImpersonation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(OktaSupportAccessStatus),
-    expiration: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateOktaSupportCaseRequestImpersonation",
-}) as any as S.Schema<UpdateOktaSupportCaseRequestImpersonation>;
+export const UpdateOktaSupportCaseRequestImpersonation =
+  OktaSupportCaseImpersonation as any as S.Schema<UpdateOktaSupportCaseRequestImpersonation>;
 
 /** Customer allows Okta Support access to self-assigned cases. Support cases are self-assigned when an Okta Support team member creates and assigns the case to themselves. */
 export interface UpdateOktaSupportCaseRequestSelfAssigned {
   status?: SelfAssignedStatus | (string & {});
 }
-export const UpdateOktaSupportCaseRequestSelfAssigned = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(SelfAssignedStatus),
-  }),
-).annotate({
-  identifier: "UpdateOktaSupportCaseRequestSelfAssigned",
-}) as any as S.Schema<UpdateOktaSupportCaseRequestSelfAssigned>;
+export const UpdateOktaSupportCaseRequestSelfAssigned =
+  OktaSupportCaseSelfAssigned as any as S.Schema<UpdateOktaSupportCaseRequestSelfAssigned>;
 
 export interface UpdateOktaSupportCaseRequest {
   caseNumber: string;
@@ -34017,9 +33110,8 @@ export const UpdateSmsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSmsTemplateRequest" }) as any as S.Schema<UpdateSmsTemplateRequest>;
 
 export type UpdateSsfStreamRequestAudCase1List = Array<string>;
-export const UpdateSsfStreamRequestAudCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSsfStreamRequestAudCase1List>;
+export const UpdateSsfStreamRequestAudCase1List =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateSsfStreamRequestAudCase1List>;
 
 /** The audience used in the SET. This value is set as `aud` in the claim. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type UpdateSsfStreamRequestAud = string | UpdateSsfStreamRequestAudCase1List;
@@ -34027,21 +33119,18 @@ export const UpdateSsfStreamRequestAud = S.Unknown as any as S.Schema<UpdateSsfS
 
 /** The events (mapped by the array of event type URIs) that the transmitter actually delivers to the SSF stream. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type UpdateSsfStreamRequestEventsDeliveredList = Array<string>;
-export const UpdateSsfStreamRequestEventsDeliveredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSsfStreamRequestEventsDeliveredList>;
+export const UpdateSsfStreamRequestEventsDeliveredList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateSsfStreamRequestEventsDeliveredList>;
 
 /** The events (mapped by the array of event type URIs) that the receiver wants to receive */
 export type UpdateSsfStreamRequestEventsRequestedList = Array<string>;
-export const UpdateSsfStreamRequestEventsRequestedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSsfStreamRequestEventsRequestedList>;
+export const UpdateSsfStreamRequestEventsRequestedList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateSsfStreamRequestEventsRequestedList>;
 
 /** An array of event type URIs that the transmitter supports. A read-only parameter that is set by the transmitter. If this parameter is included in the request, the value must match the expected value from the transmitter. */
 export type UpdateSsfStreamRequestEventsSupportedList = Array<string>;
-export const UpdateSsfStreamRequestEventsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSsfStreamRequestEventsSupportedList>;
+export const UpdateSsfStreamRequestEventsSupportedList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpdateSsfStreamRequestEventsSupportedList>;
 
 /** The subject identifier format expected for any SET transmitted. */
 export type UpdateSsfStreamRequestFormat = "iss_sub";
@@ -34178,9 +33267,8 @@ export const UploadApplicationLogoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadApplicationLogoRequest>;
 
 export interface UploadApplicationLogoResponse {}
-export const UploadApplicationLogoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadApplicationLogoResponse",
-}) as any as S.Schema<UploadApplicationLogoResponse>;
+export const UploadApplicationLogoResponse =
+  ActivateApplicationResponse as any as S.Schema<UploadApplicationLogoResponse>;
 
 export interface UploadBrandThemeBackgroundImageRequest {
   /** The ID of the brand */
@@ -34209,11 +33297,7 @@ export const UploadBrandThemeBackgroundImageRequest = /*@__PURE__*/ S.suspend(()
 export interface ImageUploadResponse {
   url?: string;
 }
-export const ImageUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImageUploadResponse" }) as any as S.Schema<ImageUploadResponse>;
+export const ImageUploadResponse = OidcSloEndpoint as any as S.Schema<ImageUploadResponse>;
 
 export interface UploadBrandThemeFaviconRequest {
   /** The ID of the brand */
@@ -34314,11 +33398,8 @@ export const UploadIdentitySourceDataForDeleteRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UploadIdentitySourceDataForDeleteRequest>;
 
 export interface UploadIdentitySourceDataForDeleteResponse {}
-export const UploadIdentitySourceDataForDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadIdentitySourceDataForDeleteResponse",
-}) as any as S.Schema<UploadIdentitySourceDataForDeleteResponse>;
+export const UploadIdentitySourceDataForDeleteResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UploadIdentitySourceDataForDeleteResponse>;
 
 /** The type of data to upsert into the session. Currently, only `USERS` is supported. */
 export type UploadIdentitySourceDataForUpsertRequestEntityType = "USERS";
@@ -34373,18 +33454,13 @@ export const UploadIdentitySourceDataForUpsertRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UploadIdentitySourceDataForUpsertRequest>;
 
 export interface UploadIdentitySourceDataForUpsertResponse {}
-export const UploadIdentitySourceDataForUpsertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadIdentitySourceDataForUpsertResponse",
-}) as any as S.Schema<UploadIdentitySourceDataForUpsertResponse>;
+export const UploadIdentitySourceDataForUpsertResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UploadIdentitySourceDataForUpsertResponse>;
 
 /** Array of external IDs of member profiles that need to be inserted in this group in Okta */
 export type IdentitySourceGroupMembershipsDeleteProfileItemMemberExternalIdsList = Array<string>;
 export const IdentitySourceGroupMembershipsDeleteProfileItemMemberExternalIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IdentitySourceGroupMembershipsDeleteProfileItemMemberExternalIdsList>;
+  SAMLPayloadExecuteInputDataAssertionConditionsAudienceRestrictionList as any as S.Schema<IdentitySourceGroupMembershipsDeleteProfileItemMemberExternalIdsList>;
 
 export interface IdentitySourceGroupMembershipsDeleteProfileItem {
   /** The external ID of the group whose memberships need to be deleted in Okta */
@@ -34434,18 +33510,13 @@ export const UploadIdentitySourceGroupMembershipsForDeleteRequest = /*@__PURE__*
 }) as any as S.Schema<UploadIdentitySourceGroupMembershipsForDeleteRequest>;
 
 export interface UploadIdentitySourceGroupMembershipsForDeleteResponse {}
-export const UploadIdentitySourceGroupMembershipsForDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadIdentitySourceGroupMembershipsForDeleteResponse",
-}) as any as S.Schema<UploadIdentitySourceGroupMembershipsForDeleteResponse>;
+export const UploadIdentitySourceGroupMembershipsForDeleteResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UploadIdentitySourceGroupMembershipsForDeleteResponse>;
 
 /** Array of external IDs of member profiles that need to be inserted in this group in Okta */
 export type IdentitySourceGroupMembershipsUpsertProfileItemMemberExternalIdsList = Array<string>;
 export const IdentitySourceGroupMembershipsUpsertProfileItemMemberExternalIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IdentitySourceGroupMembershipsUpsertProfileItemMemberExternalIdsList>;
+  SAMLPayloadExecuteInputDataAssertionConditionsAudienceRestrictionList as any as S.Schema<IdentitySourceGroupMembershipsUpsertProfileItemMemberExternalIdsList>;
 
 export interface IdentitySourceGroupMembershipsUpsertProfileItem {
   /** The external ID of the group whose memberships need to be inserted or updated in Okta */
@@ -34453,23 +33524,14 @@ export interface IdentitySourceGroupMembershipsUpsertProfileItem {
   /** Array of external IDs of member profiles that need to be inserted in this group in Okta */
   memberExternalIds?: IdentitySourceGroupMembershipsUpsertProfileItemMemberExternalIdsList;
 }
-export const IdentitySourceGroupMembershipsUpsertProfileItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupExternalId: S.optional(S.String),
-    memberExternalIds: S.optional(
-      IdentitySourceGroupMembershipsUpsertProfileItemMemberExternalIdsList,
-    ),
-  }),
-).annotate({
-  identifier: "IdentitySourceGroupMembershipsUpsertProfileItem",
-}) as any as S.Schema<IdentitySourceGroupMembershipsUpsertProfileItem>;
+export const IdentitySourceGroupMembershipsUpsertProfileItem =
+  IdentitySourceGroupMembershipsDeleteProfileItem as any as S.Schema<IdentitySourceGroupMembershipsUpsertProfileItem>;
 
 /** Array of group memberships that need to be inserted or updated in Okta */
 export type IdentitySourceGroupMembershipsUpsertProfile =
   Array<IdentitySourceGroupMembershipsUpsertProfileItem>;
-export const IdentitySourceGroupMembershipsUpsertProfile = /*@__PURE__*/ S.Array(
-  IdentitySourceGroupMembershipsUpsertProfileItem,
-) as any as S.Schema<IdentitySourceGroupMembershipsUpsertProfile>;
+export const IdentitySourceGroupMembershipsUpsertProfile =
+  IdentitySourceGroupMembershipsDeleteProfile as any as S.Schema<IdentitySourceGroupMembershipsUpsertProfile>;
 
 export interface UploadIdentitySourceGroupMembershipsForUpsertRequest {
   /** The ID of the identity source for which the session is created */
@@ -34495,17 +33557,13 @@ export const UploadIdentitySourceGroupMembershipsForUpsertRequest = /*@__PURE__*
 }) as any as S.Schema<UploadIdentitySourceGroupMembershipsForUpsertRequest>;
 
 export interface UploadIdentitySourceGroupMembershipsForUpsertResponse {}
-export const UploadIdentitySourceGroupMembershipsForUpsertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadIdentitySourceGroupMembershipsForUpsertResponse",
-}) as any as S.Schema<UploadIdentitySourceGroupMembershipsForUpsertResponse>;
+export const UploadIdentitySourceGroupMembershipsForUpsertResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UploadIdentitySourceGroupMembershipsForUpsertResponse>;
 
 /** Array of external IDs of groups that need to be deleted in Okta */
 export type UploadIdentitySourceGroupsDataForDeleteRequestExternalIdsList = Array<string>;
-export const UploadIdentitySourceGroupsDataForDeleteRequestExternalIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UploadIdentitySourceGroupsDataForDeleteRequestExternalIdsList>;
+export const UploadIdentitySourceGroupsDataForDeleteRequestExternalIdsList =
+  EventHookSubscribedEventTypes as any as S.Schema<UploadIdentitySourceGroupsDataForDeleteRequestExternalIdsList>;
 
 export interface UploadIdentitySourceGroupsDataForDeleteRequest {
   /** The ID of the identity source for which the session is created */
@@ -34532,11 +33590,8 @@ export const UploadIdentitySourceGroupsDataForDeleteRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<UploadIdentitySourceGroupsDataForDeleteRequest>;
 
 export interface UploadIdentitySourceGroupsDataForDeleteResponse {}
-export const UploadIdentitySourceGroupsDataForDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadIdentitySourceGroupsDataForDeleteResponse",
-}) as any as S.Schema<UploadIdentitySourceGroupsDataForDeleteResponse>;
+export const UploadIdentitySourceGroupsDataForDeleteResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UploadIdentitySourceGroupsDataForDeleteResponse>;
 
 export interface UploadIdentitySourceGroupsForUpsertRequestProfilesItem {
   /** The external ID of the group that needs to be created or updated in Okta */
@@ -34584,11 +33639,8 @@ export const UploadIdentitySourceGroupsForUpsertRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UploadIdentitySourceGroupsForUpsertRequest>;
 
 export interface UploadIdentitySourceGroupsForUpsertResponse {}
-export const UploadIdentitySourceGroupsForUpsertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadIdentitySourceGroupsForUpsertResponse",
-}) as any as S.Schema<UploadIdentitySourceGroupsForUpsertResponse>;
+export const UploadIdentitySourceGroupsForUpsertResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<UploadIdentitySourceGroupsForUpsertResponse>;
 
 export type UploadYubikeyOtpTokenSeedRequestFilter =
   | "profile.email"
@@ -34657,15 +33709,13 @@ export const UploadYubikeyOtpTokenSeedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of included IP network zones */
 export type UpsertApiTokenRequestNetworkIncludeList = Array<string>;
-export const UpsertApiTokenRequestNetworkIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertApiTokenRequestNetworkIncludeList>;
+export const UpsertApiTokenRequestNetworkIncludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpsertApiTokenRequestNetworkIncludeList>;
 
 /** List of excluded IP network zones */
 export type UpsertApiTokenRequestNetworkExcludeList = Array<string>;
-export const UpsertApiTokenRequestNetworkExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpsertApiTokenRequestNetworkExcludeList>;
+export const UpsertApiTokenRequestNetworkExcludeList =
+  EventHookSubscribedEventTypes as any as S.Schema<UpsertApiTokenRequestNetworkExcludeList>;
 
 /** The Network Condition of the API Token */
 export interface UpsertApiTokenRequestNetwork {
@@ -34731,9 +33781,8 @@ export const UpsertCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertCertificateRequest" }) as any as S.Schema<UpsertCertificateRequest>;
 
 export interface UpsertCertificateResponse {}
-export const UpsertCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpsertCertificateResponse",
-}) as any as S.Schema<UpsertCertificateResponse>;
+export const UpsertCertificateResponse =
+  ActivateApplicationResponse as any as S.Schema<UpsertCertificateResponse>;
 
 /** The risk level associated with the user */
 export type UpsertUserRiskRequestRiskLevel = "HIGH" | "MEDIUM" | "LOW";
@@ -34797,9 +33846,8 @@ export const VerifyEmailDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyEmailDomainRequest" }) as any as S.Schema<VerifyEmailDomainRequest>;
 
 export type VerifyEmailDomainResponseDnsValidationRecordsList = Array<EmailDomainDNSRecord>;
-export const VerifyEmailDomainResponseDnsValidationRecordsList = /*@__PURE__*/ S.Array(
-  EmailDomainDNSRecord,
-) as any as S.Schema<VerifyEmailDomainResponseDnsValidationRecordsList>;
+export const VerifyEmailDomainResponseDnsValidationRecordsList =
+  CreateEmailDomainResponseDnsValidationRecordsList as any as S.Schema<VerifyEmailDomainResponseDnsValidationRecordsList>;
 
 export interface VerifyEmailDomainResponse {
   displayName: string;
@@ -34811,19 +33859,8 @@ export interface VerifyEmailDomainResponse {
   /** The subdomain for the email sender's custom mail domain */
   validationSubdomain?: string;
 }
-export const VerifyEmailDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    userName: S.String,
-    dnsValidationRecords: S.optional(VerifyEmailDomainResponseDnsValidationRecordsList),
-    domain: S.optional(S.String),
-    id: S.optional(S.String),
-    validationStatus: S.optional(EmailDomainStatus),
-    validationSubdomain: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VerifyEmailDomainResponse",
-}) as any as S.Schema<VerifyEmailDomainResponse>;
+export const VerifyEmailDomainResponse =
+  CreateEmailDomainResponse as any as S.Schema<VerifyEmailDomainResponse>;
 
 export interface VerifyEventHookRequest {
   /** `id` of the Event Hook */
@@ -34968,10 +34005,8 @@ export type UserFactorVerifyResult =
 export const UserFactorVerifyResult = S.String;
 
 export type UserFactorVerifyResponseProfileMap = { [key: string]: unknown | undefined };
-export const UserFactorVerifyResponseProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserFactorVerifyResponseProfileMap>;
+export const UserFactorVerifyResponseProfileMap =
+  GroupAssignmentProfile as any as S.Schema<UserFactorVerifyResponseProfileMap>;
 
 export type UserFactorVerifyResponseEmbeddedMap = { [key: string]: unknown | null | undefined };
 export const UserFactorVerifyResponseEmbeddedMap = /*@__PURE__*/ S.Record(
@@ -35029,11 +34064,8 @@ export const VerifyProvisioningConnectionForApplicationRequest = /*@__PURE__*/ S
 }) as any as S.Schema<VerifyProvisioningConnectionForApplicationRequest>;
 
 export interface VerifyProvisioningConnectionForApplicationResponse {}
-export const VerifyProvisioningConnectionForApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VerifyProvisioningConnectionForApplicationResponse",
-}) as any as S.Schema<VerifyProvisioningConnectionForApplicationResponse>;
+export const VerifyProvisioningConnectionForApplicationResponse =
+  ActivateAuthorizationServerResponse as any as S.Schema<VerifyProvisioningConnectionForApplicationResponse>;
 
 /** The type of authenticator method */
 export type VerifyRpIdDomainRequestWebAuthnMethodType = "webauthn";
@@ -35059,9 +34091,8 @@ export const VerifyRpIdDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyRpIdDomainRequest" }) as any as S.Schema<VerifyRpIdDomainRequest>;
 
 export interface VerifyRpIdDomainResponse {}
-export const VerifyRpIdDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifyRpIdDomainResponse",
-}) as any as S.Schema<VerifyRpIdDomainResponse>;
+export const VerifyRpIdDomainResponse =
+  ActivateApplicationResponse as any as S.Schema<VerifyRpIdDomainResponse>;
 
 export interface VerifySsfStreamRequest {
   /** An arbitrary string that Okta as a transmitter must echo back to the event receiver in the verification event's payload */
@@ -35077,9 +34108,8 @@ export const VerifySsfStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifySsfStreamRequest" }) as any as S.Schema<VerifySsfStreamRequest>;
 
 export interface VerifySsfStreamResponse {}
-export const VerifySsfStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifySsfStreamResponse",
-}) as any as S.Schema<VerifySsfStreamResponse>;
+export const VerifySsfStreamResponse =
+  ActivateApplicationResponse as any as S.Schema<VerifySsfStreamResponse>;
 
 export type ActivateAgentPoolsUpdateError = Forbidden | NotFound | OktaOpError;
 /** Activate an agent pool update Activates a scheduled agent pool update */

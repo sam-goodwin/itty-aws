@@ -40,16 +40,12 @@ export const SandboxCustomImageDTOSpecMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SandboxCustomImageDTOSpecMap>;
 
 export type SandboxCustomImageDTOScanResultMap = { [key: string]: unknown | undefined };
-export const SandboxCustomImageDTOScanResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SandboxCustomImageDTOScanResultMap>;
+export const SandboxCustomImageDTOScanResultMap =
+  SandboxCustomImageDTOSpecMap as any as S.Schema<SandboxCustomImageDTOScanResultMap>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+export const TaskUserBasicInfoHedgehogConfigMap =
+  SandboxCustomImageDTOSpecMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
 
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {

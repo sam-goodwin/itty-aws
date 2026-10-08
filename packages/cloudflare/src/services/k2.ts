@@ -377,9 +377,7 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStreamRequest" }) as any as S.Schema<DeleteStreamRequest>;
 
 export interface DeleteStreamResponse {}
-export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStreamResponse",
-}) as any as S.Schema<DeleteStreamResponse>;
+export const DeleteStreamResponse = AckBatchResponse as any as S.Schema<DeleteStreamResponse>;
 
 export interface DeleteSubscriptionRequest {
   streamId: string;
@@ -400,13 +398,8 @@ export interface DeleteSubscriptionResponse {
   /** The deleted subscription's ID. */
   id: string;
 }
-export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "DeleteSubscriptionResponse",
-}) as any as S.Schema<DeleteSubscriptionResponse>;
+export const DeleteSubscriptionResponse =
+  CreateSubscriptionResponse as any as S.Schema<DeleteSubscriptionResponse>;
 
 export interface ExtendLeaseRequest {
   streamId: string;
@@ -469,18 +462,7 @@ export interface GetStreamResponse {
   createdAt: string;
   modifiedAt: string;
 }
-export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    retentionSeconds: S.Number.pipe(T.Body("retention_seconds")),
-    endpoint: S.String,
-    http: StreamHttpInput,
-    workerBinding: StreamWorkerBindingInput.pipe(T.Body("worker_binding")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-  }),
-).annotate({ identifier: "GetStreamResponse" }) as any as S.Schema<GetStreamResponse>;
+export const GetStreamResponse = CreateStreamResponse as any as S.Schema<GetStreamResponse>;
 
 export interface GetSubscriptionRequest {
   streamId: string;
@@ -608,18 +590,7 @@ export interface Stream {
   createdAt: string;
   modifiedAt: string;
 }
-export const Stream = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    retentionSeconds: S.Number.pipe(T.Body("retention_seconds")),
-    endpoint: S.String,
-    http: StreamHttpInput,
-    workerBinding: StreamWorkerBindingInput.pipe(T.Body("worker_binding")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-  }),
-).annotate({ identifier: "Stream" }) as any as S.Schema<Stream>;
+export const Stream = CreateStreamResponse as any as S.Schema<Stream>;
 
 export type StreamList = Array<Stream>;
 export const StreamList = /*@__PURE__*/ S.Array(Stream) as any as S.Schema<StreamList>;
@@ -658,15 +629,7 @@ export interface Subscription {
   createdAt: string;
   modifiedAt: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    startAt: SubscriptionStartAt.pipe(T.Body("start_at")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-  }),
-).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
+export const Subscription = GetSubscriptionResponse as any as S.Schema<Subscription>;
 
 export type SubscriptionList = Array<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
@@ -705,9 +668,7 @@ export const NackBatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NackBatchRequest" }) as any as S.Schema<NackBatchRequest>;
 
 export interface NackBatchResponse {}
-export const NackBatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "NackBatchResponse",
-}) as any as S.Schema<NackBatchResponse>;
+export const NackBatchResponse = AckBatchResponse as any as S.Schema<NackBatchResponse>;
 
 export interface ProduceRecord {
   /** The record payload as standard (padded, not URL-safe) base64. */
@@ -741,9 +702,7 @@ export const ProduceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProduceRequest" }) as any as S.Schema<ProduceRequest>;
 
 export interface ProduceResponse {}
-export const ProduceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ProduceResponse",
-}) as any as S.Schema<ProduceResponse>;
+export const ProduceResponse = AckBatchResponse as any as S.Schema<ProduceResponse>;
 
 export interface UpdateStreamRequest {
   accountId: string;
@@ -778,18 +737,7 @@ export interface UpdateStreamResponse {
   createdAt: string;
   modifiedAt: string;
 }
-export const UpdateStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    retentionSeconds: S.Number.pipe(T.Body("retention_seconds")),
-    endpoint: S.String,
-    http: StreamHttpInput,
-    workerBinding: StreamWorkerBindingInput.pipe(T.Body("worker_binding")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-  }),
-).annotate({ identifier: "UpdateStreamResponse" }) as any as S.Schema<UpdateStreamResponse>;
+export const UpdateStreamResponse = CreateStreamResponse as any as S.Schema<UpdateStreamResponse>;
 
 export type AckBatchError = K2StreamNotFound | K2SubscriptionNotFound | CloudflareOpError;
 /** Mark a batch processed and release its lease. Acknowledging an unknown or already acknowledged batch succeeds. */

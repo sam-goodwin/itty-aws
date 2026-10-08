@@ -313,9 +313,7 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Request to cancel an ongoing build. */
 export interface CancelBuildRequest {
@@ -1269,19 +1267,11 @@ export interface UploadedGoModule {
   /** URI of the uploaded artifact. */
   uri?: string;
 }
-export const UploadedGoModule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileHashes: S.optional(FileHashes),
-    artifactRegistryPackage: S.optional(S.String),
-    pushTiming: S.optional(TimeSpan),
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "UploadedGoModule" }) as any as S.Schema<UploadedGoModule>;
+export const UploadedGoModule = UploadedMavenArtifact as any as S.Schema<UploadedGoModule>;
 
 export type UploadedGoModuleList = Array<UploadedGoModule>;
-export const UploadedGoModuleList = /*@__PURE__*/ S.Array(
-  UploadedGoModule,
-) as any as S.Schema<UploadedGoModuleList>;
+export const UploadedGoModuleList =
+  UploadedMavenArtifactList as any as S.Schema<UploadedGoModuleList>;
 
 /** Results for a build step. */
 export interface BuildStepResults {
@@ -3584,9 +3574,8 @@ export const WebhookProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend((
 
 /** ReceiveTriggerWebhookResponse [Experimental] is the response object for the ReceiveTriggerWebhook method. */
 export interface ReceiveTriggerWebhookResponse {}
-export const ReceiveTriggerWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReceiveTriggerWebhookResponse",
-}) as any as S.Schema<ReceiveTriggerWebhookResponse>;
+export const ReceiveTriggerWebhookResponse =
+  CancelOperationRequest as any as S.Schema<ReceiveTriggerWebhookResponse>;
 
 export interface WebhookProjectsTriggersRequest {
   /** Secret token used for authorization if an OAuth token isn't provided. */

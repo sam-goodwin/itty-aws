@@ -254,9 +254,8 @@ export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateClipRequest" }) as any as S.Schema<CreateClipRequest>;
 
 export type ClipCreateResponseAllowedOriginsList = Array<string>;
-export const ClipCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClipCreateResponseAllowedOriginsList>;
+export const ClipCreateResponseAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<ClipCreateResponseAllowedOriginsList>;
 
 export interface ClipCreateResponseInput {
   /** The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready. */
@@ -460,9 +459,8 @@ export const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateClipResponse" }) as any as S.Schema<CreateClipResponse>;
 
 export type CopyCreateRequestAllowedOriginsList = Array<string>;
-export const CopyCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CopyCreateRequestAllowedOriginsList>;
+export const CopyCreateRequestAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<CopyCreateRequestAllowedOriginsList>;
 
 export type CopyCreateRequestWatermark = ClipCreateRequestWatermark;
 export const CopyCreateRequestWatermark = ClipCreateRequestWatermark;
@@ -512,9 +510,8 @@ export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCopyRequest" }) as any as S.Schema<CreateCopyRequest>;
 
 export type CopyCreateResponseAllowedOriginsList = Array<string>;
-export const CopyCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CopyCreateResponseAllowedOriginsList>;
+export const CopyCreateResponseAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<CopyCreateResponseAllowedOriginsList>;
 
 export type CopyCreateResponseInput = ClipCreateResponseInput;
 export const CopyCreateResponseInput = ClipCreateResponseInput;
@@ -641,9 +638,8 @@ export const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCopyResponse" }) as any as S.Schema<CreateCopyResponse>;
 
 export type DirectUploadCreateRequestAllowedOriginsList = Array<string>;
-export const DirectUploadCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DirectUploadCreateRequestAllowedOriginsList>;
+export const DirectUploadCreateRequestAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<DirectUploadCreateRequestAllowedOriginsList>;
 
 export type DirectUploadCreateRequestWatermark = ClipCreateRequestWatermark;
 export const DirectUploadCreateRequestWatermark = ClipCreateRequestWatermark;
@@ -825,9 +821,8 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateKeyResponse" }) as any as S.Schema<CreateKeyResponse>;
 
 export type LiveInputsCreateRequestRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsCreateRequestRecordingAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiveInputsCreateRequestRecordingAllowedOriginsList>;
+export const LiveInputsCreateRequestRecordingAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsCreateRequestRecordingAllowedOriginsList>;
 
 export type LiveInputsCreateRequestRecordingMode = "off" | "automatic";
 export const LiveInputsCreateRequestRecordingMode = S.String;
@@ -904,9 +899,8 @@ export const LiveInputsCreateResponsePlayback = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveInputsCreateResponsePlayback>;
 
 export type LiveInputsCreateResponseRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsCreateResponseRecordingAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiveInputsCreateResponseRecordingAllowedOriginsList>;
+export const LiveInputsCreateResponseRecordingAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsCreateResponseRecordingAllowedOriginsList>;
 
 export type LiveInputsCreateResponseRecordingMode = "off" | "automatic";
 export const LiveInputsCreateResponseRecordingMode = S.String;
@@ -956,14 +950,8 @@ export interface LiveInputsCreateResponseRtmpsPlayback {
   /** The URL used to play live video over RTMPS. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamKey: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseRtmpsPlayback",
-}) as any as S.Schema<LiveInputsCreateResponseRtmpsPlayback>;
+export const LiveInputsCreateResponseRtmpsPlayback =
+  LiveInputsCreateResponseRtmps as any as S.Schema<LiveInputsCreateResponseRtmpsPlayback>;
 
 export interface LiveInputsCreateResponseSrt {
   /** The secret key to use when streaming via SRT to a live input. */
@@ -991,15 +979,8 @@ export interface LiveInputsCreateResponseSrtPlayback {
   /** The URL used to play live video over SRT. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passphrase: S.optional(S.NullOr(S.String)),
-    streamId: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseSrtPlayback",
-}) as any as S.Schema<LiveInputsCreateResponseSrtPlayback>;
+export const LiveInputsCreateResponseSrtPlayback =
+  LiveInputsCreateResponseSrt as any as S.Schema<LiveInputsCreateResponseSrtPlayback>;
 
 export type LiveInputsCreateResponseStatus =
   | "connected"
@@ -1028,13 +1009,8 @@ export interface LiveInputsCreateResponseWebRTCPlayback {
   /** The URL used to play live video over WebRTC. */
   url?: string | null;
 }
-export const LiveInputsCreateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseWebRTCPlayback",
-}) as any as S.Schema<LiveInputsCreateResponseWebRTCPlayback>;
+export const LiveInputsCreateResponseWebRTCPlayback =
+  LiveInputsCreateResponseWebRTC as any as S.Schema<LiveInputsCreateResponseWebRTCPlayback>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLiveInputResponse {
@@ -1188,14 +1164,12 @@ export type TokenCreateRequestAccessRulesItemAction = "allow" | "block";
 export const TokenCreateRequestAccessRulesItemAction = S.String;
 
 export type TokenCreateRequestAccessRulesItemCountryList = Array<string>;
-export const TokenCreateRequestAccessRulesItemCountryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokenCreateRequestAccessRulesItemCountryList>;
+export const TokenCreateRequestAccessRulesItemCountryList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<TokenCreateRequestAccessRulesItemCountryList>;
 
 export type TokenCreateRequestAccessRulesItemIpList = Array<string>;
-export const TokenCreateRequestAccessRulesItemIpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokenCreateRequestAccessRulesItemIpList>;
+export const TokenCreateRequestAccessRulesItemIpList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<TokenCreateRequestAccessRulesItemIpList>;
 
 export type TokenCreateRequestAccessRulesItemType = "any" | "ip.src" | "ip.geoip.country";
 export const TokenCreateRequestAccessRulesItemType = S.String;
@@ -1444,9 +1418,8 @@ export const DeleteDownloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDownloadRequest" }) as any as S.Schema<DeleteDownloadRequest>;
 
 export type DeleteDownloadResponse = string;
-export const DeleteDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteDownloadResponse" }) as any as S.Schema<DeleteDownloadResponse>;
+export const DeleteDownloadResponse =
+  DeleteAudioTrackResponse as any as S.Schema<DeleteDownloadResponse>;
 
 export interface DeleteKeyRequest {
   /** Identifier. */
@@ -1470,9 +1443,7 @@ export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyRequest" }) as any as S.Schema<DeleteKeyRequest>;
 
 export type DeleteKeyResponse = string;
-export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteKeyResponse" }) as any as S.Schema<DeleteKeyResponse>;
+export const DeleteKeyResponse = DeleteAudioTrackResponse as any as S.Schema<DeleteKeyResponse>;
 
 export interface DeleteLiveInputRequest {
   /** Identifier. */
@@ -1496,9 +1467,8 @@ export const DeleteLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLiveInputRequest" }) as any as S.Schema<DeleteLiveInputRequest>;
 
 export interface DeleteLiveInputResponse {}
-export const DeleteLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteLiveInputResponse" }) as any as S.Schema<DeleteLiveInputResponse>;
+export const DeleteLiveInputResponse =
+  CreateStreamResponse as any as S.Schema<DeleteLiveInputResponse>;
 
 export interface DeleteLiveInputOutputRequest {
   /** Identifier. */
@@ -1551,9 +1521,7 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStreamRequest" }) as any as S.Schema<DeleteStreamRequest>;
 
 export interface DeleteStreamResponse {}
-export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteStreamResponse" }) as any as S.Schema<DeleteStreamResponse>;
+export const DeleteStreamResponse = CreateStreamResponse as any as S.Schema<DeleteStreamResponse>;
 
 export interface DeleteWatermarkRequest {
   /** The account identifier tag. */
@@ -1577,9 +1545,8 @@ export const DeleteWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWatermarkRequest" }) as any as S.Schema<DeleteWatermarkRequest>;
 
 export type DeleteWatermarkResponse = string;
-export const DeleteWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteWatermarkResponse" }) as any as S.Schema<DeleteWatermarkResponse>;
+export const DeleteWatermarkResponse =
+  DeleteAudioTrackResponse as any as S.Schema<DeleteWatermarkResponse>;
 
 export interface DeleteWebhookRequest {
   /** The account identifier tag. */
@@ -1594,14 +1561,12 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export type DeleteWebhookResponse = string;
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteWebhookResponse" }) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse =
+  DeleteAudioTrackResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export type EditRequestAllowedOriginsList = Array<string>;
-export const EditRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestAllowedOriginsList>;
+export const EditRequestAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<EditRequestAllowedOriginsList>;
 
 export interface EditRequestPublicDetails {
   channelLink?: string;
@@ -1664,9 +1629,8 @@ export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditStreamRequest" }) as any as S.Schema<EditStreamRequest>;
 
 export type EditResponseAllowedOriginsList = Array<string>;
-export const EditResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseAllowedOriginsList>;
+export const EditResponseAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<EditResponseAllowedOriginsList>;
 
 export type EditResponseInput = ClipCreateResponseInput;
 export const EditResponseInput = ClipCreateResponseInput;
@@ -1988,11 +1952,8 @@ export const GetCaptionLanguageVttRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCaptionLanguageVttRequest>;
 
 export interface GetCaptionLanguageVttResponse {}
-export const GetCaptionLanguageVttResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetCaptionLanguageVttResponse",
-}) as any as S.Schema<GetCaptionLanguageVttResponse>;
+export const GetCaptionLanguageVttResponse =
+  DeleteLiveInputOutputResponse as any as S.Schema<GetCaptionLanguageVttResponse>;
 
 export interface GetDownloadRequest {
   /** Identifier. */
@@ -2089,9 +2050,7 @@ export const GetEmbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbedRequest" }) as any as S.Schema<GetEmbedRequest>;
 
 export interface GetEmbedResponse {}
-export const GetEmbedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetEmbedResponse" }) as any as S.Schema<GetEmbedResponse>;
+export const GetEmbedResponse = CreateStreamResponse as any as S.Schema<GetEmbedResponse>;
 
 export interface GetKeyRequest {
   /** Identifier. */
@@ -2164,9 +2123,8 @@ export type LiveInputsGetResponsePlayback = LiveInputsCreateResponsePlayback;
 export const LiveInputsGetResponsePlayback = LiveInputsCreateResponsePlayback;
 
 export type LiveInputsGetResponseRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsGetResponseRecordingAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiveInputsGetResponseRecordingAllowedOriginsList>;
+export const LiveInputsGetResponseRecordingAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsGetResponseRecordingAllowedOriginsList>;
 
 export type LiveInputsGetResponseRecordingMode = "off" | "automatic";
 export const LiveInputsGetResponseRecordingMode = S.String;
@@ -2299,9 +2257,8 @@ export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStreamRequest" }) as any as S.Schema<GetStreamRequest>;
 
 export type GetResponseAllowedOriginsList = Array<string>;
-export const GetResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseAllowedOriginsList>;
+export const GetResponseAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<GetResponseAllowedOriginsList>;
 
 export type GetResponseInput = ClipCreateResponseInput;
 export const GetResponseInput = ClipCreateResponseInput;
@@ -2473,21 +2430,8 @@ export interface GetWatermarkResponse {
   /** The width of the image in pixels. */
   width?: number | null;
 }
-export const GetWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.NullOr(S.String)),
-    downloadedFrom: S.optional(S.NullOr(S.String)),
-    height: S.optional(S.NullOr(S.Number)),
-    name: S.optional(S.NullOr(S.String)),
-    opacity: S.optional(S.NullOr(S.Number)),
-    padding: S.optional(S.NullOr(S.Number)),
-    position: S.optional(S.NullOr(S.String)),
-    scale: S.optional(S.NullOr(S.Number)),
-    size: S.optional(S.NullOr(S.Number)),
-    uid: S.optional(S.NullOr(S.String)),
-    width: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetWatermarkResponse" }) as any as S.Schema<GetWatermarkResponse>;
+export const GetWatermarkResponse =
+  CreateWatermarkResponse as any as S.Schema<GetWatermarkResponse>;
 
 export interface GetWebhookRequest {
   /** The account identifier tag. */
@@ -2713,9 +2657,8 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStreamsRequest" }) as any as S.Schema<ListStreamsRequest>;
 
 export type ListResultItemAllowedOriginsList = Array<string>;
-export const ListResultItemAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemAllowedOriginsList>;
+export const ListResultItemAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<ListResultItemAllowedOriginsList>;
 
 export type ListResultItemInput = ClipCreateResponseInput;
 export const ListResultItemInput = ClipCreateResponseInput;
@@ -2968,13 +2911,7 @@ export interface PutWebhookResponse {
   /** The secret used to verify webhook signatures. */
   secret?: string | null;
 }
-export const PutWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.NullOr(S.String)),
-    notificationUrl: S.optional(S.NullOr(S.String)),
-    secret: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutWebhookResponse" }) as any as S.Schema<PutWebhookResponse>;
+export const PutWebhookResponse = GetWebhookResponse as any as S.Schema<PutWebhookResponse>;
 
 export interface StorageUsageVideoRequest {
   /** The account identifier tag. */
@@ -3068,9 +3005,8 @@ export const UpdateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCaptionLanguageResponse>;
 
 export type LiveInputsUpdateRequestRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsUpdateRequestRecordingAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiveInputsUpdateRequestRecordingAllowedOriginsList>;
+export const LiveInputsUpdateRequestRecordingAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsUpdateRequestRecordingAllowedOriginsList>;
 
 export type LiveInputsUpdateRequestRecordingMode = "off" | "automatic";
 export const LiveInputsUpdateRequestRecordingMode = S.String;
@@ -3142,9 +3078,8 @@ export type LiveInputsUpdateResponsePlayback = LiveInputsCreateResponsePlayback;
 export const LiveInputsUpdateResponsePlayback = LiveInputsCreateResponsePlayback;
 
 export type LiveInputsUpdateResponseRecordingAllowedOriginsList = Array<string>;
-export const LiveInputsUpdateResponseRecordingAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LiveInputsUpdateResponseRecordingAllowedOriginsList>;
+export const LiveInputsUpdateResponseRecordingAllowedOriginsList =
+  ClipCreateRequestAllowedOriginsList as any as S.Schema<LiveInputsUpdateResponseRecordingAllowedOriginsList>;
 
 export type LiveInputsUpdateResponseRecordingMode = "off" | "automatic";
 export const LiveInputsUpdateResponseRecordingMode = S.String;
@@ -3301,16 +3236,8 @@ export interface UpdateLiveInputOutputResponse {
   /** The URL an output uses to restream. */
   url?: string | null;
 }
-export const UpdateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    streamKey: S.optional(S.NullOr(S.String)),
-    uid: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateLiveInputOutputResponse",
-}) as any as S.Schema<UpdateLiveInputOutputResponse>;
+export const UpdateLiveInputOutputResponse =
+  CreateLiveInputOutputResponse as any as S.Schema<UpdateLiveInputOutputResponse>;
 
 export type CopyAudioTrackError = CloudflareOpError;
 /** Adds an additional audio track to a video using the provided audio track URL. */

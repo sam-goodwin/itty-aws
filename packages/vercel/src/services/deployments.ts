@@ -137,9 +137,8 @@ export const CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList =
   ) as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList>;
 
 export type CancelDeploymentResponseAtprotoCase1SubscriptionDidsList = Array<string>;
-export const CancelDeploymentResponseAtprotoCase1SubscriptionDidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionDidsList>;
+export const CancelDeploymentResponseAtprotoCase1SubscriptionDidsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionDidsList>;
 
 export type CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem =
   | "account"
@@ -236,9 +235,8 @@ export const CancelDeploymentResponseAttributionGitUser = /*@__PURE__*/ S.suspen
 
 /** Team roles at time of deployment */
 export type CancelDeploymentResponseAttributionVercelUserTeamRolesList = Array<string>;
-export const CancelDeploymentResponseAttributionVercelUserTeamRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseAttributionVercelUserTeamRolesList>;
+export const CancelDeploymentResponseAttributionVercelUserTeamRolesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAttributionVercelUserTeamRolesList>;
 
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface CancelDeploymentResponseAttributionVercelUser {
@@ -279,14 +277,12 @@ export const CancelDeploymentResponseAttribution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseAttribution>;
 
 export type CancelDeploymentResponseAutomaticAliasesList = Array<string>;
-export const CancelDeploymentResponseAutomaticAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseAutomaticAliasesList>;
+export const CancelDeploymentResponseAutomaticAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAutomaticAliasesList>;
 
 export type CancelDeploymentResponseBuildEnvList = Array<string>;
-export const CancelDeploymentResponseBuildEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseBuildEnvList>;
+export const CancelDeploymentResponseBuildEnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseBuildEnvList>;
 
 export interface CancelDeploymentResponseBuild {
   env: CancelDeploymentResponseBuildEnvList;
@@ -300,9 +296,8 @@ export const CancelDeploymentResponseBuild = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseBuild>;
 
 export type CancelDeploymentResponseBuildArtifactUrlsList = Array<string>;
-export const CancelDeploymentResponseBuildArtifactUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseBuildArtifactUrlsList>;
+export const CancelDeploymentResponseBuildArtifactUrlsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseBuildArtifactUrlsList>;
 
 export type CancelDeploymentResponseBuildsItemConfigMap = { [key: string]: unknown | undefined };
 export const CancelDeploymentResponseBuildsItemConfigMap = /*@__PURE__*/ S.Record(
@@ -549,9 +544,7 @@ export const CancelDeploymentResponseCustomEnvironmentCase0BranchMatcher = /*@__
 export type CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
 export const CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList>;
 
 export type CancelDeploymentResponseCustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
@@ -728,9 +721,8 @@ export const CancelDeploymentResponseDuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseDuration>;
 
 export type CancelDeploymentResponseEnvList = Array<string>;
-export const CancelDeploymentResponseEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseEnvList>;
+export const CancelDeploymentResponseEnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseEnvList>;
 
 /** TODO: The following types will eventually be exported by a more relevant package. */
 export type FlagJSONValueCase2List = Array<FlagJSONValue>;
@@ -940,9 +932,7 @@ export const CancelDeploymentResponseFunctionsValueExperimentalTriggersList = /*
 
 export type CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList = Array<string>;
 export const CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList>;
 
 export type CancelDeploymentResponseFunctionsValueMaxDurationCase1 = "max";
 export const CancelDeploymentResponseFunctionsValueMaxDurationCase1 = S.String;
@@ -954,9 +944,8 @@ export const CancelDeploymentResponseFunctionsValueMaxDuration =
   S.Unknown as any as S.Schema<CancelDeploymentResponseFunctionsValueMaxDuration>;
 
 export type CancelDeploymentResponseFunctionsValueRegionsList = Array<string>;
-export const CancelDeploymentResponseFunctionsValueRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseFunctionsValueRegionsList>;
+export const CancelDeploymentResponseFunctionsValueRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseFunctionsValueRegionsList>;
 
 export interface CancelDeploymentResponseFunctionsValue {
   affinity?: CancelDeploymentResponseFunctionsValueAffinity;
@@ -1738,9 +1727,8 @@ export type CancelDeploymentResponseImagesContentDispositionType = "attachment" 
 export const CancelDeploymentResponseImagesContentDispositionType = S.String;
 
 export type CancelDeploymentResponseImagesDomainsList = Array<string>;
-export const CancelDeploymentResponseImagesDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseImagesDomainsList>;
+export const CancelDeploymentResponseImagesDomainsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseImagesDomainsList>;
 
 export type CancelDeploymentResponseImagesFormatsItem = "image/avif" | "image/webp";
 export const CancelDeploymentResponseImagesFormatsItem = S.String;
@@ -1812,9 +1800,8 @@ export const CancelDeploymentResponseImagesRemotePatternsList = /*@__PURE__*/ S.
 ) as any as S.Schema<CancelDeploymentResponseImagesRemotePatternsList>;
 
 export type CancelDeploymentResponseImagesSizesList = Array<number>;
-export const CancelDeploymentResponseImagesSizesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CancelDeploymentResponseImagesSizesList>;
+export const CancelDeploymentResponseImagesSizesList =
+  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<CancelDeploymentResponseImagesSizesList>;
 
 export interface CancelDeploymentResponseImages {
   contentDispositionType?: CancelDeploymentResponseImagesContentDispositionType;
@@ -1955,9 +1942,8 @@ export const CancelDeploymentResponseMetaMap = /*@__PURE__*/ S.Record(
 
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CancelDeploymentResponseMicrofrontendsCase0GroupIdsList = Array<string>;
-export const CancelDeploymentResponseMicrofrontendsCase0GroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase0GroupIdsList>;
+export const CancelDeploymentResponseMicrofrontendsCase0GroupIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase0GroupIdsList>;
 
 export interface CancelDeploymentResponseMicrofrontendsCase0 {
   /** The project name of the default app of this deployment's microfrontends group. */
@@ -1981,9 +1967,8 @@ export const CancelDeploymentResponseMicrofrontendsCase0 = /*@__PURE__*/ S.suspe
 
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CancelDeploymentResponseMicrofrontendsCase1GroupIdsList = Array<string>;
-export const CancelDeploymentResponseMicrofrontendsCase1GroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase1GroupIdsList>;
+export const CancelDeploymentResponseMicrofrontendsCase1GroupIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase1GroupIdsList>;
 
 /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
 export type CancelDeploymentResponseMicrofrontendsCase1MfeConfigUploadState =
@@ -2037,9 +2022,8 @@ export type CancelDeploymentResponseNodeVersion =
 export const CancelDeploymentResponseNodeVersion = S.String;
 
 export type CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList = Array<string>;
-export const CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList>;
+export const CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList>;
 
 export interface CancelDeploymentResponseOidcTokenClaims {
   aud: string;
@@ -2081,9 +2065,8 @@ export const CancelDeploymentResponseOomReport = S.String;
 
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type CancelDeploymentResponsePassiveRegionsList = Array<string>;
-export const CancelDeploymentResponsePassiveRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponsePassiveRegionsList>;
+export const CancelDeploymentResponsePassiveRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponsePassiveRegionsList>;
 
 export type CancelDeploymentResponsePlan = "enterprise" | "hobby" | "pro";
 export const CancelDeploymentResponsePlan = S.String;
@@ -2106,10 +2089,8 @@ export const CancelDeploymentResponsePlatformCreator = /*@__PURE__*/ S.suspend((
 
 /** Arbitrary key-value metadata provided by the platform. */
 export type CancelDeploymentResponsePlatformMetaMap = { [key: string]: string | undefined };
-export const CancelDeploymentResponsePlatformMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelDeploymentResponsePlatformMetaMap>;
+export const CancelDeploymentResponsePlatformMetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<CancelDeploymentResponsePlatformMetaMap>;
 
 /** Whether the value is an opaque identifier or a URL. */
 export type CancelDeploymentResponsePlatformOriginType = "id" | "url";
@@ -2358,9 +2339,8 @@ export const CancelDeploymentResponseReadySubstate = S.String;
 
 /** The regions the deployment exists in */
 export type CancelDeploymentResponseRegionsList = Array<string>;
-export const CancelDeploymentResponseRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseRegionsList>;
+export const CancelDeploymentResponseRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRegionsList>;
 
 /** The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type. */
 export type CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType =
@@ -2466,9 +2446,8 @@ export const CancelDeploymentResponseRoutesItemCase0Destination =
   S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0Destination>;
 
 export type CancelDeploymentResponseRoutesItemCase0EnvList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0EnvList>;
+export const CancelDeploymentResponseRoutesItemCase0EnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0EnvList>;
 
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0Type = "host";
 export const CancelDeploymentResponseRoutesItemCase0HasItemCase0Type = S.String;
@@ -2479,15 +2458,11 @@ export const CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1Eq =
 
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList = Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList = Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1Eq;
@@ -2549,15 +2524,11 @@ export const CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1Eq =
 
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList = Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList = Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1Eq;
@@ -2627,18 +2598,14 @@ export const CancelDeploymentResponseRoutesItemCase0HasList = /*@__PURE__*/ S.Ar
 export type CancelDeploymentResponseRoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseRoutesItemCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HeadersMap>;
+export const CancelDeploymentResponseRoutesItemCase0HeadersMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HeadersMap>;
 
 export type CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap>;
+export const CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap>;
 
 export interface CancelDeploymentResponseRoutesItemCase0Locale {
   cookie?: string;
@@ -2654,15 +2621,13 @@ export const CancelDeploymentResponseRoutesItemCase0Locale = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0Locale>;
 
 export type CancelDeploymentResponseRoutesItemCase0MethodsList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MethodsList>;
+export const CancelDeploymentResponseRoutesItemCase0MethodsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MethodsList>;
 
 /** The original middleware matchers. */
 export type CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList>;
+export const CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList>;
 
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0Type = "host";
 export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0Type = S.String;
@@ -2674,16 +2639,12 @@ export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1Eq
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1Eq;
@@ -2749,16 +2710,12 @@ export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1Eq
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1Eq;
@@ -2841,9 +2798,7 @@ export const CancelDeploymentResponseRoutesItemCase0Mitigate = /*@__PURE__*/ S.s
 
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List = Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List>;
 
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Args =
   | string
@@ -2853,9 +2808,7 @@ export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Args =
 
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList = Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList>;
 
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Op =
   | "append"
@@ -2872,16 +2825,12 @@ export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKey
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
 
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
 
 export interface CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
@@ -2963,9 +2912,7 @@ export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0 = /*@__P
 
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList = Array<string>;
 export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList>;
 
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Op = "set";
 export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Op = S.String;
@@ -3159,9 +3106,7 @@ export const CancelDeploymentResponseSeatBlock = /*@__PURE__*/ S.suspend(() =>
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFiles =
   | string
@@ -3304,9 +3249,7 @@ export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValu
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
 
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
@@ -3322,9 +3265,7 @@ export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValu
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
 
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValue {
   affinity?: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity;
@@ -3393,9 +3334,7 @@ export const CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap =
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFiles =
   | string
@@ -3407,9 +3346,7 @@ export const CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFiles 
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcher =
   | string
@@ -3463,9 +3400,7 @@ export const CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettin
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
 
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
@@ -3626,9 +3561,8 @@ export type CancelDeploymentResponseServicesItemCase0RoutePrefixSource = "config
 export const CancelDeploymentResponseServicesItemCase0RoutePrefixSource = S.String;
 
 export type CancelDeploymentResponseServicesItemCase0ScheduleCase1List = Array<string>;
-export const CancelDeploymentResponseServicesItemCase0ScheduleCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase0ScheduleCase1List>;
+export const CancelDeploymentResponseServicesItemCase0ScheduleCase1List =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase0ScheduleCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase0Schedule =
   | string
@@ -3640,9 +3574,8 @@ export type CancelDeploymentResponseServicesItemCase0Schema = "experimentalServi
 export const CancelDeploymentResponseServicesItemCase0Schema = S.String;
 
 export type CancelDeploymentResponseServicesItemCase0TopicsCase0List = Array<string>;
-export const CancelDeploymentResponseServicesItemCase0TopicsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase0TopicsCase0List>;
+export const CancelDeploymentResponseServicesItemCase0TopicsCase0List =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase0TopicsCase0List>;
 
 export interface CancelDeploymentResponseServicesItemCase0TopicsCase1Item {
   initialDelaySeconds?: number;
@@ -3768,9 +3701,7 @@ export const CancelDeploymentResponseServicesItemCase1BindingsList = /*@__PURE__
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFiles =
   | string
@@ -3913,9 +3844,7 @@ export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValu
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
@@ -3931,9 +3860,7 @@ export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValu
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
 
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValue {
   affinity?: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity;
@@ -3994,17 +3921,12 @@ export type CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap = {
   [key: string]: string | undefined;
 };
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFiles =
   | string
@@ -4016,9 +3938,7 @@ export const CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFiles 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcher =
   | string
@@ -4039,9 +3959,7 @@ export const CancelDeploymentResponseServicesItemCase1BuilderConfigProjectSettin
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
 
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
@@ -4052,24 +3970,12 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleF
   sourceFile: string;
 }
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.String,
-      scheduleNames:
-        CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList,
-      sourceFile: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
 
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
   Array<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
 
 /** Set when this build produces a function for schedule entrypoints. */
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction {
@@ -4078,15 +3984,7 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleF
   outputPath: string;
 }
 export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoints:
-        CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList,
-      outputPath: S.String,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction>;
 
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfig {
   buildCommand?: string;
@@ -4177,9 +4075,8 @@ export const CancelDeploymentResponseServicesItemCase1Builder = /*@__PURE__*/ S.
 
 /** Command override for `runtime: "container"` services. */
 export type CancelDeploymentResponseServicesItemCase1CommandList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1CommandList>;
+export const CancelDeploymentResponseServicesItemCase1CommandList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase1CommandList>;
 
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueAffinityMode = "strict";
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueAffinityMode = S.String;
@@ -4313,9 +4210,7 @@ export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimental
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
 
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDurationCase1 = "max";
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDurationCase1 = S.String;
@@ -4328,9 +4223,7 @@ export const CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDuration 
 
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList = Array<string>;
 export const CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList>;
 
 /** Function configuration scoped to this service. */
 export interface CancelDeploymentResponseServicesItemCase1FunctionsValue {
@@ -4391,16 +4284,12 @@ export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Val
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq;
@@ -4473,16 +4362,12 @@ export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Val
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq;
@@ -4587,16 +4472,12 @@ export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq;
@@ -4671,16 +4552,12 @@ export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq;
@@ -4779,9 +4656,8 @@ export const CancelDeploymentResponseServicesItemCase1HeadersList = /*@__PURE__*
 ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersList>;
 
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList>;
+export const CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList>;
 
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Type = "host";
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Type = S.String;
@@ -4795,16 +4671,12 @@ export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0V
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq;
@@ -4879,16 +4751,12 @@ export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1V
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq;
@@ -4974,16 +4842,12 @@ export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCa
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq;
@@ -5058,16 +4922,12 @@ export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCa
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq;
@@ -5202,9 +5062,8 @@ export const CancelDeploymentResponseServicesItemCase1RewritesItemDestination =
   S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemDestination>;
 
 export type CancelDeploymentResponseServicesItemCase1RewritesItemEnvList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemEnvList>;
+export const CancelDeploymentResponseServicesItemCase1RewritesItemEnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemEnvList>;
 
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Type = "host";
 export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Type = S.String;
@@ -5218,16 +5077,12 @@ export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Va
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq;
@@ -5300,16 +5155,12 @@ export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Va
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq;
@@ -5393,16 +5244,12 @@ export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCas
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq;
@@ -5477,16 +5324,12 @@ export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCas
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq;
@@ -5564,9 +5407,7 @@ export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingList =
 export type CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList>;
 
 export type CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemOp = "set";
 export const CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemOp = S.String;
@@ -5665,9 +5506,7 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0Destination
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList = Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Type = "host";
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Type = S.String;
@@ -5681,16 +5520,12 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
@@ -5765,16 +5600,12 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
@@ -5853,19 +5684,13 @@ export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap =
   [key: string]: string | undefined;
 };
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
 
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale {
   cookie?: string;
@@ -5885,17 +5710,13 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale =
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList = Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList>;
 
 /** The original middleware matchers. */
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Type = "host";
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Type =
@@ -5910,16 +5731,12 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItem
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
@@ -5996,16 +5813,12 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItem
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
@@ -6103,9 +5916,7 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate =
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
   | string
@@ -6116,9 +5927,7 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsI
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
@@ -6136,16 +5945,12 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsI
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
 
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
@@ -6236,9 +6041,7 @@ export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsI
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
 
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Op = "set";
 export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
@@ -6509,9 +6312,8 @@ export const CancelDeploymentResponseType = S.String;
 
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type CancelDeploymentResponseUserAliasesList = Array<string>;
-export const CancelDeploymentResponseUserAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CancelDeploymentResponseUserAliasesList>;
+export const CancelDeploymentResponseUserAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseUserAliasesList>;
 
 /** The platform version that was used to create the deployment. */
 export type CancelDeploymentResponseVersion = 2;
@@ -7085,10 +6887,8 @@ export const CreateDeploymentRequestGitSource =
 
 /** An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment. For deployments created with a Cursor Origin `gitSource`, Vercel automatically adds `cursorOriginDeployment`, `cursorOriginCommitSha`, `cursorOriginCommitRef`, `cursorOriginCommitMessage`, `cursorOriginCommitAuthorName`, `cursorOriginCommitAuthorEmail` when available, `cursorOriginOwner`, `cursorOriginRepo`, `cursorOriginRepoId`, and `cursorOriginPrId` for pull request deployments. */
 export type CreateDeploymentRequestMetaMap = { [key: string]: string | undefined };
-export const CreateDeploymentRequestMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDeploymentRequestMetaMap>;
+export const CreateDeploymentRequestMetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentRequestMetaMap>;
 
 /** The framework that is being used for this project. When `null` is used no framework is selected */
 export type CreateDeploymentRequestProjectSettingsFramework =
@@ -7289,9 +7089,8 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDeploymentRequest" }) as any as S.Schema<CreateDeploymentRequest>;
 
 export type CreateDeploymentResponseBodyCase0AliasList = Array<string>;
-export const CreateDeploymentResponseBodyCase0AliasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase0AliasList>;
+export const CreateDeploymentResponseBodyCase0AliasList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase0AliasList>;
 
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type CreateDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
@@ -7354,9 +7153,8 @@ export const CreateDeploymentResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type CreateDeploymentResponseBodyCase1AliasList = Array<string>;
-export const CreateDeploymentResponseBodyCase1AliasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1AliasList>;
+export const CreateDeploymentResponseBodyCase1AliasList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1AliasList>;
 
 export type CreateDeploymentResponseBodyCase1AliasAssignedAt = number | boolean;
 export const CreateDeploymentResponseBodyCase1AliasAssignedAt =
@@ -7375,15 +7173,11 @@ export const CreateDeploymentResponseBodyCase1AtprotoCase0 = CancelDeploymentRes
 export type CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList>;
 
 export type CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList = Array<string>;
 export const CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList>;
 
 export type CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem =
   | "account"
@@ -7470,9 +7264,7 @@ export const CreateDeploymentResponseBodyCase1AttributionGitUser = /*@__PURE__*/
 /** Team roles at time of deployment */
 export type CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList = Array<string>;
 export const CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList>;
 
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface CreateDeploymentResponseBodyCase1AttributionVercelUser {
@@ -7513,59 +7305,41 @@ export const CreateDeploymentResponseBodyCase1Attribution = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateDeploymentResponseBodyCase1Attribution>;
 
 export type CreateDeploymentResponseBodyCase1AutomaticAliasesList = Array<string>;
-export const CreateDeploymentResponseBodyCase1AutomaticAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1AutomaticAliasesList>;
+export const CreateDeploymentResponseBodyCase1AutomaticAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1AutomaticAliasesList>;
 
 export type CreateDeploymentResponseBodyCase1BuildEnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1BuildEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1BuildEnvList>;
+export const CreateDeploymentResponseBodyCase1BuildEnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1BuildEnvList>;
 
 export interface CreateDeploymentResponseBodyCase1Build {
   env: CreateDeploymentResponseBodyCase1BuildEnvList;
 }
-export const CreateDeploymentResponseBodyCase1Build = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: CreateDeploymentResponseBodyCase1BuildEnvList,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Build",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Build>;
+export const CreateDeploymentResponseBodyCase1Build =
+  CancelDeploymentResponseBuild as any as S.Schema<CreateDeploymentResponseBodyCase1Build>;
 
 export type CreateDeploymentResponseBodyCase1BuildArtifactUrlsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1BuildArtifactUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1BuildArtifactUrlsList>;
+export const CreateDeploymentResponseBodyCase1BuildArtifactUrlsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1BuildArtifactUrlsList>;
 
 export type CreateDeploymentResponseBodyCase1BuildsItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDeploymentResponseBodyCase1BuildsItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsItemConfigMap>;
+export const CreateDeploymentResponseBodyCase1BuildsItemConfigMap =
+  CancelDeploymentResponseBuildsItemConfigMap as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsItemConfigMap>;
 
 export interface CreateDeploymentResponseBodyCase1BuildsItem {
   config?: CreateDeploymentResponseBodyCase1BuildsItemConfigMap;
   src?: string;
   use: string;
 }
-export const CreateDeploymentResponseBodyCase1BuildsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CreateDeploymentResponseBodyCase1BuildsItemConfigMap),
-    src: S.optional(S.String),
-    use: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1BuildsItem",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsItem>;
+export const CreateDeploymentResponseBodyCase1BuildsItem =
+  CancelDeploymentResponseBuildsItem as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsItem>;
 
 export type CreateDeploymentResponseBodyCase1BuildsList =
   Array<CreateDeploymentResponseBodyCase1BuildsItem>;
-export const CreateDeploymentResponseBodyCase1BuildsList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1BuildsItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsList>;
+export const CreateDeploymentResponseBodyCase1BuildsList =
+  CancelDeploymentResponseBuildsList as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsList>;
 
 export type CreateDeploymentResponseBodyCase1ChecksDeploymentAliasState =
   | "failed"
@@ -7758,9 +7532,8 @@ export type CreateDeploymentResponseBodyCase1CronsItem = CancelDeploymentRespons
 export const CreateDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
 
 export type CreateDeploymentResponseBodyCase1CronsList = Array<CancelDeploymentResponseCronsItem>;
-export const CreateDeploymentResponseBodyCase1CronsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseCronsItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1CronsList>;
+export const CreateDeploymentResponseBodyCase1CronsList =
+  CancelDeploymentResponseCronsList as any as S.Schema<CreateDeploymentResponseBodyCase1CronsList>;
 
 /** The type of matching to perform */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType =
@@ -7790,9 +7563,7 @@ export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatche
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList>;
 
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
@@ -7812,9 +7583,7 @@ export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemV
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
 export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList>;
+  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList>;
 
 /** List of domains associated with this environment */
 export interface CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem {
@@ -7927,9 +7696,8 @@ export type CreateDeploymentResponseBodyCase1Duration = CancelDeploymentResponse
 export const CreateDeploymentResponseBodyCase1Duration = CancelDeploymentResponseDuration;
 
 export type CreateDeploymentResponseBodyCase1EnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1EnvList>;
+export const CreateDeploymentResponseBodyCase1EnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1EnvList>;
 
 export type CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsItem =
   CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem;
@@ -7981,9 +7749,8 @@ export const CreateDeploymentResponseBodyCase1FlagsCase0 = /*@__PURE__*/ S.suspe
 
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export type CreateDeploymentResponseBodyCase1FlagsCase1List = Array<unknown>;
-export const CreateDeploymentResponseBodyCase1FlagsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1FlagsCase1List>;
+export const CreateDeploymentResponseBodyCase1FlagsCase1List =
+  CancelDeploymentResponseFlagsCase1List as any as S.Schema<CreateDeploymentResponseBodyCase1FlagsCase1List>;
 
 export type CreateDeploymentResponseBodyCase1Flags =
   | CreateDeploymentResponseBodyCase1FlagsCase0
@@ -8117,9 +7884,7 @@ export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggers
 export type CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList>;
 
 export type CreateDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = "max";
 export const CreateDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = S.String;
@@ -8131,9 +7896,8 @@ export const CreateDeploymentResponseBodyCase1FunctionsValueMaxDuration =
   S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueMaxDuration>;
 
 export type CreateDeploymentResponseBodyCase1FunctionsValueRegionsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1FunctionsValueRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueRegionsList>;
+export const CreateDeploymentResponseBodyCase1FunctionsValueRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueRegionsList>;
 
 export interface CreateDeploymentResponseBodyCase1FunctionsValue {
   affinity?: CreateDeploymentResponseBodyCase1FunctionsValueAffinity;
@@ -8894,9 +8658,8 @@ export type CreateDeploymentResponseBodyCase1ImagesContentDispositionType = "att
 export const CreateDeploymentResponseBodyCase1ImagesContentDispositionType = S.String;
 
 export type CreateDeploymentResponseBodyCase1ImagesDomainsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1ImagesDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesDomainsList>;
+export const CreateDeploymentResponseBodyCase1ImagesDomainsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesDomainsList>;
 
 export type CreateDeploymentResponseBodyCase1ImagesFormatsItem = "image/avif" | "image/webp";
 export const CreateDeploymentResponseBodyCase1ImagesFormatsItem = S.String;
@@ -8914,14 +8677,12 @@ export const CreateDeploymentResponseBodyCase1ImagesLocalPatternsItem =
 
 export type CreateDeploymentResponseBodyCase1ImagesLocalPatternsList =
   Array<CancelDeploymentResponseImagesLocalPatternsItem>;
-export const CreateDeploymentResponseBodyCase1ImagesLocalPatternsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseImagesLocalPatternsItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesLocalPatternsList>;
+export const CreateDeploymentResponseBodyCase1ImagesLocalPatternsList =
+  CancelDeploymentResponseImagesLocalPatternsList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesLocalPatternsList>;
 
 export type CreateDeploymentResponseBodyCase1ImagesQualitiesList = Array<number>;
-export const CreateDeploymentResponseBodyCase1ImagesQualitiesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesQualitiesList>;
+export const CreateDeploymentResponseBodyCase1ImagesQualitiesList =
+  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesQualitiesList>;
 
 /** Must be `http` or `https`. */
 export type CreateDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol = "http" | "https";
@@ -8959,9 +8720,8 @@ export const CreateDeploymentResponseBodyCase1ImagesRemotePatternsList = /*@__PU
 ) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesRemotePatternsList>;
 
 export type CreateDeploymentResponseBodyCase1ImagesSizesList = Array<number>;
-export const CreateDeploymentResponseBodyCase1ImagesSizesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesSizesList>;
+export const CreateDeploymentResponseBodyCase1ImagesSizesList =
+  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesSizesList>;
 
 export interface CreateDeploymentResponseBodyCase1Images {
   contentDispositionType?: CreateDeploymentResponseBodyCase1ImagesContentDispositionType;
@@ -9037,9 +8797,8 @@ export const CreateDeploymentResponseBodyCase1LambdasItemOutputItem =
 
 export type CreateDeploymentResponseBodyCase1LambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-export const CreateDeploymentResponseBodyCase1LambdasItemOutputList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseLambdasItemOutputItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1LambdasItemOutputList>;
+export const CreateDeploymentResponseBodyCase1LambdasItemOutputList =
+  CancelDeploymentResponseLambdasItemOutputList as any as S.Schema<CreateDeploymentResponseBodyCase1LambdasItemOutputList>;
 
 /** A partial representation of a Build used by the deployment endpoint. */
 export interface CreateDeploymentResponseBodyCase1LambdasItem {
@@ -9093,17 +8852,13 @@ export const CreateDeploymentResponseBodyCase1ManualProvisioning = /*@__PURE__*/
 }) as any as S.Schema<CreateDeploymentResponseBodyCase1ManualProvisioning>;
 
 export type CreateDeploymentResponseBodyCase1MetaMap = { [key: string]: string | undefined };
-export const CreateDeploymentResponseBodyCase1MetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1MetaMap>;
+export const CreateDeploymentResponseBodyCase1MetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentResponseBodyCase1MetaMap>;
 
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList = Array<string>;
 export const CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList>;
 
 export interface CreateDeploymentResponseBodyCase1MicrofrontendsCase0 {
   /** The project name of the default app of this deployment's microfrontends group. */
@@ -9128,9 +8883,7 @@ export const CreateDeploymentResponseBodyCase1MicrofrontendsCase0 = /*@__PURE__*
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList = Array<string>;
 export const CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList>;
 
 /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
 export type CreateDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState =
@@ -9185,9 +8938,7 @@ export const CreateDeploymentResponseBodyCase1NodeVersion = S.String;
 
 export type CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList = Array<string>;
 export const CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList>;
 
 export interface CreateDeploymentResponseBodyCase1OidcTokenClaims {
   aud: string;
@@ -9229,9 +8980,8 @@ export const CreateDeploymentResponseBodyCase1OomReport = S.String;
 
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type CreateDeploymentResponseBodyCase1PassiveRegionsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1PassiveRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1PassiveRegionsList>;
+export const CreateDeploymentResponseBodyCase1PassiveRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1PassiveRegionsList>;
 
 export type CreateDeploymentResponseBodyCase1Plan = "enterprise" | "hobby" | "pro";
 export const CreateDeploymentResponseBodyCase1Plan = S.String;
@@ -9246,10 +8996,8 @@ export const CreateDeploymentResponseBodyCase1PlatformCreator =
 export type CreateDeploymentResponseBodyCase1PlatformMetaMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1PlatformMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1PlatformMetaMap>;
+export const CreateDeploymentResponseBodyCase1PlatformMetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentResponseBodyCase1PlatformMetaMap>;
 
 /** Whether the value is an opaque identifier or a URL. */
 export type CreateDeploymentResponseBodyCase1PlatformOriginType = "id" | "url";
@@ -9446,9 +9194,8 @@ export const CreateDeploymentResponseBodyCase1ReadySubstate = S.String;
 
 /** The regions the deployment exists in */
 export type CreateDeploymentResponseBodyCase1RegionsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1RegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RegionsList>;
+export const CreateDeploymentResponseBodyCase1RegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1RegionsList>;
 
 /** The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type. */
 export type CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType =
@@ -9562,9 +9309,8 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0Destination =
   S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0Destination>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList>;
+export const CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = "host";
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = S.String;
@@ -9578,16 +9324,12 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCa
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
@@ -9660,16 +9402,12 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCa
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
@@ -9744,19 +9482,14 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasList = /*@__PURE
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap>;
+export const CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap>;
 
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0Locale {
   cookie?: string;
@@ -9772,16 +9505,13 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0Locale = /*@__PURE_
 }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0Locale>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList>;
+export const CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList>;
 
 /** The original middleware matchers. */
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList = Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = "host";
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = S.String;
@@ -9795,16 +9525,12 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Val
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
@@ -9877,16 +9603,12 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Val
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
@@ -9976,9 +9698,7 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0Mitigate = /*@__PUR
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args =
   | string
@@ -9989,9 +9709,7 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
@@ -10008,16 +9726,12 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
@@ -10102,9 +9816,7 @@ export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList>;
 
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = "set";
 export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = S.String;
@@ -10305,9 +10017,7 @@ export const CreateDeploymentResponseBodyCase1SeatBlock = /*@__PURE__*/ S.suspen
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles =
   | string
@@ -10451,9 +10161,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunc
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
@@ -10469,9 +10177,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunc
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue {
   affinity?: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity;
@@ -10534,17 +10240,12 @@ export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImpor
   [key: string]: string | undefined;
 };
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles =
   | string
@@ -10556,9 +10257,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncl
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher =
   | string
@@ -10581,9 +10280,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigProj
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
@@ -10594,24 +10291,12 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   sourceFile: string;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.String,
-      scheduleNames:
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList,
-      sourceFile: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList>;
 
 /** Set when this build produces a function for schedule entrypoints. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction {
@@ -10620,15 +10305,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   outputPath: string;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoints:
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList,
-      outputPath: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig {
   buildCommand?: string;
@@ -10756,9 +10433,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List = Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0Schedule =
   | string
@@ -10771,9 +10446,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase0Schema = S.String
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List = Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1Item =
   CancelDeploymentResponseServicesItemCase0TopicsCase1Item;
@@ -10899,9 +10572,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsList = /*
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles =
   | string
@@ -11045,9 +10716,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunc
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
@@ -11063,9 +10732,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunc
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue {
   affinity?: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity;
@@ -11128,17 +10795,12 @@ export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImpor
   [key: string]: string | undefined;
 };
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles =
   | string
@@ -11150,9 +10812,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncl
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher =
   | string
@@ -11175,9 +10835,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigProj
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
@@ -11188,24 +10846,12 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   sourceFile: string;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.String,
-      scheduleNames:
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList,
-      sourceFile: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
 
 /** Set when this build produces a function for schedule entrypoints. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction {
@@ -11214,15 +10860,7 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   outputPath: string;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoints:
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList,
-      outputPath: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig {
   buildCommand?: string;
@@ -11321,9 +10959,8 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1Builder = /*@__PU
 
 /** Command override for `runtime: "container"` services. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList = Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList>;
+export const CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode = "strict";
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode =
@@ -11459,9 +11096,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExp
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1 =
   "max";
@@ -11477,9 +11112,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMax
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList>;
 
 /** Function configuration scoped to this service. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue {
@@ -11551,16 +11184,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasIte
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq;
@@ -11637,16 +11266,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasIte
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq;
@@ -11732,9 +11357,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeader
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList>;
+  CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type =
   "host";
@@ -11750,16 +11373,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissin
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq;
@@ -11836,16 +11455,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissin
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq;
@@ -11949,9 +11564,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersList = /*@
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList = Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type =
   "host";
@@ -11967,16 +11580,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasI
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq;
@@ -12053,16 +11662,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasI
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq;
@@ -12154,16 +11759,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMiss
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq;
@@ -12240,16 +11841,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMiss
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq;
@@ -12394,9 +11991,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDesti
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList = Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type = "host";
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type =
@@ -12411,16 +12006,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasIt
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq;
@@ -12497,16 +12088,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasIt
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq;
@@ -12598,16 +12185,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissi
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq;
@@ -12684,16 +12267,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissi
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq;
@@ -12774,9 +12353,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissi
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp = "set";
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp =
@@ -12885,9 +12462,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0De
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type =
   "host";
@@ -12903,16 +12478,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Ha
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
@@ -12989,16 +12560,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Ha
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
@@ -13080,50 +12647,31 @@ export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Hea
   [key: string]: string | undefined;
 };
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap;
 }
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cookie: S.optional(S.String),
-      redirect: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList>;
 
 /** The original middleware matchers. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type =
   "host";
@@ -13139,16 +12687,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mi
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
@@ -13225,16 +12769,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mi
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
@@ -13333,9 +12873,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mi
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
   | string
@@ -13346,9 +12884,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Tr
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
@@ -13366,16 +12902,12 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Tr
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
 
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
@@ -13469,9 +13001,7 @@ export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Tr
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
 export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
 
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
   "set";
@@ -13741,9 +13271,8 @@ export const CreateDeploymentResponseBodyCase1Type = S.String;
 
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type CreateDeploymentResponseBodyCase1UserAliasesList = Array<string>;
-export const CreateDeploymentResponseBodyCase1UserAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1UserAliasesList>;
+export const CreateDeploymentResponseBodyCase1UserAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1UserAliasesList>;
 
 /** The platform version that was used to create the deployment. */
 export type CreateDeploymentResponseBodyCase1Version = 2;
@@ -14050,9 +13579,8 @@ export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDeploymentRequest" }) as any as S.Schema<GetDeploymentRequest>;
 
 export type GetDeploymentResponseBodyCase0AliasList = Array<string>;
-export const GetDeploymentResponseBodyCase0AliasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase0AliasList>;
+export const GetDeploymentResponseBodyCase0AliasList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase0AliasList>;
 
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type GetDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
@@ -14115,9 +13643,8 @@ export const GetDeploymentResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type GetDeploymentResponseBodyCase1AliasList = Array<string>;
-export const GetDeploymentResponseBodyCase1AliasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1AliasList>;
+export const GetDeploymentResponseBodyCase1AliasList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1AliasList>;
 
 export type GetDeploymentResponseBodyCase1AliasAssignedAt = number | boolean;
 export const GetDeploymentResponseBodyCase1AliasAssignedAt =
@@ -14135,14 +13662,11 @@ export const GetDeploymentResponseBodyCase1AtprotoCase0 = CancelDeploymentRespon
 
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList = Array<string>;
 export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList>;
 
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList = Array<string>;
-export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList>;
+export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList>;
 
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem =
   | "account"
@@ -14228,9 +13752,7 @@ export const GetDeploymentResponseBodyCase1AttributionGitUser = /*@__PURE__*/ S.
 /** Team roles at time of deployment */
 export type GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList = Array<string>;
 export const GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList>;
 
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface GetDeploymentResponseBodyCase1AttributionVercelUser {
@@ -14241,15 +13763,8 @@ export interface GetDeploymentResponseBodyCase1AttributionVercelUser {
   /** Vercel username */
   username: string;
 }
-export const GetDeploymentResponseBodyCase1AttributionVercelUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    teamRoles: S.optional(GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList),
-    username: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1AttributionVercelUser",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1AttributionVercelUser>;
+export const GetDeploymentResponseBodyCase1AttributionVercelUser =
+  CreateDeploymentResponseBodyCase1AttributionVercelUser as any as S.Schema<GetDeploymentResponseBodyCase1AttributionVercelUser>;
 
 /** Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled. */
 export interface GetDeploymentResponseBodyCase1Attribution {
@@ -14271,59 +13786,41 @@ export const GetDeploymentResponseBodyCase1Attribution = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetDeploymentResponseBodyCase1Attribution>;
 
 export type GetDeploymentResponseBodyCase1AutomaticAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase1AutomaticAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1AutomaticAliasesList>;
+export const GetDeploymentResponseBodyCase1AutomaticAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1AutomaticAliasesList>;
 
 export type GetDeploymentResponseBodyCase1BuildEnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1BuildEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1BuildEnvList>;
+export const GetDeploymentResponseBodyCase1BuildEnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1BuildEnvList>;
 
 export interface GetDeploymentResponseBodyCase1Build {
   env: GetDeploymentResponseBodyCase1BuildEnvList;
 }
-export const GetDeploymentResponseBodyCase1Build = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: GetDeploymentResponseBodyCase1BuildEnvList,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Build",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Build>;
+export const GetDeploymentResponseBodyCase1Build =
+  CancelDeploymentResponseBuild as any as S.Schema<GetDeploymentResponseBodyCase1Build>;
 
 export type GetDeploymentResponseBodyCase1BuildArtifactUrlsList = Array<string>;
-export const GetDeploymentResponseBodyCase1BuildArtifactUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1BuildArtifactUrlsList>;
+export const GetDeploymentResponseBodyCase1BuildArtifactUrlsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1BuildArtifactUrlsList>;
 
 export type GetDeploymentResponseBodyCase1BuildsItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const GetDeploymentResponseBodyCase1BuildsItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetDeploymentResponseBodyCase1BuildsItemConfigMap>;
+export const GetDeploymentResponseBodyCase1BuildsItemConfigMap =
+  CancelDeploymentResponseBuildsItemConfigMap as any as S.Schema<GetDeploymentResponseBodyCase1BuildsItemConfigMap>;
 
 export interface GetDeploymentResponseBodyCase1BuildsItem {
   config?: GetDeploymentResponseBodyCase1BuildsItemConfigMap;
   src?: string;
   use: string;
 }
-export const GetDeploymentResponseBodyCase1BuildsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(GetDeploymentResponseBodyCase1BuildsItemConfigMap),
-    src: S.optional(S.String),
-    use: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1BuildsItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1BuildsItem>;
+export const GetDeploymentResponseBodyCase1BuildsItem =
+  CancelDeploymentResponseBuildsItem as any as S.Schema<GetDeploymentResponseBodyCase1BuildsItem>;
 
 export type GetDeploymentResponseBodyCase1BuildsList =
   Array<GetDeploymentResponseBodyCase1BuildsItem>;
-export const GetDeploymentResponseBodyCase1BuildsList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1BuildsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1BuildsList>;
+export const GetDeploymentResponseBodyCase1BuildsList =
+  CancelDeploymentResponseBuildsList as any as S.Schema<GetDeploymentResponseBodyCase1BuildsList>;
 
 export type GetDeploymentResponseBodyCase1ChecksDeploymentAliasState =
   | "failed"
@@ -14510,9 +14007,8 @@ export type GetDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCr
 export const GetDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
 
 export type GetDeploymentResponseBodyCase1CronsList = Array<CancelDeploymentResponseCronsItem>;
-export const GetDeploymentResponseBodyCase1CronsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseCronsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1CronsList>;
+export const GetDeploymentResponseBodyCase1CronsList =
+  CancelDeploymentResponseCronsList as any as S.Schema<GetDeploymentResponseBodyCase1CronsList>;
 
 /** The type of matching to perform */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType =
@@ -14542,9 +14038,7 @@ export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher =
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList>;
 
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
@@ -14564,9 +14058,7 @@ export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVeri
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
 export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList>;
+  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList>;
 
 /** List of domains associated with this environment */
 export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem {
@@ -14677,9 +14169,8 @@ export type GetDeploymentResponseBodyCase1Duration = CancelDeploymentResponseDur
 export const GetDeploymentResponseBodyCase1Duration = CancelDeploymentResponseDuration;
 
 export type GetDeploymentResponseBodyCase1EnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1EnvList>;
+export const GetDeploymentResponseBodyCase1EnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1EnvList>;
 
 export type GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsItem =
   CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem;
@@ -14689,51 +14180,33 @@ export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsItem
 export type GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList =
   Array<CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem>;
 export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList>;
+  CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList>;
 
 export interface GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue {
   description?: string;
   options?: GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList;
   url?: string;
 }
-export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.optional(S.String),
-      options: S.optional(GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList),
-      url: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue>;
+export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue =
+  CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue>;
 
 export type GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap = {
   [key: string]: GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue | undefined;
 };
-export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue,
-) as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap>;
+export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap =
+  CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsMap as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap>;
 
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export interface GetDeploymentResponseBodyCase1FlagsCase0 {
   definitions: GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap;
 }
-export const GetDeploymentResponseBodyCase1FlagsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitions: GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1FlagsCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0>;
+export const GetDeploymentResponseBodyCase1FlagsCase0 =
+  CreateDeploymentResponseBodyCase1FlagsCase0 as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0>;
 
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export type GetDeploymentResponseBodyCase1FlagsCase1List = Array<unknown>;
-export const GetDeploymentResponseBodyCase1FlagsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase1List>;
+export const GetDeploymentResponseBodyCase1FlagsCase1List =
+  CancelDeploymentResponseFlagsCase1List as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase1List>;
 
 export type GetDeploymentResponseBodyCase1Flags =
   | GetDeploymentResponseBodyCase1FlagsCase0
@@ -14866,9 +14339,7 @@ export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersLis
 
 export type GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList = Array<string>;
 export const GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList>;
 
 export type GetDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = "max";
 export const GetDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = S.String;
@@ -14880,9 +14351,8 @@ export const GetDeploymentResponseBodyCase1FunctionsValueMaxDuration =
   S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueMaxDuration>;
 
 export type GetDeploymentResponseBodyCase1FunctionsValueRegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1FunctionsValueRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueRegionsList>;
+export const GetDeploymentResponseBodyCase1FunctionsValueRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueRegionsList>;
 
 export interface GetDeploymentResponseBodyCase1FunctionsValue {
   affinity?: GetDeploymentResponseBodyCase1FunctionsValueAffinity;
@@ -15643,9 +15113,8 @@ export type GetDeploymentResponseBodyCase1ImagesContentDispositionType = "attach
 export const GetDeploymentResponseBodyCase1ImagesContentDispositionType = S.String;
 
 export type GetDeploymentResponseBodyCase1ImagesDomainsList = Array<string>;
-export const GetDeploymentResponseBodyCase1ImagesDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesDomainsList>;
+export const GetDeploymentResponseBodyCase1ImagesDomainsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesDomainsList>;
 
 export type GetDeploymentResponseBodyCase1ImagesFormatsItem = "image/avif" | "image/webp";
 export const GetDeploymentResponseBodyCase1ImagesFormatsItem = S.String;
@@ -15663,14 +15132,12 @@ export const GetDeploymentResponseBodyCase1ImagesLocalPatternsItem =
 
 export type GetDeploymentResponseBodyCase1ImagesLocalPatternsList =
   Array<CancelDeploymentResponseImagesLocalPatternsItem>;
-export const GetDeploymentResponseBodyCase1ImagesLocalPatternsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseImagesLocalPatternsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesLocalPatternsList>;
+export const GetDeploymentResponseBodyCase1ImagesLocalPatternsList =
+  CancelDeploymentResponseImagesLocalPatternsList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesLocalPatternsList>;
 
 export type GetDeploymentResponseBodyCase1ImagesQualitiesList = Array<number>;
-export const GetDeploymentResponseBodyCase1ImagesQualitiesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesQualitiesList>;
+export const GetDeploymentResponseBodyCase1ImagesQualitiesList =
+  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesQualitiesList>;
 
 /** Must be `http` or `https`. */
 export type GetDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol = "http" | "https";
@@ -15707,9 +15174,8 @@ export const GetDeploymentResponseBodyCase1ImagesRemotePatternsList = /*@__PURE_
 ) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesRemotePatternsList>;
 
 export type GetDeploymentResponseBodyCase1ImagesSizesList = Array<number>;
-export const GetDeploymentResponseBodyCase1ImagesSizesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ImagesSizesList>;
+export const GetDeploymentResponseBodyCase1ImagesSizesList =
+  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesSizesList>;
 
 export interface GetDeploymentResponseBodyCase1Images {
   contentDispositionType?: GetDeploymentResponseBodyCase1ImagesContentDispositionType;
@@ -15783,9 +15249,8 @@ export const GetDeploymentResponseBodyCase1LambdasItemOutputItem =
 
 export type GetDeploymentResponseBodyCase1LambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-export const GetDeploymentResponseBodyCase1LambdasItemOutputList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseLambdasItemOutputItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1LambdasItemOutputList>;
+export const GetDeploymentResponseBodyCase1LambdasItemOutputList =
+  CancelDeploymentResponseLambdasItemOutputList as any as S.Schema<GetDeploymentResponseBodyCase1LambdasItemOutputList>;
 
 /** A partial representation of a Build used by the deployment endpoint. */
 export interface GetDeploymentResponseBodyCase1LambdasItem {
@@ -15839,16 +15304,13 @@ export const GetDeploymentResponseBodyCase1ManualProvisioning = /*@__PURE__*/ S.
 }) as any as S.Schema<GetDeploymentResponseBodyCase1ManualProvisioning>;
 
 export type GetDeploymentResponseBodyCase1MetaMap = { [key: string]: string | undefined };
-export const GetDeploymentResponseBodyCase1MetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1MetaMap>;
+export const GetDeploymentResponseBodyCase1MetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase1MetaMap>;
 
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList>;
+export const GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList>;
 
 export interface GetDeploymentResponseBodyCase1MicrofrontendsCase0 {
   /** The project name of the default app of this deployment's microfrontends group. */
@@ -15859,22 +15321,13 @@ export interface GetDeploymentResponseBodyCase1MicrofrontendsCase0 {
   groupIds: GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList;
   isDefaultApp?: boolean;
 }
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultAppProjectName: S.String,
-    defaultRoute: S.optional(S.String),
-    groupIds: GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList,
-    isDefaultApp: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1MicrofrontendsCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase0>;
+export const GetDeploymentResponseBodyCase1MicrofrontendsCase0 =
+  CancelDeploymentResponseMicrofrontendsCase0 as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase0>;
 
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList>;
+export const GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList>;
 
 /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
 export type GetDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState =
@@ -15928,9 +15381,8 @@ export type GetDeploymentResponseBodyCase1NodeVersion =
 export const GetDeploymentResponseBodyCase1NodeVersion = S.String;
 
 export type GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList>;
+export const GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList>;
 
 export interface GetDeploymentResponseBodyCase1OidcTokenClaims {
   aud: string;
@@ -15947,34 +15399,16 @@ export interface GetDeploymentResponseBodyCase1OidcTokenClaims {
   scope: string;
   sub: string;
 }
-export const GetDeploymentResponseBodyCase1OidcTokenClaims = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aud: S.String,
-    custom_environment_id: S.optional(S.String),
-    deployment_id: S.optional(S.String),
-    environment: S.String,
-    iss: S.String,
-    mfe_group_ids: S.optional(GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList),
-    owner: S.String,
-    owner_id: S.String,
-    plan: S.optional(S.String),
-    project: S.String,
-    project_id: S.String,
-    scope: S.String,
-    sub: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1OidcTokenClaims",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1OidcTokenClaims>;
+export const GetDeploymentResponseBodyCase1OidcTokenClaims =
+  CancelDeploymentResponseOidcTokenClaims as any as S.Schema<GetDeploymentResponseBodyCase1OidcTokenClaims>;
 
 export type GetDeploymentResponseBodyCase1OomReport = "out-of-memory";
 export const GetDeploymentResponseBodyCase1OomReport = S.String;
 
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type GetDeploymentResponseBodyCase1PassiveRegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1PassiveRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1PassiveRegionsList>;
+export const GetDeploymentResponseBodyCase1PassiveRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1PassiveRegionsList>;
 
 export type GetDeploymentResponseBodyCase1Plan = "enterprise" | "hobby" | "pro";
 export const GetDeploymentResponseBodyCase1Plan = S.String;
@@ -15986,10 +15420,8 @@ export const GetDeploymentResponseBodyCase1PlatformCreator =
 
 /** Arbitrary key-value metadata provided by the platform. */
 export type GetDeploymentResponseBodyCase1PlatformMetaMap = { [key: string]: string | undefined };
-export const GetDeploymentResponseBodyCase1PlatformMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1PlatformMetaMap>;
+export const GetDeploymentResponseBodyCase1PlatformMetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase1PlatformMetaMap>;
 
 /** Whether the value is an opaque identifier or a URL. */
 export type GetDeploymentResponseBodyCase1PlatformOriginType = "id" | "url";
@@ -16184,9 +15616,8 @@ export const GetDeploymentResponseBodyCase1ReadySubstate = S.String;
 
 /** The regions the deployment exists in */
 export type GetDeploymentResponseBodyCase1RegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1RegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RegionsList>;
+export const GetDeploymentResponseBodyCase1RegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1RegionsList>;
 
 /** The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type. */
 export type GetDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType =
@@ -16299,9 +15730,8 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0Destination =
   S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Destination>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0EnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0EnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0EnvList>;
+export const GetDeploymentResponseBodyCase1RoutesItemCase0EnvList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0EnvList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = "host";
 export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = S.String;
@@ -16313,16 +15743,12 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
@@ -16389,16 +15815,12 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
@@ -16469,44 +15891,30 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0HasList = /*@__PURE__*
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap>;
+export const GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
 export const GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap>;
 
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0Locale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie: S.optional(S.String),
-    redirect: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0Locale",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Locale>;
+export const GetDeploymentResponseBodyCase1RoutesItemCase0Locale =
+  CreateDeploymentResponseBodyCase1RoutesItemCase0Locale as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Locale>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList = Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList>;
+export const GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList>;
 
 /** The original middleware matchers. */
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList = Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = "host";
 export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = S.String;
@@ -16520,16 +15928,12 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueC
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
@@ -16602,16 +16006,12 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueC
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
@@ -16700,9 +16100,7 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate = /*@__PURE__
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args =
   | string
@@ -16712,9 +16110,7 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Arg
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList = Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
@@ -16731,16 +16127,12 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Tar
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
@@ -16824,9 +16216,7 @@ export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0 =
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList = Array<string>;
 export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList>;
 
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = "set";
 export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = S.String;
@@ -17021,9 +16411,7 @@ export const GetDeploymentResponseBodyCase1SeatBlock = /*@__PURE__*/ S.suspend((
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles =
   | string
@@ -17167,9 +16555,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctio
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
@@ -17185,9 +16571,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctio
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue {
   affinity?: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity;
@@ -17250,17 +16634,12 @@ export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMa
   [key: string]: string | undefined;
 };
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles =
   | string
@@ -17272,9 +16651,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigInclude
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher =
   | string
@@ -17297,9 +16674,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigProject
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
@@ -17310,24 +16685,12 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigSch
   sourceFile: string;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.String,
-      scheduleNames:
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList,
-      sourceFile: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList>;
 
 /** Set when this build produces a function for schedule entrypoints. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction {
@@ -17336,15 +16699,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigSch
   outputPath: string;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoints:
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList,
-      outputPath: S.String,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig {
   buildCommand?: string;
@@ -17470,9 +16825,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource = 
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List = Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0Schedule =
   | string
@@ -17484,9 +16837,8 @@ export type GetDeploymentResponseBodyCase1ServicesItemCase0Schema = "experimenta
 export const GetDeploymentResponseBodyCase1ServicesItemCase0Schema = S.String;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List>;
+export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1Item =
   CancelDeploymentResponseServicesItemCase0TopicsCase1Item;
@@ -17495,9 +16847,8 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1Item =
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List =
   Array<CancelDeploymentResponseServicesItemCase0TopicsCase1Item>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase0TopicsCase1Item,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List>;
+export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List =
+  CancelDeploymentResponseServicesItemCase0TopicsCase1List as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase0Topics =
   | GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List
@@ -17605,9 +16956,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1BindingsList = /*@__
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles =
   | string
@@ -17751,9 +17100,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctio
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
@@ -17769,9 +17116,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctio
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue {
   affinity?: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity;
@@ -17834,17 +17179,12 @@ export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMa
   [key: string]: string | undefined;
 };
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles =
   | string
@@ -17856,9 +17196,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigInclude
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher =
   | string
@@ -17881,9 +17219,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigProject
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
@@ -17894,24 +17230,12 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigSch
   sourceFile: string;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.String,
-      scheduleNames:
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList,
-      sourceFile: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
 
 /** Set when this build produces a function for schedule entrypoints. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction {
@@ -17920,15 +17244,7 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigSch
   outputPath: string;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoints:
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList,
-      outputPath: S.String,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig {
   buildCommand?: string;
@@ -18026,9 +17342,8 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1Builder = /*@__PURE_
 
 /** Command override for `runtime: "container"` services. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1CommandList = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1CommandList>;
+export const GetDeploymentResponseBodyCase1ServicesItemCase1CommandList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1CommandList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode = "strict";
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode = S.String;
@@ -18162,9 +17477,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperi
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1 = "max";
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1 =
@@ -18179,9 +17492,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDur
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList>;
 
 /** Function configuration scoped to this service. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue {
@@ -18247,16 +17558,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCa
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq;
@@ -18331,16 +17638,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCa
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq;
@@ -18425,9 +17728,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersIt
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList>;
+  CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type = "host";
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type =
@@ -18442,16 +17743,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingIt
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq;
@@ -18528,16 +17825,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingIt
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq;
@@ -18641,9 +17934,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersList = /*@__P
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList = Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type = "host";
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type =
@@ -18658,16 +17949,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq;
@@ -18744,16 +18031,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq;
@@ -18845,16 +18128,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissing
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq;
@@ -18931,16 +18210,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissing
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq;
@@ -19082,9 +18357,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinat
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList = Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type = "host";
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type = S.String;
@@ -19098,16 +18371,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemC
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq;
@@ -19182,16 +18451,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemC
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq;
@@ -19282,16 +18547,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingI
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq;
@@ -19368,16 +18629,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingI
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq;
@@ -19458,9 +18715,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingL
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp = "set";
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp = S.String;
@@ -19565,9 +18820,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Desti
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList = Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type = "host";
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type =
@@ -19582,16 +18835,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasIt
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
@@ -19668,16 +18917,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasIt
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
@@ -19759,50 +19004,31 @@ export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Header
   [key: string]: string | undefined;
 };
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
+  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap;
 }
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cookie: S.optional(S.String),
-      redirect: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale>;
+  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList>;
 
 /** The original middleware matchers. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type =
   "host";
@@ -19818,16 +19044,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Missi
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
@@ -19904,16 +19126,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Missi
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
@@ -20012,9 +19230,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitig
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
   | string
@@ -20025,9 +19241,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Trans
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
@@ -20045,16 +19259,12 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Trans
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
 
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
@@ -20147,9 +19357,7 @@ export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Trans
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
 export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
 
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
   "set";
@@ -20414,9 +19622,8 @@ export const GetDeploymentResponseBodyCase1Type = S.String;
 
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type GetDeploymentResponseBodyCase1UserAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase1UserAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase1UserAliasesList>;
+export const GetDeploymentResponseBodyCase1UserAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1UserAliasesList>;
 
 /** The platform version that was used to create the deployment. */
 export type GetDeploymentResponseBodyCase1Version = 2;
@@ -20658,9 +19865,8 @@ export const GetDeploymentResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type GetDeploymentResponseBodyCase2AliasList = Array<string>;
-export const GetDeploymentResponseBodyCase2AliasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase2AliasList>;
+export const GetDeploymentResponseBodyCase2AliasList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2AliasList>;
 
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type GetDeploymentResponseBodyCase2AliasError = CancelDeploymentResponseAliasError;
@@ -20670,9 +19876,8 @@ export type GetDeploymentResponseBodyCase2AliasWarning = CancelDeploymentRespons
 export const GetDeploymentResponseBodyCase2AliasWarning = CancelDeploymentResponseAliasWarning;
 
 export type GetDeploymentResponseBodyCase2AutomaticAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase2AutomaticAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase2AutomaticAliasesList>;
+export const GetDeploymentResponseBodyCase2AutomaticAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2AutomaticAliasesList>;
 
 export type GetDeploymentResponseBodyCase2ChecksConclusion =
   | "canceled"
@@ -20738,9 +19943,7 @@ export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher =
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
 export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList>;
 
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
@@ -20760,9 +19963,7 @@ export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVeri
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
 export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList>;
+  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList>;
 
 /** List of domains associated with this environment */
 export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem {
@@ -21419,9 +20620,8 @@ export const GetDeploymentResponseBodyCase2LambdasItemOutputItem =
 
 export type GetDeploymentResponseBodyCase2LambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-export const GetDeploymentResponseBodyCase2LambdasItemOutputList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseLambdasItemOutputItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase2LambdasItemOutputList>;
+export const GetDeploymentResponseBodyCase2LambdasItemOutputList =
+  CancelDeploymentResponseLambdasItemOutputList as any as S.Schema<GetDeploymentResponseBodyCase2LambdasItemOutputList>;
 
 /** A partial representation of a Build used by the deployment endpoint. */
 export interface GetDeploymentResponseBodyCase2LambdasItem {
@@ -21475,10 +20675,8 @@ export const GetDeploymentResponseBodyCase2ManualProvisioning = /*@__PURE__*/ S.
 }) as any as S.Schema<GetDeploymentResponseBodyCase2ManualProvisioning>;
 
 export type GetDeploymentResponseBodyCase2MetaMap = { [key: string]: string | undefined };
-export const GetDeploymentResponseBodyCase2MetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase2MetaMap>;
+export const GetDeploymentResponseBodyCase2MetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase2MetaMap>;
 
 /** If set it overrides the `projectSettings.nodeVersion` for this deployment. */
 export type GetDeploymentResponseBodyCase2NodeVersion =
@@ -21494,9 +20692,8 @@ export type GetDeploymentResponseBodyCase2NodeVersion =
 export const GetDeploymentResponseBodyCase2NodeVersion = S.String;
 
 export type GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList>;
+export const GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList>;
 
 export interface GetDeploymentResponseBodyCase2OidcTokenClaims {
   aud: string;
@@ -21513,34 +20710,16 @@ export interface GetDeploymentResponseBodyCase2OidcTokenClaims {
   scope: string;
   sub: string;
 }
-export const GetDeploymentResponseBodyCase2OidcTokenClaims = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aud: S.String,
-    custom_environment_id: S.optional(S.String),
-    deployment_id: S.optional(S.String),
-    environment: S.String,
-    iss: S.String,
-    mfe_group_ids: S.optional(GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList),
-    owner: S.String,
-    owner_id: S.String,
-    plan: S.optional(S.String),
-    project: S.String,
-    project_id: S.String,
-    scope: S.String,
-    sub: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2OidcTokenClaims",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2OidcTokenClaims>;
+export const GetDeploymentResponseBodyCase2OidcTokenClaims =
+  CancelDeploymentResponseOidcTokenClaims as any as S.Schema<GetDeploymentResponseBodyCase2OidcTokenClaims>;
 
 export type GetDeploymentResponseBodyCase2OomReport = "out-of-memory";
 export const GetDeploymentResponseBodyCase2OomReport = S.String;
 
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type GetDeploymentResponseBodyCase2PassiveRegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase2PassiveRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase2PassiveRegionsList>;
+export const GetDeploymentResponseBodyCase2PassiveRegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2PassiveRegionsList>;
 
 /** The public project information associated with the deployment. */
 export type GetDeploymentResponseBodyCase2Project = CancelDeploymentResponseProject;
@@ -21563,9 +20742,8 @@ export const GetDeploymentResponseBodyCase2ReadySubstate = S.String;
 
 /** The regions the deployment exists in */
 export type GetDeploymentResponseBodyCase2RegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase2RegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase2RegionsList>;
+export const GetDeploymentResponseBodyCase2RegionsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2RegionsList>;
 
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetDeploymentResponseBodyCase2Source =
@@ -21604,9 +20782,8 @@ export const GetDeploymentResponseBodyCase2Type = S.String;
 
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type GetDeploymentResponseBodyCase2UserAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase2UserAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentResponseBodyCase2UserAliasesList>;
+export const GetDeploymentResponseBodyCase2UserAliasesList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2UserAliasesList>;
 
 /** The platform version that was used to create the deployment. */
 export type GetDeploymentResponseBodyCase2Version = 2;
@@ -21868,9 +21045,7 @@ export const GetDeploymentEventsResponseBodyItemCase0PayloadInfo = /*@__PURE__*/
 
 export type GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList = Array<string>;
 export const GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList>;
 
 export type GetDeploymentEventsResponseBodyItemCase0PayloadProxyVercelCache =
   | "BYPASS"
@@ -22052,9 +21227,7 @@ export const GetDeploymentEventsResponseBodyItemCase2Case0PayloadInfo =
 
 export type GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList = Array<string>;
 export const GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList>;
 
 export type GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyVercelCache =
   | "BYPASS"
@@ -22234,9 +21407,8 @@ export type GetDeploymentEventsResponseBodyItemCase2Case2Type = "alias-assigned"
 export const GetDeploymentEventsResponseBodyItemCase2Case2Type = S.String;
 
 export type GetDeploymentEventsResponseBodyItemCase2Case2AliasList = Array<string>;
-export const GetDeploymentEventsResponseBodyItemCase2Case2AliasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case2AliasList>;
+export const GetDeploymentEventsResponseBodyItemCase2Case2AliasList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case2AliasList>;
 
 export type GetDeploymentEventsResponseBodyItemCase2Case2AliasError =
   CancelDeploymentResponseAliasError;
@@ -22328,9 +21500,8 @@ export const GetDeploymentFileContentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter deployments from the given project IDs. Cannot be used when projectId is specified. */
 export type GetDeploymentsRequestProjectIdsList = Array<string>;
-export const GetDeploymentsRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDeploymentsRequestProjectIdsList>;
+export const GetDeploymentsRequestProjectIdsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentsRequestProjectIdsList>;
 
 export interface GetDeploymentsRequest {
   /** Name of the deployment. */
@@ -22429,9 +21600,7 @@ export const GetDeploymentsResponseDeploymentsItemAttributionGitUser = /*@__PURE
 /** Team roles at time of deployment */
 export type GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList = Array<string>;
 export const GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList>;
 
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
@@ -22601,10 +21770,8 @@ export const GetDeploymentsResponseDeploymentsItemManualProvisioning = /*@__PURE
 
 /** Metadata information from the Git provider. */
 export type GetDeploymentsResponseDeploymentsItemMetaMap = { [key: string]: string | undefined };
-export const GetDeploymentsResponseDeploymentsItemMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemMetaMap>;
+export const GetDeploymentsResponseDeploymentsItemMetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentsResponseDeploymentsItemMetaMap>;
 
 /** Indicates if the deployment encountered an out-of-memory error. */
 export type GetDeploymentsResponseDeploymentsItemOomReport = "out-of-memory";
@@ -22620,10 +21787,8 @@ export const GetDeploymentsResponseDeploymentsItemPlatformCreator =
 export type GetDeploymentsResponseDeploymentsItemPlatformMetaMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentsResponseDeploymentsItemPlatformMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformMetaMap>;
+export const GetDeploymentsResponseDeploymentsItemPlatformMetaMap =
+  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformMetaMap>;
 
 /** Whether the value is an opaque identifier or a URL. */
 export type GetDeploymentsResponseDeploymentsItemPlatformOriginType = "id" | "url";
@@ -23195,17 +22360,13 @@ export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase0 = /*@__PU
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList =
   Array<string>;
 export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList>;
 
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList =
   Array<string>;
 export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList>;
+  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList>;
 
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these roles. */
@@ -23332,11 +22493,8 @@ export const UpdateIntegrationDeploymentActionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateIntegrationDeploymentActionRequest>;
 
 export interface UpdateIntegrationDeploymentActionResponse {}
-export const UpdateIntegrationDeploymentActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateIntegrationDeploymentActionResponse",
-}) as any as S.Schema<UpdateIntegrationDeploymentActionResponse>;
+export const UpdateIntegrationDeploymentActionResponse =
+  GetDeploymentFileContentsResponse as any as S.Schema<UpdateIntegrationDeploymentActionResponse>;
 
 export interface UploadFileRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -23365,9 +22523,8 @@ export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of URLs where the file was updated */
 export type UploadFileResponseBodyCase0UrlsList = Array<string>;
-export const UploadFileResponseBodyCase0UrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UploadFileResponseBodyCase0UrlsList>;
+export const UploadFileResponseBodyCase0UrlsList =
+  CancelDeploymentResponseAliasList as any as S.Schema<UploadFileResponseBodyCase0UrlsList>;
 
 export interface UploadFileResponseBodyCase0 {
   /** Array of URLs where the file was updated */

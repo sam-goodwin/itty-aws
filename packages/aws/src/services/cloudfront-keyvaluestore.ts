@@ -341,22 +341,15 @@ export interface PutKeyResponse {
   TotalSizeInBytes: number;
   ETag: string;
 }
-export const PutKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ItemCount: S.Number,
-    TotalSizeInBytes: S.Number,
-    ETag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "PutKeyResponse" }) as any as S.Schema<PutKeyResponse>;
+export const PutKeyResponse = DeleteKeyResponse as any as S.Schema<PutKeyResponse>;
 export interface PutKeyRequestListItem {
   Key: string;
   Value: string | redacted.Redacted<string>;
 }
-export const PutKeyRequestListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: SensitiveString }),
-).annotate({ identifier: "PutKeyRequestListItem" }) as any as S.Schema<PutKeyRequestListItem>;
+export const PutKeyRequestListItem =
+  ListKeysResponseListItem as any as S.Schema<PutKeyRequestListItem>;
 export type PutKeyRequestsList = PutKeyRequestListItem[];
-export const PutKeyRequestsList = /*@__PURE__*/ S.Array(PutKeyRequestListItem);
+export const PutKeyRequestsList = ListKeysResponseList as any as S.Schema<PutKeyRequestsList>;
 export interface DeleteKeyRequestListItem {
   Key: string;
 }
@@ -393,13 +386,7 @@ export interface UpdateKeysResponse {
   TotalSizeInBytes: number;
   ETag: string;
 }
-export const UpdateKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ItemCount: S.Number,
-    TotalSizeInBytes: S.Number,
-    ETag: S.String.pipe(T.HttpHeader("ETag")),
-  }),
-).annotate({ identifier: "UpdateKeysResponse" }) as any as S.Schema<UpdateKeysResponse>;
+export const UpdateKeysResponse = DeleteKeyResponse as any as S.Schema<UpdateKeysResponse>;
 export type DeleteKeyError =
   | AccessDeniedException
   | ConflictException

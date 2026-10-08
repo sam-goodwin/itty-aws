@@ -116,16 +116,12 @@ export const ListOrganizationSandboxTelemetryLogsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationSandboxTelemetryLogsRequest>;
 
 export type ModelsLogEntryLogAttributesMap = { [key: string]: string | undefined };
-export const ModelsLogEntryLogAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelsLogEntryLogAttributesMap>;
+export const ModelsLogEntryLogAttributesMap =
+  ModelsSpanSpanAttributesMap as any as S.Schema<ModelsLogEntryLogAttributesMap>;
 
 export type ModelsLogEntryResourceAttributesMap = { [key: string]: string | undefined };
-export const ModelsLogEntryResourceAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelsLogEntryResourceAttributesMap>;
+export const ModelsLogEntryResourceAttributesMap =
+  ModelsSpanSpanAttributesMap as any as S.Schema<ModelsLogEntryResourceAttributesMap>;
 
 export interface ModelsLogEntry {
   body?: string;

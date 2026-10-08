@@ -500,9 +500,8 @@ export const DeleteIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIssueAttachmentRequest>;
 
 export interface DeleteIssueAttachmentResponse {}
-export const DeleteIssueAttachmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIssueAttachmentResponse",
-}) as any as S.Schema<DeleteIssueAttachmentResponse>;
+export const DeleteIssueAttachmentResponse =
+  DeleteIssueResponse as any as S.Schema<DeleteIssueAttachmentResponse>;
 
 export interface DeleteIssueCommentAttachmentRequest {
   /** owner of the repo */
@@ -561,14 +560,12 @@ export const DeleteIssueReactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIssueReactionRequest>;
 
 export interface DeleteIssueReactionResponse {}
-export const DeleteIssueReactionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIssueReactionResponse",
-}) as any as S.Schema<DeleteIssueReactionResponse>;
+export const DeleteIssueReactionResponse =
+  DeleteIssueResponse as any as S.Schema<DeleteIssueReactionResponse>;
 
 export type EditIssueRequestAssigneesList = Array<string>;
-export const EditIssueRequestAssigneesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditIssueRequestAssigneesList>;
+export const EditIssueRequestAssigneesList =
+  CreateIssueRequestAssigneesList as any as S.Schema<EditIssueRequestAssigneesList>;
 
 export interface EditIssueRequest {
   /** owner of the repo */
@@ -888,9 +885,8 @@ export const IssueAddSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueAddSubscriptionRequest>;
 
 export interface IssueAddSubscriptionResponse {}
-export const IssueAddSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueAddSubscriptionResponse",
-}) as any as S.Schema<IssueAddSubscriptionResponse>;
+export const IssueAddSubscriptionResponse =
+  DeleteIssueResponse as any as S.Schema<IssueAddSubscriptionResponse>;
 
 export interface IssueAddTimeRequest {
   /** owner of the repo */
@@ -1006,9 +1002,8 @@ export const IssueClearLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueClearLabelsRequest" }) as any as S.Schema<IssueClearLabelsRequest>;
 
 export interface IssueClearLabelsResponse {}
-export const IssueClearLabelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueClearLabelsResponse",
-}) as any as S.Schema<IssueClearLabelsResponse>;
+export const IssueClearLabelsResponse =
+  DeleteIssueResponse as any as S.Schema<IssueClearLabelsResponse>;
 
 export interface IssueCreateCommentRequest {
   /** owner of the repo */
@@ -1038,9 +1033,7 @@ export const IssueCreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
-export const CommentAssetsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<CommentAssetsList>;
+export const CommentAssetsList = IssueAssetsList as any as S.Schema<CommentAssetsList>;
 
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
@@ -1152,9 +1145,8 @@ export const IssueDeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteCommentRequest>;
 
 export interface IssueDeleteCommentResponse {}
-export const IssueDeleteCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueDeleteCommentResponse",
-}) as any as S.Schema<IssueDeleteCommentResponse>;
+export const IssueDeleteCommentResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteCommentResponse>;
 
 export interface IssueDeleteCommentReactionRequest {
   /** owner of the repo */
@@ -1183,11 +1175,8 @@ export const IssueDeleteCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteCommentReactionRequest>;
 
 export interface IssueDeleteCommentReactionResponse {}
-export const IssueDeleteCommentReactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IssueDeleteCommentReactionResponse",
-}) as any as S.Schema<IssueDeleteCommentReactionResponse>;
+export const IssueDeleteCommentReactionResponse =
+  DeleteIssueCommentAttachmentResponse as any as S.Schema<IssueDeleteCommentReactionResponse>;
 
 export interface IssueDeleteLabelRequest {
   /** owner of the repo */
@@ -1206,9 +1195,8 @@ export const IssueDeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueDeleteLabelRequest" }) as any as S.Schema<IssueDeleteLabelRequest>;
 
 export interface IssueDeleteLabelResponse {}
-export const IssueDeleteLabelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueDeleteLabelResponse",
-}) as any as S.Schema<IssueDeleteLabelResponse>;
+export const IssueDeleteLabelResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteLabelResponse>;
 
 export interface IssueDeleteMilestoneRequest {
   /** owner of the repo */
@@ -1229,9 +1217,8 @@ export const IssueDeleteMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteMilestoneRequest>;
 
 export interface IssueDeleteMilestoneResponse {}
-export const IssueDeleteMilestoneResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueDeleteMilestoneResponse",
-}) as any as S.Schema<IssueDeleteMilestoneResponse>;
+export const IssueDeleteMilestoneResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteMilestoneResponse>;
 
 export interface IssueDeleteStopWatchRequest {
   /** owner of the repo */
@@ -1258,9 +1245,8 @@ export const IssueDeleteStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteStopWatchRequest>;
 
 export interface IssueDeleteStopWatchResponse {}
-export const IssueDeleteStopWatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueDeleteStopWatchResponse",
-}) as any as S.Schema<IssueDeleteStopWatchResponse>;
+export const IssueDeleteStopWatchResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteStopWatchResponse>;
 
 export interface IssueDeleteSubscriptionRequest {
   /** owner of the repo */
@@ -1316,9 +1302,8 @@ export const IssueDeleteTimeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueDeleteTimeRequest" }) as any as S.Schema<IssueDeleteTimeRequest>;
 
 export interface IssueDeleteTimeResponse {}
-export const IssueDeleteTimeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueDeleteTimeResponse",
-}) as any as S.Schema<IssueDeleteTimeResponse>;
+export const IssueDeleteTimeResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteTimeResponse>;
 
 export interface IssueEditCommentRequest {
   /** owner of the repo */
@@ -1437,16 +1422,12 @@ export const IssueGetCommentReactionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueGetCommentReactionsRequest>;
 
 export type IssueGetCommentReactionsResponseBodyList = Array<Reaction>;
-export const IssueGetCommentReactionsResponseBodyList = /*@__PURE__*/ S.Array(
-  Reaction,
-) as any as S.Schema<IssueGetCommentReactionsResponseBodyList>;
+export const IssueGetCommentReactionsResponseBodyList =
+  GetIssueReactionsResponseBodyList as any as S.Schema<IssueGetCommentReactionsResponseBodyList>;
 
 export type IssueGetCommentReactionsResponse = IssueGetCommentReactionsResponseBodyList;
-export const IssueGetCommentReactionsResponse = /*@__PURE__*/ S.suspend(() =>
-  IssueGetCommentReactionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "IssueGetCommentReactionsResponse",
-}) as any as S.Schema<IssueGetCommentReactionsResponse>;
+export const IssueGetCommentReactionsResponse =
+  GetIssueReactionsResponse as any as S.Schema<IssueGetCommentReactionsResponse>;
 
 export interface IssueGetCommentsRequest {
   /** owner of the repo */
@@ -1698,14 +1679,12 @@ export const IssueGetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueGetLabelsRequest" }) as any as S.Schema<IssueGetLabelsRequest>;
 
 export type IssueGetLabelsResponseBodyList = Array<Label>;
-export const IssueGetLabelsResponseBodyList = /*@__PURE__*/ S.Array(
-  Label,
-) as any as S.Schema<IssueGetLabelsResponseBodyList>;
+export const IssueGetLabelsResponseBodyList =
+  IssueAddLabelResponseBodyList as any as S.Schema<IssueGetLabelsResponseBodyList>;
 
 export type IssueGetLabelsResponse = IssueGetLabelsResponseBodyList;
-export const IssueGetLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-  IssueGetLabelsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "IssueGetLabelsResponse" }) as any as S.Schema<IssueGetLabelsResponse>;
+export const IssueGetLabelsResponse =
+  IssueAddLabelResponse as any as S.Schema<IssueGetLabelsResponse>;
 
 export interface IssueGetMilestoneRequest {
   /** owner of the repo */
@@ -1790,9 +1769,8 @@ export const IssueGetRepoCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueGetRepoCommentsRequest>;
 
 export type IssueGetRepoCommentsResponseBodyList = Array<Comment>;
-export const IssueGetRepoCommentsResponseBodyList = /*@__PURE__*/ S.Array(
-  Comment,
-) as any as S.Schema<IssueGetRepoCommentsResponseBodyList>;
+export const IssueGetRepoCommentsResponseBodyList =
+  IssueGetCommentsResponseBodyList as any as S.Schema<IssueGetRepoCommentsResponseBodyList>;
 
 export type IssueGetRepoCommentsResponse = IssueGetRepoCommentsResponseBodyList;
 export const IssueGetRepoCommentsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1859,14 +1837,12 @@ export const IssueListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueListLabelsRequest" }) as any as S.Schema<IssueListLabelsRequest>;
 
 export type IssueListLabelsResponseBodyList = Array<Label>;
-export const IssueListLabelsResponseBodyList = /*@__PURE__*/ S.Array(
-  Label,
-) as any as S.Schema<IssueListLabelsResponseBodyList>;
+export const IssueListLabelsResponseBodyList =
+  IssueAddLabelResponseBodyList as any as S.Schema<IssueListLabelsResponseBodyList>;
 
 export type IssueListLabelsResponse = IssueListLabelsResponseBodyList;
-export const IssueListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-  IssueListLabelsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "IssueListLabelsResponse" }) as any as S.Schema<IssueListLabelsResponse>;
+export const IssueListLabelsResponse =
+  IssueAddLabelResponse as any as S.Schema<IssueListLabelsResponse>;
 
 export interface IssuePostCommentReactionRequest {
   /** owner of the repo */
@@ -1922,15 +1898,13 @@ export const IssueRemoveLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueRemoveLabelRequest" }) as any as S.Schema<IssueRemoveLabelRequest>;
 
 export interface IssueRemoveLabelResponse {}
-export const IssueRemoveLabelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueRemoveLabelResponse",
-}) as any as S.Schema<IssueRemoveLabelResponse>;
+export const IssueRemoveLabelResponse =
+  DeleteIssueResponse as any as S.Schema<IssueRemoveLabelResponse>;
 
 /** Labels can be a list of integers representing label IDs or a list of strings representing label names */
 export type IssueReplaceLabelsRequestLabelsList = Array<unknown>;
-export const IssueReplaceLabelsRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<IssueReplaceLabelsRequestLabelsList>;
+export const IssueReplaceLabelsRequestLabelsList =
+  IssueAddLabelRequestLabelsList as any as S.Schema<IssueReplaceLabelsRequestLabelsList>;
 
 export interface IssueReplaceLabelsRequest {
   /** owner of the repo */
@@ -1956,9 +1930,8 @@ export const IssueReplaceLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueReplaceLabelsRequest>;
 
 export type IssueReplaceLabelsResponseBodyList = Array<Label>;
-export const IssueReplaceLabelsResponseBodyList = /*@__PURE__*/ S.Array(
-  Label,
-) as any as S.Schema<IssueReplaceLabelsResponseBodyList>;
+export const IssueReplaceLabelsResponseBodyList =
+  IssueAddLabelResponseBodyList as any as S.Schema<IssueReplaceLabelsResponseBodyList>;
 
 export type IssueReplaceLabelsResponse = IssueReplaceLabelsResponseBodyList;
 export const IssueReplaceLabelsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1986,9 +1959,8 @@ export const IssueResetTimeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueResetTimeRequest" }) as any as S.Schema<IssueResetTimeRequest>;
 
 export interface IssueResetTimeResponse {}
-export const IssueResetTimeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueResetTimeResponse",
-}) as any as S.Schema<IssueResetTimeResponse>;
+export const IssueResetTimeResponse =
+  DeleteIssueResponse as any as S.Schema<IssueResetTimeResponse>;
 
 export interface IssueStartStopWatchRequest {
   /** owner of the repo */
@@ -2015,9 +1987,8 @@ export const IssueStartStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueStartStopWatchRequest>;
 
 export interface IssueStartStopWatchResponse {}
-export const IssueStartStopWatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueStartStopWatchResponse",
-}) as any as S.Schema<IssueStartStopWatchResponse>;
+export const IssueStartStopWatchResponse =
+  DeleteIssueResponse as any as S.Schema<IssueStartStopWatchResponse>;
 
 export interface IssueStopStopWatchRequest {
   /** owner of the repo */
@@ -2044,9 +2015,8 @@ export const IssueStopStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueStopStopWatchRequest>;
 
 export interface IssueStopStopWatchResponse {}
-export const IssueStopStopWatchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IssueStopStopWatchResponse",
-}) as any as S.Schema<IssueStopStopWatchResponse>;
+export const IssueStopStopWatchResponse =
+  DeleteIssueResponse as any as S.Schema<IssueStopStopWatchResponse>;
 
 export interface IssueSubscriptionsRequest {
   /** owner of the repo */
@@ -2075,9 +2045,8 @@ export const IssueSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueSubscriptionsRequest>;
 
 export type IssueSubscriptionsResponseBodyList = Array<User>;
-export const IssueSubscriptionsResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<IssueSubscriptionsResponseBodyList>;
+export const IssueSubscriptionsResponseBodyList =
+  IssueAssigneesList as any as S.Schema<IssueSubscriptionsResponseBodyList>;
 
 export type IssueSubscriptionsResponse = IssueSubscriptionsResponseBodyList;
 export const IssueSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2148,9 +2117,8 @@ export const ListIssueAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIssueAttachmentsRequest>;
 
 export type ListIssueAttachmentsResponseBodyList = Array<Attachment>;
-export const ListIssueAttachmentsResponseBodyList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<ListIssueAttachmentsResponseBodyList>;
+export const ListIssueAttachmentsResponseBodyList =
+  IssueAssetsList as any as S.Schema<ListIssueAttachmentsResponseBodyList>;
 
 export type ListIssueAttachmentsResponse = ListIssueAttachmentsResponseBodyList;
 export const ListIssueAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2180,16 +2148,12 @@ export const ListIssueCommentAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIssueCommentAttachmentsRequest>;
 
 export type ListIssueCommentAttachmentsResponseBodyList = Array<Attachment>;
-export const ListIssueCommentAttachmentsResponseBodyList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<ListIssueCommentAttachmentsResponseBodyList>;
+export const ListIssueCommentAttachmentsResponseBodyList =
+  IssueAssetsList as any as S.Schema<ListIssueCommentAttachmentsResponseBodyList>;
 
 export type ListIssueCommentAttachmentsResponse = ListIssueCommentAttachmentsResponseBodyList;
-export const ListIssueCommentAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIssueCommentAttachmentsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIssueCommentAttachmentsResponse",
-}) as any as S.Schema<ListIssueCommentAttachmentsResponse>;
+export const ListIssueCommentAttachmentsResponse =
+  ListIssueAttachmentsResponse as any as S.Schema<ListIssueCommentAttachmentsResponse>;
 
 export interface ListIssueDependenciesRequest {
   /** owner of the repo */
@@ -2218,9 +2182,8 @@ export const ListIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIssueDependenciesRequest>;
 
 export type ListIssueDependenciesResponseBodyList = Array<Issue>;
-export const ListIssueDependenciesResponseBodyList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<ListIssueDependenciesResponseBodyList>;
+export const ListIssueDependenciesResponseBodyList =
+  IssueListBlocksResponseBodyList as any as S.Schema<ListIssueDependenciesResponseBodyList>;
 
 export type ListIssueDependenciesResponse = ListIssueDependenciesResponseBodyList;
 export const ListIssueDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2300,14 +2263,11 @@ export const ListIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIssuesRequest" }) as any as S.Schema<ListIssuesRequest>;
 
 export type ListIssuesResponseBodyList = Array<Issue>;
-export const ListIssuesResponseBodyList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<ListIssuesResponseBodyList>;
+export const ListIssuesResponseBodyList =
+  IssueListBlocksResponseBodyList as any as S.Schema<ListIssuesResponseBodyList>;
 
 export type ListIssuesResponse = ListIssuesResponseBodyList;
-export const ListIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIssuesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListIssuesResponse" }) as any as S.Schema<ListIssuesResponse>;
+export const ListIssuesResponse = IssueListBlocksResponse as any as S.Schema<ListIssuesResponse>;
 
 export interface MoveIssuePinRequest {
   /** owner of the repo */
@@ -2335,9 +2295,7 @@ export const MoveIssuePinRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveIssuePinRequest" }) as any as S.Schema<MoveIssuePinRequest>;
 
 export interface MoveIssuePinResponse {}
-export const MoveIssuePinResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MoveIssuePinResponse",
-}) as any as S.Schema<MoveIssuePinResponse>;
+export const MoveIssuePinResponse = DeleteIssueResponse as any as S.Schema<MoveIssuePinResponse>;
 
 export interface PinIssueRequest {
   /** owner of the repo */
@@ -2356,9 +2314,7 @@ export const PinIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PinIssueRequest" }) as any as S.Schema<PinIssueRequest>;
 
 export interface PinIssueResponse {}
-export const PinIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PinIssueResponse",
-}) as any as S.Schema<PinIssueResponse>;
+export const PinIssueResponse = DeleteIssueResponse as any as S.Schema<PinIssueResponse>;
 
 export interface PostIssueReactionRequest {
   /** owner of the repo */
@@ -2504,14 +2460,12 @@ export const SearchIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchIssuesRequest" }) as any as S.Schema<SearchIssuesRequest>;
 
 export type SearchIssuesResponseBodyList = Array<Issue>;
-export const SearchIssuesResponseBodyList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<SearchIssuesResponseBodyList>;
+export const SearchIssuesResponseBodyList =
+  IssueListBlocksResponseBodyList as any as S.Schema<SearchIssuesResponseBodyList>;
 
 export type SearchIssuesResponse = SearchIssuesResponseBodyList;
-export const SearchIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  SearchIssuesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "SearchIssuesResponse" }) as any as S.Schema<SearchIssuesResponse>;
+export const SearchIssuesResponse =
+  IssueListBlocksResponse as any as S.Schema<SearchIssuesResponse>;
 
 export interface UnpinIssueRequest {
   /** owner of the repo */
@@ -2530,9 +2484,7 @@ export const UnpinIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnpinIssueRequest" }) as any as S.Schema<UnpinIssueRequest>;
 
 export interface UnpinIssueResponse {}
-export const UnpinIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnpinIssueResponse",
-}) as any as S.Schema<UnpinIssueResponse>;
+export const UnpinIssueResponse = DeleteIssueResponse as any as S.Schema<UnpinIssueResponse>;
 
 export type CreateIssueError = Forbidden | NotFound | UnprocessableEntity | Locked | ForgejoOpError;
 /** Create an issue. If using deadline only the date will be taken into account, and time of day ignored. */

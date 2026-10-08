@@ -141,13 +141,8 @@ export interface BatchUpdateIngressRulesResponse {
   /** The full list of ingress FirewallRules for this application. */
   ingressRules?: FirewallRuleList;
 }
-export const BatchUpdateIngressRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingressRules: S.optional(FirewallRuleList),
-  }),
-).annotate({
-  identifier: "BatchUpdateIngressRulesResponse",
-}) as any as S.Schema<BatchUpdateIngressRulesResponse>;
+export const BatchUpdateIngressRulesResponse =
+  BatchUpdateIngressRulesRequest as any as S.Schema<BatchUpdateIngressRulesResponse>;
 
 export type ApplicationDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
@@ -3347,9 +3342,7 @@ export const PatchProjectsLocationsApplicationsServicesVersionsRequest = /*@__PU
 
 /** Request message for 'Applications.RepairApplication'. */
 export interface RepairApplicationRequest {}
-export const RepairApplicationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RepairApplicationRequest",
-}) as any as S.Schema<RepairApplicationRequest>;
+export const RepairApplicationRequest = Empty as any as S.Schema<RepairApplicationRequest>;
 
 export interface RepairAppsRequest {
   /** Part of `name`. Required. Name of the application to repair. Example: apps/myapp */

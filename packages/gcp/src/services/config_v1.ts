@@ -86,9 +86,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
@@ -1709,11 +1707,8 @@ export interface ImportStatefileRequest {
   /** Required. Lock ID of the lock file to verify that the user who is importing the state file previously locked the Deployment. */
   lockId?: string;
 }
-export const ImportStatefileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lockId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImportStatefileRequest" }) as any as S.Schema<ImportStatefileRequest>;
+export const ImportStatefileRequest =
+  DeleteStatefileRequest as any as S.Schema<ImportStatefileRequest>;
 
 export interface ImportStateProjectsLocationsDeploymentsRequest {
   /** Required. The parent in whose context the statefile is listed. The parent value is in the format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */
@@ -2492,24 +2487,16 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 /** A request to unlock a state file passed to a 'UnlockDeployment' call. */
 export interface UnlockDeploymentRequest {
   /** Required. Lock ID of the lock file to be unlocked. */
   lockId?: string;
 }
-export const UnlockDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lockId: S.optional(S.String),
-  }),
-).annotate({ identifier: "UnlockDeploymentRequest" }) as any as S.Schema<UnlockDeploymentRequest>;
+export const UnlockDeploymentRequest =
+  DeleteStatefileRequest as any as S.Schema<UnlockDeploymentRequest>;
 
 export interface UnlockProjectsLocationsDeploymentsRequest {
   /** Required. The name of the deployment in the format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */

@@ -205,9 +205,8 @@ export const GetLlmPromptsNameRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Flat list of markdown headings parsed from the prompt. Useful as a lightweight table of contents. */
 export type LLMPromptPublicOutlineList = Array<LLMPromptOutlineEntry>;
-export const LLMPromptPublicOutlineList = /*@__PURE__*/ S.Array(
-  LLMPromptOutlineEntry,
-) as any as S.Schema<LLMPromptPublicOutlineList>;
+export const LLMPromptPublicOutlineList =
+  LLMPromptOutlineList as any as S.Schema<LLMPromptPublicOutlineList>;
 
 export interface LLMPromptResolvedReference {
   /** Name of the referenced prompt that was spliced in. */
@@ -315,9 +314,8 @@ export const GetLlmPromptsResolveNameRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptVersionSummaryLabelsList = Array<string>;
-export const LLMPromptVersionSummaryLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LLMPromptVersionSummaryLabelsList>;
+export const LLMPromptVersionSummaryLabelsList =
+  LLMPromptLabelsList as any as S.Schema<LLMPromptVersionSummaryLabelsList>;
 
 export interface LLMPromptVersionSummary {
   id?: string;
@@ -473,15 +471,13 @@ export const ListLlmPromptsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLlmPromptsRequest" }) as any as S.Schema<ListLlmPromptsRequest>;
 
 export type LLMPromptListOutlineList = Array<LLMPromptOutlineEntry>;
-export const LLMPromptListOutlineList = /*@__PURE__*/ S.Array(
-  LLMPromptOutlineEntry,
-) as any as S.Schema<LLMPromptListOutlineList>;
+export const LLMPromptListOutlineList =
+  LLMPromptOutlineList as any as S.Schema<LLMPromptListOutlineList>;
 
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptListLabelsList = Array<string>;
-export const LLMPromptListLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LLMPromptListLabelsList>;
+export const LLMPromptListLabelsList =
+  LLMPromptLabelsList as any as S.Schema<LLMPromptListLabelsList>;
 
 export interface LLMPromptLabelSummary {
   /** Label name, e.g. 'production'. */
@@ -502,9 +498,8 @@ export const LLMPromptListAllLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LLMPromptListAllLabelsList>;
 
 export type LLMPromptListResolvedReferencesList = Array<LLMPromptResolvedReference>;
-export const LLMPromptListResolvedReferencesList = /*@__PURE__*/ S.Array(
-  LLMPromptResolvedReference,
-) as any as S.Schema<LLMPromptListResolvedReferencesList>;
+export const LLMPromptListResolvedReferencesList =
+  LLMPromptPublicResolvedReferencesList as any as S.Schema<LLMPromptListResolvedReferencesList>;
 
 export interface LLMPromptList {
   id?: string;
@@ -656,11 +651,8 @@ export const LlmPromptsNameLabelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmPromptsNameLabelsDestroyRequest>;
 
 export interface LlmPromptsNameLabelsDestroyResponse {}
-export const LlmPromptsNameLabelsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LlmPromptsNameLabelsDestroyResponse",
-}) as any as S.Schema<LlmPromptsNameLabelsDestroyResponse>;
+export const LlmPromptsNameLabelsDestroyResponse =
+  LlmPromptsNameArchiveCreateResponse as any as S.Schema<LlmPromptsNameLabelsDestroyResponse>;
 
 export interface UpdateLlmPromptsNameLabelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

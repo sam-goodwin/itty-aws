@@ -125,9 +125,8 @@ export const OriginCloudRegionsBulkDeleteResponseSucceededItem =
 
 export type OriginCloudRegionsBulkDeleteResponseSucceededList =
   Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
-export const OriginCloudRegionsBulkDeleteResponseSucceededList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsBulkDeleteResponseFailedItem,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteResponseSucceededList>;
+export const OriginCloudRegionsBulkDeleteResponseSucceededList =
+  OriginCloudRegionsBulkDeleteResponseFailedList as any as S.Schema<OriginCloudRegionsBulkDeleteResponseSucceededList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkDeleteOriginCloudRegionsResponse {
@@ -195,9 +194,8 @@ export const OriginCloudRegionsBulkUpdateResponseFailedItem =
 
 export type OriginCloudRegionsBulkUpdateResponseFailedList =
   Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
-export const OriginCloudRegionsBulkUpdateResponseFailedList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsBulkDeleteResponseFailedItem,
-) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseFailedList>;
+export const OriginCloudRegionsBulkUpdateResponseFailedList =
+  OriginCloudRegionsBulkDeleteResponseFailedList as any as S.Schema<OriginCloudRegionsBulkUpdateResponseFailedList>;
 
 export type OriginCloudRegionsBulkUpdateResponseSucceededItem =
   OriginCloudRegionsBulkDeleteResponseFailedItem;
@@ -206,9 +204,8 @@ export const OriginCloudRegionsBulkUpdateResponseSucceededItem =
 
 export type OriginCloudRegionsBulkUpdateResponseSucceededList =
   Array<OriginCloudRegionsBulkDeleteResponseFailedItem>;
-export const OriginCloudRegionsBulkUpdateResponseSucceededList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsBulkDeleteResponseFailedItem,
-) as any as S.Schema<OriginCloudRegionsBulkUpdateResponseSucceededList>;
+export const OriginCloudRegionsBulkUpdateResponseSucceededList =
+  OriginCloudRegionsBulkDeleteResponseFailedList as any as S.Schema<OriginCloudRegionsBulkUpdateResponseSucceededList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkPutOriginCloudRegionsResponse {
@@ -217,14 +214,8 @@ export interface BulkPutOriginCloudRegionsResponse {
   /** Items that were successfully applied. */
   succeeded: OriginCloudRegionsBulkUpdateResponseSucceededList;
 }
-export const BulkPutOriginCloudRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failed: OriginCloudRegionsBulkUpdateResponseFailedList,
-    succeeded: OriginCloudRegionsBulkUpdateResponseSucceededList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "BulkPutOriginCloudRegionsResponse",
-}) as any as S.Schema<BulkPutOriginCloudRegionsResponse>;
+export const BulkPutOriginCloudRegionsResponse =
+  BulkDeleteOriginCloudRegionsResponse as any as S.Schema<BulkPutOriginCloudRegionsResponse>;
 
 export interface ClearCacheReserveRequest {
   /** Identifier. */
@@ -624,54 +615,44 @@ export const VariantsGetResponseValueAvifList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VariantsGetResponseValueAvifList>;
 
 export type VariantsGetResponseValueBmpList = Array<string>;
-export const VariantsGetResponseValueBmpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueBmpList>;
+export const VariantsGetResponseValueBmpList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueBmpList>;
 
 export type VariantsGetResponseValueGifList = Array<string>;
-export const VariantsGetResponseValueGifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueGifList>;
+export const VariantsGetResponseValueGifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueGifList>;
 
 export type VariantsGetResponseValueJp2List = Array<string>;
-export const VariantsGetResponseValueJp2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueJp2List>;
+export const VariantsGetResponseValueJp2List =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJp2List>;
 
 export type VariantsGetResponseValueJpegList = Array<string>;
-export const VariantsGetResponseValueJpegList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueJpegList>;
+export const VariantsGetResponseValueJpegList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJpegList>;
 
 export type VariantsGetResponseValueJpgList = Array<string>;
-export const VariantsGetResponseValueJpgList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueJpgList>;
+export const VariantsGetResponseValueJpgList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJpgList>;
 
 export type VariantsGetResponseValueJpg2List = Array<string>;
-export const VariantsGetResponseValueJpg2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueJpg2List>;
+export const VariantsGetResponseValueJpg2List =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueJpg2List>;
 
 export type VariantsGetResponseValuePngList = Array<string>;
-export const VariantsGetResponseValuePngList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValuePngList>;
+export const VariantsGetResponseValuePngList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValuePngList>;
 
 export type VariantsGetResponseValueTifList = Array<string>;
-export const VariantsGetResponseValueTifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueTifList>;
+export const VariantsGetResponseValueTifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueTifList>;
 
 export type VariantsGetResponseValueTiffList = Array<string>;
-export const VariantsGetResponseValueTiffList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueTiffList>;
+export const VariantsGetResponseValueTiffList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueTiffList>;
 
 export type VariantsGetResponseValueWebpList = Array<string>;
-export const VariantsGetResponseValueWebpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsGetResponseValueWebpList>;
+export const VariantsGetResponseValueWebpList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsGetResponseValueWebpList>;
 
 export interface VariantsGetResponseValue {
   /** List of strings with the MIME types of all the variants that should be served for avif. */
@@ -734,24 +715,20 @@ export const GetVariantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVariantResponse" }) as any as S.Schema<GetVariantResponse>;
 
 export type InvalidateRequestTagsList = Array<string>;
-export const InvalidateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateRequestTagsList>;
+export const InvalidateRequestTagsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateRequestTagsList>;
 
 export type InvalidateRequestHostsList = Array<string>;
-export const InvalidateRequestHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateRequestHostsList>;
+export const InvalidateRequestHostsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateRequestHostsList>;
 
 export type InvalidateRequestPrefixesList = Array<string>;
-export const InvalidateRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateRequestPrefixesList>;
+export const InvalidateRequestPrefixesList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateRequestPrefixesList>;
 
 export type InvalidateRequestFilesCachePurgeSingleFileList = Array<string>;
-export const InvalidateRequestFilesCachePurgeSingleFileList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateRequestFilesCachePurgeSingleFileList>;
+export const InvalidateRequestFilesCachePurgeSingleFileList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateRequestFilesCachePurgeSingleFileList>;
 
 export type InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
@@ -831,33 +808,26 @@ export const InvalidateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvalidateResponse" }) as any as S.Schema<InvalidateResponse>;
 
 export type InvalidateEnvironmentRequestTagsList = Array<string>;
-export const InvalidateEnvironmentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateEnvironmentRequestTagsList>;
+export const InvalidateEnvironmentRequestTagsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateEnvironmentRequestTagsList>;
 
 export type InvalidateEnvironmentRequestHostsList = Array<string>;
-export const InvalidateEnvironmentRequestHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateEnvironmentRequestHostsList>;
+export const InvalidateEnvironmentRequestHostsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateEnvironmentRequestHostsList>;
 
 export type InvalidateEnvironmentRequestPrefixesList = Array<string>;
-export const InvalidateEnvironmentRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateEnvironmentRequestPrefixesList>;
+export const InvalidateEnvironmentRequestPrefixesList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateEnvironmentRequestPrefixesList>;
 
 export type InvalidateEnvironmentRequestFilesCachePurgeSingleFileList = Array<string>;
-export const InvalidateEnvironmentRequestFilesCachePurgeSingleFileList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileList>;
+export const InvalidateEnvironmentRequestFilesCachePurgeSingleFileList =
+  VariantsGetResponseValueAvifList as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileList>;
 
 export type InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
 };
 export const InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
+  InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
 
 export interface InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem {
   /** Request headers and the values the content was cached with. */
@@ -866,23 +836,12 @@ export interface InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAnd
   url?: string;
 }
 export const InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      headers: S.optional(
-        InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem",
-  }) as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
+  InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersItem as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 
 export type InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
   Array<InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 export const InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
-  /*@__PURE__*/ S.Array(
-    InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem,
-  ) as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList>;
+  InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersList as any as S.Schema<InvalidateEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList>;
 
 export type InvalidateEnvironmentRequestFiles =
   | InvalidateEnvironmentRequestFilesCachePurgeSingleFileList
@@ -1060,9 +1019,8 @@ export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededItem =
 
 export type OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
   Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
-export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
-) as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList>;
+export const OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList =
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedList as any as S.Schema<OriginCloudRegionsBulkDeleteV1ResponseValueSucceededList>;
 
 export interface OriginCloudRegionsBulkDeleteV1ResponseValue {
   /** Items that could not be applied, with error details. */
@@ -1158,9 +1116,8 @@ export const OriginCloudRegionsBulkEditV1ResponseValueFailedItem =
 
 export type OriginCloudRegionsBulkEditV1ResponseValueFailedList =
   Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
-export const OriginCloudRegionsBulkEditV1ResponseValueFailedList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
-) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueFailedList>;
+export const OriginCloudRegionsBulkEditV1ResponseValueFailedList =
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedList as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueFailedList>;
 
 export type OriginCloudRegionsBulkEditV1ResponseValueSucceededItem =
   OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem;
@@ -1169,9 +1126,8 @@ export const OriginCloudRegionsBulkEditV1ResponseValueSucceededItem =
 
 export type OriginCloudRegionsBulkEditV1ResponseValueSucceededList =
   Array<OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem>;
-export const OriginCloudRegionsBulkEditV1ResponseValueSucceededList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsBulkDeleteV1ResponseValueFailedItem,
-) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueSucceededList>;
+export const OriginCloudRegionsBulkEditV1ResponseValueSucceededList =
+  OriginCloudRegionsBulkDeleteV1ResponseValueFailedList as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValueSucceededList>;
 
 export interface OriginCloudRegionsBulkEditV1ResponseValue {
   /** Items that could not be applied, with error details. */
@@ -1179,14 +1135,8 @@ export interface OriginCloudRegionsBulkEditV1ResponseValue {
   /** Items that were successfully applied. */
   succeeded: OriginCloudRegionsBulkEditV1ResponseValueSucceededList;
 }
-export const OriginCloudRegionsBulkEditV1ResponseValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failed: OriginCloudRegionsBulkEditV1ResponseValueFailedList,
-    succeeded: OriginCloudRegionsBulkEditV1ResponseValueSucceededList,
-  }),
-).annotate({
-  identifier: "OriginCloudRegionsBulkEditV1ResponseValue",
-}) as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValue>;
+export const OriginCloudRegionsBulkEditV1ResponseValue =
+  OriginCloudRegionsBulkDeleteV1ResponseValue as any as S.Schema<OriginCloudRegionsBulkEditV1ResponseValue>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginCloudRegionsBulkEditV1Response {
@@ -1797,59 +1747,48 @@ export const PatchSmartTieredCacheResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchSmartTieredCacheResponse>;
 
 export type VariantsEditRequestValueAvifList = Array<string>;
-export const VariantsEditRequestValueAvifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueAvifList>;
+export const VariantsEditRequestValueAvifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueAvifList>;
 
 export type VariantsEditRequestValueBmpList = Array<string>;
-export const VariantsEditRequestValueBmpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueBmpList>;
+export const VariantsEditRequestValueBmpList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueBmpList>;
 
 export type VariantsEditRequestValueGifList = Array<string>;
-export const VariantsEditRequestValueGifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueGifList>;
+export const VariantsEditRequestValueGifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueGifList>;
 
 export type VariantsEditRequestValueJp2List = Array<string>;
-export const VariantsEditRequestValueJp2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueJp2List>;
+export const VariantsEditRequestValueJp2List =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJp2List>;
 
 export type VariantsEditRequestValueJpegList = Array<string>;
-export const VariantsEditRequestValueJpegList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueJpegList>;
+export const VariantsEditRequestValueJpegList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJpegList>;
 
 export type VariantsEditRequestValueJpgList = Array<string>;
-export const VariantsEditRequestValueJpgList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueJpgList>;
+export const VariantsEditRequestValueJpgList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJpgList>;
 
 export type VariantsEditRequestValueJpg2List = Array<string>;
-export const VariantsEditRequestValueJpg2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueJpg2List>;
+export const VariantsEditRequestValueJpg2List =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueJpg2List>;
 
 export type VariantsEditRequestValuePngList = Array<string>;
-export const VariantsEditRequestValuePngList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValuePngList>;
+export const VariantsEditRequestValuePngList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValuePngList>;
 
 export type VariantsEditRequestValueTifList = Array<string>;
-export const VariantsEditRequestValueTifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueTifList>;
+export const VariantsEditRequestValueTifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueTifList>;
 
 export type VariantsEditRequestValueTiffList = Array<string>;
-export const VariantsEditRequestValueTiffList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueTiffList>;
+export const VariantsEditRequestValueTiffList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueTiffList>;
 
 export type VariantsEditRequestValueWebpList = Array<string>;
-export const VariantsEditRequestValueWebpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditRequestValueWebpList>;
+export const VariantsEditRequestValueWebpList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditRequestValueWebpList>;
 
 export interface VariantsEditRequestValue {
   /** List of strings with the MIME types of all the variants that should be served for avif. */
@@ -1910,59 +1849,48 @@ export type VariantsEditResponseId = "variants";
 export const VariantsEditResponseId = S.String;
 
 export type VariantsEditResponseValueAvifList = Array<string>;
-export const VariantsEditResponseValueAvifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueAvifList>;
+export const VariantsEditResponseValueAvifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueAvifList>;
 
 export type VariantsEditResponseValueBmpList = Array<string>;
-export const VariantsEditResponseValueBmpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueBmpList>;
+export const VariantsEditResponseValueBmpList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueBmpList>;
 
 export type VariantsEditResponseValueGifList = Array<string>;
-export const VariantsEditResponseValueGifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueGifList>;
+export const VariantsEditResponseValueGifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueGifList>;
 
 export type VariantsEditResponseValueJp2List = Array<string>;
-export const VariantsEditResponseValueJp2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueJp2List>;
+export const VariantsEditResponseValueJp2List =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJp2List>;
 
 export type VariantsEditResponseValueJpegList = Array<string>;
-export const VariantsEditResponseValueJpegList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueJpegList>;
+export const VariantsEditResponseValueJpegList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJpegList>;
 
 export type VariantsEditResponseValueJpgList = Array<string>;
-export const VariantsEditResponseValueJpgList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueJpgList>;
+export const VariantsEditResponseValueJpgList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJpgList>;
 
 export type VariantsEditResponseValueJpg2List = Array<string>;
-export const VariantsEditResponseValueJpg2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueJpg2List>;
+export const VariantsEditResponseValueJpg2List =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueJpg2List>;
 
 export type VariantsEditResponseValuePngList = Array<string>;
-export const VariantsEditResponseValuePngList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValuePngList>;
+export const VariantsEditResponseValuePngList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValuePngList>;
 
 export type VariantsEditResponseValueTifList = Array<string>;
-export const VariantsEditResponseValueTifList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueTifList>;
+export const VariantsEditResponseValueTifList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueTifList>;
 
 export type VariantsEditResponseValueTiffList = Array<string>;
-export const VariantsEditResponseValueTiffList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueTiffList>;
+export const VariantsEditResponseValueTiffList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueTiffList>;
 
 export type VariantsEditResponseValueWebpList = Array<string>;
-export const VariantsEditResponseValueWebpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VariantsEditResponseValueWebpList>;
+export const VariantsEditResponseValueWebpList =
+  VariantsGetResponseValueAvifList as any as S.Schema<VariantsEditResponseValueWebpList>;
 
 export interface VariantsEditResponseValue {
   /** List of strings with the MIME types of all the variants that should be served for avif. */
@@ -2027,33 +1955,26 @@ export const PatchVariantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchVariantResponse" }) as any as S.Schema<PatchVariantResponse>;
 
 export type PurgeRequestTagsList = Array<string>;
-export const PurgeRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestTagsList>;
+export const PurgeRequestTagsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeRequestTagsList>;
 
 export type PurgeRequestHostsList = Array<string>;
-export const PurgeRequestHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestHostsList>;
+export const PurgeRequestHostsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeRequestHostsList>;
 
 export type PurgeRequestPrefixesList = Array<string>;
-export const PurgeRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestPrefixesList>;
+export const PurgeRequestPrefixesList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeRequestPrefixesList>;
 
 export type PurgeRequestFilesCachePurgeSingleFileList = Array<string>;
-export const PurgeRequestFilesCachePurgeSingleFileList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeRequestFilesCachePurgeSingleFileList>;
+export const PurgeRequestFilesCachePurgeSingleFileList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeRequestFilesCachePurgeSingleFileList>;
 
 export type PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
 };
 export const PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
+  InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap as any as S.Schema<PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
 
 export interface PurgeRequestFilesCachePurgeSingleFileWithURLAndHeadersItem {
   /** Request headers and the values the content was cached with. */
@@ -2112,40 +2033,29 @@ export const PurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PurgeCacheResponse {
   id: string;
 }
-export const PurgeCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PurgeCacheResponse" }) as any as S.Schema<PurgeCacheResponse>;
+export const PurgeCacheResponse = InvalidateResponse as any as S.Schema<PurgeCacheResponse>;
 
 export type PurgeEnvironmentRequestTagsList = Array<string>;
-export const PurgeEnvironmentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestTagsList>;
+export const PurgeEnvironmentRequestTagsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeEnvironmentRequestTagsList>;
 
 export type PurgeEnvironmentRequestHostsList = Array<string>;
-export const PurgeEnvironmentRequestHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestHostsList>;
+export const PurgeEnvironmentRequestHostsList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeEnvironmentRequestHostsList>;
 
 export type PurgeEnvironmentRequestPrefixesList = Array<string>;
-export const PurgeEnvironmentRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestPrefixesList>;
+export const PurgeEnvironmentRequestPrefixesList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeEnvironmentRequestPrefixesList>;
 
 export type PurgeEnvironmentRequestFilesCachePurgeSingleFileList = Array<string>;
-export const PurgeEnvironmentRequestFilesCachePurgeSingleFileList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileList>;
+export const PurgeEnvironmentRequestFilesCachePurgeSingleFileList =
+  VariantsGetResponseValueAvifList as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileList>;
 
 export type PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap = {
   [key: string]: string | undefined;
 };
 export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
+  InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap>;
 
 export interface PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem {
   /** Request headers and the values the content was cached with. */
@@ -2154,23 +2064,12 @@ export interface PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeade
   url?: string;
 }
 export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      headers: S.optional(
-        PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItemHeadersMap,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem",
-  }) as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
+  InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersItem as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 
 export type PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
   Array<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem>;
 export const PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList =
-  /*@__PURE__*/ S.Array(
-    PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersItem,
-  ) as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList>;
+  InvalidateRequestFilesCachePurgeSingleFileWithURLAndHeadersList as any as S.Schema<PurgeEnvironmentRequestFilesCachePurgeSingleFileWithURLAndHeadersList>;
 
 export type PurgeEnvironmentRequestFiles =
   | PurgeEnvironmentRequestFilesCachePurgeSingleFileList
@@ -2219,13 +2118,8 @@ export const PurgeEnvironmentCacheRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PurgeEnvironmentCacheResponse {
   id: string;
 }
-export const PurgeEnvironmentCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PurgeEnvironmentCacheResponse",
-}) as any as S.Schema<PurgeEnvironmentCacheResponse>;
+export const PurgeEnvironmentCacheResponse =
+  InvalidateEnvironmentResponse as any as S.Schema<PurgeEnvironmentCacheResponse>;
 
 export type OriginCloudRegionsUpdateRequestVendor = "aws" | "azure" | "gcp" | "oci";
 export const OriginCloudRegionsUpdateRequestVendor = S.String;
@@ -2350,9 +2244,7 @@ export const SupportedRegionsOriginCloudRegionRequest = /*@__PURE__*/ S.suspend(
 export type OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList =
   Array<string>;
 export const OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList>;
+  OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList>;
 
 export interface OriginCloudRegionsSupportedRegionsResponseVendorsValueItem {
   /** Cloud vendor region identifier. */
@@ -2360,32 +2252,19 @@ export interface OriginCloudRegionsSupportedRegionsResponseVendorsValueItem {
   /** Cloudflare Tiered Cache upper-tier colocation codes co-located with this cloud region. Requests from zones with a matching origin mapping will be routed through these colos. */
   upperTierColos: OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList;
 }
-export const OriginCloudRegionsSupportedRegionsResponseVendorsValueItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      upperTierColos:
-        OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList.pipe(
-          T.Body("upper_tier_colos"),
-        ),
-    }),
-).annotate({
-  identifier: "OriginCloudRegionsSupportedRegionsResponseVendorsValueItem",
-}) as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsValueItem>;
+export const OriginCloudRegionsSupportedRegionsResponseVendorsValueItem =
+  OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsValueItem>;
 
 export type OriginCloudRegionsSupportedRegionsResponseVendorsValueList =
   Array<OriginCloudRegionsSupportedRegionsResponseVendorsValueItem>;
-export const OriginCloudRegionsSupportedRegionsResponseVendorsValueList = /*@__PURE__*/ S.Array(
-  OriginCloudRegionsSupportedRegionsResponseVendorsValueItem,
-) as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsValueList>;
+export const OriginCloudRegionsSupportedRegionsResponseVendorsValueList =
+  OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsValueList>;
 
 export type OriginCloudRegionsSupportedRegionsResponseVendorsMap = {
   [key: string]: OriginCloudRegionsSupportedRegionsResponseVendorsValueList | undefined;
 };
-export const OriginCloudRegionsSupportedRegionsResponseVendorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  OriginCloudRegionsSupportedRegionsResponseVendorsValueList,
-) as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsMap>;
+export const OriginCloudRegionsSupportedRegionsResponseVendorsMap =
+  OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap as any as S.Schema<OriginCloudRegionsSupportedRegionsResponseVendorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SupportedRegionsOriginCloudRegionResponse {
@@ -2394,14 +2273,8 @@ export interface SupportedRegionsOriginCloudRegionResponse {
   /** Map of vendor name to list of supported regions. */
   vendors: OriginCloudRegionsSupportedRegionsResponseVendorsMap;
 }
-export const SupportedRegionsOriginCloudRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    obtainedCodes: S.Boolean.pipe(T.Body("obtained_codes")),
-    vendors: OriginCloudRegionsSupportedRegionsResponseVendorsMap,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "SupportedRegionsOriginCloudRegionResponse",
-}) as any as S.Schema<SupportedRegionsOriginCloudRegionResponse>;
+export const SupportedRegionsOriginCloudRegionResponse =
+  OriginCloudRegionsSupportedRegionsV1Response as any as S.Schema<SupportedRegionsOriginCloudRegionResponse>;
 
 export type BulkDeleteOriginCloudRegionsError = CloudflareOpError;
 /** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently -- successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */

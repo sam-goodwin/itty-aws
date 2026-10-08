@@ -64,10 +64,8 @@ export const AccountsCreateAndUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type AccountsCreateAndUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateAndUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountsCreateAndUpdateResponseTagsMap>;
+export const AccountsCreateAndUpdateResponseTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<AccountsCreateAndUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type AccountsCreateAndUpdateResponseSystemDataCreatedByType =
@@ -216,10 +214,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetAccountResponseSystemDataCreatedByType =
@@ -334,10 +330,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type AccountResourceTagsMap = { [key: string]: string | undefined };
-export const AccountResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountResourceTagsMap>;
+export const AccountResourceTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<AccountResourceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type AccountResourceSystemDataCreatedByType =
@@ -552,10 +546,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. */
@@ -585,10 +577,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateAccountResponseSystemDataCreatedByType =

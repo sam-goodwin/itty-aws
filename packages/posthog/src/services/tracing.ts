@@ -187,9 +187,8 @@ export const CompareFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by service names. */
 export type TracingAggregationQueryBodyServiceNamesList = Array<string>;
-export const TracingAggregationQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TracingAggregationQueryBodyServiceNamesList>;
+export const TracingAggregationQueryBodyServiceNamesList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingAggregationQueryBodyServiceNamesList>;
 
 /** * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute */
 export type SpanPropertyTypeEnum = "span" | "span_attribute" | "span_resource_attribute";
@@ -346,9 +345,8 @@ export const TracingAggregationResponseResultsList = /*@__PURE__*/ S.Array(
 
 /** Rows for the comparison window when compareFilter.compare is true, else null. */
 export type TracingAggregationResponseCompareList = Array<AggregatedSpanRow>;
-export const TracingAggregationResponseCompareList = /*@__PURE__*/ S.Array(
-  AggregatedSpanRow,
-) as any as S.Schema<TracingAggregationResponseCompareList>;
+export const TracingAggregationResponseCompareList =
+  TracingAggregationResponseResultsList as any as S.Schema<TracingAggregationResponseCompareList>;
 
 export interface TracingAggregationResponse {
   /** One row per (service_name, name) group, ordered by total_duration_nano descending. */
@@ -377,15 +375,13 @@ export const TracingAttributeBreakdownQueryBodyOrderByEnum = S.String;
 
 /** Filter by service names. */
 export type TracingAttributeBreakdownQueryBodyServiceNamesList = Array<string>;
-export const TracingAttributeBreakdownQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TracingAttributeBreakdownQueryBodyServiceNamesList>;
+export const TracingAttributeBreakdownQueryBodyServiceNamesList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingAttributeBreakdownQueryBodyServiceNamesList>;
 
 /** Property filters scoping the spans the breakdown runs over (e.g. only error spans). */
 export type TracingAttributeBreakdownQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-export const TracingAttributeBreakdownQueryBodyFilterGroupList = /*@__PURE__*/ S.Array(
-  SpanPropertyFilter,
-) as any as S.Schema<TracingAttributeBreakdownQueryBodyFilterGroupList>;
+export const TracingAttributeBreakdownQueryBodyFilterGroupList =
+  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingAttributeBreakdownQueryBodyFilterGroupList>;
 
 export interface TracingAttributeBreakdownQueryBody {
   /** Attribute key to group by (e.g. "server.address", "http.response.status_code"). Discover keys with apm-attributes-list. For the "span" breakdown type, must be one of the allowlisted top-level columns: "service_name", "status_code". */
@@ -476,9 +472,8 @@ export const TracingAttributeBreakdownResponseResultsList = /*@__PURE__*/ S.Arra
 
 /** Rows for the comparison window when compareFilter.compare is true, else null. */
 export type TracingAttributeBreakdownResponseCompareList = Array<TracingAttributeBreakdownRow>;
-export const TracingAttributeBreakdownResponseCompareList = /*@__PURE__*/ S.Array(
-  TracingAttributeBreakdownRow,
-) as any as S.Schema<TracingAttributeBreakdownResponseCompareList>;
+export const TracingAttributeBreakdownResponseCompareList =
+  TracingAttributeBreakdownResponseResultsList as any as S.Schema<TracingAttributeBreakdownResponseCompareList>;
 
 export interface TracingAttributeBreakdownResponse {
   /** One row per distinct attribute value, ordered by the requested column descending. */
@@ -497,9 +492,8 @@ export const TracingAttributeBreakdownResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by service names. */
 export type TracingCountBodyServiceNamesList = Array<string>;
-export const TracingCountBodyServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TracingCountBodyServiceNamesList>;
+export const TracingCountBodyServiceNamesList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingCountBodyServiceNamesList>;
 
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingCountBodyStatusCodesList = Array<number>;
@@ -509,9 +503,8 @@ export const TracingCountBodyStatusCodesList = /*@__PURE__*/ S.Array(
 
 /** A flat list of filters, combined with AND. */
 export type TracingCountBodyFilterGroupCase0List = Array<SpanPropertyFilter>;
-export const TracingCountBodyFilterGroupCase0List = /*@__PURE__*/ S.Array(
-  SpanPropertyFilter,
-) as any as S.Schema<TracingCountBodyFilterGroupCase0List>;
+export const TracingCountBodyFilterGroupCase0List =
+  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingCountBodyFilterGroupCase0List>;
 
 /** How the inner groups combine. */
 export type TracingCountBodyFilterGroupCase1Type = "AND" | "OR";
@@ -523,9 +516,8 @@ export const TracingCountBodyFilterGroupCase1ValuesItemType = S.String;
 
 /** The property filters in this group. */
 export type TracingCountBodyFilterGroupCase1ValuesItemValuesList = Array<SpanPropertyFilter>;
-export const TracingCountBodyFilterGroupCase1ValuesItemValuesList = /*@__PURE__*/ S.Array(
-  SpanPropertyFilter,
-) as any as S.Schema<TracingCountBodyFilterGroupCase1ValuesItemValuesList>;
+export const TracingCountBodyFilterGroupCase1ValuesItemValuesList =
+  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingCountBodyFilterGroupCase1ValuesItemValuesList>;
 
 export interface TracingCountBodyFilterGroupCase1ValuesItem {
   /** How the filters in this group combine. */
@@ -623,21 +615,18 @@ export const TracingCountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by service names. */
 export type TracingDurationHistogramQueryBodyServiceNamesList = Array<string>;
-export const TracingDurationHistogramQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TracingDurationHistogramQueryBodyServiceNamesList>;
+export const TracingDurationHistogramQueryBodyServiceNamesList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingDurationHistogramQueryBodyServiceNamesList>;
 
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingDurationHistogramQueryBodyStatusCodesList = Array<number>;
-export const TracingDurationHistogramQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TracingDurationHistogramQueryBodyStatusCodesList>;
+export const TracingDurationHistogramQueryBodyStatusCodesList =
+  TracingCountBodyStatusCodesList as any as S.Schema<TracingDurationHistogramQueryBodyStatusCodesList>;
 
 /** Property filters for the query. */
 export type TracingDurationHistogramQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-export const TracingDurationHistogramQueryBodyFilterGroupList = /*@__PURE__*/ S.Array(
-  SpanPropertyFilter,
-) as any as S.Schema<TracingDurationHistogramQueryBodyFilterGroupList>;
+export const TracingDurationHistogramQueryBodyFilterGroupList =
+  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingDurationHistogramQueryBodyFilterGroupList>;
 
 export interface TracingDurationHistogramQueryBody {
   /** Date range for the query. Defaults to last hour. */
@@ -722,21 +711,18 @@ export const TracingDurationHistogramResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Hex trace IDs to count exceptions for, matched against the exception's `$trace_id` property. Case insensitive. At most 200 per request. */
 export type CreateTracingSpansErrorCountRequestTraceIdsList = Array<string>;
-export const CreateTracingSpansErrorCountRequestTraceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTracingSpansErrorCountRequestTraceIdsList>;
+export const CreateTracingSpansErrorCountRequestTraceIdsList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<CreateTracingSpansErrorCountRequestTraceIdsList>;
 
 /** Hex span IDs to count exceptions for, matched against the exception's `$span_id` property. Only counted within the requested traces, so `traceIds` is required alongside. At most 200 per request. */
 export type CreateTracingSpansErrorCountRequestSpanIdsList = Array<string>;
-export const CreateTracingSpansErrorCountRequestSpanIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTracingSpansErrorCountRequestSpanIdsList>;
+export const CreateTracingSpansErrorCountRequestSpanIdsList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<CreateTracingSpansErrorCountRequestSpanIdsList>;
 
 /** Session IDs to count exceptions for. The fallback for exceptions that carry no trace ID. At most 200 per request. */
 export type CreateTracingSpansErrorCountRequestSessionIdsList = Array<string>;
-export const CreateTracingSpansErrorCountRequestSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTracingSpansErrorCountRequestSessionIdsList>;
+export const CreateTracingSpansErrorCountRequestSessionIdsList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<CreateTracingSpansErrorCountRequestSessionIdsList>;
 
 export interface CreateTracingSpansErrorCountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -884,9 +870,8 @@ export const TracingImpactResponseTopSessionsList = /*@__PURE__*/ S.Array(
 
 /** Top person distinct IDs on the matching spans, ordered by span count descending (topK, at most 5). */
 export type TracingImpactResponseTopUsersList = Array<TracingImpactTopValue>;
-export const TracingImpactResponseTopUsersList = /*@__PURE__*/ S.Array(
-  TracingImpactTopValue,
-) as any as S.Schema<TracingImpactResponseTopUsersList>;
+export const TracingImpactResponseTopUsersList =
+  TracingImpactResponseTopSessionsList as any as S.Schema<TracingImpactResponseTopUsersList>;
 
 export interface TracingImpactResponse {
   /** Number of spans matching the filters. */
@@ -975,15 +960,13 @@ export const TracingLatencyHeatmapResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by service names. */
 export type TracingQueryBodyServiceNamesList = Array<string>;
-export const TracingQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TracingQueryBodyServiceNamesList>;
+export const TracingQueryBodyServiceNamesList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingQueryBodyServiceNamesList>;
 
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingQueryBodyStatusCodesList = Array<number>;
-export const TracingQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TracingQueryBodyStatusCodesList>;
+export const TracingQueryBodyStatusCodesList =
+  TracingCountBodyStatusCodesList as any as S.Schema<TracingQueryBodyStatusCodesList>;
 
 /** * `timestamp` - timestamp * `duration` - duration */
 export type TracingQueryBodyOrderByEnum = "timestamp" | "duration";
@@ -995,9 +978,8 @@ export const OrderDirectionEnum = S.String;
 
 /** Property filters for the query. */
 export type TracingQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-export const TracingQueryBodyFilterGroupList = /*@__PURE__*/ S.Array(
-  SpanPropertyFilter,
-) as any as S.Schema<TracingQueryBodyFilterGroupList>;
+export const TracingQueryBodyFilterGroupList =
+  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingQueryBodyFilterGroupList>;
 
 export interface TracingQueryBody {
   /** Date range for the query. Defaults to last hour. */
@@ -1074,10 +1056,8 @@ export const SpanAttributesMap = /*@__PURE__*/ S.Record(
 
 /** Resource attributes of the emitting service. Keys are whatever the instrumentation set. */
 export type SpanResourceAttributesMap = { [key: string]: string | undefined };
-export const SpanResourceAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SpanResourceAttributesMap>;
+export const SpanResourceAttributesMap =
+  SpanAttributesMap as any as S.Schema<SpanResourceAttributesMap>;
 
 /** One span row as the query and trace actions return it. The runner assembles these from HogQL result columns by position, so the key set is fixed even though the values come from a query. `trace_start` and `trace_duration` are the sort keys the trace list orders on, carried in the row rather than recomputed by the caller. */
 export interface Span {
@@ -1162,21 +1142,18 @@ export const TracingQueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by service names. */
 export type TracingSparklineQueryBodyServiceNamesList = Array<string>;
-export const TracingSparklineQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TracingSparklineQueryBodyServiceNamesList>;
+export const TracingSparklineQueryBodyServiceNamesList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingSparklineQueryBodyServiceNamesList>;
 
 /** Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) -- not HTTP status codes. Use [2] to select error spans. */
 export type TracingSparklineQueryBodyStatusCodesList = Array<number>;
-export const TracingSparklineQueryBodyStatusCodesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TracingSparklineQueryBodyStatusCodesList>;
+export const TracingSparklineQueryBodyStatusCodesList =
+  TracingCountBodyStatusCodesList as any as S.Schema<TracingSparklineQueryBodyStatusCodesList>;
 
 /** Property filters for the query. */
 export type TracingSparklineQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-export const TracingSparklineQueryBodyFilterGroupList = /*@__PURE__*/ S.Array(
-  SpanPropertyFilter,
-) as any as S.Schema<TracingSparklineQueryBodyFilterGroupList>;
+export const TracingSparklineQueryBodyFilterGroupList =
+  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingSparklineQueryBodyFilterGroupList>;
 
 export interface TracingSparklineQueryBody {
   /** Date range for the query. Defaults to last hour. */
@@ -1190,17 +1167,8 @@ export interface TracingSparklineQueryBody {
   /** When true, count only root spans (one per trace) so the bars reflect the Traces view. When false (default), count every matching span -- the Spans view's volume. */
   rootSpans?: boolean;
 }
-export const TracingSparklineQueryBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateRange: S.optional(TracingDateRange),
-    serviceNames: S.optional(TracingSparklineQueryBodyServiceNamesList),
-    statusCodes: S.optional(TracingSparklineQueryBodyStatusCodesList),
-    filterGroup: S.optional(TracingSparklineQueryBodyFilterGroupList),
-    rootSpans: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TracingSparklineQueryBody",
-}) as any as S.Schema<TracingSparklineQueryBody>;
+export const TracingSparklineQueryBody =
+  TracingDurationHistogramQueryBody as any as S.Schema<TracingSparklineQueryBody>;
 
 export interface CreateTracingSpansSparklineRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1460,17 +1428,12 @@ export const CreateTracingSpansTraceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Span attributes. Keys are whatever the instrumentation set. */
 export type TraceSpanAttributesMap = { [key: string]: string | undefined };
-export const TraceSpanAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TraceSpanAttributesMap>;
+export const TraceSpanAttributesMap = SpanAttributesMap as any as S.Schema<TraceSpanAttributesMap>;
 
 /** Resource attributes of the emitting service. Keys are whatever the instrumentation set. */
 export type TraceSpanResourceAttributesMap = { [key: string]: string | undefined };
-export const TraceSpanResourceAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TraceSpanResourceAttributesMap>;
+export const TraceSpanResourceAttributesMap =
+  SpanAttributesMap as any as S.Schema<TraceSpanResourceAttributesMap>;
 
 /** A span in a single trace. The trace action adds self time, which the list does not compute. */
 export interface TraceSpan {
@@ -1558,15 +1521,13 @@ export const TracingTraceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by service names. */
 export type TracingTreeQueryBodyServiceNamesList = Array<string>;
-export const TracingTreeQueryBodyServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TracingTreeQueryBodyServiceNamesList>;
+export const TracingTreeQueryBodyServiceNamesList =
+  CreateTracingRetentionRulesReorderRequestOrderedIdsList as any as S.Schema<TracingTreeQueryBodyServiceNamesList>;
 
 /** Additional property filters applied to spans in both windows. */
 export type TracingTreeQueryBodyFilterGroupList = Array<SpanPropertyFilter>;
-export const TracingTreeQueryBodyFilterGroupList = /*@__PURE__*/ S.Array(
-  SpanPropertyFilter,
-) as any as S.Schema<TracingTreeQueryBodyFilterGroupList>;
+export const TracingTreeQueryBodyFilterGroupList =
+  TracingAggregationQueryBodyFilterGroupList as any as S.Schema<TracingTreeQueryBodyFilterGroupList>;
 
 export interface TracingTreeQueryBody {
   /** Span name to scope the matched trace set. Required because the (trace_id, parent_span_id) self-join is unsafe without bounding the matched traces. */
@@ -1668,9 +1629,8 @@ export const TracingTreeResponseResultsList = /*@__PURE__*/ S.Array(
 
 /** Nodes for the comparison window when compareFilter.compare is true. Null when no comparison was requested, and an empty list when one was requested and matched no spans. */
 export type TracingTreeResponseCompareList = Array<SpanTreeNode>;
-export const TracingTreeResponseCompareList = /*@__PURE__*/ S.Array(
-  SpanTreeNode,
-) as any as S.Schema<TracingTreeResponseCompareList>;
+export const TracingTreeResponseCompareList =
+  TracingTreeResponseResultsList as any as S.Schema<TracingTreeResponseCompareList>;
 
 export interface TracingTreeResponse {
   /** Call tree nodes for the requested window. */
@@ -1713,16 +1673,12 @@ export const CreateTracingViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type TracingViewFiltersMap = { [key: string]: unknown | undefined };
-export const TracingViewFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TracingViewFiltersMap>;
+export const TracingViewFiltersMap =
+  CreateTracingViewRequestFiltersMap as any as S.Schema<TracingViewFiltersMap>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateTracingViewRequestFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -2239,9 +2195,8 @@ export const TracingViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TracingViewsDestroyRequest>;
 
 export interface TracingViewsDestroyResponse {}
-export const TracingViewsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TracingViewsDestroyResponse",
-}) as any as S.Schema<TracingViewsDestroyResponse>;
+export const TracingViewsDestroyResponse =
+  GetTracingSpansValueResponse as any as S.Schema<TracingViewsDestroyResponse>;
 
 export interface UpdateTracingRetentionRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2311,10 +2266,8 @@ export const UpdateTracingRetentionRulesPartialRequest = /*@__PURE__*/ S.suspend
 
 /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type UpdateTracingViewRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateTracingViewRequestFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateTracingViewRequestFiltersMap>;
+export const UpdateTracingViewRequestFiltersMap =
+  CreateTracingViewRequestFiltersMap as any as S.Schema<UpdateTracingViewRequestFiltersMap>;
 
 export interface UpdateTracingViewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2345,10 +2298,8 @@ export const UpdateTracingViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Saved tracing filters -- a subset of the frontend TracingFilters shape. May contain dateRange, serviceNames, filterGroup, orderBy, orderDirection, and viewMode. */
 export type UpdateTracingViewsPartialRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateTracingViewsPartialRequestFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateTracingViewsPartialRequestFiltersMap>;
+export const UpdateTracingViewsPartialRequestFiltersMap =
+  CreateTracingViewRequestFiltersMap as any as S.Schema<UpdateTracingViewsPartialRequestFiltersMap>;
 
 export interface UpdateTracingViewsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

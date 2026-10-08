@@ -195,12 +195,7 @@ export interface Publisher {
   /** Optional. Name of the listing publisher. */
   name?: string;
 }
-export const Publisher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primaryContact: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
+export const Publisher = DataProvider as any as S.Schema<Publisher>;
 
 /** A listing is what gets published into a data exchange that a subscriber can subscribe to. It contains a reference to the data source along with descriptive information that will help subscribers find and subscribe the data. */
 export interface Listing {
@@ -839,9 +834,7 @@ export const SubscribeProjectsLocationsDataExchangesListingsRequest = /*@__PURE_
 
 /** Message for response when you subscribe to a listing. */
 export interface SubscribeListingResponse {}
-export const SubscribeListingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscribeListingResponse",
-}) as any as S.Schema<SubscribeListingResponse>;
+export const SubscribeListingResponse = Empty as any as S.Schema<SubscribeListingResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -882,13 +875,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsDataExchangesListingsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

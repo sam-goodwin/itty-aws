@@ -1340,13 +1340,8 @@ export interface BatchRejectPublisherConnectionsRequest {
   /** Required. The names of the publishers with whom connection will be rejected. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
   names?: StringList;
 }
-export const BatchRejectPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchRejectPublisherConnectionsRequest",
-}) as any as S.Schema<BatchRejectPublisherConnectionsRequest>;
+export const BatchRejectPublisherConnectionsRequest =
+  BatchApprovePublisherConnectionsRequest as any as S.Schema<BatchRejectPublisherConnectionsRequest>;
 
 export interface BatchRejectBiddersPublisherConnectionsRequest {
   /** Required. The bidder for whom publisher connections will be rejected. Format: `bidders/{bidder}` where `{bidder}` is the account ID of the bidder. */
@@ -1374,13 +1369,8 @@ export interface BatchRejectPublisherConnectionsResponse {
   /** The publisher connections that have been rejected. */
   publisherConnections?: PublisherConnectionList;
 }
-export const BatchRejectPublisherConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publisherConnections: S.optional(PublisherConnectionList),
-  }),
-).annotate({
-  identifier: "BatchRejectPublisherConnectionsResponse",
-}) as any as S.Schema<BatchRejectPublisherConnectionsResponse>;
+export const BatchRejectPublisherConnectionsResponse =
+  BatchApprovePublisherConnectionsResponse as any as S.Schema<BatchRejectPublisherConnectionsResponse>;
 
 /** A request to close a specified user list. */
 export type CloseUserListRequest = ActivatePretargetingConfigRequest;

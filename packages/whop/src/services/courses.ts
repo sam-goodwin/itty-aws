@@ -375,9 +375,8 @@ export const ListCourseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The distinct drip schedules, in days after the course start, of lessons visible to the current user. Combine with startedAt to work out which have unlocked. Empty when the user has not started the course or no lesson is on a schedule. */
 export type CourseListItemLessonUnlockDaysList = Array<number>;
-export const CourseListItemLessonUnlockDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CourseListItemLessonUnlockDaysList>;
+export const CourseListItemLessonUnlockDaysList =
+  CourseLessonUnlockDaysList as any as S.Schema<CourseListItemLessonUnlockDaysList>;
 
 /** The lesson the current user should continue from: their first incomplete lesson, or the first lesson when they have finished the course, have not started it, or can edit it. Null if the course has no lessons. */
 export type CourseListItemResumeLesson = CourseResumeLesson;

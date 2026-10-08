@@ -694,9 +694,8 @@ export const ReportProjectsEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for reporting an individual error event. Data may be added to this message in the future. */
 export interface ReportErrorEventResponse {}
-export const ReportErrorEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReportErrorEventResponse",
-}) as any as S.Schema<ReportErrorEventResponse>;
+export const ReportErrorEventResponse =
+  DeleteEventsResponse as any as S.Schema<ReportErrorEventResponse>;
 
 export interface UpdateProjectsGroupsRequest {
   /** The group resource name. Written as `projects/{projectID}/groups/{group_id}` or `projects/{projectID}/locations/{location}/groups/{group_id}` Examples: `projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/us-central1/groups/my-group` In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. */

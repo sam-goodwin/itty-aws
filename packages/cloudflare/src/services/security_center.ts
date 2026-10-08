@@ -93,11 +93,8 @@ export const DismissInsightForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DismissInsightForZoneRequest>;
 
 export interface DismissInsightForZoneResponse {}
-export const DismissInsightForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DismissInsightForZoneResponse",
-}) as any as S.Schema<DismissInsightForZoneResponse>;
+export const DismissInsightForZoneResponse =
+  DismissInsightForAccountResponse as any as S.Schema<DismissInsightForZoneResponse>;
 
 export type InsightsClassGetRequestIssueClassList = Array<string>;
 export const InsightsClassGetRequestIssueClassList = /*@__PURE__*/ S.Array(
@@ -105,39 +102,32 @@ export const InsightsClassGetRequestIssueClassList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsClassGetRequestIssueClassList>;
 
 export type InsightsClassGetRequestIssueClassNeqList = Array<string>;
-export const InsightsClassGetRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestIssueClassNeqList>;
+export const InsightsClassGetRequestIssueClassNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestIssueClassNeqList>;
 
 export type InsightsClassGetRequestIssueTypeList = Array<string>;
-export const InsightsClassGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestIssueTypeList>;
+export const InsightsClassGetRequestIssueTypeList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestIssueTypeList>;
 
 export type InsightsClassGetRequestIssueTypeNeqList = Array<string>;
-export const InsightsClassGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestIssueTypeNeqList>;
+export const InsightsClassGetRequestIssueTypeNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestIssueTypeNeqList>;
 
 export type InsightsClassGetRequestProductList = Array<string>;
-export const InsightsClassGetRequestProductList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestProductList>;
+export const InsightsClassGetRequestProductList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestProductList>;
 
 export type InsightsClassGetRequestProductNeqList = Array<string>;
-export const InsightsClassGetRequestProductNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestProductNeqList>;
+export const InsightsClassGetRequestProductNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestProductNeqList>;
 
 export type InsightsClassGetRequestSeverityList = Array<string>;
-export const InsightsClassGetRequestSeverityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestSeverityList>;
+export const InsightsClassGetRequestSeverityList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestSeverityList>;
 
 export type InsightsClassGetRequestSeverityNeqList = Array<string>;
-export const InsightsClassGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestSeverityNeqList>;
+export const InsightsClassGetRequestSeverityNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestSeverityNeqList>;
 
 export type InsightsClassGetRequestSource = "cloudflare" | "riskrecon";
 export const InsightsClassGetRequestSource = S.String;
@@ -150,14 +140,12 @@ export const InsightsClassGetRequestSourceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsClassGetRequestSourceList>;
 
 export type InsightsClassGetRequestSubjectList = Array<string>;
-export const InsightsClassGetRequestSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestSubjectList>;
+export const InsightsClassGetRequestSubjectList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestSubjectList>;
 
 export type InsightsClassGetRequestSubjectNeqList = Array<string>;
-export const InsightsClassGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsClassGetRequestSubjectNeqList>;
+export const InsightsClassGetRequestSubjectNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsClassGetRequestSubjectNeqList>;
 
 export interface GetInsightClassForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -308,44 +296,36 @@ export const GetInsightContextResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightContextResponse>;
 
 export type InsightsSeverityGetRequestIssueClassList = Array<string>;
-export const InsightsSeverityGetRequestIssueClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestIssueClassList>;
+export const InsightsSeverityGetRequestIssueClassList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestIssueClassList>;
 
 export type InsightsSeverityGetRequestIssueClassNeqList = Array<string>;
-export const InsightsSeverityGetRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestIssueClassNeqList>;
+export const InsightsSeverityGetRequestIssueClassNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestIssueClassNeqList>;
 
 export type InsightsSeverityGetRequestIssueTypeList = Array<string>;
-export const InsightsSeverityGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestIssueTypeList>;
+export const InsightsSeverityGetRequestIssueTypeList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestIssueTypeList>;
 
 export type InsightsSeverityGetRequestIssueTypeNeqList = Array<string>;
-export const InsightsSeverityGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestIssueTypeNeqList>;
+export const InsightsSeverityGetRequestIssueTypeNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestIssueTypeNeqList>;
 
 export type InsightsSeverityGetRequestProductList = Array<string>;
-export const InsightsSeverityGetRequestProductList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestProductList>;
+export const InsightsSeverityGetRequestProductList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestProductList>;
 
 export type InsightsSeverityGetRequestProductNeqList = Array<string>;
-export const InsightsSeverityGetRequestProductNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestProductNeqList>;
+export const InsightsSeverityGetRequestProductNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestProductNeqList>;
 
 export type InsightsSeverityGetRequestSeverityList = Array<string>;
-export const InsightsSeverityGetRequestSeverityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestSeverityList>;
+export const InsightsSeverityGetRequestSeverityList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestSeverityList>;
 
 export type InsightsSeverityGetRequestSeverityNeqList = Array<string>;
-export const InsightsSeverityGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestSeverityNeqList>;
+export const InsightsSeverityGetRequestSeverityNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestSeverityNeqList>;
 
 export type InsightsSeverityGetRequestSource = "cloudflare" | "riskrecon";
 export const InsightsSeverityGetRequestSource = S.String;
@@ -358,14 +338,12 @@ export const InsightsSeverityGetRequestSourceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsSeverityGetRequestSourceList>;
 
 export type InsightsSeverityGetRequestSubjectList = Array<string>;
-export const InsightsSeverityGetRequestSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestSubjectList>;
+export const InsightsSeverityGetRequestSubjectList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestSubjectList>;
 
 export type InsightsSeverityGetRequestSubjectNeqList = Array<string>;
-export const InsightsSeverityGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsSeverityGetRequestSubjectNeqList>;
+export const InsightsSeverityGetRequestSubjectNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsSeverityGetRequestSubjectNeqList>;
 
 export interface GetInsightSeverityForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -421,9 +399,8 @@ export type InsightsSeverityGetResultItem = InsightsClassGetResultItem;
 export const InsightsSeverityGetResultItem = InsightsClassGetResultItem;
 
 export type InsightsSeverityGetResultList = Array<InsightsClassGetResultItem>;
-export const InsightsSeverityGetResultList = /*@__PURE__*/ S.Array(
-  InsightsClassGetResultItem,
-) as any as S.Schema<InsightsSeverityGetResultList>;
+export const InsightsSeverityGetResultList =
+  InsightsClassGetResultList as any as S.Schema<InsightsSeverityGetResultList>;
 
 export type GetInsightSeverityResponse = InsightsSeverityGetResultList;
 export const GetInsightSeverityResponse = /*@__PURE__*/ S.suspend(() =>
@@ -483,44 +460,36 @@ export const GetInsightSeverityForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightSeverityForZoneRequest>;
 
 export type InsightsTypeGetRequestIssueClassList = Array<string>;
-export const InsightsTypeGetRequestIssueClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestIssueClassList>;
+export const InsightsTypeGetRequestIssueClassList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestIssueClassList>;
 
 export type InsightsTypeGetRequestIssueClassNeqList = Array<string>;
-export const InsightsTypeGetRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestIssueClassNeqList>;
+export const InsightsTypeGetRequestIssueClassNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestIssueClassNeqList>;
 
 export type InsightsTypeGetRequestIssueTypeList = Array<string>;
-export const InsightsTypeGetRequestIssueTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestIssueTypeList>;
+export const InsightsTypeGetRequestIssueTypeList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestIssueTypeList>;
 
 export type InsightsTypeGetRequestIssueTypeNeqList = Array<string>;
-export const InsightsTypeGetRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestIssueTypeNeqList>;
+export const InsightsTypeGetRequestIssueTypeNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestIssueTypeNeqList>;
 
 export type InsightsTypeGetRequestProductList = Array<string>;
-export const InsightsTypeGetRequestProductList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestProductList>;
+export const InsightsTypeGetRequestProductList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestProductList>;
 
 export type InsightsTypeGetRequestProductNeqList = Array<string>;
-export const InsightsTypeGetRequestProductNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestProductNeqList>;
+export const InsightsTypeGetRequestProductNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestProductNeqList>;
 
 export type InsightsTypeGetRequestSeverityList = Array<string>;
-export const InsightsTypeGetRequestSeverityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestSeverityList>;
+export const InsightsTypeGetRequestSeverityList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestSeverityList>;
 
 export type InsightsTypeGetRequestSeverityNeqList = Array<string>;
-export const InsightsTypeGetRequestSeverityNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestSeverityNeqList>;
+export const InsightsTypeGetRequestSeverityNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestSeverityNeqList>;
 
 export type InsightsTypeGetRequestSource = "cloudflare" | "riskrecon";
 export const InsightsTypeGetRequestSource = S.String;
@@ -531,14 +500,12 @@ export const InsightsTypeGetRequestSourceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsTypeGetRequestSourceList>;
 
 export type InsightsTypeGetRequestSubjectList = Array<string>;
-export const InsightsTypeGetRequestSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestSubjectList>;
+export const InsightsTypeGetRequestSubjectList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestSubjectList>;
 
 export type InsightsTypeGetRequestSubjectNeqList = Array<string>;
-export const InsightsTypeGetRequestSubjectNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsTypeGetRequestSubjectNeqList>;
+export const InsightsTypeGetRequestSubjectNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsTypeGetRequestSubjectNeqList>;
 
 export interface GetInsightTypeForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -592,14 +559,12 @@ export type InsightsTypeGetResultItem = InsightsClassGetResultItem;
 export const InsightsTypeGetResultItem = InsightsClassGetResultItem;
 
 export type InsightsTypeGetResultList = Array<InsightsClassGetResultItem>;
-export const InsightsTypeGetResultList = /*@__PURE__*/ S.Array(
-  InsightsClassGetResultItem,
-) as any as S.Schema<InsightsTypeGetResultList>;
+export const InsightsTypeGetResultList =
+  InsightsClassGetResultList as any as S.Schema<InsightsTypeGetResultList>;
 
 export type GetInsightTypeResponse = InsightsTypeGetResultList;
-export const GetInsightTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  InsightsTypeGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetInsightTypeResponse" }) as any as S.Schema<GetInsightTypeResponse>;
+export const GetInsightTypeResponse =
+  GetInsightClassResponse as any as S.Schema<GetInsightTypeResponse>;
 
 export interface GetInsightTypeForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -957,44 +922,36 @@ export const ListInsightAuditLogsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInsightAuditLogsForZoneRequest>;
 
 export type InsightsListRequestIssueClassList = Array<string>;
-export const InsightsListRequestIssueClassList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestIssueClassList>;
+export const InsightsListRequestIssueClassList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestIssueClassList>;
 
 export type InsightsListRequestIssueClassNeqList = Array<string>;
-export const InsightsListRequestIssueClassNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestIssueClassNeqList>;
+export const InsightsListRequestIssueClassNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestIssueClassNeqList>;
 
 export type InsightsListRequestIssueTypeList = Array<string>;
-export const InsightsListRequestIssueTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestIssueTypeList>;
+export const InsightsListRequestIssueTypeList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestIssueTypeList>;
 
 export type InsightsListRequestIssueTypeNeqList = Array<string>;
-export const InsightsListRequestIssueTypeNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestIssueTypeNeqList>;
+export const InsightsListRequestIssueTypeNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestIssueTypeNeqList>;
 
 export type InsightsListRequestProductList = Array<string>;
-export const InsightsListRequestProductList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestProductList>;
+export const InsightsListRequestProductList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestProductList>;
 
 export type InsightsListRequestProductNeqList = Array<string>;
-export const InsightsListRequestProductNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestProductNeqList>;
+export const InsightsListRequestProductNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestProductNeqList>;
 
 export type InsightsListRequestSeverityList = Array<string>;
-export const InsightsListRequestSeverityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestSeverityList>;
+export const InsightsListRequestSeverityList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestSeverityList>;
 
 export type InsightsListRequestSeverityNeqList = Array<string>;
-export const InsightsListRequestSeverityNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestSeverityNeqList>;
+export const InsightsListRequestSeverityNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestSeverityNeqList>;
 
 export type InsightsListRequestSource = "cloudflare" | "riskrecon";
 export const InsightsListRequestSource = S.String;
@@ -1005,14 +962,12 @@ export const InsightsListRequestSourceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<InsightsListRequestSourceList>;
 
 export type InsightsListRequestSubjectList = Array<string>;
-export const InsightsListRequestSubjectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestSubjectList>;
+export const InsightsListRequestSubjectList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestSubjectList>;
 
 export type InsightsListRequestSubjectNeqList = Array<string>;
-export const InsightsListRequestSubjectNeqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsListRequestSubjectNeqList>;
+export const InsightsListRequestSubjectNeqList =
+  InsightsClassGetRequestIssueClassList as any as S.Schema<InsightsListRequestSubjectNeqList>;
 
 export interface ListInsightsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -1248,11 +1203,8 @@ export const PatchInsightClassificationForAccountRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PatchInsightClassificationForAccountRequest>;
 
 export interface PatchInsightClassificationForAccountResponse {}
-export const PatchInsightClassificationForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchInsightClassificationForAccountResponse",
-}) as any as S.Schema<PatchInsightClassificationForAccountResponse>;
+export const PatchInsightClassificationForAccountResponse =
+  DismissInsightForAccountResponse as any as S.Schema<PatchInsightClassificationForAccountResponse>;
 
 export interface PatchInsightClassificationForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -1283,11 +1235,8 @@ export const PatchInsightClassificationForZoneRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchInsightClassificationForZoneRequest>;
 
 export interface PatchInsightClassificationForZoneResponse {}
-export const PatchInsightClassificationForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PatchInsightClassificationForZoneResponse",
-}) as any as S.Schema<PatchInsightClassificationForZoneResponse>;
+export const PatchInsightClassificationForZoneResponse =
+  DismissInsightForAccountResponse as any as S.Schema<PatchInsightClassificationForZoneResponse>;
 
 export type DismissInsightForAccountError = CloudflareOpError;
 /** Archives a Security Center insight for an account or zone, removing it from the active insights list while preserving historical data. */

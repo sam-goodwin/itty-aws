@@ -1811,14 +1811,8 @@ export interface ListLinkedCustomChannelsResponse {
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListLinkedCustomChannelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customChannels: S.optional(CustomChannelList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLinkedCustomChannelsResponse",
-}) as any as S.Schema<ListLinkedCustomChannelsResponse>;
+export const ListLinkedCustomChannelsResponse =
+  ListCustomChannelsResponse as any as S.Schema<ListLinkedCustomChannelsResponse>;
 
 export interface PatchAccountsAdclientsAdunitsRequest {
   /** The list of fields to update. If empty, a full update is performed. */

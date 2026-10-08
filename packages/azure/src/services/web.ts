@@ -92,10 +92,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AiGatewaysCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AiGatewaysCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AiGatewaysCreateOrUpdateResponseTagsMap>;
+export const AiGatewaysCreateOrUpdateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AiGatewaysCreateOrUpdateResponseTagsMap>;
 
 /** The properties of an AI gateway. */
 export interface AiGatewayProperties {
@@ -211,11 +209,8 @@ export const ApplyWebAppSlotConfigurationSlotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ApplyWebAppSlotConfigurationSlotRequest>;
 
 export interface ApplyWebAppSlotConfigurationSlotResponse {}
-export const ApplyWebAppSlotConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ApplyWebAppSlotConfigurationSlotResponse",
-}) as any as S.Schema<ApplyWebAppSlotConfigurationSlotResponse>;
+export const ApplyWebAppSlotConfigurationSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ApplyWebAppSlotConfigurationSlotResponse>;
 
 /** A wrapper for an ARM resource id */
 export type ArmIdWrapperInput = AiGatewayPropertiesInput;
@@ -318,9 +313,7 @@ export const ArmIdWrapper = /*@__PURE__*/ S.suspend(() =>
 /** Private IPAddresses mapped to the remote private endpoint */
 export type RemotePrivateEndpointConnectionARMResourcePropertiesIpAddressesList = Array<string>;
 export const RemotePrivateEndpointConnectionARMResourcePropertiesIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RemotePrivateEndpointConnectionARMResourcePropertiesIpAddressesList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<RemotePrivateEndpointConnectionARMResourcePropertiesIpAddressesList>;
 
 /** RemotePrivateEndpointConnectionARMResource resource specific properties */
 export interface RemotePrivateEndpointConnectionARMResourceProperties {
@@ -404,10 +397,7 @@ export const AppServiceEnvironmentsChangeVnetRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type SiteTagsMap = { [key: string]: string | undefined };
-export const SiteTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SiteTagsMap>;
+export const SiteTagsMap = AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<SiteTagsMap>;
 
 /** Hostnames associated with the app. */
 export type SitePropertiesHostNamesList = Array<string>;
@@ -421,9 +411,8 @@ export const UsageState = S.String;
 
 /** Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise, the app is not served on those hostnames. */
 export type SitePropertiesEnabledHostNamesList = Array<string>;
-export const SitePropertiesEnabledHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitePropertiesEnabledHostNamesList>;
+export const SitePropertiesEnabledHostNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<SitePropertiesEnabledHostNamesList>;
 
 /** Management information availability state for the app. */
 export type SiteAvailabilityState = "Normal" | "Limited" | "DisasterRecoveryMode";
@@ -471,9 +460,8 @@ export const SitePropertiesHostNameSslStatesList = /*@__PURE__*/ S.Array(
 
 /** List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set. */
 export type SiteDnsConfigDnsServersList = Array<string>;
-export const SiteDnsConfigDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteDnsConfigDnsServersList>;
+export const SiteDnsConfigDnsServersList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteDnsConfigDnsServersList>;
 
 export interface SiteDnsConfig {
   /** List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set. */
@@ -528,9 +516,8 @@ export const OutboundVnetRouting = /*@__PURE__*/ S.suspend(() =>
 
 /** Default documents. */
 export type SiteConfigDefaultDocumentsList = Array<string>;
-export const SiteConfigDefaultDocumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteConfigDefaultDocumentsList>;
+export const SiteConfigDefaultDocumentsList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteConfigDefaultDocumentsList>;
 
 /** Name value pair. */
 export interface NameValuePair {
@@ -554,9 +541,8 @@ export const SiteConfigAppSettingsList = /*@__PURE__*/ S.Array(
 
 /** Application metadata. This property cannot be retrieved, since it may contain secrets. */
 export type SiteConfigMetadataList = Array<NameValuePair>;
-export const SiteConfigMetadataList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<SiteConfigMetadataList>;
+export const SiteConfigMetadataList =
+  SiteConfigAppSettingsList as any as S.Schema<SiteConfigMetadataList>;
 
 /** Type of database. */
 export type ConnectionStringType =
@@ -960,9 +946,8 @@ export const AutoHealRules = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. */
 export type CorsSettingsAllowedOriginsList = Array<string>;
-export const CorsSettingsAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CorsSettingsAllowedOriginsList>;
+export const CorsSettingsAllowedOriginsList =
+  SitePropertiesHostNamesList as any as S.Schema<CorsSettingsAllowedOriginsList>;
 
 /** Cross-Origin Resource Sharing (CORS) settings for the app. */
 export interface CorsSettings {
@@ -1037,20 +1022,15 @@ export interface ApiManagementConfig {
   /** APIM-Api Identifier. */
   id?: string;
 }
-export const ApiManagementConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ApiManagementConfig" }) as any as S.Schema<ApiManagementConfig>;
+export const ApiManagementConfig = ArmIdWrapper as any as S.Schema<ApiManagementConfig>;
 
 /** Defines what this IP filter will be used for. This is to support IP filtering on proxies. */
 export type IpFilterTag = "Default" | "XffProxy" | "ServiceTag";
 export const IpFilterTag = S.String;
 
 export type IpSecurityRestrictionHeadersValueList = Array<string>;
-export const IpSecurityRestrictionHeadersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpSecurityRestrictionHeadersValueList>;
+export const IpSecurityRestrictionHeadersValueList =
+  SitePropertiesHostNamesList as any as S.Schema<IpSecurityRestrictionHeadersValueList>;
 
 /** IP restriction rule headers. X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples). The matching logic is .. - If the property is null or empty (default), all hosts(or lack of) are allowed. - A value is compared using ordinal-ignore-case (excluding port number). - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com but not the root domain contoso.com or multi-level foo.bar.contoso.com - Unicode host names are allowed but are converted to Punycode for matching. X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples). The matching logic is .. - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed. - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property. X-Azure-FDID and X-FD-HealthProbe. The matching logic is exact match. */
 export type IpSecurityRestrictionHeadersMap = {
@@ -1114,9 +1094,8 @@ export const DefaultAction = S.String;
 
 /** IP security restrictions for scm. */
 export type SiteConfigScmIpSecurityRestrictionsList = Array<IpSecurityRestriction>;
-export const SiteConfigScmIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
-  IpSecurityRestriction,
-) as any as S.Schema<SiteConfigScmIpSecurityRestrictionsList>;
+export const SiteConfigScmIpSecurityRestrictionsList =
+  SiteConfigIpSecurityRestrictionsList as any as S.Schema<SiteConfigScmIpSecurityRestrictionsList>;
 
 /** MinTlsVersion: configures the minimum version of TLS required for SSL requests */
 export type SupportedTlsVersions = "1.0" | "1.1" | "1.2" | "1.3";
@@ -1651,9 +1630,8 @@ export const DaprConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of tools exposed by this MCP server. */
 export type McpServerConfigToolListList = Array<string>;
-export const McpServerConfigToolListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<McpServerConfigToolListList>;
+export const McpServerConfigToolListList =
+  SitePropertiesHostNamesList as any as S.Schema<McpServerConfigToolListList>;
 
 /** Configuration for an individual MCP server. */
 export interface McpServerConfig {
@@ -1697,9 +1675,8 @@ export const McpSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** OAuth scopes for Protected Resource Metadata (PRM). Required for custom site authentication. */
 export type SiteAuthInfoScopesList = Array<string>;
-export const SiteAuthInfoScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthInfoScopesList>;
+export const SiteAuthInfoScopesList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthInfoScopesList>;
 
 /** External auth configuration for the MCP endpoint (used when EasyAuth is not enabled). At minimum, `scopes` and either `wellKnownOpenIdConfiguration` or `issuer` must be provided. */
 export interface SiteAuthInfo {
@@ -1757,9 +1734,8 @@ export const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure Traffic Manager hostnames associated with the app. Read-only. */
 export type SitePropertiesTrafficManagerHostNamesList = Array<string>;
-export const SitePropertiesTrafficManagerHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitePropertiesTrafficManagerHostNamesList>;
+export const SitePropertiesTrafficManagerHostNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<SitePropertiesTrafficManagerHostNamesList>;
 
 /** Specification for an App Service Environment to use for this resource. */
 export interface HostingEnvironmentProfile {
@@ -1790,10 +1766,8 @@ export const IPMode = S.String;
 
 /** Application setting overrides for cloned app. If specified, these settings override the settings cloned from source app. Otherwise, application settings from source app are retained. */
 export type CloningInfoAppSettingsOverridesMap = { [key: string]: string | undefined };
-export const CloningInfoAppSettingsOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CloningInfoAppSettingsOverridesMap>;
+export const CloningInfoAppSettingsOverridesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<CloningInfoAppSettingsOverridesMap>;
 
 /** Information needed for cloning operation. */
 export interface CloningInfo {
@@ -2184,10 +2158,8 @@ export const WebAppCollection = /*@__PURE__*/ S.suspend(() =>
 export type AppServiceEnvironmentsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AppServiceEnvironmentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateRequestTagsMap>;
+export const AppServiceEnvironmentsCreateOrUpdateRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateRequestTagsMap>;
 
 /** Specification for using a Virtual Network. */
 export interface VirtualNetworkProfileInput {
@@ -2211,15 +2183,13 @@ export const LoadBalancingMode = S.String;
 
 /** Custom settings for changing the behavior of the App Service Environment. */
 export type AppServiceEnvironmentInputClusterSettingsList = Array<NameValuePair>;
-export const AppServiceEnvironmentInputClusterSettingsList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<AppServiceEnvironmentInputClusterSettingsList>;
+export const AppServiceEnvironmentInputClusterSettingsList =
+  SiteConfigAppSettingsList as any as S.Schema<AppServiceEnvironmentInputClusterSettingsList>;
 
 /** User added ip ranges to whitelist on ASE db */
 export type AppServiceEnvironmentInputUserWhitelistedIpRangesList = Array<string>;
-export const AppServiceEnvironmentInputUserWhitelistedIpRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppServiceEnvironmentInputUserWhitelistedIpRangesList>;
+export const AppServiceEnvironmentInputUserWhitelistedIpRangesList =
+  SitePropertiesHostNamesList as any as S.Schema<AppServiceEnvironmentInputUserWhitelistedIpRangesList>;
 
 /** Upgrade Preference */
 export type AppServiceEnvironmentInputUpgradePreference = "None" | "Early" | "Late" | "Manual";
@@ -2388,10 +2358,8 @@ export const AppServiceEnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 export type AppServiceEnvironmentsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AppServiceEnvironmentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateResponseTagsMap>;
+export const AppServiceEnvironmentsCreateOrUpdateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the App Service Plan. */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "InProgress" | "Deleting";
@@ -2423,15 +2391,13 @@ export const VirtualNetworkProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom settings for changing the behavior of the App Service Environment. */
 export type AppServiceEnvironmentClusterSettingsList = Array<NameValuePair>;
-export const AppServiceEnvironmentClusterSettingsList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<AppServiceEnvironmentClusterSettingsList>;
+export const AppServiceEnvironmentClusterSettingsList =
+  SiteConfigAppSettingsList as any as S.Schema<AppServiceEnvironmentClusterSettingsList>;
 
 /** User added ip ranges to whitelist on ASE db */
 export type AppServiceEnvironmentUserWhitelistedIpRangesList = Array<string>;
-export const AppServiceEnvironmentUserWhitelistedIpRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppServiceEnvironmentUserWhitelistedIpRangesList>;
+export const AppServiceEnvironmentUserWhitelistedIpRangesList =
+  SitePropertiesHostNamesList as any as S.Schema<AppServiceEnvironmentUserWhitelistedIpRangesList>;
 
 /** Upgrade Preference */
 export type AppServiceEnvironmentUpgradePreference = "None" | "Early" | "Late" | "Manual";
@@ -2493,27 +2459,19 @@ export const CustomDnsSuffixConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 export type AseV3NetworkingConfigurationPropertiesWindowsOutboundIpAddressesList = Array<string>;
 export const AseV3NetworkingConfigurationPropertiesWindowsOutboundIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AseV3NetworkingConfigurationPropertiesWindowsOutboundIpAddressesList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<AseV3NetworkingConfigurationPropertiesWindowsOutboundIpAddressesList>;
 
 export type AseV3NetworkingConfigurationPropertiesLinuxOutboundIpAddressesList = Array<string>;
 export const AseV3NetworkingConfigurationPropertiesLinuxOutboundIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AseV3NetworkingConfigurationPropertiesLinuxOutboundIpAddressesList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<AseV3NetworkingConfigurationPropertiesLinuxOutboundIpAddressesList>;
 
 export type AseV3NetworkingConfigurationPropertiesExternalInboundIpAddressesList = Array<string>;
 export const AseV3NetworkingConfigurationPropertiesExternalInboundIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AseV3NetworkingConfigurationPropertiesExternalInboundIpAddressesList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<AseV3NetworkingConfigurationPropertiesExternalInboundIpAddressesList>;
 
 export type AseV3NetworkingConfigurationPropertiesInternalInboundIpAddressesList = Array<string>;
 export const AseV3NetworkingConfigurationPropertiesInternalInboundIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AseV3NetworkingConfigurationPropertiesInternalInboundIpAddressesList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<AseV3NetworkingConfigurationPropertiesInternalInboundIpAddressesList>;
 
 /** AseV3NetworkingConfiguration resource specific properties */
 export interface AseV3NetworkingConfigurationProperties {
@@ -2735,9 +2693,8 @@ export const SkuCapacity = /*@__PURE__*/ S.suspend(() =>
 
 /** Locations of the SKU. */
 export type SkuDescriptionLocationsList = Array<string>;
-export const SkuDescriptionLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuDescriptionLocationsList>;
+export const SkuDescriptionLocationsList =
+  SitePropertiesHostNamesList as any as S.Schema<SkuDescriptionLocationsList>;
 
 /** Describes the capabilities/features allowed for a specific SKU. */
 export interface Capability {
@@ -2831,9 +2788,8 @@ export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest = /*@__PUR
 
 /** Names of all instances in the worker pool (read only). */
 export type WorkerPoolInstanceNamesList = Array<string>;
-export const WorkerPoolInstanceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkerPoolInstanceNamesList>;
+export const WorkerPoolInstanceNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<WorkerPoolInstanceNamesList>;
 
 /** Worker pool of an App Service Environment. */
 export interface WorkerPool {
@@ -3059,18 +3015,13 @@ export const AppServiceEnvironmentsUpgradeRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AppServiceEnvironmentsUpgradeRequest>;
 
 export interface AppServiceEnvironmentsUpgradeResponse {}
-export const AppServiceEnvironmentsUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AppServiceEnvironmentsUpgradeResponse",
-}) as any as S.Schema<AppServiceEnvironmentsUpgradeResponse>;
+export const AppServiceEnvironmentsUpgradeResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<AppServiceEnvironmentsUpgradeResponse>;
 
 /** Resource tags. */
 export type AppServicePlansCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AppServicePlansCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServicePlansCreateOrUpdateRequestTagsMap>;
+export const AppServicePlansCreateOrUpdateRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AppServicePlansCreateOrUpdateRequestTagsMap>;
 
 /** Specification for an App Service Environment to use for this resource. */
 export interface HostingEnvironmentProfileInput {
@@ -3090,13 +3041,8 @@ export interface KubeEnvironmentProfileInput {
   /** Resource ID of the Kubernetes Environment. */
   id?: string;
 }
-export const KubeEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KubeEnvironmentProfileInput",
-}) as any as S.Schema<KubeEnvironmentProfileInput>;
+export const KubeEnvironmentProfileInput =
+  HostingEnvironmentProfileInput as any as S.Schema<KubeEnvironmentProfileInput>;
 
 export interface DefaultIdentity {
   identityType?: ManagedServiceIdentityType | (string & {});
@@ -3409,10 +3355,8 @@ export const AppServicePlansCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type AppServicePlansCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AppServicePlansCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServicePlansCreateOrUpdateResponseTagsMap>;
+export const AppServicePlansCreateOrUpdateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AppServicePlansCreateOrUpdateResponseTagsMap>;
 
 /** App Service plan status. */
 export type StatusOptions = "Ready" | "Pending" | "Creating";
@@ -3437,21 +3381,18 @@ export const KubeEnvironmentProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Registry adapters associated with this App Service plan. */
 export type AppServicePlanPropertiesRegistryAdaptersList = Array<RegistryAdapter>;
-export const AppServicePlanPropertiesRegistryAdaptersList = /*@__PURE__*/ S.Array(
-  RegistryAdapter,
-) as any as S.Schema<AppServicePlanPropertiesRegistryAdaptersList>;
+export const AppServicePlanPropertiesRegistryAdaptersList =
+  AppServicePlanPropertiesInputRegistryAdaptersList as any as S.Schema<AppServicePlanPropertiesRegistryAdaptersList>;
 
 /** Install scripts associated with this App Service plan. */
 export type AppServicePlanPropertiesInstallScriptsList = Array<InstallScript>;
-export const AppServicePlanPropertiesInstallScriptsList = /*@__PURE__*/ S.Array(
-  InstallScript,
-) as any as S.Schema<AppServicePlanPropertiesInstallScriptsList>;
+export const AppServicePlanPropertiesInstallScriptsList =
+  AppServicePlanPropertiesInputInstallScriptsList as any as S.Schema<AppServicePlanPropertiesInstallScriptsList>;
 
 /** Storage mounts associated with this App Service plan. */
 export type AppServicePlanPropertiesStorageMountsList = Array<StorageMount>;
-export const AppServicePlanPropertiesStorageMountsList = /*@__PURE__*/ S.Array(
-  StorageMount,
-) as any as S.Schema<AppServicePlanPropertiesStorageMountsList>;
+export const AppServicePlanPropertiesStorageMountsList =
+  AppServicePlanPropertiesInputStorageMountsList as any as S.Schema<AppServicePlanPropertiesStorageMountsList>;
 
 /** AppServicePlan resource specific properties */
 export interface AppServicePlanProperties {
@@ -3715,9 +3656,8 @@ export const OperationStatus = S.String;
 
 /** Parameters for the template. */
 export type ErrorEntityParametersList = Array<string>;
-export const ErrorEntityParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ErrorEntityParametersList>;
+export const ErrorEntityParametersList =
+  SitePropertiesHostNamesList as any as S.Schema<ErrorEntityParametersList>;
 
 /** Inner errors. */
 export type ErrorEntityInnerErrorsList = Array<ErrorEntity>;
@@ -3727,9 +3667,8 @@ export const ErrorEntityInnerErrorsList = /*@__PURE__*/ S.Array(
 
 /** Error Details. */
 export type ErrorEntityDetailsList = Array<ErrorEntity>;
-export const ErrorEntityDetailsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ErrorEntity),
-) as any as S.Schema<ErrorEntityDetailsList>;
+export const ErrorEntityDetailsList =
+  ErrorEntityInnerErrorsList as any as S.Schema<ErrorEntityDetailsList>;
 
 /** Body of the error response returned from the API. */
 export interface ErrorEntity {
@@ -3831,22 +3770,18 @@ export const CancelWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelWorkflowRunRequest" }) as any as S.Schema<CancelWorkflowRunRequest>;
 
 export interface CancelWorkflowRunResponse {}
-export const CancelWorkflowRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelWorkflowRunResponse",
-}) as any as S.Schema<CancelWorkflowRunResponse>;
+export const CancelWorkflowRunResponse =
+  AiGatewayPropertiesInput as any as S.Schema<CancelWorkflowRunResponse>;
 
 /** Resource tags. */
 export type CertificatesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CertificatesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CertificatesCreateOrUpdateRequestTagsMap>;
+export const CertificatesCreateOrUpdateRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<CertificatesCreateOrUpdateRequestTagsMap>;
 
 /** Host names the certificate applies to. */
 export type CertificatePropertiesInputHostNamesList = Array<string>;
-export const CertificatePropertiesInputHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePropertiesInputHostNamesList>;
+export const CertificatePropertiesInputHostNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<CertificatePropertiesInputHostNamesList>;
 
 /** Certificate resource specific properties */
 export interface CertificatePropertiesInput {
@@ -3921,16 +3856,13 @@ export const CertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CertificatesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CertificatesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CertificatesCreateOrUpdateResponseTagsMap>;
+export const CertificatesCreateOrUpdateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<CertificatesCreateOrUpdateResponseTagsMap>;
 
 /** Host names the certificate applies to. */
 export type CertificatePropertiesHostNamesList = Array<string>;
-export const CertificatePropertiesHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePropertiesHostNamesList>;
+export const CertificatePropertiesHostNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<CertificatePropertiesHostNamesList>;
 
 /** Status of the Key Vault secret. */
 export type KeyVaultSecretStatus =
@@ -4266,11 +4198,8 @@ export const CreateStaticSiteZipDeploymentForStaticSiteRequest = /*@__PURE__*/ S
 }) as any as S.Schema<CreateStaticSiteZipDeploymentForStaticSiteRequest>;
 
 export interface CreateStaticSiteZipDeploymentForStaticSiteResponse {}
-export const CreateStaticSiteZipDeploymentForStaticSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateStaticSiteZipDeploymentForStaticSiteResponse",
-}) as any as S.Schema<CreateStaticSiteZipDeploymentForStaticSiteResponse>;
+export const CreateStaticSiteZipDeploymentForStaticSiteResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<CreateStaticSiteZipDeploymentForStaticSiteResponse>;
 
 export interface CreateStaticSiteZipDeploymentForStaticSiteBuildRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4307,11 +4236,8 @@ export const CreateStaticSiteZipDeploymentForStaticSiteBuildRequest = /*@__PURE_
 }) as any as S.Schema<CreateStaticSiteZipDeploymentForStaticSiteBuildRequest>;
 
 export interface CreateStaticSiteZipDeploymentForStaticSiteBuildResponse {}
-export const CreateStaticSiteZipDeploymentForStaticSiteBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateStaticSiteZipDeploymentForStaticSiteBuildResponse",
-}) as any as S.Schema<CreateStaticSiteZipDeploymentForStaticSiteBuildResponse>;
+export const CreateStaticSiteZipDeploymentForStaticSiteBuildResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<CreateStaticSiteZipDeploymentForStaticSiteBuildResponse>;
 
 /** Deployment resource specific properties */
 export interface DeploymentProperties {
@@ -4460,25 +4386,13 @@ export interface CreateWebAppDeploymentSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const CreateWebAppDeploymentSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateWebAppDeploymentSlotResponse",
-}) as any as S.Schema<CreateWebAppDeploymentSlotResponse>;
+export const CreateWebAppDeploymentSlotResponse =
+  CreateWebAppDeploymentResponse as any as S.Schema<CreateWebAppDeploymentSlotResponse>;
 
 /** File list. */
 export type FunctionEnvelopePropertiesFilesMap = { [key: string]: string | undefined };
-export const FunctionEnvelopePropertiesFilesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FunctionEnvelopePropertiesFilesMap>;
+export const FunctionEnvelopePropertiesFilesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<FunctionEnvelopePropertiesFilesMap>;
 
 /** FunctionEnvelope resource specific properties */
 export interface FunctionEnvelopeProperties {
@@ -4641,18 +4555,8 @@ export interface CreateWebAppInstanceFunctionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const CreateWebAppInstanceFunctionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FunctionEnvelopeProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateWebAppInstanceFunctionSlotResponse",
-}) as any as S.Schema<CreateWebAppInstanceFunctionSlotResponse>;
+export const CreateWebAppInstanceFunctionSlotResponse =
+  CreateWebAppFunctionResponse as any as S.Schema<CreateWebAppInstanceFunctionSlotResponse>;
 
 export interface DeleteAiGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4678,9 +4582,8 @@ export const DeleteAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAiGatewayRequest" }) as any as S.Schema<DeleteAiGatewayRequest>;
 
 export interface DeleteAiGatewayResponse {}
-export const DeleteAiGatewayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAiGatewayResponse",
-}) as any as S.Schema<DeleteAiGatewayResponse>;
+export const DeleteAiGatewayResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteAiGatewayResponse>;
 
 export interface DeleteAppServiceEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4711,11 +4614,8 @@ export const DeleteAppServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppServiceEnvironmentRequest>;
 
 export interface DeleteAppServiceEnvironmentResponse {}
-export const DeleteAppServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAppServiceEnvironmentResponse",
-}) as any as S.Schema<DeleteAppServiceEnvironmentResponse>;
+export const DeleteAppServiceEnvironmentResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteAppServiceEnvironmentResponse>;
 
 export interface DeleteAppServiceEnvironmentAseCustomDnsSuffixConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4811,9 +4711,8 @@ export const DeleteAppServicePlanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAppServicePlanRequest>;
 
 export interface DeleteAppServicePlanResponse {}
-export const DeleteAppServicePlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppServicePlanResponse",
-}) as any as S.Schema<DeleteAppServicePlanResponse>;
+export const DeleteAppServicePlanResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteAppServicePlanResponse>;
 
 export interface DeleteAppServicePlanHybridConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4847,11 +4746,8 @@ export const DeleteAppServicePlanHybridConnectionRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteAppServicePlanHybridConnectionRequest>;
 
 export interface DeleteAppServicePlanHybridConnectionResponse {}
-export const DeleteAppServicePlanHybridConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAppServicePlanHybridConnectionResponse",
-}) as any as S.Schema<DeleteAppServicePlanHybridConnectionResponse>;
+export const DeleteAppServicePlanHybridConnectionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteAppServicePlanHybridConnectionResponse>;
 
 export interface DeleteAppServicePlanVnetRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4885,11 +4781,8 @@ export const DeleteAppServicePlanVnetRouteRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteAppServicePlanVnetRouteRequest>;
 
 export interface DeleteAppServicePlanVnetRouteResponse {}
-export const DeleteAppServicePlanVnetRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAppServicePlanVnetRouteResponse",
-}) as any as S.Schema<DeleteAppServicePlanVnetRouteResponse>;
+export const DeleteAppServicePlanVnetRouteResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteAppServicePlanVnetRouteResponse>;
 
 export interface DeleteCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4915,9 +4808,8 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCertificateResponse",
-}) as any as S.Schema<DeleteCertificateResponse>;
+export const DeleteCertificateResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteCertificateResponse>;
 
 export interface DeleteKubeEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4945,9 +4837,8 @@ export const DeleteKubeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKubeEnvironmentRequest>;
 
 export interface DeleteKubeEnvironmentResponse {}
-export const DeleteKubeEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKubeEnvironmentResponse",
-}) as any as S.Schema<DeleteKubeEnvironmentResponse>;
+export const DeleteKubeEnvironmentResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteKubeEnvironmentResponse>;
 
 export interface DeleteSiteCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4978,9 +4869,8 @@ export const DeleteSiteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSiteCertificateRequest>;
 
 export interface DeleteSiteCertificateResponse {}
-export const DeleteSiteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSiteCertificateResponse",
-}) as any as S.Schema<DeleteSiteCertificateResponse>;
+export const DeleteSiteCertificateResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteSiteCertificateResponse>;
 
 export interface DeleteSiteCertificateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5014,11 +4904,8 @@ export const DeleteSiteCertificateSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSiteCertificateSlotRequest>;
 
 export interface DeleteSiteCertificateSlotResponse {}
-export const DeleteSiteCertificateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSiteCertificateSlotResponse",
-}) as any as S.Schema<DeleteSiteCertificateSlotResponse>;
+export const DeleteSiteCertificateSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteSiteCertificateSlotResponse>;
 
 export interface DeleteStaticSiteBuildDatabaseConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5052,11 +4939,8 @@ export const DeleteStaticSiteBuildDatabaseConnectionRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteStaticSiteBuildDatabaseConnectionRequest>;
 
 export interface DeleteStaticSiteBuildDatabaseConnectionResponse {}
-export const DeleteStaticSiteBuildDatabaseConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStaticSiteBuildDatabaseConnectionResponse",
-}) as any as S.Schema<DeleteStaticSiteBuildDatabaseConnectionResponse>;
+export const DeleteStaticSiteBuildDatabaseConnectionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteStaticSiteBuildDatabaseConnectionResponse>;
 
 export interface DeleteStaticSiteDatabaseConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5087,11 +4971,8 @@ export const DeleteStaticSiteDatabaseConnectionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteStaticSiteDatabaseConnectionRequest>;
 
 export interface DeleteStaticSiteDatabaseConnectionResponse {}
-export const DeleteStaticSiteDatabaseConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStaticSiteDatabaseConnectionResponse",
-}) as any as S.Schema<DeleteStaticSiteDatabaseConnectionResponse>;
+export const DeleteStaticSiteDatabaseConnectionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteStaticSiteDatabaseConnectionResponse>;
 
 export interface DeleteStaticSitePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5154,11 +5035,8 @@ export const DeleteStaticSiteStaticSiteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStaticSiteStaticSiteRequest>;
 
 export interface DeleteStaticSiteStaticSiteResponse {}
-export const DeleteStaticSiteStaticSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStaticSiteStaticSiteResponse",
-}) as any as S.Schema<DeleteStaticSiteStaticSiteResponse>;
+export const DeleteStaticSiteStaticSiteResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteStaticSiteStaticSiteResponse>;
 
 export interface DeleteStaticSiteStaticSiteBuildRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5189,11 +5067,8 @@ export const DeleteStaticSiteStaticSiteBuildRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteStaticSiteStaticSiteBuildRequest>;
 
 export interface DeleteStaticSiteStaticSiteBuildResponse {}
-export const DeleteStaticSiteStaticSiteBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStaticSiteStaticSiteBuildResponse",
-}) as any as S.Schema<DeleteStaticSiteStaticSiteBuildResponse>;
+export const DeleteStaticSiteStaticSiteBuildResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteStaticSiteStaticSiteBuildResponse>;
 
 export interface DeleteStaticSiteStaticSiteCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5224,11 +5099,8 @@ export const DeleteStaticSiteStaticSiteCustomDomainRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteStaticSiteStaticSiteCustomDomainRequest>;
 
 export interface DeleteStaticSiteStaticSiteCustomDomainResponse {}
-export const DeleteStaticSiteStaticSiteCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStaticSiteStaticSiteCustomDomainResponse",
-}) as any as S.Schema<DeleteStaticSiteStaticSiteCustomDomainResponse>;
+export const DeleteStaticSiteStaticSiteCustomDomainResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteStaticSiteStaticSiteCustomDomainResponse>;
 
 export interface DeleteStaticSiteStaticSiteUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5259,11 +5131,8 @@ export const DeleteStaticSiteStaticSiteUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteStaticSiteStaticSiteUserRequest>;
 
 export interface DeleteStaticSiteStaticSiteUserResponse {}
-export const DeleteStaticSiteStaticSiteUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStaticSiteStaticSiteUserResponse",
-}) as any as S.Schema<DeleteStaticSiteStaticSiteUserResponse>;
+export const DeleteStaticSiteStaticSiteUserResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteStaticSiteStaticSiteUserResponse>;
 
 export interface DeleteWebAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5295,9 +5164,8 @@ export const DeleteWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebAppRequest" }) as any as S.Schema<DeleteWebAppRequest>;
 
 export interface DeleteWebAppResponse {}
-export const DeleteWebAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppResponse",
-}) as any as S.Schema<DeleteWebAppResponse>;
+export const DeleteWebAppResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppResponse>;
 
 export interface DeleteWebAppBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5328,9 +5196,8 @@ export const DeleteWebAppBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppBackupRequest>;
 
 export interface DeleteWebAppBackupResponse {}
-export const DeleteWebAppBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppBackupResponse",
-}) as any as S.Schema<DeleteWebAppBackupResponse>;
+export const DeleteWebAppBackupResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppBackupResponse>;
 
 export interface DeleteWebAppBackupConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5358,11 +5225,8 @@ export const DeleteWebAppBackupConfigurationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWebAppBackupConfigurationRequest>;
 
 export interface DeleteWebAppBackupConfigurationResponse {}
-export const DeleteWebAppBackupConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppBackupConfigurationResponse",
-}) as any as S.Schema<DeleteWebAppBackupConfigurationResponse>;
+export const DeleteWebAppBackupConfigurationResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppBackupConfigurationResponse>;
 
 export interface DeleteWebAppBackupConfigurationSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5393,11 +5257,8 @@ export const DeleteWebAppBackupConfigurationSlotRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteWebAppBackupConfigurationSlotRequest>;
 
 export interface DeleteWebAppBackupConfigurationSlotResponse {}
-export const DeleteWebAppBackupConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppBackupConfigurationSlotResponse",
-}) as any as S.Schema<DeleteWebAppBackupConfigurationSlotResponse>;
+export const DeleteWebAppBackupConfigurationSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppBackupConfigurationSlotResponse>;
 
 export interface DeleteWebAppBackupSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5431,9 +5292,8 @@ export const DeleteWebAppBackupSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppBackupSlotRequest>;
 
 export interface DeleteWebAppBackupSlotResponse {}
-export const DeleteWebAppBackupSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppBackupSlotResponse",
-}) as any as S.Schema<DeleteWebAppBackupSlotResponse>;
+export const DeleteWebAppBackupSlotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppBackupSlotResponse>;
 
 export interface DeleteWebAppContinuousWebJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5464,11 +5324,8 @@ export const DeleteWebAppContinuousWebJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppContinuousWebJobRequest>;
 
 export interface DeleteWebAppContinuousWebJobResponse {}
-export const DeleteWebAppContinuousWebJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppContinuousWebJobResponse",
-}) as any as S.Schema<DeleteWebAppContinuousWebJobResponse>;
+export const DeleteWebAppContinuousWebJobResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppContinuousWebJobResponse>;
 
 export interface DeleteWebAppContinuousWebJobSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5502,11 +5359,8 @@ export const DeleteWebAppContinuousWebJobSlotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteWebAppContinuousWebJobSlotRequest>;
 
 export interface DeleteWebAppContinuousWebJobSlotResponse {}
-export const DeleteWebAppContinuousWebJobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppContinuousWebJobSlotResponse",
-}) as any as S.Schema<DeleteWebAppContinuousWebJobSlotResponse>;
+export const DeleteWebAppContinuousWebJobSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppContinuousWebJobSlotResponse>;
 
 export interface DeleteWebAppDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5537,9 +5391,8 @@ export const DeleteWebAppDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppDeploymentRequest>;
 
 export interface DeleteWebAppDeploymentResponse {}
-export const DeleteWebAppDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppDeploymentResponse",
-}) as any as S.Schema<DeleteWebAppDeploymentResponse>;
+export const DeleteWebAppDeploymentResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppDeploymentResponse>;
 
 export interface DeleteWebAppDeploymentSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5573,11 +5426,8 @@ export const DeleteWebAppDeploymentSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppDeploymentSlotRequest>;
 
 export interface DeleteWebAppDeploymentSlotResponse {}
-export const DeleteWebAppDeploymentSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppDeploymentSlotResponse",
-}) as any as S.Schema<DeleteWebAppDeploymentSlotResponse>;
+export const DeleteWebAppDeploymentSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppDeploymentSlotResponse>;
 
 export interface DeleteWebAppDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5608,11 +5458,8 @@ export const DeleteWebAppDomainOwnershipIdentifierRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteWebAppDomainOwnershipIdentifierRequest>;
 
 export interface DeleteWebAppDomainOwnershipIdentifierResponse {}
-export const DeleteWebAppDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppDomainOwnershipIdentifierResponse",
-}) as any as S.Schema<DeleteWebAppDomainOwnershipIdentifierResponse>;
+export const DeleteWebAppDomainOwnershipIdentifierResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppDomainOwnershipIdentifierResponse>;
 
 export interface DeleteWebAppDomainOwnershipIdentifierSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5646,11 +5493,8 @@ export const DeleteWebAppDomainOwnershipIdentifierSlotRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteWebAppDomainOwnershipIdentifierSlotRequest>;
 
 export interface DeleteWebAppDomainOwnershipIdentifierSlotResponse {}
-export const DeleteWebAppDomainOwnershipIdentifierSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppDomainOwnershipIdentifierSlotResponse",
-}) as any as S.Schema<DeleteWebAppDomainOwnershipIdentifierSlotResponse>;
+export const DeleteWebAppDomainOwnershipIdentifierSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppDomainOwnershipIdentifierSlotResponse>;
 
 export interface DeleteWebAppFunctionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5681,9 +5525,8 @@ export const DeleteWebAppFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppFunctionRequest>;
 
 export interface DeleteWebAppFunctionResponse {}
-export const DeleteWebAppFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppFunctionResponse",
-}) as any as S.Schema<DeleteWebAppFunctionResponse>;
+export const DeleteWebAppFunctionResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppFunctionResponse>;
 
 export interface DeleteWebAppFunctionSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5714,11 +5557,8 @@ export const DeleteWebAppFunctionSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppFunctionSecretRequest>;
 
 export interface DeleteWebAppFunctionSecretResponse {}
-export const DeleteWebAppFunctionSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppFunctionSecretResponse",
-}) as any as S.Schema<DeleteWebAppFunctionSecretResponse>;
+export const DeleteWebAppFunctionSecretResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppFunctionSecretResponse>;
 
 export interface DeleteWebAppFunctionSecretSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5751,11 +5591,8 @@ export const DeleteWebAppFunctionSecretSlotRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteWebAppFunctionSecretSlotRequest>;
 
 export interface DeleteWebAppFunctionSecretSlotResponse {}
-export const DeleteWebAppFunctionSecretSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppFunctionSecretSlotResponse",
-}) as any as S.Schema<DeleteWebAppFunctionSecretSlotResponse>;
+export const DeleteWebAppFunctionSecretSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppFunctionSecretSlotResponse>;
 
 export interface DeleteWebAppHostNameBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5786,11 +5623,8 @@ export const DeleteWebAppHostNameBindingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppHostNameBindingRequest>;
 
 export interface DeleteWebAppHostNameBindingResponse {}
-export const DeleteWebAppHostNameBindingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppHostNameBindingResponse",
-}) as any as S.Schema<DeleteWebAppHostNameBindingResponse>;
+export const DeleteWebAppHostNameBindingResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppHostNameBindingResponse>;
 
 export interface DeleteWebAppHostNameBindingSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5824,11 +5658,8 @@ export const DeleteWebAppHostNameBindingSlotRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWebAppHostNameBindingSlotRequest>;
 
 export interface DeleteWebAppHostNameBindingSlotResponse {}
-export const DeleteWebAppHostNameBindingSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppHostNameBindingSlotResponse",
-}) as any as S.Schema<DeleteWebAppHostNameBindingSlotResponse>;
+export const DeleteWebAppHostNameBindingSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppHostNameBindingSlotResponse>;
 
 export interface DeleteWebAppHostSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5862,9 +5693,8 @@ export const DeleteWebAppHostSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppHostSecretRequest>;
 
 export interface DeleteWebAppHostSecretResponse {}
-export const DeleteWebAppHostSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppHostSecretResponse",
-}) as any as S.Schema<DeleteWebAppHostSecretResponse>;
+export const DeleteWebAppHostSecretResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppHostSecretResponse>;
 
 export interface DeleteWebAppHostSecretSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5901,11 +5731,8 @@ export const DeleteWebAppHostSecretSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppHostSecretSlotRequest>;
 
 export interface DeleteWebAppHostSecretSlotResponse {}
-export const DeleteWebAppHostSecretSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppHostSecretSlotResponse",
-}) as any as S.Schema<DeleteWebAppHostSecretSlotResponse>;
+export const DeleteWebAppHostSecretSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppHostSecretSlotResponse>;
 
 export interface DeleteWebAppHybridConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5939,11 +5766,8 @@ export const DeleteWebAppHybridConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppHybridConnectionRequest>;
 
 export interface DeleteWebAppHybridConnectionResponse {}
-export const DeleteWebAppHybridConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppHybridConnectionResponse",
-}) as any as S.Schema<DeleteWebAppHybridConnectionResponse>;
+export const DeleteWebAppHybridConnectionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppHybridConnectionResponse>;
 
 export interface DeleteWebAppHybridConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5980,11 +5804,8 @@ export const DeleteWebAppHybridConnectionSlotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteWebAppHybridConnectionSlotRequest>;
 
 export interface DeleteWebAppHybridConnectionSlotResponse {}
-export const DeleteWebAppHybridConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppHybridConnectionSlotResponse",
-}) as any as S.Schema<DeleteWebAppHybridConnectionSlotResponse>;
+export const DeleteWebAppHybridConnectionSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppHybridConnectionSlotResponse>;
 
 export interface DeleteWebAppInstanceFunctionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6018,11 +5839,8 @@ export const DeleteWebAppInstanceFunctionSlotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteWebAppInstanceFunctionSlotRequest>;
 
 export interface DeleteWebAppInstanceFunctionSlotResponse {}
-export const DeleteWebAppInstanceFunctionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppInstanceFunctionSlotResponse",
-}) as any as S.Schema<DeleteWebAppInstanceFunctionSlotResponse>;
+export const DeleteWebAppInstanceFunctionSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppInstanceFunctionSlotResponse>;
 
 export interface DeleteWebAppInstanceProcessRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6056,11 +5874,8 @@ export const DeleteWebAppInstanceProcessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppInstanceProcessRequest>;
 
 export interface DeleteWebAppInstanceProcessResponse {}
-export const DeleteWebAppInstanceProcessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppInstanceProcessResponse",
-}) as any as S.Schema<DeleteWebAppInstanceProcessResponse>;
+export const DeleteWebAppInstanceProcessResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppInstanceProcessResponse>;
 
 export interface DeleteWebAppInstanceProcessSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6097,11 +5912,8 @@ export const DeleteWebAppInstanceProcessSlotRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWebAppInstanceProcessSlotRequest>;
 
 export interface DeleteWebAppInstanceProcessSlotResponse {}
-export const DeleteWebAppInstanceProcessSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppInstanceProcessSlotResponse",
-}) as any as S.Schema<DeleteWebAppInstanceProcessSlotResponse>;
+export const DeleteWebAppInstanceProcessSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppInstanceProcessSlotResponse>;
 
 export interface DeleteWebAppPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6132,11 +5944,8 @@ export const DeleteWebAppPrivateEndpointConnectionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteWebAppPrivateEndpointConnectionRequest>;
 
 export type DeleteWebAppPrivateEndpointConnectionResponse = unknown;
-export const DeleteWebAppPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteWebAppPrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeleteWebAppPrivateEndpointConnectionResponse>;
+export const DeleteWebAppPrivateEndpointConnectionResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<DeleteWebAppPrivateEndpointConnectionResponse>;
 
 export interface DeleteWebAppPrivateEndpointConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6170,11 +5979,8 @@ export const DeleteWebAppPrivateEndpointConnectionSlotRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteWebAppPrivateEndpointConnectionSlotRequest>;
 
 export type DeleteWebAppPrivateEndpointConnectionSlotResponse = unknown;
-export const DeleteWebAppPrivateEndpointConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteWebAppPrivateEndpointConnectionSlotResponse",
-}) as any as S.Schema<DeleteWebAppPrivateEndpointConnectionSlotResponse>;
+export const DeleteWebAppPrivateEndpointConnectionSlotResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<DeleteWebAppPrivateEndpointConnectionSlotResponse>;
 
 export interface DeleteWebAppProcessRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6205,9 +6011,8 @@ export const DeleteWebAppProcessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppProcessRequest>;
 
 export interface DeleteWebAppProcessResponse {}
-export const DeleteWebAppProcessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppProcessResponse",
-}) as any as S.Schema<DeleteWebAppProcessResponse>;
+export const DeleteWebAppProcessResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppProcessResponse>;
 
 export interface DeleteWebAppProcessSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6274,11 +6079,8 @@ export const DeleteWebAppPublicCertificateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWebAppPublicCertificateRequest>;
 
 export interface DeleteWebAppPublicCertificateResponse {}
-export const DeleteWebAppPublicCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppPublicCertificateResponse",
-}) as any as S.Schema<DeleteWebAppPublicCertificateResponse>;
+export const DeleteWebAppPublicCertificateResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppPublicCertificateResponse>;
 
 export interface DeleteWebAppPublicCertificateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6312,11 +6114,8 @@ export const DeleteWebAppPublicCertificateSlotRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteWebAppPublicCertificateSlotRequest>;
 
 export interface DeleteWebAppPublicCertificateSlotResponse {}
-export const DeleteWebAppPublicCertificateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppPublicCertificateSlotResponse",
-}) as any as S.Schema<DeleteWebAppPublicCertificateSlotResponse>;
+export const DeleteWebAppPublicCertificateSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppPublicCertificateSlotResponse>;
 
 export interface DeleteWebAppRelayServiceConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6347,11 +6146,8 @@ export const DeleteWebAppRelayServiceConnectionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteWebAppRelayServiceConnectionRequest>;
 
 export interface DeleteWebAppRelayServiceConnectionResponse {}
-export const DeleteWebAppRelayServiceConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppRelayServiceConnectionResponse",
-}) as any as S.Schema<DeleteWebAppRelayServiceConnectionResponse>;
+export const DeleteWebAppRelayServiceConnectionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppRelayServiceConnectionResponse>;
 
 export interface DeleteWebAppRelayServiceConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6385,11 +6181,8 @@ export const DeleteWebAppRelayServiceConnectionSlotRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteWebAppRelayServiceConnectionSlotRequest>;
 
 export interface DeleteWebAppRelayServiceConnectionSlotResponse {}
-export const DeleteWebAppRelayServiceConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppRelayServiceConnectionSlotResponse",
-}) as any as S.Schema<DeleteWebAppRelayServiceConnectionSlotResponse>;
+export const DeleteWebAppRelayServiceConnectionSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppRelayServiceConnectionSlotResponse>;
 
 export interface DeleteWebAppSiteContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6420,11 +6213,8 @@ export const DeleteWebAppSiteContainerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppSiteContainerRequest>;
 
 export interface DeleteWebAppSiteContainerResponse {}
-export const DeleteWebAppSiteContainerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSiteContainerResponse",
-}) as any as S.Schema<DeleteWebAppSiteContainerResponse>;
+export const DeleteWebAppSiteContainerResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSiteContainerResponse>;
 
 export interface DeleteWebAppSiteContainerSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6458,11 +6248,8 @@ export const DeleteWebAppSiteContainerSlotRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWebAppSiteContainerSlotRequest>;
 
 export interface DeleteWebAppSiteContainerSlotResponse {}
-export const DeleteWebAppSiteContainerSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSiteContainerSlotResponse",
-}) as any as S.Schema<DeleteWebAppSiteContainerSlotResponse>;
+export const DeleteWebAppSiteContainerSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSiteContainerSlotResponse>;
 
 export interface DeleteWebAppSiteExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6493,11 +6280,8 @@ export const DeleteWebAppSiteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppSiteExtensionRequest>;
 
 export interface DeleteWebAppSiteExtensionResponse {}
-export const DeleteWebAppSiteExtensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSiteExtensionResponse",
-}) as any as S.Schema<DeleteWebAppSiteExtensionResponse>;
+export const DeleteWebAppSiteExtensionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSiteExtensionResponse>;
 
 export interface DeleteWebAppSiteExtensionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6531,11 +6315,8 @@ export const DeleteWebAppSiteExtensionSlotRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWebAppSiteExtensionSlotRequest>;
 
 export interface DeleteWebAppSiteExtensionSlotResponse {}
-export const DeleteWebAppSiteExtensionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSiteExtensionSlotResponse",
-}) as any as S.Schema<DeleteWebAppSiteExtensionSlotResponse>;
+export const DeleteWebAppSiteExtensionSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSiteExtensionSlotResponse>;
 
 export interface DeleteWebAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6570,9 +6351,8 @@ export const DeleteWebAppSlotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebAppSlotRequest" }) as any as S.Schema<DeleteWebAppSlotRequest>;
 
 export interface DeleteWebAppSlotResponse {}
-export const DeleteWebAppSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebAppSlotResponse",
-}) as any as S.Schema<DeleteWebAppSlotResponse>;
+export const DeleteWebAppSlotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<DeleteWebAppSlotResponse>;
 
 export interface DeleteWebAppSourceControlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6602,11 +6382,8 @@ export const DeleteWebAppSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppSourceControlRequest>;
 
 export interface DeleteWebAppSourceControlResponse {}
-export const DeleteWebAppSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSourceControlResponse",
-}) as any as S.Schema<DeleteWebAppSourceControlResponse>;
+export const DeleteWebAppSourceControlResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSourceControlResponse>;
 
 export interface DeleteWebAppSourceControlSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6639,11 +6416,8 @@ export const DeleteWebAppSourceControlSlotRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWebAppSourceControlSlotRequest>;
 
 export interface DeleteWebAppSourceControlSlotResponse {}
-export const DeleteWebAppSourceControlSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSourceControlSlotResponse",
-}) as any as S.Schema<DeleteWebAppSourceControlSlotResponse>;
+export const DeleteWebAppSourceControlSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSourceControlSlotResponse>;
 
 export interface DeleteWebAppSwiftVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6671,11 +6445,8 @@ export const DeleteWebAppSwiftVirtualNetworkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWebAppSwiftVirtualNetworkRequest>;
 
 export interface DeleteWebAppSwiftVirtualNetworkResponse {}
-export const DeleteWebAppSwiftVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSwiftVirtualNetworkResponse",
-}) as any as S.Schema<DeleteWebAppSwiftVirtualNetworkResponse>;
+export const DeleteWebAppSwiftVirtualNetworkResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSwiftVirtualNetworkResponse>;
 
 export interface DeleteWebAppSwiftVirtualNetworkSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6706,11 +6477,8 @@ export const DeleteWebAppSwiftVirtualNetworkSlotRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteWebAppSwiftVirtualNetworkSlotRequest>;
 
 export interface DeleteWebAppSwiftVirtualNetworkSlotResponse {}
-export const DeleteWebAppSwiftVirtualNetworkSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppSwiftVirtualNetworkSlotResponse",
-}) as any as S.Schema<DeleteWebAppSwiftVirtualNetworkSlotResponse>;
+export const DeleteWebAppSwiftVirtualNetworkSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppSwiftVirtualNetworkSlotResponse>;
 
 export interface DeleteWebAppTriggeredWebJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6741,11 +6509,8 @@ export const DeleteWebAppTriggeredWebJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppTriggeredWebJobRequest>;
 
 export interface DeleteWebAppTriggeredWebJobResponse {}
-export const DeleteWebAppTriggeredWebJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppTriggeredWebJobResponse",
-}) as any as S.Schema<DeleteWebAppTriggeredWebJobResponse>;
+export const DeleteWebAppTriggeredWebJobResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppTriggeredWebJobResponse>;
 
 export interface DeleteWebAppTriggeredWebJobSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6779,11 +6544,8 @@ export const DeleteWebAppTriggeredWebJobSlotRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWebAppTriggeredWebJobSlotRequest>;
 
 export interface DeleteWebAppTriggeredWebJobSlotResponse {}
-export const DeleteWebAppTriggeredWebJobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppTriggeredWebJobSlotResponse",
-}) as any as S.Schema<DeleteWebAppTriggeredWebJobSlotResponse>;
+export const DeleteWebAppTriggeredWebJobSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppTriggeredWebJobSlotResponse>;
 
 export interface DeleteWebAppVnetConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6814,11 +6576,8 @@ export const DeleteWebAppVnetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppVnetConnectionRequest>;
 
 export interface DeleteWebAppVnetConnectionResponse {}
-export const DeleteWebAppVnetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppVnetConnectionResponse",
-}) as any as S.Schema<DeleteWebAppVnetConnectionResponse>;
+export const DeleteWebAppVnetConnectionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppVnetConnectionResponse>;
 
 export interface DeleteWebAppVnetConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6852,11 +6611,8 @@ export const DeleteWebAppVnetConnectionSlotRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteWebAppVnetConnectionSlotRequest>;
 
 export interface DeleteWebAppVnetConnectionSlotResponse {}
-export const DeleteWebAppVnetConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebAppVnetConnectionSlotResponse",
-}) as any as S.Schema<DeleteWebAppVnetConnectionSlotResponse>;
+export const DeleteWebAppVnetConnectionSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeleteWebAppVnetConnectionSlotResponse>;
 
 /** Files of the app. */
 export type DeployWebAppWorkflowArtifactsRequestFilesMap = { [key: string]: unknown | undefined };
@@ -6867,9 +6623,8 @@ export const DeployWebAppWorkflowArtifactsRequestFilesMap = /*@__PURE__*/ S.Reco
 
 /** Files of the app to delete. */
 export type DeployWebAppWorkflowArtifactsRequestFilesToDeleteList = Array<string>;
-export const DeployWebAppWorkflowArtifactsRequestFilesToDeleteList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeployWebAppWorkflowArtifactsRequestFilesToDeleteList>;
+export const DeployWebAppWorkflowArtifactsRequestFilesToDeleteList =
+  SitePropertiesHostNamesList as any as S.Schema<DeployWebAppWorkflowArtifactsRequestFilesToDeleteList>;
 
 export interface DeployWebAppWorkflowArtifactsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6906,26 +6661,20 @@ export const DeployWebAppWorkflowArtifactsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeployWebAppWorkflowArtifactsRequest>;
 
 export interface DeployWebAppWorkflowArtifactsResponse {}
-export const DeployWebAppWorkflowArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeployWebAppWorkflowArtifactsResponse",
-}) as any as S.Schema<DeployWebAppWorkflowArtifactsResponse>;
+export const DeployWebAppWorkflowArtifactsResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeployWebAppWorkflowArtifactsResponse>;
 
 /** Files of the app. */
 export type DeployWebAppWorkflowArtifactsSlotRequestFilesMap = {
   [key: string]: unknown | undefined;
 };
-export const DeployWebAppWorkflowArtifactsSlotRequestFilesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeployWebAppWorkflowArtifactsSlotRequestFilesMap>;
+export const DeployWebAppWorkflowArtifactsSlotRequestFilesMap =
+  DeployWebAppWorkflowArtifactsRequestFilesMap as any as S.Schema<DeployWebAppWorkflowArtifactsSlotRequestFilesMap>;
 
 /** Files of the app to delete. */
 export type DeployWebAppWorkflowArtifactsSlotRequestFilesToDeleteList = Array<string>;
-export const DeployWebAppWorkflowArtifactsSlotRequestFilesToDeleteList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeployWebAppWorkflowArtifactsSlotRequestFilesToDeleteList>;
+export const DeployWebAppWorkflowArtifactsSlotRequestFilesToDeleteList =
+  SitePropertiesHostNamesList as any as S.Schema<DeployWebAppWorkflowArtifactsSlotRequestFilesToDeleteList>;
 
 export interface DeployWebAppWorkflowArtifactsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6965,11 +6714,8 @@ export const DeployWebAppWorkflowArtifactsSlotRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeployWebAppWorkflowArtifactsSlotRequest>;
 
 export interface DeployWebAppWorkflowArtifactsSlotResponse {}
-export const DeployWebAppWorkflowArtifactsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeployWebAppWorkflowArtifactsSlotResponse",
-}) as any as S.Schema<DeployWebAppWorkflowArtifactsSlotResponse>;
+export const DeployWebAppWorkflowArtifactsSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DeployWebAppWorkflowArtifactsSlotResponse>;
 
 export interface DetachStaticSiteStaticSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6997,11 +6743,8 @@ export const DetachStaticSiteStaticSiteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetachStaticSiteStaticSiteRequest>;
 
 export interface DetachStaticSiteStaticSiteResponse {}
-export const DetachStaticSiteStaticSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DetachStaticSiteStaticSiteResponse",
-}) as any as S.Schema<DetachStaticSiteStaticSiteResponse>;
+export const DetachStaticSiteStaticSiteResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DetachStaticSiteStaticSiteResponse>;
 
 export interface DetachStaticSiteUserProvidedFunctionAppFromStaticSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7072,9 +6815,7 @@ export const DetachStaticSiteUserProvidedFunctionAppFromStaticSiteBuildRequest =
 
 export interface DetachStaticSiteUserProvidedFunctionAppFromStaticSiteBuildResponse {}
 export const DetachStaticSiteUserProvidedFunctionAppFromStaticSiteBuildResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DetachStaticSiteUserProvidedFunctionAppFromStaticSiteBuildResponse",
-  }) as any as S.Schema<DetachStaticSiteUserProvidedFunctionAppFromStaticSiteBuildResponse>;
+  DetachStaticSiteUserProvidedFunctionAppFromStaticSiteResponse as any as S.Schema<DetachStaticSiteUserProvidedFunctionAppFromStaticSiteBuildResponse>;
 
 export interface DisableRecommendationAllForHostingEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7105,11 +6846,8 @@ export const DisableRecommendationAllForHostingEnvironmentRequest = /*@__PURE__*
 }) as any as S.Schema<DisableRecommendationAllForHostingEnvironmentRequest>;
 
 export interface DisableRecommendationAllForHostingEnvironmentResponse {}
-export const DisableRecommendationAllForHostingEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableRecommendationAllForHostingEnvironmentResponse",
-}) as any as S.Schema<DisableRecommendationAllForHostingEnvironmentResponse>;
+export const DisableRecommendationAllForHostingEnvironmentResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DisableRecommendationAllForHostingEnvironmentResponse>;
 
 export interface DisableRecommendationAllForWebAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7137,11 +6875,8 @@ export const DisableRecommendationAllForWebAppRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DisableRecommendationAllForWebAppRequest>;
 
 export interface DisableRecommendationAllForWebAppResponse {}
-export const DisableRecommendationAllForWebAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableRecommendationAllForWebAppResponse",
-}) as any as S.Schema<DisableRecommendationAllForWebAppResponse>;
+export const DisableRecommendationAllForWebAppResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DisableRecommendationAllForWebAppResponse>;
 
 export interface DisableRecommendationRecommendationForHostingEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7177,9 +6912,7 @@ export const DisableRecommendationRecommendationForHostingEnvironmentRequest =
 
 export interface DisableRecommendationRecommendationForHostingEnvironmentResponse {}
 export const DisableRecommendationRecommendationForHostingEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisableRecommendationRecommendationForHostingEnvironmentResponse",
-  }) as any as S.Schema<DisableRecommendationRecommendationForHostingEnvironmentResponse>;
+  DetachStaticSiteUserProvidedFunctionAppFromStaticSiteResponse as any as S.Schema<DisableRecommendationRecommendationForHostingEnvironmentResponse>;
 
 export interface DisableRecommendationRecommendationForSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7210,11 +6943,8 @@ export const DisableRecommendationRecommendationForSiteRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DisableRecommendationRecommendationForSiteRequest>;
 
 export interface DisableRecommendationRecommendationForSiteResponse {}
-export const DisableRecommendationRecommendationForSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableRecommendationRecommendationForSiteResponse",
-}) as any as S.Schema<DisableRecommendationRecommendationForSiteResponse>;
+export const DisableRecommendationRecommendationForSiteResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<DisableRecommendationRecommendationForSiteResponse>;
 
 export interface DisableRecommendationRecommendationForSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7287,9 +7017,8 @@ export const ExecuteDiagnosticSiteAnalysisRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ExecuteDiagnosticSiteAnalysisRequest>;
 
 export type DetectorAbnormalTimePeriodMetaDataItemList = Array<NameValuePair>;
-export const DetectorAbnormalTimePeriodMetaDataItemList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<DetectorAbnormalTimePeriodMetaDataItemList>;
+export const DetectorAbnormalTimePeriodMetaDataItemList =
+  SiteConfigAppSettingsList as any as S.Schema<DetectorAbnormalTimePeriodMetaDataItemList>;
 
 /** Downtime metadata */
 export type DetectorAbnormalTimePeriodMetaDataList =
@@ -7315,26 +7044,22 @@ export type SolutionType = "QuickSolution" | "DeepInvestigation" | "BestPractice
 export const SolutionType = S.String;
 
 export type SolutionDataItemList = Array<NameValuePair>;
-export const SolutionDataItemList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<SolutionDataItemList>;
+export const SolutionDataItemList =
+  SiteConfigAppSettingsList as any as S.Schema<SolutionDataItemList>;
 
 /** Solution Data. */
 export type SolutionDataList = Array<SolutionDataItemList>;
-export const SolutionDataList = /*@__PURE__*/ S.Array(
-  SolutionDataItemList,
-) as any as S.Schema<SolutionDataList>;
+export const SolutionDataList =
+  DetectorAbnormalTimePeriodMetaDataList as any as S.Schema<SolutionDataList>;
 
 export type SolutionMetadataItemList = Array<NameValuePair>;
-export const SolutionMetadataItemList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<SolutionMetadataItemList>;
+export const SolutionMetadataItemList =
+  SiteConfigAppSettingsList as any as S.Schema<SolutionMetadataItemList>;
 
 /** Solution Metadata. */
 export type SolutionMetadataList = Array<SolutionMetadataItemList>;
-export const SolutionMetadataList = /*@__PURE__*/ S.Array(
-  SolutionMetadataItemList,
-) as any as S.Schema<SolutionMetadataList>;
+export const SolutionMetadataList =
+  DetectorAbnormalTimePeriodMetaDataList as any as S.Schema<SolutionMetadataList>;
 
 /** Class Representing Solution for problems detected. */
 export interface Solution {
@@ -7413,9 +7138,8 @@ export const AbnormalTimePeriodEventsList = /*@__PURE__*/ S.Array(
 
 /** List of proposed solutions */
 export type AbnormalTimePeriodSolutionsList = Array<Solution>;
-export const AbnormalTimePeriodSolutionsList = /*@__PURE__*/ S.Array(
-  Solution,
-) as any as S.Schema<AbnormalTimePeriodSolutionsList>;
+export const AbnormalTimePeriodSolutionsList =
+  DetectorAbnormalTimePeriodSolutionsList as any as S.Schema<AbnormalTimePeriodSolutionsList>;
 
 /** Class representing Abnormal Time Period identified in diagnosis */
 export interface AbnormalTimePeriod {
@@ -7528,27 +7252,23 @@ export const AnalysisDataMetricsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnalysisDataMetricsList>;
 
 export type AnalysisDataDataItemList = Array<NameValuePair>;
-export const AnalysisDataDataItemList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<AnalysisDataDataItemList>;
+export const AnalysisDataDataItemList =
+  SiteConfigAppSettingsList as any as S.Schema<AnalysisDataDataItemList>;
 
 /** Additional Source Data */
 export type AnalysisDataDataList = Array<AnalysisDataDataItemList>;
-export const AnalysisDataDataList = /*@__PURE__*/ S.Array(
-  AnalysisDataDataItemList,
-) as any as S.Schema<AnalysisDataDataList>;
+export const AnalysisDataDataList =
+  DetectorAbnormalTimePeriodMetaDataList as any as S.Schema<AnalysisDataDataList>;
 
 /** Instructions if any for the data source */
 export type DataSourceInstructionsList = Array<string>;
-export const DataSourceInstructionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceInstructionsList>;
+export const DataSourceInstructionsList =
+  SitePropertiesHostNamesList as any as S.Schema<DataSourceInstructionsList>;
 
 /** Datasource Uri Links */
 export type DataSourceDataSourceUriList = Array<NameValuePair>;
-export const DataSourceDataSourceUriList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<DataSourceDataSourceUriList>;
+export const DataSourceDataSourceUriList =
+  SiteConfigAppSettingsList as any as S.Schema<DataSourceDataSourceUriList>;
 
 /** Class representing data source used by the detectors */
 export interface DataSource {
@@ -7713,17 +7433,8 @@ export interface ExecuteDiagnosticSiteAnalysisSlotResponse {
   /** DiagnosticAnalysis resource specific properties */
   properties?: DiagnosticAnalysisProperties;
 }
-export const ExecuteDiagnosticSiteAnalysisSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticAnalysisProperties),
-  }),
-).annotate({
-  identifier: "ExecuteDiagnosticSiteAnalysisSlotResponse",
-}) as any as S.Schema<ExecuteDiagnosticSiteAnalysisSlotResponse>;
+export const ExecuteDiagnosticSiteAnalysisSlotResponse =
+  ExecuteDiagnosticSiteAnalysisResponse as any as S.Schema<ExecuteDiagnosticSiteAnalysisSlotResponse>;
 
 export interface ExecuteDiagnosticSiteDetectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7767,28 +7478,24 @@ export const ExecuteDiagnosticSiteDetectorRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Metrics provided by the detector */
 export type DiagnosticDetectorResponsePropertiesMetricsList = Array<DiagnosticMetricSet>;
-export const DiagnosticDetectorResponsePropertiesMetricsList = /*@__PURE__*/ S.Array(
-  DiagnosticMetricSet,
-) as any as S.Schema<DiagnosticDetectorResponsePropertiesMetricsList>;
+export const DiagnosticDetectorResponsePropertiesMetricsList =
+  AnalysisDataMetricsList as any as S.Schema<DiagnosticDetectorResponsePropertiesMetricsList>;
 
 /** List of Correlated events found by the detector */
 export type DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList =
   Array<DetectorAbnormalTimePeriod>;
-export const DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList = /*@__PURE__*/ S.Array(
-  DetectorAbnormalTimePeriod,
-) as any as S.Schema<DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList>;
+export const DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList =
+  AbnormalTimePeriodEventsList as any as S.Schema<DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList>;
 
 export type DiagnosticDetectorResponsePropertiesDataItemList = Array<NameValuePair>;
-export const DiagnosticDetectorResponsePropertiesDataItemList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<DiagnosticDetectorResponsePropertiesDataItemList>;
+export const DiagnosticDetectorResponsePropertiesDataItemList =
+  SiteConfigAppSettingsList as any as S.Schema<DiagnosticDetectorResponsePropertiesDataItemList>;
 
 /** Additional Data that detector wants to send. */
 export type DiagnosticDetectorResponsePropertiesDataList =
   Array<DiagnosticDetectorResponsePropertiesDataItemList>;
-export const DiagnosticDetectorResponsePropertiesDataList = /*@__PURE__*/ S.Array(
-  DiagnosticDetectorResponsePropertiesDataItemList,
-) as any as S.Schema<DiagnosticDetectorResponsePropertiesDataList>;
+export const DiagnosticDetectorResponsePropertiesDataList =
+  DetectorAbnormalTimePeriodMetaDataList as any as S.Schema<DiagnosticDetectorResponsePropertiesDataList>;
 
 /** DiagnosticDetectorResponse resource specific properties */
 export interface DiagnosticDetectorResponseProperties {
@@ -7903,17 +7610,8 @@ export interface ExecuteDiagnosticSiteDetectorSlotResponse {
   /** DiagnosticDetectorResponse resource specific properties */
   properties?: DiagnosticDetectorResponseProperties;
 }
-export const ExecuteDiagnosticSiteDetectorSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticDetectorResponseProperties),
-  }),
-).annotate({
-  identifier: "ExecuteDiagnosticSiteDetectorSlotResponse",
-}) as any as S.Schema<ExecuteDiagnosticSiteDetectorSlotResponse>;
+export const ExecuteDiagnosticSiteDetectorSlotResponse =
+  ExecuteDiagnosticSiteDetectorResponse as any as S.Schema<ExecuteDiagnosticSiteDetectorSlotResponse>;
 
 export interface GenerateWebAppNewSitePublishingPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7941,11 +7639,8 @@ export const GenerateWebAppNewSitePublishingPasswordRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<GenerateWebAppNewSitePublishingPasswordRequest>;
 
 export interface GenerateWebAppNewSitePublishingPasswordResponse {}
-export const GenerateWebAppNewSitePublishingPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateWebAppNewSitePublishingPasswordResponse",
-}) as any as S.Schema<GenerateWebAppNewSitePublishingPasswordResponse>;
+export const GenerateWebAppNewSitePublishingPasswordResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<GenerateWebAppNewSitePublishingPasswordResponse>;
 
 export interface GenerateWebAppNewSitePublishingPasswordSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7976,11 +7671,8 @@ export const GenerateWebAppNewSitePublishingPasswordSlotRequest = /*@__PURE__*/ 
 }) as any as S.Schema<GenerateWebAppNewSitePublishingPasswordSlotRequest>;
 
 export interface GenerateWebAppNewSitePublishingPasswordSlotResponse {}
-export const GenerateWebAppNewSitePublishingPasswordSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateWebAppNewSitePublishingPasswordSlotResponse",
-}) as any as S.Schema<GenerateWebAppNewSitePublishingPasswordSlotResponse>;
+export const GenerateWebAppNewSitePublishingPasswordSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<GenerateWebAppNewSitePublishingPasswordSlotResponse>;
 
 export interface GetAiGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8007,10 +7699,8 @@ export const GetAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAiGatewayResponseTagsMap = { [key: string]: string | undefined };
-export const GetAiGatewayResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAiGatewayResponseTagsMap>;
+export const GetAiGatewayResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetAiGatewayResponseTagsMap>;
 
 export interface GetAiGatewayResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8067,10 +7757,8 @@ export const GetAppServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAppServiceEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const GetAppServiceEnvironmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAppServiceEnvironmentResponseTagsMap>;
+export const GetAppServiceEnvironmentResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppServiceEnvironmentResponseTagsMap>;
 
 export interface GetAppServiceEnvironmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8090,20 +7778,8 @@ export interface GetAppServiceEnvironmentResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetAppServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAppServiceEnvironmentResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceEnvironment),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAppServiceEnvironmentResponse",
-}) as any as S.Schema<GetAppServiceEnvironmentResponse>;
+export const GetAppServiceEnvironmentResponse =
+  AppServiceEnvironmentsCreateOrUpdateResponse as any as S.Schema<GetAppServiceEnvironmentResponse>;
 
 export interface GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8284,15 +7960,13 @@ export const GetAppServiceEnvironmentInboundNetworkDependenciesEndpointsRequest 
 
 /** The IP addresses that network traffic will originate from in cidr notation. */
 export type InboundEnvironmentEndpointEndpointsList = Array<string>;
-export const InboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InboundEnvironmentEndpointEndpointsList>;
+export const InboundEnvironmentEndpointEndpointsList =
+  SitePropertiesHostNamesList as any as S.Schema<InboundEnvironmentEndpointEndpointsList>;
 
 /** The ports that network traffic will arrive to the App Service Environment at. */
 export type InboundEnvironmentEndpointPortsList = Array<string>;
-export const InboundEnvironmentEndpointPortsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InboundEnvironmentEndpointPortsList>;
+export const InboundEnvironmentEndpointPortsList =
+  SitePropertiesHostNamesList as any as S.Schema<InboundEnvironmentEndpointPortsList>;
 
 /** The IP Addresses and Ports that require inbound network access to and within the subnet of the App Service Environment. */
 export interface InboundEnvironmentEndpoint {
@@ -8376,19 +8050,8 @@ export interface GetAppServiceEnvironmentMultiRolePoolResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetAppServiceEnvironmentMultiRolePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkerPool),
-    sku: S.optional(SkuDescription),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAppServiceEnvironmentMultiRolePoolResponse",
-}) as any as S.Schema<GetAppServiceEnvironmentMultiRolePoolResponse>;
+export const GetAppServiceEnvironmentMultiRolePoolResponse =
+  AppServiceEnvironmentsCreateOrUpdateWorkerPoolResponse as any as S.Schema<GetAppServiceEnvironmentMultiRolePoolResponse>;
 
 export interface GetAppServiceEnvironmentOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8584,15 +8247,13 @@ export const GetAppServiceEnvironmentPrivateLinkResourcesRequest = /*@__PURE__*/
 
 /** RequiredMembers of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  SitePropertiesHostNamesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** RequiredZoneNames of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource */
 export interface PrivateLinkResourceProperties {
@@ -8675,9 +8336,8 @@ export const GetAppServiceEnvironmentVipInfoRequest = /*@__PURE__*/ S.suspend(()
 
 /** IP addresses appearing on outbound connections. */
 export type AddressResponsePropertiesOutboundIpAddressesList = Array<string>;
-export const AddressResponsePropertiesOutboundIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddressResponsePropertiesOutboundIpAddressesList>;
+export const AddressResponsePropertiesOutboundIpAddressesList =
+  SitePropertiesHostNamesList as any as S.Schema<AddressResponsePropertiesOutboundIpAddressesList>;
 
 /** Virtual IP mapping. */
 export interface VirtualIPMapping {
@@ -8801,19 +8461,8 @@ export interface GetAppServiceEnvironmentWorkerPoolResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetAppServiceEnvironmentWorkerPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkerPool),
-    sku: S.optional(SkuDescription),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetAppServiceEnvironmentWorkerPoolResponse",
-}) as any as S.Schema<GetAppServiceEnvironmentWorkerPoolResponse>;
+export const GetAppServiceEnvironmentWorkerPoolResponse =
+  AppServiceEnvironmentsCreateOrUpdateWorkerPoolResponse as any as S.Schema<GetAppServiceEnvironmentWorkerPoolResponse>;
 
 export interface GetAppServicePlanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8840,10 +8489,8 @@ export const GetAppServicePlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAppServicePlanResponseTagsMap = { [key: string]: string | undefined };
-export const GetAppServicePlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAppServicePlanResponseTagsMap>;
+export const GetAppServicePlanResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppServicePlanResponseTagsMap>;
 
 export interface GetAppServicePlanResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8869,23 +8516,8 @@ export interface GetAppServicePlanResponse {
   /** Managed service identity. */
   identity?: ManagedServiceIdentity;
 }
-export const GetAppServicePlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAppServicePlanResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AppServicePlanProperties),
-    sku: S.optional(SkuDescription),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-  }),
-).annotate({
-  identifier: "GetAppServicePlanResponse",
-}) as any as S.Schema<GetAppServicePlanResponse>;
+export const GetAppServicePlanResponse =
+  AppServicePlansCreateOrUpdateResponse as any as S.Schema<GetAppServicePlanResponse>;
 
 export interface GetAppServicePlanHybridConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9248,11 +8880,8 @@ export const GetAppServicePlanServerFarmSkusRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetAppServicePlanServerFarmSkusRequest>;
 
 export type GetAppServicePlanServerFarmSkusResponse = unknown;
-export const GetAppServicePlanServerFarmSkusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetAppServicePlanServerFarmSkusResponse",
-}) as any as S.Schema<GetAppServicePlanServerFarmSkusResponse>;
+export const GetAppServicePlanServerFarmSkusResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetAppServicePlanServerFarmSkusResponse>;
 
 export interface GetAppServicePlanVnetFromServerFarmRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9284,9 +8913,8 @@ export const GetAppServicePlanVnetFromServerFarmRequest = /*@__PURE__*/ S.suspen
 
 /** The routes that this Virtual Network connection uses. */
 export type VnetInfoRoutesList = Array<VnetRoute>;
-export const VnetInfoRoutesList = /*@__PURE__*/ S.Array(
-  VnetRoute,
-) as any as S.Schema<VnetInfoRoutesList>;
+export const VnetInfoRoutesList =
+  GetAppServicePlanRouteForVnetResponseBodyList as any as S.Schema<VnetInfoRoutesList>;
 
 /** Virtual Network information contract. */
 export interface VnetInfo {
@@ -9441,10 +9069,8 @@ export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCertificateResponseTagsMap = { [key: string]: string | undefined };
-export const GetCertificateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCertificateResponseTagsMap>;
+export const GetCertificateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetCertificateResponseTagsMap>;
 
 export interface GetCertificateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9620,9 +9246,8 @@ export const DetectorInfoSupportTopicListList = /*@__PURE__*/ S.Array(
 
 /** Analysis Types for which this detector should apply to. */
 export type DetectorInfoAnalysisTypeList = Array<string>;
-export const DetectorInfoAnalysisTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DetectorInfoAnalysisTypeList>;
+export const DetectorInfoAnalysisTypeList =
+  SitePropertiesHostNamesList as any as S.Schema<DetectorInfoAnalysisTypeList>;
 
 /** Whether this detector is an Analysis Detector or not. */
 export type DetectorType = "Detector" | "Analysis" | "CategoryOverview";
@@ -9687,9 +9312,8 @@ export const DataTableResponseObjectColumnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DataTableResponseObjectColumnsList>;
 
 export type DataTableResponseObjectRowsItemList = Array<string>;
-export const DataTableResponseObjectRowsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataTableResponseObjectRowsItemList>;
+export const DataTableResponseObjectRowsItemList =
+  SitePropertiesHostNamesList as any as S.Schema<DataTableResponseObjectRowsItemList>;
 
 /** Raw row values */
 export type DataTableResponseObjectRowsList = Array<DataTableResponseObjectRowsItemList>;
@@ -9837,9 +9461,8 @@ export const DetectorResponsePropertiesDataProvidersMetadataList = /*@__PURE__*/
 
 /** Links attribute of sample utterance. */
 export type SampleUtteranceLinksList = Array<string>;
-export const SampleUtteranceLinksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SampleUtteranceLinksList>;
+export const SampleUtteranceLinksList =
+  SitePropertiesHostNamesList as any as S.Schema<SampleUtteranceLinksList>;
 
 /** Sample utterance. */
 export interface SampleUtterance {
@@ -10063,18 +9686,8 @@ export interface GetDiagnosticSiteAnalysisSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetDiagnosticSiteAnalysisSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AnalysisDefinitionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDiagnosticSiteAnalysisSlotResponse",
-}) as any as S.Schema<GetDiagnosticSiteAnalysisSlotResponse>;
+export const GetDiagnosticSiteAnalysisSlotResponse =
+  GetDiagnosticSiteAnalysisResponse as any as S.Schema<GetDiagnosticSiteAnalysisSlotResponse>;
 
 export interface GetDiagnosticSiteDetectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10185,18 +9798,8 @@ export interface GetDiagnosticSiteDetectorResponseResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetDiagnosticSiteDetectorResponseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DetectorResponseProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDiagnosticSiteDetectorResponseResponse",
-}) as any as S.Schema<GetDiagnosticSiteDetectorResponseResponse>;
+export const GetDiagnosticSiteDetectorResponseResponse =
+  GetDiagnosticHostingEnvironmentDetectorResponseResponse as any as S.Schema<GetDiagnosticSiteDetectorResponseResponse>;
 
 export interface GetDiagnosticSiteDetectorResponseSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10252,18 +9855,8 @@ export interface GetDiagnosticSiteDetectorResponseSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetDiagnosticSiteDetectorResponseSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DetectorResponseProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDiagnosticSiteDetectorResponseSlotResponse",
-}) as any as S.Schema<GetDiagnosticSiteDetectorResponseSlotResponse>;
+export const GetDiagnosticSiteDetectorResponseSlotResponse =
+  GetDiagnosticHostingEnvironmentDetectorResponseResponse as any as S.Schema<GetDiagnosticSiteDetectorResponseSlotResponse>;
 
 export interface GetDiagnosticSiteDetectorSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10313,18 +9906,8 @@ export interface GetDiagnosticSiteDetectorSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetDiagnosticSiteDetectorSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DetectorDefinition),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDiagnosticSiteDetectorSlotResponse",
-}) as any as S.Schema<GetDiagnosticSiteDetectorSlotResponse>;
+export const GetDiagnosticSiteDetectorSlotResponse =
+  GetDiagnosticSiteDetectorResponse2 as any as S.Schema<GetDiagnosticSiteDetectorSlotResponse>;
 
 export interface GetDiagnosticSiteDiagnosticCategoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10359,13 +9942,8 @@ export interface DiagnosticCategoryProperties {
   /** Description of the diagnostic category */
   description?: string;
 }
-export const DiagnosticCategoryProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiagnosticCategoryProperties",
-}) as any as S.Schema<DiagnosticCategoryProperties>;
+export const DiagnosticCategoryProperties =
+  AnalysisDefinitionProperties as any as S.Schema<DiagnosticCategoryProperties>;
 
 export interface GetDiagnosticSiteDiagnosticCategoryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10381,18 +9959,8 @@ export interface GetDiagnosticSiteDiagnosticCategoryResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetDiagnosticSiteDiagnosticCategoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DiagnosticCategoryProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDiagnosticSiteDiagnosticCategoryResponse",
-}) as any as S.Schema<GetDiagnosticSiteDiagnosticCategoryResponse>;
+export const GetDiagnosticSiteDiagnosticCategoryResponse =
+  GetDiagnosticSiteAnalysisResponse as any as S.Schema<GetDiagnosticSiteDiagnosticCategoryResponse>;
 
 export interface GetDiagnosticSiteDiagnosticCategorySlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10439,18 +10007,8 @@ export interface GetDiagnosticSiteDiagnosticCategorySlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetDiagnosticSiteDiagnosticCategorySlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DiagnosticCategoryProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDiagnosticSiteDiagnosticCategorySlotResponse",
-}) as any as S.Schema<GetDiagnosticSiteDiagnosticCategorySlotResponse>;
+export const GetDiagnosticSiteDiagnosticCategorySlotResponse =
+  GetDiagnosticSiteAnalysisResponse as any as S.Schema<GetDiagnosticSiteDiagnosticCategorySlotResponse>;
 
 export interface GetGlobalDeletedWebAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10488,18 +10046,8 @@ export interface GetGlobalDeletedWebAppResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetGlobalDeletedWebAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeletedSiteProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetGlobalDeletedWebAppResponse",
-}) as any as S.Schema<GetGlobalDeletedWebAppResponse>;
+export const GetGlobalDeletedWebAppResponse =
+  GetDeletedWebAppDeletedWebAppByLocationResponse as any as S.Schema<GetGlobalDeletedWebAppResponse>;
 
 export interface GetGlobalDeletedWebAppSnapshotsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10596,11 +10144,8 @@ export const GetGlobalSubscriptionOperationWithAsyncResponseRequest = /*@__PURE_
 }) as any as S.Schema<GetGlobalSubscriptionOperationWithAsyncResponseRequest>;
 
 export interface GetGlobalSubscriptionOperationWithAsyncResponseResponse {}
-export const GetGlobalSubscriptionOperationWithAsyncResponseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetGlobalSubscriptionOperationWithAsyncResponseResponse",
-}) as any as S.Schema<GetGlobalSubscriptionOperationWithAsyncResponseResponse>;
+export const GetGlobalSubscriptionOperationWithAsyncResponseResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<GetGlobalSubscriptionOperationWithAsyncResponseResponse>;
 
 export interface GetKubeEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10629,10 +10174,8 @@ export const GetKubeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetKubeEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const GetKubeEnvironmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetKubeEnvironmentResponseTagsMap>;
+export const GetKubeEnvironmentResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetKubeEnvironmentResponseTagsMap>;
 
 /** Provisioning state of the Kubernetes Environment. */
 export type KubeEnvironmentProvisioningState =
@@ -10864,19 +10407,15 @@ export const StackMajorVersionMinorVersionsList = /*@__PURE__*/ S.Array(
 
 /** <appSettings> <appSetting name="FUNCTIONS_WORKER_RUNTIME" value="dotnet" /> </appSettings> Example: All the function apps need AppSetting: "FUNCTIONS_WORKER_RUNTIME" to be set stack name */
 export type StackMajorVersionAppSettingsDictionaryMap = { [key: string]: unknown | undefined };
-export const StackMajorVersionAppSettingsDictionaryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StackMajorVersionAppSettingsDictionaryMap>;
+export const StackMajorVersionAppSettingsDictionaryMap =
+  DeployWebAppWorkflowArtifactsRequestFilesMap as any as S.Schema<StackMajorVersionAppSettingsDictionaryMap>;
 
 /** <siteConfigProperties> <siteConfigProperty name="Use32BitWorkerProcess" value="false" /> </siteConfigProperties> Example: All Linux Function Apps, need Use32BitWorkerProcess to be set to 0 */
 export type StackMajorVersionSiteConfigPropertiesDictionaryMap = {
   [key: string]: unknown | undefined;
 };
-export const StackMajorVersionSiteConfigPropertiesDictionaryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<StackMajorVersionSiteConfigPropertiesDictionaryMap>;
+export const StackMajorVersionSiteConfigPropertiesDictionaryMap =
+  DeployWebAppWorkflowArtifactsRequestFilesMap as any as S.Schema<StackMajorVersionSiteConfigPropertiesDictionaryMap>;
 
 /** Application stack major version. */
 export interface StackMajorVersion {
@@ -10930,9 +10469,8 @@ export const ApplicationStackFrameworksList = /*@__PURE__*/ S.Array(
 
 /** <code>true</code> if this is the stack is deprecated; otherwise, <code>false</code>. */
 export type ApplicationStackIsDeprecatedList = Array<ApplicationStack>;
-export const ApplicationStackIsDeprecatedList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ApplicationStack),
-) as any as S.Schema<ApplicationStackIsDeprecatedList>;
+export const ApplicationStackIsDeprecatedList =
+  ApplicationStackFrameworksList as any as S.Schema<ApplicationStackIsDeprecatedList>;
 
 /** Application stack. */
 export interface ApplicationStack {
@@ -11094,10 +10632,8 @@ export const GitHubActionWebAppStackSettings = /*@__PURE__*/ S.suspend(() =>
 export type FunctionAppRuntimeSettingsAppSettingsDictionaryMap = {
   [key: string]: string | undefined;
 };
-export const FunctionAppRuntimeSettingsAppSettingsDictionaryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FunctionAppRuntimeSettingsAppSettingsDictionaryMap>;
+export const FunctionAppRuntimeSettingsAppSettingsDictionaryMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<FunctionAppRuntimeSettingsAppSettingsDictionaryMap>;
 
 /** Site config properties dictionary. */
 export interface SiteConfigPropertiesDictionary {
@@ -11124,9 +10660,7 @@ export const SiteConfigPropertiesDictionary = /*@__PURE__*/ S.suspend(() =>
 /** List of supported Functions extension versions. */
 export type FunctionAppRuntimeSettingsSupportedFunctionsExtensionVersionsList = Array<string>;
 export const FunctionAppRuntimeSettingsSupportedFunctionsExtensionVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FunctionAppRuntimeSettingsSupportedFunctionsExtensionVersionsList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<FunctionAppRuntimeSettingsSupportedFunctionsExtensionVersionsList>;
 
 /** Function App runtime settings. */
 export interface FunctionAppRuntimeSettings {
@@ -11734,9 +11268,8 @@ export const Channels = S.String;
 
 /** The list of category tags that this recommendation rule belongs to. */
 export type RecommendationRulePropertiesCategoryTagsList = Array<string>;
-export const RecommendationRulePropertiesCategoryTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecommendationRulePropertiesCategoryTagsList>;
+export const RecommendationRulePropertiesCategoryTagsList =
+  SitePropertiesHostNamesList as any as S.Schema<RecommendationRulePropertiesCategoryTagsList>;
 
 /** RecommendationRule resource specific properties */
 export interface RecommendationRuleProperties {
@@ -11986,18 +11519,8 @@ export interface GetResourceHealthMetadataBySiteSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetResourceHealthMetadataBySiteSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceHealthMetadataProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetResourceHealthMetadataBySiteSlotResponse",
-}) as any as S.Schema<GetResourceHealthMetadataBySiteSlotResponse>;
+export const GetResourceHealthMetadataBySiteSlotResponse =
+  GetResourceHealthMetadataBySiteResponse as any as S.Schema<GetResourceHealthMetadataBySiteSlotResponse>;
 
 export interface GetSiteCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12029,10 +11552,8 @@ export const GetSiteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSiteCertificateResponseTagsMap = { [key: string]: string | undefined };
-export const GetSiteCertificateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSiteCertificateResponseTagsMap>;
+export const GetSiteCertificateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetSiteCertificateResponseTagsMap>;
 
 export interface GetSiteCertificateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12052,20 +11573,8 @@ export interface GetSiteCertificateResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetSiteCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSiteCertificateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSiteCertificateResponse",
-}) as any as S.Schema<GetSiteCertificateResponse>;
+export const GetSiteCertificateResponse =
+  CertificatesCreateOrUpdateResponse as any as S.Schema<GetSiteCertificateResponse>;
 
 export interface GetSiteCertificateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12100,10 +11609,8 @@ export const GetSiteCertificateSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSiteCertificateSlotResponseTagsMap = { [key: string]: string | undefined };
-export const GetSiteCertificateSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSiteCertificateSlotResponseTagsMap>;
+export const GetSiteCertificateSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetSiteCertificateSlotResponseTagsMap>;
 
 export interface GetSiteCertificateSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12123,20 +11630,8 @@ export interface GetSiteCertificateSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetSiteCertificateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetSiteCertificateSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSiteCertificateSlotResponse",
-}) as any as S.Schema<GetSiteCertificateSlotResponse>;
+export const GetSiteCertificateSlotResponse =
+  CertificatesCreateOrUpdateResponse as any as S.Schema<GetSiteCertificateSlotResponse>;
 
 export interface GetSiteNetworkSecurityPerimeterConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12168,15 +11663,13 @@ export const GetSiteNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/
 
 /** Recommended ARM Ids to resolve the issue */
 export type NspProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
-export const NspProvisioningIssuePropertiesSuggestedResourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProvisioningIssuePropertiesSuggestedResourceIdsList>;
+export const NspProvisioningIssuePropertiesSuggestedResourceIdsList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Recommended access rules to resolve the issue */
 export type NspProvisioningIssuePropertiesSuggestedAccessRulesList = Array<string>;
-export const NspProvisioningIssuePropertiesSuggestedAccessRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProvisioningIssuePropertiesSuggestedAccessRulesList>;
+export const NspProvisioningIssuePropertiesSuggestedAccessRulesList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProvisioningIssuePropertiesSuggestedAccessRulesList>;
 
 /** Network Security Perimeter Association Provisioning Issue Properties */
 export interface NspProvisioningIssueProperties {
@@ -12258,21 +11751,18 @@ export const NspResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 
 /** IP Address Ranges of Access Rule */
 export type NspProfileAccessRulePropertiesAddressPrefixesList = Array<string>;
-export const NspProfileAccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProfileAccessRulePropertiesAddressPrefixesList>;
+export const NspProfileAccessRulePropertiesAddressPrefixesList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProfileAccessRulePropertiesAddressPrefixesList>;
 
 /** Service Tags of Access Rule */
 export type NspProfileAccessRulePropertiesServiceTagsList = Array<string>;
-export const NspProfileAccessRulePropertiesServiceTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProfileAccessRulePropertiesServiceTagsList>;
+export const NspProfileAccessRulePropertiesServiceTagsList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProfileAccessRulePropertiesServiceTagsList>;
 
 /** Names of applied Granular Features. */
 export type NspProfileAccessRuleGranularFeatureFeaturesList = Array<string>;
-export const NspProfileAccessRuleGranularFeatureFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProfileAccessRuleGranularFeatureFeaturesList>;
+export const NspProfileAccessRuleGranularFeatureFeaturesList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProfileAccessRuleGranularFeatureFeaturesList>;
 
 /** Network Security Perimeter Profile Access Rule Granular Feature */
 export interface NspProfileAccessRuleGranularFeature {
@@ -12302,11 +11792,7 @@ export interface NspSubscription {
   /** Network Security Perimeter Subscription Id */
   id?: string;
 }
-export const NspSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "NspSubscription" }) as any as S.Schema<NspSubscription>;
+export const NspSubscription = ArmIdWrapper as any as S.Schema<NspSubscription>;
 
 /** Subscriptions of Access Rule. Not supported by App Service. */
 export type NspProfileAccessRulePropertiesSubscriptionsList = Array<NspSubscription>;
@@ -12323,21 +11809,18 @@ export const NspProfileAccessRulePropertiesNetworkSecurityPerimetersList = /*@__
 
 /** Fully Qualified Domain Names of Access Rule. Not supported by App Service. */
 export type NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
-export const NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList>;
+export const NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email Addresses of Access Rule. Not supported by App Service. */
 export type NspProfileAccessRulePropertiesEmailAddressesList = Array<string>;
-export const NspProfileAccessRulePropertiesEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProfileAccessRulePropertiesEmailAddressesList>;
+export const NspProfileAccessRulePropertiesEmailAddressesList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProfileAccessRulePropertiesEmailAddressesList>;
 
 /** Phone Numbers of Access Rule. Not supported by App Service. */
 export type NspProfileAccessRulePropertiesPhoneNumbersList = Array<string>;
-export const NspProfileAccessRulePropertiesPhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProfileAccessRulePropertiesPhoneNumbersList>;
+export const NspProfileAccessRulePropertiesPhoneNumbersList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProfileAccessRulePropertiesPhoneNumbersList>;
 
 /** Network Security Perimeter Profile Access Rule Properties */
 export interface NspProfileAccessRuleProperties {
@@ -12402,9 +11885,8 @@ export const NspProfileAccessRulesList = /*@__PURE__*/ S.Array(
 
 /** Enabled Log Categories for the Network Security Perimeter Profile. */
 export type NspProfileEnabledLogCategoriesList = Array<string>;
-export const NspProfileEnabledLogCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NspProfileEnabledLogCategoriesList>;
+export const NspProfileEnabledLogCategoriesList =
+  SitePropertiesHostNamesList as any as S.Schema<NspProfileEnabledLogCategoriesList>;
 
 /** Network Security Perimeter Profile */
 export interface NspProfile {
@@ -12576,9 +12058,7 @@ export const GetStaticSiteBasicAuthRequest = /*@__PURE__*/ S.suspend(() =>
 /** The list of enabled environments for Basic Auth if ApplicableEnvironmentsMode is set to SpecifiedEnvironments. */
 export type StaticSiteBasicAuthPropertiesARMResourcePropertiesEnvironmentsList = Array<string>;
 export const StaticSiteBasicAuthPropertiesARMResourcePropertiesEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<StaticSiteBasicAuthPropertiesARMResourcePropertiesEnvironmentsList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<StaticSiteBasicAuthPropertiesARMResourcePropertiesEnvironmentsList>;
 
 /** StaticSiteBasicAuthPropertiesARMResource resource specific properties */
 export interface StaticSiteBasicAuthPropertiesARMResourceProperties {
@@ -12890,18 +12370,8 @@ export interface GetStaticSiteBuildDatabaseConnectionWithDetailsResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetStaticSiteBuildDatabaseConnectionWithDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetStaticSiteBuildDatabaseConnectionWithDetailsResponse",
-}) as any as S.Schema<GetStaticSiteBuildDatabaseConnectionWithDetailsResponse>;
+export const GetStaticSiteBuildDatabaseConnectionWithDetailsResponse =
+  GetStaticSiteBuildDatabaseConnectionResponse as any as S.Schema<GetStaticSiteBuildDatabaseConnectionWithDetailsResponse>;
 
 export interface GetStaticSiteDatabaseConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12945,18 +12415,8 @@ export interface GetStaticSiteDatabaseConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetStaticSiteDatabaseConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetStaticSiteDatabaseConnectionResponse",
-}) as any as S.Schema<GetStaticSiteDatabaseConnectionResponse>;
+export const GetStaticSiteDatabaseConnectionResponse =
+  GetStaticSiteBuildDatabaseConnectionResponse as any as S.Schema<GetStaticSiteDatabaseConnectionResponse>;
 
 export interface GetStaticSiteDatabaseConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13050,18 +12510,8 @@ export interface GetStaticSiteDatabaseConnectionWithDetailsResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetStaticSiteDatabaseConnectionWithDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetStaticSiteDatabaseConnectionWithDetailsResponse",
-}) as any as S.Schema<GetStaticSiteDatabaseConnectionWithDetailsResponse>;
+export const GetStaticSiteDatabaseConnectionWithDetailsResponse =
+  GetStaticSiteBuildDatabaseConnectionResponse as any as S.Schema<GetStaticSiteDatabaseConnectionWithDetailsResponse>;
 
 export interface GetStaticSiteLinkedBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13185,18 +12635,8 @@ export interface GetStaticSiteLinkedBackendForBuildResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetStaticSiteLinkedBackendForBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetStaticSiteLinkedBackendForBuildResponse",
-}) as any as S.Schema<GetStaticSiteLinkedBackendForBuildResponse>;
+export const GetStaticSiteLinkedBackendForBuildResponse =
+  GetStaticSiteLinkedBackendResponse as any as S.Schema<GetStaticSiteLinkedBackendForBuildResponse>;
 
 export interface GetStaticSiteLinkedBackendsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13238,18 +12678,8 @@ export interface StaticSiteLinkedBackendARMResource {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSiteLinkedBackendARMResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSiteLinkedBackendARMResource",
-}) as any as S.Schema<StaticSiteLinkedBackendARMResource>;
+export const StaticSiteLinkedBackendARMResource =
+  GetStaticSiteLinkedBackendResponse as any as S.Schema<StaticSiteLinkedBackendARMResource>;
 
 /** The StaticSiteLinkedBackendARMResource items on this page */
 export type StaticSiteLinkedBackendsCollectionValueList = Array<StaticSiteLinkedBackendARMResource>;
@@ -13343,18 +12773,8 @@ export interface GetStaticSitePrivateEndpointConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetStaticSitePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemotePrivateEndpointConnectionARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetStaticSitePrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetStaticSitePrivateEndpointConnectionResponse>;
+export const GetStaticSitePrivateEndpointConnectionResponse =
+  RemotePrivateEndpointConnectionARMResource as any as S.Schema<GetStaticSitePrivateEndpointConnectionResponse>;
 
 export interface GetStaticSitePrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13454,9 +12874,8 @@ export const GetStaticSitesAsyncOperationOperationStatusRequest = /*@__PURE__*/ 
 
 /** The custom domains associated with this static site. */
 export type StaticSiteCustomDomainsList = Array<string>;
-export const StaticSiteCustomDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StaticSiteCustomDomainsList>;
+export const StaticSiteCustomDomainsList =
+  SitePropertiesHostNamesList as any as S.Schema<StaticSiteCustomDomainsList>;
 
 /** Build properties for the static site. */
 export interface StaticSiteBuildProperties {
@@ -13496,10 +12915,8 @@ export const StaticSiteBuildProperties = /*@__PURE__*/ S.suspend(() =>
 export type ResponseMessageEnvelopeRemotePrivateEndpointConnectionTagsMap = {
   [key: string]: string | undefined;
 };
-export const ResponseMessageEnvelopeRemotePrivateEndpointConnectionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResponseMessageEnvelopeRemotePrivateEndpointConnectionTagsMap>;
+export const ResponseMessageEnvelopeRemotePrivateEndpointConnectionTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ResponseMessageEnvelopeRemotePrivateEndpointConnectionTagsMap>;
 
 /** The plan object in Azure Resource Manager, represents a marketplace plan. */
 export interface ArmPlan {
@@ -13526,9 +12943,8 @@ export const ArmPlan = /*@__PURE__*/ S.suspend(() =>
 
 /** Private IPAddresses mapped to the remote private endpoint */
 export type RemotePrivateEndpointConnectionPropertiesIpAddressesList = Array<string>;
-export const RemotePrivateEndpointConnectionPropertiesIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemotePrivateEndpointConnectionPropertiesIpAddressesList>;
+export const RemotePrivateEndpointConnectionPropertiesIpAddressesList =
+  SitePropertiesHostNamesList as any as S.Schema<RemotePrivateEndpointConnectionPropertiesIpAddressesList>;
 
 /** RemotePrivateEndpointConnection resource specific properties */
 export interface RemotePrivateEndpointConnectionProperties {
@@ -13579,9 +12995,7 @@ export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 /** Logical Availability Zones the service is hosted in */
 export type ResponseMessageEnvelopeRemotePrivateEndpointConnectionZonesList = Array<string>;
 export const ResponseMessageEnvelopeRemotePrivateEndpointConnectionZonesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ResponseMessageEnvelopeRemotePrivateEndpointConnectionZonesList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<ResponseMessageEnvelopeRemotePrivateEndpointConnectionZonesList>;
 
 /** Message envelope that contains the common Azure resource manager properties and the resource provider specific content. */
 export interface ResponseMessageEnvelopeRemotePrivateEndpointConnection {
@@ -13732,9 +13146,8 @@ export const EnterpriseGradeCdnStatus = S.String;
 /** A list of configuration files associated with this database connection. */
 export type DatabaseConnectionOverviewConfigurationFilesList =
   Array<StaticSiteDatabaseConnectionConfigurationFileOverview>;
-export const DatabaseConnectionOverviewConfigurationFilesList = /*@__PURE__*/ S.Array(
-  StaticSiteDatabaseConnectionConfigurationFileOverview,
-) as any as S.Schema<DatabaseConnectionOverviewConfigurationFilesList>;
+export const DatabaseConnectionOverviewConfigurationFilesList =
+  DatabaseConnectionPropertiesConfigurationFilesList as any as S.Schema<DatabaseConnectionOverviewConfigurationFilesList>;
 
 /** Static Site Database Connection overview. */
 export interface DatabaseConnectionOverview {
@@ -13928,10 +13341,8 @@ export const GetStaticSiteStaticSiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStaticSiteStaticSiteResponseTagsMap = { [key: string]: string | undefined };
-export const GetStaticSiteStaticSiteResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetStaticSiteStaticSiteResponseTagsMap>;
+export const GetStaticSiteStaticSiteResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetStaticSiteStaticSiteResponseTagsMap>;
 
 export interface GetStaticSiteStaticSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14022,16 +13433,14 @@ export const StaticSiteBuildARMResourcePropertiesUserProvidedFunctionAppsList =
 /** Backends linked to the static side build */
 export type StaticSiteBuildARMResourcePropertiesLinkedBackendsList =
   Array<StaticSiteLinkedBackendARMResourceProperties>;
-export const StaticSiteBuildARMResourcePropertiesLinkedBackendsList = /*@__PURE__*/ S.Array(
-  StaticSiteLinkedBackendARMResourceProperties,
-) as any as S.Schema<StaticSiteBuildARMResourcePropertiesLinkedBackendsList>;
+export const StaticSiteBuildARMResourcePropertiesLinkedBackendsList =
+  StaticSiteLinkedBackendsList as any as S.Schema<StaticSiteBuildARMResourcePropertiesLinkedBackendsList>;
 
 /** Database connections for the static site build */
 export type StaticSiteBuildARMResourcePropertiesDatabaseConnectionsList =
   Array<DatabaseConnectionOverview>;
-export const StaticSiteBuildARMResourcePropertiesDatabaseConnectionsList = /*@__PURE__*/ S.Array(
-  DatabaseConnectionOverview,
-) as any as S.Schema<StaticSiteBuildARMResourcePropertiesDatabaseConnectionsList>;
+export const StaticSiteBuildARMResourcePropertiesDatabaseConnectionsList =
+  StaticSiteDatabaseConnectionsList as any as S.Schema<StaticSiteBuildARMResourcePropertiesDatabaseConnectionsList>;
 
 /** StaticSiteBuildARMResource resource specific properties */
 export interface StaticSiteBuildARMResourceProperties {
@@ -14142,18 +13551,8 @@ export interface StaticSiteBuildARMResource {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSiteBuildARMResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteBuildARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSiteBuildARMResource",
-}) as any as S.Schema<StaticSiteBuildARMResource>;
+export const StaticSiteBuildARMResource =
+  GetStaticSiteStaticSiteBuildResponse as any as S.Schema<StaticSiteBuildARMResource>;
 
 /** The StaticSiteBuildARMResource items on this page */
 export type StaticSiteBuildCollectionValueList = Array<StaticSiteBuildARMResource>;
@@ -14291,10 +13690,8 @@ export const GetStaticSiteStaticSitesByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type StaticSiteARMResourceTagsMap = { [key: string]: string | undefined };
-export const StaticSiteARMResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StaticSiteARMResourceTagsMap>;
+export const StaticSiteARMResourceTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<StaticSiteARMResourceTagsMap>;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface StaticSiteARMResource {
@@ -14721,10 +14118,8 @@ export const GetWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWebAppResponseTagsMap = { [key: string]: string | undefined };
-export const GetWebAppResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebAppResponseTagsMap>;
+export const GetWebAppResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetWebAppResponseTagsMap>;
 
 export interface GetWebAppResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14748,20 +14143,7 @@ export interface GetWebAppResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetWebAppResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SiteProperties),
-    identity: S.optional(ManagedServiceIdentity),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetWebAppResponse" }) as any as S.Schema<GetWebAppResponse>;
+export const GetWebAppResponse = Site as any as S.Schema<GetWebAppResponse>;
 
 export interface GetWebAppAppSettingKeyVaultReferenceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14906,18 +14288,8 @@ export interface GetWebAppAppSettingKeyVaultReferenceSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppAppSettingKeyVaultReferenceSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApiKVReferenceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppAppSettingKeyVaultReferenceSlotResponse",
-}) as any as S.Schema<GetWebAppAppSettingKeyVaultReferenceSlotResponse>;
+export const GetWebAppAppSettingKeyVaultReferenceSlotResponse =
+  GetWebAppAppSettingKeyVaultReferenceResponse as any as S.Schema<GetWebAppAppSettingKeyVaultReferenceSlotResponse>;
 
 export interface GetWebAppAppSettingsKeyVaultReferencesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15048,9 +14420,8 @@ export const UnauthenticatedClientAction = S.String;
 
 /** External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored. This is an advanced setting typically only needed by Windows Store application backends. Note that URLs within the current domain are always implicitly allowed. */
 export type SiteAuthSettingsPropertiesAllowedExternalRedirectUrlsList = Array<string>;
-export const SiteAuthSettingsPropertiesAllowedExternalRedirectUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthSettingsPropertiesAllowedExternalRedirectUrlsList>;
+export const SiteAuthSettingsPropertiesAllowedExternalRedirectUrlsList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthSettingsPropertiesAllowedExternalRedirectUrlsList>;
 
 /** The default authentication provider to use when multiple providers are configured. This setting is only needed if multiple providers are configured and the unauthenticated client action is set to "RedirectToLoginPage". */
 export type BuiltInAuthenticationProvider =
@@ -15064,39 +14435,33 @@ export const BuiltInAuthenticationProvider = S.String;
 
 /** Allowed audience values to consider when validating JSON Web Tokens issued by Azure Active Directory. Note that the <code>ClientID</code> value is always considered an allowed audience, regardless of this setting. */
 export type SiteAuthSettingsPropertiesAllowedAudiencesList = Array<string>;
-export const SiteAuthSettingsPropertiesAllowedAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthSettingsPropertiesAllowedAudiencesList>;
+export const SiteAuthSettingsPropertiesAllowedAudiencesList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthSettingsPropertiesAllowedAudiencesList>;
 
 /** Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value". */
 export type SiteAuthSettingsPropertiesAdditionalLoginParamsList = Array<string>;
-export const SiteAuthSettingsPropertiesAdditionalLoginParamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthSettingsPropertiesAdditionalLoginParamsList>;
+export const SiteAuthSettingsPropertiesAdditionalLoginParamsList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthSettingsPropertiesAdditionalLoginParamsList>;
 
 /** The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. This setting is optional. If not specified, "openid", "profile", and "email" are used as default scopes. Google Sign-In documentation: https://developers.google.com/identity/sign-in/web/ */
 export type SiteAuthSettingsPropertiesGoogleOAuthScopesList = Array<string>;
-export const SiteAuthSettingsPropertiesGoogleOAuthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthSettingsPropertiesGoogleOAuthScopesList>;
+export const SiteAuthSettingsPropertiesGoogleOAuthScopesList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthSettingsPropertiesGoogleOAuthScopesList>;
 
 /** The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. This setting is optional. Facebook Login documentation: https://developers.facebook.com/docs/facebook-login */
 export type SiteAuthSettingsPropertiesFacebookOAuthScopesList = Array<string>;
-export const SiteAuthSettingsPropertiesFacebookOAuthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthSettingsPropertiesFacebookOAuthScopesList>;
+export const SiteAuthSettingsPropertiesFacebookOAuthScopesList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthSettingsPropertiesFacebookOAuthScopesList>;
 
 /** The OAuth 2.0 scopes that will be requested as part of GitHub Login authentication. This setting is optional */
 export type SiteAuthSettingsPropertiesGitHubOAuthScopesList = Array<string>;
-export const SiteAuthSettingsPropertiesGitHubOAuthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthSettingsPropertiesGitHubOAuthScopesList>;
+export const SiteAuthSettingsPropertiesGitHubOAuthScopesList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthSettingsPropertiesGitHubOAuthScopesList>;
 
 /** The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. This setting is optional. If not specified, "wl.basic" is used as the default scope. Microsoft Account Scopes and permissions documentation: https://msdn.microsoft.com/en-us/library/dn631845.aspx */
 export type SiteAuthSettingsPropertiesMicrosoftAccountOAuthScopesList = Array<string>;
-export const SiteAuthSettingsPropertiesMicrosoftAccountOAuthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteAuthSettingsPropertiesMicrosoftAccountOAuthScopesList>;
+export const SiteAuthSettingsPropertiesMicrosoftAccountOAuthScopesList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteAuthSettingsPropertiesMicrosoftAccountOAuthScopesList>;
 
 /** SiteAuthSettings resource specific properties */
 export interface SiteAuthSettingsProperties {
@@ -15290,17 +14655,8 @@ export interface GetWebAppAuthSettingsSlotResponse {
   /** SiteAuthSettings resource specific properties */
   properties?: SiteAuthSettingsProperties;
 }
-export const GetWebAppAuthSettingsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SiteAuthSettingsProperties),
-  }),
-).annotate({
-  identifier: "GetWebAppAuthSettingsSlotResponse",
-}) as any as S.Schema<GetWebAppAuthSettingsSlotResponse>;
+export const GetWebAppAuthSettingsSlotResponse =
+  GetWebAppAuthSettingsResponse as any as S.Schema<GetWebAppAuthSettingsSlotResponse>;
 
 export interface GetWebAppAuthSettingsV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15354,9 +14710,8 @@ export const UnauthenticatedClientActionV2 = S.String;
 
 /** The paths for which unauthenticated flow would not be redirected to the login page. */
 export type GlobalValidationExcludedPathsList = Array<string>;
-export const GlobalValidationExcludedPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GlobalValidationExcludedPathsList>;
+export const GlobalValidationExcludedPathsList =
+  SitePropertiesHostNamesList as any as S.Schema<GlobalValidationExcludedPathsList>;
 
 /** The configuration settings that determines the validation flow of users using App Service Authentication/Authorization. */
 export interface GlobalValidation {
@@ -15408,9 +14763,8 @@ export const AzureActiveDirectoryRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value". */
 export type AzureActiveDirectoryLoginLoginParametersList = Array<string>;
-export const AzureActiveDirectoryLoginLoginParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureActiveDirectoryLoginLoginParametersList>;
+export const AzureActiveDirectoryLoginLoginParametersList =
+  SitePropertiesHostNamesList as any as S.Schema<AzureActiveDirectoryLoginLoginParametersList>;
 
 /** The configuration settings of the Azure Active Directory login flow. */
 export interface AzureActiveDirectoryLogin {
@@ -15430,15 +14784,13 @@ export const AzureActiveDirectoryLogin = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of the allowed groups. */
 export type JwtClaimChecksAllowedGroupsList = Array<string>;
-export const JwtClaimChecksAllowedGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JwtClaimChecksAllowedGroupsList>;
+export const JwtClaimChecksAllowedGroupsList =
+  SitePropertiesHostNamesList as any as S.Schema<JwtClaimChecksAllowedGroupsList>;
 
 /** The list of the allowed client applications. */
 export type JwtClaimChecksAllowedClientApplicationsList = Array<string>;
-export const JwtClaimChecksAllowedClientApplicationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JwtClaimChecksAllowedClientApplicationsList>;
+export const JwtClaimChecksAllowedClientApplicationsList =
+  SitePropertiesHostNamesList as any as S.Schema<JwtClaimChecksAllowedClientApplicationsList>;
 
 /** The configuration settings of the checks that should be made while validating the JWT Claims. */
 export interface JwtClaimChecks {
@@ -15456,21 +14808,18 @@ export const JwtClaimChecks = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of audiences that can make successful authentication/authorization requests. */
 export type AzureActiveDirectoryValidationAllowedAudiencesList = Array<string>;
-export const AzureActiveDirectoryValidationAllowedAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureActiveDirectoryValidationAllowedAudiencesList>;
+export const AzureActiveDirectoryValidationAllowedAudiencesList =
+  SitePropertiesHostNamesList as any as S.Schema<AzureActiveDirectoryValidationAllowedAudiencesList>;
 
 /** The list of the allowed groups. */
 export type AllowedPrincipalsGroupsList = Array<string>;
-export const AllowedPrincipalsGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AllowedPrincipalsGroupsList>;
+export const AllowedPrincipalsGroupsList =
+  SitePropertiesHostNamesList as any as S.Schema<AllowedPrincipalsGroupsList>;
 
 /** The list of the allowed identities. */
 export type AllowedPrincipalsIdentitiesList = Array<string>;
-export const AllowedPrincipalsIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AllowedPrincipalsIdentitiesList>;
+export const AllowedPrincipalsIdentitiesList =
+  SitePropertiesHostNamesList as any as S.Schema<AllowedPrincipalsIdentitiesList>;
 
 /** The configuration settings of the Azure Active Directory allowed principals. */
 export interface AllowedPrincipals {
@@ -15488,9 +14837,8 @@ export const AllowedPrincipals = /*@__PURE__*/ S.suspend(() =>
 
 /** The configuration settings of the Azure Active Directory allowed applications. */
 export type DefaultAuthorizationPolicyAllowedApplicationsList = Array<string>;
-export const DefaultAuthorizationPolicyAllowedApplicationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DefaultAuthorizationPolicyAllowedApplicationsList>;
+export const DefaultAuthorizationPolicyAllowedApplicationsList =
+  SitePropertiesHostNamesList as any as S.Schema<DefaultAuthorizationPolicyAllowedApplicationsList>;
 
 /** The configuration settings of the Azure Active Directory default authorization policy. */
 export interface DefaultAuthorizationPolicy {
@@ -15566,9 +14914,8 @@ export const AppRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the scopes that should be requested while authenticating. */
 export type LoginScopesScopesList = Array<string>;
-export const LoginScopesScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoginScopesScopesList>;
+export const LoginScopesScopesList =
+  SitePropertiesHostNamesList as any as S.Schema<LoginScopesScopesList>;
 
 /** The configuration settings of the login flow, including the scopes that should be requested. */
 export interface LoginScopes {
@@ -15634,9 +14981,8 @@ export const GitHub = /*@__PURE__*/ S.suspend(() =>
 
 /** The configuration settings of the allowed list of audiences from which to validate the JWT token. */
 export type AllowedAudiencesValidationAllowedAudiencesList = Array<string>;
-export const AllowedAudiencesValidationAllowedAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AllowedAudiencesValidationAllowedAudiencesList>;
+export const AllowedAudiencesValidationAllowedAudiencesList =
+  SitePropertiesHostNamesList as any as S.Schema<AllowedAudiencesValidationAllowedAudiencesList>;
 
 /** The configuration settings of the Allowed Audiences validation flow. */
 export interface AllowedAudiencesValidation {
@@ -15682,14 +15028,7 @@ export interface LegacyMicrosoftAccount {
   /** The configuration settings of the legacy Microsoft Account provider token validation flow. */
   validation?: AllowedAudiencesValidation;
 }
-export const LegacyMicrosoftAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    registration: S.optional(ClientRegistration),
-    login: S.optional(LoginScopes),
-    validation: S.optional(AllowedAudiencesValidation),
-  }),
-).annotate({ identifier: "LegacyMicrosoftAccount" }) as any as S.Schema<LegacyMicrosoftAccount>;
+export const LegacyMicrosoftAccount = Google as any as S.Schema<LegacyMicrosoftAccount>;
 
 /** The configuration settings of the app registration for the Twitter provider. */
 export interface TwitterRegistration {
@@ -15732,13 +15071,7 @@ export interface Apple {
   /** The configuration settings of the login flow. */
   login?: LoginScopes;
 }
-export const Apple = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    registration: S.optional(ClientRegistration),
-    login: S.optional(LoginScopes),
-  }),
-).annotate({ identifier: "Apple" }) as any as S.Schema<Apple>;
+export const Apple = GitHub as any as S.Schema<Apple>;
 
 /** The configuration settings of the registration for the Azure Static Web Apps provider */
 export interface AzureStaticWebAppsRegistration {
@@ -15831,9 +15164,8 @@ export const OpenIdConnectRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the scopes that should be requested while authenticating. */
 export type OpenIdConnectLoginScopesList = Array<string>;
-export const OpenIdConnectLoginScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OpenIdConnectLoginScopesList>;
+export const OpenIdConnectLoginScopesList =
+  SitePropertiesHostNamesList as any as S.Schema<OpenIdConnectLoginScopesList>;
 
 /** The configuration settings of the login flow of the custom Open ID Connect provider. */
 export interface OpenIdConnectLogin {
@@ -15967,9 +15299,8 @@ export const TokenStore = /*@__PURE__*/ S.suspend(() =>
 
 /** External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored. This is an advanced setting typically only needed by Windows Store application backends. Note that URLs within the current domain are always implicitly allowed. */
 export type LoginAllowedExternalRedirectUrlsList = Array<string>;
-export const LoginAllowedExternalRedirectUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoginAllowedExternalRedirectUrlsList>;
+export const LoginAllowedExternalRedirectUrlsList =
+  SitePropertiesHostNamesList as any as S.Schema<LoginAllowedExternalRedirectUrlsList>;
 
 /** The convention used when determining the session cookie's expiration. */
 export type CookieExpirationConvention = "FixedTime" | "IdentityProviderDerived";
@@ -16172,18 +15503,8 @@ export interface GetWebAppAuthSettingsV2SlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppAuthSettingsV2SlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteAuthSettingsV2Properties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppAuthSettingsV2SlotResponse",
-}) as any as S.Schema<GetWebAppAuthSettingsV2SlotResponse>;
+export const GetWebAppAuthSettingsV2SlotResponse =
+  GetWebAppAuthSettingsV2Response as any as S.Schema<GetWebAppAuthSettingsV2SlotResponse>;
 
 export interface GetWebAppAuthSettingsV2WithoutSecretsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16224,18 +15545,8 @@ export interface GetWebAppAuthSettingsV2WithoutSecretsResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppAuthSettingsV2WithoutSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteAuthSettingsV2Properties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppAuthSettingsV2WithoutSecretsResponse",
-}) as any as S.Schema<GetWebAppAuthSettingsV2WithoutSecretsResponse>;
+export const GetWebAppAuthSettingsV2WithoutSecretsResponse =
+  GetWebAppAuthSettingsV2Response as any as S.Schema<GetWebAppAuthSettingsV2WithoutSecretsResponse>;
 
 export interface GetWebAppAuthSettingsV2WithoutSecretsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16279,18 +15590,8 @@ export interface GetWebAppAuthSettingsV2WithoutSecretsSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppAuthSettingsV2WithoutSecretsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteAuthSettingsV2Properties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppAuthSettingsV2WithoutSecretsSlotResponse",
-}) as any as S.Schema<GetWebAppAuthSettingsV2WithoutSecretsSlotResponse>;
+export const GetWebAppAuthSettingsV2WithoutSecretsSlotResponse =
+  GetWebAppAuthSettingsV2Response as any as S.Schema<GetWebAppAuthSettingsV2WithoutSecretsSlotResponse>;
 
 export interface GetWebAppBackupConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16463,17 +15764,8 @@ export interface GetWebAppBackupConfigurationSlotResponse {
   /** BackupRequest resource specific properties */
   properties?: BackupRequestProperties;
 }
-export const GetWebAppBackupConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackupRequestProperties),
-  }),
-).annotate({
-  identifier: "GetWebAppBackupConfigurationSlotResponse",
-}) as any as S.Schema<GetWebAppBackupConfigurationSlotResponse>;
+export const GetWebAppBackupConfigurationSlotResponse =
+  GetWebAppBackupConfigurationResponse as any as S.Schema<GetWebAppBackupConfigurationSlotResponse>;
 
 export interface GetWebAppBackupStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16519,9 +15811,8 @@ export const BackupItemStatus = S.String;
 
 /** List of databases included in the backup. */
 export type BackupItemPropertiesDatabasesList = Array<DatabaseBackupSetting>;
-export const BackupItemPropertiesDatabasesList = /*@__PURE__*/ S.Array(
-  DatabaseBackupSetting,
-) as any as S.Schema<BackupItemPropertiesDatabasesList>;
+export const BackupItemPropertiesDatabasesList =
+  BackupRequestPropertiesDatabasesList as any as S.Schema<BackupItemPropertiesDatabasesList>;
 
 /** BackupItem resource specific properties */
 export interface BackupItemProperties {
@@ -16645,18 +15936,8 @@ export interface GetWebAppBackupStatusSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppBackupStatusSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupItemProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppBackupStatusSlotResponse",
-}) as any as S.Schema<GetWebAppBackupStatusSlotResponse>;
+export const GetWebAppBackupStatusSlotResponse =
+  GetWebAppBackupStatusResponse as any as S.Schema<GetWebAppBackupStatusSlotResponse>;
 
 export interface GetWebAppConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16752,18 +16033,8 @@ export interface GetWebAppConfigurationSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteConfig),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppConfigurationSlotResponse",
-}) as any as S.Schema<GetWebAppConfigurationSlotResponse>;
+export const GetWebAppConfigurationSlotResponse =
+  GetWebAppConfigurationResponse as any as S.Schema<GetWebAppConfigurationSlotResponse>;
 
 export interface GetWebAppConfigurationSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16807,18 +16078,8 @@ export interface GetWebAppConfigurationSnapshotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppConfigurationSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteConfig),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppConfigurationSnapshotResponse",
-}) as any as S.Schema<GetWebAppConfigurationSnapshotResponse>;
+export const GetWebAppConfigurationSnapshotResponse =
+  GetWebAppConfigurationResponse as any as S.Schema<GetWebAppConfigurationSnapshotResponse>;
 
 export interface GetWebAppConfigurationSnapshotSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16865,18 +16126,8 @@ export interface GetWebAppConfigurationSnapshotSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppConfigurationSnapshotSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteConfig),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppConfigurationSnapshotSlotResponse",
-}) as any as S.Schema<GetWebAppConfigurationSnapshotSlotResponse>;
+export const GetWebAppConfigurationSnapshotSlotResponse =
+  GetWebAppConfigurationResponse as any as S.Schema<GetWebAppConfigurationSnapshotSlotResponse>;
 
 export interface GetWebAppContainerLogsZipRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16904,11 +16155,8 @@ export const GetWebAppContainerLogsZipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppContainerLogsZipRequest>;
 
 export type GetWebAppContainerLogsZipResponse = unknown;
-export const GetWebAppContainerLogsZipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppContainerLogsZipResponse",
-}) as any as S.Schema<GetWebAppContainerLogsZipResponse>;
+export const GetWebAppContainerLogsZipResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppContainerLogsZipResponse>;
 
 export interface GetWebAppContainerLogsZipSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16939,11 +16187,8 @@ export const GetWebAppContainerLogsZipSlotRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetWebAppContainerLogsZipSlotRequest>;
 
 export type GetWebAppContainerLogsZipSlotResponse = unknown;
-export const GetWebAppContainerLogsZipSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppContainerLogsZipSlotResponse",
-}) as any as S.Schema<GetWebAppContainerLogsZipSlotResponse>;
+export const GetWebAppContainerLogsZipSlotResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppContainerLogsZipSlotResponse>;
 
 export interface GetWebAppContinuousWebJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16988,10 +16233,8 @@ export const WebJobType = S.String;
 
 /** Job settings. */
 export type ContinuousWebJobPropertiesSettingsMap = { [key: string]: unknown | undefined };
-export const ContinuousWebJobPropertiesSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ContinuousWebJobPropertiesSettingsMap>;
+export const ContinuousWebJobPropertiesSettingsMap =
+  DeployWebAppWorkflowArtifactsRequestFilesMap as any as S.Schema<ContinuousWebJobPropertiesSettingsMap>;
 
 /** ContinuousWebJob resource specific properties */
 export interface ContinuousWebJobProperties {
@@ -17105,18 +16348,8 @@ export interface GetWebAppContinuousWebJobSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppContinuousWebJobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ContinuousWebJobProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppContinuousWebJobSlotResponse",
-}) as any as S.Schema<GetWebAppContinuousWebJobSlotResponse>;
+export const GetWebAppContinuousWebJobSlotResponse =
+  GetWebAppContinuousWebJobResponse as any as S.Schema<GetWebAppContinuousWebJobSlotResponse>;
 
 export interface GetWebAppDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -17160,18 +16393,8 @@ export interface GetWebAppDeploymentResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppDeploymentResponse",
-}) as any as S.Schema<GetWebAppDeploymentResponse>;
+export const GetWebAppDeploymentResponse =
+  CreateWebAppDeploymentResponse as any as S.Schema<GetWebAppDeploymentResponse>;
 
 export interface GetWebAppDeploymentSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -17218,18 +16441,8 @@ export interface GetWebAppDeploymentSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppDeploymentSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppDeploymentSlotResponse",
-}) as any as S.Schema<GetWebAppDeploymentSlotResponse>;
+export const GetWebAppDeploymentSlotResponse =
+  CreateWebAppDeploymentResponse as any as S.Schema<GetWebAppDeploymentSlotResponse>;
 
 export interface GetWebAppDiagnosticLogsConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -17484,18 +16697,8 @@ export interface GetWebAppDiagnosticLogsConfigurationSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppDiagnosticLogsConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteLogsConfigProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppDiagnosticLogsConfigurationSlotResponse",
-}) as any as S.Schema<GetWebAppDiagnosticLogsConfigurationSlotResponse>;
+export const GetWebAppDiagnosticLogsConfigurationSlotResponse =
+  GetWebAppDiagnosticLogsConfigurationResponse as any as S.Schema<GetWebAppDiagnosticLogsConfigurationSlotResponse>;
 
 export interface GetWebAppDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -17608,18 +16811,8 @@ export interface GetWebAppDomainOwnershipIdentifierSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppDomainOwnershipIdentifierSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(IdentifierProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppDomainOwnershipIdentifierSlotResponse",
-}) as any as S.Schema<GetWebAppDomainOwnershipIdentifierSlotResponse>;
+export const GetWebAppDomainOwnershipIdentifierSlotResponse =
+  GetWebAppDomainOwnershipIdentifierResponse as any as S.Schema<GetWebAppDomainOwnershipIdentifierSlotResponse>;
 
 export interface GetWebAppFtpAllowedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -17727,18 +16920,8 @@ export interface GetWebAppFtpAllowedSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppFtpAllowedSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppFtpAllowedSlotResponse",
-}) as any as S.Schema<GetWebAppFtpAllowedSlotResponse>;
+export const GetWebAppFtpAllowedSlotResponse =
+  GetWebAppFtpAllowedResponse as any as S.Schema<GetWebAppFtpAllowedSlotResponse>;
 
 export interface GetWebAppFunctionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -17780,18 +16963,8 @@ export interface GetWebAppFunctionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FunctionEnvelopeProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppFunctionResponse",
-}) as any as S.Schema<GetWebAppFunctionResponse>;
+export const GetWebAppFunctionResponse =
+  CreateWebAppFunctionResponse as any as S.Schema<GetWebAppFunctionResponse>;
 
 export interface GetWebAppFunctionsAdminTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -17854,11 +17027,8 @@ export const GetWebAppFunctionsAdminTokenSlotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetWebAppFunctionsAdminTokenSlotRequest>;
 
 export type GetWebAppFunctionsAdminTokenSlotResponse = string;
-export const GetWebAppFunctionsAdminTokenSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppFunctionsAdminTokenSlotResponse",
-}) as any as S.Schema<GetWebAppFunctionsAdminTokenSlotResponse>;
+export const GetWebAppFunctionsAdminTokenSlotResponse =
+  GetWebAppFunctionsAdminTokenResponse as any as S.Schema<GetWebAppFunctionsAdminTokenSlotResponse>;
 
 export interface GetWebAppHostNameBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18009,18 +17179,8 @@ export interface GetWebAppHostNameBindingSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppHostNameBindingSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HostNameBindingProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppHostNameBindingSlotResponse",
-}) as any as S.Schema<GetWebAppHostNameBindingSlotResponse>;
+export const GetWebAppHostNameBindingSlotResponse =
+  GetWebAppHostNameBindingResponse as any as S.Schema<GetWebAppHostNameBindingSlotResponse>;
 
 export interface GetWebAppHybridConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18067,18 +17227,8 @@ export interface GetWebAppHybridConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppHybridConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppHybridConnectionResponse",
-}) as any as S.Schema<GetWebAppHybridConnectionResponse>;
+export const GetWebAppHybridConnectionResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<GetWebAppHybridConnectionResponse>;
 
 export interface GetWebAppHybridConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18128,18 +17278,8 @@ export interface GetWebAppHybridConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppHybridConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppHybridConnectionSlotResponse",
-}) as any as S.Schema<GetWebAppHybridConnectionSlotResponse>;
+export const GetWebAppHybridConnectionSlotResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<GetWebAppHybridConnectionSlotResponse>;
 
 export interface GetWebAppInstanceFunctionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18186,18 +17326,8 @@ export interface GetWebAppInstanceFunctionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppInstanceFunctionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FunctionEnvelopeProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppInstanceFunctionSlotResponse",
-}) as any as S.Schema<GetWebAppInstanceFunctionSlotResponse>;
+export const GetWebAppInstanceFunctionSlotResponse =
+  CreateWebAppFunctionResponse as any as S.Schema<GetWebAppInstanceFunctionSlotResponse>;
 
 export interface GetWebAppInstanceInfoRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18450,18 +17580,8 @@ export interface GetWebAppInstanceInfoSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppInstanceInfoSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WebSiteInstanceStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppInstanceInfoSlotResponse",
-}) as any as S.Schema<GetWebAppInstanceInfoSlotResponse>;
+export const GetWebAppInstanceInfoSlotResponse =
+  GetWebAppInstanceInfoResponse as any as S.Schema<GetWebAppInstanceInfoSlotResponse>;
 
 export interface GetWebAppInstanceProcessRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18496,9 +17616,8 @@ export const GetWebAppInstanceProcessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Child process list. */
 export type ProcessInfoPropertiesChildrenList = Array<string>;
-export const ProcessInfoPropertiesChildrenList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProcessInfoPropertiesChildrenList>;
+export const ProcessInfoPropertiesChildrenList =
+  SitePropertiesHostNamesList as any as S.Schema<ProcessInfoPropertiesChildrenList>;
 
 /** ProcessThreadInfo resource specific properties */
 export interface ProcessThreadInfoProperties {
@@ -18577,9 +17696,8 @@ export const ProcessInfoPropertiesThreadsList = /*@__PURE__*/ S.Array(
 
 /** List of open files. */
 export type ProcessInfoPropertiesOpenFileHandlesList = Array<string>;
-export const ProcessInfoPropertiesOpenFileHandlesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProcessInfoPropertiesOpenFileHandlesList>;
+export const ProcessInfoPropertiesOpenFileHandlesList =
+  SitePropertiesHostNamesList as any as S.Schema<ProcessInfoPropertiesOpenFileHandlesList>;
 
 /** ProcessModuleInfo resource specific properties */
 export interface ProcessModuleInfoProperties {
@@ -18658,10 +17776,8 @@ export const ProcessInfoPropertiesModulesList = /*@__PURE__*/ S.Array(
 
 /** List of environment variables. */
 export type ProcessInfoPropertiesEnvironmentVariablesMap = { [key: string]: string | undefined };
-export const ProcessInfoPropertiesEnvironmentVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProcessInfoPropertiesEnvironmentVariablesMap>;
+export const ProcessInfoPropertiesEnvironmentVariablesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ProcessInfoPropertiesEnvironmentVariablesMap>;
 
 /** ProcessInfo resource specific properties */
 export interface ProcessInfoProperties {
@@ -18838,11 +17954,8 @@ export const GetWebAppInstanceProcessDumpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppInstanceProcessDumpRequest>;
 
 export type GetWebAppInstanceProcessDumpResponse = unknown;
-export const GetWebAppInstanceProcessDumpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppInstanceProcessDumpResponse",
-}) as any as S.Schema<GetWebAppInstanceProcessDumpResponse>;
+export const GetWebAppInstanceProcessDumpResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppInstanceProcessDumpResponse>;
 
 export interface GetWebAppInstanceProcessDumpSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18879,11 +17992,8 @@ export const GetWebAppInstanceProcessDumpSlotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetWebAppInstanceProcessDumpSlotRequest>;
 
 export type GetWebAppInstanceProcessDumpSlotResponse = unknown;
-export const GetWebAppInstanceProcessDumpSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppInstanceProcessDumpSlotResponse",
-}) as any as S.Schema<GetWebAppInstanceProcessDumpSlotResponse>;
+export const GetWebAppInstanceProcessDumpSlotResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppInstanceProcessDumpSlotResponse>;
 
 export interface GetWebAppInstanceProcessModuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18997,18 +18107,8 @@ export interface GetWebAppInstanceProcessModuleSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppInstanceProcessModuleSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProcessModuleInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppInstanceProcessModuleSlotResponse",
-}) as any as S.Schema<GetWebAppInstanceProcessModuleSlotResponse>;
+export const GetWebAppInstanceProcessModuleSlotResponse =
+  GetWebAppInstanceProcessModuleResponse as any as S.Schema<GetWebAppInstanceProcessModuleSlotResponse>;
 
 export interface GetWebAppInstanceProcessSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19058,18 +18158,8 @@ export interface GetWebAppInstanceProcessSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppInstanceProcessSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProcessInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppInstanceProcessSlotResponse",
-}) as any as S.Schema<GetWebAppInstanceProcessSlotResponse>;
+export const GetWebAppInstanceProcessSlotResponse =
+  GetWebAppInstanceProcessResponse as any as S.Schema<GetWebAppInstanceProcessSlotResponse>;
 
 export interface GetWebAppInstanceWorkflowSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19104,10 +18194,8 @@ export const GetWebAppInstanceWorkflowSlotRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Gets or sets the files. */
 export type WorkflowEnvelopePropertiesFilesMap = { [key: string]: unknown | undefined };
-export const WorkflowEnvelopePropertiesFilesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WorkflowEnvelopePropertiesFilesMap>;
+export const WorkflowEnvelopePropertiesFilesMap =
+  DeployWebAppWorkflowArtifactsRequestFilesMap as any as S.Schema<WorkflowEnvelopePropertiesFilesMap>;
 
 /** The workflow state. */
 export type WorkflowState =
@@ -19275,17 +18363,13 @@ export const GetWebAppNetworkTraceOperationSlotRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetWebAppNetworkTraceOperationSlotRequest>;
 
 export type GetWebAppNetworkTraceOperationSlotResponseBodyList = Array<NetworkTrace>;
-export const GetWebAppNetworkTraceOperationSlotResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<GetWebAppNetworkTraceOperationSlotResponseBodyList>;
+export const GetWebAppNetworkTraceOperationSlotResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<GetWebAppNetworkTraceOperationSlotResponseBodyList>;
 
 export type GetWebAppNetworkTraceOperationSlotResponse =
   GetWebAppNetworkTraceOperationSlotResponseBodyList;
-export const GetWebAppNetworkTraceOperationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  GetWebAppNetworkTraceOperationSlotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppNetworkTraceOperationSlotResponse",
-}) as any as S.Schema<GetWebAppNetworkTraceOperationSlotResponse>;
+export const GetWebAppNetworkTraceOperationSlotResponse =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<GetWebAppNetworkTraceOperationSlotResponse>;
 
 export interface GetWebAppNetworkTraceOperationSlotV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19319,17 +18403,13 @@ export const GetWebAppNetworkTraceOperationSlotV2Request = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetWebAppNetworkTraceOperationSlotV2Request>;
 
 export type GetWebAppNetworkTraceOperationSlotV2ResponseBodyList = Array<NetworkTrace>;
-export const GetWebAppNetworkTraceOperationSlotV2ResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<GetWebAppNetworkTraceOperationSlotV2ResponseBodyList>;
+export const GetWebAppNetworkTraceOperationSlotV2ResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<GetWebAppNetworkTraceOperationSlotV2ResponseBodyList>;
 
 export type GetWebAppNetworkTraceOperationSlotV2Response =
   GetWebAppNetworkTraceOperationSlotV2ResponseBodyList;
-export const GetWebAppNetworkTraceOperationSlotV2Response = /*@__PURE__*/ S.suspend(() =>
-  GetWebAppNetworkTraceOperationSlotV2ResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppNetworkTraceOperationSlotV2Response",
-}) as any as S.Schema<GetWebAppNetworkTraceOperationSlotV2Response>;
+export const GetWebAppNetworkTraceOperationSlotV2Response =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<GetWebAppNetworkTraceOperationSlotV2Response>;
 
 export interface GetWebAppNetworkTraceOperationV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19360,17 +18440,13 @@ export const GetWebAppNetworkTraceOperationV2Request = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetWebAppNetworkTraceOperationV2Request>;
 
 export type GetWebAppNetworkTraceOperationV2ResponseBodyList = Array<NetworkTrace>;
-export const GetWebAppNetworkTraceOperationV2ResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<GetWebAppNetworkTraceOperationV2ResponseBodyList>;
+export const GetWebAppNetworkTraceOperationV2ResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<GetWebAppNetworkTraceOperationV2ResponseBodyList>;
 
 export type GetWebAppNetworkTraceOperationV2Response =
   GetWebAppNetworkTraceOperationV2ResponseBodyList;
-export const GetWebAppNetworkTraceOperationV2Response = /*@__PURE__*/ S.suspend(() =>
-  GetWebAppNetworkTraceOperationV2ResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppNetworkTraceOperationV2Response",
-}) as any as S.Schema<GetWebAppNetworkTraceOperationV2Response>;
+export const GetWebAppNetworkTraceOperationV2Response =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<GetWebAppNetworkTraceOperationV2Response>;
 
 export interface GetWebAppNetworkTracesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19401,16 +18477,12 @@ export const GetWebAppNetworkTracesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppNetworkTracesRequest>;
 
 export type GetWebAppNetworkTracesResponseBodyList = Array<NetworkTrace>;
-export const GetWebAppNetworkTracesResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<GetWebAppNetworkTracesResponseBodyList>;
+export const GetWebAppNetworkTracesResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<GetWebAppNetworkTracesResponseBodyList>;
 
 export type GetWebAppNetworkTracesResponse = GetWebAppNetworkTracesResponseBodyList;
-export const GetWebAppNetworkTracesResponse = /*@__PURE__*/ S.suspend(() =>
-  GetWebAppNetworkTracesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppNetworkTracesResponse",
-}) as any as S.Schema<GetWebAppNetworkTracesResponse>;
+export const GetWebAppNetworkTracesResponse =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<GetWebAppNetworkTracesResponse>;
 
 export interface GetWebAppNetworkTracesSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19444,16 +18516,12 @@ export const GetWebAppNetworkTracesSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppNetworkTracesSlotRequest>;
 
 export type GetWebAppNetworkTracesSlotResponseBodyList = Array<NetworkTrace>;
-export const GetWebAppNetworkTracesSlotResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<GetWebAppNetworkTracesSlotResponseBodyList>;
+export const GetWebAppNetworkTracesSlotResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<GetWebAppNetworkTracesSlotResponseBodyList>;
 
 export type GetWebAppNetworkTracesSlotResponse = GetWebAppNetworkTracesSlotResponseBodyList;
-export const GetWebAppNetworkTracesSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  GetWebAppNetworkTracesSlotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppNetworkTracesSlotResponse",
-}) as any as S.Schema<GetWebAppNetworkTracesSlotResponse>;
+export const GetWebAppNetworkTracesSlotResponse =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<GetWebAppNetworkTracesSlotResponse>;
 
 export interface GetWebAppNetworkTracesSlotV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19487,16 +18555,12 @@ export const GetWebAppNetworkTracesSlotV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppNetworkTracesSlotV2Request>;
 
 export type GetWebAppNetworkTracesSlotV2ResponseBodyList = Array<NetworkTrace>;
-export const GetWebAppNetworkTracesSlotV2ResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<GetWebAppNetworkTracesSlotV2ResponseBodyList>;
+export const GetWebAppNetworkTracesSlotV2ResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<GetWebAppNetworkTracesSlotV2ResponseBodyList>;
 
 export type GetWebAppNetworkTracesSlotV2Response = GetWebAppNetworkTracesSlotV2ResponseBodyList;
-export const GetWebAppNetworkTracesSlotV2Response = /*@__PURE__*/ S.suspend(() =>
-  GetWebAppNetworkTracesSlotV2ResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppNetworkTracesSlotV2Response",
-}) as any as S.Schema<GetWebAppNetworkTracesSlotV2Response>;
+export const GetWebAppNetworkTracesSlotV2Response =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<GetWebAppNetworkTracesSlotV2Response>;
 
 export interface GetWebAppNetworkTracesV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19527,16 +18591,12 @@ export const GetWebAppNetworkTracesV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppNetworkTracesV2Request>;
 
 export type GetWebAppNetworkTracesV2ResponseBodyList = Array<NetworkTrace>;
-export const GetWebAppNetworkTracesV2ResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<GetWebAppNetworkTracesV2ResponseBodyList>;
+export const GetWebAppNetworkTracesV2ResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<GetWebAppNetworkTracesV2ResponseBodyList>;
 
 export type GetWebAppNetworkTracesV2Response = GetWebAppNetworkTracesV2ResponseBodyList;
-export const GetWebAppNetworkTracesV2Response = /*@__PURE__*/ S.suspend(() =>
-  GetWebAppNetworkTracesV2ResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppNetworkTracesV2Response",
-}) as any as S.Schema<GetWebAppNetworkTracesV2Response>;
+export const GetWebAppNetworkTracesV2Response =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<GetWebAppNetworkTracesV2Response>;
 
 export interface GetWebAppPrivateAccessRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19694,18 +18754,8 @@ export interface GetWebAppPrivateAccessSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppPrivateAccessSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateAccessProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppPrivateAccessSlotResponse",
-}) as any as S.Schema<GetWebAppPrivateAccessSlotResponse>;
+export const GetWebAppPrivateAccessSlotResponse =
+  GetWebAppPrivateAccessResponse as any as S.Schema<GetWebAppPrivateAccessSlotResponse>;
 
 export interface GetWebAppPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19749,18 +18799,8 @@ export interface GetWebAppPrivateEndpointConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemotePrivateEndpointConnectionARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetWebAppPrivateEndpointConnectionResponse>;
+export const GetWebAppPrivateEndpointConnectionResponse =
+  RemotePrivateEndpointConnectionARMResource as any as S.Schema<GetWebAppPrivateEndpointConnectionResponse>;
 
 export interface GetWebAppPrivateEndpointConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19807,18 +18847,8 @@ export interface GetWebAppPrivateEndpointConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppPrivateEndpointConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemotePrivateEndpointConnectionARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppPrivateEndpointConnectionSlotResponse",
-}) as any as S.Schema<GetWebAppPrivateEndpointConnectionSlotResponse>;
+export const GetWebAppPrivateEndpointConnectionSlotResponse =
+  RemotePrivateEndpointConnectionARMResource as any as S.Schema<GetWebAppPrivateEndpointConnectionSlotResponse>;
 
 export interface GetWebAppPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19953,11 +18983,8 @@ export const GetWebAppProcessDumpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppProcessDumpRequest>;
 
 export type GetWebAppProcessDumpResponse = unknown;
-export const GetWebAppProcessDumpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppProcessDumpResponse",
-}) as any as S.Schema<GetWebAppProcessDumpResponse>;
+export const GetWebAppProcessDumpResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppProcessDumpResponse>;
 
 export interface GetWebAppProcessDumpSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19991,11 +19018,8 @@ export const GetWebAppProcessDumpSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebAppProcessDumpSlotRequest>;
 
 export type GetWebAppProcessDumpSlotResponse = unknown;
-export const GetWebAppProcessDumpSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppProcessDumpSlotResponse",
-}) as any as S.Schema<GetWebAppProcessDumpSlotResponse>;
+export const GetWebAppProcessDumpSlotResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppProcessDumpSlotResponse>;
 
 export interface GetWebAppProcessModuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20042,18 +19066,8 @@ export interface GetWebAppProcessModuleResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppProcessModuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProcessModuleInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppProcessModuleResponse",
-}) as any as S.Schema<GetWebAppProcessModuleResponse>;
+export const GetWebAppProcessModuleResponse =
+  GetWebAppInstanceProcessModuleResponse as any as S.Schema<GetWebAppProcessModuleResponse>;
 
 export interface GetWebAppProcessModuleSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20103,18 +19117,8 @@ export interface GetWebAppProcessModuleSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppProcessModuleSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProcessModuleInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppProcessModuleSlotResponse",
-}) as any as S.Schema<GetWebAppProcessModuleSlotResponse>;
+export const GetWebAppProcessModuleSlotResponse =
+  GetWebAppInstanceProcessModuleResponse as any as S.Schema<GetWebAppProcessModuleSlotResponse>;
 
 export interface GetWebAppProcessSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20161,18 +19165,8 @@ export interface GetWebAppProcessSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppProcessSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProcessInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppProcessSlotResponse",
-}) as any as S.Schema<GetWebAppProcessSlotResponse>;
+export const GetWebAppProcessSlotResponse =
+  GetWebAppInstanceProcessResponse as any as S.Schema<GetWebAppProcessSlotResponse>;
 
 export interface GetWebAppProductionSiteDeploymentStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20221,15 +19215,13 @@ export const DeploymentBuildStatus = S.String;
 
 /** List of URLs pointing to logs for instances which failed to provision. */
 export type CsmDeploymentStatusPropertiesFailedInstancesLogsList = Array<string>;
-export const CsmDeploymentStatusPropertiesFailedInstancesLogsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CsmDeploymentStatusPropertiesFailedInstancesLogsList>;
+export const CsmDeploymentStatusPropertiesFailedInstancesLogsList =
+  SitePropertiesHostNamesList as any as S.Schema<CsmDeploymentStatusPropertiesFailedInstancesLogsList>;
 
 /** List of errors. */
 export type CsmDeploymentStatusPropertiesErrorsList = Array<ErrorEntity>;
-export const CsmDeploymentStatusPropertiesErrorsList = /*@__PURE__*/ S.Array(
-  ErrorEntity,
-) as any as S.Schema<CsmDeploymentStatusPropertiesErrorsList>;
+export const CsmDeploymentStatusPropertiesErrorsList =
+  OperationErrorsList as any as S.Schema<CsmDeploymentStatusPropertiesErrorsList>;
 
 /** CsmDeploymentStatus resource specific properties */
 export interface CsmDeploymentStatusProperties {
@@ -20412,18 +19404,8 @@ export interface GetWebAppPublicCertificateSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppPublicCertificateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PublicCertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppPublicCertificateSlotResponse",
-}) as any as S.Schema<GetWebAppPublicCertificateSlotResponse>;
+export const GetWebAppPublicCertificateSlotResponse =
+  GetWebAppPublicCertificateResponse as any as S.Schema<GetWebAppPublicCertificateSlotResponse>;
 
 export interface GetWebAppRelayServiceConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20549,18 +19531,8 @@ export interface GetWebAppRelayServiceConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppRelayServiceConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppRelayServiceConnectionSlotResponse",
-}) as any as S.Schema<GetWebAppRelayServiceConnectionSlotResponse>;
+export const GetWebAppRelayServiceConnectionSlotResponse =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<GetWebAppRelayServiceConnectionSlotResponse>;
 
 export interface GetWebAppScmAllowedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20601,18 +19573,8 @@ export interface GetWebAppScmAllowedResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppScmAllowedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppScmAllowedResponse",
-}) as any as S.Schema<GetWebAppScmAllowedResponse>;
+export const GetWebAppScmAllowedResponse =
+  GetWebAppFtpAllowedResponse as any as S.Schema<GetWebAppScmAllowedResponse>;
 
 export interface GetWebAppScmAllowedSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20655,18 +19617,8 @@ export interface GetWebAppScmAllowedSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppScmAllowedSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppScmAllowedSlotResponse",
-}) as any as S.Schema<GetWebAppScmAllowedSlotResponse>;
+export const GetWebAppScmAllowedSlotResponse =
+  GetWebAppFtpAllowedResponse as any as S.Schema<GetWebAppScmAllowedSlotResponse>;
 
 export interface GetWebAppSiteConnectionStringKeyVaultReferenceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20709,18 +19661,8 @@ export interface GetWebAppSiteConnectionStringKeyVaultReferenceResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppSiteConnectionStringKeyVaultReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ApiKVReferenceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppSiteConnectionStringKeyVaultReferenceResponse",
-}) as any as S.Schema<GetWebAppSiteConnectionStringKeyVaultReferenceResponse>;
+export const GetWebAppSiteConnectionStringKeyVaultReferenceResponse =
+  GetWebAppAppSettingKeyVaultReferenceResponse as any as S.Schema<GetWebAppSiteConnectionStringKeyVaultReferenceResponse>;
 
 export interface GetWebAppSiteConnectionStringKeyVaultReferencesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21028,18 +19970,8 @@ export interface GetWebAppSiteContainerSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppSiteContainerSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteContainerProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppSiteContainerSlotResponse",
-}) as any as S.Schema<GetWebAppSiteContainerSlotResponse>;
+export const GetWebAppSiteContainerSlotResponse =
+  GetWebAppSiteContainerResponse as any as S.Schema<GetWebAppSiteContainerSlotResponse>;
 
 export interface GetWebAppSiteExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21071,9 +20003,8 @@ export const GetWebAppSiteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of authors. */
 export type SiteExtensionInfoPropertiesAuthorsList = Array<string>;
-export const SiteExtensionInfoPropertiesAuthorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteExtensionInfoPropertiesAuthorsList>;
+export const SiteExtensionInfoPropertiesAuthorsList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteExtensionInfoPropertiesAuthorsList>;
 
 /** Site extension type. */
 export type SiteExtensionType = "Gallery" | "WebRoot";
@@ -21220,18 +20151,8 @@ export interface GetWebAppSiteExtensionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppSiteExtensionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteExtensionInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppSiteExtensionSlotResponse",
-}) as any as S.Schema<GetWebAppSiteExtensionSlotResponse>;
+export const GetWebAppSiteExtensionSlotResponse =
+  GetWebAppSiteExtensionResponse as any as S.Schema<GetWebAppSiteExtensionSlotResponse>;
 
 export interface GetWebAppSitePhpErrorLogFlagRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21344,17 +20265,8 @@ export interface GetWebAppSitePhpErrorLogFlagSlotResponse {
   /** SitePhpErrorLogFlag resource specific properties */
   properties?: SitePhpErrorLogFlagProperties;
 }
-export const GetWebAppSitePhpErrorLogFlagSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SitePhpErrorLogFlagProperties),
-  }),
-).annotate({
-  identifier: "GetWebAppSitePhpErrorLogFlagSlotResponse",
-}) as any as S.Schema<GetWebAppSitePhpErrorLogFlagSlotResponse>;
+export const GetWebAppSitePhpErrorLogFlagSlotResponse =
+  GetWebAppSitePhpErrorLogFlagResponse as any as S.Schema<GetWebAppSitePhpErrorLogFlagSlotResponse>;
 
 export interface GetWebAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21384,10 +20296,8 @@ export const GetWebAppSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWebAppSlotResponseTagsMap = { [key: string]: string | undefined };
-export const GetWebAppSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebAppSlotResponseTagsMap>;
+export const GetWebAppSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetWebAppSlotResponseTagsMap>;
 
 export interface GetWebAppSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -21411,20 +20321,7 @@ export interface GetWebAppSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const GetWebAppSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetWebAppSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SiteProperties),
-    identity: S.optional(ManagedServiceIdentity),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetWebAppSlotResponse" }) as any as S.Schema<GetWebAppSlotResponse>;
+export const GetWebAppSlotResponse = Site as any as S.Schema<GetWebAppSlotResponse>;
 
 export interface GetWebAppSlotSiteDeploymentStatusSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21471,18 +20368,8 @@ export interface GetWebAppSlotSiteDeploymentStatusSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppSlotSiteDeploymentStatusSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmDeploymentStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppSlotSiteDeploymentStatusSlotResponse",
-}) as any as S.Schema<GetWebAppSlotSiteDeploymentStatusSlotResponse>;
+export const GetWebAppSlotSiteDeploymentStatusSlotResponse =
+  GetWebAppProductionSiteDeploymentStatusResponse as any as S.Schema<GetWebAppSlotSiteDeploymentStatusSlotResponse>;
 
 export interface GetWebAppSourceControlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21669,18 +20556,8 @@ export interface GetWebAppSourceControlSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppSourceControlSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteSourceControlProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppSourceControlSlotResponse",
-}) as any as S.Schema<GetWebAppSourceControlSlotResponse>;
+export const GetWebAppSourceControlSlotResponse =
+  GetWebAppSourceControlResponse as any as S.Schema<GetWebAppSourceControlSlotResponse>;
 
 export interface GetWebAppSwiftVirtualNetworkConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21792,18 +20669,8 @@ export interface GetWebAppSwiftVirtualNetworkConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppSwiftVirtualNetworkConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SwiftVirtualNetworkProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppSwiftVirtualNetworkConnectionSlotResponse",
-}) as any as S.Schema<GetWebAppSwiftVirtualNetworkConnectionSlotResponse>;
+export const GetWebAppSwiftVirtualNetworkConnectionSlotResponse =
+  GetWebAppSwiftVirtualNetworkConnectionResponse as any as S.Schema<GetWebAppSwiftVirtualNetworkConnectionSlotResponse>;
 
 export interface GetWebAppTriggeredWebJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21880,10 +20747,8 @@ export const TriggeredJobRun = /*@__PURE__*/ S.suspend(() =>
 
 /** Job settings. */
 export type TriggeredWebJobPropertiesSettingsMap = { [key: string]: unknown | undefined };
-export const TriggeredWebJobPropertiesSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggeredWebJobPropertiesSettingsMap>;
+export const TriggeredWebJobPropertiesSettingsMap =
+  DeployWebAppWorkflowArtifactsRequestFilesMap as any as S.Schema<TriggeredWebJobPropertiesSettingsMap>;
 
 /** TriggeredWebJob resource specific properties */
 export interface TriggeredWebJobProperties {
@@ -22083,18 +20948,8 @@ export interface GetWebAppTriggeredWebJobHistorySlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppTriggeredWebJobHistorySlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TriggeredJobHistoryProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppTriggeredWebJobHistorySlotResponse",
-}) as any as S.Schema<GetWebAppTriggeredWebJobHistorySlotResponse>;
+export const GetWebAppTriggeredWebJobHistorySlotResponse =
+  GetWebAppTriggeredWebJobHistoryResponse as any as S.Schema<GetWebAppTriggeredWebJobHistorySlotResponse>;
 
 export interface GetWebAppTriggeredWebJobSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22141,18 +20996,8 @@ export interface GetWebAppTriggeredWebJobSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppTriggeredWebJobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(TriggeredWebJobProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppTriggeredWebJobSlotResponse",
-}) as any as S.Schema<GetWebAppTriggeredWebJobSlotResponse>;
+export const GetWebAppTriggeredWebJobSlotResponse =
+  GetWebAppTriggeredWebJobResponse as any as S.Schema<GetWebAppTriggeredWebJobSlotResponse>;
 
 export interface GetWebAppVnetConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22196,18 +21041,8 @@ export interface GetWebAppVnetConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppVnetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetInfo),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppVnetConnectionResponse",
-}) as any as S.Schema<GetWebAppVnetConnectionResponse>;
+export const GetWebAppVnetConnectionResponse =
+  GetAppServicePlanVnetFromServerFarmResponse as any as S.Schema<GetWebAppVnetConnectionResponse>;
 
 export interface GetWebAppVnetConnectionGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22254,18 +21089,8 @@ export interface GetWebAppVnetConnectionGatewayResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppVnetConnectionGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetGatewayProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppVnetConnectionGatewayResponse",
-}) as any as S.Schema<GetWebAppVnetConnectionGatewayResponse>;
+export const GetWebAppVnetConnectionGatewayResponse =
+  GetAppServicePlanVnetGatewayResponse as any as S.Schema<GetWebAppVnetConnectionGatewayResponse>;
 
 export interface GetWebAppVnetConnectionGatewaySlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22315,18 +21140,8 @@ export interface GetWebAppVnetConnectionGatewaySlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppVnetConnectionGatewaySlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetGatewayProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppVnetConnectionGatewaySlotResponse",
-}) as any as S.Schema<GetWebAppVnetConnectionGatewaySlotResponse>;
+export const GetWebAppVnetConnectionGatewaySlotResponse =
+  GetAppServicePlanVnetGatewayResponse as any as S.Schema<GetWebAppVnetConnectionGatewaySlotResponse>;
 
 export interface GetWebAppVnetConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22373,18 +21188,8 @@ export interface GetWebAppVnetConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const GetWebAppVnetConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetInfo),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppVnetConnectionSlotResponse",
-}) as any as S.Schema<GetWebAppVnetConnectionSlotResponse>;
+export const GetWebAppVnetConnectionSlotResponse =
+  GetAppServicePlanVnetFromServerFarmResponse as any as S.Schema<GetWebAppVnetConnectionSlotResponse>;
 
 export interface GetWebAppWebJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22414,10 +21219,8 @@ export const GetWebAppWebJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Job settings. */
 export type WebJobPropertiesSettingsMap = { [key: string]: unknown | undefined };
-export const WebJobPropertiesSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WebJobPropertiesSettingsMap>;
+export const WebJobPropertiesSettingsMap =
+  DeployWebAppWorkflowArtifactsRequestFilesMap as any as S.Schema<WebJobPropertiesSettingsMap>;
 
 /** WebJob resource specific properties */
 export interface WebJobProperties {
@@ -22557,11 +21360,8 @@ export const GetWebAppWebSiteContainerLogsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetWebAppWebSiteContainerLogsRequest>;
 
 export type GetWebAppWebSiteContainerLogsResponse = unknown;
-export const GetWebAppWebSiteContainerLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppWebSiteContainerLogsResponse",
-}) as any as S.Schema<GetWebAppWebSiteContainerLogsResponse>;
+export const GetWebAppWebSiteContainerLogsResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppWebSiteContainerLogsResponse>;
 
 export interface GetWebAppWebSiteContainerLogsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22592,11 +21392,8 @@ export const GetWebAppWebSiteContainerLogsSlotRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetWebAppWebSiteContainerLogsSlotRequest>;
 
 export type GetWebAppWebSiteContainerLogsSlotResponse = unknown;
-export const GetWebAppWebSiteContainerLogsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetWebAppWebSiteContainerLogsSlotResponse",
-}) as any as S.Schema<GetWebAppWebSiteContainerLogsSlotResponse>;
+export const GetWebAppWebSiteContainerLogsSlotResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<GetWebAppWebSiteContainerLogsSlotResponse>;
 
 export interface GetWebAppWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22640,19 +21437,8 @@ export interface GetWebAppWorkflowResponse {
   /** The resource location. */
   location?: string;
 }
-export const GetWebAppWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowEnvelopeProperties),
-    kind: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWebAppWorkflowResponse",
-}) as any as S.Schema<GetWebAppWorkflowResponse>;
+export const GetWebAppWorkflowResponse =
+  GetWebAppInstanceWorkflowSlotResponse as any as S.Schema<GetWebAppWorkflowResponse>;
 
 export interface GetWorkflowRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22720,13 +21506,7 @@ export interface ResourceReference {
   /** Gets the resource type. */
   type?: string;
 }
-export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceReference" }) as any as S.Schema<ResourceReference>;
+export const ResourceReference = KubeEnvironmentProfile as any as S.Schema<ResourceReference>;
 
 /** The content hash. */
 export interface ContentHash {
@@ -22962,9 +21742,8 @@ export const GetWorkflowRunActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The client keywords. */
 export type RunActionCorrelationClientKeywordsList = Array<string>;
-export const RunActionCorrelationClientKeywordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunActionCorrelationClientKeywordsList>;
+export const RunActionCorrelationClientKeywordsList =
+  SitePropertiesHostNamesList as any as S.Schema<RunActionCorrelationClientKeywordsList>;
 
 /** The workflow run action correlation properties. */
 export interface RunActionCorrelation {
@@ -23121,16 +21900,13 @@ export const GetWorkflowRunActionRepetitionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type GetWorkflowRunActionRepetitionResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkflowRunActionRepetitionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkflowRunActionRepetitionResponseTagsMap>;
+export const GetWorkflowRunActionRepetitionResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkflowRunActionRepetitionResponseTagsMap>;
 
 /** Gets the retry histories. */
 export type WorkflowRunActionRepetitionPropertiesRetryHistoryList = Array<RetryHistory>;
-export const WorkflowRunActionRepetitionPropertiesRetryHistoryList = /*@__PURE__*/ S.Array(
-  RetryHistory,
-) as any as S.Schema<WorkflowRunActionRepetitionPropertiesRetryHistoryList>;
+export const WorkflowRunActionRepetitionPropertiesRetryHistoryList =
+  WorkflowRunActionPropertiesRetryHistoryList as any as S.Schema<WorkflowRunActionRepetitionPropertiesRetryHistoryList>;
 
 /** The workflow run action repetition index. */
 export interface RepetitionIndex {
@@ -23280,10 +22056,8 @@ export const GetWorkflowRunActionRepetitionsRequestHistoryRequest = /*@__PURE__*
 export type GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap>;
+export const GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap>;
 
 /** A request. */
 export interface Request {
@@ -23410,10 +22184,8 @@ export const GetWorkflowRunActionScopeRepetitionRequest = /*@__PURE__*/ S.suspen
 export type GetWorkflowRunActionScopeRepetitionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetWorkflowRunActionScopeRepetitionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkflowRunActionScopeRepetitionResponseTagsMap>;
+export const GetWorkflowRunActionScopeRepetitionResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkflowRunActionScopeRepetitionResponseTagsMap>;
 
 export interface GetWorkflowRunActionScopeRepetitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -23431,19 +22203,8 @@ export interface GetWorkflowRunActionScopeRepetitionResponse {
   /** The workflow run action repetition properties definition. */
   properties: WorkflowRunActionRepetitionProperties;
 }
-export const GetWorkflowRunActionScopeRepetitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetWorkflowRunActionScopeRepetitionResponseTagsMap),
-    location: S.String,
-    properties: WorkflowRunActionRepetitionProperties,
-  }),
-).annotate({
-  identifier: "GetWorkflowRunActionScopeRepetitionResponse",
-}) as any as S.Schema<GetWorkflowRunActionScopeRepetitionResponse>;
+export const GetWorkflowRunActionScopeRepetitionResponse =
+  GetWorkflowRunActionRepetitionResponse as any as S.Schema<GetWorkflowRunActionScopeRepetitionResponse>;
 
 export interface GetWorkflowTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23512,15 +22273,13 @@ export const RecurrenceFrequency = S.String;
 
 /** The minutes. */
 export type RecurrenceScheduleMinutesList = Array<number>;
-export const RecurrenceScheduleMinutesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RecurrenceScheduleMinutesList>;
+export const RecurrenceScheduleMinutesList =
+  ContainerCpuUsagePerCpuUsageList as any as S.Schema<RecurrenceScheduleMinutesList>;
 
 /** The hours. */
 export type RecurrenceScheduleHoursList = Array<number>;
-export const RecurrenceScheduleHoursList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RecurrenceScheduleHoursList>;
+export const RecurrenceScheduleHoursList =
+  ContainerCpuUsagePerCpuUsageList as any as S.Schema<RecurrenceScheduleHoursList>;
 
 export type DaysOfWeek =
   | "Sunday"
@@ -23540,9 +22299,8 @@ export const RecurrenceScheduleWeekDaysList = /*@__PURE__*/ S.Array(
 
 /** The month days. */
 export type RecurrenceScheduleMonthDaysList = Array<number>;
-export const RecurrenceScheduleMonthDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RecurrenceScheduleMonthDaysList>;
+export const RecurrenceScheduleMonthDaysList =
+  ContainerCpuUsagePerCpuUsageList as any as S.Schema<RecurrenceScheduleMonthDaysList>;
 
 /** The day of the week. */
 export type DayOfWeek =
@@ -23871,10 +22629,8 @@ export const GetWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkflowVersionResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkflowVersionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkflowVersionResponseTagsMap>;
+export const GetWorkflowVersionResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkflowVersionResponseTagsMap>;
 
 /** The workflow provisioning state. */
 export type WorkflowProvisioningState =
@@ -23921,9 +22677,8 @@ export const FlowEndpointsOutgoingIpAddressesList = /*@__PURE__*/ S.Array(
 
 /** The access endpoint ip address. */
 export type FlowEndpointsAccessEndpointIpAddressesList = Array<IpAddress>;
-export const FlowEndpointsAccessEndpointIpAddressesList = /*@__PURE__*/ S.Array(
-  IpAddress,
-) as any as S.Schema<FlowEndpointsAccessEndpointIpAddressesList>;
+export const FlowEndpointsAccessEndpointIpAddressesList =
+  FlowEndpointsOutgoingIpAddressesList as any as S.Schema<FlowEndpointsAccessEndpointIpAddressesList>;
 
 /** The flow endpoints configuration. */
 export interface FlowEndpoints {
@@ -24250,18 +23005,8 @@ export interface InstallWebAppSiteExtensionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const InstallWebAppSiteExtensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteExtensionInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstallWebAppSiteExtensionResponse",
-}) as any as S.Schema<InstallWebAppSiteExtensionResponse>;
+export const InstallWebAppSiteExtensionResponse =
+  GetWebAppSiteExtensionResponse as any as S.Schema<InstallWebAppSiteExtensionResponse>;
 
 export interface InstallWebAppSiteExtensionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24311,25 +23056,13 @@ export interface InstallWebAppSiteExtensionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const InstallWebAppSiteExtensionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteExtensionInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InstallWebAppSiteExtensionSlotResponse",
-}) as any as S.Schema<InstallWebAppSiteExtensionSlotResponse>;
+export const InstallWebAppSiteExtensionSlotResponse =
+  GetWebAppSiteExtensionResponse as any as S.Schema<InstallWebAppSiteExtensionSlotResponse>;
 
 /** Resource tags. */
 export type KubeEnvironmentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const KubeEnvironmentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubeEnvironmentsCreateOrUpdateRequestTagsMap>;
+export const KubeEnvironmentsCreateOrUpdateRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<KubeEnvironmentsCreateOrUpdateRequestTagsMap>;
 
 /** KubeEnvironment resource specific properties */
 export interface KubeEnvironmentPropertiesInput {
@@ -24403,10 +23136,8 @@ export const KubeEnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type KubeEnvironmentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const KubeEnvironmentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubeEnvironmentsCreateOrUpdateResponseTagsMap>;
+export const KubeEnvironmentsCreateOrUpdateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<KubeEnvironmentsCreateOrUpdateResponseTagsMap>;
 
 export interface KubeEnvironmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -24428,36 +23159,20 @@ export interface KubeEnvironmentsCreateOrUpdateResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const KubeEnvironmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(KubeEnvironmentsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(KubeEnvironmentProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KubeEnvironmentsCreateOrUpdateResponse",
-}) as any as S.Schema<KubeEnvironmentsCreateOrUpdateResponse>;
+export const KubeEnvironmentsCreateOrUpdateResponse =
+  GetKubeEnvironmentResponse as any as S.Schema<KubeEnvironmentsCreateOrUpdateResponse>;
 
 export type ListAiGatewayByResourceGroupRequestSelectList = Array<string>;
-export const ListAiGatewayByResourceGroupRequestSelectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAiGatewayByResourceGroupRequestSelectList>;
+export const ListAiGatewayByResourceGroupRequestSelectList =
+  SitePropertiesHostNamesList as any as S.Schema<ListAiGatewayByResourceGroupRequestSelectList>;
 
 export type ListAiGatewayByResourceGroupRequestExpandList = Array<string>;
-export const ListAiGatewayByResourceGroupRequestExpandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAiGatewayByResourceGroupRequestExpandList>;
+export const ListAiGatewayByResourceGroupRequestExpandList =
+  SitePropertiesHostNamesList as any as S.Schema<ListAiGatewayByResourceGroupRequestExpandList>;
 
 export type ListAiGatewayByResourceGroupRequestOrderbyList = Array<string>;
-export const ListAiGatewayByResourceGroupRequestOrderbyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAiGatewayByResourceGroupRequestOrderbyList>;
+export const ListAiGatewayByResourceGroupRequestOrderbyList =
+  SitePropertiesHostNamesList as any as S.Schema<ListAiGatewayByResourceGroupRequestOrderbyList>;
 
 export interface ListAiGatewayByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24504,10 +23219,8 @@ export const ListAiGatewayByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AiGatewayTagsMap = { [key: string]: string | undefined };
-export const AiGatewayTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AiGatewayTagsMap>;
+export const AiGatewayTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AiGatewayTagsMap>;
 
 /** An AI gateway resource. */
 export interface AiGateway {
@@ -24526,17 +23239,7 @@ export interface AiGateway {
   /** The resource-specific properties for this resource. */
   properties?: AiGatewayProperties;
 }
-export const AiGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AiGatewayTagsMap),
-    location: S.String,
-    properties: S.optional(AiGatewayProperties),
-  }),
-).annotate({ identifier: "AiGateway" }) as any as S.Schema<AiGateway>;
+export const AiGateway = GetAiGatewayResponse as any as S.Schema<AiGateway>;
 
 /** The AiGateway items on this page */
 export type AiGatewayListResultValueList = Array<AiGateway>;
@@ -24604,10 +23307,8 @@ export const ListAppServiceEnvironmentAppServicePlansRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type AppServicePlanTagsMap = { [key: string]: string | undefined };
-export const AppServicePlanTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServicePlanTagsMap>;
+export const AppServicePlanTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AppServicePlanTagsMap>;
 
 /** App Service plan. */
 export interface AppServicePlan {
@@ -24694,10 +23395,8 @@ export const ListAppServiceEnvironmentByResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type AppServiceEnvironmentResourceTagsMap = { [key: string]: string | undefined };
-export const AppServiceEnvironmentResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppServiceEnvironmentResourceTagsMap>;
+export const AppServiceEnvironmentResourceTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<AppServiceEnvironmentResourceTagsMap>;
 
 /** App Service Environment ARM resource. */
 export interface AppServiceEnvironmentResource {
@@ -24718,20 +23417,8 @@ export interface AppServiceEnvironmentResource {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const AppServiceEnvironmentResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AppServiceEnvironmentResourceTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceEnvironment),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppServiceEnvironmentResource",
-}) as any as S.Schema<AppServiceEnvironmentResource>;
+export const AppServiceEnvironmentResource =
+  AppServiceEnvironmentsCreateOrUpdateResponse as any as S.Schema<AppServiceEnvironmentResource>;
 
 /** The AppServiceEnvironmentResource items on this page */
 export type AppServiceEnvironmentCollectionValueList = Array<AppServiceEnvironmentResource>;
@@ -24947,10 +23634,8 @@ export const ResourceMetricDefinitionPropertiesMetricAvailabilitiesList = /*@__P
 
 /** Resource metric definition properties. */
 export type ResourceMetricDefinitionPropertiesPropertiesMap = { [key: string]: string | undefined };
-export const ResourceMetricDefinitionPropertiesPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourceMetricDefinitionPropertiesPropertiesMap>;
+export const ResourceMetricDefinitionPropertiesPropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ResourceMetricDefinitionPropertiesPropertiesMap>;
 
 /** ResourceMetricDefinition resource specific properties */
 export interface ResourceMetricDefinitionProperties {
@@ -25647,9 +24332,8 @@ export const ListAppServicePlanCapabilitiesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListAppServicePlanCapabilitiesRequest>;
 
 export type ListAppServicePlanCapabilitiesResponseBodyList = Array<Capability>;
-export const ListAppServicePlanCapabilitiesResponseBodyList = /*@__PURE__*/ S.Array(
-  Capability,
-) as any as S.Schema<ListAppServicePlanCapabilitiesResponseBodyList>;
+export const ListAppServicePlanCapabilitiesResponseBodyList =
+  SkuDescriptionCapabilitiesList as any as S.Schema<ListAppServicePlanCapabilitiesResponseBodyList>;
 
 export type ListAppServicePlanCapabilitiesResponse = ListAppServicePlanCapabilitiesResponseBodyList;
 export const ListAppServicePlanCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -25831,17 +24515,13 @@ export const ListAppServicePlanRoutesForVnetRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListAppServicePlanRoutesForVnetRequest>;
 
 export type ListAppServicePlanRoutesForVnetResponseBodyList = Array<VnetRoute>;
-export const ListAppServicePlanRoutesForVnetResponseBodyList = /*@__PURE__*/ S.Array(
-  VnetRoute,
-) as any as S.Schema<ListAppServicePlanRoutesForVnetResponseBodyList>;
+export const ListAppServicePlanRoutesForVnetResponseBodyList =
+  GetAppServicePlanRouteForVnetResponseBodyList as any as S.Schema<ListAppServicePlanRoutesForVnetResponseBodyList>;
 
 export type ListAppServicePlanRoutesForVnetResponse =
   ListAppServicePlanRoutesForVnetResponseBodyList;
-export const ListAppServicePlanRoutesForVnetResponse = /*@__PURE__*/ S.suspend(() =>
-  ListAppServicePlanRoutesForVnetResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListAppServicePlanRoutesForVnetResponse",
-}) as any as S.Schema<ListAppServicePlanRoutesForVnetResponse>;
+export const ListAppServicePlanRoutesForVnetResponse =
+  GetAppServicePlanRouteForVnetResponse as any as S.Schema<ListAppServicePlanRoutesForVnetResponse>;
 
 export interface ListAppServicePlansRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26023,9 +24703,8 @@ export const ListAppServicePlanWebAppsByHybridConnectionRequest = /*@__PURE__*/ 
 
 /** Collection of resources. */
 export type ResourceCollectionValueList = Array<string>;
-export const ResourceCollectionValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceCollectionValueList>;
+export const ResourceCollectionValueList =
+  SitePropertiesHostNamesList as any as S.Schema<ResourceCollectionValueList>;
 
 /** Collection of resources. */
 export interface ResourceCollection {
@@ -26060,15 +24739,13 @@ export const ListAseRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Available Skus in region. */
 export type AseRegionPropertiesAvailableSkuList = Array<string>;
-export const AseRegionPropertiesAvailableSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AseRegionPropertiesAvailableSkuList>;
+export const AseRegionPropertiesAvailableSkuList =
+  SitePropertiesHostNamesList as any as S.Schema<AseRegionPropertiesAvailableSkuList>;
 
 /** Available OSs in region. */
 export type AseRegionPropertiesAvailableOSList = Array<string>;
-export const AseRegionPropertiesAvailableOSList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AseRegionPropertiesAvailableOSList>;
+export const AseRegionPropertiesAvailableOSList =
+  SitePropertiesHostNamesList as any as S.Schema<AseRegionPropertiesAvailableOSList>;
 
 /** ASE region resource specific properties */
 export interface AseRegionProperties {
@@ -26258,10 +24935,8 @@ export const ListCertificateByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type CertificateTagsMap = { [key: string]: string | undefined };
-export const CertificateTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CertificateTagsMap>;
+export const CertificateTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<CertificateTagsMap>;
 
 /** SSL certificate for an app. */
 export interface Certificate {
@@ -26282,18 +24957,7 @@ export interface Certificate {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CertificateTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+export const Certificate = GetCertificateResponse as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
 export type CertificateCollectionValueList = Array<Certificate>;
@@ -26813,18 +25477,8 @@ export interface DetectorDefinitionResource {
   /** Kind of resource. */
   kind?: string;
 }
-export const DetectorDefinitionResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DetectorDefinition),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DetectorDefinitionResource",
-}) as any as S.Schema<DetectorDefinitionResource>;
+export const DetectorDefinitionResource =
+  GetDiagnosticSiteDetectorResponse2 as any as S.Schema<DetectorDefinitionResource>;
 
 /** The DetectorDefinitionResource items on this page */
 export type DiagnosticDetectorCollectionValueList = Array<DetectorDefinitionResource>;
@@ -26919,22 +25573,12 @@ export interface DiagnosticCategory {
   /** Kind of resource. */
   kind?: string;
 }
-export const DiagnosticCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DiagnosticCategoryProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "DiagnosticCategory" }) as any as S.Schema<DiagnosticCategory>;
+export const DiagnosticCategory = AnalysisDefinition as any as S.Schema<DiagnosticCategory>;
 
 /** The DiagnosticCategory items on this page */
 export type DiagnosticCategoryCollectionValueList = Array<DiagnosticCategory>;
-export const DiagnosticCategoryCollectionValueList = /*@__PURE__*/ S.Array(
-  DiagnosticCategory,
-) as any as S.Schema<DiagnosticCategoryCollectionValueList>;
+export const DiagnosticCategoryCollectionValueList =
+  DiagnosticAnalysisCollectionValueList as any as S.Schema<DiagnosticCategoryCollectionValueList>;
 
 /** Collection of Diagnostic Categories */
 export interface DiagnosticCategoryCollection {
@@ -26943,14 +25587,8 @@ export interface DiagnosticCategoryCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DiagnosticCategoryCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: DiagnosticCategoryCollectionValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiagnosticCategoryCollection",
-}) as any as S.Schema<DiagnosticCategoryCollection>;
+export const DiagnosticCategoryCollection =
+  DiagnosticAnalysisCollection as any as S.Schema<DiagnosticCategoryCollection>;
 
 export interface ListDiagnosticSiteDiagnosticCategoriesSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -27031,9 +25669,8 @@ export const ListGeoRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The GeoRegion items on this page */
 export type GeoRegionCollectionValueList = Array<GeoRegion>;
-export const GeoRegionCollectionValueList = /*@__PURE__*/ S.Array(
-  GeoRegion,
-) as any as S.Schema<GeoRegionCollectionValueList>;
+export const GeoRegionCollectionValueList =
+  DeploymentLocationsLocationsList as any as S.Schema<GeoRegionCollectionValueList>;
 
 /** Collection of geographical regions. */
 export interface GeoRegionCollection {
@@ -27095,10 +25732,8 @@ export const ListKubeEnvironmentByResourceGroupRequest = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type KubeEnvironmentTagsMap = { [key: string]: string | undefined };
-export const KubeEnvironmentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<KubeEnvironmentTagsMap>;
+export const KubeEnvironmentTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<KubeEnvironmentTagsMap>;
 
 /** A Kubernetes cluster specialized for web workloads by Azure App Service */
 export interface KubeEnvironment {
@@ -27359,14 +25994,12 @@ export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+export const MetricSpecificationSupportedTimeGrainTypesList =
+  SitePropertiesHostNamesList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
+export const MetricSpecificationSupportedAggregationTypesList =
+  SitePropertiesHostNamesList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Definition of a single resource metric. */
 export interface MetricSpecification {
@@ -27538,15 +26171,13 @@ export const ResourceScopeType = S.String;
 
 /** The list of category tags that this recommendation belongs to. */
 export type RecommendationPropertiesCategoryTagsList = Array<string>;
-export const RecommendationPropertiesCategoryTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecommendationPropertiesCategoryTagsList>;
+export const RecommendationPropertiesCategoryTagsList =
+  SitePropertiesHostNamesList as any as S.Schema<RecommendationPropertiesCategoryTagsList>;
 
 /** The list of states of this recommendation. If it's null then it should be considered "Active". */
 export type RecommendationPropertiesStatesList = Array<string>;
-export const RecommendationPropertiesStatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecommendationPropertiesStatesList>;
+export const RecommendationPropertiesStatesList =
+  SitePropertiesHostNamesList as any as S.Schema<RecommendationPropertiesStatesList>;
 
 /** Recommendation resource specific properties */
 export interface RecommendationProperties {
@@ -28006,9 +26637,8 @@ export const ListSiteIdentifiersAssignedToHostNameRequest = /*@__PURE__*/ S.susp
 
 /** The Identifier items on this page */
 export type IdentifierCollectionValueList = Array<Identifier>;
-export const IdentifierCollectionValueList = /*@__PURE__*/ S.Array(
-  Identifier,
-) as any as S.Schema<IdentifierCollectionValueList>;
+export const IdentifierCollectionValueList =
+  CustomHostnameSitesPropertiesSiteResourceIdsList as any as S.Schema<IdentifierCollectionValueList>;
 
 /** Collection of identifiers. */
 export interface IdentifierCollection {
@@ -28062,17 +26692,8 @@ export interface NetworkSecurityPerimeterConfiguration {
   /** Name of the Network Security Perimeter Profile Access Rule. */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
-  }),
-).annotate({
-  identifier: "NetworkSecurityPerimeterConfiguration",
-}) as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
+export const NetworkSecurityPerimeterConfiguration =
+  GetSiteNetworkSecurityPerimeterConfigurationResponse as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationCollectionValueList =
@@ -28116,15 +26737,13 @@ export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Locations of the SKU. */
 export type GlobalCsmSkuDescriptionLocationsList = Array<string>;
-export const GlobalCsmSkuDescriptionLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GlobalCsmSkuDescriptionLocationsList>;
+export const GlobalCsmSkuDescriptionLocationsList =
+  SitePropertiesHostNamesList as any as S.Schema<GlobalCsmSkuDescriptionLocationsList>;
 
 /** Capabilities of the SKU, e.g., is traffic manager enabled? */
 export type GlobalCsmSkuDescriptionCapabilitiesList = Array<Capability>;
-export const GlobalCsmSkuDescriptionCapabilitiesList = /*@__PURE__*/ S.Array(
-  Capability,
-) as any as S.Schema<GlobalCsmSkuDescriptionCapabilitiesList>;
+export const GlobalCsmSkuDescriptionCapabilitiesList =
+  SkuDescriptionCapabilitiesList as any as S.Schema<GlobalCsmSkuDescriptionCapabilitiesList>;
 
 /** A Global SKU Description. */
 export interface GlobalCsmSkuDescription {
@@ -28204,16 +26823,7 @@ export interface SourceControl {
   /** Kind of resource. */
   kind?: string;
 }
-export const SourceControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SourceControlProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
+export const SourceControl = GetSourceControlResponse as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
 export type SourceControlCollectionValueList = Array<SourceControl>;
@@ -28275,18 +26885,8 @@ export interface StaticSiteBasicAuthPropertiesARMResource {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSiteBasicAuthPropertiesARMResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteBasicAuthPropertiesARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSiteBasicAuthPropertiesARMResource",
-}) as any as S.Schema<StaticSiteBasicAuthPropertiesARMResource>;
+export const StaticSiteBasicAuthPropertiesARMResource =
+  GetStaticSiteBasicAuthResponse as any as S.Schema<StaticSiteBasicAuthPropertiesARMResource>;
 
 /** The StaticSiteBasicAuthPropertiesARMResource items on this page */
 export type StaticSiteBasicAuthPropertiesCollectionValueList =
@@ -28357,10 +26957,8 @@ export const ListStaticSiteStaticSiteAppSettingsRequest = /*@__PURE__*/ S.suspen
 export type ListStaticSiteStaticSiteAppSettingsResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ListStaticSiteStaticSiteAppSettingsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListStaticSiteStaticSiteAppSettingsResponsePropertiesMap>;
+export const ListStaticSiteStaticSiteAppSettingsResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListStaticSiteStaticSiteAppSettingsResponsePropertiesMap>;
 
 export interface ListStaticSiteStaticSiteAppSettingsResponse {
   /** Resource Id. */
@@ -28418,10 +27016,8 @@ export const ListStaticSiteStaticSiteBuildAppSettingsRequest = /*@__PURE__*/ S.s
 export type ListStaticSiteStaticSiteBuildAppSettingsResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ListStaticSiteStaticSiteBuildAppSettingsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListStaticSiteStaticSiteBuildAppSettingsResponsePropertiesMap>;
+export const ListStaticSiteStaticSiteBuildAppSettingsResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListStaticSiteStaticSiteBuildAppSettingsResponsePropertiesMap>;
 
 export interface ListStaticSiteStaticSiteBuildAppSettingsResponse {
   /** Resource Id. */
@@ -28435,17 +27031,8 @@ export interface ListStaticSiteStaticSiteBuildAppSettingsResponse {
   /** Settings. */
   properties?: ListStaticSiteStaticSiteBuildAppSettingsResponsePropertiesMap;
 }
-export const ListStaticSiteStaticSiteBuildAppSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListStaticSiteStaticSiteBuildAppSettingsResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListStaticSiteStaticSiteBuildAppSettingsResponse",
-}) as any as S.Schema<ListStaticSiteStaticSiteBuildAppSettingsResponse>;
+export const ListStaticSiteStaticSiteBuildAppSettingsResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListStaticSiteStaticSiteBuildAppSettingsResponse>;
 
 export interface ListStaticSiteStaticSiteBuildFunctionAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28633,9 +27220,8 @@ export const ListStaticSiteStaticSiteConfiguredRolesRequest = /*@__PURE__*/ S.su
 
 /** List of string resources. */
 export type ListStaticSiteStaticSiteConfiguredRolesResponsePropertiesList = Array<string>;
-export const ListStaticSiteStaticSiteConfiguredRolesResponsePropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListStaticSiteStaticSiteConfiguredRolesResponsePropertiesList>;
+export const ListStaticSiteStaticSiteConfiguredRolesResponsePropertiesList =
+  SitePropertiesHostNamesList as any as S.Schema<ListStaticSiteStaticSiteConfiguredRolesResponsePropertiesList>;
 
 export interface ListStaticSiteStaticSiteConfiguredRolesResponse {
   /** Resource Id. */
@@ -28701,18 +27287,8 @@ export interface StaticSiteCustomDomainOverviewARMResource {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSiteCustomDomainOverviewARMResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteCustomDomainOverviewARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSiteCustomDomainOverviewARMResource",
-}) as any as S.Schema<StaticSiteCustomDomainOverviewARMResource>;
+export const StaticSiteCustomDomainOverviewARMResource =
+  GetStaticSiteStaticSiteCustomDomainResponse as any as S.Schema<StaticSiteCustomDomainOverviewARMResource>;
 
 /** The StaticSiteCustomDomainOverviewARMResource items on this page */
 export type StaticSiteCustomDomainOverviewCollectionValueList =
@@ -28767,10 +27343,7 @@ export type ListStaticSiteStaticSiteFunctionAppSettingsResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
 export const ListStaticSiteStaticSiteFunctionAppSettingsResponsePropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListStaticSiteStaticSiteFunctionAppSettingsResponsePropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<ListStaticSiteStaticSiteFunctionAppSettingsResponsePropertiesMap>;
 
 export interface ListStaticSiteStaticSiteFunctionAppSettingsResponse {
   /** Resource Id. */
@@ -28850,10 +27423,8 @@ export const ListStaticSiteStaticSiteSecretsRequest = /*@__PURE__*/ S.suspend(()
 export type ListStaticSiteStaticSiteSecretsResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ListStaticSiteStaticSiteSecretsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListStaticSiteStaticSiteSecretsResponsePropertiesMap>;
+export const ListStaticSiteStaticSiteSecretsResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListStaticSiteStaticSiteSecretsResponsePropertiesMap>;
 
 export interface ListStaticSiteStaticSiteSecretsResponse {
   /** Resource Id. */
@@ -28867,17 +27438,8 @@ export interface ListStaticSiteStaticSiteSecretsResponse {
   /** Settings. */
   properties?: ListStaticSiteStaticSiteSecretsResponsePropertiesMap;
 }
-export const ListStaticSiteStaticSiteSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListStaticSiteStaticSiteSecretsResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListStaticSiteStaticSiteSecretsResponse",
-}) as any as S.Schema<ListStaticSiteStaticSiteSecretsResponse>;
+export const ListStaticSiteStaticSiteSecretsResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListStaticSiteStaticSiteSecretsResponse>;
 
 export interface ListStaticSiteStaticSiteUsersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29002,10 +27564,8 @@ export const ListWebAppApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =
 export type ListWebAppApplicationSettingsResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ListWebAppApplicationSettingsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebAppApplicationSettingsResponsePropertiesMap>;
+export const ListWebAppApplicationSettingsResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListWebAppApplicationSettingsResponsePropertiesMap>;
 
 export interface ListWebAppApplicationSettingsResponse {
   /** Resource Id. */
@@ -29019,17 +27579,8 @@ export interface ListWebAppApplicationSettingsResponse {
   /** Settings. */
   properties?: ListWebAppApplicationSettingsResponsePropertiesMap;
 }
-export const ListWebAppApplicationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppApplicationSettingsResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppApplicationSettingsResponse",
-}) as any as S.Schema<ListWebAppApplicationSettingsResponse>;
+export const ListWebAppApplicationSettingsResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListWebAppApplicationSettingsResponse>;
 
 export interface ListWebAppApplicationSettingsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29063,10 +27614,8 @@ export const ListWebAppApplicationSettingsSlotRequest = /*@__PURE__*/ S.suspend(
 export type ListWebAppApplicationSettingsSlotResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ListWebAppApplicationSettingsSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebAppApplicationSettingsSlotResponsePropertiesMap>;
+export const ListWebAppApplicationSettingsSlotResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListWebAppApplicationSettingsSlotResponsePropertiesMap>;
 
 export interface ListWebAppApplicationSettingsSlotResponse {
   /** Resource Id. */
@@ -29080,17 +27629,8 @@ export interface ListWebAppApplicationSettingsSlotResponse {
   /** Settings. */
   properties?: ListWebAppApplicationSettingsSlotResponsePropertiesMap;
 }
-export const ListWebAppApplicationSettingsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppApplicationSettingsSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppApplicationSettingsSlotResponse",
-}) as any as S.Schema<ListWebAppApplicationSettingsSlotResponse>;
+export const ListWebAppApplicationSettingsSlotResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListWebAppApplicationSettingsSlotResponse>;
 
 export interface ListWebAppAzureStorageAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29121,10 +27661,8 @@ export const ListWebAppAzureStorageAccountsRequest = /*@__PURE__*/ S.suspend(() 
 export type ListWebAppAzureStorageAccountsResponsePropertiesMap = {
   [key: string]: AzureStorageInfoValue | undefined;
 };
-export const ListWebAppAzureStorageAccountsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AzureStorageInfoValue,
-) as any as S.Schema<ListWebAppAzureStorageAccountsResponsePropertiesMap>;
+export const ListWebAppAzureStorageAccountsResponsePropertiesMap =
+  SiteConfigAzureStorageAccountsMap as any as S.Schema<ListWebAppAzureStorageAccountsResponsePropertiesMap>;
 
 export interface ListWebAppAzureStorageAccountsResponse {
   /** Resource Id. */
@@ -29182,10 +27720,8 @@ export const ListWebAppAzureStorageAccountsSlotRequest = /*@__PURE__*/ S.suspend
 export type ListWebAppAzureStorageAccountsSlotResponsePropertiesMap = {
   [key: string]: AzureStorageInfoValue | undefined;
 };
-export const ListWebAppAzureStorageAccountsSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AzureStorageInfoValue,
-) as any as S.Schema<ListWebAppAzureStorageAccountsSlotResponsePropertiesMap>;
+export const ListWebAppAzureStorageAccountsSlotResponsePropertiesMap =
+  SiteConfigAzureStorageAccountsMap as any as S.Schema<ListWebAppAzureStorageAccountsSlotResponsePropertiesMap>;
 
 export interface ListWebAppAzureStorageAccountsSlotResponse {
   /** Resource Id. */
@@ -29199,17 +27735,8 @@ export interface ListWebAppAzureStorageAccountsSlotResponse {
   /** Azure storage accounts. */
   properties?: ListWebAppAzureStorageAccountsSlotResponsePropertiesMap;
 }
-export const ListWebAppAzureStorageAccountsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppAzureStorageAccountsSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppAzureStorageAccountsSlotResponse",
-}) as any as S.Schema<ListWebAppAzureStorageAccountsSlotResponse>;
+export const ListWebAppAzureStorageAccountsSlotResponse =
+  ListWebAppAzureStorageAccountsResponse as any as S.Schema<ListWebAppAzureStorageAccountsSlotResponse>;
 
 export interface ListWebAppBackupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29337,9 +27864,8 @@ export const BackupScheduleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Databases included in the backup. */
 export type BackupRequestPropertiesInputDatabasesList = Array<DatabaseBackupSetting>;
-export const BackupRequestPropertiesInputDatabasesList = /*@__PURE__*/ S.Array(
-  DatabaseBackupSetting,
-) as any as S.Schema<BackupRequestPropertiesInputDatabasesList>;
+export const BackupRequestPropertiesInputDatabasesList =
+  BackupRequestPropertiesDatabasesList as any as S.Schema<BackupRequestPropertiesInputDatabasesList>;
 
 /** BackupRequest resource specific properties */
 export interface BackupRequestPropertiesInput {
@@ -29414,18 +27940,8 @@ export interface ListWebAppBackupStatusSecretsResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppBackupStatusSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupItemProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppBackupStatusSecretsResponse",
-}) as any as S.Schema<ListWebAppBackupStatusSecretsResponse>;
+export const ListWebAppBackupStatusSecretsResponse =
+  GetWebAppBackupStatusResponse as any as S.Schema<ListWebAppBackupStatusSecretsResponse>;
 
 export interface ListWebAppBackupStatusSecretsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29478,18 +27994,8 @@ export interface ListWebAppBackupStatusSecretsSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppBackupStatusSecretsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupItemProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppBackupStatusSecretsSlotResponse",
-}) as any as S.Schema<ListWebAppBackupStatusSecretsSlotResponse>;
+export const ListWebAppBackupStatusSecretsSlotResponse =
+  GetWebAppBackupStatusResponse as any as S.Schema<ListWebAppBackupStatusSecretsSlotResponse>;
 
 export interface ListWebAppBasicPublishingCredentialsPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29531,18 +28037,8 @@ export interface CsmPublishingCredentialsPoliciesEntity {
   /** Kind of resource. */
   kind?: string;
 }
-export const CsmPublishingCredentialsPoliciesEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CsmPublishingCredentialsPoliciesEntity",
-}) as any as S.Schema<CsmPublishingCredentialsPoliciesEntity>;
+export const CsmPublishingCredentialsPoliciesEntity =
+  GetWebAppFtpAllowedResponse as any as S.Schema<CsmPublishingCredentialsPoliciesEntity>;
 
 /** The CsmPublishingCredentialsPoliciesEntity items on this page */
 export type PublishingCredentialsPoliciesCollectionValueList =
@@ -29940,10 +28436,8 @@ export const ListWebAppConnectionStringsSlotRequest = /*@__PURE__*/ S.suspend(()
 export type ListWebAppConnectionStringsSlotResponsePropertiesMap = {
   [key: string]: ConnStringValueTypePair | undefined;
 };
-export const ListWebAppConnectionStringsSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConnStringValueTypePair,
-) as any as S.Schema<ListWebAppConnectionStringsSlotResponsePropertiesMap>;
+export const ListWebAppConnectionStringsSlotResponsePropertiesMap =
+  ListWebAppConnectionStringsResponsePropertiesMap as any as S.Schema<ListWebAppConnectionStringsSlotResponsePropertiesMap>;
 
 export interface ListWebAppConnectionStringsSlotResponse {
   /** Resource Id. */
@@ -29957,17 +28451,8 @@ export interface ListWebAppConnectionStringsSlotResponse {
   /** Connection strings. */
   properties?: ListWebAppConnectionStringsSlotResponsePropertiesMap;
 }
-export const ListWebAppConnectionStringsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppConnectionStringsSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppConnectionStringsSlotResponse",
-}) as any as S.Schema<ListWebAppConnectionStringsSlotResponse>;
+export const ListWebAppConnectionStringsSlotResponse =
+  ListWebAppConnectionStringsResponse as any as S.Schema<ListWebAppConnectionStringsSlotResponse>;
 
 export interface ListWebAppContinuousWebJobsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30112,18 +28597,8 @@ export interface ListWebAppDeploymentLogResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppDeploymentLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppDeploymentLogResponse",
-}) as any as S.Schema<ListWebAppDeploymentLogResponse>;
+export const ListWebAppDeploymentLogResponse =
+  CreateWebAppDeploymentResponse as any as S.Schema<ListWebAppDeploymentLogResponse>;
 
 export interface ListWebAppDeploymentLogSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30170,18 +28645,8 @@ export interface ListWebAppDeploymentLogSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppDeploymentLogSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeploymentProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppDeploymentLogSlotResponse",
-}) as any as S.Schema<ListWebAppDeploymentLogSlotResponse>;
+export const ListWebAppDeploymentLogSlotResponse =
+  CreateWebAppDeploymentResponse as any as S.Schema<ListWebAppDeploymentLogSlotResponse>;
 
 export interface ListWebAppDeploymentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30365,10 +28830,8 @@ export const ListWebAppFunctionKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings. */
 export type ListWebAppFunctionKeysResponsePropertiesMap = { [key: string]: string | undefined };
-export const ListWebAppFunctionKeysResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebAppFunctionKeysResponsePropertiesMap>;
+export const ListWebAppFunctionKeysResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListWebAppFunctionKeysResponsePropertiesMap>;
 
 export interface ListWebAppFunctionKeysResponse {
   /** Resource Id. */
@@ -30382,17 +28845,8 @@ export interface ListWebAppFunctionKeysResponse {
   /** Settings. */
   properties?: ListWebAppFunctionKeysResponsePropertiesMap;
 }
-export const ListWebAppFunctionKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppFunctionKeysResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppFunctionKeysResponse",
-}) as any as S.Schema<ListWebAppFunctionKeysResponse>;
+export const ListWebAppFunctionKeysResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListWebAppFunctionKeysResponse>;
 
 export interface ListWebAppFunctionKeysSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30424,10 +28878,8 @@ export const ListWebAppFunctionKeysSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings. */
 export type ListWebAppFunctionKeysSlotResponsePropertiesMap = { [key: string]: string | undefined };
-export const ListWebAppFunctionKeysSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebAppFunctionKeysSlotResponsePropertiesMap>;
+export const ListWebAppFunctionKeysSlotResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListWebAppFunctionKeysSlotResponsePropertiesMap>;
 
 export interface ListWebAppFunctionKeysSlotResponse {
   /** Resource Id. */
@@ -30441,17 +28893,8 @@ export interface ListWebAppFunctionKeysSlotResponse {
   /** Settings. */
   properties?: ListWebAppFunctionKeysSlotResponsePropertiesMap;
 }
-export const ListWebAppFunctionKeysSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppFunctionKeysSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppFunctionKeysSlotResponse",
-}) as any as S.Schema<ListWebAppFunctionKeysSlotResponse>;
+export const ListWebAppFunctionKeysSlotResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListWebAppFunctionKeysSlotResponse>;
 
 export interface ListWebAppFunctionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30626,17 +29069,13 @@ export const ListWebAppHostKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Host level function keys. */
 export type HostKeysFunctionKeysMap = { [key: string]: string | undefined };
-export const HostKeysFunctionKeysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HostKeysFunctionKeysMap>;
+export const HostKeysFunctionKeysMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<HostKeysFunctionKeysMap>;
 
 /** System keys. */
 export type HostKeysSystemKeysMap = { [key: string]: string | undefined };
-export const HostKeysSystemKeysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HostKeysSystemKeysMap>;
+export const HostKeysSystemKeysMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<HostKeysSystemKeysMap>;
 
 /** Functions host level keys. */
 export interface HostKeys {
@@ -30823,18 +29262,8 @@ export interface ListWebAppHybridConnectionsResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppHybridConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppHybridConnectionsResponse",
-}) as any as S.Schema<ListWebAppHybridConnectionsResponse>;
+export const ListWebAppHybridConnectionsResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<ListWebAppHybridConnectionsResponse>;
 
 export interface ListWebAppHybridConnectionsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30878,18 +29307,8 @@ export interface ListWebAppHybridConnectionsSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppHybridConnectionsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppHybridConnectionsSlotResponse",
-}) as any as S.Schema<ListWebAppHybridConnectionsSlotResponse>;
+export const ListWebAppHybridConnectionsSlotResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<ListWebAppHybridConnectionsSlotResponse>;
 
 export interface ListWebAppInstanceFunctionsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31063,16 +29482,7 @@ export interface ProcessInfo {
   /** Kind of resource. */
   kind?: string;
 }
-export const ProcessInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProcessInfoProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProcessInfo" }) as any as S.Schema<ProcessInfo>;
+export const ProcessInfo = GetWebAppProcessResponse as any as S.Schema<ProcessInfo>;
 
 /** The ProcessInfo items on this page */
 export type ProcessInfoCollectionValueList = Array<ProcessInfo>;
@@ -31158,9 +29568,8 @@ export const ListWebAppInstanceProcessModulesRequest = /*@__PURE__*/ S.suspend((
 
 /** The ProcessModuleInfo items on this page */
 export type ProcessModuleInfoCollectionValueList = Array<ProcessModuleInfo>;
-export const ProcessModuleInfoCollectionValueList = /*@__PURE__*/ S.Array(
-  ProcessModuleInfo,
-) as any as S.Schema<ProcessModuleInfoCollectionValueList>;
+export const ProcessModuleInfoCollectionValueList =
+  ProcessInfoPropertiesModulesList as any as S.Schema<ProcessModuleInfoCollectionValueList>;
 
 /** Collection of Kudu thread information elements. */
 export interface ProcessModuleInfoCollection {
@@ -31245,9 +29654,8 @@ export const ListWebAppInstanceProcessThreadsRequest = /*@__PURE__*/ S.suspend((
 
 /** The ProcessThreadInfo items on this page */
 export type ProcessThreadInfoCollectionValueList = Array<ProcessThreadInfo>;
-export const ProcessThreadInfoCollectionValueList = /*@__PURE__*/ S.Array(
-  ProcessThreadInfo,
-) as any as S.Schema<ProcessThreadInfoCollectionValueList>;
+export const ProcessThreadInfoCollectionValueList =
+  ProcessInfoPropertiesThreadsList as any as S.Schema<ProcessThreadInfoCollectionValueList>;
 
 /** Collection of Kudu thread information elements. */
 export interface ProcessThreadInfoCollection {
@@ -31405,10 +29813,8 @@ export const ListWebAppMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings. */
 export type ListWebAppMetadataResponsePropertiesMap = { [key: string]: string | undefined };
-export const ListWebAppMetadataResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebAppMetadataResponsePropertiesMap>;
+export const ListWebAppMetadataResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListWebAppMetadataResponsePropertiesMap>;
 
 export interface ListWebAppMetadataResponse {
   /** Resource Id. */
@@ -31422,17 +29828,8 @@ export interface ListWebAppMetadataResponse {
   /** Settings. */
   properties?: ListWebAppMetadataResponsePropertiesMap;
 }
-export const ListWebAppMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppMetadataResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppMetadataResponse",
-}) as any as S.Schema<ListWebAppMetadataResponse>;
+export const ListWebAppMetadataResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListWebAppMetadataResponse>;
 
 export interface ListWebAppMetadataSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31464,10 +29861,8 @@ export const ListWebAppMetadataSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings. */
 export type ListWebAppMetadataSlotResponsePropertiesMap = { [key: string]: string | undefined };
-export const ListWebAppMetadataSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebAppMetadataSlotResponsePropertiesMap>;
+export const ListWebAppMetadataSlotResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ListWebAppMetadataSlotResponsePropertiesMap>;
 
 export interface ListWebAppMetadataSlotResponse {
   /** Resource Id. */
@@ -31481,17 +29876,8 @@ export interface ListWebAppMetadataSlotResponse {
   /** Settings. */
   properties?: ListWebAppMetadataSlotResponsePropertiesMap;
 }
-export const ListWebAppMetadataSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ListWebAppMetadataSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "ListWebAppMetadataSlotResponse",
-}) as any as S.Schema<ListWebAppMetadataSlotResponse>;
+export const ListWebAppMetadataSlotResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<ListWebAppMetadataSlotResponse>;
 
 export interface ListWebAppNetworkFeaturesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31536,18 +29922,8 @@ export interface RelayServiceConnectionEntity {
   /** Kind of resource. */
   kind?: string;
 }
-export const RelayServiceConnectionEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RelayServiceConnectionEntity",
-}) as any as S.Schema<RelayServiceConnectionEntity>;
+export const RelayServiceConnectionEntity =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<RelayServiceConnectionEntity>;
 
 /** The Hybrid Connections summary view. */
 export type NetworkFeaturesPropertiesHybridConnectionsList = Array<RelayServiceConnectionEntity>;
@@ -31557,9 +29933,8 @@ export const NetworkFeaturesPropertiesHybridConnectionsList = /*@__PURE__*/ S.Ar
 
 /** The Hybrid Connection V2 (Service Bus) view. */
 export type NetworkFeaturesPropertiesHybridConnectionsV2List = Array<HybridConnection>;
-export const NetworkFeaturesPropertiesHybridConnectionsV2List = /*@__PURE__*/ S.Array(
-  HybridConnection,
-) as any as S.Schema<NetworkFeaturesPropertiesHybridConnectionsV2List>;
+export const NetworkFeaturesPropertiesHybridConnectionsV2List =
+  HybridConnectionCollectionValueList as any as S.Schema<NetworkFeaturesPropertiesHybridConnectionsV2List>;
 
 /** NetworkFeatures resource specific properties */
 export interface NetworkFeaturesProperties {
@@ -31655,18 +30030,8 @@ export interface ListWebAppNetworkFeaturesSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppNetworkFeaturesSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NetworkFeaturesProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppNetworkFeaturesSlotResponse",
-}) as any as S.Schema<ListWebAppNetworkFeaturesSlotResponse>;
+export const ListWebAppNetworkFeaturesSlotResponse =
+  ListWebAppNetworkFeaturesResponse as any as S.Schema<ListWebAppNetworkFeaturesSlotResponse>;
 
 export interface ListWebAppPerfMonCountersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32194,18 +30559,8 @@ export interface ListWebAppPublishingCredentialsResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppPublishingCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(UserProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppPublishingCredentialsResponse",
-}) as any as S.Schema<ListWebAppPublishingCredentialsResponse>;
+export const ListWebAppPublishingCredentialsResponse =
+  GetPublishingUserResponse as any as S.Schema<ListWebAppPublishingCredentialsResponse>;
 
 export interface ListWebAppPublishingCredentialsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32249,18 +30604,8 @@ export interface ListWebAppPublishingCredentialsSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppPublishingCredentialsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(UserProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppPublishingCredentialsSlotResponse",
-}) as any as S.Schema<ListWebAppPublishingCredentialsSlotResponse>;
+export const ListWebAppPublishingCredentialsSlotResponse =
+  GetPublishingUserResponse as any as S.Schema<ListWebAppPublishingCredentialsSlotResponse>;
 
 /** Name of the format. Valid values are: FileZilla3 WebDeploy -- default Ftp */
 export type PublishingProfileFormat = "FileZilla3" | "WebDeploy" | "Ftp";
@@ -32298,11 +30643,8 @@ export const ListWebAppPublishingProfileXmlWithSecretsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListWebAppPublishingProfileXmlWithSecretsRequest>;
 
 export type ListWebAppPublishingProfileXmlWithSecretsResponse = unknown;
-export const ListWebAppPublishingProfileXmlWithSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListWebAppPublishingProfileXmlWithSecretsResponse",
-}) as any as S.Schema<ListWebAppPublishingProfileXmlWithSecretsResponse>;
+export const ListWebAppPublishingProfileXmlWithSecretsResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<ListWebAppPublishingProfileXmlWithSecretsResponse>;
 
 export interface ListWebAppPublishingProfileXmlWithSecretsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32339,11 +30681,8 @@ export const ListWebAppPublishingProfileXmlWithSecretsSlotRequest = /*@__PURE__*
 }) as any as S.Schema<ListWebAppPublishingProfileXmlWithSecretsSlotRequest>;
 
 export type ListWebAppPublishingProfileXmlWithSecretsSlotResponse = unknown;
-export const ListWebAppPublishingProfileXmlWithSecretsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListWebAppPublishingProfileXmlWithSecretsSlotResponse",
-}) as any as S.Schema<ListWebAppPublishingProfileXmlWithSecretsSlotResponse>;
+export const ListWebAppPublishingProfileXmlWithSecretsSlotResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<ListWebAppPublishingProfileXmlWithSecretsSlotResponse>;
 
 export interface ListWebAppRelayServiceConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32384,18 +30723,8 @@ export interface ListWebAppRelayServiceConnectionsResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppRelayServiceConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppRelayServiceConnectionsResponse",
-}) as any as S.Schema<ListWebAppRelayServiceConnectionsResponse>;
+export const ListWebAppRelayServiceConnectionsResponse =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<ListWebAppRelayServiceConnectionsResponse>;
 
 export interface ListWebAppRelayServiceConnectionsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32439,18 +30768,8 @@ export interface ListWebAppRelayServiceConnectionsSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const ListWebAppRelayServiceConnectionsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppRelayServiceConnectionsSlotResponse",
-}) as any as S.Schema<ListWebAppRelayServiceConnectionsSlotResponse>;
+export const ListWebAppRelayServiceConnectionsSlotResponse =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<ListWebAppRelayServiceConnectionsSlotResponse>;
 
 export interface ListWebAppsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32811,17 +31130,8 @@ export interface ListWebAppSitePushSettingsSlotResponse {
   /** PushSettings resource specific properties */
   properties?: PushSettingsProperties;
 }
-export const ListWebAppSitePushSettingsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PushSettingsProperties),
-  }),
-).annotate({
-  identifier: "ListWebAppSitePushSettingsSlotResponse",
-}) as any as S.Schema<ListWebAppSitePushSettingsSlotResponse>;
+export const ListWebAppSitePushSettingsSlotResponse =
+  ListWebAppSitePushSettingsResponse as any as S.Schema<ListWebAppSitePushSettingsSlotResponse>;
 
 export interface ListWebAppSlotConfigurationNamesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32850,21 +31160,18 @@ export const ListWebAppSlotConfigurationNamesRequest = /*@__PURE__*/ S.suspend((
 
 /** List of connection string names. */
 export type SlotConfigNamesConnectionStringNamesList = Array<string>;
-export const SlotConfigNamesConnectionStringNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SlotConfigNamesConnectionStringNamesList>;
+export const SlotConfigNamesConnectionStringNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<SlotConfigNamesConnectionStringNamesList>;
 
 /** List of application settings names. */
 export type SlotConfigNamesAppSettingNamesList = Array<string>;
-export const SlotConfigNamesAppSettingNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SlotConfigNamesAppSettingNamesList>;
+export const SlotConfigNamesAppSettingNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<SlotConfigNamesAppSettingNamesList>;
 
 /** List of external Azure storage account identifiers. */
 export type SlotConfigNamesAzureStorageConfigNamesList = Array<string>;
-export const SlotConfigNamesAzureStorageConfigNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SlotConfigNamesAzureStorageConfigNamesList>;
+export const SlotConfigNamesAzureStorageConfigNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<SlotConfigNamesAzureStorageConfigNamesList>;
 
 /** Names for connection strings, application settings, and external Azure storage account configuration identifiers to be marked as sticky to the deployment slot and not moved during a swap operation. This is valid for all deployment slots in an app. */
 export interface SlotConfigNames {
@@ -33125,9 +31432,8 @@ export const ListWebAppSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Snapshot items on this page */
 export type SnapshotCollectionValueList = Array<Snapshot>;
-export const SnapshotCollectionValueList = /*@__PURE__*/ S.Array(
-  Snapshot,
-) as any as S.Schema<SnapshotCollectionValueList>;
+export const SnapshotCollectionValueList =
+  GetGlobalDeletedWebAppSnapshotsResponseBodyList as any as S.Schema<SnapshotCollectionValueList>;
 
 /** Collection of snapshots which can be used to revert an app to a previous time. */
 export interface SnapshotCollection {
@@ -33303,9 +31609,8 @@ export const ListWebAppSyncStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebAppSyncStatusRequest>;
 
 export interface ListWebAppSyncStatusResponse {}
-export const ListWebAppSyncStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListWebAppSyncStatusResponse",
-}) as any as S.Schema<ListWebAppSyncStatusResponse>;
+export const ListWebAppSyncStatusResponse =
+  AiGatewayPropertiesInput as any as S.Schema<ListWebAppSyncStatusResponse>;
 
 export interface ListWebAppSyncStatusSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33336,11 +31641,8 @@ export const ListWebAppSyncStatusSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebAppSyncStatusSlotRequest>;
 
 export interface ListWebAppSyncStatusSlotResponse {}
-export const ListWebAppSyncStatusSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ListWebAppSyncStatusSlotResponse",
-}) as any as S.Schema<ListWebAppSyncStatusSlotResponse>;
+export const ListWebAppSyncStatusSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ListWebAppSyncStatusSlotResponse>;
 
 export interface ListWebAppTriggeredWebJobHistoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33633,16 +31935,12 @@ export const ListWebAppVnetConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebAppVnetConnectionsRequest>;
 
 export type ListWebAppVnetConnectionsResponseBodyList = Array<VnetInfoResource>;
-export const ListWebAppVnetConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
-  VnetInfoResource,
-) as any as S.Schema<ListWebAppVnetConnectionsResponseBodyList>;
+export const ListWebAppVnetConnectionsResponseBodyList =
+  ListAppServicePlanVnetsResponseBodyList as any as S.Schema<ListWebAppVnetConnectionsResponseBodyList>;
 
 export type ListWebAppVnetConnectionsResponse = ListWebAppVnetConnectionsResponseBodyList;
-export const ListWebAppVnetConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListWebAppVnetConnectionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListWebAppVnetConnectionsResponse",
-}) as any as S.Schema<ListWebAppVnetConnectionsResponse>;
+export const ListWebAppVnetConnectionsResponse =
+  ListAppServicePlanVnetsResponse as any as S.Schema<ListWebAppVnetConnectionsResponse>;
 
 export interface ListWebAppVnetConnectionsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33673,16 +31971,12 @@ export const ListWebAppVnetConnectionsSlotRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListWebAppVnetConnectionsSlotRequest>;
 
 export type ListWebAppVnetConnectionsSlotResponseBodyList = Array<VnetInfoResource>;
-export const ListWebAppVnetConnectionsSlotResponseBodyList = /*@__PURE__*/ S.Array(
-  VnetInfoResource,
-) as any as S.Schema<ListWebAppVnetConnectionsSlotResponseBodyList>;
+export const ListWebAppVnetConnectionsSlotResponseBodyList =
+  ListAppServicePlanVnetsResponseBodyList as any as S.Schema<ListWebAppVnetConnectionsSlotResponseBodyList>;
 
 export type ListWebAppVnetConnectionsSlotResponse = ListWebAppVnetConnectionsSlotResponseBodyList;
-export const ListWebAppVnetConnectionsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  ListWebAppVnetConnectionsSlotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListWebAppVnetConnectionsSlotResponse",
-}) as any as S.Schema<ListWebAppVnetConnectionsSlotResponse>;
+export const ListWebAppVnetConnectionsSlotResponse =
+  ListAppServicePlanVnetsResponse as any as S.Schema<ListWebAppVnetConnectionsSlotResponse>;
 
 export interface ListWebAppWebJobsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33722,16 +32016,7 @@ export interface WebJob {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WebJobProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "WebJob" }) as any as S.Schema<WebJob>;
+export const WebJob = GetWebAppWebJobResponse as any as S.Schema<WebJob>;
 
 /** The WebJob items on this page */
 export type WebJobCollectionValueList = Array<WebJob>;
@@ -33847,19 +32132,8 @@ export interface ListWebAppWorkflowsConnectionsResponse {
   /** The resource location. */
   location?: string;
 }
-export const ListWebAppWorkflowsConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowEnvelopeProperties),
-    kind: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppWorkflowsConnectionsResponse",
-}) as any as S.Schema<ListWebAppWorkflowsConnectionsResponse>;
+export const ListWebAppWorkflowsConnectionsResponse =
+  GetWebAppInstanceWorkflowSlotResponse as any as S.Schema<ListWebAppWorkflowsConnectionsResponse>;
 
 export interface ListWebAppWorkflowsConnectionsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33905,19 +32179,8 @@ export interface ListWebAppWorkflowsConnectionsSlotResponse {
   /** The resource location. */
   location?: string;
 }
-export const ListWebAppWorkflowsConnectionsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowEnvelopeProperties),
-    kind: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWebAppWorkflowsConnectionsSlotResponse",
-}) as any as S.Schema<ListWebAppWorkflowsConnectionsSlotResponse>;
+export const ListWebAppWorkflowsConnectionsSlotResponse =
+  GetWebAppInstanceWorkflowSlotResponse as any as S.Schema<ListWebAppWorkflowsConnectionsSlotResponse>;
 
 export interface ListWorkflowRunActionExpressionTracesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34124,10 +32387,8 @@ export const ListWorkflowRunActionRepetitionsRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type WorkflowRunActionRepetitionDefinitionTagsMap = { [key: string]: string | undefined };
-export const WorkflowRunActionRepetitionDefinitionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkflowRunActionRepetitionDefinitionTagsMap>;
+export const WorkflowRunActionRepetitionDefinitionTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WorkflowRunActionRepetitionDefinitionTagsMap>;
 
 /** The workflow run action repetition definition. */
 export interface WorkflowRunActionRepetitionDefinition {
@@ -34146,19 +32407,8 @@ export interface WorkflowRunActionRepetitionDefinition {
   /** The workflow run action repetition properties definition. */
   properties: WorkflowRunActionRepetitionProperties;
 }
-export const WorkflowRunActionRepetitionDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WorkflowRunActionRepetitionDefinitionTagsMap),
-    location: S.String,
-    properties: WorkflowRunActionRepetitionProperties,
-  }),
-).annotate({
-  identifier: "WorkflowRunActionRepetitionDefinition",
-}) as any as S.Schema<WorkflowRunActionRepetitionDefinition>;
+export const WorkflowRunActionRepetitionDefinition =
+  GetWorkflowRunActionRepetitionResponse as any as S.Schema<WorkflowRunActionRepetitionDefinition>;
 
 /** The WorkflowRunActionRepetitionDefinition items on this page */
 export type WorkflowRunActionRepetitionDefinitionCollectionValueList =
@@ -34222,10 +32472,8 @@ export const ListWorkflowRunActionRepetitionsRequestHistoriesRequest = /*@__PURE
 
 /** Resource tags. */
 export type RequestHistoryTagsMap = { [key: string]: string | undefined };
-export const RequestHistoryTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RequestHistoryTagsMap>;
+export const RequestHistoryTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<RequestHistoryTagsMap>;
 
 /** The request history. */
 export interface RequestHistory {
@@ -34437,15 +32685,7 @@ export interface WorkflowRun {
   /** The workflow run properties. */
   properties?: WorkflowRunProperties;
 }
-export const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkflowRunProperties),
-  }),
-).annotate({ identifier: "WorkflowRun" }) as any as S.Schema<WorkflowRun>;
+export const WorkflowRun = GetWorkflowRunResponse as any as S.Schema<WorkflowRun>;
 
 /** The WorkflowRun items on this page */
 export type WorkflowRunListResultValueList = Array<WorkflowRun>;
@@ -34500,9 +32740,8 @@ export const ListWorkflowTriggerCallbackUrlRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Gets the workflow trigger callback URL relative path parameters. */
 export type WorkflowTriggerCallbackUrlRelativePathParametersList = Array<string>;
-export const WorkflowTriggerCallbackUrlRelativePathParametersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkflowTriggerCallbackUrlRelativePathParametersList>;
+export const WorkflowTriggerCallbackUrlRelativePathParametersList =
+  SitePropertiesHostNamesList as any as S.Schema<WorkflowTriggerCallbackUrlRelativePathParametersList>;
 
 /** Gets the workflow trigger callback URL query parameters. */
 export interface WorkflowTriggerListCallbackUrlQueries {
@@ -34751,10 +32990,8 @@ export const ListWorkflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkflowVersionTagsMap = { [key: string]: string | undefined };
-export const WorkflowVersionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkflowVersionTagsMap>;
+export const WorkflowVersionTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WorkflowVersionTagsMap>;
 
 /** The workflow version. */
 export interface WorkflowVersion {
@@ -34952,9 +33189,8 @@ export const MigrateWebAppStorageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateWebAppStorageResponse>;
 
 export type MoveRequestResourcesList = Array<string>;
-export const MoveRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MoveRequestResourcesList>;
+export const MoveRequestResourcesList =
+  SitePropertiesHostNamesList as any as S.Schema<MoveRequestResourcesList>;
 
 export interface MoveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34981,16 +33217,12 @@ export const MoveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveRequest" }) as any as S.Schema<MoveRequest>;
 
 export interface MoveResponse {}
-export const MoveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MoveResponse",
-}) as any as S.Schema<MoveResponse>;
+export const MoveResponse = AiGatewayPropertiesInput as any as S.Schema<MoveResponse>;
 
 /** Resource tags. */
 export type PatchAiGatewayRequestTagsMap = { [key: string]: string | undefined };
-export const PatchAiGatewayRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchAiGatewayRequestTagsMap>;
+export const PatchAiGatewayRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<PatchAiGatewayRequestTagsMap>;
 
 export interface PatchAiGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35020,10 +33252,8 @@ export const PatchAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PatchAiGatewayResponseTagsMap = { [key: string]: string | undefined };
-export const PatchAiGatewayResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchAiGatewayResponseTagsMap>;
+export const PatchAiGatewayResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<PatchAiGatewayResponseTagsMap>;
 
 export interface PatchAiGatewayResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -35041,17 +33271,8 @@ export interface PatchAiGatewayResponse {
   /** The resource-specific properties for this resource. */
   properties?: AiGatewayProperties;
 }
-export const PatchAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PatchAiGatewayResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AiGatewayProperties),
-  }),
-).annotate({ identifier: "PatchAiGatewayResponse" }) as any as S.Schema<PatchAiGatewayResponse>;
+export const PatchAiGatewayResponse =
+  GetAiGatewayResponse as any as S.Schema<PatchAiGatewayResponse>;
 
 /** StaticSitesWorkflowPreviewRequest resource specific properties */
 export interface StaticSitesWorkflowPreviewRequestProperties {
@@ -35185,18 +33406,8 @@ export interface PutWebAppPrivateAccessVnetResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const PutWebAppPrivateAccessVnetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateAccessProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutWebAppPrivateAccessVnetResponse",
-}) as any as S.Schema<PutWebAppPrivateAccessVnetResponse>;
+export const PutWebAppPrivateAccessVnetResponse =
+  GetWebAppPrivateAccessResponse as any as S.Schema<PutWebAppPrivateAccessVnetResponse>;
 
 export interface PutWebAppPrivateAccessVnetSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35246,18 +33457,8 @@ export interface PutWebAppPrivateAccessVnetSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const PutWebAppPrivateAccessVnetSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateAccessProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PutWebAppPrivateAccessVnetSlotResponse",
-}) as any as S.Schema<PutWebAppPrivateAccessVnetSlotResponse>;
+export const PutWebAppPrivateAccessVnetSlotResponse =
+  GetWebAppPrivateAccessResponse as any as S.Schema<PutWebAppPrivateAccessVnetSlotResponse>;
 
 export interface RebootAppServiceEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35285,11 +33486,8 @@ export const RebootAppServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RebootAppServiceEnvironmentRequest>;
 
 export interface RebootAppServiceEnvironmentResponse {}
-export const RebootAppServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RebootAppServiceEnvironmentResponse",
-}) as any as S.Schema<RebootAppServiceEnvironmentResponse>;
+export const RebootAppServiceEnvironmentResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RebootAppServiceEnvironmentResponse>;
 
 export interface RebootAppServicePlanWorkerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35320,11 +33518,8 @@ export const RebootAppServicePlanWorkerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RebootAppServicePlanWorkerRequest>;
 
 export interface RebootAppServicePlanWorkerResponse {}
-export const RebootAppServicePlanWorkerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RebootAppServicePlanWorkerResponse",
-}) as any as S.Schema<RebootAppServicePlanWorkerResponse>;
+export const RebootAppServicePlanWorkerResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RebootAppServicePlanWorkerResponse>;
 
 export interface RecoverWebAppSiteConfigurationSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35355,11 +33550,8 @@ export const RecoverWebAppSiteConfigurationSnapshotRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<RecoverWebAppSiteConfigurationSnapshotRequest>;
 
 export interface RecoverWebAppSiteConfigurationSnapshotResponse {}
-export const RecoverWebAppSiteConfigurationSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RecoverWebAppSiteConfigurationSnapshotResponse",
-}) as any as S.Schema<RecoverWebAppSiteConfigurationSnapshotResponse>;
+export const RecoverWebAppSiteConfigurationSnapshotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RecoverWebAppSiteConfigurationSnapshotResponse>;
 
 export interface RecoverWebAppSiteConfigurationSnapshotSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35393,11 +33585,8 @@ export const RecoverWebAppSiteConfigurationSnapshotSlotRequest = /*@__PURE__*/ S
 }) as any as S.Schema<RecoverWebAppSiteConfigurationSnapshotSlotRequest>;
 
 export interface RecoverWebAppSiteConfigurationSnapshotSlotResponse {}
-export const RecoverWebAppSiteConfigurationSnapshotSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RecoverWebAppSiteConfigurationSnapshotSlotResponse",
-}) as any as S.Schema<RecoverWebAppSiteConfigurationSnapshotSlotResponse>;
+export const RecoverWebAppSiteConfigurationSnapshotSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RecoverWebAppSiteConfigurationSnapshotSlotResponse>;
 
 /** The key type. */
 export type KeyType = "NotSpecified" | "Primary" | "Secondary";
@@ -35435,11 +33624,8 @@ export const RegenerateWorkflowAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegenerateWorkflowAccessKeyRequest>;
 
 export interface RegenerateWorkflowAccessKeyResponse {}
-export const RegenerateWorkflowAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateWorkflowAccessKeyResponse",
-}) as any as S.Schema<RegenerateWorkflowAccessKeyResponse>;
+export const RegenerateWorkflowAccessKeyResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RegenerateWorkflowAccessKeyResponse>;
 
 export interface RegionalCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35566,18 +33752,7 @@ export interface RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteResponse
   kind?: string;
 }
 export const RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(StaticSiteUserProvidedFunctionAppProperties),
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteResponse",
-  }) as any as S.Schema<RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteResponse>;
+  GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResponse as any as S.Schema<RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteResponse>;
 
 export interface RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteBuildRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35635,18 +33810,7 @@ export interface RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteBuildRes
   kind?: string;
 }
 export const RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteBuildResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(StaticSiteUserProvidedFunctionAppProperties),
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteBuildResponse",
-  }) as any as S.Schema<RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteBuildResponse>;
+  GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResponse as any as S.Schema<RegisterStaticSiteUserProvidedFunctionAppWithStaticSiteBuildResponse>;
 
 export interface ResetRecommendationAllFiltersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35668,11 +33832,8 @@ export const ResetRecommendationAllFiltersRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ResetRecommendationAllFiltersRequest>;
 
 export interface ResetRecommendationAllFiltersResponse {}
-export const ResetRecommendationAllFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetRecommendationAllFiltersResponse",
-}) as any as S.Schema<ResetRecommendationAllFiltersResponse>;
+export const ResetRecommendationAllFiltersResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ResetRecommendationAllFiltersResponse>;
 
 export interface ResetRecommendationAllFiltersForHostingEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35704,11 +33865,8 @@ export const ResetRecommendationAllFiltersForHostingEnvironmentRequest = /*@__PU
 }) as any as S.Schema<ResetRecommendationAllFiltersForHostingEnvironmentRequest>;
 
 export interface ResetRecommendationAllFiltersForHostingEnvironmentResponse {}
-export const ResetRecommendationAllFiltersForHostingEnvironmentResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResetRecommendationAllFiltersForHostingEnvironmentResponse",
-}) as any as S.Schema<ResetRecommendationAllFiltersForHostingEnvironmentResponse>;
+export const ResetRecommendationAllFiltersForHostingEnvironmentResponse =
+  DisableRecommendationRecommendationForSubscriptionResponse as any as S.Schema<ResetRecommendationAllFiltersForHostingEnvironmentResponse>;
 
 export interface ResetRecommendationAllFiltersForWebAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35736,11 +33894,8 @@ export const ResetRecommendationAllFiltersForWebAppRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ResetRecommendationAllFiltersForWebAppRequest>;
 
 export interface ResetRecommendationAllFiltersForWebAppResponse {}
-export const ResetRecommendationAllFiltersForWebAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetRecommendationAllFiltersForWebAppResponse",
-}) as any as S.Schema<ResetRecommendationAllFiltersForWebAppResponse>;
+export const ResetRecommendationAllFiltersForWebAppResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ResetRecommendationAllFiltersForWebAppResponse>;
 
 /** StaticSiteResetPropertiesARMResource resource specific properties */
 export interface StaticSiteResetPropertiesARMResourceProperties {
@@ -35790,11 +33945,8 @@ export const ResetStaticSiteStaticSiteApiKeyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ResetStaticSiteStaticSiteApiKeyRequest>;
 
 export interface ResetStaticSiteStaticSiteApiKeyResponse {}
-export const ResetStaticSiteStaticSiteApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetStaticSiteStaticSiteApiKeyResponse",
-}) as any as S.Schema<ResetStaticSiteStaticSiteApiKeyResponse>;
+export const ResetStaticSiteStaticSiteApiKeyResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ResetStaticSiteStaticSiteApiKeyResponse>;
 
 export interface ResetWebAppProductionSlotConfigRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35822,11 +33974,8 @@ export const ResetWebAppProductionSlotConfigRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ResetWebAppProductionSlotConfigRequest>;
 
 export interface ResetWebAppProductionSlotConfigResponse {}
-export const ResetWebAppProductionSlotConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetWebAppProductionSlotConfigResponse",
-}) as any as S.Schema<ResetWebAppProductionSlotConfigResponse>;
+export const ResetWebAppProductionSlotConfigResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ResetWebAppProductionSlotConfigResponse>;
 
 export interface ResetWebAppSlotConfigurationSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35857,11 +34006,8 @@ export const ResetWebAppSlotConfigurationSlotRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ResetWebAppSlotConfigurationSlotRequest>;
 
 export interface ResetWebAppSlotConfigurationSlotResponse {}
-export const ResetWebAppSlotConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResetWebAppSlotConfigurationSlotResponse",
-}) as any as S.Schema<ResetWebAppSlotConfigurationSlotResponse>;
+export const ResetWebAppSlotConfigurationSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ResetWebAppSlotConfigurationSlotResponse>;
 
 export interface RestartAppServicePlanWebAppsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35892,11 +34038,8 @@ export const RestartAppServicePlanWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartAppServicePlanWebAppsRequest>;
 
 export interface RestartAppServicePlanWebAppsResponse {}
-export const RestartAppServicePlanWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestartAppServicePlanWebAppsResponse",
-}) as any as S.Schema<RestartAppServicePlanWebAppsResponse>;
+export const RestartAppServicePlanWebAppsResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RestartAppServicePlanWebAppsResponse>;
 
 export interface RestartWebAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35928,9 +34071,8 @@ export const RestartWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartWebAppRequest" }) as any as S.Schema<RestartWebAppRequest>;
 
 export interface RestartWebAppResponse {}
-export const RestartWebAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartWebAppResponse",
-}) as any as S.Schema<RestartWebAppResponse>;
+export const RestartWebAppResponse =
+  AiGatewayPropertiesInput as any as S.Schema<RestartWebAppResponse>;
 
 export interface RestartWebAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35965,15 +34107,13 @@ export const RestartWebAppSlotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartWebAppSlotRequest" }) as any as S.Schema<RestartWebAppSlotRequest>;
 
 export interface RestartWebAppSlotResponse {}
-export const RestartWebAppSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartWebAppSlotResponse",
-}) as any as S.Schema<RestartWebAppSlotResponse>;
+export const RestartWebAppSlotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<RestartWebAppSlotResponse>;
 
 /** Collection of databases which should be restored. This list has to match the list of databases included in the backup. */
 export type RestoreRequestPropertiesDatabasesList = Array<DatabaseBackupSetting>;
-export const RestoreRequestPropertiesDatabasesList = /*@__PURE__*/ S.Array(
-  DatabaseBackupSetting,
-) as any as S.Schema<RestoreRequestPropertiesDatabasesList>;
+export const RestoreRequestPropertiesDatabasesList =
+  BackupRequestPropertiesDatabasesList as any as S.Schema<RestoreRequestPropertiesDatabasesList>;
 
 /** Operation type. */
 export type RestoreRequestPropertiesOperationType =
@@ -36058,9 +34198,8 @@ export const RestoreWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreWebAppRequest" }) as any as S.Schema<RestoreWebAppRequest>;
 
 export interface RestoreWebAppResponse {}
-export const RestoreWebAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreWebAppResponse",
-}) as any as S.Schema<RestoreWebAppResponse>;
+export const RestoreWebAppResponse =
+  AiGatewayPropertiesInput as any as S.Schema<RestoreWebAppResponse>;
 
 export interface RestoreWebAppFromBackupBlobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36094,11 +34233,8 @@ export const RestoreWebAppFromBackupBlobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreWebAppFromBackupBlobRequest>;
 
 export interface RestoreWebAppFromBackupBlobResponse {}
-export const RestoreWebAppFromBackupBlobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreWebAppFromBackupBlobResponse",
-}) as any as S.Schema<RestoreWebAppFromBackupBlobResponse>;
+export const RestoreWebAppFromBackupBlobResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RestoreWebAppFromBackupBlobResponse>;
 
 export interface RestoreWebAppFromBackupBlobSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36135,11 +34271,8 @@ export const RestoreWebAppFromBackupBlobSlotRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RestoreWebAppFromBackupBlobSlotRequest>;
 
 export interface RestoreWebAppFromBackupBlobSlotResponse {}
-export const RestoreWebAppFromBackupBlobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreWebAppFromBackupBlobSlotResponse",
-}) as any as S.Schema<RestoreWebAppFromBackupBlobSlotResponse>;
+export const RestoreWebAppFromBackupBlobSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RestoreWebAppFromBackupBlobSlotResponse>;
 
 /** DeletedAppRestoreRequest resource specific properties */
 export interface DeletedAppRestoreRequestProperties {
@@ -36195,11 +34328,8 @@ export const RestoreWebAppFromDeletedAppRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreWebAppFromDeletedAppRequest>;
 
 export interface RestoreWebAppFromDeletedAppResponse {}
-export const RestoreWebAppFromDeletedAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreWebAppFromDeletedAppResponse",
-}) as any as S.Schema<RestoreWebAppFromDeletedAppResponse>;
+export const RestoreWebAppFromDeletedAppResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RestoreWebAppFromDeletedAppResponse>;
 
 export interface RestoreWebAppFromDeletedAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36236,11 +34366,8 @@ export const RestoreWebAppFromDeletedAppSlotRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RestoreWebAppFromDeletedAppSlotRequest>;
 
 export interface RestoreWebAppFromDeletedAppSlotResponse {}
-export const RestoreWebAppFromDeletedAppSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreWebAppFromDeletedAppSlotResponse",
-}) as any as S.Schema<RestoreWebAppFromDeletedAppSlotResponse>;
+export const RestoreWebAppFromDeletedAppSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RestoreWebAppFromDeletedAppSlotResponse>;
 
 export interface RestoreWebAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36278,9 +34405,8 @@ export const RestoreWebAppSlotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreWebAppSlotRequest" }) as any as S.Schema<RestoreWebAppSlotRequest>;
 
 export interface RestoreWebAppSlotResponse {}
-export const RestoreWebAppSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreWebAppSlotResponse",
-}) as any as S.Schema<RestoreWebAppSlotResponse>;
+export const RestoreWebAppSlotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<RestoreWebAppSlotResponse>;
 
 /** Specifies the web app that snapshot contents will be retrieved from. */
 export interface SnapshotRecoverySource {
@@ -36356,9 +34482,8 @@ export const RestoreWebAppSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreWebAppSnapshotRequest>;
 
 export interface RestoreWebAppSnapshotResponse {}
-export const RestoreWebAppSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreWebAppSnapshotResponse",
-}) as any as S.Schema<RestoreWebAppSnapshotResponse>;
+export const RestoreWebAppSnapshotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<RestoreWebAppSnapshotResponse>;
 
 export interface RestoreWebAppSnapshotSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36395,11 +34520,8 @@ export const RestoreWebAppSnapshotSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreWebAppSnapshotSlotRequest>;
 
 export interface RestoreWebAppSnapshotSlotResponse {}
-export const RestoreWebAppSnapshotSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreWebAppSnapshotSlotResponse",
-}) as any as S.Schema<RestoreWebAppSnapshotSlotResponse>;
+export const RestoreWebAppSnapshotSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RestoreWebAppSnapshotSlotResponse>;
 
 export interface ResumeAppServiceEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36455,11 +34577,8 @@ export const RunWebAppTriggeredWebJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunWebAppTriggeredWebJobRequest>;
 
 export interface RunWebAppTriggeredWebJobResponse {}
-export const RunWebAppTriggeredWebJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunWebAppTriggeredWebJobResponse",
-}) as any as S.Schema<RunWebAppTriggeredWebJobResponse>;
+export const RunWebAppTriggeredWebJobResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RunWebAppTriggeredWebJobResponse>;
 
 export interface RunWebAppTriggeredWebJobSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36493,18 +34612,13 @@ export const RunWebAppTriggeredWebJobSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunWebAppTriggeredWebJobSlotRequest>;
 
 export interface RunWebAppTriggeredWebJobSlotResponse {}
-export const RunWebAppTriggeredWebJobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunWebAppTriggeredWebJobSlotResponse",
-}) as any as S.Schema<RunWebAppTriggeredWebJobSlotResponse>;
+export const RunWebAppTriggeredWebJobSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<RunWebAppTriggeredWebJobSlotResponse>;
 
 /** Resource tags. */
 export type SiteCertificatesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SiteCertificatesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SiteCertificatesCreateOrUpdateRequestTagsMap>;
+export const SiteCertificatesCreateOrUpdateRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<SiteCertificatesCreateOrUpdateRequestTagsMap>;
 
 export interface SiteCertificatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36548,10 +34662,8 @@ export const SiteCertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type SiteCertificatesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SiteCertificatesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SiteCertificatesCreateOrUpdateResponseTagsMap>;
+export const SiteCertificatesCreateOrUpdateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<SiteCertificatesCreateOrUpdateResponseTagsMap>;
 
 export interface SiteCertificatesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -36571,29 +34683,15 @@ export interface SiteCertificatesCreateOrUpdateResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const SiteCertificatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SiteCertificatesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SiteCertificatesCreateOrUpdateResponse",
-}) as any as S.Schema<SiteCertificatesCreateOrUpdateResponse>;
+export const SiteCertificatesCreateOrUpdateResponse =
+  CertificatesCreateOrUpdateResponse as any as S.Schema<SiteCertificatesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type SiteCertificatesCreateOrUpdateSlotRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SiteCertificatesCreateOrUpdateSlotRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SiteCertificatesCreateOrUpdateSlotRequestTagsMap>;
+export const SiteCertificatesCreateOrUpdateSlotRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<SiteCertificatesCreateOrUpdateSlotRequestTagsMap>;
 
 export interface SiteCertificatesCreateOrUpdateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36642,10 +34740,8 @@ export const SiteCertificatesCreateOrUpdateSlotRequest = /*@__PURE__*/ S.suspend
 export type SiteCertificatesCreateOrUpdateSlotResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SiteCertificatesCreateOrUpdateSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SiteCertificatesCreateOrUpdateSlotResponseTagsMap>;
+export const SiteCertificatesCreateOrUpdateSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<SiteCertificatesCreateOrUpdateSlotResponseTagsMap>;
 
 export interface SiteCertificatesCreateOrUpdateSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -36665,20 +34761,8 @@ export interface SiteCertificatesCreateOrUpdateSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const SiteCertificatesCreateOrUpdateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SiteCertificatesCreateOrUpdateSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SiteCertificatesCreateOrUpdateSlotResponse",
-}) as any as S.Schema<SiteCertificatesCreateOrUpdateSlotResponse>;
+export const SiteCertificatesCreateOrUpdateSlotResponse =
+  CertificatesCreateOrUpdateResponse as any as S.Schema<SiteCertificatesCreateOrUpdateSlotResponse>;
 
 export interface StartAppServicePlanWebAppsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36706,11 +34790,8 @@ export const StartAppServicePlanWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartAppServicePlanWebAppsRequest>;
 
 export interface StartAppServicePlanWebAppsResponse {}
-export const StartAppServicePlanWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartAppServicePlanWebAppsResponse",
-}) as any as S.Schema<StartAppServicePlanWebAppsResponse>;
+export const StartAppServicePlanWebAppsResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StartAppServicePlanWebAppsResponse>;
 
 export interface StartWebAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36736,9 +34817,7 @@ export const StartWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartWebAppRequest" }) as any as S.Schema<StartWebAppRequest>;
 
 export interface StartWebAppResponse {}
-export const StartWebAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartWebAppResponse",
-}) as any as S.Schema<StartWebAppResponse>;
+export const StartWebAppResponse = AiGatewayPropertiesInput as any as S.Schema<StartWebAppResponse>;
 
 export interface StartWebAppContinuousWebJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36769,11 +34848,8 @@ export const StartWebAppContinuousWebJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartWebAppContinuousWebJobRequest>;
 
 export interface StartWebAppContinuousWebJobResponse {}
-export const StartWebAppContinuousWebJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartWebAppContinuousWebJobResponse",
-}) as any as S.Schema<StartWebAppContinuousWebJobResponse>;
+export const StartWebAppContinuousWebJobResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StartWebAppContinuousWebJobResponse>;
 
 export interface StartWebAppContinuousWebJobSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36807,11 +34883,8 @@ export const StartWebAppContinuousWebJobSlotRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<StartWebAppContinuousWebJobSlotRequest>;
 
 export interface StartWebAppContinuousWebJobSlotResponse {}
-export const StartWebAppContinuousWebJobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartWebAppContinuousWebJobSlotResponse",
-}) as any as S.Schema<StartWebAppContinuousWebJobSlotResponse>;
+export const StartWebAppContinuousWebJobSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StartWebAppContinuousWebJobSlotResponse>;
 
 export interface StartWebAppNetworkTraceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36848,16 +34921,12 @@ export const StartWebAppNetworkTraceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartWebAppNetworkTraceRequest>;
 
 export type StartWebAppNetworkTraceResponseBodyList = Array<NetworkTrace>;
-export const StartWebAppNetworkTraceResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<StartWebAppNetworkTraceResponseBodyList>;
+export const StartWebAppNetworkTraceResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<StartWebAppNetworkTraceResponseBodyList>;
 
 export type StartWebAppNetworkTraceResponse = StartWebAppNetworkTraceResponseBodyList;
-export const StartWebAppNetworkTraceResponse = /*@__PURE__*/ S.suspend(() =>
-  StartWebAppNetworkTraceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartWebAppNetworkTraceResponse",
-}) as any as S.Schema<StartWebAppNetworkTraceResponse>;
+export const StartWebAppNetworkTraceResponse =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<StartWebAppNetworkTraceResponse>;
 
 export interface StartWebAppNetworkTraceSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36897,16 +34966,12 @@ export const StartWebAppNetworkTraceSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartWebAppNetworkTraceSlotRequest>;
 
 export type StartWebAppNetworkTraceSlotResponseBodyList = Array<NetworkTrace>;
-export const StartWebAppNetworkTraceSlotResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<StartWebAppNetworkTraceSlotResponseBodyList>;
+export const StartWebAppNetworkTraceSlotResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<StartWebAppNetworkTraceSlotResponseBodyList>;
 
 export type StartWebAppNetworkTraceSlotResponse = StartWebAppNetworkTraceSlotResponseBodyList;
-export const StartWebAppNetworkTraceSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  StartWebAppNetworkTraceSlotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartWebAppNetworkTraceSlotResponse",
-}) as any as S.Schema<StartWebAppNetworkTraceSlotResponse>;
+export const StartWebAppNetworkTraceSlotResponse =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<StartWebAppNetworkTraceSlotResponse>;
 
 export interface StartWebAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36935,9 +35000,8 @@ export const StartWebAppSlotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartWebAppSlotRequest" }) as any as S.Schema<StartWebAppSlotRequest>;
 
 export interface StartWebAppSlotResponse {}
-export const StartWebAppSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartWebAppSlotResponse",
-}) as any as S.Schema<StartWebAppSlotResponse>;
+export const StartWebAppSlotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<StartWebAppSlotResponse>;
 
 export interface StartWebAppWebSiteNetworkTraceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36974,11 +35038,8 @@ export const StartWebAppWebSiteNetworkTraceRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<StartWebAppWebSiteNetworkTraceRequest>;
 
 export type StartWebAppWebSiteNetworkTraceResponse = string;
-export const StartWebAppWebSiteNetworkTraceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartWebAppWebSiteNetworkTraceResponse",
-}) as any as S.Schema<StartWebAppWebSiteNetworkTraceResponse>;
+export const StartWebAppWebSiteNetworkTraceResponse =
+  GetWebAppFunctionsAdminTokenResponse as any as S.Schema<StartWebAppWebSiteNetworkTraceResponse>;
 
 export interface StartWebAppWebSiteNetworkTraceOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37015,17 +35076,13 @@ export const StartWebAppWebSiteNetworkTraceOperationRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationRequest>;
 
 export type StartWebAppWebSiteNetworkTraceOperationResponseBodyList = Array<NetworkTrace>;
-export const StartWebAppWebSiteNetworkTraceOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationResponseBodyList>;
+export const StartWebAppWebSiteNetworkTraceOperationResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationResponseBodyList>;
 
 export type StartWebAppWebSiteNetworkTraceOperationResponse =
   StartWebAppWebSiteNetworkTraceOperationResponseBodyList;
-export const StartWebAppWebSiteNetworkTraceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  StartWebAppWebSiteNetworkTraceOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartWebAppWebSiteNetworkTraceOperationResponse",
-}) as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationResponse>;
+export const StartWebAppWebSiteNetworkTraceOperationResponse =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationResponse>;
 
 export interface StartWebAppWebSiteNetworkTraceOperationSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37065,17 +35122,13 @@ export const StartWebAppWebSiteNetworkTraceOperationSlotRequest = /*@__PURE__*/ 
 }) as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationSlotRequest>;
 
 export type StartWebAppWebSiteNetworkTraceOperationSlotResponseBodyList = Array<NetworkTrace>;
-export const StartWebAppWebSiteNetworkTraceOperationSlotResponseBodyList = /*@__PURE__*/ S.Array(
-  NetworkTrace,
-) as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationSlotResponseBodyList>;
+export const StartWebAppWebSiteNetworkTraceOperationSlotResponseBodyList =
+  GetWebAppNetworkTraceOperationResponseBodyList as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationSlotResponseBodyList>;
 
 export type StartWebAppWebSiteNetworkTraceOperationSlotResponse =
   StartWebAppWebSiteNetworkTraceOperationSlotResponseBodyList;
-export const StartWebAppWebSiteNetworkTraceOperationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  StartWebAppWebSiteNetworkTraceOperationSlotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartWebAppWebSiteNetworkTraceOperationSlotResponse",
-}) as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationSlotResponse>;
+export const StartWebAppWebSiteNetworkTraceOperationSlotResponse =
+  GetWebAppNetworkTraceOperationResponse as any as S.Schema<StartWebAppWebSiteNetworkTraceOperationSlotResponse>;
 
 export interface StartWebAppWebSiteNetworkTraceSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37115,11 +35168,8 @@ export const StartWebAppWebSiteNetworkTraceSlotRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<StartWebAppWebSiteNetworkTraceSlotRequest>;
 
 export type StartWebAppWebSiteNetworkTraceSlotResponse = string;
-export const StartWebAppWebSiteNetworkTraceSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "StartWebAppWebSiteNetworkTraceSlotResponse",
-}) as any as S.Schema<StartWebAppWebSiteNetworkTraceSlotResponse>;
+export const StartWebAppWebSiteNetworkTraceSlotResponse =
+  GetWebAppFunctionsAdminTokenResponse as any as S.Schema<StartWebAppWebSiteNetworkTraceSlotResponse>;
 
 export interface StaticSitesApproveOrRejectPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37170,19 +35220,8 @@ export interface StaticSitesApproveOrRejectPrivateEndpointConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSitesApproveOrRejectPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemotePrivateEndpointConnectionARMResourceProperties),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "StaticSitesApproveOrRejectPrivateEndpointConnectionResponse",
-}) as any as S.Schema<StaticSitesApproveOrRejectPrivateEndpointConnectionResponse>;
+export const StaticSitesApproveOrRejectPrivateEndpointConnectionResponse =
+  GetAppServiceEnvironmentPrivateEndpointConnectionResponse as any as S.Schema<StaticSitesApproveOrRejectPrivateEndpointConnectionResponse>;
 
 export type StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName = "default";
 export const StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName = S.String;
@@ -37190,9 +35229,7 @@ export const StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName = S.String;
 /** The list of enabled environments for Basic Auth if ApplicableEnvironmentsMode is set to SpecifiedEnvironments. */
 export type StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList = Array<string>;
 export const StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList>;
 
 /** StaticSiteBasicAuthPropertiesARMResource resource specific properties */
 export interface StaticSiteBasicAuthPropertiesARMResourcePropertiesInput {
@@ -37266,18 +35303,8 @@ export interface StaticSitesCreateOrUpdateBasicAuthResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSitesCreateOrUpdateBasicAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteBasicAuthPropertiesARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSitesCreateOrUpdateBasicAuthResponse",
-}) as any as S.Schema<StaticSitesCreateOrUpdateBasicAuthResponse>;
+export const StaticSitesCreateOrUpdateBasicAuthResponse =
+  GetStaticSiteBasicAuthResponse as any as S.Schema<StaticSitesCreateOrUpdateBasicAuthResponse>;
 
 /** DatabaseConnection resource specific properties */
 export interface DatabaseConnectionPropertiesInput {
@@ -37414,27 +35441,15 @@ export interface StaticSitesCreateOrUpdateDatabaseConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSitesCreateOrUpdateDatabaseConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSitesCreateOrUpdateDatabaseConnectionResponse",
-}) as any as S.Schema<StaticSitesCreateOrUpdateDatabaseConnectionResponse>;
+export const StaticSitesCreateOrUpdateDatabaseConnectionResponse =
+  GetStaticSiteBuildDatabaseConnectionResponse as any as S.Schema<StaticSitesCreateOrUpdateDatabaseConnectionResponse>;
 
 /** Resource tags. */
 export type StaticSitesCreateOrUpdateStaticSiteRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const StaticSitesCreateOrUpdateStaticSiteRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteRequestTagsMap>;
+export const StaticSitesCreateOrUpdateStaticSiteRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteRequestTagsMap>;
 
 /** A static site. */
 export interface StaticSiteInput {
@@ -37521,10 +35536,8 @@ export const StaticSitesCreateOrUpdateStaticSiteRequest = /*@__PURE__*/ S.suspen
 export type StaticSitesCreateOrUpdateStaticSiteResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const StaticSitesCreateOrUpdateStaticSiteResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteResponseTagsMap>;
+export const StaticSitesCreateOrUpdateStaticSiteResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteResponseTagsMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -37548,32 +35561,15 @@ export interface StaticSitesCreateOrUpdateStaticSiteResponse {
   /** Managed service identity. */
   identity?: ManagedServiceIdentity;
 }
-export const StaticSitesCreateOrUpdateStaticSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(StaticSitesCreateOrUpdateStaticSiteResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StaticSite),
-    kind: S.optional(S.String),
-    sku: S.optional(SkuDescription),
-    identity: S.optional(ManagedServiceIdentity),
-  }),
-).annotate({
-  identifier: "StaticSitesCreateOrUpdateStaticSiteResponse",
-}) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteResponse>;
+export const StaticSitesCreateOrUpdateStaticSiteResponse =
+  GetStaticSiteStaticSiteResponse as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteResponse>;
 
 /** Settings. */
 export type StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37611,10 +35607,7 @@ export type StaticSitesCreateOrUpdateStaticSiteAppSettingsResponsePropertiesMap 
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteAppSettingsResponsePropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsResponsePropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsResponsePropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse {
   /** Resource Id. */
@@ -37628,27 +35621,15 @@ export interface StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse {
   /** Settings. */
   properties?: StaticSitesCreateOrUpdateStaticSiteAppSettingsResponsePropertiesMap;
 }
-export const StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(StaticSitesCreateOrUpdateStaticSiteAppSettingsResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse",
-}) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse>;
+export const StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse =
+  ListStaticSiteStaticSiteFunctionAppSettingsResponse as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse>;
 
 /** Settings. */
 export type StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37692,10 +35673,7 @@ export type StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponsePropertie
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponsePropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponsePropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponsePropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponse {
   /** Resource Id. */
@@ -37729,10 +35707,7 @@ export type StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPr
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37776,10 +35751,7 @@ export type StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponseP
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponsePropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponsePropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponsePropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponse {
   /** Resource Id. */
@@ -37870,28 +35842,15 @@ export interface StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteCustomDomainOverviewARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse",
-}) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse>;
+export const StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse =
+  GetStaticSiteStaticSiteCustomDomainResponse as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse>;
 
 /** Settings. */
 export type StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37932,10 +35891,7 @@ export type StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponseProper
   [key: string]: string | undefined;
 };
 export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponsePropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponsePropertiesMap>;
+  ListStaticSiteStaticSiteBuildFunctionAppSettingsResponsePropertiesMap as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponsePropertiesMap>;
 
 export interface StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse {
   /** Resource Id. */
@@ -37950,19 +35906,7 @@ export interface StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse 
   properties?: StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponsePropertiesMap;
 }
 export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      kind: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(
-        StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponsePropertiesMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse",
-  }) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse>;
+  StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponse as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse>;
 
 export interface StaticSitesGetPrivateEndpointConnectionListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38053,18 +35997,8 @@ export interface StaticSitesLinkBackendResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSitesLinkBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSitesLinkBackendResponse",
-}) as any as S.Schema<StaticSitesLinkBackendResponse>;
+export const StaticSitesLinkBackendResponse =
+  GetStaticSiteLinkedBackendResponse as any as S.Schema<StaticSitesLinkBackendResponse>;
 
 export interface StaticSitesLinkBackendToBuildRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38117,18 +36051,8 @@ export interface StaticSitesLinkBackendToBuildResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const StaticSitesLinkBackendToBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StaticSitesLinkBackendToBuildResponse",
-}) as any as S.Schema<StaticSitesLinkBackendToBuildResponse>;
+export const StaticSitesLinkBackendToBuildResponse =
+  GetStaticSiteLinkedBackendResponse as any as S.Schema<StaticSitesLinkBackendToBuildResponse>;
 
 export interface StopAppServicePlanWebAppsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38156,11 +36080,8 @@ export const StopAppServicePlanWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopAppServicePlanWebAppsRequest>;
 
 export interface StopAppServicePlanWebAppsResponse {}
-export const StopAppServicePlanWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopAppServicePlanWebAppsResponse",
-}) as any as S.Schema<StopAppServicePlanWebAppsResponse>;
+export const StopAppServicePlanWebAppsResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StopAppServicePlanWebAppsResponse>;
 
 export interface StopWebAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38186,9 +36107,7 @@ export const StopWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopWebAppRequest" }) as any as S.Schema<StopWebAppRequest>;
 
 export interface StopWebAppResponse {}
-export const StopWebAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopWebAppResponse",
-}) as any as S.Schema<StopWebAppResponse>;
+export const StopWebAppResponse = AiGatewayPropertiesInput as any as S.Schema<StopWebAppResponse>;
 
 export interface StopWebAppContinuousWebJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38219,11 +36138,8 @@ export const StopWebAppContinuousWebJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopWebAppContinuousWebJobRequest>;
 
 export interface StopWebAppContinuousWebJobResponse {}
-export const StopWebAppContinuousWebJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopWebAppContinuousWebJobResponse",
-}) as any as S.Schema<StopWebAppContinuousWebJobResponse>;
+export const StopWebAppContinuousWebJobResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StopWebAppContinuousWebJobResponse>;
 
 export interface StopWebAppContinuousWebJobSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38257,11 +36173,8 @@ export const StopWebAppContinuousWebJobSlotRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<StopWebAppContinuousWebJobSlotRequest>;
 
 export interface StopWebAppContinuousWebJobSlotResponse {}
-export const StopWebAppContinuousWebJobSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopWebAppContinuousWebJobSlotResponse",
-}) as any as S.Schema<StopWebAppContinuousWebJobSlotResponse>;
+export const StopWebAppContinuousWebJobSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StopWebAppContinuousWebJobSlotResponse>;
 
 export interface StopWebAppNetworkTraceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38289,9 +36202,8 @@ export const StopWebAppNetworkTraceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopWebAppNetworkTraceRequest>;
 
 export interface StopWebAppNetworkTraceResponse {}
-export const StopWebAppNetworkTraceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopWebAppNetworkTraceResponse",
-}) as any as S.Schema<StopWebAppNetworkTraceResponse>;
+export const StopWebAppNetworkTraceResponse =
+  AiGatewayPropertiesInput as any as S.Schema<StopWebAppNetworkTraceResponse>;
 
 export interface StopWebAppNetworkTraceSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38322,11 +36234,8 @@ export const StopWebAppNetworkTraceSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopWebAppNetworkTraceSlotRequest>;
 
 export interface StopWebAppNetworkTraceSlotResponse {}
-export const StopWebAppNetworkTraceSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopWebAppNetworkTraceSlotResponse",
-}) as any as S.Schema<StopWebAppNetworkTraceSlotResponse>;
+export const StopWebAppNetworkTraceSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StopWebAppNetworkTraceSlotResponse>;
 
 export interface StopWebAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38355,9 +36264,8 @@ export const StopWebAppSlotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopWebAppSlotRequest" }) as any as S.Schema<StopWebAppSlotRequest>;
 
 export interface StopWebAppSlotResponse {}
-export const StopWebAppSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopWebAppSlotResponse",
-}) as any as S.Schema<StopWebAppSlotResponse>;
+export const StopWebAppSlotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<StopWebAppSlotResponse>;
 
 export interface StopWebAppWebSiteNetworkTraceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38385,11 +36293,8 @@ export const StopWebAppWebSiteNetworkTraceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<StopWebAppWebSiteNetworkTraceRequest>;
 
 export interface StopWebAppWebSiteNetworkTraceResponse {}
-export const StopWebAppWebSiteNetworkTraceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopWebAppWebSiteNetworkTraceResponse",
-}) as any as S.Schema<StopWebAppWebSiteNetworkTraceResponse>;
+export const StopWebAppWebSiteNetworkTraceResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StopWebAppWebSiteNetworkTraceResponse>;
 
 export interface StopWebAppWebSiteNetworkTraceSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38420,11 +36325,8 @@ export const StopWebAppWebSiteNetworkTraceSlotRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StopWebAppWebSiteNetworkTraceSlotRequest>;
 
 export interface StopWebAppWebSiteNetworkTraceSlotResponse {}
-export const StopWebAppWebSiteNetworkTraceSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopWebAppWebSiteNetworkTraceSlotResponse",
-}) as any as S.Schema<StopWebAppWebSiteNetworkTraceSlotResponse>;
+export const StopWebAppWebSiteNetworkTraceSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<StopWebAppWebSiteNetworkTraceSlotResponse>;
 
 export interface SuspendAppServiceEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38486,9 +36388,8 @@ export const SwapWebAppSlotSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SwapWebAppSlotSlotRequest>;
 
 export interface SwapWebAppSlotSlotResponse {}
-export const SwapWebAppSlotSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SwapWebAppSlotSlotResponse",
-}) as any as S.Schema<SwapWebAppSlotSlotResponse>;
+export const SwapWebAppSlotSlotResponse =
+  AiGatewayPropertiesInput as any as S.Schema<SwapWebAppSlotSlotResponse>;
 
 export interface SwapWebAppSlotWithProductionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38522,11 +36423,8 @@ export const SwapWebAppSlotWithProductionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SwapWebAppSlotWithProductionRequest>;
 
 export interface SwapWebAppSlotWithProductionResponse {}
-export const SwapWebAppSlotWithProductionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SwapWebAppSlotWithProductionResponse",
-}) as any as S.Schema<SwapWebAppSlotWithProductionResponse>;
+export const SwapWebAppSlotWithProductionResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<SwapWebAppSlotWithProductionResponse>;
 
 export interface SyncWebAppFunctionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38554,9 +36452,8 @@ export const SyncWebAppFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncWebAppFunctionsRequest>;
 
 export interface SyncWebAppFunctionsResponse {}
-export const SyncWebAppFunctionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SyncWebAppFunctionsResponse",
-}) as any as S.Schema<SyncWebAppFunctionsResponse>;
+export const SyncWebAppFunctionsResponse =
+  AiGatewayPropertiesInput as any as S.Schema<SyncWebAppFunctionsResponse>;
 
 export interface SyncWebAppFunctionsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38587,9 +36484,8 @@ export const SyncWebAppFunctionsSlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncWebAppFunctionsSlotRequest>;
 
 export interface SyncWebAppFunctionsSlotResponse {}
-export const SyncWebAppFunctionsSlotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "SyncWebAppFunctionsSlotResponse" },
-) as any as S.Schema<SyncWebAppFunctionsSlotResponse>;
+export const SyncWebAppFunctionsSlotResponse =
+  DeleteWebAppProcessSlotResponse as any as S.Schema<SyncWebAppFunctionsSlotResponse>;
 
 export interface SyncWebAppFunctionTriggersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38617,11 +36513,8 @@ export const SyncWebAppFunctionTriggersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncWebAppFunctionTriggersRequest>;
 
 export interface SyncWebAppFunctionTriggersResponse {}
-export const SyncWebAppFunctionTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SyncWebAppFunctionTriggersResponse",
-}) as any as S.Schema<SyncWebAppFunctionTriggersResponse>;
+export const SyncWebAppFunctionTriggersResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<SyncWebAppFunctionTriggersResponse>;
 
 export interface SyncWebAppFunctionTriggersSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38652,11 +36545,8 @@ export const SyncWebAppFunctionTriggersSlotRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SyncWebAppFunctionTriggersSlotRequest>;
 
 export interface SyncWebAppFunctionTriggersSlotResponse {}
-export const SyncWebAppFunctionTriggersSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SyncWebAppFunctionTriggersSlotResponse",
-}) as any as S.Schema<SyncWebAppFunctionTriggersSlotResponse>;
+export const SyncWebAppFunctionTriggersSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<SyncWebAppFunctionTriggersSlotResponse>;
 
 export interface SyncWebAppRepositoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38684,9 +36574,8 @@ export const SyncWebAppRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncWebAppRepositoryRequest>;
 
 export interface SyncWebAppRepositoryResponse {}
-export const SyncWebAppRepositoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SyncWebAppRepositoryResponse",
-}) as any as S.Schema<SyncWebAppRepositoryResponse>;
+export const SyncWebAppRepositoryResponse =
+  AiGatewayPropertiesInput as any as S.Schema<SyncWebAppRepositoryResponse>;
 
 export interface SyncWebAppRepositorySlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38717,11 +36606,8 @@ export const SyncWebAppRepositorySlotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncWebAppRepositorySlotRequest>;
 
 export interface SyncWebAppRepositorySlotResponse {}
-export const SyncWebAppRepositorySlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SyncWebAppRepositorySlotResponse",
-}) as any as S.Schema<SyncWebAppRepositorySlotResponse>;
+export const SyncWebAppRepositorySlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<SyncWebAppRepositorySlotResponse>;
 
 export interface TestAppServiceEnvironmentUpgradeAvailableNotificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38751,9 +36637,7 @@ export const TestAppServiceEnvironmentUpgradeAvailableNotificationRequest = /*@_
 
 export interface TestAppServiceEnvironmentUpgradeAvailableNotificationResponse {}
 export const TestAppServiceEnvironmentUpgradeAvailableNotificationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "TestAppServiceEnvironmentUpgradeAvailableNotificationResponse",
-  }) as any as S.Schema<TestAppServiceEnvironmentUpgradeAvailableNotificationResponse>;
+  DetachStaticSiteUserProvidedFunctionAppFromStaticSiteResponse as any as S.Schema<TestAppServiceEnvironmentUpgradeAvailableNotificationResponse>;
 
 export interface TriggerRunWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38787,9 +36671,8 @@ export const TriggerRunWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerRunWorkflowRequest>;
 
 export interface TriggerRunWorkflowResponse {}
-export const TriggerRunWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TriggerRunWorkflowResponse",
-}) as any as S.Schema<TriggerRunWorkflowResponse>;
+export const TriggerRunWorkflowResponse =
+  AiGatewayPropertiesInput as any as S.Schema<TriggerRunWorkflowResponse>;
 
 export interface UnlinkStaticSiteBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38823,9 +36706,8 @@ export const UnlinkStaticSiteBackendRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnlinkStaticSiteBackendRequest>;
 
 export interface UnlinkStaticSiteBackendResponse {}
-export const UnlinkStaticSiteBackendResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UnlinkStaticSiteBackendResponse" },
-) as any as S.Schema<UnlinkStaticSiteBackendResponse>;
+export const UnlinkStaticSiteBackendResponse =
+  DeleteWebAppProcessSlotResponse as any as S.Schema<UnlinkStaticSiteBackendResponse>;
 
 export interface UnlinkStaticSiteBackendFromBuildRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38862,11 +36744,8 @@ export const UnlinkStaticSiteBackendFromBuildRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UnlinkStaticSiteBackendFromBuildRequest>;
 
 export interface UnlinkStaticSiteBackendFromBuildResponse {}
-export const UnlinkStaticSiteBackendFromBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnlinkStaticSiteBackendFromBuildResponse",
-}) as any as S.Schema<UnlinkStaticSiteBackendFromBuildResponse>;
+export const UnlinkStaticSiteBackendFromBuildResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<UnlinkStaticSiteBackendFromBuildResponse>;
 
 export interface UpdateAppServiceEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38901,10 +36780,8 @@ export const UpdateAppServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAppServiceEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAppServiceEnvironmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAppServiceEnvironmentResponseTagsMap>;
+export const UpdateAppServiceEnvironmentResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppServiceEnvironmentResponseTagsMap>;
 
 export interface UpdateAppServiceEnvironmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -38924,20 +36801,8 @@ export interface UpdateAppServiceEnvironmentResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateAppServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAppServiceEnvironmentResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AppServiceEnvironment),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAppServiceEnvironmentResponse",
-}) as any as S.Schema<UpdateAppServiceEnvironmentResponse>;
+export const UpdateAppServiceEnvironmentResponse =
+  AppServiceEnvironmentsCreateOrUpdateResponse as any as S.Schema<UpdateAppServiceEnvironmentResponse>;
 
 export interface UpdateAppServiceEnvironmentAseCustomDnsSuffixConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38986,18 +36851,7 @@ export interface UpdateAppServiceEnvironmentAseCustomDnsSuffixConfigurationRespo
   kind?: string;
 }
 export const UpdateAppServiceEnvironmentAseCustomDnsSuffixConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(CustomDnsSuffixConfigurationProperties),
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateAppServiceEnvironmentAseCustomDnsSuffixConfigurationResponse",
-  }) as any as S.Schema<UpdateAppServiceEnvironmentAseCustomDnsSuffixConfigurationResponse>;
+  GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResponse as any as S.Schema<UpdateAppServiceEnvironmentAseCustomDnsSuffixConfigurationResponse>;
 
 export interface UpdateAppServiceEnvironmentAseNetworkingConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39109,19 +36963,8 @@ export interface UpdateAppServiceEnvironmentMultiRolePoolResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateAppServiceEnvironmentMultiRolePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkerPool),
-    sku: S.optional(SkuDescription),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAppServiceEnvironmentMultiRolePoolResponse",
-}) as any as S.Schema<UpdateAppServiceEnvironmentMultiRolePoolResponse>;
+export const UpdateAppServiceEnvironmentMultiRolePoolResponse =
+  AppServiceEnvironmentsCreateOrUpdateWorkerPoolResponse as any as S.Schema<UpdateAppServiceEnvironmentMultiRolePoolResponse>;
 
 export interface UpdateAppServiceEnvironmentWorkerPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39176,19 +37019,8 @@ export interface UpdateAppServiceEnvironmentWorkerPoolResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateAppServiceEnvironmentWorkerPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WorkerPool),
-    sku: S.optional(SkuDescription),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAppServiceEnvironmentWorkerPoolResponse",
-}) as any as S.Schema<UpdateAppServiceEnvironmentWorkerPoolResponse>;
+export const UpdateAppServiceEnvironmentWorkerPoolResponse =
+  AppServiceEnvironmentsCreateOrUpdateWorkerPoolResponse as any as S.Schema<UpdateAppServiceEnvironmentWorkerPoolResponse>;
 
 /** AppServicePlanPatchResource resource specific properties */
 export interface AppServicePlanPatchResourcePropertiesInput {
@@ -39281,10 +37113,8 @@ export const UpdateAppServicePlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAppServicePlanResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAppServicePlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAppServicePlanResponseTagsMap>;
+export const UpdateAppServicePlanResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppServicePlanResponseTagsMap>;
 
 export interface UpdateAppServicePlanResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -39310,23 +37140,8 @@ export interface UpdateAppServicePlanResponse {
   /** Managed service identity. */
   identity?: ManagedServiceIdentity;
 }
-export const UpdateAppServicePlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAppServicePlanResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AppServicePlanProperties),
-    sku: S.optional(SkuDescription),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-    identity: S.optional(ManagedServiceIdentity),
-  }),
-).annotate({
-  identifier: "UpdateAppServicePlanResponse",
-}) as any as S.Schema<UpdateAppServicePlanResponse>;
+export const UpdateAppServicePlanResponse =
+  AppServicePlansCreateOrUpdateResponse as any as S.Schema<UpdateAppServicePlanResponse>;
 
 export interface UpdateAppServicePlanVnetGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39379,18 +37194,8 @@ export interface UpdateAppServicePlanVnetGatewayResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateAppServicePlanVnetGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetGatewayProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAppServicePlanVnetGatewayResponse",
-}) as any as S.Schema<UpdateAppServicePlanVnetGatewayResponse>;
+export const UpdateAppServicePlanVnetGatewayResponse =
+  GetAppServicePlanVnetGatewayResponse as any as S.Schema<UpdateAppServicePlanVnetGatewayResponse>;
 
 export interface UpdateAppServicePlanVnetRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39443,24 +37248,13 @@ export interface UpdateAppServicePlanVnetRouteResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateAppServicePlanVnetRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetRouteProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateAppServicePlanVnetRouteResponse",
-}) as any as S.Schema<UpdateAppServicePlanVnetRouteResponse>;
+export const UpdateAppServicePlanVnetRouteResponse =
+  AppServicePlansCreateOrUpdateVnetRouteResponse as any as S.Schema<UpdateAppServicePlanVnetRouteResponse>;
 
 /** Host names the certificate applies to. */
 export type CertificatePatchResourcePropertiesInputHostNamesList = Array<string>;
-export const CertificatePatchResourcePropertiesInputHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePatchResourcePropertiesInputHostNamesList>;
+export const CertificatePatchResourcePropertiesInputHostNamesList =
+  SitePropertiesHostNamesList as any as S.Schema<CertificatePatchResourcePropertiesInputHostNamesList>;
 
 /** CertificatePatchResource resource specific properties */
 export interface CertificatePatchResourcePropertiesInput {
@@ -39524,10 +37318,8 @@ export const UpdateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCertificateResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCertificateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCertificateResponseTagsMap>;
+export const UpdateCertificateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCertificateResponseTagsMap>;
 
 export interface UpdateCertificateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -39547,20 +37339,8 @@ export interface UpdateCertificateResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCertificateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCertificateResponse",
-}) as any as S.Schema<UpdateCertificateResponse>;
+export const UpdateCertificateResponse =
+  CertificatesCreateOrUpdateResponse as any as S.Schema<UpdateCertificateResponse>;
 
 /** KubeEnvironmentPatchResource resource specific properties */
 export interface KubeEnvironmentPatchResourcePropertiesInput {
@@ -39622,10 +37402,8 @@ export const UpdateKubeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateKubeEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateKubeEnvironmentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateKubeEnvironmentResponseTagsMap>;
+export const UpdateKubeEnvironmentResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateKubeEnvironmentResponseTagsMap>;
 
 export interface UpdateKubeEnvironmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -39647,21 +37425,8 @@ export interface UpdateKubeEnvironmentResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateKubeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateKubeEnvironmentResponseTagsMap),
-    location: S.String,
-    properties: S.optional(KubeEnvironmentProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateKubeEnvironmentResponse",
-}) as any as S.Schema<UpdateKubeEnvironmentResponse>;
+export const UpdateKubeEnvironmentResponse =
+  GetKubeEnvironmentResponse as any as S.Schema<UpdateKubeEnvironmentResponse>;
 
 export interface UpdatePublishingUserRequest {
   /** User resource specific properties */
@@ -39699,18 +37464,8 @@ export interface UpdatePublishingUserResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdatePublishingUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(UserProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdatePublishingUserResponse",
-}) as any as S.Schema<UpdatePublishingUserResponse>;
+export const UpdatePublishingUserResponse =
+  GetPublishingUserResponse as any as S.Schema<UpdatePublishingUserResponse>;
 
 export interface UpdateSiteCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39748,10 +37503,8 @@ export const UpdateSiteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSiteCertificateResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSiteCertificateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSiteCertificateResponseTagsMap>;
+export const UpdateSiteCertificateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSiteCertificateResponseTagsMap>;
 
 export interface UpdateSiteCertificateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -39771,20 +37524,8 @@ export interface UpdateSiteCertificateResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateSiteCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSiteCertificateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSiteCertificateResponse",
-}) as any as S.Schema<UpdateSiteCertificateResponse>;
+export const UpdateSiteCertificateResponse =
+  CertificatesCreateOrUpdateResponse as any as S.Schema<UpdateSiteCertificateResponse>;
 
 export interface UpdateSiteCertificateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39825,10 +37566,8 @@ export const UpdateSiteCertificateSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSiteCertificateSlotResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSiteCertificateSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSiteCertificateSlotResponseTagsMap>;
+export const UpdateSiteCertificateSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSiteCertificateSlotResponseTagsMap>;
 
 export interface UpdateSiteCertificateSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -39848,20 +37587,8 @@ export interface UpdateSiteCertificateSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateSiteCertificateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSiteCertificateSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSiteCertificateSlotResponse",
-}) as any as S.Schema<UpdateSiteCertificateSlotResponse>;
+export const UpdateSiteCertificateSlotResponse =
+  CertificatesCreateOrUpdateResponse as any as S.Schema<UpdateSiteCertificateSlotResponse>;
 
 export interface UpdateSourceControlRequest {
   /** Type of source control */
@@ -39985,18 +37712,8 @@ export interface UpdateStaticSiteBuildDatabaseConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateStaticSiteBuildDatabaseConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateStaticSiteBuildDatabaseConnectionResponse",
-}) as any as S.Schema<UpdateStaticSiteBuildDatabaseConnectionResponse>;
+export const UpdateStaticSiteBuildDatabaseConnectionResponse =
+  GetStaticSiteBuildDatabaseConnectionResponse as any as S.Schema<UpdateStaticSiteBuildDatabaseConnectionResponse>;
 
 export interface UpdateStaticSiteDatabaseConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40043,18 +37760,8 @@ export interface UpdateStaticSiteDatabaseConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateStaticSiteDatabaseConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateStaticSiteDatabaseConnectionResponse",
-}) as any as S.Schema<UpdateStaticSiteDatabaseConnectionResponse>;
+export const UpdateStaticSiteDatabaseConnectionResponse =
+  GetStaticSiteBuildDatabaseConnectionResponse as any as S.Schema<UpdateStaticSiteDatabaseConnectionResponse>;
 
 export interface UpdateStaticSiteStaticSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40089,10 +37796,8 @@ export const UpdateStaticSiteStaticSiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStaticSiteStaticSiteResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStaticSiteStaticSiteResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStaticSiteStaticSiteResponseTagsMap>;
+export const UpdateStaticSiteStaticSiteResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStaticSiteStaticSiteResponseTagsMap>;
 
 export interface UpdateStaticSiteStaticSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -40116,22 +37821,8 @@ export interface UpdateStaticSiteStaticSiteResponse {
   /** Managed service identity. */
   identity?: ManagedServiceIdentity;
 }
-export const UpdateStaticSiteStaticSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateStaticSiteStaticSiteResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StaticSite),
-    kind: S.optional(S.String),
-    sku: S.optional(SkuDescription),
-    identity: S.optional(ManagedServiceIdentity),
-  }),
-).annotate({
-  identifier: "UpdateStaticSiteStaticSiteResponse",
-}) as any as S.Schema<UpdateStaticSiteStaticSiteResponse>;
+export const UpdateStaticSiteStaticSiteResponse =
+  GetStaticSiteStaticSiteResponse as any as S.Schema<UpdateStaticSiteStaticSiteResponse>;
 
 /** StaticSiteUserARMResource resource specific properties */
 export interface StaticSiteUserARMResourcePropertiesInput {
@@ -40192,29 +37883,18 @@ export interface UpdateStaticSiteStaticSiteUserResponse {
   /** StaticSiteUserARMResource resource specific properties */
   properties?: StaticSiteUserARMResourceProperties;
 }
-export const UpdateStaticSiteStaticSiteUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(StaticSiteUserARMResourceProperties),
-  }),
-).annotate({
-  identifier: "UpdateStaticSiteStaticSiteUserResponse",
-}) as any as S.Schema<UpdateStaticSiteStaticSiteUserResponse>;
+export const UpdateStaticSiteStaticSiteUserResponse =
+  StaticSiteUserARMResource as any as S.Schema<UpdateStaticSiteStaticSiteUserResponse>;
 
 /** Hostname SSL states are used to manage the SSL bindings for app's hostnames. */
 export type SitePatchResourcePropertiesInputHostNameSslStatesList = Array<HostNameSslState>;
-export const SitePatchResourcePropertiesInputHostNameSslStatesList = /*@__PURE__*/ S.Array(
-  HostNameSslState,
-) as any as S.Schema<SitePatchResourcePropertiesInputHostNameSslStatesList>;
+export const SitePatchResourcePropertiesInputHostNameSslStatesList =
+  SitePropertiesHostNameSslStatesList as any as S.Schema<SitePatchResourcePropertiesInputHostNameSslStatesList>;
 
 /** List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set. */
 export type SiteDnsConfigInputDnsServersList = Array<string>;
-export const SiteDnsConfigInputDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteDnsConfigInputDnsServersList>;
+export const SiteDnsConfigInputDnsServersList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteDnsConfigInputDnsServersList>;
 
 export interface SiteDnsConfigInput {
   /** List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set. */
@@ -40240,39 +37920,33 @@ export const SiteDnsConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Default documents. */
 export type SiteConfigInputDefaultDocumentsList = Array<string>;
-export const SiteConfigInputDefaultDocumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteConfigInputDefaultDocumentsList>;
+export const SiteConfigInputDefaultDocumentsList =
+  SitePropertiesHostNamesList as any as S.Schema<SiteConfigInputDefaultDocumentsList>;
 
 /** Application settings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
 export type SiteConfigInputAppSettingsList = Array<NameValuePair>;
-export const SiteConfigInputAppSettingsList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<SiteConfigInputAppSettingsList>;
+export const SiteConfigInputAppSettingsList =
+  SiteConfigAppSettingsList as any as S.Schema<SiteConfigInputAppSettingsList>;
 
 /** Application metadata. This property cannot be retrieved, since it may contain secrets. */
 export type SiteConfigInputMetadataList = Array<NameValuePair>;
-export const SiteConfigInputMetadataList = /*@__PURE__*/ S.Array(
-  NameValuePair,
-) as any as S.Schema<SiteConfigInputMetadataList>;
+export const SiteConfigInputMetadataList =
+  SiteConfigAppSettingsList as any as S.Schema<SiteConfigInputMetadataList>;
 
 /** Connection strings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
 export type SiteConfigInputConnectionStringsList = Array<ConnStringInfo>;
-export const SiteConfigInputConnectionStringsList = /*@__PURE__*/ S.Array(
-  ConnStringInfo,
-) as any as S.Schema<SiteConfigInputConnectionStringsList>;
+export const SiteConfigInputConnectionStringsList =
+  SiteConfigConnectionStringsList as any as S.Schema<SiteConfigInputConnectionStringsList>;
 
 /** Handler mappings. */
 export type SiteConfigInputHandlerMappingsList = Array<HandlerMapping>;
-export const SiteConfigInputHandlerMappingsList = /*@__PURE__*/ S.Array(
-  HandlerMapping,
-) as any as S.Schema<SiteConfigInputHandlerMappingsList>;
+export const SiteConfigInputHandlerMappingsList =
+  SiteConfigHandlerMappingsList as any as S.Schema<SiteConfigInputHandlerMappingsList>;
 
 /** Virtual applications. */
 export type SiteConfigInputVirtualApplicationsList = Array<VirtualApplication>;
-export const SiteConfigInputVirtualApplicationsList = /*@__PURE__*/ S.Array(
-  VirtualApplication,
-) as any as S.Schema<SiteConfigInputVirtualApplicationsList>;
+export const SiteConfigInputVirtualApplicationsList =
+  SiteConfigVirtualApplicationsList as any as S.Schema<SiteConfigInputVirtualApplicationsList>;
 
 /** Push settings for the App. */
 export interface PushSettingsInput {
@@ -40290,24 +37964,20 @@ export const PushSettingsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** IP security restrictions for main. */
 export type SiteConfigInputIpSecurityRestrictionsList = Array<IpSecurityRestriction>;
-export const SiteConfigInputIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
-  IpSecurityRestriction,
-) as any as S.Schema<SiteConfigInputIpSecurityRestrictionsList>;
+export const SiteConfigInputIpSecurityRestrictionsList =
+  SiteConfigIpSecurityRestrictionsList as any as S.Schema<SiteConfigInputIpSecurityRestrictionsList>;
 
 /** IP security restrictions for scm. */
 export type SiteConfigInputScmIpSecurityRestrictionsList = Array<IpSecurityRestriction>;
-export const SiteConfigInputScmIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
-  IpSecurityRestriction,
-) as any as S.Schema<SiteConfigInputScmIpSecurityRestrictionsList>;
+export const SiteConfigInputScmIpSecurityRestrictionsList =
+  SiteConfigIpSecurityRestrictionsList as any as S.Schema<SiteConfigInputScmIpSecurityRestrictionsList>;
 
 /** List of Azure Storage Accounts. */
 export type SiteConfigInputAzureStorageAccountsMap = {
   [key: string]: AzureStorageInfoValue | undefined;
 };
-export const SiteConfigInputAzureStorageAccountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AzureStorageInfoValue,
-) as any as S.Schema<SiteConfigInputAzureStorageAccountsMap>;
+export const SiteConfigInputAzureStorageAccountsMap =
+  SiteConfigAzureStorageAccountsMap as any as S.Schema<SiteConfigInputAzureStorageAccountsMap>;
 
 /** Configuration of an App Service app. */
 export interface SiteConfigInput {
@@ -40661,10 +38331,8 @@ export const UpdateWebAppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWebAppResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWebAppResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppResponseTagsMap>;
+export const UpdateWebAppResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppResponseTagsMap>;
 
 export interface UpdateWebAppResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -40688,29 +38356,14 @@ export interface UpdateWebAppResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateWebAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateWebAppResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SiteProperties),
-    identity: S.optional(ManagedServiceIdentity),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateWebAppResponse" }) as any as S.Schema<UpdateWebAppResponse>;
+export const UpdateWebAppResponse = Site as any as S.Schema<UpdateWebAppResponse>;
 
 /** Settings. */
 export type UpdateWebAppApplicationSettingsRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const UpdateWebAppApplicationSettingsRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppApplicationSettingsRequestPropertiesMap>;
+export const UpdateWebAppApplicationSettingsRequestPropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppApplicationSettingsRequestPropertiesMap>;
 
 export interface UpdateWebAppApplicationSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40747,10 +38400,8 @@ export const UpdateWebAppApplicationSettingsRequest = /*@__PURE__*/ S.suspend(()
 export type UpdateWebAppApplicationSettingsResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const UpdateWebAppApplicationSettingsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppApplicationSettingsResponsePropertiesMap>;
+export const UpdateWebAppApplicationSettingsResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppApplicationSettingsResponsePropertiesMap>;
 
 export interface UpdateWebAppApplicationSettingsResponse {
   /** Resource Id. */
@@ -40764,26 +38415,15 @@ export interface UpdateWebAppApplicationSettingsResponse {
   /** Settings. */
   properties?: UpdateWebAppApplicationSettingsResponsePropertiesMap;
 }
-export const UpdateWebAppApplicationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppApplicationSettingsResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppApplicationSettingsResponse",
-}) as any as S.Schema<UpdateWebAppApplicationSettingsResponse>;
+export const UpdateWebAppApplicationSettingsResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<UpdateWebAppApplicationSettingsResponse>;
 
 /** Settings. */
 export type UpdateWebAppApplicationSettingsSlotRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const UpdateWebAppApplicationSettingsSlotRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppApplicationSettingsSlotRequestPropertiesMap>;
+export const UpdateWebAppApplicationSettingsSlotRequestPropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppApplicationSettingsSlotRequestPropertiesMap>;
 
 export interface UpdateWebAppApplicationSettingsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40823,10 +38463,8 @@ export const UpdateWebAppApplicationSettingsSlotRequest = /*@__PURE__*/ S.suspen
 export type UpdateWebAppApplicationSettingsSlotResponsePropertiesMap = {
   [key: string]: string | undefined;
 };
-export const UpdateWebAppApplicationSettingsSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppApplicationSettingsSlotResponsePropertiesMap>;
+export const UpdateWebAppApplicationSettingsSlotResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppApplicationSettingsSlotResponsePropertiesMap>;
 
 export interface UpdateWebAppApplicationSettingsSlotResponse {
   /** Resource Id. */
@@ -40840,17 +38478,8 @@ export interface UpdateWebAppApplicationSettingsSlotResponse {
   /** Settings. */
   properties?: UpdateWebAppApplicationSettingsSlotResponsePropertiesMap;
 }
-export const UpdateWebAppApplicationSettingsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppApplicationSettingsSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppApplicationSettingsSlotResponse",
-}) as any as S.Schema<UpdateWebAppApplicationSettingsSlotResponse>;
+export const UpdateWebAppApplicationSettingsSlotResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<UpdateWebAppApplicationSettingsSlotResponse>;
 
 export interface UpdateWebAppAuthSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40895,17 +38524,8 @@ export interface UpdateWebAppAuthSettingsResponse {
   /** SiteAuthSettings resource specific properties */
   properties?: SiteAuthSettingsProperties;
 }
-export const UpdateWebAppAuthSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SiteAuthSettingsProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebAppAuthSettingsResponse",
-}) as any as S.Schema<UpdateWebAppAuthSettingsResponse>;
+export const UpdateWebAppAuthSettingsResponse =
+  GetWebAppAuthSettingsResponse as any as S.Schema<UpdateWebAppAuthSettingsResponse>;
 
 export interface UpdateWebAppAuthSettingsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40953,17 +38573,8 @@ export interface UpdateWebAppAuthSettingsSlotResponse {
   /** SiteAuthSettings resource specific properties */
   properties?: SiteAuthSettingsProperties;
 }
-export const UpdateWebAppAuthSettingsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SiteAuthSettingsProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebAppAuthSettingsSlotResponse",
-}) as any as S.Schema<UpdateWebAppAuthSettingsSlotResponse>;
+export const UpdateWebAppAuthSettingsSlotResponse =
+  GetWebAppAuthSettingsResponse as any as S.Schema<UpdateWebAppAuthSettingsSlotResponse>;
 
 export interface UpdateWebAppAuthSettingsV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41010,18 +38621,8 @@ export interface UpdateWebAppAuthSettingsV2Response {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateWebAppAuthSettingsV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteAuthSettingsV2Properties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppAuthSettingsV2Response",
-}) as any as S.Schema<UpdateWebAppAuthSettingsV2Response>;
+export const UpdateWebAppAuthSettingsV2Response =
+  GetWebAppAuthSettingsV2Response as any as S.Schema<UpdateWebAppAuthSettingsV2Response>;
 
 export interface UpdateWebAppAuthSettingsV2SlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41071,27 +38672,15 @@ export interface UpdateWebAppAuthSettingsV2SlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateWebAppAuthSettingsV2SlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteAuthSettingsV2Properties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppAuthSettingsV2SlotResponse",
-}) as any as S.Schema<UpdateWebAppAuthSettingsV2SlotResponse>;
+export const UpdateWebAppAuthSettingsV2SlotResponse =
+  GetWebAppAuthSettingsV2Response as any as S.Schema<UpdateWebAppAuthSettingsV2SlotResponse>;
 
 /** Azure storage accounts. */
 export type UpdateWebAppAzureStorageAccountsRequestPropertiesMap = {
   [key: string]: AzureStorageInfoValue | undefined;
 };
-export const UpdateWebAppAzureStorageAccountsRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AzureStorageInfoValue,
-) as any as S.Schema<UpdateWebAppAzureStorageAccountsRequestPropertiesMap>;
+export const UpdateWebAppAzureStorageAccountsRequestPropertiesMap =
+  SiteConfigAzureStorageAccountsMap as any as S.Schema<UpdateWebAppAzureStorageAccountsRequestPropertiesMap>;
 
 export interface UpdateWebAppAzureStorageAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41128,10 +38717,8 @@ export const UpdateWebAppAzureStorageAccountsRequest = /*@__PURE__*/ S.suspend((
 export type UpdateWebAppAzureStorageAccountsResponsePropertiesMap = {
   [key: string]: AzureStorageInfoValue | undefined;
 };
-export const UpdateWebAppAzureStorageAccountsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AzureStorageInfoValue,
-) as any as S.Schema<UpdateWebAppAzureStorageAccountsResponsePropertiesMap>;
+export const UpdateWebAppAzureStorageAccountsResponsePropertiesMap =
+  SiteConfigAzureStorageAccountsMap as any as S.Schema<UpdateWebAppAzureStorageAccountsResponsePropertiesMap>;
 
 export interface UpdateWebAppAzureStorageAccountsResponse {
   /** Resource Id. */
@@ -41145,26 +38732,15 @@ export interface UpdateWebAppAzureStorageAccountsResponse {
   /** Azure storage accounts. */
   properties?: UpdateWebAppAzureStorageAccountsResponsePropertiesMap;
 }
-export const UpdateWebAppAzureStorageAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppAzureStorageAccountsResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppAzureStorageAccountsResponse",
-}) as any as S.Schema<UpdateWebAppAzureStorageAccountsResponse>;
+export const UpdateWebAppAzureStorageAccountsResponse =
+  ListWebAppAzureStorageAccountsResponse as any as S.Schema<UpdateWebAppAzureStorageAccountsResponse>;
 
 /** Azure storage accounts. */
 export type UpdateWebAppAzureStorageAccountsSlotRequestPropertiesMap = {
   [key: string]: AzureStorageInfoValue | undefined;
 };
-export const UpdateWebAppAzureStorageAccountsSlotRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AzureStorageInfoValue,
-) as any as S.Schema<UpdateWebAppAzureStorageAccountsSlotRequestPropertiesMap>;
+export const UpdateWebAppAzureStorageAccountsSlotRequestPropertiesMap =
+  SiteConfigAzureStorageAccountsMap as any as S.Schema<UpdateWebAppAzureStorageAccountsSlotRequestPropertiesMap>;
 
 export interface UpdateWebAppAzureStorageAccountsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41204,10 +38780,8 @@ export const UpdateWebAppAzureStorageAccountsSlotRequest = /*@__PURE__*/ S.suspe
 export type UpdateWebAppAzureStorageAccountsSlotResponsePropertiesMap = {
   [key: string]: AzureStorageInfoValue | undefined;
 };
-export const UpdateWebAppAzureStorageAccountsSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AzureStorageInfoValue,
-) as any as S.Schema<UpdateWebAppAzureStorageAccountsSlotResponsePropertiesMap>;
+export const UpdateWebAppAzureStorageAccountsSlotResponsePropertiesMap =
+  SiteConfigAzureStorageAccountsMap as any as S.Schema<UpdateWebAppAzureStorageAccountsSlotResponsePropertiesMap>;
 
 export interface UpdateWebAppAzureStorageAccountsSlotResponse {
   /** Resource Id. */
@@ -41221,17 +38795,8 @@ export interface UpdateWebAppAzureStorageAccountsSlotResponse {
   /** Azure storage accounts. */
   properties?: UpdateWebAppAzureStorageAccountsSlotResponsePropertiesMap;
 }
-export const UpdateWebAppAzureStorageAccountsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppAzureStorageAccountsSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppAzureStorageAccountsSlotResponse",
-}) as any as S.Schema<UpdateWebAppAzureStorageAccountsSlotResponse>;
+export const UpdateWebAppAzureStorageAccountsSlotResponse =
+  ListWebAppAzureStorageAccountsResponse as any as S.Schema<UpdateWebAppAzureStorageAccountsSlotResponse>;
 
 export interface UpdateWebAppBackupConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41276,17 +38841,8 @@ export interface UpdateWebAppBackupConfigurationResponse {
   /** BackupRequest resource specific properties */
   properties?: BackupRequestProperties;
 }
-export const UpdateWebAppBackupConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackupRequestProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebAppBackupConfigurationResponse",
-}) as any as S.Schema<UpdateWebAppBackupConfigurationResponse>;
+export const UpdateWebAppBackupConfigurationResponse =
+  GetWebAppBackupConfigurationResponse as any as S.Schema<UpdateWebAppBackupConfigurationResponse>;
 
 export interface UpdateWebAppBackupConfigurationSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41334,17 +38890,8 @@ export interface UpdateWebAppBackupConfigurationSlotResponse {
   /** BackupRequest resource specific properties */
   properties?: BackupRequestProperties;
 }
-export const UpdateWebAppBackupConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackupRequestProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebAppBackupConfigurationSlotResponse",
-}) as any as S.Schema<UpdateWebAppBackupConfigurationSlotResponse>;
+export const UpdateWebAppBackupConfigurationSlotResponse =
+  GetWebAppBackupConfigurationResponse as any as S.Schema<UpdateWebAppBackupConfigurationSlotResponse>;
 
 export interface UpdateWebAppConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41391,18 +38938,8 @@ export interface UpdateWebAppConfigurationResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateWebAppConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteConfig),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppConfigurationResponse",
-}) as any as S.Schema<UpdateWebAppConfigurationResponse>;
+export const UpdateWebAppConfigurationResponse =
+  GetWebAppConfigurationResponse as any as S.Schema<UpdateWebAppConfigurationResponse>;
 
 export interface UpdateWebAppConfigurationSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41452,27 +38989,15 @@ export interface UpdateWebAppConfigurationSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateWebAppConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteConfig),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppConfigurationSlotResponse",
-}) as any as S.Schema<UpdateWebAppConfigurationSlotResponse>;
+export const UpdateWebAppConfigurationSlotResponse =
+  GetWebAppConfigurationResponse as any as S.Schema<UpdateWebAppConfigurationSlotResponse>;
 
 /** Connection strings. */
 export type UpdateWebAppConnectionStringsRequestPropertiesMap = {
   [key: string]: ConnStringValueTypePair | undefined;
 };
-export const UpdateWebAppConnectionStringsRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConnStringValueTypePair,
-) as any as S.Schema<UpdateWebAppConnectionStringsRequestPropertiesMap>;
+export const UpdateWebAppConnectionStringsRequestPropertiesMap =
+  ListWebAppConnectionStringsResponsePropertiesMap as any as S.Schema<UpdateWebAppConnectionStringsRequestPropertiesMap>;
 
 export interface UpdateWebAppConnectionStringsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41509,10 +39034,8 @@ export const UpdateWebAppConnectionStringsRequest = /*@__PURE__*/ S.suspend(() =
 export type UpdateWebAppConnectionStringsResponsePropertiesMap = {
   [key: string]: ConnStringValueTypePair | undefined;
 };
-export const UpdateWebAppConnectionStringsResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConnStringValueTypePair,
-) as any as S.Schema<UpdateWebAppConnectionStringsResponsePropertiesMap>;
+export const UpdateWebAppConnectionStringsResponsePropertiesMap =
+  ListWebAppConnectionStringsResponsePropertiesMap as any as S.Schema<UpdateWebAppConnectionStringsResponsePropertiesMap>;
 
 export interface UpdateWebAppConnectionStringsResponse {
   /** Resource Id. */
@@ -41526,26 +39049,15 @@ export interface UpdateWebAppConnectionStringsResponse {
   /** Connection strings. */
   properties?: UpdateWebAppConnectionStringsResponsePropertiesMap;
 }
-export const UpdateWebAppConnectionStringsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppConnectionStringsResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppConnectionStringsResponse",
-}) as any as S.Schema<UpdateWebAppConnectionStringsResponse>;
+export const UpdateWebAppConnectionStringsResponse =
+  ListWebAppConnectionStringsResponse as any as S.Schema<UpdateWebAppConnectionStringsResponse>;
 
 /** Connection strings. */
 export type UpdateWebAppConnectionStringsSlotRequestPropertiesMap = {
   [key: string]: ConnStringValueTypePair | undefined;
 };
-export const UpdateWebAppConnectionStringsSlotRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConnStringValueTypePair,
-) as any as S.Schema<UpdateWebAppConnectionStringsSlotRequestPropertiesMap>;
+export const UpdateWebAppConnectionStringsSlotRequestPropertiesMap =
+  ListWebAppConnectionStringsResponsePropertiesMap as any as S.Schema<UpdateWebAppConnectionStringsSlotRequestPropertiesMap>;
 
 export interface UpdateWebAppConnectionStringsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41585,10 +39097,8 @@ export const UpdateWebAppConnectionStringsSlotRequest = /*@__PURE__*/ S.suspend(
 export type UpdateWebAppConnectionStringsSlotResponsePropertiesMap = {
   [key: string]: ConnStringValueTypePair | undefined;
 };
-export const UpdateWebAppConnectionStringsSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConnStringValueTypePair,
-) as any as S.Schema<UpdateWebAppConnectionStringsSlotResponsePropertiesMap>;
+export const UpdateWebAppConnectionStringsSlotResponsePropertiesMap =
+  ListWebAppConnectionStringsResponsePropertiesMap as any as S.Schema<UpdateWebAppConnectionStringsSlotResponsePropertiesMap>;
 
 export interface UpdateWebAppConnectionStringsSlotResponse {
   /** Resource Id. */
@@ -41602,17 +39112,8 @@ export interface UpdateWebAppConnectionStringsSlotResponse {
   /** Connection strings. */
   properties?: UpdateWebAppConnectionStringsSlotResponsePropertiesMap;
 }
-export const UpdateWebAppConnectionStringsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppConnectionStringsSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppConnectionStringsSlotResponse",
-}) as any as S.Schema<UpdateWebAppConnectionStringsSlotResponse>;
+export const UpdateWebAppConnectionStringsSlotResponse =
+  ListWebAppConnectionStringsResponse as any as S.Schema<UpdateWebAppConnectionStringsSlotResponse>;
 
 export interface UpdateWebAppDiagnosticLogsConfigRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41659,18 +39160,8 @@ export interface UpdateWebAppDiagnosticLogsConfigResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppDiagnosticLogsConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteLogsConfigProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppDiagnosticLogsConfigResponse",
-}) as any as S.Schema<UpdateWebAppDiagnosticLogsConfigResponse>;
+export const UpdateWebAppDiagnosticLogsConfigResponse =
+  GetWebAppDiagnosticLogsConfigurationResponse as any as S.Schema<UpdateWebAppDiagnosticLogsConfigResponse>;
 
 export interface UpdateWebAppDiagnosticLogsConfigSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41720,18 +39211,8 @@ export interface UpdateWebAppDiagnosticLogsConfigSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppDiagnosticLogsConfigSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteLogsConfigProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppDiagnosticLogsConfigSlotResponse",
-}) as any as S.Schema<UpdateWebAppDiagnosticLogsConfigSlotResponse>;
+export const UpdateWebAppDiagnosticLogsConfigSlotResponse =
+  GetWebAppDiagnosticLogsConfigurationResponse as any as S.Schema<UpdateWebAppDiagnosticLogsConfigSlotResponse>;
 
 export interface UpdateWebAppDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41781,18 +39262,8 @@ export interface UpdateWebAppDomainOwnershipIdentifierResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(IdentifierProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppDomainOwnershipIdentifierResponse",
-}) as any as S.Schema<UpdateWebAppDomainOwnershipIdentifierResponse>;
+export const UpdateWebAppDomainOwnershipIdentifierResponse =
+  GetWebAppDomainOwnershipIdentifierResponse as any as S.Schema<UpdateWebAppDomainOwnershipIdentifierResponse>;
 
 export interface UpdateWebAppDomainOwnershipIdentifierSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41845,18 +39316,8 @@ export interface UpdateWebAppDomainOwnershipIdentifierSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppDomainOwnershipIdentifierSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(IdentifierProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppDomainOwnershipIdentifierSlotResponse",
-}) as any as S.Schema<UpdateWebAppDomainOwnershipIdentifierSlotResponse>;
+export const UpdateWebAppDomainOwnershipIdentifierSlotResponse =
+  GetWebAppDomainOwnershipIdentifierResponse as any as S.Schema<UpdateWebAppDomainOwnershipIdentifierSlotResponse>;
 
 export interface UpdateWebAppFtpAllowedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41903,18 +39364,8 @@ export interface UpdateWebAppFtpAllowedResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppFtpAllowedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppFtpAllowedResponse",
-}) as any as S.Schema<UpdateWebAppFtpAllowedResponse>;
+export const UpdateWebAppFtpAllowedResponse =
+  GetWebAppFtpAllowedResponse as any as S.Schema<UpdateWebAppFtpAllowedResponse>;
 
 export interface UpdateWebAppFtpAllowedSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41963,18 +39414,8 @@ export interface UpdateWebAppFtpAllowedSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppFtpAllowedSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppFtpAllowedSlotResponse",
-}) as any as S.Schema<UpdateWebAppFtpAllowedSlotResponse>;
+export const UpdateWebAppFtpAllowedSlotResponse =
+  GetWebAppFtpAllowedResponse as any as S.Schema<UpdateWebAppFtpAllowedSlotResponse>;
 
 export interface UpdateWebAppHybridConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42027,18 +39468,8 @@ export interface UpdateWebAppHybridConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppHybridConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppHybridConnectionResponse",
-}) as any as S.Schema<UpdateWebAppHybridConnectionResponse>;
+export const UpdateWebAppHybridConnectionResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<UpdateWebAppHybridConnectionResponse>;
 
 export interface UpdateWebAppHybridConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42094,18 +39525,8 @@ export interface UpdateWebAppHybridConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppHybridConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppHybridConnectionSlotResponse",
-}) as any as S.Schema<UpdateWebAppHybridConnectionSlotResponse>;
+export const UpdateWebAppHybridConnectionSlotResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<UpdateWebAppHybridConnectionSlotResponse>;
 
 export interface UpdateWebAppMachineKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42133,18 +39554,13 @@ export const UpdateWebAppMachineKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWebAppMachineKeyRequest>;
 
 export type UpdateWebAppMachineKeyResponse = unknown;
-export const UpdateWebAppMachineKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateWebAppMachineKeyResponse",
-}) as any as S.Schema<UpdateWebAppMachineKeyResponse>;
+export const UpdateWebAppMachineKeyResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<UpdateWebAppMachineKeyResponse>;
 
 /** Settings. */
 export type UpdateWebAppMetadataRequestPropertiesMap = { [key: string]: string | undefined };
-export const UpdateWebAppMetadataRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppMetadataRequestPropertiesMap>;
+export const UpdateWebAppMetadataRequestPropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppMetadataRequestPropertiesMap>;
 
 export interface UpdateWebAppMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42179,10 +39595,8 @@ export const UpdateWebAppMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings. */
 export type UpdateWebAppMetadataResponsePropertiesMap = { [key: string]: string | undefined };
-export const UpdateWebAppMetadataResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppMetadataResponsePropertiesMap>;
+export const UpdateWebAppMetadataResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppMetadataResponsePropertiesMap>;
 
 export interface UpdateWebAppMetadataResponse {
   /** Resource Id. */
@@ -42196,24 +39610,13 @@ export interface UpdateWebAppMetadataResponse {
   /** Settings. */
   properties?: UpdateWebAppMetadataResponsePropertiesMap;
 }
-export const UpdateWebAppMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppMetadataResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppMetadataResponse",
-}) as any as S.Schema<UpdateWebAppMetadataResponse>;
+export const UpdateWebAppMetadataResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<UpdateWebAppMetadataResponse>;
 
 /** Settings. */
 export type UpdateWebAppMetadataSlotRequestPropertiesMap = { [key: string]: string | undefined };
-export const UpdateWebAppMetadataSlotRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppMetadataSlotRequestPropertiesMap>;
+export const UpdateWebAppMetadataSlotRequestPropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppMetadataSlotRequestPropertiesMap>;
 
 export interface UpdateWebAppMetadataSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42251,10 +39654,8 @@ export const UpdateWebAppMetadataSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings. */
 export type UpdateWebAppMetadataSlotResponsePropertiesMap = { [key: string]: string | undefined };
-export const UpdateWebAppMetadataSlotResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppMetadataSlotResponsePropertiesMap>;
+export const UpdateWebAppMetadataSlotResponsePropertiesMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppMetadataSlotResponsePropertiesMap>;
 
 export interface UpdateWebAppMetadataSlotResponse {
   /** Resource Id. */
@@ -42268,17 +39669,8 @@ export interface UpdateWebAppMetadataSlotResponse {
   /** Settings. */
   properties?: UpdateWebAppMetadataSlotResponsePropertiesMap;
 }
-export const UpdateWebAppMetadataSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UpdateWebAppMetadataSlotResponsePropertiesMap),
-  }),
-).annotate({
-  identifier: "UpdateWebAppMetadataSlotResponse",
-}) as any as S.Schema<UpdateWebAppMetadataSlotResponse>;
+export const UpdateWebAppMetadataSlotResponse =
+  ListStaticSiteStaticSiteAppSettingsResponse as any as S.Schema<UpdateWebAppMetadataSlotResponse>;
 
 export interface UpdateWebAppRelayServiceConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42328,18 +39720,8 @@ export interface UpdateWebAppRelayServiceConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppRelayServiceConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppRelayServiceConnectionResponse",
-}) as any as S.Schema<UpdateWebAppRelayServiceConnectionResponse>;
+export const UpdateWebAppRelayServiceConnectionResponse =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<UpdateWebAppRelayServiceConnectionResponse>;
 
 export interface UpdateWebAppRelayServiceConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42392,18 +39774,8 @@ export interface UpdateWebAppRelayServiceConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppRelayServiceConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppRelayServiceConnectionSlotResponse",
-}) as any as S.Schema<UpdateWebAppRelayServiceConnectionSlotResponse>;
+export const UpdateWebAppRelayServiceConnectionSlotResponse =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<UpdateWebAppRelayServiceConnectionSlotResponse>;
 
 export interface UpdateWebAppScmAllowedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42450,18 +39822,8 @@ export interface UpdateWebAppScmAllowedResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppScmAllowedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppScmAllowedResponse",
-}) as any as S.Schema<UpdateWebAppScmAllowedResponse>;
+export const UpdateWebAppScmAllowedResponse =
+  GetWebAppFtpAllowedResponse as any as S.Schema<UpdateWebAppScmAllowedResponse>;
 
 export interface UpdateWebAppScmAllowedSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42510,18 +39872,8 @@ export interface UpdateWebAppScmAllowedSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppScmAllowedSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppScmAllowedSlotResponse",
-}) as any as S.Schema<UpdateWebAppScmAllowedSlotResponse>;
+export const UpdateWebAppScmAllowedSlotResponse =
+  GetWebAppFtpAllowedResponse as any as S.Schema<UpdateWebAppScmAllowedSlotResponse>;
 
 export interface UpdateWebAppSitePushSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42566,17 +39918,8 @@ export interface UpdateWebAppSitePushSettingsResponse {
   /** PushSettings resource specific properties */
   properties?: PushSettingsProperties;
 }
-export const UpdateWebAppSitePushSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PushSettingsProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebAppSitePushSettingsResponse",
-}) as any as S.Schema<UpdateWebAppSitePushSettingsResponse>;
+export const UpdateWebAppSitePushSettingsResponse =
+  ListWebAppSitePushSettingsResponse as any as S.Schema<UpdateWebAppSitePushSettingsResponse>;
 
 export interface UpdateWebAppSitePushSettingsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42624,17 +39967,8 @@ export interface UpdateWebAppSitePushSettingsSlotResponse {
   /** PushSettings resource specific properties */
   properties?: PushSettingsProperties;
 }
-export const UpdateWebAppSitePushSettingsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PushSettingsProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebAppSitePushSettingsSlotResponse",
-}) as any as S.Schema<UpdateWebAppSitePushSettingsSlotResponse>;
+export const UpdateWebAppSitePushSettingsSlotResponse =
+  ListWebAppSitePushSettingsResponse as any as S.Schema<UpdateWebAppSitePushSettingsSlotResponse>;
 
 export interface UpdateWebAppSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42673,10 +40007,8 @@ export const UpdateWebAppSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWebAppSlotResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWebAppSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebAppSlotResponseTagsMap>;
+export const UpdateWebAppSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWebAppSlotResponseTagsMap>;
 
 export interface UpdateWebAppSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -42700,20 +40032,7 @@ export interface UpdateWebAppSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const UpdateWebAppSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateWebAppSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SiteProperties),
-    identity: S.optional(ManagedServiceIdentity),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateWebAppSlotResponse" }) as any as S.Schema<UpdateWebAppSlotResponse>;
+export const UpdateWebAppSlotResponse = Site as any as S.Schema<UpdateWebAppSlotResponse>;
 
 export interface UpdateWebAppSlotConfigurationNamesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42760,18 +40079,8 @@ export interface UpdateWebAppSlotConfigurationNamesResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppSlotConfigurationNamesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SlotConfigNames),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppSlotConfigurationNamesResponse",
-}) as any as S.Schema<UpdateWebAppSlotConfigurationNamesResponse>;
+export const UpdateWebAppSlotConfigurationNamesResponse =
+  ListWebAppSlotConfigurationNamesResponse as any as S.Schema<UpdateWebAppSlotConfigurationNamesResponse>;
 
 export interface UpdateWebAppSourceControlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42818,18 +40127,8 @@ export interface UpdateWebAppSourceControlResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteSourceControlProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppSourceControlResponse",
-}) as any as S.Schema<UpdateWebAppSourceControlResponse>;
+export const UpdateWebAppSourceControlResponse =
+  GetWebAppSourceControlResponse as any as S.Schema<UpdateWebAppSourceControlResponse>;
 
 export interface UpdateWebAppSourceControlSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42879,18 +40178,8 @@ export interface UpdateWebAppSourceControlSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppSourceControlSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteSourceControlProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppSourceControlSlotResponse",
-}) as any as S.Schema<UpdateWebAppSourceControlSlotResponse>;
+export const UpdateWebAppSourceControlSlotResponse =
+  GetWebAppSourceControlResponse as any as S.Schema<UpdateWebAppSourceControlSlotResponse>;
 
 export interface UpdateWebAppSwiftVirtualNetworkConnectionWithCheckRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43083,18 +40372,8 @@ export interface UpdateWebAppVnetConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppVnetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetInfo),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppVnetConnectionResponse",
-}) as any as S.Schema<UpdateWebAppVnetConnectionResponse>;
+export const UpdateWebAppVnetConnectionResponse =
+  GetAppServicePlanVnetFromServerFarmResponse as any as S.Schema<UpdateWebAppVnetConnectionResponse>;
 
 export interface UpdateWebAppVnetConnectionGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43147,18 +40426,8 @@ export interface UpdateWebAppVnetConnectionGatewayResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppVnetConnectionGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetGatewayProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppVnetConnectionGatewayResponse",
-}) as any as S.Schema<UpdateWebAppVnetConnectionGatewayResponse>;
+export const UpdateWebAppVnetConnectionGatewayResponse =
+  GetAppServicePlanVnetGatewayResponse as any as S.Schema<UpdateWebAppVnetConnectionGatewayResponse>;
 
 export interface UpdateWebAppVnetConnectionGatewaySlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43214,18 +40483,8 @@ export interface UpdateWebAppVnetConnectionGatewaySlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppVnetConnectionGatewaySlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetGatewayProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppVnetConnectionGatewaySlotResponse",
-}) as any as S.Schema<UpdateWebAppVnetConnectionGatewaySlotResponse>;
+export const UpdateWebAppVnetConnectionGatewaySlotResponse =
+  GetAppServicePlanVnetGatewayResponse as any as S.Schema<UpdateWebAppVnetConnectionGatewaySlotResponse>;
 
 export interface UpdateWebAppVnetConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43278,18 +40537,8 @@ export interface UpdateWebAppVnetConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const UpdateWebAppVnetConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetInfo),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateWebAppVnetConnectionSlotResponse",
-}) as any as S.Schema<UpdateWebAppVnetConnectionSlotResponse>;
+export const UpdateWebAppVnetConnectionSlotResponse =
+  GetAppServicePlanVnetFromServerFarmResponse as any as S.Schema<UpdateWebAppVnetConnectionSlotResponse>;
 
 /** Resource type used for verification. */
 export type ValidateResourceTypes = "ServerFarm" | "Site" | "Microsoft.Web/hostingEnvironments";
@@ -43384,12 +40633,7 @@ export interface ValidateResponseError {
   /** Validation error message. */
   message?: string;
 }
-export const ValidateResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "ValidateResponseError" }) as any as S.Schema<ValidateResponseError>;
+export const ValidateResponseError = ErrorProperties as any as S.Schema<ValidateResponseError>;
 
 /** Describes the result of resource validation. */
 export interface ValidateResponse {
@@ -43406,9 +40650,8 @@ export const ValidateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidateResponse" }) as any as S.Schema<ValidateResponse>;
 
 export type ValidateMoveRequestResourcesList = Array<string>;
-export const ValidateMoveRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateMoveRequestResourcesList>;
+export const ValidateMoveRequestResourcesList =
+  SitePropertiesHostNamesList as any as S.Schema<ValidateMoveRequestResourcesList>;
 
 export interface ValidateMoveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43435,9 +40678,8 @@ export const ValidateMoveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidateMoveRequest" }) as any as S.Schema<ValidateMoveRequest>;
 
 export interface ValidateMoveResponse {}
-export const ValidateMoveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ValidateMoveResponse",
-}) as any as S.Schema<ValidateMoveResponse>;
+export const ValidateMoveResponse =
+  AiGatewayPropertiesInput as any as S.Schema<ValidateMoveResponse>;
 
 export interface ValidateStaticSiteBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43474,11 +40716,8 @@ export const ValidateStaticSiteBackendRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateStaticSiteBackendRequest>;
 
 export interface ValidateStaticSiteBackendResponse {}
-export const ValidateStaticSiteBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ValidateStaticSiteBackendResponse",
-}) as any as S.Schema<ValidateStaticSiteBackendResponse>;
+export const ValidateStaticSiteBackendResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ValidateStaticSiteBackendResponse>;
 
 export interface ValidateStaticSiteBackendForBuildRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43518,11 +40757,8 @@ export const ValidateStaticSiteBackendForBuildRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ValidateStaticSiteBackendForBuildRequest>;
 
 export interface ValidateStaticSiteBackendForBuildResponse {}
-export const ValidateStaticSiteBackendForBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ValidateStaticSiteBackendForBuildResponse",
-}) as any as S.Schema<ValidateStaticSiteBackendForBuildResponse>;
+export const ValidateStaticSiteBackendForBuildResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<ValidateStaticSiteBackendForBuildResponse>;
 
 export interface ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43560,36 +40796,25 @@ export const ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteRequest = /*@__
 }) as any as S.Schema<ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteRequest>;
 
 export interface ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse {}
-export const ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse",
-}) as any as S.Schema<ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse>;
+export const ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse =
+  DisableRecommendationRecommendationForSubscriptionResponse as any as S.Schema<ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse>;
 
 /** The resource tags. */
 export type ValidateWorkflowRequestTagsMap = { [key: string]: string | undefined };
-export const ValidateWorkflowRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ValidateWorkflowRequestTagsMap>;
+export const ValidateWorkflowRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<ValidateWorkflowRequestTagsMap>;
 
 /** The resource reference. */
 export interface ResourceReferenceInput {
   /** The resource id. */
   id?: string;
 }
-export const ResourceReferenceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceReferenceInput" }) as any as S.Schema<ResourceReferenceInput>;
+export const ResourceReferenceInput = ArmIdWrapper as any as S.Schema<ResourceReferenceInput>;
 
 /** The parameters. */
 export type WorkflowPropertiesInputParametersMap = { [key: string]: WorkflowParameter | undefined };
-export const WorkflowPropertiesInputParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  WorkflowParameter,
-) as any as S.Schema<WorkflowPropertiesInputParametersMap>;
+export const WorkflowPropertiesInputParametersMap =
+  WorkflowVersionPropertiesParametersMap as any as S.Schema<WorkflowPropertiesInputParametersMap>;
 
 /** The workflow kind. */
 export type Kind = "Stateful" | "Stateless";
@@ -43666,9 +40891,8 @@ export const ValidateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidateWorkflowRequest" }) as any as S.Schema<ValidateWorkflowRequest>;
 
 export interface ValidateWorkflowResponse {}
-export const ValidateWorkflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ValidateWorkflowResponse",
-}) as any as S.Schema<ValidateWorkflowResponse>;
+export const ValidateWorkflowResponse =
+  AiGatewayPropertiesInput as any as S.Schema<ValidateWorkflowResponse>;
 
 /** VnetParameters resource specific properties */
 export interface VnetParametersProperties {
@@ -43765,9 +40989,8 @@ export const VnetValidationFailureDetailsPropertiesFailedTestsList = /*@__PURE__
 
 /** A list of warnings generated during validation. */
 export type VnetValidationFailureDetailsPropertiesWarningsList = Array<VnetValidationTestFailure>;
-export const VnetValidationFailureDetailsPropertiesWarningsList = /*@__PURE__*/ S.Array(
-  VnetValidationTestFailure,
-) as any as S.Schema<VnetValidationFailureDetailsPropertiesWarningsList>;
+export const VnetValidationFailureDetailsPropertiesWarningsList =
+  VnetValidationFailureDetailsPropertiesFailedTestsList as any as S.Schema<VnetValidationFailureDetailsPropertiesWarningsList>;
 
 /** VnetValidationFailureDetails resource specific properties */
 export interface VnetValidationFailureDetailsProperties {
@@ -43817,10 +41040,8 @@ export const VerifyHostingEnvironmentVnetResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type WebAppsAddPremierAddOnRequestTagsMap = { [key: string]: string | undefined };
-export const WebAppsAddPremierAddOnRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsAddPremierAddOnRequestTagsMap>;
+export const WebAppsAddPremierAddOnRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsAddPremierAddOnRequestTagsMap>;
 
 /** PremierAddOn resource specific properties */
 export interface PremierAddOnProperties {
@@ -43887,10 +41108,8 @@ export const WebAppsAddPremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsAddPremierAddOnResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsAddPremierAddOnResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsAddPremierAddOnResponseTagsMap>;
+export const WebAppsAddPremierAddOnResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsAddPremierAddOnResponseTagsMap>;
 
 export interface WebAppsAddPremierAddOnResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -43927,10 +41146,8 @@ export const WebAppsAddPremierAddOnResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsAddPremierAddOnSlotRequestTagsMap = { [key: string]: string | undefined };
-export const WebAppsAddPremierAddOnSlotRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsAddPremierAddOnSlotRequestTagsMap>;
+export const WebAppsAddPremierAddOnSlotRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsAddPremierAddOnSlotRequestTagsMap>;
 
 export interface WebAppsAddPremierAddOnSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -43977,10 +41194,8 @@ export const WebAppsAddPremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsAddPremierAddOnSlotResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsAddPremierAddOnSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsAddPremierAddOnSlotResponseTagsMap>;
+export const WebAppsAddPremierAddOnSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsAddPremierAddOnSlotResponseTagsMap>;
 
 export interface WebAppsAddPremierAddOnSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -44000,20 +41215,8 @@ export interface WebAppsAddPremierAddOnSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsAddPremierAddOnSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsAddPremierAddOnSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PremierAddOnProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsAddPremierAddOnSlotResponse",
-}) as any as S.Schema<WebAppsAddPremierAddOnSlotResponse>;
+export const WebAppsAddPremierAddOnSlotResponse =
+  WebAppsAddPremierAddOnResponse as any as S.Schema<WebAppsAddPremierAddOnSlotResponse>;
 
 export interface WebAppsAnalyzeCustomHostnameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -44049,34 +41252,28 @@ export const DnsVerificationTestResult = S.String;
 
 /** CName records controller can see for this hostname. */
 export type CustomHostnameAnalysisResultPropertiesCNameRecordsList = Array<string>;
-export const CustomHostnameAnalysisResultPropertiesCNameRecordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomHostnameAnalysisResultPropertiesCNameRecordsList>;
+export const CustomHostnameAnalysisResultPropertiesCNameRecordsList =
+  SitePropertiesHostNamesList as any as S.Schema<CustomHostnameAnalysisResultPropertiesCNameRecordsList>;
 
 /** TXT records controller can see for this hostname. */
 export type CustomHostnameAnalysisResultPropertiesTxtRecordsList = Array<string>;
-export const CustomHostnameAnalysisResultPropertiesTxtRecordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomHostnameAnalysisResultPropertiesTxtRecordsList>;
+export const CustomHostnameAnalysisResultPropertiesTxtRecordsList =
+  SitePropertiesHostNamesList as any as S.Schema<CustomHostnameAnalysisResultPropertiesTxtRecordsList>;
 
 /** A records controller can see for this hostname. */
 export type CustomHostnameAnalysisResultPropertiesARecordsList = Array<string>;
-export const CustomHostnameAnalysisResultPropertiesARecordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomHostnameAnalysisResultPropertiesARecordsList>;
+export const CustomHostnameAnalysisResultPropertiesARecordsList =
+  SitePropertiesHostNamesList as any as S.Schema<CustomHostnameAnalysisResultPropertiesARecordsList>;
 
 /** Alternate CName records controller can see for this hostname. */
 export type CustomHostnameAnalysisResultPropertiesAlternateCNameRecordsList = Array<string>;
 export const CustomHostnameAnalysisResultPropertiesAlternateCNameRecordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CustomHostnameAnalysisResultPropertiesAlternateCNameRecordsList>;
+  RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList as any as S.Schema<CustomHostnameAnalysisResultPropertiesAlternateCNameRecordsList>;
 
 /** Alternate TXT records controller can see for this hostname. */
 export type CustomHostnameAnalysisResultPropertiesAlternateTxtRecordsList = Array<string>;
-export const CustomHostnameAnalysisResultPropertiesAlternateTxtRecordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomHostnameAnalysisResultPropertiesAlternateTxtRecordsList>;
+export const CustomHostnameAnalysisResultPropertiesAlternateTxtRecordsList =
+  SitePropertiesHostNamesList as any as S.Schema<CustomHostnameAnalysisResultPropertiesAlternateTxtRecordsList>;
 
 /** CustomHostnameAnalysisResult resource specific properties */
 export interface CustomHostnameAnalysisResultProperties {
@@ -44190,17 +41387,8 @@ export interface WebAppsAnalyzeCustomHostnameSlotResponse {
   /** CustomHostnameAnalysisResult resource specific properties */
   properties?: CustomHostnameAnalysisResultProperties;
 }
-export const WebAppsAnalyzeCustomHostnameSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CustomHostnameAnalysisResultProperties),
-  }),
-).annotate({
-  identifier: "WebAppsAnalyzeCustomHostnameSlotResponse",
-}) as any as S.Schema<WebAppsAnalyzeCustomHostnameSlotResponse>;
+export const WebAppsAnalyzeCustomHostnameSlotResponse =
+  WebAppsAnalyzeCustomHostnameResponse as any as S.Schema<WebAppsAnalyzeCustomHostnameSlotResponse>;
 
 export interface WebAppsApproveOrRejectPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -44250,18 +41438,8 @@ export interface WebAppsApproveOrRejectPrivateEndpointConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsApproveOrRejectPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemotePrivateEndpointConnectionARMResourceProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsApproveOrRejectPrivateEndpointConnectionResponse",
-}) as any as S.Schema<WebAppsApproveOrRejectPrivateEndpointConnectionResponse>;
+export const WebAppsApproveOrRejectPrivateEndpointConnectionResponse =
+  RemotePrivateEndpointConnectionARMResource as any as S.Schema<WebAppsApproveOrRejectPrivateEndpointConnectionResponse>;
 
 export interface WebAppsApproveOrRejectPrivateEndpointConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -44315,19 +41493,8 @@ export interface WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RemotePrivateEndpointConnectionARMResourceProperties),
-      kind: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse",
-}) as any as S.Schema<WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse>;
+export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse =
+  GetAppServiceEnvironmentPrivateEndpointConnectionResponse as any as S.Schema<WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse>;
 
 export interface WebAppsBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -44372,16 +41539,7 @@ export interface WebAppsBackupResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupItemProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "WebAppsBackupResponse" }) as any as S.Schema<WebAppsBackupResponse>;
+export const WebAppsBackupResponse = BackupItem as any as S.Schema<WebAppsBackupResponse>;
 
 export interface WebAppsBackupSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -44429,32 +41587,18 @@ export interface WebAppsBackupSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsBackupSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupItemProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsBackupSlotResponse",
-}) as any as S.Schema<WebAppsBackupSlotResponse>;
+export const WebAppsBackupSlotResponse =
+  GetWebAppBackupStatusResponse as any as S.Schema<WebAppsBackupSlotResponse>;
 
 /** MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used. */
 export type MSDeployPropertiesSetParametersMap = { [key: string]: string | undefined };
-export const MSDeployPropertiesSetParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MSDeployPropertiesSetParametersMap>;
+export const MSDeployPropertiesSetParametersMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<MSDeployPropertiesSetParametersMap>;
 
 /** MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used. */
 export type MSDeployCoreSetParametersMap = { [key: string]: string | undefined };
-export const MSDeployCoreSetParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MSDeployCoreSetParametersMap>;
+export const MSDeployCoreSetParametersMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<MSDeployCoreSetParametersMap>;
 
 /** MSDeploy ARM PUT core information */
 export interface MSDeployCore {
@@ -44667,18 +41811,8 @@ export interface WebAppsCreateInstanceMSDeployOperationSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateInstanceMSDeployOperationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MSDeployStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateInstanceMSDeployOperationSlotResponse",
-}) as any as S.Schema<WebAppsCreateInstanceMSDeployOperationSlotResponse>;
+export const WebAppsCreateInstanceMSDeployOperationSlotResponse =
+  WebAppsCreateInstanceMSDeployOperationResponse as any as S.Schema<WebAppsCreateInstanceMSDeployOperationSlotResponse>;
 
 export interface WebAppsCreateMSDeployOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -44725,18 +41859,8 @@ export interface WebAppsCreateMSDeployOperationResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateMSDeployOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MSDeployStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateMSDeployOperationResponse",
-}) as any as S.Schema<WebAppsCreateMSDeployOperationResponse>;
+export const WebAppsCreateMSDeployOperationResponse =
+  WebAppsCreateInstanceMSDeployOperationResponse as any as S.Schema<WebAppsCreateMSDeployOperationResponse>;
 
 export interface WebAppsCreateMSDeployOperationSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -44786,18 +41910,8 @@ export interface WebAppsCreateMSDeployOperationSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateMSDeployOperationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MSDeployStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateMSDeployOperationSlotResponse",
-}) as any as S.Schema<WebAppsCreateMSDeployOperationSlotResponse>;
+export const WebAppsCreateMSDeployOperationSlotResponse =
+  WebAppsCreateInstanceMSDeployOperationResponse as any as S.Schema<WebAppsCreateMSDeployOperationSlotResponse>;
 
 /** OneDeploy request. */
 export interface OneDeployProperties {
@@ -44854,24 +41968,18 @@ export const WebAppsCreateOneDeployOperationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<WebAppsCreateOneDeployOperationRequest>;
 
 export type WebAppsCreateOneDeployOperationResponse = unknown;
-export const WebAppsCreateOneDeployOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "WebAppsCreateOneDeployOperationResponse",
-}) as any as S.Schema<WebAppsCreateOneDeployOperationResponse>;
+export const WebAppsCreateOneDeployOperationResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<WebAppsCreateOneDeployOperationResponse>;
 
 /** Resource tags. */
 export type WebAppsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WebAppsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsCreateOrUpdateRequestTagsMap>;
+export const WebAppsCreateOrUpdateRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsCreateOrUpdateRequestTagsMap>;
 
 /** Hostname SSL states are used to manage the SSL bindings for app's hostnames. */
 export type SitePropertiesInputHostNameSslStatesList = Array<HostNameSslState>;
-export const SitePropertiesInputHostNameSslStatesList = /*@__PURE__*/ S.Array(
-  HostNameSslState,
-) as any as S.Schema<SitePropertiesInputHostNameSslStatesList>;
+export const SitePropertiesInputHostNameSslStatesList =
+  SitePropertiesHostNameSslStatesList as any as S.Schema<SitePropertiesInputHostNameSslStatesList>;
 
 /** Site resource specific properties */
 export interface SitePropertiesInput {
@@ -45049,10 +42157,8 @@ export const WebAppsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsCreateOrUpdateResponseTagsMap>;
+export const WebAppsCreateOrUpdateResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsCreateOrUpdateResponseTagsMap>;
 
 export interface WebAppsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -45138,18 +42244,8 @@ export interface WebAppsCreateOrUpdateConfigurationResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteConfig),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateConfigurationResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateConfigurationResponse>;
+export const WebAppsCreateOrUpdateConfigurationResponse =
+  GetWebAppConfigurationResponse as any as S.Schema<WebAppsCreateOrUpdateConfigurationResponse>;
 
 export interface WebAppsCreateOrUpdateConfigurationSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45199,18 +42295,8 @@ export interface WebAppsCreateOrUpdateConfigurationSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateConfigurationSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteConfig),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateConfigurationSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateConfigurationSlotResponse>;
+export const WebAppsCreateOrUpdateConfigurationSlotResponse =
+  GetWebAppConfigurationResponse as any as S.Schema<WebAppsCreateOrUpdateConfigurationSlotResponse>;
 
 export interface WebAppsCreateOrUpdateDomainOwnershipIdentifierRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45260,18 +42346,8 @@ export interface WebAppsCreateOrUpdateDomainOwnershipIdentifierResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateDomainOwnershipIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(IdentifierProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateDomainOwnershipIdentifierResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateDomainOwnershipIdentifierResponse>;
+export const WebAppsCreateOrUpdateDomainOwnershipIdentifierResponse =
+  GetWebAppDomainOwnershipIdentifierResponse as any as S.Schema<WebAppsCreateOrUpdateDomainOwnershipIdentifierResponse>;
 
 export interface WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45346,12 +42422,7 @@ export interface FunctionSecretProperties {
   /** Key value; omit it to have Azure generate one. */
   value?: string;
 }
-export const FunctionSecretProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "FunctionSecretProperties" }) as any as S.Schema<FunctionSecretProperties>;
+export const FunctionSecretProperties = NameValuePair as any as S.Schema<FunctionSecretProperties>;
 
 export interface WebAppsCreateOrUpdateFunctionSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45391,12 +42462,7 @@ export interface KeyInfo {
   /** Key value */
   value?: string;
 }
-export const KeyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "KeyInfo" }) as any as S.Schema<KeyInfo>;
+export const KeyInfo = NameValuePair as any as S.Schema<KeyInfo>;
 
 export interface WebAppsCreateOrUpdateFunctionSecretSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45513,18 +42579,8 @@ export interface WebAppsCreateOrUpdateHostNameBindingResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateHostNameBindingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HostNameBindingProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateHostNameBindingResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateHostNameBindingResponse>;
+export const WebAppsCreateOrUpdateHostNameBindingResponse =
+  GetWebAppHostNameBindingResponse as any as S.Schema<WebAppsCreateOrUpdateHostNameBindingResponse>;
 
 export interface WebAppsCreateOrUpdateHostNameBindingSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45577,18 +42633,8 @@ export interface WebAppsCreateOrUpdateHostNameBindingSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateHostNameBindingSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HostNameBindingProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateHostNameBindingSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateHostNameBindingSlotResponse>;
+export const WebAppsCreateOrUpdateHostNameBindingSlotResponse =
+  GetWebAppHostNameBindingResponse as any as S.Schema<WebAppsCreateOrUpdateHostNameBindingSlotResponse>;
 
 /** Host key to create or update. */
 export type HostSecretProperties = FunctionSecretProperties;
@@ -45716,18 +42762,8 @@ export interface WebAppsCreateOrUpdateHybridConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateHybridConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateHybridConnectionResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateHybridConnectionResponse>;
+export const WebAppsCreateOrUpdateHybridConnectionResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<WebAppsCreateOrUpdateHybridConnectionResponse>;
 
 export interface WebAppsCreateOrUpdateHybridConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45783,18 +42819,8 @@ export interface WebAppsCreateOrUpdateHybridConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateHybridConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateHybridConnectionSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateHybridConnectionSlotResponse>;
+export const WebAppsCreateOrUpdateHybridConnectionSlotResponse =
+  GetAppServicePlanHybridConnectionResponse as any as S.Schema<WebAppsCreateOrUpdateHybridConnectionSlotResponse>;
 
 /** PublicCertificate resource specific properties */
 export interface PublicCertificatePropertiesInput {
@@ -45860,18 +42886,8 @@ export interface WebAppsCreateOrUpdatePublicCertificateResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdatePublicCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PublicCertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdatePublicCertificateResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdatePublicCertificateResponse>;
+export const WebAppsCreateOrUpdatePublicCertificateResponse =
+  GetWebAppPublicCertificateResponse as any as S.Schema<WebAppsCreateOrUpdatePublicCertificateResponse>;
 
 export interface WebAppsCreateOrUpdatePublicCertificateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45924,18 +42940,8 @@ export interface WebAppsCreateOrUpdatePublicCertificateSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdatePublicCertificateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PublicCertificateProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdatePublicCertificateSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdatePublicCertificateSlotResponse>;
+export const WebAppsCreateOrUpdatePublicCertificateSlotResponse =
+  GetWebAppPublicCertificateResponse as any as S.Schema<WebAppsCreateOrUpdatePublicCertificateSlotResponse>;
 
 export interface WebAppsCreateOrUpdateRelayServiceConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -45985,18 +42991,8 @@ export interface WebAppsCreateOrUpdateRelayServiceConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateRelayServiceConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateRelayServiceConnectionResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateRelayServiceConnectionResponse>;
+export const WebAppsCreateOrUpdateRelayServiceConnectionResponse =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<WebAppsCreateOrUpdateRelayServiceConnectionResponse>;
 
 export interface WebAppsCreateOrUpdateRelayServiceConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46049,30 +43045,18 @@ export interface WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RelayServiceConnectionEntityProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse>;
+export const WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse =
+  GetWebAppRelayServiceConnectionResponse as any as S.Schema<WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse>;
 
 /** List of volume mounts */
 export type SiteContainerPropertiesInputVolumeMountsList = Array<VolumeMount>;
-export const SiteContainerPropertiesInputVolumeMountsList = /*@__PURE__*/ S.Array(
-  VolumeMount,
-) as any as S.Schema<SiteContainerPropertiesInputVolumeMountsList>;
+export const SiteContainerPropertiesInputVolumeMountsList =
+  SiteContainerPropertiesVolumeMountsList as any as S.Schema<SiteContainerPropertiesInputVolumeMountsList>;
 
 /** List of environment variables */
 export type SiteContainerPropertiesInputEnvironmentVariablesList = Array<EnvironmentVariable>;
-export const SiteContainerPropertiesInputEnvironmentVariablesList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<SiteContainerPropertiesInputEnvironmentVariablesList>;
+export const SiteContainerPropertiesInputEnvironmentVariablesList =
+  SiteContainerPropertiesEnvironmentVariablesList as any as S.Schema<SiteContainerPropertiesInputEnvironmentVariablesList>;
 
 /** SiteContainer resource specific properties */
 export interface SiteContainerPropertiesInput {
@@ -46165,18 +43149,8 @@ export interface WebAppsCreateOrUpdateSiteContainerResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateSiteContainerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteContainerProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateSiteContainerResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateSiteContainerResponse>;
+export const WebAppsCreateOrUpdateSiteContainerResponse =
+  GetWebAppSiteContainerResponse as any as S.Schema<WebAppsCreateOrUpdateSiteContainerResponse>;
 
 export interface WebAppsCreateOrUpdateSiteContainerSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46229,25 +43203,13 @@ export interface WebAppsCreateOrUpdateSiteContainerSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateSiteContainerSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteContainerProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateSiteContainerSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateSiteContainerSlotResponse>;
+export const WebAppsCreateOrUpdateSiteContainerSlotResponse =
+  GetWebAppSiteContainerResponse as any as S.Schema<WebAppsCreateOrUpdateSiteContainerSlotResponse>;
 
 /** Resource tags. */
 export type WebAppsCreateOrUpdateSlotRequestTagsMap = { [key: string]: string | undefined };
-export const WebAppsCreateOrUpdateSlotRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsCreateOrUpdateSlotRequestTagsMap>;
+export const WebAppsCreateOrUpdateSlotRequestTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsCreateOrUpdateSlotRequestTagsMap>;
 
 export interface WebAppsCreateOrUpdateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46297,10 +43259,8 @@ export const WebAppsCreateOrUpdateSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsCreateOrUpdateSlotResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsCreateOrUpdateSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsCreateOrUpdateSlotResponseTagsMap>;
+export const WebAppsCreateOrUpdateSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsCreateOrUpdateSlotResponseTagsMap>;
 
 export interface WebAppsCreateOrUpdateSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -46324,22 +43284,8 @@ export interface WebAppsCreateOrUpdateSlotResponse {
   /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsCreateOrUpdateSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SiteProperties),
-    identity: S.optional(ManagedServiceIdentity),
-    extendedLocation: S.optional(ExtendedLocation),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateSlotResponse>;
+export const WebAppsCreateOrUpdateSlotResponse =
+  WebAppsCreateOrUpdateResponse as any as S.Schema<WebAppsCreateOrUpdateSlotResponse>;
 
 export interface WebAppsCreateOrUpdateSourceControlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46386,18 +43332,8 @@ export interface WebAppsCreateOrUpdateSourceControlResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteSourceControlProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateSourceControlResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateSourceControlResponse>;
+export const WebAppsCreateOrUpdateSourceControlResponse =
+  GetWebAppSourceControlResponse as any as S.Schema<WebAppsCreateOrUpdateSourceControlResponse>;
 
 export interface WebAppsCreateOrUpdateSourceControlSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46447,18 +43383,8 @@ export interface WebAppsCreateOrUpdateSourceControlSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateSourceControlSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SiteSourceControlProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateSourceControlSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateSourceControlSlotResponse>;
+export const WebAppsCreateOrUpdateSourceControlSlotResponse =
+  GetWebAppSourceControlResponse as any as S.Schema<WebAppsCreateOrUpdateSourceControlSlotResponse>;
 
 export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46507,18 +43433,7 @@ export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckResp
   kind?: string;
 }
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(SwiftVirtualNetworkProperties),
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckResponse",
-  }) as any as S.Schema<WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckResponse>;
+  UpdateWebAppSwiftVirtualNetworkConnectionWithCheckSlotResponse as any as S.Schema<WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckResponse>;
 
 export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46570,18 +43485,7 @@ export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlot
   kind?: string;
 }
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(SwiftVirtualNetworkProperties),
-      kind: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotResponse",
-  }) as any as S.Schema<WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotResponse>;
+  UpdateWebAppSwiftVirtualNetworkConnectionWithCheckSlotResponse as any as S.Schema<WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotResponse>;
 
 export interface WebAppsCreateOrUpdateVnetConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46631,18 +43535,8 @@ export interface WebAppsCreateOrUpdateVnetConnectionResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateVnetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetInfo),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateVnetConnectionResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionResponse>;
+export const WebAppsCreateOrUpdateVnetConnectionResponse =
+  GetAppServicePlanVnetFromServerFarmResponse as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionResponse>;
 
 export interface WebAppsCreateOrUpdateVnetConnectionGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46695,18 +43589,8 @@ export interface WebAppsCreateOrUpdateVnetConnectionGatewayResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateVnetConnectionGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetGatewayProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateVnetConnectionGatewayResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionGatewayResponse>;
+export const WebAppsCreateOrUpdateVnetConnectionGatewayResponse =
+  GetAppServicePlanVnetGatewayResponse as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionGatewayResponse>;
 
 export interface WebAppsCreateOrUpdateVnetConnectionGatewaySlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46762,18 +43646,8 @@ export interface WebAppsCreateOrUpdateVnetConnectionGatewaySlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateVnetConnectionGatewaySlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetGatewayProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateVnetConnectionGatewaySlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionGatewaySlotResponse>;
+export const WebAppsCreateOrUpdateVnetConnectionGatewaySlotResponse =
+  GetAppServicePlanVnetGatewayResponse as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionGatewaySlotResponse>;
 
 export interface WebAppsCreateOrUpdateVnetConnectionSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46826,18 +43700,8 @@ export interface WebAppsCreateOrUpdateVnetConnectionSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsCreateOrUpdateVnetConnectionSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VnetInfo),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsCreateOrUpdateVnetConnectionSlotResponse",
-}) as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionSlotResponse>;
+export const WebAppsCreateOrUpdateVnetConnectionSlotResponse =
+  GetAppServicePlanVnetFromServerFarmResponse as any as S.Schema<WebAppsCreateOrUpdateVnetConnectionSlotResponse>;
 
 export interface WebAppsDeletePremierAddOnRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46868,11 +43732,8 @@ export const WebAppsDeletePremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppsDeletePremierAddOnRequest>;
 
 export interface WebAppsDeletePremierAddOnResponse {}
-export const WebAppsDeletePremierAddOnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WebAppsDeletePremierAddOnResponse",
-}) as any as S.Schema<WebAppsDeletePremierAddOnResponse>;
+export const WebAppsDeletePremierAddOnResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<WebAppsDeletePremierAddOnResponse>;
 
 export interface WebAppsDeletePremierAddOnSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46906,11 +43767,8 @@ export const WebAppsDeletePremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<WebAppsDeletePremierAddOnSlotRequest>;
 
 export interface WebAppsDeletePremierAddOnSlotResponse {}
-export const WebAppsDeletePremierAddOnSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WebAppsDeletePremierAddOnSlotResponse",
-}) as any as S.Schema<WebAppsDeletePremierAddOnSlotResponse>;
+export const WebAppsDeletePremierAddOnSlotResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<WebAppsDeletePremierAddOnSlotResponse>;
 
 export interface WebAppsDiscoverBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47013,17 +43871,8 @@ export interface WebAppsDiscoverBackupSlotResponse {
   /** RestoreRequest resource specific properties */
   properties?: RestoreRequestProperties;
 }
-export const WebAppsDiscoverBackupSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RestoreRequestProperties),
-  }),
-).annotate({
-  identifier: "WebAppsDiscoverBackupSlotResponse",
-}) as any as S.Schema<WebAppsDiscoverBackupSlotResponse>;
+export const WebAppsDiscoverBackupSlotResponse =
+  WebAppsDiscoverBackupResponse as any as S.Schema<WebAppsDiscoverBackupSlotResponse>;
 
 export interface WebAppsGetInstanceMSDeployLogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47158,17 +44007,8 @@ export interface WebAppsGetInstanceMSDeployLogSlotResponse {
   /** MSDeployLog resource specific properties */
   properties?: MSDeployLogProperties;
 }
-export const WebAppsGetInstanceMSDeployLogSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(MSDeployLogProperties),
-  }),
-).annotate({
-  identifier: "WebAppsGetInstanceMSDeployLogSlotResponse",
-}) as any as S.Schema<WebAppsGetInstanceMSDeployLogSlotResponse>;
+export const WebAppsGetInstanceMSDeployLogSlotResponse =
+  WebAppsGetInstanceMSDeployLogResponse as any as S.Schema<WebAppsGetInstanceMSDeployLogSlotResponse>;
 
 export interface WebAppsGetInstanceMsDeployStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47212,18 +44052,8 @@ export interface WebAppsGetInstanceMsDeployStatusResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsGetInstanceMsDeployStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MSDeployStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsGetInstanceMsDeployStatusResponse",
-}) as any as S.Schema<WebAppsGetInstanceMsDeployStatusResponse>;
+export const WebAppsGetInstanceMsDeployStatusResponse =
+  WebAppsCreateInstanceMSDeployOperationResponse as any as S.Schema<WebAppsGetInstanceMsDeployStatusResponse>;
 
 export interface WebAppsGetInstanceMsDeployStatusSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47270,18 +44100,8 @@ export interface WebAppsGetInstanceMsDeployStatusSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsGetInstanceMsDeployStatusSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MSDeployStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsGetInstanceMsDeployStatusSlotResponse",
-}) as any as S.Schema<WebAppsGetInstanceMsDeployStatusSlotResponse>;
+export const WebAppsGetInstanceMsDeployStatusSlotResponse =
+  WebAppsCreateInstanceMSDeployOperationResponse as any as S.Schema<WebAppsGetInstanceMsDeployStatusSlotResponse>;
 
 export interface WebAppsGetMigrateMySqlStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47396,18 +44216,8 @@ export interface WebAppsGetMigrateMySqlStatusSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsGetMigrateMySqlStatusSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrateMySqlStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsGetMigrateMySqlStatusSlotResponse",
-}) as any as S.Schema<WebAppsGetMigrateMySqlStatusSlotResponse>;
+export const WebAppsGetMigrateMySqlStatusSlotResponse =
+  WebAppsGetMigrateMySqlStatusResponse as any as S.Schema<WebAppsGetMigrateMySqlStatusSlotResponse>;
 
 export interface WebAppsGetMSDeployLogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47446,17 +44256,8 @@ export interface WebAppsGetMSDeployLogResponse {
   /** MSDeployLog resource specific properties */
   properties?: MSDeployLogProperties;
 }
-export const WebAppsGetMSDeployLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(MSDeployLogProperties),
-  }),
-).annotate({
-  identifier: "WebAppsGetMSDeployLogResponse",
-}) as any as S.Schema<WebAppsGetMSDeployLogResponse>;
+export const WebAppsGetMSDeployLogResponse =
+  WebAppsGetInstanceMSDeployLogResponse as any as S.Schema<WebAppsGetMSDeployLogResponse>;
 
 export interface WebAppsGetMSDeployLogSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47498,17 +44299,8 @@ export interface WebAppsGetMSDeployLogSlotResponse {
   /** MSDeployLog resource specific properties */
   properties?: MSDeployLogProperties;
 }
-export const WebAppsGetMSDeployLogSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kind: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(MSDeployLogProperties),
-  }),
-).annotate({
-  identifier: "WebAppsGetMSDeployLogSlotResponse",
-}) as any as S.Schema<WebAppsGetMSDeployLogSlotResponse>;
+export const WebAppsGetMSDeployLogSlotResponse =
+  WebAppsGetInstanceMSDeployLogResponse as any as S.Schema<WebAppsGetMSDeployLogSlotResponse>;
 
 export interface WebAppsGetMSDeployStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47549,18 +44341,8 @@ export interface WebAppsGetMSDeployStatusResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsGetMSDeployStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MSDeployStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsGetMSDeployStatusResponse",
-}) as any as S.Schema<WebAppsGetMSDeployStatusResponse>;
+export const WebAppsGetMSDeployStatusResponse =
+  WebAppsCreateInstanceMSDeployOperationResponse as any as S.Schema<WebAppsGetMSDeployStatusResponse>;
 
 export interface WebAppsGetMSDeployStatusSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47604,18 +44386,8 @@ export interface WebAppsGetMSDeployStatusSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsGetMSDeployStatusSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MSDeployStatusProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsGetMSDeployStatusSlotResponse",
-}) as any as S.Schema<WebAppsGetMSDeployStatusSlotResponse>;
+export const WebAppsGetMSDeployStatusSlotResponse =
+  WebAppsCreateInstanceMSDeployOperationResponse as any as S.Schema<WebAppsGetMSDeployStatusSlotResponse>;
 
 export interface WebAppsGetOneDeployStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47643,11 +44415,8 @@ export const WebAppsGetOneDeployStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppsGetOneDeployStatusRequest>;
 
 export type WebAppsGetOneDeployStatusResponse = unknown;
-export const WebAppsGetOneDeployStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "WebAppsGetOneDeployStatusResponse",
-}) as any as S.Schema<WebAppsGetOneDeployStatusResponse>;
+export const WebAppsGetOneDeployStatusResponse =
+  DeleteStaticSitePrivateEndpointConnectionResponse as any as S.Schema<WebAppsGetOneDeployStatusResponse>;
 
 export interface WebAppsGetPremierAddOnRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47679,10 +44448,8 @@ export const WebAppsGetPremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsGetPremierAddOnResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsGetPremierAddOnResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsGetPremierAddOnResponseTagsMap>;
+export const WebAppsGetPremierAddOnResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsGetPremierAddOnResponseTagsMap>;
 
 export interface WebAppsGetPremierAddOnResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -47702,20 +44469,8 @@ export interface WebAppsGetPremierAddOnResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsGetPremierAddOnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsGetPremierAddOnResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PremierAddOnProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsGetPremierAddOnResponse",
-}) as any as S.Schema<WebAppsGetPremierAddOnResponse>;
+export const WebAppsGetPremierAddOnResponse =
+  WebAppsAddPremierAddOnResponse as any as S.Schema<WebAppsGetPremierAddOnResponse>;
 
 export interface WebAppsGetPremierAddOnSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47750,10 +44505,8 @@ export const WebAppsGetPremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsGetPremierAddOnSlotResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsGetPremierAddOnSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsGetPremierAddOnSlotResponseTagsMap>;
+export const WebAppsGetPremierAddOnSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsGetPremierAddOnSlotResponseTagsMap>;
 
 export interface WebAppsGetPremierAddOnSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -47773,20 +44526,8 @@ export interface WebAppsGetPremierAddOnSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsGetPremierAddOnSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsGetPremierAddOnSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PremierAddOnProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsGetPremierAddOnSlotResponse",
-}) as any as S.Schema<WebAppsGetPremierAddOnSlotResponse>;
+export const WebAppsGetPremierAddOnSlotResponse =
+  WebAppsAddPremierAddOnResponse as any as S.Schema<WebAppsGetPremierAddOnSlotResponse>;
 
 export interface WebAppsGetPrivateEndpointConnectionListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47894,15 +44635,13 @@ export const SiteCloneabilityBlockingFeaturesList = /*@__PURE__*/ S.Array(
 
 /** List of features enabled on app that are non-blocking but cannot be cloned. The app can still be cloned but the features in this list will not be set up on cloned app. */
 export type SiteCloneabilityUnsupportedFeaturesList = Array<SiteCloneabilityCriterion>;
-export const SiteCloneabilityUnsupportedFeaturesList = /*@__PURE__*/ S.Array(
-  SiteCloneabilityCriterion,
-) as any as S.Schema<SiteCloneabilityUnsupportedFeaturesList>;
+export const SiteCloneabilityUnsupportedFeaturesList =
+  SiteCloneabilityBlockingFeaturesList as any as S.Schema<SiteCloneabilityUnsupportedFeaturesList>;
 
 /** List of blocking application characteristics. */
 export type SiteCloneabilityBlockingCharacteristicsList = Array<SiteCloneabilityCriterion>;
-export const SiteCloneabilityBlockingCharacteristicsList = /*@__PURE__*/ S.Array(
-  SiteCloneabilityCriterion,
-) as any as S.Schema<SiteCloneabilityBlockingCharacteristicsList>;
+export const SiteCloneabilityBlockingCharacteristicsList =
+  SiteCloneabilityBlockingFeaturesList as any as S.Schema<SiteCloneabilityBlockingCharacteristicsList>;
 
 /** Represents whether or not an app is cloneable. */
 export interface SiteCloneability {
@@ -47979,10 +44718,8 @@ export const WebAppsListPremierAddOnsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsListPremierAddOnsResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsListPremierAddOnsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsListPremierAddOnsResponseTagsMap>;
+export const WebAppsListPremierAddOnsResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsListPremierAddOnsResponseTagsMap>;
 
 export interface WebAppsListPremierAddOnsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -48002,20 +44739,8 @@ export interface WebAppsListPremierAddOnsResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsListPremierAddOnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsListPremierAddOnsResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PremierAddOnProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsListPremierAddOnsResponse",
-}) as any as S.Schema<WebAppsListPremierAddOnsResponse>;
+export const WebAppsListPremierAddOnsResponse =
+  WebAppsAddPremierAddOnResponse as any as S.Schema<WebAppsListPremierAddOnsResponse>;
 
 export interface WebAppsListPremierAddOnsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -48047,10 +44772,8 @@ export const WebAppsListPremierAddOnsSlotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsListPremierAddOnsSlotResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsListPremierAddOnsSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsListPremierAddOnsSlotResponseTagsMap>;
+export const WebAppsListPremierAddOnsSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsListPremierAddOnsSlotResponseTagsMap>;
 
 export interface WebAppsListPremierAddOnsSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -48070,20 +44793,8 @@ export interface WebAppsListPremierAddOnsSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsListPremierAddOnsSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsListPremierAddOnsSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PremierAddOnProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsListPremierAddOnsSlotResponse",
-}) as any as S.Schema<WebAppsListPremierAddOnsSlotResponse>;
+export const WebAppsListPremierAddOnsSlotResponse =
+  WebAppsAddPremierAddOnResponse as any as S.Schema<WebAppsListPremierAddOnsSlotResponse>;
 
 /** PremierAddOnPatchResource resource specific properties */
 export type PremierAddOnPatchResourceProperties = PremierAddOnProperties;
@@ -48125,10 +44836,8 @@ export const WebAppsUpdatePremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebAppsUpdatePremierAddOnResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsUpdatePremierAddOnResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsUpdatePremierAddOnResponseTagsMap>;
+export const WebAppsUpdatePremierAddOnResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsUpdatePremierAddOnResponseTagsMap>;
 
 export interface WebAppsUpdatePremierAddOnResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -48148,20 +44857,8 @@ export interface WebAppsUpdatePremierAddOnResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsUpdatePremierAddOnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsUpdatePremierAddOnResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PremierAddOnProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsUpdatePremierAddOnResponse",
-}) as any as S.Schema<WebAppsUpdatePremierAddOnResponse>;
+export const WebAppsUpdatePremierAddOnResponse =
+  WebAppsAddPremierAddOnResponse as any as S.Schema<WebAppsUpdatePremierAddOnResponse>;
 
 export interface WebAppsUpdatePremierAddOnSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -48202,10 +44899,8 @@ export const WebAppsUpdatePremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type WebAppsUpdatePremierAddOnSlotResponseTagsMap = { [key: string]: string | undefined };
-export const WebAppsUpdatePremierAddOnSlotResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebAppsUpdatePremierAddOnSlotResponseTagsMap>;
+export const WebAppsUpdatePremierAddOnSlotResponseTagsMap =
+  AiGatewaysCreateOrUpdateRequestTagsMap as any as S.Schema<WebAppsUpdatePremierAddOnSlotResponseTagsMap>;
 
 export interface WebAppsUpdatePremierAddOnSlotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -48225,20 +44920,8 @@ export interface WebAppsUpdatePremierAddOnSlotResponse {
   /** Kind of resource. */
   kind?: string;
 }
-export const WebAppsUpdatePremierAddOnSlotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebAppsUpdatePremierAddOnSlotResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PremierAddOnProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebAppsUpdatePremierAddOnSlotResponse",
-}) as any as S.Schema<WebAppsUpdatePremierAddOnSlotResponse>;
+export const WebAppsUpdatePremierAddOnSlotResponse =
+  WebAppsAddPremierAddOnResponse as any as S.Schema<WebAppsUpdatePremierAddOnSlotResponse>;
 
 export interface WorkflowTriggerHistoriesResubmitRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -48275,11 +44958,8 @@ export const WorkflowTriggerHistoriesResubmitRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<WorkflowTriggerHistoriesResubmitRequest>;
 
 export interface WorkflowTriggerHistoriesResubmitResponse {}
-export const WorkflowTriggerHistoriesResubmitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WorkflowTriggerHistoriesResubmitResponse",
-}) as any as S.Schema<WorkflowTriggerHistoriesResubmitResponse>;
+export const WorkflowTriggerHistoriesResubmitResponse =
+  ApplyWebAppSlotConfigToProductionResponse as any as S.Schema<WorkflowTriggerHistoriesResubmitResponse>;
 
 export type AiGatewaysCreateOrUpdateError = AzureOpError;
 /** Create a AiGateway */

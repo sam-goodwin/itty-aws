@@ -428,9 +428,7 @@ export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTableRequest" }) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
-export const DeleteTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableResponse",
-}) as any as S.Schema<DeleteTableResponse>;
+export const DeleteTableResponse = DeleteNamespaceResponse as any as S.Schema<DeleteTableResponse>;
 export interface DeleteTableBucketRequest {
   tableBucketARN: string;
 }
@@ -447,9 +445,8 @@ export const DeleteTableBucketRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTableBucketRequest" }) as any as S.Schema<DeleteTableBucketRequest>;
 export interface DeleteTableBucketResponse {}
-export const DeleteTableBucketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableBucketResponse",
-}) as any as S.Schema<DeleteTableBucketResponse>;
+export const DeleteTableBucketResponse =
+  DeleteNamespaceResponse as any as S.Schema<DeleteTableBucketResponse>;
 export interface DeleteTableBucketEncryptionRequest {
   tableBucketARN: string;
 }
@@ -491,11 +488,8 @@ export const DeleteTableBucketMetricsConfigurationRequest = /*@__PURE__*/ S.susp
   identifier: "DeleteTableBucketMetricsConfigurationRequest",
 }) as any as S.Schema<DeleteTableBucketMetricsConfigurationRequest>;
 export interface DeleteTableBucketMetricsConfigurationResponse {}
-export const DeleteTableBucketMetricsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTableBucketMetricsConfigurationResponse",
-}) as any as S.Schema<DeleteTableBucketMetricsConfigurationResponse>;
+export const DeleteTableBucketMetricsConfigurationResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<DeleteTableBucketMetricsConfigurationResponse>;
 export interface DeleteTableBucketPolicyRequest {
   tableBucketARN: string;
 }
@@ -539,11 +533,8 @@ export const DeleteTableBucketReplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTableBucketReplicationRequest",
 }) as any as S.Schema<DeleteTableBucketReplicationRequest>;
 export interface DeleteTableBucketReplicationResponse {}
-export const DeleteTableBucketReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTableBucketReplicationResponse",
-}) as any as S.Schema<DeleteTableBucketReplicationResponse>;
+export const DeleteTableBucketReplicationResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<DeleteTableBucketReplicationResponse>;
 export interface DeleteTablePolicyRequest {
   tableBucketARN: string;
   namespace: string;
@@ -566,9 +557,8 @@ export const DeleteTablePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTablePolicyRequest" }) as any as S.Schema<DeleteTablePolicyRequest>;
 export interface DeleteTablePolicyResponse {}
-export const DeleteTablePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTablePolicyResponse",
-}) as any as S.Schema<DeleteTablePolicyResponse>;
+export const DeleteTablePolicyResponse =
+  DeleteNamespaceResponse as any as S.Schema<DeleteTablePolicyResponse>;
 export interface DeleteTableReplicationRequest {
   tableArn: string;
   versionToken: string;
@@ -584,9 +574,8 @@ export const DeleteTableReplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTableReplicationRequest",
 }) as any as S.Schema<DeleteTableReplicationRequest>;
 export interface DeleteTableReplicationResponse {}
-export const DeleteTableReplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableReplicationResponse",
-}) as any as S.Schema<DeleteTableReplicationResponse>;
+export const DeleteTableReplicationResponse =
+  DeleteNamespaceResponse as any as S.Schema<DeleteTableReplicationResponse>;
 export interface GetNamespaceRequest {
   tableBucketARN: string;
   namespace: string;
@@ -985,11 +974,8 @@ export const GetTableEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTableEncryptionResponse {
   encryptionConfiguration: EncryptionConfiguration;
 }
-export const GetTableEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ encryptionConfiguration: EncryptionConfiguration }),
-).annotate({
-  identifier: "GetTableEncryptionResponse",
-}) as any as S.Schema<GetTableEncryptionResponse>;
+export const GetTableEncryptionResponse =
+  GetTableBucketEncryptionResponse as any as S.Schema<GetTableEncryptionResponse>;
 export interface GetTableMaintenanceConfigurationRequest {
   tableBucketARN: string;
   namespace: string;
@@ -1425,11 +1411,8 @@ export const GetTableStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTableStorageClassResponse {
   storageClassConfiguration: StorageClassConfiguration;
 }
-export const GetTableStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ storageClassConfiguration: StorageClassConfiguration }),
-).annotate({
-  identifier: "GetTableStorageClassResponse",
-}) as any as S.Schema<GetTableStorageClassResponse>;
+export const GetTableStorageClassResponse =
+  GetTableBucketStorageClassResponse as any as S.Schema<GetTableStorageClassResponse>;
 export type NextToken = string;
 export type ListNamespacesLimit = number;
 export interface ListNamespacesRequest {
@@ -1463,16 +1446,7 @@ export interface NamespaceSummary {
   namespaceId?: string;
   tableBucketId?: string;
 }
-export const NamespaceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: NamespaceList,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    ownerAccountId: S.String,
-    namespaceId: S.optional(S.String),
-    tableBucketId: S.optional(S.String),
-  }),
-).annotate({ identifier: "NamespaceSummary" }) as any as S.Schema<NamespaceSummary>;
+export const NamespaceSummary = GetNamespaceResponse as any as S.Schema<NamespaceSummary>;
 export type NamespaceSummaryList = NamespaceSummary[];
 export const NamespaceSummaryList = /*@__PURE__*/ S.Array(NamespaceSummary);
 export interface ListNamespacesResponse {
@@ -1505,16 +1479,7 @@ export interface TableBucketSummary {
   tableBucketId?: string;
   type?: TableBucketType;
 }
-export const TableBucketSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.String,
-    ownerAccountId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    tableBucketId: S.optional(S.String),
-    type: S.optional(TableBucketType),
-  }),
-).annotate({ identifier: "TableBucketSummary" }) as any as S.Schema<TableBucketSummary>;
+export const TableBucketSummary = GetTableBucketResponse as any as S.Schema<TableBucketSummary>;
 export type TableBucketSummaryList = TableBucketSummary[];
 export const TableBucketSummaryList = /*@__PURE__*/ S.Array(TableBucketSummary);
 export interface ListTableBucketsResponse {
@@ -1617,11 +1582,8 @@ export const PutTableBucketEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTableBucketEncryptionRequest",
 }) as any as S.Schema<PutTableBucketEncryptionRequest>;
 export interface PutTableBucketEncryptionResponse {}
-export const PutTableBucketEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutTableBucketEncryptionResponse",
-}) as any as S.Schema<PutTableBucketEncryptionResponse>;
+export const PutTableBucketEncryptionResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketEncryptionResponse>;
 export interface PutTableBucketMaintenanceConfigurationRequest {
   tableBucketARN: string;
   type: TableBucketMaintenanceType;
@@ -1646,11 +1608,8 @@ export const PutTableBucketMaintenanceConfigurationRequest = /*@__PURE__*/ S.sus
   identifier: "PutTableBucketMaintenanceConfigurationRequest",
 }) as any as S.Schema<PutTableBucketMaintenanceConfigurationRequest>;
 export interface PutTableBucketMaintenanceConfigurationResponse {}
-export const PutTableBucketMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutTableBucketMaintenanceConfigurationResponse",
-}) as any as S.Schema<PutTableBucketMaintenanceConfigurationResponse>;
+export const PutTableBucketMaintenanceConfigurationResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketMaintenanceConfigurationResponse>;
 export interface PutTableBucketMetricsConfigurationRequest {
   tableBucketARN: string;
 }
@@ -1669,11 +1628,8 @@ export const PutTableBucketMetricsConfigurationRequest = /*@__PURE__*/ S.suspend
   identifier: "PutTableBucketMetricsConfigurationRequest",
 }) as any as S.Schema<PutTableBucketMetricsConfigurationRequest>;
 export interface PutTableBucketMetricsConfigurationResponse {}
-export const PutTableBucketMetricsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutTableBucketMetricsConfigurationResponse",
-}) as any as S.Schema<PutTableBucketMetricsConfigurationResponse>;
+export const PutTableBucketMetricsConfigurationResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketMetricsConfigurationResponse>;
 export interface PutTableBucketPolicyRequest {
   tableBucketARN: string;
   resourcePolicy: string;
@@ -1696,9 +1652,8 @@ export const PutTableBucketPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTableBucketPolicyRequest",
 }) as any as S.Schema<PutTableBucketPolicyRequest>;
 export interface PutTableBucketPolicyResponse {}
-export const PutTableBucketPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTableBucketPolicyResponse",
-}) as any as S.Schema<PutTableBucketPolicyResponse>;
+export const PutTableBucketPolicyResponse =
+  DeleteNamespaceResponse as any as S.Schema<PutTableBucketPolicyResponse>;
 export interface PutTableBucketReplicationRequest {
   tableBucketARN: string;
   versionToken?: string;
@@ -1753,11 +1708,8 @@ export const PutTableBucketStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTableBucketStorageClassRequest",
 }) as any as S.Schema<PutTableBucketStorageClassRequest>;
 export interface PutTableBucketStorageClassResponse {}
-export const PutTableBucketStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutTableBucketStorageClassResponse",
-}) as any as S.Schema<PutTableBucketStorageClassResponse>;
+export const PutTableBucketStorageClassResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableBucketStorageClassResponse>;
 export interface PutTableMaintenanceConfigurationRequest {
   tableBucketARN: string;
   namespace: string;
@@ -1789,11 +1741,8 @@ export const PutTableMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend((
   identifier: "PutTableMaintenanceConfigurationRequest",
 }) as any as S.Schema<PutTableMaintenanceConfigurationRequest>;
 export interface PutTableMaintenanceConfigurationResponse {}
-export const PutTableMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutTableMaintenanceConfigurationResponse",
-}) as any as S.Schema<PutTableMaintenanceConfigurationResponse>;
+export const PutTableMaintenanceConfigurationResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableMaintenanceConfigurationResponse>;
 export interface PutTablePolicyRequest {
   tableBucketARN: string;
   namespace: string;
@@ -1818,9 +1767,8 @@ export const PutTablePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutTablePolicyRequest" }) as any as S.Schema<PutTablePolicyRequest>;
 export interface PutTablePolicyResponse {}
-export const PutTablePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTablePolicyResponse",
-}) as any as S.Schema<PutTablePolicyResponse>;
+export const PutTablePolicyResponse =
+  DeleteNamespaceResponse as any as S.Schema<PutTablePolicyResponse>;
 export interface PutTableRecordExpirationConfigurationRequest {
   tableArn: string;
   value: TableRecordExpirationConfigurationValue;
@@ -1836,11 +1784,8 @@ export const PutTableRecordExpirationConfigurationRequest = /*@__PURE__*/ S.susp
   identifier: "PutTableRecordExpirationConfigurationRequest",
 }) as any as S.Schema<PutTableRecordExpirationConfigurationRequest>;
 export interface PutTableRecordExpirationConfigurationResponse {}
-export const PutTableRecordExpirationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutTableRecordExpirationConfigurationResponse",
-}) as any as S.Schema<PutTableRecordExpirationConfigurationResponse>;
+export const PutTableRecordExpirationConfigurationResponse =
+  DeleteTableBucketEncryptionResponse as any as S.Schema<PutTableRecordExpirationConfigurationResponse>;
 export interface PutTableReplicationRequest {
   tableArn: string;
   versionToken?: string;
@@ -1861,11 +1806,8 @@ export interface PutTableReplicationResponse {
   versionToken: string;
   status: string;
 }
-export const PutTableReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ versionToken: S.String, status: S.String }),
-).annotate({
-  identifier: "PutTableReplicationResponse",
-}) as any as S.Schema<PutTableReplicationResponse>;
+export const PutTableReplicationResponse =
+  PutTableBucketReplicationResponse as any as S.Schema<PutTableReplicationResponse>;
 export interface RenameTableRequest {
   tableBucketARN: string;
   namespace: string;
@@ -1894,9 +1836,7 @@ export const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RenameTableRequest" }) as any as S.Schema<RenameTableRequest>;
 export interface RenameTableResponse {}
-export const RenameTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RenameTableResponse",
-}) as any as S.Schema<RenameTableResponse>;
+export const RenameTableResponse = DeleteNamespaceResponse as any as S.Schema<RenameTableResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1907,11 +1847,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteNamespaceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = NamespaceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1925,9 +1863,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteNamespaceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateTableMetadataLocationRequest {
   tableBucketARN: string;
   namespace: string;

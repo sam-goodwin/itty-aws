@@ -285,16 +285,12 @@ export const BatchAssociateClientDeviceWithCoreDeviceResponse = /*@__PURE__*/ S.
 export interface DisassociateClientDeviceFromCoreDeviceEntry {
   thingName: string;
 }
-export const DisassociateClientDeviceFromCoreDeviceEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ thingName: S.String }),
-).annotate({
-  identifier: "DisassociateClientDeviceFromCoreDeviceEntry",
-}) as any as S.Schema<DisassociateClientDeviceFromCoreDeviceEntry>;
+export const DisassociateClientDeviceFromCoreDeviceEntry =
+  AssociateClientDeviceWithCoreDeviceEntry as any as S.Schema<DisassociateClientDeviceFromCoreDeviceEntry>;
 export type DisassociateClientDeviceFromCoreDeviceEntryList =
   DisassociateClientDeviceFromCoreDeviceEntry[];
-export const DisassociateClientDeviceFromCoreDeviceEntryList = /*@__PURE__*/ S.Array(
-  DisassociateClientDeviceFromCoreDeviceEntry,
-);
+export const DisassociateClientDeviceFromCoreDeviceEntryList =
+  AssociateClientDeviceWithCoreDeviceEntryList as any as S.Schema<DisassociateClientDeviceFromCoreDeviceEntryList>;
 export interface BatchDisassociateClientDeviceFromCoreDeviceRequest {
   entries?: DisassociateClientDeviceFromCoreDeviceEntry[];
   coreDeviceThingName: string;
@@ -324,28 +320,17 @@ export interface DisassociateClientDeviceFromCoreDeviceErrorEntry {
   code?: string;
   message?: string;
 }
-export const DisassociateClientDeviceFromCoreDeviceErrorEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thingName: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisassociateClientDeviceFromCoreDeviceErrorEntry",
-}) as any as S.Schema<DisassociateClientDeviceFromCoreDeviceErrorEntry>;
+export const DisassociateClientDeviceFromCoreDeviceErrorEntry =
+  AssociateClientDeviceWithCoreDeviceErrorEntry as any as S.Schema<DisassociateClientDeviceFromCoreDeviceErrorEntry>;
 export type DisassociateClientDeviceFromCoreDeviceErrorList =
   DisassociateClientDeviceFromCoreDeviceErrorEntry[];
-export const DisassociateClientDeviceFromCoreDeviceErrorList = /*@__PURE__*/ S.Array(
-  DisassociateClientDeviceFromCoreDeviceErrorEntry,
-);
+export const DisassociateClientDeviceFromCoreDeviceErrorList =
+  AssociateClientDeviceWithCoreDeviceErrorList as any as S.Schema<DisassociateClientDeviceFromCoreDeviceErrorList>;
 export interface BatchDisassociateClientDeviceFromCoreDeviceResponse {
   errorEntries?: DisassociateClientDeviceFromCoreDeviceErrorEntry[];
 }
-export const BatchDisassociateClientDeviceFromCoreDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ errorEntries: S.optional(DisassociateClientDeviceFromCoreDeviceErrorList) }),
-).annotate({
-  identifier: "BatchDisassociateClientDeviceFromCoreDeviceResponse",
-}) as any as S.Schema<BatchDisassociateClientDeviceFromCoreDeviceResponse>;
+export const BatchDisassociateClientDeviceFromCoreDeviceResponse =
+  BatchAssociateClientDeviceWithCoreDeviceResponse as any as S.Schema<BatchDisassociateClientDeviceFromCoreDeviceResponse>;
 export interface CancelDeploymentRequest {
   deploymentId: string;
 }
@@ -426,10 +411,8 @@ export type LambdaExecArg = string;
 export type LambdaExecArgsList = string[];
 export const LambdaExecArgsList = /*@__PURE__*/ S.Array(S.String);
 export type LambdaEnvironmentVariables = { [key: string]: string | undefined };
-export const LambdaEnvironmentVariables = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const LambdaEnvironmentVariables =
+  PlatformAttributesMap as any as S.Schema<LambdaEnvironmentVariables>;
 export type LambdaIsolationMode = "GreengrassContainer" | "NoContainer" | (string & {});
 export const LambdaIsolationMode = S.String;
 
@@ -582,7 +565,7 @@ export type CloudComponentState =
 export const CloudComponentState = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const StringMap = TagMap as any as S.Schema<StringMap>;
 export type VendorGuidance = "ACTIVE" | "DISCONTINUED" | "DELETED" | (string & {});
 export const VendorGuidance = S.String;
 
@@ -625,7 +608,8 @@ export type DeploymentNameString = string;
 export type ComponentConfigurationString = string;
 export type ComponentConfigurationPath = string;
 export type ComponentConfigurationPathList = string[];
-export const ComponentConfigurationPathList = /*@__PURE__*/ S.Array(S.String);
+export const ComponentConfigurationPathList =
+  LambdaExecArgsList as any as S.Schema<ComponentConfigurationPathList>;
 export interface ComponentConfigurationUpdate {
   merge?: string;
   reset?: string[];
@@ -897,9 +881,8 @@ export const DeleteCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCoreDeviceRequest" }) as any as S.Schema<DeleteCoreDeviceRequest>;
 export interface DeleteCoreDeviceResponse {}
-export const DeleteCoreDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCoreDeviceResponse",
-}) as any as S.Schema<DeleteCoreDeviceResponse>;
+export const DeleteCoreDeviceResponse =
+  DeleteComponentResponse as any as S.Schema<DeleteCoreDeviceResponse>;
 export interface DeleteDeploymentRequest {
   deploymentId: string;
 }
@@ -916,9 +899,8 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeploymentResponse",
-}) as any as S.Schema<DeleteDeploymentResponse>;
+export const DeleteDeploymentResponse =
+  DeleteComponentResponse as any as S.Schema<DeleteDeploymentResponse>;
 export interface DescribeComponentRequest {
   arn: string;
 }
@@ -1553,10 +1535,12 @@ export const EffectiveDeploymentExecutionStatus = S.String;
 export type Reason = string;
 export type EffectiveDeploymentErrorCode = string;
 export type EffectiveDeploymentErrorStack = string[];
-export const EffectiveDeploymentErrorStack = /*@__PURE__*/ S.Array(S.String);
+export const EffectiveDeploymentErrorStack =
+  LambdaExecArgsList as any as S.Schema<EffectiveDeploymentErrorStack>;
 export type EffectiveDeploymentErrorType = string;
 export type EffectiveDeploymentErrorTypeList = string[];
-export const EffectiveDeploymentErrorTypeList = /*@__PURE__*/ S.Array(S.String);
+export const EffectiveDeploymentErrorTypeList =
+  LambdaExecArgsList as any as S.Schema<EffectiveDeploymentErrorTypeList>;
 export interface EffectiveDeploymentStatusDetails {
   errorStack?: string[];
   errorTypes?: string[];
@@ -1660,7 +1644,8 @@ export type LifecycleStateDetails = string;
 export type IsRoot = boolean;
 export type InstalledComponentLifecycleStatusCode = string;
 export type InstalledComponentLifecycleStatusCodeList = string[];
-export const InstalledComponentLifecycleStatusCodeList = /*@__PURE__*/ S.Array(S.String);
+export const InstalledComponentLifecycleStatusCodeList =
+  LambdaExecArgsList as any as S.Schema<InstalledComponentLifecycleStatusCodeList>;
 export interface InstalledComponent {
   componentName?: string;
   componentVersion?: string;
@@ -1719,10 +1704,8 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type ComponentVersionRequirementMap = { [key: string]: string | undefined };
-export const ComponentVersionRequirementMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ComponentVersionRequirementMap =
+  PlatformAttributesMap as any as S.Schema<ComponentVersionRequirementMap>;
 export interface ComponentCandidate {
   componentName?: string;
   componentVersion?: string;
@@ -1796,11 +1779,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteComponentResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = LambdaExecArgsList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1814,9 +1795,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteComponentResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectivityInfoRequest {
   thingName: string;
   connectivityInfo: ConnectivityInfo[];

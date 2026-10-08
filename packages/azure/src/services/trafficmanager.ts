@@ -495,9 +495,8 @@ export const GetHeatMapRequestTopLeftList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetHeatMapRequestTopLeftList>;
 
 export type GetHeatMapRequestBotRightList = Array<number>;
-export const GetHeatMapRequestBotRightList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetHeatMapRequestBotRightList>;
+export const GetHeatMapRequestBotRightList =
+  GetHeatMapRequestTopLeftList as any as S.Schema<GetHeatMapRequestBotRightList>;
 
 export interface GetHeatMapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -719,9 +718,8 @@ export const MonitorConfigCustomHeadersItem = EndpointPropertiesCustomHeadersIte
 
 /** List of custom headers. */
 export type MonitorConfigCustomHeadersList = Array<EndpointPropertiesCustomHeadersItem>;
-export const MonitorConfigCustomHeadersList = /*@__PURE__*/ S.Array(
-  EndpointPropertiesCustomHeadersItem,
-) as any as S.Schema<MonitorConfigCustomHeadersList>;
+export const MonitorConfigCustomHeadersList =
+  EndpointPropertiesCustomHeadersList as any as S.Schema<MonitorConfigCustomHeadersList>;
 
 /** Min and max value of a status code range. */
 export interface MonitorConfigExpectedStatusCodeRangesItem {
@@ -792,14 +790,7 @@ export interface Endpoint {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
+export const Endpoint = GetEndpointResponse as any as S.Schema<Endpoint>;
 
 /** The list of endpoints in the Traffic Manager profile. */
 export type ProfilePropertiesEndpointsList = Array<Endpoint>;
@@ -960,10 +951,7 @@ export const ListProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
-export const ProfileTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTagsMap>;
+export const ProfileTagsMap = GetProfileResponseTagsMap as any as S.Schema<ProfileTagsMap>;
 
 /** Class representing a Traffic Manager profile. */
 export interface Profile {
@@ -980,16 +968,7 @@ export interface Profile {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfileProperties;
 }
-export const Profile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ProfileTagsMap),
-    location: S.optional(S.String),
-    properties: S.optional(ProfileProperties),
-  }),
-).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
+export const Profile = GetProfileResponse as any as S.Schema<Profile>;
 
 /** The Profile items on this page */
 export type ProfileListResultValueList = Array<Profile>;
@@ -1032,10 +1011,8 @@ export const ListProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProfilesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfilesCreateOrUpdateRequestTagsMap>;
+export const ProfilesCreateOrUpdateRequestTagsMap =
+  GetProfileResponseTagsMap as any as S.Schema<ProfilesCreateOrUpdateRequestTagsMap>;
 
 /** Class containing DNS settings in a Traffic Manager profile. */
 export interface DnsConfigInput {
@@ -1053,17 +1030,15 @@ export const DnsConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of endpoints in the Traffic Manager profile. */
 export type ProfilePropertiesInputEndpointsList = Array<Endpoint>;
-export const ProfilePropertiesInputEndpointsList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Schema<ProfilePropertiesInputEndpointsList>;
+export const ProfilePropertiesInputEndpointsList =
+  ProfilePropertiesEndpointsList as any as S.Schema<ProfilePropertiesInputEndpointsList>;
 
 /** The list of allowed endpoint record types. */
 export type ProfilePropertiesInputAllowedEndpointRecordTypesList = Array<
   AllowedEndpointRecordType | (string & {})
 >;
-export const ProfilePropertiesInputAllowedEndpointRecordTypesList = /*@__PURE__*/ S.Array(
-  AllowedEndpointRecordType,
-) as any as S.Schema<ProfilePropertiesInputAllowedEndpointRecordTypesList>;
+export const ProfilePropertiesInputAllowedEndpointRecordTypesList =
+  ProfilePropertiesAllowedEndpointRecordTypesList as any as S.Schema<ProfilePropertiesInputAllowedEndpointRecordTypesList>;
 
 /** Class representing the Traffic Manager profile properties. */
 export interface ProfilePropertiesInput {
@@ -1145,10 +1120,8 @@ export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProfilesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ProfilesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfilesCreateOrUpdateResponseTagsMap>;
+export const ProfilesCreateOrUpdateResponseTagsMap =
+  GetProfileResponseTagsMap as any as S.Schema<ProfilesCreateOrUpdateResponseTagsMap>;
 
 export interface ProfilesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
@@ -1206,16 +1179,8 @@ export interface TrafficManagerUserMetricsKeysCreateOrUpdateResponse {
   /** The properties of the Traffic Manager User Metrics. */
   properties?: UserMetricsProperties;
 }
-export const TrafficManagerUserMetricsKeysCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UserMetricsProperties),
-  }),
-).annotate({
-  identifier: "TrafficManagerUserMetricsKeysCreateOrUpdateResponse",
-}) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateResponse>;
+export const TrafficManagerUserMetricsKeysCreateOrUpdateResponse =
+  GetTrafficManagerUserMetricsKeyResponse as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateResponse>;
 
 export type UpdateEndpointRequestEndpointType =
   | "AzureEndpoints"
@@ -1274,21 +1239,13 @@ export interface UpdateEndpointResponse {
   /** The properties of the Traffic Manager endpoint. */
   properties?: EndpointProperties;
 }
-export const UpdateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({ identifier: "UpdateEndpointResponse" }) as any as S.Schema<UpdateEndpointResponse>;
+export const UpdateEndpointResponse =
+  GetEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
 
 /** Resource tags. */
 export type UpdateProfileRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateProfileRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProfileRequestTagsMap>;
+export const UpdateProfileRequestTagsMap =
+  GetProfileResponseTagsMap as any as S.Schema<UpdateProfileRequestTagsMap>;
 
 export interface UpdateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1333,10 +1290,8 @@ export const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateProfileResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProfileResponseTagsMap>;
+export const UpdateProfileResponseTagsMap =
+  GetProfileResponseTagsMap as any as S.Schema<UpdateProfileResponseTagsMap>;
 
 export interface UpdateProfileResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
@@ -1352,16 +1307,7 @@ export interface UpdateProfileResponse {
   /** The properties of the Traffic Manager profile. */
   properties?: ProfileProperties;
 }
-export const UpdateProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateProfileResponseTagsMap),
-    location: S.optional(S.String),
-    properties: S.optional(ProfileProperties),
-  }),
-).annotate({ identifier: "UpdateProfileResponse" }) as any as S.Schema<UpdateProfileResponse>;
+export const UpdateProfileResponse = GetProfileResponse as any as S.Schema<UpdateProfileResponse>;
 
 export type CheckProfileTrafficManagerNameAvailabilityV2Error = AzureOpError;
 /** Checks the availability of a Traffic Manager Relative DNS name. */

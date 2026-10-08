@@ -482,11 +482,7 @@ export interface RemoveGranteesRequest {
   /** Required. IAM principal that should be revoked from Fine Grained Access to the underlying data goverened by the data policy. The target data policy is determined by the `data_policy` field. Uses the [IAM V2 principal syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2). Supported principal types: * User * Group * Service account */
   grantees?: StringList;
 }
-export const RemoveGranteesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grantees: S.optional(StringList),
-  }),
-).annotate({ identifier: "RemoveGranteesRequest" }) as any as S.Schema<RemoveGranteesRequest>;
+export const RemoveGranteesRequest = AddGranteesRequest as any as S.Schema<RemoveGranteesRequest>;
 
 export interface RemoveGranteesProjectsLocationsDataPoliciesRequest {
   /** Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`. */
@@ -583,13 +579,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export type AddGranteesProjectsLocationsDataPoliciesError =
   | NotFound

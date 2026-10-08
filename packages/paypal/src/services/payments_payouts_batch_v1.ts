@@ -263,9 +263,8 @@ export const Error = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutItemDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const PayoutItemDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<PayoutItemDefinitionsLinkDescriptionList>;
+export const PayoutItemDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<PayoutItemDefinitionsLinkDescriptionList>;
 
 /** The payout item status and other details. A <code>payout_item_id</code> helps you identify denied payments. If a payment is denied, you can use the <code>payout_item_id</code> to identify the payment even if it lacks a <code>transaction_id</code>. */
 export interface PayoutItem {
@@ -395,9 +394,8 @@ export const PayoutBatchHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutBatchItemsDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const PayoutBatchItemsDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<PayoutBatchItemsDefinitionsLinkDescriptionList>;
+export const PayoutBatchItemsDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<PayoutBatchItemsDefinitionsLinkDescriptionList>;
 
 /** The payout item status and other details. */
 export interface PayoutBatchItems {
@@ -445,9 +443,8 @@ export const PayoutBatchItemsList = /*@__PURE__*/ S.Array(
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutBatchDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const PayoutBatchDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<PayoutBatchDefinitionsLinkDescriptionList>;
+export const PayoutBatchDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<PayoutBatchDefinitionsLinkDescriptionList>;
 
 /** The PayPal-generated batch status. */
 export interface PayoutBatch {
@@ -631,9 +628,8 @@ export const PayoutHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<DefinitionsLinkDescriptionList>;
+export const DefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
 
 /** The create payout response. */
 export interface Payout {

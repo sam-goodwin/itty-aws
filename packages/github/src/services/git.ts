@@ -354,13 +354,7 @@ export interface GitTagTagger {
   email: string;
   name: string;
 }
-export const GitTagTagger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.String,
-    email: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "GitTagTagger" }) as any as S.Schema<GitTagTagger>;
+export const GitTagTagger = GitCommitAuthor as any as S.Schema<GitTagTagger>;
 
 export interface GitTagObject {
   sha: string;

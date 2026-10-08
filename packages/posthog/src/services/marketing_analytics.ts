@@ -1418,10 +1418,8 @@ export const ConversionGoalFilter2PropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConversionGoalFilter2PropertiesList>;
 
 export type ConversionGoalFilter2ResponseMap = { [key: string]: unknown | undefined };
-export const ConversionGoalFilter2ResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversionGoalFilter2ResponseMap>;
+export const ConversionGoalFilter2ResponseMap =
+  ConversionGoalFilter1ResponseMap as any as S.Schema<ConversionGoalFilter2ResponseMap>;
 
 export type ConversionGoalFilter2SchemaMapValue = string | unknown;
 export const ConversionGoalFilter2SchemaMapValue =
@@ -1568,10 +1566,8 @@ export const ConversionGoalFilter3PropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConversionGoalFilter3PropertiesList>;
 
 export type ConversionGoalFilter3ResponseMap = { [key: string]: unknown | undefined };
-export const ConversionGoalFilter3ResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversionGoalFilter3ResponseMap>;
+export const ConversionGoalFilter3ResponseMap =
+  ConversionGoalFilter1ResponseMap as any as S.Schema<ConversionGoalFilter3ResponseMap>;
 
 export type ConversionGoalFilter3SchemaMapValue = string | unknown;
 export const ConversionGoalFilter3SchemaMapValue =
@@ -1802,15 +1798,13 @@ export const GetMarketingAnalyticsDataSourceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Schema columns currently mapped for this source */
 export type DataSourceHealthEntrySchemaColumnsMappedList = Array<string>;
-export const DataSourceHealthEntrySchemaColumnsMappedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceHealthEntrySchemaColumnsMappedList>;
+export const DataSourceHealthEntrySchemaColumnsMappedList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthEntrySchemaColumnsMappedList>;
 
 /** Required schema columns that are not yet mapped */
 export type DataSourceHealthEntrySchemaColumnsRequiredMissingList = Array<string>;
-export const DataSourceHealthEntrySchemaColumnsRequiredMissingList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceHealthEntrySchemaColumnsRequiredMissingList>;
+export const DataSourceHealthEntrySchemaColumnsRequiredMissingList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthEntrySchemaColumnsRequiredMissingList>;
 
 export interface RequiredTableStatus {
   /** Name of the required source table (e.g. 'campaign', 'campaign_stats') */
@@ -1906,9 +1900,8 @@ export const DataSourceHealthResponseIntegrationsList = /*@__PURE__*/ S.Array(
 
 /** Short human-readable summary of detected issues */
 export type DataSourceHealthResponseIssuesSummaryList = Array<string>;
-export const DataSourceHealthResponseIssuesSummaryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataSourceHealthResponseIssuesSummaryList>;
+export const DataSourceHealthResponseIssuesSummaryList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<DataSourceHealthResponseIssuesSummaryList>;
 
 export interface DataSourceHealthResponse {
   /** One health entry per native integration */
@@ -2079,9 +2072,8 @@ export const MarketingDiagnosticResponseIntegrationsList = /*@__PURE__*/ S.Array
 
 /** Top global recommended actions across all integrations */
 export type MarketingDiagnosticResponseRecommendedActionsList = Array<RecommendedAction>;
-export const MarketingDiagnosticResponseRecommendedActionsList = /*@__PURE__*/ S.Array(
-  RecommendedAction,
-) as any as S.Schema<MarketingDiagnosticResponseRecommendedActionsList>;
+export const MarketingDiagnosticResponseRecommendedActionsList =
+  IntegrationDiagnosticRecommendedActionsList as any as S.Schema<MarketingDiagnosticResponseRecommendedActionsList>;
 
 export interface MarketingDiagnosticResponse {
   /** Per-integration cross-domain diagnostics */
@@ -2159,27 +2151,23 @@ export const GoalExplanationByEventList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GoalExplanationByEventList>;
 
 export type GoalExplanationByUtmSourceItemList = Array<unknown>;
-export const GoalExplanationByUtmSourceItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GoalExplanationByUtmSourceItemList>;
+export const GoalExplanationByUtmSourceItemList =
+  GoalExplanationByEventItemList as any as S.Schema<GoalExplanationByUtmSourceItemList>;
 
 /** List of [utm_source, count] pairs */
 export type GoalExplanationByUtmSourceList = Array<GoalExplanationByUtmSourceItemList>;
-export const GoalExplanationByUtmSourceList = /*@__PURE__*/ S.Array(
-  GoalExplanationByUtmSourceItemList,
-) as any as S.Schema<GoalExplanationByUtmSourceList>;
+export const GoalExplanationByUtmSourceList =
+  GoalExplanationByEventList as any as S.Schema<GoalExplanationByUtmSourceList>;
 
 export type GoalExplanationByMatchedIntegrationItemList = Array<unknown>;
-export const GoalExplanationByMatchedIntegrationItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GoalExplanationByMatchedIntegrationItemList>;
+export const GoalExplanationByMatchedIntegrationItemList =
+  GoalExplanationByEventItemList as any as S.Schema<GoalExplanationByMatchedIntegrationItemList>;
 
 /** List of [integration, count] pairs */
 export type GoalExplanationByMatchedIntegrationList =
   Array<GoalExplanationByMatchedIntegrationItemList>;
-export const GoalExplanationByMatchedIntegrationList = /*@__PURE__*/ S.Array(
-  GoalExplanationByMatchedIntegrationItemList,
-) as any as S.Schema<GoalExplanationByMatchedIntegrationList>;
+export const GoalExplanationByMatchedIntegrationList =
+  GoalExplanationByEventList as any as S.Schema<GoalExplanationByMatchedIntegrationList>;
 
 export interface GoalEventSample {
   /** UUID of the sampled conversion event */
@@ -2214,9 +2202,8 @@ export const GoalExplanationSamplesList = /*@__PURE__*/ S.Array(
 
 /** Caveats about the breakdown (sampling, attribution, etc.) */
 export type GoalExplanationNotesList = Array<string>;
-export const GoalExplanationNotesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GoalExplanationNotesList>;
+export const GoalExplanationNotesList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<GoalExplanationNotesList>;
 
 export interface GoalExplanation {
   /** conversion_goal_id of the explained goal */
@@ -2293,15 +2280,13 @@ export const GetMarketingAnalyticsSetupPlanRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Capabilities this unblocks: cost, attribution, roas, cac */
 export type SuggestionUnlocksList = Array<string>;
-export const SuggestionUnlocksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SuggestionUnlocksList>;
+export const SuggestionUnlocksList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<SuggestionUnlocksList>;
 
 /** Advice shown alongside the action. Mapping suggestions always carry a 'fix_platform_urls' entry, because a mapping is a workaround and correcting the ad platform's tracking template is the real fix. */
 export type SuggestionAlsoRecommendedList = Array<unknown>;
-export const SuggestionAlsoRecommendedList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SuggestionAlsoRecommendedList>;
+export const SuggestionAlsoRecommendedList =
+  GoalExplanationByEventItemList as any as S.Schema<SuggestionAlsoRecommendedList>;
 
 export interface Suggestion {
   /** Stable identifier for this finding. Deterministic across scans, so clients can dedupe and remember dismissals by it. */
@@ -2369,9 +2354,8 @@ export const SetupPlanResponseSuggestionsList = /*@__PURE__*/ S.Array(
 
 /** Suggestion ids that unblock this capability -- the link from a blocked metric to its fixes */
 export type CapabilityReadinessBlockedByList = Array<string>;
-export const CapabilityReadinessBlockedByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CapabilityReadinessBlockedByList>;
+export const CapabilityReadinessBlockedByList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<CapabilityReadinessBlockedByList>;
 
 export interface CapabilityReadiness {
   /** cost/attribution/roas/cac */
@@ -2400,9 +2384,8 @@ export const SetupPlanResponseReadinessList = /*@__PURE__*/ S.Array(
 
 /** Sub-services that failed. Their suggestions are missing, so do NOT present the plan as a complete clean bill of health when this is non-empty. */
 export type SetupPlanResponseDegradedList = Array<string>;
-export const SetupPlanResponseDegradedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetupPlanResponseDegradedList>;
+export const SetupPlanResponseDegradedList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<SetupPlanResponseDegradedList>;
 
 export interface SetupPlanResponse {
   /** Ranked suggestions, most important first */
@@ -2445,9 +2428,8 @@ export const GetMarketingAnalyticsSourceValidationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetMarketingAnalyticsSourceValidationRequest>;
 
 export type SourceValidationErrorsBySourceValueList = Array<string>;
-export const SourceValidationErrorsBySourceValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SourceValidationErrorsBySourceValueList>;
+export const SourceValidationErrorsBySourceValueList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<SourceValidationErrorsBySourceValueList>;
 
 /** Validation errors keyed by the source or mapped table ID. Valid sources are omitted. */
 export type SourceValidationErrorsBySourceMap = {
@@ -2493,15 +2475,13 @@ export const GetMarketingAnalyticsSuggestConversionGoalRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetMarketingAnalyticsSuggestConversionGoalRequest>;
 
 export type CandidateEventTopUtmSourcesItemList = Array<unknown>;
-export const CandidateEventTopUtmSourcesItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CandidateEventTopUtmSourcesItemList>;
+export const CandidateEventTopUtmSourcesItemList =
+  GoalExplanationByEventItemList as any as S.Schema<CandidateEventTopUtmSourcesItemList>;
 
 /** List of [utm_source, count] pairs */
 export type CandidateEventTopUtmSourcesList = Array<CandidateEventTopUtmSourcesItemList>;
-export const CandidateEventTopUtmSourcesList = /*@__PURE__*/ S.Array(
-  CandidateEventTopUtmSourcesItemList,
-) as any as S.Schema<CandidateEventTopUtmSourcesList>;
+export const CandidateEventTopUtmSourcesList =
+  GoalExplanationByEventList as any as S.Schema<CandidateEventTopUtmSourcesList>;
 
 export interface CandidateEvent {
   /** Name of the candidate event */
@@ -2613,9 +2593,8 @@ export const UtmMappingSuggestionsResponseSourceSuggestionsList = /*@__PURE__*/ 
 
 /** Raw campaign values clustered under this clean name */
 export type CampaignMappingSuggestionRawCampaignValuesList = Array<string>;
-export const CampaignMappingSuggestionRawCampaignValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CampaignMappingSuggestionRawCampaignValuesList>;
+export const CampaignMappingSuggestionRawCampaignValuesList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<CampaignMappingSuggestionRawCampaignValuesList>;
 
 export interface CampaignMappingSuggestion {
   /** Integration key the campaign values belong to */
@@ -2733,9 +2712,8 @@ export const UtmMappingSuggestionsResponseCurrentMappingsList = /*@__PURE__*/ S.
 
 /** Caveats and guidance about the suggestions */
 export type UtmMappingSuggestionsResponseNotesList = Array<string>;
-export const UtmMappingSuggestionsResponseNotesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UtmMappingSuggestionsResponseNotesList>;
+export const UtmMappingSuggestionsResponseNotesList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<UtmMappingSuggestionsResponseNotesList>;
 
 export interface UtmMappingSuggestionsResponse {
   /** Suggested custom_source_mappings entries */
@@ -2831,9 +2809,8 @@ export const UtmIssueAlternativeSourcesList = /*@__PURE__*/ S.Array(
 
 /** Other integrations whose campaigns share this campaign's name (name_collision only) */
 export type UtmIssueSharedWithIntegrationsList = Array<string>;
-export const UtmIssueSharedWithIntegrationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UtmIssueSharedWithIntegrationsList>;
+export const UtmIssueSharedWithIntegrationsList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<UtmIssueSharedWithIntegrationsList>;
 
 /** * `fix_platform_urls` - fix_platform_urls * `add_source_mapping` - add_source_mapping * `switch_to_id_match` - switch_to_id_match * `add_campaign_name_mapping` - add_campaign_name_mapping */
 export type SuggestedActionsEnum =
@@ -3110,9 +3087,8 @@ export type MarketingAnalyticsDrillDownLevel =
 export const MarketingAnalyticsDrillDownLevel = S.String;
 
 export type IntegrationFilterIntegrationSourceIdsList = Array<string>;
-export const IntegrationFilterIntegrationSourceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationFilterIntegrationSourceIdsList>;
+export const IntegrationFilterIntegrationSourceIdsList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<IntegrationFilterIntegrationSourceIdsList>;
 
 export interface IntegrationFilter {
   /** Keep rows that no integration reports cost for, such as organic, email or an unmapped source. Defaults to true. */
@@ -3236,9 +3212,8 @@ export type CustomChannelOperator =
 export const CustomChannelOperator = S.String;
 
 export type CustomChannelConditionValueCase1List = Array<string>;
-export const CustomChannelConditionValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomChannelConditionValueCase1List>;
+export const CustomChannelConditionValueCase1List =
+  ConversionGoalFilter1OrderByList as any as S.Schema<CustomChannelConditionValueCase1List>;
 
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
 export const CustomChannelConditionValue =
@@ -3308,9 +3283,8 @@ export const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/
 ) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
 
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
-export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
+export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
 
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
 export const InCohortVia = S.String;
@@ -3490,14 +3464,12 @@ export const MarketingAnalyticsTableQueryPropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MarketingAnalyticsTableQueryPropertiesList>;
 
 export type MarketingAnalyticsTableQueryResponseColumnsList = Array<unknown>;
-export const MarketingAnalyticsTableQueryResponseColumnsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponseColumnsList>;
+export const MarketingAnalyticsTableQueryResponseColumnsList =
+  GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsTableQueryResponseColumnsList>;
 
 export type QueryStatusLabelsList = Array<string>;
-export const QueryStatusLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryStatusLabelsList>;
+export const QueryStatusLabelsList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<QueryStatusLabelsList>;
 
 export interface ClickhouseQueryProgress {
   active_cpu_time?: number;
@@ -3747,9 +3719,8 @@ export const MarketingAnalyticsTableQueryResponseTimingsList = /*@__PURE__*/ S.A
 ) as any as S.Schema<MarketingAnalyticsTableQueryResponseTimingsList>;
 
 export type MarketingAnalyticsTableQueryResponseTypesList = Array<unknown>;
-export const MarketingAnalyticsTableQueryResponseTypesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MarketingAnalyticsTableQueryResponseTypesList>;
+export const MarketingAnalyticsTableQueryResponseTypesList =
+  GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsTableQueryResponseTypesList>;
 
 export interface DataWarehouseSourceUsage {
   /** ExternalDataSource id */
@@ -3804,9 +3775,8 @@ export const DataWarehouseSyncWarning = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
 export type AccessControlFilterWarningResourcesList = Array<string>;
-export const AccessControlFilterWarningResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlFilterWarningResourcesList>;
+export const AccessControlFilterWarningResourcesList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<AccessControlFilterWarningResourcesList>;
 
 export interface AccessControlFilterWarning {
   /** Human-readable warning shown to the user */
@@ -3908,9 +3878,8 @@ export const WebAnalyticsSampling = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebAnalyticsSampling" }) as any as S.Schema<WebAnalyticsSampling>;
 
 export type MarketingAnalyticsTableQuerySelectList = Array<string>;
-export const MarketingAnalyticsTableQuerySelectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarketingAnalyticsTableQuerySelectList>;
+export const MarketingAnalyticsTableQuerySelectList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<MarketingAnalyticsTableQuerySelectList>;
 
 export interface QueryLogTags {
   /** Name of the query, preferably unique. For example web_analytics_vitals */
@@ -4049,9 +4018,8 @@ export const ListMarketingAnalyticsConversionRecordingsRequest = /*@__PURE__*/ S
 
 /** Sessions in which the attributed conversions occurred. A session might not have a recording. */
 export type ConversionRecordingsResponseSessionIdsList = Array<string>;
-export const ConversionRecordingsResponseSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversionRecordingsResponseSessionIdsList>;
+export const ConversionRecordingsResponseSessionIdsList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<ConversionRecordingsResponseSessionIdsList>;
 
 export interface ConversionRecordingsResponse {
   /** Sessions in which the attributed conversions occurred. A session might not have a recording. */
@@ -4073,9 +4041,8 @@ export const ConversionRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan -- never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
 export type MarketingAnalyticsApplySetupOpsCreateRequestOpsList = Array<unknown>;
-export const MarketingAnalyticsApplySetupOpsCreateRequestOpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequestOpsList>;
+export const MarketingAnalyticsApplySetupOpsCreateRequestOpsList =
+  GoalExplanationByEventItemList as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequestOpsList>;
 
 /** * `setup_tab` - setup_tab * `apply_all_safe` - apply_all_safe * `mcp` - mcp */
 export type ApplySetupOpsSourceEnum = "setup_tab" | "apply_all_safe" | "mcp";
@@ -4107,15 +4074,13 @@ export const MarketingAnalyticsApplySetupOpsCreateRequest = /*@__PURE__*/ S.susp
 
 /** The operations that were applied */
 export type ApplySetupOpsResponseAppliedList = Array<unknown>;
-export const ApplySetupOpsResponseAppliedList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ApplySetupOpsResponseAppliedList>;
+export const ApplySetupOpsResponseAppliedList =
+  GoalExplanationByEventItemList as any as S.Schema<ApplySetupOpsResponseAppliedList>;
 
 /** Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state -- POST them back to undo. */
 export type ApplySetupOpsResponseUndoOpsList = Array<unknown>;
-export const ApplySetupOpsResponseUndoOpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ApplySetupOpsResponseUndoOpsList>;
+export const ApplySetupOpsResponseUndoOpsList =
+  GoalExplanationByEventItemList as any as S.Schema<ApplySetupOpsResponseUndoOpsList>;
 
 export interface ApplySetupOpsResponse {
   /** The operations that were applied */
@@ -4201,9 +4166,8 @@ export const PartialConversionGoalFilter1Math =
   S.Unknown as any as S.Schema<PartialConversionGoalFilter1Math>;
 
 export type PartialConversionGoalFilter1OrderByList = Array<string>;
-export const PartialConversionGoalFilter1OrderByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartialConversionGoalFilter1OrderByList>;
+export const PartialConversionGoalFilter1OrderByList =
+  ConversionGoalFilter1OrderByList as any as S.Schema<PartialConversionGoalFilter1OrderByList>;
 
 export type PartialConversionGoalFilter1PropertiesItem =
   | EventPropertyFilter
@@ -4240,10 +4204,8 @@ export const PartialConversionGoalFilter1PropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PartialConversionGoalFilter1PropertiesList>;
 
 export type PartialConversionGoalFilter1ResponseMap = { [key: string]: unknown | undefined };
-export const PartialConversionGoalFilter1ResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PartialConversionGoalFilter1ResponseMap>;
+export const PartialConversionGoalFilter1ResponseMap =
+  ConversionGoalFilter1ResponseMap as any as S.Schema<PartialConversionGoalFilter1ResponseMap>;
 
 export type PartialConversionGoalFilter1SchemaMapValue = string | unknown;
 export const PartialConversionGoalFilter1SchemaMapValue =
@@ -4394,10 +4356,8 @@ export const PartialConversionGoalFilter2PropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PartialConversionGoalFilter2PropertiesList>;
 
 export type PartialConversionGoalFilter2ResponseMap = { [key: string]: unknown | undefined };
-export const PartialConversionGoalFilter2ResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PartialConversionGoalFilter2ResponseMap>;
+export const PartialConversionGoalFilter2ResponseMap =
+  ConversionGoalFilter1ResponseMap as any as S.Schema<PartialConversionGoalFilter2ResponseMap>;
 
 export type PartialConversionGoalFilter2SchemaMapValue = string | unknown;
 export const PartialConversionGoalFilter2SchemaMapValue =
@@ -4544,10 +4504,8 @@ export const PartialConversionGoalFilter3PropertiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PartialConversionGoalFilter3PropertiesList>;
 
 export type PartialConversionGoalFilter3ResponseMap = { [key: string]: unknown | undefined };
-export const PartialConversionGoalFilter3ResponseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PartialConversionGoalFilter3ResponseMap>;
+export const PartialConversionGoalFilter3ResponseMap =
+  ConversionGoalFilter1ResponseMap as any as S.Schema<PartialConversionGoalFilter3ResponseMap>;
 
 export type PartialConversionGoalFilter3SchemaMapValue = string | unknown;
 export const PartialConversionGoalFilter3SchemaMapValue =

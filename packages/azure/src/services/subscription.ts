@@ -92,10 +92,8 @@ export const ProvisioningState = S.String;
 
 /** Tags for the subscription */
 export type AcceptOwnershipStatusResponseTagsMap = { [key: string]: string | undefined };
-export const AcceptOwnershipStatusResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AcceptOwnershipStatusResponseTagsMap>;
+export const AcceptOwnershipStatusResponseTagsMap =
+  AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<AcceptOwnershipStatusResponseTagsMap>;
 
 /** Subscription Accept Ownership Response */
 export interface AcceptOwnershipStatusResponse {
@@ -162,10 +160,8 @@ export const Workload = S.String;
 
 /** Tags for the subscription */
 export type PutAliasRequestAdditionalPropertiesTagsMap = { [key: string]: string | undefined };
-export const PutAliasRequestAdditionalPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutAliasRequestAdditionalPropertiesTagsMap>;
+export const PutAliasRequestAdditionalPropertiesTagsMap =
+  AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<PutAliasRequestAdditionalPropertiesTagsMap>;
 
 /** Put subscription additional properties. */
 export interface PutAliasRequestAdditionalProperties {
@@ -244,10 +240,8 @@ export const SubscriptionAliasResponsePropertiesProvisioningState = S.String;
 
 /** Tags for the subscription */
 export type SubscriptionAliasResponsePropertiesTagsMap = { [key: string]: string | undefined };
-export const SubscriptionAliasResponsePropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SubscriptionAliasResponsePropertiesTagsMap>;
+export const SubscriptionAliasResponsePropertiesTagsMap =
+  AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<SubscriptionAliasResponsePropertiesTagsMap>;
 
 /** Put subscription creation result properties. */
 export interface SubscriptionAliasResponseProperties {
@@ -407,11 +401,8 @@ export interface EnabledSubscriptionId {
   /** The ID of the subscriptions that is being enabled */
   subscriptionId?: string;
 }
-export const EnabledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnabledSubscriptionId" }) as any as S.Schema<EnabledSubscriptionId>;
+export const EnabledSubscriptionId =
+  CanceledSubscriptionId as any as S.Schema<EnabledSubscriptionId>;
 
 export interface GetAliasRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
@@ -860,11 +851,8 @@ export interface RenamedSubscriptionId {
   /** The ID of the subscriptions that is being renamed */
   subscriptionId?: string;
 }
-export const RenamedSubscriptionId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "RenamedSubscriptionId" }) as any as S.Schema<RenamedSubscriptionId>;
+export const RenamedSubscriptionId =
+  CanceledSubscriptionId as any as S.Schema<RenamedSubscriptionId>;
 
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
 export type SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList = Array<string>;

@@ -114,7 +114,7 @@ export type IpV4List = string[];
 export const IpV4List = /*@__PURE__*/ S.Array(S.String);
 export type IpV6 = string;
 export type IpV6List = string[];
-export const IpV6List = /*@__PURE__*/ S.Array(S.String);
+export const IpV6List = IpV4List as any as S.Schema<IpV6List>;
 export interface SecretsManagerCredentialsProvider {
   SecretId?: string;
 }
@@ -131,7 +131,7 @@ export const CredentialsProvider = /*@__PURE__*/ S.Union([
 ]);
 export type Subnet = string;
 export type Subnets = string[];
-export const Subnets = /*@__PURE__*/ S.Array(S.String);
+export const Subnets = IpV4List as any as S.Schema<Subnets>;
 export interface DomainNetworkSettings {
   Subnets: string[];
 }
@@ -434,9 +434,8 @@ export const DisassociateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateUserResponse {
   InstanceUserSummary: InstanceUserSummary;
 }
-export const DisassociateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InstanceUserSummary: InstanceUserSummary }),
-).annotate({ identifier: "DisassociateUserResponse" }) as any as S.Schema<DisassociateUserResponse>;
+export const DisassociateUserResponse =
+  AssociateUserResponse as any as S.Schema<DisassociateUserResponse>;
 export type BoxInteger = number;
 export interface Filter {
   Attribute?: string;
@@ -504,7 +503,7 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = IpV4List as any as S.Schema<StringList>;
 export interface InstanceSummary {
   InstanceId: string;
   Status: string;
@@ -726,11 +725,8 @@ export const RegisterIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterIdentityProviderResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-export const RegisterIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityProviderSummary: IdentityProviderSummary }),
-).annotate({
-  identifier: "RegisterIdentityProviderResponse",
-}) as any as S.Schema<RegisterIdentityProviderResponse>;
+export const RegisterIdentityProviderResponse =
+  DeregisterIdentityProviderResponse as any as S.Schema<RegisterIdentityProviderResponse>;
 export interface StartProductSubscriptionRequest {
   Username: string;
   IdentityProvider: IdentityProvider;
@@ -796,11 +792,8 @@ export const StopProductSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopProductSubscriptionResponse {
   ProductUserSummary: ProductUserSummary;
 }
-export const StopProductSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProductUserSummary: ProductUserSummary }),
-).annotate({
-  identifier: "StopProductSubscriptionResponse",
-}) as any as S.Schema<StopProductSubscriptionResponse>;
+export const StopProductSubscriptionResponse =
+  StartProductSubscriptionResponse as any as S.Schema<StopProductSubscriptionResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -815,7 +808,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = IpV4List as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -829,9 +822,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateSettings {
   AddSubnets: string[];
   RemoveSubnets: string[];
@@ -868,11 +859,8 @@ export const UpdateIdentityProviderSettingsRequest = /*@__PURE__*/ S.suspend(() 
 export interface UpdateIdentityProviderSettingsResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-export const UpdateIdentityProviderSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityProviderSummary: IdentityProviderSummary }),
-).annotate({
-  identifier: "UpdateIdentityProviderSettingsResponse",
-}) as any as S.Schema<UpdateIdentityProviderSettingsResponse>;
+export const UpdateIdentityProviderSettingsResponse =
+  DeregisterIdentityProviderResponse as any as S.Schema<UpdateIdentityProviderSettingsResponse>;
 export type AssociateUserError =
   | AccessDeniedException
   | ConflictException

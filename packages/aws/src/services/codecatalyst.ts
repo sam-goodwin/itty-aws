@@ -475,11 +475,9 @@ export interface Ide {
   runtime?: string;
   name?: string;
 }
-export const Ide = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ runtime: S.optional(S.String), name: S.optional(S.String) }),
-).annotate({ identifier: "Ide" }) as any as S.Schema<Ide>;
+export const Ide = IdeConfiguration as any as S.Schema<Ide>;
 export type Ides = Ide[];
-export const Ides = /*@__PURE__*/ S.Array(Ide);
+export const Ides = IdeConfigurationList as any as S.Schema<Ides>;
 export interface PersistentStorage {
   sizeInGiB: number;
 }
@@ -547,14 +545,7 @@ export interface GetProjectResponse {
   displayName?: string;
   description?: string;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaceName: S.optional(S.String),
-    name: S.String,
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetProjectResponse" }) as any as S.Schema<GetProjectResponse>;
+export const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
 export interface GetSourceRepositoryRequest {
   spaceName: string;
   projectName: string;
@@ -806,9 +797,8 @@ export const GetWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWorkflowRunRequest" }) as any as S.Schema<GetWorkflowRunRequest>;
 export type WorkflowRunStatus = string;
 export interface WorkflowRunStatusReason {}
-export const WorkflowRunStatusReason = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WorkflowRunStatusReason",
-}) as any as S.Schema<WorkflowRunStatusReason>;
+export const WorkflowRunStatusReason =
+  DeleteAccessTokenResponse as any as S.Schema<WorkflowRunStatusReason>;
 export type WorkflowRunStatusReasons = WorkflowRunStatusReason[];
 export const WorkflowRunStatusReasons = /*@__PURE__*/ S.Array(WorkflowRunStatusReason);
 export interface GetWorkflowRunResponse {
@@ -1119,11 +1109,9 @@ export interface ProjectListFilter {
   values: string[];
   comparisonOperator?: string;
 }
-export const ProjectListFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, values: StringList, comparisonOperator: S.optional(S.String) }),
-).annotate({ identifier: "ProjectListFilter" }) as any as S.Schema<ProjectListFilter>;
+export const ProjectListFilter = Filter as any as S.Schema<ProjectListFilter>;
 export type ProjectListFilters = ProjectListFilter[];
-export const ProjectListFilters = /*@__PURE__*/ S.Array(ProjectListFilter);
+export const ProjectListFilters = Filters as any as S.Schema<ProjectListFilters>;
 export interface ListProjectsRequest {
   spaceName: string;
   nextToken?: string;
@@ -1262,16 +1250,8 @@ export interface ListSourceRepositoryBranchesItem {
   lastUpdatedTime?: Date;
   headCommitId?: string;
 }
-export const ListSourceRepositoryBranchesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.optional(S.String),
-    name: S.optional(S.String),
-    lastUpdatedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    headCommitId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSourceRepositoryBranchesItem",
-}) as any as S.Schema<ListSourceRepositoryBranchesItem>;
+export const ListSourceRepositoryBranchesItem =
+  CreateSourceRepositoryBranchResponse as any as S.Schema<ListSourceRepositoryBranchesItem>;
 export type ListSourceRepositoryBranchesItems = ListSourceRepositoryBranchesItem[];
 export const ListSourceRepositoryBranchesItems = /*@__PURE__*/ S.Array(
   ListSourceRepositoryBranchesItem,
@@ -1299,14 +1279,7 @@ export interface SpaceSummary {
   displayName?: string;
   description?: string;
 }
-export const SpaceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    regionName: S.String,
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "SpaceSummary" }) as any as S.Schema<SpaceSummary>;
+export const SpaceSummary = GetSpaceResponse as any as S.Schema<SpaceSummary>;
 export type SpaceSummaries = SpaceSummary[];
 export const SpaceSummaries = /*@__PURE__*/ S.Array(SpaceSummary);
 export interface ListSpacesResponse {
@@ -1317,11 +1290,11 @@ export const ListSpacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: S.optional(SpaceSummaries) }),
 ).annotate({ identifier: "ListSpacesResponse" }) as any as S.Schema<ListSpacesResponse>;
 export interface WorkflowRunSortCriteria {}
-export const WorkflowRunSortCriteria = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WorkflowRunSortCriteria",
-}) as any as S.Schema<WorkflowRunSortCriteria>;
+export const WorkflowRunSortCriteria =
+  DeleteAccessTokenResponse as any as S.Schema<WorkflowRunSortCriteria>;
 export type WorkflowRunSortCriteriaList = WorkflowRunSortCriteria[];
-export const WorkflowRunSortCriteriaList = /*@__PURE__*/ S.Array(WorkflowRunSortCriteria);
+export const WorkflowRunSortCriteriaList =
+  WorkflowRunStatusReasons as any as S.Schema<WorkflowRunSortCriteriaList>;
 export interface ListWorkflowRunsRequest {
   spaceName: string;
   workflowId?: string;
@@ -1381,11 +1354,11 @@ export const ListWorkflowRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: S.optional(WorkflowRunSummaries) }),
 ).annotate({ identifier: "ListWorkflowRunsResponse" }) as any as S.Schema<ListWorkflowRunsResponse>;
 export interface WorkflowSortCriteria {}
-export const WorkflowSortCriteria = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WorkflowSortCriteria",
-}) as any as S.Schema<WorkflowSortCriteria>;
+export const WorkflowSortCriteria =
+  DeleteAccessTokenResponse as any as S.Schema<WorkflowSortCriteria>;
 export type WorkflowSortCriteriaList = WorkflowSortCriteria[];
-export const WorkflowSortCriteriaList = /*@__PURE__*/ S.Array(WorkflowSortCriteria);
+export const WorkflowSortCriteriaList =
+  WorkflowRunStatusReasons as any as S.Schema<WorkflowSortCriteriaList>;
 export interface ListWorkflowsRequest {
   spaceName: string;
   projectName: string;
@@ -1497,7 +1470,8 @@ export const StartDevEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartDevEnvironmentResponse>;
 export type DevEnvironmentSessionType = string;
 export type ExecuteCommandSessionConfigurationArguments = string[];
-export const ExecuteCommandSessionConfigurationArguments = /*@__PURE__*/ S.Array(S.String);
+export const ExecuteCommandSessionConfigurationArguments =
+  StringList as any as S.Schema<ExecuteCommandSessionConfigurationArguments>;
 export interface ExecuteCommandSessionConfiguration {
   command: string;
   arguments?: string[];
@@ -1642,11 +1616,8 @@ export interface StopDevEnvironmentResponse {
   id: string;
   status: string;
 }
-export const StopDevEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ spaceName: S.String, projectName: S.String, id: S.String, status: S.String }),
-).annotate({
-  identifier: "StopDevEnvironmentResponse",
-}) as any as S.Schema<StopDevEnvironmentResponse>;
+export const StopDevEnvironmentResponse =
+  StartDevEnvironmentResponse as any as S.Schema<StopDevEnvironmentResponse>;
 export interface StopDevEnvironmentSessionRequest {
   spaceName: string;
   projectName: string;

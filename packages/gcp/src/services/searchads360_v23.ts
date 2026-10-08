@@ -5754,26 +5754,16 @@ export interface GoogleAdsSearchads360V23Common__ProductBrandInfo {
   /** String value of the product brand. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ProductBrandInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ProductBrandInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ProductBrandInfo>;
+export const GoogleAdsSearchads360V23Common__ProductBrandInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ProductBrandInfo>;
 
 /** Full type of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns. */
 export interface GoogleAdsSearchads360V23Common__ProductTypeFullInfo {
   /** String value of the product full type. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ProductTypeFullInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ProductTypeFullInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ProductTypeFullInfo>;
+export const GoogleAdsSearchads360V23Common__ProductTypeFullInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ProductTypeFullInfo>;
 
 /** State the hotel is located in. */
 export interface GoogleAdsSearchads360V23Common__HotelStateInfo {
@@ -5793,39 +5783,24 @@ export interface GoogleAdsSearchads360V23Common__ActivityStateInfo {
   /** String value of the activity state. The Geo Target Constant resource name. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ActivityStateInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ActivityStateInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityStateInfo>;
+export const GoogleAdsSearchads360V23Common__ActivityStateInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityStateInfo>;
 
 /** Grouping of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns. */
 export interface GoogleAdsSearchads360V23Common__ProductGroupingInfo {
   /** String value of the product grouping. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ProductGroupingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ProductGroupingInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ProductGroupingInfo>;
+export const GoogleAdsSearchads360V23Common__ProductGroupingInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ProductGroupingInfo>;
 
 /** Rating of the activity as a number 1 to 5, where 5 is the best. */
 export interface GoogleAdsSearchads360V23Common__ActivityRatingInfo {
   /** Long value of the activity rating. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ActivityRatingInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ActivityRatingInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityRatingInfo>;
+export const GoogleAdsSearchads360V23Common__ActivityRatingInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityRatingInfo>;
 
 export type GoogleAdsSearchads360V23Common__ProductConditionInfoConditionEnum =
   | "UNSPECIFIED"
@@ -5939,39 +5914,24 @@ export interface GoogleAdsSearchads360V23Common__HotelClassInfo {
   /** Long value of the hotel class. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__HotelClassInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__HotelClassInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__HotelClassInfo>;
+export const GoogleAdsSearchads360V23Common__HotelClassInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__HotelClassInfo>;
 
 /** Advertiser-specific hotel ID. */
 export interface GoogleAdsSearchads360V23Common__HotelIdInfo {
   /** String value of the hotel ID. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__HotelIdInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__HotelIdInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__HotelIdInfo>;
+export const GoogleAdsSearchads360V23Common__HotelIdInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__HotelIdInfo>;
 
 /** The city where the travel activity is available. */
 export interface GoogleAdsSearchads360V23Common__ActivityCityInfo {
   /** String value of the activity city. The Geo Target Constant resource name. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ActivityCityInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ActivityCityInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityCityInfo>;
+export const GoogleAdsSearchads360V23Common__ActivityCityInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityCityInfo>;
 
 export type GoogleAdsSearchads360V23Common__ProductChannelExclusivityInfoChannelExclusivityEnum =
   | "UNSPECIFIED"
@@ -6010,13 +5970,8 @@ export interface GoogleAdsSearchads360V23Common__ActivityCountryInfo {
   /** String value of the activity country. The Geo Target Constant resource name. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ActivityCountryInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ActivityCountryInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityCountryInfo>;
+export const GoogleAdsSearchads360V23Common__ActivityCountryInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityCountryInfo>;
 
 /** Legacy condition of a product offer. This listing dimension is deprecated and it is supported only in Display campaigns. */
 export interface GoogleAdsSearchads360V23Common__ProductLegacyConditionInfo {
@@ -6037,26 +5992,16 @@ export interface GoogleAdsSearchads360V23Common__ProductItemIdInfo {
   /** Value of the id. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ProductItemIdInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ProductItemIdInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ProductItemIdInfo>;
+export const GoogleAdsSearchads360V23Common__ProductItemIdInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ProductItemIdInfo>;
 
 /** Advertiser-specific activity ID. */
 export interface GoogleAdsSearchads360V23Common__ActivityIdInfo {
   /** String value of the activity ID. */
   value?: string;
 }
-export const GoogleAdsSearchads360V23Common__ActivityIdInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ActivityIdInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityIdInfo>;
+export const GoogleAdsSearchads360V23Common__ActivityIdInfo =
+  GoogleAdsSearchads360V23Common__ProductLabelsInfo as any as S.Schema<GoogleAdsSearchads360V23Common__ActivityIdInfo>;
 
 export type GoogleAdsSearchads360V23Common__ProductCategoryInfoLevelEnum =
   | "UNSPECIFIED"
@@ -6549,13 +6494,8 @@ export interface GoogleAdsSearchads360V23Common__UserInterestInfo {
   /** The UserInterest resource name. */
   userInterestCategory?: string;
 }
-export const GoogleAdsSearchads360V23Common__UserInterestInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userInterestCategory: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__UserInterestInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__UserInterestInfo>;
+export const GoogleAdsSearchads360V23Common__UserInterestInfo =
+  GoogleAdsSearchads360V23Common__UserInterestSegment as any as S.Schema<GoogleAdsSearchads360V23Common__UserInterestInfo>;
 
 export type GoogleAdsSearchads360V23Common__AppPaymentModelInfoTypeEnum =
   | "UNSPECIFIED"
@@ -6581,13 +6521,8 @@ export interface GoogleAdsSearchads360V23Common__CustomAudienceInfo {
   /** The CustomAudience resource name. */
   customAudience?: string;
 }
-export const GoogleAdsSearchads360V23Common__CustomAudienceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customAudience: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__CustomAudienceInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__CustomAudienceInfo>;
+export const GoogleAdsSearchads360V23Common__CustomAudienceInfo =
+  GoogleAdsSearchads360V23Common__CustomAudienceSegment as any as S.Schema<GoogleAdsSearchads360V23Common__CustomAudienceInfo>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveCpcBidSourceEnum =
   | "UNSPECIFIED"
@@ -6616,13 +6551,8 @@ export interface GoogleAdsSearchads360V23Common__UserListInfo {
   /** The User List resource name. */
   userList?: string;
 }
-export const GoogleAdsSearchads360V23Common__UserListInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userList: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__UserListInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__UserListInfo>;
+export const GoogleAdsSearchads360V23Common__UserListInfo =
+  GoogleAdsSearchads360V23Common__UserListSegment as any as S.Schema<GoogleAdsSearchads360V23Common__UserListInfo>;
 
 export type GoogleAdsSearchads360V23Common__ParentalStatusInfoTypeEnum =
   | "UNSPECIFIED"
@@ -9383,19 +9313,13 @@ export interface GoogleAdsSearchads360V23Common__AdMediaBundleAsset {
   /** The Asset resource name of this media bundle. */
   asset?: string;
 }
-export const GoogleAdsSearchads360V23Common__AdMediaBundleAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asset: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__AdMediaBundleAsset",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__AdMediaBundleAsset>;
+export const GoogleAdsSearchads360V23Common__AdMediaBundleAsset =
+  GoogleAdsSearchads360V23Common__AdImageAsset as any as S.Schema<GoogleAdsSearchads360V23Common__AdMediaBundleAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdMediaBundleAssetList =
   Array<GoogleAdsSearchads360V23Common__AdMediaBundleAsset>;
-export const GoogleAdsSearchads360V23Common__AdMediaBundleAssetList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Common__AdMediaBundleAsset,
-) as any as S.Schema<GoogleAdsSearchads360V23Common__AdMediaBundleAssetList>;
+export const GoogleAdsSearchads360V23Common__AdMediaBundleAssetList =
+  GoogleAdsSearchads360V23Common__AdImageAssetList as any as S.Schema<GoogleAdsSearchads360V23Common__AdMediaBundleAssetList>;
 
 export type GoogleAdsSearchads360V23Common__AdTextAssetPinnedFieldEnum =
   | "UNSPECIFIED"
@@ -9528,13 +9452,8 @@ export interface GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset {
   /** The Asset resource name of this app deep link asset. */
   asset?: string;
 }
-export const GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asset: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset>;
+export const GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset =
+  GoogleAdsSearchads360V23Common__AdImageAsset as any as S.Schema<GoogleAdsSearchads360V23Common__AdAppDeepLinkAsset>;
 
 /** An app ad. */
 export interface GoogleAdsSearchads360V23Common__AppAdInfo {
@@ -9731,19 +9650,13 @@ export interface GoogleAdsSearchads360V23Common__AdCallToActionAsset {
   /** The Asset resource name of this call to action asset. */
   asset?: string;
 }
-export const GoogleAdsSearchads360V23Common__AdCallToActionAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asset: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__AdCallToActionAsset",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__AdCallToActionAsset>;
+export const GoogleAdsSearchads360V23Common__AdCallToActionAsset =
+  GoogleAdsSearchads360V23Common__AdImageAsset as any as S.Schema<GoogleAdsSearchads360V23Common__AdCallToActionAsset>;
 
 export type GoogleAdsSearchads360V23Common__AdCallToActionAssetList =
   Array<GoogleAdsSearchads360V23Common__AdCallToActionAsset>;
-export const GoogleAdsSearchads360V23Common__AdCallToActionAssetList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Common__AdCallToActionAsset,
-) as any as S.Schema<GoogleAdsSearchads360V23Common__AdCallToActionAssetList>;
+export const GoogleAdsSearchads360V23Common__AdCallToActionAssetList =
+  GoogleAdsSearchads360V23Common__AdImageAssetList as any as S.Schema<GoogleAdsSearchads360V23Common__AdCallToActionAssetList>;
 
 /** A Demand Gen video responsive ad. */
 export interface GoogleAdsSearchads360V23Common__DemandGenVideoResponsiveAdInfo {
@@ -11917,13 +11830,8 @@ export interface GoogleAdsSearchads360V23Common__NegativeKeywordListInfo {
   /** The NegativeKeywordListInfo shared set resource name. */
   sharedSet?: string;
 }
-export const GoogleAdsSearchads360V23Common__NegativeKeywordListInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sharedSet: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__NegativeKeywordListInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__NegativeKeywordListInfo>;
+export const GoogleAdsSearchads360V23Common__NegativeKeywordListInfo =
+  GoogleAdsSearchads360V23Common__BrandListInfo as any as S.Schema<GoogleAdsSearchads360V23Common__NegativeKeywordListInfo>;
 
 export type GoogleAdsSearchads360V23Common__ContentLabelInfoTypeEnum =
   | "UNSPECIFIED"
@@ -12036,13 +11944,8 @@ export interface GoogleAdsSearchads360V23Common__PlacementListInfo {
   /** The PlacementListInfo shared set resource name. */
   sharedSet?: string;
 }
-export const GoogleAdsSearchads360V23Common__PlacementListInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sharedSet: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__PlacementListInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__PlacementListInfo>;
+export const GoogleAdsSearchads360V23Common__PlacementListInfo =
+  GoogleAdsSearchads360V23Common__BrandListInfo as any as S.Schema<GoogleAdsSearchads360V23Common__PlacementListInfo>;
 
 /** A negative criterion for exclusions at the customer level. */
 export interface GoogleAdsSearchads360V23Resources__CustomerNegativeCriterion {
@@ -13279,14 +13182,8 @@ export interface GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting {
   /** Immutable. If true, this ad group uses an Audience resource for audience targeting. If false, this ad group may use audience segment criteria instead. */
   useAudienceGrouped?: boolean;
 }
-export const GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      useAudienceGrouped: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting>;
+export const GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting =
+  GoogleAdsSearchads360V23Resources_Campaign_AudienceSetting as any as S.Schema<GoogleAdsSearchads360V23Resources_AdGroup_AudienceSetting>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupEngineStatusEnum =
   | "UNSPECIFIED"
@@ -14119,13 +14016,8 @@ export interface GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget {
   /** Required. The resource name of the geo target. */
   geoTargetConstant?: string;
 }
-export const GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    geoTargetConstant: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget>;
+export const GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget =
+  GoogleAdsSearchads360V23Common__LocationInfo as any as S.Schema<GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget>;
 
 export type GoogleAdsSearchads360V23Resources__KeywordPlanGeoTargetList =
   Array<GoogleAdsSearchads360V23Resources__KeywordPlanGeoTarget>;
@@ -14838,13 +14730,8 @@ export interface GoogleAdsSearchads360V23Common__WebpageListInfo {
   /** Shared set resource name of the webpage list. */
   sharedSet?: string;
 }
-export const GoogleAdsSearchads360V23Common__WebpageListInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sharedSet: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__WebpageListInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__WebpageListInfo>;
+export const GoogleAdsSearchads360V23Common__WebpageListInfo =
+  GoogleAdsSearchads360V23Common__BrandListInfo as any as S.Schema<GoogleAdsSearchads360V23Common__WebpageListInfo>;
 
 /** A Smart Campaign keyword theme. */
 export interface GoogleAdsSearchads360V23Common__KeywordThemeInfo {
@@ -14881,13 +14768,8 @@ export interface GoogleAdsSearchads360V23Common__ListingScopeInfo {
   /** Scope of the campaign criterion. */
   dimensions?: GoogleAdsSearchads360V23Common__ListingDimensionInfoList;
 }
-export const GoogleAdsSearchads360V23Common__ListingScopeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.optional(GoogleAdsSearchads360V23Common__ListingDimensionInfoList),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__ListingScopeInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__ListingScopeInfo>;
+export const GoogleAdsSearchads360V23Common__ListingScopeInfo =
+  GoogleAdsSearchads360V23Common__ListingDimensionPath as any as S.Schema<GoogleAdsSearchads360V23Common__ListingScopeInfo>;
 
 /** A mobile device criterion. */
 export interface GoogleAdsSearchads360V23Common__MobileDeviceInfo {
@@ -16447,13 +16329,8 @@ export interface GoogleAdsSearchads360V23Common__SearchThemeInfo {
   /** Each Search Theme has a value of a simple string, like keywords. There are limits on overall length, allowed characters, and number of words. */
   text?: string;
 }
-export const GoogleAdsSearchads360V23Common__SearchThemeInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Common__SearchThemeInfo",
-}) as any as S.Schema<GoogleAdsSearchads360V23Common__SearchThemeInfo>;
+export const GoogleAdsSearchads360V23Common__SearchThemeInfo =
+  GoogleAdsSearchads360V23Common__TextAsset as any as S.Schema<GoogleAdsSearchads360V23Common__SearchThemeInfo>;
 
 export type GoogleAdsSearchads360V23Resources__AssetGroupSignalApprovalStatusEnum =
   | "UNSPECIFIED"
@@ -17622,16 +17499,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_S
   adAssetApplyParameters?: GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters;
 }
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkAssetParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      adAssetApplyParameters: S.optional(
-        GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_AdAssetApplyParameters,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkAssetParameters",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkAssetParameters>;
+  GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CalloutAssetParameters as any as S.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_SitelinkAssetParameters>;
 
 export type GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_KeywordParametersMatchTypeEnum =
   | "UNSPECIFIED"
@@ -17800,14 +17668,7 @@ export interface GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_U
   newBudgetAmountMicros?: string;
 }
 export const GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_UseBroadMatchKeywordParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      newBudgetAmountMicros: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_UseBroadMatchKeywordParameters",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_UseBroadMatchKeywordParameters>;
+  GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_CampaignBudgetParameters as any as S.Schema<GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_UseBroadMatchKeywordParameters>;
 
 /** Parameters to use when applying a responsive search ad asset recommendation. */
 export type GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_ResponsiveSearchAdAssetParameters =
@@ -18394,13 +18255,7 @@ export interface GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoa
   result?: GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult;
 }
 export const GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__ConfigureCustomerLifecycleGoalsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CreateCustomerClientRequestAccessRoleEnum =
   | "UNSPECIFIED"
@@ -18594,14 +18449,8 @@ export interface GoogleAdsSearchads360V23Services__CreateAccountLinkResponse {
   /** Returned for successful operations. Resource name of the account link. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__CreateAccountLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__CreateAccountLinkResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__CreateAccountLinkResponse>;
+export const GoogleAdsSearchads360V23Services__CreateAccountLinkResponse =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__CreateAccountLinkResponse>;
 
 export type GoogleAdsSearchads360V23Resources__DataLinkStatusEnum =
   | "UNSPECIFIED"
@@ -18704,14 +18553,8 @@ export interface GoogleAdsSearchads360V23Services__CreateDataLinkResponse {
   /** Returned for successful operations. Resource name of the data link. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__CreateDataLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__CreateDataLinkResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__CreateDataLinkResponse>;
+export const GoogleAdsSearchads360V23Services__CreateDataLinkResponse =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__CreateDataLinkResponse>;
 
 export type GoogleAdsSearchads360V23Resources__OfflineUserDataJobTypeEnum =
   | "UNSPECIFIED"
@@ -18934,13 +18777,7 @@ export interface GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobRespo
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult as any as S.Schema<GoogleAdsSearchads360V23Services__CreateOfflineUserDataJobResponse>;
 
 /** The identifier for Merchant Center Account. */
 export interface GoogleAdsSearchads360V23Resources__MerchantCenterLinkInvitationIdentifier {
@@ -19086,13 +18923,7 @@ export interface GoogleAdsSearchads360V23Services__CreateProductLinkInvitationRe
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult as any as S.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkInvitationResponse>;
 
 /** The identifier for Google Merchant Center account */
 export interface GoogleAdsSearchads360V23Resources__MerchantCenterIdentifier {
@@ -19137,13 +18968,7 @@ export interface GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier
   customer?: string;
 }
 export const GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customer: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier>;
+  GoogleAdsSearchads360V23Resources__AdvertisingPartnerLinkInvitationIdentifier as any as S.Schema<GoogleAdsSearchads360V23Resources__AdvertisingPartnerIdentifier>;
 
 /** The identifier for Data Partner account. */
 export interface GoogleAdsSearchads360V23Resources__DataPartnerIdentifier {
@@ -19230,14 +19055,8 @@ export interface GoogleAdsSearchads360V23Services__CreateProductLinkResponse {
   /** Returned for successful operations. Resource name of the product link. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__CreateProductLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__CreateProductLinkResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkResponse>;
+export const GoogleAdsSearchads360V23Services__CreateProductLinkResponse =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__CreateProductLinkResponse>;
 
 /** Operation to dismiss a single recommendation identified by resource_name. */
 export interface GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation {
@@ -19309,21 +19128,12 @@ export interface GoogleAdsSearchads360V23Services_DismissRecommendationResponse_
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult>;
+  GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperation as any as S.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult>;
 
 export type GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResultList =
   Array<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult>;
 export const GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResultList>;
+  GoogleAdsSearchads360V23Services_DismissRecommendationRequest_DismissRecommendationOperationList as any as S.Schema<GoogleAdsSearchads360V23Services_DismissRecommendationResponse_DismissRecommendationResultList>;
 
 /** Response message for RecommendationService.DismissRecommendation. */
 export interface GoogleAdsSearchads360V23Services__DismissRecommendationResponse {
@@ -19803,9 +19613,8 @@ export const GoogleAdsSearchads360V23Services__GenerateAdGroupThemesResponse =
 
 export type GoogleAdsSearchads360V23Common__LocationInfoList =
   Array<GoogleAdsSearchads360V23Common__LocationInfo>;
-export const GoogleAdsSearchads360V23Common__LocationInfoList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Common__LocationInfo,
-) as any as S.Schema<GoogleAdsSearchads360V23Common__LocationInfoList>;
+export const GoogleAdsSearchads360V23Common__LocationInfoList =
+  GoogleAdsSearchads360V23Resources__KeywordPlanGeoTargetList as any as S.Schema<GoogleAdsSearchads360V23Common__LocationInfoList>;
 
 /** A Knowledge Graph entity, represented by its machine id. */
 export interface GoogleAdsSearchads360V23Common__AudienceInsightsEntity {
@@ -21700,14 +21509,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConver
   recommendedBudgetAmountMicros?: string;
 }
 export const GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionsOptInRecommendation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      recommendedBudgetAmountMicros: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionsOptInRecommendation",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionsOptInRecommendation>;
+  GoogleAdsSearchads360V23Resources_Recommendation_MaximizeClicksOptInRecommendation as any as S.Schema<GoogleAdsSearchads360V23Resources_Recommendation_MaximizeConversionsOptInRecommendation>;
 
 /** The Dynamic Search Ads to Performance Max migration recommendation. */
 export interface GoogleAdsSearchads360V23Resources_Recommendation_MigrateDynamicSearchAdsCampaignToPerformanceMaxRecommendation {
@@ -22276,13 +22078,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSear
   ad?: GoogleAdsSearchads360V23Resources__Ad;
 }
 export const GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdRecommendation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ad: S.optional(GoogleAdsSearchads360V23Resources__Ad),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdRecommendation",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdRecommendation>;
+  GoogleAdsSearchads360V23Services_ApplyRecommendationOperation_TextAdParameters as any as S.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ResponsiveSearchAdRecommendation>;
 
 /** Recommendation to deploy Google Tag on more pages. */
 export type GoogleAdsSearchads360V23Resources_Recommendation_ImproveGoogleTagCoverageRecommendation =
@@ -22501,15 +22297,7 @@ export interface GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMercha
   feedLabel?: string;
 }
 export const GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMerchantCenterAccountSuspensionRecommendation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merchant: S.optional(GoogleAdsSearchads360V23Resources_Recommendation_MerchantInfo),
-      feedLabel: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMerchantCenterAccountSuspensionRecommendation",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMerchantCenterAccountSuspensionRecommendation>;
+  GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMigrateRegularShoppingCampaignOffersToPerformanceMaxRecommendation as any as S.Schema<GoogleAdsSearchads360V23Resources_Recommendation_ShoppingMerchantCenterAccountSuspensionRecommendation>;
 
 /** Wrapper for information about a Google Ads account. */
 export interface GoogleAdsSearchads360V23Resources_Recommendation_AccountInfo {
@@ -23694,13 +23482,8 @@ export interface GoogleAdsSearchads360V23Services__UrlSeed {
   /** The URL to crawl in order to generate keyword ideas. */
   url?: string;
 }
-export const GoogleAdsSearchads360V23Services__UrlSeed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__UrlSeed",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__UrlSeed>;
+export const GoogleAdsSearchads360V23Services__UrlSeed =
+  GoogleAdsSearchads360V23Common__PlacementInfo as any as S.Schema<GoogleAdsSearchads360V23Services__UrlSeed>;
 
 /** Keyword And Url Seed */
 export interface GoogleAdsSearchads360V23Services__KeywordAndUrlSeed {
@@ -24093,13 +23876,8 @@ export interface GoogleAdsSearchads360V23Services__YouTubeSelectSettings {
   /** Lineup for YouTube Select Targeting. */
   lineupId?: string;
 }
-export const GoogleAdsSearchads360V23Services__YouTubeSelectSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lineupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__YouTubeSelectSettings",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__YouTubeSelectSettings>;
+export const GoogleAdsSearchads360V23Services__YouTubeSelectSettings =
+  GoogleAdsSearchads360V23Common__AudienceInsightsLineup as any as S.Schema<GoogleAdsSearchads360V23Services__YouTubeSelectSettings>;
 
 /** Advanced targeting settings for products. */
 export interface GoogleAdsSearchads360V23Services__AdvancedProductTargeting {
@@ -24714,13 +24492,7 @@ export interface GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMe
   suggestions?: GoogleAdsSearchads360V23Services__TargetingSuggestionMetricsList;
 }
 export const GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      suggestions: S.optional(GoogleAdsSearchads360V23Services__TargetingSuggestionMetricsList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse>;
+  GoogleAdsSearchads360V23Services__GenerateSuggestedTargetingInsightsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__GenerateTargetingSuggestionMetricsResponse>;
 
 export interface GetCustomersCustomColumnsRequest {
   /** Required. The resource name of the custom column to fetch. */
@@ -26239,14 +26011,7 @@ export interface GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResp
   nextPageToken?: string;
 }
 export const GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errors: S.optional(GoogleRpc__StatusList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse>;
+  GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse>;
 
 /** Request message for AudienceInsightsService.ListInsightsEligibleDates. */
 export interface GoogleAdsSearchads360V23Services__ListInsightsEligibleDatesRequest {
@@ -26884,14 +26649,8 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerLabelResult {
   /** Returned for successful operations. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__MutateCustomerLabelResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__MutateCustomerLabelResult",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
+export const GoogleAdsSearchads360V23Services__MutateCustomerLabelResult =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 
 /** The result for the conversion value rule set mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateConversionValueRuleSetResult {
@@ -28148,14 +27907,8 @@ export interface GoogleAdsSearchads360V23Services__MoveManagerLinkResponse {
   /** Returned for successful operations. Represents a CustomerManagerLink resource of the newly created link between client customer and new manager customer. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__MoveManagerLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__MoveManagerLinkResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__MoveManagerLinkResponse>;
+export const GoogleAdsSearchads360V23Services__MoveManagerLinkResponse =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__MoveManagerLinkResponse>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerRequestResponseContentTypeEnum =
   | "UNSPECIFIED"
@@ -28593,9 +28346,7 @@ export const MutateCustomersAdGroupAdLabelsRequest = /*@__PURE__*/ S.suspend(() 
 export type GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelResultList>;
 
 /** Response message for an ad group ad labels mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse {
@@ -29255,9 +29006,7 @@ export const MutateCustomersAdGroupCriterionLabelsRequest = /*@__PURE__*/ S.susp
 export type GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList>;
 
 /** Response message for an ad group criterion labels mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse {
@@ -29267,14 +29016,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsR
   results?: GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse>;
+  GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAdGroupCriterionLabelsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AdGroupCustomizerOperationList =
   Array<GoogleAdsSearchads360V23Services__AdGroupCustomizerOperation>;
@@ -29738,9 +29480,7 @@ export const MutateCustomersAssetGroupAssetsRequest = /*@__PURE__*/ S.suspend(()
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList>;
 
 /** Response message for an asset group asset mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse {
@@ -29750,14 +29490,7 @@ export interface GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsRespons
   results?: GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateAssetGroupAssetResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse>;
+  GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupAssetsResponse>;
 
 export type GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperationList =
   Array<GoogleAdsSearchads360V23Services__AssetGroupListingGroupFilterOperation>;
@@ -29893,9 +29626,8 @@ export const MutateCustomersAssetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAdsSearchads360V23Services__MutateAssetGroupResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
-export const GoogleAdsSearchads360V23Services__MutateAssetGroupResultList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupResultList>;
+export const GoogleAdsSearchads360V23Services__MutateAssetGroupResultList =
+  GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateAssetGroupResultList>;
 
 /** Response message for an asset group mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse {
@@ -31314,9 +31046,7 @@ export const MutateCustomersCampaignConversionGoalsRequest = /*@__PURE__*/ S.sus
 export type GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalResultList>;
 
 /** Response message for a campaign conversion goal mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse {
@@ -31648,9 +31378,7 @@ export const MutateCustomersCampaignGoalConfigsRequest = /*@__PURE__*/ S.suspend
 export type GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList>;
 
 /** Response message for a campaign goal config mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse {
@@ -31660,14 +31388,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResp
   results?: GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse>;
+  GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignGoalConfigsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignGroupOperationList =
   Array<GoogleAdsSearchads360V23Services__CampaignGroupOperation>;
@@ -31808,9 +31529,7 @@ export const MutateCustomersCampaignLabelsRequest = /*@__PURE__*/ S.suspend(() =
 export type GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList>;
 
 /** Response message for a campaign labels mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse {
@@ -31820,14 +31539,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse 
   partialFailureError?: GoogleRpc__Status;
 }
 export const GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateCampaignLabelResultList),
-      partialFailureError: S.optional(GoogleRpc__Status),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCampaignLabelsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CampaignOperationList =
   Array<GoogleAdsSearchads360V23Services__CampaignOperation>;
@@ -32612,9 +32324,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomAudienceResult =
 export type GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList>;
 
 /** Response message for custom audience mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse {
@@ -32622,13 +32332,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse
   results?: GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateCustomAudienceResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse>;
+  GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomAudiencesResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomConversionGoalOperationList =
   Array<GoogleAdsSearchads360V23Services__CustomConversionGoalOperation>;
@@ -33057,13 +32761,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerClientLinkRespo
   result?: GoogleAdsSearchads360V23Services__MutateCustomerLabelResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(GoogleAdsSearchads360V23Services__MutateCustomerLabelResult),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse>;
+  GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerClientLinkResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomerConversionGoalOperationList =
   Array<GoogleAdsSearchads360V23Services__CustomerConversionGoalOperation>;
@@ -33115,9 +32813,7 @@ export const MutateCustomersCustomerConversionGoalsRequest = /*@__PURE__*/ S.sus
 export type GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList>;
 
 /** Response message for a customer conversion goal mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse {
@@ -33125,13 +32821,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerConversionGoals
   results?: GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse>;
+  GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerConversionGoalsResponse>;
 
 export type GoogleAdsSearchads360V23Services__MutateCustomerCustomizersRequestResponseContentTypeEnum =
   | "UNSPECIFIED"
@@ -33273,9 +32963,7 @@ export const MutateCustomersCustomerLabelsRequest = /*@__PURE__*/ S.suspend(() =
 export type GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList>;
 
 /** Response message for a customer labels mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse {
@@ -33285,14 +32973,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse 
   partialFailureError?: GoogleRpc__Status;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateCustomerLabelResultList),
-      partialFailureError: S.optional(GoogleRpc__Status),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerLabelsResponse>;
 
 export type GoogleAdsSearchads360V23Resources__CustomerManagerLinkStatusEnum =
   | "UNSPECIFIED"
@@ -33402,9 +33083,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResult =
 export type GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList>;
 
 /** Response message for a CustomerManagerLink mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse {
@@ -33412,13 +33091,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResp
   results?: GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse>;
+  GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerManagerLinkResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperationList =
   Array<GoogleAdsSearchads360V23Services__CustomerNegativeCriterionOperation>;
@@ -33974,13 +33647,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessRespo
   result?: GoogleAdsSearchads360V23Services__MutateCustomerLabelResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(GoogleAdsSearchads360V23Services__MutateCustomerLabelResult),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse>;
+  GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessResponse>;
 
 export type GoogleAdsSearchads360V23Resources__CustomerUserAccessInvitationInvitationStatusEnum =
   | "UNSPECIFIED"
@@ -34108,13 +33775,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvit
   result?: GoogleAdsSearchads360V23Services__MutateCustomerLabelResult;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      result: S.optional(GoogleAdsSearchads360V23Services__MutateCustomerLabelResult),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse>;
+  GoogleAdsSearchads360V23Services__MutateAccountBudgetProposalResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomerUserAccessInvitationResponse>;
 
 export type GoogleAdsSearchads360V23Resources__CustomInterestMemberMemberTypeEnum =
   | "UNSPECIFIED"
@@ -34267,9 +33928,7 @@ export const GoogleAdsSearchads360V23Services__MutateCustomInterestResult =
 export type GoogleAdsSearchads360V23Services__MutateCustomInterestResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestResultList>;
 
 /** Response message for custom interest mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse {
@@ -34277,13 +33936,7 @@ export interface GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse
   results?: GoogleAdsSearchads360V23Services__MutateCustomInterestResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateCustomInterestResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse>;
+  GoogleAdsSearchads360V23Services__MutateCampaignConversionGoalsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateCustomInterestsResponse>;
 
 export type GoogleAdsSearchads360V23Services__CustomizerAttributeOperationList =
   Array<GoogleAdsSearchads360V23Services__CustomizerAttributeOperation>;
@@ -34509,9 +34162,8 @@ export const MutateCustomersExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAdsSearchads360V23Services__MutateExperimentResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
-export const GoogleAdsSearchads360V23Services__MutateExperimentResultList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateExperimentResultList>;
+export const GoogleAdsSearchads360V23Services__MutateExperimentResultList =
+  GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateExperimentResultList>;
 
 /** Response message for experiment mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateExperimentsResponse {
@@ -34666,9 +34318,8 @@ export const GoogleAdsSearchads360V23Services__MutateGoalResult =
 
 export type GoogleAdsSearchads360V23Services__MutateGoalResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
-export const GoogleAdsSearchads360V23Services__MutateGoalResultList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateGoalResultList>;
+export const GoogleAdsSearchads360V23Services__MutateGoalResultList =
+  GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateGoalResultList>;
 
 /** Response message for a goal mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateGoalsResponse {
@@ -34741,9 +34392,7 @@ export const MutateCustomersKeywordPlanAdGroupKeywordsRequest = /*@__PURE__*/ S.
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordResultList>;
 
 /** Response message for a Keyword Plan ad group keyword mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse {
@@ -34817,9 +34466,7 @@ export const MutateCustomersKeywordPlanAdGroupsRequest = /*@__PURE__*/ S.suspend
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList>;
 
 /** Response message for a Keyword Plan ad group mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse {
@@ -34829,14 +34476,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResp
   results?: GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse>;
+  GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperationList =
   Array<GoogleAdsSearchads360V23Services__KeywordPlanCampaignKeywordOperation>;
@@ -34893,9 +34533,7 @@ export const MutateCustomersKeywordPlanCampaignKeywordsRequest = /*@__PURE__*/ S
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList>;
 
 /** Response message for a Keyword Plan campaign keyword mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse {
@@ -34905,16 +34543,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeyw
   results?: GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(
-        GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordResultList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse>;
+  GoogleAdsSearchads360V23Services__MutateKeywordPlanAdGroupKeywordsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignKeywordsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperationList =
   Array<GoogleAdsSearchads360V23Services__KeywordPlanCampaignOperation>;
@@ -34969,9 +34598,7 @@ export const MutateCustomersKeywordPlanCampaignsRequest = /*@__PURE__*/ S.suspen
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList>;
 
 /** Response message for a Keyword Plan campaign mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse {
@@ -34981,14 +34608,7 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsRes
   results?: GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse>;
+  GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlanCampaignsResponse>;
 
 export type GoogleAdsSearchads360V23Services__KeywordPlanOperationList =
   Array<GoogleAdsSearchads360V23Services__KeywordPlanOperation>;
@@ -35041,9 +34661,8 @@ export const MutateCustomersKeywordPlansRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
-export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList>;
+export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList =
+  GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList>;
 
 /** Response message for a keyword plan mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse {
@@ -35052,15 +34671,8 @@ export interface GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse {
   /** All results for the mutate. */
   results?: GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList;
 }
-export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateKeywordPlansResultList),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse>;
+export const GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse =
+  GoogleAdsSearchads360V23Services__MutateExperimentsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateKeywordPlansResponse>;
 
 export type GoogleAdsSearchads360V23Services__MutateLabelsRequestResponseContentTypeEnum =
   | "UNSPECIFIED"
@@ -35197,9 +34809,7 @@ export const MutateCustomersRemarketingActionsRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList>;
 
 /** Response message for remarketing action mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse {
@@ -35209,14 +34819,7 @@ export interface GoogleAdsSearchads360V23Services__MutateRemarketingActionsRespo
   results?: GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList;
 }
 export const GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      partialFailureError: S.optional(GoogleRpc__Status),
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateRemarketingActionResultList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse>;
+  GoogleAdsSearchads360V23Services__MutateAdGroupAdLabelsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateRemarketingActionsResponse>;
 
 export type GoogleAdsSearchads360V23Services__MutateSearchAds360RequestResponseContentTypeEnum =
   | "UNSPECIFIED"
@@ -35764,9 +35367,7 @@ export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResult 
 export type GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
 export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList>;
 
 /** Response message for a user list customer type mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse {
@@ -35776,14 +35377,7 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesRe
   partialFailureError?: GoogleRpc__Status;
 }
 export const GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateUserListCustomerTypeResultList),
-      partialFailureError: S.optional(GoogleRpc__Status),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse>;
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListCustomerTypesResponse>;
 
 export type GoogleAdsSearchads360V23Services__UserListOperationList =
   Array<GoogleAdsSearchads360V23Services__UserListOperation>;
@@ -35834,9 +35428,8 @@ export const MutateCustomersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAdsSearchads360V23Services__MutateUserListResultList =
   Array<GoogleAdsSearchads360V23Services__MutateCustomerLabelResult>;
-export const GoogleAdsSearchads360V23Services__MutateUserListResultList = /*@__PURE__*/ S.Array(
-  GoogleAdsSearchads360V23Services__MutateCustomerLabelResult,
-) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListResultList>;
+export const GoogleAdsSearchads360V23Services__MutateUserListResultList =
+  GoogleAdsSearchads360V23Services__MutateAdGroupLabelResultList as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListResultList>;
 
 /** Response message for user list mutate. */
 export interface GoogleAdsSearchads360V23Services__MutateUserListsResponse {
@@ -35845,15 +35438,8 @@ export interface GoogleAdsSearchads360V23Services__MutateUserListsResponse {
   /** Errors that pertain to operation failures in the partial failure mode. Returned only when partial_failure = true and all errors occur inside the operations. If any errors occur outside the operations (for example, auth errors), we return an RPC level error. */
   partialFailureError?: GoogleRpc__Status;
 }
-export const GoogleAdsSearchads360V23Services__MutateUserListsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      results: S.optional(GoogleAdsSearchads360V23Services__MutateUserListResultList),
-      partialFailureError: S.optional(GoogleRpc__Status),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__MutateUserListsResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListsResponse>;
+export const GoogleAdsSearchads360V23Services__MutateUserListsResponse =
+  GoogleAdsSearchads360V23Services__MutateAssetGroupsResponse as any as S.Schema<GoogleAdsSearchads360V23Services__MutateUserListsResponse>;
 
 export type GoogleAdsSearchads360V23Services__MutateRecommendationSubscriptionRequestResponseContentTypeEnum =
   | "UNSPECIFIED"
@@ -36459,13 +36045,8 @@ export interface GoogleAdsSearchads360V23Services__RemoveDataLinkRequest {
   /** Required. The data link is expected to have a valid resource name. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__RemoveDataLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__RemoveDataLinkRequest",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveDataLinkRequest>;
+export const GoogleAdsSearchads360V23Services__RemoveDataLinkRequest =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveDataLinkRequest>;
 
 export interface RemoveCustomersDataLinksRequest {
   /** Required. The ID of the customer for which the data link is updated. */
@@ -36493,14 +36074,8 @@ export interface GoogleAdsSearchads360V23Services__RemoveDataLinkResponse {
   /** Result for the remove request. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__RemoveDataLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__RemoveDataLinkResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveDataLinkResponse>;
+export const GoogleAdsSearchads360V23Services__RemoveDataLinkResponse =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveDataLinkResponse>;
 
 /** Request message for ProductLinkInvitationService.RemoveProductLinkInvitation. */
 export interface GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest {
@@ -36508,13 +36083,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRe
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRequest>;
 
 export interface RemoveCustomersProductLinkInvitationsRequest {
   /** Required. The ID of the product link invitation being removed. */
@@ -36545,13 +36114,7 @@ export interface GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationRe
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkInvitationResponse>;
 
 /** Request message for ProductLinkService.RemoveProductLink. */
 export interface GoogleAdsSearchads360V23Services__RemoveProductLinkRequest {
@@ -36596,14 +36159,8 @@ export interface GoogleAdsSearchads360V23Services__RemoveProductLinkResponse {
   /** Result for the remove request. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__RemoveProductLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__RemoveProductLinkResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkResponse>;
+export const GoogleAdsSearchads360V23Services__RemoveProductLinkResponse =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__RemoveProductLinkResponse>;
 
 /** Request message for BatchJobService.RunBatchJob. */
 export type GoogleAdsSearchads360V23Services__RunBatchJobRequest =
@@ -36780,13 +36337,7 @@ export interface GoogleAdsSearchads360V23Services__ListAudienceInsightsAttribute
   attributes?: GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataList;
 }
 export const GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributes: S.optional(GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataList),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse>;
+  GoogleAdsSearchads360V23Common__AudienceInsightsAttributeMetadataGroup as any as S.Schema<GoogleAdsSearchads360V23Services__ListAudienceInsightsAttributesResponse>;
 
 /** Indicates search settings in request parameter. */
 export interface GoogleAdsSearchads360V23Services__SearchSettings {
@@ -36913,21 +36464,12 @@ export interface GoogleAdsSearchads360V23Services__RawEventConversionDimensionHe
   name?: string;
 }
 export const GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader>;
+  GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader as any as S.Schema<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader>;
 
 export type GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeaderList =
   Array<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader>;
 export const GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeaderList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeader,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeaderList>;
+  GoogleAdsSearchads360V23Services__ConversionCustomMetricHeaderList as any as S.Schema<GoogleAdsSearchads360V23Services__RawEventConversionDimensionHeaderList>;
 
 /** Fields in the submitted custom question */
 export interface GoogleAdsSearchads360V23Resources__CustomLeadFormSubmissionField {
@@ -38363,13 +37905,8 @@ export interface GoogleAdsSearchads360V23Resources__AgeRangeView {
   /** Output only. The resource name of the age range view. Age range view resource names have the form: `customers/{customer_id}/ageRangeViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__AgeRangeView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__AgeRangeView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__AgeRangeView>;
+export const GoogleAdsSearchads360V23Resources__AgeRangeView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__AgeRangeView>;
 
 /** A dynamic search ads search term view. */
 export interface GoogleAdsSearchads360V23Resources__DynamicSearchAdsSearchTermView {
@@ -38471,14 +38008,8 @@ export interface GoogleAdsSearchads360V23Resources__ShoppingPerformanceView {
   /** Output only. The resource name of the Shopping performance view. Shopping performance view resource names have the form: `customers/{customer_id}/shoppingPerformanceView` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__ShoppingPerformanceView = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__ShoppingPerformanceView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__ShoppingPerformanceView>;
+export const GoogleAdsSearchads360V23Resources__ShoppingPerformanceView =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Resources__ShoppingPerformanceView>;
 
 export type GoogleAdsSearchads360V23Resources__MediaFileMimeTypeEnum =
   | "UNSPECIFIED"
@@ -38754,13 +38285,8 @@ export interface GoogleAdsSearchads360V23Resources__CampaignAudienceView {
   /** Output only. The resource name of the campaign audience view. Campaign audience view resource names have the form: `customers/{customer_id}/campaignAudienceViews/{campaign_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__CampaignAudienceView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__CampaignAudienceView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignAudienceView>;
+export const GoogleAdsSearchads360V23Resources__CampaignAudienceView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__CampaignAudienceView>;
 
 /** A landing page view with metrics aggregated at the unexpanded final URL level. */
 export interface GoogleAdsSearchads360V23Resources__LandingPageView {
@@ -38783,14 +38309,8 @@ export interface GoogleAdsSearchads360V23Resources__TravelActivityGroupView {
   /** Output only. The resource name of the travel activity group view. Travel Activity Group view resource names have the form: `customers/{customer_id}/travelActivityGroupViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__TravelActivityGroupView = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__TravelActivityGroupView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__TravelActivityGroupView>;
+export const GoogleAdsSearchads360V23Resources__TravelActivityGroupView =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Resources__TravelActivityGroupView>;
 
 export type GoogleAdsSearchads360V23Resources__LocalServicesVerificationArtifactStatusEnum =
   | "UNSPECIFIED"
@@ -39078,14 +38598,8 @@ export interface GoogleAdsSearchads360V23Resources__TargetingExpansionView {
   /** Output only. The resource name of the targeting expansion view. Targeting expansion view resource names have the form: `customers/{customer_id}/targetingExpansionViews/{campaign_id}~{targeting_expansion_type}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__TargetingExpansionView = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__TargetingExpansionView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__TargetingExpansionView>;
+export const GoogleAdsSearchads360V23Resources__TargetingExpansionView =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Resources__TargetingExpansionView>;
 
 export type GoogleAdsSearchads360V23Resources__AdGroupCriterionSimulationTypeEnum =
   | "UNSPECIFIED"
@@ -39209,13 +38723,8 @@ export interface GoogleAdsSearchads360V23Resources__LocationView {
   /** Output only. The resource name of the location view. Location view resource names have the form: `customers/{customer_id}/locationViews/{campaign_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__LocationView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__LocationView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__LocationView>;
+export const GoogleAdsSearchads360V23Resources__LocationView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__LocationView>;
 
 export type GoogleAdsSearchads360V23Resources__OperatingSystemVersionConstantOperatorTypeEnum =
   | "UNSPECIFIED"
@@ -39689,13 +39198,8 @@ export interface GoogleAdsSearchads360V23Resources__HotelPerformanceView {
   /** Output only. The resource name of the hotel performance view. Hotel performance view resource names have the form: `customers/{customer_id}/hotelPerformanceView` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__HotelPerformanceView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__HotelPerformanceView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__HotelPerformanceView>;
+export const GoogleAdsSearchads360V23Resources__HotelPerformanceView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__HotelPerformanceView>;
 
 /** This report provides a high-level view of search demand at the campaign level by grouping similar search terms into categories and showing their search volume. Historical data is available starting March 2023. */
 export interface GoogleAdsSearchads360V23Resources__CampaignSearchTermInsight {
@@ -39772,13 +39276,7 @@ export interface GoogleAdsSearchads360V23Resources__MatchedLocationInterestView 
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Resources__MatchedLocationInterestView =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Resources__MatchedLocationInterestView",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources__MatchedLocationInterestView>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult as any as S.Schema<GoogleAdsSearchads360V23Resources__MatchedLocationInterestView>;
 
 export type GoogleAdsSearchads360V23Resources__OfflineConversionUploadConversionActionSummaryStatusEnum =
   | "UNSPECIFIED"
@@ -39875,13 +39373,8 @@ export interface GoogleAdsSearchads360V23Resources__CartDataSalesView {
   /** Output only. The resource name of the Cart data sales view. Cart data sales view resource names have the form: `customers/{customer_id}/cartDataSalesView` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__CartDataSalesView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__CartDataSalesView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__CartDataSalesView>;
+export const GoogleAdsSearchads360V23Resources__CartDataSalesView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__CartDataSalesView>;
 
 /** Fields containing consumer contact details. */
 export interface GoogleAdsSearchads360V23Resources__ContactDetails {
@@ -40408,13 +39901,7 @@ export interface GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_Tar
   targetCpaMicros?: string;
 }
 export const GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetCpa =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetCpaMicros: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetCpa",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetCpa>;
+  GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_MaximizeConversions as any as S.Schema<GoogleAdsSearchads360V23Resources_AccessibleBiddingStrategy_TargetCpa>;
 
 export type GoogleAdsSearchads360V23Resources__AccessibleBiddingStrategyTypeEnum =
   | "UNSPECIFIED"
@@ -40521,13 +40008,8 @@ export interface GoogleAdsSearchads360V23Resources__ManagedPlacementView {
   /** Output only. The resource name of the Managed Placement view. Managed placement view resource names have the form: `customers/{customer_id}/managedPlacementViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__ManagedPlacementView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__ManagedPlacementView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__ManagedPlacementView>;
+export const GoogleAdsSearchads360V23Resources__ManagedPlacementView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__ManagedPlacementView>;
 
 export type GoogleAdsSearchads360V23Resources__CampaignSimulationTypeEnum =
   | "UNSPECIFIED"
@@ -40743,26 +40225,16 @@ export interface GoogleAdsSearchads360V23Resources__IncomeRangeView {
   /** Output only. The resource name of the income range view. Income range view resource names have the form: `customers/{customer_id}/incomeRangeViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__IncomeRangeView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__IncomeRangeView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__IncomeRangeView>;
+export const GoogleAdsSearchads360V23Resources__IncomeRangeView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__IncomeRangeView>;
 
 /** A location interest view summarizes the performance of adgroup location interest criteria. */
 export interface GoogleAdsSearchads360V23Resources__LocationInterestView {
   /** Output only. The resource name of the location interest view. Location interest view resource names have the form: `customers/{customer_id}/locationInterestViews/{campaign_id}~{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__LocationInterestView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__LocationInterestView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__LocationInterestView>;
+export const GoogleAdsSearchads360V23Resources__LocationInterestView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__LocationInterestView>;
 
 export type GoogleAdsSearchads360V23Resources__ShoppingProductAvailabilityEnum =
   | "UNSPECIFIED"
@@ -40976,13 +40448,8 @@ export interface GoogleAdsSearchads360V23Resources__HotelGroupView {
   /** Output only. The resource name of the hotel group view. Hotel Group view resource names have the form: `customers/{customer_id}/hotelGroupViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__HotelGroupView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__HotelGroupView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__HotelGroupView>;
+export const GoogleAdsSearchads360V23Resources__HotelGroupView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__HotelGroupView>;
 
 /** A currency constant. */
 export interface GoogleAdsSearchads360V23Resources__CurrencyConstant {
@@ -41133,26 +40600,16 @@ export interface GoogleAdsSearchads360V23Resources__TopicView {
   /** Output only. The resource name of the topic view. Topic view resource names have the form: `customers/{customer_id}/topicViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__TopicView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__TopicView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__TopicView>;
+export const GoogleAdsSearchads360V23Resources__TopicView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__TopicView>;
 
 /** A gender view resource. Represents the view of a customer's performance metrics aggregated by gender. All statistics are aggregated at the ad group level. Note: While you can segment metrics by age range using `age_range_view` or by gender using `gender_view`, the Search Ads 360 API does not support segmenting metrics by both age range and gender simultaneously in a single query. Analyzing performance across both dimensions combined is not supported in the Search Ads 360 API. */
 export interface GoogleAdsSearchads360V23Resources__GenderView {
   /** Output only. The resource name of the gender view. Gender view resource names have the form: `customers/{customer_id}/genderViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__GenderView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__GenderView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__GenderView>;
+export const GoogleAdsSearchads360V23Resources__GenderView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__GenderView>;
 
 /** A detailed demographic: a particular interest-based vertical to be targeted to reach users based on long-term life facts. */
 export interface GoogleAdsSearchads360V23Resources__DetailedDemographic {
@@ -41737,26 +41194,15 @@ export interface GoogleAdsSearchads360V23Resources__TravelActivityPerformanceVie
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Resources__TravelActivityPerformanceView =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Resources__TravelActivityPerformanceView",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Resources__TravelActivityPerformanceView>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult as any as S.Schema<GoogleAdsSearchads360V23Resources__TravelActivityPerformanceView>;
 
 /** A webpage view. */
 export interface GoogleAdsSearchads360V23Resources__WebpageView {
   /** Output only. The resource name of the webpage view. Webpage view resource names have the form: `customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__WebpageView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__WebpageView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__WebpageView>;
+export const GoogleAdsSearchads360V23Resources__WebpageView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__WebpageView>;
 
 export type GoogleAdsSearchads360V23Common__MetricsHistoricalSearchPredictedCtrEnum =
   | "UNSPECIFIED"
@@ -42270,39 +41716,24 @@ export interface GoogleAdsSearchads360V23Resources__AdScheduleView {
   /** Output only. The resource name of the ad schedule view. AdSchedule view resource names have the form: `customers/{customer_id}/adScheduleViews/{campaign_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__AdScheduleView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__AdScheduleView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdScheduleView>;
+export const GoogleAdsSearchads360V23Resources__AdScheduleView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__AdScheduleView>;
 
 /** A display keyword view. Provides performance data for keywords used in Display Network campaigns. This view lets you analyze how your display keywords are performing across various segments. This view is primarily used to track the effectiveness of keyword targeting within your Display campaigns. To understand which network the metrics apply to, you can select the `segments.ad_network_type` field in your query. This field will segment the data by networks such as the Google Display Network, YouTube, Gmail, and so on. You can select fields from this resource along with metrics like impressions, clicks, and conversions to gauge performance. Attributed resources like `ad_group` and `campaign` can also be selected without segmenting metrics. */
 export interface GoogleAdsSearchads360V23Resources__DisplayKeywordView {
   /** Output only. The resource name of the display keyword view. Display Keyword view resource names have the form: `customers/{customer_id}/displayKeywordViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__DisplayKeywordView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__DisplayKeywordView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__DisplayKeywordView>;
+export const GoogleAdsSearchads360V23Resources__DisplayKeywordView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__DisplayKeywordView>;
 
 /** An ad group audience view. Includes performance data from interests and remarketing lists for Display Network and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated at the audience level. */
 export interface GoogleAdsSearchads360V23Resources__AdGroupAudienceView {
   /** Output only. The resource name of the ad group audience view. Ad group audience view resource names have the form: `customers/{customer_id}/adGroupAudienceViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__AdGroupAudienceView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__AdGroupAudienceView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAudienceView>;
+export const GoogleAdsSearchads360V23Resources__AdGroupAudienceView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__AdGroupAudienceView>;
 
 /** A relationship between an ad group criterion and an effective label. An effective label is a label inherited or directly assigned to this ad group criterion. */
 export interface GoogleAdsSearchads360V23Resources__AdGroupCriterionEffectiveLabel {
@@ -42793,13 +42224,8 @@ export interface GoogleAdsSearchads360V23Resources__ContentCriterionView {
   /** Output only. The resource name of the content criterion view. Content criterion view resource names have the form: `customers/{customer_id}/contentCriterionViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__ContentCriterionView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__ContentCriterionView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__ContentCriterionView>;
+export const GoogleAdsSearchads360V23Resources__ContentCriterionView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__ContentCriterionView>;
 
 export type GoogleAdsSearchads360V23Resources__CombinedAudienceStatusEnum =
   | "UNSPECIFIED"
@@ -42952,13 +42378,8 @@ export interface GoogleAdsSearchads360V23Resources__ParentalStatusView {
   /** Output only. The resource name of the parental status view. Parental Status view resource names have the form: `customers/{customer_id}/parentalStatusViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__ParentalStatusView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__ParentalStatusView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__ParentalStatusView>;
+export const GoogleAdsSearchads360V23Resources__ParentalStatusView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__ParentalStatusView>;
 
 /** This report provides a high-level view of search demand at the customer level by grouping similar search terms into categories and showing their search volume. Historical data is available starting March 2023. */
 export interface GoogleAdsSearchads360V23Resources__CustomerSearchTermInsight {
@@ -43391,26 +42812,16 @@ export interface GoogleAdsSearchads360V23Resources__ProductGroupView {
   /** Output only. The resource name of the product group view. Product group view resource names have the form: `customers/{customer_id}/productGroupViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__ProductGroupView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__ProductGroupView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__ProductGroupView>;
+export const GoogleAdsSearchads360V23Resources__ProductGroupView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__ProductGroupView>;
 
 /** A keyword view. */
 export interface GoogleAdsSearchads360V23Resources__KeywordView {
   /** Output only. The resource name of the keyword view. Keyword view resource names have the form: `customers/{customer_id}/keywordViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Resources__KeywordView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Resources__KeywordView",
-}) as any as S.Schema<GoogleAdsSearchads360V23Resources__KeywordView>;
+export const GoogleAdsSearchads360V23Resources__KeywordView =
+  GoogleAdsSearchads360V23Services__MutateBatchJobResult as any as S.Schema<GoogleAdsSearchads360V23Resources__KeywordView>;
 
 /** A returned row from the query. */
 export interface GoogleAdsSearchads360V23Services__SearchAds360Row {
@@ -44069,21 +43480,12 @@ export interface GoogleAdsSearchads360V23Services__ConversionCustomDimensionHead
   name?: string;
 }
 export const GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader>;
+  GoogleAdsSearchads360V23Services__ConversionCustomMetricHeader as any as S.Schema<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader>;
 
 export type GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeaderList =
   Array<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader>;
 export const GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeaderList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeader,
-  ) as any as S.Schema<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeaderList>;
+  GoogleAdsSearchads360V23Services__ConversionCustomMetricHeaderList as any as S.Schema<GoogleAdsSearchads360V23Services__ConversionCustomDimensionHeaderList>;
 
 /** The attribute of the metric in key value pair format. */
 export interface GoogleAdsSearchads360V23Services_MetricAttributes_Attribute {
@@ -44674,13 +44076,7 @@ export interface GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest
   suggestionInfo?: GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo;
 }
 export const GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      suggestionInfo: S.optional(GoogleAdsSearchads360V23Services__SmartCampaignSuggestionInfo),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest>;
+  GoogleAdsSearchads360V23Services__SuggestKeywordThemesRequest as any as S.Schema<GoogleAdsSearchads360V23Services__SuggestSmartCampaignAdRequest>;
 
 export interface SuggestSmartCampaignAdCustomersRequest {
   /** Required. The ID of the customer. */
@@ -45123,14 +44519,8 @@ export interface GoogleAdsSearchads360V23Services__UpdateDataLinkResponse {
   /** Returned for successful operations. Resource name of the data link. */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V23Services__UpdateDataLinkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V23Services__UpdateDataLinkResponse",
-}) as any as S.Schema<GoogleAdsSearchads360V23Services__UpdateDataLinkResponse>;
+export const GoogleAdsSearchads360V23Services__UpdateDataLinkResponse =
+  GoogleAdsSearchads360V23Services__ApplyRecommendationResult as any as S.Schema<GoogleAdsSearchads360V23Services__UpdateDataLinkResponse>;
 
 export type GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationRequestProductLinkInvitationStatusEnum =
   | "UNSPECIFIED"
@@ -45194,13 +44584,7 @@ export interface GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationRe
   resourceName?: string;
 }
 export const GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse>;
+  GoogleAdsSearchads360V23Services__ConfigureCampaignLifecycleGoalsResult as any as S.Schema<GoogleAdsSearchads360V23Services__UpdateProductLinkInvitationResponse>;
 
 /** A custom variable. */
 export interface GoogleAdsSearchads360V23Services__CustomVariable {

@@ -163,11 +163,8 @@ export const CreateSupportTicketReopenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSupportTicketReopenRequest>;
 
 export interface CreateSupportTicketReopenResponse {}
-export const CreateSupportTicketReopenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSupportTicketReopenResponse",
-}) as any as S.Schema<CreateSupportTicketReopenResponse>;
+export const CreateSupportTicketReopenResponse =
+  CreateSupportTicketCloseResponse as any as S.Schema<CreateSupportTicketReopenResponse>;
 
 export interface CreateSupportTicketScoreRequest {
   /** internal ticket identifier */
@@ -188,11 +185,8 @@ export const CreateSupportTicketScoreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSupportTicketScoreRequest>;
 
 export interface CreateSupportTicketScoreResponse {}
-export const CreateSupportTicketScoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSupportTicketScoreResponse",
-}) as any as S.Schema<CreateSupportTicketScoreResponse>;
+export const CreateSupportTicketScoreResponse =
+  CreateSupportTicketCloseResponse as any as S.Schema<CreateSupportTicketScoreResponse>;
 
 export interface GetSupportTicketRequest {
   /** internal identifier ticket */

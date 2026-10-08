@@ -64,9 +64,8 @@ export const AddMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddMembersRequest" }) as any as S.Schema<AddMembersRequest>;
 
 export type MembersResponseMembersList = Array<Member>;
-export const MembersResponseMembersList = /*@__PURE__*/ S.Array(
-  Member,
-) as any as S.Schema<MembersResponseMembersList>;
+export const MembersResponseMembersList =
+  AddMembersRequestMembersList as any as S.Schema<MembersResponseMembersList>;
 
 export interface Zookie {
   zookie?: string;
@@ -232,13 +231,7 @@ export interface GetRoleResponse {
   resourceType: string;
   role: Role;
 }
-export const GetRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.String,
-    resourceType: S.String,
-    role: Role,
-  }),
-).annotate({ identifier: "GetRoleResponse" }) as any as S.Schema<GetRoleResponse>;
+export const GetRoleResponse = AddCustomRoleResponse as any as S.Schema<GetRoleResponse>;
 
 export interface ListMembersRequest {
   resourceType: string;
@@ -261,9 +254,8 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type ListMembersResponseMembersList = Array<Member>;
-export const ListMembersResponseMembersList = /*@__PURE__*/ S.Array(
-  Member,
-) as any as S.Schema<ListMembersResponseMembersList>;
+export const ListMembersResponseMembersList =
+  AddMembersRequestMembersList as any as S.Schema<ListMembersResponseMembersList>;
 
 export interface ListMembersResponse {
   members: ListMembersResponseMembersList;
@@ -295,9 +287,8 @@ export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPermissionsRequest" }) as any as S.Schema<ListPermissionsRequest>;
 
 export type ListPermissionsResponsePermissionsList = Array<Permission>;
-export const ListPermissionsResponsePermissionsList = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<ListPermissionsResponsePermissionsList>;
+export const ListPermissionsResponsePermissionsList =
+  RolePermissionsList as any as S.Schema<ListPermissionsResponsePermissionsList>;
 
 export interface ListPermissionsResponse {
   permissions: ListPermissionsResponsePermissionsList;
@@ -432,9 +423,8 @@ export type ExistingPermission = Permission;
 export const ExistingPermission = Permission;
 
 export type UserPermissionPermissionsList = Array<Permission>;
-export const UserPermissionPermissionsList = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<UserPermissionPermissionsList>;
+export const UserPermissionPermissionsList =
+  RolePermissionsList as any as S.Schema<UserPermissionPermissionsList>;
 
 export interface UserPermission {
   permissions: UserPermissionPermissionsList;
@@ -466,9 +456,8 @@ export const ListUserPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserPermissionsResponse>;
 
 export type RemoveMembersRequestMembersList = Array<Member>;
-export const RemoveMembersRequestMembersList = /*@__PURE__*/ S.Array(
-  Member,
-) as any as S.Schema<RemoveMembersRequestMembersList>;
+export const RemoveMembersRequestMembersList =
+  AddMembersRequestMembersList as any as S.Schema<RemoveMembersRequestMembersList>;
 
 export interface RemoveMembersRequest {
   resourceId: string;
@@ -493,9 +482,8 @@ export const RemoveMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveMembersRequest" }) as any as S.Schema<RemoveMembersRequest>;
 
 export type UpdateRoleRequestPermissionsList = Array<PermissionRequest>;
-export const UpdateRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  PermissionRequest,
-) as any as S.Schema<UpdateRoleRequestPermissionsList>;
+export const UpdateRoleRequestPermissionsList =
+  AddRoleRequestPermissionsList as any as S.Schema<UpdateRoleRequestPermissionsList>;
 
 export interface UpdateRoleRequest {
   resourceType: string;
@@ -530,13 +518,7 @@ export interface UpdateRoleResponse {
   resourceType: string;
   role: Role;
 }
-export const UpdateRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.String,
-    resourceType: S.String,
-    role: Role,
-  }),
-).annotate({ identifier: "UpdateRoleResponse" }) as any as S.Schema<UpdateRoleResponse>;
+export const UpdateRoleResponse = AddCustomRoleResponse as any as S.Schema<UpdateRoleResponse>;
 
 export type AddMembersError = BadRequest | Forbidden | StackitOpError;
 /** Add members to a resource Add members to the given resource with specified roles. */

@@ -166,7 +166,7 @@ export type PLSubnetArnList = string[];
 export const PLSubnetArnList = /*@__PURE__*/ S.Array(S.String);
 export type Ec2SecurityGroupArn = string;
 export type PLSecurityGroupArnList = string[];
-export const PLSecurityGroupArnList = /*@__PURE__*/ S.Array(S.String);
+export const PLSecurityGroupArnList = PLSubnetArnList as any as S.Schema<PLSecurityGroupArnList>;
 export interface CreateAgentRequest {
   ActivationKey: string;
   AgentName?: string;
@@ -213,7 +213,7 @@ export const AzureAccessTier = S.String;
 
 export type AzureBlobSubdirectory = string;
 export type AgentArnList = string[];
-export const AgentArnList = /*@__PURE__*/ S.Array(S.String);
+export const AgentArnList = PLSubnetArnList as any as S.Schema<AgentArnList>;
 export type SecretArn = string;
 export type KmsKeyArn = string;
 export interface CmkSecretConfig {
@@ -271,7 +271,7 @@ export const CreateLocationAzureBlobResponse = /*@__PURE__*/ S.suspend(() =>
 export type EfsSubdirectory = string;
 export type EfsFilesystemArn = string;
 export type Ec2SecurityGroupArnList = string[];
-export const Ec2SecurityGroupArnList = /*@__PURE__*/ S.Array(S.String);
+export const Ec2SecurityGroupArnList = PLSubnetArnList as any as S.Schema<Ec2SecurityGroupArnList>;
 export interface Ec2Config {
   SubnetArn: string;
   SecurityGroupArns: string[];
@@ -307,11 +307,8 @@ export const CreateLocationEfsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationEfsResponse {
   LocationArn?: string;
 }
-export const CreateLocationEfsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationEfsResponse",
-}) as any as S.Schema<CreateLocationEfsResponse>;
+export const CreateLocationEfsResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationEfsResponse>;
 export type FsxFilesystemArn = string;
 export type FsxLustreSubdirectory = string;
 export interface CreateLocationFsxLustreRequest {
@@ -333,11 +330,8 @@ export const CreateLocationFsxLustreRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationFsxLustreResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxLustreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationFsxLustreResponse",
-}) as any as S.Schema<CreateLocationFsxLustreResponse>;
+export const CreateLocationFsxLustreResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationFsxLustreResponse>;
 export type NfsVersion = "AUTOMATIC" | "NFS3" | "NFS4_0" | "NFS4_1" | (string & {});
 export const NfsVersion = S.String;
 
@@ -421,11 +415,8 @@ export const CreateLocationFsxOntapRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationFsxOntapResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxOntapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationFsxOntapResponse",
-}) as any as S.Schema<CreateLocationFsxOntapResponse>;
+export const CreateLocationFsxOntapResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationFsxOntapResponse>;
 export type FsxOpenZfsSubdirectory = string;
 export interface CreateLocationFsxOpenZfsRequest {
   FsxFilesystemArn: string;
@@ -448,11 +439,8 @@ export const CreateLocationFsxOpenZfsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationFsxOpenZfsResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxOpenZfsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationFsxOpenZfsResponse",
-}) as any as S.Schema<CreateLocationFsxOpenZfsResponse>;
+export const CreateLocationFsxOpenZfsResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationFsxOpenZfsResponse>;
 export type FsxWindowsSubdirectory = string;
 export interface CreateLocationFsxWindowsRequest {
   Subdirectory?: string;
@@ -483,11 +471,8 @@ export const CreateLocationFsxWindowsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationFsxWindowsResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxWindowsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationFsxWindowsResponse",
-}) as any as S.Schema<CreateLocationFsxWindowsResponse>;
+export const CreateLocationFsxWindowsResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationFsxWindowsResponse>;
 export type HdfsSubdirectory = string;
 export type HdfsServerHostname = string;
 export type HdfsServerPort = number;
@@ -577,11 +562,8 @@ export const CreateLocationHdfsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationHdfsResponse {
   LocationArn?: string;
 }
-export const CreateLocationHdfsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationHdfsResponse",
-}) as any as S.Schema<CreateLocationHdfsResponse>;
+export const CreateLocationHdfsResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationHdfsResponse>;
 export type NfsSubdirectory = string;
 export type ServerHostname = string;
 export interface OnPremConfig {
@@ -609,11 +591,8 @@ export const CreateLocationNfsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationNfsResponse {
   LocationArn?: string;
 }
-export const CreateLocationNfsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationNfsResponse",
-}) as any as S.Schema<CreateLocationNfsResponse>;
+export const CreateLocationNfsResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationNfsResponse>;
 export type ObjectStorageServerPort = number;
 export type ObjectStorageServerProtocol = "HTTPS" | "HTTP" | (string & {});
 export const ObjectStorageServerProtocol = S.String;
@@ -658,11 +637,8 @@ export const CreateLocationObjectStorageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationObjectStorageResponse {
   LocationArn?: string;
 }
-export const CreateLocationObjectStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationObjectStorageResponse",
-}) as any as S.Schema<CreateLocationObjectStorageResponse>;
+export const CreateLocationObjectStorageResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationObjectStorageResponse>;
 export type S3BucketArn = string;
 export type S3StorageClass =
   | "STANDARD"
@@ -712,7 +688,7 @@ export const SmbAuthenticationType = S.String;
 
 export type ServerIpAddress = string;
 export type DnsIpList = string[];
-export const DnsIpList = /*@__PURE__*/ S.Array(S.String);
+export const DnsIpList = PLSubnetArnList as any as S.Schema<DnsIpList>;
 export interface CreateLocationSmbRequest {
   Subdirectory: string;
   ServerHostname: string;
@@ -752,11 +728,8 @@ export const CreateLocationSmbRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLocationSmbResponse {
   LocationArn?: string;
 }
-export const CreateLocationSmbResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LocationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateLocationSmbResponse",
-}) as any as S.Schema<CreateLocationSmbResponse>;
+export const CreateLocationSmbResponse =
+  CreateLocationAzureBlobResponse as any as S.Schema<CreateLocationSmbResponse>;
 export type LogGroupArn = string;
 export type VerifyMode =
   | "POINT_IN_TIME_CONSISTENT"
@@ -1020,9 +993,8 @@ export const DeleteAgentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAgentRequest" }) as any as S.Schema<DeleteAgentRequest>;
 export interface DeleteAgentResponse {}
-export const DeleteAgentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentResponse",
-}) as any as S.Schema<DeleteAgentResponse>;
+export const DeleteAgentResponse =
+  CancelTaskExecutionResponse as any as S.Schema<DeleteAgentResponse>;
 export interface DeleteLocationRequest {
   LocationArn: string;
 }
@@ -1032,9 +1004,8 @@ export const DeleteLocationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLocationRequest" }) as any as S.Schema<DeleteLocationRequest>;
 export interface DeleteLocationResponse {}
-export const DeleteLocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLocationResponse",
-}) as any as S.Schema<DeleteLocationResponse>;
+export const DeleteLocationResponse =
+  CancelTaskExecutionResponse as any as S.Schema<DeleteLocationResponse>;
 export interface DeleteTaskRequest {
   TaskArn: string;
 }
@@ -1044,9 +1015,8 @@ export const DeleteTaskRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTaskRequest" }) as any as S.Schema<DeleteTaskRequest>;
 export interface DeleteTaskResponse {}
-export const DeleteTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTaskResponse",
-}) as any as S.Schema<DeleteTaskResponse>;
+export const DeleteTaskResponse =
+  CancelTaskExecutionResponse as any as S.Schema<DeleteTaskResponse>;
 export interface DescribeAgentRequest {
   AgentArn: string;
 }
@@ -1507,9 +1477,11 @@ export const TaskStatus = S.String;
 
 export type NetworkInterfaceArn = string;
 export type SourceNetworkInterfaceArns = string[];
-export const SourceNetworkInterfaceArns = /*@__PURE__*/ S.Array(S.String);
+export const SourceNetworkInterfaceArns =
+  PLSubnetArnList as any as S.Schema<SourceNetworkInterfaceArns>;
 export type DestinationNetworkInterfaceArns = string[];
-export const DestinationNetworkInterfaceArns = /*@__PURE__*/ S.Array(S.String);
+export const DestinationNetworkInterfaceArns =
+  PLSubnetArnList as any as S.Schema<DestinationNetworkInterfaceArns>;
 export type ScheduleDisabledReason = string;
 export type ScheduleDisabledBy = "USER" | "SERVICE" | (string & {});
 export const ScheduleDisabledBy = S.String;
@@ -1666,11 +1638,8 @@ export interface TaskExecutionFoldersListedDetail {
   AtSource?: number;
   AtDestinationForDelete?: number;
 }
-export const TaskExecutionFoldersListedDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AtSource: S.optional(S.Number), AtDestinationForDelete: S.optional(S.Number) }),
-).annotate({
-  identifier: "TaskExecutionFoldersListedDetail",
-}) as any as S.Schema<TaskExecutionFoldersListedDetail>;
+export const TaskExecutionFoldersListedDetail =
+  TaskExecutionFilesListedDetail as any as S.Schema<TaskExecutionFoldersListedDetail>;
 export interface TaskExecutionFoldersFailedDetail {
   List?: number;
   Prepare?: number;
@@ -1806,7 +1775,7 @@ export const LocationFilterName = S.String;
 
 export type FilterAttributeValue = string;
 export type FilterValues = string[];
-export const FilterValues = /*@__PURE__*/ S.Array(S.String);
+export const FilterValues = PLSubnetArnList as any as S.Schema<FilterValues>;
 export type Operator =
   | "Equals"
   | "NotEquals"
@@ -1875,7 +1844,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type OutputTagList = TagListEntry[];
-export const OutputTagList = /*@__PURE__*/ S.Array(TagListEntry);
+export const OutputTagList = InputTagList as any as S.Schema<OutputTagList>;
 export interface ListTagsForResourceResponse {
   Tags?: TagListEntry[];
   NextToken?: string;
@@ -2010,11 +1979,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CancelTaskExecutionResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = PLSubnetArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   Keys: string[];
@@ -2025,9 +1993,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAgentRequest {
   AgentArn: string;
   Name?: string;
@@ -2038,9 +2005,8 @@ export const UpdateAgentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateAgentRequest" }) as any as S.Schema<UpdateAgentRequest>;
 export interface UpdateAgentResponse {}
-export const UpdateAgentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAgentResponse",
-}) as any as S.Schema<UpdateAgentResponse>;
+export const UpdateAgentResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateAgentResponse>;
 export interface UpdateLocationAzureBlobRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2090,9 +2056,8 @@ export const UpdateLocationEfsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateLocationEfsRequest" }) as any as S.Schema<UpdateLocationEfsRequest>;
 export interface UpdateLocationEfsResponse {}
-export const UpdateLocationEfsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLocationEfsResponse",
-}) as any as S.Schema<UpdateLocationEfsResponse>;
+export const UpdateLocationEfsResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateLocationEfsResponse>;
 export interface UpdateLocationFsxLustreRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2105,9 +2070,8 @@ export const UpdateLocationFsxLustreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLocationFsxLustreRequest",
 }) as any as S.Schema<UpdateLocationFsxLustreRequest>;
 export interface UpdateLocationFsxLustreResponse {}
-export const UpdateLocationFsxLustreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateLocationFsxLustreResponse" },
-) as any as S.Schema<UpdateLocationFsxLustreResponse>;
+export const UpdateLocationFsxLustreResponse =
+  UpdateLocationAzureBlobResponse as any as S.Schema<UpdateLocationFsxLustreResponse>;
 export type UpdateSmbDomain = string;
 export interface FsxUpdateProtocolSmb {
   Domain?: string;
@@ -2149,9 +2113,8 @@ export const UpdateLocationFsxOntapRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLocationFsxOntapRequest",
 }) as any as S.Schema<UpdateLocationFsxOntapRequest>;
 export interface UpdateLocationFsxOntapResponse {}
-export const UpdateLocationFsxOntapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLocationFsxOntapResponse",
-}) as any as S.Schema<UpdateLocationFsxOntapResponse>;
+export const UpdateLocationFsxOntapResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateLocationFsxOntapResponse>;
 export interface UpdateLocationFsxOpenZfsRequest {
   LocationArn: string;
   Protocol?: FsxProtocol;
@@ -2195,11 +2158,8 @@ export const UpdateLocationFsxWindowsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLocationFsxWindowsRequest",
 }) as any as S.Schema<UpdateLocationFsxWindowsRequest>;
 export interface UpdateLocationFsxWindowsResponse {}
-export const UpdateLocationFsxWindowsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateLocationFsxWindowsResponse",
-}) as any as S.Schema<UpdateLocationFsxWindowsResponse>;
+export const UpdateLocationFsxWindowsResponse =
+  UpdateLocationFsxOpenZfsResponse as any as S.Schema<UpdateLocationFsxWindowsResponse>;
 export interface UpdateLocationHdfsRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2239,9 +2199,8 @@ export const UpdateLocationHdfsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLocationHdfsRequest",
 }) as any as S.Schema<UpdateLocationHdfsRequest>;
 export interface UpdateLocationHdfsResponse {}
-export const UpdateLocationHdfsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLocationHdfsResponse",
-}) as any as S.Schema<UpdateLocationHdfsResponse>;
+export const UpdateLocationHdfsResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateLocationHdfsResponse>;
 export interface UpdateLocationNfsRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2259,9 +2218,8 @@ export const UpdateLocationNfsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateLocationNfsRequest" }) as any as S.Schema<UpdateLocationNfsRequest>;
 export interface UpdateLocationNfsResponse {}
-export const UpdateLocationNfsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLocationNfsResponse",
-}) as any as S.Schema<UpdateLocationNfsResponse>;
+export const UpdateLocationNfsResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateLocationNfsResponse>;
 export interface UpdateLocationObjectStorageRequest {
   LocationArn: string;
   ServerPort?: number;
@@ -2293,11 +2251,8 @@ export const UpdateLocationObjectStorageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLocationObjectStorageRequest",
 }) as any as S.Schema<UpdateLocationObjectStorageRequest>;
 export interface UpdateLocationObjectStorageResponse {}
-export const UpdateLocationObjectStorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateLocationObjectStorageResponse",
-}) as any as S.Schema<UpdateLocationObjectStorageResponse>;
+export const UpdateLocationObjectStorageResponse =
+  UpdateLocationFsxOpenZfsResponse as any as S.Schema<UpdateLocationObjectStorageResponse>;
 export interface UpdateLocationS3Request {
   LocationArn: string;
   Subdirectory?: string;
@@ -2313,9 +2268,8 @@ export const UpdateLocationS3Request = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateLocationS3Request" }) as any as S.Schema<UpdateLocationS3Request>;
 export interface UpdateLocationS3Response {}
-export const UpdateLocationS3Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLocationS3Response",
-}) as any as S.Schema<UpdateLocationS3Response>;
+export const UpdateLocationS3Response =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateLocationS3Response>;
 export interface UpdateLocationSmbRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2353,9 +2307,8 @@ export const UpdateLocationSmbRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateLocationSmbRequest" }) as any as S.Schema<UpdateLocationSmbRequest>;
 export interface UpdateLocationSmbResponse {}
-export const UpdateLocationSmbResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLocationSmbResponse",
-}) as any as S.Schema<UpdateLocationSmbResponse>;
+export const UpdateLocationSmbResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateLocationSmbResponse>;
 export interface UpdateTaskRequest {
   TaskArn: string;
   Options?: Options;
@@ -2381,9 +2334,8 @@ export const UpdateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateTaskRequest" }) as any as S.Schema<UpdateTaskRequest>;
 export interface UpdateTaskResponse {}
-export const UpdateTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTaskResponse",
-}) as any as S.Schema<UpdateTaskResponse>;
+export const UpdateTaskResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateTaskResponse>;
 export interface UpdateTaskExecutionRequest {
   TaskExecutionArn: string;
   Options: Options;
@@ -2396,9 +2348,8 @@ export const UpdateTaskExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTaskExecutionRequest",
 }) as any as S.Schema<UpdateTaskExecutionRequest>;
 export interface UpdateTaskExecutionResponse {}
-export const UpdateTaskExecutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTaskExecutionResponse",
-}) as any as S.Schema<UpdateTaskExecutionResponse>;
+export const UpdateTaskExecutionResponse =
+  CancelTaskExecutionResponse as any as S.Schema<UpdateTaskExecutionResponse>;
 export type CancelTaskExecutionError = InternalException | InvalidRequestException | CommonErrors;
 /**
  * Stops an DataSync task execution that's in progress. The transfer of some

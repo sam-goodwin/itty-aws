@@ -933,9 +933,8 @@ export const GetDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateDedicatedNashaChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1110,16 +1109,12 @@ export const ListDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedNashaPartitionRequest>;
 
 export type ListDedicatedNashaPartitionResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedNashaPartitionResponseBodyList>;
+export const ListDedicatedNashaPartitionResponseBodyList =
+  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionResponseBodyList>;
 
 export type ListDedicatedNashaPartitionResponse = ListDedicatedNashaPartitionResponseBodyList;
-export const ListDedicatedNashaPartitionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedNashaPartitionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedNashaPartitionResponse",
-}) as any as S.Schema<ListDedicatedNashaPartitionResponse>;
+export const ListDedicatedNashaPartitionResponse =
+  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionResponse>;
 
 export interface ListDedicatedNashaPartitionAccessRequest {
   /** The internal name of your storage */
@@ -1143,17 +1138,13 @@ export const ListDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListDedicatedNashaPartitionAccessRequest>;
 
 export type ListDedicatedNashaPartitionAccessResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionAccessResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedNashaPartitionAccessResponseBodyList>;
+export const ListDedicatedNashaPartitionAccessResponseBodyList =
+  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionAccessResponseBodyList>;
 
 export type ListDedicatedNashaPartitionAccessResponse =
   ListDedicatedNashaPartitionAccessResponseBodyList;
-export const ListDedicatedNashaPartitionAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedNashaPartitionAccessResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedNashaPartitionAccessResponse",
-}) as any as S.Schema<ListDedicatedNashaPartitionAccessResponse>;
+export const ListDedicatedNashaPartitionAccessResponse =
+  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAccessResponse>;
 
 export interface ListDedicatedNashaPartitionAuthorizableBlocksRequest {
   /** The internal name of your storage */
@@ -1177,17 +1168,13 @@ export const ListDedicatedNashaPartitionAuthorizableBlocksRequest = /*@__PURE__*
 }) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksRequest>;
 
 export type ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList>;
+export const ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList =
+  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList>;
 
 export type ListDedicatedNashaPartitionAuthorizableBlocksResponse =
   ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList;
-export const ListDedicatedNashaPartitionAuthorizableBlocksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedNashaPartitionAuthorizableBlocksResponse",
-}) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponse>;
+export const ListDedicatedNashaPartitionAuthorizableBlocksResponse =
+  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponse>;
 
 export interface ListDedicatedNashaPartitionAuthorizableIpsRequest {
   /** The internal name of your storage */
@@ -1211,17 +1198,13 @@ export const ListDedicatedNashaPartitionAuthorizableIpsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsRequest>;
 
 export type ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList>;
+export const ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList =
+  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList>;
 
 export type ListDedicatedNashaPartitionAuthorizableIpsResponse =
   ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList;
-export const ListDedicatedNashaPartitionAuthorizableIpsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedNashaPartitionAuthorizableIpsResponse",
-}) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponse>;
+export const ListDedicatedNashaPartitionAuthorizableIpsResponse =
+  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponse>;
 
 export interface ListDedicatedNashaPartitionCustomSnapshotRequest {
   /** The internal name of your storage */
@@ -1245,17 +1228,13 @@ export const ListDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotRequest>;
 
 export type ListDedicatedNashaPartitionCustomSnapshotResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionCustomSnapshotResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponseBodyList>;
+export const ListDedicatedNashaPartitionCustomSnapshotResponseBodyList =
+  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponseBodyList>;
 
 export type ListDedicatedNashaPartitionCustomSnapshotResponse =
   ListDedicatedNashaPartitionCustomSnapshotResponseBodyList;
-export const ListDedicatedNashaPartitionCustomSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedNashaPartitionCustomSnapshotResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedNashaPartitionCustomSnapshotResponse",
-}) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponse>;
+export const ListDedicatedNashaPartitionCustomSnapshotResponse =
+  ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponse>;
 
 export interface ListDedicatedNashaPartitionQuotaRequest {
   /** The internal name of your storage */
@@ -1279,17 +1258,13 @@ export const ListDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListDedicatedNashaPartitionQuotaRequest>;
 
 export type ListDedicatedNashaPartitionQuotaResponseBodyList = Array<number>;
-export const ListDedicatedNashaPartitionQuotaResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListDedicatedNashaPartitionQuotaResponseBodyList>;
+export const ListDedicatedNashaPartitionQuotaResponseBodyList =
+  CreateDedicatedNashaChangeContactResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionQuotaResponseBodyList>;
 
 export type ListDedicatedNashaPartitionQuotaResponse =
   ListDedicatedNashaPartitionQuotaResponseBodyList;
-export const ListDedicatedNashaPartitionQuotaResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedNashaPartitionQuotaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedNashaPartitionQuotaResponse",
-}) as any as S.Schema<ListDedicatedNashaPartitionQuotaResponse>;
+export const ListDedicatedNashaPartitionQuotaResponse =
+  CreateDedicatedNashaChangeContactResponse as any as S.Schema<ListDedicatedNashaPartitionQuotaResponse>;
 
 export interface ListDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
@@ -1396,16 +1371,12 @@ export const ListDedicatedNashaTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedNashaTaskRequest>;
 
 export type ListDedicatedNashaTaskResponseBodyList = Array<number>;
-export const ListDedicatedNashaTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListDedicatedNashaTaskResponseBodyList>;
+export const ListDedicatedNashaTaskResponseBodyList =
+  CreateDedicatedNashaChangeContactResponseBodyList as any as S.Schema<ListDedicatedNashaTaskResponseBodyList>;
 
 export type ListDedicatedNashaTaskResponse = ListDedicatedNashaTaskResponseBodyList;
-export const ListDedicatedNashaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListDedicatedNashaTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListDedicatedNashaTaskResponse",
-}) as any as S.Schema<ListDedicatedNashaTaskResponse>;
+export const ListDedicatedNashaTaskResponse =
+  CreateDedicatedNashaChangeContactResponse as any as S.Schema<ListDedicatedNashaTaskResponse>;
 
 export interface PutDedicatedNashaRequest {
   /** The internal name of your storage */
@@ -1424,9 +1395,8 @@ export const PutDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDedicatedNashaRequest" }) as any as S.Schema<PutDedicatedNashaRequest>;
 
 export interface PutDedicatedNashaResponse {}
-export const PutDedicatedNashaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDedicatedNashaResponse",
-}) as any as S.Schema<PutDedicatedNashaResponse>;
+export const PutDedicatedNashaResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutDedicatedNashaResponse>;
 
 export interface PutDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
@@ -1478,11 +1448,8 @@ export const PutDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutDedicatedNashaServiceInfosRequest>;
 
 export interface PutDedicatedNashaServiceInfosResponse {}
-export const PutDedicatedNashaServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDedicatedNashaServiceInfosResponse",
-}) as any as S.Schema<PutDedicatedNashaServiceInfosResponse>;
+export const PutDedicatedNashaServiceInfosResponse =
+  PutDedicatedNashaPartitionResponse as any as S.Schema<PutDedicatedNashaServiceInfosResponse>;
 
 export interface TerminateDedicatedNashaRequest {
   /** The internal name of your storage */
@@ -1497,11 +1464,8 @@ export const TerminateDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateDedicatedNashaRequest>;
 
 export type TerminateDedicatedNashaResponse = string;
-export const TerminateDedicatedNashaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TerminateDedicatedNashaResponse",
-}) as any as S.Schema<TerminateDedicatedNashaResponse>;
+export const TerminateDedicatedNashaResponse =
+  ConfirmDedicatedNashaTerminationResponse as any as S.Schema<TerminateDedicatedNashaResponse>;
 
 export type ConfirmDedicatedNashaTerminationError = OvhOpError;
 /** Confirm service termination */

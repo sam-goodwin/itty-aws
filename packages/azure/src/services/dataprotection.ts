@@ -143,18 +143,7 @@ export interface DatasourceSet {
   /** Properties specific to data source set */
   resourceProperties?: BaseResourceProperties;
 }
-export const DatasourceSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasourceType: S.optional(S.String),
-    objectType: S.optional(S.String),
-    resourceID: S.String,
-    resourceLocation: S.optional(S.String),
-    resourceName: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    resourceUri: S.optional(S.String),
-    resourceProperties: S.optional(BaseResourceProperties),
-  }),
-).annotate({ identifier: "DatasourceSet" }) as any as S.Schema<DatasourceSet>;
+export const DatasourceSet = Datasource as any as S.Schema<DatasourceSet>;
 
 /** type of datastore; Operational/Vault/Archive */
 export type DataStoreTypes = "OperationalStore" | "VaultStore" | "ArchiveStore";
@@ -397,9 +386,8 @@ export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstanceResourceGuardOperationRequestsList = Array<string>;
-export const BackupInstanceResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupInstanceResourceGuardOperationRequestsList>;
+export const BackupInstanceResourceGuardOperationRequestsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupInstanceResourceGuardOperationRequestsList>;
 
 /** Additional related Errors */
 export type UserFacingErrorDetailsList = Array<UserFacingError>;
@@ -409,10 +397,8 @@ export const UserFacingErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** Any Key value pairs that can be provided to the client for additional verbose information. */
 export type InnerErrorAdditionalInfoMap = { [key: string]: string | undefined };
-export const InnerErrorAdditionalInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InnerErrorAdditionalInfoMap>;
+export const InnerErrorAdditionalInfoMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<InnerErrorAdditionalInfoMap>;
 
 /** Inner Error */
 export interface InnerError {
@@ -433,16 +419,13 @@ export const InnerError = /*@__PURE__*/ S.suspend(() =>
 
 /** Any key value pairs that can be injected inside error object */
 export type UserFacingErrorPropertiesMap = { [key: string]: string | undefined };
-export const UserFacingErrorPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserFacingErrorPropertiesMap>;
+export const UserFacingErrorPropertiesMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<UserFacingErrorPropertiesMap>;
 
 /** RecommendedAction U+FFFD localized. */
 export type UserFacingErrorRecommendedActionList = Array<string>;
-export const UserFacingErrorRecommendedActionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserFacingErrorRecommendedActionList>;
+export const UserFacingErrorRecommendedActionList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<UserFacingErrorRecommendedActionList>;
 
 /** Error object used by layers that have access to localized content, and propagate that to user */
 export interface UserFacingError {
@@ -566,10 +549,8 @@ export const BackupInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Proxy Resource tags. */
 export type BackupInstancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BackupInstancesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupInstancesCreateOrUpdateResponseTagsMap>;
+export const BackupInstancesCreateOrUpdateResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupInstancesCreateOrUpdateResponseTagsMap>;
 
 export interface BackupInstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -629,9 +610,8 @@ export const SourceDataStoreType = S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type AzureBackupRestoreRequestResourceGuardOperationRequestsList = Array<string>;
-export const AzureBackupRestoreRequestResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureBackupRestoreRequestResourceGuardOperationRequestsList>;
+export const AzureBackupRestoreRequestResourceGuardOperationRequestsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<AzureBackupRestoreRequestResourceGuardOperationRequestsList>;
 
 /** Azure backup restore request */
 export interface AzureBackupRestoreRequest {
@@ -713,14 +693,8 @@ export interface BackupInstancesTriggerCrossRegionRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesTriggerCrossRegionRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-    jobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackupInstancesTriggerCrossRegionRestoreResponse",
-}) as any as S.Schema<BackupInstancesTriggerCrossRegionRestoreResponse>;
+export const BackupInstancesTriggerCrossRegionRestoreResponse =
+  BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesTriggerCrossRegionRestoreResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList = Array<string>;
@@ -782,14 +756,8 @@ export interface BackupInstancesTriggerRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesTriggerRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-    jobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackupInstancesTriggerRestoreResponse",
-}) as any as S.Schema<BackupInstancesTriggerRestoreResponse>;
+export const BackupInstancesTriggerRestoreResponse =
+  BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesTriggerRestoreResponse>;
 
 export interface BackupInstancesValidateCrossRegionRestoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -828,14 +796,8 @@ export interface BackupInstancesValidateCrossRegionRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesValidateCrossRegionRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-    jobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackupInstancesValidateCrossRegionRestoreResponse",
-}) as any as S.Schema<BackupInstancesValidateCrossRegionRestoreResponse>;
+export const BackupInstancesValidateCrossRegionRestoreResponse =
+  BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesValidateCrossRegionRestoreResponse>;
 
 export interface BackupInstancesValidateForModifyBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -912,20 +874,13 @@ export interface BackupInstancesValidateForRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesValidateForRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-    jobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackupInstancesValidateForRestoreResponse",
-}) as any as S.Schema<BackupInstancesValidateForRestoreResponse>;
+export const BackupInstancesValidateForRestoreResponse =
+  BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesValidateForRestoreResponse>;
 
 /** Type of datasource for the backup management */
 export type BaseBackupPolicyDatasourceTypesList = Array<string>;
-export const BaseBackupPolicyDatasourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BaseBackupPolicyDatasourceTypesList>;
+export const BaseBackupPolicyDatasourceTypesList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BaseBackupPolicyDatasourceTypesList>;
 
 /** BackupPolicy base */
 export interface BaseBackupPolicy {
@@ -999,10 +954,8 @@ export const BackupPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BackupVaultsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupVaultsCreateOrUpdateRequestTagsMap>;
+export const BackupVaultsCreateOrUpdateRequestTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateRequestTagsMap>;
 
 export type AlertsState = "Enabled" | "Disabled";
 export const AlertsState = S.String;
@@ -1250,15 +1203,13 @@ export const FeatureSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupVaultInputResourceGuardOperationRequestsList = Array<string>;
-export const BackupVaultInputResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupVaultInputResourceGuardOperationRequestsList>;
+export const BackupVaultInputResourceGuardOperationRequestsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultInputResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
 export type BackupVaultInputReplicatedRegionsList = Array<string>;
-export const BackupVaultInputReplicatedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupVaultInputReplicatedRegionsList>;
+export const BackupVaultInputReplicatedRegionsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultInputReplicatedRegionsList>;
 
 /** Backup Vault */
 export interface BackupVaultInput {
@@ -1291,11 +1242,8 @@ export const BackupVaultInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface DppIdentityDetailsInputUserAssignedIdentitiesValue {}
-export const DppIdentityDetailsInputUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DppIdentityDetailsInputUserAssignedIdentitiesValue",
-}) as any as S.Schema<DppIdentityDetailsInputUserAssignedIdentitiesValue>;
+export const DppIdentityDetailsInputUserAssignedIdentitiesValue =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<DppIdentityDetailsInputUserAssignedIdentitiesValue>;
 
 /** Gets or sets the user assigned identities. */
 export type DppIdentityDetailsInputUserAssignedIdentitiesMap = {
@@ -1362,10 +1310,8 @@ export const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BackupVaultsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupVaultsCreateOrUpdateResponseTagsMap>;
+export const BackupVaultsCreateOrUpdateResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the BackupVault resource */
 export type ProvisioningState = "Failed" | "Provisioning" | "Succeeded" | "Unknown" | "Updating";
@@ -1410,9 +1356,8 @@ export const ResourceMoveDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage Settings */
 export type BackupVaultStorageSettingsList = Array<StorageSetting>;
-export const BackupVaultStorageSettingsList = /*@__PURE__*/ S.Array(
-  StorageSetting,
-) as any as S.Schema<BackupVaultStorageSettingsList>;
+export const BackupVaultStorageSettingsList =
+  BackupVaultInputStorageSettingsList as any as S.Schema<BackupVaultStorageSettingsList>;
 
 /** Secure Score of Backup Vault */
 export type SecureScoreLevel = "None" | "Minimum" | "Adequate" | "Maximum" | "NotSupported";
@@ -1424,15 +1369,13 @@ export const BCDRSecurityLevel = S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupVaultResourceGuardOperationRequestsList = Array<string>;
-export const BackupVaultResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupVaultResourceGuardOperationRequestsList>;
+export const BackupVaultResourceGuardOperationRequestsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
 export type BackupVaultReplicatedRegionsList = Array<string>;
-export const BackupVaultReplicatedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupVaultReplicatedRegionsList>;
+export const BackupVaultReplicatedRegionsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultReplicatedRegionsList>;
 
 /** Backup Vault */
 export interface BackupVault {
@@ -1711,9 +1654,8 @@ export const DeleteBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBackupPolicyRequest>;
 
 export interface DeleteBackupPolicyResponse {}
-export const DeleteBackupPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupPolicyResponse",
-}) as any as S.Schema<DeleteBackupPolicyResponse>;
+export const DeleteBackupPolicyResponse =
+  DeleteBackupInstanceResponse as any as S.Schema<DeleteBackupPolicyResponse>;
 
 export interface DeleteBackupVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1739,9 +1681,8 @@ export const DeleteBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackupVaultRequest" }) as any as S.Schema<DeleteBackupVaultRequest>;
 
 export interface DeleteBackupVaultResponse {}
-export const DeleteBackupVaultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackupVaultResponse",
-}) as any as S.Schema<DeleteBackupVaultResponse>;
+export const DeleteBackupVaultResponse =
+  DeleteBackupInstanceResponse as any as S.Schema<DeleteBackupVaultResponse>;
 
 export interface DeleteDppResourceGuardProxyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1772,11 +1713,8 @@ export const DeleteDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDppResourceGuardProxyRequest>;
 
 export interface DeleteDppResourceGuardProxyResponse {}
-export const DeleteDppResourceGuardProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDppResourceGuardProxyResponse",
-}) as any as S.Schema<DeleteDppResourceGuardProxyResponse>;
+export const DeleteDppResourceGuardProxyResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<DeleteDppResourceGuardProxyResponse>;
 
 export interface DeleteResourceGuardRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1804,9 +1742,8 @@ export const DeleteResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceGuardRequest>;
 
 export interface DeleteResourceGuardResponse {}
-export const DeleteResourceGuardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceGuardResponse",
-}) as any as S.Schema<DeleteResourceGuardResponse>;
+export const DeleteResourceGuardResponse =
+  DeleteBackupInstanceResponse as any as S.Schema<DeleteResourceGuardResponse>;
 
 /** VaultCritical Operation protected by a resource guard */
 export interface ResourceGuardOperationDetail {
@@ -1905,9 +1842,7 @@ export const DppResourceGuardProxyCreateOrUpdateResponse = /*@__PURE__*/ S.suspe
 export type DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
   Array<string>;
 export const DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList>;
+  BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList as any as S.Schema<DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList>;
 
 export interface DppResourceGuardProxyUnlockDeleteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1983,10 +1918,8 @@ export const GetBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Proxy Resource tags. */
 export type GetBackupInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBackupInstanceResponseTagsMap>;
+export const GetBackupInstanceResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupInstanceResponseTagsMap>;
 
 export interface GetBackupInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2002,18 +1935,8 @@ export interface GetBackupInstanceResponse {
   /** Proxy Resource tags. */
   tags?: GetBackupInstanceResponseTagsMap;
 }
-export const GetBackupInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupInstance),
-    tags: S.optional(GetBackupInstanceResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBackupInstanceResponse",
-}) as any as S.Schema<GetBackupInstanceResponse>;
+export const GetBackupInstanceResponse =
+  BackupInstancesCreateOrUpdateResponse as any as S.Schema<GetBackupInstanceResponse>;
 
 export interface GetBackupInstanceBackupInstanceOperationResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2050,10 +1973,8 @@ export const GetBackupInstanceBackupInstanceOperationResultRequest = /*@__PURE__
 export type GetBackupInstanceBackupInstanceOperationResultResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBackupInstanceBackupInstanceOperationResultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultResponseTagsMap>;
+export const GetBackupInstanceBackupInstanceOperationResultResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultResponseTagsMap>;
 
 export interface GetBackupInstanceBackupInstanceOperationResultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2069,18 +1990,8 @@ export interface GetBackupInstanceBackupInstanceOperationResultResponse {
   /** Proxy Resource tags. */
   tags?: GetBackupInstanceBackupInstanceOperationResultResponseTagsMap;
 }
-export const GetBackupInstanceBackupInstanceOperationResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BackupInstance),
-    tags: S.optional(GetBackupInstanceBackupInstanceOperationResultResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetBackupInstanceBackupInstanceOperationResultResponse",
-}) as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultResponse>;
+export const GetBackupInstanceBackupInstanceOperationResultResponse =
+  BackupInstancesCreateOrUpdateResponse as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultResponse>;
 
 export interface GetBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2154,10 +2065,8 @@ export const GetBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBackupVaultResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupVaultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBackupVaultResponseTagsMap>;
+export const GetBackupVaultResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupVaultResponseTagsMap>;
 
 export interface GetBackupVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2217,10 +2126,8 @@ export const GetBackupVaultInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type BackupVaultResourceTagsMap = { [key: string]: string | undefined };
-export const BackupVaultResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupVaultResourceTagsMap>;
+export const BackupVaultResourceTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultResourceTagsMap>;
 
 /** Backup Vault Resource */
 export interface BackupVaultResource {
@@ -2243,19 +2150,7 @@ export interface BackupVaultResource {
   /** Optional ETag. */
   eTag?: string;
 }
-export const BackupVaultResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(BackupVaultResourceTagsMap),
-    location: S.String,
-    properties: BackupVault,
-    identity: S.optional(DppIdentityDetails),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "BackupVaultResource" }) as any as S.Schema<BackupVaultResource>;
+export const BackupVaultResource = GetBackupVaultResponse as any as S.Schema<BackupVaultResource>;
 
 /** List of resources. */
 export type GetBackupVaultInResourceGroupResponseValueList = Array<BackupVaultResource>;
@@ -2299,9 +2194,8 @@ export const GetBackupVaultInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type GetBackupVaultInSubscriptionResponseValueList = Array<BackupVaultResource>;
-export const GetBackupVaultInSubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  BackupVaultResource,
-) as any as S.Schema<GetBackupVaultInSubscriptionResponseValueList>;
+export const GetBackupVaultInSubscriptionResponseValueList =
+  GetBackupVaultInResourceGroupResponseValueList as any as S.Schema<GetBackupVaultInSubscriptionResponseValueList>;
 
 export interface GetBackupVaultInSubscriptionResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
@@ -2309,14 +2203,8 @@ export interface GetBackupVaultInSubscriptionResponse {
   /** List of resources. */
   value?: GetBackupVaultInSubscriptionResponseValueList;
 }
-export const GetBackupVaultInSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(GetBackupVaultInSubscriptionResponseValueList),
-  }),
-).annotate({
-  identifier: "GetBackupVaultInSubscriptionResponse",
-}) as any as S.Schema<GetBackupVaultInSubscriptionResponse>;
+export const GetBackupVaultInSubscriptionResponse =
+  GetBackupVaultInResourceGroupResponse as any as S.Schema<GetBackupVaultInSubscriptionResponse>;
 
 export interface GetBackupVaultOperationResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2348,10 +2236,8 @@ export const GetBackupVaultOperationResultRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type GetBackupVaultOperationResultResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupVaultOperationResultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetBackupVaultOperationResultResponseTagsMap>;
+export const GetBackupVaultOperationResultResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupVaultOperationResultResponseTagsMap>;
 
 export interface GetBackupVaultOperationResultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2373,21 +2259,8 @@ export interface GetBackupVaultOperationResultResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const GetBackupVaultOperationResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetBackupVaultOperationResultResponseTagsMap),
-    location: S.String,
-    properties: BackupVault,
-    identity: S.optional(DppIdentityDetails),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetBackupVaultOperationResultResponse",
-}) as any as S.Schema<GetBackupVaultOperationResultResponse>;
+export const GetBackupVaultOperationResultResponse =
+  BackupVaultsCreateOrUpdateResponse as any as S.Schema<GetBackupVaultOperationResultResponse>;
 
 export interface GetDeletedBackupInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2419,9 +2292,8 @@ export const GetDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DeletedBackupInstanceResourceGuardOperationRequestsList = Array<string>;
-export const DeletedBackupInstanceResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeletedBackupInstanceResourceGuardOperationRequestsList>;
+export const DeletedBackupInstanceResourceGuardOperationRequestsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<DeletedBackupInstanceResourceGuardOperationRequestsList>;
 
 /** Deletion Info */
 export interface DeletionInfo {
@@ -2545,21 +2417,18 @@ export const GetDeletedBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage Settings */
 export type DeletedBackupVaultStorageSettingsList = Array<StorageSetting>;
-export const DeletedBackupVaultStorageSettingsList = /*@__PURE__*/ S.Array(
-  StorageSetting,
-) as any as S.Schema<DeletedBackupVaultStorageSettingsList>;
+export const DeletedBackupVaultStorageSettingsList =
+  BackupVaultInputStorageSettingsList as any as S.Schema<DeletedBackupVaultStorageSettingsList>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DeletedBackupVaultResourceGuardOperationRequestsList = Array<string>;
-export const DeletedBackupVaultResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeletedBackupVaultResourceGuardOperationRequestsList>;
+export const DeletedBackupVaultResourceGuardOperationRequestsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<DeletedBackupVaultResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
 export type DeletedBackupVaultReplicatedRegionsList = Array<string>;
-export const DeletedBackupVaultReplicatedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeletedBackupVaultReplicatedRegionsList>;
+export const DeletedBackupVaultReplicatedRegionsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<DeletedBackupVaultReplicatedRegionsList>;
 
 /** Deletion info for a tracked resource (Backup Vault) */
 export interface ResourceDeletionInfo {
@@ -2703,17 +2572,8 @@ export interface GetDppResourceGuardProxyResponse {
   /** ResourceGuardProxyBaseResource properties */
   properties?: ResourceGuardProxyBase;
 }
-export const GetDppResourceGuardProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceGuardProxyBase),
-  }),
-).annotate({
-  identifier: "GetDppResourceGuardProxyResponse",
-}) as any as S.Schema<GetDppResourceGuardProxyResponse>;
+export const GetDppResourceGuardProxyResponse =
+  DppResourceGuardProxyCreateOrUpdateResponse as any as S.Schema<GetDppResourceGuardProxyResponse>;
 
 export interface GetExportJobsOperationResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2802,10 +2662,8 @@ export const AzureBackupJobErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** Job's Additional Details */
 export type JobExtendedInfoAdditionalDetailsMap = { [key: string]: string | undefined };
-export const JobExtendedInfoAdditionalDetailsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobExtendedInfoAdditionalDetailsMap>;
+export const JobExtendedInfoAdditionalDetailsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<JobExtendedInfoAdditionalDetailsMap>;
 
 export interface RestoreJobRecoveryPointDetails {
   recoveryPointID?: string;
@@ -2822,10 +2680,8 @@ export const RestoreJobRecoveryPointDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional details of Sub Tasks */
 export type JobSubTaskAdditionalDetailsMap = { [key: string]: string | undefined };
-export const JobSubTaskAdditionalDetailsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JobSubTaskAdditionalDetailsMap>;
+export const JobSubTaskAdditionalDetailsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<JobSubTaskAdditionalDetailsMap>;
 
 /** Details of Job's Sub Task */
 export interface JobSubTask {
@@ -2910,9 +2766,8 @@ export const JobExtendedInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported actions */
 export type AzureBackupJobSupportedActionsList = Array<string>;
-export const AzureBackupJobSupportedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AzureBackupJobSupportedActionsList>;
+export const AzureBackupJobSupportedActionsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<AzureBackupJobSupportedActionsList>;
 
 /** AzureBackup Job Class */
 export interface AzureBackupJob {
@@ -3114,14 +2969,8 @@ export interface GetOperationResultResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const GetOperationResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-    jobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOperationResultResponse",
-}) as any as S.Schema<GetOperationResultResponse>;
+export const GetOperationResultResponse =
+  BackupInstancesAdhocBackupResponse as any as S.Schema<GetOperationResultResponse>;
 
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3201,11 +3050,7 @@ export interface OperationExtendedInfo {
   /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
   objectType: string;
 }
-export const OperationExtendedInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({ identifier: "OperationExtendedInfo" }) as any as S.Schema<OperationExtendedInfo>;
+export const OperationExtendedInfo = AuthCredentials as any as S.Schema<OperationExtendedInfo>;
 
 /** Operation Resource */
 export interface OperationResource {
@@ -3318,11 +3163,8 @@ export const GetRecoveryPointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AzureBackupRecoveryPoint {
   objectType: string;
 }
-export const AzureBackupRecoveryPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({ identifier: "AzureBackupRecoveryPoint" }) as any as S.Schema<AzureBackupRecoveryPoint>;
+export const AzureBackupRecoveryPoint =
+  AuthCredentials as any as S.Schema<AzureBackupRecoveryPoint>;
 
 export interface GetRecoveryPointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3371,10 +3213,8 @@ export const GetResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetResourceGuardResponseTagsMap = { [key: string]: string | undefined };
-export const GetResourceGuardResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetResourceGuardResponseTagsMap>;
+export const GetResourceGuardResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetResourceGuardResponseTagsMap>;
 
 /** This class contains all the details about a critical operation. */
 export interface ResourceGuardOperation {
@@ -3398,9 +3238,8 @@ export const ResourceGuardResourceGuardOperationsList = /*@__PURE__*/ S.Array(
 
 /** List of critical operations which are not protected by this resourceGuard */
 export type ResourceGuardVaultCriticalOperationExclusionListList = Array<string>;
-export const ResourceGuardVaultCriticalOperationExclusionListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceGuardVaultCriticalOperationExclusionListList>;
+export const ResourceGuardVaultCriticalOperationExclusionListList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<ResourceGuardVaultCriticalOperationExclusionListList>;
 
 export interface ResourceGuard {
   /** Provisioning state of the BackupVault resource */
@@ -3597,10 +3436,8 @@ export const GetResourceGuardResourcesInResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type ResourceGuardResourceTagsMap = { [key: string]: string | undefined };
-export const ResourceGuardResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResourceGuardResourceTagsMap>;
+export const ResourceGuardResourceTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<ResourceGuardResourceTagsMap>;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface ResourceGuardResource {
@@ -3621,18 +3458,8 @@ export interface ResourceGuardResource {
   /** Optional ETag. */
   eTag?: string;
 }
-export const ResourceGuardResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ResourceGuardResourceTagsMap),
-    location: S.String,
-    properties: S.optional(ResourceGuard),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceGuardResource" }) as any as S.Schema<ResourceGuardResource>;
+export const ResourceGuardResource =
+  GetResourceGuardResponse as any as S.Schema<ResourceGuardResource>;
 
 /** List of resources. */
 export type GetResourceGuardResourcesInResourceGroupResponseValueList =
@@ -3677,9 +3504,8 @@ export const GetResourceGuardResourcesInSubscriptionRequest = /*@__PURE__*/ S.su
 
 /** List of resources. */
 export type GetResourceGuardResourcesInSubscriptionResponseValueList = Array<ResourceGuardResource>;
-export const GetResourceGuardResourcesInSubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  ResourceGuardResource,
-) as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponseValueList>;
+export const GetResourceGuardResourcesInSubscriptionResponseValueList =
+  GetResourceGuardResourcesInResourceGroupResponseValueList as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponseValueList>;
 
 export interface GetResourceGuardResourcesInSubscriptionResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
@@ -3687,14 +3513,8 @@ export interface GetResourceGuardResourcesInSubscriptionResponse {
   /** List of resources. */
   value?: GetResourceGuardResourcesInSubscriptionResponseValueList;
 }
-export const GetResourceGuardResourcesInSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(GetResourceGuardResourcesInSubscriptionResponseValueList),
-  }),
-).annotate({
-  identifier: "GetResourceGuardResourcesInSubscriptionResponse",
-}) as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponse>;
+export const GetResourceGuardResourcesInSubscriptionResponse =
+  GetResourceGuardResourcesInResourceGroupResponse as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponse>;
 
 export interface ListBackupInstancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3723,10 +3543,8 @@ export const ListBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Proxy Resource tags. */
 export type BackupInstanceResourceTagsMap = { [key: string]: string | undefined };
-export const BackupInstanceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupInstanceResourceTagsMap>;
+export const BackupInstanceResourceTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupInstanceResourceTagsMap>;
 
 /** BackupInstance Resource */
 export interface BackupInstanceResource {
@@ -3796,9 +3614,8 @@ export const ListBackupInstancesExtensionRoutingRequest = /*@__PURE__*/ S.suspen
 
 /** List of resources. */
 export type ListBackupInstancesExtensionRoutingResponseValueList = Array<BackupInstanceResource>;
-export const ListBackupInstancesExtensionRoutingResponseValueList = /*@__PURE__*/ S.Array(
-  BackupInstanceResource,
-) as any as S.Schema<ListBackupInstancesExtensionRoutingResponseValueList>;
+export const ListBackupInstancesExtensionRoutingResponseValueList =
+  ListBackupInstancesResponseValueList as any as S.Schema<ListBackupInstancesExtensionRoutingResponseValueList>;
 
 export interface ListBackupInstancesExtensionRoutingResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
@@ -3806,14 +3623,8 @@ export interface ListBackupInstancesExtensionRoutingResponse {
   /** List of resources. */
   value?: ListBackupInstancesExtensionRoutingResponseValueList;
 }
-export const ListBackupInstancesExtensionRoutingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ListBackupInstancesExtensionRoutingResponseValueList),
-  }),
-).annotate({
-  identifier: "ListBackupInstancesExtensionRoutingResponse",
-}) as any as S.Schema<ListBackupInstancesExtensionRoutingResponse>;
+export const ListBackupInstancesExtensionRoutingResponse =
+  ListBackupInstancesResponse as any as S.Schema<ListBackupInstancesExtensionRoutingResponse>;
 
 export interface ListBackupPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3853,15 +3664,8 @@ export interface BaseBackupPolicyResource {
   /** BaseBackupPolicyResource properties */
   properties?: BaseBackupPolicy;
 }
-export const BaseBackupPolicyResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BaseBackupPolicy),
-  }),
-).annotate({ identifier: "BaseBackupPolicyResource" }) as any as S.Schema<BaseBackupPolicyResource>;
+export const BaseBackupPolicyResource =
+  GetBackupPolicyResponse as any as S.Schema<BaseBackupPolicyResource>;
 
 /** List of resources. */
 export type ListBackupPoliciesResponseValueList = Array<BaseBackupPolicyResource>;
@@ -4008,17 +3812,8 @@ export interface DeletedBackupInstanceResource {
   /** DeletedBackupInstanceResource properties */
   properties?: DeletedBackupInstance;
 }
-export const DeletedBackupInstanceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeletedBackupInstance),
-  }),
-).annotate({
-  identifier: "DeletedBackupInstanceResource",
-}) as any as S.Schema<DeletedBackupInstanceResource>;
+export const DeletedBackupInstanceResource =
+  GetDeletedBackupInstanceResponse as any as S.Schema<DeletedBackupInstanceResource>;
 
 /** List of resources. */
 export type ListDeletedBackupInstancesResponseValueList = Array<DeletedBackupInstanceResource>;
@@ -4076,17 +3871,8 @@ export interface DeletedBackupVaultResource {
   /** The resource-specific properties for this resource. */
   properties?: DeletedBackupVault;
 }
-export const DeletedBackupVaultResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DeletedBackupVault),
-  }),
-).annotate({
-  identifier: "DeletedBackupVaultResource",
-}) as any as S.Schema<DeletedBackupVaultResource>;
+export const DeletedBackupVaultResource =
+  GetDeletedBackupVaultResponse as any as S.Schema<DeletedBackupVaultResource>;
 
 /** The DeletedBackupVaultResource items on this page */
 export type DeletedBackupVaultResourceListResultValueList = Array<DeletedBackupVaultResource>;
@@ -4148,17 +3934,8 @@ export interface ResourceGuardProxyBaseResource {
   /** ResourceGuardProxyBaseResource properties */
   properties?: ResourceGuardProxyBase;
 }
-export const ResourceGuardProxyBaseResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceGuardProxyBase),
-  }),
-).annotate({
-  identifier: "ResourceGuardProxyBaseResource",
-}) as any as S.Schema<ResourceGuardProxyBaseResource>;
+export const ResourceGuardProxyBaseResource =
+  DppResourceGuardProxyCreateOrUpdateResponse as any as S.Schema<ResourceGuardProxyBaseResource>;
 
 /** List of resources. */
 export type ListDppResourceGuardProxyResponseValueList = Array<ResourceGuardProxyBaseResource>;
@@ -4226,15 +4003,7 @@ export interface AzureBackupJobResource {
   /** AzureBackupJobResource properties */
   properties?: AzureBackupJob;
 }
-export const AzureBackupJobResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AzureBackupJob),
-  }),
-).annotate({ identifier: "AzureBackupJobResource" }) as any as S.Schema<AzureBackupJobResource>;
+export const AzureBackupJobResource = GetJobResponse as any as S.Schema<AzureBackupJobResource>;
 
 /** List of resources. */
 export type ListFetchCrossRegionRestoreJobsResponseValueList = Array<AzureBackupJobResource>;
@@ -4366,9 +4135,8 @@ export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ListJobsResponseValueList = Array<AzureBackupJobResource>;
-export const ListJobsResponseValueList = /*@__PURE__*/ S.Array(
-  AzureBackupJobResource,
-) as any as S.Schema<ListJobsResponseValueList>;
+export const ListJobsResponseValueList =
+  ListFetchCrossRegionRestoreJobsResponseValueList as any as S.Schema<ListJobsResponseValueList>;
 
 export interface ListJobsResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
@@ -4419,9 +4187,8 @@ export const ListRecoveryPointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ListRecoveryPointsResponseValueList = Array<AzureBackupRecoveryPointResource>;
-export const ListRecoveryPointsResponseValueList = /*@__PURE__*/ S.Array(
-  AzureBackupRecoveryPointResource,
-) as any as S.Schema<ListRecoveryPointsResponseValueList>;
+export const ListRecoveryPointsResponseValueList =
+  ListFetchSecondaryRecoveryPointsResponseValueList as any as S.Schema<ListRecoveryPointsResponseValueList>;
 
 export interface ListRecoveryPointsResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
@@ -4429,21 +4196,13 @@ export interface ListRecoveryPointsResponse {
   /** List of resources. */
   value?: ListRecoveryPointsResponseValueList;
 }
-export const ListRecoveryPointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ListRecoveryPointsResponseValueList),
-  }),
-).annotate({
-  identifier: "ListRecoveryPointsResponse",
-}) as any as S.Schema<ListRecoveryPointsResponse>;
+export const ListRecoveryPointsResponse =
+  ListFetchSecondaryRecoveryPointsResponse as any as S.Schema<ListRecoveryPointsResponse>;
 
 /** Resource Guard tags. */
 export type PatchResourceGuardRequestTagsMap = { [key: string]: string | undefined };
-export const PatchResourceGuardRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchResourceGuardRequestTagsMap>;
+export const PatchResourceGuardRequestTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PatchResourceGuardRequestTagsMap>;
 
 export interface PatchResourceGuardRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4475,10 +4234,8 @@ export const PatchResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PatchResourceGuardResponseTagsMap = { [key: string]: string | undefined };
-export const PatchResourceGuardResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchResourceGuardResponseTagsMap>;
+export const PatchResourceGuardResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PatchResourceGuardResponseTagsMap>;
 
 export interface PatchResourceGuardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4515,16 +4272,13 @@ export const PatchResourceGuardResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PutResourceGuardRequestTagsMap = { [key: string]: string | undefined };
-export const PutResourceGuardRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutResourceGuardRequestTagsMap>;
+export const PutResourceGuardRequestTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PutResourceGuardRequestTagsMap>;
 
 /** List of critical operations which are not protected by this resourceGuard */
 export type ResourceGuardInputVaultCriticalOperationExclusionListList = Array<string>;
-export const ResourceGuardInputVaultCriticalOperationExclusionListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceGuardInputVaultCriticalOperationExclusionListList>;
+export const ResourceGuardInputVaultCriticalOperationExclusionListList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<ResourceGuardInputVaultCriticalOperationExclusionListList>;
 
 export interface ResourceGuardInput {
   /** List of critical operations which are not protected by this resourceGuard */
@@ -4575,10 +4329,8 @@ export const PutResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PutResourceGuardResponseTagsMap = { [key: string]: string | undefined };
-export const PutResourceGuardResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutResourceGuardResponseTagsMap>;
+export const PutResourceGuardResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PutResourceGuardResponseTagsMap>;
 
 export interface PutResourceGuardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4598,18 +4350,8 @@ export interface PutResourceGuardResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const PutResourceGuardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PutResourceGuardResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ResourceGuard),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "PutResourceGuardResponse" }) as any as S.Schema<PutResourceGuardResponse>;
+export const PutResourceGuardResponse =
+  GetResourceGuardResponse as any as S.Schema<PutResourceGuardResponse>;
 
 export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4651,16 +4393,7 @@ export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRespon
   systemData?: SystemData;
 }
 export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-    }),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse",
-  }) as any as S.Schema<ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse>;
+  GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4702,16 +4435,7 @@ export interface ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectR
   systemData?: SystemData;
 }
 export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-    }),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse",
-  }) as any as S.Schema<ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse>;
+  GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4753,16 +4477,7 @@ export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse
   systemData?: SystemData;
 }
 export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-    }),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse",
-  }) as any as S.Schema<ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse>;
+  GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4804,16 +4519,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRespon
   systemData?: SystemData;
 }
 export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-    }),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse",
-  }) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse>;
+  GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4855,16 +4561,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRes
   systemData?: SystemData;
 }
 export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-    }),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse",
-  }) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse>;
+  GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5174,11 +4871,8 @@ export const ResumeBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeBackupInstanceBackupsRequest>;
 
 export interface ResumeBackupInstanceBackupsResponse {}
-export const ResumeBackupInstanceBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeBackupInstanceBackupsResponse",
-}) as any as S.Schema<ResumeBackupInstanceBackupsResponse>;
+export const ResumeBackupInstanceBackupsResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<ResumeBackupInstanceBackupsResponse>;
 
 export interface ResumeBackupInstanceProtectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5209,18 +4903,13 @@ export const ResumeBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ResumeBackupInstanceProtectionRequest>;
 
 export interface ResumeBackupInstanceProtectionResponse {}
-export const ResumeBackupInstanceProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeBackupInstanceProtectionResponse",
-}) as any as S.Schema<ResumeBackupInstanceProtectionResponse>;
+export const ResumeBackupInstanceProtectionResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<ResumeBackupInstanceProtectionResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList = Array<string>;
 export const StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList>;
+  BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList as any as S.Schema<StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList>;
 
 export interface StopBackupInstanceProtectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5256,18 +4945,13 @@ export const StopBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopBackupInstanceProtectionRequest>;
 
 export interface StopBackupInstanceProtectionResponse {}
-export const StopBackupInstanceProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopBackupInstanceProtectionResponse",
-}) as any as S.Schema<StopBackupInstanceProtectionResponse>;
+export const StopBackupInstanceProtectionResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<StopBackupInstanceProtectionResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList = Array<string>;
 export const SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList>;
+  BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList as any as S.Schema<SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList>;
 
 export interface SuspendBackupInstanceBackupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5303,11 +4987,8 @@ export const SuspendBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendBackupInstanceBackupsRequest>;
 
 export interface SuspendBackupInstanceBackupsResponse {}
-export const SuspendBackupInstanceBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SuspendBackupInstanceBackupsResponse",
-}) as any as S.Schema<SuspendBackupInstanceBackupsResponse>;
+export const SuspendBackupInstanceBackupsResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<SuspendBackupInstanceBackupsResponse>;
 
 /** Field indicating sync type e.g. to sync only in case of failure or in all cases */
 export type SyncType = "Default" | "ForceResync";
@@ -5345,11 +5026,8 @@ export const SyncBackupInstanceBackupInstanceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SyncBackupInstanceBackupInstanceRequest>;
 
 export interface SyncBackupInstanceBackupInstanceResponse {}
-export const SyncBackupInstanceBackupInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SyncBackupInstanceBackupInstanceResponse",
-}) as any as S.Schema<SyncBackupInstanceBackupInstanceResponse>;
+export const SyncBackupInstanceBackupInstanceResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<SyncBackupInstanceBackupInstanceResponse>;
 
 /** Priority to be used for rehydration. Values High or Standard */
 export type RehydrationPriority = "Invalid" | "High" | "Standard";
@@ -5393,11 +5071,8 @@ export const TriggerBackupInstanceRehydrateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<TriggerBackupInstanceRehydrateRequest>;
 
 export interface TriggerBackupInstanceRehydrateResponse {}
-export const TriggerBackupInstanceRehydrateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TriggerBackupInstanceRehydrateResponse",
-}) as any as S.Schema<TriggerBackupInstanceRehydrateResponse>;
+export const TriggerBackupInstanceRehydrateResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<TriggerBackupInstanceRehydrateResponse>;
 
 export interface TriggerExportJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5423,9 +5098,8 @@ export const TriggerExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerExportJobRequest" }) as any as S.Schema<TriggerExportJobRequest>;
 
 export interface TriggerExportJobResponse {}
-export const TriggerExportJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TriggerExportJobResponse",
-}) as any as S.Schema<TriggerExportJobResponse>;
+export const TriggerExportJobResponse =
+  DeleteBackupInstanceResponse as any as S.Schema<TriggerExportJobResponse>;
 
 export interface UndeleteDeletedBackupInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5456,17 +5130,13 @@ export const UndeleteDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UndeleteDeletedBackupInstanceRequest>;
 
 export interface UndeleteDeletedBackupInstanceResponse {}
-export const UndeleteDeletedBackupInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteDeletedBackupInstanceResponse",
-}) as any as S.Schema<UndeleteDeletedBackupInstanceResponse>;
+export const UndeleteDeletedBackupInstanceResponse =
+  BackupInstancesValidateForModifyBackupResponse as any as S.Schema<UndeleteDeletedBackupInstanceResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type PatchBackupVaultInputResourceGuardOperationRequestsList = Array<string>;
-export const PatchBackupVaultInputResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchBackupVaultInputResourceGuardOperationRequestsList>;
+export const PatchBackupVaultInputResourceGuardOperationRequestsList =
+  BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<PatchBackupVaultInputResourceGuardOperationRequestsList>;
 
 /** Backup Vault Contract for Patch Backup Vault API. */
 export interface PatchBackupVaultInput {
@@ -5495,10 +5165,8 @@ export const PatchBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBackupVaultRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupVaultRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBackupVaultRequestTagsMap>;
+export const UpdateBackupVaultRequestTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupVaultRequestTagsMap>;
 
 export interface UpdateBackupVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5534,10 +5202,8 @@ export const UpdateBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBackupVaultResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupVaultResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateBackupVaultResponseTagsMap>;
+export const UpdateBackupVaultResponseTagsMap =
+  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupVaultResponseTagsMap>;
 
 export interface UpdateBackupVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5559,21 +5225,8 @@ export interface UpdateBackupVaultResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const UpdateBackupVaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateBackupVaultResponseTagsMap),
-    location: S.String,
-    properties: BackupVault,
-    identity: S.optional(DppIdentityDetails),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBackupVaultResponse",
-}) as any as S.Schema<UpdateBackupVaultResponse>;
+export const UpdateBackupVaultResponse =
+  BackupVaultsCreateOrUpdateResponse as any as S.Schema<UpdateBackupVaultResponse>;
 
 export interface ValidateBackupInstanceForBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5609,14 +5262,8 @@ export interface ValidateBackupInstanceForBackupResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const ValidateBackupInstanceForBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-    jobId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ValidateBackupInstanceForBackupResponse",
-}) as any as S.Schema<ValidateBackupInstanceForBackupResponse>;
+export const ValidateBackupInstanceForBackupResponse =
+  BackupInstancesAdhocBackupResponse as any as S.Schema<ValidateBackupInstanceForBackupResponse>;
 
 export type BackupInstancesAdhocBackupError = AzureOpError;
 /** Trigger adhoc backup */

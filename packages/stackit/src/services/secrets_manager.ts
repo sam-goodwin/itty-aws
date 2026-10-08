@@ -353,9 +353,7 @@ export const DeleteApproleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApproleRequest" }) as any as S.Schema<DeleteApproleRequest>;
 
 export interface DeleteApproleResponse {}
-export const DeleteApproleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApproleResponse",
-}) as any as S.Schema<DeleteApproleResponse>;
+export const DeleteApproleResponse = DeleteACLResponse as any as S.Schema<DeleteApproleResponse>;
 
 export interface DeleteApproleSecretIdRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -386,9 +384,8 @@ export const DeleteApproleSecretIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApproleSecretIdRequest>;
 
 export interface DeleteApproleSecretIdResponse {}
-export const DeleteApproleSecretIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApproleSecretIdResponse",
-}) as any as S.Schema<DeleteApproleSecretIdResponse>;
+export const DeleteApproleSecretIdResponse =
+  DeleteACLResponse as any as S.Schema<DeleteApproleSecretIdResponse>;
 
 export interface DeleteInstanceRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -411,9 +408,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse = DeleteACLResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DeleteUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -439,9 +434,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteACLResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface GetACLRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -759,9 +752,7 @@ export const UpdateACLRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateACLRequest" }) as any as S.Schema<UpdateACLRequest>;
 
 export interface UpdateACLResponse {}
-export const UpdateACLResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateACLResponse",
-}) as any as S.Schema<UpdateACLResponse>;
+export const UpdateACLResponse = DeleteACLResponse as any as S.Schema<UpdateACLResponse>;
 
 export interface UpdateACLPayload {
   /** The given IP/IP Range that is permitted to access. */
@@ -801,9 +792,7 @@ export const UpdateACLsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateACLsRequest" }) as any as S.Schema<UpdateACLsRequest>;
 
 export interface UpdateACLsResponse {}
-export const UpdateACLsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateACLsResponse",
-}) as any as S.Schema<UpdateACLsResponse>;
+export const UpdateACLsResponse = DeleteACLResponse as any as S.Schema<UpdateACLsResponse>;
 
 export interface UpdateApproleRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -896,9 +885,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstanceResponse",
-}) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse = DeleteACLResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export interface UpdateUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
@@ -930,9 +917,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 
 export interface UpdateUserResponse {}
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserResponse",
-}) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = DeleteACLResponse as any as S.Schema<UpdateUserResponse>;
 
 export type CreateACLError = BadRequest | NotFound | Conflict | StackitOpError;
 /** Creates a new Secrets Manager acl within the project. */

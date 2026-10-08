@@ -467,11 +467,8 @@ export const CreateTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTelemetryPipelineOutput {
   Arn?: string;
 }
-export const CreateTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateTelemetryPipelineOutput",
-}) as any as S.Schema<CreateTelemetryPipelineOutput>;
+export const CreateTelemetryPipelineOutput =
+  CreateS3TableIntegrationOutput as any as S.Schema<CreateTelemetryPipelineOutput>;
 export type ResourceType =
   | "AWS::EC2::Instance"
   | "AWS::EC2::VPC"
@@ -531,7 +528,7 @@ export const VPCFlowLogParameters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VPCFlowLogParameters" }) as any as S.Schema<VPCFlowLogParameters>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = Regions as any as S.Schema<StringList>;
 export interface AdvancedFieldSelector {
   Field: string;
   Equals?: string[];
@@ -781,11 +778,8 @@ export const CreateTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTelemetryRuleOutput {
   RuleArn?: string;
 }
-export const CreateTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateTelemetryRuleOutput",
-}) as any as S.Schema<CreateTelemetryRuleOutput>;
+export const CreateTelemetryRuleOutput =
+  CreateCentralizationRuleForOrganizationOutput as any as S.Schema<CreateTelemetryRuleOutput>;
 export interface CreateTelemetryRuleForOrganizationInput {
   RuleName: string;
   Rule: TelemetryRule;
@@ -808,11 +802,8 @@ export const CreateTelemetryRuleForOrganizationInput = /*@__PURE__*/ S.suspend((
 export interface CreateTelemetryRuleForOrganizationOutput {
   RuleArn?: string;
 }
-export const CreateTelemetryRuleForOrganizationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateTelemetryRuleForOrganizationOutput",
-}) as any as S.Schema<CreateTelemetryRuleForOrganizationOutput>;
+export const CreateTelemetryRuleForOrganizationOutput =
+  CreateCentralizationRuleForOrganizationOutput as any as S.Schema<CreateTelemetryRuleForOrganizationOutput>;
 export type RuleIdentifier = string;
 export interface DeleteCentralizationRuleForOrganizationInput {
   RuleIdentifier: string;
@@ -855,11 +846,8 @@ export const DeleteDatasetIntegrationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDatasetIntegrationInput",
 }) as any as S.Schema<DeleteDatasetIntegrationInput>;
 export interface DeleteDatasetIntegrationResponse {}
-export const DeleteDatasetIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatasetIntegrationResponse",
-}) as any as S.Schema<DeleteDatasetIntegrationResponse>;
+export const DeleteDatasetIntegrationResponse =
+  DeleteCentralizationRuleForOrganizationResponse as any as S.Schema<DeleteDatasetIntegrationResponse>;
 export interface DeleteS3TableIntegrationInput {
   Arn: string;
 }
@@ -878,11 +866,8 @@ export const DeleteS3TableIntegrationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteS3TableIntegrationInput",
 }) as any as S.Schema<DeleteS3TableIntegrationInput>;
 export interface DeleteS3TableIntegrationResponse {}
-export const DeleteS3TableIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteS3TableIntegrationResponse",
-}) as any as S.Schema<DeleteS3TableIntegrationResponse>;
+export const DeleteS3TableIntegrationResponse =
+  DeleteCentralizationRuleForOrganizationResponse as any as S.Schema<DeleteS3TableIntegrationResponse>;
 export type TelemetryPipelineIdentifier = string;
 export interface DeleteTelemetryPipelineInput {
   PipelineIdentifier: string;
@@ -914,9 +899,8 @@ export const DeleteTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTelemetryRuleInput" }) as any as S.Schema<DeleteTelemetryRuleInput>;
 export interface DeleteTelemetryRuleResponse {}
-export const DeleteTelemetryRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTelemetryRuleResponse",
-}) as any as S.Schema<DeleteTelemetryRuleResponse>;
+export const DeleteTelemetryRuleResponse =
+  DeleteTelemetryPipelineOutput as any as S.Schema<DeleteTelemetryRuleResponse>;
 export interface DeleteTelemetryRuleForOrganizationInput {
   RuleIdentifier: string;
 }
@@ -935,11 +919,8 @@ export const DeleteTelemetryRuleForOrganizationInput = /*@__PURE__*/ S.suspend((
   identifier: "DeleteTelemetryRuleForOrganizationInput",
 }) as any as S.Schema<DeleteTelemetryRuleForOrganizationInput>;
 export interface DeleteTelemetryRuleForOrganizationResponse {}
-export const DeleteTelemetryRuleForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTelemetryRuleForOrganizationResponse",
-}) as any as S.Schema<DeleteTelemetryRuleForOrganizationResponse>;
+export const DeleteTelemetryRuleForOrganizationResponse =
+  DeleteCentralizationRuleForOrganizationResponse as any as S.Schema<DeleteTelemetryRuleForOrganizationResponse>;
 export interface GetCentralizationRuleForOrganizationInput {
   RuleIdentifier: string;
 }
@@ -1181,16 +1162,8 @@ export interface GetTelemetryEvaluationStatusForOrganizationOutput {
   HomeRegion?: string;
   RegionStatuses?: RegionStatus[];
 }
-export const GetTelemetryEvaluationStatusForOrganizationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(Status),
-    FailureReason: S.optional(S.String),
-    HomeRegion: S.optional(S.String),
-    RegionStatuses: S.optional(RegionStatuses),
-  }),
-).annotate({
-  identifier: "GetTelemetryEvaluationStatusForOrganizationOutput",
-}) as any as S.Schema<GetTelemetryEvaluationStatusForOrganizationOutput>;
+export const GetTelemetryEvaluationStatusForOrganizationOutput =
+  GetTelemetryEvaluationStatusOutput as any as S.Schema<GetTelemetryEvaluationStatusForOrganizationOutput>;
 export interface GetTelemetryPipelineInput {
   PipelineIdentifier: string;
 }
@@ -1220,10 +1193,7 @@ export const TelemetryPipelineStatusReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "TelemetryPipelineStatusReason",
 }) as any as S.Schema<TelemetryPipelineStatusReason>;
 export type TagMapOutput = { [key: string]: string | undefined };
-export const TagMapOutput = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TagMapOutput = TagMapInput as any as S.Schema<TagMapOutput>;
 export interface TelemetryPipeline {
   CreatedTimeStamp?: number;
   LastUpdateTimeStamp?: number;
@@ -1520,7 +1490,7 @@ export const ListResourceTelemetryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResourceTelemetryOutput",
 }) as any as S.Schema<ListResourceTelemetryOutput>;
 export type AccountIdentifiers = string[];
-export const AccountIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const AccountIdentifiers = Regions as any as S.Schema<AccountIdentifiers>;
 export type ListResourceTelemetryForOrganizationMaxResults = number;
 export interface ListResourceTelemetryForOrganizationInput {
   AccountIdentifiers?: string[];
@@ -1557,14 +1527,8 @@ export interface ListResourceTelemetryForOrganizationOutput {
   TelemetryConfigurations?: TelemetryConfiguration[];
   NextToken?: string;
 }
-export const ListResourceTelemetryForOrganizationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TelemetryConfigurations: S.optional(TelemetryConfigurations),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResourceTelemetryForOrganizationOutput",
-}) as any as S.Schema<ListResourceTelemetryForOrganizationOutput>;
+export const ListResourceTelemetryForOrganizationOutput =
+  ListResourceTelemetryOutput as any as S.Schema<ListResourceTelemetryForOrganizationOutput>;
 export type ListS3TableIntegrationsMaxResults = number;
 export interface ListS3TableIntegrationsInput {
   MaxResults?: number;
@@ -1651,9 +1615,9 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 export type DataSources = DataSource[];
 export const DataSources = /*@__PURE__*/ S.Array(DataSource);
 export type Processors = string[];
-export const Processors = /*@__PURE__*/ S.Array(S.String);
+export const Processors = Regions as any as S.Schema<Processors>;
 export type Sinks = string[];
-export const Sinks = /*@__PURE__*/ S.Array(S.String);
+export const Sinks = Regions as any as S.Schema<Sinks>;
 export interface ConfigurationSummary {
   Sources?: Source[];
   DataSources?: DataSource[];
@@ -1753,7 +1717,7 @@ export const ListTelemetryRulesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTelemetryRulesOutput" }) as any as S.Schema<ListTelemetryRulesOutput>;
 export type OrganizationUnitIdentifier = string;
 export type OrganizationUnitIdentifiers = string[];
-export const OrganizationUnitIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationUnitIdentifiers = Regions as any as S.Schema<OrganizationUnitIdentifiers>;
 export type ListTelemetryRulesForOrganizationMaxResults = number;
 export interface ListTelemetryRulesForOrganizationInput {
   RuleNamePrefix?: string;
@@ -1813,14 +1777,8 @@ export interface StartTelemetryEnrichmentOutput {
   Status?: TelemetryEnrichmentStatus;
   AwsResourceExplorerManagedViewArn?: string;
 }
-export const StartTelemetryEnrichmentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(TelemetryEnrichmentStatus),
-    AwsResourceExplorerManagedViewArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartTelemetryEnrichmentOutput",
-}) as any as S.Schema<StartTelemetryEnrichmentOutput>;
+export const StartTelemetryEnrichmentOutput =
+  GetTelemetryEnrichmentStatusOutput as any as S.Schema<StartTelemetryEnrichmentOutput>;
 export interface StartTelemetryEvaluationInput {
   Regions?: string[];
   AllRegions?: boolean;
@@ -1840,11 +1798,8 @@ export const StartTelemetryEvaluationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartTelemetryEvaluationInput",
 }) as any as S.Schema<StartTelemetryEvaluationInput>;
 export interface StartTelemetryEvaluationResponse {}
-export const StartTelemetryEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartTelemetryEvaluationResponse",
-}) as any as S.Schema<StartTelemetryEvaluationResponse>;
+export const StartTelemetryEvaluationResponse =
+  DeleteCentralizationRuleForOrganizationResponse as any as S.Schema<StartTelemetryEvaluationResponse>;
 export interface StartTelemetryEvaluationForOrganizationInput {
   Regions?: string[];
   AllRegions?: boolean;
@@ -1864,11 +1819,8 @@ export const StartTelemetryEvaluationForOrganizationInput = /*@__PURE__*/ S.susp
   identifier: "StartTelemetryEvaluationForOrganizationInput",
 }) as any as S.Schema<StartTelemetryEvaluationForOrganizationInput>;
 export interface StartTelemetryEvaluationForOrganizationResponse {}
-export const StartTelemetryEvaluationForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartTelemetryEvaluationForOrganizationResponse",
-}) as any as S.Schema<StartTelemetryEvaluationForOrganizationResponse>;
+export const StartTelemetryEvaluationForOrganizationResponse =
+  DeleteCentralizationRuleForOrganizationResponse as any as S.Schema<StartTelemetryEvaluationForOrganizationResponse>;
 export interface StopTelemetryEnrichmentRequest {}
 export const StopTelemetryEnrichmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1908,9 +1860,8 @@ export const StopTelemetryEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopTelemetryEvaluationRequest",
 }) as any as S.Schema<StopTelemetryEvaluationRequest>;
 export interface StopTelemetryEvaluationResponse {}
-export const StopTelemetryEvaluationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "StopTelemetryEvaluationResponse" },
-) as any as S.Schema<StopTelemetryEvaluationResponse>;
+export const StopTelemetryEvaluationResponse =
+  SourceContextGraphConfiguration as any as S.Schema<StopTelemetryEvaluationResponse>;
 export interface StopTelemetryEvaluationForOrganizationRequest {}
 export const StopTelemetryEvaluationForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1927,11 +1878,8 @@ export const StopTelemetryEvaluationForOrganizationRequest = /*@__PURE__*/ S.sus
   identifier: "StopTelemetryEvaluationForOrganizationRequest",
 }) as any as S.Schema<StopTelemetryEvaluationForOrganizationRequest>;
 export interface StopTelemetryEvaluationForOrganizationResponse {}
-export const StopTelemetryEvaluationForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopTelemetryEvaluationForOrganizationResponse",
-}) as any as S.Schema<StopTelemetryEvaluationForOrganizationResponse>;
+export const StopTelemetryEvaluationForOrganizationResponse =
+  DeleteCentralizationRuleForOrganizationResponse as any as S.Schema<StopTelemetryEvaluationForOrganizationResponse>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: { [key: string]: string | undefined };
@@ -1942,9 +1890,8 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteTelemetryPipelineOutput as any as S.Schema<TagResourceResponse>;
 export type RecordFormat = "STRING" | "JSON" | (string & {});
 export const RecordFormat = S.String;
 
@@ -2000,7 +1947,7 @@ export const TestTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestTelemetryPipelineOutput",
 }) as any as S.Schema<TestTelemetryPipelineOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = Regions as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceARN: string;
   TagKeys: string[];
@@ -2011,9 +1958,8 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteTelemetryPipelineOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCentralizationRuleForOrganizationInput {
   RuleIdentifier: string;
   Rule: CentralizationRule;
@@ -2035,11 +1981,8 @@ export const UpdateCentralizationRuleForOrganizationInput = /*@__PURE__*/ S.susp
 export interface UpdateCentralizationRuleForOrganizationOutput {
   RuleArn?: string;
 }
-export const UpdateCentralizationRuleForOrganizationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateCentralizationRuleForOrganizationOutput",
-}) as any as S.Schema<UpdateCentralizationRuleForOrganizationOutput>;
+export const UpdateCentralizationRuleForOrganizationOutput =
+  CreateCentralizationRuleForOrganizationOutput as any as S.Schema<UpdateCentralizationRuleForOrganizationOutput>;
 export interface UpdateDatasetIntegrationInput {
   Arn: string;
   RoleArn: string;
@@ -2064,16 +2007,8 @@ export interface UpdateDatasetIntegrationOutput {
   CreatedAt: Date;
   UpdatedAt: Date;
 }
-export const UpdateDatasetIntegrationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    RoleArn: S.String,
-    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "UpdateDatasetIntegrationOutput",
-}) as any as S.Schema<UpdateDatasetIntegrationOutput>;
+export const UpdateDatasetIntegrationOutput =
+  CreateDatasetIntegrationOutput as any as S.Schema<UpdateDatasetIntegrationOutput>;
 export interface UpdateTelemetryPipelineInput {
   PipelineIdentifier: string;
   Configuration: TelemetryPipelineConfiguration;
@@ -2093,9 +2028,8 @@ export const UpdateTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTelemetryPipelineInput",
 }) as any as S.Schema<UpdateTelemetryPipelineInput>;
 export interface UpdateTelemetryPipelineOutput {}
-export const UpdateTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTelemetryPipelineOutput",
-}) as any as S.Schema<UpdateTelemetryPipelineOutput>;
+export const UpdateTelemetryPipelineOutput =
+  DeleteTelemetryPipelineOutput as any as S.Schema<UpdateTelemetryPipelineOutput>;
 export interface UpdateTelemetryRuleInput {
   RuleIdentifier: string;
   Rule: TelemetryRule;
@@ -2108,11 +2042,8 @@ export const UpdateTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTelemetryRuleOutput {
   RuleArn?: string;
 }
-export const UpdateTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateTelemetryRuleOutput",
-}) as any as S.Schema<UpdateTelemetryRuleOutput>;
+export const UpdateTelemetryRuleOutput =
+  CreateCentralizationRuleForOrganizationOutput as any as S.Schema<UpdateTelemetryRuleOutput>;
 export interface UpdateTelemetryRuleForOrganizationInput {
   RuleIdentifier: string;
   Rule: TelemetryRule;
@@ -2134,11 +2065,8 @@ export const UpdateTelemetryRuleForOrganizationInput = /*@__PURE__*/ S.suspend((
 export interface UpdateTelemetryRuleForOrganizationOutput {
   RuleArn?: string;
 }
-export const UpdateTelemetryRuleForOrganizationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateTelemetryRuleForOrganizationOutput",
-}) as any as S.Schema<UpdateTelemetryRuleForOrganizationOutput>;
+export const UpdateTelemetryRuleForOrganizationOutput =
+  CreateCentralizationRuleForOrganizationOutput as any as S.Schema<UpdateTelemetryRuleForOrganizationOutput>;
 export interface ValidateTelemetryPipelineConfigurationInput {
   Configuration: TelemetryPipelineConfiguration;
 }

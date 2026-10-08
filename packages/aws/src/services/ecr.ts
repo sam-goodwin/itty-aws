@@ -669,7 +669,7 @@ export const BatchDeleteImageResponse = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "BatchDeleteImageResponse" }) as any as S.Schema<BatchDeleteImageResponse>;
 export type MediaTypeList = string[];
-export const MediaTypeList = /*@__PURE__*/ S.Array(S.String);
+export const MediaTypeList = BatchedOperationLayerDigestList as any as S.Schema<MediaTypeList>;
 export interface BatchGetImageRequest {
   registryId?: string;
   repositoryName: string;
@@ -711,7 +711,8 @@ export const BatchGetImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ images: S.optional(ImageList), failures: S.optional(ImageFailureList) }).pipe(ns),
 ).annotate({ identifier: "BatchGetImageResponse" }) as any as S.Schema<BatchGetImageResponse>;
 export type ScanningConfigurationRepositoryNameList = string[];
-export const ScanningConfigurationRepositoryNameList = /*@__PURE__*/ S.Array(S.String);
+export const ScanningConfigurationRepositoryNameList =
+  BatchedOperationLayerDigestList as any as S.Schema<ScanningConfigurationRepositoryNameList>;
 export interface BatchGetRepositoryScanningConfigurationRequest {
   repositoryNames: string[];
 }
@@ -798,7 +799,7 @@ export const BatchGetRepositoryScanningConfigurationResponse = /*@__PURE__*/ S.s
 }) as any as S.Schema<BatchGetRepositoryScanningConfigurationResponse>;
 export type UploadId = string;
 export type LayerDigestList = string[];
-export const LayerDigestList = /*@__PURE__*/ S.Array(S.String);
+export const LayerDigestList = BatchedOperationLayerDigestList as any as S.Schema<LayerDigestList>;
 export interface CompleteLayerUploadRequest {
   registryId?: string;
   repositoryName: string;
@@ -1185,9 +1186,8 @@ export const DeleteRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRepositoryResponse {
   repository?: Repository;
 }
-export const DeleteRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(Repository) }).pipe(ns),
-).annotate({ identifier: "DeleteRepositoryResponse" }) as any as S.Schema<DeleteRepositoryResponse>;
+export const DeleteRepositoryResponse =
+  CreateRepositoryResponse as any as S.Schema<DeleteRepositoryResponse>;
 export interface DeleteRepositoryCreationTemplateRequest {
   prefix: string;
 }
@@ -1202,14 +1202,8 @@ export interface DeleteRepositoryCreationTemplateResponse {
   registryId?: string;
   repositoryCreationTemplate?: RepositoryCreationTemplate;
 }
-export const DeleteRepositoryCreationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.optional(S.String),
-    repositoryCreationTemplate: S.optional(RepositoryCreationTemplate),
-  }).pipe(ns),
-).annotate({
-  identifier: "DeleteRepositoryCreationTemplateResponse",
-}) as any as S.Schema<DeleteRepositoryCreationTemplateResponse>;
+export const DeleteRepositoryCreationTemplateResponse =
+  CreateRepositoryCreationTemplateResponse as any as S.Schema<DeleteRepositoryCreationTemplateResponse>;
 export interface DeleteRepositoryPolicyRequest {
   registryId?: string;
   repositoryName: string;
@@ -1387,7 +1381,7 @@ export const DescribeImagesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DescribeImagesRequest" }) as any as S.Schema<DescribeImagesRequest>;
 export type ImageTagList = string[];
-export const ImageTagList = /*@__PURE__*/ S.Array(S.String);
+export const ImageTagList = BatchedOperationLayerDigestList as any as S.Schema<ImageTagList>;
 export type ImageSizeInBytes = number;
 export type PushTimestamp = Date;
 export type ScanStatus =
@@ -1564,10 +1558,12 @@ export const CvssScore = /*@__PURE__*/ S.suspend(() =>
 export type CvssScoreList = CvssScore[];
 export const CvssScoreList = /*@__PURE__*/ S.Array(CvssScore);
 export type ReferenceUrlsList = string[];
-export const ReferenceUrlsList = /*@__PURE__*/ S.Array(S.String);
+export const ReferenceUrlsList =
+  BatchedOperationLayerDigestList as any as S.Schema<ReferenceUrlsList>;
 export type RelatedVulnerability = string;
 export type RelatedVulnerabilitiesList = string[];
-export const RelatedVulnerabilitiesList = /*@__PURE__*/ S.Array(S.String);
+export const RelatedVulnerabilitiesList =
+  BatchedOperationLayerDigestList as any as S.Schema<RelatedVulnerabilitiesList>;
 export type Severity = string;
 export type VulnerabilityId = string;
 export type Arch = string;
@@ -1648,7 +1644,7 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 export type Author = string;
 export type ImageTagsList = string[];
-export const ImageTagsList = /*@__PURE__*/ S.Array(S.String);
+export const ImageTagsList = BatchedOperationLayerDigestList as any as S.Schema<ImageTagsList>;
 export type Platform = string;
 export type InUseCount = number;
 export interface AwsEcrContainerImageDetails {
@@ -1873,7 +1869,8 @@ export const DescribeImageSigningStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeImageSigningStatusResponse",
 }) as any as S.Schema<DescribeImageSigningStatusResponse>;
 export type PullThroughCacheRuleRepositoryPrefixList = string[];
-export const PullThroughCacheRuleRepositoryPrefixList = /*@__PURE__*/ S.Array(S.String);
+export const PullThroughCacheRuleRepositoryPrefixList =
+  BatchedOperationLayerDigestList as any as S.Schema<PullThroughCacheRuleRepositoryPrefixList>;
 export interface DescribePullThroughCacheRulesRequest {
   registryId?: string;
   ecrRepositoryPrefixes?: string[];
@@ -1984,7 +1981,8 @@ export const DescribeRegistryResponse = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeRegistryResponse" }) as any as S.Schema<DescribeRegistryResponse>;
 export type RepositoryNameList = string[];
-export const RepositoryNameList = /*@__PURE__*/ S.Array(S.String);
+export const RepositoryNameList =
+  BatchedOperationLayerDigestList as any as S.Schema<RepositoryNameList>;
 export interface DescribeRepositoriesRequest {
   registryId?: string;
   repositoryNames?: string[];
@@ -2013,7 +2011,7 @@ export const DescribeRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeRepositoriesResponse",
 }) as any as S.Schema<DescribeRepositoriesResponse>;
 export type PrefixList = string[];
-export const PrefixList = /*@__PURE__*/ S.Array(S.String);
+export const PrefixList = BatchedOperationLayerDigestList as any as S.Schema<PrefixList>;
 export interface DescribeRepositoryCreationTemplatesRequest {
   prefixes?: string[];
   nextToken?: string;
@@ -2063,7 +2061,8 @@ export const GetAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountSettingResponse",
 }) as any as S.Schema<GetAccountSettingResponse>;
 export type GetAuthorizationTokenRegistryIdList = string[];
-export const GetAuthorizationTokenRegistryIdList = /*@__PURE__*/ S.Array(S.String);
+export const GetAuthorizationTokenRegistryIdList =
+  BatchedOperationLayerDigestList as any as S.Schema<GetAuthorizationTokenRegistryIdList>;
 export interface GetAuthorizationTokenRequest {
   registryIds?: string[];
 }
@@ -2139,16 +2138,8 @@ export interface GetLifecyclePolicyResponse {
   lifecyclePolicyText?: string;
   lastEvaluatedAt?: Date;
 }
-export const GetLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.optional(S.String),
-    repositoryName: S.optional(S.String),
-    lifecyclePolicyText: S.optional(S.String),
-    lastEvaluatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetLifecyclePolicyResponse",
-}) as any as S.Schema<GetLifecyclePolicyResponse>;
+export const GetLifecyclePolicyResponse =
+  DeleteLifecyclePolicyResponse as any as S.Schema<GetLifecyclePolicyResponse>;
 export type LifecyclePreviewMaxResults = number;
 export interface LifecyclePolicyPreviewFilter {
   tagStatus?: TagStatus;
@@ -2287,11 +2278,8 @@ export interface GetRegistryPolicyResponse {
   registryId?: string;
   policyText?: string;
 }
-export const GetRegistryPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ registryId: S.optional(S.String), policyText: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "GetRegistryPolicyResponse",
-}) as any as S.Schema<GetRegistryPolicyResponse>;
+export const GetRegistryPolicyResponse =
+  DeleteRegistryPolicyResponse as any as S.Schema<GetRegistryPolicyResponse>;
 export interface GetRegistryScanningConfigurationRequest {}
 export const GetRegistryScanningConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2347,15 +2335,8 @@ export interface GetRepositoryPolicyResponse {
   repositoryName?: string;
   policyText?: string;
 }
-export const GetRepositoryPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.optional(S.String),
-    repositoryName: S.optional(S.String),
-    policyText: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetRepositoryPolicyResponse",
-}) as any as S.Schema<GetRepositoryPolicyResponse>;
+export const GetRepositoryPolicyResponse =
+  DeleteRepositoryPolicyResponse as any as S.Schema<GetRepositoryPolicyResponse>;
 export interface GetSigningConfigurationRequest {}
 export const GetSigningConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2366,14 +2347,8 @@ export interface GetSigningConfigurationResponse {
   registryId?: string;
   signingConfiguration?: SigningConfiguration;
 }
-export const GetSigningConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.optional(S.String),
-    signingConfiguration: S.optional(SigningConfiguration),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetSigningConfigurationResponse",
-}) as any as S.Schema<GetSigningConfigurationResponse>;
+export const GetSigningConfigurationResponse =
+  DeleteSigningConfigurationResponse as any as S.Schema<GetSigningConfigurationResponse>;
 export interface InitiateLayerUploadRequest {
   registryId?: string;
   repositoryName: string;
@@ -2403,7 +2378,8 @@ export const SubjectIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubjectIdentifier" }) as any as S.Schema<SubjectIdentifier>;
 export type ArtifactType = string;
 export type ArtifactTypeList = string[];
-export const ArtifactTypeList = /*@__PURE__*/ S.Array(S.String);
+export const ArtifactTypeList =
+  BatchedOperationLayerDigestList as any as S.Schema<ArtifactTypeList>;
 export type ArtifactStatusFilter = "ACTIVE" | "ARCHIVED" | "ACTIVATING" | "ANY" | (string & {});
 export const ArtifactStatusFilter = S.String;
 
@@ -2479,9 +2455,7 @@ export interface ListImagesFilter {
   tagStatus?: TagStatus;
   imageStatus?: ImageStatusFilter;
 }
-export const ListImagesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tagStatus: S.optional(TagStatus), imageStatus: S.optional(ImageStatusFilter) }),
-).annotate({ identifier: "ListImagesFilter" }) as any as S.Schema<ListImagesFilter>;
+export const ListImagesFilter = DescribeImagesFilter as any as S.Schema<ListImagesFilter>;
 export interface ListImagesRequest {
   registryId?: string;
   repositoryName: string;
@@ -2517,7 +2491,8 @@ export const ListPullTimeUpdateExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPullTimeUpdateExclusionsRequest",
 }) as any as S.Schema<ListPullTimeUpdateExclusionsRequest>;
 export type PullTimeUpdateExclusionList = string[];
-export const PullTimeUpdateExclusionList = /*@__PURE__*/ S.Array(S.String);
+export const PullTimeUpdateExclusionList =
+  BatchedOperationLayerDigestList as any as S.Schema<PullTimeUpdateExclusionList>;
 export interface ListPullTimeUpdateExclusionsResponse {
   pullTimeUpdateExclusions?: string[];
   nextToken?: string;
@@ -2562,11 +2537,8 @@ export interface PutAccountSettingResponse {
   name?: string;
   value?: string;
 }
-export const PutAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "PutAccountSettingResponse",
-}) as any as S.Schema<PutAccountSettingResponse>;
+export const PutAccountSettingResponse =
+  GetAccountSettingResponse as any as S.Schema<PutAccountSettingResponse>;
 export interface PutImageRequest {
   registryId?: string;
   repositoryName: string;
@@ -2691,11 +2663,8 @@ export interface PutRegistryPolicyResponse {
   registryId?: string;
   policyText?: string;
 }
-export const PutRegistryPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ registryId: S.optional(S.String), policyText: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "PutRegistryPolicyResponse",
-}) as any as S.Schema<PutRegistryPolicyResponse>;
+export const PutRegistryPolicyResponse =
+  DeleteRegistryPolicyResponse as any as S.Schema<PutRegistryPolicyResponse>;
 export interface PutRegistryScanningConfigurationRequest {
   scanType?: ScanType;
   rules?: RegistryScanningRule[];
@@ -2794,15 +2763,8 @@ export interface SetRepositoryPolicyResponse {
   repositoryName?: string;
   policyText?: string;
 }
-export const SetRepositoryPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.optional(S.String),
-    repositoryName: S.optional(S.String),
-    policyText: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "SetRepositoryPolicyResponse",
-}) as any as S.Schema<SetRepositoryPolicyResponse>;
+export const SetRepositoryPolicyResponse =
+  DeleteRepositoryPolicyResponse as any as S.Schema<SetRepositoryPolicyResponse>;
 export interface StartImageScanRequest {
   registryId?: string;
   repositoryName: string;
@@ -2873,7 +2835,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = BatchedOperationLayerDigestList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2884,9 +2846,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type TargetStorageClass = "STANDARD" | "ARCHIVE" | (string & {});
 export const TargetStorageClass = S.String;
 
@@ -2990,14 +2950,8 @@ export interface UpdateRepositoryCreationTemplateResponse {
   registryId?: string;
   repositoryCreationTemplate?: RepositoryCreationTemplate;
 }
-export const UpdateRepositoryCreationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.optional(S.String),
-    repositoryCreationTemplate: S.optional(RepositoryCreationTemplate),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateRepositoryCreationTemplateResponse",
-}) as any as S.Schema<UpdateRepositoryCreationTemplateResponse>;
+export const UpdateRepositoryCreationTemplateResponse =
+  CreateRepositoryCreationTemplateResponse as any as S.Schema<UpdateRepositoryCreationTemplateResponse>;
 export type LayerPartBlob = Uint8Array;
 export interface UploadLayerPartRequest {
   registryId?: string;

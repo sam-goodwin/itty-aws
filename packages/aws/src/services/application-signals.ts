@@ -190,7 +190,8 @@ export const BatchDeleteInstrumentationConfigurationsResponse = /*@__PURE__*/ S.
   identifier: "BatchDeleteInstrumentationConfigurationsResponse",
 }) as any as S.Schema<BatchDeleteInstrumentationConfigurationsResponse>;
 export type ServiceLevelObjectiveIds = string[];
-export const ServiceLevelObjectiveIds = /*@__PURE__*/ S.Array(S.String);
+export const ServiceLevelObjectiveIds =
+  BatchDeleteResourceArnList as any as S.Schema<ServiceLevelObjectiveIds>;
 export interface BatchGetServiceLevelObjectiveBudgetReportInput {
   Timestamp: Date;
   SloIds: string[];
@@ -574,9 +575,7 @@ export interface Window {
   DurationUnit: DurationUnit;
   Duration: number;
 }
-export const Window = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DurationUnit: DurationUnit, Duration: S.Number }),
-).annotate({ identifier: "Window" }) as any as S.Schema<Window>;
+export const Window = RollingInterval as any as S.Schema<Window>;
 export type Expression = string;
 export interface RecurrenceRule {
   Expression?: string;
@@ -681,7 +680,7 @@ export const DynamicInstrumentationAttributeFilters = /*@__PURE__*/ S.Array(
   DynamicInstrumentationAttributeFilterGroup,
 );
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = BatchDeleteResourceArnList as any as S.Schema<StringList>;
 export interface CaptureLimitsConfig {
   MaxHits?: number;
   MaxStringLength?: number;
@@ -1050,11 +1049,8 @@ export const DeleteServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteServiceLevelObjectiveInput",
 }) as any as S.Schema<DeleteServiceLevelObjectiveInput>;
 export interface DeleteServiceLevelObjectiveOutput {}
-export const DeleteServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceLevelObjectiveOutput",
-}) as any as S.Schema<DeleteServiceLevelObjectiveOutput>;
+export const DeleteServiceLevelObjectiveOutput =
+  DeleteGroupingConfigurationOutput as any as S.Schema<DeleteServiceLevelObjectiveOutput>;
 export interface GetInstrumentationConfigurationRequest {
   InstrumentationType: InstrumentationType;
   Service: string;
@@ -1096,24 +1092,8 @@ export interface InstrumentationConfiguration {
   CreatedAt: Date;
   ARN: string;
 }
-export const InstrumentationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstrumentationType: InstrumentationType,
-    Service: S.String,
-    Environment: S.String,
-    SignalType: DynamicInstrumentationSignalType,
-    Location: Location,
-    LocationHash: S.String,
-    Description: S.optional(S.String),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AttributeFilters: S.optional(DynamicInstrumentationAttributeFilters),
-    CaptureConfiguration: CaptureConfiguration,
-    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ARN: S.String,
-  }),
-).annotate({
-  identifier: "InstrumentationConfiguration",
-}) as any as S.Schema<InstrumentationConfiguration>;
+export const InstrumentationConfiguration =
+  CreateInstrumentationConfigurationResponse as any as S.Schema<InstrumentationConfiguration>;
 export interface GetInstrumentationConfigurationResponse {
   Configuration: InstrumentationConfiguration;
 }
@@ -1227,10 +1207,8 @@ export const GetServiceInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/service" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetServiceInput" }) as any as S.Schema<GetServiceInput>;
 export type AttributeMap = { [key: string]: string | undefined };
-export const AttributeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AttributeMap =
+  DynamicInstrumentationAttributeFilterGroup as any as S.Schema<AttributeMap>;
 export type AttributeMaps = { [key: string]: string | undefined }[];
 export const AttributeMaps = /*@__PURE__*/ S.Array(AttributeMap);
 export type GroupName = string;
@@ -1318,13 +1296,10 @@ export const GetServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetServiceLevelObjectiveOutput {
   Slo: ServiceLevelObjective;
 }
-export const GetServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Slo: ServiceLevelObjective }),
-).annotate({
-  identifier: "GetServiceLevelObjectiveOutput",
-}) as any as S.Schema<GetServiceLevelObjectiveOutput>;
+export const GetServiceLevelObjectiveOutput =
+  CreateServiceLevelObjectiveOutput as any as S.Schema<GetServiceLevelObjectiveOutput>;
 export type Auditors = string[];
-export const Auditors = /*@__PURE__*/ S.Array(S.String);
+export const Auditors = BatchDeleteResourceArnList as any as S.Schema<Auditors>;
 export interface ServiceEntity {
   Type?: string;
   Name?: string;
@@ -1411,7 +1386,7 @@ export const ListAuditFindingsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/auditFindings" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListAuditFindingsInput" }) as any as S.Schema<ListAuditFindingsInput>;
 export type DataMap = { [key: string]: string | undefined };
-export const DataMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const DataMap = Attributes as any as S.Schema<DataMap>;
 export type Severity = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "NONE" | (string & {});
 export const Severity = S.String;
 
@@ -1608,7 +1583,8 @@ export const ListGroupingAttributeDefinitionsInput = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListGroupingAttributeDefinitionsInput>;
 export type GroupingString = string;
 export type GroupingSourceKeyStringList = string[];
-export const GroupingSourceKeyStringList = /*@__PURE__*/ S.Array(S.String);
+export const GroupingSourceKeyStringList =
+  BatchDeleteResourceArnList as any as S.Schema<GroupingSourceKeyStringList>;
 export interface GroupingAttributeDefinition {
   GroupingName: string;
   GroupingSourceKeys?: string[];
@@ -2032,7 +2008,8 @@ export type ListServiceStatesMaxResults = number;
 export type AttributeFilterName = string;
 export type AttributeFilterValue = string;
 export type AttributeFilterValues = string[];
-export const AttributeFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const AttributeFilterValues =
+  BatchDeleteResourceArnList as any as S.Schema<AttributeFilterValues>;
 export interface AttributeFilter {
   AttributeFilterName: string;
   AttributeFilterValues: string[];
@@ -2063,7 +2040,7 @@ export const ListServiceStatesInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/service/states" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListServiceStatesInput" }) as any as S.Schema<ListServiceStatesInput>;
 export type LatestChangeEvents = ChangeEvent[];
-export const LatestChangeEvents = /*@__PURE__*/ S.Array(ChangeEvent);
+export const LatestChangeEvents = ChangeEvents as any as S.Schema<LatestChangeEvents>;
 export interface ServiceState {
   AttributeFilters?: AttributeFilter[];
   Service: { [key: string]: string | undefined };
@@ -2247,11 +2224,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = StartDiscoveryOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = BatchDeleteResourceArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2262,9 +2237,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = StartDiscoveryOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateServiceLevelObjectiveInput {
   Id: string;
   Description?: string;
@@ -2290,11 +2263,8 @@ export const UpdateServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateServiceLevelObjectiveOutput {
   Slo: ServiceLevelObjective;
 }
-export const UpdateServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Slo: ServiceLevelObjective }),
-).annotate({
-  identifier: "UpdateServiceLevelObjectiveOutput",
-}) as any as S.Schema<UpdateServiceLevelObjectiveOutput>;
+export const UpdateServiceLevelObjectiveOutput =
+  CreateServiceLevelObjectiveOutput as any as S.Schema<UpdateServiceLevelObjectiveOutput>;
 export type ValidationExceptionMessage = string;
 export type ResourceType = string;
 export type ResourceId = string;

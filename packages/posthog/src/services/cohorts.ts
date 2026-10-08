@@ -226,9 +226,8 @@ export const BehavioralFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BehavioralFilter" }) as any as S.Schema<BehavioralFilter>;
 
 export type CohortFilterBytecodeList = Array<unknown>;
-export const CohortFilterBytecodeList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CohortFilterBytecodeList>;
+export const CohortFilterBytecodeList =
+  BehavioralFilterBytecodeList as any as S.Schema<CohortFilterBytecodeList>;
 
 export interface CohortFilter {
   bytecode?: CohortFilterBytecodeList | null;
@@ -252,9 +251,8 @@ export const CohortFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CohortFilter" }) as any as S.Schema<CohortFilter>;
 
 export type PersonFilterBytecodeList = Array<unknown>;
-export const PersonFilterBytecodeList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PersonFilterBytecodeList>;
+export const PersonFilterBytecodeList =
+  BehavioralFilterBytecodeList as any as S.Schema<PersonFilterBytecodeList>;
 
 export interface PersonFilter {
   operator?: string | null;
@@ -280,9 +278,8 @@ export const PersonFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersonFilter" }) as any as S.Schema<PersonFilter>;
 
 export type PersonMetadataFilterBytecodeList = Array<unknown>;
-export const PersonMetadataFilterBytecodeList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PersonMetadataFilterBytecodeList>;
+export const PersonMetadataFilterBytecodeList =
+  BehavioralFilterBytecodeList as any as S.Schema<PersonMetadataFilterBytecodeList>;
 
 /** Filter on a top-level persons-table column (e.g. created_at) rather than the properties JSON. The matching key must be one of PERSON_METADATA_FIELDS. */
 export interface PersonMetadataFilter {
@@ -618,9 +615,8 @@ export const GetCohortsActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCohortsActivityRequest>;
 
 export interface GetCohortsActivityResponse {}
-export const GetCohortsActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCohortsActivityResponse",
-}) as any as S.Schema<GetCohortsActivityResponse>;
+export const GetCohortsActivityResponse =
+  CohortsDestroyResponse as any as S.Schema<GetCohortsActivityResponse>;
 
 export interface GetCohortsAllActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -637,9 +633,8 @@ export const GetCohortsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCohortsAllActivityRequest>;
 
 export interface GetCohortsAllActivityResponse {}
-export const GetCohortsAllActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCohortsAllActivityResponse",
-}) as any as S.Schema<GetCohortsAllActivityResponse>;
+export const GetCohortsAllActivityResponse =
+  CohortsDestroyResponse as any as S.Schema<GetCohortsAllActivityResponse>;
 
 export interface GetCohortsCalculationHistoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -663,11 +658,8 @@ export const GetCohortsCalculationHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCohortsCalculationHistoryRequest>;
 
 export interface GetCohortsCalculationHistoryResponse {}
-export const GetCohortsCalculationHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCohortsCalculationHistoryResponse",
-}) as any as S.Schema<GetCohortsCalculationHistoryResponse>;
+export const GetCohortsCalculationHistoryResponse =
+  CohortsAddPersonsToStaticCohortPartialUpdateResponse as any as S.Schema<GetCohortsCalculationHistoryResponse>;
 
 export type GetCohortsPersonRequestFormat = "csv" | "json";
 export const GetCohortsPersonRequestFormat = S.String;
@@ -697,16 +689,12 @@ export const GetCohortsPersonRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor's properties. */
 export type SerializedPersonActorPropertiesMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SerializedPersonActorPropertiesMap>;
+export const SerializedPersonActorPropertiesMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<SerializedPersonActorPropertiesMap>;
 
 export type SerializedPersonActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorMatchedRecordingsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SerializedPersonActorMatchedRecordingsItemMap>;
+export const SerializedPersonActorMatchedRecordingsItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<SerializedPersonActorMatchedRecordingsItemMap>;
 
 /** Recordings that matched the query. Empty unless the endpoint asks for them. */
 export type SerializedPersonActorMatchedRecordingsList =
@@ -717,9 +705,8 @@ export const SerializedPersonActorMatchedRecordingsList = /*@__PURE__*/ S.Array(
 
 /** The person's distinct IDs, newest first. */
 export type SerializedPersonActorDistinctIdsList = Array<string>;
-export const SerializedPersonActorDistinctIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SerializedPersonActorDistinctIdsList>;
+export const SerializedPersonActorDistinctIdsList =
+  CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<SerializedPersonActorDistinctIdsList>;
 
 export interface SerializedPersonActor {
   /** The person's UUID, or the group's key. */
@@ -976,9 +963,8 @@ export const UpdateCohortRequestCohortType =
   S.Unknown as any as S.Schema<UpdateCohortRequestCohortType>;
 
 export type UpdateCohortRequestCreateStaticPersonIdsList = Array<string>;
-export const UpdateCohortRequestCreateStaticPersonIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCohortRequestCreateStaticPersonIdsList>;
+export const UpdateCohortRequestCreateStaticPersonIdsList =
+  CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<UpdateCohortRequestCreateStaticPersonIdsList>;
 
 export interface UpdateCohortRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1020,9 +1006,8 @@ export const UpdateCohortsPartialRequestCohortType =
   S.Unknown as any as S.Schema<UpdateCohortsPartialRequestCohortType>;
 
 export type UpdateCohortsPartialRequestCreateStaticPersonIdsList = Array<string>;
-export const UpdateCohortsPartialRequestCreateStaticPersonIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCohortsPartialRequestCreateStaticPersonIdsList>;
+export const UpdateCohortsPartialRequestCreateStaticPersonIdsList =
+  CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<UpdateCohortsPartialRequestCreateStaticPersonIdsList>;
 
 export interface UpdateCohortsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

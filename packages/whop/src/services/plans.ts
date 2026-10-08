@@ -458,9 +458,8 @@ export const CreatePlanRequestPaymentMethodConfigurationDisabledList = /*@__PURE
 export type CreatePlanRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
-export const CreatePlanRequestPaymentMethodConfigurationEnabledList = /*@__PURE__*/ S.Array(
-  PaymentMethodTypes,
-) as any as S.Schema<CreatePlanRequestPaymentMethodConfigurationEnabledList>;
+export const CreatePlanRequestPaymentMethodConfigurationEnabledList =
+  CreatePlanRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreatePlanRequestPaymentMethodConfigurationEnabledList>;
 
 /** Explicit payment method configuration for the plan. When not provided, the account's defaults apply. Send at least one of `enabled` or `disabled`; an omitted one is empty. */
 export interface CreatePlanRequestPaymentMethodConfiguration {
@@ -732,9 +731,8 @@ export const CheckoutSessionPaymentMethodConfigurationDisabledList = /*@__PURE__
 ) as any as S.Schema<CheckoutSessionPaymentMethodConfigurationDisabledList>;
 
 export type CheckoutSessionPaymentMethodConfigurationEnabledList = Array<string>;
-export const CheckoutSessionPaymentMethodConfigurationEnabledList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckoutSessionPaymentMethodConfigurationEnabledList>;
+export const CheckoutSessionPaymentMethodConfigurationEnabledList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<CheckoutSessionPaymentMethodConfigurationEnabledList>;
 
 export interface CheckoutSessionPaymentMethodConfiguration {
   disabled: CheckoutSessionPaymentMethodConfigurationDisabledList;
@@ -974,24 +972,20 @@ export type ListPlansRequestOrder =
 export const ListPlansRequestOrder = S.String;
 
 export type ListPlansRequestReleaseMethodsList = Array<string>;
-export const ListPlansRequestReleaseMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPlansRequestReleaseMethodsList>;
+export const ListPlansRequestReleaseMethodsList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestReleaseMethodsList>;
 
 export type ListPlansRequestVisibilitiesList = Array<string>;
-export const ListPlansRequestVisibilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPlansRequestVisibilitiesList>;
+export const ListPlansRequestVisibilitiesList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestVisibilitiesList>;
 
 export type ListPlansRequestPlanTypesList = Array<string>;
-export const ListPlansRequestPlanTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPlansRequestPlanTypesList>;
+export const ListPlansRequestPlanTypesList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestPlanTypesList>;
 
 export type ListPlansRequestProductIdsList = Array<string>;
-export const ListPlansRequestProductIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPlansRequestProductIdsList>;
+export const ListPlansRequestProductIdsList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestProductIdsList>;
 
 export interface ListPlansRequest {
   /** The unique identifier of the account to list plans for. Required unless `product_ids` is provided for a public product-plan read. */
@@ -1041,15 +1035,12 @@ export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
 export type PlanListItemAttributesMap = { [key: string]: string | undefined };
-export const PlanListItemAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PlanListItemAttributesMap>;
+export const PlanListItemAttributesMap =
+  PlanAttributesMap as any as S.Schema<PlanListItemAttributesMap>;
 
 export type PlanListItemCustomFieldsList = Array<PlanCustomField>;
-export const PlanListItemCustomFieldsList = /*@__PURE__*/ S.Array(
-  PlanCustomField,
-) as any as S.Schema<PlanListItemCustomFieldsList>;
+export const PlanListItemCustomFieldsList =
+  PlanCustomFieldsList as any as S.Schema<PlanListItemCustomFieldsList>;
 
 /** Billing model for this plan. */
 export type PlanListItemPlanType = "renewal" | "one_time";
@@ -1271,17 +1262,15 @@ export const UpdatePlanRequestImage = CreatePlanRequestImage;
 export type UpdatePlanRequestPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
-export const UpdatePlanRequestPaymentMethodConfigurationDisabledList = /*@__PURE__*/ S.Array(
-  PaymentMethodTypes,
-) as any as S.Schema<UpdatePlanRequestPaymentMethodConfigurationDisabledList>;
+export const UpdatePlanRequestPaymentMethodConfigurationDisabledList =
+  CreatePlanRequestPaymentMethodConfigurationDisabledList as any as S.Schema<UpdatePlanRequestPaymentMethodConfigurationDisabledList>;
 
 /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type UpdatePlanRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
-export const UpdatePlanRequestPaymentMethodConfigurationEnabledList = /*@__PURE__*/ S.Array(
-  PaymentMethodTypes,
-) as any as S.Schema<UpdatePlanRequestPaymentMethodConfigurationEnabledList>;
+export const UpdatePlanRequestPaymentMethodConfigurationEnabledList =
+  CreatePlanRequestPaymentMethodConfigurationDisabledList as any as S.Schema<UpdatePlanRequestPaymentMethodConfigurationEnabledList>;
 
 /** Explicit payment method configuration for the plan. When not provided, the account's defaults apply. Send at least one of `enabled` or `disabled`; an omitted one is empty. */
 export interface UpdatePlanRequestPaymentMethodConfiguration {
@@ -1291,15 +1280,8 @@ export interface UpdatePlanRequestPaymentMethodConfiguration {
   enabled?: UpdatePlanRequestPaymentMethodConfigurationEnabledList;
   include_platform_defaults?: boolean;
 }
-export const UpdatePlanRequestPaymentMethodConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(UpdatePlanRequestPaymentMethodConfigurationDisabledList),
-    enabled: S.optional(UpdatePlanRequestPaymentMethodConfigurationEnabledList),
-    include_platform_defaults: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdatePlanRequestPaymentMethodConfiguration",
-}) as any as S.Schema<UpdatePlanRequestPaymentMethodConfiguration>;
+export const UpdatePlanRequestPaymentMethodConfiguration =
+  CreatePlanRequestPaymentMethodConfiguration as any as S.Schema<UpdatePlanRequestPaymentMethodConfiguration>;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Send `null` to inherit the account default. */
 export type UpdatePlanRequestThreeDsLevel =

@@ -151,11 +151,7 @@ export interface AllocateIdsResponse {
   /** The keys specified in the request (in the same order), each with its key path completed with a newly allocated ID. */
   keys?: KeyList;
 }
-export const AllocateIdsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(KeyList),
-  }),
-).annotate({ identifier: "AllocateIdsResponse" }) as any as S.Schema<AllocateIdsResponse>;
+export const AllocateIdsResponse = AllocateIdsRequest as any as S.Schema<AllocateIdsResponse>;
 
 /** Options specific to read-only transactions. */
 export interface ReadOnly {
@@ -665,11 +661,7 @@ export interface RollbackRequest {
   /** Required. The transaction identifier, returned by a call to Datastore.BeginTransaction. */
   transaction?: string;
 }
-export const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(S.String),
-  }),
-).annotate({ identifier: "RollbackRequest" }) as any as S.Schema<RollbackRequest>;
+export const RollbackRequest = BeginTransactionResponse as any as S.Schema<RollbackRequest>;
 
 export interface RollbackProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
@@ -692,9 +684,7 @@ export const RollbackProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response for Datastore.Rollback. (an empty message). */
 export interface RollbackResponse {}
-export const RollbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RollbackResponse",
-}) as any as S.Schema<RollbackResponse>;
+export const RollbackResponse = ReserveIdsResponse as any as S.Schema<RollbackResponse>;
 
 /** Explain options for the query. */
 export interface ExplainOptions {
@@ -774,11 +764,7 @@ export interface Projection {
   /** The property to project. */
   property?: PropertyReference;
 }
-export const Projection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(PropertyReference),
-  }),
-).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
+export const Projection = Avg as any as S.Schema<Projection>;
 
 export type ProjectionList = Array<Projection>;
 export const ProjectionList = /*@__PURE__*/ S.Array(Projection) as any as S.Schema<ProjectionList>;
@@ -892,16 +878,10 @@ export interface KindExpression {
   /** The name of the kind. */
   name?: string;
 }
-export const KindExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "KindExpression" }) as any as S.Schema<KindExpression>;
+export const KindExpression = PropertyReference as any as S.Schema<KindExpression>;
 
 export type KindExpressionList = Array<KindExpression>;
-export const KindExpressionList = /*@__PURE__*/ S.Array(
-  KindExpression,
-) as any as S.Schema<KindExpressionList>;
+export const KindExpressionList = PropertyReferenceList as any as S.Schema<KindExpressionList>;
 
 export type PropertyOrderDirectionEnum = "DIRECTION_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
 export const PropertyOrderDirectionEnum = S.String;

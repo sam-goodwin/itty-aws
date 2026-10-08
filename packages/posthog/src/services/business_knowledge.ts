@@ -334,11 +334,8 @@ export const BusinessKnowledgeSourcesDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<BusinessKnowledgeSourcesDestroyRequest>;
 
 export interface BusinessKnowledgeSourcesDestroyResponse {}
-export const BusinessKnowledgeSourcesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BusinessKnowledgeSourcesDestroyResponse",
-}) as any as S.Schema<BusinessKnowledgeSourcesDestroyResponse>;
+export const BusinessKnowledgeSourcesDestroyResponse =
+  BusinessKnowledgePlaygroundChatsDestroyResponse as any as S.Schema<BusinessKnowledgeSourcesDestroyResponse>;
 
 export interface BusinessKnowledgeSourcesRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -680,9 +677,8 @@ export const CreateBusinessKnowledgePlaygroundChatsAskRequest = /*@__PURE__*/ S.
 
 /** owner/repo names to allow. At most 100. Replaces the current list. */
 export type CreateBusinessKnowledgeRepositoriesSelectionRequestReposList = Array<string>;
-export const CreateBusinessKnowledgeRepositoriesSelectionRequestReposList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBusinessKnowledgeRepositoriesSelectionRequestReposList>;
+export const CreateBusinessKnowledgeRepositoriesSelectionRequestReposList =
+  RepositoryConnectionReposList as any as S.Schema<CreateBusinessKnowledgeRepositoriesSelectionRequestReposList>;
 
 export interface CreateBusinessKnowledgeRepositoriesSelectionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

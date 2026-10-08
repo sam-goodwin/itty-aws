@@ -463,7 +463,8 @@ export const VoutFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ voutSpent: S.Boolean }),
 ).annotate({ identifier: "VoutFilter" }) as any as S.Schema<VoutFilter>;
 export type ConfirmationStatusIncludeList = string[];
-export const ConfirmationStatusIncludeList = /*@__PURE__*/ S.Array(S.String);
+export const ConfirmationStatusIncludeList =
+  ChainAddresses as any as S.Schema<ConfirmationStatusIncludeList>;
 export interface ConfirmationStatusFilter {
   include: string[];
 }
@@ -575,13 +576,7 @@ export interface TokenFilter {
   contractAddress?: string;
   tokenId?: string;
 }
-export const TokenFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.String,
-    contractAddress: S.optional(S.String),
-    tokenId: S.optional(S.String),
-  }),
-).annotate({ identifier: "TokenFilter" }) as any as S.Schema<TokenFilter>;
+export const TokenFilter = TokenIdentifier as any as S.Schema<TokenFilter>;
 export interface ListTokenBalancesInput {
   ownerFilter?: OwnerFilter;
   tokenFilter: TokenFilter;
@@ -605,15 +600,7 @@ export interface TokenBalance {
   atBlockchainInstant: BlockchainInstant;
   lastUpdatedTime?: BlockchainInstant;
 }
-export const TokenBalance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ownerIdentifier: S.optional(OwnerIdentifier),
-    tokenIdentifier: S.optional(TokenIdentifier),
-    balance: S.String,
-    atBlockchainInstant: BlockchainInstant,
-    lastUpdatedTime: S.optional(BlockchainInstant),
-  }),
-).annotate({ identifier: "TokenBalance" }) as any as S.Schema<TokenBalance>;
+export const TokenBalance = GetTokenBalanceOutput as any as S.Schema<TokenBalance>;
 export type TokenBalanceList = TokenBalance[];
 export const TokenBalanceList = /*@__PURE__*/ S.Array(TokenBalance);
 export interface ListTokenBalancesOutput {
@@ -654,11 +641,8 @@ export interface ListTransactionEventsOutput {
   events: TransactionEvent[];
   nextToken?: string;
 }
-export const ListTransactionEventsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ events: TransactionEventList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListTransactionEventsOutput",
-}) as any as S.Schema<ListTransactionEventsOutput>;
+export const ListTransactionEventsOutput =
+  ListFilteredTransactionEventsOutput as any as S.Schema<ListTransactionEventsOutput>;
 export type ListTransactionsSortBy = string;
 export interface ListTransactionsSort {
   sortBy?: string;

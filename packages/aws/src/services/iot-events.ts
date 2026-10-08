@@ -623,11 +623,7 @@ export const ClearTimerAction = /*@__PURE__*/ S.suspend(() =>
 export interface ResetTimerAction {
   timerName: string;
 }
-export const ResetTimerAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ timerName: S.String }),
-).annotate({
-  identifier: "ResetTimerAction",
-}) as any as S.Schema<ResetTimerAction>;
+export const ResetTimerAction = ClearTimerAction as any as S.Schema<ResetTimerAction>;
 export interface Action {
   setVariable?: SetVariableAction;
   sns?: SNSTopicPublishAction;
@@ -717,11 +713,7 @@ export const OnEnterLifecycle = /*@__PURE__*/ S.suspend(() =>
 export interface OnExitLifecycle {
   events?: Event[];
 }
-export const OnExitLifecycle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ events: S.optional(Events) }),
-).annotate({
-  identifier: "OnExitLifecycle",
-}) as any as S.Schema<OnExitLifecycle>;
+export const OnExitLifecycle = OnEnterLifecycle as any as S.Schema<OnExitLifecycle>;
 export interface State {
   stateName: string;
   onInput?: OnInputLifecycle;
@@ -932,9 +924,8 @@ export const DeleteDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDetectorModelRequest",
 }) as any as S.Schema<DeleteDetectorModelRequest>;
 export interface DeleteDetectorModelResponse {}
-export const DeleteDetectorModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDetectorModelResponse",
-}) as any as S.Schema<DeleteDetectorModelResponse>;
+export const DeleteDetectorModelResponse =
+  DeleteAlarmModelResponse as any as S.Schema<DeleteDetectorModelResponse>;
 export interface DeleteInputRequest {
   inputName: string;
 }
@@ -946,9 +937,7 @@ export const DeleteInputRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteInputRequest",
 }) as any as S.Schema<DeleteInputRequest>;
 export interface DeleteInputResponse {}
-export const DeleteInputResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInputResponse",
-}) as any as S.Schema<DeleteInputResponse>;
+export const DeleteInputResponse = DeleteAlarmModelResponse as any as S.Schema<DeleteInputResponse>;
 export interface DescribeAlarmModelRequest {
   alarmModelName: string;
   alarmModelVersion?: string;
@@ -1581,9 +1570,8 @@ export const PutLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutLoggingOptionsRequest",
 }) as any as S.Schema<PutLoggingOptionsRequest>;
 export interface PutLoggingOptionsResponse {}
-export const PutLoggingOptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutLoggingOptionsResponse",
-}) as any as S.Schema<PutLoggingOptionsResponse>;
+export const PutLoggingOptionsResponse =
+  DeleteAlarmModelResponse as any as S.Schema<PutLoggingOptionsResponse>;
 export interface StartDetectorModelAnalysisRequest {
   detectorModelDefinition: DetectorModelDefinition;
 }
@@ -1622,9 +1610,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAlarmModelResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
 export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -1640,9 +1626,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAlarmModelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAlarmModelRequest {
   alarmModelName: string;
   alarmModelDescription?: string;
@@ -1683,17 +1668,8 @@ export interface UpdateAlarmModelResponse {
   lastUpdateTime?: Date;
   status?: AlarmModelVersionStatus;
 }
-export const UpdateAlarmModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    alarmModelArn: S.optional(S.String),
-    alarmModelVersion: S.optional(S.String),
-    lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(AlarmModelVersionStatus),
-  }),
-).annotate({
-  identifier: "UpdateAlarmModelResponse",
-}) as any as S.Schema<UpdateAlarmModelResponse>;
+export const UpdateAlarmModelResponse =
+  CreateAlarmModelResponse as any as S.Schema<UpdateAlarmModelResponse>;
 export interface UpdateDetectorModelRequest {
   detectorModelName: string;
   detectorModelDefinition: DetectorModelDefinition;
@@ -1724,13 +1700,8 @@ export const UpdateDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDetectorModelResponse {
   detectorModelConfiguration?: DetectorModelConfiguration;
 }
-export const UpdateDetectorModelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detectorModelConfiguration: S.optional(DetectorModelConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateDetectorModelResponse",
-}) as any as S.Schema<UpdateDetectorModelResponse>;
+export const UpdateDetectorModelResponse =
+  CreateDetectorModelResponse as any as S.Schema<UpdateDetectorModelResponse>;
 export interface UpdateInputRequest {
   inputName: string;
   inputDescription?: string;
@@ -1750,11 +1721,7 @@ export const UpdateInputRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInputResponse {
   inputConfiguration?: InputConfiguration;
 }
-export const UpdateInputResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inputConfiguration: S.optional(InputConfiguration) }),
-).annotate({
-  identifier: "UpdateInputResponse",
-}) as any as S.Schema<UpdateInputResponse>;
+export const UpdateInputResponse = CreateInputResponse as any as S.Schema<UpdateInputResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceArn = string;

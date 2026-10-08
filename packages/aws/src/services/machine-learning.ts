@@ -348,11 +348,8 @@ export const CreateDataSourceFromRedshiftInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataSourceFromRedshiftOutput {
   DataSourceId?: string;
 }
-export const CreateDataSourceFromRedshiftOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataSourceId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "CreateDataSourceFromRedshiftOutput",
-}) as any as S.Schema<CreateDataSourceFromRedshiftOutput>;
+export const CreateDataSourceFromRedshiftOutput =
+  CreateDataSourceFromRDSOutput as any as S.Schema<CreateDataSourceFromRedshiftOutput>;
 export interface S3DataSpec {
   DataLocationS3: string;
   DataRearrangement?: string;
@@ -386,11 +383,8 @@ export const CreateDataSourceFromS3Input = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataSourceFromS3Output {
   DataSourceId?: string;
 }
-export const CreateDataSourceFromS3Output = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataSourceId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "CreateDataSourceFromS3Output",
-}) as any as S.Schema<CreateDataSourceFromS3Output>;
+export const CreateDataSourceFromS3Output =
+  CreateDataSourceFromRDSOutput as any as S.Schema<CreateDataSourceFromS3Output>;
 export interface CreateEvaluationInput {
   EvaluationId: string;
   EvaluationName?: string;
@@ -502,11 +496,8 @@ export const DeleteBatchPredictionInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBatchPredictionOutput {
   BatchPredictionId?: string;
 }
-export const DeleteBatchPredictionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BatchPredictionId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeleteBatchPredictionOutput",
-}) as any as S.Schema<DeleteBatchPredictionOutput>;
+export const DeleteBatchPredictionOutput =
+  CreateBatchPredictionOutput as any as S.Schema<DeleteBatchPredictionOutput>;
 export interface DeleteDataSourceInput {
   DataSourceId: string;
 }
@@ -532,9 +523,8 @@ export const DeleteEvaluationInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEvaluationOutput {
   EvaluationId?: string;
 }
-export const DeleteEvaluationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EvaluationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteEvaluationOutput" }) as any as S.Schema<DeleteEvaluationOutput>;
+export const DeleteEvaluationOutput =
+  CreateEvaluationOutput as any as S.Schema<DeleteEvaluationOutput>;
 export interface DeleteMLModelInput {
   MLModelId: string;
 }
@@ -546,9 +536,7 @@ export const DeleteMLModelInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMLModelOutput {
   MLModelId?: string;
 }
-export const DeleteMLModelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MLModelId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteMLModelOutput" }) as any as S.Schema<DeleteMLModelOutput>;
+export const DeleteMLModelOutput = CreateMLModelOutput as any as S.Schema<DeleteMLModelOutput>;
 export interface DeleteRealtimeEndpointInput {
   MLModelId: string;
 }
@@ -563,16 +551,10 @@ export interface DeleteRealtimeEndpointOutput {
   MLModelId?: string;
   RealtimeEndpointInfo?: RealtimeEndpointInfo;
 }
-export const DeleteRealtimeEndpointOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MLModelId: S.optional(S.String),
-    RealtimeEndpointInfo: S.optional(RealtimeEndpointInfo),
-  }).pipe(ns),
-).annotate({
-  identifier: "DeleteRealtimeEndpointOutput",
-}) as any as S.Schema<DeleteRealtimeEndpointOutput>;
+export const DeleteRealtimeEndpointOutput =
+  CreateRealtimeEndpointOutput as any as S.Schema<DeleteRealtimeEndpointOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = EDPSecurityGroupIds as any as S.Schema<TagKeyList>;
 export interface DeleteTagsInput {
   TagKeys: string[];
   ResourceId: string;
@@ -587,12 +569,7 @@ export interface DeleteTagsOutput {
   ResourceId?: string;
   ResourceType?: TaggableResourceType;
 }
-export const DeleteTagsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(TaggableResourceType),
-  }).pipe(ns),
-).annotate({ identifier: "DeleteTagsOutput" }) as any as S.Schema<DeleteTagsOutput>;
+export const DeleteTagsOutput = AddTagsOutput as any as S.Schema<DeleteTagsOutput>;
 export type BatchPredictionFilterVariable =
   | "CreatedAt"
   | "LastUpdatedAt"
@@ -866,10 +843,8 @@ export const DescribeEvaluationsInput = /*@__PURE__*/ S.suspend(() =>
 export type PerformanceMetricsPropertyKey = string;
 export type PerformanceMetricsPropertyValue = string;
 export type PerformanceMetricsProperties = { [key: string]: string | undefined };
-export const PerformanceMetricsProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const PerformanceMetricsProperties =
+  TrainingParameters as any as S.Schema<PerformanceMetricsProperties>;
 export interface PerformanceMetrics {
   Properties?: { [key: string]: string | undefined };
 }
@@ -1313,11 +1288,8 @@ export const UpdateBatchPredictionInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBatchPredictionOutput {
   BatchPredictionId?: string;
 }
-export const UpdateBatchPredictionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BatchPredictionId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateBatchPredictionOutput",
-}) as any as S.Schema<UpdateBatchPredictionOutput>;
+export const UpdateBatchPredictionOutput =
+  CreateBatchPredictionOutput as any as S.Schema<UpdateBatchPredictionOutput>;
 export interface UpdateDataSourceInput {
   DataSourceId: string;
   DataSourceName: string;
@@ -1330,9 +1302,8 @@ export const UpdateDataSourceInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataSourceOutput {
   DataSourceId?: string;
 }
-export const UpdateDataSourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataSourceId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateDataSourceOutput" }) as any as S.Schema<UpdateDataSourceOutput>;
+export const UpdateDataSourceOutput =
+  DeleteDataSourceOutput as any as S.Schema<UpdateDataSourceOutput>;
 export interface UpdateEvaluationInput {
   EvaluationId: string;
   EvaluationName: string;
@@ -1345,9 +1316,8 @@ export const UpdateEvaluationInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEvaluationOutput {
   EvaluationId?: string;
 }
-export const UpdateEvaluationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EvaluationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateEvaluationOutput" }) as any as S.Schema<UpdateEvaluationOutput>;
+export const UpdateEvaluationOutput =
+  CreateEvaluationOutput as any as S.Schema<UpdateEvaluationOutput>;
 export interface UpdateMLModelInput {
   MLModelId: string;
   MLModelName?: string;
@@ -1363,9 +1333,7 @@ export const UpdateMLModelInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMLModelOutput {
   MLModelId?: string;
 }
-export const UpdateMLModelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MLModelId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateMLModelOutput" }) as any as S.Schema<UpdateMLModelOutput>;
+export const UpdateMLModelOutput = CreateMLModelOutput as any as S.Schema<UpdateMLModelOutput>;
 export type ErrorMessage = string;
 export type ErrorCode = number;
 export type AddTagsError =

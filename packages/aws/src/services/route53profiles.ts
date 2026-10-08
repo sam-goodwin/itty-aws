@@ -313,9 +313,8 @@ export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteProfileResponse {
   Profile?: Profile;
 }
-export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Profile: S.optional(Profile) }),
-).annotate({ identifier: "DeleteProfileResponse" }) as any as S.Schema<DeleteProfileResponse>;
+export const DeleteProfileResponse =
+  CreateProfileResponse as any as S.Schema<DeleteProfileResponse>;
 export interface DisassociateProfileRequest {
   ProfileId: string;
   ResourceId: string;
@@ -375,11 +374,8 @@ export const DisassociateResourceFromProfileRequest = /*@__PURE__*/ S.suspend(()
 export interface DisassociateResourceFromProfileResponse {
   ProfileResourceAssociation?: ProfileResourceAssociation;
 }
-export const DisassociateResourceFromProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProfileResourceAssociation: S.optional(ProfileResourceAssociation) }),
-).annotate({
-  identifier: "DisassociateResourceFromProfileResponse",
-}) as any as S.Schema<DisassociateResourceFromProfileResponse>;
+export const DisassociateResourceFromProfileResponse =
+  AssociateResourceToProfileResponse as any as S.Schema<DisassociateResourceFromProfileResponse>;
 export interface GetProfileRequest {
   ProfileId: string;
 }
@@ -391,9 +387,7 @@ export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetProfileResponse {
   Profile?: Profile;
 }
-export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Profile: S.optional(Profile) }),
-).annotate({ identifier: "GetProfileResponse" }) as any as S.Schema<GetProfileResponse>;
+export const GetProfileResponse = CreateProfileResponse as any as S.Schema<GetProfileResponse>;
 export interface GetProfileAssociationRequest {
   ProfileAssociationId: string;
 }
@@ -414,11 +408,8 @@ export const GetProfileAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetProfileAssociationResponse {
   ProfileAssociation?: ProfileAssociation;
 }
-export const GetProfileAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProfileAssociation: S.optional(ProfileAssociation) }),
-).annotate({
-  identifier: "GetProfileAssociationResponse",
-}) as any as S.Schema<GetProfileAssociationResponse>;
+export const GetProfileAssociationResponse =
+  DisassociateProfileResponse as any as S.Schema<GetProfileAssociationResponse>;
 export interface GetProfileResourceAssociationRequest {
   ProfileResourceAssociationId: string;
 }
@@ -441,11 +432,8 @@ export const GetProfileResourceAssociationRequest = /*@__PURE__*/ S.suspend(() =
 export interface GetProfileResourceAssociationResponse {
   ProfileResourceAssociation?: ProfileResourceAssociation;
 }
-export const GetProfileResourceAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProfileResourceAssociation: S.optional(ProfileResourceAssociation) }),
-).annotate({
-  identifier: "GetProfileResourceAssociationResponse",
-}) as any as S.Schema<GetProfileResourceAssociationResponse>;
+export const GetProfileResourceAssociationResponse =
+  AssociateResourceToProfileResponse as any as S.Schema<GetProfileResourceAssociationResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListProfileAssociationsRequest {
@@ -600,9 +588,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateProfileResourceAssociationRequest {
   ProfileResourceAssociationId: string;
   Name?: string;
@@ -632,11 +618,8 @@ export const UpdateProfileResourceAssociationRequest = /*@__PURE__*/ S.suspend((
 export interface UpdateProfileResourceAssociationResponse {
   ProfileResourceAssociation?: ProfileResourceAssociation;
 }
-export const UpdateProfileResourceAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProfileResourceAssociation: S.optional(ProfileResourceAssociation) }),
-).annotate({
-  identifier: "UpdateProfileResourceAssociationResponse",
-}) as any as S.Schema<UpdateProfileResourceAssociationResponse>;
+export const UpdateProfileResourceAssociationResponse =
+  AssociateResourceToProfileResponse as any as S.Schema<UpdateProfileResourceAssociationResponse>;
 export type ExceptionMessage = string;
 export type AssociateProfileError =
   | AccessDeniedException

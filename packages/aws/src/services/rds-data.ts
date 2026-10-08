@@ -188,7 +188,7 @@ export const BooleanArray = /*@__PURE__*/ S.Array(S.Boolean).pipe(/*@__PURE__*/ 
 export type LongArray = number[];
 export const LongArray = /*@__PURE__*/ S.Array(S.Number).pipe(/*@__PURE__*/ T.Sparse());
 export type DoubleArray = number[];
-export const DoubleArray = /*@__PURE__*/ S.Array(S.Number).pipe(/*@__PURE__*/ T.Sparse());
+export const DoubleArray = LongArray as any as S.Schema<DoubleArray>;
 export type StringArray = string[];
 export const StringArray = /*@__PURE__*/ S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
 export type ArrayOfArray = ArrayValue[];
@@ -748,11 +748,8 @@ export const RollbackTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RollbackTransactionResponse {
   transactionStatus?: string;
 }
-export const RollbackTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ transactionStatus: S.optional(S.String) }),
-).annotate({
-  identifier: "RollbackTransactionResponse",
-}) as any as S.Schema<RollbackTransactionResponse>;
+export const RollbackTransactionResponse =
+  CommitTransactionResponse as any as S.Schema<RollbackTransactionResponse>;
 export type ErrorMessage = string;
 export type BatchExecuteStatementError =
   | AccessDeniedException

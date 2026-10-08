@@ -335,10 +335,8 @@ export const AdminGetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdminGetSettingsRequest" }) as any as S.Schema<AdminGetSettingsRequest>;
 
 export type SettingsBagValueMap = { [key: string]: string | undefined };
-export const SettingsBagValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SettingsBagValueMap>;
+export const SettingsBagValueMap =
+  AddDataSourceRequestSecureJsonDataMap as any as S.Schema<SettingsBagValueMap>;
 
 export type SettingsBag = { [key: string]: SettingsBagValueMap | undefined };
 export const SettingsBag = /*@__PURE__*/ S.Record(
@@ -850,10 +848,8 @@ export const CreateCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Object is a JSON compatible map with string, float, int, bool, []any, or map[string]any children. */
 export type UnstructuredObjectMap = { [key: string]: unknown | undefined };
-export const UnstructuredObjectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UnstructuredObjectMap>;
+export const UnstructuredObjectMap =
+  CorrelationConfigTargetMap as any as S.Schema<UnstructuredObjectMap>;
 
 /** Unstructured allows objects that do not have Golang structs registered to be manipulated generically. */
 export interface Unstructured {
@@ -1167,10 +1163,8 @@ export const QueryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryHistoryResponse" }) as any as S.Schema<QueryHistoryResponse>;
 
 export type CreateRecordingRuleRequestQueriesItemMap = { [key: string]: unknown | undefined };
-export const CreateRecordingRuleRequestQueriesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRecordingRuleRequestQueriesItemMap>;
+export const CreateRecordingRuleRequestQueriesItemMap =
+  CorrelationConfigTargetMap as any as S.Schema<CreateRecordingRuleRequestQueriesItemMap>;
 
 export type CreateRecordingRuleRequestQueriesList = Array<CreateRecordingRuleRequestQueriesItemMap>;
 export const CreateRecordingRuleRequestQueriesList = /*@__PURE__*/ S.Array(
@@ -1209,15 +1203,12 @@ export const CreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRecordingRuleRequest>;
 
 export type RecordingRuleJSONQueriesItemMap = { [key: string]: unknown | undefined };
-export const RecordingRuleJSONQueriesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RecordingRuleJSONQueriesItemMap>;
+export const RecordingRuleJSONQueriesItemMap =
+  CorrelationConfigTargetMap as any as S.Schema<RecordingRuleJSONQueriesItemMap>;
 
 export type RecordingRuleJSONQueriesList = Array<RecordingRuleJSONQueriesItemMap>;
-export const RecordingRuleJSONQueriesList = /*@__PURE__*/ S.Array(
-  RecordingRuleJSONQueriesItemMap,
-) as any as S.Schema<RecordingRuleJSONQueriesList>;
+export const RecordingRuleJSONQueriesList =
+  CreateRecordingRuleRequestQueriesList as any as S.Schema<RecordingRuleJSONQueriesList>;
 
 /** RecordingRuleJSON is the external representation of a recording rule */
 export interface RecordingRuleJSON {
@@ -1322,9 +1313,8 @@ export const CreateReportRequestDashboardsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateReportRequestDashboardsList>;
 
 export type CreateReportRequestFormatsList = Array<string>;
-export const CreateReportRequestFormatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateReportRequestFormatsList>;
+export const CreateReportRequestFormatsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CreateReportRequestFormatsList>;
 
 export interface ReportOptions {
   csvEncoding?: string;
@@ -1475,9 +1465,8 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRoleRequest" }) as any as S.Schema<CreateRoleRequest>;
 
 export type RoleDTOPermissionsList = Array<Permission>;
-export const RoleDTOPermissionsList = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<RoleDTOPermissionsList>;
+export const RoleDTOPermissionsList =
+  CreateRoleRequestPermissionsList as any as S.Schema<RoleDTOPermissionsList>;
 
 export interface RoleDTO {
   created: string;
@@ -1531,10 +1520,8 @@ export const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceAccountRequest>;
 
 export type ServiceAccountDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const ServiceAccountDTOAccessControlMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<ServiceAccountDTOAccessControlMap>;
+export const ServiceAccountDTOAccessControlMap =
+  DataSourceSecureJsonFieldsMap as any as S.Schema<ServiceAccountDTOAccessControlMap>;
 
 export interface ServiceAccountDTO {
   accessControl?: ServiceAccountDTOAccessControlMap;
@@ -1705,11 +1692,8 @@ export const DatasourceProxyDELETEByUIDcallsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DatasourceProxyDELETEByUIDcallsRequest>;
 
 export interface DatasourceProxyDELETEByUIDcallsResponse {}
-export const DatasourceProxyDELETEByUIDcallsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DatasourceProxyDELETEByUIDcallsResponse",
-}) as any as S.Schema<DatasourceProxyDELETEByUIDcallsResponse>;
+export const DatasourceProxyDELETEByUIDcallsResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<DatasourceProxyDELETEByUIDcallsResponse>;
 
 export interface DatasourceProxyGETByUIDcallsRequest {
   uid: string;
@@ -1731,11 +1715,8 @@ export const DatasourceProxyGETByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasourceProxyGETByUIDcallsRequest>;
 
 export interface DatasourceProxyGETByUIDcallsResponse {}
-export const DatasourceProxyGETByUIDcallsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DatasourceProxyGETByUIDcallsResponse",
-}) as any as S.Schema<DatasourceProxyGETByUIDcallsResponse>;
+export const DatasourceProxyGETByUIDcallsResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<DatasourceProxyGETByUIDcallsResponse>;
 
 export interface DatasourceProxyPOSTByUIDcallsRequest {
   uid: string;
@@ -1757,11 +1738,8 @@ export const DatasourceProxyPOSTByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DatasourceProxyPOSTByUIDcallsRequest>;
 
 export interface DatasourceProxyPOSTByUIDcallsResponse {}
-export const DatasourceProxyPOSTByUIDcallsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DatasourceProxyPOSTByUIDcallsResponse",
-}) as any as S.Schema<DatasourceProxyPOSTByUIDcallsResponse>;
+export const DatasourceProxyPOSTByUIDcallsResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<DatasourceProxyPOSTByUIDcallsResponse>;
 
 export interface DeleteAnnotationRequest {
   annotation_id: string;
@@ -1785,11 +1763,8 @@ export const DeleteCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudMigrationTokenRequest>;
 
 export interface DeleteCloudMigrationTokenResponse {}
-export const DeleteCloudMigrationTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudMigrationTokenResponse",
-}) as any as S.Schema<DeleteCloudMigrationTokenResponse>;
+export const DeleteCloudMigrationTokenResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<DeleteCloudMigrationTokenResponse>;
 
 export interface DeleteCorrelationRequest {
   uid: string;
@@ -1875,9 +1850,8 @@ export const DeleteLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLicenseTokenRequest>;
 
 export interface DeleteLicenseTokenResponse {}
-export const DeleteLicenseTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLicenseTokenResponse",
-}) as any as S.Schema<DeleteLicenseTokenResponse>;
+export const DeleteLicenseTokenResponse =
+  CancelSnapshotResponse as any as S.Schema<DeleteLicenseTokenResponse>;
 
 export interface DeleteOrgRequest {
   org_id: number;
@@ -1983,9 +1957,8 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSessionResponse",
-}) as any as S.Schema<DeleteSessionResponse>;
+export const DeleteSessionResponse =
+  CancelSnapshotResponse as any as S.Schema<DeleteSessionResponse>;
 
 export interface DeleteTeamRequest {
   team_id: string;
@@ -2067,9 +2040,8 @@ export const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAnnotationRequest" }) as any as S.Schema<GetAnnotationRequest>;
 
 export type AnnotationTagsList = Array<string>;
-export const AnnotationTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnotationTagsList>;
+export const AnnotationTagsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<AnnotationTagsList>;
 
 export interface Annotation {
   alertId?: number;
@@ -2120,9 +2092,8 @@ export const Annotation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
 export type GetAnnotationsRequestTagsList = Array<string>;
-export const GetAnnotationsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAnnotationsRequestTagsList>;
+export const GetAnnotationsRequestTagsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<GetAnnotationsRequestTagsList>;
 
 export type GetAnnotationsRequestType = "alert" | "annotation";
 export const GetAnnotationsRequestType = S.String;
@@ -2278,9 +2249,8 @@ export const GetCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCorrelationRequest" }) as any as S.Schema<GetCorrelationRequest>;
 
 export type GetCorrelationsRequestSourceUIDList = Array<string>;
-export const GetCorrelationsRequestSourceUIDList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCorrelationsRequestSourceUIDList>;
+export const GetCorrelationsRequestSourceUIDList =
+  CreateAnnotationRequestTagsList as any as S.Schema<GetCorrelationsRequestSourceUIDList>;
 
 export interface GetCorrelationsRequest {
   /** Limit the maximum number of correlations to return per page */
@@ -2320,9 +2290,8 @@ export const GetCorrelationsBySourceUIDRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCorrelationsBySourceUIDRequest>;
 
 export type GetCorrelationsBySourceUIDResponseBodyList = Array<Correlation>;
-export const GetCorrelationsBySourceUIDResponseBodyList = /*@__PURE__*/ S.Array(
-  Correlation,
-) as any as S.Schema<GetCorrelationsBySourceUIDResponseBodyList>;
+export const GetCorrelationsBySourceUIDResponseBodyList =
+  GetCorrelationsResponseBodyList as any as S.Schema<GetCorrelationsBySourceUIDResponseBodyList>;
 
 export type GetCorrelationsBySourceUIDResponse = GetCorrelationsBySourceUIDResponseBodyList;
 export const GetCorrelationsBySourceUIDResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2620,41 +2589,34 @@ export const JSONWebKeyCertificateThumbprintSHA1List = /*@__PURE__*/ S.Array(
 
 /** X.509 certificate thumbprint (SHA-256), parsed from `x5t#S256` header. */
 export type JSONWebKeyCertificateThumbprintSHA256List = Array<number>;
-export const JSONWebKeyCertificateThumbprintSHA256List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<JSONWebKeyCertificateThumbprintSHA256List>;
+export const JSONWebKeyCertificateThumbprintSHA256List =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<JSONWebKeyCertificateThumbprintSHA256List>;
 
 export type CertificateAuthorityKeyIdList = Array<number>;
-export const CertificateAuthorityKeyIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateAuthorityKeyIdList>;
+export const CertificateAuthorityKeyIdList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateAuthorityKeyIdList>;
 
 /** CRL Distribution Points */
 export type CertificateCRLDistributionPointsList = Array<string>;
-export const CertificateCRLDistributionPointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateCRLDistributionPointsList>;
+export const CertificateCRLDistributionPointsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateCRLDistributionPointsList>;
 
 /** Subject Alternate Name values. (Note that these values may not be valid if invalid values were contained within a parsed certificate. For example, an element of DNSNames may not be a valid DNS domain name.) */
 export type CertificateDNSNamesList = Array<string>;
-export const CertificateDNSNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateDNSNamesList>;
+export const CertificateDNSNamesList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateDNSNamesList>;
 
 export type CertificateEmailAddressesList = Array<string>;
-export const CertificateEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateEmailAddressesList>;
+export const CertificateEmailAddressesList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateEmailAddressesList>;
 
 export type CertificateExcludedDNSDomainsList = Array<string>;
-export const CertificateExcludedDNSDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateExcludedDNSDomainsList>;
+export const CertificateExcludedDNSDomainsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateExcludedDNSDomainsList>;
 
 export type CertificateExcludedEmailAddressesList = Array<string>;
-export const CertificateExcludedEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateExcludedEmailAddressesList>;
+export const CertificateExcludedEmailAddressesList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateExcludedEmailAddressesList>;
 
 /** See type [IPNet] and func [ParseCIDR] for details. */
 export type IPMask = Array<number>;
@@ -2677,24 +2639,20 @@ export const CertificateExcludedIPRangesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CertificateExcludedIPRangesList>;
 
 export type CertificateExcludedURIDomainsList = Array<string>;
-export const CertificateExcludedURIDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateExcludedURIDomainsList>;
+export const CertificateExcludedURIDomainsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateExcludedURIDomainsList>;
 
 export type CertificateExtKeyUsageList = Array<number>;
-export const CertificateExtKeyUsageList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateExtKeyUsageList>;
+export const CertificateExtKeyUsageList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateExtKeyUsageList>;
 
 export type ObjectIdentifier = Array<number>;
-export const ObjectIdentifier = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ObjectIdentifier>;
+export const ObjectIdentifier =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ObjectIdentifier>;
 
 export type ExtensionValueList = Array<number>;
-export const ExtensionValueList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExtensionValueList>;
+export const ExtensionValueList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ExtensionValueList>;
 
 /** Extension represents the ASN.1 structure of the same name. See RFC 5280, section 4.2. */
 export interface Extension {
@@ -2718,14 +2676,12 @@ export const CertificateExtensionsList = /*@__PURE__*/ S.Array(
 
 /** ExtraExtensions contains extensions to be copied, raw, into any marshaled certificates. Values override any extensions that would otherwise be produced based on the other fields. The ExtraExtensions field is not populated when parsing certificates, see Extensions. */
 export type CertificateExtraExtensionsList = Array<Extension>;
-export const CertificateExtraExtensionsList = /*@__PURE__*/ S.Array(
-  Extension,
-) as any as S.Schema<CertificateExtraExtensionsList>;
+export const CertificateExtraExtensionsList =
+  CertificateExtensionsList as any as S.Schema<CertificateExtraExtensionsList>;
 
 export type CertificateIPAddressesList = Array<string>;
-export const CertificateIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateIPAddressesList>;
+export const CertificateIPAddressesList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateIPAddressesList>;
 
 export type NameCountryList = Array<string>;
 export const NameCountryList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<NameCountryList>;
@@ -2749,40 +2705,32 @@ export const NameExtraNamesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<NameExtraNamesList>;
 
 export type NameLocalityList = Array<string>;
-export const NameLocalityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NameLocalityList>;
+export const NameLocalityList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NameLocalityList>;
 
 /** Names contains all parsed attributes. When parsing distinguished names, this can be used to extract non-standard attributes that are not parsed by this package. When marshaling to RDNSequences, the Names field is ignored, see ExtraNames. */
 export type NameNamesList = Array<AttributeTypeAndValue>;
-export const NameNamesList = /*@__PURE__*/ S.Array(
-  AttributeTypeAndValue,
-) as any as S.Schema<NameNamesList>;
+export const NameNamesList = NameExtraNamesList as any as S.Schema<NameNamesList>;
 
 export type NameOrganizationList = Array<string>;
-export const NameOrganizationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NameOrganizationList>;
+export const NameOrganizationList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NameOrganizationList>;
 
 export type NameOrganizationalUnitList = Array<string>;
-export const NameOrganizationalUnitList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NameOrganizationalUnitList>;
+export const NameOrganizationalUnitList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NameOrganizationalUnitList>;
 
 export type NamePostalCodeList = Array<string>;
-export const NamePostalCodeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamePostalCodeList>;
+export const NamePostalCodeList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NamePostalCodeList>;
 
 export type NameProvinceList = Array<string>;
-export const NameProvinceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NameProvinceList>;
+export const NameProvinceList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NameProvinceList>;
 
 export type NameStreetAddressList = Array<string>;
-export const NameStreetAddressList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NameStreetAddressList>;
+export const NameStreetAddressList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NameStreetAddressList>;
 
 /** Name represents an X.509 distinguished name. This only includes the common elements of a DN. Note that Name is only an approximation of the X.509 structure. If an accurate representation is needed, asn1.Unmarshal the raw subject or issuer as an [RDNSequence]. */
 export interface Name {
@@ -2817,41 +2765,34 @@ export const Name = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
 export type CertificateIssuingCertificateURLList = Array<string>;
-export const CertificateIssuingCertificateURLList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateIssuingCertificateURLList>;
+export const CertificateIssuingCertificateURLList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateIssuingCertificateURLList>;
 
 /** RFC 5280, 4.2.2.1 (Authority Information Access) */
 export type CertificateOCSPServerList = Array<string>;
-export const CertificateOCSPServerList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateOCSPServerList>;
+export const CertificateOCSPServerList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateOCSPServerList>;
 
 export type CertificatePermittedDNSDomainsList = Array<string>;
-export const CertificatePermittedDNSDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePermittedDNSDomainsList>;
+export const CertificatePermittedDNSDomainsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificatePermittedDNSDomainsList>;
 
 export type CertificatePermittedEmailAddressesList = Array<string>;
-export const CertificatePermittedEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePermittedEmailAddressesList>;
+export const CertificatePermittedEmailAddressesList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificatePermittedEmailAddressesList>;
 
 export type CertificatePermittedIPRangesList = Array<IPNet>;
-export const CertificatePermittedIPRangesList = /*@__PURE__*/ S.Array(
-  IPNet,
-) as any as S.Schema<CertificatePermittedIPRangesList>;
+export const CertificatePermittedIPRangesList =
+  CertificateExcludedIPRangesList as any as S.Schema<CertificatePermittedIPRangesList>;
 
 export type CertificatePermittedURIDomainsList = Array<string>;
-export const CertificatePermittedURIDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePermittedURIDomainsList>;
+export const CertificatePermittedURIDomainsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificatePermittedURIDomainsList>;
 
 /** Policies contains all policy identifiers included in the certificate. See CreateCertificate for context about how this field and the PolicyIdentifiers field interact. In Go 1.22, encoding/gob cannot handle and ignores this field. */
 export type CertificatePoliciesList = Array<string>;
-export const CertificatePoliciesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificatePoliciesList>;
+export const CertificatePoliciesList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificatePoliciesList>;
 
 /** PolicyIdentifiers contains asn1.ObjectIdentifiers, the components of which are limited to int32. If a certificate contains a policy which cannot be represented by asn1.ObjectIdentifier, it will not be included in PolicyIdentifiers, but will be present in Policies, which contains all parsed policy OIDs. See CreateCertificate for context about how this field and the Policies field interact. */
 export type CertificatePolicyIdentifiersList = Array<ObjectIdentifier>;
@@ -2879,60 +2820,49 @@ export const CertificatePolicyMappingsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CertificatePolicyMappingsList>;
 
 export type CertificateRawList = Array<number>;
-export const CertificateRawList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateRawList>;
+export const CertificateRawList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawList>;
 
 export type CertificateRawIssuerList = Array<number>;
-export const CertificateRawIssuerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateRawIssuerList>;
+export const CertificateRawIssuerList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawIssuerList>;
 
 export type CertificateRawSignatureAlgorithmList = Array<number>;
-export const CertificateRawSignatureAlgorithmList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateRawSignatureAlgorithmList>;
+export const CertificateRawSignatureAlgorithmList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawSignatureAlgorithmList>;
 
 export type CertificateRawSubjectList = Array<number>;
-export const CertificateRawSubjectList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateRawSubjectList>;
+export const CertificateRawSubjectList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawSubjectList>;
 
 export type CertificateRawSubjectPublicKeyInfoList = Array<number>;
-export const CertificateRawSubjectPublicKeyInfoList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateRawSubjectPublicKeyInfoList>;
+export const CertificateRawSubjectPublicKeyInfoList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawSubjectPublicKeyInfoList>;
 
 export type CertificateRawTBSCertificateList = Array<number>;
-export const CertificateRawTBSCertificateList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateRawTBSCertificateList>;
+export const CertificateRawTBSCertificateList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawTBSCertificateList>;
 
 export type CertificateSignatureList = Array<number>;
-export const CertificateSignatureList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateSignatureList>;
+export const CertificateSignatureList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateSignatureList>;
 
 export type CertificateSubjectKeyIdList = Array<number>;
-export const CertificateSubjectKeyIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CertificateSubjectKeyIdList>;
+export const CertificateSubjectKeyIdList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateSubjectKeyIdList>;
 
 export type CertificateURIsList = Array<string>;
-export const CertificateURIsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateURIsList>;
+export const CertificateURIsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<CertificateURIsList>;
 
 /** UnhandledCriticalExtensions contains a list of extension IDs that were not (fully) processed when parsing. Verify will fail if this slice is non-empty, unless verification is delegated to an OS library which understands all the critical extensions. Users can access these extensions using Extensions and can remove elements from this slice if they believe that they have been handled. */
 export type CertificateUnhandledCriticalExtensionsList = Array<ObjectIdentifier>;
-export const CertificateUnhandledCriticalExtensionsList = /*@__PURE__*/ S.Array(
-  ObjectIdentifier,
-) as any as S.Schema<CertificateUnhandledCriticalExtensionsList>;
+export const CertificateUnhandledCriticalExtensionsList =
+  CertificatePolicyIdentifiersList as any as S.Schema<CertificateUnhandledCriticalExtensionsList>;
 
 export type CertificateUnknownExtKeyUsageList = Array<ObjectIdentifier>;
-export const CertificateUnknownExtKeyUsageList = /*@__PURE__*/ S.Array(
-  ObjectIdentifier,
-) as any as S.Schema<CertificateUnknownExtKeyUsageList>;
+export const CertificateUnknownExtKeyUsageList =
+  CertificatePolicyIdentifiersList as any as S.Schema<CertificateUnknownExtKeyUsageList>;
 
 export interface Certificate {
   AuthorityKeyId?: CertificateAuthorityKeyIdList;
@@ -3262,9 +3192,8 @@ export const GetLibraryElementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLibraryElementsRequest>;
 
 export type LibraryElementSearchResultElementsList = Array<LibraryElementDTO>;
-export const LibraryElementSearchResultElementsList = /*@__PURE__*/ S.Array(
-  LibraryElementDTO,
-) as any as S.Schema<LibraryElementSearchResultElementsList>;
+export const LibraryElementSearchResultElementsList =
+  LibraryElementArrayResponseResultList as any as S.Schema<LibraryElementSearchResultElementsList>;
 
 export interface LibraryElementSearchResult {
   elements?: LibraryElementSearchResultElementsList;
@@ -3300,7 +3229,7 @@ export const GetLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLicenseTokenRequest" }) as any as S.Schema<GetLicenseTokenRequest>;
 
 export type TokenProdList = Array<string>;
-export const TokenProdList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TokenProdList>;
+export const TokenProdList = NameCountryList as any as S.Schema<TokenProdList>;
 
 export interface Token {
   account?: string;
@@ -3363,9 +3292,8 @@ export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMetadataRequest" }) as any as S.Schema<GetMetadataRequest>;
 
 export type GetMetadataResponseBodyList = Array<number>;
-export const GetMetadataResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetMetadataResponseBodyList>;
+export const GetMetadataResponseBodyList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<GetMetadataResponseBodyList>;
 
 export type GetMetadataResponse = GetMetadataResponseBodyList;
 export const GetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3400,9 +3328,8 @@ export const GetOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrgQuotaRequest" }) as any as S.Schema<GetOrgQuotaRequest>;
 
 export type GetOrgQuotaResponseBodyList = Array<QuotaDTO>;
-export const GetOrgQuotaResponseBodyList = /*@__PURE__*/ S.Array(
-  QuotaDTO,
-) as any as S.Schema<GetOrgQuotaResponseBodyList>;
+export const GetOrgQuotaResponseBodyList =
+  GetCurrentOrgQuotaResponseBodyList as any as S.Schema<GetOrgQuotaResponseBodyList>;
 
 export type GetOrgQuotaResponse = GetOrgQuotaResponseBodyList;
 export const GetOrgQuotaResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3419,15 +3346,12 @@ export const GetOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrgUsersRequest" }) as any as S.Schema<GetOrgUsersRequest>;
 
 export type OrgUserDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const OrgUserDTOAccessControlMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<OrgUserDTOAccessControlMap>;
+export const OrgUserDTOAccessControlMap =
+  DataSourceSecureJsonFieldsMap as any as S.Schema<OrgUserDTOAccessControlMap>;
 
 export type OrgUserDTOAuthLabelsList = Array<string>;
-export const OrgUserDTOAuthLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgUserDTOAuthLabelsList>;
+export const OrgUserDTOAuthLabelsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<OrgUserDTOAuthLabelsList>;
 
 export interface OrgUserDTO {
   accessControl?: OrgUserDTOAccessControlMap;
@@ -3492,9 +3416,8 @@ export const GetOrgUsersForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrgUsersForCurrentOrgRequest>;
 
 export type GetOrgUsersForCurrentOrgResponseBodyList = Array<OrgUserDTO>;
-export const GetOrgUsersForCurrentOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  OrgUserDTO,
-) as any as S.Schema<GetOrgUsersForCurrentOrgResponseBodyList>;
+export const GetOrgUsersForCurrentOrgResponseBodyList =
+  GetOrgUsersResponseBodyList as any as S.Schema<GetOrgUsersForCurrentOrgResponseBodyList>;
 
 export type GetOrgUsersForCurrentOrgResponse = GetOrgUsersForCurrentOrgResponseBodyList;
 export const GetOrgUsersForCurrentOrgResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3612,10 +3535,8 @@ export const GetProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProviderSettingsRequest>;
 
 export type GetProviderSettingsResponseSettingsMap = { [key: string]: unknown | undefined };
-export const GetProviderSettingsResponseSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProviderSettingsResponseSettingsMap>;
+export const GetProviderSettingsResponseSettingsMap =
+  CorrelationConfigTargetMap as any as S.Schema<GetProviderSettingsResponseSettingsMap>;
 
 export interface GetProviderSettingsResponse {
   id?: string;
@@ -3663,9 +3584,8 @@ export const DataSourceRef = /*@__PURE__*/ S.suspend(() =>
 
 /** Panel IDs that should be included or excluded */
 export type AnnotationPanelFilterIdsList = Array<number>;
-export const AnnotationPanelFilterIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AnnotationPanelFilterIdsList>;
+export const AnnotationPanelFilterIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<AnnotationPanelFilterIdsList>;
 
 export interface AnnotationPanelFilter {
   /** Should the specified panels be included or excluded */
@@ -3682,9 +3602,8 @@ export const AnnotationPanelFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Only required/valid for the grafana datasource... but code+tests is already depending on it so hard to change */
 export type AnnotationTargetTagsList = Array<string>;
-export const AnnotationTargetTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnotationTargetTagsList>;
+export const AnnotationTargetTagsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<AnnotationTargetTagsList>;
 
 /** TODO: this should be a regular DataQuery that depends on the selected dashboard these match the properties of the "grafana" datasouce that is default in most dashboards */
 export interface AnnotationTarget {
@@ -3742,9 +3661,8 @@ export const AnnotationQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnotationQuery" }) as any as S.Schema<AnnotationQuery>;
 
 export type AnnotationEventTagsList = Array<string>;
-export const AnnotationEventTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnnotationEventTagsList>;
+export const AnnotationEventTagsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<AnnotationEventTagsList>;
 
 export interface AnnotationEvent {
   color?: string;
@@ -3813,19 +3731,15 @@ export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetReportsRequest" }) as any as S.Schema<GetReportsRequest>;
 
 export type ReportDashboardsList = Array<ReportDashboard>;
-export const ReportDashboardsList = /*@__PURE__*/ S.Array(
-  ReportDashboard,
-) as any as S.Schema<ReportDashboardsList>;
+export const ReportDashboardsList =
+  CreateReportRequestDashboardsList as any as S.Schema<ReportDashboardsList>;
 
 export type ReportFormatsList = Array<string>;
-export const ReportFormatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportFormatsList>;
+export const ReportFormatsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<ReportFormatsList>;
 
 export type ReportUrlsList = Array<ReportURLItem>;
-export const ReportUrlsList = /*@__PURE__*/ S.Array(
-  ReportURLItem,
-) as any as S.Schema<ReportUrlsList>;
+export const ReportUrlsList = CreateReportRequestUrlsList as any as S.Schema<ReportUrlsList>;
 
 export interface Report {
   created?: string;
@@ -3896,9 +3810,8 @@ export const GetReportsByDashboardUIDRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReportsByDashboardUIDRequest>;
 
 export type GetReportsByDashboardUIDResponseBodyList = Array<Report>;
-export const GetReportsByDashboardUIDResponseBodyList = /*@__PURE__*/ S.Array(
-  Report,
-) as any as S.Schema<GetReportsByDashboardUIDResponseBodyList>;
+export const GetReportsByDashboardUIDResponseBodyList =
+  GetReportsResponseBodyList as any as S.Schema<GetReportsByDashboardUIDResponseBodyList>;
 
 export type GetReportsByDashboardUIDResponse = GetReportsByDashboardUIDResponseBodyList;
 export const GetReportsByDashboardUIDResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4078,9 +3991,8 @@ export const Assignments = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Assignments" }) as any as S.Schema<Assignments>;
 
 export type DescriptionPermissionsList = Array<string>;
-export const DescriptionPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DescriptionPermissionsList>;
+export const DescriptionPermissionsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<DescriptionPermissionsList>;
 
 export interface Description {
   assignments?: Assignments;
@@ -4107,9 +4019,8 @@ export const GetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourcePermissionsRequest>;
 
 export type ResourcePermissionDTOActionsList = Array<string>;
-export const ResourcePermissionDTOActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcePermissionDTOActionsList>;
+export const ResourcePermissionDTOActionsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<ResourcePermissionDTOActionsList>;
 
 export interface ResourcePermissionDTO {
   actions?: ResourcePermissionDTOActionsList;
@@ -4183,19 +4094,16 @@ export const GetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRoleAssignmentsRequest>;
 
 export type RoleAssignmentsDTOServiceAccountsList = Array<number>;
-export const RoleAssignmentsDTOServiceAccountsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RoleAssignmentsDTOServiceAccountsList>;
+export const RoleAssignmentsDTOServiceAccountsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RoleAssignmentsDTOServiceAccountsList>;
 
 export type RoleAssignmentsDTOTeamsList = Array<number>;
-export const RoleAssignmentsDTOTeamsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RoleAssignmentsDTOTeamsList>;
+export const RoleAssignmentsDTOTeamsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RoleAssignmentsDTOTeamsList>;
 
 export type RoleAssignmentsDTOUsersList = Array<number>;
-export const RoleAssignmentsDTOUsersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RoleAssignmentsDTOUsersList>;
+export const RoleAssignmentsDTOUsersList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RoleAssignmentsDTOUsersList>;
 
 export interface RoleAssignmentsDTO {
   role_uid?: string;
@@ -4218,9 +4126,8 @@ export const GetSAMLLogoutRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSAMLLogoutRequest" }) as any as S.Schema<GetSAMLLogoutRequest>;
 
 export interface GetSAMLLogoutResponse {}
-export const GetSAMLLogoutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSAMLLogoutResponse",
-}) as any as S.Schema<GetSAMLLogoutResponse>;
+export const GetSAMLLogoutResponse =
+  CancelSnapshotResponse as any as S.Schema<GetSAMLLogoutResponse>;
 
 export interface GetServiceAccountRequest {
   serviceAccountId: number;
@@ -4269,14 +4176,12 @@ export const GetSettingsImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSettingsImageRequest" }) as any as S.Schema<GetSettingsImageRequest>;
 
 export type GetSettingsImageResponseBodyList = Array<number>;
-export const GetSettingsImageResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetSettingsImageResponseBodyList>;
+export const GetSettingsImageResponseBodyList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<GetSettingsImageResponseBodyList>;
 
 export type GetSettingsImageResponse = GetSettingsImageResponseBodyList;
-export const GetSettingsImageResponse = /*@__PURE__*/ S.suspend(() =>
-  GetSettingsImageResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetSettingsImageResponse" }) as any as S.Schema<GetSettingsImageResponse>;
+export const GetSettingsImageResponse =
+  GetMetadataResponse as any as S.Schema<GetSettingsImageResponse>;
 
 export interface GetShapshotListRequest {
   /** Session UID of a session */
@@ -4368,15 +4273,12 @@ export const GetSignedInUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSignedInUserRequest" }) as any as S.Schema<GetSignedInUserRequest>;
 
 export type UserProfileDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const UserProfileDTOAccessControlMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<UserProfileDTOAccessControlMap>;
+export const UserProfileDTOAccessControlMap =
+  DataSourceSecureJsonFieldsMap as any as S.Schema<UserProfileDTOAccessControlMap>;
 
 export type UserProfileDTOAuthLabelsList = Array<string>;
-export const UserProfileDTOAuthLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserProfileDTOAuthLabelsList>;
+export const UserProfileDTOAuthLabelsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<UserProfileDTOAuthLabelsList>;
 
 export interface UserProfileDTO {
   accessControl?: UserProfileDTOAccessControlMap;
@@ -4464,10 +4366,8 @@ export const GetSignedInUserTeamListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSignedInUserTeamListRequest>;
 
 export type TeamDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const TeamDTOAccessControlMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<TeamDTOAccessControlMap>;
+export const TeamDTOAccessControlMap =
+  DataSourceSecureJsonFieldsMap as any as S.Schema<TeamDTOAccessControlMap>;
 
 export interface TeamDTO {
   accessControl?: TeamDTOAccessControlMap;
@@ -4517,9 +4417,7 @@ export const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSLORequest" }) as any as S.Schema<GetSLORequest>;
 
 export interface GetSLOResponse {}
-export const GetSLOResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetSLOResponse",
-}) as any as S.Schema<GetSLOResponse>;
+export const GetSLOResponse = CancelSnapshotResponse as any as S.Schema<GetSLOResponse>;
 
 export interface GetSnapshotRequest {
   /** Session UID of a session */
@@ -4623,10 +4521,8 @@ export const SnapshotResourceStatsStatusesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotResourceStatsStatusesMap>;
 
 export type SnapshotResourceStatsTypesMap = { [key: string]: number | undefined };
-export const SnapshotResourceStatsTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<SnapshotResourceStatsTypesMap>;
+export const SnapshotResourceStatsTypesMap =
+  SnapshotResourceStatsStatusesMap as any as S.Schema<SnapshotResourceStatsTypesMap>;
 
 export interface SnapshotResourceStats {
   statuses?: SnapshotResourceStatsStatusesMap;
@@ -4708,14 +4604,12 @@ export const SyncResultFailedUsersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SyncResultFailedUsersList>;
 
 export type SyncResultMissingUserIdsList = Array<number>;
-export const SyncResultMissingUserIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SyncResultMissingUserIdsList>;
+export const SyncResultMissingUserIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SyncResultMissingUserIdsList>;
 
 export type SyncResultUpdatedUserIdsList = Array<number>;
-export const SyncResultUpdatedUserIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SyncResultUpdatedUserIdsList>;
+export const SyncResultUpdatedUserIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SyncResultUpdatedUserIdsList>;
 
 export interface SyncResult {
   Elapsed?: number;
@@ -4810,9 +4704,8 @@ export const GetTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTeamLBACRulesApiRequest>;
 
 export type TeamLBACRuleRulesList = Array<string>;
-export const TeamLBACRuleRulesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamLBACRuleRulesList>;
+export const TeamLBACRuleRulesList =
+  CreateAnnotationRequestTagsList as any as S.Schema<TeamLBACRuleRulesList>;
 
 export interface TeamLBACRule {
   rules?: TeamLBACRuleRulesList;
@@ -4851,9 +4744,8 @@ export const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTeamMembersRequest" }) as any as S.Schema<GetTeamMembersRequest>;
 
 export type TeamMemberDTOLabelsList = Array<string>;
-export const TeamMemberDTOLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TeamMemberDTOLabelsList>;
+export const TeamMemberDTOLabelsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<TeamMemberDTOLabelsList>;
 
 export interface TeamMemberDTO {
   auth_module?: string;
@@ -4910,9 +4802,8 @@ export const GetTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTeamPreferencesRequest>;
 
 export type PreferencesNavbarPreferenceBookmarkUrlsList = Array<string>;
-export const PreferencesNavbarPreferenceBookmarkUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreferencesNavbarPreferenceBookmarkUrlsList>;
+export const PreferencesNavbarPreferenceBookmarkUrlsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<PreferencesNavbarPreferenceBookmarkUrlsList>;
 
 export interface PreferencesNavbarPreference {
   bookmarkUrls?: PreferencesNavbarPreferenceBookmarkUrlsList;
@@ -4981,16 +4872,12 @@ export const GetUserAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserAuthTokensRequest" }) as any as S.Schema<GetUserAuthTokensRequest>;
 
 export type GetUserAuthTokensResponseBodyList = Array<UserToken>;
-export const GetUserAuthTokensResponseBodyList = /*@__PURE__*/ S.Array(
-  UserToken,
-) as any as S.Schema<GetUserAuthTokensResponseBodyList>;
+export const GetUserAuthTokensResponseBodyList =
+  AdminGetUserAuthTokensResponseBodyList as any as S.Schema<GetUserAuthTokensResponseBodyList>;
 
 export type GetUserAuthTokensResponse = GetUserAuthTokensResponseBodyList;
-export const GetUserAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  GetUserAuthTokensResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetUserAuthTokensResponse",
-}) as any as S.Schema<GetUserAuthTokensResponse>;
+export const GetUserAuthTokensResponse =
+  AdminGetUserAuthTokensResponse as any as S.Schema<GetUserAuthTokensResponse>;
 
 export interface GetUserByLoginOrEmailRequest {
   /** loginOrEmail of the user */
@@ -5023,9 +4910,8 @@ export const GetUserOrgListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserOrgListRequest" }) as any as S.Schema<GetUserOrgListRequest>;
 
 export type GetUserOrgListResponseBodyList = Array<UserOrgDTO>;
-export const GetUserOrgListResponseBodyList = /*@__PURE__*/ S.Array(
-  UserOrgDTO,
-) as any as S.Schema<GetUserOrgListResponseBodyList>;
+export const GetUserOrgListResponseBodyList =
+  GetSignedInUserOrgListResponseBodyList as any as S.Schema<GetUserOrgListResponseBodyList>;
 
 export type GetUserOrgListResponse = GetUserOrgListResponseBodyList;
 export const GetUserOrgListResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5042,14 +4928,11 @@ export const GetUserQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserQuotaRequest" }) as any as S.Schema<GetUserQuotaRequest>;
 
 export type GetUserQuotaResponseBodyList = Array<QuotaDTO>;
-export const GetUserQuotaResponseBodyList = /*@__PURE__*/ S.Array(
-  QuotaDTO,
-) as any as S.Schema<GetUserQuotaResponseBodyList>;
+export const GetUserQuotaResponseBodyList =
+  GetCurrentOrgQuotaResponseBodyList as any as S.Schema<GetUserQuotaResponseBodyList>;
 
 export type GetUserQuotaResponse = GetUserQuotaResponseBodyList;
-export const GetUserQuotaResponse = /*@__PURE__*/ S.suspend(() =>
-  GetUserQuotaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetUserQuotaResponse" }) as any as S.Schema<GetUserQuotaResponse>;
+export const GetUserQuotaResponse = GetOrgQuotaResponse as any as S.Schema<GetUserQuotaResponse>;
 
 export interface GetUserQuotasRequest {}
 export const GetUserQuotasRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5057,14 +4940,11 @@ export const GetUserQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserQuotasRequest" }) as any as S.Schema<GetUserQuotasRequest>;
 
 export type GetUserQuotasResponseBodyList = Array<QuotaDTO>;
-export const GetUserQuotasResponseBodyList = /*@__PURE__*/ S.Array(
-  QuotaDTO,
-) as any as S.Schema<GetUserQuotasResponseBodyList>;
+export const GetUserQuotasResponseBodyList =
+  GetCurrentOrgQuotaResponseBodyList as any as S.Schema<GetUserQuotasResponseBodyList>;
 
 export type GetUserQuotasResponse = GetUserQuotasResponseBodyList;
-export const GetUserQuotasResponse = /*@__PURE__*/ S.suspend(() =>
-  GetUserQuotasResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetUserQuotasResponse" }) as any as S.Schema<GetUserQuotasResponse>;
+export const GetUserQuotasResponse = GetOrgQuotaResponse as any as S.Schema<GetUserQuotasResponse>;
 
 export interface GetUserTeamsRequest {
   user_id: number;
@@ -5076,9 +4956,8 @@ export const GetUserTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserTeamsRequest" }) as any as S.Schema<GetUserTeamsRequest>;
 
 export type GetUserTeamsResponseBodyList = Array<TeamDTO>;
-export const GetUserTeamsResponseBodyList = /*@__PURE__*/ S.Array(
-  TeamDTO,
-) as any as S.Schema<GetUserTeamsResponseBodyList>;
+export const GetUserTeamsResponseBodyList =
+  GetSignedInUserTeamListResponseBodyList as any as S.Schema<GetUserTeamsResponseBodyList>;
 
 export type GetUserTeamsResponse = GetUserTeamsResponseBodyList;
 export const GetUserTeamsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5189,10 +5068,8 @@ export const ListAllProvidersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListAllProvidersSettingsResponseBodyItemSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAllProvidersSettingsResponseBodyItemSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListAllProvidersSettingsResponseBodyItemSettingsMap>;
+export const ListAllProvidersSettingsResponseBodyItemSettingsMap =
+  CorrelationConfigTargetMap as any as S.Schema<ListAllProvidersSettingsResponseBodyItemSettingsMap>;
 
 export interface ListAllProvidersSettingsResponseBodyItem {
   id?: string;
@@ -5200,16 +5077,8 @@ export interface ListAllProvidersSettingsResponseBodyItem {
   settings?: ListAllProvidersSettingsResponseBodyItemSettingsMap;
   source?: string;
 }
-export const ListAllProvidersSettingsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    provider: S.optional(S.String),
-    settings: S.optional(ListAllProvidersSettingsResponseBodyItemSettingsMap),
-    source: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAllProvidersSettingsResponseBodyItem",
-}) as any as S.Schema<ListAllProvidersSettingsResponseBodyItem>;
+export const ListAllProvidersSettingsResponseBodyItem =
+  GetProviderSettingsResponse as any as S.Schema<ListAllProvidersSettingsResponseBodyItem>;
 
 export type ListAllProvidersSettingsResponseBodyList =
   Array<ListAllProvidersSettingsResponseBodyItem>;
@@ -5385,14 +5254,12 @@ export const ListTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamRolesRequest" }) as any as S.Schema<ListTeamRolesRequest>;
 
 export type ListTeamsRolesRequestTeamIdsList = Array<number>;
-export const ListTeamsRolesRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListTeamsRolesRequestTeamIdsList>;
+export const ListTeamsRolesRequestTeamIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListTeamsRolesRequestTeamIdsList>;
 
 export type ListTeamsRolesRequestUserIdsList = Array<number>;
-export const ListTeamsRolesRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListTeamsRolesRequestUserIdsList>;
+export const ListTeamsRolesRequestUserIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListTeamsRolesRequestUserIdsList>;
 
 export interface ListTeamsRolesRequest {
   includeHidden?: boolean;
@@ -5410,9 +5277,8 @@ export const ListTeamsRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamsRolesRequest" }) as any as S.Schema<ListTeamsRolesRequest>;
 
 export type ListTeamsRolesResponseBodyValueList = Array<RoleDTO>;
-export const ListTeamsRolesResponseBodyValueList = /*@__PURE__*/ S.Array(
-  RoleDTO,
-) as any as S.Schema<ListTeamsRolesResponseBodyValueList>;
+export const ListTeamsRolesResponseBodyValueList =
+  ListRolesResponseBodyList as any as S.Schema<ListTeamsRolesResponseBodyValueList>;
 
 export type ListTeamsRolesResponseBodyMap = {
   [key: string]: ListTeamsRolesResponseBodyValueList | undefined;
@@ -5483,24 +5349,19 @@ export const ListUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUserRolesRequest" }) as any as S.Schema<ListUserRolesRequest>;
 
 export type ListUserRolesResponseBodyList = Array<RoleDTO>;
-export const ListUserRolesResponseBodyList = /*@__PURE__*/ S.Array(
-  RoleDTO,
-) as any as S.Schema<ListUserRolesResponseBodyList>;
+export const ListUserRolesResponseBodyList =
+  ListRolesResponseBodyList as any as S.Schema<ListUserRolesResponseBodyList>;
 
 export type ListUserRolesResponse = ListUserRolesResponseBodyList;
-export const ListUserRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListUserRolesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListUserRolesResponse" }) as any as S.Schema<ListUserRolesResponse>;
+export const ListUserRolesResponse = ListRolesResponse as any as S.Schema<ListUserRolesResponse>;
 
 export type ListUsersRolesRequestTeamIdsList = Array<number>;
-export const ListUsersRolesRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListUsersRolesRequestTeamIdsList>;
+export const ListUsersRolesRequestTeamIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListUsersRolesRequestTeamIdsList>;
 
 export type ListUsersRolesRequestUserIdsList = Array<number>;
-export const ListUsersRolesRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListUsersRolesRequestUserIdsList>;
+export const ListUsersRolesRequestUserIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListUsersRolesRequestUserIdsList>;
 
 export interface ListUsersRolesRequest {
   includeHidden?: boolean;
@@ -5518,22 +5379,18 @@ export const ListUsersRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRolesRequest" }) as any as S.Schema<ListUsersRolesRequest>;
 
 export type ListUsersRolesResponseBodyValueList = Array<RoleDTO>;
-export const ListUsersRolesResponseBodyValueList = /*@__PURE__*/ S.Array(
-  RoleDTO,
-) as any as S.Schema<ListUsersRolesResponseBodyValueList>;
+export const ListUsersRolesResponseBodyValueList =
+  ListRolesResponseBodyList as any as S.Schema<ListUsersRolesResponseBodyValueList>;
 
 export type ListUsersRolesResponseBodyMap = {
   [key: string]: ListUsersRolesResponseBodyValueList | undefined;
 };
-export const ListUsersRolesResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListUsersRolesResponseBodyValueList,
-) as any as S.Schema<ListUsersRolesResponseBodyMap>;
+export const ListUsersRolesResponseBodyMap =
+  ListTeamsRolesResponseBodyMap as any as S.Schema<ListUsersRolesResponseBodyMap>;
 
 export type ListUsersRolesResponse = ListUsersRolesResponseBodyMap;
-export const ListUsersRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListUsersRolesResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListUsersRolesResponse" }) as any as S.Schema<ListUsersRolesResponse>;
+export const ListUsersRolesResponse =
+  ListTeamsRolesResponse as any as S.Schema<ListUsersRolesResponse>;
 
 export interface MassDeleteAnnotationsRequest {
   annotationId?: number;
@@ -5553,10 +5410,8 @@ export const MassDeleteAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MassDeleteAnnotationsRequest>;
 
 export type PatchProviderSettingsRequestSettingsMap = { [key: string]: unknown | undefined };
-export const PatchProviderSettingsRequestSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PatchProviderSettingsRequestSettingsMap>;
+export const PatchProviderSettingsRequestSettingsMap =
+  CorrelationConfigTargetMap as any as S.Schema<PatchProviderSettingsRequestSettingsMap>;
 
 export interface PatchProviderSettingsRequest {
   key: string;
@@ -5593,9 +5448,7 @@ export const PostACSRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostACSRequest" }) as any as S.Schema<PostACSRequest>;
 
 export interface PostACSResponse {}
-export const PostACSResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostACSResponse",
-}) as any as S.Schema<PostACSResponse>;
+export const PostACSResponse = CancelSnapshotResponse as any as S.Schema<PostACSResponse>;
 
 export interface PostGraphiteAnnotationRequest {
   data?: string;
@@ -5664,9 +5517,7 @@ export const PostSLORequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostSLORequest" }) as any as S.Schema<PostSLORequest>;
 
 export interface PostSLOResponse {}
-export const PostSLOResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostSLOResponse",
-}) as any as S.Schema<PostSLOResponse>;
+export const PostSLOResponse = CancelSnapshotResponse as any as S.Schema<PostSLOResponse>;
 
 export interface PostSyncUserWithLDAPRequest {
   user_id: number;
@@ -5707,17 +5558,13 @@ export const QueryMetricsWithExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Map values to a display color NOTE: this interface is under development in the frontend... so simple map for now */
 export type FieldConfigColorMap = { [key: string]: unknown | undefined };
-export const FieldConfigColorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FieldConfigColorMap>;
+export const FieldConfigColorMap =
+  CorrelationConfigTargetMap as any as S.Schema<FieldConfigColorMap>;
 
 /** Panel Specific Values */
 export type FieldConfigCustomMap = { [key: string]: unknown | undefined };
-export const FieldConfigCustomMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FieldConfigCustomMap>;
+export const FieldConfigCustomMap =
+  CorrelationConfigTargetMap as any as S.Schema<FieldConfigCustomMap>;
 
 /** Redefining this to avoid an import cycle */
 export type TimeRange = ReportTimeRange;
@@ -5823,27 +5670,23 @@ export const ThresholdsConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Color is the color value for a given index (empty is undefined) */
 export type EnumFieldConfigColorList = Array<string>;
-export const EnumFieldConfigColorList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnumFieldConfigColorList>;
+export const EnumFieldConfigColorList =
+  CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigColorList>;
 
 /** Description of the enum state */
 export type EnumFieldConfigDescriptionList = Array<string>;
-export const EnumFieldConfigDescriptionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnumFieldConfigDescriptionList>;
+export const EnumFieldConfigDescriptionList =
+  CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigDescriptionList>;
 
 /** Icon supports setting an icon for a given index value */
 export type EnumFieldConfigIconList = Array<string>;
-export const EnumFieldConfigIconList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnumFieldConfigIconList>;
+export const EnumFieldConfigIconList =
+  CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigIconList>;
 
 /** Value is the string display value for a given index */
 export type EnumFieldConfigTextList = Array<string>;
-export const EnumFieldConfigTextList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnumFieldConfigTextList>;
+export const EnumFieldConfigTextList =
+  CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigTextList>;
 
 /** Enum field config Vector values are used as lookup keys into the enum fields */
 export interface EnumFieldConfig {
@@ -5932,10 +5775,7 @@ export const FieldConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are used to add metadata to an object. The JSON will always be sorted keys */
 export type FrameLabels = { [key: string]: string | undefined };
-export const FrameLabels = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrameLabels>;
+export const FrameLabels = AddDataSourceRequestSecureJsonDataMap as any as S.Schema<FrameLabels>;
 
 /** A Field is essentially a slice of various types with extra properties and methods. See NewField() for supported types. The slice data in the Field is a not exported, so methods on the Field are used to to manipulate its data. */
 export interface Field {
@@ -5981,23 +5821,15 @@ export const FrameMetaNoticesList = /*@__PURE__*/ S.Array(
 
 /** Map values to a display color NOTE: this interface is under development in the frontend... so simple map for now */
 export type QueryStatColorMap = { [key: string]: unknown | undefined };
-export const QueryStatColorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryStatColorMap>;
+export const QueryStatColorMap = CorrelationConfigTargetMap as any as S.Schema<QueryStatColorMap>;
 
 /** Panel Specific Values */
 export type QueryStatCustomMap = { [key: string]: unknown | undefined };
-export const QueryStatCustomMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryStatCustomMap>;
+export const QueryStatCustomMap = CorrelationConfigTargetMap as any as S.Schema<QueryStatCustomMap>;
 
 /** The behavior when clicking on a result */
 export type QueryStatLinksList = Array<DataLink>;
-export const QueryStatLinksList = /*@__PURE__*/ S.Array(
-  DataLink,
-) as any as S.Schema<QueryStatLinksList>;
+export const QueryStatLinksList = FieldConfigLinksList as any as S.Schema<QueryStatLinksList>;
 
 /** The embedded FieldConfig's display name must be set. It corresponds to the QueryResultMetaStat on the frontend (https://github.com/grafana/grafana/blob/master/packages/grafana-data/src/types/data.ts#L53). */
 export interface QueryStat {
@@ -6064,15 +5896,13 @@ export const FrameMetaStatsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FrameMetaStatsList>;
 
 export type FrameTypeVersion = Array<number>;
-export const FrameTypeVersion = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FrameTypeVersion>;
+export const FrameTypeVersion =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<FrameTypeVersion>;
 
 /** Array of field indices which values create a unique id for each row. Ideally this should be globally unique ID but that isn't guarantied. Should help with keeping track and deduplicating rows in visualizations, especially with streaming data with frequent updates. */
 export type FrameMetaUniqueRowIdFieldsList = Array<number>;
-export const FrameMetaUniqueRowIdFieldsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FrameMetaUniqueRowIdFieldsList>;
+export const FrameMetaUniqueRowIdFieldsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<FrameMetaUniqueRowIdFieldsList>;
 
 /** https://github.com/grafana/grafana/blob/master/packages/grafana-data/src/types/data.ts#L11 NOTE -- in javascript this can accept any `[key: string]: any;` however this interface only exposes the values we want to be exposed */
 export interface FrameMeta {
@@ -6221,9 +6051,8 @@ export const ReloadLDAPCfgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReloadLDAPCfgRequest" }) as any as S.Schema<ReloadLDAPCfgRequest>;
 
 export interface ReloadLDAPCfgResponse {}
-export const ReloadLDAPCfgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReloadLDAPCfgResponse",
-}) as any as S.Schema<ReloadLDAPCfgResponse>;
+export const ReloadLDAPCfgResponse =
+  CancelSnapshotResponse as any as S.Schema<ReloadLDAPCfgResponse>;
 
 export interface RemoveOrgUserRequest {
   org_id: number;
@@ -6323,14 +6152,12 @@ export const RenderReportCSVsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderReportCSVsRequest" }) as any as S.Schema<RenderReportCSVsRequest>;
 
 export type RenderReportCSVsResponseBodyList = Array<number>;
-export const RenderReportCSVsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RenderReportCSVsResponseBodyList>;
+export const RenderReportCSVsResponseBodyList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RenderReportCSVsResponseBodyList>;
 
 export type RenderReportCSVsResponse = RenderReportCSVsResponseBodyList;
-export const RenderReportCSVsResponse = /*@__PURE__*/ S.suspend(() =>
-  RenderReportCSVsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RenderReportCSVsResponse" }) as any as S.Schema<RenderReportCSVsResponse>;
+export const RenderReportCSVsResponse =
+  GetMetadataResponse as any as S.Schema<RenderReportCSVsResponse>;
 
 export interface RenderReportPDFsRequest {
   dashboards?: string;
@@ -6352,14 +6179,12 @@ export const RenderReportPDFsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderReportPDFsRequest" }) as any as S.Schema<RenderReportPDFsRequest>;
 
 export type RenderReportPDFsResponseBodyList = Array<number>;
-export const RenderReportPDFsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RenderReportPDFsResponseBodyList>;
+export const RenderReportPDFsResponseBodyList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RenderReportPDFsResponseBodyList>;
 
 export type RenderReportPDFsResponse = RenderReportPDFsResponseBodyList;
-export const RenderReportPDFsResponse = /*@__PURE__*/ S.suspend(() =>
-  RenderReportPDFsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RenderReportPDFsResponse" }) as any as S.Schema<RenderReportPDFsResponse>;
+export const RenderReportPDFsResponse =
+  GetMetadataResponse as any as S.Schema<RenderReportPDFsResponse>;
 
 export interface RevokeInviteRequest {
   invitation_code: string;
@@ -6393,11 +6218,8 @@ export const RouteConvertPrometheusCortexDeleteNamespaceRequest = /*@__PURE__*/ 
 }) as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceRequest>;
 
 export interface RouteConvertPrometheusCortexDeleteNamespaceResponse {}
-export const RouteConvertPrometheusCortexDeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusCortexDeleteNamespaceResponse",
-}) as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceResponse>;
+export const RouteConvertPrometheusCortexDeleteNamespaceResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceResponse>;
 
 export interface RouteConvertPrometheusCortexDeleteRuleGroupRequest {
   NamespaceTitle: string;
@@ -6419,11 +6241,8 @@ export const RouteConvertPrometheusCortexDeleteRuleGroupRequest = /*@__PURE__*/ 
 }) as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupRequest>;
 
 export interface RouteConvertPrometheusCortexDeleteRuleGroupResponse {}
-export const RouteConvertPrometheusCortexDeleteRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusCortexDeleteRuleGroupResponse",
-}) as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupResponse>;
+export const RouteConvertPrometheusCortexDeleteRuleGroupResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupResponse>;
 
 export interface RouteConvertPrometheusCortexGetNamespaceRequest {
   NamespaceTitle: string;
@@ -6437,11 +6256,8 @@ export const RouteConvertPrometheusCortexGetNamespaceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceRequest>;
 
 export interface RouteConvertPrometheusCortexGetNamespaceResponse {}
-export const RouteConvertPrometheusCortexGetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusCortexGetNamespaceResponse",
-}) as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceResponse>;
+export const RouteConvertPrometheusCortexGetNamespaceResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceResponse>;
 
 export interface RouteConvertPrometheusCortexGetRuleGroupRequest {
   NamespaceTitle: string;
@@ -6459,11 +6275,8 @@ export const RouteConvertPrometheusCortexGetRuleGroupRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupRequest>;
 
 export interface RouteConvertPrometheusCortexGetRuleGroupResponse {}
-export const RouteConvertPrometheusCortexGetRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusCortexGetRuleGroupResponse",
-}) as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupResponse>;
+export const RouteConvertPrometheusCortexGetRuleGroupResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupResponse>;
 
 export interface RouteConvertPrometheusCortexGetRulesRequest {}
 export const RouteConvertPrometheusCortexGetRulesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6473,11 +6286,8 @@ export const RouteConvertPrometheusCortexGetRulesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RouteConvertPrometheusCortexGetRulesRequest>;
 
 export interface RouteConvertPrometheusCortexGetRulesResponse {}
-export const RouteConvertPrometheusCortexGetRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusCortexGetRulesResponse",
-}) as any as S.Schema<RouteConvertPrometheusCortexGetRulesResponse>;
+export const RouteConvertPrometheusCortexGetRulesResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexGetRulesResponse>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupRequest {
   NamespaceTitle: string;
@@ -6491,11 +6301,8 @@ export const RouteConvertPrometheusCortexPostRuleGroupRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupRequest>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupResponse {}
-export const RouteConvertPrometheusCortexPostRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusCortexPostRuleGroupResponse",
-}) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupResponse>;
+export const RouteConvertPrometheusCortexPostRuleGroupResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupResponse>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupsRequest {}
 export const RouteConvertPrometheusCortexPostRuleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6505,11 +6312,8 @@ export const RouteConvertPrometheusCortexPostRuleGroupsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsRequest>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupsResponse {}
-export const RouteConvertPrometheusCortexPostRuleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusCortexPostRuleGroupsResponse",
-}) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsResponse>;
+export const RouteConvertPrometheusCortexPostRuleGroupsResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsResponse>;
 
 export interface RouteConvertPrometheusDeleteNamespaceRequest {
   NamespaceTitle: string;
@@ -6529,11 +6333,8 @@ export const RouteConvertPrometheusDeleteNamespaceRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<RouteConvertPrometheusDeleteNamespaceRequest>;
 
 export interface RouteConvertPrometheusDeleteNamespaceResponse {}
-export const RouteConvertPrometheusDeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusDeleteNamespaceResponse",
-}) as any as S.Schema<RouteConvertPrometheusDeleteNamespaceResponse>;
+export const RouteConvertPrometheusDeleteNamespaceResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusDeleteNamespaceResponse>;
 
 export interface RouteConvertPrometheusDeleteRuleGroupRequest {
   NamespaceTitle: string;
@@ -6555,11 +6356,8 @@ export const RouteConvertPrometheusDeleteRuleGroupRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupRequest>;
 
 export interface RouteConvertPrometheusDeleteRuleGroupResponse {}
-export const RouteConvertPrometheusDeleteRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusDeleteRuleGroupResponse",
-}) as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupResponse>;
+export const RouteConvertPrometheusDeleteRuleGroupResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupResponse>;
 
 export interface RouteConvertPrometheusGetNamespaceRequest {
   NamespaceTitle: string;
@@ -6579,11 +6377,8 @@ export const RouteConvertPrometheusGetNamespaceRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RouteConvertPrometheusGetNamespaceRequest>;
 
 export interface RouteConvertPrometheusGetNamespaceResponse {}
-export const RouteConvertPrometheusGetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusGetNamespaceResponse",
-}) as any as S.Schema<RouteConvertPrometheusGetNamespaceResponse>;
+export const RouteConvertPrometheusGetNamespaceResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusGetNamespaceResponse>;
 
 export interface RouteConvertPrometheusGetRuleGroupRequest {
   NamespaceTitle: string;
@@ -6605,11 +6400,8 @@ export const RouteConvertPrometheusGetRuleGroupRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RouteConvertPrometheusGetRuleGroupRequest>;
 
 export interface RouteConvertPrometheusGetRuleGroupResponse {}
-export const RouteConvertPrometheusGetRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusGetRuleGroupResponse",
-}) as any as S.Schema<RouteConvertPrometheusGetRuleGroupResponse>;
+export const RouteConvertPrometheusGetRuleGroupResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusGetRuleGroupResponse>;
 
 export interface RouteConvertPrometheusGetRulesRequest {}
 export const RouteConvertPrometheusGetRulesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6621,11 +6413,8 @@ export const RouteConvertPrometheusGetRulesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RouteConvertPrometheusGetRulesRequest>;
 
 export interface RouteConvertPrometheusGetRulesResponse {}
-export const RouteConvertPrometheusGetRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusGetRulesResponse",
-}) as any as S.Schema<RouteConvertPrometheusGetRulesResponse>;
+export const RouteConvertPrometheusGetRulesResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusGetRulesResponse>;
 
 export interface RouteConvertPrometheusPostRuleGroupRequest {
   NamespaceTitle: string;
@@ -6645,11 +6434,8 @@ export const RouteConvertPrometheusPostRuleGroupRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RouteConvertPrometheusPostRuleGroupRequest>;
 
 export interface RouteConvertPrometheusPostRuleGroupResponse {}
-export const RouteConvertPrometheusPostRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusPostRuleGroupResponse",
-}) as any as S.Schema<RouteConvertPrometheusPostRuleGroupResponse>;
+export const RouteConvertPrometheusPostRuleGroupResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusPostRuleGroupResponse>;
 
 export interface RouteConvertPrometheusPostRuleGroupsRequest {}
 export const RouteConvertPrometheusPostRuleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6661,11 +6447,8 @@ export const RouteConvertPrometheusPostRuleGroupsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RouteConvertPrometheusPostRuleGroupsRequest>;
 
 export interface RouteConvertPrometheusPostRuleGroupsResponse {}
-export const RouteConvertPrometheusPostRuleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RouteConvertPrometheusPostRuleGroupsResponse",
-}) as any as S.Schema<RouteConvertPrometheusPostRuleGroupsResponse>;
+export const RouteConvertPrometheusPostRuleGroupsResponse =
+  AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusPostRuleGroupsResponse>;
 
 export type RouteExportMuteTimingRequestFormat = "yaml" | "json" | "hcl";
 export const RouteExportMuteTimingRequestFormat = S.String;
@@ -6727,16 +6510,12 @@ export const AlertingFileExportContactPointsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AlertingFileExportContactPointsList>;
 
 export type AlertRuleExportAnnotationsMap = { [key: string]: string | undefined };
-export const AlertRuleExportAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AlertRuleExportAnnotationsMap>;
+export const AlertRuleExportAnnotationsMap =
+  AddDataSourceRequestSecureJsonDataMap as any as S.Schema<AlertRuleExportAnnotationsMap>;
 
 export type AlertQueryExportModelMap = { [key: string]: unknown | undefined };
-export const AlertQueryExportModelMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AlertQueryExportModelMap>;
+export const AlertQueryExportModelMap =
+  CorrelationConfigTargetMap as any as S.Schema<AlertQueryExportModelMap>;
 
 export interface RelativeTimeRangeExport {
   from?: number;
@@ -6775,28 +6554,23 @@ export type AlertRuleExportExecErrState = "OK" | "Alerting" | "Error";
 export const AlertRuleExportExecErrState = S.String;
 
 export type AlertRuleExportLabelsMap = { [key: string]: string | undefined };
-export const AlertRuleExportLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AlertRuleExportLabelsMap>;
+export const AlertRuleExportLabelsMap =
+  AddDataSourceRequestSecureJsonDataMap as any as S.Schema<AlertRuleExportLabelsMap>;
 
 export type AlertRuleExportNoDataState = "Alerting" | "NoData" | "OK";
 export const AlertRuleExportNoDataState = S.String;
 
 export type AlertRuleNotificationSettingsExportActiveTimeIntervalsList = Array<string>;
-export const AlertRuleNotificationSettingsExportActiveTimeIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertRuleNotificationSettingsExportActiveTimeIntervalsList>;
+export const AlertRuleNotificationSettingsExportActiveTimeIntervalsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<AlertRuleNotificationSettingsExportActiveTimeIntervalsList>;
 
 export type AlertRuleNotificationSettingsExportGroupByList = Array<string>;
-export const AlertRuleNotificationSettingsExportGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertRuleNotificationSettingsExportGroupByList>;
+export const AlertRuleNotificationSettingsExportGroupByList =
+  CreateAnnotationRequestTagsList as any as S.Schema<AlertRuleNotificationSettingsExportGroupByList>;
 
 export type AlertRuleNotificationSettingsExportMuteTimeIntervalsList = Array<string>;
-export const AlertRuleNotificationSettingsExportMuteTimeIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertRuleNotificationSettingsExportMuteTimeIntervalsList>;
+export const AlertRuleNotificationSettingsExportMuteTimeIntervalsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<AlertRuleNotificationSettingsExportMuteTimeIntervalsList>;
 
 export interface AlertRuleNotificationSettingsExport {
   active_time_intervals?: AlertRuleNotificationSettingsExportActiveTimeIntervalsList;
@@ -6940,27 +6714,20 @@ export const AlertingFileExportMuteTimesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AlertingFileExportMuteTimesList>;
 
 export type NotificationPolicyExportActiveTimeIntervalsList = Array<string>;
-export const NotificationPolicyExportActiveTimeIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationPolicyExportActiveTimeIntervalsList>;
+export const NotificationPolicyExportActiveTimeIntervalsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NotificationPolicyExportActiveTimeIntervalsList>;
 
 export type NotificationPolicyExportGroupByList = Array<string>;
-export const NotificationPolicyExportGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationPolicyExportGroupByList>;
+export const NotificationPolicyExportGroupByList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NotificationPolicyExportGroupByList>;
 
 /** Deprecated. Remove before v1.0 release. */
 export type NotificationPolicyExportMatchMap = { [key: string]: string | undefined };
-export const NotificationPolicyExportMatchMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationPolicyExportMatchMap>;
+export const NotificationPolicyExportMatchMap =
+  AddDataSourceRequestSecureJsonDataMap as any as S.Schema<NotificationPolicyExportMatchMap>;
 
 export type MatchRegexps = { [key: string]: string | undefined };
-export const MatchRegexps = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MatchRegexps>;
+export const MatchRegexps = AddDataSourceRequestSecureJsonDataMap as any as S.Schema<MatchRegexps>;
 
 export interface Matcher {
   Name?: string;
@@ -6980,12 +6747,11 @@ export type Matchers = Array<Matcher>;
 export const Matchers = /*@__PURE__*/ S.Array(Matcher) as any as S.Schema<Matchers>;
 
 export type NotificationPolicyExportMuteTimeIntervalsList = Array<string>;
-export const NotificationPolicyExportMuteTimeIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationPolicyExportMuteTimeIntervalsList>;
+export const NotificationPolicyExportMuteTimeIntervalsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NotificationPolicyExportMuteTimeIntervalsList>;
 
 export type ObjectMatcher = Array<string>;
-export const ObjectMatcher = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ObjectMatcher>;
+export const ObjectMatcher = NameCountryList as any as S.Schema<ObjectMatcher>;
 
 export type ObjectMatchers = Array<ObjectMatcher>;
 export const ObjectMatchers = /*@__PURE__*/ S.Array(
@@ -6993,26 +6759,21 @@ export const ObjectMatchers = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ObjectMatchers>;
 
 export type RouteExportActiveTimeIntervalsList = Array<string>;
-export const RouteExportActiveTimeIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RouteExportActiveTimeIntervalsList>;
+export const RouteExportActiveTimeIntervalsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<RouteExportActiveTimeIntervalsList>;
 
 export type RouteExportGroupByList = Array<string>;
-export const RouteExportGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RouteExportGroupByList>;
+export const RouteExportGroupByList =
+  CreateAnnotationRequestTagsList as any as S.Schema<RouteExportGroupByList>;
 
 /** Deprecated. Remove before v1.0 release. */
 export type RouteExportMatchMap = { [key: string]: string | undefined };
-export const RouteExportMatchMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RouteExportMatchMap>;
+export const RouteExportMatchMap =
+  AddDataSourceRequestSecureJsonDataMap as any as S.Schema<RouteExportMatchMap>;
 
 export type RouteExportMuteTimeIntervalsList = Array<string>;
-export const RouteExportMuteTimeIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RouteExportMuteTimeIntervalsList>;
+export const RouteExportMuteTimeIntervalsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<RouteExportMuteTimeIntervalsList>;
 
 export type RouteExportRoutesList = Array<RouteExport>;
 export const RouteExportRoutesList = /*@__PURE__*/ S.Array(
@@ -7188,9 +6949,8 @@ export type RouteGetAlertRulesExportRequestFormat = "yaml" | "json" | "hcl";
 export const RouteGetAlertRulesExportRequestFormat = S.String;
 
 export type RouteGetAlertRulesExportRequestFolderUidList = Array<string>;
-export const RouteGetAlertRulesExportRequestFolderUidList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RouteGetAlertRulesExportRequestFolderUidList>;
+export const RouteGetAlertRulesExportRequestFolderUidList =
+  CreateAnnotationRequestTagsList as any as S.Schema<RouteGetAlertRulesExportRequestFolderUidList>;
 
 export interface RouteGetAlertRulesExportRequest {
   /** Whether to initiate a download of the file or not. */
@@ -7248,9 +7008,8 @@ export const RouteGetPolicyTreeExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteGetPolicyTreeExportRequest>;
 
 export type SaveReportSettingsRequestFooterItemsList = Array<FooterItem>;
-export const SaveReportSettingsRequestFooterItemsList = /*@__PURE__*/ S.Array(
-  FooterItem,
-) as any as S.Schema<SaveReportSettingsRequestFooterItemsList>;
+export const SaveReportSettingsRequestFooterItemsList =
+  ReportSettingsFooterItemsList as any as S.Schema<SaveReportSettingsRequestFooterItemsList>;
 
 export interface SaveReportSettingsRequest {
   branding?: ReportBrandingOptions;
@@ -7284,32 +7043,27 @@ export const SaveReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SaveReportSettingsRequest>;
 
 export type SearchRequestTagList = Array<string>;
-export const SearchRequestTagList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchRequestTagList>;
+export const SearchRequestTagList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SearchRequestTagList>;
 
 export type SearchRequestType = "dash-folder" | "dash-db";
 export const SearchRequestType = S.String;
 
 export type SearchRequestDashboardIdsList = Array<number>;
-export const SearchRequestDashboardIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchRequestDashboardIdsList>;
+export const SearchRequestDashboardIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SearchRequestDashboardIdsList>;
 
 export type SearchRequestDashboardUIDsList = Array<string>;
-export const SearchRequestDashboardUIDsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchRequestDashboardUIDsList>;
+export const SearchRequestDashboardUIDsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SearchRequestDashboardUIDsList>;
 
 export type SearchRequestFolderIdsList = Array<number>;
-export const SearchRequestFolderIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SearchRequestFolderIdsList>;
+export const SearchRequestFolderIdsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SearchRequestFolderIdsList>;
 
 export type SearchRequestFolderUIDsList = Array<string>;
-export const SearchRequestFolderUIDsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchRequestFolderUIDsList>;
+export const SearchRequestFolderUIDsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SearchRequestFolderUIDsList>;
 
 export type SearchRequestPermission = "Edit" | "View";
 export const SearchRequestPermission = S.String;
@@ -7364,7 +7118,7 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
 export type HitTagsList = Array<string>;
-export const HitTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HitTagsList>;
+export const HitTagsList = NameCountryList as any as S.Schema<HitTagsList>;
 
 export interface Hit {
   description?: string;
@@ -7605,9 +7359,8 @@ export const SearchOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchOrgUsersRequest" }) as any as S.Schema<SearchOrgUsersRequest>;
 
 export type SearchOrgUsersQueryResultOrgUsersList = Array<OrgUserDTO>;
-export const SearchOrgUsersQueryResultOrgUsersList = /*@__PURE__*/ S.Array(
-  OrgUserDTO,
-) as any as S.Schema<SearchOrgUsersQueryResultOrgUsersList>;
+export const SearchOrgUsersQueryResultOrgUsersList =
+  GetOrgUsersResponseBodyList as any as S.Schema<SearchOrgUsersQueryResultOrgUsersList>;
 
 export interface SearchOrgUsersQueryResult {
   orgUsers?: SearchOrgUsersQueryResultOrgUsersList;
@@ -7627,9 +7380,8 @@ export const SearchOrgUsersQueryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchOrgUsersQueryResult>;
 
 export type SearchQueriesRequestDatasourceUidList = Array<string>;
-export const SearchQueriesRequestDatasourceUidList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchQueriesRequestDatasourceUidList>;
+export const SearchQueriesRequestDatasourceUidList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SearchQueriesRequestDatasourceUidList>;
 
 export type SearchQueriesRequestSort = "time-desc" | "time-asc";
 export const SearchQueriesRequestSort = S.String;
@@ -7717,9 +7469,8 @@ export const SearchTeamGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchTeamGroupsRequest" }) as any as S.Schema<SearchTeamGroupsRequest>;
 
 export type SearchTeamGroupsQueryResultTeamGroupsList = Array<TeamGroupDTO>;
-export const SearchTeamGroupsQueryResultTeamGroupsList = /*@__PURE__*/ S.Array(
-  TeamGroupDTO,
-) as any as S.Schema<SearchTeamGroupsQueryResultTeamGroupsList>;
+export const SearchTeamGroupsQueryResultTeamGroupsList =
+  GetTeamGroupsApiResponseBodyList as any as S.Schema<SearchTeamGroupsQueryResultTeamGroupsList>;
 
 export interface SearchTeamGroupsQueryResult {
   page?: number;
@@ -7770,9 +7521,8 @@ export const SearchTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchTeamsRequest" }) as any as S.Schema<SearchTeamsRequest>;
 
 export type SearchTeamQueryResultTeamsList = Array<TeamDTO>;
-export const SearchTeamQueryResultTeamsList = /*@__PURE__*/ S.Array(
-  TeamDTO,
-) as any as S.Schema<SearchTeamQueryResultTeamsList>;
+export const SearchTeamQueryResultTeamsList =
+  GetSignedInUserTeamListResponseBodyList as any as S.Schema<SearchTeamQueryResultTeamsList>;
 
 export interface SearchTeamQueryResult {
   page?: number;
@@ -7803,15 +7553,12 @@ export const SearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchUsersRequest" }) as any as S.Schema<SearchUsersRequest>;
 
 export type UserSearchHitDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const UserSearchHitDTOAccessControlMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<UserSearchHitDTOAccessControlMap>;
+export const UserSearchHitDTOAccessControlMap =
+  DataSourceSecureJsonFieldsMap as any as S.Schema<UserSearchHitDTOAccessControlMap>;
 
 export type UserSearchHitDTOAuthLabelsList = Array<string>;
-export const UserSearchHitDTOAuthLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserSearchHitDTOAuthLabelsList>;
+export const UserSearchHitDTOAuthLabelsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<UserSearchHitDTOAuthLabelsList>;
 
 export interface UserSearchHitDTO {
   accessControl?: UserSearchHitDTOAccessControlMap;
@@ -7868,9 +7615,8 @@ export const SearchUsersWithPagingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchUsersWithPagingRequest>;
 
 export type SearchUserQueryResultUsersList = Array<UserSearchHitDTO>;
-export const SearchUserQueryResultUsersList = /*@__PURE__*/ S.Array(
-  UserSearchHitDTO,
-) as any as S.Schema<SearchUserQueryResultUsersList>;
+export const SearchUserQueryResultUsersList =
+  SearchUsersResponseBodyList as any as S.Schema<SearchUserQueryResultUsersList>;
 
 export interface SearchUserQueryResult {
   page?: number;
@@ -7904,19 +7650,16 @@ export const SendReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendReportRequest" }) as any as S.Schema<SendReportRequest>;
 
 export type SendTestEmailRequestDashboardsList = Array<ReportDashboard>;
-export const SendTestEmailRequestDashboardsList = /*@__PURE__*/ S.Array(
-  ReportDashboard,
-) as any as S.Schema<SendTestEmailRequestDashboardsList>;
+export const SendTestEmailRequestDashboardsList =
+  CreateReportRequestDashboardsList as any as S.Schema<SendTestEmailRequestDashboardsList>;
 
 export type SendTestEmailRequestFormatsList = Array<string>;
-export const SendTestEmailRequestFormatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendTestEmailRequestFormatsList>;
+export const SendTestEmailRequestFormatsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SendTestEmailRequestFormatsList>;
 
 export type SendTestEmailRequestUrlsList = Array<ReportURLItem>;
-export const SendTestEmailRequestUrlsList = /*@__PURE__*/ S.Array(
-  ReportURLItem,
-) as any as S.Schema<SendTestEmailRequestUrlsList>;
+export const SendTestEmailRequestUrlsList =
+  CreateReportRequestUrlsList as any as S.Schema<SendTestEmailRequestUrlsList>;
 
 export interface SendTestEmailRequest {
   dashboards?: SendTestEmailRequestDashboardsList;
@@ -8086,19 +7829,16 @@ export const SetResourcePermissionsForUserRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<SetResourcePermissionsForUserRequest>;
 
 export type SetRoleAssignmentsRequestServiceAccountsList = Array<number>;
-export const SetRoleAssignmentsRequestServiceAccountsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetRoleAssignmentsRequestServiceAccountsList>;
+export const SetRoleAssignmentsRequestServiceAccountsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SetRoleAssignmentsRequestServiceAccountsList>;
 
 export type SetRoleAssignmentsRequestTeamsList = Array<number>;
-export const SetRoleAssignmentsRequestTeamsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetRoleAssignmentsRequestTeamsList>;
+export const SetRoleAssignmentsRequestTeamsList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SetRoleAssignmentsRequestTeamsList>;
 
 export type SetRoleAssignmentsRequestUsersList = Array<number>;
-export const SetRoleAssignmentsRequestUsersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetRoleAssignmentsRequestUsersList>;
+export const SetRoleAssignmentsRequestUsersList =
+  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SetRoleAssignmentsRequestUsersList>;
 
 export interface SetRoleAssignmentsRequest {
   roleUID: string;
@@ -8118,14 +7858,12 @@ export const SetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetRoleAssignmentsRequest>;
 
 export type SetTeamMembershipsRequestAdminsList = Array<string>;
-export const SetTeamMembershipsRequestAdminsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTeamMembershipsRequestAdminsList>;
+export const SetTeamMembershipsRequestAdminsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SetTeamMembershipsRequestAdminsList>;
 
 export type SetTeamMembershipsRequestMembersList = Array<string>;
-export const SetTeamMembershipsRequestMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTeamMembershipsRequestMembersList>;
+export const SetTeamMembershipsRequestMembersList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SetTeamMembershipsRequestMembersList>;
 
 export interface SetTeamMembershipsRequest {
   team_id: string;
@@ -8143,9 +7881,8 @@ export const SetTeamMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetTeamMembershipsRequest>;
 
 export type SetTeamRolesRequestRoleUidsList = Array<string>;
-export const SetTeamRolesRequestRoleUidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTeamRolesRequestRoleUidsList>;
+export const SetTeamRolesRequestRoleUidsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SetTeamRolesRequestRoleUidsList>;
 
 export interface SetTeamRolesRequest {
   teamId: number;
@@ -8163,9 +7900,8 @@ export const SetTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetTeamRolesRequest" }) as any as S.Schema<SetTeamRolesRequest>;
 
 export type SetUserRolesRequestRoleUidsList = Array<string>;
-export const SetUserRolesRequestRoleUidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetUserRolesRequestRoleUidsList>;
+export const SetUserRolesRequestRoleUidsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<SetUserRolesRequestRoleUidsList>;
 
 export interface SetUserRolesRequest {
   userId: number;
@@ -8194,16 +7930,13 @@ export const StarQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StarQueryRequest" }) as any as S.Schema<StarQueryRequest>;
 
 export type TestCreateRecordingRuleRequestQueriesItemMap = { [key: string]: unknown | undefined };
-export const TestCreateRecordingRuleRequestQueriesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestCreateRecordingRuleRequestQueriesItemMap>;
+export const TestCreateRecordingRuleRequestQueriesItemMap =
+  CorrelationConfigTargetMap as any as S.Schema<TestCreateRecordingRuleRequestQueriesItemMap>;
 
 export type TestCreateRecordingRuleRequestQueriesList =
   Array<TestCreateRecordingRuleRequestQueriesItemMap>;
-export const TestCreateRecordingRuleRequestQueriesList = /*@__PURE__*/ S.Array(
-  TestCreateRecordingRuleRequestQueriesItemMap,
-) as any as S.Schema<TestCreateRecordingRuleRequestQueriesList>;
+export const TestCreateRecordingRuleRequestQueriesList =
+  CreateRecordingRuleRequestQueriesList as any as S.Schema<TestCreateRecordingRuleRequestQueriesList>;
 
 export interface TestCreateRecordingRuleRequest {
   active?: boolean;
@@ -8246,9 +7979,8 @@ export const UnstarQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnstarQueryRequest" }) as any as S.Schema<UnstarQueryRequest>;
 
 export type UpdateAnnotationRequestTagsList = Array<string>;
-export const UpdateAnnotationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAnnotationRequestTagsList>;
+export const UpdateAnnotationRequestTagsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<UpdateAnnotationRequestTagsList>;
 
 export interface UpdateAnnotationRequest {
   annotation_id: string;
@@ -8272,9 +8004,8 @@ export const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAnnotationRequest" }) as any as S.Schema<UpdateAnnotationRequest>;
 
 export type UpdateAnnotationByAnnotationIdRequestTagsList = Array<string>;
-export const UpdateAnnotationByAnnotationIdRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAnnotationByAnnotationIdRequestTagsList>;
+export const UpdateAnnotationByAnnotationIdRequestTagsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<UpdateAnnotationByAnnotationIdRequestTagsList>;
 
 export interface UpdateAnnotationByAnnotationIdRequest {
   annotation_id: string;
@@ -8301,16 +8032,13 @@ export const UpdateAnnotationByAnnotationIdRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Target data query */
 export type CorrelationConfigUpdateDTOTargetMap = { [key: string]: unknown | undefined };
-export const CorrelationConfigUpdateDTOTargetMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CorrelationConfigUpdateDTOTargetMap>;
+export const CorrelationConfigUpdateDTOTargetMap =
+  CorrelationConfigTargetMap as any as S.Schema<CorrelationConfigUpdateDTOTargetMap>;
 
 /** Source data transformations */
 export type CorrelationConfigUpdateDTOTransformationsList = Array<Transformation>;
-export const CorrelationConfigUpdateDTOTransformationsList = /*@__PURE__*/ S.Array(
-  Transformation,
-) as any as S.Schema<CorrelationConfigUpdateDTOTransformationsList>;
+export const CorrelationConfigUpdateDTOTransformationsList =
+  Transformations as any as S.Schema<CorrelationConfigUpdateDTOTransformationsList>;
 
 export interface CorrelationConfigUpdateDTO {
   /** Field used to attach the correlation link */
@@ -8361,14 +8089,8 @@ export interface UpdateCorrelationResponseBody {
   message?: string;
   result?: Correlation;
 }
-export const UpdateCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    result: S.optional(Correlation),
-  }),
-).annotate({
-  identifier: "UpdateCorrelationResponseBody",
-}) as any as S.Schema<UpdateCorrelationResponseBody>;
+export const UpdateCorrelationResponseBody =
+  CreateCorrelationResponseBody as any as S.Schema<UpdateCorrelationResponseBody>;
 
 export interface UpdateCurrentOrgRequest {
   name?: string;
@@ -8401,10 +8123,8 @@ export const UpdateCurrentOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCurrentOrgAddressRequest>;
 
 export type UpdateDataSourceByUIDRequestSecureJsonDataMap = { [key: string]: string | undefined };
-export const UpdateDataSourceByUIDRequestSecureJsonDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDataSourceByUIDRequestSecureJsonDataMap>;
+export const UpdateDataSourceByUIDRequestSecureJsonDataMap =
+  AddDataSourceRequestSecureJsonDataMap as any as S.Schema<UpdateDataSourceByUIDRequestSecureJsonDataMap>;
 
 export interface UpdateDataSourceByUIDRequest {
   uid: string;
@@ -8615,10 +8335,8 @@ export const UpdateOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrgUserForCurrentOrgRequest>;
 
 export type UpdateProviderSettingsRequestSettingsMap = { [key: string]: unknown | undefined };
-export const UpdateProviderSettingsRequestSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProviderSettingsRequestSettingsMap>;
+export const UpdateProviderSettingsRequestSettingsMap =
+  CorrelationConfigTargetMap as any as S.Schema<UpdateProviderSettingsRequestSettingsMap>;
 
 export interface UpdateProviderSettingsRequest {
   key: string;
@@ -8667,15 +8385,12 @@ export const UpdatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePublicDashboardRequest>;
 
 export type UpdateRecordingRuleRequestQueriesItemMap = { [key: string]: unknown | undefined };
-export const UpdateRecordingRuleRequestQueriesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRecordingRuleRequestQueriesItemMap>;
+export const UpdateRecordingRuleRequestQueriesItemMap =
+  CorrelationConfigTargetMap as any as S.Schema<UpdateRecordingRuleRequestQueriesItemMap>;
 
 export type UpdateRecordingRuleRequestQueriesList = Array<UpdateRecordingRuleRequestQueriesItemMap>;
-export const UpdateRecordingRuleRequestQueriesList = /*@__PURE__*/ S.Array(
-  UpdateRecordingRuleRequestQueriesItemMap,
-) as any as S.Schema<UpdateRecordingRuleRequestQueriesList>;
+export const UpdateRecordingRuleRequestQueriesList =
+  CreateRecordingRuleRequestQueriesList as any as S.Schema<UpdateRecordingRuleRequestQueriesList>;
 
 export interface UpdateRecordingRuleRequest {
   active?: boolean;
@@ -8709,9 +8424,8 @@ export const UpdateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRecordingRuleRequest>;
 
 export type UpdateRoleRequestPermissionsList = Array<Permission>;
-export const UpdateRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<UpdateRoleRequestPermissionsList>;
+export const UpdateRoleRequestPermissionsList =
+  CreateRoleRequestPermissionsList as any as S.Schema<UpdateRoleRequestPermissionsList>;
 
 export interface UpdateRoleRequest {
   roleUID: string;
@@ -8757,15 +8471,12 @@ export const UpdateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateServiceAccountRequest>;
 
 export type ServiceAccountProfileDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const ServiceAccountProfileDTOAccessControlMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<ServiceAccountProfileDTOAccessControlMap>;
+export const ServiceAccountProfileDTOAccessControlMap =
+  DataSourceSecureJsonFieldsMap as any as S.Schema<ServiceAccountProfileDTOAccessControlMap>;
 
 export type ServiceAccountProfileDTOTeamsList = Array<string>;
-export const ServiceAccountProfileDTOTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceAccountProfileDTOTeamsList>;
+export const ServiceAccountProfileDTOTeamsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<ServiceAccountProfileDTOTeamsList>;
 
 export interface ServiceAccountProfileDTO {
   accessControl?: ServiceAccountProfileDTOAccessControlMap;
@@ -8852,9 +8563,8 @@ export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTeamRequest" }) as any as S.Schema<UpdateTeamRequest>;
 
 export type UpdateTeamLBACRulesApiRequestRulesList = Array<TeamLBACRule>;
-export const UpdateTeamLBACRulesApiRequestRulesList = /*@__PURE__*/ S.Array(
-  TeamLBACRule,
-) as any as S.Schema<UpdateTeamLBACRulesApiRequestRulesList>;
+export const UpdateTeamLBACRulesApiRequestRulesList =
+  TeamLBACRulesRulesList as any as S.Schema<UpdateTeamLBACRulesApiRequestRulesList>;
 
 export interface UpdateTeamLBACRulesApiRequest {
   uid: string;
@@ -8870,9 +8580,8 @@ export const UpdateTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTeamLBACRulesApiRequest>;
 
 export type UpdateTeamLBACRulesApiResponseRulesList = Array<TeamLBACRule>;
-export const UpdateTeamLBACRulesApiResponseRulesList = /*@__PURE__*/ S.Array(
-  TeamLBACRule,
-) as any as S.Schema<UpdateTeamLBACRulesApiResponseRulesList>;
+export const UpdateTeamLBACRulesApiResponseRulesList =
+  TeamLBACRulesRulesList as any as S.Schema<UpdateTeamLBACRulesApiResponseRulesList>;
 
 export interface UpdateTeamLBACRulesApiResponse {
   id?: number;
@@ -8907,9 +8616,8 @@ export const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTeamMemberRequest" }) as any as S.Schema<UpdateTeamMemberRequest>;
 
 export type NavbarPreferenceBookmarkUrlsList = Array<string>;
-export const NavbarPreferenceBookmarkUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NavbarPreferenceBookmarkUrlsList>;
+export const NavbarPreferenceBookmarkUrlsList =
+  CreateAnnotationRequestTagsList as any as S.Schema<NavbarPreferenceBookmarkUrlsList>;
 
 export interface NavbarPreference {
   bookmarkUrls?: NavbarPreferenceBookmarkUrlsList;
@@ -8984,9 +8692,8 @@ export const UpdateUserEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserEmailRequest" }) as any as S.Schema<UpdateUserEmailRequest>;
 
 export interface UpdateUserEmailResponse {}
-export const UpdateUserEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserEmailResponse",
-}) as any as S.Schema<UpdateUserEmailResponse>;
+export const UpdateUserEmailResponse =
+  CancelSnapshotResponse as any as S.Schema<UpdateUserEmailResponse>;
 
 export interface UpdateUserQuotaRequest {
   user_id: number;
@@ -9025,9 +8732,8 @@ export const UploadSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadSnapshotRequest" }) as any as S.Schema<UploadSnapshotRequest>;
 
 export interface UploadSnapshotResponse {}
-export const UploadSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadSnapshotResponse",
-}) as any as S.Schema<UploadSnapshotResponse>;
+export const UploadSnapshotResponse =
+  CancelSnapshotResponse as any as S.Schema<UploadSnapshotResponse>;
 
 export interface UserSetUsingOrgRequest {
   org_id: number;

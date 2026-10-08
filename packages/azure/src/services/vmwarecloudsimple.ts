@@ -358,11 +358,8 @@ export const DeleteDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCloudServiceRequest>;
 
 export interface DeleteDedicatedCloudServiceResponse {}
-export const DeleteDedicatedCloudServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDedicatedCloudServiceResponse",
-}) as any as S.Schema<DeleteDedicatedCloudServiceResponse>;
+export const DeleteDedicatedCloudServiceResponse =
+  DeleteDedicatedCloudNodeResponse as any as S.Schema<DeleteDedicatedCloudServiceResponse>;
 
 export interface DeleteVirtualMachineRequest {
   /** The subscription ID. */
@@ -747,9 +744,8 @@ export const GetPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of DNS servers */
 export type PrivateCloudPropertiesDnsServersList = Array<string>;
-export const PrivateCloudPropertiesDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateCloudPropertiesDnsServersList>;
+export const PrivateCloudPropertiesDnsServersList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<PrivateCloudPropertiesDnsServersList>;
 
 /** Properties of resource pool */
 export interface ResourcePoolProperties {
@@ -862,15 +858,13 @@ export const GuestOSNICCustomizationAllocation = S.String;
 
 /** List of dns servers to use */
 export type GuestOSNICCustomizationDnsServersList = Array<string>;
-export const GuestOSNICCustomizationDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GuestOSNICCustomizationDnsServersList>;
+export const GuestOSNICCustomizationDnsServersList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSNICCustomizationDnsServersList>;
 
 /** Gateway addresses assigned to nic */
 export type GuestOSNICCustomizationGatewayList = Array<string>;
-export const GuestOSNICCustomizationGatewayList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GuestOSNICCustomizationGatewayList>;
+export const GuestOSNICCustomizationGatewayList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSNICCustomizationGatewayList>;
 
 /** Guest OS nic customization */
 export interface GuestOSNICCustomization {
@@ -903,9 +897,8 @@ export const GuestOSNICCustomization = /*@__PURE__*/ S.suspend(() =>
 
 /** NIC ip address */
 export type VirtualNicIpAddressesList = Array<string>;
-export const VirtualNicIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualNicIpAddressesList>;
+export const VirtualNicIpAddressesList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualNicIpAddressesList>;
 
 /** Properties of virtual network */
 export interface VirtualNetworkProperties {
@@ -988,15 +981,13 @@ export const VirtualMachineTemplatePropertiesNicsList = /*@__PURE__*/ S.Array(
 
 /** The list of VSphere networks */
 export type VirtualMachineTemplatePropertiesVSphereNetworksList = Array<string>;
-export const VirtualMachineTemplatePropertiesVSphereNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualMachineTemplatePropertiesVSphereNetworksList>;
+export const VirtualMachineTemplatePropertiesVSphereNetworksList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachineTemplatePropertiesVSphereNetworksList>;
 
 /** The tags from VSphere */
 export type VirtualMachineTemplatePropertiesVSphereTagsList = Array<string>;
-export const VirtualMachineTemplatePropertiesVSphereTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualMachineTemplatePropertiesVSphereTagsList>;
+export const VirtualMachineTemplatePropertiesVSphereTagsList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachineTemplatePropertiesVSphereTagsList>;
 
 /** Properties of virtual machine template */
 export interface VirtualMachineTemplateProperties {
@@ -1243,15 +1234,13 @@ export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disks' Controllers */
 export type VirtualMachinePropertiesControllersList = Array<VirtualDiskController>;
-export const VirtualMachinePropertiesControllersList = /*@__PURE__*/ S.Array(
-  VirtualDiskController,
-) as any as S.Schema<VirtualMachinePropertiesControllersList>;
+export const VirtualMachinePropertiesControllersList =
+  VirtualMachineTemplatePropertiesControllersList as any as S.Schema<VirtualMachinePropertiesControllersList>;
 
 /** List of dns servers to use */
 export type GuestOSCustomizationDnsServersList = Array<string>;
-export const GuestOSCustomizationDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GuestOSCustomizationDnsServersList>;
+export const GuestOSCustomizationDnsServersList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSCustomizationDnsServersList>;
 
 /** Guest OS Customization properties */
 export interface GuestOSCustomization {
@@ -1278,9 +1267,8 @@ export const GuestOSCustomization = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disks */
 export type VirtualMachinePropertiesDisksList = Array<VirtualDisk>;
-export const VirtualMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
-  VirtualDisk,
-) as any as S.Schema<VirtualMachinePropertiesDisksList>;
+export const VirtualMachinePropertiesDisksList =
+  VirtualMachineTemplatePropertiesDisksList as any as S.Schema<VirtualMachinePropertiesDisksList>;
 
 /** The Guest OS type */
 export type VirtualMachinePropertiesGuestOSType = "linux" | "windows" | "other";
@@ -1288,9 +1276,8 @@ export const VirtualMachinePropertiesGuestOSType = S.String;
 
 /** The list of Virtual NICs */
 export type VirtualMachinePropertiesNicsList = Array<VirtualNic>;
-export const VirtualMachinePropertiesNicsList = /*@__PURE__*/ S.Array(
-  VirtualNic,
-) as any as S.Schema<VirtualMachinePropertiesNicsList>;
+export const VirtualMachinePropertiesNicsList =
+  VirtualMachineTemplatePropertiesNicsList as any as S.Schema<VirtualMachinePropertiesNicsList>;
 
 /** The status of Virtual machine */
 export type VirtualMachinePropertiesStatus =
@@ -1304,9 +1291,8 @@ export const VirtualMachinePropertiesStatus = S.String;
 
 /** The list of Virtual VSphere Networks */
 export type VirtualMachinePropertiesVSphereNetworksList = Array<string>;
-export const VirtualMachinePropertiesVSphereNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualMachinePropertiesVSphereNetworksList>;
+export const VirtualMachinePropertiesVSphereNetworksList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachinePropertiesVSphereNetworksList>;
 
 /** Properties of virtual machine */
 export interface VirtualMachineProperties {
@@ -1895,9 +1881,8 @@ export const ListResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the Resource pools list */
 export type ResourcePoolsListResponseValueList = Array<ResourcePool>;
-export const ResourcePoolsListResponseValueList = /*@__PURE__*/ S.Array(
-  ResourcePool,
-) as any as S.Schema<ResourcePoolsListResponseValueList>;
+export const ResourcePoolsListResponseValueList =
+  PrivateCloudPropertiesResourcePoolsList as any as S.Schema<ResourcePoolsListResponseValueList>;
 
 /** List of resource pools response model */
 export interface ResourcePoolsListResponse {
@@ -2192,9 +2177,8 @@ export const ListVirtualMachineTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the VM template list */
 export type VirtualMachineTemplateListResponseValueList = Array<VirtualMachineTemplate>;
-export const VirtualMachineTemplateListResponseValueList = /*@__PURE__*/ S.Array(
-  VirtualMachineTemplate,
-) as any as S.Schema<VirtualMachineTemplateListResponseValueList>;
+export const VirtualMachineTemplateListResponseValueList =
+  PrivateCloudPropertiesVirtualMachineTemplatesList as any as S.Schema<VirtualMachineTemplateListResponseValueList>;
 
 /** List of virtual machine templates */
 export interface VirtualMachineTemplateListResponse {
@@ -2242,9 +2226,8 @@ export const ListVirtualNetworksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the VirtualNetwork list */
 export type VirtualNetworkListResponseValueList = Array<VirtualNetwork>;
-export const VirtualNetworkListResponseValueList = /*@__PURE__*/ S.Array(
-  VirtualNetwork,
-) as any as S.Schema<VirtualNetworkListResponseValueList>;
+export const VirtualNetworkListResponseValueList =
+  PrivateCloudPropertiesVirtualNetworksList as any as S.Schema<VirtualNetworkListResponseValueList>;
 
 /** List of virtual networks */
 export interface VirtualNetworkListResponse {
@@ -2288,9 +2271,8 @@ export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartVirtualMachineRequest>;
 
 export interface StartVirtualMachineResponse {}
-export const StartVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartVirtualMachineResponse",
-}) as any as S.Schema<StartVirtualMachineResponse>;
+export const StartVirtualMachineResponse =
+  DeleteVirtualMachineResponse as any as S.Schema<StartVirtualMachineResponse>;
 
 export type StopVirtualMachineRequestMode = "reboot" | "suspend" | "shutdown" | "poweroff";
 export const StopVirtualMachineRequestMode = S.String;
@@ -2324,9 +2306,8 @@ export const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopVirtualMachineRequest>;
 
 export interface StopVirtualMachineResponse {}
-export const StopVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopVirtualMachineResponse",
-}) as any as S.Schema<StopVirtualMachineResponse>;
+export const StopVirtualMachineResponse =
+  DeleteVirtualMachineResponse as any as S.Schema<StopVirtualMachineResponse>;
 
 export interface UpdateDedicatedCloudNodeRequest {
   /** The subscription ID. */
@@ -2447,15 +2428,13 @@ export const VirtualMachinePropertiesInputDisksList = /*@__PURE__*/ S.Array(
 
 /** NIC ip address */
 export type VirtualNicInputIpAddressesList = Array<string>;
-export const VirtualNicInputIpAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualNicInputIpAddressesList>;
+export const VirtualNicInputIpAddressesList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualNicInputIpAddressesList>;
 
 /** Properties of virtual network */
 export interface VirtualNetworkPropertiesInput {}
-export const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VirtualNetworkPropertiesInput",
-}) as any as S.Schema<VirtualNetworkPropertiesInput>;
+export const VirtualNetworkPropertiesInput =
+  DeleteVirtualMachineResponse as any as S.Schema<VirtualNetworkPropertiesInput>;
 
 /** Virtual network model */
 export interface VirtualNetworkInput {
@@ -2527,18 +2506,12 @@ export interface ResourcePoolInput {
   /** Resource pool properties */
   properties?: VirtualNetworkPropertiesInput;
 }
-export const ResourcePoolInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    properties: S.optional(VirtualNetworkPropertiesInput),
-  }),
-).annotate({ identifier: "ResourcePoolInput" }) as any as S.Schema<ResourcePoolInput>;
+export const ResourcePoolInput = VirtualNetworkInput as any as S.Schema<ResourcePoolInput>;
 
 /** The list of Virtual VSphere Networks */
 export type VirtualMachinePropertiesInputVSphereNetworksList = Array<string>;
-export const VirtualMachinePropertiesInputVSphereNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VirtualMachinePropertiesInputVSphereNetworksList>;
+export const VirtualMachinePropertiesInputVSphereNetworksList =
+  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachinePropertiesInputVSphereNetworksList>;
 
 /** Properties of virtual machine */
 export interface VirtualMachinePropertiesInput {

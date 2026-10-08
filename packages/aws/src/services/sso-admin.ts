@@ -374,11 +374,8 @@ export const CreateApplicationAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateApplicationAssignmentRequest",
 }) as any as S.Schema<CreateApplicationAssignmentRequest>;
 export interface CreateApplicationAssignmentResponse {}
-export const CreateApplicationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateApplicationAssignmentResponse",
-}) as any as S.Schema<CreateApplicationAssignmentResponse>;
+export const CreateApplicationAssignmentResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<CreateApplicationAssignmentResponse>;
 export type NameType = string;
 export interface CreateInstanceRequest {
   Name?: string;
@@ -441,11 +438,8 @@ export const CreateInstanceAccessControlAttributeConfigurationRequest = /*@__PUR
   identifier: "CreateInstanceAccessControlAttributeConfigurationRequest",
 }) as any as S.Schema<CreateInstanceAccessControlAttributeConfigurationRequest>;
 export interface CreateInstanceAccessControlAttributeConfigurationResponse {}
-export const CreateInstanceAccessControlAttributeConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "CreateInstanceAccessControlAttributeConfigurationResponse",
-}) as any as S.Schema<CreateInstanceAccessControlAttributeConfigurationResponse>;
+export const CreateInstanceAccessControlAttributeConfigurationResponse =
+  AttachCustomerManagedPolicyReferenceToPermissionSetResponse as any as S.Schema<CreateInstanceAccessControlAttributeConfigurationResponse>;
 export type PermissionSetName = string;
 export type PermissionSetDescription = string;
 export type Duration = string;
@@ -606,11 +600,8 @@ export const DeleteApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteApplicationAccessScopeRequest",
 }) as any as S.Schema<DeleteApplicationAccessScopeRequest>;
 export interface DeleteApplicationAccessScopeResponse {}
-export const DeleteApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationAccessScopeResponse",
-}) as any as S.Schema<DeleteApplicationAccessScopeResponse>;
+export const DeleteApplicationAccessScopeResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<DeleteApplicationAccessScopeResponse>;
 export interface DeleteApplicationAssignmentRequest {
   ApplicationArn: string;
   PrincipalId: string;
@@ -624,11 +615,8 @@ export const DeleteApplicationAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteApplicationAssignmentRequest",
 }) as any as S.Schema<DeleteApplicationAssignmentRequest>;
 export interface DeleteApplicationAssignmentResponse {}
-export const DeleteApplicationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationAssignmentResponse",
-}) as any as S.Schema<DeleteApplicationAssignmentResponse>;
+export const DeleteApplicationAssignmentResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<DeleteApplicationAssignmentResponse>;
 export type AuthenticationMethodType = "IAM" | (string & {});
 export const AuthenticationMethodType = S.String;
 
@@ -644,11 +632,8 @@ export const DeleteApplicationAuthenticationMethodRequest = /*@__PURE__*/ S.susp
   identifier: "DeleteApplicationAuthenticationMethodRequest",
 }) as any as S.Schema<DeleteApplicationAuthenticationMethodRequest>;
 export interface DeleteApplicationAuthenticationMethodResponse {}
-export const DeleteApplicationAuthenticationMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationAuthenticationMethodResponse",
-}) as any as S.Schema<DeleteApplicationAuthenticationMethodResponse>;
+export const DeleteApplicationAuthenticationMethodResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<DeleteApplicationAuthenticationMethodResponse>;
 export type GrantType =
   | "authorization_code"
   | "refresh_token"
@@ -669,9 +654,8 @@ export const DeleteApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteApplicationGrantRequest",
 }) as any as S.Schema<DeleteApplicationGrantRequest>;
 export interface DeleteApplicationGrantResponse {}
-export const DeleteApplicationGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApplicationGrantResponse",
-}) as any as S.Schema<DeleteApplicationGrantResponse>;
+export const DeleteApplicationGrantResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteApplicationGrantResponse>;
 export interface DeleteInlinePolicyFromPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -684,11 +668,8 @@ export const DeleteInlinePolicyFromPermissionSetRequest = /*@__PURE__*/ S.suspen
   identifier: "DeleteInlinePolicyFromPermissionSetRequest",
 }) as any as S.Schema<DeleteInlinePolicyFromPermissionSetRequest>;
 export interface DeleteInlinePolicyFromPermissionSetResponse {}
-export const DeleteInlinePolicyFromPermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInlinePolicyFromPermissionSetResponse",
-}) as any as S.Schema<DeleteInlinePolicyFromPermissionSetResponse>;
+export const DeleteInlinePolicyFromPermissionSetResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<DeleteInlinePolicyFromPermissionSetResponse>;
 export interface DeleteInstanceRequest {
   InstanceArn: string;
 }
@@ -698,9 +679,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteInstanceResponse>;
 export interface DeleteInstanceAccessControlAttributeConfigurationRequest {
   InstanceArn: string;
 }
@@ -713,11 +693,8 @@ export const DeleteInstanceAccessControlAttributeConfigurationRequest = /*@__PUR
   identifier: "DeleteInstanceAccessControlAttributeConfigurationRequest",
 }) as any as S.Schema<DeleteInstanceAccessControlAttributeConfigurationRequest>;
 export interface DeleteInstanceAccessControlAttributeConfigurationResponse {}
-export const DeleteInstanceAccessControlAttributeConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteInstanceAccessControlAttributeConfigurationResponse",
-}) as any as S.Schema<DeleteInstanceAccessControlAttributeConfigurationResponse>;
+export const DeleteInstanceAccessControlAttributeConfigurationResponse =
+  AttachCustomerManagedPolicyReferenceToPermissionSetResponse as any as S.Schema<DeleteInstanceAccessControlAttributeConfigurationResponse>;
 export interface DeletePermissionsBoundaryFromPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -730,11 +707,8 @@ export const DeletePermissionsBoundaryFromPermissionSetRequest = /*@__PURE__*/ S
   identifier: "DeletePermissionsBoundaryFromPermissionSetRequest",
 }) as any as S.Schema<DeletePermissionsBoundaryFromPermissionSetRequest>;
 export interface DeletePermissionsBoundaryFromPermissionSetResponse {}
-export const DeletePermissionsBoundaryFromPermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePermissionsBoundaryFromPermissionSetResponse",
-}) as any as S.Schema<DeletePermissionsBoundaryFromPermissionSetResponse>;
+export const DeletePermissionsBoundaryFromPermissionSetResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<DeletePermissionsBoundaryFromPermissionSetResponse>;
 export interface DeletePermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -747,9 +721,8 @@ export const DeletePermissionSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePermissionSetRequest",
 }) as any as S.Schema<DeletePermissionSetRequest>;
 export interface DeletePermissionSetResponse {}
-export const DeletePermissionSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePermissionSetResponse",
-}) as any as S.Schema<DeletePermissionSetResponse>;
+export const DeletePermissionSetResponse =
+  DeleteApplicationResponse as any as S.Schema<DeletePermissionSetResponse>;
 export interface DeleteTrustedTokenIssuerRequest {
   TrustedTokenIssuerArn: string;
 }
@@ -761,11 +734,8 @@ export const DeleteTrustedTokenIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTrustedTokenIssuerRequest",
 }) as any as S.Schema<DeleteTrustedTokenIssuerRequest>;
 export interface DeleteTrustedTokenIssuerResponse {}
-export const DeleteTrustedTokenIssuerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrustedTokenIssuerResponse",
-}) as any as S.Schema<DeleteTrustedTokenIssuerResponse>;
+export const DeleteTrustedTokenIssuerResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<DeleteTrustedTokenIssuerResponse>;
 export interface DescribeAccountAssignmentCreationStatusRequest {
   InstanceArn: string;
   AccountAssignmentCreationRequestId: string;
@@ -780,11 +750,8 @@ export const DescribeAccountAssignmentCreationStatusRequest = /*@__PURE__*/ S.su
 export interface DescribeAccountAssignmentCreationStatusResponse {
   AccountAssignmentCreationStatus?: AccountAssignmentOperationStatus;
 }
-export const DescribeAccountAssignmentCreationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountAssignmentCreationStatus: S.optional(AccountAssignmentOperationStatus) }),
-).annotate({
-  identifier: "DescribeAccountAssignmentCreationStatusResponse",
-}) as any as S.Schema<DescribeAccountAssignmentCreationStatusResponse>;
+export const DescribeAccountAssignmentCreationStatusResponse =
+  CreateAccountAssignmentResponse as any as S.Schema<DescribeAccountAssignmentCreationStatusResponse>;
 export interface DescribeAccountAssignmentDeletionStatusRequest {
   InstanceArn: string;
   AccountAssignmentDeletionRequestId: string;
@@ -799,11 +766,8 @@ export const DescribeAccountAssignmentDeletionStatusRequest = /*@__PURE__*/ S.su
 export interface DescribeAccountAssignmentDeletionStatusResponse {
   AccountAssignmentDeletionStatus?: AccountAssignmentOperationStatus;
 }
-export const DescribeAccountAssignmentDeletionStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountAssignmentDeletionStatus: S.optional(AccountAssignmentOperationStatus) }),
-).annotate({
-  identifier: "DescribeAccountAssignmentDeletionStatusResponse",
-}) as any as S.Schema<DescribeAccountAssignmentDeletionStatusResponse>;
+export const DescribeAccountAssignmentDeletionStatusResponse =
+  DeleteAccountAssignmentResponse as any as S.Schema<DescribeAccountAssignmentDeletionStatusResponse>;
 export interface DescribeApplicationRequest {
   ApplicationArn: string;
 }
@@ -1073,11 +1037,8 @@ export const DescribePermissionSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribePermissionSetResponse {
   PermissionSet?: PermissionSet;
 }
-export const DescribePermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PermissionSet: S.optional(PermissionSet) }),
-).annotate({
-  identifier: "DescribePermissionSetResponse",
-}) as any as S.Schema<DescribePermissionSetResponse>;
+export const DescribePermissionSetResponse =
+  CreatePermissionSetResponse as any as S.Schema<DescribePermissionSetResponse>;
 export interface DescribePermissionSetProvisioningStatusRequest {
   InstanceArn: string;
   ProvisionPermissionSetRequestId: string;
@@ -1132,14 +1093,7 @@ export interface DescribeRegionResponse {
   AddedDate?: Date;
   IsPrimaryRegion?: boolean;
 }
-export const DescribeRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegionName: S.optional(S.String),
-    Status: S.optional(RegionStatus),
-    AddedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    IsPrimaryRegion: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DescribeRegionResponse" }) as any as S.Schema<DescribeRegionResponse>;
+export const DescribeRegionResponse = RegionMetadata as any as S.Schema<DescribeRegionResponse>;
 export interface DescribeTrustedTokenIssuerRequest {
   TrustedTokenIssuerArn: string;
 }
@@ -1199,11 +1153,8 @@ export const DetachManagedPolicyFromPermissionSetRequest = /*@__PURE__*/ S.suspe
   identifier: "DetachManagedPolicyFromPermissionSetRequest",
 }) as any as S.Schema<DetachManagedPolicyFromPermissionSetRequest>;
 export interface DetachManagedPolicyFromPermissionSetResponse {}
-export const DetachManagedPolicyFromPermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DetachManagedPolicyFromPermissionSetResponse",
-}) as any as S.Schema<DetachManagedPolicyFromPermissionSetResponse>;
+export const DetachManagedPolicyFromPermissionSetResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<DetachManagedPolicyFromPermissionSetResponse>;
 export interface GetApplicationAccessScopeRequest {
   ApplicationArn: string;
   Scope: string;
@@ -1217,7 +1168,7 @@ export const GetApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApplicationAccessScopeRequest>;
 export type ScopeTarget = string;
 export type ScopeTargets = string[];
-export const ScopeTargets = /*@__PURE__*/ S.Array(S.String);
+export const ScopeTargets = AccessControlAttributeValueSourceList as any as S.Schema<ScopeTargets>;
 export interface GetApplicationAccessScopeResponse {
   Scope: string;
   AuthorizedTargets?: string[];
@@ -1289,7 +1240,7 @@ export const GetApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApplicationGrantRequest>;
 export type URI = string;
 export type RedirectUris = string[];
-export const RedirectUris = /*@__PURE__*/ S.Array(S.String);
+export const RedirectUris = AccessControlAttributeValueSourceList as any as S.Schema<RedirectUris>;
 export interface AuthorizationCodeGrant {
   RedirectUris?: string[];
 }
@@ -1298,7 +1249,8 @@ export const AuthorizationCodeGrant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizationCodeGrant" }) as any as S.Schema<AuthorizationCodeGrant>;
 export type TokenIssuerAudience = string;
 export type TokenIssuerAudiences = string[];
-export const TokenIssuerAudiences = /*@__PURE__*/ S.Array(S.String);
+export const TokenIssuerAudiences =
+  AccessControlAttributeValueSourceList as any as S.Schema<TokenIssuerAudiences>;
 export interface AuthorizedTokenIssuer {
   TrustedTokenIssuerArn?: string;
   AuthorizedAudiences?: string[];
@@ -1318,13 +1270,9 @@ export const JwtBearerGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AuthorizedTokenIssuers: S.optional(AuthorizedTokenIssuers) }),
 ).annotate({ identifier: "JwtBearerGrant" }) as any as S.Schema<JwtBearerGrant>;
 export interface RefreshTokenGrant {}
-export const RefreshTokenGrant = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RefreshTokenGrant",
-}) as any as S.Schema<RefreshTokenGrant>;
+export const RefreshTokenGrant = DeleteApplicationResponse as any as S.Schema<RefreshTokenGrant>;
 export interface TokenExchangeGrant {}
-export const TokenExchangeGrant = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TokenExchangeGrant",
-}) as any as S.Schema<TokenExchangeGrant>;
+export const TokenExchangeGrant = DeleteApplicationResponse as any as S.Schema<TokenExchangeGrant>;
 export type Grant =
   | {
       AuthorizationCode: AuthorizationCodeGrant;
@@ -1649,7 +1597,7 @@ export const ListAccountsForProvisionedPermissionSetRequest = /*@__PURE__*/ S.su
   identifier: "ListAccountsForProvisionedPermissionSetRequest",
 }) as any as S.Schema<ListAccountsForProvisionedPermissionSetRequest>;
 export type AccountList = string[];
-export const AccountList = /*@__PURE__*/ S.Array(S.String);
+export const AccountList = AccessControlAttributeValueSourceList as any as S.Schema<AccountList>;
 export interface ListAccountsForProvisionedPermissionSetResponse {
   AccountIds?: string[];
   NextToken?: string;
@@ -2082,19 +2030,11 @@ export interface PermissionSetProvisioningStatusMetadata {
   RequestId?: string;
   CreatedDate?: Date;
 }
-export const PermissionSetProvisioningStatusMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Status: S.optional(StatusValues),
-    RequestId: S.optional(S.String),
-    CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "PermissionSetProvisioningStatusMetadata",
-}) as any as S.Schema<PermissionSetProvisioningStatusMetadata>;
+export const PermissionSetProvisioningStatusMetadata =
+  AccountAssignmentOperationStatusMetadata as any as S.Schema<PermissionSetProvisioningStatusMetadata>;
 export type PermissionSetProvisioningStatusList = PermissionSetProvisioningStatusMetadata[];
-export const PermissionSetProvisioningStatusList = /*@__PURE__*/ S.Array(
-  PermissionSetProvisioningStatusMetadata,
-);
+export const PermissionSetProvisioningStatusList =
+  AccountAssignmentOperationStatusList as any as S.Schema<PermissionSetProvisioningStatusList>;
 export interface ListPermissionSetProvisioningStatusResponse {
   PermissionSetsProvisioningStatus?: PermissionSetProvisioningStatusMetadata[];
   NextToken?: string;
@@ -2122,7 +2062,8 @@ export const ListPermissionSetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPermissionSetsRequest",
 }) as any as S.Schema<ListPermissionSetsRequest>;
 export type PermissionSetList = string[];
-export const PermissionSetList = /*@__PURE__*/ S.Array(S.String);
+export const PermissionSetList =
+  AccessControlAttributeValueSourceList as any as S.Schema<PermissionSetList>;
 export interface ListPermissionSetsResponse {
   PermissionSets?: string[];
   NextToken?: string;
@@ -2266,11 +2207,8 @@ export const ProvisionPermissionSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProvisionPermissionSetResponse {
   PermissionSetProvisioningStatus?: PermissionSetProvisioningStatus;
 }
-export const ProvisionPermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PermissionSetProvisioningStatus: S.optional(PermissionSetProvisioningStatus) }),
-).annotate({
-  identifier: "ProvisionPermissionSetResponse",
-}) as any as S.Schema<ProvisionPermissionSetResponse>;
+export const ProvisionPermissionSetResponse =
+  DescribePermissionSetProvisioningStatusResponse as any as S.Schema<ProvisionPermissionSetResponse>;
 export interface PutApplicationAccessScopeRequest {
   Scope: string;
   AuthorizedTargets?: string[];
@@ -2286,11 +2224,8 @@ export const PutApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutApplicationAccessScopeRequest",
 }) as any as S.Schema<PutApplicationAccessScopeRequest>;
 export interface PutApplicationAccessScopeResponse {}
-export const PutApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutApplicationAccessScopeResponse",
-}) as any as S.Schema<PutApplicationAccessScopeResponse>;
+export const PutApplicationAccessScopeResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<PutApplicationAccessScopeResponse>;
 export interface PutApplicationAssignmentConfigurationRequest {
   ApplicationArn: string;
   AssignmentRequired: boolean;
@@ -2303,11 +2238,8 @@ export const PutApplicationAssignmentConfigurationRequest = /*@__PURE__*/ S.susp
   identifier: "PutApplicationAssignmentConfigurationRequest",
 }) as any as S.Schema<PutApplicationAssignmentConfigurationRequest>;
 export interface PutApplicationAssignmentConfigurationResponse {}
-export const PutApplicationAssignmentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutApplicationAssignmentConfigurationResponse",
-}) as any as S.Schema<PutApplicationAssignmentConfigurationResponse>;
+export const PutApplicationAssignmentConfigurationResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<PutApplicationAssignmentConfigurationResponse>;
 export interface PutApplicationAuthenticationMethodRequest {
   ApplicationArn: string;
   AuthenticationMethodType: AuthenticationMethodType;
@@ -2323,11 +2255,8 @@ export const PutApplicationAuthenticationMethodRequest = /*@__PURE__*/ S.suspend
   identifier: "PutApplicationAuthenticationMethodRequest",
 }) as any as S.Schema<PutApplicationAuthenticationMethodRequest>;
 export interface PutApplicationAuthenticationMethodResponse {}
-export const PutApplicationAuthenticationMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutApplicationAuthenticationMethodResponse",
-}) as any as S.Schema<PutApplicationAuthenticationMethodResponse>;
+export const PutApplicationAuthenticationMethodResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<PutApplicationAuthenticationMethodResponse>;
 export interface PutApplicationGrantRequest {
   ApplicationArn: string;
   GrantType: GrantType;
@@ -2341,9 +2270,8 @@ export const PutApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutApplicationGrantRequest",
 }) as any as S.Schema<PutApplicationGrantRequest>;
 export interface PutApplicationGrantResponse {}
-export const PutApplicationGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutApplicationGrantResponse",
-}) as any as S.Schema<PutApplicationGrantResponse>;
+export const PutApplicationGrantResponse =
+  DeleteApplicationResponse as any as S.Schema<PutApplicationGrantResponse>;
 export interface PutApplicationSessionConfigurationRequest {
   ApplicationArn: string;
   UserBackgroundSessionApplicationStatus?: UserBackgroundSessionApplicationStatus;
@@ -2357,11 +2285,8 @@ export const PutApplicationSessionConfigurationRequest = /*@__PURE__*/ S.suspend
   identifier: "PutApplicationSessionConfigurationRequest",
 }) as any as S.Schema<PutApplicationSessionConfigurationRequest>;
 export interface PutApplicationSessionConfigurationResponse {}
-export const PutApplicationSessionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutApplicationSessionConfigurationResponse",
-}) as any as S.Schema<PutApplicationSessionConfigurationResponse>;
+export const PutApplicationSessionConfigurationResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<PutApplicationSessionConfigurationResponse>;
 export interface PutInlinePolicyToPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -2375,11 +2300,8 @@ export const PutInlinePolicyToPermissionSetRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "PutInlinePolicyToPermissionSetRequest",
 }) as any as S.Schema<PutInlinePolicyToPermissionSetRequest>;
 export interface PutInlinePolicyToPermissionSetResponse {}
-export const PutInlinePolicyToPermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutInlinePolicyToPermissionSetResponse",
-}) as any as S.Schema<PutInlinePolicyToPermissionSetResponse>;
+export const PutInlinePolicyToPermissionSetResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<PutInlinePolicyToPermissionSetResponse>;
 export interface PutPermissionsBoundaryToPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -2395,11 +2317,8 @@ export const PutPermissionsBoundaryToPermissionSetRequest = /*@__PURE__*/ S.susp
   identifier: "PutPermissionsBoundaryToPermissionSetRequest",
 }) as any as S.Schema<PutPermissionsBoundaryToPermissionSetRequest>;
 export interface PutPermissionsBoundaryToPermissionSetResponse {}
-export const PutPermissionsBoundaryToPermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutPermissionsBoundaryToPermissionSetResponse",
-}) as any as S.Schema<PutPermissionsBoundaryToPermissionSetResponse>;
+export const PutPermissionsBoundaryToPermissionSetResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<PutPermissionsBoundaryToPermissionSetResponse>;
 export interface RemoveRegionRequest {
   InstanceArn: string;
   RegionName: string;
@@ -2412,9 +2331,7 @@ export const RemoveRegionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveRegionResponse {
   Status?: RegionStatus;
 }
-export const RemoveRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(RegionStatus) }),
-).annotate({ identifier: "RemoveRegionResponse" }) as any as S.Schema<RemoveRegionResponse>;
+export const RemoveRegionResponse = AddRegionResponse as any as S.Schema<RemoveRegionResponse>;
 export interface TagResourceRequest {
   InstanceArn?: string;
   ResourceArn: string;
@@ -2426,11 +2343,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AccessControlAttributeValueSourceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   InstanceArn?: string;
   ResourceArn: string;
@@ -2442,9 +2358,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationPortalOptions {
   SignInOptions?: SignInOptions;
 }
@@ -2470,9 +2385,8 @@ export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateApplicationRequest" }) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {}
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface EncryptionConfiguration {
   KeyType: KmsKeyType;
   KmsKeyArn?: string;
@@ -2495,9 +2409,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstanceResponse",
-}) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateInstanceResponse>;
 export interface UpdateInstanceAccessControlAttributeConfigurationRequest {
   InstanceArn: string;
   InstanceAccessControlAttributeConfiguration: InstanceAccessControlAttributeConfiguration;
@@ -2512,11 +2425,8 @@ export const UpdateInstanceAccessControlAttributeConfigurationRequest = /*@__PUR
   identifier: "UpdateInstanceAccessControlAttributeConfigurationRequest",
 }) as any as S.Schema<UpdateInstanceAccessControlAttributeConfigurationRequest>;
 export interface UpdateInstanceAccessControlAttributeConfigurationResponse {}
-export const UpdateInstanceAccessControlAttributeConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "UpdateInstanceAccessControlAttributeConfigurationResponse",
-}) as any as S.Schema<UpdateInstanceAccessControlAttributeConfigurationResponse>;
+export const UpdateInstanceAccessControlAttributeConfigurationResponse =
+  AttachCustomerManagedPolicyReferenceToPermissionSetResponse as any as S.Schema<UpdateInstanceAccessControlAttributeConfigurationResponse>;
 export interface UpdatePermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -2536,9 +2446,8 @@ export const UpdatePermissionSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePermissionSetRequest",
 }) as any as S.Schema<UpdatePermissionSetRequest>;
 export interface UpdatePermissionSetResponse {}
-export const UpdatePermissionSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePermissionSetResponse",
-}) as any as S.Schema<UpdatePermissionSetResponse>;
+export const UpdatePermissionSetResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdatePermissionSetResponse>;
 export interface OidcJwtUpdateConfiguration {
   ClaimAttributePath?: string;
   IdentityStoreAttributePath?: string;
@@ -2574,11 +2483,8 @@ export const UpdateTrustedTokenIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTrustedTokenIssuerRequest",
 }) as any as S.Schema<UpdateTrustedTokenIssuerRequest>;
 export interface UpdateTrustedTokenIssuerResponse {}
-export const UpdateTrustedTokenIssuerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateTrustedTokenIssuerResponse",
-}) as any as S.Schema<UpdateTrustedTokenIssuerResponse>;
+export const UpdateTrustedTokenIssuerResponse =
+  AttachManagedPolicyToPermissionSetResponse as any as S.Schema<UpdateTrustedTokenIssuerResponse>;
 export type AccessDeniedExceptionMessage = string;
 export type AccessDeniedExceptionReason = "KMS_AccessDeniedException" | (string & {});
 export const AccessDeniedExceptionReason = S.String;

@@ -282,9 +282,8 @@ export const ProductBriefSectionsList = /*@__PURE__*/ S.Array(
 
 /** Names of the brief sources that contributed items. */
 export type ProductBriefSourcesUsedList = Array<string>;
-export const ProductBriefSourcesUsedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductBriefSourcesUsedList>;
+export const ProductBriefSourcesUsedList =
+  BriefAnchorsInsightsList as any as S.Schema<ProductBriefSourcesUsedList>;
 
 export interface ProductBrief {
   id: string;
@@ -402,9 +401,8 @@ export const ListPulseBriefsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the brief sources that contributed items. */
 export type ProductBriefListSourcesUsedList = Array<string>;
-export const ProductBriefListSourcesUsedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductBriefListSourcesUsedList>;
+export const ProductBriefListSourcesUsedList =
+  BriefAnchorsInsightsList as any as S.Schema<ProductBriefListSourcesUsedList>;
 
 export interface ProductBriefList {
   id: string;

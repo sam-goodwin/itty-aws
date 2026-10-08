@@ -98,9 +98,8 @@ export const ReportResultSetColumnsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ReportResultSetColumnsList>;
 
 export type ReportResultSetRowsItemList = Array<string>;
-export const ReportResultSetRowsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReportResultSetRowsItemList>;
+export const ReportResultSetRowsItemList =
+  GenerateReportReportRequestQueriesList as any as S.Schema<ReportResultSetRowsItemList>;
 
 /** Array of all rows from ADX, present only if the query succeeded */
 export type ReportResultSetRowsList = Array<ReportResultSetRowsItemList>;
@@ -277,9 +276,8 @@ export const StorageDiscoveryWorkspacePropertiesSku = S.String;
 
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesWorkspaceRootsList = Array<string>;
-export const StorageDiscoveryWorkspacePropertiesWorkspaceRootsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesWorkspaceRootsList>;
+export const StorageDiscoveryWorkspacePropertiesWorkspaceRootsList =
+  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesWorkspaceRootsList>;
 
 /** Storage Discovery Resource Type */
 export type StorageDiscoveryResourceType = "Microsoft.Storage/storageAccounts";
@@ -295,16 +293,13 @@ export const StorageDiscoveryScopeResourceTypesList = /*@__PURE__*/ S.Array(
 
 /** The storage account tags keys to filter */
 export type StorageDiscoveryScopeTagKeysOnlyList = Array<string>;
-export const StorageDiscoveryScopeTagKeysOnlyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageDiscoveryScopeTagKeysOnlyList>;
+export const StorageDiscoveryScopeTagKeysOnlyList =
+  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryScopeTagKeysOnlyList>;
 
 /** Resource tags. */
 export type StorageDiscoveryScopeTagsMap = { [key: string]: string | undefined };
-export const StorageDiscoveryScopeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageDiscoveryScopeTagsMap>;
+export const StorageDiscoveryScopeTagsMap =
+  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<StorageDiscoveryScopeTagsMap>;
 
 /** Storage Discovery Scope. This had added validations */
 export interface StorageDiscoveryScope {
@@ -507,15 +502,7 @@ export interface ReportResource {
   /** The resource-specific properties for this resource. */
   properties?: ReportProperties;
 }
-export const ReportResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReportProperties),
-  }),
-).annotate({ identifier: "ReportResource" }) as any as S.Schema<ReportResource>;
+export const ReportResource = GetReportResponse as any as S.Schema<ReportResource>;
 
 /** The ReportResource items on this page */
 export type ReportResourceListResultValueList = Array<ReportResource>;
@@ -583,10 +570,8 @@ export const ListStorageDiscoveryWorkspaceByResourceGroupRequest = /*@__PURE__*/
 
 /** Resource tags. */
 export type StorageDiscoveryWorkspaceTagsMap = { [key: string]: string | undefined };
-export const StorageDiscoveryWorkspaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageDiscoveryWorkspaceTagsMap>;
+export const StorageDiscoveryWorkspaceTagsMap =
+  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<StorageDiscoveryWorkspaceTagsMap>;
 
 /** A Storage Discovery Workspace resource. This resource configures the collection of storage account metrics. */
 export interface StorageDiscoveryWorkspace {
@@ -605,19 +590,8 @@ export interface StorageDiscoveryWorkspace {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspaceProperties;
 }
-export const StorageDiscoveryWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(StorageDiscoveryWorkspaceTagsMap),
-    location: S.String,
-    properties: S.optional(StorageDiscoveryWorkspaceProperties),
-  }),
-).annotate({
-  identifier: "StorageDiscoveryWorkspace",
-}) as any as S.Schema<StorageDiscoveryWorkspace>;
+export const StorageDiscoveryWorkspace =
+  GetStorageDiscoveryWorkspaceResponse as any as S.Schema<StorageDiscoveryWorkspace>;
 
 /** The StorageDiscoveryWorkspace items on this page */
 export type StorageDiscoveryWorkspaceListResultValueList = Array<StorageDiscoveryWorkspace>;
@@ -664,10 +638,8 @@ export const ListStorageDiscoveryWorkspaceBySubscriptionRequest = /*@__PURE__*/ 
 export type StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap>;
+export const StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap =
+  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** The storage discovery sku */
 export type StorageDiscoveryWorkspacePropertiesInputSku = "Standard" | "Free";
@@ -675,15 +647,13 @@ export const StorageDiscoveryWorkspacePropertiesInputSku = S.String;
 
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList = Array<string>;
-export const StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList>;
+export const StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList =
+  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList>;
 
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesInputScopesList = Array<StorageDiscoveryScope>;
-export const StorageDiscoveryWorkspacePropertiesInputScopesList = /*@__PURE__*/ S.Array(
-  StorageDiscoveryScope,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesInputScopesList>;
+export const StorageDiscoveryWorkspacePropertiesInputScopesList =
+  StorageDiscoveryWorkspacePropertiesScopesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesInputScopesList>;
 
 /** Storage Discovery Workspace Properties */
 export interface StorageDiscoveryWorkspacePropertiesInput {
@@ -745,10 +715,8 @@ export const StorageDiscoveryWorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.s
 export type StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap>;
+export const StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap =
+  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap>;
 
 export interface StorageDiscoveryWorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -766,25 +734,13 @@ export interface StorageDiscoveryWorkspacesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspaceProperties;
 }
-export const StorageDiscoveryWorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StorageDiscoveryWorkspaceProperties),
-  }),
-).annotate({
-  identifier: "StorageDiscoveryWorkspacesCreateOrUpdateResponse",
-}) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponse>;
+export const StorageDiscoveryWorkspacesCreateOrUpdateResponse =
+  GetStorageDiscoveryWorkspaceResponse as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponse>;
 
 /** The queries to execute against Storage Discovery data. Format: Base64-encoded JSON object with structure: {"queries":[{"name":"queryName","query":"KQL query"}]} For query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery */
 export type StorageDiscoveryWorkspacesReportRequestQueriesList = Array<string>;
-export const StorageDiscoveryWorkspacesReportRequestQueriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageDiscoveryWorkspacesReportRequestQueriesList>;
+export const StorageDiscoveryWorkspacesReportRequestQueriesList =
+  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacesReportRequestQueriesList>;
 
 export interface StorageDiscoveryWorkspacesReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -816,10 +772,8 @@ export const StorageDiscoveryWorkspacesReportRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type UpdateStorageDiscoveryWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageDiscoveryWorkspaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStorageDiscoveryWorkspaceRequestTagsMap>;
+export const UpdateStorageDiscoveryWorkspaceRequestTagsMap =
+  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<UpdateStorageDiscoveryWorkspaceRequestTagsMap>;
 
 /** Storage Discovery Sku */
 export type StorageDiscoverySku = "Standard" | "Free";
@@ -827,15 +781,13 @@ export const StorageDiscoverySku = S.String;
 
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList = Array<string>;
-export const StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList>;
+export const StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList =
+  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList>;
 
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesUpdateScopesList = Array<StorageDiscoveryScope>;
-export const StorageDiscoveryWorkspacePropertiesUpdateScopesList = /*@__PURE__*/ S.Array(
-  StorageDiscoveryScope,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesUpdateScopesList>;
+export const StorageDiscoveryWorkspacePropertiesUpdateScopesList =
+  StorageDiscoveryWorkspacePropertiesScopesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesUpdateScopesList>;
 
 /** The template for adding updateable properties. */
 export interface StorageDiscoveryWorkspacePropertiesUpdate {
@@ -892,10 +844,8 @@ export const UpdateStorageDiscoveryWorkspaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateStorageDiscoveryWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageDiscoveryWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponseTagsMap>;
+export const UpdateStorageDiscoveryWorkspaceResponseTagsMap =
+  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponseTagsMap>;
 
 export interface UpdateStorageDiscoveryWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -913,19 +863,8 @@ export interface UpdateStorageDiscoveryWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspaceProperties;
 }
-export const UpdateStorageDiscoveryWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateStorageDiscoveryWorkspaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StorageDiscoveryWorkspaceProperties),
-  }),
-).annotate({
-  identifier: "UpdateStorageDiscoveryWorkspaceResponse",
-}) as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponse>;
+export const UpdateStorageDiscoveryWorkspaceResponse =
+  GetStorageDiscoveryWorkspaceResponse as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponse>;
 
 export type DeleteStorageDiscoveryWorkspaceError = AzureOpError;
 /** Delete a StorageDiscoveryWorkspace */

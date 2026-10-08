@@ -976,19 +976,12 @@ export interface DeploymentUpdateLabelEntry {
   /** Value of the label */
   value?: string;
 }
-export const DeploymentUpdateLabelEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentUpdateLabelEntry",
-}) as any as S.Schema<DeploymentUpdateLabelEntry>;
+export const DeploymentUpdateLabelEntry =
+  OperationWarningsItemDataItem as any as S.Schema<DeploymentUpdateLabelEntry>;
 
 export type DeploymentUpdateLabelEntryList = Array<DeploymentUpdateLabelEntry>;
-export const DeploymentUpdateLabelEntryList = /*@__PURE__*/ S.Array(
-  DeploymentUpdateLabelEntry,
-) as any as S.Schema<DeploymentUpdateLabelEntryList>;
+export const DeploymentUpdateLabelEntryList =
+  OperationWarningsItemDataItemList as any as S.Schema<DeploymentUpdateLabelEntryList>;
 
 export interface DeploymentUpdate {
   /** Output only. An optional user-provided description of the deployment after the current update has been applied. */
@@ -1034,9 +1027,8 @@ export type DeploymentLabelEntry = CompositeTypeLabelEntry;
 export const DeploymentLabelEntry = CompositeTypeLabelEntry;
 
 export type DeploymentLabelEntryList = Array<CompositeTypeLabelEntry>;
-export const DeploymentLabelEntryList = /*@__PURE__*/ S.Array(
-  CompositeTypeLabelEntry,
-) as any as S.Schema<DeploymentLabelEntryList>;
+export const DeploymentLabelEntryList =
+  CompositeTypeLabelEntryList as any as S.Schema<DeploymentLabelEntryList>;
 
 export interface Deployment {
   /** Output only. Creation timestamp in RFC3339 text format. */
@@ -1433,9 +1425,8 @@ export type ResourceUpdateWarningsItemDataItem = OperationWarningsItemDataItem;
 export const ResourceUpdateWarningsItemDataItem = OperationWarningsItemDataItem;
 
 export type ResourceUpdateWarningsItemDataItemList = Array<OperationWarningsItemDataItem>;
-export const ResourceUpdateWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ResourceUpdateWarningsItemDataItemList>;
+export const ResourceUpdateWarningsItemDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ResourceUpdateWarningsItemDataItemList>;
 
 export type ResourceUpdateWarningsItemCodeEnum =
   | "DEPRECATED_RESOURCE_USED"
@@ -1511,9 +1502,8 @@ export const ResourceUpdateErrorErrorsItemErrorDetailsItem =
 
 export type ResourceUpdateErrorErrorsItemErrorDetailsItemList =
   Array<OperationErrorErrorsItemErrorDetailsItem>;
-export const ResourceUpdateErrorErrorsItemErrorDetailsItemList = /*@__PURE__*/ S.Array(
-  OperationErrorErrorsItemErrorDetailsItem,
-) as any as S.Schema<ResourceUpdateErrorErrorsItemErrorDetailsItemList>;
+export const ResourceUpdateErrorErrorsItemErrorDetailsItemList =
+  OperationErrorErrorsItemErrorDetailsItemList as any as S.Schema<ResourceUpdateErrorErrorsItemErrorDetailsItemList>;
 
 export interface ResourceUpdateErrorErrorsItem {
   /** Output only. [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for internal use-only (like componentization) (thus the visibility "none") and in case of public exposure it is strongly recommended to follow pattern of: https://aip.dev/193 and expose as details field. */
@@ -1813,9 +1803,8 @@ export type TypeProviderLabelEntry = DeploymentUpdateLabelEntry;
 export const TypeProviderLabelEntry = DeploymentUpdateLabelEntry;
 
 export type TypeProviderLabelEntryList = Array<DeploymentUpdateLabelEntry>;
-export const TypeProviderLabelEntryList = /*@__PURE__*/ S.Array(
-  DeploymentUpdateLabelEntry,
-) as any as S.Schema<TypeProviderLabelEntryList>;
+export const TypeProviderLabelEntryList =
+  OperationWarningsItemDataItemList as any as S.Schema<TypeProviderLabelEntryList>;
 
 /** Basic Auth used as a credential. */
 export interface BasicAuth {
@@ -2384,9 +2373,8 @@ export type TypeLabelEntry = DeploymentUpdateLabelEntry;
 export const TypeLabelEntry = DeploymentUpdateLabelEntry;
 
 export type TypeLabelEntryList = Array<DeploymentUpdateLabelEntry>;
-export const TypeLabelEntryList = /*@__PURE__*/ S.Array(
-  DeploymentUpdateLabelEntry,
-) as any as S.Schema<TypeLabelEntryList>;
+export const TypeLabelEntryList =
+  OperationWarningsItemDataItemList as any as S.Schema<TypeLabelEntryList>;
 
 /** A resource type supported by Deployment Manager. */
 export interface Type {
@@ -2693,11 +2681,8 @@ export interface TestPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({ identifier: "TestPermissionsResponse" }) as any as S.Schema<TestPermissionsResponse>;
+export const TestPermissionsResponse =
+  TestPermissionsRequest as any as S.Schema<TestPermissionsResponse>;
 
 export interface UpdateCompositeTypesRequest {
   /** The project ID for this request. */

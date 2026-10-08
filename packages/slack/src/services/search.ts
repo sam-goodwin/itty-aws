@@ -127,9 +127,8 @@ export const SearchFilesResponseFilesMatchesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchFilesResponseFilesMatchesList>;
 
 export type SearchFilesResponseFilesPagingWarningsList = Array<string>;
-export const SearchFilesResponseFilesPagingWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchFilesResponseFilesPagingWarningsList>;
+export const SearchFilesResponseFilesPagingWarningsList =
+  SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchFilesResponseFilesPagingWarningsList>;
 
 export interface SearchFilesResponseFilesPaging {
   /** Number of results per page */
@@ -181,28 +180,20 @@ export const SearchFilesResponseUsersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SearchFilesResponseUsersMap>;
 
 export type SearchFilesResponseTeamsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseTeamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchFilesResponseTeamsMap>;
+export const SearchFilesResponseTeamsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseTeamsMap>;
 
 export type SearchFilesResponseChannelsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseChannelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchFilesResponseChannelsMap>;
+export const SearchFilesResponseChannelsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseChannelsMap>;
 
 export type SearchFilesResponseImsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseImsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchFilesResponseImsMap>;
+export const SearchFilesResponseImsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseImsMap>;
 
 export type SearchFilesResponseGroupsMap = { [key: string]: unknown | undefined };
-export const SearchFilesResponseGroupsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchFilesResponseGroupsMap>;
+export const SearchFilesResponseGroupsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseGroupsMap>;
 
 export interface SearchFilesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -267,20 +258,16 @@ export const SearchMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchMessagesRequest" }) as any as S.Schema<SearchMessagesRequest>;
 
 export type SearchMessagesResponseUsersMap = { [key: string]: unknown | undefined };
-export const SearchMessagesResponseUsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchMessagesResponseUsersMap>;
+export const SearchMessagesResponseUsersMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseUsersMap>;
 
 export type SearchMessagesResponseMessagesMatchesList = Array<unknown>;
-export const SearchMessagesResponseMessagesMatchesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SearchMessagesResponseMessagesMatchesList>;
+export const SearchMessagesResponseMessagesMatchesList =
+  SearchFilesResponseFilesMatchesList as any as S.Schema<SearchMessagesResponseMessagesMatchesList>;
 
 export type SearchMessagesResponseMessagesPaginationWarningsList = Array<string>;
-export const SearchMessagesResponseMessagesPaginationWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchMessagesResponseMessagesPaginationWarningsList>;
+export const SearchMessagesResponseMessagesPaginationWarningsList =
+  SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchMessagesResponseMessagesPaginationWarningsList>;
 
 export interface SearchMessagesResponseMessagesPagination {
   /** Last result id */
@@ -315,9 +302,8 @@ export const SearchMessagesResponseMessagesPagination = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SearchMessagesResponseMessagesPagination>;
 
 export type SearchMessagesResponseMessagesPagingWarningsList = Array<string>;
-export const SearchMessagesResponseMessagesPagingWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchMessagesResponseMessagesPagingWarningsList>;
+export const SearchMessagesResponseMessagesPagingWarningsList =
+  SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchMessagesResponseMessagesPagingWarningsList>;
 
 export interface SearchMessagesResponseMessagesPaging {
   /** Number of results per page */
@@ -366,16 +352,12 @@ export const SearchMessagesResponseMessages = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchMessagesResponseMessages>;
 
 export type SearchMessagesResponseTeamsMap = { [key: string]: unknown | undefined };
-export const SearchMessagesResponseTeamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchMessagesResponseTeamsMap>;
+export const SearchMessagesResponseTeamsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseTeamsMap>;
 
 export type SearchMessagesResponseBotsMap = { [key: string]: unknown | undefined };
-export const SearchMessagesResponseBotsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SearchMessagesResponseBotsMap>;
+export const SearchMessagesResponseBotsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseBotsMap>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface SearchMessagesResponseResponseMetadata {

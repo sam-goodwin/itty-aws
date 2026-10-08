@@ -150,9 +150,7 @@ export const ScaleInPolicy = /*@__PURE__*/ S.suspend(() =>
 export interface ScaleOutPolicy {
   cpuUtilizationPercentage: number;
 }
-export const ScaleOutPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cpuUtilizationPercentage: S.Number }),
-).annotate({ identifier: "ScaleOutPolicy" }) as any as S.Schema<ScaleOutPolicy>;
+export const ScaleOutPolicy = ScaleInPolicy as any as S.Schema<ScaleOutPolicy>;
 export interface AutoScaling {
   maxWorkerCount: number;
   mcuCount: number;
@@ -1259,7 +1257,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = __listOf__string as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1280,21 +1278,15 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface ScaleInPolicyUpdate {
   cpuUtilizationPercentage: number;
 }
-export const ScaleInPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cpuUtilizationPercentage: S.Number }),
-).annotate({ identifier: "ScaleInPolicyUpdate" }) as any as S.Schema<ScaleInPolicyUpdate>;
+export const ScaleInPolicyUpdate = ScaleInPolicy as any as S.Schema<ScaleInPolicyUpdate>;
 export interface ScaleOutPolicyUpdate {
   cpuUtilizationPercentage: number;
 }
-export const ScaleOutPolicyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cpuUtilizationPercentage: S.Number }),
-).annotate({ identifier: "ScaleOutPolicyUpdate" }) as any as S.Schema<ScaleOutPolicyUpdate>;
+export const ScaleOutPolicyUpdate = ScaleInPolicy as any as S.Schema<ScaleOutPolicyUpdate>;
 export interface AutoScalingUpdate {
   maxWorkerCount: number;
   mcuCount: number;
@@ -1333,10 +1325,8 @@ export const CapacityUpdate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CapacityUpdate" }) as any as S.Schema<CapacityUpdate>;
 export type ConnectorConfigurationUpdate = { [key: string]: string | undefined };
-export const ConnectorConfigurationUpdate = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ConnectorConfigurationUpdate =
+  ConnectorConfiguration as any as S.Schema<ConnectorConfigurationUpdate>;
 export interface UpdateConnectorRequest {
   capacity?: CapacityUpdate;
   connectorConfiguration?: { [key: string]: string | undefined };

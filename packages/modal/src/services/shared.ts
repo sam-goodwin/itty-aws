@@ -158,9 +158,8 @@ export const SharedVolumeHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharedVolumeHeartbeatRequest>;
 
 export interface SharedVolumeHeartbeatResponse {}
-export const SharedVolumeHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SharedVolumeHeartbeatResponse",
-}) as any as S.Schema<SharedVolumeHeartbeatResponse>;
+export const SharedVolumeHeartbeatResponse =
+  DeleteSharedVolumeResponse as any as S.Schema<SharedVolumeHeartbeatResponse>;
 
 export interface SharedVolumeListFilesRequest {
   sharedVolumeId?: string;
@@ -268,9 +267,8 @@ export const SharedVolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharedVolumeRemoveFileRequest>;
 
 export interface SharedVolumeRemoveFileResponse {}
-export const SharedVolumeRemoveFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SharedVolumeRemoveFileResponse",
-}) as any as S.Schema<SharedVolumeRemoveFileResponse>;
+export const SharedVolumeRemoveFileResponse =
+  DeleteSharedVolumeResponse as any as S.Schema<SharedVolumeRemoveFileResponse>;
 
 export type DeleteSharedVolumeError = ModalOpError;
 /** SharedVolumes */

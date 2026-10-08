@@ -1937,11 +1937,7 @@ export interface DsaPublicKeyInfo {
   /** Key size in bits (size of parameter P). */
   keySize?: number;
 }
-export const DsaPublicKeyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keySize: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DsaPublicKeyInfo" }) as any as S.Schema<DsaPublicKeyInfo>;
+export const DsaPublicKeyInfo = RsaPublicKeyInfo as any as S.Schema<DsaPublicKeyInfo>;
 
 /** Credential for verifying signatures produced by the Identity Provider. */
 export interface IdpCredential {

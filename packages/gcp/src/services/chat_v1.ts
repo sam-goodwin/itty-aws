@@ -459,11 +459,7 @@ export interface Group {
   /** Resource name for a Google Group. Represents a [group](https://cloud.google.com/identity/docs/reference/rest/v1/groups) in Cloud Identity Groups API. Format: groups/{group} */
   name?: string;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
+export const Group = Audience as any as S.Schema<Group>;
 
 export type MembershipAffiliationEnum =
   | "AFFILIATION_UNSPECIFIED"
@@ -1059,9 +1055,8 @@ export type GoogleAppsCardV1ActionParameter = ActionParameter;
 export const GoogleAppsCardV1ActionParameter = ActionParameter;
 
 export type GoogleAppsCardV1ActionParameterList = Array<ActionParameter>;
-export const GoogleAppsCardV1ActionParameterList = /*@__PURE__*/ S.Array(
-  ActionParameter,
-) as any as S.Schema<GoogleAppsCardV1ActionParameterList>;
+export const GoogleAppsCardV1ActionParameterList =
+  ActionParameterList as any as S.Schema<GoogleAppsCardV1ActionParameterList>;
 
 /** An action that describes the behavior when the form is submitted. For example, you can invoke an Apps Script script to handle the form. If the action is triggered, the form values are sent to the server. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Action {
@@ -2891,11 +2886,7 @@ export interface MatchedUrl {
   /** Output only. The URL that was matched. */
   url?: string;
 }
-export const MatchedUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "MatchedUrl" }) as any as S.Schema<MatchedUrl>;
+export const MatchedUrl = OpenLink as any as S.Schema<MatchedUrl>;
 
 /** A [card](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards) in a Google Chat message. Chat apps can create cards with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). As part of the [Developer Preview Program](https://developers.google.com/workspace/preview), if your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), it can create card messages. If your Chat app is not part of Developer Preview Program, it can't create cards with user authentication. To learn how to create a message that contains cards, see [Send a message](https://developers.google.com/workspace/chat/create-messages). [Card builder](https://addons.gsuite.google.com/uikit/builder) */
 export interface CardWithId {
@@ -3153,9 +3144,7 @@ export const DeleteCustomEmojisRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CompleteImportSpaceRequest as any as S.Schema<Empty>;
 
 export interface DeleteSpacesRequest {
   /** Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). */
@@ -3559,149 +3548,100 @@ export interface MessageCreatedEventData {
   /** The new message. */
   message?: Message;
 }
-export const MessageCreatedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(Message),
-  }),
-).annotate({ identifier: "MessageCreatedEventData" }) as any as S.Schema<MessageCreatedEventData>;
+export const MessageCreatedEventData =
+  MessageUpdatedEventData as any as S.Schema<MessageCreatedEventData>;
 
 export type MessageCreatedEventDataList = Array<MessageCreatedEventData>;
-export const MessageCreatedEventDataList = /*@__PURE__*/ S.Array(
-  MessageCreatedEventData,
-) as any as S.Schema<MessageCreatedEventDataList>;
+export const MessageCreatedEventDataList =
+  MessageUpdatedEventDataList as any as S.Schema<MessageCreatedEventDataList>;
 
 /** Event payload for multiple new messages. Event type: `google.workspace.chat.message.v1.batchCreated` */
 export interface MessageBatchCreatedEventData {
   /** A list of new messages. */
   messages?: MessageCreatedEventDataList;
 }
-export const MessageBatchCreatedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messages: S.optional(MessageCreatedEventDataList),
-  }),
-).annotate({
-  identifier: "MessageBatchCreatedEventData",
-}) as any as S.Schema<MessageBatchCreatedEventData>;
+export const MessageBatchCreatedEventData =
+  MessageBatchUpdatedEventData as any as S.Schema<MessageBatchCreatedEventData>;
 
 /** Event payload for a deleted reaction. Type: `google.workspace.chat.reaction.v1.deleted` */
 export interface ReactionDeletedEventData {
   /** The deleted reaction. */
   reaction?: Reaction;
 }
-export const ReactionDeletedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reaction: S.optional(Reaction),
-  }),
-).annotate({ identifier: "ReactionDeletedEventData" }) as any as S.Schema<ReactionDeletedEventData>;
+export const ReactionDeletedEventData =
+  ReactionCreatedEventData as any as S.Schema<ReactionDeletedEventData>;
 
 export type ReactionDeletedEventDataList = Array<ReactionDeletedEventData>;
-export const ReactionDeletedEventDataList = /*@__PURE__*/ S.Array(
-  ReactionDeletedEventData,
-) as any as S.Schema<ReactionDeletedEventDataList>;
+export const ReactionDeletedEventDataList =
+  ReactionCreatedEventDataList as any as S.Schema<ReactionDeletedEventDataList>;
 
 /** Event payload for multiple deleted reactions. Event type: `google.workspace.chat.reaction.v1.batchDeleted` */
 export interface ReactionBatchDeletedEventData {
   /** A list of deleted reactions. */
   reactions?: ReactionDeletedEventDataList;
 }
-export const ReactionBatchDeletedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reactions: S.optional(ReactionDeletedEventDataList),
-  }),
-).annotate({
-  identifier: "ReactionBatchDeletedEventData",
-}) as any as S.Schema<ReactionBatchDeletedEventData>;
+export const ReactionBatchDeletedEventData =
+  ReactionBatchCreatedEventData as any as S.Schema<ReactionBatchDeletedEventData>;
 
 /** Event payload for a deleted membership. Event type: `google.workspace.chat.membership.v1.deleted` */
 export interface MembershipDeletedEventData {
   /** The deleted membership. Only the `name` and `state` fields are populated. */
   membership?: Membership;
 }
-export const MembershipDeletedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    membership: S.optional(Membership),
-  }),
-).annotate({
-  identifier: "MembershipDeletedEventData",
-}) as any as S.Schema<MembershipDeletedEventData>;
+export const MembershipDeletedEventData =
+  MembershipCreatedEventData as any as S.Schema<MembershipDeletedEventData>;
 
 export type MembershipDeletedEventDataList = Array<MembershipDeletedEventData>;
-export const MembershipDeletedEventDataList = /*@__PURE__*/ S.Array(
-  MembershipDeletedEventData,
-) as any as S.Schema<MembershipDeletedEventDataList>;
+export const MembershipDeletedEventDataList =
+  MembershipCreatedEventDataList as any as S.Schema<MembershipDeletedEventDataList>;
 
 /** Event payload for multiple deleted memberships. Event type: `google.workspace.chat.membership.v1.batchDeleted` */
 export interface MembershipBatchDeletedEventData {
   /** A list of deleted memberships. */
   memberships?: MembershipDeletedEventDataList;
 }
-export const MembershipBatchDeletedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memberships: S.optional(MembershipDeletedEventDataList),
-  }),
-).annotate({
-  identifier: "MembershipBatchDeletedEventData",
-}) as any as S.Schema<MembershipBatchDeletedEventData>;
+export const MembershipBatchDeletedEventData =
+  MembershipBatchCreatedEventData as any as S.Schema<MembershipBatchDeletedEventData>;
 
 /** Event payload for an updated membership. Event type: `google.workspace.chat.membership.v1.updated` */
 export interface MembershipUpdatedEventData {
   /** The updated membership. */
   membership?: Membership;
 }
-export const MembershipUpdatedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    membership: S.optional(Membership),
-  }),
-).annotate({
-  identifier: "MembershipUpdatedEventData",
-}) as any as S.Schema<MembershipUpdatedEventData>;
+export const MembershipUpdatedEventData =
+  MembershipCreatedEventData as any as S.Schema<MembershipUpdatedEventData>;
 
 export type MembershipUpdatedEventDataList = Array<MembershipUpdatedEventData>;
-export const MembershipUpdatedEventDataList = /*@__PURE__*/ S.Array(
-  MembershipUpdatedEventData,
-) as any as S.Schema<MembershipUpdatedEventDataList>;
+export const MembershipUpdatedEventDataList =
+  MembershipCreatedEventDataList as any as S.Schema<MembershipUpdatedEventDataList>;
 
 /** Event payload for multiple updated memberships. Event type: `google.workspace.chat.membership.v1.batchUpdated` */
 export interface MembershipBatchUpdatedEventData {
   /** A list of updated memberships. */
   memberships?: MembershipUpdatedEventDataList;
 }
-export const MembershipBatchUpdatedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memberships: S.optional(MembershipUpdatedEventDataList),
-  }),
-).annotate({
-  identifier: "MembershipBatchUpdatedEventData",
-}) as any as S.Schema<MembershipBatchUpdatedEventData>;
+export const MembershipBatchUpdatedEventData =
+  MembershipBatchCreatedEventData as any as S.Schema<MembershipBatchUpdatedEventData>;
 
 /** Event payload for a deleted message. Event type: `google.workspace.chat.message.v1.deleted` */
 export interface MessageDeletedEventData {
   /** The deleted message. Only the `name`, `createTime`, and `deletionMetadata` fields are populated. */
   message?: Message;
 }
-export const MessageDeletedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(Message),
-  }),
-).annotate({ identifier: "MessageDeletedEventData" }) as any as S.Schema<MessageDeletedEventData>;
+export const MessageDeletedEventData =
+  MessageUpdatedEventData as any as S.Schema<MessageDeletedEventData>;
 
 export type MessageDeletedEventDataList = Array<MessageDeletedEventData>;
-export const MessageDeletedEventDataList = /*@__PURE__*/ S.Array(
-  MessageDeletedEventData,
-) as any as S.Schema<MessageDeletedEventDataList>;
+export const MessageDeletedEventDataList =
+  MessageUpdatedEventDataList as any as S.Schema<MessageDeletedEventDataList>;
 
 /** Event payload for multiple deleted messages. Event type: `google.workspace.chat.message.v1.batchDeleted` */
 export interface MessageBatchDeletedEventData {
   /** A list of deleted messages. */
   messages?: MessageDeletedEventDataList;
 }
-export const MessageBatchDeletedEventData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messages: S.optional(MessageDeletedEventDataList),
-  }),
-).annotate({
-  identifier: "MessageBatchDeletedEventData",
-}) as any as S.Schema<MessageBatchDeletedEventData>;
+export const MessageBatchDeletedEventData =
+  MessageBatchUpdatedEventData as any as S.Schema<MessageBatchDeletedEventData>;
 
 /** An event that represents a change or activity in a Google Chat space. To learn more, see [Work with events from Google Chat](https://developers.google.com/workspace/chat/events-overview). */
 export interface SpaceEvent {
@@ -3793,12 +3733,7 @@ export interface ThreadReadState {
   /** The time when the user's thread read state was updated. Usually this corresponds with the timestamp of the last read message in a thread. */
   lastReadTime?: string;
 }
-export const ThreadReadState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    lastReadTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "ThreadReadState" }) as any as S.Schema<ThreadReadState>;
+export const ThreadReadState = SpaceReadState as any as S.Schema<ThreadReadState>;
 
 export interface GetUsersAvailabilityRequest {
   /** Required. The resource name of the availability to retrieve. Format: users/{user}/availability `{user}` is the id for the Person in the People API or Admin SDK directory API. For example, `users/123456789`. The user's email address or `me` can also be used as an alias to refer to the caller. For example, `users/user@example.com` or `users/me`. */
@@ -3974,12 +3909,7 @@ export interface ListSpacesResponse {
   /** You can send a token as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListSpacesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spaces: S.optional(SpaceList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListSpacesResponse" }) as any as S.Schema<ListSpacesResponse>;
+export const ListSpacesResponse = FindGroupChatsResponse as any as S.Schema<ListSpacesResponse>;
 
 export interface ListSpacesMembersRequest {
   /** Optional. When `true`, also returns memberships associated with a Google Group, in addition to other types of memberships. If a filter is set, Google Group memberships that don't match the filter criteria aren't returned. */
@@ -4638,16 +4568,11 @@ export interface SearchSpaceResult {
   /** Output only. The matched space. */
   space?: Space;
 }
-export const SearchSpaceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    space: S.optional(Space),
-  }),
-).annotate({ identifier: "SearchSpaceResult" }) as any as S.Schema<SearchSpaceResult>;
+export const SearchSpaceResult = SpaceUpdatedEventData as any as S.Schema<SearchSpaceResult>;
 
 export type SearchSpaceResultList = Array<SearchSpaceResult>;
-export const SearchSpaceResultList = /*@__PURE__*/ S.Array(
-  SearchSpaceResult,
-) as any as S.Schema<SearchSpaceResultList>;
+export const SearchSpaceResultList =
+  SpaceUpdatedEventDataList as any as S.Schema<SearchSpaceResultList>;
 
 /** Response with a list of spaces corresponding to the search spaces request. */
 export interface SearchSpacesResponse {

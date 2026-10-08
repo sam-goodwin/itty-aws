@@ -91,9 +91,7 @@ export const CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest = /*@__
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Message for canceling a patch job. */
 export type CancelPatchJobRequest = CancelOperationRequest;
@@ -684,14 +682,8 @@ export interface OSPolicyResourcePackageResourceRPM {
   /** Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm` */
   pullDeps?: boolean;
 }
-export const OSPolicyResourcePackageResourceRPM = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(OSPolicyResourceFile),
-    pullDeps: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OSPolicyResourcePackageResourceRPM",
-}) as any as S.Schema<OSPolicyResourcePackageResourceRPM>;
+export const OSPolicyResourcePackageResourceRPM =
+  OSPolicyResourcePackageResourceDeb as any as S.Schema<OSPolicyResourcePackageResourceRPM>;
 
 /** A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package` */
 export type OSPolicyResourcePackageResourceGooGet = OSPolicyResourcePackageResourceAPT;
@@ -1001,27 +993,20 @@ export interface OSPolicyAssignmentLabelSet {
   /** Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected. */
   labels?: StringMap;
 }
-export const OSPolicyAssignmentLabelSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "OSPolicyAssignmentLabelSet",
-}) as any as S.Schema<OSPolicyAssignmentLabelSet>;
+export const OSPolicyAssignmentLabelSet =
+  PatchInstanceFilterGroupLabel as any as S.Schema<OSPolicyAssignmentLabelSet>;
 
 export type OSPolicyAssignmentLabelSetList = Array<OSPolicyAssignmentLabelSet>;
-export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(
-  OSPolicyAssignmentLabelSet,
-) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
+export const OSPolicyAssignmentLabelSetList =
+  PatchInstanceFilterGroupLabelList as any as S.Schema<OSPolicyAssignmentLabelSetList>;
 
 /** VM inventory details. */
 export type OSPolicyAssignmentInstanceFilterInventory = OSPolicyInventoryFilter;
 export const OSPolicyAssignmentInstanceFilterInventory = OSPolicyInventoryFilter;
 
 export type OSPolicyAssignmentInstanceFilterInventoryList = Array<OSPolicyInventoryFilter>;
-export const OSPolicyAssignmentInstanceFilterInventoryList = /*@__PURE__*/ S.Array(
-  OSPolicyInventoryFilter,
-) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventoryList>;
+export const OSPolicyAssignmentInstanceFilterInventoryList =
+  OSPolicyInventoryFilterList as any as S.Schema<OSPolicyAssignmentInstanceFilterInventoryList>;
 
 /** Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them. */
 export interface OSPolicyAssignmentInstanceFilter {
@@ -2722,14 +2707,8 @@ export interface ListOSPolicyAssignmentRevisionsResponse {
   /** The pagination token to retrieve the next page of OS policy assignment revisions. */
   nextPageToken?: string;
 }
-export const ListOSPolicyAssignmentRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osPolicyAssignments: S.optional(OSPolicyAssignmentList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOSPolicyAssignmentRevisionsResponse",
-}) as any as S.Schema<ListOSPolicyAssignmentRevisionsResponse>;
+export const ListOSPolicyAssignmentRevisionsResponse =
+  ListOSPolicyAssignmentsResponse as any as S.Schema<ListOSPolicyAssignmentRevisionsResponse>;
 
 export interface PatchProjectsLocationsOsPolicyAssignmentsRequest {
   /** Optional. If set to true, and the OS policy assignment is not found, a new OS policy assignment will be created. In this situation, `update_mask` is ignored. */

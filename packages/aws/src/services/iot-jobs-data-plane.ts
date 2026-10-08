@@ -368,11 +368,8 @@ export const StartNextPendingJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartNextPendingJobExecutionResponse {
   execution?: JobExecution;
 }
-export const StartNextPendingJobExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ execution: S.optional(JobExecution) }),
-).annotate({
-  identifier: "StartNextPendingJobExecutionResponse",
-}) as any as S.Schema<StartNextPendingJobExecutionResponse>;
+export const StartNextPendingJobExecutionResponse =
+  DescribeJobExecutionResponse as any as S.Schema<StartNextPendingJobExecutionResponse>;
 export type ExpectedVersion = number;
 export type IncludeExecutionState = boolean;
 export interface UpdateJobExecutionRequest {

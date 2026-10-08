@@ -570,9 +570,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainResult {
   domain?: DomainDescription;
 }
-export const DeleteDomainResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domain: S.optional(DomainDescription) }),
-).annotate({ identifier: "DeleteDomainResult" }) as any as S.Schema<DeleteDomainResult>;
+export const DeleteDomainResult = CreateDomainResult as any as S.Schema<DeleteDomainResult>;
 export type PolicyRevision = string;
 export interface DeleteDomainPermissionsPolicyRequest {
   domain: string;
@@ -698,9 +696,8 @@ export const DeletePackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePackageGroupResult {
   packageGroup?: PackageGroupDescription;
 }
-export const DeletePackageGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageGroup: S.optional(PackageGroupDescription) }),
-).annotate({ identifier: "DeletePackageGroupResult" }) as any as S.Schema<DeletePackageGroupResult>;
+export const DeletePackageGroupResult =
+  CreatePackageGroupResult as any as S.Schema<DeletePackageGroupResult>;
 export interface DeletePackageVersionsRequest {
   domain: string;
   domainOwner?: string;
@@ -738,14 +735,8 @@ export interface DeletePackageVersionsResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
   failedVersions?: { [key: string]: PackageVersionError | undefined };
 }
-export const DeletePackageVersionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successfulVersions: S.optional(SuccessfulPackageVersionInfoMap),
-    failedVersions: S.optional(PackageVersionErrorMap),
-  }),
-).annotate({
-  identifier: "DeletePackageVersionsResult",
-}) as any as S.Schema<DeletePackageVersionsResult>;
+export const DeletePackageVersionsResult =
+  CopyPackageVersionsResult as any as S.Schema<DeletePackageVersionsResult>;
 export interface DeleteRepositoryRequest {
   domain: string;
   domainOwner?: string;
@@ -761,9 +752,8 @@ export const DeleteRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRepositoryResult {
   repository?: RepositoryDescription;
 }
-export const DeleteRepositoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(RepositoryDescription) }),
-).annotate({ identifier: "DeleteRepositoryResult" }) as any as S.Schema<DeleteRepositoryResult>;
+export const DeleteRepositoryResult =
+  CreateRepositoryResult as any as S.Schema<DeleteRepositoryResult>;
 export interface DeleteRepositoryPermissionsPolicyRequest {
   domain: string;
   domainOwner?: string;
@@ -792,11 +782,8 @@ export const DeleteRepositoryPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(
 export interface DeleteRepositoryPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
-export const DeleteRepositoryPermissionsPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.optional(ResourcePolicy) }),
-).annotate({
-  identifier: "DeleteRepositoryPermissionsPolicyResult",
-}) as any as S.Schema<DeleteRepositoryPermissionsPolicyResult>;
+export const DeleteRepositoryPermissionsPolicyResult =
+  DeleteDomainPermissionsPolicyResult as any as S.Schema<DeleteRepositoryPermissionsPolicyResult>;
 export interface DescribeDomainRequest {
   domain: string;
   domainOwner?: string;
@@ -810,9 +797,7 @@ export const DescribeDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDomainResult {
   domain?: DomainDescription;
 }
-export const DescribeDomainResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domain: S.optional(DomainDescription) }),
-).annotate({ identifier: "DescribeDomainResult" }) as any as S.Schema<DescribeDomainResult>;
+export const DescribeDomainResult = CreateDomainResult as any as S.Schema<DescribeDomainResult>;
 export interface DescribePackageRequest {
   domain: string;
   domainOwner?: string;
@@ -986,9 +971,8 @@ export const DescribeRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeRepositoryResult {
   repository?: RepositoryDescription;
 }
-export const DescribeRepositoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(RepositoryDescription) }),
-).annotate({ identifier: "DescribeRepositoryResult" }) as any as S.Schema<DescribeRepositoryResult>;
+export const DescribeRepositoryResult =
+  CreateRepositoryResult as any as S.Schema<DescribeRepositoryResult>;
 export interface DisassociateExternalConnectionRequest {
   domain: string;
   domainOwner?: string;
@@ -1017,11 +1001,8 @@ export const DisassociateExternalConnectionRequest = /*@__PURE__*/ S.suspend(() 
 export interface DisassociateExternalConnectionResult {
   repository?: RepositoryDescription;
 }
-export const DisassociateExternalConnectionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(RepositoryDescription) }),
-).annotate({
-  identifier: "DisassociateExternalConnectionResult",
-}) as any as S.Schema<DisassociateExternalConnectionResult>;
+export const DisassociateExternalConnectionResult =
+  AssociateExternalConnectionResult as any as S.Schema<DisassociateExternalConnectionResult>;
 export interface DisposePackageVersionsRequest {
   domain: string;
   domainOwner?: string;
@@ -1061,14 +1042,8 @@ export interface DisposePackageVersionsResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
   failedVersions?: { [key: string]: PackageVersionError | undefined };
 }
-export const DisposePackageVersionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successfulVersions: S.optional(SuccessfulPackageVersionInfoMap),
-    failedVersions: S.optional(PackageVersionErrorMap),
-  }),
-).annotate({
-  identifier: "DisposePackageVersionsResult",
-}) as any as S.Schema<DisposePackageVersionsResult>;
+export const DisposePackageVersionsResult =
+  CopyPackageVersionsResult as any as S.Schema<DisposePackageVersionsResult>;
 export interface GetAssociatedPackageGroupRequest {
   domain: string;
   domainOwner?: string;
@@ -1164,11 +1139,8 @@ export const GetDomainPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
-export const GetDomainPermissionsPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.optional(ResourcePolicy) }),
-).annotate({
-  identifier: "GetDomainPermissionsPolicyResult",
-}) as any as S.Schema<GetDomainPermissionsPolicyResult>;
+export const GetDomainPermissionsPolicyResult =
+  DeleteDomainPermissionsPolicyResult as any as S.Schema<GetDomainPermissionsPolicyResult>;
 export type AssetName = string;
 export interface GetPackageVersionAssetRequest {
   domain: string;
@@ -1329,11 +1301,8 @@ export const GetRepositoryPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() 
 export interface GetRepositoryPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
-export const GetRepositoryPermissionsPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.optional(ResourcePolicy) }),
-).annotate({
-  identifier: "GetRepositoryPermissionsPolicyResult",
-}) as any as S.Schema<GetRepositoryPermissionsPolicyResult>;
+export const GetRepositoryPermissionsPolicyResult =
+  DeleteDomainPermissionsPolicyResult as any as S.Schema<GetRepositoryPermissionsPolicyResult>;
 export type ListAllowedRepositoriesForGroupMaxResults = number;
 export type PaginationToken = string;
 export interface ListAllowedRepositoriesForGroupRequest {
@@ -1368,7 +1337,7 @@ export const ListAllowedRepositoriesForGroupRequest = /*@__PURE__*/ S.suspend(()
   identifier: "ListAllowedRepositoriesForGroupRequest",
 }) as any as S.Schema<ListAllowedRepositoriesForGroupRequest>;
 export type RepositoryNameList = string[];
-export const RepositoryNameList = /*@__PURE__*/ S.Array(S.String);
+export const RepositoryNameList = PackageVersionList as any as S.Schema<RepositoryNameList>;
 export interface ListAllowedRepositoriesForGroupResult {
   allowedRepositories?: string[];
   nextToken?: string;
@@ -1504,19 +1473,7 @@ export interface PackageGroupSummary {
   originConfiguration?: PackageGroupOriginConfiguration;
   parent?: PackageGroupReference;
 }
-export const PackageGroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    pattern: S.optional(S.String),
-    domainName: S.optional(S.String),
-    domainOwner: S.optional(S.String),
-    createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    contactInfo: S.optional(S.String),
-    description: S.optional(S.String),
-    originConfiguration: S.optional(PackageGroupOriginConfiguration),
-    parent: S.optional(PackageGroupReference),
-  }),
-).annotate({ identifier: "PackageGroupSummary" }) as any as S.Schema<PackageGroupSummary>;
+export const PackageGroupSummary = PackageGroupDescription as any as S.Schema<PackageGroupSummary>;
 export type PackageGroupSummaryList = PackageGroupSummary[];
 export const PackageGroupSummaryList = /*@__PURE__*/ S.Array(PackageGroupSummary);
 export interface ListPackageGroupsResult {
@@ -1999,11 +1956,8 @@ export const PutDomainPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutDomainPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
-export const PutDomainPermissionsPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.optional(ResourcePolicy) }),
-).annotate({
-  identifier: "PutDomainPermissionsPolicyResult",
-}) as any as S.Schema<PutDomainPermissionsPolicyResult>;
+export const PutDomainPermissionsPolicyResult =
+  DeleteDomainPermissionsPolicyResult as any as S.Schema<PutDomainPermissionsPolicyResult>;
 export interface PutPackageOriginConfigurationRequest {
   domain: string;
   domainOwner?: string;
@@ -2064,11 +2018,8 @@ export const PutRepositoryPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(() 
 export interface PutRepositoryPermissionsPolicyResult {
   policy?: ResourcePolicy;
 }
-export const PutRepositoryPermissionsPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.optional(ResourcePolicy) }),
-).annotate({
-  identifier: "PutRepositoryPermissionsPolicyResult",
-}) as any as S.Schema<PutRepositoryPermissionsPolicyResult>;
+export const PutRepositoryPermissionsPolicyResult =
+  DeleteDomainPermissionsPolicyResult as any as S.Schema<PutRepositoryPermissionsPolicyResult>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -2083,7 +2034,7 @@ export const TagResourceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).ann
   identifier: "TagResourceResult",
 }) as any as S.Schema<TagResourceResult>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = PackageVersionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2094,9 +2045,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
-export const UntagResourceResult = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResult",
-}) as any as S.Schema<UntagResourceResult>;
+export const UntagResourceResult = TagResourceResult as any as S.Schema<UntagResourceResult>;
 export interface UpdatePackageGroupRequest {
   domain: string;
   domainOwner?: string;
@@ -2118,9 +2067,8 @@ export const UpdatePackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePackageGroupResult {
   packageGroup?: PackageGroupDescription;
 }
-export const UpdatePackageGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ packageGroup: S.optional(PackageGroupDescription) }),
-).annotate({ identifier: "UpdatePackageGroupResult" }) as any as S.Schema<UpdatePackageGroupResult>;
+export const UpdatePackageGroupResult =
+  CreatePackageGroupResult as any as S.Schema<UpdatePackageGroupResult>;
 export type OriginRestrictions = {
   [key in PackageGroupOriginRestrictionType]?: PackageGroupOriginRestrictionMode;
 };
@@ -2243,14 +2191,8 @@ export interface UpdatePackageVersionsStatusResult {
   successfulVersions?: { [key: string]: SuccessfulPackageVersionInfo | undefined };
   failedVersions?: { [key: string]: PackageVersionError | undefined };
 }
-export const UpdatePackageVersionsStatusResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successfulVersions: S.optional(SuccessfulPackageVersionInfoMap),
-    failedVersions: S.optional(PackageVersionErrorMap),
-  }),
-).annotate({
-  identifier: "UpdatePackageVersionsStatusResult",
-}) as any as S.Schema<UpdatePackageVersionsStatusResult>;
+export const UpdatePackageVersionsStatusResult =
+  CopyPackageVersionsResult as any as S.Schema<UpdatePackageVersionsStatusResult>;
 export interface UpdateRepositoryRequest {
   domain: string;
   domainOwner?: string;
@@ -2270,9 +2212,8 @@ export const UpdateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRepositoryResult {
   repository?: RepositoryDescription;
 }
-export const UpdateRepositoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ repository: S.optional(RepositoryDescription) }),
-).annotate({ identifier: "UpdateRepositoryResult" }) as any as S.Schema<UpdateRepositoryResult>;
+export const UpdateRepositoryResult =
+  CreateRepositoryResult as any as S.Schema<UpdateRepositoryResult>;
 export type ResourceType =
   | "domain"
   | "repository"

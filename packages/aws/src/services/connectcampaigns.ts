@@ -190,9 +190,8 @@ export interface PredictiveDialerConfig {
   bandwidthAllocation: number;
   dialingCapacity?: number;
 }
-export const PredictiveDialerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bandwidthAllocation: S.Number, dialingCapacity: S.optional(S.Number) }),
-).annotate({ identifier: "PredictiveDialerConfig" }) as any as S.Schema<PredictiveDialerConfig>;
+export const PredictiveDialerConfig =
+  ProgressiveDialerConfig as any as S.Schema<PredictiveDialerConfig>;
 export interface AgentlessDialerConfig {
   dialingCapacity?: number;
 }
@@ -332,11 +331,8 @@ export const DeleteInstanceOnboardingJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteInstanceOnboardingJobRequest",
 }) as any as S.Schema<DeleteInstanceOnboardingJobRequest>;
 export interface DeleteInstanceOnboardingJobResponse {}
-export const DeleteInstanceOnboardingJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInstanceOnboardingJobResponse",
-}) as any as S.Schema<DeleteInstanceOnboardingJobResponse>;
+export const DeleteInstanceOnboardingJobResponse =
+  DeleteConnectInstanceConfigResponse as any as S.Schema<DeleteInstanceOnboardingJobResponse>;
 export interface DescribeCampaignRequest {
   id: string;
 }
@@ -604,15 +600,14 @@ export const PauseCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PauseCampaignRequest" }) as any as S.Schema<PauseCampaignRequest>;
 export interface PauseCampaignResponse {}
-export const PauseCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PauseCampaignResponse",
-}) as any as S.Schema<PauseCampaignResponse>;
+export const PauseCampaignResponse =
+  DeleteCampaignResponse as any as S.Schema<PauseCampaignResponse>;
 export type ClientToken = string;
 export type DestinationPhoneNumber = string | redacted.Redacted<string>;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Attributes = TagMap as any as S.Schema<Attributes>;
 export interface DialRequest {
   clientToken: string;
   phoneNumber: string | redacted.Redacted<string>;
@@ -693,9 +688,8 @@ export const ResumeCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ResumeCampaignRequest" }) as any as S.Schema<ResumeCampaignRequest>;
 export interface ResumeCampaignResponse {}
-export const ResumeCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeCampaignResponse",
-}) as any as S.Schema<ResumeCampaignResponse>;
+export const ResumeCampaignResponse =
+  DeleteCampaignResponse as any as S.Schema<ResumeCampaignResponse>;
 export interface StartCampaignRequest {
   id: string;
 }
@@ -705,9 +699,8 @@ export const StartCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartCampaignRequest" }) as any as S.Schema<StartCampaignRequest>;
 export interface StartCampaignResponse {}
-export const StartCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCampaignResponse",
-}) as any as S.Schema<StartCampaignResponse>;
+export const StartCampaignResponse =
+  DeleteCampaignResponse as any as S.Schema<StartCampaignResponse>;
 export interface StartInstanceOnboardingJobRequest {
   connectInstanceId: string;
   encryptionConfig: EncryptionConfig;
@@ -732,11 +725,8 @@ export const StartInstanceOnboardingJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartInstanceOnboardingJobResponse {
   connectInstanceOnboardingJobStatus?: InstanceOnboardingJobStatus;
 }
-export const StartInstanceOnboardingJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connectInstanceOnboardingJobStatus: S.optional(InstanceOnboardingJobStatus) }),
-).annotate({
-  identifier: "StartInstanceOnboardingJobResponse",
-}) as any as S.Schema<StartInstanceOnboardingJobResponse>;
+export const StartInstanceOnboardingJobResponse =
+  GetInstanceOnboardingJobStatusResponse as any as S.Schema<StartInstanceOnboardingJobResponse>;
 export interface StopCampaignRequest {
   id: string;
 }
@@ -746,9 +736,7 @@ export const StopCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopCampaignRequest" }) as any as S.Schema<StopCampaignRequest>;
 export interface StopCampaignResponse {}
-export const StopCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCampaignResponse",
-}) as any as S.Schema<StopCampaignResponse>;
+export const StopCampaignResponse = DeleteCampaignResponse as any as S.Schema<StopCampaignResponse>;
 export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
@@ -759,11 +747,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteCampaignResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = CampaignIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
@@ -775,9 +761,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteCampaignResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCampaignDialerConfigRequest {
   id: string;
   dialerConfig: DialerConfig;
@@ -797,11 +782,8 @@ export const UpdateCampaignDialerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCampaignDialerConfigRequest",
 }) as any as S.Schema<UpdateCampaignDialerConfigRequest>;
 export interface UpdateCampaignDialerConfigResponse {}
-export const UpdateCampaignDialerConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCampaignDialerConfigResponse",
-}) as any as S.Schema<UpdateCampaignDialerConfigResponse>;
+export const UpdateCampaignDialerConfigResponse =
+  DeleteConnectInstanceConfigResponse as any as S.Schema<UpdateCampaignDialerConfigResponse>;
 export interface UpdateCampaignNameRequest {
   id: string;
   name: string;
@@ -814,9 +796,8 @@ export const UpdateCampaignNameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCampaignNameRequest",
 }) as any as S.Schema<UpdateCampaignNameRequest>;
 export interface UpdateCampaignNameResponse {}
-export const UpdateCampaignNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCampaignNameResponse",
-}) as any as S.Schema<UpdateCampaignNameResponse>;
+export const UpdateCampaignNameResponse =
+  DeleteCampaignResponse as any as S.Schema<UpdateCampaignNameResponse>;
 export interface UpdateCampaignOutboundCallConfigRequest {
   id: string;
   connectContactFlowId?: string;
@@ -843,11 +824,8 @@ export const UpdateCampaignOutboundCallConfigRequest = /*@__PURE__*/ S.suspend((
   identifier: "UpdateCampaignOutboundCallConfigRequest",
 }) as any as S.Schema<UpdateCampaignOutboundCallConfigRequest>;
 export interface UpdateCampaignOutboundCallConfigResponse {}
-export const UpdateCampaignOutboundCallConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCampaignOutboundCallConfigResponse",
-}) as any as S.Schema<UpdateCampaignOutboundCallConfigResponse>;
+export const UpdateCampaignOutboundCallConfigResponse =
+  DeleteConnectInstanceConfigResponse as any as S.Schema<UpdateCampaignOutboundCallConfigResponse>;
 export type XAmazonErrorType = string;
 export type CreateCampaignError =
   | AccessDeniedException

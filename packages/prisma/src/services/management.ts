@@ -786,28 +786,15 @@ export interface CreateDatabaseResponseDataSourceCase1 {
   /** ID of the backup to restore from */
   backupId: string;
 }
-export const CreateDatabaseResponseDataSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    databaseId: S.String,
-    backupId: S.String,
-  }),
-).annotate({
-  identifier: "CreateDatabaseResponseDataSourceCase1",
-}) as any as S.Schema<CreateDatabaseResponseDataSourceCase1>;
+export const CreateDatabaseResponseDataSourceCase1 =
+  CreateDatabaseRequestSourceCase1 as any as S.Schema<CreateDatabaseResponseDataSourceCase1>;
 
 export interface CreateDatabaseResponseDataSourceCase2 {
   type: string;
   databaseId: string;
 }
-export const CreateDatabaseResponseDataSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    databaseId: S.String,
-  }),
-).annotate({
-  identifier: "CreateDatabaseResponseDataSourceCase2",
-}) as any as S.Schema<CreateDatabaseResponseDataSourceCase2>;
+export const CreateDatabaseResponseDataSourceCase2 =
+  CreateDatabaseRequestSourceCase2 as any as S.Schema<CreateDatabaseResponseDataSourceCase2>;
 
 export type CreateDatabaseResponseDataSource =
   | CreateDatabaseRequestSourceCase0
@@ -1083,15 +1070,8 @@ export interface CreateDatabaseRestoreResponseDataSource {
   databaseId: string;
   backupId: string;
 }
-export const CreateDatabaseRestoreResponseDataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    databaseId: S.String,
-    backupId: S.String,
-  }),
-).annotate({
-  identifier: "CreateDatabaseRestoreResponseDataSource",
-}) as any as S.Schema<CreateDatabaseRestoreResponseDataSource>;
+export const CreateDatabaseRestoreResponseDataSource =
+  CreateDatabaseRequestSourceCase1 as any as S.Schema<CreateDatabaseRestoreResponseDataSource>;
 
 export interface CreateDatabaseRestoreResponseData {
   id: string;
@@ -2053,9 +2033,8 @@ export const CreateProjectTransferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectTransferRequest>;
 
 export interface CreateProjectTransferResponse {}
-export const CreateProjectTransferResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateProjectTransferResponse",
-}) as any as S.Schema<CreateProjectTransferResponse>;
+export const CreateProjectTransferResponse =
+  CreateDeploymentStopResponse as any as S.Schema<CreateProjectTransferResponse>;
 
 export type CreateScmInstallationsInstallIntentRequestProvider = "github";
 export const CreateScmInstallationsInstallIntentRequestProvider = S.String;
@@ -2273,9 +2252,8 @@ export const CreateServiceDomainResponseDataDnsRecordsItem =
 
 export type CreateServiceDomainResponseDataDnsRecordsList =
   Array<CreateDomainRetryResponseDataDnsRecordsItem>;
-export const CreateServiceDomainResponseDataDnsRecordsList = /*@__PURE__*/ S.Array(
-  CreateDomainRetryResponseDataDnsRecordsItem,
-) as any as S.Schema<CreateServiceDomainResponseDataDnsRecordsList>;
+export const CreateServiceDomainResponseDataDnsRecordsList =
+  CreateDomainRetryResponseDataDnsRecordsList as any as S.Schema<CreateServiceDomainResponseDataDnsRecordsList>;
 
 export interface CreateServiceDomainResponseData {
   id: string;
@@ -2388,13 +2366,8 @@ export const CreateServiceRollbackResponseData = CreateServicePromoteResponseDat
 export interface CreateServiceRollbackResponse {
   data: CreateServicePromoteResponseData;
 }
-export const CreateServiceRollbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateServicePromoteResponseData,
-  }),
-).annotate({
-  identifier: "CreateServiceRollbackResponse",
-}) as any as S.Schema<CreateServiceRollbackResponse>;
+export const CreateServiceRollbackResponse =
+  CreateServicePromoteResponse as any as S.Schema<CreateServiceRollbackResponse>;
 
 export interface CreateSourceRepositoryRequest {
   projectId: string;
@@ -2565,9 +2538,8 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchRequest" }) as any as S.Schema<DeleteBranchRequest>;
 
 export interface DeleteBranchResponse {}
-export const DeleteBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBranchResponse",
-}) as any as S.Schema<DeleteBranchResponse>;
+export const DeleteBranchResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteBranchResponse>;
 
 export interface DeleteBucketRequest {
   bucketId: string;
@@ -2579,9 +2551,8 @@ export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBucketRequest" }) as any as S.Schema<DeleteBucketRequest>;
 
 export interface DeleteBucketResponse {}
-export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBucketResponse",
-}) as any as S.Schema<DeleteBucketResponse>;
+export const DeleteBucketResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteBucketResponse>;
 
 export interface DeleteBucketKeyRequest {
   bucketId: string;
@@ -2595,9 +2566,8 @@ export const DeleteBucketKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBucketKeyRequest" }) as any as S.Schema<DeleteBucketKeyRequest>;
 
 export interface DeleteBucketKeyResponse {}
-export const DeleteBucketKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBucketKeyResponse",
-}) as any as S.Schema<DeleteBucketKeyResponse>;
+export const DeleteBucketKeyResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteBucketKeyResponse>;
 
 export interface DeleteConnectionRequest {
   id: string;
@@ -2609,9 +2579,8 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectionResponse",
-}) as any as S.Schema<DeleteConnectionResponse>;
+export const DeleteConnectionResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteConnectionResponse>;
 
 export interface DeleteDatabaseRequest {
   databaseId: string;
@@ -2623,9 +2592,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteDeploymentRequest {
   deploymentId: string;
@@ -2637,9 +2605,8 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeploymentResponse",
-}) as any as S.Schema<DeleteDeploymentResponse>;
+export const DeleteDeploymentResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteDeploymentResponse>;
 
 export interface DeleteDomainRequest {
   domainId: string;
@@ -2651,9 +2618,8 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainResponse",
-}) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteDomainResponse>;
 
 export interface DeleteEnvironmentVariableRequest {
   envVarId: string;
@@ -2683,9 +2649,8 @@ export const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIntegrationRequest" }) as any as S.Schema<DeleteIntegrationRequest>;
 
 export interface DeleteIntegrationResponse {}
-export const DeleteIntegrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIntegrationResponse",
-}) as any as S.Schema<DeleteIntegrationResponse>;
+export const DeleteIntegrationResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteIntegrationResponse>;
 
 export interface DeleteProjectRequest {
   id: string;
@@ -2697,9 +2662,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectBranchAlchemyStateLeaseRequest {
   projectId: string;
@@ -2721,11 +2685,8 @@ export const DeleteProjectBranchAlchemyStateLeaseRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteProjectBranchAlchemyStateLeaseRequest>;
 
 export interface DeleteProjectBranchAlchemyStateLeaseResponse {}
-export const DeleteProjectBranchAlchemyStateLeaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchAlchemyStateLeaseResponse",
-}) as any as S.Schema<DeleteProjectBranchAlchemyStateLeaseResponse>;
+export const DeleteProjectBranchAlchemyStateLeaseResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteProjectBranchAlchemyStateLeaseResponse>;
 
 export interface DeleteProjectBranchAlchemyStateStateStackRequest {
   projectId: string;
@@ -2751,11 +2712,8 @@ export const DeleteProjectBranchAlchemyStateStateStackRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackRequest>;
 
 export interface DeleteProjectBranchAlchemyStateStateStackResponse {}
-export const DeleteProjectBranchAlchemyStateStateStackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchAlchemyStateStateStackResponse",
-}) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackResponse>;
+export const DeleteProjectBranchAlchemyStateStateStackResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackResponse>;
 
 export interface DeleteProjectBranchAlchemyStateStateStackStageResourceRequest {
   projectId: string;
@@ -2799,9 +2757,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteSourceRepositoryRequest {
   id: string;
@@ -2815,9 +2772,8 @@ export const DeleteSourceRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSourceRepositoryRequest>;
 
 export interface DeleteSourceRepositoryResponse {}
-export const DeleteSourceRepositoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSourceRepositoryResponse",
-}) as any as S.Schema<DeleteSourceRepositoryResponse>;
+export const DeleteSourceRepositoryResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteSourceRepositoryResponse>;
 
 export interface DeleteWorkspaceIntegrationRequest {
   workspaceId: string;
@@ -2839,11 +2795,8 @@ export const DeleteWorkspaceIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceIntegrationRequest>;
 
 export interface DeleteWorkspaceIntegrationResponse {}
-export const DeleteWorkspaceIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceIntegrationResponse",
-}) as any as S.Schema<DeleteWorkspaceIntegrationResponse>;
+export const DeleteWorkspaceIntegrationResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteWorkspaceIntegrationResponse>;
 
 export interface DeleteWorkspaceServiceTokenRequest {
   workspaceId: string;
@@ -2865,11 +2818,8 @@ export const DeleteWorkspaceServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceServiceTokenRequest>;
 
 export interface DeleteWorkspaceServiceTokenResponse {}
-export const DeleteWorkspaceServiceTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceServiceTokenResponse",
-}) as any as S.Schema<DeleteWorkspaceServiceTokenResponse>;
+export const DeleteWorkspaceServiceTokenResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteWorkspaceServiceTokenResponse>;
 
 export interface GetAgentApprovalRequest {
   approvalId: string;
@@ -2977,11 +2927,7 @@ export const GetBucketResponseData = CreateBucketResponseData;
 export interface GetBucketResponse {
   data: CreateBucketResponseData;
 }
-export const GetBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateBucketResponseData,
-  }),
-).annotate({ identifier: "GetBucketResponse" }) as any as S.Schema<GetBucketResponse>;
+export const GetBucketResponse = CreateBucketResponse as any as S.Schema<GetBucketResponse>;
 
 export interface GetBucketKeysRequest {
   bucketId: string;
@@ -4136,9 +4082,8 @@ export const GetDeploymentLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDeploymentLogsRequest" }) as any as S.Schema<GetDeploymentLogsRequest>;
 
 export interface GetDeploymentLogsResponse {}
-export const GetDeploymentLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDeploymentLogsResponse",
-}) as any as S.Schema<GetDeploymentLogsResponse>;
+export const GetDeploymentLogsResponse =
+  CreateDeploymentStopResponse as any as S.Schema<GetDeploymentLogsResponse>;
 
 export interface GetDomainRequest {
   domainId: string;
@@ -4167,9 +4112,8 @@ export const GetDomainResponseDataDnsRecordsItem = CreateDomainRetryResponseData
 
 export type GetDomainResponseDataDnsRecordsList =
   Array<CreateDomainRetryResponseDataDnsRecordsItem>;
-export const GetDomainResponseDataDnsRecordsList = /*@__PURE__*/ S.Array(
-  CreateDomainRetryResponseDataDnsRecordsItem,
-) as any as S.Schema<GetDomainResponseDataDnsRecordsList>;
+export const GetDomainResponseDataDnsRecordsList =
+  CreateDomainRetryResponseDataDnsRecordsList as any as S.Schema<GetDomainResponseDataDnsRecordsList>;
 
 export interface GetDomainResponseData {
   id: string;
@@ -4440,9 +4384,8 @@ export const GetIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIntegrationsRequest" }) as any as S.Schema<GetIntegrationsRequest>;
 
 export type GetIntegrationsResponseDataItemScopesList = Array<string>;
-export const GetIntegrationsResponseDataItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetIntegrationsResponseDataItemScopesList>;
+export const GetIntegrationsResponseDataItemScopesList =
+  GetIntegrationResponseDataScopesList as any as S.Schema<GetIntegrationsResponseDataItemScopesList>;
 
 export type GetIntegrationsResponseDataItemClient = GetIntegrationResponseDataClient;
 export const GetIntegrationsResponseDataItemClient = GetIntegrationResponseDataClient;
@@ -4458,18 +4401,8 @@ export interface GetIntegrationsResponseDataItem {
   client: GetIntegrationResponseDataClient;
   createdByUser: GetIntegrationResponseDataCreatedByUser;
 }
-export const GetIntegrationsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    url: S.String,
-    createdAt: S.String,
-    scopes: GetIntegrationsResponseDataItemScopesList,
-    client: GetIntegrationResponseDataClient,
-    createdByUser: GetIntegrationResponseDataCreatedByUser,
-  }),
-).annotate({
-  identifier: "GetIntegrationsResponseDataItem",
-}) as any as S.Schema<GetIntegrationsResponseDataItem>;
+export const GetIntegrationsResponseDataItem =
+  GetIntegrationResponseData as any as S.Schema<GetIntegrationsResponseDataItem>;
 
 export type GetIntegrationsResponseDataList = Array<GetIntegrationsResponseDataItem>;
 export const GetIntegrationsResponseDataList = /*@__PURE__*/ S.Array(
@@ -4619,9 +4552,8 @@ export const GetProjectBranchAlchemyStateStateStacksRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<GetProjectBranchAlchemyStateStateStacksRequest>;
 
 export type GetProjectBranchAlchemyStateStateStacksResponseBodyList = Array<string>;
-export const GetProjectBranchAlchemyStateStateStacksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectBranchAlchemyStateStateStacksResponseBodyList>;
+export const GetProjectBranchAlchemyStateStateStacksResponseBodyList =
+  GetIntegrationResponseDataScopesList as any as S.Schema<GetProjectBranchAlchemyStateStateStacksResponseBodyList>;
 
 export type GetProjectBranchAlchemyStateStateStacksResponse =
   GetProjectBranchAlchemyStateStateStacksResponseBodyList;
@@ -4731,11 +4663,8 @@ export const GetProjectBranchAlchemyStateStateStackStageResourceRequest = /*@__P
 }) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourceRequest>;
 
 export type GetProjectBranchAlchemyStateStateStackStageResourceResponse = unknown;
-export const GetProjectBranchAlchemyStateStateStackStageResourceResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetProjectBranchAlchemyStateStateStackStageResourceResponse",
-}) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourceResponse>;
+export const GetProjectBranchAlchemyStateStateStackStageResourceResponse =
+  GetProjectBranchAlchemyStateStateStackStageOutputResponse as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourceResponse>;
 
 export interface GetProjectBranchAlchemyStateStateStackStageResourcesRequest {
   projectId: string;
@@ -4798,17 +4727,13 @@ export const GetProjectBranchAlchemyStateStateStackStagesRequest = /*@__PURE__*/
 }) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesRequest>;
 
 export type GetProjectBranchAlchemyStateStateStackStagesResponseBodyList = Array<string>;
-export const GetProjectBranchAlchemyStateStateStackStagesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesResponseBodyList>;
+export const GetProjectBranchAlchemyStateStateStackStagesResponseBodyList =
+  GetIntegrationResponseDataScopesList as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesResponseBodyList>;
 
 export type GetProjectBranchAlchemyStateStateStackStagesResponse =
   GetProjectBranchAlchemyStateStateStackStagesResponseBodyList;
-export const GetProjectBranchAlchemyStateStateStackStagesResponse = /*@__PURE__*/ S.suspend(() =>
-  GetProjectBranchAlchemyStateStateStackStagesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetProjectBranchAlchemyStateStateStackStagesResponse",
-}) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesResponse>;
+export const GetProjectBranchAlchemyStateStateStackStagesResponse =
+  GetProjectBranchAlchemyStateStateStacksResponse as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesResponse>;
 
 export interface GetProjectBranchAlchemyStateVersionRequest {
   projectId: string;
@@ -5078,14 +5003,8 @@ export interface GetProjectBranchesResponsePagination {
   nextCursor: string | null;
   hasMore: boolean;
 }
-export const GetProjectBranchesResponsePagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextCursor: S.NullOr(S.String),
-    hasMore: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectBranchesResponsePagination",
-}) as any as S.Schema<GetProjectBranchesResponsePagination>;
+export const GetProjectBranchesResponsePagination =
+  GetBucketKeysResponsePagination as any as S.Schema<GetProjectBranchesResponsePagination>;
 
 export interface GetProjectBranchesResponse {
   data: GetProjectBranchesResponseDataList;
@@ -5607,11 +5526,7 @@ export const GetServiceResponseData = CreateServiceResponseData;
 export interface GetServiceResponse {
   data: CreateServiceResponseData;
 }
-export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateServiceResponseData,
-  }),
-).annotate({ identifier: "GetServiceResponse" }) as any as S.Schema<GetServiceResponse>;
+export const GetServiceResponse = CreateServiceResponse as any as S.Schema<GetServiceResponse>;
 
 export interface GetServiceDeploymentsRequest {
   serviceId: string;
@@ -5703,9 +5618,8 @@ export const GetServiceDomainsResponseDataItemDnsRecordsItem =
 
 export type GetServiceDomainsResponseDataItemDnsRecordsList =
   Array<CreateDomainRetryResponseDataDnsRecordsItem>;
-export const GetServiceDomainsResponseDataItemDnsRecordsList = /*@__PURE__*/ S.Array(
-  CreateDomainRetryResponseDataDnsRecordsItem,
-) as any as S.Schema<GetServiceDomainsResponseDataItemDnsRecordsList>;
+export const GetServiceDomainsResponseDataItemDnsRecordsList =
+  CreateDomainRetryResponseDataDnsRecordsList as any as S.Schema<GetServiceDomainsResponseDataItemDnsRecordsList>;
 
 export interface GetServiceDomainsResponseDataItem {
   id: string;
@@ -5977,11 +5891,8 @@ export const GetWorkspaceResponseData = CreateWorkspaceResponseData;
 export interface GetWorkspaceResponse {
   data: CreateWorkspaceResponseData;
 }
-export const GetWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateWorkspaceResponseData,
-  }),
-).annotate({ identifier: "GetWorkspaceResponse" }) as any as S.Schema<GetWorkspaceResponse>;
+export const GetWorkspaceResponse =
+  CreateWorkspaceResponse as any as S.Schema<GetWorkspaceResponse>;
 
 export interface GetWorkspaceIntegrationsRequest {
   workspaceId: string;
@@ -5999,9 +5910,8 @@ export const GetWorkspaceIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkspaceIntegrationsRequest>;
 
 export type GetWorkspaceIntegrationsResponseDataItemScopesList = Array<string>;
-export const GetWorkspaceIntegrationsResponseDataItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWorkspaceIntegrationsResponseDataItemScopesList>;
+export const GetWorkspaceIntegrationsResponseDataItemScopesList =
+  GetIntegrationResponseDataScopesList as any as S.Schema<GetWorkspaceIntegrationsResponseDataItemScopesList>;
 
 export type GetWorkspaceIntegrationsResponseDataItemClient = GetIntegrationResponseDataClient;
 export const GetWorkspaceIntegrationsResponseDataItemClient = GetIntegrationResponseDataClient;
@@ -6019,24 +5929,13 @@ export interface GetWorkspaceIntegrationsResponseDataItem {
   client: GetIntegrationResponseDataClient;
   createdByUser: GetIntegrationResponseDataCreatedByUser;
 }
-export const GetWorkspaceIntegrationsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    url: S.String,
-    createdAt: S.String,
-    scopes: GetWorkspaceIntegrationsResponseDataItemScopesList,
-    client: GetIntegrationResponseDataClient,
-    createdByUser: GetIntegrationResponseDataCreatedByUser,
-  }),
-).annotate({
-  identifier: "GetWorkspaceIntegrationsResponseDataItem",
-}) as any as S.Schema<GetWorkspaceIntegrationsResponseDataItem>;
+export const GetWorkspaceIntegrationsResponseDataItem =
+  GetIntegrationResponseData as any as S.Schema<GetWorkspaceIntegrationsResponseDataItem>;
 
 export type GetWorkspaceIntegrationsResponseDataList =
   Array<GetWorkspaceIntegrationsResponseDataItem>;
-export const GetWorkspaceIntegrationsResponseDataList = /*@__PURE__*/ S.Array(
-  GetWorkspaceIntegrationsResponseDataItem,
-) as any as S.Schema<GetWorkspaceIntegrationsResponseDataList>;
+export const GetWorkspaceIntegrationsResponseDataList =
+  GetIntegrationsResponseDataList as any as S.Schema<GetWorkspaceIntegrationsResponseDataList>;
 
 export type GetWorkspaceIntegrationsResponsePagination = GetBucketKeysResponsePagination;
 export const GetWorkspaceIntegrationsResponsePagination = GetBucketKeysResponsePagination;
@@ -6220,9 +6119,8 @@ export const PutBuildResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutBuildResourceRequest" }) as any as S.Schema<PutBuildResourceRequest>;
 
 export interface PutBuildResourceResponse {}
-export const PutBuildResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutBuildResourceResponse",
-}) as any as S.Schema<PutBuildResourceResponse>;
+export const PutBuildResourceResponse =
+  CreateDeploymentStopResponse as any as S.Schema<PutBuildResourceResponse>;
 
 export interface PutProjectBranchAlchemyStateStateStackStageOutputRequest {
   projectId: string;
@@ -6249,11 +6147,8 @@ export const PutProjectBranchAlchemyStateStateStackStageOutputRequest = /*@__PUR
 }) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageOutputRequest>;
 
 export type PutProjectBranchAlchemyStateStateStackStageOutputResponse = unknown;
-export const PutProjectBranchAlchemyStateStateStackStageOutputResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutProjectBranchAlchemyStateStateStackStageOutputResponse",
-}) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageOutputResponse>;
+export const PutProjectBranchAlchemyStateStateStackStageOutputResponse =
+  GetProjectBranchAlchemyStateStateStackStageOutputResponse as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageOutputResponse>;
 
 export interface PutProjectBranchAlchemyStateStateStackStageResourceRequest {
   projectId: string;
@@ -6282,11 +6177,8 @@ export const PutProjectBranchAlchemyStateStateStackStageResourceRequest = /*@__P
 }) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageResourceRequest>;
 
 export type PutProjectBranchAlchemyStateStateStackStageResourceResponse = unknown;
-export const PutProjectBranchAlchemyStateStateStackStageResourceResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutProjectBranchAlchemyStateStateStackStageResourceResponse",
-}) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageResourceResponse>;
+export const PutProjectBranchAlchemyStateStateStackStageResourceResponse =
+  GetProjectBranchAlchemyStateStateStackStageOutputResponse as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageResourceResponse>;
 
 export type PutProjectBranchApplicationTopologyRequestNodesItemKind =
   | "module"
@@ -6673,11 +6565,7 @@ export const UpdateBucketResponseData = CreateBucketResponseData;
 export interface UpdateBucketResponse {
   data: CreateBucketResponseData;
 }
-export const UpdateBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateBucketResponseData,
-  }),
-).annotate({ identifier: "UpdateBucketResponse" }) as any as S.Schema<UpdateBucketResponse>;
+export const UpdateBucketResponse = CreateBucketResponse as any as S.Schema<UpdateBucketResponse>;
 
 /** How far the run has got. */
 export type UpdateBuildRequestPhase = "queued" | "build" | "deploy";
@@ -7035,11 +6923,7 @@ export const UpdateProjectResponseData = GetProjectResponseData;
 export interface UpdateProjectResponse {
   data: GetProjectResponseData;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: GetProjectResponseData,
-  }),
-).annotate({ identifier: "UpdateProjectResponse" }) as any as S.Schema<UpdateProjectResponse>;
+export const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 export interface UpdateProjectBranchAlchemyStateLeaseRequest {
   projectId: string;
@@ -7071,13 +6955,8 @@ export const UpdateProjectBranchAlchemyStateLeaseResponseData =
 export interface UpdateProjectBranchAlchemyStateLeaseResponse {
   data: CreateProjectBranchAlchemyStateLeaseResponseData;
 }
-export const UpdateProjectBranchAlchemyStateLeaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateProjectBranchAlchemyStateLeaseResponseData,
-  }),
-).annotate({
-  identifier: "UpdateProjectBranchAlchemyStateLeaseResponse",
-}) as any as S.Schema<UpdateProjectBranchAlchemyStateLeaseResponse>;
+export const UpdateProjectBranchAlchemyStateLeaseResponse =
+  CreateProjectBranchAlchemyStateLeaseResponse as any as S.Schema<UpdateProjectBranchAlchemyStateLeaseResponse>;
 
 export interface UpdateServiceRequest {
   serviceId: string;
@@ -7106,11 +6985,8 @@ export const UpdateServiceResponseData = CreateServiceResponseData;
 export interface UpdateServiceResponse {
   data: CreateServiceResponseData;
 }
-export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: CreateServiceResponseData,
-  }),
-).annotate({ identifier: "UpdateServiceResponse" }) as any as S.Schema<UpdateServiceResponse>;
+export const UpdateServiceResponse =
+  CreateServiceResponse as any as S.Schema<UpdateServiceResponse>;
 
 export type CreateAuthGithubActionsTokenError = PrismaOpError;
 /** Exchange a GitHub Actions OIDC token for a workspace service token U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Verifies the GitHub Actions OIDC token and mints a short-lived workspace service token. The caller must request the token with audience `prisma-cloud`. Any verification failure returns a generic 401 -- the response never reveals whether a repository is connected. */

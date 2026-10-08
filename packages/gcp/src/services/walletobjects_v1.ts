@@ -356,11 +356,7 @@ export interface DetailsItemInfo {
   /** The item to be displayed in the details list. */
   item?: TemplateItem;
 }
-export const DetailsItemInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    item: S.optional(TemplateItem),
-  }),
-).annotate({ identifier: "DetailsItemInfo" }) as any as S.Schema<DetailsItemInfo>;
+export const DetailsItemInfo = CardRowOneItem as any as S.Schema<DetailsItemInfo>;
 
 export type DetailsItemInfoList = Array<DetailsItemInfo>;
 export const DetailsItemInfoList = /*@__PURE__*/ S.Array(
@@ -2238,11 +2234,7 @@ export interface ExpiryNotification {
   /** Indicates if the object needs to have expiry notification enabled. */
   enableNotification?: boolean;
 }
-export const ExpiryNotification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableNotification: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ExpiryNotification" }) as any as S.Schema<ExpiryNotification>;
+export const ExpiryNotification = UpcomingNotification as any as S.Schema<ExpiryNotification>;
 
 /** Indicates if the object needs to have notification enabled. We support only one of ExpiryNotification/UpcomingNotification. `expiryNotification` takes precedence over `upcomingNotification`. In other words if `expiryNotification` is set, we ignore the `upcomingNotification` field. */
 export interface Notifications {
@@ -6917,9 +6909,8 @@ export const ValidateJwtRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Empty if the resource in the request is valid. Returns exception if invalid. */
 export interface JwtValidateResponse {}
-export const JwtValidateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "JwtValidateResponse",
-}) as any as S.Schema<JwtValidateResponse>;
+export const JwtValidateResponse =
+  SetPassUpdateNoticeResponse as any as S.Schema<JwtValidateResponse>;
 
 export type AddmessageEventticketclassError =
   | NotFound

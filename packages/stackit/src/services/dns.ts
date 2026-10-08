@@ -515,16 +515,13 @@ export const ZoneExtensions = /*@__PURE__*/ S.suspend(() =>
 
 /** labels for the zone - max 64 items. Keys: 1-314 chars (up to 250 prefix, 1 for slash, 1-63 the actual key). Values: 0-63 chars. */
 export type CreateZoneRequestLabelsMapMap = { [key: string]: string | undefined };
-export const CreateZoneRequestLabelsMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateZoneRequestLabelsMapMap>;
+export const CreateZoneRequestLabelsMapMap =
+  ZoneLabelsMapMap as any as S.Schema<CreateZoneRequestLabelsMapMap>;
 
 /** primary name server for secondary zone */
 export type CreateZoneRequestPrimariesList = Array<string>;
-export const CreateZoneRequestPrimariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateZoneRequestPrimariesList>;
+export const CreateZoneRequestPrimariesList =
+  ZonePrimariesList as any as S.Schema<CreateZoneRequestPrimariesList>;
 
 /** zone type */
 export type CreateZoneRequestType = "primary" | "secondary";
@@ -692,9 +689,8 @@ export const ExportRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportRecordSetsRequest" }) as any as S.Schema<ExportRecordSetsRequest>;
 
 export type RecordDataExchangeContentList = Array<string>;
-export const RecordDataExchangeContentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecordDataExchangeContentList>;
+export const RecordDataExchangeContentList =
+  ZonePrimariesList as any as S.Schema<RecordDataExchangeContentList>;
 
 export interface RecordDataExchange {
   comment?: string;
@@ -797,9 +793,8 @@ export type ImportRecordSetsRequestImportType = "restore" | "delete" | "update" 
 export const ImportRecordSetsRequestImportType = S.String;
 
 export type ZoneModelsImportRecordModelContentList = Array<string>;
-export const ZoneModelsImportRecordModelContentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZoneModelsImportRecordModelContentList>;
+export const ZoneModelsImportRecordModelContentList =
+  ZonePrimariesList as any as S.Schema<ZoneModelsImportRecordModelContentList>;
 
 export interface ZoneModelsImportRecordModel {
   comment?: string;
@@ -1138,14 +1133,12 @@ export type ListZonesRequestStateNeq =
 export const ListZonesRequestStateNeq = S.String;
 
 export type ListZonesRequestLabelKeyEqList = Array<string>;
-export const ListZonesRequestLabelKeyEqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListZonesRequestLabelKeyEqList>;
+export const ListZonesRequestLabelKeyEqList =
+  ZonePrimariesList as any as S.Schema<ListZonesRequestLabelKeyEqList>;
 
 export type ListZonesRequestLabelValueEqList = Array<string>;
-export const ListZonesRequestLabelValueEqList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListZonesRequestLabelValueEqList>;
+export const ListZonesRequestLabelValueEqList =
+  ZonePrimariesList as any as S.Schema<ListZonesRequestLabelValueEqList>;
 
 export type ListZonesRequestOrderByDnsName = "ASC" | "DESC";
 export const ListZonesRequestOrderByDnsName = S.String;
@@ -1386,9 +1379,8 @@ export const PartialUpdateRecordRequestAction = S.String;
 
 /** records */
 export type PartialUpdateRecordRequestRecordsList = Array<RecordPayload>;
-export const PartialUpdateRecordRequestRecordsList = /*@__PURE__*/ S.Array(
-  RecordPayload,
-) as any as S.Schema<PartialUpdateRecordRequestRecordsList>;
+export const PartialUpdateRecordRequestRecordsList =
+  CreateRecordSetRequestRecordsList as any as S.Schema<PartialUpdateRecordRequestRecordsList>;
 
 export interface PartialUpdateRecordRequest {
   /** project id */
@@ -1422,9 +1414,8 @@ export const PartialUpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** records */
 export type PartialUpdateRecordSetRequestRecordsList = Array<RecordPayload>;
-export const PartialUpdateRecordSetRequestRecordsList = /*@__PURE__*/ S.Array(
-  RecordPayload,
-) as any as S.Schema<PartialUpdateRecordSetRequestRecordsList>;
+export const PartialUpdateRecordSetRequestRecordsList =
+  CreateRecordSetRequestRecordsList as any as S.Schema<PartialUpdateRecordSetRequestRecordsList>;
 
 export interface PartialUpdateRecordSetRequest {
   /** project id */
@@ -1465,16 +1456,13 @@ export const PartialUpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** labels for the zone - max 64 items. Keys: 1-314 chars (up to 250 prefix, 1 for slash, 1-63 the actual key). Values: 0-63 chars. */
 export type PartialUpdateZoneRequestLabelsMapMap = { [key: string]: string | undefined };
-export const PartialUpdateZoneRequestLabelsMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartialUpdateZoneRequestLabelsMapMap>;
+export const PartialUpdateZoneRequestLabelsMapMap =
+  ZoneLabelsMapMap as any as S.Schema<PartialUpdateZoneRequestLabelsMapMap>;
 
 /** primary name server for secondary zone */
 export type PartialUpdateZoneRequestPrimariesList = Array<string>;
-export const PartialUpdateZoneRequestPrimariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartialUpdateZoneRequestPrimariesList>;
+export const PartialUpdateZoneRequestPrimariesList =
+  ZonePrimariesList as any as S.Schema<PartialUpdateZoneRequestPrimariesList>;
 
 export interface PartialUpdateZoneRequest {
   /** project id */

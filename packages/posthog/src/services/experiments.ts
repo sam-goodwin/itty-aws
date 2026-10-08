@@ -145,10 +145,8 @@ export const ExperimentFeatureFlagInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentFeatureFlagInput>;
 
 export type ExperimentParametersVariantNotesMap = { [key: string]: string | undefined };
-export const ExperimentParametersVariantNotesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExperimentParametersVariantNotesMap>;
+export const ExperimentParametersVariantNotesMap =
+  ExperimentFeatureFlagFiltersPayloadsMap as any as S.Schema<ExperimentParametersVariantNotesMap>;
 
 export interface ExperimentParameters {
   /** Minimum detectable effect as a percentage. Lower values need more users but catch smaller changes. Suggest 20-30% for most experiments. */
@@ -219,9 +217,8 @@ export const CreateExperimentRequestExcludedVariantsList = /*@__PURE__*/ S.Array
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type CreateExperimentRequestSavedMetricsIdsList = Array<unknown>;
-export const CreateExperimentRequestSavedMetricsIdsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateExperimentRequestSavedMetricsIdsList>;
+export const CreateExperimentRequestSavedMetricsIdsList =
+  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<CreateExperimentRequestSavedMetricsIdsList>;
 
 /** * `web` - web * `product` - product */
 export type ExperimentTypeEnum = "web" | "product";
@@ -577,10 +574,8 @@ export const LogEntryPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogEntryPropertyFilter" }) as any as S.Schema<LogEntryPropertyFilter>;
 
 export type GroupPropertyFilterGroupKeyNamesMap = { [key: string]: string | undefined };
-export const GroupPropertyFilterGroupKeyNamesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GroupPropertyFilterGroupKeyNamesMap>;
+export const GroupPropertyFilterGroupKeyNamesMap =
+  ExperimentFeatureFlagFiltersPayloadsMap as any as S.Schema<GroupPropertyFilterGroupKeyNamesMap>;
 
 export type GroupPropertyFilterValueCase0Item = string | number | boolean;
 export const GroupPropertyFilterValueCase0Item =
@@ -1275,9 +1270,8 @@ export type Kind3 = "EventsNode" | "ActionsNode" | "ExperimentExposureNode";
 export const Kind3 = S.String;
 
 export type ExperimentApiRetentionStartPropertiesList = Array<EventPropertyFilter>;
-export const ExperimentApiRetentionStartPropertiesList = /*@__PURE__*/ S.Array(
-  EventPropertyFilter,
-) as any as S.Schema<ExperimentApiRetentionStartPropertiesList>;
+export const ExperimentApiRetentionStartPropertiesList =
+  ExperimentApiEventSourcePropertiesList as any as S.Schema<ExperimentApiRetentionStartPropertiesList>;
 
 export interface ExperimentApiRetentionStart {
   /** Event name, e.g. '$pageview'. Required for EventsNode. */
@@ -1400,15 +1394,13 @@ export const ConclusionEnum = S.String;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-export const CreateExperimentRequestPrimaryMetricsOrderedUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestPrimaryMetricsOrderedUuidsList>;
+export const CreateExperimentRequestPrimaryMetricsOrderedUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-export const CreateExperimentRequestSecondaryMetricsOrderedUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestSecondaryMetricsOrderedUuidsList>;
+export const CreateExperimentRequestSecondaryMetricsOrderedUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
@@ -1419,9 +1411,8 @@ export const CreateExperimentRequestOriginalExperimentMap = /*@__PURE__*/ S.Reco
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type CreateExperimentRequestTagsList = Array<string>;
-export const CreateExperimentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentRequestTagsList>;
+export const CreateExperimentRequestTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestTagsList>;
 
 export interface CreateExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1528,10 +1519,8 @@ export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateExperimentRequest" }) as any as S.Schema<CreateExperimentRequest>;
 
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
+export const MinimalFeatureFlagFiltersMap =
+  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
@@ -1555,9 +1544,8 @@ export const MinimalFeatureFlagBucketingIdentifier =
   S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
+export const MinimalFeatureFlagEvaluationContextsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
 
 export interface MinimalFeatureFlag {
   id?: number;
@@ -1751,9 +1739,8 @@ export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum = S.String
 
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList = Array<string>;
-export const FeatureFlagFilterPropertyMultiContainsSchemaValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
+export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
 
 export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
@@ -1897,10 +1884,8 @@ export const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ExperimentHoldoutFiltersList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -1974,9 +1959,8 @@ export const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentOutputExcludedVariantsList = Array<string>;
-export const ExperimentOutputExcludedVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentOutputExcludedVariantsList>;
+export const ExperimentOutputExcludedVariantsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputExcludedVariantsList>;
 
 export interface ExperimentToSavedMetric {
   id?: number;
@@ -2006,30 +1990,26 @@ export const ExperimentOutputSavedMetricsList = /*@__PURE__*/ S.Array(
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentOutputSavedMetricsIdsList = Array<unknown>;
-export const ExperimentOutputSavedMetricsIdsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
+export const ExperimentOutputSavedMetricsIdsList =
+  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentOutputPrimaryMetricsOrderedUuidsList = Array<string>;
-export const ExperimentOutputPrimaryMetricsOrderedUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentOutputPrimaryMetricsOrderedUuidsList>;
+export const ExperimentOutputPrimaryMetricsOrderedUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentOutputSecondaryMetricsOrderedUuidsList = Array<string>;
-export const ExperimentOutputSecondaryMetricsOrderedUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentOutputSecondaryMetricsOrderedUuidsList>;
+export const ExperimentOutputSecondaryMetricsOrderedUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputSecondaryMetricsOrderedUuidsList>;
 
 export type ExperimentStatusEnum = "draft" | "running" | "paused" | "exposure_frozen" | "stopped";
 export const ExperimentStatusEnum = S.String;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentOutputTagsList = Array<string>;
-export const ExperimentOutputTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentOutputTagsList>;
+export const ExperimentOutputTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputTagsList>;
 
 /** Full experiment representation for the detail, create, and update endpoints. Extends the shared read-side fields in ``ExperimentBaseSerializer`` with the metric definitions (``metrics``/``metrics_secondary``/``saved_metrics``) and the write-side fields, and refreshes stale action names while serializing. The list endpoint uses the leaner ``ExperimentBasicSerializer`` instead. */
 export interface ExperimentOutput {
@@ -2450,17 +2430,13 @@ export const CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList =
 export type CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList =
   Array<string>;
 export const CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList =
   Array<string>;
 export const CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap = {
@@ -2474,9 +2450,8 @@ export const CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap 
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type CreateExperimentsRecalculateTimeseriesRequestTagsList = Array<string>;
-export const CreateExperimentsRecalculateTimeseriesRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestTagsList>;
+export const CreateExperimentsRecalculateTimeseriesRequestTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestTagsList>;
 
 export interface CreateExperimentsRecalculateTimeseriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2609,9 +2584,8 @@ export const ExperimentSessionBucketEnum = S.String;
 
 /** Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings. */
 export type CreateExperimentsSessionBucketRequestMetricUuidsList = Array<string>;
-export const CreateExperimentsSessionBucketRequestMetricUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentsSessionBucketRequestMetricUuidsList>;
+export const CreateExperimentsSessionBucketRequestMetricUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsSessionBucketRequestMetricUuidsList>;
 
 export interface CreateExperimentsSessionBucketRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2648,9 +2622,8 @@ export const CreateExperimentsSessionBucketRequest = /*@__PURE__*/ S.suspend(() 
 
 /** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
 export type ExperimentSessionBucketResponseSessionIdsList = Array<string>;
-export const ExperimentSessionBucketResponseSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSessionBucketResponseSessionIdsList>;
+export const ExperimentSessionBucketResponseSessionIdsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionBucketResponseSessionIdsList>;
 
 /** One metric the bucket was computed over. */
 export interface ExperimentSessionBucketMetric {
@@ -2737,9 +2710,8 @@ export const ExperimentSessionBucketResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
 export type CreateExperimentsSessionContextRequestSessionIdsList = Array<string>;
-export const CreateExperimentsSessionContextRequestSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentsSessionContextRequestSessionIdsList>;
+export const CreateExperimentsSessionContextRequestSessionIdsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsSessionContextRequestSessionIdsList>;
 
 export interface CreateExperimentsSessionContextRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2764,15 +2736,13 @@ export const CreateExperimentsSessionContextRequest = /*@__PURE__*/ S.suspend(()
 
 /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants -- a signal of multi-exposure bias. */
 export type ExperimentSessionContextItemVariantsSeenList = Array<string>;
-export const ExperimentSessionContextItemVariantsSeenList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
+export const ExperimentSessionContextItemVariantsSeenList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
 
 /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricHitTimestampsList = Array<string>;
-export const ExperimentSessionMetricHitTimestampsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSessionMetricHitTimestampsList>;
+export const ExperimentSessionMetricHitTimestampsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionMetricHitTimestampsList>;
 
 /** * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
 export type SourceRoleEnum =
@@ -2786,9 +2756,8 @@ export const SourceRoleEnum = S.String;
 
 /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricSourceHitTimestampsList = Array<string>;
-export const ExperimentSessionMetricSourceHitTimestampsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSessionMetricSourceHitTimestampsList>;
+export const ExperimentSessionMetricSourceHitTimestampsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionMetricSourceHitTimestampsList>;
 
 /** One event/action source of a metric with at least one matching event in a session recording. */
 export interface ExperimentSessionMetricSourceHit {
@@ -2973,9 +2942,8 @@ export const ExperimentWatchCardStrengthEnum = S.String;
 
 /** The recordings themselves, most recent first, ready to hand to the recordings list as-is. */
 export type ExperimentWatchCardSessionIdsList = Array<string>;
-export const ExperimentWatchCardSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentWatchCardSessionIdsList>;
+export const ExperimentWatchCardSessionIdsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentWatchCardSessionIdsList>;
 
 /** One recording a card names first, and the phrase that says why. */
 export interface ExperimentWatchHighlight {
@@ -3064,9 +3032,8 @@ export const ExperimentWatchMultipleVariantHandlingEnum = S.String;
 
 /** The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved. */
 export type ExperimentSessionEventDeltaResponseMetricEventsList = Array<string>;
-export const ExperimentSessionEventDeltaResponseMetricEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSessionEventDeltaResponseMetricEventsList>;
+export const ExperimentSessionEventDeltaResponseMetricEventsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionEventDeltaResponseMetricEventsList>;
 
 /** * `too_early` - too_early * `no_separation` - no_separation * `no_recordings` - no_recordings * `no_session_linked_exposures` - no_session_linked_exposures */
 export type ExperimentWatchEmptyReasonEnum =
@@ -3459,9 +3426,8 @@ export const ExperimentSetupTargetSurfaceSection = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry: the persons who converted. */
 export type ExperimentSetupFunnelBaselineStepCountsList = Array<number>;
-export const ExperimentSetupFunnelBaselineStepCountsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentSetupFunnelBaselineStepCountsList>;
+export const ExperimentSetupFunnelBaselineStepCountsList =
+  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupFunnelBaselineStepCountsList>;
 
 export interface ExperimentSetupFunnelBaseline {
   /** Persons who reached the target. */
@@ -3611,21 +3577,18 @@ export const ExperimentSetupStoredPropertyFilterList = /*@__PURE__*/ S.Array(
 
 /** metric_type of each primary metric, for example 'mean', 'funnel', 'ratio' or 'retention'. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricTypesList = Array<string>;
-export const ExperimentSetupPreviousExperimentPrimaryMetricTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricTypesList>;
+export const ExperimentSetupPreviousExperimentPrimaryMetricTypesList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricTypesList>;
 
 /** Event names the primary metrics count. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricEventsList = Array<string>;
-export const ExperimentSetupPreviousExperimentPrimaryMetricEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricEventsList>;
+export const ExperimentSetupPreviousExperimentPrimaryMetricEventsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricEventsList>;
 
 /** Actions the primary metrics count. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList = Array<number>;
-export const ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList>;
+export const ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList =
+  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList>;
 
 export interface ExperimentSetupOutcome {
   /** metric_type of the metric this outcome describes: 'funnel', 'mean', 'ratio' or 'retention'. */
@@ -3853,21 +3816,18 @@ export const ExperimentSetupPreviousExperimentsSection = /*@__PURE__*/ S.suspend
 
 /** Event names the metric counts. */
 export type ExperimentSetupSharedMetricEventsList = Array<string>;
-export const ExperimentSetupSharedMetricEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSetupSharedMetricEventsList>;
+export const ExperimentSetupSharedMetricEventsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupSharedMetricEventsList>;
 
 /** Actions the metric counts. */
 export type ExperimentSetupSharedMetricActionIdsList = Array<number>;
-export const ExperimentSetupSharedMetricActionIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentSetupSharedMetricActionIdsList>;
+export const ExperimentSetupSharedMetricActionIdsList =
+  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupSharedMetricActionIdsList>;
 
 /** Where metric_event sits in the metric: 'funnel_step' and 'funnel_final_step' for a funnel, 'mean_source', 'ratio_numerator', 'ratio_denominator', 'retention_start' or 'retention_completion'. A metric that only starts from the event is a different precedent from one that converts on it. Empty when the metric does not count it, and null when no metric_event was passed. */
 export type ExperimentSetupSharedMetricMetricEventRolesList = Array<string>;
-export const ExperimentSetupSharedMetricMetricEventRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSetupSharedMetricMetricEventRolesList>;
+export const ExperimentSetupSharedMetricMetricEventRolesList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupSharedMetricMetricEventRolesList>;
 
 export interface ExperimentSetupSharedMetric {
   /** Shared metric id, to attach it instead of creating an inline metric. */
@@ -4064,9 +4024,8 @@ export const ExperimentsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object IDs to update tags on. */
 export type ExperimentsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-export const ExperimentsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestIdsList>;
+export const ExperimentsBulkUpdateTagsCreateRequestIdsList =
+  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
@@ -4074,9 +4033,8 @@ export const BulkUpdateTagsActionEnum = S.String;
 
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type ExperimentsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-export const ExperimentsBulkUpdateTagsCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestTagsList>;
+export const ExperimentsBulkUpdateTagsCreateRequestTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestTagsList>;
 
 export interface ExperimentsBulkUpdateTagsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4106,9 +4064,8 @@ export const ExperimentsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequest>;
 
 export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateTagsItemTagsList>;
+export const BulkUpdateTagsItemTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<BulkUpdateTagsItemTagsList>;
 
 export interface BulkUpdateTagsItem {
   id?: number;
@@ -4187,50 +4144,37 @@ export const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ S.suspend(() 
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
   Array<string>;
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
   Array<unknown>;
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList>;
+  CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList =
   Array<string>;
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList =
   Array<string>;
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap>;
+  CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList = Array<string>;
 export const ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList>;
 
 export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4364,9 +4308,8 @@ export const ExperimentsCreateExposureCohortForExperimentCreateResponse = /*@__P
 
 /** Ordered list of prompt version numbers to assign to experiment variants. The first entry is the control variant. Must contain between 2 and 10 distinct versions. */
 export type ExperimentsCreateFromPromptCreateRequestVersionsList = Array<number>;
-export const ExperimentsCreateFromPromptCreateRequestVersionsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentsCreateFromPromptCreateRequestVersionsList>;
+export const ExperimentsCreateFromPromptCreateRequestVersionsList =
+  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentsCreateFromPromptCreateRequestVersionsList>;
 
 /** * `cost` - cost * `latency` - latency * `eval_pass_rate` - eval_pass_rate */
 export type TemplatesEnum = "cost" | "latency" | "eval_pass_rate";
@@ -4440,44 +4383,35 @@ export const ExperimentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsDuplicateCreateRequestExcludedVariantsList = Array<string>;
-export const ExperimentsDuplicateCreateRequestExcludedVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentsDuplicateCreateRequestExcludedVariantsList>;
+export const ExperimentsDuplicateCreateRequestExcludedVariantsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsDuplicateCreateRequestSavedMetricsIdsList = Array<unknown>;
-export const ExperimentsDuplicateCreateRequestSavedMetricsIdsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentsDuplicateCreateRequestSavedMetricsIdsList>;
+export const ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
+  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<ExperimentsDuplicateCreateRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList = Array<string>;
 export const ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList = Array<string>;
 export const ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsDuplicateCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-export const ExperimentsDuplicateCreateRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExperimentsDuplicateCreateRequestOriginalExperimentMap>;
+export const ExperimentsDuplicateCreateRequestOriginalExperimentMap =
+  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<ExperimentsDuplicateCreateRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentsDuplicateCreateRequestTagsList = Array<string>;
-export const ExperimentsDuplicateCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentsDuplicateCreateRequestTagsList>;
+export const ExperimentsDuplicateCreateRequestTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestTagsList>;
 
 export interface ExperimentsDuplicateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4594,11 +4528,8 @@ export const ExperimentsDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentsDuplicateCreateRequest>;
 
 export interface ExperimentsDuplicateCreateResponse {}
-export const ExperimentsDuplicateCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExperimentsDuplicateCreateResponse",
-}) as any as S.Schema<ExperimentsDuplicateCreateResponse>;
+export const ExperimentsDuplicateCreateResponse =
+  CreateExperimentsRecalculateTimeseriesResponse as any as S.Schema<ExperimentsDuplicateCreateResponse>;
 
 export interface ExperimentsMigrateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4880,9 +4811,8 @@ export const ExperimentFlagCleanupTargetSourceEnum = S.String;
 
 /** Repositories connected to the team's GitHub integration, to choose a target from. */
 export type ExperimentFlagCleanupTargetCandidatesList = Array<string>;
-export const ExperimentFlagCleanupTargetCandidatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentFlagCleanupTargetCandidatesList>;
+export const ExperimentFlagCleanupTargetCandidatesList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentFlagCleanupTargetCandidatesList>;
 
 export interface ExperimentFlagCleanupTarget {
   /** Repository a flag-cleanup pull request would be opened in, or null when none can be determined. */
@@ -5057,9 +4987,8 @@ export const GetExperimentsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of all experiments matching the current list filters that the user can edit. */
 export type ExperimentMatchingIdsResponseIdsList = Array<number>;
-export const ExperimentMatchingIdsResponseIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentMatchingIdsResponseIdsList>;
+export const ExperimentMatchingIdsResponseIdsList =
+  RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentMatchingIdsResponseIdsList>;
 
 export interface ExperimentMatchingIdsResponse {
   /** IDs of all experiments matching the current list filters that the user can edit. */
@@ -5210,9 +5139,8 @@ export const GetExperimentsMetricsRecalculationLatestRequest = /*@__PURE__*/ S.s
 
 /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
 export type ExperimentMetricsRecalculationLatestResultsList = Array<MetricRecalculationResult>;
-export const ExperimentMetricsRecalculationLatestResultsList = /*@__PURE__*/ S.Array(
-  MetricRecalculationResult,
-) as any as S.Schema<ExperimentMetricsRecalculationLatestResultsList>;
+export const ExperimentMetricsRecalculationLatestResultsList =
+  ExperimentMetricsRecalculationRunResultsList as any as S.Schema<ExperimentMetricsRecalculationLatestResultsList>;
 
 /** Pointer to a recalculation run that is still executing, surfaced alongside the latest terminal results. */
 export interface ActiveRecalculationRun {
@@ -5375,9 +5303,8 @@ export const GetExperimentsStatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExperimentsStatRequest>;
 
 export interface GetExperimentsStatResponse {}
-export const GetExperimentsStatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetExperimentsStatResponse",
-}) as any as S.Schema<GetExperimentsStatResponse>;
+export const GetExperimentsStatResponse =
+  ExperimentsDestroyResponse as any as S.Schema<GetExperimentsStatResponse>;
 
 export interface GetExperimentsTimeseriesResultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -5407,11 +5334,8 @@ export const GetExperimentsTimeseriesResultRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetExperimentsTimeseriesResultRequest>;
 
 export interface GetExperimentsTimeseriesResultResponse {}
-export const GetExperimentsTimeseriesResultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetExperimentsTimeseriesResultResponse",
-}) as any as S.Schema<GetExperimentsTimeseriesResultResponse>;
+export const GetExperimentsTimeseriesResultResponse =
+  CreateExperimentsRecalculateTimeseriesResponse as any as S.Schema<GetExperimentsTimeseriesResultResponse>;
 
 export type ListExperimentsRequestStatus =
   | "all"
@@ -5471,15 +5395,13 @@ export const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentBasicExcludedVariantsList = Array<string>;
-export const ExperimentBasicExcludedVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentBasicExcludedVariantsList>;
+export const ExperimentBasicExcludedVariantsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentBasicExcludedVariantsList>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentBasicTagsList = Array<string>;
-export const ExperimentBasicTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentBasicTagsList>;
+export const ExperimentBasicTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentBasicTagsList>;
 
 /** Lightweight, read-only serializer for the experiment list endpoint. The list view (and the MCP list tool) render only the scalar and feature-flag fields shared via ``ExperimentBaseSerializer`` -- never the metric definitions. Omitting ``metrics``/``metrics_secondary``/``saved_metrics`` lets the list query defer the large JSON columns and skip the saved-metric prefetch plus per-row fingerprinting; that work belongs to the detail response served by ``ExperimentSerializer``. Because the metric fields, the write-side machinery, and the action-name-refreshing ``to_representation`` all live on ``ExperimentSerializer`` rather than the shared base, this serializer needs no overrides: it gets DRF's default ``get_fields`` (no write-only ``holdout_id`` to configure), default ``to_representation`` (no metrics to normalize), and a plain ``ListSerializer`` that never touches the deferred columns. See ``EnterpriseExperimentsViewSet.safely_get_queryset``. */
 export interface ExperimentBasic {
@@ -5575,40 +5497,33 @@ export const PaginatedExperimentBasicList = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type UpdateExperimentRequestExcludedVariantsList = Array<string>;
-export const UpdateExperimentRequestExcludedVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestExcludedVariantsList>;
+export const UpdateExperimentRequestExcludedVariantsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type UpdateExperimentRequestSavedMetricsIdsList = Array<unknown>;
-export const UpdateExperimentRequestSavedMetricsIdsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentRequestSavedMetricsIdsList>;
+export const UpdateExperimentRequestSavedMetricsIdsList =
+  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<UpdateExperimentRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-export const UpdateExperimentRequestPrimaryMetricsOrderedUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestPrimaryMetricsOrderedUuidsList>;
+export const UpdateExperimentRequestPrimaryMetricsOrderedUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-export const UpdateExperimentRequestSecondaryMetricsOrderedUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestSecondaryMetricsOrderedUuidsList>;
+export const UpdateExperimentRequestSecondaryMetricsOrderedUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
-export const UpdateExperimentRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentRequestOriginalExperimentMap>;
+export const UpdateExperimentRequestOriginalExperimentMap =
+  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UpdateExperimentRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type UpdateExperimentRequestTagsList = Array<string>;
-export const UpdateExperimentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestTagsList>;
+export const UpdateExperimentRequestTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestTagsList>;
 
 export interface UpdateExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -5721,43 +5636,35 @@ export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type UpdateExperimentsPartialRequestExcludedVariantsList = Array<string>;
-export const UpdateExperimentsPartialRequestExcludedVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentsPartialRequestExcludedVariantsList>;
+export const UpdateExperimentsPartialRequestExcludedVariantsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type UpdateExperimentsPartialRequestSavedMetricsIdsList = Array<unknown>;
-export const UpdateExperimentsPartialRequestSavedMetricsIdsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentsPartialRequestSavedMetricsIdsList>;
+export const UpdateExperimentsPartialRequestSavedMetricsIdsList =
+  ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<UpdateExperimentsPartialRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-export const UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList>;
+export const UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList = Array<string>;
 export const UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList>;
+  CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentsPartialRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateExperimentsPartialRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentsPartialRequestOriginalExperimentMap>;
+export const UpdateExperimentsPartialRequestOriginalExperimentMap =
+  CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UpdateExperimentsPartialRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type UpdateExperimentsPartialRequestTagsList = Array<string>;
-export const UpdateExperimentsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentsPartialRequestTagsList>;
+export const UpdateExperimentsPartialRequestTagsList =
+  CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestTagsList>;
 
 export interface UpdateExperimentsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

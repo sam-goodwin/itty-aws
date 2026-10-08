@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -674,33 +672,21 @@ export interface BucketReference {
   /** Output only. Name of the bucket. */
   bucket?: string;
 }
-export const BucketReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(S.String),
-  }),
-).annotate({ identifier: "BucketReference" }) as any as S.Schema<BucketReference>;
+export const BucketReference = ExistingBucketConfig as any as S.Schema<BucketReference>;
 
 /** A reference to a [Filestore](https://cloud.google.com/filestore) instance. */
 export interface FilestoreReference {
   /** Output only. Name of the Filestore instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   filestore?: string;
 }
-export const FilestoreReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filestore: S.optional(S.String),
-  }),
-).annotate({ identifier: "FilestoreReference" }) as any as S.Schema<FilestoreReference>;
+export const FilestoreReference = ExistingFilestoreConfig as any as S.Schema<FilestoreReference>;
 
 /** A reference to a [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance. */
 export interface LustreReference {
   /** Output only. Name of the Managed Lustre instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   lustre?: string;
 }
-export const LustreReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lustre: S.optional(S.String),
-  }),
-).annotate({ identifier: "LustreReference" }) as any as S.Schema<LustreReference>;
+export const LustreReference = ExistingLustreConfig as any as S.Schema<LustreReference>;
 
 /** Represents a form of persistent storage that you can mount onto compute resources in the cluster. */
 export interface StorageResource {

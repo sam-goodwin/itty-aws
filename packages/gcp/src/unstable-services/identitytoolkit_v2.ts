@@ -1653,13 +1653,8 @@ export interface GoogleCloudIdentitytoolkitAdminV2Anonymous {
   /** Whether anonymous user auth is enabled for the project or not. */
   enabled?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Anonymous = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudIdentitytoolkitAdminV2Anonymous",
-}) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Anonymous>;
+export const GoogleCloudIdentitytoolkitAdminV2Anonymous =
+  GoogleCloudIdentitytoolkitAdminV2RequestLogging as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Anonymous>;
 
 /** Configuration options related to authenticating a user by their email address. */
 export interface GoogleCloudIdentitytoolkitAdminV2Email {
@@ -2327,9 +2322,7 @@ export const InitializeAuthProjectsIdentityPlatformRequest = /*@__PURE__*/ S.sus
 /** Response for InitializeIdentityPlatform. Empty for now. */
 export interface GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse {}
 export const GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse",
-  }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse>;
+  GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse>;
 
 export interface ListDefaultSupportedIdpsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
@@ -3185,13 +3178,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface UpdateConfigProjectsRequest {
   /** The update mask applies to the resource. Fields set in the config but not included in this update mask will be ignored. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */

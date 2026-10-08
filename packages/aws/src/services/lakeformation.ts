@@ -278,7 +278,7 @@ export const DataCellsFilterResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataCellsFilterResource" }) as any as S.Schema<DataCellsFilterResource>;
 export type LFTagValue = string;
 export type TagValueList = string[];
-export const TagValueList = /*@__PURE__*/ S.Array(S.String);
+export const TagValueList = ColumnNames as any as S.Schema<TagValueList>;
 export interface LFTagKeyResource {
   CatalogId?: string;
   TagKey: string;
@@ -318,9 +318,7 @@ export interface LFTagExpressionResource {
   CatalogId?: string;
   Name: string;
 }
-export const LFTagExpressionResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CatalogId: S.optional(S.String), Name: S.String }),
-).annotate({ identifier: "LFTagExpressionResource" }) as any as S.Schema<LFTagExpressionResource>;
+export const LFTagExpressionResource = DatabaseResource as any as S.Schema<LFTagExpressionResource>;
 export interface Resource {
   Catalog?: CatalogResource;
   Database?: DatabaseResource;
@@ -350,9 +348,7 @@ export interface LFTagPair {
   TagKey: string;
   TagValues: string[];
 }
-export const LFTagPair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CatalogId: S.optional(S.String), TagKey: S.String, TagValues: TagValueList }),
-).annotate({ identifier: "LFTagPair" }) as any as S.Schema<LFTagPair>;
+export const LFTagPair = LFTagKeyResource as any as S.Schema<LFTagPair>;
 export type LFTagsList = LFTagPair[];
 export const LFTagsList = /*@__PURE__*/ S.Array(LFTagPair);
 export interface AddLFTagsToResourceRequest {
@@ -547,11 +543,8 @@ export const BatchRevokePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchRevokePermissionsResponse {
   Failures?: BatchPermissionsFailureEntry[];
 }
-export const BatchRevokePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Failures: S.optional(BatchPermissionsFailureList) }),
-).annotate({
-  identifier: "BatchRevokePermissionsResponse",
-}) as any as S.Schema<BatchRevokePermissionsResponse>;
+export const BatchRevokePermissionsResponse =
+  BatchGrantPermissionsResponse as any as S.Schema<BatchRevokePermissionsResponse>;
 export type TransactionIdString = string;
 export interface CancelTransactionRequest {
   TransactionId: string;
@@ -562,9 +555,8 @@ export const CancelTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CancelTransactionRequest" }) as any as S.Schema<CancelTransactionRequest>;
 export interface CancelTransactionResponse {}
-export const CancelTransactionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelTransactionResponse",
-}) as any as S.Schema<CancelTransactionResponse>;
+export const CancelTransactionResponse =
+  TableWildcard as any as S.Schema<CancelTransactionResponse>;
 export interface CommitTransactionRequest {
   TransactionId: string;
 }
@@ -591,9 +583,7 @@ export const CommitTransactionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommitTransactionResponse>;
 export type PredicateString = string;
 export interface AllRowsWildcard {}
-export const AllRowsWildcard = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AllRowsWildcard",
-}) as any as S.Schema<AllRowsWildcard>;
+export const AllRowsWildcard = TableWildcard as any as S.Schema<AllRowsWildcard>;
 export interface RowFilter {
   FilterExpression?: string;
   AllRowsWildcard?: AllRowsWildcard;
@@ -638,16 +628,15 @@ export const CreateDataCellsFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDataCellsFilterRequest",
 }) as any as S.Schema<CreateDataCellsFilterRequest>;
 export interface CreateDataCellsFilterResponse {}
-export const CreateDataCellsFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDataCellsFilterResponse",
-}) as any as S.Schema<CreateDataCellsFilterResponse>;
+export const CreateDataCellsFilterResponse =
+  TableWildcard as any as S.Schema<CreateDataCellsFilterResponse>;
 export type IdentityCenterInstanceArn = string;
 export type EnableStatus = "ENABLED" | "DISABLED" | (string & {});
 export const EnableStatus = S.String;
 
 export type ScopeTarget = string;
 export type ScopeTargets = string[];
-export const ScopeTargets = /*@__PURE__*/ S.Array(S.String);
+export const ScopeTargets = ColumnNames as any as S.Schema<ScopeTargets>;
 export interface ExternalFilteringConfiguration {
   Status: EnableStatus;
   AuthorizedTargets: string[];
@@ -756,9 +745,7 @@ export const CreateLFTagRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateLFTagRequest" }) as any as S.Schema<CreateLFTagRequest>;
 export interface CreateLFTagResponse {}
-export const CreateLFTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateLFTagResponse",
-}) as any as S.Schema<CreateLFTagResponse>;
+export const CreateLFTagResponse = TableWildcard as any as S.Schema<CreateLFTagResponse>;
 export interface CreateLFTagExpressionRequest {
   Name: string;
   Description?: string;
@@ -778,9 +765,8 @@ export const CreateLFTagExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLFTagExpressionRequest",
 }) as any as S.Schema<CreateLFTagExpressionRequest>;
 export interface CreateLFTagExpressionResponse {}
-export const CreateLFTagExpressionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateLFTagExpressionResponse",
-}) as any as S.Schema<CreateLFTagExpressionResponse>;
+export const CreateLFTagExpressionResponse =
+  TableWildcard as any as S.Schema<CreateLFTagExpressionResponse>;
 export interface DeleteDataCellsFilterRequest {
   TableCatalogId?: string;
   DatabaseName?: string;
@@ -800,9 +786,8 @@ export const DeleteDataCellsFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDataCellsFilterRequest",
 }) as any as S.Schema<DeleteDataCellsFilterRequest>;
 export interface DeleteDataCellsFilterResponse {}
-export const DeleteDataCellsFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataCellsFilterResponse",
-}) as any as S.Schema<DeleteDataCellsFilterResponse>;
+export const DeleteDataCellsFilterResponse =
+  TableWildcard as any as S.Schema<DeleteDataCellsFilterResponse>;
 export interface DeleteLakeFormationIdentityCenterConfigurationRequest {
   CatalogId?: string;
 }
@@ -821,11 +806,8 @@ export const DeleteLakeFormationIdentityCenterConfigurationRequest = /*@__PURE__
   identifier: "DeleteLakeFormationIdentityCenterConfigurationRequest",
 }) as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationRequest>;
 export interface DeleteLakeFormationIdentityCenterConfigurationResponse {}
-export const DeleteLakeFormationIdentityCenterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLakeFormationIdentityCenterConfigurationResponse",
-}) as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationResponse>;
+export const DeleteLakeFormationIdentityCenterConfigurationResponse =
+  CreateLakeFormationOptInResponse as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationResponse>;
 export interface DeleteLakeFormationOptInRequest {
   Principal: DataLakePrincipal;
   Resource: Resource;
@@ -850,11 +832,8 @@ export const DeleteLakeFormationOptInRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLakeFormationOptInRequest",
 }) as any as S.Schema<DeleteLakeFormationOptInRequest>;
 export interface DeleteLakeFormationOptInResponse {}
-export const DeleteLakeFormationOptInResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLakeFormationOptInResponse",
-}) as any as S.Schema<DeleteLakeFormationOptInResponse>;
+export const DeleteLakeFormationOptInResponse =
+  CreateLakeFormationOptInResponse as any as S.Schema<DeleteLakeFormationOptInResponse>;
 export interface DeleteLFTagRequest {
   CatalogId?: string;
   TagKey: string;
@@ -865,9 +844,7 @@ export const DeleteLFTagRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLFTagRequest" }) as any as S.Schema<DeleteLFTagRequest>;
 export interface DeleteLFTagResponse {}
-export const DeleteLFTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLFTagResponse",
-}) as any as S.Schema<DeleteLFTagResponse>;
+export const DeleteLFTagResponse = TableWildcard as any as S.Schema<DeleteLFTagResponse>;
 export interface DeleteLFTagExpressionRequest {
   Name: string;
   CatalogId?: string;
@@ -880,9 +857,8 @@ export const DeleteLFTagExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLFTagExpressionRequest",
 }) as any as S.Schema<DeleteLFTagExpressionRequest>;
 export interface DeleteLFTagExpressionResponse {}
-export const DeleteLFTagExpressionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLFTagExpressionResponse",
-}) as any as S.Schema<DeleteLFTagExpressionResponse>;
+export const DeleteLFTagExpressionResponse =
+  TableWildcard as any as S.Schema<DeleteLFTagExpressionResponse>;
 export type URI = string;
 export type ETagString = string;
 export interface VirtualObject {
@@ -915,9 +891,8 @@ export const DeleteObjectsOnCancelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteObjectsOnCancelRequest",
 }) as any as S.Schema<DeleteObjectsOnCancelRequest>;
 export interface DeleteObjectsOnCancelResponse {}
-export const DeleteObjectsOnCancelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteObjectsOnCancelResponse",
-}) as any as S.Schema<DeleteObjectsOnCancelResponse>;
+export const DeleteObjectsOnCancelResponse =
+  TableWildcard as any as S.Schema<DeleteObjectsOnCancelResponse>;
 export interface DeregisterResourceRequest {
   ResourceArn: string;
 }
@@ -929,9 +904,8 @@ export const DeregisterResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterResourceRequest",
 }) as any as S.Schema<DeregisterResourceRequest>;
 export interface DeregisterResourceResponse {}
-export const DeregisterResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeregisterResourceResponse",
-}) as any as S.Schema<DeregisterResourceResponse>;
+export const DeregisterResourceResponse =
+  TableWildcard as any as S.Schema<DeregisterResourceResponse>;
 export interface DescribeLakeFormationIdentityCenterConfigurationRequest {
   CatalogId?: string;
 }
@@ -1059,9 +1033,8 @@ export const ExtendTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ExtendTransactionRequest" }) as any as S.Schema<ExtendTransactionRequest>;
 export interface ExtendTransactionResponse {}
-export const ExtendTransactionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExtendTransactionResponse",
-}) as any as S.Schema<ExtendTransactionResponse>;
+export const ExtendTransactionResponse =
+  TableWildcard as any as S.Schema<ExtendTransactionResponse>;
 export interface GetDataCellsFilterRequest {
   TableCatalogId: string;
   DatabaseName: string;
@@ -1132,9 +1105,10 @@ export const ParametersMap = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
 export type TrustedResourceOwners = string[];
-export const TrustedResourceOwners = /*@__PURE__*/ S.Array(S.String);
+export const TrustedResourceOwners = ColumnNames as any as S.Schema<TrustedResourceOwners>;
 export type AuthorizedSessionTagValueList = string[];
-export const AuthorizedSessionTagValueList = /*@__PURE__*/ S.Array(S.String);
+export const AuthorizedSessionTagValueList =
+  ColumnNames as any as S.Schema<AuthorizedSessionTagValueList>;
 export interface DataLakeSettings {
   DataLakeAdmins?: DataLakePrincipal[];
   ReadOnlyAdmins?: DataLakePrincipal[];
@@ -1197,7 +1171,7 @@ export const GetEffectivePermissionsForPathRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "GetEffectivePermissionsForPathRequest",
 }) as any as S.Schema<GetEffectivePermissionsForPathRequest>;
 export type ResourceShareList = string[];
-export const ResourceShareList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceShareList = ColumnNames as any as S.Schema<ResourceShareList>;
 export interface DetailsMap {
   ResourceShare?: string[];
 }
@@ -1433,7 +1407,7 @@ export const GetTableObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTableObjectsRequest" }) as any as S.Schema<GetTableObjectsRequest>;
 export type PartitionValueString = string;
 export type PartitionValuesList = string[];
-export const PartitionValuesList = /*@__PURE__*/ S.Array(S.String);
+export const PartitionValuesList = ColumnNames as any as S.Schema<PartitionValuesList>;
 export type ObjectSize = number;
 export interface TableObject {
   Uri?: string;
@@ -1473,7 +1447,7 @@ export const AuditContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditContext" }) as any as S.Schema<AuditContext>;
 export type PathString = string;
 export type PathStringList = string[];
-export const PathStringList = /*@__PURE__*/ S.Array(S.String);
+export const PathStringList = ColumnNames as any as S.Schema<PathStringList>;
 export type CredentialsScope = "READ" | "READWRITE" | (string & {});
 export const CredentialsScope = S.String;
 
@@ -1532,7 +1506,7 @@ export const GetTemporaryDataLocationCredentialsResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetTemporaryDataLocationCredentialsResponse>;
 export type ValueString = string;
 export type ValueStringList = string[];
-export const ValueStringList = /*@__PURE__*/ S.Array(S.String);
+export const ValueStringList = ColumnNames as any as S.Schema<ValueStringList>;
 export interface PartitionValueList {
   Values: string[];
 }
@@ -1584,25 +1558,14 @@ export interface GetTemporaryGluePartitionCredentialsResponse {
   SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
-export const GetTemporaryGluePartitionCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccessKeyId: S.optional(S.String),
-    SecretAccessKey: S.optional(SensitiveString),
-    SessionToken: S.optional(SensitiveString),
-    Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetTemporaryGluePartitionCredentialsResponse",
-}) as any as S.Schema<GetTemporaryGluePartitionCredentialsResponse>;
+export const GetTemporaryGluePartitionCredentialsResponse =
+  AssumeDecoratedRoleWithSAMLResponse as any as S.Schema<GetTemporaryGluePartitionCredentialsResponse>;
 export type HashString = string;
 export type NullableString = string;
 export type ContextKey = string;
 export type ContextValue = string;
 export type AdditionalContextMap = { [key: string]: string | undefined };
-export const AdditionalContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AdditionalContextMap = ParametersMap as any as S.Schema<AdditionalContextMap>;
 export interface QuerySessionContext {
   QueryId?: string;
   QueryStartTime?: Date;
@@ -1752,9 +1715,7 @@ export const GrantPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GrantPermissionsRequest" }) as any as S.Schema<GrantPermissionsRequest>;
 export interface GrantPermissionsResponse {}
-export const GrantPermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GrantPermissionsResponse",
-}) as any as S.Schema<GrantPermissionsResponse>;
+export const GrantPermissionsResponse = TableWildcard as any as S.Schema<GrantPermissionsResponse>;
 export interface ListDataCellsFilterRequest {
   Table?: TableResource;
   NextToken?: string;
@@ -1966,7 +1927,7 @@ export const ComparisonOperator = S.String;
 
 export type StringValue = string;
 export type StringValueList = string[];
-export const StringValueList = /*@__PURE__*/ S.Array(S.String);
+export const StringValueList = ColumnNames as any as S.Schema<StringValueList>;
 export interface FilterCondition {
   Field?: FieldNameString;
   ComparisonOperator?: ComparisonOperator;
@@ -2037,10 +1998,7 @@ export const ListTableStorageOptimizersRequest = /*@__PURE__*/ S.suspend(() =>
 export type StorageOptimizerConfigKey = string;
 export type StorageOptimizerConfigValue = string;
 export type StorageOptimizerConfig = { [key: string]: string | undefined };
-export const StorageOptimizerConfig = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const StorageOptimizerConfig = ParametersMap as any as S.Schema<StorageOptimizerConfig>;
 export type MessageString = string;
 export interface StorageOptimizer {
   StorageOptimizerType?: OptimizerType;
@@ -2121,9 +2079,8 @@ export const PutDataLakeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutDataLakeSettingsRequest",
 }) as any as S.Schema<PutDataLakeSettingsRequest>;
 export interface PutDataLakeSettingsResponse {}
-export const PutDataLakeSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutDataLakeSettingsResponse",
-}) as any as S.Schema<PutDataLakeSettingsResponse>;
+export const PutDataLakeSettingsResponse =
+  TableWildcard as any as S.Schema<PutDataLakeSettingsResponse>;
 export interface RegisterResourceRequest {
   ResourceArn: string;
   UseServiceLinkedRole?: boolean;
@@ -2147,9 +2104,7 @@ export const RegisterResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RegisterResourceRequest" }) as any as S.Schema<RegisterResourceRequest>;
 export interface RegisterResourceResponse {}
-export const RegisterResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegisterResourceResponse",
-}) as any as S.Schema<RegisterResourceResponse>;
+export const RegisterResourceResponse = TableWildcard as any as S.Schema<RegisterResourceResponse>;
 export interface RemoveLFTagsFromResourceRequest {
   CatalogId?: string;
   Resource: Resource;
@@ -2172,11 +2127,8 @@ export const RemoveLFTagsFromResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveLFTagsFromResourceResponse {
   Failures?: LFTagError[];
 }
-export const RemoveLFTagsFromResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Failures: S.optional(LFTagErrors) }),
-).annotate({
-  identifier: "RemoveLFTagsFromResourceResponse",
-}) as any as S.Schema<RemoveLFTagsFromResourceResponse>;
+export const RemoveLFTagsFromResourceResponse =
+  AddLFTagsToResourceResponse as any as S.Schema<RemoveLFTagsFromResourceResponse>;
 export interface RevokePermissionsRequest {
   CatalogId?: string;
   Principal: DataLakePrincipal;
@@ -2198,9 +2150,8 @@ export const RevokePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevokePermissionsRequest" }) as any as S.Schema<RevokePermissionsRequest>;
 export interface RevokePermissionsResponse {}
-export const RevokePermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokePermissionsResponse",
-}) as any as S.Schema<RevokePermissionsResponse>;
+export const RevokePermissionsResponse =
+  TableWildcard as any as S.Schema<RevokePermissionsResponse>;
 export type SearchPageSize = number;
 export interface SearchDatabasesByLFTagsRequest {
   NextToken?: string;
@@ -2290,10 +2241,7 @@ export const SearchTablesByLFTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchTablesByLFTagsResponse>;
 export type QueryPlanningContextDatabaseNameString = string;
 export type QueryParameterMap = { [key: string]: string | undefined };
-export const QueryParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const QueryParameterMap = ParametersMap as any as S.Schema<QueryParameterMap>;
 export interface QueryPlanningContext {
   CatalogId?: string;
   DatabaseName: string;
@@ -2358,9 +2306,8 @@ export const UpdateDataCellsFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDataCellsFilterRequest",
 }) as any as S.Schema<UpdateDataCellsFilterRequest>;
 export interface UpdateDataCellsFilterResponse {}
-export const UpdateDataCellsFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDataCellsFilterResponse",
-}) as any as S.Schema<UpdateDataCellsFilterResponse>;
+export const UpdateDataCellsFilterResponse =
+  TableWildcard as any as S.Schema<UpdateDataCellsFilterResponse>;
 export type ApplicationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ApplicationStatus = S.String;
 
@@ -2392,11 +2339,8 @@ export const UpdateLakeFormationIdentityCenterConfigurationRequest = /*@__PURE__
   identifier: "UpdateLakeFormationIdentityCenterConfigurationRequest",
 }) as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationRequest>;
 export interface UpdateLakeFormationIdentityCenterConfigurationResponse {}
-export const UpdateLakeFormationIdentityCenterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateLakeFormationIdentityCenterConfigurationResponse",
-}) as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationResponse>;
+export const UpdateLakeFormationIdentityCenterConfigurationResponse =
+  CreateLakeFormationOptInResponse as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationResponse>;
 export interface UpdateLFTagRequest {
   CatalogId?: string;
   TagKey: string;
@@ -2412,9 +2356,7 @@ export const UpdateLFTagRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/UpdateLFTag" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateLFTagRequest" }) as any as S.Schema<UpdateLFTagRequest>;
 export interface UpdateLFTagResponse {}
-export const UpdateLFTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLFTagResponse",
-}) as any as S.Schema<UpdateLFTagResponse>;
+export const UpdateLFTagResponse = TableWildcard as any as S.Schema<UpdateLFTagResponse>;
 export interface UpdateLFTagExpressionRequest {
   Name: string;
   Description?: string;
@@ -2434,9 +2376,8 @@ export const UpdateLFTagExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLFTagExpressionRequest",
 }) as any as S.Schema<UpdateLFTagExpressionRequest>;
 export interface UpdateLFTagExpressionResponse {}
-export const UpdateLFTagExpressionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLFTagExpressionResponse",
-}) as any as S.Schema<UpdateLFTagExpressionResponse>;
+export const UpdateLFTagExpressionResponse =
+  TableWildcard as any as S.Schema<UpdateLFTagExpressionResponse>;
 export interface UpdateResourceRequest {
   RoleArn: string;
   ResourceArn: string;
@@ -2454,9 +2395,7 @@ export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/UpdateResource" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateResourceRequest" }) as any as S.Schema<UpdateResourceRequest>;
 export interface UpdateResourceResponse {}
-export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateResourceResponse",
-}) as any as S.Schema<UpdateResourceResponse>;
+export const UpdateResourceResponse = TableWildcard as any as S.Schema<UpdateResourceResponse>;
 export interface AddObjectInput {
   Uri: string;
   ETag: string;
@@ -2513,9 +2452,8 @@ export const UpdateTableObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTableObjectsRequest",
 }) as any as S.Schema<UpdateTableObjectsRequest>;
 export interface UpdateTableObjectsResponse {}
-export const UpdateTableObjectsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTableObjectsResponse",
-}) as any as S.Schema<UpdateTableObjectsResponse>;
+export const UpdateTableObjectsResponse =
+  TableWildcard as any as S.Schema<UpdateTableObjectsResponse>;
 export type StorageOptimizerConfigMap = {
   [key in OptimizerType]?: { [key: string]: string | undefined };
 };

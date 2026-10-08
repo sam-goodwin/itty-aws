@@ -505,12 +505,7 @@ export interface SearchFoldersResponse {
   /** A possibly paginated folder search results. the specified parent resource. */
   folders?: FolderList;
 }
-export const SearchFoldersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    folders: S.optional(FolderList),
-  }),
-).annotate({ identifier: "SearchFoldersResponse" }) as any as S.Schema<SearchFoldersResponse>;
+export const SearchFoldersResponse = ListFoldersResponse as any as S.Schema<SearchFoldersResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -586,13 +581,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 /** The UndeleteFolder request message. */
 export interface UndeleteFolderRequest {}

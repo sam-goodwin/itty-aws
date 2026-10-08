@@ -523,9 +523,8 @@ export type ListResultItemPermissions = GetResponsePermissions;
 export const ListResultItemPermissions = GetResponsePermissions;
 
 export type ListResultItemRolesList = Array<string>;
-export const ListResultItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemRolesList>;
+export const ListResultItemRolesList =
+  GetResponseRolesList as any as S.Schema<ListResultItemRolesList>;
 
 export type ListResultItemStatus = "accepted" | "pending" | "rejected";
 export const ListResultItemStatus = S.String;
@@ -677,9 +676,8 @@ export const UpdateResponsePoliciesItemPermissionGroupsItem =
 
 export type UpdateResponsePoliciesItemPermissionGroupsList =
   Array<GetResponsePoliciesItemPermissionGroupsItem>;
-export const UpdateResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ S.Array(
-  GetResponsePoliciesItemPermissionGroupsItem,
-) as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsList>;
+export const UpdateResponsePoliciesItemPermissionGroupsList =
+  GetResponsePoliciesItemPermissionGroupsList as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsList>;
 
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem =
   GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem;
@@ -688,9 +686,8 @@ export const UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem =
 
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList =
   Array<GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-export const UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList = /*@__PURE__*/ S.Array(
-  GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem,
-) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList>;
+export const UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList =
+  GetResponsePoliciesItemResourceGroupsItemScopeObjectsList as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList>;
 
 export interface UpdateResponsePoliciesItemResourceGroupsItemScope {
   /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
@@ -698,14 +695,8 @@ export interface UpdateResponsePoliciesItemResourceGroupsItemScope {
   /** A list of scope objects for additional context. */
   objects: UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList;
 }
-export const UpdateResponsePoliciesItemResourceGroupsItemScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    objects: UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList,
-  }),
-).annotate({
-  identifier: "UpdateResponsePoliciesItemResourceGroupsItemScope",
-}) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScope>;
+export const UpdateResponsePoliciesItemResourceGroupsItemScope =
+  GetResponsePoliciesItemResourceGroupsItemScope as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScope>;
 
 export type UpdateResponsePoliciesItemResourceGroupsItemMeta =
   GetResponsePoliciesItemResourceGroupsItemMeta;
@@ -722,22 +713,13 @@ export interface UpdateResponsePoliciesItemResourceGroupsItem {
   /** Name of the resource group. */
   name?: string | null;
 }
-export const UpdateResponsePoliciesItemResourceGroupsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    scope: UpdateResponsePoliciesItemResourceGroupsItemScope,
-    meta: S.optional(S.NullOr(GetResponsePoliciesItemResourceGroupsItemMeta)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UpdateResponsePoliciesItemResourceGroupsItem",
-}) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItem>;
+export const UpdateResponsePoliciesItemResourceGroupsItem =
+  GetResponsePoliciesItemResourceGroupsItem as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItem>;
 
 export type UpdateResponsePoliciesItemResourceGroupsList =
   Array<UpdateResponsePoliciesItemResourceGroupsItem>;
-export const UpdateResponsePoliciesItemResourceGroupsList = /*@__PURE__*/ S.Array(
-  UpdateResponsePoliciesItemResourceGroupsItem,
-) as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsList>;
+export const UpdateResponsePoliciesItemResourceGroupsList =
+  GetResponsePoliciesItemResourceGroupsList as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsList>;
 
 export interface UpdateResponsePoliciesItem {
   /** Policy identifier. */
@@ -770,9 +752,8 @@ export const UpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponsePoliciesList>;
 
 export type UpdateResponseRolesList = Array<string>;
-export const UpdateResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseRolesList>;
+export const UpdateResponseRolesList =
+  GetResponseRolesList as any as S.Schema<UpdateResponseRolesList>;
 
 export type UpdateResponseStatus = "accepted" | "pending" | "rejected";
 export const UpdateResponseStatus = S.String;

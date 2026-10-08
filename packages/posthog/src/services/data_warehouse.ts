@@ -122,11 +122,8 @@ export const CreateDataWarehouseProvisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDataWarehouseProvisionRequest>;
 
 export interface CreateDataWarehouseProvisionResponse {}
-export const CreateDataWarehouseProvisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDataWarehouseProvisionResponse",
-}) as any as S.Schema<CreateDataWarehouseProvisionResponse>;
+export const CreateDataWarehouseProvisionResponse =
+  CreateDataWarehouseDeprovisionResponse as any as S.Schema<CreateDataWarehouseProvisionResponse>;
 
 export interface DataWarehouseResetPasswordCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -449,11 +446,8 @@ export const GetDataWarehouseDataOpsDashboardRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetDataWarehouseDataOpsDashboardRequest>;
 
 export interface GetDataWarehouseDataOpsDashboardResponse {}
-export const GetDataWarehouseDataOpsDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDataWarehouseDataOpsDashboardResponse",
-}) as any as S.Schema<GetDataWarehouseDataOpsDashboardResponse>;
+export const GetDataWarehouseDataOpsDashboardResponse =
+  CreateDataWarehouseDeprovisionResponse as any as S.Schema<GetDataWarehouseDataOpsDashboardResponse>;
 
 export interface GetDataWarehouseDataQualityGateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1174,11 +1168,8 @@ export const GetDataWarehousePropertyValueRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetDataWarehousePropertyValueRequest>;
 
 export interface GetDataWarehousePropertyValueResponse {}
-export const GetDataWarehousePropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetDataWarehousePropertyValueResponse",
-}) as any as S.Schema<GetDataWarehousePropertyValueResponse>;
+export const GetDataWarehousePropertyValueResponse =
+  CreateDataWarehouseDeprovisionResponse as any as S.Schema<GetDataWarehousePropertyValueResponse>;
 
 export type GetDataWarehouseRunningActivityRequestKind = "all" | "import" | "model";
 export const GetDataWarehouseRunningActivityRequestKind = S.String;

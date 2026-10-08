@@ -90,11 +90,7 @@ export interface Group {
   /** The group email. */
   email?: string;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-  }),
-).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
+export const Group = User as any as S.Schema<Group>;
 
 /** A single permission on the note. Associates a `member` with a `role`. */
 export interface Permission {
@@ -233,9 +229,7 @@ export const BatchDeleteNotesPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = Family as any as S.Schema<Empty>;
 
 /** The block of text for a single text section or list item. */
 export interface TextContent {

@@ -387,9 +387,8 @@ export const EvaluationOutputConfigOptionsItem = CreateEvaluationRequestOutputCo
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type EvaluationOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const EvaluationOutputConfigOptionsList = /*@__PURE__*/ S.Array(
-  CreateEvaluationRequestOutputConfigOptionsItem,
-) as any as S.Schema<EvaluationOutputConfigOptionsList>;
+export const EvaluationOutputConfigOptionsList =
+  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<EvaluationOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type EvaluationOutputConfigSelectionMode = "single" | "multiple";
@@ -473,9 +472,8 @@ export const EvaluationOutputConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationConditionsList = Array<EvaluationCondition>;
-export const EvaluationConditionsList = /*@__PURE__*/ S.Array(
-  EvaluationCondition,
-) as any as S.Schema<EvaluationConditionsList>;
+export const EvaluationConditionsList =
+  CreateEvaluationRequestConditionsList as any as S.Schema<EvaluationConditionsList>;
 
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type EvaluationTargetConfigCase0Strategy = "fixed_window";
@@ -540,10 +538,8 @@ export const ModelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelConfiguration" }) as any as S.Schema<ModelConfiguration>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  EvaluationConditionPropertiesItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -658,9 +654,8 @@ export const Evaluation = /*@__PURE__*/ S.suspend(() =>
 
 /** Condition sets to match. Defaults to the evaluation's own condition sets. */
 export type CreateEvaluationsBackfillRequestConditionsList = Array<EvaluationCondition>;
-export const CreateEvaluationsBackfillRequestConditionsList = /*@__PURE__*/ S.Array(
-  EvaluationCondition,
-) as any as S.Schema<CreateEvaluationsBackfillRequestConditionsList>;
+export const CreateEvaluationsBackfillRequestConditionsList =
+  CreateEvaluationRequestConditionsList as any as S.Schema<CreateEvaluationsBackfillRequestConditionsList>;
 
 export interface CreateEvaluationsBackfillRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -699,17 +694,14 @@ export type EvaluationBackfillStatusEnum = "running" | "completed" | "cancelled"
 export const EvaluationBackfillStatusEnum = S.String;
 
 export type EvaluationBackfillConditionPropertiesItemMap = { [key: string]: unknown | undefined };
-export const EvaluationBackfillConditionPropertiesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EvaluationBackfillConditionPropertiesItemMap>;
+export const EvaluationBackfillConditionPropertiesItemMap =
+  EvaluationConditionPropertiesItemMap as any as S.Schema<EvaluationBackfillConditionPropertiesItemMap>;
 
 /** Property filters (event or person) that scope which units match this condition set. */
 export type EvaluationBackfillConditionPropertiesList =
   Array<EvaluationBackfillConditionPropertiesItemMap>;
-export const EvaluationBackfillConditionPropertiesList = /*@__PURE__*/ S.Array(
-  EvaluationBackfillConditionPropertiesItemMap,
-) as any as S.Schema<EvaluationBackfillConditionPropertiesList>;
+export const EvaluationBackfillConditionPropertiesList =
+  EvaluationConditionPropertiesList as any as S.Schema<EvaluationBackfillConditionPropertiesList>;
 
 /** One condition set as it was frozen onto the backfill: no id, no compiled bytecode. */
 export interface EvaluationBackfillCondition {
@@ -787,9 +779,8 @@ export const EvaluationBackfill = /*@__PURE__*/ S.suspend(() =>
 
 /** Condition sets to match. Defaults to the evaluation's own condition sets. */
 export type CreateEvaluationsBackfillsEstimateRequestConditionsList = Array<EvaluationCondition>;
-export const CreateEvaluationsBackfillsEstimateRequestConditionsList = /*@__PURE__*/ S.Array(
-  EvaluationCondition,
-) as any as S.Schema<CreateEvaluationsBackfillsEstimateRequestConditionsList>;
+export const CreateEvaluationsBackfillsEstimateRequestConditionsList =
+  CreateEvaluationRequestConditionsList as any as S.Schema<CreateEvaluationsBackfillsEstimateRequestConditionsList>;
 
 export interface CreateEvaluationsBackfillsEstimateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -859,9 +850,8 @@ export const CreateEvaluationsTestHogRequestOutputConfigOptionsItem =
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type CreateEvaluationsTestHogRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const CreateEvaluationsTestHogRequestOutputConfigOptionsList = /*@__PURE__*/ S.Array(
-  CreateEvaluationRequestOutputConfigOptionsItem,
-) as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigOptionsList>;
+export const CreateEvaluationsTestHogRequestOutputConfigOptionsList =
+  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type CreateEvaluationsTestHogRequestOutputConfigSelectionMode = "single" | "multiple";
@@ -891,9 +881,7 @@ export const CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0 = /*@__
 export type CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList =
   Array<string>;
 export const CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList>;
+  CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1CategoriesList>;
 
 export interface CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
@@ -952,17 +940,14 @@ export const CreateEvaluationsTestHogRequestOutputConfig = /*@__PURE__*/ S.suspe
 export type CreateEvaluationsTestHogRequestConditionsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateEvaluationsTestHogRequestConditionsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateEvaluationsTestHogRequestConditionsItemMap>;
+export const CreateEvaluationsTestHogRequestConditionsItemMap =
+  EvaluationConditionPropertiesItemMap as any as S.Schema<CreateEvaluationsTestHogRequestConditionsItemMap>;
 
 /** Optional trigger conditions to filter which events are sampled. */
 export type CreateEvaluationsTestHogRequestConditionsList =
   Array<CreateEvaluationsTestHogRequestConditionsItemMap>;
-export const CreateEvaluationsTestHogRequestConditionsList = /*@__PURE__*/ S.Array(
-  CreateEvaluationsTestHogRequestConditionsItemMap,
-) as any as S.Schema<CreateEvaluationsTestHogRequestConditionsList>;
+export const CreateEvaluationsTestHogRequestConditionsList =
+  EvaluationConditionPropertiesList as any as S.Schema<CreateEvaluationsTestHogRequestConditionsList>;
 
 export interface TestHogTargetConfig {
   /** Aggregation window for trace samples, in seconds. */
@@ -1017,9 +1002,8 @@ export const CreateEvaluationsTestHogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Selected category keys. An empty list is an applicable result; null means no categorical result was produced. */
 export type TestHogResultItemCategoriesList = Array<string>;
-export const TestHogResultItemCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TestHogResultItemCategoriesList>;
+export const TestHogResultItemCategoriesList =
+  EvaluationOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<TestHogResultItemCategoriesList>;
 
 export interface TestHogResultItem {
   /** Selected category keys. An empty list is an applicable result; null means no categorical result was produced. */
@@ -1165,9 +1149,8 @@ export type ListEvaluationsRequestEvaluationType = "hog" | "llm_judge" | "sentim
 export const ListEvaluationsRequestEvaluationType = S.String;
 
 export type ListEvaluationsRequestIdInList = Array<string>;
-export const ListEvaluationsRequestIdInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEvaluationsRequestIdInList>;
+export const ListEvaluationsRequestIdInList =
+  EvaluationOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<ListEvaluationsRequestIdInList>;
 
 export type ListEvaluationsRequestOrderByItem =
   | "-created_at"
@@ -1332,9 +1315,8 @@ export const UpdateEvaluationRequestOutputConfigOptionsItem =
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type UpdateEvaluationRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const UpdateEvaluationRequestOutputConfigOptionsList = /*@__PURE__*/ S.Array(
-  CreateEvaluationRequestOutputConfigOptionsItem,
-) as any as S.Schema<UpdateEvaluationRequestOutputConfigOptionsList>;
+export const UpdateEvaluationRequestOutputConfigOptionsList =
+  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<UpdateEvaluationRequestOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type UpdateEvaluationRequestOutputConfigSelectionMode = "single" | "multiple";
@@ -1362,21 +1344,14 @@ export const UpdateEvaluationRequestOutputConfigPassingRuleCase0 = /*@__PURE__*/
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList = Array<string>;
 export const UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList>;
+  CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList>;
 
 export interface UpdateEvaluationRequestOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList;
 }
-export const UpdateEvaluationRequestOutputConfigPassingRuleCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: UpdateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList,
-  }),
-).annotate({
-  identifier: "UpdateEvaluationRequestOutputConfigPassingRuleCase1",
-}) as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase1>;
+export const UpdateEvaluationRequestOutputConfigPassingRuleCase1 =
+  CreateEvaluationRequestOutputConfigPassingRuleCase1 as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRuleCase1>;
 
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type UpdateEvaluationRequestOutputConfigPassingRule =
@@ -1421,9 +1396,8 @@ export const UpdateEvaluationRequestOutputConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationRequestConditionsList = Array<EvaluationCondition>;
-export const UpdateEvaluationRequestConditionsList = /*@__PURE__*/ S.Array(
-  EvaluationCondition,
-) as any as S.Schema<UpdateEvaluationRequestConditionsList>;
+export const UpdateEvaluationRequestConditionsList =
+  CreateEvaluationRequestConditionsList as any as S.Schema<UpdateEvaluationRequestConditionsList>;
 
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type UpdateEvaluationRequestTargetConfigCase0Strategy = "fixed_window";
@@ -1569,9 +1543,8 @@ export const UpdateEvaluationsPartialRequestOutputConfigOptionsItem =
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type UpdateEvaluationsPartialRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-export const UpdateEvaluationsPartialRequestOutputConfigOptionsList = /*@__PURE__*/ S.Array(
-  CreateEvaluationRequestOutputConfigOptionsItem,
-) as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigOptionsList>;
+export const UpdateEvaluationsPartialRequestOutputConfigOptionsList =
+  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type UpdateEvaluationsPartialRequestOutputConfigSelectionMode = "single" | "multiple";
@@ -1601,22 +1574,14 @@ export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0 = /*@__
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList =
   Array<string>;
 export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList>;
+  CreateEvaluationRequestOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList>;
 
 export interface UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList;
 }
-export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      categories: UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1CategoriesList,
-    }),
-).annotate({
-  identifier: "UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1",
-}) as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1>;
+export const UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1 =
+  CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1 as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1>;
 
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRule =
@@ -1661,9 +1626,8 @@ export const UpdateEvaluationsPartialRequestOutputConfig = /*@__PURE__*/ S.suspe
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationsPartialRequestConditionsList = Array<EvaluationCondition>;
-export const UpdateEvaluationsPartialRequestConditionsList = /*@__PURE__*/ S.Array(
-  EvaluationCondition,
-) as any as S.Schema<UpdateEvaluationsPartialRequestConditionsList>;
+export const UpdateEvaluationsPartialRequestConditionsList =
+  CreateEvaluationRequestConditionsList as any as S.Schema<UpdateEvaluationsPartialRequestConditionsList>;
 
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type UpdateEvaluationsPartialRequestTargetConfigCase0Strategy = "fixed_window";

@@ -401,26 +401,19 @@ export const ReadMarkNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadMarkNotificationRequest>;
 
 export type ReadMarkNotificationResponseDataList = Array<NotificationBadge>;
-export const ReadMarkNotificationResponseDataList = /*@__PURE__*/ S.Array(
-  NotificationBadge,
-) as any as S.Schema<ReadMarkNotificationResponseDataList>;
+export const ReadMarkNotificationResponseDataList =
+  ListNotificationBadgesResponseDataList as any as S.Schema<ReadMarkNotificationResponseDataList>;
 
 export interface ReadMarkNotificationResponse {
   data: ReadMarkNotificationResponseDataList;
 }
-export const ReadMarkNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: ReadMarkNotificationResponseDataList,
-  }),
-).annotate({
-  identifier: "ReadMarkNotificationResponse",
-}) as any as S.Schema<ReadMarkNotificationResponse>;
+export const ReadMarkNotificationResponse =
+  ListNotificationBadgesResponse as any as S.Schema<ReadMarkNotificationResponse>;
 
 /** Optional `user_` tags narrowing the audience. When provided, only these users are notified (as a mention), provided they are in the targeted experience or account. */
 export type SendNotificationRequestUserIdsList = Array<string>;
-export const SendNotificationRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SendNotificationRequestUserIdsList>;
+export const SendNotificationRequestUserIdsList =
+  ListNotificationBadgesRequestExperienceIdsList as any as S.Schema<SendNotificationRequestUserIdsList>;
 
 export interface SendNotificationRequest {
   /** Account whose team members receive the notification (`biz_` tag). Exactly one of `experience_id` or `account_id` is required. */

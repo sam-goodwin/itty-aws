@@ -149,9 +149,8 @@ export const ContentAutopilotPackageInternalLinksList = /*@__PURE__*/ S.Array(
 
 /** Portable source notes included with the export. */
 export type ContentAutopilotPackageSourceNotesList = Array<string>;
-export const ContentAutopilotPackageSourceNotesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
+export const ContentAutopilotPackageSourceNotesList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
 
 export interface ContentAutopilotPackage {
   /** Repository-relative Markdown or MDX file path. */
@@ -189,9 +188,8 @@ export const ContentAutopilotPackage = /*@__PURE__*/ S.suspend(() =>
 
 /** Site pages the brief asked to read for facts. */
 export type ContentAutopilotBriefSitePagesToReadList = Array<string>;
-export const ContentAutopilotBriefSitePagesToReadList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
+export const ContentAutopilotBriefSitePagesToReadList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
 
 export interface ContentAutopilotBriefCompetitor {
   /** Product to compare against. */
@@ -216,21 +214,18 @@ export const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ S.Ar
 
 /** Planned sections, in order. */
 export type ContentAutopilotBriefOutlineList = Array<string>;
-export const ContentAutopilotBriefOutlineList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefOutlineList>;
+export const ContentAutopilotBriefOutlineList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefOutlineList>;
 
 /** Questions the page must answer. */
 export type ContentAutopilotBriefQuestionsToAnswerList = Array<string>;
-export const ContentAutopilotBriefQuestionsToAnswerList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
+export const ContentAutopilotBriefQuestionsToAnswerList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
 
 /** Topics the cited competitor pages cover that the site's pages don't. */
 export type ContentAutopilotBriefCompetitorCoverageList = Array<string>;
-export const ContentAutopilotBriefCompetitorCoverageList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
+export const ContentAutopilotBriefCompetitorCoverageList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
 
 export interface ContentAutopilotBrief {
   /** What the person asking wants to know or decide. */
@@ -390,9 +385,8 @@ export const ListWebAnalyticsContentAutopilotProposalsRequest = /*@__PURE__*/ S.
 
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalListEvidenceList = Array<ContentAutopilotEvidence>;
-export const ContentAutopilotProposalListEvidenceList = /*@__PURE__*/ S.Array(
-  ContentAutopilotEvidence,
-) as any as S.Schema<ContentAutopilotProposalListEvidenceList>;
+export const ContentAutopilotProposalListEvidenceList =
+  ContentAutopilotProposalEvidenceList as any as S.Schema<ContentAutopilotProposalListEvidenceList>;
 
 export interface ContentAutopilotProposalList {
   id: string;

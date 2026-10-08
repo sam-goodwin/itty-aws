@@ -102,9 +102,7 @@ export const DeleteAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAclRequest" }) as any as S.Schema<DeleteAclRequest>;
 
 export interface DeleteAclResponse {}
-export const DeleteAclResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAclResponse",
-}) as any as S.Schema<DeleteAclResponse>;
+export const DeleteAclResponse = ClearCalendarsResponse as any as S.Schema<DeleteAclResponse>;
 
 export interface DeleteCalendarListRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -125,9 +123,8 @@ export const DeleteCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCalendarListRequest>;
 
 export interface DeleteCalendarListResponse {}
-export const DeleteCalendarListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCalendarListResponse",
-}) as any as S.Schema<DeleteCalendarListResponse>;
+export const DeleteCalendarListResponse =
+  ClearCalendarsResponse as any as S.Schema<DeleteCalendarListResponse>;
 
 export interface DeleteCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -146,9 +143,8 @@ export const DeleteCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCalendarsRequest" }) as any as S.Schema<DeleteCalendarsRequest>;
 
 export interface DeleteCalendarsResponse {}
-export const DeleteCalendarsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCalendarsResponse",
-}) as any as S.Schema<DeleteCalendarsResponse>;
+export const DeleteCalendarsResponse =
+  ClearCalendarsResponse as any as S.Schema<DeleteCalendarsResponse>;
 
 export type DeleteEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
 export const DeleteEventsSendUpdatesEnum = S.String;
@@ -179,9 +175,7 @@ export const DeleteEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEventsRequest" }) as any as S.Schema<DeleteEventsRequest>;
 
 export interface DeleteEventsResponse {}
-export const DeleteEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventsResponse",
-}) as any as S.Schema<DeleteEventsResponse>;
+export const DeleteEventsResponse = ClearCalendarsResponse as any as S.Schema<DeleteEventsResponse>;
 
 export interface GetAclRequest {
   /** ACL rule identifier. */
@@ -2003,9 +1997,7 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopChannelsResponse",
-}) as any as S.Schema<StopChannelsResponse>;
+export const StopChannelsResponse = ClearCalendarsResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface TransferOwnershipCalendarsRequest {
   /** The email address of a user who will become the data owner of the calendar. */

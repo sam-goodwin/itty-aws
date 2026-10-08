@@ -1111,9 +1111,8 @@ export const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommentsRequest" }) as any as S.Schema<DeleteCommentsRequest>;
 
 export interface DeleteCommentsResponse {}
-export const DeleteCommentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCommentsResponse",
-}) as any as S.Schema<DeleteCommentsResponse>;
+export const DeleteCommentsResponse =
+  DeleteChildrenResponse as any as S.Schema<DeleteCommentsResponse>;
 
 export interface DeleteDrivesRequest {
   /** The ID of the shared drive. */
@@ -1138,9 +1137,7 @@ export const DeleteDrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDrivesRequest" }) as any as S.Schema<DeleteDrivesRequest>;
 
 export interface DeleteDrivesResponse {}
-export const DeleteDrivesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDrivesResponse",
-}) as any as S.Schema<DeleteDrivesResponse>;
+export const DeleteDrivesResponse = DeleteChildrenResponse as any as S.Schema<DeleteDrivesResponse>;
 
 export interface DeleteFilesRequest {
   /** The ID of the file to delete. */
@@ -1168,9 +1165,7 @@ export const DeleteFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFilesRequest" }) as any as S.Schema<DeleteFilesRequest>;
 
 export interface DeleteFilesResponse {}
-export const DeleteFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFilesResponse",
-}) as any as S.Schema<DeleteFilesResponse>;
+export const DeleteFilesResponse = DeleteChildrenResponse as any as S.Schema<DeleteFilesResponse>;
 
 export interface DeleteParentsRequest {
   /** The ID of the parent. */
@@ -1195,9 +1190,8 @@ export const DeleteParentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteParentsRequest" }) as any as S.Schema<DeleteParentsRequest>;
 
 export interface DeleteParentsResponse {}
-export const DeleteParentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteParentsResponse",
-}) as any as S.Schema<DeleteParentsResponse>;
+export const DeleteParentsResponse =
+  DeleteChildrenResponse as any as S.Schema<DeleteParentsResponse>;
 
 export interface DeletePermissionsRequest {
   /** The ID for the permission. */
@@ -1231,9 +1225,8 @@ export const DeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePermissionsRequest" }) as any as S.Schema<DeletePermissionsRequest>;
 
 export interface DeletePermissionsResponse {}
-export const DeletePermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePermissionsResponse",
-}) as any as S.Schema<DeletePermissionsResponse>;
+export const DeletePermissionsResponse =
+  DeleteChildrenResponse as any as S.Schema<DeletePermissionsResponse>;
 
 export interface DeletePropertiesRequest {
   /** The key of the property. */
@@ -1258,9 +1251,8 @@ export const DeletePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePropertiesRequest" }) as any as S.Schema<DeletePropertiesRequest>;
 
 export interface DeletePropertiesResponse {}
-export const DeletePropertiesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePropertiesResponse",
-}) as any as S.Schema<DeletePropertiesResponse>;
+export const DeletePropertiesResponse =
+  DeleteChildrenResponse as any as S.Schema<DeletePropertiesResponse>;
 
 export interface DeleteRepliesRequest {
   /** The ID of the reply. */
@@ -1285,9 +1277,8 @@ export const DeleteRepliesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepliesRequest" }) as any as S.Schema<DeleteRepliesRequest>;
 
 export interface DeleteRepliesResponse {}
-export const DeleteRepliesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepliesResponse",
-}) as any as S.Schema<DeleteRepliesResponse>;
+export const DeleteRepliesResponse =
+  DeleteChildrenResponse as any as S.Schema<DeleteRepliesResponse>;
 
 export interface DeleteRevisionsRequest {
   /** The ID of the file. */
@@ -1309,9 +1300,8 @@ export const DeleteRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRevisionsRequest" }) as any as S.Schema<DeleteRevisionsRequest>;
 
 export interface DeleteRevisionsResponse {}
-export const DeleteRevisionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRevisionsResponse",
-}) as any as S.Schema<DeleteRevisionsResponse>;
+export const DeleteRevisionsResponse =
+  DeleteChildrenResponse as any as S.Schema<DeleteRevisionsResponse>;
 
 export interface DeleteTeamdrivesRequest {
   /** The ID of the Team Drive */
@@ -1330,9 +1320,8 @@ export const DeleteTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamdrivesRequest" }) as any as S.Schema<DeleteTeamdrivesRequest>;
 
 export interface DeleteTeamdrivesResponse {}
-export const DeleteTeamdrivesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTeamdrivesResponse",
-}) as any as S.Schema<DeleteTeamdrivesResponse>;
+export const DeleteTeamdrivesResponse =
+  DeleteChildrenResponse as any as S.Schema<DeleteTeamdrivesResponse>;
 
 export interface EmptyTrashFilesRequest {
   /** Deprecated: If an item is not in a shared drive and its last parent is deleted but the item itself is not, the item is placed under its owner's root. */
@@ -1354,9 +1343,8 @@ export const EmptyTrashFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmptyTrashFilesRequest" }) as any as S.Schema<EmptyTrashFilesRequest>;
 
 export interface EmptyTrashFilesResponse {}
-export const EmptyTrashFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EmptyTrashFilesResponse",
-}) as any as S.Schema<EmptyTrashFilesResponse>;
+export const EmptyTrashFilesResponse =
+  DeleteChildrenResponse as any as S.Schema<EmptyTrashFilesResponse>;
 
 export interface ExportFilesRequest {
   /** Required. The MIME type of the format requested for this export. */
@@ -1378,9 +1366,7 @@ export const ExportFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportFilesRequest" }) as any as S.Schema<ExportFilesRequest>;
 
 export interface ExportFilesResponse {}
-export const ExportFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportFilesResponse",
-}) as any as S.Schema<ExportFilesResponse>;
+export const ExportFilesResponse = DeleteChildrenResponse as any as S.Schema<ExportFilesResponse>;
 
 export interface GenerateCseTokenFilesRequest {
   /** The ID of the file for which the JWT should be generated. If not provided, an id will be generated. */
@@ -1644,17 +1630,12 @@ export interface AboutExportFormatsItem {
   /** The possible content types to convert to. */
   targets?: StringList;
 }
-export const AboutExportFormatsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(S.String),
-    targets: S.optional(StringList),
-  }),
-).annotate({ identifier: "AboutExportFormatsItem" }) as any as S.Schema<AboutExportFormatsItem>;
+export const AboutExportFormatsItem =
+  AboutImportFormatsItem as any as S.Schema<AboutExportFormatsItem>;
 
 export type AboutExportFormatsItemList = Array<AboutExportFormatsItem>;
-export const AboutExportFormatsItemList = /*@__PURE__*/ S.Array(
-  AboutExportFormatsItem,
-) as any as S.Schema<AboutExportFormatsItemList>;
+export const AboutExportFormatsItemList =
+  AboutImportFormatsItemList as any as S.Schema<AboutExportFormatsItemList>;
 
 /** An item with user information and settings. */
 export interface About {
@@ -4062,9 +4043,7 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopChannelsResponse",
-}) as any as S.Schema<StopChannelsResponse>;
+export const StopChannelsResponse = DeleteChildrenResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface TouchFilesRequest {
   /** Specifies which additional view's permissions to include in the response. Only `published` is supported. */

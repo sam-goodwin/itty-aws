@@ -130,9 +130,8 @@ export const BuildStatusEnum = S.String;
 
 /** Logical dataframe slots accepted by this widget version. */
 export type ReusableWidgetVersionDetailFrameNamesList = Array<string>;
-export const ReusableWidgetVersionDetailFrameNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReusableWidgetVersionDetailFrameNamesList>;
+export const ReusableWidgetVersionDetailFrameNamesList =
+  ReusableWidgetDetailTagsList as any as S.Schema<ReusableWidgetVersionDetailFrameNamesList>;
 
 export interface WidgetInputContractColumn {
   /** Column name expected by the reusable widget. */
@@ -356,9 +355,8 @@ export const ListReusableWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Searchable widget labels. */
 export type ReusableWidgetSummaryTagsList = Array<string>;
-export const ReusableWidgetSummaryTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReusableWidgetSummaryTagsList>;
+export const ReusableWidgetSummaryTagsList =
+  ReusableWidgetDetailTagsList as any as S.Schema<ReusableWidgetSummaryTagsList>;
 
 export interface ReusableWidgetSummary {
   /** Stable reusable widget identifier. */
@@ -663,9 +661,8 @@ export const FailurePhaseEnum = S.String;
 
 /** Logical dataframe slots available to the selected version. */
 export type WidgetStatusFrameNamesList = Array<string>;
-export const WidgetStatusFrameNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WidgetStatusFrameNamesList>;
+export const WidgetStatusFrameNamesList =
+  ReusableWidgetDetailTagsList as any as S.Schema<WidgetStatusFrameNamesList>;
 
 export interface WidgetStatusInputBindingsValue {
   source: string;
@@ -691,9 +688,8 @@ export const WidgetStatusInputBindingsMap = /*@__PURE__*/ S.Record(
 
 /** Logical dataframe slots and output schemas required by the selected widget version. */
 export type WidgetStatusInputContractList = Array<WidgetInputContractItem>;
-export const WidgetStatusInputContractList = /*@__PURE__*/ S.Array(
-  WidgetInputContractItem,
-) as any as S.Schema<WidgetStatusInputContractList>;
+export const WidgetStatusInputContractList =
+  ReusableWidgetVersionDetailInputContractList as any as S.Schema<WidgetStatusInputContractList>;
 
 /** * `queued` - queued * `generating` - generating * `publishing` - publishing */
 export type WidgetJobStatusEnum = "queued" | "generating" | "publishing";
@@ -833,16 +829,14 @@ export const ReusableWidgetVersionPage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReusableWidgetVersionPage>;
 
 export type UpdateReusableWidgetDemoDataRequestRowsItemList = Array<unknown>;
-export const UpdateReusableWidgetDemoDataRequestRowsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateReusableWidgetDemoDataRequestRowsItemList>;
+export const UpdateReusableWidgetDemoDataRequestRowsItemList =
+  WidgetFrameRowsItemList as any as S.Schema<UpdateReusableWidgetDemoDataRequestRowsItemList>;
 
 /** Saved demo rows in input-contract column order. Replaces this slot's entire sample, up to 20 rows. */
 export type UpdateReusableWidgetDemoDataRequestRowsList =
   Array<UpdateReusableWidgetDemoDataRequestRowsItemList>;
-export const UpdateReusableWidgetDemoDataRequestRowsList = /*@__PURE__*/ S.Array(
-  UpdateReusableWidgetDemoDataRequestRowsItemList,
-) as any as S.Schema<UpdateReusableWidgetDemoDataRequestRowsList>;
+export const UpdateReusableWidgetDemoDataRequestRowsList =
+  WidgetFrameRowsList as any as S.Schema<UpdateReusableWidgetDemoDataRequestRowsList>;
 
 export interface UpdateReusableWidgetDemoDataRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

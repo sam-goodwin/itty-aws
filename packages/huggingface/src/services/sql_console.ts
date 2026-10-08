@@ -65,9 +65,8 @@ export type CreateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
 export const CreateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
 
 export type CreateEmbedResponseViewsList = Array<CreateEmbedRequestViewsItem>;
-export const CreateEmbedResponseViewsList = /*@__PURE__*/ S.Array(
-  CreateEmbedRequestViewsItem,
-) as any as S.Schema<CreateEmbedResponseViewsList>;
+export const CreateEmbedResponseViewsList =
+  CreateEmbedRequestViewsList as any as S.Schema<CreateEmbedResponseViewsList>;
 
 export interface CreateEmbedResponse {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -155,9 +154,7 @@ export const HideEmbedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HideEmbedRequest" }) as any as S.Schema<HideEmbedRequest>;
 
 export type HideEmbedResponse = unknown;
-export const HideEmbedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "HideEmbedResponse" }) as any as S.Schema<HideEmbedResponse>;
+export const HideEmbedResponse = DeleteEmbedResponse as any as S.Schema<HideEmbedResponse>;
 
 export type UpdateEmbedRequestRepoType = "datasets";
 export const UpdateEmbedRequestRepoType = S.String;
@@ -193,9 +190,8 @@ export type UpdateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
 export const UpdateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
 
 export type UpdateEmbedResponseViewsList = Array<CreateEmbedRequestViewsItem>;
-export const UpdateEmbedResponseViewsList = /*@__PURE__*/ S.Array(
-  CreateEmbedRequestViewsItem,
-) as any as S.Schema<UpdateEmbedResponseViewsList>;
+export const UpdateEmbedResponseViewsList =
+  CreateEmbedRequestViewsList as any as S.Schema<UpdateEmbedResponseViewsList>;
 
 export interface UpdateEmbedResponse {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -213,21 +209,7 @@ export interface UpdateEmbedResponse {
   rating?: number;
   justification?: string;
 }
-export const UpdateEmbedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    repoId: S.String,
-    views: UpdateEmbedResponseViewsList,
-    sql: S.String,
-    title: S.String,
-    userId: S.String,
-    createdAt: S.String,
-    slug: S.String,
-    private: S.optional(S.Boolean),
-    rating: S.optional(S.Number),
-    justification: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateEmbedResponse" }) as any as S.Schema<UpdateEmbedResponse>;
+export const UpdateEmbedResponse = CreateEmbedResponse as any as S.Schema<UpdateEmbedResponse>;
 
 export type CreateEmbedError = HuggingFaceOpError;
 /** Create embed Create SQL Console embed */

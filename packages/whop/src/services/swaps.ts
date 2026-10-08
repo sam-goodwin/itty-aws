@@ -213,27 +213,21 @@ export const CreateSwapQuoteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resolved source token details. */
 export type CreateSwapQuoteResponseFromTokenMap = { [key: string]: unknown | undefined };
-export const CreateSwapQuoteResponseFromTokenMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateSwapQuoteResponseFromTokenMap>;
+export const CreateSwapQuoteResponseFromTokenMap =
+  CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseFromTokenMap>;
 
 /** Metadata from the request. */
 export type CreateSwapQuoteResponseMetadataMap = { [key: string]: unknown | undefined };
-export const CreateSwapQuoteResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateSwapQuoteResponseMetadataMap>;
+export const CreateSwapQuoteResponseMetadataMap =
+  CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseMetadataMap>;
 
 export type CreateSwapQuoteResponseObject = "swap_quote";
 export const CreateSwapQuoteResponseObject = S.String;
 
 /** Resolved destination token details. */
 export type CreateSwapQuoteResponseToTokenMap = { [key: string]: unknown | undefined };
-export const CreateSwapQuoteResponseToTokenMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateSwapQuoteResponseToTokenMap>;
+export const CreateSwapQuoteResponseToTokenMap =
+  CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseToTokenMap>;
 
 export interface CreateSwapQuoteResponse {
   /** Source token amount used for the quote. */
@@ -355,9 +349,8 @@ export const ListSwapsResponseDataItemStatus = S.String;
 
 /** On-chain transaction hashes produced by the swap. */
 export type ListSwapsResponseDataItemTxHashesList = Array<string>;
-export const ListSwapsResponseDataItemTxHashesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSwapsResponseDataItemTxHashesList>;
+export const ListSwapsResponseDataItemTxHashesList =
+  GetSwapResponseTxHashesList as any as S.Schema<ListSwapsResponseDataItemTxHashesList>;
 
 export interface ListSwapsResponseDataItem {
   /** Account that owns the swap: a business ID prefixed `biz_`, or the user ID for a personal account. */

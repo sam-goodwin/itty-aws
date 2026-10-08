@@ -364,9 +364,8 @@ export const CreateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type ExperimentHoldoutFiltersList = Array<FeatureFlagConditionGroupSchema>;
-export const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
-  FeatureFlagConditionGroupSchema,
-) as any as S.Schema<ExperimentHoldoutFiltersList>;
+export const ExperimentHoldoutFiltersList =
+  CreateExperimentHoldoutRequestFiltersList as any as S.Schema<ExperimentHoldoutFiltersList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -540,9 +539,8 @@ export const PaginatedExperimentHoldoutList = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type UpdateExperimentHoldoutRequestFiltersList = Array<FeatureFlagConditionGroupSchema>;
-export const UpdateExperimentHoldoutRequestFiltersList = /*@__PURE__*/ S.Array(
-  FeatureFlagConditionGroupSchema,
-) as any as S.Schema<UpdateExperimentHoldoutRequestFiltersList>;
+export const UpdateExperimentHoldoutRequestFiltersList =
+  CreateExperimentHoldoutRequestFiltersList as any as S.Schema<UpdateExperimentHoldoutRequestFiltersList>;
 
 export interface UpdateExperimentHoldoutRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -577,9 +575,8 @@ export const UpdateExperimentHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type UpdateExperimentHoldoutsPartialRequestFiltersList =
   Array<FeatureFlagConditionGroupSchema>;
-export const UpdateExperimentHoldoutsPartialRequestFiltersList = /*@__PURE__*/ S.Array(
-  FeatureFlagConditionGroupSchema,
-) as any as S.Schema<UpdateExperimentHoldoutsPartialRequestFiltersList>;
+export const UpdateExperimentHoldoutsPartialRequestFiltersList =
+  CreateExperimentHoldoutRequestFiltersList as any as S.Schema<UpdateExperimentHoldoutsPartialRequestFiltersList>;
 
 export interface UpdateExperimentHoldoutsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

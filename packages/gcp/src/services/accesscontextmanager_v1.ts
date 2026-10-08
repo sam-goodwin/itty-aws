@@ -88,9 +88,7 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** A request to commit dry-run specs in all Service Perimeters belonging to an Access Policy. */
 export interface CommitServicePerimetersRequest {
@@ -783,18 +781,10 @@ export interface IngressSource {
   /** A PrivateServiceConnectEndpoint that is allowed to access the perimeter. The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in. */
   pscEndpoint?: PrivateServiceConnectEndpoint;
 }
-export const IngressSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(S.String),
-    accessLevel: S.optional(S.String),
-    pscEndpoint: S.optional(PrivateServiceConnectEndpoint),
-  }),
-).annotate({ identifier: "IngressSource" }) as any as S.Schema<IngressSource>;
+export const IngressSource = EgressSource as any as S.Schema<IngressSource>;
 
 export type IngressSourceList = Array<IngressSource>;
-export const IngressSourceList = /*@__PURE__*/ S.Array(
-  IngressSource,
-) as any as S.Schema<IngressSourceList>;
+export const IngressSourceList = EgressSourceList as any as S.Schema<IngressSourceList>;
 
 export type IngressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
@@ -2255,13 +2245,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsAccessPoliciesAccessLevelsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

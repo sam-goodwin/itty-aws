@@ -80,9 +80,8 @@ export const ConversationsTicketsBulkUpdateStatusCreateRequest = /*@__PURE__*/ S
 
 /** UUIDs of the tickets whose status changed. */
 export type BulkUpdateStatusResponseIdsList = Array<string>;
-export const BulkUpdateStatusResponseIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateStatusResponseIdsList>;
+export const BulkUpdateStatusResponseIdsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<BulkUpdateStatusResponseIdsList>;
 
 export interface BulkUpdateStatusResponse {
   /** Number of tickets whose status actually changed. */
@@ -99,9 +98,8 @@ export const BulkUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object UUIDs to update tags on. */
 export type ConversationsTicketsBulkUpdateTagsCreateRequestIdsList = Array<string>;
-export const ConversationsTicketsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequestIdsList>;
+export const ConversationsTicketsBulkUpdateTagsCreateRequestIdsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
@@ -109,9 +107,8 @@ export const BulkUpdateTagsActionEnum = S.String;
 
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type ConversationsTicketsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-export const ConversationsTicketsBulkUpdateTagsCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequestTagsList>;
+export const ConversationsTicketsBulkUpdateTagsCreateRequestTagsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequestTagsList>;
 
 export interface ConversationsTicketsBulkUpdateTagsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -142,9 +139,8 @@ export const ConversationsTicketsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.s
 
 /** The object's full tag list after the update. */
 export type BulkUpdateTagsUUIDItemTagsList = Array<string>;
-export const BulkUpdateTagsUUIDItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateTagsUUIDItemTagsList>;
+export const BulkUpdateTagsUUIDItemTagsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<BulkUpdateTagsUUIDItemTagsList>;
 
 export interface BulkUpdateTagsUUIDItem {
   /** UUID of the object whose tags were updated. */
@@ -252,11 +248,8 @@ export const ConversationsTicketsNotesDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ConversationsTicketsNotesDestroyRequest>;
 
 export interface ConversationsTicketsNotesDestroyResponse {}
-export const ConversationsTicketsNotesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConversationsTicketsNotesDestroyResponse",
-}) as any as S.Schema<ConversationsTicketsNotesDestroyResponse>;
+export const ConversationsTicketsNotesDestroyResponse =
+  ConversationsTicketsDestroyResponse as any as S.Schema<ConversationsTicketsNotesDestroyResponse>;
 
 export interface ConversationsViewsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -279,11 +272,8 @@ export const ConversationsViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsViewsDestroyRequest>;
 
 export interface ConversationsViewsDestroyResponse {}
-export const ConversationsViewsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConversationsViewsDestroyResponse",
-}) as any as S.Schema<ConversationsViewsDestroyResponse>;
+export const ConversationsViewsDestroyResponse =
+  ConversationsTicketsDestroyResponse as any as S.Schema<ConversationsViewsDestroyResponse>;
 
 /** * `good` - good * `bad` - bad */
 export type RatingEnum = "good" | "bad";
@@ -320,11 +310,8 @@ export const CreateConversationsTicketsAiFeedbackRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateConversationsTicketsAiFeedbackRequest>;
 
 export interface CreateConversationsTicketsAiFeedbackResponse {}
-export const CreateConversationsTicketsAiFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateConversationsTicketsAiFeedbackResponse",
-}) as any as S.Schema<CreateConversationsTicketsAiFeedbackResponse>;
+export const CreateConversationsTicketsAiFeedbackResponse =
+  ConversationsTicketsDestroyResponse as any as S.Schema<CreateConversationsTicketsAiFeedbackResponse>;
 
 /** * `used` - used * `edited` - edited */
 export type AiDraftHumanOutcomeEnum = "used" | "edited";
@@ -358,17 +345,13 @@ export const CreateConversationsTicketsAiHumanOutcomeRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateConversationsTicketsAiHumanOutcomeRequest>;
 
 export interface CreateConversationsTicketsAiHumanOutcomeResponse {}
-export const CreateConversationsTicketsAiHumanOutcomeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateConversationsTicketsAiHumanOutcomeResponse",
-}) as any as S.Schema<CreateConversationsTicketsAiHumanOutcomeResponse>;
+export const CreateConversationsTicketsAiHumanOutcomeResponse =
+  ConversationsTicketsDestroyResponse as any as S.Schema<CreateConversationsTicketsAiHumanOutcomeResponse>;
 
 /** Tags to apply to the new ticket, e.g. to mark its source. Each is normalized (lowercased, trimmed). Up to 100. */
 export type CreateConversationsTicketsComposeRequestTagsList = Array<string>;
-export const CreateConversationsTicketsComposeRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConversationsTicketsComposeRequestTagsList>;
+export const CreateConversationsTicketsComposeRequestTagsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<CreateConversationsTicketsComposeRequestTagsList>;
 
 export interface CreateConversationsTicketsComposeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -609,9 +592,8 @@ export const TicketViewFiltersAssigneeList = /*@__PURE__*/ S.Array(
 
 /** Tag names to match, combined according to tagsMatch. */
 export type TicketViewFiltersTagsList = Array<string>;
-export const TicketViewFiltersTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TicketViewFiltersTagsList>;
+export const TicketViewFiltersTagsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<TicketViewFiltersTagsList>;
 
 /** * `any` - any * `all` - all */
 export type TicketTagsMatchEnum = "any" | "all";
@@ -619,9 +601,8 @@ export const TicketTagsMatchEnum = S.String;
 
 /** Tickets carrying any of these tags are excluded. */
 export type TicketViewFiltersTagsExcludeList = Array<string>;
-export const TicketViewFiltersTagsExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TicketViewFiltersTagsExcludeList>;
+export const TicketViewFiltersTagsExcludeList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<TicketViewFiltersTagsExcludeList>;
 
 /** * `1` - 1 * `-1` - -1 */
 export type TicketSortOrderEnum = 1 | -1;
@@ -883,10 +864,8 @@ export const TicketAssignmentUserMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TicketAssignmentUserMap>;
 
 export type TicketAssignmentRoleMap = { [key: string]: string | undefined };
-export const TicketAssignmentRoleMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TicketAssignmentRoleMap>;
+export const TicketAssignmentRoleMap =
+  TicketAssignmentUserMap as any as S.Schema<TicketAssignmentRoleMap>;
 
 /** Serializer for ticket assignment (user or role). */
 export interface TicketAssignment {
@@ -919,15 +898,12 @@ export const TicketSessionContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TicketSessionContext" }) as any as S.Schema<TicketSessionContext>;
 
 export type TicketPersonDistinctIdsList = Array<string>;
-export const TicketPersonDistinctIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TicketPersonDistinctIdsList>;
+export const TicketPersonDistinctIdsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<TicketPersonDistinctIdsList>;
 
 export type TicketPersonPropertiesMap = { [key: string]: unknown | undefined };
-export const TicketPersonPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TicketPersonPropertiesMap>;
+export const TicketPersonPropertiesMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<TicketPersonPropertiesMap>;
 
 /** Minimal person serializer for embedding in ticket responses. */
 export interface TicketPerson {
@@ -1403,9 +1379,8 @@ export const TicketAssigneeRequest = S.Unknown as any as S.Schema<TicketAssignee
 
 /** Tag names to set on the ticket. */
 export type UpdateConversationsTicketRequestTagsList = Array<string>;
-export const UpdateConversationsTicketRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConversationsTicketRequestTagsList>;
+export const UpdateConversationsTicketRequestTagsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<UpdateConversationsTicketRequestTagsList>;
 
 export interface UpdateConversationsTicketRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1492,9 +1467,8 @@ export const UpdateConversationsTicketsPartialRequestPriority =
 
 /** Tag names to set on the ticket. */
 export type UpdateConversationsTicketsPartialRequestTagsList = Array<string>;
-export const UpdateConversationsTicketsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConversationsTicketsPartialRequestTagsList>;
+export const UpdateConversationsTicketsPartialRequestTagsList =
+  ConversationsTicketsBulkUpdateStatusCreateRequestIdsList as any as S.Schema<UpdateConversationsTicketsPartialRequestTagsList>;
 
 export interface UpdateConversationsTicketsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

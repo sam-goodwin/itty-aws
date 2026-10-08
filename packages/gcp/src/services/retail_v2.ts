@@ -1370,13 +1370,7 @@ export interface GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion
   productAttributeValue?: GoogleCloudRetailV2ProductAttributeValue;
 }
 export const GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productAttributeValue: S.optional(GoogleCloudRetailV2ProductAttributeValue),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer",
-  }) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
+  GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 
 export type GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswerList =
   Array<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
@@ -1550,7 +1544,7 @@ export const GoogleCloudRetailV2ColorInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRetailV2ColorInfo>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = DoubleList as any as S.Schema<IntegerList>;
 
 /** The rating of a Product. */
 export interface GoogleCloudRetailV2Rating {
@@ -4033,14 +4027,8 @@ export interface GoogleCloudRetailV2PurgeUserEventsRequest {
   /** Actually perform the purge. If `force` is set to false, the method will return the expected purge count without deleting any user events. */
   force?: boolean;
 }
-export const GoogleCloudRetailV2PurgeUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String),
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2PurgeUserEventsRequest",
-}) as any as S.Schema<GoogleCloudRetailV2PurgeUserEventsRequest>;
+export const GoogleCloudRetailV2PurgeUserEventsRequest =
+  GoogleCloudRetailV2PurgeProductsRequest as any as S.Schema<GoogleCloudRetailV2PurgeUserEventsRequest>;
 
 export interface PurgeProjectsLocationsCatalogsUserEventsRequest {
   /** Required. The resource name of the catalog under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}` */
@@ -4147,13 +4135,8 @@ export interface GoogleCloudRetailV2RemoveControlRequest {
   /** Required. The id of the control to apply. Assumed to be in the same catalog as the serving config. */
   controlId?: string;
 }
-export const GoogleCloudRetailV2RemoveControlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    controlId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudRetailV2RemoveControlRequest",
-}) as any as S.Schema<GoogleCloudRetailV2RemoveControlRequest>;
+export const GoogleCloudRetailV2RemoveControlRequest =
+  GoogleCloudRetailV2AddControlRequest as any as S.Schema<GoogleCloudRetailV2RemoveControlRequest>;
 
 export interface RemoveControlProjectsLocationsCatalogsServingConfigsRequest {
   /** Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` */
@@ -4880,9 +4863,7 @@ export const GoogleCloudRetailV2SearchResponseConversationalSearchResultAddition
 export type GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilterList =
   Array<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilterList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilterList>;
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2SearchResponseConversationalSearchResultAdditionalFilterList>;
 
 /** Suggested answers to the follow-up question. */
 export type GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswer =
@@ -4893,9 +4874,7 @@ export const GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggeste
 export type GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswerList =
   Array<GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer>;
 export const GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswerList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer,
-  ) as any as S.Schema<GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswerList>;
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswerList as any as S.Schema<GoogleCloudRetailV2SearchResponseConversationalSearchResultSuggestedAnswerList>;
 
 /** This field specifies all related information that is needed on client side for UI rendering of conversational retail search. */
 export interface GoogleCloudRetailV2SearchResponseConversationalSearchResult {

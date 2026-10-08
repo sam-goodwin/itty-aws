@@ -563,11 +563,8 @@ export const AssociateDefaultVocabularyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateDefaultVocabularyRequest",
 }) as any as S.Schema<AssociateDefaultVocabularyRequest>;
 export interface AssociateDefaultVocabularyResponse {}
-export const AssociateDefaultVocabularyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateDefaultVocabularyResponse",
-}) as any as S.Schema<AssociateDefaultVocabularyResponse>;
+export const AssociateDefaultVocabularyResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateDefaultVocabularyResponse>;
 export type EmailAddressId = string;
 export interface AliasConfiguration {
   EmailAddressId: string;
@@ -604,11 +601,8 @@ export const AssociateEmailAddressAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateEmailAddressAliasRequest",
 }) as any as S.Schema<AssociateEmailAddressAliasRequest>;
 export interface AssociateEmailAddressAliasResponse {}
-export const AssociateEmailAddressAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateEmailAddressAliasResponse",
-}) as any as S.Schema<AssociateEmailAddressAliasResponse>;
+export const AssociateEmailAddressAliasResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateEmailAddressAliasResponse>;
 export type FlowAssociationResourceType =
   | "SMS_PHONE_NUMBER"
   | "INBOUND_EMAIL"
@@ -642,9 +636,7 @@ export const AssociateFlowRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AssociateFlowRequest" }) as any as S.Schema<AssociateFlowRequest>;
 export interface AssociateFlowResponse {}
-export const AssociateFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateFlowResponse",
-}) as any as S.Schema<AssociateFlowResponse>;
+export const AssociateFlowResponse = AssociateBotResponse as any as S.Schema<AssociateFlowResponse>;
 export type HoursOfOperationId = string;
 export interface ParentHoursOfOperationConfig {
   HoursOfOperationId?: string;
@@ -683,11 +675,8 @@ export const AssociateHoursOfOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateHoursOfOperationsRequest",
 }) as any as S.Schema<AssociateHoursOfOperationsRequest>;
 export interface AssociateHoursOfOperationsResponse {}
-export const AssociateHoursOfOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateHoursOfOperationsResponse",
-}) as any as S.Schema<AssociateHoursOfOperationsResponse>;
+export const AssociateHoursOfOperationsResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateHoursOfOperationsResponse>;
 export type InstanceStorageResourceType =
   | "CHAT_TRANSCRIPTS"
   | "CALL_RECORDINGS"
@@ -840,9 +829,8 @@ export const AssociateLambdaFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateLambdaFunctionRequest",
 }) as any as S.Schema<AssociateLambdaFunctionRequest>;
 export interface AssociateLambdaFunctionResponse {}
-export const AssociateLambdaFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "AssociateLambdaFunctionResponse" },
-) as any as S.Schema<AssociateLambdaFunctionResponse>;
+export const AssociateLambdaFunctionResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<AssociateLambdaFunctionResponse>;
 export interface AssociateLexBotRequest {
   InstanceId: string;
   LexBot: LexBot;
@@ -865,9 +853,8 @@ export const AssociateLexBotRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AssociateLexBotRequest" }) as any as S.Schema<AssociateLexBotRequest>;
 export interface AssociateLexBotResponse {}
-export const AssociateLexBotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateLexBotResponse",
-}) as any as S.Schema<AssociateLexBotResponse>;
+export const AssociateLexBotResponse =
+  AssociateBotResponse as any as S.Schema<AssociateLexBotResponse>;
 export type PhoneNumberId = string;
 export type ContactFlowId = string;
 export interface AssociatePhoneNumberContactFlowRequest {
@@ -894,18 +881,13 @@ export const AssociatePhoneNumberContactFlowRequest = /*@__PURE__*/ S.suspend(()
   identifier: "AssociatePhoneNumberContactFlowRequest",
 }) as any as S.Schema<AssociatePhoneNumberContactFlowRequest>;
 export interface AssociatePhoneNumberContactFlowResponse {}
-export const AssociatePhoneNumberContactFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociatePhoneNumberContactFlowResponse",
-}) as any as S.Schema<AssociatePhoneNumberContactFlowResponse>;
+export const AssociatePhoneNumberContactFlowResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociatePhoneNumberContactFlowResponse>;
 export type QueueId = string;
 export interface EmailAddressConfig {
   EmailAddressId: string;
 }
-export const EmailAddressConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EmailAddressId: S.String }),
-).annotate({ identifier: "EmailAddressConfig" }) as any as S.Schema<EmailAddressConfig>;
+export const EmailAddressConfig = AliasConfiguration as any as S.Schema<EmailAddressConfig>;
 export type EmailAddressConfigList = EmailAddressConfig[];
 export const EmailAddressConfigList = /*@__PURE__*/ S.Array(EmailAddressConfig);
 export interface AssociateQueueEmailAddressesRequest {
@@ -934,11 +916,8 @@ export const AssociateQueueEmailAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateQueueEmailAddressesRequest",
 }) as any as S.Schema<AssociateQueueEmailAddressesRequest>;
 export interface AssociateQueueEmailAddressesResponse {}
-export const AssociateQueueEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateQueueEmailAddressesResponse",
-}) as any as S.Schema<AssociateQueueEmailAddressesResponse>;
+export const AssociateQueueEmailAddressesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateQueueEmailAddressesResponse>;
 export type QuickConnectId = string;
 export type QuickConnectsList = string[];
 export const QuickConnectsList = /*@__PURE__*/ S.Array(S.String);
@@ -966,11 +945,8 @@ export const AssociateQueueQuickConnectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateQueueQuickConnectsRequest",
 }) as any as S.Schema<AssociateQueueQuickConnectsRequest>;
 export interface AssociateQueueQuickConnectsResponse {}
-export const AssociateQueueQuickConnectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateQueueQuickConnectsResponse",
-}) as any as S.Schema<AssociateQueueQuickConnectsResponse>;
+export const AssociateQueueQuickConnectsResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateQueueQuickConnectsResponse>;
 export type RoutingProfileId = string;
 export type Channel = "VOICE" | "CHAT" | "TASK" | "EMAIL" | (string & {});
 export const Channel = S.String;
@@ -1040,11 +1016,8 @@ export const AssociateRoutingProfileQueuesRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "AssociateRoutingProfileQueuesRequest",
 }) as any as S.Schema<AssociateRoutingProfileQueuesRequest>;
 export interface AssociateRoutingProfileQueuesResponse {}
-export const AssociateRoutingProfileQueuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateRoutingProfileQueuesResponse",
-}) as any as S.Schema<AssociateRoutingProfileQueuesResponse>;
+export const AssociateRoutingProfileQueuesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateRoutingProfileQueuesResponse>;
 export type PEM = string;
 export interface AssociateSecurityKeyRequest {
   InstanceId: string;
@@ -1072,11 +1045,8 @@ export const AssociateSecurityKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateSecurityKeyResponse {
   AssociationId?: string;
 }
-export const AssociateSecurityKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssociationId: S.optional(S.String) }),
-).annotate({
-  identifier: "AssociateSecurityKeyResponse",
-}) as any as S.Schema<AssociateSecurityKeyResponse>;
+export const AssociateSecurityKeyResponse =
+  AssociateInstanceStorageConfigResponse as any as S.Schema<AssociateSecurityKeyResponse>;
 export type SecurityProfileId = string;
 export interface SecurityProfileItem {
   Id?: string;
@@ -1116,11 +1086,8 @@ export const AssociateSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateSecurityProfilesRequest",
 }) as any as S.Schema<AssociateSecurityProfilesRequest>;
 export interface AssociateSecurityProfilesResponse {}
-export const AssociateSecurityProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateSecurityProfilesResponse",
-}) as any as S.Schema<AssociateSecurityProfilesResponse>;
+export const AssociateSecurityProfilesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateSecurityProfilesResponse>;
 export type TrafficDistributionGroupIdOrArn = string;
 export type UserId = string;
 export interface AssociateTrafficDistributionGroupUserRequest {
@@ -1150,11 +1117,8 @@ export const AssociateTrafficDistributionGroupUserRequest = /*@__PURE__*/ S.susp
   identifier: "AssociateTrafficDistributionGroupUserRequest",
 }) as any as S.Schema<AssociateTrafficDistributionGroupUserRequest>;
 export interface AssociateTrafficDistributionGroupUserResponse {}
-export const AssociateTrafficDistributionGroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateTrafficDistributionGroupUserResponse",
-}) as any as S.Schema<AssociateTrafficDistributionGroupUserResponse>;
+export const AssociateTrafficDistributionGroupUserResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateTrafficDistributionGroupUserResponse>;
 export type PredefinedAttributeName = string;
 export type PredefinedAttributeStringValue = string;
 export type ProficiencyLevel = number;
@@ -1192,14 +1156,12 @@ export const AssociateUserProficienciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateUserProficienciesRequest",
 }) as any as S.Schema<AssociateUserProficienciesRequest>;
 export interface AssociateUserProficienciesResponse {}
-export const AssociateUserProficienciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateUserProficienciesResponse",
-}) as any as S.Schema<AssociateUserProficienciesResponse>;
+export const AssociateUserProficienciesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<AssociateUserProficienciesResponse>;
 export type WorkspaceId = string;
 export type WorkspaceResourceArnList = string[];
-export const WorkspaceResourceArnList = /*@__PURE__*/ S.Array(S.String);
+export const WorkspaceResourceArnList =
+  QuickConnectsList as any as S.Schema<WorkspaceResourceArnList>;
 export interface AssociateWorkspaceRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -1268,7 +1230,7 @@ export const AssociateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateWorkspaceResponse",
 }) as any as S.Schema<AssociateWorkspaceResponse>;
 export type DataSetIds = string[];
-export const DataSetIds = /*@__PURE__*/ S.Array(S.String);
+export const DataSetIds = QuickConnectsList as any as S.Schema<DataSetIds>;
 export interface BatchAssociateAnalyticsDataSetRequest {
   InstanceId: string;
   DataSetIds: string[];
@@ -1514,15 +1476,11 @@ export interface BatchDeleteDataTableValueFailureResult {
   AttributeName: string;
   Message: string;
 }
-export const BatchDeleteDataTableValueFailureResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrimaryValues: PrimaryValuesSet, AttributeName: S.String, Message: S.String }),
-).annotate({
-  identifier: "BatchDeleteDataTableValueFailureResult",
-}) as any as S.Schema<BatchDeleteDataTableValueFailureResult>;
+export const BatchDeleteDataTableValueFailureResult =
+  BatchCreateDataTableValueFailureResult as any as S.Schema<BatchDeleteDataTableValueFailureResult>;
 export type BatchDeleteDataTableValueFailureResultList = BatchDeleteDataTableValueFailureResult[];
-export const BatchDeleteDataTableValueFailureResultList = /*@__PURE__*/ S.Array(
-  BatchDeleteDataTableValueFailureResult,
-);
+export const BatchDeleteDataTableValueFailureResultList =
+  BatchCreateDataTableValueFailureResultList as any as S.Schema<BatchDeleteDataTableValueFailureResultList>;
 export interface BatchDeleteDataTableValueResponse {
   Successful: BatchDeleteDataTableValueSuccessResult[];
   Failed: BatchDeleteDataTableValueFailureResult[];
@@ -1615,16 +1573,12 @@ export interface BatchDescribeDataTableValueFailureResult {
   AttributeName: string;
   Message: string;
 }
-export const BatchDescribeDataTableValueFailureResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrimaryValues: PrimaryValuesSet, AttributeName: S.String, Message: S.String }),
-).annotate({
-  identifier: "BatchDescribeDataTableValueFailureResult",
-}) as any as S.Schema<BatchDescribeDataTableValueFailureResult>;
+export const BatchDescribeDataTableValueFailureResult =
+  BatchCreateDataTableValueFailureResult as any as S.Schema<BatchDescribeDataTableValueFailureResult>;
 export type BatchDescribeDataTableValueFailureResultList =
   BatchDescribeDataTableValueFailureResult[];
-export const BatchDescribeDataTableValueFailureResultList = /*@__PURE__*/ S.Array(
-  BatchDescribeDataTableValueFailureResult,
-);
+export const BatchDescribeDataTableValueFailureResultList =
+  BatchCreateDataTableValueFailureResultList as any as S.Schema<BatchDescribeDataTableValueFailureResultList>;
 export interface BatchDescribeDataTableValueResponse {
   Successful: BatchDescribeDataTableValueSuccessResult[];
   Failed: BatchDescribeDataTableValueFailureResult[];
@@ -1671,7 +1625,7 @@ export const BatchDisassociateAnalyticsDataSetResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<BatchDisassociateAnalyticsDataSetResponse>;
 export type FileId = string;
 export type FileIdList = string[];
-export const FileIdList = /*@__PURE__*/ S.Array(S.String);
+export const FileIdList = QuickConnectsList as any as S.Schema<FileIdList>;
 export interface BatchGetAttachedFileMetadataRequest {
   FileIds: string[];
   InstanceId: string;
@@ -1777,7 +1731,8 @@ export const BatchGetAttachedFileMetadataResponse = /*@__PURE__*/ S.suspend(() =
   identifier: "BatchGetAttachedFileMetadataResponse",
 }) as any as S.Schema<BatchGetAttachedFileMetadataResponse>;
 export type ResourceArnListMaxLimit100 = string[];
-export const ResourceArnListMaxLimit100 = /*@__PURE__*/ S.Array(S.String);
+export const ResourceArnListMaxLimit100 =
+  QuickConnectsList as any as S.Schema<ResourceArnListMaxLimit100>;
 export type ListFlowAssociationResourceType =
   | "WHATSAPP_MESSAGING_PHONE_NUMBER"
   | "VOICE_PHONE_NUMBER"
@@ -1853,7 +1808,7 @@ export type RequestIdentifier = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
-export const Attributes = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Attributes = TagMap as any as S.Schema<Attributes>;
 export type CampaignId = string;
 export interface Campaign {
   CampaignId?: string;
@@ -2024,45 +1979,27 @@ export interface BatchUpdateDataTableValueSuccessResult {
   AttributeName: string;
   LockVersion: DataTableLockVersion;
 }
-export const BatchUpdateDataTableValueSuccessResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryValues: PrimaryValuesSet,
-    AttributeName: S.String,
-    LockVersion: DataTableLockVersion,
-  }),
-).annotate({
-  identifier: "BatchUpdateDataTableValueSuccessResult",
-}) as any as S.Schema<BatchUpdateDataTableValueSuccessResult>;
+export const BatchUpdateDataTableValueSuccessResult =
+  BatchDeleteDataTableValueSuccessResult as any as S.Schema<BatchUpdateDataTableValueSuccessResult>;
 export type BatchUpdateDataTableValueSuccessResultList = BatchUpdateDataTableValueSuccessResult[];
-export const BatchUpdateDataTableValueSuccessResultList = /*@__PURE__*/ S.Array(
-  BatchUpdateDataTableValueSuccessResult,
-);
+export const BatchUpdateDataTableValueSuccessResultList =
+  BatchDeleteDataTableValueSuccessResultList as any as S.Schema<BatchUpdateDataTableValueSuccessResultList>;
 export interface BatchUpdateDataTableValueFailureResult {
   PrimaryValues: PrimaryValue[];
   AttributeName: string;
   Message: string;
 }
-export const BatchUpdateDataTableValueFailureResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PrimaryValues: PrimaryValuesSet, AttributeName: S.String, Message: S.String }),
-).annotate({
-  identifier: "BatchUpdateDataTableValueFailureResult",
-}) as any as S.Schema<BatchUpdateDataTableValueFailureResult>;
+export const BatchUpdateDataTableValueFailureResult =
+  BatchCreateDataTableValueFailureResult as any as S.Schema<BatchUpdateDataTableValueFailureResult>;
 export type BatchUpdateDataTableValueFailureResultList = BatchUpdateDataTableValueFailureResult[];
-export const BatchUpdateDataTableValueFailureResultList = /*@__PURE__*/ S.Array(
-  BatchUpdateDataTableValueFailureResult,
-);
+export const BatchUpdateDataTableValueFailureResultList =
+  BatchCreateDataTableValueFailureResultList as any as S.Schema<BatchUpdateDataTableValueFailureResultList>;
 export interface BatchUpdateDataTableValueResponse {
   Successful: BatchUpdateDataTableValueSuccessResult[];
   Failed: BatchUpdateDataTableValueFailureResult[];
 }
-export const BatchUpdateDataTableValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Successful: BatchUpdateDataTableValueSuccessResultList,
-    Failed: BatchUpdateDataTableValueFailureResultList,
-  }),
-).annotate({
-  identifier: "BatchUpdateDataTableValueResponse",
-}) as any as S.Schema<BatchUpdateDataTableValueResponse>;
+export const BatchUpdateDataTableValueResponse =
+  BatchDeleteDataTableValueResponse as any as S.Schema<BatchUpdateDataTableValueResponse>;
 export type PhoneNumber = string;
 export type PhoneNumberDescription = string;
 export interface ClaimPhoneNumberRequest {
@@ -2116,11 +2053,8 @@ export const CompleteAttachedFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompleteAttachedFileUploadRequest",
 }) as any as S.Schema<CompleteAttachedFileUploadRequest>;
 export interface CompleteAttachedFileUploadResponse {}
-export const CompleteAttachedFileUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CompleteAttachedFileUploadResponse",
-}) as any as S.Schema<CompleteAttachedFileUploadResponse>;
+export const CompleteAttachedFileUploadResponse =
+  AssociateContactWithUserResponse as any as S.Schema<CompleteAttachedFileUploadResponse>;
 export type AgentStatusName = string;
 export type AgentStatusDescription = string;
 export type AgentStatusState = "ENABLED" | "DISABLED" | (string & {});
@@ -2211,7 +2145,7 @@ export const CreateAttachedFileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAttachedFileResponse",
 }) as any as S.Schema<CreateAttachedFileResponse>;
 export type SecurityProfileIds = string[];
-export const SecurityProfileIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityProfileIds = QuickConnectsList as any as S.Schema<SecurityProfileIds>;
 export type AuthCodeEntityType = "CUSTOMER_PROFILE" | (string & {});
 export const AuthCodeEntityType = S.String;
 
@@ -2737,7 +2671,7 @@ export type ValueBoundary = number;
 export type PositiveAndNegativeDouble = number;
 export type PositiveDouble = number;
 export type ValidationEnumValues = string[];
-export const ValidationEnumValues = /*@__PURE__*/ S.Array(S.String);
+export const ValidationEnumValues = QuickConnectsList as any as S.Schema<ValidationEnumValues>;
 export interface ValidationEnum {
   Strict?: boolean;
   Values?: string[];
@@ -3136,22 +3070,11 @@ export interface EvaluationFormMultiSelectQuestionOption {
   AutomaticFailConfiguration?: AutomaticFailConfiguration;
   PointsConfiguration?: QuestionOptionPointsConfiguration;
 }
-export const EvaluationFormMultiSelectQuestionOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RefId: S.String,
-    Text: S.String,
-    Score: S.optional(S.Number),
-    AutomaticFail: S.optional(S.Boolean),
-    AutomaticFailConfiguration: S.optional(AutomaticFailConfiguration),
-    PointsConfiguration: S.optional(QuestionOptionPointsConfiguration),
-  }),
-).annotate({
-  identifier: "EvaluationFormMultiSelectQuestionOption",
-}) as any as S.Schema<EvaluationFormMultiSelectQuestionOption>;
+export const EvaluationFormMultiSelectQuestionOption =
+  EvaluationFormSingleSelectQuestionOption as any as S.Schema<EvaluationFormMultiSelectQuestionOption>;
 export type EvaluationFormMultiSelectQuestionOptionList = EvaluationFormMultiSelectQuestionOption[];
-export const EvaluationFormMultiSelectQuestionOptionList = /*@__PURE__*/ S.Array(
-  EvaluationFormMultiSelectQuestionOption,
-);
+export const EvaluationFormMultiSelectQuestionOptionList =
+  EvaluationFormSingleSelectQuestionOptionList as any as S.Schema<EvaluationFormMultiSelectQuestionOptionList>;
 export type EvaluationFormMultiSelectQuestionDisplayMode = "DROPDOWN" | "CHECKBOX" | (string & {});
 export const EvaluationFormMultiSelectQuestionDisplayMode = S.String;
 
@@ -3163,7 +3086,7 @@ export type MultiSelectQuestionRuleCategoryAutomationCondition =
 export const MultiSelectQuestionRuleCategoryAutomationCondition = S.String;
 
 export type ReferenceIdList = string[];
-export const ReferenceIdList = /*@__PURE__*/ S.Array(S.String);
+export const ReferenceIdList = QuickConnectsList as any as S.Schema<ReferenceIdList>;
 export interface MultiSelectQuestionRuleCategoryAutomation {
   Category: string;
   Condition: MultiSelectQuestionRuleCategoryAutomationCondition;
@@ -3791,10 +3714,10 @@ export type MonthList = number[];
 export const MonthList = /*@__PURE__*/ S.Array(S.Number);
 export type MonthDay = number;
 export type MonthDayList = number[];
-export const MonthDayList = /*@__PURE__*/ S.Array(S.Number);
+export const MonthDayList = MonthList as any as S.Schema<MonthDayList>;
 export type WeekdayOccurrenceInteger = number;
 export type WeekdayOccurrenceList = number[];
-export const WeekdayOccurrenceList = /*@__PURE__*/ S.Array(S.Number);
+export const WeekdayOccurrenceList = MonthList as any as S.Schema<WeekdayOccurrenceList>;
 export interface RecurrencePattern {
   Frequency: RecurrenceFrequency;
   Interval: number;
@@ -3982,7 +3905,7 @@ export type MetricFilterNumberConditionComparison =
 export const MetricFilterNumberConditionComparison = S.String;
 
 export type NumberValueList = number[];
-export const NumberValueList = /*@__PURE__*/ S.Array(S.Number);
+export const NumberValueList = MonthList as any as S.Schema<NumberValueList>;
 export interface MetricFilterNumberCondition {
   Comparison: MetricFilterNumberConditionComparison;
   Values: number[];
@@ -3996,7 +3919,7 @@ export type MetricFilterStringConditionComparison = "MATCHES_ANY" | "MATCHES_NON
 export const MetricFilterStringConditionComparison = S.String;
 
 export type StringValueList = string[];
-export const StringValueList = /*@__PURE__*/ S.Array(S.String);
+export const StringValueList = QuickConnectsList as any as S.Schema<StringValueList>;
 export interface MetricFilterStringCondition {
   Comparison: MetricFilterStringConditionComparison;
   Values: string[];
@@ -4110,7 +4033,7 @@ export const CreateMetricResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MetricArn: S.String, MetricId: S.String }),
 ).annotate({ identifier: "CreateMetricResponse" }) as any as S.Schema<CreateMetricResponse>;
 export type RecipientList = string[];
-export const RecipientList = /*@__PURE__*/ S.Array(S.String);
+export const RecipientList = QuickConnectsList as any as S.Schema<RecipientList>;
 export type ConfigurableNotificationPriority = "HIGH" | "LOW" | (string & {});
 export const ConfigurableNotificationPriority = S.String;
 
@@ -4301,14 +4224,16 @@ export const CreatePersistentContactAssociationResponse = /*@__PURE__*/ S.suspen
   identifier: "CreatePersistentContactAssociationResponse",
 }) as any as S.Schema<CreatePersistentContactAssociationResponse>;
 export type PredefinedAttributeStringValuesList = string[];
-export const PredefinedAttributeStringValuesList = /*@__PURE__*/ S.Array(S.String);
+export const PredefinedAttributeStringValuesList =
+  QuickConnectsList as any as S.Schema<PredefinedAttributeStringValuesList>;
 export type PredefinedAttributeValues = { StringList: string[] };
 export const PredefinedAttributeValues = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ StringList: PredefinedAttributeStringValuesList }),
 ]);
 export type PredefinedAttributePurposeName = string;
 export type PredefinedAttributePurposeNameList = string[];
-export const PredefinedAttributePurposeNameList = /*@__PURE__*/ S.Array(S.String);
+export const PredefinedAttributePurposeNameList =
+  QuickConnectsList as any as S.Schema<PredefinedAttributePurposeNameList>;
 export type EnableValueValidationOnAssociation = boolean;
 export interface InputPredefinedAttributeConfiguration {
   EnableValueValidationOnAssociation?: boolean;
@@ -4346,11 +4271,8 @@ export const CreatePredefinedAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePredefinedAttributeRequest",
 }) as any as S.Schema<CreatePredefinedAttributeRequest>;
 export interface CreatePredefinedAttributeResponse {}
-export const CreatePredefinedAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreatePredefinedAttributeResponse",
-}) as any as S.Schema<CreatePredefinedAttributeResponse>;
+export const CreatePredefinedAttributeResponse =
+  AssociateContactWithUserResponse as any as S.Schema<CreatePredefinedAttributeResponse>;
 export type PromptDescription = string;
 export type S3Uri = string;
 export interface CreatePromptRequest {
@@ -4757,11 +4679,8 @@ export const EventBridgeActionDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventBridgeActionDefinition",
 }) as any as S.Schema<EventBridgeActionDefinition>;
 export interface AssignContactCategoryActionDefinition {}
-export const AssignContactCategoryActionDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssignContactCategoryActionDefinition",
-}) as any as S.Schema<AssignContactCategoryActionDefinition>;
+export const AssignContactCategoryActionDefinition =
+  AssociateContactWithUserResponse as any as S.Schema<AssignContactCategoryActionDefinition>;
 export type NotificationDeliveryType = "EMAIL" | (string & {});
 export const NotificationDeliveryType = S.String;
 
@@ -4771,9 +4690,9 @@ export type NotificationContentType = "PLAIN_TEXT" | (string & {});
 export const NotificationContentType = S.String;
 
 export type UserTagMap = { [key: string]: string | undefined };
-export const UserTagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const UserTagMap = TagMap as any as S.Schema<UserTagMap>;
 export type UserIdList = string[];
-export const UserIdList = /*@__PURE__*/ S.Array(S.String);
+export const UserIdList = QuickConnectsList as any as S.Schema<UserIdList>;
 export interface NotificationRecipientType {
   UserTags?: { [key: string]: string | undefined };
   UserIds?: string[];
@@ -4805,9 +4724,7 @@ export const SendNotificationActionDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SendNotificationActionDefinition>;
 export type FieldValueId = string;
 export interface EmptyFieldValue {}
-export const EmptyFieldValue = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EmptyFieldValue",
-}) as any as S.Schema<EmptyFieldValue>;
+export const EmptyFieldValue = AssociateBotResponse as any as S.Schema<EmptyFieldValue>;
 export type FieldStringValue = string;
 export interface FieldValueUnion {
   BooleanValue?: boolean;
@@ -4889,11 +4806,8 @@ export const AssignSlaActionDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignSlaActionDefinition",
 }) as any as S.Schema<AssignSlaActionDefinition>;
 export interface EndAssociatedTasksActionDefinition {}
-export const EndAssociatedTasksActionDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EndAssociatedTasksActionDefinition",
-}) as any as S.Schema<EndAssociatedTasksActionDefinition>;
+export const EndAssociatedTasksActionDefinition =
+  AssociateContactWithUserResponse as any as S.Schema<EndAssociatedTasksActionDefinition>;
 export type EvaluationFormId = string;
 export interface SubmitAutoEvaluationActionDefinition {
   EvaluationFormId: string;
@@ -5046,7 +4960,7 @@ export type CreateSecurityProfileName = string;
 export type SecurityProfileDescription = string;
 export type SecurityProfilePermission = string;
 export type PermissionsList = string[];
-export const PermissionsList = /*@__PURE__*/ S.Array(S.String);
+export const PermissionsList = QuickConnectsList as any as S.Schema<PermissionsList>;
 export type SecurityProfilePolicyKey = string;
 export type SecurityProfilePolicyValue = string;
 export type AllowedAccessControlTags = { [key: string]: string | undefined };
@@ -5056,11 +4970,12 @@ export const AllowedAccessControlTags = /*@__PURE__*/ S.Record(
 );
 export type TagRestrictedResourceName = string;
 export type TagRestrictedResourceList = string[];
-export const TagRestrictedResourceList = /*@__PURE__*/ S.Array(S.String);
+export const TagRestrictedResourceList =
+  QuickConnectsList as any as S.Schema<TagRestrictedResourceList>;
 export type Namespace = string;
 export type Permission = string;
 export type ApplicationPermissions = string[];
-export const ApplicationPermissions = /*@__PURE__*/ S.Array(S.String);
+export const ApplicationPermissions = QuickConnectsList as any as S.Schema<ApplicationPermissions>;
 export type ApplicationType = "MCP" | "THIRD_PARTY_APPLICATION" | (string & {});
 export const ApplicationType = S.String;
 
@@ -5080,7 +4995,8 @@ export type Applications = Application[];
 export const Applications = /*@__PURE__*/ S.Array(Application);
 export type HierarchyRestrictedResourceName = string;
 export type HierarchyRestrictedResourceList = string[];
-export const HierarchyRestrictedResourceList = /*@__PURE__*/ S.Array(S.String);
+export const HierarchyRestrictedResourceList =
+  QuickConnectsList as any as S.Schema<HierarchyRestrictedResourceList>;
 export type HierarchyGroupId = string;
 export type FlowModuleType = "MCP" | (string & {});
 export const FlowModuleType = S.String;
@@ -5113,7 +5029,7 @@ export const AccessType = S.String;
 export type PrimaryAttributeContextKeyName = string;
 export type IAMRestrictedPrimaryValue = string;
 export type PrimaryValueList = string[];
-export const PrimaryValueList = /*@__PURE__*/ S.Array(S.String);
+export const PrimaryValueList = QuickConnectsList as any as S.Schema<PrimaryValueList>;
 export interface PrimaryAttributeValue {
   AccessType?: AccessType;
   AttributeName?: string;
@@ -5232,19 +5148,17 @@ export const RequiredTaskTemplateFields = /*@__PURE__*/ S.Array(RequiredFieldInf
 export interface ReadOnlyFieldInfo {
   Id?: TaskTemplateFieldIdentifier;
 }
-export const ReadOnlyFieldInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(TaskTemplateFieldIdentifier) }),
-).annotate({ identifier: "ReadOnlyFieldInfo" }) as any as S.Schema<ReadOnlyFieldInfo>;
+export const ReadOnlyFieldInfo = RequiredFieldInfo as any as S.Schema<ReadOnlyFieldInfo>;
 export type ReadOnlyTaskTemplateFields = ReadOnlyFieldInfo[];
-export const ReadOnlyTaskTemplateFields = /*@__PURE__*/ S.Array(ReadOnlyFieldInfo);
+export const ReadOnlyTaskTemplateFields =
+  RequiredTaskTemplateFields as any as S.Schema<ReadOnlyTaskTemplateFields>;
 export interface InvisibleFieldInfo {
   Id?: TaskTemplateFieldIdentifier;
 }
-export const InvisibleFieldInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(TaskTemplateFieldIdentifier) }),
-).annotate({ identifier: "InvisibleFieldInfo" }) as any as S.Schema<InvisibleFieldInfo>;
+export const InvisibleFieldInfo = RequiredFieldInfo as any as S.Schema<InvisibleFieldInfo>;
 export type InvisibleTaskTemplateFields = InvisibleFieldInfo[];
-export const InvisibleTaskTemplateFields = /*@__PURE__*/ S.Array(InvisibleFieldInfo);
+export const InvisibleTaskTemplateFields =
+  RequiredTaskTemplateFields as any as S.Schema<InvisibleTaskTemplateFields>;
 export interface TaskTemplateConstraints {
   RequiredFields?: RequiredFieldInfo[];
   ReadOnlyFields?: ReadOnlyFieldInfo[];
@@ -5301,7 +5215,7 @@ export const TaskTemplateFieldType = S.String;
 
 export type TaskTemplateSingleSelectOption = string;
 export type SingleSelectOptions = string[];
-export const SingleSelectOptions = /*@__PURE__*/ S.Array(S.String);
+export const SingleSelectOptions = QuickConnectsList as any as S.Schema<SingleSelectOptions>;
 export interface TaskTemplateField {
   Id: TaskTemplateFieldIdentifier;
   Description?: string;
@@ -5484,11 +5398,8 @@ export interface CreateTrafficDistributionGroupResponse {
   Id?: string;
   Arn?: string;
 }
-export const CreateTrafficDistributionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateTrafficDistributionGroupResponse",
-}) as any as S.Schema<CreateTrafficDistributionGroupResponse>;
+export const CreateTrafficDistributionGroupResponse =
+  CreateContactFlowModuleResponse as any as S.Schema<CreateTrafficDistributionGroupResponse>;
 export type UseCaseType = "RULES_EVALUATION" | "CONNECT_CAMPAIGNS" | (string & {});
 export const UseCaseType = S.String;
 
@@ -6085,9 +5996,8 @@ export const CreateWorkspacePageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateWorkspacePageRequest",
 }) as any as S.Schema<CreateWorkspacePageRequest>;
 export interface CreateWorkspacePageResponse {}
-export const CreateWorkspacePageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateWorkspacePageResponse",
-}) as any as S.Schema<CreateWorkspacePageResponse>;
+export const CreateWorkspacePageResponse =
+  AssociateBotResponse as any as S.Schema<CreateWorkspacePageResponse>;
 export interface DeactivateEvaluationFormRequest {
   InstanceId: string;
   EvaluationFormId: string;
@@ -6119,15 +6029,8 @@ export interface DeactivateEvaluationFormResponse {
   EvaluationFormArn: string;
   EvaluationFormVersion: number;
 }
-export const DeactivateEvaluationFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EvaluationFormId: S.String,
-    EvaluationFormArn: S.String,
-    EvaluationFormVersion: S.Number,
-  }),
-).annotate({
-  identifier: "DeactivateEvaluationFormResponse",
-}) as any as S.Schema<DeactivateEvaluationFormResponse>;
+export const DeactivateEvaluationFormResponse =
+  ActivateEvaluationFormResponse as any as S.Schema<DeactivateEvaluationFormResponse>;
 export interface DeleteAttachedFileRequest {
   InstanceId: string;
   FileId: string;
@@ -6152,9 +6055,8 @@ export const DeleteAttachedFileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAttachedFileRequest",
 }) as any as S.Schema<DeleteAttachedFileRequest>;
 export interface DeleteAttachedFileResponse {}
-export const DeleteAttachedFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAttachedFileResponse",
-}) as any as S.Schema<DeleteAttachedFileResponse>;
+export const DeleteAttachedFileResponse =
+  AssociateBotResponse as any as S.Schema<DeleteAttachedFileResponse>;
 export type ContactField =
   | "CUSTOMER_ENDPOINT"
   | "ADDITIONAL_EMAIL_RECIPIENTS"
@@ -6186,9 +6088,8 @@ export const DeleteContactDataRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteContactDataRequest" }) as any as S.Schema<DeleteContactDataRequest>;
 export interface DeleteContactDataResponse {}
-export const DeleteContactDataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContactDataResponse",
-}) as any as S.Schema<DeleteContactDataResponse>;
+export const DeleteContactDataResponse =
+  AssociateBotResponse as any as S.Schema<DeleteContactDataResponse>;
 export interface DeleteContactEvaluationRequest {
   InstanceId: string;
   EvaluationId: string;
@@ -6211,9 +6112,8 @@ export const DeleteContactEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteContactEvaluationRequest",
 }) as any as S.Schema<DeleteContactEvaluationRequest>;
 export interface DeleteContactEvaluationResponse {}
-export const DeleteContactEvaluationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteContactEvaluationResponse" },
-) as any as S.Schema<DeleteContactEvaluationResponse>;
+export const DeleteContactEvaluationResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<DeleteContactEvaluationResponse>;
 export interface DeleteContactFlowRequest {
   InstanceId: string;
   ContactFlowId: string;
@@ -6234,9 +6134,8 @@ export const DeleteContactFlowRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteContactFlowRequest" }) as any as S.Schema<DeleteContactFlowRequest>;
 export interface DeleteContactFlowResponse {}
-export const DeleteContactFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContactFlowResponse",
-}) as any as S.Schema<DeleteContactFlowResponse>;
+export const DeleteContactFlowResponse =
+  AssociateBotResponse as any as S.Schema<DeleteContactFlowResponse>;
 export interface DeleteContactFlowModuleRequest {
   InstanceId: string;
   ContactFlowModuleId: string;
@@ -6259,9 +6158,8 @@ export const DeleteContactFlowModuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteContactFlowModuleRequest",
 }) as any as S.Schema<DeleteContactFlowModuleRequest>;
 export interface DeleteContactFlowModuleResponse {}
-export const DeleteContactFlowModuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteContactFlowModuleResponse" },
-) as any as S.Schema<DeleteContactFlowModuleResponse>;
+export const DeleteContactFlowModuleResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<DeleteContactFlowModuleResponse>;
 export interface DeleteContactFlowModuleAliasRequest {
   InstanceId: string;
   ContactFlowModuleId: string;
@@ -6289,11 +6187,8 @@ export const DeleteContactFlowModuleAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteContactFlowModuleAliasRequest",
 }) as any as S.Schema<DeleteContactFlowModuleAliasRequest>;
 export interface DeleteContactFlowModuleAliasResponse {}
-export const DeleteContactFlowModuleAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContactFlowModuleAliasResponse",
-}) as any as S.Schema<DeleteContactFlowModuleAliasResponse>;
+export const DeleteContactFlowModuleAliasResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteContactFlowModuleAliasResponse>;
 export interface DeleteContactFlowModuleVersionRequest {
   InstanceId: string;
   ContactFlowModuleId: string;
@@ -6321,11 +6216,8 @@ export const DeleteContactFlowModuleVersionRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteContactFlowModuleVersionRequest",
 }) as any as S.Schema<DeleteContactFlowModuleVersionRequest>;
 export interface DeleteContactFlowModuleVersionResponse {}
-export const DeleteContactFlowModuleVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContactFlowModuleVersionResponse",
-}) as any as S.Schema<DeleteContactFlowModuleVersionResponse>;
+export const DeleteContactFlowModuleVersionResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteContactFlowModuleVersionResponse>;
 export interface DeleteContactFlowVersionRequest {
   InstanceId: string;
   ContactFlowId: string;
@@ -6353,11 +6245,8 @@ export const DeleteContactFlowVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteContactFlowVersionRequest",
 }) as any as S.Schema<DeleteContactFlowVersionRequest>;
 export interface DeleteContactFlowVersionResponse {}
-export const DeleteContactFlowVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteContactFlowVersionResponse",
-}) as any as S.Schema<DeleteContactFlowVersionResponse>;
+export const DeleteContactFlowVersionResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteContactFlowVersionResponse>;
 export interface DeleteDataTableRequest {
   InstanceId: string;
   DataTableId: string;
@@ -6378,9 +6267,8 @@ export const DeleteDataTableRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDataTableRequest" }) as any as S.Schema<DeleteDataTableRequest>;
 export interface DeleteDataTableResponse {}
-export const DeleteDataTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataTableResponse",
-}) as any as S.Schema<DeleteDataTableResponse>;
+export const DeleteDataTableResponse =
+  AssociateBotResponse as any as S.Schema<DeleteDataTableResponse>;
 export interface DeleteDataTableAttributeRequest {
   InstanceId: string;
   DataTableId: string;
@@ -6437,9 +6325,8 @@ export const DeleteEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEmailAddressRequest",
 }) as any as S.Schema<DeleteEmailAddressRequest>;
 export interface DeleteEmailAddressResponse {}
-export const DeleteEmailAddressResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailAddressResponse",
-}) as any as S.Schema<DeleteEmailAddressResponse>;
+export const DeleteEmailAddressResponse =
+  AssociateBotResponse as any as S.Schema<DeleteEmailAddressResponse>;
 export interface DeleteEvaluationFormRequest {
   InstanceId: string;
   EvaluationFormId: string;
@@ -6464,9 +6351,8 @@ export const DeleteEvaluationFormRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEvaluationFormRequest",
 }) as any as S.Schema<DeleteEvaluationFormRequest>;
 export interface DeleteEvaluationFormResponse {}
-export const DeleteEvaluationFormResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEvaluationFormResponse",
-}) as any as S.Schema<DeleteEvaluationFormResponse>;
+export const DeleteEvaluationFormResponse =
+  AssociateBotResponse as any as S.Schema<DeleteEvaluationFormResponse>;
 export interface DeleteExtractionDefinitionRequest {
   InstanceId: string;
   ExtractionDefinitionId: string;
@@ -6492,11 +6378,8 @@ export const DeleteExtractionDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteExtractionDefinitionRequest",
 }) as any as S.Schema<DeleteExtractionDefinitionRequest>;
 export interface DeleteExtractionDefinitionResponse {}
-export const DeleteExtractionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteExtractionDefinitionResponse",
-}) as any as S.Schema<DeleteExtractionDefinitionResponse>;
+export const DeleteExtractionDefinitionResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteExtractionDefinitionResponse>;
 export interface DeleteHoursOfOperationRequest {
   InstanceId: string;
   HoursOfOperationId: string;
@@ -6519,9 +6402,8 @@ export const DeleteHoursOfOperationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteHoursOfOperationRequest",
 }) as any as S.Schema<DeleteHoursOfOperationRequest>;
 export interface DeleteHoursOfOperationResponse {}
-export const DeleteHoursOfOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHoursOfOperationResponse",
-}) as any as S.Schema<DeleteHoursOfOperationResponse>;
+export const DeleteHoursOfOperationResponse =
+  AssociateBotResponse as any as S.Schema<DeleteHoursOfOperationResponse>;
 export interface DeleteHoursOfOperationOverrideRequest {
   InstanceId: string;
   HoursOfOperationId: string;
@@ -6549,11 +6431,8 @@ export const DeleteHoursOfOperationOverrideRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteHoursOfOperationOverrideRequest",
 }) as any as S.Schema<DeleteHoursOfOperationOverrideRequest>;
 export interface DeleteHoursOfOperationOverrideResponse {}
-export const DeleteHoursOfOperationOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteHoursOfOperationOverrideResponse",
-}) as any as S.Schema<DeleteHoursOfOperationOverrideResponse>;
+export const DeleteHoursOfOperationOverrideResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteHoursOfOperationOverrideResponse>;
 export interface DeleteInstanceRequest {
   InstanceId: string;
   ClientToken?: string;
@@ -6574,9 +6453,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  AssociateBotResponse as any as S.Schema<DeleteInstanceResponse>;
 export interface DeleteIntegrationAssociationRequest {
   InstanceId: string;
   IntegrationAssociationId: string;
@@ -6602,11 +6480,8 @@ export const DeleteIntegrationAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIntegrationAssociationRequest",
 }) as any as S.Schema<DeleteIntegrationAssociationRequest>;
 export interface DeleteIntegrationAssociationResponse {}
-export const DeleteIntegrationAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationAssociationResponse",
-}) as any as S.Schema<DeleteIntegrationAssociationResponse>;
+export const DeleteIntegrationAssociationResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteIntegrationAssociationResponse>;
 export interface DeleteMetricRequest {
   InstanceId: string;
   MetricId: string;
@@ -6627,9 +6502,7 @@ export const DeleteMetricRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMetricRequest" }) as any as S.Schema<DeleteMetricRequest>;
 export interface DeleteMetricResponse {}
-export const DeleteMetricResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMetricResponse",
-}) as any as S.Schema<DeleteMetricResponse>;
+export const DeleteMetricResponse = AssociateBotResponse as any as S.Schema<DeleteMetricResponse>;
 export interface DeleteNotificationRequest {
   InstanceId: string;
   NotificationId: string;
@@ -6652,9 +6525,8 @@ export const DeleteNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteNotificationRequest",
 }) as any as S.Schema<DeleteNotificationRequest>;
 export interface DeleteNotificationResponse {}
-export const DeleteNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotificationResponse",
-}) as any as S.Schema<DeleteNotificationResponse>;
+export const DeleteNotificationResponse =
+  AssociateBotResponse as any as S.Schema<DeleteNotificationResponse>;
 export interface DeletePredefinedAttributeRequest {
   InstanceId: string;
   Name: string;
@@ -6677,11 +6549,8 @@ export const DeletePredefinedAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePredefinedAttributeRequest",
 }) as any as S.Schema<DeletePredefinedAttributeRequest>;
 export interface DeletePredefinedAttributeResponse {}
-export const DeletePredefinedAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePredefinedAttributeResponse",
-}) as any as S.Schema<DeletePredefinedAttributeResponse>;
+export const DeletePredefinedAttributeResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeletePredefinedAttributeResponse>;
 export interface DeletePromptRequest {
   InstanceId: string;
   PromptId: string;
@@ -6702,9 +6571,7 @@ export const DeletePromptRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePromptRequest" }) as any as S.Schema<DeletePromptRequest>;
 export interface DeletePromptResponse {}
-export const DeletePromptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePromptResponse",
-}) as any as S.Schema<DeletePromptResponse>;
+export const DeletePromptResponse = AssociateBotResponse as any as S.Schema<DeletePromptResponse>;
 export interface DeletePushNotificationRegistrationRequest {
   InstanceId: string;
   RegistrationId: string;
@@ -6732,11 +6599,8 @@ export const DeletePushNotificationRegistrationRequest = /*@__PURE__*/ S.suspend
   identifier: "DeletePushNotificationRegistrationRequest",
 }) as any as S.Schema<DeletePushNotificationRegistrationRequest>;
 export interface DeletePushNotificationRegistrationResponse {}
-export const DeletePushNotificationRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePushNotificationRegistrationResponse",
-}) as any as S.Schema<DeletePushNotificationRegistrationResponse>;
+export const DeletePushNotificationRegistrationResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeletePushNotificationRegistrationResponse>;
 export interface DeleteQueueRequest {
   InstanceId: string;
   QueueId: string;
@@ -6757,9 +6621,7 @@ export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteQueueRequest" }) as any as S.Schema<DeleteQueueRequest>;
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQueueResponse",
-}) as any as S.Schema<DeleteQueueResponse>;
+export const DeleteQueueResponse = AssociateBotResponse as any as S.Schema<DeleteQueueResponse>;
 export interface DeleteQuickConnectRequest {
   InstanceId: string;
   QuickConnectId: string;
@@ -6782,9 +6644,8 @@ export const DeleteQuickConnectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteQuickConnectRequest",
 }) as any as S.Schema<DeleteQuickConnectRequest>;
 export interface DeleteQuickConnectResponse {}
-export const DeleteQuickConnectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQuickConnectResponse",
-}) as any as S.Schema<DeleteQuickConnectResponse>;
+export const DeleteQuickConnectResponse =
+  AssociateBotResponse as any as S.Schema<DeleteQuickConnectResponse>;
 export interface DeleteRoutingProfileRequest {
   InstanceId: string;
   RoutingProfileId: string;
@@ -6807,9 +6668,8 @@ export const DeleteRoutingProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRoutingProfileRequest",
 }) as any as S.Schema<DeleteRoutingProfileRequest>;
 export interface DeleteRoutingProfileResponse {}
-export const DeleteRoutingProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoutingProfileResponse",
-}) as any as S.Schema<DeleteRoutingProfileResponse>;
+export const DeleteRoutingProfileResponse =
+  AssociateBotResponse as any as S.Schema<DeleteRoutingProfileResponse>;
 export interface DeleteRuleRequest {
   InstanceId: string;
   RuleId: string;
@@ -6830,9 +6690,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRuleResponse",
-}) as any as S.Schema<DeleteRuleResponse>;
+export const DeleteRuleResponse = AssociateBotResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DeleteSecurityProfileRequest {
   InstanceId: string;
   SecurityProfileId: string;
@@ -6855,9 +6713,8 @@ export const DeleteSecurityProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSecurityProfileRequest",
 }) as any as S.Schema<DeleteSecurityProfileRequest>;
 export interface DeleteSecurityProfileResponse {}
-export const DeleteSecurityProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecurityProfileResponse",
-}) as any as S.Schema<DeleteSecurityProfileResponse>;
+export const DeleteSecurityProfileResponse =
+  AssociateBotResponse as any as S.Schema<DeleteSecurityProfileResponse>;
 export interface DeleteSessionRequest {
   InstanceId: string;
   SessionId: string;
@@ -6878,9 +6735,7 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSessionResponse",
-}) as any as S.Schema<DeleteSessionResponse>;
+export const DeleteSessionResponse = AssociateBotResponse as any as S.Schema<DeleteSessionResponse>;
 export interface DeleteTaskTemplateRequest {
   InstanceId: string;
   TaskTemplateId: string;
@@ -6903,9 +6758,8 @@ export const DeleteTaskTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTaskTemplateRequest",
 }) as any as S.Schema<DeleteTaskTemplateRequest>;
 export interface DeleteTaskTemplateResponse {}
-export const DeleteTaskTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTaskTemplateResponse",
-}) as any as S.Schema<DeleteTaskTemplateResponse>;
+export const DeleteTaskTemplateResponse =
+  AssociateBotResponse as any as S.Schema<DeleteTaskTemplateResponse>;
 export interface DeleteTestCaseRequest {
   InstanceId: string;
   TestCaseId: string;
@@ -6926,9 +6780,8 @@ export const DeleteTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTestCaseRequest" }) as any as S.Schema<DeleteTestCaseRequest>;
 export interface DeleteTestCaseResponse {}
-export const DeleteTestCaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTestCaseResponse",
-}) as any as S.Schema<DeleteTestCaseResponse>;
+export const DeleteTestCaseResponse =
+  AssociateBotResponse as any as S.Schema<DeleteTestCaseResponse>;
 export interface DeleteTrafficDistributionGroupRequest {
   TrafficDistributionGroupId: string;
 }
@@ -6949,11 +6802,8 @@ export const DeleteTrafficDistributionGroupRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteTrafficDistributionGroupRequest",
 }) as any as S.Schema<DeleteTrafficDistributionGroupRequest>;
 export interface DeleteTrafficDistributionGroupResponse {}
-export const DeleteTrafficDistributionGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTrafficDistributionGroupResponse",
-}) as any as S.Schema<DeleteTrafficDistributionGroupResponse>;
+export const DeleteTrafficDistributionGroupResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteTrafficDistributionGroupResponse>;
 export interface DeleteUseCaseRequest {
   InstanceId: string;
   IntegrationAssociationId: string;
@@ -6979,9 +6829,7 @@ export const DeleteUseCaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUseCaseRequest" }) as any as S.Schema<DeleteUseCaseRequest>;
 export interface DeleteUseCaseResponse {}
-export const DeleteUseCaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUseCaseResponse",
-}) as any as S.Schema<DeleteUseCaseResponse>;
+export const DeleteUseCaseResponse = AssociateBotResponse as any as S.Schema<DeleteUseCaseResponse>;
 export interface DeleteUserRequest {
   InstanceId: string;
   UserId: string;
@@ -7002,9 +6850,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = AssociateBotResponse as any as S.Schema<DeleteUserResponse>;
 export interface DeleteUserHierarchyGroupRequest {
   HierarchyGroupId: string;
   InstanceId: string;
@@ -7027,11 +6873,8 @@ export const DeleteUserHierarchyGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserHierarchyGroupRequest",
 }) as any as S.Schema<DeleteUserHierarchyGroupRequest>;
 export interface DeleteUserHierarchyGroupResponse {}
-export const DeleteUserHierarchyGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserHierarchyGroupResponse",
-}) as any as S.Schema<DeleteUserHierarchyGroupResponse>;
+export const DeleteUserHierarchyGroupResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DeleteUserHierarchyGroupResponse>;
 export interface DeleteViewRequest {
   InstanceId: string;
   ViewId: string;
@@ -7052,9 +6895,7 @@ export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteViewRequest" }) as any as S.Schema<DeleteViewRequest>;
 export interface DeleteViewResponse {}
-export const DeleteViewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteViewResponse",
-}) as any as S.Schema<DeleteViewResponse>;
+export const DeleteViewResponse = AssociateBotResponse as any as S.Schema<DeleteViewResponse>;
 export interface DeleteViewVersionRequest {
   InstanceId: string;
   ViewId: string;
@@ -7077,9 +6918,8 @@ export const DeleteViewVersionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteViewVersionRequest" }) as any as S.Schema<DeleteViewVersionRequest>;
 export interface DeleteViewVersionResponse {}
-export const DeleteViewVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteViewVersionResponse",
-}) as any as S.Schema<DeleteViewVersionResponse>;
+export const DeleteViewVersionResponse =
+  AssociateBotResponse as any as S.Schema<DeleteViewVersionResponse>;
 export interface DeleteVocabularyRequest {
   InstanceId: string;
   VocabularyId: string;
@@ -7104,9 +6944,8 @@ export interface DeleteVocabularyResponse {
   VocabularyId: string;
   State: VocabularyState;
 }
-export const DeleteVocabularyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VocabularyArn: S.String, VocabularyId: S.String, State: VocabularyState }),
-).annotate({ identifier: "DeleteVocabularyResponse" }) as any as S.Schema<DeleteVocabularyResponse>;
+export const DeleteVocabularyResponse =
+  CreateVocabularyResponse as any as S.Schema<DeleteVocabularyResponse>;
 export interface DeleteWorkspaceRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -7127,9 +6966,8 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceResponse",
-}) as any as S.Schema<DeleteWorkspaceResponse>;
+export const DeleteWorkspaceResponse =
+  AssociateBotResponse as any as S.Schema<DeleteWorkspaceResponse>;
 export type MediaType =
   | "IMAGE_LOGO_LIGHT_FAVICON"
   | "IMAGE_LOGO_DARK_FAVICON"
@@ -7162,9 +7000,8 @@ export const DeleteWorkspaceMediaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkspaceMediaRequest",
 }) as any as S.Schema<DeleteWorkspaceMediaRequest>;
 export interface DeleteWorkspaceMediaResponse {}
-export const DeleteWorkspaceMediaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceMediaResponse",
-}) as any as S.Schema<DeleteWorkspaceMediaResponse>;
+export const DeleteWorkspaceMediaResponse =
+  AssociateBotResponse as any as S.Schema<DeleteWorkspaceMediaResponse>;
 export interface DeleteWorkspacePageRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -7189,9 +7026,8 @@ export const DeleteWorkspacePageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkspacePageRequest",
 }) as any as S.Schema<DeleteWorkspacePageRequest>;
 export interface DeleteWorkspacePageResponse {}
-export const DeleteWorkspacePageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspacePageResponse",
-}) as any as S.Schema<DeleteWorkspacePageResponse>;
+export const DeleteWorkspacePageResponse =
+  AssociateBotResponse as any as S.Schema<DeleteWorkspacePageResponse>;
 export interface DescribeAgentStatusRequest {
   InstanceId: string;
   AgentStatusId: string;
@@ -7348,7 +7184,7 @@ export type AuthenticationProfileName = string;
 export type AuthenticationProfileDescription = string;
 export type IpCidr = string;
 export type IpCidrList = string[];
-export const IpCidrList = /*@__PURE__*/ S.Array(S.String);
+export const IpCidrList = QuickConnectsList as any as S.Schema<IpCidrList>;
 export type AccessTokenDuration = number;
 export type RefreshTokenDuration = number;
 export type InactivityDuration = number;
@@ -7562,10 +7398,7 @@ export type QueuePriority = number;
 export type ContactTagKey = string;
 export type ContactTagValue = string;
 export type ContactTagMap = { [key: string]: string | undefined };
-export const ContactTagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ContactTagMap = AllowedAccessControlTags as any as S.Schema<ContactTagMap>;
 export type DurationInSeconds = number;
 export interface Expiry {
   DurationInSeconds?: number;
@@ -7591,7 +7424,7 @@ export const Range = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 export type AgentId = string;
 export type AgentIds = string[];
-export const AgentIds = /*@__PURE__*/ S.Array(S.String);
+export const AgentIds = QuickConnectsList as any as S.Schema<AgentIds>;
 export interface AgentsCriteria {
   AgentIds?: string[];
 }
@@ -7719,7 +7552,8 @@ export const CustomerVoiceActivity = /*@__PURE__*/ S.suspend(() =>
 export type AudioQualityScore = number;
 export type PotentialAudioQualityIssue = string;
 export type PotentialAudioQualityIssues = string[];
-export const PotentialAudioQualityIssues = /*@__PURE__*/ S.Array(S.String);
+export const PotentialAudioQualityIssues =
+  QuickConnectsList as any as S.Schema<PotentialAudioQualityIssues>;
 export interface AudioQualityMetricsInfo {
   QualityScore?: number;
   PotentialQualityIssues?: string[];
@@ -7739,9 +7573,8 @@ export const AgentQualityMetrics = /*@__PURE__*/ S.suspend(() =>
 export interface CustomerQualityMetrics {
   Audio?: AudioQualityMetricsInfo;
 }
-export const CustomerQualityMetrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Audio: S.optional(AudioQualityMetricsInfo) }),
-).annotate({ identifier: "CustomerQualityMetrics" }) as any as S.Schema<CustomerQualityMetrics>;
+export const CustomerQualityMetrics =
+  AgentQualityMetrics as any as S.Schema<CustomerQualityMetrics>;
 export interface QualityMetrics {
   Agent?: AgentQualityMetrics;
   Customer?: CustomerQualityMetrics;
@@ -8241,7 +8074,8 @@ export const EvaluationMetadata = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationAnswerDataStringValue = string;
 export type EvaluationAnswerDataNumericValue = number;
 export type EvaluationAnswerDataStringValueList = string[];
-export const EvaluationAnswerDataStringValueList = /*@__PURE__*/ S.Array(S.String);
+export const EvaluationAnswerDataStringValueList =
+  QuickConnectsList as any as S.Schema<EvaluationAnswerDataStringValueList>;
 export type EvaluationAnswerData =
   | {
       StringValue: string;
@@ -8853,7 +8687,8 @@ export const DescribeEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeEmailAddressRequest",
 }) as any as S.Schema<DescribeEmailAddressRequest>;
 export type AliasConfigurationList = AliasConfiguration[];
-export const AliasConfigurationList = /*@__PURE__*/ S.Array(AliasConfiguration);
+export const AliasConfigurationList =
+  EmailAddressConfigList as any as S.Schema<AliasConfigurationList>;
 export interface DescribeEmailAddressResponse {
   EmailAddressId?: string;
   EmailAddressArn?: string;
@@ -9358,7 +9193,7 @@ export type MetricType = "AWS_MANAGED" | "CUSTOMER_MANAGED" | (string & {});
 export const MetricType = S.String;
 
 export type MetricGroupingList = string[];
-export const MetricGroupingList = /*@__PURE__*/ S.Array(S.String);
+export const MetricGroupingList = QuickConnectsList as any as S.Schema<MetricGroupingList>;
 export type FilterId = string;
 export type AvailableFilterType = "METRIC_LEVEL" | "RESOURCE_LEVEL" | (string & {});
 export const AvailableFilterType = S.String;
@@ -9375,7 +9210,7 @@ export const AvailableFilterList = /*@__PURE__*/ S.Array(AvailableFilter);
 export type RefreshRate = number;
 export type MetricCategory = string;
 export type SupportedStatsList = string[];
-export const SupportedStatsList = /*@__PURE__*/ S.Array(S.String);
+export const SupportedStatsList = QuickConnectsList as any as S.Schema<SupportedStatsList>;
 export type DefaultStat = string;
 export type SupportsPreaggregateCalculation = boolean;
 export type SupportsCustomCalculation = boolean;
@@ -10059,7 +9894,7 @@ export const DescribeRoutingProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeRoutingProfileRequest",
 }) as any as S.Schema<DescribeRoutingProfileRequest>;
 export type AssociatedQueueIdList = string[];
-export const AssociatedQueueIdList = /*@__PURE__*/ S.Array(S.String);
+export const AssociatedQueueIdList = QuickConnectsList as any as S.Schema<AssociatedQueueIdList>;
 export interface RoutingProfile {
   InstanceId?: string;
   Name?: string;
@@ -10524,15 +10359,7 @@ export interface HierarchyLevel {
   LastModifiedTime?: Date;
   LastModifiedRegion?: string;
 }
-export const HierarchyLevel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedRegion: S.optional(S.String),
-  }),
-).annotate({ identifier: "HierarchyLevel" }) as any as S.Schema<HierarchyLevel>;
+export const HierarchyLevel = HierarchyGroupSummary as any as S.Schema<HierarchyLevel>;
 export interface HierarchyStructure {
   LevelOne?: HierarchyLevel;
   LevelTwo?: HierarchyLevel;
@@ -10540,15 +10367,7 @@ export interface HierarchyStructure {
   LevelFour?: HierarchyLevel;
   LevelFive?: HierarchyLevel;
 }
-export const HierarchyStructure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LevelOne: S.optional(HierarchyLevel),
-    LevelTwo: S.optional(HierarchyLevel),
-    LevelThree: S.optional(HierarchyLevel),
-    LevelFour: S.optional(HierarchyLevel),
-    LevelFive: S.optional(HierarchyLevel),
-  }),
-).annotate({ identifier: "HierarchyStructure" }) as any as S.Schema<HierarchyStructure>;
+export const HierarchyStructure = HierarchyPath as any as S.Schema<HierarchyStructure>;
 export interface DescribeUserHierarchyStructureResponse {
   HierarchyStructure?: HierarchyStructure;
 }
@@ -10579,9 +10398,7 @@ export const DescribeViewRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeViewResponse {
   View?: View;
 }
-export const DescribeViewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ View: S.optional(View) }),
-).annotate({ identifier: "DescribeViewResponse" }) as any as S.Schema<DescribeViewResponse>;
+export const DescribeViewResponse = CreateViewResponse as any as S.Schema<DescribeViewResponse>;
 export interface DescribeVocabularyRequest {
   InstanceId: string;
   VocabularyId: string;
@@ -10717,11 +10534,8 @@ export const DisassociateAnalyticsDataSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateAnalyticsDataSetRequest",
 }) as any as S.Schema<DisassociateAnalyticsDataSetRequest>;
 export interface DisassociateAnalyticsDataSetResponse {}
-export const DisassociateAnalyticsDataSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateAnalyticsDataSetResponse",
-}) as any as S.Schema<DisassociateAnalyticsDataSetResponse>;
+export const DisassociateAnalyticsDataSetResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateAnalyticsDataSetResponse>;
 export interface DisassociateApprovedOriginRequest {
   InstanceId: string;
   Origin: string;
@@ -10746,11 +10560,8 @@ export const DisassociateApprovedOriginRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateApprovedOriginRequest",
 }) as any as S.Schema<DisassociateApprovedOriginRequest>;
 export interface DisassociateApprovedOriginResponse {}
-export const DisassociateApprovedOriginResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateApprovedOriginResponse",
-}) as any as S.Schema<DisassociateApprovedOriginResponse>;
+export const DisassociateApprovedOriginResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateApprovedOriginResponse>;
 export interface DisassociateBotRequest {
   InstanceId: string;
   LexBot?: LexBot;
@@ -10775,9 +10586,8 @@ export const DisassociateBotRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisassociateBotRequest" }) as any as S.Schema<DisassociateBotRequest>;
 export interface DisassociateBotResponse {}
-export const DisassociateBotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateBotResponse",
-}) as any as S.Schema<DisassociateBotResponse>;
+export const DisassociateBotResponse =
+  AssociateBotResponse as any as S.Schema<DisassociateBotResponse>;
 export interface DisassociateEmailAddressAliasRequest {
   EmailAddressId: string;
   InstanceId: string;
@@ -10807,11 +10617,8 @@ export const DisassociateEmailAddressAliasRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DisassociateEmailAddressAliasRequest",
 }) as any as S.Schema<DisassociateEmailAddressAliasRequest>;
 export interface DisassociateEmailAddressAliasResponse {}
-export const DisassociateEmailAddressAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateEmailAddressAliasResponse",
-}) as any as S.Schema<DisassociateEmailAddressAliasResponse>;
+export const DisassociateEmailAddressAliasResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateEmailAddressAliasResponse>;
 export interface DisassociateFlowRequest {
   InstanceId: string;
   ResourceId: string;
@@ -10837,11 +10644,11 @@ export const DisassociateFlowRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisassociateFlowRequest" }) as any as S.Schema<DisassociateFlowRequest>;
 export interface DisassociateFlowResponse {}
-export const DisassociateFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateFlowResponse",
-}) as any as S.Schema<DisassociateFlowResponse>;
+export const DisassociateFlowResponse =
+  AssociateBotResponse as any as S.Schema<DisassociateFlowResponse>;
 export type ParentHoursOfOperationIdList = string[];
-export const ParentHoursOfOperationIdList = /*@__PURE__*/ S.Array(S.String);
+export const ParentHoursOfOperationIdList =
+  QuickConnectsList as any as S.Schema<ParentHoursOfOperationIdList>;
 export interface DisassociateHoursOfOperationsRequest {
   InstanceId: string;
   HoursOfOperationId: string;
@@ -10869,11 +10676,8 @@ export const DisassociateHoursOfOperationsRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DisassociateHoursOfOperationsRequest",
 }) as any as S.Schema<DisassociateHoursOfOperationsRequest>;
 export interface DisassociateHoursOfOperationsResponse {}
-export const DisassociateHoursOfOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateHoursOfOperationsResponse",
-}) as any as S.Schema<DisassociateHoursOfOperationsResponse>;
+export const DisassociateHoursOfOperationsResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateHoursOfOperationsResponse>;
 export interface DisassociateInstanceStorageConfigRequest {
   InstanceId: string;
   AssociationId: string;
@@ -10900,11 +10704,8 @@ export const DisassociateInstanceStorageConfigRequest = /*@__PURE__*/ S.suspend(
   identifier: "DisassociateInstanceStorageConfigRequest",
 }) as any as S.Schema<DisassociateInstanceStorageConfigRequest>;
 export interface DisassociateInstanceStorageConfigResponse {}
-export const DisassociateInstanceStorageConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateInstanceStorageConfigResponse",
-}) as any as S.Schema<DisassociateInstanceStorageConfigResponse>;
+export const DisassociateInstanceStorageConfigResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateInstanceStorageConfigResponse>;
 export interface DisassociateLambdaFunctionRequest {
   InstanceId: string;
   FunctionArn: string;
@@ -10929,11 +10730,8 @@ export const DisassociateLambdaFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateLambdaFunctionRequest",
 }) as any as S.Schema<DisassociateLambdaFunctionRequest>;
 export interface DisassociateLambdaFunctionResponse {}
-export const DisassociateLambdaFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateLambdaFunctionResponse",
-}) as any as S.Schema<DisassociateLambdaFunctionResponse>;
+export const DisassociateLambdaFunctionResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateLambdaFunctionResponse>;
 export interface DisassociateLexBotRequest {
   InstanceId: string;
   BotName: string;
@@ -10960,9 +10758,8 @@ export const DisassociateLexBotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateLexBotRequest",
 }) as any as S.Schema<DisassociateLexBotRequest>;
 export interface DisassociateLexBotResponse {}
-export const DisassociateLexBotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateLexBotResponse",
-}) as any as S.Schema<DisassociateLexBotResponse>;
+export const DisassociateLexBotResponse =
+  AssociateBotResponse as any as S.Schema<DisassociateLexBotResponse>;
 export interface DisassociatePhoneNumberContactFlowRequest {
   PhoneNumberId: string;
   InstanceId: string;
@@ -10985,13 +10782,10 @@ export const DisassociatePhoneNumberContactFlowRequest = /*@__PURE__*/ S.suspend
   identifier: "DisassociatePhoneNumberContactFlowRequest",
 }) as any as S.Schema<DisassociatePhoneNumberContactFlowRequest>;
 export interface DisassociatePhoneNumberContactFlowResponse {}
-export const DisassociatePhoneNumberContactFlowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociatePhoneNumberContactFlowResponse",
-}) as any as S.Schema<DisassociatePhoneNumberContactFlowResponse>;
+export const DisassociatePhoneNumberContactFlowResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociatePhoneNumberContactFlowResponse>;
 export type EmailAddressIdList = string[];
-export const EmailAddressIdList = /*@__PURE__*/ S.Array(S.String);
+export const EmailAddressIdList = QuickConnectsList as any as S.Schema<EmailAddressIdList>;
 export interface DisassociateQueueEmailAddressesRequest {
   InstanceId: string;
   QueueId: string;
@@ -11021,11 +10815,8 @@ export const DisassociateQueueEmailAddressesRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DisassociateQueueEmailAddressesRequest",
 }) as any as S.Schema<DisassociateQueueEmailAddressesRequest>;
 export interface DisassociateQueueEmailAddressesResponse {}
-export const DisassociateQueueEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateQueueEmailAddressesResponse",
-}) as any as S.Schema<DisassociateQueueEmailAddressesResponse>;
+export const DisassociateQueueEmailAddressesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateQueueEmailAddressesResponse>;
 export interface DisassociateQueueQuickConnectsRequest {
   InstanceId: string;
   QueueId: string;
@@ -11050,11 +10841,8 @@ export const DisassociateQueueQuickConnectsRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DisassociateQueueQuickConnectsRequest",
 }) as any as S.Schema<DisassociateQueueQuickConnectsRequest>;
 export interface DisassociateQueueQuickConnectsResponse {}
-export const DisassociateQueueQuickConnectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateQueueQuickConnectsResponse",
-}) as any as S.Schema<DisassociateQueueQuickConnectsResponse>;
+export const DisassociateQueueQuickConnectsResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateQueueQuickConnectsResponse>;
 export type RoutingProfileQueueReferenceList = RoutingProfileQueueReference[];
 export const RoutingProfileQueueReferenceList = /*@__PURE__*/ S.Array(RoutingProfileQueueReference);
 export interface DisassociateRoutingProfileQueuesRequest {
@@ -11086,11 +10874,8 @@ export const DisassociateRoutingProfileQueuesRequest = /*@__PURE__*/ S.suspend((
   identifier: "DisassociateRoutingProfileQueuesRequest",
 }) as any as S.Schema<DisassociateRoutingProfileQueuesRequest>;
 export interface DisassociateRoutingProfileQueuesResponse {}
-export const DisassociateRoutingProfileQueuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateRoutingProfileQueuesResponse",
-}) as any as S.Schema<DisassociateRoutingProfileQueuesResponse>;
+export const DisassociateRoutingProfileQueuesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateRoutingProfileQueuesResponse>;
 export interface DisassociateSecurityKeyRequest {
   InstanceId: string;
   AssociationId: string;
@@ -11115,9 +10900,8 @@ export const DisassociateSecurityKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateSecurityKeyRequest",
 }) as any as S.Schema<DisassociateSecurityKeyRequest>;
 export interface DisassociateSecurityKeyResponse {}
-export const DisassociateSecurityKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DisassociateSecurityKeyResponse" },
-) as any as S.Schema<DisassociateSecurityKeyResponse>;
+export const DisassociateSecurityKeyResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<DisassociateSecurityKeyResponse>;
 export interface DisassociateSecurityProfilesRequest {
   InstanceId: string;
   SecurityProfiles: SecurityProfileItem[];
@@ -11144,11 +10928,8 @@ export const DisassociateSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateSecurityProfilesRequest",
 }) as any as S.Schema<DisassociateSecurityProfilesRequest>;
 export interface DisassociateSecurityProfilesResponse {}
-export const DisassociateSecurityProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateSecurityProfilesResponse",
-}) as any as S.Schema<DisassociateSecurityProfilesResponse>;
+export const DisassociateSecurityProfilesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateSecurityProfilesResponse>;
 export interface DisassociateTrafficDistributionGroupUserRequest {
   TrafficDistributionGroupId: string;
   UserId: string;
@@ -11176,11 +10957,8 @@ export const DisassociateTrafficDistributionGroupUserRequest = /*@__PURE__*/ S.s
   identifier: "DisassociateTrafficDistributionGroupUserRequest",
 }) as any as S.Schema<DisassociateTrafficDistributionGroupUserRequest>;
 export interface DisassociateTrafficDistributionGroupUserResponse {}
-export const DisassociateTrafficDistributionGroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateTrafficDistributionGroupUserResponse",
-}) as any as S.Schema<DisassociateTrafficDistributionGroupUserResponse>;
+export const DisassociateTrafficDistributionGroupUserResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateTrafficDistributionGroupUserResponse>;
 export interface UserProficiencyDisassociate {
   AttributeName: string;
   AttributeValue: string;
@@ -11216,11 +10994,8 @@ export const DisassociateUserProficienciesRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DisassociateUserProficienciesRequest",
 }) as any as S.Schema<DisassociateUserProficienciesRequest>;
 export interface DisassociateUserProficienciesResponse {}
-export const DisassociateUserProficienciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateUserProficienciesResponse",
-}) as any as S.Schema<DisassociateUserProficienciesResponse>;
+export const DisassociateUserProficienciesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<DisassociateUserProficienciesResponse>;
 export interface DisassociateWorkspaceRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -11248,14 +11023,8 @@ export interface DisassociateWorkspaceResponse {
   SuccessfulList?: SuccessfulBatchAssociationSummary[];
   FailedList?: FailedBatchAssociationSummary[];
 }
-export const DisassociateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SuccessfulList: S.optional(SuccessfulBatchAssociationSummaryList),
-    FailedList: S.optional(FailedBatchAssociationSummaryList),
-  }),
-).annotate({
-  identifier: "DisassociateWorkspaceResponse",
-}) as any as S.Schema<DisassociateWorkspaceResponse>;
+export const DisassociateWorkspaceResponse =
+  AssociateWorkspaceResponse as any as S.Schema<DisassociateWorkspaceResponse>;
 export interface DismissUserContactRequest {
   UserId: string;
   InstanceId: string;
@@ -11280,11 +11049,10 @@ export const DismissUserContactRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DismissUserContactRequest",
 }) as any as S.Schema<DismissUserContactRequest>;
 export interface DismissUserContactResponse {}
-export const DismissUserContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DismissUserContactResponse",
-}) as any as S.Schema<DismissUserContactResponse>;
+export const DismissUserContactResponse =
+  AssociateBotResponse as any as S.Schema<DismissUserContactResponse>;
 export type AttributeNameList = string[];
-export const AttributeNameList = /*@__PURE__*/ S.Array(S.String);
+export const AttributeNameList = QuickConnectsList as any as S.Schema<AttributeNameList>;
 export interface DataTableValueEvaluationSet {
   PrimaryValues?: PrimaryValue[];
   AttributeNames: string[];
@@ -11513,7 +11281,7 @@ export const GetCrossRegionRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCrossRegionRoutingRequest",
 }) as any as S.Schema<GetCrossRegionRoutingRequest>;
 export type IsolatedRegionsList = string[];
-export const IsolatedRegionsList = /*@__PURE__*/ S.Array(S.String);
+export const IsolatedRegionsList = QuickConnectsList as any as S.Schema<IsolatedRegionsList>;
 export interface GetCrossRegionRoutingResponse {
   IsolatedRegions?: string[];
 }
@@ -11523,22 +11291,22 @@ export const GetCrossRegionRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCrossRegionRoutingResponse",
 }) as any as S.Schema<GetCrossRegionRoutingResponse>;
 export type Queues = string[];
-export const Queues = /*@__PURE__*/ S.Array(S.String);
+export const Queues = QuickConnectsList as any as S.Schema<Queues>;
 export type Channels = Channel[];
 export const Channels = /*@__PURE__*/ S.Array(Channel);
 export type RoutingProfiles = string[];
-export const RoutingProfiles = /*@__PURE__*/ S.Array(S.String);
+export const RoutingProfiles = QuickConnectsList as any as S.Schema<RoutingProfiles>;
 export type RoutingExpression = string;
 export type RoutingExpressions = string[];
-export const RoutingExpressions = /*@__PURE__*/ S.Array(S.String);
+export const RoutingExpressions = QuickConnectsList as any as S.Schema<RoutingExpressions>;
 export type AgentStatuses = string[];
-export const AgentStatuses = /*@__PURE__*/ S.Array(S.String);
+export const AgentStatuses = QuickConnectsList as any as S.Schema<AgentStatuses>;
 export type Subtype = string;
 export type Subtypes = string[];
-export const Subtypes = /*@__PURE__*/ S.Array(S.String);
+export const Subtypes = QuickConnectsList as any as S.Schema<Subtypes>;
 export type ValidationTestType = string;
 export type ValidationTestTypes = string[];
-export const ValidationTestTypes = /*@__PURE__*/ S.Array(S.String);
+export const ValidationTestTypes = QuickConnectsList as any as S.Schema<ValidationTestTypes>;
 export interface Filters {
   Queues?: string[];
   Channels?: Channel[];
@@ -11657,16 +11425,13 @@ export interface QueueReference {
   Id?: string;
   Arn?: string;
 }
-export const QueueReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({ identifier: "QueueReference" }) as any as S.Schema<QueueReference>;
+export const QueueReference = CreateInstanceResponse as any as S.Schema<QueueReference>;
 export interface RoutingProfileReference {
   Id?: string;
   Arn?: string;
 }
-export const RoutingProfileReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({ identifier: "RoutingProfileReference" }) as any as S.Schema<RoutingProfileReference>;
+export const RoutingProfileReference =
+  CreateInstanceResponse as any as S.Schema<RoutingProfileReference>;
 export interface AgentStatusIdentifier {
   Arn?: string;
   Id?: string;
@@ -11755,9 +11520,10 @@ export const ContactFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContactStates: S.optional(ContactStates) }),
 ).annotate({ identifier: "ContactFilter" }) as any as S.Schema<ContactFilter>;
 export type AgentsMinOneMaxHundred = string[];
-export const AgentsMinOneMaxHundred = /*@__PURE__*/ S.Array(S.String);
+export const AgentsMinOneMaxHundred = QuickConnectsList as any as S.Schema<AgentsMinOneMaxHundred>;
 export type UserDataHierarchyGroups = string[];
-export const UserDataHierarchyGroups = /*@__PURE__*/ S.Array(S.String);
+export const UserDataHierarchyGroups =
+  QuickConnectsList as any as S.Schema<UserDataHierarchyGroups>;
 export interface UserDataFilters {
   Queues?: string[];
   ContactFilter?: ContactFilter;
@@ -11803,18 +11569,13 @@ export interface UserReference {
   Id?: string;
   Arn?: string;
 }
-export const UserReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({ identifier: "UserReference" }) as any as S.Schema<UserReference>;
+export const UserReference = CreateInstanceResponse as any as S.Schema<UserReference>;
 export interface HierarchyGroupSummaryReference {
   Id?: string;
   Arn?: string;
 }
-export const HierarchyGroupSummaryReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "HierarchyGroupSummaryReference",
-}) as any as S.Schema<HierarchyGroupSummaryReference>;
+export const HierarchyGroupSummaryReference =
+  CreateContactFlowModuleResponse as any as S.Schema<HierarchyGroupSummaryReference>;
 export interface HierarchyPathReference {
   LevelOne?: HierarchyGroupSummaryReference;
   LevelTwo?: HierarchyGroupSummaryReference;
@@ -12312,7 +12073,7 @@ export const IntervalDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntervalDetails" }) as any as S.Schema<IntervalDetails>;
 export type ResourceArnOrId = string;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValueList = QuickConnectsList as any as S.Schema<FilterValueList>;
 export type FilterV2StringConditionComparisonOperator = "NOT_EXISTS" | (string & {});
 export const FilterV2StringConditionComparisonOperator = S.String;
 
@@ -12338,7 +12099,7 @@ export type FiltersV2List = FilterV2[];
 export const FiltersV2List = /*@__PURE__*/ S.Array(FilterV2);
 export type GroupingV2 = string;
 export type GroupingsV2 = string[];
-export const GroupingsV2 = /*@__PURE__*/ S.Array(S.String);
+export const GroupingsV2 = QuickConnectsList as any as S.Schema<GroupingsV2>;
 export type MetricNameV2 = string;
 export interface ThresholdV2 {
   Comparison?: string;
@@ -12350,7 +12111,7 @@ export const ThresholdV2 = /*@__PURE__*/ S.suspend(() =>
 export type ThresholdCollections = ThresholdV2[];
 export const ThresholdCollections = /*@__PURE__*/ S.Array(ThresholdV2);
 export type MetricFilterValueList = string[];
-export const MetricFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const MetricFilterValueList = QuickConnectsList as any as S.Schema<MetricFilterValueList>;
 export interface MetricFilterV2 {
   MetricFilterKey?: string;
   MetricFilterValues?: string[];
@@ -12409,10 +12170,7 @@ export const GetMetricDataV2Request = /*@__PURE__*/ S.suspend(() =>
 export type DimensionsV2Key = string;
 export type DimensionsV2Value = string;
 export type DimensionsV2Map = { [key: string]: string | undefined };
-export const DimensionsV2Map = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DimensionsV2Map = AllowedAccessControlTags as any as S.Schema<DimensionsV2Map>;
 export interface MetricInterval {
   Interval?: IntervalPeriod;
   StartTime?: Date;
@@ -12658,9 +12416,7 @@ export const SignInConfig = /*@__PURE__*/ S.suspend(() =>
 export interface AgentConfig {
   Distributions: Distribution[];
 }
-export const AgentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Distributions: DistributionList }),
-).annotate({ identifier: "AgentConfig" }) as any as S.Schema<AgentConfig>;
+export const AgentConfig = TelephonyConfig as any as S.Schema<AgentConfig>;
 export interface GetTrafficDistributionResponse {
   TelephonyConfig?: TelephonyConfig;
   Id?: string;
@@ -12733,9 +12489,8 @@ export const ImportWorkspaceMediaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportWorkspaceMediaRequest",
 }) as any as S.Schema<ImportWorkspaceMediaRequest>;
 export interface ImportWorkspaceMediaResponse {}
-export const ImportWorkspaceMediaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImportWorkspaceMediaResponse",
-}) as any as S.Schema<ImportWorkspaceMediaResponse>;
+export const ImportWorkspaceMediaResponse =
+  AssociateBotResponse as any as S.Schema<ImportWorkspaceMediaResponse>;
 export type MaxResult1000 = number;
 export type AgentStatusTypes = AgentStatusType[];
 export const AgentStatusTypes = /*@__PURE__*/ S.Array(AgentStatusType);
@@ -12895,7 +12650,7 @@ export const ListApprovedOriginsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListApprovedOriginsRequest",
 }) as any as S.Schema<ListApprovedOriginsRequest>;
 export type OriginsList = string[];
-export const OriginsList = /*@__PURE__*/ S.Array(S.String);
+export const OriginsList = QuickConnectsList as any as S.Schema<OriginsList>;
 export interface ListApprovedOriginsResponse {
   Origins?: string[];
   NextToken?: string;
@@ -13152,7 +12907,8 @@ export const ListChildHoursOfOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChildHoursOfOperationsRequest",
 }) as any as S.Schema<ListChildHoursOfOperationsRequest>;
 export type ChildHoursOfOperationsList = HoursOfOperationsIdentifier[];
-export const ChildHoursOfOperationsList = /*@__PURE__*/ S.Array(HoursOfOperationsIdentifier);
+export const ChildHoursOfOperationsList =
+  ParentHoursOfOperationsList as any as S.Schema<ChildHoursOfOperationsList>;
 export interface ListChildHoursOfOperationsResponse {
   NextToken?: string;
   ChildHoursOfOperationsSummaryList?: HoursOfOperationsIdentifier[];
@@ -13513,15 +13269,8 @@ export interface ContactFlowVersionSummary {
   VersionDescription?: string;
   Version?: number;
 }
-export const ContactFlowVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    VersionDescription: S.optional(S.String),
-    Version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ContactFlowVersionSummary",
-}) as any as S.Schema<ContactFlowVersionSummary>;
+export const ContactFlowVersionSummary =
+  ContactFlowModuleVersionSummary as any as S.Schema<ContactFlowVersionSummary>;
 export type ContactFlowVersionSummaryList = ContactFlowVersionSummary[];
 export const ContactFlowVersionSummaryList = /*@__PURE__*/ S.Array(ContactFlowVersionSummary);
 export interface ListContactFlowVersionsResponse {
@@ -13595,30 +13344,22 @@ export interface StringReference {
   Name?: string;
   Value?: string;
 }
-export const StringReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "StringReference" }) as any as S.Schema<StringReference>;
+export const StringReference = UrlReference as any as S.Schema<StringReference>;
 export interface NumberReference {
   Name?: string;
   Value?: string;
 }
-export const NumberReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "NumberReference" }) as any as S.Schema<NumberReference>;
+export const NumberReference = UrlReference as any as S.Schema<NumberReference>;
 export interface DateReference {
   Name?: string;
   Value?: string;
 }
-export const DateReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "DateReference" }) as any as S.Schema<DateReference>;
+export const DateReference = UrlReference as any as S.Schema<DateReference>;
 export interface EmailReference {
   Name?: string;
   Value?: string;
 }
-export const EmailReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "EmailReference" }) as any as S.Schema<EmailReference>;
+export const EmailReference = UrlReference as any as S.Schema<EmailReference>;
 export type AnalyticsMode =
   | "PostContact"
   | "RealTime"
@@ -13817,7 +13558,7 @@ export const ListContactReferencesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContactReferencesResponse",
 }) as any as S.Schema<ListContactReferencesResponse>;
 export type AttributeIds = string[];
-export const AttributeIds = /*@__PURE__*/ S.Array(S.String);
+export const AttributeIds = QuickConnectsList as any as S.Schema<AttributeIds>;
 export interface ListDataTableAttributesRequest {
   InstanceId: string;
   DataTableId: string;
@@ -13857,9 +13598,9 @@ export const ListDataTableAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataTableAttributesResponse",
 }) as any as S.Schema<ListDataTableAttributesResponse>;
 export type RecordIds = string[];
-export const RecordIds = /*@__PURE__*/ S.Array(S.String);
+export const RecordIds = QuickConnectsList as any as S.Schema<RecordIds>;
 export type ValueList = string[];
-export const ValueList = /*@__PURE__*/ S.Array(S.String);
+export const ValueList = QuickConnectsList as any as S.Schema<ValueList>;
 export interface PrimaryAttributeValueFilter {
   AttributeName: string;
   Values: string[];
@@ -14117,7 +13858,7 @@ export const ListEntitySecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEntitySecurityProfilesRequest",
 }) as any as S.Schema<ListEntitySecurityProfilesRequest>;
 export type SecurityProfiles100 = SecurityProfileItem[];
-export const SecurityProfiles100 = /*@__PURE__*/ S.Array(SecurityProfileItem);
+export const SecurityProfiles100 = SecurityProfiles as any as S.Schema<SecurityProfiles100>;
 export interface ListEntitySecurityProfilesResponse {
   SecurityProfiles?: SecurityProfileItem[];
   NextToken?: string;
@@ -14500,15 +14241,8 @@ export interface HoursOfOperationSummary {
   LastModifiedTime?: Date;
   LastModifiedRegion?: string;
 }
-export const HoursOfOperationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedRegion: S.optional(S.String),
-  }),
-).annotate({ identifier: "HoursOfOperationSummary" }) as any as S.Schema<HoursOfOperationSummary>;
+export const HoursOfOperationSummary =
+  HierarchyGroupSummary as any as S.Schema<HoursOfOperationSummary>;
 export type HoursOfOperationSummaryList = HoursOfOperationSummary[];
 export const HoursOfOperationSummaryList = /*@__PURE__*/ S.Array(HoursOfOperationSummary);
 export interface ListHoursOfOperationsResponse {
@@ -14734,7 +14468,7 @@ export const ListLambdaFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLambdaFunctionsRequest",
 }) as any as S.Schema<ListLambdaFunctionsRequest>;
 export type FunctionArnsList = string[];
-export const FunctionArnsList = /*@__PURE__*/ S.Array(S.String);
+export const FunctionArnsList = QuickConnectsList as any as S.Schema<FunctionArnsList>;
 export interface ListLambdaFunctionsResponse {
   LambdaFunctions?: string[];
   NextToken?: string;
@@ -15061,17 +14795,9 @@ export interface PromptSummary {
   LastModifiedTime?: Date;
   LastModifiedRegion?: string;
 }
-export const PromptSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedRegion: S.optional(S.String),
-  }),
-).annotate({ identifier: "PromptSummary" }) as any as S.Schema<PromptSummary>;
+export const PromptSummary = HierarchyGroupSummary as any as S.Schema<PromptSummary>;
 export type PromptSummaryList = PromptSummary[];
-export const PromptSummaryList = /*@__PURE__*/ S.Array(PromptSummary);
+export const PromptSummaryList = HoursOfOperationSummaryList as any as S.Schema<PromptSummaryList>;
 export interface ListPromptsResponse {
   PromptSummaryList?: PromptSummary[];
   NextToken?: string;
@@ -15898,17 +15624,11 @@ export interface RoutingProfileSummary {
   LastModifiedTime?: Date;
   LastModifiedRegion?: string;
 }
-export const RoutingProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedRegion: S.optional(S.String),
-  }),
-).annotate({ identifier: "RoutingProfileSummary" }) as any as S.Schema<RoutingProfileSummary>;
+export const RoutingProfileSummary =
+  HierarchyGroupSummary as any as S.Schema<RoutingProfileSummary>;
 export type RoutingProfileSummaryList = RoutingProfileSummary[];
-export const RoutingProfileSummaryList = /*@__PURE__*/ S.Array(RoutingProfileSummary);
+export const RoutingProfileSummaryList =
+  HoursOfOperationSummaryList as any as S.Schema<RoutingProfileSummaryList>;
 export interface ListRoutingProfilesResponse {
   RoutingProfileSummaryList?: RoutingProfileSummary[];
   NextToken?: string;
@@ -16230,17 +15950,11 @@ export interface SecurityProfileSummary {
   LastModifiedTime?: Date;
   LastModifiedRegion?: string;
 }
-export const SecurityProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedRegion: S.optional(S.String),
-  }),
-).annotate({ identifier: "SecurityProfileSummary" }) as any as S.Schema<SecurityProfileSummary>;
+export const SecurityProfileSummary =
+  HierarchyGroupSummary as any as S.Schema<SecurityProfileSummary>;
 export type SecurityProfileSummaryList = SecurityProfileSummary[];
-export const SecurityProfileSummaryList = /*@__PURE__*/ S.Array(SecurityProfileSummary);
+export const SecurityProfileSummaryList =
+  HoursOfOperationSummaryList as any as S.Schema<SecurityProfileSummaryList>;
 export interface ListSecurityProfilesResponse {
   SecurityProfileSummaryList?: SecurityProfileSummary[];
   NextToken?: string;
@@ -16594,11 +16308,8 @@ export const ListTrafficDistributionGroupUsersRequest = /*@__PURE__*/ S.suspend(
 export interface TrafficDistributionGroupUserSummary {
   UserId?: string;
 }
-export const TrafficDistributionGroupUserSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserId: S.optional(S.String) }),
-).annotate({
-  identifier: "TrafficDistributionGroupUserSummary",
-}) as any as S.Schema<TrafficDistributionGroupUserSummary>;
+export const TrafficDistributionGroupUserSummary =
+  EvaluationReviewNotificationRecipientValue as any as S.Schema<TrafficDistributionGroupUserSummary>;
 export type TrafficDistributionGroupUserSummaryList = TrafficDistributionGroupUserSummary[];
 export const TrafficDistributionGroupUserSummaryList = /*@__PURE__*/ S.Array(
   TrafficDistributionGroupUserSummary,
@@ -16686,7 +16397,8 @@ export const ListUserHierarchyGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserHierarchyGroupsRequest",
 }) as any as S.Schema<ListUserHierarchyGroupsRequest>;
 export type HierarchyGroupSummaryList = HierarchyGroupSummary[];
-export const HierarchyGroupSummaryList = /*@__PURE__*/ S.Array(HierarchyGroupSummary);
+export const HierarchyGroupSummaryList =
+  HoursOfOperationSummaryList as any as S.Schema<HierarchyGroupSummaryList>;
 export interface ListUserHierarchyGroupsResponse {
   UserHierarchyGroupSummaryList?: HierarchyGroupSummary[];
   NextToken?: string;
@@ -17107,9 +16819,8 @@ export interface MonitorContactResponse {
   ContactId?: string;
   ContactArn?: string;
 }
-export const MonitorContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ContactId: S.optional(S.String), ContactArn: S.optional(S.String) }),
-).annotate({ identifier: "MonitorContactResponse" }) as any as S.Schema<MonitorContactResponse>;
+export const MonitorContactResponse =
+  CreateContactResponse as any as S.Schema<MonitorContactResponse>;
 export interface PauseContactRequest {
   ContactId: string;
   InstanceId: string;
@@ -17121,9 +16832,7 @@ export const PauseContactRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PauseContactRequest" }) as any as S.Schema<PauseContactRequest>;
 export interface PauseContactResponse {}
-export const PauseContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PauseContactResponse",
-}) as any as S.Schema<PauseContactResponse>;
+export const PauseContactResponse = AssociateBotResponse as any as S.Schema<PauseContactResponse>;
 export interface PutUserStatusRequest {
   UserId: string;
   InstanceId: string;
@@ -17146,9 +16855,7 @@ export const PutUserStatusRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutUserStatusRequest" }) as any as S.Schema<PutUserStatusRequest>;
 export interface PutUserStatusResponse {}
-export const PutUserStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutUserStatusResponse",
-}) as any as S.Schema<PutUserStatusResponse>;
+export const PutUserStatusResponse = AssociateBotResponse as any as S.Schema<PutUserStatusResponse>;
 export interface ReleasePhoneNumberRequest {
   PhoneNumberId: string;
   ClientToken?: string;
@@ -17171,9 +16878,8 @@ export const ReleasePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReleasePhoneNumberRequest",
 }) as any as S.Schema<ReleasePhoneNumberRequest>;
 export interface ReleasePhoneNumberResponse {}
-export const ReleasePhoneNumberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReleasePhoneNumberResponse",
-}) as any as S.Schema<ReleasePhoneNumberResponse>;
+export const ReleasePhoneNumberResponse =
+  AssociateBotResponse as any as S.Schema<ReleasePhoneNumberResponse>;
 export interface ReplicateInstanceRequest {
   InstanceId: string;
   ReplicaRegion: string;
@@ -17201,11 +16907,8 @@ export interface ReplicateInstanceResponse {
   Id?: string;
   Arn?: string;
 }
-export const ReplicateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "ReplicateInstanceResponse",
-}) as any as S.Schema<ReplicateInstanceResponse>;
+export const ReplicateInstanceResponse =
+  CreateContactFlowModuleResponse as any as S.Schema<ReplicateInstanceResponse>;
 export interface ResumeContactRequest {
   ContactId: string;
   InstanceId: string;
@@ -17217,9 +16920,7 @@ export const ResumeContactRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ResumeContactRequest" }) as any as S.Schema<ResumeContactRequest>;
 export interface ResumeContactResponse {}
-export const ResumeContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeContactResponse",
-}) as any as S.Schema<ResumeContactResponse>;
+export const ResumeContactResponse = AssociateBotResponse as any as S.Schema<ResumeContactResponse>;
 export type ContactRecordingType = "AGENT" | "IVR" | "SCREEN" | (string & {});
 export const ContactRecordingType = S.String;
 
@@ -17249,9 +16950,8 @@ export const ResumeContactRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResumeContactRecordingRequest",
 }) as any as S.Schema<ResumeContactRecordingRequest>;
 export interface ResumeContactRecordingResponse {}
-export const ResumeContactRecordingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeContactRecordingResponse",
-}) as any as S.Schema<ResumeContactRecordingResponse>;
+export const ResumeContactRecordingResponse =
+  AssociateBotResponse as any as S.Schema<ResumeContactRecordingResponse>;
 export interface TagCondition {
   TagKey?: string;
   TagValue?: string;
@@ -17980,7 +17680,7 @@ export const SearchContactsTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchContactsTimeRange" }) as any as S.Schema<SearchContactsTimeRange>;
 export type SearchText = string | redacted.Redacted<string>;
 export type SearchTextList = (string | redacted.Redacted<string>)[];
-export const SearchTextList = /*@__PURE__*/ S.Array(SensitiveString);
+export const SearchTextList = ViewActions as any as S.Schema<SearchTextList>;
 export type SearchContactsMatchType =
   | "MATCH_ALL"
   | "MATCH_ANY"
@@ -17997,9 +17697,9 @@ export const NameCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SearchText: SearchTextList, MatchType: SearchContactsMatchType }),
 ).annotate({ identifier: "NameCriteria" }) as any as S.Schema<NameCriteria>;
 export type AgentResourceIdList = string[];
-export const AgentResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export const AgentResourceIdList = QuickConnectsList as any as S.Schema<AgentResourceIdList>;
 export type HierarchyGroupIdList = string[];
-export const HierarchyGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const HierarchyGroupIdList = QuickConnectsList as any as S.Schema<HierarchyGroupIdList>;
 export interface AgentHierarchyGroups {
   L1Ids?: string[];
   L2Ids?: string[];
@@ -18017,7 +17717,7 @@ export const AgentHierarchyGroups = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentHierarchyGroups" }) as any as S.Schema<AgentHierarchyGroups>;
 export type ChannelList = Channel[];
-export const ChannelList = /*@__PURE__*/ S.Array(Channel);
+export const ChannelList = Channels as any as S.Schema<ChannelList>;
 export interface TranscriptCriteria {
   ParticipantRole: ParticipantRole;
   SearchText: (string | redacted.Redacted<string>)[];
@@ -18048,7 +17748,7 @@ export const ContactAnalysis = /*@__PURE__*/ S.suspend(() =>
 export type InitiationMethodList = ContactInitiationMethod[];
 export const InitiationMethodList = /*@__PURE__*/ S.Array(ContactInitiationMethod);
 export type QueueIdList = string[];
-export const QueueIdList = /*@__PURE__*/ S.Array(S.String);
+export const QueueIdList = QuickConnectsList as any as S.Schema<QueueIdList>;
 export interface SearchableAgentCriteriaStep {
   AgentIds?: string[];
   MatchType?: SearchContactsMatchType;
@@ -18128,7 +17828,8 @@ export const SearchContactsAdditionalTimeRange = /*@__PURE__*/ S.suspend(() =>
 export type SearchableContactAttributeKey = string | redacted.Redacted<string>;
 export type SearchableContactAttributeValue = string | redacted.Redacted<string>;
 export type SearchableContactAttributeValueList = (string | redacted.Redacted<string>)[];
-export const SearchableContactAttributeValueList = /*@__PURE__*/ S.Array(SensitiveString);
+export const SearchableContactAttributeValueList =
+  ViewActions as any as S.Schema<SearchableContactAttributeValueList>;
 export interface SearchableContactAttributesCriteria {
   Key: string | redacted.Redacted<string>;
   Values: (string | redacted.Redacted<string>)[];
@@ -18157,34 +17858,25 @@ export const SearchableContactAttributes = /*@__PURE__*/ S.suspend(() =>
 export type SearchableSegmentAttributeKey = string | redacted.Redacted<string>;
 export type SearchableSegmentAttributeValue = string | redacted.Redacted<string>;
 export type SearchableSegmentAttributeValueList = (string | redacted.Redacted<string>)[];
-export const SearchableSegmentAttributeValueList = /*@__PURE__*/ S.Array(SensitiveString);
+export const SearchableSegmentAttributeValueList =
+  ViewActions as any as S.Schema<SearchableSegmentAttributeValueList>;
 export interface SearchableSegmentAttributesCriteria {
   Key: string | redacted.Redacted<string>;
   Values: (string | redacted.Redacted<string>)[];
 }
-export const SearchableSegmentAttributesCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: SensitiveString, Values: SearchableSegmentAttributeValueList }),
-).annotate({
-  identifier: "SearchableSegmentAttributesCriteria",
-}) as any as S.Schema<SearchableSegmentAttributesCriteria>;
+export const SearchableSegmentAttributesCriteria =
+  SearchableContactAttributesCriteria as any as S.Schema<SearchableSegmentAttributesCriteria>;
 export type SearchableSegmentAttributesCriteriaList = SearchableSegmentAttributesCriteria[];
-export const SearchableSegmentAttributesCriteriaList = /*@__PURE__*/ S.Array(
-  SearchableSegmentAttributesCriteria,
-);
+export const SearchableSegmentAttributesCriteriaList =
+  SearchableContactAttributesCriteriaList as any as S.Schema<SearchableSegmentAttributesCriteriaList>;
 export interface SearchableSegmentAttributes {
   Criteria: SearchableSegmentAttributesCriteria[];
   MatchType?: SearchContactsMatchType;
 }
-export const SearchableSegmentAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Criteria: SearchableSegmentAttributesCriteriaList,
-    MatchType: S.optional(SearchContactsMatchType),
-  }),
-).annotate({
-  identifier: "SearchableSegmentAttributes",
-}) as any as S.Schema<SearchableSegmentAttributes>;
+export const SearchableSegmentAttributes =
+  SearchableContactAttributes as any as S.Schema<SearchableSegmentAttributes>;
 export type ActiveRegionList = string[];
-export const ActiveRegionList = /*@__PURE__*/ S.Array(S.String);
+export const ActiveRegionList = QuickConnectsList as any as S.Schema<ActiveRegionList>;
 export type AiAgentId = string;
 export type AiAgentVersionNumber = number;
 export interface AiAgentSearchCriteria {
@@ -18395,9 +18087,8 @@ export const SearchContactsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DataTableSearchFilter {
   AttributeFilter?: ControlPlaneAttributeFilter;
 }
-export const DataTableSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeFilter: S.optional(ControlPlaneAttributeFilter) }),
-).annotate({ identifier: "DataTableSearchFilter" }) as any as S.Schema<DataTableSearchFilter>;
+export const DataTableSearchFilter =
+  AgentStatusSearchFilter as any as S.Schema<DataTableSearchFilter>;
 export type DataTableSearchConditionList = DataTableSearchCriteria[];
 export const DataTableSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -18682,11 +18373,8 @@ export const SearchEvaluationFormsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface HoursOfOperationSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const HoursOfOperationSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({
-  identifier: "HoursOfOperationSearchFilter",
-}) as any as S.Schema<HoursOfOperationSearchFilter>;
+export const HoursOfOperationSearchFilter =
+  ContactFlowModuleSearchFilter as any as S.Schema<HoursOfOperationSearchFilter>;
 export type HoursOfOperationOverrideSearchConditionList = HoursOfOperationOverrideSearchCriteria[];
 export const HoursOfOperationOverrideSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -18854,9 +18542,7 @@ export const SearchHoursOfOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface MetricSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const MetricSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({ identifier: "MetricSearchFilter" }) as any as S.Schema<MetricSearchFilter>;
+export const MetricSearchFilter = EmailAddressSearchFilter as any as S.Schema<MetricSearchFilter>;
 export type MetricSearchConditionList = MetricSearchCriteria[];
 export const MetricSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<MetricSearchCriteria> => MetricSearchCriteria).annotate({
@@ -18918,9 +18604,8 @@ export const SearchMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface NotificationSearchFilter {
   AttributeFilter?: ControlPlaneAttributeFilter;
 }
-export const NotificationSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeFilter: S.optional(ControlPlaneAttributeFilter) }),
-).annotate({ identifier: "NotificationSearchFilter" }) as any as S.Schema<NotificationSearchFilter>;
+export const NotificationSearchFilter =
+  AgentStatusSearchFilter as any as S.Schema<NotificationSearchFilter>;
 export type NotificationSearchConditionList = NotificationSearchCriteria[];
 export const NotificationSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -19089,9 +18774,7 @@ export const SearchPredefinedAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PromptSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const PromptSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({ identifier: "PromptSearchFilter" }) as any as S.Schema<PromptSearchFilter>;
+export const PromptSearchFilter = EmailAddressSearchFilter as any as S.Schema<PromptSearchFilter>;
 export type PromptSearchConditionList = PromptSearchCriteria[];
 export const PromptSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<PromptSearchCriteria> => PromptSearchCriteria).annotate({
@@ -19152,9 +18835,7 @@ export type MaxResult500 = number;
 export interface QueueSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const QueueSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({ identifier: "QueueSearchFilter" }) as any as S.Schema<QueueSearchFilter>;
+export const QueueSearchFilter = EmailAddressSearchFilter as any as S.Schema<QueueSearchFilter>;
 export type QueueSearchConditionList = QueueSearchCriteria[];
 export const QueueSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<QueueSearchCriteria> => QueueSearchCriteria).annotate({
@@ -19219,9 +18900,8 @@ export const SearchQueuesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface QuickConnectSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const QuickConnectSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({ identifier: "QuickConnectSearchFilter" }) as any as S.Schema<QuickConnectSearchFilter>;
+export const QuickConnectSearchFilter =
+  EmailAddressSearchFilter as any as S.Schema<QuickConnectSearchFilter>;
 export type QuickConnectSearchConditionList = QuickConnectSearchCriteria[];
 export const QuickConnectSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -19289,7 +18969,7 @@ export const SearchQuickConnectsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQuickConnectsResponse",
 }) as any as S.Schema<SearchQuickConnectsResponse>;
 export type ResourceTypeList = string[];
-export const ResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypeList = QuickConnectsList as any as S.Schema<ResourceTypeList>;
 export type TagKeyString = string;
 export type TagValueString = string;
 export interface TagSearchCondition {
@@ -19355,11 +19035,8 @@ export const SearchResourceTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RoutingProfileSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const RoutingProfileSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({
-  identifier: "RoutingProfileSearchFilter",
-}) as any as S.Schema<RoutingProfileSearchFilter>;
+export const RoutingProfileSearchFilter =
+  ContactFlowModuleSearchFilter as any as S.Schema<RoutingProfileSearchFilter>;
 export type RoutingProfileSearchConditionList = RoutingProfileSearchCriteria[];
 export const RoutingProfileSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -19462,13 +19139,11 @@ export const RulesSearchCriteria = /*@__PURE__*/ S.suspend(() =>
 export interface RuleAttributeAndCondition {
   TagConditions?: TagCondition[];
 }
-export const RuleAttributeAndCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagConditions: S.optional(TagAndConditionList) }),
-).annotate({
-  identifier: "RuleAttributeAndCondition",
-}) as any as S.Schema<RuleAttributeAndCondition>;
+export const RuleAttributeAndCondition =
+  CommonAttributeAndCondition as any as S.Schema<RuleAttributeAndCondition>;
 export type RuleAttributeOrConditionList = RuleAttributeAndCondition[];
-export const RuleAttributeOrConditionList = /*@__PURE__*/ S.Array(RuleAttributeAndCondition);
+export const RuleAttributeOrConditionList =
+  CommonAttributeOrConditionList as any as S.Schema<RuleAttributeOrConditionList>;
 export interface RuleAttributeFilter {
   OrConditions?: RuleAttributeAndCondition[];
   AndCondition?: RuleAttributeAndCondition;
@@ -19580,11 +19255,8 @@ export const SecurityProfileSearchCriteria = /*@__PURE__*/ S.suspend(() =>
 export interface SecurityProfilesSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const SecurityProfilesSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({
-  identifier: "SecurityProfilesSearchFilter",
-}) as any as S.Schema<SecurityProfilesSearchFilter>;
+export const SecurityProfilesSearchFilter =
+  ContactFlowModuleSearchFilter as any as S.Schema<SecurityProfilesSearchFilter>;
 export interface SearchSecurityProfilesRequest {
   InstanceId: string;
   NextToken?: string;
@@ -19653,9 +19325,8 @@ export const SearchSecurityProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TestCaseSearchFilter {
   TagFilter?: ControlPlaneTagFilter;
 }
-export const TestCaseSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TagFilter: S.optional(ControlPlaneTagFilter) }),
-).annotate({ identifier: "TestCaseSearchFilter" }) as any as S.Schema<TestCaseSearchFilter>;
+export const TestCaseSearchFilter =
+  EmailAddressSearchFilter as any as S.Schema<TestCaseSearchFilter>;
 export type TestCaseSearchConditionList = TestCaseSearchCriteria[];
 export const TestCaseSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<TestCaseSearchCriteria> => TestCaseSearchCriteria).annotate({
@@ -19719,11 +19390,8 @@ export const SearchTestCasesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UserHierarchyGroupSearchFilter {
   AttributeFilter?: ControlPlaneAttributeFilter;
 }
-export const UserHierarchyGroupSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeFilter: S.optional(ControlPlaneAttributeFilter) }),
-).annotate({
-  identifier: "UserHierarchyGroupSearchFilter",
-}) as any as S.Schema<UserHierarchyGroupSearchFilter>;
+export const UserHierarchyGroupSearchFilter =
+  EvaluationFormSearchFilter as any as S.Schema<UserHierarchyGroupSearchFilter>;
 export type UserHierarchyGroupSearchConditionList = UserHierarchyGroupSearchCriteria[];
 export const UserHierarchyGroupSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -19970,9 +19638,7 @@ export const SearchUsersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ViewSearchFilter {
   AttributeFilter?: ControlPlaneAttributeFilter;
 }
-export const ViewSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeFilter: S.optional(ControlPlaneAttributeFilter) }),
-).annotate({ identifier: "ViewSearchFilter" }) as any as S.Schema<ViewSearchFilter>;
+export const ViewSearchFilter = AgentStatusSearchFilter as any as S.Schema<ViewSearchFilter>;
 export type ViewSearchConditionList = ViewSearchCriteria[];
 export const ViewSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<ViewSearchCriteria> => ViewSearchCriteria).annotate({
@@ -20095,11 +19761,8 @@ export const SearchVocabulariesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface WorkspaceAssociationSearchFilter {
   AttributeFilter?: ControlPlaneAttributeFilter;
 }
-export const WorkspaceAssociationSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeFilter: S.optional(ControlPlaneAttributeFilter) }),
-).annotate({
-  identifier: "WorkspaceAssociationSearchFilter",
-}) as any as S.Schema<WorkspaceAssociationSearchFilter>;
+export const WorkspaceAssociationSearchFilter =
+  EvaluationFormSearchFilter as any as S.Schema<WorkspaceAssociationSearchFilter>;
 export type WorkspaceAssociationSearchConditionList = WorkspaceAssociationSearchCriteria[];
 export const WorkspaceAssociationSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -20199,9 +19862,8 @@ export const SearchWorkspaceAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface WorkspaceSearchFilter {
   AttributeFilter?: ControlPlaneAttributeFilter;
 }
-export const WorkspaceSearchFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributeFilter: S.optional(ControlPlaneAttributeFilter) }),
-).annotate({ identifier: "WorkspaceSearchFilter" }) as any as S.Schema<WorkspaceSearchFilter>;
+export const WorkspaceSearchFilter =
+  AgentStatusSearchFilter as any as S.Schema<WorkspaceSearchFilter>;
 export type WorkspaceSearchConditionList = WorkspaceSearchCriteria[];
 export const WorkspaceSearchConditionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(
@@ -20305,7 +19967,8 @@ export const ChatEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChatEvent" }) as any as S.Schema<ChatEvent>;
 export type SupportedMessagingContentType = string;
 export type SupportedMessagingContentTypes = string[];
-export const SupportedMessagingContentTypes = /*@__PURE__*/ S.Array(S.String);
+export const SupportedMessagingContentTypes =
+  QuickConnectsList as any as S.Schema<SupportedMessagingContentTypes>;
 export interface ParticipantDetails {
   DisplayName: string;
 }
@@ -20476,9 +20139,8 @@ export const SendOutboundEmailRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SendOutboundEmailRequest" }) as any as S.Schema<SendOutboundEmailRequest>;
 export interface SendOutboundEmailResponse {}
-export const SendOutboundEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendOutboundEmailResponse",
-}) as any as S.Schema<SendOutboundEmailResponse>;
+export const SendOutboundEmailResponse =
+  AssociateBotResponse as any as S.Schema<SendOutboundEmailResponse>;
 export type WebBrowserId = string;
 export type WebSessionId = string;
 export interface WebNotificationSource {
@@ -20505,10 +20167,7 @@ export type RecommenderName = string;
 export type RecommenderContextKey = string;
 export type RecommenderContextValue = string;
 export type RecommenderContext = { [key: string]: string | undefined };
-export const RecommenderContext = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const RecommenderContext = AllowedAccessControlTags as any as S.Schema<RecommenderContext>;
 export interface RecommenderConfig {
   DomainName: string;
   RecommenderName: string;
@@ -20573,11 +20232,8 @@ export const SendOutboundWebNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendOutboundWebNotificationRequest",
 }) as any as S.Schema<SendOutboundWebNotificationRequest>;
 export interface SendOutboundWebNotificationResponse {}
-export const SendOutboundWebNotificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendOutboundWebNotificationResponse",
-}) as any as S.Schema<SendOutboundWebNotificationResponse>;
+export const SendOutboundWebNotificationResponse =
+  AssociateContactWithUserResponse as any as S.Schema<SendOutboundWebNotificationResponse>;
 export interface AiAgentInput {
   AiAgentId: string;
 }
@@ -20678,10 +20334,8 @@ export const StartAttachedFileUploadRequest = /*@__PURE__*/ S.suspend(() =>
 export type UrlMetadataSignedHeadersKey = string;
 export type UrlMetadataSignedHeadersValue = string;
 export type UrlMetadataSignedHeaders = { [key: string]: string | undefined };
-export const UrlMetadataSignedHeaders = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const UrlMetadataSignedHeaders =
+  AllowedAccessControlTags as any as S.Schema<UrlMetadataSignedHeaders>;
 export interface UploadUrlMetadata {
   Url?: string;
   UrlExpiry?: string;
@@ -20833,7 +20487,7 @@ export const Policy = S.String;
 
 export type Entity = string;
 export type Entities = string[];
-export const Entities = /*@__PURE__*/ S.Array(S.String);
+export const Entities = QuickConnectsList as any as S.Schema<Entities>;
 export type MaskMode = "PII" | "EntityType" | (string & {});
 export const MaskMode = S.String;
 
@@ -20932,11 +20586,8 @@ export const StartContactConversationalAnalyticsJobResponse = /*@__PURE__*/ S.su
 export interface AutoEvaluationConfiguration {
   Enabled: boolean;
 }
-export const AutoEvaluationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.Boolean }),
-).annotate({
-  identifier: "AutoEvaluationConfiguration",
-}) as any as S.Schema<AutoEvaluationConfiguration>;
+export const AutoEvaluationConfiguration =
+  EvaluationFormAutoEvaluationConfiguration as any as S.Schema<AutoEvaluationConfiguration>;
 export interface StartContactEvaluationRequest {
   InstanceId: string;
   ContactId: string;
@@ -21007,11 +20658,8 @@ export const StartContactMediaProcessingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartContactMediaProcessingRequest",
 }) as any as S.Schema<StartContactMediaProcessingRequest>;
 export interface StartContactMediaProcessingResponse {}
-export const StartContactMediaProcessingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartContactMediaProcessingResponse",
-}) as any as S.Schema<StartContactMediaProcessingResponse>;
+export const StartContactMediaProcessingResponse =
+  AssociateContactWithUserResponse as any as S.Schema<StartContactMediaProcessingResponse>;
 export type VoiceRecordingTrack = "FROM_AGENT" | "TO_AGENT" | "ALL" | (string & {});
 export const VoiceRecordingTrack = S.String;
 
@@ -21056,9 +20704,8 @@ export const StartContactRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartContactRecordingRequest",
 }) as any as S.Schema<StartContactRecordingRequest>;
 export interface StartContactRecordingResponse {}
-export const StartContactRecordingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartContactRecordingResponse",
-}) as any as S.Schema<StartContactRecordingResponse>;
+export const StartContactRecordingResponse =
+  AssociateBotResponse as any as S.Schema<StartContactRecordingResponse>;
 export interface StartContactStreamingRequest {
   InstanceId: string;
   ContactId: string;
@@ -21227,15 +20874,8 @@ export interface StartEvaluationFormValidationResponse {
   EvaluationFormArn: string;
   EvaluationFormVersion: number;
 }
-export const StartEvaluationFormValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EvaluationFormId: S.String,
-    EvaluationFormArn: S.String,
-    EvaluationFormVersion: S.Number,
-  }),
-).annotate({
-  identifier: "StartEvaluationFormValidationResponse",
-}) as any as S.Schema<StartEvaluationFormValidationResponse>;
+export const StartEvaluationFormValidationResponse =
+  ActivateEvaluationFormResponse as any as S.Schema<StartEvaluationFormValidationResponse>;
 export interface StartOutboundChatContactRequest {
   SourceEndpoint: Endpoint;
   DestinationEndpoint: Endpoint;
@@ -21275,11 +20915,8 @@ export const StartOutboundChatContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartOutboundChatContactResponse {
   ContactId?: string;
 }
-export const StartOutboundChatContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ContactId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartOutboundChatContactResponse",
-}) as any as S.Schema<StartOutboundChatContactResponse>;
+export const StartOutboundChatContactResponse =
+  StartEmailContactResponse as any as S.Schema<StartOutboundChatContactResponse>;
 export interface StartOutboundEmailContactRequest {
   InstanceId: string;
   ContactId: string;
@@ -21307,11 +20944,8 @@ export const StartOutboundEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartOutboundEmailContactResponse {
   ContactId?: string;
 }
-export const StartOutboundEmailContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ContactId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartOutboundEmailContactResponse",
-}) as any as S.Schema<StartOutboundEmailContactResponse>;
+export const StartOutboundEmailContactResponse =
+  StartEmailContactResponse as any as S.Schema<StartOutboundEmailContactResponse>;
 export interface AnswerMachineDetectionConfig {
   EnableAnswerMachineDetection?: boolean;
   AwaitAnswerMachinePrompt?: boolean;
@@ -21370,11 +21004,8 @@ export const StartOutboundVoiceContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartOutboundVoiceContactResponse {
   ContactId?: string;
 }
-export const StartOutboundVoiceContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ContactId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartOutboundVoiceContactResponse",
-}) as any as S.Schema<StartOutboundVoiceContactResponse>;
+export const StartOutboundVoiceContactResponse =
+  StartEmailContactResponse as any as S.Schema<StartOutboundVoiceContactResponse>;
 export interface StartScreenSharingRequest {
   ClientToken?: string;
   InstanceId: string;
@@ -21392,18 +21023,15 @@ export const StartScreenSharingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartScreenSharingRequest",
 }) as any as S.Schema<StartScreenSharingRequest>;
 export interface StartScreenSharingResponse {}
-export const StartScreenSharingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartScreenSharingResponse",
-}) as any as S.Schema<StartScreenSharingResponse>;
+export const StartScreenSharingResponse =
+  AssociateBotResponse as any as S.Schema<StartScreenSharingResponse>;
 export interface TaskAttachment {
   FileName: string;
   S3Url: string;
 }
-export const TaskAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileName: S.String, S3Url: S.String }),
-).annotate({ identifier: "TaskAttachment" }) as any as S.Schema<TaskAttachment>;
+export const TaskAttachment = EmailAttachment as any as S.Schema<TaskAttachment>;
 export type TaskAttachments = TaskAttachment[];
-export const TaskAttachments = /*@__PURE__*/ S.Array(TaskAttachment);
+export const TaskAttachments = EmailAttachments as any as S.Schema<TaskAttachments>;
 export interface StartTaskContactRequest {
   InstanceId: string;
   PreviousContactId?: string;
@@ -21620,9 +21248,7 @@ export const StopContactRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/contact/stop" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "StopContactRequest" }) as any as S.Schema<StopContactRequest>;
 export interface StopContactResponse {}
-export const StopContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopContactResponse",
-}) as any as S.Schema<StopContactResponse>;
+export const StopContactResponse = AssociateBotResponse as any as S.Schema<StopContactResponse>;
 export interface StopContactMediaProcessingRequest {
   InstanceId?: string;
   ContactId?: string;
@@ -21642,11 +21268,8 @@ export const StopContactMediaProcessingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopContactMediaProcessingRequest",
 }) as any as S.Schema<StopContactMediaProcessingRequest>;
 export interface StopContactMediaProcessingResponse {}
-export const StopContactMediaProcessingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopContactMediaProcessingResponse",
-}) as any as S.Schema<StopContactMediaProcessingResponse>;
+export const StopContactMediaProcessingResponse =
+  AssociateContactWithUserResponse as any as S.Schema<StopContactMediaProcessingResponse>;
 export interface StopContactRecordingRequest {
   InstanceId: string;
   ContactId: string;
@@ -21666,9 +21289,8 @@ export const StopContactRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopContactRecordingRequest",
 }) as any as S.Schema<StopContactRecordingRequest>;
 export interface StopContactRecordingResponse {}
-export const StopContactRecordingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopContactRecordingResponse",
-}) as any as S.Schema<StopContactRecordingResponse>;
+export const StopContactRecordingResponse =
+  AssociateBotResponse as any as S.Schema<StopContactRecordingResponse>;
 export interface StopContactStreamingRequest {
   InstanceId: string;
   ContactId: string;
@@ -21682,9 +21304,8 @@ export const StopContactStreamingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopContactStreamingRequest",
 }) as any as S.Schema<StopContactStreamingRequest>;
 export interface StopContactStreamingResponse {}
-export const StopContactStreamingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopContactStreamingResponse",
-}) as any as S.Schema<StopContactStreamingResponse>;
+export const StopContactStreamingResponse =
+  AssociateBotResponse as any as S.Schema<StopContactStreamingResponse>;
 export interface StopTestCaseExecutionRequest {
   InstanceId: string;
   TestCaseExecutionId: string;
@@ -21714,9 +21335,8 @@ export const StopTestCaseExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopTestCaseExecutionRequest",
 }) as any as S.Schema<StopTestCaseExecutionRequest>;
 export interface StopTestCaseExecutionResponse {}
-export const StopTestCaseExecutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopTestCaseExecutionResponse",
-}) as any as S.Schema<StopTestCaseExecutionResponse>;
+export const StopTestCaseExecutionResponse =
+  AssociateBotResponse as any as S.Schema<StopTestCaseExecutionResponse>;
 export interface EvaluationAnswerInput {
   Value?: EvaluationAnswerData;
 }
@@ -21763,11 +21383,8 @@ export interface SubmitContactEvaluationResponse {
   EvaluationId: string;
   EvaluationArn: string;
 }
-export const SubmitContactEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EvaluationId: S.String, EvaluationArn: S.String }),
-).annotate({
-  identifier: "SubmitContactEvaluationResponse",
-}) as any as S.Schema<SubmitContactEvaluationResponse>;
+export const SubmitContactEvaluationResponse =
+  StartContactEvaluationResponse as any as S.Schema<SubmitContactEvaluationResponse>;
 export interface SuspendContactRecordingRequest {
   InstanceId: string;
   ContactId: string;
@@ -21794,9 +21411,8 @@ export const SuspendContactRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuspendContactRecordingRequest",
 }) as any as S.Schema<SuspendContactRecordingRequest>;
 export interface SuspendContactRecordingResponse {}
-export const SuspendContactRecordingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "SuspendContactRecordingResponse" },
-) as any as S.Schema<SuspendContactRecordingResponse>;
+export const SuspendContactRecordingResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<SuspendContactRecordingResponse>;
 export interface TagContactRequest {
   ContactId: string;
   InstanceId: string;
@@ -21808,9 +21424,7 @@ export const TagContactRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagContactRequest" }) as any as S.Schema<TagContactRequest>;
 export interface TagContactResponse {}
-export const TagContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagContactResponse",
-}) as any as S.Schema<TagContactResponse>;
+export const TagContactResponse = AssociateBotResponse as any as S.Schema<TagContactResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -21821,9 +21435,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AssociateBotResponse as any as S.Schema<TagResourceResponse>;
 export interface TransferContactRequest {
   InstanceId: string;
   ContactId: string;
@@ -21848,11 +21460,10 @@ export interface TransferContactResponse {
   ContactId?: string;
   ContactArn?: string;
 }
-export const TransferContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ContactId: S.optional(S.String), ContactArn: S.optional(S.String) }),
-).annotate({ identifier: "TransferContactResponse" }) as any as S.Schema<TransferContactResponse>;
+export const TransferContactResponse =
+  CreateContactResponse as any as S.Schema<TransferContactResponse>;
 export type ContactTagKeys = string[];
-export const ContactTagKeys = /*@__PURE__*/ S.Array(S.String);
+export const ContactTagKeys = QuickConnectsList as any as S.Schema<ContactTagKeys>;
 export interface UntagContactRequest {
   ContactId: string;
   InstanceId: string;
@@ -21875,11 +21486,9 @@ export const UntagContactRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagContactRequest" }) as any as S.Schema<UntagContactRequest>;
 export interface UntagContactResponse {}
-export const UntagContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagContactResponse",
-}) as any as S.Schema<UntagContactResponse>;
+export const UntagContactResponse = AssociateBotResponse as any as S.Schema<UntagContactResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = QuickConnectsList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -21893,9 +21502,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = AssociateBotResponse as any as S.Schema<UntagResourceResponse>;
 export type UpdateAgentStatusDescription = string;
 export interface UpdateAgentStatusRequest {
   InstanceId: string;
@@ -21927,9 +21534,8 @@ export const UpdateAgentStatusRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateAgentStatusRequest" }) as any as S.Schema<UpdateAgentStatusRequest>;
 export interface UpdateAgentStatusResponse {}
-export const UpdateAgentStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAgentStatusResponse",
-}) as any as S.Schema<UpdateAgentStatusResponse>;
+export const UpdateAgentStatusResponse =
+  AssociateBotResponse as any as S.Schema<UpdateAgentStatusResponse>;
 export interface UpdateAttachedFilesConfigurationRequest {
   InstanceId: string;
   AttachmentScope: AttachmentScope;
@@ -21965,17 +21571,8 @@ export interface UpdateAttachedFilesConfigurationResponse {
   ExtensionConfiguration?: ExtensionConfiguration;
   LastModifiedTime?: Date;
 }
-export const UpdateAttachedFilesConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceId: S.String,
-    AttachmentScope: AttachmentScope,
-    MaximumSizeLimitInBytes: S.optional(S.Number),
-    ExtensionConfiguration: S.optional(ExtensionConfiguration),
-    LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "UpdateAttachedFilesConfigurationResponse",
-}) as any as S.Schema<UpdateAttachedFilesConfigurationResponse>;
+export const UpdateAttachedFilesConfigurationResponse =
+  AttachedFilesConfiguration as any as S.Schema<UpdateAttachedFilesConfigurationResponse>;
 export interface UpdateAuthenticationProfileRequest {
   AuthenticationProfileId: string;
   InstanceId: string;
@@ -22015,17 +21612,12 @@ export const UpdateAuthenticationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAuthenticationProfileRequest",
 }) as any as S.Schema<UpdateAuthenticationProfileRequest>;
 export interface UpdateAuthenticationProfileResponse {}
-export const UpdateAuthenticationProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAuthenticationProfileResponse",
-}) as any as S.Schema<UpdateAuthenticationProfileResponse>;
+export const UpdateAuthenticationProfileResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateAuthenticationProfileResponse>;
 export interface QueueInfoInput {
   Id?: string;
 }
-export const QueueInfoInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({ identifier: "QueueInfoInput" }) as any as S.Schema<QueueInfoInput>;
+export const QueueInfoInput = SecurityProfileItem as any as S.Schema<QueueInfoInput>;
 export interface UpdateContactRequest {
   InstanceId: string;
   ContactId: string;
@@ -22062,9 +21654,7 @@ export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateContactRequest" }) as any as S.Schema<UpdateContactRequest>;
 export interface UpdateContactResponse {}
-export const UpdateContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateContactResponse",
-}) as any as S.Schema<UpdateContactResponse>;
+export const UpdateContactResponse = AssociateBotResponse as any as S.Schema<UpdateContactResponse>;
 export interface UpdateContactAttributesRequest {
   InitialContactId: string;
   InstanceId: string;
@@ -22078,9 +21668,8 @@ export const UpdateContactAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactAttributesRequest",
 }) as any as S.Schema<UpdateContactAttributesRequest>;
 export interface UpdateContactAttributesResponse {}
-export const UpdateContactAttributesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateContactAttributesResponse" },
-) as any as S.Schema<UpdateContactAttributesResponse>;
+export const UpdateContactAttributesResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<UpdateContactAttributesResponse>;
 export interface UpdateContactEvaluationRequest {
   InstanceId: string;
   EvaluationId: string;
@@ -22112,11 +21701,8 @@ export interface UpdateContactEvaluationResponse {
   EvaluationId: string;
   EvaluationArn: string;
 }
-export const UpdateContactEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EvaluationId: S.String, EvaluationArn: S.String }),
-).annotate({
-  identifier: "UpdateContactEvaluationResponse",
-}) as any as S.Schema<UpdateContactEvaluationResponse>;
+export const UpdateContactEvaluationResponse =
+  StartContactEvaluationResponse as any as S.Schema<UpdateContactEvaluationResponse>;
 export interface UpdateContactFlowContentRequest {
   InstanceId: string;
   ContactFlowId: string;
@@ -22141,11 +21727,8 @@ export const UpdateContactFlowContentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactFlowContentRequest",
 }) as any as S.Schema<UpdateContactFlowContentRequest>;
 export interface UpdateContactFlowContentResponse {}
-export const UpdateContactFlowContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateContactFlowContentResponse",
-}) as any as S.Schema<UpdateContactFlowContentResponse>;
+export const UpdateContactFlowContentResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateContactFlowContentResponse>;
 export interface UpdateContactFlowMetadataRequest {
   InstanceId: string;
   ContactFlowId: string;
@@ -22174,11 +21757,8 @@ export const UpdateContactFlowMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactFlowMetadataRequest",
 }) as any as S.Schema<UpdateContactFlowMetadataRequest>;
 export interface UpdateContactFlowMetadataResponse {}
-export const UpdateContactFlowMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateContactFlowMetadataResponse",
-}) as any as S.Schema<UpdateContactFlowMetadataResponse>;
+export const UpdateContactFlowMetadataResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateContactFlowMetadataResponse>;
 export interface UpdateContactFlowModuleAliasRequest {
   InstanceId: string;
   ContactFlowModuleId: string;
@@ -22212,11 +21792,8 @@ export const UpdateContactFlowModuleAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactFlowModuleAliasRequest",
 }) as any as S.Schema<UpdateContactFlowModuleAliasRequest>;
 export interface UpdateContactFlowModuleAliasResponse {}
-export const UpdateContactFlowModuleAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateContactFlowModuleAliasResponse",
-}) as any as S.Schema<UpdateContactFlowModuleAliasResponse>;
+export const UpdateContactFlowModuleAliasResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateContactFlowModuleAliasResponse>;
 export interface UpdateContactFlowModuleContentRequest {
   InstanceId: string;
   ContactFlowModuleId: string;
@@ -22246,11 +21823,8 @@ export const UpdateContactFlowModuleContentRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateContactFlowModuleContentRequest",
 }) as any as S.Schema<UpdateContactFlowModuleContentRequest>;
 export interface UpdateContactFlowModuleContentResponse {}
-export const UpdateContactFlowModuleContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateContactFlowModuleContentResponse",
-}) as any as S.Schema<UpdateContactFlowModuleContentResponse>;
+export const UpdateContactFlowModuleContentResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateContactFlowModuleContentResponse>;
 export interface UpdateContactFlowModuleMetadataRequest {
   InstanceId: string;
   ContactFlowModuleId: string;
@@ -22282,11 +21856,8 @@ export const UpdateContactFlowModuleMetadataRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateContactFlowModuleMetadataRequest",
 }) as any as S.Schema<UpdateContactFlowModuleMetadataRequest>;
 export interface UpdateContactFlowModuleMetadataResponse {}
-export const UpdateContactFlowModuleMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateContactFlowModuleMetadataResponse",
-}) as any as S.Schema<UpdateContactFlowModuleMetadataResponse>;
+export const UpdateContactFlowModuleMetadataResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateContactFlowModuleMetadataResponse>;
 export interface UpdateContactFlowNameRequest {
   InstanceId: string;
   ContactFlowId: string;
@@ -22313,9 +21884,8 @@ export const UpdateContactFlowNameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactFlowNameRequest",
 }) as any as S.Schema<UpdateContactFlowNameRequest>;
 export interface UpdateContactFlowNameResponse {}
-export const UpdateContactFlowNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateContactFlowNameResponse",
-}) as any as S.Schema<UpdateContactFlowNameResponse>;
+export const UpdateContactFlowNameResponse =
+  AssociateBotResponse as any as S.Schema<UpdateContactFlowNameResponse>;
 export interface RoutingCriteriaInputStepExpiry {
   DurationInSeconds?: number;
 }
@@ -22370,11 +21940,8 @@ export const UpdateContactRoutingDataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactRoutingDataRequest",
 }) as any as S.Schema<UpdateContactRoutingDataRequest>;
 export interface UpdateContactRoutingDataResponse {}
-export const UpdateContactRoutingDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateContactRoutingDataResponse",
-}) as any as S.Schema<UpdateContactRoutingDataResponse>;
+export const UpdateContactRoutingDataResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateContactRoutingDataResponse>;
 export interface UpdateContactScheduleRequest {
   InstanceId: string;
   ContactId: string;
@@ -22392,9 +21959,8 @@ export const UpdateContactScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactScheduleRequest",
 }) as any as S.Schema<UpdateContactScheduleRequest>;
 export interface UpdateContactScheduleResponse {}
-export const UpdateContactScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateContactScheduleResponse",
-}) as any as S.Schema<UpdateContactScheduleResponse>;
+export const UpdateContactScheduleResponse =
+  AssociateBotResponse as any as S.Schema<UpdateContactScheduleResponse>;
 export interface UpdateContactTaskTemplateRequest {
   InstanceId: string;
   TaskTemplateId: string;
@@ -22408,11 +21974,8 @@ export const UpdateContactTaskTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateContactTaskTemplateRequest",
 }) as any as S.Schema<UpdateContactTaskTemplateRequest>;
 export interface UpdateContactTaskTemplateResponse {}
-export const UpdateContactTaskTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateContactTaskTemplateResponse",
-}) as any as S.Schema<UpdateContactTaskTemplateResponse>;
+export const UpdateContactTaskTemplateResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateContactTaskTemplateResponse>;
 export interface UpdateCrossRegionRoutingRequest {
   InstanceId: string;
   IsolatedAll: boolean;
@@ -22432,11 +21995,8 @@ export const UpdateCrossRegionRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCrossRegionRoutingRequest",
 }) as any as S.Schema<UpdateCrossRegionRoutingRequest>;
 export interface UpdateCrossRegionRoutingResponse {}
-export const UpdateCrossRegionRoutingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCrossRegionRoutingResponse",
-}) as any as S.Schema<UpdateCrossRegionRoutingResponse>;
+export const UpdateCrossRegionRoutingResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateCrossRegionRoutingResponse>;
 export interface UpdateDataTableAttributeRequest {
   InstanceId: string;
   DataTableId: string;
@@ -22514,11 +22074,8 @@ export const UpdateDataTableMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataTableMetadataResponse {
   LockVersion: DataTableLockVersion;
 }
-export const UpdateDataTableMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LockVersion: DataTableLockVersion }),
-).annotate({
-  identifier: "UpdateDataTableMetadataResponse",
-}) as any as S.Schema<UpdateDataTableMetadataResponse>;
+export const UpdateDataTableMetadataResponse =
+  DeleteDataTableAttributeResponse as any as S.Schema<UpdateDataTableMetadataResponse>;
 export interface UpdateDataTablePrimaryValuesRequest {
   InstanceId: string;
   DataTableId: string;
@@ -22552,11 +22109,8 @@ export const UpdateDataTablePrimaryValuesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataTablePrimaryValuesResponse {
   LockVersion: DataTableLockVersion;
 }
-export const UpdateDataTablePrimaryValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LockVersion: DataTableLockVersion }),
-).annotate({
-  identifier: "UpdateDataTablePrimaryValuesResponse",
-}) as any as S.Schema<UpdateDataTablePrimaryValuesResponse>;
+export const UpdateDataTablePrimaryValuesResponse =
+  DeleteDataTableAttributeResponse as any as S.Schema<UpdateDataTablePrimaryValuesResponse>;
 export interface UpdateEmailAddressMetadataRequest {
   InstanceId: string;
   EmailAddressId: string;
@@ -22588,11 +22142,8 @@ export interface UpdateEmailAddressMetadataResponse {
   EmailAddressId?: string;
   EmailAddressArn?: string;
 }
-export const UpdateEmailAddressMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EmailAddressId: S.optional(S.String), EmailAddressArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateEmailAddressMetadataResponse",
-}) as any as S.Schema<UpdateEmailAddressMetadataResponse>;
+export const UpdateEmailAddressMetadataResponse =
+  CreateEmailAddressResponse as any as S.Schema<UpdateEmailAddressMetadataResponse>;
 export interface UpdateEvaluationFormRequest {
   InstanceId: string;
   EvaluationFormId: string;
@@ -22645,15 +22196,8 @@ export interface UpdateEvaluationFormResponse {
   EvaluationFormArn: string;
   EvaluationFormVersion: number;
 }
-export const UpdateEvaluationFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EvaluationFormId: S.String,
-    EvaluationFormArn: S.String,
-    EvaluationFormVersion: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateEvaluationFormResponse",
-}) as any as S.Schema<UpdateEvaluationFormResponse>;
+export const UpdateEvaluationFormResponse =
+  ActivateEvaluationFormResponse as any as S.Schema<UpdateEvaluationFormResponse>;
 export interface UpdateExtractionDefinitionRequest {
   ClientToken?: string;
   ExtractionDefinitionId: string;
@@ -22687,11 +22231,8 @@ export const UpdateExtractionDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateExtractionDefinitionRequest",
 }) as any as S.Schema<UpdateExtractionDefinitionRequest>;
 export interface UpdateExtractionDefinitionResponse {}
-export const UpdateExtractionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateExtractionDefinitionResponse",
-}) as any as S.Schema<UpdateExtractionDefinitionResponse>;
+export const UpdateExtractionDefinitionResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateExtractionDefinitionResponse>;
 export type UpdateHoursOfOperationDescription = string;
 export interface UpdateHoursOfOperationRequest {
   InstanceId: string;
@@ -22723,9 +22264,8 @@ export const UpdateHoursOfOperationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateHoursOfOperationRequest",
 }) as any as S.Schema<UpdateHoursOfOperationRequest>;
 export interface UpdateHoursOfOperationResponse {}
-export const UpdateHoursOfOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateHoursOfOperationResponse",
-}) as any as S.Schema<UpdateHoursOfOperationResponse>;
+export const UpdateHoursOfOperationResponse =
+  AssociateBotResponse as any as S.Schema<UpdateHoursOfOperationResponse>;
 export interface UpdateHoursOfOperationOverrideRequest {
   InstanceId: string;
   HoursOfOperationId: string;
@@ -22767,11 +22307,8 @@ export const UpdateHoursOfOperationOverrideRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateHoursOfOperationOverrideRequest",
 }) as any as S.Schema<UpdateHoursOfOperationOverrideRequest>;
 export interface UpdateHoursOfOperationOverrideResponse {}
-export const UpdateHoursOfOperationOverrideResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateHoursOfOperationOverrideResponse",
-}) as any as S.Schema<UpdateHoursOfOperationOverrideResponse>;
+export const UpdateHoursOfOperationOverrideResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateHoursOfOperationOverrideResponse>;
 export interface UpdateInstanceAttributeRequest {
   InstanceId: string;
   AttributeType: InstanceAttributeType;
@@ -22798,9 +22335,8 @@ export const UpdateInstanceAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateInstanceAttributeRequest",
 }) as any as S.Schema<UpdateInstanceAttributeRequest>;
 export interface UpdateInstanceAttributeResponse {}
-export const UpdateInstanceAttributeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateInstanceAttributeResponse" },
-) as any as S.Schema<UpdateInstanceAttributeResponse>;
+export const UpdateInstanceAttributeResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<UpdateInstanceAttributeResponse>;
 export interface UpdateInstanceStorageConfigRequest {
   InstanceId: string;
   AssociationId: string;
@@ -22829,11 +22365,8 @@ export const UpdateInstanceStorageConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateInstanceStorageConfigRequest",
 }) as any as S.Schema<UpdateInstanceStorageConfigRequest>;
 export interface UpdateInstanceStorageConfigResponse {}
-export const UpdateInstanceStorageConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateInstanceStorageConfigResponse",
-}) as any as S.Schema<UpdateInstanceStorageConfigResponse>;
+export const UpdateInstanceStorageConfigResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateInstanceStorageConfigResponse>;
 export interface UpdateMetricContentRequest {
   InstanceId: string;
   MetricId: string;
@@ -22862,9 +22395,8 @@ export const UpdateMetricContentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMetricContentRequest",
 }) as any as S.Schema<UpdateMetricContentRequest>;
 export interface UpdateMetricContentResponse {}
-export const UpdateMetricContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMetricContentResponse",
-}) as any as S.Schema<UpdateMetricContentResponse>;
+export const UpdateMetricContentResponse =
+  AssociateBotResponse as any as S.Schema<UpdateMetricContentResponse>;
 export interface UpdateMetricMetadataRequest {
   InstanceId: string;
   MetricId: string;
@@ -22891,9 +22423,8 @@ export const UpdateMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMetricMetadataRequest",
 }) as any as S.Schema<UpdateMetricMetadataRequest>;
 export interface UpdateMetricMetadataResponse {}
-export const UpdateMetricMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMetricMetadataResponse",
-}) as any as S.Schema<UpdateMetricMetadataResponse>;
+export const UpdateMetricMetadataResponse =
+  AssociateBotResponse as any as S.Schema<UpdateMetricMetadataResponse>;
 export interface UpdateNotificationContentRequest {
   InstanceId: string;
   NotificationId: string;
@@ -22918,11 +22449,8 @@ export const UpdateNotificationContentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNotificationContentRequest",
 }) as any as S.Schema<UpdateNotificationContentRequest>;
 export interface UpdateNotificationContentResponse {}
-export const UpdateNotificationContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateNotificationContentResponse",
-}) as any as S.Schema<UpdateNotificationContentResponse>;
+export const UpdateNotificationContentResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateNotificationContentResponse>;
 export type AuthorizationCode = string | redacted.Redacted<string>;
 export type AuthenticationError = string | redacted.Redacted<string>;
 export type AuthenticationErrorDescription = string | redacted.Redacted<string>;
@@ -22954,11 +22482,8 @@ export const UpdateParticipantAuthenticationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateParticipantAuthenticationRequest",
 }) as any as S.Schema<UpdateParticipantAuthenticationRequest>;
 export interface UpdateParticipantAuthenticationResponse {}
-export const UpdateParticipantAuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateParticipantAuthenticationResponse",
-}) as any as S.Schema<UpdateParticipantAuthenticationResponse>;
+export const UpdateParticipantAuthenticationResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateParticipantAuthenticationResponse>;
 export type TimerEligibleParticipantRoles = "CUSTOMER" | "AGENT" | (string & {});
 export const TimerEligibleParticipantRoles = S.String;
 
@@ -23028,11 +22553,8 @@ export const UpdateParticipantRoleConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateParticipantRoleConfigRequest",
 }) as any as S.Schema<UpdateParticipantRoleConfigRequest>;
 export interface UpdateParticipantRoleConfigResponse {}
-export const UpdateParticipantRoleConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateParticipantRoleConfigResponse",
-}) as any as S.Schema<UpdateParticipantRoleConfigResponse>;
+export const UpdateParticipantRoleConfigResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateParticipantRoleConfigResponse>;
 export interface UpdatePhoneNumberRequest {
   PhoneNumberId: string;
   TargetArn?: string;
@@ -23060,11 +22582,8 @@ export interface UpdatePhoneNumberResponse {
   PhoneNumberId?: string;
   PhoneNumberArn?: string;
 }
-export const UpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PhoneNumberId: S.optional(S.String), PhoneNumberArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdatePhoneNumberResponse",
-}) as any as S.Schema<UpdatePhoneNumberResponse>;
+export const UpdatePhoneNumberResponse =
+  ImportPhoneNumberResponse as any as S.Schema<UpdatePhoneNumberResponse>;
 export interface UpdatePhoneNumberMetadataRequest {
   PhoneNumberId: string;
   PhoneNumberDescription?: string;
@@ -23089,11 +22608,8 @@ export const UpdatePhoneNumberMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePhoneNumberMetadataRequest",
 }) as any as S.Schema<UpdatePhoneNumberMetadataRequest>;
 export interface UpdatePhoneNumberMetadataResponse {}
-export const UpdatePhoneNumberMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePhoneNumberMetadataResponse",
-}) as any as S.Schema<UpdatePhoneNumberMetadataResponse>;
+export const UpdatePhoneNumberMetadataResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdatePhoneNumberMetadataResponse>;
 export interface UpdatePredefinedAttributeRequest {
   InstanceId: string;
   Name: string;
@@ -23122,11 +22638,8 @@ export const UpdatePredefinedAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePredefinedAttributeRequest",
 }) as any as S.Schema<UpdatePredefinedAttributeRequest>;
 export interface UpdatePredefinedAttributeResponse {}
-export const UpdatePredefinedAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePredefinedAttributeResponse",
-}) as any as S.Schema<UpdatePredefinedAttributeResponse>;
+export const UpdatePredefinedAttributeResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdatePredefinedAttributeResponse>;
 export interface UpdatePromptRequest {
   InstanceId: string;
   PromptId: string;
@@ -23156,9 +22669,7 @@ export interface UpdatePromptResponse {
   PromptARN?: string;
   PromptId?: string;
 }
-export const UpdatePromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PromptARN: S.optional(S.String), PromptId: S.optional(S.String) }),
-).annotate({ identifier: "UpdatePromptResponse" }) as any as S.Schema<UpdatePromptResponse>;
+export const UpdatePromptResponse = CreatePromptResponse as any as S.Schema<UpdatePromptResponse>;
 export interface UpdateQueueHoursOfOperationRequest {
   InstanceId: string;
   QueueId: string;
@@ -23183,11 +22694,8 @@ export const UpdateQueueHoursOfOperationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateQueueHoursOfOperationRequest",
 }) as any as S.Schema<UpdateQueueHoursOfOperationRequest>;
 export interface UpdateQueueHoursOfOperationResponse {}
-export const UpdateQueueHoursOfOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateQueueHoursOfOperationResponse",
-}) as any as S.Schema<UpdateQueueHoursOfOperationResponse>;
+export const UpdateQueueHoursOfOperationResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateQueueHoursOfOperationResponse>;
 export interface UpdateQueueMaxContactsRequest {
   InstanceId: string;
   QueueId: string;
@@ -23212,9 +22720,8 @@ export const UpdateQueueMaxContactsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateQueueMaxContactsRequest",
 }) as any as S.Schema<UpdateQueueMaxContactsRequest>;
 export interface UpdateQueueMaxContactsResponse {}
-export const UpdateQueueMaxContactsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateQueueMaxContactsResponse",
-}) as any as S.Schema<UpdateQueueMaxContactsResponse>;
+export const UpdateQueueMaxContactsResponse =
+  AssociateBotResponse as any as S.Schema<UpdateQueueMaxContactsResponse>;
 export interface UpdateQueueNameRequest {
   InstanceId: string;
   QueueId: string;
@@ -23239,9 +22746,8 @@ export const UpdateQueueNameRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateQueueNameRequest" }) as any as S.Schema<UpdateQueueNameRequest>;
 export interface UpdateQueueNameResponse {}
-export const UpdateQueueNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateQueueNameResponse",
-}) as any as S.Schema<UpdateQueueNameResponse>;
+export const UpdateQueueNameResponse =
+  AssociateBotResponse as any as S.Schema<UpdateQueueNameResponse>;
 export interface UpdateQueueOutboundCallerConfigRequest {
   InstanceId: string;
   QueueId: string;
@@ -23266,11 +22772,8 @@ export const UpdateQueueOutboundCallerConfigRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateQueueOutboundCallerConfigRequest",
 }) as any as S.Schema<UpdateQueueOutboundCallerConfigRequest>;
 export interface UpdateQueueOutboundCallerConfigResponse {}
-export const UpdateQueueOutboundCallerConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateQueueOutboundCallerConfigResponse",
-}) as any as S.Schema<UpdateQueueOutboundCallerConfigResponse>;
+export const UpdateQueueOutboundCallerConfigResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateQueueOutboundCallerConfigResponse>;
 export interface UpdateQueueOutboundEmailConfigRequest {
   InstanceId: string;
   QueueId: string;
@@ -23295,11 +22798,8 @@ export const UpdateQueueOutboundEmailConfigRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateQueueOutboundEmailConfigRequest",
 }) as any as S.Schema<UpdateQueueOutboundEmailConfigRequest>;
 export interface UpdateQueueOutboundEmailConfigResponse {}
-export const UpdateQueueOutboundEmailConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateQueueOutboundEmailConfigResponse",
-}) as any as S.Schema<UpdateQueueOutboundEmailConfigResponse>;
+export const UpdateQueueOutboundEmailConfigResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateQueueOutboundEmailConfigResponse>;
 export interface UpdateQueueStatusRequest {
   InstanceId: string;
   QueueId: string;
@@ -23322,9 +22822,8 @@ export const UpdateQueueStatusRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateQueueStatusRequest" }) as any as S.Schema<UpdateQueueStatusRequest>;
 export interface UpdateQueueStatusResponse {}
-export const UpdateQueueStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateQueueStatusResponse",
-}) as any as S.Schema<UpdateQueueStatusResponse>;
+export const UpdateQueueStatusResponse =
+  AssociateBotResponse as any as S.Schema<UpdateQueueStatusResponse>;
 export interface UpdateQuickConnectConfigRequest {
   InstanceId: string;
   QuickConnectId: string;
@@ -23349,11 +22848,8 @@ export const UpdateQuickConnectConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateQuickConnectConfigRequest",
 }) as any as S.Schema<UpdateQuickConnectConfigRequest>;
 export interface UpdateQuickConnectConfigResponse {}
-export const UpdateQuickConnectConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateQuickConnectConfigResponse",
-}) as any as S.Schema<UpdateQuickConnectConfigResponse>;
+export const UpdateQuickConnectConfigResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateQuickConnectConfigResponse>;
 export type UpdateQuickConnectDescription = string;
 export interface UpdateQuickConnectNameRequest {
   InstanceId: string;
@@ -23381,9 +22877,8 @@ export const UpdateQuickConnectNameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateQuickConnectNameRequest",
 }) as any as S.Schema<UpdateQuickConnectNameRequest>;
 export interface UpdateQuickConnectNameResponse {}
-export const UpdateQuickConnectNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateQuickConnectNameResponse",
-}) as any as S.Schema<UpdateQuickConnectNameResponse>;
+export const UpdateQuickConnectNameResponse =
+  AssociateBotResponse as any as S.Schema<UpdateQuickConnectNameResponse>;
 export interface UpdateRoutingProfileAgentAvailabilityTimerRequest {
   InstanceId: string;
   RoutingProfileId: string;
@@ -23411,11 +22906,8 @@ export const UpdateRoutingProfileAgentAvailabilityTimerRequest = /*@__PURE__*/ S
   identifier: "UpdateRoutingProfileAgentAvailabilityTimerRequest",
 }) as any as S.Schema<UpdateRoutingProfileAgentAvailabilityTimerRequest>;
 export interface UpdateRoutingProfileAgentAvailabilityTimerResponse {}
-export const UpdateRoutingProfileAgentAvailabilityTimerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRoutingProfileAgentAvailabilityTimerResponse",
-}) as any as S.Schema<UpdateRoutingProfileAgentAvailabilityTimerResponse>;
+export const UpdateRoutingProfileAgentAvailabilityTimerResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateRoutingProfileAgentAvailabilityTimerResponse>;
 export interface UpdateRoutingProfileConcurrencyRequest {
   InstanceId: string;
   RoutingProfileId: string;
@@ -23443,11 +22935,8 @@ export const UpdateRoutingProfileConcurrencyRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateRoutingProfileConcurrencyRequest",
 }) as any as S.Schema<UpdateRoutingProfileConcurrencyRequest>;
 export interface UpdateRoutingProfileConcurrencyResponse {}
-export const UpdateRoutingProfileConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRoutingProfileConcurrencyResponse",
-}) as any as S.Schema<UpdateRoutingProfileConcurrencyResponse>;
+export const UpdateRoutingProfileConcurrencyResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateRoutingProfileConcurrencyResponse>;
 export interface UpdateRoutingProfileDefaultOutboundQueueRequest {
   InstanceId: string;
   RoutingProfileId: string;
@@ -23475,11 +22964,8 @@ export const UpdateRoutingProfileDefaultOutboundQueueRequest = /*@__PURE__*/ S.s
   identifier: "UpdateRoutingProfileDefaultOutboundQueueRequest",
 }) as any as S.Schema<UpdateRoutingProfileDefaultOutboundQueueRequest>;
 export interface UpdateRoutingProfileDefaultOutboundQueueResponse {}
-export const UpdateRoutingProfileDefaultOutboundQueueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRoutingProfileDefaultOutboundQueueResponse",
-}) as any as S.Schema<UpdateRoutingProfileDefaultOutboundQueueResponse>;
+export const UpdateRoutingProfileDefaultOutboundQueueResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateRoutingProfileDefaultOutboundQueueResponse>;
 export interface UpdateRoutingProfileNameRequest {
   InstanceId: string;
   RoutingProfileId: string;
@@ -23506,11 +22992,8 @@ export const UpdateRoutingProfileNameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRoutingProfileNameRequest",
 }) as any as S.Schema<UpdateRoutingProfileNameRequest>;
 export interface UpdateRoutingProfileNameResponse {}
-export const UpdateRoutingProfileNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRoutingProfileNameResponse",
-}) as any as S.Schema<UpdateRoutingProfileNameResponse>;
+export const UpdateRoutingProfileNameResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateRoutingProfileNameResponse>;
 export interface UpdateRoutingProfileQueuesRequest {
   InstanceId: string;
   RoutingProfileId: string;
@@ -23535,11 +23018,8 @@ export const UpdateRoutingProfileQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRoutingProfileQueuesRequest",
 }) as any as S.Schema<UpdateRoutingProfileQueuesRequest>;
 export interface UpdateRoutingProfileQueuesResponse {}
-export const UpdateRoutingProfileQueuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRoutingProfileQueuesResponse",
-}) as any as S.Schema<UpdateRoutingProfileQueuesResponse>;
+export const UpdateRoutingProfileQueuesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateRoutingProfileQueuesResponse>;
 export interface UpdateRuleRequest {
   RuleId: string;
   InstanceId: string;
@@ -23570,9 +23050,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
 export interface UpdateRuleResponse {}
-export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRuleResponse",
-}) as any as S.Schema<UpdateRuleResponse>;
+export const UpdateRuleResponse = AssociateBotResponse as any as S.Schema<UpdateRuleResponse>;
 export interface UpdateSecurityProfileRequest {
   Description?: string;
   Permissions?: string[];
@@ -23615,9 +23093,8 @@ export const UpdateSecurityProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSecurityProfileRequest",
 }) as any as S.Schema<UpdateSecurityProfileRequest>;
 export interface UpdateSecurityProfileResponse {}
-export const UpdateSecurityProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSecurityProfileResponse",
-}) as any as S.Schema<UpdateSecurityProfileResponse>;
+export const UpdateSecurityProfileResponse =
+  AssociateBotResponse as any as S.Schema<UpdateSecurityProfileResponse>;
 export interface UpdateTaskTemplateRequest {
   TaskTemplateId: string;
   InstanceId: string;
@@ -23727,9 +23204,8 @@ export const UpdateTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateTestCaseRequest" }) as any as S.Schema<UpdateTestCaseRequest>;
 export interface UpdateTestCaseResponse {}
-export const UpdateTestCaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTestCaseResponse",
-}) as any as S.Schema<UpdateTestCaseResponse>;
+export const UpdateTestCaseResponse =
+  AssociateBotResponse as any as S.Schema<UpdateTestCaseResponse>;
 export interface UpdateTrafficDistributionRequest {
   Id: string;
   TelephonyConfig?: TelephonyConfig;
@@ -23756,11 +23232,8 @@ export const UpdateTrafficDistributionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTrafficDistributionRequest",
 }) as any as S.Schema<UpdateTrafficDistributionRequest>;
 export interface UpdateTrafficDistributionResponse {}
-export const UpdateTrafficDistributionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateTrafficDistributionResponse",
-}) as any as S.Schema<UpdateTrafficDistributionResponse>;
+export const UpdateTrafficDistributionResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateTrafficDistributionResponse>;
 export interface UpdateUserConfigRequest {
   AutoAcceptConfigs?: AutoAcceptConfig[];
   AfterContactWorkConfigs?: AfterContactWorkConfigPerChannel[];
@@ -23791,9 +23264,8 @@ export const UpdateUserConfigRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateUserConfigRequest" }) as any as S.Schema<UpdateUserConfigRequest>;
 export interface UpdateUserConfigResponse {}
-export const UpdateUserConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserConfigResponse",
-}) as any as S.Schema<UpdateUserConfigResponse>;
+export const UpdateUserConfigResponse =
+  AssociateBotResponse as any as S.Schema<UpdateUserConfigResponse>;
 export interface UpdateUserHierarchyRequest {
   HierarchyGroupId?: string;
   UserId: string;
@@ -23818,9 +23290,8 @@ export const UpdateUserHierarchyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserHierarchyRequest",
 }) as any as S.Schema<UpdateUserHierarchyRequest>;
 export interface UpdateUserHierarchyResponse {}
-export const UpdateUserHierarchyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserHierarchyResponse",
-}) as any as S.Schema<UpdateUserHierarchyResponse>;
+export const UpdateUserHierarchyResponse =
+  AssociateBotResponse as any as S.Schema<UpdateUserHierarchyResponse>;
 export interface UpdateUserHierarchyGroupNameRequest {
   Name: string;
   HierarchyGroupId: string;
@@ -23848,11 +23319,8 @@ export const UpdateUserHierarchyGroupNameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserHierarchyGroupNameRequest",
 }) as any as S.Schema<UpdateUserHierarchyGroupNameRequest>;
 export interface UpdateUserHierarchyGroupNameResponse {}
-export const UpdateUserHierarchyGroupNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUserHierarchyGroupNameResponse",
-}) as any as S.Schema<UpdateUserHierarchyGroupNameResponse>;
+export const UpdateUserHierarchyGroupNameResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateUserHierarchyGroupNameResponse>;
 export interface HierarchyLevelUpdate {
   Name: string;
 }
@@ -23897,11 +23365,8 @@ export const UpdateUserHierarchyStructureRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserHierarchyStructureRequest",
 }) as any as S.Schema<UpdateUserHierarchyStructureRequest>;
 export interface UpdateUserHierarchyStructureResponse {}
-export const UpdateUserHierarchyStructureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUserHierarchyStructureResponse",
-}) as any as S.Schema<UpdateUserHierarchyStructureResponse>;
+export const UpdateUserHierarchyStructureResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateUserHierarchyStructureResponse>;
 export interface UpdateUserIdentityInfoRequest {
   IdentityInfo: UserIdentityInfo;
   UserId: string;
@@ -23926,9 +23391,8 @@ export const UpdateUserIdentityInfoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserIdentityInfoRequest",
 }) as any as S.Schema<UpdateUserIdentityInfoRequest>;
 export interface UpdateUserIdentityInfoResponse {}
-export const UpdateUserIdentityInfoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserIdentityInfoResponse",
-}) as any as S.Schema<UpdateUserIdentityInfoResponse>;
+export const UpdateUserIdentityInfoResponse =
+  AssociateBotResponse as any as S.Schema<UpdateUserIdentityInfoResponse>;
 export interface UpdateUserNotificationStatusRequest {
   InstanceId: string;
   NotificationId: string;
@@ -23964,11 +23428,8 @@ export const UpdateUserNotificationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserNotificationStatusRequest",
 }) as any as S.Schema<UpdateUserNotificationStatusRequest>;
 export interface UpdateUserNotificationStatusResponse {}
-export const UpdateUserNotificationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUserNotificationStatusResponse",
-}) as any as S.Schema<UpdateUserNotificationStatusResponse>;
+export const UpdateUserNotificationStatusResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateUserNotificationStatusResponse>;
 export interface UpdateUserPhoneConfigRequest {
   PhoneConfig: UserPhoneConfig;
   UserId: string;
@@ -23993,9 +23454,8 @@ export const UpdateUserPhoneConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserPhoneConfigRequest",
 }) as any as S.Schema<UpdateUserPhoneConfigRequest>;
 export interface UpdateUserPhoneConfigResponse {}
-export const UpdateUserPhoneConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserPhoneConfigResponse",
-}) as any as S.Schema<UpdateUserPhoneConfigResponse>;
+export const UpdateUserPhoneConfigResponse =
+  AssociateBotResponse as any as S.Schema<UpdateUserPhoneConfigResponse>;
 export interface UpdateUserProficienciesRequest {
   InstanceId: string;
   UserId: string;
@@ -24020,9 +23480,8 @@ export const UpdateUserProficienciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserProficienciesRequest",
 }) as any as S.Schema<UpdateUserProficienciesRequest>;
 export interface UpdateUserProficienciesResponse {}
-export const UpdateUserProficienciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateUserProficienciesResponse" },
-) as any as S.Schema<UpdateUserProficienciesResponse>;
+export const UpdateUserProficienciesResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<UpdateUserProficienciesResponse>;
 export interface UpdateUserRoutingProfileRequest {
   RoutingProfileId: string;
   UserId: string;
@@ -24047,11 +23506,8 @@ export const UpdateUserRoutingProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserRoutingProfileRequest",
 }) as any as S.Schema<UpdateUserRoutingProfileRequest>;
 export interface UpdateUserRoutingProfileResponse {}
-export const UpdateUserRoutingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUserRoutingProfileResponse",
-}) as any as S.Schema<UpdateUserRoutingProfileResponse>;
+export const UpdateUserRoutingProfileResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateUserRoutingProfileResponse>;
 export interface UpdateUserSecurityProfilesRequest {
   SecurityProfileIds: string[];
   UserId: string;
@@ -24076,11 +23532,8 @@ export const UpdateUserSecurityProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserSecurityProfilesRequest",
 }) as any as S.Schema<UpdateUserSecurityProfilesRequest>;
 export interface UpdateUserSecurityProfilesResponse {}
-export const UpdateUserSecurityProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUserSecurityProfilesResponse",
-}) as any as S.Schema<UpdateUserSecurityProfilesResponse>;
+export const UpdateUserSecurityProfilesResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateUserSecurityProfilesResponse>;
 export interface UpdateViewContentRequest {
   InstanceId: string;
   ViewId: string;
@@ -24107,11 +23560,8 @@ export const UpdateViewContentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateViewContentResponse {
   View?: View;
 }
-export const UpdateViewContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ View: S.optional(View) }),
-).annotate({
-  identifier: "UpdateViewContentResponse",
-}) as any as S.Schema<UpdateViewContentResponse>;
+export const UpdateViewContentResponse =
+  CreateViewVersionResponse as any as S.Schema<UpdateViewContentResponse>;
 export interface UpdateViewMetadataRequest {
   InstanceId: string;
   ViewId: string;
@@ -24138,9 +23588,8 @@ export const UpdateViewMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateViewMetadataRequest",
 }) as any as S.Schema<UpdateViewMetadataRequest>;
 export interface UpdateViewMetadataResponse {}
-export const UpdateViewMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateViewMetadataResponse",
-}) as any as S.Schema<UpdateViewMetadataResponse>;
+export const UpdateViewMetadataResponse =
+  AssociateBotResponse as any as S.Schema<UpdateViewMetadataResponse>;
 export interface UpdateWorkspaceMetadataRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -24169,9 +23618,8 @@ export const UpdateWorkspaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkspaceMetadataRequest",
 }) as any as S.Schema<UpdateWorkspaceMetadataRequest>;
 export interface UpdateWorkspaceMetadataResponse {}
-export const UpdateWorkspaceMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateWorkspaceMetadataResponse" },
-) as any as S.Schema<UpdateWorkspaceMetadataResponse>;
+export const UpdateWorkspaceMetadataResponse =
+  AssociateApprovedOriginResponse as any as S.Schema<UpdateWorkspaceMetadataResponse>;
 export interface UpdateWorkspacePageRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -24204,9 +23652,8 @@ export const UpdateWorkspacePageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkspacePageRequest",
 }) as any as S.Schema<UpdateWorkspacePageRequest>;
 export interface UpdateWorkspacePageResponse {}
-export const UpdateWorkspacePageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWorkspacePageResponse",
-}) as any as S.Schema<UpdateWorkspacePageResponse>;
+export const UpdateWorkspacePageResponse =
+  AssociateBotResponse as any as S.Schema<UpdateWorkspacePageResponse>;
 export interface UpdateWorkspaceThemeRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -24231,9 +23678,8 @@ export const UpdateWorkspaceThemeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkspaceThemeRequest",
 }) as any as S.Schema<UpdateWorkspaceThemeRequest>;
 export interface UpdateWorkspaceThemeResponse {}
-export const UpdateWorkspaceThemeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWorkspaceThemeResponse",
-}) as any as S.Schema<UpdateWorkspaceThemeResponse>;
+export const UpdateWorkspaceThemeResponse =
+  AssociateBotResponse as any as S.Schema<UpdateWorkspaceThemeResponse>;
 export interface UpdateWorkspaceVisibilityRequest {
   InstanceId: string;
   WorkspaceId: string;
@@ -24258,11 +23704,8 @@ export const UpdateWorkspaceVisibilityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkspaceVisibilityRequest",
 }) as any as S.Schema<UpdateWorkspaceVisibilityRequest>;
 export interface UpdateWorkspaceVisibilityResponse {}
-export const UpdateWorkspaceVisibilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateWorkspaceVisibilityResponse",
-}) as any as S.Schema<UpdateWorkspaceVisibilityResponse>;
+export const UpdateWorkspaceVisibilityResponse =
+  AssociateContactWithUserResponse as any as S.Schema<UpdateWorkspaceVisibilityResponse>;
 export type Message = string;
 export type AttachedFileInvalidRequestExceptionReason =
   | "INVALID_FILE_SIZE"

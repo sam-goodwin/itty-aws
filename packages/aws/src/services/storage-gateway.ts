@@ -177,9 +177,7 @@ export const AddCacheInput = /*@__PURE__*/ S.suspend(() =>
 export interface AddCacheOutput {
   GatewayARN?: string;
 }
-export const AddCacheOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "AddCacheOutput" }) as any as S.Schema<AddCacheOutput>;
+export const AddCacheOutput = ActivateGatewayOutput as any as S.Schema<AddCacheOutput>;
 export type ResourceARN = string;
 export interface AddTagsToResourceInput {
   ResourceARN: string;
@@ -208,9 +206,8 @@ export const AddUploadBufferInput = /*@__PURE__*/ S.suspend(() =>
 export interface AddUploadBufferOutput {
   GatewayARN?: string;
 }
-export const AddUploadBufferOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "AddUploadBufferOutput" }) as any as S.Schema<AddUploadBufferOutput>;
+export const AddUploadBufferOutput =
+  ActivateGatewayOutput as any as S.Schema<AddUploadBufferOutput>;
 export interface AddWorkingStorageInput {
   GatewayARN: string;
   DiskIds: string[];
@@ -223,9 +220,8 @@ export const AddWorkingStorageInput = /*@__PURE__*/ S.suspend(() =>
 export interface AddWorkingStorageOutput {
   GatewayARN?: string;
 }
-export const AddWorkingStorageOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "AddWorkingStorageOutput" }) as any as S.Schema<AddWorkingStorageOutput>;
+export const AddWorkingStorageOutput =
+  ActivateGatewayOutput as any as S.Schema<AddWorkingStorageOutput>;
 export type TapeARN = string;
 export type PoolId = string;
 export interface AssignTapePoolInput {
@@ -260,7 +256,7 @@ export const CacheAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheAttributes" }) as any as S.Schema<CacheAttributes>;
 export type IPV4Address = string;
 export type IpAddressList = string[];
-export const IpAddressList = /*@__PURE__*/ S.Array(S.String);
+export const IpAddressList = DiskIds as any as S.Schema<IpAddressList>;
 export interface EndpointNetworkConfiguration {
   IpAddresses?: string[];
 }
@@ -341,9 +337,7 @@ export const CancelArchivalInput = /*@__PURE__*/ S.suspend(() =>
 export interface CancelArchivalOutput {
   TapeARN?: string;
 }
-export const CancelArchivalOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TapeARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CancelArchivalOutput" }) as any as S.Schema<CancelArchivalOutput>;
+export const CancelArchivalOutput = AssignTapePoolOutput as any as S.Schema<CancelArchivalOutput>;
 export type CacheReportARN = string;
 export interface CancelCacheReportInput {
   CacheReportARN: string;
@@ -371,9 +365,7 @@ export const CancelRetrievalInput = /*@__PURE__*/ S.suspend(() =>
 export interface CancelRetrievalOutput {
   TapeARN?: string;
 }
-export const CancelRetrievalOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TapeARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CancelRetrievalOutput" }) as any as S.Schema<CancelRetrievalOutput>;
+export const CancelRetrievalOutput = AssignTapePoolOutput as any as S.Schema<CancelRetrievalOutput>;
 export type SnapshotId = string;
 export type KMSKey = string;
 export interface CreateCachediSCSIVolumeInput {
@@ -448,7 +440,7 @@ export const ObjectACL = S.String;
 
 export type Ipv4OrIpv6AddressCIDR = string;
 export type FileShareClientList = string[];
-export const FileShareClientList = /*@__PURE__*/ S.Array(S.String);
+export const FileShareClientList = DiskIds as any as S.Schema<FileShareClientList>;
 export type Squash = string;
 export type FileShareName = string;
 export type NotificationPolicy = string;
@@ -512,7 +504,7 @@ export const CreateNFSFileShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateNFSFileShareOutput" }) as any as S.Schema<CreateNFSFileShareOutput>;
 export type UserListUser = string;
 export type UserList = string[];
-export const UserList = /*@__PURE__*/ S.Array(S.String);
+export const UserList = DiskIds as any as S.Schema<UserList>;
 export type Authentication = string;
 export type CaseSensitivity = "ClientSpecified" | "CaseSensitive" | (string & {});
 export const CaseSensitivity = S.String;
@@ -580,9 +572,8 @@ export const CreateSMBFileShareInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSMBFileShareOutput {
   FileShareARN?: string;
 }
-export const CreateSMBFileShareOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileShareARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "CreateSMBFileShareOutput" }) as any as S.Schema<CreateSMBFileShareOutput>;
+export const CreateSMBFileShareOutput =
+  CreateNFSFileShareOutput as any as S.Schema<CreateSMBFileShareOutput>;
 export type SnapshotDescription = string;
 export interface CreateSnapshotInput {
   VolumeARN: string;
@@ -728,7 +719,7 @@ export const CreateTapesInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateTapesInput" }) as any as S.Schema<CreateTapesInput>;
 export type TapeARNs = string[];
-export const TapeARNs = /*@__PURE__*/ S.Array(S.String);
+export const TapeARNs = DiskIds as any as S.Schema<TapeARNs>;
 export interface CreateTapesOutput {
   TapeARNs?: string[];
 }
@@ -801,11 +792,8 @@ export const DeleteBandwidthRateLimitInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBandwidthRateLimitOutput {
   GatewayARN?: string;
 }
-export const DeleteBandwidthRateLimitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeleteBandwidthRateLimitOutput",
-}) as any as S.Schema<DeleteBandwidthRateLimitOutput>;
+export const DeleteBandwidthRateLimitOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<DeleteBandwidthRateLimitOutput>;
 export interface DeleteCacheReportInput {
   CacheReportARN: string;
 }
@@ -817,9 +805,8 @@ export const DeleteCacheReportInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCacheReportOutput {
   CacheReportARN?: string;
 }
-export const DeleteCacheReportOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CacheReportARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteCacheReportOutput" }) as any as S.Schema<DeleteCacheReportOutput>;
+export const DeleteCacheReportOutput =
+  CancelCacheReportOutput as any as S.Schema<DeleteCacheReportOutput>;
 export type IqnName = string;
 export interface DeleteChapCredentialsInput {
   TargetARN: string;
@@ -853,9 +840,8 @@ export const DeleteFileShareInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteFileShareOutput {
   FileShareARN?: string;
 }
-export const DeleteFileShareOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileShareARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteFileShareOutput" }) as any as S.Schema<DeleteFileShareOutput>;
+export const DeleteFileShareOutput =
+  CreateNFSFileShareOutput as any as S.Schema<DeleteFileShareOutput>;
 export interface DeleteGatewayInput {
   GatewayARN: string;
 }
@@ -867,9 +853,7 @@ export const DeleteGatewayInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGatewayOutput {
   GatewayARN?: string;
 }
-export const DeleteGatewayOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteGatewayOutput" }) as any as S.Schema<DeleteGatewayOutput>;
+export const DeleteGatewayOutput = ActivateGatewayOutput as any as S.Schema<DeleteGatewayOutput>;
 export interface DeleteSnapshotScheduleInput {
   VolumeARN: string;
 }
@@ -903,9 +887,7 @@ export const DeleteTapeInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTapeOutput {
   TapeARN?: string;
 }
-export const DeleteTapeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TapeARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteTapeOutput" }) as any as S.Schema<DeleteTapeOutput>;
+export const DeleteTapeOutput = AssignTapePoolOutput as any as S.Schema<DeleteTapeOutput>;
 export interface DeleteTapeArchiveInput {
   TapeARN: string;
   BypassGovernanceRetention?: boolean;
@@ -918,9 +900,8 @@ export const DeleteTapeArchiveInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTapeArchiveOutput {
   TapeARN?: string;
 }
-export const DeleteTapeArchiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TapeARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteTapeArchiveOutput" }) as any as S.Schema<DeleteTapeArchiveOutput>;
+export const DeleteTapeArchiveOutput =
+  AssignTapePoolOutput as any as S.Schema<DeleteTapeArchiveOutput>;
 export interface DeleteTapePoolInput {
   PoolARN: string;
 }
@@ -932,9 +913,7 @@ export const DeleteTapePoolInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTapePoolOutput {
   PoolARN?: string;
 }
-export const DeleteTapePoolOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PoolARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteTapePoolOutput" }) as any as S.Schema<DeleteTapePoolOutput>;
+export const DeleteTapePoolOutput = CreateTapePoolOutput as any as S.Schema<DeleteTapePoolOutput>;
 export interface DeleteVolumeInput {
   VolumeARN: string;
 }
@@ -1082,7 +1061,7 @@ export const DescribeCacheOutput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "DescribeCacheOutput" }) as any as S.Schema<DescribeCacheOutput>;
 export type VolumeARNs = string[];
-export const VolumeARNs = /*@__PURE__*/ S.Array(S.String);
+export const VolumeARNs = DiskIds as any as S.Schema<VolumeARNs>;
 export interface DescribeCachediSCSIVolumesInput {
   VolumeARNs: string[];
 }
@@ -1182,7 +1161,7 @@ export const CacheReportFilterName = S.String;
 
 export type CacheReportFilterValue = string;
 export type CacheReportFilterValues = string[];
-export const CacheReportFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const CacheReportFilterValues = DiskIds as any as S.Schema<CacheReportFilterValues>;
 export interface CacheReportFilter {
   Name: CacheReportFilterName;
   Values: string[];
@@ -1267,7 +1246,8 @@ export const DescribeChapCredentialsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeChapCredentialsOutput",
 }) as any as S.Schema<DescribeChapCredentialsOutput>;
 export type FileSystemAssociationARNList = string[];
-export const FileSystemAssociationARNList = /*@__PURE__*/ S.Array(S.String);
+export const FileSystemAssociationARNList =
+  DiskIds as any as S.Schema<FileSystemAssociationARNList>;
 export interface DescribeFileSystemAssociationsInput {
   FileSystemAssociationARNList: string[];
 }
@@ -1476,7 +1456,7 @@ export const DescribeMaintenanceStartTimeOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeMaintenanceStartTimeOutput",
 }) as any as S.Schema<DescribeMaintenanceStartTimeOutput>;
 export type FileShareARNList = string[];
-export const FileShareARNList = /*@__PURE__*/ S.Array(S.String);
+export const FileShareARNList = DiskIds as any as S.Schema<FileShareARNList>;
 export interface DescribeNFSFileSharesInput {
   FileShareARNList: string[];
 }
@@ -1976,7 +1956,7 @@ export const DescribeUploadBufferOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeUploadBufferOutput",
 }) as any as S.Schema<DescribeUploadBufferOutput>;
 export type VTLDeviceARNs = string[];
-export const VTLDeviceARNs = /*@__PURE__*/ S.Array(S.String);
+export const VTLDeviceARNs = DiskIds as any as S.Schema<VTLDeviceARNs>;
 export interface DescribeVTLDevicesInput {
   GatewayARN: string;
   VTLDeviceARNs?: string[];
@@ -2076,9 +2056,7 @@ export const DetachVolumeInput = /*@__PURE__*/ S.suspend(() =>
 export interface DetachVolumeOutput {
   VolumeARN?: string;
 }
-export const DetachVolumeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VolumeARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DetachVolumeOutput" }) as any as S.Schema<DetachVolumeOutput>;
+export const DetachVolumeOutput = DeleteVolumeOutput as any as S.Schema<DetachVolumeOutput>;
 export interface DisableGatewayInput {
   GatewayARN: string;
 }
@@ -2090,9 +2068,7 @@ export const DisableGatewayInput = /*@__PURE__*/ S.suspend(() =>
 export interface DisableGatewayOutput {
   GatewayARN?: string;
 }
-export const DisableGatewayOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DisableGatewayOutput" }) as any as S.Schema<DisableGatewayOutput>;
+export const DisableGatewayOutput = ActivateGatewayOutput as any as S.Schema<DisableGatewayOutput>;
 export interface DisassociateFileSystemInput {
   FileSystemAssociationARN: string;
   ForceDelete?: boolean;
@@ -2107,11 +2083,8 @@ export const DisassociateFileSystemInput = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateFileSystemOutput {
   FileSystemAssociationARN?: string;
 }
-export const DisassociateFileSystemOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileSystemAssociationARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DisassociateFileSystemOutput",
-}) as any as S.Schema<DisassociateFileSystemOutput>;
+export const DisassociateFileSystemOutput =
+  AssociateFileSystemOutput as any as S.Schema<DisassociateFileSystemOutput>;
 export interface EvictFilesFailingUploadInput {
   FileShareARN: string;
   ForceRemove?: boolean;
@@ -2134,7 +2107,7 @@ export const EvictFilesFailingUploadOutput = /*@__PURE__*/ S.suspend(() =>
 export type OrganizationalUnit = string;
 export type Host = string;
 export type Hosts = string[];
-export const Hosts = /*@__PURE__*/ S.Array(S.String);
+export const Hosts = DiskIds as any as S.Schema<Hosts>;
 export type TimeoutInSeconds = number;
 export interface JoinDomainInput {
   GatewayARN: string;
@@ -2390,7 +2363,7 @@ export const ListLocalDisksInput = /*@__PURE__*/ S.suspend(() =>
 export type DiskAllocationType = string;
 export type DiskAttribute = string;
 export type DiskAttributeList = string[];
-export const DiskAttributeList = /*@__PURE__*/ S.Array(S.String);
+export const DiskAttributeList = DiskIds as any as S.Schema<DiskAttributeList>;
 export interface Disk {
   DiskId?: string;
   DiskPath?: string;
@@ -2449,7 +2422,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
 export type PoolARNs = string[];
-export const PoolARNs = /*@__PURE__*/ S.Array(S.String);
+export const PoolARNs = DiskIds as any as S.Schema<PoolARNs>;
 export interface ListTapePoolsInput {
   PoolARNs?: string[];
   Marker?: string;
@@ -2547,7 +2520,7 @@ export const ListVolumeInitiatorsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVolumeInitiatorsInput>;
 export type Initiator = string;
 export type Initiators = string[];
-export const Initiators = /*@__PURE__*/ S.Array(S.String);
+export const Initiators = DiskIds as any as S.Schema<Initiators>;
 export interface ListVolumeInitiatorsOutput {
   Initiators?: string[];
 }
@@ -2658,7 +2631,7 @@ export const NotifyWhenUploadedOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifyWhenUploadedOutput" }) as any as S.Schema<NotifyWhenUploadedOutput>;
 export type Folder = string;
 export type FolderList = string[];
-export const FolderList = /*@__PURE__*/ S.Array(S.String);
+export const FolderList = DiskIds as any as S.Schema<FolderList>;
 export interface RefreshCacheInput {
   FileShareARN: string;
   FolderList?: string[];
@@ -2675,11 +2648,9 @@ export interface RefreshCacheOutput {
   FileShareARN?: string;
   NotificationId?: string;
 }
-export const RefreshCacheOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileShareARN: S.optional(S.String), NotificationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "RefreshCacheOutput" }) as any as S.Schema<RefreshCacheOutput>;
+export const RefreshCacheOutput = NotifyWhenUploadedOutput as any as S.Schema<RefreshCacheOutput>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = DiskIds as any as S.Schema<TagKeys>;
 export interface RemoveTagsFromResourceInput {
   ResourceARN: string;
   TagKeys: string[];
@@ -2710,9 +2681,7 @@ export const ResetCacheInput = /*@__PURE__*/ S.suspend(() =>
 export interface ResetCacheOutput {
   GatewayARN?: string;
 }
-export const ResetCacheOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ResetCacheOutput" }) as any as S.Schema<ResetCacheOutput>;
+export const ResetCacheOutput = ActivateGatewayOutput as any as S.Schema<ResetCacheOutput>;
 export interface RetrieveTapeArchiveInput {
   TapeARN: string;
   GatewayARN: string;
@@ -2725,11 +2694,8 @@ export const RetrieveTapeArchiveInput = /*@__PURE__*/ S.suspend(() =>
 export interface RetrieveTapeArchiveOutput {
   TapeARN?: string;
 }
-export const RetrieveTapeArchiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TapeARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RetrieveTapeArchiveOutput",
-}) as any as S.Schema<RetrieveTapeArchiveOutput>;
+export const RetrieveTapeArchiveOutput =
+  CreateTapeWithBarcodeOutput as any as S.Schema<RetrieveTapeArchiveOutput>;
 export interface RetrieveTapeRecoveryPointInput {
   TapeARN: string;
   GatewayARN: string;
@@ -2744,11 +2710,8 @@ export const RetrieveTapeRecoveryPointInput = /*@__PURE__*/ S.suspend(() =>
 export interface RetrieveTapeRecoveryPointOutput {
   TapeARN?: string;
 }
-export const RetrieveTapeRecoveryPointOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TapeARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RetrieveTapeRecoveryPointOutput",
-}) as any as S.Schema<RetrieveTapeRecoveryPointOutput>;
+export const RetrieveTapeRecoveryPointOutput =
+  CreateTapeWithBarcodeOutput as any as S.Schema<RetrieveTapeRecoveryPointOutput>;
 export type LocalConsolePassword = string | redacted.Redacted<string>;
 export interface SetLocalConsolePasswordInput {
   GatewayARN: string;
@@ -2764,11 +2727,8 @@ export const SetLocalConsolePasswordInput = /*@__PURE__*/ S.suspend(() =>
 export interface SetLocalConsolePasswordOutput {
   GatewayARN?: string;
 }
-export const SetLocalConsolePasswordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "SetLocalConsolePasswordOutput",
-}) as any as S.Schema<SetLocalConsolePasswordOutput>;
+export const SetLocalConsolePasswordOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<SetLocalConsolePasswordOutput>;
 export type SMBGuestPassword = string | redacted.Redacted<string>;
 export interface SetSMBGuestPasswordInput {
   GatewayARN: string;
@@ -2782,11 +2742,8 @@ export const SetSMBGuestPasswordInput = /*@__PURE__*/ S.suspend(() =>
 export interface SetSMBGuestPasswordOutput {
   GatewayARN?: string;
 }
-export const SetSMBGuestPasswordOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "SetSMBGuestPasswordOutput",
-}) as any as S.Schema<SetSMBGuestPasswordOutput>;
+export const SetSMBGuestPasswordOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<SetSMBGuestPasswordOutput>;
 export interface ShutdownGatewayInput {
   GatewayARN: string;
 }
@@ -2798,9 +2755,8 @@ export const ShutdownGatewayInput = /*@__PURE__*/ S.suspend(() =>
 export interface ShutdownGatewayOutput {
   GatewayARN?: string;
 }
-export const ShutdownGatewayOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ShutdownGatewayOutput" }) as any as S.Schema<ShutdownGatewayOutput>;
+export const ShutdownGatewayOutput =
+  ActivateGatewayOutput as any as S.Schema<ShutdownGatewayOutput>;
 export interface StartAvailabilityMonitorTestInput {
   GatewayARN: string;
 }
@@ -2814,11 +2770,8 @@ export const StartAvailabilityMonitorTestInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartAvailabilityMonitorTestOutput {
   GatewayARN?: string;
 }
-export const StartAvailabilityMonitorTestOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "StartAvailabilityMonitorTestOutput",
-}) as any as S.Schema<StartAvailabilityMonitorTestOutput>;
+export const StartAvailabilityMonitorTestOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<StartAvailabilityMonitorTestOutput>;
 export interface StartCacheReportInput {
   FileShareARN: string;
   Role: string;
@@ -2846,9 +2799,8 @@ export const StartCacheReportInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartCacheReportOutput {
   CacheReportARN?: string;
 }
-export const StartCacheReportOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CacheReportARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "StartCacheReportOutput" }) as any as S.Schema<StartCacheReportOutput>;
+export const StartCacheReportOutput =
+  CancelCacheReportOutput as any as S.Schema<StartCacheReportOutput>;
 export interface StartGatewayInput {
   GatewayARN: string;
 }
@@ -2860,9 +2812,7 @@ export const StartGatewayInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartGatewayOutput {
   GatewayARN?: string;
 }
-export const StartGatewayOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "StartGatewayOutput" }) as any as S.Schema<StartGatewayOutput>;
+export const StartGatewayOutput = ActivateGatewayOutput as any as S.Schema<StartGatewayOutput>;
 export interface UpdateAutomaticTapeCreationPolicyInput {
   AutomaticTapeCreationRules: AutomaticTapeCreationRule[];
   GatewayARN: string;
@@ -2877,11 +2827,8 @@ export const UpdateAutomaticTapeCreationPolicyInput = /*@__PURE__*/ S.suspend(()
 export interface UpdateAutomaticTapeCreationPolicyOutput {
   GatewayARN?: string;
 }
-export const UpdateAutomaticTapeCreationPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateAutomaticTapeCreationPolicyOutput",
-}) as any as S.Schema<UpdateAutomaticTapeCreationPolicyOutput>;
+export const UpdateAutomaticTapeCreationPolicyOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateAutomaticTapeCreationPolicyOutput>;
 export interface UpdateBandwidthRateLimitInput {
   GatewayARN: string;
   AverageUploadRateLimitInBitsPerSec?: number;
@@ -2899,11 +2846,8 @@ export const UpdateBandwidthRateLimitInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBandwidthRateLimitOutput {
   GatewayARN?: string;
 }
-export const UpdateBandwidthRateLimitOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateBandwidthRateLimitOutput",
-}) as any as S.Schema<UpdateBandwidthRateLimitOutput>;
+export const UpdateBandwidthRateLimitOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateBandwidthRateLimitOutput>;
 export interface UpdateBandwidthRateLimitScheduleInput {
   GatewayARN: string;
   BandwidthRateLimitIntervals: BandwidthRateLimitInterval[];
@@ -2918,11 +2862,8 @@ export const UpdateBandwidthRateLimitScheduleInput = /*@__PURE__*/ S.suspend(() 
 export interface UpdateBandwidthRateLimitScheduleOutput {
   GatewayARN?: string;
 }
-export const UpdateBandwidthRateLimitScheduleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateBandwidthRateLimitScheduleOutput",
-}) as any as S.Schema<UpdateBandwidthRateLimitScheduleOutput>;
+export const UpdateBandwidthRateLimitScheduleOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateBandwidthRateLimitScheduleOutput>;
 export interface UpdateChapCredentialsInput {
   TargetARN: string;
   SecretToAuthenticateInitiator: string | redacted.Redacted<string>;
@@ -2943,11 +2884,8 @@ export interface UpdateChapCredentialsOutput {
   TargetARN?: string;
   InitiatorName?: string;
 }
-export const UpdateChapCredentialsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TargetARN: S.optional(S.String), InitiatorName: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateChapCredentialsOutput",
-}) as any as S.Schema<UpdateChapCredentialsOutput>;
+export const UpdateChapCredentialsOutput =
+  DeleteChapCredentialsOutput as any as S.Schema<UpdateChapCredentialsOutput>;
 export interface UpdateFileSystemAssociationInput {
   FileSystemAssociationARN: string;
   UserName?: string;
@@ -2969,11 +2907,8 @@ export const UpdateFileSystemAssociationInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFileSystemAssociationOutput {
   FileSystemAssociationARN?: string;
 }
-export const UpdateFileSystemAssociationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileSystemAssociationARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateFileSystemAssociationOutput",
-}) as any as S.Schema<UpdateFileSystemAssociationOutput>;
+export const UpdateFileSystemAssociationOutput =
+  AssociateFileSystemOutput as any as S.Schema<UpdateFileSystemAssociationOutput>;
 export interface UpdateGatewayInformationInput {
   GatewayARN: string;
   GatewayName?: string;
@@ -3014,11 +2949,8 @@ export const UpdateGatewaySoftwareNowInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGatewaySoftwareNowOutput {
   GatewayARN?: string;
 }
-export const UpdateGatewaySoftwareNowOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateGatewaySoftwareNowOutput",
-}) as any as S.Schema<UpdateGatewaySoftwareNowOutput>;
+export const UpdateGatewaySoftwareNowOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateGatewaySoftwareNowOutput>;
 export interface UpdateMaintenanceStartTimeInput {
   GatewayARN: string;
   HourOfDay?: number;
@@ -3042,11 +2974,8 @@ export const UpdateMaintenanceStartTimeInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMaintenanceStartTimeOutput {
   GatewayARN?: string;
 }
-export const UpdateMaintenanceStartTimeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateMaintenanceStartTimeOutput",
-}) as any as S.Schema<UpdateMaintenanceStartTimeOutput>;
+export const UpdateMaintenanceStartTimeOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateMaintenanceStartTimeOutput>;
 export interface UpdateNFSFileShareInput {
   FileShareARN: string;
   EncryptionType?: EncryptionType;
@@ -3088,9 +3017,8 @@ export const UpdateNFSFileShareInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNFSFileShareOutput {
   FileShareARN?: string;
 }
-export const UpdateNFSFileShareOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileShareARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateNFSFileShareOutput" }) as any as S.Schema<UpdateNFSFileShareOutput>;
+export const UpdateNFSFileShareOutput =
+  CreateNFSFileShareOutput as any as S.Schema<UpdateNFSFileShareOutput>;
 export interface UpdateSMBFileShareInput {
   FileShareARN: string;
   EncryptionType?: EncryptionType;
@@ -3140,9 +3068,8 @@ export const UpdateSMBFileShareInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSMBFileShareOutput {
   FileShareARN?: string;
 }
-export const UpdateSMBFileShareOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FileShareARN: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateSMBFileShareOutput" }) as any as S.Schema<UpdateSMBFileShareOutput>;
+export const UpdateSMBFileShareOutput =
+  CreateNFSFileShareOutput as any as S.Schema<UpdateSMBFileShareOutput>;
 export interface UpdateSMBFileShareVisibilityInput {
   GatewayARN: string;
   FileSharesVisible: boolean;
@@ -3157,11 +3084,8 @@ export const UpdateSMBFileShareVisibilityInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSMBFileShareVisibilityOutput {
   GatewayARN?: string;
 }
-export const UpdateSMBFileShareVisibilityOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateSMBFileShareVisibilityOutput",
-}) as any as S.Schema<UpdateSMBFileShareVisibilityOutput>;
+export const UpdateSMBFileShareVisibilityOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateSMBFileShareVisibilityOutput>;
 export interface UpdateSMBLocalGroupsInput {
   GatewayARN: string;
   SMBLocalGroups: SMBLocalGroups;
@@ -3176,11 +3100,8 @@ export const UpdateSMBLocalGroupsInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSMBLocalGroupsOutput {
   GatewayARN?: string;
 }
-export const UpdateSMBLocalGroupsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateSMBLocalGroupsOutput",
-}) as any as S.Schema<UpdateSMBLocalGroupsOutput>;
+export const UpdateSMBLocalGroupsOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateSMBLocalGroupsOutput>;
 export interface UpdateSMBSecurityStrategyInput {
   GatewayARN: string;
   SMBSecurityStrategy: SMBSecurityStrategy;
@@ -3195,11 +3116,8 @@ export const UpdateSMBSecurityStrategyInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSMBSecurityStrategyOutput {
   GatewayARN?: string;
 }
-export const UpdateSMBSecurityStrategyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateSMBSecurityStrategyOutput",
-}) as any as S.Schema<UpdateSMBSecurityStrategyOutput>;
+export const UpdateSMBSecurityStrategyOutput =
+  DeleteAutomaticTapeCreationPolicyOutput as any as S.Schema<UpdateSMBSecurityStrategyOutput>;
 export interface UpdateSnapshotScheduleInput {
   VolumeARN: string;
   StartAt: number;
@@ -3221,11 +3139,8 @@ export const UpdateSnapshotScheduleInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSnapshotScheduleOutput {
   VolumeARN?: string;
 }
-export const UpdateSnapshotScheduleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VolumeARN: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateSnapshotScheduleOutput",
-}) as any as S.Schema<UpdateSnapshotScheduleOutput>;
+export const UpdateSnapshotScheduleOutput =
+  DeleteSnapshotScheduleOutput as any as S.Schema<UpdateSnapshotScheduleOutput>;
 export type DeviceType = string;
 export interface UpdateVTLDeviceTypeInput {
   VTLDeviceARN: string;

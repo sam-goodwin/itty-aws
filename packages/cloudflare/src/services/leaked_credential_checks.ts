@@ -172,13 +172,8 @@ export interface GetDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-export const GetDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    password: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "GetDetectionResponse" }) as any as S.Schema<GetDetectionResponse>;
+export const GetDetectionResponse =
+  CreateDetectionResponse as any as S.Schema<GetDetectionResponse>;
 
 export interface GetLeakedCredentialCheckRequest {
   /** Defines an identifier. */
@@ -197,13 +192,8 @@ export interface GetLeakedCredentialCheckResponse {
   /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean | null;
 }
-export const GetLeakedCredentialCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "GetLeakedCredentialCheckResponse",
-}) as any as S.Schema<GetLeakedCredentialCheckResponse>;
+export const GetLeakedCredentialCheckResponse =
+  CreateLeakedCredentialCheckResponse as any as S.Schema<GetLeakedCredentialCheckResponse>;
 
 export interface ListDetectionsRequest {
   /** Defines an identifier. */
@@ -229,13 +219,8 @@ export interface DetectionsListResultItem {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-export const DetectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    password: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "DetectionsListResultItem" }) as any as S.Schema<DetectionsListResultItem>;
+export const DetectionsListResultItem =
+  CreateDetectionResponse as any as S.Schema<DetectionsListResultItem>;
 
 export type DetectionsListResultList = Array<DetectionsListResultItem>;
 export const DetectionsListResultList = /*@__PURE__*/ S.Array(
@@ -289,13 +274,8 @@ export interface UpdateDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-export const UpdateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    password: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "UpdateDetectionResponse" }) as any as S.Schema<UpdateDetectionResponse>;
+export const UpdateDetectionResponse =
+  CreateDetectionResponse as any as S.Schema<UpdateDetectionResponse>;
 
 export type CreateDetectionError =
   | DetectionQuotaExceeded

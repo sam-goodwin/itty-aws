@@ -214,11 +214,8 @@ export const EnableRegistrationRemoteManagementRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<EnableRegistrationRemoteManagementRequest>;
 
 export interface EnableRegistrationRemoteManagementResponse {}
-export const EnableRegistrationRemoteManagementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableRegistrationRemoteManagementResponse",
-}) as any as S.Schema<EnableRegistrationRemoteManagementResponse>;
+export const EnableRegistrationRemoteManagementResponse =
+  DeleteCustomerSubscriptionResponse as any as S.Schema<EnableRegistrationRemoteManagementResponse>;
 
 export interface GetCloudManifestFileRequest {
   /** Signing verification key version. */
@@ -357,17 +354,8 @@ export interface GetCustomerSubscriptionResponse {
   /** Customer subscription properties. */
   properties?: CustomerSubscriptionProperties;
 }
-export const GetCustomerSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(CustomerSubscriptionProperties),
-  }),
-).annotate({
-  identifier: "GetCustomerSubscriptionResponse",
-}) as any as S.Schema<GetCustomerSubscriptionResponse>;
+export const GetCustomerSubscriptionResponse =
+  CreateCustomerSubscriptionResponse as any as S.Schema<GetCustomerSubscriptionResponse>;
 
 export interface GetProductRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -664,15 +652,7 @@ export interface Product {
   /** Properties of the product resource. */
   properties?: ProductNestedProperties;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(ProductNestedProperties),
-  }),
-).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
+export const Product = GetProductResponse as any as S.Schema<Product>;
 
 /** List of products. */
 export type ProductListValueList = Array<Product>;
@@ -835,17 +815,8 @@ export interface ListCloudManifestFileResponse {
   /** Cloud specific manifest data. */
   properties?: CloudManifestFileProperties;
 }
-export const ListCloudManifestFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(CloudManifestFileProperties),
-  }),
-).annotate({
-  identifier: "ListCloudManifestFileResponse",
-}) as any as S.Schema<ListCloudManifestFileResponse>;
+export const ListCloudManifestFileResponse =
+  GetCloudManifestFileResponse as any as S.Schema<ListCloudManifestFileResponse>;
 
 export interface ListCustomerSubscriptionsRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1195,10 +1166,8 @@ export const RegistrationLocation = S.String;
 
 /** Custom tags for the resource. */
 export type RegistrationTagsMap = { [key: string]: string | undefined };
-export const RegistrationTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegistrationTagsMap>;
+export const RegistrationTagsMap =
+  GetRegistrationResponseTagsMap as any as S.Schema<RegistrationTagsMap>;
 
 /** Registration information. */
 export interface Registration {
@@ -1323,10 +1292,8 @@ export const RegistrationsCreateOrUpdateResponseLocation = S.String;
 
 /** Custom tags for the resource. */
 export type RegistrationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const RegistrationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RegistrationsCreateOrUpdateResponseTagsMap>;
+export const RegistrationsCreateOrUpdateResponseTagsMap =
+  GetRegistrationResponseTagsMap as any as S.Schema<RegistrationsCreateOrUpdateResponseTagsMap>;
 
 export interface RegistrationsCreateOrUpdateResponse {
   /** ID of the resource. */
@@ -1399,10 +1366,8 @@ export const UpdateRegistrationResponseLocation = S.String;
 
 /** Custom tags for the resource. */
 export type UpdateRegistrationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateRegistrationResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRegistrationResponseTagsMap>;
+export const UpdateRegistrationResponseTagsMap =
+  GetRegistrationResponseTagsMap as any as S.Schema<UpdateRegistrationResponseTagsMap>;
 
 export interface UpdateRegistrationResponse {
   /** ID of the resource. */

@@ -256,14 +256,7 @@ export interface AuthorizedUserListItem {
   /** The user account linked to this authorized user record. */
   user: AuthorizedUserUser;
 }
-export const AuthorizedUserListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    company: AuthorizedUserCompany,
-    id: S.String,
-    role: AuthorizedUserRoles,
-    user: AuthorizedUserUser,
-  }),
-).annotate({ identifier: "AuthorizedUserListItem" }) as any as S.Schema<AuthorizedUserListItem>;
+export const AuthorizedUserListItem = AuthorizedUser as any as S.Schema<AuthorizedUserListItem>;
 
 /** A list of nodes. */
 export type ListAuthorizedUserResponseDataList = Array<AuthorizedUserListItem>;

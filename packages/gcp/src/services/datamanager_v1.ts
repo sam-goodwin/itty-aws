@@ -1016,9 +1016,8 @@ export const RemoveAudienceMembersStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveAudienceMembersStatus>;
 
 export interface RemoveAllAudienceMembersStatus {}
-export const RemoveAllAudienceMembersStatus = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveAllAudienceMembersStatus",
-}) as any as S.Schema<RemoveAllAudienceMembersStatus>;
+export const RemoveAllAudienceMembersStatus =
+  Empty as any as S.Schema<RemoveAllAudienceMembersStatus>;
 
 export interface IngestMobileDataStatus {
   mobileIdCount?: string;
@@ -1660,9 +1659,7 @@ export const IngestAdEventsRequest_ = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngestAdEventsRequest_" }) as any as S.Schema<IngestAdEventsRequest_>;
 
 export interface IngestAdEventsResponse {}
-export const IngestAdEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IngestAdEventsResponse",
-}) as any as S.Schema<IngestAdEventsResponse>;
+export const IngestAdEventsResponse = Empty as any as S.Schema<IngestAdEventsResponse>;
 
 export interface PartnerProvidedIdData {
   partnerProvidedIds?: StringList;
@@ -2710,13 +2707,8 @@ export const RemoveAudienceMembersRequest_ = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveAudienceMembersResponse {
   requestId?: string;
 }
-export const RemoveAudienceMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveAudienceMembersResponse",
-}) as any as S.Schema<RemoveAudienceMembersResponse>;
+export const RemoveAudienceMembersResponse =
+  RemoveAllAudienceMembersResponse as any as S.Schema<RemoveAudienceMembersResponse>;
 
 export type RemoveUsersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
 export const RemoveUsersRequestEncodingEnum = S.String;
@@ -2760,11 +2752,7 @@ export const RemoveUsersRequest_ = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveUsersResponse {
   requestId?: string;
 }
-export const RemoveUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "RemoveUsersResponse" }) as any as S.Schema<RemoveUsersResponse>;
+export const RemoveUsersResponse = IngestUsersResponse as any as S.Schema<RemoveUsersResponse>;
 
 export interface SearchAccountTypesAccountsPartnerLinksRequest {
   filter?: string;

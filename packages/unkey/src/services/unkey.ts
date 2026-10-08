@@ -122,30 +122,21 @@ export const AnalyticsGetRatelimitsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dynamic row with fields determined by the query. */
 export type V2AnalyticsGetRatelimitsResponseDataItemMap = { [key: string]: unknown | undefined };
-export const V2AnalyticsGetRatelimitsResponseDataItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<V2AnalyticsGetRatelimitsResponseDataItemMap>;
+export const V2AnalyticsGetRatelimitsResponseDataItemMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<V2AnalyticsGetRatelimitsResponseDataItemMap>;
 
 /** Array of rate limit rows returned by the query. Fields vary based on the SQL SELECT clause. */
 export type V2AnalyticsGetRatelimitsResponseData =
   Array<V2AnalyticsGetRatelimitsResponseDataItemMap>;
-export const V2AnalyticsGetRatelimitsResponseData = /*@__PURE__*/ S.Array(
-  V2AnalyticsGetRatelimitsResponseDataItemMap,
-) as any as S.Schema<V2AnalyticsGetRatelimitsResponseData>;
+export const V2AnalyticsGetRatelimitsResponseData =
+  V2AnalyticsGetGatewayRequestsResponseData as any as S.Schema<V2AnalyticsGetRatelimitsResponseData>;
 
 export interface V2AnalyticsGetRatelimitsResponseBody {
   meta: Meta;
   data: V2AnalyticsGetRatelimitsResponseData;
 }
-export const V2AnalyticsGetRatelimitsResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2AnalyticsGetRatelimitsResponseData,
-  }),
-).annotate({
-  identifier: "V2AnalyticsGetRatelimitsResponseBody",
-}) as any as S.Schema<V2AnalyticsGetRatelimitsResponseBody>;
+export const V2AnalyticsGetRatelimitsResponseBody =
+  V2AnalyticsGetGatewayRequestsResponseBody as any as S.Schema<V2AnalyticsGetRatelimitsResponseBody>;
 
 export interface AnalyticsGetRuntimeLogsRequest {
   /** The SQL query for your runtime log data. A query can use only the public alias `runtime_logs_v1`. The physical `default.*` table name is not permitted. CTEs, subqueries, UNION, and EXCEPT are permitted. Only SELECT queries are permitted. Unkey limits each query to the workspace of the root key. To get the logs of one project, app, environment, or deployment, add a filter on `project_id`, `app_id`, `environment_id`, or `deployment_id`. The workspace retention period and the workspace query limits apply. */
@@ -161,30 +152,21 @@ export const AnalyticsGetRuntimeLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** One result row. The query sets its fields. */
 export type V2AnalyticsGetRuntimeLogsResponseDataItemMap = { [key: string]: unknown | undefined };
-export const V2AnalyticsGetRuntimeLogsResponseDataItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseDataItemMap>;
+export const V2AnalyticsGetRuntimeLogsResponseDataItemMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseDataItemMap>;
 
 /** The runtime log rows that the query returned. The SELECT clause of the query sets the fields of each row. */
 export type V2AnalyticsGetRuntimeLogsResponseData =
   Array<V2AnalyticsGetRuntimeLogsResponseDataItemMap>;
-export const V2AnalyticsGetRuntimeLogsResponseData = /*@__PURE__*/ S.Array(
-  V2AnalyticsGetRuntimeLogsResponseDataItemMap,
-) as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseData>;
+export const V2AnalyticsGetRuntimeLogsResponseData =
+  V2AnalyticsGetGatewayRequestsResponseData as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseData>;
 
 export interface V2AnalyticsGetRuntimeLogsResponseBody {
   meta: Meta;
   data: V2AnalyticsGetRuntimeLogsResponseData;
 }
-export const V2AnalyticsGetRuntimeLogsResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2AnalyticsGetRuntimeLogsResponseData,
-  }),
-).annotate({
-  identifier: "V2AnalyticsGetRuntimeLogsResponseBody",
-}) as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseBody>;
+export const V2AnalyticsGetRuntimeLogsResponseBody =
+  V2AnalyticsGetGatewayRequestsResponseBody as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseBody>;
 
 export interface AnalyticsGetVerificationsRequest {
   /** SQL query to execute against your analytics data. Queries may reference only the five public aliases: `key_verifications_v1`, `key_verifications_per_minute_v1`, `key_verifications_per_hour_v1`, `key_verifications_per_day_v1`, or `key_verifications_per_month_v1`. Physical `default.*` table names are unsupported. Only SELECT queries are allowed. CTEs, subqueries, UNION, and EXCEPT are supported. */
@@ -200,30 +182,21 @@ export const AnalyticsGetVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dynamic row with fields determined by the query. Can include any combination of fields like time, outcome, count, key_id, etc. */
 export type V2AnalyticsGetVerificationsResponseDataItemMap = { [key: string]: unknown | undefined };
-export const V2AnalyticsGetVerificationsResponseDataItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<V2AnalyticsGetVerificationsResponseDataItemMap>;
+export const V2AnalyticsGetVerificationsResponseDataItemMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<V2AnalyticsGetVerificationsResponseDataItemMap>;
 
 /** Array of verification rows returned by the query. Fields vary based on the SQL SELECT clause. */
 export type V2AnalyticsGetVerificationsResponseData =
   Array<V2AnalyticsGetVerificationsResponseDataItemMap>;
-export const V2AnalyticsGetVerificationsResponseData = /*@__PURE__*/ S.Array(
-  V2AnalyticsGetVerificationsResponseDataItemMap,
-) as any as S.Schema<V2AnalyticsGetVerificationsResponseData>;
+export const V2AnalyticsGetVerificationsResponseData =
+  V2AnalyticsGetGatewayRequestsResponseData as any as S.Schema<V2AnalyticsGetVerificationsResponseData>;
 
 export interface V2AnalyticsGetVerificationsResponseBody {
   meta: Meta;
   data: V2AnalyticsGetVerificationsResponseData;
 }
-export const V2AnalyticsGetVerificationsResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2AnalyticsGetVerificationsResponseData,
-  }),
-).annotate({
-  identifier: "V2AnalyticsGetVerificationsResponseBody",
-}) as any as S.Schema<V2AnalyticsGetVerificationsResponseBody>;
+export const V2AnalyticsGetVerificationsResponseBody =
+  V2AnalyticsGetGatewayRequestsResponseBody as any as S.Schema<V2AnalyticsGetVerificationsResponseBody>;
 
 export interface ApisCreateApiRequest {
   /** Human-readable name for this API within your workspace. Use descriptive names like 'Payment Service (prod)' or 'user-api-dev' to clearly identify purpose and environment. */
@@ -344,10 +317,8 @@ export const ApisListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom metadata associated with this key. */
 export type KeyResponseDataMetaMap = { [key: string]: unknown | undefined };
-export const KeyResponseDataMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<KeyResponseDataMetaMap>;
+export const KeyResponseDataMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<KeyResponseDataMetaMap>;
 
 export type KeyResponseDataPermissionsList = Array<string>;
 export const KeyResponseDataPermissionsList = /*@__PURE__*/ S.Array(
@@ -355,9 +326,8 @@ export const KeyResponseDataPermissionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<KeyResponseDataPermissionsList>;
 
 export type KeyResponseDataRolesList = Array<string>;
-export const KeyResponseDataRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeyResponseDataRolesList>;
+export const KeyResponseDataRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeyResponseDataRolesList>;
 
 /** How often credits are automatically refilled. */
 export type KeyCreditsRefillInterval = "daily" | "monthly";
@@ -395,10 +365,8 @@ export const KeyCreditsData = /*@__PURE__*/ S.suspend(() =>
 
 /** Identity metadata */
 export type IdentityMetaMap = { [key: string]: unknown | undefined };
-export const IdentityMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IdentityMetaMap>;
+export const IdentityMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<IdentityMetaMap>;
 
 export interface RatelimitResponse {
   /** Unique identifier for this rate limit configuration. */
@@ -448,9 +416,8 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 export type KeyResponseDataRatelimitsList = Array<RatelimitResponse>;
-export const KeyResponseDataRatelimitsList = /*@__PURE__*/ S.Array(
-  RatelimitResponse,
-) as any as S.Schema<KeyResponseDataRatelimitsList>;
+export const KeyResponseDataRatelimitsList =
+  IdentityRatelimitsList as any as S.Schema<KeyResponseDataRatelimitsList>;
 
 export interface KeyResponseData {
   /** Unique identifier for this key. */
@@ -624,11 +591,7 @@ export interface DeploymentSourceOCI {
   /** OCI image to deploy. Mutable tags are resolved to immutable digests before rollout. */
   image: string;
 }
-export const DeploymentSourceOCI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.String,
-  }),
-).annotate({ identifier: "DeploymentSourceOCI" }) as any as S.Schema<DeploymentSourceOCI>;
+export const DeploymentSourceOCI = AppOCI as any as S.Schema<DeploymentSourceOCI>;
 
 /** Re-run an existing deployment. */
 export interface DeploymentSourceDeployment {
@@ -667,13 +630,8 @@ export interface V3DeploymentsCreateDeploymentResponseData {
   /** Unique deployment identifier */
   deploymentId: string;
 }
-export const V3DeploymentsCreateDeploymentResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deploymentId: S.String,
-  }),
-).annotate({
-  identifier: "V3DeploymentsCreateDeploymentResponseData",
-}) as any as S.Schema<V3DeploymentsCreateDeploymentResponseData>;
+export const V3DeploymentsCreateDeploymentResponseData =
+  DeploymentSourceDeployment as any as S.Schema<V3DeploymentsCreateDeploymentResponseData>;
 
 export interface V3DeploymentsCreateDeploymentResponseBody {
   meta: Meta;
@@ -784,10 +742,8 @@ export const V2DomainsCreateDomainResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Stores arbitrary JSON metadata returned during key verification for contextual information. Eliminates additional database lookups during verification, improving performance for stateless services. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. Use this for subscription details, feature flags, user preferences, and organization information. Metadata is returned as-is whenever keys associated with this identity are verified. */
 export type CreateIdentityRequestMetaMap = { [key: string]: unknown | undefined };
-export const CreateIdentityRequestMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateIdentityRequestMetaMap>;
+export const CreateIdentityRequestMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<CreateIdentityRequestMetaMap>;
 
 export interface RatelimitRequest {
   /** The name of this rate limit. This name is used to identify which limit to check during key verification. Best practices for limit names: - Use descriptive, semantic names like 'api_requests', 'heavy_operations', or 'downloads' - Be consistent with naming conventions across your application - Create separate limits for different resource types or operation costs - Consider using namespaced names for better organization (e.g., 'files.downloads', 'compute.training') You will reference this exact name when verifying keys to check against this specific limit. */
@@ -857,28 +813,23 @@ export const V2IdentitiesCreateIdentityResponseBody = /*@__PURE__*/ S.suspend(()
 
 /** Stores arbitrary JSON metadata returned during key verification for contextual information. Eliminates additional database lookups during verification, improving performance for stateless services. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type CreateKeyRequestMetaMap = { [key: string]: unknown | undefined };
-export const CreateKeyRequestMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateKeyRequestMetaMap>;
+export const CreateKeyRequestMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<CreateKeyRequestMetaMap>;
 
 /** Assigns existing roles to this key for permission management through role-based access control. Roles must already exist in your workspace before assignment. During verification, all permissions from assigned roles are checked against requested permissions. Roles provide a convenient way to group permissions and apply consistent access patterns across multiple keys. */
 export type CreateKeyRequestRolesList = Array<string>;
-export const CreateKeyRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateKeyRequestRolesList>;
+export const CreateKeyRequestRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<CreateKeyRequestRolesList>;
 
 /** Grants specific permissions directly to this key without requiring role membership. Wildcard permissions like `documents.*` grant access to all sub-permissions including `documents.read` and `documents.write`. Direct permissions supplement any permissions inherited from assigned roles. */
 export type CreateKeyRequestPermissionsList = Array<string>;
-export const CreateKeyRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateKeyRequestPermissionsList>;
+export const CreateKeyRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<CreateKeyRequestPermissionsList>;
 
 /** Defines time-based rate limits that protect against abuse by controlling request frequency. Unlike credits which track total usage, rate limits reset automatically after each window expires. Multiple rate limits can control different operation types with separate thresholds and windows. Essential for preventing API abuse while maintaining good performance for legitimate usage. */
 export type CreateKeyRequestRatelimitsList = Array<RatelimitRequest>;
-export const CreateKeyRequestRatelimitsList = /*@__PURE__*/ S.Array(
-  RatelimitRequest,
-) as any as S.Schema<CreateKeyRequestRatelimitsList>;
+export const CreateKeyRequestRatelimitsList =
+  CreateIdentityRequestRatelimitsList as any as S.Schema<CreateKeyRequestRatelimitsList>;
 
 export interface CreateKeyRequest {
   /** The API namespace this key belongs to. Keys from different APIs cannot access each other. */
@@ -1072,14 +1023,8 @@ export interface V2DomainsDeleteDomainResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2DomainsDeleteDomainResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2DomainsDeleteDomainResponseBody",
-}) as any as S.Schema<V2DomainsDeleteDomainResponseBody>;
+export const V2DomainsDeleteDomainResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2DomainsDeleteDomainResponseBody>;
 
 export interface DeleteIdentityRequest {
   /** The ID of the identity to delete. This can be either the externalId (from your own system that was used during identity creation) or the identityId (the internal ID returned by the identity service). */
@@ -1120,14 +1065,8 @@ export interface V2KeysDeleteKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2KeysDeleteKeyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2KeysDeleteKeyResponseBody",
-}) as any as S.Schema<V2KeysDeleteKeyResponseBody>;
+export const V2KeysDeleteKeyResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2KeysDeleteKeyResponseBody>;
 
 export interface DeletePortalRequest {
   portal: string;
@@ -1142,14 +1081,8 @@ export interface V2PortalDeletePortalResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2PortalDeletePortalResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2PortalDeletePortalResponseBody",
-}) as any as S.Schema<V2PortalDeletePortalResponseBody>;
+export const V2PortalDeletePortalResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2PortalDeletePortalResponseBody>;
 
 export interface DeleteProjectRequest {
   project: string;
@@ -1161,9 +1094,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse = DeleteAppResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeploymentsPromoteDeploymentRequest {
   deploymentId: string;
@@ -1196,11 +1127,8 @@ export const DeploymentsRollbackDeploymentRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeploymentsRollbackDeploymentRequest>;
 
 export interface DeploymentsRollbackDeploymentResponse {}
-export const DeploymentsRollbackDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeploymentsRollbackDeploymentResponse",
-}) as any as S.Schema<DeploymentsRollbackDeploymentResponse>;
+export const DeploymentsRollbackDeploymentResponse =
+  DeploymentsPromoteDeploymentResponse as any as S.Schema<DeploymentsRollbackDeploymentResponse>;
 
 /** How the value may be read back. `writeonly` values can never be read back through the API; `recoverable` values can be decrypted. Values are encrypted at rest either way. */
 export type EnvironmentVariableKind = "recoverable" | "writeonly";
@@ -1258,26 +1186,18 @@ export interface V2EnvironmentsSetEnvironmentVariablesResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2EnvironmentsSetEnvironmentVariablesResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2EnvironmentsSetEnvironmentVariablesResponseBody",
-}) as any as S.Schema<V2EnvironmentsSetEnvironmentVariablesResponseBody>;
+export const V2EnvironmentsSetEnvironmentVariablesResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2EnvironmentsSetEnvironmentVariablesResponseBody>;
 
 /** Glob patterns that trigger auto-deploys when matching files change. Do not start a pattern with "/" or "./". Use "src/**" for everything under a directory and "**\/*.go" for a file type. A pattern with no wildcard matches only that exact file, so "src" is not "src/**". Omit to leave unchanged. Invalid patterns are rejected with a 400. */
 export type EnvironmentsUpdateSettingsRequestWatchPathsList = Array<string>;
-export const EnvironmentsUpdateSettingsRequestWatchPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentsUpdateSettingsRequestWatchPathsList>;
+export const EnvironmentsUpdateSettingsRequestWatchPathsList =
+  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentsUpdateSettingsRequestWatchPathsList>;
 
 /** Override container entrypoint command. Omit to leave unchanged. */
 export type EnvironmentsUpdateSettingsRequestCommandList = Array<string>;
-export const EnvironmentsUpdateSettingsRequestCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentsUpdateSettingsRequestCommandList>;
+export const EnvironmentsUpdateSettingsRequestCommandList =
+  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentsUpdateSettingsRequestCommandList>;
 
 /** HTTP method used to probe the container. */
 export type EnvironmentHealthcheckMethod = "GET" | "POST";
@@ -1413,14 +1333,8 @@ export interface V2EnvironmentsUpdateSettingsResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2EnvironmentsUpdateSettingsResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2EnvironmentsUpdateSettingsResponseBody",
-}) as any as S.Schema<V2EnvironmentsUpdateSettingsResponseBody>;
+export const V2EnvironmentsUpdateSettingsResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2EnvironmentsUpdateSettingsResponseBody>;
 
 export interface GatewayListPoliciesRequest {
   project: string;
@@ -1509,15 +1423,13 @@ export const FieldMatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Matches when the remote IP is in at least one of these ranges. Entries are CIDRs such as `203.0.113.0/24` or single addresses such as `203.0.113.7`. */
 export type RemoteIpMatchInList = Array<string>;
-export const RemoteIpMatchInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoteIpMatchInList>;
+export const RemoteIpMatchInList =
+  KeyResponseDataPermissionsList as any as S.Schema<RemoteIpMatchInList>;
 
 /** Matches when the remote IP is in none of these ranges. Entries are CIDRs such as `198.51.100.0/24` or single addresses such as `198.51.100.7`. */
 export type RemoteIpMatchNotInList = Array<string>;
-export const RemoteIpMatchNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoteIpMatchNotInList>;
+export const RemoteIpMatchNotInList =
+  KeyResponseDataPermissionsList as any as S.Schema<RemoteIpMatchNotInList>;
 
 /** Matches the remote IP against IPv4 or IPv6 CIDR ranges. Exactly one of `in` or `notIn` must be set. Entries are rejected if they have host bits set (such as `10.1.2.3/8`), are IPv4-mapped IPv6 addresses, or carry a zone. Single addresses are returned as full-length prefixes, such as `203.0.113.7/32`. */
 export interface RemoteIpMatch {
@@ -1559,9 +1471,8 @@ export const PolicyResponseMatchList = /*@__PURE__*/ S.Array(
 
 /** Keyspaces to verify keys against, referenced by id. All keyspaces must belong to your workspace. */
 export type KeyauthPolicyKeyspacesList = Array<string>;
-export const KeyauthPolicyKeyspacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeyauthPolicyKeyspacesList>;
+export const KeyauthPolicyKeyspacesList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeyauthPolicyKeyspacesList>;
 
 /** Extract the key from a custom header. */
 export interface HeaderKeyLocation {
@@ -1859,20 +1770,13 @@ export interface V2GatewaySetPoliciesResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2GatewaySetPoliciesResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2GatewaySetPoliciesResponseBody",
-}) as any as S.Schema<V2GatewaySetPoliciesResponseBody>;
+export const V2GatewaySetPoliciesResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2GatewaySetPoliciesResponseBody>;
 
 /** Replaces all match expressions. Set null to remove them so the policy applies to every request. Omit to keep the current expressions. */
 export type GatewayUpdatePolicyRequestMatchList = Array<MatchExpr>;
-export const GatewayUpdatePolicyRequestMatchList = /*@__PURE__*/ S.Array(
-  MatchExpr,
-) as any as S.Schema<GatewayUpdatePolicyRequestMatchList>;
+export const GatewayUpdatePolicyRequestMatchList =
+  PolicyResponseMatchList as any as S.Schema<GatewayUpdatePolicyRequestMatchList>;
 
 export interface GatewayUpdatePolicyRequest {
   project: string;
@@ -1915,14 +1819,8 @@ export interface V2GatewayUpdatePolicyResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2GatewayUpdatePolicyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2GatewayUpdatePolicyResponseBody",
-}) as any as S.Schema<V2GatewayUpdatePolicyResponseBody>;
+export const V2GatewayUpdatePolicyResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2GatewayUpdatePolicyResponseBody>;
 
 export interface GetAppRequest {
   project: string;
@@ -2046,11 +1944,7 @@ export interface DeploymentDocker {
   /** The OCI image reference requested for this deployment. */
   image: string;
 }
-export const DeploymentDocker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.String,
-  }),
-).annotate({ identifier: "DeploymentDocker" }) as any as S.Schema<DeploymentDocker>;
+export const DeploymentDocker = AppOCI as any as S.Schema<DeploymentDocker>;
 
 /** A lifecycle operation that can be performed on the deployment in its current state, given its status, environment, and whether it is the current deployment. */
 export type DeploymentAction = "promote" | "rollback" | "stop" | "start";
@@ -2064,9 +1958,8 @@ export const DeploymentAvailableActionsList = /*@__PURE__*/ S.Array(
 
 /** Regions this deployment is configured to run in. Empty while the deployment has no scheduled regions yet. */
 export type DeploymentRegionsList = Array<string>;
-export const DeploymentRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeploymentRegionsList>;
+export const DeploymentRegionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<DeploymentRegionsList>;
 
 /** The reason a deployment failed. `unknown` means Unkey could not classify the failure; see `message` for details. */
 export type DeploymentErrorCode =
@@ -2096,15 +1989,13 @@ export const DeploymentError = /*@__PURE__*/ S.suspend(() =>
 
 /** Public hostnames this deployment is reachable at. */
 export type DeploymentDomainsList = Array<string>;
-export const DeploymentDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeploymentDomainsList>;
+export const DeploymentDomainsList =
+  KeyResponseDataPermissionsList as any as S.Schema<DeploymentDomainsList>;
 
 /** Container entrypoint command override. Empty when none is set. */
 export type DeploymentRuntimeCommandList = Array<string>;
-export const DeploymentRuntimeCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeploymentRuntimeCommandList>;
+export const DeploymentRuntimeCommandList =
+  KeyResponseDataPermissionsList as any as S.Schema<DeploymentRuntimeCommandList>;
 
 export interface DeploymentRuntime {
   /** CPU allocation in vCPUs (1 = one vCPU, 0.5 = half a vCPU). */
@@ -2214,9 +2105,8 @@ export const DomainStatus = S.String;
 
 /** The DNS records this domain needs. Create each record at your DNS provider. Each record has a `verified` flag. The flag shows whether Unkey has read that record back, so it tells you which records are still missing. */
 export type DomainDnsRecordsList = Array<DnsRecord>;
-export const DomainDnsRecordsList = /*@__PURE__*/ S.Array(
-  DnsRecord,
-) as any as S.Schema<DomainDnsRecordsList>;
+export const DomainDnsRecordsList =
+  V2DomainsCreateDomainResponseDataDnsRecordsList as any as S.Schema<DomainDnsRecordsList>;
 
 export interface Domain {
   id: string;
@@ -2288,9 +2178,8 @@ export const EnvironmentKind = S.String;
 
 /** Container entrypoint command override. */
 export type EnvironmentRuntimeCommandList = Array<string>;
-export const EnvironmentRuntimeCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentRuntimeCommandList>;
+export const EnvironmentRuntimeCommandList =
+  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentRuntimeCommandList>;
 
 /** Runtime settings that control how the container runs. Omitted until the environment has runtime settings. */
 export interface EnvironmentRuntime {
@@ -2326,9 +2215,8 @@ export const EnvironmentRuntime = /*@__PURE__*/ S.suspend(() =>
 
 /** Paths that trigger a rebuild when changed. */
 export type EnvironmentBuildWatchPathsList = Array<string>;
-export const EnvironmentBuildWatchPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnvironmentBuildWatchPathsList>;
+export const EnvironmentBuildWatchPathsList =
+  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentBuildWatchPathsList>;
 
 /** Build settings that control how the app is built. Omitted until the environment has build settings. */
 export interface EnvironmentBuild {
@@ -2355,9 +2243,8 @@ export const EnvironmentBuild = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-region deployment settings for this environment. Empty until regional settings are configured. */
 export type EnvironmentRegionsList = Array<EnvironmentRegion>;
-export const EnvironmentRegionsList = /*@__PURE__*/ S.Array(
-  EnvironmentRegion,
-) as any as S.Schema<EnvironmentRegionsList>;
+export const EnvironmentRegionsList =
+  EnvironmentsUpdateSettingsRequestRegionsList as any as S.Schema<EnvironmentRegionsList>;
 
 export interface Environment {
   /** The unique identifier of the environment, generated by Unkey. */
@@ -2609,9 +2496,8 @@ export const V2GithubInstallAppResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Grants additional permissions to the key through direct assignment or automatic creation. Duplicate permissions are ignored automatically, making this operation idempotent. Adding permissions never removes existing permissions or role-based permissions. Any permissions that do not exist will be auto created if the root key has permissions, otherwise this operation will fail with a 403 error. */
 export type KeysAddPermissionsRequestPermissionsList = Array<string>;
-export const KeysAddPermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeysAddPermissionsRequestPermissionsList>;
+export const KeysAddPermissionsRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeysAddPermissionsRequestPermissionsList>;
 
 export interface KeysAddPermissionsRequest {
   /** Specifies which key receives the additional permissions using the database identifier returned from `keys.createKey`. Do not confuse this with the actual API key string that users include in requests. */
@@ -2668,9 +2554,8 @@ export const V2KeysAddPermissionsResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Assigns additional roles to the key through direct assignment to existing workspace roles. Operations are idempotent - adding existing roles has no effect and causes no errors. All roles must already exist in the workspace - roles cannot be created automatically. Invalid roles cause the entire operation to fail atomically, ensuring consistent state. */
 export type KeysAddRolesRequestRolesList = Array<string>;
-export const KeysAddRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeysAddRolesRequestRolesList>;
+export const KeysAddRolesRequestRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeysAddRolesRequestRolesList>;
 
 export interface KeysAddRolesRequest {
   /** Specifies which key receives the additional roles using the database identifier returned from `createKey`. Do not confuse this with the actual API key string that users include in requests. Added roles supplement existing roles and permissions without replacing them. Role assignments take effect immediately but may take up to 30 seconds to propagate across all regions. */
@@ -2687,9 +2572,8 @@ export const KeysAddRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete list of permissions currently assigned to this role. Each permission grants specific access rights that will be inherited by any keys or users assigned this role. Use this list to understand the full scope of access provided by this role. Permissions can be added or removed from roles without affecting the role's identity or other properties. Empty array indicates a role with no permissions currently assigned. */
 export type RolePermissionsList = Array<Permission>;
-export const RolePermissionsList = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<RolePermissionsList>;
+export const RolePermissionsList =
+  V2KeysAddPermissionsResponseData as any as S.Schema<RolePermissionsList>;
 
 export interface Role {
   /** The unique identifier for this role within Unkey's system. Generated automatically when the role is created and used to reference this role in API operations. Always begins with 'role_' followed by alphanumeric characters and underscores. */
@@ -2731,9 +2615,8 @@ export const V2KeysAddRolesResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Removes direct permissions from the key without affecting role-based permissions. You can either use a permission slug, or the permission ID. After removal, verification checks for these permissions will fail unless granted through roles. */
 export type KeysRemovePermissionsRequestPermissionsList = Array<string>;
-export const KeysRemovePermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeysRemovePermissionsRequestPermissionsList>;
+export const KeysRemovePermissionsRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeysRemovePermissionsRequestPermissionsList>;
 
 export interface KeysRemovePermissionsRequest {
   /** Specifies which key to remove permissions from using the database identifier returned from `keys.createKey`. Do not confuse this with the actual API key string that users include in requests. */
@@ -2752,28 +2635,20 @@ export const KeysRemovePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete list of all permissions directly assigned to the key after the removal operation (remaining permissions only). Notes: - This list does NOT include permissions granted through roles - For a complete permission picture, use `/v2/keys.getKey` instead - An empty array indicates the key has no direct permissions assigned - Any cached versions of the key are immediately invalidated to ensure consistency - Changes to permissions take effect within seconds for new verifications */
 export type V2KeysRemovePermissionsResponseData = Array<Permission>;
-export const V2KeysRemovePermissionsResponseData = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<V2KeysRemovePermissionsResponseData>;
+export const V2KeysRemovePermissionsResponseData =
+  V2KeysAddPermissionsResponseData as any as S.Schema<V2KeysRemovePermissionsResponseData>;
 
 export interface V2KeysRemovePermissionsResponseBody {
   meta: Meta;
   data: V2KeysRemovePermissionsResponseData;
 }
-export const V2KeysRemovePermissionsResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2KeysRemovePermissionsResponseData,
-  }),
-).annotate({
-  identifier: "V2KeysRemovePermissionsResponseBody",
-}) as any as S.Schema<V2KeysRemovePermissionsResponseBody>;
+export const V2KeysRemovePermissionsResponseBody =
+  V2KeysAddPermissionsResponseBody as any as S.Schema<V2KeysRemovePermissionsResponseBody>;
 
 /** Removes direct role assignments from the key without affecting other role sources or permissions. Operations are idempotent - removing non-assigned roles has no effect and causes no errors. After removal, the key loses access to permissions that were only granted through these roles. Invalid role references cause the entire operation to fail atomically, ensuring consistent state. */
 export type KeysRemoveRolesRequestRolesList = Array<string>;
-export const KeysRemoveRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeysRemoveRolesRequestRolesList>;
+export const KeysRemoveRolesRequestRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeysRemoveRolesRequestRolesList>;
 
 export interface KeysRemoveRolesRequest {
   /** Specifies which key loses the roles using the database identifier returned from createKey. Do not confuse this with the actual API key string that users include in requests. Removing roles only affects direct assignments, not permissions inherited from other sources. Role changes take effect immediately but may take up to 30 seconds to propagate across all regions. */
@@ -2790,22 +2665,15 @@ export const KeysRemoveRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete list of all roles directly assigned to the key after the removal operation completes. The response includes: - The remaining roles still assigned to the key (after removing the specified roles) - Both ID and name for each role for easy reference Important notes: - The response reflects the current state after the removal operation - An empty array indicates the key now has no roles assigned - This only shows direct role assignments - Role permissions are not expanded in this response - use keys.getKey for full details - Changes take effect immediately for new verifications but cached sessions may retain old permissions briefly */
 export type V2KeysRemoveRolesResponseData = Array<Role>;
-export const V2KeysRemoveRolesResponseData = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<V2KeysRemoveRolesResponseData>;
+export const V2KeysRemoveRolesResponseData =
+  V2KeysAddRolesResponseData as any as S.Schema<V2KeysRemoveRolesResponseData>;
 
 export interface V2KeysRemoveRolesResponseBody {
   meta: Meta;
   data: V2KeysRemoveRolesResponseData;
 }
-export const V2KeysRemoveRolesResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2KeysRemoveRolesResponseData,
-  }),
-).annotate({
-  identifier: "V2KeysRemoveRolesResponseBody",
-}) as any as S.Schema<V2KeysRemoveRolesResponseBody>;
+export const V2KeysRemoveRolesResponseBody =
+  V2KeysAddRolesResponseBody as any as S.Schema<V2KeysRemoveRolesResponseBody>;
 
 export interface KeysRerollKeyRequest {
   /** The database identifier of the key to reroll. This is the unique ID returned when creating or listing keys, NOT the actual API key token. You can find this ID in: - The response from `keys.createKey` - Key verification responses - The Unkey dashboard - API key listing endpoints */
@@ -2826,33 +2694,20 @@ export interface V2KeysRerollKeyResponseData {
   /** The newly generated API key token (the actual secret that authenticates requests). **SECURITY CRITICAL:** - This is the only time you'll receive the complete key - Unkey stores only a hashed version (unless the original key was created with `recoverable=true`) - Never log, store, or expose this value in your systems - Transmit directly to the end user via secure channels only - If lost and not recoverable, you must reroll or create a new key The key format follows: `[prefix]_[random_bytes]` - Prefix is extracted from the original key or uses API default - Random bytes follow API configuration (default: 16 bytes) This is NOT the keyId - it's the actual secret token used for authentication. */
   key: string;
 }
-export const V2KeysRerollKeyResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyId: S.String,
-    key: S.String,
-  }),
-).annotate({
-  identifier: "V2KeysRerollKeyResponseData",
-}) as any as S.Schema<V2KeysRerollKeyResponseData>;
+export const V2KeysRerollKeyResponseData =
+  V2KeysCreateKeyResponseData as any as S.Schema<V2KeysRerollKeyResponseData>;
 
 export interface V2KeysRerollKeyResponseBody {
   meta: Meta;
   data: V2KeysRerollKeyResponseData;
 }
-export const V2KeysRerollKeyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2KeysRerollKeyResponseData,
-  }),
-).annotate({
-  identifier: "V2KeysRerollKeyResponseBody",
-}) as any as S.Schema<V2KeysRerollKeyResponseBody>;
+export const V2KeysRerollKeyResponseBody =
+  V2KeysCreateKeyResponseBody as any as S.Schema<V2KeysRerollKeyResponseBody>;
 
 /** The permissions to set for this key. This is a complete replacement operation - it overwrites all existing direct permissions with this new set. Key behaviors: - Providing an empty array removes all direct permissions from the key - This only affects direct permissions - permissions granted through roles are not affected - All existing direct permissions not included in this list will be removed Any permissions that do not exist will be auto created if the root key has permissions, otherwise this operation will fail with a 403 error. */
 export type KeysSetPermissionsRequestPermissionsList = Array<string>;
-export const KeysSetPermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeysSetPermissionsRequestPermissionsList>;
+export const KeysSetPermissionsRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeysSetPermissionsRequestPermissionsList>;
 
 export interface KeysSetPermissionsRequest {
   /** Specifies which key receives the additional permissions using the database identifier returned from `keys.createKey`. Do not confuse this with the actual API key string that users include in requests. */
@@ -2871,28 +2726,20 @@ export const KeysSetPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete list of all permissions now directly assigned to the key after the set operation has completed. The response includes: - The comprehensive, updated set of direct permissions (reflecting the complete replacement) - Both ID and name for each permission for easy reference Important notes: - This only shows direct permissions, not those granted through roles - An empty array means the key has no direct permissions assigned - For a complete permission picture including roles, use keys.getKey instead */
 export type V2KeysSetPermissionsResponseData = Array<Permission>;
-export const V2KeysSetPermissionsResponseData = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<V2KeysSetPermissionsResponseData>;
+export const V2KeysSetPermissionsResponseData =
+  V2KeysAddPermissionsResponseData as any as S.Schema<V2KeysSetPermissionsResponseData>;
 
 export interface V2KeysSetPermissionsResponseBody {
   meta: Meta;
   data: V2KeysSetPermissionsResponseData;
 }
-export const V2KeysSetPermissionsResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2KeysSetPermissionsResponseData,
-  }),
-).annotate({
-  identifier: "V2KeysSetPermissionsResponseBody",
-}) as any as S.Schema<V2KeysSetPermissionsResponseBody>;
+export const V2KeysSetPermissionsResponseBody =
+  V2KeysAddPermissionsResponseBody as any as S.Schema<V2KeysSetPermissionsResponseBody>;
 
 /** Replaces all existing role assignments with this complete list of roles. This is a wholesale replacement operation, not an incremental update like add/remove operations. Providing an empty array removes all direct role assignments from the key. All roles must already exist in the workspace - roles cannot be created automatically. Invalid role references cause the entire operation to fail atomically, ensuring consistent state. */
 export type KeysSetRolesRequestRolesList = Array<string>;
-export const KeysSetRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KeysSetRolesRequestRolesList>;
+export const KeysSetRolesRequestRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<KeysSetRolesRequestRolesList>;
 
 export interface KeysSetRolesRequest {
   /** Specifies which key gets the complete role replacement using the database identifier returned from createKey. Do not confuse this with the actual API key string that users include in requests. This is a wholesale replacement operation that removes all existing roles not included in the request. Role changes take effect immediately but may take up to 30 seconds to propagate across all regions. */
@@ -2909,22 +2756,15 @@ export const KeysSetRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete list of all roles now directly assigned to the key after the set operation has completed. The response includes: - The comprehensive, updated set of roles (reflecting the complete replacement) - Both ID and name for each role for easy reference Important notes: - This response shows the final state after the complete replacement - If you provided an empty array in the request, this will also be empty - This only shows direct role assignments on the key - Role permissions are not expanded in this response - use keys.getKey for complete details - An empty array indicates the key now has no roles assigned at all */
 export type V2KeysSetRolesResponseData = Array<Role>;
-export const V2KeysSetRolesResponseData = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<V2KeysSetRolesResponseData>;
+export const V2KeysSetRolesResponseData =
+  V2KeysAddRolesResponseData as any as S.Schema<V2KeysSetRolesResponseData>;
 
 export interface V2KeysSetRolesResponseBody {
   meta: Meta;
   data: V2KeysSetRolesResponseData;
 }
-export const V2KeysSetRolesResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2KeysSetRolesResponseData,
-  }),
-).annotate({
-  identifier: "V2KeysSetRolesResponseBody",
-}) as any as S.Schema<V2KeysSetRolesResponseBody>;
+export const V2KeysSetRolesResponseBody =
+  V2KeysAddRolesResponseBody as any as S.Schema<V2KeysSetRolesResponseBody>;
 
 /** Defines how to modify the key's remaining credits. Use 'set' to replace current credits with a specific value or unlimited usage, 'increment' to add credits for plan upgrades or credit purchases, and 'decrement' to reduce credits for refunds or policy violations. */
 export type KeysUpdateCreditsRequestOperation = "set" | "increment" | "decrement";
@@ -2973,12 +2813,8 @@ export interface V2KeysWhoamiResponseBody {
   meta: Meta;
   data: KeyResponseData;
 }
-export const V2KeysWhoamiResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: KeyResponseData,
-  }),
-).annotate({ identifier: "V2KeysWhoamiResponseBody" }) as any as S.Schema<V2KeysWhoamiResponseBody>;
+export const V2KeysWhoamiResponseBody =
+  V2KeysGetKeyResponseBody as any as S.Schema<V2KeysWhoamiResponseBody>;
 
 export interface ListAppsRequest {
   project: string;
@@ -3269,9 +3105,8 @@ export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of permission objects with complete configuration details. */
 export type V2PermissionsListPermissionsResponseData = Array<Permission>;
-export const V2PermissionsListPermissionsResponseData = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<V2PermissionsListPermissionsResponseData>;
+export const V2PermissionsListPermissionsResponseData =
+  V2KeysAddPermissionsResponseData as any as S.Schema<V2PermissionsListPermissionsResponseData>;
 
 export interface V2PermissionsListPermissionsResponseBody {
   meta: Meta;
@@ -3355,28 +3190,23 @@ export const V2LivenessResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Stores arbitrary JSON metadata returned during key verification for contextual information. Eliminates additional database lookups during verification, improving performance for stateless services. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type V2KeysMigrateKeyDataMetaMap = { [key: string]: unknown | undefined };
-export const V2KeysMigrateKeyDataMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<V2KeysMigrateKeyDataMetaMap>;
+export const V2KeysMigrateKeyDataMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<V2KeysMigrateKeyDataMetaMap>;
 
 /** Assigns existing roles to this key for permission management through role-based access control. Roles must already exist in your workspace before assignment. During verification, all permissions from assigned roles are checked against requested permissions. Roles provide a convenient way to group permissions and apply consistent access patterns across multiple keys. */
 export type V2KeysMigrateKeyDataRolesList = Array<string>;
-export const V2KeysMigrateKeyDataRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2KeysMigrateKeyDataRolesList>;
+export const V2KeysMigrateKeyDataRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<V2KeysMigrateKeyDataRolesList>;
 
 /** Grants specific permissions directly to this key without requiring role membership. Wildcard permissions like `documents.*` grant access to all sub-permissions including `documents.read` and `documents.write`. Direct permissions supplement any permissions inherited from assigned roles. */
 export type V2KeysMigrateKeyDataPermissionsList = Array<string>;
-export const V2KeysMigrateKeyDataPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2KeysMigrateKeyDataPermissionsList>;
+export const V2KeysMigrateKeyDataPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<V2KeysMigrateKeyDataPermissionsList>;
 
 /** Defines time-based rate limits that protect against abuse by controlling request frequency. Unlike credits which track total usage, rate limits reset automatically after each window expires. Multiple rate limits can control different operation types with separate thresholds and windows. Essential for preventing API abuse while maintaining good performance for legitimate usage. */
 export type V2KeysMigrateKeyDataRatelimitsList = Array<RatelimitRequest>;
-export const V2KeysMigrateKeyDataRatelimitsList = /*@__PURE__*/ S.Array(
-  RatelimitRequest,
-) as any as S.Schema<V2KeysMigrateKeyDataRatelimitsList>;
+export const V2KeysMigrateKeyDataRatelimitsList =
+  CreateIdentityRequestRatelimitsList as any as S.Schema<V2KeysMigrateKeyDataRatelimitsList>;
 
 export interface V2KeysMigrateKeyData {
   /** The current hash of the key on your side */
@@ -3458,9 +3288,8 @@ export const V2KeysMigrateKeysResponseDataMigratedList = /*@__PURE__*/ S.Array(
 
 /** Hashes that could not be migrated (e.g., already exist in the system) */
 export type V2KeysMigrateKeysResponseDataFailedList = Array<string>;
-export const V2KeysMigrateKeysResponseDataFailedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2KeysMigrateKeysResponseDataFailedList>;
+export const V2KeysMigrateKeysResponseDataFailedList =
+  KeyResponseDataPermissionsList as any as S.Schema<V2KeysMigrateKeysResponseDataFailedList>;
 
 export interface V2KeysMigrateKeysResponseData {
   /** Successfully migrated keys with their hash and generated keyId */
@@ -3535,9 +3364,8 @@ export const V2PermissionsCreatePermissionResponseBody = /*@__PURE__*/ S.suspend
 
 /** Permission slugs to attach to the role. Existing permissions are reused. Missing permissions are created automatically when the root key has `rbac.*.create_permission`. Omit this field or provide an empty array to create the role without permissions. */
 export type PermissionsCreateRoleRequestPermissionsList = Array<string>;
-export const PermissionsCreateRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionsCreateRoleRequestPermissionsList>;
+export const PermissionsCreateRoleRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<PermissionsCreateRoleRequestPermissionsList>;
 
 export interface PermissionsCreateRoleRequest {
   /** The unique name for this role. Must be unique within your workspace and clearly indicate the role's purpose. Use descriptive names like 'admin', 'editor', or 'Billing Manager'. Examples: 'admin.billing', 'support.readonly', 'developer.api', 'Billing Manager' */
@@ -3598,14 +3426,8 @@ export interface V2PermissionsDeletePermissionResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2PermissionsDeletePermissionResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2PermissionsDeletePermissionResponseBody",
-}) as any as S.Schema<V2PermissionsDeletePermissionResponseBody>;
+export const V2PermissionsDeletePermissionResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2PermissionsDeletePermissionResponseBody>;
 
 export interface PermissionsDeleteRoleRequest {
   /** Unique identifier of the role to permanently delete from your workspace. Must either be a valid role ID that begins with 'role_' or the given role name and exists within your workspace. WARNING: Deletion is immediate and irreversible with significant consequences: - All API keys assigned this role will lose the associated permissions - Access to resources protected by this role's permissions will be denied - Any authorization logic depending on this role will start failing - Historical analytics referencing this role remain intact Before deletion, ensure: - You've updated any dependent authorization logic or code - You've migrated any keys to use alternative roles or direct permissions - You've notified relevant team members of the access changes */
@@ -3623,14 +3445,8 @@ export interface V2PermissionsDeleteRoleResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2PermissionsDeleteRoleResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2PermissionsDeleteRoleResponseBody",
-}) as any as S.Schema<V2PermissionsDeleteRoleResponseBody>;
+export const V2PermissionsDeleteRoleResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2PermissionsDeleteRoleResponseBody>;
 
 export interface PermissionsGetPermissionRequest {
   /** The unique identifier of the permission to retrieve. Must be a valid permission ID that begins with 'perm_' and exists within your workspace. */
@@ -3702,9 +3518,8 @@ export const PermissionsListRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of roles with their assigned permissions. */
 export type V2PermissionsListRolesResponseData = Array<Role>;
-export const V2PermissionsListRolesResponseData = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<V2PermissionsListRolesResponseData>;
+export const V2PermissionsListRolesResponseData =
+  V2KeysAddRolesResponseData as any as S.Schema<V2PermissionsListRolesResponseData>;
 
 export interface V2PermissionsListRolesResponseBody {
   meta: Meta;
@@ -3723,9 +3538,8 @@ export const V2PermissionsListRolesResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** The complete set of permission slugs to assign directly to the role. Missing permissions are created when authorized. An empty array clears all direct permissions. */
 export type PermissionsSetRolePermissionsRequestPermissionsList = Array<string>;
-export const PermissionsSetRolePermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionsSetRolePermissionsRequestPermissionsList>;
+export const PermissionsSetRolePermissionsRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<PermissionsSetRolePermissionsRequestPermissionsList>;
 
 export interface PermissionsSetRolePermissionsRequest {
   /** The role whose directly assigned permissions will be replaced. Accepts either the generated role ID or the unique role name. */
@@ -3747,22 +3561,15 @@ export const PermissionsSetRolePermissionsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Complete list of permissions now directly assigned to the role. */
 export type V2PermissionsSetRolePermissionsResponseData = Array<Permission>;
-export const V2PermissionsSetRolePermissionsResponseData = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<V2PermissionsSetRolePermissionsResponseData>;
+export const V2PermissionsSetRolePermissionsResponseData =
+  V2KeysAddPermissionsResponseData as any as S.Schema<V2PermissionsSetRolePermissionsResponseData>;
 
 export interface V2PermissionsSetRolePermissionsResponseBody {
   meta: Meta;
   data: V2PermissionsSetRolePermissionsResponseData;
 }
-export const V2PermissionsSetRolePermissionsResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2PermissionsSetRolePermissionsResponseData,
-  }),
-).annotate({
-  identifier: "V2PermissionsSetRolePermissionsResponseBody",
-}) as any as S.Schema<V2PermissionsSetRolePermissionsResponseBody>;
+export const V2PermissionsSetRolePermissionsResponseBody =
+  V2KeysAddPermissionsResponseBody as any as S.Schema<V2PermissionsSetRolePermissionsResponseBody>;
 
 export type PortalCreateSessionRequestScopesItem = "keys:read" | "keys:reroll" | "analytics:read";
 export const PortalCreateSessionRequestScopesItem = S.String;
@@ -3976,24 +3783,16 @@ export const PortalListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of the portal end user's API keys. */
 export type V2PortalListKeysResponseData = Array<KeyResponseData>;
-export const V2PortalListKeysResponseData = /*@__PURE__*/ S.Array(
-  KeyResponseData,
-) as any as S.Schema<V2PortalListKeysResponseData>;
+export const V2PortalListKeysResponseData =
+  V2ApisListKeysResponseData as any as S.Schema<V2PortalListKeysResponseData>;
 
 export interface V2PortalListKeysResponseBody {
   meta: Meta;
   data: V2PortalListKeysResponseData;
   pagination: Pagination;
 }
-export const V2PortalListKeysResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2PortalListKeysResponseData,
-    pagination: Pagination,
-  }),
-).annotate({
-  identifier: "V2PortalListKeysResponseBody",
-}) as any as S.Schema<V2PortalListKeysResponseBody>;
+export const V2PortalListKeysResponseBody =
+  V2ApisListKeysResponseBody as any as S.Schema<V2PortalListKeysResponseBody>;
 
 export interface PortalListSessionsRequest {
   portal: string;
@@ -4021,9 +3820,8 @@ export const V2PortalListSessionsSessionStatus = S.String;
 
 /** The capabilities the session was created with. */
 export type V2PortalListSessionsSessionScopesList = Array<string>;
-export const V2PortalListSessionsSessionScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2PortalListSessionsSessionScopesList>;
+export const V2PortalListSessionsSessionScopesList =
+  KeyResponseDataPermissionsList as any as S.Schema<V2PortalListSessionsSessionScopesList>;
 
 export interface V2PortalListSessionsSession {
   /** The session id. */
@@ -4163,14 +3961,8 @@ export interface V2RatelimitDeleteOverrideResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2RatelimitDeleteOverrideResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2RatelimitDeleteOverrideResponseBody",
-}) as any as S.Schema<V2RatelimitDeleteOverrideResponseBody>;
+export const V2RatelimitDeleteOverrideResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2RatelimitDeleteOverrideResponseBody>;
 
 export interface RatelimitGetOverrideRequest {
   /** The id or name of the namespace containing the override. */
@@ -4470,9 +4262,8 @@ export const V2RatelimitSetOverrideResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** The names of the variables to remove. Keys that exist are deleted; keys that are not present are ignored, since their absence already matches the requested state. Duplicate keys collapse to a single removal. The whole operation is atomic: if any part fails the environment is left unchanged. Limited to 50 variables per request. */
 export type RemoveEnvironmentVariablesRequestVariablesList = Array<string>;
-export const RemoveEnvironmentVariablesRequestVariablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveEnvironmentVariablesRequestVariablesList>;
+export const RemoveEnvironmentVariablesRequestVariablesList =
+  KeyResponseDataPermissionsList as any as S.Schema<RemoveEnvironmentVariablesRequestVariablesList>;
 
 export interface RemoveEnvironmentVariablesRequest {
   project: string;
@@ -4498,20 +4289,13 @@ export interface V2EnvironmentsRemoveEnvironmentVariablesResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2EnvironmentsRemoveEnvironmentVariablesResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2EnvironmentsRemoveEnvironmentVariablesResponseBody",
-}) as any as S.Schema<V2EnvironmentsRemoveEnvironmentVariablesResponseBody>;
+export const V2EnvironmentsRemoveEnvironmentVariablesResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2EnvironmentsRemoveEnvironmentVariablesResponseBody>;
 
 /** Permissions to grant to the root key. Each permission must be within the caller's existing permissions. */
 export type RootKeysCreateKeyRequestPermissionsList = Array<string>;
-export const RootKeysCreateKeyRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RootKeysCreateKeyRequestPermissionsList>;
+export const RootKeysCreateKeyRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<RootKeysCreateKeyRequestPermissionsList>;
 
 export interface RootKeysCreateKeyRequest {
   /** Optional name for the root key. */
@@ -4535,27 +4319,15 @@ export interface V2RootKeysCreateKeyResponseData {
   /** Root key secret, returned only once. Store it securely. */
   key: string;
 }
-export const V2RootKeysCreateKeyResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyId: S.String,
-    key: S.String,
-  }),
-).annotate({
-  identifier: "V2RootKeysCreateKeyResponseData",
-}) as any as S.Schema<V2RootKeysCreateKeyResponseData>;
+export const V2RootKeysCreateKeyResponseData =
+  V2KeysCreateKeyResponseData as any as S.Schema<V2RootKeysCreateKeyResponseData>;
 
 export interface V2RootKeysCreateKeyResponseBody {
   meta: Meta;
   data: V2RootKeysCreateKeyResponseData;
 }
-export const V2RootKeysCreateKeyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2RootKeysCreateKeyResponseData,
-  }),
-).annotate({
-  identifier: "V2RootKeysCreateKeyResponseBody",
-}) as any as S.Schema<V2RootKeysCreateKeyResponseBody>;
+export const V2RootKeysCreateKeyResponseBody =
+  V2KeysCreateKeyResponseBody as any as S.Schema<V2RootKeysCreateKeyResponseBody>;
 
 export interface RootKeysDeleteKeyRequest {
   /** Root key identifier returned by rootKeys.createKey or rootKeys.listKeys. */
@@ -4571,14 +4343,8 @@ export interface V2RootKeysDeleteKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2RootKeysDeleteKeyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2RootKeysDeleteKeyResponseBody",
-}) as any as S.Schema<V2RootKeysDeleteKeyResponseBody>;
+export const V2RootKeysDeleteKeyResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2RootKeysDeleteKeyResponseBody>;
 
 export interface RootKeysListKeysRequest {
   /** Maximum number of readable root keys per page. */
@@ -4595,9 +4361,8 @@ export const RootKeysListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All permissions assigned to the root key. */
 export type V2RootKeysListKeysResponseDataPermissionsList = Array<string>;
-export const V2RootKeysListKeysResponseDataPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2RootKeysListKeysResponseDataPermissionsList>;
+export const V2RootKeysListKeysResponseDataPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<V2RootKeysListKeysResponseDataPermissionsList>;
 
 export interface V2RootKeysListKeysResponseData {
   /** Stable root key identifier. */
@@ -4674,33 +4439,20 @@ export interface V2RootKeysRerollKeyResponseData {
   /** New root key secret, returned only once. Store it securely. */
   key: string;
 }
-export const V2RootKeysRerollKeyResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyId: S.String,
-    key: S.String,
-  }),
-).annotate({
-  identifier: "V2RootKeysRerollKeyResponseData",
-}) as any as S.Schema<V2RootKeysRerollKeyResponseData>;
+export const V2RootKeysRerollKeyResponseData =
+  V2KeysCreateKeyResponseData as any as S.Schema<V2RootKeysRerollKeyResponseData>;
 
 export interface V2RootKeysRerollKeyResponseBody {
   meta: Meta;
   data: V2RootKeysRerollKeyResponseData;
 }
-export const V2RootKeysRerollKeyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: V2RootKeysRerollKeyResponseData,
-  }),
-).annotate({
-  identifier: "V2RootKeysRerollKeyResponseBody",
-}) as any as S.Schema<V2RootKeysRerollKeyResponseBody>;
+export const V2RootKeysRerollKeyResponseBody =
+  V2KeysCreateKeyResponseBody as any as S.Schema<V2RootKeysRerollKeyResponseBody>;
 
 /** Complete replacement permission set. Every permission must be a supported URN in the authenticated workspace and within the caller's permissions. Omit to keep the current permissions. */
 export type RootKeysUpdateKeyRequestPermissionsList = Array<string>;
-export const RootKeysUpdateKeyRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RootKeysUpdateKeyRequestPermissionsList>;
+export const RootKeysUpdateKeyRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<RootKeysUpdateKeyRequestPermissionsList>;
 
 export interface RootKeysUpdateKeyRequest {
   /** Root key identifier returned by rootKeys.createKey or rootKeys.listKeys. */
@@ -4725,14 +4477,8 @@ export interface V2RootKeysUpdateKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2RootKeysUpdateKeyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2RootKeysUpdateKeyResponseBody",
-}) as any as S.Schema<V2RootKeysUpdateKeyResponseBody>;
+export const V2RootKeysUpdateKeyResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2RootKeysUpdateKeyResponseBody>;
 
 export interface StartDeploymentRequest {
   /** The stopped deployment to start. */
@@ -4745,9 +4491,8 @@ export const StartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartDeploymentRequest" }) as any as S.Schema<StartDeploymentRequest>;
 
 export interface StartDeploymentResponse {}
-export const StartDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartDeploymentResponse",
-}) as any as S.Schema<StartDeploymentResponse>;
+export const StartDeploymentResponse =
+  DeleteAppResponse as any as S.Schema<StartDeploymentResponse>;
 
 export interface StopDeploymentRequest {
   deploymentId: string;
@@ -4759,9 +4504,7 @@ export const StopDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopDeploymentRequest" }) as any as S.Schema<StopDeploymentRequest>;
 
 export interface StopDeploymentResponse {}
-export const StopDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopDeploymentResponse",
-}) as any as S.Schema<StopDeploymentResponse>;
+export const StopDeploymentResponse = DeleteAppResponse as any as S.Schema<StopDeploymentResponse>;
 
 export interface AppGitUpdateInput {
   /** The GitHub repository to connect, as "owner/repo". Omit to change only the tracked branch of the already-connected repository. The workspace must have the Unkey GitHub App installed with access to it. */
@@ -4769,12 +4512,7 @@ export interface AppGitUpdateInput {
   /** The branch this app's deployments track. Omit to adopt the repository's GitHub default branch on a new connection, keep the current branch when replacing an already-connected repository, or set it alone to retarget the branch of the connected repository. */
   defaultBranch?: string;
 }
-export const AppGitUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository: S.optional(S.String),
-    defaultBranch: S.optional(S.String),
-  }),
-).annotate({ identifier: "AppGitUpdateInput" }) as any as S.Schema<AppGitUpdateInput>;
+export const AppGitUpdateInput = AppGitCreateInput as any as S.Schema<AppGitUpdateInput>;
 
 export interface UpdateAppRequest {
   project: string;
@@ -4816,16 +4554,13 @@ export const V2AppsUpdateAppResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Replaces all existing metadata with this new metadata object. Omitting this field preserves existing metadata, while providing an empty object clears all metadata. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type UpdateIdentityRequestMetaMap = { [key: string]: unknown | undefined };
-export const UpdateIdentityRequestMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateIdentityRequestMetaMap>;
+export const UpdateIdentityRequestMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<UpdateIdentityRequestMetaMap>;
 
 /** Replaces all existing identity rate limits with this complete list of rate limits. Omitting this field preserves existing rate limits, while providing an empty array removes all rate limits. These limits are shared across all keys belonging to this identity, preventing abuse through multiple keys. Rate limit changes take effect immediately but may take up to 30 seconds to propagate across all regions. */
 export type UpdateIdentityRequestRatelimitsList = Array<RatelimitRequest>;
-export const UpdateIdentityRequestRatelimitsList = /*@__PURE__*/ S.Array(
-  RatelimitRequest,
-) as any as S.Schema<UpdateIdentityRequestRatelimitsList>;
+export const UpdateIdentityRequestRatelimitsList =
+  CreateIdentityRequestRatelimitsList as any as S.Schema<UpdateIdentityRequestRatelimitsList>;
 
 export interface UpdateIdentityRequest {
   /** The ID of the identity to update. Accepts either the externalId (your system-generated identifier) or the identityId (internal identifier returned by the identity service). */
@@ -4858,10 +4593,8 @@ export const V2IdentitiesUpdateIdentityResponseBody = /*@__PURE__*/ S.suspend(()
 
 /** Stores arbitrary JSON metadata returned during key verification. Omitting this field preserves existing metadata, while setting null removes all metadata entirely. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type UpdateKeyRequestMetaMap = { [key: string]: unknown | undefined };
-export const UpdateKeyRequestMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateKeyRequestMetaMap>;
+export const UpdateKeyRequestMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<UpdateKeyRequestMetaMap>;
 
 /** How often credits are automatically refilled. */
 export type UpdateKeyCreditsRefillInterval = "daily" | "monthly";
@@ -4899,19 +4632,16 @@ export const UpdateKeyCreditsData = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines time-based rate limits that protect against abuse by controlling request frequency. Omitting this field preserves existing rate limits, while setting null removes all rate limits. Unlike credits which track total usage, rate limits reset automatically after each window expires. Multiple rate limits can control different operation types with separate thresholds and windows. */
 export type UpdateKeyRequestRatelimitsList = Array<RatelimitRequest>;
-export const UpdateKeyRequestRatelimitsList = /*@__PURE__*/ S.Array(
-  RatelimitRequest,
-) as any as S.Schema<UpdateKeyRequestRatelimitsList>;
+export const UpdateKeyRequestRatelimitsList =
+  CreateIdentityRequestRatelimitsList as any as S.Schema<UpdateKeyRequestRatelimitsList>;
 
 export type UpdateKeyRequestRolesList = Array<string>;
-export const UpdateKeyRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateKeyRequestRolesList>;
+export const UpdateKeyRequestRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<UpdateKeyRequestRolesList>;
 
 export type UpdateKeyRequestPermissionsList = Array<string>;
-export const UpdateKeyRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateKeyRequestPermissionsList>;
+export const UpdateKeyRequestPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<UpdateKeyRequestPermissionsList>;
 
 export interface UpdateKeyRequest {
   /** Specifies which key to update using the database identifier returned from `createKey`. Do not confuse this with the actual API key string that users include in requests. */
@@ -4952,14 +4682,8 @@ export interface V2KeysUpdateKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-export const V2KeysUpdateKeyResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "V2KeysUpdateKeyResponseBody",
-}) as any as S.Schema<V2KeysUpdateKeyResponseBody>;
+export const V2KeysUpdateKeyResponseBody =
+  V2ApisDeleteApiResponseBody as any as S.Schema<V2KeysUpdateKeyResponseBody>;
 
 export interface UpdatePortalRequest {
   portal: string;
@@ -4995,14 +4719,8 @@ export interface V2PortalUpdatePortalResponseBody {
   meta: Meta;
   data: Portal;
 }
-export const V2PortalUpdatePortalResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: Portal,
-  }),
-).annotate({
-  identifier: "V2PortalUpdatePortalResponseBody",
-}) as any as S.Schema<V2PortalUpdatePortalResponseBody>;
+export const V2PortalUpdatePortalResponseBody =
+  V2PortalGetPortalResponseBody as any as S.Schema<V2PortalUpdatePortalResponseBody>;
 
 export interface UpdateProjectRequest {
   project: string;
@@ -5025,14 +4743,8 @@ export interface V2ProjectsUpdateProjectResponseBody {
   meta: Meta;
   data: Project;
 }
-export const V2ProjectsUpdateProjectResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meta: Meta,
-    data: Project,
-  }),
-).annotate({
-  identifier: "V2ProjectsUpdateProjectResponseBody",
-}) as any as S.Schema<V2ProjectsUpdateProjectResponseBody>;
+export const V2ProjectsUpdateProjectResponseBody =
+  V2ProjectsGetProjectResponseBody as any as S.Schema<V2ProjectsUpdateProjectResponseBody>;
 
 export interface VerifyDomainRequest {
   /** Identifies a domain by its name or by its ID. Send the fully qualified domain name, such as 'api.acme.com', without a scheme, port, or path, or send the domain ID that domains.createDomain returns. You can send an internationalized name in Unicode or in Punycode form. Both forms address the same domain. */
@@ -5045,15 +4757,12 @@ export const VerifyDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyDomainRequest" }) as any as S.Schema<VerifyDomainRequest>;
 
 export interface VerifyDomainResponse {}
-export const VerifyDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifyDomainResponse",
-}) as any as S.Schema<VerifyDomainResponse>;
+export const VerifyDomainResponse = DeleteAppResponse as any as S.Schema<VerifyDomainResponse>;
 
 /** Attaches metadata tags for analytics and monitoring without affecting verification outcomes. Enables segmentation of API usage in dashboards by endpoint, client version, region, or custom dimensions. Use 'key=value' format for compatibility with most analytics tools and clear categorization. Avoid including sensitive data in tags as they may appear in logs and analytics reports. */
 export type VerifyKeyRequestTagsList = Array<string>;
-export const VerifyKeyRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VerifyKeyRequestTagsList>;
+export const VerifyKeyRequestTagsList =
+  KeyResponseDataPermissionsList as any as S.Schema<VerifyKeyRequestTagsList>;
 
 /** Controls credit consumption for usage-based billing and quota enforcement. Omitting this field uses the default cost of 1 credit per verification. Credits provide globally consistent usage tracking, essential for paid APIs with strict quotas. */
 export interface KeysVerifyKeyCredits {
@@ -5068,9 +4777,8 @@ export const KeysVerifyKeyCredits = /*@__PURE__*/ S.suspend(() =>
 
 /** Restricts verification to keys in these keyspaces, matched by exact ID. Omit this field to verify without a keyspace restriction. A failed keyspace check returns `NOT_FOUND` without consuming credits or rate limits. */
 export type VerifyKeyRequestKeyspacesList = Array<string>;
-export const VerifyKeyRequestKeyspacesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VerifyKeyRequestKeyspacesList>;
+export const VerifyKeyRequestKeyspacesList =
+  KeyResponseDataPermissionsList as any as S.Schema<VerifyKeyRequestKeyspacesList>;
 
 export interface KeysVerifyKeyRatelimit {
   /** References an existing ratelimit by its name. Key Ratelimits will take precedence over identifier-based limits. */
@@ -5138,22 +4846,18 @@ export const V2KeysVerifyKeyResponseDataCode = S.String;
 
 /** Custom metadata associated with the key. This can include any JSON-serializable data you stored with the key during creation or updates, such as plan information, feature flags, or user details. Use this to avoid additional database lookups for contextual information needed during API calls. */
 export type V2KeysVerifyKeyResponseDataMetaMap = { [key: string]: unknown | undefined };
-export const V2KeysVerifyKeyResponseDataMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<V2KeysVerifyKeyResponseDataMetaMap>;
+export const V2KeysVerifyKeyResponseDataMetaMap =
+  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<V2KeysVerifyKeyResponseDataMetaMap>;
 
 /** A list of all permission names assigned to this key, either directly or through roles. These permissions determine what actions the key can perform. Only returned when permissions were checked during verification or when the key fails with `code=FORBIDDEN`. */
 export type V2KeysVerifyKeyResponseDataPermissionsList = Array<string>;
-export const V2KeysVerifyKeyResponseDataPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2KeysVerifyKeyResponseDataPermissionsList>;
+export const V2KeysVerifyKeyResponseDataPermissionsList =
+  KeyResponseDataPermissionsList as any as S.Schema<V2KeysVerifyKeyResponseDataPermissionsList>;
 
 /** A list of all role names assigned to this key. Roles are collections of permissions that grant access to specific functionality. Only returned when permissions were checked during verification. */
 export type V2KeysVerifyKeyResponseDataRolesList = Array<string>;
-export const V2KeysVerifyKeyResponseDataRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V2KeysVerifyKeyResponseDataRolesList>;
+export const V2KeysVerifyKeyResponseDataRolesList =
+  KeyResponseDataPermissionsList as any as S.Schema<V2KeysVerifyKeyResponseDataRolesList>;
 
 export interface VerifyKeyRatelimitData {
   /** Whether the rate limit was exceeded. */

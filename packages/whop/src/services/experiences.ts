@@ -116,13 +116,7 @@ export interface ExperienceProductsItem {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const ExperienceProductsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    route: S.String,
-    title: S.String,
-  }),
-).annotate({ identifier: "ExperienceProductsItem" }) as any as S.Schema<ExperienceProductsItem>;
+export const ExperienceProductsItem = ExperienceCompany as any as S.Schema<ExperienceProductsItem>;
 
 /** The list of products this experience is attached to, which determines which customers have access. Empty if the experience is only visible to authorized company team members. */
 export type ExperienceProductsList = Array<ExperienceProductsItem>;

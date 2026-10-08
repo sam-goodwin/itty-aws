@@ -78,36 +78,28 @@ export const MCPRegistryServerDetailToolsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MCPRegistryServerDetailToolsList>;
 
 export type MCPRegistryServerDetailMeasuredStatsItemMap = { [key: string]: unknown | undefined };
-export const MCPRegistryServerDetailMeasuredStatsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MCPRegistryServerDetailMeasuredStatsItemMap>;
+export const MCPRegistryServerDetailMeasuredStatsItemMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPRegistryServerDetailMeasuredStatsItemMap>;
 
 /** Behavioral aggregates, one per measured MCP Analytics project. Limited to this project's own measurements unless the server is marked measured_public. */
 export type MCPRegistryServerDetailMeasuredStatsList =
   Array<MCPRegistryServerDetailMeasuredStatsItemMap>;
-export const MCPRegistryServerDetailMeasuredStatsList = /*@__PURE__*/ S.Array(
-  MCPRegistryServerDetailMeasuredStatsItemMap,
-) as any as S.Schema<MCPRegistryServerDetailMeasuredStatsList>;
+export const MCPRegistryServerDetailMeasuredStatsList =
+  MCPRegistryServerDetailToolsList as any as S.Schema<MCPRegistryServerDetailMeasuredStatsList>;
 
 export type MCPRegistryServerDetailScoresItemMap = { [key: string]: unknown | undefined };
-export const MCPRegistryServerDetailScoresItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MCPRegistryServerDetailScoresItemMap>;
+export const MCPRegistryServerDetailScoresItemMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPRegistryServerDetailScoresItemMap>;
 
 /** Latest score under every ranking version with a completed run. */
 export type MCPRegistryServerDetailScoresList = Array<MCPRegistryServerDetailScoresItemMap>;
-export const MCPRegistryServerDetailScoresList = /*@__PURE__*/ S.Array(
-  MCPRegistryServerDetailScoresItemMap,
-) as any as S.Schema<MCPRegistryServerDetailScoresList>;
+export const MCPRegistryServerDetailScoresList =
+  MCPRegistryServerDetailToolsList as any as S.Schema<MCPRegistryServerDetailScoresList>;
 
 /** Connection instructions: methods ordered most-automated first, steps typed by actor (agent executes; human steps are narrated to the user). */
 export type MCPRegistryServerDetailConnectMap = { [key: string]: unknown | undefined };
-export const MCPRegistryServerDetailConnectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MCPRegistryServerDetailConnectMap>;
+export const MCPRegistryServerDetailConnectMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPRegistryServerDetailConnectMap>;
 
 export interface MCPRegistryServerDetail {
   /** Registry server id. */
@@ -201,10 +193,8 @@ export const GetMcpRegistryServersCompareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMcpRegistryServersCompareRequest>;
 
 export type GetMcpRegistryServersCompareResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetMcpRegistryServersCompareResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetMcpRegistryServersCompareResponseBodyMap>;
+export const GetMcpRegistryServersCompareResponseBodyMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<GetMcpRegistryServersCompareResponseBodyMap>;
 
 export type GetMcpRegistryServersCompareResponse = GetMcpRegistryServersCompareResponseBodyMap;
 export const GetMcpRegistryServersCompareResponse = /*@__PURE__*/ S.suspend(() =>
@@ -242,17 +232,13 @@ export const GetMcpRegistryServersDiscoverRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Score breakdown so an agent can explain its choice: fit, liveness, trust, and whether real usage signal contributed. */
 export type MCPDiscoverCandidateWhyMap = { [key: string]: unknown | undefined };
-export const MCPDiscoverCandidateWhyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MCPDiscoverCandidateWhyMap>;
+export const MCPDiscoverCandidateWhyMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateWhyMap>;
 
 /** Real MCP Analytics aggregates when the server is measured, otherwise null: calls, sessions, error_rate_pct, intent_coverage_pct, harness_count. */
 export type MCPDiscoverCandidateMeasuredMap = { [key: string]: unknown | undefined };
-export const MCPDiscoverCandidateMeasuredMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MCPDiscoverCandidateMeasuredMap>;
+export const MCPDiscoverCandidateMeasuredMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateMeasuredMap>;
 
 export interface MCPDiscoverCandidateMatchedToolsItem {
   name?: string;
@@ -277,10 +263,8 @@ export const MCPDiscoverCandidateMatchedToolsList = /*@__PURE__*/ S.Array(
 
 /** Connection instructions, most-automated method first, steps typed by actor so the agent runs its own steps and narrates the human ones. */
 export type MCPDiscoverCandidateConnectMap = { [key: string]: unknown | undefined };
-export const MCPDiscoverCandidateConnectMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MCPDiscoverCandidateConnectMap>;
+export const MCPDiscoverCandidateConnectMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateConnectMap>;
 
 /** One ranked candidate in a discover response, with everything an agent needs to act. */
 export interface MCPDiscoverCandidate {

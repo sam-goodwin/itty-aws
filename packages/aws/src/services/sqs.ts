@@ -359,7 +359,7 @@ export class UnsupportedOperation
 export type AWSAccountIdList = string[];
 export const AWSAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type ActionNameList = string[];
-export const ActionNameList = /*@__PURE__*/ S.Array(S.String);
+export const ActionNameList = AWSAccountIdList as any as S.Schema<ActionNameList>;
 export interface AddPermissionRequest {
   QueueUrl: string;
   Label: string;
@@ -549,9 +549,8 @@ export const DeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMessageRequest" }) as any as S.Schema<DeleteMessageRequest>;
 export interface DeleteMessageResponse {}
-export const DeleteMessageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMessageResponse",
-}) as any as S.Schema<DeleteMessageResponse>;
+export const DeleteMessageResponse =
+  AddPermissionResponse as any as S.Schema<DeleteMessageResponse>;
 export interface DeleteMessageBatchRequestEntry {
   Id: string;
   ReceiptHandle: string;
@@ -583,15 +582,11 @@ export const DeleteMessageBatchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMessageBatchResultEntry {
   Id: string;
 }
-export const DeleteMessageBatchResultEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String }),
-).annotate({
-  identifier: "DeleteMessageBatchResultEntry",
-}) as any as S.Schema<DeleteMessageBatchResultEntry>;
+export const DeleteMessageBatchResultEntry =
+  ChangeMessageVisibilityBatchResultEntry as any as S.Schema<DeleteMessageBatchResultEntry>;
 export type DeleteMessageBatchResultEntryList = DeleteMessageBatchResultEntry[];
-export const DeleteMessageBatchResultEntryList = /*@__PURE__*/ S.Array(
-  DeleteMessageBatchResultEntry,
-);
+export const DeleteMessageBatchResultEntryList =
+  ChangeMessageVisibilityBatchResultEntryList as any as S.Schema<DeleteMessageBatchResultEntryList>;
 export interface DeleteMessageBatchResult {
   Successful?: DeleteMessageBatchResultEntry[];
   Failed?: BatchResultErrorEntry[];
@@ -617,9 +612,7 @@ export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteQueueRequest" }) as any as S.Schema<DeleteQueueRequest>;
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQueueResponse",
-}) as any as S.Schema<DeleteQueueResponse>;
+export const DeleteQueueResponse = AddPermissionResponse as any as S.Schema<DeleteQueueResponse>;
 export type AttributeNameList = QueueAttributeName[];
 export const AttributeNameList = /*@__PURE__*/ S.Array(QueueAttributeName);
 export interface GetQueueAttributesRequest {
@@ -657,9 +650,7 @@ export const GetQueueUrlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetQueueUrlResult {
   QueueUrl?: string;
 }
-export const GetQueueUrlResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ QueueUrl: S.optional(S.String) }),
-).annotate({ identifier: "GetQueueUrlResult" }) as any as S.Schema<GetQueueUrlResult>;
+export const GetQueueUrlResult = CreateQueueResult as any as S.Schema<GetQueueUrlResult>;
 export type Token = string;
 export type BoxedInteger = number;
 export interface ListDeadLetterSourceQueuesRequest {
@@ -677,7 +668,7 @@ export const ListDeadLetterSourceQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeadLetterSourceQueuesRequest",
 }) as any as S.Schema<ListDeadLetterSourceQueuesRequest>;
 export type QueueUrlList = string[];
-export const QueueUrlList = /*@__PURE__*/ S.Array(S.String);
+export const QueueUrlList = AWSAccountIdList as any as S.Schema<QueueUrlList>;
 export interface ListDeadLetterSourceQueuesResult {
   queueUrls: string[];
   NextToken?: string;
@@ -789,9 +780,7 @@ export const PurgeQueueRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PurgeQueueRequest" }) as any as S.Schema<PurgeQueueRequest>;
 export interface PurgeQueueResponse {}
-export const PurgeQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PurgeQueueResponse",
-}) as any as S.Schema<PurgeQueueResponse>;
+export const PurgeQueueResponse = AddPermissionResponse as any as S.Schema<PurgeQueueResponse>;
 export type MessageSystemAttributeName =
   | "All"
   | "SenderId"
@@ -810,7 +799,8 @@ export type MessageSystemAttributeList = MessageSystemAttributeName[];
 export const MessageSystemAttributeList = /*@__PURE__*/ S.Array(MessageSystemAttributeName);
 export type MessageAttributeName = string;
 export type MessageAttributeNameList = string[];
-export const MessageAttributeNameList = /*@__PURE__*/ S.Array(S.String);
+export const MessageAttributeNameList =
+  AWSAccountIdList as any as S.Schema<MessageAttributeNameList>;
 export interface ReceiveMessageRequest {
   QueueUrl: string;
   AttributeNames?: QueueAttributeName[];
@@ -923,9 +913,8 @@ export const RemovePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemovePermissionRequest" }) as any as S.Schema<RemovePermissionRequest>;
 export interface RemovePermissionResponse {}
-export const RemovePermissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemovePermissionResponse",
-}) as any as S.Schema<RemovePermissionResponse>;
+export const RemovePermissionResponse =
+  AddPermissionResponse as any as S.Schema<RemovePermissionResponse>;
 export type MessageSystemAttributeNameForSends = "AWSTraceHeader" | (string & {});
 export const MessageSystemAttributeNameForSends = S.String;
 
@@ -1092,9 +1081,8 @@ export const SetQueueAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetQueueAttributesRequest",
 }) as any as S.Schema<SetQueueAttributesRequest>;
 export interface SetQueueAttributesResponse {}
-export const SetQueueAttributesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetQueueAttributesResponse",
-}) as any as S.Schema<SetQueueAttributesResponse>;
+export const SetQueueAttributesResponse =
+  AddPermissionResponse as any as S.Schema<SetQueueAttributesResponse>;
 export interface StartMessageMoveTaskRequest {
   SourceArn: string;
   DestinationArn?: string;
@@ -1127,11 +1115,9 @@ export const TagQueueRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagQueueRequest" }) as any as S.Schema<TagQueueRequest>;
 export interface TagQueueResponse {}
-export const TagQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagQueueResponse",
-}) as any as S.Schema<TagQueueResponse>;
+export const TagQueueResponse = AddPermissionResponse as any as S.Schema<TagQueueResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AWSAccountIdList as any as S.Schema<TagKeyList>;
 export interface UntagQueueRequest {
   QueueUrl: string;
   TagKeys: string[];
@@ -1143,9 +1129,7 @@ export const UntagQueueRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagQueueRequest" }) as any as S.Schema<UntagQueueRequest>;
 export interface UntagQueueResponse {}
-export const UntagQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagQueueResponse",
-}) as any as S.Schema<UntagQueueResponse>;
+export const UntagQueueResponse = AddPermissionResponse as any as S.Schema<UntagQueueResponse>;
 export type ExceptionMessage = string;
 export type AddPermissionError =
   | InvalidAddress

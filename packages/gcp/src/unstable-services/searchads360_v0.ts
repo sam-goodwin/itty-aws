@@ -1778,13 +1778,8 @@ export interface GoogleAdsSearchads360V0Common__TextAsset {
   /** Text content of the text asset. */
   text?: string;
 }
-export const GoogleAdsSearchads360V0Common__TextAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Common__TextAsset",
-}) as any as S.Schema<GoogleAdsSearchads360V0Common__TextAsset>;
+export const GoogleAdsSearchads360V0Common__TextAsset =
+  GoogleAdsSearchads360V0Common__AdTextAsset as any as S.Schema<GoogleAdsSearchads360V0Common__TextAsset>;
 
 /** Business Profile location data synced from the linked Business Profile account. */
 export interface GoogleAdsSearchads360V0Common__BusinessProfileLocation {
@@ -2238,13 +2233,8 @@ export interface GoogleAdsSearchads360V0Resources__LocationView {
   /** Output only. The resource name of the location view. Location view resource names have the form: `customers/{customer_id}/locationViews/{campaign_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__LocationView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__LocationView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__LocationView>;
+export const GoogleAdsSearchads360V0Resources__LocationView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__LocationView>;
 
 export type GoogleAdsSearchads360V0Resources__CustomerManagerLinkStatusEnum =
   | "UNSPECIFIED"
@@ -3659,13 +3649,8 @@ export interface GoogleAdsSearchads360V0Resources__GenderView {
   /** Output only. The resource name of the gender view. Gender view resource names have the form: `customers/{customer_id}/genderViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__GenderView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__GenderView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__GenderView>;
+export const GoogleAdsSearchads360V0Resources__GenderView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__GenderView>;
 
 /** A language. */
 export interface GoogleAdsSearchads360V0Resources__LanguageConstant {
@@ -4174,13 +4159,8 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAudienceView {
   /** Output only. The resource name of the ad group audience view. Ad group audience view resource names have the form: `customers/{customer_id}/adGroupAudienceViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupAudienceView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__AdGroupAudienceView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__AdGroupAudienceView>;
+export const GoogleAdsSearchads360V0Resources__AdGroupAudienceView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__AdGroupAudienceView>;
 
 /** A relationship between an ad group ad and a label. */
 export interface GoogleAdsSearchads360V0Resources__AdGroupAdLabel {
@@ -4628,26 +4608,16 @@ export interface GoogleAdsSearchads360V0Resources__ProductGroupView {
   /** Output only. The resource name of the product group view. Product group view resource names have the form: `customers/{customer_id}/productGroupViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__ProductGroupView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__ProductGroupView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__ProductGroupView>;
+export const GoogleAdsSearchads360V0Resources__ProductGroupView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__ProductGroupView>;
 
 /** A campaign audience view. Includes performance data from interests and remarketing lists for Display Network and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated by campaign and audience criterion. This view only includes audiences attached at the campaign level. */
 export interface GoogleAdsSearchads360V0Resources__CampaignAudienceView {
   /** Output only. The resource name of the campaign audience view. Campaign audience view resource names have the form: `customers/{customer_id}/campaignAudienceViews/{campaign_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignAudienceView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__CampaignAudienceView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignAudienceView>;
+export const GoogleAdsSearchads360V0Resources__CampaignAudienceView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignAudienceView>;
 
 /** Settings related to a Floodlight conversion action. */
 export interface GoogleAdsSearchads360V0Resources_ConversionAction_FloodlightSettings {
@@ -4939,13 +4909,8 @@ export interface GoogleAdsSearchads360V0Resources__AgeRangeView {
   /** Output only. The resource name of the age range view. Age range view resource names have the form: `customers/{customer_id}/ageRangeViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AgeRangeView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__AgeRangeView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__AgeRangeView>;
+export const GoogleAdsSearchads360V0Resources__AgeRangeView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__AgeRangeView>;
 
 /** An audience criterion. */
 export interface GoogleAdsSearchads360V0Common__AudienceInfo {
@@ -5661,13 +5626,8 @@ export interface GoogleAdsSearchads360V0Resources__CartDataSalesView {
   /** Output only. The resource name of the Cart data sales view. Cart data sales view resource names have the form: `customers/{customer_id}/cartDataSalesView` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CartDataSalesView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__CartDataSalesView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__CartDataSalesView>;
+export const GoogleAdsSearchads360V0Resources__CartDataSalesView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__CartDataSalesView>;
 
 /** A dynamic search ads search term view. */
 export interface GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView {
@@ -5799,13 +5759,8 @@ export interface GoogleAdsSearchads360V0Resources__KeywordView {
   /** Output only. The resource name of the keyword view. Keyword view resource names have the form: `customers/{customer_id}/keywordViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__KeywordView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAdsSearchads360V0Resources__KeywordView",
-}) as any as S.Schema<GoogleAdsSearchads360V0Resources__KeywordView>;
+export const GoogleAdsSearchads360V0Resources__KeywordView =
+  GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__KeywordView>;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum =
   | "UNSPECIFIED"
@@ -5920,13 +5875,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   value?: string;
 }
 export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId>;
+  GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand as any as S.Schema<GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId>;
 
 export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategoryLevelEnum =
   | "UNSPECIFIED"
@@ -6333,21 +6282,12 @@ export interface GoogleAdsSearchads360V0Services__RawEventConversionDimensionHea
   name?: string;
 }
 export const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
+  GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
 
 export type GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList =
   Array<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
 export const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList>;
+  GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList>;
 
 /** Message for raw event conversion metric header. */
 export interface GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader {
@@ -6357,21 +6297,12 @@ export interface GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader
   name?: string;
 }
 export const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
+  GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
 
 export type GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList =
   Array<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
 export const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList>;
+  GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList>;
 
 /** Response message for SearchAds360Service.Search. */
 export interface GoogleAdsSearchads360V0Services__SearchSearchAds360Response {

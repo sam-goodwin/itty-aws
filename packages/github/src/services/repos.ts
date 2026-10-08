@@ -216,9 +216,8 @@ export const IntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type IntegrationEventsList = Array<string>;
-export const IntegrationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationEventsList>;
+export const IntegrationEventsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<IntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface Integration {
@@ -296,9 +295,8 @@ export const AddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddCollaboratorRequest" }) as any as S.Schema<AddCollaboratorRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
+export const MinimalRepositoryTopicsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -823,9 +821,8 @@ export const RepositoryInvitation = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the status checks */
 export type AddStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
-export const AddStatusCheckContextsRequestBodyCase0ContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddStatusCheckContextsRequestBodyCase0ContextsList>;
+export const AddStatusCheckContextsRequestBodyCase0ContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddStatusCheckContextsRequestBodyCase0ContextsList>;
 
 export interface AddStatusCheckContextsRequestBodyCase0 {
   /** The name of the status checks */
@@ -841,9 +838,8 @@ export const AddStatusCheckContextsRequestBodyCase0 = /*@__PURE__*/ S.suspend(()
 
 /** The name of the status checks */
 export type AddStatusCheckContextsRequestBodyCase1List = Array<string>;
-export const AddStatusCheckContextsRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddStatusCheckContextsRequestBodyCase1List>;
+export const AddStatusCheckContextsRequestBodyCase1List =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddStatusCheckContextsRequestBodyCase1List>;
 
 export type AddStatusCheckContextsRequestBody =
   | AddStatusCheckContextsRequestBodyCase0
@@ -878,9 +874,8 @@ export const AddStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddStatusCheckContextsRequest>;
 
 export type AddStatusCheckContextsResponseBodyList = Array<string>;
-export const AddStatusCheckContextsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddStatusCheckContextsResponseBodyList>;
+export const AddStatusCheckContextsResponseBodyList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddStatusCheckContextsResponseBodyList>;
 
 export type AddStatusCheckContextsResponse = AddStatusCheckContextsResponseBodyList;
 export const AddStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -891,9 +886,8 @@ export const AddStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The slug values for teams */
 export type AddTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
-export const AddTeamAccessRestrictionsRequestBodyCase0TeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTeamAccessRestrictionsRequestBodyCase0TeamsList>;
+export const AddTeamAccessRestrictionsRequestBodyCase0TeamsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddTeamAccessRestrictionsRequestBodyCase0TeamsList>;
 
 export interface AddTeamAccessRestrictionsRequestBodyCase0 {
   /** The slug values for teams */
@@ -909,9 +903,8 @@ export const AddTeamAccessRestrictionsRequestBodyCase0 = /*@__PURE__*/ S.suspend
 
 /** The slug values for teams */
 export type AddTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
-export const AddTeamAccessRestrictionsRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddTeamAccessRestrictionsRequestBodyCase1List>;
+export const AddTeamAccessRestrictionsRequestBodyCase1List =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddTeamAccessRestrictionsRequestBodyCase1List>;
 
 export type AddTeamAccessRestrictionsRequestBody =
   | AddTeamAccessRestrictionsRequestBodyCase0
@@ -1087,9 +1080,8 @@ export const AddTeamAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The username for users */
 export type AddUserAccessRestrictionsRequestUsersList = Array<string>;
-export const AddUserAccessRestrictionsRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddUserAccessRestrictionsRequestUsersList>;
+export const AddUserAccessRestrictionsRequestUsersList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<AddUserAccessRestrictionsRequestUsersList>;
 
 export interface AddUserAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1211,9 +1203,8 @@ export const CheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckCollaboratorRequest" }) as any as S.Schema<CheckCollaboratorRequest>;
 
 export interface CheckCollaboratorResponse {}
-export const CheckCollaboratorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CheckCollaboratorResponse",
-}) as any as S.Schema<CheckCollaboratorResponse>;
+export const CheckCollaboratorResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<CheckCollaboratorResponse>;
 
 export interface CheckImmutableReleasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1293,11 +1284,8 @@ export const CheckVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckVulnerabilityAlertsRequest>;
 
 export interface CheckVulnerabilityAlertsResponse {}
-export const CheckVulnerabilityAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CheckVulnerabilityAlertsResponse",
-}) as any as S.Schema<CheckVulnerabilityAlertsResponse>;
+export const CheckVulnerabilityAlertsResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<CheckVulnerabilityAlertsResponse>;
 
 export interface CodeownersErrorsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1605,16 +1593,12 @@ export const CommitComparison = /*@__PURE__*/ S.suspend(() =>
 export type CreateAttestationRequestBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateAttestationRequestBundleVerificationMaterialMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateAttestationRequestBundleVerificationMaterialMap>;
+export const CreateAttestationRequestBundleVerificationMaterialMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateAttestationRequestBundleVerificationMaterialMap>;
 
 export type CreateAttestationRequestBundleDsseEnvelopeMap = { [key: string]: unknown | undefined };
-export const CreateAttestationRequestBundleDsseEnvelopeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateAttestationRequestBundleDsseEnvelopeMap>;
+export const CreateAttestationRequestBundleDsseEnvelopeMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateAttestationRequestBundleDsseEnvelopeMap>;
 
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
 export interface CreateAttestationRequestBundle {
@@ -1967,15 +1951,12 @@ export const DeployKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts. */
 export type CreateDeploymentRequestRequiredContextsList = Array<string>;
-export const CreateDeploymentRequestRequiredContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDeploymentRequestRequiredContextsList>;
+export const CreateDeploymentRequestRequiredContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CreateDeploymentRequestRequiredContextsList>;
 
 export type CreateDeploymentRequestPayloadCase0Map = { [key: string]: unknown | undefined };
-export const CreateDeploymentRequestPayloadCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDeploymentRequestPayloadCase0Map>;
+export const CreateDeploymentRequestPayloadCase0Map =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateDeploymentRequestPayloadCase0Map>;
 
 export type CreateDeploymentRequestPayload = CreateDeploymentRequestPayloadCase0Map | string;
 export const CreateDeploymentRequestPayload =
@@ -2021,10 +2002,8 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDeploymentRequest" }) as any as S.Schema<CreateDeploymentRequest>;
 
 export type DeploymentPayloadCase0Map = { [key: string]: unknown | undefined };
-export const DeploymentPayloadCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeploymentPayloadCase0Map>;
+export const DeploymentPayloadCase0Map =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<DeploymentPayloadCase0Map>;
 
 export type DeploymentPayload = DeploymentPayloadCase0Map | string;
 export const DeploymentPayload = S.Unknown as any as S.Schema<DeploymentPayload>;
@@ -2038,9 +2017,8 @@ export const NullableIntegrationPermissions = IntegrationPermissions;
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableIntegrationEventsList>;
+export const NullableIntegrationEventsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<NullableIntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
@@ -2370,10 +2348,8 @@ export const DeploymentStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB. */
 export type CreateDispatchEventRequestClientPayloadMap = { [key: string]: unknown | undefined };
-export const CreateDispatchEventRequestClientPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDispatchEventRequestClientPayloadMap>;
+export const CreateDispatchEventRequestClientPayloadMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateDispatchEventRequestClientPayloadMap>;
 
 export interface CreateDispatchEventRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2397,9 +2373,8 @@ export const CreateDispatchEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDispatchEventRequest>;
 
 export interface CreateDispatchEventResponse {}
-export const CreateDispatchEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDispatchEventResponse",
-}) as any as S.Schema<CreateDispatchEventResponse>;
+export const CreateDispatchEventResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<CreateDispatchEventResponse>;
 
 /** Required when using `squash_merge_commit_message`. The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type CreateForAuthenticatedUserRequestSquashMergeCommitTitle =
@@ -2507,9 +2482,8 @@ export const CreateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateForAuthenticatedUserRequest>;
 
 export type FullRepositoryTopicsList = Array<string>;
-export const FullRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FullRepositoryTopicsList>;
+export const FullRepositoryTopicsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<FullRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type FullRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -2574,9 +2548,8 @@ export const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NullableRepositoryPermissions>;
 
 export type NullableRepositoryTopicsList = Array<string>;
-export const NullableRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableRepositoryTopicsList>;
+export const NullableRepositoryTopicsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<NullableRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -2867,9 +2840,8 @@ export type RepositoryPermissions = NullableRepositoryPermissions;
 export const RepositoryPermissions = NullableRepositoryPermissions;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -3148,10 +3120,8 @@ export const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type FullRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const FullRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FullRepositoryCustomPropertiesMap>;
+export const FullRepositoryCustomPropertiesMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<FullRepositoryCustomPropertiesMap>;
 
 /** Full Repository */
 export interface FullRepository {
@@ -3404,9 +3374,8 @@ export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateForkRequest" }) as any as S.Schema<CreateForkRequest>;
 
 export interface CreateForkResponse {}
-export const CreateForkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateForkResponse",
-}) as any as S.Schema<CreateForkResponse>;
+export const CreateForkResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<CreateForkResponse>;
 
 /** The visibility of the repository. */
 export type CreateInOrgRequestVisibility = "public" | "private";
@@ -3430,10 +3399,8 @@ export const CreateInOrgRequestMergeCommitMessage = S.String;
 
 /** The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type CreateInOrgRequestCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const CreateInOrgRequestCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateInOrgRequestCustomPropertiesMap>;
+export const CreateInOrgRequestCustomPropertiesMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<CreateInOrgRequestCustomPropertiesMap>;
 
 export interface CreateInOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -3569,15 +3536,13 @@ export const CreateOrgRulesetRequestBypassActorsList = /*@__PURE__*/ S.Array(
 
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type OrgRulesetConditionsCase0RefNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase0RefNameIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase0RefNameIncludeList>;
+export const OrgRulesetConditionsCase0RefNameIncludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RefNameIncludeList>;
 
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase0RefNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase0RefNameExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase0RefNameExcludeList>;
+export const OrgRulesetConditionsCase0RefNameExcludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RefNameExcludeList>;
 
 export interface OrgRulesetConditionsCase0RefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
@@ -3596,15 +3561,13 @@ export const OrgRulesetConditionsCase0RefName = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
 export type OrgRulesetConditionsCase0RepositoryNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase0RepositoryNameIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase0RepositoryNameIncludeList>;
+export const OrgRulesetConditionsCase0RepositoryNameIncludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RepositoryNameIncludeList>;
 
 /** Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase0RepositoryNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase0RepositoryNameExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase0RepositoryNameExcludeList>;
+export const OrgRulesetConditionsCase0RepositoryNameExcludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase0RepositoryNameExcludeList>;
 
 export interface OrgRulesetConditionsCase0RepositoryName {
   /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
@@ -3640,15 +3603,13 @@ export const OrgRulesetConditionsCase0 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type OrgRulesetConditionsCase1RefNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase1RefNameIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase1RefNameIncludeList>;
+export const OrgRulesetConditionsCase1RefNameIncludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase1RefNameIncludeList>;
 
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase1RefNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase1RefNameExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase1RefNameExcludeList>;
+export const OrgRulesetConditionsCase1RefNameExcludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase1RefNameExcludeList>;
 
 export interface OrgRulesetConditionsCase1RefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
@@ -3656,14 +3617,8 @@ export interface OrgRulesetConditionsCase1RefName {
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: OrgRulesetConditionsCase1RefNameExcludeList;
 }
-export const OrgRulesetConditionsCase1RefName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(OrgRulesetConditionsCase1RefNameIncludeList),
-    exclude: S.optional(OrgRulesetConditionsCase1RefNameExcludeList),
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase1RefName",
-}) as any as S.Schema<OrgRulesetConditionsCase1RefName>;
+export const OrgRulesetConditionsCase1RefName =
+  OrgRulesetConditionsCase0RefName as any as S.Schema<OrgRulesetConditionsCase1RefName>;
 
 /** The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
 export type OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList = Array<number>;
@@ -3699,15 +3654,13 @@ export const OrgRulesetConditionsCase1 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type OrgRulesetConditionsCase2RefNameIncludeList = Array<string>;
-export const OrgRulesetConditionsCase2RefNameIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase2RefNameIncludeList>;
+export const OrgRulesetConditionsCase2RefNameIncludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase2RefNameIncludeList>;
 
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type OrgRulesetConditionsCase2RefNameExcludeList = Array<string>;
-export const OrgRulesetConditionsCase2RefNameExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgRulesetConditionsCase2RefNameExcludeList>;
+export const OrgRulesetConditionsCase2RefNameExcludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<OrgRulesetConditionsCase2RefNameExcludeList>;
 
 export interface OrgRulesetConditionsCase2RefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
@@ -3715,14 +3668,8 @@ export interface OrgRulesetConditionsCase2RefName {
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: OrgRulesetConditionsCase2RefNameExcludeList;
 }
-export const OrgRulesetConditionsCase2RefName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(OrgRulesetConditionsCase2RefNameIncludeList),
-    exclude: S.optional(OrgRulesetConditionsCase2RefNameExcludeList),
-  }),
-).annotate({
-  identifier: "OrgRulesetConditionsCase2RefName",
-}) as any as S.Schema<OrgRulesetConditionsCase2RefName>;
+export const OrgRulesetConditionsCase2RefName =
+  OrgRulesetConditionsCase0RefName as any as S.Schema<OrgRulesetConditionsCase2RefName>;
 
 /** The values to match for the repository property */
 export type RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList = Array<string>;
@@ -3764,9 +3711,8 @@ export const OrgRulesetConditionsCase2RepositoryPropertyIncludeList = /*@__PURE_
 /** The repository properties and values to exclude. The condition will not pass if any of these properties match. */
 export type OrgRulesetConditionsCase2RepositoryPropertyExcludeList =
   Array<RepositoryRulesetConditionsRepositoryPropertySpec>;
-export const OrgRulesetConditionsCase2RepositoryPropertyExcludeList = /*@__PURE__*/ S.Array(
-  RepositoryRulesetConditionsRepositoryPropertySpec,
-) as any as S.Schema<OrgRulesetConditionsCase2RepositoryPropertyExcludeList>;
+export const OrgRulesetConditionsCase2RepositoryPropertyExcludeList =
+  OrgRulesetConditionsCase2RepositoryPropertyIncludeList as any as S.Schema<OrgRulesetConditionsCase2RepositoryPropertyExcludeList>;
 
 export interface OrgRulesetConditionsCase2RepositoryProperty {
   /** The repository properties and values to include. All of these properties must match for the condition to pass. */
@@ -3879,9 +3825,7 @@ export const RepositoryRuleRequiredDeploymentsType = S.String;
 export type RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList =
   Array<string>;
 export const RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleRequiredDeploymentsParametersRequiredDeploymentEnvironmentsList>;
 
 export interface RepositoryRuleRequiredDeploymentsParameters {
   /** The environments that must be successfully deployed to before branches can be merged. */
@@ -3992,9 +3936,7 @@ export const RepositoryRuleParamsDismissalRestriction = /*@__PURE__*/ S.suspend(
 /** Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax. */
 export type RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList = Array<string>;
 export const RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleParamsRequiredReviewerConfigurationFilePatternsList>;
 
 /** The type of the reviewer */
 export type RepositoryRuleParamsReviewerType = "Team";
@@ -4397,9 +4339,7 @@ export const RepositoryRuleFilePathRestrictionType = S.String;
 /** The file paths that are restricted from being pushed to the commit graph. */
 export type RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList = Array<string>;
 export const RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleFilePathRestrictionParametersRestrictedFilePathsList>;
 
 export interface RepositoryRuleFilePathRestrictionParameters {
   /** The file paths that are restricted from being pushed to the commit graph. */
@@ -4463,9 +4403,7 @@ export const RepositoryRuleFileExtensionRestrictionType = S.String;
 export type RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList =
   Array<string>;
 export const RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleFileExtensionRestrictionParametersRestrictedFileExtensionsList>;
 
 export interface RepositoryRuleFileExtensionRestrictionParameters {
   /** The file extensions that are restricted from being pushed to the commit graph. */
@@ -4755,9 +4693,8 @@ export const RepositoryRulesetSourceType = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type RepositoryRulesetBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const RepositoryRulesetBypassActorsList = /*@__PURE__*/ S.Array(
-  RepositoryRulesetBypassActor,
-) as any as S.Schema<RepositoryRulesetBypassActorsList>;
+export const RepositoryRulesetBypassActorsList =
+  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<RepositoryRulesetBypassActorsList>;
 
 /** The bypass type of the user making the API request for this ruleset. This field is only returned when querying the repository-level endpoint. */
 export type RepositoryRulesetCurrentUserCanBypass =
@@ -4783,13 +4720,8 @@ export interface RepositoryRulesetLinksHtml {
   /** The html URL of the ruleset */
   href?: string;
 }
-export const RepositoryRulesetLinksHtml = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RepositoryRulesetLinksHtml",
-}) as any as S.Schema<RepositoryRulesetLinksHtml>;
+export const RepositoryRulesetLinksHtml =
+  RepositoryRulesetLinksSelf as any as S.Schema<RepositoryRulesetLinksHtml>;
 
 export interface RepositoryRulesetLinks {
   self?: RepositoryRulesetLinksSelf;
@@ -4804,15 +4736,13 @@ export const RepositoryRulesetLinks = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
 export type RepositoryRulesetConditionsRefNameIncludeList = Array<string>;
-export const RepositoryRulesetConditionsRefNameIncludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryRulesetConditionsRefNameIncludeList>;
+export const RepositoryRulesetConditionsRefNameIncludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryRulesetConditionsRefNameIncludeList>;
 
 /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
 export type RepositoryRulesetConditionsRefNameExcludeList = Array<string>;
-export const RepositoryRulesetConditionsRefNameExcludeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryRulesetConditionsRefNameExcludeList>;
+export const RepositoryRulesetConditionsRefNameExcludeList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryRulesetConditionsRefNameExcludeList>;
 
 export interface RepositoryRulesetConditionsRefName {
   /** Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches. */
@@ -4820,14 +4750,8 @@ export interface RepositoryRulesetConditionsRefName {
   /** Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match. */
   exclude?: RepositoryRulesetConditionsRefNameExcludeList;
 }
-export const RepositoryRulesetConditionsRefName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include: S.optional(RepositoryRulesetConditionsRefNameIncludeList),
-    exclude: S.optional(RepositoryRulesetConditionsRefNameExcludeList),
-  }),
-).annotate({
-  identifier: "RepositoryRulesetConditionsRefName",
-}) as any as S.Schema<RepositoryRulesetConditionsRefName>;
+export const RepositoryRulesetConditionsRefName =
+  OrgRulesetConditionsCase0RefName as any as S.Schema<RepositoryRulesetConditionsRefName>;
 
 /** Parameters for a repository ruleset ref name condition */
 export interface RepositoryRulesetConditions {
@@ -5590,9 +5514,8 @@ export const PagesHttpsCertificateState = S.String;
 
 /** Array of the domain set and its alternate name (if it is configured) */
 export type PagesHttpsCertificateDomainsList = Array<string>;
-export const PagesHttpsCertificateDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PagesHttpsCertificateDomainsList>;
+export const PagesHttpsCertificateDomainsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<PagesHttpsCertificateDomainsList>;
 
 export interface PagesHttpsCertificate {
   state: PagesHttpsCertificateState;
@@ -5813,15 +5736,13 @@ export const CreateRepoRulesetRequestTarget = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type CreateRepoRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const CreateRepoRulesetRequestBypassActorsList = /*@__PURE__*/ S.Array(
-  RepositoryRulesetBypassActor,
-) as any as S.Schema<CreateRepoRulesetRequestBypassActorsList>;
+export const CreateRepoRulesetRequestBypassActorsList =
+  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<CreateRepoRulesetRequestBypassActorsList>;
 
 /** An array of rules within the ruleset. */
 export type CreateRepoRulesetRequestRulesList = Array<RepositoryRule>;
-export const CreateRepoRulesetRequestRulesList = /*@__PURE__*/ S.Array(
-  RepositoryRule,
-) as any as S.Schema<CreateRepoRulesetRequestRulesList>;
+export const CreateRepoRulesetRequestRulesList =
+  RepositoryRulesetRulesList as any as S.Schema<CreateRepoRulesetRequestRulesList>;
 
 export interface CreateRepoRulesetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -5907,9 +5828,8 @@ export const CreateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. */
 export type CreateWebhookRequestEventsList = Array<string>;
-export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestEventsList>;
+export const CreateWebhookRequestEventsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CreateWebhookRequestEventsList>;
 
 export interface CreateWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6008,9 +5928,8 @@ export const Hook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hook" }) as any as S.Schema<Hook>;
 
 export type CustomPropertyValueValueCase1List = Array<string>;
-export const CustomPropertyValueValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomPropertyValueValueCase1List>;
+export const CustomPropertyValueValueCase1List =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<CustomPropertyValueValueCase1List>;
 
 /** The value assigned to the property */
 export type CustomPropertyValueValue = string | CustomPropertyValueValueCase1List;
@@ -6107,11 +6026,8 @@ export const DeclineInvitationForAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeclineInvitationForAuthenticatedUserRequest>;
 
 export interface DeclineInvitationForAuthenticatedUserResponse {}
-export const DeclineInvitationForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeclineInvitationForAuthenticatedUserResponse",
-}) as any as S.Schema<DeclineInvitationForAuthenticatedUserResponse>;
+export const DeclineInvitationForAuthenticatedUserResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeclineInvitationForAuthenticatedUserResponse>;
 
 export interface DeleteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6127,9 +6043,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResponse",
-}) as any as S.Schema<DeleteResponse>;
+export const DeleteResponse = CancelPagesDeploymentResponse as any as S.Schema<DeleteResponse>;
 
 export interface DeleteAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6156,11 +6070,8 @@ export const DeleteAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessRestrictionsRequest>;
 
 export interface DeleteAccessRestrictionsResponse {}
-export const DeleteAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccessRestrictionsResponse",
-}) as any as S.Schema<DeleteAccessRestrictionsResponse>;
+export const DeleteAccessRestrictionsResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteAccessRestrictionsResponse>;
 
 export interface DeleteAdminBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6187,11 +6098,8 @@ export const DeleteAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAdminBranchProtectionRequest>;
 
 export interface DeleteAdminBranchProtectionResponse {}
-export const DeleteAdminBranchProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAdminBranchProtectionResponse",
-}) as any as S.Schema<DeleteAdminBranchProtectionResponse>;
+export const DeleteAdminBranchProtectionResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteAdminBranchProtectionResponse>;
 
 export interface DeleteAnEnvironmentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6218,9 +6126,8 @@ export const DeleteAnEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAnEnvironmentRequest>;
 
 export interface DeleteAnEnvironmentResponse {}
-export const DeleteAnEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAnEnvironmentResponse",
-}) as any as S.Schema<DeleteAnEnvironmentResponse>;
+export const DeleteAnEnvironmentResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteAnEnvironmentResponse>;
 
 export interface DeleteAutolinkRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6241,9 +6148,8 @@ export const DeleteAutolinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAutolinkRequest" }) as any as S.Schema<DeleteAutolinkRequest>;
 
 export interface DeleteAutolinkResponse {}
-export const DeleteAutolinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAutolinkResponse",
-}) as any as S.Schema<DeleteAutolinkResponse>;
+export const DeleteAutolinkResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteAutolinkResponse>;
 
 export interface DeleteBranchProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6270,9 +6176,8 @@ export const DeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBranchProtectionRequest>;
 
 export interface DeleteBranchProtectionResponse {}
-export const DeleteBranchProtectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBranchProtectionResponse",
-}) as any as S.Schema<DeleteBranchProtectionResponse>;
+export const DeleteBranchProtectionResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteBranchProtectionResponse>;
 
 export interface DeleteCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6295,9 +6200,8 @@ export const DeleteCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommitCommentRequest>;
 
 export interface DeleteCommitCommentResponse {}
-export const DeleteCommitCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCommitCommentResponse",
-}) as any as S.Schema<DeleteCommitCommentResponse>;
+export const DeleteCommitCommentResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteCommitCommentResponse>;
 
 export interface DeleteCommitSignatureProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6324,11 +6228,8 @@ export const DeleteCommitSignatureProtectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCommitSignatureProtectionRequest>;
 
 export interface DeleteCommitSignatureProtectionResponse {}
-export const DeleteCommitSignatureProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCommitSignatureProtectionResponse",
-}) as any as S.Schema<DeleteCommitSignatureProtectionResponse>;
+export const DeleteCommitSignatureProtectionResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteCommitSignatureProtectionResponse>;
 
 export interface DeleteDeployKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6347,9 +6248,8 @@ export const DeleteDeployKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeployKeyRequest" }) as any as S.Schema<DeleteDeployKeyRequest>;
 
 export interface DeleteDeployKeyResponse {}
-export const DeleteDeployKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeployKeyResponse",
-}) as any as S.Schema<DeleteDeployKeyResponse>;
+export const DeleteDeployKeyResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteDeployKeyResponse>;
 
 export interface DeleteDeploymentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6374,9 +6274,8 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeploymentRequest" }) as any as S.Schema<DeleteDeploymentRequest>;
 
 export interface DeleteDeploymentResponse {}
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeploymentResponse",
-}) as any as S.Schema<DeleteDeploymentResponse>;
+export const DeleteDeploymentResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteDeploymentResponse>;
 
 export interface DeleteDeploymentBranchPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6406,11 +6305,8 @@ export const DeleteDeploymentBranchPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDeploymentBranchPolicyRequest>;
 
 export interface DeleteDeploymentBranchPolicyResponse {}
-export const DeleteDeploymentBranchPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDeploymentBranchPolicyResponse",
-}) as any as S.Schema<DeleteDeploymentBranchPolicyResponse>;
+export const DeleteDeploymentBranchPolicyResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeleteDeploymentBranchPolicyResponse>;
 
 /** object containing information about the committer. */
 export interface DeleteFileRequestCommitter {
@@ -6486,9 +6382,8 @@ export const DeleteInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInvitationRequest" }) as any as S.Schema<DeleteInvitationRequest>;
 
 export interface DeleteInvitationResponse {}
-export const DeleteInvitationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInvitationResponse",
-}) as any as S.Schema<DeleteInvitationResponse>;
+export const DeleteInvitationResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteInvitationResponse>;
 
 export interface DeleteOrgRulesetRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6504,9 +6399,8 @@ export const DeleteOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgRulesetRequest" }) as any as S.Schema<DeleteOrgRulesetRequest>;
 
 export interface DeleteOrgRulesetResponse {}
-export const DeleteOrgRulesetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgRulesetResponse",
-}) as any as S.Schema<DeleteOrgRulesetResponse>;
+export const DeleteOrgRulesetResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteOrgRulesetResponse>;
 
 export interface DeletePagesSiteRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6522,9 +6416,8 @@ export const DeletePagesSiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePagesSiteRequest" }) as any as S.Schema<DeletePagesSiteRequest>;
 
 export interface DeletePagesSiteResponse {}
-export const DeletePagesSiteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePagesSiteResponse",
-}) as any as S.Schema<DeletePagesSiteResponse>;
+export const DeletePagesSiteResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeletePagesSiteResponse>;
 
 export interface DeletePullRequestReviewProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6551,11 +6444,8 @@ export const DeletePullRequestReviewProtectionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeletePullRequestReviewProtectionRequest>;
 
 export interface DeletePullRequestReviewProtectionResponse {}
-export const DeletePullRequestReviewProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePullRequestReviewProtectionResponse",
-}) as any as S.Schema<DeletePullRequestReviewProtectionResponse>;
+export const DeletePullRequestReviewProtectionResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DeletePullRequestReviewProtectionResponse>;
 
 export interface DeleteReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6576,9 +6466,8 @@ export const DeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReleaseRequest" }) as any as S.Schema<DeleteReleaseRequest>;
 
 export interface DeleteReleaseResponse {}
-export const DeleteReleaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReleaseResponse",
-}) as any as S.Schema<DeleteReleaseResponse>;
+export const DeleteReleaseResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteReleaseResponse>;
 
 export interface DeleteReleaseAssetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6605,9 +6494,8 @@ export const DeleteReleaseAssetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleaseAssetRequest>;
 
 export interface DeleteReleaseAssetResponse {}
-export const DeleteReleaseAssetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReleaseAssetResponse",
-}) as any as S.Schema<DeleteReleaseAssetResponse>;
+export const DeleteReleaseAssetResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteReleaseAssetResponse>;
 
 export interface DeleteRepoRulesetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6628,9 +6516,8 @@ export const DeleteRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoRulesetRequest" }) as any as S.Schema<DeleteRepoRulesetRequest>;
 
 export interface DeleteRepoRulesetResponse {}
-export const DeleteRepoRulesetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoRulesetResponse",
-}) as any as S.Schema<DeleteRepoRulesetResponse>;
+export const DeleteRepoRulesetResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteRepoRulesetResponse>;
 
 export interface DeleteWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6649,9 +6536,8 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DisableAutomatedSecurityFixesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6671,11 +6557,8 @@ export const DisableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DisableAutomatedSecurityFixesRequest>;
 
 export interface DisableAutomatedSecurityFixesResponse {}
-export const DisableAutomatedSecurityFixesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableAutomatedSecurityFixesResponse",
-}) as any as S.Schema<DisableAutomatedSecurityFixesResponse>;
+export const DisableAutomatedSecurityFixesResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableAutomatedSecurityFixesResponse>;
 
 export interface DisableDeploymentProtectionRuleRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6705,11 +6588,8 @@ export const DisableDeploymentProtectionRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DisableDeploymentProtectionRuleRequest>;
 
 export interface DisableDeploymentProtectionRuleResponse {}
-export const DisableDeploymentProtectionRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableDeploymentProtectionRuleResponse",
-}) as any as S.Schema<DisableDeploymentProtectionRuleResponse>;
+export const DisableDeploymentProtectionRuleResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableDeploymentProtectionRuleResponse>;
 
 export interface DisableImmutableReleasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6727,11 +6607,8 @@ export const DisableImmutableReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableImmutableReleasesRequest>;
 
 export interface DisableImmutableReleasesResponse {}
-export const DisableImmutableReleasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableImmutableReleasesResponse",
-}) as any as S.Schema<DisableImmutableReleasesResponse>;
+export const DisableImmutableReleasesResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableImmutableReleasesResponse>;
 
 export interface DisablePrivateVulnerabilityReportingRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6755,11 +6632,8 @@ export const DisablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DisablePrivateVulnerabilityReportingRequest>;
 
 export interface DisablePrivateVulnerabilityReportingResponse {}
-export const DisablePrivateVulnerabilityReportingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisablePrivateVulnerabilityReportingResponse",
-}) as any as S.Schema<DisablePrivateVulnerabilityReportingResponse>;
+export const DisablePrivateVulnerabilityReportingResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisablePrivateVulnerabilityReportingResponse>;
 
 export interface DisableVulnerabilityAlertsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6779,11 +6653,8 @@ export const DisableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableVulnerabilityAlertsRequest>;
 
 export interface DisableVulnerabilityAlertsResponse {}
-export const DisableVulnerabilityAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableVulnerabilityAlertsResponse",
-}) as any as S.Schema<DisableVulnerabilityAlertsResponse>;
+export const DisableVulnerabilityAlertsResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<DisableVulnerabilityAlertsResponse>;
 
 export interface DownloadTarballArchiveRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6803,9 +6674,8 @@ export const DownloadTarballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadTarballArchiveRequest>;
 
 export interface DownloadTarballArchiveResponse {}
-export const DownloadTarballArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadTarballArchiveResponse",
-}) as any as S.Schema<DownloadTarballArchiveResponse>;
+export const DownloadTarballArchiveResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DownloadTarballArchiveResponse>;
 
 export interface DownloadZipballArchiveRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6825,9 +6695,8 @@ export const DownloadZipballArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadZipballArchiveRequest>;
 
 export interface DownloadZipballArchiveResponse {}
-export const DownloadZipballArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadZipballArchiveResponse",
-}) as any as S.Schema<DownloadZipballArchiveResponse>;
+export const DownloadZipballArchiveResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<DownloadZipballArchiveResponse>;
 
 export interface EnableAutomatedSecurityFixesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6847,11 +6716,8 @@ export const EnableAutomatedSecurityFixesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableAutomatedSecurityFixesRequest>;
 
 export interface EnableAutomatedSecurityFixesResponse {}
-export const EnableAutomatedSecurityFixesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableAutomatedSecurityFixesResponse",
-}) as any as S.Schema<EnableAutomatedSecurityFixesResponse>;
+export const EnableAutomatedSecurityFixesResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnableAutomatedSecurityFixesResponse>;
 
 export interface EnableImmutableReleasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6895,11 +6761,8 @@ export const EnablePrivateVulnerabilityReportingRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<EnablePrivateVulnerabilityReportingRequest>;
 
 export interface EnablePrivateVulnerabilityReportingResponse {}
-export const EnablePrivateVulnerabilityReportingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnablePrivateVulnerabilityReportingResponse",
-}) as any as S.Schema<EnablePrivateVulnerabilityReportingResponse>;
+export const EnablePrivateVulnerabilityReportingResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnablePrivateVulnerabilityReportingResponse>;
 
 export interface EnableVulnerabilityAlertsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -6917,11 +6780,8 @@ export const EnableVulnerabilityAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableVulnerabilityAlertsRequest>;
 
 export interface EnableVulnerabilityAlertsResponse {}
-export const EnableVulnerabilityAlertsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableVulnerabilityAlertsResponse",
-}) as any as S.Schema<EnableVulnerabilityAlertsResponse>;
+export const EnableVulnerabilityAlertsResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<EnableVulnerabilityAlertsResponse>;
 
 export interface GenerateReleaseNotesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -7056,9 +6916,8 @@ export const BranchRestrictionPolicyUsersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BranchRestrictionPolicyUsersList>;
 
 export type BranchRestrictionPolicyTeamsList = Array<Team>;
-export const BranchRestrictionPolicyTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<BranchRestrictionPolicyTeamsList>;
+export const BranchRestrictionPolicyTeamsList =
+  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<BranchRestrictionPolicyTeamsList>;
 
 export interface BranchRestrictionPolicyAppsItemOwner {
   login?: string;
@@ -7135,9 +6994,8 @@ export const BranchRestrictionPolicyAppsItemPermissions = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<BranchRestrictionPolicyAppsItemPermissions>;
 
 export type BranchRestrictionPolicyAppsItemEventsList = Array<string>;
-export const BranchRestrictionPolicyAppsItemEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BranchRestrictionPolicyAppsItemEventsList>;
+export const BranchRestrictionPolicyAppsItemEventsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<BranchRestrictionPolicyAppsItemEventsList>;
 
 export interface BranchRestrictionPolicyAppsItem {
   id?: number;
@@ -7337,16 +7195,12 @@ export const GetAllStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAllStatusCheckContextsRequest>;
 
 export type GetAllStatusCheckContextsResponseBodyList = Array<string>;
-export const GetAllStatusCheckContextsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAllStatusCheckContextsResponseBodyList>;
+export const GetAllStatusCheckContextsResponseBodyList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<GetAllStatusCheckContextsResponseBodyList>;
 
 export type GetAllStatusCheckContextsResponse = GetAllStatusCheckContextsResponseBodyList;
-export const GetAllStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetAllStatusCheckContextsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetAllStatusCheckContextsResponse",
-}) as any as S.Schema<GetAllStatusCheckContextsResponse>;
+export const GetAllStatusCheckContextsResponse =
+  AddStatusCheckContextsResponse as any as S.Schema<GetAllStatusCheckContextsResponse>;
 
 export interface GetAllTopicsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -7368,7 +7222,7 @@ export const GetAllTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAllTopicsRequest" }) as any as S.Schema<GetAllTopicsRequest>;
 
 export type TopicNamesList = Array<string>;
-export const TopicNamesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TopicNamesList>;
+export const TopicNamesList = HookEventsList as any as S.Schema<TopicNamesList>;
 
 /** A topic aggregates entities that are related to a subject. */
 export interface Topic {
@@ -7405,17 +7259,13 @@ export const GetAppsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetAppsWithAccessToProtectedBranchRequest>;
 
 export type GetAppsWithAccessToProtectedBranchResponseBodyList = Array<Integration | null>;
-export const GetAppsWithAccessToProtectedBranchResponseBodyList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(Integration),
-) as any as S.Schema<GetAppsWithAccessToProtectedBranchResponseBodyList>;
+export const GetAppsWithAccessToProtectedBranchResponseBodyList =
+  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<GetAppsWithAccessToProtectedBranchResponseBodyList>;
 
 export type GetAppsWithAccessToProtectedBranchResponse =
   GetAppsWithAccessToProtectedBranchResponseBodyList;
-export const GetAppsWithAccessToProtectedBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  GetAppsWithAccessToProtectedBranchResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetAppsWithAccessToProtectedBranchResponse",
-}) as any as S.Schema<GetAppsWithAccessToProtectedBranchResponse>;
+export const GetAppsWithAccessToProtectedBranchResponse =
+  AddAppAccessRestrictionsResponse as any as S.Schema<GetAppsWithAccessToProtectedBranchResponse>;
 
 export interface GetAutolinkRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -7465,9 +7315,8 @@ export const BranchWithProtectionLinks = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BranchWithProtectionLinks>;
 
 export type ProtectedBranchRequiredStatusCheckContextsList = Array<string>;
-export const ProtectedBranchRequiredStatusCheckContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProtectedBranchRequiredStatusCheckContextsList>;
+export const ProtectedBranchRequiredStatusCheckContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<ProtectedBranchRequiredStatusCheckContextsList>;
 
 export interface ProtectedBranchRequiredStatusCheckChecksItem {
   context: string;
@@ -7512,22 +7361,19 @@ export const ProtectedBranchRequiredStatusCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of users with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList = Array<SimpleUser>;
-export const ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList>;
+export const ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList =
+  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsUsersList>;
 
 /** The list of teams with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList = Array<Team>;
-export const ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList>;
+export const ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList =
+  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsTeamsList>;
 
 /** The list of apps with review dismissal access. */
 export type ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList =
   Array<Integration | null>;
-export const ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(Integration),
-) as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList>;
+export const ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList =
+  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<ProtectedBranchPullRequestReviewDismissalRestrictionsAppsList>;
 
 export interface ProtectedBranchPullRequestReviewDismissalRestrictions {
   /** The list of users with review dismissal access. */
@@ -7651,14 +7497,8 @@ export interface BranchProtectionRequiredSignatures {
   url: string;
   enabled: boolean;
 }
-export const BranchProtectionRequiredSignatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "BranchProtectionRequiredSignatures",
-}) as any as S.Schema<BranchProtectionRequiredSignatures>;
+export const BranchProtectionRequiredSignatures =
+  ProtectedBranchAdminEnforced as any as S.Schema<BranchProtectionRequiredSignatures>;
 
 /** Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. */
 export type BranchProtectionLockBranch = BranchProtectionRequiredLinearHistory;
@@ -7964,22 +7804,14 @@ export const RepositoryRuleDetailedCase5Type = S.String;
 /** The environments that must be successfully deployed to before branches can be merged. */
 export type RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList = Array<string>;
 export const RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList>;
 
 export interface RepositoryRuleDetailedCase5Parameters {
   /** The environments that must be successfully deployed to before branches can be merged. */
   required_deployment_environments: RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList;
 }
-export const RepositoryRuleDetailedCase5Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    required_deployment_environments:
-      RepositoryRuleDetailedCase5ParametersRequiredDeploymentEnvironmentsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase5Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase5Parameters>;
+export const RepositoryRuleDetailedCase5Parameters =
+  RepositoryRuleRequiredDeploymentsParameters as any as S.Schema<RepositoryRuleDetailedCase5Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase5RulesetSourceType = "Repository" | "Organization";
@@ -8053,9 +7885,8 @@ export const RepositoryRuleDetailedCase7ParametersAllowedMergeMethodsList = /*@_
 /** > [!NOTE] > `required_reviewers` is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review. */
 export type RepositoryRuleDetailedCase7ParametersRequiredReviewersList =
   Array<RepositoryRuleParamsRequiredReviewerConfiguration>;
-export const RepositoryRuleDetailedCase7ParametersRequiredReviewersList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsRequiredReviewerConfiguration,
-) as any as S.Schema<RepositoryRuleDetailedCase7ParametersRequiredReviewersList>;
+export const RepositoryRuleDetailedCase7ParametersRequiredReviewersList =
+  RepositoryRulePullRequestParametersRequiredReviewersList as any as S.Schema<RepositoryRuleDetailedCase7ParametersRequiredReviewersList>;
 
 export interface RepositoryRuleDetailedCase7Parameters {
   /** Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled. */
@@ -8492,9 +8323,8 @@ export const RepositoryRuleDetailedCase15Type = S.String;
 /** Workflows that must pass for this rule to pass. */
 export type RepositoryRuleDetailedCase15ParametersWorkflowsList =
   Array<RepositoryRuleParamsWorkflowFileReference>;
-export const RepositoryRuleDetailedCase15ParametersWorkflowsList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsWorkflowFileReference,
-) as any as S.Schema<RepositoryRuleDetailedCase15ParametersWorkflowsList>;
+export const RepositoryRuleDetailedCase15ParametersWorkflowsList =
+  RepositoryRuleWorkflowsParametersWorkflowsList as any as S.Schema<RepositoryRuleDetailedCase15ParametersWorkflowsList>;
 
 export interface RepositoryRuleDetailedCase15Parameters {
   /** Allow repositories and branches to be created if a check would otherwise prohibit it. */
@@ -8502,14 +8332,8 @@ export interface RepositoryRuleDetailedCase15Parameters {
   /** Workflows that must pass for this rule to pass. */
   workflows: RepositoryRuleDetailedCase15ParametersWorkflowsList;
 }
-export const RepositoryRuleDetailedCase15Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    do_not_enforce_on_create: S.optional(S.Boolean),
-    workflows: RepositoryRuleDetailedCase15ParametersWorkflowsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase15Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase15Parameters>;
+export const RepositoryRuleDetailedCase15Parameters =
+  RepositoryRuleWorkflowsParameters as any as S.Schema<RepositoryRuleDetailedCase15Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase15RulesetSourceType = "Repository" | "Organization";
@@ -8543,21 +8367,15 @@ export const RepositoryRuleDetailedCase16Type = S.String;
 /** Tools that must provide code scanning results for this rule to pass. */
 export type RepositoryRuleDetailedCase16ParametersCodeScanningToolsList =
   Array<RepositoryRuleParamsCodeScanningTool>;
-export const RepositoryRuleDetailedCase16ParametersCodeScanningToolsList = /*@__PURE__*/ S.Array(
-  RepositoryRuleParamsCodeScanningTool,
-) as any as S.Schema<RepositoryRuleDetailedCase16ParametersCodeScanningToolsList>;
+export const RepositoryRuleDetailedCase16ParametersCodeScanningToolsList =
+  RepositoryRuleCodeScanningParametersCodeScanningToolsList as any as S.Schema<RepositoryRuleDetailedCase16ParametersCodeScanningToolsList>;
 
 export interface RepositoryRuleDetailedCase16Parameters {
   /** Tools that must provide code scanning results for this rule to pass. */
   code_scanning_tools: RepositoryRuleDetailedCase16ParametersCodeScanningToolsList;
 }
-export const RepositoryRuleDetailedCase16Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code_scanning_tools: RepositoryRuleDetailedCase16ParametersCodeScanningToolsList,
-  }),
-).annotate({
-  identifier: "RepositoryRuleDetailedCase16Parameters",
-}) as any as S.Schema<RepositoryRuleDetailedCase16Parameters>;
+export const RepositoryRuleDetailedCase16Parameters =
+  RepositoryRuleCodeScanningParameters as any as S.Schema<RepositoryRuleDetailedCase16Parameters>;
 
 /** The type of source for the ruleset that includes this rule. */
 export type RepositoryRuleDetailedCase16RulesetSourceType = "Repository" | "Organization";
@@ -8649,9 +8467,8 @@ export const RepositoryRuleDetailedCase19Type = S.String;
 
 /** The file paths that are restricted from being pushed to the commit graph. */
 export type RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList = Array<string>;
-export const RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList>;
+export const RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RepositoryRuleDetailedCase19ParametersRestrictedFilePathsList>;
 
 export interface RepositoryRuleDetailedCase19Parameters {
   /** The file paths that are restricted from being pushed to the commit graph. */
@@ -8729,9 +8546,7 @@ export const RepositoryRuleDetailedCase21Type = S.String;
 /** The file extensions that are restricted from being pushed to the commit graph. */
 export type RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList = Array<string>;
 export const RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<RepositoryRuleDetailedCase21ParametersRestrictedFileExtensionsList>;
 
 export interface RepositoryRuleDetailedCase21Parameters {
   /** The file extensions that are restricted from being pushed to the commit graph. */
@@ -8908,9 +8723,8 @@ export const GetCodeFrequencyStatsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Code Frequency Stat */
 export type CodeFrequencyStat = Array<number>;
-export const CodeFrequencyStat = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CodeFrequencyStat>;
+export const CodeFrequencyStat =
+  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CodeFrequencyStat>;
 
 export type GetCodeFrequencyStatsResponseBodyList = Array<CodeFrequencyStat>;
 export const GetCodeFrequencyStatsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -9155,9 +8969,8 @@ export const GetCommitActivityStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCommitActivityStatsRequest>;
 
 export type CommitActivityDaysList = Array<number>;
-export const CommitActivityDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CommitActivityDaysList>;
+export const CommitActivityDaysList =
+  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CommitActivityDaysList>;
 
 /** Commit Activity */
 export interface CommitActivity {
@@ -10234,14 +10047,12 @@ export const GetParticipationStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetParticipationStatsRequest>;
 
 export type ParticipationStatsAllList = Array<number>;
-export const ParticipationStatsAllList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ParticipationStatsAllList>;
+export const ParticipationStatsAllList =
+  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<ParticipationStatsAllList>;
 
 export type ParticipationStatsOwnerList = Array<number>;
-export const ParticipationStatsOwnerList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ParticipationStatsOwnerList>;
+export const ParticipationStatsOwnerList =
+  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<ParticipationStatsOwnerList>;
 
 export interface ParticipationStats {
   all: ParticipationStatsAllList;
@@ -10292,16 +10103,12 @@ export const GetPunchCardStatsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPunchCardStatsRequest" }) as any as S.Schema<GetPunchCardStatsRequest>;
 
 export type GetPunchCardStatsResponseBodyList = Array<CodeFrequencyStat>;
-export const GetPunchCardStatsResponseBodyList = /*@__PURE__*/ S.Array(
-  CodeFrequencyStat,
-) as any as S.Schema<GetPunchCardStatsResponseBodyList>;
+export const GetPunchCardStatsResponseBodyList =
+  GetCodeFrequencyStatsResponseBodyList as any as S.Schema<GetPunchCardStatsResponseBodyList>;
 
 export type GetPunchCardStatsResponse = GetPunchCardStatsResponseBodyList;
-export const GetPunchCardStatsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetPunchCardStatsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetPunchCardStatsResponse",
-}) as any as S.Schema<GetPunchCardStatsResponse>;
+export const GetPunchCardStatsResponse =
+  GetCodeFrequencyStatsResponse as any as S.Schema<GetPunchCardStatsResponse>;
 
 export interface GetReadmeRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10505,14 +10312,12 @@ export const GetRepoRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRepoRulesetsRequest" }) as any as S.Schema<GetRepoRulesetsRequest>;
 
 export type GetRepoRulesetsResponseBodyList = Array<RepositoryRuleset>;
-export const GetRepoRulesetsResponseBodyList = /*@__PURE__*/ S.Array(
-  RepositoryRuleset,
-) as any as S.Schema<GetRepoRulesetsResponseBodyList>;
+export const GetRepoRulesetsResponseBodyList =
+  GetOrgRulesetsResponseBodyList as any as S.Schema<GetRepoRulesetsResponseBodyList>;
 
 export type GetRepoRulesetsResponse = GetRepoRulesetsResponseBodyList;
-export const GetRepoRulesetsResponse = /*@__PURE__*/ S.suspend(() =>
-  GetRepoRulesetsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetRepoRulesetsResponse" }) as any as S.Schema<GetRepoRulesetsResponse>;
+export const GetRepoRulesetsResponse =
+  GetOrgRulesetsResponse as any as S.Schema<GetRepoRulesetsResponse>;
 
 export interface GetRepoRulesetVersionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10662,17 +10467,15 @@ export const GetStatusChecksProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetStatusChecksProtectionRequest>;
 
 export type StatusCheckPolicyContextsList = Array<string>;
-export const StatusCheckPolicyContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StatusCheckPolicyContextsList>;
+export const StatusCheckPolicyContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<StatusCheckPolicyContextsList>;
 
 export type StatusCheckPolicyChecksItem = ProtectedBranchRequiredStatusCheckChecksItem;
 export const StatusCheckPolicyChecksItem = ProtectedBranchRequiredStatusCheckChecksItem;
 
 export type StatusCheckPolicyChecksList = Array<ProtectedBranchRequiredStatusCheckChecksItem>;
-export const StatusCheckPolicyChecksList = /*@__PURE__*/ S.Array(
-  ProtectedBranchRequiredStatusCheckChecksItem,
-) as any as S.Schema<StatusCheckPolicyChecksList>;
+export const StatusCheckPolicyChecksList =
+  ProtectedBranchRequiredStatusCheckChecksList as any as S.Schema<StatusCheckPolicyChecksList>;
 
 /** Status Check Policy */
 export interface StatusCheckPolicy {
@@ -10717,17 +10520,13 @@ export const GetTeamsWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetTeamsWithAccessToProtectedBranchRequest>;
 
 export type GetTeamsWithAccessToProtectedBranchResponseBodyList = Array<Team>;
-export const GetTeamsWithAccessToProtectedBranchResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponseBodyList>;
+export const GetTeamsWithAccessToProtectedBranchResponseBodyList =
+  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponseBodyList>;
 
 export type GetTeamsWithAccessToProtectedBranchResponse =
   GetTeamsWithAccessToProtectedBranchResponseBodyList;
-export const GetTeamsWithAccessToProtectedBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  GetTeamsWithAccessToProtectedBranchResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetTeamsWithAccessToProtectedBranchResponse",
-}) as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponse>;
+export const GetTeamsWithAccessToProtectedBranchResponse =
+  AddTeamAccessRestrictionsResponse as any as S.Schema<GetTeamsWithAccessToProtectedBranchResponse>;
 
 export interface GetTopPathsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -10832,17 +10631,13 @@ export const GetUsersWithAccessToProtectedBranchRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetUsersWithAccessToProtectedBranchRequest>;
 
 export type GetUsersWithAccessToProtectedBranchResponseBodyList = Array<SimpleUser>;
-export const GetUsersWithAccessToProtectedBranchResponseBodyList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<GetUsersWithAccessToProtectedBranchResponseBodyList>;
+export const GetUsersWithAccessToProtectedBranchResponseBodyList =
+  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<GetUsersWithAccessToProtectedBranchResponseBodyList>;
 
 export type GetUsersWithAccessToProtectedBranchResponse =
   GetUsersWithAccessToProtectedBranchResponseBodyList;
-export const GetUsersWithAccessToProtectedBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  GetUsersWithAccessToProtectedBranchResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetUsersWithAccessToProtectedBranchResponse",
-}) as any as S.Schema<GetUsersWithAccessToProtectedBranchResponse>;
+export const GetUsersWithAccessToProtectedBranchResponse =
+  AddUserAccessRestrictionsResponse as any as S.Schema<GetUsersWithAccessToProtectedBranchResponse>;
 
 export type GetViewsRequestPer = "day" | "week";
 export const GetViewsRequestPer = S.String;
@@ -10864,9 +10659,7 @@ export const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetViewsRequest" }) as any as S.Schema<GetViewsRequest>;
 
 export type ViewTrafficViewsList = Array<Traffic>;
-export const ViewTrafficViewsList = /*@__PURE__*/ S.Array(
-  Traffic,
-) as any as S.Schema<ViewTrafficViewsList>;
+export const ViewTrafficViewsList = CloneTrafficClonesList as any as S.Schema<ViewTrafficViewsList>;
 
 /** View Traffic */
 export interface ViewTraffic {
@@ -10946,17 +10739,13 @@ export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryRequestHeadersMap>;
+export const HookDeliveryRequestHeadersMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestHeadersMap>;
 
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryRequestPayloadMap>;
+export const HookDeliveryRequestPayloadMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
 
 export interface HookDeliveryRequest {
   /** The request headers sent with the webhook delivery. */
@@ -10973,17 +10762,13 @@ export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryResponseHeadersMap>;
+export const HookDeliveryResponseHeadersMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponseHeadersMap>;
 
 /** The response payload received. */
 export type HookDeliveryResponsePayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponsePayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryResponsePayloadMap>;
+export const HookDeliveryResponsePayloadMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponsePayloadMap>;
 
 export interface HookDeliveryResponse {
   /** The response headers received when the delivery was made. */
@@ -10991,12 +10776,7 @@ export interface HookDeliveryResponse {
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-export const HookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.NullOr(HookDeliveryResponseHeadersMap),
-    payload: S.NullOr(HookDeliveryResponsePayloadMap),
-  }),
-).annotate({ identifier: "HookDeliveryResponse" }) as any as S.Schema<HookDeliveryResponse>;
+export const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
 
 /** Delivery made by a webhook. */
 export interface HookDelivery {
@@ -11196,10 +10976,8 @@ export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialM
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
+export const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
 
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
 export interface ListAttestationsResponseAttestationsItemBundle {
@@ -11501,16 +11279,12 @@ export const ListCommitCommentsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommitCommentsForRepoRequest>;
 
 export type ListCommitCommentsForRepoResponseBodyList = Array<CommitComment>;
-export const ListCommitCommentsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
-  CommitComment,
-) as any as S.Schema<ListCommitCommentsForRepoResponseBodyList>;
+export const ListCommitCommentsForRepoResponseBodyList =
+  ListCommentsForCommitResponseBodyList as any as S.Schema<ListCommitCommentsForRepoResponseBodyList>;
 
 export type ListCommitCommentsForRepoResponse = ListCommitCommentsForRepoResponseBodyList;
-export const ListCommitCommentsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
-  ListCommitCommentsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListCommitCommentsForRepoResponse",
-}) as any as S.Schema<ListCommitCommentsForRepoResponse>;
+export const ListCommitCommentsForRepoResponse =
+  ListCommentsForCommitResponse as any as S.Schema<ListCommitCommentsForRepoResponse>;
 
 export interface ListCommitsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -11550,9 +11324,8 @@ export const ListCommitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCommitsRequest" }) as any as S.Schema<ListCommitsRequest>;
 
 export type ListCommitsResponseBodyList = Array<Commit>;
-export const ListCommitsResponseBodyList = /*@__PURE__*/ S.Array(
-  Commit,
-) as any as S.Schema<ListCommitsResponseBodyList>;
+export const ListCommitsResponseBodyList =
+  CommitComparisonCommitsList as any as S.Schema<ListCommitsResponseBodyList>;
 
 export type ListCommitsResponse = ListCommitsResponseBodyList;
 export const ListCommitsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -12025,14 +11798,11 @@ export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForOrgRequest" }) as any as S.Schema<ListForOrgRequest>;
 
 export type ListForOrgResponseBodyList = Array<MinimalRepository>;
-export const ListForOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  MinimalRepository,
-) as any as S.Schema<ListForOrgResponseBodyList>;
+export const ListForOrgResponseBodyList =
+  ListForksResponseBodyList as any as S.Schema<ListForOrgResponseBodyList>;
 
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-export const ListForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForOrgResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListForOrgResponse" }) as any as S.Schema<ListForOrgResponse>;
+export const ListForOrgResponse = ListForksResponse as any as S.Schema<ListForOrgResponse>;
 
 export type ListForUserRequestType = "all" | "owner" | "member";
 export const ListForUserRequestType = S.String;
@@ -12069,14 +11839,11 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForUserRequest" }) as any as S.Schema<ListForUserRequest>;
 
 export type ListForUserResponseBodyList = Array<MinimalRepository>;
-export const ListForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  MinimalRepository,
-) as any as S.Schema<ListForUserResponseBodyList>;
+export const ListForUserResponseBodyList =
+  ListForksResponseBodyList as any as S.Schema<ListForUserResponseBodyList>;
 
 export type ListForUserResponse = ListForUserResponseBodyList;
-export const ListForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListForUserResponse" }) as any as S.Schema<ListForUserResponse>;
+export const ListForUserResponse = ListForksResponse as any as S.Schema<ListForUserResponse>;
 
 export interface ListInvitationsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -12123,9 +11890,8 @@ export const ListInvitationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListInvitationsForAuthenticatedUserRequest>;
 
 export type ListInvitationsForAuthenticatedUserResponseBodyList = Array<RepositoryInvitation>;
-export const ListInvitationsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
-  RepositoryInvitation,
-) as any as S.Schema<ListInvitationsForAuthenticatedUserResponseBodyList>;
+export const ListInvitationsForAuthenticatedUserResponseBodyList =
+  ListInvitationsResponseBodyList as any as S.Schema<ListInvitationsForAuthenticatedUserResponseBodyList>;
 
 export type ListInvitationsForAuthenticatedUserResponse =
   ListInvitationsForAuthenticatedUserResponseBodyList;
@@ -12264,14 +12030,11 @@ export const ListPublicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPublicRequest" }) as any as S.Schema<ListPublicRequest>;
 
 export type ListPublicResponseBodyList = Array<MinimalRepository>;
-export const ListPublicResponseBodyList = /*@__PURE__*/ S.Array(
-  MinimalRepository,
-) as any as S.Schema<ListPublicResponseBodyList>;
+export const ListPublicResponseBodyList =
+  ListForksResponseBodyList as any as S.Schema<ListPublicResponseBodyList>;
 
 export type ListPublicResponse = ListPublicResponseBodyList;
-export const ListPublicResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListPublicResponse" }) as any as S.Schema<ListPublicResponse>;
+export const ListPublicResponse = ListForksResponse as any as S.Schema<ListPublicResponse>;
 
 export interface ListPullRequestsAssociatedWithCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -12378,19 +12141,16 @@ export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NullableMilestone" }) as any as S.Schema<NullableMilestone>;
 
 export type PullRequestSimpleAssigneesList = Array<SimpleUser>;
-export const PullRequestSimpleAssigneesList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<PullRequestSimpleAssigneesList>;
+export const PullRequestSimpleAssigneesList =
+  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleAssigneesList>;
 
 export type PullRequestSimpleRequestedReviewersList = Array<SimpleUser>;
-export const PullRequestSimpleRequestedReviewersList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
+export const PullRequestSimpleRequestedReviewersList =
+  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
 
 export type PullRequestSimpleRequestedTeamsList = Array<Team>;
-export const PullRequestSimpleRequestedTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
+export const PullRequestSimpleRequestedTeamsList =
+  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
 
 export interface PullRequestSimpleHead {
   label: string;
@@ -12624,9 +12384,8 @@ export const ListReleaseAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReleaseAssetsRequest" }) as any as S.Schema<ListReleaseAssetsRequest>;
 
 export type ListReleaseAssetsResponseBodyList = Array<ReleaseAsset>;
-export const ListReleaseAssetsResponseBodyList = /*@__PURE__*/ S.Array(
-  ReleaseAsset,
-) as any as S.Schema<ListReleaseAssetsResponseBodyList>;
+export const ListReleaseAssetsResponseBodyList =
+  ReleaseAssetsList as any as S.Schema<ListReleaseAssetsResponseBodyList>;
 
 export type ListReleaseAssetsResponse = ListReleaseAssetsResponseBodyList;
 export const ListReleaseAssetsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -12734,9 +12493,8 @@ export const ListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamsRequest" }) as any as S.Schema<ListTeamsRequest>;
 
 export type ListTeamsResponseBodyList = Array<Team>;
-export const ListTeamsResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<ListTeamsResponseBodyList>;
+export const ListTeamsResponseBodyList =
+  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<ListTeamsResponseBodyList>;
 
 export type ListTeamsResponse = ListTeamsResponseBodyList;
 export const ListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -12934,9 +12692,8 @@ export const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PingWebhookRequest" }) as any as S.Schema<PingWebhookRequest>;
 
 export interface PingWebhookResponse {}
-export const PingWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PingWebhookResponse",
-}) as any as S.Schema<PingWebhookResponse>;
+export const PingWebhookResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<PingWebhookResponse>;
 
 export interface RedeliverWebhookDeliveryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -12965,17 +12722,13 @@ export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
 
 export interface RedeliverWebhookDeliveryResponse {}
-export const RedeliverWebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RedeliverWebhookDeliveryResponse",
-}) as any as S.Schema<RedeliverWebhookDeliveryResponse>;
+export const RedeliverWebhookDeliveryResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
 
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type RemoveAppAccessRestrictionsRequestAppsList = Array<string>;
-export const RemoveAppAccessRestrictionsRequestAppsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveAppAccessRestrictionsRequestAppsList>;
+export const RemoveAppAccessRestrictionsRequestAppsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveAppAccessRestrictionsRequestAppsList>;
 
 export interface RemoveAppAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13005,16 +12758,12 @@ export const RemoveAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveAppAccessRestrictionsRequest>;
 
 export type RemoveAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
-export const RemoveAppAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(Integration),
-) as any as S.Schema<RemoveAppAccessRestrictionsResponseBodyList>;
+export const RemoveAppAccessRestrictionsResponseBodyList =
+  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<RemoveAppAccessRestrictionsResponseBodyList>;
 
 export type RemoveAppAccessRestrictionsResponse = RemoveAppAccessRestrictionsResponseBodyList;
-export const RemoveAppAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  RemoveAppAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RemoveAppAccessRestrictionsResponse",
-}) as any as S.Schema<RemoveAppAccessRestrictionsResponse>;
+export const RemoveAppAccessRestrictionsResponse =
+  AddAppAccessRestrictionsResponse as any as S.Schema<RemoveAppAccessRestrictionsResponse>;
 
 export interface RemoveCollaboratorRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13037,33 +12786,25 @@ export const RemoveCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveCollaboratorRequest>;
 
 export interface RemoveCollaboratorResponse {}
-export const RemoveCollaboratorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveCollaboratorResponse",
-}) as any as S.Schema<RemoveCollaboratorResponse>;
+export const RemoveCollaboratorResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<RemoveCollaboratorResponse>;
 
 /** The name of the status checks */
 export type RemoveStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
-export const RemoveStatusCheckContextsRequestBodyCase0ContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase0ContextsList>;
+export const RemoveStatusCheckContextsRequestBodyCase0ContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase0ContextsList>;
 
 export interface RemoveStatusCheckContextsRequestBodyCase0 {
   /** The name of the status checks */
   contexts: RemoveStatusCheckContextsRequestBodyCase0ContextsList;
 }
-export const RemoveStatusCheckContextsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contexts: RemoveStatusCheckContextsRequestBodyCase0ContextsList,
-  }),
-).annotate({
-  identifier: "RemoveStatusCheckContextsRequestBodyCase0",
-}) as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase0>;
+export const RemoveStatusCheckContextsRequestBodyCase0 =
+  AddStatusCheckContextsRequestBodyCase0 as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase0>;
 
 /** The name of the status checks */
 export type RemoveStatusCheckContextsRequestBodyCase1List = Array<string>;
-export const RemoveStatusCheckContextsRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase1List>;
+export const RemoveStatusCheckContextsRequestBodyCase1List =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveStatusCheckContextsRequestBodyCase1List>;
 
 export type RemoveStatusCheckContextsRequestBody =
   | RemoveStatusCheckContextsRequestBodyCase0
@@ -13098,16 +12839,12 @@ export const RemoveStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveStatusCheckContextsRequest>;
 
 export type RemoveStatusCheckContextsResponseBodyList = Array<string>;
-export const RemoveStatusCheckContextsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveStatusCheckContextsResponseBodyList>;
+export const RemoveStatusCheckContextsResponseBodyList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveStatusCheckContextsResponseBodyList>;
 
 export type RemoveStatusCheckContextsResponse = RemoveStatusCheckContextsResponseBodyList;
-export const RemoveStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
-  RemoveStatusCheckContextsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RemoveStatusCheckContextsResponse",
-}) as any as S.Schema<RemoveStatusCheckContextsResponse>;
+export const RemoveStatusCheckContextsResponse =
+  AddStatusCheckContextsResponse as any as S.Schema<RemoveStatusCheckContextsResponse>;
 
 export interface RemoveStatusCheckProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13134,35 +12871,25 @@ export const RemoveStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveStatusCheckProtectionRequest>;
 
 export interface RemoveStatusCheckProtectionResponse {}
-export const RemoveStatusCheckProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveStatusCheckProtectionResponse",
-}) as any as S.Schema<RemoveStatusCheckProtectionResponse>;
+export const RemoveStatusCheckProtectionResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<RemoveStatusCheckProtectionResponse>;
 
 /** The slug values for teams */
 export type RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
-export const RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList>;
+export const RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList>;
 
 export interface RemoveTeamAccessRestrictionsRequestBodyCase0 {
   /** The slug values for teams */
   teams: RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList;
 }
-export const RemoveTeamAccessRestrictionsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    teams: RemoveTeamAccessRestrictionsRequestBodyCase0TeamsList,
-  }),
-).annotate({
-  identifier: "RemoveTeamAccessRestrictionsRequestBodyCase0",
-}) as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase0>;
+export const RemoveTeamAccessRestrictionsRequestBodyCase0 =
+  AddTeamAccessRestrictionsRequestBodyCase0 as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase0>;
 
 /** The slug values for teams */
 export type RemoveTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
-export const RemoveTeamAccessRestrictionsRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase1List>;
+export const RemoveTeamAccessRestrictionsRequestBodyCase1List =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveTeamAccessRestrictionsRequestBodyCase1List>;
 
 export type RemoveTeamAccessRestrictionsRequestBody =
   | RemoveTeamAccessRestrictionsRequestBodyCase0
@@ -13197,22 +12924,17 @@ export const RemoveTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveTeamAccessRestrictionsRequest>;
 
 export type RemoveTeamAccessRestrictionsResponseBodyList = Array<Team>;
-export const RemoveTeamAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<RemoveTeamAccessRestrictionsResponseBodyList>;
+export const RemoveTeamAccessRestrictionsResponseBodyList =
+  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<RemoveTeamAccessRestrictionsResponseBodyList>;
 
 export type RemoveTeamAccessRestrictionsResponse = RemoveTeamAccessRestrictionsResponseBodyList;
-export const RemoveTeamAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  RemoveTeamAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RemoveTeamAccessRestrictionsResponse",
-}) as any as S.Schema<RemoveTeamAccessRestrictionsResponse>;
+export const RemoveTeamAccessRestrictionsResponse =
+  AddTeamAccessRestrictionsResponse as any as S.Schema<RemoveTeamAccessRestrictionsResponse>;
 
 /** The username for users */
 export type RemoveUserAccessRestrictionsRequestUsersList = Array<string>;
-export const RemoveUserAccessRestrictionsRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveUserAccessRestrictionsRequestUsersList>;
+export const RemoveUserAccessRestrictionsRequestUsersList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<RemoveUserAccessRestrictionsRequestUsersList>;
 
 export interface RemoveUserAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13242,16 +12964,12 @@ export const RemoveUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveUserAccessRestrictionsRequest>;
 
 export type RemoveUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
-export const RemoveUserAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<RemoveUserAccessRestrictionsResponseBodyList>;
+export const RemoveUserAccessRestrictionsResponseBodyList =
+  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<RemoveUserAccessRestrictionsResponseBodyList>;
 
 export type RemoveUserAccessRestrictionsResponse = RemoveUserAccessRestrictionsResponseBodyList;
-export const RemoveUserAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  RemoveUserAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RemoveUserAccessRestrictionsResponse",
-}) as any as S.Schema<RemoveUserAccessRestrictionsResponse>;
+export const RemoveUserAccessRestrictionsResponse =
+  AddUserAccessRestrictionsResponse as any as S.Schema<RemoveUserAccessRestrictionsResponse>;
 
 export interface RenameBranchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13276,9 +12994,8 @@ export const RenameBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` will be saved as lowercase. */
 export type ReplaceAllTopicsRequestNamesList = Array<string>;
-export const ReplaceAllTopicsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceAllTopicsRequestNamesList>;
+export const ReplaceAllTopicsRequestNamesList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<ReplaceAllTopicsRequestNamesList>;
 
 export interface ReplaceAllTopicsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13347,9 +13064,8 @@ export const SetAdminBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items. */
 export type SetAppAccessRestrictionsRequestAppsList = Array<string>;
-export const SetAppAccessRestrictionsRequestAppsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetAppAccessRestrictionsRequestAppsList>;
+export const SetAppAccessRestrictionsRequestAppsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetAppAccessRestrictionsRequestAppsList>;
 
 export interface SetAppAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13379,40 +13095,29 @@ export const SetAppAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetAppAccessRestrictionsRequest>;
 
 export type SetAppAccessRestrictionsResponseBodyList = Array<Integration | null>;
-export const SetAppAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.NullOr(Integration),
-) as any as S.Schema<SetAppAccessRestrictionsResponseBodyList>;
+export const SetAppAccessRestrictionsResponseBodyList =
+  AddAppAccessRestrictionsResponseBodyList as any as S.Schema<SetAppAccessRestrictionsResponseBodyList>;
 
 export type SetAppAccessRestrictionsResponse = SetAppAccessRestrictionsResponseBodyList;
-export const SetAppAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  SetAppAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SetAppAccessRestrictionsResponse",
-}) as any as S.Schema<SetAppAccessRestrictionsResponse>;
+export const SetAppAccessRestrictionsResponse =
+  AddAppAccessRestrictionsResponse as any as S.Schema<SetAppAccessRestrictionsResponse>;
 
 /** The name of the status checks */
 export type SetStatusCheckContextsRequestBodyCase0ContextsList = Array<string>;
-export const SetStatusCheckContextsRequestBodyCase0ContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetStatusCheckContextsRequestBodyCase0ContextsList>;
+export const SetStatusCheckContextsRequestBodyCase0ContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetStatusCheckContextsRequestBodyCase0ContextsList>;
 
 export interface SetStatusCheckContextsRequestBodyCase0 {
   /** The name of the status checks */
   contexts: SetStatusCheckContextsRequestBodyCase0ContextsList;
 }
-export const SetStatusCheckContextsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contexts: SetStatusCheckContextsRequestBodyCase0ContextsList,
-  }),
-).annotate({
-  identifier: "SetStatusCheckContextsRequestBodyCase0",
-}) as any as S.Schema<SetStatusCheckContextsRequestBodyCase0>;
+export const SetStatusCheckContextsRequestBodyCase0 =
+  AddStatusCheckContextsRequestBodyCase0 as any as S.Schema<SetStatusCheckContextsRequestBodyCase0>;
 
 /** The name of the status checks */
 export type SetStatusCheckContextsRequestBodyCase1List = Array<string>;
-export const SetStatusCheckContextsRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetStatusCheckContextsRequestBodyCase1List>;
+export const SetStatusCheckContextsRequestBodyCase1List =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetStatusCheckContextsRequestBodyCase1List>;
 
 export type SetStatusCheckContextsRequestBody =
   | SetStatusCheckContextsRequestBodyCase0
@@ -13447,40 +13152,29 @@ export const SetStatusCheckContextsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetStatusCheckContextsRequest>;
 
 export type SetStatusCheckContextsResponseBodyList = Array<string>;
-export const SetStatusCheckContextsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetStatusCheckContextsResponseBodyList>;
+export const SetStatusCheckContextsResponseBodyList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetStatusCheckContextsResponseBodyList>;
 
 export type SetStatusCheckContextsResponse = SetStatusCheckContextsResponseBodyList;
-export const SetStatusCheckContextsResponse = /*@__PURE__*/ S.suspend(() =>
-  SetStatusCheckContextsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SetStatusCheckContextsResponse",
-}) as any as S.Schema<SetStatusCheckContextsResponse>;
+export const SetStatusCheckContextsResponse =
+  AddStatusCheckContextsResponse as any as S.Schema<SetStatusCheckContextsResponse>;
 
 /** The slug values for teams */
 export type SetTeamAccessRestrictionsRequestBodyCase0TeamsList = Array<string>;
-export const SetTeamAccessRestrictionsRequestBodyCase0TeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase0TeamsList>;
+export const SetTeamAccessRestrictionsRequestBodyCase0TeamsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase0TeamsList>;
 
 export interface SetTeamAccessRestrictionsRequestBodyCase0 {
   /** The slug values for teams */
   teams: SetTeamAccessRestrictionsRequestBodyCase0TeamsList;
 }
-export const SetTeamAccessRestrictionsRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    teams: SetTeamAccessRestrictionsRequestBodyCase0TeamsList,
-  }),
-).annotate({
-  identifier: "SetTeamAccessRestrictionsRequestBodyCase0",
-}) as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase0>;
+export const SetTeamAccessRestrictionsRequestBodyCase0 =
+  AddTeamAccessRestrictionsRequestBodyCase0 as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase0>;
 
 /** The slug values for teams */
 export type SetTeamAccessRestrictionsRequestBodyCase1List = Array<string>;
-export const SetTeamAccessRestrictionsRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase1List>;
+export const SetTeamAccessRestrictionsRequestBodyCase1List =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetTeamAccessRestrictionsRequestBodyCase1List>;
 
 export type SetTeamAccessRestrictionsRequestBody =
   | SetTeamAccessRestrictionsRequestBodyCase0
@@ -13515,22 +13209,17 @@ export const SetTeamAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetTeamAccessRestrictionsRequest>;
 
 export type SetTeamAccessRestrictionsResponseBodyList = Array<Team>;
-export const SetTeamAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<SetTeamAccessRestrictionsResponseBodyList>;
+export const SetTeamAccessRestrictionsResponseBodyList =
+  AddTeamAccessRestrictionsResponseBodyList as any as S.Schema<SetTeamAccessRestrictionsResponseBodyList>;
 
 export type SetTeamAccessRestrictionsResponse = SetTeamAccessRestrictionsResponseBodyList;
-export const SetTeamAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  SetTeamAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SetTeamAccessRestrictionsResponse",
-}) as any as S.Schema<SetTeamAccessRestrictionsResponse>;
+export const SetTeamAccessRestrictionsResponse =
+  AddTeamAccessRestrictionsResponse as any as S.Schema<SetTeamAccessRestrictionsResponse>;
 
 /** The username for users */
 export type SetUserAccessRestrictionsRequestUsersList = Array<string>;
-export const SetUserAccessRestrictionsRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetUserAccessRestrictionsRequestUsersList>;
+export const SetUserAccessRestrictionsRequestUsersList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<SetUserAccessRestrictionsRequestUsersList>;
 
 export interface SetUserAccessRestrictionsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13560,16 +13249,12 @@ export const SetUserAccessRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetUserAccessRestrictionsRequest>;
 
 export type SetUserAccessRestrictionsResponseBodyList = Array<SimpleUser>;
-export const SetUserAccessRestrictionsResponseBodyList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<SetUserAccessRestrictionsResponseBodyList>;
+export const SetUserAccessRestrictionsResponseBodyList =
+  AddUserAccessRestrictionsResponseBodyList as any as S.Schema<SetUserAccessRestrictionsResponseBodyList>;
 
 export type SetUserAccessRestrictionsResponse = SetUserAccessRestrictionsResponseBodyList;
-export const SetUserAccessRestrictionsResponse = /*@__PURE__*/ S.suspend(() =>
-  SetUserAccessRestrictionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SetUserAccessRestrictionsResponse",
-}) as any as S.Schema<SetUserAccessRestrictionsResponse>;
+export const SetUserAccessRestrictionsResponse =
+  AddUserAccessRestrictionsResponse as any as S.Schema<SetUserAccessRestrictionsResponse>;
 
 export interface TestPushWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13590,15 +13275,13 @@ export const TestPushWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestPushWebhookRequest" }) as any as S.Schema<TestPushWebhookRequest>;
 
 export interface TestPushWebhookResponse {}
-export const TestPushWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TestPushWebhookResponse",
-}) as any as S.Schema<TestPushWebhookResponse>;
+export const TestPushWebhookResponse =
+  CancelPagesDeploymentResponse as any as S.Schema<TestPushWebhookResponse>;
 
 /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
 export type TransferRequestTeamIdsList = Array<number>;
-export const TransferRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<TransferRequestTeamIdsList>;
+export const TransferRequestTeamIdsList =
+  OrgRulesetConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<TransferRequestTeamIdsList>;
 
 export interface TransferRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -13623,9 +13306,7 @@ export const TransferRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferRequest" }) as any as S.Schema<TransferRequest>;
 
 export interface TransferResponse {}
-export const TransferResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TransferResponse",
-}) as any as S.Schema<TransferResponse>;
+export const TransferResponse = CancelPagesDeploymentResponse as any as S.Schema<TransferResponse>;
 
 /** The visibility of the repository. */
 export type UpdateRequestVisibility = "public" | "private";
@@ -13909,9 +13590,8 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** **Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control. */
 export type UpdateBranchProtectionRequestRequiredStatusChecksContextsList = Array<string>;
-export const UpdateBranchProtectionRequestRequiredStatusChecksContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksContextsList>;
+export const UpdateBranchProtectionRequestRequiredStatusChecksContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRequiredStatusChecksContextsList>;
 
 export interface UpdateBranchProtectionRequestRequiredStatusChecksChecksItem {
   /** The name of the required check */
@@ -13959,25 +13639,19 @@ export const UpdateBranchProtectionRequestRequiredStatusChecks = /*@__PURE__*/ S
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   Array<string>;
 export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
 
 /** The list of team `slug`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
   Array<string>;
 export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
 
 /** The list of app `slug`s with dismissal access */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   Array<string>;
 export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
 
 /** Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories. */
 export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions {
@@ -14009,25 +13683,19 @@ export const UpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRes
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   Array<string>;
 export const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
 
 /** The list of team `slug`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   Array<string>;
 export const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
 
 /** The list of app `slug`s allowed to bypass pull request requirements. */
 export type UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   Array<string>;
 export const UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
 
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
 export interface UpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances {
@@ -14090,21 +13758,18 @@ export const UpdateBranchProtectionRequestRequiredPullRequestReviews = /*@__PURE
 
 /** The list of user `login`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsUsersList = Array<string>;
-export const UpdateBranchProtectionRequestRestrictionsUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBranchProtectionRequestRestrictionsUsersList>;
+export const UpdateBranchProtectionRequestRestrictionsUsersList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsUsersList>;
 
 /** The list of team `slug`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsTeamsList = Array<string>;
-export const UpdateBranchProtectionRequestRestrictionsTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBranchProtectionRequestRestrictionsTeamsList>;
+export const UpdateBranchProtectionRequestRestrictionsTeamsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsTeamsList>;
 
 /** The list of app `slug`s with push access */
 export type UpdateBranchProtectionRequestRestrictionsAppsList = Array<string>;
-export const UpdateBranchProtectionRequestRestrictionsAppsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBranchProtectionRequestRestrictionsAppsList>;
+export const UpdateBranchProtectionRequestRestrictionsAppsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateBranchProtectionRequestRestrictionsAppsList>;
 
 /** Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable. */
 export interface UpdateBranchProtectionRequestRestrictions {
@@ -14183,22 +13848,16 @@ export const UpdateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList =
   Array<SimpleUser>;
 export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList =
-  /*@__PURE__*/ S.Array(
-    SimpleUser,
-  ) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
+  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsUsersList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList = Array<Team>;
 export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList =
-  /*@__PURE__*/ S.Array(
-    Team,
-  ) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
+  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsTeamsList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList =
   Array<Integration | null>;
 export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(Integration),
-  ) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
+  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsAppsList>;
 
 export interface ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
   url: string;
@@ -14225,23 +13884,17 @@ export const ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions =
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
   Array<SimpleUser>;
 export const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList =
-  /*@__PURE__*/ S.Array(
-    SimpleUser,
-  ) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
+  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesUsersList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
   Array<Team>;
 export const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList =
-  /*@__PURE__*/ S.Array(
-    Team,
-  ) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
+  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesTeamsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesTeamsList>;
 
 export type ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
   Array<Integration | null>;
 export const ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList =
-  /*@__PURE__*/ S.Array(
-    /*@__PURE__*/ S.NullOr(Integration),
-  ) as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
+  ProtectedBranchPullRequestReviewBypassPullRequestAllowancesAppsList as any as S.Schema<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesAppsList>;
 
 export interface ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances {
   users: ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowancesUsersList;
@@ -14298,13 +13951,8 @@ export const ProtectedBranchEnforceAdmins = BranchProtectionRequiredSignatures;
 export interface ProtectedBranchRequiredLinearHistory {
   enabled: boolean;
 }
-export const ProtectedBranchRequiredLinearHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "ProtectedBranchRequiredLinearHistory",
-}) as any as S.Schema<ProtectedBranchRequiredLinearHistory>;
+export const ProtectedBranchRequiredLinearHistory =
+  CheckPrivateVulnerabilityReportingResponse as any as S.Schema<ProtectedBranchRequiredLinearHistory>;
 
 export type ProtectedBranchAllowForcePushes = ProtectedBranchRequiredLinearHistory;
 export const ProtectedBranchAllowForcePushes = ProtectedBranchRequiredLinearHistory;
@@ -14479,11 +14127,8 @@ export const UpdateInformationAboutPagesSiteRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateInformationAboutPagesSiteRequest>;
 
 export interface UpdateInformationAboutPagesSiteResponse {}
-export const UpdateInformationAboutPagesSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateInformationAboutPagesSiteResponse",
-}) as any as S.Schema<UpdateInformationAboutPagesSiteResponse>;
+export const UpdateInformationAboutPagesSiteResponse =
+  AcceptInvitationForAuthenticatedUserResponse as any as S.Schema<UpdateInformationAboutPagesSiteResponse>;
 
 /** The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`. */
 export type UpdateInvitationRequestPermissions = "read" | "write" | "maintain" | "triage" | "admin";
@@ -14520,15 +14165,13 @@ export const UpdateOrgRulesetRequestTarget = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type UpdateOrgRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const UpdateOrgRulesetRequestBypassActorsList = /*@__PURE__*/ S.Array(
-  RepositoryRulesetBypassActor,
-) as any as S.Schema<UpdateOrgRulesetRequestBypassActorsList>;
+export const UpdateOrgRulesetRequestBypassActorsList =
+  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<UpdateOrgRulesetRequestBypassActorsList>;
 
 /** An array of rules within the ruleset. */
 export type UpdateOrgRulesetRequestRulesList = Array<OrgRules>;
-export const UpdateOrgRulesetRequestRulesList = /*@__PURE__*/ S.Array(
-  OrgRules,
-) as any as S.Schema<UpdateOrgRulesetRequestRulesList>;
+export const UpdateOrgRulesetRequestRulesList =
+  CreateOrgRulesetRequestRulesList as any as S.Schema<UpdateOrgRulesetRequestRulesList>;
 
 export interface UpdateOrgRulesetRequest {
   /** The organization name. The name is not case sensitive. */
@@ -14562,23 +14205,17 @@ export const UpdateOrgRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 /** The list of user `login`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList = Array<string>;
 export const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsUsersList>;
 
 /** The list of team `slug`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList = Array<string>;
 export const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsTeamsList>;
 
 /** The list of app `slug`s with dismissal access */
 export type UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList = Array<string>;
 export const UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestDismissalRestrictionsAppsList>;
 
 /** Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories. */
 export interface UpdatePullRequestReviewProtectionRequestDismissalRestrictions {
@@ -14604,25 +14241,19 @@ export const UpdatePullRequestReviewProtectionRequestDismissalRestrictions =
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList =
   Array<string>;
 export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesUsersList>;
 
 /** The list of team `slug`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList =
   Array<string>;
 export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesTeamsList>;
 
 /** The list of app `slug`s allowed to bypass pull request requirements. */
 export type UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList =
   Array<string>;
 export const UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList>;
+  RepositoryRulesetConditionsRepositoryPropertySpecPropertyValuesList as any as S.Schema<UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowancesAppsList>;
 
 /** Allow specific users, teams, or apps to bypass pull request requirements. */
 export interface UpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances {
@@ -14774,15 +14405,13 @@ export const UpdateRepoRulesetRequestTarget = S.String;
 
 /** The actors that can bypass the rules in this ruleset */
 export type UpdateRepoRulesetRequestBypassActorsList = Array<RepositoryRulesetBypassActor>;
-export const UpdateRepoRulesetRequestBypassActorsList = /*@__PURE__*/ S.Array(
-  RepositoryRulesetBypassActor,
-) as any as S.Schema<UpdateRepoRulesetRequestBypassActorsList>;
+export const UpdateRepoRulesetRequestBypassActorsList =
+  CreateOrgRulesetRequestBypassActorsList as any as S.Schema<UpdateRepoRulesetRequestBypassActorsList>;
 
 /** An array of rules within the ruleset. */
 export type UpdateRepoRulesetRequestRulesList = Array<RepositoryRule>;
-export const UpdateRepoRulesetRequestRulesList = /*@__PURE__*/ S.Array(
-  RepositoryRule,
-) as any as S.Schema<UpdateRepoRulesetRequestRulesList>;
+export const UpdateRepoRulesetRequestRulesList =
+  RepositoryRulesetRulesList as any as S.Schema<UpdateRepoRulesetRequestRulesList>;
 
 export interface UpdateRepoRulesetRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -14818,9 +14447,8 @@ export const UpdateRepoRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** **Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control. */
 export type UpdateStatusCheckProtectionRequestContextsList = Array<string>;
-export const UpdateStatusCheckProtectionRequestContextsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateStatusCheckProtectionRequestContextsList>;
+export const UpdateStatusCheckProtectionRequestContextsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateStatusCheckProtectionRequestContextsList>;
 
 export type UpdateStatusCheckProtectionRequestChecksItem =
   UpdateBranchProtectionRequestRequiredStatusChecksChecksItem;
@@ -14830,9 +14458,8 @@ export const UpdateStatusCheckProtectionRequestChecksItem =
 /** The list of status checks to require in order to merge into this branch. */
 export type UpdateStatusCheckProtectionRequestChecksList =
   Array<UpdateBranchProtectionRequestRequiredStatusChecksChecksItem>;
-export const UpdateStatusCheckProtectionRequestChecksList = /*@__PURE__*/ S.Array(
-  UpdateBranchProtectionRequestRequiredStatusChecksChecksItem,
-) as any as S.Schema<UpdateStatusCheckProtectionRequestChecksList>;
+export const UpdateStatusCheckProtectionRequestChecksList =
+  UpdateBranchProtectionRequestRequiredStatusChecksChecksList as any as S.Schema<UpdateStatusCheckProtectionRequestChecksList>;
 
 export interface UpdateStatusCheckProtectionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -14869,21 +14496,18 @@ export const UpdateStatusCheckProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events. */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestEventsList>;
+export const UpdateWebhookRequestEventsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 /** Determines a list of events to be added to the list of events that the Hook triggers for. */
 export type UpdateWebhookRequestAddEventsList = Array<string>;
-export const UpdateWebhookRequestAddEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestAddEventsList>;
+export const UpdateWebhookRequestAddEventsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestAddEventsList>;
 
 /** Determines a list of events to be removed from the list of events that the Hook triggers for. */
 export type UpdateWebhookRequestRemoveEventsList = Array<string>;
-export const UpdateWebhookRequestRemoveEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestRemoveEventsList>;
+export const UpdateWebhookRequestRemoveEventsList =
+  AddAppAccessRestrictionsRequestAppsList as any as S.Schema<UpdateWebhookRequestRemoveEventsList>;
 
 export interface UpdateWebhookRequest {
   /** The account owner of the repository. The name is not case sensitive. */

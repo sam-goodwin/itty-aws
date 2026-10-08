@@ -541,9 +541,8 @@ export const DataMaskingQueryParamsList = /*@__PURE__*/ S.Array(
 
 /** Masking settings for headers */
 export type DataMaskingHeadersList = Array<DataMaskingEntity>;
-export const DataMaskingHeadersList = /*@__PURE__*/ S.Array(
-  DataMaskingEntity,
-) as any as S.Schema<DataMaskingHeadersList>;
+export const DataMaskingHeadersList =
+  DataMaskingQueryParamsList as any as S.Schema<DataMaskingHeadersList>;
 
 export interface DataMasking {
   /** Masking settings for Url query parameters */
@@ -700,9 +699,8 @@ export const ApiDiagnosticCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The hostnames of the data-plane gateway to which requests can be sent. */
 export type GatewayConfigConnectionBasePropertiesInputHostnamesList = Array<string>;
-export const GatewayConfigConnectionBasePropertiesInputHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GatewayConfigConnectionBasePropertiesInputHostnamesList>;
+export const GatewayConfigConnectionBasePropertiesInputHostnamesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<GatewayConfigConnectionBasePropertiesInputHostnamesList>;
 
 export interface GatewayConfigConnectionBasePropertiesInput {
   /** The link to the API Management service workspace. */
@@ -752,9 +750,8 @@ export const ApiGatewayConfigConnectionCreateOrUpdateRequest = /*@__PURE__*/ S.s
 
 /** The hostnames of the data-plane gateway to which requests can be sent. */
 export type GatewayConfigConnectionBasePropertiesHostnamesList = Array<string>;
-export const GatewayConfigConnectionBasePropertiesHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GatewayConfigConnectionBasePropertiesHostnamesList>;
+export const GatewayConfigConnectionBasePropertiesHostnamesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<GatewayConfigConnectionBasePropertiesHostnamesList>;
 
 export interface GatewayConfigConnectionBaseProperties {
   /** The current provisioning state of the API Management gateway config connection */
@@ -933,10 +930,8 @@ export const ApiGatewayCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ApiGatewayCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ApiGatewayCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiGatewayCreateOrUpdateResponseTagsMap>;
+export const ApiGatewayCreateOrUpdateResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiGatewayCreateOrUpdateResponseTagsMap>;
 
 /** Information regarding how the gateway should be exposed. */
 export interface FrontendConfiguration {
@@ -1366,10 +1361,8 @@ export const ApiManagementServiceBackupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ApiManagementServiceBackupResponseTagsMap = { [key: string]: string | undefined };
-export const ApiManagementServiceBackupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementServiceBackupResponseTagsMap>;
+export const ApiManagementServiceBackupResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementServiceBackupResponseTagsMap>;
 
 /** Hostname type. */
 export type HostnameConfigurationType =
@@ -1455,15 +1448,13 @@ export const ApiManagementServicePropertiesHostnameConfigurationsList = /*@__PUR
 
 /** Public Static Load Balanced IP addresses of the API Management service in Primary region. Available only for Basic, Standard, Premium and Isolated SKU. */
 export type ApiManagementServicePropertiesPublicIPAddressesList = Array<string>;
-export const ApiManagementServicePropertiesPublicIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementServicePropertiesPublicIPAddressesList>;
+export const ApiManagementServicePropertiesPublicIPAddressesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementServicePropertiesPublicIPAddressesList>;
 
 /** Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU. */
 export type ApiManagementServicePropertiesPrivateIPAddressesList = Array<string>;
-export const ApiManagementServicePropertiesPrivateIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementServicePropertiesPrivateIPAddressesList>;
+export const ApiManagementServicePropertiesPrivateIPAddressesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementServicePropertiesPrivateIPAddressesList>;
 
 /** Whether or not public endpoint access is allowed for this API Management service. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled' */
 export type ApiManagementServicePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
@@ -1533,21 +1524,18 @@ export const ApiManagementServiceSkuProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type AdditionalLocationZonesList = Array<string>;
-export const AdditionalLocationZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdditionalLocationZonesList>;
+export const AdditionalLocationZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<AdditionalLocationZonesList>;
 
 /** Public Static Load Balanced IP addresses of the API Management service in the additional location. Available only for Basic, Standard, Premium and Isolated SKU. */
 export type AdditionalLocationPublicIPAddressesList = Array<string>;
-export const AdditionalLocationPublicIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdditionalLocationPublicIPAddressesList>;
+export const AdditionalLocationPublicIPAddressesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<AdditionalLocationPublicIPAddressesList>;
 
 /** Private Static Load Balanced IP addresses of the API Management service which is deployed in an Internal Virtual Network in a particular additional location. Available only for Basic, Standard, Premium and Isolated SKU. */
 export type AdditionalLocationPrivateIPAddressesList = Array<string>;
-export const AdditionalLocationPrivateIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdditionalLocationPrivateIPAddressesList>;
+export const AdditionalLocationPrivateIPAddressesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<AdditionalLocationPrivateIPAddressesList>;
 
 /** Property can be used to enable NAT Gateway for this API Management service. */
 export type AdditionalLocationNatGatewayState = "Enabled" | "Disabled";
@@ -1555,9 +1543,8 @@ export const AdditionalLocationNatGatewayState = S.String;
 
 /** Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform. */
 export type AdditionalLocationOutboundPublicIPAddressesList = Array<string>;
-export const AdditionalLocationOutboundPublicIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdditionalLocationOutboundPublicIPAddressesList>;
+export const AdditionalLocationOutboundPublicIPAddressesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<AdditionalLocationOutboundPublicIPAddressesList>;
 
 /** Compute Platform Version running the service. */
 export type AdditionalLocationPlatformVersion =
@@ -1622,10 +1609,8 @@ export const ApiManagementServicePropertiesAdditionalLocationsList = /*@__PURE__
 export type ApiManagementServicePropertiesCustomPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ApiManagementServicePropertiesCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementServicePropertiesCustomPropertiesMap>;
+export const ApiManagementServicePropertiesCustomPropertiesMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementServicePropertiesCustomPropertiesMap>;
 
 /** The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations. */
 export type CertificateConfigurationStoreName = "CertificateAuthority" | "Root";
@@ -1663,9 +1648,8 @@ export const ApiManagementServicePropertiesNatGatewayState = S.String;
 
 /** Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform. */
 export type ApiManagementServicePropertiesOutboundPublicIPAddressesList = Array<string>;
-export const ApiManagementServicePropertiesOutboundPublicIPAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementServicePropertiesOutboundPublicIPAddressesList>;
+export const ApiManagementServicePropertiesOutboundPublicIPAddressesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementServicePropertiesOutboundPublicIPAddressesList>;
 
 /** The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only. */
 export type ApiManagementServicePropertiesVirtualNetworkType = "None" | "External" | "Internal";
@@ -1718,9 +1702,8 @@ export const PrivateEndpointConnectionWrapperPropertiesPrivateLinkServiceConnect
 
 /** All the Group ids. */
 export type PrivateEndpointConnectionWrapperPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionWrapperPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionWrapperPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionWrapperPropertiesGroupIdsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<PrivateEndpointConnectionWrapperPropertiesGroupIdsList>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionWrapperProperties {
@@ -2003,9 +1986,8 @@ export const ApiManagementServiceBackupResponseSystemData = /*@__PURE__*/ S.susp
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type ApiManagementServiceBackupResponseZonesList = Array<string>;
-export const ApiManagementServiceBackupResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementServiceBackupResponseZonesList>;
+export const ApiManagementServiceBackupResponseZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementServiceBackupResponseZonesList>;
 
 export interface ApiManagementServiceBackupResponse {
   /** Resource ID. */
@@ -2053,17 +2035,14 @@ export const ApiManagementServiceBackupResponse = /*@__PURE__*/ S.suspend(() =>
 export type ApiManagementServiceCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ApiManagementServiceCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementServiceCreateOrUpdateRequestTagsMap>;
+export const ApiManagementServiceCreateOrUpdateRequestTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementServiceCreateOrUpdateRequestTagsMap>;
 
 /** Custom hostname configuration of the API Management service. */
 export type ApiManagementServicePropertiesInputHostnameConfigurationsList =
   Array<HostnameConfiguration>;
-export const ApiManagementServicePropertiesInputHostnameConfigurationsList = /*@__PURE__*/ S.Array(
-  HostnameConfiguration,
-) as any as S.Schema<ApiManagementServicePropertiesInputHostnameConfigurationsList>;
+export const ApiManagementServicePropertiesInputHostnameConfigurationsList =
+  ApiManagementServicePropertiesHostnameConfigurationsList as any as S.Schema<ApiManagementServicePropertiesInputHostnameConfigurationsList>;
 
 /** Whether or not public endpoint access is allowed for this API Management service. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled' */
 export type ApiManagementServicePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
@@ -2084,9 +2063,8 @@ export const VirtualNetworkConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type AdditionalLocationInputZonesList = Array<string>;
-export const AdditionalLocationInputZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdditionalLocationInputZonesList>;
+export const AdditionalLocationInputZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<AdditionalLocationInputZonesList>;
 
 /** Property can be used to enable NAT Gateway for this API Management service. */
 export type AdditionalLocationInputNatGatewayState = "Enabled" | "Disabled";
@@ -2132,16 +2110,13 @@ export const ApiManagementServicePropertiesInputAdditionalLocationsList = /*@__P
 export type ApiManagementServicePropertiesInputCustomPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ApiManagementServicePropertiesInputCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementServicePropertiesInputCustomPropertiesMap>;
+export const ApiManagementServicePropertiesInputCustomPropertiesMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementServicePropertiesInputCustomPropertiesMap>;
 
 /** List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10. */
 export type ApiManagementServicePropertiesInputCertificatesList = Array<CertificateConfiguration>;
-export const ApiManagementServicePropertiesInputCertificatesList = /*@__PURE__*/ S.Array(
-  CertificateConfiguration,
-) as any as S.Schema<ApiManagementServicePropertiesInputCertificatesList>;
+export const ApiManagementServicePropertiesInputCertificatesList =
+  ApiManagementServicePropertiesCertificatesList as any as S.Schema<ApiManagementServicePropertiesInputCertificatesList>;
 
 /** Property can be used to enable NAT Gateway for this API Management service. */
 export type ApiManagementServicePropertiesInputNatGatewayState = "Enabled" | "Disabled";
@@ -2168,15 +2143,7 @@ export interface PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServi
   actionsRequired?: string;
 }
 export const PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(PrivateEndpointServiceConnectionStatus),
-      description: S.optional(S.String),
-      actionsRequired: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState",
-  }) as any as S.Schema<PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState>;
+  PrivateEndpointConnectionWrapperPropertiesPrivateLinkServiceConnectionState as any as S.Schema<PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState>;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionWrapperPropertiesInput {
@@ -2320,10 +2287,8 @@ export const ApiManagementServiceIdentityInputType = S.String;
 export type ApiManagementServiceIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserIdentityProperties | undefined;
 };
-export const ApiManagementServiceIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserIdentityProperties,
-) as any as S.Schema<ApiManagementServiceIdentityInputUserAssignedIdentitiesMap>;
+export const ApiManagementServiceIdentityInputUserAssignedIdentitiesMap =
+  ApiManagementServiceIdentityUserAssignedIdentitiesMap as any as S.Schema<ApiManagementServiceIdentityInputUserAssignedIdentitiesMap>;
 
 /** Identity properties of the Api Management service resource. */
 export interface ApiManagementServiceIdentityInput {
@@ -2343,9 +2308,8 @@ export const ApiManagementServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type ApiManagementServiceCreateOrUpdateRequestZonesList = Array<string>;
-export const ApiManagementServiceCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementServiceCreateOrUpdateRequestZonesList>;
+export const ApiManagementServiceCreateOrUpdateRequestZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementServiceCreateOrUpdateRequestZonesList>;
 
 export interface ApiManagementServiceCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2394,10 +2358,8 @@ export const ApiManagementServiceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type ApiManagementServiceCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ApiManagementServiceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementServiceCreateOrUpdateResponseTagsMap>;
+export const ApiManagementServiceCreateOrUpdateResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementServiceCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApiManagementServiceCreateOrUpdateResponseSystemDataCreatedByType =
@@ -2447,9 +2409,8 @@ export const ApiManagementServiceCreateOrUpdateResponseSystemData = /*@__PURE__*
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type ApiManagementServiceCreateOrUpdateResponseZonesList = Array<string>;
-export const ApiManagementServiceCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementServiceCreateOrUpdateResponseZonesList>;
+export const ApiManagementServiceCreateOrUpdateResponseZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementServiceCreateOrUpdateResponseZonesList>;
 
 export interface ApiManagementServiceCreateOrUpdateResponse {
   /** Resource ID. */
@@ -2495,9 +2456,8 @@ export const ApiManagementServiceCreateOrUpdateResponse = /*@__PURE__*/ S.suspen
 
 /** Parameter values. */
 export type ParameterContractValuesList = Array<string>;
-export const ParameterContractValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ParameterContractValuesList>;
+export const ParameterContractValuesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ParameterContractValuesList>;
 
 /** Parameter example. */
 export interface ParameterExampleContract {
@@ -2569,21 +2529,18 @@ export const OperationContractPropertiesTemplateParametersList = /*@__PURE__*/ S
 
 /** Collection of operation request query parameters. */
 export type RequestContractQueryParametersList = Array<ParameterContract>;
-export const RequestContractQueryParametersList = /*@__PURE__*/ S.Array(
-  ParameterContract,
-) as any as S.Schema<RequestContractQueryParametersList>;
+export const RequestContractQueryParametersList =
+  OperationContractPropertiesTemplateParametersList as any as S.Schema<RequestContractQueryParametersList>;
 
 /** Collection of operation request headers. */
 export type RequestContractHeadersList = Array<ParameterContract>;
-export const RequestContractHeadersList = /*@__PURE__*/ S.Array(
-  ParameterContract,
-) as any as S.Schema<RequestContractHeadersList>;
+export const RequestContractHeadersList =
+  OperationContractPropertiesTemplateParametersList as any as S.Schema<RequestContractHeadersList>;
 
 /** Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'.. */
 export type RepresentationContractFormParametersList = Array<ParameterContract>;
-export const RepresentationContractFormParametersList = /*@__PURE__*/ S.Array(
-  ParameterContract,
-) as any as S.Schema<RepresentationContractFormParametersList>;
+export const RepresentationContractFormParametersList =
+  OperationContractPropertiesTemplateParametersList as any as S.Schema<RepresentationContractFormParametersList>;
 
 /** Operation request/response representation details. */
 export interface RepresentationContract {
@@ -2636,15 +2593,13 @@ export const RequestContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of operation response representations. */
 export type ResponseContractRepresentationsList = Array<RepresentationContract>;
-export const ResponseContractRepresentationsList = /*@__PURE__*/ S.Array(
-  RepresentationContract,
-) as any as S.Schema<ResponseContractRepresentationsList>;
+export const ResponseContractRepresentationsList =
+  RequestContractRepresentationsList as any as S.Schema<ResponseContractRepresentationsList>;
 
 /** Collection of operation response headers. */
 export type ResponseContractHeadersList = Array<ParameterContract>;
-export const ResponseContractHeadersList = /*@__PURE__*/ S.Array(
-  ParameterContract,
-) as any as S.Schema<ResponseContractHeadersList>;
+export const ResponseContractHeadersList =
+  OperationContractPropertiesTemplateParametersList as any as S.Schema<ResponseContractHeadersList>;
 
 /** Operation response details. */
 export interface ResponseContract {
@@ -2887,16 +2842,8 @@ export interface ApiPolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const ApiPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "ApiPolicyCreateOrUpdateResponse",
-}) as any as S.Schema<ApiPolicyCreateOrUpdateResponse>;
+export const ApiPolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<ApiPolicyCreateOrUpdateResponse>;
 
 /** API Release details */
 export interface ApiReleaseContractPropertiesInput {
@@ -3655,22 +3602,13 @@ export interface AssignTagToProductResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const AssignTagToProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({
-  identifier: "AssignTagToProductResponse",
-}) as any as S.Schema<AssignTagToProductResponse>;
+export const AssignTagToProductResponse =
+  AssignTagToOperationResponse as any as S.Schema<AssignTagToProductResponse>;
 
 /** The allowed Azure Active Directory Application IDs */
 export type AuthorizationAccessPolicyContractPropertiesAppIdsList = Array<string>;
-export const AuthorizationAccessPolicyContractPropertiesAppIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorizationAccessPolicyContractPropertiesAppIdsList>;
+export const AuthorizationAccessPolicyContractPropertiesAppIdsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<AuthorizationAccessPolicyContractPropertiesAppIdsList>;
 
 /** Authorization Access Policy details. */
 export interface AuthorizationAccessPolicyContractProperties {
@@ -3761,10 +3699,8 @@ export const AuthorizationContractPropertiesOauth2grantType = S.String;
 
 /** Authorization parameters */
 export type AuthorizationContractPropertiesParametersMap = { [key: string]: string | undefined };
-export const AuthorizationContractPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizationContractPropertiesParametersMap>;
+export const AuthorizationContractPropertiesParametersMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<AuthorizationContractPropertiesParametersMap>;
 
 /** Authorization error details. */
 export interface AuthorizationError {
@@ -3863,19 +3799,15 @@ export const AuthorizationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type AuthorizationProviderOAuth2GrantTypesAuthorizationCodeMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizationProviderOAuth2GrantTypesAuthorizationCodeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizationProviderOAuth2GrantTypesAuthorizationCodeMap>;
+export const AuthorizationProviderOAuth2GrantTypesAuthorizationCodeMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<AuthorizationProviderOAuth2GrantTypesAuthorizationCodeMap>;
 
 /** OAuth2 client credential grant parameters */
 export type AuthorizationProviderOAuth2GrantTypesClientCredentialsMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizationProviderOAuth2GrantTypesClientCredentialsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizationProviderOAuth2GrantTypesClientCredentialsMap>;
+export const AuthorizationProviderOAuth2GrantTypesClientCredentialsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<AuthorizationProviderOAuth2GrantTypesClientCredentialsMap>;
 
 /** Authorization Provider oauth2 grant types settings */
 export interface AuthorizationProviderOAuth2GrantTypes {
@@ -4185,16 +4117,13 @@ export const AuthorizationServerCreateOrUpdateResponse = /*@__PURE__*/ S.suspend
 
 /** The cluster management endpoint. */
 export type BackendServiceFabricClusterPropertiesManagementEndpointsList = Array<string>;
-export const BackendServiceFabricClusterPropertiesManagementEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackendServiceFabricClusterPropertiesManagementEndpointsList>;
+export const BackendServiceFabricClusterPropertiesManagementEndpointsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<BackendServiceFabricClusterPropertiesManagementEndpointsList>;
 
 /** Thumbprints of certificates cluster management service uses for tls communication */
 export type BackendServiceFabricClusterPropertiesServerCertificateThumbprintsList = Array<string>;
 export const BackendServiceFabricClusterPropertiesServerCertificateThumbprintsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BackendServiceFabricClusterPropertiesServerCertificateThumbprintsList>;
+  ApplyApiManagementServiceNetworkConfigurationUpdatesResponseZonesList as any as S.Schema<BackendServiceFabricClusterPropertiesServerCertificateThumbprintsList>;
 
 /** Properties of server X509Names. */
 export interface X509CertificateName {
@@ -4259,20 +4188,17 @@ export const BackendProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Client Certificate Ids. */
 export type BackendCredentialsContractCertificateIdsList = Array<string>;
-export const BackendCredentialsContractCertificateIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackendCredentialsContractCertificateIdsList>;
+export const BackendCredentialsContractCertificateIdsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<BackendCredentialsContractCertificateIdsList>;
 
 /** List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided. */
 export type BackendCredentialsContractCertificateList = Array<string>;
-export const BackendCredentialsContractCertificateList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackendCredentialsContractCertificateList>;
+export const BackendCredentialsContractCertificateList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<BackendCredentialsContractCertificateList>;
 
 export type BackendCredentialsContractQueryValueList = Array<string>;
-export const BackendCredentialsContractQueryValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackendCredentialsContractQueryValueList>;
+export const BackendCredentialsContractQueryValueList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<BackendCredentialsContractQueryValueList>;
 
 /** Query Parameter description. */
 export type BackendCredentialsContractQueryMap = {
@@ -4284,18 +4210,15 @@ export const BackendCredentialsContractQueryMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BackendCredentialsContractQueryMap>;
 
 export type BackendCredentialsContractHeaderValueList = Array<string>;
-export const BackendCredentialsContractHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackendCredentialsContractHeaderValueList>;
+export const BackendCredentialsContractHeaderValueList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<BackendCredentialsContractHeaderValueList>;
 
 /** Header Parameter description. */
 export type BackendCredentialsContractHeaderMap = {
   [key: string]: BackendCredentialsContractHeaderValueList | undefined;
 };
-export const BackendCredentialsContractHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BackendCredentialsContractHeaderValueList,
-) as any as S.Schema<BackendCredentialsContractHeaderMap>;
+export const BackendCredentialsContractHeaderMap =
+  BackendCredentialsContractQueryMap as any as S.Schema<BackendCredentialsContractHeaderMap>;
 
 /** Authorization header information. */
 export interface BackendAuthorizationHeaderCredentials {
@@ -4391,9 +4314,8 @@ export const CircuitBreakerFailureConditionStatusCodeRangesList = /*@__PURE__*/ 
 
 /** The error reasons which are considered as failure. */
 export type CircuitBreakerFailureConditionErrorReasonsList = Array<string>;
-export const CircuitBreakerFailureConditionErrorReasonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CircuitBreakerFailureConditionErrorReasonsList>;
+export const CircuitBreakerFailureConditionErrorReasonsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<CircuitBreakerFailureConditionErrorReasonsList>;
 
 /** The trip conditions of the circuit breaker */
 export interface CircuitBreakerFailureCondition {
@@ -4640,9 +4562,8 @@ export const BackendReconnectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackendReconnectRequest" }) as any as S.Schema<BackendReconnectRequest>;
 
 export interface BackendReconnectResponse {}
-export const BackendReconnectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BackendReconnectResponse",
-}) as any as S.Schema<BackendReconnectResponse>;
+export const BackendReconnectResponse =
+  FrontendConfigurationInput as any as S.Schema<BackendReconnectResponse>;
 
 /** Properties of the Cache contract. */
 export interface CacheContractProperties {
@@ -5409,9 +5330,7 @@ export const DeleteApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiRequest" }) as any as S.Schema<DeleteApiRequest>;
 
 export interface DeleteApiResponse {}
-export const DeleteApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiResponse",
-}) as any as S.Schema<DeleteApiResponse>;
+export const DeleteApiResponse = FrontendConfigurationInput as any as S.Schema<DeleteApiResponse>;
 
 export interface DeleteApiDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5445,9 +5364,8 @@ export const DeleteApiDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiDiagnosticRequest>;
 
 export interface DeleteApiDiagnosticResponse {}
-export const DeleteApiDiagnosticResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiDiagnosticResponse",
-}) as any as S.Schema<DeleteApiDiagnosticResponse>;
+export const DeleteApiDiagnosticResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiDiagnosticResponse>;
 
 export interface DeleteApiGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5473,9 +5391,8 @@ export const DeleteApiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiGatewayRequest" }) as any as S.Schema<DeleteApiGatewayRequest>;
 
 export interface DeleteApiGatewayResponse {}
-export const DeleteApiGatewayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiGatewayResponse",
-}) as any as S.Schema<DeleteApiGatewayResponse>;
+export const DeleteApiGatewayResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiGatewayResponse>;
 
 export interface DeleteApiGatewayConfigConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5506,11 +5423,8 @@ export const DeleteApiGatewayConfigConnectionRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteApiGatewayConfigConnectionRequest>;
 
 export interface DeleteApiGatewayConfigConnectionResponse {}
-export const DeleteApiGatewayConfigConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApiGatewayConfigConnectionResponse",
-}) as any as S.Schema<DeleteApiGatewayConfigConnectionResponse>;
+export const DeleteApiGatewayConfigConnectionResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteApiGatewayConfigConnectionResponse>;
 
 export interface DeleteApiIssueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5542,9 +5456,8 @@ export const DeleteApiIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiIssueRequest" }) as any as S.Schema<DeleteApiIssueRequest>;
 
 export interface DeleteApiIssueResponse {}
-export const DeleteApiIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiIssueResponse",
-}) as any as S.Schema<DeleteApiIssueResponse>;
+export const DeleteApiIssueResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiIssueResponse>;
 
 export interface DeleteApiIssueAttachmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5581,11 +5494,8 @@ export const DeleteApiIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiIssueAttachmentRequest>;
 
 export interface DeleteApiIssueAttachmentResponse {}
-export const DeleteApiIssueAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApiIssueAttachmentResponse",
-}) as any as S.Schema<DeleteApiIssueAttachmentResponse>;
+export const DeleteApiIssueAttachmentResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteApiIssueAttachmentResponse>;
 
 export interface DeleteApiIssueCommentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5622,9 +5532,8 @@ export const DeleteApiIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiIssueCommentRequest>;
 
 export interface DeleteApiIssueCommentResponse {}
-export const DeleteApiIssueCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiIssueCommentResponse",
-}) as any as S.Schema<DeleteApiIssueCommentResponse>;
+export const DeleteApiIssueCommentResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiIssueCommentResponse>;
 
 export interface DeleteApiManagementServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5652,11 +5561,8 @@ export const DeleteApiManagementServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiManagementServiceRequest>;
 
 export interface DeleteApiManagementServiceResponse {}
-export const DeleteApiManagementServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApiManagementServiceResponse",
-}) as any as S.Schema<DeleteApiManagementServiceResponse>;
+export const DeleteApiManagementServiceResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteApiManagementServiceResponse>;
 
 export interface DeleteApiOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5690,9 +5596,8 @@ export const DeleteApiOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiOperationRequest>;
 
 export interface DeleteApiOperationResponse {}
-export const DeleteApiOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiOperationResponse",
-}) as any as S.Schema<DeleteApiOperationResponse>;
+export const DeleteApiOperationResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiOperationResponse>;
 
 export type DeleteApiOperationPolicyRequestPolicyId = "policy";
 export const DeleteApiOperationPolicyRequestPolicyId = S.String;
@@ -5732,11 +5637,8 @@ export const DeleteApiOperationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiOperationPolicyRequest>;
 
 export interface DeleteApiOperationPolicyResponse {}
-export const DeleteApiOperationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApiOperationPolicyResponse",
-}) as any as S.Schema<DeleteApiOperationPolicyResponse>;
+export const DeleteApiOperationPolicyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteApiOperationPolicyResponse>;
 
 export type DeleteApiPolicyRequestPolicyId = "policy";
 export const DeleteApiPolicyRequestPolicyId = S.String;
@@ -5771,9 +5673,8 @@ export const DeleteApiPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiPolicyRequest" }) as any as S.Schema<DeleteApiPolicyRequest>;
 
 export interface DeleteApiPolicyResponse {}
-export const DeleteApiPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiPolicyResponse",
-}) as any as S.Schema<DeleteApiPolicyResponse>;
+export const DeleteApiPolicyResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiPolicyResponse>;
 
 export interface DeleteApiReleaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5805,9 +5706,8 @@ export const DeleteApiReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiReleaseRequest" }) as any as S.Schema<DeleteApiReleaseRequest>;
 
 export interface DeleteApiReleaseResponse {}
-export const DeleteApiReleaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiReleaseResponse",
-}) as any as S.Schema<DeleteApiReleaseResponse>;
+export const DeleteApiReleaseResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiReleaseResponse>;
 
 export interface DeleteApiSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5842,9 +5742,8 @@ export const DeleteApiSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiSchemaRequest" }) as any as S.Schema<DeleteApiSchemaRequest>;
 
 export interface DeleteApiSchemaResponse {}
-export const DeleteApiSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiSchemaResponse",
-}) as any as S.Schema<DeleteApiSchemaResponse>;
+export const DeleteApiSchemaResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiSchemaResponse>;
 
 export interface DeleteApiTagDescriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5911,9 +5810,8 @@ export const DeleteApiVersionSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiVersionSetRequest>;
 
 export interface DeleteApiVersionSetResponse {}
-export const DeleteApiVersionSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiVersionSetResponse",
-}) as any as S.Schema<DeleteApiVersionSetResponse>;
+export const DeleteApiVersionSetResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiVersionSetResponse>;
 
 export interface DeleteApiWikiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5942,9 +5840,8 @@ export const DeleteApiWikiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiWikiRequest" }) as any as S.Schema<DeleteApiWikiRequest>;
 
 export interface DeleteApiWikiResponse {}
-export const DeleteApiWikiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteApiWikiResponse",
-}) as any as S.Schema<DeleteApiWikiResponse>;
+export const DeleteApiWikiResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteApiWikiResponse>;
 
 export interface DeleteAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5978,9 +5875,8 @@ export const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizationRequest>;
 
 export interface DeleteAuthorizationResponse {}
-export const DeleteAuthorizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAuthorizationResponse",
-}) as any as S.Schema<DeleteAuthorizationResponse>;
+export const DeleteAuthorizationResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteAuthorizationResponse>;
 
 export interface DeleteAuthorizationAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6017,11 +5913,8 @@ export const DeleteAuthorizationAccessPolicyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteAuthorizationAccessPolicyRequest>;
 
 export interface DeleteAuthorizationAccessPolicyResponse {}
-export const DeleteAuthorizationAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationAccessPolicyResponse",
-}) as any as S.Schema<DeleteAuthorizationAccessPolicyResponse>;
+export const DeleteAuthorizationAccessPolicyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteAuthorizationAccessPolicyResponse>;
 
 export interface DeleteAuthorizationProviderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6052,11 +5945,8 @@ export const DeleteAuthorizationProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizationProviderRequest>;
 
 export interface DeleteAuthorizationProviderResponse {}
-export const DeleteAuthorizationProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationProviderResponse",
-}) as any as S.Schema<DeleteAuthorizationProviderResponse>;
+export const DeleteAuthorizationProviderResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteAuthorizationProviderResponse>;
 
 export interface DeleteAuthorizationServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6087,11 +5977,8 @@ export const DeleteAuthorizationServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizationServerRequest>;
 
 export interface DeleteAuthorizationServerResponse {}
-export const DeleteAuthorizationServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationServerResponse",
-}) as any as S.Schema<DeleteAuthorizationServerResponse>;
+export const DeleteAuthorizationServerResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteAuthorizationServerResponse>;
 
 export interface DeleteBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6120,9 +6007,8 @@ export const DeleteBackendRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackendRequest" }) as any as S.Schema<DeleteBackendRequest>;
 
 export interface DeleteBackendResponse {}
-export const DeleteBackendResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBackendResponse",
-}) as any as S.Schema<DeleteBackendResponse>;
+export const DeleteBackendResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteBackendResponse>;
 
 export interface DeleteCacheRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6151,9 +6037,8 @@ export const DeleteCacheRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCacheRequest" }) as any as S.Schema<DeleteCacheRequest>;
 
 export interface DeleteCacheResponse {}
-export const DeleteCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCacheResponse",
-}) as any as S.Schema<DeleteCacheResponse>;
+export const DeleteCacheResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteCacheResponse>;
 
 export interface DeleteCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6182,9 +6067,8 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCertificateResponse",
-}) as any as S.Schema<DeleteCertificateResponse>;
+export const DeleteCertificateResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteCertificateResponse>;
 
 export interface DeleteContentItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6216,9 +6100,8 @@ export const DeleteContentItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContentItemRequest" }) as any as S.Schema<DeleteContentItemRequest>;
 
 export interface DeleteContentItemResponse {}
-export const DeleteContentItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContentItemResponse",
-}) as any as S.Schema<DeleteContentItemResponse>;
+export const DeleteContentItemResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteContentItemResponse>;
 
 export interface DeleteContentTypeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6247,9 +6130,8 @@ export const DeleteContentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContentTypeRequest" }) as any as S.Schema<DeleteContentTypeRequest>;
 
 export interface DeleteContentTypeResponse {}
-export const DeleteContentTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContentTypeResponse",
-}) as any as S.Schema<DeleteContentTypeResponse>;
+export const DeleteContentTypeResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteContentTypeResponse>;
 
 export interface DeleteDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6278,9 +6160,8 @@ export const DeleteDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiagnosticRequest" }) as any as S.Schema<DeleteDiagnosticRequest>;
 
 export interface DeleteDiagnosticResponse {}
-export const DeleteDiagnosticResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDiagnosticResponse",
-}) as any as S.Schema<DeleteDiagnosticResponse>;
+export const DeleteDiagnosticResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteDiagnosticResponse>;
 
 export interface DeleteDocumentationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6311,9 +6192,8 @@ export const DeleteDocumentationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDocumentationRequest>;
 
 export interface DeleteDocumentationResponse {}
-export const DeleteDocumentationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDocumentationResponse",
-}) as any as S.Schema<DeleteDocumentationResponse>;
+export const DeleteDocumentationResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteDocumentationResponse>;
 
 export type DeleteEmailTemplateRequestTemplateName =
   | "applicationApprovedNotificationMessage"
@@ -6361,9 +6241,8 @@ export const DeleteEmailTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmailTemplateRequest>;
 
 export interface DeleteEmailTemplateResponse {}
-export const DeleteEmailTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailTemplateResponse",
-}) as any as S.Schema<DeleteEmailTemplateResponse>;
+export const DeleteEmailTemplateResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteEmailTemplateResponse>;
 
 export interface DeleteGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6392,9 +6271,8 @@ export const DeleteGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGatewayRequest" }) as any as S.Schema<DeleteGatewayRequest>;
 
 export interface DeleteGatewayResponse {}
-export const DeleteGatewayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGatewayResponse",
-}) as any as S.Schema<DeleteGatewayResponse>;
+export const DeleteGatewayResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteGatewayResponse>;
 
 export interface DeleteGatewayApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6426,9 +6304,8 @@ export const DeleteGatewayApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGatewayApiRequest" }) as any as S.Schema<DeleteGatewayApiRequest>;
 
 export interface DeleteGatewayApiResponse {}
-export const DeleteGatewayApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGatewayApiResponse",
-}) as any as S.Schema<DeleteGatewayApiResponse>;
+export const DeleteGatewayApiResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteGatewayApiResponse>;
 
 export interface DeleteGatewayCertificateAuthorityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6462,11 +6339,8 @@ export const DeleteGatewayCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteGatewayCertificateAuthorityRequest>;
 
 export interface DeleteGatewayCertificateAuthorityResponse {}
-export const DeleteGatewayCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGatewayCertificateAuthorityResponse",
-}) as any as S.Schema<DeleteGatewayCertificateAuthorityResponse>;
+export const DeleteGatewayCertificateAuthorityResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteGatewayCertificateAuthorityResponse>;
 
 export interface DeleteGatewayHostnameConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6500,11 +6374,8 @@ export const DeleteGatewayHostnameConfigurationRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteGatewayHostnameConfigurationRequest>;
 
 export interface DeleteGatewayHostnameConfigurationResponse {}
-export const DeleteGatewayHostnameConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGatewayHostnameConfigurationResponse",
-}) as any as S.Schema<DeleteGatewayHostnameConfigurationResponse>;
+export const DeleteGatewayHostnameConfigurationResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteGatewayHostnameConfigurationResponse>;
 
 export interface DeleteGlobalSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6535,9 +6406,8 @@ export const DeleteGlobalSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalSchemaRequest>;
 
 export interface DeleteGlobalSchemaResponse {}
-export const DeleteGlobalSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGlobalSchemaResponse",
-}) as any as S.Schema<DeleteGlobalSchemaResponse>;
+export const DeleteGlobalSchemaResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteGlobalSchemaResponse>;
 
 export interface DeleteGraphQLApiResolverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6571,11 +6441,8 @@ export const DeleteGraphQLApiResolverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGraphQLApiResolverRequest>;
 
 export interface DeleteGraphQLApiResolverResponse {}
-export const DeleteGraphQLApiResolverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGraphQLApiResolverResponse",
-}) as any as S.Schema<DeleteGraphQLApiResolverResponse>;
+export const DeleteGraphQLApiResolverResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteGraphQLApiResolverResponse>;
 
 export type DeleteGraphQLApiResolverPolicyRequestPolicyId = "policy";
 export const DeleteGraphQLApiResolverPolicyRequestPolicyId = S.String;
@@ -6615,11 +6482,8 @@ export const DeleteGraphQLApiResolverPolicyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteGraphQLApiResolverPolicyRequest>;
 
 export interface DeleteGraphQLApiResolverPolicyResponse {}
-export const DeleteGraphQLApiResolverPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGraphQLApiResolverPolicyResponse",
-}) as any as S.Schema<DeleteGraphQLApiResolverPolicyResponse>;
+export const DeleteGraphQLApiResolverPolicyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteGraphQLApiResolverPolicyResponse>;
 
 export interface DeleteGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6648,9 +6512,8 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteGroupResponse>;
 
 export interface DeleteGroupUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6682,9 +6545,8 @@ export const DeleteGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupUserRequest" }) as any as S.Schema<DeleteGroupUserRequest>;
 
 export interface DeleteGroupUserResponse {}
-export const DeleteGroupUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupUserResponse",
-}) as any as S.Schema<DeleteGroupUserResponse>;
+export const DeleteGroupUserResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteGroupUserResponse>;
 
 export type DeleteIdentityProviderRequestIdentityProviderName =
   | "facebook"
@@ -6724,9 +6586,8 @@ export const DeleteIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIdentityProviderRequest>;
 
 export interface DeleteIdentityProviderResponse {}
-export const DeleteIdentityProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIdentityProviderResponse",
-}) as any as S.Schema<DeleteIdentityProviderResponse>;
+export const DeleteIdentityProviderResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteIdentityProviderResponse>;
 
 export interface DeleteLoggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6755,9 +6616,8 @@ export const DeleteLoggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLoggerRequest" }) as any as S.Schema<DeleteLoggerRequest>;
 
 export interface DeleteLoggerResponse {}
-export const DeleteLoggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLoggerResponse",
-}) as any as S.Schema<DeleteLoggerResponse>;
+export const DeleteLoggerResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteLoggerResponse>;
 
 export interface DeleteNamedValueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6786,9 +6646,8 @@ export const DeleteNamedValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNamedValueRequest" }) as any as S.Schema<DeleteNamedValueRequest>;
 
 export interface DeleteNamedValueResponse {}
-export const DeleteNamedValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamedValueResponse",
-}) as any as S.Schema<DeleteNamedValueResponse>;
+export const DeleteNamedValueResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteNamedValueResponse>;
 
 export type DeleteNotificationRecipientEmailRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -6832,11 +6691,8 @@ export const DeleteNotificationRecipientEmailRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteNotificationRecipientEmailRequest>;
 
 export interface DeleteNotificationRecipientEmailResponse {}
-export const DeleteNotificationRecipientEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNotificationRecipientEmailResponse",
-}) as any as S.Schema<DeleteNotificationRecipientEmailResponse>;
+export const DeleteNotificationRecipientEmailResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteNotificationRecipientEmailResponse>;
 
 export type DeleteNotificationRecipientUserRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -6880,11 +6736,8 @@ export const DeleteNotificationRecipientUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteNotificationRecipientUserRequest>;
 
 export interface DeleteNotificationRecipientUserResponse {}
-export const DeleteNotificationRecipientUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNotificationRecipientUserResponse",
-}) as any as S.Schema<DeleteNotificationRecipientUserResponse>;
+export const DeleteNotificationRecipientUserResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteNotificationRecipientUserResponse>;
 
 export interface DeleteOpenIdConnectProviderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6915,11 +6768,8 @@ export const DeleteOpenIdConnectProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOpenIdConnectProviderRequest>;
 
 export interface DeleteOpenIdConnectProviderResponse {}
-export const DeleteOpenIdConnectProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOpenIdConnectProviderResponse",
-}) as any as S.Schema<DeleteOpenIdConnectProviderResponse>;
+export const DeleteOpenIdConnectProviderResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteOpenIdConnectProviderResponse>;
 
 export type DeletePolicyRequestPolicyId = "policy";
 export const DeletePolicyRequestPolicyId = S.String;
@@ -6951,9 +6801,8 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+export const DeletePolicyResponse =
+  FrontendConfigurationInput as any as S.Schema<DeletePolicyResponse>;
 
 export interface DeletePolicyFragmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6984,9 +6833,8 @@ export const DeletePolicyFragmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePolicyFragmentRequest>;
 
 export interface DeletePolicyFragmentResponse {}
-export const DeletePolicyFragmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyFragmentResponse",
-}) as any as S.Schema<DeletePolicyFragmentResponse>;
+export const DeletePolicyFragmentResponse =
+  FrontendConfigurationInput as any as S.Schema<DeletePolicyFragmentResponse>;
 
 export interface DeletePolicyRestrictionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7017,9 +6865,8 @@ export const DeletePolicyRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePolicyRestrictionRequest>;
 
 export interface DeletePolicyRestrictionResponse {}
-export const DeletePolicyRestrictionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeletePolicyRestrictionResponse" },
-) as any as S.Schema<DeletePolicyRestrictionResponse>;
+export const DeletePolicyRestrictionResponse =
+  DeleteApiTagDescriptionResponse as any as S.Schema<DeletePolicyRestrictionResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7050,11 +6897,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7086,9 +6930,8 @@ export const DeleteProductRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProductRequest" }) as any as S.Schema<DeleteProductRequest>;
 
 export interface DeleteProductResponse {}
-export const DeleteProductResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductResponse",
-}) as any as S.Schema<DeleteProductResponse>;
+export const DeleteProductResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteProductResponse>;
 
 export interface DeleteProductApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7120,9 +6963,8 @@ export const DeleteProductApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProductApiRequest" }) as any as S.Schema<DeleteProductApiRequest>;
 
 export interface DeleteProductApiResponse {}
-export const DeleteProductApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductApiResponse",
-}) as any as S.Schema<DeleteProductApiResponse>;
+export const DeleteProductApiResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteProductApiResponse>;
 
 export interface DeleteProductApiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7156,9 +6998,8 @@ export const DeleteProductApiLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductApiLinkRequest>;
 
 export interface DeleteProductApiLinkResponse {}
-export const DeleteProductApiLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductApiLinkResponse",
-}) as any as S.Schema<DeleteProductApiLinkResponse>;
+export const DeleteProductApiLinkResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteProductApiLinkResponse>;
 
 export interface DeleteProductGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7192,9 +7033,8 @@ export const DeleteProductGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductGroupRequest>;
 
 export interface DeleteProductGroupResponse {}
-export const DeleteProductGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductGroupResponse",
-}) as any as S.Schema<DeleteProductGroupResponse>;
+export const DeleteProductGroupResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteProductGroupResponse>;
 
 export interface DeleteProductGroupLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7228,9 +7068,8 @@ export const DeleteProductGroupLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductGroupLinkRequest>;
 
 export interface DeleteProductGroupLinkResponse {}
-export const DeleteProductGroupLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductGroupLinkResponse",
-}) as any as S.Schema<DeleteProductGroupLinkResponse>;
+export const DeleteProductGroupLinkResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteProductGroupLinkResponse>;
 
 export type DeleteProductPolicyRequestPolicyId = "policy";
 export const DeleteProductPolicyRequestPolicyId = S.String;
@@ -7267,9 +7106,8 @@ export const DeleteProductPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductPolicyRequest>;
 
 export interface DeleteProductPolicyResponse {}
-export const DeleteProductPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductPolicyResponse",
-}) as any as S.Schema<DeleteProductPolicyResponse>;
+export const DeleteProductPolicyResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteProductPolicyResponse>;
 
 export interface DeleteProductWikiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7298,9 +7136,8 @@ export const DeleteProductWikiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProductWikiRequest" }) as any as S.Schema<DeleteProductWikiRequest>;
 
 export interface DeleteProductWikiResponse {}
-export const DeleteProductWikiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductWikiResponse",
-}) as any as S.Schema<DeleteProductWikiResponse>;
+export const DeleteProductWikiResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteProductWikiResponse>;
 
 export interface DeleteSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7331,9 +7168,8 @@ export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {}
-export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSubscriptionResponse",
-}) as any as S.Schema<DeleteSubscriptionResponse>;
+export const DeleteSubscriptionResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteSubscriptionResponse>;
 
 export interface DeleteTagRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7362,9 +7198,7 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRequest" }) as any as S.Schema<DeleteTagRequest>;
 
 export interface DeleteTagResponse {}
-export const DeleteTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagResponse",
-}) as any as S.Schema<DeleteTagResponse>;
+export const DeleteTagResponse = FrontendConfigurationInput as any as S.Schema<DeleteTagResponse>;
 
 export interface DeleteTagApiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7396,9 +7230,8 @@ export const DeleteTagApiLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagApiLinkRequest" }) as any as S.Schema<DeleteTagApiLinkRequest>;
 
 export interface DeleteTagApiLinkResponse {}
-export const DeleteTagApiLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagApiLinkResponse",
-}) as any as S.Schema<DeleteTagApiLinkResponse>;
+export const DeleteTagApiLinkResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteTagApiLinkResponse>;
 
 export interface DeleteTagOperationLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7432,9 +7265,8 @@ export const DeleteTagOperationLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTagOperationLinkRequest>;
 
 export interface DeleteTagOperationLinkResponse {}
-export const DeleteTagOperationLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagOperationLinkResponse",
-}) as any as S.Schema<DeleteTagOperationLinkResponse>;
+export const DeleteTagOperationLinkResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteTagOperationLinkResponse>;
 
 export interface DeleteTagProductLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7468,9 +7300,8 @@ export const DeleteTagProductLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTagProductLinkRequest>;
 
 export interface DeleteTagProductLinkResponse {}
-export const DeleteTagProductLinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagProductLinkResponse",
-}) as any as S.Schema<DeleteTagProductLinkResponse>;
+export const DeleteTagProductLinkResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteTagProductLinkResponse>;
 
 export type DeleteUserRequestAppType = "portal" | "developerPortal";
 export const DeleteUserRequestAppType = S.String;
@@ -7511,9 +7342,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = FrontendConfigurationInput as any as S.Schema<DeleteUserResponse>;
 
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7542,9 +7371,8 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceResponse",
-}) as any as S.Schema<DeleteWorkspaceResponse>;
+export const DeleteWorkspaceResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspaceResponse>;
 
 export interface DeleteWorkspaceApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7581,9 +7409,8 @@ export const DeleteWorkspaceApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceApiRequest>;
 
 export interface DeleteWorkspaceApiResponse {}
-export const DeleteWorkspaceApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceApiResponse",
-}) as any as S.Schema<DeleteWorkspaceApiResponse>;
+export const DeleteWorkspaceApiResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspaceApiResponse>;
 
 export interface DeleteWorkspaceApiDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7620,11 +7447,8 @@ export const DeleteWorkspaceApiDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceApiDiagnosticRequest>;
 
 export interface DeleteWorkspaceApiDiagnosticResponse {}
-export const DeleteWorkspaceApiDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceApiDiagnosticResponse",
-}) as any as S.Schema<DeleteWorkspaceApiDiagnosticResponse>;
+export const DeleteWorkspaceApiDiagnosticResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceApiDiagnosticResponse>;
 
 export interface DeleteWorkspaceApiOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7661,11 +7485,8 @@ export const DeleteWorkspaceApiOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceApiOperationRequest>;
 
 export interface DeleteWorkspaceApiOperationResponse {}
-export const DeleteWorkspaceApiOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceApiOperationResponse",
-}) as any as S.Schema<DeleteWorkspaceApiOperationResponse>;
+export const DeleteWorkspaceApiOperationResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceApiOperationResponse>;
 
 export type DeleteWorkspaceApiOperationPolicyRequestPolicyId = "policy";
 export const DeleteWorkspaceApiOperationPolicyRequestPolicyId = S.String;
@@ -7708,11 +7529,8 @@ export const DeleteWorkspaceApiOperationPolicyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteWorkspaceApiOperationPolicyRequest>;
 
 export interface DeleteWorkspaceApiOperationPolicyResponse {}
-export const DeleteWorkspaceApiOperationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceApiOperationPolicyResponse",
-}) as any as S.Schema<DeleteWorkspaceApiOperationPolicyResponse>;
+export const DeleteWorkspaceApiOperationPolicyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceApiOperationPolicyResponse>;
 
 export type DeleteWorkspaceApiPolicyRequestPolicyId = "policy";
 export const DeleteWorkspaceApiPolicyRequestPolicyId = S.String;
@@ -7752,11 +7570,8 @@ export const DeleteWorkspaceApiPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceApiPolicyRequest>;
 
 export interface DeleteWorkspaceApiPolicyResponse {}
-export const DeleteWorkspaceApiPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceApiPolicyResponse",
-}) as any as S.Schema<DeleteWorkspaceApiPolicyResponse>;
+export const DeleteWorkspaceApiPolicyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceApiPolicyResponse>;
 
 export interface DeleteWorkspaceApiReleaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7793,11 +7608,8 @@ export const DeleteWorkspaceApiReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceApiReleaseRequest>;
 
 export interface DeleteWorkspaceApiReleaseResponse {}
-export const DeleteWorkspaceApiReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceApiReleaseResponse",
-}) as any as S.Schema<DeleteWorkspaceApiReleaseResponse>;
+export const DeleteWorkspaceApiReleaseResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceApiReleaseResponse>;
 
 export interface DeleteWorkspaceApiSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7837,11 +7649,8 @@ export const DeleteWorkspaceApiSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceApiSchemaRequest>;
 
 export interface DeleteWorkspaceApiSchemaResponse {}
-export const DeleteWorkspaceApiSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceApiSchemaResponse",
-}) as any as S.Schema<DeleteWorkspaceApiSchemaResponse>;
+export const DeleteWorkspaceApiSchemaResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceApiSchemaResponse>;
 
 export interface DeleteWorkspaceApiVersionSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7875,11 +7684,8 @@ export const DeleteWorkspaceApiVersionSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceApiVersionSetRequest>;
 
 export interface DeleteWorkspaceApiVersionSetResponse {}
-export const DeleteWorkspaceApiVersionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceApiVersionSetResponse",
-}) as any as S.Schema<DeleteWorkspaceApiVersionSetResponse>;
+export const DeleteWorkspaceApiVersionSetResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceApiVersionSetResponse>;
 
 export interface DeleteWorkspaceBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7913,9 +7719,8 @@ export const DeleteWorkspaceBackendRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceBackendRequest>;
 
 export interface DeleteWorkspaceBackendResponse {}
-export const DeleteWorkspaceBackendResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceBackendResponse",
-}) as any as S.Schema<DeleteWorkspaceBackendResponse>;
+export const DeleteWorkspaceBackendResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspaceBackendResponse>;
 
 export interface DeleteWorkspaceCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7949,11 +7754,8 @@ export const DeleteWorkspaceCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceCertificateRequest>;
 
 export interface DeleteWorkspaceCertificateResponse {}
-export const DeleteWorkspaceCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceCertificateResponse",
-}) as any as S.Schema<DeleteWorkspaceCertificateResponse>;
+export const DeleteWorkspaceCertificateResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceCertificateResponse>;
 
 export interface DeleteWorkspaceDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7987,11 +7789,8 @@ export const DeleteWorkspaceDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceDiagnosticRequest>;
 
 export interface DeleteWorkspaceDiagnosticResponse {}
-export const DeleteWorkspaceDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceDiagnosticResponse",
-}) as any as S.Schema<DeleteWorkspaceDiagnosticResponse>;
+export const DeleteWorkspaceDiagnosticResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceDiagnosticResponse>;
 
 export interface DeleteWorkspaceGlobalSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8025,11 +7824,8 @@ export const DeleteWorkspaceGlobalSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceGlobalSchemaRequest>;
 
 export interface DeleteWorkspaceGlobalSchemaResponse {}
-export const DeleteWorkspaceGlobalSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceGlobalSchemaResponse",
-}) as any as S.Schema<DeleteWorkspaceGlobalSchemaResponse>;
+export const DeleteWorkspaceGlobalSchemaResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceGlobalSchemaResponse>;
 
 export interface DeleteWorkspaceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8063,9 +7859,8 @@ export const DeleteWorkspaceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceGroupRequest>;
 
 export interface DeleteWorkspaceGroupResponse {}
-export const DeleteWorkspaceGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceGroupResponse",
-}) as any as S.Schema<DeleteWorkspaceGroupResponse>;
+export const DeleteWorkspaceGroupResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspaceGroupResponse>;
 
 export interface DeleteWorkspaceGroupUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8102,11 +7897,8 @@ export const DeleteWorkspaceGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceGroupUserRequest>;
 
 export interface DeleteWorkspaceGroupUserResponse {}
-export const DeleteWorkspaceGroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceGroupUserResponse",
-}) as any as S.Schema<DeleteWorkspaceGroupUserResponse>;
+export const DeleteWorkspaceGroupUserResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceGroupUserResponse>;
 
 export interface DeleteWorkspaceLoggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8140,9 +7932,8 @@ export const DeleteWorkspaceLoggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceLoggerRequest>;
 
 export interface DeleteWorkspaceLoggerResponse {}
-export const DeleteWorkspaceLoggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceLoggerResponse",
-}) as any as S.Schema<DeleteWorkspaceLoggerResponse>;
+export const DeleteWorkspaceLoggerResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspaceLoggerResponse>;
 
 export interface DeleteWorkspaceNamedValueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8176,11 +7967,8 @@ export const DeleteWorkspaceNamedValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceNamedValueRequest>;
 
 export interface DeleteWorkspaceNamedValueResponse {}
-export const DeleteWorkspaceNamedValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceNamedValueResponse",
-}) as any as S.Schema<DeleteWorkspaceNamedValueResponse>;
+export const DeleteWorkspaceNamedValueResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceNamedValueResponse>;
 
 export type DeleteWorkspaceNotificationRecipientEmailRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -8231,11 +8019,8 @@ export const DeleteWorkspaceNotificationRecipientEmailRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteWorkspaceNotificationRecipientEmailRequest>;
 
 export interface DeleteWorkspaceNotificationRecipientEmailResponse {}
-export const DeleteWorkspaceNotificationRecipientEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceNotificationRecipientEmailResponse",
-}) as any as S.Schema<DeleteWorkspaceNotificationRecipientEmailResponse>;
+export const DeleteWorkspaceNotificationRecipientEmailResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceNotificationRecipientEmailResponse>;
 
 export type DeleteWorkspaceNotificationRecipientUserRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -8284,11 +8069,8 @@ export const DeleteWorkspaceNotificationRecipientUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteWorkspaceNotificationRecipientUserRequest>;
 
 export interface DeleteWorkspaceNotificationRecipientUserResponse {}
-export const DeleteWorkspaceNotificationRecipientUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceNotificationRecipientUserResponse",
-}) as any as S.Schema<DeleteWorkspaceNotificationRecipientUserResponse>;
+export const DeleteWorkspaceNotificationRecipientUserResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceNotificationRecipientUserResponse>;
 
 export type DeleteWorkspacePolicyRequestPolicyId = "policy";
 export const DeleteWorkspacePolicyRequestPolicyId = S.String;
@@ -8325,9 +8107,8 @@ export const DeleteWorkspacePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspacePolicyRequest>;
 
 export interface DeleteWorkspacePolicyResponse {}
-export const DeleteWorkspacePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspacePolicyResponse",
-}) as any as S.Schema<DeleteWorkspacePolicyResponse>;
+export const DeleteWorkspacePolicyResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspacePolicyResponse>;
 
 export interface DeleteWorkspacePolicyFragmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8361,11 +8142,8 @@ export const DeleteWorkspacePolicyFragmentRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWorkspacePolicyFragmentRequest>;
 
 export interface DeleteWorkspacePolicyFragmentResponse {}
-export const DeleteWorkspacePolicyFragmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspacePolicyFragmentResponse",
-}) as any as S.Schema<DeleteWorkspacePolicyFragmentResponse>;
+export const DeleteWorkspacePolicyFragmentResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspacePolicyFragmentResponse>;
 
 export interface DeleteWorkspaceProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8402,9 +8180,8 @@ export const DeleteWorkspaceProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceProductRequest>;
 
 export interface DeleteWorkspaceProductResponse {}
-export const DeleteWorkspaceProductResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceProductResponse",
-}) as any as S.Schema<DeleteWorkspaceProductResponse>;
+export const DeleteWorkspaceProductResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspaceProductResponse>;
 
 export interface DeleteWorkspaceProductApiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8441,11 +8218,8 @@ export const DeleteWorkspaceProductApiLinkRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWorkspaceProductApiLinkRequest>;
 
 export interface DeleteWorkspaceProductApiLinkResponse {}
-export const DeleteWorkspaceProductApiLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceProductApiLinkResponse",
-}) as any as S.Schema<DeleteWorkspaceProductApiLinkResponse>;
+export const DeleteWorkspaceProductApiLinkResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceProductApiLinkResponse>;
 
 export interface DeleteWorkspaceProductGroupLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8482,11 +8256,8 @@ export const DeleteWorkspaceProductGroupLinkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWorkspaceProductGroupLinkRequest>;
 
 export interface DeleteWorkspaceProductGroupLinkResponse {}
-export const DeleteWorkspaceProductGroupLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceProductGroupLinkResponse",
-}) as any as S.Schema<DeleteWorkspaceProductGroupLinkResponse>;
+export const DeleteWorkspaceProductGroupLinkResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceProductGroupLinkResponse>;
 
 export type DeleteWorkspaceProductPolicyRequestPolicyId = "policy";
 export const DeleteWorkspaceProductPolicyRequestPolicyId = S.String;
@@ -8526,11 +8297,8 @@ export const DeleteWorkspaceProductPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceProductPolicyRequest>;
 
 export interface DeleteWorkspaceProductPolicyResponse {}
-export const DeleteWorkspaceProductPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceProductPolicyResponse",
-}) as any as S.Schema<DeleteWorkspaceProductPolicyResponse>;
+export const DeleteWorkspaceProductPolicyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceProductPolicyResponse>;
 
 export interface DeleteWorkspaceSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8564,11 +8332,8 @@ export const DeleteWorkspaceSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceSubscriptionRequest>;
 
 export interface DeleteWorkspaceSubscriptionResponse {}
-export const DeleteWorkspaceSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceSubscriptionResponse",
-}) as any as S.Schema<DeleteWorkspaceSubscriptionResponse>;
+export const DeleteWorkspaceSubscriptionResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceSubscriptionResponse>;
 
 export interface DeleteWorkspaceTagRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8602,9 +8367,8 @@ export const DeleteWorkspaceTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceTagRequest>;
 
 export interface DeleteWorkspaceTagResponse {}
-export const DeleteWorkspaceTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceTagResponse",
-}) as any as S.Schema<DeleteWorkspaceTagResponse>;
+export const DeleteWorkspaceTagResponse =
+  FrontendConfigurationInput as any as S.Schema<DeleteWorkspaceTagResponse>;
 
 export interface DeleteWorkspaceTagApiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8641,11 +8405,8 @@ export const DeleteWorkspaceTagApiLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkspaceTagApiLinkRequest>;
 
 export interface DeleteWorkspaceTagApiLinkResponse {}
-export const DeleteWorkspaceTagApiLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceTagApiLinkResponse",
-}) as any as S.Schema<DeleteWorkspaceTagApiLinkResponse>;
+export const DeleteWorkspaceTagApiLinkResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceTagApiLinkResponse>;
 
 export interface DeleteWorkspaceTagOperationLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8682,11 +8443,8 @@ export const DeleteWorkspaceTagOperationLinkRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWorkspaceTagOperationLinkRequest>;
 
 export interface DeleteWorkspaceTagOperationLinkResponse {}
-export const DeleteWorkspaceTagOperationLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceTagOperationLinkResponse",
-}) as any as S.Schema<DeleteWorkspaceTagOperationLinkResponse>;
+export const DeleteWorkspaceTagOperationLinkResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceTagOperationLinkResponse>;
 
 export interface DeleteWorkspaceTagProductLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8723,11 +8481,8 @@ export const DeleteWorkspaceTagProductLinkRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWorkspaceTagProductLinkRequest>;
 
 export interface DeleteWorkspaceTagProductLinkResponse {}
-export const DeleteWorkspaceTagProductLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkspaceTagProductLinkResponse",
-}) as any as S.Schema<DeleteWorkspaceTagProductLinkResponse>;
+export const DeleteWorkspaceTagProductLinkResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<DeleteWorkspaceTagProductLinkResponse>;
 
 export type DeployTenantConfigurationRequestConfigurationName = "configuration";
 export const DeployTenantConfigurationRequestConfigurationName = S.String;
@@ -8936,9 +8691,8 @@ export const DetachTagFromApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DetachTagFromApiRequest" }) as any as S.Schema<DetachTagFromApiRequest>;
 
 export interface DetachTagFromApiResponse {}
-export const DetachTagFromApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachTagFromApiResponse",
-}) as any as S.Schema<DetachTagFromApiResponse>;
+export const DetachTagFromApiResponse =
+  FrontendConfigurationInput as any as S.Schema<DetachTagFromApiResponse>;
 
 export interface DetachTagFromOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8975,9 +8729,8 @@ export const DetachTagFromOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetachTagFromOperationRequest>;
 
 export interface DetachTagFromOperationResponse {}
-export const DetachTagFromOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachTagFromOperationResponse",
-}) as any as S.Schema<DetachTagFromOperationResponse>;
+export const DetachTagFromOperationResponse =
+  FrontendConfigurationInput as any as S.Schema<DetachTagFromOperationResponse>;
 
 export interface DetachTagFromProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9011,9 +8764,8 @@ export const DetachTagFromProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetachTagFromProductRequest>;
 
 export interface DetachTagFromProductResponse {}
-export const DetachTagFromProductResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachTagFromProductResponse",
-}) as any as S.Schema<DetachTagFromProductResponse>;
+export const DetachTagFromProductResponse =
+  FrontendConfigurationInput as any as S.Schema<DetachTagFromProductResponse>;
 
 export interface DiagnosticCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9056,16 +8808,8 @@ export interface DiagnosticCreateOrUpdateResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const DiagnosticCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "DiagnosticCreateOrUpdateResponse",
-}) as any as S.Schema<DiagnosticCreateOrUpdateResponse>;
+export const DiagnosticCreateOrUpdateResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<DiagnosticCreateOrUpdateResponse>;
 
 /** Markdown documentation details. */
 export interface DocumentationContractProperties {
@@ -9237,9 +8981,8 @@ export const EmailTemplateCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Email Template Parameter values. */
 export type EmailTemplateContractPropertiesParametersList =
   Array<EmailTemplateParametersContractProperties>;
-export const EmailTemplateContractPropertiesParametersList = /*@__PURE__*/ S.Array(
-  EmailTemplateParametersContractProperties,
-) as any as S.Schema<EmailTemplateContractPropertiesParametersList>;
+export const EmailTemplateContractPropertiesParametersList =
+  EmailTemplateUpdateParameterPropertiesParametersList as any as S.Schema<EmailTemplateContractPropertiesParametersList>;
 
 /** Email Template Contract properties. */
 export interface EmailTemplateContractProperties {
@@ -9351,16 +9094,8 @@ export interface GatewayApiCreateOrUpdateResponse {
   /** API entity contract properties. */
   properties?: ApiContractProperties;
 }
-export const GatewayApiCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiContractProperties),
-  }),
-).annotate({
-  identifier: "GatewayApiCreateOrUpdateResponse",
-}) as any as S.Schema<GatewayApiCreateOrUpdateResponse>;
+export const GatewayApiCreateOrUpdateResponse =
+  ApiCreateOrUpdateResponse as any as S.Schema<GatewayApiCreateOrUpdateResponse>;
 
 /** Gateway certificate authority details. */
 export interface GatewayCertificateAuthorityContractProperties {
@@ -9685,13 +9420,8 @@ export interface GenerateUserSsoUrlResponse {
   /** Redirect Url containing the SSO URL value. */
   value?: string;
 }
-export const GenerateUserSsoUrlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenerateUserSsoUrlResponse",
-}) as any as S.Schema<GenerateUserSsoUrlResponse>;
+export const GenerateUserSsoUrlResponse =
+  GenerateGatewayTokenResponse as any as S.Schema<GenerateUserSsoUrlResponse>;
 
 export interface GetApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9811,10 +9541,8 @@ export const GetApiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetApiGatewayResponseTagsMap = { [key: string]: string | undefined };
-export const GetApiGatewayResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetApiGatewayResponseTagsMap>;
+export const GetApiGatewayResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<GetApiGatewayResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetApiGatewayResponseSystemDataCreatedByType =
@@ -9934,17 +9662,8 @@ export interface GetApiGatewayConfigConnectionResponse {
   /** ETag of the resource. */
   etag?: string;
 }
-export const GetApiGatewayConfigConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: GatewayConfigConnectionBaseProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetApiGatewayConfigConnectionResponse",
-}) as any as S.Schema<GetApiGatewayConfigConnectionResponse>;
+export const GetApiGatewayConfigConnectionResponse =
+  ApiGatewayConfigConnectionCreateOrUpdateResponse as any as S.Schema<GetApiGatewayConfigConnectionResponse>;
 
 export interface GetApiIssueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10041,16 +9760,8 @@ export interface GetApiIssueAttachmentResponse {
   /** Properties of the Issue Attachment. */
   properties?: IssueAttachmentContractProperties;
 }
-export const GetApiIssueAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(IssueAttachmentContractProperties),
-  }),
-).annotate({
-  identifier: "GetApiIssueAttachmentResponse",
-}) as any as S.Schema<GetApiIssueAttachmentResponse>;
+export const GetApiIssueAttachmentResponse =
+  ApiIssueAttachmentCreateOrUpdateResponse as any as S.Schema<GetApiIssueAttachmentResponse>;
 
 export interface GetApiIssueCommentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10096,16 +9807,8 @@ export interface GetApiIssueCommentResponse {
   /** Properties of the Issue Comment. */
   properties?: IssueCommentContractProperties;
 }
-export const GetApiIssueCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(IssueCommentContractProperties),
-  }),
-).annotate({
-  identifier: "GetApiIssueCommentResponse",
-}) as any as S.Schema<GetApiIssueCommentResponse>;
+export const GetApiIssueCommentResponse =
+  ApiIssueCommentCreateOrUpdateResponse as any as S.Schema<GetApiIssueCommentResponse>;
 
 export interface GetApiManagementServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10134,10 +9837,8 @@ export const GetApiManagementServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetApiManagementServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetApiManagementServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetApiManagementServiceResponseTagsMap>;
+export const GetApiManagementServiceResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<GetApiManagementServiceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetApiManagementServiceResponseSystemDataCreatedByType =
@@ -10185,9 +9886,8 @@ export const GetApiManagementServiceResponseSystemData = /*@__PURE__*/ S.suspend
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type GetApiManagementServiceResponseZonesList = Array<string>;
-export const GetApiManagementServiceResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetApiManagementServiceResponseZonesList>;
+export const GetApiManagementServiceResponseZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<GetApiManagementServiceResponseZonesList>;
 
 export interface GetApiManagementServiceResponse {
   /** Resource ID. */
@@ -10333,11 +10033,7 @@ export interface WorkspaceLinksGateway {
   /** The link to the API Management gateway. */
   id?: string;
 }
-export const WorkspaceLinksGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "WorkspaceLinksGateway" }) as any as S.Schema<WorkspaceLinksGateway>;
+export const WorkspaceLinksGateway = ArmIdWrapper as any as S.Schema<WorkspaceLinksGateway>;
 
 /** The array of linked gateways. */
 export type ApiManagementWorkspaceLinksPropertiesGatewaysList = Array<WorkspaceLinksGateway>;
@@ -10486,16 +10182,8 @@ export interface GetApiOperationPolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetApiOperationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GetApiOperationPolicyResponse",
-}) as any as S.Schema<GetApiOperationPolicyResponse>;
+export const GetApiOperationPolicyResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<GetApiOperationPolicyResponse>;
 
 export type GetApiPolicyRequestPolicyId = "policy";
 export const GetApiPolicyRequestPolicyId = S.String;
@@ -10691,16 +10379,8 @@ export interface GetApiTagDescriptionResponse {
   /** TagDescription entity contract properties. */
   properties?: TagDescriptionContractProperties;
 }
-export const GetApiTagDescriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagDescriptionContractProperties),
-  }),
-).annotate({
-  identifier: "GetApiTagDescriptionResponse",
-}) as any as S.Schema<GetApiTagDescriptionResponse>;
+export const GetApiTagDescriptionResponse =
+  ApiTagDescriptionCreateOrUpdateResponse as any as S.Schema<GetApiTagDescriptionResponse>;
 
 export interface GetApiVersionSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10884,16 +10564,8 @@ export interface GetAuthorizationAccessPolicyResponse {
   /** Properties of the Authorization Contract. */
   properties?: AuthorizationAccessPolicyContractProperties;
 }
-export const GetAuthorizationAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationAccessPolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GetAuthorizationAccessPolicyResponse",
-}) as any as S.Schema<GetAuthorizationAccessPolicyResponse>;
+export const GetAuthorizationAccessPolicyResponse =
+  AuthorizationAccessPolicyCreateOrUpdateResponse as any as S.Schema<GetAuthorizationAccessPolicyResponse>;
 
 export interface GetAuthorizationProviderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10933,16 +10605,8 @@ export interface GetAuthorizationProviderResponse {
   /** Properties of the Authorization Provider Contract. */
   properties?: AuthorizationProviderContractProperties;
 }
-export const GetAuthorizationProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationProviderContractProperties),
-  }),
-).annotate({
-  identifier: "GetAuthorizationProviderResponse",
-}) as any as S.Schema<GetAuthorizationProviderResponse>;
+export const GetAuthorizationProviderResponse =
+  AuthorizationProviderCreateOrUpdateResponse as any as S.Schema<GetAuthorizationProviderResponse>;
 
 export interface GetAuthorizationServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10982,16 +10646,8 @@ export interface GetAuthorizationServerResponse {
   /** Properties of the External OAuth authorization server Contract. */
   properties?: AuthorizationServerContractProperties;
 }
-export const GetAuthorizationServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationServerContractProperties),
-  }),
-).annotate({
-  identifier: "GetAuthorizationServerResponse",
-}) as any as S.Schema<GetAuthorizationServerResponse>;
+export const GetAuthorizationServerResponse =
+  AuthorizationServerCreateOrUpdateResponse as any as S.Schema<GetAuthorizationServerResponse>;
 
 export interface GetBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11324,14 +10980,8 @@ export interface GetDiagnosticResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const GetDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({ identifier: "GetDiagnosticResponse" }) as any as S.Schema<GetDiagnosticResponse>;
+export const GetDiagnosticResponse =
+  GetApiDiagnosticResponse as any as S.Schema<GetDiagnosticResponse>;
 
 export interface GetDocumentationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11526,16 +11176,8 @@ export interface GetGatewayCertificateAuthorityResponse {
   /** Gateway certificate authority details. */
   properties?: GatewayCertificateAuthorityContractProperties;
 }
-export const GetGatewayCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GatewayCertificateAuthorityContractProperties),
-  }),
-).annotate({
-  identifier: "GetGatewayCertificateAuthorityResponse",
-}) as any as S.Schema<GetGatewayCertificateAuthorityResponse>;
+export const GetGatewayCertificateAuthorityResponse =
+  GatewayCertificateAuthorityCreateOrUpdateResponse as any as S.Schema<GetGatewayCertificateAuthorityResponse>;
 
 export interface GetGatewayHostnameConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11578,16 +11220,8 @@ export interface GetGatewayHostnameConfigurationResponse {
   /** Gateway hostname configuration details. */
   properties?: GatewayHostnameConfigurationContractProperties;
 }
-export const GetGatewayHostnameConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GatewayHostnameConfigurationContractProperties),
-  }),
-).annotate({
-  identifier: "GetGatewayHostnameConfigurationResponse",
-}) as any as S.Schema<GetGatewayHostnameConfigurationResponse>;
+export const GetGatewayHostnameConfigurationResponse =
+  GatewayHostnameConfigurationCreateOrUpdateResponse as any as S.Schema<GetGatewayHostnameConfigurationResponse>;
 
 export interface GetGlobalSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11787,16 +11421,8 @@ export interface GetGraphQLApiResolverPolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetGraphQLApiResolverPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GetGraphQLApiResolverPolicyResponse",
-}) as any as S.Schema<GetGraphQLApiResolverPolicyResponse>;
+export const GetGraphQLApiResolverPolicyResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<GetGraphQLApiResolverPolicyResponse>;
 
 export interface GetGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11919,9 +11545,8 @@ export const IdentityProviderContractPropertiesType = S.String;
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
 export type IdentityProviderContractPropertiesAllowedTenantsList = Array<string>;
-export const IdentityProviderContractPropertiesAllowedTenantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityProviderContractPropertiesAllowedTenantsList>;
+export const IdentityProviderContractPropertiesAllowedTenantsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<IdentityProviderContractPropertiesAllowedTenantsList>;
 
 /** The external Identity Providers like Facebook, Google, Microsoft, Twitter or Azure Active Directory which can be used to enable access to the API Management service developer portal for all users. */
 export interface IdentityProviderContractProperties {
@@ -12023,14 +11648,7 @@ export interface GetIssueResponse {
   /** Properties of the Issue. */
   properties?: IssueContractProperties;
 }
-export const GetIssueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(IssueContractProperties),
-  }),
-).annotate({ identifier: "GetIssueResponse" }) as any as S.Schema<GetIssueResponse>;
+export const GetIssueResponse = GetApiIssueResponse as any as S.Schema<GetIssueResponse>;
 
 export interface GetLoggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12067,10 +11685,8 @@ export const LoggerContractPropertiesLoggerType = S.String;
 
 /** The name and SendRule connection string of the event hub for azureEventHub logger. Instrumentation key for applicationInsights logger. */
 export type LoggerContractPropertiesCredentialsMap = { [key: string]: string | undefined };
-export const LoggerContractPropertiesCredentialsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LoggerContractPropertiesCredentialsMap>;
+export const LoggerContractPropertiesCredentialsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<LoggerContractPropertiesCredentialsMap>;
 
 /** The Logger entity in API Management represents an event sink that you can use to log API Management events. Currently the Logger entity supports logging API Management events to Azure Event Hubs. */
 export interface LoggerContractProperties {
@@ -12142,9 +11758,8 @@ export const GetNamedValueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional tags that when provided can be used to filter the NamedValue list. */
 export type NamedValueContractPropertiesTagsList = Array<string>;
-export const NamedValueContractPropertiesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamedValueContractPropertiesTagsList>;
+export const NamedValueContractPropertiesTagsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<NamedValueContractPropertiesTagsList>;
 
 /** NamedValue Contract properties. */
 export interface NamedValueContractProperties {
@@ -12231,15 +11846,13 @@ export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Emails subscribed for the notification. */
 export type RecipientsContractPropertiesEmailsList = Array<string>;
-export const RecipientsContractPropertiesEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecipientsContractPropertiesEmailsList>;
+export const RecipientsContractPropertiesEmailsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<RecipientsContractPropertiesEmailsList>;
 
 /** List of Users subscribed for the notification. */
 export type RecipientsContractPropertiesUsersList = Array<string>;
-export const RecipientsContractPropertiesUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecipientsContractPropertiesUsersList>;
+export const RecipientsContractPropertiesUsersList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<RecipientsContractPropertiesUsersList>;
 
 /** Notification Parameter contract. */
 export interface RecipientsContractProperties {
@@ -12401,9 +12014,8 @@ export const GetOperationsResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOperationsResultRequest>;
 
 export interface GetOperationsResultResponse {}
-export const GetOperationsResultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetOperationsResultResponse",
-}) as any as S.Schema<GetOperationsResultResponse>;
+export const GetOperationsResultResponse =
+  FrontendConfigurationInput as any as S.Schema<GetOperationsResultResponse>;
 
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12607,14 +12219,7 @@ export interface GetPolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({ identifier: "GetPolicyResponse" }) as any as S.Schema<GetPolicyResponse>;
+export const GetPolicyResponse = GetApiPolicyResponse as any as S.Schema<GetPolicyResponse>;
 
 export type GetPolicyFragmentRequestFormat = "xml" | "rawxml";
 export const GetPolicyFragmentRequestFormat = S.String;
@@ -12853,9 +12458,8 @@ export const PortalConfigDelegationProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed origins, e.g. `https://trusted.com`. */
 export type PortalConfigCorsPropertiesAllowedOriginsList = Array<string>;
-export const PortalConfigCorsPropertiesAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PortalConfigCorsPropertiesAllowedOriginsList>;
+export const PortalConfigCorsPropertiesAllowedOriginsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<PortalConfigCorsPropertiesAllowedOriginsList>;
 
 /** The developer portal Cross-Origin Resource Sharing (CORS) settings. */
 export interface PortalConfigCorsProperties {
@@ -12876,15 +12480,13 @@ export const PortalConfigCspPropertiesMode = S.String;
 
 /** The URLs used by the browser to report CSP violations. */
 export type PortalConfigCspPropertiesReportUriList = Array<string>;
-export const PortalConfigCspPropertiesReportUriList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PortalConfigCspPropertiesReportUriList>;
+export const PortalConfigCspPropertiesReportUriList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<PortalConfigCspPropertiesReportUriList>;
 
 /** Allowed sources, e.g. `*.trusted.com`, `trusted.com`, `https://`. */
 export type PortalConfigCspPropertiesAllowedSourcesList = Array<string>;
-export const PortalConfigCspPropertiesAllowedSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PortalConfigCspPropertiesAllowedSourcesList>;
+export const PortalConfigCspPropertiesAllowedSourcesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<PortalConfigCspPropertiesAllowedSourcesList>;
 
 /** The developer portal Content Security Policy (CSP) settings. */
 export interface PortalConfigCspProperties {
@@ -13066,11 +12668,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrivateEndpoint" }) as any as S.Schema<PrivateEndpoint>;
+export const PrivateEndpoint = ArmIdWrapper as any as S.Schema<PrivateEndpoint>;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export type PrivateLinkServiceConnectionState =
@@ -13157,15 +12755,13 @@ export const GetPrivateEndpointConnectionPrivateLinkResourceRequest = /*@__PURE_
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -13463,14 +13059,8 @@ export interface GetProductPolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetProductPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({ identifier: "GetProductPolicyResponse" }) as any as S.Schema<GetProductPolicyResponse>;
+export const GetProductPolicyResponse =
+  GetApiPolicyResponse as any as S.Schema<GetProductPolicyResponse>;
 
 export interface GetProductWikiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13508,14 +13098,7 @@ export interface GetProductWikiResponse {
   /** Wiki details. */
   properties?: WikiContractProperties;
 }
-export const GetProductWikiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WikiContractProperties),
-  }),
-).annotate({ identifier: "GetProductWikiResponse" }) as any as S.Schema<GetProductWikiResponse>;
+export const GetProductWikiResponse = GetApiWikiResponse as any as S.Schema<GetProductWikiResponse>;
 
 export interface GetQuotaByPeriodKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13728,14 +13311,7 @@ export interface GetTagResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const GetTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({ identifier: "GetTagResponse" }) as any as S.Schema<GetTagResponse>;
+export const GetTagResponse = AssignTagToApiResponse as any as S.Schema<GetTagResponse>;
 
 export interface GetTagApiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13828,14 +13404,7 @@ export interface GetTagByApiResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const GetTagByApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({ identifier: "GetTagByApiResponse" }) as any as S.Schema<GetTagByApiResponse>;
+export const GetTagByApiResponse = AssignTagToApiResponse as any as S.Schema<GetTagByApiResponse>;
 
 export interface GetTagByOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13879,16 +13448,8 @@ export interface GetTagByOperationResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const GetTagByOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({
-  identifier: "GetTagByOperationResponse",
-}) as any as S.Schema<GetTagByOperationResponse>;
+export const GetTagByOperationResponse =
+  AssignTagToOperationResponse as any as S.Schema<GetTagByOperationResponse>;
 
 export interface GetTagByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13929,14 +13490,8 @@ export interface GetTagByProductResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const GetTagByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({ identifier: "GetTagByProductResponse" }) as any as S.Schema<GetTagByProductResponse>;
+export const GetTagByProductResponse =
+  AssignTagToApiResponse as any as S.Schema<GetTagByProductResponse>;
 
 export interface GetTagOperationLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14236,14 +13791,7 @@ export interface GetUserResponse {
   /** User entity contract properties. */
   properties?: UserContractProperties;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UserContractProperties),
-  }),
-).annotate({ identifier: "GetUserResponse" }) as any as S.Schema<GetUserResponse>;
+export const GetUserResponse = CreateGroupUserResponse as any as S.Schema<GetUserResponse>;
 
 /** The Key to be used to generate token for user. */
 export type UserTokenParameterPropertiesKeyType = "primary" | "secondary";
@@ -14300,13 +13848,8 @@ export interface GetUserSharedAccessTokenResponse {
   /** Shared Access Authorization token for the User. */
   value?: string;
 }
-export const GetUserSharedAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetUserSharedAccessTokenResponse",
-}) as any as S.Schema<GetUserSharedAccessTokenResponse>;
+export const GetUserSharedAccessTokenResponse =
+  GenerateGatewayTokenResponse as any as S.Schema<GetUserSharedAccessTokenResponse>;
 
 export interface GetUserSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14460,14 +14003,7 @@ export interface GetWorkspaceApiResponse {
   /** API entity contract properties. */
   properties?: ApiContractProperties;
 }
-export const GetWorkspaceApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiContractProperties),
-  }),
-).annotate({ identifier: "GetWorkspaceApiResponse" }) as any as S.Schema<GetWorkspaceApiResponse>;
+export const GetWorkspaceApiResponse = GetApiResponse as any as S.Schema<GetWorkspaceApiResponse>;
 
 export interface GetWorkspaceApiDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14513,16 +14049,8 @@ export interface GetWorkspaceApiDiagnosticResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const GetWorkspaceApiDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceApiDiagnosticResponse",
-}) as any as S.Schema<GetWorkspaceApiDiagnosticResponse>;
+export const GetWorkspaceApiDiagnosticResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<GetWorkspaceApiDiagnosticResponse>;
 
 export interface GetWorkspaceApiOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14568,16 +14096,8 @@ export interface GetWorkspaceApiOperationResponse {
   /** Properties of the Operation Contract. */
   properties?: OperationContractProperties;
 }
-export const GetWorkspaceApiOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceApiOperationResponse",
-}) as any as S.Schema<GetWorkspaceApiOperationResponse>;
+export const GetWorkspaceApiOperationResponse =
+  ApiOperationCreateOrUpdateResponse as any as S.Schema<GetWorkspaceApiOperationResponse>;
 
 export type GetWorkspaceApiOperationPolicyRequestPolicyId = "policy";
 export const GetWorkspaceApiOperationPolicyRequestPolicyId = S.String;
@@ -14635,16 +14155,8 @@ export interface GetWorkspaceApiOperationPolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetWorkspaceApiOperationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceApiOperationPolicyResponse",
-}) as any as S.Schema<GetWorkspaceApiOperationPolicyResponse>;
+export const GetWorkspaceApiOperationPolicyResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<GetWorkspaceApiOperationPolicyResponse>;
 
 export type GetWorkspaceApiPolicyRequestPolicyId = "policy";
 export const GetWorkspaceApiPolicyRequestPolicyId = S.String;
@@ -14699,16 +14211,8 @@ export interface GetWorkspaceApiPolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetWorkspaceApiPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceApiPolicyResponse",
-}) as any as S.Schema<GetWorkspaceApiPolicyResponse>;
+export const GetWorkspaceApiPolicyResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<GetWorkspaceApiPolicyResponse>;
 
 export interface GetWorkspaceApiReleaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14754,16 +14258,8 @@ export interface GetWorkspaceApiReleaseResponse {
   /** ApiRelease entity contract properties. */
   properties?: ApiReleaseContractProperties;
 }
-export const GetWorkspaceApiReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiReleaseContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceApiReleaseResponse",
-}) as any as S.Schema<GetWorkspaceApiReleaseResponse>;
+export const GetWorkspaceApiReleaseResponse =
+  ApiReleaseCreateOrUpdateResponse as any as S.Schema<GetWorkspaceApiReleaseResponse>;
 
 export interface GetWorkspaceApiSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14809,16 +14305,8 @@ export interface GetWorkspaceApiSchemaResponse {
   /** Properties of the API Schema. */
   properties?: SchemaContractProperties;
 }
-export const GetWorkspaceApiSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SchemaContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceApiSchemaResponse",
-}) as any as S.Schema<GetWorkspaceApiSchemaResponse>;
+export const GetWorkspaceApiSchemaResponse =
+  ApiSchemaCreateOrUpdateResponse as any as S.Schema<GetWorkspaceApiSchemaResponse>;
 
 export interface GetWorkspaceApiVersionSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14861,16 +14349,8 @@ export interface GetWorkspaceApiVersionSetResponse {
   /** API VersionSet contract properties. */
   properties?: ApiVersionSetContractProperties;
 }
-export const GetWorkspaceApiVersionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiVersionSetContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceApiVersionSetResponse",
-}) as any as S.Schema<GetWorkspaceApiVersionSetResponse>;
+export const GetWorkspaceApiVersionSetResponse =
+  ApiVersionSetCreateOrUpdateResponse as any as S.Schema<GetWorkspaceApiVersionSetResponse>;
 
 export interface GetWorkspaceBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14913,16 +14393,8 @@ export interface GetWorkspaceBackendResponse {
   /** Backend entity contract properties. */
   properties?: BackendContractProperties;
 }
-export const GetWorkspaceBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackendContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceBackendResponse",
-}) as any as S.Schema<GetWorkspaceBackendResponse>;
+export const GetWorkspaceBackendResponse =
+  BackendCreateOrUpdateResponse as any as S.Schema<GetWorkspaceBackendResponse>;
 
 export interface GetWorkspaceCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14965,16 +14437,8 @@ export interface GetWorkspaceCertificateResponse {
   /** Certificate properties details. */
   properties?: CertificateContractProperties;
 }
-export const GetWorkspaceCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CertificateContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceCertificateResponse",
-}) as any as S.Schema<GetWorkspaceCertificateResponse>;
+export const GetWorkspaceCertificateResponse =
+  CertificateCreateOrUpdateResponse as any as S.Schema<GetWorkspaceCertificateResponse>;
 
 export interface GetWorkspaceDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15017,16 +14481,8 @@ export interface GetWorkspaceDiagnosticResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const GetWorkspaceDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceDiagnosticResponse",
-}) as any as S.Schema<GetWorkspaceDiagnosticResponse>;
+export const GetWorkspaceDiagnosticResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<GetWorkspaceDiagnosticResponse>;
 
 export interface GetWorkspaceGlobalSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15346,16 +14802,8 @@ export interface GetWorkspacePolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetWorkspacePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspacePolicyResponse",
-}) as any as S.Schema<GetWorkspacePolicyResponse>;
+export const GetWorkspacePolicyResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<GetWorkspacePolicyResponse>;
 
 export type GetWorkspacePolicyFragmentRequestFormat = "xml" | "rawxml";
 export const GetWorkspacePolicyFragmentRequestFormat = S.String;
@@ -15404,16 +14852,8 @@ export interface GetWorkspacePolicyFragmentResponse {
   /** Properties of the Policy Fragment. */
   properties?: PolicyFragmentContractProperties;
 }
-export const GetWorkspacePolicyFragmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyFragmentContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspacePolicyFragmentResponse",
-}) as any as S.Schema<GetWorkspacePolicyFragmentResponse>;
+export const GetWorkspacePolicyFragmentResponse =
+  GetPolicyFragmentResponse as any as S.Schema<GetWorkspacePolicyFragmentResponse>;
 
 export interface GetWorkspaceProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15511,16 +14951,8 @@ export interface GetWorkspaceProductApiLinkResponse {
   /** Product-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const GetWorkspaceProductApiLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceProductApiLinkResponse",
-}) as any as S.Schema<GetWorkspaceProductApiLinkResponse>;
+export const GetWorkspaceProductApiLinkResponse =
+  GetProductApiLinkResponse as any as S.Schema<GetWorkspaceProductApiLinkResponse>;
 
 export interface GetWorkspaceProductGroupLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15566,16 +14998,8 @@ export interface GetWorkspaceProductGroupLinkResponse {
   /** Product-group link entity contract properties. */
   properties?: ProductGroupLinkContractProperties;
 }
-export const GetWorkspaceProductGroupLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductGroupLinkContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceProductGroupLinkResponse",
-}) as any as S.Schema<GetWorkspaceProductGroupLinkResponse>;
+export const GetWorkspaceProductGroupLinkResponse =
+  GetProductGroupLinkResponse as any as S.Schema<GetWorkspaceProductGroupLinkResponse>;
 
 export type GetWorkspaceProductPolicyRequestPolicyId = "policy";
 export const GetWorkspaceProductPolicyRequestPolicyId = S.String;
@@ -15630,16 +15054,8 @@ export interface GetWorkspaceProductPolicyResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GetWorkspaceProductPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceProductPolicyResponse",
-}) as any as S.Schema<GetWorkspaceProductPolicyResponse>;
+export const GetWorkspaceProductPolicyResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<GetWorkspaceProductPolicyResponse>;
 
 export interface GetWorkspaceSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15682,16 +15098,8 @@ export interface GetWorkspaceSubscriptionResponse {
   /** Subscription contract properties. */
   properties?: SubscriptionContractProperties;
 }
-export const GetWorkspaceSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SubscriptionContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceSubscriptionResponse",
-}) as any as S.Schema<GetWorkspaceSubscriptionResponse>;
+export const GetWorkspaceSubscriptionResponse =
+  GetUserSubscriptionResponse as any as S.Schema<GetWorkspaceSubscriptionResponse>;
 
 export interface GetWorkspaceTagRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15732,14 +15140,8 @@ export interface GetWorkspaceTagResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const GetWorkspaceTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({ identifier: "GetWorkspaceTagResponse" }) as any as S.Schema<GetWorkspaceTagResponse>;
+export const GetWorkspaceTagResponse =
+  AssignTagToApiResponse as any as S.Schema<GetWorkspaceTagResponse>;
 
 export interface GetWorkspaceTagApiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15785,16 +15187,8 @@ export interface GetWorkspaceTagApiLinkResponse {
   /** Tag-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const GetWorkspaceTagApiLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceTagApiLinkResponse",
-}) as any as S.Schema<GetWorkspaceTagApiLinkResponse>;
+export const GetWorkspaceTagApiLinkResponse =
+  GetProductApiLinkResponse as any as S.Schema<GetWorkspaceTagApiLinkResponse>;
 
 export interface GetWorkspaceTagOperationLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15840,16 +15234,8 @@ export interface GetWorkspaceTagOperationLinkResponse {
   /** Tag-API link entity contract properties. */
   properties?: TagOperationLinkContractProperties;
 }
-export const GetWorkspaceTagOperationLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagOperationLinkContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceTagOperationLinkResponse",
-}) as any as S.Schema<GetWorkspaceTagOperationLinkResponse>;
+export const GetWorkspaceTagOperationLinkResponse =
+  GetTagOperationLinkResponse as any as S.Schema<GetWorkspaceTagOperationLinkResponse>;
 
 export interface GetWorkspaceTagProductLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15895,16 +15281,8 @@ export interface GetWorkspaceTagProductLinkResponse {
   /** Tag-API link entity contract properties. */
   properties?: TagProductLinkContractProperties;
 }
-export const GetWorkspaceTagProductLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagProductLinkContractProperties),
-  }),
-).annotate({
-  identifier: "GetWorkspaceTagProductLinkResponse",
-}) as any as S.Schema<GetWorkspaceTagProductLinkResponse>;
+export const GetWorkspaceTagProductLinkResponse =
+  GetTagProductLinkResponse as any as S.Schema<GetWorkspaceTagProductLinkResponse>;
 
 /** Schema Type. Immutable. */
 export type GlobalSchemaContractPropertiesInputSchemaType = "xml" | "json";
@@ -15973,16 +15351,8 @@ export interface GlobalSchemaCreateOrUpdateResponse {
   /** Properties of the Global Schema. */
   properties?: GlobalSchemaContractProperties;
 }
-export const GlobalSchemaCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GlobalSchemaContractProperties),
-  }),
-).annotate({
-  identifier: "GlobalSchemaCreateOrUpdateResponse",
-}) as any as S.Schema<GlobalSchemaCreateOrUpdateResponse>;
+export const GlobalSchemaCreateOrUpdateResponse =
+  GetWorkspaceGlobalSchemaResponse as any as S.Schema<GlobalSchemaCreateOrUpdateResponse>;
 
 export interface GraphQLApiResolverCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16028,16 +15398,8 @@ export interface GraphQLApiResolverCreateOrUpdateResponse {
   /** Properties of the Resolver Contract. */
   properties?: ResolverEntityBaseContract;
 }
-export const GraphQLApiResolverCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ResolverEntityBaseContract),
-  }),
-).annotate({
-  identifier: "GraphQLApiResolverCreateOrUpdateResponse",
-}) as any as S.Schema<GraphQLApiResolverCreateOrUpdateResponse>;
+export const GraphQLApiResolverCreateOrUpdateResponse =
+  GetGraphQLApiResolverResponse as any as S.Schema<GraphQLApiResolverCreateOrUpdateResponse>;
 
 export type GraphQLApiResolverPolicyCreateOrUpdateRequestPolicyId = "policy";
 export const GraphQLApiResolverPolicyCreateOrUpdateRequestPolicyId = S.String;
@@ -16089,16 +15451,8 @@ export interface GraphQLApiResolverPolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const GraphQLApiResolverPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "GraphQLApiResolverPolicyCreateOrUpdateResponse",
-}) as any as S.Schema<GraphQLApiResolverPolicyCreateOrUpdateResponse>;
+export const GraphQLApiResolverPolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<GraphQLApiResolverPolicyCreateOrUpdateResponse>;
 
 /** Group type. */
 export type GroupCreateParametersPropertiesType = "custom" | "system" | "external";
@@ -16167,16 +15521,8 @@ export interface GroupCreateOrUpdateResponse {
   /** Group entity contract properties. */
   properties?: GroupContractProperties;
 }
-export const GroupCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GroupContractProperties),
-  }),
-).annotate({
-  identifier: "GroupCreateOrUpdateResponse",
-}) as any as S.Schema<GroupCreateOrUpdateResponse>;
+export const GroupCreateOrUpdateResponse =
+  GetWorkspaceGroupResponse as any as S.Schema<GroupCreateOrUpdateResponse>;
 
 export type IdentityProviderCreateOrUpdateRequestIdentityProviderName =
   | "facebook"
@@ -16199,9 +15545,8 @@ export const IdentityProviderCreateContractPropertiesType = S.String;
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
 export type IdentityProviderCreateContractPropertiesAllowedTenantsList = Array<string>;
-export const IdentityProviderCreateContractPropertiesAllowedTenantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityProviderCreateContractPropertiesAllowedTenantsList>;
+export const IdentityProviderCreateContractPropertiesAllowedTenantsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<IdentityProviderCreateContractPropertiesAllowedTenantsList>;
 
 /** The external Identity Providers like Facebook, Google, Microsoft, Twitter or Azure Active Directory which can be used to enable access to the API Management service developer portal for all users. */
 export interface IdentityProviderCreateContractProperties {
@@ -16287,16 +15632,8 @@ export interface IdentityProviderCreateOrUpdateResponse {
   /** Identity Provider contract properties. */
   properties?: IdentityProviderContractProperties;
 }
-export const IdentityProviderCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(IdentityProviderContractProperties),
-  }),
-).annotate({
-  identifier: "IdentityProviderCreateOrUpdateResponse",
-}) as any as S.Schema<IdentityProviderCreateOrUpdateResponse>;
+export const IdentityProviderCreateOrUpdateResponse =
+  GetIdentityProviderResponse as any as S.Schema<IdentityProviderCreateOrUpdateResponse>;
 
 export interface InvalidateGatewayDebugCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16327,11 +15664,8 @@ export const InvalidateGatewayDebugCredentialsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InvalidateGatewayDebugCredentialsRequest>;
 
 export interface InvalidateGatewayDebugCredentialsResponse {}
-export const InvalidateGatewayDebugCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InvalidateGatewayDebugCredentialsResponse",
-}) as any as S.Schema<InvalidateGatewayDebugCredentialsResponse>;
+export const InvalidateGatewayDebugCredentialsResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<InvalidateGatewayDebugCredentialsResponse>;
 
 export interface ListAllPolicyByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16468,14 +15802,7 @@ export interface ApiContract {
   /** API entity contract properties. */
   properties?: ApiContractProperties;
 }
-export const ApiContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiContractProperties),
-  }),
-).annotate({ identifier: "ApiContract" }) as any as S.Schema<ApiContract>;
+export const ApiContract = GetApiResponse as any as S.Schema<ApiContract>;
 
 /** Page values. */
 export type ListApiByServiceResponseValueList = Array<ApiContract>;
@@ -16802,14 +16129,7 @@ export interface DiagnosticContract {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const DiagnosticContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({ identifier: "DiagnosticContract" }) as any as S.Schema<DiagnosticContract>;
+export const DiagnosticContract = GetApiDiagnosticResponse as any as S.Schema<DiagnosticContract>;
 
 /** Page values. */
 export type ListApiDiagnosticByServiceResponseValueList = Array<DiagnosticContract>;
@@ -16854,10 +16174,8 @@ export const ListApiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ApiManagementGatewayResourceTagsMap = { [key: string]: string | undefined };
-export const ApiManagementGatewayResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementGatewayResourceTagsMap>;
+export const ApiManagementGatewayResourceTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementGatewayResourceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApiManagementGatewayResourceSystemDataCreatedByType =
@@ -17022,17 +16340,8 @@ export interface ApiManagementGatewayConfigConnectionResource {
   /** ETag of the resource. */
   etag?: string;
 }
-export const ApiManagementGatewayConfigConnectionResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: GatewayConfigConnectionBaseProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiManagementGatewayConfigConnectionResource",
-}) as any as S.Schema<ApiManagementGatewayConfigConnectionResource>;
+export const ApiManagementGatewayConfigConnectionResource =
+  ApiGatewayConfigConnectionCreateOrUpdateResponse as any as S.Schema<ApiManagementGatewayConfigConnectionResource>;
 
 /** Result of the List API Management gateway config connection operation. */
 export type ApiManagementGatewayConfigConnectionListResultValueList =
@@ -17192,14 +16501,7 @@ export interface IssueContract {
   /** Properties of the Issue. */
   properties?: IssueContractProperties;
 }
-export const IssueContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(IssueContractProperties),
-  }),
-).annotate({ identifier: "IssueContract" }) as any as S.Schema<IssueContract>;
+export const IssueContract = GetApiIssueResponse as any as S.Schema<IssueContract>;
 
 /** Issue values. */
 export type ListApiIssueByServiceResponseValueList = Array<IssueContract>;
@@ -17507,10 +16809,8 @@ export const ListApiManagementServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ApiManagementServiceResourceTagsMap = { [key: string]: string | undefined };
-export const ApiManagementServiceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementServiceResourceTagsMap>;
+export const ApiManagementServiceResourceTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementServiceResourceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApiManagementServiceResourceSystemDataCreatedByType =
@@ -17558,9 +16858,8 @@ export const ApiManagementServiceResourceSystemData = /*@__PURE__*/ S.suspend(()
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type ApiManagementServiceResourceZonesList = Array<string>;
-export const ApiManagementServiceResourceZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementServiceResourceZonesList>;
+export const ApiManagementServiceResourceZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementServiceResourceZonesList>;
 
 /** A single API Management service resource in List or Get response. */
 export interface ApiManagementServiceResource {
@@ -17803,21 +17102,18 @@ export const ApiManagementSkuCapacity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of locations that the SKU is available. */
 export type ApiManagementSkuLocationsList = Array<string>;
-export const ApiManagementSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementSkuLocationsList>;
+export const ApiManagementSkuLocationsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementSkuLocationsList>;
 
 /** List of availability zones where the SKU is supported. */
 export type ApiManagementSkuLocationInfoZonesList = Array<string>;
-export const ApiManagementSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementSkuLocationInfoZonesList>;
+export const ApiManagementSkuLocationInfoZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementSkuLocationInfoZonesList>;
 
 /** The set of zones that the SKU is available in with the specified capabilities. */
 export type ApiManagementSkuZoneDetailsNameList = Array<string>;
-export const ApiManagementSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementSkuZoneDetailsNameList>;
+export const ApiManagementSkuZoneDetailsNameList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementSkuZoneDetailsNameList>;
 
 /** Describes The SKU capabilities object. */
 export interface ApiManagementSkuCapabilities {
@@ -17889,9 +17185,8 @@ export const ApiManagementSkuLocationInfoList = /*@__PURE__*/ S.Array(
 
 /** The api versions that support this SKU. */
 export type ApiManagementSkuApiVersionsList = Array<string>;
-export const ApiManagementSkuApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementSkuApiVersionsList>;
+export const ApiManagementSkuApiVersionsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementSkuApiVersionsList>;
 
 /** Describes metadata for retrieving price info. */
 export interface ApiManagementSkuCosts {
@@ -17918,9 +17213,8 @@ export const ApiManagementSkuCostsList = /*@__PURE__*/ S.Array(
 
 /** A name value pair to describe the capability. */
 export type ApiManagementSkuCapabilitiesList = Array<ApiManagementSkuCapabilities>;
-export const ApiManagementSkuCapabilitiesList = /*@__PURE__*/ S.Array(
-  ApiManagementSkuCapabilities,
-) as any as S.Schema<ApiManagementSkuCapabilitiesList>;
+export const ApiManagementSkuCapabilitiesList =
+  ApiManagementSkuZoneDetailsCapabilitiesList as any as S.Schema<ApiManagementSkuCapabilitiesList>;
 
 /** The type of restrictions. */
 export type ApiManagementSkuRestrictionsType = "Location" | "Zone";
@@ -17928,21 +17222,18 @@ export const ApiManagementSkuRestrictionsType = S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ApiManagementSkuRestrictionsValuesList = Array<string>;
-export const ApiManagementSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementSkuRestrictionsValuesList>;
+export const ApiManagementSkuRestrictionsValuesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
 export type ApiManagementSkuRestrictionInfoLocationsList = Array<string>;
-export const ApiManagementSkuRestrictionInfoLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementSkuRestrictionInfoLocationsList>;
+export const ApiManagementSkuRestrictionInfoLocationsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
 export type ApiManagementSkuRestrictionInfoZonesList = Array<string>;
-export const ApiManagementSkuRestrictionInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiManagementSkuRestrictionInfoZonesList>;
+export const ApiManagementSkuRestrictionInfoZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ApiManagementSkuRestrictionInfoZonesList>;
 
 export interface ApiManagementSkuRestrictionInfo {
   /** Locations where the SKU is restricted */
@@ -18096,17 +17387,8 @@ export interface ApiManagementWorkspaceLinksResource {
   /** ETag of the resource. */
   etag?: string;
 }
-export const ApiManagementWorkspaceLinksResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: ApiManagementWorkspaceLinksProperties,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiManagementWorkspaceLinksResource",
-}) as any as S.Schema<ApiManagementWorkspaceLinksResource>;
+export const ApiManagementWorkspaceLinksResource =
+  GetApiManagementWorkspaceLinkResponse as any as S.Schema<ApiManagementWorkspaceLinksResource>;
 
 /** Result of the List API Management WorkspaceLinks operation. */
 export type ListApiManagementWorkspaceLinkByServiceResponseValueList =
@@ -18181,14 +17463,7 @@ export interface OperationContract {
   /** Properties of the Operation Contract. */
   properties?: OperationContractProperties;
 }
-export const OperationContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationContractProperties),
-  }),
-).annotate({ identifier: "OperationContract" }) as any as S.Schema<OperationContract>;
+export const OperationContract = GetApiOperationResponse as any as S.Schema<OperationContract>;
 
 /** Page values. */
 export type ListApiOperationByApiResponseValueList = Array<OperationContract>;
@@ -18256,14 +17531,7 @@ export interface PolicyContract {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const PolicyContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({ identifier: "PolicyContract" }) as any as S.Schema<PolicyContract>;
+export const PolicyContract = GetApiPolicyResponse as any as S.Schema<PolicyContract>;
 
 /** Policy Contract value. */
 export type ListApiOperationPolicyByOperationResponseValueList = Array<PolicyContract>;
@@ -18319,9 +17587,8 @@ export const ListApiPolicyByApiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy Contract value. */
 export type ListApiPolicyByApiResponseValueList = Array<PolicyContract>;
-export const ListApiPolicyByApiResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListApiPolicyByApiResponseValueList>;
+export const ListApiPolicyByApiResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListApiPolicyByApiResponseValueList>;
 
 export interface ListApiPolicyByApiResponse {
   /** Policy Contract value. */
@@ -18331,15 +17598,8 @@ export interface ListApiPolicyByApiResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListApiPolicyByApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListApiPolicyByApiResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListApiPolicyByApiResponse",
-}) as any as S.Schema<ListApiPolicyByApiResponse>;
+export const ListApiPolicyByApiResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListApiPolicyByApiResponse>;
 
 export interface ListApiProductByApisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -18389,14 +17649,7 @@ export interface ProductContract {
   /** Product entity contract properties. */
   properties?: ProductContractProperties;
 }
-export const ProductContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductContractProperties),
-  }),
-).annotate({ identifier: "ProductContract" }) as any as S.Schema<ProductContract>;
+export const ProductContract = GetProductResponse as any as S.Schema<ProductContract>;
 
 /** Page values. */
 export type ListApiProductByApisResponseValueList = Array<ProductContract>;
@@ -18470,14 +17723,7 @@ export interface ApiReleaseContract {
   /** ApiRelease entity contract properties. */
   properties?: ApiReleaseContractProperties;
 }
-export const ApiReleaseContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiReleaseContractProperties),
-  }),
-).annotate({ identifier: "ApiReleaseContract" }) as any as S.Schema<ApiReleaseContract>;
+export const ApiReleaseContract = GetApiReleaseResponse as any as S.Schema<ApiReleaseContract>;
 
 /** Page values. */
 export type ListApiReleaseByServiceResponseValueList = Array<ApiReleaseContract>;
@@ -18644,14 +17890,7 @@ export interface SchemaContract {
   /** Properties of the API Schema. */
   properties?: SchemaContractProperties;
 }
-export const SchemaContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SchemaContractProperties),
-  }),
-).annotate({ identifier: "SchemaContract" }) as any as S.Schema<SchemaContract>;
+export const SchemaContract = GetApiSchemaResponse as any as S.Schema<SchemaContract>;
 
 /** API Schema Contract value. */
 export type ListApiSchemaByApiResponseValueList = Array<SchemaContract>;
@@ -18803,14 +18042,8 @@ export interface ApiVersionSetContract {
   /** API VersionSet contract properties. */
   properties?: ApiVersionSetContractProperties;
 }
-export const ApiVersionSetContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiVersionSetContractProperties),
-  }),
-).annotate({ identifier: "ApiVersionSetContract" }) as any as S.Schema<ApiVersionSetContract>;
+export const ApiVersionSetContract =
+  GetApiVersionSetResponse as any as S.Schema<ApiVersionSetContract>;
 
 /** Page values. */
 export type ListApiVersionSetByServiceResponseValueList = Array<ApiVersionSetContract>;
@@ -18882,14 +18115,7 @@ export interface WikiContract {
   /** Wiki details. */
   properties?: WikiContractProperties;
 }
-export const WikiContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WikiContractProperties),
-  }),
-).annotate({ identifier: "WikiContract" }) as any as S.Schema<WikiContract>;
+export const WikiContract = GetApiWikiResponse as any as S.Schema<WikiContract>;
 
 /** Page values. */
 export type ListApiWikisResponseValueList = Array<WikiContract>;
@@ -18961,16 +18187,8 @@ export interface AuthorizationAccessPolicyContract {
   /** Properties of the Authorization Contract. */
   properties?: AuthorizationAccessPolicyContractProperties;
 }
-export const AuthorizationAccessPolicyContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationAccessPolicyContractProperties),
-  }),
-).annotate({
-  identifier: "AuthorizationAccessPolicyContract",
-}) as any as S.Schema<AuthorizationAccessPolicyContract>;
+export const AuthorizationAccessPolicyContract =
+  AuthorizationAccessPolicyCreateOrUpdateResponse as any as S.Schema<AuthorizationAccessPolicyContract>;
 
 /** Page values. */
 export type ListAuthorizationAccessPolicyByAuthorizationResponseValueList =
@@ -19045,14 +18263,8 @@ export interface AuthorizationContract {
   /** Properties of the Authorization Contract. */
   properties?: AuthorizationContractProperties;
 }
-export const AuthorizationContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationContractProperties),
-  }),
-).annotate({ identifier: "AuthorizationContract" }) as any as S.Schema<AuthorizationContract>;
+export const AuthorizationContract =
+  GetAuthorizationResponse as any as S.Schema<AuthorizationContract>;
 
 /** Page values. */
 export type ListAuthorizationByAuthorizationProviderResponseValueList =
@@ -19124,16 +18336,8 @@ export interface AuthorizationProviderContract {
   /** Properties of the Authorization Provider Contract. */
   properties?: AuthorizationProviderContractProperties;
 }
-export const AuthorizationProviderContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationProviderContractProperties),
-  }),
-).annotate({
-  identifier: "AuthorizationProviderContract",
-}) as any as S.Schema<AuthorizationProviderContract>;
+export const AuthorizationProviderContract =
+  AuthorizationProviderCreateOrUpdateResponse as any as S.Schema<AuthorizationProviderContract>;
 
 /** Page values. */
 export type ListAuthorizationProviderByServiceResponseValueList =
@@ -19202,16 +18406,8 @@ export interface AuthorizationServerContract {
   /** Properties of the External OAuth authorization server Contract. */
   properties?: AuthorizationServerContractProperties;
 }
-export const AuthorizationServerContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationServerContractProperties),
-  }),
-).annotate({
-  identifier: "AuthorizationServerContract",
-}) as any as S.Schema<AuthorizationServerContract>;
+export const AuthorizationServerContract =
+  AuthorizationServerCreateOrUpdateResponse as any as S.Schema<AuthorizationServerContract>;
 
 /** Page values. */
 export type ListAuthorizationServerByServiceResponseValueList = Array<AuthorizationServerContract>;
@@ -19328,14 +18524,7 @@ export interface BackendContract {
   /** Backend entity contract properties. */
   properties?: BackendContractProperties;
 }
-export const BackendContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackendContractProperties),
-  }),
-).annotate({ identifier: "BackendContract" }) as any as S.Schema<BackendContract>;
+export const BackendContract = GetBackendResponse as any as S.Schema<BackendContract>;
 
 /** Backend values. */
 export type ListBackendByServiceResponseValueList = Array<BackendContract>;
@@ -19403,14 +18592,7 @@ export interface CacheContract {
   /** Cache properties details. */
   properties?: CacheContractProperties;
 }
-export const CacheContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CacheContractProperties),
-  }),
-).annotate({ identifier: "CacheContract" }) as any as S.Schema<CacheContract>;
+export const CacheContract = GetCacheResponse as any as S.Schema<CacheContract>;
 
 /** Page values. */
 export type ListCacheByServiceResponseValueList = Array<CacheContract>;
@@ -19484,14 +18666,7 @@ export interface CertificateContract {
   /** Certificate properties details. */
   properties?: CertificateContractProperties;
 }
-export const CertificateContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CertificateContractProperties),
-  }),
-).annotate({ identifier: "CertificateContract" }) as any as S.Schema<CertificateContract>;
+export const CertificateContract = GetCertificateResponse as any as S.Schema<CertificateContract>;
 
 /** Page values. */
 export type ListCertificateByServiceResponseValueList = Array<CertificateContract>;
@@ -19556,14 +18731,7 @@ export interface ContentItemContract {
   /** Properties of the content item. */
   properties?: ContentItemContractProperties;
 }
-export const ContentItemContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ContentItemContractProperties),
-  }),
-).annotate({ identifier: "ContentItemContract" }) as any as S.Schema<ContentItemContract>;
+export const ContentItemContract = GetContentItemResponse as any as S.Schema<ContentItemContract>;
 
 /** Collection of content items. */
 export type ListContentItemByServiceResponseValueList = Array<ContentItemContract>;
@@ -19622,14 +18790,7 @@ export interface ContentTypeContract {
   /** Properties of the content type. */
   properties?: ContentTypeContractProperties;
 }
-export const ContentTypeContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ContentTypeContractProperties),
-  }),
-).annotate({ identifier: "ContentTypeContract" }) as any as S.Schema<ContentTypeContract>;
+export const ContentTypeContract = GetContentTypeResponse as any as S.Schema<ContentTypeContract>;
 
 /** Collection of content types. */
 export type ListContentTypeByServiceResponseValueList = Array<ContentTypeContract>;
@@ -19751,9 +18912,8 @@ export const ListDiagnosticByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListDiagnosticByServiceResponseValueList = Array<DiagnosticContract>;
-export const ListDiagnosticByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  DiagnosticContract,
-) as any as S.Schema<ListDiagnosticByServiceResponseValueList>;
+export const ListDiagnosticByServiceResponseValueList =
+  ListApiDiagnosticByServiceResponseValueList as any as S.Schema<ListDiagnosticByServiceResponseValueList>;
 
 export interface ListDiagnosticByServiceResponse {
   /** Page values. */
@@ -19763,15 +18923,8 @@ export interface ListDiagnosticByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListDiagnosticByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListDiagnosticByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDiagnosticByServiceResponse",
-}) as any as S.Schema<ListDiagnosticByServiceResponse>;
+export const ListDiagnosticByServiceResponse =
+  ListApiDiagnosticByServiceResponse as any as S.Schema<ListDiagnosticByServiceResponse>;
 
 export interface ListDocumentationByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19818,14 +18971,8 @@ export interface DocumentationContract {
   /** Markdown Documentation details. */
   properties?: DocumentationContractProperties;
 }
-export const DocumentationContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DocumentationContractProperties),
-  }),
-).annotate({ identifier: "DocumentationContract" }) as any as S.Schema<DocumentationContract>;
+export const DocumentationContract =
+  GetDocumentationResponse as any as S.Schema<DocumentationContract>;
 
 /** Page values. */
 export type ListDocumentationByServiceResponseValueList = Array<DocumentationContract>;
@@ -19893,14 +19040,8 @@ export interface EmailTemplateContract {
   /** Email Template entity contract properties. */
   properties?: EmailTemplateContractProperties;
 }
-export const EmailTemplateContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EmailTemplateContractProperties),
-  }),
-).annotate({ identifier: "EmailTemplateContract" }) as any as S.Schema<EmailTemplateContract>;
+export const EmailTemplateContract =
+  GetEmailTemplateResponse as any as S.Schema<EmailTemplateContract>;
 
 /** Page values. */
 export type ListEmailTemplateByServiceResponseValueList = Array<EmailTemplateContract>;
@@ -19965,9 +19106,8 @@ export const ListGatewayApiByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListGatewayApiByServiceResponseValueList = Array<ApiContract>;
-export const ListGatewayApiByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  ApiContract,
-) as any as S.Schema<ListGatewayApiByServiceResponseValueList>;
+export const ListGatewayApiByServiceResponseValueList =
+  ListApiByServiceResponseValueList as any as S.Schema<ListGatewayApiByServiceResponseValueList>;
 
 export interface ListGatewayApiByServiceResponse {
   /** Page values. */
@@ -20032,14 +19172,7 @@ export interface GatewayContract {
   /** Gateway details. */
   properties?: GatewayContractProperties;
 }
-export const GatewayContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GatewayContractProperties),
-  }),
-).annotate({ identifier: "GatewayContract" }) as any as S.Schema<GatewayContract>;
+export const GatewayContract = GetGatewayResponse as any as S.Schema<GatewayContract>;
 
 /** Page values. */
 export type ListGatewayByServiceResponseValueList = Array<GatewayContract>;
@@ -20113,16 +19246,8 @@ export interface GatewayCertificateAuthorityContract {
   /** Gateway certificate authority details. */
   properties?: GatewayCertificateAuthorityContractProperties;
 }
-export const GatewayCertificateAuthorityContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GatewayCertificateAuthorityContractProperties),
-  }),
-).annotate({
-  identifier: "GatewayCertificateAuthorityContract",
-}) as any as S.Schema<GatewayCertificateAuthorityContract>;
+export const GatewayCertificateAuthorityContract =
+  GatewayCertificateAuthorityCreateOrUpdateResponse as any as S.Schema<GatewayCertificateAuthorityContract>;
 
 /** Page values. */
 export type ListGatewayCertificateAuthorityByServiceResponseValueList =
@@ -20255,16 +19380,8 @@ export interface GatewayHostnameConfigurationContract {
   /** Gateway hostname configuration details. */
   properties?: GatewayHostnameConfigurationContractProperties;
 }
-export const GatewayHostnameConfigurationContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GatewayHostnameConfigurationContractProperties),
-  }),
-).annotate({
-  identifier: "GatewayHostnameConfigurationContract",
-}) as any as S.Schema<GatewayHostnameConfigurationContract>;
+export const GatewayHostnameConfigurationContract =
+  GatewayHostnameConfigurationCreateOrUpdateResponse as any as S.Schema<GatewayHostnameConfigurationContract>;
 
 /** Page values. */
 export type ListGatewayHostnameConfigurationByServiceResponseValueList =
@@ -20358,10 +19475,8 @@ export const ListGatewayTraceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trace collected in gateway. */
 export type ListGatewayTraceResponseBodyMap = { [key: string]: unknown | undefined };
-export const ListGatewayTraceResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListGatewayTraceResponseBodyMap>;
+export const ListGatewayTraceResponseBodyMap =
+  ContentItemContractProperties as any as S.Schema<ListGatewayTraceResponseBodyMap>;
 
 export type ListGatewayTraceResponse = ListGatewayTraceResponseBodyMap;
 export const ListGatewayTraceResponse = /*@__PURE__*/ S.suspend(() =>
@@ -20413,14 +19528,8 @@ export interface GlobalSchemaContract {
   /** Properties of the Global Schema. */
   properties?: GlobalSchemaContractProperties;
 }
-export const GlobalSchemaContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GlobalSchemaContractProperties),
-  }),
-).annotate({ identifier: "GlobalSchemaContract" }) as any as S.Schema<GlobalSchemaContract>;
+export const GlobalSchemaContract =
+  GetGlobalSchemaResponse as any as S.Schema<GlobalSchemaContract>;
 
 /** Global Schema Contract value. */
 export type ListGlobalSchemaByServiceResponseValueList = Array<GlobalSchemaContract>;
@@ -20560,9 +19669,8 @@ export const ListGraphQLApiResolverPolicyByResolverRequest = /*@__PURE__*/ S.sus
 
 /** Policy Contract value. */
 export type ListGraphQLApiResolverPolicyByResolverResponseValueList = Array<PolicyContract>;
-export const ListGraphQLApiResolverPolicyByResolverResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListGraphQLApiResolverPolicyByResolverResponseValueList>;
+export const ListGraphQLApiResolverPolicyByResolverResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListGraphQLApiResolverPolicyByResolverResponseValueList>;
 
 export interface ListGraphQLApiResolverPolicyByResolverResponse {
   /** Policy Contract value. */
@@ -20572,15 +19680,8 @@ export interface ListGraphQLApiResolverPolicyByResolverResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListGraphQLApiResolverPolicyByResolverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListGraphQLApiResolverPolicyByResolverResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListGraphQLApiResolverPolicyByResolverResponse",
-}) as any as S.Schema<ListGraphQLApiResolverPolicyByResolverResponse>;
+export const ListGraphQLApiResolverPolicyByResolverResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListGraphQLApiResolverPolicyByResolverResponse>;
 
 export interface ListGroupByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20627,14 +19728,7 @@ export interface GroupContract {
   /** Group entity contract properties. */
   properties?: GroupContractProperties;
 }
-export const GroupContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GroupContractProperties),
-  }),
-).annotate({ identifier: "GroupContract" }) as any as S.Schema<GroupContract>;
+export const GroupContract = GetGroupResponse as any as S.Schema<GroupContract>;
 
 /** Page values. */
 export type ListGroupByServiceResponseValueList = Array<GroupContract>;
@@ -20706,14 +19800,7 @@ export interface UserContract {
   /** User entity contract properties. */
   properties?: UserContractProperties;
 }
-export const UserContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UserContractProperties),
-  }),
-).annotate({ identifier: "UserContract" }) as any as S.Schema<UserContract>;
+export const UserContract = CreateGroupUserResponse as any as S.Schema<UserContract>;
 
 /** Page values. */
 export type ListGroupUserResponseValueList = Array<UserContract>;
@@ -20891,9 +19978,8 @@ export const ListIssueByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Issue values. */
 export type ListIssueByServiceResponseValueList = Array<IssueContract>;
-export const ListIssueByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  IssueContract,
-) as any as S.Schema<ListIssueByServiceResponseValueList>;
+export const ListIssueByServiceResponseValueList =
+  ListApiIssueByServiceResponseValueList as any as S.Schema<ListIssueByServiceResponseValueList>;
 
 export interface ListIssueByServiceResponse {
   /** Issue values. */
@@ -20903,15 +19989,8 @@ export interface ListIssueByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListIssueByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListIssueByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListIssueByServiceResponse",
-}) as any as S.Schema<ListIssueByServiceResponse>;
+export const ListIssueByServiceResponse =
+  ListApiIssueByServiceResponse as any as S.Schema<ListIssueByServiceResponse>;
 
 export interface ListLoggerByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20958,14 +20037,7 @@ export interface LoggerContract {
   /** Logger entity contract properties. */
   properties?: LoggerContractProperties;
 }
-export const LoggerContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LoggerContractProperties),
-  }),
-).annotate({ identifier: "LoggerContract" }) as any as S.Schema<LoggerContract>;
+export const LoggerContract = GetLoggerResponse as any as S.Schema<LoggerContract>;
 
 /** Logger values. */
 export type ListLoggerByServiceResponseValueList = Array<LoggerContract>;
@@ -21039,14 +20111,7 @@ export interface NamedValueContract {
   /** NamedValue entity contract properties. */
   properties?: NamedValueContractProperties;
 }
-export const NamedValueContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamedValueContractProperties),
-  }),
-).annotate({ identifier: "NamedValueContract" }) as any as S.Schema<NamedValueContract>;
+export const NamedValueContract = GetNamedValueResponse as any as S.Schema<NamedValueContract>;
 
 /** Page values. */
 export type ListNamedValueByServiceResponseValueList = Array<NamedValueContract>;
@@ -21104,13 +20169,8 @@ export interface ListNamedValueValueResponse {
   /** This is secret value of the NamedValue entity. */
   value?: string;
 }
-export const ListNamedValueValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListNamedValueValueResponse",
-}) as any as S.Schema<ListNamedValueValueResponse>;
+export const ListNamedValueValueResponse =
+  GenerateGatewayTokenResponse as any as S.Schema<ListNamedValueValueResponse>;
 
 export interface ListNetworkStatusByLocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21142,9 +20202,8 @@ export const ListNetworkStatusByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of DNS servers IPV4 addresses. */
 export type NetworkStatusContractDnsServersList = Array<string>;
-export const NetworkStatusContractDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkStatusContractDnsServersList>;
+export const NetworkStatusContractDnsServersList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<NetworkStatusContractDnsServersList>;
 
 /** Resource Connectivity Status Type identifier. */
 export type ConnectivityStatusContractStatus = "initializing" | "success" | "failure";
@@ -21297,14 +20356,8 @@ export interface NotificationContract {
   /** Notification entity contract properties. */
   properties?: NotificationContractProperties;
 }
-export const NotificationContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NotificationContractProperties),
-  }),
-).annotate({ identifier: "NotificationContract" }) as any as S.Schema<NotificationContract>;
+export const NotificationContract =
+  GetNotificationResponse as any as S.Schema<NotificationContract>;
 
 /** Page values. */
 export type ListNotificationByServiceResponseValueList = Array<NotificationContract>;
@@ -21575,16 +20628,8 @@ export interface OpenidConnectProviderContract {
   /** OpenId Connect Provider contract properties. */
   properties?: OpenidConnectProviderContractProperties;
 }
-export const OpenidConnectProviderContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OpenidConnectProviderContractProperties),
-  }),
-).annotate({
-  identifier: "OpenidConnectProviderContract",
-}) as any as S.Schema<OpenidConnectProviderContract>;
+export const OpenidConnectProviderContract =
+  GetOpenIdConnectProviderResponse as any as S.Schema<OpenidConnectProviderContract>;
 
 /** Page values. */
 export type ListOpenIdConnectProviderByServiceResponseValueList =
@@ -21643,13 +20688,8 @@ export interface ListOpenIdConnectProviderSecretsResponse {
   /** Client or app secret used in IdentityProviders, Aad, OpenID or OAuth. */
   clientSecret?: string | Redacted.Redacted<string>;
 }
-export const ListOpenIdConnectProviderSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "ListOpenIdConnectProviderSecretsResponse",
-}) as any as S.Schema<ListOpenIdConnectProviderSecretsResponse>;
+export const ListOpenIdConnectProviderSecretsResponse =
+  ListIdentityProviderSecretsResponse as any as S.Schema<ListOpenIdConnectProviderSecretsResponse>;
 
 export interface ListOperationByTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21693,9 +20733,8 @@ export const ListOperationByTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListOperationByTagsResponseValueList = Array<TagResourceContract>;
-export const ListOperationByTagsResponseValueList = /*@__PURE__*/ S.Array(
-  TagResourceContract,
-) as any as S.Schema<ListOperationByTagsResponseValueList>;
+export const ListOperationByTagsResponseValueList =
+  ListApiByTagsResponseValueList as any as S.Schema<ListOperationByTagsResponseValueList>;
 
 export interface ListOperationByTagsResponse {
   /** Page values. */
@@ -21845,9 +20884,8 @@ export const ListPolicyByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy Contract value. */
 export type ListPolicyByServiceResponseValueList = Array<PolicyContract>;
-export const ListPolicyByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListPolicyByServiceResponseValueList>;
+export const ListPolicyByServiceResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListPolicyByServiceResponseValueList>;
 
 export interface ListPolicyByServiceResponse {
   /** Policy Contract value. */
@@ -21857,15 +20895,8 @@ export interface ListPolicyByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListPolicyByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListPolicyByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPolicyByServiceResponse",
-}) as any as S.Schema<ListPolicyByServiceResponse>;
+export const ListPolicyByServiceResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListPolicyByServiceResponse>;
 
 export type ListPolicyDescriptionByServiceRequestScope =
   | "Tenant"
@@ -22154,16 +21185,8 @@ export interface PolicyRestrictionContract {
   /** Properties of the Policy Restriction. */
   properties?: PolicyRestrictionContractProperties;
 }
-export const PolicyRestrictionContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyRestrictionContractProperties),
-  }),
-).annotate({
-  identifier: "PolicyRestrictionContract",
-}) as any as S.Schema<PolicyRestrictionContract>;
+export const PolicyRestrictionContract =
+  GetPolicyRestrictionResponse as any as S.Schema<PolicyRestrictionContract>;
 
 export type ListPolicyRestrictionByServiceResponseValueList = Array<PolicyRestrictionContract>;
 export const ListPolicyRestrictionByServiceResponseValueList = /*@__PURE__*/ S.Array(
@@ -22220,14 +21243,8 @@ export interface PortalConfigContract {
   /** The developer portal configuration contract properties. */
   properties?: PortalConfigProperties;
 }
-export const PortalConfigContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PortalConfigProperties),
-  }),
-).annotate({ identifier: "PortalConfigContract" }) as any as S.Schema<PortalConfigContract>;
+export const PortalConfigContract =
+  GetPortalConfigResponse as any as S.Schema<PortalConfigContract>;
 
 /** The developer portal configurations. */
 export type ListPortalConfigByServiceResponseValueList = Array<PortalConfigContract>;
@@ -22361,16 +21378,8 @@ export interface PrivateEndpointConnection {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnection",
-}) as any as S.Schema<PrivateEndpointConnection>;
+export const PrivateEndpointConnection =
+  GetPrivateEndpointConnectionByNameResponse as any as S.Schema<PrivateEndpointConnection>;
 
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionByServiceResponseValueList =
@@ -22497,9 +21506,8 @@ export const ListProductApiByProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListProductApiByProductResponseValueList = Array<ApiContract>;
-export const ListProductApiByProductResponseValueList = /*@__PURE__*/ S.Array(
-  ApiContract,
-) as any as S.Schema<ListProductApiByProductResponseValueList>;
+export const ListProductApiByProductResponseValueList =
+  ListApiByServiceResponseValueList as any as S.Schema<ListProductApiByProductResponseValueList>;
 
 export interface ListProductApiByProductResponse {
   /** Page values. */
@@ -22509,15 +21517,8 @@ export interface ListProductApiByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListProductApiByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListProductApiByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProductApiByProductResponse",
-}) as any as S.Schema<ListProductApiByProductResponse>;
+export const ListProductApiByProductResponse =
+  ListGatewayApiByServiceResponse as any as S.Schema<ListProductApiByProductResponse>;
 
 export interface ListProductApiLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22567,14 +21568,8 @@ export interface ProductApiLinkContract {
   /** Product-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const ProductApiLinkContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({ identifier: "ProductApiLinkContract" }) as any as S.Schema<ProductApiLinkContract>;
+export const ProductApiLinkContract =
+  GetTagApiLinkResponse as any as S.Schema<ProductApiLinkContract>;
 
 /** Page values. */
 export type ListProductApiLinkByProductResponseValueList = Array<ProductApiLinkContract>;
@@ -22642,9 +21637,8 @@ export const ListProductByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListProductByServiceResponseValueList = Array<ProductContract>;
-export const ListProductByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  ProductContract,
-) as any as S.Schema<ListProductByServiceResponseValueList>;
+export const ListProductByServiceResponseValueList =
+  ListApiProductByApisResponseValueList as any as S.Schema<ListProductByServiceResponseValueList>;
 
 export interface ListProductByServiceResponse {
   /** Page values. */
@@ -22654,15 +21648,8 @@ export interface ListProductByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListProductByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListProductByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProductByServiceResponse",
-}) as any as S.Schema<ListProductByServiceResponse>;
+export const ListProductByServiceResponse =
+  ListApiProductByApisResponse as any as S.Schema<ListProductByServiceResponse>;
 
 export interface ListProductByTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22701,9 +21688,8 @@ export const ListProductByTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListProductByTagsResponseValueList = Array<TagResourceContract>;
-export const ListProductByTagsResponseValueList = /*@__PURE__*/ S.Array(
-  TagResourceContract,
-) as any as S.Schema<ListProductByTagsResponseValueList>;
+export const ListProductByTagsResponseValueList =
+  ListApiByTagsResponseValueList as any as S.Schema<ListProductByTagsResponseValueList>;
 
 export interface ListProductByTagsResponse {
   /** Page values. */
@@ -22713,15 +21699,8 @@ export interface ListProductByTagsResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListProductByTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListProductByTagsResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProductByTagsResponse",
-}) as any as S.Schema<ListProductByTagsResponse>;
+export const ListProductByTagsResponse =
+  ListOperationByTagsResponse as any as S.Schema<ListProductByTagsResponse>;
 
 export interface ListProductGroupByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22762,9 +21741,8 @@ export const ListProductGroupByProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListProductGroupByProductResponseValueList = Array<GroupContract>;
-export const ListProductGroupByProductResponseValueList = /*@__PURE__*/ S.Array(
-  GroupContract,
-) as any as S.Schema<ListProductGroupByProductResponseValueList>;
+export const ListProductGroupByProductResponseValueList =
+  ListGroupByServiceResponseValueList as any as S.Schema<ListProductGroupByProductResponseValueList>;
 
 export interface ListProductGroupByProductResponse {
   /** Page values. */
@@ -22774,15 +21752,8 @@ export interface ListProductGroupByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListProductGroupByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListProductGroupByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProductGroupByProductResponse",
-}) as any as S.Schema<ListProductGroupByProductResponse>;
+export const ListProductGroupByProductResponse =
+  ListGroupByServiceResponse as any as S.Schema<ListProductGroupByProductResponse>;
 
 export interface ListProductGroupLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22895,9 +21866,8 @@ export const ListProductPolicyByProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy Contract value. */
 export type ListProductPolicyByProductResponseValueList = Array<PolicyContract>;
-export const ListProductPolicyByProductResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListProductPolicyByProductResponseValueList>;
+export const ListProductPolicyByProductResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListProductPolicyByProductResponseValueList>;
 
 export interface ListProductPolicyByProductResponse {
   /** Policy Contract value. */
@@ -22907,15 +21877,8 @@ export interface ListProductPolicyByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListProductPolicyByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListProductPolicyByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListProductPolicyByProductResponse",
-}) as any as S.Schema<ListProductPolicyByProductResponse>;
+export const ListProductPolicyByProductResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListProductPolicyByProductResponse>;
 
 export interface ListProductSubscriptionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22965,14 +21928,8 @@ export interface SubscriptionContract {
   /** Subscription contract properties. */
   properties?: SubscriptionContractProperties;
 }
-export const SubscriptionContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SubscriptionContractProperties),
-  }),
-).annotate({ identifier: "SubscriptionContract" }) as any as S.Schema<SubscriptionContract>;
+export const SubscriptionContract =
+  GetSubscriptionResponse as any as S.Schema<SubscriptionContract>;
 
 /** Page values. */
 export type ListProductSubscriptionsResponseValueList = Array<SubscriptionContract>;
@@ -23035,9 +21992,8 @@ export const ListProductWikisRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListProductWikisResponseValueList = Array<WikiContract>;
-export const ListProductWikisResponseValueList = /*@__PURE__*/ S.Array(
-  WikiContract,
-) as any as S.Schema<ListProductWikisResponseValueList>;
+export const ListProductWikisResponseValueList =
+  ListApiWikisResponseValueList as any as S.Schema<ListProductWikisResponseValueList>;
 
 export interface ListProductWikisResponse {
   /** Page values. */
@@ -23045,12 +22001,8 @@ export interface ListProductWikisResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListProductWikisResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListProductWikisResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListProductWikisResponse" }) as any as S.Schema<ListProductWikisResponse>;
+export const ListProductWikisResponse =
+  ListApiWikisResponse as any as S.Schema<ListProductWikisResponse>;
 
 export interface ListQuotaByCounterKeyByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23370,9 +22322,8 @@ export const ListReportByGeoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListReportByGeoResponseValueList = Array<ReportRecordContract>;
-export const ListReportByGeoResponseValueList = /*@__PURE__*/ S.Array(
-  ReportRecordContract,
-) as any as S.Schema<ListReportByGeoResponseValueList>;
+export const ListReportByGeoResponseValueList =
+  ListReportByApiResponseValueList as any as S.Schema<ListReportByGeoResponseValueList>;
 
 export interface ListReportByGeoResponse {
   /** Page values. */
@@ -23382,13 +22333,8 @@ export interface ListReportByGeoResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListReportByGeoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListReportByGeoResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListReportByGeoResponse" }) as any as S.Schema<ListReportByGeoResponse>;
+export const ListReportByGeoResponse =
+  ListReportByApiResponse as any as S.Schema<ListReportByGeoResponse>;
 
 export interface ListReportByOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23429,9 +22375,8 @@ export const ListReportByOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListReportByOperationResponseValueList = Array<ReportRecordContract>;
-export const ListReportByOperationResponseValueList = /*@__PURE__*/ S.Array(
-  ReportRecordContract,
-) as any as S.Schema<ListReportByOperationResponseValueList>;
+export const ListReportByOperationResponseValueList =
+  ListReportByApiResponseValueList as any as S.Schema<ListReportByOperationResponseValueList>;
 
 export interface ListReportByOperationResponse {
   /** Page values. */
@@ -23490,9 +22435,8 @@ export const ListReportByProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListReportByProductResponseValueList = Array<ReportRecordContract>;
-export const ListReportByProductResponseValueList = /*@__PURE__*/ S.Array(
-  ReportRecordContract,
-) as any as S.Schema<ListReportByProductResponseValueList>;
+export const ListReportByProductResponseValueList =
+  ListReportByApiResponseValueList as any as S.Schema<ListReportByProductResponseValueList>;
 
 export interface ListReportByProductResponse {
   /** Page values. */
@@ -23502,15 +22446,8 @@ export interface ListReportByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListReportByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListReportByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListReportByProductResponse",
-}) as any as S.Schema<ListReportByProductResponse>;
+export const ListReportByProductResponse =
+  ListReportByOperationResponse as any as S.Schema<ListReportByProductResponse>;
 
 export interface ListReportByRequestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23670,9 +22607,8 @@ export const ListReportBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListReportBySubscriptionResponseValueList = Array<ReportRecordContract>;
-export const ListReportBySubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  ReportRecordContract,
-) as any as S.Schema<ListReportBySubscriptionResponseValueList>;
+export const ListReportBySubscriptionResponseValueList =
+  ListReportByApiResponseValueList as any as S.Schema<ListReportBySubscriptionResponseValueList>;
 
 export interface ListReportBySubscriptionResponse {
   /** Page values. */
@@ -23682,15 +22618,8 @@ export interface ListReportBySubscriptionResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListReportBySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListReportBySubscriptionResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListReportBySubscriptionResponse",
-}) as any as S.Schema<ListReportBySubscriptionResponse>;
+export const ListReportBySubscriptionResponse =
+  ListReportByOperationResponse as any as S.Schema<ListReportBySubscriptionResponse>;
 
 export interface ListReportByTimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23732,9 +22661,8 @@ export const ListReportByTimeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListReportByTimeResponseValueList = Array<ReportRecordContract>;
-export const ListReportByTimeResponseValueList = /*@__PURE__*/ S.Array(
-  ReportRecordContract,
-) as any as S.Schema<ListReportByTimeResponseValueList>;
+export const ListReportByTimeResponseValueList =
+  ListReportByApiResponseValueList as any as S.Schema<ListReportByTimeResponseValueList>;
 
 export interface ListReportByTimeResponse {
   /** Page values. */
@@ -23744,13 +22672,8 @@ export interface ListReportByTimeResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListReportByTimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListReportByTimeResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListReportByTimeResponse" }) as any as S.Schema<ListReportByTimeResponse>;
+export const ListReportByTimeResponse =
+  ListReportByApiResponse as any as S.Schema<ListReportByTimeResponse>;
 
 export interface ListReportByUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23789,9 +22712,8 @@ export const ListReportByUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListReportByUserResponseValueList = Array<ReportRecordContract>;
-export const ListReportByUserResponseValueList = /*@__PURE__*/ S.Array(
-  ReportRecordContract,
-) as any as S.Schema<ListReportByUserResponseValueList>;
+export const ListReportByUserResponseValueList =
+  ListReportByApiResponseValueList as any as S.Schema<ListReportByUserResponseValueList>;
 
 export interface ListReportByUserResponse {
   /** Page values. */
@@ -23801,13 +22723,8 @@ export interface ListReportByUserResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListReportByUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListReportByUserResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListReportByUserResponse" }) as any as S.Schema<ListReportByUserResponse>;
+export const ListReportByUserResponse =
+  ListReportByApiResponse as any as S.Schema<ListReportByUserResponse>;
 
 export interface ListSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23843,9 +22760,8 @@ export const ListSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListSubscriptionResponseValueList = Array<SubscriptionContract>;
-export const ListSubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  SubscriptionContract,
-) as any as S.Schema<ListSubscriptionResponseValueList>;
+export const ListSubscriptionResponseValueList =
+  ListProductSubscriptionsResponseValueList as any as S.Schema<ListSubscriptionResponseValueList>;
 
 export interface ListSubscriptionResponse {
   /** Page values. */
@@ -23954,20 +22870,12 @@ export interface TagApiLinkContract {
   /** Tag-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const TagApiLinkContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({ identifier: "TagApiLinkContract" }) as any as S.Schema<TagApiLinkContract>;
+export const TagApiLinkContract = GetTagApiLinkResponse as any as S.Schema<TagApiLinkContract>;
 
 /** Page values. */
 export type ListTagApiLinkByProductResponseValueList = Array<TagApiLinkContract>;
-export const ListTagApiLinkByProductResponseValueList = /*@__PURE__*/ S.Array(
-  TagApiLinkContract,
-) as any as S.Schema<ListTagApiLinkByProductResponseValueList>;
+export const ListTagApiLinkByProductResponseValueList =
+  ListProductApiLinkByProductResponseValueList as any as S.Schema<ListTagApiLinkByProductResponseValueList>;
 
 export interface ListTagApiLinkByProductResponse {
   /** Page values. */
@@ -23977,15 +22885,8 @@ export interface ListTagApiLinkByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListTagApiLinkByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListTagApiLinkByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTagApiLinkByProductResponse",
-}) as any as S.Schema<ListTagApiLinkByProductResponse>;
+export const ListTagApiLinkByProductResponse =
+  ListProductApiLinkByProductResponse as any as S.Schema<ListTagApiLinkByProductResponse>;
 
 export interface ListTagByApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24033,14 +22934,7 @@ export interface TagContract {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const TagContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({ identifier: "TagContract" }) as any as S.Schema<TagContract>;
+export const TagContract = AssignTagToApiResponse as any as S.Schema<TagContract>;
 
 /** Page values. */
 export type ListTagByApiResponseValueList = Array<TagContract>;
@@ -24106,9 +23000,8 @@ export const ListTagByOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListTagByOperationResponseValueList = Array<TagContract>;
-export const ListTagByOperationResponseValueList = /*@__PURE__*/ S.Array(
-  TagContract,
-) as any as S.Schema<ListTagByOperationResponseValueList>;
+export const ListTagByOperationResponseValueList =
+  ListTagByApiResponseValueList as any as S.Schema<ListTagByOperationResponseValueList>;
 
 export interface ListTagByOperationResponse {
   /** Page values. */
@@ -24165,9 +23058,8 @@ export const ListTagByProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListTagByProductResponseValueList = Array<TagContract>;
-export const ListTagByProductResponseValueList = /*@__PURE__*/ S.Array(
-  TagContract,
-) as any as S.Schema<ListTagByProductResponseValueList>;
+export const ListTagByProductResponseValueList =
+  ListTagByApiResponseValueList as any as S.Schema<ListTagByProductResponseValueList>;
 
 export interface ListTagByProductResponse {
   /** Page values. */
@@ -24177,13 +23069,8 @@ export interface ListTagByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListTagByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListTagByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListTagByProductResponse" }) as any as S.Schema<ListTagByProductResponse>;
+export const ListTagByProductResponse =
+  ListTagByApiResponse as any as S.Schema<ListTagByProductResponse>;
 
 export interface ListTagByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24222,9 +23109,8 @@ export const ListTagByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListTagByServiceResponseValueList = Array<TagContract>;
-export const ListTagByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  TagContract,
-) as any as S.Schema<ListTagByServiceResponseValueList>;
+export const ListTagByServiceResponseValueList =
+  ListTagByApiResponseValueList as any as S.Schema<ListTagByServiceResponseValueList>;
 
 export interface ListTagByServiceResponse {
   /** Page values. */
@@ -24234,13 +23120,8 @@ export interface ListTagByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListTagByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListTagByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListTagByServiceResponse" }) as any as S.Schema<ListTagByServiceResponse>;
+export const ListTagByServiceResponse =
+  ListTagByApiResponse as any as S.Schema<ListTagByServiceResponse>;
 
 export interface ListTagOperationLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24440,9 +23321,8 @@ export const ListTagResourceByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListTagResourceByServiceResponseValueList = Array<TagResourceContract>;
-export const ListTagResourceByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  TagResourceContract,
-) as any as S.Schema<ListTagResourceByServiceResponseValueList>;
+export const ListTagResourceByServiceResponseValueList =
+  ListApiByTagsResponseValueList as any as S.Schema<ListTagResourceByServiceResponseValueList>;
 
 export interface ListTagResourceByServiceResponse {
   /** Page values. */
@@ -24452,15 +23332,8 @@ export interface ListTagResourceByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListTagResourceByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListTagResourceByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTagResourceByServiceResponse",
-}) as any as S.Schema<ListTagResourceByServiceResponse>;
+export const ListTagResourceByServiceResponse =
+  ListOperationByTagsResponse as any as S.Schema<ListTagResourceByServiceResponse>;
 
 export interface ListTenantAccessByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24501,16 +23374,8 @@ export interface AccessInformationContract {
   /** AccessInformation entity contract properties. */
   properties?: AccessInformationContractProperties;
 }
-export const AccessInformationContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AccessInformationContractProperties),
-  }),
-).annotate({
-  identifier: "AccessInformationContract",
-}) as any as S.Schema<AccessInformationContract>;
+export const AccessInformationContract =
+  CreateTenantAccessResponse as any as S.Schema<AccessInformationContract>;
 
 /** Page values. */
 export type ListTenantAccessByServiceResponseValueList = Array<AccessInformationContract>;
@@ -24628,9 +23493,8 @@ export const ListUserByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListUserByServiceResponseValueList = Array<UserContract>;
-export const ListUserByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  UserContract,
-) as any as S.Schema<ListUserByServiceResponseValueList>;
+export const ListUserByServiceResponseValueList =
+  ListGroupUserResponseValueList as any as S.Schema<ListUserByServiceResponseValueList>;
 
 export interface ListUserByServiceResponse {
   /** Page values. */
@@ -24687,9 +23551,8 @@ export const ListUserGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListUserGroupResponseValueList = Array<GroupContract>;
-export const ListUserGroupResponseValueList = /*@__PURE__*/ S.Array(
-  GroupContract,
-) as any as S.Schema<ListUserGroupResponseValueList>;
+export const ListUserGroupResponseValueList =
+  ListGroupByServiceResponseValueList as any as S.Schema<ListUserGroupResponseValueList>;
 
 export interface ListUserGroupResponse {
   /** Page values. */
@@ -24737,9 +23600,8 @@ export const ListUserIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User Identity values. */
 export type ListUserIdentitiesResponseValueList = Array<UserIdentityContract>;
-export const ListUserIdentitiesResponseValueList = /*@__PURE__*/ S.Array(
-  UserIdentityContract,
-) as any as S.Schema<ListUserIdentitiesResponseValueList>;
+export const ListUserIdentitiesResponseValueList =
+  UserContractPropertiesIdentitiesList as any as S.Schema<ListUserIdentitiesResponseValueList>;
 
 export interface ListUserIdentitiesResponse {
   /** User Identity values. */
@@ -24798,9 +23660,8 @@ export const ListUserSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListUserSubscriptionResponseValueList = Array<SubscriptionContract>;
-export const ListUserSubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  SubscriptionContract,
-) as any as S.Schema<ListUserSubscriptionResponseValueList>;
+export const ListUserSubscriptionResponseValueList =
+  ListProductSubscriptionsResponseValueList as any as S.Schema<ListUserSubscriptionResponseValueList>;
 
 export interface ListUserSubscriptionResponse {
   /** Page values. */
@@ -24810,15 +23671,8 @@ export interface ListUserSubscriptionResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListUserSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListUserSubscriptionResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListUserSubscriptionResponse",
-}) as any as S.Schema<ListUserSubscriptionResponse>;
+export const ListUserSubscriptionResponse =
+  ListProductSubscriptionsResponse as any as S.Schema<ListUserSubscriptionResponse>;
 
 export interface ListWorkspaceApiByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24865,9 +23719,8 @@ export const ListWorkspaceApiByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListWorkspaceApiByServiceResponseValueList = Array<ApiContract>;
-export const ListWorkspaceApiByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  ApiContract,
-) as any as S.Schema<ListWorkspaceApiByServiceResponseValueList>;
+export const ListWorkspaceApiByServiceResponseValueList =
+  ListApiByServiceResponseValueList as any as S.Schema<ListWorkspaceApiByServiceResponseValueList>;
 
 export interface ListWorkspaceApiByServiceResponse {
   /** Page values. */
@@ -24877,15 +23730,8 @@ export interface ListWorkspaceApiByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiByServiceResponse",
-}) as any as S.Schema<ListWorkspaceApiByServiceResponse>;
+export const ListWorkspaceApiByServiceResponse =
+  ListGatewayApiByServiceResponse as any as S.Schema<ListWorkspaceApiByServiceResponse>;
 
 export interface ListWorkspaceApiDiagnosticByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24929,9 +23775,8 @@ export const ListWorkspaceApiDiagnosticByWorkspaceRequest = /*@__PURE__*/ S.susp
 
 /** Page values. */
 export type ListWorkspaceApiDiagnosticByWorkspaceResponseValueList = Array<DiagnosticContract>;
-export const ListWorkspaceApiDiagnosticByWorkspaceResponseValueList = /*@__PURE__*/ S.Array(
-  DiagnosticContract,
-) as any as S.Schema<ListWorkspaceApiDiagnosticByWorkspaceResponseValueList>;
+export const ListWorkspaceApiDiagnosticByWorkspaceResponseValueList =
+  ListApiDiagnosticByServiceResponseValueList as any as S.Schema<ListWorkspaceApiDiagnosticByWorkspaceResponseValueList>;
 
 export interface ListWorkspaceApiDiagnosticByWorkspaceResponse {
   /** Page values. */
@@ -24941,15 +23786,8 @@ export interface ListWorkspaceApiDiagnosticByWorkspaceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiDiagnosticByWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiDiagnosticByWorkspaceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiDiagnosticByWorkspaceResponse",
-}) as any as S.Schema<ListWorkspaceApiDiagnosticByWorkspaceResponse>;
+export const ListWorkspaceApiDiagnosticByWorkspaceResponse =
+  ListApiDiagnosticByServiceResponse as any as S.Schema<ListWorkspaceApiDiagnosticByWorkspaceResponse>;
 
 export interface ListWorkspaceApiOperationByApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -24996,9 +23834,8 @@ export const ListWorkspaceApiOperationByApiRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Page values. */
 export type ListWorkspaceApiOperationByApiResponseValueList = Array<OperationContract>;
-export const ListWorkspaceApiOperationByApiResponseValueList = /*@__PURE__*/ S.Array(
-  OperationContract,
-) as any as S.Schema<ListWorkspaceApiOperationByApiResponseValueList>;
+export const ListWorkspaceApiOperationByApiResponseValueList =
+  ListApiOperationByApiResponseValueList as any as S.Schema<ListWorkspaceApiOperationByApiResponseValueList>;
 
 export interface ListWorkspaceApiOperationByApiResponse {
   /** Page values. */
@@ -25008,15 +23845,8 @@ export interface ListWorkspaceApiOperationByApiResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiOperationByApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiOperationByApiResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiOperationByApiResponse",
-}) as any as S.Schema<ListWorkspaceApiOperationByApiResponse>;
+export const ListWorkspaceApiOperationByApiResponse =
+  ListApiOperationByApiResponse as any as S.Schema<ListWorkspaceApiOperationByApiResponse>;
 
 export interface ListWorkspaceApiOperationPolicyByOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25054,9 +23884,8 @@ export const ListWorkspaceApiOperationPolicyByOperationRequest = /*@__PURE__*/ S
 
 /** Policy Contract value. */
 export type ListWorkspaceApiOperationPolicyByOperationResponseValueList = Array<PolicyContract>;
-export const ListWorkspaceApiOperationPolicyByOperationResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListWorkspaceApiOperationPolicyByOperationResponseValueList>;
+export const ListWorkspaceApiOperationPolicyByOperationResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListWorkspaceApiOperationPolicyByOperationResponseValueList>;
 
 export interface ListWorkspaceApiOperationPolicyByOperationResponse {
   /** Policy Contract value. */
@@ -25066,15 +23895,8 @@ export interface ListWorkspaceApiOperationPolicyByOperationResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiOperationPolicyByOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiOperationPolicyByOperationResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiOperationPolicyByOperationResponse",
-}) as any as S.Schema<ListWorkspaceApiOperationPolicyByOperationResponse>;
+export const ListWorkspaceApiOperationPolicyByOperationResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListWorkspaceApiOperationPolicyByOperationResponse>;
 
 export interface ListWorkspaceApiPolicyByApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25109,9 +23931,8 @@ export const ListWorkspaceApiPolicyByApiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy Contract value. */
 export type ListWorkspaceApiPolicyByApiResponseValueList = Array<PolicyContract>;
-export const ListWorkspaceApiPolicyByApiResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListWorkspaceApiPolicyByApiResponseValueList>;
+export const ListWorkspaceApiPolicyByApiResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListWorkspaceApiPolicyByApiResponseValueList>;
 
 export interface ListWorkspaceApiPolicyByApiResponse {
   /** Policy Contract value. */
@@ -25121,15 +23942,8 @@ export interface ListWorkspaceApiPolicyByApiResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiPolicyByApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiPolicyByApiResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiPolicyByApiResponse",
-}) as any as S.Schema<ListWorkspaceApiPolicyByApiResponse>;
+export const ListWorkspaceApiPolicyByApiResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListWorkspaceApiPolicyByApiResponse>;
 
 export interface ListWorkspaceApiReleaseByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25173,9 +23987,8 @@ export const ListWorkspaceApiReleaseByServiceRequest = /*@__PURE__*/ S.suspend((
 
 /** Page values. */
 export type ListWorkspaceApiReleaseByServiceResponseValueList = Array<ApiReleaseContract>;
-export const ListWorkspaceApiReleaseByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  ApiReleaseContract,
-) as any as S.Schema<ListWorkspaceApiReleaseByServiceResponseValueList>;
+export const ListWorkspaceApiReleaseByServiceResponseValueList =
+  ListApiReleaseByServiceResponseValueList as any as S.Schema<ListWorkspaceApiReleaseByServiceResponseValueList>;
 
 export interface ListWorkspaceApiReleaseByServiceResponse {
   /** Page values. */
@@ -25185,15 +23998,8 @@ export interface ListWorkspaceApiReleaseByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiReleaseByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiReleaseByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiReleaseByServiceResponse",
-}) as any as S.Schema<ListWorkspaceApiReleaseByServiceResponse>;
+export const ListWorkspaceApiReleaseByServiceResponse =
+  ListApiReleaseByServiceResponse as any as S.Schema<ListWorkspaceApiReleaseByServiceResponse>;
 
 export interface ListWorkspaceApiRevisionByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25237,9 +24043,8 @@ export const ListWorkspaceApiRevisionByServiceRequest = /*@__PURE__*/ S.suspend(
 
 /** Page values. */
 export type ListWorkspaceApiRevisionByServiceResponseValueList = Array<ApiRevisionContract>;
-export const ListWorkspaceApiRevisionByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  ApiRevisionContract,
-) as any as S.Schema<ListWorkspaceApiRevisionByServiceResponseValueList>;
+export const ListWorkspaceApiRevisionByServiceResponseValueList =
+  ListApiRevisionByServiceResponseValueList as any as S.Schema<ListWorkspaceApiRevisionByServiceResponseValueList>;
 
 export interface ListWorkspaceApiRevisionByServiceResponse {
   /** Page values. */
@@ -25249,15 +24054,8 @@ export interface ListWorkspaceApiRevisionByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiRevisionByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiRevisionByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiRevisionByServiceResponse",
-}) as any as S.Schema<ListWorkspaceApiRevisionByServiceResponse>;
+export const ListWorkspaceApiRevisionByServiceResponse =
+  ListApiRevisionByServiceResponse as any as S.Schema<ListWorkspaceApiRevisionByServiceResponse>;
 
 export interface ListWorkspaceApiSchemaByApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25301,9 +24099,8 @@ export const ListWorkspaceApiSchemaByApiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** API Schema Contract value. */
 export type ListWorkspaceApiSchemaByApiResponseValueList = Array<SchemaContract>;
-export const ListWorkspaceApiSchemaByApiResponseValueList = /*@__PURE__*/ S.Array(
-  SchemaContract,
-) as any as S.Schema<ListWorkspaceApiSchemaByApiResponseValueList>;
+export const ListWorkspaceApiSchemaByApiResponseValueList =
+  ListApiSchemaByApiResponseValueList as any as S.Schema<ListWorkspaceApiSchemaByApiResponseValueList>;
 
 export interface ListWorkspaceApiSchemaByApiResponse {
   /** API Schema Contract value. */
@@ -25313,15 +24110,8 @@ export interface ListWorkspaceApiSchemaByApiResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiSchemaByApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiSchemaByApiResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiSchemaByApiResponse",
-}) as any as S.Schema<ListWorkspaceApiSchemaByApiResponse>;
+export const ListWorkspaceApiSchemaByApiResponse =
+  ListApiSchemaByApiResponse as any as S.Schema<ListWorkspaceApiSchemaByApiResponse>;
 
 export interface ListWorkspaceApiVersionSetByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25362,9 +24152,8 @@ export const ListWorkspaceApiVersionSetByServiceRequest = /*@__PURE__*/ S.suspen
 
 /** Page values. */
 export type ListWorkspaceApiVersionSetByServiceResponseValueList = Array<ApiVersionSetContract>;
-export const ListWorkspaceApiVersionSetByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  ApiVersionSetContract,
-) as any as S.Schema<ListWorkspaceApiVersionSetByServiceResponseValueList>;
+export const ListWorkspaceApiVersionSetByServiceResponseValueList =
+  ListApiVersionSetByServiceResponseValueList as any as S.Schema<ListWorkspaceApiVersionSetByServiceResponseValueList>;
 
 export interface ListWorkspaceApiVersionSetByServiceResponse {
   /** Page values. */
@@ -25374,15 +24163,8 @@ export interface ListWorkspaceApiVersionSetByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceApiVersionSetByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceApiVersionSetByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceApiVersionSetByServiceResponse",
-}) as any as S.Schema<ListWorkspaceApiVersionSetByServiceResponse>;
+export const ListWorkspaceApiVersionSetByServiceResponse =
+  ListApiVersionSetByServiceResponse as any as S.Schema<ListWorkspaceApiVersionSetByServiceResponse>;
 
 export interface ListWorkspaceBackendByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25423,9 +24205,8 @@ export const ListWorkspaceBackendByWorkspaceRequest = /*@__PURE__*/ S.suspend(()
 
 /** Backend values. */
 export type ListWorkspaceBackendByWorkspaceResponseValueList = Array<BackendContract>;
-export const ListWorkspaceBackendByWorkspaceResponseValueList = /*@__PURE__*/ S.Array(
-  BackendContract,
-) as any as S.Schema<ListWorkspaceBackendByWorkspaceResponseValueList>;
+export const ListWorkspaceBackendByWorkspaceResponseValueList =
+  ListBackendByServiceResponseValueList as any as S.Schema<ListWorkspaceBackendByWorkspaceResponseValueList>;
 
 export interface ListWorkspaceBackendByWorkspaceResponse {
   /** Backend values. */
@@ -25435,15 +24216,8 @@ export interface ListWorkspaceBackendByWorkspaceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceBackendByWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceBackendByWorkspaceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceBackendByWorkspaceResponse",
-}) as any as S.Schema<ListWorkspaceBackendByWorkspaceResponse>;
+export const ListWorkspaceBackendByWorkspaceResponse =
+  ListBackendByServiceResponse as any as S.Schema<ListWorkspaceBackendByWorkspaceResponse>;
 
 export interface ListWorkspaceByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25490,14 +24264,7 @@ export interface WorkspaceContract {
   /** Workspace entity contract properties. */
   properties?: WorkspaceContractProperties;
 }
-export const WorkspaceContract = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WorkspaceContractProperties),
-  }),
-).annotate({ identifier: "WorkspaceContract" }) as any as S.Schema<WorkspaceContract>;
+export const WorkspaceContract = GetWorkspaceResponse as any as S.Schema<WorkspaceContract>;
 
 /** Page values. */
 export type ListWorkspaceByServiceResponseValueList = Array<WorkspaceContract>;
@@ -25565,9 +24332,8 @@ export const ListWorkspaceCertificateByWorkspaceRequest = /*@__PURE__*/ S.suspen
 
 /** Page values. */
 export type ListWorkspaceCertificateByWorkspaceResponseValueList = Array<CertificateContract>;
-export const ListWorkspaceCertificateByWorkspaceResponseValueList = /*@__PURE__*/ S.Array(
-  CertificateContract,
-) as any as S.Schema<ListWorkspaceCertificateByWorkspaceResponseValueList>;
+export const ListWorkspaceCertificateByWorkspaceResponseValueList =
+  ListCertificateByServiceResponseValueList as any as S.Schema<ListWorkspaceCertificateByWorkspaceResponseValueList>;
 
 export interface ListWorkspaceCertificateByWorkspaceResponse {
   /** Page values. */
@@ -25577,15 +24343,8 @@ export interface ListWorkspaceCertificateByWorkspaceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceCertificateByWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceCertificateByWorkspaceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceCertificateByWorkspaceResponse",
-}) as any as S.Schema<ListWorkspaceCertificateByWorkspaceResponse>;
+export const ListWorkspaceCertificateByWorkspaceResponse =
+  ListCertificateByServiceResponse as any as S.Schema<ListWorkspaceCertificateByWorkspaceResponse>;
 
 export interface ListWorkspaceDiagnosticByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25626,9 +24385,8 @@ export const ListWorkspaceDiagnosticByWorkspaceRequest = /*@__PURE__*/ S.suspend
 
 /** Page values. */
 export type ListWorkspaceDiagnosticByWorkspaceResponseValueList = Array<DiagnosticContract>;
-export const ListWorkspaceDiagnosticByWorkspaceResponseValueList = /*@__PURE__*/ S.Array(
-  DiagnosticContract,
-) as any as S.Schema<ListWorkspaceDiagnosticByWorkspaceResponseValueList>;
+export const ListWorkspaceDiagnosticByWorkspaceResponseValueList =
+  ListApiDiagnosticByServiceResponseValueList as any as S.Schema<ListWorkspaceDiagnosticByWorkspaceResponseValueList>;
 
 export interface ListWorkspaceDiagnosticByWorkspaceResponse {
   /** Page values. */
@@ -25638,15 +24396,8 @@ export interface ListWorkspaceDiagnosticByWorkspaceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceDiagnosticByWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceDiagnosticByWorkspaceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceDiagnosticByWorkspaceResponse",
-}) as any as S.Schema<ListWorkspaceDiagnosticByWorkspaceResponse>;
+export const ListWorkspaceDiagnosticByWorkspaceResponse =
+  ListApiDiagnosticByServiceResponse as any as S.Schema<ListWorkspaceDiagnosticByWorkspaceResponse>;
 
 export interface ListWorkspaceGlobalSchemaByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25687,9 +24438,8 @@ export const ListWorkspaceGlobalSchemaByServiceRequest = /*@__PURE__*/ S.suspend
 
 /** Global Schema Contract value. */
 export type ListWorkspaceGlobalSchemaByServiceResponseValueList = Array<GlobalSchemaContract>;
-export const ListWorkspaceGlobalSchemaByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  GlobalSchemaContract,
-) as any as S.Schema<ListWorkspaceGlobalSchemaByServiceResponseValueList>;
+export const ListWorkspaceGlobalSchemaByServiceResponseValueList =
+  ListGlobalSchemaByServiceResponseValueList as any as S.Schema<ListWorkspaceGlobalSchemaByServiceResponseValueList>;
 
 export interface ListWorkspaceGlobalSchemaByServiceResponse {
   /** Global Schema Contract value. */
@@ -25699,15 +24449,8 @@ export interface ListWorkspaceGlobalSchemaByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceGlobalSchemaByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceGlobalSchemaByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceGlobalSchemaByServiceResponse",
-}) as any as S.Schema<ListWorkspaceGlobalSchemaByServiceResponse>;
+export const ListWorkspaceGlobalSchemaByServiceResponse =
+  ListGlobalSchemaByServiceResponse as any as S.Schema<ListWorkspaceGlobalSchemaByServiceResponse>;
 
 export interface ListWorkspaceGroupByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25748,9 +24491,8 @@ export const ListWorkspaceGroupByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListWorkspaceGroupByServiceResponseValueList = Array<GroupContract>;
-export const ListWorkspaceGroupByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  GroupContract,
-) as any as S.Schema<ListWorkspaceGroupByServiceResponseValueList>;
+export const ListWorkspaceGroupByServiceResponseValueList =
+  ListGroupByServiceResponseValueList as any as S.Schema<ListWorkspaceGroupByServiceResponseValueList>;
 
 export interface ListWorkspaceGroupByServiceResponse {
   /** Page values. */
@@ -25760,15 +24502,8 @@ export interface ListWorkspaceGroupByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceGroupByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceGroupByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceGroupByServiceResponse",
-}) as any as S.Schema<ListWorkspaceGroupByServiceResponse>;
+export const ListWorkspaceGroupByServiceResponse =
+  ListGroupByServiceResponse as any as S.Schema<ListWorkspaceGroupByServiceResponse>;
 
 export interface ListWorkspaceGroupUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25812,9 +24547,8 @@ export const ListWorkspaceGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListWorkspaceGroupUserResponseValueList = Array<UserContract>;
-export const ListWorkspaceGroupUserResponseValueList = /*@__PURE__*/ S.Array(
-  UserContract,
-) as any as S.Schema<ListWorkspaceGroupUserResponseValueList>;
+export const ListWorkspaceGroupUserResponseValueList =
+  ListGroupUserResponseValueList as any as S.Schema<ListWorkspaceGroupUserResponseValueList>;
 
 export interface ListWorkspaceGroupUserResponse {
   /** Page values. */
@@ -25824,15 +24558,8 @@ export interface ListWorkspaceGroupUserResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceGroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceGroupUserResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceGroupUserResponse",
-}) as any as S.Schema<ListWorkspaceGroupUserResponse>;
+export const ListWorkspaceGroupUserResponse =
+  ListUserByServiceResponse as any as S.Schema<ListWorkspaceGroupUserResponse>;
 
 export interface ListWorkspaceLoggerByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25873,9 +24600,8 @@ export const ListWorkspaceLoggerByWorkspaceRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Logger values. */
 export type ListWorkspaceLoggerByWorkspaceResponseValueList = Array<LoggerContract>;
-export const ListWorkspaceLoggerByWorkspaceResponseValueList = /*@__PURE__*/ S.Array(
-  LoggerContract,
-) as any as S.Schema<ListWorkspaceLoggerByWorkspaceResponseValueList>;
+export const ListWorkspaceLoggerByWorkspaceResponseValueList =
+  ListLoggerByServiceResponseValueList as any as S.Schema<ListWorkspaceLoggerByWorkspaceResponseValueList>;
 
 export interface ListWorkspaceLoggerByWorkspaceResponse {
   /** Logger values. */
@@ -25885,15 +24611,8 @@ export interface ListWorkspaceLoggerByWorkspaceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceLoggerByWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceLoggerByWorkspaceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceLoggerByWorkspaceResponse",
-}) as any as S.Schema<ListWorkspaceLoggerByWorkspaceResponse>;
+export const ListWorkspaceLoggerByWorkspaceResponse =
+  ListLoggerByServiceResponse as any as S.Schema<ListWorkspaceLoggerByWorkspaceResponse>;
 
 export interface ListWorkspaceNamedValueByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25937,9 +24656,8 @@ export const ListWorkspaceNamedValueByServiceRequest = /*@__PURE__*/ S.suspend((
 
 /** Page values. */
 export type ListWorkspaceNamedValueByServiceResponseValueList = Array<NamedValueContract>;
-export const ListWorkspaceNamedValueByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  NamedValueContract,
-) as any as S.Schema<ListWorkspaceNamedValueByServiceResponseValueList>;
+export const ListWorkspaceNamedValueByServiceResponseValueList =
+  ListNamedValueByServiceResponseValueList as any as S.Schema<ListWorkspaceNamedValueByServiceResponseValueList>;
 
 export interface ListWorkspaceNamedValueByServiceResponse {
   /** Page values. */
@@ -25949,15 +24667,8 @@ export interface ListWorkspaceNamedValueByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceNamedValueByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceNamedValueByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceNamedValueByServiceResponse",
-}) as any as S.Schema<ListWorkspaceNamedValueByServiceResponse>;
+export const ListWorkspaceNamedValueByServiceResponse =
+  ListNamedValueByServiceResponse as any as S.Schema<ListWorkspaceNamedValueByServiceResponse>;
 
 export interface ListWorkspaceNamedValueValueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -25994,13 +24705,8 @@ export interface ListWorkspaceNamedValueValueResponse {
   /** This is secret value of the NamedValue entity. */
   value?: string;
 }
-export const ListWorkspaceNamedValueValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceNamedValueValueResponse",
-}) as any as S.Schema<ListWorkspaceNamedValueValueResponse>;
+export const ListWorkspaceNamedValueValueResponse =
+  GenerateGatewayTokenResponse as any as S.Schema<ListWorkspaceNamedValueValueResponse>;
 
 export interface ListWorkspaceNotificationByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26038,9 +24744,8 @@ export const ListWorkspaceNotificationByServiceRequest = /*@__PURE__*/ S.suspend
 
 /** Page values. */
 export type ListWorkspaceNotificationByServiceResponseValueList = Array<NotificationContract>;
-export const ListWorkspaceNotificationByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  NotificationContract,
-) as any as S.Schema<ListWorkspaceNotificationByServiceResponseValueList>;
+export const ListWorkspaceNotificationByServiceResponseValueList =
+  ListNotificationByServiceResponseValueList as any as S.Schema<ListWorkspaceNotificationByServiceResponseValueList>;
 
 export interface ListWorkspaceNotificationByServiceResponse {
   /** Page values. */
@@ -26050,15 +24755,8 @@ export interface ListWorkspaceNotificationByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceNotificationByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceNotificationByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceNotificationByServiceResponse",
-}) as any as S.Schema<ListWorkspaceNotificationByServiceResponse>;
+export const ListWorkspaceNotificationByServiceResponse =
+  ListNotificationByServiceResponse as any as S.Schema<ListWorkspaceNotificationByServiceResponse>;
 
 export type ListWorkspaceNotificationRecipientEmailByNotificationRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -26237,9 +24935,8 @@ export const ListWorkspacePolicyByApiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Policy Contract value. */
 export type ListWorkspacePolicyByApiResponseValueList = Array<PolicyContract>;
-export const ListWorkspacePolicyByApiResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListWorkspacePolicyByApiResponseValueList>;
+export const ListWorkspacePolicyByApiResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListWorkspacePolicyByApiResponseValueList>;
 
 export interface ListWorkspacePolicyByApiResponse {
   /** Policy Contract value. */
@@ -26249,15 +24946,8 @@ export interface ListWorkspacePolicyByApiResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspacePolicyByApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspacePolicyByApiResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspacePolicyByApiResponse",
-}) as any as S.Schema<ListWorkspacePolicyByApiResponse>;
+export const ListWorkspacePolicyByApiResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListWorkspacePolicyByApiResponse>;
 
 export interface ListWorkspacePolicyFragmentByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26301,9 +24991,8 @@ export const ListWorkspacePolicyFragmentByServiceRequest = /*@__PURE__*/ S.suspe
 
 /** Policy fragment contract value. */
 export type ListWorkspacePolicyFragmentByServiceResponseValueList = Array<PolicyFragmentContract>;
-export const ListWorkspacePolicyFragmentByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyFragmentContract,
-) as any as S.Schema<ListWorkspacePolicyFragmentByServiceResponseValueList>;
+export const ListWorkspacePolicyFragmentByServiceResponseValueList =
+  ListPolicyFragmentByServiceResponseValueList as any as S.Schema<ListWorkspacePolicyFragmentByServiceResponseValueList>;
 
 export interface ListWorkspacePolicyFragmentByServiceResponse {
   /** Policy fragment contract value. */
@@ -26313,15 +25002,8 @@ export interface ListWorkspacePolicyFragmentByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspacePolicyFragmentByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspacePolicyFragmentByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspacePolicyFragmentByServiceResponse",
-}) as any as S.Schema<ListWorkspacePolicyFragmentByServiceResponse>;
+export const ListWorkspacePolicyFragmentByServiceResponse =
+  ListPolicyFragmentByServiceResponse as any as S.Schema<ListWorkspacePolicyFragmentByServiceResponse>;
 
 export interface ListWorkspacePolicyFragmentReferencesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26362,9 +25044,8 @@ export const ListWorkspacePolicyFragmentReferencesRequest = /*@__PURE__*/ S.susp
 
 /** A collection of resources. */
 export type ListWorkspacePolicyFragmentReferencesResponseValueList = Array<Resource>;
-export const ListWorkspacePolicyFragmentReferencesResponseValueList = /*@__PURE__*/ S.Array(
-  Resource,
-) as any as S.Schema<ListWorkspacePolicyFragmentReferencesResponseValueList>;
+export const ListWorkspacePolicyFragmentReferencesResponseValueList =
+  ListPolicyFragmentReferencesResponseValueList as any as S.Schema<ListWorkspacePolicyFragmentReferencesResponseValueList>;
 
 export interface ListWorkspacePolicyFragmentReferencesResponse {
   /** A collection of resources. */
@@ -26374,15 +25055,8 @@ export interface ListWorkspacePolicyFragmentReferencesResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspacePolicyFragmentReferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspacePolicyFragmentReferencesResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspacePolicyFragmentReferencesResponse",
-}) as any as S.Schema<ListWorkspacePolicyFragmentReferencesResponse>;
+export const ListWorkspacePolicyFragmentReferencesResponse =
+  ListPolicyFragmentReferencesResponse as any as S.Schema<ListWorkspacePolicyFragmentReferencesResponse>;
 
 export interface ListWorkspaceProductApiLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26426,9 +25100,8 @@ export const ListWorkspaceProductApiLinkByProductRequest = /*@__PURE__*/ S.suspe
 
 /** Page values. */
 export type ListWorkspaceProductApiLinkByProductResponseValueList = Array<ProductApiLinkContract>;
-export const ListWorkspaceProductApiLinkByProductResponseValueList = /*@__PURE__*/ S.Array(
-  ProductApiLinkContract,
-) as any as S.Schema<ListWorkspaceProductApiLinkByProductResponseValueList>;
+export const ListWorkspaceProductApiLinkByProductResponseValueList =
+  ListProductApiLinkByProductResponseValueList as any as S.Schema<ListWorkspaceProductApiLinkByProductResponseValueList>;
 
 export interface ListWorkspaceProductApiLinkByProductResponse {
   /** Page values. */
@@ -26438,15 +25111,8 @@ export interface ListWorkspaceProductApiLinkByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceProductApiLinkByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceProductApiLinkByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceProductApiLinkByProductResponse",
-}) as any as S.Schema<ListWorkspaceProductApiLinkByProductResponse>;
+export const ListWorkspaceProductApiLinkByProductResponse =
+  ListProductApiLinkByProductResponse as any as S.Schema<ListWorkspaceProductApiLinkByProductResponse>;
 
 export interface ListWorkspaceProductByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26493,9 +25159,8 @@ export const ListWorkspaceProductByServiceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Page values. */
 export type ListWorkspaceProductByServiceResponseValueList = Array<ProductContract>;
-export const ListWorkspaceProductByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  ProductContract,
-) as any as S.Schema<ListWorkspaceProductByServiceResponseValueList>;
+export const ListWorkspaceProductByServiceResponseValueList =
+  ListApiProductByApisResponseValueList as any as S.Schema<ListWorkspaceProductByServiceResponseValueList>;
 
 export interface ListWorkspaceProductByServiceResponse {
   /** Page values. */
@@ -26505,15 +25170,8 @@ export interface ListWorkspaceProductByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceProductByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceProductByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceProductByServiceResponse",
-}) as any as S.Schema<ListWorkspaceProductByServiceResponse>;
+export const ListWorkspaceProductByServiceResponse =
+  ListApiProductByApisResponse as any as S.Schema<ListWorkspaceProductByServiceResponse>;
 
 export interface ListWorkspaceProductGroupLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26558,9 +25216,8 @@ export const ListWorkspaceProductGroupLinkByProductRequest = /*@__PURE__*/ S.sus
 /** Page values. */
 export type ListWorkspaceProductGroupLinkByProductResponseValueList =
   Array<ProductGroupLinkContract>;
-export const ListWorkspaceProductGroupLinkByProductResponseValueList = /*@__PURE__*/ S.Array(
-  ProductGroupLinkContract,
-) as any as S.Schema<ListWorkspaceProductGroupLinkByProductResponseValueList>;
+export const ListWorkspaceProductGroupLinkByProductResponseValueList =
+  ListProductGroupLinkByProductResponseValueList as any as S.Schema<ListWorkspaceProductGroupLinkByProductResponseValueList>;
 
 export interface ListWorkspaceProductGroupLinkByProductResponse {
   /** Page values. */
@@ -26570,15 +25227,8 @@ export interface ListWorkspaceProductGroupLinkByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceProductGroupLinkByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceProductGroupLinkByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceProductGroupLinkByProductResponse",
-}) as any as S.Schema<ListWorkspaceProductGroupLinkByProductResponse>;
+export const ListWorkspaceProductGroupLinkByProductResponse =
+  ListProductGroupLinkByProductResponse as any as S.Schema<ListWorkspaceProductGroupLinkByProductResponse>;
 
 export interface ListWorkspaceProductPolicyByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26613,9 +25263,8 @@ export const ListWorkspaceProductPolicyByProductRequest = /*@__PURE__*/ S.suspen
 
 /** Policy Contract value. */
 export type ListWorkspaceProductPolicyByProductResponseValueList = Array<PolicyContract>;
-export const ListWorkspaceProductPolicyByProductResponseValueList = /*@__PURE__*/ S.Array(
-  PolicyContract,
-) as any as S.Schema<ListWorkspaceProductPolicyByProductResponseValueList>;
+export const ListWorkspaceProductPolicyByProductResponseValueList =
+  ListApiOperationPolicyByOperationResponseValueList as any as S.Schema<ListWorkspaceProductPolicyByProductResponseValueList>;
 
 export interface ListWorkspaceProductPolicyByProductResponse {
   /** Policy Contract value. */
@@ -26625,15 +25274,8 @@ export interface ListWorkspaceProductPolicyByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceProductPolicyByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceProductPolicyByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceProductPolicyByProductResponse",
-}) as any as S.Schema<ListWorkspaceProductPolicyByProductResponse>;
+export const ListWorkspaceProductPolicyByProductResponse =
+  ListApiOperationPolicyByOperationResponse as any as S.Schema<ListWorkspaceProductPolicyByProductResponse>;
 
 export interface ListWorkspaceSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26674,9 +25316,8 @@ export const ListWorkspaceSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListWorkspaceSubscriptionResponseValueList = Array<SubscriptionContract>;
-export const ListWorkspaceSubscriptionResponseValueList = /*@__PURE__*/ S.Array(
-  SubscriptionContract,
-) as any as S.Schema<ListWorkspaceSubscriptionResponseValueList>;
+export const ListWorkspaceSubscriptionResponseValueList =
+  ListProductSubscriptionsResponseValueList as any as S.Schema<ListWorkspaceSubscriptionResponseValueList>;
 
 export interface ListWorkspaceSubscriptionResponse {
   /** Page values. */
@@ -26686,15 +25327,8 @@ export interface ListWorkspaceSubscriptionResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceSubscriptionResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceSubscriptionResponse",
-}) as any as S.Schema<ListWorkspaceSubscriptionResponse>;
+export const ListWorkspaceSubscriptionResponse =
+  ListProductSubscriptionsResponse as any as S.Schema<ListWorkspaceSubscriptionResponse>;
 
 export interface ListWorkspaceSubscriptionSecretsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26733,14 +25367,8 @@ export interface ListWorkspaceSubscriptionSecretsResponse {
   /** Subscription secondary key. */
   secondaryKey?: string;
 }
-export const ListWorkspaceSubscriptionSecretsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primaryKey: S.optional(S.String),
-    secondaryKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceSubscriptionSecretsResponse",
-}) as any as S.Schema<ListWorkspaceSubscriptionSecretsResponse>;
+export const ListWorkspaceSubscriptionSecretsResponse =
+  ListSubscriptionSecretsResponse as any as S.Schema<ListWorkspaceSubscriptionSecretsResponse>;
 
 export interface ListWorkspaceTagApiLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26784,9 +25412,8 @@ export const ListWorkspaceTagApiLinkByProductRequest = /*@__PURE__*/ S.suspend((
 
 /** Page values. */
 export type ListWorkspaceTagApiLinkByProductResponseValueList = Array<TagApiLinkContract>;
-export const ListWorkspaceTagApiLinkByProductResponseValueList = /*@__PURE__*/ S.Array(
-  TagApiLinkContract,
-) as any as S.Schema<ListWorkspaceTagApiLinkByProductResponseValueList>;
+export const ListWorkspaceTagApiLinkByProductResponseValueList =
+  ListProductApiLinkByProductResponseValueList as any as S.Schema<ListWorkspaceTagApiLinkByProductResponseValueList>;
 
 export interface ListWorkspaceTagApiLinkByProductResponse {
   /** Page values. */
@@ -26796,15 +25423,8 @@ export interface ListWorkspaceTagApiLinkByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceTagApiLinkByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceTagApiLinkByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceTagApiLinkByProductResponse",
-}) as any as S.Schema<ListWorkspaceTagApiLinkByProductResponse>;
+export const ListWorkspaceTagApiLinkByProductResponse =
+  ListProductApiLinkByProductResponse as any as S.Schema<ListWorkspaceTagApiLinkByProductResponse>;
 
 export interface ListWorkspaceTagByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26848,9 +25468,8 @@ export const ListWorkspaceTagByServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Page values. */
 export type ListWorkspaceTagByServiceResponseValueList = Array<TagContract>;
-export const ListWorkspaceTagByServiceResponseValueList = /*@__PURE__*/ S.Array(
-  TagContract,
-) as any as S.Schema<ListWorkspaceTagByServiceResponseValueList>;
+export const ListWorkspaceTagByServiceResponseValueList =
+  ListTagByApiResponseValueList as any as S.Schema<ListWorkspaceTagByServiceResponseValueList>;
 
 export interface ListWorkspaceTagByServiceResponse {
   /** Page values. */
@@ -26860,15 +25479,8 @@ export interface ListWorkspaceTagByServiceResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceTagByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceTagByServiceResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceTagByServiceResponse",
-}) as any as S.Schema<ListWorkspaceTagByServiceResponse>;
+export const ListWorkspaceTagByServiceResponse =
+  ListTagByOperationResponse as any as S.Schema<ListWorkspaceTagByServiceResponse>;
 
 export interface ListWorkspaceTagOperationLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26913,9 +25525,8 @@ export const ListWorkspaceTagOperationLinkByProductRequest = /*@__PURE__*/ S.sus
 /** Page values. */
 export type ListWorkspaceTagOperationLinkByProductResponseValueList =
   Array<TagOperationLinkContract>;
-export const ListWorkspaceTagOperationLinkByProductResponseValueList = /*@__PURE__*/ S.Array(
-  TagOperationLinkContract,
-) as any as S.Schema<ListWorkspaceTagOperationLinkByProductResponseValueList>;
+export const ListWorkspaceTagOperationLinkByProductResponseValueList =
+  ListTagOperationLinkByProductResponseValueList as any as S.Schema<ListWorkspaceTagOperationLinkByProductResponseValueList>;
 
 export interface ListWorkspaceTagOperationLinkByProductResponse {
   /** Page values. */
@@ -26925,15 +25536,8 @@ export interface ListWorkspaceTagOperationLinkByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceTagOperationLinkByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceTagOperationLinkByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceTagOperationLinkByProductResponse",
-}) as any as S.Schema<ListWorkspaceTagOperationLinkByProductResponse>;
+export const ListWorkspaceTagOperationLinkByProductResponse =
+  ListTagOperationLinkByProductResponse as any as S.Schema<ListWorkspaceTagOperationLinkByProductResponse>;
 
 export interface ListWorkspaceTagProductLinkByProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26977,9 +25581,8 @@ export const ListWorkspaceTagProductLinkByProductRequest = /*@__PURE__*/ S.suspe
 
 /** Page values. */
 export type ListWorkspaceTagProductLinkByProductResponseValueList = Array<TagProductLinkContract>;
-export const ListWorkspaceTagProductLinkByProductResponseValueList = /*@__PURE__*/ S.Array(
-  TagProductLinkContract,
-) as any as S.Schema<ListWorkspaceTagProductLinkByProductResponseValueList>;
+export const ListWorkspaceTagProductLinkByProductResponseValueList =
+  ListTagProductLinkByProductResponseValueList as any as S.Schema<ListWorkspaceTagProductLinkByProductResponseValueList>;
 
 export interface ListWorkspaceTagProductLinkByProductResponse {
   /** Page values. */
@@ -26989,15 +25592,8 @@ export interface ListWorkspaceTagProductLinkByProductResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const ListWorkspaceTagProductLinkByProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListWorkspaceTagProductLinkByProductResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkspaceTagProductLinkByProductResponse",
-}) as any as S.Schema<ListWorkspaceTagProductLinkByProductResponse>;
+export const ListWorkspaceTagProductLinkByProductResponse =
+  ListTagProductLinkByProductResponse as any as S.Schema<ListWorkspaceTagProductLinkByProductResponse>;
 
 export interface LoggerCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -27040,16 +25636,8 @@ export interface LoggerCreateOrUpdateResponse {
   /** Logger entity contract properties. */
   properties?: LoggerContractProperties;
 }
-export const LoggerCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LoggerContractProperties),
-  }),
-).annotate({
-  identifier: "LoggerCreateOrUpdateResponse",
-}) as any as S.Schema<LoggerCreateOrUpdateResponse>;
+export const LoggerCreateOrUpdateResponse =
+  GetWorkspaceLoggerResponse as any as S.Schema<LoggerCreateOrUpdateResponse>;
 
 /** Mode of Migration to stv2. Default is PreserveIp. */
 export type MigrateApiManagementServiceToStv2RequestMode = "PreserveIp" | "NewIP";
@@ -27087,10 +25675,8 @@ export const MigrateApiManagementServiceToStv2Request = /*@__PURE__*/ S.suspend(
 export type MigrateApiManagementServiceToStv2ResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const MigrateApiManagementServiceToStv2ResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrateApiManagementServiceToStv2ResponseTagsMap>;
+export const MigrateApiManagementServiceToStv2ResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<MigrateApiManagementServiceToStv2ResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type MigrateApiManagementServiceToStv2ResponseSystemDataCreatedByType =
@@ -27140,9 +25726,8 @@ export const MigrateApiManagementServiceToStv2ResponseSystemData = /*@__PURE__*/
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type MigrateApiManagementServiceToStv2ResponseZonesList = Array<string>;
-export const MigrateApiManagementServiceToStv2ResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrateApiManagementServiceToStv2ResponseZonesList>;
+export const MigrateApiManagementServiceToStv2ResponseZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<MigrateApiManagementServiceToStv2ResponseZonesList>;
 
 export interface MigrateApiManagementServiceToStv2Response {
   /** Resource ID. */
@@ -27188,9 +25773,8 @@ export const MigrateApiManagementServiceToStv2Response = /*@__PURE__*/ S.suspend
 
 /** Optional tags that when provided can be used to filter the NamedValue list. */
 export type NamedValueCreateContractPropertiesTagsList = Array<string>;
-export const NamedValueCreateContractPropertiesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamedValueCreateContractPropertiesTagsList>;
+export const NamedValueCreateContractPropertiesTagsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<NamedValueCreateContractPropertiesTagsList>;
 
 /** NamedValue Contract properties. */
 export interface NamedValueCreateContractProperties {
@@ -27258,16 +25842,8 @@ export interface NamedValueCreateOrUpdateResponse {
   /** NamedValue entity contract properties. */
   properties?: NamedValueContractProperties;
 }
-export const NamedValueCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamedValueContractProperties),
-  }),
-).annotate({
-  identifier: "NamedValueCreateOrUpdateResponse",
-}) as any as S.Schema<NamedValueCreateOrUpdateResponse>;
+export const NamedValueCreateOrUpdateResponse =
+  GetWorkspaceNamedValueResponse as any as S.Schema<NamedValueCreateOrUpdateResponse>;
 
 export type NotificationCreateOrUpdateRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -27317,16 +25893,8 @@ export interface NotificationCreateOrUpdateResponse {
   /** Notification entity contract properties. */
   properties?: NotificationContractProperties;
 }
-export const NotificationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NotificationContractProperties),
-  }),
-).annotate({
-  identifier: "NotificationCreateOrUpdateResponse",
-}) as any as S.Schema<NotificationCreateOrUpdateResponse>;
+export const NotificationCreateOrUpdateResponse =
+  GetWorkspaceNotificationResponse as any as S.Schema<NotificationCreateOrUpdateResponse>;
 
 export type NotificationRecipientEmailCreateOrUpdateRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -27497,16 +26065,8 @@ export interface OpenIdConnectProviderCreateOrUpdateResponse {
   /** OpenId Connect Provider contract properties. */
   properties?: OpenidConnectProviderContractProperties;
 }
-export const OpenIdConnectProviderCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OpenidConnectProviderContractProperties),
-  }),
-).annotate({
-  identifier: "OpenIdConnectProviderCreateOrUpdateResponse",
-}) as any as S.Schema<OpenIdConnectProviderCreateOrUpdateResponse>;
+export const OpenIdConnectProviderCreateOrUpdateResponse =
+  GetOpenIdConnectProviderResponse as any as S.Schema<OpenIdConnectProviderCreateOrUpdateResponse>;
 
 /** Definitions about the connectivity check origin. */
 export interface PerformConnectivityCheckAsyncRequestSource {
@@ -27671,9 +26231,8 @@ export const PerformConnectivityCheckAsyncRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of next hop identifiers. */
 export type ConnectivityHopNextHopIdsList = Array<string>;
-export const ConnectivityHopNextHopIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectivityHopNextHopIdsList>;
+export const ConnectivityHopNextHopIdsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<ConnectivityHopNextHopIdsList>;
 
 /** The origin of the issue. */
 export type ConnectivityIssueOrigin = "Local" | "Inbound" | "Outbound";
@@ -27698,10 +26257,7 @@ export const ConnectivityIssueType = S.String;
 
 /** A key-value pair that provides additional context on the issue. */
 export type IssueContext = { [key: string]: string | undefined };
-export const IssueContext = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IssueContext>;
+export const IssueContext = ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<IssueContext>;
 
 /** Provides additional context on the issue. */
 export type ConnectivityIssueContextList = Array<IssueContext>;
@@ -27849,16 +26405,8 @@ export interface PolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const PolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "PolicyCreateOrUpdateResponse",
-}) as any as S.Schema<PolicyCreateOrUpdateResponse>;
+export const PolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<PolicyCreateOrUpdateResponse>;
 
 /** Format of the policy fragment content. */
 export type PolicyFragmentContractPropertiesInputFormat = "xml" | "rawxml";
@@ -27924,16 +26472,8 @@ export interface PolicyFragmentCreateOrUpdateResponse {
   /** Properties of the Policy Fragment. */
   properties?: PolicyFragmentContractProperties;
 }
-export const PolicyFragmentCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyFragmentContractProperties),
-  }),
-).annotate({
-  identifier: "PolicyFragmentCreateOrUpdateResponse",
-}) as any as S.Schema<PolicyFragmentCreateOrUpdateResponse>;
+export const PolicyFragmentCreateOrUpdateResponse =
+  GetPolicyFragmentResponse as any as S.Schema<PolicyFragmentCreateOrUpdateResponse>;
 
 export interface PolicyRestrictionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -27976,16 +26516,8 @@ export interface PolicyRestrictionCreateOrUpdateResponse {
   /** Properties of the Policy Restriction. */
   properties?: PolicyRestrictionContractProperties;
 }
-export const PolicyRestrictionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyRestrictionContractProperties),
-  }),
-).annotate({
-  identifier: "PolicyRestrictionCreateOrUpdateResponse",
-}) as any as S.Schema<PolicyRestrictionCreateOrUpdateResponse>;
+export const PolicyRestrictionCreateOrUpdateResponse =
+  GetPolicyRestrictionResponse as any as S.Schema<PolicyRestrictionCreateOrUpdateResponse>;
 
 export interface PolicyRestrictionValidationsByServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28022,16 +26554,8 @@ export interface PolicyRestrictionValidationsByServiceResponse {
   /** Properties of the Operation Contract. */
   properties?: OperationResultContractProperties;
 }
-export const PolicyRestrictionValidationsByServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationResultContractProperties),
-  }),
-).annotate({
-  identifier: "PolicyRestrictionValidationsByServiceResponse",
-}) as any as S.Schema<PolicyRestrictionValidationsByServiceResponse>;
+export const PolicyRestrictionValidationsByServiceResponse =
+  DeployTenantConfigurationResponse as any as S.Schema<PolicyRestrictionValidationsByServiceResponse>;
 
 export interface PortalConfigCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28141,16 +26665,8 @@ export interface PortalRevisionCreateOrUpdateResponse {
   /** Properties of the portal revisions. */
   properties?: PortalRevisionContractProperties;
 }
-export const PortalRevisionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PortalRevisionContractProperties),
-  }),
-).annotate({
-  identifier: "PortalRevisionCreateOrUpdateResponse",
-}) as any as S.Schema<PortalRevisionCreateOrUpdateResponse>;
+export const PortalRevisionCreateOrUpdateResponse =
+  GetPortalRevisionResponse as any as S.Schema<PortalRevisionCreateOrUpdateResponse>;
 
 export interface PostAuthorizationLoginLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28264,16 +26780,8 @@ export interface PrivateEndpointConnectionCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionByNameResponse as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateResponse>;
 
 export interface ProductApiCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28316,16 +26824,8 @@ export interface ProductApiCreateOrUpdateResponse {
   /** API entity contract properties. */
   properties?: ApiContractProperties;
 }
-export const ProductApiCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiContractProperties),
-  }),
-).annotate({
-  identifier: "ProductApiCreateOrUpdateResponse",
-}) as any as S.Schema<ProductApiCreateOrUpdateResponse>;
+export const ProductApiCreateOrUpdateResponse =
+  ApiCreateOrUpdateResponse as any as S.Schema<ProductApiCreateOrUpdateResponse>;
 
 export interface ProductApiLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28371,16 +26871,8 @@ export interface ProductApiLinkCreateOrUpdateResponse {
   /** Product-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const ProductApiLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({
-  identifier: "ProductApiLinkCreateOrUpdateResponse",
-}) as any as S.Schema<ProductApiLinkCreateOrUpdateResponse>;
+export const ProductApiLinkCreateOrUpdateResponse =
+  GetProductApiLinkResponse as any as S.Schema<ProductApiLinkCreateOrUpdateResponse>;
 
 export interface ProductCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28423,16 +26915,8 @@ export interface ProductCreateOrUpdateResponse {
   /** Product entity contract properties. */
   properties?: ProductContractProperties;
 }
-export const ProductCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductContractProperties),
-  }),
-).annotate({
-  identifier: "ProductCreateOrUpdateResponse",
-}) as any as S.Schema<ProductCreateOrUpdateResponse>;
+export const ProductCreateOrUpdateResponse =
+  GetWorkspaceProductResponse as any as S.Schema<ProductCreateOrUpdateResponse>;
 
 export interface ProductGroupCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28475,16 +26959,8 @@ export interface ProductGroupCreateOrUpdateResponse {
   /** Group entity contract properties. */
   properties?: GroupContractProperties;
 }
-export const ProductGroupCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GroupContractProperties),
-  }),
-).annotate({
-  identifier: "ProductGroupCreateOrUpdateResponse",
-}) as any as S.Schema<ProductGroupCreateOrUpdateResponse>;
+export const ProductGroupCreateOrUpdateResponse =
+  GetWorkspaceGroupResponse as any as S.Schema<ProductGroupCreateOrUpdateResponse>;
 
 export interface ProductGroupLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28530,16 +27006,8 @@ export interface ProductGroupLinkCreateOrUpdateResponse {
   /** Product-group link entity contract properties. */
   properties?: ProductGroupLinkContractProperties;
 }
-export const ProductGroupLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductGroupLinkContractProperties),
-  }),
-).annotate({
-  identifier: "ProductGroupLinkCreateOrUpdateResponse",
-}) as any as S.Schema<ProductGroupLinkCreateOrUpdateResponse>;
+export const ProductGroupLinkCreateOrUpdateResponse =
+  GetProductGroupLinkResponse as any as S.Schema<ProductGroupLinkCreateOrUpdateResponse>;
 
 export type ProductPolicyCreateOrUpdateRequestPolicyId = "policy";
 export const ProductPolicyCreateOrUpdateRequestPolicyId = S.String;
@@ -28588,16 +27056,8 @@ export interface ProductPolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const ProductPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "ProductPolicyCreateOrUpdateResponse",
-}) as any as S.Schema<ProductPolicyCreateOrUpdateResponse>;
+export const ProductPolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<ProductPolicyCreateOrUpdateResponse>;
 
 export interface ProductWikiCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28640,16 +27100,8 @@ export interface ProductWikiCreateOrUpdateResponse {
   /** Wiki details. */
   properties?: WikiContractProperties;
 }
-export const ProductWikiCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WikiContractProperties),
-  }),
-).annotate({
-  identifier: "ProductWikiCreateOrUpdateResponse",
-}) as any as S.Schema<ProductWikiCreateOrUpdateResponse>;
+export const ProductWikiCreateOrUpdateResponse =
+  ApiWikiCreateOrUpdateResponse as any as S.Schema<ProductWikiCreateOrUpdateResponse>;
 
 export interface PurgeDeletedServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28677,9 +27129,8 @@ export const PurgeDeletedServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeDeletedServiceRequest>;
 
 export interface PurgeDeletedServiceResponse {}
-export const PurgeDeletedServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PurgeDeletedServiceResponse",
-}) as any as S.Schema<PurgeDeletedServiceResponse>;
+export const PurgeDeletedServiceResponse =
+  FrontendConfigurationInput as any as S.Schema<PurgeDeletedServiceResponse>;
 
 export interface RefreshCertificateSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28719,16 +27170,8 @@ export interface RefreshCertificateSecretResponse {
   /** Certificate properties details. */
   properties?: CertificateContractProperties;
 }
-export const RefreshCertificateSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CertificateContractProperties),
-  }),
-).annotate({
-  identifier: "RefreshCertificateSecretResponse",
-}) as any as S.Schema<RefreshCertificateSecretResponse>;
+export const RefreshCertificateSecretResponse =
+  CertificateCreateOrUpdateResponse as any as S.Schema<RefreshCertificateSecretResponse>;
 
 export interface RefreshNamedValueSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28768,16 +27211,8 @@ export interface RefreshNamedValueSecretResponse {
   /** NamedValue entity contract properties. */
   properties?: NamedValueContractProperties;
 }
-export const RefreshNamedValueSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamedValueContractProperties),
-  }),
-).annotate({
-  identifier: "RefreshNamedValueSecretResponse",
-}) as any as S.Schema<RefreshNamedValueSecretResponse>;
+export const RefreshNamedValueSecretResponse =
+  GetWorkspaceNamedValueResponse as any as S.Schema<RefreshNamedValueSecretResponse>;
 
 export interface RefreshWorkspaceCertificateSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28820,16 +27255,8 @@ export interface RefreshWorkspaceCertificateSecretResponse {
   /** Certificate properties details. */
   properties?: CertificateContractProperties;
 }
-export const RefreshWorkspaceCertificateSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CertificateContractProperties),
-  }),
-).annotate({
-  identifier: "RefreshWorkspaceCertificateSecretResponse",
-}) as any as S.Schema<RefreshWorkspaceCertificateSecretResponse>;
+export const RefreshWorkspaceCertificateSecretResponse =
+  CertificateCreateOrUpdateResponse as any as S.Schema<RefreshWorkspaceCertificateSecretResponse>;
 
 export interface RefreshWorkspaceNamedValueSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28872,16 +27299,8 @@ export interface RefreshWorkspaceNamedValueSecretResponse {
   /** NamedValue entity contract properties. */
   properties?: NamedValueContractProperties;
 }
-export const RefreshWorkspaceNamedValueSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamedValueContractProperties),
-  }),
-).annotate({
-  identifier: "RefreshWorkspaceNamedValueSecretResponse",
-}) as any as S.Schema<RefreshWorkspaceNamedValueSecretResponse>;
+export const RefreshWorkspaceNamedValueSecretResponse =
+  GetWorkspaceNamedValueResponse as any as S.Schema<RefreshWorkspaceNamedValueSecretResponse>;
 
 /** The Key being regenerated. */
 export type RegenerateGatewayKeyRequestKeyType = "primary" | "secondary";
@@ -28919,9 +27338,8 @@ export const RegenerateGatewayKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegenerateGatewayKeyRequest>;
 
 export interface RegenerateGatewayKeyResponse {}
-export const RegenerateGatewayKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegenerateGatewayKeyResponse",
-}) as any as S.Schema<RegenerateGatewayKeyResponse>;
+export const RegenerateGatewayKeyResponse =
+  FrontendConfigurationInput as any as S.Schema<RegenerateGatewayKeyResponse>;
 
 export interface RegenerateSubscriptionPrimaryKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28952,11 +27370,8 @@ export const RegenerateSubscriptionPrimaryKeyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RegenerateSubscriptionPrimaryKeyRequest>;
 
 export interface RegenerateSubscriptionPrimaryKeyResponse {}
-export const RegenerateSubscriptionPrimaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateSubscriptionPrimaryKeyResponse",
-}) as any as S.Schema<RegenerateSubscriptionPrimaryKeyResponse>;
+export const RegenerateSubscriptionPrimaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateSubscriptionPrimaryKeyResponse>;
 
 export interface RegenerateSubscriptionSecondaryKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28987,11 +27402,8 @@ export const RegenerateSubscriptionSecondaryKeyRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RegenerateSubscriptionSecondaryKeyRequest>;
 
 export interface RegenerateSubscriptionSecondaryKeyResponse {}
-export const RegenerateSubscriptionSecondaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateSubscriptionSecondaryKeyResponse",
-}) as any as S.Schema<RegenerateSubscriptionSecondaryKeyResponse>;
+export const RegenerateSubscriptionSecondaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateSubscriptionSecondaryKeyResponse>;
 
 export type RegenerateTenantAccessGitPrimaryKeyRequestAccessName = "access" | "gitAccess";
 export const RegenerateTenantAccessGitPrimaryKeyRequestAccessName = S.String;
@@ -29025,11 +27437,8 @@ export const RegenerateTenantAccessGitPrimaryKeyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RegenerateTenantAccessGitPrimaryKeyRequest>;
 
 export interface RegenerateTenantAccessGitPrimaryKeyResponse {}
-export const RegenerateTenantAccessGitPrimaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateTenantAccessGitPrimaryKeyResponse",
-}) as any as S.Schema<RegenerateTenantAccessGitPrimaryKeyResponse>;
+export const RegenerateTenantAccessGitPrimaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateTenantAccessGitPrimaryKeyResponse>;
 
 export type RegenerateTenantAccessGitSecondaryKeyRequestAccessName = "access" | "gitAccess";
 export const RegenerateTenantAccessGitSecondaryKeyRequestAccessName = S.String;
@@ -29063,11 +27472,8 @@ export const RegenerateTenantAccessGitSecondaryKeyRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<RegenerateTenantAccessGitSecondaryKeyRequest>;
 
 export interface RegenerateTenantAccessGitSecondaryKeyResponse {}
-export const RegenerateTenantAccessGitSecondaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateTenantAccessGitSecondaryKeyResponse",
-}) as any as S.Schema<RegenerateTenantAccessGitSecondaryKeyResponse>;
+export const RegenerateTenantAccessGitSecondaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateTenantAccessGitSecondaryKeyResponse>;
 
 export type RegenerateTenantAccessPrimaryKeyRequestAccessName = "access" | "gitAccess";
 export const RegenerateTenantAccessPrimaryKeyRequestAccessName = S.String;
@@ -29101,11 +27507,8 @@ export const RegenerateTenantAccessPrimaryKeyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RegenerateTenantAccessPrimaryKeyRequest>;
 
 export interface RegenerateTenantAccessPrimaryKeyResponse {}
-export const RegenerateTenantAccessPrimaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateTenantAccessPrimaryKeyResponse",
-}) as any as S.Schema<RegenerateTenantAccessPrimaryKeyResponse>;
+export const RegenerateTenantAccessPrimaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateTenantAccessPrimaryKeyResponse>;
 
 export type RegenerateTenantAccessSecondaryKeyRequestAccessName = "access" | "gitAccess";
 export const RegenerateTenantAccessSecondaryKeyRequestAccessName = S.String;
@@ -29139,11 +27542,8 @@ export const RegenerateTenantAccessSecondaryKeyRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RegenerateTenantAccessSecondaryKeyRequest>;
 
 export interface RegenerateTenantAccessSecondaryKeyResponse {}
-export const RegenerateTenantAccessSecondaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateTenantAccessSecondaryKeyResponse",
-}) as any as S.Schema<RegenerateTenantAccessSecondaryKeyResponse>;
+export const RegenerateTenantAccessSecondaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateTenantAccessSecondaryKeyResponse>;
 
 export interface RegenerateWorkspaceSubscriptionPrimaryKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29177,11 +27577,8 @@ export const RegenerateWorkspaceSubscriptionPrimaryKeyRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RegenerateWorkspaceSubscriptionPrimaryKeyRequest>;
 
 export interface RegenerateWorkspaceSubscriptionPrimaryKeyResponse {}
-export const RegenerateWorkspaceSubscriptionPrimaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateWorkspaceSubscriptionPrimaryKeyResponse",
-}) as any as S.Schema<RegenerateWorkspaceSubscriptionPrimaryKeyResponse>;
+export const RegenerateWorkspaceSubscriptionPrimaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateWorkspaceSubscriptionPrimaryKeyResponse>;
 
 export interface RegenerateWorkspaceSubscriptionSecondaryKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29215,11 +27612,8 @@ export const RegenerateWorkspaceSubscriptionSecondaryKeyRequest = /*@__PURE__*/ 
 }) as any as S.Schema<RegenerateWorkspaceSubscriptionSecondaryKeyRequest>;
 
 export interface RegenerateWorkspaceSubscriptionSecondaryKeyResponse {}
-export const RegenerateWorkspaceSubscriptionSecondaryKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RegenerateWorkspaceSubscriptionSecondaryKeyResponse",
-}) as any as S.Schema<RegenerateWorkspaceSubscriptionSecondaryKeyResponse>;
+export const RegenerateWorkspaceSubscriptionSecondaryKeyResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<RegenerateWorkspaceSubscriptionSecondaryKeyResponse>;
 
 /** The type of access to be used for the storage account. */
 export type RestoreApiManagementServiceRequestAccessType =
@@ -29273,10 +27667,8 @@ export const RestoreApiManagementServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RestoreApiManagementServiceResponseTagsMap = { [key: string]: string | undefined };
-export const RestoreApiManagementServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RestoreApiManagementServiceResponseTagsMap>;
+export const RestoreApiManagementServiceResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<RestoreApiManagementServiceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type RestoreApiManagementServiceResponseSystemDataCreatedByType =
@@ -29324,9 +27716,8 @@ export const RestoreApiManagementServiceResponseSystemData = /*@__PURE__*/ S.sus
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type RestoreApiManagementServiceResponseZonesList = Array<string>;
-export const RestoreApiManagementServiceResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreApiManagementServiceResponseZonesList>;
+export const RestoreApiManagementServiceResponseZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<RestoreApiManagementServiceResponseZonesList>;
 
 export interface RestoreApiManagementServiceResponse {
   /** Resource ID. */
@@ -29405,11 +27796,8 @@ export const SendUserConfirmationPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SendUserConfirmationPasswordRequest>;
 
 export interface SendUserConfirmationPasswordResponse {}
-export const SendUserConfirmationPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendUserConfirmationPasswordResponse",
-}) as any as S.Schema<SendUserConfirmationPasswordResponse>;
+export const SendUserConfirmationPasswordResponse =
+  ConfirmAuthorizationConsentCodeResponse as any as S.Schema<SendUserConfirmationPasswordResponse>;
 
 export type SubscriptionCreateOrUpdateRequestAppType = "portal" | "developerPortal";
 export const SubscriptionCreateOrUpdateRequestAppType = S.String;
@@ -29502,16 +27890,8 @@ export interface SubscriptionCreateOrUpdateResponse {
   /** Subscription contract properties. */
   properties?: SubscriptionContractProperties;
 }
-export const SubscriptionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SubscriptionContractProperties),
-  }),
-).annotate({
-  identifier: "SubscriptionCreateOrUpdateResponse",
-}) as any as S.Schema<SubscriptionCreateOrUpdateResponse>;
+export const SubscriptionCreateOrUpdateResponse =
+  GetUserSubscriptionResponse as any as S.Schema<SubscriptionCreateOrUpdateResponse>;
 
 export interface TagApiLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29557,16 +27937,8 @@ export interface TagApiLinkCreateOrUpdateResponse {
   /** Tag-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const TagApiLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({
-  identifier: "TagApiLinkCreateOrUpdateResponse",
-}) as any as S.Schema<TagApiLinkCreateOrUpdateResponse>;
+export const TagApiLinkCreateOrUpdateResponse =
+  GetProductApiLinkResponse as any as S.Schema<TagApiLinkCreateOrUpdateResponse>;
 
 export interface TagCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29607,16 +27979,8 @@ export interface TagCreateOrUpdateResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const TagCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({
-  identifier: "TagCreateOrUpdateResponse",
-}) as any as S.Schema<TagCreateOrUpdateResponse>;
+export const TagCreateOrUpdateResponse =
+  AssignTagToOperationResponse as any as S.Schema<TagCreateOrUpdateResponse>;
 
 export interface TagOperationLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29662,16 +28026,8 @@ export interface TagOperationLinkCreateOrUpdateResponse {
   /** Tag-API link entity contract properties. */
   properties?: TagOperationLinkContractProperties;
 }
-export const TagOperationLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagOperationLinkContractProperties),
-  }),
-).annotate({
-  identifier: "TagOperationLinkCreateOrUpdateResponse",
-}) as any as S.Schema<TagOperationLinkCreateOrUpdateResponse>;
+export const TagOperationLinkCreateOrUpdateResponse =
+  GetTagOperationLinkResponse as any as S.Schema<TagOperationLinkCreateOrUpdateResponse>;
 
 export interface TagProductLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29717,16 +28073,8 @@ export interface TagProductLinkCreateOrUpdateResponse {
   /** Tag-API link entity contract properties. */
   properties?: TagProductLinkContractProperties;
 }
-export const TagProductLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagProductLinkContractProperties),
-  }),
-).annotate({
-  identifier: "TagProductLinkCreateOrUpdateResponse",
-}) as any as S.Schema<TagProductLinkCreateOrUpdateResponse>;
+export const TagProductLinkCreateOrUpdateResponse =
+  GetTagProductLinkResponse as any as S.Schema<TagProductLinkCreateOrUpdateResponse>;
 
 export type TenantConfigurationSaveRequestConfigurationName = "configuration";
 export const TenantConfigurationSaveRequestConfigurationName = S.String;
@@ -29738,14 +28086,8 @@ export interface SaveConfigurationParameterProperties {
   /** The value if true, the current configuration database is committed to the Git repository, even if the Git repository has newer changes that would be overwritten. */
   force?: boolean;
 }
-export const SaveConfigurationParameterProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.String,
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SaveConfigurationParameterProperties",
-}) as any as S.Schema<SaveConfigurationParameterProperties>;
+export const SaveConfigurationParameterProperties =
+  DeployConfigurationParameterProperties as any as S.Schema<SaveConfigurationParameterProperties>;
 
 export interface TenantConfigurationSaveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29788,16 +28130,8 @@ export interface TenantConfigurationSaveResponse {
   /** Properties of the Operation Contract. */
   properties?: OperationResultContractProperties;
 }
-export const TenantConfigurationSaveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationResultContractProperties),
-  }),
-).annotate({
-  identifier: "TenantConfigurationSaveResponse",
-}) as any as S.Schema<TenantConfigurationSaveResponse>;
+export const TenantConfigurationSaveResponse =
+  DeployTenantConfigurationResponse as any as S.Schema<TenantConfigurationSaveResponse>;
 
 /** Type of API. */
 export type ApiContractUpdatePropertiesInputType =
@@ -29923,14 +28257,7 @@ export interface UpdateApiResponse {
   /** API entity contract properties. */
   properties?: ApiContractProperties;
 }
-export const UpdateApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiContractProperties),
-  }),
-).annotate({ identifier: "UpdateApiResponse" }) as any as S.Schema<UpdateApiResponse>;
+export const UpdateApiResponse = GetApiResponse as any as S.Schema<UpdateApiResponse>;
 
 export interface UpdateApiDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -29976,23 +28303,13 @@ export interface UpdateApiDiagnosticResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const UpdateApiDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateApiDiagnosticResponse",
-}) as any as S.Schema<UpdateApiDiagnosticResponse>;
+export const UpdateApiDiagnosticResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<UpdateApiDiagnosticResponse>;
 
 /** Resource tags. */
 export type UpdateApiGatewayRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApiGatewayRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApiGatewayRequestTagsMap>;
+export const UpdateApiGatewayRequestTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApiGatewayRequestTagsMap>;
 
 /** The type of VPN in which API Management gateway needs to be configured in. */
 export type ApiManagementGatewayUpdatePropertiesInputVirtualNetworkType =
@@ -30080,10 +28397,8 @@ export const UpdateApiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateApiGatewayResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateApiGatewayResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApiGatewayResponseTagsMap>;
+export const UpdateApiGatewayResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApiGatewayResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateApiGatewayResponseSystemDataCreatedByType =
@@ -30242,21 +28557,13 @@ export interface UpdateApiIssueResponse {
   /** Properties of the Issue. */
   properties?: IssueContractProperties;
 }
-export const UpdateApiIssueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(IssueContractProperties),
-  }),
-).annotate({ identifier: "UpdateApiIssueResponse" }) as any as S.Schema<UpdateApiIssueResponse>;
+export const UpdateApiIssueResponse =
+  GetApiIssueResponse as any as S.Schema<UpdateApiIssueResponse>;
 
 /** Resource tags. */
 export type UpdateApiManagementServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateApiManagementServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApiManagementServiceRequestTagsMap>;
+export const UpdateApiManagementServiceRequestTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApiManagementServiceRequestTagsMap>;
 
 /** Custom hostname configuration of the API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputHostnameConfigurationsList =
@@ -30282,17 +28589,14 @@ export const ApiManagementServiceUpdatePropertiesInputAdditionalLocationsList =
 export type ApiManagementServiceUpdatePropertiesInputCustomPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const ApiManagementServiceUpdatePropertiesInputCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiManagementServiceUpdatePropertiesInputCustomPropertiesMap>;
+export const ApiManagementServiceUpdatePropertiesInputCustomPropertiesMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<ApiManagementServiceUpdatePropertiesInputCustomPropertiesMap>;
 
 /** List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10. */
 export type ApiManagementServiceUpdatePropertiesInputCertificatesList =
   Array<CertificateConfiguration>;
-export const ApiManagementServiceUpdatePropertiesInputCertificatesList = /*@__PURE__*/ S.Array(
-  CertificateConfiguration,
-) as any as S.Schema<ApiManagementServiceUpdatePropertiesInputCertificatesList>;
+export const ApiManagementServiceUpdatePropertiesInputCertificatesList =
+  ApiManagementServicePropertiesCertificatesList as any as S.Schema<ApiManagementServiceUpdatePropertiesInputCertificatesList>;
 
 /** Property can be used to enable NAT Gateway for this API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputNatGatewayState = "Enabled" | "Disabled";
@@ -30315,9 +28619,7 @@ export const ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnections
 export type ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList =
   Array<ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem>;
 export const ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem,
-  ) as any as S.Schema<ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList>;
+  ApiManagementServicePropertiesInputPrivateEndpointConnectionsList as any as S.Schema<ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList>;
 
 /** Status of legacy portal in the API Management service. */
 export type ApiManagementServiceUpdatePropertiesInputLegacyPortalStatus = "Enabled" | "Disabled";
@@ -30411,9 +28713,8 @@ export const ApiManagementServiceUpdatePropertiesInput = /*@__PURE__*/ S.suspend
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type UpdateApiManagementServiceRequestZonesList = Array<string>;
-export const UpdateApiManagementServiceRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApiManagementServiceRequestZonesList>;
+export const UpdateApiManagementServiceRequestZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<UpdateApiManagementServiceRequestZonesList>;
 
 export interface UpdateApiManagementServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30457,10 +28758,8 @@ export const UpdateApiManagementServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateApiManagementServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateApiManagementServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateApiManagementServiceResponseTagsMap>;
+export const UpdateApiManagementServiceResponseTagsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApiManagementServiceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateApiManagementServiceResponseSystemDataCreatedByType =
@@ -30508,9 +28807,8 @@ export const UpdateApiManagementServiceResponseSystemData = /*@__PURE__*/ S.susp
 
 /** A list of availability zones denoting where the resource needs to come from. */
 export type UpdateApiManagementServiceResponseZonesList = Array<string>;
-export const UpdateApiManagementServiceResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApiManagementServiceResponseZonesList>;
+export const UpdateApiManagementServiceResponseZonesList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<UpdateApiManagementServiceResponseZonesList>;
 
 export interface UpdateApiManagementServiceResponse {
   /** Resource ID. */
@@ -30556,15 +28854,13 @@ export const UpdateApiManagementServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of URL template parameters. */
 export type OperationUpdateContractPropertiesTemplateParametersList = Array<ParameterContract>;
-export const OperationUpdateContractPropertiesTemplateParametersList = /*@__PURE__*/ S.Array(
-  ParameterContract,
-) as any as S.Schema<OperationUpdateContractPropertiesTemplateParametersList>;
+export const OperationUpdateContractPropertiesTemplateParametersList =
+  OperationContractPropertiesTemplateParametersList as any as S.Schema<OperationUpdateContractPropertiesTemplateParametersList>;
 
 /** Array of Operation responses. */
 export type OperationUpdateContractPropertiesResponsesList = Array<ResponseContract>;
-export const OperationUpdateContractPropertiesResponsesList = /*@__PURE__*/ S.Array(
-  ResponseContract,
-) as any as S.Schema<OperationUpdateContractPropertiesResponsesList>;
+export const OperationUpdateContractPropertiesResponsesList =
+  OperationContractPropertiesResponsesList as any as S.Schema<OperationUpdateContractPropertiesResponsesList>;
 
 /** Operation Update Contract Properties. */
 export interface OperationUpdateContractProperties {
@@ -30644,16 +28940,8 @@ export interface UpdateApiOperationResponse {
   /** Properties of the Operation Contract. */
   properties?: OperationContractProperties;
 }
-export const UpdateApiOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateApiOperationResponse",
-}) as any as S.Schema<UpdateApiOperationResponse>;
+export const UpdateApiOperationResponse =
+  ApiOperationCreateOrUpdateResponse as any as S.Schema<UpdateApiOperationResponse>;
 
 export interface UpdateApiReleaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30697,14 +28985,8 @@ export interface UpdateApiReleaseResponse {
   /** ApiRelease entity contract properties. */
   properties?: ApiReleaseContractProperties;
 }
-export const UpdateApiReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiReleaseContractProperties),
-  }),
-).annotate({ identifier: "UpdateApiReleaseResponse" }) as any as S.Schema<UpdateApiReleaseResponse>;
+export const UpdateApiReleaseResponse =
+  GetApiReleaseResponse as any as S.Schema<UpdateApiReleaseResponse>;
 
 /** An value that determines where the API Version identifier will be located in a HTTP request. */
 export type ApiVersionSetUpdateParametersPropertiesVersioningScheme =
@@ -30779,16 +29061,8 @@ export interface UpdateApiVersionSetResponse {
   /** API VersionSet contract properties. */
   properties?: ApiVersionSetContractProperties;
 }
-export const UpdateApiVersionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiVersionSetContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateApiVersionSetResponse",
-}) as any as S.Schema<UpdateApiVersionSetResponse>;
+export const UpdateApiVersionSetResponse =
+  ApiVersionSetCreateOrUpdateResponse as any as S.Schema<UpdateApiVersionSetResponse>;
 
 export interface UpdateApiWikiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -30829,14 +29103,7 @@ export interface UpdateApiWikiResponse {
   /** Wiki details. */
   properties?: WikiContractProperties;
 }
-export const UpdateApiWikiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WikiContractProperties),
-  }),
-).annotate({ identifier: "UpdateApiWikiResponse" }) as any as S.Schema<UpdateApiWikiResponse>;
+export const UpdateApiWikiResponse = GetApiWikiResponse as any as S.Schema<UpdateApiWikiResponse>;
 
 export type AuthorizationServerUpdateContractPropertiesAuthorizationMethodsItem =
   | "HEAD"
@@ -31022,34 +29289,20 @@ export interface UpdateAuthorizationServerResponse {
   /** Properties of the External OAuth authorization server Contract. */
   properties?: AuthorizationServerContractProperties;
 }
-export const UpdateAuthorizationServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AuthorizationServerContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateAuthorizationServerResponse",
-}) as any as S.Schema<UpdateAuthorizationServerResponse>;
+export const UpdateAuthorizationServerResponse =
+  AuthorizationServerCreateOrUpdateResponse as any as S.Schema<UpdateAuthorizationServerResponse>;
 
 /** The list of backend entities belonging to a pool. */
 export type BackendUpdateParameterPropertiesPoolServicesList = Array<BackendPoolItem>;
-export const BackendUpdateParameterPropertiesPoolServicesList = /*@__PURE__*/ S.Array(
-  BackendPoolItem,
-) as any as S.Schema<BackendUpdateParameterPropertiesPoolServicesList>;
+export const BackendUpdateParameterPropertiesPoolServicesList =
+  BackendContractPropertiesPoolServicesList as any as S.Schema<BackendUpdateParameterPropertiesPoolServicesList>;
 
 export interface BackendUpdateParameterPropertiesPool {
   /** The list of backend entities belonging to a pool. */
   services?: BackendUpdateParameterPropertiesPoolServicesList;
 }
-export const BackendUpdateParameterPropertiesPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    services: S.optional(BackendUpdateParameterPropertiesPoolServicesList),
-  }),
-).annotate({
-  identifier: "BackendUpdateParameterPropertiesPool",
-}) as any as S.Schema<BackendUpdateParameterPropertiesPool>;
+export const BackendUpdateParameterPropertiesPool =
+  BackendContractPropertiesPool as any as S.Schema<BackendUpdateParameterPropertiesPool>;
 
 /** Type of the backend. A backend can be either Single or Pool. */
 export type BackendUpdateParameterPropertiesType = "Single" | "Pool";
@@ -31143,14 +29396,7 @@ export interface UpdateBackendResponse {
   /** Backend entity contract properties. */
   properties?: BackendContractProperties;
 }
-export const UpdateBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackendContractProperties),
-  }),
-).annotate({ identifier: "UpdateBackendResponse" }) as any as S.Schema<UpdateBackendResponse>;
+export const UpdateBackendResponse = GetBackendResponse as any as S.Schema<UpdateBackendResponse>;
 
 /** Parameters supplied to the Update Cache operation. */
 export interface CacheUpdateProperties {
@@ -31211,14 +29457,7 @@ export interface UpdateCacheResponse {
   /** Cache properties details. */
   properties?: CacheContractProperties;
 }
-export const UpdateCacheResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CacheContractProperties),
-  }),
-).annotate({ identifier: "UpdateCacheResponse" }) as any as S.Schema<UpdateCacheResponse>;
+export const UpdateCacheResponse = GetCacheResponse as any as S.Schema<UpdateCacheResponse>;
 
 export interface UpdateDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31259,14 +29498,8 @@ export interface UpdateDiagnosticResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const UpdateDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({ identifier: "UpdateDiagnosticResponse" }) as any as S.Schema<UpdateDiagnosticResponse>;
+export const UpdateDiagnosticResponse =
+  GetApiDiagnosticResponse as any as S.Schema<UpdateDiagnosticResponse>;
 
 export interface UpdateDocumentationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31309,16 +29542,8 @@ export interface UpdateDocumentationResponse {
   /** Markdown Documentation details. */
   properties?: DocumentationContractProperties;
 }
-export const UpdateDocumentationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DocumentationContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateDocumentationResponse",
-}) as any as S.Schema<UpdateDocumentationResponse>;
+export const UpdateDocumentationResponse =
+  DocumentationCreateOrUpdateResponse as any as S.Schema<UpdateDocumentationResponse>;
 
 export type UpdateEmailTemplateRequestTemplateName =
   | "applicationApprovedNotificationMessage"
@@ -31378,16 +29603,8 @@ export interface UpdateEmailTemplateResponse {
   /** Email Template entity contract properties. */
   properties?: EmailTemplateContractProperties;
 }
-export const UpdateEmailTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(EmailTemplateContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateEmailTemplateResponse",
-}) as any as S.Schema<UpdateEmailTemplateResponse>;
+export const UpdateEmailTemplateResponse =
+  EmailTemplateCreateOrUpdateResponse as any as S.Schema<UpdateEmailTemplateResponse>;
 
 export interface UpdateGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31428,14 +29645,7 @@ export interface UpdateGatewayResponse {
   /** Gateway details. */
   properties?: GatewayContractProperties;
 }
-export const UpdateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GatewayContractProperties),
-  }),
-).annotate({ identifier: "UpdateGatewayResponse" }) as any as S.Schema<UpdateGatewayResponse>;
+export const UpdateGatewayResponse = GetGatewayResponse as any as S.Schema<UpdateGatewayResponse>;
 
 /** Resolver Update Contract Properties. */
 export type ResolverUpdateContractProperties = ResolverEntityBaseContract;
@@ -31485,16 +29695,8 @@ export interface UpdateGraphQLApiResolverResponse {
   /** Properties of the Resolver Contract. */
   properties?: ResolverEntityBaseContract;
 }
-export const UpdateGraphQLApiResolverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ResolverEntityBaseContract),
-  }),
-).annotate({
-  identifier: "UpdateGraphQLApiResolverResponse",
-}) as any as S.Schema<UpdateGraphQLApiResolverResponse>;
+export const UpdateGraphQLApiResolverResponse =
+  GetGraphQLApiResolverResponse as any as S.Schema<UpdateGraphQLApiResolverResponse>;
 
 /** Group type. */
 export type GroupUpdateParametersPropertiesType = "custom" | "system" | "external";
@@ -31561,14 +29763,7 @@ export interface UpdateGroupResponse {
   /** Group entity contract properties. */
   properties?: GroupContractProperties;
 }
-export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GroupContractProperties),
-  }),
-).annotate({ identifier: "UpdateGroupResponse" }) as any as S.Schema<UpdateGroupResponse>;
+export const UpdateGroupResponse = GetGroupResponse as any as S.Schema<UpdateGroupResponse>;
 
 export type UpdateIdentityProviderRequestIdentityProviderName =
   | "facebook"
@@ -31591,9 +29786,8 @@ export const IdentityProviderUpdatePropertiesType = S.String;
 
 /** List of Allowed Tenants when configuring Azure Active Directory login. */
 export type IdentityProviderUpdatePropertiesAllowedTenantsList = Array<string>;
-export const IdentityProviderUpdatePropertiesAllowedTenantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IdentityProviderUpdatePropertiesAllowedTenantsList>;
+export const IdentityProviderUpdatePropertiesAllowedTenantsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<IdentityProviderUpdatePropertiesAllowedTenantsList>;
 
 /** Parameters supplied to the Update Identity Provider operation. */
 export interface IdentityProviderUpdateProperties {
@@ -31679,16 +29873,8 @@ export interface UpdateIdentityProviderResponse {
   /** Identity Provider contract properties. */
   properties?: IdentityProviderContractProperties;
 }
-export const UpdateIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(IdentityProviderContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateIdentityProviderResponse",
-}) as any as S.Schema<UpdateIdentityProviderResponse>;
+export const UpdateIdentityProviderResponse =
+  GetIdentityProviderResponse as any as S.Schema<UpdateIdentityProviderResponse>;
 
 /** Logger type. */
 export type LoggerUpdateParametersLoggerType =
@@ -31699,10 +29885,8 @@ export const LoggerUpdateParametersLoggerType = S.String;
 
 /** Logger credentials. */
 export type LoggerUpdateParametersCredentialsMap = { [key: string]: string | undefined };
-export const LoggerUpdateParametersCredentialsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LoggerUpdateParametersCredentialsMap>;
+export const LoggerUpdateParametersCredentialsMap =
+  ApiGatewayCreateOrUpdateRequestTagsMap as any as S.Schema<LoggerUpdateParametersCredentialsMap>;
 
 /** Parameters supplied to the Update Logger operation. */
 export interface LoggerUpdateParameters {
@@ -31763,20 +29947,12 @@ export interface UpdateLoggerResponse {
   /** Logger entity contract properties. */
   properties?: LoggerContractProperties;
 }
-export const UpdateLoggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LoggerContractProperties),
-  }),
-).annotate({ identifier: "UpdateLoggerResponse" }) as any as S.Schema<UpdateLoggerResponse>;
+export const UpdateLoggerResponse = GetLoggerResponse as any as S.Schema<UpdateLoggerResponse>;
 
 /** Optional tags that when provided can be used to filter the NamedValue list. */
 export type NamedValueUpdateParameterPropertiesTagsList = Array<string>;
-export const NamedValueUpdateParameterPropertiesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamedValueUpdateParameterPropertiesTagsList>;
+export const NamedValueUpdateParameterPropertiesTagsList =
+  HttpMessageDiagnosticHeadersList as any as S.Schema<NamedValueUpdateParameterPropertiesTagsList>;
 
 /** NamedValue Contract properties. */
 export interface NamedValueUpdateParameterProperties {
@@ -31842,14 +30018,8 @@ export interface UpdateNamedValueResponse {
   /** NamedValue entity contract properties. */
   properties?: NamedValueContractProperties;
 }
-export const UpdateNamedValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamedValueContractProperties),
-  }),
-).annotate({ identifier: "UpdateNamedValueResponse" }) as any as S.Schema<UpdateNamedValueResponse>;
+export const UpdateNamedValueResponse =
+  GetNamedValueResponse as any as S.Schema<UpdateNamedValueResponse>;
 
 /** Parameters supplied to the Update OpenID Connect Provider operation. */
 export interface OpenidConnectProviderUpdateContractProperties {
@@ -31923,16 +30093,8 @@ export interface UpdateOpenIdConnectProviderResponse {
   /** OpenId Connect Provider contract properties. */
   properties?: OpenidConnectProviderContractProperties;
 }
-export const UpdateOpenIdConnectProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OpenidConnectProviderContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateOpenIdConnectProviderResponse",
-}) as any as S.Schema<UpdateOpenIdConnectProviderResponse>;
+export const UpdateOpenIdConnectProviderResponse =
+  GetOpenIdConnectProviderResponse as any as S.Schema<UpdateOpenIdConnectProviderResponse>;
 
 export interface UpdatePolicyRestrictionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31975,16 +30137,8 @@ export interface UpdatePolicyRestrictionResponse {
   /** Properties of the Policy Restriction. */
   properties?: PolicyRestrictionContractProperties;
 }
-export const UpdatePolicyRestrictionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyRestrictionContractProperties),
-  }),
-).annotate({
-  identifier: "UpdatePolicyRestrictionResponse",
-}) as any as S.Schema<UpdatePolicyRestrictionResponse>;
+export const UpdatePolicyRestrictionResponse =
+  GetPolicyRestrictionResponse as any as S.Schema<UpdatePolicyRestrictionResponse>;
 
 export interface UpdatePortalConfigRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32027,16 +30181,8 @@ export interface UpdatePortalConfigResponse {
   /** The developer portal configuration contract properties. */
   properties?: PortalConfigProperties;
 }
-export const UpdatePortalConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PortalConfigProperties),
-  }),
-).annotate({
-  identifier: "UpdatePortalConfigResponse",
-}) as any as S.Schema<UpdatePortalConfigResponse>;
+export const UpdatePortalConfigResponse =
+  PortalConfigCreateOrUpdateResponse as any as S.Schema<UpdatePortalConfigResponse>;
 
 export interface UpdatePortalRevisionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32079,16 +30225,8 @@ export interface UpdatePortalRevisionResponse {
   /** Properties of the portal revisions. */
   properties?: PortalRevisionContractProperties;
 }
-export const UpdatePortalRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PortalRevisionContractProperties),
-  }),
-).annotate({
-  identifier: "UpdatePortalRevisionResponse",
-}) as any as S.Schema<UpdatePortalRevisionResponse>;
+export const UpdatePortalRevisionResponse =
+  GetPortalRevisionResponse as any as S.Schema<UpdatePortalRevisionResponse>;
 
 /** whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished. */
 export type ProductUpdatePropertiesState = "notPublished" | "published";
@@ -32162,14 +30300,7 @@ export interface UpdateProductResponse {
   /** Product entity contract properties. */
   properties?: ProductContractProperties;
 }
-export const UpdateProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductContractProperties),
-  }),
-).annotate({ identifier: "UpdateProductResponse" }) as any as S.Schema<UpdateProductResponse>;
+export const UpdateProductResponse = GetProductResponse as any as S.Schema<UpdateProductResponse>;
 
 export interface UpdateProductWikiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32210,16 +30341,8 @@ export interface UpdateProductWikiResponse {
   /** Wiki details. */
   properties?: WikiContractProperties;
 }
-export const UpdateProductWikiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WikiContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateProductWikiResponse",
-}) as any as S.Schema<UpdateProductWikiResponse>;
+export const UpdateProductWikiResponse =
+  ApiWikiCreateOrUpdateResponse as any as S.Schema<UpdateProductWikiResponse>;
 
 export interface UpdateQuotaByCounterKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32254,9 +30377,8 @@ export const UpdateQuotaByCounterKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Quota counter values. */
 export type UpdateQuotaByCounterKeyResponseValueList = Array<QuotaCounterContract>;
-export const UpdateQuotaByCounterKeyResponseValueList = /*@__PURE__*/ S.Array(
-  QuotaCounterContract,
-) as any as S.Schema<UpdateQuotaByCounterKeyResponseValueList>;
+export const UpdateQuotaByCounterKeyResponseValueList =
+  ListQuotaByCounterKeyByServiceResponseValueList as any as S.Schema<UpdateQuotaByCounterKeyResponseValueList>;
 
 export interface UpdateQuotaByCounterKeyResponse {
   /** Quota counter values. */
@@ -32266,15 +30388,8 @@ export interface UpdateQuotaByCounterKeyResponse {
   /** Next page link if any. */
   nextLink?: string;
 }
-export const UpdateQuotaByCounterKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateQuotaByCounterKeyResponseValueList),
-    count: S.optional(S.Number),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateQuotaByCounterKeyResponse",
-}) as any as S.Schema<UpdateQuotaByCounterKeyResponse>;
+export const UpdateQuotaByCounterKeyResponse =
+  ListQuotaByCounterKeyByServiceResponse as any as S.Schema<UpdateQuotaByCounterKeyResponse>;
 
 export interface UpdateQuotaByPeriodKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32322,17 +30437,8 @@ export interface UpdateQuotaByPeriodKeyResponse {
   /** Quota Value Properties */
   value?: QuotaCounterValueContractProperties;
 }
-export const UpdateQuotaByPeriodKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    counterKey: S.String,
-    periodKey: S.String,
-    periodStartTime: S.String,
-    periodEndTime: S.String,
-    value: S.optional(QuotaCounterValueContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateQuotaByPeriodKeyResponse",
-}) as any as S.Schema<UpdateQuotaByPeriodKeyResponse>;
+export const UpdateQuotaByPeriodKeyResponse =
+  GetQuotaByPeriodKeyResponse as any as S.Schema<UpdateQuotaByPeriodKeyResponse>;
 
 export type UpdateSubscriptionRequestAppType = "portal" | "developerPortal";
 export const UpdateSubscriptionRequestAppType = S.String;
@@ -32431,16 +30537,8 @@ export interface UpdateSubscriptionResponse {
   /** Subscription contract properties. */
   properties?: SubscriptionContractProperties;
 }
-export const UpdateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SubscriptionContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateSubscriptionResponse",
-}) as any as S.Schema<UpdateSubscriptionResponse>;
+export const UpdateSubscriptionResponse =
+  GetUserSubscriptionResponse as any as S.Schema<UpdateSubscriptionResponse>;
 
 export interface UpdateTagRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32481,14 +30579,7 @@ export interface UpdateTagResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const UpdateTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({ identifier: "UpdateTagResponse" }) as any as S.Schema<UpdateTagResponse>;
+export const UpdateTagResponse = AssignTagToApiResponse as any as S.Schema<UpdateTagResponse>;
 
 export type UpdateTenantAccessRequestAccessName = "access" | "gitAccess";
 export const UpdateTenantAccessRequestAccessName = S.String;
@@ -32547,16 +30638,8 @@ export interface UpdateTenantAccessResponse {
   /** AccessInformation entity contract properties. */
   properties?: AccessInformationContractProperties;
 }
-export const UpdateTenantAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AccessInformationContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateTenantAccessResponse",
-}) as any as S.Schema<UpdateTenantAccessResponse>;
+export const UpdateTenantAccessResponse =
+  CreateTenantAccessResponse as any as S.Schema<UpdateTenantAccessResponse>;
 
 /** Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active. */
 export type UserUpdateParametersPropertiesState = "active" | "blocked" | "pending" | "deleted";
@@ -32564,9 +30647,8 @@ export const UserUpdateParametersPropertiesState = S.String;
 
 /** Collection of user identities. */
 export type UserUpdateParametersPropertiesIdentitiesList = Array<UserIdentityContract>;
-export const UserUpdateParametersPropertiesIdentitiesList = /*@__PURE__*/ S.Array(
-  UserIdentityContract,
-) as any as S.Schema<UserUpdateParametersPropertiesIdentitiesList>;
+export const UserUpdateParametersPropertiesIdentitiesList =
+  UserContractPropertiesIdentitiesList as any as S.Schema<UserUpdateParametersPropertiesIdentitiesList>;
 
 /** Parameters supplied to the Update User operation. */
 export interface UserUpdateParametersProperties {
@@ -32638,14 +30720,7 @@ export interface UpdateUserResponse {
   /** User entity contract properties. */
   properties?: UserContractProperties;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UserContractProperties),
-  }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = CreateGroupUserResponse as any as S.Schema<UpdateUserResponse>;
 
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32686,14 +30761,8 @@ export interface UpdateWorkspaceResponse {
   /** Workspace entity contract properties. */
   properties?: WorkspaceContractProperties;
 }
-export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(WorkspaceContractProperties),
-  }),
-).annotate({ identifier: "UpdateWorkspaceResponse" }) as any as S.Schema<UpdateWorkspaceResponse>;
+export const UpdateWorkspaceResponse =
+  GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
 
 export interface UpdateWorkspaceApiRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32739,16 +30808,8 @@ export interface UpdateWorkspaceApiResponse {
   /** API entity contract properties. */
   properties?: ApiContractProperties;
 }
-export const UpdateWorkspaceApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceApiResponse",
-}) as any as S.Schema<UpdateWorkspaceApiResponse>;
+export const UpdateWorkspaceApiResponse =
+  ApiCreateOrUpdateResponse as any as S.Schema<UpdateWorkspaceApiResponse>;
 
 /** Specifies for what type of messages sampling settings should not apply. */
 export type DiagnosticContractUpdatePropertiesAlwaysLog = "allErrors";
@@ -32855,16 +30916,8 @@ export interface UpdateWorkspaceApiDiagnosticResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const UpdateWorkspaceApiDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceApiDiagnosticResponse",
-}) as any as S.Schema<UpdateWorkspaceApiDiagnosticResponse>;
+export const UpdateWorkspaceApiDiagnosticResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<UpdateWorkspaceApiDiagnosticResponse>;
 
 export interface UpdateWorkspaceApiOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32913,16 +30966,8 @@ export interface UpdateWorkspaceApiOperationResponse {
   /** Properties of the Operation Contract. */
   properties?: OperationContractProperties;
 }
-export const UpdateWorkspaceApiOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceApiOperationResponse",
-}) as any as S.Schema<UpdateWorkspaceApiOperationResponse>;
+export const UpdateWorkspaceApiOperationResponse =
+  ApiOperationCreateOrUpdateResponse as any as S.Schema<UpdateWorkspaceApiOperationResponse>;
 
 export interface UpdateWorkspaceApiReleaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -32971,16 +31016,8 @@ export interface UpdateWorkspaceApiReleaseResponse {
   /** ApiRelease entity contract properties. */
   properties?: ApiReleaseContractProperties;
 }
-export const UpdateWorkspaceApiReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiReleaseContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceApiReleaseResponse",
-}) as any as S.Schema<UpdateWorkspaceApiReleaseResponse>;
+export const UpdateWorkspaceApiReleaseResponse =
+  ApiReleaseCreateOrUpdateResponse as any as S.Schema<UpdateWorkspaceApiReleaseResponse>;
 
 export interface UpdateWorkspaceApiVersionSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33026,16 +31063,8 @@ export interface UpdateWorkspaceApiVersionSetResponse {
   /** API VersionSet contract properties. */
   properties?: ApiVersionSetContractProperties;
 }
-export const UpdateWorkspaceApiVersionSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiVersionSetContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceApiVersionSetResponse",
-}) as any as S.Schema<UpdateWorkspaceApiVersionSetResponse>;
+export const UpdateWorkspaceApiVersionSetResponse =
+  ApiVersionSetCreateOrUpdateResponse as any as S.Schema<UpdateWorkspaceApiVersionSetResponse>;
 
 export interface UpdateWorkspaceBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33081,16 +31110,8 @@ export interface UpdateWorkspaceBackendResponse {
   /** Backend entity contract properties. */
   properties?: BackendContractProperties;
 }
-export const UpdateWorkspaceBackendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackendContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceBackendResponse",
-}) as any as S.Schema<UpdateWorkspaceBackendResponse>;
+export const UpdateWorkspaceBackendResponse =
+  BackendCreateOrUpdateResponse as any as S.Schema<UpdateWorkspaceBackendResponse>;
 
 export interface UpdateWorkspaceDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33136,16 +31157,8 @@ export interface UpdateWorkspaceDiagnosticResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const UpdateWorkspaceDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceDiagnosticResponse",
-}) as any as S.Schema<UpdateWorkspaceDiagnosticResponse>;
+export const UpdateWorkspaceDiagnosticResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<UpdateWorkspaceDiagnosticResponse>;
 
 export interface UpdateWorkspaceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33191,16 +31204,8 @@ export interface UpdateWorkspaceGroupResponse {
   /** Group entity contract properties. */
   properties?: GroupContractProperties;
 }
-export const UpdateWorkspaceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GroupContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceGroupResponse",
-}) as any as S.Schema<UpdateWorkspaceGroupResponse>;
+export const UpdateWorkspaceGroupResponse =
+  GetWorkspaceGroupResponse as any as S.Schema<UpdateWorkspaceGroupResponse>;
 
 export interface UpdateWorkspaceLoggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33246,16 +31251,8 @@ export interface UpdateWorkspaceLoggerResponse {
   /** Logger entity contract properties. */
   properties?: LoggerContractProperties;
 }
-export const UpdateWorkspaceLoggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LoggerContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceLoggerResponse",
-}) as any as S.Schema<UpdateWorkspaceLoggerResponse>;
+export const UpdateWorkspaceLoggerResponse =
+  GetWorkspaceLoggerResponse as any as S.Schema<UpdateWorkspaceLoggerResponse>;
 
 export interface UpdateWorkspaceNamedValueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33301,16 +31298,8 @@ export interface UpdateWorkspaceNamedValueResponse {
   /** NamedValue entity contract properties. */
   properties?: NamedValueContractProperties;
 }
-export const UpdateWorkspaceNamedValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamedValueContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceNamedValueResponse",
-}) as any as S.Schema<UpdateWorkspaceNamedValueResponse>;
+export const UpdateWorkspaceNamedValueResponse =
+  GetWorkspaceNamedValueResponse as any as S.Schema<UpdateWorkspaceNamedValueResponse>;
 
 export interface UpdateWorkspaceProductRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33356,16 +31345,8 @@ export interface UpdateWorkspaceProductResponse {
   /** Product entity contract properties. */
   properties?: ProductContractProperties;
 }
-export const UpdateWorkspaceProductResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceProductResponse",
-}) as any as S.Schema<UpdateWorkspaceProductResponse>;
+export const UpdateWorkspaceProductResponse =
+  GetWorkspaceProductResponse as any as S.Schema<UpdateWorkspaceProductResponse>;
 
 export type UpdateWorkspaceSubscriptionRequestAppType = "portal" | "developerPortal";
 export const UpdateWorkspaceSubscriptionRequestAppType = S.String;
@@ -33420,16 +31401,8 @@ export interface UpdateWorkspaceSubscriptionResponse {
   /** Subscription contract properties. */
   properties?: SubscriptionContractProperties;
 }
-export const UpdateWorkspaceSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SubscriptionContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceSubscriptionResponse",
-}) as any as S.Schema<UpdateWorkspaceSubscriptionResponse>;
+export const UpdateWorkspaceSubscriptionResponse =
+  GetUserSubscriptionResponse as any as S.Schema<UpdateWorkspaceSubscriptionResponse>;
 
 export interface UpdateWorkspaceTagRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33475,16 +31448,8 @@ export interface UpdateWorkspaceTagResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const UpdateWorkspaceTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({
-  identifier: "UpdateWorkspaceTagResponse",
-}) as any as S.Schema<UpdateWorkspaceTagResponse>;
+export const UpdateWorkspaceTagResponse =
+  AssignTagToOperationResponse as any as S.Schema<UpdateWorkspaceTagResponse>;
 
 /** Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active. */
 export type UserCreateParameterPropertiesState = "active" | "blocked" | "pending" | "deleted";
@@ -33492,9 +31457,8 @@ export const UserCreateParameterPropertiesState = S.String;
 
 /** Collection of user identities. */
 export type UserCreateParameterPropertiesIdentitiesList = Array<UserIdentityContract>;
-export const UserCreateParameterPropertiesIdentitiesList = /*@__PURE__*/ S.Array(
-  UserIdentityContract,
-) as any as S.Schema<UserCreateParameterPropertiesIdentitiesList>;
+export const UserCreateParameterPropertiesIdentitiesList =
+  UserContractPropertiesIdentitiesList as any as S.Schema<UserCreateParameterPropertiesIdentitiesList>;
 
 /** Determines the type of application which send the create user request. Default is legacy portal. */
 export type UserCreateParameterPropertiesAppType = "portal" | "developerPortal";
@@ -33585,16 +31549,8 @@ export interface UserCreateOrUpdateResponse {
   /** User entity contract properties. */
   properties?: UserContractProperties;
 }
-export const UserCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(UserContractProperties),
-  }),
-).annotate({
-  identifier: "UserCreateOrUpdateResponse",
-}) as any as S.Schema<UserCreateOrUpdateResponse>;
+export const UserCreateOrUpdateResponse =
+  CreateWorkspaceGroupUserResponse as any as S.Schema<UserCreateOrUpdateResponse>;
 
 export type ValidateTenantConfigurationRequestConfigurationName = "configuration";
 export const ValidateTenantConfigurationRequestConfigurationName = S.String;
@@ -33640,16 +31596,8 @@ export interface ValidateTenantConfigurationResponse {
   /** Properties of the Operation Contract. */
   properties?: OperationResultContractProperties;
 }
-export const ValidateTenantConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationResultContractProperties),
-  }),
-).annotate({
-  identifier: "ValidateTenantConfigurationResponse",
-}) as any as S.Schema<ValidateTenantConfigurationResponse>;
+export const ValidateTenantConfigurationResponse =
+  DeployTenantConfigurationResponse as any as S.Schema<ValidateTenantConfigurationResponse>;
 
 export interface WorkspaceApiCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33695,16 +31643,8 @@ export interface WorkspaceApiCreateOrUpdateResponse {
   /** API entity contract properties. */
   properties?: ApiContractProperties;
 }
-export const WorkspaceApiCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiCreateOrUpdateResponse>;
+export const WorkspaceApiCreateOrUpdateResponse =
+  ApiCreateOrUpdateResponse as any as S.Schema<WorkspaceApiCreateOrUpdateResponse>;
 
 export interface WorkspaceApiDiagnosticCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33753,16 +31693,8 @@ export interface WorkspaceApiDiagnosticCreateOrUpdateResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const WorkspaceApiDiagnosticCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiDiagnosticCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiDiagnosticCreateOrUpdateResponse>;
+export const WorkspaceApiDiagnosticCreateOrUpdateResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<WorkspaceApiDiagnosticCreateOrUpdateResponse>;
 
 export interface WorkspaceApiOperationCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33811,16 +31743,8 @@ export interface WorkspaceApiOperationCreateOrUpdateResponse {
   /** Properties of the Operation Contract. */
   properties?: OperationContractProperties;
 }
-export const WorkspaceApiOperationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OperationContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiOperationCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiOperationCreateOrUpdateResponse>;
+export const WorkspaceApiOperationCreateOrUpdateResponse =
+  ApiOperationCreateOrUpdateResponse as any as S.Schema<WorkspaceApiOperationCreateOrUpdateResponse>;
 
 export type WorkspaceApiOperationPolicyCreateOrUpdateRequestPolicyId = "policy";
 export const WorkspaceApiOperationPolicyCreateOrUpdateRequestPolicyId = S.String;
@@ -33875,16 +31799,8 @@ export interface WorkspaceApiOperationPolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const WorkspaceApiOperationPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiOperationPolicyCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiOperationPolicyCreateOrUpdateResponse>;
+export const WorkspaceApiOperationPolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<WorkspaceApiOperationPolicyCreateOrUpdateResponse>;
 
 export type WorkspaceApiPolicyCreateOrUpdateRequestPolicyId = "policy";
 export const WorkspaceApiPolicyCreateOrUpdateRequestPolicyId = S.String;
@@ -33936,16 +31852,8 @@ export interface WorkspaceApiPolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const WorkspaceApiPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiPolicyCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiPolicyCreateOrUpdateResponse>;
+export const WorkspaceApiPolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<WorkspaceApiPolicyCreateOrUpdateResponse>;
 
 export interface WorkspaceApiReleaseCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -33994,16 +31902,8 @@ export interface WorkspaceApiReleaseCreateOrUpdateResponse {
   /** ApiRelease entity contract properties. */
   properties?: ApiReleaseContractProperties;
 }
-export const WorkspaceApiReleaseCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiReleaseContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiReleaseCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiReleaseCreateOrUpdateResponse>;
+export const WorkspaceApiReleaseCreateOrUpdateResponse =
+  ApiReleaseCreateOrUpdateResponse as any as S.Schema<WorkspaceApiReleaseCreateOrUpdateResponse>;
 
 export interface WorkspaceApiSchemaCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34052,16 +31952,8 @@ export interface WorkspaceApiSchemaCreateOrUpdateResponse {
   /** Properties of the API Schema. */
   properties?: SchemaContractProperties;
 }
-export const WorkspaceApiSchemaCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SchemaContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiSchemaCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiSchemaCreateOrUpdateResponse>;
+export const WorkspaceApiSchemaCreateOrUpdateResponse =
+  ApiSchemaCreateOrUpdateResponse as any as S.Schema<WorkspaceApiSchemaCreateOrUpdateResponse>;
 
 export interface WorkspaceApiVersionSetCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34107,16 +31999,8 @@ export interface WorkspaceApiVersionSetCreateOrUpdateResponse {
   /** API VersionSet contract properties. */
   properties?: ApiVersionSetContractProperties;
 }
-export const WorkspaceApiVersionSetCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ApiVersionSetContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceApiVersionSetCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceApiVersionSetCreateOrUpdateResponse>;
+export const WorkspaceApiVersionSetCreateOrUpdateResponse =
+  ApiVersionSetCreateOrUpdateResponse as any as S.Schema<WorkspaceApiVersionSetCreateOrUpdateResponse>;
 
 export interface WorkspaceBackendCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34162,16 +32046,8 @@ export interface WorkspaceBackendCreateOrUpdateResponse {
   /** Backend entity contract properties. */
   properties?: BackendContractProperties;
 }
-export const WorkspaceBackendCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(BackendContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceBackendCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceBackendCreateOrUpdateResponse>;
+export const WorkspaceBackendCreateOrUpdateResponse =
+  BackendCreateOrUpdateResponse as any as S.Schema<WorkspaceBackendCreateOrUpdateResponse>;
 
 export interface WorkspaceCertificateCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34217,16 +32093,8 @@ export interface WorkspaceCertificateCreateOrUpdateResponse {
   /** Certificate properties details. */
   properties?: CertificateContractProperties;
 }
-export const WorkspaceCertificateCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(CertificateContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceCertificateCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceCertificateCreateOrUpdateResponse>;
+export const WorkspaceCertificateCreateOrUpdateResponse =
+  CertificateCreateOrUpdateResponse as any as S.Schema<WorkspaceCertificateCreateOrUpdateResponse>;
 
 export interface WorkspaceCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34324,16 +32192,8 @@ export interface WorkspaceDiagnosticCreateOrUpdateResponse {
   /** Diagnostic entity contract properties. */
   properties?: DiagnosticContractProperties;
 }
-export const WorkspaceDiagnosticCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(DiagnosticContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceDiagnosticCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceDiagnosticCreateOrUpdateResponse>;
+export const WorkspaceDiagnosticCreateOrUpdateResponse =
+  ApiDiagnosticCreateOrUpdateResponse as any as S.Schema<WorkspaceDiagnosticCreateOrUpdateResponse>;
 
 export interface WorkspaceGlobalSchemaCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34379,16 +32239,8 @@ export interface WorkspaceGlobalSchemaCreateOrUpdateResponse {
   /** Properties of the Global Schema. */
   properties?: GlobalSchemaContractProperties;
 }
-export const WorkspaceGlobalSchemaCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GlobalSchemaContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceGlobalSchemaCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceGlobalSchemaCreateOrUpdateResponse>;
+export const WorkspaceGlobalSchemaCreateOrUpdateResponse =
+  GetWorkspaceGlobalSchemaResponse as any as S.Schema<WorkspaceGlobalSchemaCreateOrUpdateResponse>;
 
 export interface WorkspaceGroupCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34434,16 +32286,8 @@ export interface WorkspaceGroupCreateOrUpdateResponse {
   /** Group entity contract properties. */
   properties?: GroupContractProperties;
 }
-export const WorkspaceGroupCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(GroupContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceGroupCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceGroupCreateOrUpdateResponse>;
+export const WorkspaceGroupCreateOrUpdateResponse =
+  GetWorkspaceGroupResponse as any as S.Schema<WorkspaceGroupCreateOrUpdateResponse>;
 
 export interface WorkspaceLoggerCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34489,16 +32333,8 @@ export interface WorkspaceLoggerCreateOrUpdateResponse {
   /** Logger entity contract properties. */
   properties?: LoggerContractProperties;
 }
-export const WorkspaceLoggerCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(LoggerContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceLoggerCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceLoggerCreateOrUpdateResponse>;
+export const WorkspaceLoggerCreateOrUpdateResponse =
+  GetWorkspaceLoggerResponse as any as S.Schema<WorkspaceLoggerCreateOrUpdateResponse>;
 
 export interface WorkspaceNamedValueCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34544,16 +32380,8 @@ export interface WorkspaceNamedValueCreateOrUpdateResponse {
   /** NamedValue entity contract properties. */
   properties?: NamedValueContractProperties;
 }
-export const WorkspaceNamedValueCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NamedValueContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceNamedValueCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceNamedValueCreateOrUpdateResponse>;
+export const WorkspaceNamedValueCreateOrUpdateResponse =
+  GetWorkspaceNamedValueResponse as any as S.Schema<WorkspaceNamedValueCreateOrUpdateResponse>;
 
 export type WorkspaceNotificationCreateOrUpdateRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -34606,16 +32434,8 @@ export interface WorkspaceNotificationCreateOrUpdateResponse {
   /** Notification entity contract properties. */
   properties?: NotificationContractProperties;
 }
-export const WorkspaceNotificationCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(NotificationContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceNotificationCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceNotificationCreateOrUpdateResponse>;
+export const WorkspaceNotificationCreateOrUpdateResponse =
+  GetWorkspaceNotificationResponse as any as S.Schema<WorkspaceNotificationCreateOrUpdateResponse>;
 
 export type WorkspaceNotificationRecipientEmailCreateOrUpdateRequestNotificationName =
   | "RequestPublisherNotificationMessage"
@@ -34804,16 +32624,8 @@ export interface WorkspacePolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const WorkspacePolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspacePolicyCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspacePolicyCreateOrUpdateResponse>;
+export const WorkspacePolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<WorkspacePolicyCreateOrUpdateResponse>;
 
 export interface WorkspacePolicyFragmentCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34859,16 +32671,8 @@ export interface WorkspacePolicyFragmentCreateOrUpdateResponse {
   /** Properties of the Policy Fragment. */
   properties?: PolicyFragmentContractProperties;
 }
-export const WorkspacePolicyFragmentCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyFragmentContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspacePolicyFragmentCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspacePolicyFragmentCreateOrUpdateResponse>;
+export const WorkspacePolicyFragmentCreateOrUpdateResponse =
+  GetPolicyFragmentResponse as any as S.Schema<WorkspacePolicyFragmentCreateOrUpdateResponse>;
 
 export interface WorkspaceProductApiLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34917,16 +32721,8 @@ export interface WorkspaceProductApiLinkCreateOrUpdateResponse {
   /** Product-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const WorkspaceProductApiLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceProductApiLinkCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceProductApiLinkCreateOrUpdateResponse>;
+export const WorkspaceProductApiLinkCreateOrUpdateResponse =
+  GetProductApiLinkResponse as any as S.Schema<WorkspaceProductApiLinkCreateOrUpdateResponse>;
 
 export interface WorkspaceProductCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -34972,16 +32768,8 @@ export interface WorkspaceProductCreateOrUpdateResponse {
   /** Product entity contract properties. */
   properties?: ProductContractProperties;
 }
-export const WorkspaceProductCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceProductCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceProductCreateOrUpdateResponse>;
+export const WorkspaceProductCreateOrUpdateResponse =
+  GetWorkspaceProductResponse as any as S.Schema<WorkspaceProductCreateOrUpdateResponse>;
 
 export interface WorkspaceProductGroupLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35030,16 +32818,8 @@ export interface WorkspaceProductGroupLinkCreateOrUpdateResponse {
   /** Product-group link entity contract properties. */
   properties?: ProductGroupLinkContractProperties;
 }
-export const WorkspaceProductGroupLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductGroupLinkContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceProductGroupLinkCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceProductGroupLinkCreateOrUpdateResponse>;
+export const WorkspaceProductGroupLinkCreateOrUpdateResponse =
+  GetProductGroupLinkResponse as any as S.Schema<WorkspaceProductGroupLinkCreateOrUpdateResponse>;
 
 export type WorkspaceProductPolicyCreateOrUpdateRequestPolicyId = "policy";
 export const WorkspaceProductPolicyCreateOrUpdateRequestPolicyId = S.String;
@@ -35091,16 +32871,8 @@ export interface WorkspaceProductPolicyCreateOrUpdateResponse {
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
-export const WorkspaceProductPolicyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PolicyContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceProductPolicyCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceProductPolicyCreateOrUpdateResponse>;
+export const WorkspaceProductPolicyCreateOrUpdateResponse =
+  ApiOperationPolicyCreateOrUpdateResponse as any as S.Schema<WorkspaceProductPolicyCreateOrUpdateResponse>;
 
 export type WorkspaceSubscriptionCreateOrUpdateRequestAppType = "portal" | "developerPortal";
 export const WorkspaceSubscriptionCreateOrUpdateRequestAppType = S.String;
@@ -35155,16 +32927,8 @@ export interface WorkspaceSubscriptionCreateOrUpdateResponse {
   /** Subscription contract properties. */
   properties?: SubscriptionContractProperties;
 }
-export const WorkspaceSubscriptionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(SubscriptionContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceSubscriptionCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceSubscriptionCreateOrUpdateResponse>;
+export const WorkspaceSubscriptionCreateOrUpdateResponse =
+  GetUserSubscriptionResponse as any as S.Schema<WorkspaceSubscriptionCreateOrUpdateResponse>;
 
 export interface WorkspaceTagApiLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35213,16 +32977,8 @@ export interface WorkspaceTagApiLinkCreateOrUpdateResponse {
   /** Tag-API link entity contract properties. */
   properties?: ProductApiLinkContractProperties;
 }
-export const WorkspaceTagApiLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ProductApiLinkContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceTagApiLinkCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceTagApiLinkCreateOrUpdateResponse>;
+export const WorkspaceTagApiLinkCreateOrUpdateResponse =
+  GetProductApiLinkResponse as any as S.Schema<WorkspaceTagApiLinkCreateOrUpdateResponse>;
 
 export interface WorkspaceTagCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35268,16 +33024,8 @@ export interface WorkspaceTagCreateOrUpdateResponse {
   /** Tag entity contract properties. */
   properties?: TagContractProperties;
 }
-export const WorkspaceTagCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceTagCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceTagCreateOrUpdateResponse>;
+export const WorkspaceTagCreateOrUpdateResponse =
+  AssignTagToOperationResponse as any as S.Schema<WorkspaceTagCreateOrUpdateResponse>;
 
 export interface WorkspaceTagOperationLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35326,16 +33074,8 @@ export interface WorkspaceTagOperationLinkCreateOrUpdateResponse {
   /** Tag-API link entity contract properties. */
   properties?: TagOperationLinkContractProperties;
 }
-export const WorkspaceTagOperationLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagOperationLinkContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceTagOperationLinkCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceTagOperationLinkCreateOrUpdateResponse>;
+export const WorkspaceTagOperationLinkCreateOrUpdateResponse =
+  GetTagOperationLinkResponse as any as S.Schema<WorkspaceTagOperationLinkCreateOrUpdateResponse>;
 
 export interface WorkspaceTagProductLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35384,16 +33124,8 @@ export interface WorkspaceTagProductLinkCreateOrUpdateResponse {
   /** Tag-API link entity contract properties. */
   properties?: TagProductLinkContractProperties;
 }
-export const WorkspaceTagProductLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TagProductLinkContractProperties),
-  }),
-).annotate({
-  identifier: "WorkspaceTagProductLinkCreateOrUpdateResponse",
-}) as any as S.Schema<WorkspaceTagProductLinkCreateOrUpdateResponse>;
+export const WorkspaceTagProductLinkCreateOrUpdateResponse =
+  GetTagProductLinkResponse as any as S.Schema<WorkspaceTagProductLinkCreateOrUpdateResponse>;
 
 export type ApiCreateOrUpdateError = AzureOpError;
 /** Creates new or updates existing specified API of the API Management service instance. */

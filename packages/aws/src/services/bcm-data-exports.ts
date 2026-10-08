@@ -285,9 +285,7 @@ export const DeleteExportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteExportResponse {
   ExportArn?: string;
 }
-export const DeleteExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportArn: S.optional(S.String) }),
-).annotate({ identifier: "DeleteExportResponse" }) as any as S.Schema<DeleteExportResponse>;
+export const DeleteExportResponse = CreateExportResponse as any as S.Schema<DeleteExportResponse>;
 export interface GetExecutionRequest {
   ExportArn: string;
   ExecutionId: string;
@@ -556,7 +554,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
-export const ResourceTagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTagKeyList = GenericStringList as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   ResourceTagKeys: string[];
@@ -567,9 +565,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateExportRequest {
   ExportArn: string;
   Export: Export;
@@ -582,9 +578,7 @@ export const UpdateExportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateExportResponse {
   ExportArn?: string;
 }
-export const UpdateExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ExportArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateExportResponse" }) as any as S.Schema<UpdateExportResponse>;
+export const UpdateExportResponse = CreateExportResponse as any as S.Schema<UpdateExportResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"

@@ -572,43 +572,28 @@ export const VideoConcatenationConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface ContentConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
-export const ContentConcatenationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: ArtifactsConcatenationState }),
-).annotate({
-  identifier: "ContentConcatenationConfiguration",
-}) as any as S.Schema<ContentConcatenationConfiguration>;
+export const ContentConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<ContentConcatenationConfiguration>;
 export interface DataChannelConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
-export const DataChannelConcatenationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: ArtifactsConcatenationState }),
-).annotate({
-  identifier: "DataChannelConcatenationConfiguration",
-}) as any as S.Schema<DataChannelConcatenationConfiguration>;
+export const DataChannelConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<DataChannelConcatenationConfiguration>;
 export interface TranscriptionMessagesConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
-export const TranscriptionMessagesConcatenationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: ArtifactsConcatenationState }),
-).annotate({
-  identifier: "TranscriptionMessagesConcatenationConfiguration",
-}) as any as S.Schema<TranscriptionMessagesConcatenationConfiguration>;
+export const TranscriptionMessagesConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<TranscriptionMessagesConcatenationConfiguration>;
 export interface MeetingEventsConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
-export const MeetingEventsConcatenationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: ArtifactsConcatenationState }),
-).annotate({
-  identifier: "MeetingEventsConcatenationConfiguration",
-}) as any as S.Schema<MeetingEventsConcatenationConfiguration>;
+export const MeetingEventsConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<MeetingEventsConcatenationConfiguration>;
 export interface CompositedVideoConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
-export const CompositedVideoConcatenationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ State: ArtifactsConcatenationState }),
-).annotate({
-  identifier: "CompositedVideoConcatenationConfiguration",
-}) as any as S.Schema<CompositedVideoConcatenationConfiguration>;
+export const CompositedVideoConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<CompositedVideoConcatenationConfiguration>;
 export interface ArtifactsConcatenationConfiguration {
   Audio: AudioConcatenationConfiguration;
   Video: VideoConcatenationConfiguration;
@@ -967,7 +952,7 @@ export const RealTimeAlertRuleType = S.String;
 export type RuleName = string;
 export type Keyword = string;
 export type KeywordMatchWordList = string[];
-export const KeywordMatchWordList = /*@__PURE__*/ S.Array(S.String);
+export const KeywordMatchWordList = AttendeeIdList as any as S.Schema<KeywordMatchWordList>;
 export interface KeywordMatchConfiguration {
   RuleName: string;
   Keywords: string[];
@@ -1070,7 +1055,7 @@ export const PostCallAnalyticsSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostCallAnalyticsSettings>;
 export type CategoryName = string;
 export type CategoryNameList = string[];
-export const CategoryNameList = /*@__PURE__*/ S.Array(S.String);
+export const CategoryNameList = AttendeeIdList as any as S.Schema<CategoryNameList>;
 export interface AmazonTranscribeCallAnalyticsProcessorConfiguration {
   LanguageCode: CallAnalyticsLanguageCode;
   VocabularyName?: string;
@@ -1190,27 +1175,18 @@ export const VoiceAnalyticsProcessorConfiguration = /*@__PURE__*/ S.suspend(() =
 export interface LambdaFunctionSinkConfiguration {
   InsightsTarget?: string | redacted.Redacted<string>;
 }
-export const LambdaFunctionSinkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightsTarget: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "LambdaFunctionSinkConfiguration",
-}) as any as S.Schema<LambdaFunctionSinkConfiguration>;
+export const LambdaFunctionSinkConfiguration =
+  KinesisDataStreamSinkConfiguration as any as S.Schema<LambdaFunctionSinkConfiguration>;
 export interface SqsQueueSinkConfiguration {
   InsightsTarget?: string | redacted.Redacted<string>;
 }
-export const SqsQueueSinkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightsTarget: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "SqsQueueSinkConfiguration",
-}) as any as S.Schema<SqsQueueSinkConfiguration>;
+export const SqsQueueSinkConfiguration =
+  KinesisDataStreamSinkConfiguration as any as S.Schema<SqsQueueSinkConfiguration>;
 export interface SnsTopicSinkConfiguration {
   InsightsTarget?: string | redacted.Redacted<string>;
 }
-export const SnsTopicSinkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InsightsTarget: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "SnsTopicSinkConfiguration",
-}) as any as S.Schema<SnsTopicSinkConfiguration>;
+export const SnsTopicSinkConfiguration =
+  KinesisDataStreamSinkConfiguration as any as S.Schema<SnsTopicSinkConfiguration>;
 export interface VoiceEnhancementSinkConfiguration {
   Disabled?: boolean;
 }
@@ -1650,11 +1626,8 @@ export const DeleteMediaInsightsPipelineConfigurationRequest = /*@__PURE__*/ S.s
   identifier: "DeleteMediaInsightsPipelineConfigurationRequest",
 }) as any as S.Schema<DeleteMediaInsightsPipelineConfigurationRequest>;
 export interface DeleteMediaInsightsPipelineConfigurationResponse {}
-export const DeleteMediaInsightsPipelineConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMediaInsightsPipelineConfigurationResponse",
-}) as any as S.Schema<DeleteMediaInsightsPipelineConfigurationResponse>;
+export const DeleteMediaInsightsPipelineConfigurationResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<DeleteMediaInsightsPipelineConfigurationResponse>;
 export interface DeleteMediaPipelineRequest {
   MediaPipelineId: string;
 }
@@ -1694,11 +1667,8 @@ export const DeleteMediaPipelineKinesisVideoStreamPoolRequest = /*@__PURE__*/ S.
   identifier: "DeleteMediaPipelineKinesisVideoStreamPoolRequest",
 }) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolRequest>;
 export interface DeleteMediaPipelineKinesisVideoStreamPoolResponse {}
-export const DeleteMediaPipelineKinesisVideoStreamPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMediaPipelineKinesisVideoStreamPoolResponse",
-}) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolResponse>;
+export const DeleteMediaPipelineKinesisVideoStreamPoolResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolResponse>;
 export interface GetMediaCapturePipelineRequest {
   MediaPipelineId: string;
 }
@@ -1719,11 +1689,8 @@ export const GetMediaCapturePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMediaCapturePipelineResponse {
   MediaCapturePipeline?: MediaCapturePipeline;
 }
-export const GetMediaCapturePipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MediaCapturePipeline: S.optional(MediaCapturePipeline) }),
-).annotate({
-  identifier: "GetMediaCapturePipelineResponse",
-}) as any as S.Schema<GetMediaCapturePipelineResponse>;
+export const GetMediaCapturePipelineResponse =
+  CreateMediaCapturePipelineResponse as any as S.Schema<GetMediaCapturePipelineResponse>;
 export interface GetMediaInsightsPipelineConfigurationRequest {
   Identifier: string;
 }
@@ -1744,11 +1711,8 @@ export const GetMediaInsightsPipelineConfigurationRequest = /*@__PURE__*/ S.susp
 export interface GetMediaInsightsPipelineConfigurationResponse {
   MediaInsightsPipelineConfiguration?: MediaInsightsPipelineConfiguration;
 }
-export const GetMediaInsightsPipelineConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MediaInsightsPipelineConfiguration: S.optional(MediaInsightsPipelineConfiguration) }),
-).annotate({
-  identifier: "GetMediaInsightsPipelineConfigurationResponse",
-}) as any as S.Schema<GetMediaInsightsPipelineConfigurationResponse>;
+export const GetMediaInsightsPipelineConfigurationResponse =
+  CreateMediaInsightsPipelineConfigurationResponse as any as S.Schema<GetMediaInsightsPipelineConfigurationResponse>;
 export interface GetMediaPipelineRequest {
   MediaPipelineId: string;
 }
@@ -1806,13 +1770,8 @@ export const GetMediaPipelineKinesisVideoStreamPoolRequest = /*@__PURE__*/ S.sus
 export interface GetMediaPipelineKinesisVideoStreamPoolResponse {
   KinesisVideoStreamPoolConfiguration?: KinesisVideoStreamPoolConfiguration;
 }
-export const GetMediaPipelineKinesisVideoStreamPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KinesisVideoStreamPoolConfiguration: S.optional(KinesisVideoStreamPoolConfiguration),
-  }),
-).annotate({
-  identifier: "GetMediaPipelineKinesisVideoStreamPoolResponse",
-}) as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolResponse>;
+export const GetMediaPipelineKinesisVideoStreamPoolResponse =
+  CreateMediaPipelineKinesisVideoStreamPoolResponse as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolResponse>;
 export interface GetSpeakerSearchTaskRequest {
   Identifier: string;
   SpeakerSearchTaskId: string;
@@ -2156,11 +2115,8 @@ export const StartSpeakerSearchTaskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartSpeakerSearchTaskResponse {
   SpeakerSearchTask?: SpeakerSearchTask;
 }
-export const StartSpeakerSearchTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SpeakerSearchTask: S.optional(SpeakerSearchTask) }),
-).annotate({
-  identifier: "StartSpeakerSearchTaskResponse",
-}) as any as S.Schema<StartSpeakerSearchTaskResponse>;
+export const StartSpeakerSearchTaskResponse =
+  GetSpeakerSearchTaskResponse as any as S.Schema<StartSpeakerSearchTaskResponse>;
 export type VoiceAnalyticsLanguageCode = "en-US" | (string & {});
 export const VoiceAnalyticsLanguageCode = S.String;
 
@@ -2197,11 +2153,8 @@ export const StartVoiceToneAnalysisTaskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartVoiceToneAnalysisTaskResponse {
   VoiceToneAnalysisTask?: VoiceToneAnalysisTask;
 }
-export const StartVoiceToneAnalysisTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VoiceToneAnalysisTask: S.optional(VoiceToneAnalysisTask) }),
-).annotate({
-  identifier: "StartVoiceToneAnalysisTaskResponse",
-}) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>;
+export const StartVoiceToneAnalysisTaskResponse =
+  GetVoiceToneAnalysisTaskResponse as any as S.Schema<StartVoiceToneAnalysisTaskResponse>;
 export interface StopSpeakerSearchTaskRequest {
   Identifier: string;
   SpeakerSearchTaskId: string;
@@ -2227,9 +2180,8 @@ export const StopSpeakerSearchTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopSpeakerSearchTaskRequest",
 }) as any as S.Schema<StopSpeakerSearchTaskRequest>;
 export interface StopSpeakerSearchTaskResponse {}
-export const StopSpeakerSearchTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopSpeakerSearchTaskResponse",
-}) as any as S.Schema<StopSpeakerSearchTaskResponse>;
+export const StopSpeakerSearchTaskResponse =
+  DeleteMediaPipelineResponse as any as S.Schema<StopSpeakerSearchTaskResponse>;
 export interface StopVoiceToneAnalysisTaskRequest {
   Identifier: string;
   VoiceToneAnalysisTaskId: string;
@@ -2255,11 +2207,8 @@ export const StopVoiceToneAnalysisTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopVoiceToneAnalysisTaskRequest",
 }) as any as S.Schema<StopVoiceToneAnalysisTaskRequest>;
 export interface StopVoiceToneAnalysisTaskResponse {}
-export const StopVoiceToneAnalysisTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopVoiceToneAnalysisTaskResponse",
-}) as any as S.Schema<StopVoiceToneAnalysisTaskResponse>;
+export const StopVoiceToneAnalysisTaskResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<StopVoiceToneAnalysisTaskResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -2277,11 +2226,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteMediaPipelineResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AttendeeIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -2299,9 +2247,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteMediaPipelineResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateMediaInsightsPipelineConfigurationRequest {
   Identifier: string;
   ResourceAccessRoleArn: string | redacted.Redacted<string>;
@@ -2330,11 +2277,8 @@ export const UpdateMediaInsightsPipelineConfigurationRequest = /*@__PURE__*/ S.s
 export interface UpdateMediaInsightsPipelineConfigurationResponse {
   MediaInsightsPipelineConfiguration?: MediaInsightsPipelineConfiguration;
 }
-export const UpdateMediaInsightsPipelineConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MediaInsightsPipelineConfiguration: S.optional(MediaInsightsPipelineConfiguration) }),
-).annotate({
-  identifier: "UpdateMediaInsightsPipelineConfigurationResponse",
-}) as any as S.Schema<UpdateMediaInsightsPipelineConfigurationResponse>;
+export const UpdateMediaInsightsPipelineConfigurationResponse =
+  CreateMediaInsightsPipelineConfigurationResponse as any as S.Schema<UpdateMediaInsightsPipelineConfigurationResponse>;
 export type MediaPipelineStatusUpdate = "Pause" | "Resume" | (string & {});
 export const MediaPipelineStatusUpdate = S.String;
 
@@ -2360,11 +2304,8 @@ export const UpdateMediaInsightsPipelineStatusRequest = /*@__PURE__*/ S.suspend(
   identifier: "UpdateMediaInsightsPipelineStatusRequest",
 }) as any as S.Schema<UpdateMediaInsightsPipelineStatusRequest>;
 export interface UpdateMediaInsightsPipelineStatusResponse {}
-export const UpdateMediaInsightsPipelineStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateMediaInsightsPipelineStatusResponse",
-}) as any as S.Schema<UpdateMediaInsightsPipelineStatusResponse>;
+export const UpdateMediaInsightsPipelineStatusResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<UpdateMediaInsightsPipelineStatusResponse>;
 export type DataRetentionChangeInHours = number;
 export interface KinesisVideoStreamConfigurationUpdate {
   DataRetentionInHours?: number;
@@ -2398,13 +2339,8 @@ export const UpdateMediaPipelineKinesisVideoStreamPoolRequest = /*@__PURE__*/ S.
 export interface UpdateMediaPipelineKinesisVideoStreamPoolResponse {
   KinesisVideoStreamPoolConfiguration?: KinesisVideoStreamPoolConfiguration;
 }
-export const UpdateMediaPipelineKinesisVideoStreamPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KinesisVideoStreamPoolConfiguration: S.optional(KinesisVideoStreamPoolConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateMediaPipelineKinesisVideoStreamPoolResponse",
-}) as any as S.Schema<UpdateMediaPipelineKinesisVideoStreamPoolResponse>;
+export const UpdateMediaPipelineKinesisVideoStreamPoolResponse =
+  CreateMediaPipelineKinesisVideoStreamPoolResponse as any as S.Schema<UpdateMediaPipelineKinesisVideoStreamPoolResponse>;
 export type ErrorCode =
   | "BadRequest"
   | "Forbidden"

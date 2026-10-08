@@ -191,10 +191,8 @@ export const CreateDataCatalogCertificationsDeprecateRequest = /*@__PURE__*/ S.s
 
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type CreateDataCatalogMetricsRequestDefinitionMap = { [key: string]: unknown | undefined };
-export const CreateDataCatalogMetricsRequestDefinitionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDataCatalogMetricsRequestDefinitionMap>;
+export const CreateDataCatalogMetricsRequestDefinitionMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<CreateDataCatalogMetricsRequestDefinitionMap>;
 
 /** * `user` - user * `ai_generated` - ai_generated */
 export type CreatedSourceEnum = "user" | "ai_generated";
@@ -246,10 +244,8 @@ export const CreateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type DataCatalogMetricDefinitionMap = { [key: string]: unknown | undefined };
-export const DataCatalogMetricDefinitionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataCatalogMetricDefinitionMap>;
+export const DataCatalogMetricDefinitionMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<DataCatalogMetricDefinitionMap>;
 
 export interface DataCatalogMetric {
   id: string;
@@ -577,9 +573,8 @@ export const DataCatalogMetricsApproveCreateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
 export type DataCatalogMetricsBulkApproveCreateRequestNamesList = Array<string>;
-export const DataCatalogMetricsBulkApproveCreateRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequestNamesList>;
+export const DataCatalogMetricsBulkApproveCreateRequestNamesList =
+  DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricsBulkApproveCreateRequestNamesList>;
 
 export interface DataCatalogMetricsBulkApproveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -648,9 +643,8 @@ export const DataCatalogMetricBulkApprove = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the metrics to act on, at most 100. Duplicates are collapsed. */
 export type DataCatalogMetricsBulkDeleteCreateRequestNamesList = Array<string>;
-export const DataCatalogMetricsBulkDeleteCreateRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequestNamesList>;
+export const DataCatalogMetricsBulkDeleteCreateRequestNamesList =
+  DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricsBulkDeleteCreateRequestNamesList>;
 
 export interface DataCatalogMetricsBulkDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -675,15 +669,13 @@ export const DataCatalogMetricsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend
 
 /** Names of the metrics that were deleted, now free for reuse. */
 export type DataCatalogMetricBulkDeleteDeletedList = Array<string>;
-export const DataCatalogMetricBulkDeleteDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataCatalogMetricBulkDeleteDeletedList>;
+export const DataCatalogMetricBulkDeleteDeletedList =
+  DataCatalogMetricRunColumnsList as any as S.Schema<DataCatalogMetricBulkDeleteDeletedList>;
 
 /** Requested metrics that were not deleted, with reasons. */
 export type DataCatalogMetricBulkDeleteSkippedList = Array<DataCatalogMetricBulkSkip>;
-export const DataCatalogMetricBulkDeleteSkippedList = /*@__PURE__*/ S.Array(
-  DataCatalogMetricBulkSkip,
-) as any as S.Schema<DataCatalogMetricBulkDeleteSkippedList>;
+export const DataCatalogMetricBulkDeleteSkippedList =
+  DataCatalogMetricBulkApproveSkippedList as any as S.Schema<DataCatalogMetricBulkDeleteSkippedList>;
 
 /** Outcome of a bulk delete: which names are gone, and what was left alone. */
 export interface DataCatalogMetricBulkDelete {
@@ -722,11 +714,8 @@ export const DataCatalogMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataCatalogMetricsDestroyRequest>;
 
 export interface DataCatalogMetricsDestroyResponse {}
-export const DataCatalogMetricsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DataCatalogMetricsDestroyResponse",
-}) as any as S.Schema<DataCatalogMetricsDestroyResponse>;
+export const DataCatalogMetricsDestroyResponse =
+  DataCatalogCertificationsDestroyResponse as any as S.Schema<DataCatalogMetricsDestroyResponse>;
 
 export interface DataCatalogMetricsRefreshFromInsightCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -922,9 +911,8 @@ export const ListDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataCatalogMetricsRequest>;
 
 export type PaginatedDataCatalogMetricListResultsList = Array<DataCatalogMetric>;
-export const PaginatedDataCatalogMetricListResultsList = /*@__PURE__*/ S.Array(
-  DataCatalogMetric,
-) as any as S.Schema<PaginatedDataCatalogMetricListResultsList>;
+export const PaginatedDataCatalogMetricListResultsList =
+  DataCatalogMetricBulkApproveApprovedList as any as S.Schema<PaginatedDataCatalogMetricListResultsList>;
 
 export interface PaginatedDataCatalogMetricList {
   count: number;
@@ -995,10 +983,8 @@ export const PaginatedDataCatalogRelationshipProposalList = /*@__PURE__*/ S.susp
 
 /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
 export type UpdateDataCatalogMetricsRequestDefinitionMap = { [key: string]: unknown | undefined };
-export const UpdateDataCatalogMetricsRequestDefinitionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDataCatalogMetricsRequestDefinitionMap>;
+export const UpdateDataCatalogMetricsRequestDefinitionMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<UpdateDataCatalogMetricsRequestDefinitionMap>;
 
 export interface UpdateDataCatalogMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1051,10 +1037,8 @@ export const UpdateDataCatalogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateDataCatalogMetricsPartialRequestDefinitionMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDataCatalogMetricsPartialRequestDefinitionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDataCatalogMetricsPartialRequestDefinitionMap>;
+export const UpdateDataCatalogMetricsPartialRequestDefinitionMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<UpdateDataCatalogMetricsPartialRequestDefinitionMap>;
 
 export interface UpdateDataCatalogMetricsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -155,13 +155,8 @@ export interface ArchiveConversationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ArchiveConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ArchiveConversationResponse",
-}) as any as S.Schema<ArchiveConversationResponse>;
+export const ArchiveConversationResponse =
+  ApproveSharedInviteResponse as any as S.Schema<ArchiveConversationResponse>;
 
 export interface ConversationsCloseRequest {
   /** Conversation to close. */
@@ -266,20 +261,16 @@ export const ConversationsHistoryResponseMutationTimestamps = /*@__PURE__*/ S.su
 }) as any as S.Schema<ConversationsHistoryResponseMutationTimestamps>;
 
 export type ConversationsHistoryResponseWarningsList = Array<string>;
-export const ConversationsHistoryResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationsHistoryResponseWarningsList>;
+export const ConversationsHistoryResponseWarningsList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsHistoryResponseWarningsList>;
 
 export type ConversationsHistoryResponseLatestUpdatesMap = { [key: string]: unknown | undefined };
-export const ConversationsHistoryResponseLatestUpdatesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversationsHistoryResponseLatestUpdatesMap>;
+export const ConversationsHistoryResponseLatestUpdatesMap =
+  ConversationsHistoryResponseUsersMap as any as S.Schema<ConversationsHistoryResponseLatestUpdatesMap>;
 
 export type ConversationsHistoryResponseUnchangedMessagesList = Array<string>;
-export const ConversationsHistoryResponseUnchangedMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationsHistoryResponseUnchangedMessagesList>;
+export const ConversationsHistoryResponseUnchangedMessagesList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsHistoryResponseUnchangedMessagesList>;
 
 export interface ConversationsHistoryResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -384,13 +375,8 @@ export interface ConversationsKickResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ConversationsKickResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ConversationsKickResponse",
-}) as any as S.Schema<ConversationsKickResponse>;
+export const ConversationsKickResponse =
+  ApproveSharedInviteResponse as any as S.Schema<ConversationsKickResponse>;
 
 export interface ConversationsMarkRequest {
   /** Channel or conversation to set the read cursor for. */
@@ -409,13 +395,8 @@ export interface ConversationsMarkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ConversationsMarkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "ConversationsMarkResponse",
-}) as any as S.Schema<ConversationsMarkResponse>;
+export const ConversationsMarkResponse =
+  ApproveSharedInviteResponse as any as S.Schema<ConversationsMarkResponse>;
 
 export interface ConversationsMembersRequest {
   /** ID of the conversation to retrieve members for */
@@ -436,9 +417,8 @@ export const ConversationsMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsMembersRequest>;
 
 export type ConversationsMembersResponseMembersList = Array<string>;
-export const ConversationsMembersResponseMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationsMembersResponseMembersList>;
+export const ConversationsMembersResponseMembersList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsMembersResponseMembersList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ConversationsMembersResponseResponseMetadata =
@@ -538,20 +518,16 @@ export const ConversationsRepliesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsRepliesRequest>;
 
 export type ConversationsRepliesResponseMessagesList = Array<unknown>;
-export const ConversationsRepliesResponseMessagesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ConversationsRepliesResponseMessagesList>;
+export const ConversationsRepliesResponseMessagesList =
+  ConversationsHistoryResponseMessagesList as any as S.Schema<ConversationsRepliesResponseMessagesList>;
 
 export type ConversationsRepliesResponseLatestUpdatesMap = { [key: string]: unknown | undefined };
-export const ConversationsRepliesResponseLatestUpdatesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversationsRepliesResponseLatestUpdatesMap>;
+export const ConversationsRepliesResponseLatestUpdatesMap =
+  ConversationsHistoryResponseUsersMap as any as S.Schema<ConversationsRepliesResponseLatestUpdatesMap>;
 
 export type ConversationsRepliesResponseUnchangedMessagesList = Array<string>;
-export const ConversationsRepliesResponseUnchangedMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConversationsRepliesResponseUnchangedMessagesList>;
+export const ConversationsRepliesResponseUnchangedMessagesList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsRepliesResponseUnchangedMessagesList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ConversationsRepliesResponseResponseMetadata =
@@ -662,9 +638,8 @@ export const InviteConversationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteConversationRequest>;
 
 export type InviteConversationResponseErrorsList = Array<unknown>;
-export const InviteConversationResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InviteConversationResponseErrorsList>;
+export const InviteConversationResponseErrorsList =
+  ConversationsHistoryResponseMessagesList as any as S.Schema<InviteConversationResponseErrorsList>;
 
 export interface InviteConversationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -702,25 +677,18 @@ export const InviteDeclineSharedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InviteDeclineSharedResponse {
   ok: boolean;
 }
-export const InviteDeclineSharedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "InviteDeclineSharedResponse",
-}) as any as S.Schema<InviteDeclineSharedResponse>;
+export const InviteDeclineSharedResponse =
+  ApproveSharedInviteResponse as any as S.Schema<InviteDeclineSharedResponse>;
 
 /** Optional email to receive this invite. Either `emails` or `user_ids` must be provided. Only one email or one user ID may be invited at a time. */
 export type InviteSharedRequestEmailsList = Array<string>;
-export const InviteSharedRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InviteSharedRequestEmailsList>;
+export const InviteSharedRequestEmailsList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<InviteSharedRequestEmailsList>;
 
 /** Optional user_id to receive this invite. Either `emails` or `user_ids` must be provided. Only one email or one user ID may be invited at a time. */
 export type InviteSharedRequestUserIdsList = Array<string>;
-export const InviteSharedRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InviteSharedRequestUserIdsList>;
+export const InviteSharedRequestUserIdsList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<InviteSharedRequestUserIdsList>;
 
 export interface InviteSharedRequest {
   /** ID of the channel on your team that you'd like to share */
@@ -770,9 +738,8 @@ export const JoinConversationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JoinConversationRequest" }) as any as S.Schema<JoinConversationRequest>;
 
 export type JoinConversationResponseResponseMetadataWarningsList = Array<string>;
-export const JoinConversationResponseResponseMetadataWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JoinConversationResponseResponseMetadataWarningsList>;
+export const JoinConversationResponseResponseMetadataWarningsList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<JoinConversationResponseResponseMetadataWarningsList>;
 
 export interface JoinConversationResponseResponseMetadata {
   warnings?: JoinConversationResponseResponseMetadataWarningsList;
@@ -842,9 +809,8 @@ export const ListConnectInvitesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConnectInvitesRequest>;
 
 export type ListConnectInvitesResponseInvitesList = Array<unknown>;
-export const ListConnectInvitesResponseInvitesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListConnectInvitesResponseInvitesList>;
+export const ListConnectInvitesResponseInvitesList =
+  ConversationsHistoryResponseMessagesList as any as S.Schema<ListConnectInvitesResponseInvitesList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListConnectInvitesResponseResponseMetadata =
@@ -892,9 +858,8 @@ export const ListConversationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListConversationsRequest" }) as any as S.Schema<ListConversationsRequest>;
 
 export type ListConversationsResponseChannelsList = Array<unknown>;
-export const ListConversationsResponseChannelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListConversationsResponseChannelsList>;
+export const ListConversationsResponseChannelsList =
+  ConversationsHistoryResponseMessagesList as any as S.Schema<ListConversationsResponseChannelsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListConversationsResponseResponseMetadata =
@@ -921,9 +886,8 @@ export const ListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional list of invitation ids to look up */
 export type ListRequestSharedInviteRequestInviteIdsList = Array<string>;
-export const ListRequestSharedInviteRequestInviteIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestSharedInviteRequestInviteIdsList>;
+export const ListRequestSharedInviteRequestInviteIdsList =
+  ConversationsHistoryResponseDeletedList as any as S.Schema<ListRequestSharedInviteRequestInviteIdsList>;
 
 export interface ListRequestSharedInviteRequest {
   /** Optional filter to return invitation requests for the inviting user. */
@@ -956,9 +920,8 @@ export const ListRequestSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRequestSharedInviteRequest>;
 
 export type ListRequestSharedInviteResponseInviteRequestsList = Array<unknown>;
-export const ListRequestSharedInviteResponseInviteRequestsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListRequestSharedInviteResponseInviteRequestsList>;
+export const ListRequestSharedInviteResponseInviteRequestsList =
+  ConversationsHistoryResponseMessagesList as any as S.Schema<ListRequestSharedInviteResponseInviteRequestsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListRequestSharedInviteResponseResponseMetadata =
@@ -1003,14 +966,8 @@ export interface RenameConversationResponse {
   ok: boolean;
   channel: unknown;
 }
-export const RenameConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    channel: S.Unknown,
-  }),
-).annotate({
-  identifier: "RenameConversationResponse",
-}) as any as S.Schema<RenameConversationResponse>;
+export const RenameConversationResponse =
+  CreateConversationResponse as any as S.Schema<RenameConversationResponse>;
 
 export interface RequestSharedInviteDenyRequest {
   /** ID of the requested shared channel invite to deny. */
@@ -1030,13 +987,8 @@ export const RequestSharedInviteDenyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RequestSharedInviteDenyResponse {
   ok: boolean;
 }
-export const RequestSharedInviteDenyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "RequestSharedInviteDenyResponse",
-}) as any as S.Schema<RequestSharedInviteDenyResponse>;
+export const RequestSharedInviteDenyResponse =
+  ApproveSharedInviteResponse as any as S.Schema<RequestSharedInviteDenyResponse>;
 
 /** Type of action to be taken: upgrade or downgrade */
 export type SetExternalInvitePermissionsRequestAction = "upgrade" | "downgrade";
@@ -1070,13 +1022,8 @@ export const SetExternalInvitePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetExternalInvitePermissionsResponse {
   ok: boolean;
 }
-export const SetExternalInvitePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetExternalInvitePermissionsResponse",
-}) as any as S.Schema<SetExternalInvitePermissionsResponse>;
+export const SetExternalInvitePermissionsResponse =
+  ApproveSharedInviteResponse as any as S.Schema<SetExternalInvitePermissionsResponse>;
 
 export interface SetPurposeRequest {
   /** Channel to set the description of */
@@ -1121,12 +1068,7 @@ export interface SetTopicResponse {
   ok: boolean;
   channel: unknown;
 }
-export const SetTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    channel: S.Unknown,
-  }),
-).annotate({ identifier: "SetTopicResponse" }) as any as S.Schema<SetTopicResponse>;
+export const SetTopicResponse = SetPurposeResponse as any as S.Schema<SetTopicResponse>;
 
 export interface UnarchiveConversationRequest {
   /** ID of conversation to unarchive */
@@ -1144,13 +1086,8 @@ export interface UnarchiveConversationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UnarchiveConversationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({
-  identifier: "UnarchiveConversationResponse",
-}) as any as S.Schema<UnarchiveConversationResponse>;
+export const UnarchiveConversationResponse =
+  ApproveSharedInviteResponse as any as S.Schema<UnarchiveConversationResponse>;
 
 export type AcceptSharedInviteError = SlackOpError;
 /** Accepts an invitation to a Slack Connect channel. Required scopes -- bot: `conversations.connect:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `channel_conversion_in_progress` -- Unable to create a channel connection while a channel conversion is in progress - `connection_limit_exceeded` -- This channel has hit the limit of external connections. - `email_does_not_match` -- User's email does not match the email in the invite. - `failed_to_start_trial` -- Unable to initiate a trial on shared invite acceptance - `has_already_connected_to_org` -- A team on the workspace of the org is already in the channel. - `invalid_arguments` -- Invalid API arguments were provided. Either `sig` or `invite_id` must be specified. - `invalid_emoji_not_allowed` -- The desired name contains emoji. - `invalid_host_team` -- The host workspace is invalid. - `invalid_link` -- We couldn't find an invite associated with the ID provided. - `invalid_name` -- The value passed for `channel_name` was invalid. - `invalid_name_maxlength` -- The value passed for `channel_name` exceeded the maximum length. - `invalid_name_punctuation` -- The value passed for `channel_name` contained only punctuation. - `invalid_name_required` -- The value passed for `channel_name` was empty. - `invalid_name_specials` -- The value passed for `channel_name` contained unallowed special characters or upper case characters. - `invite_from_same_org` -- You can't accept an invite from the same org or workspace. - `invite_not_found` -- We couldn't find a Slack Connect channel invite with the ID provided. - `invalid_privacy` -- An invalid channel privacy was provided. - `invalid_recipient_team` -- The accepting team does not match the expected recipient team. - `invalid_target_team` -- The target workspace is invalid. - `invite_used` -- This invite has already been accepted. - `is_pending_connected_to_org` -- A team pending to join the channel is on the org of the team trying to accept. - `legacy_connection_invalid_org` -- Teams not previously connected to this legacy channel can't connect. - `legacy_connection_limit_exceeded` -- You cannot share a legacy ESC channel with a third team - `name_taken` -- The desired channel name is already taken in your workspace. - `not_allowed_for_grid_workspace` -- Acceptance is not allowed for this workspace. - `not_paid` -- This workspace doesn't have access to this feature. - `restricted_action` -- A team preference prevents the authenticated user from creating private channels. - `team_not_found` -- The team provided in the `team_id` argument does not exits. - `user_cannot_create_channel` -- This user is not allowed to create a channel. - `user_is_restricted` -- This user is restricted and cannot accept the invite. - `user_not_found` -- The user accepting the invite is not a member of the team provided in the `team_id` argument. - `user_required_to_accept_as_private_but_cannot` -- This uer cannot accept a private channel invitation. - `accepter_email_not_verified` -- The accepting user has not verified the email address on their account. They must verify it before accepting. See https://docs.slack.dev/reference/methods/conversations.acceptSharedInvite */

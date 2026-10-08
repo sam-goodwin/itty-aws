@@ -1210,11 +1210,9 @@ export interface RegistrationMetadataItem {
   Key: string;
   Value: string;
 }
-export const RegistrationMetadataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "RegistrationMetadataItem" }) as any as S.Schema<RegistrationMetadataItem>;
+export const RegistrationMetadataItem = Tag as any as S.Schema<RegistrationMetadataItem>;
 export type RegistrationMetadataList = RegistrationMetadataItem[];
-export const RegistrationMetadataList = /*@__PURE__*/ S.Array(RegistrationMetadataItem);
+export const RegistrationMetadataList = TagList as any as S.Schema<RegistrationMetadataList>;
 export interface CreateActivationRequest {
   Description?: string;
   DefaultInstanceName?: string;
@@ -1249,7 +1247,7 @@ export type DocumentVersion = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type ParameterValueList = string[];
-export const ParameterValueList = /*@__PURE__*/ S.Array(S.String);
+export const ParameterValueList = InstanceIdList as any as S.Schema<ParameterValueList>;
 export type Parameters = { [key: string]: string[] | undefined };
 export const Parameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -1258,7 +1256,7 @@ export const Parameters = /*@__PURE__*/ S.Record(
 export type TargetKey = string;
 export type TargetValue = string;
 export type TargetValues = string[];
-export const TargetValues = /*@__PURE__*/ S.Array(S.String);
+export const TargetValues = InstanceIdList as any as S.Schema<TargetValues>;
 export interface Target {
   Key?: string;
   Values?: string[];
@@ -1311,13 +1309,13 @@ export const AssociationSyncCompliance = S.String;
 export type ApplyOnlyAtCronInterval = boolean;
 export type CalendarNameOrARN = string;
 export type CalendarNameOrARNList = string[];
-export const CalendarNameOrARNList = /*@__PURE__*/ S.Array(S.String);
+export const CalendarNameOrARNList = InstanceIdList as any as S.Schema<CalendarNameOrARNList>;
 export type Account = string;
 export type Accounts = string[];
-export const Accounts = /*@__PURE__*/ S.Array(S.String);
+export const Accounts = InstanceIdList as any as S.Schema<Accounts>;
 export type Region = string;
 export type Regions = string[];
-export const Regions = /*@__PURE__*/ S.Array(S.String);
+export const Regions = InstanceIdList as any as S.Schema<Regions>;
 export type ExecutionRoleName = string;
 export type AlarmName = string;
 export interface Alarm {
@@ -1337,9 +1335,9 @@ export const AlarmConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlarmConfiguration" }) as any as S.Schema<AlarmConfiguration>;
 export type ExcludeAccount = string;
 export type ExcludeAccounts = string[];
-export const ExcludeAccounts = /*@__PURE__*/ S.Array(S.String);
+export const ExcludeAccounts = InstanceIdList as any as S.Schema<ExcludeAccounts>;
 export type AutomationTargets = Target[];
-export const AutomationTargets = /*@__PURE__*/ S.Array(Target);
+export const AutomationTargets = Targets as any as S.Schema<AutomationTargets>;
 export interface TargetLocation {
   Accounts?: string[];
   Regions?: string[];
@@ -1375,12 +1373,9 @@ export type Duration = number;
 export type TargetMapKey = string;
 export type TargetMapValue = string;
 export type TargetMapValueList = string[];
-export const TargetMapValueList = /*@__PURE__*/ S.Array(S.String);
+export const TargetMapValueList = InstanceIdList as any as S.Schema<TargetMapValueList>;
 export type TargetMap = { [key: string]: string[] | undefined };
-export const TargetMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ TargetMapValueList.pipe(S.optional),
-);
+export const TargetMap = Parameters as any as S.Schema<TargetMap>;
 export type TargetMaps = { [key: string]: string[] | undefined }[];
 export const TargetMaps = /*@__PURE__*/ S.Array(TargetMap);
 export type AssociationDispatchAssumeRoleArn = string;
@@ -1770,7 +1765,7 @@ export const AttachmentsSourceKey = S.String;
 
 export type AttachmentsSourceValue = string;
 export type AttachmentsSourceValues = string[];
-export const AttachmentsSourceValues = /*@__PURE__*/ S.Array(S.String);
+export const AttachmentsSourceValues = InstanceIdList as any as S.Schema<AttachmentsSourceValues>;
 export type AttachmentIdentifier = string;
 export interface AttachmentsSource {
   Key?: AttachmentsSourceKey;
@@ -1930,9 +1925,9 @@ export const ReviewInformationList = /*@__PURE__*/ S.Array(
 );
 export type Category = string;
 export type CategoryList = string[];
-export const CategoryList = /*@__PURE__*/ S.Array(S.String);
+export const CategoryList = InstanceIdList as any as S.Schema<CategoryList>;
 export type CategoryEnumList = string[];
-export const CategoryEnumList = /*@__PURE__*/ S.Array(S.String);
+export const CategoryEnumList = InstanceIdList as any as S.Schema<CategoryEnumList>;
 export interface DocumentDescription {
   Sha1?: string;
   Hash?: string;
@@ -2221,7 +2216,7 @@ export const PatchFilterKey = S.String;
 
 export type PatchFilterValue = string;
 export type PatchFilterValueList = string[];
-export const PatchFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const PatchFilterValueList = InstanceIdList as any as S.Schema<PatchFilterValueList>;
 export interface PatchFilter {
   Key: PatchFilterKey;
   Values: string[];
@@ -2275,7 +2270,7 @@ export const PatchRuleGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchRuleGroup" }) as any as S.Schema<PatchRuleGroup>;
 export type PatchId = string;
 export type PatchIdList = string[];
-export const PatchIdList = /*@__PURE__*/ S.Array(S.String);
+export const PatchIdList = InstanceIdList as any as S.Schema<PatchIdList>;
 export type PatchAction = "ALLOW_AS_DEPENDENCY" | "BLOCK" | (string & {});
 export const PatchAction = S.String;
 
@@ -2283,7 +2278,7 @@ export type BaselineDescription = string;
 export type PatchSourceName = string;
 export type PatchSourceProduct = string;
 export type PatchSourceProductList = string[];
-export const PatchSourceProductList = /*@__PURE__*/ S.Array(S.String);
+export const PatchSourceProductList = InstanceIdList as any as S.Schema<PatchSourceProductList>;
 export type PatchSourceConfiguration = string | redacted.Redacted<string>;
 export interface PatchSource {
   Name: string;
@@ -2410,7 +2405,8 @@ export const ResourceDataSyncAwsOrganizationsSource = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ResourceDataSyncAwsOrganizationsSource>;
 export type ResourceDataSyncSourceRegion = string;
 export type ResourceDataSyncSourceRegionList = string[];
-export const ResourceDataSyncSourceRegionList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceDataSyncSourceRegionList =
+  InstanceIdList as any as S.Schema<ResourceDataSyncSourceRegionList>;
 export type ResourceDataSyncIncludeFutureRegions = boolean;
 export type ResourceDataSyncEnableAllOpsDataSources = boolean;
 export interface ResourceDataSyncSource {
@@ -2476,9 +2472,8 @@ export const DeleteAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteAssociationRequest" }) as any as S.Schema<DeleteAssociationRequest>;
 export interface DeleteAssociationResult {}
-export const DeleteAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "DeleteAssociationResult" }) as any as S.Schema<DeleteAssociationResult>;
+export const DeleteAssociationResult =
+  AddTagsToResourceResult as any as S.Schema<DeleteAssociationResult>;
 export interface DeleteCloudConnectorRequest {
   CloudConnectorId: string;
 }
@@ -2492,11 +2487,8 @@ export const DeleteCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCloudConnectorResult {
   CloudConnectorId?: string;
 }
-export const DeleteCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CloudConnectorId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeleteCloudConnectorResult",
-}) as any as S.Schema<DeleteCloudConnectorResult>;
+export const DeleteCloudConnectorResult =
+  CreateCloudConnectorResult as any as S.Schema<DeleteCloudConnectorResult>;
 export interface DeleteDocumentRequest {
   Name: string;
   DocumentVersion?: string;
@@ -2512,9 +2504,7 @@ export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteDocumentRequest" }) as any as S.Schema<DeleteDocumentRequest>;
 export interface DeleteDocumentResult {}
-export const DeleteDocumentResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteDocumentResult",
-}) as any as S.Schema<DeleteDocumentResult>;
+export const DeleteDocumentResult = CancelCommandResult as any as S.Schema<DeleteDocumentResult>;
 export type InventoryItemTypeName = string;
 export type InventorySchemaDeleteOption = "DisableSchema" | "DeleteSchema" | (string & {});
 export const InventorySchemaDeleteOption = S.String;
@@ -2592,11 +2582,8 @@ export const DeleteMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMaintenanceWindowResult {
   WindowId?: string;
 }
-export const DeleteMaintenanceWindowResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WindowId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeleteMaintenanceWindowResult",
-}) as any as S.Schema<DeleteMaintenanceWindowResult>;
+export const DeleteMaintenanceWindowResult =
+  CreateMaintenanceWindowResult as any as S.Schema<DeleteMaintenanceWindowResult>;
 export interface DeleteOpsItemRequest {
   OpsItemId: string;
 }
@@ -2606,9 +2593,7 @@ export const DeleteOpsItemRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteOpsItemRequest" }) as any as S.Schema<DeleteOpsItemRequest>;
 export interface DeleteOpsItemResponse {}
-export const DeleteOpsItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteOpsItemResponse",
-}) as any as S.Schema<DeleteOpsItemResponse>;
+export const DeleteOpsItemResponse = CancelCommandResult as any as S.Schema<DeleteOpsItemResponse>;
 export interface DeleteOpsMetadataRequest {
   OpsMetadataArn: string;
 }
@@ -2618,9 +2603,8 @@ export const DeleteOpsMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteOpsMetadataRequest" }) as any as S.Schema<DeleteOpsMetadataRequest>;
 export interface DeleteOpsMetadataResult {}
-export const DeleteOpsMetadataResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "DeleteOpsMetadataResult" }) as any as S.Schema<DeleteOpsMetadataResult>;
+export const DeleteOpsMetadataResult =
+  AddTagsToResourceResult as any as S.Schema<DeleteOpsMetadataResult>;
 export type PSParameterName = string;
 export interface DeleteParameterRequest {
   Name: string;
@@ -2631,11 +2615,9 @@ export const DeleteParameterRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteParameterRequest" }) as any as S.Schema<DeleteParameterRequest>;
 export interface DeleteParameterResult {}
-export const DeleteParameterResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteParameterResult",
-}) as any as S.Schema<DeleteParameterResult>;
+export const DeleteParameterResult = CancelCommandResult as any as S.Schema<DeleteParameterResult>;
 export type ParameterNameList = string[];
-export const ParameterNameList = /*@__PURE__*/ S.Array(S.String);
+export const ParameterNameList = InstanceIdList as any as S.Schema<ParameterNameList>;
 export interface DeleteParametersRequest {
   Names: string[];
 }
@@ -2667,11 +2649,8 @@ export const DeletePatchBaselineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePatchBaselineResult {
   BaselineId?: string;
 }
-export const DeletePatchBaselineResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BaselineId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DeletePatchBaselineResult",
-}) as any as S.Schema<DeletePatchBaselineResult>;
+export const DeletePatchBaselineResult =
+  CreatePatchBaselineResult as any as S.Schema<DeletePatchBaselineResult>;
 export interface DeleteResourceDataSyncRequest {
   SyncName: string;
   SyncType?: string;
@@ -2684,11 +2663,8 @@ export const DeleteResourceDataSyncRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceDataSyncRequest",
 }) as any as S.Schema<DeleteResourceDataSyncRequest>;
 export interface DeleteResourceDataSyncResult {}
-export const DeleteResourceDataSyncResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourceDataSyncResult",
-}) as any as S.Schema<DeleteResourceDataSyncResult>;
+export const DeleteResourceDataSyncResult =
+  CreateResourceDataSyncResult as any as S.Schema<DeleteResourceDataSyncResult>;
 export type ResourceArnString = string;
 export type PolicyId = string;
 export type PolicyHash = string;
@@ -2712,11 +2688,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  CreateResourceDataSyncResult as any as S.Schema<DeleteResourcePolicyResponse>;
 export type ManagedInstanceId = string;
 export interface DeregisterManagedInstanceRequest {
   InstanceId: string;
@@ -2729,11 +2702,8 @@ export const DeregisterManagedInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterManagedInstanceRequest",
 }) as any as S.Schema<DeregisterManagedInstanceRequest>;
 export interface DeregisterManagedInstanceResult {}
-export const DeregisterManagedInstanceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterManagedInstanceResult",
-}) as any as S.Schema<DeregisterManagedInstanceResult>;
+export const DeregisterManagedInstanceResult =
+  CreateResourceDataSyncResult as any as S.Schema<DeregisterManagedInstanceResult>;
 export type PatchGroup = string;
 export interface DeregisterPatchBaselineForPatchGroupRequest {
   BaselineId: string;
@@ -2806,7 +2776,7 @@ export type DescribeActivationsFilterKeys =
 export const DescribeActivationsFilterKeys = S.String;
 
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = InstanceIdList as any as S.Schema<StringList>;
 export interface DescribeActivationsFilter {
   FilterKey?: DescribeActivationsFilterKeys;
   FilterValues?: string[];
@@ -3117,7 +3087,8 @@ export const AutomationExecutionFilterKey = S.String;
 
 export type AutomationExecutionFilterValue = string;
 export type AutomationExecutionFilterValueList = string[];
-export const AutomationExecutionFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const AutomationExecutionFilterValueList =
+  InstanceIdList as any as S.Schema<AutomationExecutionFilterValueList>;
 export interface AutomationExecutionFilter {
   Key: AutomationExecutionFilterKey;
   Values: string[];
@@ -3170,17 +3141,15 @@ export const AutomationExecutionStatus = S.String;
 export type AutomationParameterKey = string;
 export type AutomationParameterValue = string;
 export type AutomationParameterValueList = string[];
-export const AutomationParameterValueList = /*@__PURE__*/ S.Array(S.String);
+export const AutomationParameterValueList =
+  InstanceIdList as any as S.Schema<AutomationParameterValueList>;
 export type AutomationParameterMap = { [key: string]: string[] | undefined };
-export const AutomationParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ AutomationParameterValueList.pipe(S.optional),
-);
+export const AutomationParameterMap = Parameters as any as S.Schema<AutomationParameterMap>;
 export type ExecutionMode = "Auto" | "Interactive" | (string & {});
 export const ExecutionMode = S.String;
 
 export type TargetParameterList = string[];
-export const TargetParameterList = /*@__PURE__*/ S.Array(S.String);
+export const TargetParameterList = InstanceIdList as any as S.Schema<TargetParameterList>;
 export interface ResolvedTargets {
   ParameterValues?: string[];
   Truncated?: boolean;
@@ -3323,7 +3292,8 @@ export const StepExecutionFilterKey = S.String;
 
 export type StepExecutionFilterValue = string;
 export type StepExecutionFilterValueList = string[];
-export const StepExecutionFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const StepExecutionFilterValueList =
+  InstanceIdList as any as S.Schema<StepExecutionFilterValueList>;
 export interface StepExecutionFilter {
   Key: StepExecutionFilterKey;
   Values: string[];
@@ -3371,7 +3341,7 @@ export const FailureDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailureDetails" }) as any as S.Schema<FailureDetails>;
 export type ValidNextStep = string;
 export type ValidNextStepList = string[];
-export const ValidNextStepList = /*@__PURE__*/ S.Array(S.String);
+export const ValidNextStepList = InstanceIdList as any as S.Schema<ValidNextStepList>;
 export interface ParentStepDetails {
   StepExecutionId?: string;
   StepName?: string;
@@ -3460,16 +3430,15 @@ export const DescribeAutomationStepExecutionsResult = /*@__PURE__*/ S.suspend(()
 export type PatchOrchestratorFilterKey = string;
 export type PatchOrchestratorFilterValue = string;
 export type PatchOrchestratorFilterValues = string[];
-export const PatchOrchestratorFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const PatchOrchestratorFilterValues =
+  InstanceIdList as any as S.Schema<PatchOrchestratorFilterValues>;
 export interface PatchOrchestratorFilter {
   Key?: string;
   Values?: string[];
 }
-export const PatchOrchestratorFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Values: S.optional(PatchOrchestratorFilterValues) }),
-).annotate({ identifier: "PatchOrchestratorFilter" }) as any as S.Schema<PatchOrchestratorFilter>;
+export const PatchOrchestratorFilter = Target as any as S.Schema<PatchOrchestratorFilter>;
 export type PatchOrchestratorFilterList = PatchOrchestratorFilter[];
-export const PatchOrchestratorFilterList = /*@__PURE__*/ S.Array(PatchOrchestratorFilter);
+export const PatchOrchestratorFilterList = Targets as any as S.Schema<PatchOrchestratorFilterList>;
 export type PatchBaselineMaxResults = number;
 export interface DescribeAvailablePatchesRequest {
   Filters?: PatchOrchestratorFilter[];
@@ -3498,13 +3467,13 @@ export type PatchMsrcNumber = string;
 export type PatchLanguage = string;
 export type PatchAdvisoryId = string;
 export type PatchAdvisoryIdList = string[];
-export const PatchAdvisoryIdList = /*@__PURE__*/ S.Array(S.String);
+export const PatchAdvisoryIdList = InstanceIdList as any as S.Schema<PatchAdvisoryIdList>;
 export type PatchBugzillaId = string;
 export type PatchBugzillaIdList = string[];
-export const PatchBugzillaIdList = /*@__PURE__*/ S.Array(S.String);
+export const PatchBugzillaIdList = InstanceIdList as any as S.Schema<PatchBugzillaIdList>;
 export type PatchCVEId = string;
 export type PatchCVEIdList = string[];
-export const PatchCVEIdList = /*@__PURE__*/ S.Array(S.String);
+export const PatchCVEIdList = InstanceIdList as any as S.Schema<PatchCVEIdList>;
 export type PatchName = string;
 export type PatchEpoch = number;
 export type PatchVersion = string;
@@ -3900,10 +3869,8 @@ export const ResourceType = S.String;
 export type IPAddress = string | redacted.Redacted<string>;
 export type ComputerName = string;
 export type InstanceAssociationStatusAggregatedCount = { [key: string]: number | undefined };
-export const InstanceAssociationStatusAggregatedCount = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+export const InstanceAssociationStatusAggregatedCount =
+  AssociationStatusAggregatedCount as any as S.Schema<InstanceAssociationStatusAggregatedCount>;
 export interface InstanceAggregatedAssociationOverview {
   DetailedStatus?: string;
   InstanceAssociationStatusAggregatedCount?: { [key: string]: number | undefined };
@@ -4163,7 +4130,8 @@ export const DescribeInstancePatchStatesResult = /*@__PURE__*/ S.suspend(() =>
 export type InstancePatchStateFilterKey = string;
 export type InstancePatchStateFilterValue = string;
 export type InstancePatchStateFilterValues = string[];
-export const InstancePatchStateFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const InstancePatchStateFilterValues =
+  InstanceIdList as any as S.Schema<InstancePatchStateFilterValues>;
 export type InstancePatchStateOperatorType =
   | "Equal"
   | "NotEqual"
@@ -4203,19 +4171,14 @@ export const DescribeInstancePatchStatesForPatchGroupRequest = /*@__PURE__*/ S.s
   identifier: "DescribeInstancePatchStatesForPatchGroupRequest",
 }) as any as S.Schema<DescribeInstancePatchStatesForPatchGroupRequest>;
 export type InstancePatchStatesList = InstancePatchState[];
-export const InstancePatchStatesList = /*@__PURE__*/ S.Array(InstancePatchState);
+export const InstancePatchStatesList =
+  InstancePatchStateList as any as S.Schema<InstancePatchStatesList>;
 export interface DescribeInstancePatchStatesForPatchGroupResult {
   InstancePatchStates?: InstancePatchState[];
   NextToken?: string;
 }
-export const DescribeInstancePatchStatesForPatchGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstancePatchStates: S.optional(InstancePatchStatesList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "DescribeInstancePatchStatesForPatchGroupResult",
-}) as any as S.Schema<DescribeInstancePatchStatesForPatchGroupResult>;
+export const DescribeInstancePatchStatesForPatchGroupResult =
+  DescribeInstancePatchStatesResult as any as S.Schema<DescribeInstancePatchStatesForPatchGroupResult>;
 export type InstancePropertyFilterKey =
   | "InstanceIds"
   | "AgentVersion"
@@ -4448,16 +4411,15 @@ export const DescribeInventoryDeletionsResult = /*@__PURE__*/ S.suspend(() =>
 export type MaintenanceWindowFilterKey = string;
 export type MaintenanceWindowFilterValue = string;
 export type MaintenanceWindowFilterValues = string[];
-export const MaintenanceWindowFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const MaintenanceWindowFilterValues =
+  InstanceIdList as any as S.Schema<MaintenanceWindowFilterValues>;
 export interface MaintenanceWindowFilter {
   Key?: string;
   Values?: string[];
 }
-export const MaintenanceWindowFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Values: S.optional(MaintenanceWindowFilterValues) }),
-).annotate({ identifier: "MaintenanceWindowFilter" }) as any as S.Schema<MaintenanceWindowFilter>;
+export const MaintenanceWindowFilter = Target as any as S.Schema<MaintenanceWindowFilter>;
 export type MaintenanceWindowFilterList = MaintenanceWindowFilter[];
-export const MaintenanceWindowFilterList = /*@__PURE__*/ S.Array(MaintenanceWindowFilter);
+export const MaintenanceWindowFilterList = Targets as any as S.Schema<MaintenanceWindowFilterList>;
 export type MaintenanceWindowMaxResults = number;
 export interface DescribeMaintenanceWindowExecutionsRequest {
   WindowId: string;
@@ -5008,7 +4970,7 @@ export const OpsItemFilterKey = S.String;
 
 export type OpsItemFilterValue = string;
 export type OpsItemFilterValues = string[];
-export const OpsItemFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const OpsItemFilterValues = InstanceIdList as any as S.Schema<OpsItemFilterValues>;
 export type OpsItemFilterOperator =
   | "Equal"
   | "Contains"
@@ -5121,7 +5083,8 @@ export const ParametersFilterKey = S.String;
 
 export type ParametersFilterValue = string;
 export type ParametersFilterValueList = string[];
-export const ParametersFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const ParametersFilterValueList =
+  InstanceIdList as any as S.Schema<ParametersFilterValueList>;
 export interface ParametersFilter {
   Key: ParametersFilterKey;
   Values: string[];
@@ -5135,7 +5098,8 @@ export type ParameterStringFilterKey = string;
 export type ParameterStringQueryOption = string;
 export type ParameterStringFilterValue = string;
 export type ParameterStringFilterValueList = string[];
-export const ParameterStringFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const ParameterStringFilterValueList =
+  InstanceIdList as any as S.Schema<ParameterStringFilterValueList>;
 export interface ParameterStringFilter {
   Key: string;
   Option?: string;
@@ -5400,10 +5364,7 @@ export const DescribePatchPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AttributeName = string;
 export type AttributeValue = string;
 export type PatchPropertyEntry = { [key: string]: string | undefined };
-export const PatchPropertyEntry = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const PatchPropertyEntry = NormalStringMap as any as S.Schema<PatchPropertyEntry>;
 export type PatchPropertiesList = { [key: string]: string | undefined }[];
 export const PatchPropertiesList = /*@__PURE__*/ S.Array(PatchPropertyEntry);
 export interface DescribePatchPropertiesResult {
@@ -5535,11 +5496,8 @@ export const DisassociateOpsItemRelatedItemRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DisassociateOpsItemRelatedItemRequest",
 }) as any as S.Schema<DisassociateOpsItemRelatedItemRequest>;
 export interface DisassociateOpsItemRelatedItemResponse {}
-export const DisassociateOpsItemRelatedItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisassociateOpsItemRelatedItemResponse",
-}) as any as S.Schema<DisassociateOpsItemRelatedItemResponse>;
+export const DisassociateOpsItemRelatedItemResponse =
+  CreateResourceDataSyncResult as any as S.Schema<DisassociateOpsItemRelatedItemResponse>;
 export type AccessRequestId = string;
 export interface GetAccessTokenRequest {
   AccessRequestId: string;
@@ -6043,7 +6001,7 @@ export const StepPreviewMap = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export const RegionList = InstanceIdList as any as S.Schema<RegionList>;
 export interface TargetPreview {
   Count?: number;
   TargetType?: string;
@@ -6194,12 +6152,10 @@ export type InventoryResultItemKey = string;
 export type InventoryItemCaptureTime = string;
 export type InventoryItemContentHash = string;
 export type InventoryItemEntry = { [key: string]: string | undefined };
-export const InventoryItemEntry = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const InventoryItemEntry = NormalStringMap as any as S.Schema<InventoryItemEntry>;
 export type InventoryItemEntryList = { [key: string]: string | undefined }[];
-export const InventoryItemEntryList = /*@__PURE__*/ S.Array(InventoryItemEntry);
+export const InventoryItemEntryList =
+  PatchPropertiesList as any as S.Schema<InventoryItemEntryList>;
 export interface InventoryResultItem {
   TypeName: string;
   SchemaVersion: string;
@@ -6369,7 +6325,8 @@ export const GetMaintenanceWindowExecutionRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "GetMaintenanceWindowExecutionRequest",
 }) as any as S.Schema<GetMaintenanceWindowExecutionRequest>;
 export type MaintenanceWindowExecutionTaskIdList = string[];
-export const MaintenanceWindowExecutionTaskIdList = /*@__PURE__*/ S.Array(S.String);
+export const MaintenanceWindowExecutionTaskIdList =
+  InstanceIdList as any as S.Schema<MaintenanceWindowExecutionTaskIdList>;
 export interface GetMaintenanceWindowExecutionResult {
   WindowExecutionId?: string;
   TaskIds?: string[];
@@ -6748,9 +6705,7 @@ export const GetOpsMetadataResult = /*@__PURE__*/ S.suspend(() =>
 export type OpsFilterKey = string;
 export type OpsFilterValue = string;
 export type OpsFilterValueList = string[];
-export const OpsFilterValueList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("FilterValue")),
-);
+export const OpsFilterValueList = InventoryFilterValueList as any as S.Schema<OpsFilterValueList>;
 export type OpsFilterOperatorType =
   | "Equal"
   | "NotEqual"
@@ -6781,10 +6736,7 @@ export type OpsDataAttributeName = string;
 export type OpsAggregatorValueKey = string;
 export type OpsAggregatorValue = string;
 export type OpsAggregatorValueMap = { [key: string]: string | undefined };
-export const OpsAggregatorValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const OpsAggregatorValueMap = NormalStringMap as any as S.Schema<OpsAggregatorValueMap>;
 export interface OpsAggregator {
   AggregatorType?: string;
   TypeName?: string;
@@ -6815,9 +6767,7 @@ export const OpsAggregatorList = /*@__PURE__*/ S.Array(
 export interface OpsResultAttribute {
   TypeName: string;
 }
-export const OpsResultAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TypeName: S.String }),
-).annotate({ identifier: "OpsResultAttribute" }) as any as S.Schema<OpsResultAttribute>;
+export const OpsResultAttribute = ResultAttribute as any as S.Schema<OpsResultAttribute>;
 export type OpsResultAttributeList = OpsResultAttribute[];
 export const OpsResultAttributeList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ OpsResultAttribute.pipe(/*@__PURE__*/ T.XmlName("OpsResultAttribute")).annotate({
@@ -6846,12 +6796,10 @@ export type OpsEntityId = string;
 export type OpsEntityItemKey = string;
 export type OpsEntityItemCaptureTime = string;
 export type OpsEntityItemEntry = { [key: string]: string | undefined };
-export const OpsEntityItemEntry = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const OpsEntityItemEntry = NormalStringMap as any as S.Schema<OpsEntityItemEntry>;
 export type OpsEntityItemEntryList = { [key: string]: string | undefined }[];
-export const OpsEntityItemEntryList = /*@__PURE__*/ S.Array(OpsEntityItemEntry);
+export const OpsEntityItemEntryList =
+  PatchPropertiesList as any as S.Schema<OpsEntityItemEntryList>;
 export interface OpsEntityItem {
   CaptureTime?: string;
   Content?: { [key: string]: string | undefined }[];
@@ -6943,7 +6891,7 @@ export const GetParameterHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetParameterHistoryRequest>;
 export type ParameterLabel = string;
 export type ParameterLabelList = string[];
-export const ParameterLabelList = /*@__PURE__*/ S.Array(S.String);
+export const ParameterLabelList = InstanceIdList as any as S.Schema<ParameterLabelList>;
 export interface ParameterHistory {
   Name?: string;
   Type?: ParameterType;
@@ -7049,7 +6997,7 @@ export const GetPatchBaselineRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetPatchBaselineRequest" }) as any as S.Schema<GetPatchBaselineRequest>;
 export type PatchGroupList = string[];
-export const PatchGroupList = /*@__PURE__*/ S.Array(S.String);
+export const PatchGroupList = InstanceIdList as any as S.Schema<PatchGroupList>;
 export interface GetPatchBaselineResult {
   BaselineId?: string;
   Name?: string;
@@ -7385,7 +7333,8 @@ export const CloudConnectorFilterKey = S.String;
 
 export type CloudConnectorFilterValue = string;
 export type CloudConnectorFilterValues = string[];
-export const CloudConnectorFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const CloudConnectorFilterValues =
+  InstanceIdList as any as S.Schema<CloudConnectorFilterValues>;
 export interface CloudConnectorFilter {
   FilterKey?: CloudConnectorFilterKey;
   FilterValues?: string[];
@@ -7682,9 +7631,8 @@ export const ListCommandsResult = /*@__PURE__*/ S.suspend(() =>
 export type ComplianceStringFilterKey = string;
 export type ComplianceFilterValue = string;
 export type ComplianceStringFilterValueList = string[];
-export const ComplianceStringFilterValueList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("FilterValue")),
-);
+export const ComplianceStringFilterValueList =
+  InventoryFilterValueList as any as S.Schema<ComplianceStringFilterValueList>;
 export type ComplianceQueryOperatorType =
   | "EQUAL"
   | "NOT_EQUAL"
@@ -7714,10 +7662,11 @@ export const ComplianceStringFilterList = /*@__PURE__*/ S.Array(
 );
 export type ComplianceResourceId = string;
 export type ComplianceResourceIdList = string[];
-export const ComplianceResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export const ComplianceResourceIdList = InstanceIdList as any as S.Schema<ComplianceResourceIdList>;
 export type ComplianceResourceType = string;
 export type ComplianceResourceTypeList = string[];
-export const ComplianceResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const ComplianceResourceTypeList =
+  InstanceIdList as any as S.Schema<ComplianceResourceTypeList>;
 export interface ListComplianceItemsRequest {
   Filters?: ComplianceStringFilter[];
   ResourceIds?: string[];
@@ -7769,10 +7718,7 @@ export const ComplianceExecutionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceExecutionSummary",
 }) as any as S.Schema<ComplianceExecutionSummary>;
 export type ComplianceItemDetails = { [key: string]: string | undefined };
-export const ComplianceItemDetails = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ComplianceItemDetails = NormalStringMap as any as S.Schema<ComplianceItemDetails>;
 export interface ComplianceItem {
   ComplianceType?: string;
   ResourceType?: string;
@@ -7997,16 +7943,15 @@ export const DocumentFilterList = /*@__PURE__*/ S.Array(
 export type DocumentKeyValuesFilterKey = string;
 export type DocumentKeyValuesFilterValue = string;
 export type DocumentKeyValuesFilterValues = string[];
-export const DocumentKeyValuesFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DocumentKeyValuesFilterValues =
+  InstanceIdList as any as S.Schema<DocumentKeyValuesFilterValues>;
 export interface DocumentKeyValuesFilter {
   Key?: string;
   Values?: string[];
 }
-export const DocumentKeyValuesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Values: S.optional(DocumentKeyValuesFilterValues) }),
-).annotate({ identifier: "DocumentKeyValuesFilter" }) as any as S.Schema<DocumentKeyValuesFilter>;
+export const DocumentKeyValuesFilter = Target as any as S.Schema<DocumentKeyValuesFilter>;
 export type DocumentKeyValuesFilterList = DocumentKeyValuesFilter[];
-export const DocumentKeyValuesFilterList = /*@__PURE__*/ S.Array(DocumentKeyValuesFilter);
+export const DocumentKeyValuesFilterList = Targets as any as S.Schema<DocumentKeyValuesFilterList>;
 export interface ListDocumentsRequest {
   DocumentFilterList?: DocumentFilter[];
   Filters?: DocumentKeyValuesFilter[];
@@ -8191,9 +8136,7 @@ export const NodeFilterKey = S.String;
 
 export type NodeFilterValue = string;
 export type NodeFilterValueList = string[];
-export const NodeFilterValueList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("FilterValue")),
-);
+export const NodeFilterValueList = InventoryFilterValueList as any as S.Schema<NodeFilterValueList>;
 export type NodeFilterOperatorType = "Equal" | "NotEqual" | "BeginWith" | (string & {});
 export const NodeFilterOperatorType = S.String;
 
@@ -8378,12 +8321,9 @@ export const ListNodesSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListNodesSummaryRequest" }) as any as S.Schema<ListNodesSummaryRequest>;
 export type NodeSummary = { [key: string]: string | undefined };
-export const NodeSummary = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const NodeSummary = NormalStringMap as any as S.Schema<NodeSummary>;
 export type NodeSummaryList = { [key: string]: string | undefined }[];
-export const NodeSummaryList = /*@__PURE__*/ S.Array(NodeSummary);
+export const NodeSummaryList = PatchPropertiesList as any as S.Schema<NodeSummaryList>;
 export interface ListNodesSummaryResult {
   Summary?: { [key: string]: string | undefined }[];
   NextToken?: string;
@@ -8396,7 +8336,7 @@ export const OpsItemEventFilterKey = S.String;
 
 export type OpsItemEventFilterValue = string;
 export type OpsItemEventFilterValues = string[];
-export const OpsItemEventFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const OpsItemEventFilterValues = InstanceIdList as any as S.Schema<OpsItemEventFilterValues>;
 export type OpsItemEventFilterOperator = "Equal" | (string & {});
 export const OpsItemEventFilterOperator = S.String;
 
@@ -8430,9 +8370,7 @@ export const ListOpsItemEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface OpsItemIdentity {
   Arn?: string;
 }
-export const OpsItemIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "OpsItemIdentity" }) as any as S.Schema<OpsItemIdentity>;
+export const OpsItemIdentity = OpsItemNotification as any as S.Schema<OpsItemIdentity>;
 export interface OpsItemEventSummary {
   OpsItemId?: string;
   EventId?: string;
@@ -8475,7 +8413,8 @@ export const OpsItemRelatedItemsFilterKey = S.String;
 
 export type OpsItemRelatedItemsFilterValue = string;
 export type OpsItemRelatedItemsFilterValues = string[];
-export const OpsItemRelatedItemsFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const OpsItemRelatedItemsFilterValues =
+  InstanceIdList as any as S.Schema<OpsItemRelatedItemsFilterValues>;
 export type OpsItemRelatedItemsFilterOperator = "Equal" | (string & {});
 export const OpsItemRelatedItemsFilterOperator = S.String;
 
@@ -8555,7 +8494,8 @@ export const ListOpsItemRelatedItemsResponse = /*@__PURE__*/ S.suspend(() =>
 export type OpsMetadataFilterKey = string;
 export type OpsMetadataFilterValue = string;
 export type OpsMetadataFilterValueList = string[];
-export const OpsMetadataFilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const OpsMetadataFilterValueList =
+  InstanceIdList as any as S.Schema<OpsMetadataFilterValueList>;
 export interface OpsMetadataFilter {
   Key: string;
   Values: string[];
@@ -8782,11 +8722,8 @@ export const ModifyDocumentPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyDocumentPermissionRequest",
 }) as any as S.Schema<ModifyDocumentPermissionRequest>;
 export interface ModifyDocumentPermissionResponse {}
-export const ModifyDocumentPermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyDocumentPermissionResponse",
-}) as any as S.Schema<ModifyDocumentPermissionResponse>;
+export const ModifyDocumentPermissionResponse =
+  CreateResourceDataSyncResult as any as S.Schema<ModifyDocumentPermissionResponse>;
 export interface ComplianceItemEntry {
   Id?: string;
   Title?: string;
@@ -8832,14 +8769,11 @@ export const PutComplianceItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutComplianceItemsRequest",
 }) as any as S.Schema<PutComplianceItemsRequest>;
 export interface PutComplianceItemsResult {}
-export const PutComplianceItemsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "PutComplianceItemsResult" }) as any as S.Schema<PutComplianceItemsResult>;
+export const PutComplianceItemsResult =
+  AddTagsToResourceResult as any as S.Schema<PutComplianceItemsResult>;
 export type InventoryItemContentContext = { [key: string]: string | undefined };
-export const InventoryItemContentContext = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const InventoryItemContentContext =
+  NormalStringMap as any as S.Schema<InventoryItemContentContext>;
 export interface InventoryItem {
   TypeName: string;
   SchemaVersion: string;
@@ -8952,11 +8886,8 @@ export const RegisterDefaultPatchBaselineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterDefaultPatchBaselineResult {
   BaselineId?: string;
 }
-export const RegisterDefaultPatchBaselineResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BaselineId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RegisterDefaultPatchBaselineResult",
-}) as any as S.Schema<RegisterDefaultPatchBaselineResult>;
+export const RegisterDefaultPatchBaselineResult =
+  CreatePatchBaselineResult as any as S.Schema<RegisterDefaultPatchBaselineResult>;
 export interface RegisterPatchBaselineForPatchGroupRequest {
   BaselineId: string;
   PatchGroup: string;
@@ -8972,11 +8903,8 @@ export interface RegisterPatchBaselineForPatchGroupResult {
   BaselineId?: string;
   PatchGroup?: string;
 }
-export const RegisterPatchBaselineForPatchGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BaselineId: S.optional(S.String), PatchGroup: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RegisterPatchBaselineForPatchGroupResult",
-}) as any as S.Schema<RegisterPatchBaselineForPatchGroupResult>;
+export const RegisterPatchBaselineForPatchGroupResult =
+  DeregisterPatchBaselineForPatchGroupResult as any as S.Schema<RegisterPatchBaselineForPatchGroupResult>;
 export interface RegisterTargetWithMaintenanceWindowRequest {
   WindowId: string;
   ResourceType: MaintenanceWindowResourceType;
@@ -9056,7 +8984,7 @@ export const RegisterTaskWithMaintenanceWindowResult = /*@__PURE__*/ S.suspend((
   identifier: "RegisterTaskWithMaintenanceWindowResult",
 }) as any as S.Schema<RegisterTaskWithMaintenanceWindowResult>;
 export type KeyList = string[];
-export const KeyList = /*@__PURE__*/ S.Array(S.String);
+export const KeyList = InstanceIdList as any as S.Schema<KeyList>;
 export interface RemoveTagsFromResourceRequest {
   ResourceType: ResourceTypeForTagging;
   ResourceId: string;
@@ -9070,11 +8998,8 @@ export const RemoveTagsFromResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromResourceRequest",
 }) as any as S.Schema<RemoveTagsFromResourceRequest>;
 export interface RemoveTagsFromResourceResult {}
-export const RemoveTagsFromResourceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveTagsFromResourceResult",
-}) as any as S.Schema<RemoveTagsFromResourceResult>;
+export const RemoveTagsFromResourceResult =
+  CreateResourceDataSyncResult as any as S.Schema<RemoveTagsFromResourceResult>;
 export interface ResetServiceSettingRequest {
   SettingId: string;
 }
@@ -9140,11 +9065,8 @@ export const SendAutomationSignalRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendAutomationSignalRequest",
 }) as any as S.Schema<SendAutomationSignalRequest>;
 export interface SendAutomationSignalResult {}
-export const SendAutomationSignalResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SendAutomationSignalResult",
-}) as any as S.Schema<SendAutomationSignalResult>;
+export const SendAutomationSignalResult =
+  CreateResourceDataSyncResult as any as S.Schema<SendAutomationSignalResult>;
 export interface SendCommandRequest {
   InstanceIds?: string[];
   Targets?: Target[];
@@ -9215,7 +9137,7 @@ export const StartAccessRequestResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartAccessRequestResponse",
 }) as any as S.Schema<StartAccessRequestResponse>;
 export type AssociationIdList = string[];
-export const AssociationIdList = /*@__PURE__*/ S.Array(S.String);
+export const AssociationIdList = InstanceIdList as any as S.Schema<AssociationIdList>;
 export interface StartAssociationsOnceRequest {
   AssociationIds: string[];
 }
@@ -9227,11 +9149,8 @@ export const StartAssociationsOnceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartAssociationsOnceRequest",
 }) as any as S.Schema<StartAssociationsOnceRequest>;
 export interface StartAssociationsOnceResult {}
-export const StartAssociationsOnceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StartAssociationsOnceResult",
-}) as any as S.Schema<StartAssociationsOnceResult>;
+export const StartAssociationsOnceResult =
+  CreateResourceDataSyncResult as any as S.Schema<StartAssociationsOnceResult>;
 export type IdempotencyToken = string;
 export interface StartAutomationExecutionRequest {
   DocumentName: string;
@@ -9311,11 +9230,8 @@ export const StartChangeRequestExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartChangeRequestExecutionResult {
   AutomationExecutionId?: string;
 }
-export const StartChangeRequestExecutionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutomationExecutionId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "StartChangeRequestExecutionResult",
-}) as any as S.Schema<StartChangeRequestExecutionResult>;
+export const StartChangeRequestExecutionResult =
+  StartAutomationExecutionResult as any as S.Schema<StartChangeRequestExecutionResult>;
 export interface AutomationExecutionInputs {
   Parameters?: { [key: string]: string[] | undefined };
   TargetParameterName?: string;
@@ -9365,12 +9281,10 @@ export const StartExecutionPreviewResponse = /*@__PURE__*/ S.suspend(() =>
 export type SessionManagerParameterName = string;
 export type SessionManagerParameterValue = string;
 export type SessionManagerParameterValueList = string[];
-export const SessionManagerParameterValueList = /*@__PURE__*/ S.Array(S.String);
+export const SessionManagerParameterValueList =
+  InstanceIdList as any as S.Schema<SessionManagerParameterValueList>;
 export type SessionManagerParameters = { [key: string]: string[] | undefined };
-export const SessionManagerParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SessionManagerParameterValueList.pipe(S.optional),
-);
+export const SessionManagerParameters = Parameters as any as S.Schema<SessionManagerParameters>;
 export interface StartSessionRequest {
   Target: string;
   DocumentName?: string;
@@ -9390,13 +9304,7 @@ export interface StartSessionResponse {
   TokenValue?: string;
   StreamUrl?: string;
 }
-export const StartSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SessionId: S.optional(S.String),
-    TokenValue: S.optional(S.String),
-    StreamUrl: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "StartSessionResponse" }) as any as S.Schema<StartSessionResponse>;
+export const StartSessionResponse = ResumeSessionResponse as any as S.Schema<StartSessionResponse>;
 export type StopType = "Complete" | "Cancel" | (string & {});
 export const StopType = S.String;
 
@@ -9412,11 +9320,8 @@ export const StopAutomationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopAutomationExecutionRequest",
 }) as any as S.Schema<StopAutomationExecutionRequest>;
 export interface StopAutomationExecutionResult {}
-export const StopAutomationExecutionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StopAutomationExecutionResult",
-}) as any as S.Schema<StopAutomationExecutionResult>;
+export const StopAutomationExecutionResult =
+  CreateResourceDataSyncResult as any as S.Schema<StopAutomationExecutionResult>;
 export interface TerminateSessionRequest {
   SessionId: string;
 }
@@ -9508,9 +9413,8 @@ export const UpdateAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAssociationResult {
   AssociationDescription?: AssociationDescription;
 }
-export const UpdateAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(ns),
-).annotate({ identifier: "UpdateAssociationResult" }) as any as S.Schema<UpdateAssociationResult>;
+export const UpdateAssociationResult =
+  CreateAssociationResult as any as S.Schema<UpdateAssociationResult>;
 export interface UpdateAssociationStatusRequest {
   Name: string;
   InstanceId: string;
@@ -9526,11 +9430,8 @@ export const UpdateAssociationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAssociationStatusResult {
   AssociationDescription?: AssociationDescription;
 }
-export const UpdateAssociationStatusResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssociationDescription: S.optional(AssociationDescription) }).pipe(ns),
-).annotate({
-  identifier: "UpdateAssociationStatusResult",
-}) as any as S.Schema<UpdateAssociationStatusResult>;
+export const UpdateAssociationStatusResult =
+  DescribeAssociationResult as any as S.Schema<UpdateAssociationStatusResult>;
 export interface UpdateCloudConnectorRequest {
   CloudConnectorId: string;
   DisplayName?: string;
@@ -9550,11 +9451,8 @@ export const UpdateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCloudConnectorResult {
   CloudConnectorId?: string;
 }
-export const UpdateCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CloudConnectorId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateCloudConnectorResult",
-}) as any as S.Schema<UpdateCloudConnectorResult>;
+export const UpdateCloudConnectorResult =
+  CreateCloudConnectorResult as any as S.Schema<UpdateCloudConnectorResult>;
 export interface UpdateDocumentRequest {
   Content: string;
   Attachments?: AttachmentsSource[];
@@ -9580,9 +9478,7 @@ export const UpdateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDocumentResult {
   DocumentDescription?: DocumentDescription;
 }
-export const UpdateDocumentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DocumentDescription: S.optional(DocumentDescription) }).pipe(ns),
-).annotate({ identifier: "UpdateDocumentResult" }) as any as S.Schema<UpdateDocumentResult>;
+export const UpdateDocumentResult = CreateDocumentResult as any as S.Schema<UpdateDocumentResult>;
 export type DocumentVersionNumber = string;
 export interface UpdateDocumentDefaultVersionRequest {
   Name: string;
@@ -9647,11 +9543,8 @@ export const UpdateDocumentMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDocumentMetadataRequest",
 }) as any as S.Schema<UpdateDocumentMetadataRequest>;
 export interface UpdateDocumentMetadataResponse {}
-export const UpdateDocumentMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateDocumentMetadataResponse",
-}) as any as S.Schema<UpdateDocumentMetadataResponse>;
+export const UpdateDocumentMetadataResponse =
+  CreateResourceDataSyncResult as any as S.Schema<UpdateDocumentMetadataResponse>;
 export interface UpdateMaintenanceWindowRequest {
   WindowId: string;
   Name?: string;
@@ -9850,13 +9743,10 @@ export const UpdateManagedInstanceRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateManagedInstanceRoleRequest",
 }) as any as S.Schema<UpdateManagedInstanceRoleRequest>;
 export interface UpdateManagedInstanceRoleResult {}
-export const UpdateManagedInstanceRoleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateManagedInstanceRoleResult",
-}) as any as S.Schema<UpdateManagedInstanceRoleResult>;
+export const UpdateManagedInstanceRoleResult =
+  CreateResourceDataSyncResult as any as S.Schema<UpdateManagedInstanceRoleResult>;
 export type OpsItemOpsDataKeysList = string[];
-export const OpsItemOpsDataKeysList = /*@__PURE__*/ S.Array(S.String);
+export const OpsItemOpsDataKeysList = InstanceIdList as any as S.Schema<OpsItemOpsDataKeysList>;
 export interface UpdateOpsItemRequest {
   Description?: string;
   OperationalData?: { [key: string]: OpsItemDataValue | undefined };
@@ -9896,11 +9786,9 @@ export const UpdateOpsItemRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateOpsItemRequest" }) as any as S.Schema<UpdateOpsItemRequest>;
 export interface UpdateOpsItemResponse {}
-export const UpdateOpsItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateOpsItemResponse",
-}) as any as S.Schema<UpdateOpsItemResponse>;
+export const UpdateOpsItemResponse = CancelCommandResult as any as S.Schema<UpdateOpsItemResponse>;
 export type MetadataKeysToDeleteList = string[];
-export const MetadataKeysToDeleteList = /*@__PURE__*/ S.Array(S.String);
+export const MetadataKeysToDeleteList = InstanceIdList as any as S.Schema<MetadataKeysToDeleteList>;
 export interface UpdateOpsMetadataRequest {
   OpsMetadataArn: string;
   MetadataToUpdate?: { [key: string]: MetadataValue | undefined };
@@ -9916,9 +9804,8 @@ export const UpdateOpsMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateOpsMetadataResult {
   OpsMetadataArn?: string;
 }
-export const UpdateOpsMetadataResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OpsMetadataArn: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateOpsMetadataResult" }) as any as S.Schema<UpdateOpsMetadataResult>;
+export const UpdateOpsMetadataResult =
+  CreateOpsMetadataResult as any as S.Schema<UpdateOpsMetadataResult>;
 export interface UpdatePatchBaselineRequest {
   BaselineId: string;
   Name?: string;
@@ -10004,11 +9891,8 @@ export const UpdateResourceDataSyncRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceDataSyncRequest",
 }) as any as S.Schema<UpdateResourceDataSyncRequest>;
 export interface UpdateResourceDataSyncResult {}
-export const UpdateResourceDataSyncResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateResourceDataSyncResult",
-}) as any as S.Schema<UpdateResourceDataSyncResult>;
+export const UpdateResourceDataSyncResult =
+  CreateResourceDataSyncResult as any as S.Schema<UpdateResourceDataSyncResult>;
 export interface UpdateServiceSettingRequest {
   SettingId: string;
   SettingValue: string;
@@ -10021,11 +9905,8 @@ export const UpdateServiceSettingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServiceSettingRequest",
 }) as any as S.Schema<UpdateServiceSettingRequest>;
 export interface UpdateServiceSettingResult {}
-export const UpdateServiceSettingResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateServiceSettingResult",
-}) as any as S.Schema<UpdateServiceSettingResult>;
+export const UpdateServiceSettingResult =
+  CreateResourceDataSyncResult as any as S.Schema<UpdateServiceSettingResult>;
 export type ValidateCloudConnectorMaxResults = number;
 export interface ValidateCloudConnectorRequest {
   CloudConnectorId: string;
@@ -10098,9 +9979,11 @@ export const ValidateCloudConnectorResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateCloudConnectorResult",
 }) as any as S.Schema<ValidateCloudConnectorResult>;
 export type OpsItemParameterNamesList = string[];
-export const OpsItemParameterNamesList = /*@__PURE__*/ S.Array(S.String);
+export const OpsItemParameterNamesList =
+  InstanceIdList as any as S.Schema<OpsItemParameterNamesList>;
 export type ResourcePolicyParameterNamesList = string[];
-export const ResourcePolicyParameterNamesList = /*@__PURE__*/ S.Array(S.String);
+export const ResourcePolicyParameterNamesList =
+  InstanceIdList as any as S.Schema<ResourcePolicyParameterNamesList>;
 export type AddTagsToResourceError =
   | InternalServerError
   | InvalidResourceId

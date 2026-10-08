@@ -194,11 +194,8 @@ export interface DeleteTableRowRequest {
   /** The reference table cell location from which the row will be deleted. The row this cell spans will be deleted. If this is a merged cell that spans multiple rows, all rows that the cell spans will be deleted. If no rows remain in the table after this deletion, the whole table is deleted. */
   tableCellLocation?: TableCellLocation;
 }
-export const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableCellLocation: S.optional(TableCellLocation),
-  }),
-).annotate({ identifier: "DeleteTableRowRequest" }) as any as S.Schema<DeleteTableRowRequest>;
+export const DeleteTableRowRequest =
+  DeleteTableColumnRequest as any as S.Schema<DeleteTableRowRequest>;
 
 /** Location at the end of a body, header, footer or footnote. The location is immediately before the last newline in the document segment. */
 export interface EndOfSegmentLocation {
@@ -297,12 +294,7 @@ export interface BookmarkLink {
   /** The ID of a bookmark in this document. */
   id?: string;
 }
-export const BookmarkLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabId: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "BookmarkLink" }) as any as S.Schema<BookmarkLink>;
+export const BookmarkLink = HeadingLink as any as S.Schema<BookmarkLink>;
 
 /** A reference to another portion of a document or an external URL resource. */
 export interface Link {
@@ -1346,13 +1338,8 @@ export interface DeleteContentRangeRequest {
   /** The range of content to delete. Deleting text that crosses a paragraph boundary may result in changes to paragraph styles, lists, positioned objects and bookmarks as the two paragraphs are merged. Attempting to delete certain ranges can result in an invalid document structure in which case a 400 bad request error is returned. Some examples of invalid delete requests include: * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header, Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or Equation without deleting the entire element. * Deleting the newline character before a Table, TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a table. Deleting the content within a table cell is allowed. */
   range?: Range;
 }
-export const DeleteContentRangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    range: S.optional(Range),
-  }),
-).annotate({
-  identifier: "DeleteContentRangeRequest",
-}) as any as S.Schema<DeleteContentRangeRequest>;
+export const DeleteContentRangeRequest =
+  DeleteParagraphBulletsRequest as any as S.Schema<DeleteContentRangeRequest>;
 
 /** Inserts a page break followed by a newline at the specified location. */
 export interface InsertPageBreakRequest {
@@ -1361,12 +1348,8 @@ export interface InsertPageBreakRequest {
   /** Inserts the page break at the end of the document body. Page breaks cannot be inserted inside a footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field must be empty. */
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
-export const InsertPageBreakRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    endOfSegmentLocation: S.optional(EndOfSegmentLocation),
-  }),
-).annotate({ identifier: "InsertPageBreakRequest" }) as any as S.Schema<InsertPageBreakRequest>;
+export const InsertPageBreakRequest =
+  CreateFootnoteRequest as any as S.Schema<InsertPageBreakRequest>;
 
 /** Update the styling of text. */
 export interface UpdateTextStyleRequest {
@@ -1390,11 +1373,8 @@ export interface UnmergeTableCellsRequest {
   /** The table range specifying which cells of the table to unmerge. All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right, and the upper-right otherwise. */
   tableRange?: TableRange;
 }
-export const UnmergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tableRange: S.optional(TableRange),
-  }),
-).annotate({ identifier: "UnmergeTableCellsRequest" }) as any as S.Schema<UnmergeTableCellsRequest>;
+export const UnmergeTableCellsRequest =
+  MergeTableCellsRequest as any as S.Schema<UnmergeTableCellsRequest>;
 
 /** Inserts a Dropdown at the specified location. */
 export interface InsertDropdownRequest {
@@ -2470,11 +2450,8 @@ export interface AddDocumentTabResponse {
   /** The properties of the newly added tab. */
   tabProperties?: TabProperties;
 }
-export const AddDocumentTabResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tabProperties: S.optional(TabProperties),
-  }),
-).annotate({ identifier: "AddDocumentTabResponse" }) as any as S.Schema<AddDocumentTabResponse>;
+export const AddDocumentTabResponse =
+  AddDocumentTabRequest as any as S.Schema<AddDocumentTabResponse>;
 
 export type PostList = Array<Post>;
 export const PostList = /*@__PURE__*/ S.Array(Post) as any as S.Schema<PostList>;
@@ -2570,13 +2547,8 @@ export interface InsertInlineSheetsChartResponse {
   /** The object ID of the inserted chart. */
   objectId?: string;
 }
-export const InsertInlineSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsertInlineSheetsChartResponse",
-}) as any as S.Schema<InsertInlineSheetsChartResponse>;
+export const InsertInlineSheetsChartResponse =
+  InsertInlineImageResponse as any as S.Schema<InsertInlineSheetsChartResponse>;
 
 /** The result of creating a header. */
 export interface CreateHeaderResponse {

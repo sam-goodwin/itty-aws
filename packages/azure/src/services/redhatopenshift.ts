@@ -349,9 +349,8 @@ export const OpenShiftClusterPropertiesWorkerProfilesList = /*@__PURE__*/ S.Arra
 
 /** The cluster worker profiles status. */
 export type OpenShiftClusterPropertiesWorkerProfilesStatusList = Array<WorkerProfile>;
-export const OpenShiftClusterPropertiesWorkerProfilesStatusList = /*@__PURE__*/ S.Array(
-  WorkerProfile,
-) as any as S.Schema<OpenShiftClusterPropertiesWorkerProfilesStatusList>;
+export const OpenShiftClusterPropertiesWorkerProfilesStatusList =
+  OpenShiftClusterPropertiesWorkerProfilesList as any as S.Schema<OpenShiftClusterPropertiesWorkerProfilesStatusList>;
 
 /** Visibility represents visibility. */
 export type Visibility = "Private" | "Public";
@@ -745,19 +744,15 @@ export const ListOpenShiftClusterByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type OpenShiftClusterTagsMap = { [key: string]: string | undefined };
-export const OpenShiftClusterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OpenShiftClusterTagsMap>;
+export const OpenShiftClusterTagsMap =
+  GetOpenShiftClusterResponseTagsMap as any as S.Schema<OpenShiftClusterTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type OpenShiftClusterIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const OpenShiftClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-) as any as S.Schema<OpenShiftClusterIdentityUserAssignedIdentitiesMap>;
+export const OpenShiftClusterIdentityUserAssignedIdentitiesMap =
+  GetOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<OpenShiftClusterIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface OpenShiftClusterIdentity {
@@ -1059,17 +1054,8 @@ export interface PlatformWorkloadIdentityRoleSet {
   /** The properties for the PlatformWorkloadIdentityRoleSet resource. */
   properties?: PlatformWorkloadIdentityRoleSetProperties;
 }
-export const PlatformWorkloadIdentityRoleSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PlatformWorkloadIdentityRoleSetProperties),
-  }),
-).annotate({
-  identifier: "PlatformWorkloadIdentityRoleSet",
-}) as any as S.Schema<PlatformWorkloadIdentityRoleSet>;
+export const PlatformWorkloadIdentityRoleSet =
+  GetPlatformWorkloadIdentityRoleSetResponse as any as S.Schema<PlatformWorkloadIdentityRoleSet>;
 
 /** The PlatformWorkloadIdentityRoleSet items on this page */
 export type PlatformWorkloadIdentityRoleSetListValueList = Array<PlatformWorkloadIdentityRoleSet>;
@@ -1095,10 +1081,8 @@ export const PlatformWorkloadIdentityRoleSetList = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type OpenShiftClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const OpenShiftClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequestTagsMap>;
+export const OpenShiftClustersCreateOrUpdateRequestTagsMap =
+  GetOpenShiftClusterResponseTagsMap as any as S.Schema<OpenShiftClustersCreateOrUpdateRequestTagsMap>;
 
 /** ClusterProfile represents a cluster profile. */
 export interface ClusterProfileInput {
@@ -1125,9 +1109,8 @@ export const ClusterProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** ConsoleProfile represents a console profile. */
 export interface ConsoleProfileInput {}
-export const ConsoleProfileInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ConsoleProfileInput",
-}) as any as S.Schema<ConsoleProfileInput>;
+export const ConsoleProfileInput =
+  DeleteOpenShiftClusterResponse as any as S.Schema<ConsoleProfileInput>;
 
 /** PlatformWorkloadIdentity stores information representing a single workload identity. */
 export interface PlatformWorkloadIdentityInput {
@@ -1206,9 +1189,8 @@ export const NetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster worker profiles. */
 export type OpenShiftClusterPropertiesInputWorkerProfilesList = Array<WorkerProfile>;
-export const OpenShiftClusterPropertiesInputWorkerProfilesList = /*@__PURE__*/ S.Array(
-  WorkerProfile,
-) as any as S.Schema<OpenShiftClusterPropertiesInputWorkerProfilesList>;
+export const OpenShiftClusterPropertiesInputWorkerProfilesList =
+  OpenShiftClusterPropertiesWorkerProfilesList as any as S.Schema<OpenShiftClusterPropertiesInputWorkerProfilesList>;
 
 /** APIServerProfile represents an API server profile. */
 export interface APIServerProfileInput {
@@ -1351,10 +1333,8 @@ export const OpenShiftClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type OpenShiftClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const OpenShiftClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OpenShiftClustersCreateOrUpdateResponseTagsMap>;
+export const OpenShiftClustersCreateOrUpdateResponseTagsMap =
+  GetOpenShiftClusterResponseTagsMap as any as S.Schema<OpenShiftClustersCreateOrUpdateResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type OpenShiftClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
@@ -1424,20 +1404,15 @@ export const OpenShiftClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend((
 
 /** The resource tags. */
 export type UpdateOpenShiftClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateOpenShiftClusterRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOpenShiftClusterRequestTagsMap>;
+export const UpdateOpenShiftClusterRequestTagsMap =
+  GetOpenShiftClusterResponseTagsMap as any as S.Schema<UpdateOpenShiftClusterRequestTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: ConsoleProfileInput | null | undefined;
 };
 export const UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(ConsoleProfileInput),
-  ) as any as S.Schema<UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap>;
+  OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateOpenShiftClusterRequestIdentity {
@@ -1445,16 +1420,8 @@ export interface UpdateOpenShiftClusterRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateOpenShiftClusterRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      UpdateOpenShiftClusterRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateOpenShiftClusterRequestIdentity",
-}) as any as S.Schema<UpdateOpenShiftClusterRequestIdentity>;
+export const UpdateOpenShiftClusterRequestIdentity =
+  OpenShiftClustersCreateOrUpdateRequestIdentity as any as S.Schema<UpdateOpenShiftClusterRequestIdentity>;
 
 export interface UpdateOpenShiftClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1492,20 +1459,15 @@ export const UpdateOpenShiftClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateOpenShiftClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateOpenShiftClusterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOpenShiftClusterResponseTagsMap>;
+export const UpdateOpenShiftClusterResponseTagsMap =
+  GetOpenShiftClusterResponseTagsMap as any as S.Schema<UpdateOpenShiftClusterResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
 export const UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap>;
+  OpenShiftClustersCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateOpenShiftClusterResponseIdentity {
@@ -1517,18 +1479,8 @@ export interface UpdateOpenShiftClusterResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateOpenShiftClusterResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      UpdateOpenShiftClusterResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateOpenShiftClusterResponseIdentity",
-}) as any as S.Schema<UpdateOpenShiftClusterResponseIdentity>;
+export const UpdateOpenShiftClusterResponseIdentity =
+  OpenShiftClustersCreateOrUpdateResponseIdentity as any as S.Schema<UpdateOpenShiftClusterResponseIdentity>;
 
 export interface UpdateOpenShiftClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1548,20 +1500,8 @@ export interface UpdateOpenShiftClusterResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateOpenShiftClusterResponseIdentity;
 }
-export const UpdateOpenShiftClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateOpenShiftClusterResponseTagsMap),
-    location: S.String,
-    properties: S.optional(OpenShiftClusterProperties),
-    identity: S.optional(UpdateOpenShiftClusterResponseIdentity),
-  }),
-).annotate({
-  identifier: "UpdateOpenShiftClusterResponse",
-}) as any as S.Schema<UpdateOpenShiftClusterResponse>;
+export const UpdateOpenShiftClusterResponse =
+  OpenShiftClustersCreateOrUpdateResponse as any as S.Schema<UpdateOpenShiftClusterResponse>;
 
 export type DeleteOpenShiftClusterError = AzureOpError;
 /** Deletes a OpenShift cluster with the specified subscription, resource group and resource name. The operation returns nothing. */

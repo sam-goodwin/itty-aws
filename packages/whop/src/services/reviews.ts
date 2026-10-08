@@ -214,9 +214,8 @@ export const ReviewListItemAttachmentsItem = ReviewAttachmentsItem;
 
 /** A list of files and media attached to the review. */
 export type ReviewListItemAttachmentsList = Array<ReviewAttachmentsItem>;
-export const ReviewListItemAttachmentsList = /*@__PURE__*/ S.Array(
-  ReviewAttachmentsItem,
-) as any as S.Schema<ReviewListItemAttachmentsList>;
+export const ReviewListItemAttachmentsList =
+  ReviewAttachmentsList as any as S.Schema<ReviewListItemAttachmentsList>;
 
 /** The user account of the person who wrote this review. */
 export type ReviewListItemUser = ReviewUser;

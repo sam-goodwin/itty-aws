@@ -1339,13 +1339,8 @@ export interface CustomerUnclaimDeviceRequest {
   /** Required. The device to unclaim. There are custom validations in UnclaimDeviceRequestValidator. */
   device?: DeviceReference;
 }
-export const CustomerUnclaimDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    device: S.optional(DeviceReference),
-  }),
-).annotate({
-  identifier: "CustomerUnclaimDeviceRequest",
-}) as any as S.Schema<CustomerUnclaimDeviceRequest>;
+export const CustomerUnclaimDeviceRequest =
+  CustomerRemoveConfigurationRequest as any as S.Schema<CustomerUnclaimDeviceRequest>;
 
 export interface UnclaimCustomersDevicesRequest {
   /** Required. The customer managing the device. An API resource name in the format `customers/[CUSTOMER_ID]`. */

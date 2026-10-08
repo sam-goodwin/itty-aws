@@ -146,14 +146,11 @@ export const InputList = /*@__PURE__*/ S.Array(S.String);
 export type AttributeName = string;
 export type AttributeValue = string | redacted.Redacted<string>;
 export type Context = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const Context = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+export const Context = FilterValues as any as S.Schema<Context>;
 export type DatasetType = string;
 export type ColumnName = string;
 export type ColumnNamesList = string[];
-export const ColumnNamesList = /*@__PURE__*/ S.Array(S.String);
+export const ColumnNamesList = InputList as any as S.Schema<ColumnNamesList>;
 export type MetadataColumns = { [key: string]: string[] | undefined };
 export const MetadataColumns = /*@__PURE__*/ S.Record(
   S.String,
@@ -189,7 +186,7 @@ export type Metadata = { [key: string]: string | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Reason = string;
 export type ReasonList = string[];
-export const ReasonList = /*@__PURE__*/ S.Array(S.String);
+export const ReasonList = InputList as any as S.Schema<ReasonList>;
 export interface PredictedItem {
   itemId?: string;
   score?: number;

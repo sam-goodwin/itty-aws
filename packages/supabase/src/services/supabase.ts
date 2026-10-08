@@ -80,9 +80,7 @@ export const JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6It
 export type JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List>;
 
 export interface JitAccessResponseOutputUserRolesItemAllowedNetworks {
   allowed_cidrs?: JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList;
@@ -185,9 +183,8 @@ export const UpdateCustomHostnameResponseOutputDataErrorsList = /*@__PURE__*/ S.
 ) as any as S.Schema<UpdateCustomHostnameResponseOutputDataErrorsList>;
 
 export type UpdateCustomHostnameResponseOutputDataMessagesList = Array<JsonValueOutput>;
-export const UpdateCustomHostnameResponseOutputDataMessagesList = /*@__PURE__*/ S.Array(
-  JsonValueOutput,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataMessagesList>;
+export const UpdateCustomHostnameResponseOutputDataMessagesList =
+  UpdateCustomHostnameResponseOutputDataErrorsList as any as S.Schema<UpdateCustomHostnameResponseOutputDataMessagesList>;
 
 export interface UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsItem {
   txt_name?: string;
@@ -448,9 +445,8 @@ export const V1ApplyProjectAddonRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ApplyProjectAddonRequest>;
 
 export interface V1ApplyProjectAddonResponse {}
-export const V1ApplyProjectAddonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1ApplyProjectAddonResponse",
-}) as any as S.Schema<V1ApplyProjectAddonResponse>;
+export const V1ApplyProjectAddonResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1ApplyProjectAddonResponse>;
 
 export interface V1AuthorizeJitAccessRequest {
   /** Project ref */
@@ -476,9 +472,7 @@ export const JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrs
 export type JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList>;
 
 export type JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
@@ -488,9 +482,7 @@ export const JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrs
 export type JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List>;
 
 export interface JitAuthorizeAccessResponseOutputUserRoleAllowedNetworks {
   allowed_cidrs?: JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList;
@@ -579,9 +571,8 @@ export const V1AuthorizeUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1AuthorizeUserRequest" }) as any as S.Schema<V1AuthorizeUserRequest>;
 
 export interface V1AuthorizeUserResponse {}
-export const V1AuthorizeUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1AuthorizeUserResponse",
-}) as any as S.Schema<V1AuthorizeUserResponse>;
+export const V1AuthorizeUserResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1AuthorizeUserResponse>;
 
 export interface CreateSecretBodyItem {
   /** Secret name must not start with the SUPABASE_ prefix. */
@@ -615,9 +606,8 @@ export const V1BulkCreateSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1BulkCreateSecretsRequest>;
 
 export interface V1BulkCreateSecretsResponse {}
-export const V1BulkCreateSecretsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1BulkCreateSecretsResponse",
-}) as any as S.Schema<V1BulkCreateSecretsResponse>;
+export const V1BulkCreateSecretsResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1BulkCreateSecretsResponse>;
 
 export type DeleteSecretsBody = Array<string>;
 export const DeleteSecretsBody = /*@__PURE__*/ S.Array(
@@ -639,9 +629,8 @@ export const V1BulkDeleteSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1BulkDeleteSecretsRequest>;
 
 export interface V1BulkDeleteSecretsResponse {}
-export const V1BulkDeleteSecretsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1BulkDeleteSecretsResponse",
-}) as any as S.Schema<V1BulkDeleteSecretsResponse>;
+export const V1BulkDeleteSecretsResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1BulkDeleteSecretsResponse>;
 
 export type BulkUpdateFunctionBodyItemStatus = "ACTIVE" | "REMOVED" | "THROTTLED";
 export const BulkUpdateFunctionBodyItemStatus = S.String;
@@ -819,11 +808,8 @@ export const V1ClaimProjectForOrganizationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<V1ClaimProjectForOrganizationRequest>;
 
 export interface V1ClaimProjectForOrganizationResponse {}
-export const V1ClaimProjectForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1ClaimProjectForOrganizationResponse",
-}) as any as S.Schema<V1ClaimProjectForOrganizationResponse>;
+export const V1ClaimProjectForOrganizationResponse =
+  V1CancelAProjectRestorationResponse as any as S.Schema<V1ClaimProjectForOrganizationResponse>;
 
 export type V1CreateABranchRequestDesiredInstanceSize =
   | "pico"
@@ -1222,14 +1208,12 @@ export type V1CreateASsoProviderRequestType = "saml";
 export const V1CreateASsoProviderRequestType = S.String;
 
 export type V1CreateASsoProviderRequestDomainsList = Array<string>;
-export const V1CreateASsoProviderRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1CreateASsoProviderRequestDomainsList>;
+export const V1CreateASsoProviderRequestDomainsList =
+  DeleteSecretsBody as any as S.Schema<V1CreateASsoProviderRequestDomainsList>;
 
 export type V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList = Array<string>;
-export const V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList>;
+export const V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList =
+  DeleteSecretsBody as any as S.Schema<V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList>;
 
 export type V1CreateASsoProviderRequestAttributeMappingKeysValueDefault =
   | unknown
@@ -1311,9 +1295,7 @@ export const V1CreateASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
 export const CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
 
 export type CreateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
@@ -1532,10 +1514,8 @@ export type ApiKeyResponseOutputType = "legacy" | "publishable" | "secret";
 export const ApiKeyResponseOutputType = S.String;
 
 export type ApiKeyResponseOutputSecretJwtTemplateMap = { [key: string]: unknown | undefined };
-export const ApiKeyResponseOutputSecretJwtTemplateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ApiKeyResponseOutputSecretJwtTemplateMap>;
+export const ApiKeyResponseOutputSecretJwtTemplateMap =
+  V1CreateProjectApiKeyRequestSecretJwtTemplateMap as any as S.Schema<ApiKeyResponseOutputSecretJwtTemplateMap>;
 
 export interface ApiKeyResponseOutput {
   api_key?: T.Sensitive | null;
@@ -1929,11 +1909,8 @@ export const V1DeactivateVanitySubdomainConfigRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<V1DeactivateVanitySubdomainConfigRequest>;
 
 export interface V1DeactivateVanitySubdomainConfigResponse {}
-export const V1DeactivateVanitySubdomainConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1DeactivateVanitySubdomainConfigResponse",
-}) as any as S.Schema<V1DeactivateVanitySubdomainConfigResponse>;
+export const V1DeactivateVanitySubdomainConfigResponse =
+  V1CancelAProjectRestorationResponse as any as S.Schema<V1DeactivateVanitySubdomainConfigResponse>;
 
 export interface V1DeleteABranchRequest {
   /** Branch ref or deprecated branch ID */
@@ -1978,9 +1955,8 @@ export const V1DeleteAFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1DeleteAFunctionRequest" }) as any as S.Schema<V1DeleteAFunctionRequest>;
 
 export interface V1DeleteAFunctionResponse {}
-export const V1DeleteAFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1DeleteAFunctionResponse",
-}) as any as S.Schema<V1DeleteAFunctionResponse>;
+export const V1DeleteAFunctionResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteAFunctionResponse>;
 
 export interface V1DeleteAProjectRequest {
   /** Project ref */
@@ -2029,9 +2005,7 @@ export const V1DeleteASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
 export const DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
 
 export type DeleteProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
@@ -2109,9 +2083,8 @@ export const DeleteProviderResponseOutputDomainsItem = CreateProviderResponseOut
 
 export type DeleteProviderResponseOutputDomainsList =
   Array<CreateProviderResponseOutputDomainsItem>;
-export const DeleteProviderResponseOutputDomainsList = /*@__PURE__*/ S.Array(
-  CreateProviderResponseOutputDomainsItem,
-) as any as S.Schema<DeleteProviderResponseOutputDomainsList>;
+export const DeleteProviderResponseOutputDomainsList =
+  CreateProviderResponseOutputDomainsList as any as S.Schema<DeleteProviderResponseOutputDomainsList>;
 
 export interface DeleteProviderResponseOutput {
   id: string;
@@ -2148,9 +2121,8 @@ export const V1DeleteHostnameConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1DeleteHostnameConfigRequest>;
 
 export interface V1DeleteHostnameConfigResponse {}
-export const V1DeleteHostnameConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1DeleteHostnameConfigResponse",
-}) as any as S.Schema<V1DeleteHostnameConfigResponse>;
+export const V1DeleteHostnameConfigResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteHostnameConfigResponse>;
 
 export interface V1DeleteInviteExternalJitAccessRequest {
   /** Project ref */
@@ -2173,11 +2145,8 @@ export const V1DeleteInviteExternalJitAccessRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<V1DeleteInviteExternalJitAccessRequest>;
 
 export interface V1DeleteInviteExternalJitAccessResponse {}
-export const V1DeleteInviteExternalJitAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1DeleteInviteExternalJitAccessResponse",
-}) as any as S.Schema<V1DeleteInviteExternalJitAccessResponse>;
+export const V1DeleteInviteExternalJitAccessResponse =
+  V1CancelAProjectRestorationResponse as any as S.Schema<V1DeleteInviteExternalJitAccessResponse>;
 
 export interface V1DeleteJitAccessRequest {
   /** Project ref */
@@ -2194,9 +2163,8 @@ export const V1DeleteJitAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1DeleteJitAccessRequest" }) as any as S.Schema<V1DeleteJitAccessRequest>;
 
 export interface V1DeleteJitAccessResponse {}
-export const V1DeleteJitAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1DeleteJitAccessResponse",
-}) as any as S.Schema<V1DeleteJitAccessResponse>;
+export const V1DeleteJitAccessResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteJitAccessResponse>;
 
 export interface V1DeleteLoginRolesRequest {
   /** Project ref */
@@ -2226,9 +2194,8 @@ export const DeleteRolesResponseOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP addresses to unban. */
 export type V1DeleteNetworkBansRequestIpv4AddressesList = Array<string>;
-export const V1DeleteNetworkBansRequestIpv4AddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1DeleteNetworkBansRequestIpv4AddressesList>;
+export const V1DeleteNetworkBansRequestIpv4AddressesList =
+  DeleteSecretsBody as any as S.Schema<V1DeleteNetworkBansRequestIpv4AddressesList>;
 
 export interface V1DeleteNetworkBansRequest {
   /** Project ref */
@@ -2251,9 +2218,8 @@ export const V1DeleteNetworkBansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1DeleteNetworkBansRequest>;
 
 export interface V1DeleteNetworkBansResponse {}
-export const V1DeleteNetworkBansResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1DeleteNetworkBansResponse",
-}) as any as S.Schema<V1DeleteNetworkBansResponse>;
+export const V1DeleteNetworkBansResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteNetworkBansResponse>;
 
 export interface V1DeleteProjectApiKeyRequest {
   /** Project ref */
@@ -2290,11 +2256,8 @@ export const V1DeleteProjectClaimTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1DeleteProjectClaimTokenRequest>;
 
 export interface V1DeleteProjectClaimTokenResponse {}
-export const V1DeleteProjectClaimTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1DeleteProjectClaimTokenResponse",
-}) as any as S.Schema<V1DeleteProjectClaimTokenResponse>;
+export const V1DeleteProjectClaimTokenResponse =
+  V1CancelAProjectRestorationResponse as any as S.Schema<V1DeleteProjectClaimTokenResponse>;
 
 export interface V1DeleteProjectTpaIntegrationRequest {
   /** Project ref */
@@ -2317,14 +2280,12 @@ export const V1DeleteProjectTpaIntegrationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<V1DeleteProjectTpaIntegrationRequest>;
 
 export type V1DeployAFunctionRequestFileList = Array<string>;
-export const V1DeployAFunctionRequestFileList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1DeployAFunctionRequestFileList>;
+export const V1DeployAFunctionRequestFileList =
+  DeleteSecretsBody as any as S.Schema<V1DeployAFunctionRequestFileList>;
 
 export type V1DeployAFunctionRequestMetadataStaticPatternsList = Array<string>;
-export const V1DeployAFunctionRequestMetadataStaticPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1DeployAFunctionRequestMetadataStaticPatternsList>;
+export const V1DeployAFunctionRequestMetadataStaticPatternsList =
+  DeleteSecretsBody as any as S.Schema<V1DeployAFunctionRequestMetadataStaticPatternsList>;
 
 export interface V1DeployAFunctionRequestMetadata {
   entrypoint_path: string;
@@ -2422,9 +2383,8 @@ export const V1DiffABranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1DiffABranchRequest" }) as any as S.Schema<V1DiffABranchRequest>;
 
 export interface V1DiffABranchResponse {}
-export const V1DiffABranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1DiffABranchResponse",
-}) as any as S.Schema<V1DiffABranchResponse>;
+export const V1DiffABranchResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1DiffABranchResponse>;
 
 export interface V1DisablePreviewBranchingRequest {
   /** Project ref */
@@ -2439,11 +2399,8 @@ export const V1DisablePreviewBranchingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1DisablePreviewBranchingRequest>;
 
 export interface V1DisablePreviewBranchingResponse {}
-export const V1DisablePreviewBranchingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1DisablePreviewBranchingResponse",
-}) as any as S.Schema<V1DisablePreviewBranchingResponse>;
+export const V1DisablePreviewBranchingResponse =
+  V1CancelAProjectRestorationResponse as any as S.Schema<V1DisablePreviewBranchingResponse>;
 
 export interface V1DisableReadonlyModeTemporarilyRequest {
   /** Project ref */
@@ -2460,11 +2417,8 @@ export const V1DisableReadonlyModeTemporarilyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<V1DisableReadonlyModeTemporarilyRequest>;
 
 export interface V1DisableReadonlyModeTemporarilyResponse {}
-export const V1DisableReadonlyModeTemporarilyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1DisableReadonlyModeTemporarilyResponse",
-}) as any as S.Schema<V1DisableReadonlyModeTemporarilyResponse>;
+export const V1DisableReadonlyModeTemporarilyResponse =
+  V1CancelAProjectRestorationResponse as any as S.Schema<V1DisableReadonlyModeTemporarilyResponse>;
 
 export interface V1EnableDatabaseWebhookRequest {
   /** Project ref */
@@ -2731,9 +2685,8 @@ export const V1GetActionRunLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1GetActionRunLogsRequest>;
 
 export interface V1GetActionRunLogsResponse {}
-export const V1GetActionRunLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1GetActionRunLogsResponse",
-}) as any as S.Schema<V1GetActionRunLogsResponse>;
+export const V1GetActionRunLogsResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1GetActionRunLogsResponse>;
 
 export interface V1GetAFunctionRequest {
   /** Project ref */
@@ -3023,14 +2976,12 @@ export const V1GetAMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1GetAMigrationRequest" }) as any as S.Schema<V1GetAMigrationRequest>;
 
 export type V1GetMigrationResponseOutputStatementsList = Array<string>;
-export const V1GetMigrationResponseOutputStatementsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1GetMigrationResponseOutputStatementsList>;
+export const V1GetMigrationResponseOutputStatementsList =
+  DeleteSecretsBody as any as S.Schema<V1GetMigrationResponseOutputStatementsList>;
 
 export type V1GetMigrationResponseOutputRollbackList = Array<string>;
-export const V1GetMigrationResponseOutputRollbackList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1GetMigrationResponseOutputRollbackList>;
+export const V1GetMigrationResponseOutputRollbackList =
+  DeleteSecretsBody as any as S.Schema<V1GetMigrationResponseOutputRollbackList>;
 
 export interface V1GetMigrationResponseOutput {
   version: string;
@@ -3230,9 +3181,7 @@ export const V1GetASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
 export const GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
 
 export type GetProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
@@ -3308,9 +3257,8 @@ export type GetProviderResponseOutputDomainsItem = CreateProviderResponseOutputD
 export const GetProviderResponseOutputDomainsItem = CreateProviderResponseOutputDomainsItem;
 
 export type GetProviderResponseOutputDomainsList = Array<CreateProviderResponseOutputDomainsItem>;
-export const GetProviderResponseOutputDomainsList = /*@__PURE__*/ S.Array(
-  CreateProviderResponseOutputDomainsItem,
-) as any as S.Schema<GetProviderResponseOutputDomainsList>;
+export const GetProviderResponseOutputDomainsList =
+  CreateProviderResponseOutputDomainsList as any as S.Schema<GetProviderResponseOutputDomainsList>;
 
 export interface GetProviderResponseOutput {
   id: string;
@@ -4262,11 +4210,8 @@ export const V1GetDatabaseOpenapiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1GetDatabaseOpenapiRequest>;
 
 export type V1GetDatabaseOpenapiResponse = unknown;
-export const V1GetDatabaseOpenapiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "V1GetDatabaseOpenapiResponse",
-}) as any as S.Schema<V1GetDatabaseOpenapiResponse>;
+export const V1GetDatabaseOpenapiResponse =
+  V1GetAFunctionBodyResponse as any as S.Schema<V1GetDatabaseOpenapiResponse>;
 
 export interface V1GetDiskUtilizationRequest {
   /** Project ref */
@@ -4425,14 +4370,12 @@ export type NetworkRestrictionsResponseOutputEntitlement = "disallowed" | "allow
 export const NetworkRestrictionsResponseOutputEntitlement = S.String;
 
 export type NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList = Array<string>;
-export const NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList>;
+export const NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList =
+  DeleteSecretsBody as any as S.Schema<NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList>;
 
 export type NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List = Array<string>;
-export const NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List>;
+export const NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List =
+  DeleteSecretsBody as any as S.Schema<NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List>;
 
 /** At any given point in time, this is the config that the user has requested be applied to their project. The `status` field indicates if it has been applied to the project, or is pending. When an updated config is received, the applied config is moved to `old_config`. */
 export interface NetworkRestrictionsResponseOutputConfig {
@@ -4449,28 +4392,20 @@ export const NetworkRestrictionsResponseOutputConfig = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<NetworkRestrictionsResponseOutputConfig>;
 
 export type NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList = Array<string>;
-export const NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList>;
+export const NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList =
+  DeleteSecretsBody as any as S.Schema<NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList>;
 
 export type NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List = Array<string>;
-export const NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List>;
+export const NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List =
+  DeleteSecretsBody as any as S.Schema<NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List>;
 
 /** Populated when a new config has been received, but not registered as successfully applied to a project. */
 export interface NetworkRestrictionsResponseOutputOldConfig {
   dbAllowedCidrs?: NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList;
   dbAllowedCidrsV6?: NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List;
 }
-export const NetworkRestrictionsResponseOutputOldConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbAllowedCidrs: S.optional(NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList),
-    dbAllowedCidrsV6: S.optional(NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List),
-  }),
-).annotate({
-  identifier: "NetworkRestrictionsResponseOutputOldConfig",
-}) as any as S.Schema<NetworkRestrictionsResponseOutputOldConfig>;
+export const NetworkRestrictionsResponseOutputOldConfig =
+  NetworkRestrictionsResponseOutputConfig as any as S.Schema<NetworkRestrictionsResponseOutputOldConfig>;
 
 export type NetworkRestrictionsResponseOutputStatus = "stored" | "applied";
 export const NetworkRestrictionsResponseOutputStatus = S.String;
@@ -4631,9 +4566,7 @@ export const V1ListEntitlementsResponseOutputEntitlementsItemConfigCase1 = /*@__
 
 export type V1ListEntitlementsResponseOutputEntitlementsItemConfigCase2SetList = Array<string>;
 export const V1ListEntitlementsResponseOutputEntitlementsItemConfigCase2SetList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<V1ListEntitlementsResponseOutputEntitlementsItemConfigCase2SetList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<V1ListEntitlementsResponseOutputEntitlementsItemConfigCase2SetList>;
 
 export interface V1ListEntitlementsResponseOutputEntitlementsItemConfigCase2 {
   enabled: boolean;
@@ -4751,9 +4684,8 @@ export const OrganizationProjectClaimResponseOutputPreviewErrorsItem =
 
 export type OrganizationProjectClaimResponseOutputPreviewErrorsList =
   Array<OrganizationProjectClaimResponseOutputPreviewWarningsItem>;
-export const OrganizationProjectClaimResponseOutputPreviewErrorsList = /*@__PURE__*/ S.Array(
-  OrganizationProjectClaimResponseOutputPreviewWarningsItem,
-) as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewErrorsList>;
+export const OrganizationProjectClaimResponseOutputPreviewErrorsList =
+  OrganizationProjectClaimResponseOutputPreviewWarningsList as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewErrorsList>;
 
 export type OrganizationProjectClaimResponseOutputPreviewInfoItem =
   OrganizationProjectClaimResponseOutputPreviewWarningsItem;
@@ -4762,9 +4694,8 @@ export const OrganizationProjectClaimResponseOutputPreviewInfoItem =
 
 export type OrganizationProjectClaimResponseOutputPreviewInfoList =
   Array<OrganizationProjectClaimResponseOutputPreviewWarningsItem>;
-export const OrganizationProjectClaimResponseOutputPreviewInfoList = /*@__PURE__*/ S.Array(
-  OrganizationProjectClaimResponseOutputPreviewWarningsItem,
-) as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewInfoList>;
+export const OrganizationProjectClaimResponseOutputPreviewInfoList =
+  OrganizationProjectClaimResponseOutputPreviewWarningsList as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewInfoList>;
 
 export interface OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitItem {
   name: string;
@@ -5303,30 +5234,23 @@ export const ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsList =
 
 export type ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList = Array<string>;
 export const ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList>;
 
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList = Array<string>;
-export const ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList>;
+export const ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList =
+  DeleteSecretsBody as any as S.Schema<ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList>;
 
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList = Array<string>;
 export const ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList>;
 
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList =
   Array<string>;
 export const ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList>;
 
 export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0Type =
   "objects_depending_on_pg_cron";
@@ -5335,9 +5259,7 @@ export const ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0Typ
 export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0DependentsList =
   Array<string>;
 export const ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0DependentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0DependentsList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0DependentsList>;
 
 export interface ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0 {
   type: ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0Type;
@@ -6323,9 +6245,8 @@ export const V1GetUsageApiCountResponseOutputErrorCase1ErrorsItem =
 
 export type V1GetUsageApiCountResponseOutputErrorCase1ErrorsList =
   Array<AnalyticsResponseOutputErrorCase1ErrorsItem>;
-export const V1GetUsageApiCountResponseOutputErrorCase1ErrorsList = /*@__PURE__*/ S.Array(
-  AnalyticsResponseOutputErrorCase1ErrorsItem,
-) as any as S.Schema<V1GetUsageApiCountResponseOutputErrorCase1ErrorsList>;
+export const V1GetUsageApiCountResponseOutputErrorCase1ErrorsList =
+  AnalyticsResponseOutputErrorCase1ErrorsList as any as S.Schema<V1GetUsageApiCountResponseOutputErrorCase1ErrorsList>;
 
 export interface V1GetUsageApiCountResponseOutputErrorCase1 {
   code: number;
@@ -6333,16 +6254,8 @@ export interface V1GetUsageApiCountResponseOutputErrorCase1 {
   message: string;
   status: string;
 }
-export const V1GetUsageApiCountResponseOutputErrorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    errors: V1GetUsageApiCountResponseOutputErrorCase1ErrorsList,
-    message: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "V1GetUsageApiCountResponseOutputErrorCase1",
-}) as any as S.Schema<V1GetUsageApiCountResponseOutputErrorCase1>;
+export const V1GetUsageApiCountResponseOutputErrorCase1 =
+  AnalyticsResponseOutputErrorCase1 as any as S.Schema<V1GetUsageApiCountResponseOutputErrorCase1>;
 
 export type V1GetUsageApiCountResponseOutputError =
   | string
@@ -6406,9 +6319,8 @@ export const V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsItem =
 
 export type V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsList =
   Array<AnalyticsResponseOutputErrorCase1ErrorsItem>;
-export const V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsList = /*@__PURE__*/ S.Array(
-  AnalyticsResponseOutputErrorCase1ErrorsItem,
-) as any as S.Schema<V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsList>;
+export const V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsList =
+  AnalyticsResponseOutputErrorCase1ErrorsList as any as S.Schema<V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsList>;
 
 export interface V1GetUsageApiRequestsCountResponseOutputErrorCase1 {
   code: number;
@@ -6416,16 +6328,8 @@ export interface V1GetUsageApiRequestsCountResponseOutputErrorCase1 {
   message: string;
   status: string;
 }
-export const V1GetUsageApiRequestsCountResponseOutputErrorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    errors: V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsList,
-    message: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "V1GetUsageApiRequestsCountResponseOutputErrorCase1",
-}) as any as S.Schema<V1GetUsageApiRequestsCountResponseOutputErrorCase1>;
+export const V1GetUsageApiRequestsCountResponseOutputErrorCase1 =
+  AnalyticsResponseOutputErrorCase1 as any as S.Schema<V1GetUsageApiRequestsCountResponseOutputErrorCase1>;
 
 export type V1GetUsageApiRequestsCountResponseOutputError =
   | string
@@ -6914,9 +6818,7 @@ export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidr
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList>;
 
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
@@ -6926,9 +6828,7 @@ export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidr
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List>;
 
 export interface V1InviteExternalJitAccessRequestRolesItemAllowedNetworks {
   allowed_cidrs?: V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList;
@@ -6995,9 +6895,7 @@ export const InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllo
 export type InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList>;
 
 export type InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
@@ -7007,9 +6905,7 @@ export const InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllo
 export type InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List>;
 
 export interface InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks {
   allowed_cidrs?: InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList;
@@ -7364,9 +7260,8 @@ export const V1ListAllNetworkBansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ListAllNetworkBansRequest>;
 
 export type NetworkBanResponseOutputBannedIpv4AddressesList = Array<string>;
-export const NetworkBanResponseOutputBannedIpv4AddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkBanResponseOutputBannedIpv4AddressesList>;
+export const NetworkBanResponseOutputBannedIpv4AddressesList =
+  DeleteSecretsBody as any as S.Schema<NetworkBanResponseOutputBannedIpv4AddressesList>;
 
 export interface NetworkBanResponseOutput {
   banned_ipv4_addresses: NetworkBanResponseOutputBannedIpv4AddressesList;
@@ -7595,9 +7490,7 @@ export const V1ListAllSsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList =
   Array<string>;
 export const ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList>;
 
 export type ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueDefault =
   | unknown
@@ -7679,9 +7572,8 @@ export const ListProvidersResponseOutputItemsItemDomainsItem =
 
 export type ListProvidersResponseOutputItemsItemDomainsList =
   Array<CreateProviderResponseOutputDomainsItem>;
-export const ListProvidersResponseOutputItemsItemDomainsList = /*@__PURE__*/ S.Array(
-  CreateProviderResponseOutputDomainsItem,
-) as any as S.Schema<ListProvidersResponseOutputItemsItemDomainsList>;
+export const ListProvidersResponseOutputItemsItemDomainsList =
+  CreateProviderResponseOutputDomainsList as any as S.Schema<ListProvidersResponseOutputItemsItemDomainsList>;
 
 export interface ListProvidersResponseOutputItemsItem {
   id: string;
@@ -7803,9 +7695,7 @@ export const JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetwor
 export type JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList>;
 
 export type JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
@@ -7815,27 +7705,14 @@ export const JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetwor
 export type JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List>;
 
 export interface JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworks {
   allowed_cidrs?: JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList;
   allowed_cidrs_v6?: JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List;
 }
 export const JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworks =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowed_cidrs: S.optional(
-        JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList,
-      ),
-      allowed_cidrs_v6: S.optional(
-        JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsV6List,
-      ),
-    }),
-  ).annotate({
-    identifier: "JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworks",
-  }) as any as S.Schema<JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworks>;
+  InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks as any as S.Schema<JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworks>;
 
 export interface JitListAccessResponseOutputItemsItemCase0UserRolesItem {
   role: string;
@@ -7889,9 +7766,7 @@ export const JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetwor
 export type JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList>;
 
 export type JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
@@ -7901,27 +7776,14 @@ export const JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetwor
 export type JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List>;
 
 export interface JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworks {
   allowed_cidrs?: JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList;
   allowed_cidrs_v6?: JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List;
 }
 export const JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworks =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowed_cidrs: S.optional(
-        JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsList,
-      ),
-      allowed_cidrs_v6: S.optional(
-        JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworksAllowedCidrsV6List,
-      ),
-    }),
-  ).annotate({
-    identifier: "JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworks",
-  }) as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworks>;
+  InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworks>;
 
 export interface JitListAccessResponseOutputItemsItemCase1UserRolesItem {
   role: string;
@@ -7929,24 +7791,13 @@ export interface JitListAccessResponseOutputItemsItemCase1UserRolesItem {
   allowed_networks?: JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworks;
   branches_only?: boolean;
 }
-export const JitListAccessResponseOutputItemsItemCase1UserRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-    expires_at: S.optional(S.Number),
-    allowed_networks: S.optional(
-      JitListAccessResponseOutputItemsItemCase1UserRolesItemAllowedNetworks,
-    ),
-    branches_only: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "JitListAccessResponseOutputItemsItemCase1UserRolesItem",
-}) as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItem>;
+export const JitListAccessResponseOutputItemsItemCase1UserRolesItem =
+  JitListAccessResponseOutputItemsItemCase0UserRolesItem as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesItem>;
 
 export type JitListAccessResponseOutputItemsItemCase1UserRolesList =
   Array<JitListAccessResponseOutputItemsItemCase1UserRolesItem>;
-export const JitListAccessResponseOutputItemsItemCase1UserRolesList = /*@__PURE__*/ S.Array(
-  JitListAccessResponseOutputItemsItemCase1UserRolesItem,
-) as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesList>;
+export const JitListAccessResponseOutputItemsItemCase1UserRolesList =
+  JitListAccessResponseOutputItemsItemCase0UserRolesList as any as S.Schema<JitListAccessResponseOutputItemsItemCase1UserRolesList>;
 
 export interface JitListAccessResponseOutputItemsItemCase1 {
   user_id: unknown | null;
@@ -8499,9 +8350,8 @@ export const V1ModifyDatabaseDiskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ModifyDatabaseDiskRequest>;
 
 export interface V1ModifyDatabaseDiskResponse {}
-export const V1ModifyDatabaseDiskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1ModifyDatabaseDiskResponse",
-}) as any as S.Schema<V1ModifyDatabaseDiskResponse>;
+export const V1ModifyDatabaseDiskResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1ModifyDatabaseDiskResponse>;
 
 export type V1OauthAuthorizeProjectClaimRequestResponseType = "code" | "token" | "id_token token";
 export const V1OauthAuthorizeProjectClaimRequestResponseType = S.String;
@@ -8538,11 +8388,8 @@ export const V1OauthAuthorizeProjectClaimRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1OauthAuthorizeProjectClaimRequest>;
 
 export interface V1OauthAuthorizeProjectClaimResponse {}
-export const V1OauthAuthorizeProjectClaimResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1OauthAuthorizeProjectClaimResponse",
-}) as any as S.Schema<V1OauthAuthorizeProjectClaimResponse>;
+export const V1OauthAuthorizeProjectClaimResponse =
+  V1CancelAProjectRestorationResponse as any as S.Schema<V1OauthAuthorizeProjectClaimResponse>;
 
 export interface V1PatchAMigrationRequest {
   /** Project ref */
@@ -8563,55 +8410,38 @@ export const V1PatchAMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1PatchAMigrationRequest" }) as any as S.Schema<V1PatchAMigrationRequest>;
 
 export interface V1PatchAMigrationResponse {}
-export const V1PatchAMigrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1PatchAMigrationResponse",
-}) as any as S.Schema<V1PatchAMigrationResponse>;
+export const V1PatchAMigrationResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1PatchAMigrationResponse>;
 
 export type V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList = Array<string>;
-export const V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList>;
+export const V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList =
+  DeleteSecretsBody as any as S.Schema<V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList>;
 
 export type V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List = Array<string>;
-export const V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List>;
+export const V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List =
+  DeleteSecretsBody as any as S.Schema<V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List>;
 
 export interface V1PatchNetworkRestrictionsRequestAdd {
   dbAllowedCidrs?: V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList;
   dbAllowedCidrsV6?: V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List;
 }
-export const V1PatchNetworkRestrictionsRequestAdd = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbAllowedCidrs: S.optional(V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList),
-    dbAllowedCidrsV6: S.optional(V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List),
-  }),
-).annotate({
-  identifier: "V1PatchNetworkRestrictionsRequestAdd",
-}) as any as S.Schema<V1PatchNetworkRestrictionsRequestAdd>;
+export const V1PatchNetworkRestrictionsRequestAdd =
+  NetworkRestrictionsResponseOutputConfig as any as S.Schema<V1PatchNetworkRestrictionsRequestAdd>;
 
 export type V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList = Array<string>;
-export const V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList>;
+export const V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList =
+  DeleteSecretsBody as any as S.Schema<V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList>;
 
 export type V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List = Array<string>;
-export const V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List>;
+export const V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List =
+  DeleteSecretsBody as any as S.Schema<V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List>;
 
 export interface V1PatchNetworkRestrictionsRequestRemove {
   dbAllowedCidrs?: V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList;
   dbAllowedCidrsV6?: V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List;
 }
-export const V1PatchNetworkRestrictionsRequestRemove = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbAllowedCidrs: S.optional(V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList),
-    dbAllowedCidrsV6: S.optional(V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List),
-  }),
-).annotate({
-  identifier: "V1PatchNetworkRestrictionsRequestRemove",
-}) as any as S.Schema<V1PatchNetworkRestrictionsRequestRemove>;
+export const V1PatchNetworkRestrictionsRequestRemove =
+  NetworkRestrictionsResponseOutputConfig as any as S.Schema<V1PatchNetworkRestrictionsRequestRemove>;
 
 export interface V1PatchNetworkRestrictionsRequest {
   /** Project ref */
@@ -8739,9 +8569,8 @@ export const V1PauseAProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1PauseAProjectRequest" }) as any as S.Schema<V1PauseAProjectRequest>;
 
 export interface V1PauseAProjectResponse {}
-export const V1PauseAProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1PauseAProjectResponse",
-}) as any as S.Schema<V1PauseAProjectResponse>;
+export const V1PauseAProjectResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1PauseAProjectResponse>;
 
 export interface V1PushABranchRequest {
   /** Branch ref or deprecated branch ID */
@@ -8756,9 +8585,8 @@ export const V1PushABranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1PushABranchRequest" }) as any as S.Schema<V1PushABranchRequest>;
 
 export type V1ReadOnlyQueryRequestParametersList = Array<unknown>;
-export const V1ReadOnlyQueryRequestParametersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<V1ReadOnlyQueryRequestParametersList>;
+export const V1ReadOnlyQueryRequestParametersList =
+  AnalyticsResponseOutputResultList as any as S.Schema<V1ReadOnlyQueryRequestParametersList>;
 
 export interface V1ReadOnlyQueryRequest {
   /** Project ref */
@@ -8777,9 +8605,8 @@ export const V1ReadOnlyQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1ReadOnlyQueryRequest" }) as any as S.Schema<V1ReadOnlyQueryRequest>;
 
 export interface V1ReadOnlyQueryResponse {}
-export const V1ReadOnlyQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1ReadOnlyQueryResponse",
-}) as any as S.Schema<V1ReadOnlyQueryResponse>;
+export const V1ReadOnlyQueryResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1ReadOnlyQueryResponse>;
 
 export interface V1RemoveAReadReplicaRequest {
   /** Project ref */
@@ -8796,9 +8623,8 @@ export const V1RemoveAReadReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1RemoveAReadReplicaRequest>;
 
 export interface V1RemoveAReadReplicaResponse {}
-export const V1RemoveAReadReplicaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RemoveAReadReplicaResponse",
-}) as any as S.Schema<V1RemoveAReadReplicaResponse>;
+export const V1RemoveAReadReplicaResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RemoveAReadReplicaResponse>;
 
 export interface V1RemoveProjectAddonRequest {
   /** Project ref */
@@ -8821,9 +8647,8 @@ export const V1RemoveProjectAddonRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1RemoveProjectAddonRequest>;
 
 export interface V1RemoveProjectAddonResponse {}
-export const V1RemoveProjectAddonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RemoveProjectAddonResponse",
-}) as any as S.Schema<V1RemoveProjectAddonResponse>;
+export const V1RemoveProjectAddonResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RemoveProjectAddonResponse>;
 
 export interface V1RemoveProjectSigningKeyRequest {
   /** Project ref */
@@ -8868,9 +8693,8 @@ export const V1RestartAProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1RestartAProjectRequest" }) as any as S.Schema<V1RestartAProjectRequest>;
 
 export interface V1RestartAProjectResponse {}
-export const V1RestartAProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RestartAProjectResponse",
-}) as any as S.Schema<V1RestartAProjectResponse>;
+export const V1RestartAProjectResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RestartAProjectResponse>;
 
 export interface V1RestoreABranchRequest {
   /** Branch ref or deprecated branch ID */
@@ -8907,9 +8731,8 @@ export const V1RestoreAProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1RestoreAProjectRequest" }) as any as S.Schema<V1RestoreAProjectRequest>;
 
 export interface V1RestoreAProjectResponse {}
-export const V1RestoreAProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RestoreAProjectResponse",
-}) as any as S.Schema<V1RestoreAProjectResponse>;
+export const V1RestoreAProjectResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RestoreAProjectResponse>;
 
 export interface V1RestorePhysicalBackupRequest {
   /** Project ref */
@@ -8928,9 +8751,8 @@ export const V1RestorePhysicalBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1RestorePhysicalBackupRequest>;
 
 export interface V1RestorePhysicalBackupResponse {}
-export const V1RestorePhysicalBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "V1RestorePhysicalBackupResponse" },
-) as any as S.Schema<V1RestorePhysicalBackupResponse>;
+export const V1RestorePhysicalBackupResponse =
+  V1EnableDatabaseWebhookResponse as any as S.Schema<V1RestorePhysicalBackupResponse>;
 
 export interface V1RestorePitrBackupRequest {
   /** Project ref */
@@ -8949,9 +8771,8 @@ export const V1RestorePitrBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1RestorePitrBackupRequest>;
 
 export interface V1RestorePitrBackupResponse {}
-export const V1RestorePitrBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RestorePitrBackupResponse",
-}) as any as S.Schema<V1RestorePitrBackupResponse>;
+export const V1RestorePitrBackupResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RestorePitrBackupResponse>;
 
 export interface V1RevokeTokenRequest {
   client_id: string;
@@ -8967,9 +8788,8 @@ export const V1RevokeTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1RevokeTokenRequest" }) as any as S.Schema<V1RevokeTokenRequest>;
 
 export interface V1RevokeTokenResponse {}
-export const V1RevokeTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RevokeTokenResponse",
-}) as any as S.Schema<V1RevokeTokenResponse>;
+export const V1RevokeTokenResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RevokeTokenResponse>;
 
 export interface V1RollbackMigrationsRequest {
   /** Project ref */
@@ -8987,14 +8807,12 @@ export const V1RollbackMigrationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1RollbackMigrationsRequest>;
 
 export interface V1RollbackMigrationsResponse {}
-export const V1RollbackMigrationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RollbackMigrationsResponse",
-}) as any as S.Schema<V1RollbackMigrationsResponse>;
+export const V1RollbackMigrationsResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RollbackMigrationsResponse>;
 
 export type V1RunAQueryRequestParametersList = Array<unknown>;
-export const V1RunAQueryRequestParametersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<V1RunAQueryRequestParametersList>;
+export const V1RunAQueryRequestParametersList =
+  AnalyticsResponseOutputResultList as any as S.Schema<V1RunAQueryRequestParametersList>;
 
 export interface V1RunAQueryRequest {
   /** Project ref */
@@ -9013,9 +8831,8 @@ export const V1RunAQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1RunAQueryRequest" }) as any as S.Schema<V1RunAQueryRequest>;
 
 export interface V1RunAQueryResponse {}
-export const V1RunAQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1RunAQueryResponse",
-}) as any as S.Schema<V1RunAQueryResponse>;
+export const V1RunAQueryResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1RunAQueryResponse>;
 
 export interface V1ScrapeProjectMetricsRequest {
   /** Project ref */
@@ -9032,9 +8849,8 @@ export const V1ScrapeProjectMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ScrapeProjectMetricsRequest>;
 
 export interface V1ScrapeProjectMetricsResponse {}
-export const V1ScrapeProjectMetricsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1ScrapeProjectMetricsResponse",
-}) as any as S.Schema<V1ScrapeProjectMetricsResponse>;
+export const V1ScrapeProjectMetricsResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1ScrapeProjectMetricsResponse>;
 
 /** Region you want your read replica to reside in */
 export type V1SetupAReadReplicaRequestReadReplicaRegion =
@@ -9074,9 +8890,8 @@ export const V1SetupAReadReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1SetupAReadReplicaRequest>;
 
 export interface V1SetupAReadReplicaResponse {}
-export const V1SetupAReadReplicaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1SetupAReadReplicaResponse",
-}) as any as S.Schema<V1SetupAReadReplicaResponse>;
+export const V1SetupAReadReplicaResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1SetupAReadReplicaResponse>;
 
 export interface V1ShutdownRealtimeRequest {
   /** Project ref */
@@ -9093,9 +8908,8 @@ export const V1ShutdownRealtimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1ShutdownRealtimeRequest>;
 
 export interface V1ShutdownRealtimeResponse {}
-export const V1ShutdownRealtimeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1ShutdownRealtimeResponse",
-}) as any as S.Schema<V1ShutdownRealtimeResponse>;
+export const V1ShutdownRealtimeResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1ShutdownRealtimeResponse>;
 
 export interface V1UndoRequest {
   /** Project ref */
@@ -9110,9 +8924,7 @@ export const V1UndoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1UndoRequest" }) as any as S.Schema<V1UndoRequest>;
 
 export interface V1UndoResponse {}
-export const V1UndoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1UndoResponse",
-}) as any as S.Schema<V1UndoResponse>;
+export const V1UndoResponse = V1ApplyAMigrationResponse as any as S.Schema<V1UndoResponse>;
 
 export type V1UpdateABranchConfigRequestStatus =
   | "CREATING_PROJECT"
@@ -9310,14 +9122,12 @@ export const V1UpdateAProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V1UpdateAProjectRequest" }) as any as S.Schema<V1UpdateAProjectRequest>;
 
 export type V1UpdateASsoProviderRequestDomainsList = Array<string>;
-export const V1UpdateASsoProviderRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1UpdateASsoProviderRequestDomainsList>;
+export const V1UpdateASsoProviderRequestDomainsList =
+  DeleteSecretsBody as any as S.Schema<V1UpdateASsoProviderRequestDomainsList>;
 
 export type V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList = Array<string>;
-export const V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList>;
+export const V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList =
+  DeleteSecretsBody as any as S.Schema<V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList>;
 
 export type V1UpdateASsoProviderRequestAttributeMappingKeysValueDefault =
   | unknown
@@ -9402,9 +9212,7 @@ export const V1UpdateASsoProviderRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
 export const UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
+  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
 
 export type UpdateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
@@ -9482,9 +9290,8 @@ export const UpdateProviderResponseOutputDomainsItem = CreateProviderResponseOut
 
 export type UpdateProviderResponseOutputDomainsList =
   Array<CreateProviderResponseOutputDomainsItem>;
-export const UpdateProviderResponseOutputDomainsList = /*@__PURE__*/ S.Array(
-  CreateProviderResponseOutputDomainsItem,
-) as any as S.Schema<UpdateProviderResponseOutputDomainsList>;
+export const UpdateProviderResponseOutputDomainsList =
+  CreateProviderResponseOutputDomainsList as any as S.Schema<UpdateProviderResponseOutputDomainsList>;
 
 export interface UpdateProviderResponseOutput {
   id: string;
@@ -10096,9 +9903,7 @@ export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem =
 export type V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList>;
 
 export type V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
@@ -10108,24 +9913,14 @@ export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item 
 export type V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
 export const V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
-  /*@__PURE__*/ S.Array(
-    JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem,
-  ) as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List>;
+  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List>;
 
 export interface V1UpdateJitAccessRequestRolesItemAllowedNetworks {
   allowed_cidrs?: V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList;
   allowed_cidrs_v6?: V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List;
 }
-export const V1UpdateJitAccessRequestRolesItemAllowedNetworks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowed_cidrs: S.optional(V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList),
-    allowed_cidrs_v6: S.optional(
-      V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List,
-    ),
-  }),
-).annotate({
-  identifier: "V1UpdateJitAccessRequestRolesItemAllowedNetworks",
-}) as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworks>;
+export const V1UpdateJitAccessRequestRolesItemAllowedNetworks =
+  JitAccessResponseOutputUserRolesItemAllowedNetworks as any as S.Schema<V1UpdateJitAccessRequestRolesItemAllowedNetworks>;
 
 export interface V1UpdateJitAccessRequestRolesItem {
   role: string;
@@ -10133,21 +9928,12 @@ export interface V1UpdateJitAccessRequestRolesItem {
   allowed_networks?: V1UpdateJitAccessRequestRolesItemAllowedNetworks;
   branches_only?: boolean;
 }
-export const V1UpdateJitAccessRequestRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-    expires_at: S.optional(S.Number),
-    allowed_networks: S.optional(V1UpdateJitAccessRequestRolesItemAllowedNetworks),
-    branches_only: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "V1UpdateJitAccessRequestRolesItem",
-}) as any as S.Schema<V1UpdateJitAccessRequestRolesItem>;
+export const V1UpdateJitAccessRequestRolesItem =
+  JitAccessResponseOutputUserRolesItem as any as S.Schema<V1UpdateJitAccessRequestRolesItem>;
 
 export type V1UpdateJitAccessRequestRolesList = Array<V1UpdateJitAccessRequestRolesItem>;
-export const V1UpdateJitAccessRequestRolesList = /*@__PURE__*/ S.Array(
-  V1UpdateJitAccessRequestRolesItem,
-) as any as S.Schema<V1UpdateJitAccessRequestRolesList>;
+export const V1UpdateJitAccessRequestRolesList =
+  JitAccessResponseOutputUserRolesList as any as S.Schema<V1UpdateJitAccessRequestRolesList>;
 
 export interface V1UpdateJitAccessRequest {
   /** Project ref */
@@ -10234,14 +10020,12 @@ export const V1UpdateJitAccessConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1UpdateJitAccessConfigResponse>;
 
 export type V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList = Array<string>;
-export const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList>;
+export const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList =
+  DeleteSecretsBody as any as S.Schema<V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList>;
 
 export type V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List = Array<string>;
-export const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List>;
+export const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List =
+  DeleteSecretsBody as any as S.Schema<V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List>;
 
 export interface V1UpdateNetworkRestrictionsRequest {
   /** Project ref */
@@ -10454,10 +10238,8 @@ export const V1PostgrestConfigResponseOutput = /*@__PURE__*/ S.suspend(() =>
 export type V1UpdateProjectApiKeyRequestSecretJwtTemplateMap = {
   [key: string]: unknown | undefined;
 };
-export const V1UpdateProjectApiKeyRequestSecretJwtTemplateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<V1UpdateProjectApiKeyRequestSecretJwtTemplateMap>;
+export const V1UpdateProjectApiKeyRequestSecretJwtTemplateMap =
+  V1CreateProjectApiKeyRequestSecretJwtTemplateMap as any as S.Schema<V1UpdateProjectApiKeyRequestSecretJwtTemplateMap>;
 
 export interface V1UpdateProjectApiKeyRequest {
   /** Project ref */
@@ -10571,9 +10353,8 @@ export const V1UpdateRealtimeConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1UpdateRealtimeConfigRequest>;
 
 export interface V1UpdateRealtimeConfigResponse {}
-export const V1UpdateRealtimeConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1UpdateRealtimeConfigResponse",
-}) as any as S.Schema<V1UpdateRealtimeConfigResponse>;
+export const V1UpdateRealtimeConfigResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1UpdateRealtimeConfigResponse>;
 
 export type V1UpdateSslEnforcementConfigRequestRequestedConfig =
   SslEnforcementResponseOutputCurrentConfig;
@@ -10671,9 +10452,8 @@ export const V1UpdateStorageConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1UpdateStorageConfigRequest>;
 
 export interface V1UpdateStorageConfigResponse {}
-export const V1UpdateStorageConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1UpdateStorageConfigResponse",
-}) as any as S.Schema<V1UpdateStorageConfigResponse>;
+export const V1UpdateStorageConfigResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1UpdateStorageConfigResponse>;
 
 export type V1UpgradePostgresVersionRequestReleaseChannel =
   | "internal"
@@ -10730,9 +10510,8 @@ export const V1UpsertAMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1UpsertAMigrationRequest>;
 
 export interface V1UpsertAMigrationResponse {}
-export const V1UpsertAMigrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V1UpsertAMigrationResponse",
-}) as any as S.Schema<V1UpsertAMigrationResponse>;
+export const V1UpsertAMigrationResponse =
+  V1ApplyAMigrationResponse as any as S.Schema<V1UpsertAMigrationResponse>;
 
 export interface V1VerifyDnsConfigRequest {
   /** Project ref */

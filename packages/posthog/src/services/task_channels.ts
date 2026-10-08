@@ -153,10 +153,8 @@ export const CreateTaskChannelsFeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTaskChannelsFeedRequest>;
 
 export type ChannelFeedMessageDTOPayloadMap = { [key: string]: unknown | undefined };
-export const ChannelFeedMessageDTOPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ChannelFeedMessageDTOPayloadMap>;
+export const ChannelFeedMessageDTOPayloadMap =
+  TaskUserBasicInfoHedgehogConfigMap as any as S.Schema<ChannelFeedMessageDTOPayloadMap>;
 
 /** Response shape for one system announcement in a channel's feed. */
 export interface ChannelFeedMessageDTO {
@@ -213,9 +211,8 @@ export const OnboardingSession = /*@__PURE__*/ S.suspend(() =>
 
 /** Display names of other Desktop users in the organization. */
 export type CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList = Array<string>;
-export const CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList>;
+export const CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList =
+  ChannelDTORepositoriesList as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList>;
 
 /** Signal sources that were already enabled. */
 export type CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList = Array<string>;
@@ -227,9 +224,7 @@ export const CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList =
 /** Signal sources the onboarding flow is watching. */
 export type CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList = Array<string>;
 export const CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList>;
+  CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList>;
 
 export interface CreateTaskChannelsOnboardingSessionTestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -424,11 +419,7 @@ export const CreateTaskChannelsSetupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SpaceSetupStartedDTO {
   task_id: string;
 }
-export const SpaceSetupStartedDTO = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    task_id: S.String,
-  }),
-).annotate({ identifier: "SpaceSetupStartedDTO" }) as any as S.Schema<SpaceSetupStartedDTO>;
+export const SpaceSetupStartedDTO = OnboardingSession as any as S.Schema<SpaceSetupStartedDTO>;
 
 export interface CreateTaskChannelsStarRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -683,9 +674,8 @@ export const GetTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTaskChannelsMemberRequest>;
 
 export type GetTaskChannelsMemberResponseBodyList = Array<TaskUserBasicInfo>;
-export const GetTaskChannelsMemberResponseBodyList = /*@__PURE__*/ S.Array(
-  TaskUserBasicInfo,
-) as any as S.Schema<GetTaskChannelsMemberResponseBodyList>;
+export const GetTaskChannelsMemberResponseBodyList =
+  ChannelContributorsDTOPeopleList as any as S.Schema<GetTaskChannelsMemberResponseBodyList>;
 
 export type GetTaskChannelsMemberResponse = GetTaskChannelsMemberResponseBodyList;
 export const GetTaskChannelsMemberResponse = /*@__PURE__*/ S.suspend(() =>
@@ -711,9 +701,8 @@ export const ListTaskChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTaskChannelsRequest" }) as any as S.Schema<ListTaskChannelsRequest>;
 
 export type PaginatedChannelDTOListResultsList = Array<ChannelDTO>;
-export const PaginatedChannelDTOListResultsList = /*@__PURE__*/ S.Array(
-  ChannelDTO,
-) as any as S.Schema<PaginatedChannelDTOListResultsList>;
+export const PaginatedChannelDTOListResultsList =
+  ProvisionedChannelsChannelsList as any as S.Schema<PaginatedChannelDTOListResultsList>;
 
 export interface PaginatedChannelDTOList {
   count: number;
@@ -795,9 +784,8 @@ export const TaskChannelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskChannelsDestroyRequest>;
 
 export interface TaskChannelsDestroyResponse {}
-export const TaskChannelsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskChannelsDestroyResponse",
-}) as any as S.Schema<TaskChannelsDestroyResponse>;
+export const TaskChannelsDestroyResponse =
+  CreateTaskChannelsStarResponse as any as S.Schema<TaskChannelsDestroyResponse>;
 
 export interface TaskChannelsInstructionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -902,9 +890,8 @@ export const UpdateTaskChannelsInstructionsPartialRequest = /*@__PURE__*/ S.susp
 
 /** Required list of member user IDs. This list replaces the current members. The creator remains a member. Send an empty list to remove all other members. Each submitted user must have project access. */
 export type UpdateTaskChannelsMemberRequestUserIdsList = Array<number>;
-export const UpdateTaskChannelsMemberRequestUserIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateTaskChannelsMemberRequestUserIdsList>;
+export const UpdateTaskChannelsMemberRequestUserIdsList =
+  CreateTaskChannelRequestMemberIdsList as any as S.Schema<UpdateTaskChannelsMemberRequestUserIdsList>;
 
 export interface UpdateTaskChannelsMemberRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -930,22 +917,17 @@ export const UpdateTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTaskChannelsMemberRequest>;
 
 export type UpdateTaskChannelsMemberResponseBodyList = Array<TaskUserBasicInfo>;
-export const UpdateTaskChannelsMemberResponseBodyList = /*@__PURE__*/ S.Array(
-  TaskUserBasicInfo,
-) as any as S.Schema<UpdateTaskChannelsMemberResponseBodyList>;
+export const UpdateTaskChannelsMemberResponseBodyList =
+  ChannelContributorsDTOPeopleList as any as S.Schema<UpdateTaskChannelsMemberResponseBodyList>;
 
 export type UpdateTaskChannelsMemberResponse = UpdateTaskChannelsMemberResponseBodyList;
-export const UpdateTaskChannelsMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateTaskChannelsMemberResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateTaskChannelsMemberResponse",
-}) as any as S.Schema<UpdateTaskChannelsMemberResponse>;
+export const UpdateTaskChannelsMemberResponse =
+  GetTaskChannelsMemberResponse as any as S.Schema<UpdateTaskChannelsMemberResponse>;
 
 /** GitHub repositories inherited by new tasks in this channel. */
 export type UpdateTaskChannelsPartialRequestRepositoriesList = Array<string>;
-export const UpdateTaskChannelsPartialRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTaskChannelsPartialRequestRepositoriesList>;
+export const UpdateTaskChannelsPartialRequestRepositoriesList =
+  ChannelDTORepositoriesList as any as S.Schema<UpdateTaskChannelsPartialRequestRepositoriesList>;
 
 export interface UpdateTaskChannelsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -270,7 +270,7 @@ export const BatchGetGraphMemberDatasourcesResponse = /*@__PURE__*/ S.suspend(()
   identifier: "BatchGetGraphMemberDatasourcesResponse",
 }) as any as S.Schema<BatchGetGraphMemberDatasourcesResponse>;
 export type GraphArnList = string[];
-export const GraphArnList = /*@__PURE__*/ S.Array(S.String);
+export const GraphArnList = AccountIdExtendedList as any as S.Schema<GraphArnList>;
 export interface BatchGetMembershipDatasourcesRequest {
   GraphArns: string[];
 }
@@ -456,11 +456,9 @@ export const DeleteGraphRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGraphRequest" }) as any as S.Schema<DeleteGraphRequest>;
 export interface DeleteGraphResponse {}
-export const DeleteGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGraphResponse",
-}) as any as S.Schema<DeleteGraphResponse>;
+export const DeleteGraphResponse = AcceptInvitationResponse as any as S.Schema<DeleteGraphResponse>;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const AccountIdList = AccountIdExtendedList as any as S.Schema<AccountIdList>;
 export interface DeleteMembersRequest {
   GraphArn: string;
   AccountIds: string[];
@@ -537,9 +535,8 @@ export const DisassociateMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateMembershipRequest",
 }) as any as S.Schema<DisassociateMembershipRequest>;
 export interface DisassociateMembershipResponse {}
-export const DisassociateMembershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisassociateMembershipResponse",
-}) as any as S.Schema<DisassociateMembershipResponse>;
+export const DisassociateMembershipResponse =
+  AcceptInvitationResponse as any as S.Schema<DisassociateMembershipResponse>;
 export interface EnableOrganizationAdminAccountRequest {
   AccountId: string;
 }
@@ -558,11 +555,8 @@ export const EnableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "EnableOrganizationAdminAccountRequest",
 }) as any as S.Schema<EnableOrganizationAdminAccountRequest>;
 export interface EnableOrganizationAdminAccountResponse {}
-export const EnableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableOrganizationAdminAccountResponse",
-}) as any as S.Schema<EnableOrganizationAdminAccountResponse>;
+export const EnableOrganizationAdminAccountResponse =
+  DisableOrganizationAdminAccountResponse as any as S.Schema<EnableOrganizationAdminAccountResponse>;
 export type InvestigationId = string;
 export interface GetInvestigationRequest {
   GraphArn: string;
@@ -1113,9 +1107,8 @@ export const RejectInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RejectInvitationRequest" }) as any as S.Schema<RejectInvitationRequest>;
 export interface RejectInvitationResponse {}
-export const RejectInvitationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RejectInvitationResponse",
-}) as any as S.Schema<RejectInvitationResponse>;
+export const RejectInvitationResponse =
+  AcceptInvitationResponse as any as S.Schema<RejectInvitationResponse>;
 export interface StartInvestigationRequest {
   GraphArn: string;
   EntityArn: string;
@@ -1168,9 +1161,8 @@ export const StartMonitoringMemberRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartMonitoringMemberRequest",
 }) as any as S.Schema<StartMonitoringMemberRequest>;
 export interface StartMonitoringMemberResponse {}
-export const StartMonitoringMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartMonitoringMemberResponse",
-}) as any as S.Schema<StartMonitoringMemberResponse>;
+export const StartMonitoringMemberResponse =
+  AcceptInvitationResponse as any as S.Schema<StartMonitoringMemberResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1181,11 +1173,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AcceptInvitationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AccountIdExtendedList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1199,9 +1189,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AcceptInvitationResponse as any as S.Schema<UntagResourceResponse>;
 export type DatasourcePackageList = DatasourcePackage[];
 export const DatasourcePackageList = /*@__PURE__*/ S.Array(DatasourcePackage);
 export interface UpdateDatasourcePackagesRequest {
@@ -1223,11 +1212,8 @@ export const UpdateDatasourcePackagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDatasourcePackagesRequest",
 }) as any as S.Schema<UpdateDatasourcePackagesRequest>;
 export interface UpdateDatasourcePackagesResponse {}
-export const UpdateDatasourcePackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatasourcePackagesResponse",
-}) as any as S.Schema<UpdateDatasourcePackagesResponse>;
+export const UpdateDatasourcePackagesResponse =
+  DisableOrganizationAdminAccountResponse as any as S.Schema<UpdateDatasourcePackagesResponse>;
 export interface UpdateInvestigationStateRequest {
   GraphArn: string;
   InvestigationId: string;
@@ -1248,11 +1234,8 @@ export const UpdateInvestigationStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateInvestigationStateRequest",
 }) as any as S.Schema<UpdateInvestigationStateRequest>;
 export interface UpdateInvestigationStateResponse {}
-export const UpdateInvestigationStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateInvestigationStateResponse",
-}) as any as S.Schema<UpdateInvestigationStateResponse>;
+export const UpdateInvestigationStateResponse =
+  DisableOrganizationAdminAccountResponse as any as S.Schema<UpdateInvestigationStateResponse>;
 export interface UpdateOrganizationConfigurationRequest {
   GraphArn: string;
   AutoEnable?: boolean;
@@ -1272,11 +1255,8 @@ export const UpdateOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateOrganizationConfigurationRequest",
 }) as any as S.Schema<UpdateOrganizationConfigurationRequest>;
 export interface UpdateOrganizationConfigurationResponse {}
-export const UpdateOrganizationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationConfigurationResponse",
-}) as any as S.Schema<UpdateOrganizationConfigurationResponse>;
+export const UpdateOrganizationConfigurationResponse =
+  DisableOrganizationAdminAccountResponse as any as S.Schema<UpdateOrganizationConfigurationResponse>;
 export type ErrorMessage = string;
 export type ErrorCode =
   | "INVALID_GRAPH_ARN"
@@ -1288,7 +1268,7 @@ export const ErrorCode = S.String;
 export type ErrorCodeReason = string;
 export type Resource = string;
 export type ResourceList = string[];
-export const ResourceList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceList = AccountIdExtendedList as any as S.Schema<ResourceList>;
 export type AcceptInvitationError =
   | AccessDeniedException
   | ConflictException

@@ -395,9 +395,8 @@ export const AiGatewayEvaluationFallbackConditionCase2 = /*@__PURE__*/ S.suspend
 
 export type AiGatewayEvaluationFallbackConditionCase3AllList =
   Array<AiGatewayEvaluationFallbackCondition>;
-export const AiGatewayEvaluationFallbackConditionCase3AllList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => AiGatewayEvaluationFallbackCondition),
-) as any as S.Schema<AiGatewayEvaluationFallbackConditionCase3AllList>;
+export const AiGatewayEvaluationFallbackConditionCase3AllList =
+  AiGatewayEvaluationFallbackConditionCase2AnyList as any as S.Schema<AiGatewayEvaluationFallbackConditionCase3AllList>;
 
 export interface AiGatewayEvaluationFallbackConditionCase3 {
   all: AiGatewayEvaluationFallbackConditionCase3AllList;
@@ -412,9 +411,8 @@ export const AiGatewayEvaluationFallbackConditionCase3 = /*@__PURE__*/ S.suspend
 
 export type AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList =
   Array<AiGatewayEvaluationFallbackCondition>;
-export const AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => AiGatewayEvaluationFallbackCondition),
-) as any as S.Schema<AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList>;
+export const AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList =
+  AiGatewayEvaluationFallbackConditionCase2AnyList as any as S.Schema<AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList>;
 
 export interface AiGatewayEvaluationFallbackConditionCase4AtLeast {
   conditions: AiGatewayEvaluationFallbackConditionCase4AtLeastConditionsList;
@@ -478,15 +476,13 @@ export const AiGatewayVirtualModelConfigModelsList = /*@__PURE__*/ S.Array(
 
 /** Observability tags attached to requests through this VMC. */
 export type AiGatewayVirtualModelConfigObservabilityTagsList = Array<string>;
-export const AiGatewayVirtualModelConfigObservabilityTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiGatewayVirtualModelConfigObservabilityTagsList>;
+export const AiGatewayVirtualModelConfigObservabilityTagsList =
+  AiGatewayVirtualModelConfigByokCredentialIdsList as any as S.Schema<AiGatewayVirtualModelConfigObservabilityTagsList>;
 
 /** Restrict routing to only these providers. */
 export type AiGatewayVirtualModelConfigProviderOnlyList = Array<string>;
-export const AiGatewayVirtualModelConfigProviderOnlyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiGatewayVirtualModelConfigProviderOnlyList>;
+export const AiGatewayVirtualModelConfigProviderOnlyList =
+  AiGatewayVirtualModelConfigByokCredentialIdsList as any as S.Schema<AiGatewayVirtualModelConfigProviderOnlyList>;
 
 /** Arbitrary per-provider AI SDK options, keyed by gateway provider slug. */
 export type AiGatewayProviderOptionBag = { [key: string]: unknown | undefined };
@@ -506,9 +502,8 @@ export const AiGatewayVirtualModelConfigProviderOptionsMap = /*@__PURE__*/ S.Rec
 
 /** Ordered list of providers to try as fallbacks on failure. */
 export type AiGatewayVirtualModelConfigProviderOrderList = Array<string>;
-export const AiGatewayVirtualModelConfigProviderOrderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AiGatewayVirtualModelConfigProviderOrderList>;
+export const AiGatewayVirtualModelConfigProviderOrderList =
+  AiGatewayVirtualModelConfigByokCredentialIdsList as any as S.Schema<AiGatewayVirtualModelConfigProviderOrderList>;
 
 export type AiGatewayVirtualModelConfigProviderTimeoutsByokMap = {
   [key: string]: number | undefined;
@@ -536,10 +531,8 @@ export const AiGatewayVirtualModelConfigSelector = S.String;
 
 /** For kind=router: option slices keyed by selector name; each selector owns its slice's shape. */
 export type AiGatewayRouterSelectorOptionBag = { [key: string]: unknown | undefined };
-export const AiGatewayRouterSelectorOptionBag = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AiGatewayRouterSelectorOptionBag>;
+export const AiGatewayRouterSelectorOptionBag =
+  AiGatewayProviderOptionBag as any as S.Schema<AiGatewayRouterSelectorOptionBag>;
 
 /** For kind=router: option slices keyed by selector name; each selector owns its slice's shape. */
 export interface AiGatewayVirtualModelConfigSelectorOptions {
@@ -737,11 +730,8 @@ export const DeleteAiGatewayVirtualModelConfigRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteAiGatewayVirtualModelConfigRequest>;
 
 export type DeleteAiGatewayVirtualModelConfigResponse = unknown;
-export const DeleteAiGatewayVirtualModelConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteAiGatewayVirtualModelConfigResponse",
-}) as any as S.Schema<DeleteAiGatewayVirtualModelConfigResponse>;
+export const DeleteAiGatewayVirtualModelConfigResponse =
+  DeleteAiGatewayRuleResponse as any as S.Schema<DeleteAiGatewayVirtualModelConfigResponse>;
 
 export interface DeleteAiGatewayVirtualModelConfigBySlugRequest {
   vmcSlug: string;
@@ -771,11 +761,8 @@ export const DeleteAiGatewayVirtualModelConfigBySlugRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteAiGatewayVirtualModelConfigBySlugRequest>;
 
 export type DeleteAiGatewayVirtualModelConfigBySlugResponse = unknown;
-export const DeleteAiGatewayVirtualModelConfigBySlugResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteAiGatewayVirtualModelConfigBySlugResponse",
-}) as any as S.Schema<DeleteAiGatewayVirtualModelConfigBySlugResponse>;
+export const DeleteAiGatewayVirtualModelConfigBySlugResponse =
+  DeleteAiGatewayRuleResponse as any as S.Schema<DeleteAiGatewayVirtualModelConfigBySlugResponse>;
 
 export interface GetAiGatewayVirtualModelConfigRequest {
   ownerId?: string;
@@ -870,9 +857,8 @@ export const ListAiGatewayBudgetDefaultsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAiGatewayBudgetDefaultsRequest>;
 
 export type AiGatewayBudgetDefaultAlertThresholdsList = Array<number>;
-export const AiGatewayBudgetDefaultAlertThresholdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AiGatewayBudgetDefaultAlertThresholdsList>;
+export const AiGatewayBudgetDefaultAlertThresholdsList =
+  AiGatewayBudgetAlertThresholdsList as any as S.Schema<AiGatewayBudgetDefaultAlertThresholdsList>;
 
 export type AiGatewayBudgetDefaultRefreshPeriod = "daily" | "monthly" | "none" | "weekly";
 export const AiGatewayBudgetDefaultRefreshPeriod = S.String;

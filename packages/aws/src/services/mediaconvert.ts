@@ -161,9 +161,7 @@ export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CancelJobRequest" }) as any as S.Schema<CancelJobRequest>;
 export interface CancelJobResponse {}
-export const CancelJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelJobResponse",
-}) as any as S.Schema<CancelJobResponse>;
+export const CancelJobResponse = AssociateCertificateResponse as any as S.Schema<CancelJobResponse>;
 export type AccelerationMode = "DISABLED" | "ENABLED" | "PREFERRED" | (string & {});
 export const AccelerationMode = S.String;
 
@@ -576,10 +574,12 @@ export type __integerMin0Max8 = number;
 export type __integerMin1Max64 = number;
 export type __integerMinNegative60Max6 = number;
 export type __listOf__integerMinNegative60Max6 = number[];
-export const __listOf__integerMinNegative60Max6 = /*@__PURE__*/ S.Array(S.Number);
+export const __listOf__integerMinNegative60Max6 =
+  __listOf__integerMin1Max2147483647 as any as S.Schema<__listOf__integerMinNegative60Max6>;
 export type __doubleMinNegative60Max6 = number;
 export type __listOf__doubleMinNegative60Max6 = number[];
-export const __listOf__doubleMinNegative60Max6 = /*@__PURE__*/ S.Array(S.Number);
+export const __listOf__doubleMinNegative60Max6 =
+  __listOf__integerMin1Max2147483647 as any as S.Schema<__listOf__doubleMinNegative60Max6>;
 export interface OutputChannelMapping {
   InputChannels?: number[];
   InputChannelsFineTune?: number[];
@@ -1117,7 +1117,8 @@ export const InputPsiControl = S.String;
 
 export type __stringPatternS3ASSETMAPXml = string;
 export type __listOf__stringPatternS3ASSETMAPXml = string[];
-export const __listOf__stringPatternS3ASSETMAPXml = /*@__PURE__*/ S.Array(S.String);
+export const __listOf__stringPatternS3ASSETMAPXml =
+  __listOf__stringMin1 as any as S.Schema<__listOf__stringPatternS3ASSETMAPXml>;
 export type __stringPatternArnAwsAZ09EventsAZ090912ConnectionAZAZ09AF0936 = string;
 export type TamsGapHandling = "SKIP_GAPS" | "FILL_WITH_BLACK" | "HOLD_LAST_FRAME" | (string & {});
 export const TamsGapHandling = S.String;
@@ -1782,11 +1783,7 @@ export interface MinTopRenditionSize {
   Height?: number;
   Width?: number;
 }
-export const MinTopRenditionSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Height: S.optional(S.Number), Width: S.optional(S.Number) }).pipe(
-    S.encodeKeys({ Height: "height", Width: "width" }),
-  ),
-).annotate({ identifier: "MinTopRenditionSize" }) as any as S.Schema<MinTopRenditionSize>;
+export const MinTopRenditionSize = MinBottomRenditionSize as any as S.Schema<MinTopRenditionSize>;
 export type RuleType =
   | "MIN_TOP_RENDITION_SIZE"
   | "MIN_BOTTOM_RENDITION_SIZE"
@@ -1978,7 +1975,7 @@ export type __stringPatternArnAwsUsGovAcm = string;
 export type __stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 = string;
 export type __listOf__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 = string[];
 export const __listOf__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 =
-  /*@__PURE__*/ S.Array(S.String);
+  __listOf__stringMin1 as any as S.Schema<__listOf__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12>;
 export type PresetSpeke20Audio =
   | "PRESET_AUDIO_1"
   | "PRESET_AUDIO_2"
@@ -2164,27 +2161,8 @@ export interface CmafImageBasedTrickPlayVariant {
   TileHeight?: number;
   TileWidth?: number;
 }
-export const CmafImageBasedTrickPlayVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IntervalCadence: S.optional(CmafIntervalCadence),
-    ThumbnailHeight: S.optional(S.Number),
-    ThumbnailInterval: S.optional(S.Number),
-    ThumbnailWidth: S.optional(S.Number),
-    TileHeight: S.optional(S.Number),
-    TileWidth: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      IntervalCadence: "intervalCadence",
-      ThumbnailHeight: "thumbnailHeight",
-      ThumbnailInterval: "thumbnailInterval",
-      ThumbnailWidth: "thumbnailWidth",
-      TileHeight: "tileHeight",
-      TileWidth: "tileWidth",
-    }),
-  ),
-).annotate({
-  identifier: "CmafImageBasedTrickPlayVariant",
-}) as any as S.Schema<CmafImageBasedTrickPlayVariant>;
+export const CmafImageBasedTrickPlayVariant =
+  CmafImageBasedTrickPlaySettings as any as S.Schema<CmafImageBasedTrickPlayVariant>;
 export type __listOfCmafImageBasedTrickPlayVariant = CmafImageBasedTrickPlayVariant[];
 export const __listOfCmafImageBasedTrickPlayVariant = /*@__PURE__*/ S.Array(
   CmafImageBasedTrickPlayVariant,
@@ -2328,19 +2306,11 @@ export interface DashAdditionalManifest {
   ManifestNameModifier?: string;
   SelectedOutputs?: string[];
 }
-export const DashAdditionalManifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManifestNameModifier: S.optional(S.String),
-    SelectedOutputs: S.optional(__listOf__stringMin1),
-  }).pipe(
-    S.encodeKeys({
-      ManifestNameModifier: "manifestNameModifier",
-      SelectedOutputs: "selectedOutputs",
-    }),
-  ),
-).annotate({ identifier: "DashAdditionalManifest" }) as any as S.Schema<DashAdditionalManifest>;
+export const DashAdditionalManifest =
+  CmafAdditionalManifest as any as S.Schema<DashAdditionalManifest>;
 export type __listOfDashAdditionalManifest = DashAdditionalManifest[];
-export const __listOfDashAdditionalManifest = /*@__PURE__*/ S.Array(DashAdditionalManifest);
+export const __listOfDashAdditionalManifest =
+  __listOfCmafAdditionalManifest as any as S.Schema<__listOfDashAdditionalManifest>;
 export type DashIsoGroupAudioChannelConfigSchemeIdUri =
   | "MPEG_CHANNEL_CONFIGURATION"
   | "DOLBY_CHANNEL_CONFIGURATION"
@@ -2457,27 +2427,8 @@ export interface DashIsoImageBasedTrickPlayVariant {
   TileHeight?: number;
   TileWidth?: number;
 }
-export const DashIsoImageBasedTrickPlayVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IntervalCadence: S.optional(DashIsoIntervalCadence),
-    ThumbnailHeight: S.optional(S.Number),
-    ThumbnailInterval: S.optional(S.Number),
-    ThumbnailWidth: S.optional(S.Number),
-    TileHeight: S.optional(S.Number),
-    TileWidth: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      IntervalCadence: "intervalCadence",
-      ThumbnailHeight: "thumbnailHeight",
-      ThumbnailInterval: "thumbnailInterval",
-      ThumbnailWidth: "thumbnailWidth",
-      TileHeight: "tileHeight",
-      TileWidth: "tileWidth",
-    }),
-  ),
-).annotate({
-  identifier: "DashIsoImageBasedTrickPlayVariant",
-}) as any as S.Schema<DashIsoImageBasedTrickPlayVariant>;
+export const DashIsoImageBasedTrickPlayVariant =
+  DashIsoImageBasedTrickPlaySettings as any as S.Schema<DashIsoImageBasedTrickPlayVariant>;
 export type __listOfDashIsoImageBasedTrickPlayVariant = DashIsoImageBasedTrickPlayVariant[];
 export const __listOfDashIsoImageBasedTrickPlayVariant = /*@__PURE__*/ S.Array(
   DashIsoImageBasedTrickPlayVariant,
@@ -2600,19 +2551,11 @@ export interface HlsAdditionalManifest {
   ManifestNameModifier?: string;
   SelectedOutputs?: string[];
 }
-export const HlsAdditionalManifest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManifestNameModifier: S.optional(S.String),
-    SelectedOutputs: S.optional(__listOf__stringMin1),
-  }).pipe(
-    S.encodeKeys({
-      ManifestNameModifier: "manifestNameModifier",
-      SelectedOutputs: "selectedOutputs",
-    }),
-  ),
-).annotate({ identifier: "HlsAdditionalManifest" }) as any as S.Schema<HlsAdditionalManifest>;
+export const HlsAdditionalManifest =
+  CmafAdditionalManifest as any as S.Schema<HlsAdditionalManifest>;
 export type __listOfHlsAdditionalManifest = HlsAdditionalManifest[];
-export const __listOfHlsAdditionalManifest = /*@__PURE__*/ S.Array(HlsAdditionalManifest);
+export const __listOfHlsAdditionalManifest =
+  __listOfCmafAdditionalManifest as any as S.Schema<__listOfHlsAdditionalManifest>;
 export type HlsAudioOnlyHeader = "INCLUDE" | "EXCLUDE" | (string & {});
 export const HlsAudioOnlyHeader = S.String;
 
@@ -2751,27 +2694,8 @@ export interface HlsImageBasedTrickPlayVariant {
   TileHeight?: number;
   TileWidth?: number;
 }
-export const HlsImageBasedTrickPlayVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IntervalCadence: S.optional(HlsIntervalCadence),
-    ThumbnailHeight: S.optional(S.Number),
-    ThumbnailInterval: S.optional(S.Number),
-    ThumbnailWidth: S.optional(S.Number),
-    TileHeight: S.optional(S.Number),
-    TileWidth: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      IntervalCadence: "intervalCadence",
-      ThumbnailHeight: "thumbnailHeight",
-      ThumbnailInterval: "thumbnailInterval",
-      ThumbnailWidth: "thumbnailWidth",
-      TileHeight: "tileHeight",
-      TileWidth: "tileWidth",
-    }),
-  ),
-).annotate({
-  identifier: "HlsImageBasedTrickPlayVariant",
-}) as any as S.Schema<HlsImageBasedTrickPlayVariant>;
+export const HlsImageBasedTrickPlayVariant =
+  HlsImageBasedTrickPlaySettings as any as S.Schema<HlsImageBasedTrickPlayVariant>;
 export type __listOfHlsImageBasedTrickPlayVariant = HlsImageBasedTrickPlayVariant[];
 export const __listOfHlsImageBasedTrickPlayVariant = /*@__PURE__*/ S.Array(
   HlsImageBasedTrickPlayVariant,
@@ -3707,13 +3631,7 @@ export interface FlacSettings {
   Channels?: number;
   SampleRate?: number;
 }
-export const FlacSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BitDepth: S.optional(S.Number),
-    Channels: S.optional(S.Number),
-    SampleRate: S.optional(S.Number),
-  }).pipe(S.encodeKeys({ BitDepth: "bitDepth", Channels: "channels", SampleRate: "sampleRate" })),
-).annotate({ identifier: "FlacSettings" }) as any as S.Schema<FlacSettings>;
+export const FlacSettings = AiffSettings as any as S.Schema<FlacSettings>;
 export type Mp2AudioDescriptionMix = "BROADCASTER_MIXED_AD" | "NONE" | (string & {});
 export const Mp2AudioDescriptionMix = S.String;
 
@@ -4625,7 +4543,8 @@ export const M2tsAudioDuration = S.String;
 
 export type __integerMin32Max8182 = number;
 export type __listOf__integerMin32Max8182 = number[];
-export const __listOf__integerMin32Max8182 = /*@__PURE__*/ S.Array(S.Number);
+export const __listOf__integerMin32Max8182 =
+  __listOf__integerMin1Max2147483647 as any as S.Schema<__listOf__integerMin32Max8182>;
 export type __integerMinNegative10000Max10000 = number;
 export type M2tsBufferModel = "MULTIPLEX" | "NONE" | (string & {});
 export const M2tsBufferModel = S.String;
@@ -5990,19 +5909,7 @@ export interface H265QvbrSettings {
   QvbrQualityLevel?: number;
   QvbrQualityLevelFineTune?: number;
 }
-export const H265QvbrSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxAverageBitrate: S.optional(S.Number),
-    QvbrQualityLevel: S.optional(S.Number),
-    QvbrQualityLevelFineTune: S.optional(S.Number),
-  }).pipe(
-    S.encodeKeys({
-      MaxAverageBitrate: "maxAverageBitrate",
-      QvbrQualityLevel: "qvbrQualityLevel",
-      QvbrQualityLevelFineTune: "qvbrQualityLevelFineTune",
-    }),
-  ),
-).annotate({ identifier: "H265QvbrSettings" }) as any as S.Schema<H265QvbrSettings>;
+export const H265QvbrSettings = H264QvbrSettings as any as S.Schema<H265QvbrSettings>;
 export type H265RateControlMode = "VBR" | "CBR" | "QVBR" | (string & {});
 export const H265RateControlMode = S.String;
 
@@ -7879,7 +7786,7 @@ export const ElementalInferenceConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementalInferenceConfiguration",
 }) as any as S.Schema<ElementalInferenceConfiguration>;
 export type __listOf__string = string[];
-export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
+export const __listOf__string = __listOf__stringMin1 as any as S.Schema<__listOf__string>;
 export interface JobMessages {
   Info?: string[];
   Warning?: string[];
@@ -8651,9 +8558,8 @@ export const CreateResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResourceShareRequest",
 }) as any as S.Schema<CreateResourceShareRequest>;
 export interface CreateResourceShareResponse {}
-export const CreateResourceShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateResourceShareResponse",
-}) as any as S.Schema<CreateResourceShareResponse>;
+export const CreateResourceShareResponse =
+  AssociateCertificateResponse as any as S.Schema<CreateResourceShareResponse>;
 export interface DeleteJobTemplateRequest {
   Name: string;
 }
@@ -8670,9 +8576,8 @@ export const DeleteJobTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteJobTemplateRequest" }) as any as S.Schema<DeleteJobTemplateRequest>;
 export interface DeleteJobTemplateResponse {}
-export const DeleteJobTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteJobTemplateResponse",
-}) as any as S.Schema<DeleteJobTemplateResponse>;
+export const DeleteJobTemplateResponse =
+  AssociateCertificateResponse as any as S.Schema<DeleteJobTemplateResponse>;
 export interface DeletePolicyRequest {}
 export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -8680,9 +8585,8 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+export const DeletePolicyResponse =
+  AssociateCertificateResponse as any as S.Schema<DeletePolicyResponse>;
 export interface DeletePresetRequest {
   Name: string;
 }
@@ -8699,9 +8603,8 @@ export const DeletePresetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePresetRequest" }) as any as S.Schema<DeletePresetRequest>;
 export interface DeletePresetResponse {}
-export const DeletePresetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePresetResponse",
-}) as any as S.Schema<DeletePresetResponse>;
+export const DeletePresetResponse =
+  AssociateCertificateResponse as any as S.Schema<DeletePresetResponse>;
 export interface DeleteQueueRequest {
   Name: string;
 }
@@ -8718,9 +8621,8 @@ export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteQueueRequest" }) as any as S.Schema<DeleteQueueRequest>;
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQueueResponse",
-}) as any as S.Schema<DeleteQueueResponse>;
+export const DeleteQueueResponse =
+  AssociateCertificateResponse as any as S.Schema<DeleteQueueResponse>;
 export type DescribeEndpointsMode = "DEFAULT" | "GET_ONLY" | (string & {});
 export const DescribeEndpointsMode = S.String;
 
@@ -8796,9 +8698,7 @@ export interface GetJobResponse {
     Warnings: (WarningGroup & { Code: number; Count: number })[];
   };
 }
-export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Job: S.optional(Job) }).pipe(S.encodeKeys({ Job: "job" })),
-).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
+export const GetJobResponse = CreateJobResponse as any as S.Schema<GetJobResponse>;
 export interface GetJobsQueryResultsRequest {
   Id: string;
 }
@@ -8914,9 +8814,7 @@ export const GetPresetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPresetResponse {
   Preset?: Preset & { Name: string; Settings: PresetSettings };
 }
-export const GetPresetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Preset: S.optional(Preset) }).pipe(S.encodeKeys({ Preset: "preset" })),
-).annotate({ identifier: "GetPresetResponse" }) as any as S.Schema<GetPresetResponse>;
+export const GetPresetResponse = CreatePresetResponse as any as S.Schema<GetPresetResponse>;
 export interface GetQueueRequest {
   Name: string;
 }
@@ -8935,9 +8833,7 @@ export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetQueueResponse {
   Queue?: Queue & { Name: string };
 }
-export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Queue: S.optional(Queue) }).pipe(S.encodeKeys({ Queue: "queue" })),
-).annotate({ identifier: "GetQueueResponse" }) as any as S.Schema<GetQueueResponse>;
+export const GetQueueResponse = CreateQueueResponse as any as S.Schema<GetQueueResponse>;
 export type __integerMin1Max20 = number;
 export type Order = "ASCENDING" | "DESCENDING" | (string & {});
 export const Order = S.String;
@@ -9317,11 +9213,7 @@ export interface AspectRatio {
   Denominator?: number;
   Numerator?: number;
 }
-export const AspectRatio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Denominator: S.optional(S.Number), Numerator: S.optional(S.Number) }).pipe(
-    S.encodeKeys({ Denominator: "denominator", Numerator: "numerator" }),
-  ),
-).annotate({ identifier: "AspectRatio" }) as any as S.Schema<AspectRatio>;
+export const AspectRatio = FrameRate as any as S.Schema<AspectRatio>;
 export type DolbyVisionPresence = "PRESENT" | "ABSENT" | (string & {});
 export const DolbyVisionPresence = S.String;
 
@@ -9642,7 +9534,8 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 export type __listOf__integer = number[];
-export const __listOf__integer = /*@__PURE__*/ S.Array(S.Number);
+export const __listOf__integer =
+  __listOf__integerMin1Max2147483647 as any as S.Schema<__listOf__integer>;
 export interface TrackMapping {
   AudioTrackIndexes?: number[];
   DataTrackIndexes?: number[];
@@ -9700,9 +9593,7 @@ export const PutPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutPolicyResponse {
   Policy?: Policy;
 }
-export const PutPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.optional(Policy) }).pipe(S.encodeKeys({ Policy: "policy" })),
-).annotate({ identifier: "PutPolicyResponse" }) as any as S.Schema<PutPolicyResponse>;
+export const PutPolicyResponse = GetPolicyResponse as any as S.Schema<PutPolicyResponse>;
 export interface SearchJobsRequest {
   InputFile?: string;
   MaxResults?: number;
@@ -9732,11 +9623,7 @@ export interface SearchJobsResponse {
   })[];
   NextToken?: string;
 }
-export const SearchJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Jobs: S.optional(__listOfJob), NextToken: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Jobs: "jobs", NextToken: "nextToken" }),
-  ),
-).annotate({ identifier: "SearchJobsResponse" }) as any as S.Schema<SearchJobsResponse>;
+export const SearchJobsResponse = ListJobsResponse as any as S.Schema<SearchJobsResponse>;
 export type JobsQueryFilterKey =
   | "queue"
   | "status"
@@ -9751,7 +9638,8 @@ export const JobsQueryFilterKey = S.String;
 
 export type __stringMax100 = string;
 export type __listOf__stringMax100 = string[];
-export const __listOf__stringMax100 = /*@__PURE__*/ S.Array(S.String);
+export const __listOf__stringMax100 =
+  __listOf__stringMin1 as any as S.Schema<__listOf__stringMax100>;
 export interface JobsQueryFilter {
   Key?: JobsQueryFilterKey;
   Values?: string[];
@@ -9812,9 +9700,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.all(T.Http({ method: "POST", uri: "/2017-08-29/tags" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AssociateCertificateResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   Arn: string;
   TagKeys?: string[];
@@ -9827,9 +9714,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssociateCertificateResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateJobTemplateRequest {
   AccelerationSettings?: AccelerationSettings;
   Category?: string;
@@ -9883,13 +9769,8 @@ export interface UpdateJobTemplateResponse {
     AccelerationSettings: AccelerationSettings & { Mode: AccelerationMode };
   };
 }
-export const UpdateJobTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobTemplate: S.optional(JobTemplate) }).pipe(
-    S.encodeKeys({ JobTemplate: "jobTemplate" }),
-  ),
-).annotate({
-  identifier: "UpdateJobTemplateResponse",
-}) as any as S.Schema<UpdateJobTemplateResponse>;
+export const UpdateJobTemplateResponse =
+  CreateJobTemplateResponse as any as S.Schema<UpdateJobTemplateResponse>;
 export interface UpdatePresetRequest {
   Category?: string;
   Description?: string;
@@ -9918,9 +9799,7 @@ export const UpdatePresetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePresetResponse {
   Preset?: Preset & { Name: string; Settings: PresetSettings };
 }
-export const UpdatePresetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Preset: S.optional(Preset) }).pipe(S.encodeKeys({ Preset: "preset" })),
-).annotate({ identifier: "UpdatePresetResponse" }) as any as S.Schema<UpdatePresetResponse>;
+export const UpdatePresetResponse = CreatePresetResponse as any as S.Schema<UpdatePresetResponse>;
 export interface UpdateQueueRequest {
   ConcurrentJobs?: number;
   Description?: string;
@@ -9961,9 +9840,7 @@ export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateQueueResponse {
   Queue?: Queue & { Name: string };
 }
-export const UpdateQueueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Queue: S.optional(Queue) }).pipe(S.encodeKeys({ Queue: "queue" })),
-).annotate({ identifier: "UpdateQueueResponse" }) as any as S.Schema<UpdateQueueResponse>;
+export const UpdateQueueResponse = CreateQueueResponse as any as S.Schema<UpdateQueueResponse>;
 export type AssociateCertificateError =
   | BadRequestException
   | ConflictException

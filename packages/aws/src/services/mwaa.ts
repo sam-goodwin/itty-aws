@@ -146,7 +146,7 @@ export type SubnetList = string[];
 export const SubnetList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupId = string;
 export type SecurityGroupList = string[];
-export const SecurityGroupList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupList = SubnetList as any as S.Schema<SecurityGroupList>;
 export interface NetworkConfiguration {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -505,7 +505,7 @@ export const ListEnvironmentsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/environments" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListEnvironmentsInput" }) as any as S.Schema<ListEnvironmentsInput>;
 export type EnvironmentList = string[];
-export const EnvironmentList = /*@__PURE__*/ S.Array(S.String);
+export const EnvironmentList = SubnetList as any as S.Schema<EnvironmentList>;
 export interface ListEnvironmentsOutput {
   Environments: string[];
   NextToken?: string;
@@ -593,9 +593,8 @@ export const PublishMetricsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PublishMetricsInput" }) as any as S.Schema<PublishMetricsInput>;
 export interface PublishMetricsOutput {}
-export const PublishMetricsOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PublishMetricsOutput",
-}) as any as S.Schema<PublishMetricsOutput>;
+export const PublishMetricsOutput =
+  DeleteEnvironmentOutput as any as S.Schema<PublishMetricsOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -606,11 +605,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteEnvironmentOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SubnetList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   tagKeys: string[];
@@ -624,9 +621,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteEnvironmentOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateNetworkConfigurationInput {
   SecurityGroupIds: string[];
 }
@@ -692,9 +687,8 @@ export const UpdateEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEnvironmentOutput {
   Arn?: string;
 }
-export const UpdateEnvironmentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateEnvironmentOutput" }) as any as S.Schema<UpdateEnvironmentOutput>;
+export const UpdateEnvironmentOutput =
+  CreateEnvironmentOutput as any as S.Schema<UpdateEnvironmentOutput>;
 export type CreateCliTokenError = ResourceNotFoundException | CommonErrors;
 /**
  * Creates a CLI token for the Airflow CLI. To learn more, see Creating an Apache Airflow CLI token.

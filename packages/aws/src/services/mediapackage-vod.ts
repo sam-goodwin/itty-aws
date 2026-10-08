@@ -556,11 +556,7 @@ export const HlsPackage = /*@__PURE__*/ S.suspend(() =>
 export interface MssEncryption {
   SpekeKeyProvider?: SpekeKeyProvider;
 }
-export const MssEncryption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SpekeKeyProvider: S.optional(SpekeKeyProvider) }).pipe(
-    S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
-  ),
-).annotate({ identifier: "MssEncryption" }) as any as S.Schema<MssEncryption>;
+export const MssEncryption = DashEncryption as any as S.Schema<MssEncryption>;
 export interface MssManifest {
   ManifestName?: string;
   StreamSelection?: StreamSelection;
@@ -836,9 +832,8 @@ export const DeletePackagingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePackagingGroupRequest",
 }) as any as S.Schema<DeletePackagingGroupRequest>;
 export interface DeletePackagingGroupResponse {}
-export const DeletePackagingGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePackagingGroupResponse",
-}) as any as S.Schema<DeletePackagingGroupResponse>;
+export const DeletePackagingGroupResponse =
+  DeleteAssetResponse as any as S.Schema<DeletePackagingGroupResponse>;
 export interface DescribeAssetRequest {
   Id: string;
 }
@@ -858,31 +853,7 @@ export interface DescribeAssetResponse {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(S.String),
-    EgressEndpoints: S.optional(__listOfEgressEndpoint),
-    Id: S.optional(S.String),
-    PackagingGroupId: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    SourceArn: S.optional(S.String),
-    SourceRoleArn: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CreatedAt: "createdAt",
-      EgressEndpoints: "egressEndpoints",
-      Id: "id",
-      PackagingGroupId: "packagingGroupId",
-      ResourceId: "resourceId",
-      SourceArn: "sourceArn",
-      SourceRoleArn: "sourceRoleArn",
-      Tags: "tags",
-    }),
-  ),
-).annotate({ identifier: "DescribeAssetResponse" }) as any as S.Schema<DescribeAssetResponse>;
+export const DescribeAssetResponse = CreateAssetResponse as any as S.Schema<DescribeAssetResponse>;
 export interface DescribePackagingConfigurationRequest {
   Id: string;
 }
@@ -963,33 +934,8 @@ export interface DescribePackagingConfigurationResponse {
   PackagingGroupId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribePackagingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CmafPackage: S.optional(CmafPackage),
-    CreatedAt: S.optional(S.String),
-    DashPackage: S.optional(DashPackage),
-    HlsPackage: S.optional(HlsPackage),
-    Id: S.optional(S.String),
-    MssPackage: S.optional(MssPackage),
-    PackagingGroupId: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      Arn: "arn",
-      CmafPackage: "cmafPackage",
-      CreatedAt: "createdAt",
-      DashPackage: "dashPackage",
-      HlsPackage: "hlsPackage",
-      Id: "id",
-      MssPackage: "mssPackage",
-      PackagingGroupId: "packagingGroupId",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "DescribePackagingConfigurationResponse",
-}) as any as S.Schema<DescribePackagingConfigurationResponse>;
+export const DescribePackagingConfigurationResponse =
+  CreatePackagingConfigurationResponse as any as S.Schema<DescribePackagingConfigurationResponse>;
 export interface DescribePackagingGroupRequest {
   Id: string;
 }
@@ -1323,9 +1269,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAssetResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -1339,9 +1283,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteAssetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdatePackagingGroupRequest {
   Authorization?: Authorization;
   Id: string;
@@ -1365,31 +1307,8 @@ export interface UpdatePackagingGroupResponse {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdatePackagingGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApproximateAssetCount: S.optional(S.Number),
-    Arn: S.optional(S.String),
-    Authorization: S.optional(Authorization),
-    CreatedAt: S.optional(S.String),
-    DomainName: S.optional(S.String),
-    EgressAccessLogs: S.optional(EgressAccessLogs),
-    Id: S.optional(S.String),
-    Tags: S.optional(Tags),
-  }).pipe(
-    S.encodeKeys({
-      ApproximateAssetCount: "approximateAssetCount",
-      Arn: "arn",
-      Authorization: "authorization",
-      CreatedAt: "createdAt",
-      DomainName: "domainName",
-      EgressAccessLogs: "egressAccessLogs",
-      Id: "id",
-      Tags: "tags",
-    }),
-  ),
-).annotate({
-  identifier: "UpdatePackagingGroupResponse",
-}) as any as S.Schema<UpdatePackagingGroupResponse>;
+export const UpdatePackagingGroupResponse =
+  DescribePackagingGroupResponse as any as S.Schema<UpdatePackagingGroupResponse>;
 export type ConfigureLogsError =
   | ForbiddenException
   | InternalServerErrorException

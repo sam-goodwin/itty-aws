@@ -416,9 +416,8 @@ export const DeregisterAdminInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeregisterAdminInput" }) as any as S.Schema<DeregisterAdminInput>;
 export interface DeregisterAdminResponse {}
-export const DeregisterAdminResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeregisterAdminResponse",
-}) as any as S.Schema<DeregisterAdminResponse>;
+export const DeregisterAdminResponse =
+  DeleteSpaceResponse as any as S.Schema<DeregisterAdminResponse>;
 export interface GetChannelInput {
   spaceId: string;
   channelId: string;
@@ -497,9 +496,9 @@ export const VanityDomainStatus = S.String;
 export type Url = string;
 export type StorageLimit = number;
 export type UserAdmins = string[];
-export const UserAdmins = /*@__PURE__*/ S.Array(S.String);
+export const UserAdmins = AccessorIdList as any as S.Schema<UserAdmins>;
 export type GroupAdmins = string[];
-export const GroupAdmins = /*@__PURE__*/ S.Array(S.String);
+export const GroupAdmins = AccessorIdList as any as S.Schema<GroupAdmins>;
 export type RoleList = Role[];
 export const RoleList = /*@__PURE__*/ S.Array(Role);
 export type Roles = { [key: string]: Role[] | undefined };
@@ -729,9 +728,7 @@ export const RegisterAdminInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RegisterAdminInput" }) as any as S.Schema<RegisterAdminInput>;
 export interface RegisterAdminResponse {}
-export const RegisterAdminResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RegisterAdminResponse",
-}) as any as S.Schema<RegisterAdminResponse>;
+export const RegisterAdminResponse = DeleteSpaceResponse as any as S.Schema<RegisterAdminResponse>;
 export type InviteTitle = string | redacted.Redacted<string>;
 export type InviteBody = string | redacted.Redacted<string>;
 export interface SendInvitesInput {
@@ -758,9 +755,7 @@ export const SendInvitesInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SendInvitesInput" }) as any as S.Schema<SendInvitesInput>;
 export interface SendInvitesResponse {}
-export const SendInvitesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendInvitesResponse",
-}) as any as S.Schema<SendInvitesResponse>;
+export const SendInvitesResponse = DeleteSpaceResponse as any as S.Schema<SendInvitesResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -771,11 +766,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteSpaceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AccessorIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -789,9 +782,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteSpaceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelInput {
   spaceId: string;
   channelId: string;
@@ -816,9 +807,7 @@ export const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateChannelInput" }) as any as S.Schema<UpdateChannelInput>;
 export interface UpdateChannelOutput {}
-export const UpdateChannelOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateChannelOutput",
-}) as any as S.Schema<UpdateChannelOutput>;
+export const UpdateChannelOutput = DeleteSpaceResponse as any as S.Schema<UpdateChannelOutput>;
 export interface UpdateSpaceInput {
   spaceId: string;
   description?: string | redacted.Redacted<string>;
@@ -836,9 +825,7 @@ export const UpdateSpaceInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "PUT", uri: "/spaces/{spaceId}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateSpaceInput" }) as any as S.Schema<UpdateSpaceInput>;
 export interface UpdateSpaceResponse {}
-export const UpdateSpaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSpaceResponse",
-}) as any as S.Schema<UpdateSpaceResponse>;
+export const UpdateSpaceResponse = DeleteSpaceResponse as any as S.Schema<UpdateSpaceResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"

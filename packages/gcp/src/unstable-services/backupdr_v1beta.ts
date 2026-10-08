@@ -174,9 +174,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** PolicyEvaluationSummary contains the summary of the last run of job that applies policy to matching resources. */
 export interface PolicyEvaluationSummary {
@@ -3389,14 +3387,8 @@ export interface FilestoreInstanceDataSourceProperties {
   /** Output only. The instance creation timestamp. */
   instanceCreateTime?: string;
 }
-export const FilestoreInstanceDataSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    instanceCreateTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FilestoreInstanceDataSourceProperties",
-}) as any as S.Schema<FilestoreInstanceDataSourceProperties>;
+export const FilestoreInstanceDataSourceProperties =
+  FilestoreInstanceDataSourceReferenceProperties as any as S.Schema<FilestoreInstanceDataSourceProperties>;
 
 /** ComputeInstanceDataSourceProperties represents the properties of a ComputeEngine resource that are stored in the DataSource. */
 export interface ComputeInstanceDataSourceProperties {
@@ -4738,14 +4730,8 @@ export interface ListResourceBackupConfigsResponse {
   /** The list of ResourceBackupConfigs for the specified scope. */
   resourceBackupConfigs?: ResourceBackupConfigList;
 }
-export const ListResourceBackupConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    resourceBackupConfigs: S.optional(ResourceBackupConfigList),
-  }),
-).annotate({
-  identifier: "ListResourceBackupConfigsResponse",
-}) as any as S.Schema<ListResourceBackupConfigsResponse>;
+export const ListResourceBackupConfigsResponse =
+  FetchResourceBackupConfigsResponse as any as S.Schema<ListResourceBackupConfigsResponse>;
 
 /** Request message for GetMsComplianceMetadata */
 export interface FetchMsComplianceMetadataRequest {
@@ -4952,11 +4938,8 @@ export interface RemoveDataSourceRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const RemoveDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({ identifier: "RemoveDataSourceRequest" }) as any as S.Schema<RemoveDataSourceRequest>;
+export const RemoveDataSourceRequest =
+  AbandonBackupRequest as any as S.Schema<RemoveDataSourceRequest>;
 
 export interface RemoveProjectsLocationsBackupVaultsDataSourcesRequest {
   /** Required. Name of the resource. */
@@ -5521,13 +5504,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsManagementServersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

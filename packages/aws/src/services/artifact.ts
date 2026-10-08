@@ -661,7 +661,7 @@ export type CustomerAgreementState =
 export const CustomerAgreementState = S.String;
 
 export type AgreementTerms = string[];
-export const AgreementTerms = /*@__PURE__*/ S.Array(S.String);
+export const AgreementTerms = FileSectionList as any as S.Schema<AgreementTerms>;
 export type AgreementType = "CUSTOM" | "DEFAULT" | "MODIFIED" | (string & {});
 export const AgreementType = S.String;
 
@@ -819,11 +819,8 @@ export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAccountSettingsResponse {
   accountSettings?: AccountSettings;
 }
-export const PutAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountSettings: S.optional(AccountSettings) }),
-).annotate({
-  identifier: "PutAccountSettingsResponse",
-}) as any as S.Schema<PutAccountSettingsResponse>;
+export const PutAccountSettingsResponse =
+  GetAccountSettingsResponse as any as S.Schema<PutAccountSettingsResponse>;
 export type FeedbackRating = "THUMBS_UP" | "THUMBS_DOWN" | (string & {});
 export const FeedbackRating = S.String;
 
@@ -890,7 +887,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = FileSectionList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -904,9 +901,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;

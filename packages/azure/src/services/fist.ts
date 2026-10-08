@@ -130,9 +130,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of errors or other messages generated during firmware analysis */
 export type FirmwarePropertiesStatusMessagesList = Array<StatusMessage>;
-export const FirmwarePropertiesStatusMessagesList = /*@__PURE__*/ S.Array(
-  StatusMessage,
-) as any as S.Schema<FirmwarePropertiesStatusMessagesList>;
+export const FirmwarePropertiesStatusMessagesList =
+  FirmwarePropertiesInputStatusMessagesList as any as S.Schema<FirmwarePropertiesStatusMessagesList>;
 
 /** The status of a firmware analysis job. */
 export type ProvisioningState =
@@ -279,10 +278,8 @@ export const CreateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWorkspaceResponseTagsMap>;
+export const CreateWorkspaceResponseTagsMap =
+  CreateWorkspaceRequestTagsMap as any as S.Schema<CreateWorkspaceResponseTagsMap>;
 
 /** Workspace properties. */
 export interface WorkspaceProperties {
@@ -307,17 +304,8 @@ export interface CreateWorkspaceResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const CreateWorkspaceResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateWorkspaceResponseSku",
-}) as any as S.Schema<CreateWorkspaceResponseSku>;
+export const CreateWorkspaceResponseSku =
+  CreateWorkspaceRequestSku as any as S.Schema<CreateWorkspaceResponseSku>;
 
 export interface CreateWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -377,9 +365,8 @@ export const DeleteFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFirmwareRequest" }) as any as S.Schema<DeleteFirmwareRequest>;
 
 export interface DeleteFirmwareResponse {}
-export const DeleteFirmwareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirmwareResponse",
-}) as any as S.Schema<DeleteFirmwareResponse>;
+export const DeleteFirmwareResponse =
+  WorkspacePropertiesInput as any as S.Schema<DeleteFirmwareResponse>;
 
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -405,9 +392,8 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWorkspaceResponse",
-}) as any as S.Schema<DeleteWorkspaceResponse>;
+export const DeleteWorkspaceResponse =
+  WorkspacePropertiesInput as any as S.Schema<DeleteWorkspaceResponse>;
 
 export interface GetFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -447,15 +433,7 @@ export interface GetFirmwareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FirmwareProperties;
 }
-export const GetFirmwareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FirmwareProperties),
-  }),
-).annotate({ identifier: "GetFirmwareResponse" }) as any as S.Schema<GetFirmwareResponse>;
+export const GetFirmwareResponse = CreateFirmwareResponse as any as S.Schema<GetFirmwareResponse>;
 
 export type GetSummaryRequestSummaryType =
   | "Firmware"
@@ -631,10 +609,8 @@ export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWorkspaceResponseTagsMap>;
+export const GetWorkspaceResponseTagsMap =
+  CreateWorkspaceRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
 
 /** The resource model definition representing SKU */
 export type GetWorkspaceResponseSku = CreateWorkspaceResponseSku;
@@ -658,18 +634,8 @@ export interface GetWorkspaceResponse {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceResponseSku;
 }
-export const GetWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetWorkspaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(WorkspaceProperties),
-    sku: S.optional(CreateWorkspaceResponseSku),
-  }),
-).annotate({ identifier: "GetWorkspaceResponse" }) as any as S.Schema<GetWorkspaceResponse>;
+export const GetWorkspaceResponse =
+  CreateWorkspaceResponse as any as S.Schema<GetWorkspaceResponse>;
 
 export interface ListBinaryHardeningByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1052,15 +1018,13 @@ export const CryptoKeyType = S.String;
 
 /** Functions the key can fulfill. */
 export type CryptoKeyUsageList = Array<string>;
-export const CryptoKeyUsageList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CryptoKeyUsageList>;
+export const CryptoKeyUsageList =
+  CryptoCertificateFilePathsList as any as S.Schema<CryptoKeyUsageList>;
 
 /** List of files where this key was found. */
 export type CryptoKeyFilePathsList = Array<string>;
-export const CryptoKeyFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CryptoKeyFilePathsList>;
+export const CryptoKeyFilePathsList =
+  CryptoCertificateFilePathsList as any as S.Schema<CryptoKeyFilePathsList>;
 
 /** Crypto key properties */
 export interface CryptoKey {
@@ -1365,15 +1329,7 @@ export interface Firmware {
   /** The resource-specific properties for this resource. */
   properties?: FirmwareProperties;
 }
-export const Firmware = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FirmwareProperties),
-  }),
-).annotate({ identifier: "Firmware" }) as any as S.Schema<Firmware>;
+export const Firmware = CreateFirmwareResponse as any as S.Schema<Firmware>;
 
 /** The Firmware items on this page */
 export type FirmwareListResultValueList = Array<Firmware>;
@@ -1612,9 +1568,8 @@ export const ListSbomComponentByFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** File paths related to the component. Note, relatedFiles should be used instead of this property. */
 export type SbomComponentFilePathsList = Array<string>;
-export const SbomComponentFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SbomComponentFilePathsList>;
+export const SbomComponentFilePathsList =
+  CryptoCertificateFilePathsList as any as S.Schema<SbomComponentFilePathsList>;
 
 /** SBOM component of a firmware. */
 export interface SbomComponent {
@@ -1728,15 +1683,7 @@ export interface SummaryResource {
   /** The resource-specific properties for this resource. */
   properties?: SummaryResourceProperties;
 }
-export const SummaryResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SummaryResourceProperties),
-  }),
-).annotate({ identifier: "SummaryResource" }) as any as S.Schema<SummaryResource>;
+export const SummaryResource = GetSummaryResponse as any as S.Schema<SummaryResource>;
 
 /** The SummaryResource items on this page */
 export type SummaryResourceListResultValueList = Array<SummaryResource>;
@@ -1798,15 +1745,7 @@ export interface UsageMetric {
   /** The resource-specific properties for this resource. */
   properties?: UsageMetricProperties;
 }
-export const UsageMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(UsageMetricProperties),
-  }),
-).annotate({ identifier: "UsageMetric" }) as any as S.Schema<UsageMetric>;
+export const UsageMetric = GetUsageMetricsResponse as any as S.Schema<UsageMetric>;
 
 /** The UsageMetric items on this page */
 export type UsageMetricListResultValueList = Array<UsageMetric>;
@@ -1852,10 +1791,7 @@ export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
-export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WorkspaceTagsMap>;
+export const WorkspaceTagsMap = CreateWorkspaceRequestTagsMap as any as S.Schema<WorkspaceTagsMap>;
 
 /** The resource model definition representing SKU */
 export type WorkspaceSku = CreateWorkspaceResponseSku;
@@ -1880,18 +1816,7 @@ export interface Workspace {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceResponseSku;
 }
-export const Workspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WorkspaceTagsMap),
-    location: S.String,
-    properties: S.optional(WorkspaceProperties),
-    sku: S.optional(CreateWorkspaceResponseSku),
-  }),
-).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
+export const Workspace = CreateWorkspaceResponse as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
@@ -1973,15 +1898,8 @@ export interface UpdateFirmwareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FirmwareProperties;
 }
-export const UpdateFirmwareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FirmwareProperties),
-  }),
-).annotate({ identifier: "UpdateFirmwareResponse" }) as any as S.Schema<UpdateFirmwareResponse>;
+export const UpdateFirmwareResponse =
+  CreateFirmwareResponse as any as S.Schema<UpdateFirmwareResponse>;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type AzureResourceManagerCommonTypesSkuUpdateTier =
@@ -2018,10 +1936,8 @@ export const AzureResourceManagerCommonTypesSkuUpdate = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+export const UpdateWorkspaceRequestTagsMap =
+  CreateWorkspaceRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
 
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2054,10 +1970,8 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
+export const UpdateWorkspaceResponseTagsMap =
+  CreateWorkspaceRequestTagsMap as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
 
 /** The resource model definition representing SKU */
 export type UpdateWorkspaceResponseSku = CreateWorkspaceResponseSku;
@@ -2081,18 +1995,8 @@ export interface UpdateWorkspaceResponse {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceResponseSku;
 }
-export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateWorkspaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(WorkspaceProperties),
-    sku: S.optional(CreateWorkspaceResponseSku),
-  }),
-).annotate({ identifier: "UpdateWorkspaceResponse" }) as any as S.Schema<UpdateWorkspaceResponse>;
+export const UpdateWorkspaceResponse =
+  CreateWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
 
 export interface WorkspacesGenerateUploadUrlRequest {
   /** The ID of the target subscription. The value must be an UUID. */

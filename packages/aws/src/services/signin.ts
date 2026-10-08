@@ -569,11 +569,8 @@ export interface GetConsoleAuthorizationConfigurationOutput {
   scope: string;
   consoleAuthorizationEnabled: boolean;
 }
-export const GetConsoleAuthorizationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetId: S.String, scope: S.String, consoleAuthorizationEnabled: S.Boolean }),
-).annotate({
-  identifier: "GetConsoleAuthorizationConfigurationOutput",
-}) as any as S.Schema<GetConsoleAuthorizationConfigurationOutput>;
+export const GetConsoleAuthorizationConfigurationOutput =
+  DeleteConsoleAuthorizationConfigurationOutput as any as S.Schema<GetConsoleAuthorizationConfigurationOutput>;
 export interface GetResourcePolicyInput {}
 export const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -594,7 +591,7 @@ export type PolicyActions = string[];
 export const PolicyActions = /*@__PURE__*/ S.Array(S.String);
 export type ConditionType = string;
 export type ConditionValues = string[];
-export const ConditionValues = /*@__PURE__*/ S.Array(S.String);
+export const ConditionValues = PolicyActions as any as S.Schema<ConditionValues>;
 export type Condition = { [key: string]: string[] | undefined };
 export const Condition = /*@__PURE__*/ S.Record(
   S.String,
@@ -781,11 +778,8 @@ export interface PutConsoleAuthorizationConfigurationOutput {
   scope: string;
   consoleAuthorizationEnabled: boolean;
 }
-export const PutConsoleAuthorizationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetId: S.String, scope: S.String, consoleAuthorizationEnabled: S.Boolean }),
-).annotate({
-  identifier: "PutConsoleAuthorizationConfigurationOutput",
-}) as any as S.Schema<PutConsoleAuthorizationConfigurationOutput>;
+export const PutConsoleAuthorizationConfigurationOutput =
+  DeleteConsoleAuthorizationConfigurationOutput as any as S.Schema<PutConsoleAuthorizationConfigurationOutput>;
 export type SourceVpc = string;
 export type SourceVpce = string;
 export type VpcSourceIp = string;
@@ -854,11 +848,8 @@ export const RevokeOAuth2TokenWithIAMRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeOAuth2TokenWithIAMRequest",
 }) as any as S.Schema<RevokeOAuth2TokenWithIAMRequest>;
 export interface RevokeOAuth2TokenWithIAMResponse {}
-export const RevokeOAuth2TokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeOAuth2TokenWithIAMResponse",
-}) as any as S.Schema<RevokeOAuth2TokenWithIAMResponse>;
+export const RevokeOAuth2TokenWithIAMResponse =
+  DeleteResourcePermissionStatementOutput as any as S.Schema<RevokeOAuth2TokenWithIAMResponse>;
 export type OAuth2ErrorCode =
   | "TOKEN_EXPIRED"
   | "USER_CREDENTIALS_CHANGED"

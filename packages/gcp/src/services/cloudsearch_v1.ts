@@ -1153,21 +1153,13 @@ export interface HtmlValues {
   /** The maximum allowable length for html values is 2048 characters. */
   values?: StringList;
 }
-export const HtmlValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({ identifier: "HtmlValues" }) as any as S.Schema<HtmlValues>;
+export const HtmlValues = EnumValues as any as S.Schema<HtmlValues>;
 
 /** List of integer values. */
 export interface IntegerValues {
   values?: StringList;
 }
-export const IntegerValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({ identifier: "IntegerValues" }) as any as S.Schema<IntegerValues>;
+export const IntegerValues = EnumValues as any as S.Schema<IntegerValues>;
 
 /** List of timestamp values. */
 export type TimestampValues = IntegerValues;
@@ -1178,11 +1170,7 @@ export interface TextValues {
   /** The maximum allowable length for text values is 2048 characters. */
   values?: StringList;
 }
-export const TextValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({ identifier: "TextValues" }) as any as S.Schema<TextValues>;
+export const TextValues = EnumValues as any as S.Schema<TextValues>;
 
 /** A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`. */
 export interface NamedProperty {
@@ -1545,11 +1533,7 @@ export interface HtmlOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the html property. For example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:<value>* show results only where the value of the property named *subjectLine* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator return all items where *<value>* matches the value of any html properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const HtmlOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "HtmlOperatorOptions" }) as any as S.Schema<HtmlOperatorOptions>;
+export const HtmlOperatorOptions = DoubleOperatorOptions as any as S.Schema<HtmlOperatorOptions>;
 
 /** The options for html properties. */
 export interface HtmlPropertyOptions {
@@ -1659,11 +1643,7 @@ export interface EnumOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the enum property. For example, if operatorName is *priority* and the property's name is *priorityVal*, then queries like *priority:<value>* show results only where the value of the property named *priorityVal* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const EnumOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnumOperatorOptions" }) as any as S.Schema<EnumOperatorOptions>;
+export const EnumOperatorOptions = DoubleOperatorOptions as any as S.Schema<EnumOperatorOptions>;
 
 /** The options for enum properties, which allow you to define a restricted set of strings to match user queries, set rankings for those string values, and define an operator name to be paired with those strings so that users can narrow results to only items with a specific value. For example, for items in a request tracking system with priority information, you could define *p0* as an allowable enum value and tie this enum to the operator name *priority* so that search users could add *priority:p0* to their query to restrict the set of results to only those items indexed with the value *p0*. */
 export interface EnumPropertyOptions {
@@ -1758,22 +1738,16 @@ export interface BooleanOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the boolean property. For example, if operatorName is *closed* and the property's name is *isClosed*, then queries like *closed:<value>* show results only where the value of the property named *isClosed* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const BooleanOperatorOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorName: S.optional(S.String),
-  }),
-).annotate({ identifier: "BooleanOperatorOptions" }) as any as S.Schema<BooleanOperatorOptions>;
+export const BooleanOperatorOptions =
+  DoubleOperatorOptions as any as S.Schema<BooleanOperatorOptions>;
 
 /** The options for boolean properties. */
 export interface BooleanPropertyOptions {
   /** If set, describes how the boolean should be used as a search operator. */
   operatorOptions?: BooleanOperatorOptions;
 }
-export const BooleanPropertyOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operatorOptions: S.optional(BooleanOperatorOptions),
-  }),
-).annotate({ identifier: "BooleanPropertyOptions" }) as any as S.Schema<BooleanPropertyOptions>;
+export const BooleanPropertyOptions =
+  DoublePropertyOptions as any as S.Schema<BooleanPropertyOptions>;
 
 /** The definition of a property within an object. */
 export interface PropertyDefinition {
@@ -2224,9 +2198,8 @@ export type SearchApplicationQueryStats = CustomerQueryStats;
 export const SearchApplicationQueryStats = CustomerQueryStats;
 
 export type SearchApplicationQueryStatsList = Array<CustomerQueryStats>;
-export const SearchApplicationQueryStatsList = /*@__PURE__*/ S.Array(
-  CustomerQueryStats,
-) as any as S.Schema<SearchApplicationQueryStatsList>;
+export const SearchApplicationQueryStatsList =
+  CustomerQueryStatsList as any as S.Schema<SearchApplicationQueryStatsList>;
 
 /** Response format for getting query stats for a search application between given dates. */
 export interface GetSearchApplicationQueryStatsResponse {
@@ -3266,9 +3239,8 @@ export const RemoveActivityQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Remove Logged Activity Response. will return an empty response for now. Will be revisited in later phases. */
 export interface RemoveActivityResponse {}
-export const RemoveActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveActivityResponse",
-}) as any as S.Schema<RemoveActivityResponse>;
+export const RemoveActivityResponse =
+  InitializeCustomerRequest as any as S.Schema<RemoveActivityResponse>;
 
 export interface ResetSearchApplicationRequest {
   /** Common debug options. */
@@ -3986,11 +3958,7 @@ export interface PeopleSuggestion {
   /** Suggested person. All fields of the person object might not be populated. */
   person?: Person;
 }
-export const PeopleSuggestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    person: S.optional(Person),
-  }),
-).annotate({ identifier: "PeopleSuggestion" }) as any as S.Schema<PeopleSuggestion>;
+export const PeopleSuggestion = StructuredResult as any as S.Schema<PeopleSuggestion>;
 
 /** One suggestion result. */
 export interface SuggestResult {
@@ -4036,13 +4004,8 @@ export interface UnreserveItemsRequest {
   /** The name of a queue to unreserve items from. */
   queue?: string;
 }
-export const UnreserveItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    debugOptions: S.optional(DebugOptions),
-    connectorName: S.optional(S.String),
-    queue: S.optional(S.String),
-  }),
-).annotate({ identifier: "UnreserveItemsRequest" }) as any as S.Schema<UnreserveItemsRequest>;
+export const UnreserveItemsRequest =
+  DeleteQueueItemsRequest as any as S.Schema<UnreserveItemsRequest>;
 
 export interface UnreserveIndexingDatasourcesItemsRequest {
   /** The name of the Data Source to unreserve all items. Format: datasources/{source_id} */

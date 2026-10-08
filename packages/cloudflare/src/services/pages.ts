@@ -173,9 +173,8 @@ export const AssetsCheckMissingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsCheckMissingRequest>;
 
 export type AssetsCheckMissingResultList = Array<string>;
-export const AssetsCheckMissingResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssetsCheckMissingResultList>;
+export const AssetsCheckMissingResultList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<AssetsCheckMissingResultList>;
 
 export type AssetsCheckMissingResponse = AssetsCheckMissingResultList;
 export const AssetsCheckMissingResponse = /*@__PURE__*/ S.suspend(() =>
@@ -185,9 +184,8 @@ export const AssetsCheckMissingResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetsCheckMissingResponse>;
 
 export type AssetsUpsertHashesRequestHashesList = Array<string>;
-export const AssetsUpsertHashesRequestHashesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssetsUpsertHashesRequestHashesList>;
+export const AssetsUpsertHashesRequestHashesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<AssetsUpsertHashesRequestHashesList>;
 
 export interface AssetsUpsertHashesRequest {
   /** List of file content hashes to register in the asset store. */
@@ -298,10 +296,8 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList
 export type ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap>;
+export const ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue {
   /** ID of the Durable Object namespace. */
@@ -328,10 +324,8 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespace
   ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type UntypedBindingMap = { [key: string]: unknown | undefined };
-export const UntypedBindingMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UntypedBindingMap>;
+export const UntypedBindingMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<UntypedBindingMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
@@ -357,10 +351,8 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap 
 export type ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap>;
+export const ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewLimits {
   /** CPU time limit in milliseconds. */
@@ -432,10 +424,8 @@ export const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap =
 export type ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap>;
+export const ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsPreviewServicesValue {
   /** The Service name. */
@@ -614,10 +604,8 @@ export const ProjectsCreateRequestDeploymentConfigsProductionAiBindingsValue =
 export type ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap>;
+export const ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -630,24 +618,17 @@ export type ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatas
     | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap>;
+export const ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
 export const ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
@@ -669,10 +650,7 @@ export type ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespa
     | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -683,19 +661,13 @@ export type ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMa
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -711,10 +683,7 @@ export type ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -730,18 +699,13 @@ export type ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap = 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap>;
+export const ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
@@ -751,10 +715,8 @@ export const ProjectsCreateRequestDeploymentConfigsProductionServicesValue =
 export type ProjectsCreateRequestDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsCreateRequestDeploymentConfigsProductionServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionServicesMap>;
+export const ProjectsCreateRequestDeploymentConfigsProductionServicesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsCreateRequestDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -771,10 +733,7 @@ export type ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsCreateRequestDeploymentConfigsProduction {
   /** Constellation bindings used for Pages Functions. */
@@ -907,24 +866,20 @@ export const ProjectsCreateRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ProjectsCreateRequestDeploymentConfigs>;
 
 export type ProjectsCreateRequestSourceConfigPathExcludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateRequestSourceConfigPathExcludesList>;
+export const ProjectsCreateRequestSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPathExcludesList>;
 
 export type ProjectsCreateRequestSourceConfigPathIncludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateRequestSourceConfigPathIncludesList>;
+export const ProjectsCreateRequestSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPathIncludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPreviewBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchExcludesList>;
+export const ProjectsCreateRequestSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsCreateRequestSourceConfigPreviewBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchIncludesList>;
+export const ProjectsCreateRequestSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateRequestSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
 export const ProjectsCreateRequestSourceConfigPreviewDeploymentSetting = S.String;
@@ -1044,9 +999,8 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateProjectRequest" }) as any as S.Schema<CreateProjectRequest>;
 
 export type ProjectsCreateResponseCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsCreateResponseCanonicalDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentAliasesList>;
+export const ProjectsCreateResponseCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentAliasesList>;
 
 export interface ProjectsCreateResponseCanonicalDeploymentBuildConfig {
   /** The classifying tag for analytics. */
@@ -1162,29 +1116,21 @@ export const ProjectsCreateResponseCanonicalDeploymentLatestStage = /*@__PURE__*
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -1394,9 +1340,7 @@ export const ProjectsCreateResponseCanonicalDeployment = /*@__PURE__*/ S.suspend
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
 export const ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -1412,10 +1356,8 @@ export const ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsValue =
 export type ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap>;
+export const ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -1428,26 +1370,19 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDataset
     | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap>;
+export const ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap>;
+export const ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -1460,10 +1395,7 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespace
     | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -1474,18 +1406,13 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap>;
+export const ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -1501,10 +1428,7 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap = 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -1520,18 +1444,13 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap>;
+export const ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsPreviewServicesValue {
   /** The Service environment. */
@@ -1569,10 +1488,7 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap =
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -1697,9 +1613,7 @@ export const ProjectsCreateResponseDeploymentConfigsPreview = /*@__PURE__*/ S.su
 
 export type ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
 export const ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -1732,27 +1646,19 @@ export type ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineData
     | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap>;
+export const ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap>;
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -1765,10 +1671,7 @@ export type ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamesp
     | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -1779,19 +1682,13 @@ export type ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsM
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -1807,10 +1704,7 @@ export type ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -1826,18 +1720,13 @@ export type ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap =
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap>;
+export const ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
@@ -1847,10 +1736,8 @@ export const ProjectsCreateResponseDeploymentConfigsProductionServicesValue =
 export type ProjectsCreateResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsCreateResponseDeploymentConfigsProductionServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionServicesMap>;
+export const ProjectsCreateResponseDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
@@ -1861,10 +1748,7 @@ export type ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMa
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsCreateResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -2004,9 +1888,8 @@ export const ProjectsCreateResponseDeploymentConfigs = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ProjectsCreateResponseDeploymentConfigs>;
 
 export type ProjectsCreateResponseLatestDeploymentAliasesList = Array<string>;
-export const ProjectsCreateResponseLatestDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateResponseLatestDeploymentAliasesList>;
+export const ProjectsCreateResponseLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseLatestDeploymentAliasesList>;
 
 export type ProjectsCreateResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -2139,29 +2022,21 @@ export const ProjectsCreateResponseLatestDeploymentLatestStage = /*@__PURE__*/ S
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -2374,29 +2249,24 @@ export const ProjectsCreateResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 
 export type ProjectsCreateResponseDomainsList = Array<string>;
-export const ProjectsCreateResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateResponseDomainsList>;
+export const ProjectsCreateResponseDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseDomainsList>;
 
 export type ProjectsCreateResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateResponseSourceConfigPathExcludesList>;
+export const ProjectsCreateResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPathExcludesList>;
 
 export type ProjectsCreateResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateResponseSourceConfigPathIncludesList>;
+export const ProjectsCreateResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPathIncludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPreviewBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchExcludesList>;
+export const ProjectsCreateResponseSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsCreateResponseSourceConfigPreviewBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchIncludesList>;
+export const ProjectsCreateResponseSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsCreateResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
 export const ProjectsCreateResponseSourceConfigPreviewDeploymentSetting = S.String;
@@ -2598,9 +2468,8 @@ export const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsCreateResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsCreateResponseAliasesList>;
+export const ProjectsDeploymentsCreateResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseAliasesList>;
 
 export type ProjectsDeploymentsCreateResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -2675,26 +2544,20 @@ export const ProjectsDeploymentsCreateResponseLatestStage = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ProjectsDeploymentsCreateResponseLatestStage>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList>;
+export const ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList>;
+export const ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList = Array<string>;
 export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList = Array<string>;
 export const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -3027,10 +2890,8 @@ export const CreateProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateProjectsDeploymentsTailRequestFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateProjectsDeploymentsTailRequestFiltersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateProjectsDeploymentsTailRequestFiltersItemMap>;
+export const CreateProjectsDeploymentsTailRequestFiltersItemMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<CreateProjectsDeploymentsTailRequestFiltersItemMap>;
 
 export type CreateProjectsDeploymentsTailRequestFiltersList =
   Array<CreateProjectsDeploymentsTailRequestFiltersItemMap>;
@@ -3172,11 +3033,8 @@ export const DeleteProjectDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectDomainRequest>;
 
 export type DeleteProjectDomainResponse = unknown;
-export const DeleteProjectDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteProjectDomainResponse",
-}) as any as S.Schema<DeleteProjectDomainResponse>;
+export const DeleteProjectDomainResponse =
+  DeleteProjectDeploymentResponse as any as S.Schema<DeleteProjectDomainResponse>;
 
 export interface DeleteProjectsDeploymentsTailRequest {
   /** Identifier. */
@@ -3208,11 +3066,8 @@ export const DeleteProjectsDeploymentsTailRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteProjectsDeploymentsTailRequest>;
 
 export type DeleteProjectsDeploymentsTailResponse = unknown;
-export const DeleteProjectsDeploymentsTailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteProjectsDeploymentsTailResponse",
-}) as any as S.Schema<DeleteProjectsDeploymentsTailResponse>;
+export const DeleteProjectsDeploymentsTailResponse =
+  DeleteProjectDeploymentResponse as any as S.Schema<DeleteProjectsDeploymentsTailResponse>;
 
 export interface GetProjectRequest {
   /** Identifier. */
@@ -3236,9 +3091,8 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectRequest" }) as any as S.Schema<GetProjectRequest>;
 
 export type ProjectsGetResponseCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsGetResponseCanonicalDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentAliasesList>;
+export const ProjectsGetResponseCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentAliasesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -3314,29 +3168,21 @@ export const ProjectsGetResponseCanonicalDeploymentLatestStage = /*@__PURE__*/ S
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -3545,9 +3391,7 @@ export const ProjectsGetResponseCanonicalDeployment = /*@__PURE__*/ S.suspend(()
 
 export type ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
 export const ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -3563,10 +3407,8 @@ export const ProjectsGetResponseDeploymentConfigsPreviewAiBindingsValue =
 export type ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap>;
+export const ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -3579,26 +3421,19 @@ export type ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMa
     | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap>;
+export const ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap>;
+export const ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -3611,10 +3446,7 @@ export type ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMa
     | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -3625,18 +3457,13 @@ export type ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap>;
+export const ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -3652,10 +3479,7 @@ export type ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -3678,10 +3502,8 @@ export const ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap = /*@_
 export type ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap>;
+export const ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
@@ -3691,10 +3513,8 @@ export const ProjectsGetResponseDeploymentConfigsPreviewServicesValue =
 export type ProjectsGetResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewServicesMap>;
+export const ProjectsGetResponseDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
@@ -3705,10 +3525,7 @@ export type ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -3829,9 +3646,7 @@ export const ProjectsGetResponseDeploymentConfigsPreview = /*@__PURE__*/ S.suspe
 
 export type ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
 export const ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -3847,10 +3662,8 @@ export const ProjectsGetResponseDeploymentConfigsProductionAiBindingsValue =
 export type ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap>;
+export const ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -3863,26 +3676,19 @@ export type ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDataset
     | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionBrowsersMap>;
+export const ProjectsGetResponseDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap>;
+export const ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -3895,10 +3701,7 @@ export type ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespace
     | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -3909,18 +3712,13 @@ export type ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap>;
+export const ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -3936,10 +3734,7 @@ export type ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap = 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -3955,18 +3750,13 @@ export type ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap>;
+export const ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
@@ -3976,10 +3766,8 @@ export const ProjectsGetResponseDeploymentConfigsProductionServicesValue =
 export type ProjectsGetResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsGetResponseDeploymentConfigsProductionServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionServicesMap>;
+export const ProjectsGetResponseDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
@@ -3990,10 +3778,7 @@ export type ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap =
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsGetResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -4132,9 +3917,8 @@ export const ProjectsGetResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ProjectsGetResponseDeploymentConfigs>;
 
 export type ProjectsGetResponseLatestDeploymentAliasesList = Array<string>;
-export const ProjectsGetResponseLatestDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsGetResponseLatestDeploymentAliasesList>;
+export const ProjectsGetResponseLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseLatestDeploymentAliasesList>;
 
 export type ProjectsGetResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -4267,29 +4051,21 @@ export const ProjectsGetResponseLatestDeploymentLatestStage = /*@__PURE__*/ S.su
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -4500,29 +4276,24 @@ export type ProjectsGetResponseBuildConfig = ProjectsCreateResponseCanonicalDepl
 export const ProjectsGetResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 
 export type ProjectsGetResponseDomainsList = Array<string>;
-export const ProjectsGetResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsGetResponseDomainsList>;
+export const ProjectsGetResponseDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseDomainsList>;
 
 export type ProjectsGetResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsGetResponseSourceConfigPathExcludesList>;
+export const ProjectsGetResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPathExcludesList>;
 
 export type ProjectsGetResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsGetResponseSourceConfigPathIncludesList>;
+export const ProjectsGetResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPathIncludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPreviewBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchExcludesList>;
+export const ProjectsGetResponseSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsGetResponseSourceConfigPreviewBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchIncludesList>;
+export const ProjectsGetResponseSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsGetResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
 export const ProjectsGetResponseSourceConfigPreviewDeploymentSetting = S.String;
@@ -4685,9 +4456,8 @@ export const GetProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsGetResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsGetResponseAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsGetResponseAliasesList>;
+export const ProjectsDeploymentsGetResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseAliasesList>;
 
 export type ProjectsDeploymentsGetResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -4762,26 +4532,20 @@ export const ProjectsDeploymentsGetResponseLatestStage = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ProjectsDeploymentsGetResponseLatestStage>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsGetResponseSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathExcludesList>;
+export const ProjectsDeploymentsGetResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsGetResponseSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathIncludesList>;
+export const ProjectsDeploymentsGetResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList = Array<string>;
 export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList = Array<string>;
 export const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -5200,9 +4964,8 @@ export const ListProjectDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectDeploymentsRequest>;
 
 export type ProjectsDeploymentsListResultItemAliasesList = Array<string>;
-export const ProjectsDeploymentsListResultItemAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsListResultItemAliasesList>;
+export const ProjectsDeploymentsListResultItemAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemAliasesList>;
 
 export type ProjectsDeploymentsListResultItemBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -5277,26 +5040,20 @@ export const ProjectsDeploymentsListResultItemLatestStage = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ProjectsDeploymentsListResultItemLatestStage>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsListResultItemSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathExcludesList>;
+export const ProjectsDeploymentsListResultItemSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsListResultItemSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathIncludesList>;
+export const ProjectsDeploymentsListResultItemSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList = Array<string>;
 export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList = Array<string>;
 export const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -5680,9 +5437,8 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsRequest" }) as any as S.Schema<ListProjectsRequest>;
 
 export type ProjectsListResultItemCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsListResultItemCanonicalDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentAliasesList>;
+export const ProjectsListResultItemCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentAliasesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -5759,29 +5515,21 @@ export const ProjectsListResultItemCanonicalDeploymentLatestStage = /*@__PURE__*
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -5991,9 +5739,7 @@ export const ProjectsListResultItemCanonicalDeployment = /*@__PURE__*/ S.suspend
 
 export type ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
 export const ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -6009,10 +5755,8 @@ export const ProjectsListResultItemDeploymentConfigsPreviewAiBindingsValue =
 export type ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap>;
+export const ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -6025,26 +5769,19 @@ export type ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDataset
     | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap>;
+export const ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap>;
+export const ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -6057,10 +5794,7 @@ export type ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespace
     | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -6071,18 +5805,13 @@ export type ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap>;
+export const ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -6098,10 +5827,7 @@ export type ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap = 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -6117,18 +5843,13 @@ export type ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap>;
+export const ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
@@ -6138,10 +5859,8 @@ export const ProjectsListResultItemDeploymentConfigsPreviewServicesValue =
 export type ProjectsListResultItemDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewServicesMap>;
+export const ProjectsListResultItemDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
@@ -6152,10 +5871,7 @@ export type ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap =
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -6280,9 +5996,7 @@ export const ProjectsListResultItemDeploymentConfigsPreview = /*@__PURE__*/ S.su
 
 export type ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
 export const ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -6299,10 +6013,7 @@ export type ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap>;
+  ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -6315,27 +6026,19 @@ export type ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineData
     | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionBrowsersMap>;
+export const ProjectsListResultItemDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap>;
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -6348,10 +6051,7 @@ export type ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamesp
     | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -6362,19 +6062,13 @@ export type ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsM
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -6390,10 +6084,7 @@ export type ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -6409,18 +6100,13 @@ export type ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap =
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap>;
+export const ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
@@ -6430,10 +6116,8 @@ export const ProjectsListResultItemDeploymentConfigsProductionServicesValue =
 export type ProjectsListResultItemDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsListResultItemDeploymentConfigsProductionServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionServicesMap>;
+export const ProjectsListResultItemDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
@@ -6444,10 +6128,7 @@ export type ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMa
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsListResultItemDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -6587,9 +6268,8 @@ export const ProjectsListResultItemDeploymentConfigs = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ProjectsListResultItemDeploymentConfigs>;
 
 export type ProjectsListResultItemLatestDeploymentAliasesList = Array<string>;
-export const ProjectsListResultItemLatestDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsListResultItemLatestDeploymentAliasesList>;
+export const ProjectsListResultItemLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemLatestDeploymentAliasesList>;
 
 export type ProjectsListResultItemLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -6722,29 +6402,21 @@ export const ProjectsListResultItemLatestDeploymentLatestStage = /*@__PURE__*/ S
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -6957,29 +6629,24 @@ export const ProjectsListResultItemBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 
 export type ProjectsListResultItemDomainsList = Array<string>;
-export const ProjectsListResultItemDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsListResultItemDomainsList>;
+export const ProjectsListResultItemDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemDomainsList>;
 
 export type ProjectsListResultItemSourceConfigPathExcludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsListResultItemSourceConfigPathExcludesList>;
+export const ProjectsListResultItemSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPathExcludesList>;
 
 export type ProjectsListResultItemSourceConfigPathIncludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsListResultItemSourceConfigPathIncludesList>;
+export const ProjectsListResultItemSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPathIncludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPreviewBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchExcludesList>;
+export const ProjectsListResultItemSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsListResultItemSourceConfigPreviewBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchIncludesList>;
+export const ProjectsListResultItemSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsListResultItemSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
 export const ProjectsListResultItemSourceConfigPreviewDeploymentSetting = S.String;
@@ -7143,10 +6810,8 @@ export const ProjectsEditRequestDeploymentConfigsPreviewAiBindingsValue =
 export type ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap>;
+export const ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -7159,32 +6824,23 @@ export type ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMa
     | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap>;
+export const ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
 export const ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap>;
+export const ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -7197,10 +6853,7 @@ export type ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMa
     | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -7211,18 +6864,13 @@ export type ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap>;
+export const ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -7238,10 +6886,7 @@ export type ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -7256,18 +6901,14 @@ export const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersValue =
 export type ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap>;
+export const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap =
+  ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap>;
+export const ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
@@ -7277,10 +6918,8 @@ export const ProjectsEditRequestDeploymentConfigsPreviewServicesValue =
 export type ProjectsEditRequestDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewServicesMap>;
+export const ProjectsEditRequestDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -7297,10 +6936,7 @@ export type ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsPreview {
   /** Constellation bindings used for Pages Functions. */
@@ -7423,10 +7059,8 @@ export const ProjectsEditRequestDeploymentConfigsProductionAiBindingsValue =
 export type ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap>;
+export const ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -7439,32 +7073,23 @@ export type ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDataset
     | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionBrowsersMap>;
+export const ProjectsEditRequestDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
 export const ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap>;
+export const ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -7477,10 +7102,7 @@ export type ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespace
     | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -7491,18 +7113,13 @@ export type ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap>;
+export const ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -7518,10 +7135,7 @@ export type ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap = 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -7537,18 +7151,13 @@ export type ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap>;
+export const ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
@@ -7558,10 +7167,8 @@ export const ProjectsEditRequestDeploymentConfigsProductionServicesValue =
 export type ProjectsEditRequestDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditRequestDeploymentConfigsProductionServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionServicesMap>;
+export const ProjectsEditRequestDeploymentConfigsProductionServicesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsEditRequestDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -7578,10 +7185,7 @@ export type ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap =
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsEditRequestDeploymentConfigsProduction {
   /** Constellation bindings used for Pages Functions. */
@@ -7714,24 +7318,20 @@ export const ProjectsEditRequestDeploymentConfigs = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ProjectsEditRequestDeploymentConfigs>;
 
 export type ProjectsEditRequestSourceConfigPathExcludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditRequestSourceConfigPathExcludesList>;
+export const ProjectsEditRequestSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPathExcludesList>;
 
 export type ProjectsEditRequestSourceConfigPathIncludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditRequestSourceConfigPathIncludesList>;
+export const ProjectsEditRequestSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPathIncludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPreviewBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchExcludesList>;
+export const ProjectsEditRequestSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsEditRequestSourceConfigPreviewBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchIncludesList>;
+export const ProjectsEditRequestSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditRequestSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
 export const ProjectsEditRequestSourceConfigPreviewDeploymentSetting = S.String;
@@ -7860,9 +7460,8 @@ export const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchProjectRequest" }) as any as S.Schema<PatchProjectRequest>;
 
 export type ProjectsEditResponseCanonicalDeploymentAliasesList = Array<string>;
-export const ProjectsEditResponseCanonicalDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentAliasesList>;
+export const ProjectsEditResponseCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentAliasesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -7939,29 +7538,21 @@ export const ProjectsEditResponseCanonicalDeploymentLatestStage = /*@__PURE__*/ 
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -8170,9 +7761,7 @@ export const ProjectsEditResponseCanonicalDeployment = /*@__PURE__*/ S.suspend((
 
 export type ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
 export const ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
@@ -8188,10 +7777,8 @@ export const ProjectsEditResponseDeploymentConfigsPreviewAiBindingsValue =
 export type ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap>;
+export const ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -8204,26 +7791,19 @@ export type ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsM
     | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap>;
+export const ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap>;
+export const ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -8236,10 +7816,7 @@ export type ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesM
     | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -8250,18 +7827,13 @@ export type ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap = 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap>;
+export const ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -8277,10 +7849,7 @@ export type ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -8295,18 +7864,14 @@ export const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersValue =
 export type ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap>;
+export const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap =
+  ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap>;
+export const ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
@@ -8316,10 +7881,8 @@ export const ProjectsEditResponseDeploymentConfigsPreviewServicesValue =
 export type ProjectsEditResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewServicesMap>;
+export const ProjectsEditResponseDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewServicesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
@@ -8330,10 +7893,7 @@ export type ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -8454,9 +8014,7 @@ export const ProjectsEditResponseDeploymentConfigsPreview = /*@__PURE__*/ S.susp
 
 export type ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
 export const ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionUsageModel =
   | "standard"
@@ -8472,10 +8030,8 @@ export const ProjectsEditResponseDeploymentConfigsProductionAiBindingsValue =
 export type ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap>;
+export const ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
@@ -8488,26 +8044,19 @@ export type ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatase
     | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionBrowsersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionBrowsersMap>;
+export const ProjectsEditResponseDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionBrowsersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap>;
+export const ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
@@ -8520,10 +8069,7 @@ export type ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespac
     | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
@@ -8534,19 +8080,13 @@ export type ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap>;
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
@@ -8562,10 +8102,7 @@ export type ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap =
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
@@ -8581,18 +8118,13 @@ export type ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap>;
+export const ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
@@ -8602,10 +8134,8 @@ export const ProjectsEditResponseDeploymentConfigsProductionServicesValue =
 export type ProjectsEditResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
-export const ProjectsEditResponseDeploymentConfigsProductionServicesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProjectsCreateResponseDeploymentConfigsPreviewServicesValue,
-) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionServicesMap>;
+export const ProjectsEditResponseDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionServicesMap>;
 
 export type ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
@@ -8616,10 +8146,7 @@ export type ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap 
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
 export const ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
-  ) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap>;
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap>;
 
 export interface ProjectsEditResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
@@ -8758,9 +8285,8 @@ export const ProjectsEditResponseDeploymentConfigs = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ProjectsEditResponseDeploymentConfigs>;
 
 export type ProjectsEditResponseLatestDeploymentAliasesList = Array<string>;
-export const ProjectsEditResponseLatestDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditResponseLatestDeploymentAliasesList>;
+export const ProjectsEditResponseLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseLatestDeploymentAliasesList>;
 
 export type ProjectsEditResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -8893,29 +8419,21 @@ export const ProjectsEditResponseLatestDeploymentLatestStage = /*@__PURE__*/ S.s
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
 export const ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
 export const ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -9126,29 +8644,24 @@ export type ProjectsEditResponseBuildConfig = ProjectsCreateResponseCanonicalDep
 export const ProjectsEditResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 
 export type ProjectsEditResponseDomainsList = Array<string>;
-export const ProjectsEditResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditResponseDomainsList>;
+export const ProjectsEditResponseDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseDomainsList>;
 
 export type ProjectsEditResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditResponseSourceConfigPathExcludesList>;
+export const ProjectsEditResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPathExcludesList>;
 
 export type ProjectsEditResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditResponseSourceConfigPathIncludesList>;
+export const ProjectsEditResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPathIncludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewBranchExcludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPreviewBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchExcludesList>;
+export const ProjectsEditResponseSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewBranchIncludesList = Array<string>;
-export const ProjectsEditResponseSourceConfigPreviewBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchIncludesList>;
+export const ProjectsEditResponseSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsEditResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
 export const ProjectsEditResponseSourceConfigPreviewDeploymentSetting = S.String;
@@ -9464,11 +8977,8 @@ export const PurgeBuildCacheProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeBuildCacheProjectRequest>;
 
 export type PurgeBuildCacheProjectResponse = unknown;
-export const PurgeBuildCacheProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PurgeBuildCacheProjectResponse",
-}) as any as S.Schema<PurgeBuildCacheProjectResponse>;
+export const PurgeBuildCacheProjectResponse =
+  DeleteProjectDeploymentResponse as any as S.Schema<PurgeBuildCacheProjectResponse>;
 
 export interface RetryProjectDeploymentRequest {
   /** Identifier. */
@@ -9497,9 +9007,8 @@ export const RetryProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetryProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsRetryResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsRetryResponseAliasesList>;
+export const ProjectsDeploymentsRetryResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseAliasesList>;
 
 export type ProjectsDeploymentsRetryResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -9574,26 +9083,20 @@ export const ProjectsDeploymentsRetryResponseLatestStage = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ProjectsDeploymentsRetryResponseLatestStage>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList>;
+export const ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList = Array<string>;
-export const ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList>;
+export const ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList = Array<string>;
 export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList = Array<string>;
 export const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting =
   | "all"
@@ -9828,9 +9331,8 @@ export const RollbackProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RollbackProjectDeploymentRequest>;
 
 export type ProjectsDeploymentsRollbackResponseAliasesList = Array<string>;
-export const ProjectsDeploymentsRollbackResponseAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectsDeploymentsRollbackResponseAliasesList>;
+export const ProjectsDeploymentsRollbackResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRollbackResponseAliasesList>;
 
 export type ProjectsDeploymentsRollbackResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
@@ -9906,29 +9408,21 @@ export const ProjectsDeploymentsRollbackResponseLatestStage = /*@__PURE__*/ S.su
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList = Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList = Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
   Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
   Array<string>;
 export const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList>;
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList>;
 
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting =
   | "all"

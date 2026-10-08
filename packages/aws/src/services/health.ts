@@ -163,13 +163,13 @@ export const DescribeAffectedAccountsForOrganizationResponse = /*@__PURE__*/ S.s
   identifier: "DescribeAffectedAccountsForOrganizationResponse",
 }) as any as S.Schema<DescribeAffectedAccountsForOrganizationResponse>;
 export type EventArnList = string[];
-export const EventArnList = /*@__PURE__*/ S.Array(S.String);
+export const EventArnList = AffectedAccountsList as any as S.Schema<EventArnList>;
 export type EntityArn = string;
 export type EntityArnList = string[];
-export const EntityArnList = /*@__PURE__*/ S.Array(S.String);
+export const EntityArnList = AffectedAccountsList as any as S.Schema<EntityArnList>;
 export type EntityValue = string;
 export type EntityValueList = string[];
-export const EntityValueList = /*@__PURE__*/ S.Array(S.String);
+export const EntityValueList = AffectedAccountsList as any as S.Schema<EntityValueList>;
 export interface DateTimeRange {
   from?: Date;
   to?: Date;
@@ -355,7 +355,7 @@ export const DescribeAffectedEntitiesForOrganizationResponse = /*@__PURE__*/ S.s
   identifier: "DescribeAffectedEntitiesForOrganizationResponse",
 }) as any as S.Schema<DescribeAffectedEntitiesForOrganizationResponse>;
 export type EventArnsList = string[];
-export const EventArnsList = /*@__PURE__*/ S.Array(S.String);
+export const EventArnsList = AffectedAccountsList as any as S.Schema<EventArnsList>;
 export interface DescribeEntityAggregatesRequest {
   eventArns?: string[];
 }
@@ -395,9 +395,11 @@ export const DescribeEntityAggregatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeEntityAggregatesResponse",
 }) as any as S.Schema<DescribeEntityAggregatesResponse>;
 export type OrganizationEventArnsList = string[];
-export const OrganizationEventArnsList = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationEventArnsList =
+  AffectedAccountsList as any as S.Schema<OrganizationEventArnsList>;
 export type OrganizationAccountIdsList = string[];
-export const OrganizationAccountIdsList = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationAccountIdsList =
+  AffectedAccountsList as any as S.Schema<OrganizationAccountIdsList>;
 export interface DescribeEntityAggregatesForOrganizationRequest {
   eventArns: string[];
   awsAccountIds?: string[];
@@ -461,16 +463,16 @@ export type EventActionabilityList = EventActionability[];
 export const EventActionabilityList = /*@__PURE__*/ S.Array(EventActionability);
 export type EventType2 = string;
 export type EventTypeList2 = string[];
-export const EventTypeList2 = /*@__PURE__*/ S.Array(S.String);
+export const EventTypeList2 = AffectedAccountsList as any as S.Schema<EventTypeList2>;
 export type Service = string;
 export type ServiceList = string[];
-export const ServiceList = /*@__PURE__*/ S.Array(S.String);
+export const ServiceList = AffectedAccountsList as any as S.Schema<ServiceList>;
 export type Region = string;
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export const RegionList = AffectedAccountsList as any as S.Schema<RegionList>;
 export type AvailabilityZone = string;
 export type AvailabilityZones = string[];
-export const AvailabilityZones = /*@__PURE__*/ S.Array(S.String);
+export const AvailabilityZones = AffectedAccountsList as any as S.Schema<AvailabilityZones>;
 export type EventTypeCategory =
   | "issue"
   | "accountNotification"
@@ -619,10 +621,7 @@ export const EventDescription = /*@__PURE__*/ S.suspend(() =>
 export type MetadataKey = string;
 export type MetadataValue = string;
 export type EventMetadata = { [key: string]: string | undefined };
-export const EventMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EventMetadata = EntityMetadata as any as S.Schema<EventMetadata>;
 export interface EventDetails {
   event?: Event;
   eventDescription?: EventDescription;
@@ -664,7 +663,8 @@ export const DescribeEventDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeEventDetailsResponse",
 }) as any as S.Schema<DescribeEventDetailsResponse>;
 export type OrganizationEventDetailFiltersList = EventAccountFilter[];
-export const OrganizationEventDetailFiltersList = /*@__PURE__*/ S.Array(EventAccountFilter);
+export const OrganizationEventDetailFiltersList =
+  OrganizationEntityFiltersList as any as S.Schema<OrganizationEventDetailFiltersList>;
 export interface DescribeEventDetailsForOrganizationRequest {
   organizationEventDetailFilters: EventAccountFilter[];
   locale?: string;
@@ -700,20 +700,11 @@ export interface OrganizationEventDetailsErrorItem {
   errorName?: string;
   errorMessage?: string;
 }
-export const OrganizationEventDetailsErrorItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsAccountId: S.optional(S.String),
-    eventArn: S.optional(S.String),
-    errorName: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrganizationEventDetailsErrorItem",
-}) as any as S.Schema<OrganizationEventDetailsErrorItem>;
+export const OrganizationEventDetailsErrorItem =
+  OrganizationAffectedEntitiesErrorItem as any as S.Schema<OrganizationEventDetailsErrorItem>;
 export type DescribeEventDetailsForOrganizationFailedSet = OrganizationEventDetailsErrorItem[];
-export const DescribeEventDetailsForOrganizationFailedSet = /*@__PURE__*/ S.Array(
-  OrganizationEventDetailsErrorItem,
-);
+export const DescribeEventDetailsForOrganizationFailedSet =
+  DescribeAffectedEntitiesForOrganizationFailedSet as any as S.Schema<DescribeEventDetailsForOrganizationFailedSet>;
 export interface DescribeEventDetailsForOrganizationResponse {
   successfulSet?: OrganizationEventDetails[];
   failedSet?: OrganizationEventDetailsErrorItem[];
@@ -750,7 +741,7 @@ export const DescribeEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ events: S.optional(EventList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "DescribeEventsResponse" }) as any as S.Schema<DescribeEventsResponse>;
 export type AwsAccountIdsList = string[];
-export const AwsAccountIdsList = /*@__PURE__*/ S.Array(S.String);
+export const AwsAccountIdsList = AffectedAccountsList as any as S.Schema<AwsAccountIdsList>;
 export interface OrganizationEventFilter {
   actionabilities?: EventActionability[];
   eventTypeCodes?: string[];
@@ -841,9 +832,10 @@ export const DescribeEventsForOrganizationResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeEventsForOrganizationResponse",
 }) as any as S.Schema<DescribeEventsForOrganizationResponse>;
 export type EventTypeCodeList = string[];
-export const EventTypeCodeList = /*@__PURE__*/ S.Array(S.String);
+export const EventTypeCodeList = AffectedAccountsList as any as S.Schema<EventTypeCodeList>;
 export type EventTypeCategoryList = EventTypeCategory[];
-export const EventTypeCategoryList = /*@__PURE__*/ S.Array(EventTypeCategory);
+export const EventTypeCategoryList =
+  EventTypeCategoryList2 as any as S.Schema<EventTypeCategoryList>;
 export type EventTypeActionability =
   | "ACTION_REQUIRED"
   | "ACTION_MAY_BE_REQUIRED"
@@ -954,7 +946,7 @@ export const DescribeServiceLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeServiceLifecycleRequest",
 }) as any as S.Schema<DescribeServiceLifecycleRequest>;
 export type ImpactRiskList = string[];
-export const ImpactRiskList = /*@__PURE__*/ S.Array(S.String);
+export const ImpactRiskList = AffectedAccountsList as any as S.Schema<ImpactRiskList>;
 export interface LifecycleEvent {
   lifecycleEventType?: string;
   date?: Date;
@@ -1022,11 +1014,8 @@ export const EnableHealthServiceAccessForOrganizationRequest = /*@__PURE__*/ S.s
   identifier: "EnableHealthServiceAccessForOrganizationRequest",
 }) as any as S.Schema<EnableHealthServiceAccessForOrganizationRequest>;
 export interface EnableHealthServiceAccessForOrganizationResponse {}
-export const EnableHealthServiceAccessForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableHealthServiceAccessForOrganizationResponse",
-}) as any as S.Schema<EnableHealthServiceAccessForOrganizationResponse>;
+export const EnableHealthServiceAccessForOrganizationResponse =
+  DisableHealthServiceAccessForOrganizationResponse as any as S.Schema<EnableHealthServiceAccessForOrganizationResponse>;
 export type DescribeAffectedAccountsForOrganizationError = InvalidPaginationToken | CommonErrors;
 /**
  * Returns a list of accounts in the organization from Organizations that are affected by the

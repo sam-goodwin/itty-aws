@@ -32,10 +32,8 @@ export const CreateMcpToolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMcpToolRequest" }) as any as S.Schema<CreateMcpToolRequest>;
 
 export type MCPToolResponseStructuredContentMap = { [key: string]: unknown | undefined };
-export const MCPToolResponseStructuredContentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MCPToolResponseStructuredContentMap>;
+export const MCPToolResponseStructuredContentMap =
+  CreateMcpToolRequestArgsMap as any as S.Schema<MCPToolResponseStructuredContentMap>;
 
 export type MCPToolResponseErrorType =
   | "validation"

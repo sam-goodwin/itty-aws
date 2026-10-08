@@ -102,9 +102,7 @@ export const DisableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableRequest" }) as any as S.Schema<DisableRequest>;
 
 export interface DisableResponse {}
-export const DisableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableResponse",
-}) as any as S.Schema<DisableResponse>;
+export const DisableResponse = DeleteResponse as any as S.Schema<DisableResponse>;
 
 export interface EnableRequest {
   /** Use this to identify the account. */
@@ -678,9 +676,8 @@ export const ListNamespacesResponseNamespacesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListNamespacesResponseNamespacesList>;
 
 export type ListNamespacesResponseDetailsItemNamespaceList = Array<string>;
-export const ListNamespacesResponseDetailsItemNamespaceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNamespacesResponseDetailsItemNamespaceList>;
+export const ListNamespacesResponseDetailsItemNamespaceList =
+  ListNamespacesResponseNamespacesItemList as any as S.Schema<ListNamespacesResponseDetailsItemNamespaceList>;
 
 export interface ListNamespacesResponseDetailsItem {
   /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
@@ -709,9 +706,8 @@ export const ListNamespacesResponseDetailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListNamespacesResponseDetailsList>;
 
 export type ListNamespacesResponseNamespaceUuidsList = Array<string>;
-export const ListNamespacesResponseNamespaceUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNamespacesResponseNamespaceUuidsList>;
+export const ListNamespacesResponseNamespaceUuidsList =
+  ListNamespacesResponseNamespacesItemList as any as S.Schema<ListNamespacesResponseNamespaceUuidsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListNamespacesResponse {
@@ -771,9 +767,8 @@ export const ListNamespacesTablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespacesTablesRequest>;
 
 export type ListNamespacesTablesResponseIdentifiersItemNamespaceList = Array<string>;
-export const ListNamespacesTablesResponseIdentifiersItemNamespaceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNamespacesTablesResponseIdentifiersItemNamespaceList>;
+export const ListNamespacesTablesResponseIdentifiersItemNamespaceList =
+  ListNamespacesResponseNamespacesItemList as any as S.Schema<ListNamespacesTablesResponseIdentifiersItemNamespaceList>;
 
 export interface ListNamespacesTablesResponseIdentifiersItem {
   /** Specifies the table name. */
@@ -797,9 +792,8 @@ export const ListNamespacesTablesResponseIdentifiersList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<ListNamespacesTablesResponseIdentifiersList>;
 
 export type ListNamespacesTablesResponseDetailsItemIdentifierNamespaceList = Array<string>;
-export const ListNamespacesTablesResponseDetailsItemIdentifierNamespaceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNamespacesTablesResponseDetailsItemIdentifierNamespaceList>;
+export const ListNamespacesTablesResponseDetailsItemIdentifierNamespaceList =
+  ListNamespacesResponseNamespacesItemList as any as S.Schema<ListNamespacesTablesResponseDetailsItemIdentifierNamespaceList>;
 
 export interface ListNamespacesTablesResponseDetailsItemIdentifier {
   /** Specifies the table name. */
@@ -807,14 +801,8 @@ export interface ListNamespacesTablesResponseDetailsItemIdentifier {
   /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
   namespace: ListNamespacesTablesResponseDetailsItemIdentifierNamespaceList;
 }
-export const ListNamespacesTablesResponseDetailsItemIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: ListNamespacesTablesResponseDetailsItemIdentifierNamespaceList,
-  }),
-).annotate({
-  identifier: "ListNamespacesTablesResponseDetailsItemIdentifier",
-}) as any as S.Schema<ListNamespacesTablesResponseDetailsItemIdentifier>;
+export const ListNamespacesTablesResponseDetailsItemIdentifier =
+  ListNamespacesTablesResponseIdentifiersItem as any as S.Schema<ListNamespacesTablesResponseDetailsItemIdentifier>;
 
 export interface ListNamespacesTablesResponseDetailsItem {
   /** Specifies a unique table identifier within a catalog. */
@@ -850,9 +838,8 @@ export const ListNamespacesTablesResponseDetailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListNamespacesTablesResponseDetailsList>;
 
 export type ListNamespacesTablesResponseTableUuidsList = Array<string>;
-export const ListNamespacesTablesResponseTableUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNamespacesTablesResponseTableUuidsList>;
+export const ListNamespacesTablesResponseTableUuidsList =
+  ListNamespacesResponseNamespacesItemList as any as S.Schema<ListNamespacesTablesResponseTableUuidsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListNamespacesTablesResponse {

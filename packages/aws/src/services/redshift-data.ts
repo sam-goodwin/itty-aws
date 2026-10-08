@@ -196,7 +196,7 @@ export const BatchExecuteStatementInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchExecuteStatementInput",
 }) as any as S.Schema<BatchExecuteStatementInput>;
 export type DbGroupList = string[];
-export const DbGroupList = /*@__PURE__*/ S.Array(S.String);
+export const DbGroupList = SqlList as any as S.Schema<DbGroupList>;
 export type StatementStatusString = string;
 export type BoxedLong = number;
 export type BoxedBoolean = boolean;
@@ -552,7 +552,7 @@ export const FieldList = /*@__PURE__*/ S.Array(Field);
 export type SqlRecords = Field[][];
 export const SqlRecords = /*@__PURE__*/ S.Array(FieldList);
 export type ColumnMetadataList = ColumnMetadata[];
-export const ColumnMetadataList = /*@__PURE__*/ S.Array(ColumnMetadata);
+export const ColumnMetadataList = ColumnList as any as S.Schema<ColumnMetadataList>;
 export interface GetStatementResultResponse {
   Records: Field[][];
   ColumnMetadata?: ColumnMetadata[];
@@ -628,7 +628,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListDatabasesRequest" }) as any as S.Schema<ListDatabasesRequest>;
 export type DatabaseList = string[];
-export const DatabaseList = /*@__PURE__*/ S.Array(S.String);
+export const DatabaseList = SqlList as any as S.Schema<DatabaseList>;
 export interface ListDatabasesResponse {
   Databases?: string[];
   NextToken?: string;
@@ -661,7 +661,7 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListSchemasRequest" }) as any as S.Schema<ListSchemasRequest>;
 export type SchemaList = string[];
-export const SchemaList = /*@__PURE__*/ S.Array(S.String);
+export const SchemaList = SqlList as any as S.Schema<SchemaList>;
 export interface ListSchemasResponse {
   Schemas?: string[];
   NextToken?: string;
@@ -753,7 +753,7 @@ export const ListStatementsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListStatementsRequest" }) as any as S.Schema<ListStatementsRequest>;
 export type StatementStringList = string[];
-export const StatementStringList = /*@__PURE__*/ S.Array(S.String);
+export const StatementStringList = SqlList as any as S.Schema<StatementStringList>;
 export interface StatementData {
   Id: string;
   QueryString?: string;

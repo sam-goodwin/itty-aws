@@ -384,9 +384,8 @@ export type SubscriptionsCreateResponseRatePlanId =
 export const SubscriptionsCreateResponseRatePlanId = S.String;
 
 export type SubscriptionsCreateResponseRatePlanSetsList = Array<string>;
-export const SubscriptionsCreateResponseRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsCreateResponseRatePlanSetsList>;
+export const SubscriptionsCreateResponseRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsCreateResponseRatePlanSetsList>;
 
 export interface SubscriptionsCreateResponseRatePlan {
   /** The ID of the rate plan. */
@@ -533,14 +532,12 @@ export const CreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponseMeta" }) as any as S.Schema<CreateResponseMeta>;
 
 export type CreateResponseNameServersList = Array<string>;
-export const CreateResponseNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseNameServersList>;
+export const CreateResponseNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponseNameServersList>;
 
 export type CreateResponseOriginalNameServersList = Array<string>;
-export const CreateResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseOriginalNameServersList>;
+export const CreateResponseOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponseOriginalNameServersList>;
 
 export interface CreateResponseOwner {
   /** Identifier */
@@ -596,9 +593,8 @@ export const CreateResponsePlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateResponsePlan" }) as any as S.Schema<CreateResponsePlan>;
 
 export type CreateResponsePermissionsList = Array<string>;
-export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponsePermissionsList>;
+export const CreateResponsePermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponsePermissionsList>;
 
 export type CreateResponseStatus = "initializing" | "pending" | "active" | "moved";
 export const CreateResponseStatus = S.String;
@@ -609,12 +605,7 @@ export interface CreateResponseTenant {
   /** The name of the Tenant account. */
   name?: string | null;
 }
-export const CreateResponseTenant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "CreateResponseTenant" }) as any as S.Schema<CreateResponseTenant>;
+export const CreateResponseTenant = CreateResponseAccount as any as S.Schema<CreateResponseTenant>;
 
 export interface CreateResponseTenantUnit {
   /** Identifier */
@@ -630,9 +621,8 @@ export type CreateResponseType = "full" | "partial" | "secondary" | "internal";
 export const CreateResponseType = S.String;
 
 export type CreateResponseVanityNameServersList = Array<string>;
-export const CreateResponseVanityNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseVanityNameServersList>;
+export const CreateResponseVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponseVanityNameServersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneResponse {
@@ -745,21 +735,15 @@ export const EnvironmentsDeleteResponseEnvironmentsItem =
 
 export type EnvironmentsDeleteResponseEnvironmentsList =
   Array<EnvironmentsCreateResponseEnvironmentsItem>;
-export const EnvironmentsDeleteResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsCreateResponseEnvironmentsItem,
-) as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsList>;
+export const EnvironmentsDeleteResponseEnvironmentsList =
+  EnvironmentsCreateResponseEnvironmentsList as any as S.Schema<EnvironmentsDeleteResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteEnvironmentResponse {
   environments: EnvironmentsDeleteResponseEnvironmentsList;
 }
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environments: EnvironmentsDeleteResponseEnvironmentsList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteHoldRequest {
   /** Identifier. */
@@ -782,13 +766,7 @@ export interface DeleteHoldResponse {
   holdAfter?: string | null;
   includeSubdomains?: unknown | null;
 }
-export const DeleteHoldResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hold: S.optional(S.NullOr(S.Boolean)),
-    holdAfter: S.optional(S.NullOr(S.String).pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.NullOr(S.Unknown).pipe(T.Body("include_subdomains"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteHoldResponse" }) as any as S.Schema<DeleteHoldResponse>;
+export const DeleteHoldResponse = CreateHoldResponse as any as S.Schema<DeleteHoldResponse>;
 
 export interface DeleteObservabilityTracingRuleRequest {
   /** Specify the zone ID. */
@@ -884,9 +862,8 @@ export const DeleteObservabilityTracingSettingsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteObservabilityTracingSettingsRequest>;
 
 export type DeleteObservabilityTracingSettingsResponseDestinationsList = Array<string>;
-export const DeleteObservabilityTracingSettingsResponseDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteObservabilityTracingSettingsResponseDestinationsList>;
+export const DeleteObservabilityTracingSettingsResponseDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<DeleteObservabilityTracingSettingsResponseDestinationsList>;
 
 export type DeleteObservabilityTracingSettingsResponsePropagationPolicy =
   | "accept"
@@ -1112,9 +1089,8 @@ export const GetCtAlertingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCtAlertingRequest" }) as any as S.Schema<GetCtAlertingRequest>;
 
 export type CtAlertingGetResponseEmailsList = Array<string>;
-export const CtAlertingGetResponseEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtAlertingGetResponseEmailsList>;
+export const CtAlertingGetResponseEmailsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CtAlertingGetResponseEmailsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCtAlertingResponse {
@@ -1178,13 +1154,7 @@ export interface GetHoldResponse {
   holdAfter?: string | null;
   includeSubdomains?: unknown | null;
 }
-export const GetHoldResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hold: S.optional(S.NullOr(S.Boolean)),
-    holdAfter: S.optional(S.NullOr(S.String).pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.NullOr(S.Unknown).pipe(T.Body("include_subdomains"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetHoldResponse" }) as any as S.Schema<GetHoldResponse>;
+export const GetHoldResponse = CreateHoldResponse as any as S.Schema<GetHoldResponse>;
 
 export interface GetNelRequest {
   /** Identifier of the zone. */
@@ -1304,9 +1274,8 @@ export const GetObservabilityTracingSettingsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetObservabilityTracingSettingsRequest>;
 
 export type GetObservabilityTracingSettingsResponseDestinationsList = Array<string>;
-export const GetObservabilityTracingSettingsResponseDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetObservabilityTracingSettingsResponseDestinationsList>;
+export const GetObservabilityTracingSettingsResponseDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetObservabilityTracingSettingsResponseDestinationsList>;
 
 export type GetObservabilityTracingSettingsResponsePropagationPolicy =
   | "accept"
@@ -1877,9 +1846,8 @@ export type SettingsGetResultCiphersId = "ciphers";
 export const SettingsGetResultCiphersId = S.String;
 
 export type SettingsGetResultCiphersValueList = Array<string>;
-export const SettingsGetResultCiphersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsGetResultCiphersValueList>;
+export const SettingsGetResultCiphersValueList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SettingsGetResultCiphersValueList>;
 
 export interface SettingsGetResultCiphers {
   /** ID of the zone setting. */
@@ -3652,9 +3620,8 @@ export type SubscriptionsGetResponseRatePlanId =
 export const SubscriptionsGetResponseRatePlanId = S.String;
 
 export type SubscriptionsGetResponseRatePlanSetsList = Array<string>;
-export const SubscriptionsGetResponseRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsGetResponseRatePlanSetsList>;
+export const SubscriptionsGetResponseRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsGetResponseRatePlanSetsList>;
 
 export interface SubscriptionsGetResponseRatePlan {
   /** The ID of the rate plan. */
@@ -3839,14 +3806,12 @@ export type GetResponseMeta = CreateResponseMeta;
 export const GetResponseMeta = CreateResponseMeta;
 
 export type GetResponseNameServersList = Array<string>;
-export const GetResponseNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseNameServersList>;
+export const GetResponseNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponseNameServersList>;
 
 export type GetResponseOriginalNameServersList = Array<string>;
-export const GetResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseOriginalNameServersList>;
+export const GetResponseOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponseOriginalNameServersList>;
 
 export type GetResponseOwner = CreateResponseOwner;
 export const GetResponseOwner = CreateResponseOwner;
@@ -3855,9 +3820,8 @@ export type GetResponsePlan = CreateResponsePlan;
 export const GetResponsePlan = CreateResponsePlan;
 
 export type GetResponsePermissionsList = Array<string>;
-export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponsePermissionsList>;
+export const GetResponsePermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponsePermissionsList>;
 
 export type GetResponseStatus = "initializing" | "pending" | "active" | "moved";
 export const GetResponseStatus = S.String;
@@ -3872,9 +3836,8 @@ export type GetResponseType = "full" | "partial" | "secondary" | "internal";
 export const GetResponseType = S.String;
 
 export type GetResponseVanityNameServersList = Array<string>;
-export const GetResponseVanityNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseVanityNameServersList>;
+export const GetResponseVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponseVanityNameServersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneResponse {
@@ -4097,9 +4060,8 @@ export const EnvironmentsListResponseEnvironmentsItem = EnvironmentsCreateRespon
 
 export type EnvironmentsListResponseEnvironmentsList =
   Array<EnvironmentsCreateResponseEnvironmentsItem>;
-export const EnvironmentsListResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsCreateResponseEnvironmentsItem,
-) as any as S.Schema<EnvironmentsListResponseEnvironmentsList>;
+export const EnvironmentsListResponseEnvironmentsList =
+  EnvironmentsCreateResponseEnvironmentsList as any as S.Schema<EnvironmentsListResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListEnvironmentsResponse {
@@ -4501,9 +4463,8 @@ export type ListSettingsResultItemCiphersId = "ciphers";
 export const ListSettingsResultItemCiphersId = S.String;
 
 export type ListSettingsResultItemCiphersValueList = Array<string>;
-export const ListSettingsResultItemCiphersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSettingsResultItemCiphersValueList>;
+export const ListSettingsResultItemCiphersValueList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListSettingsResultItemCiphersValueList>;
 
 export interface ListSettingsResultItemCiphers {
   /** ID of the zone setting. */
@@ -5463,9 +5424,7 @@ export const ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationId =
 export type ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   Array<string>;
 export const ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
+  SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList as any as S.Schema<ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
 
 export interface ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValue {
   /** Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled. */
@@ -5482,18 +5441,7 @@ export interface ListSettingsResultItemZonesSchemasAutomaticPlatformOptimization
   wpPlugin: boolean;
 }
 export const ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cacheByDeviceType: S.Boolean.pipe(T.Body("cache_by_device_type")),
-      cf: S.Boolean,
-      enabled: S.Boolean,
-      hostnames: ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList,
-      wordpress: S.Boolean,
-      wpPlugin: S.Boolean.pipe(T.Body("wp_plugin")),
-    }),
-  ).annotate({
-    identifier: "ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValue",
-  }) as any as S.Schema<ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValue>;
+  SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValue as any as S.Schema<ListSettingsResultItemZonesSchemasAutomaticPlatformOptimizationValue>;
 
 export interface ListSettingsResultItemZonesSchemasAutomaticPlatformOptimization {
   /** ID of the zone setting. */
@@ -6321,14 +6269,12 @@ export type ListResultItemMeta = CreateResponseMeta;
 export const ListResultItemMeta = CreateResponseMeta;
 
 export type ListResultItemNameServersList = Array<string>;
-export const ListResultItemNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemNameServersList>;
+export const ListResultItemNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemNameServersList>;
 
 export type ListResultItemOriginalNameServersList = Array<string>;
-export const ListResultItemOriginalNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemOriginalNameServersList>;
+export const ListResultItemOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemOriginalNameServersList>;
 
 export type ListResultItemOwner = CreateResponseOwner;
 export const ListResultItemOwner = CreateResponseOwner;
@@ -6337,9 +6283,8 @@ export type ListResultItemPlan = CreateResponsePlan;
 export const ListResultItemPlan = CreateResponsePlan;
 
 export type ListResultItemPermissionsList = Array<string>;
-export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemPermissionsList>;
+export const ListResultItemPermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemPermissionsList>;
 
 export type ListResultItemStatus = "initializing" | "pending" | "active" | "moved";
 export const ListResultItemStatus = S.String;
@@ -6354,9 +6299,8 @@ export type ListResultItemType = "full" | "partial" | "secondary" | "internal";
 export const ListResultItemType = S.String;
 
 export type ListResultItemVanityNameServersList = Array<string>;
-export const ListResultItemVanityNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemVanityNameServersList>;
+export const ListResultItemVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemVanityNameServersList>;
 
 export interface ListResultItem {
   /** Identifier */
@@ -6457,9 +6401,8 @@ export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListZonesResponse" }) as any as S.Schema<ListZonesResponse>;
 
 export type CtAlertingEditRequestEmailsList = Array<string>;
-export const CtAlertingEditRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtAlertingEditRequestEmailsList>;
+export const CtAlertingEditRequestEmailsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CtAlertingEditRequestEmailsList>;
 
 export interface PatchCtAlertingRequest {
   /** Identifier. */
@@ -6480,9 +6423,8 @@ export const PatchCtAlertingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchCtAlertingRequest" }) as any as S.Schema<PatchCtAlertingRequest>;
 
 export type CtAlertingEditResponseEmailsList = Array<string>;
-export const CtAlertingEditResponseEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CtAlertingEditResponseEmailsList>;
+export const CtAlertingEditResponseEmailsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CtAlertingEditResponseEmailsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCtAlertingResponse {
@@ -6491,12 +6433,8 @@ export interface PatchCtAlertingResponse {
   /** Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. */
   emails?: CtAlertingEditResponseEmailsList | null;
 }
-export const PatchCtAlertingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    emails: S.optional(S.NullOr(CtAlertingEditResponseEmailsList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchCtAlertingResponse" }) as any as S.Schema<PatchCtAlertingResponse>;
+export const PatchCtAlertingResponse =
+  GetCtAlertingResponse as any as S.Schema<PatchCtAlertingResponse>;
 
 export type EnvironmentsEditRequestEnvironmentsItemPosition =
   EnvironmentsCreateRequestEnvironmentsItemPosition;
@@ -6508,9 +6446,8 @@ export const EnvironmentsEditRequestEnvironmentsItem = EnvironmentsCreateRequest
 
 export type EnvironmentsEditRequestEnvironmentsList =
   Array<EnvironmentsCreateRequestEnvironmentsItem>;
-export const EnvironmentsEditRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsCreateRequestEnvironmentsItem,
-) as any as S.Schema<EnvironmentsEditRequestEnvironmentsList>;
+export const EnvironmentsEditRequestEnvironmentsList =
+  EnvironmentsCreateRequestEnvironmentsList as any as S.Schema<EnvironmentsEditRequestEnvironmentsList>;
 
 export interface PatchEnvironmentRequest {
   zoneId: string;
@@ -6535,19 +6472,15 @@ export const EnvironmentsEditResponseEnvironmentsItem = EnvironmentsCreateRespon
 
 export type EnvironmentsEditResponseEnvironmentsList =
   Array<EnvironmentsCreateResponseEnvironmentsItem>;
-export const EnvironmentsEditResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsCreateResponseEnvironmentsItem,
-) as any as S.Schema<EnvironmentsEditResponseEnvironmentsList>;
+export const EnvironmentsEditResponseEnvironmentsList =
+  EnvironmentsCreateResponseEnvironmentsList as any as S.Schema<EnvironmentsEditResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchEnvironmentResponse {
   environments: EnvironmentsEditResponseEnvironmentsList;
 }
-export const PatchEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environments: EnvironmentsEditResponseEnvironmentsList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchEnvironmentResponse" }) as any as S.Schema<PatchEnvironmentResponse>;
+export const PatchEnvironmentResponse =
+  ListEnvironmentsResponse as any as S.Schema<PatchEnvironmentResponse>;
 
 export interface PatchHoldRequest {
   /** Identifier. */
@@ -6573,13 +6506,7 @@ export interface PatchHoldResponse {
   holdAfter?: string | null;
   includeSubdomains?: unknown | null;
 }
-export const PatchHoldResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hold: S.optional(S.NullOr(S.Boolean)),
-    holdAfter: S.optional(S.NullOr(S.String).pipe(T.Body("hold_after"))),
-    includeSubdomains: S.optional(S.NullOr(S.Unknown).pipe(T.Body("include_subdomains"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchHoldResponse" }) as any as S.Schema<PatchHoldResponse>;
+export const PatchHoldResponse = CreateHoldResponse as any as S.Schema<PatchHoldResponse>;
 
 export interface PatchSettingRequest {
   /** Identifier */
@@ -6965,9 +6892,8 @@ export type SettingsEditResultCiphersId = "ciphers";
 export const SettingsEditResultCiphersId = S.String;
 
 export type SettingsEditResultCiphersValueList = Array<string>;
-export const SettingsEditResultCiphersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsEditResultCiphersValueList>;
+export const SettingsEditResultCiphersValueList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SettingsEditResultCiphersValueList>;
 
 export interface SettingsEditResultCiphers {
   /** ID of the zone setting. */
@@ -7891,9 +7817,7 @@ export const SettingsEditResultZonesSchemasAutomaticPlatformOptimizationId = S.S
 export type SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   Array<string>;
 export const SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
+  SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList as any as S.Schema<SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
 
 export interface SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValue {
   /** Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled. */
@@ -7910,18 +7834,7 @@ export interface SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValu
   wpPlugin: boolean;
 }
 export const SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cacheByDeviceType: S.Boolean.pipe(T.Body("cache_by_device_type")),
-      cf: S.Boolean,
-      enabled: S.Boolean,
-      hostnames: SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList,
-      wordpress: S.Boolean,
-      wpPlugin: S.Boolean.pipe(T.Body("wp_plugin")),
-    }),
-  ).annotate({
-    identifier: "SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValue",
-  }) as any as S.Schema<SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValue>;
+  SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValue as any as S.Schema<SettingsEditResultZonesSchemasAutomaticPlatformOptimizationValue>;
 
 export interface SettingsEditResultZonesSchemasAutomaticPlatformOptimization {
   /** ID of the zone setting. */
@@ -8671,9 +8584,8 @@ export type EditRequestType = "full" | "partial" | "secondary" | "internal";
 export const EditRequestType = S.String;
 
 export type EditRequestVanityNameServersList = Array<string>;
-export const EditRequestVanityNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestVanityNameServersList>;
+export const EditRequestVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditRequestVanityNameServersList>;
 
 export interface PatchZoneRequest {
   /** Identifier */
@@ -8705,14 +8617,12 @@ export type EditResponseMeta = CreateResponseMeta;
 export const EditResponseMeta = CreateResponseMeta;
 
 export type EditResponseNameServersList = Array<string>;
-export const EditResponseNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseNameServersList>;
+export const EditResponseNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponseNameServersList>;
 
 export type EditResponseOriginalNameServersList = Array<string>;
-export const EditResponseOriginalNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseOriginalNameServersList>;
+export const EditResponseOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponseOriginalNameServersList>;
 
 export type EditResponseOwner = CreateResponseOwner;
 export const EditResponseOwner = CreateResponseOwner;
@@ -8721,9 +8631,8 @@ export type EditResponsePlan = CreateResponsePlan;
 export const EditResponsePlan = CreateResponsePlan;
 
 export type EditResponsePermissionsList = Array<string>;
-export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponsePermissionsList>;
+export const EditResponsePermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponsePermissionsList>;
 
 export type EditResponseStatus = "initializing" | "pending" | "active" | "moved";
 export const EditResponseStatus = S.String;
@@ -8738,9 +8647,8 @@ export type EditResponseType = "full" | "partial" | "secondary" | "internal";
 export const EditResponseType = S.String;
 
 export type EditResponseVanityNameServersList = Array<string>;
-export const EditResponseVanityNameServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseVanityNameServersList>;
+export const EditResponseVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponseVanityNameServersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchZoneResponse {
@@ -8842,9 +8750,8 @@ export const PutCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCustomNameserverRequest>;
 
 export type CustomNameserversUpdateResultList = Array<string>;
-export const CustomNameserversUpdateResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomNameserversUpdateResultList>;
+export const CustomNameserversUpdateResultList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CustomNameserversUpdateResultList>;
 
 export interface PutCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -8894,21 +8801,15 @@ export const EnvironmentsRollbackResponseEnvironmentsItem =
 
 export type EnvironmentsRollbackResponseEnvironmentsList =
   Array<EnvironmentsCreateResponseEnvironmentsItem>;
-export const EnvironmentsRollbackResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsCreateResponseEnvironmentsItem,
-) as any as S.Schema<EnvironmentsRollbackResponseEnvironmentsList>;
+export const EnvironmentsRollbackResponseEnvironmentsList =
+  EnvironmentsCreateResponseEnvironmentsList as any as S.Schema<EnvironmentsRollbackResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RollbackEnvironmentResponse {
   environments: EnvironmentsRollbackResponseEnvironmentsList;
 }
-export const RollbackEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environments: EnvironmentsRollbackResponseEnvironmentsList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "RollbackEnvironmentResponse",
-}) as any as S.Schema<RollbackEnvironmentResponse>;
+export const RollbackEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<RollbackEnvironmentResponse>;
 
 export type SettingsBulkEditRequestBodyItemZeroRTTId = "0rtt";
 export const SettingsBulkEditRequestBodyItemZeroRTTId = S.String;
@@ -9291,9 +9192,8 @@ export type SettingsBulkEditRequestBodyItemCiphersId = "ciphers";
 export const SettingsBulkEditRequestBodyItemCiphersId = S.String;
 
 export type SettingsBulkEditRequestBodyItemCiphersValueList = Array<string>;
-export const SettingsBulkEditRequestBodyItemCiphersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsBulkEditRequestBodyItemCiphersValueList>;
+export const SettingsBulkEditRequestBodyItemCiphersValueList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SettingsBulkEditRequestBodyItemCiphersValueList>;
 
 export interface SettingsBulkEditRequestBodyItemCiphers {
   /** ID of the zone setting. */
@@ -10221,9 +10121,7 @@ export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimiz
 export type SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   Array<string>;
 export const SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
+  SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList as any as S.Schema<SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
 
 export interface SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValue {
   /** Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled. */
@@ -11301,9 +11199,8 @@ export type SettingsBulkEditResultItemCiphersId = "ciphers";
 export const SettingsBulkEditResultItemCiphersId = S.String;
 
 export type SettingsBulkEditResultItemCiphersValueList = Array<string>;
-export const SettingsBulkEditResultItemCiphersValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsBulkEditResultItemCiphersValueList>;
+export const SettingsBulkEditResultItemCiphersValueList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SettingsBulkEditResultItemCiphersValueList>;
 
 export interface SettingsBulkEditResultItemCiphers {
   /** ID of the zone setting. */
@@ -12268,9 +12165,7 @@ export const SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimization
 export type SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
   Array<string>;
 export const SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
+  SettingsGetResultZonesSchemasAutomaticPlatformOptimizationValueHostnamesList as any as S.Schema<SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList>;
 
 export interface SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValue {
   /** Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled. */
@@ -12287,19 +12182,7 @@ export interface SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimiza
   wpPlugin: boolean;
 }
 export const SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cacheByDeviceType: S.Boolean.pipe(T.Body("cache_by_device_type")),
-      cf: S.Boolean,
-      enabled: S.Boolean,
-      hostnames:
-        SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValueHostnamesList,
-      wordpress: S.Boolean,
-      wpPlugin: S.Boolean.pipe(T.Body("wp_plugin")),
-    }),
-  ).annotate({
-    identifier: "SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValue",
-  }) as any as S.Schema<SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValue>;
+  SettingsBulkEditRequestBodyItemZonesSchemasAutomaticPlatformOptimizationValue as any as S.Schema<SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimizationValue>;
 
 export interface SettingsBulkEditResultItemZonesSchemasAutomaticPlatformOptimization {
   /** ID of the zone setting. */
@@ -13090,9 +12973,8 @@ export const EnvironmentsUpdateRequestEnvironmentsItem = EnvironmentsCreateReque
 
 export type EnvironmentsUpdateRequestEnvironmentsList =
   Array<EnvironmentsCreateRequestEnvironmentsItem>;
-export const EnvironmentsUpdateRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsCreateRequestEnvironmentsItem,
-) as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsList>;
+export const EnvironmentsUpdateRequestEnvironmentsList =
+  EnvironmentsCreateRequestEnvironmentsList as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsList>;
 
 export interface UpdateEnvironmentRequest {
   zoneId: string;
@@ -13118,21 +13000,15 @@ export const EnvironmentsUpdateResponseEnvironmentsItem =
 
 export type EnvironmentsUpdateResponseEnvironmentsList =
   Array<EnvironmentsCreateResponseEnvironmentsItem>;
-export const EnvironmentsUpdateResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  EnvironmentsCreateResponseEnvironmentsItem,
-) as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsList>;
+export const EnvironmentsUpdateResponseEnvironmentsList =
+  EnvironmentsCreateResponseEnvironmentsList as any as S.Schema<EnvironmentsUpdateResponseEnvironmentsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateEnvironmentResponse {
   environments: EnvironmentsUpdateResponseEnvironmentsList;
 }
-export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environments: EnvironmentsUpdateResponseEnvironmentsList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "UpdateEnvironmentResponse",
-}) as any as S.Schema<UpdateEnvironmentResponse>;
+export const UpdateEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<UpdateEnvironmentResponse>;
 
 export type UpdateObservabilityTracingRuleRequestRulesItemAction = "set_trace_settings";
 export const UpdateObservabilityTracingRuleRequestRulesItemAction = S.String;
@@ -13237,9 +13113,8 @@ export const UpdateObservabilityTracingRuleResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateObservabilityTracingRuleResponse>;
 
 export type UpdateObservabilityTracingSettingsRequestDestinationsList = Array<string>;
-export const UpdateObservabilityTracingSettingsRequestDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateObservabilityTracingSettingsRequestDestinationsList>;
+export const UpdateObservabilityTracingSettingsRequestDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<UpdateObservabilityTracingSettingsRequestDestinationsList>;
 
 export type UpdateObservabilityTracingSettingsRequestPropagationPolicy =
   | "accept"
@@ -13288,9 +13163,8 @@ export const UpdateObservabilityTracingSettingsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<UpdateObservabilityTracingSettingsRequest>;
 
 export type UpdateObservabilityTracingSettingsResponseDestinationsList = Array<string>;
-export const UpdateObservabilityTracingSettingsResponseDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateObservabilityTracingSettingsResponseDestinationsList>;
+export const UpdateObservabilityTracingSettingsResponseDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<UpdateObservabilityTracingSettingsResponseDestinationsList>;
 
 export type UpdateObservabilityTracingSettingsResponsePropagationPolicy =
   | "accept"
@@ -13345,9 +13219,8 @@ export type SubscriptionsUpdateRequestRatePlanId =
 export const SubscriptionsUpdateRequestRatePlanId = S.String;
 
 export type SubscriptionsUpdateRequestRatePlanSetsList = Array<string>;
-export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
+export const SubscriptionsUpdateRequestRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
 
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
@@ -13421,9 +13294,8 @@ export type SubscriptionsUpdateResponseRatePlanId =
 export const SubscriptionsUpdateResponseRatePlanId = S.String;
 
 export type SubscriptionsUpdateResponseRatePlanSetsList = Array<string>;
-export const SubscriptionsUpdateResponseRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsUpdateResponseRatePlanSetsList>;
+export const SubscriptionsUpdateResponseRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsUpdateResponseRatePlanSetsList>;
 
 export interface SubscriptionsUpdateResponseRatePlan {
   /** The ID of the rate plan. */

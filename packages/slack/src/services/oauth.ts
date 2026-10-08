@@ -132,29 +132,24 @@ export const OauthAccessResponseScopesAppHomeList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OauthAccessResponseScopesAppHomeList>;
 
 export type OauthAccessResponseScopesTeamList = Array<string>;
-export const OauthAccessResponseScopesTeamList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OauthAccessResponseScopesTeamList>;
+export const OauthAccessResponseScopesTeamList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesTeamList>;
 
 export type OauthAccessResponseScopesChannelList = Array<string>;
-export const OauthAccessResponseScopesChannelList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OauthAccessResponseScopesChannelList>;
+export const OauthAccessResponseScopesChannelList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesChannelList>;
 
 export type OauthAccessResponseScopesGroupList = Array<string>;
-export const OauthAccessResponseScopesGroupList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OauthAccessResponseScopesGroupList>;
+export const OauthAccessResponseScopesGroupList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesGroupList>;
 
 export type OauthAccessResponseScopesMpimList = Array<string>;
-export const OauthAccessResponseScopesMpimList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OauthAccessResponseScopesMpimList>;
+export const OauthAccessResponseScopesMpimList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesMpimList>;
 
 export type OauthAccessResponseScopesImList = Array<string>;
-export const OauthAccessResponseScopesImList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OauthAccessResponseScopesImList>;
+export const OauthAccessResponseScopesImList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesImList>;
 
 export interface OauthAccessResponseScopes {
   app_home?: OauthAccessResponseScopesAppHomeList;

@@ -235,12 +235,8 @@ export interface DeleteInstanceResponse {
   instance: Instance;
   message?: string;
 }
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance: Instance,
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteInstanceResponse" }) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  CreateInstanceResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export type DeleteInstanceTokenRequestRegionId = "eu01";
 export const DeleteInstanceTokenRequestRegionId = S.String;
@@ -337,12 +333,7 @@ export interface GetInstanceResponse {
   instance: Instance;
   message?: string;
 }
-export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instance: Instance,
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetInstanceResponse" }) as any as S.Schema<GetInstanceResponse>;
+export const GetInstanceResponse = CreateInstanceResponse as any as S.Schema<GetInstanceResponse>;
 
 export type GetInstanceTokenRequestRegionId = "eu01";
 export const GetInstanceTokenRequestRegionId = S.String;
@@ -566,14 +557,8 @@ export interface PartialUpdateInstanceTokenResponse {
   message?: string;
   token: TokenMetadata;
 }
-export const PartialUpdateInstanceTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    token: TokenMetadata,
-  }),
-).annotate({
-  identifier: "PartialUpdateInstanceTokenResponse",
-}) as any as S.Schema<PartialUpdateInstanceTokenResponse>;
+export const PartialUpdateInstanceTokenResponse =
+  DeleteInstanceTokenResponse as any as S.Schema<PartialUpdateInstanceTokenResponse>;
 
 export type CreateInstanceError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** create an instance in a project create an instance in a project */

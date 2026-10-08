@@ -79,15 +79,13 @@ export const TelemetryTypeMetadataSupportedDestinationsList = /*@__PURE__*/ S.Ar
 
 /** List of supported source resource types. */
 export type TelemetryTypeMetadataSupportedResourceTypesList = Array<string>;
-export const TelemetryTypeMetadataSupportedResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TelemetryTypeMetadataSupportedResourceTypesList>;
+export const TelemetryTypeMetadataSupportedResourceTypesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<TelemetryTypeMetadataSupportedResourceTypesList>;
 
 /** Categorization groups for the logs stream. */
 export type LogsSpecificationGroupsList = Array<string>;
-export const LogsSpecificationGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsSpecificationGroupsList>;
+export const LogsSpecificationGroupsList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<LogsSpecificationGroupsList>;
 
 /** Specification for a logs stream. */
 export interface LogsSpecification {
@@ -108,9 +106,8 @@ export const LogsSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Categorization groups for the metric. */
 export type MetricsSpecificationGroupsList = Array<string>;
-export const MetricsSpecificationGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsSpecificationGroupsList>;
+export const MetricsSpecificationGroupsList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<MetricsSpecificationGroupsList>;
 
 /** Specification for a metrics stream. Properties are driven by the service and are manifest driven. */
 export interface MetricsSpecification {
@@ -362,15 +359,13 @@ export const ScheduledQueryRulePropertiesSeverity = S.Number;
 
 /** The list of resource id's that this scheduled query rule is scoped to. */
 export type ScheduledQueryRulePropertiesScopesList = Array<string>;
-export const ScheduledQueryRulePropertiesScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduledQueryRulePropertiesScopesList>;
+export const ScheduledQueryRulePropertiesScopesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesScopesList>;
 
 /** List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert */
 export type ScheduledQueryRulePropertiesTargetResourceTypesList = Array<string>;
-export const ScheduledQueryRulePropertiesTargetResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduledQueryRulePropertiesTargetResourceTypesList>;
+export const ScheduledQueryRulePropertiesTargetResourceTypesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesTargetResourceTypesList>;
 
 /** Specifies the type of threshold criteria */
 export type ConditionCriterionType = "StaticThresholdCriterion" | "DynamicThresholdCriterion";
@@ -386,9 +381,8 @@ export const DimensionOperator = S.String;
 
 /** List of dimension values */
 export type DimensionValuesList = Array<string>;
-export const DimensionValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DimensionValuesList>;
+export const DimensionValuesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<DimensionValuesList>;
 
 /** Dimension splitting and filtering definition */
 export interface Dimension {
@@ -505,23 +499,18 @@ export const ScheduledQueryRuleCriteria = /*@__PURE__*/ S.suspend(() =>
 
 /** Action Group resource Ids to invoke when the alert fires. */
 export type ActionsActionGroupsList = Array<string>;
-export const ActionsActionGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionsActionGroupsList>;
+export const ActionsActionGroupsList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ActionsActionGroupsList>;
 
 /** The properties of an alert payload. */
 export type ActionsCustomPropertiesMap = { [key: string]: string | undefined };
-export const ActionsCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ActionsCustomPropertiesMap>;
+export const ActionsCustomPropertiesMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<ActionsCustomPropertiesMap>;
 
 /** The properties of an action properties. */
 export type ActionsActionPropertiesMap = { [key: string]: string | undefined };
-export const ActionsActionPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ActionsActionPropertiesMap>;
+export const ActionsActionPropertiesMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<ActionsActionPropertiesMap>;
 
 /** Actions to invoke when the alert fires. */
 export interface Actions {
@@ -841,10 +830,8 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ScheduledQueryRulesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ScheduledQueryRulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequestTagsMap>;
+export const ScheduledQueryRulesCreateOrUpdateRequestTagsMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequestTagsMap>;
 
 /** Indicates the type of scheduled query rule. The default is LogAlert. */
 export type ScheduledQueryRulesCreateOrUpdateRequestKind =
@@ -859,15 +846,13 @@ export const ScheduledQueryRulePropertiesInputSeverity = S.Number;
 
 /** The list of resource id's that this scheduled query rule is scoped to. */
 export type ScheduledQueryRulePropertiesInputScopesList = Array<string>;
-export const ScheduledQueryRulePropertiesInputScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduledQueryRulePropertiesInputScopesList>;
+export const ScheduledQueryRulePropertiesInputScopesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesInputScopesList>;
 
 /** List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert */
 export type ScheduledQueryRulePropertiesInputTargetResourceTypesList = Array<string>;
-export const ScheduledQueryRulePropertiesInputTargetResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduledQueryRulePropertiesInputTargetResourceTypesList>;
+export const ScheduledQueryRulePropertiesInputTargetResourceTypesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesInputTargetResourceTypesList>;
 
 /** scheduled query rule Definition */
 export interface ScheduledQueryRulePropertiesInput {
@@ -969,10 +954,8 @@ export const ScheduledQueryRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags */
 export type UpdateScheduledQueryRuleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateScheduledQueryRuleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateScheduledQueryRuleRequestTagsMap>;
+export const UpdateScheduledQueryRuleRequestTagsMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<UpdateScheduledQueryRuleRequestTagsMap>;
 
 export interface UpdateScheduledQueryRuleRequest {
   /** The ID of the target subscription. */

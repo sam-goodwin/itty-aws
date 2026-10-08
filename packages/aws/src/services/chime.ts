@@ -270,11 +270,8 @@ export const AssociateSigninDelegateGroupsWithAccountRequest = /*@__PURE__*/ S.s
   identifier: "AssociateSigninDelegateGroupsWithAccountRequest",
 }) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountRequest>;
 export interface AssociateSigninDelegateGroupsWithAccountResponse {}
-export const AssociateSigninDelegateGroupsWithAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateSigninDelegateGroupsWithAccountResponse",
-}) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountResponse>;
+export const AssociateSigninDelegateGroupsWithAccountResponse =
+  AssociatePhoneNumberWithUserResponse as any as S.Schema<AssociateSigninDelegateGroupsWithAccountResponse>;
 export type RoomMembershipRole = "Administrator" | "Member" | (string & {});
 export const RoomMembershipRole = S.String;
 
@@ -396,7 +393,7 @@ export const BatchDeletePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeletePhoneNumberResponse",
 }) as any as S.Schema<BatchDeletePhoneNumberResponse>;
 export type UserIdList = string[];
-export const UserIdList = /*@__PURE__*/ S.Array(S.String);
+export const UserIdList = NonEmptyStringList as any as S.Schema<UserIdList>;
 export interface BatchSuspendUserRequest {
   AccountId: string;
   UserIdList: string[];
@@ -503,11 +500,8 @@ export const BatchUpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchUpdatePhoneNumberResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
-export const BatchUpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
-).annotate({
-  identifier: "BatchUpdatePhoneNumberResponse",
-}) as any as S.Schema<BatchUpdatePhoneNumberResponse>;
+export const BatchUpdatePhoneNumberResponse =
+  BatchDeletePhoneNumberResponse as any as S.Schema<BatchUpdatePhoneNumberResponse>;
 export type License = "Basic" | "Plus" | "Pro" | "ProTrial" | (string & {});
 export const License = S.String;
 
@@ -563,9 +557,8 @@ export const BatchUpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchUpdateUserResponse {
   UserErrors?: UserError[];
 }
-export const BatchUpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserErrors: S.optional(UserErrorList) }),
-).annotate({ identifier: "BatchUpdateUserResponse" }) as any as S.Schema<BatchUpdateUserResponse>;
+export const BatchUpdateUserResponse =
+  BatchSuspendUserResponse as any as S.Schema<BatchUpdateUserResponse>;
 export type AccountName = string;
 export interface CreateAccountRequest {
   Name: string;
@@ -986,11 +979,8 @@ export const DeleteEventsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEventsConfigurationRequest",
 }) as any as S.Schema<DeleteEventsConfigurationRequest>;
 export interface DeleteEventsConfigurationResponse {}
-export const DeleteEventsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventsConfigurationResponse",
-}) as any as S.Schema<DeleteEventsConfigurationResponse>;
+export const DeleteEventsConfigurationResponse =
+  AssociatePhoneNumberWithUserResponse as any as S.Schema<DeleteEventsConfigurationResponse>;
 export interface DeletePhoneNumberRequest {
   PhoneNumberId: string;
 }
@@ -1007,9 +997,8 @@ export const DeletePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePhoneNumberRequest" }) as any as S.Schema<DeletePhoneNumberRequest>;
 export interface DeletePhoneNumberResponse {}
-export const DeletePhoneNumberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePhoneNumberResponse",
-}) as any as S.Schema<DeletePhoneNumberResponse>;
+export const DeletePhoneNumberResponse =
+  DeleteAccountResponse as any as S.Schema<DeletePhoneNumberResponse>;
 export interface DeleteRoomRequest {
   AccountId: string;
   RoomId: string;
@@ -1030,9 +1019,7 @@ export const DeleteRoomRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRoomRequest" }) as any as S.Schema<DeleteRoomRequest>;
 export interface DeleteRoomResponse {}
-export const DeleteRoomResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoomResponse",
-}) as any as S.Schema<DeleteRoomResponse>;
+export const DeleteRoomResponse = DeleteAccountResponse as any as S.Schema<DeleteRoomResponse>;
 export interface DeleteRoomMembershipRequest {
   AccountId: string;
   RoomId: string;
@@ -1060,9 +1047,8 @@ export const DeleteRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRoomMembershipRequest",
 }) as any as S.Schema<DeleteRoomMembershipRequest>;
 export interface DeleteRoomMembershipResponse {}
-export const DeleteRoomMembershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoomMembershipResponse",
-}) as any as S.Schema<DeleteRoomMembershipResponse>;
+export const DeleteRoomMembershipResponse =
+  DeleteAccountResponse as any as S.Schema<DeleteRoomMembershipResponse>;
 export interface DisassociatePhoneNumberFromUserRequest {
   AccountId: string;
   UserId: string;
@@ -1088,11 +1074,8 @@ export const DisassociatePhoneNumberFromUserRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DisassociatePhoneNumberFromUserRequest",
 }) as any as S.Schema<DisassociatePhoneNumberFromUserRequest>;
 export interface DisassociatePhoneNumberFromUserResponse {}
-export const DisassociatePhoneNumberFromUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociatePhoneNumberFromUserResponse",
-}) as any as S.Schema<DisassociatePhoneNumberFromUserResponse>;
+export const DisassociatePhoneNumberFromUserResponse =
+  AssociatePhoneNumberWithUserResponse as any as S.Schema<DisassociatePhoneNumberFromUserResponse>;
 export interface DisassociateSigninDelegateGroupsFromAccountRequest {
   AccountId: string;
   GroupNames: string[];
@@ -1118,11 +1101,8 @@ export const DisassociateSigninDelegateGroupsFromAccountRequest = /*@__PURE__*/ 
   identifier: "DisassociateSigninDelegateGroupsFromAccountRequest",
 }) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountRequest>;
 export interface DisassociateSigninDelegateGroupsFromAccountResponse {}
-export const DisassociateSigninDelegateGroupsFromAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateSigninDelegateGroupsFromAccountResponse",
-}) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountResponse>;
+export const DisassociateSigninDelegateGroupsFromAccountResponse =
+  AssociatePhoneNumberWithUserResponse as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountResponse>;
 export interface GetAccountRequest {
   AccountId: string;
 }
@@ -1134,9 +1114,7 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccountResponse {
   Account?: Account;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Account: S.optional(Account) }),
-).annotate({ identifier: "GetAccountResponse" }) as any as S.Schema<GetAccountResponse>;
+export const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
 export interface GetAccountSettingsRequest {
   AccountId: string;
 }
@@ -1191,9 +1169,7 @@ export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetBotResponse {
   Bot?: Bot;
 }
-export const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bot: S.optional(Bot) }),
-).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
+export const GetBotResponse = CreateBotResponse as any as S.Schema<GetBotResponse>;
 export interface GetEventsConfigurationRequest {
   AccountId: string;
   BotId: string;
@@ -1250,9 +1226,8 @@ export const BusinessCallingSettings = /*@__PURE__*/ S.suspend(() =>
 export interface VoiceConnectorSettings {
   CdrBucket?: string;
 }
-export const VoiceConnectorSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CdrBucket: S.optional(S.String) }),
-).annotate({ identifier: "VoiceConnectorSettings" }) as any as S.Schema<VoiceConnectorSettings>;
+export const VoiceConnectorSettings =
+  BusinessCallingSettings as any as S.Schema<VoiceConnectorSettings>;
 export interface GetGlobalSettingsResponse {
   BusinessCalling?: BusinessCallingSettings;
   VoiceConnector?: VoiceConnectorSettings;
@@ -1403,11 +1378,8 @@ export const GetPhoneNumberOrderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPhoneNumberOrderResponse {
   PhoneNumberOrder?: PhoneNumberOrder;
 }
-export const GetPhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
-).annotate({
-  identifier: "GetPhoneNumberOrderResponse",
-}) as any as S.Schema<GetPhoneNumberOrderResponse>;
+export const GetPhoneNumberOrderResponse =
+  CreatePhoneNumberOrderResponse as any as S.Schema<GetPhoneNumberOrderResponse>;
 export interface GetPhoneNumberSettingsRequest {}
 export const GetPhoneNumberSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1504,9 +1476,7 @@ export const GetRoomRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRoomResponse {
   Room?: Room;
 }
-export const GetRoomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Room: S.optional(Room) }),
-).annotate({ identifier: "GetRoomResponse" }) as any as S.Schema<GetRoomResponse>;
+export const GetRoomResponse = CreateRoomResponse as any as S.Schema<GetRoomResponse>;
 export interface GetUserRequest {
   AccountId: string;
   UserId: string;
@@ -1529,9 +1499,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserResponse {
   User?: User;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }),
-).annotate({ identifier: "GetUserResponse" }) as any as S.Schema<GetUserResponse>;
+export const GetUserResponse = CreateUserResponse as any as S.Schema<GetUserResponse>;
 export interface GetUserSettingsRequest {
   AccountId: string;
   UserId: string;
@@ -1572,7 +1540,7 @@ export const GetUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserSettings: S.optional(UserSettings) }),
 ).annotate({ identifier: "GetUserSettingsResponse" }) as any as S.Schema<GetUserSettingsResponse>;
 export type UserEmailList = (string | redacted.Redacted<string>)[];
-export const UserEmailList = /*@__PURE__*/ S.Array(SensitiveString);
+export const UserEmailList = E164PhoneNumberList as any as S.Schema<UserEmailList>;
 export interface InviteUsersRequest {
   AccountId: string;
   UserEmailList: (string | redacted.Redacted<string>)[];
@@ -1883,9 +1851,7 @@ export const LogoutUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "LogoutUserRequest" }) as any as S.Schema<LogoutUserRequest>;
 export interface LogoutUserResponse {}
-export const LogoutUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LogoutUserResponse",
-}) as any as S.Schema<LogoutUserResponse>;
+export const LogoutUserResponse = DeleteAccountResponse as any as S.Schema<LogoutUserResponse>;
 export interface PutEventsConfigurationRequest {
   AccountId: string;
   BotId: string;
@@ -1914,11 +1880,8 @@ export const PutEventsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutEventsConfigurationResponse {
   EventsConfiguration?: EventsConfiguration;
 }
-export const PutEventsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EventsConfiguration: S.optional(EventsConfiguration) }),
-).annotate({
-  identifier: "PutEventsConfigurationResponse",
-}) as any as S.Schema<PutEventsConfigurationResponse>;
+export const PutEventsConfigurationResponse =
+  GetEventsConfigurationResponse as any as S.Schema<PutEventsConfigurationResponse>;
 export interface PutRetentionSettingsRequest {
   AccountId: string;
   RetentionSettings: RetentionSettings;
@@ -1944,14 +1907,8 @@ export interface PutRetentionSettingsResponse {
   RetentionSettings?: RetentionSettings;
   InitiateDeletionTimestamp?: Date;
 }
-export const PutRetentionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RetentionSettings: S.optional(RetentionSettings),
-    InitiateDeletionTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({
-  identifier: "PutRetentionSettingsResponse",
-}) as any as S.Schema<PutRetentionSettingsResponse>;
+export const PutRetentionSettingsResponse =
+  GetRetentionSettingsResponse as any as S.Schema<PutRetentionSettingsResponse>;
 export interface RedactConversationMessageRequest {
   AccountId: string;
   ConversationId: string;
@@ -1979,11 +1936,8 @@ export const RedactConversationMessageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RedactConversationMessageRequest",
 }) as any as S.Schema<RedactConversationMessageRequest>;
 export interface RedactConversationMessageResponse {}
-export const RedactConversationMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RedactConversationMessageResponse",
-}) as any as S.Schema<RedactConversationMessageResponse>;
+export const RedactConversationMessageResponse =
+  AssociatePhoneNumberWithUserResponse as any as S.Schema<RedactConversationMessageResponse>;
 export interface RedactRoomMessageRequest {
   AccountId: string;
   RoomId: string;
@@ -2009,9 +1963,8 @@ export const RedactRoomMessageRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RedactRoomMessageRequest" }) as any as S.Schema<RedactRoomMessageRequest>;
 export interface RedactRoomMessageResponse {}
-export const RedactRoomMessageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RedactRoomMessageResponse",
-}) as any as S.Schema<RedactRoomMessageResponse>;
+export const RedactRoomMessageResponse =
+  DeleteAccountResponse as any as S.Schema<RedactRoomMessageResponse>;
 export interface RegenerateSecurityTokenRequest {
   AccountId: string;
   BotId: string;
@@ -2069,9 +2022,8 @@ export const ResetPersonalPINRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResetPersonalPINResponse {
   User?: User;
 }
-export const ResetPersonalPINResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }),
-).annotate({ identifier: "ResetPersonalPINResponse" }) as any as S.Schema<ResetPersonalPINResponse>;
+export const ResetPersonalPINResponse =
+  CreateUserResponse as any as S.Schema<ResetPersonalPINResponse>;
 export interface RestorePhoneNumberRequest {
   PhoneNumberId: string;
 }
@@ -2158,9 +2110,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountResponse {
   Account?: Account;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Account: S.optional(Account) }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse =
+  CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
 export interface UpdateAccountSettingsRequest {
   AccountId: string;
   AccountSettings: AccountSettings;
@@ -2183,9 +2134,8 @@ export const UpdateAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAccountSettingsRequest",
 }) as any as S.Schema<UpdateAccountSettingsRequest>;
 export interface UpdateAccountSettingsResponse {}
-export const UpdateAccountSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAccountSettingsResponse",
-}) as any as S.Schema<UpdateAccountSettingsResponse>;
+export const UpdateAccountSettingsResponse =
+  DeleteAccountResponse as any as S.Schema<UpdateAccountSettingsResponse>;
 export interface UpdateBotRequest {
   AccountId: string;
   BotId: string;
@@ -2210,9 +2160,7 @@ export const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBotResponse {
   Bot?: Bot;
 }
-export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bot: S.optional(Bot) }),
-).annotate({ identifier: "UpdateBotResponse" }) as any as S.Schema<UpdateBotResponse>;
+export const UpdateBotResponse = CreateBotResponse as any as S.Schema<UpdateBotResponse>;
 export interface UpdateGlobalSettingsRequest {
   BusinessCalling?: BusinessCallingSettings;
   VoiceConnector?: VoiceConnectorSettings;
@@ -2226,9 +2174,8 @@ export const UpdateGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGlobalSettingsRequest",
 }) as any as S.Schema<UpdateGlobalSettingsRequest>;
 export interface UpdateGlobalSettingsResponse {}
-export const UpdateGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateGlobalSettingsResponse",
-}) as any as S.Schema<UpdateGlobalSettingsResponse>;
+export const UpdateGlobalSettingsResponse =
+  DeleteAccountResponse as any as S.Schema<UpdateGlobalSettingsResponse>;
 export interface UpdatePhoneNumberRequest {
   PhoneNumberId: string;
   ProductType?: PhoneNumberProductType;
@@ -2253,11 +2200,8 @@ export const UpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
-export const UpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
-).annotate({
-  identifier: "UpdatePhoneNumberResponse",
-}) as any as S.Schema<UpdatePhoneNumberResponse>;
+export const UpdatePhoneNumberResponse =
+  RestorePhoneNumberResponse as any as S.Schema<UpdatePhoneNumberResponse>;
 export interface UpdatePhoneNumberSettingsRequest {
   CallingName: string | redacted.Redacted<string>;
 }
@@ -2269,11 +2213,8 @@ export const UpdatePhoneNumberSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePhoneNumberSettingsRequest",
 }) as any as S.Schema<UpdatePhoneNumberSettingsRequest>;
 export interface UpdatePhoneNumberSettingsResponse {}
-export const UpdatePhoneNumberSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePhoneNumberSettingsResponse",
-}) as any as S.Schema<UpdatePhoneNumberSettingsResponse>;
+export const UpdatePhoneNumberSettingsResponse =
+  AssociatePhoneNumberWithUserResponse as any as S.Schema<UpdatePhoneNumberSettingsResponse>;
 export interface UpdateRoomRequest {
   AccountId: string;
   RoomId: string;
@@ -2298,9 +2239,7 @@ export const UpdateRoomRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRoomResponse {
   Room?: Room;
 }
-export const UpdateRoomResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Room: S.optional(Room) }),
-).annotate({ identifier: "UpdateRoomResponse" }) as any as S.Schema<UpdateRoomResponse>;
+export const UpdateRoomResponse = CreateRoomResponse as any as S.Schema<UpdateRoomResponse>;
 export interface UpdateRoomMembershipRequest {
   AccountId: string;
   RoomId: string;
@@ -2332,11 +2271,8 @@ export const UpdateRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRoomMembershipResponse {
   RoomMembership?: RoomMembership;
 }
-export const UpdateRoomMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RoomMembership: S.optional(RoomMembership) }),
-).annotate({
-  identifier: "UpdateRoomMembershipResponse",
-}) as any as S.Schema<UpdateRoomMembershipResponse>;
+export const UpdateRoomMembershipResponse =
+  CreateRoomMembershipResponse as any as S.Schema<UpdateRoomMembershipResponse>;
 export interface UpdateUserRequest {
   AccountId: string;
   UserId: string;
@@ -2365,9 +2301,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUserResponse {
   User?: User;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ User: S.optional(User) }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = CreateUserResponse as any as S.Schema<UpdateUserResponse>;
 export interface UpdateUserSettingsRequest {
   AccountId: string;
   UserId: string;
@@ -2392,9 +2326,8 @@ export const UpdateUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserSettingsRequest",
 }) as any as S.Schema<UpdateUserSettingsRequest>;
 export interface UpdateUserSettingsResponse {}
-export const UpdateUserSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserSettingsResponse",
-}) as any as S.Schema<UpdateUserSettingsResponse>;
+export const UpdateUserSettingsResponse =
+  DeleteAccountResponse as any as S.Schema<UpdateUserSettingsResponse>;
 export type AssociatePhoneNumberWithUserError =
   | AccessDeniedException
   | BadRequestException

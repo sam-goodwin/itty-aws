@@ -282,9 +282,8 @@ export const CreateSharedEnvVariableRequestTargetList = /*@__PURE__*/ S.Array(
 
 /** Associate a Shared Environment Variable to projects. */
 export type CreateSharedEnvVariableRequestProjectIdList = Array<string>;
-export const CreateSharedEnvVariableRequestProjectIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSharedEnvVariableRequestProjectIdList>;
+export const CreateSharedEnvVariableRequestProjectIdList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<CreateSharedEnvVariableRequestProjectIdList>;
 
 export interface CreateSharedEnvVariableRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -373,9 +372,8 @@ export const CreateSharedEnvVariableResponseCreatedItemLastEditedByPrincipal =
 
 /** The unique identifiers of the projects which the Shared Env Var is linked to. */
 export type CreateSharedEnvVariableResponseCreatedItemProjectIdList = Array<string>;
-export const CreateSharedEnvVariableResponseCreatedItemProjectIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSharedEnvVariableResponseCreatedItemProjectIdList>;
+export const CreateSharedEnvVariableResponseCreatedItemProjectIdList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<CreateSharedEnvVariableResponseCreatedItemProjectIdList>;
 
 /** environments this env variable targets */
 export type CreateSharedEnvVariableResponseCreatedItemTargetItem =
@@ -588,9 +586,8 @@ export const CreateSharedEnvVariableResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the Shared Environment Variables to delete */
 export type DeleteSharedEnvVariableRequestIdsList = Array<string>;
-export const DeleteSharedEnvVariableRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteSharedEnvVariableRequestIdsList>;
+export const DeleteSharedEnvVariableRequestIdsList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<DeleteSharedEnvVariableRequestIdsList>;
 
 export interface DeleteSharedEnvVariableRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -611,9 +608,8 @@ export const DeleteSharedEnvVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSharedEnvVariableRequest>;
 
 export type DeleteSharedEnvVariableResponseDeletedList = Array<string>;
-export const DeleteSharedEnvVariableResponseDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteSharedEnvVariableResponseDeletedList>;
+export const DeleteSharedEnvVariableResponseDeletedList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<DeleteSharedEnvVariableResponseDeletedList>;
 
 export type DeleteSharedEnvVariableResponseFailedItemErrorTargetCase0Item =
   | "development"
@@ -773,9 +769,8 @@ export const GetCustomEnvironmentResponseBranchMatcher = /*@__PURE__*/ S.suspend
 
 /** List of aliases for the current deployment */
 export type GetCustomEnvironmentResponseCurrentDeploymentAliasesList = Array<string>;
-export const GetCustomEnvironmentResponseCurrentDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCustomEnvironmentResponseCurrentDeploymentAliasesList>;
+export const GetCustomEnvironmentResponseCurrentDeploymentAliasesList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<GetCustomEnvironmentResponseCurrentDeploymentAliasesList>;
 
 export type GetCustomEnvironmentResponseDomainsItemRedirectStatusCode = 301 | 302 | 307 | 308;
 export const GetCustomEnvironmentResponseDomainsItemRedirectStatusCode = S.Number;
@@ -789,9 +784,8 @@ export const GetCustomEnvironmentResponseDomainsItemVerificationItem =
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type GetCustomEnvironmentResponseDomainsItemVerificationList =
   Array<CreateCustomEnvironmentResponseDomainsItemVerificationItem>;
-export const GetCustomEnvironmentResponseDomainsItemVerificationList = /*@__PURE__*/ S.Array(
-  CreateCustomEnvironmentResponseDomainsItemVerificationItem,
-) as any as S.Schema<GetCustomEnvironmentResponseDomainsItemVerificationList>;
+export const GetCustomEnvironmentResponseDomainsItemVerificationList =
+  CreateCustomEnvironmentResponseDomainsItemVerificationList as any as S.Schema<GetCustomEnvironmentResponseDomainsItemVerificationList>;
 
 /** List of domains associated with this environment */
 export interface GetCustomEnvironmentResponseDomainsItem {
@@ -937,9 +931,7 @@ export const GetProjectCustomEnvironmentsResponseEnvironmentsItemBranchMatcher =
 export type GetProjectCustomEnvironmentsResponseEnvironmentsItemCurrentDeploymentAliasesList =
   Array<string>;
 export const GetProjectCustomEnvironmentsResponseEnvironmentsItemCurrentDeploymentAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetProjectCustomEnvironmentsResponseEnvironmentsItemCurrentDeploymentAliasesList>;
+  CreateSharedEnvVariableResponseCreatedItemCustomEnvironmentIdsList as any as S.Schema<GetProjectCustomEnvironmentsResponseEnvironmentsItemCurrentDeploymentAliasesList>;
 
 export type GetProjectCustomEnvironmentsResponseEnvironmentsItemDomainsItemRedirectStatusCode =
   | 301
@@ -1093,9 +1085,8 @@ export const GetSharedEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom environment IDs that this Shared Env Var is scoped to. */
 export type GetSharedEnvVarResponseCustomEnvironmentIdsList = Array<string>;
-export const GetSharedEnvVarResponseCustomEnvironmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSharedEnvVarResponseCustomEnvironmentIdsList>;
+export const GetSharedEnvVarResponseCustomEnvironmentIdsList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<GetSharedEnvVarResponseCustomEnvironmentIdsList>;
 
 export type GetSharedEnvVarResponseLastEditedByPrincipalCase0Type = "user";
 export const GetSharedEnvVarResponseLastEditedByPrincipalCase0Type = S.String;
@@ -1149,9 +1140,8 @@ export const GetSharedEnvVarResponseLastEditedByPrincipal =
 
 /** The unique identifiers of the projects which the Shared Env Var is linked to. */
 export type GetSharedEnvVarResponseProjectIdList = Array<string>;
-export const GetSharedEnvVarResponseProjectIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSharedEnvVarResponseProjectIdList>;
+export const GetSharedEnvVarResponseProjectIdList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<GetSharedEnvVarResponseProjectIdList>;
 
 /** environments this env variable targets */
 export type GetSharedEnvVarResponseTargetItem = "development" | "preview" | "production";
@@ -1264,9 +1254,8 @@ export const ListSharedEnvVariableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom environment IDs that this Shared Env Var is scoped to. */
 export type ListSharedEnvVariableResponseDataItemCustomEnvironmentIdsList = Array<string>;
-export const ListSharedEnvVariableResponseDataItemCustomEnvironmentIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSharedEnvVariableResponseDataItemCustomEnvironmentIdsList>;
+export const ListSharedEnvVariableResponseDataItemCustomEnvironmentIdsList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<ListSharedEnvVariableResponseDataItemCustomEnvironmentIdsList>;
 
 export type ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0Type = "user";
 export const ListSharedEnvVariableResponseDataItemLastEditedByPrincipalCase0Type = S.String;
@@ -1322,9 +1311,8 @@ export const ListSharedEnvVariableResponseDataItemLastEditedByPrincipal =
 
 /** The unique identifiers of the projects which the Shared Env Var is linked to. */
 export type ListSharedEnvVariableResponseDataItemProjectIdList = Array<string>;
-export const ListSharedEnvVariableResponseDataItemProjectIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSharedEnvVariableResponseDataItemProjectIdList>;
+export const ListSharedEnvVariableResponseDataItemProjectIdList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<ListSharedEnvVariableResponseDataItemProjectIdList>;
 
 export type ListSharedEnvVariableResponseDataItemSecurityIssuesItem =
   | "flags-secret-needs-split"
@@ -1516,9 +1504,8 @@ export const RemoveCustomEnvironmentResponseBranchMatcher = /*@__PURE__*/ S.susp
 
 /** List of aliases for the current deployment */
 export type RemoveCustomEnvironmentResponseCurrentDeploymentAliasesList = Array<string>;
-export const RemoveCustomEnvironmentResponseCurrentDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveCustomEnvironmentResponseCurrentDeploymentAliasesList>;
+export const RemoveCustomEnvironmentResponseCurrentDeploymentAliasesList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<RemoveCustomEnvironmentResponseCurrentDeploymentAliasesList>;
 
 export type RemoveCustomEnvironmentResponseDomainsItemRedirectStatusCode = 301 | 302 | 307 | 308;
 export const RemoveCustomEnvironmentResponseDomainsItemRedirectStatusCode = S.Number;
@@ -1532,9 +1519,8 @@ export const RemoveCustomEnvironmentResponseDomainsItemVerificationItem =
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type RemoveCustomEnvironmentResponseDomainsItemVerificationList =
   Array<CreateCustomEnvironmentResponseDomainsItemVerificationItem>;
-export const RemoveCustomEnvironmentResponseDomainsItemVerificationList = /*@__PURE__*/ S.Array(
-  CreateCustomEnvironmentResponseDomainsItemVerificationItem,
-) as any as S.Schema<RemoveCustomEnvironmentResponseDomainsItemVerificationList>;
+export const RemoveCustomEnvironmentResponseDomainsItemVerificationList =
+  CreateCustomEnvironmentResponseDomainsItemVerificationList as any as S.Schema<RemoveCustomEnvironmentResponseDomainsItemVerificationList>;
 
 /** List of domains associated with this environment */
 export interface RemoveCustomEnvironmentResponseDomainsItem {
@@ -1727,9 +1713,8 @@ export const UpdateCustomEnvironmentResponseBranchMatcher = /*@__PURE__*/ S.susp
 
 /** List of aliases for the current deployment */
 export type UpdateCustomEnvironmentResponseCurrentDeploymentAliasesList = Array<string>;
-export const UpdateCustomEnvironmentResponseCurrentDeploymentAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateCustomEnvironmentResponseCurrentDeploymentAliasesList>;
+export const UpdateCustomEnvironmentResponseCurrentDeploymentAliasesList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<UpdateCustomEnvironmentResponseCurrentDeploymentAliasesList>;
 
 export type UpdateCustomEnvironmentResponseDomainsItemRedirectStatusCode = 301 | 302 | 307 | 308;
 export const UpdateCustomEnvironmentResponseDomainsItemRedirectStatusCode = S.Number;
@@ -1743,9 +1728,8 @@ export const UpdateCustomEnvironmentResponseDomainsItemVerificationItem =
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type UpdateCustomEnvironmentResponseDomainsItemVerificationList =
   Array<CreateCustomEnvironmentResponseDomainsItemVerificationItem>;
-export const UpdateCustomEnvironmentResponseDomainsItemVerificationList = /*@__PURE__*/ S.Array(
-  CreateCustomEnvironmentResponseDomainsItemVerificationItem,
-) as any as S.Schema<UpdateCustomEnvironmentResponseDomainsItemVerificationList>;
+export const UpdateCustomEnvironmentResponseDomainsItemVerificationList =
+  CreateCustomEnvironmentResponseDomainsItemVerificationList as any as S.Schema<UpdateCustomEnvironmentResponseDomainsItemVerificationList>;
 
 /** List of domains associated with this environment */
 export interface UpdateCustomEnvironmentResponseDomainsItem {
@@ -1848,23 +1832,18 @@ export const UpdateSharedEnvVariableRequestUpdatesValueTargetList = /*@__PURE__*
 
 /** Associate a Shared Environment Variable to projects. */
 export type UpdateSharedEnvVariableRequestUpdatesValueProjectIdList = Array<string>;
-export const UpdateSharedEnvVariableRequestUpdatesValueProjectIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueProjectIdList>;
+export const UpdateSharedEnvVariableRequestUpdatesValueProjectIdList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueProjectIdList>;
 
 /** Project IDs to add to this environment variable */
 export type UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesLinkList = Array<string>;
 export const UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesLinkList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesLinkList>;
+  CreateSharedEnvVariableResponseCreatedItemCustomEnvironmentIdsList as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesLinkList>;
 
 /** Project IDs to remove from this environment variable */
 export type UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesUnlinkList = Array<string>;
 export const UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesUnlinkList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesUnlinkList>;
+  CreateSharedEnvVariableResponseCreatedItemCustomEnvironmentIdsList as any as S.Schema<UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdatesUnlinkList>;
 
 /** Incrementally update project linking without specifying the full list */
 export interface UpdateSharedEnvVariableRequestUpdatesValueProjectIdUpdates {
@@ -2043,9 +2022,7 @@ export const UpdateSharedEnvVariableResponseFailedList = /*@__PURE__*/ S.Array(
 /** The custom environment IDs that this Shared Env Var is scoped to. */
 export type UpdateSharedEnvVariableResponseUpdatedItemCustomEnvironmentIdsList = Array<string>;
 export const UpdateSharedEnvVariableResponseUpdatedItemCustomEnvironmentIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemCustomEnvironmentIdsList>;
+  CreateSharedEnvVariableResponseCreatedItemCustomEnvironmentIdsList as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemCustomEnvironmentIdsList>;
 
 export type UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0Type = "user";
 export const UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipalCase0Type = S.String;
@@ -2101,9 +2078,8 @@ export const UpdateSharedEnvVariableResponseUpdatedItemLastEditedByPrincipal =
 
 /** The unique identifiers of the projects which the Shared Env Var is linked to. */
 export type UpdateSharedEnvVariableResponseUpdatedItemProjectIdList = Array<string>;
-export const UpdateSharedEnvVariableResponseUpdatedItemProjectIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemProjectIdList>;
+export const UpdateSharedEnvVariableResponseUpdatedItemProjectIdList =
+  CreateCustomEnvironmentResponseCurrentDeploymentAliasesList as any as S.Schema<UpdateSharedEnvVariableResponseUpdatedItemProjectIdList>;
 
 /** environments this env variable targets */
 export type UpdateSharedEnvVariableResponseUpdatedItemTargetItem =

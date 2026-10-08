@@ -184,9 +184,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Request message for 'CommitConversionWorkspace' request. */
 export interface CommitConversionWorkspaceRequest {
@@ -3050,12 +3048,7 @@ export interface FunctionEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
-export const FunctionEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sqlCode: S.optional(S.String),
-    customFeatures: S.optional(DocumentMap),
-  }),
-).annotate({ identifier: "FunctionEntity" }) as any as S.Schema<FunctionEntity>;
+export const FunctionEntity = StoredProcedureEntity as any as S.Schema<FunctionEntity>;
 
 /** Constraint is not used as an independent entity, it is retrieved as part of another entity such as Table or View. */
 export interface ConstraintEntity {
@@ -4172,11 +4165,7 @@ export interface TcpProxyScript {
   /** The TCP Proxy configuration script. */
   script?: string;
 }
-export const TcpProxyScript = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    script: S.optional(S.String),
-  }),
-).annotate({ identifier: "TcpProxyScript" }) as any as S.Schema<TcpProxyScript>;
+export const TcpProxyScript = SshScript as any as S.Schema<TcpProxyScript>;
 
 export interface GetIamPolicyProjectsLocationsConnectionProfilesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -5592,9 +5581,8 @@ export const SetDraftEntityDdlProjectsLocationsConversionWorkspacesRequest =
 
 /** Response message for DataMigrationService.SetDraftEntityDdl. */
 export interface SetDraftEntityDdlResponse {}
-export const SetDraftEntityDdlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetDraftEntityDdlResponse",
-}) as any as S.Schema<SetDraftEntityDdlResponse>;
+export const SetDraftEntityDdlResponse =
+  CancelOperationRequest as any as S.Schema<SetDraftEntityDdlResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -5814,13 +5802,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsConversionWorkspacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

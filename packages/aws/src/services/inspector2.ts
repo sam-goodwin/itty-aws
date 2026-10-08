@@ -253,15 +253,11 @@ export interface DisassociateConfigurationRequest {
   scanConfigurationArn: string;
   resource: CodeSecurityResource;
 }
-export const DisassociateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scanConfigurationArn: S.String, resource: CodeSecurityResource }),
-).annotate({
-  identifier: "DisassociateConfigurationRequest",
-}) as any as S.Schema<DisassociateConfigurationRequest>;
+export const DisassociateConfigurationRequest =
+  AssociateConfigurationRequest as any as S.Schema<DisassociateConfigurationRequest>;
 export type DisassociateConfigurationRequestList = DisassociateConfigurationRequest[];
-export const DisassociateConfigurationRequestList = /*@__PURE__*/ S.Array(
-  DisassociateConfigurationRequest,
-);
+export const DisassociateConfigurationRequestList =
+  AssociateConfigurationRequestList as any as S.Schema<DisassociateConfigurationRequestList>;
 export interface BatchDisassociateCodeSecurityScanConfigurationRequest {
   disassociateConfigurationRequests: DisassociateConfigurationRequest[];
 }
@@ -283,14 +279,8 @@ export interface BatchDisassociateCodeSecurityScanConfigurationResponse {
   failedAssociations?: FailedAssociationResult[];
   successfulAssociations?: SuccessfulAssociationResult[];
 }
-export const BatchDisassociateCodeSecurityScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failedAssociations: S.optional(FailedAssociationResultList),
-    successfulAssociations: S.optional(SuccessfulAssociationResultList),
-  }),
-).annotate({
-  identifier: "BatchDisassociateCodeSecurityScanConfigurationResponse",
-}) as any as S.Schema<BatchDisassociateCodeSecurityScanConfigurationResponse>;
+export const BatchDisassociateCodeSecurityScanConfigurationResponse =
+  BatchAssociateCodeSecurityScanConfigurationResponse as any as S.Schema<BatchDisassociateCodeSecurityScanConfigurationResponse>;
 export type AccountIdSet = string[];
 export const AccountIdSet = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetAccountStatusRequest {
@@ -389,7 +379,7 @@ export const BatchGetAccountStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetAccountStatusResponse>;
 export type FindingArn = string;
 export type FindingArns = string[];
-export const FindingArns = /*@__PURE__*/ S.Array(S.String);
+export const FindingArns = AccountIdSet as any as S.Schema<FindingArns>;
 export interface BatchGetCodeSnippetRequest {
   findingArns: string[];
 }
@@ -460,7 +450,7 @@ export const BatchGetCodeSnippetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetCodeSnippetResponse",
 }) as any as S.Schema<BatchGetCodeSnippetResponse>;
 export type FindingArnList = string[];
-export const FindingArnList = /*@__PURE__*/ S.Array(S.String);
+export const FindingArnList = AccountIdSet as any as S.Schema<FindingArnList>;
 export interface BatchGetFindingDetailsRequest {
   findingArns: string[];
 }
@@ -513,10 +503,10 @@ export type EvidenceList = Evidence[];
 export const EvidenceList = /*@__PURE__*/ S.Array(Evidence);
 export type Ttp = string;
 export type Ttps = string[];
-export const Ttps = /*@__PURE__*/ S.Array(S.String);
+export const Ttps = AccountIdSet as any as S.Schema<Ttps>;
 export type Tool = string;
 export type Tools = string[];
-export const Tools = /*@__PURE__*/ S.Array(S.String);
+export const Tools = AccountIdSet as any as S.Schema<Tools>;
 export type LastSeen = Date;
 export type FirstSeen = Date;
 export interface ExploitObserved {
@@ -531,10 +521,11 @@ export const ExploitObserved = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExploitObserved" }) as any as S.Schema<ExploitObserved>;
 export type VulnerabilityReferenceUrl = string;
 export type VulnerabilityReferenceUrls = string[];
-export const VulnerabilityReferenceUrls = /*@__PURE__*/ S.Array(S.String);
+export const VulnerabilityReferenceUrls =
+  AccountIdSet as any as S.Schema<VulnerabilityReferenceUrls>;
 export type Cwe = string;
 export type Cwes = string[];
-export const Cwes = /*@__PURE__*/ S.Array(S.String);
+export const Cwes = AccountIdSet as any as S.Schema<Cwes>;
 export interface FindingDetail {
   findingArn?: string;
   cisaData?: CisaData;
@@ -569,11 +560,10 @@ export interface FindingDetailsError {
   errorCode: string;
   errorMessage: string;
 }
-export const FindingDetailsError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ findingArn: S.String, errorCode: S.String, errorMessage: S.String }),
-).annotate({ identifier: "FindingDetailsError" }) as any as S.Schema<FindingDetailsError>;
+export const FindingDetailsError = CodeSnippetError as any as S.Schema<FindingDetailsError>;
 export type FindingDetailsErrorList = FindingDetailsError[];
-export const FindingDetailsErrorList = /*@__PURE__*/ S.Array(FindingDetailsError);
+export const FindingDetailsErrorList =
+  CodeSnippetErrorList as any as S.Schema<FindingDetailsErrorList>;
 export interface BatchGetFindingDetailsResponse {
   findingDetails?: FindingDetail[];
   errors?: FindingDetailsError[];
@@ -588,7 +578,7 @@ export const BatchGetFindingDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetFindingDetailsResponse>;
 export type MeteringAccountId = string;
 export type MeteringAccountIdList = string[];
-export const MeteringAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const MeteringAccountIdList = AccountIdSet as any as S.Schema<MeteringAccountIdList>;
 export interface BatchGetFreeTrialInfoRequest {
   accountIds: string[];
 }
@@ -751,14 +741,8 @@ export interface BatchUpdateMemberEc2DeepInspectionStatusResponse {
   accountIds?: MemberAccountEc2DeepInspectionStatusState[];
   failedAccountIds?: FailedMemberAccountEc2DeepInspectionStatusState[];
 }
-export const BatchUpdateMemberEc2DeepInspectionStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountIds: S.optional(MemberAccountEc2DeepInspectionStatusStateList),
-    failedAccountIds: S.optional(FailedMemberAccountEc2DeepInspectionStatusStateList),
-  }),
-).annotate({
-  identifier: "BatchUpdateMemberEc2DeepInspectionStatusResponse",
-}) as any as S.Schema<BatchUpdateMemberEc2DeepInspectionStatusResponse>;
+export const BatchUpdateMemberEc2DeepInspectionStatusResponse =
+  BatchGetMemberEc2DeepInspectionStatusResponse as any as S.Schema<BatchUpdateMemberEc2DeepInspectionStatusResponse>;
 export type ReportId = string;
 export interface CancelFindingsReportRequest {
   reportId: string;
@@ -847,11 +831,11 @@ export const Schedule = /*@__PURE__*/ S.Union([
 ]);
 export type TargetAccount = string;
 export type TargetAccountList = string[];
-export const TargetAccountList = /*@__PURE__*/ S.Array(S.String);
+export const TargetAccountList = AccountIdSet as any as S.Schema<TargetAccountList>;
 export type TargetResourceTagsKey = string;
 export type TargetResourceTagsValue = string;
 export type TagValueList = string[];
-export const TagValueList = /*@__PURE__*/ S.Array(S.String);
+export const TagValueList = AccountIdSet as any as S.Schema<TagValueList>;
 export type TargetResourceTags = { [key: string]: string[] | undefined };
 export const TargetResourceTags = /*@__PURE__*/ S.Record(
   S.String,
@@ -926,7 +910,7 @@ export const CreateIntegrationDetail = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ gitlabSelfManaged: CreateGitLabSelfManagedIntegrationDetail }),
 ]);
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const TagMap = CisTagMap as any as S.Schema<TagMap>;
 export interface CreateCodeSecurityIntegrationRequest {
   name: string;
   type: IntegrationType;
@@ -1086,7 +1070,7 @@ export const ScopeType = S.String;
 
 export type ScopeValue = string;
 export type ScopeValueList = string[];
-export const ScopeValueList = /*@__PURE__*/ S.Array(S.String);
+export const ScopeValueList = AccountIdSet as any as S.Schema<ScopeValueList>;
 export interface ScopeConfigurationInput {
   scopeType: ScopeType;
   scopeValues?: string[];
@@ -1110,7 +1094,7 @@ export const AzureScopeConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureScopeConfigurationInput>;
 export type AzureRegion = string;
 export type AzureRegionList = string[];
-export const AzureRegionList = /*@__PURE__*/ S.Array(S.String);
+export const AzureRegionList = AccountIdSet as any as S.Schema<AzureRegionList>;
 export interface AzureProviderDetailCreate {
   awsConfigConnectorArn: string;
   scopeConfiguration: AzureScopeConfigurationInput;
@@ -1446,22 +1430,19 @@ export interface ResourceStringFilter {
   comparison: string;
   value: string;
 }
-export const ResourceStringFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: S.String, value: S.String }),
-).annotate({ identifier: "ResourceStringFilter" }) as any as S.Schema<ResourceStringFilter>;
+export const ResourceStringFilter = StringFilter as any as S.Schema<ResourceStringFilter>;
 export type ResourceStringFilterList = ResourceStringFilter[];
-export const ResourceStringFilterList = /*@__PURE__*/ S.Array(ResourceStringFilter);
+export const ResourceStringFilterList =
+  StringFilterList as any as S.Schema<ResourceStringFilterList>;
 export type ResourceMapComparison = string;
 export interface ResourceMapFilter {
   comparison: string;
   key: string;
   value?: string;
 }
-export const ResourceMapFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: S.String, key: S.String, value: S.optional(S.String) }),
-).annotate({ identifier: "ResourceMapFilter" }) as any as S.Schema<ResourceMapFilter>;
+export const ResourceMapFilter = MapFilter as any as S.Schema<ResourceMapFilter>;
 export type ResourceMapFilterList = ResourceMapFilter[];
-export const ResourceMapFilterList = /*@__PURE__*/ S.Array(ResourceMapFilter);
+export const ResourceMapFilterList = MapFilterList as any as S.Schema<ResourceMapFilterList>;
 export interface ResourceFilterCriteria {
   accountId?: ResourceStringFilter[];
   resourceId?: ResourceStringFilter[];
@@ -1524,9 +1505,8 @@ export const CreateSbomExportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSbomExportResponse {
   reportId?: string;
 }
-export const CreateSbomExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reportId: S.optional(S.String) }),
-).annotate({ identifier: "CreateSbomExportResponse" }) as any as S.Schema<CreateSbomExportResponse>;
+export const CreateSbomExportResponse =
+  CancelSbomExportResponse as any as S.Schema<CreateSbomExportResponse>;
 export interface DeleteCisScanConfigurationRequest {
   scanConfigurationArn: string;
 }
@@ -1547,11 +1527,8 @@ export const DeleteCisScanConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCisScanConfigurationResponse {
   scanConfigurationArn: string;
 }
-export const DeleteCisScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scanConfigurationArn: S.String }),
-).annotate({
-  identifier: "DeleteCisScanConfigurationResponse",
-}) as any as S.Schema<DeleteCisScanConfigurationResponse>;
+export const DeleteCisScanConfigurationResponse =
+  CreateCodeSecurityScanConfigurationResponse as any as S.Schema<DeleteCisScanConfigurationResponse>;
 export interface DeleteCodeSecurityIntegrationRequest {
   integrationArn: string;
 }
@@ -1597,11 +1574,8 @@ export const DeleteCodeSecurityScanConfigurationRequest = /*@__PURE__*/ S.suspen
 export interface DeleteCodeSecurityScanConfigurationResponse {
   scanConfigurationArn?: string;
 }
-export const DeleteCodeSecurityScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scanConfigurationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteCodeSecurityScanConfigurationResponse",
-}) as any as S.Schema<DeleteCodeSecurityScanConfigurationResponse>;
+export const DeleteCodeSecurityScanConfigurationResponse =
+  CreateCisScanConfigurationResponse as any as S.Schema<DeleteCodeSecurityScanConfigurationResponse>;
 export interface DeleteConnectorRequest {
   connectorArn: string;
 }
@@ -1611,9 +1585,7 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
 export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectorResponse",
-}) as any as S.Schema<DeleteConnectorResponse>;
+export const DeleteConnectorResponse = OneTimeSchedule as any as S.Schema<DeleteConnectorResponse>;
 export interface DeleteFilterRequest {
   arn: string;
 }
@@ -1625,9 +1597,7 @@ export const DeleteFilterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteFilterResponse {
   arn: string;
 }
-export const DeleteFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String }),
-).annotate({ identifier: "DeleteFilterResponse" }) as any as S.Schema<DeleteFilterResponse>;
+export const DeleteFilterResponse = CreateFilterResponse as any as S.Schema<DeleteFilterResponse>;
 export interface DescribeOrganizationConfigurationRequest {}
 export const DescribeOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1670,7 +1640,7 @@ export const DescribeOrganizationConfigurationResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DescribeOrganizationConfigurationResponse>;
 export type ResourceScanType = string;
 export type DisableResourceTypeList = string[];
-export const DisableResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const DisableResourceTypeList = AccountIdSet as any as S.Schema<DisableResourceTypeList>;
 export interface DisableRequest {
   accountIds?: string[];
   resourceTypes?: string[];
@@ -1742,7 +1712,7 @@ export const DisassociateMemberResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateMemberResponse",
 }) as any as S.Schema<DisassociateMemberResponse>;
 export type EnableResourceTypeList = string[];
-export const EnableResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export const EnableResourceTypeList = AccountIdSet as any as S.Schema<EnableResourceTypeList>;
 export type ClientToken = string;
 export interface EnableRequest {
   accountIds?: string[];
@@ -1760,9 +1730,7 @@ export interface EnableResponse {
   accounts: Account[];
   failedAccounts?: FailedAccount[];
 }
-export const EnableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accounts: AccountList, failedAccounts: S.optional(FailedAccountList) }),
-).annotate({ identifier: "EnableResponse" }) as any as S.Schema<EnableResponse>;
+export const EnableResponse = DisableResponse as any as S.Schema<EnableResponse>;
 export interface EnableDelegatedAdminAccountRequest {
   delegatedAdminAccountId: string;
   clientToken?: string;
@@ -1787,14 +1755,11 @@ export const EnableDelegatedAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnableDelegatedAdminAccountResponse {
   delegatedAdminAccountId: string;
 }
-export const EnableDelegatedAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ delegatedAdminAccountId: S.String }),
-).annotate({
-  identifier: "EnableDelegatedAdminAccountResponse",
-}) as any as S.Schema<EnableDelegatedAdminAccountResponse>;
+export const EnableDelegatedAdminAccountResponse =
+  DisableDelegatedAdminAccountResponse as any as S.Schema<EnableDelegatedAdminAccountResponse>;
 export type CisScanArn = string;
 export type ReportTargetAccounts = string[];
-export const ReportTargetAccounts = /*@__PURE__*/ S.Array(S.String);
+export const ReportTargetAccounts = AccountIdSet as any as S.Schema<ReportTargetAccounts>;
 export type CisReportFormat = "PDF" | "CSV" | (string & {});
 export const CisReportFormat = S.String;
 
@@ -1851,7 +1816,7 @@ export const CisStringFilter = /*@__PURE__*/ S.suspend(() =>
 export type CheckIdFilterList = CisStringFilter[];
 export const CheckIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
 export type TitleFilterList = CisStringFilter[];
-export const TitleFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const TitleFilterList = CheckIdFilterList as any as S.Schema<TitleFilterList>;
 export type CisSecurityLevelComparison = "EQUALS" | (string & {});
 export const CisSecurityLevelComparison = S.String;
 
@@ -1865,7 +1830,8 @@ export const CisSecurityLevelFilter = /*@__PURE__*/ S.suspend(() =>
 export type CisSecurityLevelFilterList = CisSecurityLevelFilter[];
 export const CisSecurityLevelFilterList = /*@__PURE__*/ S.Array(CisSecurityLevelFilter);
 export type CisFindingArnFilterList = CisStringFilter[];
-export const CisFindingArnFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const CisFindingArnFilterList =
+  CheckIdFilterList as any as S.Schema<CisFindingArnFilterList>;
 export interface CisScanResultDetailsFilterCriteria {
   findingStatusFilters?: CisFindingStatusFilter[];
   checkIdFilters?: CisStringFilter[];
@@ -2309,7 +2275,7 @@ export const GetEc2DeepInspectionConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetEc2DeepInspectionConfigurationRequest>;
 export type Path = string;
 export type PathList = string[];
-export const PathList = /*@__PURE__*/ S.Array(S.String);
+export const PathList = AccountIdSet as any as S.Schema<PathList>;
 export interface GetEc2DeepInspectionConfigurationResponse {
   packagePaths?: string[];
   orgPackagePaths?: string[];
@@ -2481,7 +2447,7 @@ export const ListAccountPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountPermissionsResponse",
 }) as any as S.Schema<ListAccountPermissionsResponse>;
 export type CisScanNameFilterList = CisStringFilter[];
-export const CisScanNameFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const CisScanNameFilterList = CheckIdFilterList as any as S.Schema<CisScanNameFilterList>;
 export type TagComparison = "EQUALS" | (string & {});
 export const TagComparison = S.String;
 
@@ -2496,7 +2462,8 @@ export const TagFilter = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTagFilterList = TagFilter[];
 export const ResourceTagFilterList = /*@__PURE__*/ S.Array(TagFilter);
 export type CisScanConfigurationArnFilterList = CisStringFilter[];
-export const CisScanConfigurationArnFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const CisScanConfigurationArnFilterList =
+  CheckIdFilterList as any as S.Schema<CisScanConfigurationArnFilterList>;
 export interface ListCisScanConfigurationsFilterCriteria {
   scanNameFilters?: CisStringFilter[];
   targetResourceTagFilters?: TagFilter[];
@@ -2544,7 +2511,7 @@ export const ListCisScanConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCisScanConfigurationsRequest>;
 export type CisOwnerId = string;
 export type CisAccountIdList = string[];
-export const CisAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const CisAccountIdList = AccountIdSet as any as S.Schema<CisAccountIdList>;
 export interface CisTargets {
   accountIds?: string[];
   targetResourceTags?: { [key: string]: string[] | undefined };
@@ -2590,18 +2557,16 @@ export const ListCisScanConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCisScanConfigurationsResponse",
 }) as any as S.Schema<ListCisScanConfigurationsResponse>;
 export type OneAccountIdFilterList = CisStringFilter[];
-export const OneAccountIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const OneAccountIdFilterList = CheckIdFilterList as any as S.Schema<OneAccountIdFilterList>;
 export type PlatformFilterList = CisStringFilter[];
-export const PlatformFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const PlatformFilterList = CheckIdFilterList as any as S.Schema<PlatformFilterList>;
 export interface CisNumberFilter {
   upperInclusive?: number;
   lowerInclusive?: number;
 }
-export const CisNumberFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ upperInclusive: S.optional(S.Number), lowerInclusive: S.optional(S.Number) }),
-).annotate({ identifier: "CisNumberFilter" }) as any as S.Schema<CisNumberFilter>;
+export const CisNumberFilter = NumberFilter as any as S.Schema<CisNumberFilter>;
 export type CisNumberFilterList = CisNumberFilter[];
-export const CisNumberFilterList = /*@__PURE__*/ S.Array(CisNumberFilter);
+export const CisNumberFilterList = NumberFilterList as any as S.Schema<CisNumberFilterList>;
 export interface CisScanResultsAggregatedByChecksFilterCriteria {
   accountIdFilters?: CisStringFilter[];
   checkIdFilters?: CisStringFilter[];
@@ -2710,7 +2675,7 @@ export const ListCisScanResultsAggregatedByChecksResponse = /*@__PURE__*/ S.susp
   identifier: "ListCisScanResultsAggregatedByChecksResponse",
 }) as any as S.Schema<ListCisScanResultsAggregatedByChecksResponse>;
 export type AccountIdFilterList = CisStringFilter[];
-export const AccountIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const AccountIdFilterList = CheckIdFilterList as any as S.Schema<AccountIdFilterList>;
 export type CisResultStatusComparison = "EQUALS" | (string & {});
 export const CisResultStatusComparison = S.String;
 
@@ -2727,7 +2692,7 @@ export const CisResultStatusFilter = /*@__PURE__*/ S.suspend(() =>
 export type CisResultStatusFilterList = CisResultStatusFilter[];
 export const CisResultStatusFilterList = /*@__PURE__*/ S.Array(CisResultStatusFilter);
 export type ResourceIdFilterList = CisStringFilter[];
-export const ResourceIdFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const ResourceIdFilterList = CheckIdFilterList as any as S.Schema<ResourceIdFilterList>;
 export type CisTargetStatusComparison = "EQUALS" | (string & {});
 export const CisTargetStatusComparison = S.String;
 
@@ -2892,9 +2857,10 @@ export const CisDateFilter = /*@__PURE__*/ S.suspend(() =>
 export type CisScanDateFilterList = CisDateFilter[];
 export const CisScanDateFilterList = /*@__PURE__*/ S.Array(CisDateFilter);
 export type CisScanArnFilterList = CisStringFilter[];
-export const CisScanArnFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const CisScanArnFilterList = CheckIdFilterList as any as S.Schema<CisScanArnFilterList>;
 export type CisScheduledByFilterList = CisStringFilter[];
-export const CisScheduledByFilterList = /*@__PURE__*/ S.Array(CisStringFilter);
+export const CisScheduledByFilterList =
+  CheckIdFilterList as any as S.Schema<CisScheduledByFilterList>;
 export interface ListCisScansFilterCriteria {
   scanNameFilters?: CisStringFilter[];
   targetResourceTagFilters?: TagFilter[];
@@ -3341,7 +3307,7 @@ export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: ConnectorList, nextToken: S.optional(SensitiveString) }),
 ).annotate({ identifier: "ListConnectorsResponse" }) as any as S.Schema<ListConnectorsResponse>;
 export type AwsConfigConnectorArnList = string[];
-export const AwsConfigConnectorArnList = /*@__PURE__*/ S.Array(S.String);
+export const AwsConfigConnectorArnList = AccountIdSet as any as S.Schema<AwsConfigConnectorArnList>;
 export type ListConnectorScanConfigurationsMaxResults = number;
 export interface ListConnectorScanConfigurationsRequest {
   awsConfigConnectorArns?: string[];
@@ -3367,7 +3333,7 @@ export const ListConnectorScanConfigurationsRequest = /*@__PURE__*/ S.suspend(()
   identifier: "ListConnectorScanConfigurationsRequest",
 }) as any as S.Schema<ListConnectorScanConfigurationsRequest>;
 export type ConnectorArnList = string[];
-export const ConnectorArnList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectorArnList = AccountIdSet as any as S.Schema<ConnectorArnList>;
 export type ContainerImageRescanDuration = string;
 export type ContainerImagePullDateRescanDuration = string;
 export interface ConnectorContainerImageScanConfiguration {
@@ -3424,43 +3390,34 @@ export interface CoverageStringFilter {
   comparison: string;
   value: string;
 }
-export const CoverageStringFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: S.String, value: S.String }),
-).annotate({ identifier: "CoverageStringFilter" }) as any as S.Schema<CoverageStringFilter>;
+export const CoverageStringFilter = StringFilter as any as S.Schema<CoverageStringFilter>;
 export type CoverageStringFilterList = CoverageStringFilter[];
-export const CoverageStringFilterList = /*@__PURE__*/ S.Array(CoverageStringFilter);
+export const CoverageStringFilterList =
+  StringFilterList as any as S.Schema<CoverageStringFilterList>;
 export type CoverageMapComparison = string;
 export interface CoverageMapFilter {
   comparison: string;
   key: string;
   value?: string;
 }
-export const CoverageMapFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ comparison: S.String, key: S.String, value: S.optional(S.String) }),
-).annotate({ identifier: "CoverageMapFilter" }) as any as S.Schema<CoverageMapFilter>;
+export const CoverageMapFilter = MapFilter as any as S.Schema<CoverageMapFilter>;
 export type CoverageMapFilterList = CoverageMapFilter[];
-export const CoverageMapFilterList = /*@__PURE__*/ S.Array(CoverageMapFilter);
+export const CoverageMapFilterList = MapFilterList as any as S.Schema<CoverageMapFilterList>;
 export interface CoverageDateFilter {
   startInclusive?: Date;
   endInclusive?: Date;
 }
-export const CoverageDateFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startInclusive: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    endInclusive: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "CoverageDateFilter" }) as any as S.Schema<CoverageDateFilter>;
+export const CoverageDateFilter = DateFilter as any as S.Schema<CoverageDateFilter>;
 export type CoverageDateFilterList = CoverageDateFilter[];
-export const CoverageDateFilterList = /*@__PURE__*/ S.Array(CoverageDateFilter);
+export const CoverageDateFilterList = DateFilterList as any as S.Schema<CoverageDateFilterList>;
 export interface CoverageNumberFilter {
   upperInclusive?: number;
   lowerInclusive?: number;
 }
-export const CoverageNumberFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ upperInclusive: S.optional(S.Number), lowerInclusive: S.optional(S.Number) }),
-).annotate({ identifier: "CoverageNumberFilter" }) as any as S.Schema<CoverageNumberFilter>;
+export const CoverageNumberFilter = NumberFilter as any as S.Schema<CoverageNumberFilter>;
 export type CoverageNumberFilterList = CoverageNumberFilter[];
-export const CoverageNumberFilterList = /*@__PURE__*/ S.Array(CoverageNumberFilter);
+export const CoverageNumberFilterList =
+  NumberFilterList as any as S.Schema<CoverageNumberFilterList>;
 export interface CoverageFilterCriteria {
   scanStatusCode?: CoverageStringFilter[];
   scanStatusReason?: CoverageStringFilter[];
@@ -3562,7 +3519,7 @@ export const EcrRepositoryMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), scanFrequency: S.optional(S.String) }),
 ).annotate({ identifier: "EcrRepositoryMetadata" }) as any as S.Schema<EcrRepositoryMetadata>;
 export type TagList = string[];
-export const TagList = /*@__PURE__*/ S.Array(S.String);
+export const TagList = AccountIdSet as any as S.Schema<TagList>;
 export interface EcrContainerImageMetadata {
   tags?: string[];
   imagePulledAt?: Date;
@@ -3594,7 +3551,7 @@ export const Ec2Metadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Ec2Metadata" }) as any as S.Schema<Ec2Metadata>;
 export type LambdaLayerList = string[];
-export const LambdaLayerList = /*@__PURE__*/ S.Array(S.String);
+export const LambdaLayerList = AccountIdSet as any as S.Schema<LambdaLayerList>;
 export type Runtime = string;
 export interface LambdaFunctionMetadata {
   functionTags?: { [key: string]: string | undefined };
@@ -3916,7 +3873,7 @@ export const ListDelegatedAdminAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDelegatedAdminAccountsResponse",
 }) as any as S.Schema<ListDelegatedAdminAccountsResponse>;
 export type FilterArnList = string[];
-export const FilterArnList = /*@__PURE__*/ S.Array(S.String);
+export const FilterArnList = AccountIdSet as any as S.Schema<FilterArnList>;
 export type ListFilterMaxResults = number;
 export interface ListFiltersRequest {
   arns?: string[];
@@ -4053,14 +4010,7 @@ export interface FindingTypeAggregation {
   sortOrder?: string;
   sortBy?: string;
 }
-export const FindingTypeAggregation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    findingType: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    sortOrder: S.optional(S.String),
-    sortBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "FindingTypeAggregation" }) as any as S.Schema<FindingTypeAggregation>;
+export const FindingTypeAggregation = AccountAggregation as any as S.Schema<FindingTypeAggregation>;
 export type ImageLayerSortBy = string;
 export interface ImageLayerAggregation {
   repositories?: StringFilter[];
@@ -4650,7 +4600,7 @@ export const AmiAggregationResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmiAggregationResponse" }) as any as S.Schema<AmiAggregationResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = AccountIdSet as any as S.Schema<StringList>;
 export interface AwsEcrContainerAggregationResponse {
   resourceId: string;
   imageSha?: string;
@@ -5315,10 +5265,10 @@ export type Severity = string;
 export type FindingStatus = string;
 export type IpV4Address = string;
 export type IpV4AddressList = string[];
-export const IpV4AddressList = /*@__PURE__*/ S.Array(S.String);
+export const IpV4AddressList = AccountIdSet as any as S.Schema<IpV4AddressList>;
 export type IpV6Address = string;
 export type IpV6AddressList = string[];
-export const IpV6AddressList = /*@__PURE__*/ S.Array(S.String);
+export const IpV6AddressList = AccountIdSet as any as S.Schema<IpV6AddressList>;
 export type Platform = string;
 export interface AwsEc2InstanceDetails {
   type?: string;
@@ -5347,7 +5297,7 @@ export const AwsEc2InstanceDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsEc2InstanceDetails" }) as any as S.Schema<AwsEc2InstanceDetails>;
 export type ImageTagList = string[];
-export const ImageTagList = /*@__PURE__*/ S.Array(S.String);
+export const ImageTagList = AccountIdSet as any as S.Schema<ImageTagList>;
 export type ImageHash = string;
 export interface AwsEcrContainerImageDetails {
   repositoryName: string;
@@ -5382,13 +5332,13 @@ export type Version = string;
 export type ExecutionRoleArn = string;
 export type LambdaLayerArn = string;
 export type LayerList = string[];
-export const LayerList = /*@__PURE__*/ S.Array(S.String);
+export const LayerList = AccountIdSet as any as S.Schema<LayerList>;
 export type SubnetId = string;
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIdList = AccountIdSet as any as S.Schema<SubnetIdList>;
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdList = AccountIdSet as any as S.Schema<SecurityGroupIdList>;
 export type VpcId = string;
 export interface LambdaVpcConfig {
   subnetIds?: string[];
@@ -5405,7 +5355,7 @@ export const LambdaVpcConfig = /*@__PURE__*/ S.suspend(() =>
 export type PackageType = string;
 export type Architecture = string;
 export type ArchitectureList = string[];
-export const ArchitectureList = /*@__PURE__*/ S.Array(S.String);
+export const ArchitectureList = AccountIdSet as any as S.Schema<ArchitectureList>;
 export interface AwsLambdaFunctionDetails {
   functionName: string;
   runtime: string;
@@ -5447,9 +5397,9 @@ export const CodeRepositoryDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CodeRepositoryDetails" }) as any as S.Schema<CodeRepositoryDetails>;
 export type CloudSubnetIdList = string[];
-export const CloudSubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export const CloudSubnetIdList = AccountIdSet as any as S.Schema<CloudSubnetIdList>;
 export type CloudSecurityGroupIdList = string[];
-export const CloudSecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const CloudSecurityGroupIdList = AccountIdSet as any as S.Schema<CloudSecurityGroupIdList>;
 export interface Vm {
   type?: string;
   vmName?: string;
@@ -5508,7 +5458,8 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 export type ServerlessFunctionLayerUrn = string;
 export type ServerlessFunctionLayerList = string[];
-export const ServerlessFunctionLayerList = /*@__PURE__*/ S.Array(S.String);
+export const ServerlessFunctionLayerList =
+  AccountIdSet as any as S.Schema<ServerlessFunctionLayerList>;
 export interface ServerlessFunction {
   serverlessFunctionName?: string;
   runtime?: string;
@@ -5707,9 +5658,9 @@ export const CvssScore = /*@__PURE__*/ S.suspend(() =>
 export type CvssScoreList = CvssScore[];
 export const CvssScoreList = /*@__PURE__*/ S.Array(CvssScore);
 export type VulnerabilityIdList = string[];
-export const VulnerabilityIdList = /*@__PURE__*/ S.Array(S.String);
+export const VulnerabilityIdList = AccountIdSet as any as S.Schema<VulnerabilityIdList>;
 export type NonEmptyStringList = string[];
-export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
+export const NonEmptyStringList = AccountIdSet as any as S.Schema<NonEmptyStringList>;
 export interface PackageVulnerabilityDetails {
   vulnerabilityId: string;
   vulnerablePackages?: VulnerablePackage[];
@@ -5756,11 +5707,11 @@ export const CodeFilePath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileName: S.String, filePath: S.String, startLine: S.Number, endLine: S.Number }),
 ).annotate({ identifier: "CodeFilePath" }) as any as S.Schema<CodeFilePath>;
 export type DetectorTagList = string[];
-export const DetectorTagList = /*@__PURE__*/ S.Array(S.String);
+export const DetectorTagList = AccountIdSet as any as S.Schema<DetectorTagList>;
 export type ReferenceUrls = string[];
-export const ReferenceUrls = /*@__PURE__*/ S.Array(S.String);
+export const ReferenceUrls = AccountIdSet as any as S.Schema<ReferenceUrls>;
 export type CweList = string[];
-export const CweList = /*@__PURE__*/ S.Array(S.String);
+export const CweList = AccountIdSet as any as S.Schema<CweList>;
 export interface CodeVulnerabilityDetails {
   filePath: CodeFilePath;
   detectorTags?: string[];
@@ -5892,7 +5843,7 @@ export type ListUsageTotalsMaxResults = number;
 export type ListUsageTotalsNextToken = string;
 export type UsageAccountId = string;
 export type UsageAccountIdList = string[];
-export const UsageAccountIdList = /*@__PURE__*/ S.Array(S.String);
+export const UsageAccountIdList = AccountIdSet as any as S.Schema<UsageAccountIdList>;
 export interface ListUsageTotalsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -5955,12 +5906,11 @@ export const ResetEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetEncryptionKeyRequest",
 }) as any as S.Schema<ResetEncryptionKeyRequest>;
 export interface ResetEncryptionKeyResponse {}
-export const ResetEncryptionKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResetEncryptionKeyResponse",
-}) as any as S.Schema<ResetEncryptionKeyResponse>;
+export const ResetEncryptionKeyResponse =
+  OneTimeSchedule as any as S.Schema<ResetEncryptionKeyResponse>;
 export type VulnId = string;
 export type VulnIdList = string[];
-export const VulnIdList = /*@__PURE__*/ S.Array(S.String);
+export const VulnIdList = AccountIdSet as any as S.Schema<VulnIdList>;
 export interface SearchVulnerabilitiesFilterCriteria {
   vulnerabilityIds: string[];
 }
@@ -5987,7 +5937,7 @@ export type VulnerabilitySource = string;
 export type VulnerabilityDescription = string;
 export type Target = string;
 export type Targets = string[];
-export const Targets = /*@__PURE__*/ S.Array(S.String);
+export const Targets = AccountIdSet as any as S.Schema<Targets>;
 export interface AtigData {
   firstSeen?: Date;
   lastSeen?: Date;
@@ -6016,31 +5966,25 @@ export interface Cvss3 {
   baseScore?: number;
   scoringVector?: string;
 }
-export const Cvss3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ baseScore: S.optional(S.Number), scoringVector: S.optional(S.String) }),
-).annotate({ identifier: "Cvss3" }) as any as S.Schema<Cvss3>;
+export const Cvss3 = Cvss4 as any as S.Schema<Cvss3>;
 export type RelatedVulnerability = string;
 export type RelatedVulnerabilities = string[];
-export const RelatedVulnerabilities = /*@__PURE__*/ S.Array(S.String);
+export const RelatedVulnerabilities = AccountIdSet as any as S.Schema<RelatedVulnerabilities>;
 export interface Cvss2 {
   baseScore?: number;
   scoringVector?: string;
 }
-export const Cvss2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ baseScore: S.optional(S.Number), scoringVector: S.optional(S.String) }),
-).annotate({ identifier: "Cvss2" }) as any as S.Schema<Cvss2>;
+export const Cvss2 = Cvss4 as any as S.Schema<Cvss2>;
 export type VendorCreatedAt = Date;
 export type VendorUpdatedAt = Date;
 export type VulnerabilitySourceUrl = string;
 export type DetectionPlatforms = string[];
-export const DetectionPlatforms = /*@__PURE__*/ S.Array(S.String);
+export const DetectionPlatforms = AccountIdSet as any as S.Schema<DetectionPlatforms>;
 export type EpssScore = number;
 export interface Epss {
   score?: number;
 }
-export const Epss = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ score: S.optional(S.Number) }),
-).annotate({ identifier: "Epss" }) as any as S.Schema<Epss>;
+export const Epss = EpssDetails as any as S.Schema<Epss>;
 export interface Vulnerability {
   id: string;
   cwes?: string[];
@@ -6107,9 +6051,8 @@ export const SendCisSessionHealthRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendCisSessionHealthRequest",
 }) as any as S.Schema<SendCisSessionHealthRequest>;
 export interface SendCisSessionHealthResponse {}
-export const SendCisSessionHealthResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendCisSessionHealthResponse",
-}) as any as S.Schema<SendCisSessionHealthResponse>;
+export const SendCisSessionHealthResponse =
+  OneTimeSchedule as any as S.Schema<SendCisSessionHealthResponse>;
 export type RuleId = string;
 export type CisRuleStatus =
   | "FAILED"
@@ -6172,9 +6115,7 @@ export const StartCisSessionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartCisSessionRequest" }) as any as S.Schema<StartCisSessionRequest>;
 export interface StartCisSessionResponse {}
-export const StartCisSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCisSessionResponse",
-}) as any as S.Schema<StartCisSessionResponse>;
+export const StartCisSessionResponse = OneTimeSchedule as any as S.Schema<StartCisSessionResponse>;
 export type CodeSecurityClientToken = string;
 export interface StartCodeSecurityScanRequest {
   clientToken?: string;
@@ -6284,9 +6225,7 @@ export const StopCisSessionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopCisSessionRequest" }) as any as S.Schema<StopCisSessionRequest>;
 export interface StopCisSessionResponse {}
-export const StopCisSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCisSessionResponse",
-}) as any as S.Schema<StopCisSessionResponse>;
+export const StopCisSessionResponse = OneTimeSchedule as any as S.Schema<StopCisSessionResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -6297,12 +6236,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = OneTimeSchedule as any as S.Schema<TagResourceResponse>;
 export type TagKey = string;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AccountIdSet as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -6316,19 +6253,12 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = OneTimeSchedule as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCisTargets {
   accountIds?: string[];
   targetResourceTags?: { [key: string]: string[] | undefined };
 }
-export const UpdateCisTargets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountIds: S.optional(TargetAccountList),
-    targetResourceTags: S.optional(TargetResourceTags),
-  }),
-).annotate({ identifier: "UpdateCisTargets" }) as any as S.Schema<UpdateCisTargets>;
+export const UpdateCisTargets = CisTargets as any as S.Schema<UpdateCisTargets>;
 export interface UpdateCisScanConfigurationRequest {
   scanConfigurationArn: string;
   scanName?: string;
@@ -6359,11 +6289,8 @@ export const UpdateCisScanConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCisScanConfigurationResponse {
   scanConfigurationArn: string;
 }
-export const UpdateCisScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scanConfigurationArn: S.String }),
-).annotate({
-  identifier: "UpdateCisScanConfigurationResponse",
-}) as any as S.Schema<UpdateCisScanConfigurationResponse>;
+export const UpdateCisScanConfigurationResponse =
+  CreateCodeSecurityScanConfigurationResponse as any as S.Schema<UpdateCisScanConfigurationResponse>;
 export type GitLabAuthCode = string | redacted.Redacted<string>;
 export interface UpdateGitLabSelfManagedIntegrationDetail {
   authCode: string | redacted.Redacted<string>;
@@ -6439,11 +6366,8 @@ export const UpdateCodeSecurityScanConfigurationRequest = /*@__PURE__*/ S.suspen
 export interface UpdateCodeSecurityScanConfigurationResponse {
   scanConfigurationArn?: string;
 }
-export const UpdateCodeSecurityScanConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ scanConfigurationArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateCodeSecurityScanConfigurationResponse",
-}) as any as S.Schema<UpdateCodeSecurityScanConfigurationResponse>;
+export const UpdateCodeSecurityScanConfigurationResponse =
+  CreateCisScanConfigurationResponse as any as S.Schema<UpdateCodeSecurityScanConfigurationResponse>;
 export interface EcrConfiguration {
   rescanDuration: string;
   pullDateRescanDuration?: string;
@@ -6492,9 +6416,8 @@ export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConfigurationRequest",
 }) as any as S.Schema<UpdateConfigurationRequest>;
 export interface UpdateConfigurationResponse {}
-export const UpdateConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateConfigurationResponse",
-}) as any as S.Schema<UpdateConfigurationResponse>;
+export const UpdateConfigurationResponse =
+  OneTimeSchedule as any as S.Schema<UpdateConfigurationResponse>;
 export interface AzureProviderDetailUpdate {
   azureRegions?: string[];
   scopeConfiguration?: AzureScopeConfigurationInput;
@@ -6584,16 +6507,8 @@ export interface UpdateEc2DeepInspectionConfigurationResponse {
   status?: string;
   errorMessage?: string;
 }
-export const UpdateEc2DeepInspectionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packagePaths: S.optional(PathList),
-    orgPackagePaths: S.optional(PathList),
-    status: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateEc2DeepInspectionConfigurationResponse",
-}) as any as S.Schema<UpdateEc2DeepInspectionConfigurationResponse>;
+export const UpdateEc2DeepInspectionConfigurationResponse =
+  GetEc2DeepInspectionConfigurationResponse as any as S.Schema<UpdateEc2DeepInspectionConfigurationResponse>;
 export interface UpdateEncryptionKeyRequest {
   kmsKeyId: string;
   scanType: string;
@@ -6607,9 +6522,8 @@ export const UpdateEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateEncryptionKeyRequest",
 }) as any as S.Schema<UpdateEncryptionKeyRequest>;
 export interface UpdateEncryptionKeyResponse {}
-export const UpdateEncryptionKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateEncryptionKeyResponse",
-}) as any as S.Schema<UpdateEncryptionKeyResponse>;
+export const UpdateEncryptionKeyResponse =
+  OneTimeSchedule as any as S.Schema<UpdateEncryptionKeyResponse>;
 export interface UpdateFilterRequest {
   action?: string;
   description?: string;
@@ -6631,9 +6545,7 @@ export const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFilterResponse {
   arn: string;
 }
-export const UpdateFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String }),
-).annotate({ identifier: "UpdateFilterResponse" }) as any as S.Schema<UpdateFilterResponse>;
+export const UpdateFilterResponse = CreateFilterResponse as any as S.Schema<UpdateFilterResponse>;
 export interface UpdateOrganizationConfigurationRequest {
   autoEnable: AutoEnable;
 }
@@ -6677,11 +6589,8 @@ export const UpdateOrgEc2DeepInspectionConfigurationRequest = /*@__PURE__*/ S.su
   identifier: "UpdateOrgEc2DeepInspectionConfigurationRequest",
 }) as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationRequest>;
 export interface UpdateOrgEc2DeepInspectionConfigurationResponse {}
-export const UpdateOrgEc2DeepInspectionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrgEc2DeepInspectionConfigurationResponse",
-}) as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationResponse>;
+export const UpdateOrgEc2DeepInspectionConfigurationResponse =
+  UpdateConnectorScanConfigurationResponse as any as S.Schema<UpdateOrgEc2DeepInspectionConfigurationResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;

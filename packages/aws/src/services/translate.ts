@@ -264,11 +264,8 @@ export interface DeleteParallelDataResponse {
   Name?: string;
   Status?: ParallelDataStatus;
 }
-export const DeleteParallelDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Status: S.optional(ParallelDataStatus) }),
-).annotate({
-  identifier: "DeleteParallelDataResponse",
-}) as any as S.Schema<DeleteParallelDataResponse>;
+export const DeleteParallelDataResponse =
+  CreateParallelDataResponse as any as S.Schema<DeleteParallelDataResponse>;
 export interface DeleteTerminologyRequest {
   Name: string;
 }
@@ -320,7 +317,7 @@ export type LanguageCodeString = string;
 export type TargetLanguageCodeStringList = string[];
 export const TargetLanguageCodeStringList = /*@__PURE__*/ S.Array(S.String);
 export type ResourceNameList = string[];
-export const ResourceNameList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceNameList = TargetLanguageCodeStringList as any as S.Schema<ResourceNameList>;
 export type UnboundedLengthString = string;
 export type ContentType = string;
 export interface InputDataConfig {
@@ -415,7 +412,8 @@ export const GetParallelDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetParallelDataRequest" }) as any as S.Schema<GetParallelDataRequest>;
 export type ParallelDataArn = string;
 export type LanguageCodeStringList = string[];
-export const LanguageCodeStringList = /*@__PURE__*/ S.Array(S.String);
+export const LanguageCodeStringList =
+  TargetLanguageCodeStringList as any as S.Schema<LanguageCodeStringList>;
 export interface ParallelDataProperties {
   Name?: string;
   Arn?: string;
@@ -531,9 +529,8 @@ export interface TerminologyDataLocation {
   RepositoryType: string;
   Location: string;
 }
-export const TerminologyDataLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RepositoryType: S.String, Location: S.String }),
-).annotate({ identifier: "TerminologyDataLocation" }) as any as S.Schema<TerminologyDataLocation>;
+export const TerminologyDataLocation =
+  ParallelDataDataLocation as any as S.Schema<TerminologyDataLocation>;
 export interface GetTerminologyResponse {
   TerminologyProperties?: TerminologyProperties;
   TerminologyDataLocation?: TerminologyDataLocation;
@@ -798,11 +795,8 @@ export interface StopTextTranslationJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
-export const StopTextTranslationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String), JobStatus: S.optional(JobStatus) }),
-).annotate({
-  identifier: "StopTextTranslationJobResponse",
-}) as any as S.Schema<StopTextTranslationJobResponse>;
+export const StopTextTranslationJobResponse =
+  StartTextTranslationJobResponse as any as S.Schema<StopTextTranslationJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -813,9 +807,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteTerminologyResponse as any as S.Schema<TagResourceResponse>;
 export type DocumentContent = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface Document {
   Content: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -918,7 +911,7 @@ export const TranslateTextResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TranslateTextResponse" }) as any as S.Schema<TranslateTextResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TargetLanguageCodeStringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -929,9 +922,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteTerminologyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateParallelDataRequest {
   Name: string;
   Description?: string;

@@ -111,10 +111,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated - only for compatibility. */
 export type CheckNamespaceAvailabilityResponseTagsMap = { [key: string]: string | undefined };
-export const CheckNamespaceAvailabilityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CheckNamespaceAvailabilityResponseTagsMap>;
+export const CheckNamespaceAvailabilityResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<CheckNamespaceAvailabilityResponseTagsMap>;
 
 export interface CheckNamespaceAvailabilityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -152,10 +150,8 @@ export const CheckNamespaceAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
 export type CheckNotificationHubNotificationHubAvailabilityRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const CheckNotificationHubNotificationHubAvailabilityRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CheckNotificationHubNotificationHubAvailabilityRequestTagsMap>;
+export const CheckNotificationHubNotificationHubAvailabilityRequestTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<CheckNotificationHubNotificationHubAvailabilityRequestTagsMap>;
 
 export interface CheckNotificationHubNotificationHubAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -330,9 +326,8 @@ export const DeleteNotificationHubRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationHubRequest>;
 
 export interface DeleteNotificationHubResponse {}
-export const DeleteNotificationHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotificationHubResponse",
-}) as any as S.Schema<DeleteNotificationHubResponse>;
+export const DeleteNotificationHubResponse =
+  DeleteNamespaceResponse as any as S.Schema<DeleteNotificationHubResponse>;
 
 export interface DeleteNotificationHubAuthorizationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -366,11 +361,8 @@ export const DeleteNotificationHubAuthorizationRuleRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteNotificationHubAuthorizationRuleRequest>;
 
 export interface DeleteNotificationHubAuthorizationRuleResponse {}
-export const DeleteNotificationHubAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNotificationHubAuthorizationRuleResponse",
-}) as any as S.Schema<DeleteNotificationHubAuthorizationRuleResponse>;
+export const DeleteNotificationHubAuthorizationRuleResponse =
+  DeleteNamespaceAuthorizationRuleResponse as any as S.Schema<DeleteNotificationHubAuthorizationRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -401,11 +393,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteNamespaceAuthorizationRuleResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface GetNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -432,10 +421,8 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceResponseTagsMap>;
+export const GetNamespaceResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<GetNamespaceResponseTagsMap>;
 
 /** Defines values for OperationProvisioningState. */
 export type OperationProvisioningState =
@@ -504,9 +491,8 @@ export const NetworkAclsIpRulesList = /*@__PURE__*/ S.Array(
 
 /** List of access rights. */
 export type PublicInternetAuthorizationRuleRightsList = Array<AccessRights | (string & {})>;
-export const PublicInternetAuthorizationRuleRightsList = /*@__PURE__*/ S.Array(
-  AccessRights,
-) as any as S.Schema<PublicInternetAuthorizationRuleRightsList>;
+export const PublicInternetAuthorizationRuleRightsList =
+  IpRuleRightsList as any as S.Schema<PublicInternetAuthorizationRuleRightsList>;
 
 /** A default (public Internet) network authorization rule, which contains rights if no other network rule matches. */
 export interface PublicInternetAuthorizationRule {
@@ -1021,9 +1007,8 @@ export const GetNamespaceAuthorizationRuleRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Gets or sets the rights associated with the rule. */
 export type SharedAccessAuthorizationRulePropertiesRightsList = Array<AccessRights>;
-export const SharedAccessAuthorizationRulePropertiesRightsList = /*@__PURE__*/ S.Array(
-  AccessRights,
-) as any as S.Schema<SharedAccessAuthorizationRulePropertiesRightsList>;
+export const SharedAccessAuthorizationRulePropertiesRightsList =
+  IpRuleRightsList as any as S.Schema<SharedAccessAuthorizationRulePropertiesRightsList>;
 
 /** SharedAccessAuthorizationRule properties. */
 export interface SharedAccessAuthorizationRuleProperties {
@@ -1064,10 +1049,8 @@ export const SharedAccessAuthorizationRuleProperties = /*@__PURE__*/ S.suspend((
 
 /** Deprecated - only for compatibility. */
 export type GetNamespaceAuthorizationRuleResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceAuthorizationRuleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespaceAuthorizationRuleResponseTagsMap>;
+export const GetNamespaceAuthorizationRuleResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<GetNamespaceAuthorizationRuleResponseTagsMap>;
 
 export interface GetNamespaceAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1125,10 +1108,8 @@ export const GetNamespacePnsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated - only for compatibility. */
 export type GetNamespacePnsCredentialsResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespacePnsCredentialsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNamespacePnsCredentialsResponseTagsMap>;
+export const GetNamespacePnsCredentialsResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<GetNamespacePnsCredentialsResponseTagsMap>;
 
 export interface GetNamespacePnsCredentialsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1189,10 +1170,8 @@ export const GetNotificationHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNotificationHubResponseTagsMap = { [key: string]: string | undefined };
-export const GetNotificationHubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNotificationHubResponseTagsMap>;
+export const GetNotificationHubResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<GetNotificationHubResponseTagsMap>;
 
 /** Gets or sets the AuthorizationRules of the created NotificationHub */
 export type NotificationHubPropertiesAuthorizationRulesList =
@@ -1304,10 +1283,8 @@ export const GetNotificationHubAuthorizationRuleRequest = /*@__PURE__*/ S.suspen
 export type GetNotificationHubAuthorizationRuleResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetNotificationHubAuthorizationRuleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNotificationHubAuthorizationRuleResponseTagsMap>;
+export const GetNotificationHubAuthorizationRuleResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<GetNotificationHubAuthorizationRuleResponseTagsMap>;
 
 export interface GetNotificationHubAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1324,19 +1301,8 @@ export interface GetNotificationHubAuthorizationRuleResponse {
   /** Deprecated - only for compatibility. */
   tags?: GetNotificationHubAuthorizationRuleResponseTagsMap;
 }
-export const GetNotificationHubAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SharedAccessAuthorizationRuleProperties),
-    location: S.optional(S.String),
-    tags: S.optional(GetNotificationHubAuthorizationRuleResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetNotificationHubAuthorizationRuleResponse",
-}) as any as S.Schema<GetNotificationHubAuthorizationRuleResponse>;
+export const GetNotificationHubAuthorizationRuleResponse =
+  GetNamespaceAuthorizationRuleResponse as any as S.Schema<GetNotificationHubAuthorizationRuleResponse>;
 
 export interface GetNotificationHubPnsCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1368,10 +1334,8 @@ export const GetNotificationHubPnsCredentialsRequest = /*@__PURE__*/ S.suspend((
 
 /** Deprecated - only for compatibility. */
 export type GetNotificationHubPnsCredentialsResponseTagsMap = { [key: string]: string | undefined };
-export const GetNotificationHubPnsCredentialsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNotificationHubPnsCredentialsResponseTagsMap>;
+export const GetNotificationHubPnsCredentialsResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<GetNotificationHubPnsCredentialsResponseTagsMap>;
 
 export interface GetNotificationHubPnsCredentialsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1388,19 +1352,8 @@ export interface GetNotificationHubPnsCredentialsResponse {
   /** Deprecated - only for compatibility. */
   tags?: GetNotificationHubPnsCredentialsResponseTagsMap;
 }
-export const GetNotificationHubPnsCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PnsCredentials),
-    location: S.optional(S.String),
-    tags: S.optional(GetNotificationHubPnsCredentialsResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetNotificationHubPnsCredentialsResponse",
-}) as any as S.Schema<GetNotificationHubPnsCredentialsResponse>;
+export const GetNotificationHubPnsCredentialsResponse =
+  GetNamespacePnsCredentialsResponse as any as S.Schema<GetNotificationHubPnsCredentialsResponse>;
 
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1441,17 +1394,8 @@ export interface GetPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnectionResource as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateEndpointConnectionGroupIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1483,15 +1427,13 @@ export const GetPrivateEndpointConnectionGroupIdRequest = /*@__PURE__*/ S.suspen
 
 /** Required members. For Notification Hubs, it's always a collection with a single "namespace" item. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names. For Notification Hubs, it contains two CNames for Service Bus and Notification Hubs zones. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Represents properties of Private Link Resource. */
 export interface PrivateLinkResourceProperties {
@@ -1560,10 +1502,8 @@ export const ListNamespaceAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespaceResourceTagsMap = { [key: string]: string | undefined };
-export const NamespaceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespaceResourceTagsMap>;
+export const NamespaceResourceTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NamespaceResourceTagsMap>;
 
 /** Notification Hubs Namespace Resource. */
 export interface NamespaceResource {
@@ -1582,18 +1522,7 @@ export interface NamespaceResource {
   sku: Sku;
   properties?: NamespaceProperties;
 }
-export const NamespaceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NamespaceResourceTagsMap),
-    location: S.String,
-    sku: Sku,
-    properties: S.optional(NamespaceProperties),
-  }),
-).annotate({ identifier: "NamespaceResource" }) as any as S.Schema<NamespaceResource>;
+export const NamespaceResource = GetNamespaceResponse as any as S.Schema<NamespaceResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
 export type NamespaceListResultValueList = Array<NamespaceResource>;
@@ -1642,10 +1571,8 @@ export const ListNamespaceAuthorizationRulesRequest = /*@__PURE__*/ S.suspend(()
 
 /** Deprecated - only for compatibility. */
 export type SharedAccessAuthorizationRuleResourceTagsMap = { [key: string]: string | undefined };
-export const SharedAccessAuthorizationRuleResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SharedAccessAuthorizationRuleResourceTagsMap>;
+export const SharedAccessAuthorizationRuleResourceTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<SharedAccessAuthorizationRuleResourceTagsMap>;
 
 /** Response for POST requests that return single SharedAccessAuthorizationRule. */
 export interface SharedAccessAuthorizationRuleResource {
@@ -1663,19 +1590,8 @@ export interface SharedAccessAuthorizationRuleResource {
   /** Deprecated - only for compatibility. */
   tags?: SharedAccessAuthorizationRuleResourceTagsMap;
 }
-export const SharedAccessAuthorizationRuleResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SharedAccessAuthorizationRuleProperties),
-    location: S.optional(S.String),
-    tags: S.optional(SharedAccessAuthorizationRuleResourceTagsMap),
-  }),
-).annotate({
-  identifier: "SharedAccessAuthorizationRuleResource",
-}) as any as S.Schema<SharedAccessAuthorizationRuleResource>;
+export const SharedAccessAuthorizationRuleResource =
+  GetNamespaceAuthorizationRuleResponse as any as S.Schema<SharedAccessAuthorizationRuleResource>;
 
 /** Gets or sets result of the List AuthorizationRules operation. */
 export type SharedAccessAuthorizationRuleListResultValueList =
@@ -1867,10 +1783,8 @@ export const ListNotificationHubsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NotificationHubResourceTagsMap = { [key: string]: string | undefined };
-export const NotificationHubResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationHubResourceTagsMap>;
+export const NotificationHubResourceTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NotificationHubResourceTagsMap>;
 
 /** Notification Hub Resource. */
 export interface NotificationHubResource {
@@ -2196,9 +2110,8 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 /** Gets or sets result of the List AuthorizationRules operation. */
 export type PrivateEndpointConnectionResourceListResultValueList =
   Array<PrivateEndpointConnectionResource>;
-export const PrivateEndpointConnectionResourceListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnectionResource,
-) as any as S.Schema<PrivateEndpointConnectionResourceListResultValueList>;
+export const PrivateEndpointConnectionResourceListResultValueList =
+  NamespacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionResourceListResultValueList>;
 
 /** The response of the List Private Endpoint Connections operation. */
 export interface PrivateEndpointConnectionResourceListResult {
@@ -2218,10 +2131,8 @@ export const PrivateEndpointConnectionResourceListResult = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
+export const NamespacesCreateOrUpdateRequestTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 /** Represents namespace properties. */
 export interface NamespacePropertiesInput {
@@ -2290,10 +2201,8 @@ export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+export const NamespacesCreateOrUpdateResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
 
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2330,9 +2239,8 @@ export const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type SharedAccessAuthorizationRulePropertiesInputRightsList = Array<
   AccessRights | (string & {})
 >;
-export const SharedAccessAuthorizationRulePropertiesInputRightsList = /*@__PURE__*/ S.Array(
-  AccessRights,
-) as any as S.Schema<SharedAccessAuthorizationRulePropertiesInputRightsList>;
+export const SharedAccessAuthorizationRulePropertiesInputRightsList =
+  IpRuleRightsList as any as S.Schema<SharedAccessAuthorizationRulePropertiesInputRightsList>;
 
 /** SharedAccessAuthorizationRule properties. */
 export interface SharedAccessAuthorizationRulePropertiesInput {
@@ -2357,10 +2265,8 @@ export const SharedAccessAuthorizationRulePropertiesInput = /*@__PURE__*/ S.susp
 export type NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap>;
+export const NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap>;
 
 export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2402,10 +2308,8 @@ export const NamespacesCreateOrUpdateAuthorizationRuleRequest = /*@__PURE__*/ S.
 export type NamespacesCreateOrUpdateAuthorizationRuleResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespacesCreateOrUpdateAuthorizationRuleResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponseTagsMap>;
+export const NamespacesCreateOrUpdateAuthorizationRuleResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponseTagsMap>;
 
 export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2422,26 +2326,13 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** Deprecated - only for compatibility. */
   tags?: NamespacesCreateOrUpdateAuthorizationRuleResponseTagsMap;
 }
-export const NamespacesCreateOrUpdateAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SharedAccessAuthorizationRuleProperties),
-    location: S.optional(S.String),
-    tags: S.optional(NamespacesCreateOrUpdateAuthorizationRuleResponseTagsMap),
-  }),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateAuthorizationRuleResponse",
-}) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
+export const NamespacesCreateOrUpdateAuthorizationRuleResponse =
+  GetNamespaceAuthorizationRuleResponse as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
 
 /** Resource tags. */
 export type NotificationHubsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NotificationHubsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationHubsCreateOrUpdateRequestTagsMap>;
+export const NotificationHubsCreateOrUpdateRequestTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NotificationHubsCreateOrUpdateRequestTagsMap>;
 
 /** NotificationHub properties. */
 export interface NotificationHubPropertiesInput {
@@ -2515,10 +2406,8 @@ export const NotificationHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type NotificationHubsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NotificationHubsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationHubsCreateOrUpdateResponseTagsMap>;
+export const NotificationHubsCreateOrUpdateResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NotificationHubsCreateOrUpdateResponseTagsMap>;
 
 export interface NotificationHubsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2536,29 +2425,15 @@ export interface NotificationHubsCreateOrUpdateResponse {
   properties?: NotificationHubProperties;
   sku?: Sku;
 }
-export const NotificationHubsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NotificationHubsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NotificationHubProperties),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "NotificationHubsCreateOrUpdateResponse",
-}) as any as S.Schema<NotificationHubsCreateOrUpdateResponse>;
+export const NotificationHubsCreateOrUpdateResponse =
+  GetNotificationHubResponse as any as S.Schema<NotificationHubsCreateOrUpdateResponse>;
 
 /** Deprecated - only for compatibility. */
 export type NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap>;
+export const NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap>;
 
 export interface NotificationHubsCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2604,10 +2479,7 @@ export type NotificationHubsCreateOrUpdateAuthorizationRuleResponseTagsMap = {
   [key: string]: string | undefined;
 };
 export const NotificationHubsCreateOrUpdateAuthorizationRuleResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NotificationHubsCreateOrUpdateAuthorizationRuleResponseTagsMap>;
+  CheckNotificationHubNotificationHubAvailabilityResponseTagsMap as any as S.Schema<NotificationHubsCreateOrUpdateAuthorizationRuleResponseTagsMap>;
 
 export interface NotificationHubsCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2778,10 +2650,8 @@ export const DebugSendResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated - only for compatibility. */
 export type SendNotificationHubsDebugResponseTagsMap = { [key: string]: string | undefined };
-export const SendNotificationHubsDebugResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SendNotificationHubsDebugResponseTagsMap>;
+export const SendNotificationHubsDebugResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<SendNotificationHubsDebugResponseTagsMap>;
 
 export interface SendNotificationHubsDebugResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2813,10 +2683,8 @@ export const SendNotificationHubsDebugResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SendNotificationHubsDebugResponse>;
 
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceRequestTagsMap>;
+export const UpdateNamespaceRequestTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
 
 export interface UpdateNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2849,10 +2717,8 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceResponseTagsMap>;
+export const UpdateNamespaceResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<UpdateNamespaceResponseTagsMap>;
 
 export interface UpdateNamespaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2870,24 +2736,12 @@ export interface UpdateNamespaceResponse {
   sku: Sku;
   properties?: NamespaceProperties;
 }
-export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNamespaceResponseTagsMap),
-    location: S.String,
-    sku: Sku,
-    properties: S.optional(NamespaceProperties),
-  }),
-).annotate({ identifier: "UpdateNamespaceResponse" }) as any as S.Schema<UpdateNamespaceResponse>;
+export const UpdateNamespaceResponse =
+  GetNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
 
 export type UpdateNotificationHubRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNotificationHubRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNotificationHubRequestTagsMap>;
+export const UpdateNotificationHubRequestTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<UpdateNotificationHubRequestTagsMap>;
 
 export interface UpdateNotificationHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2925,10 +2779,8 @@ export const UpdateNotificationHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNotificationHubResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNotificationHubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNotificationHubResponseTagsMap>;
+export const UpdateNotificationHubResponseTagsMap =
+  CheckNamespaceAvailabilityRequestTagsMap as any as S.Schema<UpdateNotificationHubResponseTagsMap>;
 
 export interface UpdateNotificationHubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2946,28 +2798,13 @@ export interface UpdateNotificationHubResponse {
   properties?: NotificationHubProperties;
   sku?: Sku;
 }
-export const UpdateNotificationHubResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNotificationHubResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NotificationHubProperties),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "UpdateNotificationHubResponse",
-}) as any as S.Schema<UpdateNotificationHubResponse>;
+export const UpdateNotificationHubResponse =
+  GetNotificationHubResponse as any as S.Schema<UpdateNotificationHubResponse>;
 
 /** Represents a Private Endpoint that is connected to Notification Hubs namespace using Private Endpoint Connection. */
 export interface RemotePrivateEndpointConnectionInput {}
-export const RemotePrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemotePrivateEndpointConnectionInput",
-}) as any as S.Schema<RemotePrivateEndpointConnectionInput>;
+export const RemotePrivateEndpointConnectionInput =
+  DeleteNamespaceAuthorizationRuleResponse as any as S.Schema<RemotePrivateEndpointConnectionInput>;
 
 /** State of the Private Link Service connection. */
 export interface RemotePrivateLinkServiceConnectionStateInput {
@@ -3038,17 +2875,8 @@ export interface UpdatePrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "UpdatePrivateEndpointConnectionResponse",
-}) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
+export const UpdatePrivateEndpointConnectionResponse =
+  PrivateEndpointConnectionResource as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
 
 export type CheckNamespaceAvailabilityError = AzureOpError;
 /** Checks the availability of the given service namespace across all Azure subscriptions. This is useful because the domain name is created based on the service namespace name. */

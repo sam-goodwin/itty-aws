@@ -139,9 +139,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type BackupFileSystemProtocolEnum = "FILE_PROTOCOL_UNSPECIFIED" | "NFS_V3" | "NFS_V4_1";
 export const BackupFileSystemProtocolEnum = S.String;
@@ -1854,12 +1852,7 @@ export interface ReleaseShareRequest {
   /** Required. The specific share ID on the instance. */
   shareId?: string;
 }
-export const ReleaseShareRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddress: S.optional(S.String),
-    shareId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReleaseShareRequest" }) as any as S.Schema<ReleaseShareRequest>;
+export const ReleaseShareRequest = AcquireShareResponse as any as S.Schema<ReleaseShareRequest>;
 
 export interface ReleaseShareProjectsLocationsSharePoolsRequest {
   /** Required. The parent share pool path, in the format `projects/{project}/locations/{location}/sharePools/{share_pool}`. */
@@ -1884,9 +1877,7 @@ export const ReleaseShareProjectsLocationsSharePoolsRequest = /*@__PURE__*/ S.su
 
 /** Response message for ReleaseShare. */
 export interface ReleaseShareResponse {}
-export const ReleaseShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReleaseShareResponse",
-}) as any as S.Schema<ReleaseShareResponse>;
+export const ReleaseShareResponse = CancelOperationRequest as any as S.Schema<ReleaseShareResponse>;
 
 /** RestoreInstanceRequest restores an existing instance's file share from a backup. */
 export interface RestoreInstanceRequest {

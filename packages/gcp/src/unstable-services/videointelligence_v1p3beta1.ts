@@ -266,13 +266,7 @@ export interface GoogleCloudVideointelligenceV1p3beta1_ShotChangeDetectionConfig
   model?: string;
 }
 export const GoogleCloudVideointelligenceV1p3beta1_ShotChangeDetectionConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      model: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudVideointelligenceV1p3beta1_ShotChangeDetectionConfig",
-  }) as any as S.Schema<GoogleCloudVideointelligenceV1p3beta1_ShotChangeDetectionConfig>;
+  GoogleCloudVideointelligenceV1p3beta1_ExplicitContentDetectionConfig as any as S.Schema<GoogleCloudVideointelligenceV1p3beta1_ShotChangeDetectionConfig>;
 
 /** Config for FACE_DETECTION. */
 export interface GoogleCloudVideointelligenceV1p3beta1_FaceDetectionConfig {

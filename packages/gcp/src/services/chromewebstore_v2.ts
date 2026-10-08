@@ -90,9 +90,8 @@ export const CancelSubmissionPublishersItemsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Response message for `CancelSubmission`. */
 export interface CancelSubmissionResponse {}
-export const CancelSubmissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelSubmissionResponse",
-}) as any as S.Schema<CancelSubmissionResponse>;
+export const CancelSubmissionResponse =
+  CancelSubmissionRequest as any as S.Schema<CancelSubmissionResponse>;
 
 export interface FetchStatusPublishersItemsRequest {
   /** Required. Name of the item to retrieve the status of in the form `publishers/{publisherId}/items/{itemId}` */

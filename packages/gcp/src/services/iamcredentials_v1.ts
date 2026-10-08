@@ -228,14 +228,8 @@ export interface WorkloadIdentityPoolAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
   locations?: StringList;
 }
-export const WorkloadIdentityPoolAllowedLocations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encodedLocations: S.optional(S.String),
-    locations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "WorkloadIdentityPoolAllowedLocations",
-}) as any as S.Schema<WorkloadIdentityPoolAllowedLocations>;
+export const WorkloadIdentityPoolAllowedLocations =
+  WorkforcePoolAllowedLocations as any as S.Schema<WorkloadIdentityPoolAllowedLocations>;
 
 export interface GetAllowedLocationsProjectsServiceAccountsRequest {
   /** Required. Resource name of service account. Format: `projects/-/serviceAccounts/{service_account_email}` */
@@ -324,12 +318,7 @@ export interface SignJwtRequest {
   /** Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the future. */
   payload?: string;
 }
-export const SignJwtRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delegates: S.optional(StringList),
-    payload: S.optional(S.String),
-  }),
-).annotate({ identifier: "SignJwtRequest" }) as any as S.Schema<SignJwtRequest>;
+export const SignJwtRequest = SignBlobRequest as any as S.Schema<SignJwtRequest>;
 
 export interface SignJwtProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */

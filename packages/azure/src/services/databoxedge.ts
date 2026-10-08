@@ -212,9 +212,8 @@ export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryList = /*@__PURE
 
 /** List of VM sizes being checked. */
 export type VmPlacementRequestResultVmSizeList = Array<string>;
-export const VmPlacementRequestResultVmSizeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VmPlacementRequestResultVmSizeList>;
+export const VmPlacementRequestResultVmSizeList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<VmPlacementRequestResultVmSizeList>;
 
 /** List of VM sizes being checked for creation on appliance along with corresponding result. */
 export interface VmPlacementRequestResult {
@@ -512,9 +511,8 @@ export const DeleteContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContainerRequest" }) as any as S.Schema<DeleteContainerRequest>;
 
 export interface DeleteContainerResponse {}
-export const DeleteContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContainerResponse",
-}) as any as S.Schema<DeleteContainerResponse>;
+export const DeleteContainerResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteContainerResponse>;
 
 export interface DeleteDeviceRequest {
   /** The ID of the target subscription. */
@@ -540,9 +538,7 @@ export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeviceRequest" }) as any as S.Schema<DeleteDeviceRequest>;
 
 export interface DeleteDeviceResponse {}
-export const DeleteDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeviceResponse",
-}) as any as S.Schema<DeleteDeviceResponse>;
+export const DeleteDeviceResponse = DeleteAddonResponse as any as S.Schema<DeleteDeviceResponse>;
 
 export interface DeleteMonitoringConfigRequest {
   /** The ID of the target subscription. */
@@ -573,9 +569,8 @@ export const DeleteMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMonitoringConfigRequest>;
 
 export interface DeleteMonitoringConfigResponse {}
-export const DeleteMonitoringConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMonitoringConfigResponse",
-}) as any as S.Schema<DeleteMonitoringConfigResponse>;
+export const DeleteMonitoringConfigResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteMonitoringConfigResponse>;
 
 export interface DeleteOrderRequest {
   /** The ID of the target subscription. */
@@ -601,9 +596,7 @@ export const DeleteOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrderRequest" }) as any as S.Schema<DeleteOrderRequest>;
 
 export interface DeleteOrderResponse {}
-export const DeleteOrderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrderResponse",
-}) as any as S.Schema<DeleteOrderResponse>;
+export const DeleteOrderResponse = DeleteAddonResponse as any as S.Schema<DeleteOrderResponse>;
 
 export interface DeleteRoleRequest {
   /** The ID of the target subscription. */
@@ -632,9 +625,7 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoleRequest" }) as any as S.Schema<DeleteRoleRequest>;
 
 export interface DeleteRoleResponse {}
-export const DeleteRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleResponse",
-}) as any as S.Schema<DeleteRoleResponse>;
+export const DeleteRoleResponse = DeleteAddonResponse as any as S.Schema<DeleteRoleResponse>;
 
 export interface DeleteShareRequest {
   /** The ID of the target subscription. */
@@ -663,9 +654,7 @@ export const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteShareRequest" }) as any as S.Schema<DeleteShareRequest>;
 
 export interface DeleteShareResponse {}
-export const DeleteShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteShareResponse",
-}) as any as S.Schema<DeleteShareResponse>;
+export const DeleteShareResponse = DeleteAddonResponse as any as S.Schema<DeleteShareResponse>;
 
 export interface DeleteStorageAccountRequest {
   /** The ID of the target subscription. */
@@ -696,9 +685,8 @@ export const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageAccountRequest>;
 
 export interface DeleteStorageAccountResponse {}
-export const DeleteStorageAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStorageAccountResponse",
-}) as any as S.Schema<DeleteStorageAccountResponse>;
+export const DeleteStorageAccountResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteStorageAccountResponse>;
 
 export interface DeleteStorageAccountCredentialsRequest {
   /** The ID of the target subscription. */
@@ -762,9 +750,7 @@ export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTriggerRequest" }) as any as S.Schema<DeleteTriggerRequest>;
 
 export interface DeleteTriggerResponse {}
-export const DeleteTriggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTriggerResponse",
-}) as any as S.Schema<DeleteTriggerResponse>;
+export const DeleteTriggerResponse = DeleteAddonResponse as any as S.Schema<DeleteTriggerResponse>;
 
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
@@ -793,9 +779,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteAddonResponse as any as S.Schema<DeleteUserResponse>;
 
 /** Resource tags. */
 export type DevicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -943,10 +927,8 @@ export const DevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DevicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DevicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DevicesCreateOrUpdateResponseTagsMap>;
+export const DevicesCreateOrUpdateResponseTagsMap =
+  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<DevicesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type DataBoxEdgeDevicePropertiesSystemDataCreatedByType =
@@ -1311,11 +1293,8 @@ export const DevicesCreateOrUpdateSecuritySettingsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsRequest>;
 
 export interface DevicesCreateOrUpdateSecuritySettingsResponse {}
-export const DevicesCreateOrUpdateSecuritySettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DevicesCreateOrUpdateSecuritySettingsResponse",
-}) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>;
+export const DevicesCreateOrUpdateSecuritySettingsResponse =
+  DeleteStorageAccountCredentialsResponse as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>;
 
 export interface DevicesGetUpdateSummaryRequest {
   /** The ID of the target subscription. */
@@ -1363,9 +1342,8 @@ export const UpdateOperation = S.String;
 
 /** The list of updates available for install. */
 export type UpdateSummaryPropertiesUpdateTitlesList = Array<string>;
-export const UpdateSummaryPropertiesUpdateTitlesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSummaryPropertiesUpdateTitlesList>;
+export const UpdateSummaryPropertiesUpdateTitlesList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<UpdateSummaryPropertiesUpdateTitlesList>;
 
 /** Type of the Update */
 export type UpdateType = "Software" | "Kubernetes" | "Firmware";
@@ -1558,9 +1536,8 @@ export const DevicesScanForUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevicesScanForUpdatesRequest>;
 
 export interface DevicesScanForUpdatesResponse {}
-export const DevicesScanForUpdatesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DevicesScanForUpdatesResponse",
-}) as any as S.Schema<DevicesScanForUpdatesResponse>;
+export const DevicesScanForUpdatesResponse =
+  DeleteAddonResponse as any as S.Schema<DevicesScanForUpdatesResponse>;
 
 export interface DownloadDeviceUpdatesRequest {
   /** The ID of the target subscription. */
@@ -1588,9 +1565,8 @@ export const DownloadDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadDeviceUpdatesRequest>;
 
 export interface DownloadDeviceUpdatesResponse {}
-export const DownloadDeviceUpdatesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadDeviceUpdatesResponse",
-}) as any as S.Schema<DownloadDeviceUpdatesResponse>;
+export const DownloadDeviceUpdatesResponse =
+  DeleteAddonResponse as any as S.Schema<DownloadDeviceUpdatesResponse>;
 
 export interface GenerateDeviceCertificateRequest {
   /** The ID of the target subscription. */
@@ -1734,10 +1710,8 @@ export const AlertErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Alert details. */
 export type AlertPropertiesDetailedInformationMap = { [key: string]: string | undefined };
-export const AlertPropertiesDetailedInformationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AlertPropertiesDetailedInformationMap>;
+export const AlertPropertiesDetailedInformationMap =
+  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertPropertiesDetailedInformationMap>;
 
 /** Properties of alert. */
 export interface AlertProperties {
@@ -1830,17 +1804,8 @@ export interface GetBandwidthScheduleResponse {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-export const GetBandwidthScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: BandwidthScheduleProperties,
-  }),
-).annotate({
-  identifier: "GetBandwidthScheduleResponse",
-}) as any as S.Schema<GetBandwidthScheduleResponse>;
+export const GetBandwidthScheduleResponse =
+  BandwidthSchedulesCreateOrUpdateResponse as any as S.Schema<GetBandwidthScheduleResponse>;
 
 export interface GetContainerRequest {
   /** The ID of the target subscription. */
@@ -1918,10 +1883,8 @@ export const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const GetDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDeviceResponseTagsMap>;
+export const GetDeviceResponseTagsMap =
+  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDeviceResponseTagsMap>;
 
 export interface GetDeviceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2112,15 +2075,13 @@ export const NumaNodeDataFreeVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
 
 /** The VCPU indices for Hpn VMs */
 export type NumaNodeDataVCpuIndexesForHpnList = Array<number>;
-export const NumaNodeDataVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<NumaNodeDataVCpuIndexesForHpnList>;
+export const NumaNodeDataVCpuIndexesForHpnList =
+  NumaNodeDataFreeVCpuIndexesForHpnList as any as S.Schema<NumaNodeDataVCpuIndexesForHpnList>;
 
 /** The VCPU indices for the root. */
 export type NumaNodeDataVCpuIndexesForRootList = Array<number>;
-export const NumaNodeDataVCpuIndexesForRootList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<NumaNodeDataVCpuIndexesForRootList>;
+export const NumaNodeDataVCpuIndexesForRootList =
+  NumaNodeDataFreeVCpuIndexesForHpnList as any as S.Schema<NumaNodeDataVCpuIndexesForRootList>;
 
 /** NUMA node data. */
 export interface NumaNodeData {
@@ -2516,9 +2477,8 @@ export const Ipv6Config = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of DNS Servers of the device. */
 export type NetworkAdapterDnsServersList = Array<string>;
-export const NetworkAdapterDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAdapterDnsServersList>;
+export const NetworkAdapterDnsServersList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<NetworkAdapterDnsServersList>;
 
 /** Represents the networkAdapter on a device. */
 export interface NetworkAdapter {
@@ -2924,9 +2884,8 @@ export const JobProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The recommended actions. */
 export type JobErrorItemRecommendationsList = Array<string>;
-export const JobErrorItemRecommendationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobErrorItemRecommendationsList>;
+export const JobErrorItemRecommendationsList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<JobErrorItemRecommendationsList>;
 
 /** The job error items. */
 export interface JobErrorItem {
@@ -3055,9 +3014,8 @@ export const MetricCounterDimensionFilterList = /*@__PURE__*/ S.Array(
 
 /** The additional dimensions to be added to metric. */
 export type MetricCounterAdditionalDimensionsList = Array<MetricDimension>;
-export const MetricCounterAdditionalDimensionsList = /*@__PURE__*/ S.Array(
-  MetricDimension,
-) as any as S.Schema<MetricCounterAdditionalDimensionsList>;
+export const MetricCounterAdditionalDimensionsList =
+  MetricCounterDimensionFilterList as any as S.Schema<MetricCounterAdditionalDimensionsList>;
 
 /** The metric counter */
 export interface MetricCounter {
@@ -3259,9 +3217,8 @@ export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The email list. */
 export type ContactDetailsEmailListList = Array<string>;
-export const ContactDetailsEmailListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContactDetailsEmailListList>;
+export const ContactDetailsEmailListList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<ContactDetailsEmailListList>;
 
 /** Contains all the contact details of the customer. */
 export interface ContactDetails {
@@ -3355,10 +3312,8 @@ export const TrackingInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary to hold generic information which is not stored by the already existing properties */
 export type OrderStatusAdditionalOrderDetailsMap = { [key: string]: string | undefined };
-export const OrderStatusAdditionalOrderDetailsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrderStatusAdditionalOrderDetailsMap>;
+export const OrderStatusAdditionalOrderDetailsMap =
+  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<OrderStatusAdditionalOrderDetailsMap>;
 
 /** Represents a single status change. */
 export interface OrderStatus {
@@ -3397,9 +3352,8 @@ export const OrderPropertiesDeliveryTrackingInfoList = /*@__PURE__*/ S.Array(
 
 /** Tracking information for the package returned from the customer whether it has an original or a replacement device. */
 export type OrderPropertiesReturnTrackingInfoList = Array<TrackingInfo>;
-export const OrderPropertiesReturnTrackingInfoList = /*@__PURE__*/ S.Array(
-  TrackingInfo,
-) as any as S.Schema<OrderPropertiesReturnTrackingInfoList>;
+export const OrderPropertiesReturnTrackingInfoList =
+  OrderPropertiesDeliveryTrackingInfoList as any as S.Schema<OrderPropertiesReturnTrackingInfoList>;
 
 export type ShipmentType = "NotApplicable" | "ShippedToCustomer" | "SelfPickup";
 export const ShipmentType = S.String;
@@ -4053,9 +4007,8 @@ export const InstallDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstallDeviceUpdatesRequest>;
 
 export interface InstallDeviceUpdatesResponse {}
-export const InstallDeviceUpdatesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InstallDeviceUpdatesResponse",
-}) as any as S.Schema<InstallDeviceUpdatesResponse>;
+export const InstallDeviceUpdatesResponse =
+  DeleteAddonResponse as any as S.Schema<InstallDeviceUpdatesResponse>;
 
 export interface ListAddonByRoleRequest {
   /** The ID of the target subscription. */
@@ -4096,15 +4049,7 @@ export interface Addon {
   /** Addon type. */
   kind: AddonType;
 }
-export const Addon = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: AddonType,
-  }),
-).annotate({ identifier: "Addon" }) as any as S.Schema<Addon>;
+export const Addon = GetAddonResponse as any as S.Schema<Addon>;
 
 /** The Addon items on this page */
 export type AddonListValueList = Array<Addon>;
@@ -4164,15 +4109,7 @@ export interface Alert {
   /** Properties of alert. */
   properties?: AlertProperties;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AlertProperties),
-  }),
-).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
+export const Alert = GetAlertResponse as any as S.Schema<Alert>;
 
 /** The Alert items on this page */
 export type AlertListValueList = Array<Alert>;
@@ -4213,27 +4150,23 @@ export const ListAvailableSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability of the Sku for the region. */
 export type DataBoxEdgeSkuLocationsList = Array<string>;
-export const DataBoxEdgeSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataBoxEdgeSkuLocationsList>;
+export const DataBoxEdgeSkuLocationsList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<DataBoxEdgeSkuLocationsList>;
 
 /** The API versions in which Sku is available. */
 export type DataBoxEdgeSkuApiVersionsList = Array<string>;
-export const DataBoxEdgeSkuApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataBoxEdgeSkuApiVersionsList>;
+export const DataBoxEdgeSkuApiVersionsList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<DataBoxEdgeSkuApiVersionsList>;
 
 /** The zones. */
 export type SkuLocationInfoZonesList = Array<string>;
-export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuLocationInfoZonesList>;
+export const SkuLocationInfoZonesList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The sites. */
 export type SkuLocationInfoSitesList = Array<string>;
-export const SkuLocationInfoSitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuLocationInfoSitesList>;
+export const SkuLocationInfoSitesList =
+  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<SkuLocationInfoSitesList>;
 
 /** The location info. */
 export interface SkuLocationInfo {
@@ -4501,15 +4434,7 @@ export interface Container {
   /** The container properties. */
   properties: ContainerProperties;
 }
-export const Container = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ContainerProperties,
-  }),
-).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
+export const Container = GetContainerResponse as any as S.Schema<Container>;
 
 /** The Container items on this page */
 export type ContainerListValueList = Array<Container>;
@@ -4558,10 +4483,8 @@ export const ListDeviceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DataBoxEdgeDeviceTagsMap = { [key: string]: string | undefined };
-export const DataBoxEdgeDeviceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataBoxEdgeDeviceTagsMap>;
+export const DataBoxEdgeDeviceTagsMap =
+  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<DataBoxEdgeDeviceTagsMap>;
 
 /** The Data Box Edge/Gateway device. */
 export interface DataBoxEdgeDevice {
@@ -4588,21 +4511,7 @@ export interface DataBoxEdgeDevice {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-export const DataBoxEdgeDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DataBoxEdgeDeviceTagsMap),
-    location: S.String,
-    properties: S.optional(DataBoxEdgeDeviceProperties),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-    identity: S.optional(ResourceIdentity),
-    kind: S.optional(DataBoxEdgeDeviceKind),
-  }),
-).annotate({ identifier: "DataBoxEdgeDevice" }) as any as S.Schema<DataBoxEdgeDevice>;
+export const DataBoxEdgeDevice = GetDeviceResponse as any as S.Schema<DataBoxEdgeDevice>;
 
 /** The DataBoxEdgeDevice items on this page */
 export type DataBoxEdgeDeviceListValueList = Array<DataBoxEdgeDevice>;
@@ -4687,17 +4596,8 @@ export interface MonitoringMetricConfiguration {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-export const MonitoringMetricConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: MonitoringMetricConfigurationProperties,
-  }),
-).annotate({
-  identifier: "MonitoringMetricConfiguration",
-}) as any as S.Schema<MonitoringMetricConfiguration>;
+export const MonitoringMetricConfiguration =
+  GetMonitoringConfigResponse as any as S.Schema<MonitoringMetricConfiguration>;
 
 /** The MonitoringMetricConfiguration items on this page */
 export type MonitoringMetricConfigurationListValueList = Array<MonitoringMetricConfiguration>;
@@ -5064,16 +4964,7 @@ export interface Order {
   /** It specify the order api version. */
   kind?: string;
 }
-export const Order = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OrderProperties),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
+export const Order = GetOrderResponse as any as S.Schema<Order>;
 
 /** The Order items on this page */
 export type OrderListValueList = Array<Order>;
@@ -5180,15 +5071,7 @@ export interface Role {
   /** Role type. */
   kind: RoleTypes;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: RoleTypes,
-  }),
-).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
+export const Role = GetRoleResponse as any as S.Schema<Role>;
 
 /** The Role items on this page */
 export type RoleListValueList = Array<Role>;
@@ -5246,15 +5129,7 @@ export interface Share {
   /** The share properties. */
   properties: ShareProperties;
 }
-export const Share = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ShareProperties,
-  }),
-).annotate({ identifier: "Share" }) as any as S.Schema<Share>;
+export const Share = GetShareResponse as any as S.Schema<Share>;
 
 /** The Share items on this page */
 export type ShareListValueList = Array<Share>;
@@ -5455,15 +5330,7 @@ export interface Trigger {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: TriggerEventType,
-  }),
-).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+export const Trigger = GetTriggerResponse as any as S.Schema<Trigger>;
 
 /** The Trigger items on this page */
 export type TriggerListValueList = Array<Trigger>;
@@ -5526,15 +5393,7 @@ export interface User {
   /** The storage account credential properties. */
   properties: UserProperties;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: UserProperties,
-  }),
-).annotate({ identifier: "User" }) as any as S.Schema<User>;
+export const User = GetUserResponse as any as S.Schema<User>;
 
 /** The User items on this page */
 export type UserListValueList = Array<User>;
@@ -5597,17 +5456,8 @@ export interface MonitoringConfigCreateOrUpdateResponse {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-export const MonitoringConfigCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: MonitoringMetricConfigurationProperties,
-  }),
-).annotate({
-  identifier: "MonitoringConfigCreateOrUpdateResponse",
-}) as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>;
+export const MonitoringConfigCreateOrUpdateResponse =
+  GetMonitoringConfigResponse as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>;
 
 /** Order properties. */
 export interface OrderPropertiesInput {
@@ -5711,9 +5561,8 @@ export const RefreshContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RefreshContainerRequest" }) as any as S.Schema<RefreshContainerRequest>;
 
 export interface RefreshContainerResponse {}
-export const RefreshContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RefreshContainerResponse",
-}) as any as S.Schema<RefreshContainerResponse>;
+export const RefreshContainerResponse =
+  DeleteAddonResponse as any as S.Schema<RefreshContainerResponse>;
 
 export interface RefreshShareRequest {
   /** The ID of the target subscription. */
@@ -5742,9 +5591,7 @@ export const RefreshShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RefreshShareRequest" }) as any as S.Schema<RefreshShareRequest>;
 
 export interface RefreshShareResponse {}
-export const RefreshShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RefreshShareResponse",
-}) as any as S.Schema<RefreshShareResponse>;
+export const RefreshShareResponse = DeleteAddonResponse as any as S.Schema<RefreshShareResponse>;
 
 export interface RolesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -5803,15 +5650,13 @@ export const RolesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
 export type SharePropertiesInputUserAccessRightsList = Array<UserAccessRight>;
-export const SharePropertiesInputUserAccessRightsList = /*@__PURE__*/ S.Array(
-  UserAccessRight,
-) as any as S.Schema<SharePropertiesInputUserAccessRightsList>;
+export const SharePropertiesInputUserAccessRightsList =
+  SharePropertiesUserAccessRightsList as any as S.Schema<SharePropertiesInputUserAccessRightsList>;
 
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
 export type SharePropertiesInputClientAccessRightsList = Array<ClientAccessRight>;
-export const SharePropertiesInputClientAccessRightsList = /*@__PURE__*/ S.Array(
-  ClientAccessRight,
-) as any as S.Schema<SharePropertiesInputClientAccessRightsList>;
+export const SharePropertiesInputClientAccessRightsList =
+  SharePropertiesClientAccessRightsList as any as S.Schema<SharePropertiesInputClientAccessRightsList>;
 
 /** The share properties. */
 export interface SharePropertiesInput {
@@ -5946,17 +5791,8 @@ export interface StorageAccountCredentialsCreateOrUpdateResponse {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-export const StorageAccountCredentialsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: StorageAccountCredentialProperties,
-  }),
-).annotate({
-  identifier: "StorageAccountCredentialsCreateOrUpdateResponse",
-}) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>;
+export const StorageAccountCredentialsCreateOrUpdateResponse =
+  GetStorageAccountCredentialsResponse as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>;
 
 /** The storage account properties. */
 export interface StorageAccountPropertiesInput {
@@ -6023,17 +5859,8 @@ export interface StorageAccountsCreateOrUpdateResponse {
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
 }
-export const StorageAccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: StorageAccountProperties,
-  }),
-).annotate({
-  identifier: "StorageAccountsCreateOrUpdateResponse",
-}) as any as S.Schema<StorageAccountsCreateOrUpdateResponse>;
+export const StorageAccountsCreateOrUpdateResponse =
+  GetStorageAccountResponse as any as S.Schema<StorageAccountsCreateOrUpdateResponse>;
 
 export interface TriggersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -6138,18 +5965,13 @@ export const TriggerSupportPackageSupportPackageRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>;
 
 export interface TriggerSupportPackageSupportPackageResponse {}
-export const TriggerSupportPackageSupportPackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TriggerSupportPackageSupportPackageResponse",
-}) as any as S.Schema<TriggerSupportPackageSupportPackageResponse>;
+export const TriggerSupportPackageSupportPackageResponse =
+  DeleteStorageAccountCredentialsResponse as any as S.Schema<TriggerSupportPackageSupportPackageResponse>;
 
 /** The tags attached to the Data Box Edge/Gateway resource. */
 export type UpdateDeviceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDeviceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDeviceRequestTagsMap>;
+export const UpdateDeviceRequestTagsMap =
+  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDeviceRequestTagsMap>;
 
 /** The Data Box Edge/Gateway Edge Profile Subscription patch. */
 export interface EdgeProfileSubscriptionPatch {
@@ -6222,10 +6044,8 @@ export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDeviceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDeviceResponseTagsMap>;
+export const UpdateDeviceResponseTagsMap =
+  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDeviceResponseTagsMap>;
 
 export interface UpdateDeviceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6251,21 +6071,7 @@ export interface UpdateDeviceResponse {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-export const UpdateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDeviceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DataBoxEdgeDeviceProperties),
-    sku: S.optional(Sku),
-    etag: S.optional(S.String),
-    identity: S.optional(ResourceIdentity),
-    kind: S.optional(DataBoxEdgeDeviceKind),
-  }),
-).annotate({ identifier: "UpdateDeviceResponse" }) as any as S.Schema<UpdateDeviceResponse>;
+export const UpdateDeviceResponse = GetDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
 
 export interface UpdateDeviceExtendedInformationRequest {
   /** The ID of the target subscription. */
@@ -6419,17 +6225,7 @@ export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSetting
   properties: ProactiveLogCollectionSettingsProperties;
 }
 export const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: ProactiveLogCollectionSettingsProperties,
-    }),
-  ).annotate({
-    identifier: "UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse",
-  }) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>;
+  GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>;
 
 export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest {
   /** The ID of the target subscription. */

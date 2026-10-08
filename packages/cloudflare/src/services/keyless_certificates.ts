@@ -209,9 +209,8 @@ export const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetKeylessCertificateRequest>;
 
 export type GetResponsePermissionsList = Array<string>;
-export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponsePermissionsList>;
+export const GetResponsePermissionsList =
+  CreateResponsePermissionsList as any as S.Schema<GetResponsePermissionsList>;
 
 export type GetResponseStatus = "active" | "deleted";
 export const GetResponseStatus = S.String;
@@ -274,9 +273,8 @@ export const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKeylessCertificatesRequest>;
 
 export type ListResultItemPermissionsList = Array<string>;
-export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemPermissionsList>;
+export const ListResultItemPermissionsList =
+  CreateResponsePermissionsList as any as S.Schema<ListResultItemPermissionsList>;
 
 export type ListResultItemStatus = "active" | "deleted";
 export const ListResultItemStatus = S.String;
@@ -383,9 +381,8 @@ export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchKeylessCertificateRequest>;
 
 export type EditResponsePermissionsList = Array<string>;
-export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponsePermissionsList>;
+export const EditResponsePermissionsList =
+  CreateResponsePermissionsList as any as S.Schema<EditResponsePermissionsList>;
 
 export type EditResponseStatus = "active" | "deleted";
 export const EditResponseStatus = S.String;

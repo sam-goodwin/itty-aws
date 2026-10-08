@@ -133,11 +133,7 @@ export interface StorageProfile {
   /** Resource Id of Storage Resource */
   id?: string;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "StorageProfile" }) as any as S.Schema<StorageProfile>;
+export const StorageProfile = AksProfile as any as S.Schema<StorageProfile>;
 
 /** The properties related to Database Resource */
 export interface DatabaseProfile {
@@ -172,22 +168,14 @@ export interface RedisProfile {
   /** Resource Id of Azure Redis Cache Resource */
   id?: string;
 }
-export const RedisProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "RedisProfile" }) as any as S.Schema<RedisProfile>;
+export const RedisProfile = AksProfile as any as S.Schema<RedisProfile>;
 
 /** The properties related to Monitoring Resource */
 export interface MonitoringProfile {
   /** Resource Id of Application Insights Resource */
   id?: string;
 }
-export const MonitoringProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "MonitoringProfile" }) as any as S.Schema<MonitoringProfile>;
+export const MonitoringProfile = AksProfile as any as S.Schema<MonitoringProfile>;
 
 /** The properties related to EventHub Resource */
 export interface EventHubProfile {
@@ -208,11 +196,7 @@ export interface FunctionAppProfile {
   /** Resource Id of Azure Function App Resource */
   id?: string;
 }
-export const FunctionAppProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "FunctionAppProfile" }) as any as S.Schema<FunctionAppProfile>;
+export const FunctionAppProfile = AksProfile as any as S.Schema<FunctionAppProfile>;
 
 /** The properties related to OpenAI Resource */
 export interface OpenAIProfile {
@@ -652,10 +636,8 @@ export const ListManufacturingDataServiceByResourceGroupRequest = /*@__PURE__*/ 
 
 /** Resource tags. */
 export type MdsResourceTagsMap = { [key: string]: string | undefined };
-export const MdsResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MdsResourceTagsMap>;
+export const MdsResourceTagsMap =
+  GetManufacturingDataServiceResponseTagsMap as any as S.Schema<MdsResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type MdsResourceIdentity = GetManufacturingDataServiceResponseIdentity;
@@ -825,10 +807,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ManufacturingDataServicesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ManufacturingDataServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequestTagsMap>;
+export const ManufacturingDataServicesCreateOrUpdateRequestTagsMap =
+  GetManufacturingDataServiceResponseTagsMap as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequestTagsMap>;
 
 /** The properties related to OpenAI Resource */
 export interface OpenAIProfileInput {
@@ -883,9 +863,8 @@ export const UserManagedOpenAIProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Deny Assignments exclusion list. */
 export type MdsResourcePropertiesInputDenyAssignmentExclusionsList = Array<DenyAssignmentExclusion>;
-export const MdsResourcePropertiesInputDenyAssignmentExclusionsList = /*@__PURE__*/ S.Array(
-  DenyAssignmentExclusion,
-) as any as S.Schema<MdsResourcePropertiesInputDenyAssignmentExclusionsList>;
+export const MdsResourcePropertiesInputDenyAssignmentExclusionsList =
+  MdsResourcePropertiesDenyAssignmentExclusionsList as any as S.Schema<MdsResourcePropertiesInputDenyAssignmentExclusionsList>;
 
 /** Details of the ManufacturingPlatform MdsResource. */
 export interface MdsResourcePropertiesInput {
@@ -974,17 +953,8 @@ export interface ManufacturingDataServicesCreateOrUpdateRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const ManufacturingDataServicesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ManufacturingDataServicesCreateOrUpdateRequestSku",
-}) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequestSku>;
+export const ManufacturingDataServicesCreateOrUpdateRequestSku =
+  GetManufacturingDataServiceResponseSku as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequestSku>;
 
 export interface ManufacturingDataServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1030,10 +1000,8 @@ export const ManufacturingDataServicesCreateOrUpdateRequest = /*@__PURE__*/ S.su
 export type ManufacturingDataServicesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ManufacturingDataServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponseTagsMap>;
+export const ManufacturingDataServicesCreateOrUpdateResponseTagsMap =
+  GetManufacturingDataServiceResponseTagsMap as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ManufacturingDataServicesCreateOrUpdateResponseIdentity =
@@ -1067,21 +1035,8 @@ export interface ManufacturingDataServicesCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: GetManufacturingDataServiceResponseSku;
 }
-export const ManufacturingDataServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ManufacturingDataServicesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MdsResourceProperties),
-    identity: S.optional(GetManufacturingDataServiceResponseIdentity),
-    sku: S.optional(GetManufacturingDataServiceResponseSku),
-  }),
-).annotate({
-  identifier: "ManufacturingDataServicesCreateOrUpdateResponse",
-}) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponse>;
+export const ManufacturingDataServicesCreateOrUpdateResponse =
+  GetManufacturingDataServiceResponse as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponse>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
@@ -1160,10 +1115,8 @@ export const AzureResourceManagerCommonTypesSkuUpdate = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type UpdateManufacturingDataServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateManufacturingDataServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateManufacturingDataServiceRequestTagsMap>;
+export const UpdateManufacturingDataServiceRequestTagsMap =
+  GetManufacturingDataServiceResponseTagsMap as any as S.Schema<UpdateManufacturingDataServiceRequestTagsMap>;
 
 /** The properties related to Fabric */
 export interface FabricProfileUpdate {
@@ -1204,9 +1157,8 @@ export const UserManagedOpenAIProfileUpdate = /*@__PURE__*/ S.suspend(() =>
 /** Deny Assignments exclusion list. */
 export type MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList =
   Array<DenyAssignmentExclusion>;
-export const MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList = /*@__PURE__*/ S.Array(
-  DenyAssignmentExclusion,
-) as any as S.Schema<MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList>;
+export const MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList =
+  MdsResourcePropertiesDenyAssignmentExclusionsList as any as S.Schema<MdsResourceUpdatePropertiesInputDenyAssignmentExclusionsList>;
 
 /** The updatable properties of the MdsResource. */
 export interface MdsResourceUpdatePropertiesInput {
@@ -1283,10 +1235,8 @@ export const UpdateManufacturingDataServiceRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateManufacturingDataServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateManufacturingDataServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateManufacturingDataServiceResponseTagsMap>;
+export const UpdateManufacturingDataServiceResponseTagsMap =
+  GetManufacturingDataServiceResponseTagsMap as any as S.Schema<UpdateManufacturingDataServiceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateManufacturingDataServiceResponseIdentity =
@@ -1318,21 +1268,8 @@ export interface UpdateManufacturingDataServiceResponse {
   /** The resource model definition representing SKU */
   sku?: GetManufacturingDataServiceResponseSku;
 }
-export const UpdateManufacturingDataServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateManufacturingDataServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MdsResourceProperties),
-    identity: S.optional(GetManufacturingDataServiceResponseIdentity),
-    sku: S.optional(GetManufacturingDataServiceResponseSku),
-  }),
-).annotate({
-  identifier: "UpdateManufacturingDataServiceResponse",
-}) as any as S.Schema<UpdateManufacturingDataServiceResponse>;
+export const UpdateManufacturingDataServiceResponse =
+  GetManufacturingDataServiceResponse as any as S.Schema<UpdateManufacturingDataServiceResponse>;
 
 export type DeleteManufacturingDataServiceError = AzureOpError;
 /** Delete a MdsResource */

@@ -128,7 +128,7 @@ export type Message = string;
 export type XAxisValues = number[];
 export const XAxisValues = /*@__PURE__*/ S.Array(S.Number);
 export type MetricValues = number[];
-export const MetricValues = /*@__PURE__*/ S.Array(S.Number);
+export const MetricValues = XAxisValues as any as S.Schema<MetricValues>;
 export interface MetricQueryResult {
   Status?: MetricQueryResultStatus;
   Message?: string;

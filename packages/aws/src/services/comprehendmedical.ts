@@ -158,9 +158,7 @@ export interface OutputDataConfig {
   S3Bucket: string;
   S3Key?: string;
 }
-export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Bucket: S.String, S3Key: S.optional(S.String) }),
-).annotate({ identifier: "OutputDataConfig" }) as any as S.Schema<OutputDataConfig>;
+export const OutputDataConfig = InputDataConfig as any as S.Schema<OutputDataConfig>;
 export type LanguageCode = "en" | (string & {});
 export const LanguageCode = S.String;
 
@@ -227,13 +225,8 @@ export const DescribeICD10CMInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeICD10CMInferenceJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
-export const DescribeICD10CMInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobProperties: S.optional(ComprehendMedicalAsyncJobProperties),
-  }),
-).annotate({
-  identifier: "DescribeICD10CMInferenceJobResponse",
-}) as any as S.Schema<DescribeICD10CMInferenceJobResponse>;
+export const DescribeICD10CMInferenceJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribeICD10CMInferenceJobResponse>;
 export interface DescribePHIDetectionJobRequest {
   JobId: string;
 }
@@ -247,13 +240,8 @@ export const DescribePHIDetectionJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribePHIDetectionJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
-export const DescribePHIDetectionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobProperties: S.optional(ComprehendMedicalAsyncJobProperties),
-  }),
-).annotate({
-  identifier: "DescribePHIDetectionJobResponse",
-}) as any as S.Schema<DescribePHIDetectionJobResponse>;
+export const DescribePHIDetectionJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribePHIDetectionJobResponse>;
 export interface DescribeRxNormInferenceJobRequest {
   JobId: string;
 }
@@ -267,13 +255,8 @@ export const DescribeRxNormInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeRxNormInferenceJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
-export const DescribeRxNormInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobProperties: S.optional(ComprehendMedicalAsyncJobProperties),
-  }),
-).annotate({
-  identifier: "DescribeRxNormInferenceJobResponse",
-}) as any as S.Schema<DescribeRxNormInferenceJobResponse>;
+export const DescribeRxNormInferenceJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribeRxNormInferenceJobResponse>;
 export interface DescribeSNOMEDCTInferenceJobRequest {
   JobId: string;
 }
@@ -287,13 +270,8 @@ export const DescribeSNOMEDCTInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeSNOMEDCTInferenceJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
-export const DescribeSNOMEDCTInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobProperties: S.optional(ComprehendMedicalAsyncJobProperties),
-  }),
-).annotate({
-  identifier: "DescribeSNOMEDCTInferenceJobResponse",
-}) as any as S.Schema<DescribeSNOMEDCTInferenceJobResponse>;
+export const DescribeSNOMEDCTInferenceJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribeSNOMEDCTInferenceJobResponse>;
 export type BoundedLengthString = string;
 export interface DetectEntitiesRequest {
   Text: string;
@@ -502,14 +480,8 @@ export interface DetectEntitiesV2Response {
   PaginationToken?: string;
   ModelVersion: string;
 }
-export const DetectEntitiesV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Entities: EntityList,
-    UnmappedAttributes: S.optional(UnmappedAttributeList),
-    PaginationToken: S.optional(S.String),
-    ModelVersion: S.String,
-  }),
-).annotate({ identifier: "DetectEntitiesV2Response" }) as any as S.Schema<DetectEntitiesV2Response>;
+export const DetectEntitiesV2Response =
+  DetectEntitiesResponse as any as S.Schema<DetectEntitiesV2Response>;
 export interface DetectPHIRequest {
   Text: string;
 }
@@ -723,15 +695,9 @@ export interface RxNormConcept {
   Code?: string;
   Score?: number;
 }
-export const RxNormConcept = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    Code: S.optional(S.String),
-    Score: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RxNormConcept" }) as any as S.Schema<RxNormConcept>;
+export const RxNormConcept = ICD10CMConcept as any as S.Schema<RxNormConcept>;
 export type RxNormConceptList = RxNormConcept[];
-export const RxNormConceptList = /*@__PURE__*/ S.Array(RxNormConcept);
+export const RxNormConceptList = ICD10CMConceptList as any as S.Schema<RxNormConceptList>;
 export interface RxNormEntity {
   Id?: number;
   Text?: string;
@@ -843,15 +809,9 @@ export interface SNOMEDCTConcept {
   Code?: string;
   Score?: number;
 }
-export const SNOMEDCTConcept = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    Code: S.optional(S.String),
-    Score: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SNOMEDCTConcept" }) as any as S.Schema<SNOMEDCTConcept>;
+export const SNOMEDCTConcept = ICD10CMConcept as any as S.Schema<SNOMEDCTConcept>;
 export type SNOMEDCTConceptList = SNOMEDCTConcept[];
-export const SNOMEDCTConceptList = /*@__PURE__*/ S.Array(SNOMEDCTConcept);
+export const SNOMEDCTConceptList = ICD10CMConceptList as any as S.Schema<SNOMEDCTConceptList>;
 export interface SNOMEDCTAttribute {
   Category?: SNOMEDCTEntityCategory;
   Type?: SNOMEDCTAttributeType;
@@ -1009,14 +969,8 @@ export interface ListICD10CMInferenceJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
-export const ListICD10CMInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobPropertiesList: S.optional(ComprehendMedicalAsyncJobPropertiesList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListICD10CMInferenceJobsResponse",
-}) as any as S.Schema<ListICD10CMInferenceJobsResponse>;
+export const ListICD10CMInferenceJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListICD10CMInferenceJobsResponse>;
 export interface ListPHIDetectionJobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
@@ -1035,14 +989,8 @@ export interface ListPHIDetectionJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
-export const ListPHIDetectionJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobPropertiesList: S.optional(ComprehendMedicalAsyncJobPropertiesList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPHIDetectionJobsResponse",
-}) as any as S.Schema<ListPHIDetectionJobsResponse>;
+export const ListPHIDetectionJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListPHIDetectionJobsResponse>;
 export interface ListRxNormInferenceJobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
@@ -1061,14 +1009,8 @@ export interface ListRxNormInferenceJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
-export const ListRxNormInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobPropertiesList: S.optional(ComprehendMedicalAsyncJobPropertiesList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRxNormInferenceJobsResponse",
-}) as any as S.Schema<ListRxNormInferenceJobsResponse>;
+export const ListRxNormInferenceJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListRxNormInferenceJobsResponse>;
 export interface ListSNOMEDCTInferenceJobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
@@ -1087,14 +1029,8 @@ export interface ListSNOMEDCTInferenceJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
-export const ListSNOMEDCTInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComprehendMedicalAsyncJobPropertiesList: S.optional(ComprehendMedicalAsyncJobPropertiesList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSNOMEDCTInferenceJobsResponse",
-}) as any as S.Schema<ListSNOMEDCTInferenceJobsResponse>;
+export const ListSNOMEDCTInferenceJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListSNOMEDCTInferenceJobsResponse>;
 export type ClientRequestTokenString = string;
 export interface StartEntitiesDetectionV2JobRequest {
   InputDataConfig: InputDataConfig;
@@ -1151,11 +1087,8 @@ export const StartICD10CMInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartICD10CMInferenceJobResponse {
   JobId?: string;
 }
-export const StartICD10CMInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartICD10CMInferenceJobResponse",
-}) as any as S.Schema<StartICD10CMInferenceJobResponse>;
+export const StartICD10CMInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartICD10CMInferenceJobResponse>;
 export interface StartPHIDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1181,11 +1114,8 @@ export const StartPHIDetectionJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartPHIDetectionJobResponse {
   JobId?: string;
 }
-export const StartPHIDetectionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartPHIDetectionJobResponse",
-}) as any as S.Schema<StartPHIDetectionJobResponse>;
+export const StartPHIDetectionJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartPHIDetectionJobResponse>;
 export interface StartRxNormInferenceJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1211,11 +1141,8 @@ export const StartRxNormInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartRxNormInferenceJobResponse {
   JobId?: string;
 }
-export const StartRxNormInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartRxNormInferenceJobResponse",
-}) as any as S.Schema<StartRxNormInferenceJobResponse>;
+export const StartRxNormInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartRxNormInferenceJobResponse>;
 export interface StartSNOMEDCTInferenceJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1241,11 +1168,8 @@ export const StartSNOMEDCTInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartSNOMEDCTInferenceJobResponse {
   JobId?: string;
 }
-export const StartSNOMEDCTInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartSNOMEDCTInferenceJobResponse",
-}) as any as S.Schema<StartSNOMEDCTInferenceJobResponse>;
+export const StartSNOMEDCTInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartSNOMEDCTInferenceJobResponse>;
 export interface StopEntitiesDetectionV2JobRequest {
   JobId: string;
 }
@@ -1259,11 +1183,8 @@ export const StopEntitiesDetectionV2JobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopEntitiesDetectionV2JobResponse {
   JobId?: string;
 }
-export const StopEntitiesDetectionV2JobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StopEntitiesDetectionV2JobResponse",
-}) as any as S.Schema<StopEntitiesDetectionV2JobResponse>;
+export const StopEntitiesDetectionV2JobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopEntitiesDetectionV2JobResponse>;
 export interface StopICD10CMInferenceJobRequest {
   JobId: string;
 }
@@ -1277,11 +1198,8 @@ export const StopICD10CMInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopICD10CMInferenceJobResponse {
   JobId?: string;
 }
-export const StopICD10CMInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StopICD10CMInferenceJobResponse",
-}) as any as S.Schema<StopICD10CMInferenceJobResponse>;
+export const StopICD10CMInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopICD10CMInferenceJobResponse>;
 export interface StopPHIDetectionJobRequest {
   JobId: string;
 }
@@ -1295,11 +1213,8 @@ export const StopPHIDetectionJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopPHIDetectionJobResponse {
   JobId?: string;
 }
-export const StopPHIDetectionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StopPHIDetectionJobResponse",
-}) as any as S.Schema<StopPHIDetectionJobResponse>;
+export const StopPHIDetectionJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopPHIDetectionJobResponse>;
 export interface StopRxNormInferenceJobRequest {
   JobId: string;
 }
@@ -1313,11 +1228,8 @@ export const StopRxNormInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopRxNormInferenceJobResponse {
   JobId?: string;
 }
-export const StopRxNormInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StopRxNormInferenceJobResponse",
-}) as any as S.Schema<StopRxNormInferenceJobResponse>;
+export const StopRxNormInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopRxNormInferenceJobResponse>;
 export interface StopSNOMEDCTInferenceJobRequest {
   JobId: string;
 }
@@ -1331,11 +1243,8 @@ export const StopSNOMEDCTInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopSNOMEDCTInferenceJobResponse {
   JobId?: string;
 }
-export const StopSNOMEDCTInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobId: S.optional(S.String) }),
-).annotate({
-  identifier: "StopSNOMEDCTInferenceJobResponse",
-}) as any as S.Schema<StopSNOMEDCTInferenceJobResponse>;
+export const StopSNOMEDCTInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopSNOMEDCTInferenceJobResponse>;
 export type DescribeEntitiesDetectionV2JobError =
   | InternalServerException
   | InvalidRequestException

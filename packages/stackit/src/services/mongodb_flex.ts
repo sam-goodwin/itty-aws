@@ -97,10 +97,8 @@ export const CreateInstanceRequestLabelsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CreateInstanceRequestLabelsMap>;
 
 export type CreateInstanceRequestOptionsMap = { [key: string]: string | undefined };
-export const CreateInstanceRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateInstanceRequestOptionsMap>;
+export const CreateInstanceRequestOptionsMap =
+  CreateInstanceRequestLabelsMap as any as S.Schema<CreateInstanceRequestOptionsMap>;
 
 export interface Storage {
   class?: string;
@@ -203,7 +201,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The roles defined for a user. Currently only one role in the list is supported, therefore only the first role from this list is used. The *roles* attribute can contain the following values: 'read', 'readWrite', 'readAnyDatabase', 'readWriteAnyDatabase', 'stackitAdmin'. **The 'readAnyDatabase', 'readWriteAnyDatabase' and 'stackitAdmin' roles will always be created in the admin database.** */
 export type UserRolesList = Array<string>;
-export const UserRolesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<UserRolesList>;
+export const UserRolesList = ACLItemsList as any as S.Schema<UserRolesList>;
 
 export interface User {
   database?: string;
@@ -299,9 +297,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteInstanceResponse as any as S.Schema<DeleteUserResponse>;
 
 export type GetBackupRequestRegion = "eu01" | "eu02";
 export const GetBackupRequestRegion = S.String;
@@ -333,15 +329,10 @@ export const GetBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBackupRequest" }) as any as S.Schema<GetBackupRequest>;
 
 export type BackupLabelsList = Array<string>;
-export const BackupLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BackupLabelsList>;
+export const BackupLabelsList = CreateUserRequestRolesList as any as S.Schema<BackupLabelsList>;
 
 export type BackupOptionsMap = { [key: string]: string | undefined };
-export const BackupOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BackupOptionsMap>;
+export const BackupOptionsMap = CreateInstanceRequestLabelsMap as any as S.Schema<BackupOptionsMap>;
 
 export interface Backup {
   endTime?: string;
@@ -417,10 +408,8 @@ export const Flavor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Flavor" }) as any as S.Schema<Flavor>;
 
 export type InstanceOptionsMap = { [key: string]: string | undefined };
-export const InstanceOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InstanceOptionsMap>;
+export const InstanceOptionsMap =
+  CreateInstanceRequestLabelsMap as any as S.Schema<InstanceOptionsMap>;
 
 /** The current status of the instance. */
 export type InstanceStatus = "READY" | "PENDING" | "PROCESSING" | "FAILED" | "UNKNOWN";
@@ -494,9 +483,8 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The roles defined for a user. The *roles* attribute can contain the following values: 'read', 'readWrite', 'readAnyDatabase', 'readWriteAnyDatabase', 'stackitAdmin'. **The 'readAnyDatabase', 'readWriteAnyDatabase' and 'stackitAdmin' roles will always be created in the admin database.** */
 export type InstanceResponseUserRolesList = Array<string>;
-export const InstanceResponseUserRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceResponseUserRolesList>;
+export const InstanceResponseUserRolesList =
+  CreateUserRequestRolesList as any as S.Schema<InstanceResponseUserRolesList>;
 
 export interface InstanceResponseUser {
   database?: string;
@@ -652,9 +640,8 @@ export const ListFlavorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFlavorsRequest" }) as any as S.Schema<ListFlavorsRequest>;
 
 export type InstanceFlavorCategoriesList = Array<string>;
-export const InstanceFlavorCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceFlavorCategoriesList>;
+export const InstanceFlavorCategoriesList =
+  CreateUserRequestRolesList as any as S.Schema<InstanceFlavorCategoriesList>;
 
 export interface InstanceFlavor {
   categories?: InstanceFlavorCategoriesList;
@@ -931,9 +918,8 @@ export const ListStoragesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStoragesRequest" }) as any as S.Schema<ListStoragesRequest>;
 
 export type ListStoragesResponseStorageClassesList = Array<string>;
-export const ListStoragesResponseStorageClassesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListStoragesResponseStorageClassesList>;
+export const ListStoragesResponseStorageClassesList =
+  CreateUserRequestRolesList as any as S.Schema<ListStoragesResponseStorageClassesList>;
 
 export interface StorageRange {
   max?: number;
@@ -1065,9 +1051,8 @@ export const HandlersInstancesSuggestedIndexesResponseShapesList = /*@__PURE__*/
 
 /** List of unique identifiers which correspond the query shapes in this response which pertain to this suggested index. */
 export type SuggestedIndexImpactList = Array<string>;
-export const SuggestedIndexImpactList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SuggestedIndexImpactList>;
+export const SuggestedIndexImpactList =
+  CreateUserRequestRolesList as any as S.Schema<SuggestedIndexImpactList>;
 
 export type SuggestedIndexIndexItemMap = { [key: string]: number | undefined };
 export const SuggestedIndexIndexItemMap = /*@__PURE__*/ S.Record(
@@ -1201,9 +1186,8 @@ export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVersionsRequest" }) as any as S.Schema<ListVersionsRequest>;
 
 export type ListVersionsResponseVersionsList = Array<string>;
-export const ListVersionsResponseVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListVersionsResponseVersionsList>;
+export const ListVersionsResponseVersionsList =
+  CreateUserRequestRolesList as any as S.Schema<ListVersionsResponseVersionsList>;
 
 export interface ListVersionsResponse {
   versions?: ListVersionsResponseVersionsList;
@@ -1219,16 +1203,12 @@ export const PartialUpdateInstanceRequestRegion = S.String;
 
 /** Labels field is not certain/clear */
 export type PartialUpdateInstanceRequestLabelsMap = { [key: string]: string | undefined };
-export const PartialUpdateInstanceRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartialUpdateInstanceRequestLabelsMap>;
+export const PartialUpdateInstanceRequestLabelsMap =
+  CreateInstanceRequestLabelsMap as any as S.Schema<PartialUpdateInstanceRequestLabelsMap>;
 
 export type PartialUpdateInstanceRequestOptionsMap = { [key: string]: string | undefined };
-export const PartialUpdateInstanceRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartialUpdateInstanceRequestOptionsMap>;
+export const PartialUpdateInstanceRequestOptionsMap =
+  CreateInstanceRequestLabelsMap as any as S.Schema<PartialUpdateInstanceRequestOptionsMap>;
 
 export interface PartialUpdateInstanceRequest {
   /** project id */
@@ -1277,20 +1257,15 @@ export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInstanceResponse {
   item?: Instance;
 }
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    item: S.optional(Instance),
-  }),
-).annotate({ identifier: "UpdateInstanceResponse" }) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse = InstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export type PartialUpdateUserRequestRegion = "eu01" | "eu02";
 export const PartialUpdateUserRequestRegion = S.String;
 
 /** The roles defined for a user. Currently only one role in the list is supported, therefore only the first role from this list is used. The *roles* attribute can contain the following values: 'read', 'readWrite', 'readAnyDatabase', 'readWriteAnyDatabase', 'stackitAdmin'. **The 'readAnyDatabase', 'readWriteAnyDatabase' and 'stackitAdmin' roles will always be created in the admin database.** */
 export type PartialUpdateUserRequestRolesList = Array<string>;
-export const PartialUpdateUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartialUpdateUserRequestRolesList>;
+export const PartialUpdateUserRequestRolesList =
+  CreateUserRequestRolesList as any as S.Schema<PartialUpdateUserRequestRolesList>;
 
 export interface PartialUpdateUserRequest {
   /** project id */
@@ -1324,9 +1299,8 @@ export const PartialUpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartialUpdateUserRequest" }) as any as S.Schema<PartialUpdateUserRequest>;
 
 export interface PartialUpdateUserResponse {}
-export const PartialUpdateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateUserResponse",
-}) as any as S.Schema<PartialUpdateUserResponse>;
+export const PartialUpdateUserResponse =
+  DeleteInstanceResponse as any as S.Schema<PartialUpdateUserResponse>;
 
 export type ResetUserRequestRegion = "eu01" | "eu02";
 export const ResetUserRequestRegion = S.String;
@@ -1458,16 +1432,12 @@ export const UpdateInstanceRequestRegion = S.String;
 
 /** Labels field is not certain/clear */
 export type UpdateInstanceRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateInstanceRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateInstanceRequestLabelsMap>;
+export const UpdateInstanceRequestLabelsMap =
+  CreateInstanceRequestLabelsMap as any as S.Schema<UpdateInstanceRequestLabelsMap>;
 
 export type UpdateInstanceRequestOptionsMap = { [key: string]: string | undefined };
-export const UpdateInstanceRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateInstanceRequestOptionsMap>;
+export const UpdateInstanceRequestOptionsMap =
+  CreateInstanceRequestLabelsMap as any as S.Schema<UpdateInstanceRequestOptionsMap>;
 
 export interface UpdateInstanceRequest {
   /** project id */
@@ -1516,9 +1486,8 @@ export const UpdateUserRequestRegion = S.String;
 
 /** The roles defined for a user. Currently only one role in the list is supported, therefore only the first role from this list is used. The *roles* attribute can contain the following values: 'read', 'readWrite', 'readAnyDatabase', 'readWriteAnyDatabase', 'stackitAdmin'. **The 'readAnyDatabase', 'readWriteAnyDatabase' and 'stackitAdmin' roles will always be created in the admin database.** */
 export type UpdateUserRequestRolesList = Array<string>;
-export const UpdateUserRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUserRequestRolesList>;
+export const UpdateUserRequestRolesList =
+  CreateUserRequestRolesList as any as S.Schema<UpdateUserRequestRolesList>;
 
 export interface UpdateUserRequest {
   /** project id */
@@ -1552,9 +1521,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 
 export interface UpdateUserResponse {}
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserResponse",
-}) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = DeleteInstanceResponse as any as S.Schema<UpdateUserResponse>;
 
 export type CloneInstanceError = BadRequest | NotFound | StackitOpError;
 /** Clone instance Clone an instance via PIT restore<br/> Note that the Timestamp is a RFC3339 standard and uses by default UTC time format<br/> As an example a valid timestamp look like "2023-04-20T15:05:15Z" */

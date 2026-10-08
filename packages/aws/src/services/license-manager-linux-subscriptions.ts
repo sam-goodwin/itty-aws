@@ -243,7 +243,7 @@ export const ListLinuxSubscriptionInstancesRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "ListLinuxSubscriptionInstancesRequest",
 }) as any as S.Schema<ListLinuxSubscriptionInstancesRequest>;
 export type ProductCodeList = string[];
-export const ProductCodeList = /*@__PURE__*/ S.Array(S.String);
+export const ProductCodeList = StringList as any as S.Schema<ProductCodeList>;
 export interface Instance {
   AmiId?: string;
   InstanceID?: string;
@@ -339,7 +339,8 @@ export const ListLinuxSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLinuxSubscriptionsResponse",
 }) as any as S.Schema<ListLinuxSubscriptionsResponse>;
 export type SubscriptionProviderSourceList = string[];
-export const SubscriptionProviderSourceList = /*@__PURE__*/ S.Array(S.String);
+export const SubscriptionProviderSourceList =
+  StringList as any as S.Schema<SubscriptionProviderSourceList>;
 export interface ListRegisteredSubscriptionProvidersRequest {
   SubscriptionProviderSources?: string[];
   MaxResults?: number;
@@ -371,18 +372,8 @@ export interface RegisteredSubscriptionProvider {
   SubscriptionProviderStatusMessage?: string;
   LastSuccessfulDataRetrievalTime?: string;
 }
-export const RegisteredSubscriptionProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubscriptionProviderArn: S.optional(S.String),
-    SubscriptionProviderSource: S.optional(S.String),
-    SecretArn: S.optional(S.String),
-    SubscriptionProviderStatus: S.optional(S.String),
-    SubscriptionProviderStatusMessage: S.optional(S.String),
-    LastSuccessfulDataRetrievalTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegisteredSubscriptionProvider",
-}) as any as S.Schema<RegisteredSubscriptionProvider>;
+export const RegisteredSubscriptionProvider =
+  GetRegisteredSubscriptionProviderResponse as any as S.Schema<RegisteredSubscriptionProvider>;
 export type RegisteredSubscriptionProviderList = RegisteredSubscriptionProvider[];
 export const RegisteredSubscriptionProviderList = /*@__PURE__*/ S.Array(
   RegisteredSubscriptionProvider,
@@ -410,7 +401,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Tags = StringMap as any as S.Schema<Tags>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
@@ -470,7 +461,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -484,9 +475,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateServiceSettingsRequest {
   LinuxSubscriptionsDiscovery: string;
   LinuxSubscriptionsDiscoverySettings: LinuxSubscriptionsDiscoverySettings;
@@ -517,17 +506,8 @@ export interface UpdateServiceSettingsResponse {
   StatusMessage?: { [key: string]: string | undefined };
   HomeRegions?: string[];
 }
-export const UpdateServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LinuxSubscriptionsDiscovery: S.optional(S.String),
-    LinuxSubscriptionsDiscoverySettings: S.optional(LinuxSubscriptionsDiscoverySettings),
-    Status: S.optional(S.String),
-    StatusMessage: S.optional(StringMap),
-    HomeRegions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "UpdateServiceSettingsResponse",
-}) as any as S.Schema<UpdateServiceSettingsResponse>;
+export const UpdateServiceSettingsResponse =
+  GetServiceSettingsResponse as any as S.Schema<UpdateServiceSettingsResponse>;
 export type DeregisterSubscriptionProviderError =
   | InternalServerException
   | ResourceNotFoundException

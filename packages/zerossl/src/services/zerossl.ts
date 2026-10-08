@@ -1015,24 +1015,19 @@ export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCertificateRequest" }) as any as S.Schema<GetCertificateRequest>;
 
 export type GetCertificateResponseValidationEmailValidationValueList = Array<string>;
-export const GetCertificateResponseValidationEmailValidationValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCertificateResponseValidationEmailValidationValueList>;
+export const GetCertificateResponseValidationEmailValidationValueList =
+  CreateCertificateResponseValidationEmailValidationValueList as any as S.Schema<GetCertificateResponseValidationEmailValidationValueList>;
 
 export type GetCertificateResponseValidationEmailValidationMap = {
   [key: string]: GetCertificateResponseValidationEmailValidationValueList | undefined;
 };
-export const GetCertificateResponseValidationEmailValidationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetCertificateResponseValidationEmailValidationValueList,
-) as any as S.Schema<GetCertificateResponseValidationEmailValidationMap>;
+export const GetCertificateResponseValidationEmailValidationMap =
+  CreateCertificateResponseValidationEmailValidationMap as any as S.Schema<GetCertificateResponseValidationEmailValidationMap>;
 
 export type GetCertificateResponseValidationOtherMethodsValueFileValidationContentList =
   Array<string>;
 export const GetCertificateResponseValidationOtherMethodsValueFileValidationContentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetCertificateResponseValidationOtherMethodsValueFileValidationContentList>;
+  CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<GetCertificateResponseValidationOtherMethodsValueFileValidationContentList>;
 
 export interface GetCertificateResponseValidationOtherMethodsValue {
   /** Returns the URL (http format) your verification file must be uploaded to as part of domain verification. */
@@ -1046,26 +1041,14 @@ export interface GetCertificateResponseValidationOtherMethodsValue {
   /** Returns the value-part (Point To) of the CNAME-record that must be created as part of domain verification. */
   cname_validation_p2: string;
 }
-export const GetCertificateResponseValidationOtherMethodsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file_validation_url_http: S.String,
-    file_validation_url_https: S.String,
-    file_validation_content:
-      GetCertificateResponseValidationOtherMethodsValueFileValidationContentList,
-    cname_validation_p1: S.String,
-    cname_validation_p2: S.String,
-  }),
-).annotate({
-  identifier: "GetCertificateResponseValidationOtherMethodsValue",
-}) as any as S.Schema<GetCertificateResponseValidationOtherMethodsValue>;
+export const GetCertificateResponseValidationOtherMethodsValue =
+  CreateCertificateResponseValidationOtherMethodsValue as any as S.Schema<GetCertificateResponseValidationOtherMethodsValue>;
 
 export type GetCertificateResponseValidationOtherMethodsMap = {
   [key: string]: GetCertificateResponseValidationOtherMethodsValue | undefined;
 };
-export const GetCertificateResponseValidationOtherMethodsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetCertificateResponseValidationOtherMethodsValue,
-) as any as S.Schema<GetCertificateResponseValidationOtherMethodsMap>;
+export const GetCertificateResponseValidationOtherMethodsMap =
+  CreateCertificateResponseValidationOtherMethodsMap as any as S.Schema<GetCertificateResponseValidationOtherMethodsMap>;
 
 export interface GetCertificateResponseValidation {
   /** Returns an array of eligible domain verification emails. */
@@ -1073,14 +1056,8 @@ export interface GetCertificateResponseValidation {
   /** Returns a series of sub-objects (one for each domain in your certificate) containing alternative verification methods. */
   other_methods: GetCertificateResponseValidationOtherMethodsMap;
 }
-export const GetCertificateResponseValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email_validation: GetCertificateResponseValidationEmailValidationMap,
-    other_methods: GetCertificateResponseValidationOtherMethodsMap,
-  }),
-).annotate({
-  identifier: "GetCertificateResponseValidation",
-}) as any as S.Schema<GetCertificateResponseValidation>;
+export const GetCertificateResponseValidation =
+  CreateCertificateResponseValidation as any as S.Schema<GetCertificateResponseValidation>;
 
 export interface GetCertificateResponse {
   /** Returns the internal certificate ID, also referred to as certificate hash. */
@@ -1193,9 +1170,7 @@ export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListCertificatesResponseResultsItemValidationEmailValidationValueList = Array<string>;
 export const ListCertificatesResponseResultsItemValidationEmailValidationValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCertificatesResponseResultsItemValidationEmailValidationValueList>;
+  CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<ListCertificatesResponseResultsItemValidationEmailValidationValueList>;
 
 export type ListCertificatesResponseResultsItemValidationEmailValidationMap = {
   [key: string]: ListCertificatesResponseResultsItemValidationEmailValidationValueList | undefined;
@@ -1209,9 +1184,7 @@ export const ListCertificatesResponseResultsItemValidationEmailValidationMap =
 export type ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList =
   Array<string>;
 export const ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList>;
+  CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList>;
 
 export interface ListCertificatesResponseResultsItemValidationOtherMethodsValue {
   file_validation_url_http: string;
@@ -1339,13 +1312,8 @@ export interface ResendVerificationResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
-export const ResendVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Number,
-  }),
-).annotate({
-  identifier: "ResendVerificationResponse",
-}) as any as S.Schema<ResendVerificationResponse>;
+export const ResendVerificationResponse =
+  CancelCertificateResponse as any as S.Schema<ResendVerificationResponse>;
 
 export interface RevokeCertificateRequest {
   /** Use this parameter to specify the certificate ID (hash) of the certificate to be revoked. */
@@ -1364,13 +1332,8 @@ export interface RevokeCertificateResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
-export const RevokeCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Number,
-  }),
-).annotate({
-  identifier: "RevokeCertificateResponse",
-}) as any as S.Schema<RevokeCertificateResponse>;
+export const RevokeCertificateResponse =
+  CancelCertificateResponse as any as S.Schema<RevokeCertificateResponse>;
 
 export interface ValidateCsrRequest {
   /** The CSR you want to validate. */
@@ -1383,9 +1346,8 @@ export const ValidateCsrRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidateCsrRequest" }) as any as S.Schema<ValidateCsrRequest>;
 
 export type ValidateCsrResponseCsrResponseList = Array<string>;
-export const ValidateCsrResponseCsrResponseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateCsrResponseCsrResponseList>;
+export const ValidateCsrResponseCsrResponseList =
+  CreateCertificateResponseValidationEmailValidationValueList as any as S.Schema<ValidateCsrResponseCsrResponseList>;
 
 export interface ValidateCsrResponse {
   /** Returns `true` to indicate your CSR is valid, false otherwise. */

@@ -408,9 +408,8 @@ export const DeleteAppInstanceAdminRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAppInstanceAdminRequest",
 }) as any as S.Schema<DeleteAppInstanceAdminRequest>;
 export interface DeleteAppInstanceAdminResponse {}
-export const DeleteAppInstanceAdminResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppInstanceAdminResponse",
-}) as any as S.Schema<DeleteAppInstanceAdminResponse>;
+export const DeleteAppInstanceAdminResponse =
+  DeleteAppInstanceResponse as any as S.Schema<DeleteAppInstanceAdminResponse>;
 export interface DeleteAppInstanceBotRequest {
   AppInstanceBotArn: string;
 }
@@ -429,9 +428,8 @@ export const DeleteAppInstanceBotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAppInstanceBotRequest",
 }) as any as S.Schema<DeleteAppInstanceBotRequest>;
 export interface DeleteAppInstanceBotResponse {}
-export const DeleteAppInstanceBotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppInstanceBotResponse",
-}) as any as S.Schema<DeleteAppInstanceBotResponse>;
+export const DeleteAppInstanceBotResponse =
+  DeleteAppInstanceResponse as any as S.Schema<DeleteAppInstanceBotResponse>;
 export interface DeleteAppInstanceUserRequest {
   AppInstanceUserArn: string;
 }
@@ -450,9 +448,8 @@ export const DeleteAppInstanceUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAppInstanceUserRequest",
 }) as any as S.Schema<DeleteAppInstanceUserRequest>;
 export interface DeleteAppInstanceUserResponse {}
-export const DeleteAppInstanceUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAppInstanceUserResponse",
-}) as any as S.Schema<DeleteAppInstanceUserResponse>;
+export const DeleteAppInstanceUserResponse =
+  DeleteAppInstanceResponse as any as S.Schema<DeleteAppInstanceUserResponse>;
 export type String64 = string;
 export interface DeregisterAppInstanceUserEndpointRequest {
   AppInstanceUserArn: string;
@@ -1055,14 +1052,8 @@ export interface PutAppInstanceRetentionSettingsResponse {
   AppInstanceRetentionSettings?: AppInstanceRetentionSettings;
   InitiateDeletionTimestamp?: Date;
 }
-export const PutAppInstanceRetentionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AppInstanceRetentionSettings: S.optional(AppInstanceRetentionSettings),
-    InitiateDeletionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "PutAppInstanceRetentionSettingsResponse",
-}) as any as S.Schema<PutAppInstanceRetentionSettingsResponse>;
+export const PutAppInstanceRetentionSettingsResponse =
+  GetAppInstanceRetentionSettingsResponse as any as S.Schema<PutAppInstanceRetentionSettingsResponse>;
 export interface PutAppInstanceUserExpirationSettingsRequest {
   AppInstanceUserArn: string;
   ExpirationSettings?: ExpirationSettings;
@@ -1156,9 +1147,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteAppInstanceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
 export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
@@ -1178,9 +1168,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAppInstanceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAppInstanceRequest {
   AppInstanceArn: string;
   Name: string | redacted.Redacted<string>;
@@ -1205,11 +1194,8 @@ export const UpdateAppInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAppInstanceResponse {
   AppInstanceArn?: string;
 }
-export const UpdateAppInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppInstanceArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateAppInstanceResponse",
-}) as any as S.Schema<UpdateAppInstanceResponse>;
+export const UpdateAppInstanceResponse =
+  CreateAppInstanceResponse as any as S.Schema<UpdateAppInstanceResponse>;
 export interface UpdateAppInstanceBotRequest {
   AppInstanceBotArn: string;
   Name: string | redacted.Redacted<string>;
@@ -1238,11 +1224,8 @@ export const UpdateAppInstanceBotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAppInstanceBotResponse {
   AppInstanceBotArn?: string;
 }
-export const UpdateAppInstanceBotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppInstanceBotArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateAppInstanceBotResponse",
-}) as any as S.Schema<UpdateAppInstanceBotResponse>;
+export const UpdateAppInstanceBotResponse =
+  CreateAppInstanceBotResponse as any as S.Schema<UpdateAppInstanceBotResponse>;
 export interface UpdateAppInstanceUserRequest {
   AppInstanceUserArn: string;
   Name: string | redacted.Redacted<string>;
@@ -1269,11 +1252,8 @@ export const UpdateAppInstanceUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAppInstanceUserResponse {
   AppInstanceUserArn?: string;
 }
-export const UpdateAppInstanceUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppInstanceUserArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateAppInstanceUserResponse",
-}) as any as S.Schema<UpdateAppInstanceUserResponse>;
+export const UpdateAppInstanceUserResponse =
+  CreateAppInstanceUserResponse as any as S.Schema<UpdateAppInstanceUserResponse>;
 export interface UpdateAppInstanceUserEndpointRequest {
   AppInstanceUserArn: string;
   EndpointId: string;
@@ -1306,11 +1286,8 @@ export interface UpdateAppInstanceUserEndpointResponse {
   AppInstanceUserArn?: string;
   EndpointId?: string;
 }
-export const UpdateAppInstanceUserEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AppInstanceUserArn: S.optional(S.String), EndpointId: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateAppInstanceUserEndpointResponse",
-}) as any as S.Schema<UpdateAppInstanceUserEndpointResponse>;
+export const UpdateAppInstanceUserEndpointResponse =
+  RegisterAppInstanceUserEndpointResponse as any as S.Schema<UpdateAppInstanceUserEndpointResponse>;
 export type ErrorCode =
   | "BadRequest"
   | "Conflict"

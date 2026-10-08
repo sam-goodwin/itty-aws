@@ -1032,14 +1032,12 @@ export const ValidatePixelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidatePixelRequest" }) as any as S.Schema<ValidatePixelRequest>;
 
 export type PixelValidationHostEventsList = Array<string>;
-export const PixelValidationHostEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PixelValidationHostEventsList>;
+export const PixelValidationHostEventsList =
+  ListEventsResponseDataItemQuestionsItemOptionsList as any as S.Schema<PixelValidationHostEventsList>;
 
 export type PixelValidationPageEventsList = Array<string>;
-export const PixelValidationPageEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PixelValidationPageEventsList>;
+export const PixelValidationPageEventsList =
+  ListEventsResponseDataItemQuestionsItemOptionsList as any as S.Schema<PixelValidationPageEventsList>;
 
 export interface PixelValidation {
   /** False when the event lookup failed, meaning `host_events` and `last_seen_days` are incomplete. */

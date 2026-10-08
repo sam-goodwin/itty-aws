@@ -3483,14 +3483,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   text?: string;
 }
 export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart>;
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart>;
 
 /** A structured component/part of a transcript segment. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart {
@@ -4069,14 +4062,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   text?: string;
 }
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage>;
+  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage>;
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -10395,13 +10381,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 /** The request message for testing auto labeling rules. */
 export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
@@ -10503,14 +10484,8 @@ export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   /** Required. The issue model to undeploy. */
   name?: string;
 }
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest",
-}) as any as S.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest>;
+export const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest =
+  GoogleCloudContactcenterinsightsV1DeployIssueModelRequest as any as S.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest>;
 
 export interface UndeployProjectsLocationsIssueModelsRequest {
   /** Required. The issue model to undeploy. */

@@ -105,10 +105,8 @@ export const CreateZoneRrsetResponseRrsetType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateZoneRrsetResponseRrsetLabelsMap = { [key: string]: string | undefined };
-export const CreateZoneRrsetResponseRrsetLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateZoneRrsetResponseRrsetLabelsMap>;
+export const CreateZoneRrsetResponseRrsetLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<CreateZoneRrsetResponseRrsetLabelsMap>;
 
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export interface CreateZoneRrsetResponseRrsetProtection {
@@ -129,9 +127,8 @@ export const CreateZoneRrsetResponseRrsetRecordsItem = CreateZoneRrsetRequestRec
 
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type CreateZoneRrsetResponseRrsetRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
-export const CreateZoneRrsetResponseRrsetRecordsList = /*@__PURE__*/ S.Array(
-  CreateZoneRrsetRequestRecordsItem,
-) as any as S.Schema<CreateZoneRrsetResponseRrsetRecordsList>;
+export const CreateZoneRrsetResponseRrsetRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<CreateZoneRrsetResponseRrsetRecordsList>;
 
 export interface CreateZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
@@ -299,9 +296,8 @@ export const DeleteZoneRrsetResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DeleteZoneRrsetResponseActionResourcesList =
   Array<CreateZoneRrsetResponseActionResourcesItem>;
-export const DeleteZoneRrsetResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  CreateZoneRrsetResponseActionResourcesItem,
-) as any as S.Schema<DeleteZoneRrsetResponseActionResourcesList>;
+export const DeleteZoneRrsetResponseActionResourcesList =
+  CreateZoneRrsetResponseActionResourcesList as any as S.Schema<DeleteZoneRrsetResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteZoneRrsetResponseActionError = CreateZoneRrsetResponseActionError;
@@ -407,10 +403,8 @@ export const GetZoneRrsetResponseRrsetType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetZoneRrsetResponseRrsetLabelsMap = { [key: string]: string | undefined };
-export const GetZoneRrsetResponseRrsetLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetZoneRrsetResponseRrsetLabelsMap>;
+export const GetZoneRrsetResponseRrsetLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<GetZoneRrsetResponseRrsetLabelsMap>;
 
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export type GetZoneRrsetResponseRrsetProtection = CreateZoneRrsetResponseRrsetProtection;
@@ -422,9 +416,8 @@ export const GetZoneRrsetResponseRrsetRecordsItem = CreateZoneRrsetRequestRecord
 
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type GetZoneRrsetResponseRrsetRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
-export const GetZoneRrsetResponseRrsetRecordsList = /*@__PURE__*/ S.Array(
-  CreateZoneRrsetRequestRecordsItem,
-) as any as S.Schema<GetZoneRrsetResponseRrsetRecordsList>;
+export const GetZoneRrsetResponseRrsetRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<GetZoneRrsetResponseRrsetRecordsList>;
 
 export interface GetZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
@@ -560,10 +553,8 @@ export const ListZoneRrsetsResponseRrsetsItemType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListZoneRrsetsResponseRrsetsItemLabelsMap = { [key: string]: string | undefined };
-export const ListZoneRrsetsResponseRrsetsItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListZoneRrsetsResponseRrsetsItemLabelsMap>;
+export const ListZoneRrsetsResponseRrsetsItemLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<ListZoneRrsetsResponseRrsetsItemLabelsMap>;
 
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export type ListZoneRrsetsResponseRrsetsItemProtection = CreateZoneRrsetResponseRrsetProtection;
@@ -575,9 +566,8 @@ export const ListZoneRrsetsResponseRrsetsItemRecordsItem = CreateZoneRrsetReques
 
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type ListZoneRrsetsResponseRrsetsItemRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
-export const ListZoneRrsetsResponseRrsetsItemRecordsList = /*@__PURE__*/ S.Array(
-  CreateZoneRrsetRequestRecordsItem,
-) as any as S.Schema<ListZoneRrsetsResponseRrsetsItemRecordsList>;
+export const ListZoneRrsetsResponseRrsetsItemRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<ListZoneRrsetsResponseRrsetsItemRecordsList>;
 
 export interface ListZoneRrsetsResponseRrsetsItem {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
@@ -690,10 +680,8 @@ export const UpdateZoneRrsetRequestRrType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateZoneRrsetRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateZoneRrsetRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateZoneRrsetRequestLabelsMap>;
+export const UpdateZoneRrsetRequestLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<UpdateZoneRrsetRequestLabelsMap>;
 
 export interface UpdateZoneRrsetRequest {
   /** ID or Name of the Zone. */
@@ -736,10 +724,8 @@ export const UpdateZoneRrsetResponseRrsetType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateZoneRrsetResponseRrsetLabelsMap = { [key: string]: string | undefined };
-export const UpdateZoneRrsetResponseRrsetLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateZoneRrsetResponseRrsetLabelsMap>;
+export const UpdateZoneRrsetResponseRrsetLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<UpdateZoneRrsetResponseRrsetLabelsMap>;
 
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export type UpdateZoneRrsetResponseRrsetProtection = CreateZoneRrsetResponseRrsetProtection;
@@ -751,9 +737,8 @@ export const UpdateZoneRrsetResponseRrsetRecordsItem = CreateZoneRrsetRequestRec
 
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type UpdateZoneRrsetResponseRrsetRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
-export const UpdateZoneRrsetResponseRrsetRecordsList = /*@__PURE__*/ S.Array(
-  CreateZoneRrsetRequestRecordsItem,
-) as any as S.Schema<UpdateZoneRrsetResponseRrsetRecordsList>;
+export const UpdateZoneRrsetResponseRrsetRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<UpdateZoneRrsetResponseRrsetRecordsList>;
 
 export interface UpdateZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */

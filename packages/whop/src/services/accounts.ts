@@ -796,9 +796,8 @@ export type AccountRequiredActionAction =
 export const AccountRequiredActionAction = S.String;
 
 export type AccountRequiredActionBlockedCapabilitiesList = Array<string>;
-export const AccountRequiredActionBlockedCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountRequiredActionBlockedCapabilitiesList>;
+export const AccountRequiredActionBlockedCapabilitiesList =
+  AccountRecommendedActionBlockedCapabilitiesList as any as S.Schema<AccountRequiredActionBlockedCapabilitiesList>;
 
 /** required (act now) or pending (under review) */
 export type AccountRequiredActionStatus = "required" | "pending";
@@ -999,9 +998,8 @@ export const AccountStorePageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountStorePageConfig" }) as any as S.Schema<AccountStorePageConfig>;
 
 export type AccountTaxCollectionEnabledStatesList = Array<string>;
-export const AccountTaxCollectionEnabledStatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountTaxCollectionEnabledStatesList>;
+export const AccountTaxCollectionEnabledStatesList =
+  AccountRecommendedActionBlockedCapabilitiesList as any as S.Schema<AccountTaxCollectionEnabledStatesList>;
 
 /** Tax ID type. */
 export type AccountTaxIdentifierTaxIdType =
@@ -2153,10 +2151,8 @@ export const AccountFeeMarkupsDepositsMap = /*@__PURE__*/ S.Record(
 
 /** Markups on withdrawals, keyed by payout method: `bank_wire`, `next_day_bank`, `rtp`, `crypto`, and `digital_wallet`. */
 export type AccountFeeMarkupsPayoutsMap = { [key: string]: AccountFeeMarkup | undefined };
-export const AccountFeeMarkupsPayoutsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AccountFeeMarkup,
-) as any as S.Schema<AccountFeeMarkupsPayoutsMap>;
+export const AccountFeeMarkupsPayoutsMap =
+  AccountFeeMarkupsDepositsMap as any as S.Schema<AccountFeeMarkupsPayoutsMap>;
 
 export interface AccountFeeMarkups {
   /** The markup on card purchases settled by the connected account. */
@@ -2217,10 +2213,8 @@ export const AccountFeesPaymentMethodsMap = /*@__PURE__*/ S.Record(
 
 /** Fees on withdrawals, keyed by payout method: `bank_wire`, `same_day_bank`, `next_day_bank`, `rtp`, `crypto`, and `digital_wallet`. */
 export type AccountFeesPayoutsMap = { [key: string]: AccountFee | undefined };
-export const AccountFeesPayoutsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  AccountFee,
-) as any as S.Schema<AccountFeesPayoutsMap>;
+export const AccountFeesPayoutsMap =
+  AccountFeesPaymentMethodsMap as any as S.Schema<AccountFeesPayoutsMap>;
 
 export interface AccountFees {
   /** The account these fees are charged to, prefixed `biz_`. */
@@ -2385,9 +2379,7 @@ export const GetAccountPreferencesResponseAdsCertificationsItemCertificationType
 /** Countries the latest application covers, as ISO 3166-1 alpha-2 codes. */
 export type GetAccountPreferencesResponseAdsCertificationsItemCountriesList = Array<string>;
 export const GetAccountPreferencesResponseAdsCertificationsItemCountriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAccountPreferencesResponseAdsCertificationsItemCountriesList>;
+  GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList as any as S.Schema<GetAccountPreferencesResponseAdsCertificationsItemCountriesList>;
 
 /** `not_started` until the account applies; `pending_information` while an application waits for answers; `in_review` once submitted; then `approved` or `denied`. */
 export type GetAccountPreferencesResponseAdsCertificationsItemStatus =
@@ -2708,17 +2700,12 @@ export interface AccountReserveUnlock {
   /** The day this money unlocks, as an ISO 8601 date. */
   date: string;
 }
-export const AccountReserveUnlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.String,
-    date: S.String,
-  }),
-).annotate({ identifier: "AccountReserveUnlock" }) as any as S.Schema<AccountReserveUnlock>;
+export const AccountReserveUnlock =
+  AccountBalanceSettlement as any as S.Schema<AccountReserveUnlock>;
 
 export type AccountReserveUnlocksByDateList = Array<AccountReserveUnlock>;
-export const AccountReserveUnlocksByDateList = /*@__PURE__*/ S.Array(
-  AccountReserveUnlock,
-) as any as S.Schema<AccountReserveUnlocksByDateList>;
+export const AccountReserveUnlocksByDateList =
+  AccountBalanceBreakdownPendingSettlementsList as any as S.Schema<AccountReserveUnlocksByDateList>;
 
 export interface AccountReserve {
   /** Total held in this currency, in native units, as a decimal string. `usd` and `usdt` are reported as one `usd` entry, matching how the balance row groups them. */
@@ -2985,10 +2972,8 @@ export const UpdateAccountRequestLogo = UpdateAccountRequestBannerImage;
 
 /** Arbitrary key/value metadata to store on the account. */
 export type UpdateAccountRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateAccountRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateAccountRequestMetadataMap>;
+export const UpdateAccountRequestMetadataMap =
+  CreateAccountRequestMetadataMap as any as S.Schema<UpdateAccountRequestMetadataMap>;
 
 /** The type of onboarding the account has completed. */
 export type UpdateAccountRequestOnboardingType = "platform" | "seller";
@@ -3015,10 +3000,8 @@ export type UpdateAccountRequestShippingPolicy = UpdateAccountRequestBannerImage
 export const UpdateAccountRequestShippingPolicy = UpdateAccountRequestBannerImage;
 
 export type UpdateAccountRequestSocialLinksItemMap = { [key: string]: unknown | undefined };
-export const UpdateAccountRequestSocialLinksItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateAccountRequestSocialLinksItemMap>;
+export const UpdateAccountRequestSocialLinksItemMap =
+  CreateAccountRequestMetadataMap as any as S.Schema<UpdateAccountRequestSocialLinksItemMap>;
 
 /** The full list of social links to display for the account. */
 export type UpdateAccountRequestSocialLinksList = Array<UpdateAccountRequestSocialLinksItemMap>;
@@ -3508,10 +3491,8 @@ export const UpdateAccountFeesRequestBillingRegionsValue =
 export type UpdateAccountFeesRequestBillingRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestBillingRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestBillingRegionsMap>;
+export const UpdateAccountFeesRequestBillingRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestBillingRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestBilling {
@@ -3522,15 +3503,8 @@ export interface UpdateAccountFeesRequestBilling {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestBillingRegionsMap;
 }
-export const UpdateAccountFeesRequestBilling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestBillingRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestBilling",
-}) as any as S.Schema<UpdateAccountFeesRequestBilling>;
+export const UpdateAccountFeesRequestBilling =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestBilling>;
 
 export type UpdateAccountFeesRequestBuyerRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3541,10 +3515,8 @@ export const UpdateAccountFeesRequestBuyerRegionsValue =
 export type UpdateAccountFeesRequestBuyerRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestBuyerRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestBuyerRegionsMap>;
+export const UpdateAccountFeesRequestBuyerRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestBuyerRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestBuyer {
@@ -3555,15 +3527,8 @@ export interface UpdateAccountFeesRequestBuyer {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestBuyerRegionsMap;
 }
-export const UpdateAccountFeesRequestBuyer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestBuyerRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestBuyer",
-}) as any as S.Schema<UpdateAccountFeesRequestBuyer>;
+export const UpdateAccountFeesRequestBuyer =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestBuyer>;
 
 export type UpdateAccountFeesRequestCardProcessingRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3574,10 +3539,8 @@ export const UpdateAccountFeesRequestCardProcessingRegionsValue =
 export type UpdateAccountFeesRequestCardProcessingRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestCardProcessingRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestCardProcessingRegionsMap>;
+export const UpdateAccountFeesRequestCardProcessingRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestCardProcessingRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestCardProcessing {
@@ -3588,15 +3551,8 @@ export interface UpdateAccountFeesRequestCardProcessing {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestCardProcessingRegionsMap;
 }
-export const UpdateAccountFeesRequestCardProcessing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestCardProcessingRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestCardProcessing",
-}) as any as S.Schema<UpdateAccountFeesRequestCardProcessing>;
+export const UpdateAccountFeesRequestCardProcessing =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestCardProcessing>;
 
 /** The markup on card purchases settled by the connected account. `null` clears the custom markup. */
 export interface UpdateAccountFeesRequestChildMarkupsCardSpend {
@@ -3651,10 +3607,8 @@ export const UpdateAccountFeesRequestChildMarkupsPayoutsValue =
 export type UpdateAccountFeesRequestChildMarkupsPayoutsMap = {
   [key: string]: UpdateAccountFeesRequestChildMarkupsCardSpend | null | undefined;
 };
-export const UpdateAccountFeesRequestChildMarkupsPayoutsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
-) as any as S.Schema<UpdateAccountFeesRequestChildMarkupsPayoutsMap>;
+export const UpdateAccountFeesRequestChildMarkupsPayoutsMap =
+  UpdateAccountFeesRequestChildMarkupsDepositsMap as any as S.Schema<UpdateAccountFeesRequestChildMarkupsPayoutsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestChildMarkupsTransfers =
@@ -3721,10 +3675,8 @@ export const UpdateAccountFeesRequestCrossBorderRegionsValue =
 export type UpdateAccountFeesRequestCrossBorderRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestCrossBorderRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestCrossBorderRegionsMap>;
+export const UpdateAccountFeesRequestCrossBorderRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestCrossBorderRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestCrossBorder {
@@ -3735,15 +3687,8 @@ export interface UpdateAccountFeesRequestCrossBorder {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestCrossBorderRegionsMap;
 }
-export const UpdateAccountFeesRequestCrossBorder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestCrossBorderRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestCrossBorder",
-}) as any as S.Schema<UpdateAccountFeesRequestCrossBorder>;
+export const UpdateAccountFeesRequestCrossBorder =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestCrossBorder>;
 
 export type UpdateAccountFeesRequestDisputeRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3754,10 +3699,8 @@ export const UpdateAccountFeesRequestDisputeRegionsValue =
 export type UpdateAccountFeesRequestDisputeRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestDisputeRegionsMap>;
+export const UpdateAccountFeesRequestDisputeRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDispute {
@@ -3768,15 +3711,8 @@ export interface UpdateAccountFeesRequestDispute {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeRegionsMap;
 }
-export const UpdateAccountFeesRequestDispute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestDisputeRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestDispute",
-}) as any as S.Schema<UpdateAccountFeesRequestDispute>;
+export const UpdateAccountFeesRequestDispute =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDispute>;
 
 export type UpdateAccountFeesRequestDisputeAlertRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3787,10 +3723,8 @@ export const UpdateAccountFeesRequestDisputeAlertRegionsValue =
 export type UpdateAccountFeesRequestDisputeAlertRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRegionsMap>;
+export const UpdateAccountFeesRequestDisputeAlertRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlert {
@@ -3801,15 +3735,8 @@ export interface UpdateAccountFeesRequestDisputeAlert {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlert = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestDisputeAlertRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestDisputeAlert",
-}) as any as S.Schema<UpdateAccountFeesRequestDisputeAlert>;
+export const UpdateAccountFeesRequestDisputeAlert =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlert>;
 
 export type UpdateAccountFeesRequestDisputeAlertCdrnRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3820,10 +3747,8 @@ export const UpdateAccountFeesRequestDisputeAlertCdrnRegionsValue =
 export type UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap>;
+export const UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlertCdrn {
@@ -3834,15 +3759,8 @@ export interface UpdateAccountFeesRequestDisputeAlertCdrn {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlertCdrn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestDisputeAlertCdrn",
-}) as any as S.Schema<UpdateAccountFeesRequestDisputeAlertCdrn>;
+export const UpdateAccountFeesRequestDisputeAlertCdrn =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlertCdrn>;
 
 export type UpdateAccountFeesRequestDisputeAlertEthocaRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3853,10 +3771,8 @@ export const UpdateAccountFeesRequestDisputeAlertEthocaRegionsValue =
 export type UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap>;
+export const UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlertEthoca {
@@ -3867,15 +3783,8 @@ export interface UpdateAccountFeesRequestDisputeAlertEthoca {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlertEthoca = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestDisputeAlertEthoca",
-}) as any as S.Schema<UpdateAccountFeesRequestDisputeAlertEthoca>;
+export const UpdateAccountFeesRequestDisputeAlertEthoca =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlertEthoca>;
 
 export type UpdateAccountFeesRequestDisputeAlertRdrRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3886,10 +3795,8 @@ export const UpdateAccountFeesRequestDisputeAlertRdrRegionsValue =
 export type UpdateAccountFeesRequestDisputeAlertRdrRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertRdrRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRdrRegionsMap>;
+export const UpdateAccountFeesRequestDisputeAlertRdrRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRdrRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlertRdr {
@@ -3900,15 +3807,8 @@ export interface UpdateAccountFeesRequestDisputeAlertRdr {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertRdrRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlertRdr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestDisputeAlertRdrRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestDisputeAlertRdr",
-}) as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRdr>;
+export const UpdateAccountFeesRequestDisputeAlertRdr =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRdr>;
 
 export type UpdateAccountFeesRequestDisputeRepresentmentRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3919,10 +3819,8 @@ export const UpdateAccountFeesRequestDisputeRepresentmentRegionsValue =
 export type UpdateAccountFeesRequestDisputeRepresentmentRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeRepresentmentRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestDisputeRepresentmentRegionsMap>;
+export const UpdateAccountFeesRequestDisputeRepresentmentRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeRepresentmentRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeRepresentment {
@@ -3933,15 +3831,8 @@ export interface UpdateAccountFeesRequestDisputeRepresentment {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeRepresentmentRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeRepresentment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestDisputeRepresentmentRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestDisputeRepresentment",
-}) as any as S.Schema<UpdateAccountFeesRequestDisputeRepresentment>;
+export const UpdateAccountFeesRequestDisputeRepresentment =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeRepresentment>;
 
 export type UpdateAccountFeesRequestForeignExchangeRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3952,10 +3843,8 @@ export const UpdateAccountFeesRequestForeignExchangeRegionsValue =
 export type UpdateAccountFeesRequestForeignExchangeRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestForeignExchangeRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestForeignExchangeRegionsMap>;
+export const UpdateAccountFeesRequestForeignExchangeRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestForeignExchangeRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestForeignExchange {
@@ -3966,15 +3855,8 @@ export interface UpdateAccountFeesRequestForeignExchange {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestForeignExchangeRegionsMap;
 }
-export const UpdateAccountFeesRequestForeignExchange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestForeignExchangeRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestForeignExchange",
-}) as any as S.Schema<UpdateAccountFeesRequestForeignExchange>;
+export const UpdateAccountFeesRequestForeignExchange =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestForeignExchange>;
 
 export type UpdateAccountFeesRequestFraudScreeningRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -3985,10 +3867,8 @@ export const UpdateAccountFeesRequestFraudScreeningRegionsValue =
 export type UpdateAccountFeesRequestFraudScreeningRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestFraudScreeningRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestFraudScreeningRegionsMap>;
+export const UpdateAccountFeesRequestFraudScreeningRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestFraudScreeningRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestFraudScreening {
@@ -3999,15 +3879,8 @@ export interface UpdateAccountFeesRequestFraudScreening {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestFraudScreeningRegionsMap;
 }
-export const UpdateAccountFeesRequestFraudScreening = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestFraudScreeningRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestFraudScreening",
-}) as any as S.Schema<UpdateAccountFeesRequestFraudScreening>;
+export const UpdateAccountFeesRequestFraudScreening =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestFraudScreening>;
 
 export type UpdateAccountFeesRequestHighRiskRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4018,10 +3891,8 @@ export const UpdateAccountFeesRequestHighRiskRegionsValue =
 export type UpdateAccountFeesRequestHighRiskRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestHighRiskRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestHighRiskRegionsMap>;
+export const UpdateAccountFeesRequestHighRiskRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestHighRiskRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestHighRisk {
@@ -4032,15 +3903,8 @@ export interface UpdateAccountFeesRequestHighRisk {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestHighRiskRegionsMap;
 }
-export const UpdateAccountFeesRequestHighRisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestHighRiskRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestHighRisk",
-}) as any as S.Schema<UpdateAccountFeesRequestHighRisk>;
+export const UpdateAccountFeesRequestHighRisk =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestHighRisk>;
 
 export type UpdateAccountFeesRequestMarketplaceRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4051,10 +3915,8 @@ export const UpdateAccountFeesRequestMarketplaceRegionsValue =
 export type UpdateAccountFeesRequestMarketplaceRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestMarketplaceRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestMarketplaceRegionsMap>;
+export const UpdateAccountFeesRequestMarketplaceRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestMarketplaceRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestMarketplace {
@@ -4065,15 +3927,8 @@ export interface UpdateAccountFeesRequestMarketplace {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestMarketplaceRegionsMap;
 }
-export const UpdateAccountFeesRequestMarketplace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestMarketplaceRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestMarketplace",
-}) as any as S.Schema<UpdateAccountFeesRequestMarketplace>;
+export const UpdateAccountFeesRequestMarketplace =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestMarketplace>;
 
 /** The markup on card purchases settled by the connected account. `null` clears the custom markup. */
 export type UpdateAccountFeesRequestMarkupsCardSpend =
@@ -4097,10 +3952,8 @@ export const UpdateAccountFeesRequestMarkupsDepositsValue =
 export type UpdateAccountFeesRequestMarkupsDepositsMap = {
   [key: string]: UpdateAccountFeesRequestChildMarkupsCardSpend | null | undefined;
 };
-export const UpdateAccountFeesRequestMarkupsDepositsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
-) as any as S.Schema<UpdateAccountFeesRequestMarkupsDepositsMap>;
+export const UpdateAccountFeesRequestMarkupsDepositsMap =
+  UpdateAccountFeesRequestChildMarkupsDepositsMap as any as S.Schema<UpdateAccountFeesRequestMarkupsDepositsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestMarkupsPayments = UpdateAccountFeesRequestChildMarkupsCardSpend;
@@ -4117,10 +3970,8 @@ export const UpdateAccountFeesRequestMarkupsPayoutsValue =
 export type UpdateAccountFeesRequestMarkupsPayoutsMap = {
   [key: string]: UpdateAccountFeesRequestChildMarkupsCardSpend | null | undefined;
 };
-export const UpdateAccountFeesRequestMarkupsPayoutsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
-) as any as S.Schema<UpdateAccountFeesRequestMarkupsPayoutsMap>;
+export const UpdateAccountFeesRequestMarkupsPayoutsMap =
+  UpdateAccountFeesRequestChildMarkupsDepositsMap as any as S.Schema<UpdateAccountFeesRequestMarkupsPayoutsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestMarkupsTransfers =
@@ -4143,18 +3994,8 @@ export interface UpdateAccountFeesRequestMarkups {
   /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
   transfers?: UpdateAccountFeesRequestChildMarkupsCardSpend | null;
 }
-export const UpdateAccountFeesRequestMarkups = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    card_spend: S.optional(S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend)),
-    crypto_swaps: S.optional(S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend)),
-    deposits: S.optional(UpdateAccountFeesRequestMarkupsDepositsMap),
-    payments: S.optional(S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend)),
-    payouts: S.optional(UpdateAccountFeesRequestMarkupsPayoutsMap),
-    transfers: S.optional(S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend)),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestMarkups",
-}) as any as S.Schema<UpdateAccountFeesRequestMarkups>;
+export const UpdateAccountFeesRequestMarkups =
+  UpdateAccountFeesRequestChildMarkups as any as S.Schema<UpdateAccountFeesRequestMarkups>;
 
 export type UpdateAccountFeesRequestOrchestrationRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4165,10 +4006,8 @@ export const UpdateAccountFeesRequestOrchestrationRegionsValue =
 export type UpdateAccountFeesRequestOrchestrationRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestOrchestrationRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestOrchestrationRegionsMap>;
+export const UpdateAccountFeesRequestOrchestrationRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestOrchestrationRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestOrchestration {
@@ -4179,15 +4018,8 @@ export interface UpdateAccountFeesRequestOrchestration {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestOrchestrationRegionsMap;
 }
-export const UpdateAccountFeesRequestOrchestration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestOrchestrationRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestOrchestration",
-}) as any as S.Schema<UpdateAccountFeesRequestOrchestration>;
+export const UpdateAccountFeesRequestOrchestration =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestOrchestration>;
 
 export type UpdateAccountFeesRequestPaymentMethodsValueRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4198,10 +4030,8 @@ export const UpdateAccountFeesRequestPaymentMethodsValueRegionsValue =
 export type UpdateAccountFeesRequestPaymentMethodsValueRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPaymentMethodsValueRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestPaymentMethodsValueRegionsMap>;
+export const UpdateAccountFeesRequestPaymentMethodsValueRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPaymentMethodsValueRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPaymentMethodsValue {
@@ -4212,15 +4042,8 @@ export interface UpdateAccountFeesRequestPaymentMethodsValue {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPaymentMethodsValueRegionsMap;
 }
-export const UpdateAccountFeesRequestPaymentMethodsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestPaymentMethodsValueRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestPaymentMethodsValue",
-}) as any as S.Schema<UpdateAccountFeesRequestPaymentMethodsValue>;
+export const UpdateAccountFeesRequestPaymentMethodsValue =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPaymentMethodsValue>;
 
 /** Changes to non-card payment method fees, keyed by payment method type. */
 export type UpdateAccountFeesRequestPaymentMethodsMap = {
@@ -4240,10 +4063,8 @@ export const UpdateAccountFeesRequestPayoutsValueRegionsValue =
 export type UpdateAccountFeesRequestPayoutsValueRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPayoutsValueRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestPayoutsValueRegionsMap>;
+export const UpdateAccountFeesRequestPayoutsValueRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPayoutsValueRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPayoutsValue {
@@ -4254,24 +4075,15 @@ export interface UpdateAccountFeesRequestPayoutsValue {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPayoutsValueRegionsMap;
 }
-export const UpdateAccountFeesRequestPayoutsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestPayoutsValueRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestPayoutsValue",
-}) as any as S.Schema<UpdateAccountFeesRequestPayoutsValue>;
+export const UpdateAccountFeesRequestPayoutsValue =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPayoutsValue>;
 
 /** Changes to withdrawal fees, keyed by payout method. */
 export type UpdateAccountFeesRequestPayoutsMap = {
   [key: string]: UpdateAccountFeesRequestPayoutsValue | undefined;
 };
-export const UpdateAccountFeesRequestPayoutsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestPayoutsValue,
-) as any as S.Schema<UpdateAccountFeesRequestPayoutsMap>;
+export const UpdateAccountFeesRequestPayoutsMap =
+  UpdateAccountFeesRequestPaymentMethodsMap as any as S.Schema<UpdateAccountFeesRequestPayoutsMap>;
 
 export type UpdateAccountFeesRequestPendingAutoTopupRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4282,10 +4094,8 @@ export const UpdateAccountFeesRequestPendingAutoTopupRegionsValue =
 export type UpdateAccountFeesRequestPendingAutoTopupRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPendingAutoTopupRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestPendingAutoTopupRegionsMap>;
+export const UpdateAccountFeesRequestPendingAutoTopupRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPendingAutoTopupRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPendingAutoTopup {
@@ -4296,15 +4106,8 @@ export interface UpdateAccountFeesRequestPendingAutoTopup {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPendingAutoTopupRegionsMap;
 }
-export const UpdateAccountFeesRequestPendingAutoTopup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestPendingAutoTopupRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestPendingAutoTopup",
-}) as any as S.Schema<UpdateAccountFeesRequestPendingAutoTopup>;
+export const UpdateAccountFeesRequestPendingAutoTopup =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPendingAutoTopup>;
 
 export type UpdateAccountFeesRequestPlatformProcessingRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4315,10 +4118,8 @@ export const UpdateAccountFeesRequestPlatformProcessingRegionsValue =
 export type UpdateAccountFeesRequestPlatformProcessingRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPlatformProcessingRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestPlatformProcessingRegionsMap>;
+export const UpdateAccountFeesRequestPlatformProcessingRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPlatformProcessingRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPlatformProcessing {
@@ -4329,15 +4130,8 @@ export interface UpdateAccountFeesRequestPlatformProcessing {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPlatformProcessingRegionsMap;
 }
-export const UpdateAccountFeesRequestPlatformProcessing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestPlatformProcessingRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestPlatformProcessing",
-}) as any as S.Schema<UpdateAccountFeesRequestPlatformProcessing>;
+export const UpdateAccountFeesRequestPlatformProcessing =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPlatformProcessing>;
 
 export type UpdateAccountFeesRequestPoolPayoutRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4348,10 +4142,8 @@ export const UpdateAccountFeesRequestPoolPayoutRegionsValue =
 export type UpdateAccountFeesRequestPoolPayoutRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPoolPayoutRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestPoolPayoutRegionsMap>;
+export const UpdateAccountFeesRequestPoolPayoutRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPoolPayoutRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPoolPayout {
@@ -4362,15 +4154,8 @@ export interface UpdateAccountFeesRequestPoolPayout {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPoolPayoutRegionsMap;
 }
-export const UpdateAccountFeesRequestPoolPayout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestPoolPayoutRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestPoolPayout",
-}) as any as S.Schema<UpdateAccountFeesRequestPoolPayout>;
+export const UpdateAccountFeesRequestPoolPayout =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPoolPayout>;
 
 export type UpdateAccountFeesRequestRevshareRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4381,10 +4166,8 @@ export const UpdateAccountFeesRequestRevshareRegionsValue =
 export type UpdateAccountFeesRequestRevshareRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestRevshareRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestRevshareRegionsMap>;
+export const UpdateAccountFeesRequestRevshareRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestRevshareRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestRevshare {
@@ -4395,15 +4178,8 @@ export interface UpdateAccountFeesRequestRevshare {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestRevshareRegionsMap;
 }
-export const UpdateAccountFeesRequestRevshare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestRevshareRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestRevshare",
-}) as any as S.Schema<UpdateAccountFeesRequestRevshare>;
+export const UpdateAccountFeesRequestRevshare =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestRevshare>;
 
 export type UpdateAccountFeesRequestTaxCalculationRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4414,10 +4190,8 @@ export const UpdateAccountFeesRequestTaxCalculationRegionsValue =
 export type UpdateAccountFeesRequestTaxCalculationRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestTaxCalculationRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestTaxCalculationRegionsMap>;
+export const UpdateAccountFeesRequestTaxCalculationRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestTaxCalculationRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestTaxCalculation {
@@ -4428,15 +4202,8 @@ export interface UpdateAccountFeesRequestTaxCalculation {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestTaxCalculationRegionsMap;
 }
-export const UpdateAccountFeesRequestTaxCalculation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestTaxCalculationRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestTaxCalculation",
-}) as any as S.Schema<UpdateAccountFeesRequestTaxCalculation>;
+export const UpdateAccountFeesRequestTaxCalculation =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestTaxCalculation>;
 
 export type UpdateAccountFeesRequestTaxServiceRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4447,10 +4214,8 @@ export const UpdateAccountFeesRequestTaxServiceRegionsValue =
 export type UpdateAccountFeesRequestTaxServiceRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestTaxServiceRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestTaxServiceRegionsMap>;
+export const UpdateAccountFeesRequestTaxServiceRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestTaxServiceRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestTaxService {
@@ -4461,15 +4226,8 @@ export interface UpdateAccountFeesRequestTaxService {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestTaxServiceRegionsMap;
 }
-export const UpdateAccountFeesRequestTaxService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestTaxServiceRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestTaxService",
-}) as any as S.Schema<UpdateAccountFeesRequestTaxService>;
+export const UpdateAccountFeesRequestTaxService =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestTaxService>;
 
 export type UpdateAccountFeesRequestThreeDsRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4480,10 +4238,8 @@ export const UpdateAccountFeesRequestThreeDsRegionsValue =
 export type UpdateAccountFeesRequestThreeDsRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestThreeDsRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestThreeDsRegionsMap>;
+export const UpdateAccountFeesRequestThreeDsRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestThreeDsRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestThreeDs {
@@ -4494,15 +4250,8 @@ export interface UpdateAccountFeesRequestThreeDs {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestThreeDsRegionsMap;
 }
-export const UpdateAccountFeesRequestThreeDs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestThreeDsRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestThreeDs",
-}) as any as S.Schema<UpdateAccountFeesRequestThreeDs>;
+export const UpdateAccountFeesRequestThreeDs =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestThreeDs>;
 
 export type UpdateAccountFeesRequestTransfersRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
@@ -4513,10 +4262,8 @@ export const UpdateAccountFeesRequestTransfersRegionsValue =
 export type UpdateAccountFeesRequestTransfersRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestTransfersRegionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateAccountFeesRequestBankDepositRegionsValue,
-) as any as S.Schema<UpdateAccountFeesRequestTransfersRegionsMap>;
+export const UpdateAccountFeesRequestTransfersRegionsMap =
+  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestTransfersRegionsMap>;
 
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestTransfers {
@@ -4527,15 +4274,8 @@ export interface UpdateAccountFeesRequestTransfers {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestTransfersRegionsMap;
 }
-export const UpdateAccountFeesRequestTransfers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixed: S.optional(S.NullOr(S.Number)),
-    percentage: S.optional(S.NullOr(S.Number)),
-    regions: S.optional(UpdateAccountFeesRequestTransfersRegionsMap),
-  }),
-).annotate({
-  identifier: "UpdateAccountFeesRequestTransfers",
-}) as any as S.Schema<UpdateAccountFeesRequestTransfers>;
+export const UpdateAccountFeesRequestTransfers =
+  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestTransfers>;
 
 export interface UpdateAccountFeesRequest {
   /** Account ID, prefixed `biz_`. */
@@ -4833,9 +4573,7 @@ export const UpdateAccountPreferencesResponseAdsAgreement = /*@__PURE__*/ S.susp
 export type UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
   Array<string>;
 export const UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList>;
+  GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList as any as S.Schema<UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList>;
 
 /** The kind of business on the latest application. `null` until the account applies. */
 export type UpdateAccountPreferencesResponseAdsCertificationsItemBusinessType =
@@ -4852,9 +4590,7 @@ export const UpdateAccountPreferencesResponseAdsCertificationsItemCertificationT
 /** Countries the latest application covers, as ISO 3166-1 alpha-2 codes. */
 export type UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList = Array<string>;
 export const UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList>;
+  GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList as any as S.Schema<UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList>;
 
 /** `not_started` until the account applies; `pending_information` while an application waits for answers; `in_review` once submitted; then `approved` or `denied`. */
 export type UpdateAccountPreferencesResponseAdsCertificationsItemStatus =

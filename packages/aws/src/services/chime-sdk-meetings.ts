@@ -522,7 +522,7 @@ export const CreateMeetingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeetingResponse" }) as any as S.Schema<CreateMeetingResponse>;
 export type CreateMeetingWithAttendeesRequestItemList = CreateAttendeeRequestItem[];
 export const CreateMeetingWithAttendeesRequestItemList =
-  /*@__PURE__*/ S.Array(CreateAttendeeRequestItem);
+  CreateAttendeeRequestItemList as any as S.Schema<CreateMeetingWithAttendeesRequestItemList>;
 export interface CreateMeetingWithAttendeesRequest {
   ClientRequestToken: string | redacted.Redacted<string>;
   MediaRegion: string;
@@ -608,9 +608,8 @@ export const DeleteMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMeetingRequest" }) as any as S.Schema<DeleteMeetingRequest>;
 export interface DeleteMeetingResponse {}
-export const DeleteMeetingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeetingResponse",
-}) as any as S.Schema<DeleteMeetingResponse>;
+export const DeleteMeetingResponse =
+  DeleteAttendeeResponse as any as S.Schema<DeleteMeetingResponse>;
 export interface GetAttendeeRequest {
   MeetingId: string;
   AttendeeId: string;
@@ -633,9 +632,7 @@ export const GetAttendeeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAttendeeResponse {
   Attendee?: Attendee;
 }
-export const GetAttendeeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Attendee: S.optional(Attendee) }),
-).annotate({ identifier: "GetAttendeeResponse" }) as any as S.Schema<GetAttendeeResponse>;
+export const GetAttendeeResponse = CreateAttendeeResponse as any as S.Schema<GetAttendeeResponse>;
 export interface GetMeetingRequest {
   MeetingId: string;
 }
@@ -647,9 +644,7 @@ export const GetMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeetingResponse {
   Meeting?: Meeting;
 }
-export const GetMeetingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Meeting: S.optional(Meeting) }),
-).annotate({ identifier: "GetMeetingResponse" }) as any as S.Schema<GetMeetingResponse>;
+export const GetMeetingResponse = CreateMeetingResponse as any as S.Schema<GetMeetingResponse>;
 export type ResultMax = number;
 export interface ListAttendeesRequest {
   MeetingId: string;
@@ -870,11 +865,8 @@ export const StartMeetingTranscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartMeetingTranscriptionRequest",
 }) as any as S.Schema<StartMeetingTranscriptionRequest>;
 export interface StartMeetingTranscriptionResponse {}
-export const StartMeetingTranscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartMeetingTranscriptionResponse",
-}) as any as S.Schema<StartMeetingTranscriptionResponse>;
+export const StartMeetingTranscriptionResponse =
+  BatchUpdateAttendeeCapabilitiesExceptResponse as any as S.Schema<StartMeetingTranscriptionResponse>;
 export interface StopMeetingTranscriptionRequest {
   MeetingId: string;
 }
@@ -893,11 +885,8 @@ export const StopMeetingTranscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopMeetingTranscriptionRequest",
 }) as any as S.Schema<StopMeetingTranscriptionRequest>;
 export interface StopMeetingTranscriptionResponse {}
-export const StopMeetingTranscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopMeetingTranscriptionResponse",
-}) as any as S.Schema<StopMeetingTranscriptionResponse>;
+export const StopMeetingTranscriptionResponse =
+  BatchUpdateAttendeeCapabilitiesExceptResponse as any as S.Schema<StopMeetingTranscriptionResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -915,11 +904,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAttendeeResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TenantIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -937,9 +924,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAttendeeResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAttendeeCapabilitiesRequest {
   MeetingId: string;
   AttendeeId: string;

@@ -333,9 +333,8 @@ export const GetRedirectsResponseBodyCase2RedirectsItem =
 
 export type GetRedirectsResponseBodyCase2RedirectsList =
   Array<GetRedirectsResponseBodyCase1RedirectsItem>;
-export const GetRedirectsResponseBodyCase2RedirectsList = /*@__PURE__*/ S.Array(
-  GetRedirectsResponseBodyCase1RedirectsItem,
-) as any as S.Schema<GetRedirectsResponseBodyCase2RedirectsList>;
+export const GetRedirectsResponseBodyCase2RedirectsList =
+  GetRedirectsResponseBodyCase1RedirectsList as any as S.Schema<GetRedirectsResponseBodyCase2RedirectsList>;
 
 export type GetRedirectsResponseBodyCase2Version = DeleteRedirectsResponseBodyCase0Version;
 export const GetRedirectsResponseBodyCase2Version = DeleteRedirectsResponseBodyCase0Version;
@@ -400,9 +399,8 @@ export const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The redirects to restore. The source of the redirect is used to match the redirect to restore. */
 export type RestoreRedirectsRequestRedirectsList = Array<string>;
-export const RestoreRedirectsRequestRedirectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreRedirectsRequestRedirectsList>;
+export const RestoreRedirectsRequestRedirectsList =
+  DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsRequestRedirectsList>;
 
 export interface RestoreRedirectsRequest {
   projectId: string;
@@ -425,14 +423,12 @@ export const RestoreRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreRedirectsRequest" }) as any as S.Schema<RestoreRedirectsRequest>;
 
 export type RestoreRedirectsResponseFailedToRestoreList = Array<string>;
-export const RestoreRedirectsResponseFailedToRestoreList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreRedirectsResponseFailedToRestoreList>;
+export const RestoreRedirectsResponseFailedToRestoreList =
+  DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsResponseFailedToRestoreList>;
 
 export type RestoreRedirectsResponseRestoredList = Array<string>;
-export const RestoreRedirectsResponseRestoredList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreRedirectsResponseRestoredList>;
+export const RestoreRedirectsResponseRestoredList =
+  DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsResponseRestoredList>;
 
 export type RestoreRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
 export const RestoreRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
@@ -510,12 +506,8 @@ export interface StageRedirectsResponse {
   alias: string | null;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const StageRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.NullOr(S.String),
-    version: DeleteRedirectsResponseBodyCase0Version,
-  }),
-).annotate({ identifier: "StageRedirectsResponse" }) as any as S.Schema<StageRedirectsResponse>;
+export const StageRedirectsResponse =
+  EditRedirectResponse as any as S.Schema<StageRedirectsResponse>;
 
 export type UpdateVersionRequestAction = "promote" | "restore" | "discard";
 export const UpdateVersionRequestAction = S.String;

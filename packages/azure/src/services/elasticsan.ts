@@ -178,16 +178,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateElasticSanResponseTagsMap = { [key: string]: string | undefined };
-export const CreateElasticSanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateElasticSanResponseTagsMap>;
+export const CreateElasticSanResponseTagsMap =
+  CreateElasticSanRequestTagsMap as any as S.Schema<CreateElasticSanResponseTagsMap>;
 
 /** Logical zone for Elastic San resource; example: ["1"]. */
 export type ElasticSanPropertiesAvailabilityZonesList = Array<string>;
-export const ElasticSanPropertiesAvailabilityZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ElasticSanPropertiesAvailabilityZonesList>;
+export const ElasticSanPropertiesAvailabilityZonesList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<ElasticSanPropertiesAvailabilityZonesList>;
 
 /** Provisioning state of the iSCSI Target. */
 export type ProvisioningStates =
@@ -239,9 +236,8 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources private endpoint is mapped */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** Response for PrivateEndpoint connection properties */
 export interface PrivateEndpointConnectionProperties {
@@ -379,9 +375,8 @@ export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).
 
 /** List of resources private endpoint is mapped */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
 
 /** Response for PrivateEndpoint connection properties */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -445,17 +440,8 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Private Endpoint Connection Properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: PrivateEndpointConnectionProperties,
-  }),
-).annotate({
-  identifier: "CreatePrivateEndpointConnectionResponse",
-}) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
+export const CreatePrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
 
 /** This enumerates the possible sources of a volume creation. */
 export type VolumeCreateOption =
@@ -883,9 +869,8 @@ export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Private Endpoint Connections. */
 export type VolumeGroupPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const VolumeGroupPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<VolumeGroupPropertiesPrivateEndpointConnectionsList>;
+export const VolumeGroupPropertiesPrivateEndpointConnectionsList =
+  ElasticSanPropertiesPrivateEndpointConnectionsList as any as S.Schema<VolumeGroupPropertiesPrivateEndpointConnectionsList>;
 
 /** VolumeGroup response properties. */
 export interface VolumeGroupProperties {
@@ -1067,9 +1052,8 @@ export const DeleteElasticSanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteElasticSanRequest" }) as any as S.Schema<DeleteElasticSanRequest>;
 
 export interface DeleteElasticSanResponse {}
-export const DeleteElasticSanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteElasticSanResponse",
-}) as any as S.Schema<DeleteElasticSanResponse>;
+export const DeleteElasticSanResponse =
+  PrivateEndpointInput as any as S.Schema<DeleteElasticSanResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -1142,9 +1126,7 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeResponse",
-}) as any as S.Schema<DeleteVolumeResponse>;
+export const DeleteVolumeResponse = PrivateEndpointInput as any as S.Schema<DeleteVolumeResponse>;
 
 export interface DeleteVolumeGroupRequest {
   /** The ID of the target subscription. */
@@ -1173,9 +1155,8 @@ export const DeleteVolumeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeGroupRequest" }) as any as S.Schema<DeleteVolumeGroupRequest>;
 
 export interface DeleteVolumeGroupResponse {}
-export const DeleteVolumeGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeGroupResponse",
-}) as any as S.Schema<DeleteVolumeGroupResponse>;
+export const DeleteVolumeGroupResponse =
+  PrivateEndpointInput as any as S.Schema<DeleteVolumeGroupResponse>;
 
 export interface DeleteVolumeSnapshotRequest {
   /** The ID of the target subscription. */
@@ -1209,9 +1190,8 @@ export const DeleteVolumeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeSnapshotRequest>;
 
 export interface DeleteVolumeSnapshotResponse {}
-export const DeleteVolumeSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeSnapshotResponse",
-}) as any as S.Schema<DeleteVolumeSnapshotResponse>;
+export const DeleteVolumeSnapshotResponse =
+  PrivateEndpointInput as any as S.Schema<DeleteVolumeSnapshotResponse>;
 
 export interface GetElasticSanRequest {
   /** The ID of the target subscription. */
@@ -1238,10 +1218,8 @@ export const GetElasticSanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetElasticSanResponseTagsMap = { [key: string]: string | undefined };
-export const GetElasticSanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetElasticSanResponseTagsMap>;
+export const GetElasticSanResponseTagsMap =
+  CreateElasticSanRequestTagsMap as any as S.Schema<GetElasticSanResponseTagsMap>;
 
 export interface GetElasticSanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1259,17 +1237,8 @@ export interface GetElasticSanResponse {
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
 }
-export const GetElasticSanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetElasticSanResponseTagsMap),
-    location: S.String,
-    properties: ElasticSanProperties,
-  }),
-).annotate({ identifier: "GetElasticSanResponse" }) as any as S.Schema<GetElasticSanResponse>;
+export const GetElasticSanResponse =
+  CreateElasticSanResponse as any as S.Schema<GetElasticSanResponse>;
 
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -1311,17 +1280,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Private Endpoint Connection Properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: PrivateEndpointConnectionProperties,
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetVolumeRequest {
   /** The ID of the target subscription. */
@@ -1364,15 +1324,7 @@ export interface GetVolumeResponse {
   /** Properties of Volume. */
   properties: VolumeProperties;
 }
-export const GetVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: VolumeProperties,
-  }),
-).annotate({ identifier: "GetVolumeResponse" }) as any as S.Schema<GetVolumeResponse>;
+export const GetVolumeResponse = CreateVolumeResponse as any as S.Schema<GetVolumeResponse>;
 
 export interface GetVolumeGroupRequest {
   /** The ID of the target subscription. */
@@ -1466,17 +1418,8 @@ export interface GetVolumeSnapshotResponse {
   /** Properties of Volume Snapshot. */
   properties: SnapshotProperties;
 }
-export const GetVolumeSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: SnapshotProperties,
-  }),
-).annotate({
-  identifier: "GetVolumeSnapshotResponse",
-}) as any as S.Schema<GetVolumeSnapshotResponse>;
+export const GetVolumeSnapshotResponse =
+  CreateVolumeSnapshotResponse as any as S.Schema<GetVolumeSnapshotResponse>;
 
 export interface ListElasticSanByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1502,10 +1445,8 @@ export const ListElasticSanByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ElasticSanTagsMap = { [key: string]: string | undefined };
-export const ElasticSanTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ElasticSanTagsMap>;
+export const ElasticSanTagsMap =
+  CreateElasticSanRequestTagsMap as any as S.Schema<ElasticSanTagsMap>;
 
 /** Response for ElasticSan request. */
 export interface ElasticSan {
@@ -1524,17 +1465,7 @@ export interface ElasticSan {
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
 }
-export const ElasticSan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ElasticSanTagsMap),
-    location: S.String,
-    properties: ElasticSanProperties,
-  }),
-).annotate({ identifier: "ElasticSan" }) as any as S.Schema<ElasticSan>;
+export const ElasticSan = CreateElasticSanResponse as any as S.Schema<ElasticSan>;
 
 /** The ElasticSan items on this page */
 export type ElasticSanListValueList = Array<ElasticSan>;
@@ -1684,9 +1615,8 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  ElasticSanPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
@@ -1731,15 +1661,13 @@ export const ListPrivateLinkResourceByElasticSanRequest = /*@__PURE__*/ S.suspen
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -1827,15 +1755,13 @@ export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
 export type SkuInformationLocationsList = Array<string>;
-export const SkuInformationLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuInformationLocationsList>;
+export const SkuInformationLocationsList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<SkuInformationLocationsList>;
 
 /** The zones. */
 export type SkuLocationInfoZonesList = Array<string>;
-export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuLocationInfoZonesList>;
+export const SkuLocationInfoZonesList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The location info. */
 export interface SkuLocationInfo {
@@ -1964,15 +1890,7 @@ export interface Volume {
   /** Properties of Volume. */
   properties: VolumeProperties;
 }
-export const Volume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: VolumeProperties,
-  }),
-).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
+export const Volume = CreateVolumeResponse as any as S.Schema<Volume>;
 
 /** The Volume items on this page */
 export type VolumeListValueList = Array<Volume>;
@@ -2034,16 +1952,7 @@ export interface VolumeGroup {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
 }
-export const VolumeGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    identity: S.optional(Identity),
-    properties: S.optional(VolumeGroupProperties),
-  }),
-).annotate({ identifier: "VolumeGroup" }) as any as S.Schema<VolumeGroup>;
+export const VolumeGroup = GetVolumeGroupResponse as any as S.Schema<VolumeGroup>;
 
 /** The VolumeGroup items on this page */
 export type VolumeGroupListValueList = Array<VolumeGroup>;
@@ -2141,9 +2050,8 @@ export const SnapshotList = /*@__PURE__*/ S.suspend(() =>
 
 /** array of DiskSnapshot ARM IDs */
 export type RestoreVolumesPreRequestDiskSnapshotIdsList = Array<string>;
-export const RestoreVolumesPreRequestDiskSnapshotIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreVolumesPreRequestDiskSnapshotIdsList>;
+export const RestoreVolumesPreRequestDiskSnapshotIdsList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<RestoreVolumesPreRequestDiskSnapshotIdsList>;
 
 export interface RestoreVolumesPreRequest {
   /** The ID of the target subscription. */
@@ -2209,10 +2117,8 @@ export const ElasticSanUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Update tags */
 export type UpdateElasticSanRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateElasticSanRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateElasticSanRequestTagsMap>;
+export const UpdateElasticSanRequestTagsMap =
+  CreateElasticSanRequestTagsMap as any as S.Schema<UpdateElasticSanRequestTagsMap>;
 
 export interface UpdateElasticSanRequest {
   /** The ID of the target subscription. */
@@ -2245,10 +2151,8 @@ export const UpdateElasticSanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateElasticSanResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateElasticSanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateElasticSanResponseTagsMap>;
+export const UpdateElasticSanResponseTagsMap =
+  CreateElasticSanRequestTagsMap as any as S.Schema<UpdateElasticSanResponseTagsMap>;
 
 export interface UpdateElasticSanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2266,17 +2170,8 @@ export interface UpdateElasticSanResponse {
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
 }
-export const UpdateElasticSanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateElasticSanResponseTagsMap),
-    location: S.String,
-    properties: ElasticSanProperties,
-  }),
-).annotate({ identifier: "UpdateElasticSanResponse" }) as any as S.Schema<UpdateElasticSanResponse>;
+export const UpdateElasticSanResponse =
+  CreateElasticSanResponse as any as S.Schema<UpdateElasticSanResponse>;
 
 /** Volume response properties. */
 export interface VolumeUpdateProperties {
@@ -2336,15 +2231,7 @@ export interface UpdateVolumeResponse {
   /** Properties of Volume. */
   properties: VolumeProperties;
 }
-export const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: VolumeProperties,
-  }),
-).annotate({ identifier: "UpdateVolumeResponse" }) as any as S.Schema<UpdateVolumeResponse>;
+export const UpdateVolumeResponse = CreateVolumeResponse as any as S.Schema<UpdateVolumeResponse>;
 
 /** VolumeGroup response properties. */
 export type VolumeGroupUpdatePropertiesInput = VolumeGroupPropertiesInput;
@@ -2396,24 +2283,13 @@ export interface UpdateVolumeGroupResponse {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
 }
-export const UpdateVolumeGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    identity: S.optional(Identity),
-    properties: S.optional(VolumeGroupProperties),
-  }),
-).annotate({
-  identifier: "UpdateVolumeGroupResponse",
-}) as any as S.Schema<UpdateVolumeGroupResponse>;
+export const UpdateVolumeGroupResponse =
+  CreateVolumeGroupResponse as any as S.Schema<UpdateVolumeGroupResponse>;
 
 /** array of volume names */
 export type VolumesPreBackupRequestVolumeNamesList = Array<string>;
-export const VolumesPreBackupRequestVolumeNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumesPreBackupRequestVolumeNamesList>;
+export const VolumesPreBackupRequestVolumeNamesList =
+  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<VolumesPreBackupRequestVolumeNamesList>;
 
 export interface VolumesPreBackupRequest {
   /** The ID of the target subscription. */

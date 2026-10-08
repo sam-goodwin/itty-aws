@@ -60,9 +60,7 @@ export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServerRequest" }) as any as S.Schema<StopServerRequest>;
 
 export interface StopServerResponse {}
-export const StopServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServerResponse",
-}) as any as S.Schema<StopServerResponse>;
+export const StopServerResponse = StartServerResponse as any as S.Schema<StopServerResponse>;
 
 export type StartServerError = AzureOpError;
 /** Starts a stopped server. */

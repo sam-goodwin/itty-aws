@@ -219,14 +219,8 @@ export interface UpdateConnectionRecordingPreferencesResponse {
   ClientToken?: string;
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
-export const UpdateConnectionRecordingPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String),
-    ConnectionRecordingPreferences: S.optional(ConnectionRecordingPreferences),
-  }),
-).annotate({
-  identifier: "UpdateConnectionRecordingPreferencesResponse",
-}) as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>;
+export const UpdateConnectionRecordingPreferencesResponse =
+  GetConnectionRecordingPreferencesResponse as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>;
 export type ErrorMessage = string;
 export type DeleteConnectionRecordingPreferencesError =
   | AccessDeniedException

@@ -1088,11 +1088,7 @@ export interface WebMetricsGroup {
   /** The id of the web metrics group */
   id?: string;
 }
-export const WebMetricsGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "WebMetricsGroup" }) as any as S.Schema<WebMetricsGroup>;
+export const WebMetricsGroup = User as any as S.Schema<WebMetricsGroup>;
 
 /** A group of results in an EventReport. In any report, the group_parent field is strictly the same type for all of the groups in any collection. */
 export interface ReportGroup {

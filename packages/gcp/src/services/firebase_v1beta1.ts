@@ -635,12 +635,7 @@ export interface IosAppConfig {
   /** The filename that the configuration artifact for the `IosApp` is typically saved as. For example: `GoogleService-Info.plist` */
   configFilename?: string;
 }
-export const IosAppConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configFileContents: S.optional(S.String),
-    configFilename: S.optional(S.String),
-  }),
-).annotate({ identifier: "IosAppConfig" }) as any as S.Schema<IosAppConfig>;
+export const IosAppConfig = AndroidAppConfig as any as S.Schema<IosAppConfig>;
 
 export interface GetConfigProjectsWebAppsRequest {
   /** The resource name of the WebApp configuration to download, in the format: projects/PROJECT_IDENTIFIER/webApps/APP_ID/config Since an APP_ID is a unique identifier, the Unique Resource from Sub-Collection access pattern may be used here, in the format: projects/-/webApps/APP_ID Refer to the `WebApp` [`name`](../projects.webApps#WebApp.FIELDS.name) field for details about PROJECT_IDENTIFIER and APP_ID values. */

@@ -188,9 +188,8 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 export interface DeleteLoadBalancerResponse {}
-export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLoadBalancerResponse",
-}) as any as S.Schema<DeleteLoadBalancerResponse>;
+export const DeleteLoadBalancerResponse =
+  DeleteBgpPeerResponse as any as S.Schema<DeleteLoadBalancerResponse>;
 
 export interface DeleteServiceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -213,9 +212,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  DeleteBgpPeerResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteStorageClassRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -240,9 +238,8 @@ export const DeleteStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageClassRequest>;
 
 export interface DeleteStorageClassResponse {}
-export const DeleteStorageClassResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStorageClassResponse",
-}) as any as S.Schema<DeleteStorageClassResponse>;
+export const DeleteStorageClassResponse =
+  DeleteBgpPeerResponse as any as S.Schema<DeleteStorageClassResponse>;
 
 export interface GetBgpPeerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -325,9 +322,8 @@ export const AdvertiseMode = S.String;
 
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
 export type LoadBalancerPropertiesBgpPeersList = Array<string>;
-export const LoadBalancerPropertiesBgpPeersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerPropertiesBgpPeersList>;
+export const LoadBalancerPropertiesBgpPeersList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesBgpPeersList>;
 
 /** Details of the LoadBalancer. */
 export interface LoadBalancerProperties {
@@ -456,9 +452,8 @@ export const VolumeExpansion = S.String;
 
 /** Additional mount options */
 export type StorageClassPropertiesMountOptionsList = Array<string>;
-export const StorageClassPropertiesMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageClassPropertiesMountOptionsList>;
+export const StorageClassPropertiesMountOptionsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesMountOptionsList>;
 
 /** Storage class volume binding mode */
 export type VolumeBindingMode = "Immediate" | "WaitForFirstConsumer";
@@ -484,9 +479,8 @@ export const FailoverTier = S.String;
 
 /** Limitations of the storage class */
 export type StorageClassPropertiesLimitationsList = Array<string>;
-export const StorageClassPropertiesLimitationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageClassPropertiesLimitationsList>;
+export const StorageClassPropertiesLimitationsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesLimitationsList>;
 
 /** Performance tier of a storage class */
 export type PerformanceTier = "Undefined" | "Basic" | "Standard" | "Premium" | "Ultra";
@@ -645,15 +639,7 @@ export interface BgpPeer {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
 }
-export const BgpPeer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BgpPeerProperties),
-  }),
-).annotate({ identifier: "BgpPeer" }) as any as S.Schema<BgpPeer>;
+export const BgpPeer = GetBgpPeerResponse as any as S.Schema<BgpPeer>;
 
 /** The BgpPeer items on this page */
 export type BgpPeerListResultValueList = Array<BgpPeer>;
@@ -705,15 +691,7 @@ export interface LoadBalancer {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
 }
-export const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(LoadBalancerProperties),
-  }),
-).annotate({ identifier: "LoadBalancer" }) as any as S.Schema<LoadBalancer>;
+export const LoadBalancer = GetLoadBalancerResponse as any as S.Schema<LoadBalancer>;
 
 /** The LoadBalancer items on this page */
 export type LoadBalancerListResultValueList = Array<LoadBalancer>;
@@ -847,15 +825,7 @@ export interface ServiceResource {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
 }
-export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceProperties),
-  }),
-).annotate({ identifier: "ServiceResource" }) as any as S.Schema<ServiceResource>;
+export const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
 
 /** The ServiceResource items on this page */
 export type ServiceResourceListResultValueList = Array<ServiceResource>;
@@ -909,15 +879,8 @@ export interface StorageClassResource {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
-export const StorageClassResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StorageClassProperties),
-  }),
-).annotate({ identifier: "StorageClassResource" }) as any as S.Schema<StorageClassResource>;
+export const StorageClassResource =
+  GetStorageClassResponse as any as S.Schema<StorageClassResource>;
 
 /** The StorageClassResource items on this page */
 export type StorageClassResourceListResultValueList = Array<StorageClassResource>;
@@ -943,22 +906,18 @@ export const StorageClassResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** IP Range */
 export type LoadBalancerPropertiesInputAddressesList = Array<string>;
-export const LoadBalancerPropertiesInputAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerPropertiesInputAddressesList>;
+export const LoadBalancerPropertiesInputAddressesList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesInputAddressesList>;
 
 /** A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field. */
 export type LoadBalancerPropertiesInputServiceSelectorMap = { [key: string]: string | undefined };
-export const LoadBalancerPropertiesInputServiceSelectorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LoadBalancerPropertiesInputServiceSelectorMap>;
+export const LoadBalancerPropertiesInputServiceSelectorMap =
+  LoadBalancerPropertiesServiceSelectorMap as any as S.Schema<LoadBalancerPropertiesInputServiceSelectorMap>;
 
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
 export type LoadBalancerPropertiesInputBgpPeersList = Array<string>;
-export const LoadBalancerPropertiesInputBgpPeersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerPropertiesInputBgpPeersList>;
+export const LoadBalancerPropertiesInputBgpPeersList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesInputBgpPeersList>;
 
 /** Details of the LoadBalancer. */
 export interface LoadBalancerPropertiesInput {
@@ -1033,9 +992,8 @@ export const LoadBalancersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties for the service resource */
 export interface ServicePropertiesInput {}
-export const ServicePropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ServicePropertiesInput",
-}) as any as S.Schema<ServicePropertiesInput>;
+export const ServicePropertiesInput =
+  DeleteBgpPeerResponse as any as S.Schema<ServicePropertiesInput>;
 
 export interface ServicesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1088,21 +1046,18 @@ export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional mount options */
 export type StorageClassPropertiesInputMountOptionsList = Array<string>;
-export const StorageClassPropertiesInputMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageClassPropertiesInputMountOptionsList>;
+export const StorageClassPropertiesInputMountOptionsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesInputMountOptionsList>;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesInputAccessModesList = Array<AccessMode | (string & {})>;
-export const StorageClassPropertiesInputAccessModesList = /*@__PURE__*/ S.Array(
-  AccessMode,
-) as any as S.Schema<StorageClassPropertiesInputAccessModesList>;
+export const StorageClassPropertiesInputAccessModesList =
+  StorageClassPropertiesAccessModesList as any as S.Schema<StorageClassPropertiesInputAccessModesList>;
 
 /** Limitations of the storage class */
 export type StorageClassPropertiesInputLimitationsList = Array<string>;
-export const StorageClassPropertiesInputLimitationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageClassPropertiesInputLimitationsList>;
+export const StorageClassPropertiesInputLimitationsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesInputLimitationsList>;
 
 /** Details of the StorageClass StorageClass. */
 export interface StorageClassPropertiesInput {
@@ -1198,21 +1153,18 @@ export const StorageClassCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional mount options */
 export type StorageClassPropertiesUpdateMountOptionsList = Array<string>;
-export const StorageClassPropertiesUpdateMountOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageClassPropertiesUpdateMountOptionsList>;
+export const StorageClassPropertiesUpdateMountOptionsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesUpdateMountOptionsList>;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesUpdateAccessModesList = Array<AccessMode | (string & {})>;
-export const StorageClassPropertiesUpdateAccessModesList = /*@__PURE__*/ S.Array(
-  AccessMode,
-) as any as S.Schema<StorageClassPropertiesUpdateAccessModesList>;
+export const StorageClassPropertiesUpdateAccessModesList =
+  StorageClassPropertiesAccessModesList as any as S.Schema<StorageClassPropertiesUpdateAccessModesList>;
 
 /** Limitations of the storage class */
 export type StorageClassPropertiesUpdateLimitationsList = Array<string>;
-export const StorageClassPropertiesUpdateLimitationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StorageClassPropertiesUpdateLimitationsList>;
+export const StorageClassPropertiesUpdateLimitationsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesUpdateLimitationsList>;
 
 /** The model for update a storageClass */
 export interface StorageClassTypePropertiesUpdate {
@@ -1334,17 +1286,8 @@ export interface UpdateStorageClassResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
-export const UpdateStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StorageClassProperties),
-  }),
-).annotate({
-  identifier: "UpdateStorageClassResponse",
-}) as any as S.Schema<UpdateStorageClassResponse>;
+export const UpdateStorageClassResponse =
+  StorageClassCreateOrUpdateResponse as any as S.Schema<UpdateStorageClassResponse>;
 
 export type BgpPeersCreateOrUpdateError = AzureOpError;
 /** Create a BgpPeer */

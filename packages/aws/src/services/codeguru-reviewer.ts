@@ -555,11 +555,8 @@ export interface DescribeRepositoryAssociationResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-export const DescribeRepositoryAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RepositoryAssociation: S.optional(RepositoryAssociation), Tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "DescribeRepositoryAssociationResponse",
-}) as any as S.Schema<DescribeRepositoryAssociationResponse>;
+export const DescribeRepositoryAssociationResponse =
+  AssociateRepositoryResponse as any as S.Schema<DescribeRepositoryAssociationResponse>;
 export interface DisassociateRepositoryRequest {
   AssociationArn: string;
 }
@@ -581,11 +578,8 @@ export interface DisassociateRepositoryResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-export const DisassociateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RepositoryAssociation: S.optional(RepositoryAssociation), Tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "DisassociateRepositoryResponse",
-}) as any as S.Schema<DisassociateRepositoryResponse>;
+export const DisassociateRepositoryResponse =
+  AssociateRepositoryResponse as any as S.Schema<DisassociateRepositoryResponse>;
 export type ProviderTypes = ProviderType[];
 export const ProviderTypes = /*@__PURE__*/ S.Array(ProviderType);
 export type JobStates = JobState[];
@@ -617,13 +611,7 @@ export interface MetricsSummary {
   SuppressedLinesOfCodeCount?: number;
   FindingsCount?: number;
 }
-export const MetricsSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MeteredLinesOfCodeCount: S.optional(S.Number),
-    SuppressedLinesOfCodeCount: S.optional(S.Number),
-    FindingsCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MetricsSummary" }) as any as S.Schema<MetricsSummary>;
+export const MetricsSummary = Metrics as any as S.Schema<MetricsSummary>;
 export interface CodeReviewSummary {
   Name?: string;
   CodeReviewArn?: string;
@@ -668,9 +656,9 @@ export const ListCodeReviewsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCodeReviewsResponse" }) as any as S.Schema<ListCodeReviewsResponse>;
 export type MaxResults = number;
 export type UserIds = string[];
-export const UserIds = /*@__PURE__*/ S.Array(S.String);
+export const UserIds = RepositoryNames as any as S.Schema<UserIds>;
 export type RecommendationIds = string[];
-export const RecommendationIds = /*@__PURE__*/ S.Array(S.String);
+export const RecommendationIds = RepositoryNames as any as S.Schema<RecommendationIds>;
 export interface ListRecommendationFeedbackRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -774,7 +762,7 @@ export type ShortDescription = string;
 export type LongDescription = string;
 export type RuleTag = string;
 export type RuleTags = string[];
-export const RuleTags = /*@__PURE__*/ S.Array(S.String);
+export const RuleTags = RepositoryNames as any as S.Schema<RuleTags>;
 export interface RuleMetadata {
   RuleId?: string;
   RuleName?: string;
@@ -833,9 +821,9 @@ export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type RepositoryAssociationStates = RepositoryAssociationState[];
 export const RepositoryAssociationStates = /*@__PURE__*/ S.Array(RepositoryAssociationState);
 export type Names = string[];
-export const Names = /*@__PURE__*/ S.Array(S.String);
+export const Names = RepositoryNames as any as S.Schema<Names>;
 export type Owners = string[];
-export const Owners = /*@__PURE__*/ S.Array(S.String);
+export const Owners = RepositoryNames as any as S.Schema<Owners>;
 export interface ListRepositoryAssociationsRequest {
   ProviderTypes?: ProviderType[];
   States?: RepositoryAssociationState[];
@@ -944,7 +932,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = RepositoryNames as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   TagKeys: string[];
@@ -958,9 +946,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type AssociateRepositoryError =
   | AccessDeniedException

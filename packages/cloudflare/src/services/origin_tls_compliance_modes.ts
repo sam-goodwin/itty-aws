@@ -110,9 +110,7 @@ export const GetOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOriginTlsComplianceModeResponse>;
 
 export type EditRequestValueList = Array<string>;
-export const EditRequestValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestValueList>;
+export const EditRequestValueList = GetResponseValueList as any as S.Schema<EditRequestValueList>;
 
 export interface PatchOriginTlsComplianceModeRequest {
   /** Identifier. */
@@ -141,9 +139,7 @@ export type EditResponseId = "origin_tls_compliance_modes";
 export const EditResponseId = S.String;
 
 export type EditResponseValueList = Array<string>;
-export const EditResponseValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseValueList>;
+export const EditResponseValueList = GetResponseValueList as any as S.Schema<EditResponseValueList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchOriginTlsComplianceModeResponse {
@@ -168,9 +164,8 @@ export const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PatchOriginTlsComplianceModeResponse>;
 
 export type UpdateRequestValueList = Array<string>;
-export const UpdateRequestValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestValueList>;
+export const UpdateRequestValueList =
+  GetResponseValueList as any as S.Schema<UpdateRequestValueList>;
 
 export interface PutOriginTlsComplianceModeRequest {
   /** Identifier. */
@@ -199,9 +194,8 @@ export type UpdateResponseId = "origin_tls_compliance_modes";
 export const UpdateResponseId = S.String;
 
 export type UpdateResponseValueList = Array<string>;
-export const UpdateResponseValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseValueList>;
+export const UpdateResponseValueList =
+  GetResponseValueList as any as S.Schema<UpdateResponseValueList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutOriginTlsComplianceModeResponse {

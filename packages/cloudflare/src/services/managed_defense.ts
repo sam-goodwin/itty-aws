@@ -217,9 +217,8 @@ export const CreateVulnerabilityDiscoveryScanRequestReposList = /*@__PURE__*/ S.
 ) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequestReposList>;
 
 export type CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList = Array<string>;
-export const CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList>;
+export const CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList =
+  CreateVulnerabilityDiscoveryScanRequestReposList as any as S.Schema<CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList>;
 
 export type CreateVulnerabilityDiscoveryScanRequestRepoHostsMap = {
   [key: string]: CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList | undefined;
@@ -488,9 +487,7 @@ export const GetVulnerabilityDiscoveryReportResponseReportFindingsItemSeverity =
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList =
   Array<string>;
 export const GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList>;
 
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryState =
   | "no_route"
@@ -839,9 +836,7 @@ export const GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp =
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList =
   Array<string>;
 export const GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList>;
 
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetKind =
   | "worker"
@@ -1120,9 +1115,8 @@ export const GetVulnerabilityDiscoveryReportResponseReportExternalLinksList = /*
 ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportExternalLinksList>;
 
 export type GetVulnerabilityDiscoveryReportResponseReportLimitationsList = Array<string>;
-export const GetVulnerabilityDiscoveryReportResponseReportLimitationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportLimitationsList>;
+export const GetVulnerabilityDiscoveryReportResponseReportLimitationsList =
+  CreateVulnerabilityDiscoveryScanRequestReposList as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportLimitationsList>;
 
 export interface GetVulnerabilityDiscoveryReportResponseReport {
   findings: GetVulnerabilityDiscoveryReportResponseReportFindingsList;
@@ -1822,9 +1816,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportOverallSeverity =
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList =
   Array<string>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemLocation =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemLocation;
@@ -1839,9 +1831,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemF
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemRemediation =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemRemediation;
@@ -1860,9 +1850,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemF
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList =
   Array<string>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryState =
   | "no_route"
@@ -1897,9 +1885,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemF
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadAction =
   | "block"
@@ -2018,9 +2004,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemF
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofMethod =
   | "structural"
@@ -2142,9 +2126,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemT
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem;
@@ -2154,9 +2136,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemT
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList>;
 
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttp {
   errorPaths: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList;
@@ -2184,9 +2164,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemT
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList =
   Array<string>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetKind =
   | "worker"
@@ -2230,9 +2208,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemT
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList>;
 
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItem {
   id: string;
@@ -2287,9 +2263,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemT
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemRiskLabelsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemRiskLabelsList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemRiskLabelsList>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemRiskLabelsList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemPerformance =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance;
@@ -2305,33 +2279,12 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   performance?: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance | null;
 }
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      endpoint: S.String,
-      host: S.String,
-      method: S.String,
-      riskLabels:
-        VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemRiskLabelsList.pipe(
-          T.Body("risk_labels"),
-        ),
-      performance: S.optional(
-        S.NullOr(
-          GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItem",
-  }) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItem>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItem as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItem>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList =
   Array<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList =
-  /*@__PURE__*/ S.Array(
-    VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem;
@@ -2341,9 +2294,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemT
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem;
@@ -2353,9 +2304,7 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemT
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList>;
+  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList>;
 
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssets {
   operations: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList;
@@ -2409,16 +2358,12 @@ export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemE
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList =
-  /*@__PURE__*/ S.Array(
-    GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList>;
 
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList =
   Array<string>;
 export const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList>;
+  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList>;
 
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItem {
   findings: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsList;

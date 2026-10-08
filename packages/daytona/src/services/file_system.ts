@@ -40,9 +40,7 @@ export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFileRequest" }) as any as S.Schema<DeleteFileRequest>;
 
 export interface DeleteFileResponse {}
-export const DeleteFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFileResponse",
-}) as any as S.Schema<DeleteFileResponse>;
+export const DeleteFileResponse = CreateFolderResponse as any as S.Schema<DeleteFileResponse>;
 
 export interface DownloadFileRequest {
   /** File path to download */
@@ -193,14 +191,11 @@ export const MoveFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveFileRequest" }) as any as S.Schema<MoveFileRequest>;
 
 export interface MoveFileResponse {}
-export const MoveFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MoveFileResponse",
-}) as any as S.Schema<MoveFileResponse>;
+export const MoveFileResponse = CreateFolderResponse as any as S.Schema<MoveFileResponse>;
 
 export type ReplaceInFilesRequestFilesList = Array<string>;
-export const ReplaceInFilesRequestFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplaceInFilesRequestFilesList>;
+export const ReplaceInFilesRequestFilesList =
+  DownloadFilesRequestPathsList as any as S.Schema<ReplaceInFilesRequestFilesList>;
 
 export interface ReplaceInFilesRequest {
   files: ReplaceInFilesRequestFilesList;
@@ -252,9 +247,8 @@ export const SearchFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFilesRequest" }) as any as S.Schema<SearchFilesRequest>;
 
 export type SearchFilesResponseFilesList = Array<string>;
-export const SearchFilesResponseFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchFilesResponseFilesList>;
+export const SearchFilesResponseFilesList =
+  DownloadFilesRequestPathsList as any as S.Schema<SearchFilesResponseFilesList>;
 
 export interface SearchFilesResponse {
   files: SearchFilesResponseFilesList;
@@ -287,9 +281,8 @@ export const SetFilePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetFilePermissionsRequest>;
 
 export interface SetFilePermissionsResponse {}
-export const SetFilePermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetFilePermissionsResponse",
-}) as any as S.Schema<SetFilePermissionsResponse>;
+export const SetFilePermissionsResponse =
+  CreateFolderResponse as any as S.Schema<SetFilePermissionsResponse>;
 
 export interface UploadFileRequest {
   /** Destination path for the uploaded file */
@@ -320,9 +313,7 @@ export const UploadFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadFilesRequest" }) as any as S.Schema<UploadFilesRequest>;
 
 export interface UploadFilesResponse {}
-export const UploadFilesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadFilesResponse",
-}) as any as S.Schema<UploadFilesResponse>;
+export const UploadFilesResponse = CreateFolderResponse as any as S.Schema<UploadFilesResponse>;
 
 export type CreateFolderError = DaytonaOpError;
 /** Create a folder Create a folder with the specified path and optional permissions */

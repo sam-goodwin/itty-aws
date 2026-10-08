@@ -566,9 +566,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** BestEffort tier definition. */
 export interface BestEffort {}
-export const BestEffort = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BestEffort",
-}) as any as S.Schema<BestEffort>;
+export const BestEffort = Empty as any as S.Schema<BestEffort>;
 
 /** Defines the maximum lifetime of the requested resource. */
 export interface RunDuration {

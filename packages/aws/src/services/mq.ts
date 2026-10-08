@@ -516,9 +516,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResponse {}
-export const CreateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateUserResponse",
-}) as any as S.Schema<CreateUserResponse>;
+export const CreateUserResponse = CreateTagsResponse as any as S.Schema<CreateUserResponse>;
 export interface DeleteBrokerRequest {
   BrokerId: string;
 }
@@ -587,9 +585,7 @@ export const DeleteTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTagsRequest" }) as any as S.Schema<DeleteTagsRequest>;
 export interface DeleteTagsResponse {}
-export const DeleteTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagsResponse",
-}) as any as S.Schema<DeleteTagsResponse>;
+export const DeleteTagsResponse = CreateTagsResponse as any as S.Schema<DeleteTagsResponse>;
 export interface DeleteUserRequest {
   BrokerId: string;
   Username: string;
@@ -610,9 +606,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = CreateTagsResponse as any as S.Schema<DeleteUserResponse>;
 export interface DescribeBrokerRequest {
   BrokerId: string;
 }
@@ -722,11 +716,7 @@ export interface PendingLogs {
   Audit?: boolean;
   General?: boolean;
 }
-export const PendingLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Audit: S.optional(S.Boolean), General: S.optional(S.Boolean) }).pipe(
-    S.encodeKeys({ Audit: "audit", General: "general" }),
-  ),
-).annotate({ identifier: "PendingLogs" }) as any as S.Schema<PendingLogs>;
+export const PendingLogs = Logs as any as S.Schema<PendingLogs>;
 export interface LogsSummary {
   Audit?: boolean;
   AuditLogGroup?: string;
@@ -1019,11 +1009,10 @@ export const DescribeBrokerInstanceOptionsRequest = /*@__PURE__*/ S.suspend(() =
 export interface AvailabilityZone {
   Name?: string;
 }
-export const AvailabilityZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }).pipe(S.encodeKeys({ Name: "name" })),
-).annotate({ identifier: "AvailabilityZone" }) as any as S.Schema<AvailabilityZone>;
+export const AvailabilityZone = EngineVersion as any as S.Schema<AvailabilityZone>;
 export type __listOfAvailabilityZone = AvailabilityZone[];
-export const __listOfAvailabilityZone = /*@__PURE__*/ S.Array(AvailabilityZone);
+export const __listOfAvailabilityZone =
+  __listOfEngineVersion as any as S.Schema<__listOfAvailabilityZone>;
 export type __listOfDeploymentMode = DeploymentMode[];
 export const __listOfDeploymentMode = /*@__PURE__*/ S.Array(DeploymentMode);
 export interface BrokerInstanceOption {
@@ -1614,9 +1603,7 @@ export const PromoteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PromoteResponse {
   BrokerId?: string;
 }
-export const PromoteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BrokerId: S.optional(S.String) }).pipe(S.encodeKeys({ BrokerId: "brokerId" })),
-).annotate({ identifier: "PromoteResponse" }) as any as S.Schema<PromoteResponse>;
+export const PromoteResponse = DeleteBrokerResponse as any as S.Schema<PromoteResponse>;
 export interface RebootBrokerRequest {
   BrokerId: string;
 }
@@ -1633,9 +1620,7 @@ export const RebootBrokerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RebootBrokerRequest" }) as any as S.Schema<RebootBrokerRequest>;
 export interface RebootBrokerResponse {}
-export const RebootBrokerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RebootBrokerResponse",
-}) as any as S.Schema<RebootBrokerResponse>;
+export const RebootBrokerResponse = CreateTagsResponse as any as S.Schema<RebootBrokerResponse>;
 export interface UpdateBrokerRequest {
   AuthenticationStrategy?: AuthenticationStrategy;
   AutoMinorVersionUpgrade?: boolean;
@@ -1871,9 +1856,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {}
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateUserResponse",
-}) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = CreateTagsResponse as any as S.Schema<UpdateUserResponse>;
 export interface ResourceShareError {
   ErrorCode?: string;
   ResourceShareArn?: string;

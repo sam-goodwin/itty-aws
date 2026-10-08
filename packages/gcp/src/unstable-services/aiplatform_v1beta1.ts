@@ -152,9 +152,7 @@ export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksReq
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksResponse {}
 export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksResponse>;
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -165,29 +163,11 @@ export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1Task
   name: string;
 }
 export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      historyLength: S.optional(S.String.pipe(T.Query())),
-      a2aEndpoint: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}/a2a/{+a2aEndpoint}",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsRequest",
-  }) as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsRequest>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsRequest as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsRequest>;
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsResponse {}
 export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsResponse>;
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -217,10 +197,7 @@ export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisi
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse {}
 export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -250,10 +227,7 @@ export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisi
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse {}
 export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse>;
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -283,10 +257,7 @@ export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisi
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse {}
 export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -316,10 +287,7 @@ export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisi
 
 export interface A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse {}
 export const A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse>;
 
 export interface A2aGetReasoningEngineReasoningEnginesA2aTasksRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -379,9 +347,7 @@ export const A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfig
 
 export interface A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigsResponse {}
 export const A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigsResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigsResponse>;
 
 export interface A2aGetReasoningEngineReasoningEnginesA2aV1TasksRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -408,11 +374,8 @@ export const A2aGetReasoningEngineReasoningEnginesA2aV1TasksRequest = /*@__PURE_
 }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesA2aV1TasksRequest>;
 
 export interface A2aGetReasoningEngineReasoningEnginesA2aV1TasksResponse {}
-export const A2aGetReasoningEngineReasoningEnginesA2aV1TasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "A2aGetReasoningEngineReasoningEnginesA2aV1TasksResponse",
-}) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesA2aV1TasksResponse>;
+export const A2aGetReasoningEngineReasoningEnginesA2aV1TasksResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<A2aGetReasoningEngineReasoningEnginesA2aV1TasksResponse>;
 
 export interface A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -441,9 +404,7 @@ export const A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConf
 
 export interface A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsResponse {}
 export const A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsResponse>;
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -472,9 +433,7 @@ export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksReques
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksResponse {}
 export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -504,10 +463,7 @@ export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNo
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse {}
 export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsResponse>;
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -536,9 +492,7 @@ export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksRequ
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksResponse {}
 export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -549,29 +503,11 @@ export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1Tasks
   historyLength?: string;
 }
 export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      a2aEndpoint: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      historyLength: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}/a2a/{+a2aEndpoint}",
-        baseUrl: "https://aiplatform.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest",
-  }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsRequest as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest>;
 
 export interface A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse {}
 export const A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse",
-  }) as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsResponse>;
 
 /** Request message for ModelGardenService.AcceptPublisherModelEula. */
 export interface GoogleCloudAiplatformV1beta1AcceptPublisherModelEulaRequest {
@@ -759,9 +695,7 @@ export const AddContextArtifactsAndExecutionsProjectsLocationsMetadataStoresCont
 /** Response message for MetadataService.AddContextArtifactsAndExecutions. */
 export interface GoogleCloudAiplatformV1beta1AddContextArtifactsAndExecutionsResponse {}
 export const GoogleCloudAiplatformV1beta1AddContextArtifactsAndExecutionsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1AddContextArtifactsAndExecutionsResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1AddContextArtifactsAndExecutionsResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1AddContextArtifactsAndExecutionsResponse>;
 
 /** Request message for MetadataService.AddContextChildren. */
 export interface GoogleCloudAiplatformV1beta1AddContextChildrenRequest {
@@ -800,11 +734,8 @@ export const AddContextChildrenProjectsLocationsMetadataStoresContextsRequest =
 
 /** Response message for MetadataService.AddContextChildren. */
 export interface GoogleCloudAiplatformV1beta1AddContextChildrenResponse {}
-export const GoogleCloudAiplatformV1beta1AddContextChildrenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1AddContextChildrenResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1AddContextChildrenResponse>;
+export const GoogleCloudAiplatformV1beta1AddContextChildrenResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1AddContextChildrenResponse>;
 
 export type GoogleCloudAiplatformV1beta1EventTypeEnum = "TYPE_UNSPECIFIED" | "INPUT" | "OUTPUT";
 export const GoogleCloudAiplatformV1beta1EventTypeEnum = S.String;
@@ -879,11 +810,8 @@ export const AddExecutionEventsProjectsLocationsMetadataStoresExecutionsRequest 
 
 /** Response message for MetadataService.AddExecutionEvents. */
 export interface GoogleCloudAiplatformV1beta1AddExecutionEventsResponse {}
-export const GoogleCloudAiplatformV1beta1AddExecutionEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1AddExecutionEventsResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1AddExecutionEventsResponse>;
+export const GoogleCloudAiplatformV1beta1AddExecutionEventsResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1AddExecutionEventsResponse>;
 
 /** A message representing a metric in the measurement. */
 export interface GoogleCloudAiplatformV1beta1MeasurementMetric {
@@ -1722,7 +1650,7 @@ export const GoogleCloudAiplatformV1beta1Segment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1beta1Segment>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** A collection of supporting references for a segment or part of the model's response. */
 export interface GoogleCloudAiplatformV1beta1GroundingSupport {
@@ -2170,11 +2098,8 @@ export const AppendEventProjectsLocationsReasoningEnginesSessionsRequest = /*@__
 
 /** Response message for SessionService.AppendEvent. */
 export interface GoogleCloudAiplatformV1beta1AppendEventResponse {}
-export const GoogleCloudAiplatformV1beta1AppendEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1AppendEventResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1AppendEventResponse>;
+export const GoogleCloudAiplatformV1beta1AppendEventResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1AppendEventResponse>;
 
 export interface AppendEventReasoningEnginesSessionsRequest {
   /** Required. The resource name of the session to append event to. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sessions/{session}` */
@@ -2980,13 +2905,7 @@ export interface GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker 
   modelName?: string;
 }
 export const GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker>;
+  GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService as any as S.Schema<GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker>;
 
 /** Config for ranking and reranking. */
 export interface GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking {
@@ -4140,13 +4059,7 @@ export interface GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManual
   modelName?: string;
 }
 export const GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode>;
+  GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService as any as S.Schema<GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode>;
 
 export type GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingModeModelRoutingPreferenceEnum =
   | "UNKNOWN"
@@ -4925,13 +4838,7 @@ export interface GoogleCloudAiplatformV1beta1AssessDataRequestTuningResourceUsag
   modelName?: string;
 }
 export const GoogleCloudAiplatformV1beta1AssessDataRequestTuningResourceUsageAssessmentConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1AssessDataRequestTuningResourceUsageAssessmentConfig",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1AssessDataRequestTuningResourceUsageAssessmentConfig>;
+  GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService as any as S.Schema<GoogleCloudAiplatformV1beta1AssessDataRequestTuningResourceUsageAssessmentConfig>;
 
 export type GoogleCloudAiplatformV1beta1AssessDataRequestTuningValidationAssessmentConfigDatasetUsageEnum =
   | "DATASET_USAGE_UNSPECIFIED"
@@ -5724,9 +5631,7 @@ export const AuthorizeAccessProjectsLocationsReasoningEnginesSandboxEnvironments
 /** Response message for SandboxEnvironmentExecutionService.AuthorizeSandboxEnvironmentAccess. Intentionally empty: a successful response is the authorization result. */
 export interface GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse {}
 export const GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse>;
 
 export interface AuthorizeAccessReasoningEnginesSandboxEnvironmentsRequest {
   /** Required. The resource name of the sandbox environment to authorize access to. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` */
@@ -6727,14 +6632,8 @@ export interface GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest {
   /** Required. The names of the PipelineJobs to delete. A maximum of 32 PipelineJobs can be deleted in a batch. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}` */
   names?: StringList;
 }
-export const GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest>;
+export const GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest =
+  GoogleCloudAiplatformV1beta1BatchCancelPipelineJobsRequest as any as S.Schema<GoogleCloudAiplatformV1beta1BatchDeletePipelineJobsRequest>;
 
 export interface BatchDeleteProjectsLocationsPipelineJobsRequest {
   /** Required. The name of the PipelineJobs' parent resource. Format: `projects/{project}/locations/{location}` */
@@ -6762,14 +6661,8 @@ export interface GoogleCloudAiplatformV1beta1BatchDeleteRagDataSchemasRequest {
   /** Required. The RagDataSchemas to delete. A maximum of 500 schemas can be deleted in a batch. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragDataSchemas/{rag_data_schema}` */
   names?: StringList;
 }
-export const GoogleCloudAiplatformV1beta1BatchDeleteRagDataSchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1BatchDeleteRagDataSchemasRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1BatchDeleteRagDataSchemasRequest>;
+export const GoogleCloudAiplatformV1beta1BatchDeleteRagDataSchemasRequest =
+  GoogleCloudAiplatformV1beta1BatchCancelPipelineJobsRequest as any as S.Schema<GoogleCloudAiplatformV1beta1BatchDeleteRagDataSchemasRequest>;
 
 export interface BatchDeleteProjectsLocationsRagCorporaRagDataSchemasRequest {
   /** Required. The resource name of the RagCorpus from which to delete the RagDataSchemas. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}` */
@@ -6800,14 +6693,8 @@ export interface GoogleCloudAiplatformV1beta1BatchDeleteRagMetadataRequest {
   /** Required. The RagMetadata to delete. A maximum of 500 rag metadata can be deleted in a batch. */
   names?: StringList;
 }
-export const GoogleCloudAiplatformV1beta1BatchDeleteRagMetadataRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1BatchDeleteRagMetadataRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1BatchDeleteRagMetadataRequest>;
+export const GoogleCloudAiplatformV1beta1BatchDeleteRagMetadataRequest =
+  GoogleCloudAiplatformV1beta1BatchCancelPipelineJobsRequest as any as S.Schema<GoogleCloudAiplatformV1beta1BatchDeleteRagMetadataRequest>;
 
 export interface BatchDeleteProjectsLocationsRagCorporaRagFilesRagMetadataRequest {
   /** Required. The resource name of the RagFile from which to delete the RagMetadata. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}` */
@@ -7873,9 +7760,7 @@ export const CancelAsyncQueryProjectsLocationsReasoningEnginesRequest = /*@__PUR
 /** Response message for ReasoningEngineExecutionService.CancelAsyncQueryReasoningEngine. */
 export interface GoogleCloudAiplatformV1beta1CancelAsyncQueryReasoningEngineResponse {}
 export const GoogleCloudAiplatformV1beta1CancelAsyncQueryReasoningEngineResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1CancelAsyncQueryReasoningEngineResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1CancelAsyncQueryReasoningEngineResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1CancelAsyncQueryReasoningEngineResponse>;
 
 export interface CancelAsyncQueryReasoningEnginesRequest {
   /** Required. The name of the ReasoningEngine resource to use. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -8463,14 +8348,8 @@ export interface GenaiVertexV1beta1SpeechAnnotation {
   /** The speaker to associate with this turn. */
   speaker?: string;
 }
-export const GenaiVertexV1beta1SpeechAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    style: S.optional(S.String),
-    speaker: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GenaiVertexV1beta1SpeechAnnotation",
-}) as any as S.Schema<GenaiVertexV1beta1SpeechAnnotation>;
+export const GenaiVertexV1beta1SpeechAnnotation =
+  GoogleCloudAiplatformV1beta1SpeechMetadata as any as S.Schema<GenaiVertexV1beta1SpeechAnnotation>;
 
 /** Encapsulates a snippet of a user review that answers a question about the features of a specific place in Google Maps. */
 export interface GenaiVertexV1beta1ReviewSnippet {
@@ -8919,14 +8798,8 @@ export interface GenaiVertexV1beta1ExaAISearchConfig {
   /** Optional. This field can be used to pass any parameter from the Exa.ai Search API. */
   customConfig?: DocumentMap;
 }
-export const GenaiVertexV1beta1ExaAISearchConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKey: S.optional(S.String),
-    customConfig: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GenaiVertexV1beta1ExaAISearchConfig",
-}) as any as S.Schema<GenaiVertexV1beta1ExaAISearchConfig>;
+export const GenaiVertexV1beta1ExaAISearchConfig =
+  GenaiVertexV1beta1ParallelAISearchConfig as any as S.Schema<GenaiVertexV1beta1ExaAISearchConfig>;
 
 /** The definition of the Rag resource. */
 export interface GenaiVertexV1beta1RagStoreConfigRagResource {
@@ -8970,13 +8843,7 @@ export interface GenaiVertexV1beta1RagStoreConfigRagRetrievalConfigRankingRankSe
   modelName?: string;
 }
 export const GenaiVertexV1beta1RagStoreConfigRagRetrievalConfigRankingRankService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GenaiVertexV1beta1RagStoreConfigRagRetrievalConfigRankingRankService",
-  }) as any as S.Schema<GenaiVertexV1beta1RagStoreConfigRagRetrievalConfigRankingRankService>;
+  GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService as any as S.Schema<GenaiVertexV1beta1RagStoreConfigRagRetrievalConfigRankingRankService>;
 
 /** Config for ranking and reranking. */
 export interface GenaiVertexV1beta1RagStoreConfigRagRetrievalConfigRanking {
@@ -10131,13 +9998,7 @@ export interface GenaiVertexV1beta1GoogleMapsCallStepGoogleMapsCallStepArguments
   queries?: StringList;
 }
 export const GenaiVertexV1beta1GoogleMapsCallStepGoogleMapsCallStepArguments =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      queries: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GenaiVertexV1beta1GoogleMapsCallStepGoogleMapsCallStepArguments",
-  }) as any as S.Schema<GenaiVertexV1beta1GoogleMapsCallStepGoogleMapsCallStepArguments>;
+  GenaiVertexV1beta1GoogleSearchCallStepGoogleSearchCallStepArguments as any as S.Schema<GenaiVertexV1beta1GoogleMapsCallStepGoogleMapsCallStepArguments>;
 
 /** Google Maps call step. */
 export interface GenaiVertexV1beta1GoogleMapsCallStep {
@@ -12090,11 +11951,8 @@ export const CancelProjectsLocationsReasoningEnginesA2aTasksRequest = /*@__PURE_
 }) as any as S.Schema<CancelProjectsLocationsReasoningEnginesA2aTasksRequest>;
 
 export interface CancelProjectsLocationsReasoningEnginesA2aTasksResponse {}
-export const CancelProjectsLocationsReasoningEnginesA2aTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelProjectsLocationsReasoningEnginesA2aTasksResponse",
-}) as any as S.Schema<CancelProjectsLocationsReasoningEnginesA2aTasksResponse>;
+export const CancelProjectsLocationsReasoningEnginesA2aTasksResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CancelProjectsLocationsReasoningEnginesA2aTasksResponse>;
 
 export interface CancelProjectsLocationsReasoningEnginesA2aV1TasksRequest {
   /** Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send */
@@ -12119,11 +11977,8 @@ export const CancelProjectsLocationsReasoningEnginesA2aV1TasksRequest = /*@__PUR
 }) as any as S.Schema<CancelProjectsLocationsReasoningEnginesA2aV1TasksRequest>;
 
 export interface CancelProjectsLocationsReasoningEnginesA2aV1TasksResponse {}
-export const CancelProjectsLocationsReasoningEnginesA2aV1TasksResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "CancelProjectsLocationsReasoningEnginesA2aV1TasksResponse",
-}) as any as S.Schema<CancelProjectsLocationsReasoningEnginesA2aV1TasksResponse>;
+export const CancelProjectsLocationsReasoningEnginesA2aV1TasksResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<CancelProjectsLocationsReasoningEnginesA2aV1TasksResponse>;
 
 export interface CancelProjectsLocationsReasoningEnginesExamplesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -12225,9 +12080,7 @@ export const CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksRequ
 
 export interface CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse {}
 export const CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse",
-  }) as any as S.Schema<CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
 
 export interface CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksRequest {
   /** Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send */
@@ -12253,9 +12106,7 @@ export const CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksRe
 
 export interface CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse {}
 export const CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse",
-  }) as any as S.Schema<CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<CancelProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
 
 export interface CancelProjectsLocationsReasoningEnginesRuntimeRevisionsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -12741,11 +12592,8 @@ export const CancelReasoningEnginesA2aTasksRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CancelReasoningEnginesA2aTasksRequest>;
 
 export interface CancelReasoningEnginesA2aTasksResponse {}
-export const CancelReasoningEnginesA2aTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelReasoningEnginesA2aTasksResponse",
-}) as any as S.Schema<CancelReasoningEnginesA2aTasksResponse>;
+export const CancelReasoningEnginesA2aTasksResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CancelReasoningEnginesA2aTasksResponse>;
 
 export interface CancelReasoningEnginesA2aV1TasksRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. */
@@ -12769,11 +12617,8 @@ export const CancelReasoningEnginesA2aV1TasksRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CancelReasoningEnginesA2aV1TasksRequest>;
 
 export interface CancelReasoningEnginesA2aV1TasksResponse {}
-export const CancelReasoningEnginesA2aV1TasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelReasoningEnginesA2aV1TasksResponse",
-}) as any as S.Schema<CancelReasoningEnginesA2aV1TasksResponse>;
+export const CancelReasoningEnginesA2aV1TasksResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CancelReasoningEnginesA2aV1TasksResponse>;
 
 export interface CancelReasoningEnginesExamplesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -12869,11 +12714,8 @@ export const CancelReasoningEnginesRuntimeRevisionsA2aTasksRequest = /*@__PURE__
 }) as any as S.Schema<CancelReasoningEnginesRuntimeRevisionsA2aTasksRequest>;
 
 export interface CancelReasoningEnginesRuntimeRevisionsA2aTasksResponse {}
-export const CancelReasoningEnginesRuntimeRevisionsA2aTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelReasoningEnginesRuntimeRevisionsA2aTasksResponse",
-}) as any as S.Schema<CancelReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
+export const CancelReasoningEnginesRuntimeRevisionsA2aTasksResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CancelReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
 
 export interface CancelReasoningEnginesRuntimeRevisionsA2aV1TasksRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. */
@@ -12897,11 +12739,8 @@ export const CancelReasoningEnginesRuntimeRevisionsA2aV1TasksRequest = /*@__PURE
 }) as any as S.Schema<CancelReasoningEnginesRuntimeRevisionsA2aV1TasksRequest>;
 
 export interface CancelReasoningEnginesRuntimeRevisionsA2aV1TasksResponse {}
-export const CancelReasoningEnginesRuntimeRevisionsA2aV1TasksResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "CancelReasoningEnginesRuntimeRevisionsA2aV1TasksResponse",
-}) as any as S.Schema<CancelReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
+export const CancelReasoningEnginesRuntimeRevisionsA2aV1TasksResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<CancelReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
 
 export interface CancelReasoningEnginesRuntimeRevisionsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -13274,11 +13113,8 @@ export const CardProjectsLocationsReasoningEnginesA2aRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CardProjectsLocationsReasoningEnginesA2aRequest>;
 
 export interface CardProjectsLocationsReasoningEnginesA2aResponse {}
-export const CardProjectsLocationsReasoningEnginesA2aResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CardProjectsLocationsReasoningEnginesA2aResponse",
-}) as any as S.Schema<CardProjectsLocationsReasoningEnginesA2aResponse>;
+export const CardProjectsLocationsReasoningEnginesA2aResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CardProjectsLocationsReasoningEnginesA2aResponse>;
 
 export interface CardProjectsLocationsReasoningEnginesA2aV1Request {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -13305,11 +13141,8 @@ export const CardProjectsLocationsReasoningEnginesA2aV1Request = /*@__PURE__*/ S
 }) as any as S.Schema<CardProjectsLocationsReasoningEnginesA2aV1Request>;
 
 export interface CardProjectsLocationsReasoningEnginesA2aV1Response {}
-export const CardProjectsLocationsReasoningEnginesA2aV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CardProjectsLocationsReasoningEnginesA2aV1Response",
-}) as any as S.Schema<CardProjectsLocationsReasoningEnginesA2aV1Response>;
+export const CardProjectsLocationsReasoningEnginesA2aV1Response =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CardProjectsLocationsReasoningEnginesA2aV1Response>;
 
 export interface CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -13338,9 +13171,7 @@ export const CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aRequest =
 
 export interface CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse {}
 export const CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse",
-  }) as any as S.Schema<CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse>;
 
 export interface CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Request {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -13369,9 +13200,7 @@ export const CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Request =
 
 export interface CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response {}
 export const CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response",
-  }) as any as S.Schema<CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<CardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response>;
 
 export interface CardReasoningEnginesA2aRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -13427,11 +13256,8 @@ export const CardReasoningEnginesA2aV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CardReasoningEnginesA2aV1Request>;
 
 export interface CardReasoningEnginesA2aV1Response {}
-export const CardReasoningEnginesA2aV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CardReasoningEnginesA2aV1Response",
-}) as any as S.Schema<CardReasoningEnginesA2aV1Response>;
+export const CardReasoningEnginesA2aV1Response =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CardReasoningEnginesA2aV1Response>;
 
 export interface CardReasoningEnginesRuntimeRevisionsA2aRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -13458,11 +13284,8 @@ export const CardReasoningEnginesRuntimeRevisionsA2aRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CardReasoningEnginesRuntimeRevisionsA2aRequest>;
 
 export interface CardReasoningEnginesRuntimeRevisionsA2aResponse {}
-export const CardReasoningEnginesRuntimeRevisionsA2aResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CardReasoningEnginesRuntimeRevisionsA2aResponse",
-}) as any as S.Schema<CardReasoningEnginesRuntimeRevisionsA2aResponse>;
+export const CardReasoningEnginesRuntimeRevisionsA2aResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CardReasoningEnginesRuntimeRevisionsA2aResponse>;
 
 export interface CardReasoningEnginesRuntimeRevisionsA2aV1Request {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -13489,11 +13312,8 @@ export const CardReasoningEnginesRuntimeRevisionsA2aV1Request = /*@__PURE__*/ S.
 }) as any as S.Schema<CardReasoningEnginesRuntimeRevisionsA2aV1Request>;
 
 export interface CardReasoningEnginesRuntimeRevisionsA2aV1Response {}
-export const CardReasoningEnginesRuntimeRevisionsA2aV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CardReasoningEnginesRuntimeRevisionsA2aV1Response",
-}) as any as S.Schema<CardReasoningEnginesRuntimeRevisionsA2aV1Response>;
+export const CardReasoningEnginesRuntimeRevisionsA2aV1Response =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<CardReasoningEnginesRuntimeRevisionsA2aV1Response>;
 
 /** Request message for ModelGardenService.CheckPublisherModelEula. */
 export type GoogleCloudAiplatformV1beta1CheckPublisherModelEulaAcceptanceRequest =
@@ -14949,13 +14769,8 @@ export interface GoogleCloudAiplatformV1beta1ThresholdConfig {
   /** Specify a threshold value that can trigger the alert. If this threshold config is for feature distribution distance: 1. For categorical feature, the distribution distance is calculated by L-inifinity norm. 2. For numerical feature, the distribution distance is calculated by Jensen-Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. */
   value?: number;
 }
-export const GoogleCloudAiplatformV1beta1ThresholdConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ThresholdConfig",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ThresholdConfig>;
+export const GoogleCloudAiplatformV1beta1ThresholdConfig =
+  GoogleCloudAiplatformV1beta1Scalar as any as S.Schema<GoogleCloudAiplatformV1beta1ThresholdConfig>;
 
 export type GoogleCloudAiplatformV1beta1ThresholdConfigMap = {
   [key: string]: GoogleCloudAiplatformV1beta1ThresholdConfig | undefined;
@@ -15251,20 +15066,13 @@ export interface GoogleCloudAiplatformV1beta1ProbeHttpHeader {
   /** The header field value */
   value?: string;
 }
-export const GoogleCloudAiplatformV1beta1ProbeHttpHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ProbeHttpHeader",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ProbeHttpHeader>;
+export const GoogleCloudAiplatformV1beta1ProbeHttpHeader =
+  GoogleCloudAiplatformV1beta1EnvVar as any as S.Schema<GoogleCloudAiplatformV1beta1ProbeHttpHeader>;
 
 export type GoogleCloudAiplatformV1beta1ProbeHttpHeaderList =
   Array<GoogleCloudAiplatformV1beta1ProbeHttpHeader>;
-export const GoogleCloudAiplatformV1beta1ProbeHttpHeaderList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ProbeHttpHeader,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1ProbeHttpHeaderList>;
+export const GoogleCloudAiplatformV1beta1ProbeHttpHeaderList =
+  GoogleCloudAiplatformV1beta1EnvVarList as any as S.Schema<GoogleCloudAiplatformV1beta1ProbeHttpHeaderList>;
 
 /** HttpGetAction describes an action based on HTTP Get requests. */
 export interface GoogleCloudAiplatformV1beta1ProbeHttpGetAction {
@@ -20835,14 +20643,7 @@ export interface GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalPa
   values?: StringList;
 }
 export const GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      values: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition>;
+  GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition as any as S.Schema<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition>;
 
 /** Represents a parameter spec with condition from its parent parameter. */
 export interface GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec {
@@ -21048,13 +20849,7 @@ export interface GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppin
   useElapsedDuration?: boolean;
 }
 export const GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      useElapsedDuration: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec>;
+  GoogleCloudAiplatformV1beta1StudySpecMedianAutomatedStoppingSpec as any as S.Schema<GoogleCloudAiplatformV1beta1StudySpecDecayCurveAutomatedStoppingSpec>;
 
 /** Configuration for ConvexAutomatedStoppingSpec. When there are enough completed trials (configured by min_measurement_count), for pending trials with enough measurements and steps, the policy first computes an overestimate of the objective value at max_num_steps according to the slope of the incomplete objective value curve. No prediction can be made if the curve is completely flat. If the overestimation is worse than the best objective value of the completed trials, this pending trial will be early-stopped, but a last measurement will be added to the pending trial with max_num_steps and predicted objective value from the autoregression model. */
 export interface GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec {
@@ -22483,13 +22278,7 @@ export interface GoogleCloudAiplatformV1beta1ModelMonitoringNotificationSpecEmai
   userEmails?: StringList;
 }
 export const GoogleCloudAiplatformV1beta1ModelMonitoringNotificationSpecEmailConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userEmails: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1ModelMonitoringNotificationSpecEmailConfig",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1ModelMonitoringNotificationSpecEmailConfig>;
+  GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig as any as S.Schema<GoogleCloudAiplatformV1beta1ModelMonitoringNotificationSpecEmailConfig>;
 
 /** Google Cloud Notification Channel config. */
 export interface GoogleCloudAiplatformV1beta1ModelMonitoringNotificationSpecNotificationChannelConfig {
@@ -25535,14 +25324,7 @@ export interface GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpecAg
   agentGateway?: string;
 }
 export const GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      agentGateway: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig>;
+  GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig as any as S.Schema<GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig>;
 
 /** Agent Gateway configuration for a Reasoning Engine deployment. */
 export interface GoogleCloudAiplatformV1beta1ReasoningEngineSpecDeploymentSpecAgentGatewayConfig {
@@ -29478,39 +29260,24 @@ export interface GoogleCloudAiplatformV1beta1ExactMatchMetricValue {
   /** Output only. Exact match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1ExactMatchMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ExactMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ExactMatchMetricValue>;
+export const GoogleCloudAiplatformV1beta1ExactMatchMetricValue =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1ExactMatchMetricValue>;
 
 /** Rouge metric value for an instance. */
 export interface GoogleCloudAiplatformV1beta1RougeMetricValue {
   /** Output only. Rouge score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1RougeMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1RougeMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1RougeMetricValue>;
+export const GoogleCloudAiplatformV1beta1RougeMetricValue =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1RougeMetricValue>;
 
 /** Bleu metric value for an instance. */
 export interface GoogleCloudAiplatformV1beta1BleuMetricValue {
   /** Output only. Bleu score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1BleuMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1BleuMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1BleuMetricValue>;
+export const GoogleCloudAiplatformV1beta1BleuMetricValue =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1BleuMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1AggregationResultAggregationMetricEnum =
   | "AGGREGATION_METRIC_UNSPECIFIED"
@@ -29857,13 +29624,8 @@ export interface GoogleCloudAiplatformV1beta1OutputConfig {
   /** Cloud storage destination for evaluation output. */
   gcsDestination?: GoogleCloudAiplatformV1beta1GcsDestination;
 }
-export const GoogleCloudAiplatformV1beta1OutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsDestination: S.optional(GoogleCloudAiplatformV1beta1GcsDestination),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1OutputConfig",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1OutputConfig>;
+export const GoogleCloudAiplatformV1beta1OutputConfig =
+  GoogleCloudAiplatformV1beta1CsvDestination as any as S.Schema<GoogleCloudAiplatformV1beta1OutputConfig>;
 
 export type GoogleCloudAiplatformV1beta1MetricList = Array<GoogleCloudAiplatformV1beta1Metric>;
 export const GoogleCloudAiplatformV1beta1MetricList = /*@__PURE__*/ S.Array(
@@ -30595,13 +30357,8 @@ export interface GenaiVertexV1beta1InteractionCreatedSseEvent {
   /** Required. Partial interaction resource emitted when the stream is created. */
   interaction?: GenaiVertexV1beta1Interaction;
 }
-export const GenaiVertexV1beta1InteractionCreatedSseEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interaction: S.optional(GenaiVertexV1beta1Interaction),
-  }),
-).annotate({
-  identifier: "GenaiVertexV1beta1InteractionCreatedSseEvent",
-}) as any as S.Schema<GenaiVertexV1beta1InteractionCreatedSseEvent>;
+export const GenaiVertexV1beta1InteractionCreatedSseEvent =
+  GenaiVertexV1beta1InteractionCompletedSseEvent as any as S.Schema<GenaiVertexV1beta1InteractionCreatedSseEvent>;
 
 export interface GenaiVertexV1beta1StepStop {
   /** Model usage stats for this specific step. */
@@ -30849,13 +30606,8 @@ export const GenaiVertexV1beta1GoogleSearchCallContentGoogleSearchCallArguments 
 export interface GenaiVertexV1beta1GoogleSearchCallDelta {
   arguments?: GenaiVertexV1beta1GoogleSearchCallStepGoogleSearchCallStepArguments;
 }
-export const GenaiVertexV1beta1GoogleSearchCallDelta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arguments: S.optional(GenaiVertexV1beta1GoogleSearchCallStepGoogleSearchCallStepArguments),
-  }),
-).annotate({
-  identifier: "GenaiVertexV1beta1GoogleSearchCallDelta",
-}) as any as S.Schema<GenaiVertexV1beta1GoogleSearchCallDelta>;
+export const GenaiVertexV1beta1GoogleSearchCallDelta =
+  GenaiVertexV1beta1GoogleMapsCallStep as any as S.Schema<GenaiVertexV1beta1GoogleSearchCallDelta>;
 
 export type GenaiVertexV1beta1RetrievalCallDeltaRetrievalTypeEnum =
   | "RETRIEVAL_TYPE_UNSPECIFIED"
@@ -30901,13 +30653,8 @@ export const GenaiVertexV1beta1UrlContextCallContentUrlContextCallArguments =
 export interface GenaiVertexV1beta1UrlContextCallDelta {
   arguments?: GenaiVertexV1beta1UrlContextCallStepUrlContextCallStepArguments;
 }
-export const GenaiVertexV1beta1UrlContextCallDelta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arguments: S.optional(GenaiVertexV1beta1UrlContextCallStepUrlContextCallStepArguments),
-  }),
-).annotate({
-  identifier: "GenaiVertexV1beta1UrlContextCallDelta",
-}) as any as S.Schema<GenaiVertexV1beta1UrlContextCallDelta>;
+export const GenaiVertexV1beta1UrlContextCallDelta =
+  GenaiVertexV1beta1UrlContextCallStep as any as S.Schema<GenaiVertexV1beta1UrlContextCallDelta>;
 
 /** The arguments to pass to the Google Maps tool. */
 export type GenaiVertexV1beta1GoogleMapsCallContentGoogleMapsCallArguments =
@@ -31032,14 +30779,8 @@ export interface GenaiVertexV1beta1CodeExecutionResultDelta {
   result?: string;
   isError?: boolean;
 }
-export const GenaiVertexV1beta1CodeExecutionResultDelta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String),
-    isError: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GenaiVertexV1beta1CodeExecutionResultDelta",
-}) as any as S.Schema<GenaiVertexV1beta1CodeExecutionResultDelta>;
+export const GenaiVertexV1beta1CodeExecutionResultDelta =
+  GenaiVertexV1beta1CodeExecutionResultStep as any as S.Schema<GenaiVertexV1beta1CodeExecutionResultDelta>;
 
 export type GenaiVertexV1beta1UrlContextResultContentUrlContextResultStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -31117,9 +30858,7 @@ export const GenaiVertexV1beta1GoogleSearchResultContentGoogleSearchResult =
 export type GenaiVertexV1beta1GoogleSearchResultContentGoogleSearchResultList =
   Array<GenaiVertexV1beta1GoogleSearchResultStepGoogleSearchResultItem>;
 export const GenaiVertexV1beta1GoogleSearchResultContentGoogleSearchResultList =
-  /*@__PURE__*/ S.Array(
-    GenaiVertexV1beta1GoogleSearchResultStepGoogleSearchResultItem,
-  ) as any as S.Schema<GenaiVertexV1beta1GoogleSearchResultContentGoogleSearchResultList>;
+  GenaiVertexV1beta1GoogleSearchResultStepGoogleSearchResultItemList as any as S.Schema<GenaiVertexV1beta1GoogleSearchResultContentGoogleSearchResultList>;
 
 export interface GenaiVertexV1beta1GoogleSearchResultDelta {
   isError?: boolean;
@@ -31213,15 +30952,8 @@ export interface GenaiVertexV1beta1McpServerToolResultDelta {
   name?: string;
   result?: GenaiVertexV1beta1Value;
 }
-export const GenaiVertexV1beta1McpServerToolResultDelta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverName: S.optional(S.String),
-    name: S.optional(S.String),
-    result: S.optional(GenaiVertexV1beta1Value),
-  }),
-).annotate({
-  identifier: "GenaiVertexV1beta1McpServerToolResultDelta",
-}) as any as S.Schema<GenaiVertexV1beta1McpServerToolResultDelta>;
+export const GenaiVertexV1beta1McpServerToolResultDelta =
+  GenaiVertexV1beta1McpServerToolResultStep as any as S.Schema<GenaiVertexV1beta1McpServerToolResultDelta>;
 
 export interface GenaiVertexV1beta1ServerToolResultDelta {
   codeExecutionResult?: GenaiVertexV1beta1CodeExecutionResultDelta;
@@ -33504,11 +33236,8 @@ export const DeleteProjectsLocationsInteractionsRequest = /*@__PURE__*/ S.suspen
 
 /** Response for InteractionService.DeleteInteraction. */
 export interface GenaiVertexV1beta1DeleteInteractionResponse {}
-export const GenaiVertexV1beta1DeleteInteractionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenaiVertexV1beta1DeleteInteractionResponse",
-}) as any as S.Schema<GenaiVertexV1beta1DeleteInteractionResponse>;
+export const GenaiVertexV1beta1DeleteInteractionResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<GenaiVertexV1beta1DeleteInteractionResponse>;
 
 export interface DeleteProjectsLocationsMemoryBanksMemoriesRequest {
   /** Required. The resource name of the Memory to delete. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}` */
@@ -35191,9 +34920,7 @@ export const DeleteProjectsLocationsVoicesRequest = /*@__PURE__*/ S.suspend(() =
 /** Response message for `VoicesService.DeleteVoice`. */
 export interface GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse {}
 export const GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse",
-  }) as any as S.Schema<GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse>;
 
 export interface DeleteRagCorporaOperationsRequest {
   /** The name of the operation resource to be deleted. */
@@ -36323,13 +36050,8 @@ export interface GoogleCloudAiplatformV1beta1Int64Array {
   /** A list of int64 values. */
   values?: StringList;
 }
-export const GoogleCloudAiplatformV1beta1Int64Array = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1Int64Array",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1Int64Array>;
+export const GoogleCloudAiplatformV1beta1Int64Array =
+  GoogleCloudAiplatformV1beta1StringArray as any as S.Schema<GoogleCloudAiplatformV1beta1Int64Array>;
 
 /** Metadata of feature value. */
 export interface GoogleCloudAiplatformV1beta1FeatureValueMetadata {
@@ -37560,15 +37282,8 @@ export interface GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec {
   /** Optional. Whether to use instance.reference to compute question answering relevance. */
   useReference?: boolean;
 }
-export const GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      version: S.optional(S.Number),
-      useReference: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec>;
+export const GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec =
+  GoogleCloudAiplatformV1beta1SummarizationHelpfulnessSpec as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceSpec>;
 
 /** Spec for question answering relevance instance. */
 export interface GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceInstance {
@@ -37659,15 +37374,8 @@ export interface GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec {
   /** Optional. Which version to use for evaluation. */
   version?: number;
 }
-export const GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      useReference: S.optional(S.Boolean),
-      version: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec>;
+export const GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec =
+  GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessSpec as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessSpec>;
 
 /** Spec for question answering helpfulness instance. */
 export interface GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessInstance {
@@ -37815,15 +37523,8 @@ export interface GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec {
   /** Optional. Which version to use for evaluation. */
   version?: number;
 }
-export const GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      useReference: S.optional(S.Boolean),
-      version: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec>;
+export const GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec =
+  GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessSpec as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringQualitySpec>;
 
 /** Spec for question answering quality instance. */
 export interface GoogleCloudAiplatformV1beta1QuestionAnsweringQualityInstance {
@@ -37873,9 +37574,8 @@ export const GoogleCloudAiplatformV1beta1BleuInstance =
 
 export type GoogleCloudAiplatformV1beta1BleuInstanceList =
   Array<GoogleCloudAiplatformV1beta1ToolNameMatchInstance>;
-export const GoogleCloudAiplatformV1beta1BleuInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ToolNameMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1BleuInstanceList>;
+export const GoogleCloudAiplatformV1beta1BleuInstanceList =
+  GoogleCloudAiplatformV1beta1ToolNameMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1BleuInstanceList>;
 
 /** Input for bleu metric. */
 export interface GoogleCloudAiplatformV1beta1BleuInput {
@@ -37901,9 +37601,8 @@ export const GoogleCloudAiplatformV1beta1ExactMatchInstance =
 
 export type GoogleCloudAiplatformV1beta1ExactMatchInstanceList =
   Array<GoogleCloudAiplatformV1beta1ToolNameMatchInstance>;
-export const GoogleCloudAiplatformV1beta1ExactMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ToolNameMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1ExactMatchInstanceList>;
+export const GoogleCloudAiplatformV1beta1ExactMatchInstanceList =
+  GoogleCloudAiplatformV1beta1ToolNameMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1ExactMatchInstanceList>;
 
 /** Input for exact match metric. */
 export interface GoogleCloudAiplatformV1beta1ExactMatchInput {
@@ -38204,9 +37903,8 @@ export const GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstance =
 
 export type GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstanceList =
   Array<GoogleCloudAiplatformV1beta1TrajectoryRecallInstance>;
-export const GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1TrajectoryRecallInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstanceList>;
+export const GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstanceList =
+  GoogleCloudAiplatformV1beta1TrajectoryRecallInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstanceList>;
 
 /** Instances and metric spec for TrajectoryInOrderMatch metric. */
 export interface GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput {
@@ -38215,14 +37913,8 @@ export interface GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput {
   /** Required. Repeated TrajectoryInOrderMatch instance. */
   instances?: GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstanceList;
 }
-export const GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput>;
+export const GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput =
+  GoogleCloudAiplatformV1beta1TrajectoryRecallInput as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchInput>;
 
 /** Spec for tool parameter key match instance. */
 export type GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstance =
@@ -38232,9 +37924,8 @@ export const GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstance =
 
 export type GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstanceList =
   Array<GoogleCloudAiplatformV1beta1ToolParameterKVMatchInstance>;
-export const GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ToolParameterKVMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstanceList>;
+export const GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstanceList =
+  GoogleCloudAiplatformV1beta1ToolParameterKVMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKeyMatchInstanceList>;
 
 /** Spec for tool parameter key match metric. */
 export type GoogleCloudAiplatformV1beta1ToolParameterKeyMatchSpec =
@@ -38354,15 +38045,8 @@ export interface GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec {
   /** Optional. Whether to use instance.reference to compute pairwise summarization quality. */
   useReference?: boolean;
 }
-export const GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      version: S.optional(S.Number),
-      useReference: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec>;
+export const GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec =
+  GoogleCloudAiplatformV1beta1SummarizationHelpfulnessSpec as any as S.Schema<GoogleCloudAiplatformV1beta1PairwiseSummarizationQualitySpec>;
 
 /** Input for pairwise summarization quality metric. */
 export interface GoogleCloudAiplatformV1beta1PairwiseSummarizationQualityInput {
@@ -38575,9 +38259,8 @@ export const GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstance =
 
 export type GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstanceList =
   Array<GoogleCloudAiplatformV1beta1TrajectoryRecallInstance>;
-export const GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1TrajectoryRecallInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstanceList>;
+export const GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstanceList =
+  GoogleCloudAiplatformV1beta1TrajectoryRecallInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstanceList>;
 
 /** Instances and metric spec for TrajectoryPrecision metric. */
 export interface GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput {
@@ -38586,14 +38269,8 @@ export interface GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput {
   /** Required. Repeated TrajectoryPrecision instance. */
   instances?: GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstanceList;
 }
-export const GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest),
-    instances: S.optional(GoogleCloudAiplatformV1beta1TrajectoryPrecisionInstanceList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput>;
+export const GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput =
+  GoogleCloudAiplatformV1beta1TrajectoryRecallInput as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryPrecisionInput>;
 
 /** Spec for TrajectoryExactMatch instance. */
 export type GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstance =
@@ -38603,9 +38280,8 @@ export const GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstance =
 
 export type GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstanceList =
   Array<GoogleCloudAiplatformV1beta1TrajectoryRecallInstance>;
-export const GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1TrajectoryRecallInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstanceList>;
+export const GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstanceList =
+  GoogleCloudAiplatformV1beta1TrajectoryRecallInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryExactMatchInstanceList>;
 
 /** Spec for TrajectoryExactMatch metric - returns 1 if tool calls in the reference trajectory exactly match the predicted trajectory, else 0. */
 export type GoogleCloudAiplatformV1beta1TrajectoryExactMatchSpec =
@@ -38637,9 +38313,8 @@ export const GoogleCloudAiplatformV1beta1ToolCallValidInstance =
 
 export type GoogleCloudAiplatformV1beta1ToolCallValidInstanceList =
   Array<GoogleCloudAiplatformV1beta1ToolNameMatchInstance>;
-export const GoogleCloudAiplatformV1beta1ToolCallValidInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ToolNameMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolCallValidInstanceList>;
+export const GoogleCloudAiplatformV1beta1ToolCallValidInstanceList =
+  GoogleCloudAiplatformV1beta1ToolNameMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1ToolCallValidInstanceList>;
 
 /** Spec for tool call valid metric. */
 export type GoogleCloudAiplatformV1beta1ToolCallValidSpec =
@@ -38654,14 +38329,8 @@ export interface GoogleCloudAiplatformV1beta1ToolCallValidInput {
   /** Required. Spec for tool call valid metric. */
   metricSpec?: GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest;
 }
-export const GoogleCloudAiplatformV1beta1ToolCallValidInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(GoogleCloudAiplatformV1beta1ToolCallValidInstanceList),
-    metricSpec: S.optional(GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ToolCallValidInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolCallValidInput>;
+export const GoogleCloudAiplatformV1beta1ToolCallValidInput =
+  GoogleCloudAiplatformV1beta1ExactMatchInput as any as S.Schema<GoogleCloudAiplatformV1beta1ToolCallValidInput>;
 
 /** Spec for rouge instance. */
 export type GoogleCloudAiplatformV1beta1RougeInstance =
@@ -38671,9 +38340,8 @@ export const GoogleCloudAiplatformV1beta1RougeInstance =
 
 export type GoogleCloudAiplatformV1beta1RougeInstanceList =
   Array<GoogleCloudAiplatformV1beta1ToolParameterKVMatchInstance>;
-export const GoogleCloudAiplatformV1beta1RougeInstanceList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ToolParameterKVMatchInstance,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1RougeInstanceList>;
+export const GoogleCloudAiplatformV1beta1RougeInstanceList =
+  GoogleCloudAiplatformV1beta1ToolParameterKVMatchInstanceList as any as S.Schema<GoogleCloudAiplatformV1beta1RougeInstanceList>;
 
 /** Input for rouge metric. */
 export interface GoogleCloudAiplatformV1beta1RougeInput {
@@ -38708,14 +38376,8 @@ export interface GoogleCloudAiplatformV1beta1SafetyInput {
   /** Required. Safety instance. */
   instance?: GoogleCloudAiplatformV1beta1CoherenceInstance;
 }
-export const GoogleCloudAiplatformV1beta1SafetyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricSpec: S.optional(GoogleCloudAiplatformV1beta1CoherenceSpec),
-    instance: S.optional(GoogleCloudAiplatformV1beta1CoherenceInstance),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1SafetyInput",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1SafetyInput>;
+export const GoogleCloudAiplatformV1beta1SafetyInput =
+  GoogleCloudAiplatformV1beta1CoherenceInput as any as S.Schema<GoogleCloudAiplatformV1beta1SafetyInput>;
 
 /** Spec for TrajectoryAnyOrderMatch metric - returns 1 if all tool calls in the reference trajectory appear in the predicted trajectory in any order, else 0. */
 export type GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchSpec =
@@ -38959,13 +38621,8 @@ export interface GoogleCloudAiplatformV1beta1ToolCallValidMetricValue {
   /** Output only. Tool call valid score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1ToolCallValidMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ToolCallValidMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolCallValidMetricValue>;
+export const GoogleCloudAiplatformV1beta1ToolCallValidMetricValue =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1ToolCallValidMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1ToolCallValidMetricValueList =
   Array<GoogleCloudAiplatformV1beta1ToolCallValidMetricValue>;
@@ -38991,19 +38648,13 @@ export interface GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue {
   /** Output only. Tool name match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue>;
+export const GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1ToolNameMatchMetricValueList =
   Array<GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue>;
-export const GoogleCloudAiplatformV1beta1ToolNameMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ToolNameMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolNameMatchMetricValueList>;
+export const GoogleCloudAiplatformV1beta1ToolNameMatchMetricValueList =
+  GoogleCloudAiplatformV1beta1ToolCallValidMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1ToolNameMatchMetricValueList>;
 
 /** Results for tool name match metric. */
 export interface GoogleCloudAiplatformV1beta1ToolNameMatchResults {
@@ -39076,9 +38727,8 @@ export const GoogleCloudAiplatformV1beta1TrajectorySingleToolUseResults = /*@__P
 
 export type GoogleCloudAiplatformV1beta1ExactMatchMetricValueList =
   Array<GoogleCloudAiplatformV1beta1ExactMatchMetricValue>;
-export const GoogleCloudAiplatformV1beta1ExactMatchMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1ExactMatchMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1ExactMatchMetricValueList>;
+export const GoogleCloudAiplatformV1beta1ExactMatchMetricValueList =
+  GoogleCloudAiplatformV1beta1ToolCallValidMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1ExactMatchMetricValueList>;
 
 /** Results for exact match metric. */
 export interface GoogleCloudAiplatformV1beta1ExactMatchResults {
@@ -39118,14 +38768,8 @@ export interface GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue {
   /** Output only. TrajectoryExactMatch score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      score: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue>;
+export const GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue =
+  GoogleCloudAiplatformV1beta1TrajectoryPrecisionMetricValue as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValueList =
   Array<GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValue>;
@@ -39174,20 +38818,12 @@ export interface GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue 
   score?: number;
 }
 export const GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      score: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue>;
+  GoogleCloudAiplatformV1beta1TrajectorySingleToolUseMetricValue as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValueList =
   Array<GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue>;
 export const GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValue,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValueList>;
+  GoogleCloudAiplatformV1beta1TrajectorySingleToolUseMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchMetricValueList>;
 
 /** Results for TrajectoryAnyOrderMatch metric. */
 export interface GoogleCloudAiplatformV1beta1TrajectoryAnyOrderMatchResults {
@@ -39269,21 +38905,13 @@ export interface GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue {
   /** Output only. Tool parameter key match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      score: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue>;
+export const GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue =
+  GoogleCloudAiplatformV1beta1TrajectoryPrecisionMetricValue as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValueList =
   Array<GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue>;
 export const GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValue,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValueList>;
+  GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKeyMatchMetricValueList>;
 
 /** Results for tool parameter key match metric. */
 export interface GoogleCloudAiplatformV1beta1ToolParameterKeyMatchResults {
@@ -39376,26 +39004,16 @@ export interface GoogleCloudAiplatformV1beta1CometResult {
   /** Output only. Comet score. Range depends on version. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1CometResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1CometResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1CometResult>;
+export const GoogleCloudAiplatformV1beta1CometResult =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1CometResult>;
 
 /** Spec for MetricX result - calculates the MetricX score for the given instance using the version specified in the spec. */
 export interface GoogleCloudAiplatformV1beta1MetricxResult {
   /** Output only. MetricX score. Range depends on version. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1MetricxResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1MetricxResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1MetricxResult>;
+export const GoogleCloudAiplatformV1beta1MetricxResult =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1MetricxResult>;
 
 export type GoogleCloudAiplatformV1beta1PairwiseQuestionAnsweringQualityResultPairwiseChoiceEnum =
   | "PAIRWISE_CHOICE_UNSPECIFIED"
@@ -39484,15 +39102,7 @@ export interface GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessResult 
   explanation?: string;
 }
 export const GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      score: S.optional(S.Number),
-      confidence: S.optional(S.Number),
-      explanation: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessResult",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessResult>;
+  GoogleCloudAiplatformV1beta1QuestionAnsweringHelpfulnessResult as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringCorrectnessResult>;
 
 /** TrajectoryInOrderMatch metric value for an instance. */
 export interface GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue {
@@ -39500,20 +39110,12 @@ export interface GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue {
   score?: number;
 }
 export const GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      score: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue>;
+  GoogleCloudAiplatformV1beta1TrajectorySingleToolUseMetricValue as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValueList =
   Array<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue>;
 export const GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValue,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValueList>;
+  GoogleCloudAiplatformV1beta1TrajectorySingleToolUseMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchMetricValueList>;
 
 /** Results for TrajectoryInOrderMatch metric. */
 export interface GoogleCloudAiplatformV1beta1TrajectoryInOrderMatchResults {
@@ -39555,21 +39157,13 @@ export interface GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue {
   /** Output only. Tool parameter key value match score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      score: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue>;
+export const GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue =
+  GoogleCloudAiplatformV1beta1TrajectoryPrecisionMetricValue as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValueList =
   Array<GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue>;
 export const GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValue,
-  ) as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValueList>;
+  GoogleCloudAiplatformV1beta1TrajectoryExactMatchMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1ToolParameterKVMatchMetricValueList>;
 
 /** Results for tool parameter key value match metric. */
 export interface GoogleCloudAiplatformV1beta1ToolParameterKVMatchResults {
@@ -39607,9 +39201,8 @@ export const GoogleCloudAiplatformV1beta1FluencyResult = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudAiplatformV1beta1RougeMetricValueList =
   Array<GoogleCloudAiplatformV1beta1RougeMetricValue>;
-export const GoogleCloudAiplatformV1beta1RougeMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1RougeMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1RougeMetricValueList>;
+export const GoogleCloudAiplatformV1beta1RougeMetricValueList =
+  GoogleCloudAiplatformV1beta1ToolCallValidMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1RougeMetricValueList>;
 
 /** Results for rouge metric. */
 export interface GoogleCloudAiplatformV1beta1RougeResults {
@@ -39629,19 +39222,13 @@ export interface GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue {
   /** Output only. TrajectoryRecall score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue>;
+export const GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue =
+  GoogleCloudAiplatformV1beta1CustomCodeExecutionResult as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue>;
 
 export type GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValueList =
   Array<GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue>;
-export const GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValueList>;
+export const GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValueList =
+  GoogleCloudAiplatformV1beta1ToolCallValidMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1TrajectoryRecallMetricValueList>;
 
 /** Results for TrajectoryRecall metric. */
 export interface GoogleCloudAiplatformV1beta1TrajectoryRecallResults {
@@ -39667,16 +39254,8 @@ export interface GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult {
   /** Output only. Question Answering Relevance score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      confidence: S.optional(S.Number),
-      explanation: S.optional(S.String),
-      score: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult>;
+export const GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult =
+  GoogleCloudAiplatformV1beta1QuestionAnsweringQualityResult as any as S.Schema<GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult>;
 
 /** Spec for groundedness result. */
 export interface GoogleCloudAiplatformV1beta1GroundednessResult {
@@ -39687,21 +39266,13 @@ export interface GoogleCloudAiplatformV1beta1GroundednessResult {
   /** Output only. Groundedness score. */
   score?: number;
 }
-export const GoogleCloudAiplatformV1beta1GroundednessResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    confidence: S.optional(S.Number),
-    explanation: S.optional(S.String),
-    score: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1GroundednessResult",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1GroundednessResult>;
+export const GoogleCloudAiplatformV1beta1GroundednessResult =
+  GoogleCloudAiplatformV1beta1CoherenceResult as any as S.Schema<GoogleCloudAiplatformV1beta1GroundednessResult>;
 
 export type GoogleCloudAiplatformV1beta1BleuMetricValueList =
   Array<GoogleCloudAiplatformV1beta1BleuMetricValue>;
-export const GoogleCloudAiplatformV1beta1BleuMetricValueList = /*@__PURE__*/ S.Array(
-  GoogleCloudAiplatformV1beta1BleuMetricValue,
-) as any as S.Schema<GoogleCloudAiplatformV1beta1BleuMetricValueList>;
+export const GoogleCloudAiplatformV1beta1BleuMetricValueList =
+  GoogleCloudAiplatformV1beta1ToolCallValidMetricValueList as any as S.Schema<GoogleCloudAiplatformV1beta1BleuMetricValueList>;
 
 /** Results for bleu metric. */
 export interface GoogleCloudAiplatformV1beta1BleuResults {
@@ -40030,13 +39601,7 @@ export interface GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentResponse {
   outputs?: GoogleCloudAiplatformV1beta1ChunkList;
 }
 export const GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      outputs: S.optional(GoogleCloudAiplatformV1beta1ChunkList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentResponse>;
+  GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentResponse as any as S.Schema<GoogleCloudAiplatformV1beta1ExecuteSandboxEnvironmentResponse>;
 
 export interface ExecuteReasoningEnginesSandboxEnvironmentsRequest {
   /** Required. The resource name of the sandbox environment to execute. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` */
@@ -40625,9 +40190,7 @@ export const ExtendedAgentCardProjectsLocationsReasoningEnginesA2aRequest = /*@_
 
 export interface ExtendedAgentCardProjectsLocationsReasoningEnginesA2aResponse {}
 export const ExtendedAgentCardProjectsLocationsReasoningEnginesA2aResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExtendedAgentCardProjectsLocationsReasoningEnginesA2aResponse",
-  }) as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesA2aResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesA2aResponse>;
 
 export interface ExtendedAgentCardProjectsLocationsReasoningEnginesA2aV1Request {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -40656,9 +40219,7 @@ export const ExtendedAgentCardProjectsLocationsReasoningEnginesA2aV1Request =
 
 export interface ExtendedAgentCardProjectsLocationsReasoningEnginesA2aV1Response {}
 export const ExtendedAgentCardProjectsLocationsReasoningEnginesA2aV1Response =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExtendedAgentCardProjectsLocationsReasoningEnginesA2aV1Response",
-  }) as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesA2aV1Response>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesA2aV1Response>;
 
 export interface ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -40687,9 +40248,7 @@ export const ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA
 
 export interface ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse {}
 export const ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse",
-  }) as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse>;
 
 export interface ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Request {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -40718,9 +40277,7 @@ export const ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA
 
 export interface ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response {}
 export const ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response",
-  }) as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<ExtendedAgentCardProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response>;
 
 export interface ExtendedAgentCardReasoningEnginesA2aRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -40747,11 +40304,8 @@ export const ExtendedAgentCardReasoningEnginesA2aRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ExtendedAgentCardReasoningEnginesA2aRequest>;
 
 export interface ExtendedAgentCardReasoningEnginesA2aResponse {}
-export const ExtendedAgentCardReasoningEnginesA2aResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExtendedAgentCardReasoningEnginesA2aResponse",
-}) as any as S.Schema<ExtendedAgentCardReasoningEnginesA2aResponse>;
+export const ExtendedAgentCardReasoningEnginesA2aResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<ExtendedAgentCardReasoningEnginesA2aResponse>;
 
 export interface ExtendedAgentCardReasoningEnginesA2aV1Request {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -40778,11 +40332,8 @@ export const ExtendedAgentCardReasoningEnginesA2aV1Request = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ExtendedAgentCardReasoningEnginesA2aV1Request>;
 
 export interface ExtendedAgentCardReasoningEnginesA2aV1Response {}
-export const ExtendedAgentCardReasoningEnginesA2aV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExtendedAgentCardReasoningEnginesA2aV1Response",
-}) as any as S.Schema<ExtendedAgentCardReasoningEnginesA2aV1Response>;
+export const ExtendedAgentCardReasoningEnginesA2aV1Response =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<ExtendedAgentCardReasoningEnginesA2aV1Response>;
 
 export interface ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -40810,11 +40361,8 @@ export const ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aRequest = /*@__
 }) as any as S.Schema<ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aRequest>;
 
 export interface ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aResponse {}
-export const ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aResponse",
-}) as any as S.Schema<ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aResponse>;
+export const ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aResponse>;
 
 export interface ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aV1Request {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -40843,9 +40391,7 @@ export const ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aV1Request =
 
 export interface ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aV1Response {}
 export const ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aV1Response =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aV1Response",
-  }) as any as S.Schema<ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aV1Response>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<ExtendedAgentCardReasoningEnginesRuntimeRevisionsA2aV1Response>;
 
 export type GoogleCloudAiplatformV1beta1ExamplesArrayFilterArrayOperatorEnum =
   | "ARRAY_OPERATOR_UNSPECIFIED"
@@ -41308,14 +40854,8 @@ export interface GoogleCloudAiplatformV1beta1FindNeighborsRequestQueryRRF {
   /** Required. Users can provide an alpha value to give more weight to dense vs sparse results. For example, if the alpha is 0, we only return sparse and if the alpha is 1, we only return dense. */
   alpha?: number;
 }
-export const GoogleCloudAiplatformV1beta1FindNeighborsRequestQueryRRF = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      alpha: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1FindNeighborsRequestQueryRRF",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1FindNeighborsRequestQueryRRF>;
+export const GoogleCloudAiplatformV1beta1FindNeighborsRequestQueryRRF =
+  GoogleCloudAiplatformV1beta1RagRetrievalConfigHybridSearch as any as S.Schema<GoogleCloudAiplatformV1beta1FindNeighborsRequestQueryRRF>;
 
 /** Restriction of a datapoint which describe its attributes(tokens) from each of several attribute categories(namespaces). */
 export interface GoogleCloudAiplatformV1beta1IndexDatapointRestriction {
@@ -61271,14 +60811,8 @@ export interface GoogleCloudAiplatformV1beta1ListModelVersionsResponse {
   /** A token to retrieve the next page of results. Pass to ListModelVersionsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
-export const GoogleCloudAiplatformV1beta1ListModelVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    models: S.optional(GoogleCloudAiplatformV1beta1ModelList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ListModelVersionsResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ListModelVersionsResponse>;
+export const GoogleCloudAiplatformV1beta1ListModelVersionsResponse =
+  GoogleCloudAiplatformV1beta1ListModelsResponse as any as S.Schema<GoogleCloudAiplatformV1beta1ListModelVersionsResponse>;
 
 /** Request message for VizierService.LookupStudy. */
 export interface GoogleCloudAiplatformV1beta1LookupStudyRequest {
@@ -63322,14 +62856,8 @@ export interface GoogleCloudAiplatformV1beta1PurgeExecutionsRequest {
   /** Optional. Flag to indicate to actually perform the purge. If `force` is set to false, the method will return a sample of Execution names that would be deleted. */
   force?: boolean;
 }
-export const GoogleCloudAiplatformV1beta1PurgeExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String),
-    force: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1PurgeExecutionsRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1PurgeExecutionsRequest>;
+export const GoogleCloudAiplatformV1beta1PurgeExecutionsRequest =
+  GoogleCloudAiplatformV1beta1PurgeArtifactsRequest as any as S.Schema<GoogleCloudAiplatformV1beta1PurgeExecutionsRequest>;
 
 export interface PurgeProjectsLocationsMetadataStoresExecutionsRequest {
   /** Required. The metadata store to purge Executions from. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` */
@@ -63421,9 +62949,7 @@ export const PushNotificationConfigsProjectsLocationsReasoningEnginesA2aTasksReq
 
 export interface PushNotificationConfigsProjectsLocationsReasoningEnginesA2aTasksResponse {}
 export const PushNotificationConfigsProjectsLocationsReasoningEnginesA2aTasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PushNotificationConfigsProjectsLocationsReasoningEnginesA2aTasksResponse",
-  }) as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesA2aTasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesA2aTasksResponse>;
 
 export interface PushNotificationConfigsProjectsLocationsReasoningEnginesA2aV1TasksRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -63452,9 +62978,7 @@ export const PushNotificationConfigsProjectsLocationsReasoningEnginesA2aV1TasksR
 
 export interface PushNotificationConfigsProjectsLocationsReasoningEnginesA2aV1TasksResponse {}
 export const PushNotificationConfigsProjectsLocationsReasoningEnginesA2aV1TasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PushNotificationConfigsProjectsLocationsReasoningEnginesA2aV1TasksResponse",
-  }) as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesA2aV1TasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesA2aV1TasksResponse>;
 
 export interface PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -63484,10 +63008,7 @@ export const PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevi
 
 export interface PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse {}
 export const PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse",
-  }) as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
 
 export interface PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -63517,10 +63038,7 @@ export const PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevi
 
 export interface PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse {}
 export const PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse",
-  }) as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsResponse as any as S.Schema<PushNotificationConfigsProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
 
 export interface PushNotificationConfigsReasoningEnginesA2aTasksRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -63547,11 +63065,8 @@ export const PushNotificationConfigsReasoningEnginesA2aTasksRequest = /*@__PURE_
 }) as any as S.Schema<PushNotificationConfigsReasoningEnginesA2aTasksRequest>;
 
 export interface PushNotificationConfigsReasoningEnginesA2aTasksResponse {}
-export const PushNotificationConfigsReasoningEnginesA2aTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PushNotificationConfigsReasoningEnginesA2aTasksResponse",
-}) as any as S.Schema<PushNotificationConfigsReasoningEnginesA2aTasksResponse>;
+export const PushNotificationConfigsReasoningEnginesA2aTasksResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<PushNotificationConfigsReasoningEnginesA2aTasksResponse>;
 
 export interface PushNotificationConfigsReasoningEnginesA2aV1TasksRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -63579,11 +63094,8 @@ export const PushNotificationConfigsReasoningEnginesA2aV1TasksRequest = /*@__PUR
 }) as any as S.Schema<PushNotificationConfigsReasoningEnginesA2aV1TasksRequest>;
 
 export interface PushNotificationConfigsReasoningEnginesA2aV1TasksResponse {}
-export const PushNotificationConfigsReasoningEnginesA2aV1TasksResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "PushNotificationConfigsReasoningEnginesA2aV1TasksResponse",
-}) as any as S.Schema<PushNotificationConfigsReasoningEnginesA2aV1TasksResponse>;
+export const PushNotificationConfigsReasoningEnginesA2aV1TasksResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<PushNotificationConfigsReasoningEnginesA2aV1TasksResponse>;
 
 export interface PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aTasksRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -63612,9 +63124,7 @@ export const PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aTasksRequ
 
 export interface PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aTasksResponse {}
 export const PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aTasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aTasksResponse",
-  }) as any as S.Schema<PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aTasksResponse>;
 
 export interface PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aV1TasksRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -63643,9 +63153,7 @@ export const PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aV1TasksRe
 
 export interface PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse {}
 export const PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse",
-  }) as any as S.Schema<PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<PushNotificationConfigsReasoningEnginesRuntimeRevisionsA2aV1TasksResponse>;
 
 export interface QueryArtifactLineageSubgraphProjectsLocationsMetadataStoresArtifactsRequest {
   /** Filter specifying the boolean condition for the Artifacts to satisfy in order to be part of the Lineage Subgraph. The syntax to define filter query is based on https://google.aip.dev/160. The supported set of filters include the following: * **Attribute filtering**: For example: `display_name = "test"` Supported fields include: `name`, `display_name`, `uri`, `state`, `schema_title`, `create_time`, and `update_time`. Time fields, such as `create_time` and `update_time`, require values specified in RFC-3339 format. For example: `create_time = "2020-11-19T11:30:00-04:00"` * **Metadata field**: To filter on metadata fields use traversal operation as follows: `metadata..`. For example: `metadata.field_1.number_value = 10.0` In case the field name contains special characters (such as colon), one can embed it inside double quote. For example: `metadata."field:1".number_value = 10.0` Each of the above supported filter types can be combined together using logical operators (`AND` & `OR`). Maximum nested expression depth allowed is 5. For example: `display_name = "test" AND metadata.field1.bool_value = true`. */
@@ -63784,13 +63292,8 @@ export interface GoogleCloudAiplatformV1beta1QueryExtensionRequest {
   /** Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries, this is a repeated field that contains conversation history + latest request. */
   contents?: GoogleCloudAiplatformV1beta1ContentList;
 }
-export const GoogleCloudAiplatformV1beta1QueryExtensionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contents: S.optional(GoogleCloudAiplatformV1beta1ContentList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1QueryExtensionRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1QueryExtensionRequest>;
+export const GoogleCloudAiplatformV1beta1QueryExtensionRequest =
+  GoogleCloudAiplatformV1beta1ContentMapContents as any as S.Schema<GoogleCloudAiplatformV1beta1QueryExtensionRequest>;
 
 export interface QueryProjectsLocationsExtensionsRequest {
   /** Required. Name (identifier) of the extension; Format: `projects/{project}/locations/{location}/extensions/{extension}` */
@@ -63949,13 +63452,8 @@ export interface GoogleCloudAiplatformV1beta1RawPredictRequest {
   /** The prediction input. Supports HTTP headers and arbitrary data payload. A DeployedModel may have an upper limit on the number of instances it supports per request. When this limit it is exceeded for an AutoML model, the RawPredict method returns an error. When this limit is exceeded for a custom-trained model, the behavior varies depending on the model. You can specify the schema for each instance in the predict_schemata.instance_schema_uri field when you create a Model. This schema applies when you deploy the `Model` as a `DeployedModel` to an Endpoint and use the `RawPredict` method. */
   httpBody?: GoogleApiHttpBody;
 }
-export const GoogleCloudAiplatformV1beta1RawPredictRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    httpBody: S.optional(GoogleApiHttpBody),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1RawPredictRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1RawPredictRequest>;
+export const GoogleCloudAiplatformV1beta1RawPredictRequest =
+  GenaiVertexV1beta1CreateInteractionHttpRequest as any as S.Schema<GoogleCloudAiplatformV1beta1RawPredictRequest>;
 
 export interface RawPredictProjectsLocationsEndpointsRequest {
   /** Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
@@ -64645,11 +64143,8 @@ export const RemoveContextChildrenProjectsLocationsMetadataStoresContextsRequest
 
 /** Response message for MetadataService.RemoveContextChildren. */
 export interface GoogleCloudAiplatformV1beta1RemoveContextChildrenResponse {}
-export const GoogleCloudAiplatformV1beta1RemoveContextChildrenResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1RemoveContextChildrenResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1RemoveContextChildrenResponse>;
+export const GoogleCloudAiplatformV1beta1RemoveContextChildrenResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1beta1RemoveContextChildrenResponse>;
 
 /** Request message for IndexService.RemoveDatapoints */
 export interface GoogleCloudAiplatformV1beta1RemoveDatapointsRequest {
@@ -64687,11 +64182,8 @@ export const RemoveDatapointsProjectsLocationsIndexesRequest = /*@__PURE__*/ S.s
 
 /** Response message for IndexService.RemoveDatapoints */
 export interface GoogleCloudAiplatformV1beta1RemoveDatapointsResponse {}
-export const GoogleCloudAiplatformV1beta1RemoveDatapointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1RemoveDatapointsResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1RemoveDatapointsResponse>;
+export const GoogleCloudAiplatformV1beta1RemoveDatapointsResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1RemoveDatapointsResponse>;
 
 /** Request message for ExampleStoreService.RemoveExamples. */
 export interface GoogleCloudAiplatformV1beta1RemoveExamplesRequest {
@@ -64795,11 +64287,8 @@ export const ReportEventProjectsLocationsNotebookExecutionJobsRequest = /*@__PUR
 
 /** Response message for NotebookInternalService.ReportExecutionEvent. */
 export interface GoogleCloudAiplatformV1beta1ReportExecutionEventResponse {}
-export const GoogleCloudAiplatformV1beta1ReportExecutionEventResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1ReportExecutionEventResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1ReportExecutionEventResponse>;
+export const GoogleCloudAiplatformV1beta1ReportExecutionEventResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1beta1ReportExecutionEventResponse>;
 
 export type GoogleCloudAiplatformV1beta1InternalOsServiceStateInstanceServiceStateEnum =
   | "UNKNOWN"
@@ -65740,14 +65229,8 @@ export interface GoogleCloudAiplatformV1beta1SearchFeaturesResponse {
   /** The Features matching the request. Fields returned: * `name` * `description` * `labels` * `create_time` * `update_time` */
   features?: GoogleCloudAiplatformV1beta1FeatureList;
 }
-export const GoogleCloudAiplatformV1beta1SearchFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    features: S.optional(GoogleCloudAiplatformV1beta1FeatureList),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1SearchFeaturesResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1SearchFeaturesResponse>;
+export const GoogleCloudAiplatformV1beta1SearchFeaturesResponse =
+  GoogleCloudAiplatformV1beta1ListFeaturesResponse as any as S.Schema<GoogleCloudAiplatformV1beta1SearchFeaturesResponse>;
 
 export type GoogleCloudAiplatformV1beta1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjectiveTypeEnum =
   | "MODEL_DEPLOYMENT_MONITORING_OBJECTIVE_TYPE_UNSPECIFIED"
@@ -66675,11 +66158,8 @@ export const SendProjectsLocationsReasoningEnginesA2aMessageRequest = /*@__PURE_
 }) as any as S.Schema<SendProjectsLocationsReasoningEnginesA2aMessageRequest>;
 
 export interface SendProjectsLocationsReasoningEnginesA2aMessageResponse {}
-export const SendProjectsLocationsReasoningEnginesA2aMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendProjectsLocationsReasoningEnginesA2aMessageResponse",
-}) as any as S.Schema<SendProjectsLocationsReasoningEnginesA2aMessageResponse>;
+export const SendProjectsLocationsReasoningEnginesA2aMessageResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<SendProjectsLocationsReasoningEnginesA2aMessageResponse>;
 
 export interface SendProjectsLocationsReasoningEnginesA2aV1MessageRequest {
   /** Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send */
@@ -66704,11 +66184,8 @@ export const SendProjectsLocationsReasoningEnginesA2aV1MessageRequest = /*@__PUR
 }) as any as S.Schema<SendProjectsLocationsReasoningEnginesA2aV1MessageRequest>;
 
 export interface SendProjectsLocationsReasoningEnginesA2aV1MessageResponse {}
-export const SendProjectsLocationsReasoningEnginesA2aV1MessageResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "SendProjectsLocationsReasoningEnginesA2aV1MessageResponse",
-}) as any as S.Schema<SendProjectsLocationsReasoningEnginesA2aV1MessageResponse>;
+export const SendProjectsLocationsReasoningEnginesA2aV1MessageResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<SendProjectsLocationsReasoningEnginesA2aV1MessageResponse>;
 
 export interface SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aMessageRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. */
@@ -66734,9 +66211,7 @@ export const SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aMessageRequ
 
 export interface SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aMessageResponse {}
 export const SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aMessageResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aMessageResponse",
-  }) as any as S.Schema<SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aMessageResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aMessageResponse>;
 
 export interface SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1MessageRequest {
   /** Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send */
@@ -66762,9 +66237,7 @@ export const SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1MessageRe
 
 export interface SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1MessageResponse {}
 export const SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1MessageResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1MessageResponse",
-  }) as any as S.Schema<SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1MessageResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<SendProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1MessageResponse>;
 
 export interface SendReasoningEnginesA2aMessageRequest {
   /** Required. The full resource path of the reasoning engine, captured from the URL. */
@@ -66788,11 +66261,8 @@ export const SendReasoningEnginesA2aMessageRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SendReasoningEnginesA2aMessageRequest>;
 
 export interface SendReasoningEnginesA2aMessageResponse {}
-export const SendReasoningEnginesA2aMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendReasoningEnginesA2aMessageResponse",
-}) as any as S.Schema<SendReasoningEnginesA2aMessageResponse>;
+export const SendReasoningEnginesA2aMessageResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<SendReasoningEnginesA2aMessageResponse>;
 
 export interface SendReasoningEnginesA2aV1MessageRequest {
   /** Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send */
@@ -66816,11 +66286,8 @@ export const SendReasoningEnginesA2aV1MessageRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SendReasoningEnginesA2aV1MessageRequest>;
 
 export interface SendReasoningEnginesA2aV1MessageResponse {}
-export const SendReasoningEnginesA2aV1MessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendReasoningEnginesA2aV1MessageResponse",
-}) as any as S.Schema<SendReasoningEnginesA2aV1MessageResponse>;
+export const SendReasoningEnginesA2aV1MessageResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<SendReasoningEnginesA2aV1MessageResponse>;
 
 export interface SendReasoningEnginesRuntimeRevisionsA2aMessageRequest {
   /** Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send */
@@ -66844,11 +66311,8 @@ export const SendReasoningEnginesRuntimeRevisionsA2aMessageRequest = /*@__PURE__
 }) as any as S.Schema<SendReasoningEnginesRuntimeRevisionsA2aMessageRequest>;
 
 export interface SendReasoningEnginesRuntimeRevisionsA2aMessageResponse {}
-export const SendReasoningEnginesRuntimeRevisionsA2aMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendReasoningEnginesRuntimeRevisionsA2aMessageResponse",
-}) as any as S.Schema<SendReasoningEnginesRuntimeRevisionsA2aMessageResponse>;
+export const SendReasoningEnginesRuntimeRevisionsA2aMessageResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<SendReasoningEnginesRuntimeRevisionsA2aMessageResponse>;
 
 export interface SendReasoningEnginesRuntimeRevisionsA2aV1MessageRequest {
   /** Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send */
@@ -66872,11 +66336,8 @@ export const SendReasoningEnginesRuntimeRevisionsA2aV1MessageRequest = /*@__PURE
 }) as any as S.Schema<SendReasoningEnginesRuntimeRevisionsA2aV1MessageRequest>;
 
 export interface SendReasoningEnginesRuntimeRevisionsA2aV1MessageResponse {}
-export const SendReasoningEnginesRuntimeRevisionsA2aV1MessageResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "SendReasoningEnginesRuntimeRevisionsA2aV1MessageResponse",
-}) as any as S.Schema<SendReasoningEnginesRuntimeRevisionsA2aV1MessageResponse>;
+export const SendReasoningEnginesRuntimeRevisionsA2aV1MessageResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<SendReasoningEnginesRuntimeRevisionsA2aV1MessageResponse>;
 
 /** Request message for PredictionService.StreamingPredict. The first message must contain endpoint field and optionally input. The subsequent messages must contain input. */
 export interface GoogleCloudAiplatformV1beta1StreamingPredictRequest {
@@ -66922,14 +66383,8 @@ export interface GoogleCloudAiplatformV1beta1StreamingPredictResponse {
   /** The parameters that govern the prediction. */
   parameters?: GoogleCloudAiplatformV1beta1Tensor;
 }
-export const GoogleCloudAiplatformV1beta1StreamingPredictResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputs: S.optional(GoogleCloudAiplatformV1beta1TensorList),
-    parameters: S.optional(GoogleCloudAiplatformV1beta1Tensor),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1StreamingPredictResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1StreamingPredictResponse>;
+export const GoogleCloudAiplatformV1beta1StreamingPredictResponse =
+  GoogleCloudAiplatformV1beta1DirectPredictResponse as any as S.Schema<GoogleCloudAiplatformV1beta1StreamingPredictResponse>;
 
 export interface ServerStreamingPredictProjectsLocationsPublishersModelsRequest {
   /** Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
@@ -67834,13 +67289,8 @@ export interface GoogleCloudAiplatformV1beta1StreamRawPredictRequest {
   /** The prediction input. Supports HTTP headers and arbitrary data payload. */
   httpBody?: GoogleApiHttpBody;
 }
-export const GoogleCloudAiplatformV1beta1StreamRawPredictRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    httpBody: S.optional(GoogleApiHttpBody),
-  }),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1StreamRawPredictRequest",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1StreamRawPredictRequest>;
+export const GoogleCloudAiplatformV1beta1StreamRawPredictRequest =
+  GenaiVertexV1beta1CreateInteractionHttpRequest as any as S.Schema<GoogleCloudAiplatformV1beta1StreamRawPredictRequest>;
 
 export interface StreamRawPredictProjectsLocationsEndpointsRequest {
   /** Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` */
@@ -68300,11 +67750,8 @@ export const TasksProjectsLocationsReasoningEnginesA2aRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<TasksProjectsLocationsReasoningEnginesA2aRequest>;
 
 export interface TasksProjectsLocationsReasoningEnginesA2aResponse {}
-export const TasksProjectsLocationsReasoningEnginesA2aResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TasksProjectsLocationsReasoningEnginesA2aResponse",
-}) as any as S.Schema<TasksProjectsLocationsReasoningEnginesA2aResponse>;
+export const TasksProjectsLocationsReasoningEnginesA2aResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<TasksProjectsLocationsReasoningEnginesA2aResponse>;
 
 export interface TasksProjectsLocationsReasoningEnginesA2aV1Request {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -68331,11 +67778,8 @@ export const TasksProjectsLocationsReasoningEnginesA2aV1Request = /*@__PURE__*/ 
 }) as any as S.Schema<TasksProjectsLocationsReasoningEnginesA2aV1Request>;
 
 export interface TasksProjectsLocationsReasoningEnginesA2aV1Response {}
-export const TasksProjectsLocationsReasoningEnginesA2aV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TasksProjectsLocationsReasoningEnginesA2aV1Response",
-}) as any as S.Schema<TasksProjectsLocationsReasoningEnginesA2aV1Response>;
+export const TasksProjectsLocationsReasoningEnginesA2aV1Response =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<TasksProjectsLocationsReasoningEnginesA2aV1Response>;
 
 export interface TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aRequest {
   /** Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` */
@@ -68364,9 +67808,7 @@ export const TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aRequest =
 
 export interface TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse {}
 export const TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse",
-  }) as any as S.Schema<TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aResponse>;
 
 export interface TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Request {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -68395,9 +67837,7 @@ export const TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Request 
 
 export interface TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response {}
 export const TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response",
-  }) as any as S.Schema<TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<TasksProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Response>;
 
 export interface TasksReasoningEnginesA2aRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -68424,11 +67864,8 @@ export const TasksReasoningEnginesA2aRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksReasoningEnginesA2aRequest>;
 
 export interface TasksReasoningEnginesA2aResponse {}
-export const TasksReasoningEnginesA2aResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TasksReasoningEnginesA2aResponse",
-}) as any as S.Schema<TasksReasoningEnginesA2aResponse>;
+export const TasksReasoningEnginesA2aResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<TasksReasoningEnginesA2aResponse>;
 
 export interface TasksReasoningEnginesA2aV1Request {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -68455,11 +67892,8 @@ export const TasksReasoningEnginesA2aV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksReasoningEnginesA2aV1Request>;
 
 export interface TasksReasoningEnginesA2aV1Response {}
-export const TasksReasoningEnginesA2aV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TasksReasoningEnginesA2aV1Response",
-}) as any as S.Schema<TasksReasoningEnginesA2aV1Response>;
+export const TasksReasoningEnginesA2aV1Response =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<TasksReasoningEnginesA2aV1Response>;
 
 export interface TasksReasoningEnginesRuntimeRevisionsA2aRequest {
   /** Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. */
@@ -68486,11 +67920,8 @@ export const TasksReasoningEnginesRuntimeRevisionsA2aRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<TasksReasoningEnginesRuntimeRevisionsA2aRequest>;
 
 export interface TasksReasoningEnginesRuntimeRevisionsA2aResponse {}
-export const TasksReasoningEnginesRuntimeRevisionsA2aResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TasksReasoningEnginesRuntimeRevisionsA2aResponse",
-}) as any as S.Schema<TasksReasoningEnginesRuntimeRevisionsA2aResponse>;
+export const TasksReasoningEnginesRuntimeRevisionsA2aResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<TasksReasoningEnginesRuntimeRevisionsA2aResponse>;
 
 export interface TasksReasoningEnginesRuntimeRevisionsA2aV1Request {
   /** Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` */
@@ -68517,11 +67948,8 @@ export const TasksReasoningEnginesRuntimeRevisionsA2aV1Request = /*@__PURE__*/ S
 }) as any as S.Schema<TasksReasoningEnginesRuntimeRevisionsA2aV1Request>;
 
 export interface TasksReasoningEnginesRuntimeRevisionsA2aV1Response {}
-export const TasksReasoningEnginesRuntimeRevisionsA2aV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TasksReasoningEnginesRuntimeRevisionsA2aV1Response",
-}) as any as S.Schema<TasksReasoningEnginesRuntimeRevisionsA2aV1Response>;
+export const TasksReasoningEnginesRuntimeRevisionsA2aV1Response =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<TasksReasoningEnginesRuntimeRevisionsA2aV1Response>;
 
 export interface TestIamPermissionsProjectsLocationsAgentsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
@@ -68669,13 +68097,8 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsRequest",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  GoogleIamV1TestIamPermissionsResponse as any as S.Schema<GoogleIamV1TestIamPermissionsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsFeaturestoresRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -69211,11 +68634,8 @@ export const UpsertDatapointsProjectsLocationsIndexesRequest = /*@__PURE__*/ S.s
 
 /** Response message for IndexService.UpsertDatapoints */
 export interface GoogleCloudAiplatformV1beta1UpsertDatapointsResponse {}
-export const GoogleCloudAiplatformV1beta1UpsertDatapointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1UpsertDatapointsResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1UpsertDatapointsResponse>;
+export const GoogleCloudAiplatformV1beta1UpsertDatapointsResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1UpsertDatapointsResponse>;
 
 /** Request message for ExampleStoreService.UpsertExamples. */
 export interface GoogleCloudAiplatformV1beta1UpsertExamplesRequest {
@@ -69343,7 +68763,7 @@ export const ValidateReinforcementTuningRewardProjectsLocationsTuningJobsRequest
   }) as any as S.Schema<ValidateReinforcementTuningRewardProjectsLocationsTuningJobsRequest>;
 
 export type DoubleMap = { [key: string]: number | undefined };
-export const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
+export const DoubleMap = IntegerMap as any as S.Schema<DoubleMap>;
 
 /** The reward info for a reward function. */
 export interface GoogleCloudAiplatformV1beta1ReinforcementTuningRewardInfo {
@@ -72610,11 +72030,8 @@ export const WriteFeatureValuesProjectsLocationsFeaturestoresEntityTypesRequest 
 
 /** Response message for FeaturestoreOnlineServingService.WriteFeatureValues. */
 export interface GoogleCloudAiplatformV1beta1WriteFeatureValuesResponse {}
-export const GoogleCloudAiplatformV1beta1WriteFeatureValuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1WriteFeatureValuesResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1WriteFeatureValuesResponse>;
+export const GoogleCloudAiplatformV1beta1WriteFeatureValuesResponse =
+  A2aGetReasoningEngineReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1WriteFeatureValuesResponse>;
 
 /** Request message for TensorboardService.WriteTensorboardRunData. */
 export interface GoogleCloudAiplatformV1beta1WriteTensorboardRunDataRequest {
@@ -72681,9 +72098,7 @@ export const WriteProjectsLocationsTensorboardsExperimentsRequest = /*@__PURE__*
 /** Response message for TensorboardService.WriteTensorboardExperimentData. */
 export interface GoogleCloudAiplatformV1beta1WriteTensorboardExperimentDataResponse {}
 export const GoogleCloudAiplatformV1beta1WriteTensorboardExperimentDataResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1WriteTensorboardExperimentDataResponse",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1WriteTensorboardExperimentDataResponse>;
+  A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksResponse as any as S.Schema<GoogleCloudAiplatformV1beta1WriteTensorboardExperimentDataResponse>;
 
 export interface WriteProjectsLocationsTensorboardsExperimentsRunsRequest {
   /** Required. The resource name of the TensorboardRun to write data to. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` */
@@ -72711,11 +72126,8 @@ export const WriteProjectsLocationsTensorboardsExperimentsRunsRequest = /*@__PUR
 
 /** Response message for TensorboardService.WriteTensorboardRunData. */
 export interface GoogleCloudAiplatformV1beta1WriteTensorboardRunDataResponse {}
-export const GoogleCloudAiplatformV1beta1WriteTensorboardRunDataResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAiplatformV1beta1WriteTensorboardRunDataResponse",
-}) as any as S.Schema<GoogleCloudAiplatformV1beta1WriteTensorboardRunDataResponse>;
+export const GoogleCloudAiplatformV1beta1WriteTensorboardRunDataResponse =
+  GoogleCloudAiplatformV1beta1ActivateOnlineEvaluatorRequest as any as S.Schema<GoogleCloudAiplatformV1beta1WriteTensorboardRunDataResponse>;
 
 export type A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksError =
   | NotFound

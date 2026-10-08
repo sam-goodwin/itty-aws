@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -754,9 +752,8 @@ export const IoK8sApiResourceV1beta1DeviceClass = /*@__PURE__*/ S.suspend(() =>
 
 /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList>;
+export const IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceClaimConfigurationRequestsList>;
 
 /** DeviceClaimConfiguration is used for configuration parameters in DeviceClaim. */
 export interface IoK8sApiResourceV1beta1DeviceClaimConfiguration {
@@ -783,9 +780,8 @@ export const IoK8sApiResourceV1beta1DeviceClaimConfigList = /*@__PURE__*/ S.Arra
 
 /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
 export type IoK8sApiResourceV1beta1DeviceConstraintRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceConstraintRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceConstraintRequestsList>;
+export const IoK8sApiResourceV1beta1DeviceConstraintRequestsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceConstraintRequestsList>;
 
 /** DeviceConstraint must have exactly one field set besides Requests. */
 export interface IoK8sApiResourceV1beta1DeviceConstraint {
@@ -817,10 +813,8 @@ export const IoK8sApiResourceV1beta1DeviceClaimConstraintsList = /*@__PURE__*/ S
 export type IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap>;
+export const IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiResourceV1beta1CapacityRequirementsRequestsMap>;
 
 /** CapacityRequirements defines the capacity requirements for a specific device request. */
 export interface IoK8sApiResourceV1beta1CapacityRequirements {
@@ -861,16 +855,14 @@ export const IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList = /*@__PU
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceDerivedAttribute,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList>;
+export const IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList =
+  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1beta1DeviceSubRequestDerivedAttributesList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList>;
+export const IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceSubRequestSelectorsList>;
 
 /** The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export interface IoK8sApiResourceV1beta1DeviceToleration {
@@ -948,16 +940,14 @@ export const IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList = /*@__PURE_
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered. This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list. */
 export type IoK8sApiResourceV1beta1DeviceRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta1DeviceRequestSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestSelectorsList>;
+export const IoK8sApiResourceV1beta1DeviceRequestSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestSelectorsList>;
 
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This field can only be set when deviceClassName is set and no subrequests are specified in the firstAvailable list. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta1DeviceRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta1DeviceRequestTolerationsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceToleration,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestTolerationsList>;
+export const IoK8sApiResourceV1beta1DeviceRequestTolerationsList =
+  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestTolerationsList>;
 
 /** DeviceRequest is a request for devices required for a claim. This is typically a request for a single resource like a device, but can also ask for several identical devices. */
 export interface IoK8sApiResourceV1beta1DeviceRequest {
@@ -1075,17 +1065,13 @@ export const IoK8sApiResourceV1beta1DeviceAllocationResultConfigList = /*@__PURE
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList =
   Array<string>;
 export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingConditionsList>;
 
 /** bindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList =
   Array<string>;
 export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultBindingFailureConditionsList>;
 
 /** consumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device's requestPolicy if applicable (i.e., may not be less than the requested amount). The total consumed capacity for each device must not exceed the DeviceCapacity's Value. This field is populated only for devices that allow multiple allocations. All capacity entries are included, even if the consumed amount is zero. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap = {
@@ -1101,9 +1087,7 @@ export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacit
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList =
   Array<string>;
 export const IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceRequestAllocationResultSkipNodeOperationsList>;
 
 /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList =
@@ -1189,9 +1173,8 @@ export const IoK8sApiResourceV1beta1DeviceAllocationResult = /*@__PURE__*/ S.sus
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
 export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = Array<string>;
-export const IoK8sApiCoreV1NodeSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
+export const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
 
 /** A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApiCoreV1NodeSelectorRequirement {
@@ -1222,9 +1205,8 @@ export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList = /*@__PURE__*/ 
 /** matchFields is a list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCoreV1NodeSelectorRequirement,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
+export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
+  IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
 
 /** A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm. */
 export interface IoK8sApiCoreV1NodeSelectorTerm {
@@ -1283,15 +1265,13 @@ export const IoK8sApiResourceV1beta1AllocationResult = /*@__PURE__*/ S.suspend((
 /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
 export type IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList>;
+export const IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1beta1AllocatedDeviceStatusConditionsList>;
 
 /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. Must not contain more than 16 entries. */
 export type IoK8sApiResourceV1beta1NetworkDeviceDataIpsList = Array<string>;
-export const IoK8sApiResourceV1beta1NetworkDeviceDataIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1NetworkDeviceDataIpsList>;
+export const IoK8sApiResourceV1beta1NetworkDeviceDataIpsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1NetworkDeviceDataIpsList>;
 
 /** NetworkDeviceData provides network-related details for the allocated device. This information may be filled by drivers or other components to configure or identify the device within a network context. */
 export interface IoK8sApiResourceV1beta1NetworkDeviceData {
@@ -1563,15 +1543,13 @@ export const IoK8sApiResourceV1beta1DeviceAttributeIntsList = /*@__PURE__*/ S.Ar
 
 /** strings is a non-empty list of strings. Each string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceAttributeStringsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceAttributeStringsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeStringsList>;
+export const IoK8sApiResourceV1beta1DeviceAttributeStringsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeStringsList>;
 
 /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta1DeviceAttributeVersionsList = Array<string>;
-export const IoK8sApiResourceV1beta1DeviceAttributeVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeVersionsList>;
+export const IoK8sApiResourceV1beta1DeviceAttributeVersionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1DeviceAttributeVersionsList>;
 
 /** DeviceAttribute must have exactly one field set. */
 export interface IoK8sApiResourceV1beta1DeviceAttribute {
@@ -1618,15 +1596,13 @@ export const IoK8sApiResourceV1beta1BasicDeviceAttributesMap = /*@__PURE__*/ S.R
 
 /** bindingConditions defines the conditions for proceeding with binding. All of these conditions must be set in the per-device status conditions with a value of True to proceed with binding the pod to the node while scheduling the pod. The maximum number of binding conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList>;
+export const IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceBindingConditionsList>;
 
 /** bindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is true, a binding failure occurred. The maximum number of binding failure conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList>;
+export const IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1BasicDeviceBindingFailureConditionsList>;
 
 /** CapacityRequestPolicyRange defines a valid range for consumable capacity values. If the DRAFractionalCapacityRange feature gate is enabled and at least one of Min, Max, or Step is a fractional quantity (i.e. its value is not an integer), milli-unit arithmetic is used instead, supporting values with up to 3 decimal places (e.g. 100m = 0.1). The largest supported value then is 1000 times smaller compared to using 64-bit integers. Otherwise, all comparisons use 64-bit integer arithmetic via resource.Quantity.Value(). - If the requested amount is less than Min, it is rounded up to the Min value. - If Step is set and the requested amount is between Min and Max but not aligned with Step, it will be rounded up to the next value equal to Min + (n * Step). - If Step is not set, the requested amount is used as-is if it falls within the range Min to Max (if set). - If the requested or rounded amount exceeds Max (if set), the request does not satisfy the policy, and the device cannot be allocated. */
 export interface IoK8sApiResourceV1beta1CapacityRequestPolicyRange {
@@ -1649,9 +1625,8 @@ export const IoK8sApiResourceV1beta1CapacityRequestPolicyRange = /*@__PURE__*/ S
 
 /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
 export type IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList = Array<string>;
-export const IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList>;
+export const IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1CapacityRequestPolicyValidValuesList>;
 
 /** CapacityRequestPolicy defines how requests consume device capacity. Must not set more than one ValidRequestValues. */
 export interface IoK8sApiResourceV1beta1CapacityRequestPolicy {
@@ -1700,9 +1675,7 @@ export const IoK8sApiResourceV1beta1BasicDeviceCapacityMap = /*@__PURE__*/ S.Rec
 /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
 export type IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList = Array<string>;
 export const IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta1DeviceCounterConsumptionCompatibilityGroupsList>;
 
 /** Counter describes a quantity associated with a device. */
 export interface IoK8sApiResourceV1beta1Counter {
@@ -1921,10 +1894,8 @@ export const IoK8sApiResourceV1beta1ResourcePool = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApiResourceV1beta1CounterSetCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1beta1CounterSetCountersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta1Counter,
-) as any as S.Schema<IoK8sApiResourceV1beta1CounterSetCountersMap>;
+export const IoK8sApiResourceV1beta1CounterSetCountersMap =
+  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1beta1CounterSetCountersMap>;
 
 /** CounterSet defines a named set of counters that are available to be used by devices defined in the ResourcePool. The counters are not allocatable by themselves, but can be referenced by devices. When a device is allocated, the portion of counters it uses will no longer be available for use by other devices. */
 export interface IoK8sApiResourceV1beta1CounterSet {
@@ -1951,9 +1922,8 @@ export const IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList = /*@__P
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
 export type IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList = Array<string>;
-export const IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList>;
+export const IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta1ResourceSliceSpecSkipNodeOperationsList>;
 
 /** ResourceSliceSpec contains the information published by the driver in one ResourceSlice. */
 export interface IoK8sApiResourceV1beta1ResourceSliceSpec {
@@ -2067,9 +2037,8 @@ export const IoK8sApiResourceV1beta2DeviceClassConfiguration =
 /** config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver. They are passed to the driver, but are not considered while allocating the claim. */
 export type IoK8sApiResourceV1beta2DeviceClassSpecConfigList =
   Array<IoK8sApiResourceV1beta1DeviceClassConfiguration>;
-export const IoK8sApiResourceV1beta2DeviceClassSpecConfigList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceClassConfiguration,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpecConfigList>;
+export const IoK8sApiResourceV1beta2DeviceClassSpecConfigList =
+  IoK8sApiResourceV1beta1DeviceClassSpecConfigList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpecConfigList>;
 
 /** CELDeviceSelector contains a CEL expression for selecting a device. */
 export type IoK8sApiResourceV1beta2CELDeviceSelector = IoK8sApiResourceV1beta1CELDeviceSelector;
@@ -2082,9 +2051,8 @@ export const IoK8sApiResourceV1beta2DeviceSelector = IoK8sApiResourceV1beta1Devi
 /** selectors must be satisfied by a device which is claimed via this class. */
 export type IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList>;
+export const IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList>;
 
 /** DeviceClassSpec is used in a [DeviceClass] to define what can be allocated and how to configure it. */
 export interface IoK8sApiResourceV1beta2DeviceClassSpec {
@@ -2095,15 +2063,8 @@ export interface IoK8sApiResourceV1beta2DeviceClassSpec {
   /** selectors must be satisfied by a device which is claimed via this class. */
   selectors?: IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList;
 }
-export const IoK8sApiResourceV1beta2DeviceClassSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(IoK8sApiResourceV1beta2DeviceClassSpecConfigList),
-    extendedResourceName: S.optional(S.String),
-    selectors: S.optional(IoK8sApiResourceV1beta2DeviceClassSpecSelectorsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceClassSpec",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpec>;
+export const IoK8sApiResourceV1beta2DeviceClassSpec =
+  IoK8sApiResourceV1beta1DeviceClassSpec as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassSpec>;
 
 export interface CreateResourceV1beta2DeviceClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -2151,16 +2112,8 @@ export interface IoK8sApiResourceV1beta2DeviceClass {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1beta2DeviceClassSpec;
 }
-export const IoK8sApiResourceV1beta2DeviceClass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: S.optional(IoK8sApiResourceV1beta2DeviceClassSpec),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceClass",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClass>;
+export const IoK8sApiResourceV1beta2DeviceClass =
+  IoK8sApiResourceV1beta1DeviceClass as any as S.Schema<IoK8sApiResourceV1beta2DeviceClass>;
 
 /** DeviceTaintSelector defines which device(s) a DeviceTaintRule applies to. The empty selector matches all devices. Without a selector, no devices are matched. */
 export interface IoK8sApiResourceV1beta2DeviceTaintSelector {
@@ -2171,15 +2124,8 @@ export interface IoK8sApiResourceV1beta2DeviceTaintSelector {
   /** pool is the pool name. If pool is set, only devices in that pool are selected. Also setting the driver name may be useful to avoid ambiguity when different drivers use the same pool name, but this is not required because selecting pools from different drivers may also be useful, for example when drivers with node-local devices use the node name as their pool name. */
   pool?: string;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    device: S.optional(S.String),
-    driver: S.optional(S.String),
-    pool: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceTaintSelector",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintSelector>;
+export const IoK8sApiResourceV1beta2DeviceTaintSelector =
+  IoK8sApiResourceV1alpha3DeviceTaintSelector as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintSelector>;
 
 /** The device this taint is attached to has the "effect" on any claim which does not tolerate the taint and, through the claim, to pods using the claim. */
 export type IoK8sApiResourceV1beta2DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
@@ -2192,34 +2138,22 @@ export interface IoK8sApiResourceV1beta2DeviceTaintRuleSpec {
   /** taint is the taint that gets applied to matching devices. */
   taint: IoK8sApiResourceV1alpha3DeviceTaint;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRuleSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceSelector: S.optional(IoK8sApiResourceV1beta2DeviceTaintSelector),
-    taint: IoK8sApiResourceV1alpha3DeviceTaint,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceTaintRuleSpec",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleSpec>;
+export const IoK8sApiResourceV1beta2DeviceTaintRuleSpec =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleSpec as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleSpec>;
 
 /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
 export type IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList>;
+export const IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList>;
 
 /** DeviceTaintRuleStatus provides information about an on-going pod eviction. */
 export interface IoK8sApiResourceV1beta2DeviceTaintRuleStatus {
   /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
   conditions?: IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRuleStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions: S.optional(IoK8sApiResourceV1beta2DeviceTaintRuleStatusConditionsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceTaintRuleStatus",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleStatus>;
+export const IoK8sApiResourceV1beta2DeviceTaintRuleStatus =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleStatus as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleStatus>;
 
 export interface CreateResourceV1beta2DeviceTaintRuleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -2272,23 +2206,13 @@ export interface IoK8sApiResourceV1beta2DeviceTaintRule {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1beta2DeviceTaintRuleStatus;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: IoK8sApiResourceV1beta2DeviceTaintRuleSpec,
-    status: S.optional(IoK8sApiResourceV1beta2DeviceTaintRuleStatus),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceTaintRule",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRule>;
+export const IoK8sApiResourceV1beta2DeviceTaintRule =
+  IoK8sApiResourceV1alpha3DeviceTaintRule as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRule>;
 
 /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList>;
+export const IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList>;
 
 /** DeviceClaimConfiguration is used for configuration parameters in DeviceClaim. */
 export interface IoK8sApiResourceV1beta2DeviceClaimConfiguration {
@@ -2297,27 +2221,19 @@ export interface IoK8sApiResourceV1beta2DeviceClaimConfiguration {
   /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
   requests?: IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList;
 }
-export const IoK8sApiResourceV1beta2DeviceClaimConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    opaque: S.optional(IoK8sApiResourceV1beta1OpaqueDeviceConfiguration),
-    requests: S.optional(IoK8sApiResourceV1beta2DeviceClaimConfigurationRequestsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceClaimConfiguration",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfiguration>;
+export const IoK8sApiResourceV1beta2DeviceClaimConfiguration =
+  IoK8sApiResourceV1beta1DeviceClaimConfiguration as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfiguration>;
 
 /** config holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim. */
 export type IoK8sApiResourceV1beta2DeviceClaimConfigList =
   Array<IoK8sApiResourceV1beta2DeviceClaimConfiguration>;
-export const IoK8sApiResourceV1beta2DeviceClaimConfigList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceClaimConfiguration,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfigList>;
+export const IoK8sApiResourceV1beta2DeviceClaimConfigList =
+  IoK8sApiResourceV1beta1DeviceClaimConfigList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConfigList>;
 
 /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
 export type IoK8sApiResourceV1beta2DeviceConstraintRequestsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceConstraintRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceConstraintRequestsList>;
+export const IoK8sApiResourceV1beta2DeviceConstraintRequestsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceConstraintRequestsList>;
 
 /** DeviceConstraint must have exactly one field set besides Requests. */
 export interface IoK8sApiResourceV1beta2DeviceConstraint {
@@ -2328,44 +2244,29 @@ export interface IoK8sApiResourceV1beta2DeviceConstraint {
   /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
   requests?: IoK8sApiResourceV1beta2DeviceConstraintRequestsList;
 }
-export const IoK8sApiResourceV1beta2DeviceConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distinctAttribute: S.optional(S.String),
-    matchAttribute: S.optional(S.String),
-    requests: S.optional(IoK8sApiResourceV1beta2DeviceConstraintRequestsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceConstraint",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceConstraint>;
+export const IoK8sApiResourceV1beta2DeviceConstraint =
+  IoK8sApiResourceV1beta1DeviceConstraint as any as S.Schema<IoK8sApiResourceV1beta2DeviceConstraint>;
 
 /** constraints must be satisfied by the set of devices that get allocated for the claim. */
 export type IoK8sApiResourceV1beta2DeviceClaimConstraintsList =
   Array<IoK8sApiResourceV1beta2DeviceConstraint>;
-export const IoK8sApiResourceV1beta2DeviceClaimConstraintsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceConstraint,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConstraintsList>;
+export const IoK8sApiResourceV1beta2DeviceClaimConstraintsList =
+  IoK8sApiResourceV1beta1DeviceClaimConstraintsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClaimConstraintsList>;
 
 /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
 export type IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap>;
+export const IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap>;
 
 /** CapacityRequirements defines the capacity requirements for a specific device request. */
 export interface IoK8sApiResourceV1beta2CapacityRequirements {
   /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
   requests?: IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap;
 }
-export const IoK8sApiResourceV1beta2CapacityRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(IoK8sApiResourceV1beta2CapacityRequirementsRequestsMap),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2CapacityRequirements",
-}) as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequirements>;
+export const IoK8sApiResourceV1beta2CapacityRequirements =
+  IoK8sApiResourceV1beta1CapacityRequirements as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequirements>;
 
 /** DeviceDerivedAttribute defines a derived attribute computed via CEL. */
 export type IoK8sApiResourceV1beta2DeviceDerivedAttribute =
@@ -2376,16 +2277,14 @@ export const IoK8sApiResourceV1beta2DeviceDerivedAttribute =
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceDerivedAttribute,
-) as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList>;
+export const IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList =
+  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestDerivedAttributesList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList>;
+export const IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestSelectorsList>;
 
 /** The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export type IoK8sApiResourceV1beta2DeviceToleration = IoK8sApiResourceV1beta1DeviceToleration;
@@ -2394,9 +2293,8 @@ export const IoK8sApiResourceV1beta2DeviceToleration = IoK8sApiResourceV1beta1De
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceToleration,
-) as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList>;
+export const IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList =
+  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1beta2ExactDeviceRequestTolerationsList>;
 
 /** ExactDeviceRequest is a request for one or more identical devices. */
 export interface IoK8sApiResourceV1beta2ExactDeviceRequest {
@@ -2435,23 +2333,20 @@ export const IoK8sApiResourceV1beta2ExactDeviceRequest = /*@__PURE__*/ S.suspend
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceDerivedAttribute,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList>;
+export const IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList =
+  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList>;
+export const IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList>;
 
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceToleration,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList>;
+export const IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList =
+  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList>;
 
 /** DeviceSubRequest describes a request for device provided in the claim.spec.devices.requests[].firstAvailable array. Each is typically a request for a single resource like a device, but can also ask for several identical devices. DeviceSubRequest is similar to ExactDeviceRequest, but doesn't expose the AdminAccess field as that one is only supported when requesting a specific device. */
 export interface IoK8sApiResourceV1beta2DeviceSubRequest {
@@ -2472,27 +2367,14 @@ export interface IoK8sApiResourceV1beta2DeviceSubRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList;
 }
-export const IoK8sApiResourceV1beta2DeviceSubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allocationMode: S.optional(S.String),
-    capacity: S.optional(IoK8sApiResourceV1beta2CapacityRequirements),
-    count: S.optional(S.Number),
-    derivedAttributes: S.optional(IoK8sApiResourceV1beta2DeviceSubRequestDerivedAttributesList),
-    deviceClassName: S.String,
-    name: S.String,
-    selectors: S.optional(IoK8sApiResourceV1beta2DeviceSubRequestSelectorsList),
-    tolerations: S.optional(IoK8sApiResourceV1beta2DeviceSubRequestTolerationsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceSubRequest",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequest>;
+export const IoK8sApiResourceV1beta2DeviceSubRequest =
+  IoK8sApiResourceV1beta1DeviceSubRequest as any as S.Schema<IoK8sApiResourceV1beta2DeviceSubRequest>;
 
 /** firstAvailable contains subrequests, of which exactly one will be selected by the scheduler. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one can not be used. DRA does not yet implement scoring, so the scheduler will select the first set of devices that satisfies all the requests in the claim. And if the requirements can be satisfied on more than one node, other scheduling features will determine which node is chosen. This means that the set of devices allocated to a claim might not be the optimal set available to the cluster. Scoring will be implemented later. */
 export type IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList =
   Array<IoK8sApiResourceV1beta2DeviceSubRequest>;
-export const IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceSubRequest,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList>;
+export const IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList =
+  IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestFirstAvailableList>;
 
 /** DeviceRequest is a request for devices required for a claim. This is typically a request for a single resource like a device, but can also ask for several identical devices. With FirstAvailable it is also possible to provide a prioritized list of requests. */
 export interface IoK8sApiResourceV1beta2DeviceRequest {
@@ -2555,9 +2437,7 @@ export const IoK8sApiResourceV1beta2ResourceClaimSpec = /*@__PURE__*/ S.suspend(
 /** requests lists the names of requests where the configuration applies. If empty, its applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList = Array<string>;
 export const IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList>;
 
 /** DeviceAllocationConfiguration gets embedded in an AllocationResult. */
 export interface IoK8sApiResourceV1beta2DeviceAllocationConfiguration {
@@ -2568,64 +2448,45 @@ export interface IoK8sApiResourceV1beta2DeviceAllocationConfiguration {
   /** source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim. */
   source: string;
 }
-export const IoK8sApiResourceV1beta2DeviceAllocationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    opaque: S.optional(IoK8sApiResourceV1beta1OpaqueDeviceConfiguration),
-    requests: S.optional(IoK8sApiResourceV1beta2DeviceAllocationConfigurationRequestsList),
-    source: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceAllocationConfiguration",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationConfiguration>;
+export const IoK8sApiResourceV1beta2DeviceAllocationConfiguration =
+  IoK8sApiResourceV1beta1DeviceAllocationConfiguration as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationConfiguration>;
 
 /** config is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag. This includes configuration parameters for drivers which have no allocated devices in the result because it is up to the drivers which configuration parameters they support. They can silently ignore unknown configuration parameters. */
 export type IoK8sApiResourceV1beta2DeviceAllocationResultConfigList =
   Array<IoK8sApiResourceV1beta2DeviceAllocationConfiguration>;
-export const IoK8sApiResourceV1beta2DeviceAllocationResultConfigList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceAllocationConfiguration,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResultConfigList>;
+export const IoK8sApiResourceV1beta2DeviceAllocationResultConfigList =
+  IoK8sApiResourceV1beta1DeviceAllocationResultConfigList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResultConfigList>;
 
 /** bindingConditions contains a copy of the BindingConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList =
   Array<string>;
 export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList>;
 
 /** bindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList =
   Array<string>;
 export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList>;
 
 /** consumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device's requestPolicy if applicable (i.e., may not be less than the requested amount). The total consumed capacity for each device must not exceed the DeviceCapacity's Value. This field is populated only for devices that allow multiple allocations. All capacity entries are included, even if the consumed amount is zero. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap = {
   [key: string]: string | undefined;
 };
 export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap>;
+  IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for this allocated device when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. It is a copy of the ResourceSlice.spec.skipNodeOperations value at the time when the device was allocated. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList =
   Array<string>;
 export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList>;
 
 /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
 export const IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiResourceV1beta1DeviceToleration,
-  ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList>;
+  IoK8sApiResourceV1beta1DeviceRequestAllocationResultTolerationsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList>;
 
 /** DeviceRequestAllocationResult contains the allocation result for one request. */
 export interface IoK8sApiResourceV1beta2DeviceRequestAllocationResult {
@@ -2652,38 +2513,14 @@ export interface IoK8sApiResourceV1beta2DeviceRequestAllocationResult {
   /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList;
 }
-export const IoK8sApiResourceV1beta2DeviceRequestAllocationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminAccess: S.optional(S.Boolean),
-    bindingConditions: S.optional(
-      IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingConditionsList,
-    ),
-    bindingFailureConditions: S.optional(
-      IoK8sApiResourceV1beta2DeviceRequestAllocationResultBindingFailureConditionsList,
-    ),
-    consumedCapacity: S.optional(
-      IoK8sApiResourceV1beta2DeviceRequestAllocationResultConsumedCapacityMap,
-    ),
-    device: S.String,
-    driver: S.String,
-    pool: S.String,
-    request: S.String,
-    shareID: S.optional(S.String),
-    skipNodeOperations: S.optional(
-      IoK8sApiResourceV1beta2DeviceRequestAllocationResultSkipNodeOperationsList,
-    ),
-    tolerations: S.optional(IoK8sApiResourceV1beta2DeviceRequestAllocationResultTolerationsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceRequestAllocationResult",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResult>;
+export const IoK8sApiResourceV1beta2DeviceRequestAllocationResult =
+  IoK8sApiResourceV1beta1DeviceRequestAllocationResult as any as S.Schema<IoK8sApiResourceV1beta2DeviceRequestAllocationResult>;
 
 /** results lists all allocated devices. */
 export type IoK8sApiResourceV1beta2DeviceAllocationResultResultsList =
   Array<IoK8sApiResourceV1beta2DeviceRequestAllocationResult>;
-export const IoK8sApiResourceV1beta2DeviceAllocationResultResultsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceRequestAllocationResult,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResultResultsList>;
+export const IoK8sApiResourceV1beta2DeviceAllocationResultResultsList =
+  IoK8sApiResourceV1beta1DeviceAllocationResultResultsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResultResultsList>;
 
 /** DeviceAllocationResult is the result of allocating devices. */
 export interface IoK8sApiResourceV1beta2DeviceAllocationResult {
@@ -2692,14 +2529,8 @@ export interface IoK8sApiResourceV1beta2DeviceAllocationResult {
   /** results lists all allocated devices. */
   results?: IoK8sApiResourceV1beta2DeviceAllocationResultResultsList;
 }
-export const IoK8sApiResourceV1beta2DeviceAllocationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(IoK8sApiResourceV1beta2DeviceAllocationResultConfigList),
-    results: S.optional(IoK8sApiResourceV1beta2DeviceAllocationResultResultsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceAllocationResult",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResult>;
+export const IoK8sApiResourceV1beta2DeviceAllocationResult =
+  IoK8sApiResourceV1beta1DeviceAllocationResult as any as S.Schema<IoK8sApiResourceV1beta2DeviceAllocationResult>;
 
 /** AllocationResult contains attributes of an allocated resource. */
 export interface IoK8sApiResourceV1beta2AllocationResult {
@@ -2710,28 +2541,19 @@ export interface IoK8sApiResourceV1beta2AllocationResult {
   /** nodeSelector defines where the allocated resources are available. If unset, they are available everywhere. */
   nodeSelector?: IoK8sApiCoreV1NodeSelector;
 }
-export const IoK8sApiResourceV1beta2AllocationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allocationTimestamp: S.optional(S.String),
-    devices: S.optional(IoK8sApiResourceV1beta2DeviceAllocationResult),
-    nodeSelector: S.optional(IoK8sApiCoreV1NodeSelector),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2AllocationResult",
-}) as any as S.Schema<IoK8sApiResourceV1beta2AllocationResult>;
+export const IoK8sApiResourceV1beta2AllocationResult =
+  IoK8sApiResourceV1beta1AllocationResult as any as S.Schema<IoK8sApiResourceV1beta2AllocationResult>;
 
 /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
 export type IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList>;
+export const IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList>;
 
 /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
 export type IoK8sApiResourceV1beta2NetworkDeviceDataIpsList = Array<string>;
-export const IoK8sApiResourceV1beta2NetworkDeviceDataIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2NetworkDeviceDataIpsList>;
+export const IoK8sApiResourceV1beta2NetworkDeviceDataIpsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2NetworkDeviceDataIpsList>;
 
 /** NetworkDeviceData provides network-related details for the allocated device. This information may be filled by drivers or other components to configure or identify the device within a network context. */
 export interface IoK8sApiResourceV1beta2NetworkDeviceData {
@@ -2742,15 +2564,8 @@ export interface IoK8sApiResourceV1beta2NetworkDeviceData {
   /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
   ips?: IoK8sApiResourceV1beta2NetworkDeviceDataIpsList;
 }
-export const IoK8sApiResourceV1beta2NetworkDeviceData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hardwareAddress: S.optional(S.String),
-    interfaceName: S.optional(S.String),
-    ips: S.optional(IoK8sApiResourceV1beta2NetworkDeviceDataIpsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2NetworkDeviceData",
-}) as any as S.Schema<IoK8sApiResourceV1beta2NetworkDeviceData>;
+export const IoK8sApiResourceV1beta2NetworkDeviceData =
+  IoK8sApiResourceV1beta1NetworkDeviceData as any as S.Schema<IoK8sApiResourceV1beta2NetworkDeviceData>;
 
 /** AllocatedDeviceStatus contains the status of an allocated device, if the driver chooses to report it. This may include driver-specific information. The combination of Driver, Pool, Device, and ShareID must match the corresponding key in Status.Allocation.Devices. */
 export interface IoK8sApiResourceV1beta2AllocatedDeviceStatus {
@@ -2769,26 +2584,14 @@ export interface IoK8sApiResourceV1beta2AllocatedDeviceStatus {
   /** ShareID uniquely identifies an individual allocation share of the device. */
   shareID?: string;
 }
-export const IoK8sApiResourceV1beta2AllocatedDeviceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions: S.optional(IoK8sApiResourceV1beta2AllocatedDeviceStatusConditionsList),
-    data: S.optional(S.Unknown),
-    device: S.String,
-    driver: S.String,
-    networkData: S.optional(IoK8sApiResourceV1beta2NetworkDeviceData),
-    pool: S.String,
-    shareID: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2AllocatedDeviceStatus",
-}) as any as S.Schema<IoK8sApiResourceV1beta2AllocatedDeviceStatus>;
+export const IoK8sApiResourceV1beta2AllocatedDeviceStatus =
+  IoK8sApiResourceV1beta1AllocatedDeviceStatus as any as S.Schema<IoK8sApiResourceV1beta2AllocatedDeviceStatus>;
 
 /** devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers. */
 export type IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList =
   Array<IoK8sApiResourceV1beta2AllocatedDeviceStatus>;
-export const IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2AllocatedDeviceStatus,
-) as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList>;
+export const IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList =
+  IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList>;
 
 /** ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim. */
 export type IoK8sApiResourceV1beta2ResourceClaimConsumerReference =
@@ -2799,9 +2602,8 @@ export const IoK8sApiResourceV1beta2ResourceClaimConsumerReference =
 /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
 export type IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList =
   Array<IoK8sApiResourceV1beta1ResourceClaimConsumerReference>;
-export const IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1ResourceClaimConsumerReference,
-) as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList>;
+export const IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList =
+  IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList>;
 
 /** ResourceClaimStatus tracks whether the resource has been allocated and what the result of that was. */
 export interface IoK8sApiResourceV1beta2ResourceClaimStatus {
@@ -2812,15 +2614,8 @@ export interface IoK8sApiResourceV1beta2ResourceClaimStatus {
   /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
   reservedFor?: IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList;
 }
-export const IoK8sApiResourceV1beta2ResourceClaimStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allocation: S.optional(IoK8sApiResourceV1beta2AllocationResult),
-    devices: S.optional(IoK8sApiResourceV1beta2ResourceClaimStatusDevicesList),
-    reservedFor: S.optional(IoK8sApiResourceV1beta2ResourceClaimStatusReservedForList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2ResourceClaimStatus",
-}) as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatus>;
+export const IoK8sApiResourceV1beta2ResourceClaimStatus =
+  IoK8sApiResourceV1beta1ResourceClaimStatus as any as S.Schema<IoK8sApiResourceV1beta2ResourceClaimStatus>;
 
 export interface CreateResourceV1beta2NamespacedResourceClaimRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -2975,27 +2770,23 @@ export const IoK8sApiResourceV1beta2ResourceClaimTemplate = /*@__PURE__*/ S.susp
 
 /** bools is a non-empty list of true/false values. */
 export type IoK8sApiResourceV1beta2DeviceAttributeBoolsList = Array<boolean>;
-export const IoK8sApiResourceV1beta2DeviceAttributeBoolsList = /*@__PURE__*/ S.Array(
-  S.Boolean,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeBoolsList>;
+export const IoK8sApiResourceV1beta2DeviceAttributeBoolsList =
+  IoK8sApiResourceV1beta1DeviceAttributeBoolsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeBoolsList>;
 
 /** ints is a non-empty list of numbers. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceAttributeIntsList = Array<number>;
-export const IoK8sApiResourceV1beta2DeviceAttributeIntsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeIntsList>;
+export const IoK8sApiResourceV1beta2DeviceAttributeIntsList =
+  IoK8sApiResourceV1beta1DeviceAttributeIntsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeIntsList>;
 
 /** strings is a non-empty list of strings. Each string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceAttributeStringsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceAttributeStringsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeStringsList>;
+export const IoK8sApiResourceV1beta2DeviceAttributeStringsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeStringsList>;
 
 /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1beta2DeviceAttributeVersionsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceAttributeVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeVersionsList>;
+export const IoK8sApiResourceV1beta2DeviceAttributeVersionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributeVersionsList>;
 
 /** DeviceAttribute must have exactly one field set. */
 export interface IoK8sApiResourceV1beta2DeviceAttribute {
@@ -3016,41 +2807,25 @@ export interface IoK8sApiResourceV1beta2DeviceAttribute {
   /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
   versions?: IoK8sApiResourceV1beta2DeviceAttributeVersionsList;
 }
-export const IoK8sApiResourceV1beta2DeviceAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bool: S.optional(S.Boolean),
-    bools: S.optional(IoK8sApiResourceV1beta2DeviceAttributeBoolsList),
-    int: S.optional(S.Number),
-    ints: S.optional(IoK8sApiResourceV1beta2DeviceAttributeIntsList),
-    string: S.optional(S.String),
-    strings: S.optional(IoK8sApiResourceV1beta2DeviceAttributeStringsList),
-    version: S.optional(S.String),
-    versions: S.optional(IoK8sApiResourceV1beta2DeviceAttributeVersionsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceAttribute",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttribute>;
+export const IoK8sApiResourceV1beta2DeviceAttribute =
+  IoK8sApiResourceV1beta1DeviceAttribute as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttribute>;
 
 /** attributes defines the set of attributes for this device. The name of each attribute must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1beta2DeviceAttributesMap = {
   [key: string]: IoK8sApiResourceV1beta2DeviceAttribute | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta2DeviceAttribute,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributesMap>;
+export const IoK8sApiResourceV1beta2DeviceAttributesMap =
+  IoK8sApiResourceV1beta1BasicDeviceAttributesMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceAttributesMap>;
 
 /** bindingConditions defines the conditions for proceeding with binding. All of these conditions must be set in the per-device status conditions with a value of True to proceed with binding the pod to the node while scheduling the pod. The maximum number of binding conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceBindingConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceBindingConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceBindingConditionsList>;
+export const IoK8sApiResourceV1beta2DeviceBindingConditionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceBindingConditionsList>;
 
 /** bindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is set to "True", a binding failure occurred. The maximum number of binding failure conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList = Array<string>;
-export const IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList>;
+export const IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceBindingFailureConditionsList>;
 
 /** CapacityRequestPolicyRange defines a valid range for consumable capacity values. If the DRAFractionalCapacityRange feature gate is enabled and at least one of Min, Max, or Step is a fractional quantity (i.e. its value is not an integer), milli-unit arithmetic is used instead, supporting values with up to 3 decimal places (e.g. 100m = 0.1). The largest supported value then is 1000 times smaller compared to using 64-bit integers. Otherwise, all comparisons use 64-bit integer arithmetic via resource.Quantity.Value(). - If the requested amount is less than Min, it is rounded up to the Min value. - If Step is set and the requested amount is between Min and Max but not aligned with Step, it will be rounded up to the next value equal to Min + (n * Step). - If Step is not set, the requested amount is used as-is if it falls within the range Min to Max (if set). - If the requested or rounded amount exceeds Max (if set), the request does not satisfy the policy, and the device cannot be allocated. */
 export type IoK8sApiResourceV1beta2CapacityRequestPolicyRange =
@@ -3060,9 +2835,8 @@ export const IoK8sApiResourceV1beta2CapacityRequestPolicyRange =
 
 /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
 export type IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList = Array<string>;
-export const IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList>;
+export const IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList>;
 
 /** CapacityRequestPolicy defines how requests consume device capacity. Must not set more than one ValidRequestValues. */
 export interface IoK8sApiResourceV1beta2CapacityRequestPolicy {
@@ -3073,15 +2847,8 @@ export interface IoK8sApiResourceV1beta2CapacityRequestPolicy {
   /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
   validValues?: IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList;
 }
-export const IoK8sApiResourceV1beta2CapacityRequestPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(S.String),
-    validRange: S.optional(IoK8sApiResourceV1beta1CapacityRequestPolicyRange),
-    validValues: S.optional(IoK8sApiResourceV1beta2CapacityRequestPolicyValidValuesList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2CapacityRequestPolicy",
-}) as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequestPolicy>;
+export const IoK8sApiResourceV1beta2CapacityRequestPolicy =
+  IoK8sApiResourceV1beta1CapacityRequestPolicy as any as S.Schema<IoK8sApiResourceV1beta2CapacityRequestPolicy>;
 
 /** DeviceCapacity describes a quantity associated with a device. */
 export interface IoK8sApiResourceV1beta2DeviceCapacity {
@@ -3090,30 +2857,20 @@ export interface IoK8sApiResourceV1beta2DeviceCapacity {
   /** value defines how much of a certain capacity that device has. This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value. */
   value: string;
 }
-export const IoK8sApiResourceV1beta2DeviceCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestPolicy: S.optional(IoK8sApiResourceV1beta2CapacityRequestPolicy),
-    value: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceCapacity",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceCapacity>;
+export const IoK8sApiResourceV1beta2DeviceCapacity =
+  IoK8sApiResourceV1beta1DeviceCapacity as any as S.Schema<IoK8sApiResourceV1beta2DeviceCapacity>;
 
 /** capacity defines the set of capacities for this device. The name of each capacity must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1beta2DeviceCapacityMap = {
   [key: string]: IoK8sApiResourceV1beta2DeviceCapacity | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceCapacityMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta2DeviceCapacity,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceCapacityMap>;
+export const IoK8sApiResourceV1beta2DeviceCapacityMap =
+  IoK8sApiResourceV1beta1BasicDeviceCapacityMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceCapacityMap>;
 
 /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
 export type IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList = Array<string>;
 export const IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList>;
 
 /** Counter describes a quantity associated with a device. */
 export type IoK8sApiResourceV1beta2Counter = IoK8sApiResourceV1beta1Counter;
@@ -3123,10 +2880,8 @@ export const IoK8sApiResourceV1beta2Counter = IoK8sApiResourceV1beta1Counter;
 export type IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta1Counter,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap>;
+export const IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap =
+  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap>;
 
 /** DeviceCounterConsumption defines a set of counters that a device will consume from a CounterSet. */
 export interface IoK8sApiResourceV1beta2DeviceCounterConsumption {
@@ -3137,24 +2892,14 @@ export interface IoK8sApiResourceV1beta2DeviceCounterConsumption {
   /** counters defines the counters that will be consumed by the device. The maximum number of counters is 32. */
   counters: IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap;
 }
-export const IoK8sApiResourceV1beta2DeviceCounterConsumption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compatibilityGroups: S.optional(
-      IoK8sApiResourceV1beta2DeviceCounterConsumptionCompatibilityGroupsList,
-    ),
-    counterSet: S.String,
-    counters: IoK8sApiResourceV1beta2DeviceCounterConsumptionCountersMap,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceCounterConsumption",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumption>;
+export const IoK8sApiResourceV1beta2DeviceCounterConsumption =
+  IoK8sApiResourceV1beta1DeviceCounterConsumption as any as S.Schema<IoK8sApiResourceV1beta2DeviceCounterConsumption>;
 
 /** consumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets. There can only be a single entry per counterSet. The maximum number of device counter consumptions per device is 2. */
 export type IoK8sApiResourceV1beta2DeviceConsumesCountersList =
   Array<IoK8sApiResourceV1beta2DeviceCounterConsumption>;
-export const IoK8sApiResourceV1beta2DeviceConsumesCountersList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceCounterConsumption,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceConsumesCountersList>;
+export const IoK8sApiResourceV1beta2DeviceConsumesCountersList =
+  IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList as any as S.Schema<IoK8sApiResourceV1beta2DeviceConsumesCountersList>;
 
 /** NodeAllocatableMapping defines how a DRA allocation directly translates into a node allocatable resource quantity. The mapping can be derived from either the count of allocated devices (via deviceMultiplier) or the specific capacity consumed (via capacityKey and capacityMultiplier). These options are mutually exclusive. Kubelet adds this mapped resource quantity from claim to both requests and limits at the pod-level cgroup, and to limits at the container-level cgroup for each container referencing the claim. */
 export type IoK8sApiResourceV1beta2NodeAllocatableMapping =
@@ -3178,16 +2923,13 @@ export const IoK8sApiResourceV1beta2NodeAllocatableResource =
 export type IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap = {
   [key: string]: IoK8sApiResourceV1beta1NodeAllocatableResource | undefined;
 };
-export const IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta1NodeAllocatableResource,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap>;
+export const IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap =
+  IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap as any as S.Schema<IoK8sApiResourceV1beta2DeviceNodeAllocatableResourcesMap>;
 
 /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1beta2DeviceTaintsList = Array<IoK8sApiResourceV1alpha3DeviceTaint>;
-export const IoK8sApiResourceV1beta2DeviceTaintsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1alpha3DeviceTaint,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintsList>;
+export const IoK8sApiResourceV1beta2DeviceTaintsList =
+  IoK8sApiResourceV1beta1BasicDeviceTaintsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintsList>;
 
 /** Device represents one individual hardware instance that can be selected based on its attributes. Besides the name, exactly one field must be set. */
 export interface IoK8sApiResourceV1beta2Device {
@@ -3253,10 +2995,8 @@ export const IoK8sApiResourceV1beta2ResourcePool = IoK8sApiResourceV1beta1Resour
 export type IoK8sApiResourceV1beta2CounterSetCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1beta2CounterSetCountersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta1Counter,
-) as any as S.Schema<IoK8sApiResourceV1beta2CounterSetCountersMap>;
+export const IoK8sApiResourceV1beta2CounterSetCountersMap =
+  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1beta2CounterSetCountersMap>;
 
 /** CounterSet defines a named set of counters that are available to be used by devices defined in the ResourcePool. The counters are not allocatable by themselves, but can be referenced by devices. When a device is allocated, the portion of counters it uses will no longer be available for use by other devices. */
 export interface IoK8sApiResourceV1beta2CounterSet {
@@ -3265,27 +3005,19 @@ export interface IoK8sApiResourceV1beta2CounterSet {
   /** name defines the name of the counter set. It must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1beta2CounterSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    counters: IoK8sApiResourceV1beta2CounterSetCountersMap,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2CounterSet",
-}) as any as S.Schema<IoK8sApiResourceV1beta2CounterSet>;
+export const IoK8sApiResourceV1beta2CounterSet =
+  IoK8sApiResourceV1beta1CounterSet as any as S.Schema<IoK8sApiResourceV1beta2CounterSet>;
 
 /** sharedCounters defines a list of counter sets, each of which has a name and a list of counters available. The names of the counter sets must be unique in the ResourcePool. Only one of Devices and SharedCounters can be set in a ResourceSlice. The maximum number of counter sets is 8. */
 export type IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList =
   Array<IoK8sApiResourceV1beta2CounterSet>;
-export const IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2CounterSet,
-) as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList>;
+export const IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList =
+  IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceSpecSharedCountersList>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
 export type IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList = Array<string>;
-export const IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList>;
+export const IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1beta2ResourceSliceSpecSkipNodeOperationsList>;
 
 /** ResourceSliceSpec contains the information published by the driver in one ResourceSlice. */
 export interface IoK8sApiResourceV1beta2ResourceSliceSpec {
@@ -3399,9 +3131,8 @@ export const IoK8sApiResourceV1DeviceClassConfiguration =
 /** config defines configuration parameters that apply to each device that is claimed via this class. Some classses may potentially be satisfied by multiple drivers, so each instance of a vendor configuration applies to exactly one driver. They are passed to the driver, but are not considered while allocating the claim. */
 export type IoK8sApiResourceV1DeviceClassSpecConfigList =
   Array<IoK8sApiResourceV1beta1DeviceClassConfiguration>;
-export const IoK8sApiResourceV1DeviceClassSpecConfigList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceClassConfiguration,
-) as any as S.Schema<IoK8sApiResourceV1DeviceClassSpecConfigList>;
+export const IoK8sApiResourceV1DeviceClassSpecConfigList =
+  IoK8sApiResourceV1beta1DeviceClassSpecConfigList as any as S.Schema<IoK8sApiResourceV1DeviceClassSpecConfigList>;
 
 /** CELDeviceSelector contains a CEL expression for selecting a device. */
 export type IoK8sApiResourceV1CELDeviceSelector = IoK8sApiResourceV1beta1CELDeviceSelector;
@@ -3414,9 +3145,8 @@ export const IoK8sApiResourceV1DeviceSelector = IoK8sApiResourceV1beta1DeviceSel
 /** selectors is the list of device selectors. Each selector must be satisfied by a device which is claimed via this class. */
 export type IoK8sApiResourceV1DeviceClassSpecSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1DeviceClassSpecSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1DeviceClassSpecSelectorsList>;
+export const IoK8sApiResourceV1DeviceClassSpecSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1DeviceClassSpecSelectorsList>;
 
 /** DeviceClassSpec is used in a [DeviceClass] to define what can be allocated and how to configure it. */
 export interface IoK8sApiResourceV1DeviceClassSpec {
@@ -3427,15 +3157,8 @@ export interface IoK8sApiResourceV1DeviceClassSpec {
   /** selectors is the list of device selectors. Each selector must be satisfied by a device which is claimed via this class. */
   selectors?: IoK8sApiResourceV1DeviceClassSpecSelectorsList;
 }
-export const IoK8sApiResourceV1DeviceClassSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(IoK8sApiResourceV1DeviceClassSpecConfigList),
-    extendedResourceName: S.optional(S.String),
-    selectors: S.optional(IoK8sApiResourceV1DeviceClassSpecSelectorsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceClassSpec",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceClassSpec>;
+export const IoK8sApiResourceV1DeviceClassSpec =
+  IoK8sApiResourceV1beta1DeviceClassSpec as any as S.Schema<IoK8sApiResourceV1DeviceClassSpec>;
 
 export interface CreateResourceV1DeviceClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -3481,16 +3204,8 @@ export interface IoK8sApiResourceV1DeviceClass {
   /** spec defines what can be allocated and how to configure it. This is mutable. Consumers have to be prepared for classes changing at any time, either because they get updated or replaced. Claim allocations are done once based on whatever was set in classes at the time of allocation. Changing the spec automatically increments the metadata.generation number. */
   spec?: IoK8sApiResourceV1DeviceClassSpec;
 }
-export const IoK8sApiResourceV1DeviceClass = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: S.optional(IoK8sApiResourceV1DeviceClassSpec),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceClass",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceClass>;
+export const IoK8sApiResourceV1DeviceClass =
+  IoK8sApiResourceV1beta1DeviceClass as any as S.Schema<IoK8sApiResourceV1DeviceClass>;
 
 /** DeviceTaintSelector defines which device(s) a DeviceTaintRule applies to. The empty selector matches all devices. Without a selector, no devices are matched. */
 export interface IoK8sApiResourceV1DeviceTaintSelector {
@@ -3501,15 +3216,8 @@ export interface IoK8sApiResourceV1DeviceTaintSelector {
   /** pool is the pool name. If pool is set, only devices in that pool are selected. Also setting the driver name may be useful to avoid ambiguity when different drivers use the same pool name, but this is not required because selecting pools from different drivers may also be useful, for example when drivers with node-local devices use the node name as their pool name. */
   pool?: string;
 }
-export const IoK8sApiResourceV1DeviceTaintSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    device: S.optional(S.String),
-    driver: S.optional(S.String),
-    pool: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceTaintSelector",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceTaintSelector>;
+export const IoK8sApiResourceV1DeviceTaintSelector =
+  IoK8sApiResourceV1alpha3DeviceTaintSelector as any as S.Schema<IoK8sApiResourceV1DeviceTaintSelector>;
 
 /** The device this taint is attached to has the "effect" on any claim which does not tolerate the taint and, through the claim, to pods using the claim. */
 export type IoK8sApiResourceV1DeviceTaint = IoK8sApiResourceV1alpha3DeviceTaint;
@@ -3522,34 +3230,22 @@ export interface IoK8sApiResourceV1DeviceTaintRuleSpec {
   /** taint is the taint that gets applied to matching devices. */
   taint: IoK8sApiResourceV1alpha3DeviceTaint;
 }
-export const IoK8sApiResourceV1DeviceTaintRuleSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deviceSelector: S.optional(IoK8sApiResourceV1DeviceTaintSelector),
-    taint: IoK8sApiResourceV1alpha3DeviceTaint,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceTaintRuleSpec",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleSpec>;
+export const IoK8sApiResourceV1DeviceTaintRuleSpec =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleSpec as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleSpec>;
 
 /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
 export type IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList>;
+export const IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList>;
 
 /** DeviceTaintRuleStatus provides information about an on-going pod eviction. */
 export interface IoK8sApiResourceV1DeviceTaintRuleStatus {
   /** conditions provide information about the state of the DeviceTaintRule and the cluster at some point in time, in a machine-readable and human-readable format. The following condition is currently defined as part of this API, more may get added: - Type: EvictionInProgress - Status: True if there are currently pods which need to be evicted, False otherwise (includes the effects which don't cause eviction). - Reason: not specified, may change - Message: includes information about number of pending pods and already evicted pods in a human-readable format, updated periodically, may change For `effect: None`, the condition above gets set once for each change to the spec, with the message containing information about what would happen if the effect was `NoExecute`. This feedback can be used to decide whether changing the effect to `NoExecute` will work as intended. It only gets set once to avoid having to constantly update the status. Must have 8 or fewer entries. */
   conditions?: IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList;
 }
-export const IoK8sApiResourceV1DeviceTaintRuleStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions: S.optional(IoK8sApiResourceV1DeviceTaintRuleStatusConditionsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceTaintRuleStatus",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleStatus>;
+export const IoK8sApiResourceV1DeviceTaintRuleStatus =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleStatus as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleStatus>;
 
 export interface CreateResourceV1DeviceTaintRuleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -3600,23 +3296,13 @@ export interface IoK8sApiResourceV1DeviceTaintRule {
   /** status provides information about what was requested in the spec. */
   status?: IoK8sApiResourceV1DeviceTaintRuleStatus;
 }
-export const IoK8sApiResourceV1DeviceTaintRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: IoK8sApiResourceV1DeviceTaintRuleSpec,
-    status: S.optional(IoK8sApiResourceV1DeviceTaintRuleStatus),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceTaintRule",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceTaintRule>;
+export const IoK8sApiResourceV1DeviceTaintRule =
+  IoK8sApiResourceV1alpha3DeviceTaintRule as any as S.Schema<IoK8sApiResourceV1DeviceTaintRule>;
 
 /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1DeviceClaimConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1DeviceClaimConfigurationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfigurationRequestsList>;
+export const IoK8sApiResourceV1DeviceClaimConfigurationRequestsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfigurationRequestsList>;
 
 /** DeviceClaimConfiguration is used for configuration parameters in DeviceClaim. */
 export interface IoK8sApiResourceV1DeviceClaimConfiguration {
@@ -3625,27 +3311,19 @@ export interface IoK8sApiResourceV1DeviceClaimConfiguration {
   /** requests lists the names of requests where the configuration applies. If empty, it applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
   requests?: IoK8sApiResourceV1DeviceClaimConfigurationRequestsList;
 }
-export const IoK8sApiResourceV1DeviceClaimConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    opaque: S.optional(IoK8sApiResourceV1beta1OpaqueDeviceConfiguration),
-    requests: S.optional(IoK8sApiResourceV1DeviceClaimConfigurationRequestsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceClaimConfiguration",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfiguration>;
+export const IoK8sApiResourceV1DeviceClaimConfiguration =
+  IoK8sApiResourceV1beta1DeviceClaimConfiguration as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfiguration>;
 
 /** config holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim. */
 export type IoK8sApiResourceV1DeviceClaimConfigList =
   Array<IoK8sApiResourceV1DeviceClaimConfiguration>;
-export const IoK8sApiResourceV1DeviceClaimConfigList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1DeviceClaimConfiguration,
-) as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfigList>;
+export const IoK8sApiResourceV1DeviceClaimConfigList =
+  IoK8sApiResourceV1beta1DeviceClaimConfigList as any as S.Schema<IoK8sApiResourceV1DeviceClaimConfigList>;
 
 /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
 export type IoK8sApiResourceV1DeviceConstraintRequestsList = Array<string>;
-export const IoK8sApiResourceV1DeviceConstraintRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1DeviceConstraintRequestsList>;
+export const IoK8sApiResourceV1DeviceConstraintRequestsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceConstraintRequestsList>;
 
 /** DeviceConstraint must have exactly one field set besides Requests. */
 export interface IoK8sApiResourceV1DeviceConstraint {
@@ -3656,44 +3334,29 @@ export interface IoK8sApiResourceV1DeviceConstraint {
   /** requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the constraint applies to all subrequests. */
   requests?: IoK8sApiResourceV1DeviceConstraintRequestsList;
 }
-export const IoK8sApiResourceV1DeviceConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distinctAttribute: S.optional(S.String),
-    matchAttribute: S.optional(S.String),
-    requests: S.optional(IoK8sApiResourceV1DeviceConstraintRequestsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceConstraint",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceConstraint>;
+export const IoK8sApiResourceV1DeviceConstraint =
+  IoK8sApiResourceV1beta1DeviceConstraint as any as S.Schema<IoK8sApiResourceV1DeviceConstraint>;
 
 /** constraints must be satisfied by the set of devices that get allocated for the claim. */
 export type IoK8sApiResourceV1DeviceClaimConstraintsList =
   Array<IoK8sApiResourceV1DeviceConstraint>;
-export const IoK8sApiResourceV1DeviceClaimConstraintsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1DeviceConstraint,
-) as any as S.Schema<IoK8sApiResourceV1DeviceClaimConstraintsList>;
+export const IoK8sApiResourceV1DeviceClaimConstraintsList =
+  IoK8sApiResourceV1beta1DeviceClaimConstraintsList as any as S.Schema<IoK8sApiResourceV1DeviceClaimConstraintsList>;
 
 /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
 export type IoK8sApiResourceV1CapacityRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApiResourceV1CapacityRequirementsRequestsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1CapacityRequirementsRequestsMap>;
+export const IoK8sApiResourceV1CapacityRequirementsRequestsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiResourceV1CapacityRequirementsRequestsMap>;
 
 /** CapacityRequirements defines the capacity requirements for a specific device request. */
 export interface IoK8sApiResourceV1CapacityRequirements {
   /** requests represent individual device resource requests for distinct resources, all of which must be provided by the device. This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0. When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value--because it exceeds what the requestPolicy allows-- the device is considered ineligible for allocation. For any capacity that is not explicitly requested: - If no requestPolicy is set, the default consumed capacity is equal to the full device capacity (i.e., the whole device is claimed). - If a requestPolicy is set, the default consumed capacity is determined according to that policy. If the device allows multiple allocation, the aggregated amount across all requests must not exceed the capacity value. The consumed capacity, which may be adjusted based on the requestPolicy if defined, is recorded in the resource claim's status.devices[*].consumedCapacity field. */
   requests?: IoK8sApiResourceV1CapacityRequirementsRequestsMap;
 }
-export const IoK8sApiResourceV1CapacityRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(IoK8sApiResourceV1CapacityRequirementsRequestsMap),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1CapacityRequirements",
-}) as any as S.Schema<IoK8sApiResourceV1CapacityRequirements>;
+export const IoK8sApiResourceV1CapacityRequirements =
+  IoK8sApiResourceV1beta1CapacityRequirements as any as S.Schema<IoK8sApiResourceV1CapacityRequirements>;
 
 /** DeviceDerivedAttribute defines a derived attribute computed via CEL. */
 export type IoK8sApiResourceV1DeviceDerivedAttribute =
@@ -3704,16 +3367,14 @@ export const IoK8sApiResourceV1DeviceDerivedAttribute =
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceDerivedAttribute,
-) as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList>;
+export const IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList =
+  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1ExactDeviceRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1ExactDeviceRequestSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestSelectorsList>;
+export const IoK8sApiResourceV1ExactDeviceRequestSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestSelectorsList>;
 
 /** The ResourceClaim this DeviceToleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export type IoK8sApiResourceV1DeviceToleration = IoK8sApiResourceV1beta1DeviceToleration;
@@ -3722,9 +3383,8 @@ export const IoK8sApiResourceV1DeviceToleration = IoK8sApiResourceV1beta1DeviceT
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1ExactDeviceRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1ExactDeviceRequestTolerationsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceToleration,
-) as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestTolerationsList>;
+export const IoK8sApiResourceV1ExactDeviceRequestTolerationsList =
+  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequestTolerationsList>;
 
 /** ExactDeviceRequest is a request for one or more identical devices. */
 export interface IoK8sApiResourceV1ExactDeviceRequest {
@@ -3745,41 +3405,26 @@ export interface IoK8sApiResourceV1ExactDeviceRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1ExactDeviceRequestTolerationsList;
 }
-export const IoK8sApiResourceV1ExactDeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminAccess: S.optional(S.Boolean),
-    allocationMode: S.optional(S.String),
-    capacity: S.optional(IoK8sApiResourceV1CapacityRequirements),
-    count: S.optional(S.Number),
-    derivedAttributes: S.optional(IoK8sApiResourceV1ExactDeviceRequestDerivedAttributesList),
-    deviceClassName: S.String,
-    selectors: S.optional(IoK8sApiResourceV1ExactDeviceRequestSelectorsList),
-    tolerations: S.optional(IoK8sApiResourceV1ExactDeviceRequestTolerationsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1ExactDeviceRequest",
-}) as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequest>;
+export const IoK8sApiResourceV1ExactDeviceRequest =
+  IoK8sApiResourceV1beta2ExactDeviceRequest as any as S.Schema<IoK8sApiResourceV1ExactDeviceRequest>;
 
 /** derivedAttributes defines a set of virtual attributes computed via CEL expressions for each candidate device. These virtual attributes can be referenced in `.devices.constraints` to align and match different devices (e.g., co-allocating a GPU and a NIC on the same NUMA node) even if their drivers publish different attributes. Derived attributes are not available via `device.attributes` in the CEL environment when evaluating selector expressions. Derived attributes allow you to extract, transform, or normalize topology information (such as extracting a NUMA index from a complex topology string or renaming a vendor-specific attribute) into a common virtual attribute name at scheduling time. The scheduler then evaluates these virtual attributes exactly like static attributes when matching constraints. Every derived attribute defined in this list must be referenced by at least one MatchAttribute or DistinctAttribute constraint in the `.devices.constraints` list. The maximum number of derived attributes is 32. This is an alpha field and requires enabling the DRADerivedAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList =
   Array<IoK8sApiResourceV1beta1DeviceDerivedAttribute>;
-export const IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceDerivedAttribute,
-) as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList>;
+export const IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList =
+  IoK8sApiResourceV1beta1DeviceRequestDerivedAttributesList as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList>;
 
 /** selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered. */
 export type IoK8sApiResourceV1DeviceSubRequestSelectorsList =
   Array<IoK8sApiResourceV1beta1DeviceSelector>;
-export const IoK8sApiResourceV1DeviceSubRequestSelectorsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceSelector,
-) as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestSelectorsList>;
+export const IoK8sApiResourceV1DeviceSubRequestSelectorsList =
+  IoK8sApiResourceV1beta1DeviceClassSpecSelectorsList as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestSelectorsList>;
 
 /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1DeviceSubRequestTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1DeviceSubRequestTolerationsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceToleration,
-) as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestTolerationsList>;
+export const IoK8sApiResourceV1DeviceSubRequestTolerationsList =
+  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1DeviceSubRequestTolerationsList>;
 
 /** DeviceSubRequest describes a request for device provided in the claim.spec.devices.requests[].firstAvailable array. Each is typically a request for a single resource like a device, but can also ask for several identical devices. DeviceSubRequest is similar to ExactDeviceRequest, but doesn't expose the AdminAccess field as that one is only supported when requesting a specific device. */
 export interface IoK8sApiResourceV1DeviceSubRequest {
@@ -3800,27 +3445,14 @@ export interface IoK8sApiResourceV1DeviceSubRequest {
   /** tolerations if specified, the request's tolerations. Tolerations for NoSchedule are required to allocate a device which has a taint with that effect. The same applies to NoExecute. In addition, should any of the allocated devices get tainted with NoExecute after allocation and that effect is not tolerated, then all pods consuming the ResourceClaim get deleted to evict them. The scheduler will not let new pods reserve the claim while it has these tainted devices. Once all pods are evicted, the claim will get deallocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
   tolerations?: IoK8sApiResourceV1DeviceSubRequestTolerationsList;
 }
-export const IoK8sApiResourceV1DeviceSubRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allocationMode: S.optional(S.String),
-    capacity: S.optional(IoK8sApiResourceV1CapacityRequirements),
-    count: S.optional(S.Number),
-    derivedAttributes: S.optional(IoK8sApiResourceV1DeviceSubRequestDerivedAttributesList),
-    deviceClassName: S.String,
-    name: S.String,
-    selectors: S.optional(IoK8sApiResourceV1DeviceSubRequestSelectorsList),
-    tolerations: S.optional(IoK8sApiResourceV1DeviceSubRequestTolerationsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceSubRequest",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceSubRequest>;
+export const IoK8sApiResourceV1DeviceSubRequest =
+  IoK8sApiResourceV1beta1DeviceSubRequest as any as S.Schema<IoK8sApiResourceV1DeviceSubRequest>;
 
 /** firstAvailable contains subrequests, of which exactly one will be selected by the scheduler. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one can not be used. DRA does not yet implement scoring, so the scheduler will select the first set of devices that satisfies all the requests in the claim. And if the requirements can be satisfied on more than one node, other scheduling features will determine which node is chosen. This means that the set of devices allocated to a claim might not be the optimal set available to the cluster. Scoring will be implemented later. */
 export type IoK8sApiResourceV1DeviceRequestFirstAvailableList =
   Array<IoK8sApiResourceV1DeviceSubRequest>;
-export const IoK8sApiResourceV1DeviceRequestFirstAvailableList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1DeviceSubRequest,
-) as any as S.Schema<IoK8sApiResourceV1DeviceRequestFirstAvailableList>;
+export const IoK8sApiResourceV1DeviceRequestFirstAvailableList =
+  IoK8sApiResourceV1beta1DeviceRequestFirstAvailableList as any as S.Schema<IoK8sApiResourceV1DeviceRequestFirstAvailableList>;
 
 /** DeviceRequest is a request for devices required for a claim. This is typically a request for a single resource like a device, but can also ask for several identical devices. With FirstAvailable it is also possible to provide a prioritized list of requests. */
 export interface IoK8sApiResourceV1DeviceRequest {
@@ -3831,21 +3463,13 @@ export interface IoK8sApiResourceV1DeviceRequest {
   /** name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim. References using the name in the DeviceRequest will uniquely identify a request when the Exactly field is set. When the FirstAvailable field is set, a reference to the name of the DeviceRequest will match whatever subrequest is chosen by the scheduler. Must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1DeviceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exactly: S.optional(IoK8sApiResourceV1ExactDeviceRequest),
-    firstAvailable: S.optional(IoK8sApiResourceV1DeviceRequestFirstAvailableList),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceRequest",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceRequest>;
+export const IoK8sApiResourceV1DeviceRequest =
+  IoK8sApiResourceV1beta2DeviceRequest as any as S.Schema<IoK8sApiResourceV1DeviceRequest>;
 
 /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
 export type IoK8sApiResourceV1DeviceClaimRequestsList = Array<IoK8sApiResourceV1DeviceRequest>;
-export const IoK8sApiResourceV1DeviceClaimRequestsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1DeviceRequest,
-) as any as S.Schema<IoK8sApiResourceV1DeviceClaimRequestsList>;
+export const IoK8sApiResourceV1DeviceClaimRequestsList =
+  IoK8sApiResourceV1beta2DeviceClaimRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceClaimRequestsList>;
 
 /** DeviceClaim defines how to request devices with a ResourceClaim. */
 export interface IoK8sApiResourceV1DeviceClaim {
@@ -3856,34 +3480,21 @@ export interface IoK8sApiResourceV1DeviceClaim {
   /** requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated. */
   requests?: IoK8sApiResourceV1DeviceClaimRequestsList;
 }
-export const IoK8sApiResourceV1DeviceClaim = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(IoK8sApiResourceV1DeviceClaimConfigList),
-    constraints: S.optional(IoK8sApiResourceV1DeviceClaimConstraintsList),
-    requests: S.optional(IoK8sApiResourceV1DeviceClaimRequestsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceClaim",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceClaim>;
+export const IoK8sApiResourceV1DeviceClaim =
+  IoK8sApiResourceV1beta2DeviceClaim as any as S.Schema<IoK8sApiResourceV1DeviceClaim>;
 
 /** ResourceClaimSpec defines what is being requested in a ResourceClaim and how to configure it. */
 export interface IoK8sApiResourceV1ResourceClaimSpec {
   /** devices defines how to request devices. */
   devices?: IoK8sApiResourceV1DeviceClaim;
 }
-export const IoK8sApiResourceV1ResourceClaimSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    devices: S.optional(IoK8sApiResourceV1DeviceClaim),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1ResourceClaimSpec",
-}) as any as S.Schema<IoK8sApiResourceV1ResourceClaimSpec>;
+export const IoK8sApiResourceV1ResourceClaimSpec =
+  IoK8sApiResourceV1beta2ResourceClaimSpec as any as S.Schema<IoK8sApiResourceV1ResourceClaimSpec>;
 
 /** requests lists the names of requests where the configuration applies. If empty, its applies to all requests. References to subrequests must include the name of the main request and may include the subrequest using the format <main request>[/<subrequest>]. If just the main request is given, the configuration applies to all subrequests. */
 export type IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList = Array<string>;
-export const IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList>;
+export const IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceAllocationConfigurationRequestsList>;
 
 /** DeviceAllocationConfiguration gets embedded in an AllocationResult. */
 export interface IoK8sApiResourceV1DeviceAllocationConfiguration {
@@ -3914,41 +3525,31 @@ export const IoK8sApiResourceV1DeviceAllocationResultConfigList = /*@__PURE__*/ 
 /** bindingConditions contains a copy of the BindingConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList = Array<string>;
 export const IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultBindingConditionsList>;
 
 /** bindingFailureConditions contains a copy of the BindingFailureConditions from the corresponding ResourceSlice at the time of allocation. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList =
   Array<string>;
 export const IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultBindingFailureConditionsList>;
 
 /** consumedCapacity tracks the amount of capacity consumed per device as part of the claim request. The consumed amount may differ from the requested amount: it is rounded up to the nearest valid value based on the device's requestPolicy if applicable (i.e., may not be less than the requested amount). The total consumed capacity for each device must not exceed the DeviceCapacity's Value. This field is populated only for devices that allow multiple allocations. All capacity entries are included, even if the consumed amount is zero. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap = {
   [key: string]: string | undefined;
 };
 export const IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap>;
+  IoK8sApiResourceV1beta1DeviceRequestAllocationResultConsumedCapacityMap as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultConsumedCapacityMap>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for this allocated device when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. It is a copy of the ResourceSlice.spec.skipNodeOperations value at the time when the device was allocated. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList = Array<string>;
 export const IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultSkipNodeOperationsList>;
 
 /** tolerations is a copy of all tolerations specified in the request at the time when the device got allocated. The maximum number of tolerations is 16. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList =
   Array<IoK8sApiResourceV1beta1DeviceToleration>;
-export const IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1DeviceToleration,
-) as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList>;
+export const IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList =
+  IoK8sApiResourceV1beta1DeviceSubRequestTolerationsList as any as S.Schema<IoK8sApiResourceV1DeviceRequestAllocationResultTolerationsList>;
 
 /** DeviceRequestAllocationResult contains the allocation result for one request. */
 export interface IoK8sApiResourceV1DeviceRequestAllocationResult {
@@ -4046,15 +3647,13 @@ export const IoK8sApiResourceV1AllocationResult = /*@__PURE__*/ S.suspend(() =>
 /** Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True. Must not contain more than 8 entries. */
 export type IoK8sApiResourceV1AllocatedDeviceStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiResourceV1AllocatedDeviceStatusConditionsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1Condition,
-) as any as S.Schema<IoK8sApiResourceV1AllocatedDeviceStatusConditionsList>;
+export const IoK8sApiResourceV1AllocatedDeviceStatusConditionsList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleStatusConditionsList as any as S.Schema<IoK8sApiResourceV1AllocatedDeviceStatusConditionsList>;
 
 /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
 export type IoK8sApiResourceV1NetworkDeviceDataIpsList = Array<string>;
-export const IoK8sApiResourceV1NetworkDeviceDataIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1NetworkDeviceDataIpsList>;
+export const IoK8sApiResourceV1NetworkDeviceDataIpsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1NetworkDeviceDataIpsList>;
 
 /** NetworkDeviceData provides network-related details for the allocated device. This information may be filled by drivers or other components to configure or identify the device within a network context. */
 export interface IoK8sApiResourceV1NetworkDeviceData {
@@ -4065,15 +3664,8 @@ export interface IoK8sApiResourceV1NetworkDeviceData {
   /** ips lists the network addresses assigned to the device's network interface. This can include both IPv4 and IPv6 addresses. The IPs are in the CIDR notation, which includes both the address and the associated subnet mask. e.g.: "192.0.2.5/24" for IPv4 and "2001:db8::5/64" for IPv6. */
   ips?: IoK8sApiResourceV1NetworkDeviceDataIpsList;
 }
-export const IoK8sApiResourceV1NetworkDeviceData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hardwareAddress: S.optional(S.String),
-    interfaceName: S.optional(S.String),
-    ips: S.optional(IoK8sApiResourceV1NetworkDeviceDataIpsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1NetworkDeviceData",
-}) as any as S.Schema<IoK8sApiResourceV1NetworkDeviceData>;
+export const IoK8sApiResourceV1NetworkDeviceData =
+  IoK8sApiResourceV1beta1NetworkDeviceData as any as S.Schema<IoK8sApiResourceV1NetworkDeviceData>;
 
 /** AllocatedDeviceStatus contains the status of an allocated device, if the driver chooses to report it. This may include driver-specific information. The combination of Driver, Pool, Device, and ShareID must match the corresponding key in Status.Allocation.Devices. */
 export interface IoK8sApiResourceV1AllocatedDeviceStatus {
@@ -4092,26 +3684,14 @@ export interface IoK8sApiResourceV1AllocatedDeviceStatus {
   /** ShareID uniquely identifies an individual allocation share of the device. */
   shareID?: string;
 }
-export const IoK8sApiResourceV1AllocatedDeviceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions: S.optional(IoK8sApiResourceV1AllocatedDeviceStatusConditionsList),
-    data: S.optional(S.Unknown),
-    device: S.String,
-    driver: S.String,
-    networkData: S.optional(IoK8sApiResourceV1NetworkDeviceData),
-    pool: S.String,
-    shareID: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1AllocatedDeviceStatus",
-}) as any as S.Schema<IoK8sApiResourceV1AllocatedDeviceStatus>;
+export const IoK8sApiResourceV1AllocatedDeviceStatus =
+  IoK8sApiResourceV1beta1AllocatedDeviceStatus as any as S.Schema<IoK8sApiResourceV1AllocatedDeviceStatus>;
 
 /** devices contains the status of each device allocated for this claim, as reported by the driver. This can include driver-specific information. Entries are owned by their respective drivers. */
 export type IoK8sApiResourceV1ResourceClaimStatusDevicesList =
   Array<IoK8sApiResourceV1AllocatedDeviceStatus>;
-export const IoK8sApiResourceV1ResourceClaimStatusDevicesList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1AllocatedDeviceStatus,
-) as any as S.Schema<IoK8sApiResourceV1ResourceClaimStatusDevicesList>;
+export const IoK8sApiResourceV1ResourceClaimStatusDevicesList =
+  IoK8sApiResourceV1beta1ResourceClaimStatusDevicesList as any as S.Schema<IoK8sApiResourceV1ResourceClaimStatusDevicesList>;
 
 /** ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim. */
 export type IoK8sApiResourceV1ResourceClaimConsumerReference =
@@ -4122,9 +3702,8 @@ export const IoK8sApiResourceV1ResourceClaimConsumerReference =
 /** reservedFor indicates which entities are currently allowed to use the claim. A Pod which references a ResourceClaim which is not reserved for that Pod will not be started. A claim that is in use or might be in use because it has been reserved must not get deallocated. In a cluster with multiple scheduler instances, two pods might get scheduled concurrently by different schedulers. When they reference the same ResourceClaim which already has reached its maximum number of consumers, only one pod can be scheduled. Both schedulers try to add their pod to the claim.status.reservedFor field, but only the update that reaches the API server first gets stored. The other one fails with an error and the scheduler which issued it knows that it must put the pod back into the queue, waiting for the ResourceClaim to become usable again. There can be at most 256 such reservations. This may get increased in the future, but not reduced. */
 export type IoK8sApiResourceV1ResourceClaimStatusReservedForList =
   Array<IoK8sApiResourceV1beta1ResourceClaimConsumerReference>;
-export const IoK8sApiResourceV1ResourceClaimStatusReservedForList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta1ResourceClaimConsumerReference,
-) as any as S.Schema<IoK8sApiResourceV1ResourceClaimStatusReservedForList>;
+export const IoK8sApiResourceV1ResourceClaimStatusReservedForList =
+  IoK8sApiResourceV1beta1ResourceClaimStatusReservedForList as any as S.Schema<IoK8sApiResourceV1ResourceClaimStatusReservedForList>;
 
 /** ResourceClaimStatus tracks whether the resource has been allocated and what the result of that was. */
 export interface IoK8sApiResourceV1ResourceClaimStatus {
@@ -4222,14 +3801,8 @@ export interface IoK8sApiResourceV1ResourceClaimTemplateSpec {
   /** spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here. */
   spec?: IoK8sApiResourceV1ResourceClaimSpec;
 }
-export const IoK8sApiResourceV1ResourceClaimTemplateSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: S.optional(IoK8sApiResourceV1ResourceClaimSpec),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1ResourceClaimTemplateSpec",
-}) as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateSpec>;
+export const IoK8sApiResourceV1ResourceClaimTemplateSpec =
+  IoK8sApiResourceV1beta2ResourceClaimTemplateSpec as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateSpec>;
 
 export interface CreateResourceV1NamespacedResourceClaimTemplateRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -4284,40 +3857,28 @@ export interface IoK8sApiResourceV1ResourceClaimTemplate {
   /** spec describes the ResourceClaim that is to be generated. This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore. */
   spec?: IoK8sApiResourceV1ResourceClaimTemplateSpec;
 }
-export const IoK8sApiResourceV1ResourceClaimTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: S.optional(IoK8sApiResourceV1ResourceClaimTemplateSpec),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1ResourceClaimTemplate",
-}) as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplate>;
+export const IoK8sApiResourceV1ResourceClaimTemplate =
+  IoK8sApiResourceV1beta2ResourceClaimTemplate as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplate>;
 
 /** bools is a non-empty list of true/false values. */
 export type IoK8sApiResourceV1DeviceAttributeBoolsList = Array<boolean>;
-export const IoK8sApiResourceV1DeviceAttributeBoolsList = /*@__PURE__*/ S.Array(
-  S.Boolean,
-) as any as S.Schema<IoK8sApiResourceV1DeviceAttributeBoolsList>;
+export const IoK8sApiResourceV1DeviceAttributeBoolsList =
+  IoK8sApiResourceV1beta1DeviceAttributeBoolsList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeBoolsList>;
 
 /** ints is a non-empty list of numbers. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceAttributeIntsList = Array<number>;
-export const IoK8sApiResourceV1DeviceAttributeIntsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<IoK8sApiResourceV1DeviceAttributeIntsList>;
+export const IoK8sApiResourceV1DeviceAttributeIntsList =
+  IoK8sApiResourceV1beta1DeviceAttributeIntsList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeIntsList>;
 
 /** strings is a non-empty list of strings. Each string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceAttributeStringsList = Array<string>;
-export const IoK8sApiResourceV1DeviceAttributeStringsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1DeviceAttributeStringsList>;
+export const IoK8sApiResourceV1DeviceAttributeStringsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeStringsList>;
 
 /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
 export type IoK8sApiResourceV1DeviceAttributeVersionsList = Array<string>;
-export const IoK8sApiResourceV1DeviceAttributeVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1DeviceAttributeVersionsList>;
+export const IoK8sApiResourceV1DeviceAttributeVersionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceAttributeVersionsList>;
 
 /** DeviceAttribute must have exactly one field set. */
 export interface IoK8sApiResourceV1DeviceAttribute {
@@ -4338,41 +3899,25 @@ export interface IoK8sApiResourceV1DeviceAttribute {
   /** versions is a non-empty list of semantic versions according to semver.org spec 2.0.0. Each version string must not be longer than 64 characters. This is an alpha field and requires enabling the DRAListTypeAttributes feature gate. */
   versions?: IoK8sApiResourceV1DeviceAttributeVersionsList;
 }
-export const IoK8sApiResourceV1DeviceAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bool: S.optional(S.Boolean),
-    bools: S.optional(IoK8sApiResourceV1DeviceAttributeBoolsList),
-    int: S.optional(S.Number),
-    ints: S.optional(IoK8sApiResourceV1DeviceAttributeIntsList),
-    string: S.optional(S.String),
-    strings: S.optional(IoK8sApiResourceV1DeviceAttributeStringsList),
-    version: S.optional(S.String),
-    versions: S.optional(IoK8sApiResourceV1DeviceAttributeVersionsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceAttribute",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceAttribute>;
+export const IoK8sApiResourceV1DeviceAttribute =
+  IoK8sApiResourceV1beta1DeviceAttribute as any as S.Schema<IoK8sApiResourceV1DeviceAttribute>;
 
 /** attributes defines the set of attributes for this device. The name of each attribute must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1DeviceAttributesMap = {
   [key: string]: IoK8sApiResourceV1DeviceAttribute | undefined;
 };
-export const IoK8sApiResourceV1DeviceAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1DeviceAttribute,
-) as any as S.Schema<IoK8sApiResourceV1DeviceAttributesMap>;
+export const IoK8sApiResourceV1DeviceAttributesMap =
+  IoK8sApiResourceV1beta1BasicDeviceAttributesMap as any as S.Schema<IoK8sApiResourceV1DeviceAttributesMap>;
 
 /** bindingConditions defines the conditions for proceeding with binding. All of these conditions must be set in the per-device status conditions with a value of True to proceed with binding the pod to the node while scheduling the pod. The maximum number of binding conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceBindingConditionsList = Array<string>;
-export const IoK8sApiResourceV1DeviceBindingConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1DeviceBindingConditionsList>;
+export const IoK8sApiResourceV1DeviceBindingConditionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceBindingConditionsList>;
 
 /** bindingFailureConditions defines the conditions for binding failure. They may be set in the per-device status conditions. If any is set to "True", a binding failure occurred. The maximum number of binding failure conditions is 4. The conditions must be a valid condition type string. This is a beta field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gates. */
 export type IoK8sApiResourceV1DeviceBindingFailureConditionsList = Array<string>;
-export const IoK8sApiResourceV1DeviceBindingFailureConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1DeviceBindingFailureConditionsList>;
+export const IoK8sApiResourceV1DeviceBindingFailureConditionsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1DeviceBindingFailureConditionsList>;
 
 /** CapacityRequestPolicyRange defines a valid range for consumable capacity values. If the DRAFractionalCapacityRange feature gate is enabled and at least one of Min, Max, or Step is a fractional quantity (i.e. its value is not an integer), milli-unit arithmetic is used instead, supporting values with up to 3 decimal places (e.g. 100m = 0.1). The largest supported value then is 1000 times smaller compared to using 64-bit integers. Otherwise, all comparisons use 64-bit integer arithmetic via resource.Quantity.Value(). - If the requested amount is less than Min, it is rounded up to the Min value. - If Step is set and the requested amount is between Min and Max but not aligned with Step, it will be rounded up to the next value equal to Min + (n * Step). - If Step is not set, the requested amount is used as-is if it falls within the range Min to Max (if set). - If the requested or rounded amount exceeds Max (if set), the request does not satisfy the policy, and the device cannot be allocated. */
 export type IoK8sApiResourceV1CapacityRequestPolicyRange =
@@ -4382,9 +3927,8 @@ export const IoK8sApiResourceV1CapacityRequestPolicyRange =
 
 /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
 export type IoK8sApiResourceV1CapacityRequestPolicyValidValuesList = Array<string>;
-export const IoK8sApiResourceV1CapacityRequestPolicyValidValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1CapacityRequestPolicyValidValuesList>;
+export const IoK8sApiResourceV1CapacityRequestPolicyValidValuesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1CapacityRequestPolicyValidValuesList>;
 
 /** CapacityRequestPolicy defines how requests consume device capacity. Must not set more than one ValidRequestValues. */
 export interface IoK8sApiResourceV1CapacityRequestPolicy {
@@ -4395,15 +3939,8 @@ export interface IoK8sApiResourceV1CapacityRequestPolicy {
   /** validValues defines a set of acceptable quantity values in consuming requests. Must not contain more than 10 entries. Must be sorted in ascending order. If this field is set, Default must be defined and it must be included in ValidValues list. If the requested amount does not match any valid value but smaller than some valid values, the scheduler calculates the smallest valid value that is greater than or equal to the request. That is: min(ceil(requestedValue) U+2208 validValues), where requestedValue <= max(validValues). If the requested amount exceeds all valid values, the request violates the policy, and this device cannot be allocated. */
   validValues?: IoK8sApiResourceV1CapacityRequestPolicyValidValuesList;
 }
-export const IoK8sApiResourceV1CapacityRequestPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(S.String),
-    validRange: S.optional(IoK8sApiResourceV1beta1CapacityRequestPolicyRange),
-    validValues: S.optional(IoK8sApiResourceV1CapacityRequestPolicyValidValuesList),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1CapacityRequestPolicy",
-}) as any as S.Schema<IoK8sApiResourceV1CapacityRequestPolicy>;
+export const IoK8sApiResourceV1CapacityRequestPolicy =
+  IoK8sApiResourceV1beta1CapacityRequestPolicy as any as S.Schema<IoK8sApiResourceV1CapacityRequestPolicy>;
 
 /** DeviceCapacity describes a quantity associated with a device. */
 export interface IoK8sApiResourceV1DeviceCapacity {
@@ -4412,30 +3949,20 @@ export interface IoK8sApiResourceV1DeviceCapacity {
   /** value defines how much of a certain capacity that device has. This field reflects the fixed total capacity and does not change. The consumed amount is tracked separately by scheduler and does not affect this value. */
   value: string;
 }
-export const IoK8sApiResourceV1DeviceCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestPolicy: S.optional(IoK8sApiResourceV1CapacityRequestPolicy),
-    value: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceCapacity",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceCapacity>;
+export const IoK8sApiResourceV1DeviceCapacity =
+  IoK8sApiResourceV1beta1DeviceCapacity as any as S.Schema<IoK8sApiResourceV1DeviceCapacity>;
 
 /** capacity defines the set of capacities for this device. The name of each capacity must be unique in that set. The maximum number of attributes and capacities combined is 32. */
 export type IoK8sApiResourceV1DeviceCapacityMap = {
   [key: string]: IoK8sApiResourceV1DeviceCapacity | undefined;
 };
-export const IoK8sApiResourceV1DeviceCapacityMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1DeviceCapacity,
-) as any as S.Schema<IoK8sApiResourceV1DeviceCapacityMap>;
+export const IoK8sApiResourceV1DeviceCapacityMap =
+  IoK8sApiResourceV1beta1BasicDeviceCapacityMap as any as S.Schema<IoK8sApiResourceV1DeviceCapacityMap>;
 
 /** compatibilityGroups is a list of opaque group names for this counter set consumption. Devices that consume counters from the same counter set may only be allocated at the same time ("co-allocated") if they all share at least one common group: the intersection of the CompatibilityGroups of all co-allocated devices on that counter set must be non-empty. Devices that consume from different counter sets are never compared via this field. An unset field, an explicit nil, and an empty list are equivalent and mean "no groups": such a device is only co-allocatable with sibling devices on the same counter set that also have no groups, and is never co-allocatable with a device that declares one or more groups. Group names are opaque and meaningful only within the publishing driver's pool. The maximum number of groups is 2, and the names must be unique. */
 export type IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList = Array<string>;
 export const IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList>;
+  IoK8sApiResourceV1beta1DeviceAllocationConfigurationRequestsList as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList>;
 
 /** Counter describes a quantity associated with a device. */
 export type IoK8sApiResourceV1Counter = IoK8sApiResourceV1beta1Counter;
@@ -4445,10 +3972,8 @@ export const IoK8sApiResourceV1Counter = IoK8sApiResourceV1beta1Counter;
 export type IoK8sApiResourceV1DeviceCounterConsumptionCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1DeviceCounterConsumptionCountersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta1Counter,
-) as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumptionCountersMap>;
+export const IoK8sApiResourceV1DeviceCounterConsumptionCountersMap =
+  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumptionCountersMap>;
 
 /** DeviceCounterConsumption defines a set of counters that a device will consume from a CounterSet. */
 export interface IoK8sApiResourceV1DeviceCounterConsumption {
@@ -4459,24 +3984,14 @@ export interface IoK8sApiResourceV1DeviceCounterConsumption {
   /** counters defines the counters that will be consumed by the device. The maximum number of counters is 32. */
   counters: IoK8sApiResourceV1DeviceCounterConsumptionCountersMap;
 }
-export const IoK8sApiResourceV1DeviceCounterConsumption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compatibilityGroups: S.optional(
-      IoK8sApiResourceV1DeviceCounterConsumptionCompatibilityGroupsList,
-    ),
-    counterSet: S.String,
-    counters: IoK8sApiResourceV1DeviceCounterConsumptionCountersMap,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceCounterConsumption",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumption>;
+export const IoK8sApiResourceV1DeviceCounterConsumption =
+  IoK8sApiResourceV1beta1DeviceCounterConsumption as any as S.Schema<IoK8sApiResourceV1DeviceCounterConsumption>;
 
 /** consumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets. There can only be a single entry per counterSet. The maximum number of device counter consumptions per device is 2. */
 export type IoK8sApiResourceV1DeviceConsumesCountersList =
   Array<IoK8sApiResourceV1DeviceCounterConsumption>;
-export const IoK8sApiResourceV1DeviceConsumesCountersList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1DeviceCounterConsumption,
-) as any as S.Schema<IoK8sApiResourceV1DeviceConsumesCountersList>;
+export const IoK8sApiResourceV1DeviceConsumesCountersList =
+  IoK8sApiResourceV1beta1BasicDeviceConsumesCountersList as any as S.Schema<IoK8sApiResourceV1DeviceConsumesCountersList>;
 
 /** NodeAllocatableMapping defines how a DRA allocation directly translates into a node allocatable resource quantity. The mapping can be derived from either the count of allocated devices (via deviceMultiplier) or the specific capacity consumed (via capacityKey and capacityMultiplier). These options are mutually exclusive. Kubelet adds this mapped resource quantity from claim to both requests and limits at the pod-level cgroup, and to limits at the container-level cgroup for each container referencing the claim. */
 export type IoK8sApiResourceV1NodeAllocatableMapping =
@@ -4500,16 +4015,13 @@ export const IoK8sApiResourceV1NodeAllocatableResource =
 export type IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap = {
   [key: string]: IoK8sApiResourceV1beta1NodeAllocatableResource | undefined;
 };
-export const IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta1NodeAllocatableResource,
-) as any as S.Schema<IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap>;
+export const IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap =
+  IoK8sApiResourceV1beta1BasicDeviceNodeAllocatableResourcesMap as any as S.Schema<IoK8sApiResourceV1DeviceNodeAllocatableResourcesMap>;
 
 /** taints if specified, these are the driver-defined taints. The maximum number of taints is 16. If taints are set for any device in a ResourceSlice, then the maximum number of allowed devices per ResourceSlice is 64 instead of 128. This is a beta field and requires enabling the DRADeviceTaints feature gate. */
 export type IoK8sApiResourceV1DeviceTaintsList = Array<IoK8sApiResourceV1alpha3DeviceTaint>;
-export const IoK8sApiResourceV1DeviceTaintsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1alpha3DeviceTaint,
-) as any as S.Schema<IoK8sApiResourceV1DeviceTaintsList>;
+export const IoK8sApiResourceV1DeviceTaintsList =
+  IoK8sApiResourceV1beta1BasicDeviceTaintsList as any as S.Schema<IoK8sApiResourceV1DeviceTaintsList>;
 
 /** Device represents one individual hardware instance that can be selected based on its attributes. Besides the name, exactly one field must be set. */
 export interface IoK8sApiResourceV1Device {
@@ -4572,10 +4084,8 @@ export const IoK8sApiResourceV1ResourcePool = IoK8sApiResourceV1beta1ResourcePoo
 export type IoK8sApiResourceV1CounterSetCountersMap = {
   [key: string]: IoK8sApiResourceV1beta1Counter | undefined;
 };
-export const IoK8sApiResourceV1CounterSetCountersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  IoK8sApiResourceV1beta1Counter,
-) as any as S.Schema<IoK8sApiResourceV1CounterSetCountersMap>;
+export const IoK8sApiResourceV1CounterSetCountersMap =
+  IoK8sApiResourceV1beta1DeviceCounterConsumptionCountersMap as any as S.Schema<IoK8sApiResourceV1CounterSetCountersMap>;
 
 /** CounterSet defines a named set of counters that are available to be used by devices defined in the ResourcePool. The counters are not allocatable by themselves, but can be referenced by devices. When a device is allocated, the portion of counters it uses will no longer be available for use by other devices. */
 export interface IoK8sApiResourceV1CounterSet {
@@ -4584,27 +4094,19 @@ export interface IoK8sApiResourceV1CounterSet {
   /** name defines the name of the counter set. It must be a DNS label. */
   name: string;
 }
-export const IoK8sApiResourceV1CounterSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    counters: IoK8sApiResourceV1CounterSetCountersMap,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1CounterSet",
-}) as any as S.Schema<IoK8sApiResourceV1CounterSet>;
+export const IoK8sApiResourceV1CounterSet =
+  IoK8sApiResourceV1beta1CounterSet as any as S.Schema<IoK8sApiResourceV1CounterSet>;
 
 /** sharedCounters defines a list of counter sets, each of which has a name and a list of counters available. The names of the counter sets must be unique in the ResourcePool. Only one of Devices and SharedCounters can be set in a ResourceSlice. The maximum number of counter sets is 8. */
 export type IoK8sApiResourceV1ResourceSliceSpecSharedCountersList =
   Array<IoK8sApiResourceV1CounterSet>;
-export const IoK8sApiResourceV1ResourceSliceSpecSharedCountersList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1CounterSet,
-) as any as S.Schema<IoK8sApiResourceV1ResourceSliceSpecSharedCountersList>;
+export const IoK8sApiResourceV1ResourceSliceSpecSharedCountersList =
+  IoK8sApiResourceV1beta1ResourceSliceSpecSharedCountersList as any as S.Schema<IoK8sApiResourceV1ResourceSliceSpecSharedCountersList>;
 
 /** skipNodeOperations lists node-local resource operations (gRPC calls) that will be skipped for the devices in this slice when determining whether operations are necessary on the node. If all allocated devices for a driver in a claim skip an operation, that gRPC call will be skipped. Valid values are: - "NodePrepareResources": NodePrepareResources gRPC calls are skipped. This value cannot be specified unless "NodeUnprepareResources" is also listed (or "*" is specified). - "NodeUnprepareResources": NodeUnprepareResources gRPC calls are skipped. - "*": All node-local resource operations are skipped. Other values may be added in the future. The kubelet must ignore unknown values. */
 export type IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList = Array<string>;
-export const IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList>;
+export const IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiResourceV1ResourceSliceSpecSkipNodeOperationsList>;
 
 /** ResourceSliceSpec contains the information published by the driver in one ResourceSlice. */
 export interface IoK8sApiResourceV1ResourceSliceSpec {
@@ -6757,21 +6259,18 @@ export const GetResourceV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(()
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -7483,9 +6982,8 @@ export const ListResourceV1beta2DeviceClassRequest = /*@__PURE__*/ S.suspend(() 
 /** Items is the list of resource classes. */
 export type IoK8sApiResourceV1beta2DeviceClassListItemsList =
   Array<IoK8sApiResourceV1beta2DeviceClass>;
-export const IoK8sApiResourceV1beta2DeviceClassListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceClass,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassListItemsList>;
+export const IoK8sApiResourceV1beta2DeviceClassListItemsList =
+  IoK8sApiResourceV1beta1DeviceClassListItemsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassListItemsList>;
 
 /** DeviceClassList is a collection of classes. */
 export interface IoK8sApiResourceV1beta2DeviceClassList {
@@ -7498,16 +6996,8 @@ export interface IoK8sApiResourceV1beta2DeviceClassList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta2DeviceClassList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiResourceV1beta2DeviceClassListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceClassList",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassList>;
+export const IoK8sApiResourceV1beta2DeviceClassList =
+  IoK8sApiResourceV1beta1DeviceClassList as any as S.Schema<IoK8sApiResourceV1beta2DeviceClassList>;
 
 export interface ListResourceV1beta2DeviceTaintRuleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -7559,9 +7049,8 @@ export const ListResourceV1beta2DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend
 /** Items is the list of DeviceTaintRules. */
 export type IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList =
   Array<IoK8sApiResourceV1beta2DeviceTaintRule>;
-export const IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1beta2DeviceTaintRule,
-) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList>;
+export const IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList>;
 
 /** DeviceTaintRuleList is a collection of DeviceTaintRules. */
 export interface IoK8sApiResourceV1beta2DeviceTaintRuleList {
@@ -7574,16 +7063,8 @@ export interface IoK8sApiResourceV1beta2DeviceTaintRuleList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1beta2DeviceTaintRuleList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiResourceV1beta2DeviceTaintRuleListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1beta2DeviceTaintRuleList",
-}) as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleList>;
+export const IoK8sApiResourceV1beta2DeviceTaintRuleList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleList as any as S.Schema<IoK8sApiResourceV1beta2DeviceTaintRuleList>;
 
 export interface ListResourceV1beta2NamespacedResourceClaimRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -7974,9 +7455,8 @@ export const ListResourceV1DeviceClassRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Items is the list of resource classes. */
 export type IoK8sApiResourceV1DeviceClassListItemsList = Array<IoK8sApiResourceV1DeviceClass>;
-export const IoK8sApiResourceV1DeviceClassListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1DeviceClass,
-) as any as S.Schema<IoK8sApiResourceV1DeviceClassListItemsList>;
+export const IoK8sApiResourceV1DeviceClassListItemsList =
+  IoK8sApiResourceV1beta1DeviceClassListItemsList as any as S.Schema<IoK8sApiResourceV1DeviceClassListItemsList>;
 
 /** DeviceClassList is a collection of classes. */
 export interface IoK8sApiResourceV1DeviceClassList {
@@ -7989,16 +7469,8 @@ export interface IoK8sApiResourceV1DeviceClassList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1DeviceClassList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiResourceV1DeviceClassListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceClassList",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceClassList>;
+export const IoK8sApiResourceV1DeviceClassList =
+  IoK8sApiResourceV1beta1DeviceClassList as any as S.Schema<IoK8sApiResourceV1DeviceClassList>;
 
 export interface ListResourceV1DeviceTaintRuleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -8048,9 +7520,8 @@ export const ListResourceV1DeviceTaintRuleRequest = /*@__PURE__*/ S.suspend(() =
 /** Items is the list of DeviceTaintRules. */
 export type IoK8sApiResourceV1DeviceTaintRuleListItemsList =
   Array<IoK8sApiResourceV1DeviceTaintRule>;
-export const IoK8sApiResourceV1DeviceTaintRuleListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1DeviceTaintRule,
-) as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleListItemsList>;
+export const IoK8sApiResourceV1DeviceTaintRuleListItemsList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleListItemsList as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleListItemsList>;
 
 /** DeviceTaintRuleList is a collection of DeviceTaintRules. */
 export interface IoK8sApiResourceV1DeviceTaintRuleList {
@@ -8063,16 +7534,8 @@ export interface IoK8sApiResourceV1DeviceTaintRuleList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1DeviceTaintRuleList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiResourceV1DeviceTaintRuleListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1DeviceTaintRuleList",
-}) as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleList>;
+export const IoK8sApiResourceV1DeviceTaintRuleList =
+  IoK8sApiResourceV1alpha3DeviceTaintRuleList as any as S.Schema<IoK8sApiResourceV1DeviceTaintRuleList>;
 
 export interface ListResourceV1NamespacedResourceClaimRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -8213,9 +7676,8 @@ export const ListResourceV1NamespacedResourceClaimTemplateRequest = /*@__PURE__*
 /** Items is the list of resource claim templates. */
 export type IoK8sApiResourceV1ResourceClaimTemplateListItemsList =
   Array<IoK8sApiResourceV1ResourceClaimTemplate>;
-export const IoK8sApiResourceV1ResourceClaimTemplateListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiResourceV1ResourceClaimTemplate,
-) as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateListItemsList>;
+export const IoK8sApiResourceV1ResourceClaimTemplateListItemsList =
+  IoK8sApiResourceV1beta2ResourceClaimTemplateListItemsList as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateListItemsList>;
 
 /** ResourceClaimTemplateList is a collection of claim templates. */
 export interface IoK8sApiResourceV1ResourceClaimTemplateList {
@@ -8228,16 +7690,8 @@ export interface IoK8sApiResourceV1ResourceClaimTemplateList {
   /** Standard list metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiResourceV1ResourceClaimTemplateList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiResourceV1ResourceClaimTemplateListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiResourceV1ResourceClaimTemplateList",
-}) as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateList>;
+export const IoK8sApiResourceV1ResourceClaimTemplateList =
+  IoK8sApiResourceV1beta2ResourceClaimTemplateList as any as S.Schema<IoK8sApiResourceV1ResourceClaimTemplateList>;
 
 export interface ListResourceV1ResourceClaimForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */

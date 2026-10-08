@@ -292,11 +292,8 @@ export const PutReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutReportDefinitionResult {
   reportId?: string;
 }
-export const PutReportDefinitionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reportId: S.optional(S.String) }),
-).annotate({
-  identifier: "PutReportDefinitionResult",
-}) as any as S.Schema<PutReportDefinitionResult>;
+export const PutReportDefinitionResult =
+  DeleteReportDefinitionResult as any as S.Schema<PutReportDefinitionResult>;
 export interface UpdateReportDefinitionRequest {
   reportId: string;
   reportDescription: string;
@@ -327,11 +324,8 @@ export const UpdateReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateReportDefinitionResult {
   reportId?: string;
 }
-export const UpdateReportDefinitionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reportId: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateReportDefinitionResult",
-}) as any as S.Schema<UpdateReportDefinitionResult>;
+export const UpdateReportDefinitionResult =
+  DeleteReportDefinitionResult as any as S.Schema<UpdateReportDefinitionResult>;
 export type ErrorMessage = string;
 export type DeleteReportDefinitionError =
   | AccessDeniedException

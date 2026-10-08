@@ -156,9 +156,8 @@ export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed hosts this secret may be sent to */
 export type UpdateSecretRequestHostsList = Array<string>;
-export const UpdateSecretRequestHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSecretRequestHostsList>;
+export const UpdateSecretRequestHostsList =
+  CreateSecretRequestHostsList as any as S.Schema<UpdateSecretRequestHostsList>;
 
 export interface UpdateSecretRequest {
   /** ID of the secret */

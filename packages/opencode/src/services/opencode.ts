@@ -106,10 +106,8 @@ export type McpRemoteConfigType = "remote";
 export const McpRemoteConfigType = S.String;
 
 export type McpRemoteConfigHeadersMap = { [key: string]: string | undefined };
-export const McpRemoteConfigHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<McpRemoteConfigHeadersMap>;
+export const McpRemoteConfigHeadersMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<McpRemoteConfigHeadersMap>;
 
 export interface McpOAuthConfig {
   clientId?: string;
@@ -377,9 +375,7 @@ export const AppLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppLogRequest" }) as any as S.Schema<AppLogRequest>;
 
 export type AppLogResponse = boolean;
-export const AppLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "AppLogResponse" }) as any as S.Schema<AppLogResponse>;
+export const AppLogResponse = AbortSessionResponse as any as S.Schema<AppLogResponse>;
 
 export interface ApplyVcsRequest {
   directory?: string;
@@ -465,10 +461,8 @@ export const AuthenticateMcpAuthResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthenticateMcpAuthResponse>;
 
 export type AuthorizeProviderOauthRequestInputsMap = { [key: string]: string | undefined };
-export const AuthorizeProviderOauthRequestInputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizeProviderOauthRequestInputsMap>;
+export const AuthorizeProviderOauthRequestInputsMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<AuthorizeProviderOauthRequestInputsMap>;
 
 export interface AuthorizeProviderOauthRequest {
   providerID: string;
@@ -569,9 +563,8 @@ export const CommitV2SessionRevertRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommitV2SessionRevertRequest>;
 
 export interface CommitV2SessionRevertResponse {}
-export const CommitV2SessionRevertResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CommitV2SessionRevertResponse",
-}) as any as S.Schema<CommitV2SessionRevertResponse>;
+export const CommitV2SessionRevertResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<CommitV2SessionRevertResponse>;
 
 export interface CompactV2SessionRequest {
   sessionID: string;
@@ -583,9 +576,8 @@ export const CompactV2SessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompactV2SessionRequest" }) as any as S.Schema<CompactV2SessionRequest>;
 
 export interface CompactV2SessionResponse {}
-export const CompactV2SessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CompactV2SessionResponse",
-}) as any as S.Schema<CompactV2SessionResponse>;
+export const CompactV2SessionResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<CompactV2SessionResponse>;
 
 export type CompleteV2IntegrationAttemptRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const CompleteV2IntegrationAttemptRequestLocation =
@@ -609,11 +601,8 @@ export const CompleteV2IntegrationAttemptRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompleteV2IntegrationAttemptRequest>;
 
 export interface CompleteV2IntegrationAttemptResponse {}
-export const CompleteV2IntegrationAttemptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CompleteV2IntegrationAttemptResponse",
-}) as any as S.Schema<CompleteV2IntegrationAttemptResponse>;
+export const CompleteV2IntegrationAttemptResponse =
+  CancelV2IntegrationAttemptResponse as any as S.Schema<CompleteV2IntegrationAttemptResponse>;
 
 export interface ConfigProvidersRequest {
   directory?: string;
@@ -813,10 +802,7 @@ export type ModelStatus = "alpha" | "beta" | "deprecated" | "active";
 export const ModelStatus = S.String;
 
 export type ModelHeadersMap = { [key: string]: string | undefined };
-export const ModelHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelHeadersMap>;
+export const ModelHeadersMap = McpLocalConfigEnvironmentMap as any as S.Schema<ModelHeadersMap>;
 
 export type ModelVariantsMap = { [key: string]: unknown | undefined };
 export const ModelVariantsMap = /*@__PURE__*/ S.Record(
@@ -890,10 +876,8 @@ export const ConfigProvidersResponseProvidersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConfigProvidersResponseProvidersList>;
 
 export type ConfigProvidersResponseDefaultMap = { [key: string]: string | undefined };
-export const ConfigProvidersResponseDefaultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigProvidersResponseDefaultMap>;
+export const ConfigProvidersResponseDefaultMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ConfigProvidersResponseDefaultMap>;
 
 export interface ConfigProvidersResponse {
   providers: ConfigProvidersResponseProvidersList;
@@ -920,9 +904,7 @@ export const ConnectMcpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectMcpRequest" }) as any as S.Schema<ConnectMcpRequest>;
 
 export type ConnectMcpResponse = boolean;
-export const ConnectMcpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ConnectMcpResponse" }) as any as S.Schema<ConnectMcpResponse>;
+export const ConnectMcpResponse = AbortSessionResponse as any as S.Schema<ConnectMcpResponse>;
 
 export interface ConnectPtyRequest {
   ptyID: string;
@@ -942,9 +924,7 @@ export const ConnectPtyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectPtyRequest" }) as any as S.Schema<ConnectPtyRequest>;
 
 export type ConnectPtyResponse = boolean;
-export const ConnectPtyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ConnectPtyResponse" }) as any as S.Schema<ConnectPtyResponse>;
+export const ConnectPtyResponse = AbortSessionResponse as any as S.Schema<ConnectPtyResponse>;
 
 export interface ConnectV2PtyRequest {
   ptyID: string;
@@ -964,9 +944,7 @@ export const ConnectV2PtyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectV2PtyRequest" }) as any as S.Schema<ConnectV2PtyRequest>;
 
 export type ConnectV2PtyResponse = boolean;
-export const ConnectV2PtyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ConnectV2PtyResponse" }) as any as S.Schema<ConnectV2PtyResponse>;
+export const ConnectV2PtyResponse = AbortSessionResponse as any as S.Schema<ConnectV2PtyResponse>;
 
 export interface CreateExperimentalWorkspaceRequest {
   directory?: string;
@@ -1033,15 +1011,12 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 export type CreatePtyRequestArgsList = Array<string>;
-export const CreatePtyRequestArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePtyRequestArgsList>;
+export const CreatePtyRequestArgsList =
+  McpLocalConfigCommandList as any as S.Schema<CreatePtyRequestArgsList>;
 
 export type CreatePtyRequestEnvMap = { [key: string]: string | undefined };
-export const CreatePtyRequestEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePtyRequestEnvMap>;
+export const CreatePtyRequestEnvMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<CreatePtyRequestEnvMap>;
 
 export interface CreatePtyRequest {
   directory?: string;
@@ -1065,7 +1040,7 @@ export const CreatePtyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePtyRequest" }) as any as S.Schema<CreatePtyRequest>;
 
 export type PtyArgsList = Array<string>;
-export const PtyArgsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<PtyArgsList>;
+export const PtyArgsList = ProviderEnvList as any as S.Schema<PtyArgsList>;
 
 export type PtyStatus = "running" | "exited";
 export const PtyStatus = S.String;
@@ -1282,15 +1257,12 @@ export type CreateV2PtyRequestLocation = CancelV2IntegrationAttemptRequestLocati
 export const CreateV2PtyRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 
 export type CreateV2PtyRequestArgsList = Array<string>;
-export const CreateV2PtyRequestArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateV2PtyRequestArgsList>;
+export const CreateV2PtyRequestArgsList =
+  McpLocalConfigCommandList as any as S.Schema<CreateV2PtyRequestArgsList>;
 
 export type CreateV2PtyRequestEnvMap = { [key: string]: string | undefined };
-export const CreateV2PtyRequestEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateV2PtyRequestEnvMap>;
+export const CreateV2PtyRequestEnvMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<CreateV2PtyRequestEnvMap>;
 
 export interface CreateV2PtyRequest {
   location?: CancelV2IntegrationAttemptRequestLocation;
@@ -1477,14 +1449,12 @@ export const CreateV2SessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateV2SessionResponse" }) as any as S.Schema<CreateV2SessionResponse>;
 
 export type CreateV2SessionPermissionRequestResourcesList = Array<string>;
-export const CreateV2SessionPermissionRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateV2SessionPermissionRequestResourcesList>;
+export const CreateV2SessionPermissionRequestResourcesList =
+  McpLocalConfigCommandList as any as S.Schema<CreateV2SessionPermissionRequestResourcesList>;
 
 export type CreateV2SessionPermissionRequestSaveList = Array<string>;
-export const CreateV2SessionPermissionRequestSaveList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateV2SessionPermissionRequestSaveList>;
+export const CreateV2SessionPermissionRequestSaveList =
+  McpLocalConfigCommandList as any as S.Schema<CreateV2SessionPermissionRequestSaveList>;
 
 export type PermissionV2SourceType = "tool";
 export const PermissionV2SourceType = S.String;
@@ -1607,9 +1577,7 @@ export const DeletePartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePartRequest" }) as any as S.Schema<DeletePartRequest>;
 
 export type DeletePartResponse = boolean;
-export const DeletePartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeletePartResponse" }) as any as S.Schema<DeletePartResponse>;
+export const DeletePartResponse = AbortSessionResponse as any as S.Schema<DeletePartResponse>;
 
 export interface DeleteSessionRequest {
   sessionID: string;
@@ -1625,9 +1593,7 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export type DeleteSessionResponse = boolean;
-export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteSessionResponse" }) as any as S.Schema<DeleteSessionResponse>;
+export const DeleteSessionResponse = AbortSessionResponse as any as S.Schema<DeleteSessionResponse>;
 
 export interface DisconnectMcpRequest {
   name: string;
@@ -1643,9 +1609,7 @@ export const DisconnectMcpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisconnectMcpRequest" }) as any as S.Schema<DisconnectMcpRequest>;
 
 export type DisconnectMcpResponse = boolean;
-export const DisconnectMcpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DisconnectMcpResponse" }) as any as S.Schema<DisconnectMcpResponse>;
+export const DisconnectMcpResponse = AbortSessionResponse as any as S.Schema<DisconnectMcpResponse>;
 
 export interface ExperimentalConsoleListOrgsRequest {
   directory?: string;
@@ -1747,11 +1711,8 @@ export const ExperimentalControlPlaneMoveSessionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ExperimentalControlPlaneMoveSessionRequest>;
 
 export interface ExperimentalControlPlaneMoveSessionResponse {}
-export const ExperimentalControlPlaneMoveSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExperimentalControlPlaneMoveSessionResponse",
-}) as any as S.Schema<ExperimentalControlPlaneMoveSessionResponse>;
+export const ExperimentalControlPlaneMoveSessionResponse =
+  CancelV2IntegrationAttemptResponse as any as S.Schema<ExperimentalControlPlaneMoveSessionResponse>;
 
 export interface ExperimentalProjectCopyGenerateNameRequest {
   projectID: string;
@@ -1805,11 +1766,8 @@ export const ExperimentalSessionBackgroundRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ExperimentalSessionBackgroundRequest>;
 
 export type ExperimentalSessionBackgroundResponse = boolean;
-export const ExperimentalSessionBackgroundResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ExperimentalSessionBackgroundResponse",
-}) as any as S.Schema<ExperimentalSessionBackgroundResponse>;
+export const ExperimentalSessionBackgroundResponse =
+  ExperimentalConsoleSwitchOrgResponse as any as S.Schema<ExperimentalSessionBackgroundResponse>;
 
 export interface ExperimentalWorkspaceStatusRequest {
   directory?: string;
@@ -1877,11 +1835,8 @@ export const ExperimentalWorkspaceWarpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentalWorkspaceWarpRequest>;
 
 export interface ExperimentalWorkspaceWarpResponse {}
-export const ExperimentalWorkspaceWarpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExperimentalWorkspaceWarpResponse",
-}) as any as S.Schema<ExperimentalWorkspaceWarpResponse>;
+export const ExperimentalWorkspaceWarpResponse =
+  CancelV2IntegrationAttemptResponse as any as S.Schema<ExperimentalWorkspaceWarpResponse>;
 
 export interface FileStatusRequest {
   directory?: string;
@@ -1947,9 +1902,8 @@ export const FindFilesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** File paths */
 export type FindFilesResponseBodyList = Array<string>;
-export const FindFilesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FindFilesResponseBodyList>;
+export const FindFilesResponseBodyList =
+  McpLocalConfigCommandList as any as S.Schema<FindFilesResponseBodyList>;
 
 export type FindFilesResponse = FindFilesResponseBodyList;
 export const FindFilesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2134,9 +2088,8 @@ export const FormatterStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FormatterStatusRequest" }) as any as S.Schema<FormatterStatusRequest>;
 
 export type FormatterStatusExtensionsList = Array<string>;
-export const FormatterStatusExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormatterStatusExtensionsList>;
+export const FormatterStatusExtensionsList =
+  McpLocalConfigCommandList as any as S.Schema<FormatterStatusExtensionsList>;
 
 export interface FormatterStatus {
   name: string;
@@ -2178,9 +2131,8 @@ export type LogLevel = "DEBUG" | "INFO" | "WARN" | "ERROR";
 export const LogLevel = S.String;
 
 export type ServerConfigCorsList = Array<string>;
-export const ServerConfigCorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServerConfigCorsList>;
+export const ServerConfigCorsList =
+  McpLocalConfigCommandList as any as S.Schema<ServerConfigCorsList>;
 
 /** Server configuration for opencode serve and web commands */
 export interface ServerConfig {
@@ -2226,14 +2178,12 @@ export const ConfigCommandMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigCommandMap>;
 
 export type ConfigSkillsPathsList = Array<string>;
-export const ConfigSkillsPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigSkillsPathsList>;
+export const ConfigSkillsPathsList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigSkillsPathsList>;
 
 export type ConfigSkillsUrlsList = Array<string>;
-export const ConfigSkillsUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigSkillsUrlsList>;
+export const ConfigSkillsUrlsList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigSkillsUrlsList>;
 
 export interface ConfigSkills {
   paths?: ConfigSkillsPathsList;
@@ -2293,9 +2243,8 @@ export const ConfigReferenceMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigReferenceMap>;
 
 export type ConfigWatcherIgnoreList = Array<string>;
-export const ConfigWatcherIgnoreList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigWatcherIgnoreList>;
+export const ConfigWatcherIgnoreList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigWatcherIgnoreList>;
 
 export interface ConfigWatcher {
   ignore?: ConfigWatcherIgnoreList;
@@ -2330,14 +2279,12 @@ export type ConfigAutoupdate = boolean | ConfigAutoupdateCase1;
 export const ConfigAutoupdate = S.Unknown as any as S.Schema<ConfigAutoupdate>;
 
 export type ConfigDisabledProvidersList = Array<string>;
-export const ConfigDisabledProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigDisabledProvidersList>;
+export const ConfigDisabledProvidersList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigDisabledProvidersList>;
 
 export type ConfigEnabledProvidersList = Array<string>;
-export const ConfigEnabledProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigEnabledProvidersList>;
+export const ConfigEnabledProvidersList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigEnabledProvidersList>;
 
 export type AgentConfigToolsMap = { [key: string]: boolean | undefined };
 export const AgentConfigToolsMap = /*@__PURE__*/ S.Record(
@@ -2487,19 +2434,16 @@ export const ConfigAgent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigAgent" }) as any as S.Schema<ConfigAgent>;
 
 export type ProviderConfigEnvList = Array<string>;
-export const ProviderConfigEnvList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderConfigEnvList>;
+export const ProviderConfigEnvList =
+  McpLocalConfigCommandList as any as S.Schema<ProviderConfigEnvList>;
 
 export type ProviderConfigWhitelistList = Array<string>;
-export const ProviderConfigWhitelistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderConfigWhitelistList>;
+export const ProviderConfigWhitelistList =
+  McpLocalConfigCommandList as any as S.Schema<ProviderConfigWhitelistList>;
 
 export type ProviderConfigBlacklistList = Array<string>;
-export const ProviderConfigBlacklistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderConfigBlacklistList>;
+export const ProviderConfigBlacklistList =
+  McpLocalConfigCommandList as any as S.Schema<ProviderConfigBlacklistList>;
 
 /** Timeout in milliseconds for full requests to this provider. Set to false to disable timeout. */
 export type ProviderConfigOptionsTimeout = number | boolean;
@@ -2676,10 +2620,8 @@ export const ProviderConfigModelsValueProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderConfigModelsValueProvider>;
 
 export type ProviderConfigModelsValueHeadersMap = { [key: string]: string | undefined };
-export const ProviderConfigModelsValueHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProviderConfigModelsValueHeadersMap>;
+export const ProviderConfigModelsValueHeadersMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ProviderConfigModelsValueHeadersMap>;
 
 export interface ProviderConfigModelsValueVariantsValue {
   disabled?: boolean;
@@ -2803,20 +2745,16 @@ export const ConfigMcpMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConfigMcpMap>;
 
 export type ConfigFormatterCase1ValueCommandList = Array<string>;
-export const ConfigFormatterCase1ValueCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigFormatterCase1ValueCommandList>;
+export const ConfigFormatterCase1ValueCommandList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigFormatterCase1ValueCommandList>;
 
 export type ConfigFormatterCase1ValueEnvironmentMap = { [key: string]: string | undefined };
-export const ConfigFormatterCase1ValueEnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigFormatterCase1ValueEnvironmentMap>;
+export const ConfigFormatterCase1ValueEnvironmentMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ConfigFormatterCase1ValueEnvironmentMap>;
 
 export type ConfigFormatterCase1ValueExtensionsList = Array<string>;
-export const ConfigFormatterCase1ValueExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigFormatterCase1ValueExtensionsList>;
+export const ConfigFormatterCase1ValueExtensionsList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigFormatterCase1ValueExtensionsList>;
 
 export interface ConfigFormatterCase1Value {
   disabled?: boolean;
@@ -2855,20 +2793,16 @@ export const ConfigLspCase1ValueCase0 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigLspCase1ValueCase0" }) as any as S.Schema<ConfigLspCase1ValueCase0>;
 
 export type ConfigLspCase1ValueCase1CommandList = Array<string>;
-export const ConfigLspCase1ValueCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigLspCase1ValueCase1CommandList>;
+export const ConfigLspCase1ValueCase1CommandList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigLspCase1ValueCase1CommandList>;
 
 export type ConfigLspCase1ValueCase1ExtensionsList = Array<string>;
-export const ConfigLspCase1ValueCase1ExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigLspCase1ValueCase1ExtensionsList>;
+export const ConfigLspCase1ValueCase1ExtensionsList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigLspCase1ValueCase1ExtensionsList>;
 
 export type ConfigLspCase1ValueCase1EnvMap = { [key: string]: string | undefined };
-export const ConfigLspCase1ValueCase1EnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfigLspCase1ValueCase1EnvMap>;
+export const ConfigLspCase1ValueCase1EnvMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ConfigLspCase1ValueCase1EnvMap>;
 
 export interface ConfigLspCase1ValueCase1 {
   command: ConfigLspCase1ValueCase1CommandList;
@@ -2901,19 +2835,15 @@ export type ConfigLsp = boolean | ConfigLspCase1Map;
 export const ConfigLsp = S.Unknown as any as S.Schema<ConfigLsp>;
 
 export type ConfigInstructionsList = Array<string>;
-export const ConfigInstructionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigInstructionsList>;
+export const ConfigInstructionsList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigInstructionsList>;
 
 /** @deprecated Always uses stretch layout. */
 export type LayoutConfig = "auto" | "stretch";
 export const LayoutConfig = S.String;
 
 export type ConfigToolsMap = { [key: string]: boolean | undefined };
-export const ConfigToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<ConfigToolsMap>;
+export const ConfigToolsMap = AgentConfigToolsMap as any as S.Schema<ConfigToolsMap>;
 
 export interface ImageAttachmentConfig {
   auto_resize?: boolean;
@@ -2977,9 +2907,8 @@ export const ConfigCompaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigCompaction" }) as any as S.Schema<ConfigCompaction>;
 
 export type ConfigExperimentalPrimaryToolsList = Array<string>;
-export const ConfigExperimentalPrimaryToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigExperimentalPrimaryToolsList>;
+export const ConfigExperimentalPrimaryToolsList =
+  McpLocalConfigCommandList as any as S.Schema<ConfigExperimentalPrimaryToolsList>;
 
 export type ConfigV2ExperimentalPolicyAction = "provider.use";
 export const ConfigV2ExperimentalPolicyAction = S.String;
@@ -3146,9 +3075,8 @@ export const GetExperimentalConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExperimentalConsoleRequest>;
 
 export type ConsoleStateConsoleManagedProvidersList = Array<string>;
-export const ConsoleStateConsoleManagedProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConsoleStateConsoleManagedProvidersList>;
+export const ConsoleStateConsoleManagedProvidersList =
+  McpLocalConfigCommandList as any as S.Schema<ConsoleStateConsoleManagedProvidersList>;
 
 export interface ConsoleState {
   consoleManagedProviders: ConsoleStateConsoleManagedProvidersList;
@@ -3371,9 +3299,8 @@ export type IntegrationEnvMethodType = "env";
 export const IntegrationEnvMethodType = S.String;
 
 export type IntegrationEnvMethodNamesList = Array<string>;
-export const IntegrationEnvMethodNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IntegrationEnvMethodNamesList>;
+export const IntegrationEnvMethodNamesList =
+  McpLocalConfigCommandList as any as S.Schema<IntegrationEnvMethodNamesList>;
 
 export interface IntegrationEnvMethod {
   type: IntegrationEnvMethodType;
@@ -3525,10 +3452,8 @@ export type ProviderApi = ProviderAISDK | ProviderNative;
 export const ProviderApi = S.Unknown as any as S.Schema<ProviderApi>;
 
 export type ProviderRequestHeadersMap = { [key: string]: string | undefined };
-export const ProviderRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProviderRequestHeadersMap>;
+export const ProviderRequestHeadersMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ProviderRequestHeadersMap>;
 
 export interface ProviderRequest {
   headers: ProviderRequestHeadersMap;
@@ -3589,12 +3514,7 @@ export interface GetV2PtyResponse {
   location: LocationInfo;
   data: Pty;
 }
-export const GetV2PtyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: LocationInfo,
-    data: Pty,
-  }),
-).annotate({ identifier: "GetV2PtyResponse" }) as any as S.Schema<GetV2PtyResponse>;
+export const GetV2PtyResponse = CreateV2PtyResponse as any as S.Schema<GetV2PtyResponse>;
 
 export interface GetV2SessionRequest {
   sessionID: string;
@@ -3608,11 +3528,8 @@ export const GetV2SessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetV2SessionResponse {
   data: SessionV2Info;
 }
-export const GetV2SessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: SessionV2Info,
-  }),
-).annotate({ identifier: "GetV2SessionResponse" }) as any as S.Schema<GetV2SessionResponse>;
+export const GetV2SessionResponse =
+  CreateV2SessionResponse as any as S.Schema<GetV2SessionResponse>;
 
 export interface GetV2SessionPermissionRequest {
   sessionID: string;
@@ -3630,14 +3547,12 @@ export const GetV2SessionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV2SessionPermissionRequest>;
 
 export type PermissionV2RequestResourcesList = Array<string>;
-export const PermissionV2RequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionV2RequestResourcesList>;
+export const PermissionV2RequestResourcesList =
+  McpLocalConfigCommandList as any as S.Schema<PermissionV2RequestResourcesList>;
 
 export type PermissionV2RequestSaveList = Array<string>;
-export const PermissionV2RequestSaveList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionV2RequestSaveList>;
+export const PermissionV2RequestSaveList =
+  McpLocalConfigCommandList as any as S.Schema<PermissionV2RequestSaveList>;
 
 export interface PermissionV2Request {
   id: string;
@@ -3699,9 +3614,7 @@ export const GlobalDisposeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GlobalDisposeRequest" }) as any as S.Schema<GlobalDisposeRequest>;
 
 export type GlobalDisposeResponse = boolean;
-export const GlobalDisposeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GlobalDisposeResponse" }) as any as S.Schema<GlobalDisposeResponse>;
+export const GlobalDisposeResponse = AbortSessionResponse as any as S.Schema<GlobalDisposeResponse>;
 
 export interface GlobalEventRequest {}
 export const GlobalEventRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3709,9 +3622,8 @@ export const GlobalEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GlobalEventRequest" }) as any as S.Schema<GlobalEventRequest>;
 
 export interface GlobalEventResponse {}
-export const GlobalEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GlobalEventResponse",
-}) as any as S.Schema<GlobalEventResponse>;
+export const GlobalEventResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<GlobalEventResponse>;
 
 export interface GlobalHealthRequest {}
 export const GlobalHealthRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3787,9 +3699,8 @@ export const InstanceDisposeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceDisposeRequest" }) as any as S.Schema<InstanceDisposeRequest>;
 
 export type InstanceDisposeResponse = boolean;
-export const InstanceDisposeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "InstanceDisposeResponse" }) as any as S.Schema<InstanceDisposeResponse>;
+export const InstanceDisposeResponse =
+  AbortSessionResponse as any as S.Schema<InstanceDisposeResponse>;
 
 export interface ListCommandRequest {
   directory?: string;
@@ -3806,9 +3717,7 @@ export type CommandSource = "command" | "mcp" | "skill";
 export const CommandSource = S.String;
 
 export type CommandHintsList = Array<string>;
-export const CommandHintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CommandHintsList>;
+export const CommandHintsList = McpLocalConfigCommandList as any as S.Schema<CommandHintsList>;
 
 export interface Command {
   name: string;
@@ -3932,9 +3841,8 @@ export const ListExperimentalSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExperimentalSessionRequest>;
 
 export type GlobalSessionSummaryDiffsList = Array<SnapshotFileDiff>;
-export const GlobalSessionSummaryDiffsList = /*@__PURE__*/ S.Array(
-  SnapshotFileDiff,
-) as any as S.Schema<GlobalSessionSummaryDiffsList>;
+export const GlobalSessionSummaryDiffsList =
+  SessionSummaryDiffsList as any as S.Schema<GlobalSessionSummaryDiffsList>;
 
 export interface GlobalSessionSummary {
   additions: number;
@@ -3942,14 +3850,7 @@ export interface GlobalSessionSummary {
   files: number;
   diffs?: GlobalSessionSummaryDiffsList;
 }
-export const GlobalSessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additions: S.Number,
-    deletions: S.Number,
-    files: S.Number,
-    diffs: S.optional(GlobalSessionSummaryDiffsList),
-  }),
-).annotate({ identifier: "GlobalSessionSummary" }) as any as S.Schema<GlobalSessionSummary>;
+export const GlobalSessionSummary = SessionSummary as any as S.Schema<GlobalSessionSummary>;
 
 export type GlobalSessionTokensCache = ModelCostCache;
 export const GlobalSessionTokensCache = ModelCostCache;
@@ -4125,11 +4026,8 @@ export const ListExperimentalWorkspaceSyncRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListExperimentalWorkspaceSyncRequest>;
 
 export interface ListExperimentalWorkspaceSyncResponse {}
-export const ListExperimentalWorkspaceSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ListExperimentalWorkspaceSyncResponse",
-}) as any as S.Schema<ListExperimentalWorkspaceSyncResponse>;
+export const ListExperimentalWorkspaceSyncResponse =
+  CancelV2IntegrationAttemptResponse as any as S.Schema<ListExperimentalWorkspaceSyncResponse>;
 
 export interface ListFileRequest {
   directory?: string;
@@ -4187,14 +4085,12 @@ export const ListPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPermissionRequest" }) as any as S.Schema<ListPermissionRequest>;
 
 export type PermissionRequestPatternsList = Array<string>;
-export const PermissionRequestPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionRequestPatternsList>;
+export const PermissionRequestPatternsList =
+  McpLocalConfigCommandList as any as S.Schema<PermissionRequestPatternsList>;
 
 export type PermissionRequestAlwaysList = Array<string>;
-export const PermissionRequestAlwaysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PermissionRequestAlwaysList>;
+export const PermissionRequestAlwaysList =
+  McpLocalConfigCommandList as any as S.Schema<PermissionRequestAlwaysList>;
 
 export interface PermissionRequestTool {
   messageID: string;
@@ -4290,9 +4186,8 @@ export const ProjectTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectTime" }) as any as S.Schema<ProjectTime>;
 
 export type ProjectSandboxesList = Array<string>;
-export const ProjectSandboxesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectSandboxesList>;
+export const ProjectSandboxesList =
+  McpLocalConfigCommandList as any as S.Schema<ProjectSandboxesList>;
 
 export interface Project {
   id: string;
@@ -4340,20 +4235,16 @@ export const ListProviderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProviderRequest" }) as any as S.Schema<ListProviderRequest>;
 
 export type ListProviderResponseAllList = Array<Provider>;
-export const ListProviderResponseAllList = /*@__PURE__*/ S.Array(
-  Provider,
-) as any as S.Schema<ListProviderResponseAllList>;
+export const ListProviderResponseAllList =
+  ConfigProvidersResponseProvidersList as any as S.Schema<ListProviderResponseAllList>;
 
 export type ListProviderResponseDefaultMap = { [key: string]: string | undefined };
-export const ListProviderResponseDefaultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListProviderResponseDefaultMap>;
+export const ListProviderResponseDefaultMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ListProviderResponseDefaultMap>;
 
 export type ListProviderResponseConnectedList = Array<string>;
-export const ListProviderResponseConnectedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProviderResponseConnectedList>;
+export const ListProviderResponseConnectedList =
+  McpLocalConfigCommandList as any as S.Schema<ListProviderResponseConnectedList>;
 
 export interface ListProviderResponse {
   all: ListProviderResponseAllList;
@@ -4432,9 +4323,8 @@ export const ProviderAuthMethodPromptsItemCase1OptionsItem = IntegrationSelectPr
 
 export type ProviderAuthMethodPromptsItemCase1OptionsList =
   Array<IntegrationSelectPromptOptionsItem>;
-export const ProviderAuthMethodPromptsItemCase1OptionsList = /*@__PURE__*/ S.Array(
-  IntegrationSelectPromptOptionsItem,
-) as any as S.Schema<ProviderAuthMethodPromptsItemCase1OptionsList>;
+export const ProviderAuthMethodPromptsItemCase1OptionsList =
+  IntegrationSelectPromptOptionsList as any as S.Schema<ProviderAuthMethodPromptsItemCase1OptionsList>;
 
 export type ProviderAuthMethodPromptsItemCase1WhenOp = "eq" | "neq";
 export const ProviderAuthMethodPromptsItemCase1WhenOp = S.String;
@@ -5018,14 +4908,12 @@ export type ModelApi2 = ModelApiCase0 | ModelApiCase1;
 export const ModelApi2 = S.Unknown as any as S.Schema<ModelApi2>;
 
 export type ModelCapabilitiesInputList = Array<string>;
-export const ModelCapabilitiesInputList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModelCapabilitiesInputList>;
+export const ModelCapabilitiesInputList =
+  McpLocalConfigCommandList as any as S.Schema<ModelCapabilitiesInputList>;
 
 export type ModelCapabilitiesOutputList = Array<string>;
-export const ModelCapabilitiesOutputList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ModelCapabilitiesOutputList>;
+export const ModelCapabilitiesOutputList =
+  McpLocalConfigCommandList as any as S.Schema<ModelCapabilitiesOutputList>;
 
 export interface ModelCapabilities2 {
   tools: boolean;
@@ -5041,10 +4929,8 @@ export const ModelCapabilities2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelCapabilities2" }) as any as S.Schema<ModelCapabilities2>;
 
 export type ModelV2InfoRequestHeadersMap = { [key: string]: string | undefined };
-export const ModelV2InfoRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelV2InfoRequestHeadersMap>;
+export const ModelV2InfoRequestHeadersMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ModelV2InfoRequestHeadersMap>;
 
 export interface ModelV2InfoRequest {
   headers: ModelV2InfoRequestHeadersMap;
@@ -5060,10 +4946,8 @@ export const ModelV2InfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelV2InfoRequest" }) as any as S.Schema<ModelV2InfoRequest>;
 
 export type ModelV2InfoVariantsItemHeadersMap = { [key: string]: string | undefined };
-export const ModelV2InfoVariantsItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ModelV2InfoVariantsItemHeadersMap>;
+export const ModelV2InfoVariantsItemHeadersMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ModelV2InfoVariantsItemHeadersMap>;
 
 export interface ModelV2InfoVariantsItem {
   id: string;
@@ -5299,9 +5183,8 @@ export const ListV2PtyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV2PtyRequest" }) as any as S.Schema<ListV2PtyRequest>;
 
 export type ListV2PtyResponseDataList = Array<Pty>;
-export const ListV2PtyResponseDataList = /*@__PURE__*/ S.Array(
-  Pty,
-) as any as S.Schema<ListV2PtyResponseDataList>;
+export const ListV2PtyResponseDataList =
+  ListPtyResponseBodyList as any as S.Schema<ListV2PtyResponseDataList>;
 
 export interface ListV2PtyResponse {
   location: LocationInfo;
@@ -5333,9 +5216,8 @@ export const QuestionV2Option = QuestionOption;
 
 /** Available choices */
 export type QuestionV2InfoOptionsList = Array<QuestionOption>;
-export const QuestionV2InfoOptionsList = /*@__PURE__*/ S.Array(
-  QuestionOption,
-) as any as S.Schema<QuestionV2InfoOptionsList>;
+export const QuestionV2InfoOptionsList =
+  QuestionInfoOptionsList as any as S.Schema<QuestionV2InfoOptionsList>;
 
 export interface QuestionV2Info {
   /** Complete question */
@@ -5347,21 +5229,12 @@ export interface QuestionV2Info {
   multiple?: boolean;
   custom?: boolean;
 }
-export const QuestionV2Info = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    question: S.String,
-    header: S.String,
-    options: QuestionV2InfoOptionsList,
-    multiple: S.optional(S.Boolean),
-    custom: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "QuestionV2Info" }) as any as S.Schema<QuestionV2Info>;
+export const QuestionV2Info = QuestionInfo as any as S.Schema<QuestionV2Info>;
 
 /** Questions to ask */
 export type QuestionV2RequestQuestionsList = Array<QuestionV2Info>;
-export const QuestionV2RequestQuestionsList = /*@__PURE__*/ S.Array(
-  QuestionV2Info,
-) as any as S.Schema<QuestionV2RequestQuestionsList>;
+export const QuestionV2RequestQuestionsList =
+  QuestionRequestQuestionsList as any as S.Schema<QuestionV2RequestQuestionsList>;
 
 export type QuestionV2Tool = PermissionRequestTool;
 export const QuestionV2Tool = PermissionRequestTool;
@@ -5373,19 +5246,11 @@ export interface QuestionV2Request {
   questions: QuestionV2RequestQuestionsList;
   tool?: PermissionRequestTool;
 }
-export const QuestionV2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    sessionID: S.String,
-    questions: QuestionV2RequestQuestionsList,
-    tool: S.optional(PermissionRequestTool),
-  }),
-).annotate({ identifier: "QuestionV2Request" }) as any as S.Schema<QuestionV2Request>;
+export const QuestionV2Request = QuestionRequest as any as S.Schema<QuestionV2Request>;
 
 export type ListV2QuestionRequestResponseDataList = Array<QuestionV2Request>;
-export const ListV2QuestionRequestResponseDataList = /*@__PURE__*/ S.Array(
-  QuestionV2Request,
-) as any as S.Schema<ListV2QuestionRequestResponseDataList>;
+export const ListV2QuestionRequestResponseDataList =
+  ListQuestionResponseBodyList as any as S.Schema<ListV2QuestionRequestResponseDataList>;
 
 export interface ListV2QuestionRequestResponse {
   location: LocationInfo;
@@ -5551,9 +5416,8 @@ export const ListV2SessionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListV2SessionPermissionRequest>;
 
 export type ListV2SessionPermissionResponseDataList = Array<PermissionV2Request>;
-export const ListV2SessionPermissionResponseDataList = /*@__PURE__*/ S.Array(
-  PermissionV2Request,
-) as any as S.Schema<ListV2SessionPermissionResponseDataList>;
+export const ListV2SessionPermissionResponseDataList =
+  ListV2PermissionRequestResponseDataList as any as S.Schema<ListV2SessionPermissionResponseDataList>;
 
 export interface ListV2SessionPermissionResponse {
   data: ListV2SessionPermissionResponseDataList;
@@ -5578,9 +5442,8 @@ export const ListV2SessionQuestionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListV2SessionQuestionRequest>;
 
 export type ListV2SessionQuestionResponseDataList = Array<QuestionV2Request>;
-export const ListV2SessionQuestionResponseDataList = /*@__PURE__*/ S.Array(
-  QuestionV2Request,
-) as any as S.Schema<ListV2SessionQuestionResponseDataList>;
+export const ListV2SessionQuestionResponseDataList =
+  ListQuestionResponseBodyList as any as S.Schema<ListV2SessionQuestionResponseDataList>;
 
 export interface ListV2SessionQuestionResponse {
   data: ListV2SessionQuestionResponseDataList;
@@ -5651,14 +5514,11 @@ export const ListWorktreeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of worktree directories */
 export type ListWorktreeResponseBodyList = Array<string>;
-export const ListWorktreeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWorktreeResponseBodyList>;
+export const ListWorktreeResponseBodyList =
+  McpLocalConfigCommandList as any as S.Schema<ListWorktreeResponseBodyList>;
 
 export type ListWorktreeResponse = ListWorktreeResponseBodyList;
-export const ListWorktreeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListWorktreeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListWorktreeResponse" }) as any as S.Schema<ListWorktreeResponse>;
+export const ListWorktreeResponse = FindFilesResponse as any as S.Schema<ListWorktreeResponse>;
 
 export interface LspStatusRequest {
   directory?: string;
@@ -5733,15 +5593,11 @@ export const McpStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** MCP server status */
 export type McpStatusResponseBodyMap = { [key: string]: MCPStatus | undefined };
-export const McpStatusResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  MCPStatus,
-) as any as S.Schema<McpStatusResponseBodyMap>;
+export const McpStatusResponseBodyMap =
+  AddMcpResponseBodyMap as any as S.Schema<McpStatusResponseBodyMap>;
 
 export type McpStatusResponse = McpStatusResponseBodyMap;
-export const McpStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  McpStatusResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "McpStatusResponse" }) as any as S.Schema<McpStatusResponse>;
+export const McpStatusResponse = AddMcpResponse as any as S.Schema<McpStatusResponse>;
 
 export interface ProjectCurrentRequest {
   directory?: string;
@@ -5824,11 +5680,8 @@ export const ProviderOauthCallbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderOauthCallbackRequest>;
 
 export type ProviderOauthCallbackResponse = boolean;
-export const ProviderOauthCallbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ProviderOauthCallbackResponse",
-}) as any as S.Schema<ProviderOauthCallbackResponse>;
+export const ProviderOauthCallbackResponse =
+  ExperimentalConsoleSwitchOrgResponse as any as S.Schema<ProviderOauthCallbackResponse>;
 
 export interface PtyConnectTokenRequest {
   ptyID: string;
@@ -6039,9 +5892,7 @@ export const PublishTuiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublishTuiRequest" }) as any as S.Schema<PublishTuiRequest>;
 
 export type PublishTuiResponse = boolean;
-export const PublishTuiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PublishTuiResponse" }) as any as S.Schema<PublishTuiResponse>;
+export const PublishTuiResponse = AbortSessionResponse as any as S.Schema<PublishTuiResponse>;
 
 export interface ReadFileRequest {
   directory?: string;
@@ -6060,9 +5911,8 @@ export type FileContentType = "text" | "binary";
 export const FileContentType = S.String;
 
 export type FileContentPatchHunksItemLinesList = Array<string>;
-export const FileContentPatchHunksItemLinesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FileContentPatchHunksItemLinesList>;
+export const FileContentPatchHunksItemLinesList =
+  McpLocalConfigCommandList as any as S.Schema<FileContentPatchHunksItemLinesList>;
 
 export interface FileContentPatchHunksItem {
   oldStart: number;
@@ -6142,9 +5992,7 @@ export const ReadV2FsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadV2FsRequest" }) as any as S.Schema<ReadV2FsRequest>;
 
 export interface ReadV2FsResponse {}
-export const ReadV2FsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReadV2FsResponse",
-}) as any as S.Schema<ReadV2FsResponse>;
+export const ReadV2FsResponse = ClearV2SessionRevertResponse as any as S.Schema<ReadV2FsResponse>;
 
 export interface RejectQuestionRequest {
   requestID: string;
@@ -6160,9 +6008,8 @@ export const RejectQuestionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RejectQuestionRequest" }) as any as S.Schema<RejectQuestionRequest>;
 
 export type RejectQuestionResponse = boolean;
-export const RejectQuestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RejectQuestionResponse" }) as any as S.Schema<RejectQuestionResponse>;
+export const RejectQuestionResponse =
+  AbortSessionResponse as any as S.Schema<RejectQuestionResponse>;
 
 export interface RejectV2SessionQuestionRequest {
   sessionID: string;
@@ -6198,9 +6045,7 @@ export const RemoveAuthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveAuthRequest" }) as any as S.Schema<RemoveAuthRequest>;
 
 export type RemoveAuthResponse = boolean;
-export const RemoveAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RemoveAuthResponse" }) as any as S.Schema<RemoveAuthResponse>;
+export const RemoveAuthResponse = AbortSessionResponse as any as S.Schema<RemoveAuthResponse>;
 
 export interface RemoveExperimentalWorkspaceRequest {
   id: string;
@@ -6253,9 +6098,7 @@ export const RemovePtyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemovePtyRequest" }) as any as S.Schema<RemovePtyRequest>;
 
 export type RemovePtyResponse = boolean;
-export const RemovePtyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RemovePtyResponse" }) as any as S.Schema<RemovePtyResponse>;
+export const RemovePtyResponse = AbortSessionResponse as any as S.Schema<RemovePtyResponse>;
 
 export type RemoveV2CredentialRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const RemoveV2CredentialRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -6274,9 +6117,8 @@ export const RemoveV2CredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveV2CredentialRequest>;
 
 export interface RemoveV2CredentialResponse {}
-export const RemoveV2CredentialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveV2CredentialResponse",
-}) as any as S.Schema<RemoveV2CredentialResponse>;
+export const RemoveV2CredentialResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<RemoveV2CredentialResponse>;
 
 export interface RemoveV2PermissionSavedRequest {
   id: string;
@@ -6290,9 +6132,8 @@ export const RemoveV2PermissionSavedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveV2PermissionSavedRequest>;
 
 export interface RemoveV2PermissionSavedResponse {}
-export const RemoveV2PermissionSavedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RemoveV2PermissionSavedResponse" },
-) as any as S.Schema<RemoveV2PermissionSavedResponse>;
+export const RemoveV2PermissionSavedResponse =
+  RejectV2SessionQuestionResponse as any as S.Schema<RemoveV2PermissionSavedResponse>;
 
 export type RemoveV2PtyRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const RemoveV2PtyRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -6309,9 +6150,8 @@ export const RemoveV2PtyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveV2PtyRequest" }) as any as S.Schema<RemoveV2PtyRequest>;
 
 export interface RemoveV2PtyResponse {}
-export const RemoveV2PtyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveV2PtyResponse",
-}) as any as S.Schema<RemoveV2PtyResponse>;
+export const RemoveV2PtyResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<RemoveV2PtyResponse>;
 
 export interface RemoveWorktreeRequest {
   directory?: string;
@@ -6325,9 +6165,8 @@ export const RemoveWorktreeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveWorktreeRequest" }) as any as S.Schema<RemoveWorktreeRequest>;
 
 export type RemoveWorktreeResponse = boolean;
-export const RemoveWorktreeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RemoveWorktreeResponse" }) as any as S.Schema<RemoveWorktreeResponse>;
+export const RemoveWorktreeResponse =
+  AbortSessionResponse as any as S.Schema<RemoveWorktreeResponse>;
 
 export type ReplyPermissionRequestReply = "once" | "always" | "reject";
 export const ReplyPermissionRequestReply = S.String;
@@ -6350,12 +6189,11 @@ export const ReplyPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplyPermissionRequest" }) as any as S.Schema<ReplyPermissionRequest>;
 
 export type ReplyPermissionResponse = boolean;
-export const ReplyPermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ReplyPermissionResponse" }) as any as S.Schema<ReplyPermissionResponse>;
+export const ReplyPermissionResponse =
+  AbortSessionResponse as any as S.Schema<ReplyPermissionResponse>;
 
 export type QuestionAnswer = Array<string>;
-export const QuestionAnswer = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<QuestionAnswer>;
+export const QuestionAnswer = ProviderEnvList as any as S.Schema<QuestionAnswer>;
 
 /** User answers in order of questions (each answer is an array of selected labels) */
 export type ReplyQuestionRequestAnswersList = Array<QuestionAnswer>;
@@ -6380,9 +6218,7 @@ export const ReplyQuestionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplyQuestionRequest" }) as any as S.Schema<ReplyQuestionRequest>;
 
 export type ReplyQuestionResponse = boolean;
-export const ReplyQuestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ReplyQuestionResponse" }) as any as S.Schema<ReplyQuestionResponse>;
+export const ReplyQuestionResponse = AbortSessionResponse as any as S.Schema<ReplyQuestionResponse>;
 
 export type PermissionV2Reply = "once" | "always" | "reject";
 export const PermissionV2Reply = S.String;
@@ -6411,16 +6247,11 @@ export const ReplyV2SessionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplyV2SessionPermissionRequest>;
 
 export interface ReplyV2SessionPermissionResponse {}
-export const ReplyV2SessionPermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReplyV2SessionPermissionResponse",
-}) as any as S.Schema<ReplyV2SessionPermissionResponse>;
+export const ReplyV2SessionPermissionResponse =
+  CancelV2IntegrationAttemptResponse as any as S.Schema<ReplyV2SessionPermissionResponse>;
 
 export type QuestionV2Answer = Array<string>;
-export const QuestionV2Answer = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuestionV2Answer>;
+export const QuestionV2Answer = McpLocalConfigCommandList as any as S.Schema<QuestionV2Answer>;
 
 /** User answers in order of questions (each answer is an array of selected labels) */
 export type ReplyV2SessionQuestionRequestAnswersList = Array<QuestionV2Answer>;
@@ -6451,9 +6282,8 @@ export const ReplyV2SessionQuestionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplyV2SessionQuestionRequest>;
 
 export interface ReplyV2SessionQuestionResponse {}
-export const ReplyV2SessionQuestionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReplyV2SessionQuestionResponse",
-}) as any as S.Schema<ReplyV2SessionQuestionResponse>;
+export const ReplyV2SessionQuestionResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<ReplyV2SessionQuestionResponse>;
 
 export interface ResetWorktreeRequest {
   directory?: string;
@@ -6467,9 +6297,7 @@ export const ResetWorktreeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetWorktreeRequest" }) as any as S.Schema<ResetWorktreeRequest>;
 
 export type ResetWorktreeResponse = boolean;
-export const ResetWorktreeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ResetWorktreeResponse" }) as any as S.Schema<ResetWorktreeResponse>;
+export const ResetWorktreeResponse = AbortSessionResponse as any as S.Schema<ResetWorktreeResponse>;
 
 export interface SessionChildrenRequest {
   sessionID: string;
@@ -6486,14 +6314,12 @@ export const SessionChildrenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of children */
 export type SessionChildrenResponseBodyList = Array<Session>;
-export const SessionChildrenResponseBodyList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<SessionChildrenResponseBodyList>;
+export const SessionChildrenResponseBodyList =
+  ListSessionResponseBodyList as any as S.Schema<SessionChildrenResponseBodyList>;
 
 export type SessionChildrenResponse = SessionChildrenResponseBodyList;
-export const SessionChildrenResponse = /*@__PURE__*/ S.suspend(() =>
-  SessionChildrenResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "SessionChildrenResponse" }) as any as S.Schema<SessionChildrenResponse>;
+export const SessionChildrenResponse =
+  ListSessionResponse as any as S.Schema<SessionChildrenResponse>;
 
 export type SessionCommandRequestPartsItemType = "file";
 export const SessionCommandRequestPartsItemType = S.String;
@@ -6797,16 +6623,12 @@ export type APIErrorName = "APIError";
 export const APIErrorName = S.String;
 
 export type APIErrorDataResponseHeadersMap = { [key: string]: string | undefined };
-export const APIErrorDataResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<APIErrorDataResponseHeadersMap>;
+export const APIErrorDataResponseHeadersMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<APIErrorDataResponseHeadersMap>;
 
 export type APIErrorDataMetadataMap = { [key: string]: string | undefined };
-export const APIErrorDataMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<APIErrorDataMetadataMap>;
+export const APIErrorDataMetadataMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<APIErrorDataMetadataMap>;
 
 export interface APIErrorData {
   message: string;
@@ -7275,9 +7097,7 @@ export type PatchPartType = "patch";
 export const PatchPartType = S.String;
 
 export type PatchPartFilesList = Array<string>;
-export const PatchPartFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchPartFilesList>;
+export const PatchPartFilesList = McpLocalConfigCommandList as any as S.Schema<PatchPartFilesList>;
 
 export interface PatchPart {
   id: string;
@@ -7429,11 +7249,8 @@ export const SessionDeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionDeleteMessageRequest>;
 
 export type SessionDeleteMessageResponse = boolean;
-export const SessionDeleteMessageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SessionDeleteMessageResponse",
-}) as any as S.Schema<SessionDeleteMessageResponse>;
+export const SessionDeleteMessageResponse =
+  ExperimentalConsoleSwitchOrgResponse as any as S.Schema<SessionDeleteMessageResponse>;
 
 export interface SessionDiffRequest {
   sessionID: string;
@@ -7452,9 +7269,8 @@ export const SessionDiffRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Successfully retrieved diff */
 export type SessionDiffResponseBodyList = Array<SnapshotFileDiff>;
-export const SessionDiffResponseBodyList = /*@__PURE__*/ S.Array(
-  SnapshotFileDiff,
-) as any as S.Schema<SessionDiffResponseBodyList>;
+export const SessionDiffResponseBodyList =
+  SessionSummaryDiffsList as any as S.Schema<SessionDiffResponseBodyList>;
 
 export type SessionDiffResponse = SessionDiffResponseBodyList;
 export const SessionDiffResponse = /*@__PURE__*/ S.suspend(() =>
@@ -7481,9 +7297,7 @@ export const SessionInitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionInitRequest" }) as any as S.Schema<SessionInitRequest>;
 
 export type SessionInitResponse = boolean;
-export const SessionInitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "SessionInitResponse" }) as any as S.Schema<SessionInitResponse>;
+export const SessionInitResponse = AbortSessionResponse as any as S.Schema<SessionInitResponse>;
 
 export interface SessionMessageRequest {
   sessionID: string;
@@ -7538,9 +7352,8 @@ export type OutputFormat = OutputFormatText | OutputFormatJsonSchema;
 export const OutputFormat = S.Unknown as any as S.Schema<OutputFormat>;
 
 export type UserMessageSummaryDiffsList = Array<SnapshotFileDiff>;
-export const UserMessageSummaryDiffsList = /*@__PURE__*/ S.Array(
-  SnapshotFileDiff,
-) as any as S.Schema<UserMessageSummaryDiffsList>;
+export const UserMessageSummaryDiffsList =
+  SessionSummaryDiffsList as any as S.Schema<UserMessageSummaryDiffsList>;
 
 export interface UserMessageSummary {
   title?: string;
@@ -7569,10 +7382,7 @@ export const UserMessageModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserMessageModel" }) as any as S.Schema<UserMessageModel>;
 
 export type UserMessageToolsMap = { [key: string]: boolean | undefined };
-export const UserMessageToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<UserMessageToolsMap>;
+export const UserMessageToolsMap = AgentConfigToolsMap as any as S.Schema<UserMessageToolsMap>;
 
 export interface UserMessage {
   id: string;
@@ -7605,9 +7415,8 @@ export type Message = UserMessage | AssistantMessage;
 export const Message = S.Unknown as any as S.Schema<Message>;
 
 export type SessionMessageResponsePartsList = Array<Part>;
-export const SessionMessageResponsePartsList = /*@__PURE__*/ S.Array(
-  Part,
-) as any as S.Schema<SessionMessageResponsePartsList>;
+export const SessionMessageResponsePartsList =
+  SessionCommandResponsePartsList as any as S.Schema<SessionMessageResponsePartsList>;
 
 export interface SessionMessageResponse {
   info: Message;
@@ -7638,9 +7447,8 @@ export const SessionMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionMessagesRequest" }) as any as S.Schema<SessionMessagesRequest>;
 
 export type SessionMessagesResponseBodyItemPartsList = Array<Part>;
-export const SessionMessagesResponseBodyItemPartsList = /*@__PURE__*/ S.Array(
-  Part,
-) as any as S.Schema<SessionMessagesResponseBodyItemPartsList>;
+export const SessionMessagesResponseBodyItemPartsList =
+  SessionCommandResponsePartsList as any as S.Schema<SessionMessagesResponseBodyItemPartsList>;
 
 export interface SessionMessagesResponseBodyItem {
   info: Message;
@@ -7670,10 +7478,8 @@ export type SessionPromptRequestModel = SubtaskPartModel;
 export const SessionPromptRequestModel = SubtaskPartModel;
 
 export type SessionPromptRequestToolsMap = { [key: string]: boolean | undefined };
-export const SessionPromptRequestToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<SessionPromptRequestToolsMap>;
+export const SessionPromptRequestToolsMap =
+  AgentConfigToolsMap as any as S.Schema<SessionPromptRequestToolsMap>;
 
 export type TextPartInputType = "text";
 export const TextPartInputType = S.String;
@@ -7817,29 +7623,22 @@ export const SessionPromptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionPromptRequest" }) as any as S.Schema<SessionPromptRequest>;
 
 export type SessionPromptResponsePartsList = Array<Part>;
-export const SessionPromptResponsePartsList = /*@__PURE__*/ S.Array(
-  Part,
-) as any as S.Schema<SessionPromptResponsePartsList>;
+export const SessionPromptResponsePartsList =
+  SessionCommandResponsePartsList as any as S.Schema<SessionPromptResponsePartsList>;
 
 export interface SessionPromptResponse {
   info: AssistantMessage;
   parts: SessionPromptResponsePartsList;
 }
-export const SessionPromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    info: AssistantMessage,
-    parts: SessionPromptResponsePartsList,
-  }),
-).annotate({ identifier: "SessionPromptResponse" }) as any as S.Schema<SessionPromptResponse>;
+export const SessionPromptResponse =
+  SessionCommandResponse as any as S.Schema<SessionPromptResponse>;
 
 export type SessionPromptAsyncRequestModel = SubtaskPartModel;
 export const SessionPromptAsyncRequestModel = SubtaskPartModel;
 
 export type SessionPromptAsyncRequestToolsMap = { [key: string]: boolean | undefined };
-export const SessionPromptAsyncRequestToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<SessionPromptAsyncRequestToolsMap>;
+export const SessionPromptAsyncRequestToolsMap =
+  AgentConfigToolsMap as any as S.Schema<SessionPromptAsyncRequestToolsMap>;
 
 export type SessionPromptAsyncRequestPartsItem =
   | TextPartInput
@@ -7888,9 +7687,8 @@ export const SessionPromptAsyncRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionPromptAsyncRequest>;
 
 export interface SessionPromptAsyncResponse {}
-export const SessionPromptAsyncResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SessionPromptAsyncResponse",
-}) as any as S.Schema<SessionPromptAsyncResponse>;
+export const SessionPromptAsyncResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<SessionPromptAsyncResponse>;
 
 export interface SessionRevertRequest {
   sessionID: string;
@@ -7934,20 +7732,14 @@ export const SessionShellRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionShellRequest" }) as any as S.Schema<SessionShellRequest>;
 
 export type SessionShellResponsePartsList = Array<Part>;
-export const SessionShellResponsePartsList = /*@__PURE__*/ S.Array(
-  Part,
-) as any as S.Schema<SessionShellResponsePartsList>;
+export const SessionShellResponsePartsList =
+  SessionCommandResponsePartsList as any as S.Schema<SessionShellResponsePartsList>;
 
 export interface SessionShellResponse {
   info: Message;
   parts: SessionShellResponsePartsList;
 }
-export const SessionShellResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    info: Message,
-    parts: SessionShellResponsePartsList,
-  }),
-).annotate({ identifier: "SessionShellResponse" }) as any as S.Schema<SessionShellResponse>;
+export const SessionShellResponse = SessionMessageResponse as any as S.Schema<SessionShellResponse>;
 
 export interface SessionStatusRequest {
   directory?: string;
@@ -8058,9 +7850,8 @@ export const SessionSummarizeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionSummarizeRequest" }) as any as S.Schema<SessionSummarizeRequest>;
 
 export type SessionSummarizeResponse = boolean;
-export const SessionSummarizeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "SessionSummarizeResponse" }) as any as S.Schema<SessionSummarizeResponse>;
+export const SessionSummarizeResponse =
+  AbortSessionResponse as any as S.Schema<SessionSummarizeResponse>;
 
 export interface SessionTodoRequest {
   sessionID: string;
@@ -8141,10 +7932,8 @@ export type ApiAuthType = "api";
 export const ApiAuthType = S.String;
 
 export type ApiAuthMetadataMap = { [key: string]: string | undefined };
-export const ApiAuthMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiAuthMetadataMap>;
+export const ApiAuthMetadataMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<ApiAuthMetadataMap>;
 
 export interface ApiAuth {
   type: ApiAuthType;
@@ -8190,9 +7979,7 @@ export const SetAuthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetAuthRequest" }) as any as S.Schema<SetAuthRequest>;
 
 export type SetAuthResponse = boolean;
-export const SetAuthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "SetAuthResponse" }) as any as S.Schema<SetAuthResponse>;
+export const SetAuthResponse = AbortSessionResponse as any as S.Schema<SetAuthResponse>;
 
 export interface ShareSessionRequest {
   sessionID: string;
@@ -8243,9 +8030,7 @@ export const StartSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartSyncRequest" }) as any as S.Schema<StartSyncRequest>;
 
 export type StartSyncResponse = boolean;
-export const StartSyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "StartSyncResponse" }) as any as S.Schema<StartSyncResponse>;
+export const StartSyncResponse = AbortSessionResponse as any as S.Schema<StartSyncResponse>;
 
 export interface SubscribeEventRequest {
   directory?: string;
@@ -8259,9 +8044,8 @@ export const SubscribeEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscribeEventRequest" }) as any as S.Schema<SubscribeEventRequest>;
 
 export interface SubscribeEventResponse {}
-export const SubscribeEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscribeEventResponse",
-}) as any as S.Schema<SubscribeEventResponse>;
+export const SubscribeEventResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<SubscribeEventResponse>;
 
 export interface SubscribeV2EventRequest {}
 export const SubscribeV2EventRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8269,9 +8053,8 @@ export const SubscribeV2EventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscribeV2EventRequest" }) as any as S.Schema<SubscribeV2EventRequest>;
 
 export interface SubscribeV2EventResponse {}
-export const SubscribeV2EventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscribeV2EventResponse",
-}) as any as S.Schema<SubscribeV2EventResponse>;
+export const SubscribeV2EventResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<SubscribeV2EventResponse>;
 
 export interface SyncReplayRequestEventsItem {
   id: string;
@@ -8335,11 +8118,7 @@ export const SyncStealRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SyncStealResponse {
   sessionID: string;
 }
-export const SyncStealResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionID: S.String,
-  }),
-).annotate({ identifier: "SyncStealResponse" }) as any as S.Schema<SyncStealResponse>;
+export const SyncStealResponse = SyncReplayResponse as any as S.Schema<SyncStealResponse>;
 
 export interface ToolIdsRequest {
   directory?: string;
@@ -8353,7 +8132,7 @@ export const ToolIdsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToolIdsRequest" }) as any as S.Schema<ToolIdsRequest>;
 
 export type ToolIDs = Array<string>;
-export const ToolIDs = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ToolIDs>;
+export const ToolIDs = ProviderEnvList as any as S.Schema<ToolIDs>;
 
 export type ToolIdsResponse = ToolIDs;
 export const ToolIdsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8374,9 +8153,8 @@ export const TuiAppendPromptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiAppendPromptRequest" }) as any as S.Schema<TuiAppendPromptRequest>;
 
 export type TuiAppendPromptResponse = boolean;
-export const TuiAppendPromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiAppendPromptResponse" }) as any as S.Schema<TuiAppendPromptResponse>;
+export const TuiAppendPromptResponse =
+  AbortSessionResponse as any as S.Schema<TuiAppendPromptResponse>;
 
 export interface TuiClearPromptRequest {
   directory?: string;
@@ -8390,9 +8168,8 @@ export const TuiClearPromptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiClearPromptRequest" }) as any as S.Schema<TuiClearPromptRequest>;
 
 export type TuiClearPromptResponse = boolean;
-export const TuiClearPromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiClearPromptResponse" }) as any as S.Schema<TuiClearPromptResponse>;
+export const TuiClearPromptResponse =
+  AbortSessionResponse as any as S.Schema<TuiClearPromptResponse>;
 
 export interface TuiControlNextRequest {
   directory?: string;
@@ -8430,11 +8207,8 @@ export const TuiControlResponseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TuiControlResponseRequest>;
 
 export type TuiControlResponseResponse = boolean;
-export const TuiControlResponseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TuiControlResponseResponse",
-}) as any as S.Schema<TuiControlResponseResponse>;
+export const TuiControlResponseResponse =
+  ExperimentalConsoleSwitchOrgResponse as any as S.Schema<TuiControlResponseResponse>;
 
 export interface TuiExecuteCommandRequest {
   directory?: string;
@@ -8450,11 +8224,8 @@ export const TuiExecuteCommandRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiExecuteCommandRequest" }) as any as S.Schema<TuiExecuteCommandRequest>;
 
 export type TuiExecuteCommandResponse = boolean;
-export const TuiExecuteCommandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "TuiExecuteCommandResponse",
-}) as any as S.Schema<TuiExecuteCommandResponse>;
+export const TuiExecuteCommandResponse =
+  ExperimentalConsoleSwitchOrgResponse as any as S.Schema<TuiExecuteCommandResponse>;
 
 export interface TuiOpenHelpRequest {
   directory?: string;
@@ -8468,9 +8239,7 @@ export const TuiOpenHelpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiOpenHelpRequest" }) as any as S.Schema<TuiOpenHelpRequest>;
 
 export type TuiOpenHelpResponse = boolean;
-export const TuiOpenHelpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiOpenHelpResponse" }) as any as S.Schema<TuiOpenHelpResponse>;
+export const TuiOpenHelpResponse = AbortSessionResponse as any as S.Schema<TuiOpenHelpResponse>;
 
 export interface TuiOpenModelsRequest {
   directory?: string;
@@ -8484,9 +8253,7 @@ export const TuiOpenModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiOpenModelsRequest" }) as any as S.Schema<TuiOpenModelsRequest>;
 
 export type TuiOpenModelsResponse = boolean;
-export const TuiOpenModelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiOpenModelsResponse" }) as any as S.Schema<TuiOpenModelsResponse>;
+export const TuiOpenModelsResponse = AbortSessionResponse as any as S.Schema<TuiOpenModelsResponse>;
 
 export interface TuiOpenSessionsRequest {
   directory?: string;
@@ -8500,9 +8267,8 @@ export const TuiOpenSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiOpenSessionsRequest" }) as any as S.Schema<TuiOpenSessionsRequest>;
 
 export type TuiOpenSessionsResponse = boolean;
-export const TuiOpenSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiOpenSessionsResponse" }) as any as S.Schema<TuiOpenSessionsResponse>;
+export const TuiOpenSessionsResponse =
+  AbortSessionResponse as any as S.Schema<TuiOpenSessionsResponse>;
 
 export interface TuiOpenThemesRequest {
   directory?: string;
@@ -8516,9 +8282,7 @@ export const TuiOpenThemesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiOpenThemesRequest" }) as any as S.Schema<TuiOpenThemesRequest>;
 
 export type TuiOpenThemesResponse = boolean;
-export const TuiOpenThemesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiOpenThemesResponse" }) as any as S.Schema<TuiOpenThemesResponse>;
+export const TuiOpenThemesResponse = AbortSessionResponse as any as S.Schema<TuiOpenThemesResponse>;
 
 export interface TuiSelectSessionRequest {
   directory?: string;
@@ -8535,9 +8299,8 @@ export const TuiSelectSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiSelectSessionRequest" }) as any as S.Schema<TuiSelectSessionRequest>;
 
 export type TuiSelectSessionResponse = boolean;
-export const TuiSelectSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiSelectSessionResponse" }) as any as S.Schema<TuiSelectSessionResponse>;
+export const TuiSelectSessionResponse =
+  AbortSessionResponse as any as S.Schema<TuiSelectSessionResponse>;
 
 export type TuiShowToastRequestVariant = "info" | "success" | "warning" | "error";
 export const TuiShowToastRequestVariant = S.String;
@@ -8562,9 +8325,7 @@ export const TuiShowToastRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiShowToastRequest" }) as any as S.Schema<TuiShowToastRequest>;
 
 export type TuiShowToastResponse = boolean;
-export const TuiShowToastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiShowToastResponse" }) as any as S.Schema<TuiShowToastResponse>;
+export const TuiShowToastResponse = AbortSessionResponse as any as S.Schema<TuiShowToastResponse>;
 
 export interface TuiSubmitPromptRequest {
   directory?: string;
@@ -8578,9 +8339,8 @@ export const TuiSubmitPromptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuiSubmitPromptRequest" }) as any as S.Schema<TuiSubmitPromptRequest>;
 
 export type TuiSubmitPromptResponse = boolean;
-export const TuiSubmitPromptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "TuiSubmitPromptResponse" }) as any as S.Schema<TuiSubmitPromptResponse>;
+export const TuiSubmitPromptResponse =
+  AbortSessionResponse as any as S.Schema<TuiSubmitPromptResponse>;
 
 export interface UnshareSessionRequest {
   sessionID: string;
@@ -8599,20 +8359,16 @@ export type UpdateConfigRequestCommandValue = ConfigCommandValue;
 export const UpdateConfigRequestCommandValue = ConfigCommandValue;
 
 export type UpdateConfigRequestCommandMap = { [key: string]: ConfigCommandValue | undefined };
-export const UpdateConfigRequestCommandMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConfigCommandValue,
-) as any as S.Schema<UpdateConfigRequestCommandMap>;
+export const UpdateConfigRequestCommandMap =
+  ConfigCommandMap as any as S.Schema<UpdateConfigRequestCommandMap>;
 
 export type UpdateConfigRequestSkillsPathsList = Array<string>;
-export const UpdateConfigRequestSkillsPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestSkillsPathsList>;
+export const UpdateConfigRequestSkillsPathsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestSkillsPathsList>;
 
 export type UpdateConfigRequestSkillsUrlsList = Array<string>;
-export const UpdateConfigRequestSkillsUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestSkillsUrlsList>;
+export const UpdateConfigRequestSkillsUrlsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestSkillsUrlsList>;
 
 export interface UpdateConfigRequestSkills {
   paths?: UpdateConfigRequestSkillsPathsList;
@@ -8658,9 +8414,8 @@ export const UpdateConfigRequestReferenceMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UpdateConfigRequestReferenceMap>;
 
 export type UpdateConfigRequestWatcherIgnoreList = Array<string>;
-export const UpdateConfigRequestWatcherIgnoreList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestWatcherIgnoreList>;
+export const UpdateConfigRequestWatcherIgnoreList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestWatcherIgnoreList>;
 
 export interface UpdateConfigRequestWatcher {
   ignore?: UpdateConfigRequestWatcherIgnoreList;
@@ -8674,9 +8429,8 @@ export const UpdateConfigRequestWatcher = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateConfigRequestWatcher>;
 
 export type UpdateConfigRequestPluginItemCase1List = Array<unknown>;
-export const UpdateConfigRequestPluginItemCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateConfigRequestPluginItemCase1List>;
+export const UpdateConfigRequestPluginItemCase1List =
+  ConfigPluginItemCase1List as any as S.Schema<UpdateConfigRequestPluginItemCase1List>;
 
 export type UpdateConfigRequestPluginItem = string | UpdateConfigRequestPluginItemCase1List;
 export const UpdateConfigRequestPluginItem =
@@ -8699,14 +8453,12 @@ export const UpdateConfigRequestAutoupdate =
   S.Unknown as any as S.Schema<UpdateConfigRequestAutoupdate>;
 
 export type UpdateConfigRequestDisabledProvidersList = Array<string>;
-export const UpdateConfigRequestDisabledProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestDisabledProvidersList>;
+export const UpdateConfigRequestDisabledProvidersList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestDisabledProvidersList>;
 
 export type UpdateConfigRequestEnabledProvidersList = Array<string>;
-export const UpdateConfigRequestEnabledProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestEnabledProvidersList>;
+export const UpdateConfigRequestEnabledProvidersList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestEnabledProvidersList>;
 
 export type UpdateConfigRequestMode = ConfigMode;
 export const UpdateConfigRequestMode = ConfigMode;
@@ -8715,10 +8467,8 @@ export type UpdateConfigRequestAgent = ConfigAgent;
 export const UpdateConfigRequestAgent = ConfigAgent;
 
 export type UpdateConfigRequestProviderMap = { [key: string]: ProviderConfig | undefined };
-export const UpdateConfigRequestProviderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProviderConfig,
-) as any as S.Schema<UpdateConfigRequestProviderMap>;
+export const UpdateConfigRequestProviderMap =
+  ConfigProviderMap as any as S.Schema<UpdateConfigRequestProviderMap>;
 
 export type UpdateConfigRequestMcpValueCase2 = ConfigMcpValueCase2;
 export const UpdateConfigRequestMcpValueCase2 = ConfigMcpValueCase2;
@@ -8734,22 +8484,18 @@ export const UpdateConfigRequestMcpMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UpdateConfigRequestMcpMap>;
 
 export type UpdateConfigRequestFormatterCase1ValueCommandList = Array<string>;
-export const UpdateConfigRequestFormatterCase1ValueCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestFormatterCase1ValueCommandList>;
+export const UpdateConfigRequestFormatterCase1ValueCommandList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestFormatterCase1ValueCommandList>;
 
 export type UpdateConfigRequestFormatterCase1ValueEnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const UpdateConfigRequestFormatterCase1ValueEnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigRequestFormatterCase1ValueEnvironmentMap>;
+export const UpdateConfigRequestFormatterCase1ValueEnvironmentMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<UpdateConfigRequestFormatterCase1ValueEnvironmentMap>;
 
 export type UpdateConfigRequestFormatterCase1ValueExtensionsList = Array<string>;
-export const UpdateConfigRequestFormatterCase1ValueExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestFormatterCase1ValueExtensionsList>;
+export const UpdateConfigRequestFormatterCase1ValueExtensionsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestFormatterCase1ValueExtensionsList>;
 
 export interface UpdateConfigRequestFormatterCase1Value {
   disabled?: boolean;
@@ -8757,24 +8503,14 @@ export interface UpdateConfigRequestFormatterCase1Value {
   environment?: UpdateConfigRequestFormatterCase1ValueEnvironmentMap;
   extensions?: UpdateConfigRequestFormatterCase1ValueExtensionsList;
 }
-export const UpdateConfigRequestFormatterCase1Value = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-    command: S.optional(UpdateConfigRequestFormatterCase1ValueCommandList),
-    environment: S.optional(UpdateConfigRequestFormatterCase1ValueEnvironmentMap),
-    extensions: S.optional(UpdateConfigRequestFormatterCase1ValueExtensionsList),
-  }),
-).annotate({
-  identifier: "UpdateConfigRequestFormatterCase1Value",
-}) as any as S.Schema<UpdateConfigRequestFormatterCase1Value>;
+export const UpdateConfigRequestFormatterCase1Value =
+  ConfigFormatterCase1Value as any as S.Schema<UpdateConfigRequestFormatterCase1Value>;
 
 export type UpdateConfigRequestFormatterCase1Map = {
   [key: string]: UpdateConfigRequestFormatterCase1Value | undefined;
 };
-export const UpdateConfigRequestFormatterCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateConfigRequestFormatterCase1Value,
-) as any as S.Schema<UpdateConfigRequestFormatterCase1Map>;
+export const UpdateConfigRequestFormatterCase1Map =
+  ConfigFormatterCase1Map as any as S.Schema<UpdateConfigRequestFormatterCase1Map>;
 
 /** Enable or configure formatters. Omit or set to false to disable, true to enable built-ins, or an object to enable built-ins with overrides. */
 export type UpdateConfigRequestFormatter = boolean | UpdateConfigRequestFormatterCase1Map;
@@ -8785,20 +8521,16 @@ export type UpdateConfigRequestLspCase1ValueCase0 = ConfigLspCase1ValueCase0;
 export const UpdateConfigRequestLspCase1ValueCase0 = ConfigLspCase1ValueCase0;
 
 export type UpdateConfigRequestLspCase1ValueCase1CommandList = Array<string>;
-export const UpdateConfigRequestLspCase1ValueCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestLspCase1ValueCase1CommandList>;
+export const UpdateConfigRequestLspCase1ValueCase1CommandList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestLspCase1ValueCase1CommandList>;
 
 export type UpdateConfigRequestLspCase1ValueCase1ExtensionsList = Array<string>;
-export const UpdateConfigRequestLspCase1ValueCase1ExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestLspCase1ValueCase1ExtensionsList>;
+export const UpdateConfigRequestLspCase1ValueCase1ExtensionsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestLspCase1ValueCase1ExtensionsList>;
 
 export type UpdateConfigRequestLspCase1ValueCase1EnvMap = { [key: string]: string | undefined };
-export const UpdateConfigRequestLspCase1ValueCase1EnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateConfigRequestLspCase1ValueCase1EnvMap>;
+export const UpdateConfigRequestLspCase1ValueCase1EnvMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<UpdateConfigRequestLspCase1ValueCase1EnvMap>;
 
 export interface UpdateConfigRequestLspCase1ValueCase1 {
   command: UpdateConfigRequestLspCase1ValueCase1CommandList;
@@ -8838,15 +8570,12 @@ export type UpdateConfigRequestLsp = boolean | UpdateConfigRequestLspCase1Map;
 export const UpdateConfigRequestLsp = S.Unknown as any as S.Schema<UpdateConfigRequestLsp>;
 
 export type UpdateConfigRequestInstructionsList = Array<string>;
-export const UpdateConfigRequestInstructionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestInstructionsList>;
+export const UpdateConfigRequestInstructionsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestInstructionsList>;
 
 export type UpdateConfigRequestToolsMap = { [key: string]: boolean | undefined };
-export const UpdateConfigRequestToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<UpdateConfigRequestToolsMap>;
+export const UpdateConfigRequestToolsMap =
+  AgentConfigToolsMap as any as S.Schema<UpdateConfigRequestToolsMap>;
 
 export type UpdateConfigRequestEnterprise = ConfigEnterprise;
 export const UpdateConfigRequestEnterprise = ConfigEnterprise;
@@ -8858,14 +8587,12 @@ export type UpdateConfigRequestCompaction = ConfigCompaction;
 export const UpdateConfigRequestCompaction = ConfigCompaction;
 
 export type UpdateConfigRequestExperimentalPrimaryToolsList = Array<string>;
-export const UpdateConfigRequestExperimentalPrimaryToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConfigRequestExperimentalPrimaryToolsList>;
+export const UpdateConfigRequestExperimentalPrimaryToolsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateConfigRequestExperimentalPrimaryToolsList>;
 
 export type UpdateConfigRequestExperimentalPoliciesList = Array<ConfigV2ExperimentalPolicy>;
-export const UpdateConfigRequestExperimentalPoliciesList = /*@__PURE__*/ S.Array(
-  ConfigV2ExperimentalPolicy,
-) as any as S.Schema<UpdateConfigRequestExperimentalPoliciesList>;
+export const UpdateConfigRequestExperimentalPoliciesList =
+  ConfigExperimentalPoliciesList as any as S.Schema<UpdateConfigRequestExperimentalPoliciesList>;
 
 export interface UpdateConfigRequestExperimental {
   disable_paste_summary?: boolean;
@@ -8980,33 +8707,23 @@ export type UpdateGlobalConfigRequestCommandValue = ConfigCommandValue;
 export const UpdateGlobalConfigRequestCommandValue = ConfigCommandValue;
 
 export type UpdateGlobalConfigRequestCommandMap = { [key: string]: ConfigCommandValue | undefined };
-export const UpdateGlobalConfigRequestCommandMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ConfigCommandValue,
-) as any as S.Schema<UpdateGlobalConfigRequestCommandMap>;
+export const UpdateGlobalConfigRequestCommandMap =
+  ConfigCommandMap as any as S.Schema<UpdateGlobalConfigRequestCommandMap>;
 
 export type UpdateGlobalConfigRequestSkillsPathsList = Array<string>;
-export const UpdateGlobalConfigRequestSkillsPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestSkillsPathsList>;
+export const UpdateGlobalConfigRequestSkillsPathsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestSkillsPathsList>;
 
 export type UpdateGlobalConfigRequestSkillsUrlsList = Array<string>;
-export const UpdateGlobalConfigRequestSkillsUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestSkillsUrlsList>;
+export const UpdateGlobalConfigRequestSkillsUrlsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestSkillsUrlsList>;
 
 export interface UpdateGlobalConfigRequestSkills {
   paths?: UpdateGlobalConfigRequestSkillsPathsList;
   urls?: UpdateGlobalConfigRequestSkillsUrlsList;
 }
-export const UpdateGlobalConfigRequestSkills = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paths: S.optional(UpdateGlobalConfigRequestSkillsPathsList),
-    urls: S.optional(UpdateGlobalConfigRequestSkillsUrlsList),
-  }),
-).annotate({
-  identifier: "UpdateGlobalConfigRequestSkills",
-}) as any as S.Schema<UpdateGlobalConfigRequestSkills>;
+export const UpdateGlobalConfigRequestSkills =
+  UpdateConfigRequestSkills as any as S.Schema<UpdateGlobalConfigRequestSkills>;
 
 export type UpdateGlobalConfigRequestReferencesValue =
   | string
@@ -9039,25 +8756,18 @@ export const UpdateGlobalConfigRequestReferenceMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UpdateGlobalConfigRequestReferenceMap>;
 
 export type UpdateGlobalConfigRequestWatcherIgnoreList = Array<string>;
-export const UpdateGlobalConfigRequestWatcherIgnoreList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestWatcherIgnoreList>;
+export const UpdateGlobalConfigRequestWatcherIgnoreList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestWatcherIgnoreList>;
 
 export interface UpdateGlobalConfigRequestWatcher {
   ignore?: UpdateGlobalConfigRequestWatcherIgnoreList;
 }
-export const UpdateGlobalConfigRequestWatcher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ignore: S.optional(UpdateGlobalConfigRequestWatcherIgnoreList),
-  }),
-).annotate({
-  identifier: "UpdateGlobalConfigRequestWatcher",
-}) as any as S.Schema<UpdateGlobalConfigRequestWatcher>;
+export const UpdateGlobalConfigRequestWatcher =
+  UpdateConfigRequestWatcher as any as S.Schema<UpdateGlobalConfigRequestWatcher>;
 
 export type UpdateGlobalConfigRequestPluginItemCase1List = Array<unknown>;
-export const UpdateGlobalConfigRequestPluginItemCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateGlobalConfigRequestPluginItemCase1List>;
+export const UpdateGlobalConfigRequestPluginItemCase1List =
+  ConfigPluginItemCase1List as any as S.Schema<UpdateGlobalConfigRequestPluginItemCase1List>;
 
 export type UpdateGlobalConfigRequestPluginItem =
   | string
@@ -9084,14 +8794,12 @@ export const UpdateGlobalConfigRequestAutoupdate =
   S.Unknown as any as S.Schema<UpdateGlobalConfigRequestAutoupdate>;
 
 export type UpdateGlobalConfigRequestDisabledProvidersList = Array<string>;
-export const UpdateGlobalConfigRequestDisabledProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestDisabledProvidersList>;
+export const UpdateGlobalConfigRequestDisabledProvidersList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestDisabledProvidersList>;
 
 export type UpdateGlobalConfigRequestEnabledProvidersList = Array<string>;
-export const UpdateGlobalConfigRequestEnabledProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestEnabledProvidersList>;
+export const UpdateGlobalConfigRequestEnabledProvidersList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestEnabledProvidersList>;
 
 export type UpdateGlobalConfigRequestMode = ConfigMode;
 export const UpdateGlobalConfigRequestMode = ConfigMode;
@@ -9100,10 +8808,8 @@ export type UpdateGlobalConfigRequestAgent = ConfigAgent;
 export const UpdateGlobalConfigRequestAgent = ConfigAgent;
 
 export type UpdateGlobalConfigRequestProviderMap = { [key: string]: ProviderConfig | undefined };
-export const UpdateGlobalConfigRequestProviderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ProviderConfig,
-) as any as S.Schema<UpdateGlobalConfigRequestProviderMap>;
+export const UpdateGlobalConfigRequestProviderMap =
+  ConfigProviderMap as any as S.Schema<UpdateGlobalConfigRequestProviderMap>;
 
 export type UpdateGlobalConfigRequestMcpValueCase2 = ConfigMcpValueCase2;
 export const UpdateGlobalConfigRequestMcpValueCase2 = ConfigMcpValueCase2;
@@ -9124,22 +8830,18 @@ export const UpdateGlobalConfigRequestMcpMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<UpdateGlobalConfigRequestMcpMap>;
 
 export type UpdateGlobalConfigRequestFormatterCase1ValueCommandList = Array<string>;
-export const UpdateGlobalConfigRequestFormatterCase1ValueCommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1ValueCommandList>;
+export const UpdateGlobalConfigRequestFormatterCase1ValueCommandList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1ValueCommandList>;
 
 export type UpdateGlobalConfigRequestFormatterCase1ValueEnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const UpdateGlobalConfigRequestFormatterCase1ValueEnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1ValueEnvironmentMap>;
+export const UpdateGlobalConfigRequestFormatterCase1ValueEnvironmentMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1ValueEnvironmentMap>;
 
 export type UpdateGlobalConfigRequestFormatterCase1ValueExtensionsList = Array<string>;
-export const UpdateGlobalConfigRequestFormatterCase1ValueExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1ValueExtensionsList>;
+export const UpdateGlobalConfigRequestFormatterCase1ValueExtensionsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1ValueExtensionsList>;
 
 export interface UpdateGlobalConfigRequestFormatterCase1Value {
   disabled?: boolean;
@@ -9147,24 +8849,14 @@ export interface UpdateGlobalConfigRequestFormatterCase1Value {
   environment?: UpdateGlobalConfigRequestFormatterCase1ValueEnvironmentMap;
   extensions?: UpdateGlobalConfigRequestFormatterCase1ValueExtensionsList;
 }
-export const UpdateGlobalConfigRequestFormatterCase1Value = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-    command: S.optional(UpdateGlobalConfigRequestFormatterCase1ValueCommandList),
-    environment: S.optional(UpdateGlobalConfigRequestFormatterCase1ValueEnvironmentMap),
-    extensions: S.optional(UpdateGlobalConfigRequestFormatterCase1ValueExtensionsList),
-  }),
-).annotate({
-  identifier: "UpdateGlobalConfigRequestFormatterCase1Value",
-}) as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1Value>;
+export const UpdateGlobalConfigRequestFormatterCase1Value =
+  ConfigFormatterCase1Value as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1Value>;
 
 export type UpdateGlobalConfigRequestFormatterCase1Map = {
   [key: string]: UpdateGlobalConfigRequestFormatterCase1Value | undefined;
 };
-export const UpdateGlobalConfigRequestFormatterCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateGlobalConfigRequestFormatterCase1Value,
-) as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1Map>;
+export const UpdateGlobalConfigRequestFormatterCase1Map =
+  ConfigFormatterCase1Map as any as S.Schema<UpdateGlobalConfigRequestFormatterCase1Map>;
 
 /** Enable or configure formatters. Omit or set to false to disable, true to enable built-ins, or an object to enable built-ins with overrides. */
 export type UpdateGlobalConfigRequestFormatter =
@@ -9177,22 +8869,18 @@ export type UpdateGlobalConfigRequestLspCase1ValueCase0 = ConfigLspCase1ValueCas
 export const UpdateGlobalConfigRequestLspCase1ValueCase0 = ConfigLspCase1ValueCase0;
 
 export type UpdateGlobalConfigRequestLspCase1ValueCase1CommandList = Array<string>;
-export const UpdateGlobalConfigRequestLspCase1ValueCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1CommandList>;
+export const UpdateGlobalConfigRequestLspCase1ValueCase1CommandList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1CommandList>;
 
 export type UpdateGlobalConfigRequestLspCase1ValueCase1ExtensionsList = Array<string>;
-export const UpdateGlobalConfigRequestLspCase1ValueCase1ExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1ExtensionsList>;
+export const UpdateGlobalConfigRequestLspCase1ValueCase1ExtensionsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1ExtensionsList>;
 
 export type UpdateGlobalConfigRequestLspCase1ValueCase1EnvMap = {
   [key: string]: string | undefined;
 };
-export const UpdateGlobalConfigRequestLspCase1ValueCase1EnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1EnvMap>;
+export const UpdateGlobalConfigRequestLspCase1ValueCase1EnvMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1EnvMap>;
 
 export interface UpdateGlobalConfigRequestLspCase1ValueCase1 {
   command: UpdateGlobalConfigRequestLspCase1ValueCase1CommandList;
@@ -9201,17 +8889,8 @@ export interface UpdateGlobalConfigRequestLspCase1ValueCase1 {
   env?: UpdateGlobalConfigRequestLspCase1ValueCase1EnvMap;
   initialization?: unknown;
 }
-export const UpdateGlobalConfigRequestLspCase1ValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    command: UpdateGlobalConfigRequestLspCase1ValueCase1CommandList,
-    extensions: S.optional(UpdateGlobalConfigRequestLspCase1ValueCase1ExtensionsList),
-    disabled: S.optional(S.Boolean),
-    env: S.optional(UpdateGlobalConfigRequestLspCase1ValueCase1EnvMap),
-    initialization: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "UpdateGlobalConfigRequestLspCase1ValueCase1",
-}) as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1>;
+export const UpdateGlobalConfigRequestLspCase1ValueCase1 =
+  UpdateConfigRequestLspCase1ValueCase1 as any as S.Schema<UpdateGlobalConfigRequestLspCase1ValueCase1>;
 
 export type UpdateGlobalConfigRequestLspCase1Value =
   | ConfigLspCase1ValueCase0
@@ -9233,15 +8912,12 @@ export const UpdateGlobalConfigRequestLsp =
   S.Unknown as any as S.Schema<UpdateGlobalConfigRequestLsp>;
 
 export type UpdateGlobalConfigRequestInstructionsList = Array<string>;
-export const UpdateGlobalConfigRequestInstructionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestInstructionsList>;
+export const UpdateGlobalConfigRequestInstructionsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestInstructionsList>;
 
 export type UpdateGlobalConfigRequestToolsMap = { [key: string]: boolean | undefined };
-export const UpdateGlobalConfigRequestToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<UpdateGlobalConfigRequestToolsMap>;
+export const UpdateGlobalConfigRequestToolsMap =
+  AgentConfigToolsMap as any as S.Schema<UpdateGlobalConfigRequestToolsMap>;
 
 export type UpdateGlobalConfigRequestEnterprise = ConfigEnterprise;
 export const UpdateGlobalConfigRequestEnterprise = ConfigEnterprise;
@@ -9253,14 +8929,12 @@ export type UpdateGlobalConfigRequestCompaction = ConfigCompaction;
 export const UpdateGlobalConfigRequestCompaction = ConfigCompaction;
 
 export type UpdateGlobalConfigRequestExperimentalPrimaryToolsList = Array<string>;
-export const UpdateGlobalConfigRequestExperimentalPrimaryToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGlobalConfigRequestExperimentalPrimaryToolsList>;
+export const UpdateGlobalConfigRequestExperimentalPrimaryToolsList =
+  McpLocalConfigCommandList as any as S.Schema<UpdateGlobalConfigRequestExperimentalPrimaryToolsList>;
 
 export type UpdateGlobalConfigRequestExperimentalPoliciesList = Array<ConfigV2ExperimentalPolicy>;
-export const UpdateGlobalConfigRequestExperimentalPoliciesList = /*@__PURE__*/ S.Array(
-  ConfigV2ExperimentalPolicy,
-) as any as S.Schema<UpdateGlobalConfigRequestExperimentalPoliciesList>;
+export const UpdateGlobalConfigRequestExperimentalPoliciesList =
+  ConfigExperimentalPoliciesList as any as S.Schema<UpdateGlobalConfigRequestExperimentalPoliciesList>;
 
 export interface UpdateGlobalConfigRequestExperimental {
   disable_paste_summary?: boolean;
@@ -9271,19 +8945,8 @@ export interface UpdateGlobalConfigRequestExperimental {
   mcp_timeout?: number;
   policies?: UpdateGlobalConfigRequestExperimentalPoliciesList;
 }
-export const UpdateGlobalConfigRequestExperimental = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disable_paste_summary: S.optional(S.Boolean),
-    batch_tool: S.optional(S.Boolean),
-    openTelemetry: S.optional(S.Boolean),
-    primary_tools: S.optional(UpdateGlobalConfigRequestExperimentalPrimaryToolsList),
-    continue_loop_on_deny: S.optional(S.Boolean),
-    mcp_timeout: S.optional(S.Number),
-    policies: S.optional(UpdateGlobalConfigRequestExperimentalPoliciesList),
-  }),
-).annotate({
-  identifier: "UpdateGlobalConfigRequestExperimental",
-}) as any as S.Schema<UpdateGlobalConfigRequestExperimental>;
+export const UpdateGlobalConfigRequestExperimental =
+  UpdateConfigRequestExperimental as any as S.Schema<UpdateGlobalConfigRequestExperimental>;
 
 export interface UpdateGlobalConfigRequest {
   _schema?: string;
@@ -9495,9 +9158,8 @@ export const UpdateV2CredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateV2CredentialRequest>;
 
 export interface UpdateV2CredentialResponse {}
-export const UpdateV2CredentialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateV2CredentialResponse",
-}) as any as S.Schema<UpdateV2CredentialResponse>;
+export const UpdateV2CredentialResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<UpdateV2CredentialResponse>;
 
 export type UpdateV2PtyRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const UpdateV2PtyRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -9524,12 +9186,7 @@ export interface UpdateV2PtyResponse {
   location: LocationInfo;
   data: Pty;
 }
-export const UpdateV2PtyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: LocationInfo,
-    data: Pty,
-  }),
-).annotate({ identifier: "UpdateV2PtyResponse" }) as any as S.Schema<UpdateV2PtyResponse>;
+export const UpdateV2PtyResponse = CreateV2PtyResponse as any as S.Schema<UpdateV2PtyResponse>;
 
 export type V2FsFindRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const V2FsFindRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -9553,20 +9210,14 @@ export const V2FsFindRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2FsFindRequest" }) as any as S.Schema<V2FsFindRequest>;
 
 export type V2FsFindResponseDataList = Array<FileSystemEntry>;
-export const V2FsFindResponseDataList = /*@__PURE__*/ S.Array(
-  FileSystemEntry,
-) as any as S.Schema<V2FsFindResponseDataList>;
+export const V2FsFindResponseDataList =
+  ListV2FsResponseDataList as any as S.Schema<V2FsFindResponseDataList>;
 
 export interface V2FsFindResponse {
   location: LocationInfo;
   data: V2FsFindResponseDataList;
 }
-export const V2FsFindResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: LocationInfo,
-    data: V2FsFindResponseDataList,
-  }),
-).annotate({ identifier: "V2FsFindResponse" }) as any as S.Schema<V2FsFindResponse>;
+export const V2FsFindResponse = ListV2FsResponse as any as S.Schema<V2FsFindResponse>;
 
 export type V2IntegrationAttemptStatusRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const V2IntegrationAttemptStatusRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -9913,18 +9564,15 @@ export const V2IntegrationConnectKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2IntegrationConnectKeyRequest>;
 
 export interface V2IntegrationConnectKeyResponse {}
-export const V2IntegrationConnectKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "V2IntegrationConnectKeyResponse" },
-) as any as S.Schema<V2IntegrationConnectKeyResponse>;
+export const V2IntegrationConnectKeyResponse =
+  RejectV2SessionQuestionResponse as any as S.Schema<V2IntegrationConnectKeyResponse>;
 
 export type V2IntegrationConnectOauthRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const V2IntegrationConnectOauthRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 
 export type V2IntegrationConnectOauthRequestInputsMap = { [key: string]: string | undefined };
-export const V2IntegrationConnectOauthRequestInputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<V2IntegrationConnectOauthRequestInputsMap>;
+export const V2IntegrationConnectOauthRequestInputsMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<V2IntegrationConnectOauthRequestInputsMap>;
 
 export interface V2IntegrationConnectOauthRequest {
   integrationID: string;
@@ -10058,11 +9706,7 @@ export const V2ProjectCopyCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectCopyCopy {
   directory: string;
 }
-export const ProjectCopyCopy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    directory: S.String,
-  }),
-).annotate({ identifier: "ProjectCopyCopy" }) as any as S.Schema<ProjectCopyCopy>;
+export const ProjectCopyCopy = MoveSessionDestination as any as S.Schema<ProjectCopyCopy>;
 
 export type V2ProjectCopyRefreshRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const V2ProjectCopyRefreshRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -10083,9 +9727,8 @@ export const V2ProjectCopyRefreshRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2ProjectCopyRefreshRequest>;
 
 export interface V2ProjectCopyRefreshResponse {}
-export const V2ProjectCopyRefreshResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V2ProjectCopyRefreshResponse",
-}) as any as S.Schema<V2ProjectCopyRefreshResponse>;
+export const V2ProjectCopyRefreshResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<V2ProjectCopyRefreshResponse>;
 
 export type V2ProjectCopyRemoveRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const V2ProjectCopyRemoveRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -10108,9 +9751,8 @@ export const V2ProjectCopyRemoveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2ProjectCopyRemoveRequest>;
 
 export interface V2ProjectCopyRemoveResponse {}
-export const V2ProjectCopyRemoveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V2ProjectCopyRemoveResponse",
-}) as any as S.Schema<V2ProjectCopyRemoveResponse>;
+export const V2ProjectCopyRemoveResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<V2ProjectCopyRemoveResponse>;
 
 export type V2PtyConnectTokenRequestLocation = CancelV2IntegrationAttemptRequestLocation;
 export const V2PtyConnectTokenRequestLocation = CancelV2IntegrationAttemptRequestLocation;
@@ -10393,10 +10035,7 @@ export type SessionMessageAssistantReasoningType = "reasoning";
 export const SessionMessageAssistantReasoningType = S.String;
 
 export type LLMProviderMetadata = { [key: string]: unknown | undefined };
-export const LLMProviderMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LLMProviderMetadata>;
+export const LLMProviderMetadata = ModelVariantsMap as any as S.Schema<LLMProviderMetadata>;
 
 export type SessionMessageAssistantReasoningTime = AssistantMessageTime;
 export const SessionMessageAssistantReasoningTime = AssistantMessageTime;
@@ -10518,19 +10157,16 @@ export type SessionMessageToolStateCompletedStatus = "completed";
 export const SessionMessageToolStateCompletedStatus = S.String;
 
 export type SessionMessageToolStateCompletedAttachmentsList = Array<PromptFileAttachment>;
-export const SessionMessageToolStateCompletedAttachmentsList = /*@__PURE__*/ S.Array(
-  PromptFileAttachment,
-) as any as S.Schema<SessionMessageToolStateCompletedAttachmentsList>;
+export const SessionMessageToolStateCompletedAttachmentsList =
+  SessionMessageUserFilesList as any as S.Schema<SessionMessageToolStateCompletedAttachmentsList>;
 
 export type SessionMessageToolStateCompletedContentList = Array<LLMToolContent>;
-export const SessionMessageToolStateCompletedContentList = /*@__PURE__*/ S.Array(
-  LLMToolContent,
-) as any as S.Schema<SessionMessageToolStateCompletedContentList>;
+export const SessionMessageToolStateCompletedContentList =
+  SessionMessageToolStateRunningContentList as any as S.Schema<SessionMessageToolStateCompletedContentList>;
 
 export type SessionMessageToolStateCompletedOutputPathsList = Array<string>;
-export const SessionMessageToolStateCompletedOutputPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionMessageToolStateCompletedOutputPathsList>;
+export const SessionMessageToolStateCompletedOutputPathsList =
+  McpLocalConfigCommandList as any as S.Schema<SessionMessageToolStateCompletedOutputPathsList>;
 
 export interface SessionMessageToolStateCompleted {
   status: SessionMessageToolStateCompletedStatus;
@@ -10559,9 +10195,8 @@ export type SessionMessageToolStateErrorStatus = "error";
 export const SessionMessageToolStateErrorStatus = S.String;
 
 export type SessionMessageToolStateErrorContentList = Array<LLMToolContent>;
-export const SessionMessageToolStateErrorContentList = /*@__PURE__*/ S.Array(
-  LLMToolContent,
-) as any as S.Schema<SessionMessageToolStateErrorContentList>;
+export const SessionMessageToolStateErrorContentList =
+  SessionMessageToolStateRunningContentList as any as S.Schema<SessionMessageToolStateErrorContentList>;
 
 export type SessionErrorUnknownType = "unknown";
 export const SessionErrorUnknownType = S.String;
@@ -10657,9 +10292,8 @@ export const SessionMessageAssistantContentList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SessionMessageAssistantContentList>;
 
 export type SessionMessageAssistantSnapshotFilesList = Array<string>;
-export const SessionMessageAssistantSnapshotFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionMessageAssistantSnapshotFilesList>;
+export const SessionMessageAssistantSnapshotFilesList =
+  McpLocalConfigCommandList as any as S.Schema<SessionMessageAssistantSnapshotFilesList>;
 
 export interface SessionMessageAssistantSnapshot {
   start?: string;
@@ -10780,9 +10414,8 @@ export const V2SessionEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2SessionEventsRequest" }) as any as S.Schema<V2SessionEventsRequest>;
 
 export interface V2SessionEventsResponse {}
-export const V2SessionEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V2SessionEventsResponse",
-}) as any as S.Schema<V2SessionEventsResponse>;
+export const V2SessionEventsResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<V2SessionEventsResponse>;
 
 export interface V2SessionHistoryRequest {
   sessionID: string;
@@ -10940,14 +10573,10 @@ export type SessionNextPromptedDurable = SessionNextAgentSwitchedDurable;
 export const SessionNextPromptedDurable = SessionNextAgentSwitchedDurable;
 
 export type PromptFilesList = Array<PromptFileAttachment>;
-export const PromptFilesList = /*@__PURE__*/ S.Array(
-  PromptFileAttachment,
-) as any as S.Schema<PromptFilesList>;
+export const PromptFilesList = SessionMessageUserFilesList as any as S.Schema<PromptFilesList>;
 
 export type PromptAgentsList = Array<PromptAgentAttachment>;
-export const PromptAgentsList = /*@__PURE__*/ S.Array(
-  PromptAgentAttachment,
-) as any as S.Schema<PromptAgentsList>;
+export const PromptAgentsList = SessionMessageUserAgentsList as any as S.Schema<PromptAgentsList>;
 
 export interface Prompt {
   text: string;
@@ -11267,9 +10896,8 @@ export type SessionNextStepEndedDataTokens = SessionTokens;
 export const SessionNextStepEndedDataTokens = SessionTokens;
 
 export type SessionNextStepEndedDataFilesList = Array<string>;
-export const SessionNextStepEndedDataFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionNextStepEndedDataFilesList>;
+export const SessionNextStepEndedDataFilesList =
+  McpLocalConfigCommandList as any as S.Schema<SessionNextStepEndedDataFilesList>;
 
 export interface SessionNextStepEndedData {
   timestamp: number;
@@ -11599,9 +11227,8 @@ export type SessionNextToolProgressDurable = SessionNextAgentSwitchedDurable;
 export const SessionNextToolProgressDurable = SessionNextAgentSwitchedDurable;
 
 export type SessionNextToolProgressDataContentList = Array<LLMToolContent>;
-export const SessionNextToolProgressDataContentList = /*@__PURE__*/ S.Array(
-  LLMToolContent,
-) as any as S.Schema<SessionNextToolProgressDataContentList>;
+export const SessionNextToolProgressDataContentList =
+  SessionMessageToolStateRunningContentList as any as S.Schema<SessionNextToolProgressDataContentList>;
 
 export interface SessionNextToolProgressData {
   timestamp: number;
@@ -11650,14 +11277,12 @@ export type SessionNextToolSuccessDurable = SessionNextAgentSwitchedDurable;
 export const SessionNextToolSuccessDurable = SessionNextAgentSwitchedDurable;
 
 export type SessionNextToolSuccessDataContentList = Array<LLMToolContent>;
-export const SessionNextToolSuccessDataContentList = /*@__PURE__*/ S.Array(
-  LLMToolContent,
-) as any as S.Schema<SessionNextToolSuccessDataContentList>;
+export const SessionNextToolSuccessDataContentList =
+  SessionMessageToolStateRunningContentList as any as S.Schema<SessionNextToolSuccessDataContentList>;
 
 export type SessionNextToolSuccessDataOutputPathsList = Array<string>;
-export const SessionNextToolSuccessDataOutputPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionNextToolSuccessDataOutputPathsList>;
+export const SessionNextToolSuccessDataOutputPathsList =
+  McpLocalConfigCommandList as any as S.Schema<SessionNextToolSuccessDataOutputPathsList>;
 
 export type SessionNextToolSuccessDataProvider = SessionNextToolCalledDataProvider;
 export const SessionNextToolSuccessDataProvider = SessionNextToolCalledDataProvider;
@@ -11860,16 +11485,12 @@ export type SessionNextRetriedDurable = SessionNextAgentSwitchedDurable;
 export const SessionNextRetriedDurable = SessionNextAgentSwitchedDurable;
 
 export type SessionNextRetryErrorResponseHeadersMap = { [key: string]: string | undefined };
-export const SessionNextRetryErrorResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SessionNextRetryErrorResponseHeadersMap>;
+export const SessionNextRetryErrorResponseHeadersMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<SessionNextRetryErrorResponseHeadersMap>;
 
 export type SessionNextRetryErrorMetadataMap = { [key: string]: string | undefined };
-export const SessionNextRetryErrorMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SessionNextRetryErrorMetadataMap>;
+export const SessionNextRetryErrorMetadataMap =
+  McpLocalConfigEnvironmentMap as any as S.Schema<SessionNextRetryErrorMetadataMap>;
 
 export interface SessionNextRetryError {
   message: string;
@@ -11879,16 +11500,7 @@ export interface SessionNextRetryError {
   responseBody?: string;
   metadata?: SessionNextRetryErrorMetadataMap;
 }
-export const SessionNextRetryError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    statusCode: S.optional(S.Number),
-    isRetryable: S.Boolean,
-    responseHeaders: S.optional(SessionNextRetryErrorResponseHeadersMap),
-    responseBody: S.optional(S.String),
-    metadata: S.optional(SessionNextRetryErrorMetadataMap),
-  }),
-).annotate({ identifier: "SessionNextRetryError" }) as any as S.Schema<SessionNextRetryError>;
+export const SessionNextRetryError = APIErrorData as any as S.Schema<SessionNextRetryError>;
 
 export interface SessionNextRetriedData {
   timestamp: number;
@@ -12201,9 +11813,8 @@ export const V2SessionInterruptRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2SessionInterruptRequest>;
 
 export interface V2SessionInterruptResponse {}
-export const V2SessionInterruptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V2SessionInterruptResponse",
-}) as any as S.Schema<V2SessionInterruptResponse>;
+export const V2SessionInterruptResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<V2SessionInterruptResponse>;
 
 export interface V2SessionMessageRequest {
   sessionID: string;
@@ -12246,9 +11857,8 @@ export const V2SessionMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2SessionMessagesRequest" }) as any as S.Schema<V2SessionMessagesRequest>;
 
 export type SessionMessagesResponseDataList = Array<SessionMessage2>;
-export const SessionMessagesResponseDataList = /*@__PURE__*/ S.Array(
-  SessionMessage2,
-) as any as S.Schema<SessionMessagesResponseDataList>;
+export const SessionMessagesResponseDataList =
+  V2SessionContextResponseDataList as any as S.Schema<SessionMessagesResponseDataList>;
 
 export type SessionMessagesResponseCursor = SessionsResponseCursor;
 export const SessionMessagesResponseCursor = SessionsResponseCursor;
@@ -12287,9 +11897,8 @@ export const PromptInputFilesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PromptInputFilesList>;
 
 export type PromptInputAgentsList = Array<PromptAgentAttachment>;
-export const PromptInputAgentsList = /*@__PURE__*/ S.Array(
-  PromptAgentAttachment,
-) as any as S.Schema<PromptInputAgentsList>;
+export const PromptInputAgentsList =
+  SessionMessageUserAgentsList as any as S.Schema<PromptInputAgentsList>;
 
 export interface PromptInput {
   text: string;
@@ -12397,9 +12006,8 @@ export const V2SessionSwitchAgentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2SessionSwitchAgentRequest>;
 
 export interface V2SessionSwitchAgentResponse {}
-export const V2SessionSwitchAgentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V2SessionSwitchAgentResponse",
-}) as any as S.Schema<V2SessionSwitchAgentResponse>;
+export const V2SessionSwitchAgentResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<V2SessionSwitchAgentResponse>;
 
 export interface V2SessionSwitchModelRequest {
   sessionID: string;
@@ -12415,9 +12023,8 @@ export const V2SessionSwitchModelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2SessionSwitchModelRequest>;
 
 export interface V2SessionSwitchModelResponse {}
-export const V2SessionSwitchModelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "V2SessionSwitchModelResponse",
-}) as any as S.Schema<V2SessionSwitchModelResponse>;
+export const V2SessionSwitchModelResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<V2SessionSwitchModelResponse>;
 
 export type VcsDiffRequestMode = "git" | "branch";
 export const VcsDiffRequestMode = S.String;
@@ -12480,9 +12087,8 @@ export const VcsDiffRawRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VcsDiffRawRequest" }) as any as S.Schema<VcsDiffRawRequest>;
 
 export interface VcsDiffRawResponse {}
-export const VcsDiffRawResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VcsDiffRawResponse",
-}) as any as S.Schema<VcsDiffRawResponse>;
+export const VcsDiffRawResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<VcsDiffRawResponse>;
 
 export interface VcsStatusRequest {
   directory?: string;
@@ -12534,9 +12140,8 @@ export const WaitV2SessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WaitV2SessionRequest" }) as any as S.Schema<WaitV2SessionRequest>;
 
 export interface WaitV2SessionResponse {}
-export const WaitV2SessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "WaitV2SessionResponse",
-}) as any as S.Schema<WaitV2SessionResponse>;
+export const WaitV2SessionResponse =
+  ClearV2SessionRevertResponse as any as S.Schema<WaitV2SessionResponse>;
 
 export type AbortSessionError = BadRequest | OpencodeOpError;
 /** Abort session Abort an active session and stop any ongoing AI processing or command execution. */

@@ -105,15 +105,13 @@ export const MetricCase1 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricCase1" }) as any as S.Schema<MetricCase1>;
 
 export type GaugeMetricValuesItemList = Array<unknown>;
-export const GaugeMetricValuesItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GaugeMetricValuesItemList>;
+export const GaugeMetricValuesItemList =
+  AccumulationMetricValuesItemList as any as S.Schema<GaugeMetricValuesItemList>;
 
 /** Timeseries values. Each element is a tuple of a timestamp in Unix epoch seconds and a data point. The data point represents the value at the instant of the timestamp. */
 export type GaugeMetricValuesList = Array<GaugeMetricValuesItemList>;
-export const GaugeMetricValuesList = /*@__PURE__*/ S.Array(
-  GaugeMetricValuesItemList,
-) as any as S.Schema<GaugeMetricValuesList>;
+export const GaugeMetricValuesList =
+  AccumulationMetricValuesList as any as S.Schema<GaugeMetricValuesList>;
 
 export interface GaugeMetric {
   /** Timeseries name. */

@@ -200,9 +200,8 @@ export const ExportBlobListBlobPathList = /*@__PURE__*/ S.Array(
 
 /** A collection of blob-prefix strings. */
 export type ExportBlobListBlobPathPrefixList = Array<string>;
-export const ExportBlobListBlobPathPrefixList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportBlobListBlobPathPrefixList>;
+export const ExportBlobListBlobPathPrefixList =
+  ExportBlobListBlobPathList as any as S.Schema<ExportBlobListBlobPathPrefixList>;
 
 /** A list of the blobs to be exported. */
 export interface ExportBlobList {
@@ -422,9 +421,8 @@ export const ShippingInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
 export type JobDetailsDriveListList = Array<DriveStatus>;
-export const JobDetailsDriveListList = /*@__PURE__*/ S.Array(
-  DriveStatus,
-) as any as S.Schema<JobDetailsDriveListList>;
+export const JobDetailsDriveListList =
+  JobDetailsInputDriveListList as any as S.Schema<JobDetailsDriveListList>;
 
 /** Specifies the job properties */
 export interface JobDetails {
@@ -611,15 +609,13 @@ export const GetLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of carriers that are supported at this location. */
 export type LocationPropertiesSupportedCarriersList = Array<string>;
-export const LocationPropertiesSupportedCarriersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LocationPropertiesSupportedCarriersList>;
+export const LocationPropertiesSupportedCarriersList =
+  ExportBlobListBlobPathList as any as S.Schema<LocationPropertiesSupportedCarriersList>;
 
 /** A list of location IDs that should be used to ship shipping drives to for jobs created against the current location. If the current location is active, it will be part of the list. If it is temporarily closed due to maintenance, this list may contain other locations. */
 export type LocationPropertiesAlternateLocationsList = Array<string>;
-export const LocationPropertiesAlternateLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LocationPropertiesAlternateLocationsList>;
+export const LocationPropertiesAlternateLocationsList =
+  ExportBlobListBlobPathList as any as S.Schema<LocationPropertiesAlternateLocationsList>;
 
 /** location properties */
 export interface LocationProperties {
@@ -903,9 +899,8 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of drives that comprise the job. */
 export type UpdateJobRequestPropertiesDriveListList = Array<DriveStatus>;
-export const UpdateJobRequestPropertiesDriveListList = /*@__PURE__*/ S.Array(
-  DriveStatus,
-) as any as S.Schema<UpdateJobRequestPropertiesDriveListList>;
+export const UpdateJobRequestPropertiesDriveListList =
+  JobDetailsInputDriveListList as any as S.Schema<UpdateJobRequestPropertiesDriveListList>;
 
 /** Specifies the properties of a UpdateJob. */
 export interface UpdateJobRequestProperties {

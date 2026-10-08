@@ -386,13 +386,8 @@ export interface GenerateRecallPlayGroupingApiTokenResponse {
   /** Token for accessing the Play Grouping API. */
   token?: PlayGroupingApiToken;
 }
-export const GenerateRecallPlayGroupingApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(PlayGroupingApiToken),
-  }),
-).annotate({
-  identifier: "GenerateRecallPlayGroupingApiTokenResponse",
-}) as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>;
+export const GenerateRecallPlayGroupingApiTokenResponse =
+  GeneratePlayGroupingApiTokenResponse as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>;
 
 export type GetApplicationsPlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
 export const GetApplicationsPlatformTypeEnum = S.String;
@@ -2428,15 +2423,8 @@ export interface AchievementSetStepsAtLeastResponse {
   /** Whether the current steps for the achievement has reached the number of steps required to unlock. */
   newlyUnlocked?: boolean;
 }
-export const AchievementSetStepsAtLeastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentSteps: S.optional(S.Number),
-    kind: S.optional(S.String),
-    newlyUnlocked: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AchievementSetStepsAtLeastResponse",
-}) as any as S.Schema<AchievementSetStepsAtLeastResponse>;
+export const AchievementSetStepsAtLeastResponse =
+  AchievementIncrementResponse as any as S.Schema<AchievementSetStepsAtLeastResponse>;
 
 /** A request to submit a score to leaderboards. */
 export interface ScoreSubmission {
@@ -2653,11 +2641,7 @@ export interface UnlinkPersonaResponse {
   /** Required. Whether a Recall token specified by the request was deleted. Can be 'false' when there were no Recall tokens satisfied the criteria from the request. */
   unlinked?: boolean;
 }
-export const UnlinkPersonaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unlinked: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UnlinkPersonaResponse" }) as any as S.Schema<UnlinkPersonaResponse>;
+export const UnlinkPersonaResponse = ResetPersonaResponse as any as S.Schema<UnlinkPersonaResponse>;
 
 export interface UnlockAchievementsRequest {
   /** The ID of the achievement used by this method. */

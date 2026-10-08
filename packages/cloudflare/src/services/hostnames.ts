@@ -144,9 +144,8 @@ export type SettingsTlsGetResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "
 export const SettingsTlsGetResponseValueCase0 = S.String;
 
 export type SettingsTlsGetResponseValueCase1List = Array<string>;
-export const SettingsTlsGetResponseValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsTlsGetResponseValueCase1List>;
+export const SettingsTlsGetResponseValueCase1List =
+  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<SettingsTlsGetResponseValueCase1List>;
 
 export type SettingsTlsGetResponseValue =
   | SettingsTlsGetResponseValueCase0
@@ -202,9 +201,8 @@ export type ListSettingsTlsResultItemValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" 
 export const ListSettingsTlsResultItemValueCase0 = S.String;
 
 export type ListSettingsTlsResultItemValueCase1List = Array<string>;
-export const ListSettingsTlsResultItemValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSettingsTlsResultItemValueCase1List>;
+export const ListSettingsTlsResultItemValueCase1List =
+  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<ListSettingsTlsResultItemValueCase1List>;
 
 export type ListSettingsTlsResultItemValue =
   | ListSettingsTlsResultItemValueCase0
@@ -254,9 +252,8 @@ export type SettingsTlsUpdateRequestValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" |
 export const SettingsTlsUpdateRequestValueCase0 = S.String;
 
 export type SettingsTlsUpdateRequestValueCase1List = Array<string>;
-export const SettingsTlsUpdateRequestValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsTlsUpdateRequestValueCase1List>;
+export const SettingsTlsUpdateRequestValueCase1List =
+  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<SettingsTlsUpdateRequestValueCase1List>;
 
 export type SettingsTlsUpdateRequestValue =
   | SettingsTlsUpdateRequestValueCase0
@@ -297,9 +294,8 @@ export type SettingsTlsUpdateResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" 
 export const SettingsTlsUpdateResponseValueCase0 = S.String;
 
 export type SettingsTlsUpdateResponseValueCase1List = Array<string>;
-export const SettingsTlsUpdateResponseValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsTlsUpdateResponseValueCase1List>;
+export const SettingsTlsUpdateResponseValueCase1List =
+  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<SettingsTlsUpdateResponseValueCase1List>;
 
 export type SettingsTlsUpdateResponseValue =
   | SettingsTlsUpdateResponseValueCase0

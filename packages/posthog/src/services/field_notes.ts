@@ -82,20 +82,16 @@ export const CreateFieldNoteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Structured element metadata (inferred selectors, attributes, component hints). */
 export type FieldNoteElementContextMap = { [key: string]: unknown | undefined };
-export const FieldNoteElementContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FieldNoteElementContextMap>;
+export const FieldNoteElementContextMap =
+  CreateFieldNoteRequestElementContextMap as any as S.Schema<FieldNoteElementContextMap>;
 
 /** Viewport size when the field note was made, as {width, height}. */
 export type FieldNoteViewport = CreateFieldNoteRequestViewport;
 export const FieldNoteViewport = CreateFieldNoteRequestViewport;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateFieldNoteRequestElementContextMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -279,10 +275,8 @@ export const PaginatedFieldNoteList = /*@__PURE__*/ S.suspend(() =>
 
 /** Structured element metadata (inferred selectors, attributes, component hints). */
 export type UpdateFieldNoteRequestElementContextMap = { [key: string]: unknown | undefined };
-export const UpdateFieldNoteRequestElementContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateFieldNoteRequestElementContextMap>;
+export const UpdateFieldNoteRequestElementContextMap =
+  CreateFieldNoteRequestElementContextMap as any as S.Schema<UpdateFieldNoteRequestElementContextMap>;
 
 /** Viewport size when the field note was made, as {width, height}. */
 export type UpdateFieldNoteRequestViewport = CreateFieldNoteRequestViewport;
@@ -343,10 +337,8 @@ export const UpdateFieldNoteRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateFieldNotesPartialRequestElementContextMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateFieldNotesPartialRequestElementContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateFieldNotesPartialRequestElementContextMap>;
+export const UpdateFieldNotesPartialRequestElementContextMap =
+  CreateFieldNoteRequestElementContextMap as any as S.Schema<UpdateFieldNotesPartialRequestElementContextMap>;
 
 /** Viewport size when the field note was made, as {width, height}. */
 export type UpdateFieldNotesPartialRequestViewport = CreateFieldNoteRequestViewport;

@@ -464,9 +464,8 @@ export const OrderResponseIdentifiersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OrderResponseIdentifiersList>;
 
 export type OrderResponseAuthorizationsList = Array<string>;
-export const OrderResponseAuthorizationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrderResponseAuthorizationsList>;
+export const OrderResponseAuthorizationsList =
+  CertificateChainAlternatesList as any as S.Schema<OrderResponseAuthorizationsList>;
 
 /** RFC 8555 §7.1.3, plus the `Location` header as `location`. */
 export interface OrderResponse {
@@ -522,9 +521,8 @@ export const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDirectoryRequest" }) as any as S.Schema<GetDirectoryRequest>;
 
 export type DirectoryMetaCaaIdentitiesList = Array<string>;
-export const DirectoryMetaCaaIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DirectoryMetaCaaIdentitiesList>;
+export const DirectoryMetaCaaIdentitiesList =
+  CertificateChainAlternatesList as any as S.Schema<DirectoryMetaCaaIdentitiesList>;
 
 export interface DirectoryMeta {
   /** A URL identifying the current terms of service. */
@@ -585,9 +583,8 @@ export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrderRequest" }) as any as S.Schema<GetOrderRequest>;
 
 export type NewAccountRequestContactList = Array<string>;
-export const NewAccountRequestContactList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NewAccountRequestContactList>;
+export const NewAccountRequestContactList =
+  CertificateChainAlternatesList as any as S.Schema<NewAccountRequestContactList>;
 
 /** A JWS binding this account to an existing CA account (RFC 8555 §7.3.4). The protocol builds it from the credentials' EAB key id and HMAC key. */
 export interface ExternalAccountBinding {
@@ -623,9 +620,8 @@ export const NewAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NewAccountRequest" }) as any as S.Schema<NewAccountRequest>;
 
 export type AccountResponseContactList = Array<string>;
-export const AccountResponseContactList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountResponseContactList>;
+export const AccountResponseContactList =
+  CertificateChainAlternatesList as any as S.Schema<AccountResponseContactList>;
 
 /** RFC 8555 §7.1.2, plus the `Location` header as `location`. */
 export interface AccountResponse {
@@ -666,9 +662,8 @@ export const NonceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NonceResponse" }) as any as S.Schema<NonceResponse>;
 
 export type NewOrderRequestIdentifiersList = Array<Identifier>;
-export const NewOrderRequestIdentifiersList = /*@__PURE__*/ S.Array(
-  Identifier,
-) as any as S.Schema<NewOrderRequestIdentifiersList>;
+export const NewOrderRequestIdentifiersList =
+  OrderResponseIdentifiersList as any as S.Schema<NewOrderRequestIdentifiersList>;
 
 export interface NewOrderRequest {
   /** An array of identifier objects that the client wishes to submit an order for. */
@@ -715,9 +710,8 @@ export const RevokeCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct(
 }) as any as S.Schema<RevokeCertificateResponse>;
 
 export type UpdateAccountRequestContactList = Array<string>;
-export const UpdateAccountRequestContactList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAccountRequestContactList>;
+export const UpdateAccountRequestContactList =
+  CertificateChainAlternatesList as any as S.Schema<UpdateAccountRequestContactList>;
 
 export interface UpdateAccountRequest {
   /** Absolute URL of the resource, as returned by the CA. */

@@ -810,11 +810,9 @@ export interface CapacityLimit {
   maxCapacity?: number;
   capacityUnit?: string;
 }
-export const CapacityLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ maxCapacity: S.optional(S.Number), capacityUnit: S.optional(S.String) }),
-).annotate({ identifier: "CapacityLimit" }) as any as S.Schema<CapacityLimit>;
+export const CapacityLimit = QuotaShareCapacityLimit as any as S.Schema<CapacityLimit>;
 export type CapacityLimits = CapacityLimit[];
-export const CapacityLimits = /*@__PURE__*/ S.Array(CapacityLimit);
+export const CapacityLimits = QuotaShareCapacityLimits as any as S.Schema<CapacityLimits>;
 export interface CreateServiceEnvironmentRequest {
   serviceEnvironmentName?: string;
   serviceEnvironmentType?: ServiceEnvironmentType;
@@ -898,11 +896,8 @@ export const DeleteConsumableResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConsumableResourceRequest",
 }) as any as S.Schema<DeleteConsumableResourceRequest>;
 export interface DeleteConsumableResourceResponse {}
-export const DeleteConsumableResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConsumableResourceResponse",
-}) as any as S.Schema<DeleteConsumableResourceResponse>;
+export const DeleteConsumableResourceResponse =
+  DeleteComputeEnvironmentResponse as any as S.Schema<DeleteConsumableResourceResponse>;
 export interface DeleteJobQueueRequest {
   jobQueue?: string;
 }
@@ -954,11 +949,8 @@ export const DeleteSchedulingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSchedulingPolicyRequest",
 }) as any as S.Schema<DeleteSchedulingPolicyRequest>;
 export interface DeleteSchedulingPolicyResponse {}
-export const DeleteSchedulingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteSchedulingPolicyResponse",
-}) as any as S.Schema<DeleteSchedulingPolicyResponse>;
+export const DeleteSchedulingPolicyResponse =
+  DeleteComputeEnvironmentResponse as any as S.Schema<DeleteSchedulingPolicyResponse>;
 export interface DeleteServiceEnvironmentRequest {
   serviceEnvironment?: string;
 }
@@ -978,11 +970,8 @@ export const DeleteServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteServiceEnvironmentRequest",
 }) as any as S.Schema<DeleteServiceEnvironmentRequest>;
 export interface DeleteServiceEnvironmentResponse {}
-export const DeleteServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteServiceEnvironmentResponse",
-}) as any as S.Schema<DeleteServiceEnvironmentResponse>;
+export const DeleteServiceEnvironmentResponse =
+  DeleteComputeEnvironmentResponse as any as S.Schema<DeleteServiceEnvironmentResponse>;
 export interface DeregisterJobDefinitionRequest {
   jobDefinition?: string;
 }
@@ -1002,11 +991,8 @@ export const DeregisterJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterJobDefinitionRequest",
 }) as any as S.Schema<DeregisterJobDefinitionRequest>;
 export interface DeregisterJobDefinitionResponse {}
-export const DeregisterJobDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterJobDefinitionResponse",
-}) as any as S.Schema<DeregisterJobDefinitionResponse>;
+export const DeregisterJobDefinitionResponse =
+  DeleteComputeEnvironmentResponse as any as S.Schema<DeregisterJobDefinitionResponse>;
 export interface DescribeComputeEnvironmentsRequest {
   computeEnvironments?: string[];
   maxResults?: number;
@@ -1203,10 +1189,7 @@ export const DescribeJobDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeJobDefinitionsRequest",
 }) as any as S.Schema<DescribeJobDefinitionsRequest>;
 export type ParametersMap = { [key: string]: string | undefined };
-export const ParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ParametersMap = TagrisTagsMap as any as S.Schema<ParametersMap>;
 export type RetryAction = "RETRY" | "EXIT" | (string & {});
 export const RetryAction = S.String;
 
@@ -1413,10 +1396,8 @@ export type LogDriver =
 export const LogDriver = S.String;
 
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
-export const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const LogConfigurationOptionsMap =
+  TagrisTagsMap as any as S.Schema<LogConfigurationOptionsMap>;
 export interface Secret {
   name?: string;
   valueFrom?: string;
@@ -1547,10 +1528,8 @@ export type FirelensConfigurationType = "fluentd" | "fluentbit" | (string & {});
 export const FirelensConfigurationType = S.String;
 
 export type FirelensConfigurationOptionsMap = { [key: string]: string | undefined };
-export const FirelensConfigurationOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const FirelensConfigurationOptionsMap =
+  TagrisTagsMap as any as S.Schema<FirelensConfigurationOptionsMap>;
 export interface FirelensConfiguration {
   type?: FirelensConfigurationType;
   options?: { [key: string]: string | undefined };
@@ -1668,12 +1647,9 @@ export const EksContainerEnvironmentVariables = /*@__PURE__*/ S.Array(
 );
 export type Quantity = string;
 export type EksLimits = { [key: string]: string | undefined };
-export const EksLimits = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const EksLimits = TagsMap as any as S.Schema<EksLimits>;
 export type EksRequests = { [key: string]: string | undefined };
-export const EksRequests = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EksRequests = TagrisTagsMap as any as S.Schema<EksRequests>;
 export interface EksContainerResourceRequirements {
   limits?: { [key: string]: string | undefined };
   requests?: { [key: string]: string | undefined };
@@ -1791,15 +1767,9 @@ export const EksVolume = /*@__PURE__*/ S.suspend(() =>
 export type EksVolumes = EksVolume[];
 export const EksVolumes = /*@__PURE__*/ S.Array(EksVolume);
 export type EksLabelsMap = { [key: string]: string | undefined };
-export const EksLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EksLabelsMap = TagrisTagsMap as any as S.Schema<EksLabelsMap>;
 export type EksAnnotationsMap = { [key: string]: string | undefined };
-export const EksAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EksAnnotationsMap = TagrisTagsMap as any as S.Schema<EksAnnotationsMap>;
 export interface EksMetadata {
   labels?: { [key: string]: string | undefined };
   annotations?: { [key: string]: string | undefined };
@@ -3129,9 +3099,7 @@ export const ServiceJobStatus = S.String;
 export interface ServiceJobTimeout {
   attemptDurationSeconds?: number;
 }
-export const ServiceJobTimeout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attemptDurationSeconds: S.optional(S.Number) }),
-).annotate({ identifier: "ServiceJobTimeout" }) as any as S.Schema<ServiceJobTimeout>;
+export const ServiceJobTimeout = JobTimeout as any as S.Schema<ServiceJobTimeout>;
 export interface DescribeServiceJobResponse {
   attempts?: (ServiceJobAttemptDetail & {
     serviceResourceId: ServiceResourceId & { name: ServiceResourceIdName; value: string };
@@ -3262,11 +3230,8 @@ export interface QueueSnapshotCapacityUsage {
   capacityUnit?: string;
   quantity?: number;
 }
-export const QueueSnapshotCapacityUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityUnit: S.optional(S.String), quantity: S.optional(S.Number) }),
-).annotate({
-  identifier: "QueueSnapshotCapacityUsage",
-}) as any as S.Schema<QueueSnapshotCapacityUsage>;
+export const QueueSnapshotCapacityUsage =
+  ServiceJobCapacityUsageDetail as any as S.Schema<QueueSnapshotCapacityUsage>;
 export type QueueSnapshotCapacityUsageList = QueueSnapshotCapacityUsage[];
 export const QueueSnapshotCapacityUsageList = /*@__PURE__*/ S.Array(QueueSnapshotCapacityUsage);
 export interface FairshareCapacityUsage {
@@ -3308,11 +3273,11 @@ export interface QuotaShareCapacityUsage {
   capacityUnit?: string;
   quantity?: number;
 }
-export const QuotaShareCapacityUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityUnit: S.optional(S.String), quantity: S.optional(S.Number) }),
-).annotate({ identifier: "QuotaShareCapacityUsage" }) as any as S.Schema<QuotaShareCapacityUsage>;
+export const QuotaShareCapacityUsage =
+  FairshareCapacityUsage as any as S.Schema<QuotaShareCapacityUsage>;
 export type QuotaShareCapacityUsageList = QuotaShareCapacityUsage[];
-export const QuotaShareCapacityUsageList = /*@__PURE__*/ S.Array(QuotaShareCapacityUsage);
+export const QuotaShareCapacityUsageList =
+  FairshareCapacityUsageList as any as S.Schema<QuotaShareCapacityUsageList>;
 export interface QuotaShareCapacityUtilization {
   quotaShareName?: string;
   capacityUsage?: QuotaShareCapacityUsage[];
@@ -3436,7 +3401,8 @@ export const ListConsumableResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConsumableResourcesResponse",
 }) as any as S.Schema<ListConsumableResourcesResponse>;
 export type ListJobsFilterList = KeyValuesPair[];
-export const ListJobsFilterList = /*@__PURE__*/ S.Array(KeyValuesPair);
+export const ListJobsFilterList =
+  ListConsumableResourcesFilterList as any as S.Schema<ListJobsFilterList>;
 export interface ListJobsRequest {
   jobQueue?: string;
   arrayJobId?: string;
@@ -3461,11 +3427,11 @@ export interface JobCapacityUsageSummary {
   capacityUnit?: string;
   quantity?: number;
 }
-export const JobCapacityUsageSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityUnit: S.optional(S.String), quantity: S.optional(S.Number) }),
-).annotate({ identifier: "JobCapacityUsageSummary" }) as any as S.Schema<JobCapacityUsageSummary>;
+export const JobCapacityUsageSummary =
+  FairshareCapacityUsage as any as S.Schema<JobCapacityUsageSummary>;
 export type JobCapacityUsageSummaryList = JobCapacityUsageSummary[];
-export const JobCapacityUsageSummaryList = /*@__PURE__*/ S.Array(JobCapacityUsageSummary);
+export const JobCapacityUsageSummaryList =
+  FairshareCapacityUsageList as any as S.Schema<JobCapacityUsageSummaryList>;
 export interface ContainerSummary {
   exitCode?: number;
   reason?: string;
@@ -3551,7 +3517,8 @@ export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
 export type ListJobsByConsumableResourceFilterList = KeyValuesPair[];
-export const ListJobsByConsumableResourceFilterList = /*@__PURE__*/ S.Array(KeyValuesPair);
+export const ListJobsByConsumableResourceFilterList =
+  ListConsumableResourcesFilterList as any as S.Schema<ListJobsByConsumableResourceFilterList>;
 export interface ListJobsByConsumableResourceRequest {
   consumableResource?: string;
   filters?: KeyValuesPair[];
@@ -3750,15 +3717,11 @@ export interface ServiceJobCapacityUsageSummary {
   capacityUnit?: string;
   quantity?: number;
 }
-export const ServiceJobCapacityUsageSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ capacityUnit: S.optional(S.String), quantity: S.optional(S.Number) }),
-).annotate({
-  identifier: "ServiceJobCapacityUsageSummary",
-}) as any as S.Schema<ServiceJobCapacityUsageSummary>;
+export const ServiceJobCapacityUsageSummary =
+  ServiceJobCapacityUsageDetail as any as S.Schema<ServiceJobCapacityUsageSummary>;
 export type ServiceJobCapacityUsageSummaryList = ServiceJobCapacityUsageSummary[];
-export const ServiceJobCapacityUsageSummaryList = /*@__PURE__*/ S.Array(
-  ServiceJobCapacityUsageSummary,
-);
+export const ServiceJobCapacityUsageSummaryList =
+  ServiceJobCapacityUsageDetailList as any as S.Schema<ServiceJobCapacityUsageSummaryList>;
 export interface ServiceJobSummary {
   latestAttempt?: LatestServiceJobAttempt;
   capacityUsage?: ServiceJobCapacityUsageSummary[];
@@ -4125,13 +4088,8 @@ export interface SubmitServiceJobResponse {
   jobName: string;
   jobId: string;
 }
-export const SubmitServiceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    jobId: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "SubmitServiceJobResponse" }) as any as S.Schema<SubmitServiceJobResponse>;
+export const SubmitServiceJobResponse =
+  SubmitJobResponse as any as S.Schema<SubmitServiceJobResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags?: { [key: string]: string | undefined };
@@ -4153,9 +4111,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CancelJobResponse as any as S.Schema<TagResourceResponse>;
 export interface TerminateJobRequest {
   jobId?: string;
   reason?: string;
@@ -4166,9 +4122,7 @@ export const TerminateJobRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TerminateJobRequest" }) as any as S.Schema<TerminateJobRequest>;
 export interface TerminateJobResponse {}
-export const TerminateJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TerminateJobResponse",
-}) as any as S.Schema<TerminateJobResponse>;
+export const TerminateJobResponse = CancelJobResponse as any as S.Schema<TerminateJobResponse>;
 export interface TerminateJobsRequest {
   jobs?: string[];
   reason?: string;
@@ -4183,25 +4137,16 @@ export interface TerminateJobsErrorDetail {
   code?: string;
   message?: string;
 }
-export const TerminateJobsErrorDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "TerminateJobsErrorDetail" }) as any as S.Schema<TerminateJobsErrorDetail>;
+export const TerminateJobsErrorDetail =
+  CancelJobsErrorDetail as any as S.Schema<TerminateJobsErrorDetail>;
 export type TerminateJobsErrorDetailList = TerminateJobsErrorDetail[];
-export const TerminateJobsErrorDetailList = /*@__PURE__*/ S.Array(TerminateJobsErrorDetail);
+export const TerminateJobsErrorDetailList =
+  CancelJobsErrorDetailList as any as S.Schema<TerminateJobsErrorDetailList>;
 export interface TerminateJobsResponse {
   successful: string[];
   errors: (TerminateJobsErrorDetail & { job: string; code: string; message: string })[];
 }
-export const TerminateJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successful: S.optional(StringList),
-    errors: S.optional(TerminateJobsErrorDetailList),
-  }).pipe(ns),
-).annotate({ identifier: "TerminateJobsResponse" }) as any as S.Schema<TerminateJobsResponse>;
+export const TerminateJobsResponse = CancelJobsResponse as any as S.Schema<TerminateJobsResponse>;
 export interface TerminateServiceJobRequest {
   jobId?: string;
   reason?: string;
@@ -4222,11 +4167,8 @@ export const TerminateServiceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateServiceJobRequest",
 }) as any as S.Schema<TerminateServiceJobRequest>;
 export interface TerminateServiceJobResponse {}
-export const TerminateServiceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "TerminateServiceJobResponse",
-}) as any as S.Schema<TerminateServiceJobResponse>;
+export const TerminateServiceJobResponse =
+  DeleteComputeEnvironmentResponse as any as S.Schema<TerminateServiceJobResponse>;
 export interface TerminateServiceJobsRequest {
   jobs?: string[];
   reason?: string;
@@ -4277,7 +4219,7 @@ export const TerminateServiceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateServiceJobsResponse",
 }) as any as S.Schema<TerminateServiceJobsResponse>;
 export type TagKeysList = string[];
-export const TagKeysList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeysList = StringList as any as S.Schema<TagKeysList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys?: string[];
@@ -4299,9 +4241,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = CancelJobResponse as any as S.Schema<UntagResourceResponse>;
 export type CRUpdateAllocationStrategy =
   | "BEST_FIT_PROGRESSIVE"
   | "BEST_FIT_PROGRESSIVE_ORDERED"
@@ -4443,14 +4383,8 @@ export interface UpdateComputeEnvironmentResponse {
   computeEnvironmentName?: string;
   computeEnvironmentArn?: string;
 }
-export const UpdateComputeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    computeEnvironmentName: S.optional(S.String),
-    computeEnvironmentArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateComputeEnvironmentResponse",
-}) as any as S.Schema<UpdateComputeEnvironmentResponse>;
+export const UpdateComputeEnvironmentResponse =
+  CreateComputeEnvironmentResponse as any as S.Schema<UpdateComputeEnvironmentResponse>;
 export interface UpdateConsumableResourceRequest {
   consumableResource?: string;
   operation?: string;
@@ -4517,9 +4451,8 @@ export interface UpdateJobQueueResponse {
   jobQueueName?: string;
   jobQueueArn?: string;
 }
-export const UpdateJobQueueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobQueueName: S.optional(S.String), jobQueueArn: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateJobQueueResponse" }) as any as S.Schema<UpdateJobQueueResponse>;
+export const UpdateJobQueueResponse =
+  CreateJobQueueResponse as any as S.Schema<UpdateJobQueueResponse>;
 export interface UpdateQuotaShareRequest {
   quotaShareArn?: string;
   capacityLimits?: QuotaShareCapacityLimit[];
@@ -4550,9 +4483,8 @@ export interface UpdateQuotaShareResponse {
   quotaShareName?: string;
   quotaShareArn?: string;
 }
-export const UpdateQuotaShareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ quotaShareName: S.optional(S.String), quotaShareArn: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateQuotaShareResponse" }) as any as S.Schema<UpdateQuotaShareResponse>;
+export const UpdateQuotaShareResponse =
+  CreateQuotaShareResponse as any as S.Schema<UpdateQuotaShareResponse>;
 export interface UpdateSchedulingPolicyRequest {
   arn?: string;
   quotaSharePolicy?: QuotaSharePolicy;
@@ -4578,11 +4510,8 @@ export const UpdateSchedulingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSchedulingPolicyRequest",
 }) as any as S.Schema<UpdateSchedulingPolicyRequest>;
 export interface UpdateSchedulingPolicyResponse {}
-export const UpdateSchedulingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateSchedulingPolicyResponse",
-}) as any as S.Schema<UpdateSchedulingPolicyResponse>;
+export const UpdateSchedulingPolicyResponse =
+  DeleteComputeEnvironmentResponse as any as S.Schema<UpdateSchedulingPolicyResponse>;
 export interface UpdateServiceEnvironmentRequest {
   serviceEnvironment?: string;
   state?: ServiceEnvironmentState;
@@ -4611,14 +4540,8 @@ export interface UpdateServiceEnvironmentResponse {
   serviceEnvironmentName: string;
   serviceEnvironmentArn: string;
 }
-export const UpdateServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceEnvironmentName: S.optional(S.String),
-    serviceEnvironmentArn: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateServiceEnvironmentResponse",
-}) as any as S.Schema<UpdateServiceEnvironmentResponse>;
+export const UpdateServiceEnvironmentResponse =
+  CreateServiceEnvironmentResponse as any as S.Schema<UpdateServiceEnvironmentResponse>;
 export interface UpdateServiceJobRequest {
   jobId?: string;
   schedulingPriority?: number;
@@ -4641,13 +4564,8 @@ export interface UpdateServiceJobResponse {
   jobName?: string;
   jobId?: string;
 }
-export const UpdateServiceJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobArn: S.optional(S.String),
-    jobName: S.optional(S.String),
-    jobId: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "UpdateServiceJobResponse" }) as any as S.Schema<UpdateServiceJobResponse>;
+export const UpdateServiceJobResponse =
+  SubmitJobResponse as any as S.Schema<UpdateServiceJobResponse>;
 export type CancelJobError = ClientException | ServerException | CommonErrors;
 /**
  * Cancels a job in an Batch job queue. Jobs that are in a `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled and the job status is updated to `FAILED`.

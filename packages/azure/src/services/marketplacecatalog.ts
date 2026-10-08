@@ -56,51 +56,43 @@ export const ProductDetailsCategoryIdsList = /*@__PURE__*/ S.Array(
 
 /** List of industry IDs the item belongs to */
 export type ProductDetailsIndustryIdsList = Array<string>;
-export const ProductDetailsIndustryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsIndustryIdsList>;
+export const ProductDetailsIndustryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsIndustryIdsList>;
 
 /** Displays certification and qualification badges earned by the product for marketplace visibility. - `PreferredSolution` - Microsoft-recognized solution meeting specific quality and partnership criteria - `PowerBICertified` - Certified compatibility and integration with Microsoft Power BI platform - `AdditionalPurchaseRequirement` - Product requires additional purchases or subscriptions for full functionality */
 export type ProductDetailsBadgesList = Array<string>;
-export const ProductDetailsBadgesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsBadgesList>;
+export const ProductDetailsBadgesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsBadgesList>;
 
 /** Operating system info for this product */
 export type ProductDetailsOperatingSystemsList = Array<string>;
-export const ProductDetailsOperatingSystemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsOperatingSystemsList>;
+export const ProductDetailsOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsOperatingSystemsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type ProductDetailsPricingTypesList = Array<string>;
-export const ProductDetailsPricingTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsPricingTypesList>;
+export const ProductDetailsPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsPricingTypesList>;
 
 /** Categorizes products by customer rating thresholds for marketplace filtering and discovery. - `AboveOne` - Products with customer ratings exceeding 1.0 stars based on marketplace reviews - `AboveTwo` - Products with customer ratings exceeding 2.0 stars based on marketplace reviews - `AboveThree` - Products with customer ratings exceeding 3.0 stars based on marketplace reviews - `AboveFour` - Products with customer ratings exceeding 4.0 stars based on marketplace reviews */
 export type ProductDetailsRatingBucketsList = Array<string>;
-export const ProductDetailsRatingBucketsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsRatingBucketsList>;
+export const ProductDetailsRatingBucketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsRatingBucketsList>;
 
 /** Maps to the list of compatible products */
 export type ProductDetailsSupportedProductsList = Array<string>;
-export const ProductDetailsSupportedProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsSupportedProductsList>;
+export const ProductDetailsSupportedProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsSupportedProductsList>;
 
 /** Product categories the offer belongs to */
 export type ProductDetailsApplicableProductsList = Array<string>;
-export const ProductDetailsApplicableProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsApplicableProductsList>;
+export const ProductDetailsApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsApplicableProductsList>;
 
 /** List of locations which are available on the SKUs */
 export type ProductDetailsLocationsList = Array<string>;
-export const ProductDetailsLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsLocationsList>;
+export const ProductDetailsLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsLocationsList>;
 
 /** Represents a SKU attribute, which consists of a key and value. The attributes may differ across various services. */
 export interface Attribute {
@@ -210,9 +202,8 @@ export const ProductDetailsImagesList = /*@__PURE__*/ S.Array(
 
 /** List of linked add ins provided for the item */
 export type ProductDetailsLinkedAddInsList = Array<string>;
-export const ProductDetailsLinkedAddInsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsLinkedAddInsList>;
+export const ProductDetailsLinkedAddInsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsLinkedAddInsList>;
 
 /** Represents a link item read from the gallery item package */
 export interface LinkProperties_2 {
@@ -239,9 +230,8 @@ export const ProductDetailsLinksList = /*@__PURE__*/ S.Array(
 
 /** List of screenshot image URIs */
 export type ProductDetailsScreenshotUrisList = Array<string>;
-export const ProductDetailsScreenshotUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductDetailsScreenshotUrisList>;
+export const ProductDetailsScreenshotUrisList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsScreenshotUrisList>;
 
 /** Represents a model for stop sell related information */
 export interface StopSellInfo_2 {
@@ -316,27 +306,23 @@ export const PlanMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Plan CategoryIds */
 export type PlanDetailsCategoryIdsList = Array<string>;
-export const PlanDetailsCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanDetailsCategoryIdsList>;
+export const PlanDetailsCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsCategoryIdsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type PlanDetailsPricingTypesList = Array<string>;
-export const PlanDetailsPricingTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanDetailsPricingTypesList>;
+export const PlanDetailsPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsPricingTypesList>;
 
 /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
 export type PlanDetailsVmSecuritytypesList = Array<string>;
-export const PlanDetailsVmSecuritytypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanDetailsVmSecuritytypesList>;
+export const PlanDetailsVmSecuritytypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsVmSecuritytypesList>;
 
 /** List of allowed actions */
 export type AvailabilityActionsList = Array<string>;
-export const AvailabilityActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AvailabilityActionsList>;
+export const AvailabilityActionsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<AvailabilityActionsList>;
 
 /** Retail price with currency */
 export interface Price_2 {
@@ -629,9 +615,8 @@ export const PrerequisiteConstraints = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription statuses of which any must be satisfied */
 export type SubscriptionStatusConstraintsRequireAnyOfList = Array<string>;
-export const SubscriptionStatusConstraintsRequireAnyOfList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionStatusConstraintsRequireAnyOfList>;
+export const SubscriptionStatusConstraintsRequireAnyOfList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SubscriptionStatusConstraintsRequireAnyOfList>;
 
 /** Subscription status eligibility constraints for the availability */
 export interface SubscriptionStatusConstraints {
@@ -712,9 +697,8 @@ export const PlanDetailsAvailabilitiesList = /*@__PURE__*/ S.Array(
 
 /** Files related to the marketplace item */
 export type PlanDetailsArtifactsList = Array<Artifact_2>;
-export const PlanDetailsArtifactsList = /*@__PURE__*/ S.Array(
-  Artifact_2,
-) as any as S.Schema<PlanDetailsArtifactsList>;
+export const PlanDetailsArtifactsList =
+  ProductDetailsArtifactsList as any as S.Schema<PlanDetailsArtifactsList>;
 
 /** Represents a billing component model */
 export interface BillingComponent_2 {
@@ -757,21 +741,18 @@ export const PlanDetailsPurchaseDurationDiscountsList = /*@__PURE__*/ S.Array(
 
 /** List of certifications */
 export type PlanDetailsCertificationsList = Array<LinkProperties_2>;
-export const PlanDetailsCertificationsList = /*@__PURE__*/ S.Array(
-  LinkProperties_2,
-) as any as S.Schema<PlanDetailsCertificationsList>;
+export const PlanDetailsCertificationsList =
+  ProductDetailsLinksList as any as S.Schema<PlanDetailsCertificationsList>;
 
 /** Plan labels */
 export type PlanDetailsPlanLabelsList = Array<string>;
-export const PlanDetailsPlanLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanDetailsPlanLabelsList>;
+export const PlanDetailsPlanLabelsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsPlanLabelsList>;
 
 /** Set of SKU attributes (varies per sku type), where each attribute is represented by a pair of key (attribute name) and value(attribute value) */
 export type PlanDetailsSkuAttributesList = Array<Attribute>;
-export const PlanDetailsSkuAttributesList = /*@__PURE__*/ S.Array(
-  Attribute,
-) as any as S.Schema<PlanDetailsSkuAttributesList>;
+export const PlanDetailsSkuAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<PlanDetailsSkuAttributesList>;
 
 /** The SKU properties, contains some of the attributes for faster OData filter */
 export interface SkuProperties {
@@ -951,9 +932,8 @@ export const ConstraintsDataAssetOwnershipLimitsList = /*@__PURE__*/ S.Array(
 
 /** SKU IDs */
 export type PrerequisiteSetSkuIdsList = Array<string>;
-export const PrerequisiteSetSkuIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrerequisiteSetSkuIdsList>;
+export const PrerequisiteSetSkuIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PrerequisiteSetSkuIdsList>;
 
 /** Prerequisite set */
 export interface PrerequisiteSet {
@@ -977,9 +957,8 @@ export const PrerequisitesMustHaveAllList = /*@__PURE__*/ S.Array(
 
 /** Prerequisite sets where any one of the specified SKUs must be owned */
 export type PrerequisitesMustHaveAnyList = Array<PrerequisiteSet>;
-export const PrerequisitesMustHaveAnyList = /*@__PURE__*/ S.Array(
-  PrerequisiteSet,
-) as any as S.Schema<PrerequisitesMustHaveAnyList>;
+export const PrerequisitesMustHaveAnyList =
+  PrerequisitesMustHaveAllList as any as S.Schema<PrerequisitesMustHaveAnyList>;
 
 /** Minimum and maximum percentage seats constraint */
 export interface MinMaxPercentageSeatsConstraint {
@@ -1652,24 +1631,17 @@ export interface Attribute_2 {
   /** The attribute value. */
   value?: string;
 }
-export const Attribute_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Attribute_2" }) as any as S.Schema<Attribute_2>;
+export const Attribute_2 = Attribute as any as S.Schema<Attribute_2>;
 
 /** The product attributes. */
 export type GetSkusByBillingAccountResponseProductAttributesList = Array<Attribute_2>;
-export const GetSkusByBillingAccountResponseProductAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<GetSkusByBillingAccountResponseProductAttributesList>;
+export const GetSkusByBillingAccountResponseProductAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<GetSkusByBillingAccountResponseProductAttributesList>;
 
 /** The SKU attributes. */
 export type GetSkusByBillingAccountResponseSkuAttributesList = Array<Attribute_2>;
-export const GetSkusByBillingAccountResponseSkuAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<GetSkusByBillingAccountResponseSkuAttributesList>;
+export const GetSkusByBillingAccountResponseSkuAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<GetSkusByBillingAccountResponseSkuAttributesList>;
 
 /** SKU properties, can be different per each service family. */
 export interface SkuProperties_2 {
@@ -1690,18 +1662,7 @@ export interface SkuProperties_2 {
   /** The access tier, such as 'Standard'. */
   accessTier?: string;
 }
-export const SkuProperties_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    category: S.optional(S.String),
-    dataDiskType: S.optional(S.String),
-    diskType: S.optional(S.String),
-    numberOfCores: S.optional(S.String),
-    ram: S.optional(S.String),
-    vCpu: S.optional(S.String),
-    armSkuName: S.optional(S.String),
-    accessTier: S.optional(S.String),
-  }),
-).annotate({ identifier: "SkuProperties_2" }) as any as S.Schema<SkuProperties_2>;
+export const SkuProperties_2 = SkuProperties as any as S.Schema<SkuProperties_2>;
 
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export interface OfferingProperties_2 {
@@ -1737,87 +1698,73 @@ export const GetSkusByBillingAccountResponseOfferingPropertiesList = /*@__PURE__
 
 /** AAD SKU identifiers. */
 export type SkuAlternateIdsAadSkuIdList = Array<string>;
-export const SkuAlternateIdsAadSkuIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsAadSkuIdList>;
+export const SkuAlternateIdsAadSkuIdList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsAadSkuIdList>;
 
 /** Legacy offer GUID identifiers. */
 export type SkuAlternateIdsLegacyOfferGuidList = Array<string>;
-export const SkuAlternateIdsLegacyOfferGuidList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsLegacyOfferGuidList>;
+export const SkuAlternateIdsLegacyOfferGuidList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsLegacyOfferGuidList>;
 
 /** Applicable promotion identifiers. */
 export type SkuAlternateIdsApplicablePromotionList = Array<string>;
-export const SkuAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsApplicablePromotionList>;
+export const SkuAlternateIdsApplicablePromotionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsApplicablePromotionList>;
 
 /** Add-on parent identifiers. */
 export type SkuAlternateIdsAddOnParentList = Array<string>;
-export const SkuAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsAddOnParentList>;
+export const SkuAlternateIdsAddOnParentList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsAddOnParentList>;
 
 /** Applicable future price concession identifiers. */
 export type SkuAlternateIdsApplicableFuturePriceConcessionList = Array<string>;
-export const SkuAlternateIdsApplicableFuturePriceConcessionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsApplicableFuturePriceConcessionList>;
+export const SkuAlternateIdsApplicableFuturePriceConcessionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsApplicableFuturePriceConcessionList>;
 
 /** Benefit SKU identifiers. */
 export type SkuAlternateIdsBenefitSkuList = Array<string>;
-export const SkuAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsBenefitSkuList>;
+export const SkuAlternateIdsBenefitSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsBenefitSkuList>;
 
 /** Included in bundle identifiers. */
 export type SkuAlternateIdsIncludedInBundleList = Array<string>;
-export const SkuAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsIncludedInBundleList>;
+export const SkuAlternateIdsIncludedInBundleList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsIncludedInBundleList>;
 
 /** Associated SKU identifiers. */
 export type SkuAlternateIdsAssociatedSkuList = Array<string>;
-export const SkuAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuAlternateIdsAssociatedSkuList>;
+export const SkuAlternateIdsAssociatedSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsAssociatedSkuList>;
 
 /** Applicable promotion product identifiers. */
 export type ProductAlternateIdsApplicablePromotionList = Array<string>;
-export const ProductAlternateIdsApplicablePromotionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsApplicablePromotionList>;
+export const ProductAlternateIdsApplicablePromotionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsApplicablePromotionList>;
 
 /** Add-on parent product identifiers. */
 export type ProductAlternateIdsAddOnParentList = Array<string>;
-export const ProductAlternateIdsAddOnParentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsAddOnParentList>;
+export const ProductAlternateIdsAddOnParentList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsAddOnParentList>;
 
 /** Applicable future price concession product identifiers. */
 export type ProductAlternateIdsApplicableFuturePriceConcessionList = Array<string>;
-export const ProductAlternateIdsApplicableFuturePriceConcessionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsApplicableFuturePriceConcessionList>;
+export const ProductAlternateIdsApplicableFuturePriceConcessionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsApplicableFuturePriceConcessionList>;
 
 /** Benefit SKU product identifiers. */
 export type ProductAlternateIdsBenefitSkuList = Array<string>;
-export const ProductAlternateIdsBenefitSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsBenefitSkuList>;
+export const ProductAlternateIdsBenefitSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsBenefitSkuList>;
 
 /** Included in bundle product identifiers. */
 export type ProductAlternateIdsIncludedInBundleList = Array<string>;
-export const ProductAlternateIdsIncludedInBundleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsIncludedInBundleList>;
+export const ProductAlternateIdsIncludedInBundleList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsIncludedInBundleList>;
 
 /** Associated SKU product identifiers. */
 export type ProductAlternateIdsAssociatedSkuList = Array<string>;
-export const ProductAlternateIdsAssociatedSkuList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductAlternateIdsAssociatedSkuList>;
+export const ProductAlternateIdsAssociatedSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsAssociatedSkuList>;
 
 /** Product-level alternate ids (product id without SKU id), used for OData lookup on SKUs of a specific product. */
 export interface ProductAlternateIds {
@@ -1884,15 +1831,13 @@ export const SkuAlternateIds = /*@__PURE__*/ S.suspend(() =>
 
 /** Category IDs for this SKU. */
 export type GetSkusByBillingAccountResponseCategoryIdsList = Array<string>;
-export const GetSkusByBillingAccountResponseCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSkusByBillingAccountResponseCategoryIdsList>;
+export const GetSkusByBillingAccountResponseCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<GetSkusByBillingAccountResponseCategoryIdsList>;
 
 /** Pricing audiences for the SKU. */
 export type GetSkusByBillingAccountResponsePricingAudiencesList = Array<string>;
-export const GetSkusByBillingAccountResponsePricingAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSkusByBillingAccountResponsePricingAudiencesList>;
+export const GetSkusByBillingAccountResponsePricingAudiencesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<GetSkusByBillingAccountResponsePricingAudiencesList>;
 
 /** Retail price with currency */
 export type Price_3 = Price_2;
@@ -1904,9 +1849,8 @@ export const IncludedQuantityProperty_3 = IncludedQuantityProperty_2;
 
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList_3 = Array<IncludedQuantityProperty_2>;
-export const MeterIncludedQuantityPropertiesList_3 = /*@__PURE__*/ S.Array(
-  IncludedQuantityProperty_2,
-) as any as S.Schema<MeterIncludedQuantityPropertiesList_3>;
+export const MeterIncludedQuantityPropertiesList_3 =
+  MeterIncludedQuantityPropertiesList_2 as any as S.Schema<MeterIncludedQuantityPropertiesList_3>;
 
 /** Applicable billing meter information */
 export interface Meter_3 {
@@ -1923,16 +1867,7 @@ export interface Meter_3 {
   /** Included quantity properties */
   includedQuantityProperties?: MeterIncludedQuantityPropertiesList_3;
 }
-export const Meter_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meterId: S.optional(S.String),
-    partNumber: S.optional(S.String),
-    consumptionResourceId: S.optional(S.String),
-    price: S.optional(Price_2),
-    type: S.optional(S.String),
-    includedQuantityProperties: S.optional(MeterIncludedQuantityPropertiesList_3),
-  }),
-).annotate({ identifier: "Meter_3" }) as any as S.Schema<Meter_3>;
+export const Meter_3 = Meter_2 as any as S.Schema<Meter_3>;
 
 /** Term description parameters */
 export type TermDescriptionParameter_3 = TermDescriptionParameter_2;
@@ -1940,9 +1875,8 @@ export const TermDescriptionParameter_3 = TermDescriptionParameter_2;
 
 /** Term description parameters */
 export type TermTermDescriptionParametersList_3 = Array<TermDescriptionParameter_2>;
-export const TermTermDescriptionParametersList_3 = /*@__PURE__*/ S.Array(
-  TermDescriptionParameter_2,
-) as any as S.Schema<TermTermDescriptionParametersList_3>;
+export const TermTermDescriptionParametersList_3 =
+  TermTermDescriptionParametersList_2 as any as S.Schema<TermTermDescriptionParametersList_3>;
 
 /** Proration policy */
 export type ProrationPolicy_3 = ProrationPolicy_2;
@@ -1989,31 +1923,12 @@ export interface Term_3 {
   /** Term Actions */
   actions?: TermActionsList;
 }
-export const Term_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    termDescriptionParameters: S.optional(TermTermDescriptionParametersList_3),
-    termId: S.optional(S.String),
-    termUnit: S.optional(S.String),
-    prorationPolicy: S.optional(ProrationPolicy_2),
-    termDescription: S.optional(S.String),
-    price: S.optional(Price_2),
-    renewTermId: S.optional(S.String),
-    renewTermUnits: S.optional(S.String),
-    billingPlan: S.optional(BillingPlan_2),
-    renewToTermBillingPlan: S.optional(S.String),
-    isAutorenewable: S.optional(S.Boolean),
-    lifecyclePolicy: S.optional(LifecyclePolicy),
-    productCode: S.optional(S.String),
-    state: S.optional(S.String),
-    actions: S.optional(TermActionsList),
-  }),
-).annotate({ identifier: "Term_3" }) as any as S.Schema<Term_3>;
+export const Term_3 = Term_2 as any as S.Schema<Term_3>;
 
 /** List of applicable terms */
 export type AvailabilityTermsList_2 = Array<Term_3>;
-export const AvailabilityTermsList_2 = /*@__PURE__*/ S.Array(
-  Term_3,
-) as any as S.Schema<AvailabilityTermsList_2>;
+export const AvailabilityTermsList_2 =
+  AvailabilityTermsList as any as S.Schema<AvailabilityTermsList_2>;
 
 /** Availability for a given plan */
 export interface Availability_2 {
@@ -2215,39 +2130,33 @@ export const GetSkusByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The product attributes. */
 export type GetSkusByBillingProfileResponseProductAttributesList = Array<Attribute_2>;
-export const GetSkusByBillingProfileResponseProductAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<GetSkusByBillingProfileResponseProductAttributesList>;
+export const GetSkusByBillingProfileResponseProductAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<GetSkusByBillingProfileResponseProductAttributesList>;
 
 /** The SKU attributes. */
 export type GetSkusByBillingProfileResponseSkuAttributesList = Array<Attribute_2>;
-export const GetSkusByBillingProfileResponseSkuAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<GetSkusByBillingProfileResponseSkuAttributesList>;
+export const GetSkusByBillingProfileResponseSkuAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<GetSkusByBillingProfileResponseSkuAttributesList>;
 
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export type GetSkusByBillingProfileResponseOfferingPropertiesList = Array<OfferingProperties_2>;
-export const GetSkusByBillingProfileResponseOfferingPropertiesList = /*@__PURE__*/ S.Array(
-  OfferingProperties_2,
-) as any as S.Schema<GetSkusByBillingProfileResponseOfferingPropertiesList>;
+export const GetSkusByBillingProfileResponseOfferingPropertiesList =
+  GetSkusByBillingAccountResponseOfferingPropertiesList as any as S.Schema<GetSkusByBillingProfileResponseOfferingPropertiesList>;
 
 /** Category IDs for this SKU. */
 export type GetSkusByBillingProfileResponseCategoryIdsList = Array<string>;
-export const GetSkusByBillingProfileResponseCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSkusByBillingProfileResponseCategoryIdsList>;
+export const GetSkusByBillingProfileResponseCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<GetSkusByBillingProfileResponseCategoryIdsList>;
 
 /** Pricing audiences for the SKU. */
 export type GetSkusByBillingProfileResponsePricingAudiencesList = Array<string>;
-export const GetSkusByBillingProfileResponsePricingAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSkusByBillingProfileResponsePricingAudiencesList>;
+export const GetSkusByBillingProfileResponsePricingAudiencesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<GetSkusByBillingProfileResponsePricingAudiencesList>;
 
 /** Availabilities for this SKU. */
 export type GetSkusByBillingProfileResponseAvailabilitiesList = Array<Availability_2>;
-export const GetSkusByBillingProfileResponseAvailabilitiesList = /*@__PURE__*/ S.Array(
-  Availability_2,
-) as any as S.Schema<GetSkusByBillingProfileResponseAvailabilitiesList>;
+export const GetSkusByBillingProfileResponseAvailabilitiesList =
+  GetSkusByBillingAccountResponseAvailabilitiesList as any as S.Schema<GetSkusByBillingProfileResponseAvailabilitiesList>;
 
 export interface GetSkusByBillingProfileResponse {
   /** The unique id of the product. */
@@ -2329,51 +2238,8 @@ export interface GetSkusByBillingProfileResponse {
   /** Availabilities for this SKU. */
   availabilities?: GetSkusByBillingProfileResponseAvailabilitiesList;
 }
-export const GetSkusByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productId: S.String,
-    productDisplayName: S.optional(S.String),
-    productDescription: S.optional(S.String),
-    serviceFamily: S.optional(S.String),
-    service: S.optional(S.String),
-    publisherId: S.optional(S.String),
-    publisherType: S.optional(S.String),
-    productType: S.optional(S.String),
-    productSubType: S.optional(S.String),
-    summary: S.optional(S.String),
-    productAttributes: S.optional(GetSkusByBillingProfileResponseProductAttributesList),
-    skuName: S.String,
-    skuId: S.String,
-    skuType: S.String,
-    language: S.String,
-    skuDescription: S.String,
-    skuTitle: S.String,
-    lastModifiedDateTime: S.optional(S.String),
-    location: S.String,
-    armRegionName: S.optional(S.String),
-    cloud: S.String,
-    locationType: S.String,
-    region: S.optional(S.String),
-    skuGroupId: S.optional(S.String),
-    zone: S.optional(S.String),
-    feature: S.optional(S.String),
-    serviceType: S.optional(S.String),
-    minQuantity: S.optional(S.Number),
-    maxQuantity: S.optional(S.Number),
-    cspState: S.optional(S.String),
-    hasRi: S.optional(S.Boolean),
-    skuAttributes: S.optional(GetSkusByBillingProfileResponseSkuAttributesList),
-    skuProperties: S.optional(SkuProperties_2),
-    offeringProperties: S.optional(GetSkusByBillingProfileResponseOfferingPropertiesList),
-    alternateIds: S.optional(SkuAlternateIds),
-    offeringType: S.optional(S.String),
-    categoryIds: S.optional(GetSkusByBillingProfileResponseCategoryIdsList),
-    pricingAudiences: S.optional(GetSkusByBillingProfileResponsePricingAudiencesList),
-    availabilities: S.optional(GetSkusByBillingProfileResponseAvailabilitiesList),
-  }),
-).annotate({
-  identifier: "GetSkusByBillingProfileResponse",
-}) as any as S.Schema<GetSkusByBillingProfileResponse>;
+export const GetSkusByBillingProfileResponse =
+  GetSkusByBillingAccountResponse as any as S.Schema<GetSkusByBillingProfileResponse>;
 
 export interface ListEdgeZonesProductsRequest {
   /** Subscription id of the caller */
@@ -2483,9 +2349,8 @@ export const MarketingMaterial = /*@__PURE__*/ S.suspend(() =>
 
 /** Markets for the item */
 export type CatalogItemMarketsList = Array<string>;
-export const CatalogItemMarketsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemMarketsList>;
+export const CatalogItemMarketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemMarketsList>;
 
 /** ISV contact details */
 export type CatalogItemIsvContactDetailsMap = { [key: string]: string | undefined };
@@ -2499,57 +2364,48 @@ export const LegalTermsType = S.String;
 
 /** List of category IDs the marketplace item belongs to */
 export type CatalogItemCategoryIdsList = Array<string>;
-export const CatalogItemCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemCategoryIdsList>;
+export const CatalogItemCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemCategoryIdsList>;
 
 /** List of operating systems the marketplace item supports */
 export type CatalogItemOperatingSystemsList = Array<string>;
-export const CatalogItemOperatingSystemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemOperatingSystemsList>;
+export const CatalogItemOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemOperatingSystemsList>;
 
 /** Market states of a service offer */
 export type CatalogItemMarketStatesList = Array<string>;
-export const CatalogItemMarketStatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemMarketStatesList>;
+export const CatalogItemMarketStatesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemMarketStatesList>;
 
 /** List of industry IDs the item belongs to */
 export type CatalogItemIndustryIdsList = Array<string>;
-export const CatalogItemIndustryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemIndustryIdsList>;
+export const CatalogItemIndustryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemIndustryIdsList>;
 
 /** List of industry IDs the item belongs to */
 export type CatalogItemPrimaryIndustryList = Array<string>;
-export const CatalogItemPrimaryIndustryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemPrimaryIndustryList>;
+export const CatalogItemPrimaryIndustryList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemPrimaryIndustryList>;
 
 /** List of category IDs the item belongs to */
 export type CatalogItemPrimaryCategoriesList = Array<string>;
-export const CatalogItemPrimaryCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemPrimaryCategoriesList>;
+export const CatalogItemPrimaryCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemPrimaryCategoriesList>;
 
 /** List of cloud industry IDs the item belongs to */
 export type CatalogItemCloudIndustryCategoriesList = Array<string>;
-export const CatalogItemCloudIndustryCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemCloudIndustryCategoriesList>;
+export const CatalogItemCloudIndustryCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemCloudIndustryCategoriesList>;
 
 /** It maps to the list of products the publisher provides with which their offer works */
 export type CatalogItemSupportedProductsList = Array<string>;
-export const CatalogItemSupportedProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemSupportedProductsList>;
+export const CatalogItemSupportedProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemSupportedProductsList>;
 
 /** Product categories the offer belongs to */
 export type CatalogItemApplicableProductsList = Array<string>;
-export const CatalogItemApplicableProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemApplicableProductsList>;
+export const CatalogItemApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemApplicableProductsList>;
 
 export interface Competency {
   /** Competency name */
@@ -2627,9 +2483,8 @@ export const Pricing = /*@__PURE__*/ S.suspend(() =>
 
 /** Market states of a service offer */
 export type MarketPricingDetailsItemMarketStatesList = Array<string>;
-export const MarketPricingDetailsItemMarketStatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MarketPricingDetailsItemMarketStatesList>;
+export const MarketPricingDetailsItemMarketStatesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<MarketPricingDetailsItemMarketStatesList>;
 
 export interface MarketPricingDetailsItem {
   /** Pricing that applies to the item */
@@ -2680,15 +2535,13 @@ export const MarketStartPrice = /*@__PURE__*/ S.suspend(() =>
 
 /** The states that apply to the item */
 export type CatalogItemSolutionAreasList = Array<string>;
-export const CatalogItemSolutionAreasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemSolutionAreasList>;
+export const CatalogItemSolutionAreasList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemSolutionAreasList>;
 
 /** List of screenshot image URIs provided for the item */
 export type CatalogItemScreenshotUrisList = Array<string>;
-export const CatalogItemScreenshotUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemScreenshotUrisList>;
+export const CatalogItemScreenshotUrisList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemScreenshotUrisList>;
 
 export interface LinkProperties {
   /** Id of the link */
@@ -2733,10 +2586,8 @@ export const CatalogItemFiltersList = /*@__PURE__*/ S.Array(
 
 /** Dictionary of icon image URIs by icon type */
 export type CatalogItemIconFileUrisMap = { [key: string]: string | undefined };
-export const CatalogItemIconFileUrisMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogItemIconFileUrisMap>;
+export const CatalogItemIconFileUrisMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemIconFileUrisMap>;
 
 export type ArtifactType = "Template" | "Fragment" | "Custom" | "Metadata";
 export const ArtifactType = S.String;
@@ -2860,10 +2711,8 @@ export const OfferMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of properties provided for the item */
 export type CatalogItemPropertiesMap = { [key: string]: string | undefined };
-export const CatalogItemPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogItemPropertiesMap>;
+export const CatalogItemPropertiesMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemPropertiesMap>;
 
 export interface Image {
   /** Image id */
@@ -2914,27 +2763,23 @@ export const CatalogItemVideosList = /*@__PURE__*/ S.Array(
 
 /** Subscription based restricted audience */
 export type RestrictedAudienceSubscriptionsList = Array<string>;
-export const RestrictedAudienceSubscriptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestrictedAudienceSubscriptionsList>;
+export const RestrictedAudienceSubscriptionsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceSubscriptionsList>;
 
 /** Tenant based restricted audience */
 export type RestrictedAudienceTenantsList = Array<string>;
-export const RestrictedAudienceTenantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestrictedAudienceTenantsList>;
+export const RestrictedAudienceTenantsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceTenantsList>;
 
 /** User based restricted audience */
 export type RestrictedAudienceUsersList = Array<string>;
-export const RestrictedAudienceUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestrictedAudienceUsersList>;
+export const RestrictedAudienceUsersList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceUsersList>;
 
 /** User groups restricted audience */
 export type RestrictedAudienceGroupsList = Array<string>;
-export const RestrictedAudienceGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestrictedAudienceGroupsList>;
+export const RestrictedAudienceGroupsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceGroupsList>;
 
 export interface RestrictedAudience {
   /** Subscription based restricted audience */
@@ -2957,15 +2802,12 @@ export const RestrictedAudience = /*@__PURE__*/ S.suspend(() =>
 
 /** List of keywords */
 export type PlanKeywordsList = Array<string>;
-export const PlanKeywordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanKeywordsList>;
+export const PlanKeywordsList = ProductDetailsCategoryIdsList as any as S.Schema<PlanKeywordsList>;
 
 /** List of allowed actions */
 export type AvailabilityEntityActionsList = Array<string>;
-export const AvailabilityEntityActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AvailabilityEntityActionsList>;
+export const AvailabilityEntityActionsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<AvailabilityEntityActionsList>;
 
 export interface Price {
   /** Currency code i.e. 'USD' */
@@ -3135,15 +2977,13 @@ export const AvailabilityEntityTermsList = /*@__PURE__*/ S.Array(
 
 /** List of exclusion properties */
 export type PIFilterExclusionPropertiesList = Array<string>;
-export const PIFilterExclusionPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PIFilterExclusionPropertiesList>;
+export const PIFilterExclusionPropertiesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PIFilterExclusionPropertiesList>;
 
 /** List of inclusion properties */
 export type PIFilterInclusionPropertiesList = Array<string>;
-export const PIFilterInclusionPropertiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PIFilterInclusionPropertiesList>;
+export const PIFilterInclusionPropertiesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PIFilterInclusionPropertiesList>;
 
 export interface PIFilter {
   /** List of exclusion properties */
@@ -3160,9 +3000,8 @@ export const PIFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Asset behaviors */
 export type AvailabilityEntityAssetBehaviorsList = Array<string>;
-export const AvailabilityEntityAssetBehaviorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AvailabilityEntityAssetBehaviorsList>;
+export const AvailabilityEntityAssetBehaviorsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<AvailabilityEntityAssetBehaviorsList>;
 
 export interface Remediation {
   /** Remediation identifier */
@@ -3271,15 +3110,13 @@ export const PlanAvailabilitiesList = /*@__PURE__*/ S.Array(
 
 /** Category IDs for this plan */
 export type PlanCategoryIdsList = Array<string>;
-export const PlanCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanCategoryIdsList>;
+export const PlanCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanCategoryIdsList>;
 
 /** Conversion paths for this plan */
 export type PlanConversionPathsList = Array<string>;
-export const PlanConversionPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanConversionPathsList>;
+export const PlanConversionPathsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanConversionPathsList>;
 
 export type OpenPropertyPropertiesMap = { [key: string]: unknown | undefined };
 export const OpenPropertyPropertiesMap = /*@__PURE__*/ S.Record(
@@ -3314,9 +3151,7 @@ export const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
 
 /** Files related to the marketplace item */
 export type PlanArtifactsList = Array<Artifact>;
-export const PlanArtifactsList = /*@__PURE__*/ S.Array(
-  Artifact,
-) as any as S.Schema<PlanArtifactsList>;
+export const PlanArtifactsList = CatalogItemArtifactsList as any as S.Schema<PlanArtifactsList>;
 
 export type CSPState = "OptIn" | "OptOut" | "Terminated" | "SelectiveOptIn";
 export const CSPState = S.String;
@@ -3391,9 +3226,8 @@ export const PlanUpnsList = /*@__PURE__*/ S.Array(TermUpn) as any as S.Schema<Pl
 
 /** List of certifications */
 export type PlanCertificationsList = Array<LinkProperties>;
-export const PlanCertificationsList = /*@__PURE__*/ S.Array(
-  LinkProperties,
-) as any as S.Schema<PlanCertificationsList>;
+export const PlanCertificationsList =
+  CatalogItemLinksList as any as S.Schema<PlanCertificationsList>;
 
 export type PricingType = "Free" | "FreeTrial" | "Byol" | "Payg" | "Ri";
 export const PricingType = S.String;
@@ -3572,19 +3406,15 @@ export const CatalogItemPlansList = /*@__PURE__*/ S.Array(
 export type DefinitionTemplatesDeploymentTemplateFileUrisMap = {
   [key: string]: string | undefined;
 };
-export const DefinitionTemplatesDeploymentTemplateFileUrisMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DefinitionTemplatesDeploymentTemplateFileUrisMap>;
+export const DefinitionTemplatesDeploymentTemplateFileUrisMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<DefinitionTemplatesDeploymentTemplateFileUrisMap>;
 
 /** a dictionary containing the deployment fragment file IDs defined in the package manifest and corresponding URIs */
 export type DefinitionTemplatesDeploymentFragmentFileUrisMap = {
   [key: string]: string | undefined;
 };
-export const DefinitionTemplatesDeploymentFragmentFileUrisMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DefinitionTemplatesDeploymentFragmentFileUrisMap>;
+export const DefinitionTemplatesDeploymentFragmentFileUrisMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<DefinitionTemplatesDeploymentFragmentFileUrisMap>;
 
 export interface DefinitionTemplates {
   /** UI definition file URI */
@@ -3611,22 +3441,18 @@ export const DefinitionTemplates = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of additional properties provided for the item */
 export type CatalogItemAdditionalPropertiesMap = { [key: string]: string | undefined };
-export const CatalogItemAdditionalPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogItemAdditionalPropertiesMap>;
+export const CatalogItemAdditionalPropertiesMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemAdditionalPropertiesMap>;
 
 /** List of hide keys provided for the item */
 export type CatalogItemHideKeysList = Array<string>;
-export const CatalogItemHideKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemHideKeysList>;
+export const CatalogItemHideKeysList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemHideKeysList>;
 
 /** List of keywords provided for the item */
 export type CatalogItemKeywordsList = Array<string>;
-export const CatalogItemKeywordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemKeywordsList>;
+export const CatalogItemKeywordsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemKeywordsList>;
 
 /** 0 = None 1 = Azure 2 = AMP 4 = AppSource 8 = Any */
 export type StoreFrontOptions = 0 | 1 | 2 | 4 | 8;
@@ -3634,9 +3460,8 @@ export const StoreFrontOptions = S.Number;
 
 /** The list of document links provided for the item */
 export type CatalogItemDocumentLinksList = Array<LinkProperties>;
-export const CatalogItemDocumentLinksList = /*@__PURE__*/ S.Array(
-  LinkProperties,
-) as any as S.Schema<CatalogItemDocumentLinksList>;
+export const CatalogItemDocumentLinksList =
+  CatalogItemLinksList as any as S.Schema<CatalogItemDocumentLinksList>;
 
 /** 1 = DogFood 2 = Canary 3 = Production 4 = FairFax 5 = Unknown */
 export type EnvironmentInfo = 1 | 2 | 3 | 4 | 5;
@@ -3644,21 +3469,17 @@ export const EnvironmentInfo = S.Number;
 
 /** List of linked Add Ins provided for the item */
 export type CatalogItemLinkedAddInsList = Array<string>;
-export const CatalogItemLinkedAddInsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemLinkedAddInsList>;
+export const CatalogItemLinkedAddInsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemLinkedAddInsList>;
 
 export type CatalogItemLinkedAddInsTypesMap = { [key: string]: string | undefined };
-export const CatalogItemLinkedAddInsTypesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogItemLinkedAddInsTypesMap>;
+export const CatalogItemLinkedAddInsTypesMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemLinkedAddInsTypesMap>;
 
 /** PBI service principals */
 export type CatalogItemPbiServicePrincipalIdsList = Array<string>;
-export const CatalogItemPbiServicePrincipalIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemPbiServicePrincipalIdsList>;
+export const CatalogItemPbiServicePrincipalIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemPbiServicePrincipalIdsList>;
 
 /** 0 = Undefined 1 = None 2 = SelfAttested 3 = MicrosoftCertified */
 export type CertificationType = 0 | 1 | 2 | 3;
@@ -3705,9 +3526,8 @@ export const CatalogItemStoreFrontPricingsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CatalogItemStoreFrontPricingsMap>;
 
 export type EnrichedDataTagsList = Array<string>;
-export const EnrichedDataTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnrichedDataTagsList>;
+export const EnrichedDataTagsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<EnrichedDataTagsList>;
 
 export interface PopularityEnrichedData {
   appSourceCs?: number;
@@ -3736,9 +3556,8 @@ export const RatingSummaryStarsDistributionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RatingSummaryStarsDistributionMap>;
 
 export type RatingSummaryBucketsList = Array<string>;
-export const RatingSummaryBucketsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RatingSummaryBucketsList>;
+export const RatingSummaryBucketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RatingSummaryBucketsList>;
 
 export interface RatingSummary {
   totalRatings?: number;
@@ -3805,21 +3624,18 @@ export const CatalogItemCapabilitiesList = /*@__PURE__*/ S.Array(
 
 /** the flag is used in embedded views */
 export type CatalogItemAwardsList = Array<string>;
-export const CatalogItemAwardsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemAwardsList>;
+export const CatalogItemAwardsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemAwardsList>;
 
 /** The list of the pricing types for which this offer is designated */
 export type CatalogItemPricingTypesList = Array<PricingType>;
-export const CatalogItemPricingTypesList = /*@__PURE__*/ S.Array(
-  PricingType,
-) as any as S.Schema<CatalogItemPricingTypesList>;
+export const CatalogItemPricingTypesList =
+  PlanPricingTypesList as any as S.Schema<CatalogItemPricingTypesList>;
 
 /** A list of auto run launch events for office products */
 export type CatalogItemAutoRunLaunchEventsList = Array<string>;
-export const CatalogItemAutoRunLaunchEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CatalogItemAutoRunLaunchEventsList>;
+export const CatalogItemAutoRunLaunchEventsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemAutoRunLaunchEventsList>;
 
 export interface CatalogItem {
   /** Language of the offer */
@@ -4404,81 +4220,68 @@ export const ListProductListByBillingAccountRequest = /*@__PURE__*/ S.suspend(()
 
 /** Array of product categories */
 export type ProductSummaryCategoryIdsList = Array<string>;
-export const ProductSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryCategoryIdsList>;
+export const ProductSummaryCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryCategoryIdsList>;
 
 /** List of industry IDs the item belongs to */
 export type ProductSummaryIndustryIdsList = Array<string>;
-export const ProductSummaryIndustryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryIndustryIdsList>;
+export const ProductSummaryIndustryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryIndustryIdsList>;
 
 /** Displays certification and qualification badges earned by the product for marketplace visibility. - `PreferredSolution` - Microsoft-recognized solution meeting specific quality and partnership criteria - `PowerBICertified` - Certified compatibility and integration with Microsoft Power BI platform - `AdditionalPurchaseRequirement` - Product requires additional purchases or subscriptions for full functionality */
 export type ProductSummaryBadgesList = Array<string>;
-export const ProductSummaryBadgesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryBadgesList>;
+export const ProductSummaryBadgesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryBadgesList>;
 
 /** Operating system info for this product */
 export type ProductSummaryOperatingSystemsList = Array<string>;
-export const ProductSummaryOperatingSystemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryOperatingSystemsList>;
+export const ProductSummaryOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryOperatingSystemsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type ProductSummaryPricingTypesList = Array<string>;
-export const ProductSummaryPricingTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryPricingTypesList>;
+export const ProductSummaryPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryPricingTypesList>;
 
 /** Categorizes products by customer rating thresholds for marketplace filtering and discovery. - `AboveOne` - Products with customer ratings exceeding 1.0 stars based on marketplace reviews - `AboveTwo` - Products with customer ratings exceeding 2.0 stars based on marketplace reviews - `AboveThree` - Products with customer ratings exceeding 3.0 stars based on marketplace reviews - `AboveFour` - Products with customer ratings exceeding 4.0 stars based on marketplace reviews */
 export type ProductSummaryRatingBucketsList = Array<string>;
-export const ProductSummaryRatingBucketsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryRatingBucketsList>;
+export const ProductSummaryRatingBucketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryRatingBucketsList>;
 
 /** Maps to the list of compatible products */
 export type ProductSummarySupportedProductsList = Array<string>;
-export const ProductSummarySupportedProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummarySupportedProductsList>;
+export const ProductSummarySupportedProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummarySupportedProductsList>;
 
 /** Product categories the offer belongs to */
 export type ProductSummaryApplicableProductsList = Array<string>;
-export const ProductSummaryApplicableProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryApplicableProductsList>;
+export const ProductSummaryApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryApplicableProductsList>;
 
 /** List of locations which are available on the SKUs */
 export type ProductSummaryLocationsList = Array<string>;
-export const ProductSummaryLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductSummaryLocationsList>;
+export const ProductSummaryLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryLocationsList>;
 
 /** Set of products attributes */
 export type ProductSummaryAttributesList = Array<Attribute>;
-export const ProductSummaryAttributesList = /*@__PURE__*/ S.Array(
-  Attribute,
-) as any as S.Schema<ProductSummaryAttributesList>;
+export const ProductSummaryAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<ProductSummaryAttributesList>;
 
 /** Plan CategoryIds */
 export type PlanSummaryCategoryIdsList = Array<string>;
-export const PlanSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanSummaryCategoryIdsList>;
+export const PlanSummaryCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanSummaryCategoryIdsList>;
 
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type PlanSummaryPricingTypesList = Array<string>;
-export const PlanSummaryPricingTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanSummaryPricingTypesList>;
+export const PlanSummaryPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanSummaryPricingTypesList>;
 
 /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
 export type PlanSummaryVmSecuritytypesList = Array<string>;
-export const PlanSummaryVmSecuritytypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanSummaryVmSecuritytypesList>;
+export const PlanSummaryVmSecuritytypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanSummaryVmSecuritytypesList>;
 
 /** Returns a subset of Plan attributes */
 export interface PlanSummary {
@@ -4820,9 +4623,8 @@ export const ListProductListByTenantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProductListByTenantRequest>;
 
 export type ListSkusByBillingAccountRequestLocationsList = Array<string>;
-export const ListSkusByBillingAccountRequestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSkusByBillingAccountRequestLocationsList>;
+export const ListSkusByBillingAccountRequestLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ListSkusByBillingAccountRequestLocationsList>;
 
 export interface ListSkusByBillingAccountRequest {
   /** The ID of the target billing account. */
@@ -4869,33 +4671,28 @@ export const ListSkusByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The product attributes. */
 export type SkuSummaryProductAttributesList = Array<Attribute_2>;
-export const SkuSummaryProductAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<SkuSummaryProductAttributesList>;
+export const SkuSummaryProductAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<SkuSummaryProductAttributesList>;
 
 /** The SKU attributes. */
 export type SkuSummarySkuAttributesList = Array<Attribute_2>;
-export const SkuSummarySkuAttributesList = /*@__PURE__*/ S.Array(
-  Attribute_2,
-) as any as S.Schema<SkuSummarySkuAttributesList>;
+export const SkuSummarySkuAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<SkuSummarySkuAttributesList>;
 
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export type SkuSummaryOfferingPropertiesList = Array<OfferingProperties_2>;
-export const SkuSummaryOfferingPropertiesList = /*@__PURE__*/ S.Array(
-  OfferingProperties_2,
-) as any as S.Schema<SkuSummaryOfferingPropertiesList>;
+export const SkuSummaryOfferingPropertiesList =
+  GetSkusByBillingAccountResponseOfferingPropertiesList as any as S.Schema<SkuSummaryOfferingPropertiesList>;
 
 /** Category IDs for this SKU. */
 export type SkuSummaryCategoryIdsList = Array<string>;
-export const SkuSummaryCategoryIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSummaryCategoryIdsList>;
+export const SkuSummaryCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuSummaryCategoryIdsList>;
 
 /** Pricing audiences for the SKU. */
 export type SkuSummaryPricingAudiencesList = Array<string>;
-export const SkuSummaryPricingAudiencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSummaryPricingAudiencesList>;
+export const SkuSummaryPricingAudiencesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuSummaryPricingAudiencesList>;
 
 /** Summary description of the SKU. */
 export interface SkuSummary {
@@ -5040,9 +4837,8 @@ export const SkuSummaryListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuSummaryListResult" }) as any as S.Schema<SkuSummaryListResult>;
 
 export type ListSkusByBillingProfileRequestLocationsList = Array<string>;
-export const ListSkusByBillingProfileRequestLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSkusByBillingProfileRequestLocationsList>;
+export const ListSkusByBillingProfileRequestLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ListSkusByBillingProfileRequestLocationsList>;
 
 export interface ListSkusByBillingProfileRequest {
   /** The ID of the target billing account. */
@@ -5136,34 +4932,28 @@ export const PostRevokeApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({
 }) as any as S.Schema<PostRevokeApiKeyResponse>;
 
 export type SearchPostArmRequestLanguagesList = Array<string>;
-export const SearchPostArmRequestLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestLanguagesList>;
+export const SearchPostArmRequestLanguagesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestLanguagesList>;
 
 export type SearchPostArmRequestStoresList = Array<Store | (string & {})>;
-export const SearchPostArmRequestStoresList = /*@__PURE__*/ S.Array(
-  Store,
-) as any as S.Schema<SearchPostArmRequestStoresList>;
+export const SearchPostArmRequestStoresList =
+  CatalogItemDeterminedStorefrontsList as any as S.Schema<SearchPostArmRequestStoresList>;
 
 export type SearchPostArmRequestSelectList = Array<string>;
-export const SearchPostArmRequestSelectList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestSelectList>;
+export const SearchPostArmRequestSelectList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestSelectList>;
 
 export type SearchPostArmRequestSortByList = Array<string>;
-export const SearchPostArmRequestSortByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestSortByList>;
+export const SearchPostArmRequestSortByList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestSortByList>;
 
 export type SearchPostArmRequestOfferTypesList = Array<string>;
-export const SearchPostArmRequestOfferTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestOfferTypesList>;
+export const SearchPostArmRequestOfferTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestOfferTypesList>;
 
 export type SearchPostArmRequestPricingTypesList = Array<PricingType | (string & {})>;
-export const SearchPostArmRequestPricingTypesList = /*@__PURE__*/ S.Array(
-  PricingType,
-) as any as S.Schema<SearchPostArmRequestPricingTypesList>;
+export const SearchPostArmRequestPricingTypesList =
+  PlanPricingTypesList as any as S.Schema<SearchPostArmRequestPricingTypesList>;
 
 export type PrivateStoreAllow = "AllowedByAdmin" | "AllowedByDefault" | "NonAllowed";
 export const PrivateStoreAllow = S.String;
@@ -5176,39 +4966,32 @@ export const SearchPostArmRequestPrivateStoreAllowancesList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<SearchPostArmRequestPrivateStoreAllowancesList>;
 
 export type SearchPostArmRequestAppSourceIndustriesList = Array<string>;
-export const SearchPostArmRequestAppSourceIndustriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestAppSourceIndustriesList>;
+export const SearchPostArmRequestAppSourceIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAppSourceIndustriesList>;
 
 export type SearchPostArmRequestOperatingSystemsList = Array<string>;
-export const SearchPostArmRequestOperatingSystemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestOperatingSystemsList>;
+export const SearchPostArmRequestOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestOperatingSystemsList>;
 
 export type SearchPostArmRequestAppSourceCategoriesList = Array<string>;
-export const SearchPostArmRequestAppSourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestAppSourceCategoriesList>;
+export const SearchPostArmRequestAppSourceCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAppSourceCategoriesList>;
 
 export type SearchPostArmRequestAzureIndustriesList = Array<string>;
-export const SearchPostArmRequestAzureIndustriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestAzureIndustriesList>;
+export const SearchPostArmRequestAzureIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAzureIndustriesList>;
 
 export type SearchPostArmRequestAzureCategoriesList = Array<string>;
-export const SearchPostArmRequestAzureCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestAzureCategoriesList>;
+export const SearchPostArmRequestAzureCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAzureCategoriesList>;
 
 export type SearchPostArmRequestAzurePortalCategoriesList = Array<string>;
-export const SearchPostArmRequestAzurePortalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestAzurePortalCategoriesList>;
+export const SearchPostArmRequestAzurePortalCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAzurePortalCategoriesList>;
 
 export type SearchPostArmRequestFacetsList = Array<string>;
-export const SearchPostArmRequestFacetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchPostArmRequestFacetsList>;
+export const SearchPostArmRequestFacetsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestFacetsList>;
 
 export interface SearchPostArmRequest {
   searchQuery?: string;
@@ -5309,49 +5092,40 @@ export const SearchResponseDtoFacetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchResponseDtoFacetsList>;
 
 export type SearchItemDtoApplicableProductsList = Array<string>;
-export const SearchItemDtoApplicableProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoApplicableProductsList>;
+export const SearchItemDtoApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoApplicableProductsList>;
 
 export type SearchItemDtoAppSourceCategoriesList = Array<string>;
-export const SearchItemDtoAppSourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoAppSourceCategoriesList>;
+export const SearchItemDtoAppSourceCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAppSourceCategoriesList>;
 
 export type SearchItemDtoAppSourceIndustriesList = Array<string>;
-export const SearchItemDtoAppSourceIndustriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoAppSourceIndustriesList>;
+export const SearchItemDtoAppSourceIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAppSourceIndustriesList>;
 
 export type SearchItemDtoAzureCategoriesList = Array<string>;
-export const SearchItemDtoAzureCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoAzureCategoriesList>;
+export const SearchItemDtoAzureCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAzureCategoriesList>;
 
 export type SearchItemDtoAzurePortalCategoriesList = Array<string>;
-export const SearchItemDtoAzurePortalCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoAzurePortalCategoriesList>;
+export const SearchItemDtoAzurePortalCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAzurePortalCategoriesList>;
 
 export type SearchItemDtoAzureIndustriesList = Array<string>;
-export const SearchItemDtoAzureIndustriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoAzureIndustriesList>;
+export const SearchItemDtoAzureIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAzureIndustriesList>;
 
 export type SearchItemDtoCspStatesList = Array<string>;
-export const SearchItemDtoCspStatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoCspStatesList>;
+export const SearchItemDtoCspStatesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoCspStatesList>;
 
 export type SearchItemDtoDeterminedStorefrontsList = Array<string>;
-export const SearchItemDtoDeterminedStorefrontsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoDeterminedStorefrontsList>;
+export const SearchItemDtoDeterminedStorefrontsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoDeterminedStorefrontsList>;
 
 export type SearchItemDtoOperatingSystemsList = Array<string>;
-export const SearchItemDtoOperatingSystemsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoOperatingSystemsList>;
+export const SearchItemDtoOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoOperatingSystemsList>;
 
 export interface PlanMetadataDto {
   generation?: string;
@@ -5400,24 +5174,20 @@ export const SearchItemDtoPlansList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchItemDtoPlansList>;
 
 export type SearchItemDtoPricingTypesList = Array<string>;
-export const SearchItemDtoPricingTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoPricingTypesList>;
+export const SearchItemDtoPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoPricingTypesList>;
 
 export type SearchItemDtoVmGenerationsList = Array<string>;
-export const SearchItemDtoVmGenerationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoVmGenerationsList>;
+export const SearchItemDtoVmGenerationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoVmGenerationsList>;
 
 export type SearchItemDtoVmImageTypesList = Array<string>;
-export const SearchItemDtoVmImageTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoVmImageTypesList>;
+export const SearchItemDtoVmImageTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoVmImageTypesList>;
 
 export type SearchItemDtoVmSecurityTypesList = Array<string>;
-export const SearchItemDtoVmSecurityTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchItemDtoVmSecurityTypesList>;
+export const SearchItemDtoVmSecurityTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoVmSecurityTypesList>;
 
 export interface SearchItemDto {
   ampAppsPopularity?: number;

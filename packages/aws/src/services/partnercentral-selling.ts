@@ -199,9 +199,8 @@ export const AssociateOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateOpportunityRequest",
 }) as any as S.Schema<AssociateOpportunityRequest>;
 export interface AssociateOpportunityResponse {}
-export const AssociateOpportunityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssociateOpportunityResponse",
-}) as any as S.Schema<AssociateOpportunityResponse>;
+export const AssociateOpportunityResponse =
+  AssignOpportunityResponse as any as S.Schema<AssociateOpportunityResponse>;
 export type ClientToken = string;
 export type EngagementTitle = string;
 export type EngagementDescription = string;
@@ -1298,7 +1297,7 @@ export const ExpectedContractDuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpectedContractDuration" }) as any as S.Schema<ExpectedContractDuration>;
 export type PiiString = string | redacted.Redacted<string>;
 export type ApnPrograms = string[];
-export const ApnPrograms = /*@__PURE__*/ S.Array(S.String);
+export const ApnPrograms = EligibleProgramsList as any as S.Schema<ApnPrograms>;
 export type SalesActivity =
   | "Initialized discussions with customer"
   | "Customer has shown interest in solution"
@@ -1372,7 +1371,7 @@ export type MarketingSource = "Marketing Activity" | "None" | (string & {});
 export const MarketingSource = S.String;
 
 export type UseCases = string[];
-export const UseCases = /*@__PURE__*/ S.Array(S.String);
+export const UseCases = EligibleProgramsList as any as S.Schema<UseCases>;
 export type Channel =
   | "AWS Marketing Central"
   | "Content Syndication"
@@ -1514,7 +1513,8 @@ export type OpportunityOrigin = "AWS Referral" | "Partner Referral" | (string & 
 export const OpportunityOrigin = S.String;
 
 export type PartnerOpportunityTeamMembersList = Contact[];
-export const PartnerOpportunityTeamMembersList = /*@__PURE__*/ S.Array(Contact);
+export const PartnerOpportunityTeamMembersList =
+  CustomerContactsList as any as S.Schema<PartnerOpportunityTeamMembersList>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
@@ -1675,11 +1675,8 @@ export const DeleteResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceSnapshotJobRequest",
 }) as any as S.Schema<DeleteResourceSnapshotJobRequest>;
 export interface DeleteResourceSnapshotJobResponse {}
-export const DeleteResourceSnapshotJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourceSnapshotJobResponse",
-}) as any as S.Schema<DeleteResourceSnapshotJobResponse>;
+export const DeleteResourceSnapshotJobResponse =
+  AcceptEngagementInvitationResponse as any as S.Schema<DeleteResourceSnapshotJobResponse>;
 export interface DisassociateOpportunityRequest {
   Catalog: string;
   OpportunityIdentifier: string;
@@ -1817,11 +1814,10 @@ export interface ProfileNextStepsHistory {
   Value: string;
   Time: Date;
 }
-export const ProfileNextStepsHistory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.String, Time: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
-).annotate({ identifier: "ProfileNextStepsHistory" }) as any as S.Schema<ProfileNextStepsHistory>;
+export const ProfileNextStepsHistory = NextStepsHistory as any as S.Schema<ProfileNextStepsHistory>;
 export type ProfileNextStepsHistories = ProfileNextStepsHistory[];
-export const ProfileNextStepsHistories = /*@__PURE__*/ S.Array(ProfileNextStepsHistory);
+export const ProfileNextStepsHistories =
+  NextStepsHistories as any as S.Schema<ProfileNextStepsHistories>;
 export interface AwsOpportunityLifeCycle {
   TargetCloseDate?: string;
   ClosedLostReason?: AwsClosedLostReason;
@@ -1875,7 +1871,7 @@ export const AmountMap = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = EligibleProgramsList as any as S.Schema<StringList>;
 export interface AwsProductOptimization {
   Description: string;
   SavingsAmount: string | redacted.Redacted<string>;
@@ -1989,16 +1985,18 @@ export const InvolvementTypeChangeReason = S.String;
 
 export type AwsProductIdentifier = string;
 export type AwsProductIdentifiers = string[];
-export const AwsProductIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const AwsProductIdentifiers = EligibleProgramsList as any as S.Schema<AwsProductIdentifiers>;
 export type SolutionIdentifier = string;
 export type SolutionIdentifiers = string[];
-export const SolutionIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const SolutionIdentifiers = EligibleProgramsList as any as S.Schema<SolutionIdentifiers>;
 export type AwsMarketplaceSolutionIdentifier = string;
 export type AwsMarketplaceSolutionIdentifiers = string[];
-export const AwsMarketplaceSolutionIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const AwsMarketplaceSolutionIdentifiers =
+  EligibleProgramsList as any as S.Schema<AwsMarketplaceSolutionIdentifiers>;
 export type AwsMarketplaceProductArn = string;
 export type AwsMarketplaceProductIdentifiers = string[];
-export const AwsMarketplaceProductIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const AwsMarketplaceProductIdentifiers =
+  EligibleProgramsList as any as S.Schema<AwsMarketplaceProductIdentifiers>;
 export interface AwsOpportunityRelatedEntities {
   AwsProducts?: string[];
   Solutions?: string[];
@@ -2232,10 +2230,12 @@ export const GetOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
 export type OpportunityArn = string;
 export type AwsMarketplaceOfferIdentifier = string;
 export type AwsMarketplaceOfferIdentifiers = string[];
-export const AwsMarketplaceOfferIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const AwsMarketplaceOfferIdentifiers =
+  EligibleProgramsList as any as S.Schema<AwsMarketplaceOfferIdentifiers>;
 export type AwsMarketplaceOfferSetIdentifier = string;
 export type AwsMarketplaceOfferSetIdentifiers = string[];
-export const AwsMarketplaceOfferSetIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const AwsMarketplaceOfferSetIdentifiers =
+  EligibleProgramsList as any as S.Schema<AwsMarketplaceOfferSetIdentifiers>;
 export interface RelatedEntityIdentifiers {
   AwsMarketplaceOffers?: string[];
   AwsMarketplaceOfferSets?: string[];
@@ -2598,12 +2598,14 @@ export const TaskStatus = S.String;
 export type TaskStatuses = TaskStatus[];
 export const TaskStatuses = /*@__PURE__*/ S.Array(TaskStatus);
 export type OpportunityIdentifiers = string[];
-export const OpportunityIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const OpportunityIdentifiers =
+  EligibleProgramsList as any as S.Schema<OpportunityIdentifiers>;
 export type EngagementInvitationIdentifiers = string[];
-export const EngagementInvitationIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const EngagementInvitationIdentifiers =
+  EligibleProgramsList as any as S.Schema<EngagementInvitationIdentifiers>;
 export type TaskArnOrIdentifier = string;
 export type TaskIdentifiers = string[];
-export const TaskIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const TaskIdentifiers = EligibleProgramsList as any as S.Schema<TaskIdentifiers>;
 export interface ListEngagementByAcceptingInvitationTasksRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2708,7 +2710,7 @@ export const ListEngagementByAcceptingInvitationTasksResponse = /*@__PURE__*/ S.
   identifier: "ListEngagementByAcceptingInvitationTasksResponse",
 }) as any as S.Schema<ListEngagementByAcceptingInvitationTasksResponse>;
 export type EngagementIdentifiers = string[];
-export const EngagementIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const EngagementIdentifiers = EligibleProgramsList as any as S.Schema<EngagementIdentifiers>;
 export interface ListEngagementFromOpportunityTasksRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2999,7 +3001,7 @@ export const ListEngagementResourceAssociationsResponse = /*@__PURE__*/ S.suspen
   identifier: "ListEngagementResourceAssociationsResponse",
 }) as any as S.Schema<ListEngagementResourceAssociationsResponse>;
 export type AwsAccountList = (string | redacted.Redacted<string>)[];
-export const AwsAccountList = /*@__PURE__*/ S.Array(SensitiveString);
+export const AwsAccountList = AwsAccountIdOrAliasList as any as S.Schema<AwsAccountList>;
 export type EngagementContextTypeList = EngagementContextType[];
 export const EngagementContextTypeList = /*@__PURE__*/ S.Array(EngagementContextType);
 export type EngagementSortName = "CreatedDate" | (string & {});
@@ -3097,7 +3099,7 @@ export const LastModifiedDate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LastModifiedDate" }) as any as S.Schema<LastModifiedDate>;
 export type FilterIdentifier = string[];
-export const FilterIdentifier = /*@__PURE__*/ S.Array(S.String);
+export const FilterIdentifier = EligibleProgramsList as any as S.Schema<FilterIdentifier>;
 export type FilterLifeCycleStage = Stage[];
 export const FilterLifeCycleStage = /*@__PURE__*/ S.Array(Stage);
 export type FilterLifeCycleReviewStatus = ReviewStatus[];
@@ -3259,7 +3261,7 @@ export const ListOpportunitiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOpportunitiesResponse>;
 export type ContextIdentifier = string;
 export type ContextIdentifiers = string[];
-export const ContextIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export const ContextIdentifiers = EligibleProgramsList as any as S.Schema<ContextIdentifiers>;
 export interface ListOpportunityFromEngagementTasksRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -3340,9 +3342,9 @@ export const ListOpportunityFromEngagementTasksResponse = /*@__PURE__*/ S.suspen
   identifier: "ListOpportunityFromEngagementTasksResponse",
 }) as any as S.Schema<ListOpportunityFromEngagementTasksResponse>;
 export type TaskIdentifierList = string[];
-export const TaskIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const TaskIdentifierList = EligibleProgramsList as any as S.Schema<TaskIdentifierList>;
 export type TaskNameList = string[];
-export const TaskNameList = /*@__PURE__*/ S.Array(S.String);
+export const TaskNameList = EligibleProgramsList as any as S.Schema<TaskNameList>;
 export type ProspectingFromEngagementTaskSortName =
   | "StartTime"
   | "TaskName"
@@ -3576,7 +3578,8 @@ export type FilterStatus = SolutionStatus[];
 export const FilterStatus = /*@__PURE__*/ S.Array(SolutionStatus);
 export type AwsMarketplaceSolutionArn = string;
 export type AwsMarketplaceSolutionArnList = string[];
-export const AwsMarketplaceSolutionArnList = /*@__PURE__*/ S.Array(S.String);
+export const AwsMarketplaceSolutionArnList =
+  EligibleProgramsList as any as S.Schema<AwsMarketplaceSolutionArnList>;
 export interface ListSolutionsRequest {
   Catalog: string;
   MaxResults?: number;
@@ -3673,11 +3676,8 @@ export interface PutSellingSystemSettingsResponse {
   Catalog: string;
   ResourceSnapshotJobRoleArn?: string;
 }
-export const PutSellingSystemSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Catalog: S.String, ResourceSnapshotJobRoleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "PutSellingSystemSettingsResponse",
-}) as any as S.Schema<PutSellingSystemSettingsResponse>;
+export const PutSellingSystemSettingsResponse =
+  GetSellingSystemSettingsResponse as any as S.Schema<PutSellingSystemSettingsResponse>;
 export interface RejectEngagementInvitationRequest {
   Catalog: string;
   Identifier: string;
@@ -3698,11 +3698,8 @@ export const RejectEngagementInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RejectEngagementInvitationRequest",
 }) as any as S.Schema<RejectEngagementInvitationRequest>;
 export interface RejectEngagementInvitationResponse {}
-export const RejectEngagementInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RejectEngagementInvitationResponse",
-}) as any as S.Schema<RejectEngagementInvitationResponse>;
+export const RejectEngagementInvitationResponse =
+  AcceptEngagementInvitationResponse as any as S.Schema<RejectEngagementInvitationResponse>;
 export interface StartEngagementByAcceptingInvitationTaskRequest {
   Catalog: string;
   ClientToken: string;
@@ -3739,21 +3736,8 @@ export interface StartEngagementByAcceptingInvitationTaskResponse {
   ResourceSnapshotJobId?: string;
   EngagementInvitationId?: string;
 }
-export const StartEngagementByAcceptingInvitationTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TaskStatus: S.optional(TaskStatus),
-    Message: S.optional(S.String),
-    ReasonCode: S.optional(ReasonCode),
-    OpportunityId: S.optional(S.String),
-    ResourceSnapshotJobId: S.optional(S.String),
-    EngagementInvitationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartEngagementByAcceptingInvitationTaskResponse",
-}) as any as S.Schema<StartEngagementByAcceptingInvitationTaskResponse>;
+export const StartEngagementByAcceptingInvitationTaskResponse =
+  ListEngagementByAcceptingInvitationTaskSummary as any as S.Schema<StartEngagementByAcceptingInvitationTaskResponse>;
 export interface AwsSubmission {
   InvolvementType: SalesInvolvementType;
   Visibility?: Visibility;
@@ -3800,22 +3784,8 @@ export interface StartEngagementFromOpportunityTaskResponse {
   EngagementId?: string;
   EngagementInvitationId?: string;
 }
-export const StartEngagementFromOpportunityTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TaskStatus: S.optional(TaskStatus),
-    Message: S.optional(S.String),
-    ReasonCode: S.optional(ReasonCode),
-    OpportunityId: S.optional(S.String),
-    ResourceSnapshotJobId: S.optional(S.String),
-    EngagementId: S.optional(S.String),
-    EngagementInvitationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartEngagementFromOpportunityTaskResponse",
-}) as any as S.Schema<StartEngagementFromOpportunityTaskResponse>;
+export const StartEngagementFromOpportunityTaskResponse =
+  ListEngagementFromOpportunityTaskSummary as any as S.Schema<StartEngagementFromOpportunityTaskResponse>;
 export interface StartOpportunityFromEngagementTaskRequest {
   Catalog: string;
   ClientToken: string;
@@ -3855,24 +3825,11 @@ export interface StartOpportunityFromEngagementTaskResponse {
   EngagementId?: string;
   ContextId?: string;
 }
-export const StartOpportunityFromEngagementTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    TaskStatus: S.optional(TaskStatus),
-    Message: S.optional(S.String),
-    ReasonCode: S.optional(ReasonCode),
-    OpportunityId: S.optional(S.String),
-    ResourceSnapshotJobId: S.optional(S.String),
-    EngagementId: S.optional(S.String),
-    ContextId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartOpportunityFromEngagementTaskResponse",
-}) as any as S.Schema<StartOpportunityFromEngagementTaskResponse>;
+export const StartOpportunityFromEngagementTaskResponse =
+  ListOpportunityFromEngagementTaskSummary as any as S.Schema<StartOpportunityFromEngagementTaskResponse>;
 export type EngagementIdentifierList = string[];
-export const EngagementIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const EngagementIdentifierList =
+  EligibleProgramsList as any as S.Schema<EngagementIdentifierList>;
 export interface StartProspectingFromEngagementTaskRequest {
   Catalog: string;
   Identifiers: string[];
@@ -3941,11 +3898,8 @@ export const StartResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartResourceSnapshotJobRequest",
 }) as any as S.Schema<StartResourceSnapshotJobRequest>;
 export interface StartResourceSnapshotJobResponse {}
-export const StartResourceSnapshotJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartResourceSnapshotJobResponse",
-}) as any as S.Schema<StartResourceSnapshotJobResponse>;
+export const StartResourceSnapshotJobResponse =
+  AcceptEngagementInvitationResponse as any as S.Schema<StartResourceSnapshotJobResponse>;
 export interface StopResourceSnapshotJobRequest {
   Catalog: string;
   ResourceSnapshotJobIdentifier: string;
@@ -3965,9 +3919,8 @@ export const StopResourceSnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopResourceSnapshotJobRequest",
 }) as any as S.Schema<StopResourceSnapshotJobRequest>;
 export interface StopResourceSnapshotJobResponse {}
-export const StopResourceSnapshotJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "StopResourceSnapshotJobResponse" },
-) as any as S.Schema<StopResourceSnapshotJobResponse>;
+export const StopResourceSnapshotJobResponse =
+  DisassociateOpportunityResponse as any as S.Schema<StopResourceSnapshotJobResponse>;
 export interface SubmitOpportunityRequest {
   Catalog: string;
   Identifier: string;
@@ -3985,9 +3938,8 @@ export const SubmitOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SubmitOpportunityRequest" }) as any as S.Schema<SubmitOpportunityRequest>;
 export interface SubmitOpportunityResponse {}
-export const SubmitOpportunityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubmitOpportunityResponse",
-}) as any as S.Schema<SubmitOpportunityResponse>;
+export const SubmitOpportunityResponse =
+  AssignOpportunityResponse as any as S.Schema<SubmitOpportunityResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -3998,11 +3950,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AssignOpportunityResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = EligibleProgramsList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -4013,9 +3964,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssignOpportunityResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLeadContext {
   QualificationStatus?: string;
   Customer: LeadCustomer;

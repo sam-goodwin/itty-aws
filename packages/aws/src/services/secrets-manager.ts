@@ -156,7 +156,7 @@ export const FilterNameStringType = S.String;
 
 export type FilterValueStringType = string;
 export type FilterValuesStringList = string[];
-export const FilterValuesStringList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValuesStringList = SecretIdListType as any as S.Schema<FilterValuesStringList>;
 export interface Filter {
   Key?: FilterNameStringType;
   Values?: string[];
@@ -191,7 +191,7 @@ export type SecretBinaryType = Uint8Array | redacted.Redacted<Uint8Array>;
 export type SecretStringType = string | redacted.Redacted<string>;
 export type SecretVersionStageType = string;
 export type SecretVersionStagesType = string[];
-export const SecretVersionStagesType = /*@__PURE__*/ S.Array(S.String);
+export const SecretVersionStagesType = SecretIdListType as any as S.Schema<SecretVersionStagesType>;
 export type CreatedDateType = Date;
 export interface SecretValueEntry {
   ARN?: string;
@@ -585,17 +585,7 @@ export interface GetSecretValueResponse {
   VersionStages?: string[];
   CreatedDate?: Date;
 }
-export const GetSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ARN: S.optional(S.String),
-    Name: S.optional(S.String),
-    VersionId: S.optional(S.String),
-    SecretBinary: S.optional(SensitiveBlob),
-    SecretString: S.optional(SensitiveString),
-    VersionStages: S.optional(SecretVersionStagesType),
-    CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "GetSecretValueResponse" }) as any as S.Schema<GetSecretValueResponse>;
+export const GetSecretValueResponse = SecretValueEntry as any as S.Schema<GetSecretValueResponse>;
 export type MaxResultsType = number;
 export type SortOrderType = "asc" | "desc" | (string & {});
 export const SortOrderType = S.String;
@@ -698,7 +688,7 @@ export const ListSecretVersionIdsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSecretVersionIdsRequest",
 }) as any as S.Schema<ListSecretVersionIdsRequest>;
 export type KmsKeyIdListType = string[];
-export const KmsKeyIdListType = /*@__PURE__*/ S.Array(S.String);
+export const KmsKeyIdListType = SecretIdListType as any as S.Schema<KmsKeyIdListType>;
 export interface SecretVersionsListEntry {
   VersionId?: string;
   VersionStages?: string[];
@@ -749,11 +739,8 @@ export interface PutResourcePolicyResponse {
   ARN?: string;
   Name?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ARN: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export type RotationTokenType = string | redacted.Redacted<string>;
 export interface PutSecretValueRequest {
   SecretId: string;
@@ -788,7 +775,8 @@ export const PutSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PutSecretValueResponse" }) as any as S.Schema<PutSecretValueResponse>;
 export type RemoveReplicaRegionListType = string[];
-export const RemoveReplicaRegionListType = /*@__PURE__*/ S.Array(S.String);
+export const RemoveReplicaRegionListType =
+  SecretIdListType as any as S.Schema<RemoveReplicaRegionListType>;
 export interface RemoveRegionsFromReplicationRequest {
   SecretId: string;
   RemoveReplicaRegions: string[];
@@ -827,11 +815,8 @@ export interface ReplicateSecretToRegionsResponse {
   ARN?: string;
   ReplicationStatus?: ReplicationStatusType[];
 }
-export const ReplicateSecretToRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ARN: S.optional(S.String), ReplicationStatus: S.optional(ReplicationStatusListType) }),
-).annotate({
-  identifier: "ReplicateSecretToRegionsResponse",
-}) as any as S.Schema<ReplicateSecretToRegionsResponse>;
+export const ReplicateSecretToRegionsResponse =
+  RemoveRegionsFromReplicationResponse as any as S.Schema<ReplicateSecretToRegionsResponse>;
 export interface RestoreSecretRequest {
   SecretId: string;
 }
@@ -911,7 +896,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyListType = string[];
-export const TagKeyListType = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyListType = SecretIdListType as any as S.Schema<TagKeyListType>;
 export interface UntagResourceRequest {
   SecretId: string;
   TagKeys: string[];
@@ -922,9 +907,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateSecretRequest {
   SecretId: string;
   ClientRequestToken?: string;
@@ -950,13 +933,7 @@ export interface UpdateSecretResponse {
   Name?: string;
   VersionId?: string;
 }
-export const UpdateSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ARN: S.optional(S.String),
-    Name: S.optional(S.String),
-    VersionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateSecretResponse" }) as any as S.Schema<UpdateSecretResponse>;
+export const UpdateSecretResponse = RotateSecretResponse as any as S.Schema<UpdateSecretResponse>;
 export interface UpdateSecretVersionStageRequest {
   SecretId: string;
   VersionStage: string;
@@ -977,11 +954,8 @@ export interface UpdateSecretVersionStageResponse {
   ARN?: string;
   Name?: string;
 }
-export const UpdateSecretVersionStageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ARN: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateSecretVersionStageResponse",
-}) as any as S.Schema<UpdateSecretVersionStageResponse>;
+export const UpdateSecretVersionStageResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<UpdateSecretVersionStageResponse>;
 export interface ValidateResourcePolicyRequest {
   SecretId?: string;
   ResourcePolicy: string;

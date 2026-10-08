@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
 
 /** Configuration options for Cluster HTTP Gateway. */
 export interface GatewayConfig {
@@ -1642,15 +1640,8 @@ export interface ListUsableWorkstationConfigsResponse {
   /** The requested configs. */
   workstationConfigs?: WorkstationConfigList;
 }
-export const ListUsableWorkstationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
-    workstationConfigs: S.optional(WorkstationConfigList),
-  }),
-).annotate({
-  identifier: "ListUsableWorkstationConfigsResponse",
-}) as any as S.Schema<ListUsableWorkstationConfigsResponse>;
+export const ListUsableWorkstationConfigsResponse =
+  ListWorkstationConfigsResponse as any as S.Schema<ListUsableWorkstationConfigsResponse>;
 
 export interface ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** Required. Parent resource name. */
@@ -2046,13 +2037,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

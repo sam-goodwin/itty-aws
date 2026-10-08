@@ -988,11 +988,8 @@ export const EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest =
 
 /** Response for EnableComplianceUpdates endpoint. */
 export interface GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse {}
-export const GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse",
-}) as any as S.Schema<GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse>;
+export const GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse =
+  GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse as any as S.Schema<GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse>;
 
 export interface EnableResourceMonitoringOrganizationsLocationsWorkloadsRequest {
   /** Required. The `name` field is used to identify the workload. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id} */
@@ -2776,9 +2773,7 @@ export const RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest =
 /** Response for restricting the list of allowed resources. */
 export interface GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse {}
 export const GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse",
-  }) as any as S.Schema<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse>;
+  GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse as any as S.Schema<GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse>;
 
 export type AcknowledgeOrganizationsLocationsWorkloadsViolationsError =
   | NotFound

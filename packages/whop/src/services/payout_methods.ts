@@ -174,19 +174,7 @@ export interface PayoutMethodListItem {
   /** A user-defined label to help identify this payout destination. Not sent to the provider. Null if no nickname has been set. */
   nickname: string | null;
 }
-export const PayoutMethodListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_reference: S.NullOr(S.String),
-    company: S.NullOr(PayoutMethodCompany),
-    created_at: S.String,
-    currency: S.String,
-    destination: S.NullOr(PayoutMethodDestination),
-    id: S.String,
-    institution_name: S.NullOr(S.String),
-    is_default: S.Boolean,
-    nickname: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "PayoutMethodListItem" }) as any as S.Schema<PayoutMethodListItem>;
+export const PayoutMethodListItem = PayoutMethod as any as S.Schema<PayoutMethodListItem>;
 
 /** A list of nodes. */
 export type ListPayoutMethodResponseDataList = Array<PayoutMethodListItem>;

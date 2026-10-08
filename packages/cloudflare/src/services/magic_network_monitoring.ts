@@ -141,17 +141,15 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateConfigRequest" }) as any as S.Schema<CreateConfigRequest>;
 
 export type ConfigsCreateResponseRouterIpsList = Array<string>;
-export const ConfigsCreateResponseRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsCreateResponseRouterIpsList>;
+export const ConfigsCreateResponseRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsCreateResponseRouterIpsList>;
 
 export type ConfigsCreateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsCreateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsCreateResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsCreateResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsCreateResponseWarpDevicesList>;
+export const ConfigsCreateResponseWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsCreateResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateConfigResponse {
@@ -172,9 +170,8 @@ export const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateConfigResponse" }) as any as S.Schema<CreateConfigResponse>;
 
 export type RulesCreateRequestPrefixesList = Array<string>;
-export const RulesCreateRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateRequestPrefixesList>;
+export const RulesCreateRequestPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesCreateRequestPrefixesList>;
 
 export type RulesCreateRequestType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesCreateRequestType = S.String;
@@ -242,9 +239,8 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResponsePrefixesList = Array<string>;
-export const RulesCreateResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesCreateResponsePrefixesList>;
+export const RulesCreateResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesCreateResponsePrefixesList>;
 
 export type RulesCreateResponseType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesCreateResponseType = S.String;
@@ -345,17 +341,15 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConfigRequest" }) as any as S.Schema<DeleteConfigRequest>;
 
 export type ConfigsDeleteResponseRouterIpsList = Array<string>;
-export const ConfigsDeleteResponseRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsDeleteResponseRouterIpsList>;
+export const ConfigsDeleteResponseRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsDeleteResponseRouterIpsList>;
 
 export type ConfigsDeleteResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsDeleteResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsDeleteResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsDeleteResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsDeleteResponseWarpDevicesList>;
+export const ConfigsDeleteResponseWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsDeleteResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConfigResponse {
@@ -366,14 +360,7 @@ export interface DeleteConfigResponse {
   routerIps: ConfigsDeleteResponseRouterIpsList;
   warpDevices: ConfigsDeleteResponseWarpDevicesList;
 }
-export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultSampling: S.Number.pipe(T.Body("default_sampling")),
-    name: S.String,
-    routerIps: ConfigsDeleteResponseRouterIpsList.pipe(T.Body("router_ips")),
-    warpDevices: ConfigsDeleteResponseWarpDevicesList.pipe(T.Body("warp_devices")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteConfigResponse" }) as any as S.Schema<DeleteConfigResponse>;
+export const DeleteConfigResponse = CreateConfigResponse as any as S.Schema<DeleteConfigResponse>;
 
 export interface DeleteRuleRequest {
   accountId: string;
@@ -392,9 +379,8 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 
 export type RulesDeleteResponsePrefixesList = Array<string>;
-export const RulesDeleteResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesDeleteResponsePrefixesList>;
+export const RulesDeleteResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesDeleteResponsePrefixesList>;
 
 export type RulesDeleteResponseType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesDeleteResponseType = S.String;
@@ -475,17 +461,15 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConfigRequest" }) as any as S.Schema<GetConfigRequest>;
 
 export type ConfigsGetResponseRouterIpsList = Array<string>;
-export const ConfigsGetResponseRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsGetResponseRouterIpsList>;
+export const ConfigsGetResponseRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsGetResponseRouterIpsList>;
 
 export type ConfigsGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsGetResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsGetResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsGetResponseWarpDevicesList>;
+export const ConfigsGetResponseWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsGetResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigResponse {
@@ -496,14 +480,7 @@ export interface GetConfigResponse {
   routerIps: ConfigsGetResponseRouterIpsList;
   warpDevices: ConfigsGetResponseWarpDevicesList;
 }
-export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultSampling: S.Number.pipe(T.Body("default_sampling")),
-    name: S.String,
-    routerIps: ConfigsGetResponseRouterIpsList.pipe(T.Body("router_ips")),
-    warpDevices: ConfigsGetResponseWarpDevicesList.pipe(T.Body("warp_devices")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetConfigResponse" }) as any as S.Schema<GetConfigResponse>;
+export const GetConfigResponse = CreateConfigResponse as any as S.Schema<GetConfigResponse>;
 
 export interface GetConfigFullRequest {
   accountId: string;
@@ -517,17 +494,15 @@ export const GetConfigFullRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConfigFullRequest" }) as any as S.Schema<GetConfigFullRequest>;
 
 export type ConfigsFullGetResponseRouterIpsList = Array<string>;
-export const ConfigsFullGetResponseRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsFullGetResponseRouterIpsList>;
+export const ConfigsFullGetResponseRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsFullGetResponseRouterIpsList>;
 
 export type ConfigsFullGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsFullGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsFullGetResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsFullGetResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsFullGetResponseWarpDevicesList>;
+export const ConfigsFullGetResponseWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsFullGetResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigFullResponse {
@@ -538,14 +513,7 @@ export interface GetConfigFullResponse {
   routerIps: ConfigsFullGetResponseRouterIpsList;
   warpDevices: ConfigsFullGetResponseWarpDevicesList;
 }
-export const GetConfigFullResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultSampling: S.Number.pipe(T.Body("default_sampling")),
-    name: S.String,
-    routerIps: ConfigsFullGetResponseRouterIpsList.pipe(T.Body("router_ips")),
-    warpDevices: ConfigsFullGetResponseWarpDevicesList.pipe(T.Body("warp_devices")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetConfigFullResponse" }) as any as S.Schema<GetConfigFullResponse>;
+export const GetConfigFullResponse = CreateConfigResponse as any as S.Schema<GetConfigFullResponse>;
 
 export interface GetRuleRequest {
   accountId: string;
@@ -562,9 +530,8 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponsePrefixesList = Array<string>;
-export const RulesGetResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesGetResponsePrefixesList>;
+export const RulesGetResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesGetResponsePrefixesList>;
 
 export type RulesGetResponseType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesGetResponseType = S.String;
@@ -635,9 +602,8 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type RulesListResultItemPrefixesList = Array<string>;
-export const RulesListResultItemPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesListResultItemPrefixesList>;
+export const RulesListResultItemPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesListResultItemPrefixesList>;
 
 export type RulesListResultItemType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesListResultItemType = S.String;
@@ -724,17 +690,15 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
 
 export type ConfigsEditRequestRouterIpsList = Array<string>;
-export const ConfigsEditRequestRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsEditRequestRouterIpsList>;
+export const ConfigsEditRequestRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsEditRequestRouterIpsList>;
 
 export type ConfigsEditRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsEditRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsEditRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsEditRequestWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsEditRequestWarpDevicesList>;
+export const ConfigsEditRequestWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsEditRequestWarpDevicesList>;
 
 export interface PatchConfigRequest {
   accountId: string;
@@ -758,17 +722,15 @@ export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchConfigRequest" }) as any as S.Schema<PatchConfigRequest>;
 
 export type ConfigsEditResponseRouterIpsList = Array<string>;
-export const ConfigsEditResponseRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsEditResponseRouterIpsList>;
+export const ConfigsEditResponseRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsEditResponseRouterIpsList>;
 
 export type ConfigsEditResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsEditResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsEditResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsEditResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsEditResponseWarpDevicesList>;
+export const ConfigsEditResponseWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsEditResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchConfigResponse {
@@ -779,19 +741,11 @@ export interface PatchConfigResponse {
   routerIps: ConfigsEditResponseRouterIpsList;
   warpDevices: ConfigsEditResponseWarpDevicesList;
 }
-export const PatchConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultSampling: S.Number.pipe(T.Body("default_sampling")),
-    name: S.String,
-    routerIps: ConfigsEditResponseRouterIpsList.pipe(T.Body("router_ips")),
-    warpDevices: ConfigsEditResponseWarpDevicesList.pipe(T.Body("warp_devices")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchConfigResponse" }) as any as S.Schema<PatchConfigResponse>;
+export const PatchConfigResponse = CreateConfigResponse as any as S.Schema<PatchConfigResponse>;
 
 export type RulesEditRequestPrefixesList = Array<string>;
-export const RulesEditRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesEditRequestPrefixesList>;
+export const RulesEditRequestPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesEditRequestPrefixesList>;
 
 export type RulesEditRequestType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesEditRequestType = S.String;
@@ -854,9 +808,8 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchRuleRequest" }) as any as S.Schema<PatchRuleRequest>;
 
 export type RulesEditResponsePrefixesList = Array<string>;
-export const RulesEditResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesEditResponsePrefixesList>;
+export const RulesEditResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesEditResponsePrefixesList>;
 
 export type RulesEditResponseType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesEditResponseType = S.String;
@@ -951,17 +904,15 @@ export const PatchRuleAdvertisementResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchRuleAdvertisementResponse>;
 
 export type ConfigsUpdateRequestRouterIpsList = Array<string>;
-export const ConfigsUpdateRequestRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsUpdateRequestRouterIpsList>;
+export const ConfigsUpdateRequestRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsUpdateRequestRouterIpsList>;
 
 export type ConfigsUpdateRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsUpdateRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsUpdateRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsUpdateRequestWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsUpdateRequestWarpDevicesList>;
+export const ConfigsUpdateRequestWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsUpdateRequestWarpDevicesList>;
 
 export interface UpdateConfigRequest {
   accountId: string;
@@ -985,17 +936,15 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateConfigRequest" }) as any as S.Schema<UpdateConfigRequest>;
 
 export type ConfigsUpdateResponseRouterIpsList = Array<string>;
-export const ConfigsUpdateResponseRouterIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigsUpdateResponseRouterIpsList>;
+export const ConfigsUpdateResponseRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsUpdateResponseRouterIpsList>;
 
 export type ConfigsUpdateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export const ConfigsUpdateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 
 export type ConfigsUpdateResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsUpdateResponseWarpDevicesList = /*@__PURE__*/ S.Array(
-  ConfigsCreateRequestWarpDevicesItem,
-) as any as S.Schema<ConfigsUpdateResponseWarpDevicesList>;
+export const ConfigsUpdateResponseWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsUpdateResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateConfigResponse {
@@ -1006,19 +955,11 @@ export interface UpdateConfigResponse {
   routerIps: ConfigsUpdateResponseRouterIpsList;
   warpDevices: ConfigsUpdateResponseWarpDevicesList;
 }
-export const UpdateConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultSampling: S.Number.pipe(T.Body("default_sampling")),
-    name: S.String,
-    routerIps: ConfigsUpdateResponseRouterIpsList.pipe(T.Body("router_ips")),
-    warpDevices: ConfigsUpdateResponseWarpDevicesList.pipe(T.Body("warp_devices")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateConfigResponse" }) as any as S.Schema<UpdateConfigResponse>;
+export const UpdateConfigResponse = CreateConfigResponse as any as S.Schema<UpdateConfigResponse>;
 
 export type RulesUpdateRequestPrefixesList = Array<string>;
-export const RulesUpdateRequestPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesUpdateRequestPrefixesList>;
+export const RulesUpdateRequestPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesUpdateRequestPrefixesList>;
 
 export type RulesUpdateRequestType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesUpdateRequestType = S.String;
@@ -1086,9 +1027,8 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
 
 export type RulesUpdateResponsePrefixesList = Array<string>;
-export const RulesUpdateResponsePrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesUpdateResponsePrefixesList>;
+export const RulesUpdateResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesUpdateResponsePrefixesList>;
 
 export type RulesUpdateResponseType = "threshold" | "zscore" | "advanced_ddos";
 export const RulesUpdateResponseType = S.String;

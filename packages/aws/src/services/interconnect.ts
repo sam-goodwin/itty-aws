@@ -239,9 +239,8 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConnectionResponse {
   connection?: Connection;
 }
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.optional(Connection) }),
-).annotate({ identifier: "GetConnectionResponse" }) as any as S.Schema<GetConnectionResponse>;
+export const GetConnectionResponse =
+  CreateConnectionResponse as any as S.Schema<GetConnectionResponse>;
 export interface GetEnvironmentRequest {
   id: string;
 }
@@ -439,7 +438,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = BandwidthList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
@@ -450,9 +449,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectionRequest {
   identifier: string;
   description?: string;
@@ -470,9 +467,8 @@ export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectionResponse {
   connection?: Connection;
 }
-export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.optional(Connection) }),
-).annotate({ identifier: "UpdateConnectionResponse" }) as any as S.Schema<UpdateConnectionResponse>;
+export const UpdateConnectionResponse =
+  CreateConnectionResponse as any as S.Schema<UpdateConnectionResponse>;
 export type AcceptConnectionProposalError = CommonErrors;
 /**
  * Accepts a connection proposal which was generated at a supported partner's portal.

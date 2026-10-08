@@ -86,9 +86,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
 
 export type ActiveDirectoryStateEnum =
   | "STATE_UNSPECIFIED"
@@ -2304,11 +2302,8 @@ export interface ExecuteOntapPatchRequest {
   /** Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For example: ``` { "body": { "field1": "value1", "field2": "value2", } } ``` */
   body?: DocumentMap;
 }
-export const ExecuteOntapPatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DocumentMap),
-  }),
-).annotate({ identifier: "ExecuteOntapPatchRequest" }) as any as S.Schema<ExecuteOntapPatchRequest>;
+export const ExecuteOntapPatchRequest =
+  ExecuteOntapGetResponse as any as S.Schema<ExecuteOntapPatchRequest>;
 
 export interface ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest {
   /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
@@ -2337,13 +2332,8 @@ export interface ExecuteOntapPatchResponse {
   /** The raw `JSON` body of the response. */
   body?: DocumentMap;
 }
-export const ExecuteOntapPatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "ExecuteOntapPatchResponse",
-}) as any as S.Schema<ExecuteOntapPatchResponse>;
+export const ExecuteOntapPatchResponse =
+  ExecuteOntapDeleteResponse as any as S.Schema<ExecuteOntapPatchResponse>;
 
 /** Request message for `ExecuteOntapPost` API. */
 export type ExecuteOntapPostRequest = ExecuteOntapPatchRequest;
@@ -2372,11 +2362,8 @@ export interface ExecuteOntapPostResponse {
   /** The raw `JSON` body of the response. */
   body?: DocumentMap;
 }
-export const ExecuteOntapPostResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(DocumentMap),
-  }),
-).annotate({ identifier: "ExecuteOntapPostResponse" }) as any as S.Schema<ExecuteOntapPostResponse>;
+export const ExecuteOntapPostResponse =
+  ExecuteOntapGetResponse as any as S.Schema<ExecuteOntapPostResponse>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */

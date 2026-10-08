@@ -473,13 +473,7 @@ export interface CreateGrantResponse {
   Status?: GrantStatus;
   Version?: string;
 }
-export const CreateGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GrantArn: S.optional(S.String),
-    Status: S.optional(GrantStatus),
-    Version: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "CreateGrantResponse" }) as any as S.Schema<CreateGrantResponse>;
+export const CreateGrantResponse = AcceptGrantResponse as any as S.Schema<CreateGrantResponse>;
 export type StatusReasonMessage = string;
 export type ActivationOverrideBehavior =
   | "DISTRIBUTED_GRANTS_ONLY"
@@ -694,7 +688,8 @@ export const LicenseAssetGroupConfigurationList = /*@__PURE__*/ S.Array(
   LicenseAssetGroupConfiguration,
 );
 export type LicenseAssetRulesetArnList = string[];
-export const LicenseAssetRulesetArnList = /*@__PURE__*/ S.Array(S.String);
+export const LicenseAssetRulesetArnList =
+  PrincipalArnList as any as S.Schema<LicenseAssetRulesetArnList>;
 export interface LicenseAssetGroupProperty {
   Key: string;
   Value: string;
@@ -738,7 +733,7 @@ export const CreateLicenseAssetGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLicenseAssetGroupResponse",
 }) as any as S.Schema<CreateLicenseAssetGroupResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = PrincipalArnList as any as S.Schema<StringList>;
 export interface MatchingRuleStatement {
   KeyToMatch: string;
   Constraint: string;
@@ -772,12 +767,7 @@ export interface OrRuleStatement {
   MatchingRuleStatements?: MatchingRuleStatement[];
   ScriptRuleStatements?: ScriptRuleStatement[];
 }
-export const OrRuleStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MatchingRuleStatements: S.optional(MatchingRuleStatementList),
-    ScriptRuleStatements: S.optional(ScriptRuleStatementList),
-  }),
-).annotate({ identifier: "OrRuleStatement" }) as any as S.Schema<OrRuleStatement>;
+export const OrRuleStatement = AndRuleStatement as any as S.Schema<OrRuleStatement>;
 export interface LicenseConfigurationRuleStatement {
   AndRuleStatement?: AndRuleStatement;
   OrRuleStatement?: OrRuleStatement;
@@ -982,7 +972,7 @@ export const ReportType = S.String;
 export type ReportTypeList = ReportType[];
 export const ReportTypeList = /*@__PURE__*/ S.Array(ReportType);
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = PrincipalArnList as any as S.Schema<ArnList>;
 export interface ReportContext {
   licenseConfigurationArns?: string[];
   licenseAssetGroupArns?: string[];
@@ -1087,7 +1077,7 @@ export const CreateLicenseVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLicenseVersionResponse",
 }) as any as S.Schema<CreateLicenseVersionResponse>;
 export type MaxSize3StringList = string[];
-export const MaxSize3StringList = /*@__PURE__*/ S.Array(S.String);
+export const MaxSize3StringList = PrincipalArnList as any as S.Schema<MaxSize3StringList>;
 export interface CreateTokenRequest {
   LicenseArn: string;
   RoleArns?: string[];
@@ -1135,13 +1125,7 @@ export interface DeleteGrantResponse {
   Status?: GrantStatus;
   Version?: string;
 }
-export const DeleteGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GrantArn: S.optional(S.String),
-    Status: S.optional(GrantStatus),
-    Version: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "DeleteGrantResponse" }) as any as S.Schema<DeleteGrantResponse>;
+export const DeleteGrantResponse = AcceptGrantResponse as any as S.Schema<DeleteGrantResponse>;
 export interface DeleteLicenseRequest {
   LicenseArn: string;
   SourceVersion: string;
@@ -1211,11 +1195,8 @@ export const DeleteLicenseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLicenseConfigurationRequest",
 }) as any as S.Schema<DeleteLicenseConfigurationRequest>;
 export interface DeleteLicenseConfigurationResponse {}
-export const DeleteLicenseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteLicenseConfigurationResponse",
-}) as any as S.Schema<DeleteLicenseConfigurationResponse>;
+export const DeleteLicenseConfigurationResponse =
+  DeleteLicenseAssetRulesetResponse as any as S.Schema<DeleteLicenseConfigurationResponse>;
 export interface DeleteLicenseManagerReportGeneratorRequest {
   LicenseManagerReportGeneratorArn: string;
 }
@@ -1227,11 +1208,8 @@ export const DeleteLicenseManagerReportGeneratorRequest = /*@__PURE__*/ S.suspen
   identifier: "DeleteLicenseManagerReportGeneratorRequest",
 }) as any as S.Schema<DeleteLicenseManagerReportGeneratorRequest>;
 export interface DeleteLicenseManagerReportGeneratorResponse {}
-export const DeleteLicenseManagerReportGeneratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteLicenseManagerReportGeneratorResponse",
-}) as any as S.Schema<DeleteLicenseManagerReportGeneratorResponse>;
+export const DeleteLicenseManagerReportGeneratorResponse =
+  DeleteLicenseAssetRulesetResponse as any as S.Schema<DeleteLicenseManagerReportGeneratorResponse>;
 export interface DeleteTokenRequest {
   TokenId: string;
 }
@@ -2088,14 +2066,8 @@ export interface ListLicenseConfigurationsForOrganizationResponse {
   LicenseConfigurations?: LicenseConfiguration[];
   NextToken?: string;
 }
-export const ListLicenseConfigurationsForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LicenseConfigurations: S.optional(LicenseConfigurations),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListLicenseConfigurationsForOrganizationResponse",
-}) as any as S.Schema<ListLicenseConfigurationsForOrganizationResponse>;
+export const ListLicenseConfigurationsForOrganizationResponse =
+  ListLicenseConfigurationsResponse as any as S.Schema<ListLicenseConfigurationsForOrganizationResponse>;
 export interface ListLicenseConversionTasksRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2277,11 +2249,8 @@ export interface ListReceivedGrantsResponse {
   Grants?: Grant[];
   NextToken?: string;
 }
-export const ListReceivedGrantsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Grants: S.optional(GrantList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListReceivedGrantsResponse",
-}) as any as S.Schema<ListReceivedGrantsResponse>;
+export const ListReceivedGrantsResponse =
+  ListDistributedGrantsResponse as any as S.Schema<ListReceivedGrantsResponse>;
 export interface ListReceivedGrantsForOrganizationRequest {
   LicenseArn: string;
   Filters?: Filter[];
@@ -2302,11 +2271,8 @@ export interface ListReceivedGrantsForOrganizationResponse {
   Grants?: Grant[];
   NextToken?: string;
 }
-export const ListReceivedGrantsForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Grants: S.optional(GrantList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListReceivedGrantsForOrganizationResponse",
-}) as any as S.Schema<ListReceivedGrantsForOrganizationResponse>;
+export const ListReceivedGrantsForOrganizationResponse =
+  ListDistributedGrantsResponse as any as S.Schema<ListReceivedGrantsForOrganizationResponse>;
 export interface ListReceivedLicensesRequest {
   LicenseArns?: string[];
   Filters?: Filter[];
@@ -2412,11 +2378,8 @@ export interface ListReceivedLicensesForOrganizationResponse {
   Licenses?: GrantedLicense[];
   NextToken?: string;
 }
-export const ListReceivedLicensesForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Licenses: S.optional(GrantedLicenseList), NextToken: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ListReceivedLicensesForOrganizationResponse",
-}) as any as S.Schema<ListReceivedLicensesForOrganizationResponse>;
+export const ListReceivedLicensesForOrganizationResponse =
+  ListReceivedLicensesResponse as any as S.Schema<ListReceivedLicensesForOrganizationResponse>;
 export type InventoryFilterCondition =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -2617,13 +2580,7 @@ export interface RejectGrantResponse {
   Status?: GrantStatus;
   Version?: string;
 }
-export const RejectGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GrantArn: S.optional(S.String),
-    Status: S.optional(GrantStatus),
-    Version: S.optional(S.String),
-  }).pipe(ns),
-).annotate({ identifier: "RejectGrantResponse" }) as any as S.Schema<RejectGrantResponse>;
+export const RejectGrantResponse = AcceptGrantResponse as any as S.Schema<RejectGrantResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -2634,11 +2591,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteTokenResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = PrincipalArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2649,9 +2604,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteTokenResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLicenseAssetGroupRequest {
   Name?: string;
   Description?: string;
@@ -2680,11 +2633,8 @@ export interface UpdateLicenseAssetGroupResponse {
   LicenseAssetGroupArn: string;
   Status: string;
 }
-export const UpdateLicenseAssetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LicenseAssetGroupArn: S.String, Status: S.String }).pipe(ns),
-).annotate({
-  identifier: "UpdateLicenseAssetGroupResponse",
-}) as any as S.Schema<UpdateLicenseAssetGroupResponse>;
+export const UpdateLicenseAssetGroupResponse =
+  CreateLicenseAssetGroupResponse as any as S.Schema<UpdateLicenseAssetGroupResponse>;
 export interface UpdateLicenseAssetRulesetRequest {
   Name?: string;
   Description?: string;
@@ -2706,11 +2656,8 @@ export const UpdateLicenseAssetRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLicenseAssetRulesetResponse {
   LicenseAssetRulesetArn: string;
 }
-export const UpdateLicenseAssetRulesetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LicenseAssetRulesetArn: S.String }).pipe(ns),
-).annotate({
-  identifier: "UpdateLicenseAssetRulesetResponse",
-}) as any as S.Schema<UpdateLicenseAssetRulesetResponse>;
+export const UpdateLicenseAssetRulesetResponse =
+  CreateLicenseAssetRulesetResponse as any as S.Schema<UpdateLicenseAssetRulesetResponse>;
 export type LicenseConfigurationStatus = "AVAILABLE" | "DISABLED" | (string & {});
 export const LicenseConfigurationStatus = S.String;
 
@@ -2743,11 +2690,8 @@ export const UpdateLicenseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLicenseConfigurationRequest",
 }) as any as S.Schema<UpdateLicenseConfigurationRequest>;
 export interface UpdateLicenseConfigurationResponse {}
-export const UpdateLicenseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateLicenseConfigurationResponse",
-}) as any as S.Schema<UpdateLicenseConfigurationResponse>;
+export const UpdateLicenseConfigurationResponse =
+  DeleteLicenseAssetRulesetResponse as any as S.Schema<UpdateLicenseConfigurationResponse>;
 export interface UpdateLicenseManagerReportGeneratorRequest {
   LicenseManagerReportGeneratorArn: string;
   ReportGeneratorName: string;
@@ -2771,11 +2715,8 @@ export const UpdateLicenseManagerReportGeneratorRequest = /*@__PURE__*/ S.suspen
   identifier: "UpdateLicenseManagerReportGeneratorRequest",
 }) as any as S.Schema<UpdateLicenseManagerReportGeneratorRequest>;
 export interface UpdateLicenseManagerReportGeneratorResponse {}
-export const UpdateLicenseManagerReportGeneratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateLicenseManagerReportGeneratorResponse",
-}) as any as S.Schema<UpdateLicenseManagerReportGeneratorResponse>;
+export const UpdateLicenseManagerReportGeneratorResponse =
+  DeleteLicenseAssetRulesetResponse as any as S.Schema<UpdateLicenseManagerReportGeneratorResponse>;
 export interface UpdateLicenseSpecificationsForResourceRequest {
   ResourceArn: string;
   AddLicenseSpecifications?: LicenseSpecification[];
@@ -2791,11 +2732,8 @@ export const UpdateLicenseSpecificationsForResourceRequest = /*@__PURE__*/ S.sus
   identifier: "UpdateLicenseSpecificationsForResourceRequest",
 }) as any as S.Schema<UpdateLicenseSpecificationsForResourceRequest>;
 export interface UpdateLicenseSpecificationsForResourceResponse {}
-export const UpdateLicenseSpecificationsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateLicenseSpecificationsForResourceResponse",
-}) as any as S.Schema<UpdateLicenseSpecificationsForResourceResponse>;
+export const UpdateLicenseSpecificationsForResourceResponse =
+  DeleteLicenseAssetRulesetResponse as any as S.Schema<UpdateLicenseSpecificationsForResourceResponse>;
 export interface UpdateServiceSettingsRequest {
   S3BucketArn?: string;
   SnsTopicArn?: string;
@@ -2815,11 +2753,8 @@ export const UpdateServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServiceSettingsRequest",
 }) as any as S.Schema<UpdateServiceSettingsRequest>;
 export interface UpdateServiceSettingsResponse {}
-export const UpdateServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateServiceSettingsResponse",
-}) as any as S.Schema<UpdateServiceSettingsResponse>;
+export const UpdateServiceSettingsResponse =
+  DeleteLicenseAssetRulesetResponse as any as S.Schema<UpdateServiceSettingsResponse>;
 export type Message = string;
 export type Location = string;
 export type AcceptGrantError =

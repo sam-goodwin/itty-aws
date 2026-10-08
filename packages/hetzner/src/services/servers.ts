@@ -48,9 +48,8 @@ export const CreateServerRequestVolumesList = /*@__PURE__*/ S.Array(
 
 /** Network IDs which should be attached to the Server private network interface at the creation time. */
 export type CreateServerRequestNetworksList = Array<number>;
-export const CreateServerRequestNetworksList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateServerRequestNetworksList>;
+export const CreateServerRequestNetworksList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerRequestNetworksList>;
 
 export interface CreateServerRequestFirewallsItem {
   /** ID of the Firewall. */
@@ -229,9 +228,8 @@ export const CreateServerResponseServerPublicNetIpv6 = /*@__PURE__*/ S.suspend((
 
 /** IDs of Floating IPs assigned to this Server. */
 export type CreateServerResponseServerPublicNetFloatingIpsList = Array<number>;
-export const CreateServerResponseServerPublicNetFloatingIpsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateServerResponseServerPublicNetFloatingIpsList>;
+export const CreateServerResponseServerPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerPublicNetFloatingIpsList>;
 
 /** Status of the Firewall on the Server. */
 export type CreateServerResponseServerPublicNetFirewallsItemStatus = "applied" | "pending";
@@ -583,10 +581,8 @@ export const CreateServerResponseServerImageDeprecation =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerResponseServerImageLabelsMap = { [key: string]: string | undefined };
-export const CreateServerResponseServerImageLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServerResponseServerImageLabelsMap>;
+export const CreateServerResponseServerImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<CreateServerResponseServerImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type CreateServerResponseServerImageArchitecture = "x86" | "arm";
@@ -719,31 +715,25 @@ export const CreateServerResponseServerProtection = /*@__PURE__*/ S.suspend(() =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerResponseServerLabelsMap = { [key: string]: string | undefined };
-export const CreateServerResponseServerLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServerResponseServerLabelsMap>;
+export const CreateServerResponseServerLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<CreateServerResponseServerLabelsMap>;
 
 /** IDs of Volumes assigned to this Server. */
 export type CreateServerResponseServerVolumesList = Array<number>;
-export const CreateServerResponseServerVolumesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateServerResponseServerVolumesList>;
+export const CreateServerResponseServerVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerVolumesList>;
 
 /** Load Balancer IDs assigned to the server. */
 export type CreateServerResponseServerLoadBalancersList = Array<number>;
-export const CreateServerResponseServerLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateServerResponseServerLoadBalancersList>;
+export const CreateServerResponseServerLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerLoadBalancersList>;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerResponseServerPlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const CreateServerResponseServerPlacementGroupLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServerResponseServerPlacementGroupLabelsMap>;
+export const CreateServerResponseServerPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<CreateServerResponseServerPlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type CreateServerResponseServerPlacementGroupType = "spread";
@@ -751,9 +741,8 @@ export const CreateServerResponseServerPlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type CreateServerResponseServerPlacementGroupServersList = Array<number>;
-export const CreateServerResponseServerPlacementGroupServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateServerResponseServerPlacementGroupServersList>;
+export const CreateServerResponseServerPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerPlacementGroupServersList>;
 
 /** The placement group the server is assigned to. */
 export interface CreateServerResponseServerPlacementGroup {
@@ -944,9 +933,8 @@ export const CreateServerResponseNextActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type CreateServerResponseNextActionsItemResourcesList =
   Array<CreateServerResponseActionResourcesItem>;
-export const CreateServerResponseNextActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  CreateServerResponseActionResourcesItem,
-) as any as S.Schema<CreateServerResponseNextActionsItemResourcesList>;
+export const CreateServerResponseNextActionsItemResourcesList =
+  CreateServerResponseActionResourcesList as any as S.Schema<CreateServerResponseNextActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateServerResponseNextActionsItemError = CreateServerResponseActionError;
@@ -1026,9 +1014,8 @@ export const DeleteServerResponseActionResourcesItem = CreateServerResponseActio
 /** Resources the Action relates to. */
 export type DeleteServerResponseActionResourcesList =
   Array<CreateServerResponseActionResourcesItem>;
-export const DeleteServerResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  CreateServerResponseActionResourcesItem,
-) as any as S.Schema<DeleteServerResponseActionResourcesList>;
+export const DeleteServerResponseActionResourcesList =
+  CreateServerResponseActionResourcesList as any as S.Schema<DeleteServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteServerResponseActionError = CreateServerResponseActionError;
@@ -1111,9 +1098,8 @@ export const GetServerResponseServerPublicNetIpv6DnsPtrItem =
 /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
 export type GetServerResponseServerPublicNetIpv6DnsPtrList =
   Array<CreateServerResponseServerPublicNetIpv6DnsPtrItem>;
-export const GetServerResponseServerPublicNetIpv6DnsPtrList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerPublicNetIpv6DnsPtrItem,
-) as any as S.Schema<GetServerResponseServerPublicNetIpv6DnsPtrList>;
+export const GetServerResponseServerPublicNetIpv6DnsPtrList =
+  CreateServerResponseServerPublicNetIpv6DnsPtrList as any as S.Schema<GetServerResponseServerPublicNetIpv6DnsPtrList>;
 
 /** IPv6 network assigned to this Server and its reverse DNS entry. */
 export interface GetServerResponseServerPublicNetIpv6 {
@@ -1126,22 +1112,13 @@ export interface GetServerResponseServerPublicNetIpv6 {
   /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
   dns_ptr: GetServerResponseServerPublicNetIpv6DnsPtrList | null;
 }
-export const GetServerResponseServerPublicNetIpv6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    ip: S.String,
-    blocked: S.Boolean,
-    dns_ptr: S.NullOr(GetServerResponseServerPublicNetIpv6DnsPtrList),
-  }),
-).annotate({
-  identifier: "GetServerResponseServerPublicNetIpv6",
-}) as any as S.Schema<GetServerResponseServerPublicNetIpv6>;
+export const GetServerResponseServerPublicNetIpv6 =
+  CreateServerResponseServerPublicNetIpv6 as any as S.Schema<GetServerResponseServerPublicNetIpv6>;
 
 /** IDs of Floating IPs assigned to this Server. */
 export type GetServerResponseServerPublicNetFloatingIpsList = Array<number>;
-export const GetServerResponseServerPublicNetFloatingIpsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetServerResponseServerPublicNetFloatingIpsList>;
+export const GetServerResponseServerPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerPublicNetFloatingIpsList>;
 
 /** Status of the Firewall on the Server. */
 export type GetServerResponseServerPublicNetFirewallsItemStatus = "applied" | "pending";
@@ -1193,9 +1170,8 @@ export const GetServerResponseServerPublicNet = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional IP addresses of the server on the network. */
 export type GetServerResponseServerPrivateNetItemAliasIpsList = Array<string>;
-export const GetServerResponseServerPrivateNetItemAliasIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetServerResponseServerPrivateNetItemAliasIpsList>;
+export const GetServerResponseServerPrivateNetItemAliasIpsList =
+  CreateServerResponseServerPrivateNetItemAliasIpsList as any as S.Schema<GetServerResponseServerPrivateNetItemAliasIpsList>;
 
 export interface GetServerResponseServerPrivateNetItem {
   /** The Network ID the server is attached to. */
@@ -1207,22 +1183,13 @@ export interface GetServerResponseServerPrivateNetItem {
   /** The server MAC address on the network. */
   mac_address?: string;
 }
-export const GetServerResponseServerPrivateNetItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.optional(S.Number),
-    ip: S.optional(S.String),
-    alias_ips: S.optional(GetServerResponseServerPrivateNetItemAliasIpsList),
-    mac_address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetServerResponseServerPrivateNetItem",
-}) as any as S.Schema<GetServerResponseServerPrivateNetItem>;
+export const GetServerResponseServerPrivateNetItem =
+  CreateServerResponseServerPrivateNetItem as any as S.Schema<GetServerResponseServerPrivateNetItem>;
 
 /** Private networks information. */
 export type GetServerResponseServerPrivateNetList = Array<GetServerResponseServerPrivateNetItem>;
-export const GetServerResponseServerPrivateNetList = /*@__PURE__*/ S.Array(
-  GetServerResponseServerPrivateNetItem,
-) as any as S.Schema<GetServerResponseServerPrivateNetList>;
+export const GetServerResponseServerPrivateNetList =
+  CreateServerResponseServerPrivateNetList as any as S.Schema<GetServerResponseServerPrivateNetList>;
 
 /** Hourly price in this [Location](#tag/locations). */
 export type GetServerResponseServerServerTypePricesItemPriceHourly =
@@ -1250,9 +1217,8 @@ export const GetServerResponseServerServerTypePricesItem =
 /** Price per [Location](#tag/locations). */
 export type GetServerResponseServerServerTypePricesList =
   Array<CreateServerResponseServerServerTypePricesItem>;
-export const GetServerResponseServerServerTypePricesList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerServerTypePricesItem,
-) as any as S.Schema<GetServerResponseServerServerTypePricesList>;
+export const GetServerResponseServerServerTypePricesList =
+  CreateServerResponseServerServerTypePricesList as any as S.Schema<GetServerResponseServerServerTypePricesList>;
 
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type GetServerResponseServerServerTypeStorageType = "local" | "network";
@@ -1287,9 +1253,8 @@ export const GetServerResponseServerServerTypeLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type GetServerResponseServerServerTypeLocationsList =
   Array<CreateServerResponseServerServerTypeLocationsItem>;
-export const GetServerResponseServerServerTypeLocationsList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerServerTypeLocationsItem,
-) as any as S.Schema<GetServerResponseServerServerTypeLocationsList>;
+export const GetServerResponseServerServerTypeLocationsList =
+  CreateServerResponseServerServerTypeLocationsList as any as S.Schema<GetServerResponseServerServerTypeLocationsList>;
 
 export interface GetServerResponseServerServerType {
   /** ID of the Server type. */
@@ -1382,10 +1347,8 @@ export const GetServerResponseServerImageDeprecation =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetServerResponseServerImageLabelsMap = { [key: string]: string | undefined };
-export const GetServerResponseServerImageLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServerResponseServerImageLabelsMap>;
+export const GetServerResponseServerImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<GetServerResponseServerImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type GetServerResponseServerImageArchitecture = "x86" | "arm";
@@ -1505,29 +1468,23 @@ export const GetServerResponseServerProtection = CreateServerResponseServerProte
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetServerResponseServerLabelsMap = { [key: string]: string | undefined };
-export const GetServerResponseServerLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServerResponseServerLabelsMap>;
+export const GetServerResponseServerLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<GetServerResponseServerLabelsMap>;
 
 /** IDs of Volumes assigned to this Server. */
 export type GetServerResponseServerVolumesList = Array<number>;
-export const GetServerResponseServerVolumesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetServerResponseServerVolumesList>;
+export const GetServerResponseServerVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerVolumesList>;
 
 /** Load Balancer IDs assigned to the server. */
 export type GetServerResponseServerLoadBalancersList = Array<number>;
-export const GetServerResponseServerLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetServerResponseServerLoadBalancersList>;
+export const GetServerResponseServerLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerLoadBalancersList>;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetServerResponseServerPlacementGroupLabelsMap = { [key: string]: string | undefined };
-export const GetServerResponseServerPlacementGroupLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServerResponseServerPlacementGroupLabelsMap>;
+export const GetServerResponseServerPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<GetServerResponseServerPlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type GetServerResponseServerPlacementGroupType = "spread";
@@ -1535,9 +1492,8 @@ export const GetServerResponseServerPlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type GetServerResponseServerPlacementGroupServersList = Array<number>;
-export const GetServerResponseServerPlacementGroupServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetServerResponseServerPlacementGroupServersList>;
+export const GetServerResponseServerPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerPlacementGroupServersList>;
 
 /** The placement group the server is assigned to. */
 export interface GetServerResponseServerPlacementGroup {
@@ -1828,9 +1784,8 @@ export const ListServersResponseServersItemPublicNetIpv6DnsPtrItem =
 /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
 export type ListServersResponseServersItemPublicNetIpv6DnsPtrList =
   Array<CreateServerResponseServerPublicNetIpv6DnsPtrItem>;
-export const ListServersResponseServersItemPublicNetIpv6DnsPtrList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerPublicNetIpv6DnsPtrItem,
-) as any as S.Schema<ListServersResponseServersItemPublicNetIpv6DnsPtrList>;
+export const ListServersResponseServersItemPublicNetIpv6DnsPtrList =
+  CreateServerResponseServerPublicNetIpv6DnsPtrList as any as S.Schema<ListServersResponseServersItemPublicNetIpv6DnsPtrList>;
 
 /** IPv6 network assigned to this Server and its reverse DNS entry. */
 export interface ListServersResponseServersItemPublicNetIpv6 {
@@ -1843,22 +1798,13 @@ export interface ListServersResponseServersItemPublicNetIpv6 {
   /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
   dns_ptr: ListServersResponseServersItemPublicNetIpv6DnsPtrList | null;
 }
-export const ListServersResponseServersItemPublicNetIpv6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    ip: S.String,
-    blocked: S.Boolean,
-    dns_ptr: S.NullOr(ListServersResponseServersItemPublicNetIpv6DnsPtrList),
-  }),
-).annotate({
-  identifier: "ListServersResponseServersItemPublicNetIpv6",
-}) as any as S.Schema<ListServersResponseServersItemPublicNetIpv6>;
+export const ListServersResponseServersItemPublicNetIpv6 =
+  CreateServerResponseServerPublicNetIpv6 as any as S.Schema<ListServersResponseServersItemPublicNetIpv6>;
 
 /** IDs of Floating IPs assigned to this Server. */
 export type ListServersResponseServersItemPublicNetFloatingIpsList = Array<number>;
-export const ListServersResponseServersItemPublicNetFloatingIpsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListServersResponseServersItemPublicNetFloatingIpsList>;
+export const ListServersResponseServersItemPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemPublicNetFloatingIpsList>;
 
 /** Status of the Firewall on the Server. */
 export type ListServersResponseServersItemPublicNetFirewallsItemStatus = "applied" | "pending";
@@ -1910,9 +1856,8 @@ export const ListServersResponseServersItemPublicNet = /*@__PURE__*/ S.suspend((
 
 /** Additional IP addresses of the server on the network. */
 export type ListServersResponseServersItemPrivateNetItemAliasIpsList = Array<string>;
-export const ListServersResponseServersItemPrivateNetItemAliasIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListServersResponseServersItemPrivateNetItemAliasIpsList>;
+export const ListServersResponseServersItemPrivateNetItemAliasIpsList =
+  CreateServerResponseServerPrivateNetItemAliasIpsList as any as S.Schema<ListServersResponseServersItemPrivateNetItemAliasIpsList>;
 
 export interface ListServersResponseServersItemPrivateNetItem {
   /** The Network ID the server is attached to. */
@@ -1924,23 +1869,14 @@ export interface ListServersResponseServersItemPrivateNetItem {
   /** The server MAC address on the network. */
   mac_address?: string;
 }
-export const ListServersResponseServersItemPrivateNetItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.optional(S.Number),
-    ip: S.optional(S.String),
-    alias_ips: S.optional(ListServersResponseServersItemPrivateNetItemAliasIpsList),
-    mac_address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListServersResponseServersItemPrivateNetItem",
-}) as any as S.Schema<ListServersResponseServersItemPrivateNetItem>;
+export const ListServersResponseServersItemPrivateNetItem =
+  CreateServerResponseServerPrivateNetItem as any as S.Schema<ListServersResponseServersItemPrivateNetItem>;
 
 /** Private networks information. */
 export type ListServersResponseServersItemPrivateNetList =
   Array<ListServersResponseServersItemPrivateNetItem>;
-export const ListServersResponseServersItemPrivateNetList = /*@__PURE__*/ S.Array(
-  ListServersResponseServersItemPrivateNetItem,
-) as any as S.Schema<ListServersResponseServersItemPrivateNetList>;
+export const ListServersResponseServersItemPrivateNetList =
+  CreateServerResponseServerPrivateNetList as any as S.Schema<ListServersResponseServersItemPrivateNetList>;
 
 /** Hourly price in this [Location](#tag/locations). */
 export type ListServersResponseServersItemServerTypePricesItemPriceHourly =
@@ -1968,9 +1904,8 @@ export const ListServersResponseServersItemServerTypePricesItem =
 /** Price per [Location](#tag/locations). */
 export type ListServersResponseServersItemServerTypePricesList =
   Array<CreateServerResponseServerServerTypePricesItem>;
-export const ListServersResponseServersItemServerTypePricesList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerServerTypePricesItem,
-) as any as S.Schema<ListServersResponseServersItemServerTypePricesList>;
+export const ListServersResponseServersItemServerTypePricesList =
+  CreateServerResponseServerServerTypePricesList as any as S.Schema<ListServersResponseServersItemServerTypePricesList>;
 
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type ListServersResponseServersItemServerTypeStorageType = "local" | "network";
@@ -2005,9 +1940,8 @@ export const ListServersResponseServersItemServerTypeLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type ListServersResponseServersItemServerTypeLocationsList =
   Array<CreateServerResponseServerServerTypeLocationsItem>;
-export const ListServersResponseServersItemServerTypeLocationsList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerServerTypeLocationsItem,
-) as any as S.Schema<ListServersResponseServersItemServerTypeLocationsList>;
+export const ListServersResponseServersItemServerTypeLocationsList =
+  CreateServerResponseServerServerTypeLocationsList as any as S.Schema<ListServersResponseServersItemServerTypeLocationsList>;
 
 export interface ListServersResponseServersItemServerType {
   /** ID of the Server type. */
@@ -2104,10 +2038,8 @@ export const ListServersResponseServersItemImageDeprecation =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListServersResponseServersItemImageLabelsMap = { [key: string]: string | undefined };
-export const ListServersResponseServersItemImageLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListServersResponseServersItemImageLabelsMap>;
+export const ListServersResponseServersItemImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<ListServersResponseServersItemImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type ListServersResponseServersItemImageArchitecture = "x86" | "arm";
@@ -2228,31 +2160,25 @@ export const ListServersResponseServersItemProtection = CreateServerResponseServ
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListServersResponseServersItemLabelsMap = { [key: string]: string | undefined };
-export const ListServersResponseServersItemLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListServersResponseServersItemLabelsMap>;
+export const ListServersResponseServersItemLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<ListServersResponseServersItemLabelsMap>;
 
 /** IDs of Volumes assigned to this Server. */
 export type ListServersResponseServersItemVolumesList = Array<number>;
-export const ListServersResponseServersItemVolumesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListServersResponseServersItemVolumesList>;
+export const ListServersResponseServersItemVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemVolumesList>;
 
 /** Load Balancer IDs assigned to the server. */
 export type ListServersResponseServersItemLoadBalancersList = Array<number>;
-export const ListServersResponseServersItemLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListServersResponseServersItemLoadBalancersList>;
+export const ListServersResponseServersItemLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemLoadBalancersList>;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListServersResponseServersItemPlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const ListServersResponseServersItemPlacementGroupLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListServersResponseServersItemPlacementGroupLabelsMap>;
+export const ListServersResponseServersItemPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<ListServersResponseServersItemPlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type ListServersResponseServersItemPlacementGroupType = "spread";
@@ -2260,9 +2186,8 @@ export const ListServersResponseServersItemPlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type ListServersResponseServersItemPlacementGroupServersList = Array<number>;
-export const ListServersResponseServersItemPlacementGroupServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListServersResponseServersItemPlacementGroupServersList>;
+export const ListServersResponseServersItemPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemPlacementGroupServersList>;
 
 /** The placement group the server is assigned to. */
 export interface ListServersResponseServersItemPlacementGroup {
@@ -2422,10 +2347,8 @@ export const ListServersResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateServerRequestLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerRequestLabelsMap>;
+export const UpdateServerRequestLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerRequestLabelsMap>;
 
 export interface UpdateServerRequest {
   /** ID of the Server. */
@@ -2468,9 +2391,8 @@ export const UpdateServerResponseServerPublicNetIpv6DnsPtrItem =
 /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
 export type UpdateServerResponseServerPublicNetIpv6DnsPtrList =
   Array<CreateServerResponseServerPublicNetIpv6DnsPtrItem>;
-export const UpdateServerResponseServerPublicNetIpv6DnsPtrList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerPublicNetIpv6DnsPtrItem,
-) as any as S.Schema<UpdateServerResponseServerPublicNetIpv6DnsPtrList>;
+export const UpdateServerResponseServerPublicNetIpv6DnsPtrList =
+  CreateServerResponseServerPublicNetIpv6DnsPtrList as any as S.Schema<UpdateServerResponseServerPublicNetIpv6DnsPtrList>;
 
 /** IPv6 network assigned to this Server and its reverse DNS entry. */
 export interface UpdateServerResponseServerPublicNetIpv6 {
@@ -2483,22 +2405,13 @@ export interface UpdateServerResponseServerPublicNetIpv6 {
   /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
   dns_ptr: UpdateServerResponseServerPublicNetIpv6DnsPtrList | null;
 }
-export const UpdateServerResponseServerPublicNetIpv6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    ip: S.String,
-    blocked: S.Boolean,
-    dns_ptr: S.NullOr(UpdateServerResponseServerPublicNetIpv6DnsPtrList),
-  }),
-).annotate({
-  identifier: "UpdateServerResponseServerPublicNetIpv6",
-}) as any as S.Schema<UpdateServerResponseServerPublicNetIpv6>;
+export const UpdateServerResponseServerPublicNetIpv6 =
+  CreateServerResponseServerPublicNetIpv6 as any as S.Schema<UpdateServerResponseServerPublicNetIpv6>;
 
 /** IDs of Floating IPs assigned to this Server. */
 export type UpdateServerResponseServerPublicNetFloatingIpsList = Array<number>;
-export const UpdateServerResponseServerPublicNetFloatingIpsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateServerResponseServerPublicNetFloatingIpsList>;
+export const UpdateServerResponseServerPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerPublicNetFloatingIpsList>;
 
 /** Status of the Firewall on the Server. */
 export type UpdateServerResponseServerPublicNetFirewallsItemStatus = "applied" | "pending";
@@ -2550,9 +2463,8 @@ export const UpdateServerResponseServerPublicNet = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional IP addresses of the server on the network. */
 export type UpdateServerResponseServerPrivateNetItemAliasIpsList = Array<string>;
-export const UpdateServerResponseServerPrivateNetItemAliasIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateServerResponseServerPrivateNetItemAliasIpsList>;
+export const UpdateServerResponseServerPrivateNetItemAliasIpsList =
+  CreateServerResponseServerPrivateNetItemAliasIpsList as any as S.Schema<UpdateServerResponseServerPrivateNetItemAliasIpsList>;
 
 export interface UpdateServerResponseServerPrivateNetItem {
   /** The Network ID the server is attached to. */
@@ -2564,23 +2476,14 @@ export interface UpdateServerResponseServerPrivateNetItem {
   /** The server MAC address on the network. */
   mac_address?: string;
 }
-export const UpdateServerResponseServerPrivateNetItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    network: S.optional(S.Number),
-    ip: S.optional(S.String),
-    alias_ips: S.optional(UpdateServerResponseServerPrivateNetItemAliasIpsList),
-    mac_address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateServerResponseServerPrivateNetItem",
-}) as any as S.Schema<UpdateServerResponseServerPrivateNetItem>;
+export const UpdateServerResponseServerPrivateNetItem =
+  CreateServerResponseServerPrivateNetItem as any as S.Schema<UpdateServerResponseServerPrivateNetItem>;
 
 /** Private networks information. */
 export type UpdateServerResponseServerPrivateNetList =
   Array<UpdateServerResponseServerPrivateNetItem>;
-export const UpdateServerResponseServerPrivateNetList = /*@__PURE__*/ S.Array(
-  UpdateServerResponseServerPrivateNetItem,
-) as any as S.Schema<UpdateServerResponseServerPrivateNetList>;
+export const UpdateServerResponseServerPrivateNetList =
+  CreateServerResponseServerPrivateNetList as any as S.Schema<UpdateServerResponseServerPrivateNetList>;
 
 /** Hourly price in this [Location](#tag/locations). */
 export type UpdateServerResponseServerServerTypePricesItemPriceHourly =
@@ -2608,9 +2511,8 @@ export const UpdateServerResponseServerServerTypePricesItem =
 /** Price per [Location](#tag/locations). */
 export type UpdateServerResponseServerServerTypePricesList =
   Array<CreateServerResponseServerServerTypePricesItem>;
-export const UpdateServerResponseServerServerTypePricesList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerServerTypePricesItem,
-) as any as S.Schema<UpdateServerResponseServerServerTypePricesList>;
+export const UpdateServerResponseServerServerTypePricesList =
+  CreateServerResponseServerServerTypePricesList as any as S.Schema<UpdateServerResponseServerServerTypePricesList>;
 
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type UpdateServerResponseServerServerTypeStorageType = "local" | "network";
@@ -2645,9 +2547,8 @@ export const UpdateServerResponseServerServerTypeLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type UpdateServerResponseServerServerTypeLocationsList =
   Array<CreateServerResponseServerServerTypeLocationsItem>;
-export const UpdateServerResponseServerServerTypeLocationsList = /*@__PURE__*/ S.Array(
-  CreateServerResponseServerServerTypeLocationsItem,
-) as any as S.Schema<UpdateServerResponseServerServerTypeLocationsList>;
+export const UpdateServerResponseServerServerTypeLocationsList =
+  CreateServerResponseServerServerTypeLocationsList as any as S.Schema<UpdateServerResponseServerServerTypeLocationsList>;
 
 export interface UpdateServerResponseServerServerType {
   /** ID of the Server type. */
@@ -2741,10 +2642,8 @@ export const UpdateServerResponseServerImageDeprecation =
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerResponseServerImageLabelsMap = { [key: string]: string | undefined };
-export const UpdateServerResponseServerImageLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerResponseServerImageLabelsMap>;
+export const UpdateServerResponseServerImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerResponseServerImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type UpdateServerResponseServerImageArchitecture = "x86" | "arm";
@@ -2865,31 +2764,25 @@ export const UpdateServerResponseServerProtection = CreateServerResponseServerPr
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerResponseServerLabelsMap = { [key: string]: string | undefined };
-export const UpdateServerResponseServerLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerResponseServerLabelsMap>;
+export const UpdateServerResponseServerLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerResponseServerLabelsMap>;
 
 /** IDs of Volumes assigned to this Server. */
 export type UpdateServerResponseServerVolumesList = Array<number>;
-export const UpdateServerResponseServerVolumesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateServerResponseServerVolumesList>;
+export const UpdateServerResponseServerVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerVolumesList>;
 
 /** Load Balancer IDs assigned to the server. */
 export type UpdateServerResponseServerLoadBalancersList = Array<number>;
-export const UpdateServerResponseServerLoadBalancersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateServerResponseServerLoadBalancersList>;
+export const UpdateServerResponseServerLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerLoadBalancersList>;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerResponseServerPlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateServerResponseServerPlacementGroupLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServerResponseServerPlacementGroupLabelsMap>;
+export const UpdateServerResponseServerPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerResponseServerPlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type UpdateServerResponseServerPlacementGroupType = "spread";
@@ -2897,9 +2790,8 @@ export const UpdateServerResponseServerPlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type UpdateServerResponseServerPlacementGroupServersList = Array<number>;
-export const UpdateServerResponseServerPlacementGroupServersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateServerResponseServerPlacementGroupServersList>;
+export const UpdateServerResponseServerPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerPlacementGroupServersList>;
 
 /** The placement group the server is assigned to. */
 export interface UpdateServerResponseServerPlacementGroup {

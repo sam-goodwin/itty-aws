@@ -205,9 +205,8 @@ export const ArchiveFindingsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "ArchiveFindingsRequest" }) as any as S.Schema<ArchiveFindingsRequest>;
 export interface ArchiveFindingsResponse {}
-export const ArchiveFindingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ArchiveFindingsResponse",
-}) as any as S.Schema<ArchiveFindingsResponse>;
+export const ArchiveFindingsResponse =
+  AcceptInvitationResponse as any as S.Schema<ArchiveFindingsResponse>;
 export type RuleId = string;
 export type AssociationMode = "LIVE" | "DRY_RUN" | (string & {});
 export const AssociationMode = S.String;
@@ -301,7 +300,7 @@ export const CreateCustomDetectionRuleAssociationResponse = /*@__PURE__*/ S.susp
   identifier: "CreateCustomDetectionRuleAssociationResponse",
 }) as any as S.Schema<CreateCustomDetectionRuleAssociationResponse>;
 export type DetectionRuleAccountIds = string[];
-export const DetectionRuleAccountIds = /*@__PURE__*/ S.Array(S.String);
+export const DetectionRuleAccountIds = FindingIds as any as S.Schema<DetectionRuleAccountIds>;
 export interface CreateCustomDetectionRuleOrgConfigurationRequest {
   RuleId?: string;
   Mode?: AssociationMode;
@@ -340,11 +339,8 @@ export const CreateCustomDetectionRuleOrgConfigurationRequest = /*@__PURE__*/ S.
   identifier: "CreateCustomDetectionRuleOrgConfigurationRequest",
 }) as any as S.Schema<CreateCustomDetectionRuleOrgConfigurationRequest>;
 export interface CreateCustomDetectionRuleOrgConfigurationResponse {}
-export const CreateCustomDetectionRuleOrgConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateCustomDetectionRuleOrgConfigurationResponse",
-}) as any as S.Schema<CreateCustomDetectionRuleOrgConfigurationResponse>;
+export const CreateCustomDetectionRuleOrgConfigurationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<CreateCustomDetectionRuleOrgConfigurationResponse>;
 export type FindingPublishingFrequency =
   | "FIFTEEN_MINUTES"
   | "ONE_HOUR"
@@ -568,19 +564,19 @@ export const FilterAction = S.String;
 
 export type FilterRank = number;
 export type Eq = string[];
-export const Eq = /*@__PURE__*/ S.Array(S.String);
+export const Eq = FindingIds as any as S.Schema<Eq>;
 export type Neq = string[];
-export const Neq = /*@__PURE__*/ S.Array(S.String);
+export const Neq = FindingIds as any as S.Schema<Neq>;
 export type Equals = string[];
-export const Equals = /*@__PURE__*/ S.Array(S.String);
+export const Equals = FindingIds as any as S.Schema<Equals>;
 export type NotEquals = string[];
-export const NotEquals = /*@__PURE__*/ S.Array(S.String);
+export const NotEquals = FindingIds as any as S.Schema<NotEquals>;
 export type Match = string;
 export type Matches = string[];
-export const Matches = /*@__PURE__*/ S.Array(S.String);
+export const Matches = FindingIds as any as S.Schema<Matches>;
 export type NotMatch = string;
 export type NotMatches = string[];
-export const NotMatches = /*@__PURE__*/ S.Array(S.String);
+export const NotMatches = FindingIds as any as S.Schema<NotMatches>;
 export interface Condition {
   Eq?: string[];
   Neq?: string[];
@@ -788,7 +784,8 @@ export const CreateIPSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IpSetId: S.optional(S.String) }).pipe(S.encodeKeys({ IpSetId: "ipSetId" })),
 ).annotate({ identifier: "CreateIPSetResponse" }) as any as S.Schema<CreateIPSetResponse>;
 export type MalwareProtectionPlanObjectPrefixesList = string[];
-export const MalwareProtectionPlanObjectPrefixesList = /*@__PURE__*/ S.Array(S.String);
+export const MalwareProtectionPlanObjectPrefixesList =
+  FindingIds as any as S.Schema<MalwareProtectionPlanObjectPrefixesList>;
 export interface CreateS3BucketResource {
   BucketName?: string;
   ObjectPrefixes?: string[];
@@ -989,7 +986,7 @@ export const CreatePublishingDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePublishingDestinationResponse>;
 export type FindingType = string;
 export type FindingTypes = string[];
-export const FindingTypes = /*@__PURE__*/ S.Array(S.String);
+export const FindingTypes = FindingIds as any as S.Schema<FindingTypes>;
 export interface CreateSampleFindingsRequest {
   DetectorId: string;
   FindingTypes?: string[];
@@ -1014,9 +1011,8 @@ export const CreateSampleFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSampleFindingsRequest",
 }) as any as S.Schema<CreateSampleFindingsRequest>;
 export interface CreateSampleFindingsResponse {}
-export const CreateSampleFindingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSampleFindingsResponse",
-}) as any as S.Schema<CreateSampleFindingsResponse>;
+export const CreateSampleFindingsResponse =
+  AcceptInvitationResponse as any as S.Schema<CreateSampleFindingsResponse>;
 export type ThreatEntitySetFormat =
   | "TXT"
   | "STIX"
@@ -1214,7 +1210,7 @@ export const CreateTrustedEntitySetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTrustedEntitySetResponse",
 }) as any as S.Schema<CreateTrustedEntitySetResponse>;
 export type AccountIds = string[];
-export const AccountIds = /*@__PURE__*/ S.Array(S.String);
+export const AccountIds = FindingIds as any as S.Schema<AccountIds>;
 export interface DeclineInvitationsRequest {
   AccountIds?: string[];
 }
@@ -1262,11 +1258,8 @@ export const DeleteCustomDetectionRuleAssociationRequest = /*@__PURE__*/ S.suspe
   identifier: "DeleteCustomDetectionRuleAssociationRequest",
 }) as any as S.Schema<DeleteCustomDetectionRuleAssociationRequest>;
 export interface DeleteCustomDetectionRuleAssociationResponse {}
-export const DeleteCustomDetectionRuleAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomDetectionRuleAssociationResponse",
-}) as any as S.Schema<DeleteCustomDetectionRuleAssociationResponse>;
+export const DeleteCustomDetectionRuleAssociationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DeleteCustomDetectionRuleAssociationResponse>;
 export interface DeleteCustomDetectionRuleOrgConfigurationRequest {
   RuleId: string;
   Mode?: AssociationMode;
@@ -1289,11 +1282,8 @@ export const DeleteCustomDetectionRuleOrgConfigurationRequest = /*@__PURE__*/ S.
   identifier: "DeleteCustomDetectionRuleOrgConfigurationRequest",
 }) as any as S.Schema<DeleteCustomDetectionRuleOrgConfigurationRequest>;
 export interface DeleteCustomDetectionRuleOrgConfigurationResponse {}
-export const DeleteCustomDetectionRuleOrgConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomDetectionRuleOrgConfigurationResponse",
-}) as any as S.Schema<DeleteCustomDetectionRuleOrgConfigurationResponse>;
+export const DeleteCustomDetectionRuleOrgConfigurationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DeleteCustomDetectionRuleOrgConfigurationResponse>;
 export interface DeleteDetectorRequest {
   DetectorId: string;
 }
@@ -1310,9 +1300,8 @@ export const DeleteDetectorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDetectorRequest" }) as any as S.Schema<DeleteDetectorRequest>;
 export interface DeleteDetectorResponse {}
-export const DeleteDetectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDetectorResponse",
-}) as any as S.Schema<DeleteDetectorResponse>;
+export const DeleteDetectorResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteDetectorResponse>;
 export interface DeleteFilterRequest {
   DetectorId: string;
   FilterName: string;
@@ -1333,9 +1322,8 @@ export const DeleteFilterRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFilterRequest" }) as any as S.Schema<DeleteFilterRequest>;
 export interface DeleteFilterResponse {}
-export const DeleteFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFilterResponse",
-}) as any as S.Schema<DeleteFilterResponse>;
+export const DeleteFilterResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteFilterResponse>;
 export interface DeleteInvitationsRequest {
   AccountIds?: string[];
 }
@@ -1349,13 +1337,8 @@ export const DeleteInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInvitationsResponse {
   UnprocessedAccounts: (UnprocessedAccount & { AccountId: AccountId; Result: string })[];
 }
-export const DeleteInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(UnprocessedAccounts) }).pipe(
-    S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-  ),
-).annotate({
-  identifier: "DeleteInvitationsResponse",
-}) as any as S.Schema<DeleteInvitationsResponse>;
+export const DeleteInvitationsResponse =
+  DeclineInvitationsResponse as any as S.Schema<DeleteInvitationsResponse>;
 export interface DeleteIPSetRequest {
   DetectorId: string;
   IpSetId?: string;
@@ -1376,9 +1359,7 @@ export const DeleteIPSetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteIPSetRequest" }) as any as S.Schema<DeleteIPSetRequest>;
 export interface DeleteIPSetResponse {}
-export const DeleteIPSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIPSetResponse",
-}) as any as S.Schema<DeleteIPSetResponse>;
+export const DeleteIPSetResponse = AcceptInvitationResponse as any as S.Schema<DeleteIPSetResponse>;
 export interface DeleteMalwareProtectionPlanRequest {
   MalwareProtectionPlanId?: string;
 }
@@ -1399,11 +1380,8 @@ export const DeleteMalwareProtectionPlanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteMalwareProtectionPlanRequest",
 }) as any as S.Schema<DeleteMalwareProtectionPlanRequest>;
 export interface DeleteMalwareProtectionPlanResponse {}
-export const DeleteMalwareProtectionPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMalwareProtectionPlanResponse",
-}) as any as S.Schema<DeleteMalwareProtectionPlanResponse>;
+export const DeleteMalwareProtectionPlanResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DeleteMalwareProtectionPlanResponse>;
 export interface DeleteMembersRequest {
   DetectorId: string;
   AccountIds?: string[];
@@ -1428,11 +1406,8 @@ export const DeleteMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMembersResponse {
   UnprocessedAccounts: (UnprocessedAccount & { AccountId: AccountId; Result: string })[];
 }
-export const DeleteMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(UnprocessedAccounts) }).pipe(
-    S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-  ),
-).annotate({ identifier: "DeleteMembersResponse" }) as any as S.Schema<DeleteMembersResponse>;
+export const DeleteMembersResponse =
+  CreateMembersResponse as any as S.Schema<DeleteMembersResponse>;
 export interface DeletePublishingDestinationRequest {
   DetectorId: string;
   DestinationId: string;
@@ -1458,11 +1433,8 @@ export const DeletePublishingDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePublishingDestinationRequest",
 }) as any as S.Schema<DeletePublishingDestinationRequest>;
 export interface DeletePublishingDestinationResponse {}
-export const DeletePublishingDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePublishingDestinationResponse",
-}) as any as S.Schema<DeletePublishingDestinationResponse>;
+export const DeletePublishingDestinationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DeletePublishingDestinationResponse>;
 export interface DeleteThreatEntitySetRequest {
   DetectorId: string;
   ThreatEntitySetId?: string;
@@ -1488,9 +1460,8 @@ export const DeleteThreatEntitySetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteThreatEntitySetRequest",
 }) as any as S.Schema<DeleteThreatEntitySetRequest>;
 export interface DeleteThreatEntitySetResponse {}
-export const DeleteThreatEntitySetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteThreatEntitySetResponse",
-}) as any as S.Schema<DeleteThreatEntitySetResponse>;
+export const DeleteThreatEntitySetResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteThreatEntitySetResponse>;
 export interface DeleteThreatIntelSetRequest {
   DetectorId: string;
   ThreatIntelSetId: string;
@@ -1513,9 +1484,8 @@ export const DeleteThreatIntelSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteThreatIntelSetRequest",
 }) as any as S.Schema<DeleteThreatIntelSetRequest>;
 export interface DeleteThreatIntelSetResponse {}
-export const DeleteThreatIntelSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteThreatIntelSetResponse",
-}) as any as S.Schema<DeleteThreatIntelSetResponse>;
+export const DeleteThreatIntelSetResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteThreatIntelSetResponse>;
 export interface DeleteTrustedEntitySetRequest {
   DetectorId: string;
   TrustedEntitySetId: string;
@@ -1541,9 +1511,8 @@ export const DeleteTrustedEntitySetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTrustedEntitySetRequest",
 }) as any as S.Schema<DeleteTrustedEntitySetRequest>;
 export interface DeleteTrustedEntitySetResponse {}
-export const DeleteTrustedEntitySetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrustedEntitySetResponse",
-}) as any as S.Schema<DeleteTrustedEntitySetResponse>;
+export const DeleteTrustedEntitySetResponse =
+  AcceptInvitationResponse as any as S.Schema<DeleteTrustedEntitySetResponse>;
 export type IntegerValueWithMax = number;
 export type CriterionKey =
   | "EC2_INSTANCE_ARN"
@@ -1820,11 +1789,8 @@ export const OrganizationS3LogsConfigurationResult = /*@__PURE__*/ S.suspend(() 
 export interface OrganizationKubernetesAuditLogsConfigurationResult {
   AutoEnable?: boolean;
 }
-export const OrganizationKubernetesAuditLogsConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoEnable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ AutoEnable: "autoEnable" })),
-).annotate({
-  identifier: "OrganizationKubernetesAuditLogsConfigurationResult",
-}) as any as S.Schema<OrganizationKubernetesAuditLogsConfigurationResult>;
+export const OrganizationKubernetesAuditLogsConfigurationResult =
+  OrganizationS3LogsConfigurationResult as any as S.Schema<OrganizationKubernetesAuditLogsConfigurationResult>;
 export interface OrganizationKubernetesConfigurationResult {
   AuditLogs?: OrganizationKubernetesAuditLogsConfigurationResult;
 }
@@ -1838,11 +1804,8 @@ export const OrganizationKubernetesConfigurationResult = /*@__PURE__*/ S.suspend
 export interface OrganizationEbsVolumesResult {
   AutoEnable?: boolean;
 }
-export const OrganizationEbsVolumesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoEnable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ AutoEnable: "autoEnable" })),
-).annotate({
-  identifier: "OrganizationEbsVolumesResult",
-}) as any as S.Schema<OrganizationEbsVolumesResult>;
+export const OrganizationEbsVolumesResult =
+  OrganizationS3LogsConfigurationResult as any as S.Schema<OrganizationEbsVolumesResult>;
 export interface OrganizationScanEc2InstanceWithFindingsResult {
   EbsVolumes?: OrganizationEbsVolumesResult;
 }
@@ -2055,11 +2018,8 @@ export const DisableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DisableOrganizationAdminAccountRequest",
 }) as any as S.Schema<DisableOrganizationAdminAccountRequest>;
 export interface DisableOrganizationAdminAccountResponse {}
-export const DisableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableOrganizationAdminAccountResponse",
-}) as any as S.Schema<DisableOrganizationAdminAccountResponse>;
+export const DisableOrganizationAdminAccountResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisableOrganizationAdminAccountResponse>;
 export interface DisassociateFromAdministratorAccountRequest {
   DetectorId: string;
 }
@@ -2078,11 +2038,8 @@ export const DisassociateFromAdministratorAccountRequest = /*@__PURE__*/ S.suspe
   identifier: "DisassociateFromAdministratorAccountRequest",
 }) as any as S.Schema<DisassociateFromAdministratorAccountRequest>;
 export interface DisassociateFromAdministratorAccountResponse {}
-export const DisassociateFromAdministratorAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateFromAdministratorAccountResponse",
-}) as any as S.Schema<DisassociateFromAdministratorAccountResponse>;
+export const DisassociateFromAdministratorAccountResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisassociateFromAdministratorAccountResponse>;
 export interface DisassociateFromMasterAccountRequest {
   DetectorId: string;
 }
@@ -2101,11 +2058,8 @@ export const DisassociateFromMasterAccountRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DisassociateFromMasterAccountRequest",
 }) as any as S.Schema<DisassociateFromMasterAccountRequest>;
 export interface DisassociateFromMasterAccountResponse {}
-export const DisassociateFromMasterAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateFromMasterAccountResponse",
-}) as any as S.Schema<DisassociateFromMasterAccountResponse>;
+export const DisassociateFromMasterAccountResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<DisassociateFromMasterAccountResponse>;
 export interface DisassociateMembersRequest {
   DetectorId: string;
   AccountIds?: string[];
@@ -2132,13 +2086,8 @@ export const DisassociateMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateMembersResponse {
   UnprocessedAccounts: (UnprocessedAccount & { AccountId: AccountId; Result: string })[];
 }
-export const DisassociateMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(UnprocessedAccounts) }).pipe(
-    S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-  ),
-).annotate({
-  identifier: "DisassociateMembersResponse",
-}) as any as S.Schema<DisassociateMembersResponse>;
+export const DisassociateMembersResponse =
+  DeclineInvitationsResponse as any as S.Schema<DisassociateMembersResponse>;
 export interface EnableOrganizationAdminAccountRequest {
   AdminAccountId?: string;
 }
@@ -2150,11 +2099,8 @@ export const EnableOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "EnableOrganizationAdminAccountRequest",
 }) as any as S.Schema<EnableOrganizationAdminAccountRequest>;
 export interface EnableOrganizationAdminAccountResponse {}
-export const EnableOrganizationAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableOrganizationAdminAccountResponse",
-}) as any as S.Schema<EnableOrganizationAdminAccountResponse>;
+export const EnableOrganizationAdminAccountResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<EnableOrganizationAdminAccountResponse>;
 export interface GetAdministratorAccountRequest {
   DetectorId: string;
 }
@@ -2578,35 +2524,23 @@ export const CloudTrailConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 export interface DNSLogsConfigurationResult {
   Status?: DataSourceStatus;
 }
-export const DNSLogsConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(DataSourceStatus) }).pipe(S.encodeKeys({ Status: "status" })),
-).annotate({
-  identifier: "DNSLogsConfigurationResult",
-}) as any as S.Schema<DNSLogsConfigurationResult>;
+export const DNSLogsConfigurationResult =
+  CloudTrailConfigurationResult as any as S.Schema<DNSLogsConfigurationResult>;
 export interface FlowLogsConfigurationResult {
   Status?: DataSourceStatus;
 }
-export const FlowLogsConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(DataSourceStatus) }).pipe(S.encodeKeys({ Status: "status" })),
-).annotate({
-  identifier: "FlowLogsConfigurationResult",
-}) as any as S.Schema<FlowLogsConfigurationResult>;
+export const FlowLogsConfigurationResult =
+  CloudTrailConfigurationResult as any as S.Schema<FlowLogsConfigurationResult>;
 export interface S3LogsConfigurationResult {
   Status?: DataSourceStatus;
 }
-export const S3LogsConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(DataSourceStatus) }).pipe(S.encodeKeys({ Status: "status" })),
-).annotate({
-  identifier: "S3LogsConfigurationResult",
-}) as any as S.Schema<S3LogsConfigurationResult>;
+export const S3LogsConfigurationResult =
+  CloudTrailConfigurationResult as any as S.Schema<S3LogsConfigurationResult>;
 export interface KubernetesAuditLogsConfigurationResult {
   Status?: DataSourceStatus;
 }
-export const KubernetesAuditLogsConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.optional(DataSourceStatus) }).pipe(S.encodeKeys({ Status: "status" })),
-).annotate({
-  identifier: "KubernetesAuditLogsConfigurationResult",
-}) as any as S.Schema<KubernetesAuditLogsConfigurationResult>;
+export const KubernetesAuditLogsConfigurationResult =
+  CloudTrailConfigurationResult as any as S.Schema<KubernetesAuditLogsConfigurationResult>;
 export interface KubernetesConfigurationResult {
   AuditLogs?: KubernetesAuditLogsConfigurationResult;
 }
@@ -2910,17 +2844,7 @@ export interface BucketPolicy {
   AllowsPublicReadAccess?: boolean;
   AllowsPublicWriteAccess?: boolean;
 }
-export const BucketPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowsPublicReadAccess: S.optional(S.Boolean),
-    AllowsPublicWriteAccess: S.optional(S.Boolean),
-  }).pipe(
-    S.encodeKeys({
-      AllowsPublicReadAccess: "allowsPublicReadAccess",
-      AllowsPublicWriteAccess: "allowsPublicWriteAccess",
-    }),
-  ),
-).annotate({ identifier: "BucketPolicy" }) as any as S.Schema<BucketPolicy>;
+export const BucketPolicy = AccessControlList as any as S.Schema<BucketPolicy>;
 export interface BlockPublicAccess {
   IgnorePublicAcls?: boolean;
   RestrictPublicBuckets?: boolean;
@@ -3072,7 +2996,7 @@ export const IamInstanceProfile = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "IamInstanceProfile" }) as any as S.Schema<IamInstanceProfile>;
 export type Ipv6Addresses = string[];
-export const Ipv6Addresses = /*@__PURE__*/ S.Array(S.String);
+export const Ipv6Addresses = FindingIds as any as S.Schema<Ipv6Addresses>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface PrivateIpAddressDetails {
   PrivateDnsName?: string;
@@ -3225,9 +3149,9 @@ export const EksClusterDetails = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EksClusterDetails" }) as any as S.Schema<EksClusterDetails>;
 export type Groups = string[];
-export const Groups = /*@__PURE__*/ S.Array(S.String);
+export const Groups = FindingIds as any as S.Schema<Groups>;
 export type SessionNameList = string[];
-export const SessionNameList = /*@__PURE__*/ S.Array(S.String);
+export const SessionNameList = FindingIds as any as S.Schema<SessionNameList>;
 export interface ImpersonatedUser {
   Username?: string;
   Groups?: string[];
@@ -3483,7 +3407,7 @@ export const EcsClusterDetails = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EcsClusterDetails" }) as any as S.Schema<EcsClusterDetails>;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = FindingIds as any as S.Schema<SubnetIds>;
 export interface VpcConfig {
   SubnetIds?: string[];
   VpcId?: string;
@@ -3985,11 +3909,7 @@ export interface RemotePortDetails {
   Port?: number;
   PortName?: string;
 }
-export const RemotePortDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Port: S.optional(S.Number), PortName: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Port: "port", PortName: "portName" }),
-  ),
-).annotate({ identifier: "RemotePortDetails" }) as any as S.Schema<RemotePortDetails>;
+export const RemotePortDetails = LocalPortDetails as any as S.Schema<RemotePortDetails>;
 export interface NetworkConnectionAction {
   Blocked?: boolean;
   ConnectionDirection?: string;
@@ -4053,7 +3973,7 @@ export const PortProbeAction = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PortProbeAction" }) as any as S.Schema<PortProbeAction>;
 export type SourceIps = string[];
-export const SourceIps = /*@__PURE__*/ S.Array(S.String);
+export const SourceIps = FindingIds as any as S.Schema<SourceIps>;
 export interface KubernetesApiCallAction {
   RequestUri?: string;
   Verb?: string;
@@ -4230,7 +4150,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type ThreatNames = string[];
-export const ThreatNames = /*@__PURE__*/ S.Array(S.String);
+export const ThreatNames = FindingIds as any as S.Schema<ThreatNames>;
 export interface ThreatIntelligenceDetail {
   ThreatListName?: string;
   ThreatNames?: string[];
@@ -4269,7 +4189,7 @@ export const ServiceAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ServiceAdditionalInfo" }) as any as S.Schema<ServiceAdditionalInfo>;
 export type Sources = string[];
-export const Sources = /*@__PURE__*/ S.Array(S.String);
+export const Sources = FindingIds as any as S.Schema<Sources>;
 export interface ScannedItemCount {
   TotalGb?: number;
   Files?: number;
@@ -4507,11 +4427,11 @@ export const ProcessDetails = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ProcessDetails" }) as any as S.Schema<ProcessDetails>;
 export type FlagsList = string[];
-export const FlagsList = /*@__PURE__*/ S.Array(S.String);
+export const FlagsList = FindingIds as any as S.Schema<FlagsList>;
 export type MemoryRegionsList = string[];
-export const MemoryRegionsList = /*@__PURE__*/ S.Array(S.String);
+export const MemoryRegionsList = FindingIds as any as S.Schema<MemoryRegionsList>;
 export type RelatedFilePathsList = string[];
-export const RelatedFilePathsList = /*@__PURE__*/ S.Array(S.String);
+export const RelatedFilePathsList = FindingIds as any as S.Schema<RelatedFilePathsList>;
 export interface RuntimeContext {
   ModifyingProcess?: ProcessDetails;
   ModifiedAt?: Date;
@@ -4628,7 +4548,7 @@ export type ProfileSubtype =
 export const ProfileSubtype = S.String;
 
 export type ObservationTexts = string[];
-export const ObservationTexts = /*@__PURE__*/ S.Array(S.String);
+export const ObservationTexts = FindingIds as any as S.Schema<ObservationTexts>;
 export type ObservationNumbers = number[];
 export const ObservationNumbers = /*@__PURE__*/ S.Array(S.Number);
 export interface Observations {
@@ -4849,7 +4769,7 @@ export const PublicAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublicAccessConfiguration",
 }) as any as S.Schema<PublicAccessConfiguration>;
 export type S3ObjectUids = string[];
-export const S3ObjectUids = /*@__PURE__*/ S.Array(S.String);
+export const S3ObjectUids = FindingIds as any as S.Schema<S3ObjectUids>;
 export interface S3Bucket {
   OwnerId?: string;
   CreatedAt?: Date;
@@ -4890,7 +4810,7 @@ export const S3Bucket = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
 export type Ec2NetworkInterfaceUids = string[];
-export const Ec2NetworkInterfaceUids = /*@__PURE__*/ S.Array(S.String);
+export const Ec2NetworkInterfaceUids = FindingIds as any as S.Schema<Ec2NetworkInterfaceUids>;
 export interface Ec2Instance {
   AvailabilityZone?: string;
   ImageDescription?: string;
@@ -4989,7 +4909,7 @@ export const ClusterStatus = S.String;
 
 export type Ec2InstanceUid = string;
 export type Ec2InstanceUids = string[];
-export const Ec2InstanceUids = /*@__PURE__*/ S.Array(S.String);
+export const Ec2InstanceUids = FindingIds as any as S.Schema<Ec2InstanceUids>;
 export interface EksCluster {
   Arn?: string;
   CreatedAt?: Date;
@@ -5016,7 +4936,7 @@ export const EksCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EksCluster" }) as any as S.Schema<EksCluster>;
 export type ContainerUid = string;
 export type ContainerUids = string[];
-export const ContainerUids = /*@__PURE__*/ S.Array(S.String);
+export const ContainerUids = FindingIds as any as S.Schema<ContainerUids>;
 export type KubernetesResourcesTypes =
   | "PODS"
   | "JOBS"
@@ -5131,27 +5051,15 @@ export const Ec2LaunchTemplate = /*@__PURE__*/ S.suspend(() =>
 export interface Ec2Vpc {
   Ec2InstanceUids?: string[];
 }
-export const Ec2Vpc = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Ec2InstanceUids: S.optional(Ec2InstanceUids) }).pipe(
-    S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids" }),
-  ),
-).annotate({ identifier: "Ec2Vpc" }) as any as S.Schema<Ec2Vpc>;
+export const Ec2Vpc = IamInstanceProfileV2 as any as S.Schema<Ec2Vpc>;
 export interface Ec2Image {
   Ec2InstanceUids?: string[];
 }
-export const Ec2Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Ec2InstanceUids: S.optional(Ec2InstanceUids) }).pipe(
-    S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids" }),
-  ),
-).annotate({ identifier: "Ec2Image" }) as any as S.Schema<Ec2Image>;
+export const Ec2Image = IamInstanceProfileV2 as any as S.Schema<Ec2Image>;
 export interface CloudformationStack {
   Ec2InstanceUids?: string[];
 }
-export const CloudformationStack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Ec2InstanceUids: S.optional(Ec2InstanceUids) }).pipe(
-    S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids" }),
-  ),
-).annotate({ identifier: "CloudformationStack" }) as any as S.Schema<CloudformationStack>;
+export const CloudformationStack = IamInstanceProfileV2 as any as S.Schema<CloudformationStack>;
 export interface BedrockGuardrailResource {
   Version?: string;
   GuardrailAction?: GuardrailAction;
@@ -5347,11 +5255,11 @@ export const SignalType = S.String;
 
 export type SignalDescription = string;
 export type ResourceUids = string[];
-export const ResourceUids = /*@__PURE__*/ S.Array(S.String);
+export const ResourceUids = FindingIds as any as S.Schema<ResourceUids>;
 export type ActorIds = string[];
-export const ActorIds = /*@__PURE__*/ S.Array(S.String);
+export const ActorIds = FindingIds as any as S.Schema<ActorIds>;
 export type EndpointIds = string[];
-export const EndpointIds = /*@__PURE__*/ S.Array(S.String);
+export const EndpointIds = FindingIds as any as S.Schema<EndpointIds>;
 export type IndicatorType =
   | "SUSPICIOUS_USER_AGENT"
   | "SUSPICIOUS_NETWORK"
@@ -5380,7 +5288,7 @@ export const IndicatorType = S.String;
 
 export type IndicatorValueString = string;
 export type IndicatorValues = string[];
-export const IndicatorValues = /*@__PURE__*/ S.Array(S.String);
+export const IndicatorValues = FindingIds as any as S.Schema<IndicatorValues>;
 export type IndicatorTitle = string;
 export interface Indicator {
   Key?: IndicatorType;
@@ -5488,7 +5396,7 @@ export const Signal = /*@__PURE__*/ S.suspend(() =>
 export type Signals = Signal[];
 export const Signals = /*@__PURE__*/ S.Array(Signal);
 export type AdditionalSequenceTypes = string[];
-export const AdditionalSequenceTypes = /*@__PURE__*/ S.Array(S.String);
+export const AdditionalSequenceTypes = FindingIds as any as S.Schema<AdditionalSequenceTypes>;
 export interface Sequence {
   Uid?: string;
   Description?: string;
@@ -6612,13 +6520,9 @@ export interface ScanConditionPair {
   Key?: string;
   Value?: string;
 }
-export const ScanConditionPair = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }).pipe(
-    S.encodeKeys({ Key: "key", Value: "value" }),
-  ),
-).annotate({ identifier: "ScanConditionPair" }) as any as S.Schema<ScanConditionPair>;
+export const ScanConditionPair = Tag as any as S.Schema<ScanConditionPair>;
 export type MapEquals = ScanConditionPair[];
-export const MapEquals = /*@__PURE__*/ S.Array(ScanConditionPair);
+export const MapEquals = Tags as any as S.Schema<MapEquals>;
 export interface ScanCondition {
   MapEquals?: ScanConditionPair[];
 }
@@ -6691,21 +6595,7 @@ export interface Master {
   RelationshipStatus?: string;
   InvitedAt?: string;
 }
-export const Master = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountId: S.optional(S.String),
-    InvitationId: S.optional(S.String),
-    RelationshipStatus: S.optional(S.String),
-    InvitedAt: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AccountId: "accountId",
-      InvitationId: "invitationId",
-      RelationshipStatus: "relationshipStatus",
-      InvitedAt: "invitedAt",
-    }),
-  ),
-).annotate({ identifier: "Master" }) as any as S.Schema<Master>;
+export const Master = Administrator as any as S.Schema<Master>;
 export interface GetMasterAccountResponse {
   Master: Master;
 }
@@ -7365,7 +7255,7 @@ export const DataSource = S.String;
 export type DataSourceList = DataSource[];
 export const DataSourceList = /*@__PURE__*/ S.Array(DataSource);
 export type ResourceList = string[];
-export const ResourceList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceList = FindingIds as any as S.Schema<ResourceList>;
 export type UsageFeature =
   | "FLOW_LOGS"
   | "CLOUD_TRAIL"
@@ -7470,13 +7360,10 @@ export interface UsageTopAccountResult {
   AccountId?: string;
   Total?: Total;
 }
-export const UsageTopAccountResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String), Total: S.optional(Total) }).pipe(
-    S.encodeKeys({ AccountId: "accountId", Total: "total" }),
-  ),
-).annotate({ identifier: "UsageTopAccountResult" }) as any as S.Schema<UsageTopAccountResult>;
+export const UsageTopAccountResult = UsageAccountResult as any as S.Schema<UsageTopAccountResult>;
 export type UsageTopAccountsByFeatureList = UsageTopAccountResult[];
-export const UsageTopAccountsByFeatureList = /*@__PURE__*/ S.Array(UsageTopAccountResult);
+export const UsageTopAccountsByFeatureList =
+  UsageAccountResultList as any as S.Schema<UsageTopAccountsByFeatureList>;
 export interface UsageTopAccountsResult {
   Feature?: UsageFeature;
   Accounts?: UsageTopAccountResult[];
@@ -7594,11 +7481,8 @@ export const InviteMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InviteMembersResponse {
   UnprocessedAccounts: (UnprocessedAccount & { AccountId: AccountId; Result: string })[];
 }
-export const InviteMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(UnprocessedAccounts) }).pipe(
-    S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-  ),
-).annotate({ identifier: "InviteMembersResponse" }) as any as S.Schema<InviteMembersResponse>;
+export const InviteMembersResponse =
+  CreateMembersResponse as any as S.Schema<InviteMembersResponse>;
 export type CoverageSortKey =
   | "ACCOUNT_ID"
   | "COVERAGE_STATUS"
@@ -7694,7 +7578,7 @@ export const CoverageEksClusterDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "CoverageEksClusterDetails",
 }) as any as S.Schema<CoverageEksClusterDetails>;
 export type Issues = string[];
-export const Issues = /*@__PURE__*/ S.Array(S.String);
+export const Issues = FindingIds as any as S.Schema<Issues>;
 export interface FargateDetails {
   Issues?: string[];
   ManagementType?: ManagementType;
@@ -8000,7 +7884,7 @@ export const FilterFieldName = S.String;
 
 export type DetectionRuleFilterValue = string;
 export type DetectionRuleFilterValues = string[];
-export const DetectionRuleFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DetectionRuleFilterValues = FindingIds as any as S.Schema<DetectionRuleFilterValues>;
 export type DetectionRuleFilterCondition = "EQUALS" | "CONTAINS" | (string & {});
 export const DetectionRuleFilterCondition = S.String;
 
@@ -8126,7 +8010,7 @@ export const ListDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/detector" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListDetectorsRequest" }) as any as S.Schema<ListDetectorsRequest>;
 export type DetectorIds = string[];
-export const DetectorIds = /*@__PURE__*/ S.Array(S.String);
+export const DetectorIds = FindingIds as any as S.Schema<DetectorIds>;
 export interface ListDetectorsResponse {
   DetectorIds: string[];
   NextToken?: string;
@@ -8158,7 +8042,7 @@ export const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListFiltersRequest" }) as any as S.Schema<ListFiltersRequest>;
 export type FilterNames = string[];
-export const FilterNames = /*@__PURE__*/ S.Array(S.String);
+export const FilterNames = FindingIds as any as S.Schema<FilterNames>;
 export interface ListFiltersResponse {
   FilterNames: string[];
   NextToken?: string;
@@ -8333,21 +8217,7 @@ export interface Invitation {
   RelationshipStatus?: string;
   InvitedAt?: string;
 }
-export const Invitation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountId: S.optional(S.String),
-    InvitationId: S.optional(S.String),
-    RelationshipStatus: S.optional(S.String),
-    InvitedAt: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      AccountId: "accountId",
-      InvitationId: "invitationId",
-      RelationshipStatus: "relationshipStatus",
-      InvitedAt: "invitedAt",
-    }),
-  ),
-).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
+export const Invitation = Administrator as any as S.Schema<Invitation>;
 export type Invitations = Invitation[];
 export const Invitations = /*@__PURE__*/ S.Array(Invitation);
 export interface ListInvitationsResponse {
@@ -8381,7 +8251,7 @@ export const ListIPSetsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListIPSetsRequest" }) as any as S.Schema<ListIPSetsRequest>;
 export type IpSetIds = string[];
-export const IpSetIds = /*@__PURE__*/ S.Array(S.String);
+export const IpSetIds = FindingIds as any as S.Schema<IpSetIds>;
 export interface ListIPSetsResponse {
   IpSetIds: string[];
   NextToken?: string;
@@ -8404,13 +8274,8 @@ export const ListMalwareProtectionPlansRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MalwareProtectionPlanSummary {
   MalwareProtectionPlanId?: string;
 }
-export const MalwareProtectionPlanSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MalwareProtectionPlanId: S.optional(S.String) }).pipe(
-    S.encodeKeys({ MalwareProtectionPlanId: "malwareProtectionPlanId" }),
-  ),
-).annotate({
-  identifier: "MalwareProtectionPlanSummary",
-}) as any as S.Schema<MalwareProtectionPlanSummary>;
+export const MalwareProtectionPlanSummary =
+  CreateMalwareProtectionPlanResponse as any as S.Schema<MalwareProtectionPlanSummary>;
 export type MalwareProtectionPlansSummary = MalwareProtectionPlanSummary[];
 export const MalwareProtectionPlansSummary = /*@__PURE__*/ S.Array(MalwareProtectionPlanSummary);
 export interface ListMalwareProtectionPlansResponse {
@@ -8706,7 +8571,7 @@ export const ListThreatEntitySetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThreatEntitySetsRequest",
 }) as any as S.Schema<ListThreatEntitySetsRequest>;
 export type ThreatEntitySetIds = string[];
-export const ThreatEntitySetIds = /*@__PURE__*/ S.Array(S.String);
+export const ThreatEntitySetIds = FindingIds as any as S.Schema<ThreatEntitySetIds>;
 export interface ListThreatEntitySetsResponse {
   ThreatEntitySetIds: string[];
   NextToken?: string;
@@ -8743,7 +8608,7 @@ export const ListThreatIntelSetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThreatIntelSetsRequest",
 }) as any as S.Schema<ListThreatIntelSetsRequest>;
 export type ThreatIntelSetIds = string[];
-export const ThreatIntelSetIds = /*@__PURE__*/ S.Array(S.String);
+export const ThreatIntelSetIds = FindingIds as any as S.Schema<ThreatIntelSetIds>;
 export interface ListThreatIntelSetsResponse {
   ThreatIntelSetIds: string[];
   NextToken?: string;
@@ -8780,7 +8645,7 @@ export const ListTrustedEntitySetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTrustedEntitySetsRequest",
 }) as any as S.Schema<ListTrustedEntitySetsRequest>;
 export type TrustedEntitySetIds = string[];
-export const TrustedEntitySetIds = /*@__PURE__*/ S.Array(S.String);
+export const TrustedEntitySetIds = FindingIds as any as S.Schema<TrustedEntitySetIds>;
 export interface ListTrustedEntitySetsResponse {
   TrustedEntitySetIds: string[];
   NextToken?: string;
@@ -8827,9 +8692,8 @@ export const SendObjectMalwareScanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendObjectMalwareScanRequest",
 }) as any as S.Schema<SendObjectMalwareScanRequest>;
 export interface SendObjectMalwareScanResponse {}
-export const SendObjectMalwareScanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SendObjectMalwareScanResponse",
-}) as any as S.Schema<SendObjectMalwareScanResponse>;
+export const SendObjectMalwareScanResponse =
+  AcceptInvitationResponse as any as S.Schema<SendObjectMalwareScanResponse>;
 export type ResourceArn = string;
 export interface ContinuousScanDetails {
   StartTime?: Date;
@@ -8930,13 +8794,8 @@ export const StartMonitoringMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartMonitoringMembersResponse {
   UnprocessedAccounts: (UnprocessedAccount & { AccountId: AccountId; Result: string })[];
 }
-export const StartMonitoringMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(UnprocessedAccounts) }).pipe(
-    S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-  ),
-).annotate({
-  identifier: "StartMonitoringMembersResponse",
-}) as any as S.Schema<StartMonitoringMembersResponse>;
+export const StartMonitoringMembersResponse =
+  DeclineInvitationsResponse as any as S.Schema<StartMonitoringMembersResponse>;
 export interface StopMonitoringMembersRequest {
   DetectorId: string;
   AccountIds?: string[];
@@ -8963,13 +8822,8 @@ export const StopMonitoringMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopMonitoringMembersResponse {
   UnprocessedAccounts: (UnprocessedAccount & { AccountId: AccountId; Result: string })[];
 }
-export const StopMonitoringMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(UnprocessedAccounts) }).pipe(
-    S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-  ),
-).annotate({
-  identifier: "StopMonitoringMembersResponse",
-}) as any as S.Schema<StopMonitoringMembersResponse>;
+export const StopMonitoringMembersResponse =
+  DeclineInvitationsResponse as any as S.Schema<StopMonitoringMembersResponse>;
 export interface TagResourceRequest {
   ResourceArn?: string;
   Tags: { [key: string]: string | undefined };
@@ -8982,9 +8836,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = AcceptInvitationResponse as any as S.Schema<TagResourceResponse>;
 export interface UnarchiveFindingsRequest {
   DetectorId: string;
   FindingIds?: string[];
@@ -9007,11 +8859,10 @@ export const UnarchiveFindingsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "UnarchiveFindingsRequest" }) as any as S.Schema<UnarchiveFindingsRequest>;
 export interface UnarchiveFindingsResponse {}
-export const UnarchiveFindingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnarchiveFindingsResponse",
-}) as any as S.Schema<UnarchiveFindingsResponse>;
+export const UnarchiveFindingsResponse =
+  AcceptInvitationResponse as any as S.Schema<UnarchiveFindingsResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = FindingIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -9025,9 +8876,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AcceptInvitationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCustomDetectionRuleAssociationRequest {
   RuleId: string;
   AssociationId: string;
@@ -9057,11 +8907,8 @@ export const UpdateCustomDetectionRuleAssociationRequest = /*@__PURE__*/ S.suspe
   identifier: "UpdateCustomDetectionRuleAssociationRequest",
 }) as any as S.Schema<UpdateCustomDetectionRuleAssociationRequest>;
 export interface UpdateCustomDetectionRuleAssociationResponse {}
-export const UpdateCustomDetectionRuleAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCustomDetectionRuleAssociationResponse",
-}) as any as S.Schema<UpdateCustomDetectionRuleAssociationResponse>;
+export const UpdateCustomDetectionRuleAssociationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateCustomDetectionRuleAssociationResponse>;
 export interface UpdateCustomDetectionRuleOrgConfigurationRequest {
   RuleId: string;
   Mode?: AssociationMode;
@@ -9096,11 +8943,8 @@ export const UpdateCustomDetectionRuleOrgConfigurationRequest = /*@__PURE__*/ S.
   identifier: "UpdateCustomDetectionRuleOrgConfigurationRequest",
 }) as any as S.Schema<UpdateCustomDetectionRuleOrgConfigurationRequest>;
 export interface UpdateCustomDetectionRuleOrgConfigurationResponse {}
-export const UpdateCustomDetectionRuleOrgConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCustomDetectionRuleOrgConfigurationResponse",
-}) as any as S.Schema<UpdateCustomDetectionRuleOrgConfigurationResponse>;
+export const UpdateCustomDetectionRuleOrgConfigurationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateCustomDetectionRuleOrgConfigurationResponse>;
 export interface UpdateDetectorRequest {
   DetectorId: string;
   Enable?: boolean;
@@ -9136,9 +8980,8 @@ export const UpdateDetectorRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "UpdateDetectorRequest" }) as any as S.Schema<UpdateDetectorRequest>;
 export interface UpdateDetectorResponse {}
-export const UpdateDetectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDetectorResponse",
-}) as any as S.Schema<UpdateDetectorResponse>;
+export const UpdateDetectorResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateDetectorResponse>;
 export interface UpdateFilterRequest {
   DetectorId: string;
   FilterName: string;
@@ -9178,9 +9021,7 @@ export const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFilterResponse {
   Name: string;
 }
-export const UpdateFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }).pipe(S.encodeKeys({ Name: "name" })),
-).annotate({ identifier: "UpdateFilterResponse" }) as any as S.Schema<UpdateFilterResponse>;
+export const UpdateFilterResponse = CreateFilterResponse as any as S.Schema<UpdateFilterResponse>;
 export type Feedback = "USEFUL" | "NOT_USEFUL" | (string & {});
 export const Feedback = S.String;
 
@@ -9212,9 +9053,8 @@ export const UpdateFindingsFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateFindingsFeedbackRequest",
 }) as any as S.Schema<UpdateFindingsFeedbackRequest>;
 export interface UpdateFindingsFeedbackResponse {}
-export const UpdateFindingsFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateFindingsFeedbackResponse",
-}) as any as S.Schema<UpdateFindingsFeedbackResponse>;
+export const UpdateFindingsFeedbackResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateFindingsFeedbackResponse>;
 export interface UpdateIPSetRequest {
   DetectorId: string;
   IpSetId?: string;
@@ -9252,9 +9092,7 @@ export const UpdateIPSetRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "UpdateIPSetRequest" }) as any as S.Schema<UpdateIPSetRequest>;
 export interface UpdateIPSetResponse {}
-export const UpdateIPSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateIPSetResponse",
-}) as any as S.Schema<UpdateIPSetResponse>;
+export const UpdateIPSetResponse = AcceptInvitationResponse as any as S.Schema<UpdateIPSetResponse>;
 export interface UpdateS3BucketResource {
   ObjectPrefixes?: string[];
 }
@@ -9301,11 +9139,8 @@ export const UpdateMalwareProtectionPlanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMalwareProtectionPlanRequest",
 }) as any as S.Schema<UpdateMalwareProtectionPlanRequest>;
 export interface UpdateMalwareProtectionPlanResponse {}
-export const UpdateMalwareProtectionPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateMalwareProtectionPlanResponse",
-}) as any as S.Schema<UpdateMalwareProtectionPlanResponse>;
+export const UpdateMalwareProtectionPlanResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateMalwareProtectionPlanResponse>;
 export interface UpdateMalwareScanSettingsRequest {
   DetectorId: string;
   ScanResourceCriteria?: ScanResourceCriteria;
@@ -9337,11 +9172,8 @@ export const UpdateMalwareScanSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMalwareScanSettingsRequest",
 }) as any as S.Schema<UpdateMalwareScanSettingsRequest>;
 export interface UpdateMalwareScanSettingsResponse {}
-export const UpdateMalwareScanSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateMalwareScanSettingsResponse",
-}) as any as S.Schema<UpdateMalwareScanSettingsResponse>;
+export const UpdateMalwareScanSettingsResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateMalwareScanSettingsResponse>;
 export interface MemberAdditionalConfiguration {
   Name?: OrgFeatureAdditionalConfiguration;
   Status?: FeatureStatus;
@@ -9410,39 +9242,23 @@ export const UpdateMemberDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMemberDetectorsResponse {
   UnprocessedAccounts: (UnprocessedAccount & { AccountId: AccountId; Result: string })[];
 }
-export const UpdateMemberDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UnprocessedAccounts: S.optional(UnprocessedAccounts) }).pipe(
-    S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-  ),
-).annotate({
-  identifier: "UpdateMemberDetectorsResponse",
-}) as any as S.Schema<UpdateMemberDetectorsResponse>;
+export const UpdateMemberDetectorsResponse =
+  DeclineInvitationsResponse as any as S.Schema<UpdateMemberDetectorsResponse>;
 export interface OrganizationS3LogsConfiguration {
   AutoEnable?: boolean;
 }
-export const OrganizationS3LogsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoEnable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ AutoEnable: "autoEnable" })),
-).annotate({
-  identifier: "OrganizationS3LogsConfiguration",
-}) as any as S.Schema<OrganizationS3LogsConfiguration>;
+export const OrganizationS3LogsConfiguration =
+  OrganizationS3LogsConfigurationResult as any as S.Schema<OrganizationS3LogsConfiguration>;
 export interface OrganizationKubernetesAuditLogsConfiguration {
   AutoEnable?: boolean;
 }
-export const OrganizationKubernetesAuditLogsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoEnable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ AutoEnable: "autoEnable" })),
-).annotate({
-  identifier: "OrganizationKubernetesAuditLogsConfiguration",
-}) as any as S.Schema<OrganizationKubernetesAuditLogsConfiguration>;
+export const OrganizationKubernetesAuditLogsConfiguration =
+  OrganizationS3LogsConfigurationResult as any as S.Schema<OrganizationKubernetesAuditLogsConfiguration>;
 export interface OrganizationKubernetesConfiguration {
   AuditLogs?: OrganizationKubernetesAuditLogsConfiguration;
 }
-export const OrganizationKubernetesConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AuditLogs: S.optional(OrganizationKubernetesAuditLogsConfiguration) }).pipe(
-    S.encodeKeys({ AuditLogs: "auditLogs" }),
-  ),
-).annotate({
-  identifier: "OrganizationKubernetesConfiguration",
-}) as any as S.Schema<OrganizationKubernetesConfiguration>;
+export const OrganizationKubernetesConfiguration =
+  OrganizationKubernetesConfigurationResult as any as S.Schema<OrganizationKubernetesConfiguration>;
 export interface OrganizationEbsVolumes {
   AutoEnable?: boolean;
 }
@@ -9493,42 +9309,21 @@ export interface OrganizationAdditionalConfiguration {
   Name?: OrgFeatureAdditionalConfiguration;
   AutoEnable?: OrgFeatureStatus;
 }
-export const OrganizationAdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(OrgFeatureAdditionalConfiguration),
-    AutoEnable: S.optional(OrgFeatureStatus),
-  }).pipe(S.encodeKeys({ Name: "name", AutoEnable: "autoEnable" })),
-).annotate({
-  identifier: "OrganizationAdditionalConfiguration",
-}) as any as S.Schema<OrganizationAdditionalConfiguration>;
+export const OrganizationAdditionalConfiguration =
+  OrganizationAdditionalConfigurationResult as any as S.Schema<OrganizationAdditionalConfiguration>;
 export type OrganizationAdditionalConfigurations = OrganizationAdditionalConfiguration[];
-export const OrganizationAdditionalConfigurations = /*@__PURE__*/ S.Array(
-  OrganizationAdditionalConfiguration,
-);
+export const OrganizationAdditionalConfigurations =
+  OrganizationAdditionalConfigurationResults as any as S.Schema<OrganizationAdditionalConfigurations>;
 export interface OrganizationFeatureConfiguration {
   Name?: OrgFeature;
   AutoEnable?: OrgFeatureStatus;
   AdditionalConfiguration?: OrganizationAdditionalConfiguration[];
 }
-export const OrganizationFeatureConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(OrgFeature),
-    AutoEnable: S.optional(OrgFeatureStatus),
-    AdditionalConfiguration: S.optional(OrganizationAdditionalConfigurations),
-  }).pipe(
-    S.encodeKeys({
-      Name: "name",
-      AutoEnable: "autoEnable",
-      AdditionalConfiguration: "additionalConfiguration",
-    }),
-  ),
-).annotate({
-  identifier: "OrganizationFeatureConfiguration",
-}) as any as S.Schema<OrganizationFeatureConfiguration>;
+export const OrganizationFeatureConfiguration =
+  OrganizationFeatureConfigurationResult as any as S.Schema<OrganizationFeatureConfiguration>;
 export type OrganizationFeaturesConfigurations = OrganizationFeatureConfiguration[];
-export const OrganizationFeaturesConfigurations = /*@__PURE__*/ S.Array(
-  OrganizationFeatureConfiguration,
-);
+export const OrganizationFeaturesConfigurations =
+  OrganizationFeaturesConfigurationsResults as any as S.Schema<OrganizationFeaturesConfigurations>;
 export interface UpdateOrganizationConfigurationRequest {
   DetectorId: string;
   AutoEnable?: boolean;
@@ -9566,11 +9361,8 @@ export const UpdateOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateOrganizationConfigurationRequest",
 }) as any as S.Schema<UpdateOrganizationConfigurationRequest>;
 export interface UpdateOrganizationConfigurationResponse {}
-export const UpdateOrganizationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationConfigurationResponse",
-}) as any as S.Schema<UpdateOrganizationConfigurationResponse>;
+export const UpdateOrganizationConfigurationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateOrganizationConfigurationResponse>;
 export interface UpdatePublishingDestinationRequest {
   DetectorId: string;
   DestinationId: string;
@@ -9600,11 +9392,8 @@ export const UpdatePublishingDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePublishingDestinationRequest",
 }) as any as S.Schema<UpdatePublishingDestinationRequest>;
 export interface UpdatePublishingDestinationResponse {}
-export const UpdatePublishingDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePublishingDestinationResponse",
-}) as any as S.Schema<UpdatePublishingDestinationResponse>;
+export const UpdatePublishingDestinationResponse =
+  AcceptAdministratorInvitationResponse as any as S.Schema<UpdatePublishingDestinationResponse>;
 export interface UpdateThreatEntitySetRequest {
   DetectorId: string;
   ThreatEntitySetId?: string;
@@ -9647,9 +9436,8 @@ export const UpdateThreatEntitySetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateThreatEntitySetRequest",
 }) as any as S.Schema<UpdateThreatEntitySetRequest>;
 export interface UpdateThreatEntitySetResponse {}
-export const UpdateThreatEntitySetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateThreatEntitySetResponse",
-}) as any as S.Schema<UpdateThreatEntitySetResponse>;
+export const UpdateThreatEntitySetResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateThreatEntitySetResponse>;
 export interface UpdateThreatIntelSetRequest {
   DetectorId: string;
   ThreatIntelSetId: string;
@@ -9689,9 +9477,8 @@ export const UpdateThreatIntelSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateThreatIntelSetRequest",
 }) as any as S.Schema<UpdateThreatIntelSetRequest>;
 export interface UpdateThreatIntelSetResponse {}
-export const UpdateThreatIntelSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateThreatIntelSetResponse",
-}) as any as S.Schema<UpdateThreatIntelSetResponse>;
+export const UpdateThreatIntelSetResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateThreatIntelSetResponse>;
 export interface UpdateTrustedEntitySetRequest {
   DetectorId: string;
   TrustedEntitySetId: string;
@@ -9734,9 +9521,8 @@ export const UpdateTrustedEntitySetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTrustedEntitySetRequest",
 }) as any as S.Schema<UpdateTrustedEntitySetRequest>;
 export interface UpdateTrustedEntitySetResponse {}
-export const UpdateTrustedEntitySetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTrustedEntitySetResponse",
-}) as any as S.Schema<UpdateTrustedEntitySetResponse>;
+export const UpdateTrustedEntitySetResponse =
+  AcceptInvitationResponse as any as S.Schema<UpdateTrustedEntitySetResponse>;
 export type AcceptAdministratorInvitationError =
   | BadRequestException
   | InternalServerErrorException

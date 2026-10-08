@@ -329,11 +329,8 @@ export const DeleteSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSignalingChannelInput",
 }) as any as S.Schema<DeleteSignalingChannelInput>;
 export interface DeleteSignalingChannelOutput {}
-export const DeleteSignalingChannelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteSignalingChannelOutput",
-}) as any as S.Schema<DeleteSignalingChannelOutput>;
+export const DeleteSignalingChannelOutput =
+  DeleteEdgeConfigurationOutput as any as S.Schema<DeleteSignalingChannelOutput>;
 export interface DeleteStreamInput {
   StreamARN: string;
   CurrentVersion?: string;
@@ -1073,12 +1070,7 @@ export interface StreamNameCondition {
   ComparisonOperator?: ComparisonOperator;
   ComparisonValue?: string;
 }
-export const StreamNameCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComparisonOperator: S.optional(ComparisonOperator),
-    ComparisonValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "StreamNameCondition" }) as any as S.Schema<StreamNameCondition>;
+export const StreamNameCondition = ChannelNameCondition as any as S.Schema<StreamNameCondition>;
 export interface ListStreamsInput {
   MaxResults?: number;
   NextToken?: string;
@@ -1196,7 +1188,7 @@ export const StartEdgeConfigurationUpdateOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartEdgeConfigurationUpdateOutput",
 }) as any as S.Schema<StartEdgeConfigurationUpdateOutput>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+export const TagList = TagOnCreateList as any as S.Schema<TagList>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: Tag[];
@@ -1207,9 +1199,7 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteStreamOutput as any as S.Schema<TagResourceOutput>;
 export interface TagStreamInput {
   StreamARN?: string;
   StreamName?: string;
@@ -1223,9 +1213,7 @@ export const TagStreamInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/tagStream" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "TagStreamInput" }) as any as S.Schema<TagStreamInput>;
 export interface TagStreamOutput {}
-export const TagStreamOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagStreamOutput",
-}) as any as S.Schema<TagStreamOutput>;
+export const TagStreamOutput = DeleteStreamOutput as any as S.Schema<TagStreamOutput>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
@@ -1238,9 +1226,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteStreamOutput as any as S.Schema<UntagResourceOutput>;
 export interface UntagStreamInput {
   StreamARN?: string;
   StreamName?: string;
@@ -1254,9 +1240,7 @@ export const UntagStreamInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/untagStream" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagStreamInput" }) as any as S.Schema<UntagStreamInput>;
 export interface UntagStreamOutput {}
-export const UntagStreamOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagStreamOutput",
-}) as any as S.Schema<UntagStreamOutput>;
+export const UntagStreamOutput = DeleteStreamOutput as any as S.Schema<UntagStreamOutput>;
 export type UpdateDataRetentionOperation =
   | "INCREASE_DATA_RETENTION"
   | "DECREASE_DATA_RETENTION"
@@ -1291,11 +1275,8 @@ export const UpdateDataRetentionInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateDataRetentionInput" }) as any as S.Schema<UpdateDataRetentionInput>;
 export interface UpdateDataRetentionOutput {}
-export const UpdateDataRetentionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateDataRetentionOutput",
-}) as any as S.Schema<UpdateDataRetentionOutput>;
+export const UpdateDataRetentionOutput =
+  DeleteEdgeConfigurationOutput as any as S.Schema<UpdateDataRetentionOutput>;
 export interface UpdateImageGenerationConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
@@ -1321,11 +1302,8 @@ export const UpdateImageGenerationConfigurationInput = /*@__PURE__*/ S.suspend((
   identifier: "UpdateImageGenerationConfigurationInput",
 }) as any as S.Schema<UpdateImageGenerationConfigurationInput>;
 export interface UpdateImageGenerationConfigurationOutput {}
-export const UpdateImageGenerationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateImageGenerationConfigurationOutput",
-}) as any as S.Schema<UpdateImageGenerationConfigurationOutput>;
+export const UpdateImageGenerationConfigurationOutput =
+  DeleteEdgeConfigurationOutput as any as S.Schema<UpdateImageGenerationConfigurationOutput>;
 export interface UpdateMediaStorageConfigurationInput {
   ChannelARN: string;
   MediaStorageConfiguration: MediaStorageConfiguration;
@@ -1346,11 +1324,8 @@ export const UpdateMediaStorageConfigurationInput = /*@__PURE__*/ S.suspend(() =
   identifier: "UpdateMediaStorageConfigurationInput",
 }) as any as S.Schema<UpdateMediaStorageConfigurationInput>;
 export interface UpdateMediaStorageConfigurationOutput {}
-export const UpdateMediaStorageConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateMediaStorageConfigurationOutput",
-}) as any as S.Schema<UpdateMediaStorageConfigurationOutput>;
+export const UpdateMediaStorageConfigurationOutput =
+  DeleteEdgeConfigurationOutput as any as S.Schema<UpdateMediaStorageConfigurationOutput>;
 export interface UpdateNotificationConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
@@ -1376,11 +1351,8 @@ export const UpdateNotificationConfigurationInput = /*@__PURE__*/ S.suspend(() =
   identifier: "UpdateNotificationConfigurationInput",
 }) as any as S.Schema<UpdateNotificationConfigurationInput>;
 export interface UpdateNotificationConfigurationOutput {}
-export const UpdateNotificationConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateNotificationConfigurationOutput",
-}) as any as S.Schema<UpdateNotificationConfigurationOutput>;
+export const UpdateNotificationConfigurationOutput =
+  DeleteEdgeConfigurationOutput as any as S.Schema<UpdateNotificationConfigurationOutput>;
 export interface UpdateSignalingChannelInput {
   ChannelARN: string;
   CurrentVersion: string;
@@ -1406,11 +1378,8 @@ export const UpdateSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSignalingChannelInput",
 }) as any as S.Schema<UpdateSignalingChannelInput>;
 export interface UpdateSignalingChannelOutput {}
-export const UpdateSignalingChannelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateSignalingChannelOutput",
-}) as any as S.Schema<UpdateSignalingChannelOutput>;
+export const UpdateSignalingChannelOutput =
+  DeleteEdgeConfigurationOutput as any as S.Schema<UpdateSignalingChannelOutput>;
 export interface UpdateStreamInput {
   StreamName?: string;
   StreamARN?: string;
@@ -1430,9 +1399,7 @@ export const UpdateStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateStreamInput" }) as any as S.Schema<UpdateStreamInput>;
 export interface UpdateStreamOutput {}
-export const UpdateStreamOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateStreamOutput",
-}) as any as S.Schema<UpdateStreamOutput>;
+export const UpdateStreamOutput = DeleteStreamOutput as any as S.Schema<UpdateStreamOutput>;
 export interface UpdateStreamStorageConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
@@ -1460,11 +1427,8 @@ export const UpdateStreamStorageConfigurationInput = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateStreamStorageConfigurationInput",
 }) as any as S.Schema<UpdateStreamStorageConfigurationInput>;
 export interface UpdateStreamStorageConfigurationOutput {}
-export const UpdateStreamStorageConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateStreamStorageConfigurationOutput",
-}) as any as S.Schema<UpdateStreamStorageConfigurationOutput>;
+export const UpdateStreamStorageConfigurationOutput =
+  DeleteEdgeConfigurationOutput as any as S.Schema<UpdateStreamStorageConfigurationOutput>;
 export type ErrorMessage = string;
 export type CreateSignalingChannelError =
   | AccessDeniedException

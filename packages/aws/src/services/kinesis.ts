@@ -1237,9 +1237,7 @@ export const DeleteChannelInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelInput" }) as any as S.Schema<DeleteChannelInput>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteChannelResponse",
-}) as any as S.Schema<DeleteChannelResponse>;
+export const DeleteChannelResponse = CreateStreamResponse as any as S.Schema<DeleteChannelResponse>;
 export type ResourceARN = string;
 export interface DeleteResourcePolicyInput {
   ResourceARN: string;
@@ -1265,11 +1263,8 @@ export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyInput",
 }) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteStreamInput {
   StreamName?: string;
   EnforceConsumerDeletion?: boolean;
@@ -1296,9 +1291,7 @@ export const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStreamInput" }) as any as S.Schema<DeleteStreamInput>;
 export interface DeleteStreamResponse {}
-export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteStreamResponse",
-}) as any as S.Schema<DeleteStreamResponse>;
+export const DeleteStreamResponse = CreateStreamResponse as any as S.Schema<DeleteStreamResponse>;
 export type ConsumerName = string;
 export type ConsumerARN = string;
 export interface DeregisterStreamConsumerInput {
@@ -1329,11 +1322,8 @@ export const DeregisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterStreamConsumerInput",
 }) as any as S.Schema<DeregisterStreamConsumerInput>;
 export interface DeregisterStreamConsumerResponse {}
-export const DeregisterStreamConsumerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterStreamConsumerResponse",
-}) as any as S.Schema<DeregisterStreamConsumerResponse>;
+export const DeregisterStreamConsumerResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<DeregisterStreamConsumerResponse>;
 export interface DescribeAccountSettingsInput {}
 export const DescribeAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1404,9 +1394,7 @@ export const DescribeChannelInput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeChannelOutput {
   ChannelDescription: ChannelDescription;
 }
-export const DescribeChannelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelDescription: ChannelDescription }).pipe(ns),
-).annotate({ identifier: "DescribeChannelOutput" }) as any as S.Schema<DescribeChannelOutput>;
+export const DescribeChannelOutput = CreateChannelOutput as any as S.Schema<DescribeChannelOutput>;
 export interface DescribeLimitsInput {}
 export const DescribeLimitsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1950,11 +1938,8 @@ export const IncreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncreaseStreamRetentionPeriodInput",
 }) as any as S.Schema<IncreaseStreamRetentionPeriodInput>;
 export interface IncreaseStreamRetentionPeriodResponse {}
-export const IncreaseStreamRetentionPeriodResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "IncreaseStreamRetentionPeriodResponse",
-}) as any as S.Schema<IncreaseStreamRetentionPeriodResponse>;
+export const IncreaseStreamRetentionPeriodResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<IncreaseStreamRetentionPeriodResponse>;
 export interface StreamFilter {
   StreamARN: string;
   StreamCreationTimestamp?: Date;
@@ -2179,7 +2164,7 @@ export const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListStreamsInput" }) as any as S.Schema<ListStreamsInput>;
 export type StreamNameList = string[];
-export const StreamNameList = /*@__PURE__*/ S.Array(S.String);
+export const StreamNameList = ShardIdList as any as S.Schema<StreamNameList>;
 export interface StreamSummary {
   StreamName: string;
   StreamARN: string;
@@ -2313,9 +2298,7 @@ export const MergeShardsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "MergeShardsInput" }) as any as S.Schema<MergeShardsInput>;
 export interface MergeShardsResponse {}
-export const MergeShardsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "MergeShardsResponse",
-}) as any as S.Schema<MergeShardsResponse>;
+export const MergeShardsResponse = CreateStreamResponse as any as S.Schema<MergeShardsResponse>;
 export interface PutRecordInput {
   StreamName?: string;
   Data: Uint8Array;
@@ -2456,11 +2439,8 @@ export const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutResourcePolicyInput" }) as any as S.Schema<PutResourcePolicyInput>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
+export const PutResourcePolicyResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RegisterStreamConsumerInput {
   StreamARN: string;
   ConsumerName: string;
@@ -2497,7 +2477,7 @@ export const RegisterStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterStreamConsumerOutput",
 }) as any as S.Schema<RegisterStreamConsumerOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ShardIdList as any as S.Schema<TagKeyList>;
 export interface RemoveTagsFromStreamInput {
   StreamName?: string;
   TagKeys: string[];
@@ -2526,11 +2506,8 @@ export const RemoveTagsFromStreamInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromStreamInput",
 }) as any as S.Schema<RemoveTagsFromStreamInput>;
 export interface RemoveTagsFromStreamResponse {}
-export const RemoveTagsFromStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveTagsFromStreamResponse",
-}) as any as S.Schema<RemoveTagsFromStreamResponse>;
+export const RemoveTagsFromStreamResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<RemoveTagsFromStreamResponse>;
 export interface SplitShardInput {
   StreamName?: string;
   ShardToSplit: string;
@@ -2559,9 +2536,7 @@ export const SplitShardInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SplitShardInput" }) as any as S.Schema<SplitShardInput>;
 export interface SplitShardResponse {}
-export const SplitShardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "SplitShardResponse",
-}) as any as S.Schema<SplitShardResponse>;
+export const SplitShardResponse = CreateStreamResponse as any as S.Schema<SplitShardResponse>;
 export interface StartStreamEncryptionInput {
   StreamName?: string;
   EncryptionType: EncryptionType;
@@ -2592,11 +2567,8 @@ export const StartStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartStreamEncryptionInput",
 }) as any as S.Schema<StartStreamEncryptionInput>;
 export interface StartStreamEncryptionResponse {}
-export const StartStreamEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StartStreamEncryptionResponse",
-}) as any as S.Schema<StartStreamEncryptionResponse>;
+export const StartStreamEncryptionResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<StartStreamEncryptionResponse>;
 export interface StopStreamEncryptionInput {
   StreamName?: string;
   EncryptionType: EncryptionType;
@@ -2627,11 +2599,8 @@ export const StopStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopStreamEncryptionInput",
 }) as any as S.Schema<StopStreamEncryptionInput>;
 export interface StopStreamEncryptionResponse {}
-export const StopStreamEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StopStreamEncryptionResponse",
-}) as any as S.Schema<StopStreamEncryptionResponse>;
+export const StopStreamEncryptionResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<StopStreamEncryptionResponse>;
 export interface StartingPosition {
   Type: ShardIteratorType;
   SequenceNumber?: string;
@@ -2886,9 +2855,7 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CreateStreamResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceInput {
   TagKeys: string[];
   ResourceARN: string;
@@ -2913,9 +2880,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = CreateStreamResponse as any as S.Schema<UntagResourceResponse>;
 export type MinimumThroughputBillingCommitmentInputStatus = "ENABLED" | "DISABLED" | (string & {});
 export const MinimumThroughputBillingCommitmentInputStatus = S.String;
 
@@ -2949,13 +2914,8 @@ export const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountSettingsOutput {
   MinimumThroughputBillingCommitment?: MinimumThroughputBillingCommitmentOutput;
 }
-export const UpdateAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MinimumThroughputBillingCommitment: S.optional(MinimumThroughputBillingCommitmentOutput),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateAccountSettingsOutput",
-}) as any as S.Schema<UpdateAccountSettingsOutput>;
+export const UpdateAccountSettingsOutput =
+  DescribeAccountSettingsOutput as any as S.Schema<UpdateAccountSettingsOutput>;
 export interface S3DestinationUpdateInput {
   DataFreshnessInSeconds: number;
 }
@@ -3020,9 +2980,7 @@ export const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChannelOutput {
   ChannelDescription: ChannelDescription;
 }
-export const UpdateChannelOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ChannelDescription: ChannelDescription }).pipe(ns),
-).annotate({ identifier: "UpdateChannelOutput" }) as any as S.Schema<UpdateChannelOutput>;
+export const UpdateChannelOutput = CreateChannelOutput as any as S.Schema<UpdateChannelOutput>;
 export interface UpdateMaxRecordSizeInput {
   StreamARN?: string;
   StreamId?: string;
@@ -3047,11 +3005,8 @@ export const UpdateMaxRecordSizeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateMaxRecordSizeInput" }) as any as S.Schema<UpdateMaxRecordSizeInput>;
 export interface UpdateMaxRecordSizeResponse {}
-export const UpdateMaxRecordSizeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateMaxRecordSizeResponse",
-}) as any as S.Schema<UpdateMaxRecordSizeResponse>;
+export const UpdateMaxRecordSizeResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<UpdateMaxRecordSizeResponse>;
 export type ScalingType = "UNIFORM_SCALING" | (string & {});
 export const ScalingType = S.String;
 
@@ -3122,9 +3077,8 @@ export const UpdateStreamModeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateStreamModeInput" }) as any as S.Schema<UpdateStreamModeInput>;
 export interface UpdateStreamModeResponse {}
-export const UpdateStreamModeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "UpdateStreamModeResponse" }) as any as S.Schema<UpdateStreamModeResponse>;
+export const UpdateStreamModeResponse =
+  AddTagsToStreamResponse as any as S.Schema<UpdateStreamModeResponse>;
 export interface UpdateStreamRecordDistributionStrategyInput {
   StreamARN: string;
   StreamId?: string;
@@ -3151,11 +3105,8 @@ export const UpdateStreamRecordDistributionStrategyInput = /*@__PURE__*/ S.suspe
   identifier: "UpdateStreamRecordDistributionStrategyInput",
 }) as any as S.Schema<UpdateStreamRecordDistributionStrategyInput>;
 export interface UpdateStreamRecordDistributionStrategyResponse {}
-export const UpdateStreamRecordDistributionStrategyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateStreamRecordDistributionStrategyResponse",
-}) as any as S.Schema<UpdateStreamRecordDistributionStrategyResponse>;
+export const UpdateStreamRecordDistributionStrategyResponse =
+  DecreaseStreamRetentionPeriodResponse as any as S.Schema<UpdateStreamRecordDistributionStrategyResponse>;
 export interface UpdateStreamWarmThroughputInput {
   StreamARN?: string;
   StreamName?: string;

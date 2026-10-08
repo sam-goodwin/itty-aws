@@ -46,10 +46,8 @@ export const CreateControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type CreateControllerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateControllerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateControllerResponseTagsMap>;
+export const CreateControllerResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<CreateControllerResponseTagsMap>;
 
 /** The current state of dnc controller resource. */
 export type DelegatedControllerPropertiesProvisioningState =
@@ -131,10 +129,8 @@ export const OrchestratorIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type CreateOrchestratorInstanceServiceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateOrchestratorInstanceServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrchestratorInstanceServiceRequestTagsMap>;
+export const CreateOrchestratorInstanceServiceRequestTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<CreateOrchestratorInstanceServiceRequestTagsMap>;
 
 /** controller details */
 export interface OrchestratorResourcePropertiesInputControllerDetails {
@@ -245,10 +241,8 @@ export const OrchestratorIdentity = /*@__PURE__*/ S.suspend(() =>
 export type CreateOrchestratorInstanceServiceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateOrchestratorInstanceServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrchestratorInstanceServiceResponseTagsMap>;
+export const CreateOrchestratorInstanceServiceResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<CreateOrchestratorInstanceServiceResponseTagsMap>;
 
 /** The current state of orchestratorInstance resource. */
 export type OrchestratorResourcePropertiesProvisioningState =
@@ -423,11 +417,8 @@ export const DeleteOrchestratorInstanceServiceRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteOrchestratorInstanceServiceRequest>;
 
 export interface DeleteOrchestratorInstanceServiceResponse {}
-export const DeleteOrchestratorInstanceServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrchestratorInstanceServiceResponse",
-}) as any as S.Schema<DeleteOrchestratorInstanceServiceResponse>;
+export const DeleteOrchestratorInstanceServiceResponse =
+  DeleteDelegatedSubnetServiceDetailsResponse as any as S.Schema<DeleteOrchestratorInstanceServiceResponse>;
 
 export interface GetControllerDetailsRequest {
   /** The ID of the target subscription. */
@@ -456,10 +447,8 @@ export const GetControllerDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetControllerDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const GetControllerDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetControllerDetailsResponseTagsMap>;
+export const GetControllerDetailsResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<GetControllerDetailsResponseTagsMap>;
 
 export interface GetControllerDetailsResponse {
   /** An identifier that represents the resource. */
@@ -515,10 +504,8 @@ export const GetDelegatedSubnetServiceDetailsRequest = /*@__PURE__*/ S.suspend((
 
 /** The resource tags. */
 export type GetDelegatedSubnetServiceDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const GetDelegatedSubnetServiceDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDelegatedSubnetServiceDetailsResponseTagsMap>;
+export const GetDelegatedSubnetServiceDetailsResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<GetDelegatedSubnetServiceDetailsResponseTagsMap>;
 
 /** The current state of dnc delegated subnet resource. */
 export type DelegatedSubnetPropertiesProvisioningState =
@@ -627,10 +614,8 @@ export const GetOrchestratorInstanceServiceDetailsResponseKind = S.String;
 export type GetOrchestratorInstanceServiceDetailsResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetOrchestratorInstanceServiceDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetOrchestratorInstanceServiceDetailsResponseTagsMap>;
+export const GetOrchestratorInstanceServiceDetailsResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<GetOrchestratorInstanceServiceDetailsResponseTagsMap>;
 
 export interface GetOrchestratorInstanceServiceDetailsResponse {
   /** An identifier that represents the resource. */
@@ -689,10 +674,8 @@ export const ListDelegatedNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** The resource tags. */
 export type DelegatedControllerTagsMap = { [key: string]: string | undefined };
-export const DelegatedControllerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DelegatedControllerTagsMap>;
+export const DelegatedControllerTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<DelegatedControllerTagsMap>;
 
 /** Represents an instance of a DNC controller. */
 export interface DelegatedController {
@@ -709,16 +692,7 @@ export interface DelegatedController {
   /** Properties of the provision operation request. */
   properties?: DelegatedControllerProperties;
 }
-export const DelegatedController = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(DelegatedControllerTagsMap),
-    properties: S.optional(DelegatedControllerProperties),
-  }),
-).annotate({ identifier: "DelegatedController" }) as any as S.Schema<DelegatedController>;
+export const DelegatedController = CreateControllerResponse as any as S.Schema<DelegatedController>;
 
 /** An array of Delegated controller resources. */
 export type DelegatedControllersValueList = Array<DelegatedController>;
@@ -783,10 +757,8 @@ export const ListDelegatedSubnetServiceByResourceGroupRequest = /*@__PURE__*/ S.
 
 /** The resource tags. */
 export type DelegatedSubnetTagsMap = { [key: string]: string | undefined };
-export const DelegatedSubnetTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DelegatedSubnetTagsMap>;
+export const DelegatedSubnetTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<DelegatedSubnetTagsMap>;
 
 /** Represents an instance of a orchestrator. */
 export interface DelegatedSubnet {
@@ -963,10 +935,8 @@ export const OrchestratorKind = S.String;
 
 /** The resource tags. */
 export type OrchestratorTagsMap = { [key: string]: string | undefined };
-export const OrchestratorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrchestratorTagsMap>;
+export const OrchestratorTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<OrchestratorTagsMap>;
 
 /** Represents an instance of a orchestrator. */
 export interface Orchestrator {
@@ -1041,10 +1011,8 @@ export const ListOrchestratorInstanceServiceBySubscriptionRequest = /*@__PURE__*
 
 /** The resource tags. */
 export type PatchControllerRequestTagsMap = { [key: string]: string | undefined };
-export const PatchControllerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchControllerRequestTagsMap>;
+export const PatchControllerRequestTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PatchControllerRequestTagsMap>;
 
 export interface PatchControllerRequest {
   /** The ID of the target subscription. */
@@ -1074,10 +1042,8 @@ export const PatchControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type PatchControllerResponseTagsMap = { [key: string]: string | undefined };
-export const PatchControllerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchControllerResponseTagsMap>;
+export const PatchControllerResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PatchControllerResponseTagsMap>;
 
 export interface PatchControllerResponse {
   /** An identifier that represents the resource. */
@@ -1093,25 +1059,15 @@ export interface PatchControllerResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedControllerProperties;
 }
-export const PatchControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(PatchControllerResponseTagsMap),
-    properties: S.optional(DelegatedControllerProperties),
-  }),
-).annotate({ identifier: "PatchControllerResponse" }) as any as S.Schema<PatchControllerResponse>;
+export const PatchControllerResponse =
+  CreateControllerResponse as any as S.Schema<PatchControllerResponse>;
 
 /** The resource tags. */
 export type PatchDelegatedSubnetServiceDetailsRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PatchDelegatedSubnetServiceDetailsRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchDelegatedSubnetServiceDetailsRequestTagsMap>;
+export const PatchDelegatedSubnetServiceDetailsRequestTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PatchDelegatedSubnetServiceDetailsRequestTagsMap>;
 
 export interface PatchDelegatedSubnetServiceDetailsRequest {
   /** The ID of the target subscription. */
@@ -1145,10 +1101,8 @@ export const PatchDelegatedSubnetServiceDetailsRequest = /*@__PURE__*/ S.suspend
 export type PatchDelegatedSubnetServiceDetailsResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PatchDelegatedSubnetServiceDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchDelegatedSubnetServiceDetailsResponseTagsMap>;
+export const PatchDelegatedSubnetServiceDetailsResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PatchDelegatedSubnetServiceDetailsResponseTagsMap>;
 
 export interface PatchDelegatedSubnetServiceDetailsResponse {
   /** An identifier that represents the resource. */
@@ -1164,25 +1118,13 @@ export interface PatchDelegatedSubnetServiceDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedSubnetProperties;
 }
-export const PatchDelegatedSubnetServiceDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(PatchDelegatedSubnetServiceDetailsResponseTagsMap),
-    properties: S.optional(DelegatedSubnetProperties),
-  }),
-).annotate({
-  identifier: "PatchDelegatedSubnetServiceDetailsResponse",
-}) as any as S.Schema<PatchDelegatedSubnetServiceDetailsResponse>;
+export const PatchDelegatedSubnetServiceDetailsResponse =
+  GetDelegatedSubnetServiceDetailsResponse as any as S.Schema<PatchDelegatedSubnetServiceDetailsResponse>;
 
 /** The resource tags. */
 export type PatchOrchestratorInstanceServiceRequestTagsMap = { [key: string]: string | undefined };
-export const PatchOrchestratorInstanceServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchOrchestratorInstanceServiceRequestTagsMap>;
+export const PatchOrchestratorInstanceServiceRequestTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PatchOrchestratorInstanceServiceRequestTagsMap>;
 
 export interface PatchOrchestratorInstanceServiceRequest {
   /** The ID of the target subscription. */
@@ -1218,10 +1160,8 @@ export const PatchOrchestratorInstanceServiceResponseKind = S.String;
 
 /** The resource tags. */
 export type PatchOrchestratorInstanceServiceResponseTagsMap = { [key: string]: string | undefined };
-export const PatchOrchestratorInstanceServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PatchOrchestratorInstanceServiceResponseTagsMap>;
+export const PatchOrchestratorInstanceServiceResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PatchOrchestratorInstanceServiceResponseTagsMap>;
 
 export interface PatchOrchestratorInstanceServiceResponse {
   /** An identifier that represents the resource. */
@@ -1258,10 +1198,8 @@ export const PatchOrchestratorInstanceServiceResponse = /*@__PURE__*/ S.suspend(
 
 /** The resource tags. */
 export type PutDelegatedSubnetServiceDetailsRequestTagsMap = { [key: string]: string | undefined };
-export const PutDelegatedSubnetServiceDetailsRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutDelegatedSubnetServiceDetailsRequestTagsMap>;
+export const PutDelegatedSubnetServiceDetailsRequestTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PutDelegatedSubnetServiceDetailsRequestTagsMap>;
 
 /** controller details */
 export type DelegatedSubnetPropertiesInputControllerDetails =
@@ -1321,10 +1259,8 @@ export const PutDelegatedSubnetServiceDetailsRequest = /*@__PURE__*/ S.suspend((
 
 /** The resource tags. */
 export type PutDelegatedSubnetServiceDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const PutDelegatedSubnetServiceDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutDelegatedSubnetServiceDetailsResponseTagsMap>;
+export const PutDelegatedSubnetServiceDetailsResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<PutDelegatedSubnetServiceDetailsResponseTagsMap>;
 
 export interface PutDelegatedSubnetServiceDetailsResponse {
   /** An identifier that represents the resource. */
@@ -1340,18 +1276,8 @@ export interface PutDelegatedSubnetServiceDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedSubnetProperties;
 }
-export const PutDelegatedSubnetServiceDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(PutDelegatedSubnetServiceDetailsResponseTagsMap),
-    properties: S.optional(DelegatedSubnetProperties),
-  }),
-).annotate({
-  identifier: "PutDelegatedSubnetServiceDetailsResponse",
-}) as any as S.Schema<PutDelegatedSubnetServiceDetailsResponse>;
+export const PutDelegatedSubnetServiceDetailsResponse =
+  GetDelegatedSubnetServiceDetailsResponse as any as S.Schema<PutDelegatedSubnetServiceDetailsResponse>;
 
 export type CreateControllerError = AzureOpError;
 /** Create a dnc controller */

@@ -149,9 +149,8 @@ export type CreateRequestBodyItem = BulkUpdateRequestBodyItem;
 export const CreateRequestBodyItem = BulkUpdateRequestBodyItem;
 
 export type CreateRequestBodyList = Array<BulkUpdateRequestBodyItem>;
-export const CreateRequestBodyList = /*@__PURE__*/ S.Array(
-  BulkUpdateRequestBodyItem,
-) as any as S.Schema<CreateRequestBodyList>;
+export const CreateRequestBodyList =
+  BulkUpdateRequestBodyList as any as S.Schema<CreateRequestBodyList>;
 
 export interface CreateFilterRequest {
   /** Defines an identifier. */
@@ -171,9 +170,7 @@ export type CreateResultItem = BulkUpdateResultItem;
 export const CreateResultItem = BulkUpdateResultItem;
 
 export type CreateResultList = Array<BulkUpdateResultItem>;
-export const CreateResultList = /*@__PURE__*/ S.Array(
-  BulkUpdateResultItem,
-) as any as S.Schema<CreateResultList>;
+export const CreateResultList = BulkUpdateResultList as any as S.Schema<CreateResultList>;
 
 export interface CreateFilterResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -181,12 +178,7 @@ export interface CreateFilterResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: CreateResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "CreateFilterResponse" }) as any as S.Schema<CreateFilterResponse>;
+export const CreateFilterResponse = BulkPutFiltersResponse as any as S.Schema<CreateFilterResponse>;
 
 export interface DeleteFilterRequest {
   /** Defines an identifier. */
@@ -289,9 +281,7 @@ export type ListResultItem = BulkUpdateResultItem;
 export const ListResultItem = BulkUpdateResultItem;
 
 export type ListResultList = Array<BulkUpdateResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  BulkUpdateResultItem,
-) as any as S.Schema<ListResultList>;
+export const ListResultList = BulkUpdateResultList as any as S.Schema<ListResultList>;
 
 export interface ListFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -299,12 +289,7 @@ export interface ListFiltersResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: ListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListFiltersResponse" }) as any as S.Schema<ListFiltersResponse>;
+export const ListFiltersResponse = BulkPutFiltersResponse as any as S.Schema<ListFiltersResponse>;
 
 export interface UpdateFilterRequest {
   /** Defines an identifier. */
@@ -346,15 +331,7 @@ export interface UpdateFilterResponse {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
-export const UpdateFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    expression: S.optional(S.NullOr(S.String)),
-    paused: S.optional(S.NullOr(S.Boolean)),
-    ref: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateFilterResponse" }) as any as S.Schema<UpdateFilterResponse>;
+export const UpdateFilterResponse = GetFilterResponse as any as S.Schema<UpdateFilterResponse>;
 
 export type BulkDeleteFiltersError = CloudflareOpError;
 /** Deletes one or more existing filters. */

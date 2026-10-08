@@ -90,9 +90,7 @@ export const CancelAccountsAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Text input to be classified. */
 export interface GoogleChecksAisafetyV1alphaTextInput {
@@ -898,13 +896,8 @@ export interface GoogleChecksReportV1alphaPermission {
   /** Permission identifier. */
   id?: string;
 }
-export const GoogleChecksReportV1alphaPermission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaPermission",
-}) as any as S.Schema<GoogleChecksReportV1alphaPermission>;
+export const GoogleChecksReportV1alphaPermission =
+  GoogleChecksReportV1alphaSdk as any as S.Schema<GoogleChecksReportV1alphaPermission>;
 
 /** Evidence based on the inclusion of a permission. */
 export interface GoogleChecksReportV1alphaDataTypePermissionEvidence {
@@ -1050,20 +1043,12 @@ export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvide
   endpoint?: GoogleChecksReportV1alphaEndpoint;
 }
 export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endpoint: S.optional(GoogleChecksReportV1alphaEndpoint),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
+  GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
 
 export type GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList =
   Array<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
 export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList>;
+  GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetailsList as any as S.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetailsList>;
 
 /** Evidence collected from endpoint restriction violation analysis. */
 export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence {
@@ -1179,19 +1164,13 @@ export interface GoogleChecksReportV1alphaCheckPermissionEvidence {
   /** The permission that was found in your app. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
-export const GoogleChecksReportV1alphaCheckPermissionEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permission: S.optional(GoogleChecksReportV1alphaPermission),
-  }),
-).annotate({
-  identifier: "GoogleChecksReportV1alphaCheckPermissionEvidence",
-}) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidence>;
+export const GoogleChecksReportV1alphaCheckPermissionEvidence =
+  GoogleChecksReportV1alphaDataTypePermissionEvidence as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidence>;
 
 export type GoogleChecksReportV1alphaCheckPermissionEvidenceList =
   Array<GoogleChecksReportV1alphaCheckPermissionEvidence>;
-export const GoogleChecksReportV1alphaCheckPermissionEvidenceList = /*@__PURE__*/ S.Array(
-  GoogleChecksReportV1alphaCheckPermissionEvidence,
-) as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidenceList>;
+export const GoogleChecksReportV1alphaCheckPermissionEvidenceList =
+  GoogleChecksReportV1alphaDataTypePermissionEvidenceList as any as S.Schema<GoogleChecksReportV1alphaCheckPermissionEvidenceList>;
 
 /** Details of the SDK in violation. */
 export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails {
@@ -1199,20 +1178,12 @@ export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSd
   sdk?: GoogleChecksReportV1alphaSdk;
 }
 export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sdk: S.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails",
-  }) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
+  GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
 
 export type GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList =
   Array<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
 export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList =
-  /*@__PURE__*/ S.Array(
-    GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails,
-  ) as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList>;
+  GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdkList as any as S.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetailsList>;
 
 /** Evidence collected from SDK restriction violation analysis. */
 export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence {

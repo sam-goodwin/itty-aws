@@ -224,7 +224,7 @@ export type EngagementType = "Security Incident" | "Investigation" | (string & {
 export const EngagementType = S.String;
 
 export type ImpactedAccounts = string[];
-export const ImpactedAccounts = /*@__PURE__*/ S.Array(S.String);
+export const ImpactedAccounts = AWSAccountIds as any as S.Schema<ImpactedAccounts>;
 export type EmailAddress = string | redacted.Redacted<string>;
 export type PersonName = string | redacted.Redacted<string>;
 export type JobTitle = string | redacted.Redacted<string>;
@@ -255,7 +255,7 @@ export type ThreatActorIpList = ThreatActorIp[];
 export const ThreatActorIpList = /*@__PURE__*/ S.Array(ThreatActorIp);
 export type AwsService = string;
 export type ImpactedServicesList = string[];
-export const ImpactedServicesList = /*@__PURE__*/ S.Array(S.String);
+export const ImpactedServicesList = AWSAccountIds as any as S.Schema<ImpactedServicesList>;
 export type AwsRegion =
   | "af-south-1"
   | "ap-east-1"
@@ -448,9 +448,8 @@ export const CreateMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMembershipResponse {
   membershipId: string;
 }
-export const CreateMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ membershipId: S.String }),
-).annotate({ identifier: "CreateMembershipResponse" }) as any as S.Schema<CreateMembershipResponse>;
+export const CreateMembershipResponse =
+  CancelMembershipResponse as any as S.Schema<CreateMembershipResponse>;
 export interface GetCaseRequest {
   caseId: string;
 }
@@ -616,11 +615,8 @@ export const GetCaseAttachmentUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCaseAttachmentUploadUrlResponse {
   attachmentPresignedUrl: string | redacted.Redacted<string>;
 }
-export const GetCaseAttachmentUploadUrlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ attachmentPresignedUrl: SensitiveString }),
-).annotate({
-  identifier: "GetCaseAttachmentUploadUrlResponse",
-}) as any as S.Schema<GetCaseAttachmentUploadUrlResponse>;
+export const GetCaseAttachmentUploadUrlResponse =
+  GetCaseAttachmentDownloadUrlResponse as any as S.Schema<GetCaseAttachmentUploadUrlResponse>;
 export interface GetMembershipRequest {
   membershipId: string;
 }
@@ -645,7 +641,7 @@ export const CustomerType = S.String;
 
 export type OrganizationalUnitId = string;
 export type OrganizationalUnits = string[];
-export const OrganizationalUnits = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationalUnits = AWSAccountIds as any as S.Schema<OrganizationalUnits>;
 export interface MembershipAccountsConfigurations {
   coverEntireOrganization?: boolean;
   organizationalUnits?: string[];
@@ -1018,11 +1014,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = SendFeedbackResponse as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = AWSAccountIds as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -1043,9 +1037,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = SendFeedbackResponse as any as S.Schema<UntagResourceOutput>;
 export interface UpdateCaseRequest {
   caseId: string;
   title?: string | redacted.Redacted<string>;
@@ -1096,9 +1088,7 @@ export const UpdateCaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateCaseRequest" }) as any as S.Schema<UpdateCaseRequest>;
 export interface UpdateCaseResponse {}
-export const UpdateCaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCaseResponse",
-}) as any as S.Schema<UpdateCaseResponse>;
+export const UpdateCaseResponse = SendFeedbackResponse as any as S.Schema<UpdateCaseResponse>;
 export interface UpdateCaseCommentRequest {
   caseId: string;
   commentId: string;
@@ -1204,9 +1194,8 @@ export const UpdateMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateMembershipRequest" }) as any as S.Schema<UpdateMembershipRequest>;
 export interface UpdateMembershipResponse {}
-export const UpdateMembershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMembershipResponse",
-}) as any as S.Schema<UpdateMembershipResponse>;
+export const UpdateMembershipResponse =
+  SendFeedbackResponse as any as S.Schema<UpdateMembershipResponse>;
 export interface UpdateResolverTypeRequest {
   caseId: string;
   resolverType: ResolverType;

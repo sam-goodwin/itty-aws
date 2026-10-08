@@ -601,14 +601,12 @@ export type CheckSuiteConclusion =
 export const CheckSuiteConclusion = S.String;
 
 export type CheckSuitePullRequestsList = Array<PullRequestMinimal>;
-export const CheckSuitePullRequestsList = /*@__PURE__*/ S.Array(
-  PullRequestMinimal,
-) as any as S.Schema<CheckSuitePullRequestsList>;
+export const CheckSuitePullRequestsList =
+  CheckRunPullRequestsList as any as S.Schema<CheckSuitePullRequestsList>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
+export const MinimalRepositoryTopicsList =
+  NullableIntegrationEventsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1106,12 +1104,7 @@ export interface SimpleCommitCommitter {
   /** Git email address of the commit's committer */
   email: string;
 }
-export const SimpleCommitCommitter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    email: S.String,
-  }),
-).annotate({ identifier: "SimpleCommitCommitter" }) as any as S.Schema<SimpleCommitCommitter>;
+export const SimpleCommitCommitter = SimpleCommitAuthor as any as S.Schema<SimpleCommitCommitter>;
 
 /** A commit. */
 export interface SimpleCommit {
@@ -1394,20 +1387,14 @@ export const ListForSuiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForSuiteRequest" }) as any as S.Schema<ListForSuiteRequest>;
 
 export type ListForSuiteResponseCheckRunsList = Array<CheckRun>;
-export const ListForSuiteResponseCheckRunsList = /*@__PURE__*/ S.Array(
-  CheckRun,
-) as any as S.Schema<ListForSuiteResponseCheckRunsList>;
+export const ListForSuiteResponseCheckRunsList =
+  ListForRefResponseCheckRunsList as any as S.Schema<ListForSuiteResponseCheckRunsList>;
 
 export interface ListForSuiteResponse {
   total_count: number;
   check_runs: ListForSuiteResponseCheckRunsList;
 }
-export const ListForSuiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    check_runs: ListForSuiteResponseCheckRunsList,
-  }),
-).annotate({ identifier: "ListForSuiteResponse" }) as any as S.Schema<ListForSuiteResponse>;
+export const ListForSuiteResponse = ListForRefResponse as any as S.Schema<ListForSuiteResponse>;
 
 export interface ListSuitesForRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1505,9 +1492,7 @@ export const RunRerequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunRerequestRequest" }) as any as S.Schema<RunRerequestRequest>;
 
 export type RunRerequestResponse = unknown;
-export const RunRerequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RunRerequestResponse" }) as any as S.Schema<RunRerequestResponse>;
+export const RunRerequestResponse = RerequestSuiteResponse as any as S.Schema<RunRerequestResponse>;
 
 export interface SetSuitesPreferencesRequestAutoTriggerChecksItem {
   /** The `id` of the GitHub App. */
@@ -1555,20 +1540,13 @@ export interface CheckSuitePreferencePreferencesAutoTriggerChecksItem {
   app_id: number;
   setting: boolean;
 }
-export const CheckSuitePreferencePreferencesAutoTriggerChecksItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app_id: S.Number,
-    setting: S.Boolean,
-  }),
-).annotate({
-  identifier: "CheckSuitePreferencePreferencesAutoTriggerChecksItem",
-}) as any as S.Schema<CheckSuitePreferencePreferencesAutoTriggerChecksItem>;
+export const CheckSuitePreferencePreferencesAutoTriggerChecksItem =
+  SetSuitesPreferencesRequestAutoTriggerChecksItem as any as S.Schema<CheckSuitePreferencePreferencesAutoTriggerChecksItem>;
 
 export type CheckSuitePreferencePreferencesAutoTriggerChecksList =
   Array<CheckSuitePreferencePreferencesAutoTriggerChecksItem>;
-export const CheckSuitePreferencePreferencesAutoTriggerChecksList = /*@__PURE__*/ S.Array(
-  CheckSuitePreferencePreferencesAutoTriggerChecksItem,
-) as any as S.Schema<CheckSuitePreferencePreferencesAutoTriggerChecksList>;
+export const CheckSuitePreferencePreferencesAutoTriggerChecksList =
+  SetSuitesPreferencesRequestAutoTriggerChecksList as any as S.Schema<CheckSuitePreferencePreferencesAutoTriggerChecksList>;
 
 export interface CheckSuitePreferencePreferences {
   auto_trigger_checks?: CheckSuitePreferencePreferencesAutoTriggerChecksList;
@@ -1666,9 +1644,8 @@ export const UpdateRequestOutputImagesItem = CreateRequestOutputImagesItem;
 
 /** Adds images to the output displayed in the GitHub pull request UI. */
 export type UpdateRequestOutputImagesList = Array<CreateRequestOutputImagesItem>;
-export const UpdateRequestOutputImagesList = /*@__PURE__*/ S.Array(
-  CreateRequestOutputImagesItem,
-) as any as S.Schema<UpdateRequestOutputImagesList>;
+export const UpdateRequestOutputImagesList =
+  CreateRequestOutputImagesList as any as S.Schema<UpdateRequestOutputImagesList>;
 
 /** Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run. */
 export interface UpdateRequestOutput {
@@ -1698,9 +1675,8 @@ export const UpdateRequestActionsItem = CreateRequestActionsItem;
 
 /** Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)." */
 export type UpdateRequestActionsList = Array<CreateRequestActionsItem>;
-export const UpdateRequestActionsList = /*@__PURE__*/ S.Array(
-  CreateRequestActionsItem,
-) as any as S.Schema<UpdateRequestActionsList>;
+export const UpdateRequestActionsList =
+  CreateRequestActionsList as any as S.Schema<UpdateRequestActionsList>;
 
 export interface UpdateRequest {
   /** The account owner of the repository. The name is not case sensitive. */

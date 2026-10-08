@@ -211,11 +211,7 @@ export const DisputesEscalateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EscalateResponse {
   links?: DefinitionsLinkDescriptionList;
 }
-export const EscalateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    links: S.optional(DefinitionsLinkDescriptionList),
-  }),
-).annotate({ identifier: "EscalateResponse" }) as any as S.Schema<EscalateResponse>;
+export const EscalateResponse = SubsequentAction as any as S.Schema<EscalateResponse>;
 
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
@@ -2852,9 +2848,8 @@ export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of metadata for the documents which were uploaded as supporting information for the dispute. */
 export type SupportingInfoDefinitionsDocumentList = Array<Document>;
-export const SupportingInfoDefinitionsDocumentList = /*@__PURE__*/ S.Array(
-  Document,
-) as any as S.Schema<SupportingInfoDefinitionsDocumentList>;
+export const SupportingInfoDefinitionsDocumentList =
+  DefinitionsDocumentList as any as S.Schema<SupportingInfoDefinitionsDocumentList>;
 
 /** The source of the Information. */
 export type SupportingInfoSource =

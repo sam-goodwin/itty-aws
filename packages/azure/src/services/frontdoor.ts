@@ -139,9 +139,8 @@ export const DeleteFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFrontDoorRequest" }) as any as S.Schema<DeleteFrontDoorRequest>;
 
 export interface DeleteFrontDoorResponse {}
-export const DeleteFrontDoorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFrontDoorResponse",
-}) as any as S.Schema<DeleteFrontDoorResponse>;
+export const DeleteFrontDoorResponse =
+  DeleteExperimentResponse as any as S.Schema<DeleteFrontDoorResponse>;
 
 export interface DeleteNetworkExperimentProfileRequest {
   /** The ID of the target subscription. */
@@ -199,9 +198,8 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+export const DeletePolicyResponse =
+  DeleteExperimentResponse as any as S.Schema<DeletePolicyResponse>;
 
 export interface DeleteRulesEngineRequest {
   /** The ID of the target subscription. */
@@ -230,9 +228,8 @@ export const DeleteRulesEngineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRulesEngineRequest" }) as any as S.Schema<DeleteRulesEngineRequest>;
 
 export interface DeleteRulesEngineResponse {}
-export const DeleteRulesEngineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRulesEngineResponse",
-}) as any as S.Schema<DeleteRulesEngineResponse>;
+export const DeleteRulesEngineResponse =
+  DeleteExperimentResponse as any as S.Schema<DeleteRulesEngineResponse>;
 
 export interface DisableFrontendEndpointHttpsRequest {
   /** The ID of the target subscription. */
@@ -263,11 +260,8 @@ export const DisableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableFrontendEndpointHttpsRequest>;
 
 export interface DisableFrontendEndpointHttpsResponse {}
-export const DisableFrontendEndpointHttpsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableFrontendEndpointHttpsResponse",
-}) as any as S.Schema<DisableFrontendEndpointHttpsResponse>;
+export const DisableFrontendEndpointHttpsResponse =
+  DeleteNetworkExperimentProfileResponse as any as S.Schema<DisableFrontendEndpointHttpsResponse>;
 
 /** Defines the source of the SSL certificate */
 export type FrontDoorCertificateSource = "AzureKeyVault" | "FrontDoor";
@@ -374,11 +368,8 @@ export const EnableFrontendEndpointHttpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableFrontendEndpointHttpsRequest>;
 
 export interface EnableFrontendEndpointHttpsResponse {}
-export const EnableFrontendEndpointHttpsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableFrontendEndpointHttpsResponse",
-}) as any as S.Schema<EnableFrontendEndpointHttpsResponse>;
+export const EnableFrontendEndpointHttpsResponse =
+  DeleteNetworkExperimentProfileResponse as any as S.Schema<EnableFrontendEndpointHttpsResponse>;
 
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -466,10 +457,8 @@ export const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ExperimentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
+export const ExperimentsCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
 
 /** Defines the server side resource status */
 export type NetworkExperimentResourceState =
@@ -539,10 +528,8 @@ export const ExperimentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FrontDoorsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FrontDoorsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrontDoorsCreateOrUpdateRequestTagsMap>;
+export const FrontDoorsCreateOrUpdateRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorsCreateOrUpdateRequestTagsMap>;
 
 /** Reference to another subresource. */
 export type SubResource = KeyVaultCertificateSourceParametersVault;
@@ -1076,10 +1063,8 @@ export const FrontDoorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FrontDoorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FrontDoorsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrontDoorsCreateOrUpdateResponseTagsMap>;
+export const FrontDoorsCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorsCreateOrUpdateResponseTagsMap>;
 
 /** A routing rule represents a specification for traffic to treat and where to send it, along with health probe information. */
 export interface RoutingRule {
@@ -1242,9 +1227,8 @@ export const RulesEngineActionRequestHeaderActionsList = /*@__PURE__*/ S.Array(
 
 /** A list of header actions to apply from the response from AFD to the client. */
 export type RulesEngineActionResponseHeaderActionsList = Array<HeaderAction>;
-export const RulesEngineActionResponseHeaderActionsList = /*@__PURE__*/ S.Array(
-  HeaderAction,
-) as any as S.Schema<RulesEngineActionResponseHeaderActionsList>;
+export const RulesEngineActionResponseHeaderActionsList =
+  RulesEngineActionRequestHeaderActionsList as any as S.Schema<RulesEngineActionResponseHeaderActionsList>;
 
 /** One or more actions that will execute, modifying the request and/or response. */
 export interface RulesEngineAction {
@@ -1296,9 +1280,8 @@ export const RulesEngineOperator = S.String;
 
 /** Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match. */
 export type RulesEngineMatchConditionRulesEngineMatchValueList = Array<string>;
-export const RulesEngineMatchConditionRulesEngineMatchValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RulesEngineMatchConditionRulesEngineMatchValueList>;
+export const RulesEngineMatchConditionRulesEngineMatchValueList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<RulesEngineMatchConditionRulesEngineMatchValueList>;
 
 /** Describes what transforms are applied before matching */
 export type Transform =
@@ -1425,10 +1408,8 @@ export const FrontDoorPropertiesRulesEnginesList = /*@__PURE__*/ S.Array(
 
 /** Key-Value pair representing additional properties for frontdoor. */
 export type FrontDoorPropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
-export const FrontDoorPropertiesExtendedPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrontDoorPropertiesExtendedPropertiesMap>;
+export const FrontDoorPropertiesExtendedPropertiesMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorPropertiesExtendedPropertiesMap>;
 
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface FrontDoorProperties {
@@ -1535,10 +1516,8 @@ export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetExperimentResponseTagsMap = { [key: string]: string | undefined };
-export const GetExperimentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetExperimentResponseTagsMap>;
+export const GetExperimentResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetExperimentResponseTagsMap>;
 
 export interface GetExperimentResponse {
   /** Resource ID. */
@@ -1590,10 +1569,8 @@ export const GetFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFrontDoorResponseTagsMap = { [key: string]: string | undefined };
-export const GetFrontDoorResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFrontDoorResponseTagsMap>;
+export const GetFrontDoorResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetFrontDoorResponseTagsMap>;
 
 export interface GetFrontDoorResponse {
   /** Resource ID. */
@@ -1696,10 +1673,8 @@ export const GetNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNetworkExperimentProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkExperimentProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNetworkExperimentProfileResponseTagsMap>;
+export const GetNetworkExperimentProfileResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkExperimentProfileResponseTagsMap>;
 
 /** Defines the properties of an experiment */
 export interface ProfileProperties {
@@ -1770,10 +1745,8 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPolicyResponseTagsMap = { [key: string]: string | undefined };
-export const GetPolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPolicyResponseTagsMap>;
+export const GetPolicyResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPolicyResponseTagsMap>;
 
 /** Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type PolicyEnabledState = "Disabled" | "Enabled";
@@ -1954,9 +1927,8 @@ export const Operator = S.String;
 
 /** List of possible match values. */
 export type MatchConditionMatchValueList = Array<string>;
-export const MatchConditionMatchValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MatchConditionMatchValueList>;
+export const MatchConditionMatchValueList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<MatchConditionMatchValueList>;
 
 /** Describes what transforms applied before matching. */
 export type TransformType =
@@ -2116,9 +2088,8 @@ export const ManagedRuleSetExclusionsList = /*@__PURE__*/ S.Array(
 
 /** Describes the exclusions that are applied to all rules in the group. */
 export type ManagedRuleGroupOverrideExclusionsList = Array<ManagedRuleExclusion>;
-export const ManagedRuleGroupOverrideExclusionsList = /*@__PURE__*/ S.Array(
-  ManagedRuleExclusion,
-) as any as S.Schema<ManagedRuleGroupOverrideExclusionsList>;
+export const ManagedRuleGroupOverrideExclusionsList =
+  ManagedRuleSetExclusionsList as any as S.Schema<ManagedRuleGroupOverrideExclusionsList>;
 
 /** Describes if the managed rule is in enabled or disabled state. */
 export type ManagedRuleEnabledState = "Disabled" | "Enabled";
@@ -2130,9 +2101,8 @@ export const SensitivityType = S.String;
 
 /** Describes the exclusions that are applied to this specific rule. */
 export type ManagedRuleOverrideExclusionsList = Array<ManagedRuleExclusion>;
-export const ManagedRuleOverrideExclusionsList = /*@__PURE__*/ S.Array(
-  ManagedRuleExclusion,
-) as any as S.Schema<ManagedRuleOverrideExclusionsList>;
+export const ManagedRuleOverrideExclusionsList =
+  ManagedRuleSetExclusionsList as any as S.Schema<ManagedRuleOverrideExclusionsList>;
 
 /** Defines a managed rule group override setting. */
 export interface ManagedRuleOverride {
@@ -2235,9 +2205,8 @@ export const ExceptionValueMatchOperator = S.String;
 
 /** List of values to be matched with. */
 export type ManagedRuleSetExceptionMatchValuesList = Array<string>;
-export const ManagedRuleSetExceptionMatchValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ManagedRuleSetExceptionMatchValuesList>;
+export const ManagedRuleSetExceptionMatchValuesList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<ManagedRuleSetExceptionMatchValuesList>;
 
 /** Defines the scope of the rule. */
 export interface RuleScope {
@@ -2377,9 +2346,8 @@ export const RoutingRuleLink = KeyVaultCertificateSourceParametersVault;
 /** Describes Routing Rules associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
-export const WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList = /*@__PURE__*/ S.Array(
-  KeyVaultCertificateSourceParametersVault,
-) as any as S.Schema<WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList>;
+export const WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
+  RoutingRulePropertiesFrontendEndpointsList as any as S.Schema<WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList>;
 
 /** Defines the Resource ID for a Security Policy. */
 export type SecurityPolicyLink = KeyVaultCertificateSourceParametersVault;
@@ -2388,9 +2356,8 @@ export const SecurityPolicyLink = KeyVaultCertificateSourceParametersVault;
 /** Describes Security Policy associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
-export const WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList = /*@__PURE__*/ S.Array(
-  KeyVaultCertificateSourceParametersVault,
-) as any as S.Schema<WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList>;
+export const WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
+  RoutingRulePropertiesFrontendEndpointsList as any as S.Schema<WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList>;
 
 /** Resource status of the policy. */
 export type PolicyResourceState =
@@ -2529,10 +2496,8 @@ export const GetReportLatencyScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetReportLatencyScorecardsResponseTagsMap = { [key: string]: string | undefined };
-export const GetReportLatencyScorecardsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetReportLatencyScorecardsResponseTagsMap>;
+export const GetReportLatencyScorecardsResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetReportLatencyScorecardsResponseTagsMap>;
 
 /** Defines the properties of a latency metric used in the latency scorecard */
 export interface LatencyMetric {
@@ -2700,10 +2665,8 @@ export const GetReportTimeseriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetReportTimeseriesResponseTagsMap = { [key: string]: string | undefined };
-export const GetReportTimeseriesResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetReportTimeseriesResponseTagsMap>;
+export const GetReportTimeseriesResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetReportTimeseriesResponseTagsMap>;
 
 /** The aggregation interval of the Timeseries */
 export type AggregationInterval = "Hourly" | "Daily";
@@ -2825,14 +2788,7 @@ export interface GetRulesEngineResponse {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
-export const GetRulesEngineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(RulesEngineProperties),
-  }),
-).annotate({ identifier: "GetRulesEngineResponse" }) as any as S.Schema<GetRulesEngineResponse>;
+export const GetRulesEngineResponse = RulesEngine as any as S.Schema<GetRulesEngineResponse>;
 
 export interface ListExperimentByProfileRequest {
   /** The ID of the target subscription. */
@@ -2861,10 +2817,8 @@ export const ListExperimentByProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExperimentTagsMap = { [key: string]: string | undefined };
-export const ExperimentTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExperimentTagsMap>;
+export const ExperimentTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentTagsMap>;
 
 /** Defines the properties of an Experiment */
 export interface Experiment {
@@ -2881,16 +2835,7 @@ export interface Experiment {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
-export const Experiment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(ExperimentTagsMap),
-    properties: S.optional(ExperimentProperties),
-  }),
-).annotate({ identifier: "Experiment" }) as any as S.Schema<Experiment>;
+export const Experiment = GetExperimentResponse as any as S.Schema<Experiment>;
 
 /** The Experiment items on this page */
 export type ExperimentListValueList = Array<Experiment>;
@@ -2936,10 +2881,8 @@ export const ListFrontDoorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FrontDoorTagsMap = { [key: string]: string | undefined };
-export const FrontDoorTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FrontDoorTagsMap>;
+export const FrontDoorTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorTagsMap>;
 
 /** Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there. */
 export interface FrontDoor {
@@ -2956,16 +2899,7 @@ export interface FrontDoor {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorProperties;
 }
-export const FrontDoor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(FrontDoorTagsMap),
-    properties: S.optional(FrontDoorProperties),
-  }),
-).annotate({ identifier: "FrontDoor" }) as any as S.Schema<FrontDoor>;
+export const FrontDoor = GetFrontDoorResponse as any as S.Schema<FrontDoor>;
 
 /** The FrontDoor items on this page */
 export type FrontDoorListResultValueList = Array<FrontDoor>;
@@ -3031,9 +2965,8 @@ export const ListFrontendEndpointByFrontDoorRequest = /*@__PURE__*/ S.suspend(()
 
 /** The FrontendEndpoint items on this page */
 export type FrontendEndpointsListResultValueList = Array<FrontendEndpoint>;
-export const FrontendEndpointsListResultValueList = /*@__PURE__*/ S.Array(
-  FrontendEndpoint,
-) as any as S.Schema<FrontendEndpointsListResultValueList>;
+export const FrontendEndpointsListResultValueList =
+  FrontDoorPropertiesFrontendEndpointsList as any as S.Schema<FrontendEndpointsListResultValueList>;
 
 /** Paged collection of FrontendEndpoint items */
 export interface FrontendEndpointsListResult {
@@ -3072,10 +3005,8 @@ export const ListManagedRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ManagedRuleSetDefinitionTagsMap = { [key: string]: string | undefined };
-export const ManagedRuleSetDefinitionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ManagedRuleSetDefinitionTagsMap>;
+export const ManagedRuleSetDefinitionTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ManagedRuleSetDefinitionTagsMap>;
 
 /** OWASP CRS paranoia level of a managed rule. Applicable only for DRS rules. */
 export type ParanoiaLevel = "PL1" | "PL2" | "PL3" | "PL4";
@@ -3245,10 +3176,8 @@ export const ListNetworkExperimentProfileByResourceGroupRequest = /*@__PURE__*/ 
 
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
-export const ProfileTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTagsMap>;
+export const ProfileTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ProfileTagsMap>;
 
 /** Defines an Network Experiment Profile and lists of Experiments */
 export interface Profile {
@@ -3340,10 +3269,8 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebApplicationFirewallPolicyTagsMap = { [key: string]: string | undefined };
-export const WebApplicationFirewallPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebApplicationFirewallPolicyTagsMap>;
+export const WebApplicationFirewallPolicyTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<WebApplicationFirewallPolicyTagsMap>;
 
 /** Defines web application firewall policy. */
 export interface WebApplicationFirewallPolicy {
@@ -3447,10 +3374,8 @@ export const ListPreconfiguredEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PreconfiguredEndpointTagsMap = { [key: string]: string | undefined };
-export const PreconfiguredEndpointTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PreconfiguredEndpointTagsMap>;
+export const PreconfiguredEndpointTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PreconfiguredEndpointTagsMap>;
 
 /** The type of endpoint */
 export type EndpointType = "AFD" | "AzureRegion" | "CDN" | "ATM";
@@ -3553,9 +3478,8 @@ export const ListRulesEngineByFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The RulesEngine items on this page */
 export type RulesEngineListResultValueList = Array<RulesEngine>;
-export const RulesEngineListResultValueList = /*@__PURE__*/ S.Array(
-  RulesEngine,
-) as any as S.Schema<RulesEngineListResultValueList>;
+export const RulesEngineListResultValueList =
+  FrontDoorPropertiesRulesEnginesList as any as S.Schema<RulesEngineListResultValueList>;
 
 /** Paged collection of RulesEngine items */
 export interface RulesEngineListResult {
@@ -3575,10 +3499,8 @@ export const RulesEngineListResult = /*@__PURE__*/ S.suspend(() =>
 export type NetworkExperimentProfilesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkExperimentProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequestTagsMap>;
+export const NetworkExperimentProfilesCreateOrUpdateRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequestTagsMap>;
 
 export interface NetworkExperimentProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -3621,10 +3543,8 @@ export const NetworkExperimentProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.su
 export type NetworkExperimentProfilesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkExperimentProfilesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponseTagsMap>;
+export const NetworkExperimentProfilesCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponseTagsMap>;
 
 export interface NetworkExperimentProfilesCreateOrUpdateResponse {
   /** Resource ID. */
@@ -3642,26 +3562,13 @@ export interface NetworkExperimentProfilesCreateOrUpdateResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const NetworkExperimentProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(NetworkExperimentProfilesCreateOrUpdateResponseTagsMap),
-    properties: S.optional(ProfileProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkExperimentProfilesCreateOrUpdateResponse",
-}) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponse>;
+export const NetworkExperimentProfilesCreateOrUpdateResponse =
+  GetNetworkExperimentProfileResponse as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type PoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
+export const PoliciesCreateOrUpdateRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
 
 /** Defines web application firewall policy properties. */
 export interface WebApplicationFirewallPolicyPropertiesInput {
@@ -3724,10 +3631,8 @@ export const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
+export const PoliciesCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
 
 export interface PoliciesCreateOrUpdateResponse {
   /** Resource ID. */
@@ -3747,26 +3652,13 @@ export interface PoliciesCreateOrUpdateResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
-export const PoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(PoliciesCreateOrUpdateResponseTagsMap),
-    properties: S.optional(WebApplicationFirewallPolicyProperties),
-    etag: S.optional(S.String),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "PoliciesCreateOrUpdateResponse",
-}) as any as S.Schema<PoliciesCreateOrUpdateResponse>;
+export const PoliciesCreateOrUpdateResponse =
+  WebApplicationFirewallPolicy as any as S.Schema<PoliciesCreateOrUpdateResponse>;
 
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
 export type PurgeEndpointContentRequestContentPathsList = Array<string>;
-export const PurgeEndpointContentRequestContentPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeEndpointContentRequestContentPathsList>;
+export const PurgeEndpointContentRequestContentPathsList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<PurgeEndpointContentRequestContentPathsList>;
 
 export interface PurgeEndpointContentRequest {
   /** The ID of the target subscription. */
@@ -3797,9 +3689,8 @@ export const PurgeEndpointContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeEndpointContentRequest>;
 
 export interface PurgeEndpointContentResponse {}
-export const PurgeEndpointContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PurgeEndpointContentResponse",
-}) as any as S.Schema<PurgeEndpointContentResponse>;
+export const PurgeEndpointContentResponse =
+  DeleteExperimentResponse as any as S.Schema<PurgeEndpointContentResponse>;
 
 export interface RulesEnginesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -3855,10 +3746,8 @@ export const RulesEnginesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateExperimentRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateExperimentRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExperimentRequestTagsMap>;
+export const UpdateExperimentRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentRequestTagsMap>;
 
 /** Defines the properties of an experiment */
 export interface ExperimentUpdateProperties {
@@ -3910,10 +3799,8 @@ export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateExperimentResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateExperimentResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateExperimentResponseTagsMap>;
+export const UpdateExperimentResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentResponseTagsMap>;
 
 export interface UpdateExperimentResponse {
   /** Resource ID. */
@@ -3929,16 +3816,8 @@ export interface UpdateExperimentResponse {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
-export const UpdateExperimentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateExperimentResponseTagsMap),
-    properties: S.optional(ExperimentProperties),
-  }),
-).annotate({ identifier: "UpdateExperimentResponse" }) as any as S.Schema<UpdateExperimentResponse>;
+export const UpdateExperimentResponse =
+  GetExperimentResponse as any as S.Schema<UpdateExperimentResponse>;
 
 /** Defines the properties of an experiment */
 export interface ProfileUpdateProperties {
@@ -3953,10 +3832,8 @@ export const ProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNetworkExperimentProfileRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkExperimentProfileRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNetworkExperimentProfileRequestTagsMap>;
+export const UpdateNetworkExperimentProfileRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkExperimentProfileRequestTagsMap>;
 
 export interface UpdateNetworkExperimentProfileRequest {
   /** The ID of the target subscription. */
@@ -3991,10 +3868,8 @@ export const UpdateNetworkExperimentProfileRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateNetworkExperimentProfileResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkExperimentProfileResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNetworkExperimentProfileResponseTagsMap>;
+export const UpdateNetworkExperimentProfileResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkExperimentProfileResponseTagsMap>;
 
 export interface UpdateNetworkExperimentProfileResponse {
   /** Resource ID. */
@@ -4012,26 +3887,13 @@ export interface UpdateNetworkExperimentProfileResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const UpdateNetworkExperimentProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateNetworkExperimentProfileResponseTagsMap),
-    properties: S.optional(ProfileProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateNetworkExperimentProfileResponse",
-}) as any as S.Schema<UpdateNetworkExperimentProfileResponse>;
+export const UpdateNetworkExperimentProfileResponse =
+  GetNetworkExperimentProfileResponse as any as S.Schema<UpdateNetworkExperimentProfileResponse>;
 
 /** Resource tags. */
 export type UpdatePolicyRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePolicyRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePolicyRequestTagsMap>;
+export const UpdatePolicyRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyRequestTagsMap>;
 
 export interface UpdatePolicyRequest {
   /** The ID of the target subscription. */
@@ -4061,10 +3923,8 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePolicyResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePolicyResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePolicyResponseTagsMap>;
+export const UpdatePolicyResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyResponseTagsMap>;
 
 export interface UpdatePolicyResponse {
   /** Resource ID. */
@@ -4084,18 +3944,7 @@ export interface UpdatePolicyResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
-export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(UpdatePolicyResponseTagsMap),
-    properties: S.optional(WebApplicationFirewallPolicyProperties),
-    etag: S.optional(S.String),
-    sku: S.optional(Sku),
-  }),
-).annotate({ identifier: "UpdatePolicyResponse" }) as any as S.Schema<UpdatePolicyResponse>;
+export const UpdatePolicyResponse = GetPolicyResponse as any as S.Schema<UpdatePolicyResponse>;
 
 export interface ValidateFrontDoorCustomDomainRequest {
   /** The ID of the target subscription. */

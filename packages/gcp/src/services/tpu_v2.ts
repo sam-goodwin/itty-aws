@@ -534,9 +534,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** Spot tier definition. */
 export interface Spot {}
-export const Spot = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Spot",
-}) as any as S.Schema<Spot>;
+export const Spot = Empty as any as S.Schema<Spot>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {

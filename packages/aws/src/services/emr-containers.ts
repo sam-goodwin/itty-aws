@@ -677,11 +677,8 @@ export interface CreateVirtualClusterResponse {
   name?: string;
   arn?: string;
 }
-export const CreateVirtualClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), name: S.optional(S.String), arn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateVirtualClusterResponse",
-}) as any as S.Schema<CreateVirtualClusterResponse>;
+export const CreateVirtualClusterResponse =
+  CreateSecurityConfigurationResponse as any as S.Schema<CreateVirtualClusterResponse>;
 export interface DeleteJobTemplateRequest {
   id: string;
 }
@@ -748,11 +745,8 @@ export const DeleteSecurityConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSecurityConfigurationResponse {
   id?: string;
 }
-export const DeleteSecurityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteSecurityConfigurationResponse",
-}) as any as S.Schema<DeleteSecurityConfigurationResponse>;
+export const DeleteSecurityConfigurationResponse =
+  DeleteJobTemplateResponse as any as S.Schema<DeleteSecurityConfigurationResponse>;
 export interface DeleteVirtualClusterRequest {
   id: string;
 }
@@ -766,11 +760,8 @@ export const DeleteVirtualClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVirtualClusterResponse {
   id?: string;
 }
-export const DeleteVirtualClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteVirtualClusterResponse",
-}) as any as S.Schema<DeleteVirtualClusterResponse>;
+export const DeleteVirtualClusterResponse =
+  DeleteJobTemplateResponse as any as S.Schema<DeleteVirtualClusterResponse>;
 export interface DescribeJobRunRequest {
   id: string;
   virtualClusterId: string;
@@ -1247,7 +1238,7 @@ export const ListJobTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ templates: S.optional(JobTemplates), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListJobTemplatesResponse" }) as any as S.Schema<ListJobTemplatesResponse>;
 export type EndpointTypes = string[];
-export const EndpointTypes = /*@__PURE__*/ S.Array(S.String);
+export const EndpointTypes = SubnetIds as any as S.Schema<EndpointTypes>;
 export type EndpointStates = EndpointState[];
 export const EndpointStates = /*@__PURE__*/ S.Array(EndpointState);
 export interface ListManagedEndpointsRequest {
@@ -1395,10 +1386,8 @@ export const ListVirtualClustersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVirtualClustersResponse",
 }) as any as S.Schema<ListVirtualClustersResponse>;
 export type TemplateParameterInputMap = { [key: string]: string | undefined };
-export const TemplateParameterInputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TemplateParameterInputMap =
+  SensitivePropertiesMap as any as S.Schema<TemplateParameterInputMap>;
 export interface StartJobRunRequest {
   name?: string;
   virtualClusterId: string;
@@ -1464,7 +1453,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = SubnetIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1478,9 +1467,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateVirtualClusterRequest {
   id: string;
   schedulerConfiguration?: SchedulerConfiguration;
@@ -1500,11 +1487,8 @@ export const UpdateVirtualClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVirtualClusterResponse {
   virtualCluster?: VirtualCluster;
 }
-export const UpdateVirtualClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ virtualCluster: S.optional(VirtualCluster) }),
-).annotate({
-  identifier: "UpdateVirtualClusterResponse",
-}) as any as S.Schema<UpdateVirtualClusterResponse>;
+export const UpdateVirtualClusterResponse =
+  DescribeVirtualClusterResponse as any as S.Schema<UpdateVirtualClusterResponse>;
 export type CancelJobRunError =
   | InternalServerException
   | ValidationException

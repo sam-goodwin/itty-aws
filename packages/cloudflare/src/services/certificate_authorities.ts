@@ -67,9 +67,8 @@ export const GetHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHostnameAssociationResponse>;
 
 export type HostnameAssociationsUpdateRequestHostnamesList = Array<string>;
-export const HostnameAssociationsUpdateRequestHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostnameAssociationsUpdateRequestHostnamesList>;
+export const HostnameAssociationsUpdateRequestHostnamesList =
+  HostnameAssociationsGetResponseHostnamesList as any as S.Schema<HostnameAssociationsUpdateRequestHostnamesList>;
 
 export interface PutHostnameAssociationRequest {
   /** Identifier. */
@@ -97,21 +96,15 @@ export const PutHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostnameAssociationRequest>;
 
 export type HostnameAssociationsUpdateResponseHostnamesList = Array<string>;
-export const HostnameAssociationsUpdateResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostnameAssociationsUpdateResponseHostnamesList>;
+export const HostnameAssociationsUpdateResponseHostnamesList =
+  HostnameAssociationsGetResponseHostnamesList as any as S.Schema<HostnameAssociationsUpdateResponseHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutHostnameAssociationResponse {
   hostnames?: HostnameAssociationsUpdateResponseHostnamesList | null;
 }
-export const PutHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostnames: S.optional(S.NullOr(HostnameAssociationsUpdateResponseHostnamesList)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutHostnameAssociationResponse",
-}) as any as S.Schema<PutHostnameAssociationResponse>;
+export const PutHostnameAssociationResponse =
+  GetHostnameAssociationResponse as any as S.Schema<PutHostnameAssociationResponse>;
 
 export type GetHostnameAssociationError = Forbidden | CloudflareOpError;
 /** List Hostname Associations. */

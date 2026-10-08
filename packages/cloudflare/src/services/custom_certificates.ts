@@ -154,9 +154,8 @@ export const CreateResponseHostsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseHostsList>;
 
 export type CreateResponseKeylessServerPermissionsList = Array<string>;
-export const CreateResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseKeylessServerPermissionsList>;
+export const CreateResponseKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<CreateResponseKeylessServerPermissionsList>;
 
 export type CreateResponseKeylessServerStatus = "active" | "deleted";
 export const CreateResponseKeylessServerStatus = S.String;
@@ -350,14 +349,12 @@ export const GetResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseGeoRestrictions>;
 
 export type GetResponseHostsList = Array<string>;
-export const GetResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseHostsList>;
+export const GetResponseHostsList =
+  CreateResponseHostsList as any as S.Schema<GetResponseHostsList>;
 
 export type GetResponseKeylessServerPermissionsList = Array<string>;
-export const GetResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseKeylessServerPermissionsList>;
+export const GetResponseKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<GetResponseKeylessServerPermissionsList>;
 
 export type GetResponseKeylessServerStatus = "active" | "deleted";
 export const GetResponseKeylessServerStatus = S.String;
@@ -510,14 +507,12 @@ export const ListResultItemGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemGeoRestrictions>;
 
 export type ListResultItemHostsList = Array<string>;
-export const ListResultItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemHostsList>;
+export const ListResultItemHostsList =
+  CreateResponseHostsList as any as S.Schema<ListResultItemHostsList>;
 
 export type ListResultItemKeylessServerPermissionsList = Array<string>;
-export const ListResultItemKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemKeylessServerPermissionsList>;
+export const ListResultItemKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<ListResultItemKeylessServerPermissionsList>;
 
 export type ListResultItemKeylessServerStatus = "active" | "deleted";
 export const ListResultItemKeylessServerStatus = S.String;
@@ -721,14 +716,12 @@ export const EditResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseGeoRestrictions>;
 
 export type EditResponseHostsList = Array<string>;
-export const EditResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseHostsList>;
+export const EditResponseHostsList =
+  CreateResponseHostsList as any as S.Schema<EditResponseHostsList>;
 
 export type EditResponseKeylessServerPermissionsList = Array<string>;
-export const EditResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseKeylessServerPermissionsList>;
+export const EditResponseKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<EditResponseKeylessServerPermissionsList>;
 
 export type EditResponseKeylessServerStatus = "active" | "deleted";
 export const EditResponseKeylessServerStatus = S.String;
@@ -889,14 +882,12 @@ export const PrioritizeUpdateResultItemGeoRestrictions = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PrioritizeUpdateResultItemGeoRestrictions>;
 
 export type PrioritizeUpdateResultItemHostsList = Array<string>;
-export const PrioritizeUpdateResultItemHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrioritizeUpdateResultItemHostsList>;
+export const PrioritizeUpdateResultItemHostsList =
+  CreateResponseHostsList as any as S.Schema<PrioritizeUpdateResultItemHostsList>;
 
 export type PrioritizeUpdateResultItemKeylessServerPermissionsList = Array<string>;
-export const PrioritizeUpdateResultItemKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrioritizeUpdateResultItemKeylessServerPermissionsList>;
+export const PrioritizeUpdateResultItemKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<PrioritizeUpdateResultItemKeylessServerPermissionsList>;
 
 export type PrioritizeUpdateResultItemKeylessServerStatus = "active" | "deleted";
 export const PrioritizeUpdateResultItemKeylessServerStatus = S.String;

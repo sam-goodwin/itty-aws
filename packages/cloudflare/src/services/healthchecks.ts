@@ -88,9 +88,8 @@ export const CreateRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateRequestHttpConfigExpectedCodesList>;
 
 export type CreateRequestHttpConfigHeaderValueList = Array<string>;
-export const CreateRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestHttpConfigHeaderValueList>;
+export const CreateRequestHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<CreateRequestHttpConfigHeaderValueList>;
 
 export type CreateRequestHttpConfigHeaderMap = {
   [key: string]: CreateRequestHttpConfigHeaderValueList | undefined;
@@ -226,22 +225,18 @@ export const CreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseCheckRegionsList>;
 
 export type CreateResponseHttpConfigExpectedCodesList = Array<string>;
-export const CreateResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseHttpConfigExpectedCodesList>;
+export const CreateResponseHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<CreateResponseHttpConfigExpectedCodesList>;
 
 export type CreateResponseHttpConfigHeaderValueList = Array<string>;
-export const CreateResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseHttpConfigHeaderValueList>;
+export const CreateResponseHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<CreateResponseHttpConfigHeaderValueList>;
 
 export type CreateResponseHttpConfigHeaderMap = {
   [key: string]: CreateResponseHttpConfigHeaderValueList | undefined;
 };
-export const CreateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateResponseHttpConfigHeaderValueList,
-) as any as S.Schema<CreateResponseHttpConfigHeaderMap>;
+export const CreateResponseHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<CreateResponseHttpConfigHeaderMap>;
 
 export type CreateResponseHttpConfigMethod = "GET" | "HEAD";
 export const CreateResponseHttpConfigMethod = S.String;
@@ -387,22 +382,18 @@ export const PreviewsCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PreviewsCreateRequestCheckRegionsList>;
 
 export type PreviewsCreateRequestHttpConfigExpectedCodesList = Array<string>;
-export const PreviewsCreateRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewsCreateRequestHttpConfigExpectedCodesList>;
+export const PreviewsCreateRequestHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateRequestHttpConfigExpectedCodesList>;
 
 export type PreviewsCreateRequestHttpConfigHeaderValueList = Array<string>;
-export const PreviewsCreateRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderValueList>;
+export const PreviewsCreateRequestHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderValueList>;
 
 export type PreviewsCreateRequestHttpConfigHeaderMap = {
   [key: string]: PreviewsCreateRequestHttpConfigHeaderValueList | undefined;
 };
-export const PreviewsCreateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PreviewsCreateRequestHttpConfigHeaderValueList,
-) as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderMap>;
+export const PreviewsCreateRequestHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderMap>;
 
 export type PreviewsCreateRequestHttpConfigMethod = "GET" | "HEAD";
 export const PreviewsCreateRequestHttpConfigMethod = S.String;
@@ -534,22 +525,18 @@ export const PreviewsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PreviewsCreateResponseCheckRegionsList>;
 
 export type PreviewsCreateResponseHttpConfigExpectedCodesList = Array<string>;
-export const PreviewsCreateResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewsCreateResponseHttpConfigExpectedCodesList>;
+export const PreviewsCreateResponseHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateResponseHttpConfigExpectedCodesList>;
 
 export type PreviewsCreateResponseHttpConfigHeaderValueList = Array<string>;
-export const PreviewsCreateResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderValueList>;
+export const PreviewsCreateResponseHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderValueList>;
 
 export type PreviewsCreateResponseHttpConfigHeaderMap = {
   [key: string]: PreviewsCreateResponseHttpConfigHeaderValueList | undefined;
 };
-export const PreviewsCreateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PreviewsCreateResponseHttpConfigHeaderValueList,
-) as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderMap>;
+export const PreviewsCreateResponseHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderMap>;
 
 export type PreviewsCreateResponseHttpConfigMethod = "GET" | "HEAD";
 export const PreviewsCreateResponseHttpConfigMethod = S.String;
@@ -778,22 +765,18 @@ export const GetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseCheckRegionsList>;
 
 export type GetResponseHttpConfigExpectedCodesList = Array<string>;
-export const GetResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseHttpConfigExpectedCodesList>;
+export const GetResponseHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<GetResponseHttpConfigExpectedCodesList>;
 
 export type GetResponseHttpConfigHeaderValueList = Array<string>;
-export const GetResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseHttpConfigHeaderValueList>;
+export const GetResponseHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<GetResponseHttpConfigHeaderValueList>;
 
 export type GetResponseHttpConfigHeaderMap = {
   [key: string]: GetResponseHttpConfigHeaderValueList | undefined;
 };
-export const GetResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetResponseHttpConfigHeaderValueList,
-) as any as S.Schema<GetResponseHttpConfigHeaderMap>;
+export const GetResponseHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<GetResponseHttpConfigHeaderMap>;
 
 export type GetResponseHttpConfigMethod = "GET" | "HEAD";
 export const GetResponseHttpConfigMethod = S.String;
@@ -954,22 +937,18 @@ export const PreviewsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PreviewsGetResponseCheckRegionsList>;
 
 export type PreviewsGetResponseHttpConfigExpectedCodesList = Array<string>;
-export const PreviewsGetResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewsGetResponseHttpConfigExpectedCodesList>;
+export const PreviewsGetResponseHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsGetResponseHttpConfigExpectedCodesList>;
 
 export type PreviewsGetResponseHttpConfigHeaderValueList = Array<string>;
-export const PreviewsGetResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewsGetResponseHttpConfigHeaderValueList>;
+export const PreviewsGetResponseHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<PreviewsGetResponseHttpConfigHeaderValueList>;
 
 export type PreviewsGetResponseHttpConfigHeaderMap = {
   [key: string]: PreviewsGetResponseHttpConfigHeaderValueList | undefined;
 };
-export const PreviewsGetResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  PreviewsGetResponseHttpConfigHeaderValueList,
-) as any as S.Schema<PreviewsGetResponseHttpConfigHeaderMap>;
+export const PreviewsGetResponseHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<PreviewsGetResponseHttpConfigHeaderMap>;
 
 export type PreviewsGetResponseHttpConfigMethod = "GET" | "HEAD";
 export const PreviewsGetResponseHttpConfigMethod = S.String;
@@ -1133,22 +1112,18 @@ export const ListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResultItemCheckRegionsList>;
 
 export type ListResultItemHttpConfigExpectedCodesList = Array<string>;
-export const ListResultItemHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemHttpConfigExpectedCodesList>;
+export const ListResultItemHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<ListResultItemHttpConfigExpectedCodesList>;
 
 export type ListResultItemHttpConfigHeaderValueList = Array<string>;
-export const ListResultItemHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemHttpConfigHeaderValueList>;
+export const ListResultItemHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<ListResultItemHttpConfigHeaderValueList>;
 
 export type ListResultItemHttpConfigHeaderMap = {
   [key: string]: ListResultItemHttpConfigHeaderValueList | undefined;
 };
-export const ListResultItemHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListResultItemHttpConfigHeaderValueList,
-) as any as S.Schema<ListResultItemHttpConfigHeaderMap>;
+export const ListResultItemHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<ListResultItemHttpConfigHeaderMap>;
 
 export type ListResultItemHttpConfigMethod = "GET" | "HEAD";
 export const ListResultItemHttpConfigMethod = S.String;
@@ -1307,22 +1282,18 @@ export const EditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditRequestCheckRegionsList>;
 
 export type EditRequestHttpConfigExpectedCodesList = Array<string>;
-export const EditRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestHttpConfigExpectedCodesList>;
+export const EditRequestHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditRequestHttpConfigExpectedCodesList>;
 
 export type EditRequestHttpConfigHeaderValueList = Array<string>;
-export const EditRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestHttpConfigHeaderValueList>;
+export const EditRequestHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditRequestHttpConfigHeaderValueList>;
 
 export type EditRequestHttpConfigHeaderMap = {
   [key: string]: EditRequestHttpConfigHeaderValueList | undefined;
 };
-export const EditRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  EditRequestHttpConfigHeaderValueList,
-) as any as S.Schema<EditRequestHttpConfigHeaderMap>;
+export const EditRequestHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<EditRequestHttpConfigHeaderMap>;
 
 export type EditRequestHttpConfigMethod = "GET" | "HEAD";
 export const EditRequestHttpConfigMethod = S.String;
@@ -1455,22 +1426,18 @@ export const EditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EditResponseCheckRegionsList>;
 
 export type EditResponseHttpConfigExpectedCodesList = Array<string>;
-export const EditResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseHttpConfigExpectedCodesList>;
+export const EditResponseHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditResponseHttpConfigExpectedCodesList>;
 
 export type EditResponseHttpConfigHeaderValueList = Array<string>;
-export const EditResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseHttpConfigHeaderValueList>;
+export const EditResponseHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<EditResponseHttpConfigHeaderValueList>;
 
 export type EditResponseHttpConfigHeaderMap = {
   [key: string]: EditResponseHttpConfigHeaderValueList | undefined;
 };
-export const EditResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  EditResponseHttpConfigHeaderValueList,
-) as any as S.Schema<EditResponseHttpConfigHeaderMap>;
+export const EditResponseHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<EditResponseHttpConfigHeaderMap>;
 
 export type EditResponseHttpConfigMethod = "GET" | "HEAD";
 export const EditResponseHttpConfigMethod = S.String;
@@ -1610,22 +1577,18 @@ export const UpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateRequestCheckRegionsList>;
 
 export type UpdateRequestHttpConfigExpectedCodesList = Array<string>;
-export const UpdateRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestHttpConfigExpectedCodesList>;
+export const UpdateRequestHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateRequestHttpConfigExpectedCodesList>;
 
 export type UpdateRequestHttpConfigHeaderValueList = Array<string>;
-export const UpdateRequestHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestHttpConfigHeaderValueList>;
+export const UpdateRequestHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateRequestHttpConfigHeaderValueList>;
 
 export type UpdateRequestHttpConfigHeaderMap = {
   [key: string]: UpdateRequestHttpConfigHeaderValueList | undefined;
 };
-export const UpdateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateRequestHttpConfigHeaderValueList,
-) as any as S.Schema<UpdateRequestHttpConfigHeaderMap>;
+export const UpdateRequestHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<UpdateRequestHttpConfigHeaderMap>;
 
 export type UpdateRequestHttpConfigMethod = "GET" | "HEAD";
 export const UpdateRequestHttpConfigMethod = S.String;
@@ -1758,22 +1721,18 @@ export const UpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponseCheckRegionsList>;
 
 export type UpdateResponseHttpConfigExpectedCodesList = Array<string>;
-export const UpdateResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseHttpConfigExpectedCodesList>;
+export const UpdateResponseHttpConfigExpectedCodesList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateResponseHttpConfigExpectedCodesList>;
 
 export type UpdateResponseHttpConfigHeaderValueList = Array<string>;
-export const UpdateResponseHttpConfigHeaderValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseHttpConfigHeaderValueList>;
+export const UpdateResponseHttpConfigHeaderValueList =
+  CreateRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateResponseHttpConfigHeaderValueList>;
 
 export type UpdateResponseHttpConfigHeaderMap = {
   [key: string]: UpdateResponseHttpConfigHeaderValueList | undefined;
 };
-export const UpdateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateResponseHttpConfigHeaderValueList,
-) as any as S.Schema<UpdateResponseHttpConfigHeaderMap>;
+export const UpdateResponseHttpConfigHeaderMap =
+  CreateRequestHttpConfigHeaderMap as any as S.Schema<UpdateResponseHttpConfigHeaderMap>;
 
 export type UpdateResponseHttpConfigMethod = "GET" | "HEAD";
 export const UpdateResponseHttpConfigMethod = S.String;

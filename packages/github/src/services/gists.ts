@@ -332,9 +332,8 @@ export const GistSimpleForkOfForksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GistSimpleForkOfForksList>;
 
 export type GistSimpleForkOfHistoryList = Array<unknown>;
-export const GistSimpleForkOfHistoryList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GistSimpleForkOfHistoryList>;
+export const GistSimpleForkOfHistoryList =
+  GistSimpleForkOfForksList as any as S.Schema<GistSimpleForkOfHistoryList>;
 
 /** Gist */
 export interface GistSimpleForkOf {
@@ -534,9 +533,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResponse",
-}) as any as S.Schema<DeleteResponse>;
+export const DeleteResponse = CheckIsStarredResponse as any as S.Schema<DeleteResponse>;
 
 export interface DeleteCommentRequest {
   /** The unique identifier of the gist. */
@@ -552,9 +549,8 @@ export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommentRequest" }) as any as S.Schema<DeleteCommentRequest>;
 
 export interface DeleteCommentResponse {}
-export const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCommentResponse",
-}) as any as S.Schema<DeleteCommentResponse>;
+export const DeleteCommentResponse =
+  CheckIsStarredResponse as any as S.Schema<DeleteCommentResponse>;
 
 export interface ForkRequest {
   /** The unique identifier of the gist. */
@@ -593,14 +589,11 @@ export const BaseGistFilesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BaseGistFilesMap>;
 
 export type BaseGistForksList = Array<unknown>;
-export const BaseGistForksList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<BaseGistForksList>;
+export const BaseGistForksList = GistSimpleForkOfForksList as any as S.Schema<BaseGistForksList>;
 
 export type BaseGistHistoryList = Array<unknown>;
-export const BaseGistHistoryList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<BaseGistHistoryList>;
+export const BaseGistHistoryList =
+  GistSimpleForkOfForksList as any as S.Schema<BaseGistHistoryList>;
 
 /** Base Gist */
 export interface BaseGist {
@@ -832,14 +825,11 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForUserRequest" }) as any as S.Schema<ListForUserRequest>;
 
 export type ListForUserResponseBodyList = Array<BaseGist>;
-export const ListForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  BaseGist,
-) as any as S.Schema<ListForUserResponseBodyList>;
+export const ListForUserResponseBodyList =
+  ListResponseBodyList as any as S.Schema<ListForUserResponseBodyList>;
 
 export type ListForUserResponse = ListForUserResponseBodyList;
-export const ListForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListForUserResponse" }) as any as S.Schema<ListForUserResponse>;
+export const ListForUserResponse = ListResponse as any as S.Schema<ListForUserResponse>;
 
 export interface ListPublicRequest {
   /** Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
@@ -858,14 +848,11 @@ export const ListPublicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPublicRequest" }) as any as S.Schema<ListPublicRequest>;
 
 export type ListPublicResponseBodyList = Array<BaseGist>;
-export const ListPublicResponseBodyList = /*@__PURE__*/ S.Array(
-  BaseGist,
-) as any as S.Schema<ListPublicResponseBodyList>;
+export const ListPublicResponseBodyList =
+  ListResponseBodyList as any as S.Schema<ListPublicResponseBodyList>;
 
 export type ListPublicResponse = ListPublicResponseBodyList;
-export const ListPublicResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListPublicResponse" }) as any as S.Schema<ListPublicResponse>;
+export const ListPublicResponse = ListResponse as any as S.Schema<ListPublicResponse>;
 
 export interface ListStarredRequest {
   /** Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
@@ -884,14 +871,11 @@ export const ListStarredRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStarredRequest" }) as any as S.Schema<ListStarredRequest>;
 
 export type ListStarredResponseBodyList = Array<BaseGist>;
-export const ListStarredResponseBodyList = /*@__PURE__*/ S.Array(
-  BaseGist,
-) as any as S.Schema<ListStarredResponseBodyList>;
+export const ListStarredResponseBodyList =
+  ListResponseBodyList as any as S.Schema<ListStarredResponseBodyList>;
 
 export type ListStarredResponse = ListStarredResponseBodyList;
-export const ListStarredResponse = /*@__PURE__*/ S.suspend(() =>
-  ListStarredResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListStarredResponse" }) as any as S.Schema<ListStarredResponse>;
+export const ListStarredResponse = ListResponse as any as S.Schema<ListStarredResponse>;
 
 export interface StarRequest {
   /** The unique identifier of the gist. */
@@ -904,9 +888,7 @@ export const StarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StarRequest" }) as any as S.Schema<StarRequest>;
 
 export interface StarResponse {}
-export const StarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StarResponse",
-}) as any as S.Schema<StarResponse>;
+export const StarResponse = CheckIsStarredResponse as any as S.Schema<StarResponse>;
 
 export interface UnstarRequest {
   /** The unique identifier of the gist. */
@@ -919,9 +901,7 @@ export const UnstarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnstarRequest" }) as any as S.Schema<UnstarRequest>;
 
 export interface UnstarResponse {}
-export const UnstarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnstarResponse",
-}) as any as S.Schema<UnstarResponse>;
+export const UnstarResponse = CheckIsStarredResponse as any as S.Schema<UnstarResponse>;
 
 export interface UpdateRequestFilesValue {
   /** The new content of the file. */

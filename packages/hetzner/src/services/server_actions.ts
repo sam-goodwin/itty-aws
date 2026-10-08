@@ -138,9 +138,8 @@ export const AttachServerIsoResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type AttachServerIsoResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const AttachServerIsoResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<AttachServerIsoResponseActionResourcesList>;
+export const AttachServerIsoResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<AttachServerIsoResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -230,9 +229,8 @@ export const AttachServerToNetworkResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type AttachServerToNetworkResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const AttachServerToNetworkResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<AttachServerToNetworkResponseActionResourcesList>;
+export const AttachServerToNetworkResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<AttachServerToNetworkResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachServerToNetworkResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -285,9 +283,8 @@ export const AttachServerToNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** New alias IPs to set for this Server. */
 export type ChangeServerAliasIpsRequestAliasIpsList = Array<string>;
-export const ChangeServerAliasIpsRequestAliasIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChangeServerAliasIpsRequestAliasIpsList>;
+export const ChangeServerAliasIpsRequestAliasIpsList =
+  AttachServerToNetworkRequestAliasIpsList as any as S.Schema<ChangeServerAliasIpsRequestAliasIpsList>;
 
 export interface ChangeServerAliasIpsRequest {
   /** ID of the Server. */
@@ -319,9 +316,8 @@ export const ChangeServerAliasIpsResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeServerAliasIpsResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerAliasIpsResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ChangeServerAliasIpsResponseActionResourcesList>;
+export const ChangeServerAliasIpsResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerAliasIpsResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerAliasIpsResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -401,9 +397,8 @@ export const ChangeServerDnsPtrResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeServerDnsPtrResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerDnsPtrResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ChangeServerDnsPtrResponseActionResourcesList>;
+export const ChangeServerDnsPtrResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerDnsPtrResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerDnsPtrResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -483,9 +478,8 @@ export const ChangeServerProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeServerProtectionResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ChangeServerProtectionResponseActionResourcesList>;
+export const ChangeServerProtectionResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerProtectionResponseActionError =
@@ -565,9 +559,8 @@ export const ChangeServerTypeResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeServerTypeResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerTypeResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ChangeServerTypeResponseActionResourcesList>;
+export const ChangeServerTypeResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerTypeResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerTypeResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -712,10 +705,8 @@ export const CreateServerImageResponseImageDeprecation = /*@__PURE__*/ S.suspend
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerImageResponseImageLabelsMap = { [key: string]: string | undefined };
-export const CreateServerImageResponseImageLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServerImageResponseImageLabelsMap>;
+export const CreateServerImageResponseImageLabelsMap =
+  CreateServerImageRequestLabelsMap as any as S.Schema<CreateServerImageResponseImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type CreateServerImageResponseImageArchitecture = "x86" | "arm";
@@ -799,9 +790,8 @@ export const CreateServerImageResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type CreateServerImageResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const CreateServerImageResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<CreateServerImageResponseActionResourcesList>;
+export const CreateServerImageResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<CreateServerImageResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateServerImageResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -880,9 +870,8 @@ export const DetachServerFromNetworkResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DetachServerFromNetworkResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DetachServerFromNetworkResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<DetachServerFromNetworkResponseActionResourcesList>;
+export const DetachServerFromNetworkResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DetachServerFromNetworkResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachServerFromNetworkResponseActionError =
@@ -956,9 +945,8 @@ export const DetachServerIsoResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DetachServerIsoResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DetachServerIsoResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<DetachServerIsoResponseActionResourcesList>;
+export const DetachServerIsoResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DetachServerIsoResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1030,9 +1018,8 @@ export const DisableServerBackupResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DisableServerBackupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DisableServerBackupResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<DisableServerBackupResponseActionResourcesList>;
+export const DisableServerBackupResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DisableServerBackupResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1106,9 +1093,8 @@ export const DisableServerRescueResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DisableServerRescueResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DisableServerRescueResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<DisableServerRescueResponseActionResourcesList>;
+export const DisableServerRescueResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DisableServerRescueResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1182,9 +1168,8 @@ export const EnableServerBackupResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type EnableServerBackupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const EnableServerBackupResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<EnableServerBackupResponseActionResourcesList>;
+export const EnableServerBackupResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<EnableServerBackupResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1274,9 +1259,8 @@ export const EnableServerRescueResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type EnableServerRescueResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const EnableServerRescueResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<EnableServerRescueResponseActionResourcesList>;
+export const EnableServerRescueResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<EnableServerRescueResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1351,9 +1335,8 @@ export const GetServersActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetServersActionResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const GetServersActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<GetServersActionResponseActionResourcesList>;
+export const GetServersActionResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<GetServersActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetServersActionResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1471,9 +1454,8 @@ export const ListServerActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListServerActionsResponseActionsItemResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ListServerActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ListServerActionsResponseActionsItemResourcesList>;
+export const ListServerActionsResponseActionsItemResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ListServerActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListServerActionsResponseActionsItemError =
@@ -1573,9 +1555,8 @@ export const ListServerActionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServerActionsResponse>;
 
 export type ListServersActionsRequestIdList = Array<number>;
-export const ListServersActionsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListServersActionsRequestIdList>;
+export const ListServersActionsRequestIdList =
+  EnableServerRescueRequestSshKeysList as any as S.Schema<ListServersActionsRequestIdList>;
 
 export type ListServersActionsRequestSortItem =
   | "id"
@@ -1649,9 +1630,8 @@ export const ListServersActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListServersActionsResponseActionsItemResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ListServersActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ListServersActionsResponseActionsItemResourcesList>;
+export const ListServersActionsResponseActionsItemResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ListServersActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListServersActionsResponseActionsItemError =
@@ -1739,9 +1719,8 @@ export const PoweroffServerResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type PoweroffServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const PoweroffServerResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<PoweroffServerResponseActionResourcesList>;
+export const PoweroffServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<PoweroffServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type PoweroffServerResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1811,9 +1790,8 @@ export const PoweronServerResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type PoweronServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const PoweronServerResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<PoweronServerResponseActionResourcesList>;
+export const PoweronServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<PoweronServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type PoweronServerResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1883,9 +1861,8 @@ export const RebootServerResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type RebootServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RebootServerResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<RebootServerResponseActionResourcesList>;
+export const RebootServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RebootServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RebootServerResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -1961,9 +1938,8 @@ export const RebuildServerResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type RebuildServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RebuildServerResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<RebuildServerResponseActionResourcesList>;
+export const RebuildServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RebuildServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RebuildServerResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -2040,9 +2016,8 @@ export const RemoveServerFromPlacementGroupResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type RemoveServerFromPlacementGroupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RemoveServerFromPlacementGroupResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<RemoveServerFromPlacementGroupResponseActionResourcesList>;
+export const RemoveServerFromPlacementGroupResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RemoveServerFromPlacementGroupResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveServerFromPlacementGroupResponseActionError =
@@ -2118,9 +2093,8 @@ export const RequestServerConsoleResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type RequestServerConsoleResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RequestServerConsoleResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<RequestServerConsoleResponseActionResourcesList>;
+export const RequestServerConsoleResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RequestServerConsoleResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RequestServerConsoleResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -2198,9 +2172,8 @@ export const ResetServerResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ResetServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ResetServerResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ResetServerResponseActionResourcesList>;
+export const ResetServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ResetServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResetServerResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -2272,9 +2245,8 @@ export const ResetServerPasswordResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ResetServerPasswordResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ResetServerPasswordResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ResetServerPasswordResponseActionResourcesList>;
+export const ResetServerPasswordResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ResetServerPasswordResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResetServerPasswordResponseActionError = AddServerToPlacementGroupResponseActionError;
@@ -2349,9 +2321,8 @@ export const ShutdownServerResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ShutdownServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ShutdownServerResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddServerToPlacementGroupResponseActionResourcesItem,
-) as any as S.Schema<ShutdownServerResponseActionResourcesList>;
+export const ShutdownServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ShutdownServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ShutdownServerResponseActionError = AddServerToPlacementGroupResponseActionError;

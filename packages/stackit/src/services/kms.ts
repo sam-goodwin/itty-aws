@@ -429,9 +429,7 @@ export const DeleteKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyRingRequest" }) as any as S.Schema<DeleteKeyRingRequest>;
 
 export interface DeleteKeyRingResponse {}
-export const DeleteKeyRingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeyRingResponse",
-}) as any as S.Schema<DeleteKeyRingResponse>;
+export const DeleteKeyRingResponse = DeleteKeyResponse as any as S.Schema<DeleteKeyRingResponse>;
 
 export type DeleteWrappingKeyRequestRegionId = "eu01";
 export const DeleteWrappingKeyRequestRegionId = S.String;
@@ -463,9 +461,8 @@ export const DeleteWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWrappingKeyRequest" }) as any as S.Schema<DeleteWrappingKeyRequest>;
 
 export interface DeleteWrappingKeyResponse {}
-export const DeleteWrappingKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWrappingKeyResponse",
-}) as any as S.Schema<DeleteWrappingKeyResponse>;
+export const DeleteWrappingKeyResponse =
+  DeleteKeyResponse as any as S.Schema<DeleteWrappingKeyResponse>;
 
 export type DestroyVersionRequestRegionId = "eu01";
 export const DestroyVersionRequestRegionId = S.String;
@@ -500,9 +497,7 @@ export const DestroyVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestroyVersionRequest" }) as any as S.Schema<DestroyVersionRequest>;
 
 export interface DestroyVersionResponse {}
-export const DestroyVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DestroyVersionResponse",
-}) as any as S.Schema<DestroyVersionResponse>;
+export const DestroyVersionResponse = DeleteKeyResponse as any as S.Schema<DestroyVersionResponse>;
 
 export type DisableVersionRequestRegionId = "eu01";
 export const DisableVersionRequestRegionId = S.String;
@@ -537,9 +532,7 @@ export const DisableVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableVersionRequest" }) as any as S.Schema<DisableVersionRequest>;
 
 export interface DisableVersionResponse {}
-export const DisableVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableVersionResponse",
-}) as any as S.Schema<DisableVersionResponse>;
+export const DisableVersionResponse = DeleteKeyResponse as any as S.Schema<DisableVersionResponse>;
 
 export type EnableVersionRequestRegionId = "eu01";
 export const EnableVersionRequestRegionId = S.String;
@@ -574,9 +567,7 @@ export const EnableVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableVersionRequest" }) as any as S.Schema<EnableVersionRequest>;
 
 export interface EnableVersionResponse {}
-export const EnableVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableVersionResponse",
-}) as any as S.Schema<EnableVersionResponse>;
+export const EnableVersionResponse = DeleteKeyResponse as any as S.Schema<EnableVersionResponse>;
 
 export type EncryptRequestRegionId = "eu01";
 export const EncryptRequestRegionId = S.String;
@@ -617,11 +608,7 @@ export interface EncryptedData {
   /** The encrypted data. Encoded in base64. */
   data: string;
 }
-export const EncryptedData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.String,
-  }),
-).annotate({ identifier: "EncryptedData" }) as any as S.Schema<EncryptedData>;
+export const EncryptedData = DecryptedData as any as S.Schema<EncryptedData>;
 
 export type GetKeyRequestRegionId = "eu01";
 export const GetKeyRequestRegionId = S.String;
@@ -1003,9 +990,7 @@ export const RestoreKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreKeyRequest" }) as any as S.Schema<RestoreKeyRequest>;
 
 export interface RestoreKeyResponse {}
-export const RestoreKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreKeyResponse",
-}) as any as S.Schema<RestoreKeyResponse>;
+export const RestoreKeyResponse = DeleteKeyResponse as any as S.Schema<RestoreKeyResponse>;
 
 export type RestoreVersionRequestRegionId = "eu01";
 export const RestoreVersionRequestRegionId = S.String;
@@ -1040,9 +1025,7 @@ export const RestoreVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreVersionRequest" }) as any as S.Schema<RestoreVersionRequest>;
 
 export interface RestoreVersionResponse {}
-export const RestoreVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestoreVersionResponse",
-}) as any as S.Schema<RestoreVersionResponse>;
+export const RestoreVersionResponse = DeleteKeyResponse as any as S.Schema<RestoreVersionResponse>;
 
 export type RotateKeyRequestRegionId = "eu01";
 export const RotateKeyRequestRegionId = S.String;

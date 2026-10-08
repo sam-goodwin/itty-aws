@@ -96,9 +96,8 @@ export const GetCertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCertsRequest" }) as any as S.Schema<GetCertsRequest>;
 
 export type GetCertsResponseCertsItemCnsList = Array<string>;
-export const GetCertsResponseCertsItemCnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCertsResponseCertsItemCnsList>;
+export const GetCertsResponseCertsItemCnsList =
+  GetCertResponseCnsList as any as S.Schema<GetCertsResponseCertsItemCnsList>;
 
 export interface GetCertsResponseCertsItem {
   autoRenew: boolean;
@@ -154,9 +153,8 @@ export const GetCertsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The common names the cert should be issued for */
 export type IssueCertRequestCnsList = Array<string>;
-export const IssueCertRequestCnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IssueCertRequestCnsList>;
+export const IssueCertRequestCnsList =
+  GetCertResponseCnsList as any as S.Schema<IssueCertRequestCnsList>;
 
 export interface IssueCertRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -175,9 +173,8 @@ export const IssueCertRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueCertRequest" }) as any as S.Schema<IssueCertRequest>;
 
 export type IssueCertResponseCnsList = Array<string>;
-export const IssueCertResponseCnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IssueCertResponseCnsList>;
+export const IssueCertResponseCnsList =
+  GetCertResponseCnsList as any as S.Schema<IssueCertResponseCnsList>;
 
 export interface IssueCertResponse {
   autoRenew: boolean;
@@ -186,15 +183,7 @@ export interface IssueCertResponse {
   expiresAt: number;
   id: string;
 }
-export const IssueCertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRenew: S.Boolean,
-    cns: IssueCertResponseCnsList,
-    createdAt: S.Number,
-    expiresAt: S.Number,
-    id: S.String,
-  }),
-).annotate({ identifier: "IssueCertResponse" }) as any as S.Schema<IssueCertResponse>;
+export const IssueCertResponse = GetCertResponse as any as S.Schema<IssueCertResponse>;
 
 export interface RemoveCertRequest {
   /** The cert id to remove */
@@ -243,9 +232,8 @@ export const UploadCertRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadCertRequest" }) as any as S.Schema<UploadCertRequest>;
 
 export type UploadCertResponseCnsList = Array<string>;
-export const UploadCertResponseCnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UploadCertResponseCnsList>;
+export const UploadCertResponseCnsList =
+  GetCertResponseCnsList as any as S.Schema<UploadCertResponseCnsList>;
 
 export interface UploadCertResponse {
   autoRenew: boolean;
@@ -254,15 +242,7 @@ export interface UploadCertResponse {
   expiresAt: number;
   id: string;
 }
-export const UploadCertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRenew: S.Boolean,
-    cns: UploadCertResponseCnsList,
-    createdAt: S.Number,
-    expiresAt: S.Number,
-    id: S.String,
-  }),
-).annotate({ identifier: "UploadCertResponse" }) as any as S.Schema<UploadCertResponse>;
+export const UploadCertResponse = GetCertResponse as any as S.Schema<UploadCertResponse>;
 
 export type GetCertError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Get cert by id Get cert by id */

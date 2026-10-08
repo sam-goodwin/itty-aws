@@ -279,9 +279,7 @@ export const BigtableConfigStateEnum = S.String;
 
 /** Row key definition that reads the input message fields based on the field names of the table's structured row key ({$universe.dns_names.final_documentation_domain}/bigtable/docs/manage-row-key-schemas). Note that if the field is nullable in the structured row key, then it need not be present in the message; null will be used instead. */
 export interface RowKeySchema {}
-export const RowKeySchema = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RowKeySchema",
-}) as any as S.Schema<RowKeySchema>;
+export const RowKeySchema = Empty as any as S.Schema<RowKeySchema>;
 
 /** Row key definition based on fields from the message. */
 export interface DelimitedKey {
@@ -1193,9 +1191,7 @@ export const DetachProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for the DetachSubscription method. Reserved for future use. */
 export interface DetachSubscriptionResponse {}
-export const DetachSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DetachSubscriptionResponse",
-}) as any as S.Schema<DetachSubscriptionResponse>;
+export const DetachSubscriptionResponse = Empty as any as S.Schema<DetachSubscriptionResponse>;
 
 export interface GetIamPolicyProjectsSchemasRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -2066,9 +2062,7 @@ export const SeekProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for the `Seek` method (this response is empty). */
 export interface SeekResponse {}
-export const SeekResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SeekResponse",
-}) as any as S.Schema<SeekResponse>;
+export const SeekResponse = Empty as any as S.Schema<SeekResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2204,13 +2198,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsSnapshotsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -2321,20 +2310,14 @@ export const ValidateMessageProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Response for the `ValidateMessage` method. Empty for now. */
 export interface ValidateMessageResponse {}
-export const ValidateMessageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ValidateMessageResponse",
-}) as any as S.Schema<ValidateMessageResponse>;
+export const ValidateMessageResponse = Empty as any as S.Schema<ValidateMessageResponse>;
 
 /** Request for the `ValidateSchema` method. */
 export interface ValidateSchemaRequest {
   /** Required. The schema object to validate. */
   schema?: Pubsub_Schema;
 }
-export const ValidateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schema: S.optional(Pubsub_Schema),
-  }),
-).annotate({ identifier: "ValidateSchemaRequest" }) as any as S.Schema<ValidateSchemaRequest>;
+export const ValidateSchemaRequest = CommitSchemaRequest as any as S.Schema<ValidateSchemaRequest>;
 
 export interface ValidateProjectsSchemasRequest {
   /** Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`. */
@@ -2359,9 +2342,7 @@ export const ValidateProjectsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for the `ValidateSchema` method. Empty for now. */
 export interface ValidateSchemaResponse {}
-export const ValidateSchemaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ValidateSchemaResponse",
-}) as any as S.Schema<ValidateSchemaResponse>;
+export const ValidateSchemaResponse = Empty as any as S.Schema<ValidateSchemaResponse>;
 
 export type AcknowledgeProjectsSubscriptionsError =
   | NotFound

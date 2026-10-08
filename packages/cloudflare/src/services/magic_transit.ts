@@ -695,9 +695,7 @@ export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList = Array<string>;
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList>;
 
 export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
@@ -917,9 +915,7 @@ export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
   Array<string>;
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
@@ -1172,9 +1168,8 @@ export const RoutesBulkUpdateRequestRoutesItemScopeColoNamesList = /*@__PURE__*/
 ) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoNamesList>;
 
 export type RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList = Array<string>;
-export const RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList>;
+export const RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList>;
 
 export interface RoutesBulkUpdateRequestRoutesItemScope {
   /** List of colo names for the ECMP scope. */
@@ -1245,14 +1240,12 @@ export const BulkPutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkPutRoutesRequest" }) as any as S.Schema<BulkPutRoutesRequest>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList = Array<string>;
-export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList>;
+export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList = Array<string>;
-export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList>;
+export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList>;
 
 export interface RoutesBulkUpdateResponseModifiedRoutesItemScope {
   /** List of colo names for the ECMP scope. */
@@ -1334,19 +1327,16 @@ export const BulkPutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkPutRoutesResponse" }) as any as S.Schema<BulkPutRoutesResponse>;
 
 export type AppsCreateRequestHostnamesList = Array<string>;
-export const AppsCreateRequestHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateRequestHostnamesList>;
+export const AppsCreateRequestHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsCreateRequestHostnamesList>;
 
 export type AppsCreateRequestIpSubnetsList = Array<string>;
-export const AppsCreateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateRequestIpSubnetsList>;
+export const AppsCreateRequestIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsCreateRequestIpSubnetsList>;
 
 export type AppsCreateRequestSourceSubnetsList = Array<string>;
-export const AppsCreateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateRequestSourceSubnetsList>;
+export const AppsCreateRequestSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsCreateRequestSourceSubnetsList>;
 
 export interface CreateAppRequest {
   /** Identifier */
@@ -1376,19 +1366,16 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAppRequest" }) as any as S.Schema<CreateAppRequest>;
 
 export type AppsCreateResponseHostnamesList = Array<string>;
-export const AppsCreateResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResponseHostnamesList>;
+export const AppsCreateResponseHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsCreateResponseHostnamesList>;
 
 export type AppsCreateResponseIpSubnetsList = Array<string>;
-export const AppsCreateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResponseIpSubnetsList>;
+export const AppsCreateResponseIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsCreateResponseIpSubnetsList>;
 
 export type AppsCreateResponseSourceSubnetsList = Array<string>;
-export const AppsCreateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResponseSourceSubnetsList>;
+export const AppsCreateResponseSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsCreateResponseSourceSubnetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAppResponse {
@@ -1422,9 +1409,8 @@ export type CreateBgpFilterProfileRequestMatchAction = "allow" | "deny";
 export const CreateBgpFilterProfileRequestMatchAction = S.String;
 
 export type CreateBgpFilterProfileRequestTargetsList = Array<string>;
-export const CreateBgpFilterProfileRequestTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBgpFilterProfileRequestTargetsList>;
+export const CreateBgpFilterProfileRequestTargetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<CreateBgpFilterProfileRequestTargetsList>;
 
 export interface CreateBgpFilterProfileRequest {
   /** Identifier */
@@ -1462,9 +1448,8 @@ export type CreateBgpFilterProfileResponseMatchAction = "allow" | "deny";
 export const CreateBgpFilterProfileResponseMatchAction = S.String;
 
 export type CreateBgpFilterProfileResponseTargetsList = Array<string>;
-export const CreateBgpFilterProfileResponseTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBgpFilterProfileResponseTargetsList>;
+export const CreateBgpFilterProfileResponseTargetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<CreateBgpFilterProfileResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBgpFilterProfileResponse {
@@ -1790,9 +1775,8 @@ export const ConnectorsCreateRequestInterruptWindowDaysOfWeekList = /*@__PURE__*
 ) as any as S.Schema<ConnectorsCreateRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsCreateRequestInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsCreateRequestInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsCreateRequestInterruptWindowEmbargoDatesList>;
+export const ConnectorsCreateRequestInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsCreateRequestInterruptWindowEmbargoDatesList>;
 
 export interface CreateConnectorRequest {
   accountId: string;
@@ -1851,9 +1835,8 @@ export const ConnectorsCreateResponseInterruptWindowDaysOfWeekList = /*@__PURE__
 ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsCreateResponseInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsCreateResponseInterruptWindowEmbargoDatesList>;
+export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsCreateResponseInterruptWindowEmbargoDatesList>;
 
 export type ConnectorsCreateResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsCreateResponseDeviceType = S.String;
@@ -1997,9 +1980,8 @@ export const CreateConnectorsInterruptResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConnectorsInterruptResponse>;
 
 export type GreTunnelsCreateRequestBgpExtraPrefixesList = Array<string>;
-export const GreTunnelsCreateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GreTunnelsCreateRequestBgpExtraPrefixesList>;
+export const GreTunnelsCreateRequestBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<GreTunnelsCreateRequestBgpExtraPrefixesList>;
 
 export interface GreTunnelsCreateRequestBgp {
   /** ASN used on the customer end of the BGP session */
@@ -2129,9 +2111,8 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateGreTunnelRequest" }) as any as S.Schema<CreateGreTunnelRequest>;
 
 export type GreTunnelsCreateResponseBgpExtraPrefixesList = Array<string>;
-export const GreTunnelsCreateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GreTunnelsCreateResponseBgpExtraPrefixesList>;
+export const GreTunnelsCreateResponseBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<GreTunnelsCreateResponseBgpExtraPrefixesList>;
 
 export interface GreTunnelsCreateResponseBgp {
   /** ASN used on the customer end of the BGP session */
@@ -2287,9 +2268,8 @@ export const CreateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateGreTunnelResponse" }) as any as S.Schema<CreateGreTunnelResponse>;
 
 export type IpsecTunnelsCreateRequestBgpExtraPrefixesList = Array<string>;
-export const IpsecTunnelsCreateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpsecTunnelsCreateRequestBgpExtraPrefixesList>;
+export const IpsecTunnelsCreateRequestBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<IpsecTunnelsCreateRequestBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsCreateRequestBgp {
   /** ASN used on the customer end of the BGP session */
@@ -2303,19 +2283,8 @@ export interface IpsecTunnelsCreateRequestBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string;
 }
-export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      IpsecTunnelsCreateRequestBgpExtraPrefixesList.pipe(T.Body("extra_prefixes")),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateRequestBgp",
-}) as any as S.Schema<IpsecTunnelsCreateRequestBgp>;
+export const IpsecTunnelsCreateRequestBgp =
+  GreTunnelsCreateRequestBgp as any as S.Schema<IpsecTunnelsCreateRequestBgp>;
 
 export interface IpsecTunnelsCreateRequestCustomRemoteIdentities {
   /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The generated IKE IDs can still be used even if this custom value is specified. */
@@ -2424,9 +2393,8 @@ export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateIpsecTunnelRequest" }) as any as S.Schema<CreateIpsecTunnelRequest>;
 
 export type IpsecTunnelsCreateResponseBgpExtraPrefixesList = Array<string>;
-export const IpsecTunnelsCreateResponseBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpsecTunnelsCreateResponseBgpExtraPrefixesList>;
+export const IpsecTunnelsCreateResponseBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<IpsecTunnelsCreateResponseBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsCreateResponseBgp {
   /** ASN used on the customer end of the BGP session */
@@ -2440,19 +2408,8 @@ export interface IpsecTunnelsCreateResponseBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(IpsecTunnelsCreateResponseBgpExtraPrefixesList).pipe(T.Body("extra_prefixes")),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponseBgp",
-}) as any as S.Schema<IpsecTunnelsCreateResponseBgp>;
+export const IpsecTunnelsCreateResponseBgp =
+  GreTunnelsCreateResponseBgp as any as S.Schema<IpsecTunnelsCreateResponseBgp>;
 
 export type IpsecTunnelsCreateResponseBgpStatusState = "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
 export const IpsecTunnelsCreateResponseBgpStatusState = S.String;
@@ -2895,14 +2852,12 @@ export const CreatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePcapOwnershipResponse>;
 
 export type RoutesCreateRequestScopeColoNamesList = Array<string>;
-export const RoutesCreateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateRequestScopeColoNamesList>;
+export const RoutesCreateRequestScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesCreateRequestScopeColoNamesList>;
 
 export type RoutesCreateRequestScopeColoRegionsList = Array<string>;
-export const RoutesCreateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateRequestScopeColoRegionsList>;
+export const RoutesCreateRequestScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesCreateRequestScopeColoRegionsList>;
 
 export interface RoutesCreateRequestScope {
   /** List of colo names for the ECMP scope. */
@@ -2948,14 +2903,12 @@ export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRouteRequest" }) as any as S.Schema<CreateRouteRequest>;
 
 export type RoutesCreateResponseScopeColoNamesList = Array<string>;
-export const RoutesCreateResponseScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateResponseScopeColoNamesList>;
+export const RoutesCreateResponseScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesCreateResponseScopeColoNamesList>;
 
 export type RoutesCreateResponseScopeColoRegionsList = Array<string>;
-export const RoutesCreateResponseScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateResponseScopeColoRegionsList>;
+export const RoutesCreateResponseScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesCreateResponseScopeColoRegionsList>;
 
 export interface RoutesCreateResponseScope {
   /** List of colo names for the ECMP scope. */
@@ -3099,9 +3052,8 @@ export const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSiteResponse" }) as any as S.Schema<CreateSiteResponse>;
 
 export type SitesAclsCreateRequestLan1PortRangesList = Array<string>;
-export const SitesAclsCreateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateRequestLan1PortRangesList>;
+export const SitesAclsCreateRequestLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateRequestLan1PortRangesList>;
 
 export type SitesAclsCreateRequestLan1PortsList = Array<number>;
 export const SitesAclsCreateRequestLan1PortsList = /*@__PURE__*/ S.Array(
@@ -3109,9 +3061,8 @@ export const SitesAclsCreateRequestLan1PortsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SitesAclsCreateRequestLan1PortsList>;
 
 export type SitesAclsCreateRequestLan1SubnetsList = Array<string>;
-export const SitesAclsCreateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateRequestLan1SubnetsList>;
+export const SitesAclsCreateRequestLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateRequestLan1SubnetsList>;
 
 export interface SitesAclsCreateRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -3138,19 +3089,16 @@ export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAclsCreateRequestLan1>;
 
 export type SitesAclsCreateRequestLan2PortRangesList = Array<string>;
-export const SitesAclsCreateRequestLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateRequestLan2PortRangesList>;
+export const SitesAclsCreateRequestLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateRequestLan2PortRangesList>;
 
 export type SitesAclsCreateRequestLan2PortsList = Array<number>;
-export const SitesAclsCreateRequestLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsCreateRequestLan2PortsList>;
+export const SitesAclsCreateRequestLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsCreateRequestLan2PortsList>;
 
 export type SitesAclsCreateRequestLan2SubnetsList = Array<string>;
-export const SitesAclsCreateRequestLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateRequestLan2SubnetsList>;
+export const SitesAclsCreateRequestLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateRequestLan2SubnetsList>;
 
 export interface SitesAclsCreateRequestLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -3164,17 +3112,8 @@ export interface SitesAclsCreateRequestLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsCreateRequestLan2SubnetsList;
 }
-export const SitesAclsCreateRequestLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(SitesAclsCreateRequestLan2PortRangesList.pipe(T.Body("port_ranges"))),
-    ports: S.optional(SitesAclsCreateRequestLan2PortsList),
-    subnets: S.optional(SitesAclsCreateRequestLan2SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsCreateRequestLan2",
-}) as any as S.Schema<SitesAclsCreateRequestLan2>;
+export const SitesAclsCreateRequestLan2 =
+  SitesAclsCreateRequestLan1 as any as S.Schema<SitesAclsCreateRequestLan2>;
 
 export type SitesAclsCreateRequestProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsCreateRequestProtocolsItem = S.String;
@@ -3226,19 +3165,16 @@ export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSiteAclRequest" }) as any as S.Schema<CreateSiteAclRequest>;
 
 export type SitesAclsCreateResponseLan1PortRangesList = Array<string>;
-export const SitesAclsCreateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateResponseLan1PortRangesList>;
+export const SitesAclsCreateResponseLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateResponseLan1PortRangesList>;
 
 export type SitesAclsCreateResponseLan1PortsList = Array<number>;
-export const SitesAclsCreateResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsCreateResponseLan1PortsList>;
+export const SitesAclsCreateResponseLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsCreateResponseLan1PortsList>;
 
 export type SitesAclsCreateResponseLan1SubnetsList = Array<string>;
-export const SitesAclsCreateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateResponseLan1SubnetsList>;
+export const SitesAclsCreateResponseLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateResponseLan1SubnetsList>;
 
 export interface SitesAclsCreateResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -3267,19 +3203,16 @@ export const SitesAclsCreateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SitesAclsCreateResponseLan1>;
 
 export type SitesAclsCreateResponseLan2PortRangesList = Array<string>;
-export const SitesAclsCreateResponseLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateResponseLan2PortRangesList>;
+export const SitesAclsCreateResponseLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateResponseLan2PortRangesList>;
 
 export type SitesAclsCreateResponseLan2PortsList = Array<number>;
-export const SitesAclsCreateResponseLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsCreateResponseLan2PortsList>;
+export const SitesAclsCreateResponseLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsCreateResponseLan2PortsList>;
 
 export type SitesAclsCreateResponseLan2SubnetsList = Array<string>;
-export const SitesAclsCreateResponseLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateResponseLan2SubnetsList>;
+export const SitesAclsCreateResponseLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsCreateResponseLan2SubnetsList>;
 
 export interface SitesAclsCreateResponseLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -3293,19 +3226,8 @@ export interface SitesAclsCreateResponseLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsCreateResponseLan2SubnetsList | null;
 }
-export const SitesAclsCreateResponseLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsCreateResponseLan2PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsCreateResponseLan2PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsCreateResponseLan2SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsCreateResponseLan2",
-}) as any as S.Schema<SitesAclsCreateResponseLan2>;
+export const SitesAclsCreateResponseLan2 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsCreateResponseLan2>;
 
 export type SitesAclsCreateResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsCreateResponseProtocolsItem = S.String;
@@ -3384,9 +3306,7 @@ export const SitesLansCreateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
 
 export type SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansCreateRequestStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
@@ -3440,9 +3360,8 @@ export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
   ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList = Array<string>;
-export const SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList>;
+export const SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
@@ -3599,9 +3518,7 @@ export const SitesLansCreateResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
 
 export type SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansCreateResultItemStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
@@ -3656,18 +3573,13 @@ export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList 
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
 };
 export const SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap>;
+  SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansCreateResultItemStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
@@ -3794,9 +3706,8 @@ export const CreateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSiteLanResponse" }) as any as S.Schema<CreateSiteLanResponse>;
 
 export type CreateSitesAppConfigurationRequestPreferredWansList = Array<string>;
-export const CreateSitesAppConfigurationRequestPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSitesAppConfigurationRequestPreferredWansList>;
+export const CreateSitesAppConfigurationRequestPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<CreateSitesAppConfigurationRequestPreferredWansList>;
 
 export interface CreateSitesAppConfigurationRequest {
   /** Identifier */
@@ -3839,9 +3750,8 @@ export const CreateSitesAppConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSitesAppConfigurationRequest>;
 
 export type CreateSitesAppConfigurationResultAccountAppPreferredWansList = Array<string>;
-export const CreateSitesAppConfigurationResultAccountAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSitesAppConfigurationResultAccountAppPreferredWansList>;
+export const CreateSitesAppConfigurationResultAccountAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<CreateSitesAppConfigurationResultAccountAppPreferredWansList>;
 
 export interface CreateSitesAppConfigurationResultAccountApp {
   /** Magic account app ID. */
@@ -3875,9 +3785,8 @@ export const CreateSitesAppConfigurationResultAccountApp = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateSitesAppConfigurationResultAccountApp>;
 
 export type CreateSitesAppConfigurationResultManagedAppPreferredWansList = Array<string>;
-export const CreateSitesAppConfigurationResultManagedAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSitesAppConfigurationResultManagedAppPreferredWansList>;
+export const CreateSitesAppConfigurationResultManagedAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<CreateSitesAppConfigurationResultManagedAppPreferredWansList>;
 
 export interface CreateSitesAppConfigurationResultManagedApp {
   /** Managed app ID. */
@@ -4088,19 +3997,16 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAppRequest" }) as any as S.Schema<DeleteAppRequest>;
 
 export type AppsDeleteResponseHostnamesList = Array<string>;
-export const AppsDeleteResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsDeleteResponseHostnamesList>;
+export const AppsDeleteResponseHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsDeleteResponseHostnamesList>;
 
 export type AppsDeleteResponseIpSubnetsList = Array<string>;
-export const AppsDeleteResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsDeleteResponseIpSubnetsList>;
+export const AppsDeleteResponseIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsDeleteResponseIpSubnetsList>;
 
 export type AppsDeleteResponseSourceSubnetsList = Array<string>;
-export const AppsDeleteResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsDeleteResponseSourceSubnetsList>;
+export const AppsDeleteResponseSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsDeleteResponseSourceSubnetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAppResponse {
@@ -4117,18 +4023,7 @@ export interface DeleteAppResponse {
   /** Category of the app. */
   type?: string | null;
 }
-export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(S.NullOr(AppsDeleteResponseHostnamesList)),
-    ipSubnets: S.optional(S.NullOr(AppsDeleteResponseIpSubnetsList).pipe(T.Body("ip_subnets"))),
-    name: S.optional(S.NullOr(S.String)),
-    sourceSubnets: S.optional(
-      S.NullOr(AppsDeleteResponseSourceSubnetsList).pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteAppResponse" }) as any as S.Schema<DeleteAppResponse>;
+export const DeleteAppResponse = CreateAppResponse as any as S.Schema<DeleteAppResponse>;
 
 export interface DeleteBgpFilterProfileRequest {
   /** Identifier */
@@ -4157,9 +4052,8 @@ export type DeleteBgpFilterProfileResponseMatchAction = "allow" | "deny";
 export const DeleteBgpFilterProfileResponseMatchAction = S.String;
 
 export type DeleteBgpFilterProfileResponseTargetsList = Array<string>;
-export const DeleteBgpFilterProfileResponseTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteBgpFilterProfileResponseTargetsList>;
+export const DeleteBgpFilterProfileResponseTargetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<DeleteBgpFilterProfileResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteBgpFilterProfileResponse {
@@ -4360,9 +4254,8 @@ export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekList = /*@__PURE__
 ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsDeleteResponseInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowEmbargoDatesList>;
+export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsDeleteResponseInterruptWindowEmbargoDatesList>;
 
 export type ConnectorsDeleteResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsDeleteResponseDeviceType = S.String;
@@ -4446,9 +4339,8 @@ export const DeleteGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGreTunnelRequest" }) as any as S.Schema<DeleteGreTunnelRequest>;
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList = Array<string>;
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList>;
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList>;
 
 export interface GreTunnelsDeleteResponseDeletedGreTunnelBgp {
   /** ASN used on the customer end of the BGP session */
@@ -4651,9 +4543,7 @@ export const DeleteIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList = Array<string>;
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
   /** ASN used on the customer end of the BGP session */
@@ -4667,21 +4557,8 @@ export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList).pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp",
-}) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp>;
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
+  GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp>;
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
@@ -4912,14 +4789,12 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRouteRequest" }) as any as S.Schema<DeleteRouteRequest>;
 
 export type RoutesDeleteResponseDeletedRouteScopeColoNamesList = Array<string>;
-export const RoutesDeleteResponseDeletedRouteScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoNamesList>;
+export const RoutesDeleteResponseDeletedRouteScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoNamesList>;
 
 export type RoutesDeleteResponseDeletedRouteScopeColoRegionsList = Array<string>;
-export const RoutesDeleteResponseDeletedRouteScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoRegionsList>;
+export const RoutesDeleteResponseDeletedRouteScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoRegionsList>;
 
 export interface RoutesDeleteResponseDeletedRouteScope {
   /** List of colo names for the ECMP scope. */
@@ -4927,18 +4802,8 @@ export interface RoutesDeleteResponseDeletedRouteScope {
   /** List of colo regions for the ECMP scope. */
   coloRegions?: RoutesDeleteResponseDeletedRouteScopeColoRegionsList | null;
 }
-export const RoutesDeleteResponseDeletedRouteScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      S.NullOr(RoutesDeleteResponseDeletedRouteScopeColoNamesList).pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      S.NullOr(RoutesDeleteResponseDeletedRouteScopeColoRegionsList).pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesDeleteResponseDeletedRouteScope",
-}) as any as S.Schema<RoutesDeleteResponseDeletedRouteScope>;
+export const RoutesDeleteResponseDeletedRouteScope =
+  RoutesCreateResponseScope as any as S.Schema<RoutesDeleteResponseDeletedRouteScope>;
 
 export interface RoutesDeleteResponseDeletedRoute {
   /** Identifier */
@@ -5026,17 +4891,7 @@ export interface DeleteSiteResponse {
   /** Magic Connector identifier tag. Used when high availability mode is on. */
   secondaryConnectorId?: string | null;
 }
-export const DeleteSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    connectorId: S.optional(S.NullOr(S.String).pipe(T.Body("connector_id"))),
-    description: S.optional(S.NullOr(S.String)),
-    haMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ha_mode"))),
-    location: S.optional(S.NullOr(SitesCreateResponseLocation)),
-    name: S.optional(S.NullOr(S.String)),
-    secondaryConnectorId: S.optional(S.NullOr(S.String).pipe(T.Body("secondary_connector_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteSiteResponse" }) as any as S.Schema<DeleteSiteResponse>;
+export const DeleteSiteResponse = CreateSiteResponse as any as S.Schema<DeleteSiteResponse>;
 
 export interface DeleteSiteAclRequest {
   /** Identifier */
@@ -5063,19 +4918,16 @@ export const DeleteSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSiteAclRequest" }) as any as S.Schema<DeleteSiteAclRequest>;
 
 export type SitesAclsDeleteResponseLan1PortRangesList = Array<string>;
-export const SitesAclsDeleteResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsDeleteResponseLan1PortRangesList>;
+export const SitesAclsDeleteResponseLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsDeleteResponseLan1PortRangesList>;
 
 export type SitesAclsDeleteResponseLan1PortsList = Array<number>;
-export const SitesAclsDeleteResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsDeleteResponseLan1PortsList>;
+export const SitesAclsDeleteResponseLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsDeleteResponseLan1PortsList>;
 
 export type SitesAclsDeleteResponseLan1SubnetsList = Array<string>;
-export const SitesAclsDeleteResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsDeleteResponseLan1SubnetsList>;
+export const SitesAclsDeleteResponseLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsDeleteResponseLan1SubnetsList>;
 
 export interface SitesAclsDeleteResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -5089,34 +4941,20 @@ export interface SitesAclsDeleteResponseLan1 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsDeleteResponseLan1SubnetsList | null;
 }
-export const SitesAclsDeleteResponseLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsDeleteResponseLan1PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsDeleteResponseLan1PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsDeleteResponseLan1SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsDeleteResponseLan1",
-}) as any as S.Schema<SitesAclsDeleteResponseLan1>;
+export const SitesAclsDeleteResponseLan1 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsDeleteResponseLan1>;
 
 export type SitesAclsDeleteResponseLan2PortRangesList = Array<string>;
-export const SitesAclsDeleteResponseLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsDeleteResponseLan2PortRangesList>;
+export const SitesAclsDeleteResponseLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsDeleteResponseLan2PortRangesList>;
 
 export type SitesAclsDeleteResponseLan2PortsList = Array<number>;
-export const SitesAclsDeleteResponseLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsDeleteResponseLan2PortsList>;
+export const SitesAclsDeleteResponseLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsDeleteResponseLan2PortsList>;
 
 export type SitesAclsDeleteResponseLan2SubnetsList = Array<string>;
-export const SitesAclsDeleteResponseLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsDeleteResponseLan2SubnetsList>;
+export const SitesAclsDeleteResponseLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsDeleteResponseLan2SubnetsList>;
 
 export interface SitesAclsDeleteResponseLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -5130,19 +4968,8 @@ export interface SitesAclsDeleteResponseLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsDeleteResponseLan2SubnetsList | null;
 }
-export const SitesAclsDeleteResponseLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsDeleteResponseLan2PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsDeleteResponseLan2PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsDeleteResponseLan2SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsDeleteResponseLan2",
-}) as any as S.Schema<SitesAclsDeleteResponseLan2>;
+export const SitesAclsDeleteResponseLan2 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsDeleteResponseLan2>;
 
 export type SitesAclsDeleteResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsDeleteResponseProtocolsItem = S.String;
@@ -5216,31 +5043,19 @@ export const SitesLansDeleteResponseRoutedSubnetsItem = SitesLansCreateResultIte
 
 export type SitesLansDeleteResponseRoutedSubnetsList =
   Array<SitesLansCreateResultItemRoutedSubnetsItem>;
-export const SitesLansDeleteResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateResultItemRoutedSubnetsItem,
-) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsList>;
+export const SitesLansDeleteResponseRoutedSubnetsList =
+  SitesLansCreateResultItemRoutedSubnetsList as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansDeleteResponseStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
   serverAddresses?: SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList | null;
 }
-export const SitesLansDeleteResponseStaticAddressingDhcpRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverAddresses: S.optional(
-      S.NullOr(SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList).pipe(
-        T.Body("server_addresses"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SitesLansDeleteResponseStaticAddressingDhcpRelay",
-}) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelay>;
+export const SitesLansDeleteResponseStaticAddressingDhcpRelay =
+  SitesLansCreateResultItemStaticAddressingDhcpRelay as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
@@ -5279,18 +5094,13 @@ export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
 };
 export const SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap>;
+  SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansDeleteResponseStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
@@ -5424,9 +5234,8 @@ export const DeleteSitesAppConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSitesAppConfigurationRequest>;
 
 export type DeleteSitesAppConfigurationResultAccountAppPreferredWansList = Array<string>;
-export const DeleteSitesAppConfigurationResultAccountAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteSitesAppConfigurationResultAccountAppPreferredWansList>;
+export const DeleteSitesAppConfigurationResultAccountAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<DeleteSitesAppConfigurationResultAccountAppPreferredWansList>;
 
 export interface DeleteSitesAppConfigurationResultAccountApp {
   /** Magic account app ID. */
@@ -5442,27 +5251,12 @@ export interface DeleteSitesAppConfigurationResultAccountApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const DeleteSitesAppConfigurationResultAccountApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(DeleteSitesAppConfigurationResultAccountAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "DeleteSitesAppConfigurationResultAccountApp",
-}) as any as S.Schema<DeleteSitesAppConfigurationResultAccountApp>;
+export const DeleteSitesAppConfigurationResultAccountApp =
+  CreateSitesAppConfigurationResultAccountApp as any as S.Schema<DeleteSitesAppConfigurationResultAccountApp>;
 
 export type DeleteSitesAppConfigurationResultManagedAppPreferredWansList = Array<string>;
-export const DeleteSitesAppConfigurationResultManagedAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteSitesAppConfigurationResultManagedAppPreferredWansList>;
+export const DeleteSitesAppConfigurationResultManagedAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<DeleteSitesAppConfigurationResultManagedAppPreferredWansList>;
 
 export interface DeleteSitesAppConfigurationResultManagedApp {
   /** Managed app ID. */
@@ -5478,22 +5272,8 @@ export interface DeleteSitesAppConfigurationResultManagedApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const DeleteSitesAppConfigurationResultManagedApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedAppId: S.String.pipe(T.Body("managed_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(DeleteSitesAppConfigurationResultManagedAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "DeleteSitesAppConfigurationResultManagedApp",
-}) as any as S.Schema<DeleteSitesAppConfigurationResultManagedApp>;
+export const DeleteSitesAppConfigurationResultManagedApp =
+  CreateSitesAppConfigurationResultManagedApp as any as S.Schema<DeleteSitesAppConfigurationResultManagedApp>;
 
 export type DeleteSitesAppConfigurationResult =
   | DeleteSitesAppConfigurationResultAccountApp
@@ -5579,9 +5359,8 @@ export const DeleteSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSiteWanResponse" }) as any as S.Schema<DeleteSiteWanResponse>;
 
 export type EditSitesAppConfigurationRequestPreferredWansList = Array<string>;
-export const EditSitesAppConfigurationRequestPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditSitesAppConfigurationRequestPreferredWansList>;
+export const EditSitesAppConfigurationRequestPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<EditSitesAppConfigurationRequestPreferredWansList>;
 
 export interface EditSitesAppConfigurationRequest {
   /** Identifier */
@@ -5627,9 +5406,8 @@ export const EditSitesAppConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditSitesAppConfigurationRequest>;
 
 export type EditSitesAppConfigurationResultAccountAppPreferredWansList = Array<string>;
-export const EditSitesAppConfigurationResultAccountAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditSitesAppConfigurationResultAccountAppPreferredWansList>;
+export const EditSitesAppConfigurationResultAccountAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<EditSitesAppConfigurationResultAccountAppPreferredWansList>;
 
 export interface EditSitesAppConfigurationResultAccountApp {
   /** Magic account app ID. */
@@ -5645,27 +5423,12 @@ export interface EditSitesAppConfigurationResultAccountApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const EditSitesAppConfigurationResultAccountApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(EditSitesAppConfigurationResultAccountAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "EditSitesAppConfigurationResultAccountApp",
-}) as any as S.Schema<EditSitesAppConfigurationResultAccountApp>;
+export const EditSitesAppConfigurationResultAccountApp =
+  CreateSitesAppConfigurationResultAccountApp as any as S.Schema<EditSitesAppConfigurationResultAccountApp>;
 
 export type EditSitesAppConfigurationResultManagedAppPreferredWansList = Array<string>;
-export const EditSitesAppConfigurationResultManagedAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditSitesAppConfigurationResultManagedAppPreferredWansList>;
+export const EditSitesAppConfigurationResultManagedAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<EditSitesAppConfigurationResultManagedAppPreferredWansList>;
 
 export interface EditSitesAppConfigurationResultManagedApp {
   /** Managed app ID. */
@@ -5681,22 +5444,8 @@ export interface EditSitesAppConfigurationResultManagedApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const EditSitesAppConfigurationResultManagedApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedAppId: S.String.pipe(T.Body("managed_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(EditSitesAppConfigurationResultManagedAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "EditSitesAppConfigurationResultManagedApp",
-}) as any as S.Schema<EditSitesAppConfigurationResultManagedApp>;
+export const EditSitesAppConfigurationResultManagedApp =
+  CreateSitesAppConfigurationResultManagedApp as any as S.Schema<EditSitesAppConfigurationResultManagedApp>;
 
 export type EditSitesAppConfigurationResult =
   | EditSitesAppConfigurationResultAccountApp
@@ -5728,14 +5477,12 @@ export const EmptyRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmptyRouteRequest" }) as any as S.Schema<EmptyRouteRequest>;
 
 export type RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList = Array<string>;
-export const RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList>;
+export const RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList>;
 
 export type RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList = Array<string>;
-export const RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList>;
+export const RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList>;
 
 export interface RoutesEmptyResponseDeletedRoutesItemScope {
   /** List of colo names for the ECMP scope. */
@@ -5840,9 +5587,8 @@ export type GetBgpFilterProfileResponseMatchAction = "allow" | "deny";
 export const GetBgpFilterProfileResponseMatchAction = S.String;
 
 export type GetBgpFilterProfileResponseTargetsList = Array<string>;
-export const GetBgpFilterProfileResponseTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBgpFilterProfileResponseTargetsList>;
+export const GetBgpFilterProfileResponseTargetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<GetBgpFilterProfileResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBgpFilterProfileResponse {
@@ -5909,16 +5655,7 @@ export interface GetCf1SiteResponse {
   location?: Cf1SitesCreateResultItemLocation | null;
   modifiedOn?: string | null;
 }
-export const GetCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    location: S.optional(S.NullOr(Cf1SitesCreateResultItemLocation)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetCf1SiteResponse" }) as any as S.Schema<GetCf1SiteResponse>;
+export const GetCf1SiteResponse = DeleteCf1SiteResponse as any as S.Schema<GetCf1SiteResponse>;
 
 export interface GetCf1SiteRampRequest {
   /** Identifier */
@@ -6029,9 +5766,8 @@ export const GetCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCfInterconnectRequest" }) as any as S.Schema<GetCfInterconnectRequest>;
 
 export type CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList = Array<string>;
-export const CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList>;
+export const CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList>;
 
 export interface CfInterconnectsGetResponseInterconnectBgp {
   /** Deprecated. Use customer_asn. */
@@ -6231,9 +5967,8 @@ export const ConnectorsGetResponseInterruptWindowDaysOfWeekList = /*@__PURE__*/ 
 ) as any as S.Schema<ConnectorsGetResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsGetResponseInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsGetResponseInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsGetResponseInterruptWindowEmbargoDatesList>;
+export const ConnectorsGetResponseInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsGetResponseInterruptWindowEmbargoDatesList>;
 
 export type ConnectorsGetResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsGetResponseDeviceType = S.String;
@@ -7414,9 +7149,8 @@ export const GetGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetGreTunnelRequest" }) as any as S.Schema<GetGreTunnelRequest>;
 
 export type GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList = Array<string>;
-export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList>;
+export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList>;
 
 export interface GreTunnelsGetResponseGreTunnelBgp {
   /** ASN used on the customer end of the BGP session */
@@ -7430,19 +7164,8 @@ export interface GreTunnelsGetResponseGreTunnelBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList).pipe(T.Body("extra_prefixes")),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsGetResponseGreTunnelBgp",
-}) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgp>;
+export const GreTunnelsGetResponseGreTunnelBgp =
+  GreTunnelsCreateResponseBgp as any as S.Schema<GreTunnelsGetResponseGreTunnelBgp>;
 
 export type GreTunnelsGetResponseGreTunnelBgpStatusState =
   | "BGP_DOWN"
@@ -7611,9 +7334,8 @@ export const GetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIpsecTunnelRequest" }) as any as S.Schema<GetIpsecTunnelRequest>;
 
 export type IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList = Array<string>;
-export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList>;
+export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
   /** ASN used on the customer end of the BGP session */
@@ -7627,21 +7349,8 @@ export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList).pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsGetResponseIpsecTunnelBgp",
-}) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgp>;
+export const IpsecTunnelsGetResponseIpsecTunnelBgp =
+  GreTunnelsDeleteResponseDeletedGreTunnelBgp as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgp>;
 
 export type IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
@@ -8078,14 +7787,12 @@ export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRouteRequest" }) as any as S.Schema<GetRouteRequest>;
 
 export type RoutesGetResponseRouteScopeColoNamesList = Array<string>;
-export const RoutesGetResponseRouteScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesGetResponseRouteScopeColoNamesList>;
+export const RoutesGetResponseRouteScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesGetResponseRouteScopeColoNamesList>;
 
 export type RoutesGetResponseRouteScopeColoRegionsList = Array<string>;
-export const RoutesGetResponseRouteScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesGetResponseRouteScopeColoRegionsList>;
+export const RoutesGetResponseRouteScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesGetResponseRouteScopeColoRegionsList>;
 
 export interface RoutesGetResponseRouteScope {
   /** List of colo names for the ECMP scope. */
@@ -8093,18 +7800,8 @@ export interface RoutesGetResponseRouteScope {
   /** List of colo regions for the ECMP scope. */
   coloRegions?: RoutesGetResponseRouteScopeColoRegionsList | null;
 }
-export const RoutesGetResponseRouteScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      S.NullOr(RoutesGetResponseRouteScopeColoNamesList).pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      S.NullOr(RoutesGetResponseRouteScopeColoRegionsList).pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesGetResponseRouteScope",
-}) as any as S.Schema<RoutesGetResponseRouteScope>;
+export const RoutesGetResponseRouteScope =
+  RoutesCreateResponseScope as any as S.Schema<RoutesGetResponseRouteScope>;
 
 export interface RoutesGetResponseRoute {
   /** Identifier */
@@ -8186,17 +7883,7 @@ export interface GetSiteResponse {
   /** Magic Connector identifier tag. Used when high availability mode is on. */
   secondaryConnectorId?: string | null;
 }
-export const GetSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    connectorId: S.optional(S.NullOr(S.String).pipe(T.Body("connector_id"))),
-    description: S.optional(S.NullOr(S.String)),
-    haMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ha_mode"))),
-    location: S.optional(S.NullOr(SitesCreateResponseLocation)),
-    name: S.optional(S.NullOr(S.String)),
-    secondaryConnectorId: S.optional(S.NullOr(S.String).pipe(T.Body("secondary_connector_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetSiteResponse" }) as any as S.Schema<GetSiteResponse>;
+export const GetSiteResponse = CreateSiteResponse as any as S.Schema<GetSiteResponse>;
 
 export interface GetSiteAclRequest {
   /** Identifier */
@@ -8223,19 +7910,16 @@ export const GetSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSiteAclRequest" }) as any as S.Schema<GetSiteAclRequest>;
 
 export type SitesAclsGetResponseLan1PortRangesList = Array<string>;
-export const SitesAclsGetResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsGetResponseLan1PortRangesList>;
+export const SitesAclsGetResponseLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsGetResponseLan1PortRangesList>;
 
 export type SitesAclsGetResponseLan1PortsList = Array<number>;
-export const SitesAclsGetResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsGetResponseLan1PortsList>;
+export const SitesAclsGetResponseLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsGetResponseLan1PortsList>;
 
 export type SitesAclsGetResponseLan1SubnetsList = Array<string>;
-export const SitesAclsGetResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsGetResponseLan1SubnetsList>;
+export const SitesAclsGetResponseLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsGetResponseLan1SubnetsList>;
 
 export interface SitesAclsGetResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -8262,19 +7946,16 @@ export const SitesAclsGetResponseLan1 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SitesAclsGetResponseLan1" }) as any as S.Schema<SitesAclsGetResponseLan1>;
 
 export type SitesAclsGetResponseLan2PortRangesList = Array<string>;
-export const SitesAclsGetResponseLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsGetResponseLan2PortRangesList>;
+export const SitesAclsGetResponseLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsGetResponseLan2PortRangesList>;
 
 export type SitesAclsGetResponseLan2PortsList = Array<number>;
-export const SitesAclsGetResponseLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsGetResponseLan2PortsList>;
+export const SitesAclsGetResponseLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsGetResponseLan2PortsList>;
 
 export type SitesAclsGetResponseLan2SubnetsList = Array<string>;
-export const SitesAclsGetResponseLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsGetResponseLan2SubnetsList>;
+export const SitesAclsGetResponseLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsGetResponseLan2SubnetsList>;
 
 export interface SitesAclsGetResponseLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -8288,17 +7969,8 @@ export interface SitesAclsGetResponseLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsGetResponseLan2SubnetsList | null;
 }
-export const SitesAclsGetResponseLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsGetResponseLan2PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsGetResponseLan2PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsGetResponseLan2SubnetsList)),
-  }),
-).annotate({ identifier: "SitesAclsGetResponseLan2" }) as any as S.Schema<SitesAclsGetResponseLan2>;
+export const SitesAclsGetResponseLan2 =
+  SitesAclsGetResponseLan1 as any as S.Schema<SitesAclsGetResponseLan2>;
 
 export type SitesAclsGetResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsGetResponseProtocolsItem = S.String;
@@ -8372,31 +8044,19 @@ export const SitesLansGetResponseRoutedSubnetsItem = SitesLansCreateResultItemRo
 
 export type SitesLansGetResponseRoutedSubnetsList =
   Array<SitesLansCreateResultItemRoutedSubnetsItem>;
-export const SitesLansGetResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateResultItemRoutedSubnetsItem,
-) as any as S.Schema<SitesLansGetResponseRoutedSubnetsList>;
+export const SitesLansGetResponseRoutedSubnetsList =
+  SitesLansCreateResultItemRoutedSubnetsList as any as S.Schema<SitesLansGetResponseRoutedSubnetsList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansGetResponseStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
   serverAddresses?: SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList | null;
 }
-export const SitesLansGetResponseStaticAddressingDhcpRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverAddresses: S.optional(
-      S.NullOr(SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList).pipe(
-        T.Body("server_addresses"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SitesLansGetResponseStaticAddressingDhcpRelay",
-}) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelay>;
+export const SitesLansGetResponseStaticAddressingDhcpRelay =
+  SitesLansCreateResultItemStaticAddressingDhcpRelay as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
@@ -8433,9 +8093,8 @@ export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList = /*@
 ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerDnsServersList = Array<string>;
-export const SitesLansGetResponseStaticAddressingDhcpServerDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDnsServersList>;
+export const SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
@@ -8629,19 +8288,16 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppsRequest" }) as any as S.Schema<ListAppsRequest>;
 
 export type AppsListResultItemMagicAccountAppHostnamesList = Array<string>;
-export const AppsListResultItemMagicAccountAppHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemMagicAccountAppHostnamesList>;
+export const AppsListResultItemMagicAccountAppHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsListResultItemMagicAccountAppHostnamesList>;
 
 export type AppsListResultItemMagicAccountAppIpSubnetsList = Array<string>;
-export const AppsListResultItemMagicAccountAppIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemMagicAccountAppIpSubnetsList>;
+export const AppsListResultItemMagicAccountAppIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsListResultItemMagicAccountAppIpSubnetsList>;
 
 export type AppsListResultItemMagicAccountAppSourceSubnetsList = Array<string>;
-export const AppsListResultItemMagicAccountAppSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemMagicAccountAppSourceSubnetsList>;
+export const AppsListResultItemMagicAccountAppSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsListResultItemMagicAccountAppSourceSubnetsList>;
 
 export interface AppsListResultItemMagicAccountApp {
   /** Magic account app ID. */
@@ -8675,19 +8331,16 @@ export const AppsListResultItemMagicAccountApp = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsListResultItemMagicAccountApp>;
 
 export type AppsListResultItemMagicManagedAppHostnamesList = Array<string>;
-export const AppsListResultItemMagicManagedAppHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemMagicManagedAppHostnamesList>;
+export const AppsListResultItemMagicManagedAppHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsListResultItemMagicManagedAppHostnamesList>;
 
 export type AppsListResultItemMagicManagedAppIpSubnetsList = Array<string>;
-export const AppsListResultItemMagicManagedAppIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemMagicManagedAppIpSubnetsList>;
+export const AppsListResultItemMagicManagedAppIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsListResultItemMagicManagedAppIpSubnetsList>;
 
 export type AppsListResultItemMagicManagedAppSourceSubnetsList = Array<string>;
-export const AppsListResultItemMagicManagedAppSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemMagicManagedAppSourceSubnetsList>;
+export const AppsListResultItemMagicManagedAppSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsListResultItemMagicManagedAppSourceSubnetsList>;
 
 export interface AppsListResultItemMagicManagedApp {
   /** Managed app ID. */
@@ -8768,9 +8421,8 @@ export type ListBgpFilterProfilesResultItemMatchAction = "allow" | "deny";
 export const ListBgpFilterProfilesResultItemMatchAction = S.String;
 
 export type ListBgpFilterProfilesResultItemTargetsList = Array<string>;
-export const ListBgpFilterProfilesResultItemTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBgpFilterProfilesResultItemTargetsList>;
+export const ListBgpFilterProfilesResultItemTargetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ListBgpFilterProfilesResultItemTargetsList>;
 
 export interface ListBgpFilterProfilesResultItem {
   /** Identifier */
@@ -8932,9 +8584,8 @@ export type Cf1SitesListResultItem = Cf1SitesCreateResultItem;
 export const Cf1SitesListResultItem = Cf1SitesCreateResultItem;
 
 export type Cf1SitesListResultList = Array<Cf1SitesCreateResultItem>;
-export const Cf1SitesListResultList = /*@__PURE__*/ S.Array(
-  Cf1SitesCreateResultItem,
-) as any as S.Schema<Cf1SitesListResultList>;
+export const Cf1SitesListResultList =
+  Cf1SitesCreateResultList as any as S.Schema<Cf1SitesListResultList>;
 
 export interface ListCf1SitesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -8942,12 +8593,7 @@ export interface ListCf1SitesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListCf1SitesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: Cf1SitesListResultList.pipe(T.EnvelopePayload()),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ListCf1SitesResponse" }) as any as S.Schema<ListCf1SitesResponse>;
+export const ListCf1SitesResponse = CreateCf1SiteResponse as any as S.Schema<ListCf1SitesResponse>;
 
 export interface ListCfInterconnectsRequest {
   /** Identifier */
@@ -8969,9 +8615,7 @@ export const ListCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList = Array<string>;
 export const CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList>;
 
 export interface CfInterconnectsListResponseInterconnectsItemBgp {
   /** Deprecated. Use customer_asn. */
@@ -9360,9 +9004,8 @@ export const ConnectorsListResultItemInterruptWindowDaysOfWeekList = /*@__PURE__
 ) as any as S.Schema<ConnectorsListResultItemInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsListResultItemInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsListResultItemInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsListResultItemInterruptWindowEmbargoDatesList>;
+export const ConnectorsListResultItemInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsListResultItemInterruptWindowEmbargoDatesList>;
 
 export type ConnectorsListResultItemDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsListResultItemDeviceType = S.String;
@@ -9529,9 +9172,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemBondsItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemBondsList =
   Array<ConnectorsSnapshotsGetResponseBondsItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemBondsList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseBondsItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemBondsList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemBondsList =
+  ConnectorsSnapshotsGetResponseBondsList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemBondsList>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem =
   ConnectorsSnapshotsGetResponseDhcpLeasesItem;
@@ -9540,9 +9182,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList =
   Array<ConnectorsSnapshotsGetResponseDhcpLeasesItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseDhcpLeasesItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList =
+  ConnectorsSnapshotsGetResponseDhcpLeasesList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDisksItem =
   ConnectorsSnapshotsGetResponseDisksItem;
@@ -9551,9 +9192,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemDisksItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDisksList =
   Array<ConnectorsSnapshotsGetResponseDisksItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemDisksList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseDisksItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDisksList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemDisksList =
+  ConnectorsSnapshotsGetResponseDisksList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDisksList>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem =
   ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem;
@@ -9611,9 +9251,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemMountsItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemMountsList =
   Array<ConnectorsSnapshotsGetResponseMountsItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemMountsList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseMountsItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemMountsList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemMountsList =
+  ConnectorsSnapshotsGetResponseMountsList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemMountsList>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem =
   ConnectorsSnapshotsGetResponseNetdevsItem;
@@ -9622,9 +9261,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList =
   Array<ConnectorsSnapshotsGetResponseNetdevsItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseNetdevsItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList =
+  ConnectorsSnapshotsGetResponseNetdevsList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemRoutesItem =
   ConnectorsSnapshotsGetResponseRoutesItem;
@@ -9633,9 +9271,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemRoutesItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemRoutesList =
   Array<ConnectorsSnapshotsGetResponseRoutesItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemRoutesList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseRoutesItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemRoutesList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemRoutesList =
+  ConnectorsSnapshotsGetResponseRoutesList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemRoutesList>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem =
   ConnectorsSnapshotsGetResponseThermalsItem;
@@ -9644,9 +9281,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemThermalsList =
   Array<ConnectorsSnapshotsGetResponseThermalsItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemThermalsList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseThermalsItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemThermalsList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemThermalsList =
+  ConnectorsSnapshotsGetResponseThermalsList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemThermalsList>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem =
   ConnectorsSnapshotsGetResponseTunnelsItem;
@@ -9655,9 +9291,8 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem =
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList =
   Array<ConnectorsSnapshotsGetResponseTunnelsItem>;
-export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList = /*@__PURE__*/ S.Array(
-  ConnectorsSnapshotsGetResponseTunnelsItem,
-) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList>;
+export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList =
+  ConnectorsSnapshotsGetResponseTunnelsList as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList>;
 
 export interface ConnectorsSnapshotsLatestListResponseItemsItem {
   /** Count of failures to reclaim space */
@@ -10336,9 +9971,8 @@ export const ListGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGreTunnelsRequest" }) as any as S.Schema<ListGreTunnelsRequest>;
 
 export type GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList = Array<string>;
-export const GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList>;
+export const GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList>;
 
 export interface GreTunnelsListResponseGreTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
@@ -10352,21 +9986,8 @@ export interface GreTunnelsListResponseGreTunnelsItemBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const GreTunnelsListResponseGreTunnelsItemBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList).pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsListResponseGreTunnelsItemBgp",
-}) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgp>;
+export const GreTunnelsListResponseGreTunnelsItemBgp =
+  GreTunnelsDeleteResponseDeletedGreTunnelBgp as any as S.Schema<GreTunnelsListResponseGreTunnelsItemBgp>;
 
 export type GreTunnelsListResponseGreTunnelsItemBgpStatusState =
   | "BGP_DOWN"
@@ -10535,9 +10156,8 @@ export const ListIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpsecTunnelsRequest" }) as any as S.Schema<ListIpsecTunnelsRequest>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList = Array<string>;
-export const IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList>;
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsListResponseIpsecTunnelsItemBgp {
   /** ASN used on the customer end of the BGP session */
@@ -10551,21 +10171,8 @@ export interface IpsecTunnelsListResponseIpsecTunnelsItemBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const IpsecTunnelsListResponseIpsecTunnelsItemBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList).pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsListResponseIpsecTunnelsItemBgp",
-}) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgp>;
+export const IpsecTunnelsListResponseIpsecTunnelsItemBgp =
+  GreTunnelsDeleteResponseDeletedGreTunnelBgp as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemBgp>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState =
   | "BGP_DOWN"
@@ -10931,14 +10538,12 @@ export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRoutesRequest" }) as any as S.Schema<ListRoutesRequest>;
 
 export type RoutesListResponseRoutesItemScopeColoNamesList = Array<string>;
-export const RoutesListResponseRoutesItemScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesListResponseRoutesItemScopeColoNamesList>;
+export const RoutesListResponseRoutesItemScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesListResponseRoutesItemScopeColoNamesList>;
 
 export type RoutesListResponseRoutesItemScopeColoRegionsList = Array<string>;
-export const RoutesListResponseRoutesItemScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesListResponseRoutesItemScopeColoRegionsList>;
+export const RoutesListResponseRoutesItemScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesListResponseRoutesItemScopeColoRegionsList>;
 
 export interface RoutesListResponseRoutesItemScope {
   /** List of colo names for the ECMP scope. */
@@ -10946,18 +10551,8 @@ export interface RoutesListResponseRoutesItemScope {
   /** List of colo regions for the ECMP scope. */
   coloRegions?: RoutesListResponseRoutesItemScopeColoRegionsList | null;
 }
-export const RoutesListResponseRoutesItemScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      S.NullOr(RoutesListResponseRoutesItemScopeColoNamesList).pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      S.NullOr(RoutesListResponseRoutesItemScopeColoRegionsList).pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesListResponseRoutesItemScope",
-}) as any as S.Schema<RoutesListResponseRoutesItemScope>;
+export const RoutesListResponseRoutesItemScope =
+  RoutesCreateResponseScope as any as S.Schema<RoutesListResponseRoutesItemScope>;
 
 export interface RoutesListResponseRoutesItem {
   /** Identifier */
@@ -10979,21 +10574,8 @@ export interface RoutesListResponseRoutesItem {
   /** Optional weight of the ECMP scope - if provided. */
   weight?: number | null;
 }
-export const RoutesListResponseRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    scope: S.optional(S.NullOr(RoutesListResponseRoutesItemScope)),
-    weight: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RoutesListResponseRoutesItem",
-}) as any as S.Schema<RoutesListResponseRoutesItem>;
+export const RoutesListResponseRoutesItem =
+  RoutesDeleteResponseDeletedRoute as any as S.Schema<RoutesListResponseRoutesItem>;
 
 export type RoutesListResponseRoutesList = Array<RoutesListResponseRoutesItem>;
 export const RoutesListResponseRoutesList = /*@__PURE__*/ S.Array(
@@ -11032,19 +10614,16 @@ export const ListSiteAclsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSiteAclsRequest" }) as any as S.Schema<ListSiteAclsRequest>;
 
 export type SitesAclsListResultItemLan1PortRangesList = Array<string>;
-export const SitesAclsListResultItemLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsListResultItemLan1PortRangesList>;
+export const SitesAclsListResultItemLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsListResultItemLan1PortRangesList>;
 
 export type SitesAclsListResultItemLan1PortsList = Array<number>;
-export const SitesAclsListResultItemLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsListResultItemLan1PortsList>;
+export const SitesAclsListResultItemLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsListResultItemLan1PortsList>;
 
 export type SitesAclsListResultItemLan1SubnetsList = Array<string>;
-export const SitesAclsListResultItemLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsListResultItemLan1SubnetsList>;
+export const SitesAclsListResultItemLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsListResultItemLan1SubnetsList>;
 
 export interface SitesAclsListResultItemLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -11058,34 +10637,20 @@ export interface SitesAclsListResultItemLan1 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsListResultItemLan1SubnetsList | null;
 }
-export const SitesAclsListResultItemLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsListResultItemLan1PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsListResultItemLan1PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsListResultItemLan1SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsListResultItemLan1",
-}) as any as S.Schema<SitesAclsListResultItemLan1>;
+export const SitesAclsListResultItemLan1 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsListResultItemLan1>;
 
 export type SitesAclsListResultItemLan2PortRangesList = Array<string>;
-export const SitesAclsListResultItemLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsListResultItemLan2PortRangesList>;
+export const SitesAclsListResultItemLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsListResultItemLan2PortRangesList>;
 
 export type SitesAclsListResultItemLan2PortsList = Array<number>;
-export const SitesAclsListResultItemLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsListResultItemLan2PortsList>;
+export const SitesAclsListResultItemLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsListResultItemLan2PortsList>;
 
 export type SitesAclsListResultItemLan2SubnetsList = Array<string>;
-export const SitesAclsListResultItemLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsListResultItemLan2SubnetsList>;
+export const SitesAclsListResultItemLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsListResultItemLan2SubnetsList>;
 
 export interface SitesAclsListResultItemLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -11099,19 +10664,8 @@ export interface SitesAclsListResultItemLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsListResultItemLan2SubnetsList | null;
 }
-export const SitesAclsListResultItemLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsListResultItemLan2PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsListResultItemLan2PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsListResultItemLan2SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsListResultItemLan2",
-}) as any as S.Schema<SitesAclsListResultItemLan2>;
+export const SitesAclsListResultItemLan2 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsListResultItemLan2>;
 
 export type SitesAclsListResultItemProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsListResultItemProtocolsItem = S.String;
@@ -11199,31 +10753,19 @@ export const SitesLansListResultItemRoutedSubnetsItem = SitesLansCreateResultIte
 
 export type SitesLansListResultItemRoutedSubnetsList =
   Array<SitesLansCreateResultItemRoutedSubnetsItem>;
-export const SitesLansListResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateResultItemRoutedSubnetsItem,
-) as any as S.Schema<SitesLansListResultItemRoutedSubnetsList>;
+export const SitesLansListResultItemRoutedSubnetsList =
+  SitesLansCreateResultItemRoutedSubnetsList as any as S.Schema<SitesLansListResultItemRoutedSubnetsList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansListResultItemStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
   serverAddresses?: SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList | null;
 }
-export const SitesLansListResultItemStaticAddressingDhcpRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverAddresses: S.optional(
-      S.NullOr(SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList).pipe(
-        T.Body("server_addresses"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SitesLansListResultItemStaticAddressingDhcpRelay",
-}) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelay>;
+export const SitesLansListResultItemStaticAddressingDhcpRelay =
+  SitesLansCreateResultItemStaticAddressingDhcpRelay as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelay>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
@@ -11262,18 +10804,13 @@ export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDnsServersList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
 };
 export const SitesLansListResultItemStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerReservationsMap>;
+  SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansListResultItemStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
@@ -11484,9 +11021,8 @@ export const ListSitesAppConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSitesAppConfigurationRequest>;
 
 export type ListSitesAppConfigurationResultItemAccountAppPreferredWansList = Array<string>;
-export const ListSitesAppConfigurationResultItemAccountAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSitesAppConfigurationResultItemAccountAppPreferredWansList>;
+export const ListSitesAppConfigurationResultItemAccountAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ListSitesAppConfigurationResultItemAccountAppPreferredWansList>;
 
 export interface ListSitesAppConfigurationResultItemAccountApp {
   /** Magic account app ID. */
@@ -11502,27 +11038,12 @@ export interface ListSitesAppConfigurationResultItemAccountApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const ListSitesAppConfigurationResultItemAccountApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(ListSitesAppConfigurationResultItemAccountAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "ListSitesAppConfigurationResultItemAccountApp",
-}) as any as S.Schema<ListSitesAppConfigurationResultItemAccountApp>;
+export const ListSitesAppConfigurationResultItemAccountApp =
+  CreateSitesAppConfigurationResultAccountApp as any as S.Schema<ListSitesAppConfigurationResultItemAccountApp>;
 
 export type ListSitesAppConfigurationResultItemManagedAppPreferredWansList = Array<string>;
-export const ListSitesAppConfigurationResultItemManagedAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSitesAppConfigurationResultItemManagedAppPreferredWansList>;
+export const ListSitesAppConfigurationResultItemManagedAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ListSitesAppConfigurationResultItemManagedAppPreferredWansList>;
 
 export interface ListSitesAppConfigurationResultItemManagedApp {
   /** Managed app ID. */
@@ -11538,22 +11059,8 @@ export interface ListSitesAppConfigurationResultItemManagedApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const ListSitesAppConfigurationResultItemManagedApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedAppId: S.String.pipe(T.Body("managed_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(ListSitesAppConfigurationResultItemManagedAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "ListSitesAppConfigurationResultItemManagedApp",
-}) as any as S.Schema<ListSitesAppConfigurationResultItemManagedApp>;
+export const ListSitesAppConfigurationResultItemManagedApp =
+  CreateSitesAppConfigurationResultManagedApp as any as S.Schema<ListSitesAppConfigurationResultItemManagedApp>;
 
 export type ListSitesAppConfigurationResultItem =
   | ListSitesAppConfigurationResultItemAccountApp
@@ -11661,19 +11168,16 @@ export const ListSiteWansResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSiteWansResponse" }) as any as S.Schema<ListSiteWansResponse>;
 
 export type AppsEditRequestHostnamesList = Array<string>;
-export const AppsEditRequestHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditRequestHostnamesList>;
+export const AppsEditRequestHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsEditRequestHostnamesList>;
 
 export type AppsEditRequestIpSubnetsList = Array<string>;
-export const AppsEditRequestIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditRequestIpSubnetsList>;
+export const AppsEditRequestIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsEditRequestIpSubnetsList>;
 
 export type AppsEditRequestSourceSubnetsList = Array<string>;
-export const AppsEditRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditRequestSourceSubnetsList>;
+export const AppsEditRequestSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsEditRequestSourceSubnetsList>;
 
 export interface PatchAppRequest {
   /** Identifier */
@@ -11712,19 +11216,16 @@ export const PatchAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchAppRequest" }) as any as S.Schema<PatchAppRequest>;
 
 export type AppsEditResponseHostnamesList = Array<string>;
-export const AppsEditResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditResponseHostnamesList>;
+export const AppsEditResponseHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsEditResponseHostnamesList>;
 
 export type AppsEditResponseIpSubnetsList = Array<string>;
-export const AppsEditResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditResponseIpSubnetsList>;
+export const AppsEditResponseIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsEditResponseIpSubnetsList>;
 
 export type AppsEditResponseSourceSubnetsList = Array<string>;
-export const AppsEditResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditResponseSourceSubnetsList>;
+export const AppsEditResponseSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsEditResponseSourceSubnetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchAppResponse {
@@ -11741,18 +11242,7 @@ export interface PatchAppResponse {
   /** Category of the app. */
   type?: string | null;
 }
-export const PatchAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(S.NullOr(AppsEditResponseHostnamesList)),
-    ipSubnets: S.optional(S.NullOr(AppsEditResponseIpSubnetsList).pipe(T.Body("ip_subnets"))),
-    name: S.optional(S.NullOr(S.String)),
-    sourceSubnets: S.optional(
-      S.NullOr(AppsEditResponseSourceSubnetsList).pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchAppResponse" }) as any as S.Schema<PatchAppResponse>;
+export const PatchAppResponse = CreateAppResponse as any as S.Schema<PatchAppResponse>;
 
 export type Cf1SitesUpdateRequestLocation = Cf1SitesCreateRequestBodyItemLocation;
 export const Cf1SitesUpdateRequestLocation = Cf1SitesCreateRequestBodyItemLocation;
@@ -11801,16 +11291,7 @@ export interface PatchCf1SiteResponse {
   location?: Cf1SitesCreateResultItemLocation | null;
   modifiedOn?: string | null;
 }
-export const PatchCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    location: S.optional(S.NullOr(Cf1SitesCreateResultItemLocation)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchCf1SiteResponse" }) as any as S.Schema<PatchCf1SiteResponse>;
+export const PatchCf1SiteResponse = DeleteCf1SiteResponse as any as S.Schema<PatchCf1SiteResponse>;
 
 export type ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
   | "Sunday"
@@ -11830,9 +11311,8 @@ export const ConnectorsEditRequestInterruptWindowDaysOfWeekList = /*@__PURE__*/ 
 ) as any as S.Schema<ConnectorsEditRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsEditRequestInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsEditRequestInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsEditRequestInterruptWindowEmbargoDatesList>;
+export const ConnectorsEditRequestInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsEditRequestInterruptWindowEmbargoDatesList>;
 
 export interface PatchConnectorRequest {
   accountId: string;
@@ -11899,9 +11379,8 @@ export const ConnectorsEditResponseInterruptWindowDaysOfWeekList = /*@__PURE__*/
 ) as any as S.Schema<ConnectorsEditResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsEditResponseInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsEditResponseInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsEditResponseInterruptWindowEmbargoDatesList>;
+export const ConnectorsEditResponseInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsEditResponseInterruptWindowEmbargoDatesList>;
 
 export type ConnectorsEditResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsEditResponseDeviceType = S.String;
@@ -12017,32 +11496,19 @@ export interface PatchSiteResponse {
   /** Magic Connector identifier tag. Used when high availability mode is on. */
   secondaryConnectorId?: string | null;
 }
-export const PatchSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    connectorId: S.optional(S.NullOr(S.String).pipe(T.Body("connector_id"))),
-    description: S.optional(S.NullOr(S.String)),
-    haMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ha_mode"))),
-    location: S.optional(S.NullOr(SitesCreateResponseLocation)),
-    name: S.optional(S.NullOr(S.String)),
-    secondaryConnectorId: S.optional(S.NullOr(S.String).pipe(T.Body("secondary_connector_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PatchSiteResponse" }) as any as S.Schema<PatchSiteResponse>;
+export const PatchSiteResponse = CreateSiteResponse as any as S.Schema<PatchSiteResponse>;
 
 export type SitesAclsEditRequestLan1PortRangesList = Array<string>;
-export const SitesAclsEditRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditRequestLan1PortRangesList>;
+export const SitesAclsEditRequestLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditRequestLan1PortRangesList>;
 
 export type SitesAclsEditRequestLan1PortsList = Array<number>;
-export const SitesAclsEditRequestLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsEditRequestLan1PortsList>;
+export const SitesAclsEditRequestLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsEditRequestLan1PortsList>;
 
 export type SitesAclsEditRequestLan1SubnetsList = Array<string>;
-export const SitesAclsEditRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditRequestLan1SubnetsList>;
+export const SitesAclsEditRequestLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditRequestLan1SubnetsList>;
 
 export interface SitesAclsEditRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -12067,19 +11533,16 @@ export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SitesAclsEditRequestLan1" }) as any as S.Schema<SitesAclsEditRequestLan1>;
 
 export type SitesAclsEditRequestLan2PortRangesList = Array<string>;
-export const SitesAclsEditRequestLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditRequestLan2PortRangesList>;
+export const SitesAclsEditRequestLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditRequestLan2PortRangesList>;
 
 export type SitesAclsEditRequestLan2PortsList = Array<number>;
-export const SitesAclsEditRequestLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsEditRequestLan2PortsList>;
+export const SitesAclsEditRequestLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsEditRequestLan2PortsList>;
 
 export type SitesAclsEditRequestLan2SubnetsList = Array<string>;
-export const SitesAclsEditRequestLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditRequestLan2SubnetsList>;
+export const SitesAclsEditRequestLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditRequestLan2SubnetsList>;
 
 export interface SitesAclsEditRequestLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -12093,15 +11556,8 @@ export interface SitesAclsEditRequestLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsEditRequestLan2SubnetsList;
 }
-export const SitesAclsEditRequestLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(SitesAclsEditRequestLan2PortRangesList.pipe(T.Body("port_ranges"))),
-    ports: S.optional(SitesAclsEditRequestLan2PortsList),
-    subnets: S.optional(SitesAclsEditRequestLan2SubnetsList),
-  }),
-).annotate({ identifier: "SitesAclsEditRequestLan2" }) as any as S.Schema<SitesAclsEditRequestLan2>;
+export const SitesAclsEditRequestLan2 =
+  SitesAclsEditRequestLan1 as any as S.Schema<SitesAclsEditRequestLan2>;
 
 export type SitesAclsEditRequestProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsEditRequestProtocolsItem = S.String;
@@ -12156,19 +11612,16 @@ export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchSiteAclRequest" }) as any as S.Schema<PatchSiteAclRequest>;
 
 export type SitesAclsEditResponseLan1PortRangesList = Array<string>;
-export const SitesAclsEditResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditResponseLan1PortRangesList>;
+export const SitesAclsEditResponseLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditResponseLan1PortRangesList>;
 
 export type SitesAclsEditResponseLan1PortsList = Array<number>;
-export const SitesAclsEditResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsEditResponseLan1PortsList>;
+export const SitesAclsEditResponseLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsEditResponseLan1PortsList>;
 
 export type SitesAclsEditResponseLan1SubnetsList = Array<string>;
-export const SitesAclsEditResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditResponseLan1SubnetsList>;
+export const SitesAclsEditResponseLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditResponseLan1SubnetsList>;
 
 export interface SitesAclsEditResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -12182,34 +11635,20 @@ export interface SitesAclsEditResponseLan1 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsEditResponseLan1SubnetsList | null;
 }
-export const SitesAclsEditResponseLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsEditResponseLan1PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsEditResponseLan1PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsEditResponseLan1SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsEditResponseLan1",
-}) as any as S.Schema<SitesAclsEditResponseLan1>;
+export const SitesAclsEditResponseLan1 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsEditResponseLan1>;
 
 export type SitesAclsEditResponseLan2PortRangesList = Array<string>;
-export const SitesAclsEditResponseLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditResponseLan2PortRangesList>;
+export const SitesAclsEditResponseLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditResponseLan2PortRangesList>;
 
 export type SitesAclsEditResponseLan2PortsList = Array<number>;
-export const SitesAclsEditResponseLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsEditResponseLan2PortsList>;
+export const SitesAclsEditResponseLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsEditResponseLan2PortsList>;
 
 export type SitesAclsEditResponseLan2SubnetsList = Array<string>;
-export const SitesAclsEditResponseLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditResponseLan2SubnetsList>;
+export const SitesAclsEditResponseLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsEditResponseLan2SubnetsList>;
 
 export interface SitesAclsEditResponseLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -12223,19 +11662,8 @@ export interface SitesAclsEditResponseLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsEditResponseLan2SubnetsList | null;
 }
-export const SitesAclsEditResponseLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsEditResponseLan2PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsEditResponseLan2PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsEditResponseLan2SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsEditResponseLan2",
-}) as any as S.Schema<SitesAclsEditResponseLan2>;
+export const SitesAclsEditResponseLan2 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsEditResponseLan2>;
 
 export type SitesAclsEditResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsEditResponseProtocolsItem = S.String;
@@ -12284,31 +11712,19 @@ export type SitesLansEditRequestRoutedSubnetsItem = SitesLansCreateRequestRouted
 export const SitesLansEditRequestRoutedSubnetsItem = SitesLansCreateRequestRoutedSubnetsItem;
 
 export type SitesLansEditRequestRoutedSubnetsList = Array<SitesLansCreateRequestRoutedSubnetsItem>;
-export const SitesLansEditRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateRequestRoutedSubnetsItem,
-) as any as S.Schema<SitesLansEditRequestRoutedSubnetsList>;
+export const SitesLansEditRequestRoutedSubnetsList =
+  SitesLansCreateRequestRoutedSubnetsList as any as S.Schema<SitesLansEditRequestRoutedSubnetsList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansEditRequestStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
   serverAddresses?: SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList;
 }
-export const SitesLansEditRequestStaticAddressingDhcpRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverAddresses: S.optional(
-      SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
-        T.Body("server_addresses"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SitesLansEditRequestStaticAddressingDhcpRelay",
-}) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelay>;
+export const SitesLansEditRequestStaticAddressingDhcpRelay =
+  SitesLansCreateRequestStaticAddressingDhcpRelay as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
@@ -12345,17 +11761,14 @@ export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList = /*@
 ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDnsServersList = Array<string>;
-export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDnsServersList>;
+export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
 };
-export const SitesLansEditRequestStaticAddressingDhcpServerReservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerReservationsMap>;
+export const SitesLansEditRequestStaticAddressingDhcpServerReservationsMap =
+  SitesLansGetResponseStaticAddressingDhcpServerReservationsMap as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansEditRequestStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
@@ -12473,31 +11886,19 @@ export const SitesLansEditResponseRoutedSubnetsItem = SitesLansCreateResultItemR
 
 export type SitesLansEditResponseRoutedSubnetsList =
   Array<SitesLansCreateResultItemRoutedSubnetsItem>;
-export const SitesLansEditResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateResultItemRoutedSubnetsItem,
-) as any as S.Schema<SitesLansEditResponseRoutedSubnetsList>;
+export const SitesLansEditResponseRoutedSubnetsList =
+  SitesLansCreateResultItemRoutedSubnetsList as any as S.Schema<SitesLansEditResponseRoutedSubnetsList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansEditResponseStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
   serverAddresses?: SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList | null;
 }
-export const SitesLansEditResponseStaticAddressingDhcpRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverAddresses: S.optional(
-      S.NullOr(SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList).pipe(
-        T.Body("server_addresses"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SitesLansEditResponseStaticAddressingDhcpRelay",
-}) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelay>;
+export const SitesLansEditResponseStaticAddressingDhcpRelay =
+  SitesLansCreateResultItemStaticAddressingDhcpRelay as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
@@ -12534,18 +11935,14 @@ export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList = /*
 ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDnsServersList = Array<string>;
-export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDnsServersList>;
+export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
 };
 export const SitesLansEditResponseStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerReservationsMap>;
+  SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansEditResponseStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
@@ -12901,9 +12298,8 @@ export const PskSetIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PskSetIpsecTunnelResponse>;
 
 export type CfInterconnectsUpdateRequestBgpExtraPrefixesList = Array<string>;
-export const CfInterconnectsUpdateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CfInterconnectsUpdateRequestBgpExtraPrefixesList>;
+export const CfInterconnectsUpdateRequestBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<CfInterconnectsUpdateRequestBgpExtraPrefixesList>;
 
 export interface CfInterconnectsUpdateRequestBgp {
   /** Deprecated. Use customer_asn. */
@@ -13050,9 +12446,7 @@ export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList = Array<string>;
 export const CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList>;
 
 export interface CfInterconnectsUpdateResponseModifiedInterconnectBgp {
   /** Deprecated. Use customer_asn. */
@@ -13072,24 +12466,8 @@ export interface CfInterconnectsUpdateResponseModifiedInterconnectBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const CfInterconnectsUpdateResponseModifiedInterconnectBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asNo: S.optional(S.NullOr(S.Number).pipe(T.Body("as_no"))),
-    cloudflareEndpoint: S.optional(S.NullOr(S.String).pipe(T.Body("cloudflare_endpoint"))),
-    customerAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("customer_asn"))),
-    customerEndpoint: S.optional(S.NullOr(S.String).pipe(T.Body("customer_endpoint"))),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList).pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "CfInterconnectsUpdateResponseModifiedInterconnectBgp",
-}) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectBgp>;
+export const CfInterconnectsUpdateResponseModifiedInterconnectBgp =
+  CfInterconnectsListResponseInterconnectsItemBgp as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectBgp>;
 
 export type CfInterconnectsUpdateResponseModifiedInterconnectGre =
   CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre;
@@ -13247,24 +12625,19 @@ export const StopPcapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopPcapRequest" }) as any as S.Schema<StopPcapRequest>;
 
 export interface StopPcapResponse {}
-export const StopPcapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "StopPcapResponse" }) as any as S.Schema<StopPcapResponse>;
+export const StopPcapResponse = GetPcapDownloadResponse as any as S.Schema<StopPcapResponse>;
 
 export type AppsUpdateRequestHostnamesList = Array<string>;
-export const AppsUpdateRequestHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestHostnamesList>;
+export const AppsUpdateRequestHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsUpdateRequestHostnamesList>;
 
 export type AppsUpdateRequestIpSubnetsList = Array<string>;
-export const AppsUpdateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestIpSubnetsList>;
+export const AppsUpdateRequestIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsUpdateRequestIpSubnetsList>;
 
 export type AppsUpdateRequestSourceSubnetsList = Array<string>;
-export const AppsUpdateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestSourceSubnetsList>;
+export const AppsUpdateRequestSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsUpdateRequestSourceSubnetsList>;
 
 export interface UpdateAppRequest {
   /** Identifier */
@@ -13303,19 +12676,16 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAppRequest" }) as any as S.Schema<UpdateAppRequest>;
 
 export type AppsUpdateResponseHostnamesList = Array<string>;
-export const AppsUpdateResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResponseHostnamesList>;
+export const AppsUpdateResponseHostnamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsUpdateResponseHostnamesList>;
 
 export type AppsUpdateResponseIpSubnetsList = Array<string>;
-export const AppsUpdateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResponseIpSubnetsList>;
+export const AppsUpdateResponseIpSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsUpdateResponseIpSubnetsList>;
 
 export type AppsUpdateResponseSourceSubnetsList = Array<string>;
-export const AppsUpdateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResponseSourceSubnetsList>;
+export const AppsUpdateResponseSourceSubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<AppsUpdateResponseSourceSubnetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateAppResponse {
@@ -13332,26 +12702,14 @@ export interface UpdateAppResponse {
   /** Category of the app. */
   type?: string | null;
 }
-export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(S.NullOr(AppsUpdateResponseHostnamesList)),
-    ipSubnets: S.optional(S.NullOr(AppsUpdateResponseIpSubnetsList).pipe(T.Body("ip_subnets"))),
-    name: S.optional(S.NullOr(S.String)),
-    sourceSubnets: S.optional(
-      S.NullOr(AppsUpdateResponseSourceSubnetsList).pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateAppResponse" }) as any as S.Schema<UpdateAppResponse>;
+export const UpdateAppResponse = CreateAppResponse as any as S.Schema<UpdateAppResponse>;
 
 export type UpdateBgpFilterProfileRequestMatchAction = "allow" | "deny";
 export const UpdateBgpFilterProfileRequestMatchAction = S.String;
 
 export type UpdateBgpFilterProfileRequestTargetsList = Array<string>;
-export const UpdateBgpFilterProfileRequestTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBgpFilterProfileRequestTargetsList>;
+export const UpdateBgpFilterProfileRequestTargetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<UpdateBgpFilterProfileRequestTargetsList>;
 
 export interface UpdateBgpFilterProfileRequest {
   /** Identifier */
@@ -13392,9 +12750,8 @@ export type UpdateBgpFilterProfileResponseMatchAction = "allow" | "deny";
 export const UpdateBgpFilterProfileResponseMatchAction = S.String;
 
 export type UpdateBgpFilterProfileResponseTargetsList = Array<string>;
-export const UpdateBgpFilterProfileResponseTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBgpFilterProfileResponseTargetsList>;
+export const UpdateBgpFilterProfileResponseTargetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<UpdateBgpFilterProfileResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateBgpFilterProfileResponse {
@@ -13443,9 +12800,8 @@ export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekList = /*@__PURE__*
 ) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsUpdateRequestInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsUpdateRequestInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowEmbargoDatesList>;
+export const ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsUpdateRequestInterruptWindowEmbargoDatesList>;
 
 export interface UpdateConnectorRequest {
   accountId: string;
@@ -13512,9 +12868,8 @@ export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekList = /*@__PURE__
 ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowDaysOfWeekList>;
 
 export type ConnectorsUpdateResponseInterruptWindowEmbargoDatesList = Array<string>;
-export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowEmbargoDatesList>;
+export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<ConnectorsUpdateResponseInterruptWindowEmbargoDatesList>;
 
 export type ConnectorsUpdateResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsUpdateResponseDeviceType = S.String;
@@ -13672,9 +13027,8 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateGreTunnelRequest" }) as any as S.Schema<UpdateGreTunnelRequest>;
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList = Array<string>;
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList>;
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList>;
 
 export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
   /** ASN used on the customer end of the BGP session */
@@ -13688,21 +13042,8 @@ export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList).pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgp",
-}) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgp>;
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
+  GreTunnelsDeleteResponseDeletedGreTunnelBgp as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgp>;
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
   | "BGP_DOWN"
@@ -13853,9 +13194,8 @@ export const UpdateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateGreTunnelResponse" }) as any as S.Schema<UpdateGreTunnelResponse>;
 
 export type IpsecTunnelsUpdateRequestBgpExtraPrefixesList = Array<string>;
-export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IpsecTunnelsUpdateRequestBgpExtraPrefixesList>;
+export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<IpsecTunnelsUpdateRequestBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsUpdateRequestBgp {
   /** ASN used on the customer end of the BGP session */
@@ -13869,19 +13209,8 @@ export interface IpsecTunnelsUpdateRequestBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string;
 }
-export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      IpsecTunnelsUpdateRequestBgpExtraPrefixesList.pipe(T.Body("extra_prefixes")),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsUpdateRequestBgp",
-}) as any as S.Schema<IpsecTunnelsUpdateRequestBgp>;
+export const IpsecTunnelsUpdateRequestBgp =
+  GreTunnelsCreateRequestBgp as any as S.Schema<IpsecTunnelsUpdateRequestBgp>;
 
 export type IpsecTunnelsUpdateRequestCustomRemoteIdentities =
   IpsecTunnelsCreateRequestCustomRemoteIdentities;
@@ -13993,9 +13322,7 @@ export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList = Array<string>;
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList>;
 
 export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
   /** ASN used on the customer end of the BGP session */
@@ -14009,21 +13336,8 @@ export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      S.NullOr(IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList).pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.NullOr(S.String).pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp",
-}) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp>;
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
+  GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp>;
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
@@ -14204,14 +13518,12 @@ export const UpdateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateIpsecTunnelResponse>;
 
 export type RoutesUpdateRequestScopeColoNamesList = Array<string>;
-export const RoutesUpdateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesUpdateRequestScopeColoNamesList>;
+export const RoutesUpdateRequestScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesUpdateRequestScopeColoNamesList>;
 
 export type RoutesUpdateRequestScopeColoRegionsList = Array<string>;
-export const RoutesUpdateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesUpdateRequestScopeColoRegionsList>;
+export const RoutesUpdateRequestScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesUpdateRequestScopeColoRegionsList>;
 
 export interface RoutesUpdateRequestScope {
   /** List of colo names for the ECMP scope. */
@@ -14219,12 +13531,8 @@ export interface RoutesUpdateRequestScope {
   /** List of colo regions for the ECMP scope. */
   coloRegions?: RoutesUpdateRequestScopeColoRegionsList;
 }
-export const RoutesUpdateRequestScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(RoutesUpdateRequestScopeColoNamesList.pipe(T.Body("colo_names"))),
-    coloRegions: S.optional(RoutesUpdateRequestScopeColoRegionsList.pipe(T.Body("colo_regions"))),
-  }),
-).annotate({ identifier: "RoutesUpdateRequestScope" }) as any as S.Schema<RoutesUpdateRequestScope>;
+export const RoutesUpdateRequestScope =
+  RoutesCreateRequestScope as any as S.Schema<RoutesUpdateRequestScope>;
 
 export interface UpdateRouteRequest {
   /** Identifier */
@@ -14262,14 +13570,12 @@ export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRouteRequest" }) as any as S.Schema<UpdateRouteRequest>;
 
 export type RoutesUpdateResponseModifiedRouteScopeColoNamesList = Array<string>;
-export const RoutesUpdateResponseModifiedRouteScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoNamesList>;
+export const RoutesUpdateResponseModifiedRouteScopeColoNamesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoNamesList>;
 
 export type RoutesUpdateResponseModifiedRouteScopeColoRegionsList = Array<string>;
-export const RoutesUpdateResponseModifiedRouteScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoRegionsList>;
+export const RoutesUpdateResponseModifiedRouteScopeColoRegionsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoRegionsList>;
 
 export interface RoutesUpdateResponseModifiedRouteScope {
   /** List of colo names for the ECMP scope. */
@@ -14277,18 +13583,8 @@ export interface RoutesUpdateResponseModifiedRouteScope {
   /** List of colo regions for the ECMP scope. */
   coloRegions?: RoutesUpdateResponseModifiedRouteScopeColoRegionsList | null;
 }
-export const RoutesUpdateResponseModifiedRouteScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      S.NullOr(RoutesUpdateResponseModifiedRouteScopeColoNamesList).pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      S.NullOr(RoutesUpdateResponseModifiedRouteScopeColoRegionsList).pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesUpdateResponseModifiedRouteScope",
-}) as any as S.Schema<RoutesUpdateResponseModifiedRouteScope>;
+export const RoutesUpdateResponseModifiedRouteScope =
+  RoutesCreateResponseScope as any as S.Schema<RoutesUpdateResponseModifiedRouteScope>;
 
 export interface RoutesUpdateResponseModifiedRoute {
   /** Identifier */
@@ -14310,21 +13606,8 @@ export interface RoutesUpdateResponseModifiedRoute {
   /** Optional weight of the ECMP scope - if provided. */
   weight?: number | null;
 }
-export const RoutesUpdateResponseModifiedRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    scope: S.optional(S.NullOr(RoutesUpdateResponseModifiedRouteScope)),
-    weight: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RoutesUpdateResponseModifiedRoute",
-}) as any as S.Schema<RoutesUpdateResponseModifiedRoute>;
+export const RoutesUpdateResponseModifiedRoute =
+  RoutesDeleteResponseDeletedRoute as any as S.Schema<RoutesUpdateResponseModifiedRoute>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRouteResponse {
@@ -14394,32 +13677,19 @@ export interface UpdateSiteResponse {
   /** Magic Connector identifier tag. Used when high availability mode is on. */
   secondaryConnectorId?: string | null;
 }
-export const UpdateSiteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    connectorId: S.optional(S.NullOr(S.String).pipe(T.Body("connector_id"))),
-    description: S.optional(S.NullOr(S.String)),
-    haMode: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ha_mode"))),
-    location: S.optional(S.NullOr(SitesCreateResponseLocation)),
-    name: S.optional(S.NullOr(S.String)),
-    secondaryConnectorId: S.optional(S.NullOr(S.String).pipe(T.Body("secondary_connector_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateSiteResponse" }) as any as S.Schema<UpdateSiteResponse>;
+export const UpdateSiteResponse = CreateSiteResponse as any as S.Schema<UpdateSiteResponse>;
 
 export type SitesAclsUpdateRequestLan1PortRangesList = Array<string>;
-export const SitesAclsUpdateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateRequestLan1PortRangesList>;
+export const SitesAclsUpdateRequestLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateRequestLan1PortRangesList>;
 
 export type SitesAclsUpdateRequestLan1PortsList = Array<number>;
-export const SitesAclsUpdateRequestLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsUpdateRequestLan1PortsList>;
+export const SitesAclsUpdateRequestLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsUpdateRequestLan1PortsList>;
 
 export type SitesAclsUpdateRequestLan1SubnetsList = Array<string>;
-export const SitesAclsUpdateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateRequestLan1SubnetsList>;
+export const SitesAclsUpdateRequestLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateRequestLan1SubnetsList>;
 
 export interface SitesAclsUpdateRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -14433,32 +13703,20 @@ export interface SitesAclsUpdateRequestLan1 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsUpdateRequestLan1SubnetsList;
 }
-export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(SitesAclsUpdateRequestLan1PortRangesList.pipe(T.Body("port_ranges"))),
-    ports: S.optional(SitesAclsUpdateRequestLan1PortsList),
-    subnets: S.optional(SitesAclsUpdateRequestLan1SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsUpdateRequestLan1",
-}) as any as S.Schema<SitesAclsUpdateRequestLan1>;
+export const SitesAclsUpdateRequestLan1 =
+  SitesAclsCreateRequestLan1 as any as S.Schema<SitesAclsUpdateRequestLan1>;
 
 export type SitesAclsUpdateRequestLan2PortRangesList = Array<string>;
-export const SitesAclsUpdateRequestLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateRequestLan2PortRangesList>;
+export const SitesAclsUpdateRequestLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateRequestLan2PortRangesList>;
 
 export type SitesAclsUpdateRequestLan2PortsList = Array<number>;
-export const SitesAclsUpdateRequestLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsUpdateRequestLan2PortsList>;
+export const SitesAclsUpdateRequestLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsUpdateRequestLan2PortsList>;
 
 export type SitesAclsUpdateRequestLan2SubnetsList = Array<string>;
-export const SitesAclsUpdateRequestLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateRequestLan2SubnetsList>;
+export const SitesAclsUpdateRequestLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateRequestLan2SubnetsList>;
 
 export interface SitesAclsUpdateRequestLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -14472,17 +13730,8 @@ export interface SitesAclsUpdateRequestLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsUpdateRequestLan2SubnetsList;
 }
-export const SitesAclsUpdateRequestLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(SitesAclsUpdateRequestLan2PortRangesList.pipe(T.Body("port_ranges"))),
-    ports: S.optional(SitesAclsUpdateRequestLan2PortsList),
-    subnets: S.optional(SitesAclsUpdateRequestLan2SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsUpdateRequestLan2",
-}) as any as S.Schema<SitesAclsUpdateRequestLan2>;
+export const SitesAclsUpdateRequestLan2 =
+  SitesAclsCreateRequestLan1 as any as S.Schema<SitesAclsUpdateRequestLan2>;
 
 export type SitesAclsUpdateRequestProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsUpdateRequestProtocolsItem = S.String;
@@ -14537,19 +13786,16 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSiteAclRequest" }) as any as S.Schema<UpdateSiteAclRequest>;
 
 export type SitesAclsUpdateResponseLan1PortRangesList = Array<string>;
-export const SitesAclsUpdateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateResponseLan1PortRangesList>;
+export const SitesAclsUpdateResponseLan1PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateResponseLan1PortRangesList>;
 
 export type SitesAclsUpdateResponseLan1PortsList = Array<number>;
-export const SitesAclsUpdateResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsUpdateResponseLan1PortsList>;
+export const SitesAclsUpdateResponseLan1PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsUpdateResponseLan1PortsList>;
 
 export type SitesAclsUpdateResponseLan1SubnetsList = Array<string>;
-export const SitesAclsUpdateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateResponseLan1SubnetsList>;
+export const SitesAclsUpdateResponseLan1SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateResponseLan1SubnetsList>;
 
 export interface SitesAclsUpdateResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -14563,34 +13809,20 @@ export interface SitesAclsUpdateResponseLan1 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsUpdateResponseLan1SubnetsList | null;
 }
-export const SitesAclsUpdateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsUpdateResponseLan1PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsUpdateResponseLan1PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsUpdateResponseLan1SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsUpdateResponseLan1",
-}) as any as S.Schema<SitesAclsUpdateResponseLan1>;
+export const SitesAclsUpdateResponseLan1 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsUpdateResponseLan1>;
 
 export type SitesAclsUpdateResponseLan2PortRangesList = Array<string>;
-export const SitesAclsUpdateResponseLan2PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateResponseLan2PortRangesList>;
+export const SitesAclsUpdateResponseLan2PortRangesList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateResponseLan2PortRangesList>;
 
 export type SitesAclsUpdateResponseLan2PortsList = Array<number>;
-export const SitesAclsUpdateResponseLan2PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsUpdateResponseLan2PortsList>;
+export const SitesAclsUpdateResponseLan2PortsList =
+  SitesAclsCreateRequestLan1PortsList as any as S.Schema<SitesAclsUpdateResponseLan2PortsList>;
 
 export type SitesAclsUpdateResponseLan2SubnetsList = Array<string>;
-export const SitesAclsUpdateResponseLan2SubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsUpdateResponseLan2SubnetsList>;
+export const SitesAclsUpdateResponseLan2SubnetsList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesAclsUpdateResponseLan2SubnetsList>;
 
 export interface SitesAclsUpdateResponseLan2 {
   /** The identifier for the LAN you want to create an ACL policy with. */
@@ -14604,19 +13836,8 @@ export interface SitesAclsUpdateResponseLan2 {
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
   subnets?: SitesAclsUpdateResponseLan2SubnetsList | null;
 }
-export const SitesAclsUpdateResponseLan2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.NullOr(S.String).pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      S.NullOr(SitesAclsUpdateResponseLan2PortRangesList).pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(S.NullOr(SitesAclsUpdateResponseLan2PortsList)),
-    subnets: S.optional(S.NullOr(SitesAclsUpdateResponseLan2SubnetsList)),
-  }),
-).annotate({
-  identifier: "SitesAclsUpdateResponseLan2",
-}) as any as S.Schema<SitesAclsUpdateResponseLan2>;
+export const SitesAclsUpdateResponseLan2 =
+  SitesAclsCreateResponseLan1 as any as S.Schema<SitesAclsUpdateResponseLan2>;
 
 export type SitesAclsUpdateResponseProtocolsItem = "tcp" | "udp" | "icmp";
 export const SitesAclsUpdateResponseProtocolsItem = S.String;
@@ -14666,31 +13887,19 @@ export const SitesLansUpdateRequestRoutedSubnetsItem = SitesLansCreateRequestRou
 
 export type SitesLansUpdateRequestRoutedSubnetsList =
   Array<SitesLansCreateRequestRoutedSubnetsItem>;
-export const SitesLansUpdateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateRequestRoutedSubnetsItem,
-) as any as S.Schema<SitesLansUpdateRequestRoutedSubnetsList>;
+export const SitesLansUpdateRequestRoutedSubnetsList =
+  SitesLansCreateRequestRoutedSubnetsList as any as S.Schema<SitesLansUpdateRequestRoutedSubnetsList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansUpdateRequestStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
   serverAddresses?: SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList;
 }
-export const SitesLansUpdateRequestStaticAddressingDhcpRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverAddresses: S.optional(
-      SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
-        T.Body("server_addresses"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SitesLansUpdateRequestStaticAddressingDhcpRelay",
-}) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpRelay>;
+export const SitesLansUpdateRequestStaticAddressingDhcpRelay =
+  SitesLansCreateRequestStaticAddressingDhcpRelay as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
@@ -14728,18 +13937,14 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList =
   ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList = Array<string>;
-export const SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList>;
+export const SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
 };
 export const SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap>;
+  SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansUpdateRequestStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
@@ -14861,31 +14066,19 @@ export const SitesLansUpdateResponseRoutedSubnetsItem = SitesLansCreateResultIte
 
 export type SitesLansUpdateResponseRoutedSubnetsList =
   Array<SitesLansCreateResultItemRoutedSubnetsItem>;
-export const SitesLansUpdateResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateResultItemRoutedSubnetsItem,
-) as any as S.Schema<SitesLansUpdateResponseRoutedSubnetsList>;
+export const SitesLansUpdateResponseRoutedSubnetsList =
+  SitesLansCreateResultItemRoutedSubnetsList as any as S.Schema<SitesLansUpdateResponseRoutedSubnetsList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList = Array<string>;
 export const SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList>;
 
 export interface SitesLansUpdateResponseStaticAddressingDhcpRelay {
   /** List of DHCP server IPs. */
   serverAddresses?: SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList | null;
 }
-export const SitesLansUpdateResponseStaticAddressingDhcpRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverAddresses: S.optional(
-      S.NullOr(SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList).pipe(
-        T.Body("server_addresses"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SitesLansUpdateResponseStaticAddressingDhcpRelay",
-}) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpRelay>;
+export const SitesLansUpdateResponseStaticAddressingDhcpRelay =
+  SitesLansCreateResultItemStaticAddressingDhcpRelay as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
@@ -14924,18 +14117,13 @@ export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList =
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList = Array<string>;
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList>;
+  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap = {
   [key: string]: unknown | undefined;
 };
 export const SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap>;
+  SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansUpdateResponseStaticAddressingDhcpServer {
   /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
@@ -15043,9 +14231,8 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSiteLanResponse" }) as any as S.Schema<UpdateSiteLanResponse>;
 
 export type UpdateSitesAppConfigurationRequestPreferredWansList = Array<string>;
-export const UpdateSitesAppConfigurationRequestPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSitesAppConfigurationRequestPreferredWansList>;
+export const UpdateSitesAppConfigurationRequestPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<UpdateSitesAppConfigurationRequestPreferredWansList>;
 
 export interface UpdateSitesAppConfigurationRequest {
   /** Identifier */
@@ -15091,9 +14278,8 @@ export const UpdateSitesAppConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSitesAppConfigurationRequest>;
 
 export type UpdateSitesAppConfigurationResultAccountAppPreferredWansList = Array<string>;
-export const UpdateSitesAppConfigurationResultAccountAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSitesAppConfigurationResultAccountAppPreferredWansList>;
+export const UpdateSitesAppConfigurationResultAccountAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<UpdateSitesAppConfigurationResultAccountAppPreferredWansList>;
 
 export interface UpdateSitesAppConfigurationResultAccountApp {
   /** Magic account app ID. */
@@ -15109,27 +14295,12 @@ export interface UpdateSitesAppConfigurationResultAccountApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const UpdateSitesAppConfigurationResultAccountApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(UpdateSitesAppConfigurationResultAccountAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "UpdateSitesAppConfigurationResultAccountApp",
-}) as any as S.Schema<UpdateSitesAppConfigurationResultAccountApp>;
+export const UpdateSitesAppConfigurationResultAccountApp =
+  CreateSitesAppConfigurationResultAccountApp as any as S.Schema<UpdateSitesAppConfigurationResultAccountApp>;
 
 export type UpdateSitesAppConfigurationResultManagedAppPreferredWansList = Array<string>;
-export const UpdateSitesAppConfigurationResultManagedAppPreferredWansList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSitesAppConfigurationResultManagedAppPreferredWansList>;
+export const UpdateSitesAppConfigurationResultManagedAppPreferredWansList =
+  RoutesBulkUpdateRequestRoutesItemScopeColoNamesList as any as S.Schema<UpdateSitesAppConfigurationResultManagedAppPreferredWansList>;
 
 export interface UpdateSitesAppConfigurationResultManagedApp {
   /** Managed app ID. */
@@ -15145,22 +14316,8 @@ export interface UpdateSitesAppConfigurationResultManagedApp {
   /** Identifier */
   siteId?: string | null;
 }
-export const UpdateSitesAppConfigurationResultManagedApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedAppId: S.String.pipe(T.Body("managed_app_id")),
-    id: S.optional(S.NullOr(S.String)),
-    breakout: S.optional(S.NullOr(S.Boolean)),
-    preferredWans: S.optional(
-      S.NullOr(UpdateSitesAppConfigurationResultManagedAppPreferredWansList).pipe(
-        T.Body("preferred_wans"),
-      ),
-    ),
-    priority: S.optional(S.NullOr(S.Number)),
-    siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "UpdateSitesAppConfigurationResultManagedApp",
-}) as any as S.Schema<UpdateSitesAppConfigurationResultManagedApp>;
+export const UpdateSitesAppConfigurationResultManagedApp =
+  CreateSitesAppConfigurationResultManagedApp as any as S.Schema<UpdateSitesAppConfigurationResultManagedApp>;
 
 export type UpdateSitesAppConfigurationResult =
   | UpdateSitesAppConfigurationResultAccountApp

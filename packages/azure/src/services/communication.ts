@@ -258,10 +258,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type CommunicationServicesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CommunicationServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommunicationServicesCreateOrUpdateResponseTagsMap>;
+export const CommunicationServicesCreateOrUpdateResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<CommunicationServicesCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the resource. */
 export type CommunicationServicesProvisioningState =
@@ -468,11 +466,8 @@ export const DeleteCommunicationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommunicationServiceRequest>;
 
 export interface DeleteCommunicationServiceResponse {}
-export const DeleteCommunicationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCommunicationServiceResponse",
-}) as any as S.Schema<DeleteCommunicationServiceResponse>;
+export const DeleteCommunicationServiceResponse =
+  CancelDomainVerificationResponse as any as S.Schema<DeleteCommunicationServiceResponse>;
 
 export interface DeleteDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -501,9 +496,8 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainResponse",
-}) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteDomainResponse>;
 
 export interface DeleteEmailServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -531,9 +525,8 @@ export const DeleteEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEmailServiceRequest>;
 
 export interface DeleteEmailServiceResponse {}
-export const DeleteEmailServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEmailServiceResponse",
-}) as any as S.Schema<DeleteEmailServiceResponse>;
+export const DeleteEmailServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteEmailServiceResponse>;
 
 export interface DeleteSenderUsernameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -567,9 +560,8 @@ export const DeleteSenderUsernameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSenderUsernameRequest>;
 
 export interface DeleteSenderUsernameResponse {}
-export const DeleteSenderUsernameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSenderUsernameResponse",
-}) as any as S.Schema<DeleteSenderUsernameResponse>;
+export const DeleteSenderUsernameResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteSenderUsernameResponse>;
 
 export interface DeleteSmtpUsernameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -600,9 +592,8 @@ export const DeleteSmtpUsernameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmtpUsernameRequest>;
 
 export interface DeleteSmtpUsernameResponse {}
-export const DeleteSmtpUsernameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSmtpUsernameResponse",
-}) as any as S.Schema<DeleteSmtpUsernameResponse>;
+export const DeleteSmtpUsernameResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteSmtpUsernameResponse>;
 
 export interface DeleteSuppressionListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -636,9 +627,8 @@ export const DeleteSuppressionListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSuppressionListRequest>;
 
 export interface DeleteSuppressionListResponse {}
-export const DeleteSuppressionListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSuppressionListResponse",
-}) as any as S.Schema<DeleteSuppressionListResponse>;
+export const DeleteSuppressionListResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteSuppressionListResponse>;
 
 export interface DeleteSuppressionListAddressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -675,18 +665,13 @@ export const DeleteSuppressionListAddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSuppressionListAddressRequest>;
 
 export interface DeleteSuppressionListAddressResponse {}
-export const DeleteSuppressionListAddressResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSuppressionListAddressResponse",
-}) as any as S.Schema<DeleteSuppressionListAddressResponse>;
+export const DeleteSuppressionListAddressResponse =
+  CancelDomainVerificationResponse as any as S.Schema<DeleteSuppressionListAddressResponse>;
 
 /** Resource tags. */
 export type DomainsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
+export const DomainsCreateOrUpdateRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
 
 /** Describes how a Domains resource is being managed. */
 export type DomainManagement =
@@ -752,10 +737,8 @@ export const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
+export const DomainsCreateOrUpdateResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the resource. */
 export type DomainsProvisioningState =
@@ -958,18 +941,13 @@ export const DomainsInitiateVerificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsInitiateVerificationRequest>;
 
 export interface DomainsInitiateVerificationResponse {}
-export const DomainsInitiateVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DomainsInitiateVerificationResponse",
-}) as any as S.Schema<DomainsInitiateVerificationResponse>;
+export const DomainsInitiateVerificationResponse =
+  CancelDomainVerificationResponse as any as S.Schema<DomainsInitiateVerificationResponse>;
 
 /** Resource tags. */
 export type EmailServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EmailServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EmailServicesCreateOrUpdateRequestTagsMap>;
+export const EmailServicesCreateOrUpdateRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<EmailServicesCreateOrUpdateRequestTagsMap>;
 
 /** Provisioning state of the resource. */
 export type EmailServicesProvisioningState =
@@ -1034,10 +1012,8 @@ export const EmailServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EmailServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EmailServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EmailServicesCreateOrUpdateResponseTagsMap>;
+export const EmailServicesCreateOrUpdateResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<EmailServicesCreateOrUpdateResponseTagsMap>;
 
 export interface EmailServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1096,20 +1072,15 @@ export const GetCommunicationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCommunicationServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetCommunicationServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCommunicationServiceResponseTagsMap>;
+export const GetCommunicationServiceResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetCommunicationServiceResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
 export const GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap>;
+  CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetCommunicationServiceResponseIdentity {
@@ -1121,18 +1092,8 @@ export interface GetCommunicationServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetCommunicationServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      GetCommunicationServiceResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "GetCommunicationServiceResponseIdentity",
-}) as any as S.Schema<GetCommunicationServiceResponseIdentity>;
+export const GetCommunicationServiceResponseIdentity =
+  CommunicationServicesCreateOrUpdateResponseIdentity as any as S.Schema<GetCommunicationServiceResponseIdentity>;
 
 export interface GetCommunicationServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1152,20 +1113,8 @@ export interface GetCommunicationServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetCommunicationServiceResponseIdentity;
 }
-export const GetCommunicationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetCommunicationServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CommunicationServiceProperties),
-    identity: S.optional(GetCommunicationServiceResponseIdentity),
-  }),
-).annotate({
-  identifier: "GetCommunicationServiceResponse",
-}) as any as S.Schema<GetCommunicationServiceResponse>;
+export const GetCommunicationServiceResponse =
+  CommunicationServicesCreateOrUpdateResponse as any as S.Schema<GetCommunicationServiceResponse>;
 
 export interface GetDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1195,10 +1144,8 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
-export const GetDomainResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDomainResponseTagsMap>;
+export const GetDomainResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
 
 export interface GetDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1253,10 +1200,8 @@ export const GetEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEmailServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetEmailServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEmailServiceResponseTagsMap>;
+export const GetEmailServiceResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEmailServiceResponseTagsMap>;
 
 export interface GetEmailServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1624,10 +1569,8 @@ export const ListCommunicationServiceByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type CommunicationServiceResourceTagsMap = { [key: string]: string | undefined };
-export const CommunicationServiceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CommunicationServiceResourceTagsMap>;
+export const CommunicationServiceResourceTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<CommunicationServiceResourceTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CommunicationServiceResourceIdentityUserAssignedIdentitiesMap = {
@@ -1808,10 +1751,8 @@ export const ListDomainByEmailServiceResourceRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type DomainResourceTagsMap = { [key: string]: string | undefined };
-export const DomainResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DomainResourceTagsMap>;
+export const DomainResourceTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<DomainResourceTagsMap>;
 
 /** A class representing a Domains resource. */
 export interface DomainResource {
@@ -1830,17 +1771,7 @@ export interface DomainResource {
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
 }
-export const DomainResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DomainResourceTagsMap),
-    location: S.String,
-    properties: S.optional(DomainProperties),
-  }),
-).annotate({ identifier: "DomainResource" }) as any as S.Schema<DomainResource>;
+export const DomainResource = GetDomainResponse as any as S.Schema<DomainResource>;
 
 /** The DomainResource items on this page */
 export type DomainResourceListValueList = Array<DomainResource>;
@@ -1886,10 +1817,8 @@ export const ListEmailServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type EmailServiceResourceTagsMap = { [key: string]: string | undefined };
-export const EmailServiceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EmailServiceResourceTagsMap>;
+export const EmailServiceResourceTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<EmailServiceResourceTagsMap>;
 
 /** A class representing an EmailService resource. */
 export interface EmailServiceResource {
@@ -1908,17 +1837,8 @@ export interface EmailServiceResource {
   /** The properties of the service. */
   properties?: EmailServiceProperties;
 }
-export const EmailServiceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EmailServiceResourceTagsMap),
-    location: S.String,
-    properties: S.optional(EmailServiceProperties),
-  }),
-).annotate({ identifier: "EmailServiceResource" }) as any as S.Schema<EmailServiceResource>;
+export const EmailServiceResource =
+  GetEmailServiceResponse as any as S.Schema<EmailServiceResource>;
 
 /** The EmailServiceResource items on this page */
 export type EmailServiceResourceListValueList = Array<EmailServiceResource>;
@@ -1980,9 +1900,8 @@ export const ListEmailServiceVerifiedExchangeOnlineDomainsRequest = /*@__PURE__*
 
 /** List of FQDNs of verified domains in Exchange Online. */
 export type VerifiedExchangeOnlineDomainList = Array<string>;
-export const VerifiedExchangeOnlineDomainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VerifiedExchangeOnlineDomainList>;
+export const VerifiedExchangeOnlineDomainList =
+  DomainsResourceList as any as S.Schema<VerifiedExchangeOnlineDomainList>;
 
 export type ListEmailServiceVerifiedExchangeOnlineDomainsResponse =
   VerifiedExchangeOnlineDomainList;
@@ -2183,15 +2102,8 @@ export interface SmtpUsernameResource {
   /** The properties of a SmtpUsername resource. */
   properties?: SmtpUsernameProperties;
 }
-export const SmtpUsernameResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SmtpUsernameProperties),
-  }),
-).annotate({ identifier: "SmtpUsernameResource" }) as any as S.Schema<SmtpUsernameResource>;
+export const SmtpUsernameResource =
+  GetSmtpUsernameResponse as any as S.Schema<SmtpUsernameResource>;
 
 /** The SmtpUsernameResource items on this page */
 export type SmtpUsernameResourceCollectionValueList = Array<SmtpUsernameResource>;
@@ -2259,17 +2171,8 @@ export interface SuppressionListAddressResource {
   /** The properties of a SuppressionListAddress resource. */
   properties?: SuppressionListAddressProperties;
 }
-export const SuppressionListAddressResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SuppressionListAddressProperties),
-  }),
-).annotate({
-  identifier: "SuppressionListAddressResource",
-}) as any as S.Schema<SuppressionListAddressResource>;
+export const SuppressionListAddressResource =
+  GetSuppressionListAddressResponse as any as S.Schema<SuppressionListAddressResource>;
 
 /** The SuppressionListAddressResource items on this page */
 export type SuppressionListAddressResourceCollectionValueList =
@@ -2461,17 +2364,8 @@ export interface SenderUsernamesCreateOrUpdateResponse {
   /** The properties of a SenderUsername resource. */
   properties?: SenderUsernameProperties;
 }
-export const SenderUsernamesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SenderUsernameProperties),
-  }),
-).annotate({
-  identifier: "SenderUsernamesCreateOrUpdateResponse",
-}) as any as S.Schema<SenderUsernamesCreateOrUpdateResponse>;
+export const SenderUsernamesCreateOrUpdateResponse =
+  GetSenderUsernameResponse as any as S.Schema<SenderUsernamesCreateOrUpdateResponse>;
 
 export interface SmtpUsernamesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2599,17 +2493,8 @@ export interface SuppressionListAddressesCreateOrUpdateResponse {
   /** The properties of a SuppressionListAddress resource. */
   properties?: SuppressionListAddressProperties;
 }
-export const SuppressionListAddressesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SuppressionListAddressProperties),
-  }),
-).annotate({
-  identifier: "SuppressionListAddressesCreateOrUpdateResponse",
-}) as any as S.Schema<SuppressionListAddressesCreateOrUpdateResponse>;
+export const SuppressionListAddressesCreateOrUpdateResponse =
+  GetSuppressionListAddressResponse as any as S.Schema<SuppressionListAddressesCreateOrUpdateResponse>;
 
 /** A class that describes the properties of a SuppressionList resource. */
 export interface SuppressionListPropertiesInput {
@@ -2670,24 +2555,13 @@ export interface SuppressionListsCreateOrUpdateResponse {
   /** The properties of a SuppressionList resource. */
   properties?: SuppressionListProperties;
 }
-export const SuppressionListsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SuppressionListProperties),
-  }),
-).annotate({
-  identifier: "SuppressionListsCreateOrUpdateResponse",
-}) as any as S.Schema<SuppressionListsCreateOrUpdateResponse>;
+export const SuppressionListsCreateOrUpdateResponse =
+  GetSuppressionListResponse as any as S.Schema<SuppressionListsCreateOrUpdateResponse>;
 
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateCommunicationServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunicationServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommunicationServiceRequestTagsMap>;
+export const UpdateCommunicationServiceRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunicationServiceRequestTagsMap>;
 
 /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type CommunicationServiceUpdatePropertiesPublicNetworkAccess =
@@ -2720,10 +2594,7 @@ export type UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap =
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
 export const UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
-  ) as any as S.Schema<UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap>;
+  CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateCommunicationServiceRequestIdentity {
@@ -2731,16 +2602,8 @@ export interface UpdateCommunicationServiceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateCommunicationServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateCommunicationServiceRequestIdentity",
-}) as any as S.Schema<UpdateCommunicationServiceRequestIdentity>;
+export const UpdateCommunicationServiceRequestIdentity =
+  CommunicationServicesCreateOrUpdateRequestIdentity as any as S.Schema<UpdateCommunicationServiceRequestIdentity>;
 
 export interface UpdateCommunicationServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2778,20 +2641,15 @@ export const UpdateCommunicationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCommunicationServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunicationServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCommunicationServiceResponseTagsMap>;
+export const UpdateCommunicationServiceResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunicationServiceResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
 export const UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap>;
+  CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateCommunicationServiceResponseIdentity {
@@ -2803,18 +2661,8 @@ export interface UpdateCommunicationServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateCommunicationServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      UpdateCommunicationServiceResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateCommunicationServiceResponseIdentity",
-}) as any as S.Schema<UpdateCommunicationServiceResponseIdentity>;
+export const UpdateCommunicationServiceResponseIdentity =
+  CommunicationServicesCreateOrUpdateResponseIdentity as any as S.Schema<UpdateCommunicationServiceResponseIdentity>;
 
 export interface UpdateCommunicationServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2834,27 +2682,13 @@ export interface UpdateCommunicationServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateCommunicationServiceResponseIdentity;
 }
-export const UpdateCommunicationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCommunicationServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CommunicationServiceProperties),
-    identity: S.optional(UpdateCommunicationServiceResponseIdentity),
-  }),
-).annotate({
-  identifier: "UpdateCommunicationServiceResponse",
-}) as any as S.Schema<UpdateCommunicationServiceResponse>;
+export const UpdateCommunicationServiceResponse =
+  CommunicationServicesCreateOrUpdateResponse as any as S.Schema<UpdateCommunicationServiceResponse>;
 
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateDomainRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDomainRequestTagsMap>;
+export const UpdateDomainRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDomainRequestTagsMap>;
 
 /** A class that describes the updatable properties of a Domains resource. */
 export interface UpdateDomainProperties {
@@ -2901,10 +2735,8 @@ export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDomainResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDomainResponseTagsMap>;
+export const UpdateDomainResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDomainResponseTagsMap>;
 
 export interface UpdateDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2922,24 +2754,12 @@ export interface UpdateDomainResponse {
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
 }
-export const UpdateDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDomainResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DomainProperties),
-  }),
-).annotate({ identifier: "UpdateDomainResponse" }) as any as S.Schema<UpdateDomainResponse>;
+export const UpdateDomainResponse = GetDomainResponse as any as S.Schema<UpdateDomainResponse>;
 
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateEmailServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEmailServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEmailServiceRequestTagsMap>;
+export const UpdateEmailServiceRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmailServiceRequestTagsMap>;
 
 export interface UpdateEmailServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2971,10 +2791,8 @@ export const UpdateEmailServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEmailServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEmailServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEmailServiceResponseTagsMap>;
+export const UpdateEmailServiceResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmailServiceResponseTagsMap>;
 
 export interface UpdateEmailServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2992,19 +2810,8 @@ export interface UpdateEmailServiceResponse {
   /** The properties of the service. */
   properties?: EmailServiceProperties;
 }
-export const UpdateEmailServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateEmailServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EmailServiceProperties),
-  }),
-).annotate({
-  identifier: "UpdateEmailServiceResponse",
-}) as any as S.Schema<UpdateEmailServiceResponse>;
+export const UpdateEmailServiceResponse =
+  EmailServicesCreateOrUpdateResponse as any as S.Schema<UpdateEmailServiceResponse>;
 
 export type CancelDomainVerificationError = AzureOpError;
 /** Cancel Verification Cancel verification of DNS record. */

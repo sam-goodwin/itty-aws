@@ -274,9 +274,8 @@ export const CreateRequestDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateRequestDlpCase1PoliciesItemCheckList>;
 
 export type CreateRequestDlpCase1PoliciesItemProfilesList = Array<string>;
-export const CreateRequestDlpCase1PoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestDlpCase1PoliciesItemProfilesList>;
+export const CreateRequestDlpCase1PoliciesItemProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateRequestDlpCase1PoliciesItemProfilesList>;
 
 export interface CreateRequestDlpCase1PoliciesItem {
   id: string;
@@ -549,9 +548,8 @@ export type CreateRequestSpendLimitsRulesItemMetadataValueCase1Mode = "filter";
 export const CreateRequestSpendLimitsRulesItemMetadataValueCase1Mode = S.String;
 
 export type CreateRequestSpendLimitsRulesItemMetadataValueCase1ValuesList = Array<string>;
-export const CreateRequestSpendLimitsRulesItemMetadataValueCase1ValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestSpendLimitsRulesItemMetadataValueCase1ValuesList>;
+export const CreateRequestSpendLimitsRulesItemMetadataValueCase1ValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateRequestSpendLimitsRulesItemMetadataValueCase1ValuesList>;
 
 export interface CreateRequestSpendLimitsRulesItemMetadataValueCase1 {
   mode: CreateRequestSpendLimitsRulesItemMetadataValueCase1Mode;
@@ -588,9 +586,8 @@ export type CreateRequestSpendLimitsRulesItemModelMode = "filter";
 export const CreateRequestSpendLimitsRulesItemModelMode = S.String;
 
 export type CreateRequestSpendLimitsRulesItemModelValuesList = Array<string>;
-export const CreateRequestSpendLimitsRulesItemModelValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestSpendLimitsRulesItemModelValuesList>;
+export const CreateRequestSpendLimitsRulesItemModelValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateRequestSpendLimitsRulesItemModelValuesList>;
 
 export interface CreateRequestSpendLimitsRulesItemModel {
   mode: CreateRequestSpendLimitsRulesItemModelMode | (string & {});
@@ -609,9 +606,8 @@ export type CreateRequestSpendLimitsRulesItemProviderMode = "filter";
 export const CreateRequestSpendLimitsRulesItemProviderMode = S.String;
 
 export type CreateRequestSpendLimitsRulesItemProviderValuesList = Array<string>;
-export const CreateRequestSpendLimitsRulesItemProviderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRequestSpendLimitsRulesItemProviderValuesList>;
+export const CreateRequestSpendLimitsRulesItemProviderValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateRequestSpendLimitsRulesItemProviderValuesList>;
 
 export interface CreateRequestSpendLimitsRulesItemProvider {
   mode: CreateRequestSpendLimitsRulesItemProviderMode | (string & {});
@@ -781,9 +777,8 @@ export type CreateResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const CreateResponseDlpCase0Action = S.String;
 
 export type CreateResponseDlpCase0ProfilesList = Array<string>;
-export const CreateResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseDlpCase0ProfilesList>;
+export const CreateResponseDlpCase0ProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateResponseDlpCase0ProfilesList>;
 
 export interface CreateResponseDlpCase0 {
   action: CreateResponseDlpCase0Action;
@@ -811,9 +806,8 @@ export const CreateResponseDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<CreateResponseDlpCase1PoliciesItemCheckList>;
 
 export type CreateResponseDlpCase1PoliciesItemProfilesList = Array<string>;
-export const CreateResponseDlpCase1PoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseDlpCase1PoliciesItemProfilesList>;
+export const CreateResponseDlpCase1PoliciesItemProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateResponseDlpCase1PoliciesItemProfilesList>;
 
 export interface CreateResponseDlpCase1PoliciesItem {
   id: string;
@@ -1071,18 +1065,15 @@ export type CreateResponseSpendLimitsRulesItemLimitType = "cost";
 export const CreateResponseSpendLimitsRulesItemLimitType = S.String;
 
 export type UntypedMetadataMap = { [key: string]: unknown | undefined };
-export const UntypedMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UntypedMetadataMap>;
+export const UntypedMetadataMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<UntypedMetadataMap>;
 
 export type CreateResponseSpendLimitsRulesItemModelMode = "filter";
 export const CreateResponseSpendLimitsRulesItemModelMode = S.String;
 
 export type CreateResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-export const CreateResponseSpendLimitsRulesItemModelValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseSpendLimitsRulesItemModelValuesList>;
+export const CreateResponseSpendLimitsRulesItemModelValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateResponseSpendLimitsRulesItemModelValuesList>;
 
 export interface CreateResponseSpendLimitsRulesItemModel {
   mode: CreateResponseSpendLimitsRulesItemModelMode;
@@ -1101,9 +1092,8 @@ export type CreateResponseSpendLimitsRulesItemProviderMode = "filter";
 export const CreateResponseSpendLimitsRulesItemProviderMode = S.String;
 
 export type CreateResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-export const CreateResponseSpendLimitsRulesItemProviderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseSpendLimitsRulesItemProviderValuesList>;
+export const CreateResponseSpendLimitsRulesItemProviderValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateResponseSpendLimitsRulesItemProviderValuesList>;
 
 export interface CreateResponseSpendLimitsRulesItemProvider {
   mode: CreateResponseSpendLimitsRulesItemProviderMode;
@@ -1172,20 +1162,14 @@ export type CreateResponseStripeUsageEventsItem = CreateRequestStripeUsageEvents
 export const CreateResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 
 export type CreateResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
-export const CreateResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
-  CreateRequestStripeUsageEventsItem,
-) as any as S.Schema<CreateResponseStripeUsageEventsList>;
+export const CreateResponseStripeUsageEventsList =
+  CreateRequestStripeUsageEventsList as any as S.Schema<CreateResponseStripeUsageEventsList>;
 
 export interface CreateResponseStripe {
   authorization: string;
   usageEvents: CreateResponseStripeUsageEventsList;
 }
-export const CreateResponseStripe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.String,
-    usageEvents: CreateResponseStripeUsageEventsList.pipe(T.Body("usage_events")),
-  }),
-).annotate({ identifier: "CreateResponseStripe" }) as any as S.Schema<CreateResponseStripe>;
+export const CreateResponseStripe = CreateRequestStripe as any as S.Schema<CreateResponseStripe>;
 
 export type CreateResponseWorkersAiBillingMode = "postpaid" | "unified";
 export const CreateResponseWorkersAiBillingMode = S.String;
@@ -1898,10 +1882,7 @@ export type DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap = 
   [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap>;
+  DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateDeploymentResponseElementsItemCase5Type = "end";
 export const DynamicRoutingCreateDeploymentResponseElementsItemCase5Type = S.String;
@@ -2041,10 +2022,8 @@ export const DynamicRoutingCreateRequestElementsItemCase1 = /*@__PURE__*/ S.susp
 export type DynamicRoutingCreateRequestElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingCreateRequestElementsItemCase2OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase2OutputsMap>;
+export const DynamicRoutingCreateRequestElementsItemCase2OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateRequestElementsItemCase2Type = "percentage";
 export const DynamicRoutingCreateRequestElementsItemCase2Type = S.String;
@@ -2162,10 +2141,8 @@ export const DynamicRoutingCreateRequestElementsItemCase4 = /*@__PURE__*/ S.susp
 export type DynamicRoutingCreateRequestElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingCreateRequestElementsItemCase5OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase5OutputsMap>;
+export const DynamicRoutingCreateRequestElementsItemCase5OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingCreateRequestElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateRequestElementsItemCase5Type = "end";
 export const DynamicRoutingCreateRequestElementsItemCase5Type = S.String;
@@ -2323,10 +2300,8 @@ export const DynamicRoutingCreateResponseElementsItemCase1 = /*@__PURE__*/ S.sus
 export type DynamicRoutingCreateResponseElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingCreateResponseElementsItemCase2OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase2OutputsMap>;
+export const DynamicRoutingCreateResponseElementsItemCase2OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateResponseElementsItemCase2Type = "percentage";
 export const DynamicRoutingCreateResponseElementsItemCase2Type = S.String;
@@ -2444,10 +2419,8 @@ export const DynamicRoutingCreateResponseElementsItemCase4 = /*@__PURE__*/ S.sus
 export type DynamicRoutingCreateResponseElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingCreateResponseElementsItemCase5OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase5OutputsMap>;
+export const DynamicRoutingCreateResponseElementsItemCase5OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingCreateResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateResponseElementsItemCase5Type = "end";
 export const DynamicRoutingCreateResponseElementsItemCase5Type = S.String;
@@ -2543,14 +2516,12 @@ export const CreateDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDynamicRoutingResponse>;
 
 export type EvaluationsCreateRequestDatasetIdsList = Array<string>;
-export const EvaluationsCreateRequestDatasetIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvaluationsCreateRequestDatasetIdsList>;
+export const EvaluationsCreateRequestDatasetIdsList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<EvaluationsCreateRequestDatasetIdsList>;
 
 export type EvaluationsCreateRequestEvaluationTypeIdsList = Array<string>;
-export const EvaluationsCreateRequestEvaluationTypeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvaluationsCreateRequestEvaluationTypeIdsList>;
+export const EvaluationsCreateRequestEvaluationTypeIdsList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<EvaluationsCreateRequestEvaluationTypeIdsList>;
 
 export interface CreateEvaluationRequest {
   accountId: string;
@@ -2872,10 +2843,8 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase1 = /*@__PURE__*/
 export type DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap>;
+export const DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateVersionRequestElementsItemCase2Type = "percentage";
 export const DynamicRoutingCreateVersionRequestElementsItemCase2Type = S.String;
@@ -2996,10 +2965,8 @@ export const DynamicRoutingCreateVersionRequestElementsItemCase4 = /*@__PURE__*/
 export type DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap>;
+export const DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateVersionRequestElementsItemCase5Type = "end";
 export const DynamicRoutingCreateVersionRequestElementsItemCase5Type = S.String;
@@ -3143,10 +3110,7 @@ export type DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap>;
+  DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingCreateVersionResponseElementsItemCase2Type = "percentage";
 export const DynamicRoutingCreateVersionResponseElementsItemCase2Type = S.String;
@@ -3268,10 +3232,7 @@ export type DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
 export const DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap>;
+  DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingCreateVersionResponseElementsItemCase5Type = "end";
 export const DynamicRoutingCreateVersionResponseElementsItemCase5Type = S.String;
@@ -3438,9 +3399,8 @@ export type DeleteResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const DeleteResponseDlpCase0Action = S.String;
 
 export type DeleteResponseDlpCase0ProfilesList = Array<string>;
-export const DeleteResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResponseDlpCase0ProfilesList>;
+export const DeleteResponseDlpCase0ProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<DeleteResponseDlpCase0ProfilesList>;
 
 export interface DeleteResponseDlpCase0 {
   action: DeleteResponseDlpCase0Action;
@@ -3468,9 +3428,8 @@ export const DeleteResponseDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<DeleteResponseDlpCase1PoliciesItemCheckList>;
 
 export type DeleteResponseDlpCase1PoliciesItemProfilesList = Array<string>;
-export const DeleteResponseDlpCase1PoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResponseDlpCase1PoliciesItemProfilesList>;
+export const DeleteResponseDlpCase1PoliciesItemProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<DeleteResponseDlpCase1PoliciesItemProfilesList>;
 
 export interface DeleteResponseDlpCase1PoliciesItem {
   id: string;
@@ -3688,10 +3647,8 @@ export type DeleteResponseLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLD
 export const DeleteResponseLogManagementStrategy = S.String;
 
 export type DeleteResponseOtelItemHeadersMap = { [key: string]: unknown | undefined };
-export const DeleteResponseOtelItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeleteResponseOtelItemHeadersMap>;
+export const DeleteResponseOtelItemHeadersMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DeleteResponseOtelItemHeadersMap>;
 
 export type DeleteResponseOtelItemContentType = "json" | "protobuf";
 export const DeleteResponseOtelItemContentType = S.String;
@@ -3731,9 +3688,8 @@ export type DeleteResponseSpendLimitsRulesItemModelMode = "filter";
 export const DeleteResponseSpendLimitsRulesItemModelMode = S.String;
 
 export type DeleteResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-export const DeleteResponseSpendLimitsRulesItemModelValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResponseSpendLimitsRulesItemModelValuesList>;
+export const DeleteResponseSpendLimitsRulesItemModelValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<DeleteResponseSpendLimitsRulesItemModelValuesList>;
 
 export interface DeleteResponseSpendLimitsRulesItemModel {
   mode: DeleteResponseSpendLimitsRulesItemModelMode;
@@ -3752,9 +3708,8 @@ export type DeleteResponseSpendLimitsRulesItemProviderMode = "filter";
 export const DeleteResponseSpendLimitsRulesItemProviderMode = S.String;
 
 export type DeleteResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-export const DeleteResponseSpendLimitsRulesItemProviderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResponseSpendLimitsRulesItemProviderValuesList>;
+export const DeleteResponseSpendLimitsRulesItemProviderValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<DeleteResponseSpendLimitsRulesItemProviderValuesList>;
 
 export interface DeleteResponseSpendLimitsRulesItemProvider {
   mode: DeleteResponseSpendLimitsRulesItemProviderMode;
@@ -3823,20 +3778,14 @@ export type DeleteResponseStripeUsageEventsItem = CreateRequestStripeUsageEvents
 export const DeleteResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 
 export type DeleteResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
-export const DeleteResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
-  CreateRequestStripeUsageEventsItem,
-) as any as S.Schema<DeleteResponseStripeUsageEventsList>;
+export const DeleteResponseStripeUsageEventsList =
+  CreateRequestStripeUsageEventsList as any as S.Schema<DeleteResponseStripeUsageEventsList>;
 
 export interface DeleteResponseStripe {
   authorization: string;
   usageEvents: DeleteResponseStripeUsageEventsList;
 }
-export const DeleteResponseStripe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.String,
-    usageEvents: DeleteResponseStripeUsageEventsList.pipe(T.Body("usage_events")),
-  }),
-).annotate({ identifier: "DeleteResponseStripe" }) as any as S.Schema<DeleteResponseStripe>;
+export const DeleteResponseStripe = CreateRequestStripe as any as S.Schema<DeleteResponseStripe>;
 
 export type DeleteResponseWorkersAiBillingMode = "postpaid" | "unified";
 export const DeleteResponseWorkersAiBillingMode = S.String;
@@ -3937,11 +3886,8 @@ export const DeleteBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBillingSpendingLimitRequest>;
 
 export type DeleteBillingSpendingLimitResponse = unknown;
-export const DeleteBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteBillingSpendingLimitResponse",
-}) as any as S.Schema<DeleteBillingSpendingLimitResponse>;
+export const DeleteBillingSpendingLimitResponse =
+  CreateBillingSpendingLimitResponse as any as S.Schema<DeleteBillingSpendingLimitResponse>;
 
 export interface DeleteBillingTopupConfigRequest {
   accountId: string;
@@ -3963,11 +3909,8 @@ export const DeleteBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBillingTopupConfigRequest>;
 
 export type DeleteBillingTopupConfigResponse = unknown;
-export const DeleteBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteBillingTopupConfigResponse",
-}) as any as S.Schema<DeleteBillingTopupConfigResponse>;
+export const DeleteBillingTopupConfigResponse =
+  CreateBillingSpendingLimitResponse as any as S.Schema<DeleteBillingTopupConfigResponse>;
 
 export interface DeleteCustomProviderRequest {
   accountId: string;
@@ -4009,27 +3952,8 @@ export interface DeleteCustomProviderResponse {
   logo?: string | null;
   position?: number | null;
 }
-export const DeleteCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    baseUrl: S.String.pipe(T.Body("base_url")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    slug: S.String,
-    beta: S.optional(S.NullOr(S.Boolean)),
-    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
-    description: S.optional(S.NullOr(S.String)),
-    enable: S.optional(S.NullOr(S.Boolean)),
-    headers: S.optional(S.NullOr(S.String)),
-    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
-    link: S.optional(S.NullOr(S.String)),
-    logo: S.optional(S.NullOr(S.String)),
-    position: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteCustomProviderResponse",
-}) as any as S.Schema<DeleteCustomProviderResponse>;
+export const DeleteCustomProviderResponse =
+  CreateCustomProviderResponse as any as S.Schema<DeleteCustomProviderResponse>;
 
 export interface DeleteDatasetRequest {
   accountId: string;
@@ -4220,10 +4144,8 @@ export const DynamicRoutingDeleteResponseElementsItemCase1 = /*@__PURE__*/ S.sus
 export type DynamicRoutingDeleteResponseElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingDeleteResponseElementsItemCase2OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase2OutputsMap>;
+export const DynamicRoutingDeleteResponseElementsItemCase2OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingDeleteResponseElementsItemCase2Type = "percentage";
 export const DynamicRoutingDeleteResponseElementsItemCase2Type = S.String;
@@ -4341,10 +4263,8 @@ export const DynamicRoutingDeleteResponseElementsItemCase4 = /*@__PURE__*/ S.sus
 export type DynamicRoutingDeleteResponseElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingDeleteResponseElementsItemCase5OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase5OutputsMap>;
+export const DynamicRoutingDeleteResponseElementsItemCase5OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingDeleteResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingDeleteResponseElementsItemCase5Type = "end";
 export const DynamicRoutingDeleteResponseElementsItemCase5Type = S.String;
@@ -4526,9 +4446,8 @@ export type EvaluationsDeleteResponseResultsItem = EvaluationsCreateResponseResu
 export const EvaluationsDeleteResponseResultsItem = EvaluationsCreateResponseResultsItem;
 
 export type EvaluationsDeleteResponseResultsList = Array<EvaluationsCreateResponseResultsItem>;
-export const EvaluationsDeleteResponseResultsList = /*@__PURE__*/ S.Array(
-  EvaluationsCreateResponseResultsItem,
-) as any as S.Schema<EvaluationsDeleteResponseResultsList>;
+export const EvaluationsDeleteResponseResultsList =
+  EvaluationsCreateResponseResultsList as any as S.Schema<EvaluationsDeleteResponseResultsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteEvaluationResponse {
@@ -4558,9 +4477,8 @@ export const DeleteEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEvaluationResponse" }) as any as S.Schema<DeleteEvaluationResponse>;
 
 export type LogsDeleteRequestFiltersList = Array<string>;
-export const LogsDeleteRequestFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsDeleteRequestFiltersList>;
+export const LogsDeleteRequestFiltersList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<LogsDeleteRequestFiltersList>;
 
 export type LogsDeleteRequestOrderBy =
   | "created_at"
@@ -4639,11 +4557,8 @@ export const DeleteProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProviderConfigRequest>;
 
 export type DeleteProviderConfigResponse = unknown;
-export const DeleteProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteProviderConfigResponse",
-}) as any as S.Schema<DeleteProviderConfigResponse>;
+export const DeleteProviderConfigResponse =
+  CreateBillingSpendingLimitResponse as any as S.Schema<DeleteProviderConfigResponse>;
 
 export interface GetAiGatewayRequest {
   accountId: string;
@@ -4665,9 +4580,8 @@ export type GetResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const GetResponseDlpCase0Action = S.String;
 
 export type GetResponseDlpCase0ProfilesList = Array<string>;
-export const GetResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseDlpCase0ProfilesList>;
+export const GetResponseDlpCase0ProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<GetResponseDlpCase0ProfilesList>;
 
 export interface GetResponseDlpCase0 {
   action: GetResponseDlpCase0Action;
@@ -4695,9 +4609,8 @@ export const GetResponseDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseDlpCase1PoliciesItemCheckList>;
 
 export type GetResponseDlpCase1PoliciesItemProfilesList = Array<string>;
-export const GetResponseDlpCase1PoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseDlpCase1PoliciesItemProfilesList>;
+export const GetResponseDlpCase1PoliciesItemProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<GetResponseDlpCase1PoliciesItemProfilesList>;
 
 export interface GetResponseDlpCase1PoliciesItem {
   id: string;
@@ -4915,10 +4828,8 @@ export type GetResponseLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST
 export const GetResponseLogManagementStrategy = S.String;
 
 export type GetResponseOtelItemHeadersMap = { [key: string]: unknown | undefined };
-export const GetResponseOtelItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetResponseOtelItemHeadersMap>;
+export const GetResponseOtelItemHeadersMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<GetResponseOtelItemHeadersMap>;
 
 export type GetResponseOtelItemContentType = "json" | "protobuf";
 export const GetResponseOtelItemContentType = S.String;
@@ -4956,9 +4867,8 @@ export type GetResponseSpendLimitsRulesItemModelMode = "filter";
 export const GetResponseSpendLimitsRulesItemModelMode = S.String;
 
 export type GetResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-export const GetResponseSpendLimitsRulesItemModelValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseSpendLimitsRulesItemModelValuesList>;
+export const GetResponseSpendLimitsRulesItemModelValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<GetResponseSpendLimitsRulesItemModelValuesList>;
 
 export interface GetResponseSpendLimitsRulesItemModel {
   mode: GetResponseSpendLimitsRulesItemModelMode;
@@ -4977,9 +4887,8 @@ export type GetResponseSpendLimitsRulesItemProviderMode = "filter";
 export const GetResponseSpendLimitsRulesItemProviderMode = S.String;
 
 export type GetResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-export const GetResponseSpendLimitsRulesItemProviderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseSpendLimitsRulesItemProviderValuesList>;
+export const GetResponseSpendLimitsRulesItemProviderValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<GetResponseSpendLimitsRulesItemProviderValuesList>;
 
 export interface GetResponseSpendLimitsRulesItemProvider {
   mode: GetResponseSpendLimitsRulesItemProviderMode;
@@ -5046,20 +4955,14 @@ export type GetResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsIte
 export const GetResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 
 export type GetResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
-export const GetResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
-  CreateRequestStripeUsageEventsItem,
-) as any as S.Schema<GetResponseStripeUsageEventsList>;
+export const GetResponseStripeUsageEventsList =
+  CreateRequestStripeUsageEventsList as any as S.Schema<GetResponseStripeUsageEventsList>;
 
 export interface GetResponseStripe {
   authorization: string;
   usageEvents: GetResponseStripeUsageEventsList;
 }
-export const GetResponseStripe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.String,
-    usageEvents: GetResponseStripeUsageEventsList.pipe(T.Body("usage_events")),
-  }),
-).annotate({ identifier: "GetResponseStripe" }) as any as S.Schema<GetResponseStripe>;
+export const GetResponseStripe = CreateRequestStripe as any as S.Schema<GetResponseStripe>;
 
 export type GetResponseWorkersAiBillingMode = "postpaid" | "unified";
 export const GetResponseWorkersAiBillingMode = S.String;
@@ -5265,27 +5168,8 @@ export interface GetCustomProviderResponse {
   logo?: string | null;
   position?: number | null;
 }
-export const GetCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    baseUrl: S.String.pipe(T.Body("base_url")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    slug: S.String,
-    beta: S.optional(S.NullOr(S.Boolean)),
-    curlExample: S.optional(S.NullOr(S.String).pipe(T.Body("curl_example"))),
-    description: S.optional(S.NullOr(S.String)),
-    enable: S.optional(S.NullOr(S.Boolean)),
-    headers: S.optional(S.NullOr(S.String)),
-    jsExample: S.optional(S.NullOr(S.String).pipe(T.Body("js_example"))),
-    link: S.optional(S.NullOr(S.String)),
-    logo: S.optional(S.NullOr(S.String)),
-    position: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetCustomProviderResponse",
-}) as any as S.Schema<GetCustomProviderResponse>;
+export const GetCustomProviderResponse =
+  CreateCustomProviderResponse as any as S.Schema<GetCustomProviderResponse>;
 
 export interface GetDatasetRequest {
   accountId: string;
@@ -5477,10 +5361,8 @@ export const DynamicRoutingGetResponseElementsItemCase1 = /*@__PURE__*/ S.suspen
 export type DynamicRoutingGetResponseElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingGetResponseElementsItemCase2OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase2OutputsMap>;
+export const DynamicRoutingGetResponseElementsItemCase2OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingGetResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingGetResponseElementsItemCase2Type = "percentage";
 export const DynamicRoutingGetResponseElementsItemCase2Type = S.String;
@@ -5598,10 +5480,8 @@ export const DynamicRoutingGetResponseElementsItemCase4 = /*@__PURE__*/ S.suspen
 export type DynamicRoutingGetResponseElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingGetResponseElementsItemCase5OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingGetResponseElementsItemCase5OutputsMap>;
+export const DynamicRoutingGetResponseElementsItemCase5OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingGetResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingGetResponseElementsItemCase5Type = "end";
 export const DynamicRoutingGetResponseElementsItemCase5Type = S.String;
@@ -5805,9 +5685,8 @@ export type EvaluationsGetResponseResultsItem = EvaluationsCreateResponseResults
 export const EvaluationsGetResponseResultsItem = EvaluationsCreateResponseResultsItem;
 
 export type EvaluationsGetResponseResultsList = Array<EvaluationsCreateResponseResultsItem>;
-export const EvaluationsGetResponseResultsList = /*@__PURE__*/ S.Array(
-  EvaluationsCreateResponseResultsItem,
-) as any as S.Schema<EvaluationsGetResponseResultsList>;
+export const EvaluationsGetResponseResultsList =
+  EvaluationsCreateResponseResultsList as any as S.Schema<EvaluationsGetResponseResultsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEvaluationResponse {
@@ -6042,10 +5921,8 @@ export const DynamicRoutingGetVersionResponseElementsItemCase1 = /*@__PURE__*/ S
 export type DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap>;
+export const DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingGetVersionResponseElementsItemCase2Type = "percentage";
 export const DynamicRoutingGetVersionResponseElementsItemCase2Type = S.String;
@@ -6164,10 +6041,8 @@ export const DynamicRoutingGetVersionResponseElementsItemCase4 = /*@__PURE__*/ S
 export type DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap>;
+export const DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingGetVersionResponseElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingGetVersionResponseElementsItemCase5Type = "end";
 export const DynamicRoutingGetVersionResponseElementsItemCase5Type = S.String;
@@ -6504,9 +6379,8 @@ export type ListResultItemDlpCase0Action = "BLOCK" | "FLAG";
 export const ListResultItemDlpCase0Action = S.String;
 
 export type ListResultItemDlpCase0ProfilesList = Array<string>;
-export const ListResultItemDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemDlpCase0ProfilesList>;
+export const ListResultItemDlpCase0ProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<ListResultItemDlpCase0ProfilesList>;
 
 export interface ListResultItemDlpCase0 {
   action: ListResultItemDlpCase0Action;
@@ -6534,9 +6408,8 @@ export const ListResultItemDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<ListResultItemDlpCase1PoliciesItemCheckList>;
 
 export type ListResultItemDlpCase1PoliciesItemProfilesList = Array<string>;
-export const ListResultItemDlpCase1PoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemDlpCase1PoliciesItemProfilesList>;
+export const ListResultItemDlpCase1PoliciesItemProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<ListResultItemDlpCase1PoliciesItemProfilesList>;
 
 export interface ListResultItemDlpCase1PoliciesItem {
   id: string;
@@ -6754,10 +6627,8 @@ export type ListResultItemLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLD
 export const ListResultItemLogManagementStrategy = S.String;
 
 export type ListResultItemOtelItemHeadersMap = { [key: string]: unknown | undefined };
-export const ListResultItemOtelItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListResultItemOtelItemHeadersMap>;
+export const ListResultItemOtelItemHeadersMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<ListResultItemOtelItemHeadersMap>;
 
 export type ListResultItemOtelItemContentType = "json" | "protobuf";
 export const ListResultItemOtelItemContentType = S.String;
@@ -6797,9 +6668,8 @@ export type ListResultItemSpendLimitsRulesItemModelMode = "filter";
 export const ListResultItemSpendLimitsRulesItemModelMode = S.String;
 
 export type ListResultItemSpendLimitsRulesItemModelValuesList = Array<string>;
-export const ListResultItemSpendLimitsRulesItemModelValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemSpendLimitsRulesItemModelValuesList>;
+export const ListResultItemSpendLimitsRulesItemModelValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<ListResultItemSpendLimitsRulesItemModelValuesList>;
 
 export interface ListResultItemSpendLimitsRulesItemModel {
   mode: ListResultItemSpendLimitsRulesItemModelMode;
@@ -6818,9 +6688,8 @@ export type ListResultItemSpendLimitsRulesItemProviderMode = "filter";
 export const ListResultItemSpendLimitsRulesItemProviderMode = S.String;
 
 export type ListResultItemSpendLimitsRulesItemProviderValuesList = Array<string>;
-export const ListResultItemSpendLimitsRulesItemProviderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemSpendLimitsRulesItemProviderValuesList>;
+export const ListResultItemSpendLimitsRulesItemProviderValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<ListResultItemSpendLimitsRulesItemProviderValuesList>;
 
 export interface ListResultItemSpendLimitsRulesItemProvider {
   mode: ListResultItemSpendLimitsRulesItemProviderMode;
@@ -6889,20 +6758,14 @@ export type ListResultItemStripeUsageEventsItem = CreateRequestStripeUsageEvents
 export const ListResultItemStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 
 export type ListResultItemStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
-export const ListResultItemStripeUsageEventsList = /*@__PURE__*/ S.Array(
-  CreateRequestStripeUsageEventsItem,
-) as any as S.Schema<ListResultItemStripeUsageEventsList>;
+export const ListResultItemStripeUsageEventsList =
+  CreateRequestStripeUsageEventsList as any as S.Schema<ListResultItemStripeUsageEventsList>;
 
 export interface ListResultItemStripe {
   authorization: string;
   usageEvents: ListResultItemStripeUsageEventsList;
 }
-export const ListResultItemStripe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.String,
-    usageEvents: ListResultItemStripeUsageEventsList.pipe(T.Body("usage_events")),
-  }),
-).annotate({ identifier: "ListResultItemStripe" }) as any as S.Schema<ListResultItemStripe>;
+export const ListResultItemStripe = CreateRequestStripe as any as S.Schema<ListResultItemStripe>;
 
 export type ListResultItemWorkersAiBillingMode = "postpaid" | "unified";
 export const ListResultItemWorkersAiBillingMode = S.String;
@@ -7382,10 +7245,7 @@ export type DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap 
   [key: string]: unknown | undefined;
 };
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap>;
+  DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase2Type = "percentage";
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase2Type = S.String;
@@ -7511,10 +7371,7 @@ export type DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap 
   [key: string]: unknown | undefined;
 };
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap>;
+  DynamicRoutingCreateDeploymentResponseElementsItemCase2OutputsMap as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase5Type = "end";
 export const DynamicRoutingListResponseDataRoutesItemElementsItemCase5Type = S.String;
@@ -7770,9 +7627,8 @@ export type EvaluationsListResultItemResultsItem = EvaluationsCreateResponseResu
 export const EvaluationsListResultItemResultsItem = EvaluationsCreateResponseResultsItem;
 
 export type EvaluationsListResultItemResultsList = Array<EvaluationsCreateResponseResultsItem>;
-export const EvaluationsListResultItemResultsList = /*@__PURE__*/ S.Array(
-  EvaluationsCreateResponseResultsItem,
-) as any as S.Schema<EvaluationsListResultItemResultsList>;
+export const EvaluationsListResultItemResultsList =
+  EvaluationsCreateResponseResultsList as any as S.Schema<EvaluationsListResultItemResultsList>;
 
 export interface EvaluationsListResultItem {
   id: string;
@@ -7901,9 +7757,8 @@ export type LogsListRequestDirection = "asc" | "desc";
 export const LogsListRequestDirection = S.String;
 
 export type LogsListRequestFiltersList = Array<string>;
-export const LogsListRequestFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsListRequestFiltersList>;
+export const LogsListRequestFiltersList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<LogsListRequestFiltersList>;
 
 export type LogsListRequestOrderBy =
   | "created_at"
@@ -8317,10 +8172,8 @@ export const DynamicRoutingUpdateResponseRouteElementsItemCase1 = /*@__PURE__*/ 
 export type DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap>;
+export const DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase2OutputsMap>;
 
 export type DynamicRoutingUpdateResponseRouteElementsItemCase2Type = "percentage";
 export const DynamicRoutingUpdateResponseRouteElementsItemCase2Type = S.String;
@@ -8441,10 +8294,8 @@ export const DynamicRoutingUpdateResponseRouteElementsItemCase4 = /*@__PURE__*/ 
 export type DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap = {
   [key: string]: unknown | undefined;
 };
-export const DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap>;
+export const DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItemCase5OutputsMap>;
 
 export type DynamicRoutingUpdateResponseRouteElementsItemCase5Type = "end";
 export const DynamicRoutingUpdateResponseRouteElementsItemCase5Type = S.String;
@@ -8621,9 +8472,7 @@ export const RequestLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestLogRequest" }) as any as S.Schema<RequestLogRequest>;
 
 export interface RequestLogResponse {}
-export const RequestLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "RequestLogResponse" }) as any as S.Schema<RequestLogResponse>;
+export const RequestLogResponse = DeleteLogResponse as any as S.Schema<RequestLogResponse>;
 
 export interface ResponseLogRequest {
   accountId: string;
@@ -8648,9 +8497,7 @@ export const ResponseLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResponseLogRequest" }) as any as S.Schema<ResponseLogRequest>;
 
 export interface ResponseLogResponse {}
-export const ResponseLogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "ResponseLogResponse" }) as any as S.Schema<ResponseLogResponse>;
+export const ResponseLogResponse = DeleteLogResponse as any as S.Schema<ResponseLogResponse>;
 
 export interface StatusBillingTopupRequest {
   accountId: string;
@@ -8695,9 +8542,8 @@ export type UpdateRequestDlpCase0Action = "BLOCK" | "FLAG";
 export const UpdateRequestDlpCase0Action = S.String;
 
 export type UpdateRequestDlpCase0ProfilesList = Array<string>;
-export const UpdateRequestDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestDlpCase0ProfilesList>;
+export const UpdateRequestDlpCase0ProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateRequestDlpCase0ProfilesList>;
 
 export interface UpdateRequestDlpCase0 {
   action: UpdateRequestDlpCase0Action | (string & {});
@@ -8726,9 +8572,8 @@ export const UpdateRequestDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateRequestDlpCase1PoliciesItemCheckList>;
 
 export type UpdateRequestDlpCase1PoliciesItemProfilesList = Array<string>;
-export const UpdateRequestDlpCase1PoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestDlpCase1PoliciesItemProfilesList>;
+export const UpdateRequestDlpCase1PoliciesItemProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateRequestDlpCase1PoliciesItemProfilesList>;
 
 export interface UpdateRequestDlpCase1PoliciesItem {
   id: string;
@@ -8946,10 +8791,8 @@ export type UpdateRequestLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDE
 export const UpdateRequestLogManagementStrategy = S.String;
 
 export type UpdateRequestOtelItemHeadersMap = { [key: string]: unknown | undefined };
-export const UpdateRequestOtelItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRequestOtelItemHeadersMap>;
+export const UpdateRequestOtelItemHeadersMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<UpdateRequestOtelItemHeadersMap>;
 
 export type UpdateRequestOtelItemContentType = "json" | "protobuf";
 export const UpdateRequestOtelItemContentType = S.String;
@@ -8987,9 +8830,8 @@ export type UpdateRequestSpendLimitsRulesItemModelMode = "filter";
 export const UpdateRequestSpendLimitsRulesItemModelMode = S.String;
 
 export type UpdateRequestSpendLimitsRulesItemModelValuesList = Array<string>;
-export const UpdateRequestSpendLimitsRulesItemModelValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestSpendLimitsRulesItemModelValuesList>;
+export const UpdateRequestSpendLimitsRulesItemModelValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateRequestSpendLimitsRulesItemModelValuesList>;
 
 export interface UpdateRequestSpendLimitsRulesItemModel {
   mode: UpdateRequestSpendLimitsRulesItemModelMode | (string & {});
@@ -9008,9 +8850,8 @@ export type UpdateRequestSpendLimitsRulesItemProviderMode = "filter";
 export const UpdateRequestSpendLimitsRulesItemProviderMode = S.String;
 
 export type UpdateRequestSpendLimitsRulesItemProviderValuesList = Array<string>;
-export const UpdateRequestSpendLimitsRulesItemProviderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestSpendLimitsRulesItemProviderValuesList>;
+export const UpdateRequestSpendLimitsRulesItemProviderValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateRequestSpendLimitsRulesItemProviderValuesList>;
 
 export interface UpdateRequestSpendLimitsRulesItemProvider {
   mode: UpdateRequestSpendLimitsRulesItemProviderMode | (string & {});
@@ -9077,20 +8918,14 @@ export type UpdateRequestStripeUsageEventsItem = CreateRequestStripeUsageEventsI
 export const UpdateRequestStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 
 export type UpdateRequestStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
-export const UpdateRequestStripeUsageEventsList = /*@__PURE__*/ S.Array(
-  CreateRequestStripeUsageEventsItem,
-) as any as S.Schema<UpdateRequestStripeUsageEventsList>;
+export const UpdateRequestStripeUsageEventsList =
+  CreateRequestStripeUsageEventsList as any as S.Schema<UpdateRequestStripeUsageEventsList>;
 
 export interface UpdateRequestStripe {
   authorization: string;
   usageEvents: UpdateRequestStripeUsageEventsList;
 }
-export const UpdateRequestStripe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.String,
-    usageEvents: UpdateRequestStripeUsageEventsList.pipe(T.Body("usage_events")),
-  }),
-).annotate({ identifier: "UpdateRequestStripe" }) as any as S.Schema<UpdateRequestStripe>;
+export const UpdateRequestStripe = CreateRequestStripe as any as S.Schema<UpdateRequestStripe>;
 
 export type UpdateRequestWorkersAiBillingMode = "postpaid" | "unified";
 export const UpdateRequestWorkersAiBillingMode = S.String;
@@ -9174,9 +9009,8 @@ export type UpdateResponseDlpCase0Action = "BLOCK" | "FLAG";
 export const UpdateResponseDlpCase0Action = S.String;
 
 export type UpdateResponseDlpCase0ProfilesList = Array<string>;
-export const UpdateResponseDlpCase0ProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseDlpCase0ProfilesList>;
+export const UpdateResponseDlpCase0ProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateResponseDlpCase0ProfilesList>;
 
 export interface UpdateResponseDlpCase0 {
   action: UpdateResponseDlpCase0Action;
@@ -9204,9 +9038,8 @@ export const UpdateResponseDlpCase1PoliciesItemCheckList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<UpdateResponseDlpCase1PoliciesItemCheckList>;
 
 export type UpdateResponseDlpCase1PoliciesItemProfilesList = Array<string>;
-export const UpdateResponseDlpCase1PoliciesItemProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseDlpCase1PoliciesItemProfilesList>;
+export const UpdateResponseDlpCase1PoliciesItemProfilesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateResponseDlpCase1PoliciesItemProfilesList>;
 
 export interface UpdateResponseDlpCase1PoliciesItem {
   id: string;
@@ -9424,10 +9257,8 @@ export type UpdateResponseLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLD
 export const UpdateResponseLogManagementStrategy = S.String;
 
 export type UpdateResponseOtelItemHeadersMap = { [key: string]: unknown | undefined };
-export const UpdateResponseOtelItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResponseOtelItemHeadersMap>;
+export const UpdateResponseOtelItemHeadersMap =
+  CreateResponseOtelItemHeadersMap as any as S.Schema<UpdateResponseOtelItemHeadersMap>;
 
 export type UpdateResponseOtelItemContentType = "json" | "protobuf";
 export const UpdateResponseOtelItemContentType = S.String;
@@ -9467,9 +9298,8 @@ export type UpdateResponseSpendLimitsRulesItemModelMode = "filter";
 export const UpdateResponseSpendLimitsRulesItemModelMode = S.String;
 
 export type UpdateResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-export const UpdateResponseSpendLimitsRulesItemModelValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseSpendLimitsRulesItemModelValuesList>;
+export const UpdateResponseSpendLimitsRulesItemModelValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateResponseSpendLimitsRulesItemModelValuesList>;
 
 export interface UpdateResponseSpendLimitsRulesItemModel {
   mode: UpdateResponseSpendLimitsRulesItemModelMode;
@@ -9488,9 +9318,8 @@ export type UpdateResponseSpendLimitsRulesItemProviderMode = "filter";
 export const UpdateResponseSpendLimitsRulesItemProviderMode = S.String;
 
 export type UpdateResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-export const UpdateResponseSpendLimitsRulesItemProviderValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseSpendLimitsRulesItemProviderValuesList>;
+export const UpdateResponseSpendLimitsRulesItemProviderValuesList =
+  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateResponseSpendLimitsRulesItemProviderValuesList>;
 
 export interface UpdateResponseSpendLimitsRulesItemProvider {
   mode: UpdateResponseSpendLimitsRulesItemProviderMode;
@@ -9559,20 +9388,14 @@ export type UpdateResponseStripeUsageEventsItem = CreateRequestStripeUsageEvents
 export const UpdateResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 
 export type UpdateResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
-export const UpdateResponseStripeUsageEventsList = /*@__PURE__*/ S.Array(
-  CreateRequestStripeUsageEventsItem,
-) as any as S.Schema<UpdateResponseStripeUsageEventsList>;
+export const UpdateResponseStripeUsageEventsList =
+  CreateRequestStripeUsageEventsList as any as S.Schema<UpdateResponseStripeUsageEventsList>;
 
 export interface UpdateResponseStripe {
   authorization: string;
   usageEvents: UpdateResponseStripeUsageEventsList;
 }
-export const UpdateResponseStripe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorization: S.String,
-    usageEvents: UpdateResponseStripeUsageEventsList.pipe(T.Body("usage_events")),
-  }),
-).annotate({ identifier: "UpdateResponseStripe" }) as any as S.Schema<UpdateResponseStripe>;
+export const UpdateResponseStripe = CreateRequestStripe as any as S.Schema<UpdateResponseStripe>;
 
 export type UpdateResponseWorkersAiBillingMode = "postpaid" | "unified";
 export const UpdateResponseWorkersAiBillingMode = S.String;

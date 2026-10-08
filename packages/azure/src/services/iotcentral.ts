@@ -105,10 +105,8 @@ export const AppsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type AppsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AppsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AppsCreateOrUpdateResponseTagsMap>;
+export const AppsCreateOrUpdateResponseTagsMap =
+  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<AppsCreateOrUpdateResponseTagsMap>;
 
 /** The current state of the application. */
 export type AppState = "created" | "suspended";
@@ -308,10 +306,8 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetAppResponseTagsMap = { [key: string]: string | undefined };
-export const GetAppResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAppResponseTagsMap>;
+export const GetAppResponseTagsMap =
+  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
 export type GetAppResponseIdentity = AppsCreateOrUpdateResponseIdentity;
@@ -612,10 +608,8 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Instance tags */
 export type UpdateAppRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAppRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAppRequestTagsMap>;
+export const UpdateAppRequestTagsMap =
+  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppRequestTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
 export type UpdateAppRequestIdentity = AppsCreateOrUpdateRequestIdentity;
@@ -658,10 +652,8 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateAppResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAppResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAppResponseTagsMap>;
+export const UpdateAppResponseTagsMap =
+  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
 export type UpdateAppResponseIdentity = AppsCreateOrUpdateResponseIdentity;
@@ -685,18 +677,7 @@ export interface UpdateAppResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.String,
-    tags: S.optional(UpdateAppResponseTagsMap),
-    properties: S.optional(AppProperties),
-    sku: AppSkuInfo,
-    identity: S.optional(AppsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateAppResponse" }) as any as S.Schema<UpdateAppResponse>;
+export const UpdateAppResponse = GetAppResponse as any as S.Schema<UpdateAppResponse>;
 
 export type AppsCreateOrUpdateError = AzureOpError;
 /** Create or update the metadata of an IoT Central application. The usual pattern to modify a property is to retrieve the IoT Central application metadata and security metadata, and then combine them with the modified values in a new body to update the IoT Central application. */

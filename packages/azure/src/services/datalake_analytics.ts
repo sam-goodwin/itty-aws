@@ -484,10 +484,8 @@ export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAccountResponseTagsMap>;
+export const CreateAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
 
 /** The provisioning status of the Data Lake Analytics account. */
 export type DataLakeAnalyticsAccountPropertiesProvisioningState =
@@ -554,13 +552,8 @@ export interface StorageAccountInformationProperties {
   /** The optional suffix for the storage account. */
   suffix?: string;
 }
-export const StorageAccountInformationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageAccountInformationProperties",
-}) as any as S.Schema<StorageAccountInformationProperties>;
+export const StorageAccountInformationProperties =
+  AddDataLakeStoreProperties as any as S.Schema<StorageAccountInformationProperties>;
 
 /** Azure Storage account information. */
 export interface StorageAccountInformation {
@@ -573,23 +566,14 @@ export interface StorageAccountInformation {
   /** The Azure Storage account properties. */
   properties?: StorageAccountInformationProperties;
 }
-export const StorageAccountInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(StorageAccountInformationProperties),
-  }),
-).annotate({
-  identifier: "StorageAccountInformation",
-}) as any as S.Schema<StorageAccountInformation>;
+export const StorageAccountInformation =
+  DataLakeStoreAccountInformation as any as S.Schema<StorageAccountInformation>;
 
 /** The list of Azure Blob Storage accounts associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesStorageAccountsList =
   Array<StorageAccountInformation>;
-export const DataLakeAnalyticsAccountPropertiesStorageAccountsList = /*@__PURE__*/ S.Array(
-  StorageAccountInformation,
-) as any as S.Schema<DataLakeAnalyticsAccountPropertiesStorageAccountsList>;
+export const DataLakeAnalyticsAccountPropertiesStorageAccountsList =
+  DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList as any as S.Schema<DataLakeAnalyticsAccountPropertiesStorageAccountsList>;
 
 /** Data Lake Analytics compute policy information. */
 export interface ComputePolicy {
@@ -944,9 +928,8 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccountResponse",
-}) as any as S.Schema<DeleteAccountResponse>;
+export const DeleteAccountResponse =
+  AddStorageAccountResponse as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeleteComputePolicyRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -977,9 +960,8 @@ export const DeleteComputePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteComputePolicyRequest>;
 
 export interface DeleteComputePolicyResponse {}
-export const DeleteComputePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteComputePolicyResponse",
-}) as any as S.Schema<DeleteComputePolicyResponse>;
+export const DeleteComputePolicyResponse =
+  AddStorageAccountResponse as any as S.Schema<DeleteComputePolicyResponse>;
 
 export interface DeleteDataLakeStoreAccountRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1045,9 +1027,8 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRuleRequest>;
 
 export interface DeleteFirewallRuleResponse {}
-export const DeleteFirewallRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallRuleResponse",
-}) as any as S.Schema<DeleteFirewallRuleResponse>;
+export const DeleteFirewallRuleResponse =
+  AddStorageAccountResponse as any as S.Schema<DeleteFirewallRuleResponse>;
 
 export interface DeleteStorageAccountRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1078,9 +1059,8 @@ export const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageAccountRequest>;
 
 export interface DeleteStorageAccountResponse {}
-export const DeleteStorageAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStorageAccountResponse",
-}) as any as S.Schema<DeleteStorageAccountResponse>;
+export const DeleteStorageAccountResponse =
+  AddStorageAccountResponse as any as S.Schema<DeleteStorageAccountResponse>;
 
 export interface FirewallRulesCreateOrUpdateRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1159,10 +1139,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 export interface GetAccountResponse {
   /** The resource identifier. */
@@ -1178,16 +1156,7 @@ export interface GetAccountResponse {
   /** The properties defined by Data Lake Analytics all properties are specific to each resource provider. */
   properties?: DataLakeAnalyticsAccountProperties;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(GetAccountResponseTagsMap),
-    properties: S.optional(DataLakeAnalyticsAccountProperties),
-  }),
-).annotate({ identifier: "GetAccountResponse" }) as any as S.Schema<GetAccountResponse>;
+export const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
 
 export interface GetComputePolicyRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1225,14 +1194,7 @@ export interface GetComputePolicyResponse {
   /** The compute policy properties. */
   properties?: ComputePolicyProperties;
 }
-export const GetComputePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ComputePolicyProperties),
-  }),
-).annotate({ identifier: "GetComputePolicyResponse" }) as any as S.Schema<GetComputePolicyResponse>;
+export const GetComputePolicyResponse = ComputePolicy as any as S.Schema<GetComputePolicyResponse>;
 
 export interface GetDataLakeStoreAccountRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1272,16 +1234,8 @@ export interface GetDataLakeStoreAccountResponse {
   /** The Data Lake Store account properties. */
   properties?: AddDataLakeStoreProperties;
 }
-export const GetDataLakeStoreAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(AddDataLakeStoreProperties),
-  }),
-).annotate({
-  identifier: "GetDataLakeStoreAccountResponse",
-}) as any as S.Schema<GetDataLakeStoreAccountResponse>;
+export const GetDataLakeStoreAccountResponse =
+  DataLakeStoreAccountInformation as any as S.Schema<GetDataLakeStoreAccountResponse>;
 
 export interface GetFirewallRuleRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1319,14 +1273,7 @@ export interface GetFirewallRuleResponse {
   /** The firewall rule properties. */
   properties?: FirewallRuleProperties;
 }
-export const GetFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(FirewallRuleProperties),
-  }),
-).annotate({ identifier: "GetFirewallRuleResponse" }) as any as S.Schema<GetFirewallRuleResponse>;
+export const GetFirewallRuleResponse = FirewallRule as any as S.Schema<GetFirewallRuleResponse>;
 
 export interface GetLocationCapabilityRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1418,16 +1365,8 @@ export interface GetStorageAccountResponse {
   /** The Azure Storage account properties. */
   properties?: StorageAccountInformationProperties;
 }
-export const GetStorageAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(StorageAccountInformationProperties),
-  }),
-).annotate({
-  identifier: "GetStorageAccountResponse",
-}) as any as S.Schema<GetStorageAccountResponse>;
+export const GetStorageAccountResponse =
+  DataLakeStoreAccountInformation as any as S.Schema<GetStorageAccountResponse>;
 
 export interface GetStorageAccountStorageContainerRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1536,10 +1475,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type DataLakeAnalyticsAccountBasicTagsMap = { [key: string]: string | undefined };
-export const DataLakeAnalyticsAccountBasicTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataLakeAnalyticsAccountBasicTagsMap>;
+export const DataLakeAnalyticsAccountBasicTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<DataLakeAnalyticsAccountBasicTagsMap>;
 
 /** The provisioning status of the Data Lake Analytics account. */
 export type DataLakeAnalyticsAccountPropertiesBasicProvisioningState =
@@ -1703,9 +1640,8 @@ export const ListComputePolicyByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type ComputePolicyListResultValueList = Array<ComputePolicy>;
-export const ComputePolicyListResultValueList = /*@__PURE__*/ S.Array(
-  ComputePolicy,
-) as any as S.Schema<ComputePolicyListResultValueList>;
+export const ComputePolicyListResultValueList =
+  DataLakeAnalyticsAccountPropertiesComputePoliciesList as any as S.Schema<ComputePolicyListResultValueList>;
 
 /** The list of compute policies in the account. */
 export interface ComputePolicyListResult {
@@ -1767,9 +1703,8 @@ export const ListDataLakeStoreAccountByAccountRequest = /*@__PURE__*/ S.suspend(
 /** The results of the list operation. */
 export type DataLakeStoreAccountInformationListResultValueList =
   Array<DataLakeStoreAccountInformation>;
-export const DataLakeStoreAccountInformationListResultValueList = /*@__PURE__*/ S.Array(
-  DataLakeStoreAccountInformation,
-) as any as S.Schema<DataLakeStoreAccountInformationListResultValueList>;
+export const DataLakeStoreAccountInformationListResultValueList =
+  DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList as any as S.Schema<DataLakeStoreAccountInformationListResultValueList>;
 
 /** Data Lake Store account list information. */
 export interface DataLakeStoreAccountInformationListResult {
@@ -1814,9 +1749,8 @@ export const ListFirewallRuleByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type FirewallRuleListResultValueList = Array<FirewallRule>;
-export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
-  FirewallRule,
-) as any as S.Schema<FirewallRuleListResultValueList>;
+export const FirewallRuleListResultValueList =
+  DataLakeAnalyticsAccountPropertiesFirewallRulesList as any as S.Schema<FirewallRuleListResultValueList>;
 
 /** Data Lake Analytics firewall rule list information. */
 export interface FirewallRuleListResult {
@@ -2061,9 +1995,8 @@ export const ListStorageAccountByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type StorageAccountInformationListResultValueList = Array<StorageAccountInformation>;
-export const StorageAccountInformationListResultValueList = /*@__PURE__*/ S.Array(
-  StorageAccountInformation,
-) as any as S.Schema<StorageAccountInformationListResultValueList>;
+export const StorageAccountInformationListResultValueList =
+  DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList as any as S.Schema<StorageAccountInformationListResultValueList>;
 
 /** Azure Storage account list information. */
 export interface StorageAccountInformationListResult {
@@ -2072,14 +2005,8 @@ export interface StorageAccountInformationListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const StorageAccountInformationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(StorageAccountInformationListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageAccountInformationListResult",
-}) as any as S.Schema<StorageAccountInformationListResult>;
+export const StorageAccountInformationListResult =
+  DataLakeStoreAccountInformationListResult as any as S.Schema<StorageAccountInformationListResult>;
 
 export interface ListStorageAccountSasTokensRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2217,10 +2144,8 @@ export const StorageContainerListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** The Data Lake Store account properties to use when updating a Data Lake Store account. */
 export type UpdateDataLakeStoreProperties = AddDataLakeStoreProperties;
@@ -2233,22 +2158,14 @@ export interface UpdateDataLakeStoreWithAccountParameters {
   /** The Data Lake Store account properties to use when updating a Data Lake Store account. */
   properties?: AddDataLakeStoreProperties;
 }
-export const UpdateDataLakeStoreWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    properties: S.optional(AddDataLakeStoreProperties),
-  }),
-).annotate({
-  identifier: "UpdateDataLakeStoreWithAccountParameters",
-}) as any as S.Schema<UpdateDataLakeStoreWithAccountParameters>;
+export const UpdateDataLakeStoreWithAccountParameters =
+  AddDataLakeStoreWithAccountParameters as any as S.Schema<UpdateDataLakeStoreWithAccountParameters>;
 
 /** The list of Data Lake Store accounts associated with this account. */
 export type UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
   Array<UpdateDataLakeStoreWithAccountParameters>;
 export const UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
-  /*@__PURE__*/ S.Array(
-    UpdateDataLakeStoreWithAccountParameters,
-  ) as any as S.Schema<UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList>;
+  CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList as any as S.Schema<UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList>;
 
 /** The Azure Storage account properties to use when updating an Azure Storage account. */
 export interface UpdateStorageAccountProperties {
@@ -2469,10 +2386,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 export interface UpdateAccountResponse {
   /** The resource identifier. */
@@ -2488,16 +2403,8 @@ export interface UpdateAccountResponse {
   /** The properties defined by Data Lake Analytics all properties are specific to each resource provider. */
   properties?: DataLakeAnalyticsAccountProperties;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateAccountResponseTagsMap),
-    properties: S.optional(DataLakeAnalyticsAccountProperties),
-  }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse =
+  CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export interface UpdateComputePolicyRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2540,16 +2447,8 @@ export interface UpdateComputePolicyResponse {
   /** The compute policy properties. */
   properties?: ComputePolicyProperties;
 }
-export const UpdateComputePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(ComputePolicyProperties),
-  }),
-).annotate({
-  identifier: "UpdateComputePolicyResponse",
-}) as any as S.Schema<UpdateComputePolicyResponse>;
+export const UpdateComputePolicyResponse =
+  ComputePoliciesCreateOrUpdateResponse as any as S.Schema<UpdateComputePolicyResponse>;
 
 export interface UpdateFirewallRuleRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2592,16 +2491,8 @@ export interface UpdateFirewallRuleResponse {
   /** The firewall rule properties. */
   properties?: FirewallRuleProperties;
 }
-export const UpdateFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(FirewallRuleProperties),
-  }),
-).annotate({
-  identifier: "UpdateFirewallRuleResponse",
-}) as any as S.Schema<UpdateFirewallRuleResponse>;
+export const UpdateFirewallRuleResponse =
+  FirewallRulesCreateOrUpdateResponse as any as S.Schema<UpdateFirewallRuleResponse>;
 
 export interface UpdateStorageAccountRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2635,9 +2526,8 @@ export const UpdateStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateStorageAccountRequest>;
 
 export interface UpdateStorageAccountResponse {}
-export const UpdateStorageAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateStorageAccountResponse",
-}) as any as S.Schema<UpdateStorageAccountResponse>;
+export const UpdateStorageAccountResponse =
+  AddStorageAccountResponse as any as S.Schema<UpdateStorageAccountResponse>;
 
 export type AddDataLakeStoreAccountError = AzureOpError;
 /** Updates the specified Data Lake Analytics account to include the additional Data Lake Store account. */

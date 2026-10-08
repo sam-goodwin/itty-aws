@@ -101,9 +101,7 @@ export const CancelJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).ann
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelOperationRequest",
-}) as any as S.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = CancelJobResponse as any as S.Schema<CancelOperationRequest>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -128,9 +126,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelJobResponse as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;

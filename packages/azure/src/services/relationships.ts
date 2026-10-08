@@ -60,11 +60,8 @@ export const DeleteDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteDependencyOfRelationshipsByServiceGroupRequest>;
 
 export interface DeleteDependencyOfRelationshipsByServiceGroupResponse {}
-export const DeleteDependencyOfRelationshipsByServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDependencyOfRelationshipsByServiceGroupResponse",
-}) as any as S.Schema<DeleteDependencyOfRelationshipsByServiceGroupResponse>;
+export const DeleteDependencyOfRelationshipsByServiceGroupResponse =
+  DeleteDependencyOfRelationshipResponse as any as S.Schema<DeleteDependencyOfRelationshipsByServiceGroupResponse>;
 
 export interface DeleteServiceGroupMemberRelationshipRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -89,11 +86,8 @@ export const DeleteServiceGroupMemberRelationshipRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteServiceGroupMemberRelationshipRequest>;
 
 export interface DeleteServiceGroupMemberRelationshipResponse {}
-export const DeleteServiceGroupMemberRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceGroupMemberRelationshipResponse",
-}) as any as S.Schema<DeleteServiceGroupMemberRelationshipResponse>;
+export const DeleteServiceGroupMemberRelationshipResponse =
+  DeleteDependencyOfRelationshipResponse as any as S.Schema<DeleteServiceGroupMemberRelationshipResponse>;
 
 /** dependencyOf relationship properties. */
 export interface DependencyOfRelationshipPropertiesInput {
@@ -356,17 +350,8 @@ export interface GetDependencyOfRelationshipResponse {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const GetDependencyOfRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DependencyOfRelationshipProperties),
-  }),
-).annotate({
-  identifier: "GetDependencyOfRelationshipResponse",
-}) as any as S.Schema<GetDependencyOfRelationshipResponse>;
+export const GetDependencyOfRelationshipResponse =
+  DependencyOfRelationshipsCreateOrUpdateResponse as any as S.Schema<GetDependencyOfRelationshipResponse>;
 
 export interface GetDependencyOfRelationshipsByServiceGroupRequest {
   /** The name of the service group. */
@@ -402,17 +387,8 @@ export interface GetDependencyOfRelationshipsByServiceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const GetDependencyOfRelationshipsByServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DependencyOfRelationshipProperties),
-  }),
-).annotate({
-  identifier: "GetDependencyOfRelationshipsByServiceGroupResponse",
-}) as any as S.Schema<GetDependencyOfRelationshipsByServiceGroupResponse>;
+export const GetDependencyOfRelationshipsByServiceGroupResponse =
+  DependencyOfRelationshipsCreateOrUpdateResponse as any as S.Schema<GetDependencyOfRelationshipsByServiceGroupResponse>;
 
 export interface GetServiceGroupMemberRelationshipRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -528,18 +504,8 @@ export interface ContainsRelationshipProperties {
   /** The provisioning state of the relationship. */
   provisioningState?: ProvisioningState;
 }
-export const ContainsRelationshipProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceId: S.optional(S.String),
-    targetId: S.String,
-    targetTenant: S.optional(S.String),
-    originInformation: S.optional(RelationshipOriginInformation),
-    metadata: S.optional(RelationshipMetadata),
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "ContainsRelationshipProperties",
-}) as any as S.Schema<ContainsRelationshipProperties>;
+export const ContainsRelationshipProperties =
+  DependencyOfRelationshipProperties as any as S.Schema<ContainsRelationshipProperties>;
 
 /** Defines a contains relationship resource. */
 export interface ContainsRelationship {
@@ -640,21 +606,13 @@ export interface DependencyOfRelationship {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const DependencyOfRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DependencyOfRelationshipProperties),
-  }),
-).annotate({ identifier: "DependencyOfRelationship" }) as any as S.Schema<DependencyOfRelationship>;
+export const DependencyOfRelationship =
+  ContainsRelationship as any as S.Schema<DependencyOfRelationship>;
 
 /** The DependencyOfRelationship items on this page */
 export type DependencyOfRelationshipListResultValueList = Array<DependencyOfRelationship>;
-export const DependencyOfRelationshipListResultValueList = /*@__PURE__*/ S.Array(
-  DependencyOfRelationship,
-) as any as S.Schema<DependencyOfRelationshipListResultValueList>;
+export const DependencyOfRelationshipListResultValueList =
+  ContainsRelationshipListResultValueList as any as S.Schema<DependencyOfRelationshipListResultValueList>;
 
 /** The response of a DependencyOfRelationship list operation. */
 export interface DependencyOfRelationshipListResult {
@@ -663,14 +621,8 @@ export interface DependencyOfRelationshipListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DependencyOfRelationshipListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: DependencyOfRelationshipListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DependencyOfRelationshipListResult",
-}) as any as S.Schema<DependencyOfRelationshipListResult>;
+export const DependencyOfRelationshipListResult =
+  ContainsRelationshipListResult as any as S.Schema<DependencyOfRelationshipListResult>;
 
 export interface ListDependencyOfRelationshipsByServiceGroupRequest {
   /** The name of the service group. */
@@ -805,17 +757,8 @@ export interface ServiceGroupMemberRelationship {
   /** The resource-specific properties for this resource. */
   properties?: ServiceGroupMemberRelationshipPropertiesV2;
 }
-export const ServiceGroupMemberRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceGroupMemberRelationshipPropertiesV2),
-  }),
-).annotate({
-  identifier: "ServiceGroupMemberRelationship",
-}) as any as S.Schema<ServiceGroupMemberRelationship>;
+export const ServiceGroupMemberRelationship =
+  GetServiceGroupMemberRelationshipResponse as any as S.Schema<ServiceGroupMemberRelationship>;
 
 /** The ServiceGroupMemberRelationship items on this page */
 export type ServiceGroupMemberRelationshipListResultValueList =
@@ -847,14 +790,8 @@ export interface ServiceGroupMemberRelationshipPropertiesPreviewInput {
   /** The tenant of the target service group. */
   targetTenant?: string;
 }
-export const ServiceGroupMemberRelationshipPropertiesPreviewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetId: S.String,
-    targetTenant: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceGroupMemberRelationshipPropertiesPreviewInput",
-}) as any as S.Schema<ServiceGroupMemberRelationshipPropertiesPreviewInput>;
+export const ServiceGroupMemberRelationshipPropertiesPreviewInput =
+  DependencyOfRelationshipPropertiesInput as any as S.Schema<ServiceGroupMemberRelationshipPropertiesPreviewInput>;
 
 export interface ServiceGroupMemberRelationshipsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */

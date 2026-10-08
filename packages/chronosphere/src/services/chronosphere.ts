@@ -88,10 +88,8 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional labels marking the bucket. */
 export type Configv1BucketLabelsMap = { [key: string]: string | undefined };
-export const Configv1BucketLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1BucketLabelsMap>;
+export const Configv1BucketLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1BucketLabelsMap>;
 
 export interface Configv1Bucket {
   /** Unique identifier of the Bucket. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the Bucket is created. */
@@ -308,10 +306,8 @@ export const Configv1CreateCollectionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Defines tags that add metadata about the dashboard. */
 export type Configv1DashboardInputLabelsMap = { [key: string]: string | undefined };
-export const Configv1DashboardInputLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1DashboardInputLabelsMap>;
+export const Configv1DashboardInputLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1DashboardInputLabelsMap>;
 
 export interface Configv1DashboardInput {
   /** Unique identifier of the Dashboard. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the Dashboard is created. */
@@ -351,10 +347,8 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Defines tags that add metadata about the dashboard. */
 export type Configv1DashboardLabelsMap = { [key: string]: string | undefined };
-export const Configv1DashboardLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1DashboardLabelsMap>;
+export const Configv1DashboardLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1DashboardLabelsMap>;
 
 export interface Configv1Dashboard {
   /** Unique identifier of the Dashboard. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the Dashboard is created. */
@@ -742,15 +736,13 @@ export const MetricLabelConstructedLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricLabelConstructedLabel>;
 
 export type MappingLabelNameMappingFiltersList = Array<Configv1LabelFilter>;
-export const MappingLabelNameMappingFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<MappingLabelNameMappingFiltersList>;
+export const MappingLabelNameMappingFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<MappingLabelNameMappingFiltersList>;
 
 /** Defines the source label values that should be mapped into the given target_value. */
 export type MappingLabelValueMappingSourceValueGlobsList = Array<string>;
-export const MappingLabelValueMappingSourceValueGlobsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MappingLabelValueMappingSourceValueGlobsList>;
+export const MappingLabelValueMappingSourceValueGlobsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<MappingLabelValueMappingSourceValueGlobsList>;
 
 export interface MappingLabelValueMapping {
   /** Defines the source label values that should be mapped into the given target_value. */
@@ -793,9 +785,8 @@ export const MetricLabelMappingLabelNameMappingsList = /*@__PURE__*/ S.Array(
 
 /** These value mappings apply to the whole mapping label. If there's no name_mappings, these value mappings apply to the label that exists on the metric. */
 export type MetricLabelMappingLabelValueMappingsList = Array<MappingLabelValueMapping>;
-export const MetricLabelMappingLabelValueMappingsList = /*@__PURE__*/ S.Array(
-  MappingLabelValueMapping,
-) as any as S.Schema<MetricLabelMappingLabelValueMappingsList>;
+export const MetricLabelMappingLabelValueMappingsList =
+  MappingLabelNameMappingValueMappingsList as any as S.Schema<MetricLabelMappingLabelValueMappingsList>;
 
 export interface MetricLabelMappingLabel {
   name_mappings?: MetricLabelMappingLabelNameMappingsList;
@@ -1029,9 +1020,8 @@ export const CreateDerivedMetricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Required queries that the derived metric can map to. */
 export type Configv1DerivedMetricQueriesList = Array<DerivedMetricSelectorQuery>;
-export const Configv1DerivedMetricQueriesList = /*@__PURE__*/ S.Array(
-  DerivedMetricSelectorQuery,
-) as any as S.Schema<Configv1DerivedMetricQueriesList>;
+export const Configv1DerivedMetricQueriesList =
+  Configv1DerivedMetricInputQueriesList as any as S.Schema<Configv1DerivedMetricQueriesList>;
 
 export interface Configv1DerivedMetric {
   /** Required. Name of the DerivedMetric. You can modify this value after the DerivedMetric is created. */
@@ -1077,9 +1067,8 @@ export const Configv1DropRuleMode = S.String;
 
 /** Defines the conditions that determine whether to drop a metric. Drop rules can have multiple filter conditions on different labels, making it possible to drop a subset of the series matching a particular metric name. */
 export type Configv1DropRuleInputFiltersList = Array<Configv1LabelFilter>;
-export const Configv1DropRuleInputFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<Configv1DropRuleInputFiltersList>;
+export const Configv1DropRuleInputFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<Configv1DropRuleInputFiltersList>;
 
 /** No longer supported and cannot be used. Defines behavior for conditional drop policies. */
 export interface DropRuleConditionalRateBasedDrop {
@@ -1152,9 +1141,8 @@ export const CreateDropRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the conditions that determine whether to drop a metric. Drop rules can have multiple filter conditions on different labels, making it possible to drop a subset of the series matching a particular metric name. */
 export type Configv1DropRuleFiltersList = Array<Configv1LabelFilter>;
-export const Configv1DropRuleFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<Configv1DropRuleFiltersList>;
+export const Configv1DropRuleFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<Configv1DropRuleFiltersList>;
 
 export interface Configv1DropRule {
   /** Unique identifier of the DropRule. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the DropRule is created. */
@@ -1212,9 +1200,8 @@ export const Configv1GcpMetricsIntegrationServiceAccount = /*@__PURE__*/ S.suspe
 
 /** List of Gcp metric prefixes to ingest. */
 export type GcpMetricsIntegrationMetricGroupPrefixesList = Array<string>;
-export const GcpMetricsIntegrationMetricGroupPrefixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GcpMetricsIntegrationMetricGroupPrefixesList>;
+export const GcpMetricsIntegrationMetricGroupPrefixesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<GcpMetricsIntegrationMetricGroupPrefixesList>;
 
 export interface GcpMetricsIntegrationMetricGroup {
   /** Project ID that has access to the metric data. */
@@ -1274,9 +1261,8 @@ export const CreateGcpMetricsIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric groups to be ingested for this integration. */
 export type Configv1GcpMetricsIntegrationMetricGroupsList = Array<GcpMetricsIntegrationMetricGroup>;
-export const Configv1GcpMetricsIntegrationMetricGroupsList = /*@__PURE__*/ S.Array(
-  GcpMetricsIntegrationMetricGroup,
-) as any as S.Schema<Configv1GcpMetricsIntegrationMetricGroupsList>;
+export const Configv1GcpMetricsIntegrationMetricGroupsList =
+  Configv1GcpMetricsIntegrationInputMetricGroupsList as any as S.Schema<Configv1GcpMetricsIntegrationMetricGroupsList>;
 
 export interface Configv1GcpMetricsIntegration {
   /** Unique identifier of the GcpMetricsIntegration. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the GcpMetricsIntegration is created. */
@@ -1363,9 +1349,8 @@ export const LogAllocationConfigHighLowPrioritiesHighPriorityFiltersList = /*@__
 /** A list of search filters defining which logs are considered low priority in this dataset. Filters are combined as OR statements so only one filter needs to match. */
 export type LogAllocationConfigHighLowPrioritiesLowPriorityFiltersList =
   Array<Configv1LogSearchFilter>;
-export const LogAllocationConfigHighLowPrioritiesLowPriorityFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LogSearchFilter,
-) as any as S.Schema<LogAllocationConfigHighLowPrioritiesLowPriorityFiltersList>;
+export const LogAllocationConfigHighLowPrioritiesLowPriorityFiltersList =
+  LogAllocationConfigHighLowPrioritiesHighPriorityFiltersList as any as S.Schema<LogAllocationConfigHighLowPrioritiesLowPriorityFiltersList>;
 
 /** Defines explicit high and low priority match criteria to specify which logs to drop first (low) and last (high). Anything not matched by either set of rules is considered default priority and is dropped after low priority but before high priority data. */
 export interface LogAllocationConfigHighLowPriorities {
@@ -1452,9 +1437,8 @@ export const CreateLogAllocationConfigRequest = /*@__PURE__*/ S.suspend(() =>
 /** Defines datasets and budget allocations. Datasets are evaluated in order. */
 export type Configv1LogAllocationConfigDatasetAllocationsList =
   Array<LogAllocationConfigDatasetAllocation>;
-export const Configv1LogAllocationConfigDatasetAllocationsList = /*@__PURE__*/ S.Array(
-  LogAllocationConfigDatasetAllocation,
-) as any as S.Schema<Configv1LogAllocationConfigDatasetAllocationsList>;
+export const Configv1LogAllocationConfigDatasetAllocationsList =
+  Configv1LogAllocationConfigInputDatasetAllocationsList as any as S.Schema<Configv1LogAllocationConfigDatasetAllocationsList>;
 
 /** LogAllocationConfig is a singleton configuration object that specifies the configuration for Log budget allocations. */
 export interface Configv1LogAllocationConfig {
@@ -1536,9 +1520,8 @@ export const CreateLogIngestConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ordered list of parsers to run on ingested logs. The first parser which matches the log is used. */
 export type Configv1LogIngestConfigParsersList = Array<Configv1LogParser>;
-export const Configv1LogIngestConfigParsersList = /*@__PURE__*/ S.Array(
-  Configv1LogParser,
-) as any as S.Schema<Configv1LogIngestConfigParsersList>;
+export const Configv1LogIngestConfigParsersList =
+  Configv1LogIngestConfigInputParsersList as any as S.Schema<Configv1LogIngestConfigParsersList>;
 
 /** LogIngestConfig is a singleton configuration object that specifies the configuration for log ingest. */
 export interface Configv1LogIngestConfig {
@@ -1582,9 +1565,8 @@ export const LogScaleActionActionType = S.String;
 
 /** List of email addresses to send an email to. */
 export type LogScaleActionEmailActionRecipientsList = Array<string>;
-export const LogScaleActionEmailActionRecipientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogScaleActionEmailActionRecipientsList>;
+export const LogScaleActionEmailActionRecipientsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<LogScaleActionEmailActionRecipientsList>;
 
 export interface LogScaleActionEmailAction {
   /** List of email addresses to send an email to. */
@@ -1662,10 +1644,8 @@ export const LogScaleActionPagerDutyAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Fields to include within the Slack message. Can be templated with values from the query result. */
 export type LogScaleActionSlackActionFieldsMap = { [key: string]: string | undefined };
-export const LogScaleActionSlackActionFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogScaleActionSlackActionFieldsMap>;
+export const LogScaleActionSlackActionFieldsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<LogScaleActionSlackActionFieldsMap>;
 
 export interface LogScaleActionSlackAction {
   /** Slack webhook URL to send the request to. */
@@ -1687,16 +1667,13 @@ export const LogScaleActionSlackAction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Slack channels to message. */
 export type LogScaleActionSlackPostMessageActionChannelsList = Array<string>;
-export const LogScaleActionSlackPostMessageActionChannelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogScaleActionSlackPostMessageActionChannelsList>;
+export const LogScaleActionSlackPostMessageActionChannelsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<LogScaleActionSlackPostMessageActionChannelsList>;
 
 /** Fields to include within the Slack message. Can be templated with values from the query result. */
 export type LogScaleActionSlackPostMessageActionFieldsMap = { [key: string]: string | undefined };
-export const LogScaleActionSlackPostMessageActionFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogScaleActionSlackPostMessageActionFieldsMap>;
+export const LogScaleActionSlackPostMessageActionFieldsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<LogScaleActionSlackPostMessageActionFieldsMap>;
 
 export interface LogScaleActionSlackPostMessageAction {
   /** API token to authenticate with Slack. */
@@ -1749,10 +1726,8 @@ export const WebhookActionHTTPMethod = S.String;
 
 /** Headers of the HTTP or HTTPS request. */
 export type LogScaleActionWebhookActionHeadersMap = { [key: string]: string | undefined };
-export const LogScaleActionWebhookActionHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogScaleActionWebhookActionHeadersMap>;
+export const LogScaleActionWebhookActionHeadersMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<LogScaleActionWebhookActionHeadersMap>;
 
 export interface LogScaleActionWebhookAction {
   method?: WebhookActionHTTPMethod | (string & {});
@@ -1899,15 +1874,13 @@ export const Configv1CreateLogScaleActionResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Slugs of LogScale actions that will receive the alerts. When the value is empty this alert won't trigger. Optional. */
 export type Configv1LogScaleAlertInputLogScaleActionSlugsList = Array<string>;
-export const Configv1LogScaleAlertInputLogScaleActionSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1LogScaleAlertInputLogScaleActionSlugsList>;
+export const Configv1LogScaleAlertInputLogScaleActionSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1LogScaleAlertInputLogScaleActionSlugsList>;
 
 /** Tags attached to the alert. */
 export type Configv1LogScaleAlertInputTagsList = Array<string>;
-export const Configv1LogScaleAlertInputTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1LogScaleAlertInputTagsList>;
+export const Configv1LogScaleAlertInputTagsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1LogScaleAlertInputTagsList>;
 
 export type LogScaleAlertAlertType = "STANDARD" | "FILTER";
 export const LogScaleAlertAlertType = S.String;
@@ -1975,15 +1948,13 @@ export const CreateLogScaleAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Slugs of LogScale actions that will receive the alerts. When the value is empty this alert won't trigger. Optional. */
 export type Configv1LogScaleAlertLogScaleActionSlugsList = Array<string>;
-export const Configv1LogScaleAlertLogScaleActionSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1LogScaleAlertLogScaleActionSlugsList>;
+export const Configv1LogScaleAlertLogScaleActionSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1LogScaleAlertLogScaleActionSlugsList>;
 
 /** Tags attached to the alert. */
 export type Configv1LogScaleAlertTagsList = Array<string>;
-export const Configv1LogScaleAlertTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1LogScaleAlertTagsList>;
+export const Configv1LogScaleAlertTagsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1LogScaleAlertTagsList>;
 
 export interface Configv1LogScaleAlert {
   /** Unique identifier of the LogScaleAlert. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the LogScaleAlert is created. */
@@ -2049,9 +2020,8 @@ export const Configv1CreateLogScaleAlertResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Required filters that determine to which metrics to apply the rule. */
 export type Configv1MappingRuleInputFiltersList = Array<Configv1LabelFilter>;
-export const Configv1MappingRuleInputFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<Configv1MappingRuleInputFiltersList>;
+export const Configv1MappingRuleInputFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<Configv1MappingRuleInputFiltersList>;
 
 export type Configv1AggregationType =
   | "LAST"
@@ -2160,9 +2130,8 @@ export const CreateMappingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Required filters that determine to which metrics to apply the rule. */
 export type Configv1MappingRuleFiltersList = Array<Configv1LabelFilter>;
-export const Configv1MappingRuleFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<Configv1MappingRuleFiltersList>;
+export const Configv1MappingRuleFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<Configv1MappingRuleFiltersList>;
 
 export interface Configv1MappingRule {
   /** Unique identifier of the MappingRule. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the MappingRule is created. */
@@ -2209,23 +2178,18 @@ export const Configv1CreateMappingRuleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Required. Labels to include in notifications generated by this monitor, and can be used to route alerts with notification overrides. */
 export type Configv1MonitorInputLabelsMap = { [key: string]: string | undefined };
-export const Configv1MonitorInputLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1MonitorInputLabelsMap>;
+export const Configv1MonitorInputLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1MonitorInputLabelsMap>;
 
 /** Annotations are visible in notifications generated by this monitor. They can be be templated with labels from notifications. */
 export type Configv1MonitorInputAnnotationsMap = { [key: string]: string | undefined };
-export const Configv1MonitorInputAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1MonitorInputAnnotationsMap>;
+export const Configv1MonitorInputAnnotationsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1MonitorInputAnnotationsMap>;
 
 /** Set of label names used to split series into signals. Each unique combination of labels result in its own signal. For example, if `label_names` is `["service", "code"]`, then all series including labels `{service="foo",code="404"}` will be grouped together in the same signal. Cannot be used if `graphite_query` is set. */
 export type MonitorSignalGroupingLabelNamesList = Array<string>;
-export const MonitorSignalGroupingLabelNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MonitorSignalGroupingLabelNamesList>;
+export const MonitorSignalGroupingLabelNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<MonitorSignalGroupingLabelNamesList>;
 
 /** SignalGrouping defines how the set of series from the query are split into signals. */
 export interface MonitorSignalGrouping {
@@ -2479,17 +2443,13 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Required. Labels to include in notifications generated by this monitor, and can be used to route alerts with notification overrides. */
 export type Configv1MonitorLabelsMap = { [key: string]: string | undefined };
-export const Configv1MonitorLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1MonitorLabelsMap>;
+export const Configv1MonitorLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1MonitorLabelsMap>;
 
 /** Annotations are visible in notifications generated by this monitor. They can be be templated with labels from notifications. */
 export type Configv1MonitorAnnotationsMap = { [key: string]: string | undefined };
-export const Configv1MonitorAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1MonitorAnnotationsMap>;
+export const Configv1MonitorAnnotationsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1MonitorAnnotationsMap>;
 
 export interface Configv1Monitor {
   /** Unique identifier of the Monitor. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the Monitor is created. */
@@ -2625,9 +2585,8 @@ export const CreateMutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Required. Specifies which series are silenced by the muting rule. Alerting series must match all muting rule matchers to be silenced. You can't update this value. Updates must specify the original value. */
 export type Configv1MutingRuleLabelMatchersList = Array<Configv1MutingRuleLabelMatcher>;
-export const Configv1MutingRuleLabelMatchersList = /*@__PURE__*/ S.Array(
-  Configv1MutingRuleLabelMatcher,
-) as any as S.Schema<Configv1MutingRuleLabelMatchersList>;
+export const Configv1MutingRuleLabelMatchersList =
+  Configv1MutingRuleInputLabelMatchersList as any as S.Schema<Configv1MutingRuleLabelMatchersList>;
 
 export interface Configv1MutingRule {
   /** Unique identifier of the MutingRule. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the MutingRule is created. */
@@ -2673,15 +2632,13 @@ export const Configv1CreateMutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Slugs of notifiers that will receive the alerts. */
 export type RoutesNotifierListNotifierSlugsList = Array<string>;
-export const RoutesNotifierListNotifierSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesNotifierListNotifierSlugsList>;
+export const RoutesNotifierListNotifierSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<RoutesNotifierListNotifierSlugsList>;
 
 /** Set of label names used to group alerts. For example, if label_names is ["service", "code"] then all alerts including labels {service="foo",code="404"} will be grouped together. */
 export type NotificationPolicyRoutesGroupByLabelNamesList = Array<string>;
-export const NotificationPolicyRoutesGroupByLabelNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationPolicyRoutesGroupByLabelNamesList>;
+export const NotificationPolicyRoutesGroupByLabelNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<NotificationPolicyRoutesGroupByLabelNamesList>;
 
 export interface NotificationPolicyRoutesGroupBy {
   /** Set of label names used to group alerts. For example, if label_names is ["service", "code"] then all alerts including labels {service="foo",code="404"} will be grouped together. */
@@ -2723,9 +2680,8 @@ export const RoutesSeverityNotifiers = /*@__PURE__*/ S.suspend(() =>
 
 /** Set of matchers on an alert's labels. If all labels match then the override notifiers apply. */
 export type NotificationPolicyRoutesOverrideAlertLabelMatchersList = Array<Configv1LabelMatcher>;
-export const NotificationPolicyRoutesOverrideAlertLabelMatchersList = /*@__PURE__*/ S.Array(
-  Configv1LabelMatcher,
-) as any as S.Schema<NotificationPolicyRoutesOverrideAlertLabelMatchersList>;
+export const NotificationPolicyRoutesOverrideAlertLabelMatchersList =
+  MonitorSeriesConditionsOverrideLabelMatchersList as any as S.Schema<NotificationPolicyRoutesOverrideAlertLabelMatchersList>;
 
 export interface NotificationPolicyRoutesOverride {
   /** Set of matchers on an alert's labels. If all labels match then the override notifiers apply. */
@@ -2887,9 +2843,8 @@ export const NotifierWebhookConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifierWebhookConfig" }) as any as S.Schema<NotifierWebhookConfig>;
 
 export type NotifierSlackConfigMrkdwnInList = Array<string>;
-export const NotifierSlackConfigMrkdwnInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotifierSlackConfigMrkdwnInList>;
+export const NotifierSlackConfigMrkdwnInList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<NotifierSlackConfigMrkdwnInList>;
 
 export interface SlackConfigField {
   title?: string;
@@ -3008,10 +2963,8 @@ export const NotifierSlackConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Set of arbitrary key/value pairs which provide further detail about the incident. */
 export type NotifierPagerdutyConfigDetailsMap = { [key: string]: string | undefined };
-export const NotifierPagerdutyConfigDetailsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotifierPagerdutyConfigDetailsMap>;
+export const NotifierPagerdutyConfigDetailsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<NotifierPagerdutyConfigDetailsMap>;
 
 export interface PagerdutyConfigImage {
   src?: string;
@@ -3115,10 +3068,8 @@ export const NotifierEmailConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of arbitrary key/value pairs that provide further detail about the alert. */
 export type NotifierOpsGenieConfigDetailsMap = { [key: string]: string | undefined };
-export const NotifierOpsGenieConfigDetailsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotifierOpsGenieConfigDetailsMap>;
+export const NotifierOpsGenieConfigDetailsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<NotifierOpsGenieConfigDetailsMap>;
 
 export type ResponderResponderType = "TEAM" | "USER" | "ESCALATION" | "SCHEDULE";
 export const ResponderResponderType = S.String;
@@ -3187,10 +3138,8 @@ export const NotifierOpsGenieConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotifierOpsGenieConfig" }) as any as S.Schema<NotifierOpsGenieConfig>;
 
 export type NotifierVictorOpsConfigCustomFieldsMap = { [key: string]: string | undefined };
-export const NotifierVictorOpsConfigCustomFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NotifierVictorOpsConfigCustomFieldsMap>;
+export const NotifierVictorOpsConfigCustomFieldsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<NotifierVictorOpsConfigCustomFieldsMap>;
 
 export interface NotifierVictorOpsConfig {
   http_config?: NotifierHTTPConfig;
@@ -3323,9 +3272,8 @@ export const ResourceAttributesFilterMode = S.String;
 
 /** Do not copy any resource attribute whose key exactly matches one of the strings in this list. */
 export type OtelMetricsIngestionResourceAttributesExcludeKeysList = Array<string>;
-export const OtelMetricsIngestionResourceAttributesExcludeKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OtelMetricsIngestionResourceAttributesExcludeKeysList>;
+export const OtelMetricsIngestionResourceAttributesExcludeKeysList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<OtelMetricsIngestionResourceAttributesExcludeKeysList>;
 
 export interface OtelMetricsIngestionResourceAttributes {
   flatten_mode?: ResourceAttributesFlattenMode | (string & {});
@@ -3401,10 +3349,8 @@ export const Configv1CreateOtelMetricsIngestionResponse = /*@__PURE__*/ S.suspen
 
 /** Labels to add or overwrite before storing the result. */
 export type Configv1RecordingRuleLabelPolicyAddMap = { [key: string]: string | undefined };
-export const Configv1RecordingRuleLabelPolicyAddMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1RecordingRuleLabelPolicyAddMap>;
+export const Configv1RecordingRuleLabelPolicyAddMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1RecordingRuleLabelPolicyAddMap>;
 
 export interface Configv1RecordingRuleLabelPolicy {
   /** Labels to add or overwrite before storing the result. */
@@ -3591,15 +3537,13 @@ export const Configv1ResourcePoolsAllocation = /*@__PURE__*/ S.suspend(() =>
 
 /** Required filters which define which metrics are high priority, where any metric which matches at least one filter is considered high priority. High priority metrics are dropped last when the license limit is exceeded. */
 export type ResourcePoolsPrioritiesHighPriorityFiltersList = Array<Configv1LabelFilter>;
-export const ResourcePoolsPrioritiesHighPriorityFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<ResourcePoolsPrioritiesHighPriorityFiltersList>;
+export const ResourcePoolsPrioritiesHighPriorityFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<ResourcePoolsPrioritiesHighPriorityFiltersList>;
 
 /** Required filters which define which metrics are low priority, where any metric which matches at least one filter is considered low priority. Low priority metrics are dropped first when the license limit is exceeded. */
 export type ResourcePoolsPrioritiesLowPriorityFiltersList = Array<Configv1LabelFilter>;
-export const ResourcePoolsPrioritiesLowPriorityFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<ResourcePoolsPrioritiesLowPriorityFiltersList>;
+export const ResourcePoolsPrioritiesLowPriorityFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<ResourcePoolsPrioritiesLowPriorityFiltersList>;
 
 export interface ResourcePoolsPriorities {
   /** Required filters which define which metrics are high priority, where any metric which matches at least one filter is considered high priority. High priority metrics are dropped last when the license limit is exceeded. */
@@ -3616,9 +3560,8 @@ export const ResourcePoolsPriorities = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. For supported licenses, defines thresholds with strict limits for when to drop new consumption of the license for a pool. Currently, only `PERSISTED_CARDINALITY_STANDARD` and `PERSISTED_CARDINALITY_HISTOGRAM` are supported. */
 export type ResourcePoolsDefaultPoolPriorityThresholdsList = Array<AllocationThresholds>;
-export const ResourcePoolsDefaultPoolPriorityThresholdsList = /*@__PURE__*/ S.Array(
-  AllocationThresholds,
-) as any as S.Schema<ResourcePoolsDefaultPoolPriorityThresholdsList>;
+export const ResourcePoolsDefaultPoolPriorityThresholdsList =
+  Configv1ResourcePoolsAllocationPriorityThresholdsList as any as S.Schema<ResourcePoolsDefaultPoolPriorityThresholdsList>;
 
 export interface ResourcePoolsDefaultPool {
   allocation?: Configv1ResourcePoolsAllocation;
@@ -3636,9 +3579,8 @@ export const ResourcePoolsDefaultPool = /*@__PURE__*/ S.suspend(() =>
 
 /** Required filters which define which metrics map to this pool, where any metric which matches at least one filter will map to the pool. */
 export type ResourcePoolsPoolFiltersList = Array<Configv1LabelFilter>;
-export const ResourcePoolsPoolFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<ResourcePoolsPoolFiltersList>;
+export const ResourcePoolsPoolFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<ResourcePoolsPoolFiltersList>;
 
 export interface ResourcePoolsPool {
   /** Required name of the pool. Must be unique. */
@@ -3693,9 +3635,8 @@ export const CreateResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional pools. Cannot set more than 20 pools. */
 export type Configv1ResourcePoolsPoolsList = Array<ResourcePoolsPool>;
-export const Configv1ResourcePoolsPoolsList = /*@__PURE__*/ S.Array(
-  ResourcePoolsPool,
-) as any as S.Schema<Configv1ResourcePoolsPoolsList>;
+export const Configv1ResourcePoolsPoolsList =
+  Configv1ResourcePoolsInputPoolsList as any as S.Schema<Configv1ResourcePoolsPoolsList>;
 
 export interface Configv1ResourcePools {
   /** Timestamp of when the ResourcePools was created. Cannot be set by clients. */
@@ -3728,9 +3669,8 @@ export const Configv1CreateResourcePoolsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filters incoming metrics by label. If multiple label filters are specified, an incoming metric must match every label filter to match the rule. Label values support glob patterns, including matching multiple patterns with an `OR`, such as `service:{svc1,svc2}`. These special filters are available for matching metrics by non-label request metadata: * `__metric_type__`: Matches the incoming metric's [Cortex XCOR metric type](https://docs.chronosphere.io/control/shaping/types#cortex-xcor-types). This is the recommended method for filtering on metric type. Valid values: `cumulative_counter`, `cumulative_exponential_histogram`, `delta_counter`, `delta_exponential_histogram`, `gauge`, `measurement`. * `__metric_source__`: Matches the incoming metric's [source format](https://docs.chronosphere.io/control/shaping/types#supported-formats). Valid values: `carbon`, `chrono_gcp`, `dogstatsd`, `open_metrics`, `open_telemetry`, `prometheus`, `signalfx`, `statsd`, `wavefront`. * `__m3_prom_type__`: When ingesting with Prometheus, matches the incoming metric's [Prometheus metric type](https://docs.chronosphere.io/control/shaping/types#prometheus). Valid values: `counter`, `gauge`, `histogram`, `gauge_histogram`, `summary`, `info`, `state_set`, `quantile`. * `__otel_type__`: When ingesting with OpenTelemetry, matches on the incoming metric's [OpenTelemetry metric type](https://docs.chronosphere.io/control/shaping/types#opentelemetry). Valid values: `sum`, `monotonic_sum`, `gauge`, `histogram`, `exp_histogram`, `summary`. For example, the following filter matches any cumulative counter metric with a `service=gateway` label whose metric name starts with `http_requests_`: ``` __metric_type__:cumulative_counter service:gateway __name__:http_requests_* ``` */
 export type Configv1RollupRuleInputFiltersList = Array<Configv1LabelFilter>;
-export const Configv1RollupRuleInputFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<Configv1RollupRuleInputFiltersList>;
+export const Configv1RollupRuleInputFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<Configv1RollupRuleInputFiltersList>;
 
 /** - CUMULATIVE_COUNTER: Alias of COUNTER. - DELTA_COUNTER: Alias of DELTA. */
 export type RollupRuleMetricType =
@@ -3750,15 +3690,13 @@ export const Configv1RollupRuleStoragePolicy = Configv1MappingRuleStoragePolicy;
 
 /** Labels that should be retained in the output metric. If set, then the discard field must be empty. */
 export type Configv1RollupRuleLabelPolicyKeepList = Array<string>;
-export const Configv1RollupRuleLabelPolicyKeepList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1RollupRuleLabelPolicyKeepList>;
+export const Configv1RollupRuleLabelPolicyKeepList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1RollupRuleLabelPolicyKeepList>;
 
 /** Labels that should be discarded in the output metric. If set, then the keep field must be empty. */
 export type Configv1RollupRuleLabelPolicyDiscardList = Array<string>;
-export const Configv1RollupRuleLabelPolicyDiscardList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1RollupRuleLabelPolicyDiscardList>;
+export const Configv1RollupRuleLabelPolicyDiscardList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1RollupRuleLabelPolicyDiscardList>;
 
 /** TODO: consolidate w/ RecordingRule.LabelPolicy once both of these entities implement the same label semantics. */
 export interface Configv1RollupRuleLabelPolicy {
@@ -3874,9 +3812,8 @@ export const CreateRollupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Filters incoming metrics by label. If multiple label filters are specified, an incoming metric must match every label filter to match the rule. Label values support glob patterns, including matching multiple patterns with an `OR`, such as `service:{svc1,svc2}`. These special filters are available for matching metrics by non-label request metadata: * `__metric_type__`: Matches the incoming metric's [Cortex XCOR metric type](https://docs.chronosphere.io/control/shaping/types#cortex-xcor-types). This is the recommended method for filtering on metric type. Valid values: `cumulative_counter`, `cumulative_exponential_histogram`, `delta_counter`, `delta_exponential_histogram`, `gauge`, `measurement`. * `__metric_source__`: Matches the incoming metric's [source format](https://docs.chronosphere.io/control/shaping/types#supported-formats). Valid values: `carbon`, `chrono_gcp`, `dogstatsd`, `open_metrics`, `open_telemetry`, `prometheus`, `signalfx`, `statsd`, `wavefront`. * `__m3_prom_type__`: When ingesting with Prometheus, matches the incoming metric's [Prometheus metric type](https://docs.chronosphere.io/control/shaping/types#prometheus). Valid values: `counter`, `gauge`, `histogram`, `gauge_histogram`, `summary`, `info`, `state_set`, `quantile`. * `__otel_type__`: When ingesting with OpenTelemetry, matches on the incoming metric's [OpenTelemetry metric type](https://docs.chronosphere.io/control/shaping/types#opentelemetry). Valid values: `sum`, `monotonic_sum`, `gauge`, `histogram`, `exp_histogram`, `summary`. For example, the following filter matches any cumulative counter metric with a `service=gateway` label whose metric name starts with `http_requests_`: ``` __metric_type__:cumulative_counter service:gateway __name__:http_requests_* ``` */
 export type Configv1RollupRuleFiltersList = Array<Configv1LabelFilter>;
-export const Configv1RollupRuleFiltersList = /*@__PURE__*/ S.Array(
-  Configv1LabelFilter,
-) as any as S.Schema<Configv1RollupRuleFiltersList>;
+export const Configv1RollupRuleFiltersList =
+  ConstructedLabelValueDefinitionFiltersList as any as S.Schema<Configv1RollupRuleFiltersList>;
 
 export interface Configv1RollupRule {
   /** Unique identifier of the RollupRule. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the RollupRule is created. */
@@ -3948,10 +3885,8 @@ export const MetricsRestrictionPermission = S.String;
 
 /** Optional labels which further restricts the service account to only read or write metrics with the given label names and values. */
 export type ServiceAccountMetricsRestrictionLabelsMap = { [key: string]: string | undefined };
-export const ServiceAccountMetricsRestrictionLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceAccountMetricsRestrictionLabelsMap>;
+export const ServiceAccountMetricsRestrictionLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<ServiceAccountMetricsRestrictionLabelsMap>;
 
 export interface ServiceAccountMetricsRestriction {
   permission?: MetricsRestrictionPermission | (string & {});
@@ -4044,17 +3979,13 @@ export const Configv1CreateServiceAccountResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Labels are visible in notifications generated by this SLO, and can be used to route alerts with notification overrides. */
 export type Configv1SLOInputLabelsMap = { [key: string]: string | undefined };
-export const Configv1SLOInputLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1SLOInputLabelsMap>;
+export const Configv1SLOInputLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1SLOInputLabelsMap>;
 
 /** Annotations are visible in notifications generated by this SLO They can be be templated with labels from notifications. */
 export type Configv1SLOInputAnnotationsMap = { [key: string]: string | undefined };
-export const Configv1SLOInputAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1SLOInputAnnotationsMap>;
+export const Configv1SLOInputAnnotationsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1SLOInputAnnotationsMap>;
 
 /** Configuration for error ratio SLIs. You can include these variables in PromQL queries for SLIs: - {{.Window}}. Specifies the window of time that the PromQL query operates on. - {{.GroupBy}}. Specifies a comma-separated list of signal and dimension labels to group the results by. - {{.AdditionalFilters}}. Requires setting `additional_promql_filters`. */
 export interface SLICustomIndicatorConfig {
@@ -4106,9 +4037,8 @@ export const SLICustomTimeSliceIndicatorConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Used to configure additional labels to export from the underlying queries. This feature provides a logical budget to group unique combination of dimensions. For example, if you want to track a budget per endpoint, add the endpoint label as a dimension. These dimensions are provided on the top-level SLI so that SLOs will receive them in `.GroupBy`. */
 export type Configv1SLICustomDimensionLabelsList = Array<string>;
-export const Configv1SLICustomDimensionLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1SLICustomDimensionLabelsList>;
+export const Configv1SLICustomDimensionLabelsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1SLICustomDimensionLabelsList>;
 
 export type CommonPromQLMatcherType =
   | "MatchEqual"
@@ -4167,10 +4097,8 @@ export const DefinitionTimeWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels to attach when this burn rate triggers. If you add these labels to `signal_groupings`, you can route them in the notification policy, and can route different burn rates to other notifiers. */
 export type DefinitionBurnRateDefinitionLabelsMap = { [key: string]: string | undefined };
-export const DefinitionBurnRateDefinitionLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DefinitionBurnRateDefinitionLabelsMap>;
+export const DefinitionBurnRateDefinitionLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<DefinitionBurnRateDefinitionLabelsMap>;
 
 export interface DefinitionBurnRateDefinition {
   window?: string;
@@ -4261,17 +4189,13 @@ export const CreateSLORequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are visible in notifications generated by this SLO, and can be used to route alerts with notification overrides. */
 export type Configv1SLOLabelsMap = { [key: string]: string | undefined };
-export const Configv1SLOLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1SLOLabelsMap>;
+export const Configv1SLOLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1SLOLabelsMap>;
 
 /** Annotations are visible in notifications generated by this SLO They can be be templated with labels from notifications. */
 export type Configv1SLOAnnotationsMap = { [key: string]: string | undefined };
-export const Configv1SLOAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1SLOAnnotationsMap>;
+export const Configv1SLOAnnotationsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1SLOAnnotationsMap>;
 
 export interface Configv1SLO {
   /** Unique identifier of the SLO. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the SLO is created. */
@@ -4324,9 +4248,8 @@ export const Configv1CreateSLOResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Unordered set of emails whose users are members of this team. */
 export type Configv1TeamInputUserEmailsList = Array<string>;
-export const Configv1TeamInputUserEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1TeamInputUserEmailsList>;
+export const Configv1TeamInputUserEmailsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1TeamInputUserEmailsList>;
 
 export interface Configv1TeamInput {
   /** Unique identifier of the Team. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the Team is created. */
@@ -4361,9 +4284,8 @@ export const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unordered set of emails whose users are members of this team. */
 export type Configv1TeamUserEmailsList = Array<string>;
-export const Configv1TeamUserEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1TeamUserEmailsList>;
+export const Configv1TeamUserEmailsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1TeamUserEmailsList>;
 
 export interface Configv1Team {
   /** Unique identifier of the Team. If a `slug` isn't provided, one will be generated based of the `name` field. You can't modify this field after the Team is created. */
@@ -4491,16 +4413,8 @@ export interface TraceBehaviorSmallTraceSampleOptions {
   /** Whether or not to use these options. */
   enabled?: boolean;
 }
-export const TraceBehaviorSmallTraceSampleOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    span_count_threshold: S.optional(S.Number),
-    sample_rate: S.optional(S.Number),
-    sampling_type: S.optional(TraceBehaviorSamplingType),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TraceBehaviorSmallTraceSampleOptions",
-}) as any as S.Schema<TraceBehaviorSmallTraceSampleOptions>;
+export const TraceBehaviorSmallTraceSampleOptions =
+  TraceBehaviorLargeTraceSampleOptions as any as S.Schema<TraceBehaviorSmallTraceSampleOptions>;
 
 export interface Configv1TraceBehaviorInput {
   /** Required. Name of the TraceBehavior. You can modify this value after the TraceBehavior is created. */
@@ -4674,9 +4588,8 @@ export const Configv1TraceBehaviorConfigInputOverrideBehaviorAssignmentsList =
 
 /** List of dataset priorities. This list specifies the order in which datasets are considered when determining the behavior to follow for a trace. Dataset priorities are used to break ties when a trace matches more than one dataset with an active behavior. * Each entry in this list must refer to the slug of an existing dataset. * The order of the list is the order in which the datasets are considered. * The list must contain all datasets referenced in either `main_behavior_assignments` or `override_behavior_assignments`. * The list can contain datasets that are not referenced in either of these assignments. */
 export type Configv1TraceBehaviorConfigInputDatasetPrioritiesList = Array<string>;
-export const Configv1TraceBehaviorConfigInputDatasetPrioritiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1TraceBehaviorConfigInputDatasetPrioritiesList>;
+export const Configv1TraceBehaviorConfigInputDatasetPrioritiesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1TraceBehaviorConfigInputDatasetPrioritiesList>;
 
 /** List of assignments for the preview behavior. The referenced behaviors are in preview mode for the assigned dataset. You can assign only one preview behavior to a dataset. */
 export type Configv1TraceBehaviorConfigInputPreviewBehaviorAssignmentsList =
@@ -4733,29 +4646,25 @@ export const CreateTraceBehaviorConfigRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of assignments for the main behavior. The referenced datasets will be enrolled in behaviors. The referenced behaviors are the active behaviors for the dataset when there is no active override. Only one main behavior can be assigned to a dataset. See the documentation for [customizing your sampling strategy](https://docs.chronosphere.io/control/sampling/behaviors#customize-your-sampling-strategy) for more information. */
 export type Configv1TraceBehaviorConfigMainBehaviorAssignmentsList =
   Array<TraceBehaviorConfigMainBehaviorAssignment>;
-export const Configv1TraceBehaviorConfigMainBehaviorAssignmentsList = /*@__PURE__*/ S.Array(
-  TraceBehaviorConfigMainBehaviorAssignment,
-) as any as S.Schema<Configv1TraceBehaviorConfigMainBehaviorAssignmentsList>;
+export const Configv1TraceBehaviorConfigMainBehaviorAssignmentsList =
+  Configv1TraceBehaviorConfigInputMainBehaviorAssignmentsList as any as S.Schema<Configv1TraceBehaviorConfigMainBehaviorAssignmentsList>;
 
 /** List of assignments for the override behavior. These assignments specify the active behavior for a dataset over a specific time range. Only one override behavior can be assigned to a dataset. */
 export type Configv1TraceBehaviorConfigOverrideBehaviorAssignmentsList =
   Array<TraceBehaviorConfigOverrideBehaviorAssignment>;
-export const Configv1TraceBehaviorConfigOverrideBehaviorAssignmentsList = /*@__PURE__*/ S.Array(
-  TraceBehaviorConfigOverrideBehaviorAssignment,
-) as any as S.Schema<Configv1TraceBehaviorConfigOverrideBehaviorAssignmentsList>;
+export const Configv1TraceBehaviorConfigOverrideBehaviorAssignmentsList =
+  Configv1TraceBehaviorConfigInputPreviewBehaviorAssignmentsList as any as S.Schema<Configv1TraceBehaviorConfigOverrideBehaviorAssignmentsList>;
 
 /** List of dataset priorities. This list specifies the order in which datasets are considered when determining the behavior to follow for a trace. Dataset priorities are used to break ties when a trace matches more than one dataset with an active behavior. * Each entry in this list must refer to the slug of an existing dataset. * The order of the list is the order in which the datasets are considered. * The list must contain all datasets referenced in either `main_behavior_assignments` or `override_behavior_assignments`. * The list can contain datasets that are not referenced in either of these assignments. */
 export type Configv1TraceBehaviorConfigDatasetPrioritiesList = Array<string>;
-export const Configv1TraceBehaviorConfigDatasetPrioritiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Configv1TraceBehaviorConfigDatasetPrioritiesList>;
+export const Configv1TraceBehaviorConfigDatasetPrioritiesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<Configv1TraceBehaviorConfigDatasetPrioritiesList>;
 
 /** List of assignments for the preview behavior. The referenced behaviors are in preview mode for the assigned dataset. You can assign only one preview behavior to a dataset. */
 export type Configv1TraceBehaviorConfigPreviewBehaviorAssignmentsList =
   Array<TraceBehaviorConfigOverrideBehaviorAssignment>;
-export const Configv1TraceBehaviorConfigPreviewBehaviorAssignmentsList = /*@__PURE__*/ S.Array(
-  TraceBehaviorConfigOverrideBehaviorAssignment,
-) as any as S.Schema<Configv1TraceBehaviorConfigPreviewBehaviorAssignmentsList>;
+export const Configv1TraceBehaviorConfigPreviewBehaviorAssignmentsList =
+  Configv1TraceBehaviorConfigInputPreviewBehaviorAssignmentsList as any as S.Schema<Configv1TraceBehaviorConfigPreviewBehaviorAssignmentsList>;
 
 /** TraceBehaviorConfig is a singleton configuration object that specifies the configuration for trace behaviors. */
 export interface Configv1TraceBehaviorConfig {
@@ -4977,10 +4886,8 @@ export const Configv1CreateTraceJaegerRemoteSamplingStrategyResponse = /*@__PURE
 
 /** Labels to apply to the generated trace metrics. */
 export type Configv1TraceMetricsRuleInputMetricLabelsMap = { [key: string]: string | undefined };
-export const Configv1TraceMetricsRuleInputMetricLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1TraceMetricsRuleInputMetricLabelsMap>;
+export const Configv1TraceMetricsRuleInputMetricLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1TraceMetricsRuleInputMetricLabelsMap>;
 
 /** Histogram bucket values, in seconds, for generated duration metrics. */
 export type Configv1TraceMetricsRuleInputHistogramBucketsSecsList = Array<number>;
@@ -5071,22 +4978,18 @@ export const CreateTraceMetricsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels to apply to the generated trace metrics. */
 export type Configv1TraceMetricsRuleMetricLabelsMap = { [key: string]: string | undefined };
-export const Configv1TraceMetricsRuleMetricLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Configv1TraceMetricsRuleMetricLabelsMap>;
+export const Configv1TraceMetricsRuleMetricLabelsMap =
+  Configv1BucketInputLabelsMap as any as S.Schema<Configv1TraceMetricsRuleMetricLabelsMap>;
 
 /** Histogram bucket values, in seconds, for generated duration metrics. */
 export type Configv1TraceMetricsRuleHistogramBucketsSecsList = Array<number>;
-export const Configv1TraceMetricsRuleHistogramBucketsSecsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<Configv1TraceMetricsRuleHistogramBucketsSecsList>;
+export const Configv1TraceMetricsRuleHistogramBucketsSecsList =
+  Configv1TraceMetricsRuleInputHistogramBucketsSecsList as any as S.Schema<Configv1TraceMetricsRuleHistogramBucketsSecsList>;
 
 /** Add labels to the resultant metrics based on these specified GroupBy messages. */
 export type Configv1TraceMetricsRuleGroupByList = Array<Configv1TraceMetricsRuleGroupBy>;
-export const Configv1TraceMetricsRuleGroupByList = /*@__PURE__*/ S.Array(
-  Configv1TraceMetricsRuleGroupBy,
-) as any as S.Schema<Configv1TraceMetricsRuleGroupByList>;
+export const Configv1TraceMetricsRuleGroupByList =
+  Configv1TraceMetricsRuleInputGroupByList as any as S.Schema<Configv1TraceMetricsRuleGroupByList>;
 
 export interface Configv1TraceMetricsRule {
   /** Required. Name of the TraceMetricsRule. You can modify this value after the TraceMetricsRule is created. */
@@ -5211,9 +5114,8 @@ export const CreateTraceTailSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. A list of rules, evaluated in order until a match is found, and the sample rate applied, or else the default sample rate is applied. */
 export type Configv1TraceTailSamplingRulesRulesList = Array<Configv1TraceTailSamplingRule>;
-export const Configv1TraceTailSamplingRulesRulesList = /*@__PURE__*/ S.Array(
-  Configv1TraceTailSamplingRule,
-) as any as S.Schema<Configv1TraceTailSamplingRulesRulesList>;
+export const Configv1TraceTailSamplingRulesRulesList =
+  Configv1TraceTailSamplingRulesInputRulesList as any as S.Schema<Configv1TraceTailSamplingRulesRulesList>;
 
 /** Root object containing all tail sampling rules (for a tenant). */
 export interface Configv1TraceTailSamplingRules {
@@ -5346,9 +5248,8 @@ export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDashboardRequest" }) as any as S.Schema<DeleteDashboardRequest>;
 
 export type DeleteDashboardResponse = unknown;
-export const DeleteDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteDashboardResponse" }) as any as S.Schema<DeleteDashboardResponse>;
+export const DeleteDashboardResponse =
+  DeleteCollectionResponse as any as S.Schema<DeleteDashboardResponse>;
 
 export interface DeleteDatasetRequest {
   slug: string;
@@ -5360,9 +5261,8 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatasetRequest" }) as any as S.Schema<DeleteDatasetRequest>;
 
 export type DeleteDatasetResponse = unknown;
-export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteDatasetResponse" }) as any as S.Schema<DeleteDatasetResponse>;
+export const DeleteDatasetResponse =
+  DeleteCollectionResponse as any as S.Schema<DeleteDatasetResponse>;
 
 export interface DeleteDerivedLabelRequest {
   slug: string;
@@ -5376,11 +5276,8 @@ export const DeleteDerivedLabelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDerivedLabelRequest>;
 
 export type DeleteDerivedLabelResponse = unknown;
-export const DeleteDerivedLabelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteDerivedLabelResponse",
-}) as any as S.Schema<DeleteDerivedLabelResponse>;
+export const DeleteDerivedLabelResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteDerivedLabelResponse>;
 
 export interface DeleteDerivedMetricRequest {
   slug: string;
@@ -5394,11 +5291,8 @@ export const DeleteDerivedMetricRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDerivedMetricRequest>;
 
 export type DeleteDerivedMetricResponse = unknown;
-export const DeleteDerivedMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteDerivedMetricResponse",
-}) as any as S.Schema<DeleteDerivedMetricResponse>;
+export const DeleteDerivedMetricResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteDerivedMetricResponse>;
 
 export interface DeleteDropRuleRequest {
   slug: string;
@@ -5410,9 +5304,8 @@ export const DeleteDropRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDropRuleRequest" }) as any as S.Schema<DeleteDropRuleRequest>;
 
 export type DeleteDropRuleResponse = unknown;
-export const DeleteDropRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteDropRuleResponse" }) as any as S.Schema<DeleteDropRuleResponse>;
+export const DeleteDropRuleResponse =
+  DeleteCollectionResponse as any as S.Schema<DeleteDropRuleResponse>;
 
 export interface DeleteGcpMetricsIntegrationRequest {
   slug: string;
@@ -5428,11 +5321,8 @@ export const DeleteGcpMetricsIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGcpMetricsIntegrationRequest>;
 
 export type DeleteGcpMetricsIntegrationResponse = unknown;
-export const DeleteGcpMetricsIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteGcpMetricsIntegrationResponse",
-}) as any as S.Schema<DeleteGcpMetricsIntegrationResponse>;
+export const DeleteGcpMetricsIntegrationResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteGcpMetricsIntegrationResponse>;
 
 export interface DeleteGrafanaDashboardRequest {
   slug: string;
@@ -5446,11 +5336,8 @@ export const DeleteGrafanaDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGrafanaDashboardRequest>;
 
 export type DeleteGrafanaDashboardResponse = unknown;
-export const DeleteGrafanaDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteGrafanaDashboardResponse",
-}) as any as S.Schema<DeleteGrafanaDashboardResponse>;
+export const DeleteGrafanaDashboardResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteGrafanaDashboardResponse>;
 
 export interface DeleteLogAllocationConfigRequest {}
 export const DeleteLogAllocationConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5462,11 +5349,8 @@ export const DeleteLogAllocationConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogAllocationConfigRequest>;
 
 export type DeleteLogAllocationConfigResponse = unknown;
-export const DeleteLogAllocationConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteLogAllocationConfigResponse",
-}) as any as S.Schema<DeleteLogAllocationConfigResponse>;
+export const DeleteLogAllocationConfigResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteLogAllocationConfigResponse>;
 
 export interface DeleteLogIngestConfigRequest {}
 export const DeleteLogIngestConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5478,11 +5362,8 @@ export const DeleteLogIngestConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogIngestConfigRequest>;
 
 export type DeleteLogIngestConfigResponse = unknown;
-export const DeleteLogIngestConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteLogIngestConfigResponse",
-}) as any as S.Schema<DeleteLogIngestConfigResponse>;
+export const DeleteLogIngestConfigResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteLogIngestConfigResponse>;
 
 export interface DeleteLogScaleActionRequest {
   slug: string;
@@ -5496,11 +5377,8 @@ export const DeleteLogScaleActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogScaleActionRequest>;
 
 export type DeleteLogScaleActionResponse = unknown;
-export const DeleteLogScaleActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteLogScaleActionResponse",
-}) as any as S.Schema<DeleteLogScaleActionResponse>;
+export const DeleteLogScaleActionResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteLogScaleActionResponse>;
 
 export interface DeleteLogScaleAlertRequest {
   slug: string;
@@ -5514,11 +5392,8 @@ export const DeleteLogScaleAlertRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogScaleAlertRequest>;
 
 export type DeleteLogScaleAlertResponse = unknown;
-export const DeleteLogScaleAlertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteLogScaleAlertResponse",
-}) as any as S.Schema<DeleteLogScaleAlertResponse>;
+export const DeleteLogScaleAlertResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteLogScaleAlertResponse>;
 
 export interface DeleteMappingRuleRequest {
   slug: string;
@@ -5530,11 +5405,8 @@ export const DeleteMappingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMappingRuleRequest" }) as any as S.Schema<DeleteMappingRuleRequest>;
 
 export type DeleteMappingRuleResponse = unknown;
-export const DeleteMappingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteMappingRuleResponse",
-}) as any as S.Schema<DeleteMappingRuleResponse>;
+export const DeleteMappingRuleResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteMappingRuleResponse>;
 
 export interface DeleteMonitorRequest {
   slug: string;
@@ -5546,9 +5418,8 @@ export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMonitorRequest" }) as any as S.Schema<DeleteMonitorRequest>;
 
 export type DeleteMonitorResponse = unknown;
-export const DeleteMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteMonitorResponse" }) as any as S.Schema<DeleteMonitorResponse>;
+export const DeleteMonitorResponse =
+  DeleteCollectionResponse as any as S.Schema<DeleteMonitorResponse>;
 
 export interface DeleteMutingRuleRequest {
   slug: string;
@@ -5560,9 +5431,8 @@ export const DeleteMutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMutingRuleRequest" }) as any as S.Schema<DeleteMutingRuleRequest>;
 
 export type DeleteMutingRuleResponse = unknown;
-export const DeleteMutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteMutingRuleResponse" }) as any as S.Schema<DeleteMutingRuleResponse>;
+export const DeleteMutingRuleResponse =
+  DeleteCollectionResponse as any as S.Schema<DeleteMutingRuleResponse>;
 
 export interface DeleteNotificationPolicyRequest {
   slug: string;
@@ -5578,11 +5448,8 @@ export const DeleteNotificationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationPolicyRequest>;
 
 export type DeleteNotificationPolicyResponse = unknown;
-export const DeleteNotificationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteNotificationPolicyResponse",
-}) as any as S.Schema<DeleteNotificationPolicyResponse>;
+export const DeleteNotificationPolicyResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteNotificationPolicyResponse>;
 
 export interface DeleteNotifierRequest {
   slug: string;
@@ -5594,9 +5461,8 @@ export const DeleteNotifierRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNotifierRequest" }) as any as S.Schema<DeleteNotifierRequest>;
 
 export type DeleteNotifierResponse = unknown;
-export const DeleteNotifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteNotifierResponse" }) as any as S.Schema<DeleteNotifierResponse>;
+export const DeleteNotifierResponse =
+  DeleteCollectionResponse as any as S.Schema<DeleteNotifierResponse>;
 
 export interface DeleteOtelMetricsIngestionRequest {}
 export const DeleteOtelMetricsIngestionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5608,11 +5474,8 @@ export const DeleteOtelMetricsIngestionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOtelMetricsIngestionRequest>;
 
 export type DeleteOtelMetricsIngestionResponse = unknown;
-export const DeleteOtelMetricsIngestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteOtelMetricsIngestionResponse",
-}) as any as S.Schema<DeleteOtelMetricsIngestionResponse>;
+export const DeleteOtelMetricsIngestionResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteOtelMetricsIngestionResponse>;
 
 export interface DeleteRecordingRuleRequest {
   slug: string;
@@ -5626,11 +5489,8 @@ export const DeleteRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRecordingRuleRequest>;
 
 export type DeleteRecordingRuleResponse = unknown;
-export const DeleteRecordingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteRecordingRuleResponse",
-}) as any as S.Schema<DeleteRecordingRuleResponse>;
+export const DeleteRecordingRuleResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteRecordingRuleResponse>;
 
 export interface DeleteResourcePoolsRequest {
   dry_run?: boolean;
@@ -5644,11 +5504,8 @@ export const DeleteResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourcePoolsRequest>;
 
 export type DeleteResourcePoolsResponse = unknown;
-export const DeleteResourcePoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteResourcePoolsResponse",
-}) as any as S.Schema<DeleteResourcePoolsResponse>;
+export const DeleteResourcePoolsResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteResourcePoolsResponse>;
 
 export interface DeleteRollupRuleRequest {
   slug: string;
@@ -5660,9 +5517,8 @@ export const DeleteRollupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRollupRuleRequest" }) as any as S.Schema<DeleteRollupRuleRequest>;
 
 export type DeleteRollupRuleResponse = unknown;
-export const DeleteRollupRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteRollupRuleResponse" }) as any as S.Schema<DeleteRollupRuleResponse>;
+export const DeleteRollupRuleResponse =
+  DeleteCollectionResponse as any as S.Schema<DeleteRollupRuleResponse>;
 
 export interface DeleteServiceAccountRequest {
   slug: string;
@@ -5676,11 +5532,8 @@ export const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceAccountRequest>;
 
 export type DeleteServiceAccountResponse = unknown;
-export const DeleteServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteServiceAccountResponse",
-}) as any as S.Schema<DeleteServiceAccountResponse>;
+export const DeleteServiceAccountResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteServiceAccountResponse>;
 
 export interface DeleteSLORequest {
   slug: string;
@@ -5692,9 +5545,7 @@ export const DeleteSLORequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSLORequest" }) as any as S.Schema<DeleteSLORequest>;
 
 export type DeleteSLOResponse = unknown;
-export const DeleteSLOResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteSLOResponse" }) as any as S.Schema<DeleteSLOResponse>;
+export const DeleteSLOResponse = DeleteCollectionResponse as any as S.Schema<DeleteSLOResponse>;
 
 export interface DeleteTeamRequest {
   slug: string;
@@ -5706,9 +5557,7 @@ export const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamRequest" }) as any as S.Schema<DeleteTeamRequest>;
 
 export type DeleteTeamResponse = unknown;
-export const DeleteTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteTeamResponse" }) as any as S.Schema<DeleteTeamResponse>;
+export const DeleteTeamResponse = DeleteCollectionResponse as any as S.Schema<DeleteTeamResponse>;
 
 export interface DeleteTraceBehaviorRequest {
   slug: string;
@@ -5722,11 +5571,8 @@ export const DeleteTraceBehaviorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTraceBehaviorRequest>;
 
 export type DeleteTraceBehaviorResponse = unknown;
-export const DeleteTraceBehaviorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteTraceBehaviorResponse",
-}) as any as S.Schema<DeleteTraceBehaviorResponse>;
+export const DeleteTraceBehaviorResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteTraceBehaviorResponse>;
 
 export interface DeleteTraceBehaviorConfigRequest {
   dry_run?: boolean;
@@ -5740,11 +5586,8 @@ export const DeleteTraceBehaviorConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTraceBehaviorConfigRequest>;
 
 export type DeleteTraceBehaviorConfigResponse = unknown;
-export const DeleteTraceBehaviorConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteTraceBehaviorConfigResponse",
-}) as any as S.Schema<DeleteTraceBehaviorConfigResponse>;
+export const DeleteTraceBehaviorConfigResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteTraceBehaviorConfigResponse>;
 
 export interface DeleteTraceJaegerRemoteSamplingStrategyRequest {
   slug: string;
@@ -5764,11 +5607,8 @@ export const DeleteTraceJaegerRemoteSamplingStrategyRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteTraceJaegerRemoteSamplingStrategyRequest>;
 
 export type DeleteTraceJaegerRemoteSamplingStrategyResponse = unknown;
-export const DeleteTraceJaegerRemoteSamplingStrategyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteTraceJaegerRemoteSamplingStrategyResponse",
-}) as any as S.Schema<DeleteTraceJaegerRemoteSamplingStrategyResponse>;
+export const DeleteTraceJaegerRemoteSamplingStrategyResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteTraceJaegerRemoteSamplingStrategyResponse>;
 
 export interface DeleteTraceMetricsRuleRequest {
   slug: string;
@@ -5784,11 +5624,8 @@ export const DeleteTraceMetricsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTraceMetricsRuleRequest>;
 
 export type DeleteTraceMetricsRuleResponse = unknown;
-export const DeleteTraceMetricsRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteTraceMetricsRuleResponse",
-}) as any as S.Schema<DeleteTraceMetricsRuleResponse>;
+export const DeleteTraceMetricsRuleResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteTraceMetricsRuleResponse>;
 
 export interface DeleteTraceTailSamplingRulesRequest {
   dry_run?: boolean;
@@ -5802,21 +5639,16 @@ export const DeleteTraceTailSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTraceTailSamplingRulesRequest>;
 
 export type DeleteTraceTailSamplingRulesResponse = unknown;
-export const DeleteTraceTailSamplingRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteTraceTailSamplingRulesResponse",
-}) as any as S.Schema<DeleteTraceTailSamplingRulesResponse>;
+export const DeleteTraceTailSamplingRulesResponse =
+  DeleteClassicDashboardResponse as any as S.Schema<DeleteTraceTailSamplingRulesResponse>;
 
 export type ListBucketsRequestSlugsList = Array<string>;
-export const ListBucketsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBucketsRequestSlugsList>;
+export const ListBucketsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListBucketsRequestSlugsList>;
 
 export type ListBucketsRequestNamesList = Array<string>;
-export const ListBucketsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBucketsRequestNamesList>;
+export const ListBucketsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListBucketsRequestNamesList>;
 
 export interface ListBucketsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -5866,24 +5698,20 @@ export const Configv1ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListBucketsResponse>;
 
 export type ListClassicDashboardsRequestSlugsList = Array<string>;
-export const ListClassicDashboardsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListClassicDashboardsRequestSlugsList>;
+export const ListClassicDashboardsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListClassicDashboardsRequestSlugsList>;
 
 export type ListClassicDashboardsRequestBucketSlugsList = Array<string>;
-export const ListClassicDashboardsRequestBucketSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListClassicDashboardsRequestBucketSlugsList>;
+export const ListClassicDashboardsRequestBucketSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListClassicDashboardsRequestBucketSlugsList>;
 
 export type ListClassicDashboardsRequestCollectionSlugsList = Array<string>;
-export const ListClassicDashboardsRequestCollectionSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListClassicDashboardsRequestCollectionSlugsList>;
+export const ListClassicDashboardsRequestCollectionSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListClassicDashboardsRequestCollectionSlugsList>;
 
 export type ListClassicDashboardsRequestNamesList = Array<string>;
-export const ListClassicDashboardsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListClassicDashboardsRequestNamesList>;
+export const ListClassicDashboardsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListClassicDashboardsRequestNamesList>;
 
 export interface ListClassicDashboardsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -5935,24 +5763,20 @@ export const Configv1ListClassicDashboardsResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<Configv1ListClassicDashboardsResponse>;
 
 export type ListCollectionsRequestSlugsList = Array<string>;
-export const ListCollectionsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCollectionsRequestSlugsList>;
+export const ListCollectionsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListCollectionsRequestSlugsList>;
 
 export type ListCollectionsRequestTeamSlugsList = Array<string>;
-export const ListCollectionsRequestTeamSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCollectionsRequestTeamSlugsList>;
+export const ListCollectionsRequestTeamSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListCollectionsRequestTeamSlugsList>;
 
 export type ListCollectionsRequestNamesList = Array<string>;
-export const ListCollectionsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCollectionsRequestNamesList>;
+export const ListCollectionsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListCollectionsRequestNamesList>;
 
 export type ListCollectionsRequestNotificationPolicySlugsList = Array<string>;
-export const ListCollectionsRequestNotificationPolicySlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCollectionsRequestNotificationPolicySlugsList>;
+export const ListCollectionsRequestNotificationPolicySlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListCollectionsRequestNotificationPolicySlugsList>;
 
 export interface ListCollectionsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6000,19 +5824,16 @@ export const Configv1ListCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListCollectionsResponse>;
 
 export type ListDashboardsRequestSlugsList = Array<string>;
-export const ListDashboardsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDashboardsRequestSlugsList>;
+export const ListDashboardsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDashboardsRequestSlugsList>;
 
 export type ListDashboardsRequestCollectionSlugsList = Array<string>;
-export const ListDashboardsRequestCollectionSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDashboardsRequestCollectionSlugsList>;
+export const ListDashboardsRequestCollectionSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDashboardsRequestCollectionSlugsList>;
 
 export type ListDashboardsRequestNamesList = Array<string>;
-export const ListDashboardsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDashboardsRequestNamesList>;
+export const ListDashboardsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDashboardsRequestNamesList>;
 
 export interface ListDashboardsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6058,14 +5879,12 @@ export const Configv1ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListDashboardsResponse>;
 
 export type ListDatasetsRequestSlugsList = Array<string>;
-export const ListDatasetsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDatasetsRequestSlugsList>;
+export const ListDatasetsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDatasetsRequestSlugsList>;
 
 export type ListDatasetsRequestNamesList = Array<string>;
-export const ListDatasetsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDatasetsRequestNamesList>;
+export const ListDatasetsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDatasetsRequestNamesList>;
 
 export type ListDatasetsRequestType = "TRACES" | "LOGS";
 export const ListDatasetsRequestType = S.String;
@@ -6111,14 +5930,12 @@ export const Configv1ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListDatasetsResponse>;
 
 export type ListDerivedLabelsRequestSlugsList = Array<string>;
-export const ListDerivedLabelsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDerivedLabelsRequestSlugsList>;
+export const ListDerivedLabelsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDerivedLabelsRequestSlugsList>;
 
 export type ListDerivedLabelsRequestNamesList = Array<string>;
-export const ListDerivedLabelsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDerivedLabelsRequestNamesList>;
+export const ListDerivedLabelsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDerivedLabelsRequestNamesList>;
 
 export interface ListDerivedLabelsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6158,14 +5975,12 @@ export const Configv1ListDerivedLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListDerivedLabelsResponse>;
 
 export type ListDerivedMetricsRequestSlugsList = Array<string>;
-export const ListDerivedMetricsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDerivedMetricsRequestSlugsList>;
+export const ListDerivedMetricsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDerivedMetricsRequestSlugsList>;
 
 export type ListDerivedMetricsRequestNamesList = Array<string>;
-export const ListDerivedMetricsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDerivedMetricsRequestNamesList>;
+export const ListDerivedMetricsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDerivedMetricsRequestNamesList>;
 
 export interface ListDerivedMetricsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6207,14 +6022,12 @@ export const Configv1ListDerivedMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListDerivedMetricsResponse>;
 
 export type ListDropRulesRequestSlugsList = Array<string>;
-export const ListDropRulesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDropRulesRequestSlugsList>;
+export const ListDropRulesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDropRulesRequestSlugsList>;
 
 export type ListDropRulesRequestNamesList = Array<string>;
-export const ListDropRulesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDropRulesRequestNamesList>;
+export const ListDropRulesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListDropRulesRequestNamesList>;
 
 export interface ListDropRulesRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6254,14 +6067,12 @@ export const Configv1ListDropRulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListDropRulesResponse>;
 
 export type ListGcpMetricsIntegrationsRequestSlugsList = Array<string>;
-export const ListGcpMetricsIntegrationsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGcpMetricsIntegrationsRequestSlugsList>;
+export const ListGcpMetricsIntegrationsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListGcpMetricsIntegrationsRequestSlugsList>;
 
 export type ListGcpMetricsIntegrationsRequestNamesList = Array<string>;
-export const ListGcpMetricsIntegrationsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGcpMetricsIntegrationsRequestNamesList>;
+export const ListGcpMetricsIntegrationsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListGcpMetricsIntegrationsRequestNamesList>;
 
 export interface ListGcpMetricsIntegrationsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6305,24 +6116,20 @@ export const Configv1ListGcpMetricsIntegrationsResponse = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<Configv1ListGcpMetricsIntegrationsResponse>;
 
 export type ListGrafanaDashboardsRequestSlugsList = Array<string>;
-export const ListGrafanaDashboardsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGrafanaDashboardsRequestSlugsList>;
+export const ListGrafanaDashboardsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListGrafanaDashboardsRequestSlugsList>;
 
 export type ListGrafanaDashboardsRequestBucketSlugsList = Array<string>;
-export const ListGrafanaDashboardsRequestBucketSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGrafanaDashboardsRequestBucketSlugsList>;
+export const ListGrafanaDashboardsRequestBucketSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListGrafanaDashboardsRequestBucketSlugsList>;
 
 export type ListGrafanaDashboardsRequestCollectionSlugsList = Array<string>;
-export const ListGrafanaDashboardsRequestCollectionSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGrafanaDashboardsRequestCollectionSlugsList>;
+export const ListGrafanaDashboardsRequestCollectionSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListGrafanaDashboardsRequestCollectionSlugsList>;
 
 export type ListGrafanaDashboardsRequestNamesList = Array<string>;
-export const ListGrafanaDashboardsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGrafanaDashboardsRequestNamesList>;
+export const ListGrafanaDashboardsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListGrafanaDashboardsRequestNamesList>;
 
 export interface ListGrafanaDashboardsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6356,9 +6163,8 @@ export const ListGrafanaDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type Configv1ListGrafanaDashboardsResponseGrafanaDashboardsList =
   Array<Configv1GrafanaDashboard>;
-export const Configv1ListGrafanaDashboardsResponseGrafanaDashboardsList = /*@__PURE__*/ S.Array(
-  Configv1GrafanaDashboard,
-) as any as S.Schema<Configv1ListGrafanaDashboardsResponseGrafanaDashboardsList>;
+export const Configv1ListGrafanaDashboardsResponseGrafanaDashboardsList =
+  Configv1ListClassicDashboardsResponseClassicDashboardsList as any as S.Schema<Configv1ListGrafanaDashboardsResponseGrafanaDashboardsList>;
 
 export interface Configv1ListGrafanaDashboardsResponse {
   page?: Configv1PageResult;
@@ -6374,14 +6180,12 @@ export const Configv1ListGrafanaDashboardsResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<Configv1ListGrafanaDashboardsResponse>;
 
 export type ListLogScaleActionsRequestSlugsList = Array<string>;
-export const ListLogScaleActionsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogScaleActionsRequestSlugsList>;
+export const ListLogScaleActionsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListLogScaleActionsRequestSlugsList>;
 
 export type ListLogScaleActionsRequestNamesList = Array<string>;
-export const ListLogScaleActionsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogScaleActionsRequestNamesList>;
+export const ListLogScaleActionsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListLogScaleActionsRequestNamesList>;
 
 export interface ListLogScaleActionsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6423,14 +6227,12 @@ export const Configv1ListLogScaleActionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListLogScaleActionsResponse>;
 
 export type ListLogScaleAlertsRequestSlugsList = Array<string>;
-export const ListLogScaleAlertsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogScaleAlertsRequestSlugsList>;
+export const ListLogScaleAlertsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListLogScaleAlertsRequestSlugsList>;
 
 export type ListLogScaleAlertsRequestNamesList = Array<string>;
-export const ListLogScaleAlertsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListLogScaleAlertsRequestNamesList>;
+export const ListLogScaleAlertsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListLogScaleAlertsRequestNamesList>;
 
 export interface ListLogScaleAlertsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6472,19 +6274,16 @@ export const Configv1ListLogScaleAlertsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListLogScaleAlertsResponse>;
 
 export type ListMappingRulesRequestSlugsList = Array<string>;
-export const ListMappingRulesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMappingRulesRequestSlugsList>;
+export const ListMappingRulesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMappingRulesRequestSlugsList>;
 
 export type ListMappingRulesRequestBucketSlugsList = Array<string>;
-export const ListMappingRulesRequestBucketSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMappingRulesRequestBucketSlugsList>;
+export const ListMappingRulesRequestBucketSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMappingRulesRequestBucketSlugsList>;
 
 export type ListMappingRulesRequestNamesList = Array<string>;
-export const ListMappingRulesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMappingRulesRequestNamesList>;
+export const ListMappingRulesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMappingRulesRequestNamesList>;
 
 export interface ListMappingRulesRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6527,29 +6326,24 @@ export const Configv1ListMappingRulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListMappingRulesResponse>;
 
 export type ListMonitorsRequestSlugsList = Array<string>;
-export const ListMonitorsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMonitorsRequestSlugsList>;
+export const ListMonitorsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMonitorsRequestSlugsList>;
 
 export type ListMonitorsRequestBucketSlugsList = Array<string>;
-export const ListMonitorsRequestBucketSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMonitorsRequestBucketSlugsList>;
+export const ListMonitorsRequestBucketSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMonitorsRequestBucketSlugsList>;
 
 export type ListMonitorsRequestCollectionSlugsList = Array<string>;
-export const ListMonitorsRequestCollectionSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMonitorsRequestCollectionSlugsList>;
+export const ListMonitorsRequestCollectionSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMonitorsRequestCollectionSlugsList>;
 
 export type ListMonitorsRequestNamesList = Array<string>;
-export const ListMonitorsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMonitorsRequestNamesList>;
+export const ListMonitorsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMonitorsRequestNamesList>;
 
 export type ListMonitorsRequestTeamSlugsList = Array<string>;
-export const ListMonitorsRequestTeamSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMonitorsRequestTeamSlugsList>;
+export const ListMonitorsRequestTeamSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMonitorsRequestTeamSlugsList>;
 
 export interface ListMonitorsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6598,14 +6392,12 @@ export const Configv1ListMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListMonitorsResponse>;
 
 export type ListMutingRulesRequestSlugsList = Array<string>;
-export const ListMutingRulesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMutingRulesRequestSlugsList>;
+export const ListMutingRulesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMutingRulesRequestSlugsList>;
 
 export type ListMutingRulesRequestNamesList = Array<string>;
-export const ListMutingRulesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMutingRulesRequestNamesList>;
+export const ListMutingRulesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListMutingRulesRequestNamesList>;
 
 export type ListMutingRulesRequestStatesItem = "PENDING" | "ACTIVE" | "EXPIRED";
 export const ListMutingRulesRequestStatesItem = S.String;
@@ -6658,24 +6450,20 @@ export const Configv1ListMutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListMutingRulesResponse>;
 
 export type ListNotificationPoliciesRequestSlugsList = Array<string>;
-export const ListNotificationPoliciesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotificationPoliciesRequestSlugsList>;
+export const ListNotificationPoliciesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListNotificationPoliciesRequestSlugsList>;
 
 export type ListNotificationPoliciesRequestNamesList = Array<string>;
-export const ListNotificationPoliciesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotificationPoliciesRequestNamesList>;
+export const ListNotificationPoliciesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListNotificationPoliciesRequestNamesList>;
 
 export type ListNotificationPoliciesRequestBucketSlugsList = Array<string>;
-export const ListNotificationPoliciesRequestBucketSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotificationPoliciesRequestBucketSlugsList>;
+export const ListNotificationPoliciesRequestBucketSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListNotificationPoliciesRequestBucketSlugsList>;
 
 export type ListNotificationPoliciesRequestTeamSlugsList = Array<string>;
-export const ListNotificationPoliciesRequestTeamSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotificationPoliciesRequestTeamSlugsList>;
+export const ListNotificationPoliciesRequestTeamSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListNotificationPoliciesRequestTeamSlugsList>;
 
 export interface ListNotificationPoliciesRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6725,14 +6513,12 @@ export const Configv1ListNotificationPoliciesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<Configv1ListNotificationPoliciesResponse>;
 
 export type ListNotifiersRequestSlugsList = Array<string>;
-export const ListNotifiersRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotifiersRequestSlugsList>;
+export const ListNotifiersRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListNotifiersRequestSlugsList>;
 
 export type ListNotifiersRequestNamesList = Array<string>;
-export const ListNotifiersRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListNotifiersRequestNamesList>;
+export const ListNotifiersRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListNotifiersRequestNamesList>;
 
 export interface ListNotifiersRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6772,24 +6558,20 @@ export const Configv1ListNotifiersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListNotifiersResponse>;
 
 export type ListRecordingRulesRequestSlugsList = Array<string>;
-export const ListRecordingRulesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRecordingRulesRequestSlugsList>;
+export const ListRecordingRulesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListRecordingRulesRequestSlugsList>;
 
 export type ListRecordingRulesRequestNamesList = Array<string>;
-export const ListRecordingRulesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRecordingRulesRequestNamesList>;
+export const ListRecordingRulesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListRecordingRulesRequestNamesList>;
 
 export type ListRecordingRulesRequestBucketSlugsList = Array<string>;
-export const ListRecordingRulesRequestBucketSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRecordingRulesRequestBucketSlugsList>;
+export const ListRecordingRulesRequestBucketSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListRecordingRulesRequestBucketSlugsList>;
 
 export type ListRecordingRulesRequestExecutionGroupsList = Array<string>;
-export const ListRecordingRulesRequestExecutionGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRecordingRulesRequestExecutionGroupsList>;
+export const ListRecordingRulesRequestExecutionGroupsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListRecordingRulesRequestExecutionGroupsList>;
 
 export interface ListRecordingRulesRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6837,19 +6619,16 @@ export const Configv1ListRecordingRulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListRecordingRulesResponse>;
 
 export type ListRollupRulesRequestSlugsList = Array<string>;
-export const ListRollupRulesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRollupRulesRequestSlugsList>;
+export const ListRollupRulesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListRollupRulesRequestSlugsList>;
 
 export type ListRollupRulesRequestNamesList = Array<string>;
-export const ListRollupRulesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRollupRulesRequestNamesList>;
+export const ListRollupRulesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListRollupRulesRequestNamesList>;
 
 export type ListRollupRulesRequestBucketSlugsList = Array<string>;
-export const ListRollupRulesRequestBucketSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRollupRulesRequestBucketSlugsList>;
+export const ListRollupRulesRequestBucketSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListRollupRulesRequestBucketSlugsList>;
 
 export interface ListRollupRulesRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6892,14 +6671,12 @@ export const Configv1ListRollupRulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListRollupRulesResponse>;
 
 export type ListServiceAccountsRequestSlugsList = Array<string>;
-export const ListServiceAccountsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListServiceAccountsRequestSlugsList>;
+export const ListServiceAccountsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListServiceAccountsRequestSlugsList>;
 
 export type ListServiceAccountsRequestNamesList = Array<string>;
-export const ListServiceAccountsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListServiceAccountsRequestNamesList>;
+export const ListServiceAccountsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListServiceAccountsRequestNamesList>;
 
 export interface ListServiceAccountsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -6941,24 +6718,20 @@ export const Configv1ListServiceAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListServiceAccountsResponse>;
 
 export type ListSLOsRequestSlugsList = Array<string>;
-export const ListSLOsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSLOsRequestSlugsList>;
+export const ListSLOsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListSLOsRequestSlugsList>;
 
 export type ListSLOsRequestNamesList = Array<string>;
-export const ListSLOsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSLOsRequestNamesList>;
+export const ListSLOsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListSLOsRequestNamesList>;
 
 export type ListSLOsRequestCollectionSlugsList = Array<string>;
-export const ListSLOsRequestCollectionSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSLOsRequestCollectionSlugsList>;
+export const ListSLOsRequestCollectionSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListSLOsRequestCollectionSlugsList>;
 
 export type ListSLOsRequestServiceSlugsList = Array<string>;
-export const ListSLOsRequestServiceSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSLOsRequestServiceSlugsList>;
+export const ListSLOsRequestServiceSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListSLOsRequestServiceSlugsList>;
 
 export interface ListSLOsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -7000,14 +6773,12 @@ export const Configv1ListSLOsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configv1ListSLOsResponse" }) as any as S.Schema<Configv1ListSLOsResponse>;
 
 export type ListTeamsRequestSlugsList = Array<string>;
-export const ListTeamsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamsRequestSlugsList>;
+export const ListTeamsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTeamsRequestSlugsList>;
 
 export type ListTeamsRequestNamesList = Array<string>;
-export const ListTeamsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamsRequestNamesList>;
+export const ListTeamsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTeamsRequestNamesList>;
 
 export interface ListTeamsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -7047,14 +6818,12 @@ export const Configv1ListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListTeamsResponse>;
 
 export type ListTraceBehaviorsRequestSlugsList = Array<string>;
-export const ListTraceBehaviorsRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceBehaviorsRequestSlugsList>;
+export const ListTraceBehaviorsRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceBehaviorsRequestSlugsList>;
 
 export type ListTraceBehaviorsRequestNamesList = Array<string>;
-export const ListTraceBehaviorsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceBehaviorsRequestNamesList>;
+export const ListTraceBehaviorsRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceBehaviorsRequestNamesList>;
 
 export interface ListTraceBehaviorsRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -7096,19 +6865,16 @@ export const Configv1ListTraceBehaviorsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Configv1ListTraceBehaviorsResponse>;
 
 export type ListTraceJaegerRemoteSamplingStrategiesRequestSlugsList = Array<string>;
-export const ListTraceJaegerRemoteSamplingStrategiesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequestSlugsList>;
+export const ListTraceJaegerRemoteSamplingStrategiesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequestSlugsList>;
 
 export type ListTraceJaegerRemoteSamplingStrategiesRequestNamesList = Array<string>;
-export const ListTraceJaegerRemoteSamplingStrategiesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequestNamesList>;
+export const ListTraceJaegerRemoteSamplingStrategiesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequestNamesList>;
 
 export type ListTraceJaegerRemoteSamplingStrategiesRequestServiceNamesList = Array<string>;
-export const ListTraceJaegerRemoteSamplingStrategiesRequestServiceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequestServiceNamesList>;
+export const ListTraceJaegerRemoteSamplingStrategiesRequestServiceNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequestServiceNamesList>;
 
 export interface ListTraceJaegerRemoteSamplingStrategiesRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -7166,19 +6932,16 @@ export const Configv1ListTraceJaegerRemoteSamplingStrategiesResponse = /*@__PURE
 }) as any as S.Schema<Configv1ListTraceJaegerRemoteSamplingStrategiesResponse>;
 
 export type ListTraceMetricsRulesRequestSlugsList = Array<string>;
-export const ListTraceMetricsRulesRequestSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceMetricsRulesRequestSlugsList>;
+export const ListTraceMetricsRulesRequestSlugsList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceMetricsRulesRequestSlugsList>;
 
 export type ListTraceMetricsRulesRequestNamesList = Array<string>;
-export const ListTraceMetricsRulesRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceMetricsRulesRequestNamesList>;
+export const ListTraceMetricsRulesRequestNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceMetricsRulesRequestNamesList>;
 
 export type ListTraceMetricsRulesRequestMetricNamesList = Array<string>;
-export const ListTraceMetricsRulesRequestMetricNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTraceMetricsRulesRequestMetricNamesList>;
+export const ListTraceMetricsRulesRequestMetricNamesList =
+  TraceSearchFilterStringFilterInValuesList as any as S.Schema<ListTraceMetricsRulesRequestMetricNamesList>;
 
 export interface ListTraceMetricsRulesRequest {
   /** Page size preference (i.e. how many items are returned in the next page). If zero, the server will use a default. Regardless of what size is given, clients must never assume how many items will be returned. */
@@ -7237,13 +7000,8 @@ export const ReadBucketRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadBucketResponse {
   bucket?: Configv1Bucket;
 }
-export const Configv1ReadBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(Configv1Bucket),
-  }),
-).annotate({
-  identifier: "Configv1ReadBucketResponse",
-}) as any as S.Schema<Configv1ReadBucketResponse>;
+export const Configv1ReadBucketResponse =
+  Configv1CreateBucketResponse as any as S.Schema<Configv1ReadBucketResponse>;
 
 export interface ReadClassicDashboardRequest {
   slug: string;
@@ -7259,13 +7017,8 @@ export const ReadClassicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadClassicDashboardResponse {
   classic_dashboard?: Configv1GrafanaDashboard;
 }
-export const Configv1ReadClassicDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    classic_dashboard: S.optional(Configv1GrafanaDashboard),
-  }),
-).annotate({
-  identifier: "Configv1ReadClassicDashboardResponse",
-}) as any as S.Schema<Configv1ReadClassicDashboardResponse>;
+export const Configv1ReadClassicDashboardResponse =
+  Configv1CreateClassicDashboardResponse as any as S.Schema<Configv1ReadClassicDashboardResponse>;
 
 export interface ReadCollectionRequest {
   slug: string;
@@ -7279,13 +7032,8 @@ export const ReadCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadCollectionResponse {
   collection?: Configv1Collection;
 }
-export const Configv1ReadCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collection: S.optional(Configv1Collection),
-  }),
-).annotate({
-  identifier: "Configv1ReadCollectionResponse",
-}) as any as S.Schema<Configv1ReadCollectionResponse>;
+export const Configv1ReadCollectionResponse =
+  Configv1CreateCollectionResponse as any as S.Schema<Configv1ReadCollectionResponse>;
 
 export interface ReadDashboardRequest {
   slug: string;
@@ -7299,13 +7047,8 @@ export const ReadDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadDashboardResponse {
   dashboard?: Configv1Dashboard;
 }
-export const Configv1ReadDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashboard: S.optional(Configv1Dashboard),
-  }),
-).annotate({
-  identifier: "Configv1ReadDashboardResponse",
-}) as any as S.Schema<Configv1ReadDashboardResponse>;
+export const Configv1ReadDashboardResponse =
+  Configv1CreateDashboardResponse as any as S.Schema<Configv1ReadDashboardResponse>;
 
 export interface ReadDatasetRequest {
   slug: string;
@@ -7319,13 +7062,8 @@ export const ReadDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadDatasetResponse {
   dataset?: Configv1Dataset;
 }
-export const Configv1ReadDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataset: S.optional(Configv1Dataset),
-  }),
-).annotate({
-  identifier: "Configv1ReadDatasetResponse",
-}) as any as S.Schema<Configv1ReadDatasetResponse>;
+export const Configv1ReadDatasetResponse =
+  Configv1CreateDatasetResponse as any as S.Schema<Configv1ReadDatasetResponse>;
 
 export interface ReadDerivedLabelRequest {
   slug: string;
@@ -7339,13 +7077,8 @@ export const ReadDerivedLabelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadDerivedLabelResponse {
   derived_label?: Configv1DerivedLabel;
 }
-export const Configv1ReadDerivedLabelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    derived_label: S.optional(Configv1DerivedLabel),
-  }),
-).annotate({
-  identifier: "Configv1ReadDerivedLabelResponse",
-}) as any as S.Schema<Configv1ReadDerivedLabelResponse>;
+export const Configv1ReadDerivedLabelResponse =
+  Configv1CreateDerivedLabelResponse as any as S.Schema<Configv1ReadDerivedLabelResponse>;
 
 export interface ReadDerivedMetricRequest {
   slug: string;
@@ -7359,13 +7092,8 @@ export const ReadDerivedMetricRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadDerivedMetricResponse {
   derived_metric?: Configv1DerivedMetric;
 }
-export const Configv1ReadDerivedMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    derived_metric: S.optional(Configv1DerivedMetric),
-  }),
-).annotate({
-  identifier: "Configv1ReadDerivedMetricResponse",
-}) as any as S.Schema<Configv1ReadDerivedMetricResponse>;
+export const Configv1ReadDerivedMetricResponse =
+  Configv1CreateDerivedMetricResponse as any as S.Schema<Configv1ReadDerivedMetricResponse>;
 
 export interface ReadDropRuleRequest {
   slug: string;
@@ -7379,13 +7107,8 @@ export const ReadDropRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadDropRuleResponse {
   drop_rule?: Configv1DropRule;
 }
-export const Configv1ReadDropRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drop_rule: S.optional(Configv1DropRule),
-  }),
-).annotate({
-  identifier: "Configv1ReadDropRuleResponse",
-}) as any as S.Schema<Configv1ReadDropRuleResponse>;
+export const Configv1ReadDropRuleResponse =
+  Configv1CreateDropRuleResponse as any as S.Schema<Configv1ReadDropRuleResponse>;
 
 export interface ReadGcpMetricsIntegrationRequest {
   slug: string;
@@ -7403,13 +7126,8 @@ export const ReadGcpMetricsIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadGcpMetricsIntegrationResponse {
   gcp_metrics_integration?: Configv1GcpMetricsIntegration;
 }
-export const Configv1ReadGcpMetricsIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcp_metrics_integration: S.optional(Configv1GcpMetricsIntegration),
-  }),
-).annotate({
-  identifier: "Configv1ReadGcpMetricsIntegrationResponse",
-}) as any as S.Schema<Configv1ReadGcpMetricsIntegrationResponse>;
+export const Configv1ReadGcpMetricsIntegrationResponse =
+  Configv1CreateGcpMetricsIntegrationResponse as any as S.Schema<Configv1ReadGcpMetricsIntegrationResponse>;
 
 export interface ReadGrafanaDashboardRequest {
   slug: string;
@@ -7425,13 +7143,8 @@ export const ReadGrafanaDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadGrafanaDashboardResponse {
   grafana_dashboard?: Configv1GrafanaDashboard;
 }
-export const Configv1ReadGrafanaDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grafana_dashboard: S.optional(Configv1GrafanaDashboard),
-  }),
-).annotate({
-  identifier: "Configv1ReadGrafanaDashboardResponse",
-}) as any as S.Schema<Configv1ReadGrafanaDashboardResponse>;
+export const Configv1ReadGrafanaDashboardResponse =
+  Configv1CreateGrafanaDashboardResponse as any as S.Schema<Configv1ReadGrafanaDashboardResponse>;
 
 export interface ReadLogAllocationConfigRequest {}
 export const ReadLogAllocationConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7445,13 +7158,8 @@ export const ReadLogAllocationConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadLogAllocationConfigResponse {
   log_allocation_config?: Configv1LogAllocationConfig;
 }
-export const Configv1ReadLogAllocationConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_allocation_config: S.optional(Configv1LogAllocationConfig),
-  }),
-).annotate({
-  identifier: "Configv1ReadLogAllocationConfigResponse",
-}) as any as S.Schema<Configv1ReadLogAllocationConfigResponse>;
+export const Configv1ReadLogAllocationConfigResponse =
+  Configv1CreateLogAllocationConfigResponse as any as S.Schema<Configv1ReadLogAllocationConfigResponse>;
 
 export interface ReadLogIngestConfigRequest {}
 export const ReadLogIngestConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7463,13 +7171,8 @@ export const ReadLogIngestConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadLogIngestConfigResponse {
   log_ingest_config?: Configv1LogIngestConfig;
 }
-export const Configv1ReadLogIngestConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_ingest_config: S.optional(Configv1LogIngestConfig),
-  }),
-).annotate({
-  identifier: "Configv1ReadLogIngestConfigResponse",
-}) as any as S.Schema<Configv1ReadLogIngestConfigResponse>;
+export const Configv1ReadLogIngestConfigResponse =
+  Configv1CreateLogIngestConfigResponse as any as S.Schema<Configv1ReadLogIngestConfigResponse>;
 
 export interface ReadLogScaleActionRequest {
   slug: string;
@@ -7485,13 +7188,8 @@ export const ReadLogScaleActionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadLogScaleActionResponse {
   log_scale_action?: Configv1LogScaleAction;
 }
-export const Configv1ReadLogScaleActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_scale_action: S.optional(Configv1LogScaleAction),
-  }),
-).annotate({
-  identifier: "Configv1ReadLogScaleActionResponse",
-}) as any as S.Schema<Configv1ReadLogScaleActionResponse>;
+export const Configv1ReadLogScaleActionResponse =
+  Configv1CreateLogScaleActionResponse as any as S.Schema<Configv1ReadLogScaleActionResponse>;
 
 export interface ReadLogScaleAlertRequest {
   slug: string;
@@ -7505,13 +7203,8 @@ export const ReadLogScaleAlertRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadLogScaleAlertResponse {
   log_scale_alert?: Configv1LogScaleAlert;
 }
-export const Configv1ReadLogScaleAlertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_scale_alert: S.optional(Configv1LogScaleAlert),
-  }),
-).annotate({
-  identifier: "Configv1ReadLogScaleAlertResponse",
-}) as any as S.Schema<Configv1ReadLogScaleAlertResponse>;
+export const Configv1ReadLogScaleAlertResponse =
+  Configv1CreateLogScaleAlertResponse as any as S.Schema<Configv1ReadLogScaleAlertResponse>;
 
 export interface ReadMappingRuleRequest {
   slug: string;
@@ -7525,13 +7218,8 @@ export const ReadMappingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadMappingRuleResponse {
   mapping_rule?: Configv1MappingRule;
 }
-export const Configv1ReadMappingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mapping_rule: S.optional(Configv1MappingRule),
-  }),
-).annotate({
-  identifier: "Configv1ReadMappingRuleResponse",
-}) as any as S.Schema<Configv1ReadMappingRuleResponse>;
+export const Configv1ReadMappingRuleResponse =
+  Configv1CreateMappingRuleResponse as any as S.Schema<Configv1ReadMappingRuleResponse>;
 
 export interface ReadMonitorRequest {
   slug: string;
@@ -7545,13 +7233,8 @@ export const ReadMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadMonitorResponse {
   monitor?: Configv1Monitor;
 }
-export const Configv1ReadMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    monitor: S.optional(Configv1Monitor),
-  }),
-).annotate({
-  identifier: "Configv1ReadMonitorResponse",
-}) as any as S.Schema<Configv1ReadMonitorResponse>;
+export const Configv1ReadMonitorResponse =
+  Configv1CreateMonitorResponse as any as S.Schema<Configv1ReadMonitorResponse>;
 
 export interface ReadMutingRuleRequest {
   slug: string;
@@ -7565,13 +7248,8 @@ export const ReadMutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadMutingRuleResponse {
   muting_rule?: Configv1MutingRule;
 }
-export const Configv1ReadMutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    muting_rule: S.optional(Configv1MutingRule),
-  }),
-).annotate({
-  identifier: "Configv1ReadMutingRuleResponse",
-}) as any as S.Schema<Configv1ReadMutingRuleResponse>;
+export const Configv1ReadMutingRuleResponse =
+  Configv1CreateMutingRuleResponse as any as S.Schema<Configv1ReadMutingRuleResponse>;
 
 export interface ReadNotificationPolicyRequest {
   slug: string;
@@ -7587,13 +7265,8 @@ export const ReadNotificationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadNotificationPolicyResponse {
   notification_policy?: Configv1NotificationPolicy;
 }
-export const Configv1ReadNotificationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notification_policy: S.optional(Configv1NotificationPolicy),
-  }),
-).annotate({
-  identifier: "Configv1ReadNotificationPolicyResponse",
-}) as any as S.Schema<Configv1ReadNotificationPolicyResponse>;
+export const Configv1ReadNotificationPolicyResponse =
+  Configv1CreateNotificationPolicyResponse as any as S.Schema<Configv1ReadNotificationPolicyResponse>;
 
 export interface ReadNotifierRequest {
   slug: string;
@@ -7607,13 +7280,8 @@ export const ReadNotifierRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadNotifierResponse {
   notifier?: Configv1Notifier;
 }
-export const Configv1ReadNotifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notifier: S.optional(Configv1Notifier),
-  }),
-).annotate({
-  identifier: "Configv1ReadNotifierResponse",
-}) as any as S.Schema<Configv1ReadNotifierResponse>;
+export const Configv1ReadNotifierResponse =
+  Configv1CreateNotifierResponse as any as S.Schema<Configv1ReadNotifierResponse>;
 
 export interface ReadOtelMetricsIngestionRequest {}
 export const ReadOtelMetricsIngestionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7627,13 +7295,8 @@ export const ReadOtelMetricsIngestionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadOtelMetricsIngestionResponse {
   otel_metrics_ingestion?: Configv1OtelMetricsIngestion;
 }
-export const Configv1ReadOtelMetricsIngestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    otel_metrics_ingestion: S.optional(Configv1OtelMetricsIngestion),
-  }),
-).annotate({
-  identifier: "Configv1ReadOtelMetricsIngestionResponse",
-}) as any as S.Schema<Configv1ReadOtelMetricsIngestionResponse>;
+export const Configv1ReadOtelMetricsIngestionResponse =
+  Configv1CreateOtelMetricsIngestionResponse as any as S.Schema<Configv1ReadOtelMetricsIngestionResponse>;
 
 export interface ReadRecordingRuleRequest {
   slug: string;
@@ -7647,13 +7310,8 @@ export const ReadRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadRecordingRuleResponse {
   recording_rule?: Configv1RecordingRule;
 }
-export const Configv1ReadRecordingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recording_rule: S.optional(Configv1RecordingRule),
-  }),
-).annotate({
-  identifier: "Configv1ReadRecordingRuleResponse",
-}) as any as S.Schema<Configv1ReadRecordingRuleResponse>;
+export const Configv1ReadRecordingRuleResponse =
+  Configv1CreateRecordingRuleResponse as any as S.Schema<Configv1ReadRecordingRuleResponse>;
 
 export interface ReadResourcePoolsRequest {}
 export const ReadResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7663,13 +7321,8 @@ export const ReadResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadResourcePoolsResponse {
   resource_pools?: Configv1ResourcePools;
 }
-export const Configv1ReadResourcePoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource_pools: S.optional(Configv1ResourcePools),
-  }),
-).annotate({
-  identifier: "Configv1ReadResourcePoolsResponse",
-}) as any as S.Schema<Configv1ReadResourcePoolsResponse>;
+export const Configv1ReadResourcePoolsResponse =
+  Configv1CreateResourcePoolsResponse as any as S.Schema<Configv1ReadResourcePoolsResponse>;
 
 export interface ReadRollupRuleRequest {
   slug: string;
@@ -7683,13 +7336,8 @@ export const ReadRollupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadRollupRuleResponse {
   rollup_rule?: Configv1RollupRule;
 }
-export const Configv1ReadRollupRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rollup_rule: S.optional(Configv1RollupRule),
-  }),
-).annotate({
-  identifier: "Configv1ReadRollupRuleResponse",
-}) as any as S.Schema<Configv1ReadRollupRuleResponse>;
+export const Configv1ReadRollupRuleResponse =
+  Configv1CreateRollupRuleResponse as any as S.Schema<Configv1ReadRollupRuleResponse>;
 
 export interface ReadServiceRequest {
   slug: string;
@@ -7716,17 +7364,7 @@ export interface Configv1Service {
   /** Slug of the notification policy used by default for monitors in this service collection. This is optional if the collection does not contain monitors or all of its monitors explicitly reference a policy. This does not override the policy used when a monitor explicitly references a policy. */
   notification_policy_slug?: string;
 }
-export const Configv1Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slug: S.optional(S.String),
-    name: S.optional(S.String),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    team_slug: S.optional(S.String),
-    description: S.optional(S.String),
-    notification_policy_slug: S.optional(S.String),
-  }),
-).annotate({ identifier: "Configv1Service" }) as any as S.Schema<Configv1Service>;
+export const Configv1Service = Configv1Collection as any as S.Schema<Configv1Service>;
 
 export interface Configv1ReadServiceResponse {
   service?: Configv1Service;
@@ -7753,13 +7391,8 @@ export const ReadServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadServiceAccountResponse {
   service_account?: Configv1ServiceAccount;
 }
-export const Configv1ReadServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service_account: S.optional(Configv1ServiceAccount),
-  }),
-).annotate({
-  identifier: "Configv1ReadServiceAccountResponse",
-}) as any as S.Schema<Configv1ReadServiceAccountResponse>;
+export const Configv1ReadServiceAccountResponse =
+  Configv1CreateServiceAccountResponse as any as S.Schema<Configv1ReadServiceAccountResponse>;
 
 export interface ReadSLORequest {
   slug: string;
@@ -7809,13 +7442,8 @@ export const ReadTraceBehaviorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadTraceBehaviorResponse {
   trace_behavior?: Configv1TraceBehavior;
 }
-export const Configv1ReadTraceBehaviorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_behavior: S.optional(Configv1TraceBehavior),
-  }),
-).annotate({
-  identifier: "Configv1ReadTraceBehaviorResponse",
-}) as any as S.Schema<Configv1ReadTraceBehaviorResponse>;
+export const Configv1ReadTraceBehaviorResponse =
+  Configv1CreateTraceBehaviorResponse as any as S.Schema<Configv1ReadTraceBehaviorResponse>;
 
 export interface ReadTraceBehaviorConfigRequest {}
 export const ReadTraceBehaviorConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7829,13 +7457,8 @@ export const ReadTraceBehaviorConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadTraceBehaviorConfigResponse {
   trace_behavior_config?: Configv1TraceBehaviorConfig;
 }
-export const Configv1ReadTraceBehaviorConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_behavior_config: S.optional(Configv1TraceBehaviorConfig),
-  }),
-).annotate({
-  identifier: "Configv1ReadTraceBehaviorConfigResponse",
-}) as any as S.Schema<Configv1ReadTraceBehaviorConfigResponse>;
+export const Configv1ReadTraceBehaviorConfigResponse =
+  Configv1CreateTraceBehaviorConfigResponse as any as S.Schema<Configv1ReadTraceBehaviorConfigResponse>;
 
 export interface ReadTraceJaegerRemoteSamplingStrategyRequest {
   slug: string;
@@ -7857,13 +7480,8 @@ export const ReadTraceJaegerRemoteSamplingStrategyRequest = /*@__PURE__*/ S.susp
 export interface Configv1ReadTraceJaegerRemoteSamplingStrategyResponse {
   trace_jaeger_remote_sampling_strategy?: Configv1TraceJaegerRemoteSamplingStrategy;
 }
-export const Configv1ReadTraceJaegerRemoteSamplingStrategyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_jaeger_remote_sampling_strategy: S.optional(Configv1TraceJaegerRemoteSamplingStrategy),
-  }),
-).annotate({
-  identifier: "Configv1ReadTraceJaegerRemoteSamplingStrategyResponse",
-}) as any as S.Schema<Configv1ReadTraceJaegerRemoteSamplingStrategyResponse>;
+export const Configv1ReadTraceJaegerRemoteSamplingStrategyResponse =
+  Configv1CreateTraceJaegerRemoteSamplingStrategyResponse as any as S.Schema<Configv1ReadTraceJaegerRemoteSamplingStrategyResponse>;
 
 export interface ReadTraceMetricsRuleRequest {
   slug: string;
@@ -7879,13 +7497,8 @@ export const ReadTraceMetricsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadTraceMetricsRuleResponse {
   trace_metrics_rule?: Configv1TraceMetricsRule;
 }
-export const Configv1ReadTraceMetricsRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_metrics_rule: S.optional(Configv1TraceMetricsRule),
-  }),
-).annotate({
-  identifier: "Configv1ReadTraceMetricsRuleResponse",
-}) as any as S.Schema<Configv1ReadTraceMetricsRuleResponse>;
+export const Configv1ReadTraceMetricsRuleResponse =
+  Configv1CreateTraceMetricsRuleResponse as any as S.Schema<Configv1ReadTraceMetricsRuleResponse>;
 
 export interface ReadTraceTailSamplingRulesRequest {}
 export const ReadTraceTailSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7899,13 +7512,8 @@ export const ReadTraceTailSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1ReadTraceTailSamplingRulesResponse {
   trace_tail_sampling_rules?: Configv1TraceTailSamplingRules;
 }
-export const Configv1ReadTraceTailSamplingRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_tail_sampling_rules: S.optional(Configv1TraceTailSamplingRules),
-  }),
-).annotate({
-  identifier: "Configv1ReadTraceTailSamplingRulesResponse",
-}) as any as S.Schema<Configv1ReadTraceTailSamplingRulesResponse>;
+export const Configv1ReadTraceTailSamplingRulesResponse =
+  Configv1CreateTraceTailSamplingRulesResponse as any as S.Schema<Configv1ReadTraceTailSamplingRulesResponse>;
 
 export interface UpdateBucketRequest {
   slug: string;
@@ -7927,13 +7535,8 @@ export const UpdateBucketRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateBucketResponse {
   bucket?: Configv1Bucket;
 }
-export const Configv1UpdateBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: S.optional(Configv1Bucket),
-  }),
-).annotate({
-  identifier: "Configv1UpdateBucketResponse",
-}) as any as S.Schema<Configv1UpdateBucketResponse>;
+export const Configv1UpdateBucketResponse =
+  Configv1CreateBucketResponse as any as S.Schema<Configv1UpdateBucketResponse>;
 
 export interface UpdateClassicDashboardRequest {
   slug: string;
@@ -7957,13 +7560,8 @@ export const UpdateClassicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateClassicDashboardResponse {
   classic_dashboard?: Configv1GrafanaDashboard;
 }
-export const Configv1UpdateClassicDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    classic_dashboard: S.optional(Configv1GrafanaDashboard),
-  }),
-).annotate({
-  identifier: "Configv1UpdateClassicDashboardResponse",
-}) as any as S.Schema<Configv1UpdateClassicDashboardResponse>;
+export const Configv1UpdateClassicDashboardResponse =
+  Configv1CreateClassicDashboardResponse as any as S.Schema<Configv1UpdateClassicDashboardResponse>;
 
 export interface UpdateCollectionRequest {
   slug: string;
@@ -7985,13 +7583,8 @@ export const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateCollectionResponse {
   collection?: Configv1Collection;
 }
-export const Configv1UpdateCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collection: S.optional(Configv1Collection),
-  }),
-).annotate({
-  identifier: "Configv1UpdateCollectionResponse",
-}) as any as S.Schema<Configv1UpdateCollectionResponse>;
+export const Configv1UpdateCollectionResponse =
+  Configv1CreateCollectionResponse as any as S.Schema<Configv1UpdateCollectionResponse>;
 
 export interface UpdateDashboardRequest {
   slug: string;
@@ -8013,13 +7606,8 @@ export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateDashboardResponse {
   dashboard?: Configv1Dashboard;
 }
-export const Configv1UpdateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashboard: S.optional(Configv1Dashboard),
-  }),
-).annotate({
-  identifier: "Configv1UpdateDashboardResponse",
-}) as any as S.Schema<Configv1UpdateDashboardResponse>;
+export const Configv1UpdateDashboardResponse =
+  Configv1CreateDashboardResponse as any as S.Schema<Configv1UpdateDashboardResponse>;
 
 export interface UpdateDatasetRequest {
   slug: string;
@@ -8041,13 +7629,8 @@ export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateDatasetResponse {
   dataset?: Configv1Dataset;
 }
-export const Configv1UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataset: S.optional(Configv1Dataset),
-  }),
-).annotate({
-  identifier: "Configv1UpdateDatasetResponse",
-}) as any as S.Schema<Configv1UpdateDatasetResponse>;
+export const Configv1UpdateDatasetResponse =
+  Configv1CreateDatasetResponse as any as S.Schema<Configv1UpdateDatasetResponse>;
 
 export interface UpdateDerivedLabelRequest {
   slug: string;
@@ -8071,13 +7654,8 @@ export const UpdateDerivedLabelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateDerivedLabelResponse {
   derived_label?: Configv1DerivedLabel;
 }
-export const Configv1UpdateDerivedLabelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    derived_label: S.optional(Configv1DerivedLabel),
-  }),
-).annotate({
-  identifier: "Configv1UpdateDerivedLabelResponse",
-}) as any as S.Schema<Configv1UpdateDerivedLabelResponse>;
+export const Configv1UpdateDerivedLabelResponse =
+  Configv1CreateDerivedLabelResponse as any as S.Schema<Configv1UpdateDerivedLabelResponse>;
 
 export interface UpdateDerivedMetricRequest {
   slug: string;
@@ -8101,13 +7679,8 @@ export const UpdateDerivedMetricRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateDerivedMetricResponse {
   derived_metric?: Configv1DerivedMetric;
 }
-export const Configv1UpdateDerivedMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    derived_metric: S.optional(Configv1DerivedMetric),
-  }),
-).annotate({
-  identifier: "Configv1UpdateDerivedMetricResponse",
-}) as any as S.Schema<Configv1UpdateDerivedMetricResponse>;
+export const Configv1UpdateDerivedMetricResponse =
+  Configv1CreateDerivedMetricResponse as any as S.Schema<Configv1UpdateDerivedMetricResponse>;
 
 export interface UpdateDropRuleRequest {
   slug: string;
@@ -8129,13 +7702,8 @@ export const UpdateDropRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateDropRuleResponse {
   drop_rule?: Configv1DropRule;
 }
-export const Configv1UpdateDropRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    drop_rule: S.optional(Configv1DropRule),
-  }),
-).annotate({
-  identifier: "Configv1UpdateDropRuleResponse",
-}) as any as S.Schema<Configv1UpdateDropRuleResponse>;
+export const Configv1UpdateDropRuleResponse =
+  Configv1CreateDropRuleResponse as any as S.Schema<Configv1UpdateDropRuleResponse>;
 
 export interface UpdateGcpMetricsIntegrationRequest {
   slug: string;
@@ -8161,13 +7729,8 @@ export const UpdateGcpMetricsIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateGcpMetricsIntegrationResponse {
   gcp_metrics_integration?: Configv1GcpMetricsIntegration;
 }
-export const Configv1UpdateGcpMetricsIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcp_metrics_integration: S.optional(Configv1GcpMetricsIntegration),
-  }),
-).annotate({
-  identifier: "Configv1UpdateGcpMetricsIntegrationResponse",
-}) as any as S.Schema<Configv1UpdateGcpMetricsIntegrationResponse>;
+export const Configv1UpdateGcpMetricsIntegrationResponse =
+  Configv1CreateGcpMetricsIntegrationResponse as any as S.Schema<Configv1UpdateGcpMetricsIntegrationResponse>;
 
 export interface UpdateGrafanaDashboardRequest {
   slug: string;
@@ -8191,13 +7754,8 @@ export const UpdateGrafanaDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateGrafanaDashboardResponse {
   grafana_dashboard?: Configv1GrafanaDashboard;
 }
-export const Configv1UpdateGrafanaDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grafana_dashboard: S.optional(Configv1GrafanaDashboard),
-  }),
-).annotate({
-  identifier: "Configv1UpdateGrafanaDashboardResponse",
-}) as any as S.Schema<Configv1UpdateGrafanaDashboardResponse>;
+export const Configv1UpdateGrafanaDashboardResponse =
+  Configv1CreateGrafanaDashboardResponse as any as S.Schema<Configv1UpdateGrafanaDashboardResponse>;
 
 export interface UpdateLogAllocationConfigRequest {
   log_allocation_config?: Configv1LogAllocationConfigInput;
@@ -8219,13 +7777,8 @@ export const UpdateLogAllocationConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateLogAllocationConfigResponse {
   log_allocation_config?: Configv1LogAllocationConfig;
 }
-export const Configv1UpdateLogAllocationConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_allocation_config: S.optional(Configv1LogAllocationConfig),
-  }),
-).annotate({
-  identifier: "Configv1UpdateLogAllocationConfigResponse",
-}) as any as S.Schema<Configv1UpdateLogAllocationConfigResponse>;
+export const Configv1UpdateLogAllocationConfigResponse =
+  Configv1CreateLogAllocationConfigResponse as any as S.Schema<Configv1UpdateLogAllocationConfigResponse>;
 
 export interface UpdateLogIngestConfigRequest {
   log_ingest_config?: Configv1LogIngestConfigInput;
@@ -8247,13 +7800,8 @@ export const UpdateLogIngestConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateLogIngestConfigResponse {
   log_ingest_config?: Configv1LogIngestConfig;
 }
-export const Configv1UpdateLogIngestConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_ingest_config: S.optional(Configv1LogIngestConfig),
-  }),
-).annotate({
-  identifier: "Configv1UpdateLogIngestConfigResponse",
-}) as any as S.Schema<Configv1UpdateLogIngestConfigResponse>;
+export const Configv1UpdateLogIngestConfigResponse =
+  Configv1CreateLogIngestConfigResponse as any as S.Schema<Configv1UpdateLogIngestConfigResponse>;
 
 export interface UpdateLogScaleActionRequest {
   slug: string;
@@ -8277,13 +7825,8 @@ export const UpdateLogScaleActionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateLogScaleActionResponse {
   log_scale_action?: Configv1LogScaleAction;
 }
-export const Configv1UpdateLogScaleActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_scale_action: S.optional(Configv1LogScaleAction),
-  }),
-).annotate({
-  identifier: "Configv1UpdateLogScaleActionResponse",
-}) as any as S.Schema<Configv1UpdateLogScaleActionResponse>;
+export const Configv1UpdateLogScaleActionResponse =
+  Configv1CreateLogScaleActionResponse as any as S.Schema<Configv1UpdateLogScaleActionResponse>;
 
 export interface UpdateLogScaleAlertRequest {
   slug: string;
@@ -8307,13 +7850,8 @@ export const UpdateLogScaleAlertRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateLogScaleAlertResponse {
   log_scale_alert?: Configv1LogScaleAlert;
 }
-export const Configv1UpdateLogScaleAlertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_scale_alert: S.optional(Configv1LogScaleAlert),
-  }),
-).annotate({
-  identifier: "Configv1UpdateLogScaleAlertResponse",
-}) as any as S.Schema<Configv1UpdateLogScaleAlertResponse>;
+export const Configv1UpdateLogScaleAlertResponse =
+  Configv1CreateLogScaleAlertResponse as any as S.Schema<Configv1UpdateLogScaleAlertResponse>;
 
 export interface UpdateMappingRuleRequest {
   slug: string;
@@ -8335,13 +7873,8 @@ export const UpdateMappingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateMappingRuleResponse {
   mapping_rule?: Configv1MappingRule;
 }
-export const Configv1UpdateMappingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mapping_rule: S.optional(Configv1MappingRule),
-  }),
-).annotate({
-  identifier: "Configv1UpdateMappingRuleResponse",
-}) as any as S.Schema<Configv1UpdateMappingRuleResponse>;
+export const Configv1UpdateMappingRuleResponse =
+  Configv1CreateMappingRuleResponse as any as S.Schema<Configv1UpdateMappingRuleResponse>;
 
 export interface UpdateMonitorRequest {
   slug: string;
@@ -8363,13 +7896,8 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateMonitorResponse {
   monitor?: Configv1Monitor;
 }
-export const Configv1UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    monitor: S.optional(Configv1Monitor),
-  }),
-).annotate({
-  identifier: "Configv1UpdateMonitorResponse",
-}) as any as S.Schema<Configv1UpdateMonitorResponse>;
+export const Configv1UpdateMonitorResponse =
+  Configv1CreateMonitorResponse as any as S.Schema<Configv1UpdateMonitorResponse>;
 
 export interface UpdateMutingRuleRequest {
   slug: string;
@@ -8391,13 +7919,8 @@ export const UpdateMutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateMutingRuleResponse {
   muting_rule?: Configv1MutingRule;
 }
-export const Configv1UpdateMutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    muting_rule: S.optional(Configv1MutingRule),
-  }),
-).annotate({
-  identifier: "Configv1UpdateMutingRuleResponse",
-}) as any as S.Schema<Configv1UpdateMutingRuleResponse>;
+export const Configv1UpdateMutingRuleResponse =
+  Configv1CreateMutingRuleResponse as any as S.Schema<Configv1UpdateMutingRuleResponse>;
 
 export interface UpdateNotificationPolicyRequest {
   slug: string;
@@ -8421,13 +7944,8 @@ export const UpdateNotificationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateNotificationPolicyResponse {
   notification_policy?: Configv1NotificationPolicy;
 }
-export const Configv1UpdateNotificationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notification_policy: S.optional(Configv1NotificationPolicy),
-  }),
-).annotate({
-  identifier: "Configv1UpdateNotificationPolicyResponse",
-}) as any as S.Schema<Configv1UpdateNotificationPolicyResponse>;
+export const Configv1UpdateNotificationPolicyResponse =
+  Configv1CreateNotificationPolicyResponse as any as S.Schema<Configv1UpdateNotificationPolicyResponse>;
 
 export interface UpdateNotifierRequest {
   slug: string;
@@ -8449,13 +7967,8 @@ export const UpdateNotifierRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateNotifierResponse {
   notifier?: Configv1Notifier;
 }
-export const Configv1UpdateNotifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notifier: S.optional(Configv1Notifier),
-  }),
-).annotate({
-  identifier: "Configv1UpdateNotifierResponse",
-}) as any as S.Schema<Configv1UpdateNotifierResponse>;
+export const Configv1UpdateNotifierResponse =
+  Configv1CreateNotifierResponse as any as S.Schema<Configv1UpdateNotifierResponse>;
 
 export interface UpdateOtelMetricsIngestionRequest {
   otel_metrics_ingestion?: Configv1OtelMetricsIngestionInput;
@@ -8477,13 +7990,8 @@ export const UpdateOtelMetricsIngestionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateOtelMetricsIngestionResponse {
   otel_metrics_ingestion?: Configv1OtelMetricsIngestion;
 }
-export const Configv1UpdateOtelMetricsIngestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    otel_metrics_ingestion: S.optional(Configv1OtelMetricsIngestion),
-  }),
-).annotate({
-  identifier: "Configv1UpdateOtelMetricsIngestionResponse",
-}) as any as S.Schema<Configv1UpdateOtelMetricsIngestionResponse>;
+export const Configv1UpdateOtelMetricsIngestionResponse =
+  Configv1CreateOtelMetricsIngestionResponse as any as S.Schema<Configv1UpdateOtelMetricsIngestionResponse>;
 
 export interface UpdateRecordingRuleRequest {
   slug: string;
@@ -8507,13 +8015,8 @@ export const UpdateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateRecordingRuleResponse {
   recording_rule?: Configv1RecordingRule;
 }
-export const Configv1UpdateRecordingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recording_rule: S.optional(Configv1RecordingRule),
-  }),
-).annotate({
-  identifier: "Configv1UpdateRecordingRuleResponse",
-}) as any as S.Schema<Configv1UpdateRecordingRuleResponse>;
+export const Configv1UpdateRecordingRuleResponse =
+  Configv1CreateRecordingRuleResponse as any as S.Schema<Configv1UpdateRecordingRuleResponse>;
 
 export interface UpdateResourcePoolsRequest {
   resource_pools?: Configv1ResourcePoolsInput;
@@ -8535,13 +8038,8 @@ export const UpdateResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateResourcePoolsResponse {
   resource_pools?: Configv1ResourcePools;
 }
-export const Configv1UpdateResourcePoolsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource_pools: S.optional(Configv1ResourcePools),
-  }),
-).annotate({
-  identifier: "Configv1UpdateResourcePoolsResponse",
-}) as any as S.Schema<Configv1UpdateResourcePoolsResponse>;
+export const Configv1UpdateResourcePoolsResponse =
+  Configv1CreateResourcePoolsResponse as any as S.Schema<Configv1UpdateResourcePoolsResponse>;
 
 export interface UpdateRollupRuleRequest {
   slug: string;
@@ -8563,13 +8061,8 @@ export const UpdateRollupRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateRollupRuleResponse {
   rollup_rule?: Configv1RollupRule;
 }
-export const Configv1UpdateRollupRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rollup_rule: S.optional(Configv1RollupRule),
-  }),
-).annotate({
-  identifier: "Configv1UpdateRollupRuleResponse",
-}) as any as S.Schema<Configv1UpdateRollupRuleResponse>;
+export const Configv1UpdateRollupRuleResponse =
+  Configv1CreateRollupRuleResponse as any as S.Schema<Configv1UpdateRollupRuleResponse>;
 
 export interface UpdateSLORequest {
   slug: string;
@@ -8591,13 +8084,8 @@ export const UpdateSLORequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateSLOResponse {
   slo?: Configv1SLO;
 }
-export const Configv1UpdateSLOResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slo: S.optional(Configv1SLO),
-  }),
-).annotate({
-  identifier: "Configv1UpdateSLOResponse",
-}) as any as S.Schema<Configv1UpdateSLOResponse>;
+export const Configv1UpdateSLOResponse =
+  Configv1CreateSLOResponse as any as S.Schema<Configv1UpdateSLOResponse>;
 
 export interface UpdateTeamRequest {
   slug: string;
@@ -8619,13 +8107,8 @@ export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateTeamResponse {
   team?: Configv1Team;
 }
-export const Configv1UpdateTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    team: S.optional(Configv1Team),
-  }),
-).annotate({
-  identifier: "Configv1UpdateTeamResponse",
-}) as any as S.Schema<Configv1UpdateTeamResponse>;
+export const Configv1UpdateTeamResponse =
+  Configv1CreateTeamResponse as any as S.Schema<Configv1UpdateTeamResponse>;
 
 export interface UpdateTraceBehaviorRequest {
   slug: string;
@@ -8649,13 +8132,8 @@ export const UpdateTraceBehaviorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateTraceBehaviorResponse {
   trace_behavior?: Configv1TraceBehavior;
 }
-export const Configv1UpdateTraceBehaviorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_behavior: S.optional(Configv1TraceBehavior),
-  }),
-).annotate({
-  identifier: "Configv1UpdateTraceBehaviorResponse",
-}) as any as S.Schema<Configv1UpdateTraceBehaviorResponse>;
+export const Configv1UpdateTraceBehaviorResponse =
+  Configv1CreateTraceBehaviorResponse as any as S.Schema<Configv1UpdateTraceBehaviorResponse>;
 
 export interface UpdateTraceBehaviorConfigRequest {
   trace_behavior_config?: Configv1TraceBehaviorConfigInput;
@@ -8677,13 +8155,8 @@ export const UpdateTraceBehaviorConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateTraceBehaviorConfigResponse {
   trace_behavior_config?: Configv1TraceBehaviorConfig;
 }
-export const Configv1UpdateTraceBehaviorConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_behavior_config: S.optional(Configv1TraceBehaviorConfig),
-  }),
-).annotate({
-  identifier: "Configv1UpdateTraceBehaviorConfigResponse",
-}) as any as S.Schema<Configv1UpdateTraceBehaviorConfigResponse>;
+export const Configv1UpdateTraceBehaviorConfigResponse =
+  Configv1CreateTraceBehaviorConfigResponse as any as S.Schema<Configv1UpdateTraceBehaviorConfigResponse>;
 
 export interface UpdateTraceJaegerRemoteSamplingStrategyRequest {
   slug: string;
@@ -8715,13 +8188,8 @@ export const UpdateTraceJaegerRemoteSamplingStrategyRequest = /*@__PURE__*/ S.su
 export interface Configv1UpdateTraceJaegerRemoteSamplingStrategyResponse {
   trace_jaeger_remote_sampling_strategy?: Configv1TraceJaegerRemoteSamplingStrategy;
 }
-export const Configv1UpdateTraceJaegerRemoteSamplingStrategyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_jaeger_remote_sampling_strategy: S.optional(Configv1TraceJaegerRemoteSamplingStrategy),
-  }),
-).annotate({
-  identifier: "Configv1UpdateTraceJaegerRemoteSamplingStrategyResponse",
-}) as any as S.Schema<Configv1UpdateTraceJaegerRemoteSamplingStrategyResponse>;
+export const Configv1UpdateTraceJaegerRemoteSamplingStrategyResponse =
+  Configv1CreateTraceJaegerRemoteSamplingStrategyResponse as any as S.Schema<Configv1UpdateTraceJaegerRemoteSamplingStrategyResponse>;
 
 export interface UpdateTraceMetricsRuleRequest {
   slug: string;
@@ -8745,13 +8213,8 @@ export const UpdateTraceMetricsRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateTraceMetricsRuleResponse {
   trace_metrics_rule?: Configv1TraceMetricsRule;
 }
-export const Configv1UpdateTraceMetricsRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_metrics_rule: S.optional(Configv1TraceMetricsRule),
-  }),
-).annotate({
-  identifier: "Configv1UpdateTraceMetricsRuleResponse",
-}) as any as S.Schema<Configv1UpdateTraceMetricsRuleResponse>;
+export const Configv1UpdateTraceMetricsRuleResponse =
+  Configv1CreateTraceMetricsRuleResponse as any as S.Schema<Configv1UpdateTraceMetricsRuleResponse>;
 
 export interface UpdateTraceTailSamplingRulesRequest {
   trace_tail_sampling_rules?: Configv1TraceTailSamplingRulesInput;
@@ -8773,13 +8236,8 @@ export const UpdateTraceTailSamplingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Configv1UpdateTraceTailSamplingRulesResponse {
   trace_tail_sampling_rules?: Configv1TraceTailSamplingRules;
 }
-export const Configv1UpdateTraceTailSamplingRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trace_tail_sampling_rules: S.optional(Configv1TraceTailSamplingRules),
-  }),
-).annotate({
-  identifier: "Configv1UpdateTraceTailSamplingRulesResponse",
-}) as any as S.Schema<Configv1UpdateTraceTailSamplingRulesResponse>;
+export const Configv1UpdateTraceTailSamplingRulesResponse =
+  Configv1CreateTraceTailSamplingRulesResponse as any as S.Schema<Configv1UpdateTraceTailSamplingRulesResponse>;
 
 export type CreateBucketError = BadRequest | Conflict | ChronosphereOpError;
 export const createBucket: API.OperationMethod<

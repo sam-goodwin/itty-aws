@@ -370,9 +370,9 @@ export const DescribeSavingsPlanRatesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSavingsPlanRatesResponse>;
 export type SavingsPlanArn = string;
 export type SavingsPlanArnList = string[];
-export const SavingsPlanArnList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanArnList = ListOfStrings as any as S.Schema<SavingsPlanArnList>;
 export type SavingsPlanIdList = string[];
-export const SavingsPlanIdList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanIdList = ListOfStrings as any as S.Schema<SavingsPlanIdList>;
 export type SavingsPlanState =
   | "payment-pending"
   | "payment-failed"
@@ -504,7 +504,7 @@ export const DescribeSavingsPlansResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSavingsPlansResponse>;
 export type UUID = string;
 export type UUIDs = string[];
-export const UUIDs = /*@__PURE__*/ S.Array(S.String);
+export const UUIDs = ListOfStrings as any as S.Schema<UUIDs>;
 export type SavingsPlanPaymentOptionList = SavingsPlanPaymentOption[];
 export const SavingsPlanPaymentOptionList = /*@__PURE__*/ S.Array(SavingsPlanPaymentOption);
 export type SavingsPlanTypeList = SavingsPlanType[];
@@ -512,9 +512,11 @@ export const SavingsPlanTypeList = /*@__PURE__*/ S.Array(SavingsPlanType);
 export type SavingsPlanRateServiceCodeList = SavingsPlanRateServiceCode[];
 export const SavingsPlanRateServiceCodeList = /*@__PURE__*/ S.Array(SavingsPlanRateServiceCode);
 export type SavingsPlanRateUsageTypeList = string[];
-export const SavingsPlanRateUsageTypeList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanRateUsageTypeList =
+  ListOfStrings as any as S.Schema<SavingsPlanRateUsageTypeList>;
 export type SavingsPlanRateOperationList = string[];
-export const SavingsPlanRateOperationList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanRateOperationList =
+  ListOfStrings as any as S.Schema<SavingsPlanRateOperationList>;
 export type SavingsPlanRateFilterAttribute =
   | "region"
   | "instanceFamily"
@@ -526,7 +528,7 @@ export type SavingsPlanRateFilterAttribute =
 export const SavingsPlanRateFilterAttribute = S.String;
 
 export type FilterValuesList = string[];
-export const FilterValuesList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValuesList = ListOfStrings as any as S.Schema<FilterValuesList>;
 export interface SavingsPlanOfferingRateFilterElement {
   name?: SavingsPlanRateFilterAttribute;
   values?: string[];
@@ -658,16 +660,18 @@ export const DurationsList = /*@__PURE__*/ S.Array(S.Number);
 export type CurrencyList = CurrencyCode[];
 export const CurrencyList = /*@__PURE__*/ S.Array(CurrencyCode);
 export type SavingsPlanDescriptionsList = string[];
-export const SavingsPlanDescriptionsList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanDescriptionsList =
+  ListOfStrings as any as S.Schema<SavingsPlanDescriptionsList>;
 export type SavingsPlanServiceCode = string;
 export type SavingsPlanServiceCodeList = string[];
-export const SavingsPlanServiceCodeList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanServiceCodeList =
+  ListOfStrings as any as S.Schema<SavingsPlanServiceCodeList>;
 export type SavingsPlanUsageType = string;
 export type SavingsPlanUsageTypeList = string[];
-export const SavingsPlanUsageTypeList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanUsageTypeList = ListOfStrings as any as S.Schema<SavingsPlanUsageTypeList>;
 export type SavingsPlanOperation = string;
 export type SavingsPlanOperationList = string[];
-export const SavingsPlanOperationList = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlanOperationList = ListOfStrings as any as S.Schema<SavingsPlanOperationList>;
 export type SavingsPlanOfferingFilterAttribute = "region" | "instanceFamily" | (string & {});
 export const SavingsPlanOfferingFilterAttribute = S.String;
 
@@ -819,11 +823,8 @@ export const ReturnSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ReturnSavingsPlanResponse {
   savingsPlanId?: string;
 }
-export const ReturnSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ savingsPlanId: S.optional(S.String) }),
-).annotate({
-  identifier: "ReturnSavingsPlanResponse",
-}) as any as S.Schema<ReturnSavingsPlanResponse>;
+export const ReturnSavingsPlanResponse =
+  CreateSavingsPlanResponse as any as S.Schema<ReturnSavingsPlanResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -838,7 +839,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ListOfStrings as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -849,9 +850,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type CreateSavingsPlanError =
   | InternalServerException
   | ResourceNotFoundException

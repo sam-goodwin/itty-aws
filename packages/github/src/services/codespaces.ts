@@ -104,11 +104,8 @@ export const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>;
 
 export interface AddSelectedRepoToOrgSecretResponse {}
-export const AddSelectedRepoToOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddSelectedRepoToOrgSecretResponse",
-}) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
+export const AddSelectedRepoToOrgSecretResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
 
 export interface CheckPermissionsForDevcontainerRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -947,15 +944,13 @@ export type CodespaceLocation = "EastUs" | "SouthEastAsia" | "WestEurope" | "Wes
 export const CodespaceLocation = S.String;
 
 export type CodespaceRecentFoldersList = Array<string>;
-export const CodespaceRecentFoldersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodespaceRecentFoldersList>;
+export const CodespaceRecentFoldersList =
+  MinimalRepositoryTopicsList as any as S.Schema<CodespaceRecentFoldersList>;
 
 /** The privacy settings a user can select from when forwarding a port. */
 export type CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList = Array<string>;
-export const CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList>;
+export const CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList =
+  MinimalRepositoryTopicsList as any as S.Schema<CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList>;
 
 export interface CodespaceRuntimeConstraints {
   /** The privacy settings a user can select from when forwarding a port. */
@@ -1143,11 +1138,8 @@ export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
 
 export type CreateOrUpdateRepoSecretResponse = unknown;
-export const CreateOrUpdateRepoSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateOrUpdateRepoSecretResponse",
-}) as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
+export const CreateOrUpdateRepoSecretResponse =
+  CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
 
 export type CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
   | number
@@ -1187,11 +1179,8 @@ export const CreateOrUpdateSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequest>;
 
 export type CreateOrUpdateSecretForAuthenticatedUserResponse = unknown;
-export const CreateOrUpdateSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateOrUpdateSecretForAuthenticatedUserResponse",
-}) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserResponse>;
+export const CreateOrUpdateSecretForAuthenticatedUserResponse =
+  CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserResponse>;
 
 /** The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down. */
 export type CreateWithPrForAuthenticatedUserRequestGeo =
@@ -1324,11 +1313,8 @@ export const DeleteForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteForAuthenticatedUserRequest>;
 
 export interface DeleteForAuthenticatedUserResponse {}
-export const DeleteForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteForAuthenticatedUserResponse",
-}) as any as S.Schema<DeleteForAuthenticatedUserResponse>;
+export const DeleteForAuthenticatedUserResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<DeleteForAuthenticatedUserResponse>;
 
 export interface DeleteFromOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1375,9 +1361,8 @@ export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgSecretRequest" }) as any as S.Schema<DeleteOrgSecretRequest>;
 
 export interface DeleteOrgSecretResponse {}
-export const DeleteOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgSecretResponse",
-}) as any as S.Schema<DeleteOrgSecretResponse>;
+export const DeleteOrgSecretResponse =
+  DeleteFromOrganizationResponse as any as S.Schema<DeleteOrgSecretResponse>;
 
 export interface DeleteRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1402,9 +1387,8 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRepoSecretResponse",
-}) as any as S.Schema<DeleteRepoSecretResponse>;
+export const DeleteRepoSecretResponse =
+  DeleteFromOrganizationResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface DeleteSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
@@ -1419,11 +1403,8 @@ export const DeleteSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSecretForAuthenticatedUserRequest>;
 
 export interface DeleteSecretForAuthenticatedUserResponse {}
-export const DeleteSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSecretForAuthenticatedUserResponse",
-}) as any as S.Schema<DeleteSecretForAuthenticatedUserResponse>;
+export const DeleteSecretForAuthenticatedUserResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<DeleteSecretForAuthenticatedUserResponse>;
 
 export interface ExportForAuthenticatedUserRequest {
   /** The name of the codespace. */
@@ -1438,11 +1419,8 @@ export const ExportForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportForAuthenticatedUserRequest>;
 
 export interface ExportForAuthenticatedUserResponse {}
-export const ExportForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExportForAuthenticatedUserResponse",
-}) as any as S.Schema<ExportForAuthenticatedUserResponse>;
+export const ExportForAuthenticatedUserResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<ExportForAuthenticatedUserResponse>;
 
 export interface GetCodespacesForUserInOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1817,22 +1795,15 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseCodespacesList = Array<Codespace>;
-export const ListForAuthenticatedUserResponseCodespacesList = /*@__PURE__*/ S.Array(
-  Codespace,
-) as any as S.Schema<ListForAuthenticatedUserResponseCodespacesList>;
+export const ListForAuthenticatedUserResponseCodespacesList =
+  GetCodespacesForUserInOrgResponseCodespacesList as any as S.Schema<ListForAuthenticatedUserResponseCodespacesList>;
 
 export interface ListForAuthenticatedUserResponse {
   total_count: number;
   codespaces: ListForAuthenticatedUserResponseCodespacesList;
 }
-export const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    codespaces: ListForAuthenticatedUserResponseCodespacesList,
-  }),
-).annotate({
-  identifier: "ListForAuthenticatedUserResponse",
-}) as any as S.Schema<ListForAuthenticatedUserResponse>;
+export const ListForAuthenticatedUserResponse =
+  GetCodespacesForUserInOrgResponse as any as S.Schema<ListForAuthenticatedUserResponse>;
 
 export interface ListInOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1853,22 +1824,15 @@ export const ListInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInOrganizationRequest>;
 
 export type ListInOrganizationResponseCodespacesList = Array<Codespace>;
-export const ListInOrganizationResponseCodespacesList = /*@__PURE__*/ S.Array(
-  Codespace,
-) as any as S.Schema<ListInOrganizationResponseCodespacesList>;
+export const ListInOrganizationResponseCodespacesList =
+  GetCodespacesForUserInOrgResponseCodespacesList as any as S.Schema<ListInOrganizationResponseCodespacesList>;
 
 export interface ListInOrganizationResponse {
   total_count: number;
   codespaces: ListInOrganizationResponseCodespacesList;
 }
-export const ListInOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    codespaces: ListInOrganizationResponseCodespacesList,
-  }),
-).annotate({
-  identifier: "ListInOrganizationResponse",
-}) as any as S.Schema<ListInOrganizationResponse>;
+export const ListInOrganizationResponse =
+  GetCodespacesForUserInOrgResponse as any as S.Schema<ListInOrganizationResponse>;
 
 export interface ListInRepositoryForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1892,22 +1856,15 @@ export const ListInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListInRepositoryForAuthenticatedUserRequest>;
 
 export type ListInRepositoryForAuthenticatedUserResponseCodespacesList = Array<Codespace>;
-export const ListInRepositoryForAuthenticatedUserResponseCodespacesList = /*@__PURE__*/ S.Array(
-  Codespace,
-) as any as S.Schema<ListInRepositoryForAuthenticatedUserResponseCodespacesList>;
+export const ListInRepositoryForAuthenticatedUserResponseCodespacesList =
+  GetCodespacesForUserInOrgResponseCodespacesList as any as S.Schema<ListInRepositoryForAuthenticatedUserResponseCodespacesList>;
 
 export interface ListInRepositoryForAuthenticatedUserResponse {
   total_count: number;
   codespaces: ListInRepositoryForAuthenticatedUserResponseCodespacesList;
 }
-export const ListInRepositoryForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    codespaces: ListInRepositoryForAuthenticatedUserResponseCodespacesList,
-  }),
-).annotate({
-  identifier: "ListInRepositoryForAuthenticatedUserResponse",
-}) as any as S.Schema<ListInRepositoryForAuthenticatedUserResponse>;
+export const ListInRepositoryForAuthenticatedUserResponse =
+  GetCodespacesForUserInOrgResponse as any as S.Schema<ListInRepositoryForAuthenticatedUserResponse>;
 
 export interface ListOrgSecretsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2158,9 +2115,8 @@ export const PublishForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishForAuthenticatedUserRequest>;
 
 export type FullRepositoryTopicsList = Array<string>;
-export const FullRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FullRepositoryTopicsList>;
+export const FullRepositoryTopicsList =
+  MinimalRepositoryTopicsList as any as S.Schema<FullRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type FullRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -2225,9 +2181,8 @@ export const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NullableRepositoryPermissions>;
 
 export type NullableRepositoryTopicsList = Array<string>;
-export const NullableRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableRepositoryTopicsList>;
+export const NullableRepositoryTopicsList =
+  MinimalRepositoryTopicsList as any as S.Schema<NullableRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -2522,9 +2477,8 @@ export type RepositoryPermissions = NullableRepositoryPermissions;
 export const RepositoryPermissions = NullableRepositoryPermissions;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -2803,10 +2757,8 @@ export const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type FullRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const FullRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FullRepositoryCustomPropertiesMap>;
+export const FullRepositoryCustomPropertiesMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<FullRepositoryCustomPropertiesMap>;
 
 /** Full Repository */
 export interface FullRepository {
@@ -3070,9 +3022,8 @@ export type CodespaceWithFullRepositoryLocation =
 export const CodespaceWithFullRepositoryLocation = S.String;
 
 export type CodespaceWithFullRepositoryRecentFoldersList = Array<string>;
-export const CodespaceWithFullRepositoryRecentFoldersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CodespaceWithFullRepositoryRecentFoldersList>;
+export const CodespaceWithFullRepositoryRecentFoldersList =
+  MinimalRepositoryTopicsList as any as S.Schema<CodespaceWithFullRepositoryRecentFoldersList>;
 
 /** The privacy settings a user can select from when forwarding a port. */
 export type CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList =
@@ -3211,11 +3162,8 @@ export const RemoveRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*
 }) as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserRequest>;
 
 export interface RemoveRepositoryForSecretForAuthenticatedUserResponse {}
-export const RemoveRepositoryForSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveRepositoryForSecretForAuthenticatedUserResponse",
-}) as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserResponse>;
+export const RemoveRepositoryForSecretForAuthenticatedUserResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserResponse>;
 
 export interface RemoveSelectedRepoFromOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -3241,11 +3189,8 @@ export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
 
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-export const RemoveSelectedRepoFromOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveSelectedRepoFromOrgSecretResponse",
-}) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
+export const RemoveSelectedRepoFromOrgSecretResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
 
 export interface RepoMachinesForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3272,22 +3217,15 @@ export const RepoMachinesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RepoMachinesForAuthenticatedUserRequest>;
 
 export type RepoMachinesForAuthenticatedUserResponseMachinesList = Array<CodespaceMachine>;
-export const RepoMachinesForAuthenticatedUserResponseMachinesList = /*@__PURE__*/ S.Array(
-  CodespaceMachine,
-) as any as S.Schema<RepoMachinesForAuthenticatedUserResponseMachinesList>;
+export const RepoMachinesForAuthenticatedUserResponseMachinesList =
+  CodespaceMachinesForAuthenticatedUserResponseMachinesList as any as S.Schema<RepoMachinesForAuthenticatedUserResponseMachinesList>;
 
 export interface RepoMachinesForAuthenticatedUserResponse {
   total_count: number;
   machines: RepoMachinesForAuthenticatedUserResponseMachinesList;
 }
-export const RepoMachinesForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    machines: RepoMachinesForAuthenticatedUserResponseMachinesList,
-  }),
-).annotate({
-  identifier: "RepoMachinesForAuthenticatedUserResponse",
-}) as any as S.Schema<RepoMachinesForAuthenticatedUserResponse>;
+export const RepoMachinesForAuthenticatedUserResponse =
+  CodespaceMachinesForAuthenticatedUserResponse as any as S.Schema<RepoMachinesForAuthenticatedUserResponse>;
 
 /** An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
 export type SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
@@ -3320,17 +3258,13 @@ export const SetRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/
 }) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserRequest>;
 
 export interface SetRepositoriesForSecretForAuthenticatedUserResponse {}
-export const SetRepositoriesForSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetRepositoriesForSecretForAuthenticatedUserResponse",
-}) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserResponse>;
+export const SetRepositoriesForSecretForAuthenticatedUserResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserResponse>;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
+export const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
+  CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
 
 export interface SetSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
@@ -3357,11 +3291,8 @@ export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
 
 export interface SetSelectedReposForOrgSecretResponse {}
-export const SetSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetSelectedReposForOrgSecretResponse",
-}) as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
+export const SetSelectedReposForOrgSecretResponse =
+  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
 
 export interface StartForAuthenticatedUserRequest {
   /** The name of the codespace. */
@@ -3413,9 +3344,8 @@ export const StopInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in. */
 export type UpdateForAuthenticatedUserRequestRecentFoldersList = Array<string>;
-export const UpdateForAuthenticatedUserRequestRecentFoldersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateForAuthenticatedUserRequestRecentFoldersList>;
+export const UpdateForAuthenticatedUserRequestRecentFoldersList =
+  MinimalRepositoryTopicsList as any as S.Schema<UpdateForAuthenticatedUserRequestRecentFoldersList>;
 
 export interface UpdateForAuthenticatedUserRequest {
   /** The name of the codespace. */

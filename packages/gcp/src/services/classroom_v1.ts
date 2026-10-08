@@ -1476,11 +1476,8 @@ export interface CourseRosterChangesInfo {
   /** The `course_id` of the course to subscribe to roster changes for. */
   courseId?: string;
 }
-export const CourseRosterChangesInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    courseId: S.optional(S.String),
-  }),
-).annotate({ identifier: "CourseRosterChangesInfo" }) as any as S.Schema<CourseRosterChangesInfo>;
+export const CourseRosterChangesInfo =
+  CourseWorkChangesInfo as any as S.Schema<CourseRosterChangesInfo>;
 
 /** A class of notifications that an application can register to receive. For example: "all roster changes for a domain". */
 export interface Feed {
@@ -2025,9 +2022,7 @@ export const StudentContext = /*@__PURE__*/ S.suspend(() =>
 
 /** Role-specific context if the requesting user is a teacher. */
 export interface TeacherContext {}
-export const TeacherContext = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TeacherContext",
-}) as any as S.Schema<TeacherContext>;
+export const TeacherContext = Empty as any as S.Schema<TeacherContext>;
 
 /** Attachment-relevant metadata for Classroom add-ons in the context of a specific post. */
 export interface AddOnContext {
@@ -2430,11 +2425,8 @@ export interface MultipleChoiceSubmission {
   /** Student's select choice. */
   answer?: string;
 }
-export const MultipleChoiceSubmission = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    answer: S.optional(S.String),
-  }),
-).annotate({ identifier: "MultipleChoiceSubmission" }) as any as S.Schema<MultipleChoiceSubmission>;
+export const MultipleChoiceSubmission =
+  ShortAnswerSubmission as any as S.Schema<MultipleChoiceSubmission>;
 
 export type GradeHistoryGradeChangeTypeEnum =
   | "UNKNOWN_GRADE_CHANGE_TYPE"

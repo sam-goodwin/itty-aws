@@ -85,9 +85,7 @@ export const GetResponseAuthenticationSettingsSuccessCriteriaKind = S.String;
 
 export type GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList = Array<number>;
 export const GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList>;
+  GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList as any as S.Schema<GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList>;
 
 export interface GetResponseAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
@@ -161,9 +159,7 @@ export const UpdateRequestAuthenticationSettingsFailureCriteriaKind = S.String;
 
 export type UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList = Array<number>;
 export const UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList>;
+  GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList as any as S.Schema<UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList>;
 
 export interface UpdateRequestAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
@@ -189,9 +185,7 @@ export const UpdateRequestAuthenticationSettingsSuccessCriteriaKind = S.String;
 
 export type UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList = Array<number>;
 export const UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList>;
+  GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList as any as S.Schema<UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList>;
 
 export interface UpdateRequestAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
@@ -235,9 +229,8 @@ export type UpdateRequestUserProfiles = "enabled" | "disabled";
 export const UpdateRequestUserProfiles = S.String;
 
 export type UpdateRequestUsernameExpressionsList = Array<string>;
-export const UpdateRequestUsernameExpressionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRequestUsernameExpressionsList>;
+export const UpdateRequestUsernameExpressionsList =
+  GetResponseUsernameExpressionsList as any as S.Schema<UpdateRequestUsernameExpressionsList>;
 
 export interface PutFraudRequest {
   /** Identifier. */
@@ -269,9 +262,7 @@ export const UpdateResponseAuthenticationSettingsFailureCriteriaKind = S.String;
 
 export type UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList = Array<number>;
 export const UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList>;
+  GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList as any as S.Schema<UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList>;
 
 export interface UpdateResponseAuthenticationSettingsFailureCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
@@ -297,9 +288,7 @@ export const UpdateResponseAuthenticationSettingsSuccessCriteriaKind = S.String;
 
 export type UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList = Array<number>;
 export const UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList>;
+  GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList as any as S.Schema<UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList>;
 
 export interface UpdateResponseAuthenticationSettingsSuccessCriteria {
   /** The type of criterion. Currently only `status_code` is supported. */
@@ -347,9 +336,8 @@ export type UpdateResponseUserProfiles = "enabled" | "disabled";
 export const UpdateResponseUserProfiles = S.String;
 
 export type UpdateResponseUsernameExpressionsList = Array<string>;
-export const UpdateResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseUsernameExpressionsList>;
+export const UpdateResponseUsernameExpressionsList =
+  GetResponseUsernameExpressionsList as any as S.Schema<UpdateResponseUsernameExpressionsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutFraudResponse {

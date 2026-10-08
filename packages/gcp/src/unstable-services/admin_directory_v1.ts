@@ -139,9 +139,8 @@ export const ActionMobiledevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionMobiledevicesRequest>;
 
 export interface ActionMobiledevicesResponse {}
-export const ActionMobiledevicesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ActionMobiledevicesResponse",
-}) as any as S.Schema<ActionMobiledevicesResponse>;
+export const ActionMobiledevicesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<ActionMobiledevicesResponse>;
 
 export type BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum =
   | "DEPROVISION_REASON_UNSPECIFIED"
@@ -862,10 +861,7 @@ export const GuestAccountInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON template for a set of custom properties (i.e. all fields in a particular schema) */
 export type UserCustomProperties = { [key: string]: unknown | undefined };
-export const UserCustomProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserCustomProperties>;
+export const UserCustomProperties = DocumentMap as any as S.Schema<UserCustomProperties>;
 
 export type UserCustomPropertiesMap = { [key: string]: UserCustomProperties | undefined };
 export const UserCustomPropertiesMap = /*@__PURE__*/ S.Record(
@@ -1050,9 +1046,8 @@ export const DeleteAspsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAspsRequest" }) as any as S.Schema<DeleteAspsRequest>;
 
 export interface DeleteAspsResponse {}
-export const DeleteAspsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAspsResponse",
-}) as any as S.Schema<DeleteAspsResponse>;
+export const DeleteAspsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteAspsResponse>;
 
 export interface DeleteCustomersChromePrintersRequest {
   /** Required. The name of the printer to be updated. Format: customers/{customer_id}/chrome/printers/{printer_id} */
@@ -1074,9 +1069,7 @@ export const DeleteCustomersChromePrintersRequest = /*@__PURE__*/ S.suspend(() =
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = ActionChromeosdevicesResponse as any as S.Schema<Empty>;
 
 export interface DeleteCustomersChromePrintServersRequest {
   /** Required. The name of the print server to be deleted. Format: `customers/{customer.id}/chrome/printServers/{print_server.id}` */
@@ -1118,9 +1111,8 @@ export const DeleteDomainAliasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDomainAliasesRequest>;
 
 export interface DeleteDomainAliasesResponse {}
-export const DeleteDomainAliasesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainAliasesResponse",
-}) as any as S.Schema<DeleteDomainAliasesResponse>;
+export const DeleteDomainAliasesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteDomainAliasesResponse>;
 
 export interface DeleteDomainsRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -1142,9 +1134,8 @@ export const DeleteDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainsRequest" }) as any as S.Schema<DeleteDomainsRequest>;
 
 export interface DeleteDomainsResponse {}
-export const DeleteDomainsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainsResponse",
-}) as any as S.Schema<DeleteDomainsResponse>;
+export const DeleteDomainsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteDomainsResponse>;
 
 export interface DeleteGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -1163,9 +1154,8 @@ export const DeleteGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupsRequest" }) as any as S.Schema<DeleteGroupsRequest>;
 
 export interface DeleteGroupsResponse {}
-export const DeleteGroupsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupsResponse",
-}) as any as S.Schema<DeleteGroupsResponse>;
+export const DeleteGroupsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteGroupsResponse>;
 
 export interface DeleteGroupsAliasesRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
@@ -1189,9 +1179,8 @@ export const DeleteGroupsAliasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupsAliasesRequest>;
 
 export interface DeleteGroupsAliasesResponse {}
-export const DeleteGroupsAliasesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupsAliasesResponse",
-}) as any as S.Schema<DeleteGroupsAliasesResponse>;
+export const DeleteGroupsAliasesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteGroupsAliasesResponse>;
 
 export interface DeleteMembersRequest {
   /** Identifies the group member in the API request. A group member can be a user or another group. The value can be the member's (group or user) primary email address, alias, or unique ID. */
@@ -1213,9 +1202,8 @@ export const DeleteMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMembersRequest" }) as any as S.Schema<DeleteMembersRequest>;
 
 export interface DeleteMembersResponse {}
-export const DeleteMembersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMembersResponse",
-}) as any as S.Schema<DeleteMembersResponse>;
+export const DeleteMembersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteMembersResponse>;
 
 export interface DeleteMobiledevicesRequest {
   /** The unique ID the API service uses to identify the mobile device. */
@@ -1239,9 +1227,8 @@ export const DeleteMobiledevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMobiledevicesRequest>;
 
 export interface DeleteMobiledevicesResponse {}
-export const DeleteMobiledevicesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMobiledevicesResponse",
-}) as any as S.Schema<DeleteMobiledevicesResponse>;
+export const DeleteMobiledevicesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteMobiledevicesResponse>;
 
 export interface DeleteOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
@@ -1263,9 +1250,8 @@ export const DeleteOrgunitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgunitsRequest" }) as any as S.Schema<DeleteOrgunitsRequest>;
 
 export interface DeleteOrgunitsResponse {}
-export const DeleteOrgunitsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrgunitsResponse",
-}) as any as S.Schema<DeleteOrgunitsResponse>;
+export const DeleteOrgunitsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteOrgunitsResponse>;
 
 export interface DeleteResourcesBuildingsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -1289,11 +1275,8 @@ export const DeleteResourcesBuildingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourcesBuildingsRequest>;
 
 export interface DeleteResourcesBuildingsResponse {}
-export const DeleteResourcesBuildingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourcesBuildingsResponse",
-}) as any as S.Schema<DeleteResourcesBuildingsResponse>;
+export const DeleteResourcesBuildingsResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<DeleteResourcesBuildingsResponse>;
 
 export interface DeleteResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
@@ -1317,11 +1300,8 @@ export const DeleteResourcesCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourcesCalendarsRequest>;
 
 export interface DeleteResourcesCalendarsResponse {}
-export const DeleteResourcesCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourcesCalendarsResponse",
-}) as any as S.Schema<DeleteResourcesCalendarsResponse>;
+export const DeleteResourcesCalendarsResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<DeleteResourcesCalendarsResponse>;
 
 export interface DeleteResourcesFeaturesRequest {
   /** The unique ID of the feature to delete. */
@@ -1371,9 +1351,8 @@ export const DeleteRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRoleAssignmentsRequest>;
 
 export interface DeleteRoleAssignmentsResponse {}
-export const DeleteRoleAssignmentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleAssignmentsResponse",
-}) as any as S.Schema<DeleteRoleAssignmentsResponse>;
+export const DeleteRoleAssignmentsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteRoleAssignmentsResponse>;
 
 export interface DeleteRolesRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -1395,9 +1374,8 @@ export const DeleteRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRolesRequest" }) as any as S.Schema<DeleteRolesRequest>;
 
 export interface DeleteRolesResponse {}
-export const DeleteRolesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRolesResponse",
-}) as any as S.Schema<DeleteRolesResponse>;
+export const DeleteRolesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteRolesResponse>;
 
 export interface DeleteSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
@@ -1419,9 +1397,8 @@ export const DeleteSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSchemasRequest" }) as any as S.Schema<DeleteSchemasRequest>;
 
 export interface DeleteSchemasResponse {}
-export const DeleteSchemasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSchemasResponse",
-}) as any as S.Schema<DeleteSchemasResponse>;
+export const DeleteSchemasResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteSchemasResponse>;
 
 export interface DeleteTokensRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -1443,9 +1420,8 @@ export const DeleteTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTokensRequest" }) as any as S.Schema<DeleteTokensRequest>;
 
 export interface DeleteTokensResponse {}
-export const DeleteTokensResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTokensResponse",
-}) as any as S.Schema<DeleteTokensResponse>;
+export const DeleteTokensResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteTokensResponse>;
 
 export interface DeleteUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -1464,9 +1440,8 @@ export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersRequest" }) as any as S.Schema<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
-export const DeleteUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersResponse",
-}) as any as S.Schema<DeleteUsersResponse>;
+export const DeleteUsersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteUsersResponse>;
 
 export interface DeleteUsersAliasesRequest {
   /** The alias to be removed. */
@@ -1490,9 +1465,8 @@ export const DeleteUsersAliasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersAliasesRequest>;
 
 export interface DeleteUsersAliasesResponse {}
-export const DeleteUsersAliasesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersAliasesResponse",
-}) as any as S.Schema<DeleteUsersAliasesResponse>;
+export const DeleteUsersAliasesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteUsersAliasesResponse>;
 
 export interface DeleteUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -1511,9 +1485,8 @@ export const DeleteUsersPhotosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersPhotosRequest" }) as any as S.Schema<DeleteUsersPhotosRequest>;
 
 export interface DeleteUsersPhotosResponse {}
-export const DeleteUsersPhotosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersPhotosResponse",
-}) as any as S.Schema<DeleteUsersPhotosResponse>;
+export const DeleteUsersPhotosResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteUsersPhotosResponse>;
 
 export interface GenerateVerificationCodesRequest {
   /** Email or immutable ID of the user */
@@ -1534,11 +1507,8 @@ export const GenerateVerificationCodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateVerificationCodesRequest>;
 
 export interface GenerateVerificationCodesResponse {}
-export const GenerateVerificationCodesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GenerateVerificationCodesResponse",
-}) as any as S.Schema<GenerateVerificationCodesResponse>;
+export const GenerateVerificationCodesResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<GenerateVerificationCodesResponse>;
 
 export interface GetAspsRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -3866,11 +3836,8 @@ export const InvalidateVerificationCodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvalidateVerificationCodesRequest>;
 
 export interface InvalidateVerificationCodesResponse {}
-export const InvalidateVerificationCodesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InvalidateVerificationCodesResponse",
-}) as any as S.Schema<InvalidateVerificationCodesResponse>;
+export const InvalidateVerificationCodesResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<InvalidateVerificationCodesResponse>;
 
 export type DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum =
   | "COMMAND_TYPE_UNSPECIFIED"
@@ -5135,9 +5102,8 @@ export const MakeAdminUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MakeAdminUsersRequest" }) as any as S.Schema<MakeAdminUsersRequest>;
 
 export interface MakeAdminUsersResponse {}
-export const MakeAdminUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MakeAdminUsersResponse",
-}) as any as S.Schema<MakeAdminUsersResponse>;
+export const MakeAdminUsersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<MakeAdminUsersResponse>;
 
 export interface ChromeOsMoveDevicesToOu {
   /** Chrome OS devices to be moved to OU */
@@ -5174,11 +5140,8 @@ export const MoveDevicesToOuChromeosdevicesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<MoveDevicesToOuChromeosdevicesRequest>;
 
 export interface MoveDevicesToOuChromeosdevicesResponse {}
-export const MoveDevicesToOuChromeosdevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MoveDevicesToOuChromeosdevicesResponse",
-}) as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>;
+export const MoveDevicesToOuChromeosdevicesResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>;
 
 export type PatchChromeosdevicesProjectionEnum = "BASIC" | "FULL";
 export const PatchChromeosdevicesProjectionEnum = S.String;
@@ -5541,9 +5504,8 @@ export const RenameResourcesFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenameResourcesFeaturesRequest>;
 
 export interface RenameResourcesFeaturesResponse {}
-export const RenameResourcesFeaturesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RenameResourcesFeaturesResponse" },
-) as any as S.Schema<RenameResourcesFeaturesResponse>;
+export const RenameResourcesFeaturesResponse =
+  DeleteResourcesFeaturesResponse as any as S.Schema<RenameResourcesFeaturesResponse>;
 
 export interface SignOutUsersRequest {
   /** Identifies the target user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -5562,9 +5524,8 @@ export const SignOutUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignOutUsersRequest" }) as any as S.Schema<SignOutUsersRequest>;
 
 export interface SignOutUsersResponse {}
-export const SignOutUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SignOutUsersResponse",
-}) as any as S.Schema<SignOutUsersResponse>;
+export const SignOutUsersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<SignOutUsersResponse>;
 
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
@@ -5624,9 +5585,8 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopChannelsResponse",
-}) as any as S.Schema<StopChannelsResponse>;
+export const StopChannelsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface TurnOffTwoStepVerificationRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
@@ -5647,11 +5607,8 @@ export const TurnOffTwoStepVerificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TurnOffTwoStepVerificationRequest>;
 
 export interface TurnOffTwoStepVerificationResponse {}
-export const TurnOffTwoStepVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TurnOffTwoStepVerificationResponse",
-}) as any as S.Schema<TurnOffTwoStepVerificationResponse>;
+export const TurnOffTwoStepVerificationResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<TurnOffTwoStepVerificationResponse>;
 
 export interface UserUndelete {
   /** OrgUnit of User */
@@ -5683,9 +5640,8 @@ export const UndeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UndeleteUsersRequest" }) as any as S.Schema<UndeleteUsersRequest>;
 
 export interface UndeleteUsersResponse {}
-export const UndeleteUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UndeleteUsersResponse",
-}) as any as S.Schema<UndeleteUsersResponse>;
+export const UndeleteUsersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<UndeleteUsersResponse>;
 
 export type UpdateChromeosdevicesProjectionEnum = "BASIC" | "FULL";
 export const UpdateChromeosdevicesProjectionEnum = S.String;

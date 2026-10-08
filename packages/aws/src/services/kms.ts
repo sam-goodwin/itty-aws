@@ -1081,9 +1081,7 @@ export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAliasRequest" }) as any as S.Schema<DeleteAliasRequest>;
 export interface DeleteAliasResponse {}
-export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteAliasResponse",
-}) as any as S.Schema<DeleteAliasResponse>;
+export const DeleteAliasResponse = CreateAliasResponse as any as S.Schema<DeleteAliasResponse>;
 export interface DeleteCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
@@ -1095,11 +1093,8 @@ export const DeleteCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCustomKeyStoreRequest",
 }) as any as S.Schema<DeleteCustomKeyStoreRequest>;
 export interface DeleteCustomKeyStoreResponse {}
-export const DeleteCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteCustomKeyStoreResponse",
-}) as any as S.Schema<DeleteCustomKeyStoreResponse>;
+export const DeleteCustomKeyStoreResponse =
+  ConnectCustomKeyStoreResponse as any as S.Schema<DeleteCustomKeyStoreResponse>;
 export interface DeleteImportedKeyMaterialRequest {
   KeyId: string;
   KeyMaterialId?: string;
@@ -1281,9 +1276,7 @@ export const DescribeKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeKeyResponse {
   KeyMetadata?: KeyMetadata;
 }
-export const DescribeKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KeyMetadata: S.optional(KeyMetadata) }).pipe(ns),
-).annotate({ identifier: "DescribeKeyResponse" }) as any as S.Schema<DescribeKeyResponse>;
+export const DescribeKeyResponse = CreateKeyResponse as any as S.Schema<DescribeKeyResponse>;
 export interface DisableKeyRequest {
   KeyId: string;
 }
@@ -1293,9 +1286,7 @@ export const DisableKeyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableKeyRequest" }) as any as S.Schema<DisableKeyRequest>;
 export interface DisableKeyResponse {}
-export const DisableKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DisableKeyResponse",
-}) as any as S.Schema<DisableKeyResponse>;
+export const DisableKeyResponse = CreateAliasResponse as any as S.Schema<DisableKeyResponse>;
 export interface DisableKeyRotationRequest {
   KeyId: string;
 }
@@ -1307,11 +1298,8 @@ export const DisableKeyRotationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableKeyRotationRequest",
 }) as any as S.Schema<DisableKeyRotationRequest>;
 export interface DisableKeyRotationResponse {}
-export const DisableKeyRotationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisableKeyRotationResponse",
-}) as any as S.Schema<DisableKeyRotationResponse>;
+export const DisableKeyRotationResponse =
+  ConnectCustomKeyStoreResponse as any as S.Schema<DisableKeyRotationResponse>;
 export interface DisconnectCustomKeyStoreRequest {
   CustomKeyStoreId: string;
 }
@@ -1323,11 +1311,8 @@ export const DisconnectCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisconnectCustomKeyStoreRequest",
 }) as any as S.Schema<DisconnectCustomKeyStoreRequest>;
 export interface DisconnectCustomKeyStoreResponse {}
-export const DisconnectCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisconnectCustomKeyStoreResponse",
-}) as any as S.Schema<DisconnectCustomKeyStoreResponse>;
+export const DisconnectCustomKeyStoreResponse =
+  ConnectCustomKeyStoreResponse as any as S.Schema<DisconnectCustomKeyStoreResponse>;
 export interface EnableKeyRequest {
   KeyId: string;
 }
@@ -1337,9 +1322,7 @@ export const EnableKeyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EnableKeyRequest" }) as any as S.Schema<EnableKeyRequest>;
 export interface EnableKeyResponse {}
-export const EnableKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "EnableKeyResponse",
-}) as any as S.Schema<EnableKeyResponse>;
+export const EnableKeyResponse = CreateAliasResponse as any as S.Schema<EnableKeyResponse>;
 export type RotationPeriodInDaysType = number;
 export interface EnableKeyRotationRequest {
   KeyId: string;
@@ -1351,11 +1334,8 @@ export const EnableKeyRotationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "EnableKeyRotationRequest" }) as any as S.Schema<EnableKeyRotationRequest>;
 export interface EnableKeyRotationResponse {}
-export const EnableKeyRotationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "EnableKeyRotationResponse",
-}) as any as S.Schema<EnableKeyRotationResponse>;
+export const EnableKeyRotationResponse =
+  ConnectCustomKeyStoreResponse as any as S.Schema<EnableKeyRotationResponse>;
 export interface EncryptRequest {
   KeyId: string;
   Plaintext: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -1804,11 +1784,8 @@ export interface ImportKeyMaterialResponse {
   KeyId?: string;
   KeyMaterialId?: string;
 }
-export const ImportKeyMaterialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KeyId: S.optional(S.String), KeyMaterialId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ImportKeyMaterialResponse",
-}) as any as S.Schema<ImportKeyMaterialResponse>;
+export const ImportKeyMaterialResponse =
+  DeleteImportedKeyMaterialResponse as any as S.Schema<ImportKeyMaterialResponse>;
 export interface ListAliasesRequest {
   KeyId?: string;
   Limit?: number;
@@ -1922,7 +1899,7 @@ export const ListKeyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListKeyPoliciesRequest" }) as any as S.Schema<ListKeyPoliciesRequest>;
 export type PolicyNameList = string[];
-export const PolicyNameList = /*@__PURE__*/ S.Array(S.String);
+export const PolicyNameList = GrantTokenList as any as S.Schema<PolicyNameList>;
 export interface ListKeyPoliciesResponse {
   PolicyNames?: string[];
   NextMarker?: string;
@@ -2087,9 +2064,7 @@ export const PutKeyPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "PutKeyPolicyRequest" }) as any as S.Schema<PutKeyPolicyRequest>;
 export interface PutKeyPolicyResponse {}
-export const PutKeyPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "PutKeyPolicyResponse",
-}) as any as S.Schema<PutKeyPolicyResponse>;
+export const PutKeyPolicyResponse = CreateAliasResponse as any as S.Schema<PutKeyPolicyResponse>;
 export interface ReEncryptRequest {
   CiphertextBlob?: Uint8Array;
   SourceEncryptionContext?: { [key: string]: string | undefined };
@@ -2181,9 +2156,7 @@ export const RetireGrantRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "RetireGrantRequest" }) as any as S.Schema<RetireGrantRequest>;
 export interface RetireGrantResponse {}
-export const RetireGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RetireGrantResponse",
-}) as any as S.Schema<RetireGrantResponse>;
+export const RetireGrantResponse = CreateAliasResponse as any as S.Schema<RetireGrantResponse>;
 export interface RevokeGrantRequest {
   KeyId: string;
   GrantId: string;
@@ -2195,9 +2168,7 @@ export const RevokeGrantRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevokeGrantRequest" }) as any as S.Schema<RevokeGrantRequest>;
 export interface RevokeGrantResponse {}
-export const RevokeGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RevokeGrantResponse",
-}) as any as S.Schema<RevokeGrantResponse>;
+export const RevokeGrantResponse = CreateAliasResponse as any as S.Schema<RevokeGrantResponse>;
 export interface RotateKeyOnDemandRequest {
   KeyId: string;
 }
@@ -2209,11 +2180,8 @@ export const RotateKeyOnDemandRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RotateKeyOnDemandResponse {
   KeyId?: string;
 }
-export const RotateKeyOnDemandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ KeyId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RotateKeyOnDemandResponse",
-}) as any as S.Schema<RotateKeyOnDemandResponse>;
+export const RotateKeyOnDemandResponse =
+  CancelKeyDeletionResponse as any as S.Schema<RotateKeyOnDemandResponse>;
 export interface ScheduleKeyDeletionRequest {
   KeyId: string;
   PendingWindowInDays?: number;
@@ -2284,11 +2252,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CreateAliasResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = GrantTokenList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   KeyId: string;
   TagKeys: string[];
@@ -2299,9 +2265,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = CreateAliasResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAliasRequest {
   AliasName: string;
   TargetKeyId: string;
@@ -2312,9 +2276,7 @@ export const UpdateAliasRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateAliasRequest" }) as any as S.Schema<UpdateAliasRequest>;
 export interface UpdateAliasResponse {}
-export const UpdateAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateAliasResponse",
-}) as any as S.Schema<UpdateAliasResponse>;
+export const UpdateAliasResponse = CreateAliasResponse as any as S.Schema<UpdateAliasResponse>;
 export interface UpdateCustomKeyStoreRequest {
   CustomKeyStoreId: string;
   NewCustomKeyStoreName?: string;
@@ -2344,11 +2306,8 @@ export const UpdateCustomKeyStoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCustomKeyStoreRequest",
 }) as any as S.Schema<UpdateCustomKeyStoreRequest>;
 export interface UpdateCustomKeyStoreResponse {}
-export const UpdateCustomKeyStoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateCustomKeyStoreResponse",
-}) as any as S.Schema<UpdateCustomKeyStoreResponse>;
+export const UpdateCustomKeyStoreResponse =
+  ConnectCustomKeyStoreResponse as any as S.Schema<UpdateCustomKeyStoreResponse>;
 export interface UpdateKeyDescriptionRequest {
   KeyId: string;
   Description: string;
@@ -2361,11 +2320,8 @@ export const UpdateKeyDescriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateKeyDescriptionRequest",
 }) as any as S.Schema<UpdateKeyDescriptionRequest>;
 export interface UpdateKeyDescriptionResponse {}
-export const UpdateKeyDescriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateKeyDescriptionResponse",
-}) as any as S.Schema<UpdateKeyDescriptionResponse>;
+export const UpdateKeyDescriptionResponse =
+  ConnectCustomKeyStoreResponse as any as S.Schema<UpdateKeyDescriptionResponse>;
 export interface UpdatePrimaryRegionRequest {
   KeyId: string;
   PrimaryRegion: string;
@@ -2378,11 +2334,8 @@ export const UpdatePrimaryRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePrimaryRegionRequest",
 }) as any as S.Schema<UpdatePrimaryRegionRequest>;
 export interface UpdatePrimaryRegionResponse {}
-export const UpdatePrimaryRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdatePrimaryRegionResponse",
-}) as any as S.Schema<UpdatePrimaryRegionResponse>;
+export const UpdatePrimaryRegionResponse =
+  ConnectCustomKeyStoreResponse as any as S.Schema<UpdatePrimaryRegionResponse>;
 export interface VerifyRequest {
   KeyId: string;
   Message: Uint8Array | redacted.Redacted<Uint8Array>;

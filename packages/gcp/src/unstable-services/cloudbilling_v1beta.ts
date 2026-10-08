@@ -898,9 +898,7 @@ export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegional =
 export type GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion>;
 export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion,
-  ) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList>;
+  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegionList as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList>;
 
 /** Encapsulates a multi-regional geographic taxonomy. */
 export interface GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional {
@@ -908,13 +906,7 @@ export interface GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegio
   regions?: GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList;
 }
 export const GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      regions: S.optional(GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyRegionList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional",
-  }) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional>;
+  GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomyMultiRegional>;
 
 /** Encapsulates geographic metadata, such as regions and multi-regions like `us-east4` or `European Union`. */
 export interface GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomy {
@@ -1314,9 +1306,8 @@ export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategory =
 
 export type GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList =
   Array<GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory>;
-export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList = /*@__PURE__*/ S.Array(
-  GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory,
-) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList>;
+export const GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList =
+  GoogleCloudBillingBillingaccountskusV1betaTaxonomyCategoryList as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaTaxonomyCategoryList>;
 
 /** Encapsulates product categories, such as `Serverless`, `Cloud Run`, `TaskQueue`, and others. */
 export interface GoogleCloudBillingSkugroupskusV1betaProductTaxonomy {

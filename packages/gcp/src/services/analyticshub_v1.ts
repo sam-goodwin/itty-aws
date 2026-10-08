@@ -462,12 +462,7 @@ export interface DataProvider {
   /** Optional. Email or URL of the data provider. Max Length: 1000 bytes. */
   primaryContact?: string;
 }
-export const DataProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    primaryContact: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataProvider" }) as any as S.Schema<DataProvider>;
+export const DataProvider = Publisher as any as S.Schema<DataProvider>;
 
 /** Pub/Sub topic source. */
 export interface PubSubTopicSource {
@@ -492,13 +487,8 @@ export interface RestrictedExportConfig {
   /** Optional. If true, enable restricted export. */
   enabled?: boolean;
 }
-export const RestrictedExportConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restrictDirectTableAccess: S.optional(S.Boolean),
-    restrictQueryResult: S.optional(S.Boolean),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RestrictedExportConfig" }) as any as S.Schema<RestrictedExportConfig>;
+export const RestrictedExportConfig =
+  RestrictedExportPolicy as any as S.Schema<RestrictedExportConfig>;
 
 export type StoredProcedureConfigAllowedStoredProcedureTypesItemEnum =
   | "STORED_PROCEDURE_TYPE_UNSPECIFIED"
@@ -665,9 +655,7 @@ export const DeleteProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspe
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = ApproveQueryTemplateRequest as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsDataExchangesListingsRequest {
   /** Required. Resource name of the listing to delete. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. */
@@ -1270,14 +1258,8 @@ export interface ListDataExchangesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataExchanges: S.optional(DataExchangeList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDataExchangesResponse",
-}) as any as S.Schema<ListDataExchangesResponse>;
+export const ListDataExchangesResponse =
+  ListOrgDataExchangesResponse as any as S.Schema<ListDataExchangesResponse>;
 
 export interface ListProjectsLocationsDataExchangesListingsRequest {
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
@@ -1610,9 +1592,8 @@ export const RevokeProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspe
 
 /** Message for response when you revoke a subscription. Empty for now. */
 export interface RevokeSubscriptionResponse {}
-export const RevokeSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeSubscriptionResponse",
-}) as any as S.Schema<RevokeSubscriptionResponse>;
+export const RevokeSubscriptionResponse =
+  ApproveQueryTemplateRequest as any as S.Schema<RevokeSubscriptionResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -2244,13 +2225,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsDataExchangesListingsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

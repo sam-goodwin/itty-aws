@@ -318,11 +318,8 @@ export const CloudWatchDirectQueryDataSource = /*@__PURE__*/ S.suspend(() =>
 export interface SecurityLakeDirectQueryDataSource {
   RoleArn: string;
 }
-export const SecurityLakeDirectQueryDataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RoleArn: S.String }),
-).annotate({
-  identifier: "SecurityLakeDirectQueryDataSource",
-}) as any as S.Schema<SecurityLakeDirectQueryDataSource>;
+export const SecurityLakeDirectQueryDataSource =
+  CloudWatchDirectQueryDataSource as any as S.Schema<SecurityLakeDirectQueryDataSource>;
 export type AMPWorkspaceArn = string;
 export interface PrometheusDirectQueryDataSource {
   RoleArn: string;
@@ -411,7 +408,7 @@ export const AddTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(n
 }) as any as S.Schema<AddTagsResponse>;
 export type PackageID = string;
 export type PackageIDList = string[];
-export const PackageIDList = /*@__PURE__*/ S.Array(S.String);
+export const PackageIDList = DirectQueryOpenSearchARNList as any as S.Schema<PackageIDList>;
 export interface KeyStoreAccessOption {
   KeyAccessRoleArn?: string;
   KeyStoreAccessEnabled: boolean;
@@ -619,7 +616,7 @@ export type AWSServicePrincipal = "application.opensearchservice.amazonaws.com" 
 export const AWSServicePrincipal = S.String;
 
 export type RegionsList = string[];
-export const RegionsList = /*@__PURE__*/ S.Array(S.String);
+export const RegionsList = DirectQueryOpenSearchARNList as any as S.Schema<RegionsList>;
 export interface ServiceOptions {
   SupportedRegions?: string[];
 }
@@ -703,7 +700,7 @@ export const CancelDomainConfigChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDomainConfigChangeRequest>;
 export type GUID = string;
 export type GUIDList = string[];
-export const GUIDList = /*@__PURE__*/ S.Array(S.String);
+export const GUIDList = DirectQueryOpenSearchARNList as any as S.Schema<GUIDList>;
 export interface CancelledChangeProperty {
   PropertyName?: string;
   CancelledValue?: string;
@@ -1119,7 +1116,7 @@ export const SnapshotOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AutomatedSnapshotStartHour: S.optional(S.Number) }),
 ).annotate({ identifier: "SnapshotOptions" }) as any as S.Schema<SnapshotOptions>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = DirectQueryOpenSearchARNList as any as S.Schema<StringList>;
 export interface VPCOptions {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -1436,11 +1433,8 @@ export const S3VectorsEngine = /*@__PURE__*/ S.suspend(() =>
 export interface ServerlessVectorAcceleration {
   Enabled?: boolean;
 }
-export const ServerlessVectorAcceleration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "ServerlessVectorAcceleration",
-}) as any as S.Schema<ServerlessVectorAcceleration>;
+export const ServerlessVectorAcceleration =
+  NodeToNodeEncryptionOptions as any as S.Schema<ServerlessVectorAcceleration>;
 export interface AIMLOptionsInput {
   NaturalLanguageQueryGenerationOptions?: NaturalLanguageQueryGenerationOptionsInput;
   S3VectorsEngine?: S3VectorsEngine;
@@ -1553,10 +1547,7 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainId = string;
 export type ServiceUrl = string;
 export type EndpointsMap = { [key: string]: string | undefined };
-export const EndpointsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EndpointsMap = AdvancedOptions as any as S.Schema<EndpointsMap>;
 export type HostedZoneId = string;
 export interface VPCDerivedInfo {
   VPCId?: string;
@@ -1597,29 +1588,14 @@ export interface JWTOptionsOutput {
   JwksUrl?: string;
   PublicKey?: string;
 }
-export const JWTOptionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enabled: S.optional(S.Boolean),
-    SubjectKey: S.optional(S.String),
-    RolesKey: S.optional(S.String),
-    JwksUrl: S.optional(S.String),
-    PublicKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWTOptionsOutput" }) as any as S.Schema<JWTOptionsOutput>;
+export const JWTOptionsOutput = JWTOptionsInput as any as S.Schema<JWTOptionsOutput>;
 export interface IAMFederationOptionsOutput {
   Enabled?: boolean;
   SubjectKey?: string;
   RolesKey?: string;
 }
-export const IAMFederationOptionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enabled: S.optional(S.Boolean),
-    SubjectKey: S.optional(S.String),
-    RolesKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IAMFederationOptionsOutput",
-}) as any as S.Schema<IAMFederationOptionsOutput>;
+export const IAMFederationOptionsOutput =
+  IAMFederationOptionsInput as any as S.Schema<IAMFederationOptionsOutput>;
 export type DisableTimestamp = Date;
 export interface AdvancedSecurityOptions {
   Enabled?: boolean;
@@ -2132,7 +2108,7 @@ export const PluginProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginProperties" }) as any as S.Schema<PluginProperties>;
 export type PackageUser = string;
 export type PackageUserList = string[];
-export const PackageUserList = /*@__PURE__*/ S.Array(S.String);
+export const PackageUserList = DirectQueryOpenSearchARNList as any as S.Schema<PackageUserList>;
 export type PackageOwner = string;
 export interface PackageDetails {
   PackageID?: string;
@@ -2283,9 +2259,8 @@ export const DeleteDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDataSourceResponse {
   Message?: string;
 }
-export const DeleteDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "DeleteDataSourceResponse" }) as any as S.Schema<DeleteDataSourceResponse>;
+export const DeleteDataSourceResponse =
+  AddDataSourceResponse as any as S.Schema<DeleteDataSourceResponse>;
 export interface DeleteDirectQueryDataSourceRequest {
   DataSourceName: string;
 }
@@ -2308,11 +2283,8 @@ export const DeleteDirectQueryDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDirectQueryDataSourceRequest",
 }) as any as S.Schema<DeleteDirectQueryDataSourceRequest>;
 export interface DeleteDirectQueryDataSourceResponse {}
-export const DeleteDirectQueryDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteDirectQueryDataSourceResponse",
-}) as any as S.Schema<DeleteDirectQueryDataSourceResponse>;
+export const DeleteDirectQueryDataSourceResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteDirectQueryDataSourceResponse>;
 export interface DeleteDomainRequest {
   DomainName: string;
 }
@@ -2332,9 +2304,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainResponse {
   DomainStatus?: DomainStatus;
 }
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DomainStatus: S.optional(DomainStatus) }).pipe(ns),
-).annotate({ identifier: "DeleteDomainResponse" }) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse = CreateDomainResponse as any as S.Schema<DeleteDomainResponse>;
 export interface DeleteInboundConnectionRequest {
   ConnectionId: string;
 }
@@ -2359,11 +2329,8 @@ export const DeleteInboundConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInboundConnectionResponse {
   Connection?: InboundConnection;
 }
-export const DeleteInboundConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Connection: S.optional(InboundConnection) }).pipe(ns),
-).annotate({
-  identifier: "DeleteInboundConnectionResponse",
-}) as any as S.Schema<DeleteInboundConnectionResponse>;
+export const DeleteInboundConnectionResponse =
+  AcceptInboundConnectionResponse as any as S.Schema<DeleteInboundConnectionResponse>;
 export interface DeleteIndexRequest {
   DomainName: string;
   IndexName: string;
@@ -2390,9 +2357,7 @@ export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteIndexResponse {
   Status: IndexStatus;
 }
-export const DeleteIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: IndexStatus }).pipe(ns),
-).annotate({ identifier: "DeleteIndexResponse" }) as any as S.Schema<DeleteIndexResponse>;
+export const DeleteIndexResponse = CreateIndexResponse as any as S.Schema<DeleteIndexResponse>;
 export interface DeleteOutboundConnectionRequest {
   ConnectionId: string;
 }
@@ -2461,9 +2426,8 @@ export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePackageResponse {
   PackageDetails?: PackageDetails;
 }
-export const DeletePackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PackageDetails: S.optional(PackageDetails) }).pipe(ns),
-).annotate({ identifier: "DeletePackageResponse" }) as any as S.Schema<DeletePackageResponse>;
+export const DeletePackageResponse =
+  CreatePackageResponse as any as S.Schema<DeletePackageResponse>;
 export interface DeleteVpcEndpointRequest {
   VpcEndpointId: string;
 }
@@ -2754,7 +2718,8 @@ export const ValidationFailure = /*@__PURE__*/ S.suspend(() =>
 export type ValidationFailures = ValidationFailure[];
 export const ValidationFailures = /*@__PURE__*/ S.Array(ValidationFailure);
 export type AcceptedWarningsList = string[];
-export const AcceptedWarningsList = /*@__PURE__*/ S.Array(S.String);
+export const AcceptedWarningsList =
+  DirectQueryOpenSearchARNList as any as S.Schema<AcceptedWarningsList>;
 export interface ChangeProgressStatusDetails {
   ChangeId?: string;
   StartTime?: Date;
@@ -2858,9 +2823,7 @@ export interface AccessPoliciesStatus {
   Options: string;
   Status: OptionStatus;
 }
-export const AccessPoliciesStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Options: S.String, Status: OptionStatus }),
-).annotate({ identifier: "AccessPoliciesStatus" }) as any as S.Schema<AccessPoliciesStatus>;
+export const AccessPoliciesStatus = VersionStatus as any as S.Schema<AccessPoliciesStatus>;
 export interface IPAddressTypeStatus {
   Options: IPAddressType;
   Status: OptionStatus;
@@ -3269,7 +3232,7 @@ export const DescribeDomainNodesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDomainNodesResponse",
 }) as any as S.Schema<DescribeDomainNodesResponse>;
 export type DomainNameList = string[];
-export const DomainNameList = /*@__PURE__*/ S.Array(S.String);
+export const DomainNameList = DirectQueryOpenSearchARNList as any as S.Schema<DomainNameList>;
 export interface DescribeDomainsRequest {
   DomainNames: string[];
 }
@@ -3360,7 +3323,7 @@ export const DescribeDryRunProgressResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDryRunProgressResponse>;
 export type NonEmptyString = string;
 export type ValueStringList = string[];
-export const ValueStringList = /*@__PURE__*/ S.Array(S.String);
+export const ValueStringList = DirectQueryOpenSearchARNList as any as S.Schema<ValueStringList>;
 export interface Filter {
   Name?: string;
   Values?: string[];
@@ -3495,7 +3458,7 @@ export type StorageSubTypeName = string;
 export type LimitName = string;
 export type LimitValue = string;
 export type LimitValueList = string[];
-export const LimitValueList = /*@__PURE__*/ S.Array(S.String);
+export const LimitValueList = DirectQueryOpenSearchARNList as any as S.Schema<LimitValueList>;
 export interface StorageTypeLimit {
   LimitName?: string;
   LimitValues?: string[];
@@ -3541,11 +3504,9 @@ export interface AdditionalLimit {
   LimitName?: string;
   LimitValues?: string[];
 }
-export const AdditionalLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LimitName: S.optional(S.String), LimitValues: S.optional(LimitValueList) }),
-).annotate({ identifier: "AdditionalLimit" }) as any as S.Schema<AdditionalLimit>;
+export const AdditionalLimit = StorageTypeLimit as any as S.Schema<AdditionalLimit>;
 export type AdditionalLimitList = AdditionalLimit[];
-export const AdditionalLimitList = /*@__PURE__*/ S.Array(AdditionalLimit);
+export const AdditionalLimitList = StorageTypeLimitList as any as S.Schema<AdditionalLimitList>;
 export interface Limits {
   StorageTypes?: StorageType[];
   InstanceLimits?: InstanceLimits;
@@ -3617,7 +3578,8 @@ export const DescribePackagesFilterName = S.String;
 
 export type DescribePackagesFilterValue = string;
 export type DescribePackagesFilterValues = string[];
-export const DescribePackagesFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DescribePackagesFilterValues =
+  DirectQueryOpenSearchARNList as any as S.Schema<DescribePackagesFilterValues>;
 export interface DescribePackagesFilter {
   Name?: DescribePackagesFilterName;
   Value?: string[];
@@ -3827,7 +3789,7 @@ export const DescribeReservedInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeReservedInstancesResponse",
 }) as any as S.Schema<DescribeReservedInstancesResponse>;
 export type VpcEndpointIdList = string[];
-export const VpcEndpointIdList = /*@__PURE__*/ S.Array(S.String);
+export const VpcEndpointIdList = DirectQueryOpenSearchARNList as any as S.Schema<VpcEndpointIdList>;
 export interface DescribeVpcEndpointsRequest {
   VpcEndpointIds: string[];
 }
@@ -3953,11 +3915,8 @@ export const DissociatePackagesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DissociatePackagesResponse {
   DomainPackageDetailsList?: DomainPackageDetails[];
 }
-export const DissociatePackagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DomainPackageDetailsList: S.optional(DomainPackageDetailsList) }).pipe(ns),
-).annotate({
-  identifier: "DissociatePackagesResponse",
-}) as any as S.Schema<DissociatePackagesResponse>;
+export const DissociatePackagesResponse =
+  AssociatePackagesResponse as any as S.Schema<DissociatePackagesResponse>;
 export interface GetApplicationRequest {
   id: string;
 }
@@ -4090,7 +4049,7 @@ export const GetCompatibleVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCompatibleVersionsRequest",
 }) as any as S.Schema<GetCompatibleVersionsRequest>;
 export type VersionList = string[];
-export const VersionList = /*@__PURE__*/ S.Array(S.String);
+export const VersionList = DirectQueryOpenSearchARNList as any as S.Schema<VersionList>;
 export interface CompatibleVersionsMap {
   SourceVersion?: string;
   TargetVersions?: string[];
@@ -4452,7 +4411,7 @@ export const UpgradeStep = S.String;
 
 export type Issue = string;
 export type Issues = string[];
-export const Issues = /*@__PURE__*/ S.Array(S.String);
+export const Issues = DirectQueryOpenSearchARNList as any as S.Schema<Issues>;
 export interface UpgradeStepItem {
   UpgradeStep?: UpgradeStep;
   UpgradeStepStatus?: UpgradeStatus;
@@ -5009,9 +4968,10 @@ export const ListInstanceTypeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInstanceTypeDetailsRequest",
 }) as any as S.Schema<ListInstanceTypeDetailsRequest>;
 export type InstanceRoleList = string[];
-export const InstanceRoleList = /*@__PURE__*/ S.Array(S.String);
+export const InstanceRoleList = DirectQueryOpenSearchARNList as any as S.Schema<InstanceRoleList>;
 export type AvailabilityZoneList = string[];
-export const AvailabilityZoneList = /*@__PURE__*/ S.Array(S.String);
+export const AvailabilityZoneList =
+  DirectQueryOpenSearchARNList as any as S.Schema<AvailabilityZoneList>;
 export interface InstanceTypeDetails {
   InstanceType?: OpenSearchPartitionInstanceType;
   EncryptionEnabled?: boolean;
@@ -5135,14 +5095,8 @@ export interface ListPackagesForDomainResponse {
   DomainPackageDetailsList?: DomainPackageDetails[];
   NextToken?: string;
 }
-export const ListPackagesForDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainPackageDetailsList: S.optional(DomainPackageDetailsList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListPackagesForDomainResponse",
-}) as any as S.Schema<ListPackagesForDomainResponse>;
+export const ListPackagesForDomainResponse =
+  ListDomainsForPackageResponse as any as S.Schema<ListPackagesForDomainResponse>;
 export interface ListScheduledActionsRequest {
   DomainName: string;
   MaxResults?: number;
@@ -5420,15 +5374,11 @@ export const PutDefaultApplicationSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutDefaultApplicationSettingResponse {
   applicationArn?: string;
 }
-export const PutDefaultApplicationSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ applicationArn: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "PutDefaultApplicationSettingResponse",
-}) as any as S.Schema<PutDefaultApplicationSettingResponse>;
+export const PutDefaultApplicationSettingResponse =
+  GetDefaultApplicationSettingResponse as any as S.Schema<PutDefaultApplicationSettingResponse>;
 export type CapabilityBaseRequestConfig = { aiConfig: AIConfig };
-export const CapabilityBaseRequestConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ aiConfig: AIConfig }),
-]);
+export const CapabilityBaseRequestConfig =
+  CapabilityExtendedResponseConfig as any as S.Schema<CapabilityBaseRequestConfig>;
 export interface RegisterCapabilityRequest {
   applicationId: string;
   capabilityName: string;
@@ -5457,9 +5407,8 @@ export const RegisterCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisterCapabilityRequest",
 }) as any as S.Schema<RegisterCapabilityRequest>;
 export type CapabilityBaseResponseConfig = { aiConfig: AIConfig };
-export const CapabilityBaseResponseConfig = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ aiConfig: AIConfig }),
-]);
+export const CapabilityBaseResponseConfig =
+  CapabilityExtendedResponseConfig as any as S.Schema<CapabilityBaseResponseConfig>;
 export interface RegisterCapabilityResponse {
   capabilityName?: string;
   applicationId?: string;
@@ -5500,11 +5449,8 @@ export const RejectInboundConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RejectInboundConnectionResponse {
   Connection?: InboundConnection;
 }
-export const RejectInboundConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Connection: S.optional(InboundConnection) }).pipe(ns),
-).annotate({
-  identifier: "RejectInboundConnectionResponse",
-}) as any as S.Schema<RejectInboundConnectionResponse>;
+export const RejectInboundConnectionResponse =
+  AcceptInboundConnectionResponse as any as S.Schema<RejectInboundConnectionResponse>;
 export interface RemoveTagsRequest {
   ARN: string;
   TagKeys: string[];
@@ -5523,9 +5469,7 @@ export const RemoveTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveTagsRequest" }) as any as S.Schema<RemoveTagsRequest>;
 export interface RemoveTagsResponse {}
-export const RemoveTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RemoveTagsResponse",
-}) as any as S.Schema<RemoveTagsResponse>;
+export const RemoveTagsResponse = AddTagsResponse as any as S.Schema<RemoveTagsResponse>;
 export interface RevokeVpcEndpointAccessRequest {
   DomainName: string;
   Account?: string;
@@ -5556,11 +5500,8 @@ export const RevokeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeVpcEndpointAccessRequest",
 }) as any as S.Schema<RevokeVpcEndpointAccessRequest>;
 export interface RevokeVpcEndpointAccessResponse {}
-export const RevokeVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RevokeVpcEndpointAccessResponse",
-}) as any as S.Schema<RevokeVpcEndpointAccessResponse>;
+export const RevokeVpcEndpointAccessResponse =
+  DeleteApplicationResponse as any as S.Schema<RevokeVpcEndpointAccessResponse>;
 export interface RollbackServiceSoftwareUpdateRequest {
   DomainName: string;
 }
@@ -5746,11 +5687,8 @@ export const StartServiceSoftwareUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartServiceSoftwareUpdateResponse {
   ServiceSoftwareOptions?: ServiceSoftwareOptions;
 }
-export const StartServiceSoftwareUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServiceSoftwareOptions: S.optional(ServiceSoftwareOptions) }).pipe(ns),
-).annotate({
-  identifier: "StartServiceSoftwareUpdateResponse",
-}) as any as S.Schema<StartServiceSoftwareUpdateResponse>;
+export const StartServiceSoftwareUpdateResponse =
+  CancelServiceSoftwareUpdateResponse as any as S.Schema<StartServiceSoftwareUpdateResponse>;
 export interface UpdateApplicationRequest {
   id: string;
   dataSources?: DataSource[];
@@ -5831,9 +5769,8 @@ export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataSourceResponse {
   Message?: string;
 }
-export const UpdateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "UpdateDataSourceResponse" }) as any as S.Schema<UpdateDataSourceResponse>;
+export const UpdateDataSourceResponse =
+  AddDataSourceResponse as any as S.Schema<UpdateDataSourceResponse>;
 export interface UpdateDirectQueryDataSourceRequest {
   DataSourceName: string;
   DataSourceType: DirectQueryDataSourceType;
@@ -5868,11 +5805,8 @@ export const UpdateDirectQueryDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDirectQueryDataSourceResponse {
   DataSourceArn?: string;
 }
-export const UpdateDirectQueryDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DataSourceArn: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateDirectQueryDataSourceResponse",
-}) as any as S.Schema<UpdateDirectQueryDataSourceResponse>;
+export const UpdateDirectQueryDataSourceResponse =
+  AddDirectQueryDataSourceResponse as any as S.Schema<UpdateDirectQueryDataSourceResponse>;
 export type DryRunMode = "Basic" | "Verbose" | (string & {});
 export const DryRunMode = S.String;
 
@@ -5988,9 +5922,7 @@ export const UpdateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateIndexResponse {
   Status: IndexStatus;
 }
-export const UpdateIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: IndexStatus }).pipe(ns),
-).annotate({ identifier: "UpdateIndexResponse" }) as any as S.Schema<UpdateIndexResponse>;
+export const UpdateIndexResponse = CreateIndexResponse as any as S.Schema<UpdateIndexResponse>;
 export interface UpdatePackageRequest {
   PackageID: string;
   PackageSource: PackageSource;
@@ -6022,9 +5954,8 @@ export const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePackageResponse {
   PackageDetails?: PackageDetails;
 }
-export const UpdatePackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PackageDetails: S.optional(PackageDetails) }).pipe(ns),
-).annotate({ identifier: "UpdatePackageResponse" }) as any as S.Schema<UpdatePackageResponse>;
+export const UpdatePackageResponse =
+  CreatePackageResponse as any as S.Schema<UpdatePackageResponse>;
 export type PackageScopeOperationEnum = "ADD" | "OVERRIDE" | "REMOVE" | (string & {});
 export const PackageScopeOperationEnum = S.String;
 
@@ -6125,11 +6056,8 @@ export const UpdateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcEndpointResponse {
   VpcEndpoint: VpcEndpoint;
 }
-export const UpdateVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcEndpoint: VpcEndpoint }).pipe(ns),
-).annotate({
-  identifier: "UpdateVpcEndpointResponse",
-}) as any as S.Schema<UpdateVpcEndpointResponse>;
+export const UpdateVpcEndpointResponse =
+  CreateVpcEndpointResponse as any as S.Schema<UpdateVpcEndpointResponse>;
 export interface UpgradeDomainRequest {
   DomainName: string;
   TargetVersion: string;

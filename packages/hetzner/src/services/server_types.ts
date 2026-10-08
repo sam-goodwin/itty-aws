@@ -246,9 +246,8 @@ export const ListServerTypesResponseServerTypesItemPricesItem =
 /** Price per [Location](#tag/locations). */
 export type ListServerTypesResponseServerTypesItemPricesList =
   Array<GetServerTypeResponseServerTypePricesItem>;
-export const ListServerTypesResponseServerTypesItemPricesList = /*@__PURE__*/ S.Array(
-  GetServerTypeResponseServerTypePricesItem,
-) as any as S.Schema<ListServerTypesResponseServerTypesItemPricesList>;
+export const ListServerTypesResponseServerTypesItemPricesList =
+  GetServerTypeResponseServerTypePricesList as any as S.Schema<ListServerTypesResponseServerTypesItemPricesList>;
 
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type ListServerTypesResponseServerTypesItemStorageType = "local" | "network";
@@ -283,9 +282,8 @@ export const ListServerTypesResponseServerTypesItemLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type ListServerTypesResponseServerTypesItemLocationsList =
   Array<GetServerTypeResponseServerTypeLocationsItem>;
-export const ListServerTypesResponseServerTypesItemLocationsList = /*@__PURE__*/ S.Array(
-  GetServerTypeResponseServerTypeLocationsItem,
-) as any as S.Schema<ListServerTypesResponseServerTypesItemLocationsList>;
+export const ListServerTypesResponseServerTypesItemLocationsList =
+  GetServerTypeResponseServerTypeLocationsList as any as S.Schema<ListServerTypesResponseServerTypesItemLocationsList>;
 
 export interface ListServerTypesResponseServerTypesItem {
   /** ID of the Server type. */

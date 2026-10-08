@@ -61,9 +61,7 @@ export const DeleteLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLabPlanRequest" }) as any as S.Schema<DeleteLabPlanRequest>;
 
 export interface DeleteLabPlanResponse {}
-export const DeleteLabPlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLabPlanResponse",
-}) as any as S.Schema<DeleteLabPlanResponse>;
+export const DeleteLabPlanResponse = DeleteLabResponse as any as S.Schema<DeleteLabPlanResponse>;
 
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
@@ -92,9 +90,7 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 
 export interface DeleteScheduleResponse {}
-export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduleResponse",
-}) as any as S.Schema<DeleteScheduleResponse>;
+export const DeleteScheduleResponse = DeleteLabResponse as any as S.Schema<DeleteScheduleResponse>;
 
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
@@ -123,9 +119,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteLabResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface GetImageRequest {
   /** The ID of the target subscription. */
@@ -763,10 +757,8 @@ export const GetLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetLabPlanResponseTagsMap = { [key: string]: string | undefined };
-export const GetLabPlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetLabPlanResponseTagsMap>;
+export const GetLabPlanResponseTagsMap =
+  GetLabResponseTagsMap as any as S.Schema<GetLabPlanResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetLabPlanResponseSystemDataCreatedByType =
@@ -823,16 +815,8 @@ export interface LabPlanPropertiesDefaultConnectionProfile {
   /** The enabled access level for Client Access over RDP. */
   clientRdpAccess?: ConnectionType | (string & {});
 }
-export const LabPlanPropertiesDefaultConnectionProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webSshAccess: S.optional(ConnectionType),
-    webRdpAccess: S.optional(ConnectionType),
-    clientSshAccess: S.optional(ConnectionType),
-    clientRdpAccess: S.optional(ConnectionType),
-  }),
-).annotate({
-  identifier: "LabPlanPropertiesDefaultConnectionProfile",
-}) as any as S.Schema<LabPlanPropertiesDefaultConnectionProfile>;
+export const LabPlanPropertiesDefaultConnectionProfile =
+  LabPropertiesConnectionProfile as any as S.Schema<LabPlanPropertiesDefaultConnectionProfile>;
 
 /** Profile for how to handle shutting down virtual machines. */
 export interface LabPlanPropertiesDefaultAutoShutdownProfile {
@@ -849,18 +833,8 @@ export interface LabPlanPropertiesDefaultAutoShutdownProfile {
   /** The amount of time a VM will idle before it is shutdown if this behavior is enabled. */
   idleDelay?: string;
 }
-export const LabPlanPropertiesDefaultAutoShutdownProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shutdownOnDisconnect: S.optional(EnableState),
-    shutdownWhenNotConnected: S.optional(EnableState),
-    shutdownOnIdle: S.optional(ShutdownOnIdleMode),
-    disconnectDelay: S.optional(S.String),
-    noConnectDelay: S.optional(S.String),
-    idleDelay: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LabPlanPropertiesDefaultAutoShutdownProfile",
-}) as any as S.Schema<LabPlanPropertiesDefaultAutoShutdownProfile>;
+export const LabPlanPropertiesDefaultAutoShutdownProfile =
+  LabPropertiesAutoShutdownProfile as any as S.Schema<LabPlanPropertiesDefaultAutoShutdownProfile>;
 
 /** Profile for how to handle networking for Lab Plans. */
 export interface LabPlanNetworkProfile {
@@ -875,9 +849,8 @@ export const LabPlanNetworkProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
 export type LabPlanPropertiesAllowedRegionsList = Array<string>;
-export const LabPlanPropertiesAllowedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabPlanPropertiesAllowedRegionsList>;
+export const LabPlanPropertiesAllowedRegionsList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<LabPlanPropertiesAllowedRegionsList>;
 
 /** Support contact information and instructions. */
 export interface SupportInfo {
@@ -1090,9 +1063,8 @@ export const OperationResultErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type OperationResultErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const OperationResultErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<OperationResultErrorAdditionalInfoList>;
+export const OperationResultErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<OperationResultErrorAdditionalInfoList>;
 
 /** The error detail. */
 export interface OperationResultError {
@@ -1675,9 +1647,8 @@ export const ImagePropertiesInputTermsStatus = S.String;
 
 /** The available regions of the image in the shared gallery. */
 export type ImagePropertiesInputAvailableRegionsList = Array<string>;
-export const ImagePropertiesInputAvailableRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImagePropertiesInputAvailableRegionsList>;
+export const ImagePropertiesInputAvailableRegionsList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<ImagePropertiesInputAvailableRegionsList>;
 
 /** The operating system state. */
 export type ImagePropertiesInputOsState = "Generalized" | "Specialized";
@@ -1841,16 +1812,12 @@ export const InviteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InviteUserRequest" }) as any as S.Schema<InviteUserRequest>;
 
 export interface InviteUserResponse {}
-export const InviteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InviteUserResponse",
-}) as any as S.Schema<InviteUserResponse>;
+export const InviteUserResponse = DeleteLabResponse as any as S.Schema<InviteUserResponse>;
 
 /** Resource tags. */
 export type LabPlansCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const LabPlansCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabPlansCreateOrUpdateRequestTagsMap>;
+export const LabPlansCreateOrUpdateRequestTagsMap =
+  GetLabResponseTagsMap as any as S.Schema<LabPlansCreateOrUpdateRequestTagsMap>;
 
 /** The identity type. */
 export type LabPlansCreateOrUpdateRequestIdentityType = "SystemAssigned";
@@ -1908,10 +1875,8 @@ export const LabPlansCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabPlansCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const LabPlansCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabPlansCreateOrUpdateResponseTagsMap>;
+export const LabPlansCreateOrUpdateResponseTagsMap =
+  GetLabResponseTagsMap as any as S.Schema<LabPlansCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type LabPlansCreateOrUpdateResponseSystemDataCreatedByType =
@@ -2043,16 +2008,13 @@ export const LabPlansSaveImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabPlansSaveImageRequest" }) as any as S.Schema<LabPlansSaveImageRequest>;
 
 export interface LabPlansSaveImageResponse {}
-export const LabPlansSaveImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LabPlansSaveImageResponse",
-}) as any as S.Schema<LabPlansSaveImageResponse>;
+export const LabPlansSaveImageResponse =
+  DeleteLabResponse as any as S.Schema<LabPlansSaveImageResponse>;
 
 /** Resource tags. */
 export type LabsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const LabsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabsCreateOrUpdateRequestTagsMap>;
+export const LabsCreateOrUpdateRequestTagsMap =
+  GetLabResponseTagsMap as any as S.Schema<LabsCreateOrUpdateRequestTagsMap>;
 
 /** Profile for how to handle shutting down virtual machines. */
 export type LabPropertiesInputAutoShutdownProfile = LabPlanPropertiesDefaultAutoShutdownProfile;
@@ -2269,10 +2231,8 @@ export const LabsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const LabsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabsCreateOrUpdateResponseTagsMap>;
+export const LabsCreateOrUpdateResponseTagsMap =
+  GetLabResponseTagsMap as any as S.Schema<LabsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type LabsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -2606,10 +2566,7 @@ export const ListLabPlanByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabPlanTagsMap = { [key: string]: string | undefined };
-export const LabPlanTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LabPlanTagsMap>;
+export const LabPlanTagsMap = GetLabResponseTagsMap as any as S.Schema<LabPlanTagsMap>;
 
 /** The type of identity that created the resource. */
 export type LabPlanSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -3005,9 +2962,8 @@ export const LabServicesSkuCapabilitiesList = /*@__PURE__*/ S.Array(
 
 /** List of locations that are available for a size. */
 export type LabServicesSkuLocationsList = Array<string>;
-export const LabServicesSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabServicesSkuLocationsList>;
+export const LabServicesSkuLocationsList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<LabServicesSkuLocationsList>;
 
 /** The array of costs of a lab services SKU. */
 export interface LabServicesSkuCost {
@@ -3038,9 +2994,8 @@ export const LabServicesSkuRestrictionsType = S.String;
 
 /** The values of the restriction. */
 export type LabServicesSkuRestrictionsValuesList = Array<string>;
-export const LabServicesSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabServicesSkuRestrictionsValuesList>;
+export const LabServicesSkuRestrictionsValuesList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<LabServicesSkuRestrictionsValuesList>;
 
 /** The reason for the restriction. */
 export type LabServicesSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
@@ -3159,9 +3114,8 @@ export const UsageUnit = S.String;
 
 /** The instances of the resource. */
 export type UsageNameSkuInstancesList = Array<string>;
-export const UsageNameSkuInstancesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UsageNameSkuInstancesList>;
+export const UsageNameSkuInstancesList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<UsageNameSkuInstancesList>;
 
 /** The Usage Names. */
 export interface UsageName {
@@ -3463,9 +3417,7 @@ export const PublishLabRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublishLabRequest" }) as any as S.Schema<PublishLabRequest>;
 
 export interface PublishLabResponse {}
-export const PublishLabResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PublishLabResponse",
-}) as any as S.Schema<PublishLabResponse>;
+export const PublishLabResponse = DeleteLabResponse as any as S.Schema<PublishLabResponse>;
 
 export interface RedeployVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -3496,9 +3448,8 @@ export const RedeployVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeployVirtualMachineRequest>;
 
 export interface RedeployVirtualMachineResponse {}
-export const RedeployVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RedeployVirtualMachineResponse",
-}) as any as S.Schema<RedeployVirtualMachineResponse>;
+export const RedeployVirtualMachineResponse =
+  DeleteLabResponse as any as S.Schema<RedeployVirtualMachineResponse>;
 
 export interface ResetVirtualMachinePasswordRequest {
   /** The ID of the target subscription. */
@@ -3669,9 +3620,8 @@ export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartVirtualMachineRequest>;
 
 export interface StartVirtualMachineResponse {}
-export const StartVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartVirtualMachineResponse",
-}) as any as S.Schema<StartVirtualMachineResponse>;
+export const StartVirtualMachineResponse =
+  DeleteLabResponse as any as S.Schema<StartVirtualMachineResponse>;
 
 export interface StopVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -3702,9 +3652,8 @@ export const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopVirtualMachineRequest>;
 
 export interface StopVirtualMachineResponse {}
-export const StopVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopVirtualMachineResponse",
-}) as any as S.Schema<StopVirtualMachineResponse>;
+export const StopVirtualMachineResponse =
+  DeleteLabResponse as any as S.Schema<StopVirtualMachineResponse>;
 
 export interface SyncLabGroupRequest {
   /** The ID of the target subscription. */
@@ -3730,9 +3679,7 @@ export const SyncLabGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncLabGroupRequest" }) as any as S.Schema<SyncLabGroupRequest>;
 
 export interface SyncLabGroupResponse {}
-export const SyncLabGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SyncLabGroupResponse",
-}) as any as S.Schema<SyncLabGroupResponse>;
+export const SyncLabGroupResponse = DeleteLabResponse as any as S.Schema<SyncLabGroupResponse>;
 
 /** Property enabled state. */
 export type ImageUpdatePropertiesEnabledState = "Enabled" | "Disabled";
@@ -3846,9 +3793,8 @@ export const UpdateImageResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabRequestTagsList = Array<string>;
-export const UpdateLabRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLabRequestTagsList>;
+export const UpdateLabRequestTagsList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<UpdateLabRequestTagsList>;
 
 /** Profile for how to handle shutting down virtual machines. */
 export type LabUpdatePropertiesInputAutoShutdownProfile =
@@ -3923,10 +3869,8 @@ export const UpdateLabRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLabResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLabResponseTagsMap>;
+export const UpdateLabResponseTagsMap =
+  GetLabResponseTagsMap as any as S.Schema<UpdateLabResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateLabResponseSystemDataCreatedByType =
@@ -4002,9 +3946,8 @@ export const UpdateLabResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabPlanRequestTagsList = Array<string>;
-export const UpdateLabPlanRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLabPlanRequestTagsList>;
+export const UpdateLabPlanRequestTagsList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<UpdateLabPlanRequestTagsList>;
 
 /** Connection profile for how users connect to lab virtual machines. */
 export type LabPlanUpdatePropertiesDefaultConnectionProfile =
@@ -4020,9 +3963,8 @@ export const LabPlanUpdatePropertiesDefaultAutoShutdownProfile =
 
 /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
 export type LabPlanUpdatePropertiesAllowedRegionsList = Array<string>;
-export const LabPlanUpdatePropertiesAllowedRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabPlanUpdatePropertiesAllowedRegionsList>;
+export const LabPlanUpdatePropertiesAllowedRegionsList =
+  ImagePropertiesAvailableRegionsList as any as S.Schema<LabPlanUpdatePropertiesAllowedRegionsList>;
 
 /** Lab plan resource properties for updates */
 export interface LabPlanUpdateProperties {
@@ -4104,10 +4046,8 @@ export const UpdateLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabPlanResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLabPlanResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLabPlanResponseTagsMap>;
+export const UpdateLabPlanResponseTagsMap =
+  GetLabResponseTagsMap as any as S.Schema<UpdateLabPlanResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateLabPlanResponseSystemDataCreatedByType =
@@ -4593,9 +4533,8 @@ export const VirtualMachinesReimageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachinesReimageRequest>;
 
 export interface VirtualMachinesReimageResponse {}
-export const VirtualMachinesReimageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VirtualMachinesReimageResponse",
-}) as any as S.Schema<VirtualMachinesReimageResponse>;
+export const VirtualMachinesReimageResponse =
+  DeleteLabResponse as any as S.Schema<VirtualMachinesReimageResponse>;
 
 export type DeleteLabError = AzureOpError;
 /** Deletes a lab resource. Operation to delete a lab resource. */

@@ -130,9 +130,7 @@ export const SearchContextResponseResultsMessagesItemContextMessagesBeforeList =
 /** Messages after the current message. */
 export type SearchContextResponseResultsMessagesItemContextMessagesAfterList = Array<unknown>;
 export const SearchContextResponseResultsMessagesItemContextMessagesAfterList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<SearchContextResponseResultsMessagesItemContextMessagesAfterList>;
+  SearchContextResponseResultsMessagesItemContextMessagesBeforeList as any as S.Schema<SearchContextResponseResultsMessagesItemContextMessagesAfterList>;
 
 export interface SearchContextResponseResultsMessagesItemContextMessages {
   /** Messages before the current message, if applicable. */
@@ -260,9 +258,8 @@ export const SearchContextResponseResultsFilesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchContextResponseResultsFilesList>;
 
 export type SearchContextResponseResultsEnterpriseList = Array<unknown>;
-export const SearchContextResponseResultsEnterpriseList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SearchContextResponseResultsEnterpriseList>;
+export const SearchContextResponseResultsEnterpriseList =
+  SearchContextResponseResultsMessagesItemBlocksList as any as S.Schema<SearchContextResponseResultsEnterpriseList>;
 
 export interface SearchContextResponseResultsChannelsItem {
   /** ID of the workspace in which the channel was created. */
@@ -411,9 +408,8 @@ export const SearchInfoResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of messages to rotate through as a loading indicator. Maximum of 10 messages. */
 export type SetStatusRequestLoadingMessagesList = Array<string>;
-export const SetStatusRequestLoadingMessagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SetStatusRequestLoadingMessagesList>;
+export const SetStatusRequestLoadingMessagesList =
+  SearchContextRequestTermClausesList as any as S.Schema<SetStatusRequestLoadingMessagesList>;
 
 export interface SetStatusRequest {
   /** Channel ID containing the assistant thread. */
@@ -506,11 +502,7 @@ export interface SetTitleResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const SetTitleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-  }),
-).annotate({ identifier: "SetTitleResponse" }) as any as S.Schema<SetTitleResponse>;
+export const SetTitleResponse = SetStatusResponse as any as S.Schema<SetTitleResponse>;
 
 export type SearchContextError = SlackOpError;
 /** Searches messages, files, channels and users across your Slack organization. Required scopes -- user: `search:read.public`, `search:read.private`, `search:read.im`, `search:read.mpim`, `search:read.files`, `search:read.users`; bot: `search:read.public`, `search:read.files`, `search:read.users` Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- Internal error. - `rate_limited` -- Rate limited. - `missing_query` -- Missing query. - `query_too_long` -- Query too long. - `feature_not_enabled` -- The feature is not available on the current workspace. - `invalid_action_token` -- The `action_token` provided is not valid. - `invalid_cursor` -- The cursormark provided is not valid. - `context_channel_not_found` -- Specified `context_channel_id` is invalid or the user lacks permission to view it. - `missing_scope` -- The requested channel types are not allowed by the provided scopes. - `assistant_search_context_disabled` -- We're having issues returning your search results. Please wait and try again. See https://docs.slack.dev/reference/methods/assistant.search.context */

@@ -991,14 +991,8 @@ export interface SandboxCreateConnectTokenV2Response {
   url?: string;
   token?: string;
 }
-export const SandboxCreateConnectTokenV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SandboxCreateConnectTokenV2Response",
-}) as any as S.Schema<SandboxCreateConnectTokenV2Response>;
+export const SandboxCreateConnectTokenV2Response =
+  SandboxCreateConnectTokenResponse as any as S.Schema<SandboxCreateConnectTokenV2Response>;
 
 export interface SandboxCreateV2Request {
   appId?: string;
@@ -1179,15 +1173,8 @@ export interface SandboxGetExitSnapshotV2Response {
   pending?: SandboxGetExitSnapshotResponsePending;
   error?: SandboxGetExitSnapshotResponseError;
 }
-export const SandboxGetExitSnapshotV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.optional(SandboxGetExitSnapshotResponseSuccess),
-    pending: S.optional(SandboxGetExitSnapshotResponsePending),
-    error: S.optional(SandboxGetExitSnapshotResponseError),
-  }),
-).annotate({
-  identifier: "SandboxGetExitSnapshotV2Response",
-}) as any as S.Schema<SandboxGetExitSnapshotV2Response>;
+export const SandboxGetExitSnapshotV2Response =
+  SandboxGetExitSnapshotResponse as any as S.Schema<SandboxGetExitSnapshotV2Response>;
 
 export interface SandboxGetFromNameRequest {
   sandboxName?: string;
@@ -1240,14 +1227,8 @@ export interface SandboxGetFromNameV2Response {
   sandboxId?: string;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxGetFromNameV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sandboxId: S.optional(S.String),
-    metadata: S.optional(SandboxHandleMetadata),
-  }),
-).annotate({
-  identifier: "SandboxGetFromNameV2Response",
-}) as any as S.Schema<SandboxGetFromNameV2Response>;
+export const SandboxGetFromNameV2Response =
+  SandboxGetFromNameResponse as any as S.Schema<SandboxGetFromNameV2Response>;
 
 export interface SandboxGetResourceUsageRequest {
   sandboxId?: string;
@@ -1382,14 +1363,8 @@ export interface SandboxGetTunnelsV2Response {
   result?: GenericResult;
   tunnels?: TunnelDataList;
 }
-export const SandboxGetTunnelsV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(GenericResult),
-    tunnels: S.optional(TunnelDataList),
-  }),
-).annotate({
-  identifier: "SandboxGetTunnelsV2Response",
-}) as any as S.Schema<SandboxGetTunnelsV2Response>;
+export const SandboxGetTunnelsV2Response =
+  SandboxGetTunnelsResponse as any as S.Schema<SandboxGetTunnelsV2Response>;
 
 export interface SandboxListV2Request {
   appId?: string;
@@ -1411,11 +1386,7 @@ export const SandboxListV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxListV2Response {
   sandboxes?: SandboxInfoList;
 }
-export const SandboxListV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sandboxes: S.optional(SandboxInfoList),
-  }),
-).annotate({ identifier: "SandboxListV2Response" }) as any as S.Schema<SandboxListV2Response>;
+export const SandboxListV2Response = ListSandboxResponse as any as S.Schema<SandboxListV2Response>;
 
 export interface SandboxRestoreV2Request {
   snapshotId?: string;
@@ -1502,15 +1473,8 @@ export interface SandboxSnapshotFsResponse {
   /** Metadata may be empty since we may skip it for performance reasons. */
   imageMetadata?: ImageMetadata;
 }
-export const SandboxSnapshotFsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageId: S.optional(S.String),
-    result: S.optional(GenericResult),
-    imageMetadata: S.optional(ImageMetadata),
-  }),
-).annotate({
-  identifier: "SandboxSnapshotFsResponse",
-}) as any as S.Schema<SandboxSnapshotFsResponse>;
+export const SandboxSnapshotFsResponse =
+  GetSandboxSnapshotFsAsyncResponse as any as S.Schema<SandboxSnapshotFsResponse>;
 
 export interface SandboxSnapshotFsAsyncRequest {
   sandboxId?: string;
@@ -1528,13 +1492,8 @@ export const SandboxSnapshotFsAsyncRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxSnapshotFsAsyncResponse {
   imageId?: string;
 }
-export const SandboxSnapshotFsAsyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SandboxSnapshotFsAsyncResponse",
-}) as any as S.Schema<SandboxSnapshotFsAsyncResponse>;
+export const SandboxSnapshotFsAsyncResponse =
+  SandboxGetExitSnapshotResponseSuccess as any as S.Schema<SandboxSnapshotFsAsyncResponse>;
 
 export interface SandboxStdinWriteRequest {
   sandboxId?: string;
@@ -1554,9 +1513,8 @@ export const SandboxStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxStdinWriteRequest" }) as any as S.Schema<SandboxStdinWriteRequest>;
 
 export interface SandboxStdinWriteResponse {}
-export const SandboxStdinWriteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SandboxStdinWriteResponse",
-}) as any as S.Schema<SandboxStdinWriteResponse>;
+export const SandboxStdinWriteResponse =
+  SandboxSetNameResponse as any as S.Schema<SandboxStdinWriteResponse>;
 
 export interface SandboxTagsGetV2Request {
   sandboxId?: string;
@@ -1570,11 +1528,8 @@ export const SandboxTagsGetV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxTagsGetV2Response {
   tags?: SandboxTagList;
 }
-export const SandboxTagsGetV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(SandboxTagList),
-  }),
-).annotate({ identifier: "SandboxTagsGetV2Response" }) as any as S.Schema<SandboxTagsGetV2Response>;
+export const SandboxTagsGetV2Response =
+  GetSandboxTagResponse as any as S.Schema<SandboxTagsGetV2Response>;
 
 export interface SandboxTagsSetV2Request {
   environmentName?: string;
@@ -1590,9 +1545,8 @@ export const SandboxTagsSetV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxTagsSetV2Request" }) as any as S.Schema<SandboxTagsSetV2Request>;
 
 export interface SandboxTagsSetV2Response {}
-export const SandboxTagsSetV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SandboxTagsSetV2Response",
-}) as any as S.Schema<SandboxTagsSetV2Response>;
+export const SandboxTagsSetV2Response =
+  SandboxSetNameResponse as any as S.Schema<SandboxTagsSetV2Response>;
 
 export interface SandboxTerminateV2Request {
   sandboxId?: string;
@@ -1680,9 +1634,8 @@ export const SetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSandboxTagRequest" }) as any as S.Schema<SetSandboxTagRequest>;
 
 export interface SetSandboxTagResponse {}
-export const SetSandboxTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetSandboxTagResponse",
-}) as any as S.Schema<SetSandboxTagResponse>;
+export const SetSandboxTagResponse =
+  SandboxSetNameResponse as any as S.Schema<SetSandboxTagResponse>;
 
 export interface TerminateSandboxRequest {
   sandboxId?: string;
@@ -1717,12 +1670,7 @@ export interface WaitSandboxResponse {
   result?: GenericResult;
   metadata?: SandboxHandleMetadata;
 }
-export const WaitSandboxResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(GenericResult),
-    metadata: S.optional(SandboxHandleMetadata),
-  }),
-).annotate({ identifier: "WaitSandboxResponse" }) as any as S.Schema<WaitSandboxResponse>;
+export const WaitSandboxResponse = SandboxWaitV2Response as any as S.Schema<WaitSandboxResponse>;
 
 export interface WaitSandboxSnapshotRequest {
   snapshotId?: string;

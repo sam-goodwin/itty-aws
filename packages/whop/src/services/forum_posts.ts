@@ -375,9 +375,8 @@ export const ForumPostListItemAttachmentsItem = ForumPostAttachmentsItem;
 
 /** All file attachments on this post, such as images, documents, and videos. */
 export type ForumPostListItemAttachmentsList = Array<ForumPostAttachmentsItem>;
-export const ForumPostListItemAttachmentsList = /*@__PURE__*/ S.Array(
-  ForumPostAttachmentsItem,
-) as any as S.Schema<ForumPostListItemAttachmentsList>;
+export const ForumPostListItemAttachmentsList =
+  ForumPostAttachmentsList as any as S.Schema<ForumPostListItemAttachmentsList>;
 
 /** The user who authored this forum post. */
 export type ForumPostListItemUser = ForumPostUser;
@@ -414,24 +413,7 @@ export interface ForumPostListItem {
   /** The total number of times this post has been viewed by users. */
   view_count: number | null;
 }
-export const ForumPostListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachments: ForumPostListItemAttachmentsList,
-    comment_count: S.Number,
-    content: S.NullOr(S.String),
-    created_at: S.String,
-    id: S.String,
-    is_edited: S.Boolean,
-    is_pinned: S.Boolean,
-    is_poster_admin: S.Boolean,
-    like_count: S.NullOr(S.Number),
-    parent_id: S.NullOr(S.String),
-    title: S.NullOr(S.String),
-    updated_at: S.String,
-    user: ForumPostUser,
-    view_count: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "ForumPostListItem" }) as any as S.Schema<ForumPostListItem>;
+export const ForumPostListItem = ForumPost as any as S.Schema<ForumPostListItem>;
 
 /** A list of nodes. */
 export type ListForumPostResponseDataList = Array<ForumPostListItem>;
@@ -478,9 +460,8 @@ export const UpdateForumPostRequestAttachmentsItem = CreateForumPostRequestAttac
 
 /** A replacement list of file attachments for this post, such as images or videos. */
 export type UpdateForumPostRequestAttachmentsList = Array<CreateForumPostRequestAttachmentsItem>;
-export const UpdateForumPostRequestAttachmentsList = /*@__PURE__*/ S.Array(
-  CreateForumPostRequestAttachmentsItem,
-) as any as S.Schema<UpdateForumPostRequestAttachmentsList>;
+export const UpdateForumPostRequestAttachmentsList =
+  CreateForumPostRequestAttachmentsList as any as S.Schema<UpdateForumPostRequestAttachmentsList>;
 
 export interface UpdateForumPostRequest {
   /** The unique identifier of the forum post to update. */

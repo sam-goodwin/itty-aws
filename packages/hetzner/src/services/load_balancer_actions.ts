@@ -309,9 +309,8 @@ export const AddLoadBalancerTargetResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type AddLoadBalancerTargetResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const AddLoadBalancerTargetResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<AddLoadBalancerTargetResponseActionResourcesList>;
+export const AddLoadBalancerTargetResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<AddLoadBalancerTargetResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AddLoadBalancerTargetResponseActionError = AddLoadBalancerServiceResponseActionError;
@@ -396,9 +395,8 @@ export const AttachLoadBalancerToNetworkResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type AttachLoadBalancerToNetworkResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const AttachLoadBalancerToNetworkResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<AttachLoadBalancerToNetworkResponseActionResourcesList>;
+export const AttachLoadBalancerToNetworkResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<AttachLoadBalancerToNetworkResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachLoadBalancerToNetworkResponseActionError =
@@ -483,9 +481,8 @@ export const ChangeLoadBalancerAlgorithmResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerAlgorithmResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const ChangeLoadBalancerAlgorithmResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<ChangeLoadBalancerAlgorithmResponseActionResourcesList>;
+export const ChangeLoadBalancerAlgorithmResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerAlgorithmResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerAlgorithmResponseActionError =
@@ -569,9 +566,8 @@ export const ChangeLoadBalancerDnsPtrResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerDnsPtrResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const ChangeLoadBalancerDnsPtrResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<ChangeLoadBalancerDnsPtrResponseActionResourcesList>;
+export const ChangeLoadBalancerDnsPtrResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerDnsPtrResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerDnsPtrResponseActionError = AddLoadBalancerServiceResponseActionError;
@@ -651,9 +647,8 @@ export const ChangeLoadBalancerProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerProtectionResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const ChangeLoadBalancerProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<ChangeLoadBalancerProtectionResponseActionResourcesList>;
+export const ChangeLoadBalancerProtectionResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerProtectionResponseActionError =
@@ -732,9 +727,8 @@ export const ChangeLoadBalancerTypeResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeLoadBalancerTypeResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const ChangeLoadBalancerTypeResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<ChangeLoadBalancerTypeResponseActionResourcesList>;
+export const ChangeLoadBalancerTypeResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ChangeLoadBalancerTypeResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeLoadBalancerTypeResponseActionError = AddLoadBalancerServiceResponseActionError;
@@ -813,9 +807,8 @@ export const DeleteLoadBalancerServiceResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DeleteLoadBalancerServiceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const DeleteLoadBalancerServiceResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<DeleteLoadBalancerServiceResponseActionResourcesList>;
+export const DeleteLoadBalancerServiceResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<DeleteLoadBalancerServiceResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteLoadBalancerServiceResponseActionError =
@@ -896,9 +889,8 @@ export const DetachLoadBalancerFromNetworkResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DetachLoadBalancerFromNetworkResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const DetachLoadBalancerFromNetworkResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<DetachLoadBalancerFromNetworkResponseActionResourcesList>;
+export const DetachLoadBalancerFromNetworkResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<DetachLoadBalancerFromNetworkResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachLoadBalancerFromNetworkResponseActionError =
@@ -983,9 +975,8 @@ export const DisableLoadBalancerPublicInterfaceResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type DisableLoadBalancerPublicInterfaceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const DisableLoadBalancerPublicInterfaceResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<DisableLoadBalancerPublicInterfaceResponseActionResourcesList>;
+export const DisableLoadBalancerPublicInterfaceResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<DisableLoadBalancerPublicInterfaceResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableLoadBalancerPublicInterfaceResponseActionError =
@@ -1067,9 +1058,8 @@ export const EnableLoadBalancerPublicInterfaceResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type EnableLoadBalancerPublicInterfaceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const EnableLoadBalancerPublicInterfaceResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<EnableLoadBalancerPublicInterfaceResponseActionResourcesList>;
+export const EnableLoadBalancerPublicInterfaceResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<EnableLoadBalancerPublicInterfaceResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableLoadBalancerPublicInterfaceResponseActionError =
@@ -1145,9 +1135,8 @@ export const GetLoadBalancersActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetLoadBalancersActionResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const GetLoadBalancersActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<GetLoadBalancersActionResponseActionResourcesList>;
+export const GetLoadBalancersActionResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<GetLoadBalancersActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetLoadBalancersActionResponseActionError = AddLoadBalancerServiceResponseActionError;
@@ -1269,9 +1258,8 @@ export const ListLoadBalancerActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListLoadBalancerActionsResponseActionsItemResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const ListLoadBalancerActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<ListLoadBalancerActionsResponseActionsItemResourcesList>;
+export const ListLoadBalancerActionsResponseActionsItemResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ListLoadBalancerActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListLoadBalancerActionsResponseActionsItemError =
@@ -1372,9 +1360,8 @@ export const ListLoadBalancerActionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLoadBalancerActionsResponse>;
 
 export type ListLoadBalancersActionsRequestIdList = Array<number>;
-export const ListLoadBalancersActionsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListLoadBalancersActionsRequestIdList>;
+export const ListLoadBalancersActionsRequestIdList =
+  AddLoadBalancerServiceRequestHttpCertificatesList as any as S.Schema<ListLoadBalancersActionsRequestIdList>;
 
 export type ListLoadBalancersActionsRequestSortItem =
   | "id"
@@ -1448,9 +1435,8 @@ export const ListLoadBalancersActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListLoadBalancersActionsResponseActionsItemResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const ListLoadBalancersActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<ListLoadBalancersActionsResponseActionsItemResourcesList>;
+export const ListLoadBalancersActionsResponseActionsItemResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<ListLoadBalancersActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListLoadBalancersActionsResponseActionsItemError =
@@ -1573,9 +1559,8 @@ export const RemoveLoadBalancerTargetResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type RemoveLoadBalancerTargetResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const RemoveLoadBalancerTargetResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<RemoveLoadBalancerTargetResponseActionResourcesList>;
+export const RemoveLoadBalancerTargetResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<RemoveLoadBalancerTargetResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveLoadBalancerTargetResponseActionError = AddLoadBalancerServiceResponseActionError;
@@ -1636,9 +1621,8 @@ export const UpdateLoadBalancerServiceRequestHealthCheckProtocol = S.String;
 
 /** List of returned HTTP status codes in order to pass the health check. Supports the wildcards `?` for exactly one character and `*` for multiple ones. */
 export type UpdateLoadBalancerServiceRequestHealthCheckHttpStatusCodesList = Array<string>;
-export const UpdateLoadBalancerServiceRequestHealthCheckHttpStatusCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateLoadBalancerServiceRequestHealthCheckHttpStatusCodesList>;
+export const UpdateLoadBalancerServiceRequestHealthCheckHttpStatusCodesList =
+  AddLoadBalancerServiceRequestHealthCheckHttpStatusCodesList as any as S.Schema<UpdateLoadBalancerServiceRequestHealthCheckHttpStatusCodesList>;
 
 /** Additional configuration for protocol http. */
 export interface UpdateLoadBalancerServiceRequestHealthCheckHttp {
@@ -1653,17 +1637,8 @@ export interface UpdateLoadBalancerServiceRequestHealthCheckHttp {
   /** Use HTTPS for health check. */
   tls?: boolean;
 }
-export const UpdateLoadBalancerServiceRequestHealthCheckHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.NullOr(S.String)),
-    path: S.optional(S.String),
-    response: S.optional(S.String),
-    status_codes: S.optional(UpdateLoadBalancerServiceRequestHealthCheckHttpStatusCodesList),
-    tls: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateLoadBalancerServiceRequestHealthCheckHttp",
-}) as any as S.Schema<UpdateLoadBalancerServiceRequestHealthCheckHttp>;
+export const UpdateLoadBalancerServiceRequestHealthCheckHttp =
+  AddLoadBalancerServiceRequestHealthCheckHttp as any as S.Schema<UpdateLoadBalancerServiceRequestHealthCheckHttp>;
 
 export interface UpdateLoadBalancerServiceRequestHealthCheck {
   /** Type of the health check. */
@@ -1694,9 +1669,8 @@ export const UpdateLoadBalancerServiceRequestHealthCheck = /*@__PURE__*/ S.suspe
 
 /** IDs of the Certificates to use for TLS/SSL termination by the Load Balancer; empty for TLS/SSL passthrough or if `protocol` is `http`. */
 export type UpdateLoadBalancerServiceRequestHttpCertificatesList = Array<number>;
-export const UpdateLoadBalancerServiceRequestHttpCertificatesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateLoadBalancerServiceRequestHttpCertificatesList>;
+export const UpdateLoadBalancerServiceRequestHttpCertificatesList =
+  AddLoadBalancerServiceRequestHttpCertificatesList as any as S.Schema<UpdateLoadBalancerServiceRequestHttpCertificatesList>;
 
 /** Configuration option for protocols http and https. */
 export interface UpdateLoadBalancerServiceRequestHttp {
@@ -1713,18 +1687,8 @@ export interface UpdateLoadBalancerServiceRequestHttp {
   /** Use sticky sessions. Only available if `protocol` is `http` or `https`. */
   sticky_sessions?: boolean;
 }
-export const UpdateLoadBalancerServiceRequestHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie_name: S.optional(S.String),
-    cookie_lifetime: S.optional(S.Number),
-    timeout_idle: S.optional(S.Number),
-    certificates: S.optional(UpdateLoadBalancerServiceRequestHttpCertificatesList),
-    redirect_http: S.optional(S.Boolean),
-    sticky_sessions: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateLoadBalancerServiceRequestHttp",
-}) as any as S.Schema<UpdateLoadBalancerServiceRequestHttp>;
+export const UpdateLoadBalancerServiceRequestHttp =
+  AddLoadBalancerServiceRequestHttp as any as S.Schema<UpdateLoadBalancerServiceRequestHttp>;
 
 export interface UpdateLoadBalancerServiceRequest {
   /** ID of the Load Balancer. */
@@ -1769,9 +1733,8 @@ export const UpdateLoadBalancerServiceResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type UpdateLoadBalancerServiceResponseActionResourcesList =
   Array<AddLoadBalancerServiceResponseActionResourcesItem>;
-export const UpdateLoadBalancerServiceResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AddLoadBalancerServiceResponseActionResourcesItem,
-) as any as S.Schema<UpdateLoadBalancerServiceResponseActionResourcesList>;
+export const UpdateLoadBalancerServiceResponseActionResourcesList =
+  AddLoadBalancerServiceResponseActionResourcesList as any as S.Schema<UpdateLoadBalancerServiceResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UpdateLoadBalancerServiceResponseActionError =

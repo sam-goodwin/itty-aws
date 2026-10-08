@@ -1325,11 +1325,7 @@ export interface AddQuorumMember {
   /** Required. The public key associated with the 2FA key for the new quorum member to add. Public keys must be associated with RSA 2048 keys. */
   twoFactorPublicKeyPem?: string;
 }
-export const AddQuorumMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    twoFactorPublicKeyPem: S.optional(S.String),
-  }),
-).annotate({ identifier: "AddQuorumMember" }) as any as S.Schema<AddQuorumMember>;
+export const AddQuorumMember = RemoveQuorumMember as any as S.Schema<AddQuorumMember>;
 
 /** A SingleTenantHsmInstanceProposal represents a proposal to perform an operation on a SingleTenantHsmInstance. */
 export interface SingleTenantHsmInstanceProposal {
@@ -1618,9 +1614,7 @@ export const DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = DisableSingleTenantHsmInstance as any as S.Schema<Empty>;
 
 /** Request message for KeyManagementService.DestroyCryptoKeyVersion. */
 export type DestroyCryptoKeyVersionRequest = DisableSingleTenantHsmInstance;
@@ -4044,13 +4038,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsEkmConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4315,9 +4304,8 @@ export const VerifyConnectivityProjectsLocationsEkmConnectionsRequest = /*@__PUR
 
 /** Response message for EkmService.VerifyConnectivity. */
 export interface VerifyConnectivityResponse {}
-export const VerifyConnectivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VerifyConnectivityResponse",
-}) as any as S.Schema<VerifyConnectivityResponse>;
+export const VerifyConnectivityResponse =
+  DisableSingleTenantHsmInstance as any as S.Schema<VerifyConnectivityResponse>;
 
 export type ApproveProjectsLocationsSingleTenantHsmInstancesProposalsError =
   | NotFound

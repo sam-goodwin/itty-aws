@@ -104,11 +104,8 @@ export const ConversationsQueueDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsQueueDestroyRequest>;
 
 export interface ConversationsQueueDestroyResponse {}
-export const ConversationsQueueDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConversationsQueueDestroyResponse",
-}) as any as S.Schema<ConversationsQueueDestroyResponse>;
+export const ConversationsQueueDestroyResponse =
+  ConversationsCancelPartialUpdateResponse as any as S.Schema<ConversationsQueueDestroyResponse>;
 
 export type CreateConversationRequestContextualToolsMap = { [key: string]: unknown | undefined };
 export const CreateConversationRequestContextualToolsMap = /*@__PURE__*/ S.Record(
@@ -166,10 +163,8 @@ export const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConversationRequest>;
 
 export type MessageContextualToolsMap = { [key: string]: unknown | undefined };
-export const MessageContextualToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MessageContextualToolsMap>;
+export const MessageContextualToolsMap =
+  CreateConversationRequestContextualToolsMap as any as S.Schema<MessageContextualToolsMap>;
 
 /** Serializer for appending a message to an existing conversation without triggering AI processing. */
 export interface Message {
@@ -380,10 +375,8 @@ export type ConversationTopicEnum =
 export const ConversationTopicEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateConversationRequestContextualToolsMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -435,10 +428,8 @@ export type ConversationTypeEnum = "assistant" | "tool_call" | "deep_research" |
 export const ConversationTypeEnum = S.String;
 
 export type ConversationMessagesItemMap = { [key: string]: unknown | undefined };
-export const ConversationMessagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversationMessagesItemMap>;
+export const ConversationMessagesItemMap =
+  CreateConversationRequestContextualToolsMap as any as S.Schema<ConversationMessagesItemMap>;
 
 export type ConversationMessagesList = Array<ConversationMessagesItemMap>;
 export const ConversationMessagesList = /*@__PURE__*/ S.Array(
@@ -450,32 +441,25 @@ export type ConversationAgentRuntimeEnum = "langgraph" | "sandbox";
 export const ConversationAgentRuntimeEnum = S.String;
 
 export type ConversationPendingApprovalsItemMap = { [key: string]: unknown | undefined };
-export const ConversationPendingApprovalsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversationPendingApprovalsItemMap>;
+export const ConversationPendingApprovalsItemMap =
+  CreateConversationRequestContextualToolsMap as any as S.Schema<ConversationPendingApprovalsItemMap>;
 
 /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
 export type ConversationPendingApprovalsList = Array<ConversationPendingApprovalsItemMap>;
-export const ConversationPendingApprovalsList = /*@__PURE__*/ S.Array(
-  ConversationPendingApprovalsItemMap,
-) as any as S.Schema<ConversationPendingApprovalsList>;
+export const ConversationPendingApprovalsList =
+  ConversationMessagesList as any as S.Schema<ConversationPendingApprovalsList>;
 
 /** * `acp` - ACP * `pi` - Pi */
 export type TaskRuntimeEnum = "acp" | "pi";
 export const TaskRuntimeEnum = S.String;
 
 export type ConversationTaskJsonSchemaMap = { [key: string]: unknown | undefined };
-export const ConversationTaskJsonSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversationTaskJsonSchemaMap>;
+export const ConversationTaskJsonSchemaMap =
+  CreateConversationRequestContextualToolsMap as any as S.Schema<ConversationTaskJsonSchemaMap>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+export const TaskUserBasicInfoHedgehogConfigMap =
+  CreateConversationRequestContextualToolsMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
 
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {

@@ -383,13 +383,7 @@ export interface CostCategoryValues {
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
-export const CostCategoryValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Values: S.optional(Values),
-    MatchOptions: S.optional(MatchOptions),
-  }),
-).annotate({ identifier: "CostCategoryValues" }) as any as S.Schema<CostCategoryValues>;
+export const CostCategoryValues = TagValues as any as S.Schema<CostCategoryValues>;
 export interface Expression {
   Or?: Expression[];
   And?: Expression[];
@@ -467,7 +461,7 @@ export const CreateAnomalyMonitorResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnomalyMonitorResponse>;
 export type Arn = string;
 export type MonitorArnList = string[];
-export const MonitorArnList = /*@__PURE__*/ S.Array(S.String);
+export const MonitorArnList = Values as any as S.Schema<MonitorArnList>;
 export type SubscriberAddress = string;
 export type SubscriberType = "EMAIL" | "SNS" | (string & {});
 export const SubscriberType = S.String;
@@ -575,7 +569,8 @@ export const CostCategoryRule = /*@__PURE__*/ S.suspend(() =>
 export type CostCategoryRulesList = CostCategoryRule[];
 export const CostCategoryRulesList = /*@__PURE__*/ S.Array(CostCategoryRule);
 export type CostCategorySplitChargeRuleTargetsList = string[];
-export const CostCategorySplitChargeRuleTargetsList = /*@__PURE__*/ S.Array(S.String);
+export const CostCategorySplitChargeRuleTargetsList =
+  Values as any as S.Schema<CostCategorySplitChargeRuleTargetsList>;
 export type CostCategorySplitChargeMethod = "FIXED" | "PROPORTIONAL" | "EVEN" | (string & {});
 export const CostCategorySplitChargeMethod = S.String;
 
@@ -583,7 +578,8 @@ export type CostCategorySplitChargeRuleParameterType = "ALLOCATION_PERCENTAGES" 
 export const CostCategorySplitChargeRuleParameterType = S.String;
 
 export type CostCategorySplitChargeRuleParameterValuesList = string[];
-export const CostCategorySplitChargeRuleParameterValuesList = /*@__PURE__*/ S.Array(S.String);
+export const CostCategorySplitChargeRuleParameterValuesList =
+  Values as any as S.Schema<CostCategorySplitChargeRuleParameterValuesList>;
 export interface CostCategorySplitChargeRuleParameter {
   Type: CostCategorySplitChargeRuleParameterType;
   Values: string[];
@@ -951,7 +947,7 @@ export type Granularity = "DAILY" | "MONTHLY" | "HOURLY" | (string & {});
 export const Granularity = S.String;
 
 export type UsageServices = string[];
-export const UsageServices = /*@__PURE__*/ S.Array(S.String);
+export const UsageServices = Values as any as S.Schema<UsageServices>;
 export type ApproximationDimension = "SERVICE" | "RESOURCE" | (string & {});
 export const ApproximationDimension = S.String;
 
@@ -1156,7 +1152,7 @@ export type SavingsPlansToAdd = SavingsPlans[];
 export const SavingsPlansToAdd = /*@__PURE__*/ S.Array(SavingsPlans);
 export type SavingsPlansId = string;
 export type SavingsPlansToExclude = string[];
-export const SavingsPlansToExclude = /*@__PURE__*/ S.Array(S.String);
+export const SavingsPlansToExclude = Values as any as S.Schema<SavingsPlansToExclude>;
 export type SavingsPlansTargetCoverage = number;
 export interface SavingsPlansPurchaseAnalysisConfiguration {
   AccountScope?: AccountScope;
@@ -1218,7 +1214,7 @@ export const GetCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetCommitmentPurchaseAnalysisResponse>;
 export type MetricName = string;
 export type MetricNames = string[];
-export const MetricNames = /*@__PURE__*/ S.Array(S.String);
+export const MetricNames = Values as any as S.Schema<MetricNames>;
 export type GroupDefinitionType = "DIMENSION" | "TAG" | "COST_CATEGORY" | (string & {});
 export const GroupDefinitionType = S.String;
 
@@ -1266,7 +1262,7 @@ export type Metrics = { [key: string]: MetricValue | undefined };
 export const Metrics = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ MetricValue.pipe(S.optional));
 export type Key = string;
 export type Keys = string[];
-export const Keys = /*@__PURE__*/ S.Array(S.String);
+export const Keys = Values as any as S.Schema<Keys>;
 export interface Group {
   Keys?: string[];
   Metrics?: { [key: string]: MetricValue | undefined };
@@ -1470,9 +1466,9 @@ export const GetCostCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetCostCategoriesRequest" }) as any as S.Schema<GetCostCategoriesRequest>;
 export type CostCategoryNamesList = string[];
-export const CostCategoryNamesList = /*@__PURE__*/ S.Array(S.String);
+export const CostCategoryNamesList = Values as any as S.Schema<CostCategoryNamesList>;
 export type CostCategoryValuesList = string[];
-export const CostCategoryValuesList = /*@__PURE__*/ S.Array(S.String);
+export const CostCategoryValuesList = Values as any as S.Schema<CostCategoryValuesList>;
 export interface GetCostCategoriesResponse {
   NextPageToken?: string;
   CostCategoryNames?: string[];
@@ -1941,15 +1937,8 @@ export interface MemoryDBInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
-export const MemoryDBInstanceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Family: S.optional(S.String),
-    NodeType: S.optional(S.String),
-    Region: S.optional(S.String),
-    CurrentGeneration: S.optional(S.Boolean),
-    SizeFlexEligible: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MemoryDBInstanceDetails" }) as any as S.Schema<MemoryDBInstanceDetails>;
+export const MemoryDBInstanceDetails =
+  RedshiftInstanceDetails as any as S.Schema<MemoryDBInstanceDetails>;
 export interface InstanceDetails {
   EC2InstanceDetails?: EC2InstanceDetails;
   RDSInstanceDetails?: RDSInstanceDetails;
@@ -2704,15 +2693,8 @@ export interface SavingsPlansPurchaseRecommendationMetadata {
   GenerationTimestamp?: string;
   AdditionalMetadata?: string;
 }
-export const SavingsPlansPurchaseRecommendationMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RecommendationId: S.optional(S.String),
-    GenerationTimestamp: S.optional(S.String),
-    AdditionalMetadata: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SavingsPlansPurchaseRecommendationMetadata",
-}) as any as S.Schema<SavingsPlansPurchaseRecommendationMetadata>;
+export const SavingsPlansPurchaseRecommendationMetadata =
+  ReservationPurchaseRecommendationMetadata as any as S.Schema<SavingsPlansPurchaseRecommendationMetadata>;
 export interface SavingsPlansDetails {
   Region?: string;
   InstanceFamily?: string;
@@ -3028,7 +3010,7 @@ export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTagsRequest" }) as any as S.Schema<GetTagsRequest>;
 export type Entity = string;
 export type TagList = string[];
-export const TagList = /*@__PURE__*/ S.Array(S.String);
+export const TagList = Values as any as S.Schema<TagList>;
 export interface GetTagsResponse {
   NextPageToken?: string;
   Tags: string[];
@@ -3065,15 +3047,11 @@ export interface GetUsageForecastResponse {
   Total?: MetricValue;
   ForecastResultsByTime?: ForecastResult[];
 }
-export const GetUsageForecastResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Total: S.optional(MetricValue),
-    ForecastResultsByTime: S.optional(ForecastResultsByTime),
-  }),
-).annotate({ identifier: "GetUsageForecastResponse" }) as any as S.Schema<GetUsageForecastResponse>;
+export const GetUsageForecastResponse =
+  GetCostForecastResponse as any as S.Schema<GetUsageForecastResponse>;
 export type AnalysesPageSize = number;
 export type AnalysisIds = string[];
-export const AnalysisIds = /*@__PURE__*/ S.Array(S.String);
+export const AnalysisIds = Values as any as S.Schema<AnalysisIds>;
 export interface ListCommitmentPurchaseAnalysesRequest {
   AnalysisStatus?: AnalysisStatus;
   NextPageToken?: string;
@@ -3177,7 +3155,7 @@ export type CostAllocationTagStatus = "Active" | "Inactive" | (string & {});
 export const CostAllocationTagStatus = S.String;
 
 export type CostAllocationTagKeyList = string[];
-export const CostAllocationTagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const CostAllocationTagKeyList = Values as any as S.Schema<CostAllocationTagKeyList>;
 export type CostAllocationTagType = "AWSGenerated" | "UserDefined" | (string & {});
 export const CostAllocationTagType = S.String;
 
@@ -3232,7 +3210,7 @@ export const ListCostAllocationTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type CostCategoryMaxResults = number;
 export type ResourceType = string;
 export type ResourceTypesFilterInput = string[];
-export const ResourceTypesFilterInput = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypesFilterInput = Values as any as S.Schema<ResourceTypesFilterInput>;
 export interface ListCostCategoryDefinitionsRequest {
   EffectiveOn?: string;
   NextToken?: string;
@@ -3250,7 +3228,7 @@ export const ListCostCategoryDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCostCategoryDefinitionsRequest",
 }) as any as S.Schema<ListCostCategoryDefinitionsRequest>;
 export type ResourceTypes = string[];
-export const ResourceTypes = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypes = Values as any as S.Schema<ResourceTypes>;
 export interface CostCategoryReference {
   CostCategoryArn?: string;
   Name?: string;
@@ -3339,7 +3317,7 @@ export const GenerationStatus = S.String;
 
 export type RecommendationId = string;
 export type RecommendationIdList = string[];
-export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
+export const RecommendationIdList = Values as any as S.Schema<RecommendationIdList>;
 export interface ListSavingsPlansPurchaseRecommendationGenerationRequest {
   GenerationStatus?: GenerationStatus;
   RecommendationIds?: string[];
@@ -3498,11 +3476,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteAnomalyMonitorResponse as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
-export const ResourceTagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTagKeyList = Values as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   ResourceTagKeys: string[];
@@ -3513,9 +3490,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAnomalyMonitorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAnomalyMonitorRequest {
   MonitorArn: string;
   MonitorName?: string;
@@ -3530,11 +3506,8 @@ export const UpdateAnomalyMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAnomalyMonitorResponse {
   MonitorArn: string;
 }
-export const UpdateAnomalyMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MonitorArn: S.String }),
-).annotate({
-  identifier: "UpdateAnomalyMonitorResponse",
-}) as any as S.Schema<UpdateAnomalyMonitorResponse>;
+export const UpdateAnomalyMonitorResponse =
+  CreateAnomalyMonitorResponse as any as S.Schema<UpdateAnomalyMonitorResponse>;
 export interface UpdateAnomalySubscriptionRequest {
   SubscriptionArn: string;
   Threshold?: number;
@@ -3560,11 +3533,8 @@ export const UpdateAnomalySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAnomalySubscriptionResponse {
   SubscriptionArn: string;
 }
-export const UpdateAnomalySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SubscriptionArn: S.String }),
-).annotate({
-  identifier: "UpdateAnomalySubscriptionResponse",
-}) as any as S.Schema<UpdateAnomalySubscriptionResponse>;
+export const UpdateAnomalySubscriptionResponse =
+  CreateAnomalySubscriptionResponse as any as S.Schema<UpdateAnomalySubscriptionResponse>;
 export interface CostAllocationTagStatusEntry {
   TagKey: string;
   Status: CostAllocationTagStatus;
@@ -3637,11 +3607,8 @@ export interface UpdateCostCategoryDefinitionResponse {
   CostCategoryArn?: string;
   EffectiveStart?: string;
 }
-export const UpdateCostCategoryDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CostCategoryArn: S.optional(S.String), EffectiveStart: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateCostCategoryDefinitionResponse",
-}) as any as S.Schema<UpdateCostCategoryDefinitionResponse>;
+export const UpdateCostCategoryDefinitionResponse =
+  CreateCostCategoryDefinitionResponse as any as S.Schema<UpdateCostCategoryDefinitionResponse>;
 export type CreateAnomalyMonitorError =
   | LimitExceededException
   | AnomalyMonitorAlreadyExists

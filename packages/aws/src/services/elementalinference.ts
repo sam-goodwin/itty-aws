@@ -314,7 +314,7 @@ export type DictionaryStatus =
 export const DictionaryStatus = S.String;
 
 export type FeedReferences = string[];
-export const FeedReferences = /*@__PURE__*/ S.Array(S.String);
+export const FeedReferences = TemplateUriList as any as S.Schema<FeedReferences>;
 export interface CreateDictionaryResponse {
   name: string;
   arn: string;
@@ -351,7 +351,7 @@ export const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/feed" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateFeedRequest" }) as any as S.Schema<CreateFeedRequest>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = TemplateUriList as any as S.Schema<StringList>;
 export interface GetOutput {
   name: string;
   outputConfig: OutputConfig;
@@ -480,9 +480,8 @@ export interface DisassociateFeedResponse {
   arn: string;
   id: string;
 }
-export const DisassociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, id: S.String }),
-).annotate({ identifier: "DisassociateFeedResponse" }) as any as S.Schema<DisassociateFeedResponse>;
+export const DisassociateFeedResponse =
+  AssociateFeedResponse as any as S.Schema<DisassociateFeedResponse>;
 export interface ExportDictionaryEntriesRequest {
   id: string;
 }
@@ -525,17 +524,8 @@ export interface GetDictionaryResponse {
   references?: string[];
   tags?: { [key: string]: string | undefined };
 }
-export const GetDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    id: S.String,
-    language: DictionaryLanguage,
-    status: DictionaryStatus,
-    references: S.optional(FeedReferences),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetDictionaryResponse" }) as any as S.Schema<GetDictionaryResponse>;
+export const GetDictionaryResponse =
+  CreateDictionaryResponse as any as S.Schema<GetDictionaryResponse>;
 export interface GetFeedRequest {
   id: string;
 }
@@ -555,19 +545,7 @@ export interface GetFeedResponse {
   association?: FeedAssociation;
   tags?: { [key: string]: string | undefined };
 }
-export const GetFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.String,
-    id: S.String,
-    dataEndpoints: StringList,
-    outputs: GetOutputList,
-    accessRoleArn: S.optional(S.String),
-    status: FeedStatus,
-    association: S.optional(FeedAssociation),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetFeedResponse" }) as any as S.Schema<GetFeedResponse>;
+export const GetFeedResponse = CreateFeedResponse as any as S.Schema<GetFeedResponse>;
 export interface GetFeedPolicyRequest {
   id: string;
 }
@@ -717,9 +695,8 @@ export const PutFeedPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutFeedPolicyRequest" }) as any as S.Schema<PutFeedPolicyRequest>;
 export interface PutFeedPolicyResponse {}
-export const PutFeedPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutFeedPolicyResponse",
-}) as any as S.Schema<PutFeedPolicyResponse>;
+export const PutFeedPolicyResponse =
+  DeleteFeedPolicyResponse as any as S.Schema<PutFeedPolicyResponse>;
 export type DataSourceSport = "basketball" | "american-football" | (string & {});
 export const DataSourceSport = S.String;
 
@@ -729,7 +706,7 @@ export const FilterName = S.String;
 
 export type FilterValue = string;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValueList = TemplateUriList as any as S.Schema<FilterValueList>;
 export interface SearchFilter {
   name: FilterName;
   values: string[];
@@ -765,16 +742,7 @@ export interface FixtureSummary {
   status: string;
   competitors: Competitor[];
 }
-export const FixtureSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fixtureId: S.String,
-    name: S.String,
-    fixtureGroup: S.optional(S.String),
-    scheduledStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    status: S.String,
-    competitors: CompetitorList,
-  }),
-).annotate({ identifier: "FixtureSummary" }) as any as S.Schema<FixtureSummary>;
+export const FixtureSummary = GetFixtureResponse as any as S.Schema<FixtureSummary>;
 export type FixtureSummaryList = FixtureSummary[];
 export const FixtureSummaryList = /*@__PURE__*/ S.Array(FixtureSummary);
 export interface SearchFixturesResponse {
@@ -794,11 +762,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteFeedPolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = TemplateUriList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -819,9 +785,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteFeedPolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDictionaryRequest {
   id: string;
   name?: string;
@@ -847,17 +812,8 @@ export interface UpdateDictionaryResponse {
   references?: string[];
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    id: S.String,
-    language: DictionaryLanguage,
-    status: DictionaryStatus,
-    references: S.optional(FeedReferences),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "UpdateDictionaryResponse" }) as any as S.Schema<UpdateDictionaryResponse>;
+export const UpdateDictionaryResponse =
+  CreateDictionaryResponse as any as S.Schema<UpdateDictionaryResponse>;
 export interface UpdateOutput {
   name: string;
   outputConfig: OutputConfig;
@@ -865,17 +821,9 @@ export interface UpdateOutput {
   description?: string;
   fromAssociation?: boolean;
 }
-export const UpdateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    outputConfig: OutputConfig,
-    status: OutputStatus,
-    description: S.optional(S.String),
-    fromAssociation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateOutput" }) as any as S.Schema<UpdateOutput>;
+export const UpdateOutput = GetOutput as any as S.Schema<UpdateOutput>;
 export type UpdateOutputList = UpdateOutput[];
-export const UpdateOutputList = /*@__PURE__*/ S.Array(UpdateOutput);
+export const UpdateOutputList = GetOutputList as any as S.Schema<UpdateOutputList>;
 export interface UpdateFeedRequest {
   name: string;
   accessRoleArn?: string;
@@ -901,19 +849,7 @@ export interface UpdateFeedResponse {
   association?: FeedAssociation;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.String,
-    id: S.String,
-    dataEndpoints: StringList,
-    outputs: GetOutputList,
-    accessRoleArn: S.optional(S.String),
-    status: FeedStatus,
-    association: S.optional(FeedAssociation),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "UpdateFeedResponse" }) as any as S.Schema<UpdateFeedResponse>;
+export const UpdateFeedResponse = CreateFeedResponse as any as S.Schema<UpdateFeedResponse>;
 export type AssociateFeedError =
   | AccessDeniedException
   | ConflictException

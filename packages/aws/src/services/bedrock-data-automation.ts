@@ -413,11 +413,8 @@ export const DocumentOutputTextFormat = /*@__PURE__*/ S.suspend(() =>
 export interface DocumentOutputAdditionalFileFormat {
   state: State;
 }
-export const DocumentOutputAdditionalFileFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: State }),
-).annotate({
-  identifier: "DocumentOutputAdditionalFileFormat",
-}) as any as S.Schema<DocumentOutputAdditionalFileFormat>;
+export const DocumentOutputAdditionalFileFormat =
+  DocumentStandardGenerativeField as any as S.Schema<DocumentOutputAdditionalFileFormat>;
 export interface DocumentOutputFormat {
   textFormat: DocumentOutputTextFormat;
   additionalFileFormat: DocumentOutputAdditionalFileFormat;
@@ -519,9 +516,7 @@ export const VideoExtractionCategory = /*@__PURE__*/ S.suspend(() =>
 export interface VideoBoundingBox {
   state: State;
 }
-export const VideoBoundingBox = /*@__PURE__*/ S.suspend(() => S.Struct({ state: State })).annotate({
-  identifier: "VideoBoundingBox",
-}) as any as S.Schema<VideoBoundingBox>;
+export const VideoBoundingBox = ImageBoundingBox as any as S.Schema<VideoBoundingBox>;
 export interface VideoStandardExtraction {
   category: VideoExtractionCategory;
   boundingBox: VideoBoundingBox;
@@ -573,19 +568,13 @@ export const AudioExtractionCategoryTypes = /*@__PURE__*/ S.Array(AudioExtractio
 export interface SpeakerLabelingConfiguration {
   state: State;
 }
-export const SpeakerLabelingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: State }),
-).annotate({
-  identifier: "SpeakerLabelingConfiguration",
-}) as any as S.Schema<SpeakerLabelingConfiguration>;
+export const SpeakerLabelingConfiguration =
+  DocumentStandardGenerativeField as any as S.Schema<SpeakerLabelingConfiguration>;
 export interface ChannelLabelingConfiguration {
   state: State;
 }
-export const ChannelLabelingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ state: State }),
-).annotate({
-  identifier: "ChannelLabelingConfiguration",
-}) as any as S.Schema<ChannelLabelingConfiguration>;
+export const ChannelLabelingConfiguration =
+  DocumentStandardGenerativeField as any as S.Schema<ChannelLabelingConfiguration>;
 export interface TranscriptConfiguration {
   speakerLabeling?: SpeakerLabelingConfiguration;
   channelLabeling?: ChannelLabelingConfiguration;
@@ -685,7 +674,7 @@ export const BlueprintItem = /*@__PURE__*/ S.suspend(() =>
 export type BlueprintItems = BlueprintItem[];
 export const BlueprintItems = /*@__PURE__*/ S.Array(BlueprintItem);
 export type FallbackBlueprintItems = BlueprintItem[];
-export const FallbackBlueprintItems = /*@__PURE__*/ S.Array(BlueprintItem);
+export const FallbackBlueprintItems = BlueprintItems as any as S.Schema<FallbackBlueprintItems>;
 export interface DocumentCustomOutputConfiguration {
   fallbackBlueprints?: BlueprintItem[];
 }
@@ -823,14 +812,8 @@ export interface VideoOverrideConfiguration {
   modalityProcessing?: ModalityProcessingConfiguration;
   sensitiveDataConfiguration?: SensitiveDataConfiguration;
 }
-export const VideoOverrideConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modalityProcessing: S.optional(ModalityProcessingConfiguration),
-    sensitiveDataConfiguration: S.optional(SensitiveDataConfiguration),
-  }),
-).annotate({
-  identifier: "VideoOverrideConfiguration",
-}) as any as S.Schema<VideoOverrideConfiguration>;
+export const VideoOverrideConfiguration =
+  ImageOverrideConfiguration as any as S.Schema<VideoOverrideConfiguration>;
 export type Language =
   | "EN"
   | "DE"
@@ -1009,9 +992,8 @@ export const DeleteBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteBlueprintRequest" }) as any as S.Schema<DeleteBlueprintRequest>;
 export interface DeleteBlueprintResponse {}
-export const DeleteBlueprintResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBlueprintResponse",
-}) as any as S.Schema<DeleteBlueprintResponse>;
+export const DeleteBlueprintResponse =
+  CopyBlueprintStageResponse as any as S.Schema<DeleteBlueprintResponse>;
 export interface DeleteDataAutomationLibraryRequest {
   libraryArn: string;
 }
@@ -1033,11 +1015,8 @@ export interface DeleteDataAutomationLibraryResponse {
   libraryArn?: string;
   status?: DataAutomationLibraryStatus;
 }
-export const DeleteDataAutomationLibraryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ libraryArn: S.optional(S.String), status: S.optional(DataAutomationLibraryStatus) }),
-).annotate({
-  identifier: "DeleteDataAutomationLibraryResponse",
-}) as any as S.Schema<DeleteDataAutomationLibraryResponse>;
+export const DeleteDataAutomationLibraryResponse =
+  CreateDataAutomationLibraryResponse as any as S.Schema<DeleteDataAutomationLibraryResponse>;
 export interface DeleteDataAutomationProjectRequest {
   projectArn: string;
 }
@@ -1088,9 +1067,8 @@ export const GetBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetBlueprintResponse {
   blueprint: Blueprint;
 }
-export const GetBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ blueprint: Blueprint }),
-).annotate({ identifier: "GetBlueprintResponse" }) as any as S.Schema<GetBlueprintResponse>;
+export const GetBlueprintResponse =
+  CreateBlueprintResponse as any as S.Schema<GetBlueprintResponse>;
 export type BlueprintOptimizationInvocationArn = string;
 export interface GetBlueprintOptimizationStatusRequest {
   invocationArn: string;
@@ -1802,21 +1780,12 @@ export interface BlueprintFilter {
   blueprintVersion?: string;
   blueprintStage?: BlueprintStage;
 }
-export const BlueprintFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blueprintArn: S.String,
-    blueprintVersion: S.optional(S.String),
-    blueprintStage: S.optional(BlueprintStage),
-  }),
-).annotate({ identifier: "BlueprintFilter" }) as any as S.Schema<BlueprintFilter>;
+export const BlueprintFilter = BlueprintItem as any as S.Schema<BlueprintFilter>;
 export interface DataAutomationLibraryFilter {
   libraryArn: string;
 }
-export const DataAutomationLibraryFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ libraryArn: S.String }),
-).annotate({
-  identifier: "DataAutomationLibraryFilter",
-}) as any as S.Schema<DataAutomationLibraryFilter>;
+export const DataAutomationLibraryFilter =
+  DataAutomationLibraryItem as any as S.Schema<DataAutomationLibraryFilter>;
 export interface ListDataAutomationProjectsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -1904,11 +1873,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CopyBlueprintStageResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = EntityIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
@@ -1919,9 +1887,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CopyBlueprintStageResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBlueprintRequest {
   blueprintArn: string;
   schema: string | redacted.Redacted<string>;
@@ -1948,9 +1915,8 @@ export const UpdateBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBlueprintResponse {
   blueprint: Blueprint;
 }
-export const UpdateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ blueprint: Blueprint }),
-).annotate({ identifier: "UpdateBlueprintResponse" }) as any as S.Schema<UpdateBlueprintResponse>;
+export const UpdateBlueprintResponse =
+  CreateBlueprintResponse as any as S.Schema<UpdateBlueprintResponse>;
 export interface UpdateDataAutomationLibraryRequest {
   libraryArn: string;
   libraryDescription?: string | redacted.Redacted<string>;
@@ -1978,11 +1944,8 @@ export interface UpdateDataAutomationLibraryResponse {
   libraryArn?: string;
   status?: DataAutomationLibraryStatus;
 }
-export const UpdateDataAutomationLibraryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ libraryArn: S.optional(S.String), status: S.optional(DataAutomationLibraryStatus) }),
-).annotate({
-  identifier: "UpdateDataAutomationLibraryResponse",
-}) as any as S.Schema<UpdateDataAutomationLibraryResponse>;
+export const UpdateDataAutomationLibraryResponse =
+  CreateDataAutomationLibraryResponse as any as S.Schema<UpdateDataAutomationLibraryResponse>;
 export interface UpdateDataAutomationProjectRequest {
   projectArn: string;
   projectStage?: DataAutomationProjectStage;
@@ -2021,15 +1984,8 @@ export interface UpdateDataAutomationProjectResponse {
   projectStage?: DataAutomationProjectStage;
   status?: DataAutomationProjectStatus;
 }
-export const UpdateDataAutomationProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectArn: S.String,
-    projectStage: S.optional(DataAutomationProjectStage),
-    status: S.optional(DataAutomationProjectStatus),
-  }),
-).annotate({
-  identifier: "UpdateDataAutomationProjectResponse",
-}) as any as S.Schema<UpdateDataAutomationProjectResponse>;
+export const UpdateDataAutomationProjectResponse =
+  CreateDataAutomationProjectResponse as any as S.Schema<UpdateDataAutomationProjectResponse>;
 export type NonBlankString = string;
 export interface ValidationExceptionField {
   name: string;

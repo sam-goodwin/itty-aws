@@ -211,9 +211,7 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
@@ -385,11 +383,8 @@ export interface RemovePublicKeyRequest {
   /** Key that should be removed from the environment. */
   key?: string;
 }
-export const RemovePublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-  }),
-).annotate({ identifier: "RemovePublicKeyRequest" }) as any as S.Schema<RemovePublicKeyRequest>;
+export const RemovePublicKeyRequest =
+  AddPublicKeyRequest as any as S.Schema<RemovePublicKeyRequest>;
 
 export interface RemovePublicKeyUsersEnvironmentsRequest {
   /** Environment this key should be removed from, e.g. `users/me/environments/default`. */

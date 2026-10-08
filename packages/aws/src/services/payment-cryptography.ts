@@ -399,9 +399,7 @@ export const DeleteKeyInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteKeyOutput {
   Key: Key;
 }
-export const DeleteKeyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: Key })).annotate({
-  identifier: "DeleteKeyOutput",
-}) as any as S.Schema<DeleteKeyOutput>;
+export const DeleteKeyOutput = CreateKeyOutput as any as S.Schema<DeleteKeyOutput>;
 export type ResourceArn = string;
 export interface DeleteResourcePolicyInput {
   ResourceArn: string;
@@ -414,9 +412,8 @@ export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyInput",
 }) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyOutput {}
-export const DeleteResourcePolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyOutput",
-}) as any as S.Schema<DeleteResourcePolicyOutput>;
+export const DeleteResourcePolicyOutput =
+  DeleteAliasOutput as any as S.Schema<DeleteResourcePolicyOutput>;
 export interface DisableDefaultKeyReplicationRegionsInput {
   ReplicationRegions: string[];
 }
@@ -465,11 +462,8 @@ export const EnableDefaultKeyReplicationRegionsInput = /*@__PURE__*/ S.suspend((
 export interface EnableDefaultKeyReplicationRegionsOutput {
   EnabledReplicationRegions: string[];
 }
-export const EnableDefaultKeyReplicationRegionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnabledReplicationRegions: Regions }),
-).annotate({
-  identifier: "EnableDefaultKeyReplicationRegionsOutput",
-}) as any as S.Schema<EnableDefaultKeyReplicationRegionsOutput>;
+export const EnableDefaultKeyReplicationRegionsOutput =
+  DisableDefaultKeyReplicationRegionsOutput as any as S.Schema<EnableDefaultKeyReplicationRegionsOutput>;
 export type KeyExportability = string;
 export type KeyVersion = string;
 export type OptionalBlockId = string | redacted.Redacted<string>;
@@ -767,11 +761,8 @@ export const GetDefaultKeyReplicationRegionsInput = /*@__PURE__*/ S.suspend(() =
 export interface GetDefaultKeyReplicationRegionsOutput {
   EnabledReplicationRegions: string[];
 }
-export const GetDefaultKeyReplicationRegionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EnabledReplicationRegions: Regions }),
-).annotate({
-  identifier: "GetDefaultKeyReplicationRegionsOutput",
-}) as any as S.Schema<GetDefaultKeyReplicationRegionsOutput>;
+export const GetDefaultKeyReplicationRegionsOutput =
+  DisableDefaultKeyReplicationRegionsOutput as any as S.Schema<GetDefaultKeyReplicationRegionsOutput>;
 export interface GetKeyInput {
   KeyIdentifier: string;
 }
@@ -783,9 +774,7 @@ export const GetKeyInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetKeyOutput {
   Key: Key;
 }
-export const GetKeyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: Key })).annotate({
-  identifier: "GetKeyOutput",
-}) as any as S.Schema<GetKeyOutput>;
+export const GetKeyOutput = CreateKeyOutput as any as S.Schema<GetKeyOutput>;
 export interface GetMpaTeamAssociationInput {
   Action: string;
 }
@@ -799,11 +788,8 @@ export const GetMpaTeamAssociationInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetMpaTeamAssociationOutput {
   MpaTeamAssociation: MpaTeamAssociation;
 }
-export const GetMpaTeamAssociationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MpaTeamAssociation: MpaTeamAssociation }),
-).annotate({
-  identifier: "GetMpaTeamAssociationOutput",
-}) as any as S.Schema<GetMpaTeamAssociationOutput>;
+export const GetMpaTeamAssociationOutput =
+  DisassociateMpaTeamOutput as any as S.Schema<GetMpaTeamAssociationOutput>;
 export type KeyMaterialType = string;
 export interface GetParametersForExportInput {
   KeyMaterialType: string;
@@ -1112,9 +1098,7 @@ export const ImportKeyInput = /*@__PURE__*/ S.suspend(() =>
 export interface ImportKeyOutput {
   Key: Key;
 }
-export const ImportKeyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: Key })).annotate({
-  identifier: "ImportKeyOutput",
-}) as any as S.Schema<ImportKeyOutput>;
+export const ImportKeyOutput = CreateKeyOutput as any as S.Schema<ImportKeyOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListAliasesInput {
@@ -1215,9 +1199,8 @@ export interface PutResourcePolicyOutput {
   ResourceArn: string;
   Policy: string;
 }
-export const PutResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String, Policy: S.String }),
-).annotate({ identifier: "PutResourcePolicyOutput" }) as any as S.Schema<PutResourcePolicyOutput>;
+export const PutResourcePolicyOutput =
+  GetResourcePolicyOutput as any as S.Schema<PutResourcePolicyOutput>;
 export interface RemoveKeyReplicationRegionsInput {
   KeyIdentifier: string;
   ReplicationRegions: string[];
@@ -1232,11 +1215,8 @@ export const RemoveKeyReplicationRegionsInput = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveKeyReplicationRegionsOutput {
   Key: Key;
 }
-export const RemoveKeyReplicationRegionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: Key }),
-).annotate({
-  identifier: "RemoveKeyReplicationRegionsOutput",
-}) as any as S.Schema<RemoveKeyReplicationRegionsOutput>;
+export const RemoveKeyReplicationRegionsOutput =
+  AddKeyReplicationRegionsOutput as any as S.Schema<RemoveKeyReplicationRegionsOutput>;
 export interface RestoreKeyInput {
   KeyIdentifier: string;
 }
@@ -1248,9 +1228,7 @@ export const RestoreKeyInput = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreKeyOutput {
   Key: Key;
 }
-export const RestoreKeyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: Key })).annotate({
-  identifier: "RestoreKeyOutput",
-}) as any as S.Schema<RestoreKeyOutput>;
+export const RestoreKeyOutput = CreateKeyOutput as any as S.Schema<RestoreKeyOutput>;
 export interface StartKeyUsageInput {
   KeyIdentifier: string;
 }
@@ -1262,9 +1240,7 @@ export const StartKeyUsageInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartKeyUsageOutput {
   Key: Key;
 }
-export const StartKeyUsageOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: Key })).annotate({
-  identifier: "StartKeyUsageOutput",
-}) as any as S.Schema<StartKeyUsageOutput>;
+export const StartKeyUsageOutput = CreateKeyOutput as any as S.Schema<StartKeyUsageOutput>;
 export interface StopKeyUsageInput {
   KeyIdentifier: string;
 }
@@ -1276,9 +1252,7 @@ export const StopKeyUsageInput = /*@__PURE__*/ S.suspend(() =>
 export interface StopKeyUsageOutput {
   Key: Key;
 }
-export const StopKeyUsageOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: Key })).annotate({
-  identifier: "StopKeyUsageOutput",
-}) as any as S.Schema<StopKeyUsageOutput>;
+export const StopKeyUsageOutput = CreateKeyOutput as any as S.Schema<StopKeyUsageOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: Tag[];
@@ -1289,11 +1263,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteAliasOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = Regions as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -1304,9 +1276,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteAliasOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateAliasInput {
   AliasName: string;
   KeyArn?: string;
@@ -1319,9 +1289,7 @@ export const UpdateAliasInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAliasOutput {
   Alias: Alias;
 }
-export const UpdateAliasOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ Alias: Alias })).annotate(
-  { identifier: "UpdateAliasOutput" },
-) as any as S.Schema<UpdateAliasOutput>;
+export const UpdateAliasOutput = CreateAliasOutput as any as S.Schema<UpdateAliasOutput>;
 export type AddKeyReplicationRegionsError =
   | AccessDeniedException
   | ConflictException

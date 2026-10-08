@@ -417,10 +417,8 @@ export const SandboxNetworkAction = S.String;
 
 /** Outbound HTTPS request headers to set, overwriting values supplied by the sandbox. */
 export type SandboxEgressTransformHeadersMap = { [key: string]: string | undefined };
-export const SandboxEgressTransformHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxEgressTransformHeadersMap>;
+export const SandboxEgressTransformHeadersMap =
+  CreateSandboxRequestEnvMap as any as S.Schema<SandboxEgressTransformHeadersMap>;
 
 /** Optional outbound HTTPS request transformations. An omitted or empty transform leaves the rule as an ordinary allow without request mutations. */
 export interface SandboxEgressTransform {
@@ -466,9 +464,8 @@ export const SandboxEgressPolicyDenyList = /*@__PURE__*/ S.Array(
 
 /** Optional hosts whose HTTP(S) requests should finish before pausing, regardless of URL path. Pausing gates new matching requests and waits up to ten minutes by default for active responses, including streams, before taking a snapshot. Errors stop counting, and expiry proceeds with the snapshot. This does not limit requests during normal operation. Selectors do not grant network access. Matching uses the original request host before transformations or forwarding. Only TCP ports 80 and 443 are supported. Connections may need to be retried after resume. */
 export type SandboxEgressPolicyDrainOnPauseList = Array<string>;
-export const SandboxEgressPolicyDrainOnPauseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SandboxEgressPolicyDrainOnPauseList>;
+export const SandboxEgressPolicyDrainOnPauseList =
+  SandboxEgressPolicyDenyList as any as S.Schema<SandboxEgressPolicyDrainOnPauseList>;
 
 /** Deny targets take precedence when an address or domain matches both lists. When domain rules or drain selectors are present, TCP ports 80 and 443 are restricted to HTTP/1.1 or HTTP/2. Plaintext HTTP authority is enforced on port 80, but requests matching a transformation rule are rejected unless the rule also forwards. Port 443 is TLS-terminated; both TLS SNI and HTTP authority are evaluated, and the HTTP authority selects the upstream, any request transformations, and any request forwarding. DNS to the sandbox's configured resolvers is allowed and UDP port 443 is denied. */
 export interface SandboxEgressPolicy {
@@ -703,9 +700,8 @@ export const DeleteSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSandboxRequest" }) as any as S.Schema<DeleteSandboxRequest>;
 
 export interface DeleteSandboxResponse {}
-export const DeleteSandboxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSandboxResponse",
-}) as any as S.Schema<DeleteSandboxResponse>;
+export const DeleteSandboxResponse =
+  CreateSandboxResponse as any as S.Schema<DeleteSandboxResponse>;
 
 export interface DeleteSandboxPortRequest {
   /** Sandbox UUID */
@@ -720,9 +716,8 @@ export const DeleteSandboxPortRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSandboxPortRequest" }) as any as S.Schema<DeleteSandboxPortRequest>;
 
 export interface DeleteSandboxPortResponse {}
-export const DeleteSandboxPortResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSandboxPortResponse",
-}) as any as S.Schema<DeleteSandboxPortResponse>;
+export const DeleteSandboxPortResponse =
+  CreateSandboxResponse as any as S.Schema<DeleteSandboxPortResponse>;
 
 export interface DeleteSandboxPortTokenRequest {
   /** Sandbox UUID */
@@ -741,9 +736,8 @@ export const DeleteSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSandboxPortTokenRequest>;
 
 export interface DeleteSandboxPortTokenResponse {}
-export const DeleteSandboxPortTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSandboxPortTokenResponse",
-}) as any as S.Schema<DeleteSandboxPortTokenResponse>;
+export const DeleteSandboxPortTokenResponse =
+  CreateSandboxResponse as any as S.Schema<DeleteSandboxPortTokenResponse>;
 
 export interface DeleteTokenRequest {
   /** The token ID (hash) */
@@ -877,12 +871,7 @@ export interface ApiResponseExecDisk {
   success: boolean;
   data: ExecDiskResult;
 }
-export const ApiResponseExecDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    data: ExecDiskResult,
-  }),
-).annotate({ identifier: "ApiResponseExecDisk" }) as any as S.Schema<ApiResponseExecDisk>;
+export const ApiResponseExecDisk = ApiResponseExec as any as S.Schema<ApiResponseExecDisk>;
 
 export interface ExposeSandboxPortRequest {
   /** Sandbox UUID */
@@ -938,9 +927,7 @@ export const ForkSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForkSandboxRequest" }) as any as S.Schema<ForkSandboxRequest>;
 
 export interface ForkSandboxResponse {}
-export const ForkSandboxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ForkSandboxResponse",
-}) as any as S.Schema<ForkSandboxResponse>;
+export const ForkSandboxResponse = CreateSandboxResponse as any as S.Schema<ForkSandboxResponse>;
 
 export interface GetDiskRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
@@ -1065,9 +1052,8 @@ export const DiskResponseConnectedClientsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DiskResponseConnectedClientsList>;
 
 export type DiskResponseAuthorizedUsersList = Array<AuthorizedUser>;
-export const DiskResponseAuthorizedUsersList = /*@__PURE__*/ S.Array(
-  AuthorizedUser,
-) as any as S.Schema<DiskResponseAuthorizedUsersList>;
+export const DiskResponseAuthorizedUsersList =
+  ApiResponseCreateDiskDataAuthorizedUsersList as any as S.Schema<DiskResponseAuthorizedUsersList>;
 
 export interface DiskResponse {
   /** Disk ID */
@@ -1532,9 +1518,8 @@ export const ListSandboxPortsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSandboxPortsRequest" }) as any as S.Schema<ListSandboxPortsRequest>;
 
 export type SandboxPortListPortsList = Array<SandboxPort>;
-export const SandboxPortListPortsList = /*@__PURE__*/ S.Array(
-  SandboxPort,
-) as any as S.Schema<SandboxPortListPortsList>;
+export const SandboxPortListPortsList =
+  SandboxEndpointsList as any as S.Schema<SandboxPortListPortsList>;
 
 export interface SandboxPortList {
   ports: SandboxPortListPortsList;

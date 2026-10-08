@@ -51,11 +51,8 @@ export const CancelOverTheBoxResiliationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelOverTheBoxResiliationRequest>;
 
 export interface CancelOverTheBoxResiliationResponse {}
-export const CancelOverTheBoxResiliationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelOverTheBoxResiliationResponse",
-}) as any as S.Schema<CancelOverTheBoxResiliationResponse>;
+export const CancelOverTheBoxResiliationResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<CancelOverTheBoxResiliationResponse>;
 
 export interface CreateOverTheBoxChangeContactRequest {
   /** The internal name of your overTheBox offer */
@@ -231,11 +228,8 @@ export const CreateOverTheBoxLinkDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOverTheBoxLinkDeviceRequest>;
 
 export interface CreateOverTheBoxLinkDeviceResponse {}
-export const CreateOverTheBoxLinkDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateOverTheBoxLinkDeviceResponse",
-}) as any as S.Schema<CreateOverTheBoxLinkDeviceResponse>;
+export const CreateOverTheBoxLinkDeviceResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<CreateOverTheBoxLinkDeviceResponse>;
 
 export interface CreateOverTheBoxLinkHardwareRequest {
   /** The internal name of your overTheBox offer */
@@ -253,11 +247,8 @@ export const CreateOverTheBoxLinkHardwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOverTheBoxLinkHardwareRequest>;
 
 export interface CreateOverTheBoxLinkHardwareResponse {}
-export const CreateOverTheBoxLinkHardwareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateOverTheBoxLinkHardwareResponse",
-}) as any as S.Schema<CreateOverTheBoxLinkHardwareResponse>;
+export const CreateOverTheBoxLinkHardwareResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<CreateOverTheBoxLinkHardwareResponse>;
 
 export interface CreateOverTheBoxMigrationChangeOfferRequest {
   /** The internal name of your overTheBox offer */
@@ -441,9 +432,8 @@ export const DeleteOverTheBoxBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOverTheBoxBackupRequest>;
 
 export interface DeleteOverTheBoxBackupResponse {}
-export const DeleteOverTheBoxBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOverTheBoxBackupResponse",
-}) as any as S.Schema<DeleteOverTheBoxBackupResponse>;
+export const DeleteOverTheBoxBackupResponse =
+  DeleteOverTheBoxResponse as any as S.Schema<DeleteOverTheBoxBackupResponse>;
 
 export interface DeleteOverTheBoxDeviceRequest {
   /** The internal name of your overTheBox offer */
@@ -458,9 +448,8 @@ export const DeleteOverTheBoxDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOverTheBoxDeviceRequest>;
 
 export interface DeleteOverTheBoxDeviceResponse {}
-export const DeleteOverTheBoxDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOverTheBoxDeviceResponse",
-}) as any as S.Schema<DeleteOverTheBoxDeviceResponse>;
+export const DeleteOverTheBoxDeviceResponse =
+  DeleteOverTheBoxResponse as any as S.Schema<DeleteOverTheBoxDeviceResponse>;
 
 export interface DeleteOverTheBoxRemoteAccessRequest {
   /** The internal name of your overTheBox offer */
@@ -484,11 +473,8 @@ export const DeleteOverTheBoxRemoteAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOverTheBoxRemoteAccessRequest>;
 
 export interface DeleteOverTheBoxRemoteAccessResponse {}
-export const DeleteOverTheBoxRemoteAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOverTheBoxRemoteAccessResponse",
-}) as any as S.Schema<DeleteOverTheBoxRemoteAccessResponse>;
+export const DeleteOverTheBoxRemoteAccessResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<DeleteOverTheBoxRemoteAccessResponse>;
 
 export interface GetOverTheBoxRequest {
   /** The internal name of your overTheBox offer */
@@ -967,9 +953,8 @@ export const GetOverTheBoxServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+export const ServicesServicePossibleRenewPeriodList =
+  CreateOverTheBoxChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
@@ -1088,9 +1073,8 @@ export const OverTheBoxTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IamResourceTagFilterInput",
-}) as any as S.Schema<IamResourceTagFilterInput>;
+export const IamResourceTagFilterInput =
+  DeleteOverTheBoxResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListOverTheBoxRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export const ListOverTheBoxRequestIamTagsValueList = /*@__PURE__*/ S.Array(
@@ -1116,9 +1100,8 @@ export const ListOverTheBoxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOverTheBoxRequest" }) as any as S.Schema<ListOverTheBoxRequest>;
 
 export type ListOverTheBoxResponseBodyList = Array<string>;
-export const ListOverTheBoxResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxResponseBodyList>;
+export const ListOverTheBoxResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxResponseBodyList>;
 
 export type ListOverTheBoxResponse = ListOverTheBoxResponseBodyList;
 export const ListOverTheBoxResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1163,9 +1146,8 @@ export const ListOverTheBoxAvailableReleaseChannelsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsRequest>;
 
 export type ListOverTheBoxAvailableReleaseChannelsResponseBodyList = Array<string>;
-export const ListOverTheBoxAvailableReleaseChannelsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsResponseBodyList>;
+export const ListOverTheBoxAvailableReleaseChannelsResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsResponseBodyList>;
 
 export type ListOverTheBoxAvailableReleaseChannelsResponse =
   ListOverTheBoxAvailableReleaseChannelsResponseBodyList;
@@ -1188,16 +1170,12 @@ export const ListOverTheBoxBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOverTheBoxBackupsRequest>;
 
 export type ListOverTheBoxBackupsResponseBodyList = Array<string>;
-export const ListOverTheBoxBackupsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxBackupsResponseBodyList>;
+export const ListOverTheBoxBackupsResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxBackupsResponseBodyList>;
 
 export type ListOverTheBoxBackupsResponse = ListOverTheBoxBackupsResponseBodyList;
-export const ListOverTheBoxBackupsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOverTheBoxBackupsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOverTheBoxBackupsResponse",
-}) as any as S.Schema<ListOverTheBoxBackupsResponse>;
+export const ListOverTheBoxBackupsResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxBackupsResponse>;
 
 export interface ListOverTheBoxDeviceActionsRequest {
   /** The internal name of your overTheBox offer */
@@ -1218,16 +1196,12 @@ export const ListOverTheBoxDeviceActionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOverTheBoxDeviceActionsRequest>;
 
 export type ListOverTheBoxDeviceActionsResponseBodyList = Array<string>;
-export const ListOverTheBoxDeviceActionsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxDeviceActionsResponseBodyList>;
+export const ListOverTheBoxDeviceActionsResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxDeviceActionsResponseBodyList>;
 
 export type ListOverTheBoxDeviceActionsResponse = ListOverTheBoxDeviceActionsResponseBodyList;
-export const ListOverTheBoxDeviceActionsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOverTheBoxDeviceActionsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOverTheBoxDeviceActionsResponse",
-}) as any as S.Schema<ListOverTheBoxDeviceActionsResponse>;
+export const ListOverTheBoxDeviceActionsResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxDeviceActionsResponse>;
 
 export interface ListOverTheBoxDeviceAvailableActionsRequest {
   /** The internal name of your overTheBox offer */
@@ -1274,17 +1248,14 @@ export const ListOverTheBoxDeviceAvailableActionsResponse = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListOverTheBoxDeviceAvailableActionsResponse>;
 
 export type ListOverTheBoxHardwareRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListOverTheBoxHardwareRequestIamTagsValueList = /*@__PURE__*/ S.Array(
-  IamResourceTagFilterInput,
-) as any as S.Schema<ListOverTheBoxHardwareRequestIamTagsValueList>;
+export const ListOverTheBoxHardwareRequestIamTagsValueList =
+  ListOverTheBoxRequestIamTagsValueList as any as S.Schema<ListOverTheBoxHardwareRequestIamTagsValueList>;
 
 export type ListOverTheBoxHardwareRequestIamTagsMap = {
   [key: string]: ListOverTheBoxHardwareRequestIamTagsValueList | undefined;
 };
-export const ListOverTheBoxHardwareRequestIamTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListOverTheBoxHardwareRequestIamTagsValueList,
-) as any as S.Schema<ListOverTheBoxHardwareRequestIamTagsMap>;
+export const ListOverTheBoxHardwareRequestIamTagsMap =
+  ListOverTheBoxRequestIamTagsMap as any as S.Schema<ListOverTheBoxHardwareRequestIamTagsMap>;
 
 export interface ListOverTheBoxHardwareRequest {
   /** Filter resources on IAM tags */
@@ -1299,16 +1270,12 @@ export const ListOverTheBoxHardwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOverTheBoxHardwareRequest>;
 
 export type ListOverTheBoxHardwareResponseBodyList = Array<string>;
-export const ListOverTheBoxHardwareResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxHardwareResponseBodyList>;
+export const ListOverTheBoxHardwareResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxHardwareResponseBodyList>;
 
 export type ListOverTheBoxHardwareResponse = ListOverTheBoxHardwareResponseBodyList;
-export const ListOverTheBoxHardwareResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOverTheBoxHardwareResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOverTheBoxHardwareResponse",
-}) as any as S.Schema<ListOverTheBoxHardwareResponse>;
+export const ListOverTheBoxHardwareResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxHardwareResponse>;
 
 export interface ListOverTheBoxHardwareAvailableRequest {}
 export const ListOverTheBoxHardwareAvailableRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1318,17 +1285,13 @@ export const ListOverTheBoxHardwareAvailableRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListOverTheBoxHardwareAvailableRequest>;
 
 export type ListOverTheBoxHardwareAvailableResponseBodyList = Array<string>;
-export const ListOverTheBoxHardwareAvailableResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxHardwareAvailableResponseBodyList>;
+export const ListOverTheBoxHardwareAvailableResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxHardwareAvailableResponseBodyList>;
 
 export type ListOverTheBoxHardwareAvailableResponse =
   ListOverTheBoxHardwareAvailableResponseBodyList;
-export const ListOverTheBoxHardwareAvailableResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOverTheBoxHardwareAvailableResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOverTheBoxHardwareAvailableResponse",
-}) as any as S.Schema<ListOverTheBoxHardwareAvailableResponse>;
+export const ListOverTheBoxHardwareAvailableResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxHardwareAvailableResponse>;
 
 export interface ListOverTheBoxIpsRequest {
   /** The internal name of your overTheBox offer */
@@ -1341,16 +1304,12 @@ export const ListOverTheBoxIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOverTheBoxIpsRequest" }) as any as S.Schema<ListOverTheBoxIpsRequest>;
 
 export type ListOverTheBoxIpsResponseBodyList = Array<string>;
-export const ListOverTheBoxIpsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxIpsResponseBodyList>;
+export const ListOverTheBoxIpsResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxIpsResponseBodyList>;
 
 export type ListOverTheBoxIpsResponse = ListOverTheBoxIpsResponseBodyList;
-export const ListOverTheBoxIpsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOverTheBoxIpsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOverTheBoxIpsResponse",
-}) as any as S.Schema<ListOverTheBoxIpsResponse>;
+export const ListOverTheBoxIpsResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxIpsResponse>;
 
 export interface ListOverTheBoxMigrationOffersRequest {
   /** The internal name of your overTheBox offer */
@@ -1484,16 +1443,12 @@ export const ListOverTheBoxRemoteAccessesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOverTheBoxRemoteAccessesRequest>;
 
 export type ListOverTheBoxRemoteAccessesResponseBodyList = Array<string>;
-export const ListOverTheBoxRemoteAccessesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxRemoteAccessesResponseBodyList>;
+export const ListOverTheBoxRemoteAccessesResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxRemoteAccessesResponseBodyList>;
 
 export type ListOverTheBoxRemoteAccessesResponse = ListOverTheBoxRemoteAccessesResponseBodyList;
-export const ListOverTheBoxRemoteAccessesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOverTheBoxRemoteAccessesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOverTheBoxRemoteAccessesResponse",
-}) as any as S.Schema<ListOverTheBoxRemoteAccessesResponse>;
+export const ListOverTheBoxRemoteAccessesResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxRemoteAccessesResponse>;
 
 /** Serie Name */
 export type OtbDeviceStatisticsTypeEnum = "load" | "memory_free" | "traffic";
@@ -1616,16 +1571,12 @@ export const ListOverTheBoxTasksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOverTheBoxTasksRequest>;
 
 export type ListOverTheBoxTasksResponseBodyList = Array<string>;
-export const ListOverTheBoxTasksResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOverTheBoxTasksResponseBodyList>;
+export const ListOverTheBoxTasksResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxTasksResponseBodyList>;
 
 export type ListOverTheBoxTasksResponse = ListOverTheBoxTasksResponseBodyList;
-export const ListOverTheBoxTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOverTheBoxTasksResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOverTheBoxTasksResponse",
-}) as any as S.Schema<ListOverTheBoxTasksResponse>;
+export const ListOverTheBoxTasksResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxTasksResponse>;
 
 export interface PutOverTheBoxRequest {
   /** The internal name of your overTheBox offer */
@@ -1647,9 +1598,8 @@ export const PutOverTheBoxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutOverTheBoxRequest" }) as any as S.Schema<PutOverTheBoxRequest>;
 
 export interface PutOverTheBoxResponse {}
-export const PutOverTheBoxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutOverTheBoxResponse",
-}) as any as S.Schema<PutOverTheBoxResponse>;
+export const PutOverTheBoxResponse =
+  DeleteOverTheBoxResponse as any as S.Schema<PutOverTheBoxResponse>;
 
 export interface PutOverTheBoxAutoMTURequest {
   /** The internal name of your overTheBox offer */
@@ -1667,9 +1617,8 @@ export const PutOverTheBoxAutoMTURequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutOverTheBoxAutoMTURequest>;
 
 export interface PutOverTheBoxAutoMTUResponse {}
-export const PutOverTheBoxAutoMTUResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutOverTheBoxAutoMTUResponse",
-}) as any as S.Schema<PutOverTheBoxAutoMTUResponse>;
+export const PutOverTheBoxAutoMTUResponse =
+  DeleteOverTheBoxResponse as any as S.Schema<PutOverTheBoxAutoMTUResponse>;
 
 export interface PutOverTheBoxIpv6Request {
   /** The internal name of your overTheBox offer */
@@ -1700,11 +1649,8 @@ export const PutOverTheBoxServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutOverTheBoxServiceInfosRequest>;
 
 export interface PutOverTheBoxServiceInfosResponse {}
-export const PutOverTheBoxServiceInfosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutOverTheBoxServiceInfosResponse",
-}) as any as S.Schema<PutOverTheBoxServiceInfosResponse>;
+export const PutOverTheBoxServiceInfosResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<PutOverTheBoxServiceInfosResponse>;
 
 export interface RestoreOverTheBoxDeviceBackupRequest {
   /** The internal name of your overTheBox offer */

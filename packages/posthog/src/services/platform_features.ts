@@ -123,10 +123,8 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type ChangeRequestApprovalsItemMap = { [key: string]: unknown | undefined };
-export const ChangeRequestApprovalsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ChangeRequestApprovalsItemMap>;
+export const ChangeRequestApprovalsItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<ChangeRequestApprovalsItemMap>;
 
 export type ChangeRequestApprovalsList = Array<ChangeRequestApprovalsItemMap>;
 export const ChangeRequestApprovalsList = /*@__PURE__*/ S.Array(
@@ -296,9 +294,8 @@ export const CreateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateApprovalPolicyRequest>;
 
 export type ApprovalPolicyBypassRolesList = Array<string>;
-export const ApprovalPolicyBypassRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApprovalPolicyBypassRolesList>;
+export const ApprovalPolicyBypassRolesList =
+  CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<ApprovalPolicyBypassRolesList>;
 
 export interface ApprovalPolicy {
   id?: string;
@@ -405,9 +402,8 @@ export const PaginatedApprovalPolicyList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedApprovalPolicyList>;
 
 export type ListChangeRequestsRequestStateList = Array<string>;
-export const ListChangeRequestsRequestStateList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListChangeRequestsRequestStateList>;
+export const ListChangeRequestsRequestStateList =
+  CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<ListChangeRequestsRequestStateList>;
 
 export interface ListChangeRequestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -461,9 +457,8 @@ export const PaginatedChangeRequestList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedChangeRequestList>;
 
 export type UpdateApprovalPoliciesPartialRequestBypassRolesList = Array<string>;
-export const UpdateApprovalPoliciesPartialRequestBypassRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApprovalPoliciesPartialRequestBypassRolesList>;
+export const UpdateApprovalPoliciesPartialRequestBypassRolesList =
+  CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<UpdateApprovalPoliciesPartialRequestBypassRolesList>;
 
 export interface UpdateApprovalPoliciesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -504,9 +499,8 @@ export const UpdateApprovalPoliciesPartialRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateApprovalPoliciesPartialRequest>;
 
 export type UpdateApprovalPolicyRequestBypassRolesList = Array<string>;
-export const UpdateApprovalPolicyRequestBypassRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApprovalPolicyRequestBypassRolesList>;
+export const UpdateApprovalPolicyRequestBypassRolesList =
+  CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<UpdateApprovalPolicyRequestBypassRolesList>;
 
 export interface UpdateApprovalPolicyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

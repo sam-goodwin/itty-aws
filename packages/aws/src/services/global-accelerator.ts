@@ -390,7 +390,7 @@ export type IpAddressType = "IPV4" | "DUAL_STACK" | (string & {});
 export const IpAddressType = S.String;
 
 export type IpAddresses = string[];
-export const IpAddresses = /*@__PURE__*/ S.Array(S.String);
+export const IpAddresses = DestinationAddresses as any as S.Schema<IpAddresses>;
 export type IdempotencyToken = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -457,14 +457,9 @@ export interface AcceleratorEvent {
   Message?: string;
   Timestamp?: Date;
 }
-export const AcceleratorEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Message: S.optional(S.String),
-    Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "AcceleratorEvent" }) as any as S.Schema<AcceleratorEvent>;
+export const AcceleratorEvent = ByoipCidrEvent as any as S.Schema<AcceleratorEvent>;
 export type AcceleratorEvents = AcceleratorEvent[];
-export const AcceleratorEvents = /*@__PURE__*/ S.Array(AcceleratorEvent);
+export const AcceleratorEvents = ByoipCidrEvents as any as S.Schema<AcceleratorEvents>;
 export interface Accelerator {
   AcceleratorArn?: string;
   Name?: string;
@@ -504,7 +499,7 @@ export const CreateAcceleratorResponse = /*@__PURE__*/ S.suspend(() =>
 export type AttachmentName = string;
 export type Principal = string;
 export type Principals = string[];
-export const Principals = /*@__PURE__*/ S.Array(S.String);
+export const Principals = DestinationAddresses as any as S.Schema<Principals>;
 export interface Resource {
   EndpointId?: string;
   Cidr?: string;
@@ -881,11 +876,8 @@ export const DeleteCrossAccountAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCrossAccountAttachmentRequest",
 }) as any as S.Schema<DeleteCrossAccountAttachmentRequest>;
 export interface DeleteCrossAccountAttachmentResponse {}
-export const DeleteCrossAccountAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCrossAccountAttachmentResponse",
-}) as any as S.Schema<DeleteCrossAccountAttachmentResponse>;
+export const DeleteCrossAccountAttachmentResponse =
+  AllowCustomRoutingTrafficResponse as any as S.Schema<DeleteCrossAccountAttachmentResponse>;
 export interface DeleteCustomRoutingAcceleratorRequest {
   AcceleratorArn: string;
 }
@@ -897,11 +889,8 @@ export const DeleteCustomRoutingAcceleratorRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteCustomRoutingAcceleratorRequest",
 }) as any as S.Schema<DeleteCustomRoutingAcceleratorRequest>;
 export interface DeleteCustomRoutingAcceleratorResponse {}
-export const DeleteCustomRoutingAcceleratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomRoutingAcceleratorResponse",
-}) as any as S.Schema<DeleteCustomRoutingAcceleratorResponse>;
+export const DeleteCustomRoutingAcceleratorResponse =
+  AllowCustomRoutingTrafficResponse as any as S.Schema<DeleteCustomRoutingAcceleratorResponse>;
 export interface DeleteCustomRoutingEndpointGroupRequest {
   EndpointGroupArn: string;
 }
@@ -913,11 +902,8 @@ export const DeleteCustomRoutingEndpointGroupRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeleteCustomRoutingEndpointGroupRequest",
 }) as any as S.Schema<DeleteCustomRoutingEndpointGroupRequest>;
 export interface DeleteCustomRoutingEndpointGroupResponse {}
-export const DeleteCustomRoutingEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomRoutingEndpointGroupResponse",
-}) as any as S.Schema<DeleteCustomRoutingEndpointGroupResponse>;
+export const DeleteCustomRoutingEndpointGroupResponse =
+  AllowCustomRoutingTrafficResponse as any as S.Schema<DeleteCustomRoutingEndpointGroupResponse>;
 export interface DeleteCustomRoutingListenerRequest {
   ListenerArn: string;
 }
@@ -929,11 +915,8 @@ export const DeleteCustomRoutingListenerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCustomRoutingListenerRequest",
 }) as any as S.Schema<DeleteCustomRoutingListenerRequest>;
 export interface DeleteCustomRoutingListenerResponse {}
-export const DeleteCustomRoutingListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCustomRoutingListenerResponse",
-}) as any as S.Schema<DeleteCustomRoutingListenerResponse>;
+export const DeleteCustomRoutingListenerResponse =
+  AllowCustomRoutingTrafficResponse as any as S.Schema<DeleteCustomRoutingListenerResponse>;
 export interface DeleteEndpointGroupRequest {
   EndpointGroupArn: string;
 }
@@ -945,9 +928,8 @@ export const DeleteEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEndpointGroupRequest",
 }) as any as S.Schema<DeleteEndpointGroupRequest>;
 export interface DeleteEndpointGroupResponse {}
-export const DeleteEndpointGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEndpointGroupResponse",
-}) as any as S.Schema<DeleteEndpointGroupResponse>;
+export const DeleteEndpointGroupResponse =
+  DeleteAcceleratorResponse as any as S.Schema<DeleteEndpointGroupResponse>;
 export interface DeleteListenerRequest {
   ListenerArn: string;
 }
@@ -957,9 +939,8 @@ export const DeleteListenerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteListenerRequest" }) as any as S.Schema<DeleteListenerRequest>;
 export interface DeleteListenerResponse {}
-export const DeleteListenerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteListenerResponse",
-}) as any as S.Schema<DeleteListenerResponse>;
+export const DeleteListenerResponse =
+  DeleteAcceleratorResponse as any as S.Schema<DeleteListenerResponse>;
 export interface DenyCustomRoutingTrafficRequest {
   EndpointGroupArn: string;
   EndpointId: string;
@@ -979,11 +960,8 @@ export const DenyCustomRoutingTrafficRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DenyCustomRoutingTrafficRequest",
 }) as any as S.Schema<DenyCustomRoutingTrafficRequest>;
 export interface DenyCustomRoutingTrafficResponse {}
-export const DenyCustomRoutingTrafficResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DenyCustomRoutingTrafficResponse",
-}) as any as S.Schema<DenyCustomRoutingTrafficResponse>;
+export const DenyCustomRoutingTrafficResponse =
+  AllowCustomRoutingTrafficResponse as any as S.Schema<DenyCustomRoutingTrafficResponse>;
 export interface DeprovisionByoipCidrRequest {
   Cidr: string;
 }
@@ -997,11 +975,8 @@ export const DeprovisionByoipCidrRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeprovisionByoipCidrResponse {
   ByoipCidr?: ByoipCidr;
 }
-export const DeprovisionByoipCidrResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ByoipCidr: S.optional(ByoipCidr) }),
-).annotate({
-  identifier: "DeprovisionByoipCidrResponse",
-}) as any as S.Schema<DeprovisionByoipCidrResponse>;
+export const DeprovisionByoipCidrResponse =
+  AdvertiseByoipCidrResponse as any as S.Schema<DeprovisionByoipCidrResponse>;
 export interface DescribeAcceleratorRequest {
   AcceleratorArn: string;
 }
@@ -1015,11 +990,8 @@ export const DescribeAcceleratorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAcceleratorResponse {
   Accelerator?: Accelerator;
 }
-export const DescribeAcceleratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Accelerator: S.optional(Accelerator) }),
-).annotate({
-  identifier: "DescribeAcceleratorResponse",
-}) as any as S.Schema<DescribeAcceleratorResponse>;
+export const DescribeAcceleratorResponse =
+  CreateAcceleratorResponse as any as S.Schema<DescribeAcceleratorResponse>;
 export interface DescribeAcceleratorAttributesRequest {
   AcceleratorArn: string;
 }
@@ -1063,11 +1035,8 @@ export const DescribeCrossAccountAttachmentRequest = /*@__PURE__*/ S.suspend(() 
 export interface DescribeCrossAccountAttachmentResponse {
   CrossAccountAttachment?: Attachment;
 }
-export const DescribeCrossAccountAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CrossAccountAttachment: S.optional(Attachment) }),
-).annotate({
-  identifier: "DescribeCrossAccountAttachmentResponse",
-}) as any as S.Schema<DescribeCrossAccountAttachmentResponse>;
+export const DescribeCrossAccountAttachmentResponse =
+  CreateCrossAccountAttachmentResponse as any as S.Schema<DescribeCrossAccountAttachmentResponse>;
 export interface DescribeCustomRoutingAcceleratorRequest {
   AcceleratorArn: string;
 }
@@ -1081,11 +1050,8 @@ export const DescribeCustomRoutingAcceleratorRequest = /*@__PURE__*/ S.suspend((
 export interface DescribeCustomRoutingAcceleratorResponse {
   Accelerator?: CustomRoutingAccelerator;
 }
-export const DescribeCustomRoutingAcceleratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Accelerator: S.optional(CustomRoutingAccelerator) }),
-).annotate({
-  identifier: "DescribeCustomRoutingAcceleratorResponse",
-}) as any as S.Schema<DescribeCustomRoutingAcceleratorResponse>;
+export const DescribeCustomRoutingAcceleratorResponse =
+  CreateCustomRoutingAcceleratorResponse as any as S.Schema<DescribeCustomRoutingAcceleratorResponse>;
 export interface DescribeCustomRoutingAcceleratorAttributesRequest {
   AcceleratorArn: string;
 }
@@ -1131,11 +1097,8 @@ export const DescribeCustomRoutingEndpointGroupRequest = /*@__PURE__*/ S.suspend
 export interface DescribeCustomRoutingEndpointGroupResponse {
   EndpointGroup?: CustomRoutingEndpointGroup;
 }
-export const DescribeCustomRoutingEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointGroup: S.optional(CustomRoutingEndpointGroup) }),
-).annotate({
-  identifier: "DescribeCustomRoutingEndpointGroupResponse",
-}) as any as S.Schema<DescribeCustomRoutingEndpointGroupResponse>;
+export const DescribeCustomRoutingEndpointGroupResponse =
+  CreateCustomRoutingEndpointGroupResponse as any as S.Schema<DescribeCustomRoutingEndpointGroupResponse>;
 export interface DescribeCustomRoutingListenerRequest {
   ListenerArn: string;
 }
@@ -1149,11 +1112,8 @@ export const DescribeCustomRoutingListenerRequest = /*@__PURE__*/ S.suspend(() =
 export interface DescribeCustomRoutingListenerResponse {
   Listener?: CustomRoutingListener;
 }
-export const DescribeCustomRoutingListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Listener: S.optional(CustomRoutingListener) }),
-).annotate({
-  identifier: "DescribeCustomRoutingListenerResponse",
-}) as any as S.Schema<DescribeCustomRoutingListenerResponse>;
+export const DescribeCustomRoutingListenerResponse =
+  CreateCustomRoutingListenerResponse as any as S.Schema<DescribeCustomRoutingListenerResponse>;
 export interface DescribeEndpointGroupRequest {
   EndpointGroupArn: string;
 }
@@ -1167,11 +1127,8 @@ export const DescribeEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeEndpointGroupResponse {
   EndpointGroup?: EndpointGroup;
 }
-export const DescribeEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointGroup: S.optional(EndpointGroup) }),
-).annotate({
-  identifier: "DescribeEndpointGroupResponse",
-}) as any as S.Schema<DescribeEndpointGroupResponse>;
+export const DescribeEndpointGroupResponse =
+  CreateEndpointGroupResponse as any as S.Schema<DescribeEndpointGroupResponse>;
 export interface DescribeListenerRequest {
   ListenerArn: string;
 }
@@ -1183,9 +1140,8 @@ export const DescribeListenerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeListenerResponse {
   Listener?: Listener;
 }
-export const DescribeListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Listener: S.optional(Listener) }),
-).annotate({ identifier: "DescribeListenerResponse" }) as any as S.Schema<DescribeListenerResponse>;
+export const DescribeListenerResponse =
+  CreateListenerResponse as any as S.Schema<DescribeListenerResponse>;
 export type MaxResults = number;
 export interface ListAcceleratorsRequest {
   MaxResults?: number;
@@ -1253,7 +1209,7 @@ export const ListCrossAccountResourceAccountsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListCrossAccountResourceAccountsRequest>;
 export type AwsAccountId = string;
 export type AwsAccountIds = string[];
-export const AwsAccountIds = /*@__PURE__*/ S.Array(S.String);
+export const AwsAccountIds = DestinationAddresses as any as S.Schema<AwsAccountIds>;
 export interface ListCrossAccountResourceAccountsResponse {
   ResourceOwnerAwsAccountIds?: string[];
 }
@@ -1578,13 +1534,10 @@ export const ProvisionByoipCidrRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProvisionByoipCidrResponse {
   ByoipCidr?: ByoipCidr;
 }
-export const ProvisionByoipCidrResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ByoipCidr: S.optional(ByoipCidr) }),
-).annotate({
-  identifier: "ProvisionByoipCidrResponse",
-}) as any as S.Schema<ProvisionByoipCidrResponse>;
+export const ProvisionByoipCidrResponse =
+  AdvertiseByoipCidrResponse as any as S.Schema<ProvisionByoipCidrResponse>;
 export type EndpointIds = string[];
-export const EndpointIds = /*@__PURE__*/ S.Array(S.String);
+export const EndpointIds = DestinationAddresses as any as S.Schema<EndpointIds>;
 export interface RemoveCustomRoutingEndpointsRequest {
   EndpointIds: string[];
   EndpointGroupArn: string;
@@ -1597,11 +1550,8 @@ export const RemoveCustomRoutingEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveCustomRoutingEndpointsRequest",
 }) as any as S.Schema<RemoveCustomRoutingEndpointsRequest>;
 export interface RemoveCustomRoutingEndpointsResponse {}
-export const RemoveCustomRoutingEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveCustomRoutingEndpointsResponse",
-}) as any as S.Schema<RemoveCustomRoutingEndpointsResponse>;
+export const RemoveCustomRoutingEndpointsResponse =
+  AllowCustomRoutingTrafficResponse as any as S.Schema<RemoveCustomRoutingEndpointsResponse>;
 export interface EndpointIdentifier {
   EndpointId: string;
   ClientIPPreservationEnabled?: boolean;
@@ -1621,9 +1571,8 @@ export const RemoveEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveEndpointsRequest" }) as any as S.Schema<RemoveEndpointsRequest>;
 export interface RemoveEndpointsResponse {}
-export const RemoveEndpointsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveEndpointsResponse",
-}) as any as S.Schema<RemoveEndpointsResponse>;
+export const RemoveEndpointsResponse =
+  DeleteAcceleratorResponse as any as S.Schema<RemoveEndpointsResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -1634,11 +1583,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteAcceleratorResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = DestinationAddresses as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1649,9 +1597,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteAcceleratorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAcceleratorRequest {
   AcceleratorArn: string;
   Name?: string;
@@ -1671,11 +1618,8 @@ export const UpdateAcceleratorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAcceleratorResponse {
   Accelerator?: Accelerator;
 }
-export const UpdateAcceleratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Accelerator: S.optional(Accelerator) }),
-).annotate({
-  identifier: "UpdateAcceleratorResponse",
-}) as any as S.Schema<UpdateAcceleratorResponse>;
+export const UpdateAcceleratorResponse =
+  CreateAcceleratorResponse as any as S.Schema<UpdateAcceleratorResponse>;
 export interface UpdateAcceleratorAttributesRequest {
   AcceleratorArn: string;
   FlowLogsEnabled?: boolean;
@@ -1695,11 +1639,8 @@ export const UpdateAcceleratorAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAcceleratorAttributesResponse {
   AcceleratorAttributes?: AcceleratorAttributes;
 }
-export const UpdateAcceleratorAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceleratorAttributes: S.optional(AcceleratorAttributes) }),
-).annotate({
-  identifier: "UpdateAcceleratorAttributesResponse",
-}) as any as S.Schema<UpdateAcceleratorAttributesResponse>;
+export const UpdateAcceleratorAttributesResponse =
+  DescribeAcceleratorAttributesResponse as any as S.Schema<UpdateAcceleratorAttributesResponse>;
 export interface UpdateCrossAccountAttachmentRequest {
   AttachmentArn: string;
   Name?: string;
@@ -1723,11 +1664,8 @@ export const UpdateCrossAccountAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCrossAccountAttachmentResponse {
   CrossAccountAttachment?: Attachment;
 }
-export const UpdateCrossAccountAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CrossAccountAttachment: S.optional(Attachment) }),
-).annotate({
-  identifier: "UpdateCrossAccountAttachmentResponse",
-}) as any as S.Schema<UpdateCrossAccountAttachmentResponse>;
+export const UpdateCrossAccountAttachmentResponse =
+  CreateCrossAccountAttachmentResponse as any as S.Schema<UpdateCrossAccountAttachmentResponse>;
 export interface UpdateCustomRoutingAcceleratorRequest {
   AcceleratorArn: string;
   Name?: string;
@@ -1749,11 +1687,8 @@ export const UpdateCustomRoutingAcceleratorRequest = /*@__PURE__*/ S.suspend(() 
 export interface UpdateCustomRoutingAcceleratorResponse {
   Accelerator?: CustomRoutingAccelerator;
 }
-export const UpdateCustomRoutingAcceleratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Accelerator: S.optional(CustomRoutingAccelerator) }),
-).annotate({
-  identifier: "UpdateCustomRoutingAcceleratorResponse",
-}) as any as S.Schema<UpdateCustomRoutingAcceleratorResponse>;
+export const UpdateCustomRoutingAcceleratorResponse =
+  CreateCustomRoutingAcceleratorResponse as any as S.Schema<UpdateCustomRoutingAcceleratorResponse>;
 export interface UpdateCustomRoutingAcceleratorAttributesRequest {
   AcceleratorArn: string;
   FlowLogsEnabled?: boolean;
@@ -1773,11 +1708,8 @@ export const UpdateCustomRoutingAcceleratorAttributesRequest = /*@__PURE__*/ S.s
 export interface UpdateCustomRoutingAcceleratorAttributesResponse {
   AcceleratorAttributes?: CustomRoutingAcceleratorAttributes;
 }
-export const UpdateCustomRoutingAcceleratorAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AcceleratorAttributes: S.optional(CustomRoutingAcceleratorAttributes) }),
-).annotate({
-  identifier: "UpdateCustomRoutingAcceleratorAttributesResponse",
-}) as any as S.Schema<UpdateCustomRoutingAcceleratorAttributesResponse>;
+export const UpdateCustomRoutingAcceleratorAttributesResponse =
+  DescribeCustomRoutingAcceleratorAttributesResponse as any as S.Schema<UpdateCustomRoutingAcceleratorAttributesResponse>;
 export interface UpdateCustomRoutingListenerRequest {
   ListenerArn: string;
   PortRanges: PortRange[];
@@ -1792,11 +1724,8 @@ export const UpdateCustomRoutingListenerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCustomRoutingListenerResponse {
   Listener?: CustomRoutingListener;
 }
-export const UpdateCustomRoutingListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Listener: S.optional(CustomRoutingListener) }),
-).annotate({
-  identifier: "UpdateCustomRoutingListenerResponse",
-}) as any as S.Schema<UpdateCustomRoutingListenerResponse>;
+export const UpdateCustomRoutingListenerResponse =
+  CreateCustomRoutingListenerResponse as any as S.Schema<UpdateCustomRoutingListenerResponse>;
 export interface UpdateEndpointGroupRequest {
   EndpointGroupArn: string;
   EndpointConfigurations?: EndpointConfiguration[];
@@ -1826,11 +1755,8 @@ export const UpdateEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEndpointGroupResponse {
   EndpointGroup?: EndpointGroup;
 }
-export const UpdateEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointGroup: S.optional(EndpointGroup) }),
-).annotate({
-  identifier: "UpdateEndpointGroupResponse",
-}) as any as S.Schema<UpdateEndpointGroupResponse>;
+export const UpdateEndpointGroupResponse =
+  CreateEndpointGroupResponse as any as S.Schema<UpdateEndpointGroupResponse>;
 export interface UpdateListenerRequest {
   ListenerArn: string;
   PortRanges?: PortRange[];
@@ -1848,9 +1774,8 @@ export const UpdateListenerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateListenerResponse {
   Listener?: Listener;
 }
-export const UpdateListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Listener: S.optional(Listener) }),
-).annotate({ identifier: "UpdateListenerResponse" }) as any as S.Schema<UpdateListenerResponse>;
+export const UpdateListenerResponse =
+  CreateListenerResponse as any as S.Schema<UpdateListenerResponse>;
 export interface WithdrawByoipCidrRequest {
   Cidr: string;
 }
@@ -1862,11 +1787,8 @@ export const WithdrawByoipCidrRequest = /*@__PURE__*/ S.suspend(() =>
 export interface WithdrawByoipCidrResponse {
   ByoipCidr?: ByoipCidr;
 }
-export const WithdrawByoipCidrResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ByoipCidr: S.optional(ByoipCidr) }),
-).annotate({
-  identifier: "WithdrawByoipCidrResponse",
-}) as any as S.Schema<WithdrawByoipCidrResponse>;
+export const WithdrawByoipCidrResponse =
+  AdvertiseByoipCidrResponse as any as S.Schema<WithdrawByoipCidrResponse>;
 export type ErrorMessage = string;
 export type AddCustomRoutingEndpointsError =
   | AccessDeniedException

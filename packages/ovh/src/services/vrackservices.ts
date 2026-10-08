@@ -678,9 +678,8 @@ export const PutVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Asynchronous operations ongoing on the vRack Services */
 export type VrackServicesVrackServicesCurrentTasksList = Array<CommonCurrentTask>;
-export const VrackServicesVrackServicesCurrentTasksList = /*@__PURE__*/ S.Array(
-  CommonCurrentTask,
-) as any as S.Schema<VrackServicesVrackServicesCurrentTasksList>;
+export const VrackServicesVrackServicesCurrentTasksList =
+  VrackServicesVrackServicesWithIAMCurrentTasksList as any as S.Schema<VrackServicesVrackServicesCurrentTasksList>;
 
 /** A vRack Services */
 export interface VrackServicesVrackServices {

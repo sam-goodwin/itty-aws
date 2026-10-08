@@ -455,9 +455,7 @@ export const DeleteProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CheckValidCredsRequest as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
@@ -1865,13 +1863,8 @@ export interface StartManualTransferRunsResponse {
   /** The transfer runs that were created. */
   runs?: TransferRunList;
 }
-export const StartManualTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runs: S.optional(TransferRunList),
-  }),
-).annotate({
-  identifier: "StartManualTransferRunsResponse",
-}) as any as S.Schema<StartManualTransferRunsResponse>;
+export const StartManualTransferRunsResponse =
+  ScheduleTransferRunsResponse as any as S.Schema<StartManualTransferRunsResponse>;
 
 export interface StartManualRunsProjectsTransferConfigsRequest {
   /** Required. Transfer configuration name. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */

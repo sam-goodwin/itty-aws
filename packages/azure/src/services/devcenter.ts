@@ -327,10 +327,8 @@ export const CatalogPropertiesSyncType = S.String;
 
 /** Resource tags. */
 export type CatalogPropertiesTagsMap = { [key: string]: string | undefined };
-export const CatalogPropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogPropertiesTagsMap>;
+export const CatalogPropertiesTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<CatalogPropertiesTagsMap>;
 
 /** Provisioning state of the resource. */
 export type CatalogPropertiesProvisioningState =
@@ -521,9 +519,8 @@ export const ConnectProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectProjectCatalogRequest>;
 
 export interface ConnectProjectCatalogResponse {}
-export const ConnectProjectCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ConnectProjectCatalogResponse",
-}) as any as S.Schema<ConnectProjectCatalogResponse>;
+export const ConnectProjectCatalogResponse =
+  ConnectCatalogResponse as any as S.Schema<ConnectProjectCatalogResponse>;
 
 export interface DeleteAttachedNetworkRequest {
   /** The ID of the target subscription. */
@@ -554,9 +551,8 @@ export const DeleteAttachedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttachedNetworkRequest>;
 
 export interface DeleteAttachedNetworkResponse {}
-export const DeleteAttachedNetworkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAttachedNetworkResponse",
-}) as any as S.Schema<DeleteAttachedNetworkResponse>;
+export const DeleteAttachedNetworkResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteAttachedNetworkResponse>;
 
 export interface DeleteCatalogRequest {
   /** The ID of the target subscription. */
@@ -585,9 +581,8 @@ export const DeleteCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCatalogRequest" }) as any as S.Schema<DeleteCatalogRequest>;
 
 export interface DeleteCatalogResponse {}
-export const DeleteCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCatalogResponse",
-}) as any as S.Schema<DeleteCatalogResponse>;
+export const DeleteCatalogResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteCatalogResponse>;
 
 export interface DeleteDevBoxDefinitionRequest {
   /** The ID of the target subscription. */
@@ -618,9 +613,8 @@ export const DeleteDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDevBoxDefinitionRequest>;
 
 export interface DeleteDevBoxDefinitionResponse {}
-export const DeleteDevBoxDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDevBoxDefinitionResponse",
-}) as any as S.Schema<DeleteDevBoxDefinitionResponse>;
+export const DeleteDevBoxDefinitionResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteDevBoxDefinitionResponse>;
 
 export interface DeleteDevCenterRequest {
   /** The ID of the target subscription. */
@@ -646,9 +640,8 @@ export const DeleteDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDevCenterRequest" }) as any as S.Schema<DeleteDevCenterRequest>;
 
 export interface DeleteDevCenterResponse {}
-export const DeleteDevCenterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDevCenterResponse",
-}) as any as S.Schema<DeleteDevCenterResponse>;
+export const DeleteDevCenterResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteDevCenterResponse>;
 
 export interface DeleteEnvironmentTypeRequest {
   /** The ID of the target subscription. */
@@ -679,9 +672,8 @@ export const DeleteEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvironmentTypeRequest>;
 
 export interface DeleteEnvironmentTypeResponse {}
-export const DeleteEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentTypeResponse",
-}) as any as S.Schema<DeleteEnvironmentTypeResponse>;
+export const DeleteEnvironmentTypeResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteEnvironmentTypeResponse>;
 
 export interface DeleteGalleryRequest {
   /** The ID of the target subscription. */
@@ -710,9 +702,8 @@ export const DeleteGalleryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGalleryRequest" }) as any as S.Schema<DeleteGalleryRequest>;
 
 export interface DeleteGalleryResponse {}
-export const DeleteGalleryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGalleryResponse",
-}) as any as S.Schema<DeleteGalleryResponse>;
+export const DeleteGalleryResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteGalleryResponse>;
 
 export interface DeleteNetworkConnectionRequest {
   /** The ID of the target subscription. */
@@ -771,9 +762,7 @@ export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePoolRequest" }) as any as S.Schema<DeletePoolRequest>;
 
 export interface DeletePoolResponse {}
-export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePoolResponse",
-}) as any as S.Schema<DeletePoolResponse>;
+export const DeletePoolResponse = ConnectCatalogResponse as any as S.Schema<DeletePoolResponse>;
 
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
@@ -799,9 +788,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectCatalogRequest {
   /** The ID of the target subscription. */
@@ -832,9 +820,8 @@ export const DeleteProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectCatalogRequest>;
 
 export interface DeleteProjectCatalogResponse {}
-export const DeleteProjectCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectCatalogResponse",
-}) as any as S.Schema<DeleteProjectCatalogResponse>;
+export const DeleteProjectCatalogResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteProjectCatalogResponse>;
 
 export interface DeleteProjectEnvironmentTypeRequest {
   /** The ID of the target subscription. */
@@ -865,11 +852,8 @@ export const DeleteProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectEnvironmentTypeRequest>;
 
 export interface DeleteProjectEnvironmentTypeResponse {}
-export const DeleteProjectEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectEnvironmentTypeResponse",
-}) as any as S.Schema<DeleteProjectEnvironmentTypeResponse>;
+export const DeleteProjectEnvironmentTypeResponse =
+  CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<DeleteProjectEnvironmentTypeResponse>;
 
 export interface DeleteProjectPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -900,9 +884,8 @@ export const DeleteProjectPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectPolicyRequest>;
 
 export interface DeleteProjectPolicyResponse {}
-export const DeleteProjectPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectPolicyResponse",
-}) as any as S.Schema<DeleteProjectPolicyResponse>;
+export const DeleteProjectPolicyResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteProjectPolicyResponse>;
 
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
@@ -937,16 +920,13 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 
 export interface DeleteScheduleResponse {}
-export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduleResponse",
-}) as any as S.Schema<DeleteScheduleResponse>;
+export const DeleteScheduleResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteScheduleResponse>;
 
 /** Resource tags. */
 export type DevBoxDefinitionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DevBoxDefinitionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequestTagsMap>;
+export const DevBoxDefinitionsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequestTagsMap>;
 
 /** Image reference information */
 export interface DevBoxDefinitionPropertiesInputImageReference {
@@ -1108,10 +1088,8 @@ export const DevBoxDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type DevBoxDefinitionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DevBoxDefinitionsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponseTagsMap>;
+export const DevBoxDefinitionsCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponseTagsMap>;
 
 /** Image reference information */
 export interface DevBoxDefinitionPropertiesImageReference {
@@ -1141,17 +1119,8 @@ export interface DevBoxDefinitionPropertiesSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const DevBoxDefinitionPropertiesSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DevBoxDefinitionPropertiesSku",
-}) as any as S.Schema<DevBoxDefinitionPropertiesSku>;
+export const DevBoxDefinitionPropertiesSku =
+  DevBoxDefinitionPropertiesInputSku as any as S.Schema<DevBoxDefinitionPropertiesSku>;
 
 /** Provisioning state of the resource. */
 export type DevBoxDefinitionPropertiesProvisioningState =
@@ -1273,10 +1242,8 @@ export const DevBoxDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type DevCentersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DevCentersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DevCentersCreateOrUpdateRequestTagsMap>;
+export const DevCentersCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevCentersCreateOrUpdateRequestTagsMap>;
 
 /** Values can be systemAssignedIdentity or userAssignedIdentity */
 export type EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
@@ -1418,9 +1385,8 @@ export const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  ConnectCatalogResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
@@ -1482,10 +1448,8 @@ export const DevCentersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DevCentersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DevCentersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DevCentersCreateOrUpdateResponseTagsMap>;
+export const DevCentersCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevCentersCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the resource. */
 export type DevCenterPropertiesProvisioningState =
@@ -1625,10 +1589,8 @@ export const EnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EnvironmentTypesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EnvironmentTypesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnvironmentTypesCreateOrUpdateRequestTagsMap>;
+export const EnvironmentTypesCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypesCreateOrUpdateRequestTagsMap>;
 
 export interface EnvironmentTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1702,10 +1664,8 @@ export const EnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EnvironmentTypesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EnvironmentTypesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnvironmentTypesCreateOrUpdateResponseTagsMap>;
+export const EnvironmentTypesCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypesCreateOrUpdateResponseTagsMap>;
 
 export interface EnvironmentTypesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1971,17 +1931,8 @@ export interface GetAttachedNetworkByDevCenterResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
-export const GetAttachedNetworkByDevCenterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AttachedNetworkConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetAttachedNetworkByDevCenterResponse",
-}) as any as S.Schema<GetAttachedNetworkByDevCenterResponse>;
+export const GetAttachedNetworkByDevCenterResponse =
+  AttachedNetworksCreateOrUpdateResponse as any as S.Schema<GetAttachedNetworkByDevCenterResponse>;
 
 export interface GetAttachedNetworkByProjectRequest {
   /** The ID of the target subscription. */
@@ -2023,17 +1974,8 @@ export interface GetAttachedNetworkByProjectResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
-export const GetAttachedNetworkByProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AttachedNetworkConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetAttachedNetworkByProjectResponse",
-}) as any as S.Schema<GetAttachedNetworkByProjectResponse>;
+export const GetAttachedNetworkByProjectResponse =
+  AttachedNetworksCreateOrUpdateResponse as any as S.Schema<GetAttachedNetworkByProjectResponse>;
 
 export interface GetCatalogRequest {
   /** The ID of the target subscription. */
@@ -2337,9 +2279,8 @@ export const CatalogErrorDetails = DevBoxDefinitionPropertiesInputImageValidatio
 /** Errors associated with resources synchronized from the catalog. */
 export type GetCustomizationTaskErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const GetCustomizationTaskErrorDetailsResponseErrorsList = /*@__PURE__*/ S.Array(
-  DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
-) as any as S.Schema<GetCustomizationTaskErrorDetailsResponseErrorsList>;
+export const GetCustomizationTaskErrorDetailsResponseErrorsList =
+  CatalogSyncErrorErrorDetailsList as any as S.Schema<GetCustomizationTaskErrorDetailsResponseErrorsList>;
 
 export interface GetCustomizationTaskErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
@@ -2383,10 +2324,8 @@ export const GetDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDevBoxDefinitionResponseTagsMap = { [key: string]: string | undefined };
-export const GetDevBoxDefinitionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDevBoxDefinitionResponseTagsMap>;
+export const GetDevBoxDefinitionResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetDevBoxDefinitionResponseTagsMap>;
 
 export interface GetDevBoxDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2404,19 +2343,8 @@ export interface GetDevBoxDefinitionResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const GetDevBoxDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetDevBoxDefinitionResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DevBoxDefinitionProperties),
-  }),
-).annotate({
-  identifier: "GetDevBoxDefinitionResponse",
-}) as any as S.Schema<GetDevBoxDefinitionResponse>;
+export const GetDevBoxDefinitionResponse =
+  DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDevBoxDefinitionResponse>;
 
 export interface GetDevBoxDefinitionByProjectRequest {
   /** The ID of the target subscription. */
@@ -2448,10 +2376,8 @@ export const GetDevBoxDefinitionByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDevBoxDefinitionByProjectResponseTagsMap = { [key: string]: string | undefined };
-export const GetDevBoxDefinitionByProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDevBoxDefinitionByProjectResponseTagsMap>;
+export const GetDevBoxDefinitionByProjectResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetDevBoxDefinitionByProjectResponseTagsMap>;
 
 export interface GetDevBoxDefinitionByProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2469,19 +2395,8 @@ export interface GetDevBoxDefinitionByProjectResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const GetDevBoxDefinitionByProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetDevBoxDefinitionByProjectResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DevBoxDefinitionProperties),
-  }),
-).annotate({
-  identifier: "GetDevBoxDefinitionByProjectResponse",
-}) as any as S.Schema<GetDevBoxDefinitionByProjectResponse>;
+export const GetDevBoxDefinitionByProjectResponse =
+  DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDevBoxDefinitionByProjectResponse>;
 
 export interface GetDevCenterRequest {
   /** The ID of the target subscription. */
@@ -2508,10 +2423,8 @@ export const GetDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDevCenterResponseTagsMap = { [key: string]: string | undefined };
-export const GetDevCenterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDevCenterResponseTagsMap>;
+export const GetDevCenterResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetDevCenterResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetDevCenterResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -2714,17 +2627,8 @@ export interface GetEnvironmentDefinitionByProjectCatalogResponse {
   /** Environment definition properties. */
   properties?: EnvironmentDefinitionProperties;
 }
-export const GetEnvironmentDefinitionByProjectCatalogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EnvironmentDefinitionProperties),
-  }),
-).annotate({
-  identifier: "GetEnvironmentDefinitionByProjectCatalogResponse",
-}) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogResponse>;
+export const GetEnvironmentDefinitionByProjectCatalogResponse =
+  GetEnvironmentDefinitionResponse as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogResponse>;
 
 export interface GetEnvironmentDefinitionErrorDetailsRequest {
   /** The ID of the target subscription. */
@@ -2760,21 +2664,15 @@ export const GetEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ S.suspe
 /** Errors associated with resources synchronized from the catalog. */
 export type GetEnvironmentDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const GetEnvironmentDefinitionErrorDetailsResponseErrorsList = /*@__PURE__*/ S.Array(
-  DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
-) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponseErrorsList>;
+export const GetEnvironmentDefinitionErrorDetailsResponseErrorsList =
+  CatalogSyncErrorErrorDetailsList as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponseErrorsList>;
 
 export interface GetEnvironmentDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetEnvironmentDefinitionErrorDetailsResponseErrorsList;
 }
-export const GetEnvironmentDefinitionErrorDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(GetEnvironmentDefinitionErrorDetailsResponseErrorsList),
-  }),
-).annotate({
-  identifier: "GetEnvironmentDefinitionErrorDetailsResponse",
-}) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponse>;
+export const GetEnvironmentDefinitionErrorDetailsResponse =
+  GetCustomizationTaskErrorDetailsResponse as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponse>;
 
 export interface GetEnvironmentTypeRequest {
   /** The ID of the target subscription. */
@@ -2806,10 +2704,8 @@ export const GetEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const GetEnvironmentTypeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetEnvironmentTypeResponseTagsMap>;
+export const GetEnvironmentTypeResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetEnvironmentTypeResponseTagsMap>;
 
 export interface GetEnvironmentTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2825,18 +2721,8 @@ export interface GetEnvironmentTypeResponse {
   /** Resource tags. */
   tags?: GetEnvironmentTypeResponseTagsMap;
 }
-export const GetEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EnvironmentTypeProperties),
-    tags: S.optional(GetEnvironmentTypeResponseTagsMap),
-  }),
-).annotate({
-  identifier: "GetEnvironmentTypeResponse",
-}) as any as S.Schema<GetEnvironmentTypeResponse>;
+export const GetEnvironmentTypeResponse =
+  EnvironmentTypesCreateOrUpdateResponse as any as S.Schema<GetEnvironmentTypeResponse>;
 
 export interface GetGalleryRequest {
   /** The ID of the target subscription. */
@@ -3245,10 +3131,8 @@ export const GetNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNetworkConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetNetworkConnectionResponseTagsMap>;
+export const GetNetworkConnectionResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetNetworkConnectionResponseTagsMap>;
 
 /** Provisioning state of the resource. */
 export type NetworkPropertiesProvisioningState =
@@ -3652,10 +3536,8 @@ export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetPoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPoolResponseTagsMap>;
+export const GetPoolResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetPoolResponseTagsMap>;
 
 /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
 export type PoolDevBoxDefinitionType = "Reference" | "Value";
@@ -3905,16 +3787,13 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetProjectResponseTagsMap = { [key: string]: string | undefined };
-export const GetProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetProjectResponseTagsMap>;
+export const GetProjectResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetProjectResponseTagsMap>;
 
 /** Indicates catalog item types that can be synced. */
 export type ProjectCatalogSettingsCatalogItemSyncTypesList = Array<CatalogItemType | (string & {})>;
-export const ProjectCatalogSettingsCatalogItemSyncTypesList = /*@__PURE__*/ S.Array(
-  CatalogItemType,
-) as any as S.Schema<ProjectCatalogSettingsCatalogItemSyncTypesList>;
+export const ProjectCatalogSettingsCatalogItemSyncTypesList =
+  SyncStatsSyncedCatalogItemTypesList as any as S.Schema<ProjectCatalogSettingsCatalogItemSyncTypesList>;
 
 /** Settings to be used when associating a project with a catalog. */
 export interface ProjectCatalogSettings {
@@ -4137,17 +4016,8 @@ export interface GetProjectCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const GetProjectCatalogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogProperties),
-  }),
-).annotate({
-  identifier: "GetProjectCatalogResponse",
-}) as any as S.Schema<GetProjectCatalogResponse>;
+export const GetProjectCatalogResponse =
+  CatalogsCreateOrUpdateResponse as any as S.Schema<GetProjectCatalogResponse>;
 
 export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest {
   /** The ID of the target subscription. */
@@ -4660,21 +4530,15 @@ export const GetProjectCatalogImageDefinitionErrorDetailsRequest = /*@__PURE__*/
 /** Errors associated with resources synchronized from the catalog. */
 export type GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
-export const GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList = /*@__PURE__*/ S.Array(
-  DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
-) as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList>;
+export const GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList =
+  CatalogSyncErrorErrorDetailsList as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList>;
 
 export interface GetProjectCatalogImageDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList;
 }
-export const GetProjectCatalogImageDefinitionErrorDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList),
-  }),
-).annotate({
-  identifier: "GetProjectCatalogImageDefinitionErrorDetailsResponse",
-}) as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponse>;
+export const GetProjectCatalogImageDefinitionErrorDetailsResponse =
+  GetCustomizationTaskErrorDetailsResponse as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponse>;
 
 export interface GetProjectCatalogSyncErrorDetailsRequest {
   /** The ID of the target subscription. */
@@ -4774,10 +4638,8 @@ export const ProjectEnvironmentTypePropertiesCreatorRoleAssignment = /*@__PURE__
 
 /** A map of roles to assign to the parent user. */
 export type UserRoleAssignmentRolesMap = { [key: string]: EnvironmentRole | undefined };
-export const UserRoleAssignmentRolesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  EnvironmentRole,
-) as any as S.Schema<UserRoleAssignmentRolesMap>;
+export const UserRoleAssignmentRolesMap =
+  ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap as any as S.Schema<UserRoleAssignmentRolesMap>;
 
 /** Mapping of user object ID to role assignments. */
 export interface UserRoleAssignment {
@@ -4852,10 +4714,8 @@ export const ProjectEnvironmentTypeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetProjectEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const GetProjectEnvironmentTypeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetProjectEnvironmentTypeResponseTagsMap>;
+export const GetProjectEnvironmentTypeResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetProjectEnvironmentTypeResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetProjectEnvironmentTypeResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -4923,11 +4783,8 @@ export const GetProjectInheritedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectNetworkSettings {
   microsoftHostedNetworkEnableStatus?: MicrosoftHostedNetworkEnableStatus;
 }
-export const ProjectNetworkSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microsoftHostedNetworkEnableStatus: S.optional(MicrosoftHostedNetworkEnableStatus),
-  }),
-).annotate({ identifier: "ProjectNetworkSettings" }) as any as S.Schema<ProjectNetworkSettings>;
+export const ProjectNetworkSettings =
+  DevCenterNetworkSettings as any as S.Schema<ProjectNetworkSettings>;
 
 /** Applicable inherited settings for a project. */
 export interface InheritedSettingsForProject {
@@ -5007,9 +4864,8 @@ export const ProjectPolicyPropertiesResourcePoliciesList = /*@__PURE__*/ S.Array
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyPropertiesScopesList = Array<string>;
-export const ProjectPolicyPropertiesScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectPolicyPropertiesScopesList>;
+export const ProjectPolicyPropertiesScopesList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyPropertiesScopesList>;
 
 /** Provisioning state of the resource. */
 export type ProjectPolicyPropertiesProvisioningState =
@@ -5233,17 +5089,8 @@ export interface AttachedNetworkConnection {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
-export const AttachedNetworkConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AttachedNetworkConnectionProperties),
-  }),
-).annotate({
-  identifier: "AttachedNetworkConnection",
-}) as any as S.Schema<AttachedNetworkConnection>;
+export const AttachedNetworkConnection =
+  AttachedNetworksCreateOrUpdateResponse as any as S.Schema<AttachedNetworkConnection>;
 
 /** Current page of results. */
 export type AttachedNetworkListResultValueList = Array<AttachedNetworkConnection>;
@@ -5336,15 +5183,7 @@ export interface Catalog {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const Catalog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogProperties),
-  }),
-).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
+export const Catalog = GetCatalogResponse as any as S.Schema<Catalog>;
 
 /** Current page of results. */
 export type CatalogListResultValueList = Array<Catalog>;
@@ -5472,10 +5311,8 @@ export const ListDevBoxDefinitionByDevCenterRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type DevBoxDefinitionTagsMap = { [key: string]: string | undefined };
-export const DevBoxDefinitionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DevBoxDefinitionTagsMap>;
+export const DevBoxDefinitionTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionTagsMap>;
 
 /** Represents a definition for a Developer Machine. */
 export interface DevBoxDefinition {
@@ -5583,10 +5420,7 @@ export const ListDevCenterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DevCenterTagsMap = { [key: string]: string | undefined };
-export const DevCenterTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DevCenterTagsMap>;
+export const DevCenterTagsMap = CatalogPropertiesInputTagsMap as any as S.Schema<DevCenterTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type DevCenterIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -5611,18 +5445,7 @@ export interface DevCenter {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const DevCenter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DevCenterTagsMap),
-    location: S.String,
-    properties: S.optional(DevCenterProperties),
-    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "DevCenter" }) as any as S.Schema<DevCenter>;
+export const DevCenter = GetDevCenterResponse as any as S.Schema<DevCenter>;
 
 /** Current page of results. */
 export type DevCenterListResultValueList = Array<DevCenter>;
@@ -5800,10 +5623,8 @@ export const ListEnvironmentTypeByDevCenterRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type EnvironmentTypeTagsMap = { [key: string]: string | undefined };
-export const EnvironmentTypeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnvironmentTypeTagsMap>;
+export const EnvironmentTypeTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypeTagsMap>;
 
 /** Represents an environment type. */
 export interface EnvironmentType {
@@ -5894,15 +5715,7 @@ export interface Gallery {
   /** Gallery properties. */
   properties?: GalleryProperties;
 }
-export const Gallery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(GalleryProperties),
-  }),
-).annotate({ identifier: "Gallery" }) as any as S.Schema<Gallery>;
+export const Gallery = GetGalleryResponse as any as S.Schema<Gallery>;
 
 /** Current page of results. */
 export type GalleryListResultValueList = Array<Gallery>;
@@ -5965,15 +5778,7 @@ export interface Image {
   /** Image properties. */
   properties?: ImageProperties;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ImageProperties),
-  }),
-).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
+export const Image = GetImageResponse as any as S.Schema<Image>;
 
 /** Current page of results. */
 export type ImageListResultValueList = Array<Image>;
@@ -6095,15 +5900,7 @@ export interface ImageVersion {
   /** Image version properties. */
   properties?: ImageVersionProperties;
 }
-export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ImageVersionProperties),
-  }),
-).annotate({ identifier: "ImageVersion" }) as any as S.Schema<ImageVersion>;
+export const ImageVersion = GetImageVersionResponse as any as S.Schema<ImageVersion>;
 
 /** Current page of results. */
 export type ImageVersionListResultValueList = Array<ImageVersion>;
@@ -6180,10 +5977,8 @@ export const ListNetworkConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type NetworkConnectionTagsMap = { [key: string]: string | undefined };
-export const NetworkConnectionTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkConnectionTagsMap>;
+export const NetworkConnectionTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionTagsMap>;
 
 /** Network related settings */
 export interface NetworkConnection {
@@ -6548,10 +6343,7 @@ export const ListPoolByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolTagsMap = { [key: string]: string | undefined };
-export const PoolTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoolTagsMap>;
+export const PoolTagsMap = CatalogPropertiesInputTagsMap as any as S.Schema<PoolTagsMap>;
 
 /** A pool of Virtual Machines. */
 export interface Pool {
@@ -6570,17 +6362,7 @@ export interface Pool {
   /** Pool properties */
   properties?: PoolProperties;
 }
-export const Pool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PoolTagsMap),
-    location: S.String,
-    properties: S.optional(PoolProperties),
-  }),
-).annotate({ identifier: "Pool" }) as any as S.Schema<Pool>;
+export const Pool = GetPoolResponse as any as S.Schema<Pool>;
 
 /** Current page of results. */
 export type PoolListResultValueList = Array<Pool>;
@@ -6702,10 +6484,7 @@ export const ListProjectByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
-export const ProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectTagsMap>;
+export const ProjectTagsMap = CatalogPropertiesInputTagsMap as any as S.Schema<ProjectTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -6730,18 +6509,7 @@ export interface Project {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProjectTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectProperties),
-    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
+export const Project = GetProjectResponse as any as S.Schema<Project>;
 
 /** Current page of results. */
 export type ProjectListResultValueList = Array<Project>;
@@ -6997,10 +6765,8 @@ export const ListProjectEnvironmentTypesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectEnvironmentTypeTagsMap = { [key: string]: string | undefined };
-export const ProjectEnvironmentTypeTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectEnvironmentTypeTagsMap>;
+export const ProjectEnvironmentTypeTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypeTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypeIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -7101,15 +6867,7 @@ export interface ProjectPolicy {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
-export const ProjectPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectPolicyProperties),
-  }),
-).annotate({ identifier: "ProjectPolicy" }) as any as S.Schema<ProjectPolicy>;
+export const ProjectPolicy = GetProjectPolicyResponse as any as S.Schema<ProjectPolicy>;
 
 /** Current page of results. */
 export type ProjectPolicyListResultValueList = Array<ProjectPolicy>;
@@ -7175,15 +6933,7 @@ export interface Schedule {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduleProperties),
-  }),
-).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+export const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
 
 /** Current page of results. */
 export type ScheduleListResultValueList = Array<Schedule>;
@@ -7230,9 +6980,8 @@ export const ListSkusByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** SKU supported locations. */
 export type ListSkusByProjectResponseValueItemLocationsList = Array<string>;
-export const ListSkusByProjectResponseValueItemLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSkusByProjectResponseValueItemLocationsList>;
+export const ListSkusByProjectResponseValueItemLocationsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ListSkusByProjectResponseValueItemLocationsList>;
 
 /** A name/value pair to describe a capability. */
 export interface Capability {
@@ -7332,15 +7081,13 @@ export const ListSkusBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** SKU supported locations. */
 export type SkuListResultValueItemLocationsList = Array<string>;
-export const SkuListResultValueItemLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuListResultValueItemLocationsList>;
+export const SkuListResultValueItemLocationsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<SkuListResultValueItemLocationsList>;
 
 /** Collection of name/value pairs to describe the SKU capabilities. */
 export type SkuListResultValueItemCapabilitiesList = Array<Capability>;
-export const SkuListResultValueItemCapabilitiesList = /*@__PURE__*/ S.Array(
-  Capability,
-) as any as S.Schema<SkuListResultValueItemCapabilitiesList>;
+export const SkuListResultValueItemCapabilitiesList =
+  ListSkusByProjectResponseValueItemCapabilitiesList as any as S.Schema<SkuListResultValueItemCapabilitiesList>;
 
 /** The resource model definition representing SKU for DevCenter resources */
 export interface SkuListResultValueItem {
@@ -7478,10 +7225,8 @@ export const ListUsagesResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NetworkConnectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NetworkConnectionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequestTagsMap>;
+export const NetworkConnectionsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionsCreateOrUpdateRequestTagsMap>;
 
 /** Health check status values */
 export type NetworkPropertiesInputHealthCheckStatus =
@@ -7566,10 +7311,8 @@ export const NetworkConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type NetworkConnectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NetworkConnectionsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NetworkConnectionsCreateOrUpdateResponseTagsMap>;
+export const NetworkConnectionsCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionsCreateOrUpdateResponseTagsMap>;
 
 export interface NetworkConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7587,19 +7330,8 @@ export interface NetworkConnectionsCreateOrUpdateResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
-export const NetworkConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(NetworkConnectionsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NetworkProperties),
-  }),
-).annotate({
-  identifier: "NetworkConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<NetworkConnectionsCreateOrUpdateResponse>;
+export const NetworkConnectionsCreateOrUpdateResponse =
+  GetNetworkConnectionResponse as any as S.Schema<NetworkConnectionsCreateOrUpdateResponse>;
 
 /** Indicates the type of sync that is configured for the catalog. */
 export type CatalogUpdatePropertiesSyncType = "Manual" | "Scheduled";
@@ -7607,10 +7339,8 @@ export const CatalogUpdatePropertiesSyncType = S.String;
 
 /** Resource tags. */
 export type CatalogUpdatePropertiesTagsMap = { [key: string]: string | undefined };
-export const CatalogUpdatePropertiesTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CatalogUpdatePropertiesTagsMap>;
+export const CatalogUpdatePropertiesTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<CatalogUpdatePropertiesTagsMap>;
 
 /** Properties of a catalog. These properties can be updated after the resource has been created. */
 export interface CatalogUpdateProperties {
@@ -7675,24 +7405,13 @@ export interface PatchProjectCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const PatchProjectCatalogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogProperties),
-  }),
-).annotate({
-  identifier: "PatchProjectCatalogResponse",
-}) as any as S.Schema<PatchProjectCatalogResponse>;
+export const PatchProjectCatalogResponse =
+  CatalogsCreateOrUpdateResponse as any as S.Schema<PatchProjectCatalogResponse>;
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
+export const PoolsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
 
 /** Image reference information */
 export type PoolDevBoxDefinitionInputImageReference = DevBoxDefinitionPropertiesInputImageReference;
@@ -7730,9 +7449,8 @@ export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolPropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
-export const PoolPropertiesInputManagedVirtualNetworkRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolPropertiesInputManagedVirtualNetworkRegionsList>;
+export const PoolPropertiesInputManagedVirtualNetworkRegionsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<PoolPropertiesInputManagedVirtualNetworkRegionsList>;
 
 /** Properties of a Pool */
 export interface PoolPropertiesInput {
@@ -7817,10 +7535,8 @@ export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
+export const PoolsCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
 
 export interface PoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7884,11 +7600,8 @@ export const ProjectCatalogImageDefinitionsBuildImageRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageRequest>;
 
 export interface ProjectCatalogImageDefinitionsBuildImageResponse {}
-export const ProjectCatalogImageDefinitionsBuildImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProjectCatalogImageDefinitionsBuildImageResponse",
-}) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageResponse>;
+export const ProjectCatalogImageDefinitionsBuildImageResponse =
+  CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageResponse>;
 
 export interface ProjectCatalogsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -7933,17 +7646,8 @@ export interface ProjectCatalogsCreateOrUpdateResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const ProjectCatalogsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogProperties),
-  }),
-).annotate({
-  identifier: "ProjectCatalogsCreateOrUpdateResponse",
-}) as any as S.Schema<ProjectCatalogsCreateOrUpdateResponse>;
+export const ProjectCatalogsCreateOrUpdateResponse =
+  CatalogsCreateOrUpdateResponse as any as S.Schema<ProjectCatalogsCreateOrUpdateResponse>;
 
 /** A role that can be assigned to a user. */
 export type EnvironmentRoleInput = UserAssignedIdentityInput;
@@ -7977,10 +7681,8 @@ export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment = /*@__P
 export type UserRoleAssignmentInputRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const UserRoleAssignmentInputRolesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserAssignedIdentityInput,
-) as any as S.Schema<UserRoleAssignmentInputRolesMap>;
+export const UserRoleAssignmentInputRolesMap =
+  UserAssignedIdentitiesInput as any as S.Schema<UserRoleAssignmentInputRolesMap>;
 
 /** Mapping of user object ID to role assignments. */
 export interface UserRoleAssignmentInput {
@@ -8031,10 +7733,8 @@ export const ProjectEnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() 
 export type ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap>;
+export const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
@@ -8086,10 +7786,8 @@ export const ProjectEnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 export type ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap>;
+export const ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypesCreateOrUpdateResponseIdentity =
@@ -8115,32 +7813,18 @@ export interface ProjectEnvironmentTypesCreateOrUpdateResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
-export const ProjectEnvironmentTypesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectEnvironmentTypeProperties),
-    tags: S.optional(ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap),
-    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectEnvironmentTypesCreateOrUpdateResponse",
-}) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponse>;
+export const ProjectEnvironmentTypesCreateOrUpdateResponse =
+  GetProjectEnvironmentTypeResponse as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponse>;
 
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyPropertiesInputResourcePoliciesList = Array<ResourcePolicy>;
-export const ProjectPolicyPropertiesInputResourcePoliciesList = /*@__PURE__*/ S.Array(
-  ResourcePolicy,
-) as any as S.Schema<ProjectPolicyPropertiesInputResourcePoliciesList>;
+export const ProjectPolicyPropertiesInputResourcePoliciesList =
+  ProjectPolicyPropertiesResourcePoliciesList as any as S.Schema<ProjectPolicyPropertiesInputResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyPropertiesInputScopesList = Array<string>;
-export const ProjectPolicyPropertiesInputScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectPolicyPropertiesInputScopesList>;
+export const ProjectPolicyPropertiesInputScopesList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyPropertiesInputScopesList>;
 
 /** Properties of an project policy. */
 export interface ProjectPolicyPropertiesInput {
@@ -8215,10 +7899,8 @@ export const ProjectPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type ProjectsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+export const ProjectsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of a project. */
 export interface ProjectPropertiesInput {
@@ -8286,10 +7968,8 @@ export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
+export const ProjectsCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectsCreateOrUpdateResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -8354,11 +8034,8 @@ export const RunNetworkConnectionHealthChecksRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RunNetworkConnectionHealthChecksRequest>;
 
 export interface RunNetworkConnectionHealthChecksResponse {}
-export const RunNetworkConnectionHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunNetworkConnectionHealthChecksResponse",
-}) as any as S.Schema<RunNetworkConnectionHealthChecksResponse>;
+export const RunNetworkConnectionHealthChecksResponse =
+  CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<RunNetworkConnectionHealthChecksResponse>;
 
 export interface RunPoolHealthChecksRequest {
   /** The ID of the target subscription. */
@@ -8389,9 +8066,8 @@ export const RunPoolHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunPoolHealthChecksRequest>;
 
 export interface RunPoolHealthChecksResponse {}
-export const RunPoolHealthChecksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunPoolHealthChecksResponse",
-}) as any as S.Schema<RunPoolHealthChecksResponse>;
+export const RunPoolHealthChecksResponse =
+  ConnectCatalogResponse as any as S.Schema<RunPoolHealthChecksResponse>;
 
 /** The Schedule properties defining when and what to execute. */
 export interface SchedulePropertiesInput {
@@ -8510,9 +8186,7 @@ export const SyncCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncCatalogRequest" }) as any as S.Schema<SyncCatalogRequest>;
 
 export interface SyncCatalogResponse {}
-export const SyncCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SyncCatalogResponse",
-}) as any as S.Schema<SyncCatalogResponse>;
+export const SyncCatalogResponse = ConnectCatalogResponse as any as S.Schema<SyncCatalogResponse>;
 
 export interface SyncProjectCatalogRequest {
   /** The ID of the target subscription. */
@@ -8543,9 +8217,8 @@ export const SyncProjectCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncProjectCatalogRequest>;
 
 export interface SyncProjectCatalogResponse {}
-export const SyncProjectCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SyncProjectCatalogResponse",
-}) as any as S.Schema<SyncProjectCatalogResponse>;
+export const SyncProjectCatalogResponse =
+  ConnectCatalogResponse as any as S.Schema<SyncProjectCatalogResponse>;
 
 export interface UpdateCatalogRequest {
   /** The ID of the target subscription. */
@@ -8588,15 +8261,7 @@ export interface UpdateCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
-export const UpdateCatalogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CatalogProperties),
-  }),
-).annotate({ identifier: "UpdateCatalogResponse" }) as any as S.Schema<UpdateCatalogResponse>;
+export const UpdateCatalogResponse = GetCatalogResponse as any as S.Schema<UpdateCatalogResponse>;
 
 /** Image reference information */
 export type DevBoxDefinitionUpdatePropertiesInputImageReference =
@@ -8669,10 +8334,8 @@ export const UpdateDevBoxDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDevBoxDefinitionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDevBoxDefinitionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDevBoxDefinitionResponseTagsMap>;
+export const UpdateDevBoxDefinitionResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateDevBoxDefinitionResponseTagsMap>;
 
 export interface UpdateDevBoxDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8690,19 +8353,8 @@ export interface UpdateDevBoxDefinitionResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
-export const UpdateDevBoxDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDevBoxDefinitionResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DevBoxDefinitionProperties),
-  }),
-).annotate({
-  identifier: "UpdateDevBoxDefinitionResponse",
-}) as any as S.Schema<UpdateDevBoxDefinitionResponse>;
+export const UpdateDevBoxDefinitionResponse =
+  DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<UpdateDevBoxDefinitionResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateDevCenterRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
@@ -8749,10 +8401,8 @@ export const UpdateDevCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDevCenterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDevCenterResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDevCenterResponseTagsMap>;
+export const UpdateDevCenterResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateDevCenterResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateDevCenterResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -8776,18 +8426,8 @@ export interface UpdateDevCenterResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const UpdateDevCenterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateDevCenterResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DevCenterProperties),
-    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateDevCenterResponse" }) as any as S.Schema<UpdateDevCenterResponse>;
+export const UpdateDevCenterResponse =
+  GetDevCenterResponse as any as S.Schema<UpdateDevCenterResponse>;
 
 /** Properties of an environment type. These properties can be updated after the resource has been created. */
 export type EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
@@ -8795,10 +8435,8 @@ export const EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
 
 /** Resource tags. */
 export type UpdateEnvironmentTypeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentTypeRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnvironmentTypeRequestTagsMap>;
+export const UpdateEnvironmentTypeRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateEnvironmentTypeRequestTagsMap>;
 
 export interface UpdateEnvironmentTypeRequest {
   /** The ID of the target subscription. */
@@ -8836,10 +8474,8 @@ export const UpdateEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEnvironmentTypeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateEnvironmentTypeResponseTagsMap>;
+export const UpdateEnvironmentTypeResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateEnvironmentTypeResponseTagsMap>;
 
 export interface UpdateEnvironmentTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8855,18 +8491,8 @@ export interface UpdateEnvironmentTypeResponse {
   /** Resource tags. */
   tags?: UpdateEnvironmentTypeResponseTagsMap;
 }
-export const UpdateEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EnvironmentTypeProperties),
-    tags: S.optional(UpdateEnvironmentTypeResponseTagsMap),
-  }),
-).annotate({
-  identifier: "UpdateEnvironmentTypeResponse",
-}) as any as S.Schema<UpdateEnvironmentTypeResponse>;
+export const UpdateEnvironmentTypeResponse =
+  EnvironmentTypesCreateOrUpdateResponse as any as S.Schema<UpdateEnvironmentTypeResponse>;
 
 /** Properties of network connection. These properties can be updated after the resource has been created. */
 export interface NetworkConnectionUpdateProperties {
@@ -8929,10 +8555,8 @@ export const UpdateNetworkConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNetworkConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNetworkConnectionResponseTagsMap>;
+export const UpdateNetworkConnectionResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateNetworkConnectionResponseTagsMap>;
 
 export interface UpdateNetworkConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8950,25 +8574,13 @@ export interface UpdateNetworkConnectionResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
-export const UpdateNetworkConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNetworkConnectionResponseTagsMap),
-    location: S.String,
-    properties: S.optional(NetworkProperties),
-  }),
-).annotate({
-  identifier: "UpdateNetworkConnectionResponse",
-}) as any as S.Schema<UpdateNetworkConnectionResponse>;
+export const UpdateNetworkConnectionResponse =
+  GetNetworkConnectionResponse as any as S.Schema<UpdateNetworkConnectionResponse>;
 
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
-export const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList>;
+export const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList>;
 
 /** Properties of a Pool. These properties can be updated after the resource has been created. */
 export interface PoolUpdatePropertiesInput {
@@ -9055,10 +8667,8 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePoolResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdatePoolResponseTagsMap>;
+export const UpdatePoolResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdatePoolResponseTagsMap>;
 
 export interface UpdatePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9076,17 +8686,7 @@ export interface UpdatePoolResponse {
   /** Pool properties */
   properties?: PoolProperties;
 }
-export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdatePoolResponseTagsMap),
-    location: S.String,
-    properties: S.optional(PoolProperties),
-  }),
-).annotate({ identifier: "UpdatePoolResponse" }) as any as S.Schema<UpdatePoolResponse>;
+export const UpdatePoolResponse = GetPoolResponse as any as S.Schema<UpdatePoolResponse>;
 
 /** Properties of a project. These properties can be updated after the resource has been created. */
 export type ProjectUpdateProperties = ProjectPropertiesInput;
@@ -9133,10 +8733,8 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateProjectResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProjectResponseTagsMap>;
+export const UpdateProjectResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateProjectResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -9160,28 +8758,14 @@ export interface UpdateProjectResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateProjectResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectProperties),
-    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateProjectResponse" }) as any as S.Schema<UpdateProjectResponse>;
+export const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
 export const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap>;
+  ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap>;
 
 /** The role definition assigned to the environment creator on backing resources. */
 export interface ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment {
@@ -9238,10 +8822,8 @@ export const ProjectEnvironmentTypeUpdatePropertiesInput = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type UpdateProjectEnvironmentTypeRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectEnvironmentTypeRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProjectEnvironmentTypeRequestTagsMap>;
+export const UpdateProjectEnvironmentTypeRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateProjectEnvironmentTypeRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectEnvironmentTypeRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
@@ -9286,10 +8868,8 @@ export const UpdateProjectEnvironmentTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateProjectEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectEnvironmentTypeResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProjectEnvironmentTypeResponseTagsMap>;
+export const UpdateProjectEnvironmentTypeResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateProjectEnvironmentTypeResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectEnvironmentTypeResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
@@ -9314,32 +8894,18 @@ export interface UpdateProjectEnvironmentTypeResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
-export const UpdateProjectEnvironmentTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectEnvironmentTypeProperties),
-    tags: S.optional(UpdateProjectEnvironmentTypeResponseTagsMap),
-    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProjectEnvironmentTypeResponse",
-}) as any as S.Schema<UpdateProjectEnvironmentTypeResponse>;
+export const UpdateProjectEnvironmentTypeResponse =
+  GetProjectEnvironmentTypeResponse as any as S.Schema<UpdateProjectEnvironmentTypeResponse>;
 
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyUpdatePropertiesResourcePoliciesList = Array<ResourcePolicy>;
-export const ProjectPolicyUpdatePropertiesResourcePoliciesList = /*@__PURE__*/ S.Array(
-  ResourcePolicy,
-) as any as S.Schema<ProjectPolicyUpdatePropertiesResourcePoliciesList>;
+export const ProjectPolicyUpdatePropertiesResourcePoliciesList =
+  ProjectPolicyPropertiesResourcePoliciesList as any as S.Schema<ProjectPolicyUpdatePropertiesResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyUpdatePropertiesScopesList = Array<string>;
-export const ProjectPolicyUpdatePropertiesScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectPolicyUpdatePropertiesScopesList>;
+export const ProjectPolicyUpdatePropertiesScopesList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyUpdatePropertiesScopesList>;
 
 /** Properties of an project policy. These properties can be updated after the resource has been created. */
 export interface ProjectPolicyUpdateProperties {
@@ -9348,14 +8914,8 @@ export interface ProjectPolicyUpdateProperties {
   /** Resources that have access to the shared resources that are a part of this project policy. */
   scopes?: ProjectPolicyUpdatePropertiesScopesList;
 }
-export const ProjectPolicyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourcePolicies: S.optional(ProjectPolicyUpdatePropertiesResourcePoliciesList),
-    scopes: S.optional(ProjectPolicyUpdatePropertiesScopesList),
-  }),
-).annotate({
-  identifier: "ProjectPolicyUpdateProperties",
-}) as any as S.Schema<ProjectPolicyUpdateProperties>;
+export const ProjectPolicyUpdateProperties =
+  ProjectPolicyPropertiesInput as any as S.Schema<ProjectPolicyUpdateProperties>;
 
 export interface UpdateProjectPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9400,17 +8960,8 @@ export interface UpdateProjectPolicyResponse {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
-export const UpdateProjectPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectPolicyProperties),
-  }),
-).annotate({
-  identifier: "UpdateProjectPolicyResponse",
-}) as any as S.Schema<UpdateProjectPolicyResponse>;
+export const UpdateProjectPolicyResponse =
+  ProjectPoliciesCreateOrUpdateResponse as any as S.Schema<UpdateProjectPolicyResponse>;
 
 /** Updatable properties of a Schedule. */
 export interface ScheduleUpdateProperties {
@@ -9488,15 +9039,8 @@ export interface UpdateScheduleResponse {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
-export const UpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ScheduleProperties),
-  }),
-).annotate({ identifier: "UpdateScheduleResponse" }) as any as S.Schema<UpdateScheduleResponse>;
+export const UpdateScheduleResponse =
+  GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
 
 export type AttachedNetworksCreateOrUpdateError = AzureOpError;
 /** Creates or updates an attached NetworkConnection. */

@@ -219,17 +219,14 @@ export const AddOrganizationMemberResponseUserAvatar = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<AddOrganizationMemberResponseUserAvatar>;
 
 export type AddOrganizationMemberResponseUserAuthenticatorsList = Array<unknown>;
-export const AddOrganizationMemberResponseUserAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AddOrganizationMemberResponseUserAuthenticatorsList>;
+export const AddOrganizationMemberResponseUserAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<AddOrganizationMemberResponseUserAuthenticatorsList>;
 
 export type AddOrganizationMemberResponseUserExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const AddOrganizationMemberResponseUserExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AddOrganizationMemberResponseUserExperimentsMap>;
+export const AddOrganizationMemberResponseUserExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<AddOrganizationMemberResponseUserExperimentsMap>;
 
 export interface AddOrganizationMemberResponseUserEmailsItem {
   id: string;
@@ -382,10 +379,8 @@ export const AddOrganizationMemberTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddOrganizationMemberTeamRequest>;
 
 export type AddOrganizationMemberTeamResponseFlagsMap = { [key: string]: unknown | undefined };
-export const AddOrganizationMemberTeamResponseFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AddOrganizationMemberTeamResponseFlagsMap>;
+export const AddOrganizationMemberTeamResponseFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<AddOrganizationMemberTeamResponseFlagsMap>;
 
 export type AddOrganizationMemberTeamResponseAccessList = Array<string>;
 export const AddOrganizationMemberTeamResponseAccessList = /*@__PURE__*/ S.Array(
@@ -493,9 +488,8 @@ export const AddProjectSymbolSourceRequestFiltersFiletypesList = /*@__PURE__*/ S
 
 /** The debug and code file paths enabled for the source. */
 export type AddProjectSymbolSourceRequestFiltersPathPatternsList = Array<string>;
-export const AddProjectSymbolSourceRequestFiltersPathPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceRequestFiltersPathPatternsList>;
+export const AddProjectSymbolSourceRequestFiltersPathPatternsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceRequestFiltersPathPatternsList>;
 
 /** Filter settings for the source. This is optional for all sources. **`filetypes`** ***(list)*** - A list of file types that can be found on this source. If this is left empty, all file types will be enabled. The options are: - `pe` - Windows executable files - `pdb` - Windows debug files - `portablepdb` - .NET portable debug files - `mach_code` - MacOS executable files - `mach_debug` - MacOS debug files - `elf_code` - ELF executable files - `elf_debug` - ELF debug files - `wasm_code` - WASM executable files - `wasm_debug` - WASM debug files - `breakpad` - Breakpad symbol files - `sourcebundle` - Source code bundles - `uuidmap` - Apple UUID mapping files - `bcsymbolmap` - Apple bitcode symbol maps - `il2cpp` - Unity IL2CPP mapping files - `proguard` - ProGuard mapping files **`path_patterns`** ***(list)*** - A list of glob patterns to check against the debug and code file paths of debug files. Only files that match one of these patterns will be requested from the source. If this is left empty, no path-based filtering takes place. **`requires_checksum`** ***(boolean)*** - Whether this source requires a debug checksum to be sent with each request. Defaults to `false`. ```json { "filters": { "filetypes": ["pe", "pdb", "portablepdb"], "path_patterns": ["*ffmpeg*"] } } ``` */
 export interface AddProjectSymbolSourceRequestFilters {
@@ -691,9 +685,8 @@ export const AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList = /*@__
 ) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList>;
+export const AddProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase0Filters {
   filetypes?: AddProjectSymbolSourceResponseBodyCase0FiltersFiletypesList;
@@ -711,9 +704,8 @@ export const AddProjectSymbolSourceResponseBodyCase0Filters = /*@__PURE__*/ S.su
 }) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0Filters>;
 
 export type AddProjectSymbolSourceResponseBodyCase0PlatformsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase0PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0PlatformsList>;
+export const AddProjectSymbolSourceResponseBodyCase0PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase0PlatformsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase0 {
   type: AddProjectSymbolSourceResponseBodyCase0Type;
@@ -809,9 +801,8 @@ export const AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList = /*@__
 ) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList>;
+export const AddProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase1Filters {
   filetypes?: AddProjectSymbolSourceResponseBodyCase1FiltersFiletypesList;
@@ -829,9 +820,8 @@ export const AddProjectSymbolSourceResponseBodyCase1Filters = /*@__PURE__*/ S.su
 }) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1Filters>;
 
 export type AddProjectSymbolSourceResponseBodyCase1PlatformsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase1PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1PlatformsList>;
+export const AddProjectSymbolSourceResponseBodyCase1PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase1PlatformsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase1 {
   type: AddProjectSymbolSourceResponseBodyCase1Type;
@@ -931,9 +921,8 @@ export const AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList = /*@__
 ) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList>;
+export const AddProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase2Filters {
   filetypes?: AddProjectSymbolSourceResponseBodyCase2FiltersFiletypesList;
@@ -951,9 +940,8 @@ export const AddProjectSymbolSourceResponseBodyCase2Filters = /*@__PURE__*/ S.su
 }) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2Filters>;
 
 export type AddProjectSymbolSourceResponseBodyCase2PlatformsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase2PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2PlatformsList>;
+export const AddProjectSymbolSourceResponseBodyCase2PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase2PlatformsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase2 {
   type: AddProjectSymbolSourceResponseBodyCase2Type;
@@ -1051,9 +1039,8 @@ export const AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList = /*@__
 ) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList>;
 
 export type AddProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList>;
+export const AddProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase3Filters {
   filetypes?: AddProjectSymbolSourceResponseBodyCase3FiltersFiletypesList;
@@ -1071,9 +1058,8 @@ export const AddProjectSymbolSourceResponseBodyCase3Filters = /*@__PURE__*/ S.su
 }) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3Filters>;
 
 export type AddProjectSymbolSourceResponseBodyCase3PlatformsList = Array<string>;
-export const AddProjectSymbolSourceResponseBodyCase3PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3PlatformsList>;
+export const AddProjectSymbolSourceResponseBodyCase3PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectSymbolSourceResponseBodyCase3PlatformsList>;
 
 export interface AddProjectSymbolSourceResponseBodyCase3 {
   type: AddProjectSymbolSourceResponseBodyCase3Type;
@@ -1181,14 +1167,12 @@ export const AddProjectTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddProjectTeamRequest" }) as any as S.Schema<AddProjectTeamRequest>;
 
 export type AddProjectTeamResponseFeaturesList = Array<string>;
-export const AddProjectTeamResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectTeamResponseFeaturesList>;
+export const AddProjectTeamResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectTeamResponseFeaturesList>;
 
 export type AddProjectTeamResponseAccessList = Array<string>;
-export const AddProjectTeamResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddProjectTeamResponseAccessList>;
+export const AddProjectTeamResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<AddProjectTeamResponseAccessList>;
 
 export type AddProjectTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const AddProjectTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -1430,9 +1414,8 @@ export const BulkRemoveAListOfIssuesResponse = /*@__PURE__*/ S.suspend(() => S.S
 
 /** List of environment names to update. Maximum 1000. */
 export type BulkUpdateProjectEnvironmentsRequestEnvironmentNamesList = Array<string>;
-export const BulkUpdateProjectEnvironmentsRequestEnvironmentNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateProjectEnvironmentsRequestEnvironmentNamesList>;
+export const BulkUpdateProjectEnvironmentsRequestEnvironmentNamesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<BulkUpdateProjectEnvironmentsRequestEnvironmentNamesList>;
 
 export interface BulkUpdateProjectEnvironmentsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -1505,9 +1488,8 @@ export const CreateACustomInboundFilterRequestConditionsItemType = S.String;
 
 /** Glob patterns the field is matched against. The condition matches when any pattern matches, so multiple values act as OR. */
 export type CreateACustomInboundFilterRequestConditionsItemValueList = Array<string>;
-export const CreateACustomInboundFilterRequestConditionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateACustomInboundFilterRequestConditionsItemValueList>;
+export const CreateACustomInboundFilterRequestConditionsItemValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateACustomInboundFilterRequestConditionsItemValueList>;
 
 export interface CreateACustomInboundFilterRequestConditionsItem {
   /** The field the condition matches against. Every `dataType` accepts `release` and `ip_address`. In addition, `error` accepts `error_type` and `error_message`, `log` accepts `log_message`, and `metric` accepts `metric_name`. `span` and `all` accept no other types. * `error_type` * `error_message` * `log_message` * `metric_name` * `release` * `ip_address` */
@@ -1585,9 +1567,8 @@ export const CreateACustomInboundFilterResponseConditionsItemType = S.String;
 
 /** Glob patterns the field is matched against. The condition matches when any pattern matches, so multiple values act as OR. */
 export type CreateACustomInboundFilterResponseConditionsItemValueList = Array<string>;
-export const CreateACustomInboundFilterResponseConditionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateACustomInboundFilterResponseConditionsItemValueList>;
+export const CreateACustomInboundFilterResponseConditionsItemValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateACustomInboundFilterResponseConditionsItemValueList>;
 
 export interface CreateACustomInboundFilterResponseConditionsItem {
   /** The field the condition matches against. Every `dataType` accepts `release` and `ip_address`. In addition, `error` accepts `error_type` and `error_message`, `log` accepts `log_message`, and `metric` accepts `metric_name`. `span` and `all` accept no other types. * `error_type` * `error_message` * `log_message` * `metric_name` * `release` * `ip_address` */
@@ -1693,10 +1674,8 @@ export const CreateAnExternalIssueAndLinkItToAnIssueResponse = /*@__PURE__*/ S.s
 export type CreateOrganizationDashboardRequestWidgetsItemThresholdsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationDashboardRequestWidgetsItemThresholdsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemThresholdsMap>;
+export const CreateOrganizationDashboardRequestWidgetsItemThresholdsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemThresholdsMap>;
 
 /** * `line` * `area` * `bar` * `table` * `big_number` * `details` * `categorical_bar` * `wheel` * `rage_and_dead_clicks` * `server_tree` * `text` * `agents_traces_table` * `heatmap` */
 export type CreateOrganizationDashboardRequestWidgetsItemDisplayType =
@@ -1723,22 +1702,16 @@ export const CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList 
 
 export type CreateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList = Array<string>;
 export const CreateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList>;
 
 export type CreateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList = Array<string>;
 export const CreateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList>;
 
 export type CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList =
   Array<string>;
 export const CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface CreateOrganizationDashboardRequestWidgetsItemQueriesItemOnDemandExtraction {
@@ -1927,16 +1900,13 @@ export const CreateOrganizationDashboardRequestProjectsList = /*@__PURE__*/ S.Ar
 
 /** The saved environment filter for this dashboard. */
 export type CreateOrganizationDashboardRequestEnvironmentList = Array<string>;
-export const CreateOrganizationDashboardRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDashboardRequestEnvironmentList>;
+export const CreateOrganizationDashboardRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDashboardRequestEnvironmentList>;
 
 /** The saved filters for this dashboard. */
 export type CreateOrganizationDashboardRequestFiltersMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationDashboardRequestFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationDashboardRequestFiltersMap>;
+export const CreateOrganizationDashboardRequestFiltersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationDashboardRequestFiltersMap>;
 
 /** List of team IDs that have edit access to a dashboard. */
 export type CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList = Array<number>;
@@ -2018,9 +1988,8 @@ export const CreateOrganizationDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrganizationDashboardRequest>;
 
 export type CreateOrganizationDashboardResponseEnvironmentList = Array<string>;
-export const CreateOrganizationDashboardResponseEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDashboardResponseEnvironmentList>;
+export const CreateOrganizationDashboardResponseEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDashboardResponseEnvironmentList>;
 
 export type CreateOrganizationDashboardResponseCreatedByIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -2039,9 +2008,8 @@ export const CreateOrganizationDashboardResponseCreatedByIdentitiesItem =
 
 export type CreateOrganizationDashboardResponseCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const CreateOrganizationDashboardResponseCreatedByIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<CreateOrganizationDashboardResponseCreatedByIdentitiesList>;
+export const CreateOrganizationDashboardResponseCreatedByIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<CreateOrganizationDashboardResponseCreatedByIdentitiesList>;
 
 export type CreateOrganizationDashboardResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -2049,17 +2017,14 @@ export const CreateOrganizationDashboardResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
 
 export type CreateOrganizationDashboardResponseCreatedByAuthenticatorsList = Array<unknown>;
-export const CreateOrganizationDashboardResponseCreatedByAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationDashboardResponseCreatedByAuthenticatorsList>;
+export const CreateOrganizationDashboardResponseCreatedByAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationDashboardResponseCreatedByAuthenticatorsList>;
 
 export type CreateOrganizationDashboardResponseCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationDashboardResponseCreatedByExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationDashboardResponseCreatedByExperimentsMap>;
+export const CreateOrganizationDashboardResponseCreatedByExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationDashboardResponseCreatedByExperimentsMap>;
 
 export type CreateOrganizationDashboardResponseCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -2068,9 +2033,8 @@ export const CreateOrganizationDashboardResponseCreatedByEmailsItem =
 
 export type CreateOrganizationDashboardResponseCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const CreateOrganizationDashboardResponseCreatedByEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<CreateOrganizationDashboardResponseCreatedByEmailsList>;
+export const CreateOrganizationDashboardResponseCreatedByEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<CreateOrganizationDashboardResponseCreatedByEmailsList>;
 
 export interface CreateOrganizationDashboardResponseCreatedBy {
   identities?: CreateOrganizationDashboardResponseCreatedByIdentitiesList;
@@ -2095,33 +2059,8 @@ export interface CreateOrganizationDashboardResponseCreatedBy {
   experiments: CreateOrganizationDashboardResponseCreatedByExperimentsMap;
   emails: CreateOrganizationDashboardResponseCreatedByEmailsList;
 }
-export const CreateOrganizationDashboardResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(CreateOrganizationDashboardResponseCreatedByIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(CreateOrganizationDashboardResponseCreatedByAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: CreateOrganizationDashboardResponseCreatedByExperimentsMap,
-    emails: CreateOrganizationDashboardResponseCreatedByEmailsList,
-  }),
-).annotate({
-  identifier: "CreateOrganizationDashboardResponseCreatedBy",
-}) as any as S.Schema<CreateOrganizationDashboardResponseCreatedBy>;
+export const CreateOrganizationDashboardResponseCreatedBy =
+  AddOrganizationMemberResponseUser as any as S.Schema<CreateOrganizationDashboardResponseCreatedBy>;
 
 export type CreateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap = {
   [key: string]: number | undefined;
@@ -2152,28 +2091,20 @@ export const CreateOrganizationDashboardResponseWidgetsItemThresholds = /*@__PUR
 
 export type CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList = Array<string>;
 export const CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList>;
 
 export type CreateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList = Array<string>;
 export const CreateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList>;
 
 export type CreateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList = Array<string>;
 export const CreateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList>;
 
 export type CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList =
   Array<string>;
 export const CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList>;
 
 export interface CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem {
   enabled: boolean;
@@ -2274,9 +2205,8 @@ export type CreateOrganizationDashboardResponseWidgetsItemLegendType = "default"
 export const CreateOrganizationDashboardResponseWidgetsItemLegendType = S.String;
 
 export type CreateOrganizationDashboardResponseWidgetsItemExploreUrlsList = Array<string>;
-export const CreateOrganizationDashboardResponseWidgetsItemExploreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemExploreUrlsList>;
+export const CreateOrganizationDashboardResponseWidgetsItemExploreUrlsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemExploreUrlsList>;
 
 export type CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap = {
   [key: string]: string | undefined;
@@ -2297,9 +2227,7 @@ export const CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrde
 export type CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List =
   Array<string>;
 export const CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List>;
 
 export type CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValue =
   | string
@@ -2328,9 +2256,7 @@ export const CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemEqua
 export type CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList =
   Array<string>;
 export const CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList>;
 
 export interface CreateOrganizationDashboardResponseWidgetsItemChangedReasonItem {
   orderby: CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList | null;
@@ -2408,33 +2334,27 @@ export const CreateOrganizationDashboardResponseWidgetsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<CreateOrganizationDashboardResponseWidgetsList>;
 
 export type CreateOrganizationDashboardResponseProjectsList = Array<number>;
-export const CreateOrganizationDashboardResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationDashboardResponseProjectsList>;
+export const CreateOrganizationDashboardResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationDashboardResponseProjectsList>;
 
 export type CreateOrganizationDashboardResponseFiltersReleaseList = Array<string>;
-export const CreateOrganizationDashboardResponseFiltersReleaseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDashboardResponseFiltersReleaseList>;
+export const CreateOrganizationDashboardResponseFiltersReleaseList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDashboardResponseFiltersReleaseList>;
 
 export type CreateOrganizationDashboardResponseFiltersReleaseIdList = Array<string>;
-export const CreateOrganizationDashboardResponseFiltersReleaseIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDashboardResponseFiltersReleaseIdList>;
+export const CreateOrganizationDashboardResponseFiltersReleaseIdList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDashboardResponseFiltersReleaseIdList>;
 
 export type CreateOrganizationDashboardResponseFiltersGlobalFilterItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationDashboardResponseFiltersGlobalFilterItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
+export const CreateOrganizationDashboardResponseFiltersGlobalFilterItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
 
 export type CreateOrganizationDashboardResponseFiltersGlobalFilterList =
   Array<CreateOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
-export const CreateOrganizationDashboardResponseFiltersGlobalFilterList = /*@__PURE__*/ S.Array(
-  CreateOrganizationDashboardResponseFiltersGlobalFilterItemMap,
-) as any as S.Schema<CreateOrganizationDashboardResponseFiltersGlobalFilterList>;
+export const CreateOrganizationDashboardResponseFiltersGlobalFilterList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<CreateOrganizationDashboardResponseFiltersGlobalFilterList>;
 
 export interface CreateOrganizationDashboardResponseFilters {
   release?: CreateOrganizationDashboardResponseFiltersReleaseList;
@@ -2453,9 +2373,7 @@ export const CreateOrganizationDashboardResponseFilters = /*@__PURE__*/ S.suspen
 
 export type CreateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList = Array<number>;
 export const CreateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<CreateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList>;
 
 export interface CreateOrganizationDashboardResponsePermissions {
   isEditableByEveryone: boolean;
@@ -2513,9 +2431,8 @@ export const CreateOrganizationDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The saved projects filter for this query. */
 export type CreateOrganizationDiscoverSavedQueryRequestProjectsList = Array<number>;
-export const CreateOrganizationDiscoverSavedQueryRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestProjectsList>;
+export const CreateOrganizationDiscoverSavedQueryRequestProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestProjectsList>;
 
 /** The dataset you would like to query. Note: `discover` is a **deprecated** value. The allowed values are: `error-events`, `transaction-like` * `discover` * `error-events` * `transaction-like` */
 export type CreateOrganizationDiscoverSavedQueryRequestQueryDataset =
@@ -2526,9 +2443,8 @@ export const CreateOrganizationDiscoverSavedQueryRequestQueryDataset = S.String;
 
 /** The fields, functions, or equations that can be requested for the query. At most 20 fields can be selected per request. Each field can be one of the following types: - A built-in key field. See possible fields in the [properties table](/product/sentry-basics/search/searchable-properties/#properties-table), under any field that is an event property. - example: `field=transaction` - A tag. Tags should use the `tag[]` formatting to avoid ambiguity with any fields - example: `field=tag[isEnterprise]` - A function which will be in the format of `function_name(parameters,...)`. See possible functions in the [query builder documentation](/product/discover-queries/query-builder/#stacking-functions). - when a function is included, Discover will group by any tags or fields - example: `field=count_if(transaction.duration,greater,300)` - An equation when prefixed with `equation|`. Read more about [equations here](/product/discover-queries/query-builder/query-equations/). - example: `field=equation|count_if(transaction.duration,greater,300) / count() * 100` */
 export type CreateOrganizationDiscoverSavedQueryRequestFieldsList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryRequestFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestFieldsList>;
+export const CreateOrganizationDiscoverSavedQueryRequestFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestFieldsList>;
 
 export type CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList = Array<unknown>;
 export const CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList =
@@ -2545,14 +2461,12 @@ export const CreateOrganizationDiscoverSavedQueryRequestAggregationsList = /*@__
 
 /** Columns to group results by. */
 export type CreateOrganizationDiscoverSavedQueryRequestGroupbyList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryRequestGroupbyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestGroupbyList>;
+export const CreateOrganizationDiscoverSavedQueryRequestGroupbyList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestGroupbyList>;
 
 export type CreateOrganizationDiscoverSavedQueryRequestConditionsItemList = Array<unknown>;
-export const CreateOrganizationDiscoverSavedQueryRequestConditionsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestConditionsItemList>;
+export const CreateOrganizationDiscoverSavedQueryRequestConditionsItemList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestConditionsItemList>;
 
 /** Filter conditions, each as a `[column, operator, value]` triple. */
 export type CreateOrganizationDiscoverSavedQueryRequestConditionsList =
@@ -2563,21 +2477,18 @@ export const CreateOrganizationDiscoverSavedQueryRequestConditionsList = /*@__PU
 
 /** The name of environments to filter by. */
 export type CreateOrganizationDiscoverSavedQueryRequestEnvironmentList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestEnvironmentList>;
+export const CreateOrganizationDiscoverSavedQueryRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestEnvironmentList>;
 
 /** Rendered column widths, in the same order as the query's fields. */
 export type CreateOrganizationDiscoverSavedQueryRequestWidthsList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryRequestWidthsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestWidthsList>;
+export const CreateOrganizationDiscoverSavedQueryRequestWidthsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestWidthsList>;
 
 /** Aggregate functions to be plotted on the chart. */
 export type CreateOrganizationDiscoverSavedQueryRequestYAxisList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryRequestYAxisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestYAxisList>;
+export const CreateOrganizationDiscoverSavedQueryRequestYAxisList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequestYAxisList>;
 
 export interface CreateOrganizationDiscoverSavedQueryRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -2661,47 +2572,38 @@ export const CreateOrganizationDiscoverSavedQueryRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequest>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseEnvironmentList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryResponseEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseEnvironmentList>;
+export const CreateOrganizationDiscoverSavedQueryResponseEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseEnvironmentList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseFieldsList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryResponseFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseFieldsList>;
+export const CreateOrganizationDiscoverSavedQueryResponseFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseFieldsList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseWidthsList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryResponseWidthsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseWidthsList>;
+export const CreateOrganizationDiscoverSavedQueryResponseWidthsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseWidthsList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseConditionsList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryResponseConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseConditionsList>;
+export const CreateOrganizationDiscoverSavedQueryResponseConditionsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseConditionsList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseAggregationsList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryResponseAggregationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseAggregationsList>;
+export const CreateOrganizationDiscoverSavedQueryResponseAggregationsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseAggregationsList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseYAxisList = Array<string>;
-export const CreateOrganizationDiscoverSavedQueryResponseYAxisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseYAxisList>;
+export const CreateOrganizationDiscoverSavedQueryResponseYAxisList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseYAxisList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseExploreQueryMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationDiscoverSavedQueryResponseExploreQueryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseExploreQueryMap>;
+export const CreateOrganizationDiscoverSavedQueryResponseExploreQueryMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseExploreQueryMap>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseProjectsList = Array<number>;
-export const CreateOrganizationDiscoverSavedQueryResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseProjectsList>;
+export const CreateOrganizationDiscoverSavedQueryResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseProjectsList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -2733,9 +2635,7 @@ export const CreateOrganizationDiscoverSavedQueryResponseCreatedByAvatar =
 export type CreateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList =
   Array<unknown>;
 export const CreateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList>;
 
 export type CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
@@ -2934,19 +2834,8 @@ export interface CreateOrganizationExternalUserResponse {
   externalName: string;
   integrationId: string;
 }
-export const CreateOrganizationExternalUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalId: S.optional(S.String),
-    userId: S.optional(S.String),
-    teamId: S.optional(S.String),
-    id: S.String,
-    provider: S.String,
-    externalName: S.String,
-    integrationId: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrganizationExternalUserResponse",
-}) as any as S.Schema<CreateOrganizationExternalUserResponse>;
+export const CreateOrganizationExternalUserResponse =
+  AddOrganizationMemberResponseExternalUsersItem as any as S.Schema<CreateOrganizationExternalUserResponse>;
 
 /** The provider of the data forwarder. One of "segment", "sqs", or "splunk". * `segment` - Segment * `sqs` - Amazon SQS * `splunk` - Splunk */
 export type CreateOrganizationForwardingRequestProvider = "segment" | "sqs" | "splunk";
@@ -2961,9 +2850,8 @@ export const CreateOrganizationForwardingRequestConfigMap = /*@__PURE__*/ S.Reco
 
 /** The IDs of the projects connected to the data forwarder. Missing project IDs will be unenrolled if previously enrolled. */
 export type CreateOrganizationForwardingRequestProjectIdsList = Array<number>;
-export const CreateOrganizationForwardingRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationForwardingRequestProjectIdsList>;
+export const CreateOrganizationForwardingRequestProjectIdsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationForwardingRequestProjectIdsList>;
 
 export interface CreateOrganizationForwardingRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -3024,10 +2912,8 @@ export const CreateOrganizationForwardingResponseEnrolledProjectsList = /*@__PUR
 ) as any as S.Schema<CreateOrganizationForwardingResponseEnrolledProjectsList>;
 
 export type CreateOrganizationForwardingResponseConfigMap = { [key: string]: string | undefined };
-export const CreateOrganizationForwardingResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrganizationForwardingResponseConfigMap>;
+export const CreateOrganizationForwardingResponseConfigMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<CreateOrganizationForwardingResponseConfigMap>;
 
 export type CreateOrganizationForwardingResponseProjectConfigsItemProject =
   CreateOrganizationForwardingResponseEnrolledProjectsItem;
@@ -3038,19 +2924,13 @@ export type CreateOrganizationForwardingResponseProjectConfigsItemOverridesMap =
   [key: string]: string | undefined;
 };
 export const CreateOrganizationForwardingResponseProjectConfigsItemOverridesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateOrganizationForwardingResponseProjectConfigsItemOverridesMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<CreateOrganizationForwardingResponseProjectConfigsItemOverridesMap>;
 
 export type CreateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap = {
   [key: string]: string | undefined;
 };
 export const CreateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<CreateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap>;
 
 export interface CreateOrganizationForwardingResponseProjectConfigsItem {
   id: string;
@@ -3114,15 +2994,13 @@ export const CreateOrganizationForwardingResponse = /*@__PURE__*/ S.suspend(() =
 
 /** The project IDs included in the view. Use `-1` to include all projects. */
 export type CreateOrganizationIssueViewRequestProjectsList = Array<number>;
-export const CreateOrganizationIssueViewRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationIssueViewRequestProjectsList>;
+export const CreateOrganizationIssueViewRequestProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationIssueViewRequestProjectsList>;
 
 /** The environment names included in the view. An empty list includes all environments. */
 export type CreateOrganizationIssueViewRequestEnvironmentsList = Array<string>;
-export const CreateOrganizationIssueViewRequestEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationIssueViewRequestEnvironmentsList>;
+export const CreateOrganizationIssueViewRequestEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationIssueViewRequestEnvironmentsList>;
 
 export interface CreateOrganizationIssueViewRequestTimeFilters {
   /** The start of the time range in ISO-8601 format. */
@@ -3212,9 +3090,8 @@ export const CreateOrganizationIssueViewResponseCreatedByIdentitiesItem =
 
 export type CreateOrganizationIssueViewResponseCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const CreateOrganizationIssueViewResponseCreatedByIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByIdentitiesList>;
+export const CreateOrganizationIssueViewResponseCreatedByIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByIdentitiesList>;
 
 export type CreateOrganizationIssueViewResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -3222,17 +3099,14 @@ export const CreateOrganizationIssueViewResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
 
 export type CreateOrganizationIssueViewResponseCreatedByAuthenticatorsList = Array<unknown>;
-export const CreateOrganizationIssueViewResponseCreatedByAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByAuthenticatorsList>;
+export const CreateOrganizationIssueViewResponseCreatedByAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByAuthenticatorsList>;
 
 export type CreateOrganizationIssueViewResponseCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationIssueViewResponseCreatedByExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByExperimentsMap>;
+export const CreateOrganizationIssueViewResponseCreatedByExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByExperimentsMap>;
 
 export type CreateOrganizationIssueViewResponseCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -3241,9 +3115,8 @@ export const CreateOrganizationIssueViewResponseCreatedByEmailsItem =
 
 export type CreateOrganizationIssueViewResponseCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const CreateOrganizationIssueViewResponseCreatedByEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByEmailsList>;
+export const CreateOrganizationIssueViewResponseCreatedByEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<CreateOrganizationIssueViewResponseCreatedByEmailsList>;
 
 export interface CreateOrganizationIssueViewResponseCreatedBy {
   identities?: CreateOrganizationIssueViewResponseCreatedByIdentitiesList;
@@ -3268,33 +3141,8 @@ export interface CreateOrganizationIssueViewResponseCreatedBy {
   experiments: CreateOrganizationIssueViewResponseCreatedByExperimentsMap;
   emails: CreateOrganizationIssueViewResponseCreatedByEmailsList;
 }
-export const CreateOrganizationIssueViewResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(CreateOrganizationIssueViewResponseCreatedByIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(CreateOrganizationIssueViewResponseCreatedByAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: CreateOrganizationIssueViewResponseCreatedByExperimentsMap,
-    emails: CreateOrganizationIssueViewResponseCreatedByEmailsList,
-  }),
-).annotate({
-  identifier: "CreateOrganizationIssueViewResponseCreatedBy",
-}) as any as S.Schema<CreateOrganizationIssueViewResponseCreatedBy>;
+export const CreateOrganizationIssueViewResponseCreatedBy =
+  AddOrganizationMemberResponseUser as any as S.Schema<CreateOrganizationIssueViewResponseCreatedBy>;
 
 export type CreateOrganizationIssueViewResponseQuerySort =
   | "date"
@@ -3307,14 +3155,12 @@ export type CreateOrganizationIssueViewResponseQuerySort =
 export const CreateOrganizationIssueViewResponseQuerySort = S.String;
 
 export type CreateOrganizationIssueViewResponseProjectsList = Array<number>;
-export const CreateOrganizationIssueViewResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationIssueViewResponseProjectsList>;
+export const CreateOrganizationIssueViewResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationIssueViewResponseProjectsList>;
 
 export type CreateOrganizationIssueViewResponseEnvironmentsList = Array<string>;
-export const CreateOrganizationIssueViewResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationIssueViewResponseEnvironmentsList>;
+export const CreateOrganizationIssueViewResponseEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationIssueViewResponseEnvironmentsList>;
 
 export interface CreateOrganizationIssueViewResponseTimeFilters {
   start?: string | null;
@@ -3322,16 +3168,8 @@ export interface CreateOrganizationIssueViewResponseTimeFilters {
   period?: string | null;
   utc?: boolean | null;
 }
-export const CreateOrganizationIssueViewResponseTimeFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.optional(S.NullOr(S.String)),
-    end: S.optional(S.NullOr(S.String)),
-    period: S.optional(S.NullOr(S.String)),
-    utc: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "CreateOrganizationIssueViewResponseTimeFilters",
-}) as any as S.Schema<CreateOrganizationIssueViewResponseTimeFilters>;
+export const CreateOrganizationIssueViewResponseTimeFilters =
+  CreateOrganizationIssueViewRequestTimeFilters as any as S.Schema<CreateOrganizationIssueViewResponseTimeFilters>;
 
 export interface CreateOrganizationIssueViewResponse {
   id: string;
@@ -4124,9 +3962,8 @@ export type CreateOrganizationMonitorResponseConfigScheduleType = "crontab" | "i
 export const CreateOrganizationMonitorResponseConfigScheduleType = S.String;
 
 export type CreateOrganizationMonitorResponseConfigScheduleCase1List = Array<number>;
-export const CreateOrganizationMonitorResponseConfigScheduleCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationMonitorResponseConfigScheduleCase1List>;
+export const CreateOrganizationMonitorResponseConfigScheduleCase1List =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationMonitorResponseConfigScheduleCase1List>;
 
 export type CreateOrganizationMonitorResponseConfigSchedule =
   | string
@@ -4160,14 +3997,12 @@ export const CreateOrganizationMonitorResponseConfig = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateOrganizationMonitorResponseConfig>;
 
 export type CreateOrganizationMonitorResponseProjectFeaturesList = Array<string>;
-export const CreateOrganizationMonitorResponseProjectFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationMonitorResponseProjectFeaturesList>;
+export const CreateOrganizationMonitorResponseProjectFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationMonitorResponseProjectFeaturesList>;
 
 export type CreateOrganizationMonitorResponseProjectAccessList = Array<string>;
-export const CreateOrganizationMonitorResponseProjectAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationMonitorResponseProjectAccessList>;
+export const CreateOrganizationMonitorResponseProjectAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationMonitorResponseProjectAccessList>;
 
 export type CreateOrganizationMonitorResponseProjectAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -4375,9 +4210,8 @@ export const CreateOrganizationMonitorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of project IDs or slugs that the Notification Action is created for. */
 export type CreateOrganizationNotificationsActionRequestProjectsList = Array<string>;
-export const CreateOrganizationNotificationsActionRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationNotificationsActionRequestProjectsList>;
+export const CreateOrganizationNotificationsActionRequestProjectsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationNotificationsActionRequestProjectsList>;
 
 export interface CreateOrganizationNotificationsActionRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -4422,9 +4256,8 @@ export const CreateOrganizationNotificationsActionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateOrganizationNotificationsActionRequest>;
 
 export type CreateOrganizationNotificationsActionResponseProjectsList = Array<number>;
-export const CreateOrganizationNotificationsActionResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationNotificationsActionResponseProjectsList>;
+export const CreateOrganizationNotificationsActionResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationNotificationsActionResponseProjectsList>;
 
 export interface CreateOrganizationNotificationsActionResponse {
   id: number;
@@ -4488,10 +4321,8 @@ export const CreateOrganizationProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateOrganizationProjectResponseLatestDeploysValueMap = {
   [key: string]: string | undefined;
 };
-export const CreateOrganizationProjectResponseLatestDeploysValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrganizationProjectResponseLatestDeploysValueMap>;
+export const CreateOrganizationProjectResponseLatestDeploysValueMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<CreateOrganizationProjectResponseLatestDeploysValueMap>;
 
 export type CreateOrganizationProjectResponseLatestDeploysMap = {
   [key: string]: CreateOrganizationProjectResponseLatestDeploysValueMap | undefined;
@@ -4502,20 +4333,16 @@ export const CreateOrganizationProjectResponseLatestDeploysMap = /*@__PURE__*/ S
 ) as any as S.Schema<CreateOrganizationProjectResponseLatestDeploysMap>;
 
 export type CreateOrganizationProjectResponseOptionsMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationProjectResponseOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationProjectResponseOptionsMap>;
+export const CreateOrganizationProjectResponseOptionsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationProjectResponseOptionsMap>;
 
 export type CreateOrganizationProjectResponseFeaturesList = Array<string>;
-export const CreateOrganizationProjectResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationProjectResponseFeaturesList>;
+export const CreateOrganizationProjectResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationProjectResponseFeaturesList>;
 
 export type CreateOrganizationProjectResponseAccessList = Array<string>;
-export const CreateOrganizationProjectResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationProjectResponseAccessList>;
+export const CreateOrganizationProjectResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationProjectResponseAccessList>;
 
 export type CreateOrganizationProjectResponseTeam = AddProjectTeamResponseTeam;
 export const CreateOrganizationProjectResponseTeam = AddProjectTeamResponseTeam;
@@ -4524,19 +4351,16 @@ export type CreateOrganizationProjectResponseTeamsItem = AddProjectTeamResponseT
 export const CreateOrganizationProjectResponseTeamsItem = AddProjectTeamResponseTeam;
 
 export type CreateOrganizationProjectResponseTeamsList = Array<AddProjectTeamResponseTeam>;
-export const CreateOrganizationProjectResponseTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<CreateOrganizationProjectResponseTeamsList>;
+export const CreateOrganizationProjectResponseTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<CreateOrganizationProjectResponseTeamsList>;
 
 export type CreateOrganizationProjectResponsePlatformsList = Array<string>;
-export const CreateOrganizationProjectResponsePlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationProjectResponsePlatformsList>;
+export const CreateOrganizationProjectResponsePlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationProjectResponsePlatformsList>;
 
 export type CreateOrganizationProjectResponseEnvironmentsList = Array<string>;
-export const CreateOrganizationProjectResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationProjectResponseEnvironmentsList>;
+export const CreateOrganizationProjectResponseEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationProjectResponseEnvironmentsList>;
 
 export interface CreateOrganizationProjectResponseLatestRelease {
   version: string;
@@ -4646,24 +4470,20 @@ export const CreateOrganizationProjectResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the alerts to connect this monitor to. Use the 'Fetch Alerts' endpoint to find the IDs. */
 export type CreateOrganizationProjectDetectorRequestWorkflowIdsList = Array<number>;
-export const CreateOrganizationProjectDetectorRequestWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationProjectDetectorRequestWorkflowIdsList>;
+export const CreateOrganizationProjectDetectorRequestWorkflowIdsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationProjectDetectorRequestWorkflowIdsList>;
 
 /** The data sources for the monitor to use based on what you want to measure. **Number of Errors Metric Monitor** - `eventTypes`: Any of `error` or `default`. ```json [ { "aggregate": "count()", "dataset" : "events", "environment": "prod", "eventTypes": ["default", "error"], "query": "is:unresolved", "queryType": 0, "timeWindow": 3600, }, ], ``` **Users Experiencing Errors Metric Monitor** - `eventTypes`: Any of `error` or `default`. ```json [ { "aggregate": "count_unique(tags[sentry:user])", "dataset" : "events", "environment": "prod", "eventTypes": ["default", "error"], "query": "is:unresolved", "queryType": 0, "timeWindow": 3600, }, ], ``` **Throughput Metric Monitor** ```json [ { "aggregate":"count(span.duration)", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Duration Metric Monitor** ```json [ { "aggregate":"p95(span.duration)", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Failure Rate Metric Monitor** ```json [ { "aggregate":"failure_rate()", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Largest Contentful Paint Metric Monitor** - `dataset`: If a custom percentile is used, dataset is `transactions`. Otherwise, dataset is `events_analytics_platform`. - `aggregate`: Valid values are `avg(measurements.lcp)`, `p50(measurements.lcp)`, `p75(measurements.lcp)`, `p95(measurements.lcp)`, `p99(measurements.lcp)`, `p100(measurements.lcp)`, and `percentile(measurements.lcp,x)`, where `x` is your custom percentile. ```json [ { "aggregate":"p95(measurements.lcp)", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Custom Metric Monitor** - `dataset`: If a custom percentile is used, dataset is `transactions`. Otherwise, dataset is `events_analytics_platform`. - `aggregate`: Valid values are: `avg(x)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p50(x)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p75(x)`, where x is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p95(x)`, where x is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p99(x)`, where x is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p100(x)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `percentile(x,y)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`, and `y` is the custom percentile. `failure_rate()` `apdex(x)`, where `x` is the value of the Apdex score. `count()` ```json [ { "aggregate": "p75(measurements.ttfb)" "dataset": "events_analytics_platform", "queryType": 1, }, ], */
 export type CreateOrganizationProjectDetectorRequestDataSourcesList = Array<unknown>;
-export const CreateOrganizationProjectDetectorRequestDataSourcesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationProjectDetectorRequestDataSourcesList>;
+export const CreateOrganizationProjectDetectorRequestDataSourcesList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationProjectDetectorRequestDataSourcesList>;
 
 /** The issue detection type configuration. - `detectionType` - `static`: Threshold based monitor - `percent`: Change based monitor - `dynamic`: Dynamic monitor - `comparisonDelta`: If selecting a **change** detection type, the comparison delta is the time period at which to compare against in minutes. For example, a value of 3600 compares the metric tracked against data 1 hour ago. - `300`: 5 minutes - `900`: 15 minutes - `3600`: 1 hour - `86400`: 1 day - `604800`: 1 week - `2592000`: 1 month **Threshold** ```json { "detectionType": "static", } ``` **Change** ```json { "detectionType": "percent", "comparisonDelta": 3600, } ``` **Dynamic** ```json { "detectionType": "dynamic", } ``` */
 export type CreateOrganizationProjectDetectorRequestConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationProjectDetectorRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationProjectDetectorRequestConfigMap>;
+export const CreateOrganizationProjectDetectorRequestConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationProjectDetectorRequestConfigMap>;
 
 /** * `any` * `any-short` * `all` * `none` */
 export type CreateOrganizationProjectDetectorRequestConditionGroupLogicType =
@@ -4675,9 +4495,7 @@ export const CreateOrganizationProjectDetectorRequestConditionGroupLogicType = S
 
 export type CreateOrganizationProjectDetectorRequestConditionGroupConditionsList = Array<unknown>;
 export const CreateOrganizationProjectDetectorRequestConditionGroupConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationProjectDetectorRequestConditionGroupConditionsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<CreateOrganizationProjectDetectorRequestConditionGroupConditionsList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface CreateOrganizationProjectDetectorRequestConditionGroup {
@@ -4767,45 +4585,35 @@ export const CreateOrganizationProjectDetectorResponseOwner = /*@__PURE__*/ S.su
 export type CreateOrganizationProjectDetectorResponseLatestGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationProjectDetectorResponseLatestGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationProjectDetectorResponseLatestGroupMap>;
+export const CreateOrganizationProjectDetectorResponseLatestGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationProjectDetectorResponseLatestGroupMap>;
 
 export type CreateOrganizationProjectDetectorResponseWorkflowIdsList = Array<string>;
-export const CreateOrganizationProjectDetectorResponseWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationProjectDetectorResponseWorkflowIdsList>;
+export const CreateOrganizationProjectDetectorResponseWorkflowIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationProjectDetectorResponseWorkflowIdsList>;
 
 export type CreateOrganizationProjectDetectorResponseDataSourcesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationProjectDetectorResponseDataSourcesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationProjectDetectorResponseDataSourcesItemMap>;
+export const CreateOrganizationProjectDetectorResponseDataSourcesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationProjectDetectorResponseDataSourcesItemMap>;
 
 export type CreateOrganizationProjectDetectorResponseDataSourcesList =
   Array<CreateOrganizationProjectDetectorResponseDataSourcesItemMap>;
-export const CreateOrganizationProjectDetectorResponseDataSourcesList = /*@__PURE__*/ S.Array(
-  CreateOrganizationProjectDetectorResponseDataSourcesItemMap,
-) as any as S.Schema<CreateOrganizationProjectDetectorResponseDataSourcesList>;
+export const CreateOrganizationProjectDetectorResponseDataSourcesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<CreateOrganizationProjectDetectorResponseDataSourcesList>;
 
 export type CreateOrganizationProjectDetectorResponseConditionGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationProjectDetectorResponseConditionGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationProjectDetectorResponseConditionGroupMap>;
+export const CreateOrganizationProjectDetectorResponseConditionGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationProjectDetectorResponseConditionGroupMap>;
 
 export type CreateOrganizationProjectDetectorResponseConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationProjectDetectorResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationProjectDetectorResponseConfigMap>;
+export const CreateOrganizationProjectDetectorResponseConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationProjectDetectorResponseConfigMap>;
 
 export interface CreateOrganizationProjectDetectorResponse {
   owner?: CreateOrganizationProjectDetectorResponseOwner | null;
@@ -4848,9 +4656,8 @@ export const CreateOrganizationProjectDetectorResponse = /*@__PURE__*/ S.suspend
 
 /** A list of project slugs that are involved in this release. */
 export type CreateOrganizationReleaseRequestProjectsList = Array<unknown>;
-export const CreateOrganizationReleaseRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationReleaseRequestProjectsList>;
+export const CreateOrganizationReleaseRequestProjectsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationReleaseRequestProjectsList>;
 
 export interface CreateOrganizationReleaseRequestCommitsItemPatchSetItem {
   path: string;
@@ -4994,16 +4801,12 @@ export const CreateOrganizationReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrganizationReleaseRequest>;
 
 export type CreateOrganizationReleaseResponseOwnerMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationReleaseResponseOwnerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationReleaseResponseOwnerMap>;
+export const CreateOrganizationReleaseResponseOwnerMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationReleaseResponseOwnerMap>;
 
 export type CreateOrganizationReleaseResponseLastCommitMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationReleaseResponseLastCommitMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationReleaseResponseLastCommitMap>;
+export const CreateOrganizationReleaseResponseLastCommitMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationReleaseResponseLastCommitMap>;
 
 export interface CreateOrganizationReleaseResponseLastDeploy {
   dateStarted?: string | null;
@@ -5029,26 +4832,20 @@ export const CreateOrganizationReleaseResponseLastDeploy = /*@__PURE__*/ S.suspe
 export type CreateOrganizationReleaseResponseCurrentProjectMetaMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationReleaseResponseCurrentProjectMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationReleaseResponseCurrentProjectMetaMap>;
+export const CreateOrganizationReleaseResponseCurrentProjectMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationReleaseResponseCurrentProjectMetaMap>;
 
 export type CreateOrganizationReleaseResponseAdoptionStagesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationReleaseResponseAdoptionStagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationReleaseResponseAdoptionStagesMap>;
+export const CreateOrganizationReleaseResponseAdoptionStagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationReleaseResponseAdoptionStagesMap>;
 
 export type CreateOrganizationReleaseResponseVersionInfoVersionMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationReleaseResponseVersionInfoVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationReleaseResponseVersionInfoVersionMap>;
+export const CreateOrganizationReleaseResponseVersionInfoVersionMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationReleaseResponseVersionInfoVersionMap>;
 
 export interface CreateOrganizationReleaseResponseVersionInfo {
   description?: string;
@@ -5068,10 +4865,8 @@ export const CreateOrganizationReleaseResponseVersionInfo = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateOrganizationReleaseResponseVersionInfo>;
 
 export type CreateOrganizationReleaseResponseDataMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationReleaseResponseDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationReleaseResponseDataMap>;
+export const CreateOrganizationReleaseResponseDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationReleaseResponseDataMap>;
 
 export type CreateOrganizationReleaseResponseAuthorsItemCase0IdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -5091,9 +4886,7 @@ export const CreateOrganizationReleaseResponseAuthorsItemCase0IdentitiesItem =
 export type CreateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const CreateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList>;
 
 export type CreateOrganizationReleaseResponseAuthorsItemCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -5102,18 +4895,13 @@ export const CreateOrganizationReleaseResponseAuthorsItemCase0Avatar =
 
 export type CreateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList = Array<unknown>;
 export const CreateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList>;
 
 export type CreateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap>;
 
 export type CreateOrganizationReleaseResponseAuthorsItemCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -5122,9 +4910,8 @@ export const CreateOrganizationReleaseResponseAuthorsItemCase0EmailsItem =
 
 export type CreateOrganizationReleaseResponseAuthorsItemCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const CreateOrganizationReleaseResponseAuthorsItemCase0EmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0EmailsList>;
+export const CreateOrganizationReleaseResponseAuthorsItemCase0EmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<CreateOrganizationReleaseResponseAuthorsItemCase0EmailsList>;
 
 export interface CreateOrganizationReleaseResponseAuthorsItemCase0 {
   identities?: CreateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList;
@@ -5206,10 +4993,7 @@ export type CreateOrganizationReleaseResponseProjectsItemHealthDataStatsMap = {
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationReleaseResponseProjectsItemHealthDataStatsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationReleaseResponseProjectsItemHealthDataStatsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<CreateOrganizationReleaseResponseProjectsItemHealthDataStatsMap>;
 
 export interface CreateOrganizationReleaseResponseProjectsItemHealthData {
   durationP50?: number | null;
@@ -5253,9 +5037,8 @@ export const CreateOrganizationReleaseResponseProjectsItemHealthData = /*@__PURE
 }) as any as S.Schema<CreateOrganizationReleaseResponseProjectsItemHealthData>;
 
 export type CreateOrganizationReleaseResponseProjectsItemPlatformsList = Array<string>;
-export const CreateOrganizationReleaseResponseProjectsItemPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationReleaseResponseProjectsItemPlatformsList>;
+export const CreateOrganizationReleaseResponseProjectsItemPlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationReleaseResponseProjectsItemPlatformsList>;
 
 export interface CreateOrganizationReleaseResponseProjectsItem {
   healthData?: CreateOrganizationReleaseResponseProjectsItemHealthData | null;
@@ -5355,9 +5138,8 @@ export const CreateOrganizationReleaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The optional list of project slugs to create a deploy within. If not provided, deploys are created for all of the release's projects. */
 export type CreateOrganizationReleaseDeployRequestProjectsList = Array<string>;
-export const CreateOrganizationReleaseDeployRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationReleaseDeployRequestProjectsList>;
+export const CreateOrganizationReleaseDeployRequestProjectsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationReleaseDeployRequestProjectsList>;
 
 export interface CreateOrganizationReleaseDeployRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -5450,15 +5232,12 @@ export const CreateOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrganizationTeamRequest>;
 
 export type CreateOrganizationTeamResponseFlagsMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationTeamResponseFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationTeamResponseFlagsMap>;
+export const CreateOrganizationTeamResponseFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationTeamResponseFlagsMap>;
 
 export type CreateOrganizationTeamResponseAccessList = Array<string>;
-export const CreateOrganizationTeamResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationTeamResponseAccessList>;
+export const CreateOrganizationTeamResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationTeamResponseAccessList>;
 
 export type CreateOrganizationTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const CreateOrganizationTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -5470,23 +5249,18 @@ export const CreateOrganizationTeamResponseExternalTeamsItem =
 
 export type CreateOrganizationTeamResponseExternalTeamsList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const CreateOrganizationTeamResponseExternalTeamsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<CreateOrganizationTeamResponseExternalTeamsList>;
+export const CreateOrganizationTeamResponseExternalTeamsList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<CreateOrganizationTeamResponseExternalTeamsList>;
 
 export type CreateOrganizationTeamResponseOrganizationFeaturesList = Array<string>;
-export const CreateOrganizationTeamResponseOrganizationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationTeamResponseOrganizationFeaturesList>;
+export const CreateOrganizationTeamResponseOrganizationFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationTeamResponseOrganizationFeaturesList>;
 
 export type CreateOrganizationTeamResponseOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationTeamResponseOrganizationExtraOptionsValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationTeamResponseOrganizationExtraOptionsValueMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<CreateOrganizationTeamResponseOrganizationExtraOptionsValueMap>;
 
 export type CreateOrganizationTeamResponseOrganizationExtraOptionsMap = {
   [key: string]: CreateOrganizationTeamResponseOrganizationExtraOptionsValueMap | undefined;
@@ -5497,9 +5271,8 @@ export const CreateOrganizationTeamResponseOrganizationExtraOptionsMap = /*@__PU
 ) as any as S.Schema<CreateOrganizationTeamResponseOrganizationExtraOptionsMap>;
 
 export type CreateOrganizationTeamResponseOrganizationAccessList = Array<string>;
-export const CreateOrganizationTeamResponseOrganizationAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationTeamResponseOrganizationAccessList>;
+export const CreateOrganizationTeamResponseOrganizationAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationTeamResponseOrganizationAccessList>;
 
 export interface CreateOrganizationTeamResponseOrganizationOnboardingTasksItem {
   task: string | null;
@@ -5594,14 +5367,12 @@ export const CreateOrganizationTeamResponseOrganization = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateOrganizationTeamResponseOrganization>;
 
 export type CreateOrganizationTeamResponseProjectsItemFeaturesList = Array<string>;
-export const CreateOrganizationTeamResponseProjectsItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationTeamResponseProjectsItemFeaturesList>;
+export const CreateOrganizationTeamResponseProjectsItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationTeamResponseProjectsItemFeaturesList>;
 
 export type CreateOrganizationTeamResponseProjectsItemAccessList = Array<string>;
-export const CreateOrganizationTeamResponseProjectsItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationTeamResponseProjectsItemAccessList>;
+export const CreateOrganizationTeamResponseProjectsItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationTeamResponseProjectsItemAccessList>;
 
 export type CreateOrganizationTeamResponseProjectsItemAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -5650,52 +5421,8 @@ export interface CreateOrganizationTeamResponseProjectsItem {
   color: string;
   status: string;
 }
-export const CreateOrganizationTeamResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: CreateOrganizationTeamResponseProjectsItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: CreateOrganizationTeamResponseProjectsItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrganizationTeamResponseProjectsItem",
-}) as any as S.Schema<CreateOrganizationTeamResponseProjectsItem>;
+export const CreateOrganizationTeamResponseProjectsItem =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<CreateOrganizationTeamResponseProjectsItem>;
 
 export type CreateOrganizationTeamResponseProjectsList =
   Array<CreateOrganizationTeamResponseProjectsItem>;
@@ -5744,16 +5471,13 @@ export const CreateOrganizationTeamResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the monitors to connect this alert to. Use 'Fetch an Organization's Monitors' to find the IDs. */
 export type CreateOrganizationWorkflowRequestDetectorIdsList = Array<number>;
-export const CreateOrganizationWorkflowRequestDetectorIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateOrganizationWorkflowRequestDetectorIdsList>;
+export const CreateOrganizationWorkflowRequestDetectorIdsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<CreateOrganizationWorkflowRequestDetectorIdsList>;
 
 /** Typically the frequency at which the alert will fire, in minutes. - `0`: 0 minutes - `5`: 5 minutes - `10`: 10 minutes - `30`: 30 minutes - `60`: 1 hour - `180`: 3 hours - `720`: 12 hours - `1440`: 24 hours ```json { "frequency":3600 } ``` */
 export type CreateOrganizationWorkflowRequestConfigMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationWorkflowRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationWorkflowRequestConfigMap>;
+export const CreateOrganizationWorkflowRequestConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationWorkflowRequestConfigMap>;
 
 /** * `any` * `any-short` * `all` * `none` */
 export type CreateOrganizationWorkflowRequestTriggersLogicType =
@@ -5764,9 +5488,8 @@ export type CreateOrganizationWorkflowRequestTriggersLogicType =
 export const CreateOrganizationWorkflowRequestTriggersLogicType = S.String;
 
 export type CreateOrganizationWorkflowRequestTriggersConditionsList = Array<unknown>;
-export const CreateOrganizationWorkflowRequestTriggersConditionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationWorkflowRequestTriggersConditionsList>;
+export const CreateOrganizationWorkflowRequestTriggersConditionsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationWorkflowRequestTriggersConditionsList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface CreateOrganizationWorkflowRequestTriggers {
@@ -5795,18 +5518,13 @@ export const CreateOrganizationWorkflowRequestActionFiltersItemLogicType = S.Str
 
 export type CreateOrganizationWorkflowRequestActionFiltersItemConditionsList = Array<unknown>;
 export const CreateOrganizationWorkflowRequestActionFiltersItemConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationWorkflowRequestActionFiltersItemConditionsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<CreateOrganizationWorkflowRequestActionFiltersItemConditionsList>;
 
 export type CreateOrganizationWorkflowRequestActionFiltersItemActionsItemMap = {
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationWorkflowRequestActionFiltersItemActionsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationWorkflowRequestActionFiltersItemActionsItemMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<CreateOrganizationWorkflowRequestActionFiltersItemActionsItemMap>;
 
 export type CreateOrganizationWorkflowRequestActionFiltersItemActionsList =
   Array<CreateOrganizationWorkflowRequestActionFiltersItemActionsItemMap>;
@@ -5916,9 +5634,8 @@ export const CreateOrganizationWorkflowResponseTriggersConditionsCase0List = /*@
 ) as any as S.Schema<CreateOrganizationWorkflowResponseTriggersConditionsCase0List>;
 
 export type CreateOrganizationWorkflowResponseTriggersConditionsCase1List = Array<unknown>;
-export const CreateOrganizationWorkflowResponseTriggersConditionsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationWorkflowResponseTriggersConditionsCase1List>;
+export const CreateOrganizationWorkflowResponseTriggersConditionsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationWorkflowResponseTriggersConditionsCase1List>;
 
 export type CreateOrganizationWorkflowResponseTriggersConditions =
   | CreateOrganizationWorkflowResponseTriggersConditionsCase0List
@@ -5930,19 +5647,13 @@ export type CreateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap = 
   [key: string]: string | undefined;
 };
 export const CreateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<CreateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap>;
 
 export type CreateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<CreateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap>;
 
 export interface CreateOrganizationWorkflowResponseTriggersActionsCase0Item {
   id?: string;
@@ -5973,9 +5684,8 @@ export const CreateOrganizationWorkflowResponseTriggersActionsCase0List = /*@__P
 ) as any as S.Schema<CreateOrganizationWorkflowResponseTriggersActionsCase0List>;
 
 export type CreateOrganizationWorkflowResponseTriggersActionsCase1List = Array<unknown>;
-export const CreateOrganizationWorkflowResponseTriggersActionsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationWorkflowResponseTriggersActionsCase1List>;
+export const CreateOrganizationWorkflowResponseTriggersActionsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<CreateOrganizationWorkflowResponseTriggersActionsCase1List>;
 
 export type CreateOrganizationWorkflowResponseTriggersActions =
   | CreateOrganizationWorkflowResponseTriggersActionsCase0List
@@ -6035,9 +5745,7 @@ export const CreateOrganizationWorkflowResponseActionFiltersItemConditionsCase0L
 
 export type CreateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List = Array<unknown>;
 export const CreateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List>;
 
 export type CreateOrganizationWorkflowResponseActionFiltersItemConditions =
   | CreateOrganizationWorkflowResponseActionFiltersItemConditionsCase0List
@@ -6049,19 +5757,13 @@ export type CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemD
   [key: string]: string | undefined;
 };
 export const CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap>;
 
 export type CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap>;
 
 export interface CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item {
   id?: string;
@@ -6096,9 +5798,7 @@ export const CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0List
 
 export type CreateOrganizationWorkflowResponseActionFiltersItemActionsCase1List = Array<unknown>;
 export const CreateOrganizationWorkflowResponseActionFiltersItemActionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemActionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersItemActionsCase1List>;
 
 export type CreateOrganizationWorkflowResponseActionFiltersItemActions =
   | CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0List
@@ -6132,15 +5832,12 @@ export const CreateOrganizationWorkflowResponseActionFiltersList = /*@__PURE__*/
 ) as any as S.Schema<CreateOrganizationWorkflowResponseActionFiltersList>;
 
 export type CreateOrganizationWorkflowResponseConfigMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationWorkflowResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateOrganizationWorkflowResponseConfigMap>;
+export const CreateOrganizationWorkflowResponseConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateOrganizationWorkflowResponseConfigMap>;
 
 export type CreateOrganizationWorkflowResponseDetectorIdsList = Array<string>;
-export const CreateOrganizationWorkflowResponseDetectorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationWorkflowResponseDetectorIdsList>;
+export const CreateOrganizationWorkflowResponseDetectorIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateOrganizationWorkflowResponseDetectorIdsList>;
 
 export interface CreateOrganizationWorkflowResponse {
   id: string;
@@ -6256,17 +5953,14 @@ export const CreateProjectCodeOwnersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectCodeOwnersRequest>;
 
 export type CreateProjectCodeOwnersResponseCodeMappingProviderFeaturesList = Array<string>;
-export const CreateProjectCodeOwnersResponseCodeMappingProviderFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCodeOwnersResponseCodeMappingProviderFeaturesList>;
+export const CreateProjectCodeOwnersResponseCodeMappingProviderFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectCodeOwnersResponseCodeMappingProviderFeaturesList>;
 
 export type CreateProjectCodeOwnersResponseCodeMappingProviderAspectsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateProjectCodeOwnersResponseCodeMappingProviderAspectsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateProjectCodeOwnersResponseCodeMappingProviderAspectsMap>;
+export const CreateProjectCodeOwnersResponseCodeMappingProviderAspectsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateProjectCodeOwnersResponseCodeMappingProviderAspectsMap>;
 
 export interface CreateProjectCodeOwnersResponseCodeMappingProvider {
   key: string;
@@ -6325,29 +6019,24 @@ export const CreateProjectCodeOwnersResponseCodeMapping = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateProjectCodeOwnersResponseCodeMapping>;
 
 export type CreateProjectCodeOwnersResponseErrorsMissingUserEmailsList = Array<string>;
-export const CreateProjectCodeOwnersResponseErrorsMissingUserEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCodeOwnersResponseErrorsMissingUserEmailsList>;
+export const CreateProjectCodeOwnersResponseErrorsMissingUserEmailsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectCodeOwnersResponseErrorsMissingUserEmailsList>;
 
 export type CreateProjectCodeOwnersResponseErrorsMissingExternalUsersList = Array<string>;
-export const CreateProjectCodeOwnersResponseErrorsMissingExternalUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCodeOwnersResponseErrorsMissingExternalUsersList>;
+export const CreateProjectCodeOwnersResponseErrorsMissingExternalUsersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectCodeOwnersResponseErrorsMissingExternalUsersList>;
 
 export type CreateProjectCodeOwnersResponseErrorsMissingExternalTeamsList = Array<string>;
-export const CreateProjectCodeOwnersResponseErrorsMissingExternalTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCodeOwnersResponseErrorsMissingExternalTeamsList>;
+export const CreateProjectCodeOwnersResponseErrorsMissingExternalTeamsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectCodeOwnersResponseErrorsMissingExternalTeamsList>;
 
 export type CreateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList = Array<string>;
-export const CreateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList>;
+export const CreateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList>;
 
 export type CreateProjectCodeOwnersResponseErrorsUsersWithoutAccessList = Array<string>;
-export const CreateProjectCodeOwnersResponseErrorsUsersWithoutAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectCodeOwnersResponseErrorsUsersWithoutAccessList>;
+export const CreateProjectCodeOwnersResponseErrorsUsersWithoutAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectCodeOwnersResponseErrorsUsersWithoutAccessList>;
 
 export interface CreateProjectCodeOwnersResponseErrors {
   missing_user_emails: CreateProjectCodeOwnersResponseErrorsMissingUserEmailsList;
@@ -6571,9 +6260,8 @@ export const CreateProjectKeyResponseDsn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectKeyResponseDsn>;
 
 export type CreateProjectKeyResponseBrowserSdkChoicesItemList = Array<string>;
-export const CreateProjectKeyResponseBrowserSdkChoicesItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectKeyResponseBrowserSdkChoicesItemList>;
+export const CreateProjectKeyResponseBrowserSdkChoicesItemList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectKeyResponseBrowserSdkChoicesItemList>;
 
 export type CreateProjectKeyResponseBrowserSdkChoicesList =
   Array<CreateProjectKeyResponseBrowserSdkChoicesItemList>;
@@ -6734,9 +6422,8 @@ export const CreateProjectPreprodSnapshotSkippedStatusCheckResponse = /*@__PURE_
 }) as any as S.Schema<CreateProjectPreprodSnapshotSkippedStatusCheckResponse>;
 
 export type CreateProjectReplayDeletionJobRequestDataEnvironmentsList = Array<string>;
-export const CreateProjectReplayDeletionJobRequestDataEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectReplayDeletionJobRequestDataEnvironmentsList>;
+export const CreateProjectReplayDeletionJobRequestDataEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectReplayDeletionJobRequestDataEnvironmentsList>;
 
 export interface CreateProjectReplayDeletionJobRequestData {
   rangeStart: string;
@@ -6779,9 +6466,8 @@ export const CreateProjectReplayDeletionJobRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateProjectReplayDeletionJobRequest>;
 
 export type CreateProjectReplayDeletionJobResponseDataEnvironmentsList = Array<string>;
-export const CreateProjectReplayDeletionJobResponseDataEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateProjectReplayDeletionJobResponseDataEnvironmentsList>;
+export const CreateProjectReplayDeletionJobResponseDataEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateProjectReplayDeletionJobResponseDataEnvironmentsList>;
 
 export interface CreateProjectReplayDeletionJobResponseData {
   id: number;
@@ -6880,19 +6566,8 @@ export interface CreateTeamExternalTeamResponse {
   externalName: string;
   integrationId: string;
 }
-export const CreateTeamExternalTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalId: S.optional(S.String),
-    userId: S.optional(S.String),
-    teamId: S.optional(S.String),
-    id: S.String,
-    provider: S.String,
-    externalName: S.String,
-    integrationId: S.String,
-  }),
-).annotate({
-  identifier: "CreateTeamExternalTeamResponse",
-}) as any as S.Schema<CreateTeamExternalTeamResponse>;
+export const CreateTeamExternalTeamResponse =
+  AddOrganizationMemberResponseExternalUsersItem as any as S.Schema<CreateTeamExternalTeamResponse>;
 
 export interface CreateTeamProjectRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -6926,34 +6601,26 @@ export const CreateTeamProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTeamProjectRequest" }) as any as S.Schema<CreateTeamProjectRequest>;
 
 export type CreateTeamProjectResponseLatestDeploysValueMap = { [key: string]: string | undefined };
-export const CreateTeamProjectResponseLatestDeploysValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateTeamProjectResponseLatestDeploysValueMap>;
+export const CreateTeamProjectResponseLatestDeploysValueMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<CreateTeamProjectResponseLatestDeploysValueMap>;
 
 export type CreateTeamProjectResponseLatestDeploysMap = {
   [key: string]: CreateTeamProjectResponseLatestDeploysValueMap | undefined;
 };
-export const CreateTeamProjectResponseLatestDeploysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateTeamProjectResponseLatestDeploysValueMap,
-) as any as S.Schema<CreateTeamProjectResponseLatestDeploysMap>;
+export const CreateTeamProjectResponseLatestDeploysMap =
+  CreateOrganizationProjectResponseLatestDeploysMap as any as S.Schema<CreateTeamProjectResponseLatestDeploysMap>;
 
 export type CreateTeamProjectResponseOptionsMap = { [key: string]: unknown | undefined };
-export const CreateTeamProjectResponseOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTeamProjectResponseOptionsMap>;
+export const CreateTeamProjectResponseOptionsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<CreateTeamProjectResponseOptionsMap>;
 
 export type CreateTeamProjectResponseFeaturesList = Array<string>;
-export const CreateTeamProjectResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamProjectResponseFeaturesList>;
+export const CreateTeamProjectResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateTeamProjectResponseFeaturesList>;
 
 export type CreateTeamProjectResponseAccessList = Array<string>;
-export const CreateTeamProjectResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamProjectResponseAccessList>;
+export const CreateTeamProjectResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateTeamProjectResponseAccessList>;
 
 export type CreateTeamProjectResponseTeam = AddProjectTeamResponseTeam;
 export const CreateTeamProjectResponseTeam = AddProjectTeamResponseTeam;
@@ -6962,19 +6629,16 @@ export type CreateTeamProjectResponseTeamsItem = AddProjectTeamResponseTeam;
 export const CreateTeamProjectResponseTeamsItem = AddProjectTeamResponseTeam;
 
 export type CreateTeamProjectResponseTeamsList = Array<AddProjectTeamResponseTeam>;
-export const CreateTeamProjectResponseTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<CreateTeamProjectResponseTeamsList>;
+export const CreateTeamProjectResponseTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<CreateTeamProjectResponseTeamsList>;
 
 export type CreateTeamProjectResponsePlatformsList = Array<string>;
-export const CreateTeamProjectResponsePlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamProjectResponsePlatformsList>;
+export const CreateTeamProjectResponsePlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateTeamProjectResponsePlatformsList>;
 
 export type CreateTeamProjectResponseEnvironmentsList = Array<string>;
-export const CreateTeamProjectResponseEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTeamProjectResponseEnvironmentsList>;
+export const CreateTeamProjectResponseEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<CreateTeamProjectResponseEnvironmentsList>;
 
 export type CreateTeamProjectResponseLatestRelease = CreateOrganizationProjectResponseLatestRelease;
 export const CreateTeamProjectResponseLatestRelease =
@@ -7025,55 +6689,8 @@ export interface CreateTeamProjectResponse {
   environments: CreateTeamProjectResponseEnvironmentsList;
   latestRelease: CreateOrganizationProjectResponseLatestRelease | null;
 }
-export const CreateTeamProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestDeploys: S.optional(S.NullOr(CreateTeamProjectResponseLatestDeploysMap)),
-    options: S.optional(CreateTeamProjectResponseOptionsMap),
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: CreateTeamProjectResponseFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: CreateTeamProjectResponseAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    team: S.NullOr(AddProjectTeamResponseTeam),
-    teams: CreateTeamProjectResponseTeamsList,
-    platforms: CreateTeamProjectResponsePlatformsList,
-    hasUserReports: S.Boolean,
-    environments: CreateTeamProjectResponseEnvironmentsList,
-    latestRelease: S.NullOr(CreateOrganizationProjectResponseLatestRelease),
-  }),
-).annotate({
-  identifier: "CreateTeamProjectResponse",
-}) as any as S.Schema<CreateTeamProjectResponse>;
+export const CreateTeamProjectResponse =
+  CreateOrganizationProjectResponse as any as S.Schema<CreateTeamProjectResponse>;
 
 export interface DeleteACustomInboundFilterRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7100,11 +6717,8 @@ export const DeleteACustomInboundFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteACustomInboundFilterRequest>;
 
 export interface DeleteACustomInboundFilterResponse {}
-export const DeleteACustomInboundFilterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteACustomInboundFilterResponse",
-}) as any as S.Schema<DeleteACustomInboundFilterResponse>;
+export const DeleteACustomInboundFilterResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteACustomInboundFilterResponse>;
 
 export interface DeleteAnExternalIssueRequest {
   /** The uuid of the integration platform integration. */
@@ -7154,11 +6768,8 @@ export const DeleteOrganizationDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationDashboardRequest>;
 
 export interface DeleteOrganizationDashboardResponse {}
-export const DeleteOrganizationDashboardResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationDashboardResponse",
-}) as any as S.Schema<DeleteOrganizationDashboardResponse>;
+export const DeleteOrganizationDashboardResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationDashboardResponse>;
 
 export interface DeleteOrganizationDetectorRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7182,11 +6793,8 @@ export const DeleteOrganizationDetectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationDetectorRequest>;
 
 export interface DeleteOrganizationDetectorResponse {}
-export const DeleteOrganizationDetectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationDetectorResponse",
-}) as any as S.Schema<DeleteOrganizationDetectorResponse>;
+export const DeleteOrganizationDetectorResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationDetectorResponse>;
 
 export type DeleteOrganizationDetectorsRequestProjectItem = number | string;
 export const DeleteOrganizationDetectorsRequestProjectItem =
@@ -7199,9 +6807,8 @@ export const DeleteOrganizationDetectorsRequestProjectList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<DeleteOrganizationDetectorsRequestProjectList>;
 
 export type DeleteOrganizationDetectorsRequestIdList = Array<number>;
-export const DeleteOrganizationDetectorsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DeleteOrganizationDetectorsRequestIdList>;
+export const DeleteOrganizationDetectorsRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<DeleteOrganizationDetectorsRequestIdList>;
 
 export interface DeleteOrganizationDetectorsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7234,11 +6841,8 @@ export const DeleteOrganizationDetectorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationDetectorsRequest>;
 
 export interface DeleteOrganizationDetectorsResponse {}
-export const DeleteOrganizationDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationDetectorsResponse",
-}) as any as S.Schema<DeleteOrganizationDetectorsResponse>;
+export const DeleteOrganizationDetectorsResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationDetectorsResponse>;
 
 export interface DeleteOrganizationDiscoverSavedQueryRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7262,11 +6866,8 @@ export const DeleteOrganizationDiscoverSavedQueryRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteOrganizationDiscoverSavedQueryRequest>;
 
 export interface DeleteOrganizationDiscoverSavedQueryResponse {}
-export const DeleteOrganizationDiscoverSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationDiscoverSavedQueryResponse",
-}) as any as S.Schema<DeleteOrganizationDiscoverSavedQueryResponse>;
+export const DeleteOrganizationDiscoverSavedQueryResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationDiscoverSavedQueryResponse>;
 
 export interface DeleteOrganizationExternalUserRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7290,11 +6891,8 @@ export const DeleteOrganizationExternalUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteOrganizationExternalUserRequest>;
 
 export interface DeleteOrganizationExternalUserResponse {}
-export const DeleteOrganizationExternalUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationExternalUserResponse",
-}) as any as S.Schema<DeleteOrganizationExternalUserResponse>;
+export const DeleteOrganizationExternalUserResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationExternalUserResponse>;
 
 export interface DeleteOrganizationForwardingRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7318,11 +6916,8 @@ export const DeleteOrganizationForwardingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationForwardingRequest>;
 
 export interface DeleteOrganizationForwardingResponse {}
-export const DeleteOrganizationForwardingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationForwardingResponse",
-}) as any as S.Schema<DeleteOrganizationForwardingResponse>;
+export const DeleteOrganizationForwardingResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationForwardingResponse>;
 
 export interface DeleteOrganizationIntegrationRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7346,11 +6941,8 @@ export const DeleteOrganizationIntegrationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteOrganizationIntegrationRequest>;
 
 export interface DeleteOrganizationIntegrationResponse {}
-export const DeleteOrganizationIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationIntegrationResponse",
-}) as any as S.Schema<DeleteOrganizationIntegrationResponse>;
+export const DeleteOrganizationIntegrationResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationIntegrationResponse>;
 
 export interface DeleteOrganizationIssueRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7374,9 +6966,8 @@ export const DeleteOrganizationIssueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationIssueRequest>;
 
 export interface DeleteOrganizationIssueResponse {}
-export const DeleteOrganizationIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteOrganizationIssueResponse" },
-) as any as S.Schema<DeleteOrganizationIssueResponse>;
+export const DeleteOrganizationIssueResponse =
+  BulkRemoveAListOfIssuesResponse as any as S.Schema<DeleteOrganizationIssueResponse>;
 
 export interface DeleteOrganizationIssueExternalIssueRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7403,16 +6994,12 @@ export const DeleteOrganizationIssueExternalIssueRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteOrganizationIssueExternalIssueRequest>;
 
 export interface DeleteOrganizationIssueExternalIssueResponse {}
-export const DeleteOrganizationIssueExternalIssueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationIssueExternalIssueResponse",
-}) as any as S.Schema<DeleteOrganizationIssueExternalIssueResponse>;
+export const DeleteOrganizationIssueExternalIssueResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationIssueExternalIssueResponse>;
 
 export type DeleteOrganizationIssuesRequestEnvironmentList = Array<string>;
-export const DeleteOrganizationIssuesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationIssuesRequestEnvironmentList>;
+export const DeleteOrganizationIssuesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<DeleteOrganizationIssuesRequestEnvironmentList>;
 
 export type DeleteOrganizationIssuesRequestProjectItem = number | string;
 export const DeleteOrganizationIssuesRequestProjectItem =
@@ -7425,9 +7012,8 @@ export const DeleteOrganizationIssuesRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DeleteOrganizationIssuesRequestProjectList>;
 
 export type DeleteOrganizationIssuesRequestIdList = Array<number>;
-export const DeleteOrganizationIssuesRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DeleteOrganizationIssuesRequestIdList>;
+export const DeleteOrganizationIssuesRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<DeleteOrganizationIssuesRequestIdList>;
 
 export type DeleteOrganizationIssuesRequestSort =
   | "date"
@@ -7488,11 +7074,8 @@ export const DeleteOrganizationIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationIssuesRequest>;
 
 export interface DeleteOrganizationIssuesResponse {}
-export const DeleteOrganizationIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationIssuesResponse",
-}) as any as S.Schema<DeleteOrganizationIssuesResponse>;
+export const DeleteOrganizationIssuesResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationIssuesResponse>;
 
 export interface DeleteOrganizationMemberRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7516,11 +7099,8 @@ export const DeleteOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationMemberRequest>;
 
 export interface DeleteOrganizationMemberResponse {}
-export const DeleteOrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationMemberResponse",
-}) as any as S.Schema<DeleteOrganizationMemberResponse>;
+export const DeleteOrganizationMemberResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationMemberResponse>;
 
 export interface DeleteOrganizationMemberTeamRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7547,15 +7127,12 @@ export const DeleteOrganizationMemberTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationMemberTeamRequest>;
 
 export type DeleteOrganizationMemberTeamResponseFlagsMap = { [key: string]: unknown | undefined };
-export const DeleteOrganizationMemberTeamResponseFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DeleteOrganizationMemberTeamResponseFlagsMap>;
+export const DeleteOrganizationMemberTeamResponseFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<DeleteOrganizationMemberTeamResponseFlagsMap>;
 
 export type DeleteOrganizationMemberTeamResponseAccessList = Array<string>;
-export const DeleteOrganizationMemberTeamResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationMemberTeamResponseAccessList>;
+export const DeleteOrganizationMemberTeamResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<DeleteOrganizationMemberTeamResponseAccessList>;
 
 export type DeleteOrganizationMemberTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const DeleteOrganizationMemberTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -7574,29 +7151,12 @@ export interface DeleteOrganizationMemberTeamResponse {
   memberCount: number;
   avatar: AddOrganizationMemberResponseUserAvatar;
 }
-export const DeleteOrganizationMemberTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    dateCreated: S.NullOr(S.String),
-    isMember: S.Boolean,
-    teamRole: S.NullOr(S.String),
-    flags: DeleteOrganizationMemberTeamResponseFlagsMap,
-    access: DeleteOrganizationMemberTeamResponseAccessList,
-    hasAccess: S.Boolean,
-    isPending: S.Boolean,
-    memberCount: S.Number,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-  }),
-).annotate({
-  identifier: "DeleteOrganizationMemberTeamResponse",
-}) as any as S.Schema<DeleteOrganizationMemberTeamResponse>;
+export const DeleteOrganizationMemberTeamResponse =
+  AddOrganizationMemberTeamResponse as any as S.Schema<DeleteOrganizationMemberTeamResponse>;
 
 export type DeleteOrganizationMonitorRequestEnvironmentList = Array<string>;
-export const DeleteOrganizationMonitorRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationMonitorRequestEnvironmentList>;
+export const DeleteOrganizationMonitorRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<DeleteOrganizationMonitorRequestEnvironmentList>;
 
 export interface DeleteOrganizationMonitorRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7623,11 +7183,8 @@ export const DeleteOrganizationMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationMonitorRequest>;
 
 export interface DeleteOrganizationMonitorResponse {}
-export const DeleteOrganizationMonitorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationMonitorResponse",
-}) as any as S.Schema<DeleteOrganizationMonitorResponse>;
+export const DeleteOrganizationMonitorResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationMonitorResponse>;
 
 export interface DeleteOrganizationNotificationsActionRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7651,11 +7208,8 @@ export const DeleteOrganizationNotificationsActionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteOrganizationNotificationsActionRequest>;
 
 export interface DeleteOrganizationNotificationsActionResponse {}
-export const DeleteOrganizationNotificationsActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationNotificationsActionResponse",
-}) as any as S.Schema<DeleteOrganizationNotificationsActionResponse>;
+export const DeleteOrganizationNotificationsActionResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationNotificationsActionResponse>;
 
 export interface DeleteOrganizationPreprodArtifactSnapshotRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7679,11 +7233,8 @@ export const DeleteOrganizationPreprodArtifactSnapshotRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteOrganizationPreprodArtifactSnapshotRequest>;
 
 export interface DeleteOrganizationPreprodArtifactSnapshotResponse {}
-export const DeleteOrganizationPreprodArtifactSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationPreprodArtifactSnapshotResponse",
-}) as any as S.Schema<DeleteOrganizationPreprodArtifactSnapshotResponse>;
+export const DeleteOrganizationPreprodArtifactSnapshotResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationPreprodArtifactSnapshotResponse>;
 
 export interface DeleteOrganizationReleaseRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7707,11 +7258,8 @@ export const DeleteOrganizationReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationReleaseRequest>;
 
 export interface DeleteOrganizationReleaseResponse {}
-export const DeleteOrganizationReleaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationReleaseResponse",
-}) as any as S.Schema<DeleteOrganizationReleaseResponse>;
+export const DeleteOrganizationReleaseResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationReleaseResponse>;
 
 export interface DeleteOrganizationReleaseFileRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7738,11 +7286,8 @@ export const DeleteOrganizationReleaseFileRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteOrganizationReleaseFileRequest>;
 
 export interface DeleteOrganizationReleaseFileResponse {}
-export const DeleteOrganizationReleaseFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationReleaseFileResponse",
-}) as any as S.Schema<DeleteOrganizationReleaseFileResponse>;
+export const DeleteOrganizationReleaseFileResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationReleaseFileResponse>;
 
 export interface DeleteOrganizationScimV2GroupRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7766,11 +7311,8 @@ export const DeleteOrganizationScimV2GroupRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteOrganizationScimV2GroupRequest>;
 
 export interface DeleteOrganizationScimV2GroupResponse {}
-export const DeleteOrganizationScimV2GroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationScimV2GroupResponse",
-}) as any as S.Schema<DeleteOrganizationScimV2GroupResponse>;
+export const DeleteOrganizationScimV2GroupResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationScimV2GroupResponse>;
 
 export interface DeleteOrganizationScimV2UserRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7794,11 +7336,8 @@ export const DeleteOrganizationScimV2UserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationScimV2UserRequest>;
 
 export interface DeleteOrganizationScimV2UserResponse {}
-export const DeleteOrganizationScimV2UserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationScimV2UserResponse",
-}) as any as S.Schema<DeleteOrganizationScimV2UserResponse>;
+export const DeleteOrganizationScimV2UserResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationScimV2UserResponse>;
 
 export interface DeleteOrganizationWorkflowRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7822,16 +7361,12 @@ export const DeleteOrganizationWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationWorkflowRequest>;
 
 export interface DeleteOrganizationWorkflowResponse {}
-export const DeleteOrganizationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationWorkflowResponse",
-}) as any as S.Schema<DeleteOrganizationWorkflowResponse>;
+export const DeleteOrganizationWorkflowResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationWorkflowResponse>;
 
 export type DeleteOrganizationWorkflowsRequestIdList = Array<number>;
-export const DeleteOrganizationWorkflowsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DeleteOrganizationWorkflowsRequestIdList>;
+export const DeleteOrganizationWorkflowsRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<DeleteOrganizationWorkflowsRequestIdList>;
 
 export type DeleteOrganizationWorkflowsRequestProjectItem = number | string;
 export const DeleteOrganizationWorkflowsRequestProjectItem =
@@ -7871,11 +7406,8 @@ export const DeleteOrganizationWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationWorkflowsRequest>;
 
 export interface DeleteOrganizationWorkflowsResponse {}
-export const DeleteOrganizationWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationWorkflowsResponse",
-}) as any as S.Schema<DeleteOrganizationWorkflowsResponse>;
+export const DeleteOrganizationWorkflowsResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteOrganizationWorkflowsResponse>;
 
 export interface DeleteProjectRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7897,9 +7429,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectCodeOwnersRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7926,9 +7457,8 @@ export const DeleteProjectCodeOwnersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectCodeOwnersRequest>;
 
 export interface DeleteProjectCodeOwnersResponse {}
-export const DeleteProjectCodeOwnersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteProjectCodeOwnersResponse" },
-) as any as S.Schema<DeleteProjectCodeOwnersResponse>;
+export const DeleteProjectCodeOwnersResponse =
+  BulkRemoveAListOfIssuesResponse as any as S.Schema<DeleteProjectCodeOwnersResponse>;
 
 export interface DeleteProjectKeyRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7953,14 +7483,12 @@ export const DeleteProjectKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectKeyRequest" }) as any as S.Schema<DeleteProjectKeyRequest>;
 
 export interface DeleteProjectKeyResponse {}
-export const DeleteProjectKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectKeyResponse",
-}) as any as S.Schema<DeleteProjectKeyResponse>;
+export const DeleteProjectKeyResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DeleteProjectKeyResponse>;
 
 export type DeleteProjectMonitorRequestEnvironmentList = Array<string>;
-export const DeleteProjectMonitorRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteProjectMonitorRequestEnvironmentList>;
+export const DeleteProjectMonitorRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<DeleteProjectMonitorRequestEnvironmentList>;
 
 export interface DeleteProjectMonitorRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -7990,9 +7518,8 @@ export const DeleteProjectMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectMonitorRequest>;
 
 export interface DeleteProjectMonitorResponse {}
-export const DeleteProjectMonitorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectMonitorResponse",
-}) as any as S.Schema<DeleteProjectMonitorResponse>;
+export const DeleteProjectMonitorResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DeleteProjectMonitorResponse>;
 
 export interface DeleteProjectReleaseFileRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8022,11 +7549,8 @@ export const DeleteProjectReleaseFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectReleaseFileRequest>;
 
 export interface DeleteProjectReleaseFileResponse {}
-export const DeleteProjectReleaseFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectReleaseFileResponse",
-}) as any as S.Schema<DeleteProjectReleaseFileResponse>;
+export const DeleteProjectReleaseFileResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteProjectReleaseFileResponse>;
 
 export interface DeleteProjectReplayRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8053,9 +7577,8 @@ export const DeleteProjectReplayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectReplayRequest>;
 
 export interface DeleteProjectReplayResponse {}
-export const DeleteProjectReplayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectReplayResponse",
-}) as any as S.Schema<DeleteProjectReplayResponse>;
+export const DeleteProjectReplayResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DeleteProjectReplayResponse>;
 
 export interface DeleteProjectSymbolSourceRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8082,11 +7605,8 @@ export const DeleteProjectSymbolSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectSymbolSourceRequest>;
 
 export interface DeleteProjectSymbolSourceResponse {}
-export const DeleteProjectSymbolSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectSymbolSourceResponse",
-}) as any as S.Schema<DeleteProjectSymbolSourceResponse>;
+export const DeleteProjectSymbolSourceResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<DeleteProjectSymbolSourceResponse>;
 
 export interface DeleteProjectTeamRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8111,14 +7631,12 @@ export const DeleteProjectTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectTeamRequest" }) as any as S.Schema<DeleteProjectTeamRequest>;
 
 export type DeleteProjectTeamResponseFeaturesList = Array<string>;
-export const DeleteProjectTeamResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteProjectTeamResponseFeaturesList>;
+export const DeleteProjectTeamResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<DeleteProjectTeamResponseFeaturesList>;
 
 export type DeleteProjectTeamResponseAccessList = Array<string>;
-export const DeleteProjectTeamResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteProjectTeamResponseAccessList>;
+export const DeleteProjectTeamResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<DeleteProjectTeamResponseAccessList>;
 
 export type DeleteProjectTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const DeleteProjectTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -8130,9 +7648,8 @@ export type DeleteProjectTeamResponseTeamsItem = AddProjectTeamResponseTeam;
 export const DeleteProjectTeamResponseTeamsItem = AddProjectTeamResponseTeam;
 
 export type DeleteProjectTeamResponseTeamsList = Array<AddProjectTeamResponseTeam>;
-export const DeleteProjectTeamResponseTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<DeleteProjectTeamResponseTeamsList>;
+export const DeleteProjectTeamResponseTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<DeleteProjectTeamResponseTeamsList>;
 
 export interface DeleteProjectTeamResponse {
   stats?: unknown;
@@ -8240,9 +7757,8 @@ export const DeleteSentryAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSentryAppRequest" }) as any as S.Schema<DeleteSentryAppRequest>;
 
 export interface DeleteSentryAppResponse {}
-export const DeleteSentryAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSentryAppResponse",
-}) as any as S.Schema<DeleteSentryAppResponse>;
+export const DeleteSentryAppResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DeleteSentryAppResponse>;
 
 export interface DeleteTeamRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8264,9 +7780,8 @@ export const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamRequest" }) as any as S.Schema<DeleteTeamRequest>;
 
 export interface DeleteTeamResponse {}
-export const DeleteTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTeamResponse",
-}) as any as S.Schema<DeleteTeamResponse>;
+export const DeleteTeamResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DeleteTeamResponse>;
 
 export interface DeleteTeamExternalTeamRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8293,15 +7808,13 @@ export const DeleteTeamExternalTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTeamExternalTeamRequest>;
 
 export interface DeleteTeamExternalTeamResponse {}
-export const DeleteTeamExternalTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTeamExternalTeamResponse",
-}) as any as S.Schema<DeleteTeamExternalTeamResponse>;
+export const DeleteTeamExternalTeamResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DeleteTeamExternalTeamResponse>;
 
 /** Slugs of projects to disable Spike Protection for. Set to `$all` to disable Spike Protection for all the projects in the organization. */
 export type DisableSpikeProtectionRequestProjectsList = Array<string>;
-export const DisableSpikeProtectionRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DisableSpikeProtectionRequestProjectsList>;
+export const DisableSpikeProtectionRequestProjectsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<DisableSpikeProtectionRequestProjectsList>;
 
 export interface DisableSpikeProtectionRequest {
   /** The ID or slug of the organization the projects belong to */
@@ -8325,15 +7838,13 @@ export const DisableSpikeProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableSpikeProtectionRequest>;
 
 export interface DisableSpikeProtectionResponse {}
-export const DisableSpikeProtectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableSpikeProtectionResponse",
-}) as any as S.Schema<DisableSpikeProtectionResponse>;
+export const DisableSpikeProtectionResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<DisableSpikeProtectionResponse>;
 
 /** Slugs of projects to enable Spike Protection for. Set to `$all` to enable Spike Protection for all the projects in the organization. */
 export type EnableSpikeProtectionRequestProjectsList = Array<string>;
-export const EnableSpikeProtectionRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableSpikeProtectionRequestProjectsList>;
+export const EnableSpikeProtectionRequestProjectsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<EnableSpikeProtectionRequestProjectsList>;
 
 export interface EnableSpikeProtectionRequest {
   /** The ID or slug of the organization the projects belong to */
@@ -8357,9 +7868,8 @@ export const EnableSpikeProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableSpikeProtectionRequest>;
 
 export interface EnableSpikeProtectionResponse {}
-export const EnableSpikeProtectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableSpikeProtectionResponse",
-}) as any as S.Schema<EnableSpikeProtectionResponse>;
+export const EnableSpikeProtectionResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<EnableSpikeProtectionResponse>;
 
 /** The action to perform: `link` or `create`. */
 export type ExecuteSentryAppInstallationExternalIssueActionRequestAction = "link" | "create";
@@ -8402,17 +7912,8 @@ export interface ExecuteSentryAppInstallationExternalIssueActionResponse {
   displayName: string;
   webUrl: string;
 }
-export const ExecuteSentryAppInstallationExternalIssueActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    issueId: S.String,
-    serviceType: S.String,
-    displayName: S.String,
-    webUrl: S.String,
-  }),
-).annotate({
-  identifier: "ExecuteSentryAppInstallationExternalIssueActionResponse",
-}) as any as S.Schema<ExecuteSentryAppInstallationExternalIssueActionResponse>;
+export const ExecuteSentryAppInstallationExternalIssueActionResponse =
+  CreateOrUpdateAnExternalIssueResponse as any as S.Schema<ExecuteSentryAppInstallationExternalIssueActionResponse>;
 
 export interface GetACustomInboundFilterRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8454,9 +7955,8 @@ export const GetACustomInboundFilterResponseConditionsItemType = S.String;
 
 /** Glob patterns the field is matched against. The condition matches when any pattern matches, so multiple values act as OR. */
 export type GetACustomInboundFilterResponseConditionsItemValueList = Array<string>;
-export const GetACustomInboundFilterResponseConditionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetACustomInboundFilterResponseConditionsItemValueList>;
+export const GetACustomInboundFilterResponseConditionsItemValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetACustomInboundFilterResponseConditionsItemValueList>;
 
 export interface GetACustomInboundFilterResponseConditionsItem {
   /** The field the condition matches against. Every `dataType` accepts `release` and `ip_address`. In addition, `error` accepts `error_type` and `error_message`, `log` accepts `log_message`, and `metric` accepts `metric_name`. `span` and `all` accept no other types. * `error_type` * `error_message` * `log_message` * `metric_name` * `release` * `ip_address` */
@@ -8541,9 +8041,8 @@ export const GetAnIntegrationSIssueConfigForAnIssueRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueRequest>;
 
 export type GetAnIntegrationSIssueConfigForAnIssueResponseScopesList = Array<string>;
-export const GetAnIntegrationSIssueConfigForAnIssueResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseScopesList>;
+export const GetAnIntegrationSIssueConfigForAnIssueResponseScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseScopesList>;
 
 /** A feature the installation can no longer support, named by the permission tier it falls short of, so the update-permissions modal can list them. */
 export interface GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesItem {
@@ -8569,18 +8068,13 @@ export const GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesList =
 
 export type GetAnIntegrationSIssueConfigForAnIssueResponseProviderFeaturesList = Array<string>;
 export const GetAnIntegrationSIssueConfigForAnIssueResponseProviderFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseProviderFeaturesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseProviderFeaturesList>;
 
 export type GetAnIntegrationSIssueConfigForAnIssueResponseProviderAspectsMap = {
   [key: string]: unknown | undefined;
 };
 export const GetAnIntegrationSIssueConfigForAnIssueResponseProviderAspectsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseProviderAspectsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseProviderAspectsMap>;
 
 export interface GetAnIntegrationSIssueConfigForAnIssueResponseProvider {
   key: string;
@@ -8609,10 +8103,7 @@ export type GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigItemMap
   [key: string]: unknown | undefined;
 };
 export const GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigItemMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigItemMap>;
 
 export type GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigList =
   Array<GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigItemMap>;
@@ -8625,17 +8116,12 @@ export type GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigItemM
   [key: string]: unknown | undefined;
 };
 export const GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigItemMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigItemMap>;
 
 export type GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigList =
   Array<GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigItemMap>;
 export const GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigList =
-  /*@__PURE__*/ S.Array(
-    GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigItemMap,
-  ) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigList>;
+  GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigList as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponseCreateIssueConfigList>;
 
 export interface GetAnIntegrationSIssueConfigForAnIssueResponse {
   id: string;
@@ -8695,9 +8181,8 @@ export const GetAServiceHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAServiceHookRequest" }) as any as S.Schema<GetAServiceHookRequest>;
 
 export type GetAServiceHookResponseEventsList = Array<string>;
-export const GetAServiceHookResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAServiceHookResponseEventsList>;
+export const GetAServiceHookResponseEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetAServiceHookResponseEventsList>;
 
 export interface GetAServiceHookResponse {
   dateCreated: string;
@@ -8740,11 +8225,8 @@ export const GetFilesChangedInAReleaseSCommitsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetFilesChangedInAReleaseSCommitsRequest>;
 
 export interface GetFilesChangedInAReleaseSCommitsResponse {}
-export const GetFilesChangedInAReleaseSCommitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetFilesChangedInAReleaseSCommitsResponse",
-}) as any as S.Schema<GetFilesChangedInAReleaseSCommitsResponse>;
+export const GetFilesChangedInAReleaseSCommitsResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<GetFilesChangedInAReleaseSCommitsResponse>;
 
 export interface GetOrganizationRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8762,15 +8244,12 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrganizationRequest" }) as any as S.Schema<GetOrganizationRequest>;
 
 export type GetOrganizationResponseFeaturesList = Array<string>;
-export const GetOrganizationResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationResponseFeaturesList>;
+export const GetOrganizationResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationResponseFeaturesList>;
 
 export type GetOrganizationResponseExtraOptionsValueMap = { [key: string]: unknown | undefined };
-export const GetOrganizationResponseExtraOptionsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationResponseExtraOptionsValueMap>;
+export const GetOrganizationResponseExtraOptionsValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationResponseExtraOptionsValueMap>;
 
 export type GetOrganizationResponseExtraOptionsMap = {
   [key: string]: GetOrganizationResponseExtraOptionsValueMap | undefined;
@@ -8781,9 +8260,8 @@ export const GetOrganizationResponseExtraOptionsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GetOrganizationResponseExtraOptionsMap>;
 
 export type GetOrganizationResponseAccessList = Array<string>;
-export const GetOrganizationResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationResponseAccessList>;
+export const GetOrganizationResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationResponseAccessList>;
 
 export type GetOrganizationResponseOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -8792,9 +8270,8 @@ export const GetOrganizationResponseOnboardingTasksItem =
 
 export type GetOrganizationResponseOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
-export const GetOrganizationResponseOnboardingTasksList = /*@__PURE__*/ S.Array(
-  CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-) as any as S.Schema<GetOrganizationResponseOnboardingTasksList>;
+export const GetOrganizationResponseOnboardingTasksList =
+  CreateOrganizationTeamResponseOrganizationOnboardingTasksList as any as S.Schema<GetOrganizationResponseOnboardingTasksList>;
 
 export type GetOrganizationResponseStatus = AddOrganizationMemberResponseUserIdentitiesItemProvider;
 export const GetOrganizationResponseStatus =
@@ -8858,9 +8335,8 @@ export const GetOrganizationAIConversationRequestProjectList = /*@__PURE__*/ S.A
 ) as any as S.Schema<GetOrganizationAIConversationRequestProjectList>;
 
 export type GetOrganizationAIConversationRequestEnvironmentList = Array<string>;
-export const GetOrganizationAIConversationRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationAIConversationRequestEnvironmentList>;
+export const GetOrganizationAIConversationRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationAIConversationRequestEnvironmentList>;
 
 export interface GetOrganizationAIConversationRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -8928,21 +8404,17 @@ export const GetOrganizationAIConversationResponseProjectsList = /*@__PURE__*/ S
 export type GetOrganizationAIConversationResponseSpansItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationAIConversationResponseSpansItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationAIConversationResponseSpansItemMap>;
+export const GetOrganizationAIConversationResponseSpansItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationAIConversationResponseSpansItemMap>;
 
 export type GetOrganizationAIConversationResponseSpansList =
   Array<GetOrganizationAIConversationResponseSpansItemMap>;
-export const GetOrganizationAIConversationResponseSpansList = /*@__PURE__*/ S.Array(
-  GetOrganizationAIConversationResponseSpansItemMap,
-) as any as S.Schema<GetOrganizationAIConversationResponseSpansList>;
+export const GetOrganizationAIConversationResponseSpansList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationAIConversationResponseSpansList>;
 
 export type GetOrganizationAIConversationResponseStatsToolNamesList = Array<string>;
-export const GetOrganizationAIConversationResponseStatsToolNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationAIConversationResponseStatsToolNamesList>;
+export const GetOrganizationAIConversationResponseStatsToolNamesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationAIConversationResponseStatsToolNamesList>;
 
 export interface GetOrganizationAIConversationResponseStatsUsageByModelItem {
   model: string | null;
@@ -9059,9 +8531,7 @@ export const GetOrganizationConfigIntegrationsRequest = /*@__PURE__*/ S.suspend(
 
 export type GetOrganizationConfigIntegrationsResponseProvidersItemFeaturesList = Array<string>;
 export const GetOrganizationConfigIntegrationsResponseProvidersItemFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationConfigIntegrationsResponseProvidersItemFeaturesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationConfigIntegrationsResponseProvidersItemFeaturesList>;
 
 export interface GetOrganizationConfigIntegrationsResponseProvidersItem {
   key: string;
@@ -9125,9 +8595,8 @@ export const GetOrganizationDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationDashboardRequest>;
 
 export type GetOrganizationDashboardResponseEnvironmentList = Array<string>;
-export const GetOrganizationDashboardResponseEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDashboardResponseEnvironmentList>;
+export const GetOrganizationDashboardResponseEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDashboardResponseEnvironmentList>;
 
 export type GetOrganizationDashboardResponseCreatedByIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -9146,9 +8615,8 @@ export const GetOrganizationDashboardResponseCreatedByIdentitiesItem =
 
 export type GetOrganizationDashboardResponseCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const GetOrganizationDashboardResponseCreatedByIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<GetOrganizationDashboardResponseCreatedByIdentitiesList>;
+export const GetOrganizationDashboardResponseCreatedByIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<GetOrganizationDashboardResponseCreatedByIdentitiesList>;
 
 export type GetOrganizationDashboardResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -9156,17 +8624,14 @@ export const GetOrganizationDashboardResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
 
 export type GetOrganizationDashboardResponseCreatedByAuthenticatorsList = Array<unknown>;
-export const GetOrganizationDashboardResponseCreatedByAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDashboardResponseCreatedByAuthenticatorsList>;
+export const GetOrganizationDashboardResponseCreatedByAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetOrganizationDashboardResponseCreatedByAuthenticatorsList>;
 
 export type GetOrganizationDashboardResponseCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationDashboardResponseCreatedByExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDashboardResponseCreatedByExperimentsMap>;
+export const GetOrganizationDashboardResponseCreatedByExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationDashboardResponseCreatedByExperimentsMap>;
 
 export type GetOrganizationDashboardResponseCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -9175,9 +8640,8 @@ export const GetOrganizationDashboardResponseCreatedByEmailsItem =
 
 export type GetOrganizationDashboardResponseCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const GetOrganizationDashboardResponseCreatedByEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<GetOrganizationDashboardResponseCreatedByEmailsList>;
+export const GetOrganizationDashboardResponseCreatedByEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<GetOrganizationDashboardResponseCreatedByEmailsList>;
 
 export interface GetOrganizationDashboardResponseCreatedBy {
   identities?: GetOrganizationDashboardResponseCreatedByIdentitiesList;
@@ -9202,42 +8666,14 @@ export interface GetOrganizationDashboardResponseCreatedBy {
   experiments: GetOrganizationDashboardResponseCreatedByExperimentsMap;
   emails: GetOrganizationDashboardResponseCreatedByEmailsList;
 }
-export const GetOrganizationDashboardResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(GetOrganizationDashboardResponseCreatedByIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(GetOrganizationDashboardResponseCreatedByAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: GetOrganizationDashboardResponseCreatedByExperimentsMap,
-    emails: GetOrganizationDashboardResponseCreatedByEmailsList,
-  }),
-).annotate({
-  identifier: "GetOrganizationDashboardResponseCreatedBy",
-}) as any as S.Schema<GetOrganizationDashboardResponseCreatedBy>;
+export const GetOrganizationDashboardResponseCreatedBy =
+  AddOrganizationMemberResponseUser as any as S.Schema<GetOrganizationDashboardResponseCreatedBy>;
 
 export type GetOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap = {
   [key: string]: number | undefined;
 };
 export const GetOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Number,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap>;
+  CreateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap>;
 
 export interface GetOrganizationDashboardResponseWidgetsItemThresholds {
   preferredPolarity?: string;
@@ -9258,27 +8694,19 @@ export const GetOrganizationDashboardResponseWidgetsItemThresholds = /*@__PURE__
 
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList = Array<string>;
 export const GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList>;
 
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList = Array<string>;
 export const GetOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList>;
 
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList = Array<string>;
 export const GetOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList>;
 
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList = Array<string>;
 export const GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList>;
 
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem =
   CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem;
@@ -9288,9 +8716,7 @@ export const GetOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem 
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList =
   Array<CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem>;
 export const GetOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList =
-  /*@__PURE__*/ S.Array(
-    CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList>;
+  CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList>;
 
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem =
   CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem;
@@ -9300,9 +8726,7 @@ export const GetOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboa
 export type GetOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList =
   Array<CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem>;
 export const GetOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList =
-  /*@__PURE__*/ S.Array(
-    CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList>;
+  CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList>;
 
 export interface GetOrganizationDashboardResponseWidgetsItemQueriesItem {
   id: string;
@@ -9348,41 +8772,31 @@ export const GetOrganizationDashboardResponseWidgetsItemQueriesList = /*@__PURE_
 export type GetOrganizationDashboardResponseWidgetsItemLayoutMap = {
   [key: string]: number | undefined;
 };
-export const GetOrganizationDashboardResponseWidgetsItemLayoutMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemLayoutMap>;
+export const GetOrganizationDashboardResponseWidgetsItemLayoutMap =
+  CreateOrganizationDashboardResponseWidgetsItemLayoutMap as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemLayoutMap>;
 
 export type GetOrganizationDashboardResponseWidgetsItemLegendType = "default" | "breakdown";
 export const GetOrganizationDashboardResponseWidgetsItemLegendType = S.String;
 
 export type GetOrganizationDashboardResponseWidgetsItemExploreUrlsList = Array<string>;
-export const GetOrganizationDashboardResponseWidgetsItemExploreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemExploreUrlsList>;
+export const GetOrganizationDashboardResponseWidgetsItemExploreUrlsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemExploreUrlsList>;
 
 export type GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap = {
   [key: string]: string | undefined;
 };
 export const GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap>;
 
 export type GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList =
   Array<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap>;
 export const GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList =
-  /*@__PURE__*/ S.Array(
-    GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList>;
 
 export type GetOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List =
   Array<string>;
 export const GetOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List>;
 
 export type GetOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValue =
   | string
@@ -9411,9 +8825,7 @@ export const GetOrganizationDashboardResponseWidgetsItemChangedReasonItemEquatio
 export type GetOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList =
   Array<string>;
 export const GetOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList>;
 
 export interface GetOrganizationDashboardResponseWidgetsItemChangedReasonItem {
   orderby: GetOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList | null;
@@ -9490,67 +8902,46 @@ export const GetOrganizationDashboardResponseWidgetsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<GetOrganizationDashboardResponseWidgetsList>;
 
 export type GetOrganizationDashboardResponseProjectsList = Array<number>;
-export const GetOrganizationDashboardResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetOrganizationDashboardResponseProjectsList>;
+export const GetOrganizationDashboardResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<GetOrganizationDashboardResponseProjectsList>;
 
 export type GetOrganizationDashboardResponseFiltersReleaseList = Array<string>;
-export const GetOrganizationDashboardResponseFiltersReleaseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDashboardResponseFiltersReleaseList>;
+export const GetOrganizationDashboardResponseFiltersReleaseList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDashboardResponseFiltersReleaseList>;
 
 export type GetOrganizationDashboardResponseFiltersReleaseIdList = Array<string>;
-export const GetOrganizationDashboardResponseFiltersReleaseIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDashboardResponseFiltersReleaseIdList>;
+export const GetOrganizationDashboardResponseFiltersReleaseIdList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDashboardResponseFiltersReleaseIdList>;
 
 export type GetOrganizationDashboardResponseFiltersGlobalFilterItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationDashboardResponseFiltersGlobalFilterItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
+export const GetOrganizationDashboardResponseFiltersGlobalFilterItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
 
 export type GetOrganizationDashboardResponseFiltersGlobalFilterList =
   Array<GetOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
-export const GetOrganizationDashboardResponseFiltersGlobalFilterList = /*@__PURE__*/ S.Array(
-  GetOrganizationDashboardResponseFiltersGlobalFilterItemMap,
-) as any as S.Schema<GetOrganizationDashboardResponseFiltersGlobalFilterList>;
+export const GetOrganizationDashboardResponseFiltersGlobalFilterList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationDashboardResponseFiltersGlobalFilterList>;
 
 export interface GetOrganizationDashboardResponseFilters {
   release?: GetOrganizationDashboardResponseFiltersReleaseList;
   releaseId?: GetOrganizationDashboardResponseFiltersReleaseIdList;
   globalFilter?: GetOrganizationDashboardResponseFiltersGlobalFilterList;
 }
-export const GetOrganizationDashboardResponseFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    release: S.optional(GetOrganizationDashboardResponseFiltersReleaseList),
-    releaseId: S.optional(GetOrganizationDashboardResponseFiltersReleaseIdList),
-    globalFilter: S.optional(GetOrganizationDashboardResponseFiltersGlobalFilterList),
-  }),
-).annotate({
-  identifier: "GetOrganizationDashboardResponseFilters",
-}) as any as S.Schema<GetOrganizationDashboardResponseFilters>;
+export const GetOrganizationDashboardResponseFilters =
+  CreateOrganizationDashboardResponseFilters as any as S.Schema<GetOrganizationDashboardResponseFilters>;
 
 export type GetOrganizationDashboardResponsePermissionsTeamsWithEditAccessList = Array<number>;
 export const GetOrganizationDashboardResponsePermissionsTeamsWithEditAccessList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<GetOrganizationDashboardResponsePermissionsTeamsWithEditAccessList>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<GetOrganizationDashboardResponsePermissionsTeamsWithEditAccessList>;
 
 export interface GetOrganizationDashboardResponsePermissions {
   isEditableByEveryone: boolean;
   teamsWithEditAccess: GetOrganizationDashboardResponsePermissionsTeamsWithEditAccessList;
 }
-export const GetOrganizationDashboardResponsePermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isEditableByEveryone: S.Boolean,
-    teamsWithEditAccess: GetOrganizationDashboardResponsePermissionsTeamsWithEditAccessList,
-  }),
-).annotate({
-  identifier: "GetOrganizationDashboardResponsePermissions",
-}) as any as S.Schema<GetOrganizationDashboardResponsePermissions>;
+export const GetOrganizationDashboardResponsePermissions =
+  CreateOrganizationDashboardResponsePermissions as any as S.Schema<GetOrganizationDashboardResponsePermissions>;
 
 export interface GetOrganizationDashboardResponse {
   environment?: GetOrganizationDashboardResponseEnvironmentList;
@@ -9635,43 +9026,33 @@ export const GetOrganizationDetectorResponseOwner = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetOrganizationDetectorResponseOwner>;
 
 export type GetOrganizationDetectorResponseLatestGroupMap = { [key: string]: unknown | undefined };
-export const GetOrganizationDetectorResponseLatestGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDetectorResponseLatestGroupMap>;
+export const GetOrganizationDetectorResponseLatestGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationDetectorResponseLatestGroupMap>;
 
 export type GetOrganizationDetectorResponseWorkflowIdsList = Array<string>;
-export const GetOrganizationDetectorResponseWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDetectorResponseWorkflowIdsList>;
+export const GetOrganizationDetectorResponseWorkflowIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDetectorResponseWorkflowIdsList>;
 
 export type GetOrganizationDetectorResponseDataSourcesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationDetectorResponseDataSourcesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDetectorResponseDataSourcesItemMap>;
+export const GetOrganizationDetectorResponseDataSourcesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationDetectorResponseDataSourcesItemMap>;
 
 export type GetOrganizationDetectorResponseDataSourcesList =
   Array<GetOrganizationDetectorResponseDataSourcesItemMap>;
-export const GetOrganizationDetectorResponseDataSourcesList = /*@__PURE__*/ S.Array(
-  GetOrganizationDetectorResponseDataSourcesItemMap,
-) as any as S.Schema<GetOrganizationDetectorResponseDataSourcesList>;
+export const GetOrganizationDetectorResponseDataSourcesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationDetectorResponseDataSourcesList>;
 
 export type GetOrganizationDetectorResponseConditionGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationDetectorResponseConditionGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDetectorResponseConditionGroupMap>;
+export const GetOrganizationDetectorResponseConditionGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationDetectorResponseConditionGroupMap>;
 
 export type GetOrganizationDetectorResponseConfigMap = { [key: string]: unknown | undefined };
-export const GetOrganizationDetectorResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDetectorResponseConfigMap>;
+export const GetOrganizationDetectorResponseConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationDetectorResponseConfigMap>;
 
 export interface GetOrganizationDetectorResponse {
   owner?: GetOrganizationDetectorResponseOwner | null;
@@ -9734,47 +9115,38 @@ export const GetOrganizationDiscoverSavedQueryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetOrganizationDiscoverSavedQueryRequest>;
 
 export type GetOrganizationDiscoverSavedQueryResponseEnvironmentList = Array<string>;
-export const GetOrganizationDiscoverSavedQueryResponseEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseEnvironmentList>;
+export const GetOrganizationDiscoverSavedQueryResponseEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseEnvironmentList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseFieldsList = Array<string>;
-export const GetOrganizationDiscoverSavedQueryResponseFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseFieldsList>;
+export const GetOrganizationDiscoverSavedQueryResponseFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseFieldsList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseWidthsList = Array<string>;
-export const GetOrganizationDiscoverSavedQueryResponseWidthsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseWidthsList>;
+export const GetOrganizationDiscoverSavedQueryResponseWidthsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseWidthsList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseConditionsList = Array<string>;
-export const GetOrganizationDiscoverSavedQueryResponseConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseConditionsList>;
+export const GetOrganizationDiscoverSavedQueryResponseConditionsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseConditionsList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseAggregationsList = Array<string>;
-export const GetOrganizationDiscoverSavedQueryResponseAggregationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseAggregationsList>;
+export const GetOrganizationDiscoverSavedQueryResponseAggregationsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseAggregationsList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseYAxisList = Array<string>;
-export const GetOrganizationDiscoverSavedQueryResponseYAxisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseYAxisList>;
+export const GetOrganizationDiscoverSavedQueryResponseYAxisList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseYAxisList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseExploreQueryMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationDiscoverSavedQueryResponseExploreQueryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseExploreQueryMap>;
+export const GetOrganizationDiscoverSavedQueryResponseExploreQueryMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseExploreQueryMap>;
 
 export type GetOrganizationDiscoverSavedQueryResponseProjectsList = Array<number>;
-export const GetOrganizationDiscoverSavedQueryResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseProjectsList>;
+export const GetOrganizationDiscoverSavedQueryResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseProjectsList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -9794,9 +9166,7 @@ export const GetOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesItem =
 export type GetOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const GetOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -9805,18 +9175,13 @@ export const GetOrganizationDiscoverSavedQueryResponseCreatedByAvatar =
 
 export type GetOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList = Array<unknown>;
 export const GetOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList>;
 
 export type GetOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const GetOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap>;
 
 export type GetOrganizationDiscoverSavedQueryResponseCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -9825,9 +9190,8 @@ export const GetOrganizationDiscoverSavedQueryResponseCreatedByEmailsItem =
 
 export type GetOrganizationDiscoverSavedQueryResponseCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const GetOrganizationDiscoverSavedQueryResponseCreatedByEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByEmailsList>;
+export const GetOrganizationDiscoverSavedQueryResponseCreatedByEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<GetOrganizationDiscoverSavedQueryResponseCreatedByEmailsList>;
 
 export interface GetOrganizationDiscoverSavedQueryResponseCreatedBy {
   identities?: GetOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList;
@@ -9971,9 +9335,8 @@ export const GetOrganizationIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationIntegrationRequest>;
 
 export type GetOrganizationIntegrationResponseScopesList = Array<string>;
-export const GetOrganizationIntegrationResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationIntegrationResponseScopesList>;
+export const GetOrganizationIntegrationResponseScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationIntegrationResponseScopesList>;
 
 /** A feature the installation can no longer support, named by the permission tier it falls short of, so the update-permissions modal can list them. */
 export type GetOrganizationIntegrationResponseMissingFeaturesItem =
@@ -10029,9 +9392,8 @@ export const GetOrganizationIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationIntegrationResponse>;
 
 export type GetOrganizationIssueRequestEnvironmentList = Array<string>;
-export const GetOrganizationIssueRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationIssueRequestEnvironmentList>;
+export const GetOrganizationIssueRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationIssueRequestEnvironmentList>;
 
 export type GetOrganizationIssueRequestExpandItem =
   | "forecast"
@@ -10152,9 +9514,8 @@ export const GetOrganizationIssueResponseStatusDetailsActorIdentitiesItem =
 
 export type GetOrganizationIssueResponseStatusDetailsActorIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const GetOrganizationIssueResponseStatusDetailsActorIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorIdentitiesList>;
+export const GetOrganizationIssueResponseStatusDetailsActorIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorIdentitiesList>;
 
 export type GetOrganizationIssueResponseStatusDetailsActorAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -10163,17 +9524,13 @@ export const GetOrganizationIssueResponseStatusDetailsActorAvatar =
 
 export type GetOrganizationIssueResponseStatusDetailsActorAuthenticatorsList = Array<unknown>;
 export const GetOrganizationIssueResponseStatusDetailsActorAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorAuthenticatorsList>;
 
 export type GetOrganizationIssueResponseStatusDetailsActorExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueResponseStatusDetailsActorExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorExperimentsMap>;
+export const GetOrganizationIssueResponseStatusDetailsActorExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorExperimentsMap>;
 
 export type GetOrganizationIssueResponseStatusDetailsActorEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -10182,9 +9539,8 @@ export const GetOrganizationIssueResponseStatusDetailsActorEmailsItem =
 
 export type GetOrganizationIssueResponseStatusDetailsActorEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const GetOrganizationIssueResponseStatusDetailsActorEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorEmailsList>;
+export const GetOrganizationIssueResponseStatusDetailsActorEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<GetOrganizationIssueResponseStatusDetailsActorEmailsList>;
 
 export interface GetOrganizationIssueResponseStatusDetailsActor {
   identities?: GetOrganizationIssueResponseStatusDetailsActorIdentitiesList;
@@ -10327,10 +9683,8 @@ export type GetOrganizationIssueResponseType =
 export const GetOrganizationIssueResponseType = S.String;
 
 export type GetOrganizationIssueResponseMetadataMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseMetadataMap>;
+export const GetOrganizationIssueResponseMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseMetadataMap>;
 
 export type GetOrganizationIssueResponseAssignedToType = "user" | "team";
 export const GetOrganizationIssueResponseAssignedToType = S.String;
@@ -10385,32 +9739,24 @@ export const GetOrganizationIssueResponseAnnotationsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<GetOrganizationIssueResponseAnnotationsList>;
 
 export type GetOrganizationIssueResponseFirstReleaseMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueResponseFirstReleaseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseFirstReleaseMap>;
+export const GetOrganizationIssueResponseFirstReleaseMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseFirstReleaseMap>;
 
 export type GetOrganizationIssueResponseLastReleaseMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueResponseLastReleaseMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseLastReleaseMap>;
+export const GetOrganizationIssueResponseLastReleaseMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseLastReleaseMap>;
 
 export type GetOrganizationIssueResponseTagsItemMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueResponseTagsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseTagsItemMap>;
+export const GetOrganizationIssueResponseTagsItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseTagsItemMap>;
 
 export type GetOrganizationIssueResponseTagsList = Array<GetOrganizationIssueResponseTagsItemMap>;
-export const GetOrganizationIssueResponseTagsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseTagsItemMap,
-) as any as S.Schema<GetOrganizationIssueResponseTagsList>;
+export const GetOrganizationIssueResponseTagsList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationIssueResponseTagsList>;
 
 export type GetOrganizationIssueResponseStatsValueItemList = Array<number>;
-export const GetOrganizationIssueResponseStatsValueItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetOrganizationIssueResponseStatsValueItemList>;
+export const GetOrganizationIssueResponseStatsValueItemList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<GetOrganizationIssueResponseStatsValueItemList>;
 
 export type GetOrganizationIssueResponseStatsValueList =
   Array<GetOrganizationIssueResponseStatsValueItemList>;
@@ -10481,24 +9827,19 @@ export const GetOrganizationIssueResponseOwnersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetOrganizationIssueResponseOwnersList>;
 
 export type GetOrganizationIssueResponseForecastMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueResponseForecastMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseForecastMap>;
+export const GetOrganizationIssueResponseForecastMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseForecastMap>;
 
 export type GetOrganizationIssueResponseIntegrationIssuesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueResponseIntegrationIssuesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseIntegrationIssuesItemMap>;
+export const GetOrganizationIssueResponseIntegrationIssuesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseIntegrationIssuesItemMap>;
 
 export type GetOrganizationIssueResponseIntegrationIssuesList =
   Array<GetOrganizationIssueResponseIntegrationIssuesItemMap>;
-export const GetOrganizationIssueResponseIntegrationIssuesList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseIntegrationIssuesItemMap,
-) as any as S.Schema<GetOrganizationIssueResponseIntegrationIssuesList>;
+export const GetOrganizationIssueResponseIntegrationIssuesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationIssueResponseIntegrationIssuesList>;
 
 export interface GetOrganizationIssueResponseSentryAppIssuesItem {
   id: string;
@@ -10507,17 +9848,8 @@ export interface GetOrganizationIssueResponseSentryAppIssuesItem {
   displayName: string;
   webUrl: string;
 }
-export const GetOrganizationIssueResponseSentryAppIssuesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    issueId: S.String,
-    serviceType: S.String,
-    displayName: S.String,
-    webUrl: S.String,
-  }),
-).annotate({
-  identifier: "GetOrganizationIssueResponseSentryAppIssuesItem",
-}) as any as S.Schema<GetOrganizationIssueResponseSentryAppIssuesItem>;
+export const GetOrganizationIssueResponseSentryAppIssuesItem =
+  CreateOrUpdateAnExternalIssueResponse as any as S.Schema<GetOrganizationIssueResponseSentryAppIssuesItem>;
 
 export type GetOrganizationIssueResponseSentryAppIssuesList =
   Array<GetOrganizationIssueResponseSentryAppIssuesItem>;
@@ -10526,42 +9858,33 @@ export const GetOrganizationIssueResponseSentryAppIssuesList = /*@__PURE__*/ S.A
 ) as any as S.Schema<GetOrganizationIssueResponseSentryAppIssuesList>;
 
 export type GetOrganizationIssueResponseActivityItemMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueResponseActivityItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseActivityItemMap>;
+export const GetOrganizationIssueResponseActivityItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseActivityItemMap>;
 
 export type GetOrganizationIssueResponseActivityList =
   Array<GetOrganizationIssueResponseActivityItemMap>;
-export const GetOrganizationIssueResponseActivityList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseActivityItemMap,
-) as any as S.Schema<GetOrganizationIssueResponseActivityList>;
+export const GetOrganizationIssueResponseActivityList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationIssueResponseActivityList>;
 
 export type GetOrganizationIssueResponseSeenByItemMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueResponseSeenByItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseSeenByItemMap>;
+export const GetOrganizationIssueResponseSeenByItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseSeenByItemMap>;
 
 export type GetOrganizationIssueResponseSeenByList =
   Array<GetOrganizationIssueResponseSeenByItemMap>;
-export const GetOrganizationIssueResponseSeenByList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseSeenByItemMap,
-) as any as S.Schema<GetOrganizationIssueResponseSeenByList>;
+export const GetOrganizationIssueResponseSeenByList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationIssueResponseSeenByList>;
 
 export type GetOrganizationIssueResponseParticipantsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueResponseParticipantsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueResponseParticipantsItemMap>;
+export const GetOrganizationIssueResponseParticipantsItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueResponseParticipantsItemMap>;
 
 export type GetOrganizationIssueResponseParticipantsList =
   Array<GetOrganizationIssueResponseParticipantsItemMap>;
-export const GetOrganizationIssueResponseParticipantsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseParticipantsItemMap,
-) as any as S.Schema<GetOrganizationIssueResponseParticipantsList>;
+export const GetOrganizationIssueResponseParticipantsList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationIssueResponseParticipantsList>;
 
 export interface GetOrganizationIssueResponse {
   isUnhandled?: boolean;
@@ -10719,10 +10042,8 @@ export const GetOrganizationIssueAutofixStateResponseFormatted = /*@__PURE__*/ S
 export type GetOrganizationIssueAutofixStateResponseAutofixMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueAutofixStateResponseAutofixMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueAutofixStateResponseAutofixMap>;
+export const GetOrganizationIssueAutofixStateResponseAutofixMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueAutofixStateResponseAutofixMap>;
 
 export interface GetOrganizationIssueAutofixStateResponse {
   /** The ``formatted`` field the mixin adds to a response when ``?llmFormat`` is requested. ``content`` is text for the text formats and a serialized JSON object for ``json``, so the response shape is the same whichever format a caller asks for. */
@@ -10742,9 +10063,8 @@ export type GetOrganizationIssueEventRequestEventId = "latest" | "oldest" | "rec
 export const GetOrganizationIssueEventRequestEventId = S.String;
 
 export type GetOrganizationIssueEventRequestEnvironmentList = Array<string>;
-export const GetOrganizationIssueEventRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationIssueEventRequestEnvironmentList>;
+export const GetOrganizationIssueEventRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationIssueEventRequestEnvironmentList>;
 
 export type GetOrganizationIssueEventRequestLlmFormat = "json" | "markdown" | "xml";
 export const GetOrganizationIssueEventRequestLlmFormat = S.String;
@@ -10780,16 +10100,12 @@ export const GetOrganizationIssueEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationIssueEventRequest>;
 
 export type GetOrganizationIssueEventResponseUserGeoMap = { [key: string]: string | undefined };
-export const GetOrganizationIssueEventResponseUserGeoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetOrganizationIssueEventResponseUserGeoMap>;
+export const GetOrganizationIssueEventResponseUserGeoMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<GetOrganizationIssueEventResponseUserGeoMap>;
 
 export type GetOrganizationIssueEventResponseUserDataMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueEventResponseUserDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseUserDataMap>;
+export const GetOrganizationIssueEventResponseUserDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseUserDataMap>;
 
 export interface GetOrganizationIssueEventResponseUser {
   id?: string | null;
@@ -10836,15 +10152,12 @@ export const GetOrganizationIssueEventResponseTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetOrganizationIssueEventResponseTagsList>;
 
 export type GetOrganizationIssueEventResponseContextsMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueEventResponseContextsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseContextsMap>;
+export const GetOrganizationIssueEventResponseContextsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseContextsMap>;
 
 export type GetOrganizationIssueEventResponseEntriesList = Array<unknown>;
-export const GetOrganizationIssueEventResponseEntriesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseEntriesList>;
+export const GetOrganizationIssueEventResponseEntriesList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetOrganizationIssueEventResponseEntriesList>;
 
 export interface GetOrganizationIssueEventResponseSdk {
   name: string | null;
@@ -10860,16 +10173,12 @@ export const GetOrganizationIssueEventResponseSdk = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetOrganizationIssueEventResponseSdk>;
 
 export type GetOrganizationIssueEventResponseContextMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueEventResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseContextMap>;
+export const GetOrganizationIssueEventResponseContextMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseContextMap>;
 
 export type GetOrganizationIssueEventResponsePackagesMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueEventResponsePackagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponsePackagesMap>;
+export const GetOrganizationIssueEventResponsePackagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponsePackagesMap>;
 
 export type GetOrganizationIssueEventResponseType =
   | "default"
@@ -10885,18 +10194,14 @@ export type GetOrganizationIssueEventResponseType =
 export const GetOrganizationIssueEventResponseType = S.String;
 
 export type GetOrganizationIssueEventResponseMetadataMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueEventResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseMetadataMap>;
+export const GetOrganizationIssueEventResponseMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseMetadataMap>;
 
 export type GetOrganizationIssueEventResponseErrorsItemDataMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueEventResponseErrorsItemDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseErrorsItemDataMap>;
+export const GetOrganizationIssueEventResponseErrorsItemDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseErrorsItemDataMap>;
 
 export interface GetOrganizationIssueEventResponseErrorsItem {
   type: string;
@@ -10920,17 +10225,14 @@ export const GetOrganizationIssueEventResponseErrorsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<GetOrganizationIssueEventResponseErrorsList>;
 
 export type GetOrganizationIssueEventResponseOccurrenceFingerprintList = Array<string>;
-export const GetOrganizationIssueEventResponseOccurrenceFingerprintList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationIssueEventResponseOccurrenceFingerprintList>;
+export const GetOrganizationIssueEventResponseOccurrenceFingerprintList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationIssueEventResponseOccurrenceFingerprintList>;
 
 export type GetOrganizationIssueEventResponseOccurrenceEvidenceDataMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueEventResponseOccurrenceEvidenceDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseOccurrenceEvidenceDataMap>;
+export const GetOrganizationIssueEventResponseOccurrenceEvidenceDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseOccurrenceEvidenceDataMap>;
 
 export interface GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem {
   name: string;
@@ -10994,15 +10296,12 @@ export const GetOrganizationIssueEventResponseOccurrence = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetOrganizationIssueEventResponseOccurrence>;
 
 export type GetOrganizationIssueEventResponseMetaMap = { [key: string]: unknown | undefined };
-export const GetOrganizationIssueEventResponseMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseMetaMap>;
+export const GetOrganizationIssueEventResponseMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseMetaMap>;
 
 export type GetOrganizationIssueEventResponseFingerprintsList = Array<string>;
-export const GetOrganizationIssueEventResponseFingerprintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationIssueEventResponseFingerprintsList>;
+export const GetOrganizationIssueEventResponseFingerprintsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationIssueEventResponseFingerprintsList>;
 
 export interface GetOrganizationIssueEventResponseGroupingConfig {
   id: string;
@@ -11046,10 +10345,8 @@ export const GetOrganizationIssueEventResponseBreakdownsValueValue =
 export type GetOrganizationIssueEventResponseBreakdownsValueMap = {
   [key: string]: GetOrganizationIssueEventResponseMeasurementsValue | undefined;
 };
-export const GetOrganizationIssueEventResponseBreakdownsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetOrganizationIssueEventResponseMeasurementsValue,
-) as any as S.Schema<GetOrganizationIssueEventResponseBreakdownsValueMap>;
+export const GetOrganizationIssueEventResponseBreakdownsValueMap =
+  GetOrganizationIssueEventResponseMeasurementsMap as any as S.Schema<GetOrganizationIssueEventResponseBreakdownsValueMap>;
 
 export type GetOrganizationIssueEventResponseBreakdownsMap = {
   [key: string]: GetOrganizationIssueEventResponseBreakdownsValueMap | undefined;
@@ -11062,18 +10359,14 @@ export const GetOrganizationIssueEventResponseBreakdownsMap = /*@__PURE__*/ S.Re
 export type GetOrganizationIssueEventResponseReleaseDataMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueEventResponseReleaseDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseReleaseDataMap>;
+export const GetOrganizationIssueEventResponseReleaseDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseReleaseDataMap>;
 
 export type GetOrganizationIssueEventResponseReleaseLastCommitMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueEventResponseReleaseLastCommitMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseReleaseLastCommitMap>;
+export const GetOrganizationIssueEventResponseReleaseLastCommitMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseReleaseLastCommitMap>;
 
 export type GetOrganizationIssueEventResponseReleaseLastDeploy =
   CreateOrganizationReleaseResponseLastDeploy;
@@ -11083,10 +10376,8 @@ export const GetOrganizationIssueEventResponseReleaseLastDeploy =
 export type GetOrganizationIssueEventResponseReleaseVersionInfoVersionMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueEventResponseReleaseVersionInfoVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseReleaseVersionInfoVersionMap>;
+export const GetOrganizationIssueEventResponseReleaseVersionInfoVersionMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseReleaseVersionInfoVersionMap>;
 
 export interface GetOrganizationIssueEventResponseReleaseVersionInfo {
   description?: string;
@@ -11094,16 +10385,8 @@ export interface GetOrganizationIssueEventResponseReleaseVersionInfo {
   version: GetOrganizationIssueEventResponseReleaseVersionInfoVersionMap;
   buildHash: string | null;
 }
-export const GetOrganizationIssueEventResponseReleaseVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    package: S.NullOr(S.String),
-    version: GetOrganizationIssueEventResponseReleaseVersionInfoVersionMap,
-    buildHash: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GetOrganizationIssueEventResponseReleaseVersionInfo",
-}) as any as S.Schema<GetOrganizationIssueEventResponseReleaseVersionInfo>;
+export const GetOrganizationIssueEventResponseReleaseVersionInfo =
+  CreateOrganizationReleaseResponseVersionInfo as any as S.Schema<GetOrganizationIssueEventResponseReleaseVersionInfo>;
 
 export interface GetOrganizationIssueEventResponseRelease {
   id?: number;
@@ -11204,21 +10487,17 @@ export const GetOrganizationIssueEventResponseUserReport = /*@__PURE__*/ S.suspe
 export type GetOrganizationIssueEventResponseSdkUpdatesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationIssueEventResponseSdkUpdatesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationIssueEventResponseSdkUpdatesItemMap>;
+export const GetOrganizationIssueEventResponseSdkUpdatesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationIssueEventResponseSdkUpdatesItemMap>;
 
 export type GetOrganizationIssueEventResponseSdkUpdatesList =
   Array<GetOrganizationIssueEventResponseSdkUpdatesItemMap>;
-export const GetOrganizationIssueEventResponseSdkUpdatesList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueEventResponseSdkUpdatesItemMap,
-) as any as S.Schema<GetOrganizationIssueEventResponseSdkUpdatesList>;
+export const GetOrganizationIssueEventResponseSdkUpdatesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationIssueEventResponseSdkUpdatesList>;
 
 export type GetOrganizationIssueEventResponseResolvedWithList = Array<string>;
-export const GetOrganizationIssueEventResponseResolvedWithList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationIssueEventResponseResolvedWithList>;
+export const GetOrganizationIssueEventResponseResolvedWithList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationIssueEventResponseResolvedWithList>;
 
 export type GetOrganizationIssueEventResponseFormattedFormat = "markdown" | "xml" | "json";
 export const GetOrganizationIssueEventResponseFormattedFormat = S.String;
@@ -11326,9 +10605,8 @@ export const GetOrganizationIssueEventResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationIssueEventResponse>;
 
 export type GetOrganizationIssueTagRequestEnvironmentList = Array<string>;
-export const GetOrganizationIssueTagRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationIssueTagRequestEnvironmentList>;
+export const GetOrganizationIssueTagRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationIssueTagRequestEnvironmentList>;
 
 export interface GetOrganizationIssueTagRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -11433,9 +10711,8 @@ export const GetOrganizationMemberResponseExternalUsersItem =
 
 export type GetOrganizationMemberResponseExternalUsersList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const GetOrganizationMemberResponseExternalUsersList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<GetOrganizationMemberResponseExternalUsersList>;
+export const GetOrganizationMemberResponseExternalUsersList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<GetOrganizationMemberResponseExternalUsersList>;
 
 export type GetOrganizationMemberResponseUserIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -11454,25 +10731,21 @@ export const GetOrganizationMemberResponseUserIdentitiesItem =
 
 export type GetOrganizationMemberResponseUserIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const GetOrganizationMemberResponseUserIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<GetOrganizationMemberResponseUserIdentitiesList>;
+export const GetOrganizationMemberResponseUserIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<GetOrganizationMemberResponseUserIdentitiesList>;
 
 export type GetOrganizationMemberResponseUserAvatar = AddOrganizationMemberResponseUserAvatar;
 export const GetOrganizationMemberResponseUserAvatar = AddOrganizationMemberResponseUserAvatar;
 
 export type GetOrganizationMemberResponseUserAuthenticatorsList = Array<unknown>;
-export const GetOrganizationMemberResponseUserAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrganizationMemberResponseUserAuthenticatorsList>;
+export const GetOrganizationMemberResponseUserAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetOrganizationMemberResponseUserAuthenticatorsList>;
 
 export type GetOrganizationMemberResponseUserExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationMemberResponseUserExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationMemberResponseUserExperimentsMap>;
+export const GetOrganizationMemberResponseUserExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationMemberResponseUserExperimentsMap>;
 
 export type GetOrganizationMemberResponseUserEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -11481,9 +10754,8 @@ export const GetOrganizationMemberResponseUserEmailsItem =
 
 export type GetOrganizationMemberResponseUserEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const GetOrganizationMemberResponseUserEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<GetOrganizationMemberResponseUserEmailsList>;
+export const GetOrganizationMemberResponseUserEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<GetOrganizationMemberResponseUserEmailsList>;
 
 export interface GetOrganizationMemberResponseUser {
   identities?: GetOrganizationMemberResponseUserIdentitiesList;
@@ -11508,41 +10780,15 @@ export interface GetOrganizationMemberResponseUser {
   experiments: GetOrganizationMemberResponseUserExperimentsMap;
   emails: GetOrganizationMemberResponseUserEmailsList;
 }
-export const GetOrganizationMemberResponseUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(GetOrganizationMemberResponseUserIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(GetOrganizationMemberResponseUserAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: GetOrganizationMemberResponseUserExperimentsMap,
-    emails: GetOrganizationMemberResponseUserEmailsList,
-  }),
-).annotate({
-  identifier: "GetOrganizationMemberResponseUser",
-}) as any as S.Schema<GetOrganizationMemberResponseUser>;
+export const GetOrganizationMemberResponseUser =
+  AddOrganizationMemberResponseUser as any as S.Schema<GetOrganizationMemberResponseUser>;
 
 export type GetOrganizationMemberResponseFlags = AddOrganizationMemberResponseFlags;
 export const GetOrganizationMemberResponseFlags = AddOrganizationMemberResponseFlags;
 
 export type GetOrganizationMemberResponseTeamsList = Array<string>;
-export const GetOrganizationMemberResponseTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationMemberResponseTeamsList>;
+export const GetOrganizationMemberResponseTeamsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationMemberResponseTeamsList>;
 
 export interface GetOrganizationMemberResponseTeamRolesItem {
   teamSlug: string;
@@ -11564,9 +10810,8 @@ export const GetOrganizationMemberResponseTeamRolesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetOrganizationMemberResponseTeamRolesList>;
 
 export type GetOrganizationMemberResponseOrgRoleListItemScopesList = Array<string>;
-export const GetOrganizationMemberResponseOrgRoleListItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationMemberResponseOrgRoleListItemScopesList>;
+export const GetOrganizationMemberResponseOrgRoleListItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationMemberResponseOrgRoleListItemScopesList>;
 
 export interface GetOrganizationMemberResponseOrgRoleListItem {
   id: string;
@@ -11606,9 +10851,8 @@ export const GetOrganizationMemberResponseOrgRoleListList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<GetOrganizationMemberResponseOrgRoleListList>;
 
 export type GetOrganizationMemberResponseTeamRoleListItemScopesList = Array<string>;
-export const GetOrganizationMemberResponseTeamRoleListItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationMemberResponseTeamRoleListItemScopesList>;
+export const GetOrganizationMemberResponseTeamRoleListItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationMemberResponseTeamRoleListItemScopesList>;
 
 export interface GetOrganizationMemberResponseTeamRoleListItem {
   id: string;
@@ -11693,9 +10937,8 @@ export const GetOrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationMemberResponse>;
 
 export type GetOrganizationMonitorRequestEnvironmentList = Array<string>;
-export const GetOrganizationMonitorRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationMonitorRequestEnvironmentList>;
+export const GetOrganizationMonitorRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationMonitorRequestEnvironmentList>;
 
 export interface GetOrganizationMonitorRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -11728,30 +10971,22 @@ export const GetOrganizationMonitorResponseAlertRuleTargetsItem =
 
 export type GetOrganizationMonitorResponseAlertRuleTargetsList =
   Array<CreateOrganizationMonitorResponseAlertRuleTargetsItem>;
-export const GetOrganizationMonitorResponseAlertRuleTargetsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationMonitorResponseAlertRuleTargetsItem,
-) as any as S.Schema<GetOrganizationMonitorResponseAlertRuleTargetsList>;
+export const GetOrganizationMonitorResponseAlertRuleTargetsList =
+  CreateOrganizationMonitorResponseAlertRuleTargetsList as any as S.Schema<GetOrganizationMonitorResponseAlertRuleTargetsList>;
 
 export interface GetOrganizationMonitorResponseAlertRule {
   targets: GetOrganizationMonitorResponseAlertRuleTargetsList;
   environment: string;
 }
-export const GetOrganizationMonitorResponseAlertRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: GetOrganizationMonitorResponseAlertRuleTargetsList,
-    environment: S.String,
-  }),
-).annotate({
-  identifier: "GetOrganizationMonitorResponseAlertRule",
-}) as any as S.Schema<GetOrganizationMonitorResponseAlertRule>;
+export const GetOrganizationMonitorResponseAlertRule =
+  CreateOrganizationMonitorResponseAlertRule as any as S.Schema<GetOrganizationMonitorResponseAlertRule>;
 
 export type GetOrganizationMonitorResponseConfigScheduleType = "crontab" | "interval";
 export const GetOrganizationMonitorResponseConfigScheduleType = S.String;
 
 export type GetOrganizationMonitorResponseConfigScheduleCase1List = Array<number>;
-export const GetOrganizationMonitorResponseConfigScheduleCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetOrganizationMonitorResponseConfigScheduleCase1List>;
+export const GetOrganizationMonitorResponseConfigScheduleCase1List =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<GetOrganizationMonitorResponseConfigScheduleCase1List>;
 
 export type GetOrganizationMonitorResponseConfigSchedule =
   | string
@@ -11785,14 +11020,12 @@ export const GetOrganizationMonitorResponseConfig = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetOrganizationMonitorResponseConfig>;
 
 export type GetOrganizationMonitorResponseProjectFeaturesList = Array<string>;
-export const GetOrganizationMonitorResponseProjectFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationMonitorResponseProjectFeaturesList>;
+export const GetOrganizationMonitorResponseProjectFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationMonitorResponseProjectFeaturesList>;
 
 export type GetOrganizationMonitorResponseProjectAccessList = Array<string>;
-export const GetOrganizationMonitorResponseProjectAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationMonitorResponseProjectAccessList>;
+export const GetOrganizationMonitorResponseProjectAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationMonitorResponseProjectAccessList>;
 
 export type GetOrganizationMonitorResponseProjectAvatar = AddOrganizationMemberResponseUserAvatar;
 export const GetOrganizationMonitorResponseProjectAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -11839,52 +11072,8 @@ export interface GetOrganizationMonitorResponseProject {
   color: string;
   status: string;
 }
-export const GetOrganizationMonitorResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: GetOrganizationMonitorResponseProjectFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: GetOrganizationMonitorResponseProjectAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "GetOrganizationMonitorResponseProject",
-}) as any as S.Schema<GetOrganizationMonitorResponseProject>;
+export const GetOrganizationMonitorResponseProject =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<GetOrganizationMonitorResponseProject>;
 
 export type GetOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice =
   CreateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice;
@@ -11976,9 +11165,8 @@ export const GetOrganizationNotificationsActionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetOrganizationNotificationsActionRequest>;
 
 export type GetOrganizationNotificationsActionResponseProjectsList = Array<number>;
-export const GetOrganizationNotificationsActionResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetOrganizationNotificationsActionResponseProjectsList>;
+export const GetOrganizationNotificationsActionResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<GetOrganizationNotificationsActionResponseProjectsList>;
 
 export interface GetOrganizationNotificationsActionResponse {
   id: number;
@@ -11992,22 +11180,8 @@ export interface GetOrganizationNotificationsActionResponse {
   targetIdentifier: string | null;
   targetDisplay: string | null;
 }
-export const GetOrganizationNotificationsActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    organizationId: S.Number,
-    integrationId: S.NullOr(S.Number),
-    sentryAppId: S.NullOr(S.Number),
-    projects: GetOrganizationNotificationsActionResponseProjectsList,
-    serviceType: S.NullOr(S.String),
-    triggerType: S.String,
-    targetType: S.NullOr(S.String),
-    targetIdentifier: S.NullOr(S.String),
-    targetDisplay: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GetOrganizationNotificationsActionResponse",
-}) as any as S.Schema<GetOrganizationNotificationsActionResponse>;
+export const GetOrganizationNotificationsActionResponse =
+  CreateOrganizationNotificationsActionResponse as any as S.Schema<GetOrganizationNotificationsActionResponse>;
 
 export interface GetOrganizationPreprodArtifactInstallDetailsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -12082,9 +11256,7 @@ export const GetOrganizationPreprodArtifactInstallDetailsResponseGitInfo = /*@__
 
 export type GetOrganizationPreprodArtifactInstallDetailsResponseInstallGroupsList = Array<string>;
 export const GetOrganizationPreprodArtifactInstallDetailsResponseInstallGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetOrganizationPreprodArtifactInstallDetailsResponseInstallGroupsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetOrganizationPreprodArtifactInstallDetailsResponseInstallGroupsList>;
 
 export interface GetOrganizationPreprodArtifactInstallDetailsResponse {
   buildId: string;
@@ -12171,10 +11343,8 @@ export const GetOrganizationPreprodArtifactSizeAnalysisResponseBaseAppInfo =
 export type GetOrganizationPreprodArtifactSizeAnalysisResponseInsightsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationPreprodArtifactSizeAnalysisResponseInsightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseInsightsMap>;
+export const GetOrganizationPreprodArtifactSizeAnalysisResponseInsightsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseInsightsMap>;
 
 export interface GetOrganizationPreprodArtifactSizeAnalysisResponseAppComponentsItem {
   componentType: string;
@@ -12230,9 +11400,7 @@ export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemSi
 export type GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDiffItemsItemDiffItemsList =
   Array<unknown>;
 export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDiffItemsItemDiffItemsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDiffItemsItemDiffItemsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDiffItemsItemDiffItemsList>;
 
 export interface GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDiffItemsItem {
   sizeDiff: number;
@@ -12270,9 +11438,7 @@ export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDi
 export type GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItemDiffItemsList =
   Array<unknown>;
 export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItemDiffItemsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItemDiffItemsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItemDiffItemsList>;
 
 export interface GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItem {
   sizeDiff: number;
@@ -12311,9 +11477,7 @@ export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemIn
 export type GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItemDiffItemsList =
   Array<unknown>;
 export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItemDiffItemsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItemDiffItemsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItemDiffItemsList>;
 
 export interface GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItem {
   sizeDiff: number;
@@ -12325,29 +11489,12 @@ export interface GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsIt
   diffItems: GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItemDiffItemsList | null;
 }
 export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sizeDiff: S.Number,
-      headSize: S.NullOr(S.Number),
-      baseSize: S.NullOr(S.Number),
-      path: S.String,
-      itemType: S.NullOr(S.String),
-      type: S.String,
-      diffItems: S.NullOr(
-        GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItemDiffItemsList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItem",
-  }) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItem>;
+  GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItem as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItem>;
 
 export type GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsList =
   Array<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItem>;
 export const GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsList =
-  /*@__PURE__*/ S.Array(
-    GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsItem,
-  ) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsList>;
+  GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsList as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemGroupDiffsList>;
 
 export interface GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItem {
   insightType: string;
@@ -13079,10 +12226,7 @@ export type GetOrganizationPreprodArtifactSnapshotImageResponseHeadImageTagsMap 
   [key: string]: string | undefined;
 };
 export const GetOrganizationPreprodArtifactSnapshotImageResponseHeadImageTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotImageResponseHeadImageTagsMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<GetOrganizationPreprodArtifactSnapshotImageResponseHeadImageTagsMap>;
 
 export interface GetOrganizationPreprodArtifactSnapshotImageResponseHeadImage {
   key?: string;
@@ -13129,10 +12273,7 @@ export type GetOrganizationPreprodArtifactSnapshotImageResponseBaseImageTagsMap 
   [key: string]: string | undefined;
 };
 export const GetOrganizationPreprodArtifactSnapshotImageResponseBaseImageTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotImageResponseBaseImageTagsMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<GetOrganizationPreprodArtifactSnapshotImageResponseBaseImageTagsMap>;
 
 export interface GetOrganizationPreprodArtifactSnapshotImageResponseBaseImage {
   key?: string;
@@ -13331,9 +12472,8 @@ export const GetOrganizationProfilingFlamegraphRequestProjectList = /*@__PURE__*
 ) as any as S.Schema<GetOrganizationProfilingFlamegraphRequestProjectList>;
 
 export type GetOrganizationProfilingFlamegraphRequestEnvironmentList = Array<string>;
-export const GetOrganizationProfilingFlamegraphRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationProfilingFlamegraphRequestEnvironmentList>;
+export const GetOrganizationProfilingFlamegraphRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationProfilingFlamegraphRequestEnvironmentList>;
 
 export type GetOrganizationProfilingFlamegraphRequestDataSource =
   | "functions"
@@ -13402,10 +12542,8 @@ export const GetOrganizationProfilingFlamegraphRequest = /*@__PURE__*/ S.suspend
 export type GetOrganizationProfilingFlamegraphResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationProfilingFlamegraphResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationProfilingFlamegraphResponseBodyMap>;
+export const GetOrganizationProfilingFlamegraphResponseBodyMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationProfilingFlamegraphResponseBodyMap>;
 
 export type GetOrganizationProfilingFlamegraphResponse =
   GetOrganizationProfilingFlamegraphResponseBodyMap;
@@ -13498,16 +12636,12 @@ export const GetOrganizationReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationReleaseRequest>;
 
 export type GetOrganizationReleaseResponseOwnerMap = { [key: string]: unknown | undefined };
-export const GetOrganizationReleaseResponseOwnerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseOwnerMap>;
+export const GetOrganizationReleaseResponseOwnerMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseOwnerMap>;
 
 export type GetOrganizationReleaseResponseLastCommitMap = { [key: string]: unknown | undefined };
-export const GetOrganizationReleaseResponseLastCommitMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseLastCommitMap>;
+export const GetOrganizationReleaseResponseLastCommitMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseLastCommitMap>;
 
 export type GetOrganizationReleaseResponseLastDeploy = CreateOrganizationReleaseResponseLastDeploy;
 export const GetOrganizationReleaseResponseLastDeploy = CreateOrganizationReleaseResponseLastDeploy;
@@ -13515,26 +12649,20 @@ export const GetOrganizationReleaseResponseLastDeploy = CreateOrganizationReleas
 export type GetOrganizationReleaseResponseCurrentProjectMetaMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationReleaseResponseCurrentProjectMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseCurrentProjectMetaMap>;
+export const GetOrganizationReleaseResponseCurrentProjectMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseCurrentProjectMetaMap>;
 
 export type GetOrganizationReleaseResponseAdoptionStagesMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationReleaseResponseAdoptionStagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseAdoptionStagesMap>;
+export const GetOrganizationReleaseResponseAdoptionStagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseAdoptionStagesMap>;
 
 export type GetOrganizationReleaseResponseVersionInfoVersionMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationReleaseResponseVersionInfoVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseVersionInfoVersionMap>;
+export const GetOrganizationReleaseResponseVersionInfoVersionMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseVersionInfoVersionMap>;
 
 export interface GetOrganizationReleaseResponseVersionInfo {
   description?: string;
@@ -13542,22 +12670,12 @@ export interface GetOrganizationReleaseResponseVersionInfo {
   version: GetOrganizationReleaseResponseVersionInfoVersionMap;
   buildHash: string | null;
 }
-export const GetOrganizationReleaseResponseVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    package: S.NullOr(S.String),
-    version: GetOrganizationReleaseResponseVersionInfoVersionMap,
-    buildHash: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GetOrganizationReleaseResponseVersionInfo",
-}) as any as S.Schema<GetOrganizationReleaseResponseVersionInfo>;
+export const GetOrganizationReleaseResponseVersionInfo =
+  CreateOrganizationReleaseResponseVersionInfo as any as S.Schema<GetOrganizationReleaseResponseVersionInfo>;
 
 export type GetOrganizationReleaseResponseDataMap = { [key: string]: unknown | undefined };
-export const GetOrganizationReleaseResponseDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseDataMap>;
+export const GetOrganizationReleaseResponseDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseDataMap>;
 
 export type GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -13576,9 +12694,8 @@ export const GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesItem =
 
 export type GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesList>;
+export const GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesList>;
 
 export type GetOrganizationReleaseResponseAuthorsItemCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -13587,17 +12704,13 @@ export const GetOrganizationReleaseResponseAuthorsItemCase0Avatar =
 
 export type GetOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList = Array<unknown>;
 export const GetOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList>;
 
 export type GetOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap>;
+export const GetOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap>;
 
 export type GetOrganizationReleaseResponseAuthorsItemCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -13606,9 +12719,8 @@ export const GetOrganizationReleaseResponseAuthorsItemCase0EmailsItem =
 
 export type GetOrganizationReleaseResponseAuthorsItemCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const GetOrganizationReleaseResponseAuthorsItemCase0EmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0EmailsList>;
+export const GetOrganizationReleaseResponseAuthorsItemCase0EmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0EmailsList>;
 
 export interface GetOrganizationReleaseResponseAuthorsItemCase0 {
   identities?: GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesList;
@@ -13633,33 +12745,8 @@ export interface GetOrganizationReleaseResponseAuthorsItemCase0 {
   experiments: GetOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap;
   emails: GetOrganizationReleaseResponseAuthorsItemCase0EmailsList;
 }
-export const GetOrganizationReleaseResponseAuthorsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(GetOrganizationReleaseResponseAuthorsItemCase0IdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(GetOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: GetOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap,
-    emails: GetOrganizationReleaseResponseAuthorsItemCase0EmailsList,
-  }),
-).annotate({
-  identifier: "GetOrganizationReleaseResponseAuthorsItemCase0",
-}) as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0>;
+export const GetOrganizationReleaseResponseAuthorsItemCase0 =
+  GetOrganizationIssueResponseStatusDetailsActor as any as S.Schema<GetOrganizationReleaseResponseAuthorsItemCase0>;
 
 export type GetOrganizationReleaseResponseAuthorsItemCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -13681,10 +12768,8 @@ export const GetOrganizationReleaseResponseAuthorsList = /*@__PURE__*/ S.Array(
 export type GetOrganizationReleaseResponseProjectsItemHealthDataStatsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationReleaseResponseProjectsItemHealthDataStatsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseResponseProjectsItemHealthDataStatsMap>;
+export const GetOrganizationReleaseResponseProjectsItemHealthDataStatsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseResponseProjectsItemHealthDataStatsMap>;
 
 export interface GetOrganizationReleaseResponseProjectsItemHealthData {
   durationP50?: number | null;
@@ -13728,9 +12813,8 @@ export const GetOrganizationReleaseResponseProjectsItemHealthData = /*@__PURE__*
 }) as any as S.Schema<GetOrganizationReleaseResponseProjectsItemHealthData>;
 
 export type GetOrganizationReleaseResponseProjectsItemPlatformsList = Array<string>;
-export const GetOrganizationReleaseResponseProjectsItemPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReleaseResponseProjectsItemPlatformsList>;
+export const GetOrganizationReleaseResponseProjectsItemPlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReleaseResponseProjectsItemPlatformsList>;
 
 export interface GetOrganizationReleaseResponseProjectsItem {
   healthData?: GetOrganizationReleaseResponseProjectsItemHealthData | null;
@@ -13854,10 +12938,8 @@ export const GetOrganizationReleaseFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationReleaseFileRequest>;
 
 export type GetOrganizationReleaseFileResponseHeadersMap = { [key: string]: unknown | undefined };
-export const GetOrganizationReleaseFileResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReleaseFileResponseHeadersMap>;
+export const GetOrganizationReleaseFileResponseHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReleaseFileResponseHeadersMap>;
 
 export interface GetOrganizationReleaseFileResponse {
   id: string;
@@ -13936,14 +13018,12 @@ export const GetOrganizationReplayRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetOrganizationReplayRequestProjectList>;
 
 export type GetOrganizationReplayRequestProjectSlugList = Array<string>;
-export const GetOrganizationReplayRequestProjectSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayRequestProjectSlugList>;
+export const GetOrganizationReplayRequestProjectSlugList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayRequestProjectSlugList>;
 
 export type GetOrganizationReplayRequestEnvironmentList = Array<string>;
-export const GetOrganizationReplayRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayRequestEnvironmentList>;
+export const GetOrganizationReplayRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayRequestEnvironmentList>;
 
 export interface GetOrganizationReplayRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -14009,19 +13089,16 @@ export const GetOrganizationReplayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationReplayRequest>;
 
 export type GetOrganizationReplayResponseDataTraceIdsList = Array<string>;
-export const GetOrganizationReplayResponseDataTraceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayResponseDataTraceIdsList>;
+export const GetOrganizationReplayResponseDataTraceIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayResponseDataTraceIdsList>;
 
 export type GetOrganizationReplayResponseDataErrorIdsList = Array<string>;
-export const GetOrganizationReplayResponseDataErrorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayResponseDataErrorIdsList>;
+export const GetOrganizationReplayResponseDataErrorIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayResponseDataErrorIdsList>;
 
 export type GetOrganizationReplayResponseDataTagsCase0ValueList = Array<string>;
-export const GetOrganizationReplayResponseDataTagsCase0ValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayResponseDataTagsCase0ValueList>;
+export const GetOrganizationReplayResponseDataTagsCase0ValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayResponseDataTagsCase0ValueList>;
 
 export type GetOrganizationReplayResponseDataTagsCase0Map = {
   [key: string]: GetOrganizationReplayResponseDataTagsCase0ValueList | undefined;
@@ -14032,9 +13109,8 @@ export const GetOrganizationReplayResponseDataTagsCase0Map = /*@__PURE__*/ S.Rec
 ) as any as S.Schema<GetOrganizationReplayResponseDataTagsCase0Map>;
 
 export type GetOrganizationReplayResponseDataTagsCase1List = Array<unknown>;
-export const GetOrganizationReplayResponseDataTagsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReplayResponseDataTagsCase1List>;
+export const GetOrganizationReplayResponseDataTagsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetOrganizationReplayResponseDataTagsCase1List>;
 
 export type GetOrganizationReplayResponseDataTags =
   | GetOrganizationReplayResponseDataTagsCase0Map
@@ -14132,31 +13208,25 @@ export const GetOrganizationReplayResponseDataOtaUpdates = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetOrganizationReplayResponseDataOtaUpdates>;
 
 export type GetOrganizationReplayResponseDataUrlsList = Array<string>;
-export const GetOrganizationReplayResponseDataUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayResponseDataUrlsList>;
+export const GetOrganizationReplayResponseDataUrlsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayResponseDataUrlsList>;
 
 export type GetOrganizationReplayResponseDataSegmentNamesList = Array<string>;
-export const GetOrganizationReplayResponseDataSegmentNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayResponseDataSegmentNamesList>;
+export const GetOrganizationReplayResponseDataSegmentNamesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayResponseDataSegmentNamesList>;
 
 export type GetOrganizationReplayResponseDataClicksItemMap = { [key: string]: unknown | undefined };
-export const GetOrganizationReplayResponseDataClicksItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationReplayResponseDataClicksItemMap>;
+export const GetOrganizationReplayResponseDataClicksItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationReplayResponseDataClicksItemMap>;
 
 export type GetOrganizationReplayResponseDataClicksList =
   Array<GetOrganizationReplayResponseDataClicksItemMap>;
-export const GetOrganizationReplayResponseDataClicksList = /*@__PURE__*/ S.Array(
-  GetOrganizationReplayResponseDataClicksItemMap,
-) as any as S.Schema<GetOrganizationReplayResponseDataClicksList>;
+export const GetOrganizationReplayResponseDataClicksList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationReplayResponseDataClicksList>;
 
 export type GetOrganizationReplayResponseDataReleasesList = Array<string>;
-export const GetOrganizationReplayResponseDataReleasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayResponseDataReleasesList>;
+export const GetOrganizationReplayResponseDataReleasesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayResponseDataReleasesList>;
 
 export interface GetOrganizationReplayResponseData {
   id?: string;
@@ -14246,9 +13316,8 @@ export type GetOrganizationReplayCountRequestDataSource = "errors" | "search_iss
 export const GetOrganizationReplayCountRequestDataSource = S.String;
 
 export type GetOrganizationReplayCountRequestEnvironmentList = Array<string>;
-export const GetOrganizationReplayCountRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayCountRequestEnvironmentList>;
+export const GetOrganizationReplayCountRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayCountRequestEnvironmentList>;
 
 export type GetOrganizationReplayCountRequestProjectItem = number | string;
 export const GetOrganizationReplayCountRequestProjectItem =
@@ -14261,9 +13330,8 @@ export const GetOrganizationReplayCountRequestProjectList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<GetOrganizationReplayCountRequestProjectList>;
 
 export type GetOrganizationReplayCountRequestProjectIdOrSlugList = Array<string>;
-export const GetOrganizationReplayCountRequestProjectIdOrSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationReplayCountRequestProjectIdOrSlugList>;
+export const GetOrganizationReplayCountRequestProjectIdOrSlugList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationReplayCountRequestProjectIdOrSlugList>;
 
 export interface GetOrganizationReplayCountRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -14313,10 +13381,8 @@ export const GetOrganizationReplayCountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationReplayCountRequest>;
 
 export type GetOrganizationReplayCountResponseBodyMap = { [key: string]: number | undefined };
-export const GetOrganizationReplayCountResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GetOrganizationReplayCountResponseBodyMap>;
+export const GetOrganizationReplayCountResponseBodyMap =
+  CreateOrganizationDashboardResponseWidgetsItemLayoutMap as any as S.Schema<GetOrganizationReplayCountResponseBodyMap>;
 
 export type GetOrganizationReplayCountResponse = GetOrganizationReplayCountResponseBodyMap;
 export const GetOrganizationReplayCountResponse = /*@__PURE__*/ S.suspend(() =>
@@ -14347,9 +13413,8 @@ export const GetOrganizationScimV2GroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationScimV2GroupRequest>;
 
 export type GetOrganizationScimV2GroupResponseSchemasList = Array<string>;
-export const GetOrganizationScimV2GroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationScimV2GroupResponseSchemasList>;
+export const GetOrganizationScimV2GroupResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationScimV2GroupResponseSchemasList>;
 
 export interface GetOrganizationScimV2GroupResponseMeta {
   resourceType: string;
@@ -14422,9 +13487,8 @@ export const GetOrganizationScimV2ResourceTypeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetOrganizationScimV2ResourceTypeRequest>;
 
 export type GetOrganizationScimV2ResourceTypeResponseSchemasList = Array<string>;
-export const GetOrganizationScimV2ResourceTypeResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationScimV2ResourceTypeResponseSchemasList>;
+export const GetOrganizationScimV2ResourceTypeResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationScimV2ResourceTypeResponseSchemasList>;
 
 export interface GetOrganizationScimV2ResourceTypeResponseMeta {
   resourceType: string;
@@ -14484,23 +13548,19 @@ export const GetOrganizationScimV2SchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationScimV2SchemaRequest>;
 
 export type GetOrganizationScimV2SchemaResponseSchemasList = Array<string>;
-export const GetOrganizationScimV2SchemaResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationScimV2SchemaResponseSchemasList>;
+export const GetOrganizationScimV2SchemaResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationScimV2SchemaResponseSchemasList>;
 
 export type GetOrganizationScimV2SchemaResponseAttributesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationScimV2SchemaResponseAttributesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationScimV2SchemaResponseAttributesItemMap>;
+export const GetOrganizationScimV2SchemaResponseAttributesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationScimV2SchemaResponseAttributesItemMap>;
 
 export type GetOrganizationScimV2SchemaResponseAttributesList =
   Array<GetOrganizationScimV2SchemaResponseAttributesItemMap>;
-export const GetOrganizationScimV2SchemaResponseAttributesList = /*@__PURE__*/ S.Array(
-  GetOrganizationScimV2SchemaResponseAttributesItemMap,
-) as any as S.Schema<GetOrganizationScimV2SchemaResponseAttributesList>;
+export const GetOrganizationScimV2SchemaResponseAttributesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationScimV2SchemaResponseAttributesList>;
 
 export type GetOrganizationScimV2SchemaResponseMeta = GetOrganizationScimV2ResourceTypeResponseMeta;
 export const GetOrganizationScimV2SchemaResponseMeta =
@@ -14546,9 +13606,8 @@ export const GetOrganizationScimV2ServiceProviderConfigRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetOrganizationScimV2ServiceProviderConfigRequest>;
 
 export type GetOrganizationScimV2ServiceProviderConfigResponseSchemasList = Array<string>;
-export const GetOrganizationScimV2ServiceProviderConfigResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationScimV2ServiceProviderConfigResponseSchemasList>;
+export const GetOrganizationScimV2ServiceProviderConfigResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationScimV2ServiceProviderConfigResponseSchemasList>;
 
 export interface GetOrganizationScimV2ServiceProviderConfigResponsePatch {
   supported: boolean;
@@ -14689,9 +13748,8 @@ export const GetOrganizationScimV2UserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationScimV2UserRequest>;
 
 export type GetOrganizationScimV2UserResponseSchemasList = Array<string>;
-export const GetOrganizationScimV2UserResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationScimV2UserResponseSchemasList>;
+export const GetOrganizationScimV2UserResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationScimV2UserResponseSchemasList>;
 
 export interface GetOrganizationScimV2UserResponseName {
   givenName: string;
@@ -14756,14 +13814,12 @@ export const GetOrganizationScimV2UserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationScimV2UserResponse>;
 
 export type GetOrganizationSessionsRequestFieldList = Array<string>;
-export const GetOrganizationSessionsRequestFieldList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationSessionsRequestFieldList>;
+export const GetOrganizationSessionsRequestFieldList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationSessionsRequestFieldList>;
 
 export type GetOrganizationSessionsRequestEnvironmentList = Array<string>;
-export const GetOrganizationSessionsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationSessionsRequestEnvironmentList>;
+export const GetOrganizationSessionsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationSessionsRequestEnvironmentList>;
 
 export type GetOrganizationSessionsRequestProjectItem = number | string;
 export const GetOrganizationSessionsRequestProjectItem =
@@ -14776,9 +13832,8 @@ export const GetOrganizationSessionsRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetOrganizationSessionsRequestProjectList>;
 
 export type GetOrganizationSessionsRequestGroupByList = Array<string>;
-export const GetOrganizationSessionsRequestGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationSessionsRequestGroupByList>;
+export const GetOrganizationSessionsRequestGroupByList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationSessionsRequestGroupByList>;
 
 export interface GetOrganizationSessionsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -14838,9 +13893,8 @@ export const GetOrganizationSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationSessionsRequest>;
 
 export type GetOrganizationSessionsResponseIntervalsList = Array<string>;
-export const GetOrganizationSessionsResponseIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationSessionsResponseIntervalsList>;
+export const GetOrganizationSessionsResponseIntervalsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationSessionsResponseIntervalsList>;
 
 export interface GetOrganizationSessionsResponseGroupsItemBy {
   project?: number;
@@ -14924,9 +13978,8 @@ export type GetOrganizationStatsSummaryRequestField = "sum(quantity)" | "sum(tim
 export const GetOrganizationStatsSummaryRequestField = S.String;
 
 export type GetOrganizationStatsSummaryRequestProjectList = Array<unknown>;
-export const GetOrganizationStatsSummaryRequestProjectList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrganizationStatsSummaryRequestProjectList>;
+export const GetOrganizationStatsSummaryRequestProjectList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetOrganizationStatsSummaryRequestProjectList>;
 
 export type GetOrganizationStatsSummaryRequestCategory =
   | "error"
@@ -14997,16 +14050,13 @@ export const GetOrganizationStatsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetOrganizationStatsSummaryResponseProjectsItemStatsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const GetOrganizationStatsSummaryResponseProjectsItemStatsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationStatsSummaryResponseProjectsItemStatsItemMap>;
+export const GetOrganizationStatsSummaryResponseProjectsItemStatsItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationStatsSummaryResponseProjectsItemStatsItemMap>;
 
 export type GetOrganizationStatsSummaryResponseProjectsItemStatsList =
   Array<GetOrganizationStatsSummaryResponseProjectsItemStatsItemMap>;
-export const GetOrganizationStatsSummaryResponseProjectsItemStatsList = /*@__PURE__*/ S.Array(
-  GetOrganizationStatsSummaryResponseProjectsItemStatsItemMap,
-) as any as S.Schema<GetOrganizationStatsSummaryResponseProjectsItemStatsList>;
+export const GetOrganizationStatsSummaryResponseProjectsItemStatsList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetOrganizationStatsSummaryResponseProjectsItemStatsList>;
 
 export interface GetOrganizationStatsSummaryResponseProjectsItem {
   id: string;
@@ -15045,9 +14095,8 @@ export const GetOrganizationStatsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationStatsSummaryResponse>;
 
 export type GetOrganizationTraceRequestAdditionalAttributesList = Array<string>;
-export const GetOrganizationTraceRequestAdditionalAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationTraceRequestAdditionalAttributesList>;
+export const GetOrganizationTraceRequestAdditionalAttributesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationTraceRequestAdditionalAttributesList>;
 
 export type GetOrganizationTraceRequestIncludeUptime = "0" | "1";
 export const GetOrganizationTraceRequestIncludeUptime = S.String;
@@ -15219,35 +14268,26 @@ export const GetOrganizationTraceResponseBodyItemCase0OccurrencesList = /*@__PUR
 export type GetOrganizationTraceResponseBodyItemCase0MeasurementsMap = {
   [key: string]: number | undefined;
 };
-export const GetOrganizationTraceResponseBodyItemCase0MeasurementsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0MeasurementsMap>;
+export const GetOrganizationTraceResponseBodyItemCase0MeasurementsMap =
+  CreateOrganizationDashboardResponseWidgetsItemLayoutMap as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0MeasurementsMap>;
 
 export type GetOrganizationTraceResponseBodyItemCase0BrowserWebVitalMap = {
   [key: string]: number | undefined;
 };
-export const GetOrganizationTraceResponseBodyItemCase0BrowserWebVitalMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0BrowserWebVitalMap>;
+export const GetOrganizationTraceResponseBodyItemCase0BrowserWebVitalMap =
+  CreateOrganizationDashboardResponseWidgetsItemLayoutMap as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0BrowserWebVitalMap>;
 
 export type GetOrganizationTraceResponseBodyItemCase0MobileAppVitalMap = {
   [key: string]: number | undefined;
 };
-export const GetOrganizationTraceResponseBodyItemCase0MobileAppVitalMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0MobileAppVitalMap>;
+export const GetOrganizationTraceResponseBodyItemCase0MobileAppVitalMap =
+  CreateOrganizationDashboardResponseWidgetsItemLayoutMap as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0MobileAppVitalMap>;
 
 export type GetOrganizationTraceResponseBodyItemCase0AdditionalAttributesMap = {
   [key: string]: unknown | undefined;
 };
 export const GetOrganizationTraceResponseBodyItemCase0AdditionalAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0AdditionalAttributesMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetOrganizationTraceResponseBodyItemCase0AdditionalAttributesMap>;
 
 export interface GetOrganizationTraceResponseBodyItemCase0 {
   description: string;
@@ -15357,9 +14397,8 @@ export const GetOrganizationTraceResponseBodyItemCase2ChildrenItem =
 
 export type GetOrganizationTraceResponseBodyItemCase2ChildrenList =
   Array<GetOrganizationTraceResponseBodyItemCase0ChildrenItem>;
-export const GetOrganizationTraceResponseBodyItemCase2ChildrenList = /*@__PURE__*/ S.Array(
-  GetOrganizationTraceResponseBodyItemCase0ChildrenItem,
-) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2ChildrenList>;
+export const GetOrganizationTraceResponseBodyItemCase2ChildrenList =
+  GetOrganizationTraceResponseBodyItemCase0ChildrenList as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2ChildrenList>;
 
 export type GetOrganizationTraceResponseBodyItemCase2ErrorsItemEventType = "error" | "occurrence";
 export const GetOrganizationTraceResponseBodyItemCase2ErrorsItemEventType = S.String;
@@ -15456,10 +14495,7 @@ export type GetOrganizationTraceResponseBodyItemCase2AdditionalAttributesMap = {
   [key: string]: unknown | undefined;
 };
 export const GetOrganizationTraceResponseBodyItemCase2AdditionalAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2AdditionalAttributesMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetOrganizationTraceResponseBodyItemCase2AdditionalAttributesMap>;
 
 export interface GetOrganizationTraceResponseBodyItemCase2 {
   description: string;
@@ -15563,24 +14599,18 @@ export type GetOrganizationTraceMetaResponseTransactionChildCountMapItemMap = {
   [key: string]: unknown | undefined;
 };
 export const GetOrganizationTraceMetaResponseTransactionChildCountMapItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationTraceMetaResponseTransactionChildCountMapItemMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetOrganizationTraceMetaResponseTransactionChildCountMapItemMap>;
 
 export type GetOrganizationTraceMetaResponseTransactionChildCountMapList =
   Array<GetOrganizationTraceMetaResponseTransactionChildCountMapItemMap>;
-export const GetOrganizationTraceMetaResponseTransactionChildCountMapList = /*@__PURE__*/ S.Array(
-  GetOrganizationTraceMetaResponseTransactionChildCountMapItemMap,
-) as any as S.Schema<GetOrganizationTraceMetaResponseTransactionChildCountMapList>;
+export const GetOrganizationTraceMetaResponseTransactionChildCountMapList =
+  CreateOrganizationWorkflowRequestActionFiltersItemActionsList as any as S.Schema<GetOrganizationTraceMetaResponseTransactionChildCountMapList>;
 
 export type GetOrganizationTraceMetaResponseSpansCountMapMap = {
   [key: string]: number | undefined;
 };
-export const GetOrganizationTraceMetaResponseSpansCountMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GetOrganizationTraceMetaResponseSpansCountMapMap>;
+export const GetOrganizationTraceMetaResponseSpansCountMapMap =
+  CreateOrganizationDashboardResponseWidgetsItemLayoutMap as any as S.Schema<GetOrganizationTraceMetaResponseSpansCountMapMap>;
 
 export interface GetOrganizationTraceMetaResponse {
   uptimeCount?: number;
@@ -15657,9 +14687,8 @@ export const GetOrganizationWorkflowResponseTriggersConditionsCase0List = /*@__P
 ) as any as S.Schema<GetOrganizationWorkflowResponseTriggersConditionsCase0List>;
 
 export type GetOrganizationWorkflowResponseTriggersConditionsCase1List = Array<unknown>;
-export const GetOrganizationWorkflowResponseTriggersConditionsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrganizationWorkflowResponseTriggersConditionsCase1List>;
+export const GetOrganizationWorkflowResponseTriggersConditionsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetOrganizationWorkflowResponseTriggersConditionsCase1List>;
 
 export type GetOrganizationWorkflowResponseTriggersConditions =
   | GetOrganizationWorkflowResponseTriggersConditionsCase0List
@@ -15671,19 +14700,13 @@ export type GetOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap = {
   [key: string]: string | undefined;
 };
 export const GetOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<GetOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap>;
 
 export type GetOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const GetOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap>;
 
 export interface GetOrganizationWorkflowResponseTriggersActionsCase0Item {
   id?: string;
@@ -15713,9 +14736,8 @@ export const GetOrganizationWorkflowResponseTriggersActionsCase0List = /*@__PURE
 ) as any as S.Schema<GetOrganizationWorkflowResponseTriggersActionsCase0List>;
 
 export type GetOrganizationWorkflowResponseTriggersActionsCase1List = Array<unknown>;
-export const GetOrganizationWorkflowResponseTriggersActionsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetOrganizationWorkflowResponseTriggersActionsCase1List>;
+export const GetOrganizationWorkflowResponseTriggersActionsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetOrganizationWorkflowResponseTriggersActionsCase1List>;
 
 export type GetOrganizationWorkflowResponseTriggersActions =
   | GetOrganizationWorkflowResponseTriggersActionsCase0List
@@ -15775,9 +14797,7 @@ export const GetOrganizationWorkflowResponseActionFiltersItemConditionsCase0List
 
 export type GetOrganizationWorkflowResponseActionFiltersItemConditionsCase1List = Array<unknown>;
 export const GetOrganizationWorkflowResponseActionFiltersItemConditionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemConditionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemConditionsCase1List>;
 
 export type GetOrganizationWorkflowResponseActionFiltersItemConditions =
   | GetOrganizationWorkflowResponseActionFiltersItemConditionsCase0List
@@ -15789,19 +14809,13 @@ export type GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemData
   [key: string]: string | undefined;
 };
 export const GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap>;
 
 export type GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap>;
 
 export interface GetOrganizationWorkflowResponseActionFiltersItemActionsCase0Item {
   id?: string;
@@ -15834,9 +14848,7 @@ export const GetOrganizationWorkflowResponseActionFiltersItemActionsCase0List =
 
 export type GetOrganizationWorkflowResponseActionFiltersItemActionsCase1List = Array<unknown>;
 export const GetOrganizationWorkflowResponseActionFiltersItemActionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemActionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersItemActionsCase1List>;
 
 export type GetOrganizationWorkflowResponseActionFiltersItemActions =
   | GetOrganizationWorkflowResponseActionFiltersItemActionsCase0List
@@ -15870,15 +14882,12 @@ export const GetOrganizationWorkflowResponseActionFiltersList = /*@__PURE__*/ S.
 ) as any as S.Schema<GetOrganizationWorkflowResponseActionFiltersList>;
 
 export type GetOrganizationWorkflowResponseConfigMap = { [key: string]: unknown | undefined };
-export const GetOrganizationWorkflowResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetOrganizationWorkflowResponseConfigMap>;
+export const GetOrganizationWorkflowResponseConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetOrganizationWorkflowResponseConfigMap>;
 
 export type GetOrganizationWorkflowResponseDetectorIdsList = Array<string>;
-export const GetOrganizationWorkflowResponseDetectorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationWorkflowResponseDetectorIdsList>;
+export const GetOrganizationWorkflowResponseDetectorIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetOrganizationWorkflowResponseDetectorIdsList>;
 
 export interface GetOrganizationWorkflowResponse {
   id: string;
@@ -15937,14 +14946,12 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectRequest" }) as any as S.Schema<GetProjectRequest>;
 
 export type GetProjectResponseFeaturesList = Array<string>;
-export const GetProjectResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseFeaturesList>;
+export const GetProjectResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseFeaturesList>;
 
 export type GetProjectResponseAccessList = Array<string>;
-export const GetProjectResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseAccessList>;
+export const GetProjectResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseAccessList>;
 
 export type GetProjectResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const GetProjectResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -15956,62 +14963,49 @@ export type GetProjectResponseTeamsItem = AddProjectTeamResponseTeam;
 export const GetProjectResponseTeamsItem = AddProjectTeamResponseTeam;
 
 export type GetProjectResponseTeamsList = Array<AddProjectTeamResponseTeam>;
-export const GetProjectResponseTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<GetProjectResponseTeamsList>;
+export const GetProjectResponseTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<GetProjectResponseTeamsList>;
 
 export type GetProjectResponseLatestRelease = CreateOrganizationProjectResponseLatestRelease;
 export const GetProjectResponseLatestRelease = CreateOrganizationProjectResponseLatestRelease;
 
 export type GetProjectResponseOptionsMap = { [key: string]: unknown | undefined };
-export const GetProjectResponseOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectResponseOptionsMap>;
+export const GetProjectResponseOptionsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectResponseOptionsMap>;
 
 export type GetProjectResponseAllowedDomainsList = Array<string>;
-export const GetProjectResponseAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseAllowedDomainsList>;
+export const GetProjectResponseAllowedDomainsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseAllowedDomainsList>;
 
 export type GetProjectResponseSafeFieldsList = Array<string>;
-export const GetProjectResponseSafeFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseSafeFieldsList>;
+export const GetProjectResponseSafeFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseSafeFieldsList>;
 
 export type GetProjectResponseSensitiveFieldsList = Array<string>;
-export const GetProjectResponseSensitiveFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseSensitiveFieldsList>;
+export const GetProjectResponseSensitiveFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseSensitiveFieldsList>;
 
 export type GetProjectResponseHighlightTagsList = Array<string>;
-export const GetProjectResponseHighlightTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseHighlightTagsList>;
+export const GetProjectResponseHighlightTagsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseHighlightTagsList>;
 
 export type GetProjectResponseHighlightContextMap = { [key: string]: unknown | undefined };
-export const GetProjectResponseHighlightContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectResponseHighlightContextMap>;
+export const GetProjectResponseHighlightContextMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectResponseHighlightContextMap>;
 
 export type GetProjectResponseHighlightPresetTagsList = Array<string>;
-export const GetProjectResponseHighlightPresetTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseHighlightPresetTagsList>;
+export const GetProjectResponseHighlightPresetTagsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseHighlightPresetTagsList>;
 
 export type GetProjectResponseHighlightPresetContextValueList = Array<string>;
-export const GetProjectResponseHighlightPresetContextValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseHighlightPresetContextValueList>;
+export const GetProjectResponseHighlightPresetContextValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseHighlightPresetContextValueList>;
 
 export type GetProjectResponseHighlightPresetContextMap = {
   [key: string]: GetProjectResponseHighlightPresetContextValueList | undefined;
 };
-export const GetProjectResponseHighlightPresetContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetProjectResponseHighlightPresetContextValueList,
-) as any as S.Schema<GetProjectResponseHighlightPresetContextMap>;
+export const GetProjectResponseHighlightPresetContextMap =
+  GetOrganizationReplayResponseDataTagsCase0Map as any as S.Schema<GetProjectResponseHighlightPresetContextMap>;
 
 export interface GetProjectResponseHighlightPreset {
   tags: GetProjectResponseHighlightPresetTagsList;
@@ -16027,30 +15021,24 @@ export const GetProjectResponseHighlightPreset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectResponseHighlightPreset>;
 
 export type GetProjectResponseOrganizationFeaturesList = Array<string>;
-export const GetProjectResponseOrganizationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseOrganizationFeaturesList>;
+export const GetProjectResponseOrganizationFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseOrganizationFeaturesList>;
 
 export type GetProjectResponseOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
-export const GetProjectResponseOrganizationExtraOptionsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectResponseOrganizationExtraOptionsValueMap>;
+export const GetProjectResponseOrganizationExtraOptionsValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectResponseOrganizationExtraOptionsValueMap>;
 
 export type GetProjectResponseOrganizationExtraOptionsMap = {
   [key: string]: GetProjectResponseOrganizationExtraOptionsValueMap | undefined;
 };
-export const GetProjectResponseOrganizationExtraOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetProjectResponseOrganizationExtraOptionsValueMap,
-) as any as S.Schema<GetProjectResponseOrganizationExtraOptionsMap>;
+export const GetProjectResponseOrganizationExtraOptionsMap =
+  GetOrganizationResponseExtraOptionsMap as any as S.Schema<GetProjectResponseOrganizationExtraOptionsMap>;
 
 export type GetProjectResponseOrganizationAccessList = Array<string>;
-export const GetProjectResponseOrganizationAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseOrganizationAccessList>;
+export const GetProjectResponseOrganizationAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseOrganizationAccessList>;
 
 export type GetProjectResponseOrganizationOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -16059,9 +15047,8 @@ export const GetProjectResponseOrganizationOnboardingTasksItem =
 
 export type GetProjectResponseOrganizationOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
-export const GetProjectResponseOrganizationOnboardingTasksList = /*@__PURE__*/ S.Array(
-  CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-) as any as S.Schema<GetProjectResponseOrganizationOnboardingTasksList>;
+export const GetProjectResponseOrganizationOnboardingTasksList =
+  CreateOrganizationTeamResponseOrganizationOnboardingTasksList as any as S.Schema<GetProjectResponseOrganizationOnboardingTasksList>;
 
 export type GetProjectResponseOrganizationStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -16118,14 +15105,12 @@ export const GetProjectResponseOrganization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectResponseOrganization>;
 
 export type GetProjectResponsePlatformsList = Array<string>;
-export const GetProjectResponsePlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponsePlatformsList>;
+export const GetProjectResponsePlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponsePlatformsList>;
 
 export type GetProjectResponseBuiltinSymbolSourcesList = Array<string>;
-export const GetProjectResponseBuiltinSymbolSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectResponseBuiltinSymbolSourcesList>;
+export const GetProjectResponseBuiltinSymbolSourcesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectResponseBuiltinSymbolSourcesList>;
 
 export type GetProjectResponseDynamicSamplingBiasesItemValue = string | boolean;
 export const GetProjectResponseDynamicSamplingBiasesItemValue =
@@ -16347,17 +15332,14 @@ export const GetProjectCodeOwnersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectCodeOwnersRequest>;
 
 export type GetProjectCodeOwnersResponseCodeMappingProviderFeaturesList = Array<string>;
-export const GetProjectCodeOwnersResponseCodeMappingProviderFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectCodeOwnersResponseCodeMappingProviderFeaturesList>;
+export const GetProjectCodeOwnersResponseCodeMappingProviderFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectCodeOwnersResponseCodeMappingProviderFeaturesList>;
 
 export type GetProjectCodeOwnersResponseCodeMappingProviderAspectsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetProjectCodeOwnersResponseCodeMappingProviderAspectsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectCodeOwnersResponseCodeMappingProviderAspectsMap>;
+export const GetProjectCodeOwnersResponseCodeMappingProviderAspectsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectCodeOwnersResponseCodeMappingProviderAspectsMap>;
 
 export interface GetProjectCodeOwnersResponseCodeMappingProvider {
   key: string;
@@ -16368,19 +15350,8 @@ export interface GetProjectCodeOwnersResponseCodeMappingProvider {
   features: GetProjectCodeOwnersResponseCodeMappingProviderFeaturesList;
   aspects: GetProjectCodeOwnersResponseCodeMappingProviderAspectsMap;
 }
-export const GetProjectCodeOwnersResponseCodeMappingProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    slug: S.String,
-    name: S.String,
-    canAdd: S.Boolean,
-    canDisable: S.Boolean,
-    features: GetProjectCodeOwnersResponseCodeMappingProviderFeaturesList,
-    aspects: GetProjectCodeOwnersResponseCodeMappingProviderAspectsMap,
-  }),
-).annotate({
-  identifier: "GetProjectCodeOwnersResponseCodeMappingProvider",
-}) as any as S.Schema<GetProjectCodeOwnersResponseCodeMappingProvider>;
+export const GetProjectCodeOwnersResponseCodeMappingProvider =
+  CreateProjectCodeOwnersResponseCodeMappingProvider as any as S.Schema<GetProjectCodeOwnersResponseCodeMappingProvider>;
 
 export interface GetProjectCodeOwnersResponseCodeMapping {
   id: string;
@@ -16396,49 +15367,28 @@ export interface GetProjectCodeOwnersResponseCodeMapping {
   automaticallyGenerated: boolean;
   hasCodeOwner: boolean;
 }
-export const GetProjectCodeOwnersResponseCodeMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    projectId: S.String,
-    projectSlug: S.String,
-    repoId: S.String,
-    repoName: S.String,
-    integrationId: S.NullOr(S.String),
-    provider: S.NullOr(GetProjectCodeOwnersResponseCodeMappingProvider),
-    stackRoot: S.String,
-    sourceRoot: S.String,
-    defaultBranch: S.NullOr(S.String),
-    automaticallyGenerated: S.Boolean,
-    hasCodeOwner: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectCodeOwnersResponseCodeMapping",
-}) as any as S.Schema<GetProjectCodeOwnersResponseCodeMapping>;
+export const GetProjectCodeOwnersResponseCodeMapping =
+  CreateProjectCodeOwnersResponseCodeMapping as any as S.Schema<GetProjectCodeOwnersResponseCodeMapping>;
 
 export type GetProjectCodeOwnersResponseErrorsMissingUserEmailsList = Array<string>;
-export const GetProjectCodeOwnersResponseErrorsMissingUserEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectCodeOwnersResponseErrorsMissingUserEmailsList>;
+export const GetProjectCodeOwnersResponseErrorsMissingUserEmailsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectCodeOwnersResponseErrorsMissingUserEmailsList>;
 
 export type GetProjectCodeOwnersResponseErrorsMissingExternalUsersList = Array<string>;
-export const GetProjectCodeOwnersResponseErrorsMissingExternalUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectCodeOwnersResponseErrorsMissingExternalUsersList>;
+export const GetProjectCodeOwnersResponseErrorsMissingExternalUsersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectCodeOwnersResponseErrorsMissingExternalUsersList>;
 
 export type GetProjectCodeOwnersResponseErrorsMissingExternalTeamsList = Array<string>;
-export const GetProjectCodeOwnersResponseErrorsMissingExternalTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectCodeOwnersResponseErrorsMissingExternalTeamsList>;
+export const GetProjectCodeOwnersResponseErrorsMissingExternalTeamsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectCodeOwnersResponseErrorsMissingExternalTeamsList>;
 
 export type GetProjectCodeOwnersResponseErrorsTeamsWithoutAccessList = Array<string>;
-export const GetProjectCodeOwnersResponseErrorsTeamsWithoutAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectCodeOwnersResponseErrorsTeamsWithoutAccessList>;
+export const GetProjectCodeOwnersResponseErrorsTeamsWithoutAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectCodeOwnersResponseErrorsTeamsWithoutAccessList>;
 
 export type GetProjectCodeOwnersResponseErrorsUsersWithoutAccessList = Array<string>;
-export const GetProjectCodeOwnersResponseErrorsUsersWithoutAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectCodeOwnersResponseErrorsUsersWithoutAccessList>;
+export const GetProjectCodeOwnersResponseErrorsUsersWithoutAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectCodeOwnersResponseErrorsUsersWithoutAccessList>;
 
 export interface GetProjectCodeOwnersResponseErrors {
   missing_user_emails: GetProjectCodeOwnersResponseErrorsMissingUserEmailsList;
@@ -16447,17 +15397,8 @@ export interface GetProjectCodeOwnersResponseErrors {
   teams_without_access: GetProjectCodeOwnersResponseErrorsTeamsWithoutAccessList;
   users_without_access: GetProjectCodeOwnersResponseErrorsUsersWithoutAccessList;
 }
-export const GetProjectCodeOwnersResponseErrors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    missing_user_emails: GetProjectCodeOwnersResponseErrorsMissingUserEmailsList,
-    missing_external_users: GetProjectCodeOwnersResponseErrorsMissingExternalUsersList,
-    missing_external_teams: GetProjectCodeOwnersResponseErrorsMissingExternalTeamsList,
-    teams_without_access: GetProjectCodeOwnersResponseErrorsTeamsWithoutAccessList,
-    users_without_access: GetProjectCodeOwnersResponseErrorsUsersWithoutAccessList,
-  }),
-).annotate({
-  identifier: "GetProjectCodeOwnersResponseErrors",
-}) as any as S.Schema<GetProjectCodeOwnersResponseErrors>;
+export const GetProjectCodeOwnersResponseErrors =
+  CreateProjectCodeOwnersResponseErrors as any as S.Schema<GetProjectCodeOwnersResponseErrors>;
 
 export type GetProjectCodeOwnersResponseSchemaCase0RulesItemMatcher =
   CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher;
@@ -16472,41 +15413,27 @@ export const GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem =
 
 export type GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList =
   Array<CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem>;
-export const GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList = /*@__PURE__*/ S.Array(
-  CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem,
-) as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList>;
+export const GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList>;
 
 export interface GetProjectCodeOwnersResponseSchemaCase0RulesItem {
   matcher: CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher;
   owners: GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList;
 }
-export const GetProjectCodeOwnersResponseSchemaCase0RulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matcher: CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher,
-    owners: GetProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList,
-  }),
-).annotate({
-  identifier: "GetProjectCodeOwnersResponseSchemaCase0RulesItem",
-}) as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0RulesItem>;
+export const GetProjectCodeOwnersResponseSchemaCase0RulesItem =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesItem as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0RulesItem>;
 
 export type GetProjectCodeOwnersResponseSchemaCase0RulesList =
   Array<GetProjectCodeOwnersResponseSchemaCase0RulesItem>;
-export const GetProjectCodeOwnersResponseSchemaCase0RulesList = /*@__PURE__*/ S.Array(
-  GetProjectCodeOwnersResponseSchemaCase0RulesItem,
-) as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0RulesList>;
+export const GetProjectCodeOwnersResponseSchemaCase0RulesList =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesList as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0RulesList>;
 
 export interface GetProjectCodeOwnersResponseSchemaCase0 {
   _version: number;
   rules: GetProjectCodeOwnersResponseSchemaCase0RulesList;
 }
-export const GetProjectCodeOwnersResponseSchemaCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _version: S.Number.pipe(T.Body("$version")),
-    rules: GetProjectCodeOwnersResponseSchemaCase0RulesList,
-  }),
-).annotate({
-  identifier: "GetProjectCodeOwnersResponseSchemaCase0",
-}) as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0>;
+export const GetProjectCodeOwnersResponseSchemaCase0 =
+  CreateProjectCodeOwnersResponseSchemaCase0 as any as S.Schema<GetProjectCodeOwnersResponseSchemaCase0>;
 
 export type GetProjectCodeOwnersResponseSchema = GetProjectCodeOwnersResponseSchemaCase0 | unknown;
 export const GetProjectCodeOwnersResponseSchema =
@@ -16574,20 +15501,12 @@ export interface GetProjectEnvironmentResponse {
   name: string;
   isHidden: boolean;
 }
-export const GetProjectEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    isHidden: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetProjectEnvironmentResponse",
-}) as any as S.Schema<GetProjectEnvironmentResponse>;
+export const GetProjectEnvironmentResponse =
+  BulkUpdateProjectEnvironmentsResponseBodyItem as any as S.Schema<GetProjectEnvironmentResponse>;
 
 export type GetProjectEventRequestEnvironmentList = Array<string>;
-export const GetProjectEventRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectEventRequestEnvironmentList>;
+export const GetProjectEventRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectEventRequestEnvironmentList>;
 
 export interface GetProjectEventRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -16615,16 +15534,12 @@ export const GetProjectEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectEventRequest" }) as any as S.Schema<GetProjectEventRequest>;
 
 export type GetProjectEventResponseUserGeoMap = { [key: string]: string | undefined };
-export const GetProjectEventResponseUserGeoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetProjectEventResponseUserGeoMap>;
+export const GetProjectEventResponseUserGeoMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<GetProjectEventResponseUserGeoMap>;
 
 export type GetProjectEventResponseUserDataMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseUserDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseUserDataMap>;
+export const GetProjectEventResponseUserDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseUserDataMap>;
 
 export interface GetProjectEventResponseUser {
   id?: string | null;
@@ -16635,53 +15550,34 @@ export interface GetProjectEventResponseUser {
   geo?: GetProjectEventResponseUserGeoMap | null;
   data?: GetProjectEventResponseUserDataMap | null;
 }
-export const GetProjectEventResponseUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
-    ip_address: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    geo: S.optional(S.NullOr(GetProjectEventResponseUserGeoMap)),
-    data: S.optional(S.NullOr(GetProjectEventResponseUserDataMap)),
-  }),
-).annotate({
-  identifier: "GetProjectEventResponseUser",
-}) as any as S.Schema<GetProjectEventResponseUser>;
+export const GetProjectEventResponseUser =
+  GetOrganizationIssueEventResponseUser as any as S.Schema<GetProjectEventResponseUser>;
 
 export type GetProjectEventResponseTagsItem = GetOrganizationIssueEventResponseTagsItem;
 export const GetProjectEventResponseTagsItem = GetOrganizationIssueEventResponseTagsItem;
 
 export type GetProjectEventResponseTagsList = Array<GetOrganizationIssueEventResponseTagsItem>;
-export const GetProjectEventResponseTagsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueEventResponseTagsItem,
-) as any as S.Schema<GetProjectEventResponseTagsList>;
+export const GetProjectEventResponseTagsList =
+  GetOrganizationIssueEventResponseTagsList as any as S.Schema<GetProjectEventResponseTagsList>;
 
 export type GetProjectEventResponseContextsMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseContextsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseContextsMap>;
+export const GetProjectEventResponseContextsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseContextsMap>;
 
 export type GetProjectEventResponseEntriesList = Array<unknown>;
-export const GetProjectEventResponseEntriesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseEntriesList>;
+export const GetProjectEventResponseEntriesList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<GetProjectEventResponseEntriesList>;
 
 export type GetProjectEventResponseSdk = GetOrganizationIssueEventResponseSdk;
 export const GetProjectEventResponseSdk = GetOrganizationIssueEventResponseSdk;
 
 export type GetProjectEventResponseContextMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseContextMap>;
+export const GetProjectEventResponseContextMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseContextMap>;
 
 export type GetProjectEventResponsePackagesMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponsePackagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponsePackagesMap>;
+export const GetProjectEventResponsePackagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponsePackagesMap>;
 
 export type GetProjectEventResponseType =
   | "default"
@@ -16697,49 +15593,34 @@ export type GetProjectEventResponseType =
 export const GetProjectEventResponseType = S.String;
 
 export type GetProjectEventResponseMetadataMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseMetadataMap>;
+export const GetProjectEventResponseMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseMetadataMap>;
 
 export type GetProjectEventResponseErrorsItemDataMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseErrorsItemDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseErrorsItemDataMap>;
+export const GetProjectEventResponseErrorsItemDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseErrorsItemDataMap>;
 
 export interface GetProjectEventResponseErrorsItem {
   type: string;
   message: string;
   data: GetProjectEventResponseErrorsItemDataMap;
 }
-export const GetProjectEventResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    message: S.String,
-    data: GetProjectEventResponseErrorsItemDataMap,
-  }),
-).annotate({
-  identifier: "GetProjectEventResponseErrorsItem",
-}) as any as S.Schema<GetProjectEventResponseErrorsItem>;
+export const GetProjectEventResponseErrorsItem =
+  GetOrganizationIssueEventResponseErrorsItem as any as S.Schema<GetProjectEventResponseErrorsItem>;
 
 export type GetProjectEventResponseErrorsList = Array<GetProjectEventResponseErrorsItem>;
-export const GetProjectEventResponseErrorsList = /*@__PURE__*/ S.Array(
-  GetProjectEventResponseErrorsItem,
-) as any as S.Schema<GetProjectEventResponseErrorsList>;
+export const GetProjectEventResponseErrorsList =
+  GetOrganizationIssueEventResponseErrorsList as any as S.Schema<GetProjectEventResponseErrorsList>;
 
 export type GetProjectEventResponseOccurrenceFingerprintList = Array<string>;
-export const GetProjectEventResponseOccurrenceFingerprintList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectEventResponseOccurrenceFingerprintList>;
+export const GetProjectEventResponseOccurrenceFingerprintList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectEventResponseOccurrenceFingerprintList>;
 
 export type GetProjectEventResponseOccurrenceEvidenceDataMap = {
   [key: string]: unknown | undefined;
 };
-export const GetProjectEventResponseOccurrenceEvidenceDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseOccurrenceEvidenceDataMap>;
+export const GetProjectEventResponseOccurrenceEvidenceDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseOccurrenceEvidenceDataMap>;
 
 export type GetProjectEventResponseOccurrenceEvidenceDisplayItem =
   GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem;
@@ -16748,9 +15629,8 @@ export const GetProjectEventResponseOccurrenceEvidenceDisplayItem =
 
 export type GetProjectEventResponseOccurrenceEvidenceDisplayList =
   Array<GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem>;
-export const GetProjectEventResponseOccurrenceEvidenceDisplayList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem,
-) as any as S.Schema<GetProjectEventResponseOccurrenceEvidenceDisplayList>;
+export const GetProjectEventResponseOccurrenceEvidenceDisplayList =
+  GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayList as any as S.Schema<GetProjectEventResponseOccurrenceEvidenceDisplayList>;
 
 export interface GetProjectEventResponseOccurrence {
   id: string;
@@ -16769,38 +15649,16 @@ export interface GetProjectEventResponseOccurrence {
   assignee: string | null;
   priority: number | null;
 }
-export const GetProjectEventResponseOccurrence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    projectId: S.Number,
-    eventId: S.String,
-    fingerprint: GetProjectEventResponseOccurrenceFingerprintList,
-    issueTitle: S.String,
-    subtitle: S.String,
-    resourceId: S.NullOr(S.String),
-    evidenceData: GetProjectEventResponseOccurrenceEvidenceDataMap,
-    evidenceDisplay: GetProjectEventResponseOccurrenceEvidenceDisplayList,
-    type: S.Number,
-    detectionTime: S.Number,
-    level: S.NullOr(S.String),
-    culprit: S.NullOr(S.String),
-    assignee: S.NullOr(S.String),
-    priority: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "GetProjectEventResponseOccurrence",
-}) as any as S.Schema<GetProjectEventResponseOccurrence>;
+export const GetProjectEventResponseOccurrence =
+  GetOrganizationIssueEventResponseOccurrence as any as S.Schema<GetProjectEventResponseOccurrence>;
 
 export type GetProjectEventResponseMetaMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseMetaMap>;
+export const GetProjectEventResponseMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseMetaMap>;
 
 export type GetProjectEventResponseFingerprintsList = Array<string>;
-export const GetProjectEventResponseFingerprintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectEventResponseFingerprintsList>;
+export const GetProjectEventResponseFingerprintsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectEventResponseFingerprintsList>;
 
 export type GetProjectEventResponseGroupingConfig = GetOrganizationIssueEventResponseGroupingConfig;
 export const GetProjectEventResponseGroupingConfig =
@@ -16814,10 +15672,8 @@ export const GetProjectEventResponseMeasurementsValue =
 export type GetProjectEventResponseMeasurementsMap = {
   [key: string]: GetOrganizationIssueEventResponseMeasurementsValue | undefined;
 };
-export const GetProjectEventResponseMeasurementsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetOrganizationIssueEventResponseMeasurementsValue,
-) as any as S.Schema<GetProjectEventResponseMeasurementsMap>;
+export const GetProjectEventResponseMeasurementsMap =
+  GetOrganizationIssueEventResponseMeasurementsMap as any as S.Schema<GetProjectEventResponseMeasurementsMap>;
 
 export type GetProjectEventResponseBreakdownsValueValue =
   GetOrganizationIssueEventResponseMeasurementsValue;
@@ -16827,30 +15683,22 @@ export const GetProjectEventResponseBreakdownsValueValue =
 export type GetProjectEventResponseBreakdownsValueMap = {
   [key: string]: GetOrganizationIssueEventResponseMeasurementsValue | undefined;
 };
-export const GetProjectEventResponseBreakdownsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetOrganizationIssueEventResponseMeasurementsValue,
-) as any as S.Schema<GetProjectEventResponseBreakdownsValueMap>;
+export const GetProjectEventResponseBreakdownsValueMap =
+  GetOrganizationIssueEventResponseMeasurementsMap as any as S.Schema<GetProjectEventResponseBreakdownsValueMap>;
 
 export type GetProjectEventResponseBreakdownsMap = {
   [key: string]: GetProjectEventResponseBreakdownsValueMap | undefined;
 };
-export const GetProjectEventResponseBreakdownsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetProjectEventResponseBreakdownsValueMap,
-) as any as S.Schema<GetProjectEventResponseBreakdownsMap>;
+export const GetProjectEventResponseBreakdownsMap =
+  GetOrganizationIssueEventResponseBreakdownsMap as any as S.Schema<GetProjectEventResponseBreakdownsMap>;
 
 export type GetProjectEventResponseReleaseDataMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseReleaseDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseReleaseDataMap>;
+export const GetProjectEventResponseReleaseDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseReleaseDataMap>;
 
 export type GetProjectEventResponseReleaseLastCommitMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseReleaseLastCommitMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseReleaseLastCommitMap>;
+export const GetProjectEventResponseReleaseLastCommitMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseReleaseLastCommitMap>;
 
 export type GetProjectEventResponseReleaseLastDeploy = CreateOrganizationReleaseResponseLastDeploy;
 export const GetProjectEventResponseReleaseLastDeploy = CreateOrganizationReleaseResponseLastDeploy;
@@ -16858,10 +15706,8 @@ export const GetProjectEventResponseReleaseLastDeploy = CreateOrganizationReleas
 export type GetProjectEventResponseReleaseVersionInfoVersionMap = {
   [key: string]: unknown | undefined;
 };
-export const GetProjectEventResponseReleaseVersionInfoVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseReleaseVersionInfoVersionMap>;
+export const GetProjectEventResponseReleaseVersionInfoVersionMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseReleaseVersionInfoVersionMap>;
 
 export interface GetProjectEventResponseReleaseVersionInfo {
   description?: string;
@@ -16869,16 +15715,8 @@ export interface GetProjectEventResponseReleaseVersionInfo {
   version: GetProjectEventResponseReleaseVersionInfoVersionMap;
   buildHash: string | null;
 }
-export const GetProjectEventResponseReleaseVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    package: S.NullOr(S.String),
-    version: GetProjectEventResponseReleaseVersionInfoVersionMap,
-    buildHash: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GetProjectEventResponseReleaseVersionInfo",
-}) as any as S.Schema<GetProjectEventResponseReleaseVersionInfo>;
+export const GetProjectEventResponseReleaseVersionInfo =
+  CreateOrganizationReleaseResponseVersionInfo as any as S.Schema<GetProjectEventResponseReleaseVersionInfo>;
 
 export interface GetProjectEventResponseRelease {
   id?: number;
@@ -16896,26 +15734,8 @@ export interface GetProjectEventResponseRelease {
   version?: string | null;
   versionInfo?: GetProjectEventResponseReleaseVersionInfo | null;
 }
-export const GetProjectEventResponseRelease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    commitCount: S.optional(S.Number),
-    data: S.optional(GetProjectEventResponseReleaseDataMap),
-    dateCreated: S.optional(S.String),
-    dateReleased: S.optional(S.NullOr(S.String)),
-    deployCount: S.optional(S.Number),
-    ref: S.optional(S.NullOr(S.String)),
-    lastCommit: S.optional(S.NullOr(GetProjectEventResponseReleaseLastCommitMap)),
-    lastDeploy: S.optional(S.NullOr(CreateOrganizationReleaseResponseLastDeploy)),
-    status: S.optional(S.String),
-    url: S.optional(S.NullOr(S.String)),
-    userAgent: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.NullOr(S.String)),
-    versionInfo: S.optional(S.NullOr(GetProjectEventResponseReleaseVersionInfo)),
-  }),
-).annotate({
-  identifier: "GetProjectEventResponseRelease",
-}) as any as S.Schema<GetProjectEventResponseRelease>;
+export const GetProjectEventResponseRelease =
+  GetOrganizationIssueEventResponseRelease as any as S.Schema<GetProjectEventResponseRelease>;
 
 export type GetProjectEventResponseUserReportUser = GetOrganizationIssueEventResponseUserReportUser;
 export const GetProjectEventResponseUserReportUser =
@@ -16930,20 +15750,16 @@ export type GetProjectEventResponseUserReport = GetOrganizationIssueEventRespons
 export const GetProjectEventResponseUserReport = GetOrganizationIssueEventResponseUserReport;
 
 export type GetProjectEventResponseSdkUpdatesItemMap = { [key: string]: unknown | undefined };
-export const GetProjectEventResponseSdkUpdatesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectEventResponseSdkUpdatesItemMap>;
+export const GetProjectEventResponseSdkUpdatesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectEventResponseSdkUpdatesItemMap>;
 
 export type GetProjectEventResponseSdkUpdatesList = Array<GetProjectEventResponseSdkUpdatesItemMap>;
-export const GetProjectEventResponseSdkUpdatesList = /*@__PURE__*/ S.Array(
-  GetProjectEventResponseSdkUpdatesItemMap,
-) as any as S.Schema<GetProjectEventResponseSdkUpdatesList>;
+export const GetProjectEventResponseSdkUpdatesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<GetProjectEventResponseSdkUpdatesList>;
 
 export type GetProjectEventResponseResolvedWithList = Array<string>;
-export const GetProjectEventResponseResolvedWithList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectEventResponseResolvedWithList>;
+export const GetProjectEventResponseResolvedWithList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectEventResponseResolvedWithList>;
 
 export interface GetProjectEventResponse {
   id: string;
@@ -17136,9 +15952,7 @@ export const GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemDebugI
 export type GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemReleaseProcessMatchingSourceFileNamesList =
   Array<string>;
 export const GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemReleaseProcessMatchingSourceFileNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemReleaseProcessMatchingSourceFileNamesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemReleaseProcessMatchingSourceFileNamesList>;
 
 export type GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemReleaseProcessSourceFileLookupResult =
   | "found"
@@ -17454,9 +16268,8 @@ export const GetProjectInstallableBuildLatestRequestBuildNumber =
   S.Unknown as any as S.Schema<GetProjectInstallableBuildLatestRequestBuildNumber>;
 
 export type GetProjectInstallableBuildLatestRequestInstallGroupsList = Array<string>;
-export const GetProjectInstallableBuildLatestRequestInstallGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectInstallableBuildLatestRequestInstallGroupsList>;
+export const GetProjectInstallableBuildLatestRequestInstallGroupsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectInstallableBuildLatestRequestInstallGroupsList>;
 
 export interface GetProjectInstallableBuildLatestRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -17517,9 +16330,7 @@ export const GetProjectInstallableBuildLatestResponseLatestArtifactGitInfo =
 
 export type GetProjectInstallableBuildLatestResponseLatestArtifactInstallGroupsList = Array<string>;
 export const GetProjectInstallableBuildLatestResponseLatestArtifactInstallGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetProjectInstallableBuildLatestResponseLatestArtifactInstallGroupsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetProjectInstallableBuildLatestResponseLatestArtifactInstallGroupsList>;
 
 export interface GetProjectInstallableBuildLatestResponseLatestArtifact {
   buildId: string;
@@ -17579,9 +16390,7 @@ export const GetProjectInstallableBuildLatestResponseCurrentArtifactGitInfo =
 export type GetProjectInstallableBuildLatestResponseCurrentArtifactInstallGroupsList =
   Array<string>;
 export const GetProjectInstallableBuildLatestResponseCurrentArtifactInstallGroupsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetProjectInstallableBuildLatestResponseCurrentArtifactInstallGroupsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetProjectInstallableBuildLatestResponseCurrentArtifactInstallGroupsList>;
 
 export interface GetProjectInstallableBuildLatestResponseCurrentArtifact {
   buildId: string;
@@ -17602,31 +16411,8 @@ export interface GetProjectInstallableBuildLatestResponseCurrentArtifact {
   profileName: string | null;
   codesigningType: string | null;
 }
-export const GetProjectInstallableBuildLatestResponseCurrentArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildId: S.String,
-    state: S.String,
-    appInfo: GetOrganizationPreprodArtifactInstallDetailsResponseAppInfo,
-    gitInfo: S.NullOr(GetOrganizationPreprodArtifactInstallDetailsResponseGitInfo),
-    platform: S.NullOr(S.String),
-    projectId: S.String,
-    projectSlug: S.String,
-    buildConfiguration: S.NullOr(S.String),
-    isInstallable: S.Boolean,
-    installUrl: S.NullOr(S.String),
-    installUrlExpiresAt: S.NullOr(S.String),
-    downloadCount: S.Number,
-    releaseNotes: S.NullOr(S.String),
-    installGroups: S.NullOr(
-      GetProjectInstallableBuildLatestResponseCurrentArtifactInstallGroupsList,
-    ),
-    isCodeSignatureValid: S.NullOr(S.Boolean),
-    profileName: S.NullOr(S.String),
-    codesigningType: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GetProjectInstallableBuildLatestResponseCurrentArtifact",
-}) as any as S.Schema<GetProjectInstallableBuildLatestResponseCurrentArtifact>;
+export const GetProjectInstallableBuildLatestResponseCurrentArtifact =
+  GetProjectInstallableBuildLatestResponseLatestArtifact as any as S.Schema<GetProjectInstallableBuildLatestResponseCurrentArtifact>;
 
 export interface GetProjectInstallableBuildLatestResponse {
   latestArtifact: GetProjectInstallableBuildLatestResponseLatestArtifact | null;
@@ -17670,26 +16456,19 @@ export type GetProjectKeyResponseDsn = CreateProjectKeyResponseDsn;
 export const GetProjectKeyResponseDsn = CreateProjectKeyResponseDsn;
 
 export type GetProjectKeyResponseBrowserSdkChoicesItemList = Array<string>;
-export const GetProjectKeyResponseBrowserSdkChoicesItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectKeyResponseBrowserSdkChoicesItemList>;
+export const GetProjectKeyResponseBrowserSdkChoicesItemList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectKeyResponseBrowserSdkChoicesItemList>;
 
 export type GetProjectKeyResponseBrowserSdkChoicesList =
   Array<GetProjectKeyResponseBrowserSdkChoicesItemList>;
-export const GetProjectKeyResponseBrowserSdkChoicesList = /*@__PURE__*/ S.Array(
-  GetProjectKeyResponseBrowserSdkChoicesItemList,
-) as any as S.Schema<GetProjectKeyResponseBrowserSdkChoicesList>;
+export const GetProjectKeyResponseBrowserSdkChoicesList =
+  CreateProjectKeyResponseBrowserSdkChoicesList as any as S.Schema<GetProjectKeyResponseBrowserSdkChoicesList>;
 
 export interface GetProjectKeyResponseBrowserSdk {
   choices: GetProjectKeyResponseBrowserSdkChoicesList;
 }
-export const GetProjectKeyResponseBrowserSdk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: GetProjectKeyResponseBrowserSdkChoicesList,
-  }),
-).annotate({
-  identifier: "GetProjectKeyResponseBrowserSdk",
-}) as any as S.Schema<GetProjectKeyResponseBrowserSdk>;
+export const GetProjectKeyResponseBrowserSdk =
+  CreateProjectKeyResponseBrowserSdk as any as S.Schema<GetProjectKeyResponseBrowserSdk>;
 
 export type GetProjectKeyResponseDynamicSdkLoaderOptions =
   CreateProjectKeyResponseDynamicSdkLoaderOptions;
@@ -17712,24 +16491,8 @@ export interface GetProjectKeyResponse {
   dynamicSdkLoaderOptions: CreateProjectKeyResponseDynamicSdkLoaderOptions;
   useCase?: string;
 }
-export const GetProjectKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    label: S.String,
-    public: S.NullOr(S.String),
-    secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    projectId: S.Number,
-    isActive: S.Boolean,
-    rateLimit: S.NullOr(CreateProjectKeyResponseRateLimit),
-    dsn: CreateProjectKeyResponseDsn,
-    browserSdkVersion: S.String,
-    browserSdk: GetProjectKeyResponseBrowserSdk,
-    dateCreated: S.NullOr(S.String),
-    dynamicSdkLoaderOptions: CreateProjectKeyResponseDynamicSdkLoaderOptions,
-    useCase: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetProjectKeyResponse" }) as any as S.Schema<GetProjectKeyResponse>;
+export const GetProjectKeyResponse =
+  CreateProjectKeyResponse as any as S.Schema<GetProjectKeyResponse>;
 
 export interface GetProjectMonitorRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -17760,30 +16523,22 @@ export const GetProjectMonitorResponseAlertRuleTargetsItem =
 
 export type GetProjectMonitorResponseAlertRuleTargetsList =
   Array<CreateOrganizationMonitorResponseAlertRuleTargetsItem>;
-export const GetProjectMonitorResponseAlertRuleTargetsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationMonitorResponseAlertRuleTargetsItem,
-) as any as S.Schema<GetProjectMonitorResponseAlertRuleTargetsList>;
+export const GetProjectMonitorResponseAlertRuleTargetsList =
+  CreateOrganizationMonitorResponseAlertRuleTargetsList as any as S.Schema<GetProjectMonitorResponseAlertRuleTargetsList>;
 
 export interface GetProjectMonitorResponseAlertRule {
   targets: GetProjectMonitorResponseAlertRuleTargetsList;
   environment: string;
 }
-export const GetProjectMonitorResponseAlertRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: GetProjectMonitorResponseAlertRuleTargetsList,
-    environment: S.String,
-  }),
-).annotate({
-  identifier: "GetProjectMonitorResponseAlertRule",
-}) as any as S.Schema<GetProjectMonitorResponseAlertRule>;
+export const GetProjectMonitorResponseAlertRule =
+  CreateOrganizationMonitorResponseAlertRule as any as S.Schema<GetProjectMonitorResponseAlertRule>;
 
 export type GetProjectMonitorResponseConfigScheduleType = "crontab" | "interval";
 export const GetProjectMonitorResponseConfigScheduleType = S.String;
 
 export type GetProjectMonitorResponseConfigScheduleCase1List = Array<number>;
-export const GetProjectMonitorResponseConfigScheduleCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetProjectMonitorResponseConfigScheduleCase1List>;
+export const GetProjectMonitorResponseConfigScheduleCase1List =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<GetProjectMonitorResponseConfigScheduleCase1List>;
 
 export type GetProjectMonitorResponseConfigSchedule =
   | string
@@ -17817,14 +16572,12 @@ export const GetProjectMonitorResponseConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectMonitorResponseConfig>;
 
 export type GetProjectMonitorResponseProjectFeaturesList = Array<string>;
-export const GetProjectMonitorResponseProjectFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectMonitorResponseProjectFeaturesList>;
+export const GetProjectMonitorResponseProjectFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectMonitorResponseProjectFeaturesList>;
 
 export type GetProjectMonitorResponseProjectAccessList = Array<string>;
-export const GetProjectMonitorResponseProjectAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectMonitorResponseProjectAccessList>;
+export const GetProjectMonitorResponseProjectAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectMonitorResponseProjectAccessList>;
 
 export type GetProjectMonitorResponseProjectAvatar = AddOrganizationMemberResponseUserAvatar;
 export const GetProjectMonitorResponseProjectAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -17871,52 +16624,8 @@ export interface GetProjectMonitorResponseProject {
   color: string;
   status: string;
 }
-export const GetProjectMonitorResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: GetProjectMonitorResponseProjectFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: GetProjectMonitorResponseProjectAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "GetProjectMonitorResponseProject",
-}) as any as S.Schema<GetProjectMonitorResponseProject>;
+export const GetProjectMonitorResponseProject =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<GetProjectMonitorResponseProject>;
 
 export type GetProjectMonitorResponseEnvironmentsActiveIncidentBrokenNotice =
   CreateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice;
@@ -18018,41 +16727,27 @@ export const GetProjectOwnershipResponseSchemaRulesItemOwnersItem =
 
 export type GetProjectOwnershipResponseSchemaRulesItemOwnersList =
   Array<CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem>;
-export const GetProjectOwnershipResponseSchemaRulesItemOwnersList = /*@__PURE__*/ S.Array(
-  CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem,
-) as any as S.Schema<GetProjectOwnershipResponseSchemaRulesItemOwnersList>;
+export const GetProjectOwnershipResponseSchemaRulesItemOwnersList =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList as any as S.Schema<GetProjectOwnershipResponseSchemaRulesItemOwnersList>;
 
 export interface GetProjectOwnershipResponseSchemaRulesItem {
   matcher: CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher;
   owners: GetProjectOwnershipResponseSchemaRulesItemOwnersList;
 }
-export const GetProjectOwnershipResponseSchemaRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matcher: CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher,
-    owners: GetProjectOwnershipResponseSchemaRulesItemOwnersList,
-  }),
-).annotate({
-  identifier: "GetProjectOwnershipResponseSchemaRulesItem",
-}) as any as S.Schema<GetProjectOwnershipResponseSchemaRulesItem>;
+export const GetProjectOwnershipResponseSchemaRulesItem =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesItem as any as S.Schema<GetProjectOwnershipResponseSchemaRulesItem>;
 
 export type GetProjectOwnershipResponseSchemaRulesList =
   Array<GetProjectOwnershipResponseSchemaRulesItem>;
-export const GetProjectOwnershipResponseSchemaRulesList = /*@__PURE__*/ S.Array(
-  GetProjectOwnershipResponseSchemaRulesItem,
-) as any as S.Schema<GetProjectOwnershipResponseSchemaRulesList>;
+export const GetProjectOwnershipResponseSchemaRulesList =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesList as any as S.Schema<GetProjectOwnershipResponseSchemaRulesList>;
 
 export interface GetProjectOwnershipResponseSchema {
   _version: number;
   rules: GetProjectOwnershipResponseSchemaRulesList;
 }
-export const GetProjectOwnershipResponseSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _version: S.Number.pipe(T.Body("$version")),
-    rules: GetProjectOwnershipResponseSchemaRulesList,
-  }),
-).annotate({
-  identifier: "GetProjectOwnershipResponseSchema",
-}) as any as S.Schema<GetProjectOwnershipResponseSchema>;
+export const GetProjectOwnershipResponseSchema =
+  CreateProjectCodeOwnersResponseSchemaCase0 as any as S.Schema<GetProjectOwnershipResponseSchema>;
 
 export interface GetProjectOwnershipResponse {
   schema?: GetProjectOwnershipResponseSchema | null;
@@ -18138,9 +16833,7 @@ export const GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFilte
 export type GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItemConditionsItemValuesList =
   Array<string>;
 export const GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItemConditionsItemValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItemConditionsItemValuesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItemConditionsItemValuesList>;
 
 export interface GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItemConditionsItem {
   operator: GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItemConditionsItemOperator;
@@ -18315,17 +17008,12 @@ export const GetProjectProfilingProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectProfilingProfileRequest>;
 
 export type GetProjectProfilingProfileResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetProjectProfilingProfileResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectProfilingProfileResponseBodyMap>;
+export const GetProjectProfilingProfileResponseBodyMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectProfilingProfileResponseBodyMap>;
 
 export type GetProjectProfilingProfileResponse = GetProjectProfilingProfileResponseBodyMap;
-export const GetProjectProfilingProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  GetProjectProfilingProfileResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetProjectProfilingProfileResponse",
-}) as any as S.Schema<GetProjectProfilingProfileResponse>;
+export const GetProjectProfilingProfileResponse =
+  GetOrganizationProfilingFlamegraphResponse as any as S.Schema<GetProjectProfilingProfileResponse>;
 
 export interface GetProjectReleaseFileRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -18358,10 +17046,8 @@ export const GetProjectReleaseFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectReleaseFileRequest>;
 
 export type GetProjectReleaseFileResponseHeadersMap = { [key: string]: unknown | undefined };
-export const GetProjectReleaseFileResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetProjectReleaseFileResponseHeadersMap>;
+export const GetProjectReleaseFileResponseHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetProjectReleaseFileResponseHeadersMap>;
 
 export interface GetProjectReleaseFileResponse {
   id: string;
@@ -18372,19 +17058,8 @@ export interface GetProjectReleaseFileResponse {
   sha1: string;
   dateCreated: string;
 }
-export const GetProjectReleaseFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    dist: S.NullOr(S.String),
-    headers: GetProjectReleaseFileResponseHeadersMap,
-    size: S.Number,
-    sha1: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "GetProjectReleaseFileResponse",
-}) as any as S.Schema<GetProjectReleaseFileResponse>;
+export const GetProjectReleaseFileResponse =
+  GetOrganizationReleaseFileResponse as any as S.Schema<GetProjectReleaseFileResponse>;
 
 export interface GetProjectReplayDeletionJobRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -18411,9 +17086,8 @@ export const GetProjectReplayDeletionJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectReplayDeletionJobRequest>;
 
 export type GetProjectReplayDeletionJobResponseDataEnvironmentsList = Array<string>;
-export const GetProjectReplayDeletionJobResponseDataEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProjectReplayDeletionJobResponseDataEnvironmentsList>;
+export const GetProjectReplayDeletionJobResponseDataEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetProjectReplayDeletionJobResponseDataEnvironmentsList>;
 
 export interface GetProjectReplayDeletionJobResponseData {
   id: number;
@@ -18426,32 +17100,14 @@ export interface GetProjectReplayDeletionJobResponseData {
   query: string;
   countDeleted: number;
 }
-export const GetProjectReplayDeletionJobResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    dateCreated: S.String,
-    dateUpdated: S.String,
-    rangeStart: S.String,
-    rangeEnd: S.String,
-    environments: GetProjectReplayDeletionJobResponseDataEnvironmentsList,
-    status: S.String,
-    query: S.String,
-    countDeleted: S.Number,
-  }),
-).annotate({
-  identifier: "GetProjectReplayDeletionJobResponseData",
-}) as any as S.Schema<GetProjectReplayDeletionJobResponseData>;
+export const GetProjectReplayDeletionJobResponseData =
+  CreateProjectReplayDeletionJobResponseData as any as S.Schema<GetProjectReplayDeletionJobResponseData>;
 
 export interface GetProjectReplayDeletionJobResponse {
   data: GetProjectReplayDeletionJobResponseData;
 }
-export const GetProjectReplayDeletionJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: GetProjectReplayDeletionJobResponseData,
-  }),
-).annotate({
-  identifier: "GetProjectReplayDeletionJobResponse",
-}) as any as S.Schema<GetProjectReplayDeletionJobResponse>;
+export const GetProjectReplayDeletionJobResponse =
+  CreateProjectReplayDeletionJobResponse as any as S.Schema<GetProjectReplayDeletionJobResponse>;
 
 export interface GetProjectReplayRecordingSegmentRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -18519,9 +17175,8 @@ export const GetSentryAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSentryAppRequest" }) as any as S.Schema<GetSentryAppRequest>;
 
 export type GetSentryAppResponseAllowedOriginsList = Array<string>;
-export const GetSentryAppResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSentryAppResponseAllowedOriginsList>;
+export const GetSentryAppResponseAllowedOriginsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetSentryAppResponseAllowedOriginsList>;
 
 export interface GetSentryAppResponseAvatarsItem {
   avatarType: string;
@@ -18548,29 +17203,24 @@ export const GetSentryAppResponseAvatarsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetSentryAppResponseAvatarsList>;
 
 export type GetSentryAppResponseEventsList = Array<string>;
-export const GetSentryAppResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSentryAppResponseEventsList>;
+export const GetSentryAppResponseEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetSentryAppResponseEventsList>;
 
 export type GetSentryAppResponseWebhookEventsList = Array<string>;
-export const GetSentryAppResponseWebhookEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSentryAppResponseWebhookEventsList>;
+export const GetSentryAppResponseWebhookEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetSentryAppResponseWebhookEventsList>;
 
 export type GetSentryAppResponseFeatureDataList = Array<string>;
-export const GetSentryAppResponseFeatureDataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSentryAppResponseFeatureDataList>;
+export const GetSentryAppResponseFeatureDataList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetSentryAppResponseFeatureDataList>;
 
 export type GetSentryAppResponseScopesList = Array<string>;
-export const GetSentryAppResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSentryAppResponseScopesList>;
+export const GetSentryAppResponseScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetSentryAppResponseScopesList>;
 
 export type GetSentryAppResponseWebhookHeadersList = Array<string>;
-export const GetSentryAppResponseWebhookHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSentryAppResponseWebhookHeadersList>;
+export const GetSentryAppResponseWebhookHeadersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetSentryAppResponseWebhookHeadersList>;
 
 export interface GetSentryAppResponseOwner {
   id: number;
@@ -18674,9 +17324,7 @@ export const GetSentryAppInstallationExternalRequestOptionsRequest = /*@__PURE__
 
 export type GetSentryAppInstallationExternalRequestOptionsResponseChoicesItemList = Array<string>;
 export const GetSentryAppInstallationExternalRequestOptionsResponseChoicesItemList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetSentryAppInstallationExternalRequestOptionsResponseChoicesItemList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<GetSentryAppInstallationExternalRequestOptionsResponseChoicesItemList>;
 
 export type GetSentryAppInstallationExternalRequestOptionsResponseChoicesList =
   Array<GetSentryAppInstallationExternalRequestOptionsResponseChoicesItemList>;
@@ -18724,15 +17372,12 @@ export const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTeamRequest" }) as any as S.Schema<GetTeamRequest>;
 
 export type GetTeamResponseFlagsMap = { [key: string]: unknown | undefined };
-export const GetTeamResponseFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetTeamResponseFlagsMap>;
+export const GetTeamResponseFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetTeamResponseFlagsMap>;
 
 export type GetTeamResponseAccessList = Array<string>;
-export const GetTeamResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTeamResponseAccessList>;
+export const GetTeamResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetTeamResponseAccessList>;
 
 export type GetTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const GetTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -18742,35 +17387,28 @@ export const GetTeamResponseExternalTeamsItem = AddOrganizationMemberResponseExt
 
 export type GetTeamResponseExternalTeamsList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const GetTeamResponseExternalTeamsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<GetTeamResponseExternalTeamsList>;
+export const GetTeamResponseExternalTeamsList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<GetTeamResponseExternalTeamsList>;
 
 export type GetTeamResponseOrganizationFeaturesList = Array<string>;
-export const GetTeamResponseOrganizationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTeamResponseOrganizationFeaturesList>;
+export const GetTeamResponseOrganizationFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetTeamResponseOrganizationFeaturesList>;
 
 export type GetTeamResponseOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
-export const GetTeamResponseOrganizationExtraOptionsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetTeamResponseOrganizationExtraOptionsValueMap>;
+export const GetTeamResponseOrganizationExtraOptionsValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<GetTeamResponseOrganizationExtraOptionsValueMap>;
 
 export type GetTeamResponseOrganizationExtraOptionsMap = {
   [key: string]: GetTeamResponseOrganizationExtraOptionsValueMap | undefined;
 };
-export const GetTeamResponseOrganizationExtraOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetTeamResponseOrganizationExtraOptionsValueMap,
-) as any as S.Schema<GetTeamResponseOrganizationExtraOptionsMap>;
+export const GetTeamResponseOrganizationExtraOptionsMap =
+  GetOrganizationResponseExtraOptionsMap as any as S.Schema<GetTeamResponseOrganizationExtraOptionsMap>;
 
 export type GetTeamResponseOrganizationAccessList = Array<string>;
-export const GetTeamResponseOrganizationAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTeamResponseOrganizationAccessList>;
+export const GetTeamResponseOrganizationAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetTeamResponseOrganizationAccessList>;
 
 export type GetTeamResponseOrganizationOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -18779,9 +17417,8 @@ export const GetTeamResponseOrganizationOnboardingTasksItem =
 
 export type GetTeamResponseOrganizationOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
-export const GetTeamResponseOrganizationOnboardingTasksList = /*@__PURE__*/ S.Array(
-  CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-) as any as S.Schema<GetTeamResponseOrganizationOnboardingTasksList>;
+export const GetTeamResponseOrganizationOnboardingTasksList =
+  CreateOrganizationTeamResponseOrganizationOnboardingTasksList as any as S.Schema<GetTeamResponseOrganizationOnboardingTasksList>;
 
 export type GetTeamResponseOrganizationStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -18813,39 +17450,16 @@ export interface GetTeamResponseOrganization {
   allowMemberProjectCreation: boolean;
   allowSuperuserAccess: boolean;
 }
-export const GetTeamResponseOrganization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    features: S.optional(GetTeamResponseOrganizationFeaturesList),
-    extraOptions: S.optional(GetTeamResponseOrganizationExtraOptionsMap),
-    access: S.optional(GetTeamResponseOrganizationAccessList),
-    onboardingTasks: S.optional(GetTeamResponseOrganizationOnboardingTasksList),
-    id: S.String,
-    slug: S.String,
-    status: AddOrganizationMemberResponseUserIdentitiesItemProvider,
-    name: S.String,
-    dateCreated: S.String,
-    isEarlyAdopter: S.Boolean,
-    require2FA: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    links: CreateOrganizationTeamResponseOrganizationLinks,
-    hasAuthProvider: S.Boolean,
-    allowMemberInvite: S.Boolean,
-    allowMemberProjectCreation: S.Boolean,
-    allowSuperuserAccess: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetTeamResponseOrganization",
-}) as any as S.Schema<GetTeamResponseOrganization>;
+export const GetTeamResponseOrganization =
+  GetProjectResponseOrganization as any as S.Schema<GetTeamResponseOrganization>;
 
 export type GetTeamResponseProjectsItemFeaturesList = Array<string>;
-export const GetTeamResponseProjectsItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTeamResponseProjectsItemFeaturesList>;
+export const GetTeamResponseProjectsItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetTeamResponseProjectsItemFeaturesList>;
 
 export type GetTeamResponseProjectsItemAccessList = Array<string>;
-export const GetTeamResponseProjectsItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTeamResponseProjectsItemAccessList>;
+export const GetTeamResponseProjectsItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetTeamResponseProjectsItemAccessList>;
 
 export type GetTeamResponseProjectsItemAvatar = AddOrganizationMemberResponseUserAvatar;
 export const GetTeamResponseProjectsItemAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -18892,57 +17506,12 @@ export interface GetTeamResponseProjectsItem {
   color: string;
   status: string;
 }
-export const GetTeamResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: GetTeamResponseProjectsItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: GetTeamResponseProjectsItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "GetTeamResponseProjectsItem",
-}) as any as S.Schema<GetTeamResponseProjectsItem>;
+export const GetTeamResponseProjectsItem =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<GetTeamResponseProjectsItem>;
 
 export type GetTeamResponseProjectsList = Array<GetTeamResponseProjectsItem>;
-export const GetTeamResponseProjectsList = /*@__PURE__*/ S.Array(
-  GetTeamResponseProjectsItem,
-) as any as S.Schema<GetTeamResponseProjectsList>;
+export const GetTeamResponseProjectsList =
+  CreateOrganizationTeamResponseProjectsList as any as S.Schema<GetTeamResponseProjectsList>;
 
 export interface GetTeamResponse {
   id: string;
@@ -19002,9 +17571,8 @@ export const GetTraceItemStatisticsRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetTraceItemStatisticsRequestProjectList>;
 
 export type GetTraceItemStatisticsRequestEnvironmentList = Array<string>;
-export const GetTraceItemStatisticsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTraceItemStatisticsRequestEnvironmentList>;
+export const GetTraceItemStatisticsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<GetTraceItemStatisticsRequestEnvironmentList>;
 
 export type GetTraceItemStatisticsRequestItemType = "occurrences" | "spans";
 export const GetTraceItemStatisticsRequestItemType = S.String;
@@ -19171,17 +17739,8 @@ export interface LinkAnExistingExternalIssueToAnIssueResponse {
   integrationId: number;
   displayName: string;
 }
-export const LinkAnExistingExternalIssueToAnIssueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    key: S.String,
-    url: S.String,
-    integrationId: S.Number,
-    displayName: S.String,
-  }),
-).annotate({
-  identifier: "LinkAnExistingExternalIssueToAnIssueResponse",
-}) as any as S.Schema<LinkAnExistingExternalIssueToAnIssueResponse>;
+export const LinkAnExistingExternalIssueToAnIssueResponse =
+  CreateAnExternalIssueAndLinkItToAnIssueResponse as any as S.Schema<LinkAnExistingExternalIssueToAnIssueResponse>;
 
 export interface LinkProjectRepositoryRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -19354,9 +17913,7 @@ export const ListAProjectSCustomInboundFiltersResponseBodyItemConditionsItemType
 export type ListAProjectSCustomInboundFiltersResponseBodyItemConditionsItemValueList =
   Array<string>;
 export const ListAProjectSCustomInboundFiltersResponseBodyItemConditionsItemValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListAProjectSCustomInboundFiltersResponseBodyItemConditionsItemValueList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListAProjectSCustomInboundFiltersResponseBodyItemConditionsItemValueList>;
 
 export interface ListAProjectSCustomInboundFiltersResponseBodyItemConditionsItem {
   /** The field the condition matches against. Every `dataType` accepts `release` and `ip_address`. In addition, `error` accepts `error_type` and `error_message`, `log` accepts `log_message`, and `metric` accepts `metric_name`. `span` and `all` accept no other types. * `error_type` * `error_message` * `log_message` * `metric_name` * `release` * `ip_address` */
@@ -19451,9 +18008,8 @@ export const ListAProjectSServiceHooksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAProjectSServiceHooksRequest>;
 
 export type ListAProjectSServiceHooksResponseBodyItemEventsList = Array<string>;
-export const ListAProjectSServiceHooksResponseBodyItemEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAProjectSServiceHooksResponseBodyItemEventsList>;
+export const ListAProjectSServiceHooksResponseBodyItemEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListAProjectSServiceHooksResponseBodyItemEventsList>;
 
 export interface ListAProjectSServiceHooksResponseBodyItem {
   dateCreated: string;
@@ -19623,9 +18179,8 @@ export const ListOrganizationAIConversationsRequestProjectList = /*@__PURE__*/ S
 ) as any as S.Schema<ListOrganizationAIConversationsRequestProjectList>;
 
 export type ListOrganizationAIConversationsRequestEnvironmentList = Array<string>;
-export const ListOrganizationAIConversationsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationAIConversationsRequestEnvironmentList>;
+export const ListOrganizationAIConversationsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationAIConversationsRequestEnvironmentList>;
 
 export interface ListOrganizationAIConversationsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -19670,19 +18225,16 @@ export const ListOrganizationAIConversationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListOrganizationAIConversationsRequest>;
 
 export type ListOrganizationAIConversationsResponseBodyItemToolNamesList = Array<string>;
-export const ListOrganizationAIConversationsResponseBodyItemToolNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemToolNamesList>;
+export const ListOrganizationAIConversationsResponseBodyItemToolNamesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemToolNamesList>;
 
 export type ListOrganizationAIConversationsResponseBodyItemFlowList = Array<string>;
-export const ListOrganizationAIConversationsResponseBodyItemFlowList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemFlowList>;
+export const ListOrganizationAIConversationsResponseBodyItemFlowList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemFlowList>;
 
 export type ListOrganizationAIConversationsResponseBodyItemTraceIdsList = Array<string>;
-export const ListOrganizationAIConversationsResponseBodyItemTraceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemTraceIdsList>;
+export const ListOrganizationAIConversationsResponseBodyItemTraceIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemTraceIdsList>;
 
 export interface ListOrganizationAIConversationsResponseBodyItemUser {
   id: string | null;
@@ -19708,9 +18260,8 @@ export const ListOrganizationAIConversationsResponseBodyItemProjectsItem =
 
 export type ListOrganizationAIConversationsResponseBodyItemProjectsList =
   Array<GetOrganizationAIConversationResponseProjectsItem>;
-export const ListOrganizationAIConversationsResponseBodyItemProjectsList = /*@__PURE__*/ S.Array(
-  GetOrganizationAIConversationResponseProjectsItem,
-) as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemProjectsList>;
+export const ListOrganizationAIConversationsResponseBodyItemProjectsList =
+  GetOrganizationAIConversationResponseProjectsList as any as S.Schema<ListOrganizationAIConversationsResponseBodyItemProjectsList>;
 
 export interface ListOrganizationAIConversationsResponseBodyItem {
   endTimestamp: number;
@@ -19855,9 +18406,7 @@ export const ListOrganizationDashboardsResponseBodyItemCreatedByIdentitiesItem =
 export type ListOrganizationDashboardsResponseBodyItemCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationDashboardsResponseBodyItemCreatedByIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByIdentitiesList>;
 
 export type ListOrganizationDashboardsResponseBodyItemCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -19866,18 +18415,13 @@ export const ListOrganizationDashboardsResponseBodyItemCreatedByAvatar =
 
 export type ListOrganizationDashboardsResponseBodyItemCreatedByAuthenticatorsList = Array<unknown>;
 export const ListOrganizationDashboardsResponseBodyItemCreatedByAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByAuthenticatorsList>;
 
 export type ListOrganizationDashboardsResponseBodyItemCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationDashboardsResponseBodyItemCreatedByExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByExperimentsMap>;
 
 export type ListOrganizationDashboardsResponseBodyItemCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -19886,9 +18430,8 @@ export const ListOrganizationDashboardsResponseBodyItemCreatedByEmailsItem =
 
 export type ListOrganizationDashboardsResponseBodyItemCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const ListOrganizationDashboardsResponseBodyItemCreatedByEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByEmailsList>;
+export const ListOrganizationDashboardsResponseBodyItemCreatedByEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedByEmailsList>;
 
 export interface ListOrganizationDashboardsResponseBodyItemCreatedBy {
   identities?: ListOrganizationDashboardsResponseBodyItemCreatedByIdentitiesList;
@@ -19913,66 +18456,31 @@ export interface ListOrganizationDashboardsResponseBodyItemCreatedBy {
   experiments: ListOrganizationDashboardsResponseBodyItemCreatedByExperimentsMap;
   emails: ListOrganizationDashboardsResponseBodyItemCreatedByEmailsList;
 }
-export const ListOrganizationDashboardsResponseBodyItemCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListOrganizationDashboardsResponseBodyItemCreatedByIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(
-      ListOrganizationDashboardsResponseBodyItemCreatedByAuthenticatorsList,
-    ),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListOrganizationDashboardsResponseBodyItemCreatedByExperimentsMap,
-    emails: ListOrganizationDashboardsResponseBodyItemCreatedByEmailsList,
-  }),
-).annotate({
-  identifier: "ListOrganizationDashboardsResponseBodyItemCreatedBy",
-}) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedBy>;
+export const ListOrganizationDashboardsResponseBodyItemCreatedBy =
+  GetOrganizationDiscoverSavedQueryResponseCreatedBy as any as S.Schema<ListOrganizationDashboardsResponseBodyItemCreatedBy>;
 
 export type ListOrganizationDashboardsResponseBodyItemEnvironmentList = Array<string>;
-export const ListOrganizationDashboardsResponseBodyItemEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemEnvironmentList>;
+export const ListOrganizationDashboardsResponseBodyItemEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemEnvironmentList>;
 
 export type ListOrganizationDashboardsResponseBodyItemFiltersReleaseList = Array<string>;
-export const ListOrganizationDashboardsResponseBodyItemFiltersReleaseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersReleaseList>;
+export const ListOrganizationDashboardsResponseBodyItemFiltersReleaseList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersReleaseList>;
 
 export type ListOrganizationDashboardsResponseBodyItemFiltersReleaseIdList = Array<string>;
-export const ListOrganizationDashboardsResponseBodyItemFiltersReleaseIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersReleaseIdList>;
+export const ListOrganizationDashboardsResponseBodyItemFiltersReleaseIdList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersReleaseIdList>;
 
 export type ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterItemMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterItemMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterItemMap>;
 
 export type ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterList =
   Array<ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterItemMap>;
 export const ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterList =
-  /*@__PURE__*/ S.Array(
-    ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterItemMap,
-  ) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterList>;
+  GetAnIntegrationSIssueConfigForAnIssueResponseLinkIssueConfigList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFiltersGlobalFilterList>;
 
 export interface ListOrganizationDashboardsResponseBodyItemFilters {
   release?: ListOrganizationDashboardsResponseBodyItemFiltersReleaseList;
@@ -19990,18 +18498,14 @@ export const ListOrganizationDashboardsResponseBodyItemFilters = /*@__PURE__*/ S
 }) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemFilters>;
 
 export type ListOrganizationDashboardsResponseBodyItemWidgetDisplayList = Array<string>;
-export const ListOrganizationDashboardsResponseBodyItemWidgetDisplayList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemWidgetDisplayList>;
+export const ListOrganizationDashboardsResponseBodyItemWidgetDisplayList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemWidgetDisplayList>;
 
 export type ListOrganizationDashboardsResponseBodyItemWidgetPreviewItemMap = {
   [key: string]: string | undefined;
 };
 export const ListOrganizationDashboardsResponseBodyItemWidgetPreviewItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemWidgetPreviewItemMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationDashboardsResponseBodyItemWidgetPreviewItemMap>;
 
 export type ListOrganizationDashboardsResponseBodyItemWidgetPreviewList =
   Array<ListOrganizationDashboardsResponseBodyItemWidgetPreviewItemMap>;
@@ -20012,9 +18516,7 @@ export const ListOrganizationDashboardsResponseBodyItemWidgetPreviewList = /*@__
 export type ListOrganizationDashboardsResponseBodyItemPermissionsTeamsWithEditAccessList =
   Array<number>;
 export const ListOrganizationDashboardsResponseBodyItemPermissionsTeamsWithEditAccessList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemPermissionsTeamsWithEditAccessList>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemPermissionsTeamsWithEditAccessList>;
 
 export interface ListOrganizationDashboardsResponseBodyItemPermissions {
   isEditableByEveryone: boolean;
@@ -20031,9 +18533,8 @@ export const ListOrganizationDashboardsResponseBodyItemPermissions = /*@__PURE__
 }) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemPermissions>;
 
 export type ListOrganizationDashboardsResponseBodyItemProjectsList = Array<number>;
-export const ListOrganizationDashboardsResponseBodyItemProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOrganizationDashboardsResponseBodyItemProjectsList>;
+export const ListOrganizationDashboardsResponseBodyItemProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<ListOrganizationDashboardsResponseBodyItemProjectsList>;
 
 export interface ListOrganizationDashboardsResponseBodyItem {
   id: string;
@@ -20094,14 +18595,12 @@ export const ListOrganizationDetectorsRequestProjectList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<ListOrganizationDetectorsRequestProjectList>;
 
 export type ListOrganizationDetectorsRequestIdList = Array<number>;
-export const ListOrganizationDetectorsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOrganizationDetectorsRequestIdList>;
+export const ListOrganizationDetectorsRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<ListOrganizationDetectorsRequestIdList>;
 
 export type ListOrganizationDetectorsRequestTypeList = Array<string>;
-export const ListOrganizationDetectorsRequestTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDetectorsRequestTypeList>;
+export const ListOrganizationDetectorsRequestTypeList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDetectorsRequestTypeList>;
 
 export interface ListOrganizationDetectorsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -20168,45 +18667,35 @@ export const ListOrganizationDetectorsResponseBodyItemOwner = /*@__PURE__*/ S.su
 export type ListOrganizationDetectorsResponseBodyItemLatestGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationDetectorsResponseBodyItemLatestGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationDetectorsResponseBodyItemLatestGroupMap>;
+export const ListOrganizationDetectorsResponseBodyItemLatestGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationDetectorsResponseBodyItemLatestGroupMap>;
 
 export type ListOrganizationDetectorsResponseBodyItemWorkflowIdsList = Array<string>;
-export const ListOrganizationDetectorsResponseBodyItemWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDetectorsResponseBodyItemWorkflowIdsList>;
+export const ListOrganizationDetectorsResponseBodyItemWorkflowIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDetectorsResponseBodyItemWorkflowIdsList>;
 
 export type ListOrganizationDetectorsResponseBodyItemDataSourcesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationDetectorsResponseBodyItemDataSourcesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationDetectorsResponseBodyItemDataSourcesItemMap>;
+export const ListOrganizationDetectorsResponseBodyItemDataSourcesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationDetectorsResponseBodyItemDataSourcesItemMap>;
 
 export type ListOrganizationDetectorsResponseBodyItemDataSourcesList =
   Array<ListOrganizationDetectorsResponseBodyItemDataSourcesItemMap>;
-export const ListOrganizationDetectorsResponseBodyItemDataSourcesList = /*@__PURE__*/ S.Array(
-  ListOrganizationDetectorsResponseBodyItemDataSourcesItemMap,
-) as any as S.Schema<ListOrganizationDetectorsResponseBodyItemDataSourcesList>;
+export const ListOrganizationDetectorsResponseBodyItemDataSourcesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<ListOrganizationDetectorsResponseBodyItemDataSourcesList>;
 
 export type ListOrganizationDetectorsResponseBodyItemConditionGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationDetectorsResponseBodyItemConditionGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationDetectorsResponseBodyItemConditionGroupMap>;
+export const ListOrganizationDetectorsResponseBodyItemConditionGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationDetectorsResponseBodyItemConditionGroupMap>;
 
 export type ListOrganizationDetectorsResponseBodyItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationDetectorsResponseBodyItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationDetectorsResponseBodyItemConfigMap>;
+export const ListOrganizationDetectorsResponseBodyItemConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationDetectorsResponseBodyItemConfigMap>;
 
 export interface ListOrganizationDetectorsResponseBodyItem {
   owner?: ListOrganizationDetectorsResponseBodyItemOwner | null;
@@ -20292,51 +18781,37 @@ export const ListOrganizationDiscoverSavedQueriesRequest = /*@__PURE__*/ S.suspe
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemEnvironmentList = Array<string>;
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemEnvironmentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemEnvironmentList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemEnvironmentList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemFieldsList = Array<string>;
-export const ListOrganizationDiscoverSavedQueriesResponseBodyItemFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemFieldsList>;
+export const ListOrganizationDiscoverSavedQueriesResponseBodyItemFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemFieldsList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemWidthsList = Array<string>;
-export const ListOrganizationDiscoverSavedQueriesResponseBodyItemWidthsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemWidthsList>;
+export const ListOrganizationDiscoverSavedQueriesResponseBodyItemWidthsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemWidthsList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemConditionsList = Array<string>;
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemConditionsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemConditionsList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemAggregationsList = Array<string>;
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemAggregationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemAggregationsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemAggregationsList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemYAxisList = Array<string>;
-export const ListOrganizationDiscoverSavedQueriesResponseBodyItemYAxisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemYAxisList>;
+export const ListOrganizationDiscoverSavedQueriesResponseBodyItemYAxisList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemYAxisList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemExploreQueryMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemExploreQueryMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemExploreQueryMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemExploreQueryMap>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemProjectsList = Array<number>;
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemProjectsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemProjectsList>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemProjectsList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -20356,9 +18831,7 @@ export const ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByIdenti
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByIdentitiesList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -20368,18 +18841,13 @@ export const ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByAvatar
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByAuthenticatorsList =
   Array<unknown>;
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByAuthenticatorsList>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByExperimentsMap>;
 
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -20389,9 +18857,7 @@ export const ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByEmails
 export type ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByEmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByEmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByEmailsList>;
 
 export interface ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedBy {
   identities?: ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedByIdentitiesList;
@@ -20573,9 +19039,8 @@ export const ListOrganizationEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListOrganizationEnvironmentsResponse>;
 
 export type ListOrganizationEventsRequestFieldList = Array<string>;
-export const ListOrganizationEventsRequestFieldList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationEventsRequestFieldList>;
+export const ListOrganizationEventsRequestFieldList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationEventsRequestFieldList>;
 
 export type ListOrganizationEventsRequestDataset =
   | "errors"
@@ -20587,9 +19052,8 @@ export type ListOrganizationEventsRequestDataset =
 export const ListOrganizationEventsRequestDataset = S.String;
 
 export type ListOrganizationEventsRequestEnvironmentList = Array<string>;
-export const ListOrganizationEventsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationEventsRequestEnvironmentList>;
+export const ListOrganizationEventsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationEventsRequestEnvironmentList>;
 
 export type ListOrganizationEventsRequestProjectItem = number | string;
 export const ListOrganizationEventsRequestProjectItem =
@@ -20659,36 +19123,27 @@ export const ListOrganizationEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationEventsRequest>;
 
 export type ListOrganizationEventsResponseDataItemMap = { [key: string]: unknown | undefined };
-export const ListOrganizationEventsResponseDataItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationEventsResponseDataItemMap>;
+export const ListOrganizationEventsResponseDataItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationEventsResponseDataItemMap>;
 
 export type ListOrganizationEventsResponseDataList =
   Array<ListOrganizationEventsResponseDataItemMap>;
-export const ListOrganizationEventsResponseDataList = /*@__PURE__*/ S.Array(
-  ListOrganizationEventsResponseDataItemMap,
-) as any as S.Schema<ListOrganizationEventsResponseDataList>;
+export const ListOrganizationEventsResponseDataList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<ListOrganizationEventsResponseDataList>;
 
 export type ListOrganizationEventsResponseMetaFieldsMap = { [key: string]: string | undefined };
-export const ListOrganizationEventsResponseMetaFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListOrganizationEventsResponseMetaFieldsMap>;
+export const ListOrganizationEventsResponseMetaFieldsMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListOrganizationEventsResponseMetaFieldsMap>;
 
 export type ListOrganizationEventsResponseMetaUnitsMap = {
   [key: string]: string | null | undefined;
 };
-export const ListOrganizationEventsResponseMetaUnitsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<ListOrganizationEventsResponseMetaUnitsMap>;
+export const ListOrganizationEventsResponseMetaUnitsMap =
+  GetProjectEventAttachmentResponseHeadersMap as any as S.Schema<ListOrganizationEventsResponseMetaUnitsMap>;
 
 export type ListOrganizationEventsResponseMetaTipsMap = { [key: string]: string | undefined };
-export const ListOrganizationEventsResponseMetaTipsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListOrganizationEventsResponseMetaTipsMap>;
+export const ListOrganizationEventsResponseMetaTipsMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListOrganizationEventsResponseMetaTipsMap>;
 
 /** Ingestion status for the data behind a response. */
 export interface ListOrganizationEventsResponseMetaIngestion {
@@ -20767,9 +19222,8 @@ export type ListOrganizationEventsTimeseriesRequestDataset =
 export const ListOrganizationEventsTimeseriesRequestDataset = S.String;
 
 export type ListOrganizationEventsTimeseriesRequestEnvironmentList = Array<string>;
-export const ListOrganizationEventsTimeseriesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationEventsTimeseriesRequestEnvironmentList>;
+export const ListOrganizationEventsTimeseriesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationEventsTimeseriesRequestEnvironmentList>;
 
 export type ListOrganizationEventsTimeseriesRequestProjectItem = number | string;
 export const ListOrganizationEventsTimeseriesRequestProjectItem =
@@ -20782,9 +19236,8 @@ export const ListOrganizationEventsTimeseriesRequestProjectList = /*@__PURE__*/ 
 ) as any as S.Schema<ListOrganizationEventsTimeseriesRequestProjectList>;
 
 export type ListOrganizationEventsTimeseriesRequestGroupByList = Array<string>;
-export const ListOrganizationEventsTimeseriesRequestGroupByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationEventsTimeseriesRequestGroupByList>;
+export const ListOrganizationEventsTimeseriesRequestGroupByList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationEventsTimeseriesRequestGroupByList>;
 
 export type ListOrganizationEventsTimeseriesRequestDisableAggregateExtrapolation = "0" | "1";
 export const ListOrganizationEventsTimeseriesRequestDisableAggregateExtrapolation = S.String;
@@ -21133,17 +19586,14 @@ export const ListOrganizationForwardingResponseBodyItemEnrolledProjectsItem =
 
 export type ListOrganizationForwardingResponseBodyItemEnrolledProjectsList =
   Array<CreateOrganizationForwardingResponseEnrolledProjectsItem>;
-export const ListOrganizationForwardingResponseBodyItemEnrolledProjectsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationForwardingResponseEnrolledProjectsItem,
-) as any as S.Schema<ListOrganizationForwardingResponseBodyItemEnrolledProjectsList>;
+export const ListOrganizationForwardingResponseBodyItemEnrolledProjectsList =
+  CreateOrganizationForwardingResponseEnrolledProjectsList as any as S.Schema<ListOrganizationForwardingResponseBodyItemEnrolledProjectsList>;
 
 export type ListOrganizationForwardingResponseBodyItemConfigMap = {
   [key: string]: string | undefined;
 };
-export const ListOrganizationForwardingResponseBodyItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListOrganizationForwardingResponseBodyItemConfigMap>;
+export const ListOrganizationForwardingResponseBodyItemConfigMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListOrganizationForwardingResponseBodyItemConfigMap>;
 
 export type ListOrganizationForwardingResponseBodyItemProjectConfigsItemProject =
   CreateOrganizationForwardingResponseEnrolledProjectsItem;
@@ -21154,19 +19604,13 @@ export type ListOrganizationForwardingResponseBodyItemProjectConfigsItemOverride
   [key: string]: string | undefined;
 };
 export const ListOrganizationForwardingResponseBodyItemProjectConfigsItemOverridesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationForwardingResponseBodyItemProjectConfigsItemOverridesMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationForwardingResponseBodyItemProjectConfigsItemOverridesMap>;
 
 export type ListOrganizationForwardingResponseBodyItemProjectConfigsItemEffectiveConfigMap = {
   [key: string]: string | undefined;
 };
 export const ListOrganizationForwardingResponseBodyItemProjectConfigsItemEffectiveConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationForwardingResponseBodyItemProjectConfigsItemEffectiveConfigMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationForwardingResponseBodyItemProjectConfigsItemEffectiveConfigMap>;
 
 export interface ListOrganizationForwardingResponseBodyItemProjectConfigsItem {
   id: string;
@@ -21315,9 +19759,8 @@ export const ListOrganizationIntegrationRepositoriesResponse = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListOrganizationIntegrationRepositoriesResponse>;
 
 export type ListOrganizationIntegrationsRequestFeaturesList = Array<string>;
-export const ListOrganizationIntegrationsRequestFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationIntegrationsRequestFeaturesList>;
+export const ListOrganizationIntegrationsRequestFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationIntegrationsRequestFeaturesList>;
 
 export interface ListOrganizationIntegrationsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -21350,9 +19793,8 @@ export const ListOrganizationIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationIntegrationsRequest>;
 
 export type ListOrganizationIntegrationsResponseBodyItemScopesList = Array<string>;
-export const ListOrganizationIntegrationsResponseBodyItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationIntegrationsResponseBodyItemScopesList>;
+export const ListOrganizationIntegrationsResponseBodyItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationIntegrationsResponseBodyItemScopesList>;
 
 /** A feature the installation can no longer support, named by the permission tier it falls short of, so the update-permissions modal can list them. */
 export type ListOrganizationIntegrationsResponseBodyItemMissingFeaturesItem =
@@ -21363,9 +19805,7 @@ export const ListOrganizationIntegrationsResponseBodyItemMissingFeaturesItem =
 export type ListOrganizationIntegrationsResponseBodyItemMissingFeaturesList =
   Array<GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesItem>;
 export const ListOrganizationIntegrationsResponseBodyItemMissingFeaturesList =
-  /*@__PURE__*/ S.Array(
-    GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesItem,
-  ) as any as S.Schema<ListOrganizationIntegrationsResponseBodyItemMissingFeaturesList>;
+  GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesList as any as S.Schema<ListOrganizationIntegrationsResponseBodyItemMissingFeaturesList>;
 
 export interface ListOrganizationIntegrationsResponseBodyItem {
   id: string;
@@ -21422,9 +19862,8 @@ export const ListOrganizationIntegrationsResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListOrganizationIntegrationsResponse>;
 
 export type ListOrganizationIssueEventsRequestEnvironmentList = Array<string>;
-export const ListOrganizationIssueEventsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationIssueEventsRequestEnvironmentList>;
+export const ListOrganizationIssueEventsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationIssueEventsRequestEnvironmentList>;
 
 export interface ListOrganizationIssueEventsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -21477,18 +19916,14 @@ export const ListOrganizationIssueEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationIssueEventsResponseBodyItemUserGeoMap = {
   [key: string]: string | undefined;
 };
-export const ListOrganizationIssueEventsResponseBodyItemUserGeoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemUserGeoMap>;
+export const ListOrganizationIssueEventsResponseBodyItemUserGeoMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemUserGeoMap>;
 
 export type ListOrganizationIssueEventsResponseBodyItemUserDataMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationIssueEventsResponseBodyItemUserDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemUserDataMap>;
+export const ListOrganizationIssueEventsResponseBodyItemUserDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemUserDataMap>;
 
 export interface ListOrganizationIssueEventsResponseBodyItemUser {
   id?: string | null;
@@ -21499,19 +19934,8 @@ export interface ListOrganizationIssueEventsResponseBodyItemUser {
   geo?: ListOrganizationIssueEventsResponseBodyItemUserGeoMap | null;
   data?: ListOrganizationIssueEventsResponseBodyItemUserDataMap | null;
 }
-export const ListOrganizationIssueEventsResponseBodyItemUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
-    ip_address: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    geo: S.optional(S.NullOr(ListOrganizationIssueEventsResponseBodyItemUserGeoMap)),
-    data: S.optional(S.NullOr(ListOrganizationIssueEventsResponseBodyItemUserDataMap)),
-  }),
-).annotate({
-  identifier: "ListOrganizationIssueEventsResponseBodyItemUser",
-}) as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemUser>;
+export const ListOrganizationIssueEventsResponseBodyItemUser =
+  GetOrganizationIssueEventResponseUser as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemUser>;
 
 export type ListOrganizationIssueEventsResponseBodyItemTagsItem =
   GetOrganizationIssueEventResponseTagsItem;
@@ -21520,17 +19944,14 @@ export const ListOrganizationIssueEventsResponseBodyItemTagsItem =
 
 export type ListOrganizationIssueEventsResponseBodyItemTagsList =
   Array<GetOrganizationIssueEventResponseTagsItem>;
-export const ListOrganizationIssueEventsResponseBodyItemTagsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueEventResponseTagsItem,
-) as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemTagsList>;
+export const ListOrganizationIssueEventsResponseBodyItemTagsList =
+  GetOrganizationIssueEventResponseTagsList as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemTagsList>;
 
 export type ListOrganizationIssueEventsResponseBodyItemMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationIssueEventsResponseBodyItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemMetadataMap>;
+export const ListOrganizationIssueEventsResponseBodyItemMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationIssueEventsResponseBodyItemMetadataMap>;
 
 export interface ListOrganizationIssueEventsResponseBodyItem {
   id: string;
@@ -21615,9 +20036,8 @@ export const ListOrganizationIssueExternalIssuesResponseBodyItem =
 
 export type ListOrganizationIssueExternalIssuesResponseBodyList =
   Array<GetOrganizationIssueResponseSentryAppIssuesItem>;
-export const ListOrganizationIssueExternalIssuesResponseBodyList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseSentryAppIssuesItem,
-) as any as S.Schema<ListOrganizationIssueExternalIssuesResponseBodyList>;
+export const ListOrganizationIssueExternalIssuesResponseBodyList =
+  GetOrganizationIssueResponseSentryAppIssuesList as any as S.Schema<ListOrganizationIssueExternalIssuesResponseBodyList>;
 
 export type ListOrganizationIssueExternalIssuesResponse =
   ListOrganizationIssueExternalIssuesResponseBodyList;
@@ -21658,19 +20078,13 @@ export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserGeoMa
   [key: string]: string | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserGeoMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserGeoMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserGeoMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserDataMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserDataMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0UserDataMap>;
 
 export interface ListOrganizationIssueHashesResponseBodyItemLatestEventCase0User {
   id?: string | null;
@@ -21716,16 +20130,11 @@ export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextsM
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextsMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0EntriesList = Array<unknown>;
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0EntriesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0EntriesList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0EntriesList>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0Sdk =
   GetOrganizationIssueEventResponseSdk;
@@ -21736,19 +20145,13 @@ export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextMa
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ContextMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0PackagesMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0PackagesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0PackagesMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0PackagesMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0Type =
   | "default"
@@ -21767,19 +20170,13 @@ export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetadataM
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetadataMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetadataMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ErrorsItemDataMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ErrorsItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ErrorsItemDataMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ErrorsItemDataMap>;
 
 export interface ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ErrorsItem {
   type: string;
@@ -21807,18 +20204,13 @@ export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0ErrorsLi
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceFingerprintList =
   Array<string>;
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceFingerprintList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceFingerprintList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceFingerprintList>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceEvidenceDataMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceEvidenceDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceEvidenceDataMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceEvidenceDataMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceEvidenceDisplayItem =
   GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem;
@@ -21879,17 +20271,12 @@ export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetaMap =
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetaMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetaMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MetaMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0FingerprintsList =
   Array<string>;
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0FingerprintsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0FingerprintsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0FingerprintsList>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0GroupingConfig =
   GetOrganizationIssueEventResponseGroupingConfig;
@@ -21919,10 +20306,7 @@ export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0Breakdown
   [key: string]: GetOrganizationIssueEventResponseMeasurementsValue | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase0BreakdownsValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GetOrganizationIssueEventResponseMeasurementsValue,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0BreakdownsValueMap>;
+  ListOrganizationIssueHashesResponseBodyItemLatestEventCase0MeasurementsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase0BreakdownsValueMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase0BreakdownsMap = {
   [key: string]:
@@ -22019,19 +20403,13 @@ export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserGeoMa
   [key: string]: string | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserGeoMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserGeoMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserGeoMap>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserDataMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserDataMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserDataMap>;
 
 export interface ListOrganizationIssueHashesResponseBodyItemLatestEventCase1User {
   id?: string | null;
@@ -22043,23 +20421,7 @@ export interface ListOrganizationIssueHashesResponseBodyItemLatestEventCase1User
   data?: ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserDataMap | null;
 }
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase1User =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      email: S.optional(S.NullOr(S.String)),
-      username: S.optional(S.NullOr(S.String)),
-      ip_address: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      geo: S.optional(
-        S.NullOr(ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserGeoMap),
-      ),
-      data: S.optional(
-        S.NullOr(ListOrganizationIssueHashesResponseBodyItemLatestEventCase1UserDataMap),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListOrganizationIssueHashesResponseBodyItemLatestEventCase1User",
-  }) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1User>;
+  ListOrganizationIssueHashesResponseBodyItemLatestEventCase0User as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1User>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase1TagsItem =
   GetOrganizationIssueEventResponseTagsItem;
@@ -22069,18 +20431,13 @@ export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase1TagsItem
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase1TagsList =
   Array<GetOrganizationIssueEventResponseTagsItem>;
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase1TagsList =
-  /*@__PURE__*/ S.Array(
-    GetOrganizationIssueEventResponseTagsItem,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1TagsList>;
+  ListOrganizationIssueHashesResponseBodyItemLatestEventCase0TagsList as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1TagsList>;
 
 export type ListOrganizationIssueHashesResponseBodyItemLatestEventCase1MetadataMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueHashesResponseBodyItemLatestEventCase1MetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1MetadataMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueHashesResponseBodyItemLatestEventCase1MetadataMap>;
 
 export interface ListOrganizationIssueHashesResponseBodyItemLatestEventCase1 {
   id: string;
@@ -22187,9 +20544,8 @@ export const ListOrganizationIssueIntegrationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationIssueIntegrationsRequest>;
 
 export type ListOrganizationIssueIntegrationsResponseBodyItemScopesList = Array<string>;
-export const ListOrganizationIssueIntegrationsResponseBodyItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemScopesList>;
+export const ListOrganizationIssueIntegrationsResponseBodyItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemScopesList>;
 
 /** A feature the installation can no longer support, named by the permission tier it falls short of, so the update-permissions modal can list them. */
 export type ListOrganizationIssueIntegrationsResponseBodyItemMissingFeaturesItem =
@@ -22200,24 +20556,17 @@ export const ListOrganizationIssueIntegrationsResponseBodyItemMissingFeaturesIte
 export type ListOrganizationIssueIntegrationsResponseBodyItemMissingFeaturesList =
   Array<GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesItem>;
 export const ListOrganizationIssueIntegrationsResponseBodyItemMissingFeaturesList =
-  /*@__PURE__*/ S.Array(
-    GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesItem,
-  ) as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemMissingFeaturesList>;
+  GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesList as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemMissingFeaturesList>;
 
 export type ListOrganizationIssueIntegrationsResponseBodyItemProviderFeaturesList = Array<string>;
 export const ListOrganizationIssueIntegrationsResponseBodyItemProviderFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemProviderFeaturesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemProviderFeaturesList>;
 
 export type ListOrganizationIssueIntegrationsResponseBodyItemProviderAspectsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueIntegrationsResponseBodyItemProviderAspectsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemProviderAspectsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueIntegrationsResponseBodyItemProviderAspectsMap>;
 
 export interface ListOrganizationIssueIntegrationsResponseBodyItemProvider {
   key: string;
@@ -22318,9 +20667,8 @@ export const ListOrganizationIssueIntegrationsResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListOrganizationIssueIntegrationsResponse>;
 
 export type ListOrganizationIssuesRequestEnvironmentList = Array<string>;
-export const ListOrganizationIssuesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationIssuesRequestEnvironmentList>;
+export const ListOrganizationIssuesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationIssuesRequestEnvironmentList>;
 
 export type ListOrganizationIssuesRequestProjectItem = number | string;
 export const ListOrganizationIssuesRequestProjectItem =
@@ -22476,9 +20824,7 @@ export const ListOrganizationIssuesResponseBodyItemStatusDetailsActorIdentitiesI
 export type ListOrganizationIssuesResponseBodyItemStatusDetailsActorIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationIssuesResponseBodyItemStatusDetailsActorIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorIdentitiesList>;
 
 export type ListOrganizationIssuesResponseBodyItemStatusDetailsActorAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -22488,18 +20834,13 @@ export const ListOrganizationIssuesResponseBodyItemStatusDetailsActorAvatar =
 export type ListOrganizationIssuesResponseBodyItemStatusDetailsActorAuthenticatorsList =
   Array<unknown>;
 export const ListOrganizationIssuesResponseBodyItemStatusDetailsActorAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorAuthenticatorsList>;
 
 export type ListOrganizationIssuesResponseBodyItemStatusDetailsActorExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssuesResponseBodyItemStatusDetailsActorExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorExperimentsMap>;
 
 export type ListOrganizationIssuesResponseBodyItemStatusDetailsActorEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -22509,9 +20850,7 @@ export const ListOrganizationIssuesResponseBodyItemStatusDetailsActorEmailsItem 
 export type ListOrganizationIssuesResponseBodyItemStatusDetailsActorEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListOrganizationIssuesResponseBodyItemStatusDetailsActorEmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorEmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatusDetailsActorEmailsList>;
 
 export interface ListOrganizationIssuesResponseBodyItemStatusDetailsActor {
   identities?: ListOrganizationIssuesResponseBodyItemStatusDetailsActorIdentitiesList;
@@ -22637,10 +20976,8 @@ export const ListOrganizationIssuesResponseBodyItemType = S.String;
 export type ListOrganizationIssuesResponseBodyItemMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationIssuesResponseBodyItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemMetadataMap>;
+export const ListOrganizationIssuesResponseBodyItemMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationIssuesResponseBodyItemMetadataMap>;
 
 export type ListOrganizationIssuesResponseBodyItemAssignedToType = "user" | "team";
 export const ListOrganizationIssuesResponseBodyItemAssignedToType = S.String;
@@ -22674,9 +21011,8 @@ export const ListOrganizationIssuesResponseBodyItemAnnotationsItem =
 
 export type ListOrganizationIssuesResponseBodyItemAnnotationsList =
   Array<GetOrganizationIssueResponseAnnotationsItem>;
-export const ListOrganizationIssuesResponseBodyItemAnnotationsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseAnnotationsItem,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemAnnotationsList>;
+export const ListOrganizationIssuesResponseBodyItemAnnotationsList =
+  GetOrganizationIssueResponseAnnotationsList as any as S.Schema<ListOrganizationIssuesResponseBodyItemAnnotationsList>;
 
 export type ListOrganizationIssuesResponseBodyItemDerivedData =
   GetOrganizationIssueResponseDerivedData;
@@ -22684,26 +21020,20 @@ export const ListOrganizationIssuesResponseBodyItemDerivedData =
   GetOrganizationIssueResponseDerivedData;
 
 export type ListOrganizationIssuesResponseBodyItemStatsMap = { [key: string]: unknown | undefined };
-export const ListOrganizationIssuesResponseBodyItemStatsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatsMap>;
+export const ListOrganizationIssuesResponseBodyItemStatsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationIssuesResponseBodyItemStatsMap>;
 
 export type ListOrganizationIssuesResponseBodyItemLifetimeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationIssuesResponseBodyItemLifetimeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemLifetimeMap>;
+export const ListOrganizationIssuesResponseBodyItemLifetimeMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationIssuesResponseBodyItemLifetimeMap>;
 
 export type ListOrganizationIssuesResponseBodyItemFilteredStatsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationIssuesResponseBodyItemFilteredStatsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemFilteredStatsMap>;
+export const ListOrganizationIssuesResponseBodyItemFilteredStatsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationIssuesResponseBodyItemFilteredStatsMap>;
 
 export interface ListOrganizationIssuesResponseBodyItemFiltered {
   count: string;
@@ -22739,30 +21069,23 @@ export type ListOrganizationIssuesResponseBodyItemIntegrationIssuesItemMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssuesResponseBodyItemIntegrationIssuesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssuesResponseBodyItemIntegrationIssuesItemMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssuesResponseBodyItemIntegrationIssuesItemMap>;
 
 export type ListOrganizationIssuesResponseBodyItemIntegrationIssuesList =
   Array<ListOrganizationIssuesResponseBodyItemIntegrationIssuesItemMap>;
-export const ListOrganizationIssuesResponseBodyItemIntegrationIssuesList = /*@__PURE__*/ S.Array(
-  ListOrganizationIssuesResponseBodyItemIntegrationIssuesItemMap,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemIntegrationIssuesList>;
+export const ListOrganizationIssuesResponseBodyItemIntegrationIssuesList =
+  CreateOrganizationWorkflowRequestActionFiltersItemActionsList as any as S.Schema<ListOrganizationIssuesResponseBodyItemIntegrationIssuesList>;
 
 export type ListOrganizationIssuesResponseBodyItemSentryAppIssuesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationIssuesResponseBodyItemSentryAppIssuesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemSentryAppIssuesItemMap>;
+export const ListOrganizationIssuesResponseBodyItemSentryAppIssuesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationIssuesResponseBodyItemSentryAppIssuesItemMap>;
 
 export type ListOrganizationIssuesResponseBodyItemSentryAppIssuesList =
   Array<ListOrganizationIssuesResponseBodyItemSentryAppIssuesItemMap>;
-export const ListOrganizationIssuesResponseBodyItemSentryAppIssuesList = /*@__PURE__*/ S.Array(
-  ListOrganizationIssuesResponseBodyItemSentryAppIssuesItemMap,
-) as any as S.Schema<ListOrganizationIssuesResponseBodyItemSentryAppIssuesList>;
+export const ListOrganizationIssuesResponseBodyItemSentryAppIssuesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<ListOrganizationIssuesResponseBodyItemSentryAppIssuesList>;
 
 export interface ListOrganizationIssuesResponseBodyItem {
   id: string;
@@ -22883,9 +21206,8 @@ export type ListOrganizationIssueTagValuesRequestSort = "age" | "count" | "date"
 export const ListOrganizationIssueTagValuesRequestSort = S.String;
 
 export type ListOrganizationIssueTagValuesRequestEnvironmentList = Array<string>;
-export const ListOrganizationIssueTagValuesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationIssueTagValuesRequestEnvironmentList>;
+export const ListOrganizationIssueTagValuesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationIssueTagValuesRequestEnvironmentList>;
 
 export interface ListOrganizationIssueTagValuesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -22924,9 +21246,8 @@ export const ListOrganizationIssueTagValuesResponseBodyItem =
 
 export type ListOrganizationIssueTagValuesResponseBodyList =
   Array<GetOrganizationIssueTagResponseTopValuesItem>;
-export const ListOrganizationIssueTagValuesResponseBodyList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueTagResponseTopValuesItem,
-) as any as S.Schema<ListOrganizationIssueTagValuesResponseBodyList>;
+export const ListOrganizationIssueTagValuesResponseBodyList =
+  GetOrganizationIssueTagResponseTopValuesList as any as S.Schema<ListOrganizationIssueTagValuesResponseBodyList>;
 
 export type ListOrganizationIssueTagValuesResponse = ListOrganizationIssueTagValuesResponseBodyList;
 export const ListOrganizationIssueTagValuesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -23005,9 +21326,7 @@ export const ListOrganizationIssueViewsResponseBodyItemCreatedByIdentitiesItem =
 export type ListOrganizationIssueViewsResponseBodyItemCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationIssueViewsResponseBodyItemCreatedByIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByIdentitiesList>;
 
 export type ListOrganizationIssueViewsResponseBodyItemCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -23016,18 +21335,13 @@ export const ListOrganizationIssueViewsResponseBodyItemCreatedByAvatar =
 
 export type ListOrganizationIssueViewsResponseBodyItemCreatedByAuthenticatorsList = Array<unknown>;
 export const ListOrganizationIssueViewsResponseBodyItemCreatedByAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByAuthenticatorsList>;
 
 export type ListOrganizationIssueViewsResponseBodyItemCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationIssueViewsResponseBodyItemCreatedByExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByExperimentsMap>;
 
 export type ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -23036,9 +21350,8 @@ export const ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsItem =
 
 export type ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsList>;
+export const ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsList>;
 
 export interface ListOrganizationIssueViewsResponseBodyItemCreatedBy {
   identities?: ListOrganizationIssueViewsResponseBodyItemCreatedByIdentitiesList;
@@ -23063,35 +21376,8 @@ export interface ListOrganizationIssueViewsResponseBodyItemCreatedBy {
   experiments: ListOrganizationIssueViewsResponseBodyItemCreatedByExperimentsMap;
   emails: ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsList;
 }
-export const ListOrganizationIssueViewsResponseBodyItemCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListOrganizationIssueViewsResponseBodyItemCreatedByIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(
-      ListOrganizationIssueViewsResponseBodyItemCreatedByAuthenticatorsList,
-    ),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListOrganizationIssueViewsResponseBodyItemCreatedByExperimentsMap,
-    emails: ListOrganizationIssueViewsResponseBodyItemCreatedByEmailsList,
-  }),
-).annotate({
-  identifier: "ListOrganizationIssueViewsResponseBodyItemCreatedBy",
-}) as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedBy>;
+export const ListOrganizationIssueViewsResponseBodyItemCreatedBy =
+  GetOrganizationDiscoverSavedQueryResponseCreatedBy as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemCreatedBy>;
 
 export type ListOrganizationIssueViewsResponseBodyItemQuerySort =
   | "date"
@@ -23104,14 +21390,12 @@ export type ListOrganizationIssueViewsResponseBodyItemQuerySort =
 export const ListOrganizationIssueViewsResponseBodyItemQuerySort = S.String;
 
 export type ListOrganizationIssueViewsResponseBodyItemProjectsList = Array<number>;
-export const ListOrganizationIssueViewsResponseBodyItemProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemProjectsList>;
+export const ListOrganizationIssueViewsResponseBodyItemProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemProjectsList>;
 
 export type ListOrganizationIssueViewsResponseBodyItemEnvironmentsList = Array<string>;
-export const ListOrganizationIssueViewsResponseBodyItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemEnvironmentsList>;
+export const ListOrganizationIssueViewsResponseBodyItemEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationIssueViewsResponseBodyItemEnvironmentsList>;
 
 export type ListOrganizationIssueViewsResponseBodyItemTimeFilters =
   CreateOrganizationIssueViewResponseTimeFilters;
@@ -23197,9 +21481,8 @@ export const ListOrganizationMembersResponseBodyItemExternalUsersItem =
 
 export type ListOrganizationMembersResponseBodyItemExternalUsersList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const ListOrganizationMembersResponseBodyItemExternalUsersList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<ListOrganizationMembersResponseBodyItemExternalUsersList>;
+export const ListOrganizationMembersResponseBodyItemExternalUsersList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<ListOrganizationMembersResponseBodyItemExternalUsersList>;
 
 export type ListOrganizationMembersResponseBodyItemUserIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -23218,9 +21501,8 @@ export const ListOrganizationMembersResponseBodyItemUserIdentitiesItem =
 
 export type ListOrganizationMembersResponseBodyItemUserIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const ListOrganizationMembersResponseBodyItemUserIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<ListOrganizationMembersResponseBodyItemUserIdentitiesList>;
+export const ListOrganizationMembersResponseBodyItemUserIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<ListOrganizationMembersResponseBodyItemUserIdentitiesList>;
 
 export type ListOrganizationMembersResponseBodyItemUserAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -23228,17 +21510,14 @@ export const ListOrganizationMembersResponseBodyItemUserAvatar =
   AddOrganizationMemberResponseUserAvatar;
 
 export type ListOrganizationMembersResponseBodyItemUserAuthenticatorsList = Array<unknown>;
-export const ListOrganizationMembersResponseBodyItemUserAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListOrganizationMembersResponseBodyItemUserAuthenticatorsList>;
+export const ListOrganizationMembersResponseBodyItemUserAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<ListOrganizationMembersResponseBodyItemUserAuthenticatorsList>;
 
 export type ListOrganizationMembersResponseBodyItemUserExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationMembersResponseBodyItemUserExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationMembersResponseBodyItemUserExperimentsMap>;
+export const ListOrganizationMembersResponseBodyItemUserExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationMembersResponseBodyItemUserExperimentsMap>;
 
 export type ListOrganizationMembersResponseBodyItemUserEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -23247,9 +21526,8 @@ export const ListOrganizationMembersResponseBodyItemUserEmailsItem =
 
 export type ListOrganizationMembersResponseBodyItemUserEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const ListOrganizationMembersResponseBodyItemUserEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<ListOrganizationMembersResponseBodyItemUserEmailsList>;
+export const ListOrganizationMembersResponseBodyItemUserEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<ListOrganizationMembersResponseBodyItemUserEmailsList>;
 
 export interface ListOrganizationMembersResponseBodyItemUser {
   identities?: ListOrganizationMembersResponseBodyItemUserIdentitiesList;
@@ -23274,33 +21552,8 @@ export interface ListOrganizationMembersResponseBodyItemUser {
   experiments: ListOrganizationMembersResponseBodyItemUserExperimentsMap;
   emails: ListOrganizationMembersResponseBodyItemUserEmailsList;
 }
-export const ListOrganizationMembersResponseBodyItemUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListOrganizationMembersResponseBodyItemUserIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(ListOrganizationMembersResponseBodyItemUserAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListOrganizationMembersResponseBodyItemUserExperimentsMap,
-    emails: ListOrganizationMembersResponseBodyItemUserEmailsList,
-  }),
-).annotate({
-  identifier: "ListOrganizationMembersResponseBodyItemUser",
-}) as any as S.Schema<ListOrganizationMembersResponseBodyItemUser>;
+export const ListOrganizationMembersResponseBodyItemUser =
+  AddOrganizationMemberResponseUser as any as S.Schema<ListOrganizationMembersResponseBodyItemUser>;
 
 export type ListOrganizationMembersResponseBodyItemFlags = AddOrganizationMemberResponseFlags;
 export const ListOrganizationMembersResponseBodyItemFlags = AddOrganizationMemberResponseFlags;
@@ -23319,24 +21572,8 @@ export interface ListOrganizationMembersResponseBodyItem {
   inviteStatus: string;
   inviterName: string | null;
 }
-export const ListOrganizationMembersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalUsers: S.optional(ListOrganizationMembersResponseBodyItemExternalUsersList),
-    id: S.String,
-    email: S.String,
-    name: S.String,
-    user: S.NullOr(ListOrganizationMembersResponseBodyItemUser),
-    orgRole: S.String,
-    pending: S.Boolean,
-    expired: S.Boolean,
-    flags: AddOrganizationMemberResponseFlags,
-    dateCreated: S.String,
-    inviteStatus: S.String,
-    inviterName: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationMembersResponseBodyItem",
-}) as any as S.Schema<ListOrganizationMembersResponseBodyItem>;
+export const ListOrganizationMembersResponseBodyItem =
+  AddOrganizationMemberResponse as any as S.Schema<ListOrganizationMembersResponseBodyItem>;
 
 export type ListOrganizationMembersResponseBodyList =
   Array<ListOrganizationMembersResponseBodyItem>;
@@ -23376,9 +21613,8 @@ export const ListOrganizationMonitorCheckinsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListOrganizationMonitorCheckinsRequest>;
 
 export type ListOrganizationMonitorCheckinsResponseBodyItemGroupsList = Array<string>;
-export const ListOrganizationMonitorCheckinsResponseBodyItemGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMonitorCheckinsResponseBodyItemGroupsList>;
+export const ListOrganizationMonitorCheckinsResponseBodyItemGroupsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationMonitorCheckinsResponseBodyItemGroupsList>;
 
 export type ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfigScheduleType =
   | "crontab"
@@ -23388,9 +21624,7 @@ export const ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfigSchedul
 export type ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List =
   Array<number>;
 export const ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List>;
 
 export type ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfigSchedule =
   | string
@@ -23482,9 +21716,8 @@ export const ListOrganizationMonitorsRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListOrganizationMonitorsRequestProjectList>;
 
 export type ListOrganizationMonitorsRequestEnvironmentList = Array<string>;
-export const ListOrganizationMonitorsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMonitorsRequestEnvironmentList>;
+export const ListOrganizationMonitorsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationMonitorsRequestEnvironmentList>;
 
 export interface ListOrganizationMonitorsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -23523,31 +21756,22 @@ export const ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsItem =
 
 export type ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsList =
   Array<CreateOrganizationMonitorResponseAlertRuleTargetsItem>;
-export const ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationMonitorResponseAlertRuleTargetsItem,
-) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsList>;
+export const ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsList =
+  CreateOrganizationMonitorResponseAlertRuleTargetsList as any as S.Schema<ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsList>;
 
 export interface ListOrganizationMonitorsResponseBodyItemAlertRule {
   targets: ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsList;
   environment: string;
 }
-export const ListOrganizationMonitorsResponseBodyItemAlertRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: ListOrganizationMonitorsResponseBodyItemAlertRuleTargetsList,
-    environment: S.String,
-  }),
-).annotate({
-  identifier: "ListOrganizationMonitorsResponseBodyItemAlertRule",
-}) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemAlertRule>;
+export const ListOrganizationMonitorsResponseBodyItemAlertRule =
+  CreateOrganizationMonitorResponseAlertRule as any as S.Schema<ListOrganizationMonitorsResponseBodyItemAlertRule>;
 
 export type ListOrganizationMonitorsResponseBodyItemConfigScheduleType = "crontab" | "interval";
 export const ListOrganizationMonitorsResponseBodyItemConfigScheduleType = S.String;
 
 export type ListOrganizationMonitorsResponseBodyItemConfigScheduleCase1List = Array<number>;
 export const ListOrganizationMonitorsResponseBodyItemConfigScheduleCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemConfigScheduleCase1List>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<ListOrganizationMonitorsResponseBodyItemConfigScheduleCase1List>;
 
 export type ListOrganizationMonitorsResponseBodyItemConfigSchedule =
   | string
@@ -23581,14 +21805,12 @@ export const ListOrganizationMonitorsResponseBodyItemConfig = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemConfig>;
 
 export type ListOrganizationMonitorsResponseBodyItemProjectFeaturesList = Array<string>;
-export const ListOrganizationMonitorsResponseBodyItemProjectFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemProjectFeaturesList>;
+export const ListOrganizationMonitorsResponseBodyItemProjectFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationMonitorsResponseBodyItemProjectFeaturesList>;
 
 export type ListOrganizationMonitorsResponseBodyItemProjectAccessList = Array<string>;
-export const ListOrganizationMonitorsResponseBodyItemProjectAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemProjectAccessList>;
+export const ListOrganizationMonitorsResponseBodyItemProjectAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationMonitorsResponseBodyItemProjectAccessList>;
 
 export type ListOrganizationMonitorsResponseBodyItemProjectAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -23637,52 +21859,8 @@ export interface ListOrganizationMonitorsResponseBodyItemProject {
   color: string;
   status: string;
 }
-export const ListOrganizationMonitorsResponseBodyItemProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: ListOrganizationMonitorsResponseBodyItemProjectFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: ListOrganizationMonitorsResponseBodyItemProjectAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "ListOrganizationMonitorsResponseBodyItemProject",
-}) as any as S.Schema<ListOrganizationMonitorsResponseBodyItemProject>;
+export const ListOrganizationMonitorsResponseBodyItemProject =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<ListOrganizationMonitorsResponseBodyItemProject>;
 
 export type ListOrganizationMonitorsResponseBodyItemEnvironmentsActiveIncidentBrokenNotice =
   CreateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice;
@@ -23776,9 +21954,8 @@ export const ListOrganizationNotificationsActionsRequestProjectList = /*@__PURE_
 ) as any as S.Schema<ListOrganizationNotificationsActionsRequestProjectList>;
 
 export type ListOrganizationNotificationsActionsRequestProjectIdOrSlugList = Array<string>;
-export const ListOrganizationNotificationsActionsRequestProjectIdOrSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationNotificationsActionsRequestProjectIdOrSlugList>;
+export const ListOrganizationNotificationsActionsRequestProjectIdOrSlugList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationNotificationsActionsRequestProjectIdOrSlugList>;
 
 export interface ListOrganizationNotificationsActionsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -23810,9 +21987,8 @@ export const ListOrganizationNotificationsActionsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationNotificationsActionsRequest>;
 
 export type ListOrganizationNotificationsActionsResponseProjectsList = Array<number>;
-export const ListOrganizationNotificationsActionsResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOrganizationNotificationsActionsResponseProjectsList>;
+export const ListOrganizationNotificationsActionsResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<ListOrganizationNotificationsActionsResponseProjectsList>;
 
 export interface ListOrganizationNotificationsActionsResponse {
   id: number;
@@ -23826,22 +22002,8 @@ export interface ListOrganizationNotificationsActionsResponse {
   targetIdentifier: string | null;
   targetDisplay: string | null;
 }
-export const ListOrganizationNotificationsActionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    organizationId: S.Number,
-    integrationId: S.NullOr(S.Number),
-    sentryAppId: S.NullOr(S.Number),
-    projects: ListOrganizationNotificationsActionsResponseProjectsList,
-    serviceType: S.NullOr(S.String),
-    triggerType: S.String,
-    targetType: S.NullOr(S.String),
-    targetIdentifier: S.NullOr(S.String),
-    targetDisplay: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationNotificationsActionsResponse",
-}) as any as S.Schema<ListOrganizationNotificationsActionsResponse>;
+export const ListOrganizationNotificationsActionsResponse =
+  CreateOrganizationNotificationsActionResponse as any as S.Schema<ListOrganizationNotificationsActionsResponse>;
 
 export interface ListOrganizationProfilingChunksRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -23877,18 +22039,13 @@ export const ListOrganizationProfilingChunksRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListOrganizationProfilingChunksRequest>;
 
 export type ListOrganizationProfilingChunksResponseBodyMap = { [key: string]: unknown | undefined };
-export const ListOrganizationProfilingChunksResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationProfilingChunksResponseBodyMap>;
+export const ListOrganizationProfilingChunksResponseBodyMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationProfilingChunksResponseBodyMap>;
 
 export type ListOrganizationProfilingChunksResponse =
   ListOrganizationProfilingChunksResponseBodyMap;
-export const ListOrganizationProfilingChunksResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOrganizationProfilingChunksResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOrganizationProfilingChunksResponse",
-}) as any as S.Schema<ListOrganizationProfilingChunksResponse>;
+export const ListOrganizationProfilingChunksResponse =
+  GetOrganizationProfilingFlamegraphResponse as any as S.Schema<ListOrganizationProfilingChunksResponse>;
 
 export type ListOrganizationProjectKeysRequestStatus = "active" | "inactive";
 export const ListOrganizationProjectKeysRequestStatus = S.String;
@@ -23930,16 +22087,12 @@ export const ListOrganizationProjectKeysResponseBodyItemDsn = CreateProjectKeyRe
 
 export type ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesItemList = Array<string>;
 export const ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesItemList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesItemList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesItemList>;
 
 export type ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesList =
   Array<ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesItemList>;
 export const ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesList =
-  /*@__PURE__*/ S.Array(
-    ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesItemList,
-  ) as any as S.Schema<ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesList>;
+  GetSentryAppInstallationExternalRequestOptionsResponseChoicesList as any as S.Schema<ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesList>;
 
 export interface ListOrganizationProjectKeysResponseBodyItemBrowserSdk {
   choices: ListOrganizationProjectKeysResponseBodyItemBrowserSdkChoicesList;
@@ -24038,36 +22191,28 @@ export const ListOrganizationProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationProjectsResponseBodyItemLatestDeploysValueMap = {
   [key: string]: string | undefined;
 };
-export const ListOrganizationProjectsResponseBodyItemLatestDeploysValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemLatestDeploysValueMap>;
+export const ListOrganizationProjectsResponseBodyItemLatestDeploysValueMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListOrganizationProjectsResponseBodyItemLatestDeploysValueMap>;
 
 export type ListOrganizationProjectsResponseBodyItemLatestDeploysMap = {
   [key: string]: ListOrganizationProjectsResponseBodyItemLatestDeploysValueMap | undefined;
 };
-export const ListOrganizationProjectsResponseBodyItemLatestDeploysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListOrganizationProjectsResponseBodyItemLatestDeploysValueMap,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemLatestDeploysMap>;
+export const ListOrganizationProjectsResponseBodyItemLatestDeploysMap =
+  CreateOrganizationProjectResponseLatestDeploysMap as any as S.Schema<ListOrganizationProjectsResponseBodyItemLatestDeploysMap>;
 
 export type ListOrganizationProjectsResponseBodyItemOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationProjectsResponseBodyItemOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemOptionsMap>;
+export const ListOrganizationProjectsResponseBodyItemOptionsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationProjectsResponseBodyItemOptionsMap>;
 
 export type ListOrganizationProjectsResponseBodyItemFeaturesList = Array<string>;
-export const ListOrganizationProjectsResponseBodyItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemFeaturesList>;
+export const ListOrganizationProjectsResponseBodyItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationProjectsResponseBodyItemFeaturesList>;
 
 export type ListOrganizationProjectsResponseBodyItemAccessList = Array<string>;
-export const ListOrganizationProjectsResponseBodyItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemAccessList>;
+export const ListOrganizationProjectsResponseBodyItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationProjectsResponseBodyItemAccessList>;
 
 export type ListOrganizationProjectsResponseBodyItemTeam = AddProjectTeamResponseTeam;
 export const ListOrganizationProjectsResponseBodyItemTeam = AddProjectTeamResponseTeam;
@@ -24076,19 +22221,16 @@ export type ListOrganizationProjectsResponseBodyItemTeamsItem = AddProjectTeamRe
 export const ListOrganizationProjectsResponseBodyItemTeamsItem = AddProjectTeamResponseTeam;
 
 export type ListOrganizationProjectsResponseBodyItemTeamsList = Array<AddProjectTeamResponseTeam>;
-export const ListOrganizationProjectsResponseBodyItemTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemTeamsList>;
+export const ListOrganizationProjectsResponseBodyItemTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<ListOrganizationProjectsResponseBodyItemTeamsList>;
 
 export type ListOrganizationProjectsResponseBodyItemPlatformsList = Array<string>;
-export const ListOrganizationProjectsResponseBodyItemPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemPlatformsList>;
+export const ListOrganizationProjectsResponseBodyItemPlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationProjectsResponseBodyItemPlatformsList>;
 
 export type ListOrganizationProjectsResponseBodyItemEnvironmentsList = Array<string>;
-export const ListOrganizationProjectsResponseBodyItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationProjectsResponseBodyItemEnvironmentsList>;
+export const ListOrganizationProjectsResponseBodyItemEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationProjectsResponseBodyItemEnvironmentsList>;
 
 export type ListOrganizationProjectsResponseBodyItemLatestRelease =
   CreateOrganizationProjectResponseLatestRelease;
@@ -24140,55 +22282,8 @@ export interface ListOrganizationProjectsResponseBodyItem {
   environments: ListOrganizationProjectsResponseBodyItemEnvironmentsList;
   latestRelease: CreateOrganizationProjectResponseLatestRelease | null;
 }
-export const ListOrganizationProjectsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestDeploys: S.optional(S.NullOr(ListOrganizationProjectsResponseBodyItemLatestDeploysMap)),
-    options: S.optional(ListOrganizationProjectsResponseBodyItemOptionsMap),
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: ListOrganizationProjectsResponseBodyItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: ListOrganizationProjectsResponseBodyItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    team: S.NullOr(AddProjectTeamResponseTeam),
-    teams: ListOrganizationProjectsResponseBodyItemTeamsList,
-    platforms: ListOrganizationProjectsResponseBodyItemPlatformsList,
-    hasUserReports: S.Boolean,
-    environments: ListOrganizationProjectsResponseBodyItemEnvironmentsList,
-    latestRelease: S.NullOr(CreateOrganizationProjectResponseLatestRelease),
-  }),
-).annotate({
-  identifier: "ListOrganizationProjectsResponseBodyItem",
-}) as any as S.Schema<ListOrganizationProjectsResponseBodyItem>;
+export const ListOrganizationProjectsResponseBodyItem =
+  CreateOrganizationProjectResponse as any as S.Schema<ListOrganizationProjectsResponseBodyItem>;
 
 export type ListOrganizationProjectsResponseBodyList =
   Array<ListOrganizationProjectsResponseBodyItem>;
@@ -24289,17 +22384,12 @@ export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositoryP
   [key: string]: string | undefined;
 };
 export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositoryProviderMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositoryProviderMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositoryProviderMap>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList =
   Array<string>;
 export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList>;
 
 export interface ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettings {
   enabledCodeReview: boolean;
@@ -24368,9 +22458,7 @@ export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase
 export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -24380,18 +22468,13 @@ export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase
 export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList =
   Array<unknown>;
 export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -24401,9 +22484,7 @@ export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase
 export type ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList>;
 
 export interface ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0 {
   identities?: ListOrganizationReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList;
@@ -24505,32 +22586,19 @@ export type ListOrganizationReleaseCommitsResponseBodyItemRepositoryProviderMap 
   [key: string]: string | undefined;
 };
 export const ListOrganizationReleaseCommitsResponseBodyItemRepositoryProviderMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemRepositoryProviderMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemRepositoryProviderMap>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList =
   Array<string>;
 export const ListOrganizationReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList>;
 
 export interface ListOrganizationReleaseCommitsResponseBodyItemRepositorySettings {
   enabledCodeReview: boolean;
   codeReviewTriggers: ListOrganizationReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList;
 }
 export const ListOrganizationReleaseCommitsResponseBodyItemRepositorySettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabledCodeReview: S.Boolean,
-      codeReviewTriggers:
-        ListOrganizationReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList,
-    }),
-  ).annotate({
-    identifier: "ListOrganizationReleaseCommitsResponseBodyItemRepositorySettings",
-  }) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemRepositorySettings>;
+  ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettings as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemRepositorySettings>;
 
 export interface ListOrganizationReleaseCommitsResponseBodyItemRepository {
   url?: string | null;
@@ -24582,9 +22650,7 @@ export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0Identities
 export type ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -24594,18 +22660,13 @@ export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0Avatar =
 export type ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList =
   Array<unknown>;
 export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -24615,9 +22676,7 @@ export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsItem
 export type ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsList>;
 
 export interface ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0 {
   identities?: ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList;
@@ -24642,38 +22701,8 @@ export interface ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0 {
   experiments: ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap;
   emails: ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsList;
 }
-export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identities: S.optional(
-        ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList,
-      ),
-      avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-      authenticators: S.optional(
-        ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList,
-      ),
-      canReset2fa: S.optional(S.Boolean),
-      id: S.String,
-      name: S.String,
-      username: S.String,
-      email: S.String,
-      avatarUrl: S.String,
-      isActive: S.Boolean,
-      isSuspended: S.Boolean,
-      hasPasswordAuth: S.Boolean,
-      isManaged: S.Boolean,
-      dateJoined: S.String,
-      lastLogin: S.NullOr(S.String),
-      has2fa: S.Boolean,
-      lastActive: S.NullOr(S.String),
-      isSuperuser: S.Boolean,
-      isStaff: S.Boolean,
-      experiments: ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap,
-      emails: ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0EmailsList,
-    }),
-).annotate({
-  identifier: "ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0",
-}) as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0>;
+export const ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0 =
+  ListOrganizationIssuesResponseBodyItemStatusDetailsActor as any as S.Schema<ListOrganizationReleaseCommitsResponseBodyItemAuthorCase0>;
 
 export type ListOrganizationReleaseCommitsResponseBodyItemAuthorCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -24792,18 +22821,8 @@ export interface ListOrganizationReleaseDeploysResponseBodyItem {
   /** The optional URL that points to the deploy */
   url: string | null;
 }
-export const ListOrganizationReleaseDeploysResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    environment: S.String,
-    dateStarted: S.NullOr(S.String),
-    dateFinished: S.String,
-    name: S.NullOr(S.String),
-    url: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationReleaseDeploysResponseBodyItem",
-}) as any as S.Schema<ListOrganizationReleaseDeploysResponseBodyItem>;
+export const ListOrganizationReleaseDeploysResponseBodyItem =
+  CreateOrganizationReleaseDeployResponse as any as S.Schema<ListOrganizationReleaseDeploysResponseBodyItem>;
 
 export type ListOrganizationReleaseDeploysResponseBodyList =
   Array<ListOrganizationReleaseDeploysResponseBodyItem>;
@@ -24819,14 +22838,12 @@ export const ListOrganizationReleaseDeploysResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListOrganizationReleaseDeploysResponse>;
 
 export type ListOrganizationReleaseFilesRequestQueryList = Array<string>;
-export const ListOrganizationReleaseFilesRequestQueryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReleaseFilesRequestQueryList>;
+export const ListOrganizationReleaseFilesRequestQueryList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReleaseFilesRequestQueryList>;
 
 export type ListOrganizationReleaseFilesRequestChecksumList = Array<string>;
-export const ListOrganizationReleaseFilesRequestChecksumList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReleaseFilesRequestChecksumList>;
+export const ListOrganizationReleaseFilesRequestChecksumList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReleaseFilesRequestChecksumList>;
 
 export interface ListOrganizationReleaseFilesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -24861,10 +22878,8 @@ export const ListOrganizationReleaseFilesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationReleaseFilesResponseBodyItemHeadersMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReleaseFilesResponseBodyItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReleaseFilesResponseBodyItemHeadersMap>;
+export const ListOrganizationReleaseFilesResponseBodyItemHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReleaseFilesResponseBodyItemHeadersMap>;
 
 export interface ListOrganizationReleaseFilesResponseBodyItem {
   id: string;
@@ -24875,19 +22890,8 @@ export interface ListOrganizationReleaseFilesResponseBodyItem {
   sha1: string;
   dateCreated: string;
 }
-export const ListOrganizationReleaseFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    dist: S.NullOr(S.String),
-    headers: ListOrganizationReleaseFilesResponseBodyItemHeadersMap,
-    size: S.Number,
-    sha1: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "ListOrganizationReleaseFilesResponseBodyItem",
-}) as any as S.Schema<ListOrganizationReleaseFilesResponseBodyItem>;
+export const ListOrganizationReleaseFilesResponseBodyItem =
+  GetOrganizationReleaseFileResponse as any as S.Schema<ListOrganizationReleaseFilesResponseBodyItem>;
 
 export type ListOrganizationReleaseFilesResponseBodyList =
   Array<ListOrganizationReleaseFilesResponseBodyItem>;
@@ -24913,9 +22917,8 @@ export const ListOrganizationReleasesRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListOrganizationReleasesRequestProjectList>;
 
 export type ListOrganizationReleasesRequestEnvironmentList = Array<string>;
-export const ListOrganizationReleasesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReleasesRequestEnvironmentList>;
+export const ListOrganizationReleasesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReleasesRequestEnvironmentList>;
 
 export interface ListOrganizationReleasesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -24953,18 +22956,14 @@ export const ListOrganizationReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationReleasesResponseBodyItemOwnerMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReleasesResponseBodyItemOwnerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReleasesResponseBodyItemOwnerMap>;
+export const ListOrganizationReleasesResponseBodyItemOwnerMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemOwnerMap>;
 
 export type ListOrganizationReleasesResponseBodyItemLastCommitMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReleasesResponseBodyItemLastCommitMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReleasesResponseBodyItemLastCommitMap>;
+export const ListOrganizationReleasesResponseBodyItemLastCommitMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemLastCommitMap>;
 
 export type ListOrganizationReleasesResponseBodyItemLastDeploy =
   CreateOrganizationReleaseResponseLastDeploy;
@@ -24974,26 +22973,20 @@ export const ListOrganizationReleasesResponseBodyItemLastDeploy =
 export type ListOrganizationReleasesResponseBodyItemCurrentProjectMetaMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReleasesResponseBodyItemCurrentProjectMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReleasesResponseBodyItemCurrentProjectMetaMap>;
+export const ListOrganizationReleasesResponseBodyItemCurrentProjectMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemCurrentProjectMetaMap>;
 
 export type ListOrganizationReleasesResponseBodyItemAdoptionStagesMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReleasesResponseBodyItemAdoptionStagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReleasesResponseBodyItemAdoptionStagesMap>;
+export const ListOrganizationReleasesResponseBodyItemAdoptionStagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemAdoptionStagesMap>;
 
 export type ListOrganizationReleasesResponseBodyItemVersionInfoVersionMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReleasesResponseBodyItemVersionInfoVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReleasesResponseBodyItemVersionInfoVersionMap>;
+export const ListOrganizationReleasesResponseBodyItemVersionInfoVersionMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemVersionInfoVersionMap>;
 
 export interface ListOrganizationReleasesResponseBodyItemVersionInfo {
   description?: string;
@@ -25001,24 +22994,14 @@ export interface ListOrganizationReleasesResponseBodyItemVersionInfo {
   version: ListOrganizationReleasesResponseBodyItemVersionInfoVersionMap;
   buildHash: string | null;
 }
-export const ListOrganizationReleasesResponseBodyItemVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    package: S.NullOr(S.String),
-    version: ListOrganizationReleasesResponseBodyItemVersionInfoVersionMap,
-    buildHash: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationReleasesResponseBodyItemVersionInfo",
-}) as any as S.Schema<ListOrganizationReleasesResponseBodyItemVersionInfo>;
+export const ListOrganizationReleasesResponseBodyItemVersionInfo =
+  CreateOrganizationReleaseResponseVersionInfo as any as S.Schema<ListOrganizationReleasesResponseBodyItemVersionInfo>;
 
 export type ListOrganizationReleasesResponseBodyItemDataMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReleasesResponseBodyItemDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReleasesResponseBodyItemDataMap>;
+export const ListOrganizationReleasesResponseBodyItemDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemDataMap>;
 
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -25038,9 +23021,7 @@ export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesI
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesList>;
 
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -25050,18 +23031,13 @@ export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0Avatar =
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList =
   Array<unknown>;
 export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList>;
 
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap>;
 
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -25071,9 +23047,7 @@ export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsItem 
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsList>;
 
 export interface ListOrganizationReleasesResponseBodyItemAuthorsItemCase0 {
   identities?: ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesList;
@@ -25098,38 +23072,8 @@ export interface ListOrganizationReleasesResponseBodyItemAuthorsItemCase0 {
   experiments: ListOrganizationReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap;
   emails: ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsList;
 }
-export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identities: S.optional(
-        ListOrganizationReleasesResponseBodyItemAuthorsItemCase0IdentitiesList,
-      ),
-      avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-      authenticators: S.optional(
-        ListOrganizationReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList,
-      ),
-      canReset2fa: S.optional(S.Boolean),
-      id: S.String,
-      name: S.String,
-      username: S.String,
-      email: S.String,
-      avatarUrl: S.String,
-      isActive: S.Boolean,
-      isSuspended: S.Boolean,
-      hasPasswordAuth: S.Boolean,
-      isManaged: S.Boolean,
-      dateJoined: S.String,
-      lastLogin: S.NullOr(S.String),
-      has2fa: S.Boolean,
-      lastActive: S.NullOr(S.String),
-      isSuperuser: S.Boolean,
-      isStaff: S.Boolean,
-      experiments: ListOrganizationReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap,
-      emails: ListOrganizationReleasesResponseBodyItemAuthorsItemCase0EmailsList,
-    }),
-).annotate({
-  identifier: "ListOrganizationReleasesResponseBodyItemAuthorsItemCase0",
-}) as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0>;
+export const ListOrganizationReleasesResponseBodyItemAuthorsItemCase0 =
+  ListOrganizationIssuesResponseBodyItemStatusDetailsActor as any as S.Schema<ListOrganizationReleasesResponseBodyItemAuthorsItemCase0>;
 
 export type ListOrganizationReleasesResponseBodyItemAuthorsItemCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -25152,10 +23096,7 @@ export type ListOrganizationReleasesResponseBodyItemProjectsItemHealthDataStatsM
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationReleasesResponseBodyItemProjectsItemHealthDataStatsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleasesResponseBodyItemProjectsItemHealthDataStatsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationReleasesResponseBodyItemProjectsItemHealthDataStatsMap>;
 
 export interface ListOrganizationReleasesResponseBodyItemProjectsItemHealthData {
   durationP50?: number | null;
@@ -25201,9 +23142,7 @@ export const ListOrganizationReleasesResponseBodyItemProjectsItemHealthData =
 
 export type ListOrganizationReleasesResponseBodyItemProjectsItemPlatformsList = Array<string>;
 export const ListOrganizationReleasesResponseBodyItemProjectsItemPlatformsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationReleasesResponseBodyItemProjectsItemPlatformsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationReleasesResponseBodyItemProjectsItemPlatformsList>;
 
 export interface ListOrganizationReleasesResponseBodyItemProjectsItem {
   healthData?: ListOrganizationReleasesResponseBodyItemProjectsItemHealthData | null;
@@ -25317,19 +23256,16 @@ export const ListOrganizationReleasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationReleasesResponse>;
 
 export type ListOrganizationReleaseThresholdStatusesRequestEnvironmentList = Array<string>;
-export const ListOrganizationReleaseThresholdStatusesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequestEnvironmentList>;
+export const ListOrganizationReleaseThresholdStatusesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequestEnvironmentList>;
 
 export type ListOrganizationReleaseThresholdStatusesRequestProjectSlugList = Array<string>;
-export const ListOrganizationReleaseThresholdStatusesRequestProjectSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequestProjectSlugList>;
+export const ListOrganizationReleaseThresholdStatusesRequestProjectSlugList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequestProjectSlugList>;
 
 export type ListOrganizationReleaseThresholdStatusesRequestReleaseList = Array<string>;
-export const ListOrganizationReleaseThresholdStatusesRequestReleaseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequestReleaseList>;
+export const ListOrganizationReleaseThresholdStatusesRequestReleaseList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequestReleaseList>;
 
 export type ListOrganizationReleaseThresholdStatusesRequestProjectItem = number | string;
 export const ListOrganizationReleaseThresholdStatusesRequestProjectItem =
@@ -25385,19 +23321,13 @@ export type ListOrganizationReleaseThresholdStatusesResponseBodyValueItemEnviron
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationReleaseThresholdStatusesResponseBodyValueItemEnvironmentMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleaseThresholdStatusesResponseBodyValueItemEnvironmentMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationReleaseThresholdStatusesResponseBodyValueItemEnvironmentMap>;
 
 export type ListOrganizationReleaseThresholdStatusesResponseBodyValueItemProjectMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationReleaseThresholdStatusesResponseBodyValueItemProjectMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationReleaseThresholdStatusesResponseBodyValueItemProjectMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationReleaseThresholdStatusesResponseBodyValueItemProjectMap>;
 
 export type ListOrganizationReleaseThresholdStatusesResponseBodyValueItemThresholdType =
   | "total_error_count"
@@ -25545,14 +23475,12 @@ export const ListOrganizationReplaysRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListOrganizationReplaysRequestProjectList>;
 
 export type ListOrganizationReplaysRequestProjectSlugList = Array<string>;
-export const ListOrganizationReplaysRequestProjectSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysRequestProjectSlugList>;
+export const ListOrganizationReplaysRequestProjectSlugList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysRequestProjectSlugList>;
 
 export type ListOrganizationReplaysRequestEnvironmentList = Array<string>;
-export const ListOrganizationReplaysRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysRequestEnvironmentList>;
+export const ListOrganizationReplaysRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysRequestEnvironmentList>;
 
 export interface ListOrganizationReplaysRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -25615,32 +23543,26 @@ export const ListOrganizationReplaysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationReplaysRequest>;
 
 export type ListOrganizationReplaysResponseDataItemTraceIdsList = Array<string>;
-export const ListOrganizationReplaysResponseDataItemTraceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemTraceIdsList>;
+export const ListOrganizationReplaysResponseDataItemTraceIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysResponseDataItemTraceIdsList>;
 
 export type ListOrganizationReplaysResponseDataItemErrorIdsList = Array<string>;
-export const ListOrganizationReplaysResponseDataItemErrorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemErrorIdsList>;
+export const ListOrganizationReplaysResponseDataItemErrorIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysResponseDataItemErrorIdsList>;
 
 export type ListOrganizationReplaysResponseDataItemTagsCase0ValueList = Array<string>;
-export const ListOrganizationReplaysResponseDataItemTagsCase0ValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemTagsCase0ValueList>;
+export const ListOrganizationReplaysResponseDataItemTagsCase0ValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysResponseDataItemTagsCase0ValueList>;
 
 export type ListOrganizationReplaysResponseDataItemTagsCase0Map = {
   [key: string]: ListOrganizationReplaysResponseDataItemTagsCase0ValueList | undefined;
 };
-export const ListOrganizationReplaysResponseDataItemTagsCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  ListOrganizationReplaysResponseDataItemTagsCase0ValueList,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemTagsCase0Map>;
+export const ListOrganizationReplaysResponseDataItemTagsCase0Map =
+  GetOrganizationReplayResponseDataTagsCase0Map as any as S.Schema<ListOrganizationReplaysResponseDataItemTagsCase0Map>;
 
 export type ListOrganizationReplaysResponseDataItemTagsCase1List = Array<unknown>;
-export const ListOrganizationReplaysResponseDataItemTagsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemTagsCase1List>;
+export const ListOrganizationReplaysResponseDataItemTagsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<ListOrganizationReplaysResponseDataItemTagsCase1List>;
 
 export type ListOrganizationReplaysResponseDataItemTags =
   | ListOrganizationReplaysResponseDataItemTagsCase0Map
@@ -25675,33 +23597,27 @@ export const ListOrganizationReplaysResponseDataItemOtaUpdates =
   GetOrganizationReplayResponseDataOtaUpdates;
 
 export type ListOrganizationReplaysResponseDataItemUrlsList = Array<string>;
-export const ListOrganizationReplaysResponseDataItemUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemUrlsList>;
+export const ListOrganizationReplaysResponseDataItemUrlsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysResponseDataItemUrlsList>;
 
 export type ListOrganizationReplaysResponseDataItemSegmentNamesList = Array<string>;
-export const ListOrganizationReplaysResponseDataItemSegmentNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemSegmentNamesList>;
+export const ListOrganizationReplaysResponseDataItemSegmentNamesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysResponseDataItemSegmentNamesList>;
 
 export type ListOrganizationReplaysResponseDataItemClicksItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationReplaysResponseDataItemClicksItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemClicksItemMap>;
+export const ListOrganizationReplaysResponseDataItemClicksItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationReplaysResponseDataItemClicksItemMap>;
 
 export type ListOrganizationReplaysResponseDataItemClicksList =
   Array<ListOrganizationReplaysResponseDataItemClicksItemMap>;
-export const ListOrganizationReplaysResponseDataItemClicksList = /*@__PURE__*/ S.Array(
-  ListOrganizationReplaysResponseDataItemClicksItemMap,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemClicksList>;
+export const ListOrganizationReplaysResponseDataItemClicksList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<ListOrganizationReplaysResponseDataItemClicksList>;
 
 export type ListOrganizationReplaysResponseDataItemReleasesList = Array<string>;
-export const ListOrganizationReplaysResponseDataItemReleasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaysResponseDataItemReleasesList>;
+export const ListOrganizationReplaysResponseDataItemReleasesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaysResponseDataItemReleasesList>;
 
 export interface ListOrganizationReplaysResponseDataItem {
   id?: string;
@@ -25794,9 +23710,8 @@ export const ListOrganizationReplaysResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationReplaysResponse>;
 
 export type ListOrganizationReplaySelectorsRequestEnvironmentList = Array<string>;
-export const ListOrganizationReplaySelectorsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaySelectorsRequestEnvironmentList>;
+export const ListOrganizationReplaySelectorsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaySelectorsRequestEnvironmentList>;
 
 export type ListOrganizationReplaySelectorsRequestProjectItem = number | string;
 export const ListOrganizationReplaySelectorsRequestProjectItem =
@@ -25809,9 +23724,8 @@ export const ListOrganizationReplaySelectorsRequestProjectList = /*@__PURE__*/ S
 ) as any as S.Schema<ListOrganizationReplaySelectorsRequestProjectList>;
 
 export type ListOrganizationReplaySelectorsRequestProjectSlugList = Array<string>;
-export const ListOrganizationReplaySelectorsRequestProjectSlugList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReplaySelectorsRequestProjectSlugList>;
+export const ListOrganizationReplaySelectorsRequestProjectSlugList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReplaySelectorsRequestProjectSlugList>;
 
 export interface ListOrganizationReplaySelectorsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -25869,9 +23783,7 @@ export const ListOrganizationReplaySelectorsRequest = /*@__PURE__*/ S.suspend(()
 
 export type ListOrganizationReplaySelectorsResponseDataItemElementClassList = Array<string>;
 export const ListOrganizationReplaySelectorsResponseDataItemElementClassList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationReplaySelectorsResponseDataItemElementClassList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationReplaySelectorsResponseDataItemElementClassList>;
 
 export interface ListOrganizationReplaySelectorsResponseDataItemElement {
   alt: string;
@@ -25972,32 +23884,19 @@ export type ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositoryProv
   [key: string]: string | undefined;
 };
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositoryProviderMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositoryProviderMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositoryProviderMap>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList =
   Array<string>;
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList>;
 
 export interface ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettings {
   enabledCodeReview: boolean;
   codeReviewTriggers: ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList;
 }
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabledCodeReview: S.Boolean,
-      codeReviewTriggers:
-        ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList,
-    }),
-  ).annotate({
-    identifier: "ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettings",
-  }) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettings>;
+  ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettings as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettings>;
 
 export interface ListOrganizationRepoCommitsResponseBodyItemPullRequestRepository {
   url?: string | null;
@@ -26012,26 +23911,7 @@ export interface ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositor
   dateCreated: string;
 }
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.optional(S.NullOr(S.String)),
-      provider: S.optional(
-        ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositoryProviderMap,
-      ),
-      status: S.optional(S.String),
-      integrationId: S.optional(S.NullOr(S.String)),
-      externalSlug: S.optional(S.NullOr(S.String)),
-      externalId: S.optional(S.NullOr(S.String)),
-      settings: S.optional(
-        S.NullOr(ListOrganizationRepoCommitsResponseBodyItemPullRequestRepositorySettings),
-      ),
-      id: S.String,
-      name: S.String,
-      dateCreated: S.String,
-    }),
-  ).annotate({
-    identifier: "ListOrganizationRepoCommitsResponseBodyItemPullRequestRepository",
-  }) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepository>;
+  ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepository as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestRepository>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -26051,9 +23931,7 @@ export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0Id
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -26063,18 +23941,13 @@ export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0Av
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList =
   Array<unknown>;
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -26084,9 +23957,7 @@ export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0Em
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0EmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0EmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0EmailsList>;
 
 export interface ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0 {
   identities?: ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList;
@@ -26112,37 +23983,7 @@ export interface ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCas
   emails: ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0EmailsList;
 }
 export const ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identities: S.optional(
-        ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList,
-      ),
-      avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-      authenticators: S.optional(
-        ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList,
-      ),
-      canReset2fa: S.optional(S.Boolean),
-      id: S.String,
-      name: S.String,
-      username: S.String,
-      email: S.String,
-      avatarUrl: S.String,
-      isActive: S.Boolean,
-      isSuspended: S.Boolean,
-      hasPasswordAuth: S.Boolean,
-      isManaged: S.Boolean,
-      dateJoined: S.String,
-      lastLogin: S.NullOr(S.String),
-      has2fa: S.Boolean,
-      lastActive: S.NullOr(S.String),
-      isSuperuser: S.Boolean,
-      isStaff: S.Boolean,
-      experiments: ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap,
-      emails: ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0EmailsList,
-    }),
-  ).annotate({
-    identifier: "ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0",
-  }) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0>;
+  ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedBy as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase0>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemPullRequestAuthorCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -26186,32 +24027,19 @@ export type ListOrganizationRepoCommitsResponseBodyItemRepositoryProviderMap = {
   [key: string]: string | undefined;
 };
 export const ListOrganizationRepoCommitsResponseBodyItemRepositoryProviderMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemRepositoryProviderMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemRepositoryProviderMap>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList =
   Array<string>;
 export const ListOrganizationRepoCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList>;
 
 export interface ListOrganizationRepoCommitsResponseBodyItemRepositorySettings {
   enabledCodeReview: boolean;
   codeReviewTriggers: ListOrganizationRepoCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList;
 }
 export const ListOrganizationRepoCommitsResponseBodyItemRepositorySettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabledCodeReview: S.Boolean,
-      codeReviewTriggers:
-        ListOrganizationRepoCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList,
-    }),
-  ).annotate({
-    identifier: "ListOrganizationRepoCommitsResponseBodyItemRepositorySettings",
-  }) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemRepositorySettings>;
+  ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettings as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemRepositorySettings>;
 
 export interface ListOrganizationRepoCommitsResponseBodyItemRepository {
   url?: string | null;
@@ -26260,9 +24088,7 @@ export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0IdentitiesIte
 export type ListOrganizationRepoCommitsResponseBodyItemAuthorCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0IdentitiesList>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemAuthorCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -26272,18 +24098,13 @@ export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0Avatar =
 export type ListOrganizationRepoCommitsResponseBodyItemAuthorCase0AuthenticatorsList =
   Array<unknown>;
 export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0AuthenticatorsList>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemAuthorCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0ExperimentsMap>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -26293,9 +24114,7 @@ export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsItem =
 export type ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsList>;
 
 export interface ListOrganizationRepoCommitsResponseBodyItemAuthorCase0 {
   identities?: ListOrganizationRepoCommitsResponseBodyItemAuthorCase0IdentitiesList;
@@ -26320,35 +24139,8 @@ export interface ListOrganizationRepoCommitsResponseBodyItemAuthorCase0 {
   experiments: ListOrganizationRepoCommitsResponseBodyItemAuthorCase0ExperimentsMap;
   emails: ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsList;
 }
-export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListOrganizationRepoCommitsResponseBodyItemAuthorCase0IdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(
-      ListOrganizationRepoCommitsResponseBodyItemAuthorCase0AuthenticatorsList,
-    ),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListOrganizationRepoCommitsResponseBodyItemAuthorCase0ExperimentsMap,
-    emails: ListOrganizationRepoCommitsResponseBodyItemAuthorCase0EmailsList,
-  }),
-).annotate({
-  identifier: "ListOrganizationRepoCommitsResponseBodyItemAuthorCase0",
-}) as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0>;
+export const ListOrganizationRepoCommitsResponseBodyItemAuthorCase0 =
+  CreateOrganizationDiscoverSavedQueryResponseCreatedBy as any as S.Schema<ListOrganizationRepoCommitsResponseBodyItemAuthorCase0>;
 
 export type ListOrganizationRepoCommitsResponseBodyItemAuthorCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -26402,9 +24194,8 @@ export type ListOrganizationReposRequestStatus = "active" | "deleted";
 export const ListOrganizationReposRequestStatus = S.String;
 
 export type ListOrganizationReposRequestExpandList = Array<string>;
-export const ListOrganizationReposRequestExpandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationReposRequestExpandList>;
+export const ListOrganizationReposRequestExpandList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationReposRequestExpandList>;
 
 export interface ListOrganizationReposRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -26445,16 +24236,12 @@ export const ListOrganizationReposRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationReposResponseBodyItemProviderMap = {
   [key: string]: string | undefined;
 };
-export const ListOrganizationReposResponseBodyItemProviderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListOrganizationReposResponseBodyItemProviderMap>;
+export const ListOrganizationReposResponseBodyItemProviderMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListOrganizationReposResponseBodyItemProviderMap>;
 
 export type ListOrganizationReposResponseBodyItemSettingsCodeReviewTriggersList = Array<string>;
 export const ListOrganizationReposResponseBodyItemSettingsCodeReviewTriggersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationReposResponseBodyItemSettingsCodeReviewTriggersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationReposResponseBodyItemSettingsCodeReviewTriggersList>;
 
 export interface ListOrganizationReposResponseBodyItemSettings {
   enabledCodeReview: boolean;
@@ -26533,30 +24320,24 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type ListOrganizationsResponseBodyItemFeaturesList = Array<string>;
-export const ListOrganizationsResponseBodyItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationsResponseBodyItemFeaturesList>;
+export const ListOrganizationsResponseBodyItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationsResponseBodyItemFeaturesList>;
 
 export type ListOrganizationsResponseBodyItemExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationsResponseBodyItemExtraOptionsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationsResponseBodyItemExtraOptionsValueMap>;
+export const ListOrganizationsResponseBodyItemExtraOptionsValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationsResponseBodyItemExtraOptionsValueMap>;
 
 export type ListOrganizationsResponseBodyItemExtraOptionsMap = {
   [key: string]: ListOrganizationsResponseBodyItemExtraOptionsValueMap | undefined;
 };
-export const ListOrganizationsResponseBodyItemExtraOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListOrganizationsResponseBodyItemExtraOptionsValueMap,
-) as any as S.Schema<ListOrganizationsResponseBodyItemExtraOptionsMap>;
+export const ListOrganizationsResponseBodyItemExtraOptionsMap =
+  GetOrganizationResponseExtraOptionsMap as any as S.Schema<ListOrganizationsResponseBodyItemExtraOptionsMap>;
 
 export type ListOrganizationsResponseBodyItemAccessList = Array<string>;
-export const ListOrganizationsResponseBodyItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationsResponseBodyItemAccessList>;
+export const ListOrganizationsResponseBodyItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationsResponseBodyItemAccessList>;
 
 export type ListOrganizationsResponseBodyItemOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -26565,9 +24346,8 @@ export const ListOrganizationsResponseBodyItemOnboardingTasksItem =
 
 export type ListOrganizationsResponseBodyItemOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
-export const ListOrganizationsResponseBodyItemOnboardingTasksList = /*@__PURE__*/ S.Array(
-  CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-) as any as S.Schema<ListOrganizationsResponseBodyItemOnboardingTasksList>;
+export const ListOrganizationsResponseBodyItemOnboardingTasksList =
+  CreateOrganizationTeamResponseOrganizationOnboardingTasksList as any as S.Schema<ListOrganizationsResponseBodyItemOnboardingTasksList>;
 
 export type ListOrganizationsResponseBodyItemStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -26601,29 +24381,8 @@ export interface ListOrganizationsResponseBodyItem {
   allowMemberProjectCreation: boolean;
   allowSuperuserAccess: boolean;
 }
-export const ListOrganizationsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    features: S.optional(ListOrganizationsResponseBodyItemFeaturesList),
-    extraOptions: S.optional(ListOrganizationsResponseBodyItemExtraOptionsMap),
-    access: S.optional(ListOrganizationsResponseBodyItemAccessList),
-    onboardingTasks: S.optional(ListOrganizationsResponseBodyItemOnboardingTasksList),
-    id: S.String,
-    slug: S.String,
-    status: AddOrganizationMemberResponseUserIdentitiesItemProvider,
-    name: S.String,
-    dateCreated: S.String,
-    isEarlyAdopter: S.Boolean,
-    require2FA: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    links: CreateOrganizationTeamResponseOrganizationLinks,
-    hasAuthProvider: S.Boolean,
-    allowMemberInvite: S.Boolean,
-    allowMemberProjectCreation: S.Boolean,
-    allowSuperuserAccess: S.Boolean,
-  }),
-).annotate({
-  identifier: "ListOrganizationsResponseBodyItem",
-}) as any as S.Schema<ListOrganizationsResponseBodyItem>;
+export const ListOrganizationsResponseBodyItem =
+  GetProjectResponseOrganization as any as S.Schema<ListOrganizationsResponseBodyItem>;
 
 export type ListOrganizationsResponseBodyList = Array<ListOrganizationsResponseBodyItem>;
 export const ListOrganizationsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -26638,9 +24397,8 @@ export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsResponse>;
 
 export type ListOrganizationScimV2GroupsRequestExcludedAttributesList = Array<string>;
-export const ListOrganizationScimV2GroupsRequestExcludedAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationScimV2GroupsRequestExcludedAttributesList>;
+export const ListOrganizationScimV2GroupsRequestExcludedAttributesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationScimV2GroupsRequestExcludedAttributesList>;
 
 export interface ListOrganizationScimV2GroupsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -26675,14 +24433,12 @@ export const ListOrganizationScimV2GroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationScimV2GroupsRequest>;
 
 export type ListOrganizationScimV2GroupsResponseSchemasList = Array<string>;
-export const ListOrganizationScimV2GroupsResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationScimV2GroupsResponseSchemasList>;
+export const ListOrganizationScimV2GroupsResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationScimV2GroupsResponseSchemasList>;
 
 export type ListOrganizationScimV2GroupsResponseResourcesItemSchemasList = Array<string>;
-export const ListOrganizationScimV2GroupsResponseResourcesItemSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationScimV2GroupsResponseResourcesItemSchemasList>;
+export const ListOrganizationScimV2GroupsResponseResourcesItemSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationScimV2GroupsResponseResourcesItemSchemasList>;
 
 export type ListOrganizationScimV2GroupsResponseResourcesItemMeta =
   GetOrganizationScimV2GroupResponseMeta;
@@ -26696,9 +24452,8 @@ export const ListOrganizationScimV2GroupsResponseResourcesItemMembersItem =
 
 export type ListOrganizationScimV2GroupsResponseResourcesItemMembersList =
   Array<GetOrganizationScimV2GroupResponseMembersItem>;
-export const ListOrganizationScimV2GroupsResponseResourcesItemMembersList = /*@__PURE__*/ S.Array(
-  GetOrganizationScimV2GroupResponseMembersItem,
-) as any as S.Schema<ListOrganizationScimV2GroupsResponseResourcesItemMembersList>;
+export const ListOrganizationScimV2GroupsResponseResourcesItemMembersList =
+  GetOrganizationScimV2GroupResponseMembersList as any as S.Schema<ListOrganizationScimV2GroupsResponseResourcesItemMembersList>;
 
 export interface ListOrganizationScimV2GroupsResponseResourcesItem {
   schemas: ListOrganizationScimV2GroupsResponseResourcesItemSchemasList;
@@ -26707,17 +24462,8 @@ export interface ListOrganizationScimV2GroupsResponseResourcesItem {
   meta: GetOrganizationScimV2GroupResponseMeta;
   members?: ListOrganizationScimV2GroupsResponseResourcesItemMembersList;
 }
-export const ListOrganizationScimV2GroupsResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: ListOrganizationScimV2GroupsResponseResourcesItemSchemasList,
-    id: S.String,
-    displayName: S.String,
-    meta: GetOrganizationScimV2GroupResponseMeta,
-    members: S.optional(ListOrganizationScimV2GroupsResponseResourcesItemMembersList),
-  }),
-).annotate({
-  identifier: "ListOrganizationScimV2GroupsResponseResourcesItem",
-}) as any as S.Schema<ListOrganizationScimV2GroupsResponseResourcesItem>;
+export const ListOrganizationScimV2GroupsResponseResourcesItem =
+  GetOrganizationScimV2GroupResponse as any as S.Schema<ListOrganizationScimV2GroupsResponseResourcesItem>;
 
 export type ListOrganizationScimV2GroupsResponseResourcesList =
   Array<ListOrganizationScimV2GroupsResponseResourcesItem>;
@@ -26763,15 +24509,12 @@ export const ListOrganizationScimV2ResourceTypesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListOrganizationScimV2ResourceTypesRequest>;
 
 export type ListOrganizationScimV2ResourceTypesResponseSchemasList = Array<string>;
-export const ListOrganizationScimV2ResourceTypesResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationScimV2ResourceTypesResponseSchemasList>;
+export const ListOrganizationScimV2ResourceTypesResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationScimV2ResourceTypesResponseSchemasList>;
 
 export type ListOrganizationScimV2ResourceTypesResponseResourcesItemSchemasList = Array<string>;
 export const ListOrganizationScimV2ResourceTypesResponseResourcesItemSchemasList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationScimV2ResourceTypesResponseResourcesItemSchemasList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationScimV2ResourceTypesResponseResourcesItemSchemasList>;
 
 export type ListOrganizationScimV2ResourceTypesResponseResourcesItemMeta =
   GetOrganizationScimV2ResourceTypeResponseMeta;
@@ -26828,9 +24571,8 @@ export const ListOrganizationScimV2ResourceTypesResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationScimV2ResourceTypesResponse>;
 
 export type ListOrganizationScimV2UsersRequestExcludedAttributesList = Array<string>;
-export const ListOrganizationScimV2UsersRequestExcludedAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationScimV2UsersRequestExcludedAttributesList>;
+export const ListOrganizationScimV2UsersRequestExcludedAttributesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationScimV2UsersRequestExcludedAttributesList>;
 
 export interface ListOrganizationScimV2UsersRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -26865,14 +24607,12 @@ export const ListOrganizationScimV2UsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationScimV2UsersRequest>;
 
 export type ListOrganizationScimV2UsersResponseSchemasList = Array<string>;
-export const ListOrganizationScimV2UsersResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationScimV2UsersResponseSchemasList>;
+export const ListOrganizationScimV2UsersResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationScimV2UsersResponseSchemasList>;
 
 export type ListOrganizationScimV2UsersResponseResourcesItemSchemasList = Array<string>;
-export const ListOrganizationScimV2UsersResponseResourcesItemSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationScimV2UsersResponseResourcesItemSchemasList>;
+export const ListOrganizationScimV2UsersResponseResourcesItemSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationScimV2UsersResponseResourcesItemSchemasList>;
 
 export type ListOrganizationScimV2UsersResponseResourcesItemName =
   GetOrganizationScimV2UserResponseName;
@@ -26886,9 +24626,8 @@ export const ListOrganizationScimV2UsersResponseResourcesItemEmailsItem =
 
 export type ListOrganizationScimV2UsersResponseResourcesItemEmailsList =
   Array<GetOrganizationScimV2UserResponseEmailsItem>;
-export const ListOrganizationScimV2UsersResponseResourcesItemEmailsList = /*@__PURE__*/ S.Array(
-  GetOrganizationScimV2UserResponseEmailsItem,
-) as any as S.Schema<ListOrganizationScimV2UsersResponseResourcesItemEmailsList>;
+export const ListOrganizationScimV2UsersResponseResourcesItemEmailsList =
+  GetOrganizationScimV2UserResponseEmailsList as any as S.Schema<ListOrganizationScimV2UsersResponseResourcesItemEmailsList>;
 
 export type ListOrganizationScimV2UsersResponseResourcesItemMeta =
   GetOrganizationScimV2GroupResponseMeta;
@@ -26906,20 +24645,8 @@ export interface ListOrganizationScimV2UsersResponseResourcesItem {
   meta: GetOrganizationScimV2GroupResponseMeta;
   sentryOrgRole: string;
 }
-export const ListOrganizationScimV2UsersResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.optional(S.Boolean),
-    schemas: ListOrganizationScimV2UsersResponseResourcesItemSchemasList,
-    id: S.String,
-    userName: S.String,
-    name: GetOrganizationScimV2UserResponseName,
-    emails: ListOrganizationScimV2UsersResponseResourcesItemEmailsList,
-    meta: GetOrganizationScimV2GroupResponseMeta,
-    sentryOrgRole: S.String,
-  }),
-).annotate({
-  identifier: "ListOrganizationScimV2UsersResponseResourcesItem",
-}) as any as S.Schema<ListOrganizationScimV2UsersResponseResourcesItem>;
+export const ListOrganizationScimV2UsersResponseResourcesItem =
+  GetOrganizationScimV2UserResponse as any as S.Schema<ListOrganizationScimV2UsersResponseResourcesItem>;
 
 export type ListOrganizationScimV2UsersResponseResourcesList =
   Array<ListOrganizationScimV2UsersResponseResourcesItem>;
@@ -26973,19 +24700,14 @@ export const ListOrganizationSentryAppComponentsRequest = /*@__PURE__*/ S.suspen
 export type ListOrganizationSentryAppComponentsResponseBodyItemSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationSentryAppComponentsResponseBodyItemSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationSentryAppComponentsResponseBodyItemSchemaMap>;
+export const ListOrganizationSentryAppComponentsResponseBodyItemSchemaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationSentryAppComponentsResponseBodyItemSchemaMap>;
 
 export type ListOrganizationSentryAppComponentsResponseBodyItemErrorCase1ContextMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationSentryAppComponentsResponseBodyItemErrorCase1ContextMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationSentryAppComponentsResponseBodyItemErrorCase1ContextMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationSentryAppComponentsResponseBodyItemErrorCase1ContextMap>;
 
 export interface ListOrganizationSentryAppComponentsResponseBodyItemErrorCase1 {
   detail?: string;
@@ -27089,9 +24811,8 @@ export const ListOrganizationSentryAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationSentryAppsRequest>;
 
 export type ListOrganizationSentryAppsResponseBodyItemAllowedOriginsList = Array<string>;
-export const ListOrganizationSentryAppsResponseBodyItemAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemAllowedOriginsList>;
+export const ListOrganizationSentryAppsResponseBodyItemAllowedOriginsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemAllowedOriginsList>;
 
 export type ListOrganizationSentryAppsResponseBodyItemAvatarsItem = GetSentryAppResponseAvatarsItem;
 export const ListOrganizationSentryAppsResponseBodyItemAvatarsItem =
@@ -27099,34 +24820,28 @@ export const ListOrganizationSentryAppsResponseBodyItemAvatarsItem =
 
 export type ListOrganizationSentryAppsResponseBodyItemAvatarsList =
   Array<GetSentryAppResponseAvatarsItem>;
-export const ListOrganizationSentryAppsResponseBodyItemAvatarsList = /*@__PURE__*/ S.Array(
-  GetSentryAppResponseAvatarsItem,
-) as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemAvatarsList>;
+export const ListOrganizationSentryAppsResponseBodyItemAvatarsList =
+  GetSentryAppResponseAvatarsList as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemAvatarsList>;
 
 export type ListOrganizationSentryAppsResponseBodyItemEventsList = Array<string>;
-export const ListOrganizationSentryAppsResponseBodyItemEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemEventsList>;
+export const ListOrganizationSentryAppsResponseBodyItemEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemEventsList>;
 
 export type ListOrganizationSentryAppsResponseBodyItemWebhookEventsList = Array<string>;
-export const ListOrganizationSentryAppsResponseBodyItemWebhookEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemWebhookEventsList>;
+export const ListOrganizationSentryAppsResponseBodyItemWebhookEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemWebhookEventsList>;
 
 export type ListOrganizationSentryAppsResponseBodyItemFeatureDataList = Array<string>;
-export const ListOrganizationSentryAppsResponseBodyItemFeatureDataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemFeatureDataList>;
+export const ListOrganizationSentryAppsResponseBodyItemFeatureDataList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemFeatureDataList>;
 
 export type ListOrganizationSentryAppsResponseBodyItemScopesList = Array<string>;
-export const ListOrganizationSentryAppsResponseBodyItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemScopesList>;
+export const ListOrganizationSentryAppsResponseBodyItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemScopesList>;
 
 export type ListOrganizationSentryAppsResponseBodyItemWebhookHeadersList = Array<string>;
-export const ListOrganizationSentryAppsResponseBodyItemWebhookHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemWebhookHeadersList>;
+export const ListOrganizationSentryAppsResponseBodyItemWebhookHeadersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationSentryAppsResponseBodyItemWebhookHeadersList>;
 
 export type ListOrganizationSentryAppsResponseBodyItemOwner = GetSentryAppResponseOwner;
 export const ListOrganizationSentryAppsResponseBodyItemOwner = GetSentryAppResponseOwner;
@@ -27222,9 +24937,8 @@ export type ListOrganizationStatsV2RequestField = "sum(quantity)" | "sum(times_s
 export const ListOrganizationStatsV2RequestField = S.String;
 
 export type ListOrganizationStatsV2RequestProjectList = Array<unknown>;
-export const ListOrganizationStatsV2RequestProjectList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListOrganizationStatsV2RequestProjectList>;
+export const ListOrganizationStatsV2RequestProjectList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<ListOrganizationStatsV2RequestProjectList>;
 
 export type ListOrganizationStatsV2RequestCategory =
   | "error"
@@ -27298,31 +25012,24 @@ export const ListOrganizationStatsV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationStatsV2Request>;
 
 export type ListOrganizationStatsV2ResponseIntervalsList = Array<string>;
-export const ListOrganizationStatsV2ResponseIntervalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationStatsV2ResponseIntervalsList>;
+export const ListOrganizationStatsV2ResponseIntervalsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationStatsV2ResponseIntervalsList>;
 
 export type ListOrganizationStatsV2ResponseGroupsItemByMap = { [key: string]: unknown | undefined };
-export const ListOrganizationStatsV2ResponseGroupsItemByMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationStatsV2ResponseGroupsItemByMap>;
+export const ListOrganizationStatsV2ResponseGroupsItemByMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationStatsV2ResponseGroupsItemByMap>;
 
 export type ListOrganizationStatsV2ResponseGroupsItemTotalsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationStatsV2ResponseGroupsItemTotalsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationStatsV2ResponseGroupsItemTotalsMap>;
+export const ListOrganizationStatsV2ResponseGroupsItemTotalsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationStatsV2ResponseGroupsItemTotalsMap>;
 
 export type ListOrganizationStatsV2ResponseGroupsItemSeriesMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationStatsV2ResponseGroupsItemSeriesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationStatsV2ResponseGroupsItemSeriesMap>;
+export const ListOrganizationStatsV2ResponseGroupsItemSeriesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationStatsV2ResponseGroupsItemSeriesMap>;
 
 export interface ListOrganizationStatsV2ResponseGroupsItem {
   by: ListOrganizationStatsV2ResponseGroupsItemByMap;
@@ -27372,9 +25079,8 @@ export const ListOrganizationTagsRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListOrganizationTagsRequestProjectList>;
 
 export type ListOrganizationTagsRequestEnvironmentList = Array<string>;
-export const ListOrganizationTagsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTagsRequestEnvironmentList>;
+export const ListOrganizationTagsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTagsRequestEnvironmentList>;
 
 export type ListOrganizationTagsRequestDataset =
   | "discover"
@@ -27438,9 +25144,8 @@ export const ListOrganizationTagsResponseBodyItemTopValuesItem =
 
 export type ListOrganizationTagsResponseBodyItemTopValuesList =
   Array<GetOrganizationIssueTagResponseTopValuesItem>;
-export const ListOrganizationTagsResponseBodyItemTopValuesList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueTagResponseTopValuesItem,
-) as any as S.Schema<ListOrganizationTagsResponseBodyItemTopValuesList>;
+export const ListOrganizationTagsResponseBodyItemTopValuesList =
+  GetOrganizationIssueTagResponseTopValuesList as any as S.Schema<ListOrganizationTagsResponseBodyItemTopValuesList>;
 
 export interface ListOrganizationTagsResponseBodyItem {
   uniqueValues?: number | null;
@@ -27449,17 +25154,8 @@ export interface ListOrganizationTagsResponseBodyItem {
   key: string;
   name: string;
 }
-export const ListOrganizationTagsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uniqueValues: S.optional(S.NullOr(S.Number)),
-    totalValues: S.optional(S.NullOr(S.Number)),
-    topValues: S.optional(S.NullOr(ListOrganizationTagsResponseBodyItemTopValuesList)),
-    key: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ListOrganizationTagsResponseBodyItem",
-}) as any as S.Schema<ListOrganizationTagsResponseBodyItem>;
+export const ListOrganizationTagsResponseBodyItem =
+  GetOrganizationIssueTagResponse as any as S.Schema<ListOrganizationTagsResponseBodyItem>;
 
 export type ListOrganizationTagsResponseBodyList = Array<ListOrganizationTagsResponseBodyItem>;
 export const ListOrganizationTagsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -27504,15 +25200,12 @@ export const ListOrganizationTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationTeamsRequest>;
 
 export type ListOrganizationTeamsResponseBodyItemFlagsMap = { [key: string]: unknown | undefined };
-export const ListOrganizationTeamsResponseBodyItemFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemFlagsMap>;
+export const ListOrganizationTeamsResponseBodyItemFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationTeamsResponseBodyItemFlagsMap>;
 
 export type ListOrganizationTeamsResponseBodyItemAccessList = Array<string>;
-export const ListOrganizationTeamsResponseBodyItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemAccessList>;
+export const ListOrganizationTeamsResponseBodyItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTeamsResponseBodyItemAccessList>;
 
 export type ListOrganizationTeamsResponseBodyItemAvatar = AddOrganizationMemberResponseUserAvatar;
 export const ListOrganizationTeamsResponseBodyItemAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -27524,23 +25217,18 @@ export const ListOrganizationTeamsResponseBodyItemExternalTeamsItem =
 
 export type ListOrganizationTeamsResponseBodyItemExternalTeamsList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const ListOrganizationTeamsResponseBodyItemExternalTeamsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemExternalTeamsList>;
+export const ListOrganizationTeamsResponseBodyItemExternalTeamsList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<ListOrganizationTeamsResponseBodyItemExternalTeamsList>;
 
 export type ListOrganizationTeamsResponseBodyItemOrganizationFeaturesList = Array<string>;
-export const ListOrganizationTeamsResponseBodyItemOrganizationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganizationFeaturesList>;
+export const ListOrganizationTeamsResponseBodyItemOrganizationFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganizationFeaturesList>;
 
 export type ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsValueMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsValueMap>;
 
 export type ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsMap = {
   [key: string]: ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsValueMap | undefined;
@@ -27552,9 +25240,8 @@ export const ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsMap =
   ) as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsMap>;
 
 export type ListOrganizationTeamsResponseBodyItemOrganizationAccessList = Array<string>;
-export const ListOrganizationTeamsResponseBodyItemOrganizationAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganizationAccessList>;
+export const ListOrganizationTeamsResponseBodyItemOrganizationAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganizationAccessList>;
 
 export type ListOrganizationTeamsResponseBodyItemOrganizationOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -27629,14 +25316,12 @@ export const ListOrganizationTeamsResponseBodyItemOrganization = /*@__PURE__*/ S
 }) as any as S.Schema<ListOrganizationTeamsResponseBodyItemOrganization>;
 
 export type ListOrganizationTeamsResponseBodyItemProjectsItemFeaturesList = Array<string>;
-export const ListOrganizationTeamsResponseBodyItemProjectsItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsItemFeaturesList>;
+export const ListOrganizationTeamsResponseBodyItemProjectsItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsItemFeaturesList>;
 
 export type ListOrganizationTeamsResponseBodyItemProjectsItemAccessList = Array<string>;
-export const ListOrganizationTeamsResponseBodyItemProjectsItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsItemAccessList>;
+export const ListOrganizationTeamsResponseBodyItemProjectsItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsItemAccessList>;
 
 export type ListOrganizationTeamsResponseBodyItemProjectsItemAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -27685,58 +25370,13 @@ export interface ListOrganizationTeamsResponseBodyItemProjectsItem {
   color: string;
   status: string;
 }
-export const ListOrganizationTeamsResponseBodyItemProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: ListOrganizationTeamsResponseBodyItemProjectsItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: ListOrganizationTeamsResponseBodyItemProjectsItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "ListOrganizationTeamsResponseBodyItemProjectsItem",
-}) as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsItem>;
+export const ListOrganizationTeamsResponseBodyItemProjectsItem =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsItem>;
 
 export type ListOrganizationTeamsResponseBodyItemProjectsList =
   Array<ListOrganizationTeamsResponseBodyItemProjectsItem>;
-export const ListOrganizationTeamsResponseBodyItemProjectsList = /*@__PURE__*/ S.Array(
-  ListOrganizationTeamsResponseBodyItemProjectsItem,
-) as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsList>;
+export const ListOrganizationTeamsResponseBodyItemProjectsList =
+  CreateOrganizationTeamResponseProjectsList as any as S.Schema<ListOrganizationTeamsResponseBodyItemProjectsList>;
 
 export interface ListOrganizationTeamsResponseBodyItem {
   id: string;
@@ -27790,9 +25430,8 @@ export const ListOrganizationTeamsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationTeamsResponse>;
 
 export type ListOrganizationTraceItemAttributesRequestEnvironmentList = Array<string>;
-export const ListOrganizationTraceItemAttributesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTraceItemAttributesRequestEnvironmentList>;
+export const ListOrganizationTraceItemAttributesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTraceItemAttributesRequestEnvironmentList>;
 
 export type ListOrganizationTraceItemAttributesRequestProjectItem = number | string;
 export const ListOrganizationTraceItemAttributesRequestProjectItem =
@@ -27891,9 +25530,7 @@ export const ListOrganizationTraceItemAttributesRequest = /*@__PURE__*/ S.suspen
 
 export type ListOrganizationTraceItemAttributesResponseBodyItemSecondaryAliasesList = Array<string>;
 export const ListOrganizationTraceItemAttributesResponseBodyItemSecondaryAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationTraceItemAttributesResponseBodyItemSecondaryAliasesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationTraceItemAttributesResponseBodyItemSecondaryAliasesList>;
 
 export type ListOrganizationTraceItemAttributesResponseBodyItemAttributeSourceSourceType =
   | "sentry"
@@ -27968,9 +25605,8 @@ export const ListOrganizationTraceMetricsRequestProjectList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<ListOrganizationTraceMetricsRequestProjectList>;
 
 export type ListOrganizationTraceMetricsRequestEnvironmentList = Array<string>;
-export const ListOrganizationTraceMetricsRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTraceMetricsRequestEnvironmentList>;
+export const ListOrganizationTraceMetricsRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTraceMetricsRequestEnvironmentList>;
 
 export type ListOrganizationTraceMetricsRequestSort =
   | "-count"
@@ -28044,9 +25680,8 @@ export type ListOrganizationTraceMetricsResponseBodyItemType = "counter" | "gaug
 export const ListOrganizationTraceMetricsResponseBodyItemType = S.String;
 
 export type ListOrganizationTraceMetricsResponseBodyItemContextDetailsList = Array<string>;
-export const ListOrganizationTraceMetricsResponseBodyItemContextDetailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationTraceMetricsResponseBodyItemContextDetailsList>;
+export const ListOrganizationTraceMetricsResponseBodyItemContextDetailsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationTraceMetricsResponseBodyItemContextDetailsList>;
 
 export interface ListOrganizationTraceMetricsResponseBodyItemContext {
   brief?: string;
@@ -28116,15 +25751,12 @@ export const ListOrganizationUserTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationUserTeamsResponseBodyItemFlagsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationUserTeamsResponseBodyItemFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemFlagsMap>;
+export const ListOrganizationUserTeamsResponseBodyItemFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemFlagsMap>;
 
 export type ListOrganizationUserTeamsResponseBodyItemAccessList = Array<string>;
-export const ListOrganizationUserTeamsResponseBodyItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemAccessList>;
+export const ListOrganizationUserTeamsResponseBodyItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemAccessList>;
 
 export type ListOrganizationUserTeamsResponseBodyItemAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -28138,24 +25770,18 @@ export const ListOrganizationUserTeamsResponseBodyItemExternalTeamsItem =
 
 export type ListOrganizationUserTeamsResponseBodyItemExternalTeamsList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const ListOrganizationUserTeamsResponseBodyItemExternalTeamsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemExternalTeamsList>;
+export const ListOrganizationUserTeamsResponseBodyItemExternalTeamsList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemExternalTeamsList>;
 
 export type ListOrganizationUserTeamsResponseBodyItemOrganizationFeaturesList = Array<string>;
 export const ListOrganizationUserTeamsResponseBodyItemOrganizationFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationFeaturesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationFeaturesList>;
 
 export type ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsValueMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsValueMap>;
 
 export type ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsMap = {
   [key: string]:
@@ -28163,16 +25789,11 @@ export type ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsMap
     | undefined;
 };
 export const ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsValueMap,
-  ) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsMap>;
+  ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsMap as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationExtraOptionsMap>;
 
 export type ListOrganizationUserTeamsResponseBodyItemOrganizationAccessList = Array<string>;
 export const ListOrganizationUserTeamsResponseBodyItemOrganizationAccessList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationAccessList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationAccessList>;
 
 export type ListOrganizationUserTeamsResponseBodyItemOrganizationOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -28182,9 +25803,7 @@ export const ListOrganizationUserTeamsResponseBodyItemOrganizationOnboardingTask
 export type ListOrganizationUserTeamsResponseBodyItemOrganizationOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
 export const ListOrganizationUserTeamsResponseBodyItemOrganizationOnboardingTasksList =
-  /*@__PURE__*/ S.Array(
-    CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-  ) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationOnboardingTasksList>;
+  ListOrganizationTeamsResponseBodyItemOrganizationOnboardingTasksList as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemOrganizationOnboardingTasksList>;
 
 export type ListOrganizationUserTeamsResponseBodyItemOrganizationStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -28248,15 +25867,11 @@ export const ListOrganizationUserTeamsResponseBodyItemOrganization = /*@__PURE__
 
 export type ListOrganizationUserTeamsResponseBodyItemProjectsItemFeaturesList = Array<string>;
 export const ListOrganizationUserTeamsResponseBodyItemProjectsItemFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemProjectsItemFeaturesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemProjectsItemFeaturesList>;
 
 export type ListOrganizationUserTeamsResponseBodyItemProjectsItemAccessList = Array<string>;
 export const ListOrganizationUserTeamsResponseBodyItemProjectsItemAccessList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemProjectsItemAccessList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListOrganizationUserTeamsResponseBodyItemProjectsItemAccessList>;
 
 export type ListOrganizationUserTeamsResponseBodyItemProjectsItemAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -28411,14 +26026,12 @@ export const ListOrganizationUserTeamsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationUserTeamsResponse>;
 
 export type ListOrganizationWorkflowsRequestIdList = Array<number>;
-export const ListOrganizationWorkflowsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOrganizationWorkflowsRequestIdList>;
+export const ListOrganizationWorkflowsRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<ListOrganizationWorkflowsRequestIdList>;
 
 export type ListOrganizationWorkflowsRequestDetectorList = Array<number>;
-export const ListOrganizationWorkflowsRequestDetectorList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListOrganizationWorkflowsRequestDetectorList>;
+export const ListOrganizationWorkflowsRequestDetectorList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<ListOrganizationWorkflowsRequestDetectorList>;
 
 export type ListOrganizationWorkflowsRequestProjectItem = number | string;
 export const ListOrganizationWorkflowsRequestProjectItem =
@@ -28502,9 +26115,7 @@ export const ListOrganizationWorkflowsResponseBodyItemTriggersConditionsCase0Lis
 
 export type ListOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List = Array<unknown>;
 export const ListOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List>;
 
 export type ListOrganizationWorkflowsResponseBodyItemTriggersConditions =
   | ListOrganizationWorkflowsResponseBodyItemTriggersConditionsCase0List
@@ -28516,19 +26127,13 @@ export type ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDat
   [key: string]: string | undefined;
 };
 export const ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap>;
 
 export type ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap>;
 
 export interface ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item {
   id?: string;
@@ -28539,33 +26144,16 @@ export interface ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0It
   status?: string;
 }
 export const ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(S.String),
-      integrationId: S.optional(S.NullOr(S.String)),
-      data: S.optional(ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap),
-      config: S.optional(
-        ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap,
-      ),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item",
-  }) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item>;
+  CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item>;
 
 export type ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List =
   Array<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item>;
 export const ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List =
-  /*@__PURE__*/ S.Array(
-    ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List>;
+  CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0List as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List>;
 
 export type ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List = Array<unknown>;
 export const ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List>;
 
 export type ListOrganizationWorkflowsResponseBodyItemTriggersActions =
   | ListOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List
@@ -28627,9 +26215,7 @@ export const ListOrganizationWorkflowsResponseBodyItemActionFiltersItemCondition
 export type ListOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List =
   Array<unknown>;
 export const ListOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List>;
 
 export type ListOrganizationWorkflowsResponseBodyItemActionFiltersItemConditions =
   | ListOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase0List
@@ -28641,19 +26227,13 @@ export type ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCas
   [key: string]: string | undefined;
 };
 export const ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemDataMap>;
 
 export type ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap>;
 
 export interface ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item {
   id?: string;
@@ -28691,9 +26271,7 @@ export const ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCa
 export type ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List =
   Array<unknown>;
 export const ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List>;
 
 export type ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActions =
   | ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0List
@@ -28730,15 +26308,12 @@ export const ListOrganizationWorkflowsResponseBodyItemActionFiltersList = /*@__P
 export type ListOrganizationWorkflowsResponseBodyItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const ListOrganizationWorkflowsResponseBodyItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemConfigMap>;
+export const ListOrganizationWorkflowsResponseBodyItemConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemConfigMap>;
 
 export type ListOrganizationWorkflowsResponseBodyItemDetectorIdsList = Array<string>;
-export const ListOrganizationWorkflowsResponseBodyItemDetectorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemDetectorIdsList>;
+export const ListOrganizationWorkflowsResponseBodyItemDetectorIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListOrganizationWorkflowsResponseBodyItemDetectorIdsList>;
 
 export interface ListOrganizationWorkflowsResponseBodyItem {
   id: string;
@@ -28826,18 +26401,13 @@ export const ListProjectCodeOwnersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListProjectCodeOwnersResponseBodyItemCodeMappingProviderFeaturesList = Array<string>;
 export const ListProjectCodeOwnersResponseBodyItemCodeMappingProviderFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemCodeMappingProviderFeaturesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectCodeOwnersResponseBodyItemCodeMappingProviderFeaturesList>;
 
 export type ListProjectCodeOwnersResponseBodyItemCodeMappingProviderAspectsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListProjectCodeOwnersResponseBodyItemCodeMappingProviderAspectsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemCodeMappingProviderAspectsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListProjectCodeOwnersResponseBodyItemCodeMappingProviderAspectsMap>;
 
 export interface ListProjectCodeOwnersResponseBodyItemCodeMappingProvider {
   key: string;
@@ -28848,20 +26418,8 @@ export interface ListProjectCodeOwnersResponseBodyItemCodeMappingProvider {
   features: ListProjectCodeOwnersResponseBodyItemCodeMappingProviderFeaturesList;
   aspects: ListProjectCodeOwnersResponseBodyItemCodeMappingProviderAspectsMap;
 }
-export const ListProjectCodeOwnersResponseBodyItemCodeMappingProvider = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-      slug: S.String,
-      name: S.String,
-      canAdd: S.Boolean,
-      canDisable: S.Boolean,
-      features: ListProjectCodeOwnersResponseBodyItemCodeMappingProviderFeaturesList,
-      aspects: ListProjectCodeOwnersResponseBodyItemCodeMappingProviderAspectsMap,
-    }),
-).annotate({
-  identifier: "ListProjectCodeOwnersResponseBodyItemCodeMappingProvider",
-}) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemCodeMappingProvider>;
+export const ListProjectCodeOwnersResponseBodyItemCodeMappingProvider =
+  ListOrganizationIssueIntegrationsResponseBodyItemProvider as any as S.Schema<ListProjectCodeOwnersResponseBodyItemCodeMappingProvider>;
 
 export interface ListProjectCodeOwnersResponseBodyItemCodeMapping {
   id: string;
@@ -28898,33 +26456,23 @@ export const ListProjectCodeOwnersResponseBodyItemCodeMapping = /*@__PURE__*/ S.
 
 export type ListProjectCodeOwnersResponseBodyItemErrorsMissingUserEmailsList = Array<string>;
 export const ListProjectCodeOwnersResponseBodyItemErrorsMissingUserEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsMissingUserEmailsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsMissingUserEmailsList>;
 
 export type ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalUsersList = Array<string>;
 export const ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalUsersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalUsersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalUsersList>;
 
 export type ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalTeamsList = Array<string>;
 export const ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalTeamsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalTeamsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsMissingExternalTeamsList>;
 
 export type ListProjectCodeOwnersResponseBodyItemErrorsTeamsWithoutAccessList = Array<string>;
 export const ListProjectCodeOwnersResponseBodyItemErrorsTeamsWithoutAccessList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsTeamsWithoutAccessList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsTeamsWithoutAccessList>;
 
 export type ListProjectCodeOwnersResponseBodyItemErrorsUsersWithoutAccessList = Array<string>;
 export const ListProjectCodeOwnersResponseBodyItemErrorsUsersWithoutAccessList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsUsersWithoutAccessList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectCodeOwnersResponseBodyItemErrorsUsersWithoutAccessList>;
 
 export interface ListProjectCodeOwnersResponseBodyItemErrors {
   missing_user_emails: ListProjectCodeOwnersResponseBodyItemErrorsMissingUserEmailsList;
@@ -29048,9 +26596,8 @@ export const ListProjectCodeOwnersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectCodeOwnersResponse>;
 
 export type ListProjectDebugFilesRequestFileFormatsList = Array<string>;
-export const ListProjectDebugFilesRequestFileFormatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectDebugFilesRequestFileFormatsList>;
+export const ListProjectDebugFilesRequestFileFormatsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectDebugFilesRequestFileFormatsList>;
 
 export interface ListProjectDebugFilesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -29089,16 +26636,12 @@ export const ListProjectDebugFilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectDebugFilesRequest>;
 
 export type ListProjectDebugFilesResponseBodyItemHeadersMap = { [key: string]: string | undefined };
-export const ListProjectDebugFilesResponseBodyItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListProjectDebugFilesResponseBodyItemHeadersMap>;
+export const ListProjectDebugFilesResponseBodyItemHeadersMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListProjectDebugFilesResponseBodyItemHeadersMap>;
 
 export type ListProjectDebugFilesResponseBodyItemDataMap = { [key: string]: unknown | undefined };
-export const ListProjectDebugFilesResponseBodyItemDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectDebugFilesResponseBodyItemDataMap>;
+export const ListProjectDebugFilesResponseBodyItemDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectDebugFilesResponseBodyItemDataMap>;
 
 export interface ListProjectDebugFilesResponseBodyItem {
   id: string;
@@ -29178,16 +26721,12 @@ export const ListProjectEnvironmentsResponseBodyItem =
 
 export type ListProjectEnvironmentsResponseBodyList =
   Array<BulkUpdateProjectEnvironmentsResponseBodyItem>;
-export const ListProjectEnvironmentsResponseBodyList = /*@__PURE__*/ S.Array(
-  BulkUpdateProjectEnvironmentsResponseBodyItem,
-) as any as S.Schema<ListProjectEnvironmentsResponseBodyList>;
+export const ListProjectEnvironmentsResponseBodyList =
+  BulkUpdateProjectEnvironmentsResponseBodyList as any as S.Schema<ListProjectEnvironmentsResponseBodyList>;
 
 export type ListProjectEnvironmentsResponse = ListProjectEnvironmentsResponseBodyList;
-export const ListProjectEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListProjectEnvironmentsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListProjectEnvironmentsResponse",
-}) as any as S.Schema<ListProjectEnvironmentsResponse>;
+export const ListProjectEnvironmentsResponse =
+  BulkUpdateProjectEnvironmentsResponse as any as S.Schema<ListProjectEnvironmentsResponse>;
 
 export interface ListProjectEventAttachmentsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -29222,10 +26761,8 @@ export const ListProjectEventAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectEventAttachmentsResponseBodyItemHeadersMap = {
   [key: string]: string | null | undefined;
 };
-export const ListProjectEventAttachmentsResponseBodyItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<ListProjectEventAttachmentsResponseBodyItemHeadersMap>;
+export const ListProjectEventAttachmentsResponseBodyItemHeadersMap =
+  GetProjectEventAttachmentResponseHeadersMap as any as S.Schema<ListProjectEventAttachmentsResponseBodyItemHeadersMap>;
 
 export interface ListProjectEventAttachmentsResponseBodyItem {
   id: string;
@@ -29238,21 +26775,8 @@ export interface ListProjectEventAttachmentsResponseBodyItem {
   headers: ListProjectEventAttachmentsResponseBodyItemHeadersMap;
   sha1: string | null;
 }
-export const ListProjectEventAttachmentsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    event_id: S.String,
-    type: S.String,
-    name: S.String,
-    mimetype: S.NullOr(S.String),
-    dateCreated: S.String,
-    size: S.Number,
-    headers: ListProjectEventAttachmentsResponseBodyItemHeadersMap,
-    sha1: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListProjectEventAttachmentsResponseBodyItem",
-}) as any as S.Schema<ListProjectEventAttachmentsResponseBodyItem>;
+export const ListProjectEventAttachmentsResponseBodyItem =
+  GetProjectEventAttachmentResponse as any as S.Schema<ListProjectEventAttachmentsResponseBodyItem>;
 
 export type ListProjectEventAttachmentsResponseBodyList =
   Array<ListProjectEventAttachmentsResponseBodyItem>;
@@ -29305,16 +26829,12 @@ export const ListProjectEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectEventsRequest" }) as any as S.Schema<ListProjectEventsRequest>;
 
 export type ListProjectEventsResponseBodyItemUserGeoMap = { [key: string]: string | undefined };
-export const ListProjectEventsResponseBodyItemUserGeoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListProjectEventsResponseBodyItemUserGeoMap>;
+export const ListProjectEventsResponseBodyItemUserGeoMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListProjectEventsResponseBodyItemUserGeoMap>;
 
 export type ListProjectEventsResponseBodyItemUserDataMap = { [key: string]: unknown | undefined };
-export const ListProjectEventsResponseBodyItemUserDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectEventsResponseBodyItemUserDataMap>;
+export const ListProjectEventsResponseBodyItemUserDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectEventsResponseBodyItemUserDataMap>;
 
 export interface ListProjectEventsResponseBodyItemUser {
   id?: string | null;
@@ -29325,34 +26845,20 @@ export interface ListProjectEventsResponseBodyItemUser {
   geo?: ListProjectEventsResponseBodyItemUserGeoMap | null;
   data?: ListProjectEventsResponseBodyItemUserDataMap | null;
 }
-export const ListProjectEventsResponseBodyItemUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
-    ip_address: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    geo: S.optional(S.NullOr(ListProjectEventsResponseBodyItemUserGeoMap)),
-    data: S.optional(S.NullOr(ListProjectEventsResponseBodyItemUserDataMap)),
-  }),
-).annotate({
-  identifier: "ListProjectEventsResponseBodyItemUser",
-}) as any as S.Schema<ListProjectEventsResponseBodyItemUser>;
+export const ListProjectEventsResponseBodyItemUser =
+  GetOrganizationIssueEventResponseUser as any as S.Schema<ListProjectEventsResponseBodyItemUser>;
 
 export type ListProjectEventsResponseBodyItemTagsItem = GetOrganizationIssueEventResponseTagsItem;
 export const ListProjectEventsResponseBodyItemTagsItem = GetOrganizationIssueEventResponseTagsItem;
 
 export type ListProjectEventsResponseBodyItemTagsList =
   Array<GetOrganizationIssueEventResponseTagsItem>;
-export const ListProjectEventsResponseBodyItemTagsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueEventResponseTagsItem,
-) as any as S.Schema<ListProjectEventsResponseBodyItemTagsList>;
+export const ListProjectEventsResponseBodyItemTagsList =
+  GetOrganizationIssueEventResponseTagsList as any as S.Schema<ListProjectEventsResponseBodyItemTagsList>;
 
 export type ListProjectEventsResponseBodyItemMetadataMap = { [key: string]: unknown | undefined };
-export const ListProjectEventsResponseBodyItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectEventsResponseBodyItemMetadataMap>;
+export const ListProjectEventsResponseBodyItemMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectEventsResponseBodyItemMetadataMap>;
 
 export interface ListProjectEventsResponseBodyItem {
   id: string;
@@ -29371,39 +26877,16 @@ export interface ListProjectEventsResponseBodyItem {
   crashFile: string | null;
   metadata: ListProjectEventsResponseBodyItemMetadataMap;
 }
-export const ListProjectEventsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    event_type: S.String.pipe(T.Body("event.type")),
-    groupID: S.NullOr(S.String),
-    eventID: S.String,
-    projectID: S.String,
-    message: S.String,
-    title: S.String,
-    location: S.NullOr(S.String),
-    culprit: S.NullOr(S.String),
-    user: S.NullOr(ListProjectEventsResponseBodyItemUser),
-    tags: ListProjectEventsResponseBodyItemTagsList,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    crashFile: S.NullOr(S.String),
-    metadata: ListProjectEventsResponseBodyItemMetadataMap,
-  }),
-).annotate({
-  identifier: "ListProjectEventsResponseBodyItem",
-}) as any as S.Schema<ListProjectEventsResponseBodyItem>;
+export const ListProjectEventsResponseBodyItem =
+  ListOrganizationIssueEventsResponseBodyItem as any as S.Schema<ListProjectEventsResponseBodyItem>;
 
 export type ListProjectEventsResponseBodyList = Array<ListProjectEventsResponseBodyItem>;
-export const ListProjectEventsResponseBodyList = /*@__PURE__*/ S.Array(
-  ListProjectEventsResponseBodyItem,
-) as any as S.Schema<ListProjectEventsResponseBodyList>;
+export const ListProjectEventsResponseBodyList =
+  ListOrganizationIssueEventsResponseBodyList as any as S.Schema<ListProjectEventsResponseBodyList>;
 
 export type ListProjectEventsResponse = ListProjectEventsResponseBodyList;
-export const ListProjectEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListProjectEventsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListProjectEventsResponse",
-}) as any as S.Schema<ListProjectEventsResponse>;
+export const ListProjectEventsResponse =
+  ListOrganizationIssueEventsResponse as any as S.Schema<ListProjectEventsResponse>;
 
 export interface ListProjectFiltersRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -29427,9 +26910,8 @@ export const ListProjectFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectFiltersRequest>;
 
 export type ListProjectFiltersResponseBodyItemActiveCase1List = Array<string>;
-export const ListProjectFiltersResponseBodyItemActiveCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectFiltersResponseBodyItemActiveCase1List>;
+export const ListProjectFiltersResponseBodyItemActiveCase1List =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectFiltersResponseBodyItemActiveCase1List>;
 
 export type ListProjectFiltersResponseBodyItemActive =
   | boolean
@@ -29494,26 +26976,19 @@ export type ListProjectKeysResponseBodyItemDsn = CreateProjectKeyResponseDsn;
 export const ListProjectKeysResponseBodyItemDsn = CreateProjectKeyResponseDsn;
 
 export type ListProjectKeysResponseBodyItemBrowserSdkChoicesItemList = Array<string>;
-export const ListProjectKeysResponseBodyItemBrowserSdkChoicesItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectKeysResponseBodyItemBrowserSdkChoicesItemList>;
+export const ListProjectKeysResponseBodyItemBrowserSdkChoicesItemList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectKeysResponseBodyItemBrowserSdkChoicesItemList>;
 
 export type ListProjectKeysResponseBodyItemBrowserSdkChoicesList =
   Array<ListProjectKeysResponseBodyItemBrowserSdkChoicesItemList>;
-export const ListProjectKeysResponseBodyItemBrowserSdkChoicesList = /*@__PURE__*/ S.Array(
-  ListProjectKeysResponseBodyItemBrowserSdkChoicesItemList,
-) as any as S.Schema<ListProjectKeysResponseBodyItemBrowserSdkChoicesList>;
+export const ListProjectKeysResponseBodyItemBrowserSdkChoicesList =
+  CreateProjectKeyResponseBrowserSdkChoicesList as any as S.Schema<ListProjectKeysResponseBodyItemBrowserSdkChoicesList>;
 
 export interface ListProjectKeysResponseBodyItemBrowserSdk {
   choices: ListProjectKeysResponseBodyItemBrowserSdkChoicesList;
 }
-export const ListProjectKeysResponseBodyItemBrowserSdk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: ListProjectKeysResponseBodyItemBrowserSdkChoicesList,
-  }),
-).annotate({
-  identifier: "ListProjectKeysResponseBodyItemBrowserSdk",
-}) as any as S.Schema<ListProjectKeysResponseBodyItemBrowserSdk>;
+export const ListProjectKeysResponseBodyItemBrowserSdk =
+  CreateProjectKeyResponseBrowserSdk as any as S.Schema<ListProjectKeysResponseBodyItemBrowserSdk>;
 
 export type ListProjectKeysResponseBodyItemDynamicSdkLoaderOptions =
   CreateProjectKeyResponseDynamicSdkLoaderOptions;
@@ -29596,9 +27071,8 @@ export const ListProjectMembersResponseBodyItemExternalUsersItem =
 
 export type ListProjectMembersResponseBodyItemExternalUsersList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const ListProjectMembersResponseBodyItemExternalUsersList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<ListProjectMembersResponseBodyItemExternalUsersList>;
+export const ListProjectMembersResponseBodyItemExternalUsersList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<ListProjectMembersResponseBodyItemExternalUsersList>;
 
 export type ListProjectMembersResponseBodyItemUserIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -29617,25 +27091,21 @@ export const ListProjectMembersResponseBodyItemUserIdentitiesItem =
 
 export type ListProjectMembersResponseBodyItemUserIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const ListProjectMembersResponseBodyItemUserIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<ListProjectMembersResponseBodyItemUserIdentitiesList>;
+export const ListProjectMembersResponseBodyItemUserIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<ListProjectMembersResponseBodyItemUserIdentitiesList>;
 
 export type ListProjectMembersResponseBodyItemUserAvatar = AddOrganizationMemberResponseUserAvatar;
 export const ListProjectMembersResponseBodyItemUserAvatar = AddOrganizationMemberResponseUserAvatar;
 
 export type ListProjectMembersResponseBodyItemUserAuthenticatorsList = Array<unknown>;
-export const ListProjectMembersResponseBodyItemUserAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListProjectMembersResponseBodyItemUserAuthenticatorsList>;
+export const ListProjectMembersResponseBodyItemUserAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<ListProjectMembersResponseBodyItemUserAuthenticatorsList>;
 
 export type ListProjectMembersResponseBodyItemUserExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectMembersResponseBodyItemUserExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectMembersResponseBodyItemUserExperimentsMap>;
+export const ListProjectMembersResponseBodyItemUserExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectMembersResponseBodyItemUserExperimentsMap>;
 
 export type ListProjectMembersResponseBodyItemUserEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -29644,9 +27114,8 @@ export const ListProjectMembersResponseBodyItemUserEmailsItem =
 
 export type ListProjectMembersResponseBodyItemUserEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const ListProjectMembersResponseBodyItemUserEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<ListProjectMembersResponseBodyItemUserEmailsList>;
+export const ListProjectMembersResponseBodyItemUserEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<ListProjectMembersResponseBodyItemUserEmailsList>;
 
 export interface ListProjectMembersResponseBodyItemUser {
   identities?: ListProjectMembersResponseBodyItemUserIdentitiesList;
@@ -29671,33 +27140,8 @@ export interface ListProjectMembersResponseBodyItemUser {
   experiments: ListProjectMembersResponseBodyItemUserExperimentsMap;
   emails: ListProjectMembersResponseBodyItemUserEmailsList;
 }
-export const ListProjectMembersResponseBodyItemUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListProjectMembersResponseBodyItemUserIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(ListProjectMembersResponseBodyItemUserAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListProjectMembersResponseBodyItemUserExperimentsMap,
-    emails: ListProjectMembersResponseBodyItemUserEmailsList,
-  }),
-).annotate({
-  identifier: "ListProjectMembersResponseBodyItemUser",
-}) as any as S.Schema<ListProjectMembersResponseBodyItemUser>;
+export const ListProjectMembersResponseBodyItemUser =
+  AddOrganizationMemberResponseUser as any as S.Schema<ListProjectMembersResponseBodyItemUser>;
 
 export type ListProjectMembersResponseBodyItemFlags = AddOrganizationMemberResponseFlags;
 export const ListProjectMembersResponseBodyItemFlags = AddOrganizationMemberResponseFlags;
@@ -29716,36 +27160,16 @@ export interface ListProjectMembersResponseBodyItem {
   inviteStatus: string;
   inviterName: string | null;
 }
-export const ListProjectMembersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalUsers: S.optional(ListProjectMembersResponseBodyItemExternalUsersList),
-    id: S.String,
-    email: S.String,
-    name: S.String,
-    user: S.NullOr(ListProjectMembersResponseBodyItemUser),
-    orgRole: S.String,
-    pending: S.Boolean,
-    expired: S.Boolean,
-    flags: AddOrganizationMemberResponseFlags,
-    dateCreated: S.String,
-    inviteStatus: S.String,
-    inviterName: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListProjectMembersResponseBodyItem",
-}) as any as S.Schema<ListProjectMembersResponseBodyItem>;
+export const ListProjectMembersResponseBodyItem =
+  AddOrganizationMemberResponse as any as S.Schema<ListProjectMembersResponseBodyItem>;
 
 export type ListProjectMembersResponseBodyList = Array<ListProjectMembersResponseBodyItem>;
-export const ListProjectMembersResponseBodyList = /*@__PURE__*/ S.Array(
-  ListProjectMembersResponseBodyItem,
-) as any as S.Schema<ListProjectMembersResponseBodyList>;
+export const ListProjectMembersResponseBodyList =
+  ListOrganizationMembersResponseBodyList as any as S.Schema<ListProjectMembersResponseBodyList>;
 
 export type ListProjectMembersResponse = ListProjectMembersResponseBodyList;
-export const ListProjectMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListProjectMembersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListProjectMembersResponse",
-}) as any as S.Schema<ListProjectMembersResponse>;
+export const ListProjectMembersResponse =
+  ListOrganizationMembersResponse as any as S.Schema<ListProjectMembersResponse>;
 
 export interface ListProjectMonitorCheckinsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -29772,9 +27196,8 @@ export const ListProjectMonitorCheckinsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectMonitorCheckinsRequest>;
 
 export type ListProjectMonitorCheckinsResponseBodyItemGroupsList = Array<string>;
-export const ListProjectMonitorCheckinsResponseBodyItemGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectMonitorCheckinsResponseBodyItemGroupsList>;
+export const ListProjectMonitorCheckinsResponseBodyItemGroupsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectMonitorCheckinsResponseBodyItemGroupsList>;
 
 export type ListProjectMonitorCheckinsResponseBodyItemMonitorConfigScheduleType =
   | "crontab"
@@ -29784,9 +27207,7 @@ export const ListProjectMonitorCheckinsResponseBodyItemMonitorConfigScheduleType
 export type ListProjectMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List =
   Array<number>;
 export const ListProjectMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ListProjectMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<ListProjectMonitorCheckinsResponseBodyItemMonitorConfigScheduleCase1List>;
 
 export type ListProjectMonitorCheckinsResponseBodyItemMonitorConfigSchedule =
   | string
@@ -29904,32 +27325,19 @@ export type ListProjectReleaseCommitsResponseBodyItemPullRequestRepositoryProvid
   [key: string]: string | undefined;
 };
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestRepositoryProviderMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepositoryProviderMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepositoryProviderMap>;
 
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList =
   Array<string>;
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList>;
 
 export interface ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettings {
   enabledCodeReview: boolean;
   codeReviewTriggers: ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList;
 }
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabledCodeReview: S.Boolean,
-      codeReviewTriggers:
-        ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettingsCodeReviewTriggersList,
-    }),
-  ).annotate({
-    identifier: "ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettings",
-  }) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettings>;
+  ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettings as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettings>;
 
 export interface ListProjectReleaseCommitsResponseBodyItemPullRequestRepository {
   url?: string | null;
@@ -29944,26 +27352,7 @@ export interface ListProjectReleaseCommitsResponseBodyItemPullRequestRepository 
   dateCreated: string;
 }
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestRepository =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.optional(S.NullOr(S.String)),
-      provider: S.optional(
-        ListProjectReleaseCommitsResponseBodyItemPullRequestRepositoryProviderMap,
-      ),
-      status: S.optional(S.String),
-      integrationId: S.optional(S.NullOr(S.String)),
-      externalSlug: S.optional(S.NullOr(S.String)),
-      externalId: S.optional(S.NullOr(S.String)),
-      settings: S.optional(
-        S.NullOr(ListProjectReleaseCommitsResponseBodyItemPullRequestRepositorySettings),
-      ),
-      id: S.String,
-      name: S.String,
-      dateCreated: S.String,
-    }),
-  ).annotate({
-    identifier: "ListProjectReleaseCommitsResponseBodyItemPullRequestRepository",
-  }) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepository>;
+  ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepository as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestRepository>;
 
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -29983,9 +27372,7 @@ export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0Iden
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList>;
 
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -29995,18 +27382,13 @@ export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0Avat
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList =
   Array<unknown>;
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList>;
 
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap>;
 
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -30016,9 +27398,7 @@ export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0Emai
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList>;
 
 export interface ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0 {
   identities?: ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList;
@@ -30044,37 +27424,7 @@ export interface ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0
   emails: ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList;
 }
 export const ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identities: S.optional(
-        ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0IdentitiesList,
-      ),
-      avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-      authenticators: S.optional(
-        ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0AuthenticatorsList,
-      ),
-      canReset2fa: S.optional(S.Boolean),
-      id: S.String,
-      name: S.String,
-      username: S.String,
-      email: S.String,
-      avatarUrl: S.String,
-      isActive: S.Boolean,
-      isSuspended: S.Boolean,
-      hasPasswordAuth: S.Boolean,
-      isManaged: S.Boolean,
-      dateJoined: S.String,
-      lastLogin: S.NullOr(S.String),
-      has2fa: S.Boolean,
-      lastActive: S.NullOr(S.String),
-      isSuperuser: S.Boolean,
-      isStaff: S.Boolean,
-      experiments: ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0ExperimentsMap,
-      emails: ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0EmailsList,
-    }),
-  ).annotate({
-    identifier: "ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0",
-  }) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0>;
+  ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedBy as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase0>;
 
 export type ListProjectReleaseCommitsResponseBodyItemPullRequestAuthorCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -30118,17 +27468,12 @@ export type ListProjectReleaseCommitsResponseBodyItemRepositoryProviderMap = {
   [key: string]: string | undefined;
 };
 export const ListProjectReleaseCommitsResponseBodyItemRepositoryProviderMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemRepositoryProviderMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemRepositoryProviderMap>;
 
 export type ListProjectReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList =
   Array<string>;
 export const ListProjectReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemRepositorySettingsCodeReviewTriggersList>;
 
 export interface ListProjectReleaseCommitsResponseBodyItemRepositorySettings {
   enabledCodeReview: boolean;
@@ -30192,9 +27537,7 @@ export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0IdentitiesItem 
 export type ListProjectReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList>;
 
 export type ListProjectReleaseCommitsResponseBodyItemAuthorCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -30203,18 +27546,13 @@ export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0Avatar =
 
 export type ListProjectReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList = Array<unknown>;
 export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList>;
 
 export type ListProjectReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap>;
 
 export type ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -30223,9 +27561,8 @@ export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsItem =
 
 export type ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsList>;
+export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsList>;
 
 export interface ListProjectReleaseCommitsResponseBodyItemAuthorCase0 {
   identities?: ListProjectReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList;
@@ -30250,35 +27587,8 @@ export interface ListProjectReleaseCommitsResponseBodyItemAuthorCase0 {
   experiments: ListProjectReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap;
   emails: ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsList;
 }
-export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListProjectReleaseCommitsResponseBodyItemAuthorCase0IdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(
-      ListProjectReleaseCommitsResponseBodyItemAuthorCase0AuthenticatorsList,
-    ),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListProjectReleaseCommitsResponseBodyItemAuthorCase0ExperimentsMap,
-    emails: ListProjectReleaseCommitsResponseBodyItemAuthorCase0EmailsList,
-  }),
-).annotate({
-  identifier: "ListProjectReleaseCommitsResponseBodyItemAuthorCase0",
-}) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0>;
+export const ListProjectReleaseCommitsResponseBodyItemAuthorCase0 =
+  GetOrganizationDiscoverSavedQueryResponseCreatedBy as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemAuthorCase0>;
 
 export type ListProjectReleaseCommitsResponseBodyItemAuthorCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -30299,9 +27609,8 @@ export const ListProjectReleaseCommitsResponseBodyItemReleasesItem =
 
 export type ListProjectReleaseCommitsResponseBodyItemReleasesList =
   Array<ListOrganizationReleaseCommitsResponseBodyItemReleasesItem>;
-export const ListProjectReleaseCommitsResponseBodyItemReleasesList = /*@__PURE__*/ S.Array(
-  ListOrganizationReleaseCommitsResponseBodyItemReleasesItem,
-) as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemReleasesList>;
+export const ListProjectReleaseCommitsResponseBodyItemReleasesList =
+  ListOrganizationReleaseCommitsResponseBodyItemReleasesList as any as S.Schema<ListProjectReleaseCommitsResponseBodyItemReleasesList>;
 
 export interface ListProjectReleaseCommitsResponseBodyItem {
   id: string;
@@ -30342,14 +27651,12 @@ export const ListProjectReleaseCommitsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectReleaseCommitsResponse>;
 
 export type ListProjectReleaseFilesRequestQueryList = Array<string>;
-export const ListProjectReleaseFilesRequestQueryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectReleaseFilesRequestQueryList>;
+export const ListProjectReleaseFilesRequestQueryList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectReleaseFilesRequestQueryList>;
 
 export type ListProjectReleaseFilesRequestChecksumList = Array<string>;
-export const ListProjectReleaseFilesRequestChecksumList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectReleaseFilesRequestChecksumList>;
+export const ListProjectReleaseFilesRequestChecksumList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectReleaseFilesRequestChecksumList>;
 
 export interface ListProjectReleaseFilesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -30387,10 +27694,8 @@ export const ListProjectReleaseFilesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectReleaseFilesResponseBodyItemHeadersMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectReleaseFilesResponseBodyItemHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReleaseFilesResponseBodyItemHeadersMap>;
+export const ListProjectReleaseFilesResponseBodyItemHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReleaseFilesResponseBodyItemHeadersMap>;
 
 export interface ListProjectReleaseFilesResponseBodyItem {
   id: string;
@@ -30401,37 +27706,21 @@ export interface ListProjectReleaseFilesResponseBodyItem {
   sha1: string;
   dateCreated: string;
 }
-export const ListProjectReleaseFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    dist: S.NullOr(S.String),
-    headers: ListProjectReleaseFilesResponseBodyItemHeadersMap,
-    size: S.Number,
-    sha1: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "ListProjectReleaseFilesResponseBodyItem",
-}) as any as S.Schema<ListProjectReleaseFilesResponseBodyItem>;
+export const ListProjectReleaseFilesResponseBodyItem =
+  GetOrganizationReleaseFileResponse as any as S.Schema<ListProjectReleaseFilesResponseBodyItem>;
 
 export type ListProjectReleaseFilesResponseBodyList =
   Array<ListProjectReleaseFilesResponseBodyItem>;
-export const ListProjectReleaseFilesResponseBodyList = /*@__PURE__*/ S.Array(
-  ListProjectReleaseFilesResponseBodyItem,
-) as any as S.Schema<ListProjectReleaseFilesResponseBodyList>;
+export const ListProjectReleaseFilesResponseBodyList =
+  ListOrganizationReleaseFilesResponseBodyList as any as S.Schema<ListProjectReleaseFilesResponseBodyList>;
 
 export type ListProjectReleaseFilesResponse = ListProjectReleaseFilesResponseBodyList;
-export const ListProjectReleaseFilesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListProjectReleaseFilesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListProjectReleaseFilesResponse",
-}) as any as S.Schema<ListProjectReleaseFilesResponse>;
+export const ListProjectReleaseFilesResponse =
+  ListOrganizationReleaseFilesResponse as any as S.Schema<ListProjectReleaseFilesResponse>;
 
 export type ListProjectReleasesRequestEnvironmentList = Array<string>;
-export const ListProjectReleasesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectReleasesRequestEnvironmentList>;
+export const ListProjectReleasesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectReleasesRequestEnvironmentList>;
 
 export interface ListProjectReleasesRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -30467,18 +27756,14 @@ export const ListProjectReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectReleasesRequest>;
 
 export type ListProjectReleasesResponseBodyItemOwnerMap = { [key: string]: unknown | undefined };
-export const ListProjectReleasesResponseBodyItemOwnerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemOwnerMap>;
+export const ListProjectReleasesResponseBodyItemOwnerMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReleasesResponseBodyItemOwnerMap>;
 
 export type ListProjectReleasesResponseBodyItemLastCommitMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectReleasesResponseBodyItemLastCommitMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemLastCommitMap>;
+export const ListProjectReleasesResponseBodyItemLastCommitMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReleasesResponseBodyItemLastCommitMap>;
 
 export type ListProjectReleasesResponseBodyItemLastDeploy =
   CreateOrganizationReleaseResponseLastDeploy;
@@ -30488,26 +27773,20 @@ export const ListProjectReleasesResponseBodyItemLastDeploy =
 export type ListProjectReleasesResponseBodyItemCurrentProjectMetaMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectReleasesResponseBodyItemCurrentProjectMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemCurrentProjectMetaMap>;
+export const ListProjectReleasesResponseBodyItemCurrentProjectMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReleasesResponseBodyItemCurrentProjectMetaMap>;
 
 export type ListProjectReleasesResponseBodyItemAdoptionStagesMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectReleasesResponseBodyItemAdoptionStagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemAdoptionStagesMap>;
+export const ListProjectReleasesResponseBodyItemAdoptionStagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReleasesResponseBodyItemAdoptionStagesMap>;
 
 export type ListProjectReleasesResponseBodyItemVersionInfoVersionMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectReleasesResponseBodyItemVersionInfoVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemVersionInfoVersionMap>;
+export const ListProjectReleasesResponseBodyItemVersionInfoVersionMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReleasesResponseBodyItemVersionInfoVersionMap>;
 
 export interface ListProjectReleasesResponseBodyItemVersionInfo {
   description?: string;
@@ -30515,22 +27794,12 @@ export interface ListProjectReleasesResponseBodyItemVersionInfo {
   version: ListProjectReleasesResponseBodyItemVersionInfoVersionMap;
   buildHash: string | null;
 }
-export const ListProjectReleasesResponseBodyItemVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    package: S.NullOr(S.String),
-    version: ListProjectReleasesResponseBodyItemVersionInfoVersionMap,
-    buildHash: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListProjectReleasesResponseBodyItemVersionInfo",
-}) as any as S.Schema<ListProjectReleasesResponseBodyItemVersionInfo>;
+export const ListProjectReleasesResponseBodyItemVersionInfo =
+  CreateOrganizationReleaseResponseVersionInfo as any as S.Schema<ListProjectReleasesResponseBodyItemVersionInfo>;
 
 export type ListProjectReleasesResponseBodyItemDataMap = { [key: string]: unknown | undefined };
-export const ListProjectReleasesResponseBodyItemDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemDataMap>;
+export const ListProjectReleasesResponseBodyItemDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReleasesResponseBodyItemDataMap>;
 
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -30550,9 +27819,7 @@ export const ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesItem =
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesList>;
 
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -30561,18 +27828,13 @@ export const ListProjectReleasesResponseBodyItemAuthorsItemCase0Avatar =
 
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList = Array<unknown>;
 export const ListProjectReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList>;
 
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ListProjectReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap>;
 
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -30581,9 +27843,8 @@ export const ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsItem =
 
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsList>;
+export const ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsList>;
 
 export interface ListProjectReleasesResponseBodyItemAuthorsItemCase0 {
   identities?: ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesList;
@@ -30608,35 +27869,8 @@ export interface ListProjectReleasesResponseBodyItemAuthorsItemCase0 {
   experiments: ListProjectReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap;
   emails: ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsList;
 }
-export const ListProjectReleasesResponseBodyItemAuthorsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListProjectReleasesResponseBodyItemAuthorsItemCase0IdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(
-      ListProjectReleasesResponseBodyItemAuthorsItemCase0AuthenticatorsList,
-    ),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListProjectReleasesResponseBodyItemAuthorsItemCase0ExperimentsMap,
-    emails: ListProjectReleasesResponseBodyItemAuthorsItemCase0EmailsList,
-  }),
-).annotate({
-  identifier: "ListProjectReleasesResponseBodyItemAuthorsItemCase0",
-}) as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0>;
+export const ListProjectReleasesResponseBodyItemAuthorsItemCase0 =
+  GetOrganizationDiscoverSavedQueryResponseCreatedBy as any as S.Schema<ListProjectReleasesResponseBodyItemAuthorsItemCase0>;
 
 export type ListProjectReleasesResponseBodyItemAuthorsItemCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -30659,10 +27893,7 @@ export type ListProjectReleasesResponseBodyItemProjectsItemHealthDataStatsMap = 
   [key: string]: unknown | undefined;
 };
 export const ListProjectReleasesResponseBodyItemProjectsItemHealthDataStatsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListProjectReleasesResponseBodyItemProjectsItemHealthDataStatsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ListProjectReleasesResponseBodyItemProjectsItemHealthDataStatsMap>;
 
 export interface ListProjectReleasesResponseBodyItemProjectsItemHealthData {
   durationP50?: number | null;
@@ -30707,9 +27938,8 @@ export const ListProjectReleasesResponseBodyItemProjectsItemHealthData = /*@__PU
 }) as any as S.Schema<ListProjectReleasesResponseBodyItemProjectsItemHealthData>;
 
 export type ListProjectReleasesResponseBodyItemProjectsItemPlatformsList = Array<string>;
-export const ListProjectReleasesResponseBodyItemProjectsItemPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectReleasesResponseBodyItemProjectsItemPlatformsList>;
+export const ListProjectReleasesResponseBodyItemProjectsItemPlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectReleasesResponseBodyItemProjectsItemPlatformsList>;
 
 export interface ListProjectReleasesResponseBodyItemProjectsItem {
   healthData?: ListProjectReleasesResponseBodyItemProjectsItemHealthData | null;
@@ -30820,9 +28050,8 @@ export const ListProjectReleasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectReleasesResponse>;
 
 export type ListProjectReplayClicksRequestEnvironmentList = Array<string>;
-export const ListProjectReplayClicksRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectReplayClicksRequestEnvironmentList>;
+export const ListProjectReplayClicksRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectReplayClicksRequestEnvironmentList>;
 
 export interface ListProjectReplayClicksRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -30912,9 +28141,8 @@ export const ListProjectReplayDeletionJobsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectReplayDeletionJobsRequest>;
 
 export type ListProjectReplayDeletionJobsResponseDataItemEnvironmentsList = Array<string>;
-export const ListProjectReplayDeletionJobsResponseDataItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectReplayDeletionJobsResponseDataItemEnvironmentsList>;
+export const ListProjectReplayDeletionJobsResponseDataItemEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectReplayDeletionJobsResponseDataItemEnvironmentsList>;
 
 export interface ListProjectReplayDeletionJobsResponseDataItem {
   id: number;
@@ -30927,21 +28155,8 @@ export interface ListProjectReplayDeletionJobsResponseDataItem {
   query: string;
   countDeleted: number;
 }
-export const ListProjectReplayDeletionJobsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    dateCreated: S.String,
-    dateUpdated: S.String,
-    rangeStart: S.String,
-    rangeEnd: S.String,
-    environments: ListProjectReplayDeletionJobsResponseDataItemEnvironmentsList,
-    status: S.String,
-    query: S.String,
-    countDeleted: S.Number,
-  }),
-).annotate({
-  identifier: "ListProjectReplayDeletionJobsResponseDataItem",
-}) as any as S.Schema<ListProjectReplayDeletionJobsResponseDataItem>;
+export const ListProjectReplayDeletionJobsResponseDataItem =
+  CreateProjectReplayDeletionJobResponseData as any as S.Schema<ListProjectReplayDeletionJobsResponseDataItem>;
 
 export type ListProjectReplayDeletionJobsResponseDataList =
   Array<ListProjectReplayDeletionJobsResponseDataItem>;
@@ -30993,16 +28208,13 @@ export const ListProjectReplayRecordingSegmentsRequest = /*@__PURE__*/ S.suspend
 export type ListProjectReplayRecordingSegmentsResponseBodyItemItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectReplayRecordingSegmentsResponseBodyItemItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReplayRecordingSegmentsResponseBodyItemItemMap>;
+export const ListProjectReplayRecordingSegmentsResponseBodyItemItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReplayRecordingSegmentsResponseBodyItemItemMap>;
 
 export type ListProjectReplayRecordingSegmentsResponseBodyItemList =
   Array<ListProjectReplayRecordingSegmentsResponseBodyItemItemMap>;
-export const ListProjectReplayRecordingSegmentsResponseBodyItemList = /*@__PURE__*/ S.Array(
-  ListProjectReplayRecordingSegmentsResponseBodyItemItemMap,
-) as any as S.Schema<ListProjectReplayRecordingSegmentsResponseBodyItemList>;
+export const ListProjectReplayRecordingSegmentsResponseBodyItemList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<ListProjectReplayRecordingSegmentsResponseBodyItemList>;
 
 export type ListProjectReplayRecordingSegmentsResponseBodyList =
   Array<ListProjectReplayRecordingSegmentsResponseBodyItemList>;
@@ -31045,16 +28257,13 @@ export const ListProjectReplayViewedByRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectReplayViewedByResponseDataViewedByItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ListProjectReplayViewedByResponseDataViewedByItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectReplayViewedByResponseDataViewedByItemMap>;
+export const ListProjectReplayViewedByResponseDataViewedByItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectReplayViewedByResponseDataViewedByItemMap>;
 
 export type ListProjectReplayViewedByResponseDataViewedByList =
   Array<ListProjectReplayViewedByResponseDataViewedByItemMap>;
-export const ListProjectReplayViewedByResponseDataViewedByList = /*@__PURE__*/ S.Array(
-  ListProjectReplayViewedByResponseDataViewedByItemMap,
-) as any as S.Schema<ListProjectReplayViewedByResponseDataViewedByList>;
+export const ListProjectReplayViewedByResponseDataViewedByList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<ListProjectReplayViewedByResponseDataViewedByList>;
 
 export interface ListProjectReplayViewedByResponseData {
   viewed_by: ListProjectReplayViewedByResponseDataViewedByList;
@@ -31180,14 +28389,12 @@ export const ListProjectStatsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectStatsRequest" }) as any as S.Schema<ListProjectStatsRequest>;
 
 export type ListProjectStatsResponseBodyItemList = Array<number>;
-export const ListProjectStatsResponseBodyItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListProjectStatsResponseBodyItemList>;
+export const ListProjectStatsResponseBodyItemList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<ListProjectStatsResponseBodyItemList>;
 
 export type ListProjectStatsResponseBodyList = Array<ListProjectStatsResponseBodyItemList>;
-export const ListProjectStatsResponseBodyList = /*@__PURE__*/ S.Array(
-  ListProjectStatsResponseBodyItemList,
-) as any as S.Schema<ListProjectStatsResponseBodyList>;
+export const ListProjectStatsResponseBodyList =
+  GetOrganizationIssueResponseStatsValueList as any as S.Schema<ListProjectStatsResponseBodyList>;
 
 export type ListProjectStatsResponse = ListProjectStatsResponseBodyList;
 export const ListProjectStatsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -31283,9 +28490,7 @@ export const ListProjectSymbolSourcesResponseBodyItemCase0FiltersFiletypesList =
 
 export type ListProjectSymbolSourcesResponseBodyItemCase0FiltersPathPatternsList = Array<string>;
 export const ListProjectSymbolSourcesResponseBodyItemCase0FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase0FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase0FiltersPathPatternsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase0Filters {
   filetypes?: ListProjectSymbolSourcesResponseBodyItemCase0FiltersFiletypesList;
@@ -31303,9 +28508,8 @@ export const ListProjectSymbolSourcesResponseBodyItemCase0Filters = /*@__PURE__*
 }) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase0Filters>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase0PlatformsList = Array<string>;
-export const ListProjectSymbolSourcesResponseBodyItemCase0PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase0PlatformsList>;
+export const ListProjectSymbolSourcesResponseBodyItemCase0PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase0PlatformsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase0 {
   type: ListProjectSymbolSourcesResponseBodyItemCase0Type;
@@ -31403,9 +28607,7 @@ export const ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesList =
 
 export type ListProjectSymbolSourcesResponseBodyItemCase1FiltersPathPatternsList = Array<string>;
 export const ListProjectSymbolSourcesResponseBodyItemCase1FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1FiltersPathPatternsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase1Filters {
   filetypes?: ListProjectSymbolSourcesResponseBodyItemCase1FiltersFiletypesList;
@@ -31423,9 +28625,8 @@ export const ListProjectSymbolSourcesResponseBodyItemCase1Filters = /*@__PURE__*
 }) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1Filters>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase1PlatformsList = Array<string>;
-export const ListProjectSymbolSourcesResponseBodyItemCase1PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1PlatformsList>;
+export const ListProjectSymbolSourcesResponseBodyItemCase1PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase1PlatformsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase1 {
   type: ListProjectSymbolSourcesResponseBodyItemCase1Type;
@@ -31527,9 +28728,7 @@ export const ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesList =
 
 export type ListProjectSymbolSourcesResponseBodyItemCase2FiltersPathPatternsList = Array<string>;
 export const ListProjectSymbolSourcesResponseBodyItemCase2FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2FiltersPathPatternsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase2Filters {
   filetypes?: ListProjectSymbolSourcesResponseBodyItemCase2FiltersFiletypesList;
@@ -31547,9 +28746,8 @@ export const ListProjectSymbolSourcesResponseBodyItemCase2Filters = /*@__PURE__*
 }) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2Filters>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase2PlatformsList = Array<string>;
-export const ListProjectSymbolSourcesResponseBodyItemCase2PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2PlatformsList>;
+export const ListProjectSymbolSourcesResponseBodyItemCase2PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase2PlatformsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase2 {
   type: ListProjectSymbolSourcesResponseBodyItemCase2Type;
@@ -31649,9 +28847,7 @@ export const ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesList =
 
 export type ListProjectSymbolSourcesResponseBodyItemCase3FiltersPathPatternsList = Array<string>;
 export const ListProjectSymbolSourcesResponseBodyItemCase3FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3FiltersPathPatternsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase3Filters {
   filetypes?: ListProjectSymbolSourcesResponseBodyItemCase3FiltersFiletypesList;
@@ -31669,9 +28865,8 @@ export const ListProjectSymbolSourcesResponseBodyItemCase3Filters = /*@__PURE__*
 }) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3Filters>;
 
 export type ListProjectSymbolSourcesResponseBodyItemCase3PlatformsList = Array<string>;
-export const ListProjectSymbolSourcesResponseBodyItemCase3PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3PlatformsList>;
+export const ListProjectSymbolSourcesResponseBodyItemCase3PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectSymbolSourcesResponseBodyItemCase3PlatformsList>;
 
 export interface ListProjectSymbolSourcesResponseBodyItemCase3 {
   type: ListProjectSymbolSourcesResponseBodyItemCase3Type;
@@ -31785,15 +28980,12 @@ export const ListProjectTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectTeamsRequest" }) as any as S.Schema<ListProjectTeamsRequest>;
 
 export type ListProjectTeamsResponseBodyItemFlagsMap = { [key: string]: unknown | undefined };
-export const ListProjectTeamsResponseBodyItemFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListProjectTeamsResponseBodyItemFlagsMap>;
+export const ListProjectTeamsResponseBodyItemFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListProjectTeamsResponseBodyItemFlagsMap>;
 
 export type ListProjectTeamsResponseBodyItemAccessList = Array<string>;
-export const ListProjectTeamsResponseBodyItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProjectTeamsResponseBodyItemAccessList>;
+export const ListProjectTeamsResponseBodyItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListProjectTeamsResponseBodyItemAccessList>;
 
 export type ListProjectTeamsResponseBodyItemAvatar = AddOrganizationMemberResponseUserAvatar;
 export const ListProjectTeamsResponseBodyItemAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -31812,24 +29004,8 @@ export interface ListProjectTeamsResponseBodyItem {
   memberCount: number;
   avatar: AddOrganizationMemberResponseUserAvatar;
 }
-export const ListProjectTeamsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    dateCreated: S.NullOr(S.String),
-    isMember: S.Boolean,
-    teamRole: S.NullOr(S.String),
-    flags: ListProjectTeamsResponseBodyItemFlagsMap,
-    access: ListProjectTeamsResponseBodyItemAccessList,
-    hasAccess: S.Boolean,
-    isPending: S.Boolean,
-    memberCount: S.Number,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-  }),
-).annotate({
-  identifier: "ListProjectTeamsResponseBodyItem",
-}) as any as S.Schema<ListProjectTeamsResponseBodyItem>;
+export const ListProjectTeamsResponseBodyItem =
+  AddOrganizationMemberTeamResponse as any as S.Schema<ListProjectTeamsResponseBodyItem>;
 
 export type ListProjectTeamsResponseBodyList = Array<ListProjectTeamsResponseBodyItem>;
 export const ListProjectTeamsResponseBodyList = /*@__PURE__*/ S.Array(
@@ -31911,9 +29087,8 @@ export const ListSeerModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSeerModelsRequest" }) as any as S.Schema<ListSeerModelsRequest>;
 
 export type ListSeerModelsResponseModelsList = Array<string>;
-export const ListSeerModelsResponseModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSeerModelsResponseModelsList>;
+export const ListSeerModelsResponseModelsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListSeerModelsResponseModelsList>;
 
 export interface ListSeerModelsResponse {
   models: ListSeerModelsResponseModelsList;
@@ -31953,9 +29128,8 @@ export const ListTeamMembersResponseBodyItemExternalUsersItem =
 
 export type ListTeamMembersResponseBodyItemExternalUsersList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const ListTeamMembersResponseBodyItemExternalUsersList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<ListTeamMembersResponseBodyItemExternalUsersList>;
+export const ListTeamMembersResponseBodyItemExternalUsersList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<ListTeamMembersResponseBodyItemExternalUsersList>;
 
 export type ListTeamMembersResponseBodyItemUserIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -31974,25 +29148,21 @@ export const ListTeamMembersResponseBodyItemUserIdentitiesItem =
 
 export type ListTeamMembersResponseBodyItemUserIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const ListTeamMembersResponseBodyItemUserIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<ListTeamMembersResponseBodyItemUserIdentitiesList>;
+export const ListTeamMembersResponseBodyItemUserIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<ListTeamMembersResponseBodyItemUserIdentitiesList>;
 
 export type ListTeamMembersResponseBodyItemUserAvatar = AddOrganizationMemberResponseUserAvatar;
 export const ListTeamMembersResponseBodyItemUserAvatar = AddOrganizationMemberResponseUserAvatar;
 
 export type ListTeamMembersResponseBodyItemUserAuthenticatorsList = Array<unknown>;
-export const ListTeamMembersResponseBodyItemUserAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListTeamMembersResponseBodyItemUserAuthenticatorsList>;
+export const ListTeamMembersResponseBodyItemUserAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<ListTeamMembersResponseBodyItemUserAuthenticatorsList>;
 
 export type ListTeamMembersResponseBodyItemUserExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListTeamMembersResponseBodyItemUserExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListTeamMembersResponseBodyItemUserExperimentsMap>;
+export const ListTeamMembersResponseBodyItemUserExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListTeamMembersResponseBodyItemUserExperimentsMap>;
 
 export type ListTeamMembersResponseBodyItemUserEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -32001,9 +29171,8 @@ export const ListTeamMembersResponseBodyItemUserEmailsItem =
 
 export type ListTeamMembersResponseBodyItemUserEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const ListTeamMembersResponseBodyItemUserEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<ListTeamMembersResponseBodyItemUserEmailsList>;
+export const ListTeamMembersResponseBodyItemUserEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<ListTeamMembersResponseBodyItemUserEmailsList>;
 
 export interface ListTeamMembersResponseBodyItemUser {
   identities?: ListTeamMembersResponseBodyItemUserIdentitiesList;
@@ -32028,33 +29197,8 @@ export interface ListTeamMembersResponseBodyItemUser {
   experiments: ListTeamMembersResponseBodyItemUserExperimentsMap;
   emails: ListTeamMembersResponseBodyItemUserEmailsList;
 }
-export const ListTeamMembersResponseBodyItemUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(ListTeamMembersResponseBodyItemUserIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(ListTeamMembersResponseBodyItemUserAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: ListTeamMembersResponseBodyItemUserExperimentsMap,
-    emails: ListTeamMembersResponseBodyItemUserEmailsList,
-  }),
-).annotate({
-  identifier: "ListTeamMembersResponseBodyItemUser",
-}) as any as S.Schema<ListTeamMembersResponseBodyItemUser>;
+export const ListTeamMembersResponseBodyItemUser =
+  AddOrganizationMemberResponseUser as any as S.Schema<ListTeamMembersResponseBodyItemUser>;
 
 export type ListTeamMembersResponseBodyItemFlags = AddOrganizationMemberResponseFlags;
 export const ListTeamMembersResponseBodyItemFlags = AddOrganizationMemberResponseFlags;
@@ -32135,34 +29279,26 @@ export const ListTeamProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListTeamProjectsResponseBodyItemLatestDeploysValueMap = {
   [key: string]: string | undefined;
 };
-export const ListTeamProjectsResponseBodyItemLatestDeploysValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemLatestDeploysValueMap>;
+export const ListTeamProjectsResponseBodyItemLatestDeploysValueMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ListTeamProjectsResponseBodyItemLatestDeploysValueMap>;
 
 export type ListTeamProjectsResponseBodyItemLatestDeploysMap = {
   [key: string]: ListTeamProjectsResponseBodyItemLatestDeploysValueMap | undefined;
 };
-export const ListTeamProjectsResponseBodyItemLatestDeploysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ListTeamProjectsResponseBodyItemLatestDeploysValueMap,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemLatestDeploysMap>;
+export const ListTeamProjectsResponseBodyItemLatestDeploysMap =
+  CreateOrganizationProjectResponseLatestDeploysMap as any as S.Schema<ListTeamProjectsResponseBodyItemLatestDeploysMap>;
 
 export type ListTeamProjectsResponseBodyItemOptionsMap = { [key: string]: unknown | undefined };
-export const ListTeamProjectsResponseBodyItemOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemOptionsMap>;
+export const ListTeamProjectsResponseBodyItemOptionsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ListTeamProjectsResponseBodyItemOptionsMap>;
 
 export type ListTeamProjectsResponseBodyItemFeaturesList = Array<string>;
-export const ListTeamProjectsResponseBodyItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemFeaturesList>;
+export const ListTeamProjectsResponseBodyItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListTeamProjectsResponseBodyItemFeaturesList>;
 
 export type ListTeamProjectsResponseBodyItemAccessList = Array<string>;
-export const ListTeamProjectsResponseBodyItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemAccessList>;
+export const ListTeamProjectsResponseBodyItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListTeamProjectsResponseBodyItemAccessList>;
 
 export type ListTeamProjectsResponseBodyItemTeam = AddProjectTeamResponseTeam;
 export const ListTeamProjectsResponseBodyItemTeam = AddProjectTeamResponseTeam;
@@ -32171,19 +29307,16 @@ export type ListTeamProjectsResponseBodyItemTeamsItem = AddProjectTeamResponseTe
 export const ListTeamProjectsResponseBodyItemTeamsItem = AddProjectTeamResponseTeam;
 
 export type ListTeamProjectsResponseBodyItemTeamsList = Array<AddProjectTeamResponseTeam>;
-export const ListTeamProjectsResponseBodyItemTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemTeamsList>;
+export const ListTeamProjectsResponseBodyItemTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<ListTeamProjectsResponseBodyItemTeamsList>;
 
 export type ListTeamProjectsResponseBodyItemPlatformsList = Array<string>;
-export const ListTeamProjectsResponseBodyItemPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemPlatformsList>;
+export const ListTeamProjectsResponseBodyItemPlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListTeamProjectsResponseBodyItemPlatformsList>;
 
 export type ListTeamProjectsResponseBodyItemEnvironmentsList = Array<string>;
-export const ListTeamProjectsResponseBodyItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListTeamProjectsResponseBodyItemEnvironmentsList>;
+export const ListTeamProjectsResponseBodyItemEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ListTeamProjectsResponseBodyItemEnvironmentsList>;
 
 export type ListTeamProjectsResponseBodyItemLatestRelease =
   CreateOrganizationProjectResponseLatestRelease;
@@ -32235,60 +29368,12 @@ export interface ListTeamProjectsResponseBodyItem {
   environments: ListTeamProjectsResponseBodyItemEnvironmentsList;
   latestRelease: CreateOrganizationProjectResponseLatestRelease | null;
 }
-export const ListTeamProjectsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestDeploys: S.optional(S.NullOr(ListTeamProjectsResponseBodyItemLatestDeploysMap)),
-    options: S.optional(ListTeamProjectsResponseBodyItemOptionsMap),
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: ListTeamProjectsResponseBodyItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: ListTeamProjectsResponseBodyItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    team: S.NullOr(AddProjectTeamResponseTeam),
-    teams: ListTeamProjectsResponseBodyItemTeamsList,
-    platforms: ListTeamProjectsResponseBodyItemPlatformsList,
-    hasUserReports: S.Boolean,
-    environments: ListTeamProjectsResponseBodyItemEnvironmentsList,
-    latestRelease: S.NullOr(CreateOrganizationProjectResponseLatestRelease),
-  }),
-).annotate({
-  identifier: "ListTeamProjectsResponseBodyItem",
-}) as any as S.Schema<ListTeamProjectsResponseBodyItem>;
+export const ListTeamProjectsResponseBodyItem =
+  CreateOrganizationProjectResponse as any as S.Schema<ListTeamProjectsResponseBodyItem>;
 
 export type ListTeamProjectsResponseBodyList = Array<ListTeamProjectsResponseBodyItem>;
-export const ListTeamProjectsResponseBodyList = /*@__PURE__*/ S.Array(
-  ListTeamProjectsResponseBodyItem,
-) as any as S.Schema<ListTeamProjectsResponseBodyList>;
+export const ListTeamProjectsResponseBodyList =
+  ListOrganizationProjectsResponseBodyList as any as S.Schema<ListTeamProjectsResponseBodyList>;
 
 export type ListTeamProjectsResponse = ListTeamProjectsResponseBodyList;
 export const ListTeamProjectsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -32317,9 +29402,8 @@ export const ProvisionOrganizationScimV2GroupRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ProvisionOrganizationScimV2GroupRequest>;
 
 export type ProvisionOrganizationScimV2GroupResponseSchemasList = Array<string>;
-export const ProvisionOrganizationScimV2GroupResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProvisionOrganizationScimV2GroupResponseSchemasList>;
+export const ProvisionOrganizationScimV2GroupResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ProvisionOrganizationScimV2GroupResponseSchemasList>;
 
 export type ProvisionOrganizationScimV2GroupResponseMeta = GetOrganizationScimV2GroupResponseMeta;
 export const ProvisionOrganizationScimV2GroupResponseMeta = GetOrganizationScimV2GroupResponseMeta;
@@ -32331,9 +29415,8 @@ export const ProvisionOrganizationScimV2GroupResponseMembersItem =
 
 export type ProvisionOrganizationScimV2GroupResponseMembersList =
   Array<GetOrganizationScimV2GroupResponseMembersItem>;
-export const ProvisionOrganizationScimV2GroupResponseMembersList = /*@__PURE__*/ S.Array(
-  GetOrganizationScimV2GroupResponseMembersItem,
-) as any as S.Schema<ProvisionOrganizationScimV2GroupResponseMembersList>;
+export const ProvisionOrganizationScimV2GroupResponseMembersList =
+  GetOrganizationScimV2GroupResponseMembersList as any as S.Schema<ProvisionOrganizationScimV2GroupResponseMembersList>;
 
 export interface ProvisionOrganizationScimV2GroupResponse {
   schemas: ProvisionOrganizationScimV2GroupResponseSchemasList;
@@ -32342,17 +29425,8 @@ export interface ProvisionOrganizationScimV2GroupResponse {
   meta: GetOrganizationScimV2GroupResponseMeta;
   members?: ProvisionOrganizationScimV2GroupResponseMembersList;
 }
-export const ProvisionOrganizationScimV2GroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: ProvisionOrganizationScimV2GroupResponseSchemasList,
-    id: S.String,
-    displayName: S.String,
-    meta: GetOrganizationScimV2GroupResponseMeta,
-    members: S.optional(ProvisionOrganizationScimV2GroupResponseMembersList),
-  }),
-).annotate({
-  identifier: "ProvisionOrganizationScimV2GroupResponse",
-}) as any as S.Schema<ProvisionOrganizationScimV2GroupResponse>;
+export const ProvisionOrganizationScimV2GroupResponse =
+  GetOrganizationScimV2GroupResponse as any as S.Schema<ProvisionOrganizationScimV2GroupResponse>;
 
 /** The organization role of the member. If unspecified, this will be set to the organization's default role. The options are: * `billing` - Can manage payment and compliance details. * `member` - Can view and act on events, as well as view most other data within the organization. * `manager` - Has full management access to all teams and projects. Can also manage the organization's membership. * `admin` - Can edit global integrations, manage projects, and add/remove teams. They automatically assume the Team Admin role for teams they join. Note: This role can no longer be assigned in Business and Enterprise plans. Use `TeamRoles` instead. */
 export type ProvisionOrganizationScimV2UserRequestSentryOrgRole =
@@ -32387,9 +29461,8 @@ export const ProvisionOrganizationScimV2UserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ProvisionOrganizationScimV2UserRequest>;
 
 export type ProvisionOrganizationScimV2UserResponseSchemasList = Array<string>;
-export const ProvisionOrganizationScimV2UserResponseSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProvisionOrganizationScimV2UserResponseSchemasList>;
+export const ProvisionOrganizationScimV2UserResponseSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ProvisionOrganizationScimV2UserResponseSchemasList>;
 
 export type ProvisionOrganizationScimV2UserResponseName = GetOrganizationScimV2UserResponseName;
 export const ProvisionOrganizationScimV2UserResponseName = GetOrganizationScimV2UserResponseName;
@@ -32401,9 +29474,8 @@ export const ProvisionOrganizationScimV2UserResponseEmailsItem =
 
 export type ProvisionOrganizationScimV2UserResponseEmailsList =
   Array<GetOrganizationScimV2UserResponseEmailsItem>;
-export const ProvisionOrganizationScimV2UserResponseEmailsList = /*@__PURE__*/ S.Array(
-  GetOrganizationScimV2UserResponseEmailsItem,
-) as any as S.Schema<ProvisionOrganizationScimV2UserResponseEmailsList>;
+export const ProvisionOrganizationScimV2UserResponseEmailsList =
+  GetOrganizationScimV2UserResponseEmailsList as any as S.Schema<ProvisionOrganizationScimV2UserResponseEmailsList>;
 
 export type ProvisionOrganizationScimV2UserResponseMeta = GetOrganizationScimV2GroupResponseMeta;
 export const ProvisionOrganizationScimV2UserResponseMeta = GetOrganizationScimV2GroupResponseMeta;
@@ -32418,26 +29490,13 @@ export interface ProvisionOrganizationScimV2UserResponse {
   meta: GetOrganizationScimV2GroupResponseMeta;
   sentryOrgRole: string;
 }
-export const ProvisionOrganizationScimV2UserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.optional(S.Boolean),
-    schemas: ProvisionOrganizationScimV2UserResponseSchemasList,
-    id: S.String,
-    userName: S.String,
-    name: GetOrganizationScimV2UserResponseName,
-    emails: ProvisionOrganizationScimV2UserResponseEmailsList,
-    meta: GetOrganizationScimV2GroupResponseMeta,
-    sentryOrgRole: S.String,
-  }),
-).annotate({
-  identifier: "ProvisionOrganizationScimV2UserResponse",
-}) as any as S.Schema<ProvisionOrganizationScimV2UserResponse>;
+export const ProvisionOrganizationScimV2UserResponse =
+  GetOrganizationScimV2UserResponse as any as S.Schema<ProvisionOrganizationScimV2UserResponse>;
 
 /** The events to subscribe to. */
 export type RegisterANewServiceHookRequestEventsList = Array<string>;
-export const RegisterANewServiceHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegisterANewServiceHookRequestEventsList>;
+export const RegisterANewServiceHookRequestEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<RegisterANewServiceHookRequestEventsList>;
 
 export interface RegisterANewServiceHookRequest {
   /** The ID or slug of the organization the client keys belong to. */
@@ -32467,9 +29526,8 @@ export const RegisterANewServiceHookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisterANewServiceHookRequest>;
 
 export type RegisterANewServiceHookResponseEventsList = Array<string>;
-export const RegisterANewServiceHookResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegisterANewServiceHookResponseEventsList>;
+export const RegisterANewServiceHookResponseEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<RegisterANewServiceHookResponseEventsList>;
 
 export interface RegisterANewServiceHookResponse {
   dateCreated: string;
@@ -32479,18 +29537,8 @@ export interface RegisterANewServiceHookResponse {
   status: string;
   url: string;
 }
-export const RegisterANewServiceHookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateCreated: S.String,
-    events: RegisterANewServiceHookResponseEventsList,
-    id: S.String,
-    secret: S.String.pipe(T.SensitiveValue({})),
-    status: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "RegisterANewServiceHookResponse",
-}) as any as S.Schema<RegisterANewServiceHookResponse>;
+export const RegisterANewServiceHookResponse =
+  ListAProjectSServiceHooksResponseBodyItem as any as S.Schema<RegisterANewServiceHookResponse>;
 
 export interface RemoveAServiceHookRequest {
   /** The ID or slug of the organization the client keys belong to. */
@@ -32517,9 +29565,8 @@ export const RemoveAServiceHookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveAServiceHookRequest>;
 
 export interface RemoveAServiceHookResponse {}
-export const RemoveAServiceHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveAServiceHookResponse",
-}) as any as S.Schema<RemoveAServiceHookResponse>;
+export const RemoveAServiceHookResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<RemoveAServiceHookResponse>;
 
 export interface ResolveOrganizationEventIdRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -32545,18 +29592,14 @@ export const ResolveOrganizationEventIdRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResolveOrganizationEventIdResponseEventUserGeoMap = {
   [key: string]: string | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventUserGeoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventUserGeoMap>;
+export const ResolveOrganizationEventIdResponseEventUserGeoMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<ResolveOrganizationEventIdResponseEventUserGeoMap>;
 
 export type ResolveOrganizationEventIdResponseEventUserDataMap = {
   [key: string]: unknown | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventUserDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventUserDataMap>;
+export const ResolveOrganizationEventIdResponseEventUserDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationEventIdResponseEventUserDataMap>;
 
 export interface ResolveOrganizationEventIdResponseEventUser {
   id?: string | null;
@@ -32567,19 +29610,8 @@ export interface ResolveOrganizationEventIdResponseEventUser {
   geo?: ResolveOrganizationEventIdResponseEventUserGeoMap | null;
   data?: ResolveOrganizationEventIdResponseEventUserDataMap | null;
 }
-export const ResolveOrganizationEventIdResponseEventUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    email: S.optional(S.NullOr(S.String)),
-    username: S.optional(S.NullOr(S.String)),
-    ip_address: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    geo: S.optional(S.NullOr(ResolveOrganizationEventIdResponseEventUserGeoMap)),
-    data: S.optional(S.NullOr(ResolveOrganizationEventIdResponseEventUserDataMap)),
-  }),
-).annotate({
-  identifier: "ResolveOrganizationEventIdResponseEventUser",
-}) as any as S.Schema<ResolveOrganizationEventIdResponseEventUser>;
+export const ResolveOrganizationEventIdResponseEventUser =
+  GetOrganizationIssueEventResponseUser as any as S.Schema<ResolveOrganizationEventIdResponseEventUser>;
 
 export type ResolveOrganizationEventIdResponseEventTagsItem =
   GetOrganizationIssueEventResponseTagsItem;
@@ -32588,22 +29620,18 @@ export const ResolveOrganizationEventIdResponseEventTagsItem =
 
 export type ResolveOrganizationEventIdResponseEventTagsList =
   Array<GetOrganizationIssueEventResponseTagsItem>;
-export const ResolveOrganizationEventIdResponseEventTagsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueEventResponseTagsItem,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventTagsList>;
+export const ResolveOrganizationEventIdResponseEventTagsList =
+  GetOrganizationIssueEventResponseTagsList as any as S.Schema<ResolveOrganizationEventIdResponseEventTagsList>;
 
 export type ResolveOrganizationEventIdResponseEventContextsMap = {
   [key: string]: unknown | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventContextsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventContextsMap>;
+export const ResolveOrganizationEventIdResponseEventContextsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationEventIdResponseEventContextsMap>;
 
 export type ResolveOrganizationEventIdResponseEventEntriesList = Array<unknown>;
-export const ResolveOrganizationEventIdResponseEventEntriesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventEntriesList>;
+export const ResolveOrganizationEventIdResponseEventEntriesList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<ResolveOrganizationEventIdResponseEventEntriesList>;
 
 export type ResolveOrganizationEventIdResponseEventSdk = GetOrganizationIssueEventResponseSdk;
 export const ResolveOrganizationEventIdResponseEventSdk = GetOrganizationIssueEventResponseSdk;
@@ -32611,18 +29639,14 @@ export const ResolveOrganizationEventIdResponseEventSdk = GetOrganizationIssueEv
 export type ResolveOrganizationEventIdResponseEventContextMap = {
   [key: string]: unknown | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventContextMap>;
+export const ResolveOrganizationEventIdResponseEventContextMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationEventIdResponseEventContextMap>;
 
 export type ResolveOrganizationEventIdResponseEventPackagesMap = {
   [key: string]: unknown | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventPackagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventPackagesMap>;
+export const ResolveOrganizationEventIdResponseEventPackagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationEventIdResponseEventPackagesMap>;
 
 export type ResolveOrganizationEventIdResponseEventType =
   | "default"
@@ -32640,54 +29664,37 @@ export const ResolveOrganizationEventIdResponseEventType = S.String;
 export type ResolveOrganizationEventIdResponseEventMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventMetadataMap>;
+export const ResolveOrganizationEventIdResponseEventMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationEventIdResponseEventMetadataMap>;
 
 export type ResolveOrganizationEventIdResponseEventErrorsItemDataMap = {
   [key: string]: unknown | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventErrorsItemDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventErrorsItemDataMap>;
+export const ResolveOrganizationEventIdResponseEventErrorsItemDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationEventIdResponseEventErrorsItemDataMap>;
 
 export interface ResolveOrganizationEventIdResponseEventErrorsItem {
   type: string;
   message: string;
   data: ResolveOrganizationEventIdResponseEventErrorsItemDataMap;
 }
-export const ResolveOrganizationEventIdResponseEventErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    message: S.String,
-    data: ResolveOrganizationEventIdResponseEventErrorsItemDataMap,
-  }),
-).annotate({
-  identifier: "ResolveOrganizationEventIdResponseEventErrorsItem",
-}) as any as S.Schema<ResolveOrganizationEventIdResponseEventErrorsItem>;
+export const ResolveOrganizationEventIdResponseEventErrorsItem =
+  GetOrganizationIssueEventResponseErrorsItem as any as S.Schema<ResolveOrganizationEventIdResponseEventErrorsItem>;
 
 export type ResolveOrganizationEventIdResponseEventErrorsList =
   Array<ResolveOrganizationEventIdResponseEventErrorsItem>;
-export const ResolveOrganizationEventIdResponseEventErrorsList = /*@__PURE__*/ S.Array(
-  ResolveOrganizationEventIdResponseEventErrorsItem,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventErrorsList>;
+export const ResolveOrganizationEventIdResponseEventErrorsList =
+  GetOrganizationIssueEventResponseErrorsList as any as S.Schema<ResolveOrganizationEventIdResponseEventErrorsList>;
 
 export type ResolveOrganizationEventIdResponseEventOccurrenceFingerprintList = Array<string>;
 export const ResolveOrganizationEventIdResponseEventOccurrenceFingerprintList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ResolveOrganizationEventIdResponseEventOccurrenceFingerprintList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<ResolveOrganizationEventIdResponseEventOccurrenceFingerprintList>;
 
 export type ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDataMap = {
   [key: string]: unknown | undefined;
 };
 export const ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDataMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDataMap>;
 
 export type ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDisplayItem =
   GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem;
@@ -32697,9 +29704,7 @@ export const ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDisplayIte
 export type ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDisplayList =
   Array<GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem>;
 export const ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDisplayList =
-  /*@__PURE__*/ S.Array(
-    GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem,
-  ) as any as S.Schema<ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDisplayList>;
+  ListOrganizationIssueHashesResponseBodyItemLatestEventCase0OccurrenceEvidenceDisplayList as any as S.Schema<ResolveOrganizationEventIdResponseEventOccurrenceEvidenceDisplayList>;
 
 export interface ResolveOrganizationEventIdResponseEventOccurrence {
   id: string;
@@ -32741,15 +29746,12 @@ export const ResolveOrganizationEventIdResponseEventOccurrence = /*@__PURE__*/ S
 }) as any as S.Schema<ResolveOrganizationEventIdResponseEventOccurrence>;
 
 export type ResolveOrganizationEventIdResponseEventMetaMap = { [key: string]: unknown | undefined };
-export const ResolveOrganizationEventIdResponseEventMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventMetaMap>;
+export const ResolveOrganizationEventIdResponseEventMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationEventIdResponseEventMetaMap>;
 
 export type ResolveOrganizationEventIdResponseEventFingerprintsList = Array<string>;
-export const ResolveOrganizationEventIdResponseEventFingerprintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventFingerprintsList>;
+export const ResolveOrganizationEventIdResponseEventFingerprintsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<ResolveOrganizationEventIdResponseEventFingerprintsList>;
 
 export type ResolveOrganizationEventIdResponseEventGroupingConfig =
   GetOrganizationIssueEventResponseGroupingConfig;
@@ -32764,10 +29766,8 @@ export const ResolveOrganizationEventIdResponseEventMeasurementsValue =
 export type ResolveOrganizationEventIdResponseEventMeasurementsMap = {
   [key: string]: GetOrganizationIssueEventResponseMeasurementsValue | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventMeasurementsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetOrganizationIssueEventResponseMeasurementsValue,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventMeasurementsMap>;
+export const ResolveOrganizationEventIdResponseEventMeasurementsMap =
+  GetOrganizationIssueEventResponseMeasurementsMap as any as S.Schema<ResolveOrganizationEventIdResponseEventMeasurementsMap>;
 
 export type ResolveOrganizationEventIdResponseEventBreakdownsValueValue =
   GetOrganizationIssueEventResponseMeasurementsValue;
@@ -32777,18 +29777,14 @@ export const ResolveOrganizationEventIdResponseEventBreakdownsValueValue =
 export type ResolveOrganizationEventIdResponseEventBreakdownsValueMap = {
   [key: string]: GetOrganizationIssueEventResponseMeasurementsValue | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventBreakdownsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetOrganizationIssueEventResponseMeasurementsValue,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventBreakdownsValueMap>;
+export const ResolveOrganizationEventIdResponseEventBreakdownsValueMap =
+  GetOrganizationIssueEventResponseMeasurementsMap as any as S.Schema<ResolveOrganizationEventIdResponseEventBreakdownsValueMap>;
 
 export type ResolveOrganizationEventIdResponseEventBreakdownsMap = {
   [key: string]: ResolveOrganizationEventIdResponseEventBreakdownsValueMap | undefined;
 };
-export const ResolveOrganizationEventIdResponseEventBreakdownsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ResolveOrganizationEventIdResponseEventBreakdownsValueMap,
-) as any as S.Schema<ResolveOrganizationEventIdResponseEventBreakdownsMap>;
+export const ResolveOrganizationEventIdResponseEventBreakdownsMap =
+  GetOrganizationIssueEventResponseBreakdownsMap as any as S.Schema<ResolveOrganizationEventIdResponseEventBreakdownsMap>;
 
 export interface ResolveOrganizationEventIdResponseEvent {
   id: string;
@@ -32963,9 +29959,7 @@ export const ResolveOrganizationShortIdResponseGroupStatusDetailsActorIdentities
 export type ResolveOrganizationShortIdResponseGroupStatusDetailsActorIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const ResolveOrganizationShortIdResponseGroupStatusDetailsActorIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorIdentitiesList>;
 
 export type ResolveOrganizationShortIdResponseGroupStatusDetailsActorAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -32975,18 +29969,13 @@ export const ResolveOrganizationShortIdResponseGroupStatusDetailsActorAvatar =
 export type ResolveOrganizationShortIdResponseGroupStatusDetailsActorAuthenticatorsList =
   Array<unknown>;
 export const ResolveOrganizationShortIdResponseGroupStatusDetailsActorAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorAuthenticatorsList>;
 
 export type ResolveOrganizationShortIdResponseGroupStatusDetailsActorExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const ResolveOrganizationShortIdResponseGroupStatusDetailsActorExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorExperimentsMap>;
 
 export type ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -32996,9 +29985,7 @@ export const ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsItem
 export type ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsList>;
 
 export interface ResolveOrganizationShortIdResponseGroupStatusDetailsActor {
   identities?: ResolveOrganizationShortIdResponseGroupStatusDetailsActorIdentitiesList;
@@ -33023,38 +30010,8 @@ export interface ResolveOrganizationShortIdResponseGroupStatusDetailsActor {
   experiments: ResolveOrganizationShortIdResponseGroupStatusDetailsActorExperimentsMap;
   emails: ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsList;
 }
-export const ResolveOrganizationShortIdResponseGroupStatusDetailsActor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identities: S.optional(
-        ResolveOrganizationShortIdResponseGroupStatusDetailsActorIdentitiesList,
-      ),
-      avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-      authenticators: S.optional(
-        ResolveOrganizationShortIdResponseGroupStatusDetailsActorAuthenticatorsList,
-      ),
-      canReset2fa: S.optional(S.Boolean),
-      id: S.String,
-      name: S.String,
-      username: S.String,
-      email: S.String,
-      avatarUrl: S.String,
-      isActive: S.Boolean,
-      isSuspended: S.Boolean,
-      hasPasswordAuth: S.Boolean,
-      isManaged: S.Boolean,
-      dateJoined: S.String,
-      lastLogin: S.NullOr(S.String),
-      has2fa: S.Boolean,
-      lastActive: S.NullOr(S.String),
-      isSuperuser: S.Boolean,
-      isStaff: S.Boolean,
-      experiments: ResolveOrganizationShortIdResponseGroupStatusDetailsActorExperimentsMap,
-      emails: ResolveOrganizationShortIdResponseGroupStatusDetailsActorEmailsList,
-    }),
-).annotate({
-  identifier: "ResolveOrganizationShortIdResponseGroupStatusDetailsActor",
-}) as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActor>;
+export const ResolveOrganizationShortIdResponseGroupStatusDetailsActor =
+  ListOrganizationIssuesResponseBodyItemStatusDetailsActor as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetailsActor>;
 
 export type ResolveOrganizationShortIdResponseGroupStatusDetailsInfo =
   GetOrganizationIssueResponseStatusDetailsInfo;
@@ -33074,23 +30031,8 @@ export interface ResolveOrganizationShortIdResponseGroupStatusDetails {
   pendingEvents?: number;
   info?: GetOrganizationIssueResponseStatusDetailsInfo | null;
 }
-export const ResolveOrganizationShortIdResponseGroupStatusDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ignoreCount: S.optional(S.Number),
-    ignoreUntil: S.optional(S.String),
-    ignoreUserCount: S.optional(S.Number),
-    ignoreUserWindow: S.optional(S.Number),
-    ignoreWindow: S.optional(S.Number),
-    actor: S.optional(ResolveOrganizationShortIdResponseGroupStatusDetailsActor),
-    inNextRelease: S.optional(S.Boolean),
-    inRelease: S.optional(S.String),
-    inCommit: S.optional(S.String),
-    pendingEvents: S.optional(S.Number),
-    info: S.optional(S.NullOr(GetOrganizationIssueResponseStatusDetailsInfo)),
-  }),
-).annotate({
-  identifier: "ResolveOrganizationShortIdResponseGroupStatusDetails",
-}) as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetails>;
+export const ResolveOrganizationShortIdResponseGroupStatusDetails =
+  ListOrganizationIssuesResponseBodyItemStatusDetails as any as S.Schema<ResolveOrganizationShortIdResponseGroupStatusDetails>;
 
 export type ResolveOrganizationShortIdResponseGroupSubstatus =
   | "archived_until_escalating"
@@ -33124,10 +30066,8 @@ export const ResolveOrganizationShortIdResponseGroupType = S.String;
 export type ResolveOrganizationShortIdResponseGroupMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ResolveOrganizationShortIdResponseGroupMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolveOrganizationShortIdResponseGroupMetadataMap>;
+export const ResolveOrganizationShortIdResponseGroupMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<ResolveOrganizationShortIdResponseGroupMetadataMap>;
 
 export type ResolveOrganizationShortIdResponseGroupAssignedToType = "user" | "team";
 export const ResolveOrganizationShortIdResponseGroupAssignedToType = S.String;
@@ -33161,9 +30101,8 @@ export const ResolveOrganizationShortIdResponseGroupAnnotationsItem =
 
 export type ResolveOrganizationShortIdResponseGroupAnnotationsList =
   Array<GetOrganizationIssueResponseAnnotationsItem>;
-export const ResolveOrganizationShortIdResponseGroupAnnotationsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseAnnotationsItem,
-) as any as S.Schema<ResolveOrganizationShortIdResponseGroupAnnotationsList>;
+export const ResolveOrganizationShortIdResponseGroupAnnotationsList =
+  GetOrganizationIssueResponseAnnotationsList as any as S.Schema<ResolveOrganizationShortIdResponseGroupAnnotationsList>;
 
 export interface ResolveOrganizationShortIdResponseGroup {
   isUnhandled?: boolean;
@@ -33338,11 +30277,8 @@ export const StartOrganizationIssueAutofixRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<StartOrganizationIssueAutofixRequest>;
 
 export interface StartOrganizationIssueAutofixResponse {}
-export const StartOrganizationIssueAutofixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartOrganizationIssueAutofixResponse",
-}) as any as S.Schema<StartOrganizationIssueAutofixResponse>;
+export const StartOrganizationIssueAutofixResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<StartOrganizationIssueAutofixResponse>;
 
 export interface UnlinkAnExternalIssueFromAnIssueRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -33372,11 +30308,8 @@ export const UnlinkAnExternalIssueFromAnIssueRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UnlinkAnExternalIssueFromAnIssueRequest>;
 
 export interface UnlinkAnExternalIssueFromAnIssueResponse {}
-export const UnlinkAnExternalIssueFromAnIssueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UnlinkAnExternalIssueFromAnIssueResponse",
-}) as any as S.Schema<UnlinkAnExternalIssueFromAnIssueResponse>;
+export const UnlinkAnExternalIssueFromAnIssueResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<UnlinkAnExternalIssueFromAnIssueResponse>;
 
 /** The data the filter matches against. `all` is the catch-all: it filters every data type Sentry ingests, including ones added later, and accepts only the conditions that every data type carries a field for. * `all` * `error` * `log` * `metric` * `span` */
 export type UpdateACustomInboundFilterRequestDataType = "all" | "error" | "log" | "metric" | "span";
@@ -33394,9 +30327,8 @@ export const UpdateACustomInboundFilterRequestConditionsItemType = S.String;
 
 /** Glob patterns the field is matched against. The condition matches when any pattern matches, so multiple values act as OR. */
 export type UpdateACustomInboundFilterRequestConditionsItemValueList = Array<string>;
-export const UpdateACustomInboundFilterRequestConditionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateACustomInboundFilterRequestConditionsItemValueList>;
+export const UpdateACustomInboundFilterRequestConditionsItemValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateACustomInboundFilterRequestConditionsItemValueList>;
 
 export interface UpdateACustomInboundFilterRequestConditionsItem {
   /** The field the condition matches against. Every `dataType` accepts `release` and `ip_address`. In addition, `error` accepts `error_type` and `error_message`, `log` accepts `log_message`, and `metric` accepts `metric_name`. `span` and `all` accept no other types. * `error_type` * `error_message` * `log_message` * `metric_name` * `release` * `ip_address` */
@@ -33477,9 +30409,8 @@ export const UpdateACustomInboundFilterResponseConditionsItemType = S.String;
 
 /** Glob patterns the field is matched against. The condition matches when any pattern matches, so multiple values act as OR. */
 export type UpdateACustomInboundFilterResponseConditionsItemValueList = Array<string>;
-export const UpdateACustomInboundFilterResponseConditionsItemValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateACustomInboundFilterResponseConditionsItemValueList>;
+export const UpdateACustomInboundFilterResponseConditionsItemValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateACustomInboundFilterResponseConditionsItemValueList>;
 
 export interface UpdateACustomInboundFilterResponseConditionsItem {
   /** The field the condition matches against. Every `dataType` accepts `release` and `ip_address`. In addition, `error` accepts `error_type` and `error_message`, `log` accepts `log_message`, and `metric` accepts `metric_name`. `span` and `all` accept no other types. * `error_type` * `error_message` * `log_message` * `metric_name` * `release` * `ip_address` */
@@ -33535,9 +30466,8 @@ export const UpdateACustomInboundFilterResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The events to subscribe to. */
 export type UpdateAServiceHookRequestEventsList = Array<string>;
-export const UpdateAServiceHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAServiceHookRequestEventsList>;
+export const UpdateAServiceHookRequestEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateAServiceHookRequestEventsList>;
 
 export interface UpdateAServiceHookRequest {
   /** The ID or slug of the organization the client keys belong to. */
@@ -33570,9 +30500,8 @@ export const UpdateAServiceHookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAServiceHookRequest>;
 
 export type UpdateAServiceHookResponseEventsList = Array<string>;
-export const UpdateAServiceHookResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAServiceHookResponseEventsList>;
+export const UpdateAServiceHookResponseEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateAServiceHookResponseEventsList>;
 
 export interface UpdateAServiceHookResponse {
   dateCreated: string;
@@ -33582,18 +30511,8 @@ export interface UpdateAServiceHookResponse {
   status: string;
   url: string;
 }
-export const UpdateAServiceHookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateCreated: S.String,
-    events: UpdateAServiceHookResponseEventsList,
-    id: S.String,
-    secret: S.String.pipe(T.SensitiveValue({})),
-    status: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "UpdateAServiceHookResponse",
-}) as any as S.Schema<UpdateAServiceHookResponse>;
+export const UpdateAServiceHookResponse =
+  ListAProjectSServiceHooksResponseBodyItem as any as S.Schema<UpdateAServiceHookResponse>;
 
 /** The default role new members will receive. * `member` - Member * `admin` - Admin * `manager` - Manager * `owner` - Owner */
 export type UpdateOrganizationRequestDefaultRole = "member" | "admin" | "manager" | "owner";
@@ -33609,9 +30528,8 @@ export const UpdateOrganizationRequestDebugFilesRole = S.String;
 
 /** A list of user IDs who have permission to access replay data. Requires the hasGranularReplayPermissions flag to be true to be enforced. */
 export type UpdateOrganizationRequestReplayAccessMembersList = Array<number>;
-export const UpdateOrganizationRequestReplayAccessMembersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationRequestReplayAccessMembersList>;
+export const UpdateOrganizationRequestReplayAccessMembersList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationRequestReplayAccessMembersList>;
 
 /** The type of display picture for the organization. * `letter_avatar` - Use initials * `upload` - Upload an image */
 export type UpdateOrganizationRequestAvatarType = "letter_avatar" | "upload";
@@ -33623,28 +30541,23 @@ export const UpdateOrganizationRequestStoreCrashReports = S.Number;
 
 /** A list of additional global field names to match against when scrubbing data for all projects. */
 export type UpdateOrganizationRequestSensitiveFieldsList = Array<string>;
-export const UpdateOrganizationRequestSensitiveFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationRequestSensitiveFieldsList>;
+export const UpdateOrganizationRequestSensitiveFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationRequestSensitiveFieldsList>;
 
 /** A list of global field names which data scrubbers should ignore. */
 export type UpdateOrganizationRequestSafeFieldsList = Array<string>;
-export const UpdateOrganizationRequestSafeFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationRequestSafeFieldsList>;
+export const UpdateOrganizationRequestSafeFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationRequestSafeFieldsList>;
 
 export type UpdateOrganizationRequestTrustedRelaysItemMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationRequestTrustedRelaysItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationRequestTrustedRelaysItemMap>;
+export const UpdateOrganizationRequestTrustedRelaysItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationRequestTrustedRelaysItemMap>;
 
 /** A list of local Relays (the name, public key, and description as a JSON) registered for the organization. This feature is only available for organizations on the Business and Enterprise plans. Read more about Relay [here](/product/relay/). Below is an example of a list containing a single local Relay registered for the organization: ```json { trustedRelays: [ { name: "my-relay", publicKey: "eiwr9fdruw4erfh892qy4493reyf89ur34wefd90h", description: "Configuration for my-relay." } ] } ``` */
 export type UpdateOrganizationRequestTrustedRelaysList =
   Array<UpdateOrganizationRequestTrustedRelaysItemMap>;
-export const UpdateOrganizationRequestTrustedRelaysList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationRequestTrustedRelaysItemMap,
-) as any as S.Schema<UpdateOrganizationRequestTrustedRelaysList>;
+export const UpdateOrganizationRequestTrustedRelaysList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<UpdateOrganizationRequestTrustedRelaysList>;
 
 export interface UpdateOrganizationRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -33757,28 +30670,22 @@ export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationRequest>;
 
 export type UpdateOrganizationResponseFeaturesList = Array<string>;
-export const UpdateOrganizationResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseFeaturesList>;
+export const UpdateOrganizationResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseFeaturesList>;
 
 export type UpdateOrganizationResponseExtraOptionsValueMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationResponseExtraOptionsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationResponseExtraOptionsValueMap>;
+export const UpdateOrganizationResponseExtraOptionsValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationResponseExtraOptionsValueMap>;
 
 export type UpdateOrganizationResponseExtraOptionsMap = {
   [key: string]: UpdateOrganizationResponseExtraOptionsValueMap | undefined;
 };
-export const UpdateOrganizationResponseExtraOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateOrganizationResponseExtraOptionsValueMap,
-) as any as S.Schema<UpdateOrganizationResponseExtraOptionsMap>;
+export const UpdateOrganizationResponseExtraOptionsMap =
+  GetOrganizationResponseExtraOptionsMap as any as S.Schema<UpdateOrganizationResponseExtraOptionsMap>;
 
 export type UpdateOrganizationResponseAccessList = Array<string>;
-export const UpdateOrganizationResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseAccessList>;
+export const UpdateOrganizationResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseAccessList>;
 
 export type UpdateOrganizationResponseOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -33787,9 +30694,8 @@ export const UpdateOrganizationResponseOnboardingTasksItem =
 
 export type UpdateOrganizationResponseOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
-export const UpdateOrganizationResponseOnboardingTasksList = /*@__PURE__*/ S.Array(
-  CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-) as any as S.Schema<UpdateOrganizationResponseOnboardingTasksList>;
+export const UpdateOrganizationResponseOnboardingTasksList =
+  CreateOrganizationTeamResponseOrganizationOnboardingTasksList as any as S.Schema<UpdateOrganizationResponseOnboardingTasksList>;
 
 export type UpdateOrganizationResponseStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -33803,15 +30709,12 @@ export type UpdateOrganizationResponseLinks = CreateOrganizationTeamResponseOrga
 export const UpdateOrganizationResponseLinks = CreateOrganizationTeamResponseOrganizationLinks;
 
 export type UpdateOrganizationResponseExperimentsMap = { [key: string]: string | undefined };
-export const UpdateOrganizationResponseExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseExperimentsMap>;
+export const UpdateOrganizationResponseExperimentsMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<UpdateOrganizationResponseExperimentsMap>;
 
 export type UpdateOrganizationResponseOrgRoleListItemScopesList = Array<string>;
-export const UpdateOrganizationResponseOrgRoleListItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseOrgRoleListItemScopesList>;
+export const UpdateOrganizationResponseOrgRoleListItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseOrgRoleListItemScopesList>;
 
 export interface UpdateOrganizationResponseOrgRoleListItem {
   id: string;
@@ -33826,34 +30729,17 @@ export interface UpdateOrganizationResponseOrgRoleListItem {
   isGlobal: boolean;
   minimumTeamRole: string;
 }
-export const UpdateOrganizationResponseOrgRoleListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    desc: S.String,
-    scopes: UpdateOrganizationResponseOrgRoleListItemScopesList,
-    allowed: S.Boolean,
-    isAllowed: S.Boolean,
-    isRetired: S.Boolean,
-    isTeamRolesAllowed: S.Boolean,
-    is_global: S.Boolean,
-    isGlobal: S.Boolean,
-    minimumTeamRole: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationResponseOrgRoleListItem",
-}) as any as S.Schema<UpdateOrganizationResponseOrgRoleListItem>;
+export const UpdateOrganizationResponseOrgRoleListItem =
+  GetOrganizationMemberResponseOrgRoleListItem as any as S.Schema<UpdateOrganizationResponseOrgRoleListItem>;
 
 export type UpdateOrganizationResponseOrgRoleListList =
   Array<UpdateOrganizationResponseOrgRoleListItem>;
-export const UpdateOrganizationResponseOrgRoleListList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationResponseOrgRoleListItem,
-) as any as S.Schema<UpdateOrganizationResponseOrgRoleListList>;
+export const UpdateOrganizationResponseOrgRoleListList =
+  GetOrganizationMemberResponseOrgRoleListList as any as S.Schema<UpdateOrganizationResponseOrgRoleListList>;
 
 export type UpdateOrganizationResponseTeamRoleListItemScopesList = Array<string>;
-export const UpdateOrganizationResponseTeamRoleListItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseTeamRoleListItemScopesList>;
+export const UpdateOrganizationResponseTeamRoleListItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseTeamRoleListItemScopesList>;
 
 export interface UpdateOrganizationResponseTeamRoleListItem {
   id: string;
@@ -33866,37 +30752,21 @@ export interface UpdateOrganizationResponseTeamRoleListItem {
   isTeamRolesAllowed: boolean;
   isMinimumRoleFor: string | null;
 }
-export const UpdateOrganizationResponseTeamRoleListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    desc: S.String,
-    scopes: UpdateOrganizationResponseTeamRoleListItemScopesList,
-    allowed: S.Boolean,
-    isAllowed: S.Boolean,
-    isRetired: S.Boolean,
-    isTeamRolesAllowed: S.Boolean,
-    isMinimumRoleFor: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationResponseTeamRoleListItem",
-}) as any as S.Schema<UpdateOrganizationResponseTeamRoleListItem>;
+export const UpdateOrganizationResponseTeamRoleListItem =
+  GetOrganizationMemberResponseTeamRoleListItem as any as S.Schema<UpdateOrganizationResponseTeamRoleListItem>;
 
 export type UpdateOrganizationResponseTeamRoleListList =
   Array<UpdateOrganizationResponseTeamRoleListItem>;
-export const UpdateOrganizationResponseTeamRoleListList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationResponseTeamRoleListItem,
-) as any as S.Schema<UpdateOrganizationResponseTeamRoleListList>;
+export const UpdateOrganizationResponseTeamRoleListList =
+  GetOrganizationMemberResponseTeamRoleListList as any as S.Schema<UpdateOrganizationResponseTeamRoleListList>;
 
 export type UpdateOrganizationResponseSensitiveFieldsList = Array<string>;
-export const UpdateOrganizationResponseSensitiveFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseSensitiveFieldsList>;
+export const UpdateOrganizationResponseSensitiveFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseSensitiveFieldsList>;
 
 export type UpdateOrganizationResponseSafeFieldsList = Array<string>;
-export const UpdateOrganizationResponseSafeFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseSafeFieldsList>;
+export const UpdateOrganizationResponseSafeFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseSafeFieldsList>;
 
 export interface UpdateOrganizationResponseTrustedRelaysItem {
   name?: string;
@@ -33924,20 +30794,16 @@ export const UpdateOrganizationResponseTrustedRelaysList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<UpdateOrganizationResponseTrustedRelaysList>;
 
 export type UpdateOrganizationResponseDefaultCodeReviewTriggersList = Array<string>;
-export const UpdateOrganizationResponseDefaultCodeReviewTriggersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseDefaultCodeReviewTriggersList>;
+export const UpdateOrganizationResponseDefaultCodeReviewTriggersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseDefaultCodeReviewTriggersList>;
 
 export type UpdateOrganizationResponseTeamsItemFlagsMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationResponseTeamsItemFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemFlagsMap>;
+export const UpdateOrganizationResponseTeamsItemFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationResponseTeamsItemFlagsMap>;
 
 export type UpdateOrganizationResponseTeamsItemAccessList = Array<string>;
-export const UpdateOrganizationResponseTeamsItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemAccessList>;
+export const UpdateOrganizationResponseTeamsItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseTeamsItemAccessList>;
 
 export type UpdateOrganizationResponseTeamsItemAvatar = AddOrganizationMemberResponseUserAvatar;
 export const UpdateOrganizationResponseTeamsItemAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -33949,37 +30815,28 @@ export const UpdateOrganizationResponseTeamsItemExternalTeamsItem =
 
 export type UpdateOrganizationResponseTeamsItemExternalTeamsList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const UpdateOrganizationResponseTeamsItemExternalTeamsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemExternalTeamsList>;
+export const UpdateOrganizationResponseTeamsItemExternalTeamsList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<UpdateOrganizationResponseTeamsItemExternalTeamsList>;
 
 export type UpdateOrganizationResponseTeamsItemOrganizationFeaturesList = Array<string>;
-export const UpdateOrganizationResponseTeamsItemOrganizationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationFeaturesList>;
+export const UpdateOrganizationResponseTeamsItemOrganizationFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationFeaturesList>;
 
 export type UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsValueMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsValueMap>;
 
 export type UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsMap = {
   [key: string]: UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsValueMap | undefined;
 };
 export const UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsValueMap,
-  ) as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsMap>;
+  ListOrganizationTeamsResponseBodyItemOrganizationExtraOptionsMap as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationExtraOptionsMap>;
 
 export type UpdateOrganizationResponseTeamsItemOrganizationAccessList = Array<string>;
-export const UpdateOrganizationResponseTeamsItemOrganizationAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationAccessList>;
+export const UpdateOrganizationResponseTeamsItemOrganizationAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationAccessList>;
 
 export type UpdateOrganizationResponseTeamsItemOrganizationOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -33989,9 +30846,7 @@ export const UpdateOrganizationResponseTeamsItemOrganizationOnboardingTasksItem 
 export type UpdateOrganizationResponseTeamsItemOrganizationOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
 export const UpdateOrganizationResponseTeamsItemOrganizationOnboardingTasksList =
-  /*@__PURE__*/ S.Array(
-    CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-  ) as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationOnboardingTasksList>;
+  ListOrganizationTeamsResponseBodyItemOrganizationOnboardingTasksList as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganizationOnboardingTasksList>;
 
 export type UpdateOrganizationResponseTeamsItemOrganizationStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -34052,14 +30907,12 @@ export const UpdateOrganizationResponseTeamsItemOrganization = /*@__PURE__*/ S.s
 }) as any as S.Schema<UpdateOrganizationResponseTeamsItemOrganization>;
 
 export type UpdateOrganizationResponseTeamsItemProjectsItemFeaturesList = Array<string>;
-export const UpdateOrganizationResponseTeamsItemProjectsItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsItemFeaturesList>;
+export const UpdateOrganizationResponseTeamsItemProjectsItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsItemFeaturesList>;
 
 export type UpdateOrganizationResponseTeamsItemProjectsItemAccessList = Array<string>;
-export const UpdateOrganizationResponseTeamsItemProjectsItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsItemAccessList>;
+export const UpdateOrganizationResponseTeamsItemProjectsItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsItemAccessList>;
 
 export type UpdateOrganizationResponseTeamsItemProjectsItemAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -34108,58 +30961,13 @@ export interface UpdateOrganizationResponseTeamsItemProjectsItem {
   color: string;
   status: string;
 }
-export const UpdateOrganizationResponseTeamsItemProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: UpdateOrganizationResponseTeamsItemProjectsItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: UpdateOrganizationResponseTeamsItemProjectsItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationResponseTeamsItemProjectsItem",
-}) as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsItem>;
+export const UpdateOrganizationResponseTeamsItemProjectsItem =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsItem>;
 
 export type UpdateOrganizationResponseTeamsItemProjectsList =
   Array<UpdateOrganizationResponseTeamsItemProjectsItem>;
-export const UpdateOrganizationResponseTeamsItemProjectsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationResponseTeamsItemProjectsItem,
-) as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsList>;
+export const UpdateOrganizationResponseTeamsItemProjectsList =
+  CreateOrganizationTeamResponseProjectsList as any as S.Schema<UpdateOrganizationResponseTeamsItemProjectsList>;
 
 export interface UpdateOrganizationResponseTeamsItem {
   id: string;
@@ -34208,36 +31016,28 @@ export const UpdateOrganizationResponseTeamsList = /*@__PURE__*/ S.Array(
 export type UpdateOrganizationResponseProjectsItemLatestDeploysValueMap = {
   [key: string]: string | undefined;
 };
-export const UpdateOrganizationResponseProjectsItemLatestDeploysValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemLatestDeploysValueMap>;
+export const UpdateOrganizationResponseProjectsItemLatestDeploysValueMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<UpdateOrganizationResponseProjectsItemLatestDeploysValueMap>;
 
 export type UpdateOrganizationResponseProjectsItemLatestDeploysMap = {
   [key: string]: UpdateOrganizationResponseProjectsItemLatestDeploysValueMap | undefined;
 };
-export const UpdateOrganizationResponseProjectsItemLatestDeploysMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateOrganizationResponseProjectsItemLatestDeploysValueMap,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemLatestDeploysMap>;
+export const UpdateOrganizationResponseProjectsItemLatestDeploysMap =
+  CreateOrganizationProjectResponseLatestDeploysMap as any as S.Schema<UpdateOrganizationResponseProjectsItemLatestDeploysMap>;
 
 export type UpdateOrganizationResponseProjectsItemOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationResponseProjectsItemOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemOptionsMap>;
+export const UpdateOrganizationResponseProjectsItemOptionsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationResponseProjectsItemOptionsMap>;
 
 export type UpdateOrganizationResponseProjectsItemFeaturesList = Array<string>;
-export const UpdateOrganizationResponseProjectsItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemFeaturesList>;
+export const UpdateOrganizationResponseProjectsItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseProjectsItemFeaturesList>;
 
 export type UpdateOrganizationResponseProjectsItemAccessList = Array<string>;
-export const UpdateOrganizationResponseProjectsItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemAccessList>;
+export const UpdateOrganizationResponseProjectsItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseProjectsItemAccessList>;
 
 export type UpdateOrganizationResponseProjectsItemTeam = AddProjectTeamResponseTeam;
 export const UpdateOrganizationResponseProjectsItemTeam = AddProjectTeamResponseTeam;
@@ -34246,19 +31046,16 @@ export type UpdateOrganizationResponseProjectsItemTeamsItem = AddProjectTeamResp
 export const UpdateOrganizationResponseProjectsItemTeamsItem = AddProjectTeamResponseTeam;
 
 export type UpdateOrganizationResponseProjectsItemTeamsList = Array<AddProjectTeamResponseTeam>;
-export const UpdateOrganizationResponseProjectsItemTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemTeamsList>;
+export const UpdateOrganizationResponseProjectsItemTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<UpdateOrganizationResponseProjectsItemTeamsList>;
 
 export type UpdateOrganizationResponseProjectsItemPlatformsList = Array<string>;
-export const UpdateOrganizationResponseProjectsItemPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemPlatformsList>;
+export const UpdateOrganizationResponseProjectsItemPlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseProjectsItemPlatformsList>;
 
 export type UpdateOrganizationResponseProjectsItemEnvironmentsList = Array<string>;
-export const UpdateOrganizationResponseProjectsItemEnvironmentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationResponseProjectsItemEnvironmentsList>;
+export const UpdateOrganizationResponseProjectsItemEnvironmentsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationResponseProjectsItemEnvironmentsList>;
 
 export type UpdateOrganizationResponseProjectsItemLatestRelease =
   CreateOrganizationProjectResponseLatestRelease;
@@ -34310,60 +31107,12 @@ export interface UpdateOrganizationResponseProjectsItem {
   environments: UpdateOrganizationResponseProjectsItemEnvironmentsList;
   latestRelease: CreateOrganizationProjectResponseLatestRelease | null;
 }
-export const UpdateOrganizationResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestDeploys: S.optional(S.NullOr(UpdateOrganizationResponseProjectsItemLatestDeploysMap)),
-    options: S.optional(UpdateOrganizationResponseProjectsItemOptionsMap),
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: UpdateOrganizationResponseProjectsItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: UpdateOrganizationResponseProjectsItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    team: S.NullOr(AddProjectTeamResponseTeam),
-    teams: UpdateOrganizationResponseProjectsItemTeamsList,
-    platforms: UpdateOrganizationResponseProjectsItemPlatformsList,
-    hasUserReports: S.Boolean,
-    environments: UpdateOrganizationResponseProjectsItemEnvironmentsList,
-    latestRelease: S.NullOr(CreateOrganizationProjectResponseLatestRelease),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationResponseProjectsItem",
-}) as any as S.Schema<UpdateOrganizationResponseProjectsItem>;
+export const UpdateOrganizationResponseProjectsItem =
+  CreateOrganizationProjectResponse as any as S.Schema<UpdateOrganizationResponseProjectsItem>;
 
 export type UpdateOrganizationResponseProjectsList = Array<UpdateOrganizationResponseProjectsItem>;
-export const UpdateOrganizationResponseProjectsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationResponseProjectsItem,
-) as any as S.Schema<UpdateOrganizationResponseProjectsList>;
+export const UpdateOrganizationResponseProjectsList =
+  ListOrganizationProjectsResponseBodyList as any as S.Schema<UpdateOrganizationResponseProjectsList>;
 
 export interface UpdateOrganizationResponse {
   features?: UpdateOrganizationResponseFeaturesList;
@@ -34505,10 +31254,8 @@ export const UpdateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateOrganizationDashboardRequestWidgetsItemThresholdsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDashboardRequestWidgetsItemThresholdsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemThresholdsMap>;
+export const UpdateOrganizationDashboardRequestWidgetsItemThresholdsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemThresholdsMap>;
 
 /** * `line` * `area` * `bar` * `table` * `big_number` * `details` * `categorical_bar` * `wheel` * `rage_and_dead_clicks` * `server_tree` * `text` * `agents_traces_table` * `heatmap` */
 export type UpdateOrganizationDashboardRequestWidgetsItemDisplayType =
@@ -34529,28 +31276,20 @@ export const UpdateOrganizationDashboardRequestWidgetsItemDisplayType = S.String
 
 export type UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList = Array<string>;
 export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList>;
 
 export type UpdateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList = Array<string>;
 export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList>;
 
 export type UpdateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList = Array<string>;
 export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList>;
 
 export type UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList =
   Array<string>;
 export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export type UpdateOrganizationDashboardRequestWidgetsItemQueriesItemOnDemandExtraction =
@@ -34567,9 +31306,7 @@ export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashb
 export type UpdateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsList =
   Array<CreateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsItem>;
 export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsList =
-  /*@__PURE__*/ S.Array(
-    CreateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsItem,
-  ) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsList as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface UpdateOrganizationDashboardRequestWidgetsItemQueriesItem {
@@ -34588,42 +31325,13 @@ export interface UpdateOrganizationDashboardRequestWidgetsItemQueriesItem {
   selected_aggregate?: number | null;
   linked_dashboards?: UpdateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsList | null;
 }
-export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      fields: S.optional(UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList),
-      aggregates: S.optional(
-        S.NullOr(UpdateOrganizationDashboardRequestWidgetsItemQueriesItemAggregatesList),
-      ),
-      columns: S.optional(
-        S.NullOr(UpdateOrganizationDashboardRequestWidgetsItemQueriesItemColumnsList),
-      ),
-      field_aliases: S.optional(
-        S.NullOr(UpdateOrganizationDashboardRequestWidgetsItemQueriesItemFieldAliasesList),
-      ),
-      name: S.optional(S.String),
-      conditions: S.optional(S.String),
-      orderby: S.optional(S.String),
-      is_hidden: S.optional(S.Boolean),
-      on_demand_extraction: S.optional(
-        CreateOrganizationDashboardRequestWidgetsItemQueriesItemOnDemandExtraction,
-      ),
-      on_demand_extraction_disabled: S.optional(S.Boolean),
-      selected_aggregate: S.optional(S.NullOr(S.Number)),
-      linked_dashboards: S.optional(
-        S.NullOr(UpdateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsList),
-      ),
-    }),
-).annotate({
-  identifier: "UpdateOrganizationDashboardRequestWidgetsItemQueriesItem",
-}) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItem>;
+export const UpdateOrganizationDashboardRequestWidgetsItemQueriesItem =
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItem as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesItem>;
 
 export type UpdateOrganizationDashboardRequestWidgetsItemQueriesList =
   Array<UpdateOrganizationDashboardRequestWidgetsItemQueriesItem>;
-export const UpdateOrganizationDashboardRequestWidgetsItemQueriesList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationDashboardRequestWidgetsItemQueriesItem,
-) as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesList>;
+export const UpdateOrganizationDashboardRequestWidgetsItemQueriesList =
+  CreateOrganizationDashboardRequestWidgetsItemQueriesList as any as S.Schema<UpdateOrganizationDashboardRequestWidgetsItemQueriesList>;
 
 /** * `discover` * `issue` * `metrics` * `error-events` * `transaction-like` * `spans` * `logs` * `tracemetrics` * `preprod-app-size` */
 export type UpdateOrganizationDashboardRequestWidgetsItemWidgetType =
@@ -34718,29 +31426,23 @@ export const UpdateOrganizationDashboardRequestWidgetsList = /*@__PURE__*/ S.Arr
 
 /** The saved projects filter for this dashboard. */
 export type UpdateOrganizationDashboardRequestProjectsList = Array<number>;
-export const UpdateOrganizationDashboardRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationDashboardRequestProjectsList>;
+export const UpdateOrganizationDashboardRequestProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationDashboardRequestProjectsList>;
 
 /** The saved environment filter for this dashboard. */
 export type UpdateOrganizationDashboardRequestEnvironmentList = Array<string>;
-export const UpdateOrganizationDashboardRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDashboardRequestEnvironmentList>;
+export const UpdateOrganizationDashboardRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDashboardRequestEnvironmentList>;
 
 /** The saved filters for this dashboard. */
 export type UpdateOrganizationDashboardRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationDashboardRequestFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDashboardRequestFiltersMap>;
+export const UpdateOrganizationDashboardRequestFiltersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDashboardRequestFiltersMap>;
 
 /** List of team IDs that have edit access to a dashboard. */
 export type UpdateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList = Array<number>;
 export const UpdateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<UpdateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface UpdateOrganizationDashboardRequestPermissions {
@@ -34749,16 +31451,8 @@ export interface UpdateOrganizationDashboardRequestPermissions {
   /** List of team IDs that have edit access to a dashboard. */
   teams_with_edit_access?: UpdateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList;
 }
-export const UpdateOrganizationDashboardRequestPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_editable_by_everyone: S.Boolean,
-    teams_with_edit_access: S.optional(
-      UpdateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDashboardRequestPermissions",
-}) as any as S.Schema<UpdateOrganizationDashboardRequestPermissions>;
+export const UpdateOrganizationDashboardRequestPermissions =
+  CreateOrganizationDashboardRequestPermissions as any as S.Schema<UpdateOrganizationDashboardRequestPermissions>;
 
 export interface UpdateOrganizationDashboardRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -34815,9 +31509,8 @@ export const UpdateOrganizationDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationDashboardRequest>;
 
 export type UpdateOrganizationDashboardResponseEnvironmentList = Array<string>;
-export const UpdateOrganizationDashboardResponseEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDashboardResponseEnvironmentList>;
+export const UpdateOrganizationDashboardResponseEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDashboardResponseEnvironmentList>;
 
 export type UpdateOrganizationDashboardResponseCreatedByIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -34836,9 +31529,8 @@ export const UpdateOrganizationDashboardResponseCreatedByIdentitiesItem =
 
 export type UpdateOrganizationDashboardResponseCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const UpdateOrganizationDashboardResponseCreatedByIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByIdentitiesList>;
+export const UpdateOrganizationDashboardResponseCreatedByIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByIdentitiesList>;
 
 export type UpdateOrganizationDashboardResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -34846,17 +31538,14 @@ export const UpdateOrganizationDashboardResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
 
 export type UpdateOrganizationDashboardResponseCreatedByAuthenticatorsList = Array<unknown>;
-export const UpdateOrganizationDashboardResponseCreatedByAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByAuthenticatorsList>;
+export const UpdateOrganizationDashboardResponseCreatedByAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByAuthenticatorsList>;
 
 export type UpdateOrganizationDashboardResponseCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDashboardResponseCreatedByExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByExperimentsMap>;
+export const UpdateOrganizationDashboardResponseCreatedByExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByExperimentsMap>;
 
 export type UpdateOrganizationDashboardResponseCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -34865,9 +31554,8 @@ export const UpdateOrganizationDashboardResponseCreatedByEmailsItem =
 
 export type UpdateOrganizationDashboardResponseCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const UpdateOrganizationDashboardResponseCreatedByEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByEmailsList>;
+export const UpdateOrganizationDashboardResponseCreatedByEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<UpdateOrganizationDashboardResponseCreatedByEmailsList>;
 
 export interface UpdateOrganizationDashboardResponseCreatedBy {
   identities?: UpdateOrganizationDashboardResponseCreatedByIdentitiesList;
@@ -34892,42 +31580,14 @@ export interface UpdateOrganizationDashboardResponseCreatedBy {
   experiments: UpdateOrganizationDashboardResponseCreatedByExperimentsMap;
   emails: UpdateOrganizationDashboardResponseCreatedByEmailsList;
 }
-export const UpdateOrganizationDashboardResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(UpdateOrganizationDashboardResponseCreatedByIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(UpdateOrganizationDashboardResponseCreatedByAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: UpdateOrganizationDashboardResponseCreatedByExperimentsMap,
-    emails: UpdateOrganizationDashboardResponseCreatedByEmailsList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDashboardResponseCreatedBy",
-}) as any as S.Schema<UpdateOrganizationDashboardResponseCreatedBy>;
+export const UpdateOrganizationDashboardResponseCreatedBy =
+  AddOrganizationMemberResponseUser as any as S.Schema<UpdateOrganizationDashboardResponseCreatedBy>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap = {
   [key: string]: number | undefined;
 };
 export const UpdateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Number,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap>;
+  CreateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap>;
 
 export interface UpdateOrganizationDashboardResponseWidgetsItemThresholds {
   preferredPolarity?: string;
@@ -34935,42 +31595,25 @@ export interface UpdateOrganizationDashboardResponseWidgetsItemThresholds {
   max_values: UpdateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap;
   unit: string;
 }
-export const UpdateOrganizationDashboardResponseWidgetsItemThresholds = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      preferredPolarity: S.optional(S.String),
-      timeWindow: S.optional(S.String),
-      max_values: UpdateOrganizationDashboardResponseWidgetsItemThresholdsMaxValuesMap,
-      unit: S.String,
-    }),
-).annotate({
-  identifier: "UpdateOrganizationDashboardResponseWidgetsItemThresholds",
-}) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemThresholds>;
+export const UpdateOrganizationDashboardResponseWidgetsItemThresholds =
+  CreateOrganizationDashboardResponseWidgetsItemThresholds as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemThresholds>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList = Array<string>;
 export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList = Array<string>;
 export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList = Array<string>;
 export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList =
   Array<string>;
 export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem =
   CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem;
@@ -34980,9 +31623,7 @@ export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandIt
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList =
   Array<CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem>;
 export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList =
-  /*@__PURE__*/ S.Array(
-    CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList>;
+  CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem =
   CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem;
@@ -34992,9 +31633,7 @@ export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDash
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList =
   Array<CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem>;
 export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList =
-  /*@__PURE__*/ S.Array(
-    CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList>;
+  CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList>;
 
 export interface UpdateOrganizationDashboardResponseWidgetsItemQueriesItem {
   id: string;
@@ -35011,72 +31650,42 @@ export interface UpdateOrganizationDashboardResponseWidgetsItemQueriesItem {
   selectedAggregate: number | null;
   linkedDashboards: UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList;
 }
-export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      fields: UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldsList,
-      aggregates: UpdateOrganizationDashboardResponseWidgetsItemQueriesItemAggregatesList,
-      columns: UpdateOrganizationDashboardResponseWidgetsItemQueriesItemColumnsList,
-      fieldAliases: UpdateOrganizationDashboardResponseWidgetsItemQueriesItemFieldAliasesList,
-      conditions: S.String,
-      orderby: S.String,
-      widgetId: S.String,
-      onDemand: UpdateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandList,
-      isHidden: S.Boolean,
-      selectedAggregate: S.NullOr(S.Number),
-      linkedDashboards:
-        UpdateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsList,
-    }),
-).annotate({
-  identifier: "UpdateOrganizationDashboardResponseWidgetsItemQueriesItem",
-}) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItem>;
+export const UpdateOrganizationDashboardResponseWidgetsItemQueriesItem =
+  CreateOrganizationDashboardResponseWidgetsItemQueriesItem as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesItem>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemQueriesList =
   Array<UpdateOrganizationDashboardResponseWidgetsItemQueriesItem>;
-export const UpdateOrganizationDashboardResponseWidgetsItemQueriesList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationDashboardResponseWidgetsItemQueriesItem,
-) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesList>;
+export const UpdateOrganizationDashboardResponseWidgetsItemQueriesList =
+  CreateOrganizationDashboardResponseWidgetsItemQueriesList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemQueriesList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemLayoutMap = {
   [key: string]: number | undefined;
 };
-export const UpdateOrganizationDashboardResponseWidgetsItemLayoutMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemLayoutMap>;
+export const UpdateOrganizationDashboardResponseWidgetsItemLayoutMap =
+  CreateOrganizationDashboardResponseWidgetsItemLayoutMap as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemLayoutMap>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemLegendType = "default" | "breakdown";
 export const UpdateOrganizationDashboardResponseWidgetsItemLegendType = S.String;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemExploreUrlsList = Array<string>;
-export const UpdateOrganizationDashboardResponseWidgetsItemExploreUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemExploreUrlsList>;
+export const UpdateOrganizationDashboardResponseWidgetsItemExploreUrlsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemExploreUrlsList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap = {
   [key: string]: string | undefined;
 };
 export const UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList =
   Array<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap>;
 export const UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList =
-  /*@__PURE__*/ S.Array(
-    UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List =
   Array<string>;
 export const UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValueCase1List>;
 
 export type UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemEquationsItemValue =
   | string
@@ -35105,9 +31714,7 @@ export const UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemEqua
 export type UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList =
   Array<string>;
 export const UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemSelectedColumnsList>;
 
 export interface UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItem {
   orderby: UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyList | null;
@@ -35185,67 +31792,46 @@ export const UpdateOrganizationDashboardResponseWidgetsList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<UpdateOrganizationDashboardResponseWidgetsList>;
 
 export type UpdateOrganizationDashboardResponseProjectsList = Array<number>;
-export const UpdateOrganizationDashboardResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationDashboardResponseProjectsList>;
+export const UpdateOrganizationDashboardResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationDashboardResponseProjectsList>;
 
 export type UpdateOrganizationDashboardResponseFiltersReleaseList = Array<string>;
-export const UpdateOrganizationDashboardResponseFiltersReleaseList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDashboardResponseFiltersReleaseList>;
+export const UpdateOrganizationDashboardResponseFiltersReleaseList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDashboardResponseFiltersReleaseList>;
 
 export type UpdateOrganizationDashboardResponseFiltersReleaseIdList = Array<string>;
-export const UpdateOrganizationDashboardResponseFiltersReleaseIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDashboardResponseFiltersReleaseIdList>;
+export const UpdateOrganizationDashboardResponseFiltersReleaseIdList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDashboardResponseFiltersReleaseIdList>;
 
 export type UpdateOrganizationDashboardResponseFiltersGlobalFilterItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDashboardResponseFiltersGlobalFilterItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
+export const UpdateOrganizationDashboardResponseFiltersGlobalFilterItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
 
 export type UpdateOrganizationDashboardResponseFiltersGlobalFilterList =
   Array<UpdateOrganizationDashboardResponseFiltersGlobalFilterItemMap>;
-export const UpdateOrganizationDashboardResponseFiltersGlobalFilterList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationDashboardResponseFiltersGlobalFilterItemMap,
-) as any as S.Schema<UpdateOrganizationDashboardResponseFiltersGlobalFilterList>;
+export const UpdateOrganizationDashboardResponseFiltersGlobalFilterList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<UpdateOrganizationDashboardResponseFiltersGlobalFilterList>;
 
 export interface UpdateOrganizationDashboardResponseFilters {
   release?: UpdateOrganizationDashboardResponseFiltersReleaseList;
   releaseId?: UpdateOrganizationDashboardResponseFiltersReleaseIdList;
   globalFilter?: UpdateOrganizationDashboardResponseFiltersGlobalFilterList;
 }
-export const UpdateOrganizationDashboardResponseFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    release: S.optional(UpdateOrganizationDashboardResponseFiltersReleaseList),
-    releaseId: S.optional(UpdateOrganizationDashboardResponseFiltersReleaseIdList),
-    globalFilter: S.optional(UpdateOrganizationDashboardResponseFiltersGlobalFilterList),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDashboardResponseFilters",
-}) as any as S.Schema<UpdateOrganizationDashboardResponseFilters>;
+export const UpdateOrganizationDashboardResponseFilters =
+  CreateOrganizationDashboardResponseFilters as any as S.Schema<UpdateOrganizationDashboardResponseFilters>;
 
 export type UpdateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList = Array<number>;
 export const UpdateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList>;
+  CreateOrganizationDashboardRequestPermissionsTeamsWithEditAccessList as any as S.Schema<UpdateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList>;
 
 export interface UpdateOrganizationDashboardResponsePermissions {
   isEditableByEveryone: boolean;
   teamsWithEditAccess: UpdateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList;
 }
-export const UpdateOrganizationDashboardResponsePermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isEditableByEveryone: S.Boolean,
-    teamsWithEditAccess: UpdateOrganizationDashboardResponsePermissionsTeamsWithEditAccessList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDashboardResponsePermissions",
-}) as any as S.Schema<UpdateOrganizationDashboardResponsePermissions>;
+export const UpdateOrganizationDashboardResponsePermissions =
+  CreateOrganizationDashboardResponsePermissions as any as S.Schema<UpdateOrganizationDashboardResponsePermissions>;
 
 export interface UpdateOrganizationDashboardResponse {
   environment?: UpdateOrganizationDashboardResponseEnvironmentList;
@@ -35290,22 +31876,18 @@ export const UpdateOrganizationDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the alerts to connect this monitor to. Use the 'Fetch Alerts' endpoint to find the IDs. */
 export type UpdateOrganizationDetectorRequestWorkflowIdsList = Array<number>;
-export const UpdateOrganizationDetectorRequestWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationDetectorRequestWorkflowIdsList>;
+export const UpdateOrganizationDetectorRequestWorkflowIdsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationDetectorRequestWorkflowIdsList>;
 
 /** The data sources for the monitor to use based on what you want to measure. **Number of Errors Metric Monitor** - `eventTypes`: Any of `error` or `default`. ```json [ { "aggregate": "count()", "dataset" : "events", "environment": "prod", "eventTypes": ["default", "error"], "query": "is:unresolved", "queryType": 0, "timeWindow": 3600, }, ], ``` **Users Experiencing Errors Metric Monitor** - `eventTypes`: Any of `error` or `default`. ```json [ { "aggregate": "count_unique(tags[sentry:user])", "dataset" : "events", "environment": "prod", "eventTypes": ["default", "error"], "query": "is:unresolved", "queryType": 0, "timeWindow": 3600, }, ], ``` **Throughput Metric Monitor** ```json [ { "aggregate":"count(span.duration)", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Duration Metric Monitor** ```json [ { "aggregate":"p95(span.duration)", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Failure Rate Metric Monitor** ```json [ { "aggregate":"failure_rate()", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Largest Contentful Paint Metric Monitor** - `dataset`: If a custom percentile is used, dataset is `transactions`. Otherwise, dataset is `events_analytics_platform`. - `aggregate`: Valid values are `avg(measurements.lcp)`, `p50(measurements.lcp)`, `p75(measurements.lcp)`, `p95(measurements.lcp)`, `p99(measurements.lcp)`, `p100(measurements.lcp)`, and `percentile(measurements.lcp,x)`, where `x` is your custom percentile. ```json [ { "aggregate":"p95(measurements.lcp)", "dataset":"events_analytics_platform", "environment":"prod", "eventTypes":["trace_item_span"] "query":"", "queryType":1, "timeWindow":3600, "extrapolationMode":"unknown", }, ], ``` **Custom Metric Monitor** - `dataset`: If a custom percentile is used, dataset is `transactions`. Otherwise, dataset is `events_analytics_platform`. - `aggregate`: Valid values are: `avg(x)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p50(x)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p75(x)`, where x is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p95(x)`, where x is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p99(x)`, where x is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `p100(x)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`. `percentile(x,y)`, where `x` is `transaction.duration`, `measurements.cls`, `measurements.fcp`, `measurements.fid`, `measurements.fp`, `measurements.lcp`, `measurements.ttfb`, or `measurements.ttfb.requesttime`, and `y` is the custom percentile. `failure_rate()` `apdex(x)`, where `x` is the value of the Apdex score. `count()` ```json [ { "aggregate": "p75(measurements.ttfb)" "dataset": "events_analytics_platform", "queryType": 1, }, ], */
 export type UpdateOrganizationDetectorRequestDataSourcesList = Array<unknown>;
-export const UpdateOrganizationDetectorRequestDataSourcesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorRequestDataSourcesList>;
+export const UpdateOrganizationDetectorRequestDataSourcesList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationDetectorRequestDataSourcesList>;
 
 /** The issue detection type configuration. - `detectionType` - `static`: Threshold based monitor - `percent`: Change based monitor - `dynamic`: Dynamic monitor - `comparisonDelta`: If selecting a **change** detection type, the comparison delta is the time period at which to compare against in minutes. For example, a value of 3600 compares the metric tracked against data 1 hour ago. - `300`: 5 minutes - `900`: 15 minutes - `3600`: 1 hour - `86400`: 1 day - `604800`: 1 week - `2592000`: 1 month **Threshold** ```json { "detectionType": "static", } ``` **Change** ```json { "detectionType": "percent", "comparisonDelta": 3600, } ``` **Dynamic** ```json { "detectionType": "dynamic", } ``` */
 export type UpdateOrganizationDetectorRequestConfigMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationDetectorRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorRequestConfigMap>;
+export const UpdateOrganizationDetectorRequestConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorRequestConfigMap>;
 
 /** * `any` * `any-short` * `all` * `none` */
 export type UpdateOrganizationDetectorRequestConditionGroupLogicType =
@@ -35316,9 +31898,8 @@ export type UpdateOrganizationDetectorRequestConditionGroupLogicType =
 export const UpdateOrganizationDetectorRequestConditionGroupLogicType = S.String;
 
 export type UpdateOrganizationDetectorRequestConditionGroupConditionsList = Array<unknown>;
-export const UpdateOrganizationDetectorRequestConditionGroupConditionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorRequestConditionGroupConditionsList>;
+export const UpdateOrganizationDetectorRequestConditionGroupConditionsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationDetectorRequestConditionGroupConditionsList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface UpdateOrganizationDetectorRequestConditionGroup {
@@ -35408,43 +31989,33 @@ export const UpdateOrganizationDetectorResponseOwner = /*@__PURE__*/ S.suspend((
 export type UpdateOrganizationDetectorResponseLatestGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDetectorResponseLatestGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorResponseLatestGroupMap>;
+export const UpdateOrganizationDetectorResponseLatestGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorResponseLatestGroupMap>;
 
 export type UpdateOrganizationDetectorResponseWorkflowIdsList = Array<string>;
-export const UpdateOrganizationDetectorResponseWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDetectorResponseWorkflowIdsList>;
+export const UpdateOrganizationDetectorResponseWorkflowIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDetectorResponseWorkflowIdsList>;
 
 export type UpdateOrganizationDetectorResponseDataSourcesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDetectorResponseDataSourcesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorResponseDataSourcesItemMap>;
+export const UpdateOrganizationDetectorResponseDataSourcesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorResponseDataSourcesItemMap>;
 
 export type UpdateOrganizationDetectorResponseDataSourcesList =
   Array<UpdateOrganizationDetectorResponseDataSourcesItemMap>;
-export const UpdateOrganizationDetectorResponseDataSourcesList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationDetectorResponseDataSourcesItemMap,
-) as any as S.Schema<UpdateOrganizationDetectorResponseDataSourcesList>;
+export const UpdateOrganizationDetectorResponseDataSourcesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<UpdateOrganizationDetectorResponseDataSourcesList>;
 
 export type UpdateOrganizationDetectorResponseConditionGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDetectorResponseConditionGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorResponseConditionGroupMap>;
+export const UpdateOrganizationDetectorResponseConditionGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorResponseConditionGroupMap>;
 
 export type UpdateOrganizationDetectorResponseConfigMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationDetectorResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorResponseConfigMap>;
+export const UpdateOrganizationDetectorResponseConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorResponseConfigMap>;
 
 export interface UpdateOrganizationDetectorResponse {
   owner?: UpdateOrganizationDetectorResponseOwner | null;
@@ -35496,9 +32067,8 @@ export const UpdateOrganizationDetectorsRequestProjectList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<UpdateOrganizationDetectorsRequestProjectList>;
 
 export type UpdateOrganizationDetectorsRequestIdList = Array<number>;
-export const UpdateOrganizationDetectorsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationDetectorsRequestIdList>;
+export const UpdateOrganizationDetectorsRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationDetectorsRequestIdList>;
 
 export interface UpdateOrganizationDetectorsRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -35553,45 +32123,35 @@ export const UpdateOrganizationDetectorsResponseBodyItemOwner = /*@__PURE__*/ S.
 export type UpdateOrganizationDetectorsResponseBodyItemLatestGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDetectorsResponseBodyItemLatestGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemLatestGroupMap>;
+export const UpdateOrganizationDetectorsResponseBodyItemLatestGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemLatestGroupMap>;
 
 export type UpdateOrganizationDetectorsResponseBodyItemWorkflowIdsList = Array<string>;
-export const UpdateOrganizationDetectorsResponseBodyItemWorkflowIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemWorkflowIdsList>;
+export const UpdateOrganizationDetectorsResponseBodyItemWorkflowIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemWorkflowIdsList>;
 
 export type UpdateOrganizationDetectorsResponseBodyItemDataSourcesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDetectorsResponseBodyItemDataSourcesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemDataSourcesItemMap>;
+export const UpdateOrganizationDetectorsResponseBodyItemDataSourcesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemDataSourcesItemMap>;
 
 export type UpdateOrganizationDetectorsResponseBodyItemDataSourcesList =
   Array<UpdateOrganizationDetectorsResponseBodyItemDataSourcesItemMap>;
-export const UpdateOrganizationDetectorsResponseBodyItemDataSourcesList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationDetectorsResponseBodyItemDataSourcesItemMap,
-) as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemDataSourcesList>;
+export const UpdateOrganizationDetectorsResponseBodyItemDataSourcesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemDataSourcesList>;
 
 export type UpdateOrganizationDetectorsResponseBodyItemConditionGroupMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDetectorsResponseBodyItemConditionGroupMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemConditionGroupMap>;
+export const UpdateOrganizationDetectorsResponseBodyItemConditionGroupMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemConditionGroupMap>;
 
 export type UpdateOrganizationDetectorsResponseBodyItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDetectorsResponseBodyItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemConfigMap>;
+export const UpdateOrganizationDetectorsResponseBodyItemConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDetectorsResponseBodyItemConfigMap>;
 
 export interface UpdateOrganizationDetectorsResponseBodyItem {
   owner?: UpdateOrganizationDetectorsResponseBodyItemOwner | null;
@@ -35647,9 +32207,8 @@ export const UpdateOrganizationDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The saved projects filter for this query. */
 export type UpdateOrganizationDiscoverSavedQueryRequestProjectsList = Array<number>;
-export const UpdateOrganizationDiscoverSavedQueryRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestProjectsList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestProjectsList>;
 
 /** The dataset you would like to query. Note: `discover` is a **deprecated** value. The allowed values are: `error-events`, `transaction-like` * `discover` * `error-events` * `transaction-like` */
 export type UpdateOrganizationDiscoverSavedQueryRequestQueryDataset =
@@ -35660,58 +32219,48 @@ export const UpdateOrganizationDiscoverSavedQueryRequestQueryDataset = S.String;
 
 /** The fields, functions, or equations that can be requested for the query. At most 20 fields can be selected per request. Each field can be one of the following types: - A built-in key field. See possible fields in the [properties table](/product/sentry-basics/search/searchable-properties/#properties-table), under any field that is an event property. - example: `field=transaction` - A tag. Tags should use the `tag[]` formatting to avoid ambiguity with any fields - example: `field=tag[isEnterprise]` - A function which will be in the format of `function_name(parameters,...)`. See possible functions in the [query builder documentation](/product/discover-queries/query-builder/#stacking-functions). - when a function is included, Discover will group by any tags or fields - example: `field=count_if(transaction.duration,greater,300)` - An equation when prefixed with `equation|`. Read more about [equations here](/product/discover-queries/query-builder/query-equations/). - example: `field=equation|count_if(transaction.duration,greater,300) / count() * 100` */
 export type UpdateOrganizationDiscoverSavedQueryRequestFieldsList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryRequestFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestFieldsList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestFieldsList>;
 
 export type UpdateOrganizationDiscoverSavedQueryRequestAggregationsItemList = Array<unknown>;
 export const UpdateOrganizationDiscoverSavedQueryRequestAggregationsItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestAggregationsItemList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestAggregationsItemList>;
 
 /** Aggregate functions to apply, each as a `[function, column, alias]` triple. */
 export type UpdateOrganizationDiscoverSavedQueryRequestAggregationsList =
   Array<UpdateOrganizationDiscoverSavedQueryRequestAggregationsItemList>;
-export const UpdateOrganizationDiscoverSavedQueryRequestAggregationsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationDiscoverSavedQueryRequestAggregationsItemList,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestAggregationsList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestAggregationsList =
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestAggregationsList>;
 
 /** Columns to group results by. */
 export type UpdateOrganizationDiscoverSavedQueryRequestGroupbyList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryRequestGroupbyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestGroupbyList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestGroupbyList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestGroupbyList>;
 
 export type UpdateOrganizationDiscoverSavedQueryRequestConditionsItemList = Array<unknown>;
-export const UpdateOrganizationDiscoverSavedQueryRequestConditionsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestConditionsItemList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestConditionsItemList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestConditionsItemList>;
 
 /** Filter conditions, each as a `[column, operator, value]` triple. */
 export type UpdateOrganizationDiscoverSavedQueryRequestConditionsList =
   Array<UpdateOrganizationDiscoverSavedQueryRequestConditionsItemList>;
-export const UpdateOrganizationDiscoverSavedQueryRequestConditionsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationDiscoverSavedQueryRequestConditionsItemList,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestConditionsList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestConditionsList =
+  CreateOrganizationDiscoverSavedQueryRequestConditionsList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestConditionsList>;
 
 /** The name of environments to filter by. */
 export type UpdateOrganizationDiscoverSavedQueryRequestEnvironmentList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestEnvironmentList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestEnvironmentList>;
 
 /** Rendered column widths, in the same order as the query's fields. */
 export type UpdateOrganizationDiscoverSavedQueryRequestWidthsList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryRequestWidthsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestWidthsList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestWidthsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestWidthsList>;
 
 /** Aggregate functions to be plotted on the chart. */
 export type UpdateOrganizationDiscoverSavedQueryRequestYAxisList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryRequestYAxisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestYAxisList>;
+export const UpdateOrganizationDiscoverSavedQueryRequestYAxisList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequestYAxisList>;
 
 export interface UpdateOrganizationDiscoverSavedQueryRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -35798,47 +32347,38 @@ export const UpdateOrganizationDiscoverSavedQueryRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequest>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseEnvironmentList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryResponseEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseEnvironmentList>;
+export const UpdateOrganizationDiscoverSavedQueryResponseEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseEnvironmentList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseFieldsList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryResponseFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseFieldsList>;
+export const UpdateOrganizationDiscoverSavedQueryResponseFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseFieldsList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseWidthsList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryResponseWidthsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseWidthsList>;
+export const UpdateOrganizationDiscoverSavedQueryResponseWidthsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseWidthsList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseConditionsList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryResponseConditionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseConditionsList>;
+export const UpdateOrganizationDiscoverSavedQueryResponseConditionsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseConditionsList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseAggregationsList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryResponseAggregationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseAggregationsList>;
+export const UpdateOrganizationDiscoverSavedQueryResponseAggregationsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseAggregationsList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseYAxisList = Array<string>;
-export const UpdateOrganizationDiscoverSavedQueryResponseYAxisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseYAxisList>;
+export const UpdateOrganizationDiscoverSavedQueryResponseYAxisList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseYAxisList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseExploreQueryMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationDiscoverSavedQueryResponseExploreQueryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseExploreQueryMap>;
+export const UpdateOrganizationDiscoverSavedQueryResponseExploreQueryMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseExploreQueryMap>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseProjectsList = Array<number>;
-export const UpdateOrganizationDiscoverSavedQueryResponseProjectsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseProjectsList>;
+export const UpdateOrganizationDiscoverSavedQueryResponseProjectsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseProjectsList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -35858,9 +32398,7 @@ export const UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesItem
 export type UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseCreatedByAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -35870,18 +32408,13 @@ export const UpdateOrganizationDiscoverSavedQueryResponseCreatedByAvatar =
 export type UpdateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList =
   Array<unknown>;
 export const UpdateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap>;
 
 export type UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -35891,9 +32424,7 @@ export const UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsItem =
 export type UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
 export const UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserEmailsItem,
-  ) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList>;
 
 export interface UpdateOrganizationDiscoverSavedQueryResponseCreatedBy {
   identities?: UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList;
@@ -35918,35 +32449,8 @@ export interface UpdateOrganizationDiscoverSavedQueryResponseCreatedBy {
   experiments: UpdateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap;
   emails: UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList;
 }
-export const UpdateOrganizationDiscoverSavedQueryResponseCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(UpdateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(
-      UpdateOrganizationDiscoverSavedQueryResponseCreatedByAuthenticatorsList,
-    ),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: UpdateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap,
-    emails: UpdateOrganizationDiscoverSavedQueryResponseCreatedByEmailsList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDiscoverSavedQueryResponseCreatedBy",
-}) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedBy>;
+export const UpdateOrganizationDiscoverSavedQueryResponseCreatedBy =
+  CreateOrganizationDiscoverSavedQueryResponseCreatedBy as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponseCreatedBy>;
 
 export interface UpdateOrganizationDiscoverSavedQueryResponse {
   environment?: UpdateOrganizationDiscoverSavedQueryResponseEnvironmentList;
@@ -35979,41 +32483,8 @@ export interface UpdateOrganizationDiscoverSavedQueryResponse {
   dateUpdated: string;
   createdBy: UpdateOrganizationDiscoverSavedQueryResponseCreatedBy;
 }
-export const UpdateOrganizationDiscoverSavedQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.optional(UpdateOrganizationDiscoverSavedQueryResponseEnvironmentList),
-    query: S.optional(S.String),
-    fields: S.optional(UpdateOrganizationDiscoverSavedQueryResponseFieldsList),
-    widths: S.optional(UpdateOrganizationDiscoverSavedQueryResponseWidthsList),
-    conditions: S.optional(UpdateOrganizationDiscoverSavedQueryResponseConditionsList),
-    aggregations: S.optional(UpdateOrganizationDiscoverSavedQueryResponseAggregationsList),
-    range: S.optional(S.String),
-    start: S.optional(S.String),
-    end: S.optional(S.String),
-    orderby: S.optional(S.String),
-    limit: S.optional(S.String),
-    yAxis: S.optional(UpdateOrganizationDiscoverSavedQueryResponseYAxisList),
-    display: S.optional(S.String),
-    topEvents: S.optional(S.Number),
-    interval: S.optional(S.String),
-    exploreQuery: S.optional(UpdateOrganizationDiscoverSavedQueryResponseExploreQueryMap),
-    lastVisited: S.optional(S.String),
-    starred: S.optional(S.Boolean),
-    position: S.optional(S.NullOr(S.Number)),
-    id: S.String,
-    name: S.String,
-    projects: UpdateOrganizationDiscoverSavedQueryResponseProjectsList,
-    version: S.Number,
-    queryDataset: S.String,
-    datasetSource: S.String,
-    expired: S.Boolean,
-    dateCreated: S.String,
-    dateUpdated: S.String,
-    createdBy: UpdateOrganizationDiscoverSavedQueryResponseCreatedBy,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDiscoverSavedQueryResponse",
-}) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponse>;
+export const UpdateOrganizationDiscoverSavedQueryResponse =
+  CreateOrganizationDiscoverSavedQueryResponse as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponse>;
 
 /** The provider of the external actor. * `github` * `github_enterprise` * `jira_server` * `slack` * `slack_staging` * `perforce` * `gitlab` * `cursor_origin` * `msteams` * `custom_scm` */
 export type UpdateOrganizationExternalUserRequestProvider =
@@ -36074,19 +32545,8 @@ export interface UpdateOrganizationExternalUserResponse {
   externalName: string;
   integrationId: string;
 }
-export const UpdateOrganizationExternalUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalId: S.optional(S.String),
-    userId: S.optional(S.String),
-    teamId: S.optional(S.String),
-    id: S.String,
-    provider: S.String,
-    externalName: S.String,
-    integrationId: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationExternalUserResponse",
-}) as any as S.Schema<UpdateOrganizationExternalUserResponse>;
+export const UpdateOrganizationExternalUserResponse =
+  AddOrganizationMemberResponseExternalUsersItem as any as S.Schema<UpdateOrganizationExternalUserResponse>;
 
 /** The provider of the data forwarder. One of "segment", "sqs", or "splunk". * `segment` - Segment * `sqs` - Amazon SQS * `splunk` - Splunk */
 export type UpdateOrganizationForwardingRequestProvider = "segment" | "sqs" | "splunk";
@@ -36094,16 +32554,13 @@ export const UpdateOrganizationForwardingRequestProvider = S.String;
 
 /** The configuration for the data forwarder, specific to the provider type. For a 'sqs' provider, the required keys are queue_url, region, access_key, secret_key. If using a FIFO queue, you must also provide a message_group_id, though s3_bucket is optional. For a 'segment' provider, the required keys are write_key. For a 'splunk' provider, the required keys are instance_url, index, source, token. */
 export type UpdateOrganizationForwardingRequestConfigMap = { [key: string]: string | undefined };
-export const UpdateOrganizationForwardingRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationForwardingRequestConfigMap>;
+export const UpdateOrganizationForwardingRequestConfigMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<UpdateOrganizationForwardingRequestConfigMap>;
 
 /** The IDs of the projects connected to the data forwarder. Missing project IDs will be unenrolled if previously enrolled. */
 export type UpdateOrganizationForwardingRequestProjectIdsList = Array<number>;
-export const UpdateOrganizationForwardingRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationForwardingRequestProjectIdsList>;
+export const UpdateOrganizationForwardingRequestProjectIdsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationForwardingRequestProjectIdsList>;
 
 export interface UpdateOrganizationForwardingRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -36151,15 +32608,12 @@ export const UpdateOrganizationForwardingResponseEnrolledProjectsItem =
 
 export type UpdateOrganizationForwardingResponseEnrolledProjectsList =
   Array<CreateOrganizationForwardingResponseEnrolledProjectsItem>;
-export const UpdateOrganizationForwardingResponseEnrolledProjectsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationForwardingResponseEnrolledProjectsItem,
-) as any as S.Schema<UpdateOrganizationForwardingResponseEnrolledProjectsList>;
+export const UpdateOrganizationForwardingResponseEnrolledProjectsList =
+  CreateOrganizationForwardingResponseEnrolledProjectsList as any as S.Schema<UpdateOrganizationForwardingResponseEnrolledProjectsList>;
 
 export type UpdateOrganizationForwardingResponseConfigMap = { [key: string]: string | undefined };
-export const UpdateOrganizationForwardingResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationForwardingResponseConfigMap>;
+export const UpdateOrganizationForwardingResponseConfigMap =
+  CreateOrganizationForwardingRequestConfigMap as any as S.Schema<UpdateOrganizationForwardingResponseConfigMap>;
 
 export type UpdateOrganizationForwardingResponseProjectConfigsItemProject =
   CreateOrganizationForwardingResponseEnrolledProjectsItem;
@@ -36170,19 +32624,13 @@ export type UpdateOrganizationForwardingResponseProjectConfigsItemOverridesMap =
   [key: string]: string | undefined;
 };
 export const UpdateOrganizationForwardingResponseProjectConfigsItemOverridesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsItemOverridesMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsItemOverridesMap>;
 
 export type UpdateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap = {
   [key: string]: string | undefined;
 };
 export const UpdateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap>;
 
 export interface UpdateOrganizationForwardingResponseProjectConfigsItem {
   id: string;
@@ -36194,26 +32642,13 @@ export interface UpdateOrganizationForwardingResponseProjectConfigsItem {
   dateAdded: string;
   dateUpdated: string;
 }
-export const UpdateOrganizationForwardingResponseProjectConfigsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    isEnabled: S.Boolean,
-    dataForwarderId: S.String,
-    project: CreateOrganizationForwardingResponseEnrolledProjectsItem,
-    overrides: UpdateOrganizationForwardingResponseProjectConfigsItemOverridesMap,
-    effectiveConfig: UpdateOrganizationForwardingResponseProjectConfigsItemEffectiveConfigMap,
-    dateAdded: S.String,
-    dateUpdated: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationForwardingResponseProjectConfigsItem",
-}) as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsItem>;
+export const UpdateOrganizationForwardingResponseProjectConfigsItem =
+  CreateOrganizationForwardingResponseProjectConfigsItem as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsItem>;
 
 export type UpdateOrganizationForwardingResponseProjectConfigsList =
   Array<UpdateOrganizationForwardingResponseProjectConfigsItem>;
-export const UpdateOrganizationForwardingResponseProjectConfigsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationForwardingResponseProjectConfigsItem,
-) as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsList>;
+export const UpdateOrganizationForwardingResponseProjectConfigsList =
+  CreateOrganizationForwardingResponseProjectConfigsList as any as S.Schema<UpdateOrganizationForwardingResponseProjectConfigsList>;
 
 export interface UpdateOrganizationForwardingResponse {
   id: string;
@@ -36227,22 +32662,8 @@ export interface UpdateOrganizationForwardingResponse {
   dateAdded: string;
   dateUpdated: string;
 }
-export const UpdateOrganizationForwardingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    organizationId: S.String,
-    isEnabled: S.Boolean,
-    enrollNewProjects: S.Boolean,
-    enrolledProjects: UpdateOrganizationForwardingResponseEnrolledProjectsList,
-    provider: S.String,
-    config: S.NullOr(UpdateOrganizationForwardingResponseConfigMap),
-    projectConfigs: UpdateOrganizationForwardingResponseProjectConfigsList,
-    dateAdded: S.String,
-    dateUpdated: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationForwardingResponse",
-}) as any as S.Schema<UpdateOrganizationForwardingResponse>;
+export const UpdateOrganizationForwardingResponse =
+  CreateOrganizationForwardingResponse as any as S.Schema<UpdateOrganizationForwardingResponse>;
 
 /** Limit mutations to only issues with the given status. * `resolved` * `unresolved` * `ignored` * `resolvedInNextRelease` * `muted` */
 export type UpdateOrganizationIssueRequestStatus =
@@ -36431,9 +32852,7 @@ export const UpdateOrganizationIssueResponseStatusDetailsActorIdentitiesItem =
 export type UpdateOrganizationIssueResponseStatusDetailsActorIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const UpdateOrganizationIssueResponseStatusDetailsActorIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorIdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorIdentitiesList>;
 
 export type UpdateOrganizationIssueResponseStatusDetailsActorAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -36442,18 +32861,13 @@ export const UpdateOrganizationIssueResponseStatusDetailsActorAvatar =
 
 export type UpdateOrganizationIssueResponseStatusDetailsActorAuthenticatorsList = Array<unknown>;
 export const UpdateOrganizationIssueResponseStatusDetailsActorAuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorAuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorAuthenticatorsList>;
 
 export type UpdateOrganizationIssueResponseStatusDetailsActorExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationIssueResponseStatusDetailsActorExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorExperimentsMap>;
 
 export type UpdateOrganizationIssueResponseStatusDetailsActorEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -36462,9 +32876,8 @@ export const UpdateOrganizationIssueResponseStatusDetailsActorEmailsItem =
 
 export type UpdateOrganizationIssueResponseStatusDetailsActorEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const UpdateOrganizationIssueResponseStatusDetailsActorEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorEmailsList>;
+export const UpdateOrganizationIssueResponseStatusDetailsActorEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActorEmailsList>;
 
 export interface UpdateOrganizationIssueResponseStatusDetailsActor {
   identities?: UpdateOrganizationIssueResponseStatusDetailsActorIdentitiesList;
@@ -36489,33 +32902,8 @@ export interface UpdateOrganizationIssueResponseStatusDetailsActor {
   experiments: UpdateOrganizationIssueResponseStatusDetailsActorExperimentsMap;
   emails: UpdateOrganizationIssueResponseStatusDetailsActorEmailsList;
 }
-export const UpdateOrganizationIssueResponseStatusDetailsActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(UpdateOrganizationIssueResponseStatusDetailsActorIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(UpdateOrganizationIssueResponseStatusDetailsActorAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: UpdateOrganizationIssueResponseStatusDetailsActorExperimentsMap,
-    emails: UpdateOrganizationIssueResponseStatusDetailsActorEmailsList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationIssueResponseStatusDetailsActor",
-}) as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActor>;
+export const UpdateOrganizationIssueResponseStatusDetailsActor =
+  CreateOrganizationReleaseResponseAuthorsItemCase0 as any as S.Schema<UpdateOrganizationIssueResponseStatusDetailsActor>;
 
 export type UpdateOrganizationIssueResponseStatusDetailsInfo =
   GetOrganizationIssueResponseStatusDetailsInfo;
@@ -36583,10 +32971,8 @@ export type UpdateOrganizationIssueResponseType =
 export const UpdateOrganizationIssueResponseType = S.String;
 
 export type UpdateOrganizationIssueResponseMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationIssueResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationIssueResponseMetadataMap>;
+export const UpdateOrganizationIssueResponseMetadataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationIssueResponseMetadataMap>;
 
 export type UpdateOrganizationIssueResponseAssignedToType = "user" | "team";
 export const UpdateOrganizationIssueResponseAssignedToType = S.String;
@@ -36620,9 +33006,8 @@ export const UpdateOrganizationIssueResponseAnnotationsItem =
 
 export type UpdateOrganizationIssueResponseAnnotationsList =
   Array<GetOrganizationIssueResponseAnnotationsItem>;
-export const UpdateOrganizationIssueResponseAnnotationsList = /*@__PURE__*/ S.Array(
-  GetOrganizationIssueResponseAnnotationsItem,
-) as any as S.Schema<UpdateOrganizationIssueResponseAnnotationsList>;
+export const UpdateOrganizationIssueResponseAnnotationsList =
+  GetOrganizationIssueResponseAnnotationsList as any as S.Schema<UpdateOrganizationIssueResponseAnnotationsList>;
 
 export interface UpdateOrganizationIssueResponse {
   isUnhandled?: boolean;
@@ -36706,9 +33091,8 @@ export const UpdateOrganizationIssueResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationIssueResponse>;
 
 export type UpdateOrganizationIssuesRequestEnvironmentList = Array<string>;
-export const UpdateOrganizationIssuesRequestEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationIssuesRequestEnvironmentList>;
+export const UpdateOrganizationIssuesRequestEnvironmentList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationIssuesRequestEnvironmentList>;
 
 export type UpdateOrganizationIssuesRequestProjectItem = number | string;
 export const UpdateOrganizationIssuesRequestProjectItem =
@@ -36721,9 +33105,8 @@ export const UpdateOrganizationIssuesRequestProjectList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateOrganizationIssuesRequestProjectList>;
 
 export type UpdateOrganizationIssuesRequestIdList = Array<number>;
-export const UpdateOrganizationIssuesRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationIssuesRequestIdList>;
+export const UpdateOrganizationIssuesRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationIssuesRequestIdList>;
 
 export type UpdateOrganizationIssuesRequestSort =
   | "date"
@@ -36892,9 +33275,8 @@ export const UpdateOrganizationIssuesResponseAssignedTo = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateOrganizationIssuesResponseAssignedTo>;
 
 export type UpdateOrganizationIssuesResponseMergeChildrenList = Array<string>;
-export const UpdateOrganizationIssuesResponseMergeChildrenList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationIssuesResponseMergeChildrenList>;
+export const UpdateOrganizationIssuesResponseMergeChildrenList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationIssuesResponseMergeChildrenList>;
 
 export interface UpdateOrganizationIssuesResponseMerge {
   parent: string;
@@ -36913,14 +33295,8 @@ export interface UpdateOrganizationIssuesResponseStatusDetailsInCommit {
   commit: string;
   repository: string;
 }
-export const UpdateOrganizationIssuesResponseStatusDetailsInCommit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commit: S.String,
-    repository: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationIssuesResponseStatusDetailsInCommit",
-}) as any as S.Schema<UpdateOrganizationIssuesResponseStatusDetailsInCommit>;
+export const UpdateOrganizationIssuesResponseStatusDetailsInCommit =
+  UpdateOrganizationIssueRequestStatusDetailsInCommit as any as S.Schema<UpdateOrganizationIssuesResponseStatusDetailsInCommit>;
 
 export interface UpdateOrganizationIssuesResponseStatusDetails {
   inNextRelease?: boolean;
@@ -37001,17 +33377,14 @@ export const UpdateOrganizationMemberRequestOrgRole = S.String;
 export type UpdateOrganizationMemberRequestTeamRolesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationMemberRequestTeamRolesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationMemberRequestTeamRolesItemMap>;
+export const UpdateOrganizationMemberRequestTeamRolesItemMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationMemberRequestTeamRolesItemMap>;
 
 /** Configures the team role of the member. The two roles are: - `contributor` - Can view and act on issues. Depending on organization settings, they can also add team members. - `admin` - Has full management access to their team's membership and projects. ```json { "teamRoles": [ { "teamSlug": "ancient-gabelers", "role": "admin" }, { "teamSlug": "powerful-abolitionist", "role": "contributor" } ] } ``` */
 export type UpdateOrganizationMemberRequestTeamRolesList =
   Array<UpdateOrganizationMemberRequestTeamRolesItemMap>;
-export const UpdateOrganizationMemberRequestTeamRolesList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationMemberRequestTeamRolesItemMap,
-) as any as S.Schema<UpdateOrganizationMemberRequestTeamRolesList>;
+export const UpdateOrganizationMemberRequestTeamRolesList =
+  AddOrganizationMemberRequestTeamRolesList as any as S.Schema<UpdateOrganizationMemberRequestTeamRolesList>;
 
 export interface UpdateOrganizationMemberRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -37047,9 +33420,8 @@ export const UpdateOrganizationMemberResponseExternalUsersItem =
 
 export type UpdateOrganizationMemberResponseExternalUsersList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const UpdateOrganizationMemberResponseExternalUsersList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<UpdateOrganizationMemberResponseExternalUsersList>;
+export const UpdateOrganizationMemberResponseExternalUsersList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<UpdateOrganizationMemberResponseExternalUsersList>;
 
 export type UpdateOrganizationMemberResponseUserIdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -37068,25 +33440,21 @@ export const UpdateOrganizationMemberResponseUserIdentitiesItem =
 
 export type UpdateOrganizationMemberResponseUserIdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
-export const UpdateOrganizationMemberResponseUserIdentitiesList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserIdentitiesItem,
-) as any as S.Schema<UpdateOrganizationMemberResponseUserIdentitiesList>;
+export const UpdateOrganizationMemberResponseUserIdentitiesList =
+  AddOrganizationMemberResponseUserIdentitiesList as any as S.Schema<UpdateOrganizationMemberResponseUserIdentitiesList>;
 
 export type UpdateOrganizationMemberResponseUserAvatar = AddOrganizationMemberResponseUserAvatar;
 export const UpdateOrganizationMemberResponseUserAvatar = AddOrganizationMemberResponseUserAvatar;
 
 export type UpdateOrganizationMemberResponseUserAuthenticatorsList = Array<unknown>;
-export const UpdateOrganizationMemberResponseUserAuthenticatorsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationMemberResponseUserAuthenticatorsList>;
+export const UpdateOrganizationMemberResponseUserAuthenticatorsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationMemberResponseUserAuthenticatorsList>;
 
 export type UpdateOrganizationMemberResponseUserExperimentsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationMemberResponseUserExperimentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationMemberResponseUserExperimentsMap>;
+export const UpdateOrganizationMemberResponseUserExperimentsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationMemberResponseUserExperimentsMap>;
 
 export type UpdateOrganizationMemberResponseUserEmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -37095,9 +33463,8 @@ export const UpdateOrganizationMemberResponseUserEmailsItem =
 
 export type UpdateOrganizationMemberResponseUserEmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const UpdateOrganizationMemberResponseUserEmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<UpdateOrganizationMemberResponseUserEmailsList>;
+export const UpdateOrganizationMemberResponseUserEmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<UpdateOrganizationMemberResponseUserEmailsList>;
 
 export interface UpdateOrganizationMemberResponseUser {
   identities?: UpdateOrganizationMemberResponseUserIdentitiesList;
@@ -37122,41 +33489,15 @@ export interface UpdateOrganizationMemberResponseUser {
   experiments: UpdateOrganizationMemberResponseUserExperimentsMap;
   emails: UpdateOrganizationMemberResponseUserEmailsList;
 }
-export const UpdateOrganizationMemberResponseUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(UpdateOrganizationMemberResponseUserIdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(UpdateOrganizationMemberResponseUserAuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: UpdateOrganizationMemberResponseUserExperimentsMap,
-    emails: UpdateOrganizationMemberResponseUserEmailsList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMemberResponseUser",
-}) as any as S.Schema<UpdateOrganizationMemberResponseUser>;
+export const UpdateOrganizationMemberResponseUser =
+  AddOrganizationMemberResponseUser as any as S.Schema<UpdateOrganizationMemberResponseUser>;
 
 export type UpdateOrganizationMemberResponseFlags = AddOrganizationMemberResponseFlags;
 export const UpdateOrganizationMemberResponseFlags = AddOrganizationMemberResponseFlags;
 
 export type UpdateOrganizationMemberResponseTeamsList = Array<string>;
-export const UpdateOrganizationMemberResponseTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationMemberResponseTeamsList>;
+export const UpdateOrganizationMemberResponseTeamsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationMemberResponseTeamsList>;
 
 export type UpdateOrganizationMemberResponseTeamRolesItem =
   GetOrganizationMemberResponseTeamRolesItem;
@@ -37165,14 +33506,12 @@ export const UpdateOrganizationMemberResponseTeamRolesItem =
 
 export type UpdateOrganizationMemberResponseTeamRolesList =
   Array<GetOrganizationMemberResponseTeamRolesItem>;
-export const UpdateOrganizationMemberResponseTeamRolesList = /*@__PURE__*/ S.Array(
-  GetOrganizationMemberResponseTeamRolesItem,
-) as any as S.Schema<UpdateOrganizationMemberResponseTeamRolesList>;
+export const UpdateOrganizationMemberResponseTeamRolesList =
+  GetOrganizationMemberResponseTeamRolesList as any as S.Schema<UpdateOrganizationMemberResponseTeamRolesList>;
 
 export type UpdateOrganizationMemberResponseOrgRoleListItemScopesList = Array<string>;
-export const UpdateOrganizationMemberResponseOrgRoleListItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationMemberResponseOrgRoleListItemScopesList>;
+export const UpdateOrganizationMemberResponseOrgRoleListItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationMemberResponseOrgRoleListItemScopesList>;
 
 export interface UpdateOrganizationMemberResponseOrgRoleListItem {
   id: string;
@@ -37187,34 +33526,17 @@ export interface UpdateOrganizationMemberResponseOrgRoleListItem {
   isGlobal: boolean;
   minimumTeamRole: string;
 }
-export const UpdateOrganizationMemberResponseOrgRoleListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    desc: S.String,
-    scopes: UpdateOrganizationMemberResponseOrgRoleListItemScopesList,
-    allowed: S.Boolean,
-    isAllowed: S.Boolean,
-    isRetired: S.Boolean,
-    isTeamRolesAllowed: S.Boolean,
-    is_global: S.Boolean,
-    isGlobal: S.Boolean,
-    minimumTeamRole: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMemberResponseOrgRoleListItem",
-}) as any as S.Schema<UpdateOrganizationMemberResponseOrgRoleListItem>;
+export const UpdateOrganizationMemberResponseOrgRoleListItem =
+  GetOrganizationMemberResponseOrgRoleListItem as any as S.Schema<UpdateOrganizationMemberResponseOrgRoleListItem>;
 
 export type UpdateOrganizationMemberResponseOrgRoleListList =
   Array<UpdateOrganizationMemberResponseOrgRoleListItem>;
-export const UpdateOrganizationMemberResponseOrgRoleListList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationMemberResponseOrgRoleListItem,
-) as any as S.Schema<UpdateOrganizationMemberResponseOrgRoleListList>;
+export const UpdateOrganizationMemberResponseOrgRoleListList =
+  GetOrganizationMemberResponseOrgRoleListList as any as S.Schema<UpdateOrganizationMemberResponseOrgRoleListList>;
 
 export type UpdateOrganizationMemberResponseTeamRoleListItemScopesList = Array<string>;
-export const UpdateOrganizationMemberResponseTeamRoleListItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationMemberResponseTeamRoleListItemScopesList>;
+export const UpdateOrganizationMemberResponseTeamRoleListItemScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationMemberResponseTeamRoleListItemScopesList>;
 
 export interface UpdateOrganizationMemberResponseTeamRoleListItem {
   id: string;
@@ -37227,27 +33549,13 @@ export interface UpdateOrganizationMemberResponseTeamRoleListItem {
   isTeamRolesAllowed: boolean;
   isMinimumRoleFor: string | null;
 }
-export const UpdateOrganizationMemberResponseTeamRoleListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    desc: S.String,
-    scopes: UpdateOrganizationMemberResponseTeamRoleListItemScopesList,
-    allowed: S.Boolean,
-    isAllowed: S.Boolean,
-    isRetired: S.Boolean,
-    isTeamRolesAllowed: S.Boolean,
-    isMinimumRoleFor: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMemberResponseTeamRoleListItem",
-}) as any as S.Schema<UpdateOrganizationMemberResponseTeamRoleListItem>;
+export const UpdateOrganizationMemberResponseTeamRoleListItem =
+  GetOrganizationMemberResponseTeamRoleListItem as any as S.Schema<UpdateOrganizationMemberResponseTeamRoleListItem>;
 
 export type UpdateOrganizationMemberResponseTeamRoleListList =
   Array<UpdateOrganizationMemberResponseTeamRoleListItem>;
-export const UpdateOrganizationMemberResponseTeamRoleListList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationMemberResponseTeamRoleListItem,
-) as any as S.Schema<UpdateOrganizationMemberResponseTeamRoleListList>;
+export const UpdateOrganizationMemberResponseTeamRoleListList =
+  GetOrganizationMemberResponseTeamRoleListList as any as S.Schema<UpdateOrganizationMemberResponseTeamRoleListList>;
 
 export interface UpdateOrganizationMemberResponse {
   externalUsers?: UpdateOrganizationMemberResponseExternalUsersList;
@@ -37271,32 +33579,8 @@ export interface UpdateOrganizationMemberResponse {
   orgRoleList: UpdateOrganizationMemberResponseOrgRoleListList;
   teamRoleList: UpdateOrganizationMemberResponseTeamRoleListList;
 }
-export const UpdateOrganizationMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalUsers: S.optional(UpdateOrganizationMemberResponseExternalUsersList),
-    role: S.optional(S.String),
-    roleName: S.optional(S.String),
-    id: S.String,
-    email: S.String,
-    name: S.String,
-    user: S.NullOr(UpdateOrganizationMemberResponseUser),
-    orgRole: S.String,
-    pending: S.Boolean,
-    expired: S.Boolean,
-    flags: AddOrganizationMemberResponseFlags,
-    dateCreated: S.String,
-    inviteStatus: S.String,
-    inviterName: S.NullOr(S.String),
-    teams: UpdateOrganizationMemberResponseTeamsList,
-    teamRoles: UpdateOrganizationMemberResponseTeamRolesList,
-    invite_link: S.NullOr(S.String),
-    isOnlyOwner: S.Boolean,
-    orgRoleList: UpdateOrganizationMemberResponseOrgRoleListList,
-    teamRoleList: UpdateOrganizationMemberResponseTeamRoleListList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMemberResponse",
-}) as any as S.Schema<UpdateOrganizationMemberResponse>;
+export const UpdateOrganizationMemberResponse =
+  GetOrganizationMemberResponse as any as S.Schema<UpdateOrganizationMemberResponse>;
 
 /** The team-level role to switch to. Valid roles include: * `contributor` - Contributors can view and act on events, as well as view most other data within the team's projects. * `admin` - Admin privileges on the team. They can create and remove projects, and can manage the team's memberships. */
 export type UpdateOrganizationMemberTeamRequestTeamRole = "contributor" | "admin";
@@ -37994,9 +34278,8 @@ export const UpdateOrganizationMonitorRequestAlertRuleTargetsItem =
 /** Array of dictionaries with information of the user or team to be notified */
 export type UpdateOrganizationMonitorRequestAlertRuleTargetsList =
   Array<CreateOrganizationMonitorRequestAlertRuleTargetsItem>;
-export const UpdateOrganizationMonitorRequestAlertRuleTargetsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationMonitorRequestAlertRuleTargetsItem,
-) as any as S.Schema<UpdateOrganizationMonitorRequestAlertRuleTargetsList>;
+export const UpdateOrganizationMonitorRequestAlertRuleTargetsList =
+  CreateOrganizationMonitorRequestAlertRuleTargetsList as any as S.Schema<UpdateOrganizationMonitorRequestAlertRuleTargetsList>;
 
 export interface UpdateOrganizationMonitorRequestAlertRule {
   /** Name of the environment */
@@ -38004,14 +34287,8 @@ export interface UpdateOrganizationMonitorRequestAlertRule {
   /** Array of dictionaries with information of the user or team to be notified */
   targets: UpdateOrganizationMonitorRequestAlertRuleTargetsList;
 }
-export const UpdateOrganizationMonitorRequestAlertRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.optional(S.NullOr(S.String)),
-    targets: UpdateOrganizationMonitorRequestAlertRuleTargetsList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMonitorRequestAlertRule",
-}) as any as S.Schema<UpdateOrganizationMonitorRequestAlertRule>;
+export const UpdateOrganizationMonitorRequestAlertRule =
+  CreateOrganizationMonitorRequestAlertRule as any as S.Schema<UpdateOrganizationMonitorRequestAlertRule>;
 
 export interface UpdateOrganizationMonitorRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -38065,30 +34342,22 @@ export const UpdateOrganizationMonitorResponseAlertRuleTargetsItem =
 
 export type UpdateOrganizationMonitorResponseAlertRuleTargetsList =
   Array<CreateOrganizationMonitorResponseAlertRuleTargetsItem>;
-export const UpdateOrganizationMonitorResponseAlertRuleTargetsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationMonitorResponseAlertRuleTargetsItem,
-) as any as S.Schema<UpdateOrganizationMonitorResponseAlertRuleTargetsList>;
+export const UpdateOrganizationMonitorResponseAlertRuleTargetsList =
+  CreateOrganizationMonitorResponseAlertRuleTargetsList as any as S.Schema<UpdateOrganizationMonitorResponseAlertRuleTargetsList>;
 
 export interface UpdateOrganizationMonitorResponseAlertRule {
   targets: UpdateOrganizationMonitorResponseAlertRuleTargetsList;
   environment: string;
 }
-export const UpdateOrganizationMonitorResponseAlertRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: UpdateOrganizationMonitorResponseAlertRuleTargetsList,
-    environment: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMonitorResponseAlertRule",
-}) as any as S.Schema<UpdateOrganizationMonitorResponseAlertRule>;
+export const UpdateOrganizationMonitorResponseAlertRule =
+  CreateOrganizationMonitorResponseAlertRule as any as S.Schema<UpdateOrganizationMonitorResponseAlertRule>;
 
 export type UpdateOrganizationMonitorResponseConfigScheduleType = "crontab" | "interval";
 export const UpdateOrganizationMonitorResponseConfigScheduleType = S.String;
 
 export type UpdateOrganizationMonitorResponseConfigScheduleCase1List = Array<number>;
-export const UpdateOrganizationMonitorResponseConfigScheduleCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationMonitorResponseConfigScheduleCase1List>;
+export const UpdateOrganizationMonitorResponseConfigScheduleCase1List =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationMonitorResponseConfigScheduleCase1List>;
 
 export type UpdateOrganizationMonitorResponseConfigSchedule =
   | string
@@ -38122,14 +34391,12 @@ export const UpdateOrganizationMonitorResponseConfig = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateOrganizationMonitorResponseConfig>;
 
 export type UpdateOrganizationMonitorResponseProjectFeaturesList = Array<string>;
-export const UpdateOrganizationMonitorResponseProjectFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationMonitorResponseProjectFeaturesList>;
+export const UpdateOrganizationMonitorResponseProjectFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationMonitorResponseProjectFeaturesList>;
 
 export type UpdateOrganizationMonitorResponseProjectAccessList = Array<string>;
-export const UpdateOrganizationMonitorResponseProjectAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationMonitorResponseProjectAccessList>;
+export const UpdateOrganizationMonitorResponseProjectAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationMonitorResponseProjectAccessList>;
 
 export type UpdateOrganizationMonitorResponseProjectAvatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -38178,52 +34445,8 @@ export interface UpdateOrganizationMonitorResponseProject {
   color: string;
   status: string;
 }
-export const UpdateOrganizationMonitorResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: UpdateOrganizationMonitorResponseProjectFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: UpdateOrganizationMonitorResponseProjectAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationMonitorResponseProject",
-}) as any as S.Schema<UpdateOrganizationMonitorResponseProject>;
+export const UpdateOrganizationMonitorResponseProject =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<UpdateOrganizationMonitorResponseProject>;
 
 export type UpdateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice =
   CreateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice;
@@ -38295,9 +34518,8 @@ export const UpdateOrganizationMonitorResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of project IDs or slugs that the Notification Action is created for. */
 export type UpdateOrganizationNotificationsActionRequestProjectsList = Array<string>;
-export const UpdateOrganizationNotificationsActionRequestProjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationNotificationsActionRequestProjectsList>;
+export const UpdateOrganizationNotificationsActionRequestProjectsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationNotificationsActionRequestProjectsList>;
 
 export interface UpdateOrganizationNotificationsActionRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -38345,11 +34567,8 @@ export const UpdateOrganizationNotificationsActionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<UpdateOrganizationNotificationsActionRequest>;
 
 export interface UpdateOrganizationNotificationsActionResponse {}
-export const UpdateOrganizationNotificationsActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationNotificationsActionResponse",
-}) as any as S.Schema<UpdateOrganizationNotificationsActionResponse>;
+export const UpdateOrganizationNotificationsActionResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<UpdateOrganizationNotificationsActionResponse>;
 
 export type UpdateOrganizationReleaseRequestCommitsItemPatchSetItem =
   CreateOrganizationReleaseRequestCommitsItemPatchSetItem;
@@ -38358,9 +34577,8 @@ export const UpdateOrganizationReleaseRequestCommitsItemPatchSetItem =
 
 export type UpdateOrganizationReleaseRequestCommitsItemPatchSetList =
   Array<CreateOrganizationReleaseRequestCommitsItemPatchSetItem>;
-export const UpdateOrganizationReleaseRequestCommitsItemPatchSetList = /*@__PURE__*/ S.Array(
-  CreateOrganizationReleaseRequestCommitsItemPatchSetItem,
-) as any as S.Schema<UpdateOrganizationReleaseRequestCommitsItemPatchSetList>;
+export const UpdateOrganizationReleaseRequestCommitsItemPatchSetList =
+  CreateOrganizationReleaseRequestCommitsItemPatchSetList as any as S.Schema<UpdateOrganizationReleaseRequestCommitsItemPatchSetList>;
 
 export interface UpdateOrganizationReleaseRequestCommitsItem {
   id: string;
@@ -38371,26 +34589,14 @@ export interface UpdateOrganizationReleaseRequestCommitsItem {
   timestamp?: string | null;
   patch_set?: UpdateOrganizationReleaseRequestCommitsItemPatchSetList | null;
 }
-export const UpdateOrganizationReleaseRequestCommitsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    repository: S.optional(S.NullOr(S.String)),
-    message: S.optional(S.NullOr(S.String)),
-    author_name: S.optional(S.NullOr(S.String)),
-    author_email: S.optional(S.NullOr(S.String)),
-    timestamp: S.optional(S.NullOr(S.String)),
-    patch_set: S.optional(S.NullOr(UpdateOrganizationReleaseRequestCommitsItemPatchSetList)),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationReleaseRequestCommitsItem",
-}) as any as S.Schema<UpdateOrganizationReleaseRequestCommitsItem>;
+export const UpdateOrganizationReleaseRequestCommitsItem =
+  CreateOrganizationReleaseRequestCommitsItem as any as S.Schema<UpdateOrganizationReleaseRequestCommitsItem>;
 
 /** An optional list of commit data to be associated. */
 export type UpdateOrganizationReleaseRequestCommitsList =
   Array<UpdateOrganizationReleaseRequestCommitsItem>;
-export const UpdateOrganizationReleaseRequestCommitsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationReleaseRequestCommitsItem,
-) as any as S.Schema<UpdateOrganizationReleaseRequestCommitsList>;
+export const UpdateOrganizationReleaseRequestCommitsList =
+  CreateOrganizationReleaseRequestCommitsList as any as S.Schema<UpdateOrganizationReleaseRequestCommitsList>;
 
 export type UpdateOrganizationReleaseRequestHeadCommitsItem =
   CreateOrganizationReleaseRequestHeadCommitsItem;
@@ -38400,9 +34606,8 @@ export const UpdateOrganizationReleaseRequestHeadCommitsItem =
 /** Deprecated, use `commits`. Head commits to associate with the release. */
 export type UpdateOrganizationReleaseRequestHeadCommitsList =
   Array<CreateOrganizationReleaseRequestHeadCommitsItem>;
-export const UpdateOrganizationReleaseRequestHeadCommitsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationReleaseRequestHeadCommitsItem,
-) as any as S.Schema<UpdateOrganizationReleaseRequestHeadCommitsList>;
+export const UpdateOrganizationReleaseRequestHeadCommitsList =
+  CreateOrganizationReleaseRequestHeadCommitsList as any as S.Schema<UpdateOrganizationReleaseRequestHeadCommitsList>;
 
 export type UpdateOrganizationReleaseRequestRefsItem = CreateOrganizationReleaseRequestRefsItem;
 export const UpdateOrganizationReleaseRequestRefsItem = CreateOrganizationReleaseRequestRefsItem;
@@ -38410,9 +34615,8 @@ export const UpdateOrganizationReleaseRequestRefsItem = CreateOrganizationReleas
 /** An optional way to indicate the start and end commits for each repository included in a release. Head commits must include parameters ``repository`` and ``commit`` (the HEAD SHA). For GitLab repositories, please use the Group name instead of the slug. They can optionally include ``previousCommit`` (the SHA of the HEAD of the previous release), which should be specified if this is the first time you've sent commit data. */
 export type UpdateOrganizationReleaseRequestRefsList =
   Array<CreateOrganizationReleaseRequestRefsItem>;
-export const UpdateOrganizationReleaseRequestRefsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationReleaseRequestRefsItem,
-) as any as S.Schema<UpdateOrganizationReleaseRequestRefsList>;
+export const UpdateOrganizationReleaseRequestRefsList =
+  CreateOrganizationReleaseRequestRefsList as any as S.Schema<UpdateOrganizationReleaseRequestRefsList>;
 
 export interface UpdateOrganizationReleaseRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -38457,16 +34661,12 @@ export const UpdateOrganizationReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationReleaseRequest>;
 
 export type UpdateOrganizationReleaseResponseOwnerMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationReleaseResponseOwnerMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationReleaseResponseOwnerMap>;
+export const UpdateOrganizationReleaseResponseOwnerMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationReleaseResponseOwnerMap>;
 
 export type UpdateOrganizationReleaseResponseLastCommitMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationReleaseResponseLastCommitMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationReleaseResponseLastCommitMap>;
+export const UpdateOrganizationReleaseResponseLastCommitMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationReleaseResponseLastCommitMap>;
 
 export type UpdateOrganizationReleaseResponseLastDeploy =
   CreateOrganizationReleaseResponseLastDeploy;
@@ -38476,26 +34676,20 @@ export const UpdateOrganizationReleaseResponseLastDeploy =
 export type UpdateOrganizationReleaseResponseCurrentProjectMetaMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationReleaseResponseCurrentProjectMetaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationReleaseResponseCurrentProjectMetaMap>;
+export const UpdateOrganizationReleaseResponseCurrentProjectMetaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationReleaseResponseCurrentProjectMetaMap>;
 
 export type UpdateOrganizationReleaseResponseAdoptionStagesMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationReleaseResponseAdoptionStagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationReleaseResponseAdoptionStagesMap>;
+export const UpdateOrganizationReleaseResponseAdoptionStagesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationReleaseResponseAdoptionStagesMap>;
 
 export type UpdateOrganizationReleaseResponseVersionInfoVersionMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationReleaseResponseVersionInfoVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationReleaseResponseVersionInfoVersionMap>;
+export const UpdateOrganizationReleaseResponseVersionInfoVersionMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationReleaseResponseVersionInfoVersionMap>;
 
 export interface UpdateOrganizationReleaseResponseVersionInfo {
   description?: string;
@@ -38503,22 +34697,12 @@ export interface UpdateOrganizationReleaseResponseVersionInfo {
   version: UpdateOrganizationReleaseResponseVersionInfoVersionMap;
   buildHash: string | null;
 }
-export const UpdateOrganizationReleaseResponseVersionInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    package: S.NullOr(S.String),
-    version: UpdateOrganizationReleaseResponseVersionInfoVersionMap,
-    buildHash: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationReleaseResponseVersionInfo",
-}) as any as S.Schema<UpdateOrganizationReleaseResponseVersionInfo>;
+export const UpdateOrganizationReleaseResponseVersionInfo =
+  CreateOrganizationReleaseResponseVersionInfo as any as S.Schema<UpdateOrganizationReleaseResponseVersionInfo>;
 
 export type UpdateOrganizationReleaseResponseDataMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationReleaseResponseDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationReleaseResponseDataMap>;
+export const UpdateOrganizationReleaseResponseDataMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationReleaseResponseDataMap>;
 
 export type UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesItemOrganization =
   AddOrganizationMemberResponseUserIdentitiesItemOrganization;
@@ -38538,9 +34722,7 @@ export const UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesItem =
 export type UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList =
   Array<AddOrganizationMemberResponseUserIdentitiesItem>;
 export const UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList =
-  /*@__PURE__*/ S.Array(
-    AddOrganizationMemberResponseUserIdentitiesItem,
-  ) as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByIdentitiesList as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList>;
 
 export type UpdateOrganizationReleaseResponseAuthorsItemCase0Avatar =
   AddOrganizationMemberResponseUserAvatar;
@@ -38549,18 +34731,13 @@ export const UpdateOrganizationReleaseResponseAuthorsItemCase0Avatar =
 
 export type UpdateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList = Array<unknown>;
 export const UpdateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList>;
 
 export type UpdateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap>;
 
 export type UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsItem =
   AddOrganizationMemberResponseUserEmailsItem;
@@ -38569,9 +34746,8 @@ export const UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsItem =
 
 export type UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsList =
   Array<AddOrganizationMemberResponseUserEmailsItem>;
-export const UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseUserEmailsItem,
-) as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsList>;
+export const UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsList =
+  AddOrganizationMemberResponseUserEmailsList as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsList>;
 
 export interface UpdateOrganizationReleaseResponseAuthorsItemCase0 {
   identities?: UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList;
@@ -38596,33 +34772,8 @@ export interface UpdateOrganizationReleaseResponseAuthorsItemCase0 {
   experiments: UpdateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap;
   emails: UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsList;
 }
-export const UpdateOrganizationReleaseResponseAuthorsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identities: S.optional(UpdateOrganizationReleaseResponseAuthorsItemCase0IdentitiesList),
-    avatar: S.optional(AddOrganizationMemberResponseUserAvatar),
-    authenticators: S.optional(UpdateOrganizationReleaseResponseAuthorsItemCase0AuthenticatorsList),
-    canReset2fa: S.optional(S.Boolean),
-    id: S.String,
-    name: S.String,
-    username: S.String,
-    email: S.String,
-    avatarUrl: S.String,
-    isActive: S.Boolean,
-    isSuspended: S.Boolean,
-    hasPasswordAuth: S.Boolean,
-    isManaged: S.Boolean,
-    dateJoined: S.String,
-    lastLogin: S.NullOr(S.String),
-    has2fa: S.Boolean,
-    lastActive: S.NullOr(S.String),
-    isSuperuser: S.Boolean,
-    isStaff: S.Boolean,
-    experiments: UpdateOrganizationReleaseResponseAuthorsItemCase0ExperimentsMap,
-    emails: UpdateOrganizationReleaseResponseAuthorsItemCase0EmailsList,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationReleaseResponseAuthorsItemCase0",
-}) as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0>;
+export const UpdateOrganizationReleaseResponseAuthorsItemCase0 =
+  CreateOrganizationReleaseResponseAuthorsItemCase0 as any as S.Schema<UpdateOrganizationReleaseResponseAuthorsItemCase0>;
 
 export type UpdateOrganizationReleaseResponseAuthorsItemCase1 =
   CreateOrganizationReleaseResponseAuthorsItemCase1;
@@ -38645,10 +34796,7 @@ export type UpdateOrganizationReleaseResponseProjectsItemHealthDataStatsMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationReleaseResponseProjectsItemHealthDataStatsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItemHealthDataStatsMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItemHealthDataStatsMap>;
 
 export interface UpdateOrganizationReleaseResponseProjectsItemHealthData {
   durationP50?: number | null;
@@ -38668,33 +34816,12 @@ export interface UpdateOrganizationReleaseResponseProjectsItemHealthData {
   hasHealthData: boolean;
   stats: UpdateOrganizationReleaseResponseProjectsItemHealthDataStatsMap;
 }
-export const UpdateOrganizationReleaseResponseProjectsItemHealthData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    durationP50: S.optional(S.NullOr(S.Number)),
-    durationP90: S.optional(S.NullOr(S.Number)),
-    crashFreeUsers: S.optional(S.NullOr(S.Number)),
-    crashFreeSessions: S.optional(S.NullOr(S.Number)),
-    totalUsers: S.optional(S.NullOr(S.Number)),
-    totalUsers24h: S.optional(S.NullOr(S.Number)),
-    totalProjectUsers24h: S.optional(S.NullOr(S.Number)),
-    totalSessions: S.optional(S.NullOr(S.Number)),
-    totalSessions24h: S.optional(S.NullOr(S.Number)),
-    totalProjectSessions24h: S.optional(S.NullOr(S.Number)),
-    adoption: S.optional(S.NullOr(S.Number)),
-    sessionsAdoption: S.optional(S.NullOr(S.Number)),
-    sessionsCrashed: S.Number,
-    sessionsErrored: S.Number,
-    hasHealthData: S.Boolean,
-    stats: UpdateOrganizationReleaseResponseProjectsItemHealthDataStatsMap,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationReleaseResponseProjectsItemHealthData",
-}) as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItemHealthData>;
+export const UpdateOrganizationReleaseResponseProjectsItemHealthData =
+  CreateOrganizationReleaseResponseProjectsItemHealthData as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItemHealthData>;
 
 export type UpdateOrganizationReleaseResponseProjectsItemPlatformsList = Array<string>;
-export const UpdateOrganizationReleaseResponseProjectsItemPlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItemPlatformsList>;
+export const UpdateOrganizationReleaseResponseProjectsItemPlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItemPlatformsList>;
 
 export interface UpdateOrganizationReleaseResponseProjectsItem {
   healthData?: UpdateOrganizationReleaseResponseProjectsItemHealthData | null;
@@ -38709,29 +34836,13 @@ export interface UpdateOrganizationReleaseResponseProjectsItem {
   hasHealthData: boolean;
   newGroups: number;
 }
-export const UpdateOrganizationReleaseResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthData: S.optional(S.NullOr(UpdateOrganizationReleaseResponseProjectsItemHealthData)),
-    dateReleased: S.optional(S.NullOr(S.String)),
-    dateCreated: S.optional(S.NullOr(S.String)),
-    dateStarted: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    platforms: S.NullOr(UpdateOrganizationReleaseResponseProjectsItemPlatformsList),
-    hasHealthData: S.Boolean,
-    newGroups: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationReleaseResponseProjectsItem",
-}) as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItem>;
+export const UpdateOrganizationReleaseResponseProjectsItem =
+  CreateOrganizationReleaseResponseProjectsItem as any as S.Schema<UpdateOrganizationReleaseResponseProjectsItem>;
 
 export type UpdateOrganizationReleaseResponseProjectsList =
   Array<UpdateOrganizationReleaseResponseProjectsItem>;
-export const UpdateOrganizationReleaseResponseProjectsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationReleaseResponseProjectsItem,
-) as any as S.Schema<UpdateOrganizationReleaseResponseProjectsList>;
+export const UpdateOrganizationReleaseResponseProjectsList =
+  CreateOrganizationReleaseResponseProjectsList as any as S.Schema<UpdateOrganizationReleaseResponseProjectsList>;
 
 export interface UpdateOrganizationReleaseResponse {
   ref?: string | null;
@@ -38822,10 +34933,8 @@ export const UpdateOrganizationReleaseFileRequest = /*@__PURE__*/ S.suspend(() =
 export type UpdateOrganizationReleaseFileResponseHeadersMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationReleaseFileResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationReleaseFileResponseHeadersMap>;
+export const UpdateOrganizationReleaseFileResponseHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationReleaseFileResponseHeadersMap>;
 
 export interface UpdateOrganizationReleaseFileResponse {
   id: string;
@@ -38836,33 +34945,19 @@ export interface UpdateOrganizationReleaseFileResponse {
   sha1: string;
   dateCreated: string;
 }
-export const UpdateOrganizationReleaseFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    dist: S.NullOr(S.String),
-    headers: UpdateOrganizationReleaseFileResponseHeadersMap,
-    size: S.Number,
-    sha1: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationReleaseFileResponse",
-}) as any as S.Schema<UpdateOrganizationReleaseFileResponse>;
+export const UpdateOrganizationReleaseFileResponse =
+  GetOrganizationReleaseFileResponse as any as S.Schema<UpdateOrganizationReleaseFileResponse>;
 
 /** SCIM schema URIs identifying the request format. Must be the PatchOp schema. */
 export type UpdateOrganizationScimV2GroupRequestSchemasList = Array<string>;
-export const UpdateOrganizationScimV2GroupRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationScimV2GroupRequestSchemasList>;
+export const UpdateOrganizationScimV2GroupRequestSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationScimV2GroupRequestSchemasList>;
 
 export type UpdateOrganizationScimV2GroupRequestOperationsItemValueMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationScimV2GroupRequestOperationsItemValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationScimV2GroupRequestOperationsItemValueMap>;
+export const UpdateOrganizationScimV2GroupRequestOperationsItemValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationScimV2GroupRequestOperationsItemValueMap>;
 
 export interface UpdateOrganizationScimV2GroupRequestOperationsItem {
   op: string;
@@ -38914,11 +35009,8 @@ export const UpdateOrganizationScimV2GroupRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateOrganizationScimV2GroupRequest>;
 
 export interface UpdateOrganizationScimV2GroupResponse {}
-export const UpdateOrganizationScimV2GroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationScimV2GroupResponse",
-}) as any as S.Schema<UpdateOrganizationScimV2GroupResponse>;
+export const UpdateOrganizationScimV2GroupResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<UpdateOrganizationScimV2GroupResponse>;
 
 export interface UpdateOrganizationScimV2UserRequestOperationsItem {
   op: string;
@@ -38944,9 +35036,8 @@ export const UpdateOrganizationScimV2UserRequestOperationsList = /*@__PURE__*/ S
 
 /** SCIM schema URIs identifying the request format. Must be the PatchOp schema. */
 export type UpdateOrganizationScimV2UserRequestSchemasList = Array<string>;
-export const UpdateOrganizationScimV2UserRequestSchemasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationScimV2UserRequestSchemasList>;
+export const UpdateOrganizationScimV2UserRequestSchemasList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationScimV2UserRequestSchemasList>;
 
 export interface UpdateOrganizationScimV2UserRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -38976,24 +35067,18 @@ export const UpdateOrganizationScimV2UserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationScimV2UserRequest>;
 
 export interface UpdateOrganizationScimV2UserResponse {}
-export const UpdateOrganizationScimV2UserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOrganizationScimV2UserResponse",
-}) as any as S.Schema<UpdateOrganizationScimV2UserResponse>;
+export const UpdateOrganizationScimV2UserResponse =
+  CreateProjectPreprodSnapshotSkippedStatusCheckResponse as any as S.Schema<UpdateOrganizationScimV2UserResponse>;
 
 /** The IDs of the monitors to connect this alert to. Use 'Fetch an Organization's Monitors' to find the IDs. */
 export type UpdateOrganizationWorkflowRequestDetectorIdsList = Array<number>;
-export const UpdateOrganizationWorkflowRequestDetectorIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationWorkflowRequestDetectorIdsList>;
+export const UpdateOrganizationWorkflowRequestDetectorIdsList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationWorkflowRequestDetectorIdsList>;
 
 /** Typically the frequency at which the alert will fire, in minutes. - `0`: 0 minutes - `5`: 5 minutes - `10`: 10 minutes - `30`: 30 minutes - `60`: 1 hour - `180`: 3 hours - `720`: 12 hours - `1440`: 24 hours ```json { "frequency":3600 } ``` */
 export type UpdateOrganizationWorkflowRequestConfigMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationWorkflowRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationWorkflowRequestConfigMap>;
+export const UpdateOrganizationWorkflowRequestConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationWorkflowRequestConfigMap>;
 
 /** * `any` * `any-short` * `all` * `none` */
 export type UpdateOrganizationWorkflowRequestTriggersLogicType =
@@ -39004,9 +35089,8 @@ export type UpdateOrganizationWorkflowRequestTriggersLogicType =
 export const UpdateOrganizationWorkflowRequestTriggersLogicType = S.String;
 
 export type UpdateOrganizationWorkflowRequestTriggersConditionsList = Array<unknown>;
-export const UpdateOrganizationWorkflowRequestTriggersConditionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationWorkflowRequestTriggersConditionsList>;
+export const UpdateOrganizationWorkflowRequestTriggersConditionsList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationWorkflowRequestTriggersConditionsList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface UpdateOrganizationWorkflowRequestTriggers {
@@ -39035,24 +35119,18 @@ export const UpdateOrganizationWorkflowRequestActionFiltersItemLogicType = S.Str
 
 export type UpdateOrganizationWorkflowRequestActionFiltersItemConditionsList = Array<unknown>;
 export const UpdateOrganizationWorkflowRequestActionFiltersItemConditionsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowRequestActionFiltersItemConditionsList>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationWorkflowRequestActionFiltersItemConditionsList>;
 
 export type UpdateOrganizationWorkflowRequestActionFiltersItemActionsItemMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationWorkflowRequestActionFiltersItemActionsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowRequestActionFiltersItemActionsItemMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationWorkflowRequestActionFiltersItemActionsItemMap>;
 
 export type UpdateOrganizationWorkflowRequestActionFiltersItemActionsList =
   Array<UpdateOrganizationWorkflowRequestActionFiltersItemActionsItemMap>;
-export const UpdateOrganizationWorkflowRequestActionFiltersItemActionsList = /*@__PURE__*/ S.Array(
-  UpdateOrganizationWorkflowRequestActionFiltersItemActionsItemMap,
-) as any as S.Schema<UpdateOrganizationWorkflowRequestActionFiltersItemActionsList>;
+export const UpdateOrganizationWorkflowRequestActionFiltersItemActionsList =
+  CreateOrganizationWorkflowRequestActionFiltersItemActionsList as any as S.Schema<UpdateOrganizationWorkflowRequestActionFiltersItemActionsList>;
 
 /** Allows parameters to be defined in snake case, but passed as camel case. Errors are output in camel case. */
 export interface UpdateOrganizationWorkflowRequestActionFiltersItem {
@@ -39159,9 +35237,8 @@ export const UpdateOrganizationWorkflowResponseTriggersConditionsCase0List = /*@
 ) as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersConditionsCase0List>;
 
 export type UpdateOrganizationWorkflowResponseTriggersConditionsCase1List = Array<unknown>;
-export const UpdateOrganizationWorkflowResponseTriggersConditionsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersConditionsCase1List>;
+export const UpdateOrganizationWorkflowResponseTriggersConditionsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersConditionsCase1List>;
 
 export type UpdateOrganizationWorkflowResponseTriggersConditions =
   | UpdateOrganizationWorkflowResponseTriggersConditionsCase0List
@@ -39173,19 +35250,13 @@ export type UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap = 
   [key: string]: string | undefined;
 };
 export const UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap>;
 
 export type UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap>;
 
 export interface UpdateOrganizationWorkflowResponseTriggersActionsCase0Item {
   id?: string;
@@ -39195,30 +35266,17 @@ export interface UpdateOrganizationWorkflowResponseTriggersActionsCase0Item {
   config?: UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap;
   status?: string;
 }
-export const UpdateOrganizationWorkflowResponseTriggersActionsCase0Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(S.String),
-      integrationId: S.optional(S.NullOr(S.String)),
-      data: S.optional(UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemDataMap),
-      config: S.optional(UpdateOrganizationWorkflowResponseTriggersActionsCase0ItemConfigMap),
-      status: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UpdateOrganizationWorkflowResponseTriggersActionsCase0Item",
-}) as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0Item>;
+export const UpdateOrganizationWorkflowResponseTriggersActionsCase0Item =
+  CreateOrganizationWorkflowResponseTriggersActionsCase0Item as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0Item>;
 
 export type UpdateOrganizationWorkflowResponseTriggersActionsCase0List =
   Array<UpdateOrganizationWorkflowResponseTriggersActionsCase0Item>;
-export const UpdateOrganizationWorkflowResponseTriggersActionsCase0List = /*@__PURE__*/ S.Array(
-  UpdateOrganizationWorkflowResponseTriggersActionsCase0Item,
-) as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0List>;
+export const UpdateOrganizationWorkflowResponseTriggersActionsCase0List =
+  CreateOrganizationWorkflowResponseTriggersActionsCase0List as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase0List>;
 
 export type UpdateOrganizationWorkflowResponseTriggersActionsCase1List = Array<unknown>;
-export const UpdateOrganizationWorkflowResponseTriggersActionsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase1List>;
+export const UpdateOrganizationWorkflowResponseTriggersActionsCase1List =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateOrganizationWorkflowResponseTriggersActionsCase1List>;
 
 export type UpdateOrganizationWorkflowResponseTriggersActions =
   | UpdateOrganizationWorkflowResponseTriggersActionsCase0List
@@ -39278,9 +35336,7 @@ export const UpdateOrganizationWorkflowResponseActionFiltersItemConditionsCase0L
 
 export type UpdateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List = Array<unknown>;
 export const UpdateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemConditionsCase1List>;
 
 export type UpdateOrganizationWorkflowResponseActionFiltersItemConditions =
   | UpdateOrganizationWorkflowResponseActionFiltersItemConditionsCase0List
@@ -39292,19 +35348,13 @@ export type UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemD
   [key: string]: string | undefined;
 };
 export const UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap>;
 
 export type UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap>;
 
 export interface UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item {
   id?: string;
@@ -39315,33 +35365,16 @@ export interface UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0
   status?: string;
 }
 export const UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(S.String),
-      integrationId: S.optional(S.NullOr(S.String)),
-      data: S.optional(UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemDataMap),
-      config: S.optional(
-        UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0ItemConfigMap,
-      ),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item",
-  }) as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item>;
+  CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item>;
 
 export type UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0List =
   Array<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item>;
 export const UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0List =
-  /*@__PURE__*/ S.Array(
-    UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item,
-  ) as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0List>;
+  CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0List as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0List>;
 
 export type UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase1List = Array<unknown>;
 export const UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase1List>;
 
 export type UpdateOrganizationWorkflowResponseActionFiltersItemActions =
   | UpdateOrganizationWorkflowResponseActionFiltersItemActionsCase0List
@@ -39375,15 +35408,12 @@ export const UpdateOrganizationWorkflowResponseActionFiltersList = /*@__PURE__*/
 ) as any as S.Schema<UpdateOrganizationWorkflowResponseActionFiltersList>;
 
 export type UpdateOrganizationWorkflowResponseConfigMap = { [key: string]: unknown | undefined };
-export const UpdateOrganizationWorkflowResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationWorkflowResponseConfigMap>;
+export const UpdateOrganizationWorkflowResponseConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationWorkflowResponseConfigMap>;
 
 export type UpdateOrganizationWorkflowResponseDetectorIdsList = Array<string>;
-export const UpdateOrganizationWorkflowResponseDetectorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationWorkflowResponseDetectorIdsList>;
+export const UpdateOrganizationWorkflowResponseDetectorIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationWorkflowResponseDetectorIdsList>;
 
 export interface UpdateOrganizationWorkflowResponse {
   id: string;
@@ -39423,9 +35453,8 @@ export const UpdateOrganizationWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationWorkflowResponse>;
 
 export type UpdateOrganizationWorkflowsRequestIdList = Array<number>;
-export const UpdateOrganizationWorkflowsRequestIdList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateOrganizationWorkflowsRequestIdList>;
+export const UpdateOrganizationWorkflowsRequestIdList =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateOrganizationWorkflowsRequestIdList>;
 
 export type UpdateOrganizationWorkflowsRequestProjectItem = number | string;
 export const UpdateOrganizationWorkflowsRequestProjectItem =
@@ -39500,9 +35529,7 @@ export const UpdateOrganizationWorkflowsResponseBodyItemTriggersConditionsCase0L
 
 export type UpdateOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List = Array<unknown>;
 export const UpdateOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersConditionsCase1List>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemTriggersConditions =
   | UpdateOrganizationWorkflowsResponseBodyItemTriggersConditionsCase0List
@@ -39514,19 +35541,13 @@ export type UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemD
   [key: string]: string | undefined;
 };
 export const UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap = {
   [key: string]: unknown | undefined;
 };
 export const UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap>;
 
 export interface UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item {
   id?: string;
@@ -39537,33 +35558,16 @@ export interface UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0
   status?: string;
 }
 export const UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(S.String),
-      integrationId: S.optional(S.NullOr(S.String)),
-      data: S.optional(UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemDataMap),
-      config: S.optional(
-        UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0ItemConfigMap,
-      ),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item",
-  }) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item>;
+  CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0Item as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List =
   Array<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item>;
 export const UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List =
-  /*@__PURE__*/ S.Array(
-    UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0Item,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List>;
+  CreateOrganizationWorkflowResponseActionFiltersItemActionsCase0List as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List = Array<unknown>;
 export const UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase1List>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemTriggersActions =
   | UpdateOrganizationWorkflowsResponseBodyItemTriggersActionsCase0List
@@ -39625,9 +35629,7 @@ export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemConditi
 export type UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List =
   Array<unknown>;
 export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase1List>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemConditions =
   | UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemConditionsCase0List
@@ -39639,18 +35641,12 @@ export type UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsC
   [key: string]: string | undefined;
 };
 export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemDataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemDataMap>;
+  CreateOrganizationDashboardResponseWidgetsItemChangedReasonItemOrderbyItemMap as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemDataMap>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap =
   { [key: string]: unknown | undefined };
 export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap>;
+  CreateOrganizationDiscoverSavedQueryResponseCreatedByExperimentsMap as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap>;
 
 export interface UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item {
   id?: string;
@@ -39661,36 +35657,17 @@ export interface UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemAct
   status?: string;
 }
 export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(S.String),
-      integrationId: S.optional(S.NullOr(S.String)),
-      data: S.optional(
-        UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemDataMap,
-      ),
-      config: S.optional(
-        UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0ItemConfigMap,
-      ),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item",
-  }) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item>;
+  ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0List =
   Array<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item>;
 export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0List =
-  /*@__PURE__*/ S.Array(
-    UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0Item,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0List>;
+  ListOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0List as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0List>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List =
   Array<unknown>;
 export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List>;
+  CreateOrganizationDiscoverSavedQueryRequestAggregationsItemList as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase1List>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActions =
   | UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItemActionsCase0List
@@ -39729,15 +35706,12 @@ export const UpdateOrganizationWorkflowsResponseBodyItemActionFiltersList = /*@_
 export type UpdateOrganizationWorkflowsResponseBodyItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationWorkflowsResponseBodyItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemConfigMap>;
+export const UpdateOrganizationWorkflowsResponseBodyItemConfigMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemConfigMap>;
 
 export type UpdateOrganizationWorkflowsResponseBodyItemDetectorIdsList = Array<string>;
-export const UpdateOrganizationWorkflowsResponseBodyItemDetectorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemDetectorIdsList>;
+export const UpdateOrganizationWorkflowsResponseBodyItemDetectorIdsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateOrganizationWorkflowsResponseBodyItemDetectorIdsList>;
 
 export interface UpdateOrganizationWorkflowsResponseBodyItem {
   id: string;
@@ -39803,56 +35777,45 @@ export const UpdateProjectRequestAutofixAutomationTuning = S.String;
 export type UpdateProjectRequestPreprodSizeStatusChecksRulesMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateProjectRequestPreprodSizeStatusChecksRulesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectRequestPreprodSizeStatusChecksRulesMap>;
+export const UpdateProjectRequestPreprodSizeStatusChecksRulesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectRequestPreprodSizeStatusChecksRulesMap>;
 
 /** Rules controlling which preprod size changes are posted as PR comments. Can be updated with **`project:read`** permission. */
 export type UpdateProjectRequestPreprodSizePrCommentsRulesMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateProjectRequestPreprodSizePrCommentsRulesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectRequestPreprodSizePrCommentsRulesMap>;
+export const UpdateProjectRequestPreprodSizePrCommentsRulesMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectRequestPreprodSizePrCommentsRulesMap>;
 
 /** A JSON mapping of context types to lists of strings for their keys. E.g. `{'user': ['id', 'email']}` */
 export type UpdateProjectRequestHighlightContextMap = { [key: string]: unknown | undefined };
-export const UpdateProjectRequestHighlightContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectRequestHighlightContextMap>;
+export const UpdateProjectRequestHighlightContextMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectRequestHighlightContextMap>;
 
 /** A list of strings with tag keys to highlight on this project's issues. E.g. `['release', 'environment']` */
 export type UpdateProjectRequestHighlightTagsList = Array<string>;
-export const UpdateProjectRequestHighlightTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectRequestHighlightTagsList>;
+export const UpdateProjectRequestHighlightTagsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectRequestHighlightTagsList>;
 
 /** Additional field names to scrub from events, beyond the defaults. */
 export type UpdateProjectRequestSensitiveFieldsList = Array<string>;
-export const UpdateProjectRequestSensitiveFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectRequestSensitiveFieldsList>;
+export const UpdateProjectRequestSensitiveFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectRequestSensitiveFieldsList>;
 
 /** Field names to exempt from scrubbing, including the built-in defaults. */
 export type UpdateProjectRequestSafeFieldsList = Array<string>;
-export const UpdateProjectRequestSafeFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectRequestSafeFieldsList>;
+export const UpdateProjectRequestSafeFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectRequestSafeFieldsList>;
 
 /** Identifiers of Sentry-hosted symbol sources to use when symbolicating events. */
 export type UpdateProjectRequestBuiltinSymbolSourcesList = Array<string>;
-export const UpdateProjectRequestBuiltinSymbolSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectRequestBuiltinSymbolSourcesList>;
+export const UpdateProjectRequestBuiltinSymbolSourcesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectRequestBuiltinSymbolSourcesList>;
 
 /** Origins permitted to send events to this project. Use `*` to allow any. */
 export type UpdateProjectRequestAllowedDomainsList = Array<string>;
-export const UpdateProjectRequestAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectRequestAllowedDomainsList>;
+export const UpdateProjectRequestAllowedDomainsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectRequestAllowedDomainsList>;
 
 /** * `boostEnvironments` * `boostKeyTransactions` * `boostLatestRelease` * `boostLowVolumeTransactions` * `boostReplayId` * `ignoreHealthChecks` * `minimumSampleRate` * `recalibrationRule` */
 export type UpdateProjectRequestDynamicSamplingBiasesItemId =
@@ -40088,14 +36051,12 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateProjectRequest" }) as any as S.Schema<UpdateProjectRequest>;
 
 export type UpdateProjectResponseFeaturesList = Array<string>;
-export const UpdateProjectResponseFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseFeaturesList>;
+export const UpdateProjectResponseFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseFeaturesList>;
 
 export type UpdateProjectResponseAccessList = Array<string>;
-export const UpdateProjectResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseAccessList>;
+export const UpdateProjectResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseAccessList>;
 
 export type UpdateProjectResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const UpdateProjectResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -40107,101 +36068,76 @@ export type UpdateProjectResponseTeamsItem = AddProjectTeamResponseTeam;
 export const UpdateProjectResponseTeamsItem = AddProjectTeamResponseTeam;
 
 export type UpdateProjectResponseTeamsList = Array<AddProjectTeamResponseTeam>;
-export const UpdateProjectResponseTeamsList = /*@__PURE__*/ S.Array(
-  AddProjectTeamResponseTeam,
-) as any as S.Schema<UpdateProjectResponseTeamsList>;
+export const UpdateProjectResponseTeamsList =
+  AddProjectTeamResponseTeamsList as any as S.Schema<UpdateProjectResponseTeamsList>;
 
 export type UpdateProjectResponseLatestRelease = CreateOrganizationProjectResponseLatestRelease;
 export const UpdateProjectResponseLatestRelease = CreateOrganizationProjectResponseLatestRelease;
 
 export type UpdateProjectResponseOptionsMap = { [key: string]: unknown | undefined };
-export const UpdateProjectResponseOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectResponseOptionsMap>;
+export const UpdateProjectResponseOptionsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectResponseOptionsMap>;
 
 export type UpdateProjectResponseAllowedDomainsList = Array<string>;
-export const UpdateProjectResponseAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseAllowedDomainsList>;
+export const UpdateProjectResponseAllowedDomainsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseAllowedDomainsList>;
 
 export type UpdateProjectResponseSafeFieldsList = Array<string>;
-export const UpdateProjectResponseSafeFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseSafeFieldsList>;
+export const UpdateProjectResponseSafeFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseSafeFieldsList>;
 
 export type UpdateProjectResponseSensitiveFieldsList = Array<string>;
-export const UpdateProjectResponseSensitiveFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseSensitiveFieldsList>;
+export const UpdateProjectResponseSensitiveFieldsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseSensitiveFieldsList>;
 
 export type UpdateProjectResponseHighlightTagsList = Array<string>;
-export const UpdateProjectResponseHighlightTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseHighlightTagsList>;
+export const UpdateProjectResponseHighlightTagsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseHighlightTagsList>;
 
 export type UpdateProjectResponseHighlightContextMap = { [key: string]: unknown | undefined };
-export const UpdateProjectResponseHighlightContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectResponseHighlightContextMap>;
+export const UpdateProjectResponseHighlightContextMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectResponseHighlightContextMap>;
 
 export type UpdateProjectResponseHighlightPresetTagsList = Array<string>;
-export const UpdateProjectResponseHighlightPresetTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseHighlightPresetTagsList>;
+export const UpdateProjectResponseHighlightPresetTagsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseHighlightPresetTagsList>;
 
 export type UpdateProjectResponseHighlightPresetContextValueList = Array<string>;
-export const UpdateProjectResponseHighlightPresetContextValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseHighlightPresetContextValueList>;
+export const UpdateProjectResponseHighlightPresetContextValueList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseHighlightPresetContextValueList>;
 
 export type UpdateProjectResponseHighlightPresetContextMap = {
   [key: string]: UpdateProjectResponseHighlightPresetContextValueList | undefined;
 };
-export const UpdateProjectResponseHighlightPresetContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateProjectResponseHighlightPresetContextValueList,
-) as any as S.Schema<UpdateProjectResponseHighlightPresetContextMap>;
+export const UpdateProjectResponseHighlightPresetContextMap =
+  GetOrganizationReplayResponseDataTagsCase0Map as any as S.Schema<UpdateProjectResponseHighlightPresetContextMap>;
 
 export interface UpdateProjectResponseHighlightPreset {
   tags: UpdateProjectResponseHighlightPresetTagsList;
   context: UpdateProjectResponseHighlightPresetContextMap;
 }
-export const UpdateProjectResponseHighlightPreset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: UpdateProjectResponseHighlightPresetTagsList,
-    context: UpdateProjectResponseHighlightPresetContextMap,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseHighlightPreset",
-}) as any as S.Schema<UpdateProjectResponseHighlightPreset>;
+export const UpdateProjectResponseHighlightPreset =
+  GetProjectResponseHighlightPreset as any as S.Schema<UpdateProjectResponseHighlightPreset>;
 
 export type UpdateProjectResponseOrganizationFeaturesList = Array<string>;
-export const UpdateProjectResponseOrganizationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseOrganizationFeaturesList>;
+export const UpdateProjectResponseOrganizationFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseOrganizationFeaturesList>;
 
 export type UpdateProjectResponseOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateProjectResponseOrganizationExtraOptionsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectResponseOrganizationExtraOptionsValueMap>;
+export const UpdateProjectResponseOrganizationExtraOptionsValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectResponseOrganizationExtraOptionsValueMap>;
 
 export type UpdateProjectResponseOrganizationExtraOptionsMap = {
   [key: string]: UpdateProjectResponseOrganizationExtraOptionsValueMap | undefined;
 };
-export const UpdateProjectResponseOrganizationExtraOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateProjectResponseOrganizationExtraOptionsValueMap,
-) as any as S.Schema<UpdateProjectResponseOrganizationExtraOptionsMap>;
+export const UpdateProjectResponseOrganizationExtraOptionsMap =
+  GetOrganizationResponseExtraOptionsMap as any as S.Schema<UpdateProjectResponseOrganizationExtraOptionsMap>;
 
 export type UpdateProjectResponseOrganizationAccessList = Array<string>;
-export const UpdateProjectResponseOrganizationAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseOrganizationAccessList>;
+export const UpdateProjectResponseOrganizationAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseOrganizationAccessList>;
 
 export type UpdateProjectResponseOrganizationOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -40210,9 +36146,8 @@ export const UpdateProjectResponseOrganizationOnboardingTasksItem =
 
 export type UpdateProjectResponseOrganizationOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
-export const UpdateProjectResponseOrganizationOnboardingTasksList = /*@__PURE__*/ S.Array(
-  CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-) as any as S.Schema<UpdateProjectResponseOrganizationOnboardingTasksList>;
+export const UpdateProjectResponseOrganizationOnboardingTasksList =
+  CreateOrganizationTeamResponseOrganizationOnboardingTasksList as any as S.Schema<UpdateProjectResponseOrganizationOnboardingTasksList>;
 
 export type UpdateProjectResponseOrganizationStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -40246,39 +36181,16 @@ export interface UpdateProjectResponseOrganization {
   allowMemberProjectCreation: boolean;
   allowSuperuserAccess: boolean;
 }
-export const UpdateProjectResponseOrganization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    features: S.optional(UpdateProjectResponseOrganizationFeaturesList),
-    extraOptions: S.optional(UpdateProjectResponseOrganizationExtraOptionsMap),
-    access: S.optional(UpdateProjectResponseOrganizationAccessList),
-    onboardingTasks: S.optional(UpdateProjectResponseOrganizationOnboardingTasksList),
-    id: S.String,
-    slug: S.String,
-    status: AddOrganizationMemberResponseUserIdentitiesItemProvider,
-    name: S.String,
-    dateCreated: S.String,
-    isEarlyAdopter: S.Boolean,
-    require2FA: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    links: CreateOrganizationTeamResponseOrganizationLinks,
-    hasAuthProvider: S.Boolean,
-    allowMemberInvite: S.Boolean,
-    allowMemberProjectCreation: S.Boolean,
-    allowSuperuserAccess: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectResponseOrganization",
-}) as any as S.Schema<UpdateProjectResponseOrganization>;
+export const UpdateProjectResponseOrganization =
+  GetProjectResponseOrganization as any as S.Schema<UpdateProjectResponseOrganization>;
 
 export type UpdateProjectResponsePlatformsList = Array<string>;
-export const UpdateProjectResponsePlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponsePlatformsList>;
+export const UpdateProjectResponsePlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponsePlatformsList>;
 
 export type UpdateProjectResponseBuiltinSymbolSourcesList = Array<string>;
-export const UpdateProjectResponseBuiltinSymbolSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectResponseBuiltinSymbolSourcesList>;
+export const UpdateProjectResponseBuiltinSymbolSourcesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectResponseBuiltinSymbolSourcesList>;
 
 export type UpdateProjectResponseDynamicSamplingBiasesItemValue = string | boolean;
 export const UpdateProjectResponseDynamicSamplingBiasesItemValue =
@@ -40506,17 +36418,14 @@ export const UpdateProjectCodeOwnersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProjectCodeOwnersRequest>;
 
 export type UpdateProjectCodeOwnersResponseCodeMappingProviderFeaturesList = Array<string>;
-export const UpdateProjectCodeOwnersResponseCodeMappingProviderFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMappingProviderFeaturesList>;
+export const UpdateProjectCodeOwnersResponseCodeMappingProviderFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMappingProviderFeaturesList>;
 
 export type UpdateProjectCodeOwnersResponseCodeMappingProviderAspectsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateProjectCodeOwnersResponseCodeMappingProviderAspectsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMappingProviderAspectsMap>;
+export const UpdateProjectCodeOwnersResponseCodeMappingProviderAspectsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMappingProviderAspectsMap>;
 
 export interface UpdateProjectCodeOwnersResponseCodeMappingProvider {
   key: string;
@@ -40527,19 +36436,8 @@ export interface UpdateProjectCodeOwnersResponseCodeMappingProvider {
   features: UpdateProjectCodeOwnersResponseCodeMappingProviderFeaturesList;
   aspects: UpdateProjectCodeOwnersResponseCodeMappingProviderAspectsMap;
 }
-export const UpdateProjectCodeOwnersResponseCodeMappingProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    slug: S.String,
-    name: S.String,
-    canAdd: S.Boolean,
-    canDisable: S.Boolean,
-    features: UpdateProjectCodeOwnersResponseCodeMappingProviderFeaturesList,
-    aspects: UpdateProjectCodeOwnersResponseCodeMappingProviderAspectsMap,
-  }),
-).annotate({
-  identifier: "UpdateProjectCodeOwnersResponseCodeMappingProvider",
-}) as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMappingProvider>;
+export const UpdateProjectCodeOwnersResponseCodeMappingProvider =
+  CreateProjectCodeOwnersResponseCodeMappingProvider as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMappingProvider>;
 
 export interface UpdateProjectCodeOwnersResponseCodeMapping {
   id: string;
@@ -40555,49 +36453,28 @@ export interface UpdateProjectCodeOwnersResponseCodeMapping {
   automaticallyGenerated: boolean;
   hasCodeOwner: boolean;
 }
-export const UpdateProjectCodeOwnersResponseCodeMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    projectId: S.String,
-    projectSlug: S.String,
-    repoId: S.String,
-    repoName: S.String,
-    integrationId: S.NullOr(S.String),
-    provider: S.NullOr(UpdateProjectCodeOwnersResponseCodeMappingProvider),
-    stackRoot: S.String,
-    sourceRoot: S.String,
-    defaultBranch: S.NullOr(S.String),
-    automaticallyGenerated: S.Boolean,
-    hasCodeOwner: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectCodeOwnersResponseCodeMapping",
-}) as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMapping>;
+export const UpdateProjectCodeOwnersResponseCodeMapping =
+  CreateProjectCodeOwnersResponseCodeMapping as any as S.Schema<UpdateProjectCodeOwnersResponseCodeMapping>;
 
 export type UpdateProjectCodeOwnersResponseErrorsMissingUserEmailsList = Array<string>;
-export const UpdateProjectCodeOwnersResponseErrorsMissingUserEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsMissingUserEmailsList>;
+export const UpdateProjectCodeOwnersResponseErrorsMissingUserEmailsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsMissingUserEmailsList>;
 
 export type UpdateProjectCodeOwnersResponseErrorsMissingExternalUsersList = Array<string>;
-export const UpdateProjectCodeOwnersResponseErrorsMissingExternalUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsMissingExternalUsersList>;
+export const UpdateProjectCodeOwnersResponseErrorsMissingExternalUsersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsMissingExternalUsersList>;
 
 export type UpdateProjectCodeOwnersResponseErrorsMissingExternalTeamsList = Array<string>;
-export const UpdateProjectCodeOwnersResponseErrorsMissingExternalTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsMissingExternalTeamsList>;
+export const UpdateProjectCodeOwnersResponseErrorsMissingExternalTeamsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsMissingExternalTeamsList>;
 
 export type UpdateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList = Array<string>;
-export const UpdateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList>;
+export const UpdateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList>;
 
 export type UpdateProjectCodeOwnersResponseErrorsUsersWithoutAccessList = Array<string>;
-export const UpdateProjectCodeOwnersResponseErrorsUsersWithoutAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsUsersWithoutAccessList>;
+export const UpdateProjectCodeOwnersResponseErrorsUsersWithoutAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectCodeOwnersResponseErrorsUsersWithoutAccessList>;
 
 export interface UpdateProjectCodeOwnersResponseErrors {
   missing_user_emails: UpdateProjectCodeOwnersResponseErrorsMissingUserEmailsList;
@@ -40606,17 +36483,8 @@ export interface UpdateProjectCodeOwnersResponseErrors {
   teams_without_access: UpdateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList;
   users_without_access: UpdateProjectCodeOwnersResponseErrorsUsersWithoutAccessList;
 }
-export const UpdateProjectCodeOwnersResponseErrors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    missing_user_emails: UpdateProjectCodeOwnersResponseErrorsMissingUserEmailsList,
-    missing_external_users: UpdateProjectCodeOwnersResponseErrorsMissingExternalUsersList,
-    missing_external_teams: UpdateProjectCodeOwnersResponseErrorsMissingExternalTeamsList,
-    teams_without_access: UpdateProjectCodeOwnersResponseErrorsTeamsWithoutAccessList,
-    users_without_access: UpdateProjectCodeOwnersResponseErrorsUsersWithoutAccessList,
-  }),
-).annotate({
-  identifier: "UpdateProjectCodeOwnersResponseErrors",
-}) as any as S.Schema<UpdateProjectCodeOwnersResponseErrors>;
+export const UpdateProjectCodeOwnersResponseErrors =
+  CreateProjectCodeOwnersResponseErrors as any as S.Schema<UpdateProjectCodeOwnersResponseErrors>;
 
 export type UpdateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher =
   CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher;
@@ -40631,41 +36499,27 @@ export const UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem =
 
 export type UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList =
   Array<CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem>;
-export const UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList = /*@__PURE__*/ S.Array(
-  CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList>;
+export const UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList>;
 
 export interface UpdateProjectCodeOwnersResponseSchemaCase0RulesItem {
   matcher: CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher;
   owners: UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList;
 }
-export const UpdateProjectCodeOwnersResponseSchemaCase0RulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matcher: CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher,
-    owners: UpdateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersList,
-  }),
-).annotate({
-  identifier: "UpdateProjectCodeOwnersResponseSchemaCase0RulesItem",
-}) as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0RulesItem>;
+export const UpdateProjectCodeOwnersResponseSchemaCase0RulesItem =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesItem as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0RulesItem>;
 
 export type UpdateProjectCodeOwnersResponseSchemaCase0RulesList =
   Array<UpdateProjectCodeOwnersResponseSchemaCase0RulesItem>;
-export const UpdateProjectCodeOwnersResponseSchemaCase0RulesList = /*@__PURE__*/ S.Array(
-  UpdateProjectCodeOwnersResponseSchemaCase0RulesItem,
-) as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0RulesList>;
+export const UpdateProjectCodeOwnersResponseSchemaCase0RulesList =
+  CreateProjectCodeOwnersResponseSchemaCase0RulesList as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0RulesList>;
 
 export interface UpdateProjectCodeOwnersResponseSchemaCase0 {
   _version: number;
   rules: UpdateProjectCodeOwnersResponseSchemaCase0RulesList;
 }
-export const UpdateProjectCodeOwnersResponseSchemaCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _version: S.Number.pipe(T.Body("$version")),
-    rules: UpdateProjectCodeOwnersResponseSchemaCase0RulesList,
-  }),
-).annotate({
-  identifier: "UpdateProjectCodeOwnersResponseSchemaCase0",
-}) as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0>;
+export const UpdateProjectCodeOwnersResponseSchemaCase0 =
+  CreateProjectCodeOwnersResponseSchemaCase0 as any as S.Schema<UpdateProjectCodeOwnersResponseSchemaCase0>;
 
 export type UpdateProjectCodeOwnersResponseSchema =
   | UpdateProjectCodeOwnersResponseSchemaCase0
@@ -40738,15 +36592,8 @@ export interface UpdateProjectEnvironmentResponse {
   name: string;
   isHidden: boolean;
 }
-export const UpdateProjectEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    isHidden: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateProjectEnvironmentResponse",
-}) as any as S.Schema<UpdateProjectEnvironmentResponse>;
+export const UpdateProjectEnvironmentResponse =
+  BulkUpdateProjectEnvironmentsResponseBodyItem as any as S.Schema<UpdateProjectEnvironmentResponse>;
 
 /** * `ie` * `edge` * `safari` * `firefox` * `chrome` * `opera` * `android` * `opera_mini` * `ie_pre_9` * `ie9` * `ie10` * `ie11` * `opera_pre_15` * `android_pre_4` * `safari_pre_6` * `opera_mini_pre_8` * `edge_pre_79` */
 export type UpdateProjectFilterRequestSubfiltersItem =
@@ -40808,9 +36655,8 @@ export const UpdateProjectFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProjectFilterRequest>;
 
 export interface UpdateProjectFilterResponse {}
-export const UpdateProjectFilterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateProjectFilterResponse",
-}) as any as S.Schema<UpdateProjectFilterResponse>;
+export const UpdateProjectFilterResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<UpdateProjectFilterResponse>;
 
 /** Applies a rate limit to cap the number of errors accepted during a given time window. To disable entirely set `rateLimit` to null. ```json { "rateLimit": { "window": 7200, // time in seconds "count": 1000 // error cap } } ``` */
 export type UpdateProjectKeyRequestRateLimit = CreateProjectKeyRequestRateLimit;
@@ -40884,26 +36730,19 @@ export type UpdateProjectKeyResponseDsn = CreateProjectKeyResponseDsn;
 export const UpdateProjectKeyResponseDsn = CreateProjectKeyResponseDsn;
 
 export type UpdateProjectKeyResponseBrowserSdkChoicesItemList = Array<string>;
-export const UpdateProjectKeyResponseBrowserSdkChoicesItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectKeyResponseBrowserSdkChoicesItemList>;
+export const UpdateProjectKeyResponseBrowserSdkChoicesItemList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectKeyResponseBrowserSdkChoicesItemList>;
 
 export type UpdateProjectKeyResponseBrowserSdkChoicesList =
   Array<UpdateProjectKeyResponseBrowserSdkChoicesItemList>;
-export const UpdateProjectKeyResponseBrowserSdkChoicesList = /*@__PURE__*/ S.Array(
-  UpdateProjectKeyResponseBrowserSdkChoicesItemList,
-) as any as S.Schema<UpdateProjectKeyResponseBrowserSdkChoicesList>;
+export const UpdateProjectKeyResponseBrowserSdkChoicesList =
+  CreateProjectKeyResponseBrowserSdkChoicesList as any as S.Schema<UpdateProjectKeyResponseBrowserSdkChoicesList>;
 
 export interface UpdateProjectKeyResponseBrowserSdk {
   choices: UpdateProjectKeyResponseBrowserSdkChoicesList;
 }
-export const UpdateProjectKeyResponseBrowserSdk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    choices: UpdateProjectKeyResponseBrowserSdkChoicesList,
-  }),
-).annotate({
-  identifier: "UpdateProjectKeyResponseBrowserSdk",
-}) as any as S.Schema<UpdateProjectKeyResponseBrowserSdk>;
+export const UpdateProjectKeyResponseBrowserSdk =
+  CreateProjectKeyResponseBrowserSdk as any as S.Schema<UpdateProjectKeyResponseBrowserSdk>;
 
 export type UpdateProjectKeyResponseDynamicSdkLoaderOptions =
   CreateProjectKeyResponseDynamicSdkLoaderOptions;
@@ -40926,24 +36765,8 @@ export interface UpdateProjectKeyResponse {
   dynamicSdkLoaderOptions: CreateProjectKeyResponseDynamicSdkLoaderOptions;
   useCase?: string;
 }
-export const UpdateProjectKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    label: S.String,
-    public: S.NullOr(S.String),
-    secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    projectId: S.Number,
-    isActive: S.Boolean,
-    rateLimit: S.NullOr(CreateProjectKeyResponseRateLimit),
-    dsn: CreateProjectKeyResponseDsn,
-    browserSdkVersion: S.String,
-    browserSdk: UpdateProjectKeyResponseBrowserSdk,
-    dateCreated: S.NullOr(S.String),
-    dynamicSdkLoaderOptions: CreateProjectKeyResponseDynamicSdkLoaderOptions,
-    useCase: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateProjectKeyResponse" }) as any as S.Schema<UpdateProjectKeyResponse>;
+export const UpdateProjectKeyResponse =
+  CreateProjectKeyResponse as any as S.Schema<UpdateProjectKeyResponse>;
 
 /** Currently supports "crontab" or "interval" * `crontab` * `interval` */
 export type UpdateProjectMonitorRequestConfigScheduleType = "crontab" | "interval";
@@ -41594,9 +37417,8 @@ export const UpdateProjectMonitorRequestAlertRuleTargetsItem =
 /** Array of dictionaries with information of the user or team to be notified */
 export type UpdateProjectMonitorRequestAlertRuleTargetsList =
   Array<CreateOrganizationMonitorRequestAlertRuleTargetsItem>;
-export const UpdateProjectMonitorRequestAlertRuleTargetsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationMonitorRequestAlertRuleTargetsItem,
-) as any as S.Schema<UpdateProjectMonitorRequestAlertRuleTargetsList>;
+export const UpdateProjectMonitorRequestAlertRuleTargetsList =
+  CreateOrganizationMonitorRequestAlertRuleTargetsList as any as S.Schema<UpdateProjectMonitorRequestAlertRuleTargetsList>;
 
 export interface UpdateProjectMonitorRequestAlertRule {
   /** Name of the environment */
@@ -41604,14 +37426,8 @@ export interface UpdateProjectMonitorRequestAlertRule {
   /** Array of dictionaries with information of the user or team to be notified */
   targets: UpdateProjectMonitorRequestAlertRuleTargetsList;
 }
-export const UpdateProjectMonitorRequestAlertRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.optional(S.NullOr(S.String)),
-    targets: UpdateProjectMonitorRequestAlertRuleTargetsList,
-  }),
-).annotate({
-  identifier: "UpdateProjectMonitorRequestAlertRule",
-}) as any as S.Schema<UpdateProjectMonitorRequestAlertRule>;
+export const UpdateProjectMonitorRequestAlertRule =
+  CreateOrganizationMonitorRequestAlertRule as any as S.Schema<UpdateProjectMonitorRequestAlertRule>;
 
 export interface UpdateProjectMonitorRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -41668,30 +37484,22 @@ export const UpdateProjectMonitorResponseAlertRuleTargetsItem =
 
 export type UpdateProjectMonitorResponseAlertRuleTargetsList =
   Array<CreateOrganizationMonitorResponseAlertRuleTargetsItem>;
-export const UpdateProjectMonitorResponseAlertRuleTargetsList = /*@__PURE__*/ S.Array(
-  CreateOrganizationMonitorResponseAlertRuleTargetsItem,
-) as any as S.Schema<UpdateProjectMonitorResponseAlertRuleTargetsList>;
+export const UpdateProjectMonitorResponseAlertRuleTargetsList =
+  CreateOrganizationMonitorResponseAlertRuleTargetsList as any as S.Schema<UpdateProjectMonitorResponseAlertRuleTargetsList>;
 
 export interface UpdateProjectMonitorResponseAlertRule {
   targets: UpdateProjectMonitorResponseAlertRuleTargetsList;
   environment: string;
 }
-export const UpdateProjectMonitorResponseAlertRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: UpdateProjectMonitorResponseAlertRuleTargetsList,
-    environment: S.String,
-  }),
-).annotate({
-  identifier: "UpdateProjectMonitorResponseAlertRule",
-}) as any as S.Schema<UpdateProjectMonitorResponseAlertRule>;
+export const UpdateProjectMonitorResponseAlertRule =
+  CreateOrganizationMonitorResponseAlertRule as any as S.Schema<UpdateProjectMonitorResponseAlertRule>;
 
 export type UpdateProjectMonitorResponseConfigScheduleType = "crontab" | "interval";
 export const UpdateProjectMonitorResponseConfigScheduleType = S.String;
 
 export type UpdateProjectMonitorResponseConfigScheduleCase1List = Array<number>;
-export const UpdateProjectMonitorResponseConfigScheduleCase1List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateProjectMonitorResponseConfigScheduleCase1List>;
+export const UpdateProjectMonitorResponseConfigScheduleCase1List =
+  CreateOrganizationDashboardRequestProjectsList as any as S.Schema<UpdateProjectMonitorResponseConfigScheduleCase1List>;
 
 export type UpdateProjectMonitorResponseConfigSchedule =
   | string
@@ -41725,14 +37533,12 @@ export const UpdateProjectMonitorResponseConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProjectMonitorResponseConfig>;
 
 export type UpdateProjectMonitorResponseProjectFeaturesList = Array<string>;
-export const UpdateProjectMonitorResponseProjectFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectMonitorResponseProjectFeaturesList>;
+export const UpdateProjectMonitorResponseProjectFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectMonitorResponseProjectFeaturesList>;
 
 export type UpdateProjectMonitorResponseProjectAccessList = Array<string>;
-export const UpdateProjectMonitorResponseProjectAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectMonitorResponseProjectAccessList>;
+export const UpdateProjectMonitorResponseProjectAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectMonitorResponseProjectAccessList>;
 
 export type UpdateProjectMonitorResponseProjectAvatar = AddOrganizationMemberResponseUserAvatar;
 export const UpdateProjectMonitorResponseProjectAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -41779,52 +37585,8 @@ export interface UpdateProjectMonitorResponseProject {
   color: string;
   status: string;
 }
-export const UpdateProjectMonitorResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: UpdateProjectMonitorResponseProjectFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: UpdateProjectMonitorResponseProjectAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "UpdateProjectMonitorResponseProject",
-}) as any as S.Schema<UpdateProjectMonitorResponseProject>;
+export const UpdateProjectMonitorResponseProject =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<UpdateProjectMonitorResponseProject>;
 
 export type UpdateProjectMonitorResponseEnvironmentsActiveIncidentBrokenNotice =
   CreateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice;
@@ -41928,9 +37690,8 @@ export const UpdateProjectOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProjectOwnershipRequest>;
 
 export interface UpdateProjectOwnershipResponse {}
-export const UpdateProjectOwnershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateProjectOwnershipResponse",
-}) as any as S.Schema<UpdateProjectOwnershipResponse>;
+export const UpdateProjectOwnershipResponse =
+  DeleteAnExternalIssueResponse as any as S.Schema<UpdateProjectOwnershipResponse>;
 
 export interface UpdateProjectReleaseFileRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -41963,10 +37724,8 @@ export const UpdateProjectReleaseFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProjectReleaseFileRequest>;
 
 export type UpdateProjectReleaseFileResponseHeadersMap = { [key: string]: unknown | undefined };
-export const UpdateProjectReleaseFileResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateProjectReleaseFileResponseHeadersMap>;
+export const UpdateProjectReleaseFileResponseHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateProjectReleaseFileResponseHeadersMap>;
 
 export interface UpdateProjectReleaseFileResponse {
   id: string;
@@ -41977,19 +37736,8 @@ export interface UpdateProjectReleaseFileResponse {
   sha1: string;
   dateCreated: string;
 }
-export const UpdateProjectReleaseFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    dist: S.NullOr(S.String),
-    headers: UpdateProjectReleaseFileResponseHeadersMap,
-    size: S.Number,
-    sha1: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "UpdateProjectReleaseFileResponse",
-}) as any as S.Schema<UpdateProjectReleaseFileResponse>;
+export const UpdateProjectReleaseFileResponse =
+  GetOrganizationReleaseFileResponse as any as S.Schema<UpdateProjectReleaseFileResponse>;
 
 /** The type of the source. * `http` - SymbolServer (HTTP) * `gcs` - Google Cloud Storage * `s3` - Amazon S3 * `azure` - Azure Blob Storage */
 export type UpdateProjectSymbolSourceRequestType = "http" | "gcs" | "s3" | "azure";
@@ -42056,9 +37804,8 @@ export const UpdateProjectSymbolSourceRequestFiltersFiletypesList = /*@__PURE__*
 
 /** The debug and code file paths enabled for the source. */
 export type UpdateProjectSymbolSourceRequestFiltersPathPatternsList = Array<string>;
-export const UpdateProjectSymbolSourceRequestFiltersPathPatternsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectSymbolSourceRequestFiltersPathPatternsList>;
+export const UpdateProjectSymbolSourceRequestFiltersPathPatternsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectSymbolSourceRequestFiltersPathPatternsList>;
 
 /** Filter settings for the source. This is optional for all sources. **`filetypes`** ***(list)*** - A list of file types that can be found on this source. If this is left empty, all file types will be enabled. The options are: - `pe` - Windows executable files - `pdb` - Windows debug files - `portablepdb` - .NET portable debug files - `mach_code` - MacOS executable files - `mach_debug` - MacOS debug files - `elf_code` - ELF executable files - `elf_debug` - ELF debug files - `wasm_code` - WASM executable files - `wasm_debug` - WASM debug files - `breakpad` - Breakpad symbol files - `sourcebundle` - Source code bundles - `uuidmap` - Apple UUID mapping files - `bcsymbolmap` - Apple bitcode symbol maps - `il2cpp` - Unity IL2CPP mapping files - `proguard` - ProGuard mapping files **`path_patterns`** ***(list)*** - A list of glob patterns to check against the debug and code file paths of debug files. Only files that match one of these patterns will be requested from the source. If this is left empty, no path-based filtering takes place. **`requires_checksum`** ***(boolean)*** - Whether this source requires a debug checksum to be sent with each request. Defaults to `false`. ```json { "filters": { "filetypes": ["pe", "pdb", "portablepdb"], "path_patterns": ["*ffmpeg*"] } } ``` */
 export interface UpdateProjectSymbolSourceRequestFilters {
@@ -42249,9 +37996,7 @@ export const UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesList = /*
 
 export type UpdateProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0FiltersPathPatternsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase0Filters {
   filetypes?: UpdateProjectSymbolSourceResponseBodyCase0FiltersFiletypesList;
@@ -42269,9 +38014,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase0Filters = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0Filters>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase0PlatformsList = Array<string>;
-export const UpdateProjectSymbolSourceResponseBodyCase0PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0PlatformsList>;
+export const UpdateProjectSymbolSourceResponseBodyCase0PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase0PlatformsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase0 {
   type: UpdateProjectSymbolSourceResponseBodyCase0Type;
@@ -42368,9 +38112,7 @@ export const UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesList = /*
 
 export type UpdateProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1FiltersPathPatternsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase1Filters {
   filetypes?: UpdateProjectSymbolSourceResponseBodyCase1FiltersFiletypesList;
@@ -42388,9 +38130,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase1Filters = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1Filters>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase1PlatformsList = Array<string>;
-export const UpdateProjectSymbolSourceResponseBodyCase1PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1PlatformsList>;
+export const UpdateProjectSymbolSourceResponseBodyCase1PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase1PlatformsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase1 {
   type: UpdateProjectSymbolSourceResponseBodyCase1Type;
@@ -42491,9 +38232,7 @@ export const UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesList = /*
 
 export type UpdateProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2FiltersPathPatternsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase2Filters {
   filetypes?: UpdateProjectSymbolSourceResponseBodyCase2FiltersFiletypesList;
@@ -42511,9 +38250,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase2Filters = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2Filters>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase2PlatformsList = Array<string>;
-export const UpdateProjectSymbolSourceResponseBodyCase2PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2PlatformsList>;
+export const UpdateProjectSymbolSourceResponseBodyCase2PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase2PlatformsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase2 {
   type: UpdateProjectSymbolSourceResponseBodyCase2Type;
@@ -42612,9 +38350,7 @@ export const UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesList = /*
 
 export type UpdateProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList = Array<string>;
 export const UpdateProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList>;
+  CreateOrganizationDashboardRequestWidgetsItemQueriesItemFieldsList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3FiltersPathPatternsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase3Filters {
   filetypes?: UpdateProjectSymbolSourceResponseBodyCase3FiltersFiletypesList;
@@ -42632,9 +38368,8 @@ export const UpdateProjectSymbolSourceResponseBodyCase3Filters = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3Filters>;
 
 export type UpdateProjectSymbolSourceResponseBodyCase3PlatformsList = Array<string>;
-export const UpdateProjectSymbolSourceResponseBodyCase3PlatformsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3PlatformsList>;
+export const UpdateProjectSymbolSourceResponseBodyCase3PlatformsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateProjectSymbolSourceResponseBodyCase3PlatformsList>;
 
 export interface UpdateProjectSymbolSourceResponseBodyCase3 {
   type: UpdateProjectSymbolSourceResponseBodyCase3Type;
@@ -42721,40 +38456,33 @@ export const UpdateProjectSymbolSourceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom integration's permission scopes for API access. */
 export type UpdateSentryAppRequestScopesList = Array<string>;
-export const UpdateSentryAppRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppRequestScopesList>;
+export const UpdateSentryAppRequestScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppRequestScopesList>;
 
 /** Webhook events the custom integration is subscribed to. */
 export type UpdateSentryAppRequestEventsList = Array<string>;
-export const UpdateSentryAppRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppRequestEventsList>;
+export const UpdateSentryAppRequestEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppRequestEventsList>;
 
 /** The list of features that the custom integration supports. */
 export type UpdateSentryAppRequestFeaturesList = Array<unknown>;
-export const UpdateSentryAppRequestFeaturesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateSentryAppRequestFeaturesList>;
+export const UpdateSentryAppRequestFeaturesList =
+  AddOrganizationMemberRequestTeamsList as any as S.Schema<UpdateSentryAppRequestFeaturesList>;
 
 /** The UI components schema, used to render the custom integration's configuration UI elements. See our [schema docs](https://docs.sentry.io/organization/integrations/integration-platform/ui-components/) for more information. */
 export type UpdateSentryAppRequestSchemaMap = { [key: string]: unknown | undefined };
-export const UpdateSentryAppRequestSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateSentryAppRequestSchemaMap>;
+export const UpdateSentryAppRequestSchemaMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateSentryAppRequestSchemaMap>;
 
 /** The list of allowed origins for CORS. */
 export type UpdateSentryAppRequestAllowedOriginsList = Array<string>;
-export const UpdateSentryAppRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppRequestAllowedOriginsList>;
+export const UpdateSentryAppRequestAllowedOriginsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppRequestAllowedOriginsList>;
 
 /** Custom headers sent with every webhook request. Each entry is a single 'Header-Name: value' pair. */
 export type UpdateSentryAppRequestWebhookHeadersList = Array<string>;
-export const UpdateSentryAppRequestWebhookHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppRequestWebhookHeadersList>;
+export const UpdateSentryAppRequestWebhookHeadersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppRequestWebhookHeadersList>;
 
 export interface UpdateSentryAppRequest {
   /** The ID or slug of the custom integration. */
@@ -42809,42 +38537,35 @@ export const UpdateSentryAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSentryAppRequest" }) as any as S.Schema<UpdateSentryAppRequest>;
 
 export type UpdateSentryAppResponseAllowedOriginsList = Array<string>;
-export const UpdateSentryAppResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppResponseAllowedOriginsList>;
+export const UpdateSentryAppResponseAllowedOriginsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppResponseAllowedOriginsList>;
 
 export type UpdateSentryAppResponseAvatarsItem = GetSentryAppResponseAvatarsItem;
 export const UpdateSentryAppResponseAvatarsItem = GetSentryAppResponseAvatarsItem;
 
 export type UpdateSentryAppResponseAvatarsList = Array<GetSentryAppResponseAvatarsItem>;
-export const UpdateSentryAppResponseAvatarsList = /*@__PURE__*/ S.Array(
-  GetSentryAppResponseAvatarsItem,
-) as any as S.Schema<UpdateSentryAppResponseAvatarsList>;
+export const UpdateSentryAppResponseAvatarsList =
+  GetSentryAppResponseAvatarsList as any as S.Schema<UpdateSentryAppResponseAvatarsList>;
 
 export type UpdateSentryAppResponseEventsList = Array<string>;
-export const UpdateSentryAppResponseEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppResponseEventsList>;
+export const UpdateSentryAppResponseEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppResponseEventsList>;
 
 export type UpdateSentryAppResponseWebhookEventsList = Array<string>;
-export const UpdateSentryAppResponseWebhookEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppResponseWebhookEventsList>;
+export const UpdateSentryAppResponseWebhookEventsList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppResponseWebhookEventsList>;
 
 export type UpdateSentryAppResponseFeatureDataList = Array<string>;
-export const UpdateSentryAppResponseFeatureDataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppResponseFeatureDataList>;
+export const UpdateSentryAppResponseFeatureDataList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppResponseFeatureDataList>;
 
 export type UpdateSentryAppResponseScopesList = Array<string>;
-export const UpdateSentryAppResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppResponseScopesList>;
+export const UpdateSentryAppResponseScopesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppResponseScopesList>;
 
 export type UpdateSentryAppResponseWebhookHeadersList = Array<string>;
-export const UpdateSentryAppResponseWebhookHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSentryAppResponseWebhookHeadersList>;
+export const UpdateSentryAppResponseWebhookHeadersList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateSentryAppResponseWebhookHeadersList>;
 
 export type UpdateSentryAppResponseOwner = GetSentryAppResponseOwner;
 export const UpdateSentryAppResponseOwner = GetSentryAppResponseOwner;
@@ -42876,35 +38597,8 @@ export interface UpdateSentryAppResponse {
   clientId?: string;
   owner?: GetSentryAppResponseOwner;
 }
-export const UpdateSentryAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedOrigins: UpdateSentryAppResponseAllowedOriginsList,
-    avatars: UpdateSentryAppResponseAvatarsList,
-    events: UpdateSentryAppResponseEventsList,
-    webhookEvents: UpdateSentryAppResponseWebhookEventsList,
-    featureData: UpdateSentryAppResponseFeatureDataList,
-    isAlertable: S.Boolean,
-    metadata: S.String,
-    name: S.String,
-    schema: S.String,
-    scopes: UpdateSentryAppResponseScopesList,
-    slug: S.String,
-    status: S.String,
-    uuid: S.String,
-    verifyInstall: S.Boolean,
-    webhookHeaders: UpdateSentryAppResponseWebhookHeadersList,
-    isDisabled: S.optional(S.Boolean),
-    author: S.optional(S.NullOr(S.String)),
-    overview: S.optional(S.NullOr(S.String)),
-    popularity: S.optional(S.NullOr(S.Number)),
-    redirectUrl: S.optional(S.NullOr(S.String)),
-    webhookUrl: S.optional(S.NullOr(S.String)),
-    clientSecret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-    datePublished: S.optional(S.String),
-    clientId: S.optional(S.String),
-    owner: S.optional(GetSentryAppResponseOwner),
-  }),
-).annotate({ identifier: "UpdateSentryAppResponse" }) as any as S.Schema<UpdateSentryAppResponse>;
+export const UpdateSentryAppResponse =
+  GetSentryAppResponse as any as S.Schema<UpdateSentryAppResponse>;
 
 export interface UpdateTeamRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -42932,15 +38626,12 @@ export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTeamRequest" }) as any as S.Schema<UpdateTeamRequest>;
 
 export type UpdateTeamResponseFlagsMap = { [key: string]: unknown | undefined };
-export const UpdateTeamResponseFlagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateTeamResponseFlagsMap>;
+export const UpdateTeamResponseFlagsMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateTeamResponseFlagsMap>;
 
 export type UpdateTeamResponseAccessList = Array<string>;
-export const UpdateTeamResponseAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamResponseAccessList>;
+export const UpdateTeamResponseAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateTeamResponseAccessList>;
 
 export type UpdateTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
 export const UpdateTeamResponseAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -42950,35 +38641,28 @@ export const UpdateTeamResponseExternalTeamsItem = AddOrganizationMemberResponse
 
 export type UpdateTeamResponseExternalTeamsList =
   Array<AddOrganizationMemberResponseExternalUsersItem>;
-export const UpdateTeamResponseExternalTeamsList = /*@__PURE__*/ S.Array(
-  AddOrganizationMemberResponseExternalUsersItem,
-) as any as S.Schema<UpdateTeamResponseExternalTeamsList>;
+export const UpdateTeamResponseExternalTeamsList =
+  AddOrganizationMemberResponseExternalUsersList as any as S.Schema<UpdateTeamResponseExternalTeamsList>;
 
 export type UpdateTeamResponseOrganizationFeaturesList = Array<string>;
-export const UpdateTeamResponseOrganizationFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamResponseOrganizationFeaturesList>;
+export const UpdateTeamResponseOrganizationFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateTeamResponseOrganizationFeaturesList>;
 
 export type UpdateTeamResponseOrganizationExtraOptionsValueMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateTeamResponseOrganizationExtraOptionsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateTeamResponseOrganizationExtraOptionsValueMap>;
+export const UpdateTeamResponseOrganizationExtraOptionsValueMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UpdateTeamResponseOrganizationExtraOptionsValueMap>;
 
 export type UpdateTeamResponseOrganizationExtraOptionsMap = {
   [key: string]: UpdateTeamResponseOrganizationExtraOptionsValueMap | undefined;
 };
-export const UpdateTeamResponseOrganizationExtraOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateTeamResponseOrganizationExtraOptionsValueMap,
-) as any as S.Schema<UpdateTeamResponseOrganizationExtraOptionsMap>;
+export const UpdateTeamResponseOrganizationExtraOptionsMap =
+  GetOrganizationResponseExtraOptionsMap as any as S.Schema<UpdateTeamResponseOrganizationExtraOptionsMap>;
 
 export type UpdateTeamResponseOrganizationAccessList = Array<string>;
-export const UpdateTeamResponseOrganizationAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamResponseOrganizationAccessList>;
+export const UpdateTeamResponseOrganizationAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateTeamResponseOrganizationAccessList>;
 
 export type UpdateTeamResponseOrganizationOnboardingTasksItem =
   CreateOrganizationTeamResponseOrganizationOnboardingTasksItem;
@@ -42987,9 +38671,8 @@ export const UpdateTeamResponseOrganizationOnboardingTasksItem =
 
 export type UpdateTeamResponseOrganizationOnboardingTasksList =
   Array<CreateOrganizationTeamResponseOrganizationOnboardingTasksItem>;
-export const UpdateTeamResponseOrganizationOnboardingTasksList = /*@__PURE__*/ S.Array(
-  CreateOrganizationTeamResponseOrganizationOnboardingTasksItem,
-) as any as S.Schema<UpdateTeamResponseOrganizationOnboardingTasksList>;
+export const UpdateTeamResponseOrganizationOnboardingTasksList =
+  CreateOrganizationTeamResponseOrganizationOnboardingTasksList as any as S.Schema<UpdateTeamResponseOrganizationOnboardingTasksList>;
 
 export type UpdateTeamResponseOrganizationStatus =
   AddOrganizationMemberResponseUserIdentitiesItemProvider;
@@ -43021,39 +38704,16 @@ export interface UpdateTeamResponseOrganization {
   allowMemberProjectCreation: boolean;
   allowSuperuserAccess: boolean;
 }
-export const UpdateTeamResponseOrganization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    features: S.optional(UpdateTeamResponseOrganizationFeaturesList),
-    extraOptions: S.optional(UpdateTeamResponseOrganizationExtraOptionsMap),
-    access: S.optional(UpdateTeamResponseOrganizationAccessList),
-    onboardingTasks: S.optional(UpdateTeamResponseOrganizationOnboardingTasksList),
-    id: S.String,
-    slug: S.String,
-    status: AddOrganizationMemberResponseUserIdentitiesItemProvider,
-    name: S.String,
-    dateCreated: S.String,
-    isEarlyAdopter: S.Boolean,
-    require2FA: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    links: CreateOrganizationTeamResponseOrganizationLinks,
-    hasAuthProvider: S.Boolean,
-    allowMemberInvite: S.Boolean,
-    allowMemberProjectCreation: S.Boolean,
-    allowSuperuserAccess: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateTeamResponseOrganization",
-}) as any as S.Schema<UpdateTeamResponseOrganization>;
+export const UpdateTeamResponseOrganization =
+  GetProjectResponseOrganization as any as S.Schema<UpdateTeamResponseOrganization>;
 
 export type UpdateTeamResponseProjectsItemFeaturesList = Array<string>;
-export const UpdateTeamResponseProjectsItemFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamResponseProjectsItemFeaturesList>;
+export const UpdateTeamResponseProjectsItemFeaturesList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateTeamResponseProjectsItemFeaturesList>;
 
 export type UpdateTeamResponseProjectsItemAccessList = Array<string>;
-export const UpdateTeamResponseProjectsItemAccessList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTeamResponseProjectsItemAccessList>;
+export const UpdateTeamResponseProjectsItemAccessList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UpdateTeamResponseProjectsItemAccessList>;
 
 export type UpdateTeamResponseProjectsItemAvatar = AddOrganizationMemberResponseUserAvatar;
 export const UpdateTeamResponseProjectsItemAvatar = AddOrganizationMemberResponseUserAvatar;
@@ -43100,57 +38760,12 @@ export interface UpdateTeamResponseProjectsItem {
   color: string;
   status: string;
 }
-export const UpdateTeamResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: S.optional(S.Unknown),
-    transactionStats: S.optional(S.Unknown),
-    sessionStats: S.optional(S.Unknown),
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    platform: S.NullOr(S.String),
-    dateCreated: S.String,
-    isBookmarked: S.Boolean,
-    isMember: S.Boolean,
-    features: UpdateTeamResponseProjectsItemFeaturesList,
-    firstEvent: S.NullOr(S.String),
-    firstTransactionEvent: S.Boolean,
-    access: UpdateTeamResponseProjectsItemAccessList,
-    hasAccess: S.Boolean,
-    hasFeedbacks: S.Boolean,
-    hasFlags: S.Boolean,
-    hasMinifiedStackTrace: S.Boolean,
-    hasMonitors: S.Boolean,
-    hasNewFeedbacks: S.Boolean,
-    hasProfiles: S.Boolean,
-    hasReplays: S.Boolean,
-    hasSessions: S.Boolean,
-    hasInsightsHttp: S.Boolean,
-    hasInsightsDb: S.Boolean,
-    hasInsightsAssets: S.Boolean,
-    hasInsightsAppStart: S.Boolean,
-    hasInsightsScreenLoad: S.Boolean,
-    hasInsightsVitals: S.Boolean,
-    hasInsightsCaches: S.Boolean,
-    hasInsightsQueues: S.Boolean,
-    hasInsightsAgentMonitoring: S.Boolean,
-    hasInsightsMCP: S.Boolean,
-    hasLogs: S.Boolean,
-    hasTraceMetrics: S.Boolean,
-    isInternal: S.Boolean,
-    isPublic: S.Boolean,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    color: S.String,
-    status: S.String,
-  }),
-).annotate({
-  identifier: "UpdateTeamResponseProjectsItem",
-}) as any as S.Schema<UpdateTeamResponseProjectsItem>;
+export const UpdateTeamResponseProjectsItem =
+  CreateOrganizationMonitorResponseProject as any as S.Schema<UpdateTeamResponseProjectsItem>;
 
 export type UpdateTeamResponseProjectsList = Array<UpdateTeamResponseProjectsItem>;
-export const UpdateTeamResponseProjectsList = /*@__PURE__*/ S.Array(
-  UpdateTeamResponseProjectsItem,
-) as any as S.Schema<UpdateTeamResponseProjectsList>;
+export const UpdateTeamResponseProjectsList =
+  CreateOrganizationTeamResponseProjectsList as any as S.Schema<UpdateTeamResponseProjectsList>;
 
 export interface UpdateTeamResponse {
   id: string;
@@ -43169,25 +38784,7 @@ export interface UpdateTeamResponse {
   organization?: UpdateTeamResponseOrganization;
   projects?: UpdateTeamResponseProjectsList;
 }
-export const UpdateTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    dateCreated: S.NullOr(S.String),
-    isMember: S.Boolean,
-    teamRole: S.NullOr(S.String),
-    flags: UpdateTeamResponseFlagsMap,
-    access: UpdateTeamResponseAccessList,
-    hasAccess: S.Boolean,
-    isPending: S.Boolean,
-    memberCount: S.Number,
-    avatar: AddOrganizationMemberResponseUserAvatar,
-    externalTeams: S.optional(UpdateTeamResponseExternalTeamsList),
-    organization: S.optional(UpdateTeamResponseOrganization),
-    projects: S.optional(UpdateTeamResponseProjectsList),
-  }),
-).annotate({ identifier: "UpdateTeamResponse" }) as any as S.Schema<UpdateTeamResponse>;
+export const UpdateTeamResponse = GetTeamResponse as any as S.Schema<UpdateTeamResponse>;
 
 /** The provider of the external actor. * `github` * `github_enterprise` * `jira_server` * `slack` * `slack_staging` * `perforce` * `gitlab` * `cursor_origin` * `msteams` * `custom_scm` */
 export type UpdateTeamExternalTeamRequestProvider =
@@ -43251,25 +38848,13 @@ export interface UpdateTeamExternalTeamResponse {
   externalName: string;
   integrationId: string;
 }
-export const UpdateTeamExternalTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalId: S.optional(S.String),
-    userId: S.optional(S.String),
-    teamId: S.optional(S.String),
-    id: S.String,
-    provider: S.String,
-    externalName: S.String,
-    integrationId: S.String,
-  }),
-).annotate({
-  identifier: "UpdateTeamExternalTeamResponse",
-}) as any as S.Schema<UpdateTeamExternalTeamResponse>;
+export const UpdateTeamExternalTeamResponse =
+  AddOrganizationMemberResponseExternalUsersItem as any as S.Schema<UpdateTeamExternalTeamResponse>;
 
 /** Headers to attach to the file, each formatted as a `"key:value"` string (for example, to define a content type). May be supplied multiple times. */
 export type UploadOrganizationReleaseFileRequestHeaderList = Array<string>;
-export const UploadOrganizationReleaseFileRequestHeaderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UploadOrganizationReleaseFileRequestHeaderList>;
+export const UploadOrganizationReleaseFileRequestHeaderList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UploadOrganizationReleaseFileRequestHeaderList>;
 
 export interface UploadOrganizationReleaseFileRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -43308,10 +38893,8 @@ export const UploadOrganizationReleaseFileRequest = /*@__PURE__*/ S.suspend(() =
 export type UploadOrganizationReleaseFileResponseHeadersMap = {
   [key: string]: unknown | undefined;
 };
-export const UploadOrganizationReleaseFileResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UploadOrganizationReleaseFileResponseHeadersMap>;
+export const UploadOrganizationReleaseFileResponseHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UploadOrganizationReleaseFileResponseHeadersMap>;
 
 export interface UploadOrganizationReleaseFileResponse {
   id: string;
@@ -43322,19 +38905,8 @@ export interface UploadOrganizationReleaseFileResponse {
   sha1: string;
   dateCreated: string;
 }
-export const UploadOrganizationReleaseFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    dist: S.NullOr(S.String),
-    headers: UploadOrganizationReleaseFileResponseHeadersMap,
-    size: S.Number,
-    sha1: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "UploadOrganizationReleaseFileResponse",
-}) as any as S.Schema<UploadOrganizationReleaseFileResponse>;
+export const UploadOrganizationReleaseFileResponse =
+  GetOrganizationReleaseFileResponse as any as S.Schema<UploadOrganizationReleaseFileResponse>;
 
 export interface UploadProjectPreprodArtifactSnapshotRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -43376,9 +38948,8 @@ export const UploadProjectPreprodArtifactSnapshotResponse = /*@__PURE__*/ S.susp
 
 /** Headers to attach to the file, each formatted as a `"key:value"` string (for example, to define a content type). May be supplied multiple times. */
 export type UploadProjectReleaseFileRequestHeaderList = Array<string>;
-export const UploadProjectReleaseFileRequestHeaderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UploadProjectReleaseFileRequestHeaderList>;
+export const UploadProjectReleaseFileRequestHeaderList =
+  AddOrganizationMemberTeamResponseAccessList as any as S.Schema<UploadProjectReleaseFileRequestHeaderList>;
 
 export interface UploadProjectReleaseFileRequest {
   /** The ID or slug of the organization the resource belongs to. */
@@ -43418,10 +38989,8 @@ export const UploadProjectReleaseFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadProjectReleaseFileRequest>;
 
 export type UploadProjectReleaseFileResponseHeadersMap = { [key: string]: unknown | undefined };
-export const UploadProjectReleaseFileResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UploadProjectReleaseFileResponseHeadersMap>;
+export const UploadProjectReleaseFileResponseHeadersMap =
+  AddOrganizationMemberRequestTeamRolesItemMap as any as S.Schema<UploadProjectReleaseFileResponseHeadersMap>;
 
 export interface UploadProjectReleaseFileResponse {
   id: string;
@@ -43432,19 +39001,8 @@ export interface UploadProjectReleaseFileResponse {
   sha1: string;
   dateCreated: string;
 }
-export const UploadProjectReleaseFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    dist: S.NullOr(S.String),
-    headers: UploadProjectReleaseFileResponseHeadersMap,
-    size: S.Number,
-    sha1: S.String,
-    dateCreated: S.String,
-  }),
-).annotate({
-  identifier: "UploadProjectReleaseFileResponse",
-}) as any as S.Schema<UploadProjectReleaseFileResponse>;
+export const UploadProjectReleaseFileResponse =
+  GetOrganizationReleaseFileResponse as any as S.Schema<UploadProjectReleaseFileResponse>;
 
 export type AddOrganizationMemberError = Forbidden | NotFound | SentryOpError;
 /** Add a Member to an Organization Add or invite a member to an organization. */

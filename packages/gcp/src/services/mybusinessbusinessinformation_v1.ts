@@ -939,11 +939,7 @@ export interface ChainUri {
   /** The uri for this chain. */
   uri?: string;
 }
-export const ChainUri = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChainUri" }) as any as S.Schema<ChainUri>;
+export const ChainUri = UriAttributeValue as any as S.Schema<ChainUri>;
 
 export type ChainUriList = Array<ChainUri>;
 export const ChainUriList = /*@__PURE__*/ S.Array(ChainUri) as any as S.Schema<ChainUriList>;

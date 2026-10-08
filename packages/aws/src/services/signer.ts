@@ -408,7 +408,7 @@ export const GetRevocationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRevocationStatusRequest",
 }) as any as S.Schema<GetRevocationStatusRequest>;
 export type RevokedEntities = string[];
-export const RevokedEntities = /*@__PURE__*/ S.Array(S.String);
+export const RevokedEntities = CertificateHashes as any as S.Schema<RevokedEntities>;
 export interface GetRevocationStatusResponse {
   revokedEntities?: string[];
 }
@@ -920,11 +920,8 @@ export const RemoveProfilePermissionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveProfilePermissionResponse {
   revisionId?: string;
 }
-export const RemoveProfilePermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ revisionId: S.optional(S.String) }),
-).annotate({
-  identifier: "RemoveProfilePermissionResponse",
-}) as any as S.Schema<RemoveProfilePermissionResponse>;
+export const RemoveProfilePermissionResponse =
+  AddProfilePermissionResponse as any as S.Schema<RemoveProfilePermissionResponse>;
 export type RevocationReasonString = string;
 export interface RevokeSignatureRequest {
   jobId: string;
@@ -948,9 +945,8 @@ export const RevokeSignatureRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevokeSignatureRequest" }) as any as S.Schema<RevokeSignatureRequest>;
 export interface RevokeSignatureResponse {}
-export const RevokeSignatureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeSignatureResponse",
-}) as any as S.Schema<RevokeSignatureResponse>;
+export const RevokeSignatureResponse =
+  CancelSigningProfileResponse as any as S.Schema<RevokeSignatureResponse>;
 export interface RevokeSigningProfileRequest {
   profileName: string;
   profileVersion: string;
@@ -977,9 +973,8 @@ export const RevokeSigningProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeSigningProfileRequest",
 }) as any as S.Schema<RevokeSigningProfileRequest>;
 export interface RevokeSigningProfileResponse {}
-export const RevokeSigningProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeSigningProfileResponse",
-}) as any as S.Schema<RevokeSigningProfileResponse>;
+export const RevokeSigningProfileResponse =
+  CancelSigningProfileResponse as any as S.Schema<RevokeSigningProfileResponse>;
 export type Payload = Uint8Array;
 export interface SignPayloadRequest {
   profileName: string;
@@ -1005,7 +1000,7 @@ export const SignPayloadRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SignPayloadRequest" }) as any as S.Schema<SignPayloadRequest>;
 export type Metadata = { [key: string]: string | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Metadata = TagMap as any as S.Schema<Metadata>;
 export interface SignPayloadResponse {
   jobId?: string;
   jobOwner?: string;
@@ -1068,11 +1063,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CancelSigningProfileResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = CertificateHashes as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1086,9 +1080,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelSigningProfileResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type ErrorCode = string;
 export type AddProfilePermissionError =

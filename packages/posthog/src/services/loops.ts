@@ -284,18 +284,13 @@ export interface LoopRepositoryEntryDTO {
   github_integration_id: number;
   full_name: string;
 }
-export const LoopRepositoryEntryDTO = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    github_integration_id: S.Number,
-    full_name: S.String,
-  }),
-).annotate({ identifier: "LoopRepositoryEntryDTO" }) as any as S.Schema<LoopRepositoryEntryDTO>;
+export const LoopRepositoryEntryDTO =
+  LoopRepositoryEntry as any as S.Schema<LoopRepositoryEntryDTO>;
 
 /** Repositories this loop operates on. */
 export type LoopDTORepositoriesList = Array<LoopRepositoryEntryDTO>;
-export const LoopDTORepositoriesList = /*@__PURE__*/ S.Array(
-  LoopRepositoryEntryDTO,
-) as any as S.Schema<LoopDTORepositoriesList>;
+export const LoopDTORepositoriesList =
+  CreateLoopRequestRepositoriesList as any as S.Schema<LoopDTORepositoriesList>;
 
 export interface LoopBehaviorsDTO {
   create_prs?: boolean;
@@ -303,19 +298,11 @@ export interface LoopBehaviorsDTO {
   fix_review_comments?: boolean;
   max_fix_iterations?: number;
 }
-export const LoopBehaviorsDTO = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    create_prs: S.optional(S.Boolean),
-    watch_ci: S.optional(S.Boolean),
-    fix_review_comments: S.optional(S.Boolean),
-    max_fix_iterations: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LoopBehaviorsDTO" }) as any as S.Schema<LoopBehaviorsDTO>;
+export const LoopBehaviorsDTO = LoopBehaviors as any as S.Schema<LoopBehaviorsDTO>;
 
 export type LoopConnectorsDTOMcpInstallationIdsList = Array<string>;
-export const LoopConnectorsDTOMcpInstallationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoopConnectorsDTOMcpInstallationIdsList>;
+export const LoopConnectorsDTOMcpInstallationIdsList =
+  LoopConnectorsMcpInstallationIdsList as any as S.Schema<LoopConnectorsDTOMcpInstallationIdsList>;
 
 export interface LoopConnectorsDTO {
   mcp_installation_ids?: LoopConnectorsDTOMcpInstallationIdsList;
@@ -329,15 +316,12 @@ export const LoopConnectorsDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoopConnectorsDTO" }) as any as S.Schema<LoopConnectorsDTO>;
 
 export type LoopNotificationChannelDTOEventsList = Array<string>;
-export const LoopNotificationChannelDTOEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoopNotificationChannelDTOEventsList>;
+export const LoopNotificationChannelDTOEventsList =
+  LoopConnectorsMcpInstallationIdsList as any as S.Schema<LoopNotificationChannelDTOEventsList>;
 
 export type LoopNotificationChannelDTOParamsMap = { [key: string]: unknown | undefined };
-export const LoopNotificationChannelDTOParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LoopNotificationChannelDTOParamsMap>;
+export const LoopNotificationChannelDTOParamsMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopNotificationChannelDTOParamsMap>;
 
 export interface LoopNotificationChannelDTO {
   enabled?: boolean;
@@ -372,13 +356,8 @@ export interface LoopContextOutputsDTO {
   update_context?: boolean;
   canvas_id?: string | null;
 }
-export const LoopContextOutputsDTO = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    post_to_feed: S.optional(S.Boolean),
-    update_context: S.optional(S.Boolean),
-    canvas_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "LoopContextOutputsDTO" }) as any as S.Schema<LoopContextOutputsDTO>;
+export const LoopContextOutputsDTO =
+  LoopContextOutputsWrite as any as S.Schema<LoopContextOutputsDTO>;
 
 export interface LoopContextTargetDTO {
   /** What the loop maintains in this context each run. */
@@ -395,10 +374,8 @@ export const LoopContextTargetDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoopContextTargetDTO" }) as any as S.Schema<LoopContextTargetDTO>;
 
 export type LoopTriggerDTOConfigMap = { [key: string]: unknown | undefined };
-export const LoopTriggerDTOConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LoopTriggerDTOConfigMap>;
+export const LoopTriggerDTOConfigMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopTriggerDTOConfigMap>;
 
 /** Read response for a single loop trigger. */
 export interface LoopTriggerDTO {
@@ -652,10 +629,8 @@ export const GetLoopsRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLoopsRunRequest" }) as any as S.Schema<GetLoopsRunRequest>;
 
 export type LoopRunDTOOutputMap = { [key: string]: unknown | undefined };
-export const LoopRunDTOOutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LoopRunDTOOutputMap>;
+export const LoopRunDTOOutputMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopRunDTOOutputMap>;
 
 /** A single entry in a loop's run history. */
 export interface LoopRunDTO {
@@ -764,10 +739,8 @@ export const LoopsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).
 }) as any as S.Schema<LoopsDestroyResponse>;
 
 export type LoopsTriggerCreateRequestBodyMap = { [key: string]: unknown | undefined };
-export const LoopsTriggerCreateRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LoopsTriggerCreateRequestBodyMap>;
+export const LoopsTriggerCreateRequestBodyMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopsTriggerCreateRequestBodyMap>;
 
 export interface LoopsTriggerCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -789,15 +762,13 @@ export const LoopsTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Repositories this loop operates on, ordered. Capped at 1 until multi-repo execution ships. May be empty for report-only loops. */
 export type UpdateLoopsPartialRequestRepositoriesList = Array<LoopRepositoryEntry>;
-export const UpdateLoopsPartialRequestRepositoriesList = /*@__PURE__*/ S.Array(
-  LoopRepositoryEntry,
-) as any as S.Schema<UpdateLoopsPartialRequestRepositoriesList>;
+export const UpdateLoopsPartialRequestRepositoriesList =
+  CreateLoopRequestRepositoriesList as any as S.Schema<UpdateLoopsPartialRequestRepositoriesList>;
 
 /** Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop. */
 export type UpdateLoopsPartialRequestTriggersList = Array<LoopTriggerWrite>;
-export const UpdateLoopsPartialRequestTriggersList = /*@__PURE__*/ S.Array(
-  LoopTriggerWrite,
-) as any as S.Schema<UpdateLoopsPartialRequestTriggersList>;
+export const UpdateLoopsPartialRequestTriggersList =
+  CreateLoopRequestTriggersList as any as S.Schema<UpdateLoopsPartialRequestTriggersList>;
 
 export interface UpdateLoopsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

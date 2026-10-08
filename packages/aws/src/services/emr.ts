@@ -644,13 +644,11 @@ export interface KeyValue {
   Key?: string;
   Value?: string;
 }
-export const KeyValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "KeyValue" }) as any as S.Schema<KeyValue>;
+export const KeyValue = MetricDimension as any as S.Schema<KeyValue>;
 export type KeyValueList = KeyValue[];
-export const KeyValueList = /*@__PURE__*/ S.Array(KeyValue);
+export const KeyValueList = MetricDimensionList as any as S.Schema<KeyValueList>;
 export type XmlStringList = string[];
-export const XmlStringList = /*@__PURE__*/ S.Array(S.String);
+export const XmlStringList = InstanceGroupIdsList as any as S.Schema<XmlStringList>;
 export interface HadoopJarStepConfig {
   Properties?: KeyValue[];
   Jar?: string;
@@ -711,7 +709,7 @@ export const AddJobFlowStepsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "AddJobFlowStepsInput" }) as any as S.Schema<AddJobFlowStepsInput>;
 export type StepIdsList = string[];
-export const StepIdsList = /*@__PURE__*/ S.Array(S.String);
+export const StepIdsList = InstanceGroupIdsList as any as S.Schema<StepIdsList>;
 export interface AddJobFlowStepsOutput {
   StepIds?: string[];
 }
@@ -723,11 +721,9 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+export const Tag = MetricDimension as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+export const TagList = MetricDimensionList as any as S.Schema<TagList>;
 export type ClusterId = string;
 export interface AddTagsInput {
   ResourceId?: string;
@@ -850,7 +846,7 @@ export type AuthMode = "SSO" | "IAM" | (string & {});
 export const AuthMode = S.String;
 
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIdList = InstanceGroupIdsList as any as S.Schema<SubnetIdList>;
 export type IdcUserAssignment = "REQUIRED" | "OPTIONAL" | (string & {});
 export const IdcUserAssignment = S.String;
 
@@ -939,11 +935,8 @@ export const DeleteSecurityConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSecurityConfigurationInput",
 }) as any as S.Schema<DeleteSecurityConfigurationInput>;
 export interface DeleteSecurityConfigurationOutput {}
-export const DeleteSecurityConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteSecurityConfigurationOutput",
-}) as any as S.Schema<DeleteSecurityConfigurationOutput>;
+export const DeleteSecurityConfigurationOutput =
+  CreateStudioSessionMappingResponse as any as S.Schema<DeleteSecurityConfigurationOutput>;
 export interface DeleteStudioInput {
   StudioId?: string;
 }
@@ -953,9 +946,7 @@ export const DeleteStudioInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStudioInput" }) as any as S.Schema<DeleteStudioInput>;
 export interface DeleteStudioResponse {}
-export const DeleteStudioResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteStudioResponse",
-}) as any as S.Schema<DeleteStudioResponse>;
+export const DeleteStudioResponse = AddTagsOutput as any as S.Schema<DeleteStudioResponse>;
 export interface DeleteStudioSessionMappingInput {
   StudioId?: string;
   IdentityId?: string;
@@ -973,11 +964,8 @@ export const DeleteStudioSessionMappingInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStudioSessionMappingInput",
 }) as any as S.Schema<DeleteStudioSessionMappingInput>;
 export interface DeleteStudioSessionMappingResponse {}
-export const DeleteStudioSessionMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteStudioSessionMappingResponse",
-}) as any as S.Schema<DeleteStudioSessionMappingResponse>;
+export const DeleteStudioSessionMappingResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<DeleteStudioSessionMappingResponse>;
 export interface DescribeClusterInput {
   ClusterId?: string;
 }
@@ -1059,9 +1047,10 @@ export const ClusterStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClusterStatus" }) as any as S.Schema<ClusterStatus>;
 export type XmlStringMaxLen256List = string[];
-export const XmlStringMaxLen256List = /*@__PURE__*/ S.Array(S.String);
+export const XmlStringMaxLen256List =
+  InstanceGroupIdsList as any as S.Schema<XmlStringMaxLen256List>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = InstanceGroupIdsList as any as S.Schema<StringList>;
 export interface Ec2InstanceAttributes {
   Ec2KeyName?: string;
   Ec2SubnetId?: string;
@@ -1513,7 +1502,7 @@ export const BootstrapActionDetail = /*@__PURE__*/ S.suspend(() =>
 export type BootstrapActionDetailList = BootstrapActionDetail[];
 export const BootstrapActionDetailList = /*@__PURE__*/ S.Array(BootstrapActionDetail);
 export type SupportedProductsList = string[];
-export const SupportedProductsList = /*@__PURE__*/ S.Array(S.String);
+export const SupportedProductsList = InstanceGroupIdsList as any as S.Schema<SupportedProductsList>;
 export interface JobFlowDetail {
   JobFlowId?: string;
   Name?: string;
@@ -1651,11 +1640,8 @@ export interface OutputNotebookS3LocationForOutput {
   Bucket?: string;
   Key?: string;
 }
-export const OutputNotebookS3LocationForOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bucket: S.optional(S.String), Key: S.optional(S.String) }),
-).annotate({
-  identifier: "OutputNotebookS3LocationForOutput",
-}) as any as S.Schema<OutputNotebookS3LocationForOutput>;
+export const OutputNotebookS3LocationForOutput =
+  NotebookS3LocationForOutput as any as S.Schema<OutputNotebookS3LocationForOutput>;
 export type OutputNotebookFormat = "HTML" | (string & {});
 export const OutputNotebookFormat = S.String;
 
@@ -2245,13 +2231,8 @@ export interface GetPersistentAppUIPresignedURLOutput {
   PresignedURLReady?: boolean;
   PresignedURL?: string;
 }
-export const GetPersistentAppUIPresignedURLOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PresignedURLReady: S.optional(S.Boolean), PresignedURL: S.optional(S.String) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "GetPersistentAppUIPresignedURLOutput",
-}) as any as S.Schema<GetPersistentAppUIPresignedURLOutput>;
+export const GetPersistentAppUIPresignedURLOutput =
+  GetOnClusterAppUIPresignedURLOutput as any as S.Schema<GetPersistentAppUIPresignedURLOutput>;
 export type SessionId = string;
 export interface GetSessionInput {
   ClusterId?: string;
@@ -2570,13 +2551,7 @@ export interface InstanceFleetTimeline {
   ReadyDateTime?: Date;
   EndDateTime?: Date;
 }
-export const InstanceFleetTimeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ReadyDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "InstanceFleetTimeline" }) as any as S.Schema<InstanceFleetTimeline>;
+export const InstanceFleetTimeline = ClusterTimeline as any as S.Schema<InstanceFleetTimeline>;
 export interface InstanceFleetStatus {
   State?: InstanceFleetState;
   StateChangeReason?: InstanceFleetStateChangeReason;
@@ -2717,13 +2692,7 @@ export interface InstanceGroupTimeline {
   ReadyDateTime?: Date;
   EndDateTime?: Date;
 }
-export const InstanceGroupTimeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ReadyDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "InstanceGroupTimeline" }) as any as S.Schema<InstanceGroupTimeline>;
+export const InstanceGroupTimeline = ClusterTimeline as any as S.Schema<InstanceGroupTimeline>;
 export interface InstanceGroupStatus {
   State?: InstanceGroupState;
   StateChangeReason?: InstanceGroupStateChangeReason;
@@ -2738,7 +2707,7 @@ export const InstanceGroupStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceGroupStatus" }) as any as S.Schema<InstanceGroupStatus>;
 export type InstanceId = string;
 export type EC2InstanceIdsList = string[];
-export const EC2InstanceIdsList = /*@__PURE__*/ S.Array(S.String);
+export const EC2InstanceIdsList = InstanceGroupIdsList as any as S.Schema<EC2InstanceIdsList>;
 export interface InstanceResizePolicy {
   InstancesToTerminate?: string[];
   InstancesToProtect?: string[];
@@ -2946,13 +2915,7 @@ export interface InstanceTimeline {
   ReadyDateTime?: Date;
   EndDateTime?: Date;
 }
-export const InstanceTimeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ReadyDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "InstanceTimeline" }) as any as S.Schema<InstanceTimeline>;
+export const InstanceTimeline = ClusterTimeline as any as S.Schema<InstanceTimeline>;
 export interface InstanceStatus {
   State?: InstanceState;
   StateChangeReason?: InstanceStateChangeReason;
@@ -3395,13 +3358,11 @@ export const ModifyInstanceFleetInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ModifyInstanceFleetInput" }) as any as S.Schema<ModifyInstanceFleetInput>;
 export interface ModifyInstanceFleetResponse {}
-export const ModifyInstanceFleetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyInstanceFleetResponse",
-}) as any as S.Schema<ModifyInstanceFleetResponse>;
+export const ModifyInstanceFleetResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<ModifyInstanceFleetResponse>;
 export type EC2InstanceIdsToTerminateList = string[];
-export const EC2InstanceIdsToTerminateList = /*@__PURE__*/ S.Array(S.String);
+export const EC2InstanceIdsToTerminateList =
+  InstanceGroupIdsList as any as S.Schema<EC2InstanceIdsToTerminateList>;
 export type ReconfigurationType = "OVERWRITE" | "MERGE" | (string & {});
 export const ReconfigurationType = S.String;
 
@@ -3440,11 +3401,8 @@ export const ModifyInstanceGroupsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyInstanceGroupsInput",
 }) as any as S.Schema<ModifyInstanceGroupsInput>;
 export interface ModifyInstanceGroupsResponse {}
-export const ModifyInstanceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyInstanceGroupsResponse",
-}) as any as S.Schema<ModifyInstanceGroupsResponse>;
+export const ModifyInstanceGroupsResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<ModifyInstanceGroupsResponse>;
 export interface PutAutoScalingPolicyInput {
   ClusterId?: string;
   InstanceGroupId?: string;
@@ -3506,11 +3464,8 @@ export const PutAutoTerminationPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAutoTerminationPolicyInput",
 }) as any as S.Schema<PutAutoTerminationPolicyInput>;
 export interface PutAutoTerminationPolicyOutput {}
-export const PutAutoTerminationPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutAutoTerminationPolicyOutput",
-}) as any as S.Schema<PutAutoTerminationPolicyOutput>;
+export const PutAutoTerminationPolicyOutput =
+  CreateStudioSessionMappingResponse as any as S.Schema<PutAutoTerminationPolicyOutput>;
 export interface PutBlockPublicAccessConfigurationInput {
   BlockPublicAccessConfiguration?: BlockPublicAccessConfiguration;
 }
@@ -3522,11 +3477,8 @@ export const PutBlockPublicAccessConfigurationInput = /*@__PURE__*/ S.suspend(()
   identifier: "PutBlockPublicAccessConfigurationInput",
 }) as any as S.Schema<PutBlockPublicAccessConfigurationInput>;
 export interface PutBlockPublicAccessConfigurationOutput {}
-export const PutBlockPublicAccessConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutBlockPublicAccessConfigurationOutput",
-}) as any as S.Schema<PutBlockPublicAccessConfigurationOutput>;
+export const PutBlockPublicAccessConfigurationOutput =
+  CreateStudioSessionMappingResponse as any as S.Schema<PutBlockPublicAccessConfigurationOutput>;
 export interface PutManagedScalingPolicyInput {
   ClusterId?: string;
   ManagedScalingPolicy?: ManagedScalingPolicy;
@@ -3540,11 +3492,8 @@ export const PutManagedScalingPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutManagedScalingPolicyInput",
 }) as any as S.Schema<PutManagedScalingPolicyInput>;
 export interface PutManagedScalingPolicyOutput {}
-export const PutManagedScalingPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutManagedScalingPolicyOutput",
-}) as any as S.Schema<PutManagedScalingPolicyOutput>;
+export const PutManagedScalingPolicyOutput =
+  CreateStudioSessionMappingResponse as any as S.Schema<PutManagedScalingPolicyOutput>;
 export interface RemoveAutoScalingPolicyInput {
   ClusterId?: string;
   InstanceGroupId?: string;
@@ -3557,11 +3506,8 @@ export const RemoveAutoScalingPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveAutoScalingPolicyInput",
 }) as any as S.Schema<RemoveAutoScalingPolicyInput>;
 export interface RemoveAutoScalingPolicyOutput {}
-export const RemoveAutoScalingPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveAutoScalingPolicyOutput",
-}) as any as S.Schema<RemoveAutoScalingPolicyOutput>;
+export const RemoveAutoScalingPolicyOutput =
+  CreateStudioSessionMappingResponse as any as S.Schema<RemoveAutoScalingPolicyOutput>;
 export interface RemoveAutoTerminationPolicyInput {
   ClusterId?: string;
 }
@@ -3573,11 +3519,8 @@ export const RemoveAutoTerminationPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveAutoTerminationPolicyInput",
 }) as any as S.Schema<RemoveAutoTerminationPolicyInput>;
 export interface RemoveAutoTerminationPolicyOutput {}
-export const RemoveAutoTerminationPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveAutoTerminationPolicyOutput",
-}) as any as S.Schema<RemoveAutoTerminationPolicyOutput>;
+export const RemoveAutoTerminationPolicyOutput =
+  CreateStudioSessionMappingResponse as any as S.Schema<RemoveAutoTerminationPolicyOutput>;
 export interface RemoveManagedScalingPolicyInput {
   ClusterId?: string;
 }
@@ -3589,11 +3532,8 @@ export const RemoveManagedScalingPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveManagedScalingPolicyInput",
 }) as any as S.Schema<RemoveManagedScalingPolicyInput>;
 export interface RemoveManagedScalingPolicyOutput {}
-export const RemoveManagedScalingPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveManagedScalingPolicyOutput",
-}) as any as S.Schema<RemoveManagedScalingPolicyOutput>;
+export const RemoveManagedScalingPolicyOutput =
+  CreateStudioSessionMappingResponse as any as S.Schema<RemoveManagedScalingPolicyOutput>;
 export interface RemoveTagsInput {
   ResourceId?: string;
   TagKeys?: string[];
@@ -3607,13 +3547,11 @@ export const RemoveTagsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "RemoveTagsInput" }) as any as S.Schema<RemoveTagsInput>;
 export interface RemoveTagsOutput {}
-export const RemoveTagsOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RemoveTagsOutput",
-}) as any as S.Schema<RemoveTagsOutput>;
+export const RemoveTagsOutput = AddTagsOutput as any as S.Schema<RemoveTagsOutput>;
 export type InstanceFleetConfigList = InstanceFleetConfig[];
 export const InstanceFleetConfigList = /*@__PURE__*/ S.Array(InstanceFleetConfig);
 export type SecurityGroupsList = string[];
-export const SecurityGroupsList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupsList = InstanceGroupIdsList as any as S.Schema<SecurityGroupsList>;
 export interface JobFlowInstancesConfig {
   MasterInstanceType?: string;
   SlaveInstanceType?: string;
@@ -3763,11 +3701,8 @@ export const SetKeepJobFlowAliveWhenNoStepsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetKeepJobFlowAliveWhenNoStepsInput",
 }) as any as S.Schema<SetKeepJobFlowAliveWhenNoStepsInput>;
 export interface SetKeepJobFlowAliveWhenNoStepsResponse {}
-export const SetKeepJobFlowAliveWhenNoStepsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetKeepJobFlowAliveWhenNoStepsResponse",
-}) as any as S.Schema<SetKeepJobFlowAliveWhenNoStepsResponse>;
+export const SetKeepJobFlowAliveWhenNoStepsResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<SetKeepJobFlowAliveWhenNoStepsResponse>;
 export interface SetTerminationProtectionInput {
   JobFlowIds?: string[];
   TerminationProtected?: boolean;
@@ -3781,11 +3716,8 @@ export const SetTerminationProtectionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetTerminationProtectionInput",
 }) as any as S.Schema<SetTerminationProtectionInput>;
 export interface SetTerminationProtectionResponse {}
-export const SetTerminationProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetTerminationProtectionResponse",
-}) as any as S.Schema<SetTerminationProtectionResponse>;
+export const SetTerminationProtectionResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<SetTerminationProtectionResponse>;
 export interface SetUnhealthyNodeReplacementInput {
   JobFlowIds?: string[];
   UnhealthyNodeReplacement?: boolean;
@@ -3799,11 +3731,8 @@ export const SetUnhealthyNodeReplacementInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetUnhealthyNodeReplacementInput",
 }) as any as S.Schema<SetUnhealthyNodeReplacementInput>;
 export interface SetUnhealthyNodeReplacementResponse {}
-export const SetUnhealthyNodeReplacementResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetUnhealthyNodeReplacementResponse",
-}) as any as S.Schema<SetUnhealthyNodeReplacementResponse>;
+export const SetUnhealthyNodeReplacementResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<SetUnhealthyNodeReplacementResponse>;
 export interface SetVisibleToAllUsersInput {
   JobFlowIds?: string[];
   VisibleToAllUsers?: boolean;
@@ -3817,29 +3746,20 @@ export const SetVisibleToAllUsersInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetVisibleToAllUsersInput",
 }) as any as S.Schema<SetVisibleToAllUsersInput>;
 export interface SetVisibleToAllUsersResponse {}
-export const SetVisibleToAllUsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetVisibleToAllUsersResponse",
-}) as any as S.Schema<SetVisibleToAllUsersResponse>;
+export const SetVisibleToAllUsersResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<SetVisibleToAllUsersResponse>;
 export interface NotebookS3LocationFromInput {
   Bucket?: string;
   Key?: string;
 }
-export const NotebookS3LocationFromInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bucket: S.optional(S.String), Key: S.optional(S.String) }),
-).annotate({
-  identifier: "NotebookS3LocationFromInput",
-}) as any as S.Schema<NotebookS3LocationFromInput>;
+export const NotebookS3LocationFromInput =
+  NotebookS3LocationForOutput as any as S.Schema<NotebookS3LocationFromInput>;
 export interface OutputNotebookS3LocationFromInput {
   Bucket?: string;
   Key?: string;
 }
-export const OutputNotebookS3LocationFromInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Bucket: S.optional(S.String), Key: S.optional(S.String) }),
-).annotate({
-  identifier: "OutputNotebookS3LocationFromInput",
-}) as any as S.Schema<OutputNotebookS3LocationFromInput>;
+export const OutputNotebookS3LocationFromInput =
+  NotebookS3LocationForOutput as any as S.Schema<OutputNotebookS3LocationFromInput>;
 export interface StartNotebookExecutionInput {
   EditorId?: string;
   RelativePath?: string;
@@ -3930,11 +3850,8 @@ export const StopNotebookExecutionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopNotebookExecutionInput",
 }) as any as S.Schema<StopNotebookExecutionInput>;
 export interface StopNotebookExecutionResponse {}
-export const StopNotebookExecutionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StopNotebookExecutionResponse",
-}) as any as S.Schema<StopNotebookExecutionResponse>;
+export const StopNotebookExecutionResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<StopNotebookExecutionResponse>;
 export interface TerminateJobFlowsInput {
   JobFlowIds?: string[];
 }
@@ -3944,11 +3861,8 @@ export const TerminateJobFlowsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TerminateJobFlowsInput" }) as any as S.Schema<TerminateJobFlowsInput>;
 export interface TerminateJobFlowsResponse {}
-export const TerminateJobFlowsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "TerminateJobFlowsResponse",
-}) as any as S.Schema<TerminateJobFlowsResponse>;
+export const TerminateJobFlowsResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<TerminateJobFlowsResponse>;
 export interface TerminateSessionInput {
   ClusterId?: string;
   SessionId?: string;
@@ -3989,9 +3903,7 @@ export const UpdateStudioInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateStudioInput" }) as any as S.Schema<UpdateStudioInput>;
 export interface UpdateStudioResponse {}
-export const UpdateStudioResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateStudioResponse",
-}) as any as S.Schema<UpdateStudioResponse>;
+export const UpdateStudioResponse = AddTagsOutput as any as S.Schema<UpdateStudioResponse>;
 export interface UpdateStudioSessionMappingInput {
   StudioId?: string;
   IdentityId?: string;
@@ -4011,11 +3923,8 @@ export const UpdateStudioSessionMappingInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateStudioSessionMappingInput",
 }) as any as S.Schema<UpdateStudioSessionMappingInput>;
 export interface UpdateStudioSessionMappingResponse {}
-export const UpdateStudioSessionMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateStudioSessionMappingResponse",
-}) as any as S.Schema<UpdateStudioSessionMappingResponse>;
+export const UpdateStudioSessionMappingResponse =
+  CreateStudioSessionMappingResponse as any as S.Schema<UpdateStudioSessionMappingResponse>;
 export type ErrorMessage = string;
 export type ErrorCode = string;
 export type AddInstanceFleetError =

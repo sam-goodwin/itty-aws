@@ -978,9 +978,7 @@ export const PatchProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for the `StartScanRun` method. */
 export interface StartScanRunRequest {}
-export const StartScanRunRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartScanRunRequest",
-}) as any as S.Schema<StartScanRunRequest>;
+export const StartScanRunRequest = Empty as any as S.Schema<StartScanRunRequest>;
 
 export interface StartProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */

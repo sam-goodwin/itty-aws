@@ -225,10 +225,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAccountResponseTagsMap>;
+export const CreateAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
 
 /** Identity Type */
 export type IdentityType = "SystemAssigned";
@@ -1138,9 +1136,8 @@ export const DeleteDataSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDataSetRequest" }) as any as S.Schema<DeleteDataSetRequest>;
 
 export interface DeleteDataSetResponse {}
-export const DeleteDataSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataSetResponse",
-}) as any as S.Schema<DeleteDataSetResponse>;
+export const DeleteDataSetResponse =
+  AccountPropertiesInput as any as S.Schema<DeleteDataSetResponse>;
 
 export interface DeleteDataSetMappingRequest {
   /** The subscription identifier */
@@ -1174,9 +1171,8 @@ export const DeleteDataSetMappingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataSetMappingRequest>;
 
 export interface DeleteDataSetMappingResponse {}
-export const DeleteDataSetMappingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataSetMappingResponse",
-}) as any as S.Schema<DeleteDataSetMappingResponse>;
+export const DeleteDataSetMappingResponse =
+  AccountPropertiesInput as any as S.Schema<DeleteDataSetMappingResponse>;
 
 export interface DeleteInvitationRequest {
   /** The subscription identifier */
@@ -1208,9 +1204,8 @@ export const DeleteInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInvitationRequest" }) as any as S.Schema<DeleteInvitationRequest>;
 
 export interface DeleteInvitationResponse {}
-export const DeleteInvitationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInvitationResponse",
-}) as any as S.Schema<DeleteInvitationResponse>;
+export const DeleteInvitationResponse =
+  AccountPropertiesInput as any as S.Schema<DeleteInvitationResponse>;
 
 export interface DeleteShareRequest {
   /** The subscription identifier */
@@ -1351,10 +1346,8 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAccountResponseTagsMap>;
+export const GetAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 export interface GetAccountResponse {
   /** The resource id of the azure resource */
@@ -1374,18 +1367,7 @@ export interface GetAccountResponse {
   /** Properties on the account */
   properties?: AccountProperties;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(GetAccountResponseTagsMap),
-    identity: Identity,
-    properties: S.optional(AccountProperties),
-  }),
-).annotate({ identifier: "GetAccountResponse" }) as any as S.Schema<GetAccountResponse>;
+export const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
 
 export interface GetConsumerInvitationRequest {
   /** Location of the invitation */
@@ -1681,15 +1663,8 @@ export interface GetInvitationResponse {
   /** Properties on the Invitation */
   properties?: InvitationProperties;
 }
-export const GetInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(InvitationProperties),
-  }),
-).annotate({ identifier: "GetInvitationResponse" }) as any as S.Schema<GetInvitationResponse>;
+export const GetInvitationResponse =
+  CreateInvitationResponse as any as S.Schema<GetInvitationResponse>;
 
 export interface GetProviderShareSubscriptionByShareRequest {
   /** The subscription identifier */
@@ -1832,15 +1807,7 @@ export interface GetShareResponse {
   /** Properties on the share */
   properties?: ShareProperties;
 }
-export const GetShareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(ShareProperties),
-  }),
-).annotate({ identifier: "GetShareResponse" }) as any as S.Schema<GetShareResponse>;
+export const GetShareResponse = CreateShareResponse as any as S.Schema<GetShareResponse>;
 
 export interface GetShareSubscriptionRequest {
   /** The subscription identifier */
@@ -1882,17 +1849,8 @@ export interface GetShareSubscriptionResponse {
   /** Properties on the share subscription */
   properties: ShareSubscriptionProperties;
 }
-export const GetShareSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: ShareSubscriptionProperties,
-  }),
-).annotate({
-  identifier: "GetShareSubscriptionResponse",
-}) as any as S.Schema<GetShareSubscriptionResponse>;
+export const GetShareSubscriptionResponse =
+  CreateShareSubscriptionResponse as any as S.Schema<GetShareSubscriptionResponse>;
 
 export interface GetSynchronizationSettingsRequest {
   /** The subscription identifier */
@@ -2041,10 +1999,7 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type AccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AccountTagsMap>;
+export const AccountTagsMap = CreateAccountRequestTagsMap as any as S.Schema<AccountTagsMap>;
 
 /** An account data transfer object. */
 export interface Account {
@@ -2065,18 +2020,7 @@ export interface Account {
   /** Properties on the account */
   properties?: AccountProperties;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(AccountTagsMap),
-    identity: Identity,
-    properties: S.optional(AccountProperties),
-  }),
-).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
+export const Account = CreateAccountResponse as any as S.Schema<Account>;
 
 /** Collection of items of type DataTransferObjects. */
 export type AccountListValueList = Array<Account>;
@@ -2545,15 +2489,7 @@ export interface Invitation {
   /** Properties on the Invitation */
   properties?: InvitationProperties;
 }
-export const Invitation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(InvitationProperties),
-  }),
-).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
+export const Invitation = CreateInvitationResponse as any as S.Schema<Invitation>;
 
 /** Collection of items of type DataTransferObjects. */
 export type InvitationListValueList = Array<Invitation>;
@@ -2661,9 +2597,8 @@ export const OperationMetaMetricSpecificationSupportedAggregationTypesList = /*@
 
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OperationMetaMetricSpecificationSupportedTimeGrainTypesList>;
+export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
+  OperationMetaMetricSpecificationSupportedAggregationTypesList as any as S.Schema<OperationMetaMetricSpecificationSupportedTimeGrainTypesList>;
 
 /** metric specifications for the operation */
 export interface OperationMetaMetricSpecification {
@@ -2835,17 +2770,8 @@ export interface ProviderShareSubscription {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-export const ProviderShareSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(ProviderShareSubscriptionProperties),
-  }),
-).annotate({
-  identifier: "ProviderShareSubscription",
-}) as any as S.Schema<ProviderShareSubscription>;
+export const ProviderShareSubscription =
+  GetProviderShareSubscriptionByShareResponse as any as S.Schema<ProviderShareSubscription>;
 
 /** Collection of items of type DataTransferObjects. */
 export type ProviderShareSubscriptionListValueList = Array<ProviderShareSubscription>;
@@ -2916,15 +2842,7 @@ export interface Share {
   /** Properties on the share */
   properties?: ShareProperties;
 }
-export const Share = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(ShareProperties),
-  }),
-).annotate({ identifier: "Share" }) as any as S.Schema<Share>;
+export const Share = CreateShareResponse as any as S.Schema<Share>;
 
 /** Collection of items of type DataTransferObjects. */
 export type ShareListValueList = Array<Share>;
@@ -3667,17 +3585,8 @@ export interface ProviderShareSubscriptionsAdjustResponse {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-export const ProviderShareSubscriptionsAdjustResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(ProviderShareSubscriptionProperties),
-  }),
-).annotate({
-  identifier: "ProviderShareSubscriptionsAdjustResponse",
-}) as any as S.Schema<ProviderShareSubscriptionsAdjustResponse>;
+export const ProviderShareSubscriptionsAdjustResponse =
+  GetProviderShareSubscriptionByShareResponse as any as S.Schema<ProviderShareSubscriptionsAdjustResponse>;
 
 export interface ProviderShareSubscriptionsReinstateRequest {
   /** The subscription identifier */
@@ -3725,17 +3634,8 @@ export interface ProviderShareSubscriptionsReinstateResponse {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-export const ProviderShareSubscriptionsReinstateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(ProviderShareSubscriptionProperties),
-  }),
-).annotate({
-  identifier: "ProviderShareSubscriptionsReinstateResponse",
-}) as any as S.Schema<ProviderShareSubscriptionsReinstateResponse>;
+export const ProviderShareSubscriptionsReinstateResponse =
+  GetProviderShareSubscriptionByShareResponse as any as S.Schema<ProviderShareSubscriptionsReinstateResponse>;
 
 export interface RegisterEmailRegistrationEmailRequest {
   /** Location of the registration */
@@ -3803,17 +3703,8 @@ export interface RejectConsumerInvitationInvitationResponse {
   /** Properties on the account */
   properties: ConsumerInvitationProperties;
 }
-export const RejectConsumerInvitationInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: ConsumerInvitationProperties,
-  }),
-).annotate({
-  identifier: "RejectConsumerInvitationInvitationResponse",
-}) as any as S.Schema<RejectConsumerInvitationInvitationResponse>;
+export const RejectConsumerInvitationInvitationResponse =
+  GetConsumerInvitationResponse as any as S.Schema<RejectConsumerInvitationInvitationResponse>;
 
 export interface RevokeProviderShareSubscriptionRequest {
   /** The subscription identifier */
@@ -3858,17 +3749,8 @@ export interface RevokeProviderShareSubscriptionResponse {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-export const RevokeProviderShareSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    properties: S.optional(ProviderShareSubscriptionProperties),
-  }),
-).annotate({
-  identifier: "RevokeProviderShareSubscriptionResponse",
-}) as any as S.Schema<RevokeProviderShareSubscriptionResponse>;
+export const RevokeProviderShareSubscriptionResponse =
+  GetProviderShareSubscriptionByShareResponse as any as S.Schema<RevokeProviderShareSubscriptionResponse>;
 
 /** Mode of synchronization used in triggers and snapshot sync. Incremental by default */
 export type ShareSubscriptionsSynchronizeRequestSynchronizationMode = "Incremental" | "FullSync";
@@ -3907,10 +3789,8 @@ export const ShareSubscriptionsSynchronizeRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Tags on the azure resource. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountRequestTagsMap>;
+export const UpdateAccountRequestTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 export interface UpdateAccountRequest {
   /** The subscription identifier */
@@ -3940,10 +3820,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags on the azure resource. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAccountResponseTagsMap>;
+export const UpdateAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 export interface UpdateAccountResponse {
   /** The resource id of the azure resource */
@@ -3963,18 +3841,8 @@ export interface UpdateAccountResponse {
   /** Properties on the account */
   properties?: AccountProperties;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateAccountResponseTagsMap),
-    identity: Identity,
-    properties: S.optional(AccountProperties),
-  }),
-).annotate({ identifier: "UpdateAccountResponse" }) as any as S.Schema<UpdateAccountResponse>;
+export const UpdateAccountResponse =
+  CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export type ActivateEmailRegistrationEmailError = AzureOpError;
 /** Activates the tenant and email combination using email code received. Activate the email registration for the current tenant */

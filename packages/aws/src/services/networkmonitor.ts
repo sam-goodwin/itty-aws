@@ -315,9 +315,7 @@ export const DeleteProbeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProbeInput" }) as any as S.Schema<DeleteProbeInput>;
 export interface DeleteProbeOutput {}
-export const DeleteProbeOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProbeOutput",
-}) as any as S.Schema<DeleteProbeOutput>;
+export const DeleteProbeOutput = DeleteMonitorOutput as any as S.Schema<DeleteProbeOutput>;
 export interface GetMonitorInput {
   monitorName: string;
 }
@@ -341,23 +339,7 @@ export interface Probe {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const Probe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    probeId: S.optional(S.String),
-    probeArn: S.optional(S.String),
-    sourceArn: S.String,
-    destination: S.String,
-    destinationPort: S.optional(S.Number),
-    protocol: Protocol,
-    packetSize: S.optional(S.Number),
-    addressFamily: S.optional(AddressFamily),
-    vpcId: S.optional(S.String),
-    state: S.optional(ProbeState),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "Probe" }) as any as S.Schema<Probe>;
+export const Probe = CreateProbeOutput as any as S.Schema<Probe>;
 export type ProbeList = Probe[];
 export const ProbeList = /*@__PURE__*/ S.Array(Probe);
 export interface GetMonitorOutput {
@@ -416,23 +398,7 @@ export interface GetProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const GetProbeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    probeId: S.optional(S.String),
-    probeArn: S.optional(S.String),
-    sourceArn: S.String,
-    destination: S.String,
-    destinationPort: S.optional(S.Number),
-    protocol: Protocol,
-    packetSize: S.optional(S.Number),
-    addressFamily: S.optional(AddressFamily),
-    vpcId: S.optional(S.String),
-    state: S.optional(ProbeState),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "GetProbeOutput" }) as any as S.Schema<GetProbeOutput>;
+export const GetProbeOutput = CreateProbeOutput as any as S.Schema<GetProbeOutput>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface ListMonitorsInput {
@@ -454,15 +420,7 @@ export interface MonitorSummary {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const MonitorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    monitorArn: S.String,
-    monitorName: S.String,
-    state: MonitorState,
-    aggregationPeriod: S.optional(S.Number),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "MonitorSummary" }) as any as S.Schema<MonitorSummary>;
+export const MonitorSummary = CreateMonitorOutput as any as S.Schema<MonitorSummary>;
 export type MonitorList = MonitorSummary[];
 export const MonitorList = /*@__PURE__*/ S.Array(MonitorSummary);
 export interface ListMonitorsOutput {
@@ -498,9 +456,7 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteMonitorOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
@@ -516,9 +472,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteMonitorOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMonitorInput {
   monitorName: string;
   aggregationPeriod: number;
@@ -545,15 +499,7 @@ export interface UpdateMonitorOutput {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    monitorArn: S.String,
-    monitorName: S.String,
-    state: MonitorState,
-    aggregationPeriod: S.optional(S.Number),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "UpdateMonitorOutput" }) as any as S.Schema<UpdateMonitorOutput>;
+export const UpdateMonitorOutput = CreateMonitorOutput as any as S.Schema<UpdateMonitorOutput>;
 export interface UpdateProbeInput {
   monitorName: string;
   probeId: string;
@@ -598,23 +544,7 @@ export interface UpdateProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateProbeOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    probeId: S.optional(S.String),
-    probeArn: S.optional(S.String),
-    sourceArn: S.String,
-    destination: S.String,
-    destinationPort: S.optional(S.Number),
-    protocol: Protocol,
-    packetSize: S.optional(S.Number),
-    addressFamily: S.optional(AddressFamily),
-    vpcId: S.optional(S.String),
-    state: S.optional(ProbeState),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "UpdateProbeOutput" }) as any as S.Schema<UpdateProbeOutput>;
+export const UpdateProbeOutput = CreateProbeOutput as any as S.Schema<UpdateProbeOutput>;
 export type CreateMonitorError =
   | AccessDeniedException
   | ConflictException

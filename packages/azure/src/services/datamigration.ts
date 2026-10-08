@@ -77,11 +77,8 @@ export const CancelDatabaseMigrationsSqlMiRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CancelDatabaseMigrationsSqlMiRequest>;
 
 export interface CancelDatabaseMigrationsSqlMiResponse {}
-export const CancelDatabaseMigrationsSqlMiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelDatabaseMigrationsSqlMiResponse",
-}) as any as S.Schema<CancelDatabaseMigrationsSqlMiResponse>;
+export const CancelDatabaseMigrationsSqlMiResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<CancelDatabaseMigrationsSqlMiResponse>;
 
 export interface CancelDatabaseMigrationsSqlVmRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -114,11 +111,8 @@ export const CancelDatabaseMigrationsSqlVmRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CancelDatabaseMigrationsSqlVmRequest>;
 
 export interface CancelDatabaseMigrationsSqlVmResponse {}
-export const CancelDatabaseMigrationsSqlVmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelDatabaseMigrationsSqlVmResponse",
-}) as any as S.Schema<CancelDatabaseMigrationsSqlVmResponse>;
+export const CancelDatabaseMigrationsSqlVmResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<CancelDatabaseMigrationsSqlVmResponse>;
 
 export interface CancelServiceTaskRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -299,9 +293,8 @@ export const ProjectTaskPropertiesCommandsItemCommandType = S.String;
 
 /** Inner errors that caused this error */
 export type ProjectTaskPropertiesCommandsItemErrorsItemDetailsList = Array<ODataError>;
-export const ProjectTaskPropertiesCommandsItemErrorsItemDetailsList = /*@__PURE__*/ S.Array(
-  ODataError,
-) as any as S.Schema<ProjectTaskPropertiesCommandsItemErrorsItemDetailsList>;
+export const ProjectTaskPropertiesCommandsItemErrorsItemDetailsList =
+  ProjectTaskPropertiesErrorsItemDetailsList as any as S.Schema<ProjectTaskPropertiesCommandsItemErrorsItemDetailsList>;
 
 /** Error information in OData format. */
 export interface ProjectTaskPropertiesCommandsItemErrorsItem {
@@ -312,22 +305,14 @@ export interface ProjectTaskPropertiesCommandsItemErrorsItem {
   /** Inner errors that caused this error */
   details?: ProjectTaskPropertiesCommandsItemErrorsItemDetailsList;
 }
-export const ProjectTaskPropertiesCommandsItemErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    details: S.optional(ProjectTaskPropertiesCommandsItemErrorsItemDetailsList),
-  }),
-).annotate({
-  identifier: "ProjectTaskPropertiesCommandsItemErrorsItem",
-}) as any as S.Schema<ProjectTaskPropertiesCommandsItemErrorsItem>;
+export const ProjectTaskPropertiesCommandsItemErrorsItem =
+  ProjectTaskPropertiesErrorsItem as any as S.Schema<ProjectTaskPropertiesCommandsItemErrorsItem>;
 
 /** Array of errors. This is ignored if submitted. */
 export type ProjectTaskPropertiesCommandsItemErrorsList =
   Array<ProjectTaskPropertiesCommandsItemErrorsItem>;
-export const ProjectTaskPropertiesCommandsItemErrorsList = /*@__PURE__*/ S.Array(
-  ProjectTaskPropertiesCommandsItemErrorsItem,
-) as any as S.Schema<ProjectTaskPropertiesCommandsItemErrorsList>;
+export const ProjectTaskPropertiesCommandsItemErrorsList =
+  ProjectTaskPropertiesErrorsList as any as S.Schema<ProjectTaskPropertiesCommandsItemErrorsList>;
 
 /** The state of the command. This is ignored if submitted. */
 export type ProjectTaskPropertiesCommandsItemState =
@@ -1015,9 +1000,8 @@ export const SqlConnectionInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tables to copy. */
 export type DatabaseMigrationPropertiesSqlDbInputTableListList = Array<string>;
-export const DatabaseMigrationPropertiesSqlDbInputTableListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseMigrationPropertiesSqlDbInputTableListList>;
+export const DatabaseMigrationPropertiesSqlDbInputTableListList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<DatabaseMigrationPropertiesSqlDbInputTableListList>;
 
 /** Database Migration Resource properties for SQL database. */
 export interface DatabaseMigrationPropertiesSqlDbInput {
@@ -1105,9 +1089,8 @@ export const DatabaseMigrationPropertiesSqlDbProvisioningState = S.String;
 
 /** Sql Data Copy errors, if any. */
 export type SqlDbMigrationStatusDetailsSqlDataCopyErrorsList = Array<string>;
-export const SqlDbMigrationStatusDetailsSqlDataCopyErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SqlDbMigrationStatusDetailsSqlDataCopyErrorsList>;
+export const SqlDbMigrationStatusDetailsSqlDataCopyErrorsList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<SqlDbMigrationStatusDetailsSqlDataCopyErrorsList>;
 
 /** Details on progress of ADF copy activity */
 export interface CopyProgressDetails {
@@ -1190,9 +1173,8 @@ export const SqlDbOfflineConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tables to copy. */
 export type DatabaseMigrationPropertiesSqlDbTableListList = Array<string>;
-export const DatabaseMigrationPropertiesSqlDbTableListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseMigrationPropertiesSqlDbTableListList>;
+export const DatabaseMigrationPropertiesSqlDbTableListList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<DatabaseMigrationPropertiesSqlDbTableListList>;
 
 /** Database Migration Resource properties for SQL database. */
 export interface DatabaseMigrationPropertiesSqlDb {
@@ -1547,9 +1529,8 @@ export const SqlBackupSetInfoListOfBackupFilesList = /*@__PURE__*/ S.Array(
 
 /** The reasons why the backup set is ignored */
 export type SqlBackupSetInfoIgnoreReasonsList = Array<string>;
-export const SqlBackupSetInfoIgnoreReasonsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SqlBackupSetInfoIgnoreReasonsList>;
+export const SqlBackupSetInfoIgnoreReasonsList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<SqlBackupSetInfoIgnoreReasonsList>;
 
 /** Information of backup set */
 export interface SqlBackupSetInfo {
@@ -1600,15 +1581,13 @@ export const MigrationStatusDetailsActiveBackupSetsList = /*@__PURE__*/ S.Array(
 
 /** Files that are not valid backup files. */
 export type MigrationStatusDetailsInvalidFilesList = Array<string>;
-export const MigrationStatusDetailsInvalidFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationStatusDetailsInvalidFilesList>;
+export const MigrationStatusDetailsInvalidFilesList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<MigrationStatusDetailsInvalidFilesList>;
 
 /** File upload blocking errors, if any. */
 export type MigrationStatusDetailsFileUploadBlockingErrorsList = Array<string>;
-export const MigrationStatusDetailsFileUploadBlockingErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MigrationStatusDetailsFileUploadBlockingErrorsList>;
+export const MigrationStatusDetailsFileUploadBlockingErrorsList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<MigrationStatusDetailsFileUploadBlockingErrorsList>;
 
 /** Detailed status of current migration. */
 export interface MigrationStatusDetails {
@@ -1871,11 +1850,8 @@ export const DatabaseMigrationsSqlMiCutoverRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DatabaseMigrationsSqlMiCutoverRequest>;
 
 export interface DatabaseMigrationsSqlMiCutoverResponse {}
-export const DatabaseMigrationsSqlMiCutoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DatabaseMigrationsSqlMiCutoverResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlMiCutoverResponse>;
+export const DatabaseMigrationsSqlMiCutoverResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<DatabaseMigrationsSqlMiCutoverResponse>;
 
 export type DatabaseMigrationPropertiesSqlVmInputKind =
   | "SqlMi"
@@ -2082,11 +2058,8 @@ export const DatabaseMigrationsSqlVmCutoverRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DatabaseMigrationsSqlVmCutoverRequest>;
 
 export interface DatabaseMigrationsSqlVmCutoverResponse {}
-export const DatabaseMigrationsSqlVmCutoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DatabaseMigrationsSqlVmCutoverResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlVmCutoverResponse>;
+export const DatabaseMigrationsSqlVmCutoverResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<DatabaseMigrationsSqlVmCutoverResponse>;
 
 export interface DeleteDatabaseMigrationsMongoToCosmosDbRUMongoRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2120,11 +2093,8 @@ export const DeleteDatabaseMigrationsMongoToCosmosDbRUMongoRequest = /*@__PURE__
 }) as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbRUMongoRequest>;
 
 export interface DeleteDatabaseMigrationsMongoToCosmosDbRUMongoResponse {}
-export const DeleteDatabaseMigrationsMongoToCosmosDbRUMongoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabaseMigrationsMongoToCosmosDbRUMongoResponse",
-}) as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbRUMongoResponse>;
+export const DeleteDatabaseMigrationsMongoToCosmosDbRUMongoResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbRUMongoResponse>;
 
 export interface DeleteDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2196,11 +2166,8 @@ export const DeleteDatabaseMigrationsSqlDbRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteDatabaseMigrationsSqlDbRequest>;
 
 export interface DeleteDatabaseMigrationsSqlDbResponse {}
-export const DeleteDatabaseMigrationsSqlDbResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabaseMigrationsSqlDbResponse",
-}) as any as S.Schema<DeleteDatabaseMigrationsSqlDbResponse>;
+export const DeleteDatabaseMigrationsSqlDbResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<DeleteDatabaseMigrationsSqlDbResponse>;
 
 export interface DeleteDatabaseMigrationsSqlMiRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2243,17 +2210,8 @@ export interface DeleteDatabaseMigrationsSqlMiResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesSqlMi;
 }
-export const DeleteDatabaseMigrationsSqlMiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlMi),
-  }),
-).annotate({
-  identifier: "DeleteDatabaseMigrationsSqlMiResponse",
-}) as any as S.Schema<DeleteDatabaseMigrationsSqlMiResponse>;
+export const DeleteDatabaseMigrationsSqlMiResponse =
+  DatabaseMigrationsSqlMiCreateOrUpdateResponse as any as S.Schema<DeleteDatabaseMigrationsSqlMiResponse>;
 
 export interface DeleteDatabaseMigrationsSqlVmRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2296,17 +2254,8 @@ export interface DeleteDatabaseMigrationsSqlVmResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesSqlVm;
 }
-export const DeleteDatabaseMigrationsSqlVmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlVm),
-  }),
-).annotate({
-  identifier: "DeleteDatabaseMigrationsSqlVmResponse",
-}) as any as S.Schema<DeleteDatabaseMigrationsSqlVmResponse>;
+export const DeleteDatabaseMigrationsSqlVmResponse =
+  DatabaseMigrationsSqlVmCreateOrUpdateResponse as any as S.Schema<DeleteDatabaseMigrationsSqlVmResponse>;
 
 export interface DeleteFileRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2338,9 +2287,7 @@ export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFileRequest" }) as any as S.Schema<DeleteFileRequest>;
 
 export interface DeleteFileResponse {}
-export const DeleteFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFileResponse",
-}) as any as S.Schema<DeleteFileResponse>;
+export const DeleteFileResponse = UserAssignedIdentityInput as any as S.Schema<DeleteFileResponse>;
 
 export interface DeleteMigrationServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2368,9 +2315,8 @@ export const DeleteMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMigrationServiceRequest>;
 
 export interface DeleteMigrationServiceResponse {}
-export const DeleteMigrationServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMigrationServiceResponse",
-}) as any as S.Schema<DeleteMigrationServiceResponse>;
+export const DeleteMigrationServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteMigrationServiceResponse>;
 
 export interface DeleteProjectRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2402,9 +2348,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2433,9 +2378,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceResponse",
-}) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteServiceTaskRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2467,9 +2411,8 @@ export const DeleteServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceTaskRequest" }) as any as S.Schema<DeleteServiceTaskRequest>;
 
 export interface DeleteServiceTaskResponse {}
-export const DeleteServiceTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServiceTaskResponse",
-}) as any as S.Schema<DeleteServiceTaskResponse>;
+export const DeleteServiceTaskResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteServiceTaskResponse>;
 
 export interface DeleteSqlMigrationServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2497,11 +2440,8 @@ export const DeleteSqlMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlMigrationServiceRequest>;
 
 export interface DeleteSqlMigrationServiceResponse {}
-export const DeleteSqlMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSqlMigrationServiceResponse",
-}) as any as S.Schema<DeleteSqlMigrationServiceResponse>;
+export const DeleteSqlMigrationServiceResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<DeleteSqlMigrationServiceResponse>;
 
 export interface DeleteSqlMigrationServiceNodeRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2581,9 +2521,7 @@ export const DeleteTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTaskRequest" }) as any as S.Schema<DeleteTaskRequest>;
 
 export interface DeleteTaskResponse {}
-export const DeleteTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTaskResponse",
-}) as any as S.Schema<DeleteTaskResponse>;
+export const DeleteTaskResponse = UserAssignedIdentityInput as any as S.Schema<DeleteTaskResponse>;
 
 /** Base class for file properties. */
 export interface ProjectFilePropertiesInput {
@@ -2730,17 +2668,8 @@ export interface GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesCosmosDbMongo;
 }
-export const GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
-  }),
-).annotate({
-  identifier: "GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse",
-}) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse>;
+export const GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse =
+  CreateDatabaseMigrationsMongoToCosmosDbRUMongoResponse as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse>;
 
 export interface GetDatabaseMigrationsMongoToCosmosDbRUMongoForScopeRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2780,17 +2709,8 @@ export interface DatabaseMigrationCosmosDbMongo {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesCosmosDbMongo;
 }
-export const DatabaseMigrationCosmosDbMongo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationCosmosDbMongo",
-}) as any as S.Schema<DatabaseMigrationCosmosDbMongo>;
+export const DatabaseMigrationCosmosDbMongo =
+  CreateDatabaseMigrationsMongoToCosmosDbRUMongoResponse as any as S.Schema<DatabaseMigrationCosmosDbMongo>;
 
 export type DatabaseMigrationCosmosDbMongoListResultValueList =
   Array<DatabaseMigrationCosmosDbMongo>;
@@ -2851,17 +2771,8 @@ export interface GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesCosmosDbMongo;
 }
-export const GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
-  }),
-).annotate({
-  identifier: "GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse",
-}) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse>;
+export const GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse =
+  CreateDatabaseMigrationsMongoToCosmosDbRUMongoResponse as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse>;
 
 export interface GetDatabaseMigrationsMongoToCosmosDbvCoreMongoForScopeRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2933,17 +2844,8 @@ export interface GetDatabaseMigrationsSqlDbResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesSqlDb;
 }
-export const GetDatabaseMigrationsSqlDbResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlDb),
-  }),
-).annotate({
-  identifier: "GetDatabaseMigrationsSqlDbResponse",
-}) as any as S.Schema<GetDatabaseMigrationsSqlDbResponse>;
+export const GetDatabaseMigrationsSqlDbResponse =
+  DatabaseMigrationsSqlDbCreateOrUpdateResponse as any as S.Schema<GetDatabaseMigrationsSqlDbResponse>;
 
 export interface GetDatabaseMigrationsSqlMiRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2989,17 +2891,8 @@ export interface GetDatabaseMigrationsSqlMiResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesSqlMi;
 }
-export const GetDatabaseMigrationsSqlMiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlMi),
-  }),
-).annotate({
-  identifier: "GetDatabaseMigrationsSqlMiResponse",
-}) as any as S.Schema<GetDatabaseMigrationsSqlMiResponse>;
+export const GetDatabaseMigrationsSqlMiResponse =
+  DatabaseMigrationsSqlMiCreateOrUpdateResponse as any as S.Schema<GetDatabaseMigrationsSqlMiResponse>;
 
 export interface GetDatabaseMigrationsSqlVmRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -3045,17 +2938,8 @@ export interface GetDatabaseMigrationsSqlVmResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesSqlVm;
 }
-export const GetDatabaseMigrationsSqlVmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlVm),
-  }),
-).annotate({
-  identifier: "GetDatabaseMigrationsSqlVmResponse",
-}) as any as S.Schema<GetDatabaseMigrationsSqlVmResponse>;
+export const GetDatabaseMigrationsSqlVmResponse =
+  DatabaseMigrationsSqlVmCreateOrUpdateResponse as any as S.Schema<GetDatabaseMigrationsSqlVmResponse>;
 
 export interface GetFileRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -3138,10 +3022,8 @@ export const GetMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMigrationServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetMigrationServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetMigrationServiceResponseTagsMap>;
+export const GetMigrationServiceResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<GetMigrationServiceResponseTagsMap>;
 
 /** Provisioning state to track the async operation status. */
 export type MigrationServicePropertiesProvisioningState =
@@ -3225,10 +3107,8 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetProjectResponseTagsMap = { [key: string]: string | undefined };
-export const GetProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetProjectResponseTagsMap>;
+export const GetProjectResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<GetProjectResponseTagsMap>;
 
 /** Source platform of the project */
 export type ProjectSourcePlatform = "SQL" | "MySQL" | "PostgreSql" | "MongoDb" | "Unknown";
@@ -3398,10 +3278,8 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceResponseTagsMap>;
+export const GetServiceResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<GetServiceResponseTagsMap>;
 
 /** The resource's provisioning state */
 export type DataMigrationServicePropertiesProvisioningState =
@@ -3548,16 +3426,7 @@ export interface GetServiceTaskResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const GetServiceTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({ identifier: "GetServiceTaskResponse" }) as any as S.Schema<GetServiceTaskResponse>;
+export const GetServiceTaskResponse = CancelTaskResponse as any as S.Schema<GetServiceTaskResponse>;
 
 export interface GetSqlMigrationServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -3586,10 +3455,8 @@ export const GetSqlMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlMigrationServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlMigrationServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlMigrationServiceResponseTagsMap>;
+export const GetSqlMigrationServiceResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<GetSqlMigrationServiceResponseTagsMap>;
 
 /** The SQL Migration Service properties. */
 export interface SqlMigrationServiceProperties {
@@ -3682,16 +3549,7 @@ export interface GetTaskResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const GetTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({ identifier: "GetTaskResponse" }) as any as S.Schema<GetTaskResponse>;
+export const GetTaskResponse = CancelTaskResponse as any as S.Schema<GetTaskResponse>;
 
 export interface ListFilesRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -3734,16 +3592,7 @@ export interface ProjectFile {
   /** Custom file properties */
   properties?: ProjectFileProperties;
 }
-export const ProjectFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectFileProperties),
-  }),
-).annotate({ identifier: "ProjectFile" }) as any as S.Schema<ProjectFile>;
+export const ProjectFile = GetFileResponse as any as S.Schema<ProjectFile>;
 
 /** List of files */
 export type ListFilesResponseValueList = Array<ProjectFile>;
@@ -3788,10 +3637,8 @@ export const ListMigrationServiceByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type MigrationServiceTagsMap = { [key: string]: string | undefined };
-export const MigrationServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationServiceTagsMap>;
+export const MigrationServiceTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<MigrationServiceTagsMap>;
 
 /** A Migration Service. */
 export interface MigrationService {
@@ -4078,10 +3925,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
-export const ProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectTagsMap>;
+export const ProjectTagsMap = ProjectTaskPropertiesClientDataMap as any as S.Schema<ProjectTagsMap>;
 
 /** A project resource */
 export interface Project {
@@ -4102,18 +3946,7 @@ export interface Project {
   /** HTTP strong entity tag value. This is ignored if submitted. */
   etag?: string;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProjectTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
+export const Project = GetProjectResponse as any as S.Schema<Project>;
 
 /** List of projects */
 export type ListProjectsResponseValueList = Array<Project>;
@@ -4179,15 +4012,13 @@ export const ResourceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
-export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationsList>;
+export const ResourceSkuLocationsList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<ResourceSkuLocationsList>;
 
 /** The api versions that support this SKU. */
 export type ResourceSkuApiVersionsList = Array<string>;
-export const ResourceSkuApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuApiVersionsList>;
+export const ResourceSkuApiVersionsList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<ResourceSkuApiVersionsList>;
 
 /** Describes metadata for retrieving price info. */
 export interface ResourceSkuCosts {
@@ -4238,9 +4069,8 @@ export const ResourceSkuRestrictionsType = S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
-export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+export const ResourceSkuRestrictionsValuesList =
+  CheckServiceStatusResponseSupportedTaskTypesList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** The reason code for restriction. */
 export type ResourceSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
@@ -4358,10 +4188,8 @@ export const ListServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DataMigrationServiceTagsMap = { [key: string]: string | undefined };
-export const DataMigrationServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataMigrationServiceTagsMap>;
+export const DataMigrationServiceTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<DataMigrationServiceTagsMap>;
 
 /** An Azure Database Migration Service (classic) resource */
 export interface DataMigrationService {
@@ -4386,20 +4214,7 @@ export interface DataMigrationService {
   /** Service SKU */
   sku?: ServiceSku;
 }
-export const DataMigrationService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DataMigrationServiceTagsMap),
-    location: S.String,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(DataMigrationServiceProperties),
-    sku: S.optional(ServiceSku),
-  }),
-).annotate({ identifier: "DataMigrationService" }) as any as S.Schema<DataMigrationService>;
+export const DataMigrationService = GetServiceResponse as any as S.Schema<DataMigrationService>;
 
 /** List of services */
 export type ListServiceByResourceGroupResponseValueList = Array<DataMigrationService>;
@@ -4441,9 +4256,8 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of services */
 export type ListServicesResponseValueList = Array<DataMigrationService>;
-export const ListServicesResponseValueList = /*@__PURE__*/ S.Array(
-  DataMigrationService,
-) as any as S.Schema<ListServicesResponseValueList>;
+export const ListServicesResponseValueList =
+  ListServiceByResourceGroupResponseValueList as any as S.Schema<ListServicesResponseValueList>;
 
 export interface ListServicesResponse {
   /** List of services */
@@ -4604,16 +4418,7 @@ export interface ProjectTask {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const ProjectTask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({ identifier: "ProjectTask" }) as any as S.Schema<ProjectTask>;
+export const ProjectTask = CancelTaskResponse as any as S.Schema<ProjectTask>;
 
 /** List of tasks */
 export type ListServiceTasksResponseValueList = Array<ProjectTask>;
@@ -4697,10 +4502,8 @@ export const ListSqlMigrationServiceByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type SqlMigrationServiceTagsMap = { [key: string]: string | undefined };
-export const SqlMigrationServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlMigrationServiceTagsMap>;
+export const SqlMigrationServiceTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<SqlMigrationServiceTagsMap>;
 
 /** A SQL Migration Service. */
 export interface SqlMigrationService {
@@ -4922,10 +4725,8 @@ export const ListSqlMigrationServiceMonitoringDataRequest = /*@__PURE__*/ S.susp
 
 /** Unmatched properties from the message are deserialized in this collection. */
 export type NodeMonitoringDataAdditionalPropertiesMap = { [key: string]: unknown | undefined };
-export const NodeMonitoringDataAdditionalPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NodeMonitoringDataAdditionalPropertiesMap>;
+export const NodeMonitoringDataAdditionalPropertiesMap =
+  OperationsDefinitionPropertiesMap as any as S.Schema<NodeMonitoringDataAdditionalPropertiesMap>;
 
 export interface NodeMonitoringData {
   /** Unmatched properties from the message are deserialized in this collection. */
@@ -5014,9 +4815,8 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tasks */
 export type ListTasksResponseValueList = Array<ProjectTask>;
-export const ListTasksResponseValueList = /*@__PURE__*/ S.Array(
-  ProjectTask,
-) as any as S.Schema<ListTasksResponseValueList>;
+export const ListTasksResponseValueList =
+  ListServiceTasksResponseValueList as any as S.Schema<ListTasksResponseValueList>;
 
 export interface ListTasksResponse {
   /** List of tasks */
@@ -5024,12 +4824,7 @@ export interface ListTasksResponse {
   /** URL to load the next page of tasks */
   nextLink?: string;
 }
-export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ListTasksResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "ListTasksResponse" }) as any as S.Schema<ListTasksResponse>;
+export const ListTasksResponse = ListServiceTasksResponse as any as S.Schema<ListTasksResponse>;
 
 export interface ListUsagesRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -5109,10 +4904,8 @@ export const ListUsagesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MigrationServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const MigrationServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationServicesCreateOrUpdateRequestTagsMap>;
+export const MigrationServicesCreateOrUpdateRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<MigrationServicesCreateOrUpdateRequestTagsMap>;
 
 /** The Migration Service properties. */
 export type MigrationServicePropertiesInput = UserAssignedIdentityInput;
@@ -5153,10 +4946,8 @@ export const MigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type MigrationServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const MigrationServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationServicesCreateOrUpdateResponseTagsMap>;
+export const MigrationServicesCreateOrUpdateResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<MigrationServicesCreateOrUpdateResponseTagsMap>;
 
 export interface MigrationServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5173,26 +4964,13 @@ export interface MigrationServicesCreateOrUpdateResponse {
   location: string;
   properties?: MigrationServiceProperties;
 }
-export const MigrationServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MigrationServicesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "MigrationServicesCreateOrUpdateResponse",
-}) as any as S.Schema<MigrationServicesCreateOrUpdateResponse>;
+export const MigrationServicesCreateOrUpdateResponse =
+  GetMigrationServiceResponse as any as S.Schema<MigrationServicesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type ProjectsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+export const ProjectsCreateOrUpdateRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
 
 /** Azure Active Directory Application */
 export type ProjectPropertiesInputAzureAuthenticationInfo =
@@ -5210,9 +4988,8 @@ export const ProjectPropertiesInputTargetConnectionInfo = ProjectPropertiesSourc
 
 /** List of DatabaseInfo */
 export type ProjectPropertiesInputDatabasesInfoList = Array<DatabaseInfo>;
-export const ProjectPropertiesInputDatabasesInfoList = /*@__PURE__*/ S.Array(
-  DatabaseInfo,
-) as any as S.Schema<ProjectPropertiesInputDatabasesInfoList>;
+export const ProjectPropertiesInputDatabasesInfoList =
+  ProjectPropertiesDatabasesInfoList as any as S.Schema<ProjectPropertiesInputDatabasesInfoList>;
 
 /** Project-specific properties */
 export interface ProjectPropertiesInput {
@@ -5282,10 +5059,8 @@ export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ProjectsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
+export const ProjectsCreateOrUpdateResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
 
 export interface ProjectsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5350,10 +5125,8 @@ export const ReadFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadFileRequest" }) as any as S.Schema<ReadFileRequest>;
 
 export type ReadFileResponseHeadersMap = { [key: string]: string | undefined };
-export const ReadFileResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReadFileResponseHeadersMap>;
+export const ReadFileResponseHeadersMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<ReadFileResponseHeadersMap>;
 
 export interface ReadFileResponse {
   /** A URI that can be used to access the file content. */
@@ -5397,22 +5170,15 @@ export const ReadFileWriteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadFileWriteRequest" }) as any as S.Schema<ReadFileWriteRequest>;
 
 export type ReadFileWriteResponseHeadersMap = { [key: string]: string | undefined };
-export const ReadFileWriteResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReadFileWriteResponseHeadersMap>;
+export const ReadFileWriteResponseHeadersMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<ReadFileWriteResponseHeadersMap>;
 
 export interface ReadFileWriteResponse {
   /** A URI that can be used to access the file content. */
   uri?: string;
   headers?: ReadFileWriteResponseHeadersMap;
 }
-export const ReadFileWriteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    headers: S.optional(ReadFileWriteResponseHeadersMap),
-  }),
-).annotate({ identifier: "ReadFileWriteResponse" }) as any as S.Schema<ReadFileWriteResponse>;
+export const ReadFileWriteResponse = ReadFileResponse as any as S.Schema<ReadFileWriteResponse>;
 
 export interface RegenerateSqlMigrationServiceAuthKeysRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -5496,18 +5262,13 @@ export const RetryDatabaseMigrationsSqlDbRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetryDatabaseMigrationsSqlDbRequest>;
 
 export interface RetryDatabaseMigrationsSqlDbResponse {}
-export const RetryDatabaseMigrationsSqlDbResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RetryDatabaseMigrationsSqlDbResponse",
-}) as any as S.Schema<RetryDatabaseMigrationsSqlDbResponse>;
+export const RetryDatabaseMigrationsSqlDbResponse =
+  CancelDatabaseMigrationsSqlDbResponse as any as S.Schema<RetryDatabaseMigrationsSqlDbResponse>;
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+export const ServicesCreateOrUpdateRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
 
 /** Properties of the Azure Database Migration Service (classic) instance */
 export interface DataMigrationServicePropertiesInput {
@@ -5579,10 +5340,8 @@ export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
+export const ServicesCreateOrUpdateResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 export interface ServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5667,10 +5426,8 @@ export const ProjectTaskPropertiesInputTaskType = S.String;
 
 /** Key value pairs of client data to attach meta data information to task */
 export type ProjectTaskPropertiesInputClientDataMap = { [key: string]: string | undefined };
-export const ProjectTaskPropertiesInputClientDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectTaskPropertiesInputClientDataMap>;
+export const ProjectTaskPropertiesInputClientDataMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<ProjectTaskPropertiesInputClientDataMap>;
 
 /** Base class for all types of DMS (classic) task properties. If task is not supported by current client, this object is returned. */
 export interface ProjectTaskPropertiesInput {
@@ -5736,27 +5493,15 @@ export interface ServiceTasksCreateOrUpdateResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const ServiceTasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({
-  identifier: "ServiceTasksCreateOrUpdateResponse",
-}) as any as S.Schema<ServiceTasksCreateOrUpdateResponse>;
+export const ServiceTasksCreateOrUpdateResponse =
+  CancelServiceTaskResponse as any as S.Schema<ServiceTasksCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type SqlMigrationServicesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlMigrationServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlMigrationServicesCreateOrUpdateRequestTagsMap>;
+export const SqlMigrationServicesCreateOrUpdateRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<SqlMigrationServicesCreateOrUpdateRequestTagsMap>;
 
 /** The SQL Migration Service properties. */
 export type SqlMigrationServicePropertiesInput = UserAssignedIdentityInput;
@@ -5799,10 +5544,8 @@ export const SqlMigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type SqlMigrationServicesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlMigrationServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponseTagsMap>;
+export const SqlMigrationServicesCreateOrUpdateResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponseTagsMap>;
 
 export interface SqlMigrationServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5819,19 +5562,8 @@ export interface SqlMigrationServicesCreateOrUpdateResponse {
   location: string;
   properties?: SqlMigrationServiceProperties;
 }
-export const SqlMigrationServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlMigrationServicesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlMigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "SqlMigrationServicesCreateOrUpdateResponse",
-}) as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponse>;
+export const SqlMigrationServicesCreateOrUpdateResponse =
+  GetSqlMigrationServiceResponse as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponse>;
 
 export interface StartServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -5857,9 +5589,8 @@ export const StartServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServiceRequest" }) as any as S.Schema<StartServiceRequest>;
 
 export interface StartServiceResponse {}
-export const StartServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartServiceResponse",
-}) as any as S.Schema<StartServiceResponse>;
+export const StartServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<StartServiceResponse>;
 
 export interface StopServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -5885,9 +5616,8 @@ export const StopServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServiceRequest" }) as any as S.Schema<StopServiceRequest>;
 
 export interface StopServiceResponse {}
-export const StopServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopServiceResponse",
-}) as any as S.Schema<StopServiceResponse>;
+export const StopServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<StopServiceResponse>;
 
 /** Command type. */
 export type TasksCommandRequestCommandType =
@@ -5941,9 +5671,8 @@ export const TasksCommandResponseCommandType = S.String;
 
 /** Inner errors that caused this error */
 export type TasksCommandResponseErrorsItemDetailsList = Array<ODataError>;
-export const TasksCommandResponseErrorsItemDetailsList = /*@__PURE__*/ S.Array(
-  ODataError,
-) as any as S.Schema<TasksCommandResponseErrorsItemDetailsList>;
+export const TasksCommandResponseErrorsItemDetailsList =
+  ProjectTaskPropertiesErrorsItemDetailsList as any as S.Schema<TasksCommandResponseErrorsItemDetailsList>;
 
 /** Error information in OData format. */
 export interface TasksCommandResponseErrorsItem {
@@ -5954,21 +5683,13 @@ export interface TasksCommandResponseErrorsItem {
   /** Inner errors that caused this error */
   details?: TasksCommandResponseErrorsItemDetailsList;
 }
-export const TasksCommandResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    details: S.optional(TasksCommandResponseErrorsItemDetailsList),
-  }),
-).annotate({
-  identifier: "TasksCommandResponseErrorsItem",
-}) as any as S.Schema<TasksCommandResponseErrorsItem>;
+export const TasksCommandResponseErrorsItem =
+  ProjectTaskPropertiesErrorsItem as any as S.Schema<TasksCommandResponseErrorsItem>;
 
 /** Array of errors. This is ignored if submitted. */
 export type TasksCommandResponseErrorsList = Array<TasksCommandResponseErrorsItem>;
-export const TasksCommandResponseErrorsList = /*@__PURE__*/ S.Array(
-  TasksCommandResponseErrorsItem,
-) as any as S.Schema<TasksCommandResponseErrorsList>;
+export const TasksCommandResponseErrorsList =
+  ProjectTaskPropertiesErrorsList as any as S.Schema<TasksCommandResponseErrorsList>;
 
 /** The state of the command. This is ignored if submitted. */
 export type TasksCommandResponseState = "Unknown" | "Accepted" | "Running" | "Succeeded" | "Failed";
@@ -6041,18 +5762,8 @@ export interface TasksCreateOrUpdateResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const TasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({
-  identifier: "TasksCreateOrUpdateResponse",
-}) as any as S.Schema<TasksCreateOrUpdateResponse>;
+export const TasksCreateOrUpdateResponse =
+  CancelServiceTaskResponse as any as S.Schema<TasksCreateOrUpdateResponse>;
 
 export interface UpdateFileRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6103,22 +5814,11 @@ export interface UpdateFileResponse {
   /** Custom file properties */
   properties?: ProjectFileProperties;
 }
-export const UpdateFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectFileProperties),
-  }),
-).annotate({ identifier: "UpdateFileResponse" }) as any as S.Schema<UpdateFileResponse>;
+export const UpdateFileResponse = GetFileResponse as any as S.Schema<UpdateFileResponse>;
 
 export type UpdateMigrationServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMigrationServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMigrationServiceRequestTagsMap>;
+export const UpdateMigrationServiceRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateMigrationServiceRequestTagsMap>;
 
 export interface UpdateMigrationServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6149,10 +5849,8 @@ export const UpdateMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMigrationServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMigrationServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateMigrationServiceResponseTagsMap>;
+export const UpdateMigrationServiceResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateMigrationServiceResponseTagsMap>;
 
 export interface UpdateMigrationServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6169,26 +5867,13 @@ export interface UpdateMigrationServiceResponse {
   location: string;
   properties?: MigrationServiceProperties;
 }
-export const UpdateMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateMigrationServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "UpdateMigrationServiceResponse",
-}) as any as S.Schema<UpdateMigrationServiceResponse>;
+export const UpdateMigrationServiceResponse =
+  GetMigrationServiceResponse as any as S.Schema<UpdateMigrationServiceResponse>;
 
 /** Resource tags. */
 export type UpdateProjectRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProjectRequestTagsMap>;
+export const UpdateProjectRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateProjectRequestTagsMap>;
 
 export interface UpdateProjectRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6230,10 +5915,8 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateProjectResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateProjectResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateProjectResponseTagsMap>;
+export const UpdateProjectResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateProjectResponseTagsMap>;
 
 export interface UpdateProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6253,25 +5936,12 @@ export interface UpdateProjectResponse {
   /** HTTP strong entity tag value. This is ignored if submitted. */
   etag?: string;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateProjectResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateProjectResponse" }) as any as S.Schema<UpdateProjectResponse>;
+export const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** Resource tags. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceRequestTagsMap>;
+export const UpdateServiceRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateServiceRequestTagsMap>;
 
 export interface UpdateServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6316,10 +5986,8 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceResponseTagsMap>;
+export const UpdateServiceResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateServiceResponseTagsMap>;
 
 export interface UpdateServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6343,20 +6011,7 @@ export interface UpdateServiceResponse {
   /** Service SKU */
   sku?: ServiceSku;
 }
-export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateServiceResponseTagsMap),
-    location: S.String,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(DataMigrationServiceProperties),
-    sku: S.optional(ServiceSku),
-  }),
-).annotate({ identifier: "UpdateServiceResponse" }) as any as S.Schema<UpdateServiceResponse>;
+export const UpdateServiceResponse = GetServiceResponse as any as S.Schema<UpdateServiceResponse>;
 
 export interface UpdateServiceTaskRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6404,24 +6059,12 @@ export interface UpdateServiceTaskResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const UpdateServiceTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({
-  identifier: "UpdateServiceTaskResponse",
-}) as any as S.Schema<UpdateServiceTaskResponse>;
+export const UpdateServiceTaskResponse =
+  CancelServiceTaskResponse as any as S.Schema<UpdateServiceTaskResponse>;
 
 export type UpdateSqlMigrationServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlMigrationServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlMigrationServiceRequestTagsMap>;
+export const UpdateSqlMigrationServiceRequestTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateSqlMigrationServiceRequestTagsMap>;
 
 export interface UpdateSqlMigrationServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6452,10 +6095,8 @@ export const UpdateSqlMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlMigrationServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlMigrationServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlMigrationServiceResponseTagsMap>;
+export const UpdateSqlMigrationServiceResponseTagsMap =
+  ProjectTaskPropertiesClientDataMap as any as S.Schema<UpdateSqlMigrationServiceResponseTagsMap>;
 
 export interface UpdateSqlMigrationServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6472,19 +6113,8 @@ export interface UpdateSqlMigrationServiceResponse {
   location: string;
   properties?: SqlMigrationServiceProperties;
 }
-export const UpdateSqlMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlMigrationServiceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlMigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "UpdateSqlMigrationServiceResponse",
-}) as any as S.Schema<UpdateSqlMigrationServiceResponse>;
+export const UpdateSqlMigrationServiceResponse =
+  GetSqlMigrationServiceResponse as any as S.Schema<UpdateSqlMigrationServiceResponse>;
 
 export interface UpdateTaskRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6535,16 +6165,7 @@ export interface UpdateTaskResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const UpdateTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({ identifier: "UpdateTaskResponse" }) as any as S.Schema<UpdateTaskResponse>;
+export const UpdateTaskResponse = CancelTaskResponse as any as S.Schema<UpdateTaskResponse>;
 
 export type CancelDatabaseMigrationsSqlDbError = AzureOpError;
 /** Stop on going migration for the database. */

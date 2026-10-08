@@ -232,9 +232,8 @@ export const GetProfileResponseProfileFieldsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetProfileResponseProfileFieldsList>;
 
 export type GetProfileResponseProfileSectionsList = Array<unknown>;
-export const GetProfileResponseProfileSectionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetProfileResponseProfileSectionsList>;
+export const GetProfileResponseProfileSectionsList =
+  GetProfileResponseProfileFieldsList as any as S.Schema<GetProfileResponseProfileSectionsList>;
 
 export interface GetProfileResponseProfile {
   fields?: GetProfileResponseProfileFieldsList;
@@ -296,10 +295,8 @@ export const IntegrationLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntegrationLogsRequest" }) as any as S.Schema<IntegrationLogsRequest>;
 
 export type IntegrationLogsResponseLogsItemMap = { [key: string]: unknown | undefined };
-export const IntegrationLogsResponseLogsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IntegrationLogsResponseLogsItemMap>;
+export const IntegrationLogsResponseLogsItemMap =
+  BillableInfoResponseBillableInfoMap as any as S.Schema<IntegrationLogsResponseLogsItemMap>;
 
 export type IntegrationLogsResponseLogsList = Array<IntegrationLogsResponseLogsItemMap>;
 export const IntegrationLogsResponseLogsList = /*@__PURE__*/ S.Array(
@@ -466,22 +463,14 @@ export const ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsItem
 export type ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList =
   Array<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem>;
 export const ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList =
-  /*@__PURE__*/ S.Array(
-    ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem,
-  ) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList>;
+  ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList as any as S.Schema<ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList>;
 
 export interface ListExternalTeamsResponseOrganizationsItemLists {
   total_count: number;
   ownership_details: ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList;
 }
-export const ListExternalTeamsResponseOrganizationsItemLists = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    ownership_details: ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList,
-  }),
-).annotate({
-  identifier: "ListExternalTeamsResponseOrganizationsItemLists",
-}) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemLists>;
+export const ListExternalTeamsResponseOrganizationsItemLists =
+  ListExternalTeamsResponseOrganizationsItemCanvas as any as S.Schema<ListExternalTeamsResponseOrganizationsItemLists>;
 
 export interface ListExternalTeamsResponseOrganizationsItem {
   team_id: string;

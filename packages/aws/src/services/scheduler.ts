@@ -155,7 +155,7 @@ export type Subnets = string[];
 export const Subnets = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroup = string;
 export type SecurityGroups = string[];
-export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroups = Subnets as any as S.Schema<SecurityGroups>;
 export type AssignPublicIp = string;
 export interface AwsVpcConfiguration {
   Subnets: string[];
@@ -454,9 +454,8 @@ export const DeleteScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteScheduleGroupInput" }) as any as S.Schema<DeleteScheduleGroupInput>;
 export interface DeleteScheduleGroupOutput {}
-export const DeleteScheduleGroupOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteScheduleGroupOutput",
-}) as any as S.Schema<DeleteScheduleGroupOutput>;
+export const DeleteScheduleGroupOutput =
+  DeleteScheduleOutput as any as S.Schema<DeleteScheduleGroupOutput>;
 export interface GetScheduleInput {
   Name: string;
   GroupName?: string;
@@ -552,15 +551,7 @@ export interface ScheduleGroupSummary {
   CreationDate?: Date;
   LastModificationDate?: Date;
 }
-export const ScheduleGroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    State: S.optional(S.String),
-    CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModificationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "ScheduleGroupSummary" }) as any as S.Schema<ScheduleGroupSummary>;
+export const ScheduleGroupSummary = GetScheduleGroupOutput as any as S.Schema<ScheduleGroupSummary>;
 export type ScheduleGroupList = ScheduleGroupSummary[];
 export const ScheduleGroupList = /*@__PURE__*/ S.Array(ScheduleGroupSummary);
 export interface ListScheduleGroupsOutput {
@@ -649,11 +640,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteScheduleOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = Subnets as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
@@ -667,9 +656,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteScheduleOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateScheduleInput {
   Name: string;
   GroupName?: string;
@@ -705,9 +692,7 @@ export const UpdateScheduleInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateScheduleOutput {
   ScheduleArn: string;
 }
-export const UpdateScheduleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ScheduleArn: S.String }),
-).annotate({ identifier: "UpdateScheduleOutput" }) as any as S.Schema<UpdateScheduleOutput>;
+export const UpdateScheduleOutput = CreateScheduleOutput as any as S.Schema<UpdateScheduleOutput>;
 export type CreateScheduleError =
   | ConflictException
   | InternalServerException

@@ -149,11 +149,8 @@ export const DeleteAssetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssetForZoneRequest>;
 
 export interface DeleteAssetForZoneResponse {}
-export const DeleteAssetForZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteAssetForZoneResponse",
-}) as any as S.Schema<DeleteAssetForZoneResponse>;
+export const DeleteAssetForZoneResponse =
+  DeleteAssetForAccountResponse as any as S.Schema<DeleteAssetForZoneResponse>;
 
 export interface GetAssetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -190,15 +187,7 @@ export interface GetAssetResponse {
   /** The URL where the asset content is fetched from. */
   url?: string | null;
 }
-export const GetAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-    name: S.optional(S.NullOr(S.String)),
-    sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
-    url: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetAssetResponse" }) as any as S.Schema<GetAssetResponse>;
+export const GetAssetResponse = CreateAssetResponse as any as S.Schema<GetAssetResponse>;
 
 export interface GetAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
@@ -398,9 +387,8 @@ export const ListCustomPagesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomPagesForAccountRequest>;
 
 export type ListResultItemRequiredTokensList = Array<string>;
-export const ListResultItemRequiredTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemRequiredTokensList>;
+export const ListResultItemRequiredTokensList =
+  GetResponseRequiredTokensList as any as S.Schema<ListResultItemRequiredTokensList>;
 
 export type ListResultItemState = "default" | "customized";
 export const ListResultItemState = S.String;
@@ -506,9 +494,8 @@ export const PutCustomPageForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCustomPageForAccountRequest>;
 
 export type UpdateResponseRequiredTokensList = Array<string>;
-export const UpdateResponseRequiredTokensList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResponseRequiredTokensList>;
+export const UpdateResponseRequiredTokensList =
+  GetResponseRequiredTokensList as any as S.Schema<UpdateResponseRequiredTokensList>;
 
 export type UpdateResponseState = "default" | "customized";
 export const UpdateResponseState = S.String;
@@ -605,15 +592,7 @@ export interface UpdateAssetResponse {
   /** The URL where the asset content is fetched from. */
   url?: string | null;
 }
-export const UpdateAssetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-    name: S.optional(S.NullOr(S.String)),
-    sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
-    url: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateAssetResponse" }) as any as S.Schema<UpdateAssetResponse>;
+export const UpdateAssetResponse = CreateAssetResponse as any as S.Schema<UpdateAssetResponse>;
 
 export interface UpdateAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */

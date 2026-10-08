@@ -795,29 +795,8 @@ export interface GetCloudFormationTemplateResponse {
   TemplateId?: string;
   TemplateUrl?: string;
 }
-export const GetCloudFormationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    ExpirationTime: S.optional(S.String),
-    SemanticVersion: S.optional(S.String),
-    Status: S.optional(Status),
-    TemplateId: S.optional(S.String),
-    TemplateUrl: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      CreationTime: "creationTime",
-      ExpirationTime: "expirationTime",
-      SemanticVersion: "semanticVersion",
-      Status: "status",
-      TemplateId: "templateId",
-      TemplateUrl: "templateUrl",
-    }),
-  ),
-).annotate({
-  identifier: "GetCloudFormationTemplateResponse",
-}) as any as S.Schema<GetCloudFormationTemplateResponse>;
+export const GetCloudFormationTemplateResponse =
+  CreateCloudFormationTemplateResponse as any as S.Schema<GetCloudFormationTemplateResponse>;
 export type MaxItems = number;
 export interface ListApplicationDependenciesRequest {
   ApplicationId: string;
@@ -1024,13 +1003,8 @@ export interface PutApplicationPolicyResponse {
     Principals: __listOf__string;
   })[];
 }
-export const PutApplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Statements: S.optional(__listOfApplicationPolicyStatement) }).pipe(
-    S.encodeKeys({ Statements: "statements" }),
-  ),
-).annotate({
-  identifier: "PutApplicationPolicyResponse",
-}) as any as S.Schema<PutApplicationPolicyResponse>;
+export const PutApplicationPolicyResponse =
+  GetApplicationPolicyResponse as any as S.Schema<PutApplicationPolicyResponse>;
 export interface UnshareApplicationRequest {
   ApplicationId: string;
   OrganizationId?: string;
@@ -1055,9 +1029,8 @@ export const UnshareApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnshareApplicationRequest",
 }) as any as S.Schema<UnshareApplicationRequest>;
 export interface UnshareApplicationResponse {}
-export const UnshareApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnshareApplicationResponse",
-}) as any as S.Schema<UnshareApplicationResponse>;
+export const UnshareApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<UnshareApplicationResponse>;
 export interface UpdateApplicationRequest {
   ApplicationId: string;
   Author?: string;
@@ -1124,41 +1097,8 @@ export interface UpdateApplicationResponse {
     TemplateUrl: string;
   };
 }
-export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationId: S.optional(S.String),
-    Author: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    Description: S.optional(S.String),
-    HomePageUrl: S.optional(S.String),
-    IsVerifiedAuthor: S.optional(S.Boolean),
-    Labels: S.optional(__listOf__string),
-    LicenseUrl: S.optional(S.String),
-    Name: S.optional(S.String),
-    ReadmeUrl: S.optional(S.String),
-    SpdxLicenseId: S.optional(S.String),
-    VerifiedAuthorUrl: S.optional(S.String),
-    Version: S.optional(Version),
-  }).pipe(
-    S.encodeKeys({
-      ApplicationId: "applicationId",
-      Author: "author",
-      CreationTime: "creationTime",
-      Description: "description",
-      HomePageUrl: "homePageUrl",
-      IsVerifiedAuthor: "isVerifiedAuthor",
-      Labels: "labels",
-      LicenseUrl: "licenseUrl",
-      Name: "name",
-      ReadmeUrl: "readmeUrl",
-      SpdxLicenseId: "spdxLicenseId",
-      VerifiedAuthorUrl: "verifiedAuthorUrl",
-      Version: "version",
-    }),
-  ),
-).annotate({
-  identifier: "UpdateApplicationResponse",
-}) as any as S.Schema<UpdateApplicationResponse>;
+export const UpdateApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export type CreateApplicationError =
   | BadRequestException
   | ConflictException

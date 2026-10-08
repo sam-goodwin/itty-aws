@@ -143,9 +143,8 @@ export const PollJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of jobs */
 export type PollJobsResponseJobsList = Array<Job>;
-export const PollJobsResponseJobsList = /*@__PURE__*/ S.Array(
-  Job,
-) as any as S.Schema<PollJobsResponseJobsList>;
+export const PollJobsResponseJobsList =
+  PaginatedJobsItemsList as any as S.Schema<PollJobsResponseJobsList>;
 
 export interface PollJobsResponse {
   /** List of jobs */

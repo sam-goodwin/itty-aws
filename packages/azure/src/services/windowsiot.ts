@@ -159,10 +159,8 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetServiceResponseTagsMap>;
+export const GetServiceResponseTagsMap =
+  DeleteServiceResponseTagsMap as any as S.Schema<GetServiceResponseTagsMap>;
 
 export interface GetServiceResponse {
   /** Fully qualified resource Id for the resource */
@@ -180,17 +178,7 @@ export interface GetServiceResponse {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(GetServiceResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(DeviceServiceProperties),
-  }),
-).annotate({ identifier: "GetServiceResponse" }) as any as S.Schema<GetServiceResponse>;
+export const GetServiceResponse = DeleteServiceResponse as any as S.Schema<GetServiceResponse>;
 
 export interface ListOperationsRequest {}
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -288,10 +276,8 @@ export const ListServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DeviceServiceTagsMap = { [key: string]: string | undefined };
-export const DeviceServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DeviceServiceTagsMap>;
+export const DeviceServiceTagsMap =
+  DeleteServiceResponseTagsMap as any as S.Schema<DeviceServiceTagsMap>;
 
 /** The description of the Windows IoT Device Service. */
 export interface DeviceService {
@@ -310,17 +296,7 @@ export interface DeviceService {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-export const DeviceService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(DeviceServiceTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(DeviceServiceProperties),
-  }),
-).annotate({ identifier: "DeviceService" }) as any as S.Schema<DeviceService>;
+export const DeviceService = DeleteServiceResponse as any as S.Schema<DeviceService>;
 
 /** The array of DeviceService objects. */
 export type DeviceServiceDescriptionListResultValueList = Array<DeviceService>;
@@ -363,10 +339,8 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+export const ServicesCreateOrUpdateRequestTagsMap =
+  DeleteServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
 
 /** The properties of a Windows IoT Device Service. */
 export interface DeviceServicePropertiesInput {
@@ -429,10 +403,8 @@ export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
+export const ServicesCreateOrUpdateResponseTagsMap =
+  DeleteServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 export interface ServicesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource */
@@ -466,10 +438,8 @@ export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceRequestTagsMap>;
+export const UpdateServiceRequestTagsMap =
+  DeleteServiceResponseTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
 
 export interface UpdateServiceRequest {
   /** The subscription identifier. */
@@ -508,10 +478,8 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateServiceResponseTagsMap>;
+export const UpdateServiceResponseTagsMap =
+  DeleteServiceResponseTagsMap as any as S.Schema<UpdateServiceResponseTagsMap>;
 
 export interface UpdateServiceResponse {
   /** Fully qualified resource Id for the resource */
@@ -529,17 +497,8 @@ export interface UpdateServiceResponse {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(UpdateServiceResponseTagsMap),
-    location: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(DeviceServiceProperties),
-  }),
-).annotate({ identifier: "UpdateServiceResponse" }) as any as S.Schema<UpdateServiceResponse>;
+export const UpdateServiceResponse =
+  DeleteServiceResponse as any as S.Schema<UpdateServiceResponse>;
 
 export type CheckServiceDeviceServiceNameAvailabilityError = AzureOpError;
 /** Check if a Windows IoT Device Service name is available. */

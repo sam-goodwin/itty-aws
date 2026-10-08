@@ -156,11 +156,8 @@ export const DeleteOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgRequest>;
 
 export interface DeleteOidcCustomPropertyInclusionForOrgResponse {}
-export const DeleteOidcCustomPropertyInclusionForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOidcCustomPropertyInclusionForOrgResponse",
-}) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgResponse>;
+export const DeleteOidcCustomPropertyInclusionForOrgResponse =
+  DeleteOidcCustomPropertyInclusionForEnterpriseResponse as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgResponse>;
 
 export interface GetOidcCustomSubTemplateForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -246,23 +243,18 @@ export const ListOidcCustomPropertyInclusionsForOrgRequest = /*@__PURE__*/ S.sus
 
 export type ListOidcCustomPropertyInclusionsForOrgResponseBodyList =
   Array<OidcCustomPropertyInclusion>;
-export const ListOidcCustomPropertyInclusionsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
-  OidcCustomPropertyInclusion,
-) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponseBodyList>;
+export const ListOidcCustomPropertyInclusionsForOrgResponseBodyList =
+  ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponseBodyList>;
 
 export type ListOidcCustomPropertyInclusionsForOrgResponse =
   ListOidcCustomPropertyInclusionsForOrgResponseBodyList;
-export const ListOidcCustomPropertyInclusionsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  ListOidcCustomPropertyInclusionsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListOidcCustomPropertyInclusionsForOrgResponse",
-}) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponse>;
+export const ListOidcCustomPropertyInclusionsForOrgResponse =
+  ListOidcCustomPropertyInclusionsForEnterpriseResponse as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponse>;
 
 /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
 export type UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList = Array<string>;
-export const UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList>;
+export const UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList =
+  OidcCustomSubIncludeClaimKeysList as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList>;
 
 export interface UpdateOidcCustomSubTemplateForOrgRequest {
   /** The organization name. The name is not case sensitive. */

@@ -772,9 +772,8 @@ export const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for SubscriptionsService.ReactivateSubscription. */
 export interface ReactivateSubscriptionRequest {}
-export const ReactivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReactivateSubscriptionRequest",
-}) as any as S.Schema<ReactivateSubscriptionRequest>;
+export const ReactivateSubscriptionRequest =
+  Empty as any as S.Schema<ReactivateSubscriptionRequest>;
 
 export interface ReactivateSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */

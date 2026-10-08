@@ -159,11 +159,8 @@ export const AssociateServiceRoleToAccountRequest = /*@__PURE__*/ S.suspend(() =
 export interface AssociateServiceRoleToAccountResponse {
   AssociatedAt?: string;
 }
-export const AssociateServiceRoleToAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssociatedAt: S.optional(S.String) }),
-).annotate({
-  identifier: "AssociateServiceRoleToAccountResponse",
-}) as any as S.Schema<AssociateServiceRoleToAccountResponse>;
+export const AssociateServiceRoleToAccountResponse =
+  AssociateRoleToGroupResponse as any as S.Schema<AssociateServiceRoleToAccountResponse>;
 export type __mapOf__string = { [key: string]: string | undefined };
 export const __mapOf__string = /*@__PURE__*/ S.Record(
   S.String,
@@ -338,19 +335,8 @@ export interface CreateCoreDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-export const CreateCoreDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateCoreDefinitionResponse",
-}) as any as S.Schema<CreateCoreDefinitionResponse>;
+export const CreateCoreDefinitionResponse =
+  CreateConnectorDefinitionResponse as any as S.Schema<CreateCoreDefinitionResponse>;
 export interface CreateCoreDefinitionVersionRequest {
   AmznClientToken?: string;
   CoreDefinitionId: string;
@@ -380,16 +366,8 @@ export interface CreateCoreDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-export const CreateCoreDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateCoreDefinitionVersionResponse",
-}) as any as S.Schema<CreateCoreDefinitionVersionResponse>;
+export const CreateCoreDefinitionVersionResponse =
+  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateCoreDefinitionVersionResponse>;
 export type DeploymentType =
   | "NewDeployment"
   | "Redeployment"
@@ -436,16 +414,9 @@ export interface Device {
   SyncShadow?: boolean;
   ThingArn?: string;
 }
-export const Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateArn: S.optional(S.String),
-    Id: S.optional(S.String),
-    SyncShadow: S.optional(S.Boolean),
-    ThingArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
+export const Device = Core as any as S.Schema<Device>;
 export type __listOfDevice = Device[];
-export const __listOfDevice = /*@__PURE__*/ S.Array(Device);
+export const __listOfDevice = __listOfCore as any as S.Schema<__listOfDevice>;
 export interface DeviceDefinitionVersion {
   Devices?: Device[];
 }
@@ -486,19 +457,8 @@ export interface CreateDeviceDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-export const CreateDeviceDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeviceDefinitionResponse",
-}) as any as S.Schema<CreateDeviceDefinitionResponse>;
+export const CreateDeviceDefinitionResponse =
+  CreateConnectorDefinitionResponse as any as S.Schema<CreateDeviceDefinitionResponse>;
 export interface CreateDeviceDefinitionVersionRequest {
   AmznClientToken?: string;
   DeviceDefinitionId: string;
@@ -531,16 +491,8 @@ export interface CreateDeviceDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-export const CreateDeviceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeviceDefinitionVersionResponse",
-}) as any as S.Schema<CreateDeviceDefinitionVersionResponse>;
+export const CreateDeviceDefinitionVersionResponse =
+  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateDeviceDefinitionVersionResponse>;
 export type FunctionIsolationMode = "GreengrassContainer" | "NoContainer" | (string & {});
 export const FunctionIsolationMode = S.String;
 
@@ -692,19 +644,8 @@ export interface CreateFunctionDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-export const CreateFunctionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateFunctionDefinitionResponse",
-}) as any as S.Schema<CreateFunctionDefinitionResponse>;
+export const CreateFunctionDefinitionResponse =
+  CreateConnectorDefinitionResponse as any as S.Schema<CreateFunctionDefinitionResponse>;
 export interface CreateFunctionDefinitionVersionRequest {
   AmznClientToken?: string;
   DefaultConfig?: FunctionDefaultConfig;
@@ -739,16 +680,8 @@ export interface CreateFunctionDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-export const CreateFunctionDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateFunctionDefinitionVersionResponse",
-}) as any as S.Schema<CreateFunctionDefinitionVersionResponse>;
+export const CreateFunctionDefinitionVersionResponse =
+  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateFunctionDefinitionVersionResponse>;
 export interface GroupVersion {
   ConnectorDefinitionVersionArn?: string;
   CoreDefinitionVersionArn?: string;
@@ -875,16 +808,8 @@ export interface CreateGroupVersionResponse {
   Id?: string;
   Version?: string;
 }
-export const CreateGroupVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateGroupVersionResponse",
-}) as any as S.Schema<CreateGroupVersionResponse>;
+export const CreateGroupVersionResponse =
+  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateGroupVersionResponse>;
 export type LoggerComponent = "GreengrassSystem" | "Lambda" | (string & {});
 export const LoggerComponent = S.String;
 
@@ -952,19 +877,8 @@ export interface CreateLoggerDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-export const CreateLoggerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateLoggerDefinitionResponse",
-}) as any as S.Schema<CreateLoggerDefinitionResponse>;
+export const CreateLoggerDefinitionResponse =
+  CreateConnectorDefinitionResponse as any as S.Schema<CreateLoggerDefinitionResponse>;
 export interface CreateLoggerDefinitionVersionRequest {
   AmznClientToken?: string;
   LoggerDefinitionId: string;
@@ -997,16 +911,8 @@ export interface CreateLoggerDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-export const CreateLoggerDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateLoggerDefinitionVersionResponse",
-}) as any as S.Schema<CreateLoggerDefinitionVersionResponse>;
+export const CreateLoggerDefinitionVersionResponse =
+  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateLoggerDefinitionVersionResponse>;
 export interface GroupOwnerSetting {
   AutoAddGroupOwner?: boolean;
   GroupOwner?: string;
@@ -1158,19 +1064,8 @@ export interface CreateResourceDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-export const CreateResourceDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateResourceDefinitionResponse",
-}) as any as S.Schema<CreateResourceDefinitionResponse>;
+export const CreateResourceDefinitionResponse =
+  CreateConnectorDefinitionResponse as any as S.Schema<CreateResourceDefinitionResponse>;
 export interface CreateResourceDefinitionVersionRequest {
   AmznClientToken?: string;
   ResourceDefinitionId: string;
@@ -1203,16 +1098,8 @@ export interface CreateResourceDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-export const CreateResourceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateResourceDefinitionVersionResponse",
-}) as any as S.Schema<CreateResourceDefinitionVersionResponse>;
+export const CreateResourceDefinitionVersionResponse =
+  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateResourceDefinitionVersionResponse>;
 export type S3UrlSignerRole = string;
 export type SoftwareToUpdate = "core" | "ota_agent" | (string & {});
 export const SoftwareToUpdate = S.String;
@@ -1230,7 +1117,7 @@ export type UpdateAgentLogLevel =
 export const UpdateAgentLogLevel = S.String;
 
 export type UpdateTargets = string[];
-export const UpdateTargets = /*@__PURE__*/ S.Array(S.String);
+export const UpdateTargets = __listOf__string as any as S.Schema<UpdateTargets>;
 export type UpdateTargetsArchitecture = "armv6l" | "armv7l" | "x86_64" | "aarch64" | (string & {});
 export const UpdateTargetsArchitecture = S.String;
 
@@ -1338,19 +1225,8 @@ export interface CreateSubscriptionDefinitionResponse {
   LatestVersionArn?: string;
   Name?: string;
 }
-export const CreateSubscriptionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSubscriptionDefinitionResponse",
-}) as any as S.Schema<CreateSubscriptionDefinitionResponse>;
+export const CreateSubscriptionDefinitionResponse =
+  CreateConnectorDefinitionResponse as any as S.Schema<CreateSubscriptionDefinitionResponse>;
 export interface CreateSubscriptionDefinitionVersionRequest {
   AmznClientToken?: string;
   SubscriptionDefinitionId: string;
@@ -1383,16 +1259,8 @@ export interface CreateSubscriptionDefinitionVersionResponse {
   Id?: string;
   Version?: string;
 }
-export const CreateSubscriptionDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    Version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSubscriptionDefinitionVersionResponse",
-}) as any as S.Schema<CreateSubscriptionDefinitionVersionResponse>;
+export const CreateSubscriptionDefinitionVersionResponse =
+  CreateConnectorDefinitionVersionResponse as any as S.Schema<CreateSubscriptionDefinitionVersionResponse>;
 export interface DeleteConnectorDefinitionRequest {
   ConnectorDefinitionId: string;
 }
@@ -1458,9 +1326,8 @@ export const DeleteDeviceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDeviceDefinitionRequest",
 }) as any as S.Schema<DeleteDeviceDefinitionRequest>;
 export interface DeleteDeviceDefinitionResponse {}
-export const DeleteDeviceDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDeviceDefinitionResponse",
-}) as any as S.Schema<DeleteDeviceDefinitionResponse>;
+export const DeleteDeviceDefinitionResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<DeleteDeviceDefinitionResponse>;
 export interface DeleteFunctionDefinitionRequest {
   FunctionDefinitionId: string;
 }
@@ -1479,11 +1346,8 @@ export const DeleteFunctionDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteFunctionDefinitionRequest",
 }) as any as S.Schema<DeleteFunctionDefinitionRequest>;
 export interface DeleteFunctionDefinitionResponse {}
-export const DeleteFunctionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFunctionDefinitionResponse",
-}) as any as S.Schema<DeleteFunctionDefinitionResponse>;
+export const DeleteFunctionDefinitionResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<DeleteFunctionDefinitionResponse>;
 export interface DeleteGroupRequest {
   GroupId: string;
 }
@@ -1500,9 +1364,8 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<DeleteGroupResponse>;
 export interface DeleteLoggerDefinitionRequest {
   LoggerDefinitionId: string;
 }
@@ -1521,9 +1384,8 @@ export const DeleteLoggerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLoggerDefinitionRequest",
 }) as any as S.Schema<DeleteLoggerDefinitionRequest>;
 export interface DeleteLoggerDefinitionResponse {}
-export const DeleteLoggerDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLoggerDefinitionResponse",
-}) as any as S.Schema<DeleteLoggerDefinitionResponse>;
+export const DeleteLoggerDefinitionResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<DeleteLoggerDefinitionResponse>;
 export interface DeleteResourceDefinitionRequest {
   ResourceDefinitionId: string;
 }
@@ -1542,11 +1404,8 @@ export const DeleteResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceDefinitionRequest",
 }) as any as S.Schema<DeleteResourceDefinitionRequest>;
 export interface DeleteResourceDefinitionResponse {}
-export const DeleteResourceDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourceDefinitionResponse",
-}) as any as S.Schema<DeleteResourceDefinitionResponse>;
+export const DeleteResourceDefinitionResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<DeleteResourceDefinitionResponse>;
 export interface DeleteSubscriptionDefinitionRequest {
   SubscriptionDefinitionId: string;
 }
@@ -1570,11 +1429,8 @@ export const DeleteSubscriptionDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSubscriptionDefinitionRequest",
 }) as any as S.Schema<DeleteSubscriptionDefinitionRequest>;
 export interface DeleteSubscriptionDefinitionResponse {}
-export const DeleteSubscriptionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSubscriptionDefinitionResponse",
-}) as any as S.Schema<DeleteSubscriptionDefinitionResponse>;
+export const DeleteSubscriptionDefinitionResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<DeleteSubscriptionDefinitionResponse>;
 export interface DisassociateRoleFromGroupRequest {
   GroupId: string;
 }
@@ -1618,11 +1474,8 @@ export const DisassociateServiceRoleFromAccountRequest = /*@__PURE__*/ S.suspend
 export interface DisassociateServiceRoleFromAccountResponse {
   DisassociatedAt?: string;
 }
-export const DisassociateServiceRoleFromAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DisassociatedAt: S.optional(S.String) }),
-).annotate({
-  identifier: "DisassociateServiceRoleFromAccountResponse",
-}) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>;
+export const DisassociateServiceRoleFromAccountResponse =
+  DisassociateRoleFromGroupResponse as any as S.Schema<DisassociateServiceRoleFromAccountResponse>;
 export interface GetAssociatedRoleRequest {
   GroupId: string;
 }
@@ -1874,20 +1727,8 @@ export interface GetCoreDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetCoreDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "GetCoreDefinitionResponse",
-}) as any as S.Schema<GetCoreDefinitionResponse>;
+export const GetCoreDefinitionResponse =
+  GetConnectorDefinitionResponse as any as S.Schema<GetCoreDefinitionResponse>;
 export interface GetCoreDefinitionVersionRequest {
   CoreDefinitionId: string;
   CoreDefinitionVersionId: string;
@@ -2003,20 +1844,8 @@ export interface GetDeviceDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetDeviceDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "GetDeviceDefinitionResponse",
-}) as any as S.Schema<GetDeviceDefinitionResponse>;
+export const GetDeviceDefinitionResponse =
+  GetConnectorDefinitionResponse as any as S.Schema<GetDeviceDefinitionResponse>;
 export interface GetDeviceDefinitionVersionRequest {
   DeviceDefinitionId: string;
   DeviceDefinitionVersionId: string;
@@ -2092,20 +1921,8 @@ export interface GetFunctionDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetFunctionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "GetFunctionDefinitionResponse",
-}) as any as S.Schema<GetFunctionDefinitionResponse>;
+export const GetFunctionDefinitionResponse =
+  GetConnectorDefinitionResponse as any as S.Schema<GetFunctionDefinitionResponse>;
 export interface GetFunctionDefinitionVersionRequest {
   FunctionDefinitionId: string;
   FunctionDefinitionVersionId: string;
@@ -2332,20 +2149,8 @@ export interface GetLoggerDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetLoggerDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "GetLoggerDefinitionResponse",
-}) as any as S.Schema<GetLoggerDefinitionResponse>;
+export const GetLoggerDefinitionResponse =
+  GetConnectorDefinitionResponse as any as S.Schema<GetLoggerDefinitionResponse>;
 export interface GetLoggerDefinitionVersionRequest {
   LoggerDefinitionId: string;
   LoggerDefinitionVersionId: string;
@@ -2424,20 +2229,8 @@ export interface GetResourceDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetResourceDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "GetResourceDefinitionResponse",
-}) as any as S.Schema<GetResourceDefinitionResponse>;
+export const GetResourceDefinitionResponse =
+  GetConnectorDefinitionResponse as any as S.Schema<GetResourceDefinitionResponse>;
 export interface GetResourceDefinitionVersionRequest {
   ResourceDefinitionId: string;
   ResourceDefinitionVersionId: string;
@@ -2511,11 +2304,8 @@ export interface GetServiceRoleForAccountResponse {
   AssociatedAt?: string;
   RoleArn?: string;
 }
-export const GetServiceRoleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssociatedAt: S.optional(S.String), RoleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "GetServiceRoleForAccountResponse",
-}) as any as S.Schema<GetServiceRoleForAccountResponse>;
+export const GetServiceRoleForAccountResponse =
+  GetAssociatedRoleResponse as any as S.Schema<GetServiceRoleForAccountResponse>;
 export interface GetSubscriptionDefinitionRequest {
   SubscriptionDefinitionId: string;
 }
@@ -2548,20 +2338,8 @@ export interface GetSubscriptionDefinitionResponse {
   Name?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetSubscriptionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "GetSubscriptionDefinitionResponse",
-}) as any as S.Schema<GetSubscriptionDefinitionResponse>;
+export const GetSubscriptionDefinitionResponse =
+  GetConnectorDefinitionResponse as any as S.Schema<GetSubscriptionDefinitionResponse>;
 export interface GetSubscriptionDefinitionVersionRequest {
   NextToken?: string;
   SubscriptionDefinitionId: string;
@@ -2900,14 +2678,8 @@ export interface ListCoreDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-export const ListCoreDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Definitions: S.optional(__listOfDefinitionInformation),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCoreDefinitionsResponse",
-}) as any as S.Schema<ListCoreDefinitionsResponse>;
+export const ListCoreDefinitionsResponse =
+  ListConnectorDefinitionsResponse as any as S.Schema<ListCoreDefinitionsResponse>;
 export interface ListCoreDefinitionVersionsRequest {
   CoreDefinitionId: string;
   MaxResults?: string;
@@ -2935,11 +2707,8 @@ export interface ListCoreDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-export const ListCoreDefinitionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionInformation) }),
-).annotate({
-  identifier: "ListCoreDefinitionVersionsResponse",
-}) as any as S.Schema<ListCoreDefinitionVersionsResponse>;
+export const ListCoreDefinitionVersionsResponse =
+  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListCoreDefinitionVersionsResponse>;
 export interface ListDeploymentsRequest {
   GroupId: string;
   MaxResults?: string;
@@ -3011,14 +2780,8 @@ export interface ListDeviceDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-export const ListDeviceDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Definitions: S.optional(__listOfDefinitionInformation),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDeviceDefinitionsResponse",
-}) as any as S.Schema<ListDeviceDefinitionsResponse>;
+export const ListDeviceDefinitionsResponse =
+  ListConnectorDefinitionsResponse as any as S.Schema<ListDeviceDefinitionsResponse>;
 export interface ListDeviceDefinitionVersionsRequest {
   DeviceDefinitionId: string;
   MaxResults?: string;
@@ -3049,11 +2812,8 @@ export interface ListDeviceDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-export const ListDeviceDefinitionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionInformation) }),
-).annotate({
-  identifier: "ListDeviceDefinitionVersionsResponse",
-}) as any as S.Schema<ListDeviceDefinitionVersionsResponse>;
+export const ListDeviceDefinitionVersionsResponse =
+  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListDeviceDefinitionVersionsResponse>;
 export interface ListFunctionDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
@@ -3079,14 +2839,8 @@ export interface ListFunctionDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-export const ListFunctionDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Definitions: S.optional(__listOfDefinitionInformation),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListFunctionDefinitionsResponse",
-}) as any as S.Schema<ListFunctionDefinitionsResponse>;
+export const ListFunctionDefinitionsResponse =
+  ListConnectorDefinitionsResponse as any as S.Schema<ListFunctionDefinitionsResponse>;
 export interface ListFunctionDefinitionVersionsRequest {
   FunctionDefinitionId: string;
   MaxResults?: string;
@@ -3117,11 +2871,8 @@ export interface ListFunctionDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-export const ListFunctionDefinitionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionInformation) }),
-).annotate({
-  identifier: "ListFunctionDefinitionVersionsResponse",
-}) as any as S.Schema<ListFunctionDefinitionVersionsResponse>;
+export const ListFunctionDefinitionVersionsResponse =
+  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListFunctionDefinitionVersionsResponse>;
 export interface ListGroupCertificateAuthoritiesRequest {
   GroupId: string;
 }
@@ -3186,17 +2937,7 @@ export interface GroupInformation {
   LatestVersionArn?: string;
   Name?: string;
 }
-export const GroupInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CreationTimestamp: S.optional(S.String),
-    Id: S.optional(S.String),
-    LastUpdatedTimestamp: S.optional(S.String),
-    LatestVersion: S.optional(S.String),
-    LatestVersionArn: S.optional(S.String),
-    Name: S.optional(S.String),
-  }),
-).annotate({ identifier: "GroupInformation" }) as any as S.Schema<GroupInformation>;
+export const GroupInformation = CreateGroupResponse as any as S.Schema<GroupInformation>;
 export type __listOfGroupInformation = GroupInformation[];
 export const __listOfGroupInformation = /*@__PURE__*/ S.Array(GroupInformation);
 export interface ListGroupsResponse {
@@ -3231,11 +2972,8 @@ export interface ListGroupVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-export const ListGroupVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionInformation) }),
-).annotate({
-  identifier: "ListGroupVersionsResponse",
-}) as any as S.Schema<ListGroupVersionsResponse>;
+export const ListGroupVersionsResponse =
+  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListGroupVersionsResponse>;
 export interface ListLoggerDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
@@ -3261,14 +2999,8 @@ export interface ListLoggerDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-export const ListLoggerDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Definitions: S.optional(__listOfDefinitionInformation),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListLoggerDefinitionsResponse",
-}) as any as S.Schema<ListLoggerDefinitionsResponse>;
+export const ListLoggerDefinitionsResponse =
+  ListConnectorDefinitionsResponse as any as S.Schema<ListLoggerDefinitionsResponse>;
 export interface ListLoggerDefinitionVersionsRequest {
   LoggerDefinitionId: string;
   MaxResults?: string;
@@ -3299,11 +3031,8 @@ export interface ListLoggerDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-export const ListLoggerDefinitionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionInformation) }),
-).annotate({
-  identifier: "ListLoggerDefinitionVersionsResponse",
-}) as any as S.Schema<ListLoggerDefinitionVersionsResponse>;
+export const ListLoggerDefinitionVersionsResponse =
+  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListLoggerDefinitionVersionsResponse>;
 export interface ListResourceDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
@@ -3329,14 +3058,8 @@ export interface ListResourceDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-export const ListResourceDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Definitions: S.optional(__listOfDefinitionInformation),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResourceDefinitionsResponse",
-}) as any as S.Schema<ListResourceDefinitionsResponse>;
+export const ListResourceDefinitionsResponse =
+  ListConnectorDefinitionsResponse as any as S.Schema<ListResourceDefinitionsResponse>;
 export interface ListResourceDefinitionVersionsRequest {
   MaxResults?: string;
   NextToken?: string;
@@ -3367,11 +3090,8 @@ export interface ListResourceDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-export const ListResourceDefinitionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionInformation) }),
-).annotate({
-  identifier: "ListResourceDefinitionVersionsResponse",
-}) as any as S.Schema<ListResourceDefinitionVersionsResponse>;
+export const ListResourceDefinitionVersionsResponse =
+  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListResourceDefinitionVersionsResponse>;
 export interface ListSubscriptionDefinitionsRequest {
   MaxResults?: string;
   NextToken?: string;
@@ -3397,14 +3117,8 @@ export interface ListSubscriptionDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
 }
-export const ListSubscriptionDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Definitions: S.optional(__listOfDefinitionInformation),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSubscriptionDefinitionsResponse",
-}) as any as S.Schema<ListSubscriptionDefinitionsResponse>;
+export const ListSubscriptionDefinitionsResponse =
+  ListConnectorDefinitionsResponse as any as S.Schema<ListSubscriptionDefinitionsResponse>;
 export interface ListSubscriptionDefinitionVersionsRequest {
   MaxResults?: string;
   NextToken?: string;
@@ -3435,11 +3149,8 @@ export interface ListSubscriptionDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
 }
-export const ListSubscriptionDefinitionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Versions: S.optional(__listOfVersionInformation) }),
-).annotate({
-  identifier: "ListSubscriptionDefinitionVersionsResponse",
-}) as any as S.Schema<ListSubscriptionDefinitionVersionsResponse>;
+export const ListSubscriptionDefinitionVersionsResponse =
+  ListConnectorDefinitionVersionsResponse as any as S.Schema<ListSubscriptionDefinitionVersionsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -3483,9 +3194,8 @@ export interface ResetDeploymentsResponse {
   DeploymentArn?: string;
   DeploymentId?: string;
 }
-export const ResetDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DeploymentArn: S.optional(S.String), DeploymentId: S.optional(S.String) }),
-).annotate({ identifier: "ResetDeploymentsResponse" }) as any as S.Schema<ResetDeploymentsResponse>;
+export const ResetDeploymentsResponse =
+  CreateDeploymentResponse as any as S.Schema<ResetDeploymentsResponse>;
 export interface StartBulkDeploymentRequest {
   AmznClientToken?: string;
   ExecutionRoleArn?: string;
@@ -3538,9 +3248,8 @@ export const StopBulkDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopBulkDeploymentRequest",
 }) as any as S.Schema<StopBulkDeploymentRequest>;
 export interface StopBulkDeploymentResponse {}
-export const StopBulkDeploymentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopBulkDeploymentResponse",
-}) as any as S.Schema<StopBulkDeploymentResponse>;
+export const StopBulkDeploymentResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<StopBulkDeploymentResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   tags?: { [key: string]: string | undefined };
@@ -3551,9 +3260,8 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
@@ -3567,9 +3275,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectivityInfoRequest {
   ConnectivityInfo?: ConnectivityInfo[];
   ThingName: string;
@@ -3624,11 +3331,8 @@ export const UpdateConnectorDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConnectorDefinitionRequest",
 }) as any as S.Schema<UpdateConnectorDefinitionRequest>;
 export interface UpdateConnectorDefinitionResponse {}
-export const UpdateConnectorDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateConnectorDefinitionResponse",
-}) as any as S.Schema<UpdateConnectorDefinitionResponse>;
+export const UpdateConnectorDefinitionResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateConnectorDefinitionResponse>;
 export interface UpdateCoreDefinitionRequest {
   CoreDefinitionId: string;
   Name?: string;
@@ -3651,9 +3355,8 @@ export const UpdateCoreDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCoreDefinitionRequest",
 }) as any as S.Schema<UpdateCoreDefinitionRequest>;
 export interface UpdateCoreDefinitionResponse {}
-export const UpdateCoreDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCoreDefinitionResponse",
-}) as any as S.Schema<UpdateCoreDefinitionResponse>;
+export const UpdateCoreDefinitionResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<UpdateCoreDefinitionResponse>;
 export interface UpdateDeviceDefinitionRequest {
   DeviceDefinitionId: string;
   Name?: string;
@@ -3676,9 +3379,8 @@ export const UpdateDeviceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDeviceDefinitionRequest",
 }) as any as S.Schema<UpdateDeviceDefinitionRequest>;
 export interface UpdateDeviceDefinitionResponse {}
-export const UpdateDeviceDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDeviceDefinitionResponse",
-}) as any as S.Schema<UpdateDeviceDefinitionResponse>;
+export const UpdateDeviceDefinitionResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<UpdateDeviceDefinitionResponse>;
 export interface UpdateFunctionDefinitionRequest {
   FunctionDefinitionId: string;
   Name?: string;
@@ -3701,11 +3403,8 @@ export const UpdateFunctionDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateFunctionDefinitionRequest",
 }) as any as S.Schema<UpdateFunctionDefinitionRequest>;
 export interface UpdateFunctionDefinitionResponse {}
-export const UpdateFunctionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateFunctionDefinitionResponse",
-}) as any as S.Schema<UpdateFunctionDefinitionResponse>;
+export const UpdateFunctionDefinitionResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateFunctionDefinitionResponse>;
 export interface UpdateGroupRequest {
   GroupId: string;
   Name?: string;
@@ -3723,9 +3422,8 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateGroupRequest" }) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResponse {}
-export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateGroupResponse",
-}) as any as S.Schema<UpdateGroupResponse>;
+export const UpdateGroupResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<UpdateGroupResponse>;
 export interface UpdateGroupCertificateConfigurationRequest {
   CertificateExpiryInMilliseconds?: string;
   GroupId: string;
@@ -3755,15 +3453,8 @@ export interface UpdateGroupCertificateConfigurationResponse {
   CertificateExpiryInMilliseconds?: string;
   GroupId?: string;
 }
-export const UpdateGroupCertificateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CertificateAuthorityExpiryInMilliseconds: S.optional(S.String),
-    CertificateExpiryInMilliseconds: S.optional(S.String),
-    GroupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateGroupCertificateConfigurationResponse",
-}) as any as S.Schema<UpdateGroupCertificateConfigurationResponse>;
+export const UpdateGroupCertificateConfigurationResponse =
+  GetGroupCertificateConfigurationResponse as any as S.Schema<UpdateGroupCertificateConfigurationResponse>;
 export interface UpdateLoggerDefinitionRequest {
   LoggerDefinitionId: string;
   Name?: string;
@@ -3786,9 +3477,8 @@ export const UpdateLoggerDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLoggerDefinitionRequest",
 }) as any as S.Schema<UpdateLoggerDefinitionRequest>;
 export interface UpdateLoggerDefinitionResponse {}
-export const UpdateLoggerDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateLoggerDefinitionResponse",
-}) as any as S.Schema<UpdateLoggerDefinitionResponse>;
+export const UpdateLoggerDefinitionResponse =
+  DeleteCoreDefinitionResponse as any as S.Schema<UpdateLoggerDefinitionResponse>;
 export interface UpdateResourceDefinitionRequest {
   Name?: string;
   ResourceDefinitionId: string;
@@ -3811,11 +3501,8 @@ export const UpdateResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceDefinitionRequest",
 }) as any as S.Schema<UpdateResourceDefinitionRequest>;
 export interface UpdateResourceDefinitionResponse {}
-export const UpdateResourceDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateResourceDefinitionResponse",
-}) as any as S.Schema<UpdateResourceDefinitionResponse>;
+export const UpdateResourceDefinitionResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateResourceDefinitionResponse>;
 export interface UpdateSubscriptionDefinitionRequest {
   Name?: string;
   SubscriptionDefinitionId: string;
@@ -3841,11 +3528,8 @@ export const UpdateSubscriptionDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSubscriptionDefinitionRequest",
 }) as any as S.Schema<UpdateSubscriptionDefinitionRequest>;
 export interface UpdateSubscriptionDefinitionResponse {}
-export const UpdateSubscriptionDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateSubscriptionDefinitionResponse",
-}) as any as S.Schema<UpdateSubscriptionDefinitionResponse>;
+export const UpdateSubscriptionDefinitionResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateSubscriptionDefinitionResponse>;
 export interface TelemetryConfigurationUpdate {
   Telemetry?: Telemetry;
 }
@@ -3876,11 +3560,8 @@ export const UpdateThingRuntimeConfigurationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateThingRuntimeConfigurationRequest",
 }) as any as S.Schema<UpdateThingRuntimeConfigurationRequest>;
 export interface UpdateThingRuntimeConfigurationResponse {}
-export const UpdateThingRuntimeConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateThingRuntimeConfigurationResponse",
-}) as any as S.Schema<UpdateThingRuntimeConfigurationResponse>;
+export const UpdateThingRuntimeConfigurationResponse =
+  DeleteConnectorDefinitionResponse as any as S.Schema<UpdateThingRuntimeConfigurationResponse>;
 export type AssociateRoleToGroupError =
   | BadRequestException
   | InternalServerErrorException

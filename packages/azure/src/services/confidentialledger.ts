@@ -245,10 +245,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateLedgerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateLedgerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateLedgerResponseTagsMap>;
+export const CreateLedgerResponseTagsMap =
+  CreateLedgerRequestTagsMap as any as S.Schema<CreateLedgerResponseTagsMap>;
 
 /** Object representing ProvisioningState for Confidential Ledger. */
 export type ProvisioningState =
@@ -263,15 +261,13 @@ export const ProvisioningState = S.String;
 
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesAadBasedSecurityPrincipalsList = Array<AADBasedSecurityPrincipal>;
-export const LedgerPropertiesAadBasedSecurityPrincipalsList = /*@__PURE__*/ S.Array(
-  AADBasedSecurityPrincipal,
-) as any as S.Schema<LedgerPropertiesAadBasedSecurityPrincipalsList>;
+export const LedgerPropertiesAadBasedSecurityPrincipalsList =
+  LedgerPropertiesInputAadBasedSecurityPrincipalsList as any as S.Schema<LedgerPropertiesAadBasedSecurityPrincipalsList>;
 
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesCertBasedSecurityPrincipalsList = Array<CertBasedSecurityPrincipal>;
-export const LedgerPropertiesCertBasedSecurityPrincipalsList = /*@__PURE__*/ S.Array(
-  CertBasedSecurityPrincipal,
-) as any as S.Schema<LedgerPropertiesCertBasedSecurityPrincipalsList>;
+export const LedgerPropertiesCertBasedSecurityPrincipalsList =
+  LedgerPropertiesInputCertBasedSecurityPrincipalsList as any as S.Schema<LedgerPropertiesCertBasedSecurityPrincipalsList>;
 
 /** Object representing the enclave platform for the Confidential Ledger application. Defaults to IntelSgx. */
 export type EnclavePlatform = "IntelSgx" | "AmdSevSnp";
@@ -465,10 +461,8 @@ export const GetLedgerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetLedgerResponseTagsMap = { [key: string]: string | undefined };
-export const GetLedgerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetLedgerResponseTagsMap>;
+export const GetLedgerResponseTagsMap =
+  CreateLedgerRequestTagsMap as any as S.Schema<GetLedgerResponseTagsMap>;
 
 export interface GetLedgerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -486,17 +480,7 @@ export interface GetLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
-export const GetLedgerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetLedgerResponseTagsMap),
-    location: S.String,
-    properties: S.optional(LedgerProperties),
-  }),
-).annotate({ identifier: "GetLedgerResponse" }) as any as S.Schema<GetLedgerResponse>;
+export const GetLedgerResponse = CreateLedgerResponse as any as S.Schema<GetLedgerResponse>;
 
 export interface ListLedgerByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -525,10 +509,8 @@ export const ListLedgerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConfidentialLedgerTagsMap = { [key: string]: string | undefined };
-export const ConfidentialLedgerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConfidentialLedgerTagsMap>;
+export const ConfidentialLedgerTagsMap =
+  CreateLedgerRequestTagsMap as any as S.Schema<ConfidentialLedgerTagsMap>;
 
 /** Confidential Ledger. Contains the properties of Confidential Ledger Resource. */
 export interface ConfidentialLedger {
@@ -547,17 +529,7 @@ export interface ConfidentialLedger {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
-export const ConfidentialLedger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ConfidentialLedgerTagsMap),
-    location: S.String,
-    properties: S.optional(LedgerProperties),
-  }),
-).annotate({ identifier: "ConfidentialLedger" }) as any as S.Schema<ConfidentialLedger>;
+export const ConfidentialLedger = CreateLedgerResponse as any as S.Schema<ConfidentialLedger>;
 
 /** The ConfidentialLedger items on this page */
 export type ConfidentialLedgerListValueList = Array<ConfidentialLedger>;
@@ -678,10 +650,8 @@ export const ResourceProviderOperationList = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLedgerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateLedgerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLedgerRequestTagsMap>;
+export const UpdateLedgerRequestTagsMap =
+  CreateLedgerRequestTagsMap as any as S.Schema<UpdateLedgerRequestTagsMap>;
 
 export interface UpdateLedgerRequest {
   /** The ID of the target subscription. */
@@ -717,10 +687,8 @@ export const UpdateLedgerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLedgerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLedgerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateLedgerResponseTagsMap>;
+export const UpdateLedgerResponseTagsMap =
+  CreateLedgerRequestTagsMap as any as S.Schema<UpdateLedgerResponseTagsMap>;
 
 export interface UpdateLedgerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -738,17 +706,7 @@ export interface UpdateLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
-export const UpdateLedgerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateLedgerResponseTagsMap),
-    location: S.String,
-    properties: S.optional(LedgerProperties),
-  }),
-).annotate({ identifier: "UpdateLedgerResponse" }) as any as S.Schema<UpdateLedgerResponse>;
+export const UpdateLedgerResponse = CreateLedgerResponse as any as S.Schema<UpdateLedgerResponse>;
 
 export type CheckNameAvailabilityError = AzureOpError;
 /** To check whether a resource name is available. */

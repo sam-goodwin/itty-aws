@@ -451,9 +451,7 @@ export const TurkeyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 export interface GeorgiaAdditionalInfo {
   personType: PersonType;
 }
-export const GeorgiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ personType: PersonType }),
-).annotate({ identifier: "GeorgiaAdditionalInfo" }) as any as S.Schema<GeorgiaAdditionalInfo>;
+export const GeorgiaAdditionalInfo = KenyaAdditionalInfo as any as S.Schema<GeorgiaAdditionalInfo>;
 export type SdiAccountId = string;
 export type CigNumber = string;
 export type CupNumber = string;
@@ -1302,9 +1300,8 @@ export const PutTaxInheritanceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutTaxInheritanceRequest" }) as any as S.Schema<PutTaxInheritanceRequest>;
 export interface PutTaxInheritanceResponse {}
-export const PutTaxInheritanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutTaxInheritanceResponse",
-}) as any as S.Schema<PutTaxInheritanceResponse>;
+export const PutTaxInheritanceResponse =
+  DeleteTaxRegistrationResponse as any as S.Schema<PutTaxInheritanceResponse>;
 export interface PutTaxRegistrationRequest {
   accountId?: string;
   taxRegistrationEntry: TaxRegistrationEntry;

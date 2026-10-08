@@ -16,9 +16,8 @@ export const CheckIamAuthorizationRequestActionsList = /*@__PURE__*/ S.Array(
 
 /** Resources on which accesses should be checked */
 export type CheckIamAuthorizationRequestResourceURNsList = Array<string>;
-export const CheckIamAuthorizationRequestResourceURNsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckIamAuthorizationRequestResourceURNsList>;
+export const CheckIamAuthorizationRequestResourceURNsList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<CheckIamAuthorizationRequestResourceURNsList>;
 
 export interface CheckIamAuthorizationRequest {
   /** Pagination cursor */
@@ -43,15 +42,13 @@ export const CheckIamAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Authorized actions */
 export type IamAuthorizeBatchResponseAuthorizedActionsList = Array<string>;
-export const IamAuthorizeBatchResponseAuthorizedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IamAuthorizeBatchResponseAuthorizedActionsList>;
+export const IamAuthorizeBatchResponseAuthorizedActionsList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeBatchResponseAuthorizedActionsList>;
 
 /** Unauthorized actions */
 export type IamAuthorizeBatchResponseUnauthorizedActionsList = Array<string>;
-export const IamAuthorizeBatchResponseUnauthorizedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IamAuthorizeBatchResponseUnauthorizedActionsList>;
+export const IamAuthorizeBatchResponseUnauthorizedActionsList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeBatchResponseUnauthorizedActionsList>;
 
 /** Result of an authorization request */
 export interface IamAuthorizeBatchResponse {
@@ -86,9 +83,8 @@ export const CheckIamAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions to check authorizations for */
 export type CheckIamResourceAuthorizationRequestActionsList = Array<string>;
-export const CheckIamResourceAuthorizationRequestActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CheckIamResourceAuthorizationRequestActionsList>;
+export const CheckIamResourceAuthorizationRequestActionsList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<CheckIamResourceAuthorizationRequestActionsList>;
 
 export interface CheckIamResourceAuthorizationRequest {
   /** ResourceURN */
@@ -109,15 +105,13 @@ export const CheckIamResourceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Authorized actions */
 export type IamAuthorizeResponseAuthorizedActionsList = Array<string>;
-export const IamAuthorizeResponseAuthorizedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IamAuthorizeResponseAuthorizedActionsList>;
+export const IamAuthorizeResponseAuthorizedActionsList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeResponseAuthorizedActionsList>;
 
 /** Unauthorized actions */
 export type IamAuthorizeResponseUnauthorizedActionsList = Array<string>;
-export const IamAuthorizeResponseUnauthorizedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IamAuthorizeResponseUnauthorizedActionsList>;
+export const IamAuthorizeResponseUnauthorizedActionsList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeResponseUnauthorizedActionsList>;
 
 /** Result of an authorization request */
 export interface IamAuthorizeResponse {
@@ -209,15 +203,13 @@ export const IamPolicyPermissionsAllowList = /*@__PURE__*/ S.Array(
 
 /** Actions to deny the access to */
 export type IamPolicyPermissionsDenyList = Array<IamPolicyAction>;
-export const IamPolicyPermissionsDenyList = /*@__PURE__*/ S.Array(
-  IamPolicyAction,
-) as any as S.Schema<IamPolicyPermissionsDenyList>;
+export const IamPolicyPermissionsDenyList =
+  IamPolicyPermissionsAllowList as any as S.Schema<IamPolicyPermissionsDenyList>;
 
 /** Actions to filter from the allowed list */
 export type IamPolicyPermissionsExceptList = Array<IamPolicyAction>;
-export const IamPolicyPermissionsExceptList = /*@__PURE__*/ S.Array(
-  IamPolicyAction,
-) as any as S.Schema<IamPolicyPermissionsExceptList>;
+export const IamPolicyPermissionsExceptList =
+  IamPolicyPermissionsAllowList as any as S.Schema<IamPolicyPermissionsExceptList>;
 
 /** Permissions included in a policy */
 export interface IamPolicyPermissions {
@@ -322,9 +314,8 @@ export const IamPolicyCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** Recipients of the delegated resources */
 export type CreateIamPolicyRequestIdentitiesList = Array<string>;
-export const CreateIamPolicyRequestIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIamPolicyRequestIdentitiesList>;
+export const CreateIamPolicyRequestIdentitiesList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<CreateIamPolicyRequestIdentitiesList>;
 
 /** Permissions group linked to a policy */
 export interface IamPolicyPermissionsGroupInput {
@@ -395,9 +386,8 @@ export const CreateIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Recipients of the delegated resources */
 export type IamPolicyResponseIdentitiesList = Array<string>;
-export const IamPolicyResponseIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IamPolicyResponseIdentitiesList>;
+export const IamPolicyResponseIdentitiesList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamPolicyResponseIdentitiesList>;
 
 /** Permissions group linked to a policy */
 export interface IamPolicyPermissionsGroup {
@@ -446,10 +436,8 @@ export const IamPolicyGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamPolicySingleResourceTagsMap = { [key: string]: string | undefined };
-export const IamPolicySingleResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IamPolicySingleResourceTagsMap>;
+export const IamPolicySingleResourceTagsMap =
+  IamPolicyConditionValuesMap as any as S.Schema<IamPolicySingleResourceTagsMap>;
 
 /** Single resource in a policy */
 export interface IamPolicySingleResource {
@@ -584,10 +572,8 @@ export const CreateIamResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamGroupResourceTagsMap = { [key: string]: string | undefined };
-export const IamGroupResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IamGroupResourceTagsMap>;
+export const IamGroupResourceTagsMap =
+  IamPolicyConditionValuesMap as any as S.Schema<IamGroupResourceTagsMap>;
 
 /** Resource is an entity standing for a product. It is used for right delegation */
 export interface IamGroupResource {
@@ -723,9 +709,8 @@ export const DeleteIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIamPolicyRequest" }) as any as S.Schema<DeleteIamPolicyRequest>;
 
 export interface DeleteIamPolicyResponse {}
-export const DeleteIamPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIamPolicyResponse",
-}) as any as S.Schema<DeleteIamPolicyResponse>;
+export const DeleteIamPolicyResponse =
+  CreateIamResourceTagResponse as any as S.Schema<DeleteIamPolicyResponse>;
 
 export interface DeleteIamResourceGroupRequest {
   /** Group ID */
@@ -740,9 +725,8 @@ export const DeleteIamResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIamResourceGroupRequest>;
 
 export interface DeleteIamResourceGroupResponse {}
-export const DeleteIamResourceGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIamResourceGroupResponse",
-}) as any as S.Schema<DeleteIamResourceGroupResponse>;
+export const DeleteIamResourceGroupResponse =
+  CreateIamResourceTagResponse as any as S.Schema<DeleteIamResourceGroupResponse>;
 
 export interface DeleteIamResourceTagRequest {
   /** ResourceURN */
@@ -760,9 +744,8 @@ export const DeleteIamResourceTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIamResourceTagRequest>;
 
 export interface DeleteIamResourceTagResponse {}
-export const DeleteIamResourceTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIamResourceTagResponse",
-}) as any as S.Schema<DeleteIamResourceTagResponse>;
+export const DeleteIamResourceTagResponse =
+  CreateIamResourceTagResponse as any as S.Schema<DeleteIamResourceTagResponse>;
 
 export interface GetIamLogKindRequest {
   /** Name */
@@ -776,9 +759,8 @@ export const GetIamLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-export const DbaasLogsLogKindAdditionalReturnedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
+export const DbaasLogsLogKindAdditionalReturnedFieldsList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
 
 /** Log kind */
 export interface DbaasLogsLogKind {
@@ -900,10 +882,8 @@ export const GetIamResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceResourceTagsMap = { [key: string]: string | undefined };
-export const IamResourceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IamResourceResourceTagsMap>;
+export const IamResourceResourceTagsMap =
+  IamPolicyConditionValuesMap as any as S.Schema<IamResourceResourceTagsMap>;
 
 /** Resource is an entity standing for a product. It is used for right delegation */
 export interface IamResourceResource {
@@ -963,9 +943,8 @@ export const ListIamLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIamLogKindRequest" }) as any as S.Schema<ListIamLogKindRequest>;
 
 export type ListIamLogKindResponseBodyList = Array<string>;
-export const ListIamLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamLogKindResponseBodyList>;
+export const ListIamLogKindResponseBodyList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamLogKindResponseBodyList>;
 
 export type ListIamLogKindResponse = ListIamLogKindResponseBodyList;
 export const ListIamLogKindResponse = /*@__PURE__*/ S.suspend(() =>
@@ -991,9 +970,8 @@ export const ListIamLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIamLogSubscriptionRequest>;
 
 export type ListIamLogSubscriptionResponseBodyList = Array<string>;
-export const ListIamLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamLogSubscriptionResponseBodyList>;
+export const ListIamLogSubscriptionResponseBodyList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamLogSubscriptionResponseBodyList>;
 
 export type ListIamLogSubscriptionResponse = ListIamLogSubscriptionResponseBodyList;
 export const ListIamLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1030,19 +1008,16 @@ export const ListIamPermissionsGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIamPermissionsGroupResponse>;
 
 export type ListIamPolicyRequestActionList = Array<string>;
-export const ListIamPolicyRequestActionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamPolicyRequestActionList>;
+export const ListIamPolicyRequestActionList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamPolicyRequestActionList>;
 
 export type ListIamPolicyRequestIdentityList = Array<string>;
-export const ListIamPolicyRequestIdentityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamPolicyRequestIdentityList>;
+export const ListIamPolicyRequestIdentityList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamPolicyRequestIdentityList>;
 
 export type ListIamPolicyRequestResourceURNList = Array<string>;
-export const ListIamPolicyRequestResourceURNList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamPolicyRequestResourceURNList>;
+export const ListIamPolicyRequestResourceURNList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamPolicyRequestResourceURNList>;
 
 export interface ListIamPolicyRequest {
   /** Filter on policies embedding the given IAM action */
@@ -1083,9 +1058,8 @@ export const ListIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIamPolicyResponse" }) as any as S.Schema<ListIamPolicyResponse>;
 
 export type ListIamReferenceActionRequestResourceTypeList = Array<string>;
-export const ListIamReferenceActionRequestResourceTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamReferenceActionRequestResourceTypeList>;
+export const ListIamReferenceActionRequestResourceTypeList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamReferenceActionRequestResourceTypeList>;
 
 export interface ListIamReferenceActionRequest {
   /** Filter actions for specific resource types */
@@ -1107,9 +1081,8 @@ export const ListIamReferenceActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of categories the action belongs to */
 export type IamReferenceActionCategoriesList = Array<string>;
-export const IamReferenceActionCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IamReferenceActionCategoriesList>;
+export const IamReferenceActionCategoriesList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamReferenceActionCategoriesList>;
 
 /** Action that can be allowed or denied on a resource */
 export interface IamReferenceAction {
@@ -1162,37 +1135,29 @@ export const ListIamReferenceResourceTypeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIamReferenceResourceTypeRequest>;
 
 export type ListIamReferenceResourceTypeResponseBodyList = Array<string>;
-export const ListIamReferenceResourceTypeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamReferenceResourceTypeResponseBodyList>;
+export const ListIamReferenceResourceTypeResponseBodyList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamReferenceResourceTypeResponseBodyList>;
 
 export type ListIamReferenceResourceTypeResponse = ListIamReferenceResourceTypeResponseBodyList;
-export const ListIamReferenceResourceTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListIamReferenceResourceTypeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListIamReferenceResourceTypeResponse",
-}) as any as S.Schema<ListIamReferenceResourceTypeResponse>;
+export const ListIamReferenceResourceTypeResponse =
+  ListIamLogSubscriptionResponse as any as S.Schema<ListIamReferenceResourceTypeResponse>;
 
 export type ListIamResourceRequestResourceNameList = Array<string>;
-export const ListIamResourceRequestResourceNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamResourceRequestResourceNameList>;
+export const ListIamResourceRequestResourceNameList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamResourceRequestResourceNameList>;
 
 export type ListIamResourceRequestResourceTypeList = Array<string>;
-export const ListIamResourceRequestResourceTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamResourceRequestResourceTypeList>;
+export const ListIamResourceRequestResourceTypeList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamResourceRequestResourceTypeList>;
 
 export type ListIamResourceRequestResourceURNList = Array<string>;
-export const ListIamResourceRequestResourceURNList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListIamResourceRequestResourceURNList>;
+export const ListIamResourceRequestResourceURNList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamResourceRequestResourceURNList>;
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "IamResourceTagFilterInput",
-}) as any as S.Schema<IamResourceTagFilterInput>;
+export const IamResourceTagFilterInput =
+  CreateIamResourceTagResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListIamResourceRequestTagsValueList = Array<IamResourceTagFilterInput>;
 export const ListIamResourceRequestTagsValueList = /*@__PURE__*/ S.Array(
@@ -1295,21 +1260,18 @@ export const PutIamPermissionsGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Recipients of the delegated resources */
 export type PutIamPolicyRequestIdentitiesList = Array<string>;
-export const PutIamPolicyRequestIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutIamPolicyRequestIdentitiesList>;
+export const PutIamPolicyRequestIdentitiesList =
+  CheckIamAuthorizationRequestActionsList as any as S.Schema<PutIamPolicyRequestIdentitiesList>;
 
 /** Permissions groups accorded to the recipients on the given resources */
 export type PutIamPolicyRequestPermissionsGroupsList = Array<IamPolicyPermissionsGroupInput>;
-export const PutIamPolicyRequestPermissionsGroupsList = /*@__PURE__*/ S.Array(
-  IamPolicyPermissionsGroupInput,
-) as any as S.Schema<PutIamPolicyRequestPermissionsGroupsList>;
+export const PutIamPolicyRequestPermissionsGroupsList =
+  CreateIamPolicyRequestPermissionsGroupsList as any as S.Schema<PutIamPolicyRequestPermissionsGroupsList>;
 
 /** Resources to delegate */
 export type PutIamPolicyRequestResourcesList = Array<IamPolicyResourceInput>;
-export const PutIamPolicyRequestResourcesList = /*@__PURE__*/ S.Array(
-  IamPolicyResourceInput,
-) as any as S.Schema<PutIamPolicyRequestResourcesList>;
+export const PutIamPolicyRequestResourcesList =
+  CreateIamPolicyRequestResourcesList as any as S.Schema<PutIamPolicyRequestResourcesList>;
 
 export interface PutIamPolicyRequest {
   /** Policy ID */
@@ -1347,10 +1309,8 @@ export const PutIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type PutIamResourceRequestTagsMap = { [key: string]: string | undefined };
-export const PutIamResourceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PutIamResourceRequestTagsMap>;
+export const PutIamResourceRequestTagsMap =
+  IamPolicyConditionValuesMap as any as S.Schema<PutIamResourceRequestTagsMap>;
 
 export interface PutIamResourceRequest {
   /** ResourceURN */
@@ -1367,9 +1327,8 @@ export const PutIamResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** New list of resources of the group */
 export type PutIamResourceGroupRequestResourcesList = Array<IamGroupResourceInput>;
-export const PutIamResourceGroupRequestResourcesList = /*@__PURE__*/ S.Array(
-  IamGroupResourceInput,
-) as any as S.Schema<PutIamResourceGroupRequestResourcesList>;
+export const PutIamResourceGroupRequestResourcesList =
+  CreateIamResourceGroupRequestResourcesList as any as S.Schema<PutIamResourceGroupRequestResourcesList>;
 
 export interface PutIamResourceGroupRequest {
   /** Group ID */

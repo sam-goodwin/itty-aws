@@ -754,10 +754,8 @@ export const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkUpdateScriptSecretsResponse>;
 
 export type CreateAssetUploadBodyMap = { [key: string]: unknown | undefined };
-export const CreateAssetUploadBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateAssetUploadBodyMap>;
+export const CreateAssetUploadBodyMap =
+  ScriptsSecretsBulkUpdateRequestVersionTagsMap as any as S.Schema<CreateAssetUploadBodyMap>;
 
 export interface CreateAssetUploadRequest {
   /** Identifier. */
@@ -842,9 +840,8 @@ export const BetaWorkersCreateRequestObservabilityLogs = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<BetaWorkersCreateRequestObservabilityLogs>;
 
 export type BetaWorkersCreateRequestObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersCreateRequestObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersCreateRequestObservabilityTracesDestinationsList>;
+export const BetaWorkersCreateRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateRequestObservabilityTracesDestinationsList>;
 
 export type BetaWorkersCreateRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -998,9 +995,7 @@ export const BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs = /*@__
 export type BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -1339,9 +1334,8 @@ export const BetaWorkersCreateRequestSubdomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BetaWorkersCreateRequestSubdomain>;
 
 export type BetaWorkersCreateRequestTagsList = Array<string>;
-export const BetaWorkersCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersCreateRequestTagsList>;
+export const BetaWorkersCreateRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateRequestTagsList>;
 
 export type BetaWorkersCreateRequestTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -1350,9 +1344,8 @@ export const BetaWorkersCreateRequestTailConsumersItem =
 
 export type BetaWorkersCreateRequestTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersCreateRequestTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersCreateRequestTailConsumersList>;
+export const BetaWorkersCreateRequestTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersCreateRequestTailConsumersList>;
 
 export interface CreateBetaWorkerRequest {
   /** Identifier. */
@@ -1404,9 +1397,8 @@ export const BetaWorkersCreateResponseObservabilityIssues = /*@__PURE__*/ S.susp
 }) as any as S.Schema<BetaWorkersCreateResponseObservabilityIssues>;
 
 export type BetaWorkersCreateResponseObservabilityLogsDestinationsList = Array<string>;
-export const BetaWorkersCreateResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersCreateResponseObservabilityLogsDestinationsList>;
+export const BetaWorkersCreateResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponseObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersCreateResponseObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -1433,9 +1425,8 @@ export const BetaWorkersCreateResponseObservabilityLogs = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<BetaWorkersCreateResponseObservabilityLogs>;
 
 export type BetaWorkersCreateResponseObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersCreateResponseObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersCreateResponseObservabilityTracesDestinationsList>;
+export const BetaWorkersCreateResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponseObservabilityTracesDestinationsList>;
 
 export type BetaWorkersCreateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -1681,9 +1672,8 @@ export const BetaWorkersCreateResponseSubdomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BetaWorkersCreateResponseSubdomain>;
 
 export type BetaWorkersCreateResponseTagsList = Array<string>;
-export const BetaWorkersCreateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersCreateResponseTagsList>;
+export const BetaWorkersCreateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponseTagsList>;
 
 export type BetaWorkersCreateResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -1692,9 +1682,8 @@ export const BetaWorkersCreateResponseTailConsumersItem =
 
 export type BetaWorkersCreateResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersCreateResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersCreateResponseTailConsumersList>;
+export const BetaWorkersCreateResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersCreateResponseTailConsumersList>;
 
 export interface BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions {
   /** Whether caching is enabled for this Worker. */
@@ -1719,10 +1708,8 @@ export const BetaWorkersCreateResponsePreviewsBaseConfigEnvValue =
 export type BetaWorkersCreateResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
-export const BetaWorkersCreateResponsePreviewsBaseConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BetaWorkersCreateRequestPreviewsBaseConfigEnvValue,
-) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigEnvMap>;
+export const BetaWorkersCreateResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigEnvMap>;
 
 export interface BetaWorkersCreateResponsePreviewsBaseConfigLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
@@ -1747,9 +1734,7 @@ export const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityIssues =
 export type BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
 export const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -1781,9 +1766,7 @@ export const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs = /*@_
 export type BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -2015,9 +1998,8 @@ export const BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersItem =
 
 export type BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList>;
+export const BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList>;
 
 export interface BetaWorkersCreateResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
@@ -2136,9 +2118,7 @@ export const BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling = S.St
 
 export type BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export const BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List>;
 
 export type BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst =
   | boolean
@@ -2850,16 +2830,12 @@ export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailType = S.Strin
 export type BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface BetaWorkersVersionsCreateRequestBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -3339,9 +3315,8 @@ export const BetaWorkersVersionsCreateRequestCacheOptions =
   BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
 
 export type BetaWorkersVersionsCreateRequestCompatibilityFlagsList = Array<string>;
-export const BetaWorkersVersionsCreateRequestCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsCreateRequestCompatibilityFlagsList>;
+export const BetaWorkersVersionsCreateRequestCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestCompatibilityFlagsList>;
 
 export type ContainerImageMap = { [key: string]: string | undefined };
 export const ContainerImageMap = /*@__PURE__*/ S.Record(
@@ -3610,35 +3585,23 @@ export interface BetaWorkersVersionsCreateRequestLimits {
   /** Subrequest limit per request. */
   subrequests?: number;
 }
-export const BetaWorkersVersionsCreateRequestLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
-    subrequests: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateRequestLimits",
-}) as any as S.Schema<BetaWorkersVersionsCreateRequestLimits>;
+export const BetaWorkersVersionsCreateRequestLimits =
+  BetaWorkersCreateRequestPreviewsBaseConfigLimits as any as S.Schema<BetaWorkersVersionsCreateRequestLimits>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export interface BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem {
   from?: string;
@@ -3739,23 +3702,17 @@ export const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigration =
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem;
@@ -3765,9 +3722,7 @@ export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrat
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem;
@@ -3777,9 +3732,7 @@ export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrat
 export type BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -4153,9 +4106,8 @@ export const CreateBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBetaWorkerVersionRequest>;
 
 export type BetaWorkersVersionsCreateResponseUrlsList = Array<string>;
-export const BetaWorkersVersionsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsCreateResponseUrlsList>;
+export const BetaWorkersVersionsCreateResponseUrlsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseUrlsList>;
 
 export interface BetaWorkersVersionsCreateResponseAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
@@ -4190,9 +4142,7 @@ export const BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling = S.S
 
 export type BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export const BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List>;
 
 export type BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirst =
   | boolean
@@ -4470,9 +4420,7 @@ export const BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutbo
 export type BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsList>;
+  BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsList as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export interface BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker {
   /** Entrypoint to invoke on the outbound worker. */
@@ -4905,16 +4853,12 @@ export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailType = S.Stri
 export type BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface BetaWorkersVersionsCreateResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -5393,9 +5337,8 @@ export const BetaWorkersVersionsCreateResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 
 export type BetaWorkersVersionsCreateResponseCompatibilityFlagsList = Array<string>;
-export const BetaWorkersVersionsCreateResponseCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsCreateResponseCompatibilityFlagsList>;
+export const BetaWorkersVersionsCreateResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseCompatibilityFlagsList>;
 
 export interface BetaWorkersVersionsCreateResponseContainersItem {
   /** Select which Durable Object class should get this container attached. */
@@ -5645,15 +5588,11 @@ export const BetaWorkersVersionsCreateResponseExportsMap = /*@__PURE__*/ S.Recor
 
 export type BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList = Array<string>;
 export const BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList>;
 
 export type BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList = Array<string>;
 export const BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList>;
 
 export type BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -5694,9 +5633,7 @@ export const BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemScena
 export type BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -5736,9 +5673,7 @@ export const BetaWorkersVersionsCreateResponseExportsReconciliationInfoList = /*
 export type BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList>;
 
 export interface BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem {
   /** The original (source) class name. */
@@ -5818,9 +5753,7 @@ export const BetaWorkersVersionsCreateResponseExportsReconciliationTransferredLi
 
 export type BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList = Array<string>;
 export const BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList>;
 
 export type BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -5934,35 +5867,23 @@ export interface BetaWorkersVersionsCreateResponseLimits {
   /** Subrequest limit per request. */
   subrequests?: number | null;
 }
-export const BetaWorkersVersionsCreateResponseLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpuMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_ms"))),
-    subrequests: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "BetaWorkersVersionsCreateResponseLimits",
-}) as any as S.Schema<BetaWorkersVersionsCreateResponseLimits>;
+export const BetaWorkersVersionsCreateResponseLimits =
+  BetaWorkersCreateResponsePreviewsBaseConfigLimits as any as S.Schema<BetaWorkersVersionsCreateResponseLimits>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export interface BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem {
   from?: string | null;
@@ -6063,23 +5984,17 @@ export const BetaWorkersVersionsCreateResponseMigrationsSingleStepMigration =
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -6089,9 +6004,7 @@ export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigra
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -6101,9 +6014,7 @@ export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigra
 export type BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -6203,9 +6114,8 @@ export const BetaWorkersVersionsCreateResponseModulesItem =
 
 export type BetaWorkersVersionsCreateResponseModulesList =
   Array<BetaWorkersVersionsCreateRequestModulesItem>;
-export const BetaWorkersVersionsCreateResponseModulesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateRequestModulesItem,
-) as any as S.Schema<BetaWorkersVersionsCreateResponseModulesList>;
+export const BetaWorkersVersionsCreateResponseModulesList =
+  BetaWorkersVersionsCreateRequestModulesList as any as S.Schema<BetaWorkersVersionsCreateResponseModulesList>;
 
 export type BetaWorkersVersionsCreateResponsePackageDependenciesItem =
   BetaWorkersVersionsCreateRequestPackageDependenciesItem;
@@ -6214,9 +6124,8 @@ export const BetaWorkersVersionsCreateResponsePackageDependenciesItem =
 
 export type BetaWorkersVersionsCreateResponsePackageDependenciesList =
   Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
-export const BetaWorkersVersionsCreateResponsePackageDependenciesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateRequestPackageDependenciesItem,
-) as any as S.Schema<BetaWorkersVersionsCreateResponsePackageDependenciesList>;
+export const BetaWorkersVersionsCreateResponsePackageDependenciesList =
+  BetaWorkersVersionsCreateRequestPackageDependenciesList as any as S.Schema<BetaWorkersVersionsCreateResponsePackageDependenciesList>;
 
 export type BetaWorkersVersionsCreateResponsePlacementModeMode = "smart";
 export const BetaWorkersVersionsCreateResponsePlacementModeMode = S.String;
@@ -6479,10 +6388,8 @@ export const CreateBetaWorkerVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export type ObservabilityDestinationsCreateRequestConfigurationHeadersMap = {
   [key: string]: string | undefined;
 };
-export const ObservabilityDestinationsCreateRequestConfigurationHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ObservabilityDestinationsCreateRequestConfigurationHeadersMap>;
+export const ObservabilityDestinationsCreateRequestConfigurationHeadersMap =
+  ContainerImageMap as any as S.Schema<ObservabilityDestinationsCreateRequestConfigurationHeadersMap>;
 
 export type ObservabilityDestinationsCreateRequestConfigurationLogpushDataset =
   | "opentelemetry-traces"
@@ -6566,9 +6473,8 @@ export const ObservabilityDestinationsCreateResponseConfiguration = /*@__PURE__*
 }) as any as S.Schema<ObservabilityDestinationsCreateResponseConfiguration>;
 
 export type ObservabilityDestinationsCreateResponseScriptsList = Array<string>;
-export const ObservabilityDestinationsCreateResponseScriptsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityDestinationsCreateResponseScriptsList>;
+export const ObservabilityDestinationsCreateResponseScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsCreateResponseScriptsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateObservabilityDestinationResponse {
@@ -6704,9 +6610,8 @@ export const ObservabilityQueriesCreateRequestParametersCalculationsList = /*@__
 ) as any as S.Schema<ObservabilityQueriesCreateRequestParametersCalculationsList>;
 
 export type ObservabilityQueriesCreateRequestParametersDatasetsList = Array<string>;
-export const ObservabilityQueriesCreateRequestParametersDatasetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityQueriesCreateRequestParametersDatasetsList>;
+export const ObservabilityQueriesCreateRequestParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityQueriesCreateRequestParametersDatasetsList>;
 
 export type ObservabilityQueriesCreateRequestParametersFilterCombination =
   | "and"
@@ -7129,9 +7034,8 @@ export const ObservabilityQueriesCreateResponseParametersCalculationsList = /*@_
 ) as any as S.Schema<ObservabilityQueriesCreateResponseParametersCalculationsList>;
 
 export type ObservabilityQueriesCreateResponseParametersDatasetsList = Array<string>;
-export const ObservabilityQueriesCreateResponseParametersDatasetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityQueriesCreateResponseParametersDatasetsList>;
+export const ObservabilityQueriesCreateResponseParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityQueriesCreateResponseParametersDatasetsList>;
 
 export type ObservabilityQueriesCreateResponseParametersFilterCombination =
   | "and"
@@ -7151,9 +7055,7 @@ export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterC
 export type ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityQueriesCreateResponseParametersFiltersItemCase0Kind = "group";
 export const ObservabilityQueriesCreateResponseParametersFiltersItemCase0Kind = S.String;
@@ -7606,9 +7508,8 @@ export const ObservabilitySharedQueriesCreateRequestParametersCalculationsList =
   ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersCalculationsList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersDatasetsList = Array<string>;
-export const ObservabilitySharedQueriesCreateRequestParametersDatasetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersDatasetsList>;
+export const ObservabilitySharedQueriesCreateRequestParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersDatasetsList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFilterCombination =
   | "and"
@@ -7636,9 +7537,7 @@ export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0Fi
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FiltersItemCase0Kind =
   "group";
@@ -8233,30 +8132,21 @@ export const CreatePreviewDeploymentMetadataAssets = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreatePreviewDeploymentMetadataAssets>;
 
 export type CreatePreviewDeploymentMetadataCompatibilityFlagsList = Array<string>;
-export const CreatePreviewDeploymentMetadataCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePreviewDeploymentMetadataCompatibilityFlagsList>;
+export const CreatePreviewDeploymentMetadataCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<CreatePreviewDeploymentMetadataCompatibilityFlagsList>;
 
 export interface CreatePreviewDeploymentMetadataContainer {
   className: string;
   name?: string;
   images?: ContainerImageMap;
 }
-export const CreatePreviewDeploymentMetadataContainer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    className: S.String.pipe(T.Body("class_name")),
-    name: S.optional(S.String),
-    images: S.optional(ContainerImageMap.pipe(T.KeyDictionary({}))),
-  }),
-).annotate({
-  identifier: "CreatePreviewDeploymentMetadataContainer",
-}) as any as S.Schema<CreatePreviewDeploymentMetadataContainer>;
+export const CreatePreviewDeploymentMetadataContainer =
+  BetaWorkersVersionsCreateRequestContainersItem as any as S.Schema<CreatePreviewDeploymentMetadataContainer>;
 
 export type CreatePreviewDeploymentMetadataContainersList =
   Array<CreatePreviewDeploymentMetadataContainer>;
-export const CreatePreviewDeploymentMetadataContainersList = /*@__PURE__*/ S.Array(
-  CreatePreviewDeploymentMetadataContainer,
-) as any as S.Schema<CreatePreviewDeploymentMetadataContainersList>;
+export const CreatePreviewDeploymentMetadataContainersList =
+  BetaWorkersVersionsCreateRequestContainersList as any as S.Schema<CreatePreviewDeploymentMetadataContainersList>;
 
 export interface CreatePreviewDeploymentMetadata {
   /** Entrypoint module filename. */
@@ -8435,9 +8325,8 @@ export const CreateScriptAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScriptAssetUploadRequest>;
 
 export type ScriptsAssetsUploadCreateResponseBucketsItemList = Array<string>;
-export const ScriptsAssetsUploadCreateResponseBucketsItemList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsAssetsUploadCreateResponseBucketsItemList>;
+export const ScriptsAssetsUploadCreateResponseBucketsItemList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsAssetsUploadCreateResponseBucketsItemList>;
 
 export type ScriptsAssetsUploadCreateResponseBucketsList =
   Array<ScriptsAssetsUploadCreateResponseBucketsItemList>;
@@ -8543,9 +8432,8 @@ export const ScriptsDeploymentsCreateResponseVersionsItem =
 
 export type ScriptsDeploymentsCreateResponseVersionsList =
   Array<ScriptsDeploymentsCreateRequestVersionsItem>;
-export const ScriptsDeploymentsCreateResponseVersionsList = /*@__PURE__*/ S.Array(
-  ScriptsDeploymentsCreateRequestVersionsItem,
-) as any as S.Schema<ScriptsDeploymentsCreateResponseVersionsList>;
+export const ScriptsDeploymentsCreateResponseVersionsList =
+  ScriptsDeploymentsCreateRequestVersionsList as any as S.Schema<ScriptsDeploymentsCreateResponseVersionsList>;
 
 export interface ScriptsDeploymentsCreateResponseAnnotations {
   /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
@@ -8602,9 +8490,8 @@ export const CreateScriptEdgePreviewWranglerSessionConfigWorkersDev = /*@__PURE_
 }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigWorkersDev>;
 
 export type CreateScriptEdgePreviewWranglerSessionConfigRoutesList = Array<string>;
-export const CreateScriptEdgePreviewWranglerSessionConfigRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutesList>;
+export const CreateScriptEdgePreviewWranglerSessionConfigRoutesList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutesList>;
 
 export interface CreateScriptEdgePreviewWranglerSessionConfigRoutes {
   /** Routes to serve the preview on. */
@@ -8631,9 +8518,8 @@ export const CreateScriptEdgePreviewWranglerSessionConfig = /*@__PURE__*/ S.Unkn
 );
 
 export type CreateScriptEdgePreviewMetadataStringList = Array<string>;
-export const CreateScriptEdgePreviewMetadataStringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateScriptEdgePreviewMetadataStringList>;
+export const CreateScriptEdgePreviewMetadataStringList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<CreateScriptEdgePreviewMetadataStringList>;
 
 export type CreateScriptEdgePreviewMetadataUsageModel = "bundled" | "unbound" | "standard";
 export const CreateScriptEdgePreviewMetadataUsageModel = S.String;
@@ -9668,13 +9554,8 @@ export const CreateScriptEdgePreviewMetadataPlacementRegion = /*@__PURE__*/ S.su
 export interface CreateScriptEdgePreviewMetadataPlacementHost {
   host: string;
 }
-export const CreateScriptEdgePreviewMetadataPlacementHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataPlacementHost",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataPlacementHost>;
+export const CreateScriptEdgePreviewMetadataPlacementHost =
+  BetaWorkersCreateRequestPreviewsBaseConfigPlacementHost as any as S.Schema<CreateScriptEdgePreviewMetadataPlacementHost>;
 
 export interface CreateScriptEdgePreviewMetadataPlacementHostname {
   hostname: string;
@@ -9719,14 +9600,8 @@ export interface CreateScriptEdgePreviewMetadataLimits {
   cpuMs?: number;
   subrequests?: number;
 }
-export const CreateScriptEdgePreviewMetadataLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
-    subrequests: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataLimits",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataLimits>;
+export const CreateScriptEdgePreviewMetadataLimits =
+  BetaWorkersCreateRequestPreviewsBaseConfigLimits as any as S.Schema<CreateScriptEdgePreviewMetadataLimits>;
 
 export type CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
@@ -9809,13 +9684,8 @@ export const CreateScriptEdgePreviewMetadataObservabilityLogs = /*@__PURE__*/ S.
 export interface CreateScriptEdgePreviewMetadataObservabilityIssues {
   enabled?: boolean;
 }
-export const CreateScriptEdgePreviewMetadataObservabilityIssues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateScriptEdgePreviewMetadataObservabilityIssues",
-}) as any as S.Schema<CreateScriptEdgePreviewMetadataObservabilityIssues>;
+export const CreateScriptEdgePreviewMetadataObservabilityIssues =
+  BetaWorkersCreateRequestObservabilityIssues as any as S.Schema<CreateScriptEdgePreviewMetadataObservabilityIssues>;
 
 export interface CreateScriptEdgePreviewMetadataObservabilityTraces {
   enabled?: boolean;
@@ -9860,9 +9730,8 @@ export const CreateScriptEdgePreviewMetadataContainer = CreatePreviewDeploymentM
 
 export type CreateScriptEdgePreviewMetadataContainersList =
   Array<CreatePreviewDeploymentMetadataContainer>;
-export const CreateScriptEdgePreviewMetadataContainersList = /*@__PURE__*/ S.Array(
-  CreatePreviewDeploymentMetadataContainer,
-) as any as S.Schema<CreateScriptEdgePreviewMetadataContainersList>;
+export const CreateScriptEdgePreviewMetadataContainersList =
+  BetaWorkersVersionsCreateRequestContainersList as any as S.Schema<CreateScriptEdgePreviewMetadataContainersList>;
 
 export interface CreateScriptEdgePreviewMetadata {
   mainModule?: string;
@@ -10093,9 +9962,8 @@ export type PutScriptAssetsConfigNotFoundHandling = "none" | "404-page" | "singl
 export const PutScriptAssetsConfigNotFoundHandling = S.String;
 
 export type PutScriptMetadataStringList = Array<string>;
-export const PutScriptMetadataStringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutScriptMetadataStringList>;
+export const PutScriptMetadataStringList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<PutScriptMetadataStringList>;
 
 export type PutScriptAssetsConfigRunWorkerFirst = PutScriptMetadataStringList | boolean;
 export const PutScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
@@ -10270,9 +10138,8 @@ export type PutScriptBindingDispatchNamespaceOutboundParam = PreviewTailConsumer
 export const PutScriptBindingDispatchNamespaceOutboundParam = PreviewTailConsumer;
 
 export type PutScriptBindingDispatchNamespaceOutboundParamsList = Array<PreviewTailConsumer>;
-export const PutScriptBindingDispatchNamespaceOutboundParamsList = /*@__PURE__*/ S.Array(
-  PreviewTailConsumer,
-) as any as S.Schema<PutScriptBindingDispatchNamespaceOutboundParamsList>;
+export const PutScriptBindingDispatchNamespaceOutboundParamsList =
+  PreviewTailConsumersList as any as S.Schema<PutScriptBindingDispatchNamespaceOutboundParamsList>;
 
 export interface PutScriptBindingDispatchNamespaceOutboundWorker {
   entrypoint?: string;
@@ -11063,9 +10930,8 @@ export type PutScriptContainer = CreatePreviewDeploymentMetadataContainer;
 export const PutScriptContainer = CreatePreviewDeploymentMetadataContainer;
 
 export type PutScriptMetadataContainersList = Array<CreatePreviewDeploymentMetadataContainer>;
-export const PutScriptMetadataContainersList = /*@__PURE__*/ S.Array(
-  CreatePreviewDeploymentMetadataContainer,
-) as any as S.Schema<PutScriptMetadataContainersList>;
+export const PutScriptMetadataContainersList =
+  BetaWorkersVersionsCreateRequestContainersList as any as S.Schema<PutScriptMetadataContainersList>;
 
 export type PutScriptMetadataLimits = CreateScriptEdgePreviewMetadataLimits;
 export const PutScriptMetadataLimits = CreateScriptEdgePreviewMetadataLimits;
@@ -11077,9 +10943,8 @@ export const PutScriptMigrationRenamedClass =
 
 export type PutScriptMigrationRenamedClassesList =
   Array<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
-export const PutScriptMigrationRenamedClassesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem,
-) as any as S.Schema<PutScriptMigrationRenamedClassesList>;
+export const PutScriptMigrationRenamedClassesList =
+  CreateScriptEdgePreviewMetadataMigrationRenamedClassesList as any as S.Schema<PutScriptMigrationRenamedClassesList>;
 
 export type PutScriptMigrationTransferredClass =
   BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem;
@@ -11225,13 +11090,8 @@ export interface PutScriptObservabilityIssues {
   /** Whether Workers Issues error monitoring is enabled. */
   enabled: boolean;
 }
-export const PutScriptObservabilityIssues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "PutScriptObservabilityIssues",
-}) as any as S.Schema<PutScriptObservabilityIssues>;
+export const PutScriptObservabilityIssues =
+  BetaWorkersVersionsCreateRequestExportsValueWorkerCache as any as S.Schema<PutScriptObservabilityIssues>;
 
 export interface PutScriptMetadataObservability {
   enabled?: boolean;
@@ -11407,9 +11267,8 @@ export const PutScriptMetadataCache = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutScriptMetadataCache" }) as any as S.Schema<PutScriptMetadataCache>;
 
 export type PutScriptMetadataStreamingTailConsumersList = Array<PutScriptTailConsumer>;
-export const PutScriptMetadataStreamingTailConsumersList = /*@__PURE__*/ S.Array(
-  PutScriptTailConsumer,
-) as any as S.Schema<PutScriptMetadataStreamingTailConsumersList>;
+export const PutScriptMetadataStreamingTailConsumersList =
+  PutScriptMetadataTailConsumersList as any as S.Schema<PutScriptMetadataStreamingTailConsumersList>;
 
 export type PutScriptMetadataExportType = "worker" | "durable-object";
 export const PutScriptMetadataExportType = S.String;
@@ -11648,16 +11507,13 @@ export const CreateScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScriptVersionRequest>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptHandlersList = Array<string>;
-export const ScriptsVersionsCreateResponseResourcesScriptHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptHandlersList>;
+export const ScriptsVersionsCreateResponseResourcesScriptHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptHandlersList>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList =
   Array<string>;
 export const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList>;
 
 export interface ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -11711,9 +11567,7 @@ export const ScriptsVersionsCreateResponseResourcesScript = /*@__PURE__*/ S.susp
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList =
   Array<string>;
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList>;
 
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkerType = "worker";
 export const ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkerType = S.String;
@@ -12028,14 +11882,12 @@ export const ScriptsVersionsCreateResponseResources = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ScriptsVersionsCreateResponseResources>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationCreatedList = Array<string>;
-export const ScriptsVersionsCreateResponseExportsReconciliationCreatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationCreatedList>;
+export const ScriptsVersionsCreateResponseExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationCreatedList>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationDeletedList = Array<string>;
-export const ScriptsVersionsCreateResponseExportsReconciliationDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationDeletedList>;
+export const ScriptsVersionsCreateResponseExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationDeletedList>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -12076,9 +11928,7 @@ export const ScriptsVersionsCreateResponseExportsReconciliationInfoItemScenario 
 export type ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface ScriptsVersionsCreateResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -12117,9 +11967,7 @@ export const ScriptsVersionsCreateResponseExportsReconciliationInfoList = /*@__P
 
 export type ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList = Array<string>;
 export const ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
@@ -12140,9 +11988,7 @@ export const ScriptsVersionsCreateResponseExportsReconciliationTransferPendingIt
 export type ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
 export const ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem,
-  ) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationTransferredItemPhase = "committed";
 export const ScriptsVersionsCreateResponseExportsReconciliationTransferredItemPhase = S.String;
@@ -12174,9 +12020,8 @@ export const ScriptsVersionsCreateResponseExportsReconciliationTransferredList =
   ) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferredList>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationUpdatedList = Array<string>;
-export const ScriptsVersionsCreateResponseExportsReconciliationUpdatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationUpdatedList>;
+export const ScriptsVersionsCreateResponseExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationUpdatedList>;
 
 export type ScriptsVersionsCreateResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -12400,14 +12245,8 @@ export interface CreateServiceEdgePreviewResponse {
   /** URL for tailing live logs from the preview worker. */
   tailUrl?: string | null;
 }
-export const CreateServiceEdgePreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    previewToken: S.String.pipe(T.Body("preview_token")),
-    tailUrl: S.optional(S.NullOr(S.String).pipe(T.Body("tail_url"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateServiceEdgePreviewResponse",
-}) as any as S.Schema<CreateServiceEdgePreviewResponse>;
+export const CreateServiceEdgePreviewResponse =
+  CreateScriptEdgePreviewResponse as any as S.Schema<CreateServiceEdgePreviewResponse>;
 
 export interface CreateSubdomainEdgePreviewSessionRequest {
   /** Identifier. */
@@ -12464,14 +12303,8 @@ export interface CreateZoneEdgePreviewSessionResponse {
   /** Optional URL to exchange the token for a re-encoded version. */
   exchangeUrl?: string | null;
 }
-export const CreateZoneEdgePreviewSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.String,
-    exchangeUrl: S.optional(S.NullOr(S.String).pipe(T.Body("exchange_url"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateZoneEdgePreviewSessionResponse",
-}) as any as S.Schema<CreateZoneEdgePreviewSessionResponse>;
+export const CreateZoneEdgePreviewSessionResponse =
+  CreateSubdomainEdgePreviewSessionResponse as any as S.Schema<CreateZoneEdgePreviewSessionResponse>;
 
 export interface DeleteBetaWorkerRequest {
   /** Identifier. */
@@ -12557,9 +12390,8 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteDomainResponse" }) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<DeleteDomainResponse>;
 
 export interface DeleteObservabilityDestinationRequest {
   accountId: string;
@@ -12611,9 +12443,8 @@ export const ObservabilityDestinationsDeleteResponseConfiguration = /*@__PURE__*
 }) as any as S.Schema<ObservabilityDestinationsDeleteResponseConfiguration>;
 
 export type ObservabilityDestinationsDeleteResponseScriptsList = Array<string>;
-export const ObservabilityDestinationsDeleteResponseScriptsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityDestinationsDeleteResponseScriptsList>;
+export const ObservabilityDestinationsDeleteResponseScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsDeleteResponseScriptsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteObservabilityDestinationResponse {
@@ -12657,9 +12488,8 @@ export const DeletePreviewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePreviewRequest" }) as any as S.Schema<DeletePreviewRequest>;
 
 export interface DeletePreviewResponse {}
-export const DeletePreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeletePreviewResponse" }) as any as S.Schema<DeletePreviewResponse>;
+export const DeletePreviewResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<DeletePreviewResponse>;
 
 export interface DeleteRouteRequest {
   /** Identifier. */
@@ -12744,11 +12574,8 @@ export const DeleteScriptDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScriptDeploymentRequest>;
 
 export interface DeleteScriptDeploymentResponse {}
-export const DeleteScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteScriptDeploymentResponse",
-}) as any as S.Schema<DeleteScriptDeploymentResponse>;
+export const DeleteScriptDeploymentResponse =
+  DeleteBetaWorkerVersionResponse as any as S.Schema<DeleteScriptDeploymentResponse>;
 
 export interface DeleteScriptSecretRequest {
   /** Identifier. */
@@ -12816,14 +12643,8 @@ export interface DeleteScriptSubdomainResponse {
   /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
   previewsEnabled: boolean;
 }
-export const DeleteScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "DeleteScriptSubdomainResponse",
-}) as any as S.Schema<DeleteScriptSubdomainResponse>;
+export const DeleteScriptSubdomainResponse =
+  CreateScriptSubdomainResponse as any as S.Schema<DeleteScriptSubdomainResponse>;
 
 export interface DeleteScriptTailRequest {
   /** Identifier. */
@@ -12850,9 +12671,8 @@ export const DeleteScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScriptTailRequest" }) as any as S.Schema<DeleteScriptTailRequest>;
 
 export interface DeleteScriptTailResponse {}
-export const DeleteScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteScriptTailResponse" }) as any as S.Schema<DeleteScriptTailResponse>;
+export const DeleteScriptTailResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<DeleteScriptTailResponse>;
 
 export interface DeleteSubdomainRequest {
   /** Identifier. */
@@ -12867,9 +12687,8 @@ export const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSubdomainRequest" }) as any as S.Schema<DeleteSubdomainRequest>;
 
 export interface DeleteSubdomainResponse {}
-export const DeleteSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteSubdomainResponse" }) as any as S.Schema<DeleteSubdomainResponse>;
+export const DeleteSubdomainResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<DeleteSubdomainResponse>;
 
 export interface GetAccountSettingRequest {
   /** Identifier. */
@@ -12926,9 +12745,8 @@ export const BetaWorkersGetResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type BetaWorkersGetResponseObservabilityLogsDestinationsList = Array<string>;
-export const BetaWorkersGetResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersGetResponseObservabilityLogsDestinationsList>;
+export const BetaWorkersGetResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponseObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersGetResponseObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -12942,22 +12760,12 @@ export interface BetaWorkersGetResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersGetResponseObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinations: S.optional(S.NullOr(BetaWorkersGetResponseObservabilityLogsDestinationsList)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-    invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-    persist: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "BetaWorkersGetResponseObservabilityLogs",
-}) as any as S.Schema<BetaWorkersGetResponseObservabilityLogs>;
+export const BetaWorkersGetResponseObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersGetResponseObservabilityLogs>;
 
 export type BetaWorkersGetResponseObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersGetResponseObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersGetResponseObservabilityTracesDestinationsList>;
+export const BetaWorkersGetResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponseObservabilityTracesDestinationsList>;
 
 export type BetaWorkersGetResponseObservabilityTracesPropagationPolicy = "authenticated" | "accept";
 export const BetaWorkersGetResponseObservabilityTracesPropagationPolicy = S.String;
@@ -13035,9 +12843,8 @@ export const BetaWorkersGetResponseReferencesDomainsItem =
 
 export type BetaWorkersGetResponseReferencesDomainsList =
   Array<BetaWorkersCreateResponseReferencesDomainsItem>;
-export const BetaWorkersGetResponseReferencesDomainsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDomainsItem,
-) as any as S.Schema<BetaWorkersGetResponseReferencesDomainsList>;
+export const BetaWorkersGetResponseReferencesDomainsList =
+  BetaWorkersCreateResponseReferencesDomainsList as any as S.Schema<BetaWorkersGetResponseReferencesDomainsList>;
 
 export type BetaWorkersGetResponseReferencesDurableObjectsItem =
   BetaWorkersCreateResponseReferencesDurableObjectsItem;
@@ -13046,9 +12853,8 @@ export const BetaWorkersGetResponseReferencesDurableObjectsItem =
 
 export type BetaWorkersGetResponseReferencesDurableObjectsList =
   Array<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
-export const BetaWorkersGetResponseReferencesDurableObjectsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDurableObjectsItem,
-) as any as S.Schema<BetaWorkersGetResponseReferencesDurableObjectsList>;
+export const BetaWorkersGetResponseReferencesDurableObjectsList =
+  BetaWorkersCreateResponseReferencesDurableObjectsList as any as S.Schema<BetaWorkersGetResponseReferencesDurableObjectsList>;
 
 export type BetaWorkersGetResponseReferencesQueuesItem =
   BetaWorkersCreateResponseReferencesQueuesItem;
@@ -13057,9 +12863,8 @@ export const BetaWorkersGetResponseReferencesQueuesItem =
 
 export type BetaWorkersGetResponseReferencesQueuesList =
   Array<BetaWorkersCreateResponseReferencesQueuesItem>;
-export const BetaWorkersGetResponseReferencesQueuesList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesQueuesItem,
-) as any as S.Schema<BetaWorkersGetResponseReferencesQueuesList>;
+export const BetaWorkersGetResponseReferencesQueuesList =
+  BetaWorkersCreateResponseReferencesQueuesList as any as S.Schema<BetaWorkersGetResponseReferencesQueuesList>;
 
 export type BetaWorkersGetResponseReferencesWorkersItem =
   BetaWorkersCreateResponseReferencesWorkersItem;
@@ -13068,9 +12873,8 @@ export const BetaWorkersGetResponseReferencesWorkersItem =
 
 export type BetaWorkersGetResponseReferencesWorkersList =
   Array<BetaWorkersCreateResponseReferencesWorkersItem>;
-export const BetaWorkersGetResponseReferencesWorkersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesWorkersItem,
-) as any as S.Schema<BetaWorkersGetResponseReferencesWorkersList>;
+export const BetaWorkersGetResponseReferencesWorkersList =
+  BetaWorkersCreateResponseReferencesWorkersList as any as S.Schema<BetaWorkersGetResponseReferencesWorkersList>;
 
 export interface BetaWorkersGetResponseReferences {
   /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
@@ -13104,9 +12908,8 @@ export type BetaWorkersGetResponseSubdomain = BetaWorkersCreateResponseSubdomain
 export const BetaWorkersGetResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 
 export type BetaWorkersGetResponseTagsList = Array<string>;
-export const BetaWorkersGetResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersGetResponseTagsList>;
+export const BetaWorkersGetResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponseTagsList>;
 
 export type BetaWorkersGetResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -13115,9 +12918,8 @@ export const BetaWorkersGetResponseTailConsumersItem =
 
 export type BetaWorkersGetResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersGetResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersGetResponseTailConsumersList>;
+export const BetaWorkersGetResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersGetResponseTailConsumersList>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
@@ -13132,10 +12934,8 @@ export const BetaWorkersGetResponsePreviewsBaseConfigEnvValue =
 export type BetaWorkersGetResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
-export const BetaWorkersGetResponsePreviewsBaseConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BetaWorkersCreateRequestPreviewsBaseConfigEnvValue,
-) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigEnvMap>;
+export const BetaWorkersGetResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigEnvMap>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
@@ -13150,9 +12950,7 @@ export const BetaWorkersGetResponsePreviewsBaseConfigObservabilityIssues =
 export type BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
 export const BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -13166,27 +12964,13 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinations: S.optional(
-        S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogsDestinationsList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs",
-}) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs>;
+export const BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -13412,9 +13196,8 @@ export const BetaWorkersGetResponsePreviewsBaseConfigTailConsumersItem =
 
 export type BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList>;
+export const BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList>;
 
 export interface BetaWorkersGetResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
@@ -13533,9 +13316,8 @@ export const GetBetaWorkerVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBetaWorkerVersionRequest>;
 
 export type BetaWorkersVersionsGetResponseUrlsList = Array<string>;
-export const BetaWorkersVersionsGetResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsGetResponseUrlsList>;
+export const BetaWorkersVersionsGetResponseUrlsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseUrlsList>;
 
 export type BetaWorkersVersionsGetResponseAnnotations =
   BetaWorkersVersionsCreateResponseAnnotations;
@@ -13557,9 +13339,7 @@ export const BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling = S.Stri
 
 export type BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export const BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List>;
 
 export type BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirst =
   | boolean
@@ -13835,9 +13615,7 @@ export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound
 export type BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsList>;
+  BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsList as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundWorker =
   BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker;
@@ -13851,18 +13629,7 @@ export interface BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutb
   worker?: BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker | null;
 }
 export const BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      params: S.optional(
-        S.NullOr(BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutboundParamsList),
-      ),
-      worker: S.optional(
-        S.NullOr(BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound>;
+  BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutbound as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemDispatchNamespaceOutbound>;
 
 export interface BetaWorkersVersionsGetResponseBindingsItemDispatchNamespace {
   /** A JavaScript variable name for the binding. */
@@ -14241,16 +14008,12 @@ export const BetaWorkersVersionsGetResponseBindingsItemSendEmailType = S.String;
 export type BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface BetaWorkersVersionsGetResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -14728,9 +14491,8 @@ export const BetaWorkersVersionsGetResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 
 export type BetaWorkersVersionsGetResponseCompatibilityFlagsList = Array<string>;
-export const BetaWorkersVersionsGetResponseCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsGetResponseCompatibilityFlagsList>;
+export const BetaWorkersVersionsGetResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseCompatibilityFlagsList>;
 
 export type BetaWorkersVersionsGetResponseContainersItem =
   BetaWorkersVersionsCreateResponseContainersItem;
@@ -14739,9 +14501,8 @@ export const BetaWorkersVersionsGetResponseContainersItem =
 
 export type BetaWorkersVersionsGetResponseContainersList =
   Array<BetaWorkersVersionsCreateResponseContainersItem>;
-export const BetaWorkersVersionsGetResponseContainersList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateResponseContainersItem,
-) as any as S.Schema<BetaWorkersVersionsGetResponseContainersList>;
+export const BetaWorkersVersionsGetResponseContainersList =
+  BetaWorkersVersionsCreateResponseContainersList as any as S.Schema<BetaWorkersVersionsGetResponseContainersList>;
 
 export type BetaWorkersVersionsGetResponseExportsValueWorkerType = "worker";
 export const BetaWorkersVersionsGetResponseExportsValueWorkerType = S.String;
@@ -14963,14 +14724,12 @@ export const BetaWorkersVersionsGetResponseExportsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BetaWorkersVersionsGetResponseExportsMap>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationCreatedList = Array<string>;
-export const BetaWorkersVersionsGetResponseExportsReconciliationCreatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationCreatedList>;
+export const BetaWorkersVersionsGetResponseExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationCreatedList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationDeletedList = Array<string>;
-export const BetaWorkersVersionsGetResponseExportsReconciliationDeletedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationDeletedList>;
+export const BetaWorkersVersionsGetResponseExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationDeletedList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -15011,9 +14770,7 @@ export const BetaWorkersVersionsGetResponseExportsReconciliationInfoItemScenario
 export type BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface BetaWorkersVersionsGetResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -15052,9 +14809,7 @@ export const BetaWorkersVersionsGetResponseExportsReconciliationInfoList = /*@__
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList = Array<string>;
 export const BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
@@ -15063,9 +14818,8 @@ export const BetaWorkersVersionsGetResponseExportsReconciliationRenamedItem =
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
-export const BetaWorkersVersionsGetResponseExportsReconciliationRenamedList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem,
-) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationRenamedList>;
+export const BetaWorkersVersionsGetResponseExportsReconciliationRenamedList =
+  ScriptsVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationRenamedList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
@@ -15075,9 +14829,7 @@ export const BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingI
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
 export const BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferredItemPhase = "committed";
 export const BetaWorkersVersionsGetResponseExportsReconciliationTransferredItemPhase = S.String;
@@ -15109,9 +14861,8 @@ export const BetaWorkersVersionsGetResponseExportsReconciliationTransferredList 
   ) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferredList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList = Array<string>;
-export const BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList>;
+export const BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList>;
 
 export type BetaWorkersVersionsGetResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -15224,23 +14975,17 @@ export const BetaWorkersVersionsGetResponseLimits = BetaWorkersVersionsCreateRes
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -15250,9 +14995,7 @@ export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedC
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationRenamedClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -15262,9 +15005,7 @@ export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransfer
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationTransferredClassesList>;
 
 export interface BetaWorkersVersionsGetResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -15320,23 +15061,17 @@ export const BetaWorkersVersionsGetResponseMigrationsSingleStepMigration = /*@__
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -15346,9 +15081,7 @@ export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigratio
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -15358,9 +15091,7 @@ export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigratio
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -15375,44 +15106,12 @@ export interface BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigr
   transferredClasses?: BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      renamedClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItem as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   Array<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
-  ) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
+  BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsList as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
 
 export interface BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
@@ -15423,17 +15122,7 @@ export interface BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigr
   steps?: BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList | null;
 }
 export const BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      steps: S.optional(
-        S.NullOr(BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations",
-  }) as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations>;
+  BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrations as any as S.Schema<BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations>;
 
 export type BetaWorkersVersionsGetResponseMigrations =
   | BetaWorkersVersionsGetResponseMigrationsSingleStepMigration
@@ -15459,9 +15148,8 @@ export const BetaWorkersVersionsGetResponseModulesItem =
 
 export type BetaWorkersVersionsGetResponseModulesList =
   Array<BetaWorkersVersionsCreateRequestModulesItem>;
-export const BetaWorkersVersionsGetResponseModulesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateRequestModulesItem,
-) as any as S.Schema<BetaWorkersVersionsGetResponseModulesList>;
+export const BetaWorkersVersionsGetResponseModulesList =
+  BetaWorkersVersionsCreateRequestModulesList as any as S.Schema<BetaWorkersVersionsGetResponseModulesList>;
 
 export type BetaWorkersVersionsGetResponsePackageDependenciesItem =
   BetaWorkersVersionsCreateRequestPackageDependenciesItem;
@@ -15470,9 +15158,8 @@ export const BetaWorkersVersionsGetResponsePackageDependenciesItem =
 
 export type BetaWorkersVersionsGetResponsePackageDependenciesList =
   Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
-export const BetaWorkersVersionsGetResponsePackageDependenciesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateRequestPackageDependenciesItem,
-) as any as S.Schema<BetaWorkersVersionsGetResponsePackageDependenciesList>;
+export const BetaWorkersVersionsGetResponsePackageDependenciesList =
+  BetaWorkersVersionsCreateRequestPackageDependenciesList as any as S.Schema<BetaWorkersVersionsGetResponsePackageDependenciesList>;
 
 export type BetaWorkersVersionsGetResponsePlacementModeMode = "smart";
 export const BetaWorkersVersionsGetResponsePlacementModeMode = S.String;
@@ -15940,9 +15627,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculations
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList = Array<string>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination =
   | "and"
@@ -15962,9 +15647,7 @@ export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemC
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0Kind = "group";
 export const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0Kind = S.String;
@@ -16345,24 +16028,20 @@ export const ObservabilitySharedQueriesGetResponseStatistics =
   ObservabilitySharedQueriesGetResponseRunStatistics;
 
 export type ObservabilitySharedQueriesGetResponseAgentsItemErrorsList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseAgentsItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemErrorsList>;
+export const ObservabilitySharedQueriesGetResponseAgentsItemErrorsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemErrorsList>;
 
 export type ObservabilitySharedQueriesGetResponseAgentsItemModelsList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseAgentsItemModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemModelsList>;
+export const ObservabilitySharedQueriesGetResponseAgentsItemModelsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemModelsList>;
 
 export type ObservabilitySharedQueriesGetResponseAgentsItemProvidersList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseAgentsItemProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemProvidersList>;
+export const ObservabilitySharedQueriesGetResponseAgentsItemProvidersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemProvidersList>;
 
 export type ObservabilitySharedQueriesGetResponseAgentsItemServicesList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseAgentsItemServicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemServicesList>;
+export const ObservabilitySharedQueriesGetResponseAgentsItemServicesList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemServicesList>;
 
 export type ObservabilitySharedQueriesGetResponseAgentsItemStatus = "completed" | "error";
 export const ObservabilitySharedQueriesGetResponseAgentsItemStatus = S.String;
@@ -16769,9 +16448,8 @@ export const ObservabilitySharedQueriesGetResponseCompareList = /*@__PURE__*/ S.
 ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareList>;
 
 export type ObservabilitySharedQueriesGetResponseDistributionBinsList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseDistributionBinsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionBinsList>;
+export const ObservabilitySharedQueriesGetResponseDistributionBinsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionBinsList>;
 
 export type ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList = Array<number>;
 export const ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList =
@@ -16783,15 +16461,12 @@ export type ObservabilitySharedQueriesGetResponseDistributionBucketMode = "log" 
 export const ObservabilitySharedQueriesGetResponseDistributionBucketMode = S.String;
 
 export type ObservabilitySharedQueriesGetResponseDistributionBucketsList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseDistributionBucketsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionBucketsList>;
+export const ObservabilitySharedQueriesGetResponseDistributionBucketsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionBucketsList>;
 
 export type ObservabilitySharedQueriesGetResponseDistributionMatrixItemList = Array<number>;
 export const ObservabilitySharedQueriesGetResponseDistributionMatrixItemList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionMatrixItemList>;
+  ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionMatrixItemList>;
 
 export type ObservabilitySharedQueriesGetResponseDistributionMatrixList =
   Array<ObservabilitySharedQueriesGetResponseDistributionMatrixItemList>;
@@ -16957,10 +16632,7 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap =
   [key: string]: unknown | undefined;
 };
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventType =
   | "fetch"
@@ -16981,10 +16653,7 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0Eve
   [key: string]: unknown | undefined;
 };
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0ExecutionModel =
   | "durableObject"
@@ -17111,10 +16780,7 @@ export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1Eve
   [key: string]: unknown | undefined;
 };
 export const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1ExecutionModel =
   | "durableObject"
@@ -17418,10 +17084,7 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1
   [key: string]: unknown | undefined;
 };
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1Map>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1Map>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemSource =
   | string
@@ -17433,10 +17096,7 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersM
   [key: string]: unknown | undefined;
 };
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventType =
   | "fetch"
@@ -17458,10 +17118,7 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase
   [key: string]: unknown | undefined;
 };
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0ExecutionModel =
   | "durableObject"
@@ -17549,18 +17206,13 @@ export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCas
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
   Array<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
-  /*@__PURE__*/ S.Array(
-    ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap = {
   [key: string]: unknown | undefined;
 };
 export const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1EventMap>;
 
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1ExecutionModel =
   | "durableObject"
@@ -17732,14 +17384,12 @@ export const ObservabilitySharedQueriesGetResponseInvocationsMap = /*@__PURE__*/
 ) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsMap>;
 
 export type ObservabilitySharedQueriesGetResponseTracesItemServiceList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseTracesItemServiceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemServiceList>;
+export const ObservabilitySharedQueriesGetResponseTracesItemServiceList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemServiceList>;
 
 export type ObservabilitySharedQueriesGetResponseTracesItemErrorsList = Array<string>;
-export const ObservabilitySharedQueriesGetResponseTracesItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemErrorsList>;
+export const ObservabilitySharedQueriesGetResponseTracesItemErrorsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemErrorsList>;
 
 export interface ObservabilitySharedQueriesGetResponseTracesItem {
   /** Name of the root span that initiated the trace. */
@@ -17893,13 +17543,7 @@ export interface GetRouteResponse {
   /** Name of the script to run if the route matches. */
   script?: string | null;
 }
-export const GetRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    pattern: S.String,
-    script: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetRouteResponse" }) as any as S.Schema<GetRouteResponse>;
+export const GetRouteResponse = CreateRouteResponse as any as S.Schema<GetRouteResponse>;
 
 export interface GetScriptRequest {
   /** Identifier. */
@@ -17923,9 +17567,7 @@ export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScriptRequest" }) as any as S.Schema<GetScriptRequest>;
 
 export interface GetScriptResponse {}
-export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetScriptResponse" }) as any as S.Schema<GetScriptResponse>;
+export const GetScriptResponse = DeleteBetaWorkerResponse as any as S.Schema<GetScriptResponse>;
 
 export interface GetScriptContentRequest {
   /** Identifier. */
@@ -17949,9 +17591,8 @@ export const GetScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScriptContentRequest" }) as any as S.Schema<GetScriptContentRequest>;
 
 export interface GetScriptContentResponse {}
-export const GetScriptContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetScriptContentResponse" }) as any as S.Schema<GetScriptContentResponse>;
+export const GetScriptContentResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<GetScriptContentResponse>;
 
 export interface GetScriptDeploymentRequest {
   /** Identifier. */
@@ -17987,9 +17628,8 @@ export const ScriptsDeploymentsGetResponseVersionsItem =
 
 export type ScriptsDeploymentsGetResponseVersionsList =
   Array<ScriptsDeploymentsCreateRequestVersionsItem>;
-export const ScriptsDeploymentsGetResponseVersionsList = /*@__PURE__*/ S.Array(
-  ScriptsDeploymentsCreateRequestVersionsItem,
-) as any as S.Schema<ScriptsDeploymentsGetResponseVersionsList>;
+export const ScriptsDeploymentsGetResponseVersionsList =
+  ScriptsDeploymentsCreateRequestVersionsList as any as S.Schema<ScriptsDeploymentsGetResponseVersionsList>;
 
 export type ScriptsDeploymentsGetResponseAnnotations = ScriptsDeploymentsCreateResponseAnnotations;
 export const ScriptsDeploymentsGetResponseAnnotations = ScriptsDeploymentsCreateResponseAnnotations;
@@ -18194,15 +17834,8 @@ export interface ScriptsScriptAndVersionSettingsGetResponseAnnotations {
   /** Operation that triggered the creation of the version. This is read-only and set by the server. */
   workersTriggeredBy?: string | null;
 }
-export const ScriptsScriptAndVersionSettingsGetResponseAnnotations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workersMessage: S.optional(S.NullOr(S.String).pipe(T.Body("workers/message"))),
-    workersTag: S.optional(S.NullOr(S.String).pipe(T.Body("workers/tag"))),
-    workersTriggeredBy: S.optional(S.NullOr(S.String).pipe(T.Body("workers/triggered_by"))),
-  }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsGetResponseAnnotations",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseAnnotations>;
+export const ScriptsScriptAndVersionSettingsGetResponseAnnotations =
+  BetaWorkersVersionsCreateResponseAnnotations as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseAnnotations>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType = "ai";
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType = S.String;
@@ -18435,9 +18068,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNames
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList>;
+  BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker =
   BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker;
@@ -18858,16 +18489,12 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailType
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -19362,9 +18989,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseCacheOptions =
 
 export type ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList = Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkerType = "worker";
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkerType = S.String;
@@ -19604,16 +19229,12 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsMap = /*@__PURE__*
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -19655,9 +19276,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfo
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -19698,9 +19317,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfo
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
@@ -19710,9 +19327,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRena
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
@@ -19722,9 +19337,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTran
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItemPhase =
   "committed";
@@ -19760,9 +19373,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTran
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -19881,23 +19492,17 @@ export const ScriptsScriptAndVersionSettingsGetResponseLimits =
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -19907,9 +19512,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigra
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -19919,9 +19522,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigra
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -19977,23 +19578,17 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigra
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -20003,9 +19598,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultiple
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -20015,9 +19608,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultiple
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -20121,9 +19712,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityIssues =
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -20155,9 +19744,7 @@ export const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs = /*@__
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -20381,9 +19968,8 @@ export const ScriptsScriptAndVersionSettingsGetResponsePlacement = /*@__PURE__*/
 );
 
 export type ScriptsScriptAndVersionSettingsGetResponseTagsList = Array<string>;
-export const ScriptsScriptAndVersionSettingsGetResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTagsList>;
+export const ScriptsScriptAndVersionSettingsGetResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTagsList>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
@@ -20635,9 +20221,8 @@ export const ScriptsSettingsGetResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type ScriptsSettingsGetResponseObservabilityLogsDestinationsList = Array<string>;
-export const ScriptsSettingsGetResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
+export const ScriptsSettingsGetResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsSettingsGetResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -20664,9 +20249,8 @@ export const ScriptsSettingsGetResponseObservabilityLogs = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogs>;
 
 export type ScriptsSettingsGetResponseObservabilityTracesDestinationsList = Array<string>;
-export const ScriptsSettingsGetResponseObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
+export const ScriptsSettingsGetResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -20731,9 +20315,8 @@ export const ScriptsSettingsGetResponseObservability = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ScriptsSettingsGetResponseObservability>;
 
 export type ScriptsSettingsGetResponseTagsList = Array<string>;
-export const ScriptsSettingsGetResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsGetResponseTagsList>;
+export const ScriptsSettingsGetResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsGetResponseTagsList>;
 
 export type ScriptsSettingsGetResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
@@ -20742,9 +20325,8 @@ export const ScriptsSettingsGetResponseTailConsumersItem =
 
 export type ScriptsSettingsGetResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
-export const ScriptsSettingsGetResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
-) as any as S.Schema<ScriptsSettingsGetResponseTailConsumersList>;
+export const ScriptsSettingsGetResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsSettingsGetResponseTailConsumersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptSettingResponse {
@@ -20798,14 +20380,8 @@ export interface GetScriptSubdomainResponse {
   /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
   previewsEnabled: boolean;
 }
-export const GetScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "GetScriptSubdomainResponse",
-}) as any as S.Schema<GetScriptSubdomainResponse>;
+export const GetScriptSubdomainResponse =
+  CreateScriptSubdomainResponse as any as S.Schema<GetScriptSubdomainResponse>;
 
 export interface GetScriptTailRequest {
   /** Identifier. */
@@ -20835,13 +20411,8 @@ export interface GetScriptTailResponse {
   expiresAt: string;
   url: string;
 }
-export const GetScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    expiresAt: S.String.pipe(T.Body("expires_at")),
-    url: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "GetScriptTailResponse" }) as any as S.Schema<GetScriptTailResponse>;
+export const GetScriptTailResponse =
+  CreateScriptTailResponse as any as S.Schema<GetScriptTailResponse>;
 
 export interface GetScriptVersionRequest {
   /** Identifier. */
@@ -20867,15 +20438,12 @@ export const GetScriptVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScriptVersionRequest" }) as any as S.Schema<GetScriptVersionRequest>;
 
 export type ScriptsVersionsGetResponseResourcesScriptHandlersList = Array<string>;
-export const ScriptsVersionsGetResponseResourcesScriptHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptHandlersList>;
+export const ScriptsVersionsGetResponseResourcesScriptHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptHandlersList>;
 
 export type ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList = Array<string>;
 export const ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList>;
 
 export interface ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -20928,9 +20496,7 @@ export const ScriptsVersionsGetResponseResourcesScript = /*@__PURE__*/ S.suspend
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList = Array<string>;
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList>;
 
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkerType = "worker";
 export const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkerType = S.String;
@@ -21318,9 +20884,8 @@ export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSubdomainResponse" }) as any as S.Schema<GetSubdomainResponse>;
 
 export type ObservabilityTelemetryKeysRequestDatasetsList = Array<string>;
-export const ObservabilityTelemetryKeysRequestDatasetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryKeysRequestDatasetsList>;
+export const ObservabilityTelemetryKeysRequestDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryKeysRequestDatasetsList>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination =
   | "and"
@@ -21340,9 +20905,7 @@ export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Fi
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind = "group";
 export const ObservabilityTelemetryKeysRequestFiltersItemCase0FiltersItemCase0Kind = S.String;
@@ -21762,9 +21325,8 @@ export const BetaWorkersListResultItemObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type BetaWorkersListResultItemObservabilityLogsDestinationsList = Array<string>;
-export const BetaWorkersListResultItemObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersListResultItemObservabilityLogsDestinationsList>;
+export const BetaWorkersListResultItemObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersListResultItemObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -21778,22 +21340,12 @@ export interface BetaWorkersListResultItemObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersListResultItemObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinations: S.optional(S.NullOr(BetaWorkersListResultItemObservabilityLogsDestinationsList)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-    invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-    persist: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "BetaWorkersListResultItemObservabilityLogs",
-}) as any as S.Schema<BetaWorkersListResultItemObservabilityLogs>;
+export const BetaWorkersListResultItemObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersListResultItemObservabilityLogs>;
 
 export type BetaWorkersListResultItemObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersListResultItemObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersListResultItemObservabilityTracesDestinationsList>;
+export const BetaWorkersListResultItemObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemObservabilityTracesDestinationsList>;
 
 export type BetaWorkersListResultItemObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -21865,9 +21417,7 @@ export const BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem =
 export type BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList =
   Array<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem,
-  ) as any as S.Schema<BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList>;
+  BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList as any as S.Schema<BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList>;
 
 export type BetaWorkersListResultItemReferencesDomainsItem =
   BetaWorkersCreateResponseReferencesDomainsItem;
@@ -21876,9 +21426,8 @@ export const BetaWorkersListResultItemReferencesDomainsItem =
 
 export type BetaWorkersListResultItemReferencesDomainsList =
   Array<BetaWorkersCreateResponseReferencesDomainsItem>;
-export const BetaWorkersListResultItemReferencesDomainsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDomainsItem,
-) as any as S.Schema<BetaWorkersListResultItemReferencesDomainsList>;
+export const BetaWorkersListResultItemReferencesDomainsList =
+  BetaWorkersCreateResponseReferencesDomainsList as any as S.Schema<BetaWorkersListResultItemReferencesDomainsList>;
 
 export type BetaWorkersListResultItemReferencesDurableObjectsItem =
   BetaWorkersCreateResponseReferencesDurableObjectsItem;
@@ -21887,9 +21436,8 @@ export const BetaWorkersListResultItemReferencesDurableObjectsItem =
 
 export type BetaWorkersListResultItemReferencesDurableObjectsList =
   Array<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
-export const BetaWorkersListResultItemReferencesDurableObjectsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDurableObjectsItem,
-) as any as S.Schema<BetaWorkersListResultItemReferencesDurableObjectsList>;
+export const BetaWorkersListResultItemReferencesDurableObjectsList =
+  BetaWorkersCreateResponseReferencesDurableObjectsList as any as S.Schema<BetaWorkersListResultItemReferencesDurableObjectsList>;
 
 export type BetaWorkersListResultItemReferencesQueuesItem =
   BetaWorkersCreateResponseReferencesQueuesItem;
@@ -21898,9 +21446,8 @@ export const BetaWorkersListResultItemReferencesQueuesItem =
 
 export type BetaWorkersListResultItemReferencesQueuesList =
   Array<BetaWorkersCreateResponseReferencesQueuesItem>;
-export const BetaWorkersListResultItemReferencesQueuesList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesQueuesItem,
-) as any as S.Schema<BetaWorkersListResultItemReferencesQueuesList>;
+export const BetaWorkersListResultItemReferencesQueuesList =
+  BetaWorkersCreateResponseReferencesQueuesList as any as S.Schema<BetaWorkersListResultItemReferencesQueuesList>;
 
 export type BetaWorkersListResultItemReferencesWorkersItem =
   BetaWorkersCreateResponseReferencesWorkersItem;
@@ -21909,9 +21456,8 @@ export const BetaWorkersListResultItemReferencesWorkersItem =
 
 export type BetaWorkersListResultItemReferencesWorkersList =
   Array<BetaWorkersCreateResponseReferencesWorkersItem>;
-export const BetaWorkersListResultItemReferencesWorkersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesWorkersItem,
-) as any as S.Schema<BetaWorkersListResultItemReferencesWorkersList>;
+export const BetaWorkersListResultItemReferencesWorkersList =
+  BetaWorkersCreateResponseReferencesWorkersList as any as S.Schema<BetaWorkersListResultItemReferencesWorkersList>;
 
 export interface BetaWorkersListResultItemReferences {
   /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
@@ -21925,30 +21471,15 @@ export interface BetaWorkersListResultItemReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersListResultItemReferencesWorkersList;
 }
-export const BetaWorkersListResultItemReferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dispatchNamespaceOutbounds:
-      BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList.pipe(
-        T.Body("dispatch_namespace_outbounds"),
-      ),
-    domains: BetaWorkersListResultItemReferencesDomainsList,
-    durableObjects: BetaWorkersListResultItemReferencesDurableObjectsList.pipe(
-      T.Body("durable_objects"),
-    ),
-    queues: BetaWorkersListResultItemReferencesQueuesList,
-    workers: BetaWorkersListResultItemReferencesWorkersList,
-  }),
-).annotate({
-  identifier: "BetaWorkersListResultItemReferences",
-}) as any as S.Schema<BetaWorkersListResultItemReferences>;
+export const BetaWorkersListResultItemReferences =
+  BetaWorkersCreateResponseReferences as any as S.Schema<BetaWorkersListResultItemReferences>;
 
 export type BetaWorkersListResultItemSubdomain = BetaWorkersCreateResponseSubdomain;
 export const BetaWorkersListResultItemSubdomain = BetaWorkersCreateResponseSubdomain;
 
 export type BetaWorkersListResultItemTagsList = Array<string>;
-export const BetaWorkersListResultItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersListResultItemTagsList>;
+export const BetaWorkersListResultItemTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemTagsList>;
 
 export type BetaWorkersListResultItemTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -21957,9 +21488,8 @@ export const BetaWorkersListResultItemTailConsumersItem =
 
 export type BetaWorkersListResultItemTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersListResultItemTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersListResultItemTailConsumersList>;
+export const BetaWorkersListResultItemTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersListResultItemTailConsumersList>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
@@ -21974,10 +21504,8 @@ export const BetaWorkersListResultItemPreviewsBaseConfigEnvValue =
 export type BetaWorkersListResultItemPreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
-export const BetaWorkersListResultItemPreviewsBaseConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BetaWorkersCreateRequestPreviewsBaseConfigEnvValue,
-) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigEnvMap>;
+export const BetaWorkersListResultItemPreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigEnvMap>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
@@ -21992,9 +21520,7 @@ export const BetaWorkersListResultItemPreviewsBaseConfigObservabilityIssues =
 export type BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
 export const BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -22008,27 +21534,13 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinations: S.optional(
-        S.NullOr(BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogsDestinationsList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs",
-}) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs>;
+export const BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -22260,9 +21772,8 @@ export const BetaWorkersListResultItemPreviewsBaseConfigTailConsumersItem =
 
 export type BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList>;
+export const BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList>;
 
 export interface BetaWorkersListResultItemPreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
@@ -22397,9 +21908,8 @@ export const ListBetaWorkerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBetaWorkerVersionsRequest>;
 
 export type BetaWorkersVersionsListResultItemUrlsList = Array<string>;
-export const BetaWorkersVersionsListResultItemUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsListResultItemUrlsList>;
+export const BetaWorkersVersionsListResultItemUrlsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemUrlsList>;
 
 export type BetaWorkersVersionsListResultItemAnnotations =
   BetaWorkersVersionsCreateResponseAnnotations;
@@ -22421,9 +21931,7 @@ export const BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling = S.S
 
 export type BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export const BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List>;
 
 export type BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirst =
   | boolean
@@ -22701,9 +22209,7 @@ export const BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbo
 export type BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsList =
   Array<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsList>;
+  BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsList as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundWorker =
   BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker;
@@ -22717,18 +22223,7 @@ export interface BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceO
   worker?: BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker | null;
 }
 export const BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbound =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      params: S.optional(
-        S.NullOr(BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutboundParamsList),
-      ),
-      worker: S.optional(
-        S.NullOr(BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbound",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbound>;
+  BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutbound as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemDispatchNamespaceOutbound>;
 
 export interface BetaWorkersVersionsListResultItemBindingsItemDispatchNamespace {
   /** A JavaScript variable name for the binding. */
@@ -23108,16 +22603,12 @@ export const BetaWorkersVersionsListResultItemBindingsItemSendEmailType = S.Stri
 export type BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface BetaWorkersVersionsListResultItemBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -23596,9 +23087,8 @@ export const BetaWorkersVersionsListResultItemCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 
 export type BetaWorkersVersionsListResultItemCompatibilityFlagsList = Array<string>;
-export const BetaWorkersVersionsListResultItemCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersVersionsListResultItemCompatibilityFlagsList>;
+export const BetaWorkersVersionsListResultItemCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemCompatibilityFlagsList>;
 
 export type BetaWorkersVersionsListResultItemContainersItem =
   BetaWorkersVersionsCreateResponseContainersItem;
@@ -23607,9 +23097,8 @@ export const BetaWorkersVersionsListResultItemContainersItem =
 
 export type BetaWorkersVersionsListResultItemContainersList =
   Array<BetaWorkersVersionsCreateResponseContainersItem>;
-export const BetaWorkersVersionsListResultItemContainersList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateResponseContainersItem,
-) as any as S.Schema<BetaWorkersVersionsListResultItemContainersList>;
+export const BetaWorkersVersionsListResultItemContainersList =
+  BetaWorkersVersionsCreateResponseContainersList as any as S.Schema<BetaWorkersVersionsListResultItemContainersList>;
 
 export type BetaWorkersVersionsListResultItemExportsValueWorkerType = "worker";
 export const BetaWorkersVersionsListResultItemExportsValueWorkerType = S.String;
@@ -23837,15 +23326,11 @@ export const BetaWorkersVersionsListResultItemExportsMap = /*@__PURE__*/ S.Recor
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationCreatedList = Array<string>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationCreatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationCreatedList>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationDeletedList = Array<string>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationDeletedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationDeletedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationDeletedList>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -23886,9 +23371,7 @@ export const BetaWorkersVersionsListResultItemExportsReconciliationInfoItemScena
 export type BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface BetaWorkersVersionsListResultItemExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -23928,9 +23411,7 @@ export const BetaWorkersVersionsListResultItemExportsReconciliationInfoList = /*
 export type BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
@@ -23940,9 +23421,7 @@ export const BetaWorkersVersionsListResultItemExportsReconciliationRenamedItem =
 export type BetaWorkersVersionsListResultItemExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationRenamedList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationRenamedList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationRenamedList>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
@@ -23952,9 +23431,7 @@ export const BetaWorkersVersionsListResultItemExportsReconciliationTransferPendi
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferredItemPhase =
   "committed";
@@ -23988,9 +23465,7 @@ export const BetaWorkersVersionsListResultItemExportsReconciliationTransferredLi
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList = Array<string>;
 export const BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList>;
 
 export type BetaWorkersVersionsListResultItemExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -24104,23 +23579,17 @@ export const BetaWorkersVersionsListResultItemLimits = BetaWorkersVersionsCreate
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -24130,9 +23599,7 @@ export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenam
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -24142,9 +23609,7 @@ export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTrans
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList>;
 
 export interface BetaWorkersVersionsListResultItemMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -24163,60 +23628,22 @@ export interface BetaWorkersVersionsListResultItemMigrationsSingleStepMigration 
   transferredClasses?: BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList | null;
 }
 export const BetaWorkersVersionsListResultItemMigrationsSingleStepMigration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewClassesList).pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemMigrationsSingleStepMigration",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigration>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigration as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsSingleStepMigration>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -24226,9 +23653,7 @@ export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigra
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -24238,9 +23663,7 @@ export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigra
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -24255,44 +23678,12 @@ export interface BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepM
   transferredClasses?: BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      renamedClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsItem as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList =
   Array<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsItem,
-  ) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList>;
+  BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrationsStepsList as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList>;
 
 export interface BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
@@ -24303,17 +23694,7 @@ export interface BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepM
   steps?: BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList | null;
 }
 export const BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      steps: S.optional(
-        S.NullOr(BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrationsStepsList),
-      ),
-    }),
-  ).annotate({
-    identifier: "BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations",
-  }) as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations>;
+  BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrations as any as S.Schema<BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations>;
 
 export type BetaWorkersVersionsListResultItemMigrations =
   | BetaWorkersVersionsListResultItemMigrationsSingleStepMigration
@@ -24340,9 +23721,8 @@ export const BetaWorkersVersionsListResultItemModulesItem =
 
 export type BetaWorkersVersionsListResultItemModulesList =
   Array<BetaWorkersVersionsCreateRequestModulesItem>;
-export const BetaWorkersVersionsListResultItemModulesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateRequestModulesItem,
-) as any as S.Schema<BetaWorkersVersionsListResultItemModulesList>;
+export const BetaWorkersVersionsListResultItemModulesList =
+  BetaWorkersVersionsCreateRequestModulesList as any as S.Schema<BetaWorkersVersionsListResultItemModulesList>;
 
 export type BetaWorkersVersionsListResultItemPackageDependenciesItem =
   BetaWorkersVersionsCreateRequestPackageDependenciesItem;
@@ -24351,9 +23731,8 @@ export const BetaWorkersVersionsListResultItemPackageDependenciesItem =
 
 export type BetaWorkersVersionsListResultItemPackageDependenciesList =
   Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
-export const BetaWorkersVersionsListResultItemPackageDependenciesList = /*@__PURE__*/ S.Array(
-  BetaWorkersVersionsCreateRequestPackageDependenciesItem,
-) as any as S.Schema<BetaWorkersVersionsListResultItemPackageDependenciesList>;
+export const BetaWorkersVersionsListResultItemPackageDependenciesList =
+  BetaWorkersVersionsCreateRequestPackageDependenciesList as any as S.Schema<BetaWorkersVersionsListResultItemPackageDependenciesList>;
 
 export type BetaWorkersVersionsListResultItemPlacementModeMode = "smart";
 export const BetaWorkersVersionsListResultItemPlacementModeMode = S.String;
@@ -24797,9 +24176,8 @@ export const ObservabilityDestinationsListResultItemConfiguration = /*@__PURE__*
 }) as any as S.Schema<ObservabilityDestinationsListResultItemConfiguration>;
 
 export type ObservabilityDestinationsListResultItemScriptsList = Array<string>;
-export const ObservabilityDestinationsListResultItemScriptsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityDestinationsListResultItemScriptsList>;
+export const ObservabilityDestinationsListResultItemScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsListResultItemScriptsList>;
 
 export interface ObservabilityDestinationsListResultItem {
   configuration: ObservabilityDestinationsListResultItemConfiguration;
@@ -24988,9 +24366,8 @@ export const ObservabilityQueriesListResultItemParametersCalculationsList = /*@_
 ) as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsList>;
 
 export type ObservabilityQueriesListResultItemParametersDatasetsList = Array<string>;
-export const ObservabilityQueriesListResultItemParametersDatasetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityQueriesListResultItemParametersDatasetsList>;
+export const ObservabilityQueriesListResultItemParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityQueriesListResultItemParametersDatasetsList>;
 
 export type ObservabilityQueriesListResultItemParametersFilterCombination =
   | "and"
@@ -25010,9 +24387,7 @@ export const ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterC
 export type ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityQueriesListResultItemParametersFiltersItemCase0Kind = "group";
 export const ObservabilityQueriesListResultItemParametersFiltersItemCase0Kind = S.String;
@@ -25415,9 +24790,8 @@ export const ScriptsDeploymentsListResponseDeploymentsItemVersionsItem =
 
 export type ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
   Array<ScriptsDeploymentsCreateRequestVersionsItem>;
-export const ScriptsDeploymentsListResponseDeploymentsItemVersionsList = /*@__PURE__*/ S.Array(
-  ScriptsDeploymentsCreateRequestVersionsItem,
-) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItemVersionsList>;
+export const ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
+  ScriptsDeploymentsCreateRequestVersionsList as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItemVersionsList>;
 
 export type ScriptsDeploymentsListResponseDeploymentsItemAnnotations =
   ScriptsDeploymentsCreateResponseAnnotations;
@@ -25487,9 +24861,8 @@ export const ScriptsListResultItemCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 
 export type ScriptsListResultItemCompatibilityFlagsList = Array<string>;
-export const ScriptsListResultItemCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemCompatibilityFlagsList>;
+export const ScriptsListResultItemCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemCompatibilityFlagsList>;
 
 export type ScriptsListResultItemExportsValueWorkerType = "worker";
 export const ScriptsListResultItemExportsValueWorkerType = S.String;
@@ -25697,14 +25070,12 @@ export const ScriptsListResultItemExportsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScriptsListResultItemExportsMap>;
 
 export type ScriptsListResultItemHandlersList = Array<string>;
-export const ScriptsListResultItemHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemHandlersList>;
+export const ScriptsListResultItemHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemHandlersList>;
 
 export type ScriptsListResultItemNamedHandlersItemHandlersList = Array<string>;
-export const ScriptsListResultItemNamedHandlersItemHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemNamedHandlersItemHandlersList>;
+export const ScriptsListResultItemNamedHandlersItemHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemNamedHandlersItemHandlersList>;
 
 export interface ScriptsListResultItemNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -25731,9 +25102,8 @@ export const ScriptsListResultItemObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type ScriptsListResultItemObservabilityLogsDestinationsList = Array<string>;
-export const ScriptsListResultItemObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemObservabilityLogsDestinationsList>;
+export const ScriptsListResultItemObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemObservabilityLogsDestinationsList>;
 
 export interface ScriptsListResultItemObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -25747,22 +25117,12 @@ export interface ScriptsListResultItemObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const ScriptsListResultItemObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-    destinations: S.optional(S.NullOr(ScriptsListResultItemObservabilityLogsDestinationsList)),
-    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-    persist: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ScriptsListResultItemObservabilityLogs",
-}) as any as S.Schema<ScriptsListResultItemObservabilityLogs>;
+export const ScriptsListResultItemObservabilityLogs =
+  ScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<ScriptsListResultItemObservabilityLogs>;
 
 export type ScriptsListResultItemObservabilityTracesDestinationsList = Array<string>;
-export const ScriptsListResultItemObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemObservabilityTracesDestinationsList>;
+export const ScriptsListResultItemObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemObservabilityTracesDestinationsList>;
 
 export type ScriptsListResultItemObservabilityTracesPropagationPolicy = "authenticated" | "accept";
 export const ScriptsListResultItemObservabilityTracesPropagationPolicy = S.String;
@@ -26105,14 +25465,12 @@ export type ScriptsListResultItemRoutesItem = RoutesListResultItem;
 export const ScriptsListResultItemRoutesItem = RoutesListResultItem;
 
 export type ScriptsListResultItemRoutesList = Array<RoutesListResultItem>;
-export const ScriptsListResultItemRoutesList = /*@__PURE__*/ S.Array(
-  RoutesListResultItem,
-) as any as S.Schema<ScriptsListResultItemRoutesList>;
+export const ScriptsListResultItemRoutesList =
+  RoutesListResultList as any as S.Schema<ScriptsListResultItemRoutesList>;
 
 export type ScriptsListResultItemTagsList = Array<string>;
-export const ScriptsListResultItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemTagsList>;
+export const ScriptsListResultItemTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemTagsList>;
 
 export type ScriptsListResultItemTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
@@ -26121,9 +25479,8 @@ export const ScriptsListResultItemTailConsumersItem =
 
 export type ScriptsListResultItemTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
-export const ScriptsListResultItemTailConsumersList = /*@__PURE__*/ S.Array(
-  ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
-) as any as S.Schema<ScriptsListResultItemTailConsumersList>;
+export const ScriptsListResultItemTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsListResultItemTailConsumersList>;
 
 export type ScriptsListResultItemUsageModel = "standard" | "bundled" | "unbound";
 export const ScriptsListResultItemUsageModel = S.String;
@@ -26494,11 +25851,8 @@ export const LiveTailHeartbeatObservabilityTelemetryRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryRequest>;
 
 export type LiveTailHeartbeatObservabilityTelemetryResponse = unknown;
-export const LiveTailHeartbeatObservabilityTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "LiveTailHeartbeatObservabilityTelemetryResponse",
-}) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>;
+export const LiveTailHeartbeatObservabilityTelemetryResponse =
+  DeleteScriptSecretResponse as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>;
 
 export type ObservabilityTelemetryLiveTailRequestFilterCombination = "and" | "or" | "AND" | "OR";
 export const ObservabilityTelemetryLiveTailRequestFilterCombination = S.String;
@@ -26521,9 +25875,7 @@ export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCas
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind = "group";
 export const ObservabilityTelemetryLiveTailRequestFiltersItemCase0FiltersItemCase0Kind = S.String;
@@ -26831,9 +26183,8 @@ export const BetaWorkersEditRequestObservabilityIssues =
   BetaWorkersCreateRequestObservabilityIssues;
 
 export type BetaWorkersEditRequestObservabilityLogsDestinationsList = Array<string>;
-export const BetaWorkersEditRequestObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersEditRequestObservabilityLogsDestinationsList>;
+export const BetaWorkersEditRequestObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersEditRequestObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -26847,22 +26198,12 @@ export interface BetaWorkersEditRequestObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
-export const BetaWorkersEditRequestObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinations: S.optional(BetaWorkersEditRequestObservabilityLogsDestinationsList),
-    enabled: S.optional(S.Boolean),
-    headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-    invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
-    persist: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BetaWorkersEditRequestObservabilityLogs",
-}) as any as S.Schema<BetaWorkersEditRequestObservabilityLogs>;
+export const BetaWorkersEditRequestObservabilityLogs =
+  BetaWorkersCreateRequestObservabilityLogs as any as S.Schema<BetaWorkersEditRequestObservabilityLogs>;
 
 export type BetaWorkersEditRequestObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersEditRequestObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersEditRequestObservabilityTracesDestinationsList>;
+export const BetaWorkersEditRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestObservabilityTracesDestinationsList>;
 
 export type BetaWorkersEditRequestObservabilityTracesPropagationPolicy = "authenticated" | "accept";
 export const BetaWorkersEditRequestObservabilityTracesPropagationPolicy = S.String;
@@ -26924,9 +26265,8 @@ export type BetaWorkersEditRequestSubdomain = BetaWorkersCreateRequestSubdomain;
 export const BetaWorkersEditRequestSubdomain = BetaWorkersCreateRequestSubdomain;
 
 export type BetaWorkersEditRequestTagsList = Array<string>;
-export const BetaWorkersEditRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersEditRequestTagsList>;
+export const BetaWorkersEditRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestTagsList>;
 
 export type BetaWorkersEditRequestTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -26935,9 +26275,8 @@ export const BetaWorkersEditRequestTailConsumersItem =
 
 export type BetaWorkersEditRequestTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersEditRequestTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersEditRequestTailConsumersList>;
+export const BetaWorkersEditRequestTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditRequestTailConsumersList>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigCacheOptions =
   BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
@@ -26952,10 +26291,8 @@ export const BetaWorkersEditRequestPreviewsBaseConfigEnvValue =
 export type BetaWorkersEditRequestPreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
-export const BetaWorkersEditRequestPreviewsBaseConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BetaWorkersCreateRequestPreviewsBaseConfigEnvValue,
-) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigEnvMap>;
+export const BetaWorkersEditRequestPreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigEnvMap>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigLimits =
   BetaWorkersCreateRequestPreviewsBaseConfigLimits;
@@ -26970,9 +26307,7 @@ export const BetaWorkersEditRequestPreviewsBaseConfigObservabilityIssues =
 export type BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
 export const BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -26986,27 +26321,13 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
-export const BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinations: S.optional(
-        BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogsDestinationsList,
-      ),
-      enabled: S.optional(S.Boolean),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
-      persist: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs",
-}) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs>;
+export const BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -27234,9 +26555,8 @@ export const BetaWorkersEditRequestPreviewsBaseConfigTailConsumersItem =
 
 export type BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList>;
+export const BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList>;
 
 export interface BetaWorkersEditRequestPreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
@@ -27322,9 +26642,8 @@ export const BetaWorkersEditResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type BetaWorkersEditResponseObservabilityLogsDestinationsList = Array<string>;
-export const BetaWorkersEditResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersEditResponseObservabilityLogsDestinationsList>;
+export const BetaWorkersEditResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponseObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersEditResponseObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -27338,22 +26657,12 @@ export interface BetaWorkersEditResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersEditResponseObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinations: S.optional(S.NullOr(BetaWorkersEditResponseObservabilityLogsDestinationsList)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-    invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-    persist: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "BetaWorkersEditResponseObservabilityLogs",
-}) as any as S.Schema<BetaWorkersEditResponseObservabilityLogs>;
+export const BetaWorkersEditResponseObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersEditResponseObservabilityLogs>;
 
 export type BetaWorkersEditResponseObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersEditResponseObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersEditResponseObservabilityTracesDestinationsList>;
+export const BetaWorkersEditResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponseObservabilityTracesDestinationsList>;
 
 export type BetaWorkersEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -27423,9 +26732,7 @@ export const BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem =
 export type BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList =
   Array<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem,
-  ) as any as S.Schema<BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList>;
+  BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList as any as S.Schema<BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList>;
 
 export type BetaWorkersEditResponseReferencesDomainsItem =
   BetaWorkersCreateResponseReferencesDomainsItem;
@@ -27434,9 +26741,8 @@ export const BetaWorkersEditResponseReferencesDomainsItem =
 
 export type BetaWorkersEditResponseReferencesDomainsList =
   Array<BetaWorkersCreateResponseReferencesDomainsItem>;
-export const BetaWorkersEditResponseReferencesDomainsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDomainsItem,
-) as any as S.Schema<BetaWorkersEditResponseReferencesDomainsList>;
+export const BetaWorkersEditResponseReferencesDomainsList =
+  BetaWorkersCreateResponseReferencesDomainsList as any as S.Schema<BetaWorkersEditResponseReferencesDomainsList>;
 
 export type BetaWorkersEditResponseReferencesDurableObjectsItem =
   BetaWorkersCreateResponseReferencesDurableObjectsItem;
@@ -27445,9 +26751,8 @@ export const BetaWorkersEditResponseReferencesDurableObjectsItem =
 
 export type BetaWorkersEditResponseReferencesDurableObjectsList =
   Array<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
-export const BetaWorkersEditResponseReferencesDurableObjectsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDurableObjectsItem,
-) as any as S.Schema<BetaWorkersEditResponseReferencesDurableObjectsList>;
+export const BetaWorkersEditResponseReferencesDurableObjectsList =
+  BetaWorkersCreateResponseReferencesDurableObjectsList as any as S.Schema<BetaWorkersEditResponseReferencesDurableObjectsList>;
 
 export type BetaWorkersEditResponseReferencesQueuesItem =
   BetaWorkersCreateResponseReferencesQueuesItem;
@@ -27456,9 +26761,8 @@ export const BetaWorkersEditResponseReferencesQueuesItem =
 
 export type BetaWorkersEditResponseReferencesQueuesList =
   Array<BetaWorkersCreateResponseReferencesQueuesItem>;
-export const BetaWorkersEditResponseReferencesQueuesList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesQueuesItem,
-) as any as S.Schema<BetaWorkersEditResponseReferencesQueuesList>;
+export const BetaWorkersEditResponseReferencesQueuesList =
+  BetaWorkersCreateResponseReferencesQueuesList as any as S.Schema<BetaWorkersEditResponseReferencesQueuesList>;
 
 export type BetaWorkersEditResponseReferencesWorkersItem =
   BetaWorkersCreateResponseReferencesWorkersItem;
@@ -27467,9 +26771,8 @@ export const BetaWorkersEditResponseReferencesWorkersItem =
 
 export type BetaWorkersEditResponseReferencesWorkersList =
   Array<BetaWorkersCreateResponseReferencesWorkersItem>;
-export const BetaWorkersEditResponseReferencesWorkersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesWorkersItem,
-) as any as S.Schema<BetaWorkersEditResponseReferencesWorkersList>;
+export const BetaWorkersEditResponseReferencesWorkersList =
+  BetaWorkersCreateResponseReferencesWorkersList as any as S.Schema<BetaWorkersEditResponseReferencesWorkersList>;
 
 export interface BetaWorkersEditResponseReferences {
   /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
@@ -27483,30 +26786,15 @@ export interface BetaWorkersEditResponseReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersEditResponseReferencesWorkersList;
 }
-export const BetaWorkersEditResponseReferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dispatchNamespaceOutbounds:
-      BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList.pipe(
-        T.Body("dispatch_namespace_outbounds"),
-      ),
-    domains: BetaWorkersEditResponseReferencesDomainsList,
-    durableObjects: BetaWorkersEditResponseReferencesDurableObjectsList.pipe(
-      T.Body("durable_objects"),
-    ),
-    queues: BetaWorkersEditResponseReferencesQueuesList,
-    workers: BetaWorkersEditResponseReferencesWorkersList,
-  }),
-).annotate({
-  identifier: "BetaWorkersEditResponseReferences",
-}) as any as S.Schema<BetaWorkersEditResponseReferences>;
+export const BetaWorkersEditResponseReferences =
+  BetaWorkersCreateResponseReferences as any as S.Schema<BetaWorkersEditResponseReferences>;
 
 export type BetaWorkersEditResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 export const BetaWorkersEditResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 
 export type BetaWorkersEditResponseTagsList = Array<string>;
-export const BetaWorkersEditResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersEditResponseTagsList>;
+export const BetaWorkersEditResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponseTagsList>;
 
 export type BetaWorkersEditResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -27515,9 +26803,8 @@ export const BetaWorkersEditResponseTailConsumersItem =
 
 export type BetaWorkersEditResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersEditResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersEditResponseTailConsumersList>;
+export const BetaWorkersEditResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditResponseTailConsumersList>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
@@ -27532,10 +26819,8 @@ export const BetaWorkersEditResponsePreviewsBaseConfigEnvValue =
 export type BetaWorkersEditResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
-export const BetaWorkersEditResponsePreviewsBaseConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BetaWorkersCreateRequestPreviewsBaseConfigEnvValue,
-) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigEnvMap>;
+export const BetaWorkersEditResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigEnvMap>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
@@ -27550,9 +26835,7 @@ export const BetaWorkersEditResponsePreviewsBaseConfigObservabilityIssues =
 export type BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
 export const BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -27566,27 +26849,13 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinations: S.optional(
-        S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogsDestinationsList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs",
-}) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs>;
+export const BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -27812,9 +27081,8 @@ export const BetaWorkersEditResponsePreviewsBaseConfigTailConsumersItem =
 
 export type BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList>;
+export const BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList>;
 
 export interface BetaWorkersEditResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
@@ -27903,10 +27171,8 @@ export const PatchBetaWorkerResponse = /*@__PURE__*/ S.suspend(() =>
 export type ObservabilityDestinationsUpdateRequestConfigurationHeadersMap = {
   [key: string]: string | undefined;
 };
-export const ObservabilityDestinationsUpdateRequestConfigurationHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ObservabilityDestinationsUpdateRequestConfigurationHeadersMap>;
+export const ObservabilityDestinationsUpdateRequestConfigurationHeadersMap =
+  ContainerImageMap as any as S.Schema<ObservabilityDestinationsUpdateRequestConfigurationHeadersMap>;
 
 export type ObservabilityDestinationsUpdateRequestConfigurationType = "logpush";
 export const ObservabilityDestinationsUpdateRequestConfigurationType = S.String;
@@ -27980,9 +27246,8 @@ export const ObservabilityDestinationsUpdateResponseConfiguration = /*@__PURE__*
 }) as any as S.Schema<ObservabilityDestinationsUpdateResponseConfiguration>;
 
 export type ObservabilityDestinationsUpdateResponseScriptsList = Array<string>;
-export const ObservabilityDestinationsUpdateResponseScriptsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityDestinationsUpdateResponseScriptsList>;
+export const ObservabilityDestinationsUpdateResponseScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsUpdateResponseScriptsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchObservabilityDestinationResponse {
@@ -28269,9 +27534,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchName
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList>;
+  BetaWorkersVersionsCreateRequestBindingsItemDispatchNamespaceOutboundParamsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker =
   BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker;
@@ -28285,20 +27548,7 @@ export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatch
   worker?: BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutbound =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      params: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList,
-        ),
-      ),
-      worker: S.optional(
-        S.NullOr(BetaWorkersVersionsCreateResponseBindingsItemDispatchNamespaceOutboundWorker),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutbound",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutbound>;
+  ScriptsScriptAndVersionSettingsGetResponseBindingsItemDispatchNamespaceOutbound as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespaceOutbound>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemDispatchNamespace {
   /** A JavaScript variable name for the binding. */
@@ -28692,16 +27942,12 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailTyp
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
@@ -29196,9 +28442,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseCacheOptions =
 
 export type ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList = Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkerType = "worker";
 export const ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkerType = S.String;
@@ -29438,16 +28682,12 @@ export const ScriptsScriptAndVersionSettingsEditResponseExportsMap = /*@__PURE__
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
@@ -29489,9 +28729,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInf
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
@@ -29532,9 +28770,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInf
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
@@ -29544,9 +28780,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRen
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
@@ -29556,9 +28790,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTra
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList>;
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItemPhase =
   "committed";
@@ -29594,9 +28826,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTra
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
@@ -29716,23 +28946,17 @@ export const ScriptsScriptAndVersionSettingsEditResponseLimits =
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -29742,9 +28966,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigr
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -29754,9 +28976,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigr
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -29775,60 +28995,22 @@ export interface ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStep
   transferredClasses?: ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration>;
+  ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigration as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem;
@@ -29838,9 +29020,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipl
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem;
@@ -29850,9 +29030,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipl
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
+  BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
@@ -29867,45 +29045,12 @@ export interface ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMul
   transferredClasses?: ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      renamedClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem",
-  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
+  ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   Array<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
 export const ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  /*@__PURE__*/ S.Array(
-    ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
+  ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
@@ -29957,9 +29102,7 @@ export const ScriptsScriptAndVersionSettingsEditResponseObservabilityIssues =
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -29973,27 +29116,13 @@ export interface ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-      destinations: S.optional(
-        S.NullOr(ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList),
-      ),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs",
-}) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs>;
+export const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs =
+  ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList =
   Array<string>;
 export const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -30219,9 +29348,8 @@ export const ScriptsScriptAndVersionSettingsEditResponsePlacement = /*@__PURE__*
 );
 
 export type ScriptsScriptAndVersionSettingsEditResponseTagsList = Array<string>;
-export const ScriptsScriptAndVersionSettingsEditResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTagsList>;
+export const ScriptsScriptAndVersionSettingsEditResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTagsList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
@@ -30230,9 +29358,8 @@ export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem =
 
 export type ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
-export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
-) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTailConsumersList>;
+export const ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTailConsumersList>;
 
 export type ScriptsScriptAndVersionSettingsEditResponseUsageModel =
   | "standard"
@@ -30319,9 +29446,8 @@ export const ScriptsSettingsEditRequestObservabilityIssues =
   BetaWorkersCreateRequestObservabilityIssues;
 
 export type ScriptsSettingsEditRequestObservabilityLogsDestinationsList = Array<string>;
-export const ScriptsSettingsEditRequestObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsEditRequestObservabilityLogsDestinationsList>;
+export const ScriptsSettingsEditRequestObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditRequestObservabilityLogsDestinationsList>;
 
 export interface ScriptsSettingsEditRequestObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -30348,9 +29474,8 @@ export const ScriptsSettingsEditRequestObservabilityLogs = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ScriptsSettingsEditRequestObservabilityLogs>;
 
 export type ScriptsSettingsEditRequestObservabilityTracesDestinationsList = Array<string>;
-export const ScriptsSettingsEditRequestObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsEditRequestObservabilityTracesDestinationsList>;
+export const ScriptsSettingsEditRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditRequestObservabilityTracesDestinationsList>;
 
 export type ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -30415,9 +29540,8 @@ export const ScriptsSettingsEditRequestObservability = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ScriptsSettingsEditRequestObservability>;
 
 export type ScriptsSettingsEditRequestTagsList = Array<string>;
-export const ScriptsSettingsEditRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsEditRequestTagsList>;
+export const ScriptsSettingsEditRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditRequestTagsList>;
 
 export interface ScriptsSettingsEditRequestTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
@@ -30486,9 +29610,8 @@ export const ScriptsSettingsEditResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type ScriptsSettingsEditResponseObservabilityLogsDestinationsList = Array<string>;
-export const ScriptsSettingsEditResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
+export const ScriptsSettingsEditResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsSettingsEditResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -30517,9 +29640,8 @@ export const ScriptsSettingsEditResponseObservabilityLogs = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogs>;
 
 export type ScriptsSettingsEditResponseObservabilityTracesDestinationsList = Array<string>;
-export const ScriptsSettingsEditResponseObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
+export const ScriptsSettingsEditResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -30584,9 +29706,8 @@ export const ScriptsSettingsEditResponseObservability = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScriptsSettingsEditResponseObservability>;
 
 export type ScriptsSettingsEditResponseTagsList = Array<string>;
-export const ScriptsSettingsEditResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsSettingsEditResponseTagsList>;
+export const ScriptsSettingsEditResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditResponseTagsList>;
 
 export type ScriptsSettingsEditResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
@@ -30595,9 +29716,8 @@ export const ScriptsSettingsEditResponseTailConsumersItem =
 
 export type ScriptsSettingsEditResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
-export const ScriptsSettingsEditResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
-) as any as S.Schema<ScriptsSettingsEditResponseTailConsumersList>;
+export const ScriptsSettingsEditResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsSettingsEditResponseTailConsumersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchScriptSettingResponse {
@@ -30646,14 +29766,8 @@ export interface PutAccountSettingResponse {
   defaultUsageModel?: string | null;
   greenCompute?: boolean | null;
 }
-export const PutAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultUsageModel: S.optional(S.NullOr(S.String).pipe(T.Body("default_usage_model"))),
-    greenCompute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("green_compute"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutAccountSettingResponse",
-}) as any as S.Schema<PutAccountSettingResponse>;
+export const PutAccountSettingResponse =
+  GetAccountSettingResponse as any as S.Schema<PutAccountSettingResponse>;
 
 export interface PutDomainRequest {
   /** Identifier. */
@@ -30701,18 +29815,7 @@ export interface PutDomainResponse {
   /** Whether Worker Previews are served on this custom domain. */
   previewsEnabled?: boolean | null;
 }
-export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    certId: S.String.pipe(T.Body("cert_id")),
-    environment: S.String,
-    hostname: S.String,
-    service: S.String,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    zoneName: S.String.pipe(T.Body("zone_name")),
-    previewsEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("previews_enabled"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutDomainResponse" }) as any as S.Schema<PutDomainResponse>;
+export const PutDomainResponse = GetDomainResponse as any as S.Schema<PutDomainResponse>;
 
 export type ScriptsUpdateRequestBindingsInherit = "strict";
 export const ScriptsUpdateRequestBindingsInherit = S.String;
@@ -30861,9 +29964,8 @@ export const ScriptsUpdateResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 
 export type ScriptsUpdateResponseCompatibilityFlagsList = Array<string>;
-export const ScriptsUpdateResponseCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsUpdateResponseCompatibilityFlagsList>;
+export const ScriptsUpdateResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseCompatibilityFlagsList>;
 
 export type ScriptsUpdateResponseExportsValueWorkerType = "worker";
 export const ScriptsUpdateResponseExportsValueWorkerType = S.String;
@@ -31071,14 +30173,12 @@ export const ScriptsUpdateResponseExportsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScriptsUpdateResponseExportsMap>;
 
 export type ScriptsUpdateResponseHandlersList = Array<string>;
-export const ScriptsUpdateResponseHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsUpdateResponseHandlersList>;
+export const ScriptsUpdateResponseHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseHandlersList>;
 
 export type ScriptsUpdateResponseNamedHandlersItemHandlersList = Array<string>;
-export const ScriptsUpdateResponseNamedHandlersItemHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsUpdateResponseNamedHandlersItemHandlersList>;
+export const ScriptsUpdateResponseNamedHandlersItemHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseNamedHandlersItemHandlersList>;
 
 export interface ScriptsUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -31086,28 +30186,20 @@ export interface ScriptsUpdateResponseNamedHandlersItem {
   /** The name of the export. */
   name?: string | null;
 }
-export const ScriptsUpdateResponseNamedHandlersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    handlers: S.optional(S.NullOr(ScriptsUpdateResponseNamedHandlersItemHandlersList)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponseNamedHandlersItem",
-}) as any as S.Schema<ScriptsUpdateResponseNamedHandlersItem>;
+export const ScriptsUpdateResponseNamedHandlersItem =
+  ScriptsListResultItemNamedHandlersItem as any as S.Schema<ScriptsUpdateResponseNamedHandlersItem>;
 
 export type ScriptsUpdateResponseNamedHandlersList = Array<ScriptsUpdateResponseNamedHandlersItem>;
-export const ScriptsUpdateResponseNamedHandlersList = /*@__PURE__*/ S.Array(
-  ScriptsUpdateResponseNamedHandlersItem,
-) as any as S.Schema<ScriptsUpdateResponseNamedHandlersList>;
+export const ScriptsUpdateResponseNamedHandlersList =
+  ScriptsListResultItemNamedHandlersList as any as S.Schema<ScriptsUpdateResponseNamedHandlersList>;
 
 export type ScriptsUpdateResponseObservabilityIssues = BetaWorkersCreateResponseObservabilityIssues;
 export const ScriptsUpdateResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type ScriptsUpdateResponseObservabilityLogsDestinationsList = Array<string>;
-export const ScriptsUpdateResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsUpdateResponseObservabilityLogsDestinationsList>;
+export const ScriptsUpdateResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsUpdateResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -31121,22 +30213,12 @@ export interface ScriptsUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const ScriptsUpdateResponseObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-    destinations: S.optional(S.NullOr(ScriptsUpdateResponseObservabilityLogsDestinationsList)),
-    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-    persist: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ScriptsUpdateResponseObservabilityLogs",
-}) as any as S.Schema<ScriptsUpdateResponseObservabilityLogs>;
+export const ScriptsUpdateResponseObservabilityLogs =
+  ScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<ScriptsUpdateResponseObservabilityLogs>;
 
 export type ScriptsUpdateResponseObservabilityTracesDestinationsList = Array<string>;
-export const ScriptsUpdateResponseObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsUpdateResponseObservabilityTracesDestinationsList>;
+export const ScriptsUpdateResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsUpdateResponseObservabilityTracesPropagationPolicy = "authenticated" | "accept";
 export const ScriptsUpdateResponseObservabilityTracesPropagationPolicy = S.String;
@@ -31490,9 +30572,8 @@ export type ScriptsUpdateResponsePlacementStatus =
 export const ScriptsUpdateResponsePlacementStatus = S.String;
 
 export type ScriptsUpdateResponseTagsList = Array<string>;
-export const ScriptsUpdateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsUpdateResponseTagsList>;
+export const ScriptsUpdateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseTagsList>;
 
 export type ScriptsUpdateResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
@@ -31501,9 +30582,8 @@ export const ScriptsUpdateResponseTailConsumersItem =
 
 export type ScriptsUpdateResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
-export const ScriptsUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
-) as any as S.Schema<ScriptsUpdateResponseTailConsumersList>;
+export const ScriptsUpdateResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsUpdateResponseTailConsumersList>;
 
 export type ScriptsUpdateResponseUsageModel = "standard" | "bundled" | "unbound";
 export const ScriptsUpdateResponseUsageModel = S.String;
@@ -31618,9 +30698,8 @@ export const ScriptsContentUpdateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsContentUpdateRequestMetadata>;
 
 export type ScriptsContentUpdateRequestFilesList = Array<string>;
-export const ScriptsContentUpdateRequestFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsContentUpdateRequestFilesList>;
+export const ScriptsContentUpdateRequestFilesList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateRequestFilesList>;
 
 export interface PutScriptContentRequest {
   /** Identifier. */
@@ -31659,9 +30738,8 @@ export const ScriptsContentUpdateResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 
 export type ScriptsContentUpdateResponseCompatibilityFlagsList = Array<string>;
-export const ScriptsContentUpdateResponseCompatibilityFlagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsContentUpdateResponseCompatibilityFlagsList>;
+export const ScriptsContentUpdateResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseCompatibilityFlagsList>;
 
 export type ScriptsContentUpdateResponseExportsValueWorkerType = "worker";
 export const ScriptsContentUpdateResponseExportsValueWorkerType = S.String;
@@ -31883,14 +30961,12 @@ export const ScriptsContentUpdateResponseExportsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScriptsContentUpdateResponseExportsMap>;
 
 export type ScriptsContentUpdateResponseHandlersList = Array<string>;
-export const ScriptsContentUpdateResponseHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsContentUpdateResponseHandlersList>;
+export const ScriptsContentUpdateResponseHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseHandlersList>;
 
 export type ScriptsContentUpdateResponseNamedHandlersItemHandlersList = Array<string>;
-export const ScriptsContentUpdateResponseNamedHandlersItemHandlersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
+export const ScriptsContentUpdateResponseNamedHandlersItemHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
 
 export interface ScriptsContentUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -31898,20 +30974,13 @@ export interface ScriptsContentUpdateResponseNamedHandlersItem {
   /** The name of the export. */
   name?: string | null;
 }
-export const ScriptsContentUpdateResponseNamedHandlersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    handlers: S.optional(S.NullOr(ScriptsContentUpdateResponseNamedHandlersItemHandlersList)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponseNamedHandlersItem",
-}) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersItem>;
+export const ScriptsContentUpdateResponseNamedHandlersItem =
+  ScriptsListResultItemNamedHandlersItem as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersItem>;
 
 export type ScriptsContentUpdateResponseNamedHandlersList =
   Array<ScriptsContentUpdateResponseNamedHandlersItem>;
-export const ScriptsContentUpdateResponseNamedHandlersList = /*@__PURE__*/ S.Array(
-  ScriptsContentUpdateResponseNamedHandlersItem,
-) as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersList>;
+export const ScriptsContentUpdateResponseNamedHandlersList =
+  ScriptsListResultItemNamedHandlersList as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersList>;
 
 export type ScriptsContentUpdateResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
@@ -31919,9 +30988,8 @@ export const ScriptsContentUpdateResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type ScriptsContentUpdateResponseObservabilityLogsDestinationsList = Array<string>;
-export const ScriptsContentUpdateResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogsDestinationsList>;
+export const ScriptsContentUpdateResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogsDestinationsList>;
 
 export interface ScriptsContentUpdateResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
@@ -31935,25 +31003,12 @@ export interface ScriptsContentUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const ScriptsContentUpdateResponseObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-    destinations: S.optional(
-      S.NullOr(ScriptsContentUpdateResponseObservabilityLogsDestinationsList),
-    ),
-    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-    persist: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ScriptsContentUpdateResponseObservabilityLogs",
-}) as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogs>;
+export const ScriptsContentUpdateResponseObservabilityLogs =
+  ScriptsSettingsEditResponseObservabilityLogs as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogs>;
 
 export type ScriptsContentUpdateResponseObservabilityTracesDestinationsList = Array<string>;
 export const ScriptsContentUpdateResponseObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
 
 export type ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -32297,9 +31352,8 @@ export type ScriptsContentUpdateResponsePlacementStatus =
 export const ScriptsContentUpdateResponsePlacementStatus = S.String;
 
 export type ScriptsContentUpdateResponseTagsList = Array<string>;
-export const ScriptsContentUpdateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsContentUpdateResponseTagsList>;
+export const ScriptsContentUpdateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseTagsList>;
 
 export type ScriptsContentUpdateResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
@@ -32308,9 +31362,8 @@ export const ScriptsContentUpdateResponseTailConsumersItem =
 
 export type ScriptsContentUpdateResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
-export const ScriptsContentUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem,
-) as any as S.Schema<ScriptsContentUpdateResponseTailConsumersList>;
+export const ScriptsContentUpdateResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsContentUpdateResponseTailConsumersList>;
 
 export type ScriptsContentUpdateResponseUsageModel = "standard" | "bundled" | "unbound";
 export const ScriptsContentUpdateResponseUsageModel = S.String;
@@ -32432,11 +31485,8 @@ export const PutScriptEventTriggersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutScriptEventTriggersRequest>;
 
 export type PutScriptEventTriggersResponse = ScriptEventTriggers;
-export const PutScriptEventTriggersResponse = /*@__PURE__*/ S.suspend(() =>
-  ScriptEventTriggers.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutScriptEventTriggersResponse",
-}) as any as S.Schema<PutScriptEventTriggersResponse>;
+export const PutScriptEventTriggersResponse =
+  GetScriptEventTriggersResponse as any as S.Schema<PutScriptEventTriggersResponse>;
 
 export interface ScriptsSchedulesUpdateRequestBodyItem {
   cron: string;
@@ -32486,21 +31536,15 @@ export const ScriptsSchedulesUpdateResponseSchedulesItem = ScriptsSchedulesGetRe
 
 export type ScriptsSchedulesUpdateResponseSchedulesList =
   Array<ScriptsSchedulesGetResponseSchedulesItem>;
-export const ScriptsSchedulesUpdateResponseSchedulesList = /*@__PURE__*/ S.Array(
-  ScriptsSchedulesGetResponseSchedulesItem,
-) as any as S.Schema<ScriptsSchedulesUpdateResponseSchedulesList>;
+export const ScriptsSchedulesUpdateResponseSchedulesList =
+  ScriptsSchedulesGetResponseSchedulesList as any as S.Schema<ScriptsSchedulesUpdateResponseSchedulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutScriptScheduleResponse {
   schedules: ScriptsSchedulesUpdateResponseSchedulesList;
 }
-export const PutScriptScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schedules: ScriptsSchedulesUpdateResponseSchedulesList,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "PutScriptScheduleResponse",
-}) as any as S.Schema<PutScriptScheduleResponse>;
+export const PutScriptScheduleResponse =
+  GetScriptScheduleResponse as any as S.Schema<PutScriptScheduleResponse>;
 
 export type ScriptsSecretsUpdateRequestType = "secret_text" | "secret_key";
 export const ScriptsSecretsUpdateRequestType = S.String;
@@ -32681,11 +31725,7 @@ export const PutSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutSubdomainResponse {
   subdomain: string;
 }
-export const PutSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subdomain: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutSubdomainResponse" }) as any as S.Schema<PutSubdomainResponse>;
+export const PutSubdomainResponse = GetSubdomainResponse as any as S.Schema<PutSubdomainResponse>;
 
 export type ObservabilityTelemetryQueryRequestTimeframe =
   ObservabilitySharedQueriesCreateRequestTimeframe;
@@ -32828,9 +31868,8 @@ export const ObservabilityTelemetryQueryRequestParametersCalculationsList = /*@_
 ) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsList>;
 
 export type ObservabilityTelemetryQueryRequestParametersDatasetsList = Array<string>;
-export const ObservabilityTelemetryQueryRequestParametersDatasetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersDatasetsList>;
+export const ObservabilityTelemetryQueryRequestParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryRequestParametersDatasetsList>;
 
 export type ObservabilityTelemetryQueryRequestParametersFilterCombination =
   | "and"
@@ -32858,9 +31897,7 @@ export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0Filters
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FiltersItemCase0Kind =
   "group";
@@ -33460,9 +32497,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsLi
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList = Array<string>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination =
   | "and"
@@ -33482,9 +32517,7 @@ export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCas
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0Kind = "group";
 export const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0Kind = S.String;
@@ -33834,24 +32867,20 @@ export const ObservabilityTelemetryQueryResponseStatistics =
   ObservabilitySharedQueriesGetResponseRunStatistics;
 
 export type ObservabilityTelemetryQueryResponseAgentsItemErrorsList = Array<string>;
-export const ObservabilityTelemetryQueryResponseAgentsItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemErrorsList>;
+export const ObservabilityTelemetryQueryResponseAgentsItemErrorsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemErrorsList>;
 
 export type ObservabilityTelemetryQueryResponseAgentsItemModelsList = Array<string>;
-export const ObservabilityTelemetryQueryResponseAgentsItemModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemModelsList>;
+export const ObservabilityTelemetryQueryResponseAgentsItemModelsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemModelsList>;
 
 export type ObservabilityTelemetryQueryResponseAgentsItemProvidersList = Array<string>;
-export const ObservabilityTelemetryQueryResponseAgentsItemProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemProvidersList>;
+export const ObservabilityTelemetryQueryResponseAgentsItemProvidersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemProvidersList>;
 
 export type ObservabilityTelemetryQueryResponseAgentsItemServicesList = Array<string>;
-export const ObservabilityTelemetryQueryResponseAgentsItemServicesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemServicesList>;
+export const ObservabilityTelemetryQueryResponseAgentsItemServicesList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemServicesList>;
 
 export type ObservabilityTelemetryQueryResponseAgentsItemStatus = "completed" | "error";
 export const ObservabilityTelemetryQueryResponseAgentsItemStatus = S.String;
@@ -34257,23 +33286,19 @@ export const ObservabilityTelemetryQueryResponseCompareList = /*@__PURE__*/ S.Ar
 ) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareList>;
 
 export type ObservabilityTelemetryQueryResponseDistributionBinsList = Array<string>;
-export const ObservabilityTelemetryQueryResponseDistributionBinsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBinsList>;
+export const ObservabilityTelemetryQueryResponseDistributionBinsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBinsList>;
 
 export type ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList = Array<number>;
 export const ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList>;
+  ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList>;
 
 export type ObservabilityTelemetryQueryResponseDistributionBucketMode = "log" | "linear";
 export const ObservabilityTelemetryQueryResponseDistributionBucketMode = S.String;
 
 export type ObservabilityTelemetryQueryResponseDistributionBucketsList = Array<string>;
-export const ObservabilityTelemetryQueryResponseDistributionBucketsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBucketsList>;
+export const ObservabilityTelemetryQueryResponseDistributionBucketsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBucketsList>;
 
 export type ObservabilityTelemetryQueryResponseDistributionMatrixItemList = Array<number>;
 export const ObservabilityTelemetryQueryResponseDistributionMatrixItemList = /*@__PURE__*/ S.Array(
@@ -34319,10 +33344,7 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map = 
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemSource =
   | string
@@ -34334,10 +33356,7 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap = {
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventType =
   | "fetch"
@@ -34358,10 +33377,7 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0Event
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0ExecutionModel =
   | "durableObject"
@@ -34446,18 +33462,13 @@ export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1Diag
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList =
   Array<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList =
-  /*@__PURE__*/ S.Array(
-    ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap = {
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1EventMap>;
 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1ExecutionModel =
   | "durableObject"
@@ -34622,9 +33633,8 @@ export const ObservabilityTelemetryQueryResponseEventsFieldsItem =
 
 export type ObservabilityTelemetryQueryResponseEventsFieldsList =
   Array<ObservabilitySharedQueriesGetResponseEventsFieldsItem>;
-export const ObservabilityTelemetryQueryResponseEventsFieldsList = /*@__PURE__*/ S.Array(
-  ObservabilitySharedQueriesGetResponseEventsFieldsItem,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsFieldsList>;
+export const ObservabilityTelemetryQueryResponseEventsFieldsList =
+  ObservabilitySharedQueriesGetResponseEventsFieldsList as any as S.Schema<ObservabilityTelemetryQueryResponseEventsFieldsList>;
 
 export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemAggregates =
   ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates;
@@ -34730,10 +33740,7 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Ma
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Map>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Map>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemSource =
   | string
@@ -34745,10 +33752,7 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventType =
   | "fetch"
@@ -34770,10 +33774,7 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0E
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0ExecutionModel =
   | "durableObject"
@@ -34859,18 +33860,13 @@ export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
   Array<ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem>;
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList =
-  /*@__PURE__*/ S.Array(
-    ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsItem,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1DiagnosticsChannelEventsList as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1DiagnosticsChannelEventsList>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap = {
   [key: string]: unknown | undefined;
 };
 export const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap>;
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1EventMap>;
 
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1ExecutionModel =
   | "durableObject"
@@ -35039,14 +34035,12 @@ export const ObservabilityTelemetryQueryResponseInvocationsMap = /*@__PURE__*/ S
 ) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsMap>;
 
 export type ObservabilityTelemetryQueryResponseTracesItemServiceList = Array<string>;
-export const ObservabilityTelemetryQueryResponseTracesItemServiceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItemServiceList>;
+export const ObservabilityTelemetryQueryResponseTracesItemServiceList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItemServiceList>;
 
 export type ObservabilityTelemetryQueryResponseTracesItemErrorsList = Array<string>;
-export const ObservabilityTelemetryQueryResponseTracesItemErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItemErrorsList>;
+export const ObservabilityTelemetryQueryResponseTracesItemErrorsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItemErrorsList>;
 
 export interface ObservabilityTelemetryQueryResponseTracesItem {
   /** Name of the root span that initiated the trace. */
@@ -35068,27 +34062,13 @@ export interface ObservabilityTelemetryQueryResponseTracesItem {
   /** Error messages encountered during the trace, if any. */
   errors?: ObservabilityTelemetryQueryResponseTracesItemErrorsList | null;
 }
-export const ObservabilityTelemetryQueryResponseTracesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rootSpanName: S.String,
-    rootTransactionName: S.String,
-    service: ObservabilityTelemetryQueryResponseTracesItemServiceList,
-    spans: S.Number,
-    traceDurationMs: S.Number,
-    traceEndMs: S.Number,
-    traceId: S.String,
-    traceStartMs: S.Number,
-    errors: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseTracesItemErrorsList)),
-  }),
-).annotate({
-  identifier: "ObservabilityTelemetryQueryResponseTracesItem",
-}) as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItem>;
+export const ObservabilityTelemetryQueryResponseTracesItem =
+  ObservabilitySharedQueriesGetResponseTracesItem as any as S.Schema<ObservabilityTelemetryQueryResponseTracesItem>;
 
 export type ObservabilityTelemetryQueryResponseTracesList =
   Array<ObservabilityTelemetryQueryResponseTracesItem>;
-export const ObservabilityTelemetryQueryResponseTracesList = /*@__PURE__*/ S.Array(
-  ObservabilityTelemetryQueryResponseTracesItem,
-) as any as S.Schema<ObservabilityTelemetryQueryResponseTracesList>;
+export const ObservabilityTelemetryQueryResponseTracesList =
+  ObservabilitySharedQueriesGetResponseTracesList as any as S.Schema<ObservabilityTelemetryQueryResponseTracesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface QueryObservabilityTelemetryResponse {
@@ -35203,9 +34183,8 @@ export const BetaWorkersUpdateRequestObservabilityIssues =
   BetaWorkersCreateRequestObservabilityIssues;
 
 export type BetaWorkersUpdateRequestObservabilityLogsDestinationsList = Array<string>;
-export const BetaWorkersUpdateRequestObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersUpdateRequestObservabilityLogsDestinationsList>;
+export const BetaWorkersUpdateRequestObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersUpdateRequestObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -35219,22 +34198,12 @@ export interface BetaWorkersUpdateRequestObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
-export const BetaWorkersUpdateRequestObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinations: S.optional(BetaWorkersUpdateRequestObservabilityLogsDestinationsList),
-    enabled: S.optional(S.Boolean),
-    headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-    invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
-    persist: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BetaWorkersUpdateRequestObservabilityLogs",
-}) as any as S.Schema<BetaWorkersUpdateRequestObservabilityLogs>;
+export const BetaWorkersUpdateRequestObservabilityLogs =
+  BetaWorkersCreateRequestObservabilityLogs as any as S.Schema<BetaWorkersUpdateRequestObservabilityLogs>;
 
 export type BetaWorkersUpdateRequestObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersUpdateRequestObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersUpdateRequestObservabilityTracesDestinationsList>;
+export const BetaWorkersUpdateRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestObservabilityTracesDestinationsList>;
 
 export type BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -35309,10 +34278,8 @@ export const BetaWorkersUpdateRequestPreviewsBaseConfigEnvValue =
 export type BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
-export const BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BetaWorkersCreateRequestPreviewsBaseConfigEnvValue,
-) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap>;
+export const BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap>;
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigLimits =
   BetaWorkersCreateRequestPreviewsBaseConfigLimits;
@@ -35327,9 +34294,7 @@ export const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityIssues =
 export type BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
 export const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -35343,27 +34308,13 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
-export const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinations: S.optional(
-        BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogsDestinationsList,
-      ),
-      enabled: S.optional(S.Boolean),
-      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
-      persist: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs",
-}) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs>;
+export const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs>;
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -35595,9 +34546,8 @@ export const BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersItem =
 
 export type BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList>;
+export const BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList>;
 
 export interface BetaWorkersUpdateRequestPreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
@@ -35637,9 +34587,8 @@ export type BetaWorkersUpdateRequestSubdomain = BetaWorkersCreateRequestSubdomai
 export const BetaWorkersUpdateRequestSubdomain = BetaWorkersCreateRequestSubdomain;
 
 export type BetaWorkersUpdateRequestTagsList = Array<string>;
-export const BetaWorkersUpdateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersUpdateRequestTagsList>;
+export const BetaWorkersUpdateRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestTagsList>;
 
 export type BetaWorkersUpdateRequestTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -35648,9 +34597,8 @@ export const BetaWorkersUpdateRequestTailConsumersItem =
 
 export type BetaWorkersUpdateRequestTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersUpdateRequestTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersUpdateRequestTailConsumersList>;
+export const BetaWorkersUpdateRequestTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateRequestTailConsumersList>;
 
 export interface UpdateBetaWorkerRequest {
   /** Identifier. */
@@ -35704,9 +34652,8 @@ export const BetaWorkersUpdateResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 
 export type BetaWorkersUpdateResponseObservabilityLogsDestinationsList = Array<string>;
-export const BetaWorkersUpdateResponseObservabilityLogsDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogsDestinationsList>;
+export const BetaWorkersUpdateResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersUpdateResponseObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -35720,22 +34667,12 @@ export interface BetaWorkersUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersUpdateResponseObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinations: S.optional(S.NullOr(BetaWorkersUpdateResponseObservabilityLogsDestinationsList)),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-    invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-    persist: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "BetaWorkersUpdateResponseObservabilityLogs",
-}) as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogs>;
+export const BetaWorkersUpdateResponseObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogs>;
 
 export type BetaWorkersUpdateResponseObservabilityTracesDestinationsList = Array<string>;
-export const BetaWorkersUpdateResponseObservabilityTracesDestinationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersUpdateResponseObservabilityTracesDestinationsList>;
+export const BetaWorkersUpdateResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponseObservabilityTracesDestinationsList>;
 
 export type BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -35807,9 +34744,7 @@ export const BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem =
 export type BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList =
   Array<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
 export const BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList =
-  /*@__PURE__*/ S.Array(
-    BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem,
-  ) as any as S.Schema<BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList>;
+  BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList as any as S.Schema<BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList>;
 
 export type BetaWorkersUpdateResponseReferencesDomainsItem =
   BetaWorkersCreateResponseReferencesDomainsItem;
@@ -35818,9 +34753,8 @@ export const BetaWorkersUpdateResponseReferencesDomainsItem =
 
 export type BetaWorkersUpdateResponseReferencesDomainsList =
   Array<BetaWorkersCreateResponseReferencesDomainsItem>;
-export const BetaWorkersUpdateResponseReferencesDomainsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDomainsItem,
-) as any as S.Schema<BetaWorkersUpdateResponseReferencesDomainsList>;
+export const BetaWorkersUpdateResponseReferencesDomainsList =
+  BetaWorkersCreateResponseReferencesDomainsList as any as S.Schema<BetaWorkersUpdateResponseReferencesDomainsList>;
 
 export type BetaWorkersUpdateResponseReferencesDurableObjectsItem =
   BetaWorkersCreateResponseReferencesDurableObjectsItem;
@@ -35829,9 +34763,8 @@ export const BetaWorkersUpdateResponseReferencesDurableObjectsItem =
 
 export type BetaWorkersUpdateResponseReferencesDurableObjectsList =
   Array<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
-export const BetaWorkersUpdateResponseReferencesDurableObjectsList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesDurableObjectsItem,
-) as any as S.Schema<BetaWorkersUpdateResponseReferencesDurableObjectsList>;
+export const BetaWorkersUpdateResponseReferencesDurableObjectsList =
+  BetaWorkersCreateResponseReferencesDurableObjectsList as any as S.Schema<BetaWorkersUpdateResponseReferencesDurableObjectsList>;
 
 export type BetaWorkersUpdateResponseReferencesQueuesItem =
   BetaWorkersCreateResponseReferencesQueuesItem;
@@ -35840,9 +34773,8 @@ export const BetaWorkersUpdateResponseReferencesQueuesItem =
 
 export type BetaWorkersUpdateResponseReferencesQueuesList =
   Array<BetaWorkersCreateResponseReferencesQueuesItem>;
-export const BetaWorkersUpdateResponseReferencesQueuesList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesQueuesItem,
-) as any as S.Schema<BetaWorkersUpdateResponseReferencesQueuesList>;
+export const BetaWorkersUpdateResponseReferencesQueuesList =
+  BetaWorkersCreateResponseReferencesQueuesList as any as S.Schema<BetaWorkersUpdateResponseReferencesQueuesList>;
 
 export type BetaWorkersUpdateResponseReferencesWorkersItem =
   BetaWorkersCreateResponseReferencesWorkersItem;
@@ -35851,9 +34783,8 @@ export const BetaWorkersUpdateResponseReferencesWorkersItem =
 
 export type BetaWorkersUpdateResponseReferencesWorkersList =
   Array<BetaWorkersCreateResponseReferencesWorkersItem>;
-export const BetaWorkersUpdateResponseReferencesWorkersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateResponseReferencesWorkersItem,
-) as any as S.Schema<BetaWorkersUpdateResponseReferencesWorkersList>;
+export const BetaWorkersUpdateResponseReferencesWorkersList =
+  BetaWorkersCreateResponseReferencesWorkersList as any as S.Schema<BetaWorkersUpdateResponseReferencesWorkersList>;
 
 export interface BetaWorkersUpdateResponseReferences {
   /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
@@ -35867,30 +34798,15 @@ export interface BetaWorkersUpdateResponseReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersUpdateResponseReferencesWorkersList;
 }
-export const BetaWorkersUpdateResponseReferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dispatchNamespaceOutbounds:
-      BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList.pipe(
-        T.Body("dispatch_namespace_outbounds"),
-      ),
-    domains: BetaWorkersUpdateResponseReferencesDomainsList,
-    durableObjects: BetaWorkersUpdateResponseReferencesDurableObjectsList.pipe(
-      T.Body("durable_objects"),
-    ),
-    queues: BetaWorkersUpdateResponseReferencesQueuesList,
-    workers: BetaWorkersUpdateResponseReferencesWorkersList,
-  }),
-).annotate({
-  identifier: "BetaWorkersUpdateResponseReferences",
-}) as any as S.Schema<BetaWorkersUpdateResponseReferences>;
+export const BetaWorkersUpdateResponseReferences =
+  BetaWorkersCreateResponseReferences as any as S.Schema<BetaWorkersUpdateResponseReferences>;
 
 export type BetaWorkersUpdateResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 export const BetaWorkersUpdateResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 
 export type BetaWorkersUpdateResponseTagsList = Array<string>;
-export const BetaWorkersUpdateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BetaWorkersUpdateResponseTagsList>;
+export const BetaWorkersUpdateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponseTagsList>;
 
 export type BetaWorkersUpdateResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
@@ -35899,9 +34815,8 @@ export const BetaWorkersUpdateResponseTailConsumersItem =
 
 export type BetaWorkersUpdateResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersUpdateResponseTailConsumersList>;
+export const BetaWorkersUpdateResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateResponseTailConsumersList>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
@@ -35916,10 +34831,8 @@ export const BetaWorkersUpdateResponsePreviewsBaseConfigEnvValue =
 export type BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
-export const BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  BetaWorkersCreateRequestPreviewsBaseConfigEnvValue,
-) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap>;
+export const BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
@@ -35934,9 +34847,7 @@ export const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityIssues =
 export type BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
 export const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
 
 export interface BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
@@ -35950,27 +34861,13 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinations: S.optional(
-        S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogsDestinationsList),
-      ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-).annotate({
-  identifier: "BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs",
-}) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs>;
+export const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
 export const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
@@ -36202,9 +35099,8 @@ export const BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersItem =
 
 export type BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
-export const BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList = /*@__PURE__*/ S.Array(
-  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem,
-) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList>;
+export const BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList>;
 
 export interface BetaWorkersUpdateResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
@@ -36320,31 +35216,18 @@ export interface UpdateRouteResponse {
   /** Name of the script to run if the route matches. */
   script?: string | null;
 }
-export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    pattern: S.String,
-    script: S.optional(S.NullOr(S.String)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "UpdateRouteResponse" }) as any as S.Schema<UpdateRouteResponse>;
+export const UpdateRouteResponse = CreateRouteResponse as any as S.Schema<UpdateRouteResponse>;
 
 export type ObservabilityTelemetryValuesRequestDatasetsList = Array<string>;
-export const ObservabilityTelemetryValuesRequestDatasetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ObservabilityTelemetryValuesRequestDatasetsList>;
+export const ObservabilityTelemetryValuesRequestDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryValuesRequestDatasetsList>;
 
 export interface ObservabilityTelemetryValuesRequestTimeframe {
   from: number;
   to: number;
 }
-export const ObservabilityTelemetryValuesRequestTimeframe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.Number,
-    to: S.Number,
-  }),
-).annotate({
-  identifier: "ObservabilityTelemetryValuesRequestTimeframe",
-}) as any as S.Schema<ObservabilityTelemetryValuesRequestTimeframe>;
+export const ObservabilityTelemetryValuesRequestTimeframe =
+  ObservabilitySharedQueriesCreateRequestTimeframe as any as S.Schema<ObservabilityTelemetryValuesRequestTimeframe>;
 
 export type ObservabilityTelemetryValuesRequestType = "string" | "boolean" | "number";
 export const ObservabilityTelemetryValuesRequestType = S.String;
@@ -36367,9 +35250,7 @@ export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList =
   Array<unknown>;
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList>;
+  ObservabilityQueriesCreateRequestParametersFiltersItemCase0FiltersList as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0FiltersList>;
 
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind = "group";
 export const ObservabilityTelemetryValuesRequestFiltersItemCase0FiltersItemCase0Kind = S.String;

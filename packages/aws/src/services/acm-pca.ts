@@ -557,9 +557,8 @@ export const DeletePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeletePermissionRequest" }) as any as S.Schema<DeletePermissionRequest>;
 export interface DeletePermissionResponse {}
-export const DeletePermissionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePermissionResponse",
-}) as any as S.Schema<DeletePermissionResponse>;
+export const DeletePermissionResponse =
+  CreatePermissionResponse as any as S.Schema<DeletePermissionResponse>;
 export interface DeletePolicyRequest {
   ResourceArn: string;
 }
@@ -569,9 +568,8 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
+export const DeletePolicyResponse =
+  CreatePermissionResponse as any as S.Schema<DeletePolicyResponse>;
 export interface DescribeCertificateAuthorityRequest {
   CertificateAuthorityArn: string;
 }
@@ -758,11 +756,8 @@ export const ImportCertificateAuthorityCertificateRequest = /*@__PURE__*/ S.susp
   identifier: "ImportCertificateAuthorityCertificateRequest",
 }) as any as S.Schema<ImportCertificateAuthorityCertificateRequest>;
 export interface ImportCertificateAuthorityCertificateResponse {}
-export const ImportCertificateAuthorityCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ImportCertificateAuthorityCertificateResponse",
-}) as any as S.Schema<ImportCertificateAuthorityCertificateResponse>;
+export const ImportCertificateAuthorityCertificateResponse =
+  DeleteCertificateAuthorityResponse as any as S.Schema<ImportCertificateAuthorityCertificateResponse>;
 export type PolicyQualifierId = "CPS" | (string & {});
 export const PolicyQualifierId = S.String;
 
@@ -998,9 +993,7 @@ export const PutPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutPolicyRequest" }) as any as S.Schema<PutPolicyRequest>;
 export interface PutPolicyResponse {}
-export const PutPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutPolicyResponse",
-}) as any as S.Schema<PutPolicyResponse>;
+export const PutPolicyResponse = CreatePermissionResponse as any as S.Schema<PutPolicyResponse>;
 export interface RestoreCertificateAuthorityRequest {
   CertificateAuthorityArn: string;
 }
@@ -1012,11 +1005,8 @@ export const RestoreCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreCertificateAuthorityRequest",
 }) as any as S.Schema<RestoreCertificateAuthorityRequest>;
 export interface RestoreCertificateAuthorityResponse {}
-export const RestoreCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestoreCertificateAuthorityResponse",
-}) as any as S.Schema<RestoreCertificateAuthorityResponse>;
+export const RestoreCertificateAuthorityResponse =
+  DeleteCertificateAuthorityResponse as any as S.Schema<RestoreCertificateAuthorityResponse>;
 export type RevocationReason =
   | "UNSPECIFIED"
   | "KEY_COMPROMISE"
@@ -1042,9 +1032,8 @@ export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "RevokeCertificateRequest" }) as any as S.Schema<RevokeCertificateRequest>;
 export interface RevokeCertificateResponse {}
-export const RevokeCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeCertificateResponse",
-}) as any as S.Schema<RevokeCertificateResponse>;
+export const RevokeCertificateResponse =
+  CreatePermissionResponse as any as S.Schema<RevokeCertificateResponse>;
 export interface TagCertificateAuthorityRequest {
   CertificateAuthorityArn: string;
   Tags: Tag[];
@@ -1072,11 +1061,8 @@ export const UntagCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UntagCertificateAuthorityRequest",
 }) as any as S.Schema<UntagCertificateAuthorityRequest>;
 export interface UntagCertificateAuthorityResponse {}
-export const UntagCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagCertificateAuthorityResponse",
-}) as any as S.Schema<UntagCertificateAuthorityResponse>;
+export const UntagCertificateAuthorityResponse =
+  DeleteCertificateAuthorityResponse as any as S.Schema<UntagCertificateAuthorityResponse>;
 export interface UpdateCertificateAuthorityRequest {
   CertificateAuthorityArn: string;
   RevocationConfiguration?: RevocationConfiguration;
@@ -1092,11 +1078,8 @@ export const UpdateCertificateAuthorityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCertificateAuthorityRequest",
 }) as any as S.Schema<UpdateCertificateAuthorityRequest>;
 export interface UpdateCertificateAuthorityResponse {}
-export const UpdateCertificateAuthorityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCertificateAuthorityResponse",
-}) as any as S.Schema<UpdateCertificateAuthorityResponse>;
+export const UpdateCertificateAuthorityResponse =
+  DeleteCertificateAuthorityResponse as any as S.Schema<UpdateCertificateAuthorityResponse>;
 export type CreateCertificateAuthorityError =
   | InvalidArgsException
   | InvalidPolicyException

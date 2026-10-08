@@ -107,9 +107,8 @@ export const PinnedSceneTabs = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
 export type UpdateUserHomeSettingsPartialRequestTabsList = Array<PinnedSceneTab>;
-export const UpdateUserHomeSettingsPartialRequestTabsList = /*@__PURE__*/ S.Array(
-  PinnedSceneTab,
-) as any as S.Schema<UpdateUserHomeSettingsPartialRequestTabsList>;
+export const UpdateUserHomeSettingsPartialRequestTabsList =
+  PinnedSceneTabsTabsList as any as S.Schema<UpdateUserHomeSettingsPartialRequestTabsList>;
 
 export interface UpdateUserHomeSettingsPartialRequest {
   uuid: string;

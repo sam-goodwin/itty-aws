@@ -298,9 +298,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** The request to close an issue. */
 export interface CloseIssueRequest {
@@ -441,14 +439,7 @@ export interface HostConfig {
   /** Output only. HTML hostname. */
   html?: string;
 }
-export const HostConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitSsh: S.optional(S.String),
-    gitHttp: S.optional(S.String),
-    api: S.optional(S.String),
-    html: S.optional(S.String),
-  }),
-).annotate({ identifier: "HostConfig" }) as any as S.Schema<HostConfig>;
+export const HostConfig = CustomHostConfig as any as S.Schema<HostConfig>;
 
 export type InstanceStateEnum =
   | "STATE_UNSPECIFIED"
@@ -2261,11 +2252,7 @@ export interface OpenIssueRequest {
   /** Optional. The current etag of the issue. If the etag is provided and does not match the current etag of the issue, opening will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const OpenIssueRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "OpenIssueRequest" }) as any as S.Schema<OpenIssueRequest>;
+export const OpenIssueRequest = CloseIssueRequest as any as S.Schema<OpenIssueRequest>;
 
 export interface OpenProjectsLocationsRepositoriesIssuesRequest {
   /** Required. Name of the issue to open. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. */
@@ -2622,13 +2609,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

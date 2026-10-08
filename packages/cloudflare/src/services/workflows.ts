@@ -1082,9 +1082,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase1Config = /*@__PURE_
 }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1Config>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList =
+  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1Type = "step_do";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase1Type = S.String;
@@ -1231,9 +1230,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase3 = /*@__PURE__*/ S.
 }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase3>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList =
+  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase4Type = "loop";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase4Type = S.String;
@@ -1260,9 +1258,8 @@ export type VersionsGraphResponseGraphWorkflowNodesItemCase5Kind =
 export const VersionsGraphResponseGraphWorkflowNodesItemCase5Kind = S.String;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList =
+  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase5Type = "parallel";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase5Type = S.String;
@@ -1310,9 +1307,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock = /*@__P
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList = Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList>;
+  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType = "block";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType = S.String;
@@ -1334,9 +1329,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock = /*@_
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList = Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList>;
+  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType = "block";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType = S.String;
@@ -1381,9 +1374,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase6 = /*@__PURE__*/ S.
 }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList =
+  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase7Type = "block";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase7Type = S.String;
@@ -1404,9 +1396,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase7 = /*@__PURE__*/ S.
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList = Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList>;
+  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList>;
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem {
   condition: string;
@@ -1447,30 +1437,20 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase8 = /*@__PURE__*/ S.
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList = Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList>;
+  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList>;
 
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem {
   condition: string;
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      condition: S.String,
-      nodes: VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem =
+  VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList =
   Array<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList = /*@__PURE__*/ S.Array(
-  VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList =
+  VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9Type = "switch";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase9Type = S.String;
@@ -1493,9 +1473,7 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase9 = /*@__PURE__*/ S.
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList =
   Array<unknown>;
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList>;
+  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType = "function_def";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType = S.String;
@@ -1526,9 +1504,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap = /*@
 ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList =
+  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10Type = "start";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10Type = S.String;
@@ -1552,10 +1529,7 @@ export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsM
   [key: string]: unknown | undefined;
 };
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap>;
+  VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type = "object";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type = S.String;
@@ -1628,9 +1602,8 @@ export const VersionsGraphResponseGraphWorkflowNodesItemCase11 = /*@__PURE__*/ S
 }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase11>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList>;
+export const VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList =
+  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase12Type = "function_def";
 export const VersionsGraphResponseGraphWorkflowNodesItemCase12Type = S.String;
@@ -2049,18 +2022,15 @@ export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWorkflowsRequest" }) as any as S.Schema<ListWorkflowsRequest>;
 
 export type ListResultItemInstancesMap = { [key: string]: number | undefined };
-export const ListResultItemInstancesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<ListResultItemInstancesMap>;
+export const ListResultItemInstancesMap =
+  GetResponseInstancesMap as any as S.Schema<ListResultItemInstancesMap>;
 
 export type ListResultItemSchedulesItem = GetResponseSchedulesItem;
 export const ListResultItemSchedulesItem = GetResponseSchedulesItem;
 
 export type ListResultItemSchedulesList = Array<GetResponseSchedulesItem>;
-export const ListResultItemSchedulesList = /*@__PURE__*/ S.Array(
-  GetResponseSchedulesItem,
-) as any as S.Schema<ListResultItemSchedulesList>;
+export const ListResultItemSchedulesList =
+  GetResponseSchedulesList as any as S.Schema<ListResultItemSchedulesList>;
 
 export interface ListResultItem {
   id: string;

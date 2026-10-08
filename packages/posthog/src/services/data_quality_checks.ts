@@ -101,22 +101,17 @@ export const CreateDataQualityCheckRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type DataQualityCheckCreateConfigMap = { [key: string]: unknown | undefined };
-export const DataQualityCheckCreateConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityCheckCreateConfigMap>;
+export const DataQualityCheckCreateConfigMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckCreateConfigMap>;
 
 /** Free-form string labels for grouping and filtering. */
 export type DataQualityCheckCreateTagsList = Array<string>;
-export const DataQualityCheckCreateTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataQualityCheckCreateTagsList>;
+export const DataQualityCheckCreateTagsList =
+  CreateDataQualityCheckRequestTagsList as any as S.Schema<DataQualityCheckCreateTagsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -358,16 +353,13 @@ export const GetDataQualityCheckRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type DataQualityCheckConfigMap = { [key: string]: unknown | undefined };
-export const DataQualityCheckConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityCheckConfigMap>;
+export const DataQualityCheckConfigMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckConfigMap>;
 
 /** Free-form string labels for grouping and filtering. */
 export type DataQualityCheckTagsList = Array<string>;
-export const DataQualityCheckTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataQualityCheckTagsList>;
+export const DataQualityCheckTagsList =
+  CreateDataQualityCheckRequestTagsList as any as S.Schema<DataQualityCheckTagsList>;
 
 /** A check as it reads back, and everything an edit may change about it. The subject is not one of those: it is writable only on ``DataQualityCheckCreate``. */
 export interface DataQualityCheck {
@@ -616,16 +608,13 @@ export const ListDataQualityChecksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type DataQualityOverviewCheckConfigMap = { [key: string]: unknown | undefined };
-export const DataQualityOverviewCheckConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityOverviewCheckConfigMap>;
+export const DataQualityOverviewCheckConfigMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityOverviewCheckConfigMap>;
 
 /** Free-form string labels for grouping and filtering. */
 export type DataQualityOverviewCheckTagsList = Array<string>;
-export const DataQualityOverviewCheckTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataQualityOverviewCheckTagsList>;
+export const DataQualityOverviewCheckTagsList =
+  CreateDataQualityCheckRequestTagsList as any as S.Schema<DataQualityOverviewCheckTagsList>;
 
 /** A check plus where its subject can be opened, for the project-wide list. The per-subject surfaces already know their parent; only this one lists checks across every table and view, so only this one needs to say where each subject lives. The ids are resolved for a whole page at once and handed in through ``subject_locations`` in the context. */
 export interface DataQualityOverviewCheck {
@@ -774,10 +763,8 @@ export const ListDataQualityChecksCheckTypesRequest = /*@__PURE__*/ S.suspend(()
 
 /** JSON schema the config object is validated against. */
 export type DataQualityCheckTypeConfigSchemaMap = { [key: string]: unknown | undefined };
-export const DataQualityCheckTypeConfigSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityCheckTypeConfigSchemaMap>;
+export const DataQualityCheckTypeConfigSchemaMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckTypeConfigSchemaMap>;
 
 /** One entry of the check-type catalog, so an agent can author config without guessing. */
 export interface DataQualityCheckType {
@@ -948,10 +935,8 @@ export const ListDataQualityChecksRunsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
 export type DataQualityCheckRunCheckConfigMap = { [key: string]: unknown | undefined };
-export const DataQualityCheckRunCheckConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityCheckRunCheckConfigMap>;
+export const DataQualityCheckRunCheckConfigMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckRunCheckConfigMap>;
 
 export interface DataQualityCheckRun {
   id: string;
@@ -1157,16 +1142,13 @@ export const ListDataQualityChecksSubjectsResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type UpdateDataQualityCheckRequestConfigMap = { [key: string]: unknown | undefined };
-export const UpdateDataQualityCheckRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDataQualityCheckRequestConfigMap>;
+export const UpdateDataQualityCheckRequestConfigMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<UpdateDataQualityCheckRequestConfigMap>;
 
 /** Free-form string labels for grouping and filtering. */
 export type UpdateDataQualityCheckRequestTagsList = Array<string>;
-export const UpdateDataQualityCheckRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDataQualityCheckRequestTagsList>;
+export const UpdateDataQualityCheckRequestTagsList =
+  CreateDataQualityCheckRequestTagsList as any as S.Schema<UpdateDataQualityCheckRequestTagsList>;
 
 export interface UpdateDataQualityCheckRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1227,16 +1209,13 @@ export const UpdateDataQualityCheckRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type UpdateDataQualityChecksPartialRequestConfigMap = { [key: string]: unknown | undefined };
-export const UpdateDataQualityChecksPartialRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateDataQualityChecksPartialRequestConfigMap>;
+export const UpdateDataQualityChecksPartialRequestConfigMap =
+  CreateDataQualityCheckRequestConfigMap as any as S.Schema<UpdateDataQualityChecksPartialRequestConfigMap>;
 
 /** Free-form string labels for grouping and filtering. */
 export type UpdateDataQualityChecksPartialRequestTagsList = Array<string>;
-export const UpdateDataQualityChecksPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDataQualityChecksPartialRequestTagsList>;
+export const UpdateDataQualityChecksPartialRequestTagsList =
+  CreateDataQualityCheckRequestTagsList as any as S.Schema<UpdateDataQualityChecksPartialRequestTagsList>;
 
 export interface UpdateDataQualityChecksPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

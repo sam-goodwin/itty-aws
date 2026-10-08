@@ -400,11 +400,8 @@ export const CreateAppsReleasesNotesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response message for `CreateReleaseNotes`. */
 export interface GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse {}
-export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse",
-}) as any as S.Schema<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse>;
+export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse =
+  GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse as any as S.Schema<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse>;
 
 export type GoogleFirebaseAppdistroV1alphaDeviceExecutionExecutionTypeEnum =
   | "EXECUTION_TYPE_UNSPECIFIED"
@@ -529,11 +526,8 @@ export const GoogleFirebaseAppdistroV1alphaGoalActionCachingTypeEnum = S.String;
 
 /** A back action. */
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionBack {}
-export const GoogleFirebaseAppdistroV1alphaDeviceInteractionBack = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionBack",
-}) as any as S.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionBack>;
+export const GoogleFirebaseAppdistroV1alphaDeviceInteractionBack =
+  GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse as any as S.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionBack>;
 
 /** Point for describing bounding boxes tap locations Top left is 0,0 */
 export interface AndroidxCrawlerOutputPoint {
@@ -1097,11 +1091,8 @@ export const EnableAccessAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response message for `EnableAccessOnRelease`. */
 export interface GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse {}
-export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse",
-}) as any as S.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse>;
+export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse =
+  GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse as any as S.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse>;
 
 export type GetAppsAppViewEnum = "APP_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const GetAppsAppViewEnum = S.String;

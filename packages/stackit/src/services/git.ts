@@ -155,7 +155,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Restricted ACL for instance access. */
 export type InstanceAclList = Array<string>;
-export const InstanceAclList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<InstanceAclList>;
+export const InstanceAclList = Acl as any as S.Schema<InstanceAclList>;
 
 /** Default email notifications. */
 export type FeatureToggleDefaultEmailNotifications =
@@ -282,9 +282,7 @@ export const CreateRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRunnerRequest" }) as any as S.Schema<CreateRunnerRequest>;
 
 export type RunnerLabelsList = Array<string>;
-export const RunnerLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunnerLabelsList>;
+export const RunnerLabelsList = CreateRunnerRequestLabelsList as any as S.Schema<RunnerLabelsList>;
 
 /** Describes a runner associated to a STACKIT Git instance. */
 export interface Runner {
@@ -409,9 +407,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  DeleteAuthenticationResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DeleteRunnerRequest {
   /** Project identifier. */
@@ -434,9 +431,8 @@ export const DeleteRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRunnerRequest" }) as any as S.Schema<DeleteRunnerRequest>;
 
 export interface DeleteRunnerResponse {}
-export const DeleteRunnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRunnerResponse",
-}) as any as S.Schema<DeleteRunnerResponse>;
+export const DeleteRunnerResponse =
+  DeleteAuthenticationResponse as any as S.Schema<DeleteRunnerResponse>;
 
 export interface DeleteUserRequest {
   /** Project identifier. */
@@ -462,9 +458,8 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse =
+  DeleteAuthenticationResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface GetAuthenticationRequest {
   /** Project identifier. */
@@ -553,9 +548,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export interface GetUserResponse {}
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetUserResponse",
-}) as any as S.Schema<GetUserResponse>;
+export const GetUserResponse = DeleteAuthenticationResponse as any as S.Schema<GetUserResponse>;
 
 export interface GetUsersRequest {
   /** Project identifier. */

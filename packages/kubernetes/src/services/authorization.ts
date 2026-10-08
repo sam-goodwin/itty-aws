@@ -50,10 +50,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -184,9 +182,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
 
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList = Array<string>;
-export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList>;
+export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList>;
 
 /** extra corresponds to the user.Info.GetExtra() method from the authenticator. Since that is input to the authorizer it needs a reflection here. */
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraMap = {
@@ -199,9 +196,8 @@ export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraMap = /*@__PURE_
 
 /** groups is the groups you're testing for. */
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList = Array<string>;
-export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList>;
+export const IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList>;
 
 /** NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface */
 export interface IoK8sApiAuthorizationV1NonResourceAttributes {
@@ -271,9 +267,7 @@ export const IoK8sApiAuthorizationV1FieldSelectorAttributes = /*@__PURE__*/ S.su
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
+  IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
 
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
@@ -284,22 +278,14 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    operator: S.String,
-    values: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList),
-  }),
-).annotate({
-  identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
-}) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
+export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement =
+  IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
 
 /** requirements is the parsed interpretation of a label selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood. */
 export type IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-export const IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList = /*@__PURE__*/ S.Array(
-  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
-) as any as S.Schema<IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList>;
+export const IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList =
+  IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList as any as S.Schema<IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList>;
 
 /** LabelSelectorAttributes indicates a label limited access. Webhook authors are encouraged to * ensure rawSelector and requirements are not both set * consider the requirements field if set * not try to parse or consider the rawSelector field if set. This is to avoid another CVE-2022-2880 (i.e. getting different systems to agree on how exactly to parse a query is not something we want), see https://www.oxeye.io/resources/golang-parameter-smuggling-attack for more details. For the *SubjectAccessReview endpoints of the kube-apiserver: * If rawSelector is empty and requirements are empty, the request is not limited. * If rawSelector is present and requirements are empty, the rawSelector will be parsed and limited if the parsing succeeds. * If rawSelector is empty and requirements are present, the requirements should be honored * If rawSelector is present and requirements are present, the request is invalid. */
 export interface IoK8sApiAuthorizationV1LabelSelectorAttributes {
@@ -308,14 +294,8 @@ export interface IoK8sApiAuthorizationV1LabelSelectorAttributes {
   /** requirements is the parsed interpretation of a label selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood. */
   requirements?: IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList;
 }
-export const IoK8sApiAuthorizationV1LabelSelectorAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rawSelector: S.optional(S.String),
-    requirements: S.optional(IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiAuthorizationV1LabelSelectorAttributes",
-}) as any as S.Schema<IoK8sApiAuthorizationV1LabelSelectorAttributes>;
+export const IoK8sApiAuthorizationV1LabelSelectorAttributes =
+  IoK8sApiAuthorizationV1FieldSelectorAttributes as any as S.Schema<IoK8sApiAuthorizationV1LabelSelectorAttributes>;
 
 /** ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface */
 export interface IoK8sApiAuthorizationV1ResourceAttributes {
@@ -573,15 +553,13 @@ export const IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec = /*@__PURE__*/ S
 
 /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path. "*" means all. */
 export type IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList = Array<string>;
-export const IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList>;
+export const IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList>;
 
 /** verbs is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options. "*" means all. */
 export type IoK8sApiAuthorizationV1NonResourceRuleVerbsList = Array<string>;
-export const IoK8sApiAuthorizationV1NonResourceRuleVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRuleVerbsList>;
+export const IoK8sApiAuthorizationV1NonResourceRuleVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRuleVerbsList>;
 
 /** NonResourceRule holds information that describes a rule for the non-resource */
 export interface IoK8sApiAuthorizationV1NonResourceRule {
@@ -609,27 +587,23 @@ export const IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList
 
 /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "*" means all. */
 export type IoK8sApiAuthorizationV1ResourceRuleApiGroupsList = Array<string>;
-export const IoK8sApiAuthorizationV1ResourceRuleApiGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleApiGroupsList>;
+export const IoK8sApiAuthorizationV1ResourceRuleApiGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleApiGroupsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. "*" means all. */
 export type IoK8sApiAuthorizationV1ResourceRuleResourceNamesList = Array<string>;
-export const IoK8sApiAuthorizationV1ResourceRuleResourceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourceNamesList>;
+export const IoK8sApiAuthorizationV1ResourceRuleResourceNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. "*" means all in the specified apiGroups. "*\/foo" represents the subresource 'foo' for all resources in the specified apiGroups. */
 export type IoK8sApiAuthorizationV1ResourceRuleResourcesList = Array<string>;
-export const IoK8sApiAuthorizationV1ResourceRuleResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourcesList>;
+export const IoK8sApiAuthorizationV1ResourceRuleResourcesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourcesList>;
 
 /** verbs is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy. "*" means all. */
 export type IoK8sApiAuthorizationV1ResourceRuleVerbsList = Array<string>;
-export const IoK8sApiAuthorizationV1ResourceRuleVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleVerbsList>;
+export const IoK8sApiAuthorizationV1ResourceRuleVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleVerbsList>;
 
 /** ResourceRule is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete. */
 export interface IoK8sApiAuthorizationV1ResourceRule {
@@ -807,17 +781,8 @@ export interface IoK8sApiAuthorizationV1SubjectAccessReview {
   /** status is filled in by the server and indicates whether the request is allowed or not */
   status?: IoK8sApiAuthorizationV1SubjectAccessReviewStatus;
 }
-export const IoK8sApiAuthorizationV1SubjectAccessReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: IoK8sApiAuthorizationV1SubjectAccessReviewSpec,
-    status: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewStatus),
-  }),
-).annotate({
-  identifier: "IoK8sApiAuthorizationV1SubjectAccessReview",
-}) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReview>;
+export const IoK8sApiAuthorizationV1SubjectAccessReview =
+  IoK8sApiAuthorizationV1LocalSubjectAccessReview as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReview>;
 
 export interface GetAuthorizationAPIGroupRequest {}
 export const GetAuthorizationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
@@ -912,21 +877,18 @@ export const GetAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {

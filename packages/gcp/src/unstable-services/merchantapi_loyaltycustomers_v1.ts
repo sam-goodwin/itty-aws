@@ -172,13 +172,8 @@ export interface ManageLoyaltyCustomerMatchResponse {
   /** The loyalty customer that was inserted, updated, or removed. If the customer's identifier cannot be matched to a Google account or if the user has not opted into loyalty personalization, this field will contain a default `LoyaltyCustomer` instance. */
   loyaltyCustomer?: LoyaltyCustomer;
 }
-export const ManageLoyaltyCustomerMatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loyaltyCustomer: S.optional(LoyaltyCustomer),
-  }),
-).annotate({
-  identifier: "ManageLoyaltyCustomerMatchResponse",
-}) as any as S.Schema<ManageLoyaltyCustomerMatchResponse>;
+export const ManageLoyaltyCustomerMatchResponse =
+  ManageLoyaltyCustomerMatchRequest as any as S.Schema<ManageLoyaltyCustomerMatchResponse>;
 
 export type ManageAccountsLoyaltyCustomersError =
   | NotFound

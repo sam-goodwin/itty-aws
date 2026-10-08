@@ -427,9 +427,7 @@ export const GetVercelCiInvocationTreeResponseInvocationSandboxNamed =
 export type GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreatedNamesList =
   Array<string>;
 export const GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreatedNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreatedNamesList>;
+  GetVercelCiInvocationResponseInvocationJobDefinitionsCreatedNamesList as any as S.Schema<GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreatedNamesList>;
 
 export interface GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreated {
   names: GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreatedNamesList;
@@ -647,9 +645,7 @@ export const GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionOperati
 export type GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionDependencyTaskDefinitionIdsList =
   Array<string>;
 export const GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionDependencyTaskDefinitionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionDependencyTaskDefinitionIdsList>;
+  GetVercelCiInvocationResponseInvocationJobDefinitionsCreatedNamesList as any as S.Schema<GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinitionDependencyTaskDefinitionIdsList>;
 
 export interface GetVercelCiInvocationTreeResponseJobsItemTasksItemDefinition {
   invocationId: string;
@@ -1016,20 +1012,14 @@ export const GetVercelCiJobRunLogsResponseLinesItem = GetVercelCiInvocationLogsR
 
 export type GetVercelCiJobRunLogsResponseLinesList =
   Array<GetVercelCiInvocationLogsResponseLinesItem>;
-export const GetVercelCiJobRunLogsResponseLinesList = /*@__PURE__*/ S.Array(
-  GetVercelCiInvocationLogsResponseLinesItem,
-) as any as S.Schema<GetVercelCiJobRunLogsResponseLinesList>;
+export const GetVercelCiJobRunLogsResponseLinesList =
+  GetVercelCiInvocationLogsResponseLinesList as any as S.Schema<GetVercelCiJobRunLogsResponseLinesList>;
 
 export interface GetVercelCiJobRunLogsResponse {
   lines: GetVercelCiJobRunLogsResponseLinesList;
 }
-export const GetVercelCiJobRunLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lines: GetVercelCiJobRunLogsResponseLinesList,
-  }),
-).annotate({
-  identifier: "GetVercelCiJobRunLogsResponse",
-}) as any as S.Schema<GetVercelCiJobRunLogsResponse>;
+export const GetVercelCiJobRunLogsResponse =
+  GetVercelCiInvocationLogsResponse as any as S.Schema<GetVercelCiJobRunLogsResponse>;
 
 /** Only return tasks with one of these names (e.g., \"web#test\"). */
 export type GetVercelCiTaskLogsRequestTaskList = Array<string>;
@@ -1146,9 +1136,8 @@ export const GetVercelCiTaskLogsResponseTasksItemLinesItem =
 
 export type GetVercelCiTaskLogsResponseTasksItemLinesList =
   Array<GetVercelCiInvocationLogsResponseLinesItem>;
-export const GetVercelCiTaskLogsResponseTasksItemLinesList = /*@__PURE__*/ S.Array(
-  GetVercelCiInvocationLogsResponseLinesItem,
-) as any as S.Schema<GetVercelCiTaskLogsResponseTasksItemLinesList>;
+export const GetVercelCiTaskLogsResponseTasksItemLinesList =
+  GetVercelCiInvocationLogsResponseLinesList as any as S.Schema<GetVercelCiTaskLogsResponseTasksItemLinesList>;
 
 export interface GetVercelCiTaskLogsResponseTasksItem {
   jobDefinitionId: string;
@@ -1263,20 +1252,14 @@ export const GetVercelCiTaskRunLogsResponseLinesItem = GetVercelCiInvocationLogs
 
 export type GetVercelCiTaskRunLogsResponseLinesList =
   Array<GetVercelCiInvocationLogsResponseLinesItem>;
-export const GetVercelCiTaskRunLogsResponseLinesList = /*@__PURE__*/ S.Array(
-  GetVercelCiInvocationLogsResponseLinesItem,
-) as any as S.Schema<GetVercelCiTaskRunLogsResponseLinesList>;
+export const GetVercelCiTaskRunLogsResponseLinesList =
+  GetVercelCiInvocationLogsResponseLinesList as any as S.Schema<GetVercelCiTaskRunLogsResponseLinesList>;
 
 export interface GetVercelCiTaskRunLogsResponse {
   lines: GetVercelCiTaskRunLogsResponseLinesList;
 }
-export const GetVercelCiTaskRunLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lines: GetVercelCiTaskRunLogsResponseLinesList,
-  }),
-).annotate({
-  identifier: "GetVercelCiTaskRunLogsResponse",
-}) as any as S.Schema<GetVercelCiTaskRunLogsResponse>;
+export const GetVercelCiTaskRunLogsResponse =
+  GetVercelCiInvocationLogsResponse as any as S.Schema<GetVercelCiTaskRunLogsResponse>;
 
 export interface ListVercelCiBranchesRequest {
   query?: string;
@@ -1390,9 +1373,7 @@ export const ListVercelCiInvocationAttemptsResponseAttemptsItemSandboxNamed =
 export type ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreatedNamesList =
   Array<string>;
 export const ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreatedNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreatedNamesList>;
+  GetVercelCiInvocationResponseInvocationJobDefinitionsCreatedNamesList as any as S.Schema<ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreatedNamesList>;
 
 export interface ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreated {
   names: ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreatedNamesList;
@@ -1400,15 +1381,7 @@ export interface ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinition
   scheduledAt?: number;
 }
 export const ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreated =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      names: ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreatedNamesList,
-      source: S.optional(S.String),
-      scheduledAt: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreated",
-  }) as any as S.Schema<ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreated>;
+  GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreated as any as S.Schema<ListVercelCiInvocationAttemptsResponseAttemptsItemJobDefinitionsCreated>;
 
 export type ListVercelCiInvocationAttemptsResponseAttemptsItemCompleted =
   GetVercelCiInvocationResponseInvocationCompleted;
@@ -1633,9 +1606,7 @@ export const ListVercelCiInvocationsResponseInvocationsItemSandboxNamed =
 export type ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreatedNamesList =
   Array<string>;
 export const ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreatedNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreatedNamesList>;
+  GetVercelCiInvocationResponseInvocationJobDefinitionsCreatedNamesList as any as S.Schema<ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreatedNamesList>;
 
 export interface ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreated {
   names: ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreatedNamesList;
@@ -1643,15 +1614,7 @@ export interface ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCre
   scheduledAt?: number;
 }
 export const ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreated =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      names: ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreatedNamesList,
-      source: S.optional(S.String),
-      scheduledAt: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreated",
-  }) as any as S.Schema<ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreated>;
+  GetVercelCiInvocationTreeResponseInvocationJobDefinitionsCreated as any as S.Schema<ListVercelCiInvocationsResponseInvocationsItemJobDefinitionsCreated>;
 
 export type ListVercelCiInvocationsResponseInvocationsItemCompleted =
   GetVercelCiInvocationResponseInvocationCompleted;
@@ -1952,9 +1915,7 @@ export const ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemOperation =
 export type ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemDependencyTaskDefinitionIdsList =
   Array<string>;
 export const ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemDependencyTaskDefinitionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemDependencyTaskDefinitionIdsList>;
+  GetVercelCiInvocationResponseInvocationJobDefinitionsCreatedNamesList as any as S.Schema<ListVercelCiTaskDefinitionsResponseTaskDefinitionsItemDependencyTaskDefinitionIdsList>;
 
 export interface ListVercelCiTaskDefinitionsResponseTaskDefinitionsItem {
   invocationId: string;
@@ -2162,9 +2123,8 @@ export const RetryVercelCiInvocationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Invocation attempts to search, as \"<invocationId>:<attempt>\" (at most 50). */
 export type SearchVercelCiLogsRequestInvocationList = Array<string>;
-export const SearchVercelCiLogsRequestInvocationList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SearchVercelCiLogsRequestInvocationList>;
+export const SearchVercelCiLogsRequestInvocationList =
+  GetVercelCiTaskLogsRequestTaskList as any as S.Schema<SearchVercelCiLogsRequestInvocationList>;
 
 export type SearchVercelCiLogsRequestLevelItem =
   | "trace"
@@ -2244,9 +2204,8 @@ export const SearchVercelCiLogsResponseInvocationsItemTasksItemLinesItem =
 
 export type SearchVercelCiLogsResponseInvocationsItemTasksItemLinesList =
   Array<GetVercelCiInvocationLogsResponseLinesItem>;
-export const SearchVercelCiLogsResponseInvocationsItemTasksItemLinesList = /*@__PURE__*/ S.Array(
-  GetVercelCiInvocationLogsResponseLinesItem,
-) as any as S.Schema<SearchVercelCiLogsResponseInvocationsItemTasksItemLinesList>;
+export const SearchVercelCiLogsResponseInvocationsItemTasksItemLinesList =
+  GetVercelCiInvocationLogsResponseLinesList as any as S.Schema<SearchVercelCiLogsResponseInvocationsItemTasksItemLinesList>;
 
 export interface SearchVercelCiLogsResponseInvocationsItemTasksItem {
   jobDefinitionId: string;

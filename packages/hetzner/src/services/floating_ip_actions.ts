@@ -136,9 +136,8 @@ export const ChangeFloatingIpDnsPtrResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeFloatingIpDnsPtrResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ChangeFloatingIpDnsPtrResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignFloatingIpResponseActionResourcesItem,
-) as any as S.Schema<ChangeFloatingIpDnsPtrResponseActionResourcesList>;
+export const ChangeFloatingIpDnsPtrResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ChangeFloatingIpDnsPtrResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeFloatingIpDnsPtrResponseActionError = AssignFloatingIpResponseActionError;
@@ -217,9 +216,8 @@ export const ChangeFloatingIpProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeFloatingIpProtectionResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ChangeFloatingIpProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignFloatingIpResponseActionResourcesItem,
-) as any as S.Schema<ChangeFloatingIpProtectionResponseActionResourcesList>;
+export const ChangeFloatingIpProtectionResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ChangeFloatingIpProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeFloatingIpProtectionResponseActionError = AssignFloatingIpResponseActionError;
@@ -293,9 +291,8 @@ export const GetFloatingIpsActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetFloatingIpsActionResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const GetFloatingIpsActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignFloatingIpResponseActionResourcesItem,
-) as any as S.Schema<GetFloatingIpsActionResponseActionResourcesList>;
+export const GetFloatingIpsActionResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<GetFloatingIpsActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetFloatingIpsActionResponseActionError = AssignFloatingIpResponseActionError;
@@ -417,9 +414,8 @@ export const ListFloatingIpActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListFloatingIpActionsResponseActionsItemResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ListFloatingIpActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AssignFloatingIpResponseActionResourcesItem,
-) as any as S.Schema<ListFloatingIpActionsResponseActionsItemResourcesList>;
+export const ListFloatingIpActionsResponseActionsItemResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ListFloatingIpActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFloatingIpActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
@@ -594,9 +590,8 @@ export const ListFloatingIpsActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListFloatingIpsActionsResponseActionsItemResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ListFloatingIpsActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  AssignFloatingIpResponseActionResourcesItem,
-) as any as S.Schema<ListFloatingIpsActionsResponseActionsItemResourcesList>;
+export const ListFloatingIpsActionsResponseActionsItemResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ListFloatingIpsActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFloatingIpsActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
@@ -687,9 +682,8 @@ export const UnassignFloatingIpResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type UnassignFloatingIpResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const UnassignFloatingIpResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  AssignFloatingIpResponseActionResourcesItem,
-) as any as S.Schema<UnassignFloatingIpResponseActionResourcesList>;
+export const UnassignFloatingIpResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<UnassignFloatingIpResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UnassignFloatingIpResponseActionError = AssignFloatingIpResponseActionError;

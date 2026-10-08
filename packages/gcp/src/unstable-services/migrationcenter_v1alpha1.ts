@@ -428,9 +428,7 @@ export const BatchDeleteProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = AggregationCount as any as S.Schema<Empty>;
 
 /** Versioning configuration of the bucket. */
 export interface AwsS3BucketDetailsVersioning {
@@ -1179,13 +1177,8 @@ export interface DailyResourceUsageAggregationCPU {
   /** CPU utilization percentage. */
   utilizationPercentage?: DailyResourceUsageAggregationStats;
 }
-export const DailyResourceUsageAggregationCPU = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    utilizationPercentage: S.optional(DailyResourceUsageAggregationStats),
-  }),
-).annotate({
-  identifier: "DailyResourceUsageAggregationCPU",
-}) as any as S.Schema<DailyResourceUsageAggregationCPU>;
+export const DailyResourceUsageAggregationCPU =
+  DailyResourceUsageAggregationMemory as any as S.Schema<DailyResourceUsageAggregationCPU>;
 
 /** Usage data aggregation for a single day. */
 export interface DailyResourceUsageAggregation {
@@ -2748,9 +2741,7 @@ export type PostgreSqlProperty = MySqlProperty;
 export const PostgreSqlProperty = MySqlProperty;
 
 export type PostgreSqlPropertyList = Array<MySqlProperty>;
-export const PostgreSqlPropertyList = /*@__PURE__*/ S.Array(
-  MySqlProperty,
-) as any as S.Schema<PostgreSqlPropertyList>;
+export const PostgreSqlPropertyList = MySqlPropertyList as any as S.Schema<PostgreSqlPropertyList>;
 
 /** Specific details for a PostgreSQL database deployment. */
 export interface PostgreSqlDatabaseDeployment {
@@ -5020,11 +5011,7 @@ export interface ReportSummaryVMWareNode {
   /** Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes */
   code?: string;
 }
-export const ReportSummaryVMWareNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReportSummaryVMWareNode" }) as any as S.Schema<ReportSummaryVMWareNode>;
+export const ReportSummaryVMWareNode = MachineSeries as any as S.Schema<ReportSummaryVMWareNode>;
 
 /** Represents assets allocated to a specific VMWare Node type. */
 export interface ReportSummaryVMWareNodeAllocation {
@@ -6209,11 +6196,7 @@ export interface CpuUsageSample {
   /** Percentage of total CPU capacity utilized. Must be in the interval [0, 100]. On most systems can be calculated using 100 - idle percentage. */
   utilizedPercentage?: number;
 }
-export const CpuUsageSample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    utilizedPercentage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CpuUsageSample" }) as any as S.Schema<CpuUsageSample>;
+export const CpuUsageSample = MemoryUsageSample as any as S.Schema<CpuUsageSample>;
 
 /** Performance data sample. */
 export interface PerformanceSample {
@@ -7454,9 +7437,8 @@ export const ReportAssetFramesProjectsLocationsAssetsRequest = /*@__PURE__*/ S.s
 
 /** A response to a call to `ReportAssetFrame`. */
 export interface ReportAssetFramesResponse {}
-export const ReportAssetFramesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReportAssetFramesResponse",
-}) as any as S.Schema<ReportAssetFramesResponse>;
+export const ReportAssetFramesResponse =
+  AggregationCount as any as S.Schema<ReportAssetFramesResponse>;
 
 /** A request to run an assets export job. */
 export interface RunAssetsExportJobRequest {

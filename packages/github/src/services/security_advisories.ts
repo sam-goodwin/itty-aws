@@ -310,9 +310,8 @@ export const RepositoryAdvisoryVulnerabilityPackage = /*@__PURE__*/ S.suspend(()
 
 /** The functions in the package that are affected. */
 export type RepositoryAdvisoryVulnerabilityVulnerableFunctionsList = Array<string>;
-export const RepositoryAdvisoryVulnerabilityVulnerableFunctionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryAdvisoryVulnerabilityVulnerableFunctionsList>;
+export const RepositoryAdvisoryVulnerabilityVulnerableFunctionsList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<RepositoryAdvisoryVulnerabilityVulnerableFunctionsList>;
 
 /** A product affected by the vulnerability detailed in a repository security advisory. */
 export interface RepositoryAdvisoryVulnerability {
@@ -360,12 +359,7 @@ export interface CvssSeveritiesCvssV3 {
   /** The CVSS 3 score. */
   score: number | null;
 }
-export const CvssSeveritiesCvssV3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vector_string: S.NullOr(S.String),
-    score: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "CvssSeveritiesCvssV3" }) as any as S.Schema<CvssSeveritiesCvssV3>;
+export const CvssSeveritiesCvssV3 = RepositoryAdvisoryCvss as any as S.Schema<CvssSeveritiesCvssV3>;
 
 export interface CvssSeveritiesCvssV4 {
   /** The CVSS 4 vector string. */
@@ -373,12 +367,7 @@ export interface CvssSeveritiesCvssV4 {
   /** The CVSS 4 score. */
   score: number | null;
 }
-export const CvssSeveritiesCvssV4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vector_string: S.NullOr(S.String),
-    score: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "CvssSeveritiesCvssV4" }) as any as S.Schema<CvssSeveritiesCvssV4>;
+export const CvssSeveritiesCvssV4 = RepositoryAdvisoryCvss as any as S.Schema<CvssSeveritiesCvssV4>;
 
 export interface CvssSeverities {
   cvss_v3?: CvssSeveritiesCvssV3 | null;
@@ -413,9 +402,8 @@ export const RepositoryAdvisoryCwesList = /*@__PURE__*/ S.Array(
 
 /** A list of only the CWE IDs. */
 export type RepositoryAdvisoryCweIdsList = Array<string>;
-export const RepositoryAdvisoryCweIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryAdvisoryCweIdsList>;
+export const RepositoryAdvisoryCweIdsList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<RepositoryAdvisoryCweIdsList>;
 
 /** The type of credit the user is receiving. */
 export type SecurityAdvisoryCreditTypes =
@@ -850,9 +838,7 @@ export const CreateRepositoryAdvisoryRequestVulnerabilitiesItemPackage =
 export type CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
   Array<string>;
 export const CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList>;
+  CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList as any as S.Schema<CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList>;
 
 export interface CreateRepositoryAdvisoryRequestVulnerabilitiesItem {
   /** The name of the package affected by the vulnerability. */
@@ -886,9 +872,8 @@ export const CreateRepositoryAdvisoryRequestVulnerabilitiesList = /*@__PURE__*/ 
 
 /** A list of Common Weakness Enumeration (CWE) IDs. */
 export type CreateRepositoryAdvisoryRequestCweIdsList = Array<string>;
-export const CreateRepositoryAdvisoryRequestCweIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRepositoryAdvisoryRequestCweIdsList>;
+export const CreateRepositoryAdvisoryRequestCweIdsList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<CreateRepositoryAdvisoryRequestCweIdsList>;
 
 export interface CreateRepositoryAdvisoryRequestCreditsItem {
   /** The username of the user credited. */
@@ -1031,9 +1016,8 @@ export const GlobalAdvisoryIdentifiersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GlobalAdvisoryIdentifiersList>;
 
 export type GlobalAdvisoryReferencesList = Array<string>;
-export const GlobalAdvisoryReferencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GlobalAdvisoryReferencesList>;
+export const GlobalAdvisoryReferencesList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<GlobalAdvisoryReferencesList>;
 
 /** The name of the package affected by the vulnerability. */
 export type VulnerabilityPackage = RepositoryAdvisoryVulnerabilityPackage;
@@ -1041,9 +1025,8 @@ export const VulnerabilityPackage = RepositoryAdvisoryVulnerabilityPackage;
 
 /** The functions in the package that are affected by the vulnerability. */
 export type VulnerabilityVulnerableFunctionsList = Array<string>;
-export const VulnerabilityVulnerableFunctionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VulnerabilityVulnerableFunctionsList>;
+export const VulnerabilityVulnerableFunctionsList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<VulnerabilityVulnerableFunctionsList>;
 
 /** A vulnerability describing the product and its affected versions within a GitHub Security Advisory. */
 export interface Vulnerability {
@@ -1090,9 +1073,8 @@ export type GlobalAdvisoryCwesItem = RepositoryAdvisoryCwesItem;
 export const GlobalAdvisoryCwesItem = RepositoryAdvisoryCwesItem;
 
 export type GlobalAdvisoryCwesList = Array<RepositoryAdvisoryCwesItem>;
-export const GlobalAdvisoryCwesList = /*@__PURE__*/ S.Array(
-  RepositoryAdvisoryCwesItem,
-) as any as S.Schema<GlobalAdvisoryCwesList>;
+export const GlobalAdvisoryCwesList =
+  RepositoryAdvisoryCwesList as any as S.Schema<GlobalAdvisoryCwesList>;
 
 export interface GlobalAdvisoryCreditsItem {
   user: SimpleUser;
@@ -1220,18 +1202,16 @@ export type ListGlobalAdvisoriesRequestSeverity =
 export const ListGlobalAdvisoriesRequestSeverity = S.String;
 
 export type ListGlobalAdvisoriesRequestCwesCase1List = Array<string>;
-export const ListGlobalAdvisoriesRequestCwesCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGlobalAdvisoriesRequestCwesCase1List>;
+export const ListGlobalAdvisoriesRequestCwesCase1List =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<ListGlobalAdvisoriesRequestCwesCase1List>;
 
 export type ListGlobalAdvisoriesRequestCwes = string | ListGlobalAdvisoriesRequestCwesCase1List;
 export const ListGlobalAdvisoriesRequestCwes =
   S.Unknown as any as S.Schema<ListGlobalAdvisoriesRequestCwes>;
 
 export type ListGlobalAdvisoriesRequestAffectsCase1List = Array<string>;
-export const ListGlobalAdvisoriesRequestAffectsCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGlobalAdvisoriesRequestAffectsCase1List>;
+export const ListGlobalAdvisoriesRequestAffectsCase1List =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<ListGlobalAdvisoriesRequestAffectsCase1List>;
 
 export type ListGlobalAdvisoriesRequestAffects =
   | string
@@ -1418,16 +1398,12 @@ export const ListRepositoryAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRepositoryAdvisoriesRequest>;
 
 export type ListRepositoryAdvisoriesResponseBodyList = Array<RepositoryAdvisory>;
-export const ListRepositoryAdvisoriesResponseBodyList = /*@__PURE__*/ S.Array(
-  RepositoryAdvisory,
-) as any as S.Schema<ListRepositoryAdvisoriesResponseBodyList>;
+export const ListRepositoryAdvisoriesResponseBodyList =
+  ListOrgRepositoryAdvisoriesResponseBodyList as any as S.Schema<ListRepositoryAdvisoriesResponseBodyList>;
 
 export type ListRepositoryAdvisoriesResponse = ListRepositoryAdvisoriesResponseBodyList;
-export const ListRepositoryAdvisoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListRepositoryAdvisoriesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListRepositoryAdvisoriesResponse",
-}) as any as S.Schema<ListRepositoryAdvisoriesResponse>;
+export const ListRepositoryAdvisoriesResponse =
+  ListOrgRepositoryAdvisoriesResponse as any as S.Schema<ListRepositoryAdvisoriesResponse>;
 
 /** The name of the package affected by the vulnerability. */
 export type UpdateRepositoryAdvisoryRequestVulnerabilitiesItemPackage =
@@ -1439,9 +1415,7 @@ export const UpdateRepositoryAdvisoryRequestVulnerabilitiesItemPackage =
 export type UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
   Array<string>;
 export const UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList>;
+  CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList>;
 
 export interface UpdateRepositoryAdvisoryRequestVulnerabilitiesItem {
   /** The name of the package affected by the vulnerability. */
@@ -1453,31 +1427,19 @@ export interface UpdateRepositoryAdvisoryRequestVulnerabilitiesItem {
   /** The functions in the package that are affected. */
   vulnerable_functions?: UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList | null;
 }
-export const UpdateRepositoryAdvisoryRequestVulnerabilitiesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    package: CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage,
-    vulnerable_version_range: S.optional(S.NullOr(S.String)),
-    patched_versions: S.optional(S.NullOr(S.String)),
-    vulnerable_functions: S.optional(
-      S.NullOr(UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateRepositoryAdvisoryRequestVulnerabilitiesItem",
-}) as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesItem>;
+export const UpdateRepositoryAdvisoryRequestVulnerabilitiesItem =
+  CreateRepositoryAdvisoryRequestVulnerabilitiesItem as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesItem>;
 
 /** A product affected by the vulnerability detailed in a repository security advisory. */
 export type UpdateRepositoryAdvisoryRequestVulnerabilitiesList =
   Array<UpdateRepositoryAdvisoryRequestVulnerabilitiesItem>;
-export const UpdateRepositoryAdvisoryRequestVulnerabilitiesList = /*@__PURE__*/ S.Array(
-  UpdateRepositoryAdvisoryRequestVulnerabilitiesItem,
-) as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesList>;
+export const UpdateRepositoryAdvisoryRequestVulnerabilitiesList =
+  CreateRepositoryAdvisoryRequestVulnerabilitiesList as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesList>;
 
 /** A list of Common Weakness Enumeration (CWE) IDs. */
 export type UpdateRepositoryAdvisoryRequestCweIdsList = Array<string>;
-export const UpdateRepositoryAdvisoryRequestCweIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRepositoryAdvisoryRequestCweIdsList>;
+export const UpdateRepositoryAdvisoryRequestCweIdsList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCweIdsList>;
 
 export type UpdateRepositoryAdvisoryRequestCreditsItem = CreateRepositoryAdvisoryRequestCreditsItem;
 export const UpdateRepositoryAdvisoryRequestCreditsItem =
@@ -1486,9 +1448,8 @@ export const UpdateRepositoryAdvisoryRequestCreditsItem =
 /** A list of users receiving credit for their participation in the security advisory. */
 export type UpdateRepositoryAdvisoryRequestCreditsList =
   Array<CreateRepositoryAdvisoryRequestCreditsItem>;
-export const UpdateRepositoryAdvisoryRequestCreditsList = /*@__PURE__*/ S.Array(
-  CreateRepositoryAdvisoryRequestCreditsItem,
-) as any as S.Schema<UpdateRepositoryAdvisoryRequestCreditsList>;
+export const UpdateRepositoryAdvisoryRequestCreditsList =
+  CreateRepositoryAdvisoryRequestCreditsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCreditsList>;
 
 /** The severity of the advisory. You must choose between setting this field or `cvss_vector_string`. */
 export type UpdateRepositoryAdvisoryRequestSeverity = "critical" | "high" | "medium" | "low";
@@ -1500,15 +1461,13 @@ export const UpdateRepositoryAdvisoryRequestState = S.String;
 
 /** A list of usernames who have been granted write access to the advisory. */
 export type UpdateRepositoryAdvisoryRequestCollaboratingUsersList = Array<string>;
-export const UpdateRepositoryAdvisoryRequestCollaboratingUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRepositoryAdvisoryRequestCollaboratingUsersList>;
+export const UpdateRepositoryAdvisoryRequestCollaboratingUsersList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCollaboratingUsersList>;
 
 /** A list of team slugs which have been granted write access to the advisory. */
 export type UpdateRepositoryAdvisoryRequestCollaboratingTeamsList = Array<string>;
-export const UpdateRepositoryAdvisoryRequestCollaboratingTeamsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateRepositoryAdvisoryRequestCollaboratingTeamsList>;
+export const UpdateRepositoryAdvisoryRequestCollaboratingTeamsList =
+  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCollaboratingTeamsList>;
 
 export interface UpdateRepositoryAdvisoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */

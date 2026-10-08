@@ -389,7 +389,7 @@ export type CatalogIdString = string;
 export type NameString = string;
 export type ValueString = string;
 export type ValueStringList = string[];
-export const ValueStringList = /*@__PURE__*/ S.Array(S.String);
+export const ValueStringList = GlossaryTermIdList as any as S.Schema<ValueStringList>;
 export type ColumnTypeString = string;
 export type CommentString = string;
 export type KeyString = string;
@@ -417,7 +417,7 @@ export type ColumnList = Column[];
 export const ColumnList = /*@__PURE__*/ S.Array(Column);
 export type LocationString = string;
 export type LocationStringList = string[];
-export const LocationStringList = /*@__PURE__*/ S.Array(S.String);
+export const LocationStringList = GlossaryTermIdList as any as S.Schema<LocationStringList>;
 export type FormatString = string;
 export interface SerDeInfo {
   Name?: string;
@@ -432,7 +432,7 @@ export const SerDeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SerDeInfo" }) as any as S.Schema<SerDeInfo>;
 export type NameStringList = string[];
-export const NameStringList = /*@__PURE__*/ S.Array(S.String);
+export const NameStringList = GlossaryTermIdList as any as S.Schema<NameStringList>;
 export type IntegerFlag = number;
 export interface Order {
   Column: string;
@@ -445,12 +445,9 @@ export type OrderList = Order[];
 export const OrderList = /*@__PURE__*/ S.Array(Order);
 export type ColumnValuesString = string;
 export type ColumnValueStringList = string[];
-export const ColumnValueStringList = /*@__PURE__*/ S.Array(S.String);
+export const ColumnValueStringList = GlossaryTermIdList as any as S.Schema<ColumnValueStringList>;
 export type LocationMap = { [key: string]: string | undefined };
-export const LocationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const LocationMap = ParametersMap as any as S.Schema<LocationMap>;
 export interface SkewedInfo {
   SkewedColumnNames?: string[];
   SkewedColumnValues?: string[];
@@ -585,7 +582,8 @@ export const BatchCreatePartitionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreatePartitionResponse",
 }) as any as S.Schema<BatchCreatePartitionResponse>;
 export type DeleteConnectionNameList = string[];
-export const DeleteConnectionNameList = /*@__PURE__*/ S.Array(S.String);
+export const DeleteConnectionNameList =
+  GlossaryTermIdList as any as S.Schema<DeleteConnectionNameList>;
 export interface BatchDeleteConnectionRequest {
   CatalogId?: string;
   ConnectionNameList: string[];
@@ -638,13 +636,11 @@ export const BatchDeletePartitionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BatchDeletePartitionResponse {
   Errors?: PartitionError[];
 }
-export const BatchDeletePartitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Errors: S.optional(PartitionErrors) }),
-).annotate({
-  identifier: "BatchDeletePartitionResponse",
-}) as any as S.Schema<BatchDeletePartitionResponse>;
+export const BatchDeletePartitionResponse =
+  BatchCreatePartitionResponse as any as S.Schema<BatchDeletePartitionResponse>;
 export type BatchDeleteTableNameList = string[];
-export const BatchDeleteTableNameList = /*@__PURE__*/ S.Array(S.String);
+export const BatchDeleteTableNameList =
+  GlossaryTermIdList as any as S.Schema<BatchDeleteTableNameList>;
 export type TransactionIdString = string;
 export interface BatchDeleteTableRequest {
   CatalogId?: string;
@@ -677,7 +673,8 @@ export const BatchDeleteTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BatchDeleteTableResponse" }) as any as S.Schema<BatchDeleteTableResponse>;
 export type VersionString = string;
 export type BatchDeleteTableVersionList = string[];
-export const BatchDeleteTableVersionList = /*@__PURE__*/ S.Array(S.String);
+export const BatchDeleteTableVersionList =
+  GlossaryTermIdList as any as S.Schema<BatchDeleteTableVersionList>;
 export interface BatchDeleteTableVersionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -718,7 +715,7 @@ export const BatchDeleteTableVersionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeleteTableVersionResponse>;
 export type OrchestrationNameString = string;
 export type BatchGetBlueprintNames = string[];
-export const BatchGetBlueprintNames = /*@__PURE__*/ S.Array(S.String);
+export const BatchGetBlueprintNames = GlossaryTermIdList as any as S.Schema<BatchGetBlueprintNames>;
 export interface BatchGetBlueprintsRequest {
   Names: string[];
   IncludeBlueprint?: boolean;
@@ -785,7 +782,7 @@ export const Blueprint = /*@__PURE__*/ S.suspend(() =>
 export type Blueprints = Blueprint[];
 export const Blueprints = /*@__PURE__*/ S.Array(Blueprint);
 export type BlueprintNames = string[];
-export const BlueprintNames = /*@__PURE__*/ S.Array(S.String);
+export const BlueprintNames = GlossaryTermIdList as any as S.Schema<BlueprintNames>;
 export interface BatchGetBlueprintsResponse {
   Blueprints?: Blueprint[];
   MissingBlueprints?: string[];
@@ -796,7 +793,7 @@ export const BatchGetBlueprintsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetBlueprintsResponse",
 }) as any as S.Schema<BatchGetBlueprintsResponse>;
 export type CrawlerNameList = string[];
-export const CrawlerNameList = /*@__PURE__*/ S.Array(S.String);
+export const CrawlerNameList = GlossaryTermIdList as any as S.Schema<CrawlerNameList>;
 export interface BatchGetCrawlersRequest {
   CrawlerNames: string[];
 }
@@ -808,7 +805,7 @@ export const BatchGetCrawlersRequest = /*@__PURE__*/ S.suspend(() =>
 export type Role = string;
 export type Path = string;
 export type PathList = string[];
-export const PathList = /*@__PURE__*/ S.Array(S.String);
+export const PathList = GlossaryTermIdList as any as S.Schema<PathList>;
 export type ConnectionName = string;
 export type EventQueueArn = string;
 export interface S3Target {
@@ -881,7 +878,7 @@ export const DynamoDBTarget = /*@__PURE__*/ S.suspend(() =>
 export type DynamoDBTargetList = DynamoDBTarget[];
 export const DynamoDBTargetList = /*@__PURE__*/ S.Array(DynamoDBTarget);
 export type CatalogTablesList = string[];
-export const CatalogTablesList = /*@__PURE__*/ S.Array(S.String);
+export const CatalogTablesList = GlossaryTermIdList as any as S.Schema<CatalogTablesList>;
 export interface CatalogTarget {
   DatabaseName: string;
   Tables: string[];
@@ -938,16 +935,9 @@ export interface HudiTarget {
   Exclusions?: string[];
   MaximumTraversalDepth?: number;
 }
-export const HudiTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Paths: S.optional(PathList),
-    ConnectionName: S.optional(S.String),
-    Exclusions: S.optional(PathList),
-    MaximumTraversalDepth: S.optional(S.Number),
-  }),
-).annotate({ identifier: "HudiTarget" }) as any as S.Schema<HudiTarget>;
+export const HudiTarget = IcebergTarget as any as S.Schema<HudiTarget>;
 export type HudiTargetList = HudiTarget[];
-export const HudiTargetList = /*@__PURE__*/ S.Array(HudiTarget);
+export const HudiTargetList = IcebergTargetList as any as S.Schema<HudiTargetList>;
 export interface CrawlerTargets {
   S3Targets?: S3Target[];
   JdbcTargets?: JdbcTarget[];
@@ -972,7 +962,7 @@ export const CrawlerTargets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CrawlerTargets" }) as any as S.Schema<CrawlerTargets>;
 export type DatabaseName = string;
 export type ClassifierNameList = string[];
-export const ClassifierNameList = /*@__PURE__*/ S.Array(S.String);
+export const ClassifierNameList = GlossaryTermIdList as any as S.Schema<ClassifierNameList>;
 export type RecrawlBehavior =
   | "CRAWL_EVERYTHING"
   | "CRAWL_NEW_FOLDERS_ONLY"
@@ -1126,7 +1116,7 @@ export const BatchGetCrawlersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Crawlers: S.optional(CrawlerList), CrawlersNotFound: S.optional(CrawlerNameList) }),
 ).annotate({ identifier: "BatchGetCrawlersResponse" }) as any as S.Schema<BatchGetCrawlersResponse>;
 export type CustomEntityTypeNames = string[];
-export const CustomEntityTypeNames = /*@__PURE__*/ S.Array(S.String);
+export const CustomEntityTypeNames = GlossaryTermIdList as any as S.Schema<CustomEntityTypeNames>;
 export interface BatchGetCustomEntityTypesRequest {
   Names: string[];
 }
@@ -1138,7 +1128,7 @@ export const BatchGetCustomEntityTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetCustomEntityTypesRequest",
 }) as any as S.Schema<BatchGetCustomEntityTypesRequest>;
 export type ContextWords = string[];
-export const ContextWords = /*@__PURE__*/ S.Array(S.String);
+export const ContextWords = GlossaryTermIdList as any as S.Schema<ContextWords>;
 export interface CustomEntityType {
   Name: string;
   RegexString: string;
@@ -1162,7 +1152,7 @@ export const BatchGetCustomEntityTypesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetCustomEntityTypesResponse",
 }) as any as S.Schema<BatchGetCustomEntityTypesResponse>;
 export type DataQualityResultIds = string[];
-export const DataQualityResultIds = /*@__PURE__*/ S.Array(S.String);
+export const DataQualityResultIds = GlossaryTermIdList as any as S.Schema<DataQualityResultIds>;
 export interface BatchGetDataQualityResultRequest {
   ResultIds: string[];
 }
@@ -1175,10 +1165,8 @@ export const BatchGetDataQualityResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetDataQualityResultRequest>;
 export type GenericBoundedDouble = number;
 export type GlueTableAdditionalOptions = { [key: string]: string | undefined };
-export const GlueTableAdditionalOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const GlueTableAdditionalOptions =
+  ParametersMap as any as S.Schema<GlueTableAdditionalOptions>;
 export interface GlueTable {
   DatabaseName: string;
   TableName: string;
@@ -1234,10 +1222,7 @@ export const EvaluatedMetricsMap = /*@__PURE__*/ S.Record(
   /*@__PURE__*/ S.Number.pipe(S.optional),
 );
 export type RuleMetricsMap = { [key: string]: number | undefined };
-export const RuleMetricsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Number.pipe(S.optional),
-);
+export const RuleMetricsMap = EvaluatedMetricsMap as any as S.Schema<RuleMetricsMap>;
 export type Labels = { [key: string]: string | undefined };
 export const Labels = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface DataQualityRuleResult {
@@ -1265,7 +1250,7 @@ export const DataQualityRuleResult = /*@__PURE__*/ S.suspend(() =>
 export type DataQualityRuleResults = DataQualityRuleResult[];
 export const DataQualityRuleResults = /*@__PURE__*/ S.Array(DataQualityRuleResult);
 export type BinEdges = string[];
-export const BinEdges = /*@__PURE__*/ S.Array(S.String);
+export const BinEdges = GlossaryTermIdList as any as S.Schema<BinEdges>;
 export type Count = number[];
 export const Count = /*@__PURE__*/ S.Array(S.Number);
 export interface DistributionData {
@@ -1321,7 +1306,7 @@ export const DataQualityMetricValues = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataQualityMetricValues" }) as any as S.Schema<DataQualityMetricValues>;
 export type NewRules = string[];
-export const NewRules = /*@__PURE__*/ S.Array(S.String);
+export const NewRules = GlossaryTermIdList as any as S.Schema<NewRules>;
 export interface MetricBasedObservation {
   MetricName?: string;
   StatisticId?: string;
@@ -1416,7 +1401,8 @@ export const BatchGetDataQualityResultResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetDataQualityResultResponse",
 }) as any as S.Schema<BatchGetDataQualityResultResponse>;
 export type DataQualityRulesetEvaluationRunIdList = string[];
-export const DataQualityRulesetEvaluationRunIdList = /*@__PURE__*/ S.Array(S.String);
+export const DataQualityRulesetEvaluationRunIdList =
+  GlossaryTermIdList as any as S.Schema<DataQualityRulesetEvaluationRunIdList>;
 export interface BatchGetDataQualityRulesetEvaluationRunRequest {
   RunIds: string[];
 }
@@ -1559,9 +1545,10 @@ export const TaskStatusType = S.String;
 
 export type ExecutionTime = number;
 export type RulesetNames = string[];
-export const RulesetNames = /*@__PURE__*/ S.Array(S.String);
+export const RulesetNames = GlossaryTermIdList as any as S.Schema<RulesetNames>;
 export type DataQualityResultIdList = string[];
-export const DataQualityResultIdList = /*@__PURE__*/ S.Array(S.String);
+export const DataQualityResultIdList =
+  GlossaryTermIdList as any as S.Schema<DataQualityResultIdList>;
 export type DataSourceMap = { [key: string]: DataSource | undefined };
 export const DataSourceMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1622,7 +1609,7 @@ export const BatchGetDataQualityRulesetEvaluationRunResponse = /*@__PURE__*/ S.s
   identifier: "BatchGetDataQualityRulesetEvaluationRunResponse",
 }) as any as S.Schema<BatchGetDataQualityRulesetEvaluationRunResponse>;
 export type DevEndpointNames = string[];
-export const DevEndpointNames = /*@__PURE__*/ S.Array(S.String);
+export const DevEndpointNames = GlossaryTermIdList as any as S.Schema<DevEndpointNames>;
 export interface BatchGetDevEndpointsRequest {
   DevEndpointNames: string[];
 }
@@ -1635,7 +1622,7 @@ export const BatchGetDevEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetDevEndpointsRequest>;
 export type RoleArn = string;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = GlossaryTermIdList as any as S.Schema<StringList>;
 export type IntegerValue = number;
 export type WorkerType =
   | "Standard"
@@ -1650,9 +1637,9 @@ export const WorkerType = S.String;
 
 export type GlueVersionString = string;
 export type PublicKeysList = string[];
-export const PublicKeysList = /*@__PURE__*/ S.Array(S.String);
+export const PublicKeysList = GlossaryTermIdList as any as S.Schema<PublicKeysList>;
 export type MapValue = { [key: string]: string | undefined };
-export const MapValue = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const MapValue = Labels as any as S.Schema<MapValue>;
 export interface DevEndpoint {
   EndpointName?: string;
   RoleArn?: string;
@@ -1724,7 +1711,7 @@ export const BatchGetDevEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetDevEndpointsResponse",
 }) as any as S.Schema<BatchGetDevEndpointsResponse>;
 export type ItemIdentifierList = string[];
-export const ItemIdentifierList = /*@__PURE__*/ S.Array(S.String);
+export const ItemIdentifierList = GlossaryTermIdList as any as S.Schema<ItemIdentifierList>;
 export interface BatchGetIterableFormsRequest {
   AssetIdentifier: string;
   IterableFormName: string;
@@ -1812,7 +1799,7 @@ export const BatchGetIterableFormsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetIterableFormsResponse",
 }) as any as S.Schema<BatchGetIterableFormsResponse>;
 export type JobNameList = string[];
-export const JobNameList = /*@__PURE__*/ S.Array(S.String);
+export const JobNameList = GlossaryTermIdList as any as S.Schema<JobNameList>;
 export interface BatchGetJobsRequest {
   JobNames: string[];
 }
@@ -1849,10 +1836,10 @@ export const JobCommand = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobCommand" }) as any as S.Schema<JobCommand>;
 export type GenericMap = { [key: string]: string | undefined };
-export const GenericMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const GenericMap = Labels as any as S.Schema<GenericMap>;
 export type ConnectionString = string;
 export type ConnectionStringList = string[];
-export const ConnectionStringList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectionStringList = GlossaryTermIdList as any as S.Schema<ConnectionStringList>;
 export interface ConnectionsList {
   Connections?: string[];
 }
@@ -1912,7 +1899,8 @@ export const AthenaConnectorSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AthenaConnectorSource" }) as any as S.Schema<AthenaConnectorSource>;
 export type BoxedNonNegativeLong = number;
 export type EnclosedInStringProperties = string[];
-export const EnclosedInStringProperties = /*@__PURE__*/ S.Array(S.String);
+export const EnclosedInStringProperties =
+  GlossaryTermIdList as any as S.Schema<EnclosedInStringProperties>;
 export type JDBCDataType =
   | "ARRAY"
   | "BIGINT"
@@ -2021,10 +2009,7 @@ export const JDBCConnectorSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JDBCConnectorSource" }) as any as S.Schema<JDBCConnectorSource>;
 export type AdditionalOptions = { [key: string]: string | undefined };
-export const AdditionalOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AdditionalOptions = ParametersMap as any as S.Schema<AdditionalOptions>;
 export interface SparkConnectorSource {
   Name: string;
   ConnectionName: string;
@@ -2277,7 +2262,7 @@ export const DynamoDBCatalogSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DynamoDBCatalogSource" }) as any as S.Schema<DynamoDBCatalogSource>;
 export type OneInput = string[];
-export const OneInput = /*@__PURE__*/ S.Array(S.String);
+export const OneInput = GlossaryTermIdList as any as S.Schema<OneInput>;
 export interface JDBCConnectorTarget {
   Name: string;
   Inputs: string[];
@@ -2339,7 +2324,8 @@ export const BasicCatalogTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BasicCatalogTarget" }) as any as S.Schema<BasicCatalogTarget>;
 export type EnclosedInStringPropertiesMinOne = string[];
-export const EnclosedInStringPropertiesMinOne = /*@__PURE__*/ S.Array(S.String);
+export const EnclosedInStringPropertiesMinOne =
+  GlossaryTermIdList as any as S.Schema<EnclosedInStringPropertiesMinOne>;
 export interface UpsertRedshiftTargetOptions {
   TableLocation?: string;
   ConnectionName?: string;
@@ -2536,9 +2522,7 @@ export interface DropFields {
   Inputs: string[];
   Paths: string[][];
 }
-export const DropFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Inputs: OneInput, Paths: GlueStudioPathList }),
-).annotate({ identifier: "DropFields" }) as any as S.Schema<DropFields>;
+export const DropFields = SelectFields as any as S.Schema<DropFields>;
 export interface RenameField {
   Name: string;
   Inputs: string[];
@@ -2572,7 +2556,7 @@ export const Spigot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Spigot" }) as any as S.Schema<Spigot>;
 export type TwoInputs = string[];
-export const TwoInputs = /*@__PURE__*/ S.Array(S.String);
+export const TwoInputs = GlossaryTermIdList as any as S.Schema<TwoInputs>;
 export type JoinType =
   | "equijoin"
   | "left"
@@ -2606,9 +2590,7 @@ export interface SplitFields {
   Inputs: string[];
   Paths: string[][];
 }
-export const SplitFields = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Inputs: OneInput, Paths: GlueStudioPathList }),
-).annotate({ identifier: "SplitFields" }) as any as S.Schema<SplitFields>;
+export const SplitFields = SelectFields as any as S.Schema<SplitFields>;
 export type NonNegativeInt = number;
 export interface SelectFromCollection {
   Name: string;
@@ -2683,7 +2665,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type ManyInputs = string[];
-export const ManyInputs = /*@__PURE__*/ S.Array(S.String);
+export const ManyInputs = GlossaryTermIdList as any as S.Schema<ManyInputs>;
 export type ExtendedString = string;
 export interface CustomCode {
   Name: string;
@@ -3072,9 +3054,9 @@ export const Aggregate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregate" }) as any as S.Schema<Aggregate>;
 export type LimitedStringList = string[];
-export const LimitedStringList = /*@__PURE__*/ S.Array(S.String);
+export const LimitedStringList = GlossaryTermIdList as any as S.Schema<LimitedStringList>;
 export type LimitedPathList = string[][];
-export const LimitedPathList = /*@__PURE__*/ S.Array(LimitedStringList);
+export const LimitedPathList = GlueStudioPathList as any as S.Schema<LimitedPathList>;
 export interface DropDuplicates {
   Name: string;
   Inputs: string[];
@@ -3108,15 +3090,7 @@ export interface GovernedCatalogSource {
   PartitionPredicate?: string;
   AdditionalOptions?: S3SourceAdditionalOptions;
 }
-export const GovernedCatalogSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Database: S.String,
-    Table: S.String,
-    PartitionPredicate: S.optional(S.String),
-    AdditionalOptions: S.optional(S3SourceAdditionalOptions),
-  }),
-).annotate({ identifier: "GovernedCatalogSource" }) as any as S.Schema<GovernedCatalogSource>;
+export const GovernedCatalogSource = S3CatalogSource as any as S.Schema<GovernedCatalogSource>;
 export interface MicrosoftSQLServerCatalogSource {
   Name: string;
   Database: string;
@@ -3132,25 +3106,21 @@ export interface MySQLCatalogSource {
   Database: string;
   Table: string;
 }
-export const MySQLCatalogSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Database: S.String, Table: S.String }),
-).annotate({ identifier: "MySQLCatalogSource" }) as any as S.Schema<MySQLCatalogSource>;
+export const MySQLCatalogSource = RelationalCatalogSource as any as S.Schema<MySQLCatalogSource>;
 export interface OracleSQLCatalogSource {
   Name: string;
   Database: string;
   Table: string;
 }
-export const OracleSQLCatalogSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Database: S.String, Table: S.String }),
-).annotate({ identifier: "OracleSQLCatalogSource" }) as any as S.Schema<OracleSQLCatalogSource>;
+export const OracleSQLCatalogSource =
+  RelationalCatalogSource as any as S.Schema<OracleSQLCatalogSource>;
 export interface PostgreSQLCatalogSource {
   Name: string;
   Database: string;
   Table: string;
 }
-export const PostgreSQLCatalogSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Database: S.String, Table: S.String }),
-).annotate({ identifier: "PostgreSQLCatalogSource" }) as any as S.Schema<PostgreSQLCatalogSource>;
+export const PostgreSQLCatalogSource =
+  RelationalCatalogSource as any as S.Schema<PostgreSQLCatalogSource>;
 export interface MicrosoftSQLServerCatalogTarget {
   Name: string;
   Inputs: string[];
@@ -3177,18 +3147,15 @@ export interface OracleSQLCatalogTarget {
   Database: string;
   Table: string;
 }
-export const OracleSQLCatalogTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Inputs: OneInput, Database: S.String, Table: S.String }),
-).annotate({ identifier: "OracleSQLCatalogTarget" }) as any as S.Schema<OracleSQLCatalogTarget>;
+export const OracleSQLCatalogTarget = MySQLCatalogTarget as any as S.Schema<OracleSQLCatalogTarget>;
 export interface PostgreSQLCatalogTarget {
   Name: string;
   Inputs: string[];
   Database: string;
   Table: string;
 }
-export const PostgreSQLCatalogTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Inputs: OneInput, Database: S.String, Table: S.String }),
-).annotate({ identifier: "PostgreSQLCatalogTarget" }) as any as S.Schema<PostgreSQLCatalogTarget>;
+export const PostgreSQLCatalogTarget =
+  MySQLCatalogTarget as any as S.Schema<PostgreSQLCatalogTarget>;
 export interface GroupFilters {
   GroupName: string;
   Filters: FilterExpression[];
@@ -3338,15 +3305,7 @@ export interface CatalogHudiSource {
   AdditionalHudiOptions?: { [key: string]: string | undefined };
   OutputSchemas?: GlueSchema[];
 }
-export const CatalogHudiSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Database: S.String,
-    Table: S.String,
-    AdditionalHudiOptions: S.optional(AdditionalOptions),
-    OutputSchemas: S.optional(GlueSchemas),
-  }),
-).annotate({ identifier: "CatalogHudiSource" }) as any as S.Schema<CatalogHudiSource>;
+export const CatalogHudiSource = S3CatalogHudiSource as any as S.Schema<CatalogHudiSource>;
 export interface S3HudiSource {
   Name: string;
   Paths: string[];
@@ -3468,15 +3427,7 @@ export interface CatalogDeltaSource {
   AdditionalDeltaOptions?: { [key: string]: string | undefined };
   OutputSchemas?: GlueSchema[];
 }
-export const CatalogDeltaSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Database: S.String,
-    Table: S.String,
-    AdditionalDeltaOptions: S.optional(AdditionalOptions),
-    OutputSchemas: S.optional(GlueSchemas),
-  }),
-).annotate({ identifier: "CatalogDeltaSource" }) as any as S.Schema<CatalogDeltaSource>;
+export const CatalogDeltaSource = S3CatalogDeltaSource as any as S.Schema<CatalogDeltaSource>;
 export interface S3DeltaSource {
   Name: string;
   Paths: string[];
@@ -3649,10 +3600,7 @@ export const AmazonRedshiftTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmazonRedshiftTarget" }) as any as S.Schema<AmazonRedshiftTarget>;
 export type DQDLAliases = { [key: string]: string | undefined };
-export const DQDLAliases = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const DQDLAliases = ParametersMap as any as S.Schema<DQDLAliases>;
 export type AdditionalOptionKeys =
   | "performanceTuning.caching"
   | "observations.scope"
@@ -3699,10 +3647,7 @@ export type Operation = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
-export const ParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ParameterMap = ParametersMap as any as S.Schema<ParameterMap>;
 export interface RecipeAction {
   Operation: string;
   Parameters?: { [key: string]: string | undefined };
@@ -3811,10 +3756,7 @@ export const SnowflakeTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Data: SnowflakeNodeData, Inputs: S.optional(OneInput) }),
 ).annotate({ identifier: "SnowflakeTarget" }) as any as S.Schema<SnowflakeTarget>;
 export type ConnectorOptions = { [key: string]: string | undefined };
-export const ConnectorOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ConnectorOptions = ParametersMap as any as S.Schema<ConnectorOptions>;
 export interface ConnectorDataSource {
   Name: string;
   ConnectionType: string;
@@ -3866,15 +3808,7 @@ export interface CatalogIcebergSource {
   AdditionalIcebergOptions?: { [key: string]: string | undefined };
   OutputSchemas?: GlueSchema[];
 }
-export const CatalogIcebergSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Database: S.String,
-    Table: S.String,
-    AdditionalIcebergOptions: S.optional(AdditionalOptions),
-    OutputSchemas: S.optional(GlueSchemas),
-  }),
-).annotate({ identifier: "CatalogIcebergSource" }) as any as S.Schema<CatalogIcebergSource>;
+export const CatalogIcebergSource = S3CatalogIcebergSource as any as S.Schema<CatalogIcebergSource>;
 export interface S3IcebergCatalogTarget {
   Name: string;
   Inputs: string[];
@@ -4308,11 +4242,12 @@ export const BatchGetJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Jobs: S.optional(JobList), JobsNotFound: S.optional(JobNameList) }),
 ).annotate({ identifier: "BatchGetJobsResponse" }) as any as S.Schema<BatchGetJobsResponse>;
 export type BatchGetPartitionValueList = PartitionValueList[];
-export const BatchGetPartitionValueList = /*@__PURE__*/ S.Array(PartitionValueList);
+export const BatchGetPartitionValueList =
+  BatchDeletePartitionValueList as any as S.Schema<BatchGetPartitionValueList>;
 export type AuditContextString = string;
 export type ColumnNameString = string;
 export type AuditColumnNamesList = string[];
-export const AuditColumnNamesList = /*@__PURE__*/ S.Array(S.String);
+export const AuditColumnNamesList = GlossaryTermIdList as any as S.Schema<AuditColumnNamesList>;
 export interface AuditContext {
   AdditionalAuditContext?: string;
   RequestedColumns?: string[];
@@ -4329,10 +4264,7 @@ export type NullableString = string;
 export type ContextKey = string;
 export type ContextValue = string;
 export type AdditionalContextMap = { [key: string]: string | undefined };
-export const AdditionalContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AdditionalContextMap = ParametersMap as any as S.Schema<AdditionalContextMap>;
 export interface QuerySessionContext {
   QueryId?: string;
   QueryStartTime?: Date;
@@ -4723,7 +4655,7 @@ export const BatchGetTableOptimizerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetTableOptimizerResponse",
 }) as any as S.Schema<BatchGetTableOptimizerResponse>;
 export type TriggerNameList = string[];
-export const TriggerNameList = /*@__PURE__*/ S.Array(S.String);
+export const TriggerNameList = GlossaryTermIdList as any as S.Schema<TriggerNameList>;
 export interface BatchGetTriggersRequest {
   TriggerNames: string[];
 }
@@ -4868,7 +4800,7 @@ export const BatchGetTriggersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Triggers: S.optional(TriggerList), TriggersNotFound: S.optional(TriggerNameList) }),
 ).annotate({ identifier: "BatchGetTriggersResponse" }) as any as S.Schema<BatchGetTriggersResponse>;
 export type WorkflowNames = string[];
-export const WorkflowNames = /*@__PURE__*/ S.Array(S.String);
+export const WorkflowNames = GlossaryTermIdList as any as S.Schema<WorkflowNames>;
 export interface BatchGetWorkflowsRequest {
   Names: string[];
   IncludeGraph?: boolean;
@@ -4879,10 +4811,7 @@ export const BatchGetWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "BatchGetWorkflowsRequest" }) as any as S.Schema<BatchGetWorkflowsRequest>;
 export type WorkflowRunProperties = { [key: string]: string | undefined };
-export const WorkflowRunProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const WorkflowRunProperties = ParametersMap as any as S.Schema<WorkflowRunProperties>;
 export type WorkflowRunStatus =
   | "RUNNING"
   | "COMPLETED"
@@ -5204,7 +5133,8 @@ export const BatchPutDataQualityStatisticAnnotationResponse = /*@__PURE__*/ S.su
   identifier: "BatchPutDataQualityStatisticAnnotationResponse",
 }) as any as S.Schema<BatchPutDataQualityStatisticAnnotationResponse>;
 export type BatchStopJobRunJobRunIdList = string[];
-export const BatchStopJobRunJobRunIdList = /*@__PURE__*/ S.Array(S.String);
+export const BatchStopJobRunJobRunIdList =
+  GlossaryTermIdList as any as S.Schema<BatchStopJobRunJobRunIdList>;
 export interface BatchStopJobRunRequest {
   JobName: string;
   JobRunIds: string[];
@@ -5252,7 +5182,8 @@ export const BatchStopJobRunResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchStopJobRunResponse" }) as any as S.Schema<BatchStopJobRunResponse>;
 export type BoundedPartitionValueList = string[];
-export const BoundedPartitionValueList = /*@__PURE__*/ S.Array(S.String);
+export const BoundedPartitionValueList =
+  GlossaryTermIdList as any as S.Schema<BoundedPartitionValueList>;
 export interface BatchUpdatePartitionRequestEntry {
   PartitionValueList: string[];
   PartitionInput: PartitionInput;
@@ -5333,11 +5264,8 @@ export const CancelDataQualityRulesetEvaluationRunRequest = /*@__PURE__*/ S.susp
   identifier: "CancelDataQualityRulesetEvaluationRunRequest",
 }) as any as S.Schema<CancelDataQualityRulesetEvaluationRunRequest>;
 export interface CancelDataQualityRulesetEvaluationRunResponse {}
-export const CancelDataQualityRulesetEvaluationRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CancelDataQualityRulesetEvaluationRunResponse",
-}) as any as S.Schema<CancelDataQualityRulesetEvaluationRunResponse>;
+export const CancelDataQualityRulesetEvaluationRunResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<CancelDataQualityRulesetEvaluationRunResponse>;
 export interface CancelMLTaskRunRequest {
   TransformId: string;
   TaskRunId: string;
@@ -5403,7 +5331,7 @@ export type OrchestrationS3Location = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const TagsMap = Labels as any as S.Schema<TagsMap>;
 export interface CreateBlueprintRequest {
   Name: string;
   Description?: string;
@@ -5562,9 +5490,8 @@ export const CreateCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateCatalogRequest" }) as any as S.Schema<CreateCatalogRequest>;
 export interface CreateCatalogResponse {}
-export const CreateCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCatalogResponse",
-}) as any as S.Schema<CreateCatalogResponse>;
+export const CreateCatalogResponse =
+  CancelStatementResponse as any as S.Schema<CreateCatalogResponse>;
 export type Classification = string;
 export type GrokPattern = string;
 export type CustomPatterns = string;
@@ -5611,9 +5538,9 @@ export type CsvHeaderOption = "UNKNOWN" | "PRESENT" | "ABSENT" | (string & {});
 export const CsvHeaderOption = S.String;
 
 export type CsvHeader = string[];
-export const CsvHeader = /*@__PURE__*/ S.Array(S.String);
+export const CsvHeader = GlossaryTermIdList as any as S.Schema<CsvHeader>;
 export type CustomDatatypes = string[];
-export const CustomDatatypes = /*@__PURE__*/ S.Array(S.String);
+export const CustomDatatypes = GlossaryTermIdList as any as S.Schema<CustomDatatypes>;
 export type CsvSerdeOption = "OpenCSVSerDe" | "LazySimpleSerDe" | "None" | (string & {});
 export const CsvSerdeOption = S.String;
 
@@ -5660,11 +5587,10 @@ export const CreateClassifierRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateClassifierRequest" }) as any as S.Schema<CreateClassifierRequest>;
 export interface CreateClassifierResponse {}
-export const CreateClassifierResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateClassifierResponse",
-}) as any as S.Schema<CreateClassifierResponse>;
+export const CreateClassifierResponse =
+  CancelStatementResponse as any as S.Schema<CreateClassifierResponse>;
 export type ColumnNameList = string[];
-export const ColumnNameList = /*@__PURE__*/ S.Array(S.String);
+export const ColumnNameList = GlossaryTermIdList as any as S.Schema<ColumnNameList>;
 export type SampleSizePercentage = number;
 export interface CreateColumnStatisticsTaskSettingsRequest {
   DatabaseName: string;
@@ -5693,11 +5619,8 @@ export const CreateColumnStatisticsTaskSettingsRequest = /*@__PURE__*/ S.suspend
   identifier: "CreateColumnStatisticsTaskSettingsRequest",
 }) as any as S.Schema<CreateColumnStatisticsTaskSettingsRequest>;
 export interface CreateColumnStatisticsTaskSettingsResponse {}
-export const CreateColumnStatisticsTaskSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateColumnStatisticsTaskSettingsResponse",
-}) as any as S.Schema<CreateColumnStatisticsTaskSettingsResponse>;
+export const CreateColumnStatisticsTaskSettingsResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<CreateColumnStatisticsTaskSettingsResponse>;
 export type ConnectionType =
   | "JDBC"
   | "SFTP"
@@ -5795,7 +5718,7 @@ export type ConnectionType =
 export const ConnectionType = S.String;
 
 export type MatchCriteria = string[];
-export const MatchCriteria = /*@__PURE__*/ S.Array(S.String);
+export const MatchCriteria = GlossaryTermIdList as any as S.Schema<MatchCriteria>;
 export type ConnectionPropertyKey =
   | "HOST"
   | "PORT"
@@ -5857,12 +5780,9 @@ export const ConnectionProperties = /*@__PURE__*/ S.Record(
 export type PropertyKey = string;
 export type PropertyValue = string;
 export type PropertyMap = { [key: string]: string | undefined };
-export const PropertyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const PropertyMap = ParametersMap as any as S.Schema<PropertyMap>;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdList = GlossaryTermIdList as any as S.Schema<SecurityGroupIdList>;
 export interface PhysicalConnectionRequirements {
   SubnetId?: string;
   SecurityGroupIdList?: string[];
@@ -5904,10 +5824,7 @@ export type TokenUrl = string;
 export type TokenUrlParameterKey = string;
 export type TokenUrlParameterValue = string;
 export type TokenUrlParametersMap = { [key: string]: string | undefined };
-export const TokenUrlParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TokenUrlParametersMap = ParametersMap as any as S.Schema<TokenUrlParametersMap>;
 export type AuthorizationCode = string | redacted.Redacted<string>;
 export type RedirectUri = string;
 export interface AuthorizationCodeProperties {
@@ -5971,10 +5888,7 @@ export const BasicAuthenticationCredentials = /*@__PURE__*/ S.suspend(() =>
 export type CredentialKey = string;
 export type CredentialValue = string;
 export type CredentialMap = { [key: string]: string | undefined };
-export const CredentialMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const CredentialMap = ParametersMap as any as S.Schema<CredentialMap>;
 export interface AuthenticationConfigurationInput {
   AuthenticationType?: AuthenticationType;
   OAuth2Properties?: OAuth2PropertiesInput;
@@ -6090,9 +6004,8 @@ export const CreateCrawlerRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateCrawlerRequest" }) as any as S.Schema<CreateCrawlerRequest>;
 export interface CreateCrawlerResponse {}
-export const CreateCrawlerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCrawlerResponse",
-}) as any as S.Schema<CreateCrawlerResponse>;
+export const CreateCrawlerResponse =
+  CancelStatementResponse as any as S.Schema<CreateCrawlerResponse>;
 export interface CreateCustomEntityTypeRequest {
   Name: string;
   RegexString: string;
@@ -6135,13 +6048,7 @@ export interface FederatedDatabase {
   ConnectionName?: string;
   ConnectionType?: string;
 }
-export const FederatedDatabase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.optional(S.String),
-    ConnectionName: S.optional(S.String),
-    ConnectionType: S.optional(S.String),
-  }),
-).annotate({ identifier: "FederatedDatabase" }) as any as S.Schema<FederatedDatabase>;
+export const FederatedDatabase = FederatedCatalog as any as S.Schema<FederatedDatabase>;
 export interface DatabaseInput {
   Name: string;
   Description?: string;
@@ -6175,9 +6082,8 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 export interface CreateDatabaseResponse {}
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseResponse",
-}) as any as S.Schema<CreateDatabaseResponse>;
+export const CreateDatabaseResponse =
+  CancelStatementResponse as any as S.Schema<CreateDatabaseResponse>;
 export type DataQualityRulesetString = string;
 export interface DataQualityTargetTable {
   TableName: string;
@@ -6212,11 +6118,8 @@ export const CreateDataQualityRulesetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataQualityRulesetResponse {
   Name?: string;
 }
-export const CreateDataQualityRulesetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateDataQualityRulesetResponse",
-}) as any as S.Schema<CreateDataQualityRulesetResponse>;
+export const CreateDataQualityRulesetResponse =
+  CreateCustomEntityTypeResponse as any as S.Schema<CreateDataQualityRulesetResponse>;
 export interface CreateDevEndpointRequest {
   EndpointName: string;
   RoleArn: string;
@@ -6368,7 +6271,8 @@ export const CreateGlossaryTermResponse = /*@__PURE__*/ S.suspend(() =>
 export type IdentityCenterInstanceArn = string;
 export type IdentityCenterScope = string;
 export type IdentityCenterScopesList = string[];
-export const IdentityCenterScopesList = /*@__PURE__*/ S.Array(S.String);
+export const IdentityCenterScopesList =
+  GlossaryTermIdList as any as S.Schema<IdentityCenterScopesList>;
 export interface CreateGlueIdentityCenterConfigurationRequest {
   InstanceArn: string;
   Scopes?: string[];
@@ -6398,10 +6302,8 @@ export type IntegrationDescription = string;
 export type String2048 = string;
 export type IntegrationString = string;
 export type IntegrationAdditionalEncryptionContextMap = { [key: string]: string | undefined };
-export const IntegrationAdditionalEncryptionContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const IntegrationAdditionalEncryptionContextMap =
+  ParametersMap as any as S.Schema<IntegrationAdditionalEncryptionContextMap>;
 export interface Tag {
   key?: string;
   value?: string;
@@ -6412,10 +6314,8 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 export type IntegrationTagsList = Tag[];
 export const IntegrationTagsList = /*@__PURE__*/ S.Array(Tag);
 export type IntegrationSourcePropertiesMap = { [key: string]: string | undefined };
-export const IntegrationSourcePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const IntegrationSourcePropertiesMap =
+  ParametersMap as any as S.Schema<IntegrationSourcePropertiesMap>;
 export type ContinuousSync = boolean;
 export interface IntegrationConfig {
   RefreshInterval?: string;
@@ -6469,9 +6369,7 @@ export interface IntegrationError {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const IntegrationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-).annotate({ identifier: "IntegrationError" }) as any as S.Schema<IntegrationError>;
+export const IntegrationError = ErrorDetail as any as S.Schema<IntegrationError>;
 export type IntegrationErrorList = IntegrationError[];
 export const IntegrationErrorList = /*@__PURE__*/ S.Array(IntegrationError);
 export interface CreateIntegrationResponse {
@@ -6565,9 +6463,9 @@ export const CreateIntegrationResourcePropertyResponse = /*@__PURE__*/ S.suspend
   identifier: "CreateIntegrationResourcePropertyResponse",
 }) as any as S.Schema<CreateIntegrationResourcePropertyResponse>;
 export type SourceTableFieldsList = string[];
-export const SourceTableFieldsList = /*@__PURE__*/ S.Array(S.String);
+export const SourceTableFieldsList = GlossaryTermIdList as any as S.Schema<SourceTableFieldsList>;
 export type PrimaryKeyList = string[];
-export const PrimaryKeyList = /*@__PURE__*/ S.Array(S.String);
+export const PrimaryKeyList = GlossaryTermIdList as any as S.Schema<PrimaryKeyList>;
 export interface SourceTableConfig {
   Fields?: string[];
   FilterPredicate?: string;
@@ -6630,11 +6528,8 @@ export const CreateIntegrationTablePropertiesRequest = /*@__PURE__*/ S.suspend((
   identifier: "CreateIntegrationTablePropertiesRequest",
 }) as any as S.Schema<CreateIntegrationTablePropertiesRequest>;
 export interface CreateIntegrationTablePropertiesResponse {}
-export const CreateIntegrationTablePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateIntegrationTablePropertiesResponse",
-}) as any as S.Schema<CreateIntegrationTablePropertiesResponse>;
+export const CreateIntegrationTablePropertiesResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<CreateIntegrationTablePropertiesResponse>;
 export interface CreateJobRequest {
   Name: string;
   JobMode?: JobMode;
@@ -6694,9 +6589,7 @@ export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateJobResponse {
   Name?: string;
 }
-export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "CreateJobResponse" }) as any as S.Schema<CreateJobResponse>;
+export const CreateJobResponse = CreateBlueprintResponse as any as S.Schema<CreateJobResponse>;
 export type GlueTables = GlueTable[];
 export const GlueTables = /*@__PURE__*/ S.Array(GlueTable);
 export type TransformType = "FIND_MATCHES" | (string & {});
@@ -6804,11 +6697,10 @@ export const CreatePartitionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreatePartitionRequest" }) as any as S.Schema<CreatePartitionRequest>;
 export interface CreatePartitionResponse {}
-export const CreatePartitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePartitionResponse",
-}) as any as S.Schema<CreatePartitionResponse>;
+export const CreatePartitionResponse =
+  CancelStatementResponse as any as S.Schema<CreatePartitionResponse>;
 export type KeyList = string[];
-export const KeyList = /*@__PURE__*/ S.Array(S.String);
+export const KeyList = GlossaryTermIdList as any as S.Schema<KeyList>;
 export interface PartitionIndex {
   Keys: string[];
   IndexName: string;
@@ -6833,9 +6725,8 @@ export const CreatePartitionIndexRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePartitionIndexRequest",
 }) as any as S.Schema<CreatePartitionIndexRequest>;
 export interface CreatePartitionIndexResponse {}
-export const CreatePartitionIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreatePartitionIndexResponse",
-}) as any as S.Schema<CreatePartitionIndexResponse>;
+export const CreatePartitionIndexResponse =
+  CancelStatementResponse as any as S.Schema<CreatePartitionIndexResponse>;
 export interface CreateRegistryInput {
   RegistryName: string;
   Description?: string;
@@ -7104,10 +6995,8 @@ export const SessionCommand = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionCommand" }) as any as S.Schema<SessionCommand>;
 export type OrchestrationArgumentsValue = string;
 export type OrchestrationArgumentsMap = { [key: string]: string | undefined };
-export const OrchestrationArgumentsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const OrchestrationArgumentsMap =
+  ParametersMap as any as S.Schema<OrchestrationArgumentsMap>;
 export type SessionType = "LIVY" | "SPARK_CONNECT" | (string & {});
 export const SessionType = S.String;
 
@@ -7274,9 +7163,9 @@ export type LastRefreshType = "FULL" | "INCREMENTAL" | (string & {});
 export const LastRefreshType = S.String;
 
 export type ViewSubObjectsList = string[];
-export const ViewSubObjectsList = /*@__PURE__*/ S.Array(S.String);
+export const ViewSubObjectsList = GlossaryTermIdList as any as S.Schema<ViewSubObjectsList>;
 export type ViewSubObjectVersionIdsList = number[];
-export const ViewSubObjectVersionIdsList = /*@__PURE__*/ S.Array(S.Number);
+export const ViewSubObjectVersionIdsList = Count as any as S.Schema<ViewSubObjectVersionIdsList>;
 export type SubObjectSourceType =
   | "HIVE_PARQUET"
   | "HIVE_ORC"
@@ -7308,10 +7197,7 @@ export const SubObjectsStatisticsList = /*@__PURE__*/ S.Array(SubObjectStatistic
 export type SparkPipelineInfoKey = string;
 export type SparkPipelineInfoValue = string;
 export type SparkPipelineInfoMap = { [key: string]: string | undefined };
-export const SparkPipelineInfoMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const SparkPipelineInfoMap = ParametersMap as any as S.Schema<SparkPipelineInfoMap>;
 export interface ViewDefinitionInput {
   IsProtected?: boolean;
   IsManaged?: boolean;
@@ -7384,7 +7270,7 @@ export type MetadataOperation = "CREATE" | (string & {});
 export const MetadataOperation = S.String;
 
 export type IntegerList = number[];
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
+export const IntegerList = Count as any as S.Schema<IntegerList>;
 export type IcebergStructTypeEnum = "struct" | (string & {});
 export const IcebergStructTypeEnum = S.String;
 
@@ -7479,10 +7365,7 @@ export const IcebergSortOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrderId: S.Number, Fields: IcebergSortOrderFieldList }),
 ).annotate({ identifier: "IcebergSortOrder" }) as any as S.Schema<IcebergSortOrder>;
 export type StringToStringMap = { [key: string]: string | undefined };
-export const StringToStringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const StringToStringMap = ParametersMap as any as S.Schema<StringToStringMap>;
 export interface CreateIcebergTableInput {
   Location: string;
   Schema: IcebergSchema;
@@ -7538,9 +7421,7 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateTableRequest" }) as any as S.Schema<CreateTableRequest>;
 export interface CreateTableResponse {}
-export const CreateTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTableResponse",
-}) as any as S.Schema<CreateTableResponse>;
+export const CreateTableResponse = CancelStatementResponse as any as S.Schema<CreateTableResponse>;
 export interface CreateTableOptimizerRequest {
   CatalogId: string;
   DatabaseName: string;
@@ -7560,9 +7441,8 @@ export const CreateTableOptimizerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTableOptimizerRequest",
 }) as any as S.Schema<CreateTableOptimizerRequest>;
 export interface CreateTableOptimizerResponse {}
-export const CreateTableOptimizerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTableOptimizerResponse",
-}) as any as S.Schema<CreateTableOptimizerResponse>;
+export const CreateTableOptimizerResponse =
+  CancelStatementResponse as any as S.Schema<CreateTableOptimizerResponse>;
 export interface CreateTriggerRequest {
   Name: string;
   WorkflowName?: string;
@@ -7592,12 +7472,12 @@ export const CreateTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTriggerResponse {
   Name?: string;
 }
-export const CreateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "CreateTriggerResponse" }) as any as S.Schema<CreateTriggerResponse>;
+export const CreateTriggerResponse =
+  CreateBlueprintResponse as any as S.Schema<CreateTriggerResponse>;
 export type ConfigValueString = string;
 export type AllowedValuesStringList = string[];
-export const AllowedValuesStringList = /*@__PURE__*/ S.Array(S.String);
+export const AllowedValuesStringList =
+  GlossaryTermIdList as any as S.Schema<AllowedValuesStringList>;
 export interface ConfigurationObject {
   DefaultValue?: string;
   AllowedValues?: string[];
@@ -7646,11 +7526,8 @@ export const CreateUsageProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateUsageProfileResponse {
   Name?: string;
 }
-export const CreateUsageProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateUsageProfileResponse",
-}) as any as S.Schema<CreateUsageProfileResponse>;
+export const CreateUsageProfileResponse =
+  CreateCustomEntityTypeResponse as any as S.Schema<CreateUsageProfileResponse>;
 export type FunctionType =
   | "REGULAR_FUNCTION"
   | "AGGREGATE_FUNCTION"
@@ -7706,11 +7583,8 @@ export const CreateUserDefinedFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUserDefinedFunctionRequest",
 }) as any as S.Schema<CreateUserDefinedFunctionRequest>;
 export interface CreateUserDefinedFunctionResponse {}
-export const CreateUserDefinedFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateUserDefinedFunctionResponse",
-}) as any as S.Schema<CreateUserDefinedFunctionResponse>;
+export const CreateUserDefinedFunctionResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<CreateUserDefinedFunctionResponse>;
 export type WorkflowDescriptionString = string;
 export interface CreateWorkflowRequest {
   Name: string;
@@ -7731,9 +7605,8 @@ export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateWorkflowResponse {
   Name?: string;
 }
-export const CreateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "CreateWorkflowResponse" }) as any as S.Schema<CreateWorkflowResponse>;
+export const CreateWorkflowResponse =
+  CreateBlueprintResponse as any as S.Schema<CreateWorkflowResponse>;
 export interface DeleteAssetRequest {
   Identifier: string;
 }
@@ -7743,9 +7616,7 @@ export const DeleteAssetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAssetRequest" }) as any as S.Schema<DeleteAssetRequest>;
 export interface DeleteAssetResponse {}
-export const DeleteAssetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssetResponse",
-}) as any as S.Schema<DeleteAssetResponse>;
+export const DeleteAssetResponse = CancelStatementResponse as any as S.Schema<DeleteAssetResponse>;
 export type AssetTypeId = string;
 export interface DeleteAssetTypeRequest {
   Identifier: string;
@@ -7763,9 +7634,8 @@ export const DeleteAssetTypeRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAssetTypeRequest" }) as any as S.Schema<DeleteAssetTypeRequest>;
 export interface DeleteAssetTypeResponse {}
-export const DeleteAssetTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssetTypeResponse",
-}) as any as S.Schema<DeleteAssetTypeResponse>;
+export const DeleteAssetTypeResponse =
+  CancelStatementResponse as any as S.Schema<DeleteAssetTypeResponse>;
 export type AttachmentName = string;
 export interface DeleteAttachmentRequest {
   AssetIdentifier: string;
@@ -7813,9 +7683,8 @@ export const DeleteBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBlueprintResponse {
   Name?: string;
 }
-export const DeleteBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "DeleteBlueprintResponse" }) as any as S.Schema<DeleteBlueprintResponse>;
+export const DeleteBlueprintResponse =
+  CreateBlueprintResponse as any as S.Schema<DeleteBlueprintResponse>;
 export interface DeleteCatalogRequest {
   CatalogId: string;
 }
@@ -7825,9 +7694,8 @@ export const DeleteCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCatalogRequest" }) as any as S.Schema<DeleteCatalogRequest>;
 export interface DeleteCatalogResponse {}
-export const DeleteCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCatalogResponse",
-}) as any as S.Schema<DeleteCatalogResponse>;
+export const DeleteCatalogResponse =
+  CancelStatementResponse as any as S.Schema<DeleteCatalogResponse>;
 export interface DeleteClassifierRequest {
   Name: string;
 }
@@ -7837,9 +7705,8 @@ export const DeleteClassifierRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteClassifierRequest" }) as any as S.Schema<DeleteClassifierRequest>;
 export interface DeleteClassifierResponse {}
-export const DeleteClassifierResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClassifierResponse",
-}) as any as S.Schema<DeleteClassifierResponse>;
+export const DeleteClassifierResponse =
+  CancelStatementResponse as any as S.Schema<DeleteClassifierResponse>;
 export interface DeleteColumnStatisticsForPartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -7859,11 +7726,8 @@ export const DeleteColumnStatisticsForPartitionRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteColumnStatisticsForPartitionRequest",
 }) as any as S.Schema<DeleteColumnStatisticsForPartitionRequest>;
 export interface DeleteColumnStatisticsForPartitionResponse {}
-export const DeleteColumnStatisticsForPartitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteColumnStatisticsForPartitionResponse",
-}) as any as S.Schema<DeleteColumnStatisticsForPartitionResponse>;
+export const DeleteColumnStatisticsForPartitionResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteColumnStatisticsForPartitionResponse>;
 export interface DeleteColumnStatisticsForTableRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -7881,11 +7745,8 @@ export const DeleteColumnStatisticsForTableRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteColumnStatisticsForTableRequest",
 }) as any as S.Schema<DeleteColumnStatisticsForTableRequest>;
 export interface DeleteColumnStatisticsForTableResponse {}
-export const DeleteColumnStatisticsForTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteColumnStatisticsForTableResponse",
-}) as any as S.Schema<DeleteColumnStatisticsForTableResponse>;
+export const DeleteColumnStatisticsForTableResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteColumnStatisticsForTableResponse>;
 export interface DeleteColumnStatisticsTaskSettingsRequest {
   DatabaseName: string;
   TableName: string;
@@ -7899,11 +7760,8 @@ export const DeleteColumnStatisticsTaskSettingsRequest = /*@__PURE__*/ S.suspend
   identifier: "DeleteColumnStatisticsTaskSettingsRequest",
 }) as any as S.Schema<DeleteColumnStatisticsTaskSettingsRequest>;
 export interface DeleteColumnStatisticsTaskSettingsResponse {}
-export const DeleteColumnStatisticsTaskSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteColumnStatisticsTaskSettingsResponse",
-}) as any as S.Schema<DeleteColumnStatisticsTaskSettingsResponse>;
+export const DeleteColumnStatisticsTaskSettingsResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteColumnStatisticsTaskSettingsResponse>;
 export interface DeleteConnectionRequest {
   CatalogId?: string;
   ConnectionName: string;
@@ -7914,9 +7772,8 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectionResponse",
-}) as any as S.Schema<DeleteConnectionResponse>;
+export const DeleteConnectionResponse =
+  CancelStatementResponse as any as S.Schema<DeleteConnectionResponse>;
 export interface DeleteConnectionTypeRequest {
   ConnectionType: string;
 }
@@ -7928,9 +7785,8 @@ export const DeleteConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConnectionTypeRequest",
 }) as any as S.Schema<DeleteConnectionTypeRequest>;
 export interface DeleteConnectionTypeResponse {}
-export const DeleteConnectionTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectionTypeResponse",
-}) as any as S.Schema<DeleteConnectionTypeResponse>;
+export const DeleteConnectionTypeResponse =
+  CancelStatementResponse as any as S.Schema<DeleteConnectionTypeResponse>;
 export interface DeleteCrawlerRequest {
   Name: string;
 }
@@ -7940,9 +7796,8 @@ export const DeleteCrawlerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCrawlerRequest" }) as any as S.Schema<DeleteCrawlerRequest>;
 export interface DeleteCrawlerResponse {}
-export const DeleteCrawlerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCrawlerResponse",
-}) as any as S.Schema<DeleteCrawlerResponse>;
+export const DeleteCrawlerResponse =
+  CancelStatementResponse as any as S.Schema<DeleteCrawlerResponse>;
 export interface DeleteCustomEntityTypeRequest {
   Name: string;
 }
@@ -7956,11 +7811,8 @@ export const DeleteCustomEntityTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCustomEntityTypeResponse {
   Name?: string;
 }
-export const DeleteCustomEntityTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteCustomEntityTypeResponse",
-}) as any as S.Schema<DeleteCustomEntityTypeResponse>;
+export const DeleteCustomEntityTypeResponse =
+  CreateCustomEntityTypeResponse as any as S.Schema<DeleteCustomEntityTypeResponse>;
 export interface DeleteDatabaseRequest {
   CatalogId?: string;
   Name: string;
@@ -7971,9 +7823,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  CancelStatementResponse as any as S.Schema<DeleteDatabaseResponse>;
 export interface DeleteDataQualityRulesetRequest {
   Name: string;
 }
@@ -7985,11 +7836,8 @@ export const DeleteDataQualityRulesetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDataQualityRulesetRequest",
 }) as any as S.Schema<DeleteDataQualityRulesetRequest>;
 export interface DeleteDataQualityRulesetResponse {}
-export const DeleteDataQualityRulesetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDataQualityRulesetResponse",
-}) as any as S.Schema<DeleteDataQualityRulesetResponse>;
+export const DeleteDataQualityRulesetResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteDataQualityRulesetResponse>;
 export interface DeleteDevEndpointRequest {
   EndpointName: string;
 }
@@ -7999,9 +7847,8 @@ export const DeleteDevEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDevEndpointRequest" }) as any as S.Schema<DeleteDevEndpointRequest>;
 export interface DeleteDevEndpointResponse {}
-export const DeleteDevEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDevEndpointResponse",
-}) as any as S.Schema<DeleteDevEndpointResponse>;
+export const DeleteDevEndpointResponse =
+  CancelStatementResponse as any as S.Schema<DeleteDevEndpointResponse>;
 export interface DeleteFormTypeRequest {
   Identifier: string;
 }
@@ -8018,9 +7865,8 @@ export const DeleteFormTypeRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFormTypeRequest" }) as any as S.Schema<DeleteFormTypeRequest>;
 export interface DeleteFormTypeResponse {}
-export const DeleteFormTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFormTypeResponse",
-}) as any as S.Schema<DeleteFormTypeResponse>;
+export const DeleteFormTypeResponse =
+  CancelStatementResponse as any as S.Schema<DeleteFormTypeResponse>;
 export interface DeleteGlossaryRequest {
   Identifier: string;
 }
@@ -8037,9 +7883,8 @@ export const DeleteGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGlossaryRequest" }) as any as S.Schema<DeleteGlossaryRequest>;
 export interface DeleteGlossaryResponse {}
-export const DeleteGlossaryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGlossaryResponse",
-}) as any as S.Schema<DeleteGlossaryResponse>;
+export const DeleteGlossaryResponse =
+  CancelStatementResponse as any as S.Schema<DeleteGlossaryResponse>;
 export interface DeleteGlossaryTermRequest {
   Identifier: string;
 }
@@ -8058,9 +7903,8 @@ export const DeleteGlossaryTermRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGlossaryTermRequest",
 }) as any as S.Schema<DeleteGlossaryTermRequest>;
 export interface DeleteGlossaryTermResponse {}
-export const DeleteGlossaryTermResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGlossaryTermResponse",
-}) as any as S.Schema<DeleteGlossaryTermResponse>;
+export const DeleteGlossaryTermResponse =
+  CancelStatementResponse as any as S.Schema<DeleteGlossaryTermResponse>;
 export interface DeleteGlueIdentityCenterConfigurationRequest {}
 export const DeleteGlueIdentityCenterConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -8068,11 +7912,8 @@ export const DeleteGlueIdentityCenterConfigurationRequest = /*@__PURE__*/ S.susp
   identifier: "DeleteGlueIdentityCenterConfigurationRequest",
 }) as any as S.Schema<DeleteGlueIdentityCenterConfigurationRequest>;
 export interface DeleteGlueIdentityCenterConfigurationResponse {}
-export const DeleteGlueIdentityCenterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGlueIdentityCenterConfigurationResponse",
-}) as any as S.Schema<DeleteGlueIdentityCenterConfigurationResponse>;
+export const DeleteGlueIdentityCenterConfigurationResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteGlueIdentityCenterConfigurationResponse>;
 export interface DeleteIntegrationRequest {
   IntegrationIdentifier: string;
 }
@@ -8124,11 +7965,8 @@ export const DeleteIntegrationResourcePropertyRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteIntegrationResourcePropertyRequest",
 }) as any as S.Schema<DeleteIntegrationResourcePropertyRequest>;
 export interface DeleteIntegrationResourcePropertyResponse {}
-export const DeleteIntegrationResourcePropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationResourcePropertyResponse",
-}) as any as S.Schema<DeleteIntegrationResourcePropertyResponse>;
+export const DeleteIntegrationResourcePropertyResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteIntegrationResourcePropertyResponse>;
 export interface DeleteIntegrationTablePropertiesRequest {
   ResourceArn: string;
   TableName: string;
@@ -8141,11 +7979,8 @@ export const DeleteIntegrationTablePropertiesRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeleteIntegrationTablePropertiesRequest",
 }) as any as S.Schema<DeleteIntegrationTablePropertiesRequest>;
 export interface DeleteIntegrationTablePropertiesResponse {}
-export const DeleteIntegrationTablePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationTablePropertiesResponse",
-}) as any as S.Schema<DeleteIntegrationTablePropertiesResponse>;
+export const DeleteIntegrationTablePropertiesResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteIntegrationTablePropertiesResponse>;
 export interface DeleteJobRequest {
   JobName: string;
 }
@@ -8171,11 +8006,8 @@ export const DeleteMLTransformRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMLTransformResponse {
   TransformId?: string;
 }
-export const DeleteMLTransformResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TransformId: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteMLTransformResponse",
-}) as any as S.Schema<DeleteMLTransformResponse>;
+export const DeleteMLTransformResponse =
+  CreateMLTransformResponse as any as S.Schema<DeleteMLTransformResponse>;
 export interface DeletePartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -8191,9 +8023,8 @@ export const DeletePartitionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeletePartitionRequest" }) as any as S.Schema<DeletePartitionRequest>;
 export interface DeletePartitionResponse {}
-export const DeletePartitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePartitionResponse",
-}) as any as S.Schema<DeletePartitionResponse>;
+export const DeletePartitionResponse =
+  CancelStatementResponse as any as S.Schema<DeletePartitionResponse>;
 export interface DeletePartitionIndexRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -8211,9 +8042,8 @@ export const DeletePartitionIndexRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePartitionIndexRequest",
 }) as any as S.Schema<DeletePartitionIndexRequest>;
 export interface DeletePartitionIndexResponse {}
-export const DeletePartitionIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePartitionIndexResponse",
-}) as any as S.Schema<DeletePartitionIndexResponse>;
+export const DeletePartitionIndexResponse =
+  CancelStatementResponse as any as S.Schema<DeletePartitionIndexResponse>;
 export interface DeleteRegistryInput {
   RegistryId: RegistryId;
 }
@@ -8249,9 +8079,8 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse =
+  CancelStatementResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteSchemaInput {
   SchemaId: SchemaId;
 }
@@ -8290,9 +8119,7 @@ export interface ErrorDetails {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
+export const ErrorDetails = ErrorDetail as any as S.Schema<ErrorDetails>;
 export interface SchemaVersionErrorItem {
   VersionNumber?: number;
   ErrorDetails?: ErrorDetails;
@@ -8321,11 +8148,8 @@ export const DeleteSecurityConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSecurityConfigurationRequest",
 }) as any as S.Schema<DeleteSecurityConfigurationRequest>;
 export interface DeleteSecurityConfigurationResponse {}
-export const DeleteSecurityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSecurityConfigurationResponse",
-}) as any as S.Schema<DeleteSecurityConfigurationResponse>;
+export const DeleteSecurityConfigurationResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteSecurityConfigurationResponse>;
 export interface DeleteSessionRequest {
   Id: string;
   RequestOrigin?: string;
@@ -8356,9 +8180,7 @@ export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteTableRequest" }) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
-export const DeleteTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableResponse",
-}) as any as S.Schema<DeleteTableResponse>;
+export const DeleteTableResponse = CancelStatementResponse as any as S.Schema<DeleteTableResponse>;
 export interface DeleteTableOptimizerRequest {
   CatalogId: string;
   DatabaseName: string;
@@ -8376,9 +8198,8 @@ export const DeleteTableOptimizerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTableOptimizerRequest",
 }) as any as S.Schema<DeleteTableOptimizerRequest>;
 export interface DeleteTableOptimizerResponse {}
-export const DeleteTableOptimizerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableOptimizerResponse",
-}) as any as S.Schema<DeleteTableOptimizerResponse>;
+export const DeleteTableOptimizerResponse =
+  CancelStatementResponse as any as S.Schema<DeleteTableOptimizerResponse>;
 export interface DeleteTableVersionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -8396,9 +8217,8 @@ export const DeleteTableVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTableVersionRequest",
 }) as any as S.Schema<DeleteTableVersionRequest>;
 export interface DeleteTableVersionResponse {}
-export const DeleteTableVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTableVersionResponse",
-}) as any as S.Schema<DeleteTableVersionResponse>;
+export const DeleteTableVersionResponse =
+  CancelStatementResponse as any as S.Schema<DeleteTableVersionResponse>;
 export interface DeleteTriggerRequest {
   Name: string;
 }
@@ -8410,9 +8230,8 @@ export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTriggerResponse {
   Name?: string;
 }
-export const DeleteTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "DeleteTriggerResponse" }) as any as S.Schema<DeleteTriggerResponse>;
+export const DeleteTriggerResponse =
+  CreateBlueprintResponse as any as S.Schema<DeleteTriggerResponse>;
 export interface DeleteUsageProfileRequest {
   Name: string;
 }
@@ -8424,9 +8243,8 @@ export const DeleteUsageProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUsageProfileRequest",
 }) as any as S.Schema<DeleteUsageProfileRequest>;
 export interface DeleteUsageProfileResponse {}
-export const DeleteUsageProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsageProfileResponse",
-}) as any as S.Schema<DeleteUsageProfileResponse>;
+export const DeleteUsageProfileResponse =
+  CancelStatementResponse as any as S.Schema<DeleteUsageProfileResponse>;
 export interface DeleteUserDefinedFunctionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -8442,11 +8260,8 @@ export const DeleteUserDefinedFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserDefinedFunctionRequest",
 }) as any as S.Schema<DeleteUserDefinedFunctionRequest>;
 export interface DeleteUserDefinedFunctionResponse {}
-export const DeleteUserDefinedFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserDefinedFunctionResponse",
-}) as any as S.Schema<DeleteUserDefinedFunctionResponse>;
+export const DeleteUserDefinedFunctionResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<DeleteUserDefinedFunctionResponse>;
 export interface DeleteWorkflowRequest {
   Name: string;
 }
@@ -8458,9 +8273,8 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWorkflowResponse {
   Name?: string;
 }
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "DeleteWorkflowResponse" }) as any as S.Schema<DeleteWorkflowResponse>;
+export const DeleteWorkflowResponse =
+  CreateBlueprintResponse as any as S.Schema<DeleteWorkflowResponse>;
 export interface DescribeConnectionTypeRequest {
   ConnectionType: string;
 }
@@ -8480,7 +8294,7 @@ export const DataOperation = S.String;
 export type DataOperations = DataOperation[];
 export const DataOperations = /*@__PURE__*/ S.Array(DataOperation);
 export type ComputeEnvironments = ComputeEnvironment[];
-export const ComputeEnvironments = /*@__PURE__*/ S.Array(ComputeEnvironment);
+export const ComputeEnvironments = ComputeEnvironmentList as any as S.Schema<ComputeEnvironments>;
 export interface Capabilities {
   SupportedAuthenticationTypes: AuthenticationType[];
   SupportedDataOperations: DataOperation[];
@@ -8568,12 +8382,9 @@ export const AuthConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ComputeEnvironmentName = string;
 export type ComputeEnvironmentConfigurationDescriptionString = string;
 export type PropertyNameOverrides = { [key: string]: string | undefined };
-export const PropertyNameOverrides = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const PropertyNameOverrides = ParametersMap as any as S.Schema<PropertyNameOverrides>;
 export type ListOfString = string[];
-export const ListOfString = /*@__PURE__*/ S.Array(S.String);
+export const ListOfString = GlossaryTermIdList as any as S.Schema<ListOfString>;
 export interface ComputeEnvironmentConfiguration {
   Name: string;
   Description: string;
@@ -8696,10 +8507,8 @@ export type FilterMode = "QUERY_PARAMS" | "FILTER_STRING" | (string & {});
 export const FilterMode = S.String;
 
 export type ConnectionStringToStringMap = { [key: string]: string | undefined };
-export const ConnectionStringToStringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ConnectionStringToStringMap =
+  ParametersMap as any as S.Schema<ConnectionStringToStringMap>;
 export interface BetweenConfiguration {
   LowBoundKey?: string;
   HighBoundKey?: string;
@@ -8924,10 +8733,7 @@ export const FieldFilterOperator = S.String;
 export type FieldFilterOperatorsList = FieldFilterOperator[];
 export const FieldFilterOperatorsList = /*@__PURE__*/ S.Array(FieldFilterOperator);
 export type CustomProperties = { [key: string]: string | undefined };
-export const CustomProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const CustomProperties = ParametersMap as any as S.Schema<CustomProperties>;
 export interface Field {
   FieldName?: string;
   Label?: string;
@@ -9031,7 +8837,8 @@ export const DescribeInboundIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeInboundIntegrationsResponse",
 }) as any as S.Schema<DescribeInboundIntegrationsResponse>;
 export type IntegrationFilterValues = string[];
-export const IntegrationFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const IntegrationFilterValues =
+  GlossaryTermIdList as any as S.Schema<IntegrationFilterValues>;
 export interface IntegrationFilter {
   Name?: string;
   Values?: string[];
@@ -9133,16 +8940,8 @@ export interface DisassociateGlossaryTermsResponse {
   ItemIdentifier?: string;
   GlossaryTerms?: string[];
 }
-export const DisassociateGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssetIdentifier: S.optional(S.String),
-    IterableFormName: S.optional(S.String),
-    ItemIdentifier: S.optional(S.String),
-    GlossaryTerms: S.optional(GlossaryTermIdList),
-  }),
-).annotate({
-  identifier: "DisassociateGlossaryTermsResponse",
-}) as any as S.Schema<DisassociateGlossaryTermsResponse>;
+export const DisassociateGlossaryTermsResponse =
+  AssociateGlossaryTermsResponse as any as S.Schema<DisassociateGlossaryTermsResponse>;
 export interface GetAssetInput {
   Identifier: string;
 }
@@ -9610,7 +9409,7 @@ export const GetClassifiersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Classifiers: S.optional(ClassifierList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetClassifiersResponse" }) as any as S.Schema<GetClassifiersResponse>;
 export type GetColumnNamesList = string[];
-export const GetColumnNamesList = /*@__PURE__*/ S.Array(S.String);
+export const GetColumnNamesList = GlossaryTermIdList as any as S.Schema<GetColumnNamesList>;
 export interface GetColumnStatisticsForPartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -9825,14 +9624,8 @@ export interface GetColumnStatisticsForTableResponse {
   ColumnStatisticsList?: ColumnStatistics[];
   Errors?: ColumnError[];
 }
-export const GetColumnStatisticsForTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ColumnStatisticsList: S.optional(ColumnStatisticsList),
-    Errors: S.optional(ColumnErrors),
-  }),
-).annotate({
-  identifier: "GetColumnStatisticsForTableResponse",
-}) as any as S.Schema<GetColumnStatisticsForTableResponse>;
+export const GetColumnStatisticsForTableResponse =
+  GetColumnStatisticsForPartitionResponse as any as S.Schema<GetColumnStatisticsForTableResponse>;
 export interface GetColumnStatisticsTaskRunRequest {
   ColumnStatisticsTaskRunId: string;
 }
@@ -10714,27 +10507,8 @@ export interface GetDataQualityRulesetEvaluationRunResponse {
   ResultIds?: string[];
   AdditionalDataSources?: { [key: string]: DataSource | undefined };
 }
-export const GetDataQualityRulesetEvaluationRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RunId: S.optional(S.String),
-    DataSource: S.optional(DataSource),
-    Role: S.optional(S.String),
-    NumberOfWorkers: S.optional(S.Number),
-    Timeout: S.optional(S.Number),
-    AdditionalRunOptions: S.optional(DataQualityEvaluationRunAdditionalRunOptions),
-    Status: S.optional(TaskStatusType),
-    ErrorString: S.optional(S.String),
-    StartedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CompletedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExecutionTime: S.optional(S.Number),
-    RulesetNames: S.optional(RulesetNames),
-    ResultIds: S.optional(DataQualityResultIdList),
-    AdditionalDataSources: S.optional(DataSourceMap),
-  }),
-).annotate({
-  identifier: "GetDataQualityRulesetEvaluationRunResponse",
-}) as any as S.Schema<GetDataQualityRulesetEvaluationRunResponse>;
+export const GetDataQualityRulesetEvaluationRunResponse =
+  DataQualityRulesetEvaluationRun as any as S.Schema<GetDataQualityRulesetEvaluationRunResponse>;
 export interface GetDevEndpointRequest {
   EndpointName: string;
 }
@@ -10768,14 +10542,11 @@ export const GetDevEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 export type OptionKey = string;
 export type OptionValue = string;
 export type ConnectionOptions = { [key: string]: string | undefined };
-export const ConnectionOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ConnectionOptions = ParametersMap as any as S.Schema<ConnectionOptions>;
 export type FilterPredicate = string;
 export type Limit = number;
 export type SelectedFields = string[];
-export const SelectedFields = /*@__PURE__*/ S.Array(S.String);
+export const SelectedFields = GlossaryTermIdList as any as S.Schema<SelectedFields>;
 export interface GetEntityRecordsRequest {
   ConnectionName?: string;
   CatalogId?: string;
@@ -10843,13 +10614,7 @@ export interface GetGlossaryResponse {
   Name?: string;
   Description?: string;
 }
-export const GetGlossaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetGlossaryResponse" }) as any as S.Schema<GetGlossaryResponse>;
+export const GetGlossaryResponse = CreateGlossaryResponse as any as S.Schema<GetGlossaryResponse>;
 export interface GetGlossaryTermRequest {
   Identifier: string;
 }
@@ -10888,7 +10653,8 @@ export const GetGlueIdentityCenterConfigurationRequest = /*@__PURE__*/ S.suspend
   identifier: "GetGlueIdentityCenterConfigurationRequest",
 }) as any as S.Schema<GetGlueIdentityCenterConfigurationRequest>;
 export type OrchestrationStringList = string[];
-export const OrchestrationStringList = /*@__PURE__*/ S.Array(S.String);
+export const OrchestrationStringList =
+  GlossaryTermIdList as any as S.Schema<OrchestrationStringList>;
 export interface GetGlueIdentityCenterConfigurationResponse {
   ApplicationArn?: string;
   InstanceArn?: string;
@@ -11235,11 +11001,8 @@ export const ExportLabelsTaskRunProperties = /*@__PURE__*/ S.suspend(() =>
 export interface LabelingSetGenerationTaskRunProperties {
   OutputS3Path?: string;
 }
-export const LabelingSetGenerationTaskRunProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OutputS3Path: S.optional(S.String) }),
-).annotate({
-  identifier: "LabelingSetGenerationTaskRunProperties",
-}) as any as S.Schema<LabelingSetGenerationTaskRunProperties>;
+export const LabelingSetGenerationTaskRunProperties =
+  ExportLabelsTaskRunProperties as any as S.Schema<LabelingSetGenerationTaskRunProperties>;
 export interface FindMatchesTaskRunProperties {
   JobId?: string;
   JobName?: string;
@@ -11352,20 +11115,7 @@ export interface TaskRun {
   CompletedOn?: Date;
   ExecutionTime?: number;
 }
-export const TaskRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransformId: S.optional(S.String),
-    TaskRunId: S.optional(S.String),
-    Status: S.optional(TaskStatusType),
-    LogGroupName: S.optional(S.String),
-    Properties: S.optional(TaskRunProperties),
-    ErrorString: S.optional(S.String),
-    StartedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CompletedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExecutionTime: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TaskRun" }) as any as S.Schema<TaskRun>;
+export const TaskRun = GetMLTaskRunResponse as any as S.Schema<TaskRun>;
 export type TaskRunList = TaskRun[];
 export const TaskRunList = /*@__PURE__*/ S.Array(TaskRun);
 export interface GetMLTaskRunsResponse {
@@ -11564,29 +11314,7 @@ export interface MLTransform {
   MaxRetries?: number;
   TransformEncryption?: TransformEncryption;
 }
-export const MLTransform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TransformId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    Status: S.optional(TransformStatusType),
-    CreatedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    InputRecordTables: S.optional(GlueTables),
-    Parameters: S.optional(TransformParameters),
-    EvaluationMetrics: S.optional(EvaluationMetrics),
-    LabelCount: S.optional(S.Number),
-    Schema: S.optional(TransformSchema),
-    Role: S.optional(S.String),
-    GlueVersion: S.optional(S.String),
-    MaxCapacity: S.optional(S.Number),
-    WorkerType: S.optional(WorkerType),
-    NumberOfWorkers: S.optional(S.Number),
-    Timeout: S.optional(S.Number),
-    MaxRetries: S.optional(S.Number),
-    TransformEncryption: S.optional(TransformEncryption),
-  }),
-).annotate({ identifier: "MLTransform" }) as any as S.Schema<MLTransform>;
+export const MLTransform = GetMLTransformResponse as any as S.Schema<MLTransform>;
 export type TransformList = MLTransform[];
 export const TransformList = /*@__PURE__*/ S.Array(MLTransform);
 export interface GetMLTransformsResponse {
@@ -11656,7 +11384,8 @@ export type BackfillErrorCode =
 export const BackfillErrorCode = S.String;
 
 export type BackfillErroredPartitionsList = PartitionValueList[];
-export const BackfillErroredPartitionsList = /*@__PURE__*/ S.Array(PartitionValueList);
+export const BackfillErroredPartitionsList =
+  BatchDeletePartitionValueList as any as S.Schema<BackfillErroredPartitionsList>;
 export interface BackfillError {
   Code?: BackfillErrorCode;
   Partitions?: PartitionValueList[];
@@ -11743,10 +11472,7 @@ export const GetPartitionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Partitions: S.optional(PartitionList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetPartitionsResponse" }) as any as S.Schema<GetPartitionsResponse>;
 export type AdditionalPlanOptionsMap = { [key: string]: string | undefined };
-export const AdditionalPlanOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AdditionalPlanOptionsMap = ParametersMap as any as S.Schema<AdditionalPlanOptionsMap>;
 export interface GetPlanRequest {
   Mapping: MappingEntry[];
   Source: CatalogEntry;
@@ -11769,9 +11495,7 @@ export interface GetPlanResponse {
   PythonScript?: string;
   ScalaCode?: string;
 }
-export const GetPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PythonScript: S.optional(S.String), ScalaCode: S.optional(S.String) }),
-).annotate({ identifier: "GetPlanResponse" }) as any as S.Schema<GetPlanResponse>;
+export const GetPlanResponse = CreateScriptResponse as any as S.Schema<GetPlanResponse>;
 export interface GetRegistryInput {
   RegistryId: RegistryId;
 }
@@ -12068,9 +11792,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSessionResponse {
   Session?: Session;
 }
-export const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Session: S.optional(Session) }),
-).annotate({ identifier: "GetSessionResponse" }) as any as S.Schema<GetSessionResponse>;
+export const GetSessionResponse = CreateSessionResponse as any as S.Schema<GetSessionResponse>;
 export interface GetSessionEndpointRequest {
   SessionId: string;
 }
@@ -12583,9 +12305,7 @@ export const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTriggerResponse {
   Trigger?: Trigger;
 }
-export const GetTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Trigger: S.optional(Trigger) }),
-).annotate({ identifier: "GetTriggerResponse" }) as any as S.Schema<GetTriggerResponse>;
+export const GetTriggerResponse = TriggerNodeDetails as any as S.Schema<GetTriggerResponse>;
 export interface GetTriggersRequest {
   NextToken?: string;
   DependentJobName?: string;
@@ -12973,9 +12693,8 @@ export const ImportCatalogToGlueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportCatalogToGlueRequest",
 }) as any as S.Schema<ImportCatalogToGlueRequest>;
 export interface ImportCatalogToGlueResponse {}
-export const ImportCatalogToGlueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ImportCatalogToGlueResponse",
-}) as any as S.Schema<ImportCatalogToGlueResponse>;
+export const ImportCatalogToGlueResponse =
+  CancelStatementResponse as any as S.Schema<ImportCatalogToGlueResponse>;
 export interface ListAssetTypesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -13034,7 +12753,8 @@ export const ListColumnStatisticsTaskRunsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListColumnStatisticsTaskRunsRequest",
 }) as any as S.Schema<ListColumnStatisticsTaskRunsRequest>;
 export type ColumnStatisticsTaskRunIdList = string[];
-export const ColumnStatisticsTaskRunIdList = /*@__PURE__*/ S.Array(S.String);
+export const ColumnStatisticsTaskRunIdList =
+  GlossaryTermIdList as any as S.Schema<ColumnStatisticsTaskRunIdList>;
 export interface ListColumnStatisticsTaskRunsResponse {
   ColumnStatisticsTaskRunIds?: string[];
   NextToken?: string;
@@ -13587,12 +13307,9 @@ export type StatisticEvaluationLevel = "Dataset" | "Column" | "Multicolumn" | (s
 export const StatisticEvaluationLevel = S.String;
 
 export type ReferenceDatasetsList = string[];
-export const ReferenceDatasetsList = /*@__PURE__*/ S.Array(S.String);
+export const ReferenceDatasetsList = GlossaryTermIdList as any as S.Schema<ReferenceDatasetsList>;
 export type StatisticPropertiesMap = { [key: string]: string | undefined };
-export const StatisticPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const StatisticPropertiesMap = ParametersMap as any as S.Schema<StatisticPropertiesMap>;
 export interface StatisticSummary {
   StatisticId?: string;
   ProfileId?: string;
@@ -13647,7 +13364,7 @@ export const ListDevEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListDevEndpointsRequest" }) as any as S.Schema<ListDevEndpointsRequest>;
 export type DevEndpointNameList = string[];
-export const DevEndpointNameList = /*@__PURE__*/ S.Array(S.String);
+export const DevEndpointNameList = GlossaryTermIdList as any as S.Schema<DevEndpointNameList>;
 export interface ListDevEndpointsResponse {
   DevEndpointNames?: string[];
   NextToken?: string;
@@ -13716,11 +13433,9 @@ export interface FormTypeItem {
   Id?: string;
   Name?: string;
 }
-export const FormTypeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({ identifier: "FormTypeItem" }) as any as S.Schema<FormTypeItem>;
+export const FormTypeItem = AssetTypeItem as any as S.Schema<FormTypeItem>;
 export type FormTypeItemList = FormTypeItem[];
-export const FormTypeItemList = /*@__PURE__*/ S.Array(FormTypeItem);
+export const FormTypeItemList = AssetTypeItemList as any as S.Schema<FormTypeItemList>;
 export interface ListFormTypesResponse {
   Items: FormTypeItem[];
   NextToken?: string;
@@ -13743,13 +13458,7 @@ export interface GlossaryItem {
   Name?: string;
   Description?: string;
 }
-export const GlossaryItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "GlossaryItem" }) as any as S.Schema<GlossaryItem>;
+export const GlossaryItem = CreateGlossaryResponse as any as S.Schema<GlossaryItem>;
 export type GlossaryItemList = GlossaryItem[];
 export const GlossaryItemList = /*@__PURE__*/ S.Array(GlossaryItem);
 export interface ListGlossariesResponse {
@@ -13796,7 +13505,8 @@ export const ListGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGlossaryTermsResponse>;
 export type String4096 = string;
 export type IntegrationResourcePropertyFilterValues = string[];
-export const IntegrationResourcePropertyFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const IntegrationResourcePropertyFilterValues =
+  GlossaryTermIdList as any as S.Schema<IntegrationResourcePropertyFilterValues>;
 export interface IntegrationResourcePropertyFilter {
   Name?: string;
   Values?: string[];
@@ -13833,16 +13543,8 @@ export interface IntegrationResourceProperty {
   SourceProcessingProperties?: SourceProcessingProperties;
   TargetProcessingProperties?: TargetProcessingProperties;
 }
-export const IntegrationResourceProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String,
-    ResourcePropertyArn: S.optional(S.String),
-    SourceProcessingProperties: S.optional(SourceProcessingProperties),
-    TargetProcessingProperties: S.optional(TargetProcessingProperties),
-  }),
-).annotate({
-  identifier: "IntegrationResourceProperty",
-}) as any as S.Schema<IntegrationResourceProperty>;
+export const IntegrationResourceProperty =
+  CreateIntegrationResourcePropertyResponse as any as S.Schema<IntegrationResourceProperty>;
 export type IntegrationResourcePropertyList = IntegrationResourceProperty[];
 export const IntegrationResourcePropertyList = /*@__PURE__*/ S.Array(IntegrationResourceProperty);
 export interface ListIntegrationResourcePropertiesResponse {
@@ -13858,23 +13560,17 @@ export const ListIntegrationResourcePropertiesResponse = /*@__PURE__*/ S.suspend
   identifier: "ListIntegrationResourcePropertiesResponse",
 }) as any as S.Schema<ListIntegrationResourcePropertiesResponse>;
 export type IntegrationTablePropertiesFilterValues = string[];
-export const IntegrationTablePropertiesFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const IntegrationTablePropertiesFilterValues =
+  GlossaryTermIdList as any as S.Schema<IntegrationTablePropertiesFilterValues>;
 export interface IntegrationTablePropertiesFilter {
   Name?: string;
   Values?: string[];
 }
-export const IntegrationTablePropertiesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Values: S.optional(IntegrationTablePropertiesFilterValues),
-  }),
-).annotate({
-  identifier: "IntegrationTablePropertiesFilter",
-}) as any as S.Schema<IntegrationTablePropertiesFilter>;
+export const IntegrationTablePropertiesFilter =
+  IntegrationResourcePropertyFilter as any as S.Schema<IntegrationTablePropertiesFilter>;
 export type IntegrationTablePropertiesFilterList = IntegrationTablePropertiesFilter[];
-export const IntegrationTablePropertiesFilterList = /*@__PURE__*/ S.Array(
-  IntegrationTablePropertiesFilter,
-);
+export const IntegrationTablePropertiesFilterList =
+  IntegrationResourcePropertyFilterList as any as S.Schema<IntegrationTablePropertiesFilterList>;
 export interface ListIntegrationTablePropertiesRequest {
   Marker?: string;
   Filters?: IntegrationTablePropertiesFilter[];
@@ -14038,7 +13734,7 @@ export const ListMLTransformsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListMLTransformsRequest" }) as any as S.Schema<ListMLTransformsRequest>;
 export type TransformIdList = string[];
-export const TransformIdList = /*@__PURE__*/ S.Array(S.String);
+export const TransformIdList = GlossaryTermIdList as any as S.Schema<TransformIdList>;
 export interface ListMLTransformsResponse {
   TransformIds: string[];
   NextToken?: string;
@@ -14065,16 +13761,7 @@ export interface RegistryListItem {
   CreatedTime?: string;
   UpdatedTime?: string;
 }
-export const RegistryListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RegistryName: S.optional(S.String),
-    RegistryArn: S.optional(S.String),
-    Description: S.optional(S.String),
-    Status: S.optional(RegistryStatus),
-    CreatedTime: S.optional(S.String),
-    UpdatedTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "RegistryListItem" }) as any as S.Schema<RegistryListItem>;
+export const RegistryListItem = GetRegistryResponse as any as S.Schema<RegistryListItem>;
 export type RegistryListDefinition = RegistryListItem[];
 export const RegistryListDefinition = /*@__PURE__*/ S.Array(RegistryListItem);
 export interface ListRegistriesResponse {
@@ -14180,7 +13867,7 @@ export const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListSessionsRequest" }) as any as S.Schema<ListSessionsRequest>;
 export type SessionIdList = string[];
-export const SessionIdList = /*@__PURE__*/ S.Array(S.String);
+export const SessionIdList = GlossaryTermIdList as any as S.Schema<SessionIdList>;
 export type SessionList = Session[];
 export const SessionList = /*@__PURE__*/ S.Array(Session);
 export interface ListSessionsResponse {
@@ -14360,25 +14047,8 @@ export interface ModifyIntegrationResponse {
   DataFilter?: string;
   IntegrationConfig?: IntegrationConfig;
 }
-export const ModifyIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SourceArn: S.String,
-    TargetArn: S.String,
-    IntegrationName: S.String,
-    Description: S.optional(S.String),
-    IntegrationArn: S.String,
-    KmsKeyId: S.optional(S.String),
-    AdditionalEncryptionContext: S.optional(IntegrationAdditionalEncryptionContextMap),
-    Tags: S.optional(IntegrationTagsList),
-    Status: IntegrationStatus,
-    CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    Errors: S.optional(IntegrationErrorList),
-    DataFilter: S.optional(S.String),
-    IntegrationConfig: S.optional(IntegrationConfig),
-  }),
-).annotate({
-  identifier: "ModifyIntegrationResponse",
-}) as any as S.Schema<ModifyIntegrationResponse>;
+export const ModifyIntegrationResponse =
+  CreateIntegrationResponse as any as S.Schema<ModifyIntegrationResponse>;
 export interface PutAssetRequest {
   AssetTypeId: string;
   Identifier: string;
@@ -14430,13 +14100,7 @@ export interface PutAssetTypeResponse {
   Name?: string;
   Forms?: { [key: string]: AssetTypeFormReference | undefined };
 }
-export const PutAssetTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Forms: S.optional(AssetTypeFormsMap),
-  }),
-).annotate({ identifier: "PutAssetTypeResponse" }) as any as S.Schema<PutAssetTypeResponse>;
+export const PutAssetTypeResponse = GetAssetTypeResponse as any as S.Schema<PutAssetTypeResponse>;
 export interface PutAttachmentRequest {
   AssetIdentifier: string;
   IterableFormName?: string;
@@ -14495,11 +14159,8 @@ export const PutDataCatalogEncryptionSettingsRequest = /*@__PURE__*/ S.suspend((
   identifier: "PutDataCatalogEncryptionSettingsRequest",
 }) as any as S.Schema<PutDataCatalogEncryptionSettingsRequest>;
 export interface PutDataCatalogEncryptionSettingsResponse {}
-export const PutDataCatalogEncryptionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDataCatalogEncryptionSettingsResponse",
-}) as any as S.Schema<PutDataCatalogEncryptionSettingsResponse>;
+export const PutDataCatalogEncryptionSettingsResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<PutDataCatalogEncryptionSettingsResponse>;
 export interface PutDataCatalogExportConfigurationInput {
   ExportSetting: ExportSetting;
   EncryptionConfiguration?: ExportEncryptionConfiguration;
@@ -14547,11 +14208,8 @@ export const PutDataQualityProfileAnnotationRequest = /*@__PURE__*/ S.suspend(()
   identifier: "PutDataQualityProfileAnnotationRequest",
 }) as any as S.Schema<PutDataQualityProfileAnnotationRequest>;
 export interface PutDataQualityProfileAnnotationResponse {}
-export const PutDataQualityProfileAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutDataQualityProfileAnnotationResponse",
-}) as any as S.Schema<PutDataQualityProfileAnnotationResponse>;
+export const PutDataQualityProfileAnnotationResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<PutDataQualityProfileAnnotationResponse>;
 export interface PutFormTypeRequest {
   Name: string;
   Schema: string;
@@ -14569,9 +14227,7 @@ export interface PutFormTypeResponse {
   Name?: string;
   Schema?: string;
 }
-export const PutFormTypeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String), Schema: S.optional(S.String) }),
-).annotate({ identifier: "PutFormTypeResponse" }) as any as S.Schema<PutFormTypeResponse>;
+export const PutFormTypeResponse = GetFormTypeResponse as any as S.Schema<PutFormTypeResponse>;
 export type ExistCondition = "MUST_EXIST" | "NOT_EXIST" | "NONE" | (string & {});
 export const ExistCondition = S.String;
 
@@ -14664,11 +14320,8 @@ export const PutWorkflowRunPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutWorkflowRunPropertiesRequest",
 }) as any as S.Schema<PutWorkflowRunPropertiesRequest>;
 export interface PutWorkflowRunPropertiesResponse {}
-export const PutWorkflowRunPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutWorkflowRunPropertiesResponse",
-}) as any as S.Schema<PutWorkflowRunPropertiesResponse>;
+export const PutWorkflowRunPropertiesResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<PutWorkflowRunPropertiesResponse>;
 export type MetadataList = MetadataKeyValuePair[];
 export const MetadataList = /*@__PURE__*/ S.Array(MetadataKeyValuePair);
 export type QuerySchemaVersionMetadataMaxResults = number;
@@ -14957,20 +14610,8 @@ export interface RemoveSchemaVersionMetadataResponse {
   MetadataKey?: string;
   MetadataValue?: string;
 }
-export const RemoveSchemaVersionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SchemaArn: S.optional(S.String),
-    SchemaName: S.optional(S.String),
-    RegistryName: S.optional(S.String),
-    LatestVersion: S.optional(S.Boolean),
-    VersionNumber: S.optional(S.Number),
-    SchemaVersionId: S.optional(S.String),
-    MetadataKey: S.optional(S.String),
-    MetadataValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveSchemaVersionMetadataResponse",
-}) as any as S.Schema<RemoveSchemaVersionMetadataResponse>;
+export const RemoveSchemaVersionMetadataResponse =
+  PutSchemaVersionMetadataResponse as any as S.Schema<RemoveSchemaVersionMetadataResponse>;
 export interface ResetJobBookmarkRequest {
   JobName: string;
   RunId?: string;
@@ -14983,11 +14624,10 @@ export const ResetJobBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResetJobBookmarkResponse {
   JobBookmarkEntry?: JobBookmarkEntry;
 }
-export const ResetJobBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobBookmarkEntry: S.optional(JobBookmarkEntry) }),
-).annotate({ identifier: "ResetJobBookmarkResponse" }) as any as S.Schema<ResetJobBookmarkResponse>;
+export const ResetJobBookmarkResponse =
+  GetJobBookmarkResponse as any as S.Schema<ResetJobBookmarkResponse>;
 export type NodeIdList = string[];
-export const NodeIdList = /*@__PURE__*/ S.Array(S.String);
+export const NodeIdList = GlossaryTermIdList as any as S.Schema<NodeIdList>;
 export interface ResumeWorkflowRunRequest {
   Name: string;
   RunId: string;
@@ -15292,11 +14932,8 @@ export const StartColumnStatisticsTaskRunScheduleRequest = /*@__PURE__*/ S.suspe
   identifier: "StartColumnStatisticsTaskRunScheduleRequest",
 }) as any as S.Schema<StartColumnStatisticsTaskRunScheduleRequest>;
 export interface StartColumnStatisticsTaskRunScheduleResponse {}
-export const StartColumnStatisticsTaskRunScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartColumnStatisticsTaskRunScheduleResponse",
-}) as any as S.Schema<StartColumnStatisticsTaskRunScheduleResponse>;
+export const StartColumnStatisticsTaskRunScheduleResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<StartColumnStatisticsTaskRunScheduleResponse>;
 export interface StartCrawlerRequest {
   Name: string;
 }
@@ -15306,9 +14943,8 @@ export const StartCrawlerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartCrawlerRequest" }) as any as S.Schema<StartCrawlerRequest>;
 export interface StartCrawlerResponse {}
-export const StartCrawlerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCrawlerResponse",
-}) as any as S.Schema<StartCrawlerResponse>;
+export const StartCrawlerResponse =
+  CancelStatementResponse as any as S.Schema<StartCrawlerResponse>;
 export interface StartCrawlerScheduleRequest {
   CrawlerName: string;
 }
@@ -15320,9 +14956,8 @@ export const StartCrawlerScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartCrawlerScheduleRequest",
 }) as any as S.Schema<StartCrawlerScheduleRequest>;
 export interface StartCrawlerScheduleResponse {}
-export const StartCrawlerScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartCrawlerScheduleResponse",
-}) as any as S.Schema<StartCrawlerScheduleResponse>;
+export const StartCrawlerScheduleResponse =
+  CancelStatementResponse as any as S.Schema<StartCrawlerScheduleResponse>;
 export interface StartDataQualityRuleRecommendationRunRequest {
   DataSource: DataSource;
   Role: string;
@@ -15352,11 +14987,8 @@ export const StartDataQualityRuleRecommendationRunRequest = /*@__PURE__*/ S.susp
 export interface StartDataQualityRuleRecommendationRunResponse {
   RunId?: string;
 }
-export const StartDataQualityRuleRecommendationRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RunId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartDataQualityRuleRecommendationRunResponse",
-}) as any as S.Schema<StartDataQualityRuleRecommendationRunResponse>;
+export const StartDataQualityRuleRecommendationRunResponse =
+  StartBlueprintRunResponse as any as S.Schema<StartDataQualityRuleRecommendationRunResponse>;
 export interface StartDataQualityRulesetEvaluationRunRequest {
   DataSource: DataSource;
   Role: string;
@@ -15384,11 +15016,8 @@ export const StartDataQualityRulesetEvaluationRunRequest = /*@__PURE__*/ S.suspe
 export interface StartDataQualityRulesetEvaluationRunResponse {
   RunId?: string;
 }
-export const StartDataQualityRulesetEvaluationRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RunId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartDataQualityRulesetEvaluationRunResponse",
-}) as any as S.Schema<StartDataQualityRulesetEvaluationRunResponse>;
+export const StartDataQualityRulesetEvaluationRunResponse =
+  StartBlueprintRunResponse as any as S.Schema<StartDataQualityRulesetEvaluationRunResponse>;
 export interface StartExportLabelsTaskRunRequest {
   TransformId: string;
   OutputS3Path: string;
@@ -15425,11 +15054,8 @@ export const StartImportLabelsTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartImportLabelsTaskRunResponse {
   TaskRunId?: string;
 }
-export const StartImportLabelsTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TaskRunId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartImportLabelsTaskRunResponse",
-}) as any as S.Schema<StartImportLabelsTaskRunResponse>;
+export const StartImportLabelsTaskRunResponse =
+  StartExportLabelsTaskRunResponse as any as S.Schema<StartImportLabelsTaskRunResponse>;
 export interface StartJobRunRequest {
   JobName: string;
   JobRunQueuingEnabled?: boolean;
@@ -15505,11 +15131,8 @@ export const StartMLEvaluationTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartMLEvaluationTaskRunResponse {
   TaskRunId?: string;
 }
-export const StartMLEvaluationTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TaskRunId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartMLEvaluationTaskRunResponse",
-}) as any as S.Schema<StartMLEvaluationTaskRunResponse>;
+export const StartMLEvaluationTaskRunResponse =
+  StartExportLabelsTaskRunResponse as any as S.Schema<StartMLEvaluationTaskRunResponse>;
 export interface StartMLLabelingSetGenerationTaskRunRequest {
   TransformId: string;
   OutputS3Path: string;
@@ -15524,11 +15147,8 @@ export const StartMLLabelingSetGenerationTaskRunRequest = /*@__PURE__*/ S.suspen
 export interface StartMLLabelingSetGenerationTaskRunResponse {
   TaskRunId?: string;
 }
-export const StartMLLabelingSetGenerationTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TaskRunId: S.optional(S.String) }),
-).annotate({
-  identifier: "StartMLLabelingSetGenerationTaskRunResponse",
-}) as any as S.Schema<StartMLLabelingSetGenerationTaskRunResponse>;
+export const StartMLLabelingSetGenerationTaskRunResponse =
+  StartExportLabelsTaskRunResponse as any as S.Schema<StartMLLabelingSetGenerationTaskRunResponse>;
 export interface StartTriggerRequest {
   Name: string;
 }
@@ -15540,9 +15160,8 @@ export const StartTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartTriggerResponse {
   Name?: string;
 }
-export const StartTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "StartTriggerResponse" }) as any as S.Schema<StartTriggerResponse>;
+export const StartTriggerResponse =
+  CreateBlueprintResponse as any as S.Schema<StartTriggerResponse>;
 export interface StartWorkflowRunRequest {
   Name: string;
   RunProperties?: { [key: string]: string | undefined };
@@ -15571,11 +15190,8 @@ export const StopColumnStatisticsTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopColumnStatisticsTaskRunRequest",
 }) as any as S.Schema<StopColumnStatisticsTaskRunRequest>;
 export interface StopColumnStatisticsTaskRunResponse {}
-export const StopColumnStatisticsTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopColumnStatisticsTaskRunResponse",
-}) as any as S.Schema<StopColumnStatisticsTaskRunResponse>;
+export const StopColumnStatisticsTaskRunResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<StopColumnStatisticsTaskRunResponse>;
 export interface StopColumnStatisticsTaskRunScheduleRequest {
   DatabaseName: string;
   TableName: string;
@@ -15589,11 +15205,8 @@ export const StopColumnStatisticsTaskRunScheduleRequest = /*@__PURE__*/ S.suspen
   identifier: "StopColumnStatisticsTaskRunScheduleRequest",
 }) as any as S.Schema<StopColumnStatisticsTaskRunScheduleRequest>;
 export interface StopColumnStatisticsTaskRunScheduleResponse {}
-export const StopColumnStatisticsTaskRunScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopColumnStatisticsTaskRunScheduleResponse",
-}) as any as S.Schema<StopColumnStatisticsTaskRunScheduleResponse>;
+export const StopColumnStatisticsTaskRunScheduleResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<StopColumnStatisticsTaskRunScheduleResponse>;
 export interface StopCrawlerRequest {
   Name: string;
 }
@@ -15603,9 +15216,7 @@ export const StopCrawlerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopCrawlerRequest" }) as any as S.Schema<StopCrawlerRequest>;
 export interface StopCrawlerResponse {}
-export const StopCrawlerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCrawlerResponse",
-}) as any as S.Schema<StopCrawlerResponse>;
+export const StopCrawlerResponse = CancelStatementResponse as any as S.Schema<StopCrawlerResponse>;
 export interface StopCrawlerScheduleRequest {
   CrawlerName: string;
 }
@@ -15617,9 +15228,8 @@ export const StopCrawlerScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopCrawlerScheduleRequest",
 }) as any as S.Schema<StopCrawlerScheduleRequest>;
 export interface StopCrawlerScheduleResponse {}
-export const StopCrawlerScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCrawlerScheduleResponse",
-}) as any as S.Schema<StopCrawlerScheduleResponse>;
+export const StopCrawlerScheduleResponse =
+  CancelStatementResponse as any as S.Schema<StopCrawlerScheduleResponse>;
 export interface StopMaterializedViewRefreshTaskRunRequest {
   CatalogId: string;
   DatabaseName: string;
@@ -15633,11 +15243,8 @@ export const StopMaterializedViewRefreshTaskRunRequest = /*@__PURE__*/ S.suspend
   identifier: "StopMaterializedViewRefreshTaskRunRequest",
 }) as any as S.Schema<StopMaterializedViewRefreshTaskRunRequest>;
 export interface StopMaterializedViewRefreshTaskRunResponse {}
-export const StopMaterializedViewRefreshTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopMaterializedViewRefreshTaskRunResponse",
-}) as any as S.Schema<StopMaterializedViewRefreshTaskRunResponse>;
+export const StopMaterializedViewRefreshTaskRunResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<StopMaterializedViewRefreshTaskRunResponse>;
 export interface StopSessionRequest {
   Id: string;
   RequestOrigin?: string;
@@ -15650,9 +15257,7 @@ export const StopSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopSessionResponse {
   Id?: string;
 }
-export const StopSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({ identifier: "StopSessionResponse" }) as any as S.Schema<StopSessionResponse>;
+export const StopSessionResponse = DeleteSessionResponse as any as S.Schema<StopSessionResponse>;
 export interface StopTriggerRequest {
   Name: string;
 }
@@ -15664,9 +15269,7 @@ export const StopTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopTriggerResponse {
   Name?: string;
 }
-export const StopTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "StopTriggerResponse" }) as any as S.Schema<StopTriggerResponse>;
+export const StopTriggerResponse = CreateBlueprintResponse as any as S.Schema<StopTriggerResponse>;
 export interface StopWorkflowRunRequest {
   Name: string;
   RunId: string;
@@ -15677,9 +15280,8 @@ export const StopWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopWorkflowRunRequest" }) as any as S.Schema<StopWorkflowRunRequest>;
 export interface StopWorkflowRunResponse {}
-export const StopWorkflowRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopWorkflowRunResponse",
-}) as any as S.Schema<StopWorkflowRunResponse>;
+export const StopWorkflowRunResponse =
+  CancelStatementResponse as any as S.Schema<StopWorkflowRunResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   TagsToAdd: { [key: string]: string | undefined };
@@ -15690,9 +15292,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CancelStatementResponse as any as S.Schema<TagResourceResponse>;
 export interface TestConnectionInput {
   ConnectionType: ConnectionType;
   ConnectionProperties: { [key: string]: string | undefined };
@@ -15718,11 +15318,10 @@ export const TestConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "TestConnectionRequest" }) as any as S.Schema<TestConnectionRequest>;
 export interface TestConnectionResponse {}
-export const TestConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TestConnectionResponse",
-}) as any as S.Schema<TestConnectionResponse>;
+export const TestConnectionResponse =
+  CancelStatementResponse as any as S.Schema<TestConnectionResponse>;
 export type TagKeysList = string[];
-export const TagKeysList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeysList = GlossaryTermIdList as any as S.Schema<TagKeysList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagsToRemove: string[];
@@ -15733,9 +15332,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CancelStatementResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAssetRequest {
   Identifier: string;
   Name?: string;
@@ -15779,9 +15377,8 @@ export const UpdateBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBlueprintResponse {
   Name?: string;
 }
-export const UpdateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "UpdateBlueprintResponse" }) as any as S.Schema<UpdateBlueprintResponse>;
+export const UpdateBlueprintResponse =
+  CreateBlueprintResponse as any as S.Schema<UpdateBlueprintResponse>;
 export interface UpdateCatalogRequest {
   CatalogId: string;
   CatalogInput: CatalogInput;
@@ -15792,9 +15389,8 @@ export const UpdateCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateCatalogRequest" }) as any as S.Schema<UpdateCatalogRequest>;
 export interface UpdateCatalogResponse {}
-export const UpdateCatalogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCatalogResponse",
-}) as any as S.Schema<UpdateCatalogResponse>;
+export const UpdateCatalogResponse =
+  CancelStatementResponse as any as S.Schema<UpdateCatalogResponse>;
 export interface UpdateGrokClassifierRequest {
   Name: string;
   Classification?: string;
@@ -15842,22 +15438,8 @@ export interface UpdateCsvClassifierRequest {
   CustomDatatypes?: string[];
   Serde?: CsvSerdeOption;
 }
-export const UpdateCsvClassifierRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Delimiter: S.optional(S.String),
-    QuoteSymbol: S.optional(S.String),
-    ContainsHeader: S.optional(CsvHeaderOption),
-    Header: S.optional(CsvHeader),
-    DisableValueTrimming: S.optional(S.Boolean),
-    AllowSingleColumn: S.optional(S.Boolean),
-    CustomDatatypeConfigured: S.optional(S.Boolean),
-    CustomDatatypes: S.optional(CustomDatatypes),
-    Serde: S.optional(CsvSerdeOption),
-  }),
-).annotate({
-  identifier: "UpdateCsvClassifierRequest",
-}) as any as S.Schema<UpdateCsvClassifierRequest>;
+export const UpdateCsvClassifierRequest =
+  CreateCsvClassifierRequest as any as S.Schema<UpdateCsvClassifierRequest>;
 export interface UpdateClassifierRequest {
   GrokClassifier?: UpdateGrokClassifierRequest;
   XMLClassifier?: UpdateXMLClassifierRequest;
@@ -15873,11 +15455,11 @@ export const UpdateClassifierRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateClassifierRequest" }) as any as S.Schema<UpdateClassifierRequest>;
 export interface UpdateClassifierResponse {}
-export const UpdateClassifierResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateClassifierResponse",
-}) as any as S.Schema<UpdateClassifierResponse>;
+export const UpdateClassifierResponse =
+  CancelStatementResponse as any as S.Schema<UpdateClassifierResponse>;
 export type UpdateColumnStatisticsList = ColumnStatistics[];
-export const UpdateColumnStatisticsList = /*@__PURE__*/ S.Array(ColumnStatistics);
+export const UpdateColumnStatisticsList =
+  ColumnStatisticsList as any as S.Schema<UpdateColumnStatisticsList>;
 export interface UpdateColumnStatisticsForPartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -15932,11 +15514,8 @@ export const UpdateColumnStatisticsForTableRequest = /*@__PURE__*/ S.suspend(() 
 export interface UpdateColumnStatisticsForTableResponse {
   Errors?: ColumnStatisticsError[];
 }
-export const UpdateColumnStatisticsForTableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Errors: S.optional(ColumnStatisticsErrors) }),
-).annotate({
-  identifier: "UpdateColumnStatisticsForTableResponse",
-}) as any as S.Schema<UpdateColumnStatisticsForTableResponse>;
+export const UpdateColumnStatisticsForTableResponse =
+  UpdateColumnStatisticsForPartitionResponse as any as S.Schema<UpdateColumnStatisticsForTableResponse>;
 export interface UpdateColumnStatisticsTaskSettingsRequest {
   DatabaseName: string;
   TableName: string;
@@ -15962,11 +15541,8 @@ export const UpdateColumnStatisticsTaskSettingsRequest = /*@__PURE__*/ S.suspend
   identifier: "UpdateColumnStatisticsTaskSettingsRequest",
 }) as any as S.Schema<UpdateColumnStatisticsTaskSettingsRequest>;
 export interface UpdateColumnStatisticsTaskSettingsResponse {}
-export const UpdateColumnStatisticsTaskSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateColumnStatisticsTaskSettingsResponse",
-}) as any as S.Schema<UpdateColumnStatisticsTaskSettingsResponse>;
+export const UpdateColumnStatisticsTaskSettingsResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<UpdateColumnStatisticsTaskSettingsResponse>;
 export interface UpdateConnectionRequest {
   CatalogId?: string;
   Name: string;
@@ -15980,9 +15556,8 @@ export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateConnectionRequest" }) as any as S.Schema<UpdateConnectionRequest>;
 export interface UpdateConnectionResponse {}
-export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateConnectionResponse",
-}) as any as S.Schema<UpdateConnectionResponse>;
+export const UpdateConnectionResponse =
+  CancelStatementResponse as any as S.Schema<UpdateConnectionResponse>;
 export type DescriptionStringRemovable = string;
 export interface UpdateCrawlerRequest {
   Name: string;
@@ -16021,9 +15596,8 @@ export const UpdateCrawlerRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateCrawlerRequest" }) as any as S.Schema<UpdateCrawlerRequest>;
 export interface UpdateCrawlerResponse {}
-export const UpdateCrawlerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCrawlerResponse",
-}) as any as S.Schema<UpdateCrawlerResponse>;
+export const UpdateCrawlerResponse =
+  CancelStatementResponse as any as S.Schema<UpdateCrawlerResponse>;
 export interface UpdateCrawlerScheduleRequest {
   CrawlerName: string;
   Schedule?: string;
@@ -16036,9 +15610,8 @@ export const UpdateCrawlerScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCrawlerScheduleRequest",
 }) as any as S.Schema<UpdateCrawlerScheduleRequest>;
 export interface UpdateCrawlerScheduleResponse {}
-export const UpdateCrawlerScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateCrawlerScheduleResponse",
-}) as any as S.Schema<UpdateCrawlerScheduleResponse>;
+export const UpdateCrawlerScheduleResponse =
+  CancelStatementResponse as any as S.Schema<UpdateCrawlerScheduleResponse>;
 export interface UpdateDatabaseRequest {
   CatalogId?: string;
   Name: string;
@@ -16050,9 +15623,8 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateDatabaseRequest" }) as any as S.Schema<UpdateDatabaseRequest>;
 export interface UpdateDatabaseResponse {}
-export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatabaseResponse",
-}) as any as S.Schema<UpdateDatabaseResponse>;
+export const UpdateDatabaseResponse =
+  CancelStatementResponse as any as S.Schema<UpdateDatabaseResponse>;
 export interface UpdateDataQualityRulesetRequest {
   Name: string;
   Description?: string;
@@ -16113,9 +15685,8 @@ export const UpdateDevEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateDevEndpointRequest" }) as any as S.Schema<UpdateDevEndpointRequest>;
 export interface UpdateDevEndpointResponse {}
-export const UpdateDevEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDevEndpointResponse",
-}) as any as S.Schema<UpdateDevEndpointResponse>;
+export const UpdateDevEndpointResponse =
+  CancelStatementResponse as any as S.Schema<UpdateDevEndpointResponse>;
 export interface UpdateGlossaryRequest {
   Identifier: string;
   Name?: string;
@@ -16137,13 +15708,8 @@ export interface UpdateGlossaryResponse {
   Name?: string;
   Description?: string;
 }
-export const UpdateGlossaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateGlossaryResponse" }) as any as S.Schema<UpdateGlossaryResponse>;
+export const UpdateGlossaryResponse =
+  CreateGlossaryResponse as any as S.Schema<UpdateGlossaryResponse>;
 export interface UpdateGlossaryTermRequest {
   Identifier: string;
   Name?: string;
@@ -16178,17 +15744,8 @@ export interface UpdateGlossaryTermResponse {
   ShortDescription?: string;
   LongDescription?: string;
 }
-export const UpdateGlossaryTermResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    GlossaryId: S.optional(S.String),
-    Name: S.optional(S.String),
-    ShortDescription: S.optional(S.String),
-    LongDescription: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateGlossaryTermResponse",
-}) as any as S.Schema<UpdateGlossaryTermResponse>;
+export const UpdateGlossaryTermResponse =
+  CreateGlossaryTermResponse as any as S.Schema<UpdateGlossaryTermResponse>;
 export interface UpdateGlueIdentityCenterConfigurationRequest {
   Scopes?: string[];
   UserBackgroundSessionsEnabled?: boolean;
@@ -16202,11 +15759,8 @@ export const UpdateGlueIdentityCenterConfigurationRequest = /*@__PURE__*/ S.susp
   identifier: "UpdateGlueIdentityCenterConfigurationRequest",
 }) as any as S.Schema<UpdateGlueIdentityCenterConfigurationRequest>;
 export interface UpdateGlueIdentityCenterConfigurationResponse {}
-export const UpdateGlueIdentityCenterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateGlueIdentityCenterConfigurationResponse",
-}) as any as S.Schema<UpdateGlueIdentityCenterConfigurationResponse>;
+export const UpdateGlueIdentityCenterConfigurationResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<UpdateGlueIdentityCenterConfigurationResponse>;
 export interface UpdateIntegrationResourcePropertyRequest {
   ResourceArn: string;
   SourceProcessingProperties?: SourceProcessingProperties;
@@ -16227,16 +15781,8 @@ export interface UpdateIntegrationResourcePropertyResponse {
   SourceProcessingProperties?: SourceProcessingProperties;
   TargetProcessingProperties?: TargetProcessingProperties;
 }
-export const UpdateIntegrationResourcePropertyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.optional(S.String),
-    ResourcePropertyArn: S.optional(S.String),
-    SourceProcessingProperties: S.optional(SourceProcessingProperties),
-    TargetProcessingProperties: S.optional(TargetProcessingProperties),
-  }),
-).annotate({
-  identifier: "UpdateIntegrationResourcePropertyResponse",
-}) as any as S.Schema<UpdateIntegrationResourcePropertyResponse>;
+export const UpdateIntegrationResourcePropertyResponse =
+  GetIntegrationResourcePropertyResponse as any as S.Schema<UpdateIntegrationResourcePropertyResponse>;
 export interface UpdateIntegrationTablePropertiesRequest {
   ResourceArn: string;
   TableName: string;
@@ -16254,11 +15800,8 @@ export const UpdateIntegrationTablePropertiesRequest = /*@__PURE__*/ S.suspend((
   identifier: "UpdateIntegrationTablePropertiesRequest",
 }) as any as S.Schema<UpdateIntegrationTablePropertiesRequest>;
 export interface UpdateIntegrationTablePropertiesResponse {}
-export const UpdateIntegrationTablePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateIntegrationTablePropertiesResponse",
-}) as any as S.Schema<UpdateIntegrationTablePropertiesResponse>;
+export const UpdateIntegrationTablePropertiesResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<UpdateIntegrationTablePropertiesResponse>;
 export interface JobUpdate {
   JobMode?: JobMode;
   JobRunQueuingEnabled?: boolean;
@@ -16323,9 +15866,7 @@ export const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateJobResponse {
   JobName?: string;
 }
-export const UpdateJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobName: S.optional(S.String) }),
-).annotate({ identifier: "UpdateJobResponse" }) as any as S.Schema<UpdateJobResponse>;
+export const UpdateJobResponse = DeleteJobResponse as any as S.Schema<UpdateJobResponse>;
 export type CommitIdString = string;
 export type AuthTokenString = string;
 export interface UpdateJobFromSourceControlRequest {
@@ -16393,11 +15934,8 @@ export const UpdateMLTransformRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMLTransformResponse {
   TransformId?: string;
 }
-export const UpdateMLTransformResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TransformId: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateMLTransformResponse",
-}) as any as S.Schema<UpdateMLTransformResponse>;
+export const UpdateMLTransformResponse =
+  CreateMLTransformResponse as any as S.Schema<UpdateMLTransformResponse>;
 export interface UpdatePartitionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -16415,9 +15953,8 @@ export const UpdatePartitionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdatePartitionRequest" }) as any as S.Schema<UpdatePartitionRequest>;
 export interface UpdatePartitionResponse {}
-export const UpdatePartitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePartitionResponse",
-}) as any as S.Schema<UpdatePartitionResponse>;
+export const UpdatePartitionResponse =
+  CancelStatementResponse as any as S.Schema<UpdatePartitionResponse>;
 export interface UpdateRegistryInput {
   RegistryId: RegistryId;
   Description: string;
@@ -16431,9 +15968,7 @@ export interface UpdateRegistryResponse {
   RegistryName?: string;
   RegistryArn?: string;
 }
-export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RegistryName: S.optional(S.String), RegistryArn: S.optional(S.String) }),
-).annotate({ identifier: "UpdateRegistryResponse" }) as any as S.Schema<UpdateRegistryResponse>;
+export const UpdateRegistryResponse = RegistryId as any as S.Schema<UpdateRegistryResponse>;
 export interface UpdateSchemaInput {
   SchemaId: SchemaId;
   SchemaVersionNumber?: SchemaVersionNumber;
@@ -16453,13 +15988,7 @@ export interface UpdateSchemaResponse {
   SchemaName?: string;
   RegistryName?: string;
 }
-export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SchemaArn: S.optional(S.String),
-    SchemaName: S.optional(S.String),
-    RegistryName: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateSchemaResponse" }) as any as S.Schema<UpdateSchemaResponse>;
+export const UpdateSchemaResponse = SchemaId as any as S.Schema<UpdateSchemaResponse>;
 export interface UpdateSourceControlFromJobRequest {
   JobName?: string;
   Provider?: SourceControlProvider;
@@ -16489,11 +16018,8 @@ export const UpdateSourceControlFromJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSourceControlFromJobResponse {
   JobName?: string;
 }
-export const UpdateSourceControlFromJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ JobName: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateSourceControlFromJobResponse",
-}) as any as S.Schema<UpdateSourceControlFromJobResponse>;
+export const UpdateSourceControlFromJobResponse =
+  UpdateJobFromSourceControlResponse as any as S.Schema<UpdateSourceControlFromJobResponse>;
 export type ViewUpdateAction = "ADD" | "REPLACE" | "ADD_OR_REPLACE" | "DROP" | (string & {});
 export const ViewUpdateAction = S.String;
 
@@ -16599,9 +16125,7 @@ export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateTableRequest" }) as any as S.Schema<UpdateTableRequest>;
 export interface UpdateTableResponse {}
-export const UpdateTableResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTableResponse",
-}) as any as S.Schema<UpdateTableResponse>;
+export const UpdateTableResponse = CancelStatementResponse as any as S.Schema<UpdateTableResponse>;
 export interface UpdateTableOptimizerRequest {
   CatalogId: string;
   DatabaseName: string;
@@ -16621,9 +16145,8 @@ export const UpdateTableOptimizerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTableOptimizerRequest",
 }) as any as S.Schema<UpdateTableOptimizerRequest>;
 export interface UpdateTableOptimizerResponse {}
-export const UpdateTableOptimizerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTableOptimizerResponse",
-}) as any as S.Schema<UpdateTableOptimizerResponse>;
+export const UpdateTableOptimizerResponse =
+  CancelStatementResponse as any as S.Schema<UpdateTableOptimizerResponse>;
 export interface TriggerUpdate {
   Name?: string;
   Description?: string;
@@ -16654,9 +16177,7 @@ export const UpdateTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTriggerResponse {
   Trigger?: Trigger;
 }
-export const UpdateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Trigger: S.optional(Trigger) }),
-).annotate({ identifier: "UpdateTriggerResponse" }) as any as S.Schema<UpdateTriggerResponse>;
+export const UpdateTriggerResponse = TriggerNodeDetails as any as S.Schema<UpdateTriggerResponse>;
 export interface UpdateUsageProfileRequest {
   Name: string;
   Description?: string;
@@ -16674,11 +16195,8 @@ export const UpdateUsageProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUsageProfileResponse {
   Name?: string;
 }
-export const UpdateUsageProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateUsageProfileResponse",
-}) as any as S.Schema<UpdateUsageProfileResponse>;
+export const UpdateUsageProfileResponse =
+  CreateCustomEntityTypeResponse as any as S.Schema<UpdateUsageProfileResponse>;
 export interface UpdateUserDefinedFunctionRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -16696,11 +16214,8 @@ export const UpdateUserDefinedFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserDefinedFunctionRequest",
 }) as any as S.Schema<UpdateUserDefinedFunctionRequest>;
 export interface UpdateUserDefinedFunctionResponse {}
-export const UpdateUserDefinedFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUserDefinedFunctionResponse",
-}) as any as S.Schema<UpdateUserDefinedFunctionResponse>;
+export const UpdateUserDefinedFunctionResponse =
+  CancelDataQualityRuleRecommendationRunResponse as any as S.Schema<UpdateUserDefinedFunctionResponse>;
 export interface UpdateWorkflowRequest {
   Name: string;
   Description?: string;
@@ -16718,9 +16233,8 @@ export const UpdateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWorkflowResponse {
   Name?: string;
 }
-export const UpdateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({ identifier: "UpdateWorkflowResponse" }) as any as S.Schema<UpdateWorkflowResponse>;
+export const UpdateWorkflowResponse =
+  CreateBlueprintResponse as any as S.Schema<UpdateWorkflowResponse>;
 export type FederationSourceErrorCode =
   | "AccessDeniedException"
   | "EntityNotFoundException"

@@ -2142,13 +2142,8 @@ export interface GoogleAnalyticsAdminV1betaAccessMetric {
   /** The API name of the metric. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of metrics supported in this API. Metrics are referenced by name in `metricFilter` & `orderBys`. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1betaAccessMetric",
-}) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetric>;
+export const GoogleAnalyticsAdminV1betaAccessMetric =
+  GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetric>;
 
 export type GoogleAnalyticsAdminV1betaAccessMetricList =
   Array<GoogleAnalyticsAdminV1betaAccessMetric>;
@@ -2440,19 +2435,13 @@ export interface GoogleAnalyticsAdminV1betaAccessMetricHeader {
   /** The metric's name; for example 'accessCount'. */
   metricName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessMetricHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1betaAccessMetricHeader",
-}) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricHeader>;
+export const GoogleAnalyticsAdminV1betaAccessMetricHeader =
+  GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricHeader>;
 
 export type GoogleAnalyticsAdminV1betaAccessMetricHeaderList =
   Array<GoogleAnalyticsAdminV1betaAccessMetricHeader>;
-export const GoogleAnalyticsAdminV1betaAccessMetricHeaderList = /*@__PURE__*/ S.Array(
-  GoogleAnalyticsAdminV1betaAccessMetricHeader,
-) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricHeaderList>;
+export const GoogleAnalyticsAdminV1betaAccessMetricHeaderList =
+  GoogleAnalyticsAdminV1betaAccessMetricList as any as S.Schema<GoogleAnalyticsAdminV1betaAccessMetricHeaderList>;
 
 /** The value of a metric. */
 export interface GoogleAnalyticsAdminV1betaAccessMetricValue {
@@ -2478,19 +2467,13 @@ export interface GoogleAnalyticsAdminV1betaAccessDimensionValue {
   /** The dimension value. For example, this value may be 'France' for the 'country' dimension. */
   value?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessDimensionValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1betaAccessDimensionValue",
-}) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionValue>;
+export const GoogleAnalyticsAdminV1betaAccessDimensionValue =
+  GoogleAnalyticsAdminV1betaAccessMetricValue as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionValue>;
 
 export type GoogleAnalyticsAdminV1betaAccessDimensionValueList =
   Array<GoogleAnalyticsAdminV1betaAccessDimensionValue>;
-export const GoogleAnalyticsAdminV1betaAccessDimensionValueList = /*@__PURE__*/ S.Array(
-  GoogleAnalyticsAdminV1betaAccessDimensionValue,
-) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionValueList>;
+export const GoogleAnalyticsAdminV1betaAccessDimensionValueList =
+  GoogleAnalyticsAdminV1betaAccessMetricValueList as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionValueList>;
 
 /** Access report data for each row. */
 export interface GoogleAnalyticsAdminV1betaAccessRow {
@@ -2518,19 +2501,13 @@ export interface GoogleAnalyticsAdminV1betaAccessDimensionHeader {
   /** The dimension's name; for example 'userEmail'. */
   dimensionName?: string;
 }
-export const GoogleAnalyticsAdminV1betaAccessDimensionHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensionName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleAnalyticsAdminV1betaAccessDimensionHeader",
-}) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionHeader>;
+export const GoogleAnalyticsAdminV1betaAccessDimensionHeader =
+  GoogleAnalyticsAdminV1betaAccessDimension as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionHeader>;
 
 export type GoogleAnalyticsAdminV1betaAccessDimensionHeaderList =
   Array<GoogleAnalyticsAdminV1betaAccessDimensionHeader>;
-export const GoogleAnalyticsAdminV1betaAccessDimensionHeaderList = /*@__PURE__*/ S.Array(
-  GoogleAnalyticsAdminV1betaAccessDimensionHeader,
-) as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionHeaderList>;
+export const GoogleAnalyticsAdminV1betaAccessDimensionHeaderList =
+  GoogleAnalyticsAdminV1betaAccessDimensionList as any as S.Schema<GoogleAnalyticsAdminV1betaAccessDimensionHeaderList>;
 
 /** Current state for a particular quota group. */
 export interface GoogleAnalyticsAdminV1betaAccessQuotaStatus {

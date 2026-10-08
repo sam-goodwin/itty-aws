@@ -259,9 +259,8 @@ export const TokensCreateRequestConditionRequestIpInList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<TokensCreateRequestConditionRequestIpInList>;
 
 export type TokensCreateRequestConditionRequestIpNotInList = Array<string>;
-export const TokensCreateRequestConditionRequestIpNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensCreateRequestConditionRequestIpNotInList>;
+export const TokensCreateRequestConditionRequestIpNotInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensCreateRequestConditionRequestIpNotInList>;
 
 export interface TokensCreateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
@@ -314,14 +313,12 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTokenRequest" }) as any as S.Schema<CreateTokenRequest>;
 
 export type TokensCreateResponseConditionRequestIpInList = Array<string>;
-export const TokensCreateResponseConditionRequestIpInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensCreateResponseConditionRequestIpInList>;
+export const TokensCreateResponseConditionRequestIpInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensCreateResponseConditionRequestIpInList>;
 
 export type TokensCreateResponseConditionRequestIpNotInList = Array<string>;
-export const TokensCreateResponseConditionRequestIpNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensCreateResponseConditionRequestIpNotInList>;
+export const TokensCreateResponseConditionRequestIpNotInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensCreateResponseConditionRequestIpNotInList>;
 
 export interface TokensCreateResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
@@ -419,10 +416,7 @@ export type TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNeste
   [key: string]: string | undefined;
 };
 export const TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
+  TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap as any as S.Schema<TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
 export type TokensCreateResponsePoliciesItemResourcesValue =
   | string
@@ -705,9 +699,8 @@ export const GetInviteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetInviteRequest" }) as any as S.Schema<GetInviteRequest>;
 
 export type InvitesGetResponseRolesList = Array<string>;
-export const InvitesGetResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvitesGetResponseRolesList>;
+export const InvitesGetResponseRolesList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<InvitesGetResponseRolesList>;
 
 export type InvitesGetResponseStatus = "pending" | "accepted" | "rejected" | "expired";
 export const InvitesGetResponseStatus = S.String;
@@ -875,9 +868,8 @@ export type SubscriptionsGetResultItemRatePlanId =
 export const SubscriptionsGetResultItemRatePlanId = S.String;
 
 export type SubscriptionsGetResultItemRatePlanSetsList = Array<string>;
-export const SubscriptionsGetResultItemRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
+export const SubscriptionsGetResultItemRatePlanSetsList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
 
 export interface SubscriptionsGetResultItemRatePlan {
   /** The ID of the rate plan. */
@@ -983,14 +975,12 @@ export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTokenRequest" }) as any as S.Schema<GetTokenRequest>;
 
 export type TokensGetResponseConditionRequestIpInList = Array<string>;
-export const TokensGetResponseConditionRequestIpInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensGetResponseConditionRequestIpInList>;
+export const TokensGetResponseConditionRequestIpInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensGetResponseConditionRequestIpInList>;
 
 export type TokensGetResponseConditionRequestIpNotInList = Array<string>;
-export const TokensGetResponseConditionRequestIpNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensGetResponseConditionRequestIpNotInList>;
+export const TokensGetResponseConditionRequestIpNotInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensGetResponseConditionRequestIpNotInList>;
 
 export interface TokensGetResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
@@ -998,16 +988,8 @@ export interface TokensGetResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensGetResponseConditionRequestIpNotInList | null;
 }
-export const TokensGetResponseConditionRequestIp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    in: S.optional(S.NullOr(TokensGetResponseConditionRequestIpInList)),
-    notIn: S.optional(
-      S.NullOr(TokensGetResponseConditionRequestIpNotInList).pipe(T.Body("not_in")),
-    ),
-  }),
-).annotate({
-  identifier: "TokensGetResponseConditionRequestIp",
-}) as any as S.Schema<TokensGetResponseConditionRequestIp>;
+export const TokensGetResponseConditionRequestIp =
+  TokensCreateResponseConditionRequestIp as any as S.Schema<TokensGetResponseConditionRequestIp>;
 
 export interface TokensGetResponseCondition {
   /** Client IP restrictions. */
@@ -1036,18 +1018,14 @@ export const TokensGetResponsePoliciesItemPermissionGroupsItem =
 
 export type TokensGetResponsePoliciesItemPermissionGroupsList =
   Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-export const TokensGetResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ S.Array(
-  TokensCreateResponsePoliciesItemPermissionGroupsItem,
-) as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsList>;
+export const TokensGetResponsePoliciesItemPermissionGroupsList =
+  TokensCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsList>;
 
 export type TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export const TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
+  TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap as any as S.Schema<TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
 export type TokensGetResponsePoliciesItemResourcesValue =
   | string
@@ -1151,9 +1129,8 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export type GetResponseBetasList = Array<string>;
-export const GetResponseBetasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseBetasList>;
+export const GetResponseBetasList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<GetResponseBetasList>;
 
 export type GetResponseOrganizationsItemPermissionsList = Array<unknown>;
 export const GetResponseOrganizationsItemPermissionsList = /*@__PURE__*/ S.Array(
@@ -1161,9 +1138,8 @@ export const GetResponseOrganizationsItemPermissionsList = /*@__PURE__*/ S.Array
 ) as any as S.Schema<GetResponseOrganizationsItemPermissionsList>;
 
 export type GetResponseOrganizationsItemRolesList = Array<string>;
-export const GetResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseOrganizationsItemRolesList>;
+export const GetResponseOrganizationsItemRolesList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<GetResponseOrganizationsItemRolesList>;
 
 export type GetResponseOrganizationsItemStatus = "member" | "invited";
 export const GetResponseOrganizationsItemStatus = S.String;
@@ -1552,9 +1528,8 @@ export const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInvitesRequest" }) as any as S.Schema<ListInvitesRequest>;
 
 export type InvitesListResultItemRolesList = Array<string>;
-export const InvitesListResultItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvitesListResultItemRolesList>;
+export const InvitesListResultItemRolesList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<InvitesListResultItemRolesList>;
 
 export type InvitesListResultItemStatus = "pending" | "accepted" | "rejected" | "expired";
 export const InvitesListResultItemStatus = S.String;
@@ -1661,14 +1636,12 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type OrganizationsListResultItemPermissionsList = Array<unknown>;
-export const OrganizationsListResultItemPermissionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<OrganizationsListResultItemPermissionsList>;
+export const OrganizationsListResultItemPermissionsList =
+  GetResponseOrganizationsItemPermissionsList as any as S.Schema<OrganizationsListResultItemPermissionsList>;
 
 export type OrganizationsListResultItemRolesList = Array<string>;
-export const OrganizationsListResultItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationsListResultItemRolesList>;
+export const OrganizationsListResultItemRolesList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<OrganizationsListResultItemRolesList>;
 
 export type OrganizationsListResultItemStatus = "member" | "invited";
 export const OrganizationsListResultItemStatus = S.String;
@@ -1725,9 +1698,8 @@ export const ListTenantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTenantsRequest" }) as any as S.Schema<ListTenantsRequest>;
 
 export type TenantsListResultItemMetaHierarchyTagsList = Array<string>;
-export const TenantsListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TenantsListResultItemMetaHierarchyTagsList>;
+export const TenantsListResultItemMetaHierarchyTagsList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TenantsListResultItemMetaHierarchyTagsList>;
 
 export interface TenantsListResultItemMetaTenantFlags {
   accountCreation: string;
@@ -1961,14 +1933,12 @@ export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTokensRequest" }) as any as S.Schema<ListTokensRequest>;
 
 export type TokensListResultItemConditionRequestIpInList = Array<string>;
-export const TokensListResultItemConditionRequestIpInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensListResultItemConditionRequestIpInList>;
+export const TokensListResultItemConditionRequestIpInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensListResultItemConditionRequestIpInList>;
 
 export type TokensListResultItemConditionRequestIpNotInList = Array<string>;
-export const TokensListResultItemConditionRequestIpNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensListResultItemConditionRequestIpNotInList>;
+export const TokensListResultItemConditionRequestIpNotInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensListResultItemConditionRequestIpNotInList>;
 
 export interface TokensListResultItemConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
@@ -1976,30 +1946,15 @@ export interface TokensListResultItemConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensListResultItemConditionRequestIpNotInList | null;
 }
-export const TokensListResultItemConditionRequestIp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    in: S.optional(S.NullOr(TokensListResultItemConditionRequestIpInList)),
-    notIn: S.optional(
-      S.NullOr(TokensListResultItemConditionRequestIpNotInList).pipe(T.Body("not_in")),
-    ),
-  }),
-).annotate({
-  identifier: "TokensListResultItemConditionRequestIp",
-}) as any as S.Schema<TokensListResultItemConditionRequestIp>;
+export const TokensListResultItemConditionRequestIp =
+  TokensCreateResponseConditionRequestIp as any as S.Schema<TokensListResultItemConditionRequestIp>;
 
 export interface TokensListResultItemCondition {
   /** Client IP restrictions. */
   requestIp?: TokensListResultItemConditionRequestIp | null;
 }
-export const TokensListResultItemCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestIp: S.optional(
-      S.NullOr(TokensListResultItemConditionRequestIp).pipe(T.Body("request_ip")),
-    ),
-  }),
-).annotate({
-  identifier: "TokensListResultItemCondition",
-}) as any as S.Schema<TokensListResultItemCondition>;
+export const TokensListResultItemCondition =
+  TokensCreateResponseCondition as any as S.Schema<TokensListResultItemCondition>;
 
 export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
 export const TokensListResultItemPoliciesItemEffect = S.String;
@@ -2016,18 +1971,14 @@ export const TokensListResultItemPoliciesItemPermissionGroupsItem =
 
 export type TokensListResultItemPoliciesItemPermissionGroupsList =
   Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-export const TokensListResultItemPoliciesItemPermissionGroupsList = /*@__PURE__*/ S.Array(
-  TokensCreateResponsePoliciesItemPermissionGroupsItem,
-) as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsList>;
+export const TokensListResultItemPoliciesItemPermissionGroupsList =
+  TokensCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsList>;
 
 export type TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export const TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
+  TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap as any as S.Schema<TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
 export type TokensListResultItemPoliciesItemResourcesValue =
   | string
@@ -2159,9 +2110,8 @@ export const PatchInviteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchInviteRequest" }) as any as S.Schema<PatchInviteRequest>;
 
 export type InvitesEditResponseRolesList = Array<string>;
-export const InvitesEditResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvitesEditResponseRolesList>;
+export const InvitesEditResponseRolesList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<InvitesEditResponseRolesList>;
 
 export type InvitesEditResponseStatus = "pending" | "accepted" | "rejected" | "expired";
 export const InvitesEditResponseStatus = S.String;
@@ -2233,19 +2183,16 @@ export const PatchUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchUserRequest" }) as any as S.Schema<PatchUserRequest>;
 
 export type EditResponseBetasList = Array<string>;
-export const EditResponseBetasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseBetasList>;
+export const EditResponseBetasList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<EditResponseBetasList>;
 
 export type EditResponseOrganizationsItemPermissionsList = Array<unknown>;
-export const EditResponseOrganizationsItemPermissionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EditResponseOrganizationsItemPermissionsList>;
+export const EditResponseOrganizationsItemPermissionsList =
+  GetResponseOrganizationsItemPermissionsList as any as S.Schema<EditResponseOrganizationsItemPermissionsList>;
 
 export type EditResponseOrganizationsItemRolesList = Array<string>;
-export const EditResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseOrganizationsItemRolesList>;
+export const EditResponseOrganizationsItemRolesList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<EditResponseOrganizationsItemRolesList>;
 
 export type EditResponseOrganizationsItemStatus = "member" | "invited";
 export const EditResponseOrganizationsItemStatus = S.String;
@@ -2352,9 +2299,8 @@ export type SubscriptionsUpdateRequestRatePlanId =
 export const SubscriptionsUpdateRequestRatePlanId = S.String;
 
 export type SubscriptionsUpdateRequestRatePlanSetsList = Array<string>;
-export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
+export const SubscriptionsUpdateRequestRatePlanSetsList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
 
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
@@ -2405,9 +2351,8 @@ export const PutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSubscriptionRequest" }) as any as S.Schema<PutSubscriptionRequest>;
 
 export type PutSubscriptionResponse = unknown;
-export const PutSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutSubscriptionResponse" }) as any as S.Schema<PutSubscriptionResponse>;
+export const PutSubscriptionResponse =
+  GetOrganizationResponse as any as S.Schema<PutSubscriptionResponse>;
 
 export interface PutTokenValueRequest {
   /** Token identifier tag. */
@@ -2422,9 +2367,8 @@ export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTokenValueRequest" }) as any as S.Schema<PutTokenValueRequest>;
 
 export type PutTokenValueResponse = unknown;
-export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutTokenValueResponse" }) as any as S.Schema<PutTokenValueResponse>;
+export const PutTokenValueResponse =
+  GetOrganizationResponse as any as S.Schema<PutTokenValueResponse>;
 
 export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateRequestPoliciesItemEffect = S.String;
@@ -2441,18 +2385,14 @@ export const TokensUpdateRequestPoliciesItemPermissionGroupsItem =
 
 export type TokensUpdateRequestPoliciesItemPermissionGroupsList =
   Array<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
-export const TokensUpdateRequestPoliciesItemPermissionGroupsList = /*@__PURE__*/ S.Array(
-  TokensCreateRequestPoliciesItemPermissionGroupsItem,
-) as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsList>;
+export const TokensUpdateRequestPoliciesItemPermissionGroupsList =
+  TokensCreateRequestPoliciesItemPermissionGroupsList as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsList>;
 
 export type TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export const TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
+  TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
 export type TokensUpdateRequestPoliciesItemResourcesValue =
   | string
@@ -2495,14 +2435,12 @@ export const TokensUpdateRequestPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<TokensUpdateRequestPoliciesList>;
 
 export type TokensUpdateRequestConditionRequestIpInList = Array<string>;
-export const TokensUpdateRequestConditionRequestIpInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensUpdateRequestConditionRequestIpInList>;
+export const TokensUpdateRequestConditionRequestIpInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensUpdateRequestConditionRequestIpInList>;
 
 export type TokensUpdateRequestConditionRequestIpNotInList = Array<string>;
-export const TokensUpdateRequestConditionRequestIpNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensUpdateRequestConditionRequestIpNotInList>;
+export const TokensUpdateRequestConditionRequestIpNotInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensUpdateRequestConditionRequestIpNotInList>;
 
 export interface TokensUpdateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
@@ -2510,26 +2448,15 @@ export interface TokensUpdateRequestConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensUpdateRequestConditionRequestIpNotInList;
 }
-export const TokensUpdateRequestConditionRequestIp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    in: S.optional(TokensUpdateRequestConditionRequestIpInList),
-    notIn: S.optional(TokensUpdateRequestConditionRequestIpNotInList.pipe(T.Body("not_in"))),
-  }),
-).annotate({
-  identifier: "TokensUpdateRequestConditionRequestIp",
-}) as any as S.Schema<TokensUpdateRequestConditionRequestIp>;
+export const TokensUpdateRequestConditionRequestIp =
+  TokensCreateRequestConditionRequestIp as any as S.Schema<TokensUpdateRequestConditionRequestIp>;
 
 export interface TokensUpdateRequestCondition {
   /** Client IP restrictions. */
   requestIp?: TokensUpdateRequestConditionRequestIp;
 }
-export const TokensUpdateRequestCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestIp: S.optional(TokensUpdateRequestConditionRequestIp.pipe(T.Body("request_ip"))),
-  }),
-).annotate({
-  identifier: "TokensUpdateRequestCondition",
-}) as any as S.Schema<TokensUpdateRequestCondition>;
+export const TokensUpdateRequestCondition =
+  TokensCreateRequestCondition as any as S.Schema<TokensUpdateRequestCondition>;
 
 export type TokensUpdateRequestStatus = "active" | "disabled" | "expired";
 export const TokensUpdateRequestStatus = S.String;
@@ -2564,14 +2491,12 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTokenRequest" }) as any as S.Schema<UpdateTokenRequest>;
 
 export type TokensUpdateResponseConditionRequestIpInList = Array<string>;
-export const TokensUpdateResponseConditionRequestIpInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensUpdateResponseConditionRequestIpInList>;
+export const TokensUpdateResponseConditionRequestIpInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensUpdateResponseConditionRequestIpInList>;
 
 export type TokensUpdateResponseConditionRequestIpNotInList = Array<string>;
-export const TokensUpdateResponseConditionRequestIpNotInList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokensUpdateResponseConditionRequestIpNotInList>;
+export const TokensUpdateResponseConditionRequestIpNotInList =
+  TokensCreateRequestConditionRequestIpInList as any as S.Schema<TokensUpdateResponseConditionRequestIpNotInList>;
 
 export interface TokensUpdateResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
@@ -2579,30 +2504,15 @@ export interface TokensUpdateResponseConditionRequestIp {
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: TokensUpdateResponseConditionRequestIpNotInList | null;
 }
-export const TokensUpdateResponseConditionRequestIp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    in: S.optional(S.NullOr(TokensUpdateResponseConditionRequestIpInList)),
-    notIn: S.optional(
-      S.NullOr(TokensUpdateResponseConditionRequestIpNotInList).pipe(T.Body("not_in")),
-    ),
-  }),
-).annotate({
-  identifier: "TokensUpdateResponseConditionRequestIp",
-}) as any as S.Schema<TokensUpdateResponseConditionRequestIp>;
+export const TokensUpdateResponseConditionRequestIp =
+  TokensCreateResponseConditionRequestIp as any as S.Schema<TokensUpdateResponseConditionRequestIp>;
 
 export interface TokensUpdateResponseCondition {
   /** Client IP restrictions. */
   requestIp?: TokensUpdateResponseConditionRequestIp | null;
 }
-export const TokensUpdateResponseCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestIp: S.optional(
-      S.NullOr(TokensUpdateResponseConditionRequestIp).pipe(T.Body("request_ip")),
-    ),
-  }),
-).annotate({
-  identifier: "TokensUpdateResponseCondition",
-}) as any as S.Schema<TokensUpdateResponseCondition>;
+export const TokensUpdateResponseCondition =
+  TokensCreateResponseCondition as any as S.Schema<TokensUpdateResponseCondition>;
 
 export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateResponsePoliciesItemEffect = S.String;
@@ -2619,18 +2529,14 @@ export const TokensUpdateResponsePoliciesItemPermissionGroupsItem =
 
 export type TokensUpdateResponsePoliciesItemPermissionGroupsList =
   Array<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
-export const TokensUpdateResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ S.Array(
-  TokensCreateResponsePoliciesItemPermissionGroupsItem,
-) as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsList>;
+export const TokensUpdateResponsePoliciesItemPermissionGroupsList =
+  TokensCreateResponsePoliciesItemPermissionGroupsList as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsList>;
 
 export type TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap = {
   [key: string]: string | undefined;
 };
 export const TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
+  TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
 export type TokensUpdateResponsePoliciesItemResourcesValue =
   | string

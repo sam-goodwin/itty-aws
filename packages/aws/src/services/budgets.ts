@@ -369,7 +369,7 @@ export const Dimension = S.String;
 
 export type Value = string;
 export type Values = string[];
-export const Values = /*@__PURE__*/ S.Array(S.String);
+export const Values = DimensionValues as any as S.Schema<Values>;
 export type MatchOption =
   | "EQUALS"
   | "ABSENT"
@@ -413,13 +413,7 @@ export interface CostCategoryValues {
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
-export const CostCategoryValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Key: S.optional(S.String),
-    Values: S.optional(Values),
-    MatchOptions: S.optional(MatchOptions),
-  }),
-).annotate({ identifier: "CostCategoryValues" }) as any as S.Schema<CostCategoryValues>;
+export const CostCategoryValues = TagValues as any as S.Schema<CostCategoryValues>;
 export interface Expression {
   Or?: Expression[];
   And?: Expression[];
@@ -613,13 +607,13 @@ export const ActionThreshold = /*@__PURE__*/ S.suspend(() =>
 export type PolicyArn = string;
 export type Role = string;
 export type Roles = string[];
-export const Roles = /*@__PURE__*/ S.Array(S.String);
+export const Roles = DimensionValues as any as S.Schema<Roles>;
 export type Group = string;
 export type Groups = string[];
-export const Groups = /*@__PURE__*/ S.Array(S.String);
+export const Groups = DimensionValues as any as S.Schema<Groups>;
 export type User = string;
 export type Users = string[];
-export const Users = /*@__PURE__*/ S.Array(S.String);
+export const Users = DimensionValues as any as S.Schema<Users>;
 export interface IamActionDefinition {
   PolicyArn: string;
   Roles?: string[];
@@ -637,7 +631,7 @@ export const IamActionDefinition = /*@__PURE__*/ S.suspend(() =>
 export type PolicyId = string;
 export type TargetId = string;
 export type TargetIds = string[];
-export const TargetIds = /*@__PURE__*/ S.Array(S.String);
+export const TargetIds = DimensionValues as any as S.Schema<TargetIds>;
 export interface ScpActionDefinition {
   PolicyId: string;
   TargetIds: string[];
@@ -651,7 +645,7 @@ export const ActionSubType = S.String;
 export type Region = string;
 export type InstanceId = string;
 export type InstanceIds = string[];
-export const InstanceIds = /*@__PURE__*/ S.Array(S.String);
+export const InstanceIds = DimensionValues as any as S.Schema<InstanceIds>;
 export interface SsmActionDefinition {
   ActionSubType: ActionSubType;
   Region: string;
@@ -732,9 +726,8 @@ export const CreateNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNotificationRequest",
 }) as any as S.Schema<CreateNotificationRequest>;
 export interface CreateNotificationResponse {}
-export const CreateNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateNotificationResponse",
-}) as any as S.Schema<CreateNotificationResponse>;
+export const CreateNotificationResponse =
+  CreateBudgetResponse as any as S.Schema<CreateNotificationResponse>;
 export interface CreateSubscriberRequest {
   AccountId: string;
   BudgetName: string;
@@ -750,9 +743,8 @@ export const CreateSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateSubscriberRequest" }) as any as S.Schema<CreateSubscriberRequest>;
 export interface CreateSubscriberResponse {}
-export const CreateSubscriberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSubscriberResponse",
-}) as any as S.Schema<CreateSubscriberResponse>;
+export const CreateSubscriberResponse =
+  CreateBudgetResponse as any as S.Schema<CreateSubscriberResponse>;
 export interface DeleteBudgetRequest {
   AccountId: string;
   BudgetName: string;
@@ -763,9 +755,7 @@ export const DeleteBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteBudgetRequest" }) as any as S.Schema<DeleteBudgetRequest>;
 export interface DeleteBudgetResponse {}
-export const DeleteBudgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBudgetResponse",
-}) as any as S.Schema<DeleteBudgetResponse>;
+export const DeleteBudgetResponse = CreateBudgetResponse as any as S.Schema<DeleteBudgetResponse>;
 export interface DeleteBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -841,9 +831,8 @@ export const DeleteNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteNotificationRequest",
 }) as any as S.Schema<DeleteNotificationRequest>;
 export interface DeleteNotificationResponse {}
-export const DeleteNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotificationResponse",
-}) as any as S.Schema<DeleteNotificationResponse>;
+export const DeleteNotificationResponse =
+  CreateBudgetResponse as any as S.Schema<DeleteNotificationResponse>;
 export interface DeleteSubscriberRequest {
   AccountId: string;
   BudgetName: string;
@@ -859,9 +848,8 @@ export const DeleteSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteSubscriberRequest" }) as any as S.Schema<DeleteSubscriberRequest>;
 export interface DeleteSubscriberResponse {}
-export const DeleteSubscriberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSubscriberResponse",
-}) as any as S.Schema<DeleteSubscriberResponse>;
+export const DeleteSubscriberResponse =
+  CreateBudgetResponse as any as S.Schema<DeleteSubscriberResponse>;
 export interface DescribeBudgetRequest {
   AccountId: string;
   BudgetName: string;
@@ -897,11 +885,8 @@ export interface DescribeBudgetActionResponse {
   BudgetName: string;
   Action: Action;
 }
-export const DescribeBudgetActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.String, BudgetName: S.String, Action: Action }),
-).annotate({
-  identifier: "DescribeBudgetActionResponse",
-}) as any as S.Schema<DescribeBudgetActionResponse>;
+export const DescribeBudgetActionResponse =
+  DeleteBudgetActionResponse as any as S.Schema<DescribeBudgetActionResponse>;
 export type MaxResults = number;
 export interface DescribeBudgetActionHistoriesRequest {
   AccountId: string;
@@ -1009,11 +994,8 @@ export interface DescribeBudgetActionsForBudgetResponse {
   Actions: Action[];
   NextToken?: string;
 }
-export const DescribeBudgetActionsForBudgetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Actions: Actions, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "DescribeBudgetActionsForBudgetResponse",
-}) as any as S.Schema<DescribeBudgetActionsForBudgetResponse>;
+export const DescribeBudgetActionsForBudgetResponse =
+  DescribeBudgetActionsForAccountResponse as any as S.Schema<DescribeBudgetActionsForBudgetResponse>;
 export type MaxResultsBudgetNotifications = number;
 export interface DescribeBudgetNotificationsForAccountRequest {
   AccountId: string;
@@ -1269,11 +1251,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CreateBudgetResponse as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
-export const ResourceTagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTagKeyList = DimensionValues as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   ResourceTagKeys: string[];
@@ -1284,9 +1264,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = CreateBudgetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBudgetRequest {
   AccountId: string;
   NewBudget: Budget;
@@ -1297,9 +1275,7 @@ export const UpdateBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateBudgetRequest" }) as any as S.Schema<UpdateBudgetRequest>;
 export interface UpdateBudgetResponse {}
-export const UpdateBudgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateBudgetResponse",
-}) as any as S.Schema<UpdateBudgetResponse>;
+export const UpdateBudgetResponse = CreateBudgetResponse as any as S.Schema<UpdateBudgetResponse>;
 export interface UpdateBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -1354,9 +1330,8 @@ export const UpdateNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNotificationRequest",
 }) as any as S.Schema<UpdateNotificationRequest>;
 export interface UpdateNotificationResponse {}
-export const UpdateNotificationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNotificationResponse",
-}) as any as S.Schema<UpdateNotificationResponse>;
+export const UpdateNotificationResponse =
+  CreateBudgetResponse as any as S.Schema<UpdateNotificationResponse>;
 export interface UpdateSubscriberRequest {
   AccountId: string;
   BudgetName: string;
@@ -1374,9 +1349,8 @@ export const UpdateSubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateSubscriberRequest" }) as any as S.Schema<UpdateSubscriberRequest>;
 export interface UpdateSubscriberResponse {}
-export const UpdateSubscriberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSubscriberResponse",
-}) as any as S.Schema<UpdateSubscriberResponse>;
+export const UpdateSubscriberResponse =
+  CreateBudgetResponse as any as S.Schema<UpdateSubscriberResponse>;
 export type ErrorMessage = string;
 export type CreateBudgetError =
   | AccessDeniedException

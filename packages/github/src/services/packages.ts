@@ -140,9 +140,8 @@ export const DeletePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageForUserRequest>;
 
 export interface DeletePackageForUserResponse {}
-export const DeletePackageForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePackageForUserResponse",
-}) as any as S.Schema<DeletePackageForUserResponse>;
+export const DeletePackageForUserResponse =
+  DeletePackageForOrgResponse as any as S.Schema<DeletePackageForUserResponse>;
 
 export type DeletePackageVersionForAuthenticatedUserRequestPackageType =
   | "npm"
@@ -178,11 +177,8 @@ export const DeletePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeletePackageVersionForAuthenticatedUserRequest>;
 
 export interface DeletePackageVersionForAuthenticatedUserResponse {}
-export const DeletePackageVersionForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePackageVersionForAuthenticatedUserResponse",
-}) as any as S.Schema<DeletePackageVersionForAuthenticatedUserResponse>;
+export const DeletePackageVersionForAuthenticatedUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForAuthenticatedUserResponse>;
 
 export type DeletePackageVersionForOrgRequestPackageType =
   | "npm"
@@ -221,11 +217,8 @@ export const DeletePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageVersionForOrgRequest>;
 
 export interface DeletePackageVersionForOrgResponse {}
-export const DeletePackageVersionForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePackageVersionForOrgResponse",
-}) as any as S.Schema<DeletePackageVersionForOrgResponse>;
+export const DeletePackageVersionForOrgResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForOrgResponse>;
 
 export type DeletePackageVersionForUserRequestPackageType =
   | "npm"
@@ -264,11 +257,8 @@ export const DeletePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageVersionForUserRequest>;
 
 export interface DeletePackageVersionForUserResponse {}
-export const DeletePackageVersionForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePackageVersionForUserResponse",
-}) as any as S.Schema<DeletePackageVersionForUserResponse>;
+export const DeletePackageVersionForUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForUserResponse>;
 
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType =
   | "npm"
@@ -347,9 +337,8 @@ export const PackageVersionMetadataContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PackageVersionMetadataContainer>;
 
 export type PackageVersionMetadataDockerTagList = Array<string>;
-export const PackageVersionMetadataDockerTagList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PackageVersionMetadataDockerTagList>;
+export const PackageVersionMetadataDockerTagList =
+  PackageVersionMetadataContainerTagsList as any as S.Schema<PackageVersionMetadataDockerTagList>;
 
 export interface PackageVersionMetadataDocker {
   tag?: PackageVersionMetadataDockerTagList;
@@ -517,17 +506,13 @@ export const GetAllPackageVersionsForPackageOwnedByUserRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserRequest>;
 
 export type GetAllPackageVersionsForPackageOwnedByUserResponseBodyList = Array<PackageVersion>;
-export const GetAllPackageVersionsForPackageOwnedByUserResponseBodyList = /*@__PURE__*/ S.Array(
-  PackageVersion,
-) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponseBodyList>;
+export const GetAllPackageVersionsForPackageOwnedByUserResponseBodyList =
+  GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponseBodyList>;
 
 export type GetAllPackageVersionsForPackageOwnedByUserResponse =
   GetAllPackageVersionsForPackageOwnedByUserResponseBodyList;
-export const GetAllPackageVersionsForPackageOwnedByUserResponse = /*@__PURE__*/ S.suspend(() =>
-  GetAllPackageVersionsForPackageOwnedByUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetAllPackageVersionsForPackageOwnedByUserResponse",
-}) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponse>;
+export const GetAllPackageVersionsForPackageOwnedByUserResponse =
+  GetAllPackageVersionsForPackageOwnedByOrgResponse as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponse>;
 
 export type GetPackageForAuthenticatedUserRequestPackageType =
   | "npm"
@@ -618,9 +603,8 @@ export type SimpleUser = NullableSimpleUser;
 export const SimpleUser = NullableSimpleUser;
 
 export type NullableMinimalRepositoryTopicsList = Array<string>;
-export const NullableMinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NullableMinimalRepositoryTopicsList>;
+export const NullableMinimalRepositoryTopicsList =
+  PackageVersionMetadataContainerTagsList as any as S.Schema<NullableMinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableMinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -1340,9 +1324,7 @@ export const ListDockerMigrationConflictingPackagesForOrganizationRequest = /*@_
 
 export type ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList = Array<Package>;
 export const ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    Package,
-  ) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList>;
+  ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList>;
 
 export type ListDockerMigrationConflictingPackagesForOrganizationResponse =
   ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList;
@@ -1412,17 +1394,13 @@ export const ListPackagesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListPackagesForAuthenticatedUserRequest>;
 
 export type ListPackagesForAuthenticatedUserResponseBodyList = Array<Package>;
-export const ListPackagesForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Package,
-) as any as S.Schema<ListPackagesForAuthenticatedUserResponseBodyList>;
+export const ListPackagesForAuthenticatedUserResponseBodyList =
+  ListDockerMigrationConflictingPackagesForUserResponseBodyList as any as S.Schema<ListPackagesForAuthenticatedUserResponseBodyList>;
 
 export type ListPackagesForAuthenticatedUserResponse =
   ListPackagesForAuthenticatedUserResponseBodyList;
-export const ListPackagesForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPackagesForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPackagesForAuthenticatedUserResponse",
-}) as any as S.Schema<ListPackagesForAuthenticatedUserResponse>;
+export const ListPackagesForAuthenticatedUserResponse =
+  ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForAuthenticatedUserResponse>;
 
 export type ListPackagesForOrganizationRequestPackageType =
   | "npm"
@@ -1461,16 +1439,12 @@ export const ListPackagesForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackagesForOrganizationRequest>;
 
 export type ListPackagesForOrganizationResponseBodyList = Array<Package>;
-export const ListPackagesForOrganizationResponseBodyList = /*@__PURE__*/ S.Array(
-  Package,
-) as any as S.Schema<ListPackagesForOrganizationResponseBodyList>;
+export const ListPackagesForOrganizationResponseBodyList =
+  ListDockerMigrationConflictingPackagesForUserResponseBodyList as any as S.Schema<ListPackagesForOrganizationResponseBodyList>;
 
 export type ListPackagesForOrganizationResponse = ListPackagesForOrganizationResponseBodyList;
-export const ListPackagesForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPackagesForOrganizationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPackagesForOrganizationResponse",
-}) as any as S.Schema<ListPackagesForOrganizationResponse>;
+export const ListPackagesForOrganizationResponse =
+  ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForOrganizationResponse>;
 
 export type ListPackagesForUserRequestPackageType =
   | "npm"
@@ -1509,16 +1483,12 @@ export const ListPackagesForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPackagesForUserRequest>;
 
 export type ListPackagesForUserResponseBodyList = Array<Package>;
-export const ListPackagesForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  Package,
-) as any as S.Schema<ListPackagesForUserResponseBodyList>;
+export const ListPackagesForUserResponseBodyList =
+  ListDockerMigrationConflictingPackagesForUserResponseBodyList as any as S.Schema<ListPackagesForUserResponseBodyList>;
 
 export type ListPackagesForUserResponse = ListPackagesForUserResponseBodyList;
-export const ListPackagesForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPackagesForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPackagesForUserResponse",
-}) as any as S.Schema<ListPackagesForUserResponse>;
+export const ListPackagesForUserResponse =
+  ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForUserResponse>;
 
 export type RestorePackageForAuthenticatedUserRequestPackageType =
   | "npm"
@@ -1554,11 +1524,8 @@ export const RestorePackageForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RestorePackageForAuthenticatedUserRequest>;
 
 export interface RestorePackageForAuthenticatedUserResponse {}
-export const RestorePackageForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestorePackageForAuthenticatedUserResponse",
-}) as any as S.Schema<RestorePackageForAuthenticatedUserResponse>;
+export const RestorePackageForAuthenticatedUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageForAuthenticatedUserResponse>;
 
 export type RestorePackageForOrgRequestPackageType =
   | "npm"
@@ -1597,9 +1564,8 @@ export const RestorePackageForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageForOrgRequest>;
 
 export interface RestorePackageForOrgResponse {}
-export const RestorePackageForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestorePackageForOrgResponse",
-}) as any as S.Schema<RestorePackageForOrgResponse>;
+export const RestorePackageForOrgResponse =
+  DeletePackageForOrgResponse as any as S.Schema<RestorePackageForOrgResponse>;
 
 export type RestorePackageForUserRequestPackageType =
   | "npm"
@@ -1638,9 +1604,8 @@ export const RestorePackageForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageForUserRequest>;
 
 export interface RestorePackageForUserResponse {}
-export const RestorePackageForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestorePackageForUserResponse",
-}) as any as S.Schema<RestorePackageForUserResponse>;
+export const RestorePackageForUserResponse =
+  DeletePackageForOrgResponse as any as S.Schema<RestorePackageForUserResponse>;
 
 export type RestorePackageVersionForAuthenticatedUserRequestPackageType =
   | "npm"
@@ -1676,11 +1641,8 @@ export const RestorePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RestorePackageVersionForAuthenticatedUserRequest>;
 
 export interface RestorePackageVersionForAuthenticatedUserResponse {}
-export const RestorePackageVersionForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestorePackageVersionForAuthenticatedUserResponse",
-}) as any as S.Schema<RestorePackageVersionForAuthenticatedUserResponse>;
+export const RestorePackageVersionForAuthenticatedUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForAuthenticatedUserResponse>;
 
 export type RestorePackageVersionForOrgRequestPackageType =
   | "npm"
@@ -1719,11 +1681,8 @@ export const RestorePackageVersionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageVersionForOrgRequest>;
 
 export interface RestorePackageVersionForOrgResponse {}
-export const RestorePackageVersionForOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestorePackageVersionForOrgResponse",
-}) as any as S.Schema<RestorePackageVersionForOrgResponse>;
+export const RestorePackageVersionForOrgResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForOrgResponse>;
 
 export type RestorePackageVersionForUserRequestPackageType =
   | "npm"
@@ -1762,11 +1721,8 @@ export const RestorePackageVersionForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorePackageVersionForUserRequest>;
 
 export interface RestorePackageVersionForUserResponse {}
-export const RestorePackageVersionForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestorePackageVersionForUserResponse",
-}) as any as S.Schema<RestorePackageVersionForUserResponse>;
+export const RestorePackageVersionForUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForUserResponse>;
 
 export type DeletePackageForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Delete a package for the authenticated user Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance. OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)." */

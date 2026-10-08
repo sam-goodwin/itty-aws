@@ -186,10 +186,8 @@ export const CreateTransferResponseBodyCase0Destination =
 
 /** Custom metadata attached to the transfer. */
 export type CreateTransferResponseBodyCase0MetadataMap = { [key: string]: unknown | undefined };
-export const CreateTransferResponseBodyCase0MetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTransferResponseBodyCase0MetadataMap>;
+export const CreateTransferResponseBodyCase0MetadataMap =
+  CreateTransferRequestMetadataMap as any as S.Schema<CreateTransferResponseBodyCase0MetadataMap>;
 
 /** The object type. Discriminates the create response from a send or a claim link. */
 export type CreateTransferResponseBodyCase0Object = "transfer";
@@ -481,10 +479,8 @@ export const GetTransferResponseDestination =
 
 /** Custom metadata attached to the transfer. */
 export type GetTransferResponseMetadataMap = { [key: string]: unknown | undefined };
-export const GetTransferResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetTransferResponseMetadataMap>;
+export const GetTransferResponseMetadataMap =
+  CreateTransferRequestMetadataMap as any as S.Schema<GetTransferResponseMetadataMap>;
 
 /** The object type. Discriminates the create response from a send or a claim link. */
 export type GetTransferResponseObject = "transfer";
@@ -655,10 +651,8 @@ export const ListTransferResponseDataItemCreatedByUser =
 
 /** Custom metadata attached to the transfer. */
 export type ListTransferResponseDataItemMetadataMap = { [key: string]: unknown | undefined };
-export const ListTransferResponseDataItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListTransferResponseDataItemMetadataMap>;
+export const ListTransferResponseDataItemMetadataMap =
+  CreateTransferRequestMetadataMap as any as S.Schema<ListTransferResponseDataItemMetadataMap>;
 
 /** The object type. */
 export type ListTransferResponseDataItemObject = "transfer";

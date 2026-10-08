@@ -219,11 +219,8 @@ export const DeleteServiceQuotaIncreaseRequestFromTemplateRequest = /*@__PURE__*
   identifier: "DeleteServiceQuotaIncreaseRequestFromTemplateRequest",
 }) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateRequest>;
 export interface DeleteServiceQuotaIncreaseRequestFromTemplateResponse {}
-export const DeleteServiceQuotaIncreaseRequestFromTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceQuotaIncreaseRequestFromTemplateResponse",
-}) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateResponse>;
+export const DeleteServiceQuotaIncreaseRequestFromTemplateResponse =
+  AssociateServiceQuotaTemplateResponse as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateResponse>;
 export interface DisassociateServiceQuotaTemplateRequest {}
 export const DisassociateServiceQuotaTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -231,11 +228,8 @@ export const DisassociateServiceQuotaTemplateRequest = /*@__PURE__*/ S.suspend((
   identifier: "DisassociateServiceQuotaTemplateRequest",
 }) as any as S.Schema<DisassociateServiceQuotaTemplateRequest>;
 export interface DisassociateServiceQuotaTemplateResponse {}
-export const DisassociateServiceQuotaTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateServiceQuotaTemplateResponse",
-}) as any as S.Schema<DisassociateServiceQuotaTemplateResponse>;
+export const DisassociateServiceQuotaTemplateResponse =
+  AssociateServiceQuotaTemplateResponse as any as S.Schema<DisassociateServiceQuotaTemplateResponse>;
 export interface GetAssociationForServiceQuotaTemplateRequest {}
 export const GetAssociationForServiceQuotaTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -749,14 +743,8 @@ export interface ListRequestedServiceQuotaChangeHistoryByQuotaResponse {
   NextToken?: string;
   RequestedQuotas?: RequestedServiceQuotaChange[];
 }
-export const ListRequestedServiceQuotaChangeHistoryByQuotaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    RequestedQuotas: S.optional(RequestedServiceQuotaChangeHistoryListDefinition),
-  }),
-).annotate({
-  identifier: "ListRequestedServiceQuotaChangeHistoryByQuotaResponse",
-}) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaResponse>;
+export const ListRequestedServiceQuotaChangeHistoryByQuotaResponse =
+  ListRequestedServiceQuotaChangeHistoryResponse as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaResponse>;
 export interface ListServiceQuotaIncreaseRequestsInTemplateRequest {
   ServiceCode?: string;
   AwsRegion?: string;
@@ -811,11 +799,8 @@ export interface ListServiceQuotasResponse {
   NextToken?: string;
   Quotas?: ServiceQuota[];
 }
-export const ListServiceQuotasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ NextToken: S.optional(S.String), Quotas: S.optional(ServiceQuotaListDefinition) }),
-).annotate({
-  identifier: "ListServiceQuotasResponse",
-}) as any as S.Schema<ListServiceQuotasResponse>;
+export const ListServiceQuotasResponse =
+  ListAWSDefaultServiceQuotasResponse as any as S.Schema<ListServiceQuotasResponse>;
 export interface ListServicesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -889,13 +874,8 @@ export const PutServiceQuotaIncreaseRequestIntoTemplateRequest = /*@__PURE__*/ S
 export interface PutServiceQuotaIncreaseRequestIntoTemplateResponse {
   ServiceQuotaIncreaseRequestInTemplate?: ServiceQuotaIncreaseRequestInTemplate;
 }
-export const PutServiceQuotaIncreaseRequestIntoTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ServiceQuotaIncreaseRequestInTemplate: S.optional(ServiceQuotaIncreaseRequestInTemplate),
-  }),
-).annotate({
-  identifier: "PutServiceQuotaIncreaseRequestIntoTemplateResponse",
-}) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateResponse>;
+export const PutServiceQuotaIncreaseRequestIntoTemplateResponse =
+  GetServiceQuotaIncreaseRequestFromTemplateResponse as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateResponse>;
 export type SupportCaseAllowed = boolean;
 export interface RequestServiceQuotaIncreaseRequest {
   ServiceCode: string;
@@ -918,11 +898,8 @@ export const RequestServiceQuotaIncreaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RequestServiceQuotaIncreaseResponse {
   RequestedQuota?: RequestedServiceQuotaChange;
 }
-export const RequestServiceQuotaIncreaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RequestedQuota: S.optional(RequestedServiceQuotaChange) }),
-).annotate({
-  identifier: "RequestServiceQuotaIncreaseResponse",
-}) as any as S.Schema<RequestServiceQuotaIncreaseResponse>;
+export const RequestServiceQuotaIncreaseResponse =
+  GetRequestedServiceQuotaChangeResponse as any as S.Schema<RequestServiceQuotaIncreaseResponse>;
 export type ExcludedLimit = string;
 export type ExcludedQuotaList = string[];
 export const ExcludedQuotaList = /*@__PURE__*/ S.Array(S.String);
@@ -948,9 +925,8 @@ export const StartAutoManagementRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartAutoManagementRequest",
 }) as any as S.Schema<StartAutoManagementRequest>;
 export interface StartAutoManagementResponse {}
-export const StartAutoManagementResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartAutoManagementResponse",
-}) as any as S.Schema<StartAutoManagementResponse>;
+export const StartAutoManagementResponse =
+  CreateSupportCaseResponse as any as S.Schema<StartAutoManagementResponse>;
 export interface StartQuotaUtilizationReportRequest {}
 export const StartQuotaUtilizationReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -979,11 +955,10 @@ export const StopAutoManagementRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopAutoManagementRequest",
 }) as any as S.Schema<StopAutoManagementRequest>;
 export interface StopAutoManagementResponse {}
-export const StopAutoManagementResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopAutoManagementResponse",
-}) as any as S.Schema<StopAutoManagementResponse>;
+export const StopAutoManagementResponse =
+  CreateSupportCaseResponse as any as S.Schema<StopAutoManagementResponse>;
 export type InputTags = Tag[];
-export const InputTags = /*@__PURE__*/ S.Array(Tag);
+export const InputTags = OutputTags as any as S.Schema<InputTags>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -994,11 +969,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  CreateSupportCaseResponse as any as S.Schema<TagResourceResponse>;
 export type InputTagKeys = string[];
-export const InputTagKeys = /*@__PURE__*/ S.Array(S.String);
+export const InputTagKeys = ExcludedQuotaList as any as S.Schema<InputTagKeys>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -1009,9 +983,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  CreateSupportCaseResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAutoManagementRequest {
   OptInType?: OptInType;
   NotificationArn?: string;
@@ -1027,9 +1000,8 @@ export const UpdateAutoManagementRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAutoManagementRequest",
 }) as any as S.Schema<UpdateAutoManagementRequest>;
 export interface UpdateAutoManagementResponse {}
-export const UpdateAutoManagementResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateAutoManagementResponse",
-}) as any as S.Schema<UpdateAutoManagementResponse>;
+export const UpdateAutoManagementResponse =
+  CreateSupportCaseResponse as any as S.Schema<UpdateAutoManagementResponse>;
 export type ExceptionMessage = string;
 export type AssociateServiceQuotaTemplateError =
   | AccessDeniedException

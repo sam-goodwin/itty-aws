@@ -156,7 +156,7 @@ export const Fields = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldValue.
 export type Exprs = { [key: string]: string | undefined };
 export const Exprs = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Highlights = { [key: string]: string | undefined };
-export const Highlights = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Highlights = Exprs as any as S.Schema<Highlights>;
 export interface Hit {
   id?: string;
   fields?: { [key: string]: string[] | undefined };
@@ -270,9 +270,7 @@ export interface SuggestStatus {
   timems?: number;
   rid?: string;
 }
-export const SuggestStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ timems: S.optional(S.Number), rid: S.optional(S.String) }),
-).annotate({ identifier: "SuggestStatus" }) as any as S.Schema<SuggestStatus>;
+export const SuggestStatus = SearchStatus as any as S.Schema<SuggestStatus>;
 export interface SuggestionMatch {
   suggestion?: string;
   score?: number;

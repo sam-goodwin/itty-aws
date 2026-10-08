@@ -132,9 +132,8 @@ export const GetImagesActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetImagesActionResponseActionResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
-export const GetImagesActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  ChangeImageProtectionResponseActionResourcesItem,
-) as any as S.Schema<GetImagesActionResponseActionResourcesList>;
+export const GetImagesActionResponseActionResourcesList =
+  ChangeImageProtectionResponseActionResourcesList as any as S.Schema<GetImagesActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetImagesActionResponseActionError = ChangeImageProtectionResponseActionError;
@@ -252,9 +251,8 @@ export const ListImageActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListImageActionsResponseActionsItemResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
-export const ListImageActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ChangeImageProtectionResponseActionResourcesItem,
-) as any as S.Schema<ListImageActionsResponseActionsItemResourcesList>;
+export const ListImageActionsResponseActionsItemResourcesList =
+  ChangeImageProtectionResponseActionResourcesList as any as S.Schema<ListImageActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListImageActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;
@@ -424,9 +422,8 @@ export const ListImagesActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListImagesActionsResponseActionsItemResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
-export const ListImagesActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ChangeImageProtectionResponseActionResourcesItem,
-) as any as S.Schema<ListImagesActionsResponseActionsItemResourcesList>;
+export const ListImagesActionsResponseActionsItemResourcesList =
+  ChangeImageProtectionResponseActionResourcesList as any as S.Schema<ListImagesActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListImagesActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;

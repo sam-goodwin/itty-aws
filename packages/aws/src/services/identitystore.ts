@@ -251,15 +251,9 @@ export interface PhoneNumber {
   Type?: string | redacted.Redacted<string>;
   Primary?: boolean;
 }
-export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Value: S.optional(SensitiveString),
-    Type: S.optional(SensitiveString),
-    Primary: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
+export const PhoneNumber = Email as any as S.Schema<PhoneNumber>;
 export type PhoneNumbers = PhoneNumber[];
-export const PhoneNumbers = /*@__PURE__*/ S.Array(PhoneNumber);
+export const PhoneNumbers = Emails as any as S.Schema<PhoneNumbers>;
 export interface Photo {
   Value: string | redacted.Redacted<string>;
   Type?: string | redacted.Redacted<string>;
@@ -281,15 +275,9 @@ export interface Role {
   Type?: string | redacted.Redacted<string>;
   Primary?: boolean;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Value: S.optional(SensitiveString),
-    Type: S.optional(SensitiveString),
-    Primary: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
+export const Role = Email as any as S.Schema<Role>;
 export type Roles = Role[];
-export const Roles = /*@__PURE__*/ S.Array(Role);
+export const Roles = Emails as any as S.Schema<Roles>;
 export type ExtensionName = string;
 export type AttributeValue = unknown;
 export type Extensions = { [key: string]: any | undefined };
@@ -373,9 +361,8 @@ export const DeleteGroupMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGroupMembershipRequest",
 }) as any as S.Schema<DeleteGroupMembershipRequest>;
 export interface DeleteGroupMembershipResponse {}
-export const DeleteGroupMembershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupMembershipResponse",
-}) as any as S.Schema<DeleteGroupMembershipResponse>;
+export const DeleteGroupMembershipResponse =
+  DeleteGroupResponse as any as S.Schema<DeleteGroupMembershipResponse>;
 export interface DeleteUserRequest {
   IdentityStoreId: string;
   UserId: string;
@@ -387,9 +374,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteGroupResponse as any as S.Schema<DeleteUserResponse>;
 export interface DescribeGroupRequest {
   IdentityStoreId: string;
   GroupId: string;
@@ -492,7 +477,7 @@ export type VpcIdList = string[];
 export const VpcIdList = /*@__PURE__*/ S.Array(S.String);
 export type IpCidrType = string;
 export type IpCidrList = string[];
-export const IpCidrList = /*@__PURE__*/ S.Array(S.String);
+export const IpCidrList = VpcIdList as any as S.Schema<IpCidrList>;
 export interface NetworkConfigurationDetails {
   VpceAccessRequired: boolean;
   ApiRestrictSourceVpcs?: string[];
@@ -524,7 +509,7 @@ export const DescribeIdentityStoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeIdentityStoreResponse",
 }) as any as S.Schema<DescribeIdentityStoreResponse>;
 export type ExtensionNames = string[];
-export const ExtensionNames = /*@__PURE__*/ S.Array(S.String);
+export const ExtensionNames = VpcIdList as any as S.Schema<ExtensionNames>;
 export interface DescribeUserRequest {
   IdentityStoreId: string;
   UserId: string;
@@ -651,11 +636,8 @@ export interface GetGroupMembershipIdResponse {
   MembershipId: string;
   MembershipArn: string;
 }
-export const GetGroupMembershipIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, MembershipId: S.String, MembershipArn: S.String }),
-).annotate({
-  identifier: "GetGroupMembershipIdResponse",
-}) as any as S.Schema<GetGroupMembershipIdResponse>;
+export const GetGroupMembershipIdResponse =
+  CreateGroupMembershipResponse as any as S.Schema<GetGroupMembershipIdResponse>;
 export interface GetUserIdRequest {
   IdentityStoreId: string;
   AlternateIdentifier: AlternateIdentifier;
@@ -674,7 +656,7 @@ export const GetUserIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityStoreId: S.String, UserId: S.String, UserArn: S.String }),
 ).annotate({ identifier: "GetUserIdResponse" }) as any as S.Schema<GetUserIdResponse>;
 export type GroupIds = string[];
-export const GroupIds = /*@__PURE__*/ S.Array(S.String);
+export const GroupIds = VpcIdList as any as S.Schema<GroupIds>;
 export interface IsMemberInGroupsRequest {
   IdentityStoreId: string;
   MemberId: MemberId;
@@ -782,11 +764,8 @@ export interface ListGroupMembershipsForMemberResponse {
   GroupMemberships: GroupMembership[];
   NextToken?: string;
 }
-export const ListGroupMembershipsForMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GroupMemberships: GroupMemberships, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListGroupMembershipsForMemberResponse",
-}) as any as S.Schema<ListGroupMembershipsForMemberResponse>;
+export const ListGroupMembershipsForMemberResponse =
+  ListGroupMembershipsResponse as any as S.Schema<ListGroupMembershipsForMemberResponse>;
 export interface Filter {
   AttributePath: string;
   AttributeValue: string | redacted.Redacted<string>;
@@ -823,21 +802,7 @@ export interface Group {
   CreatedBy?: string;
   UpdatedBy?: string;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    GroupId: S.String,
-    GroupArn: S.String,
-    Revision: S.String,
-    DisplayName: S.optional(SensitiveString),
-    ExternalIds: S.optional(ExternalIds),
-    Description: S.optional(SensitiveString),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedBy: S.optional(S.String),
-    UpdatedBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
+export const Group = DescribeGroupResponse as any as S.Schema<Group>;
 export type Groups = Group[];
 export const Groups = /*@__PURE__*/ S.Array(Group);
 export interface ListGroupsResponse {
@@ -922,38 +887,7 @@ export interface User {
   UpdatedBy?: string;
   Extensions?: { [key: string]: any | undefined };
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    UserId: S.String,
-    UserArn: S.String,
-    Revision: S.String,
-    UserName: S.optional(SensitiveString),
-    ExternalIds: S.optional(ExternalIds),
-    Name: S.optional(Name),
-    DisplayName: S.optional(SensitiveString),
-    NickName: S.optional(SensitiveString),
-    ProfileUrl: S.optional(SensitiveString),
-    Emails: S.optional(Emails),
-    Addresses: S.optional(Addresses),
-    PhoneNumbers: S.optional(PhoneNumbers),
-    UserType: S.optional(SensitiveString),
-    Title: S.optional(SensitiveString),
-    PreferredLanguage: S.optional(SensitiveString),
-    Locale: S.optional(SensitiveString),
-    Timezone: S.optional(SensitiveString),
-    UserStatus: S.optional(UserStatus),
-    Photos: S.optional(Photos),
-    Website: S.optional(SensitiveString),
-    Birthdate: S.optional(SensitiveString),
-    Roles: S.optional(Roles),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedBy: S.optional(S.String),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedBy: S.optional(S.String),
-    Extensions: S.optional(Extensions),
-  }),
-).annotate({ identifier: "User" }) as any as S.Schema<User>;
+export const User = DescribeUserResponse as any as S.Schema<User>;
 export type Users = User[];
 export const Users = /*@__PURE__*/ S.Array(User);
 export interface ListUsersResponse {
@@ -992,14 +926,7 @@ export interface UpdateGroupResponse {
   GroupArn: string;
   Revision: string;
 }
-export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    GroupId: S.String,
-    GroupArn: S.String,
-    Revision: S.String,
-  }),
-).annotate({ identifier: "UpdateGroupResponse" }) as any as S.Schema<UpdateGroupResponse>;
+export const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
 export interface NetworkConfiguration {
   VpceAccessRequired: boolean;
   ApiRestrictSourceVpcs?: string[];
@@ -1055,9 +982,7 @@ export interface UpdateUserResponse {
   UserArn: string;
   Revision: string;
 }
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, UserId: S.String, UserArn: S.String, Revision: S.String }),
-).annotate({ identifier: "UpdateUserResponse" }) as any as S.Schema<UpdateUserResponse>;
+export const UpdateUserResponse = CreateUserResponse as any as S.Schema<UpdateUserResponse>;
 export type ExceptionMessage = string;
 export type RequestId = string;
 export type ConflictExceptionReason =

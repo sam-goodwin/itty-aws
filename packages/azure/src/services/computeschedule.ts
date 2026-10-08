@@ -265,10 +265,8 @@ export const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ S.Record(
 export type ResourceProvisionPayloadResourceOverridesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ResourceProvisionPayloadResourceOverridesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourceProvisionPayloadResourceOverridesItemMap>;
+export const ResourceProvisionPayloadResourceOverridesItemMap =
+  ResourceProvisionPayloadBaseProfileMap as any as S.Schema<ResourceProvisionPayloadResourceOverridesItemMap>;
 
 /** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
 export type ResourceProvisionPayloadResourceOverridesList =
@@ -348,9 +346,8 @@ export const ScheduledActionsVirtualMachinesExecuteCreateRequest = /*@__PURE__*/
 
 /** The results from the start request if no errors exist */
 export type CreateResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const CreateResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<CreateResourceOperationResponseResultsList>;
+export const CreateResourceOperationResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<CreateResourceOperationResponseResultsList>;
 
 /** The response from a create request */
 export interface CreateResourceOperationResponse {
@@ -424,9 +421,8 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest = /*@__PURE
 
 /** The results from the deallocate request if no errors exist */
 export type DeallocateResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const DeallocateResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<DeallocateResourceOperationResponseResultsList>;
+export const DeallocateResourceOperationResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<DeallocateResourceOperationResponseResultsList>;
 
 /** The response from a deallocate request */
 export interface DeallocateResourceOperationResponse {
@@ -439,16 +435,8 @@ export interface DeallocateResourceOperationResponse {
   /** The results from the deallocate request if no errors exist */
   results?: DeallocateResourceOperationResponseResultsList;
 }
-export const DeallocateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-    location: S.String,
-    results: S.optional(DeallocateResourceOperationResponseResultsList),
-  }),
-).annotate({
-  identifier: "DeallocateResourceOperationResponse",
-}) as any as S.Schema<DeallocateResourceOperationResponse>;
+export const DeallocateResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<DeallocateResourceOperationResponse>;
 
 export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -486,9 +474,8 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteRequest = /*@__PURE__*/
 
 /** The results from the start request if no errors exist */
 export type DeleteResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const DeleteResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<DeleteResourceOperationResponseResultsList>;
+export const DeleteResourceOperationResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<DeleteResourceOperationResponseResultsList>;
 
 /** The response from a delete request */
 export interface DeleteResourceOperationResponse {
@@ -501,16 +488,8 @@ export interface DeleteResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: DeleteResourceOperationResponseResultsList;
 }
-export const DeleteResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-    location: S.String,
-    results: S.optional(DeleteResourceOperationResponseResultsList),
-  }),
-).annotate({
-  identifier: "DeleteResourceOperationResponse",
-}) as any as S.Schema<DeleteResourceOperationResponse>;
+export const DeleteResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<DeleteResourceOperationResponse>;
 
 export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -545,9 +524,8 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateRequest = /*@__PURE_
 
 /** The results from the Hibernate request if no errors exist */
 export type HibernateResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const HibernateResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<HibernateResourceOperationResponseResultsList>;
+export const HibernateResourceOperationResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<HibernateResourceOperationResponseResultsList>;
 
 /** The response from a Hibernate request */
 export interface HibernateResourceOperationResponse {
@@ -560,16 +538,8 @@ export interface HibernateResourceOperationResponse {
   /** The results from the Hibernate request if no errors exist */
   results?: HibernateResourceOperationResponseResultsList;
 }
-export const HibernateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-    location: S.String,
-    results: S.optional(HibernateResourceOperationResponseResultsList),
-  }),
-).annotate({
-  identifier: "HibernateResourceOperationResponse",
-}) as any as S.Schema<HibernateResourceOperationResponse>;
+export const HibernateResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<HibernateResourceOperationResponse>;
 
 export interface ScheduledActionsVirtualMachinesExecuteStartRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -604,9 +574,8 @@ export const ScheduledActionsVirtualMachinesExecuteStartRequest = /*@__PURE__*/ 
 
 /** The results from the start request if no errors exist */
 export type StartResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const StartResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<StartResourceOperationResponseResultsList>;
+export const StartResourceOperationResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<StartResourceOperationResponseResultsList>;
 
 /** The response from a start request */
 export interface StartResourceOperationResponse {
@@ -619,24 +588,14 @@ export interface StartResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: StartResourceOperationResponseResultsList;
 }
-export const StartResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-    location: S.String,
-    results: S.optional(StartResourceOperationResponseResultsList),
-  }),
-).annotate({
-  identifier: "StartResourceOperationResponse",
-}) as any as S.Schema<StartResourceOperationResponse>;
+export const StartResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<StartResourceOperationResponse>;
 
 /** The list of operation ids to query errors of */
 export type ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
   Array<string>;
 export const ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList>;
+  ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList>;
 
 export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -748,9 +707,7 @@ export const GetOperationErrorsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
   Array<string>;
 export const ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList>;
+  ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList>;
 
 export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -783,9 +740,8 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusRequest = /*@__PUR
 
 /** An array of resource operations based on their operation ids */
 export type GetOperationStatusResponseResultsList = Array<ResourceOperation>;
-export const GetOperationStatusResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<GetOperationStatusResponseResultsList>;
+export const GetOperationStatusResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<GetOperationStatusResponseResultsList>;
 
 /** This is the response from a get operations status request */
 export interface GetOperationStatusResponse {

@@ -243,17 +243,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList =
   Array<LoadBalancerConfiguration>;
 export const AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList =
-  /*@__PURE__*/ S.Array(
-    LoadBalancerConfiguration,
-  ) as any as S.Schema<AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList>;
+  AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList as any as S.Schema<AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList>;
 
 /** List of multi subnet IP configurations for an AG listener. */
 export type AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList =
   Array<MultiSubnetIpConfiguration>;
 export const AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList =
-  /*@__PURE__*/ S.Array(
-    MultiSubnetIpConfiguration,
-  ) as any as S.Schema<AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList>;
+  AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList as any as S.Schema<AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList>;
 
 /** The properties of an availability group listener. */
 export interface AvailabilityGroupListenerProperties {
@@ -405,11 +401,8 @@ export const DeleteSqlVirtualMachineGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlVirtualMachineGroupRequest>;
 
 export interface DeleteSqlVirtualMachineGroupResponse {}
-export const DeleteSqlVirtualMachineGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSqlVirtualMachineGroupResponse",
-}) as any as S.Schema<DeleteSqlVirtualMachineGroupResponse>;
+export const DeleteSqlVirtualMachineGroupResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<DeleteSqlVirtualMachineGroupResponse>;
 
 export interface FetchSqlVirtualMachineDCAssessmentRequest {
   /** The ID of the target subscription. */
@@ -440,11 +433,8 @@ export const FetchSqlVirtualMachineDCAssessmentRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentRequest>;
 
 export interface FetchSqlVirtualMachineDCAssessmentResponse {}
-export const FetchSqlVirtualMachineDCAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FetchSqlVirtualMachineDCAssessmentResponse",
-}) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentResponse>;
+export const FetchSqlVirtualMachineDCAssessmentResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<FetchSqlVirtualMachineDCAssessmentResponse>;
 
 export interface GetAvailabilityGroupListenerRequest {
   /** The ID of the target subscription. */
@@ -489,17 +479,8 @@ export interface GetAvailabilityGroupListenerResponse {
   /** Resource properties. */
   properties?: AvailabilityGroupListenerProperties;
 }
-export const GetAvailabilityGroupListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AvailabilityGroupListenerProperties),
-  }),
-).annotate({
-  identifier: "GetAvailabilityGroupListenerResponse",
-}) as any as S.Schema<GetAvailabilityGroupListenerResponse>;
+export const GetAvailabilityGroupListenerResponse =
+  AvailabilityGroupListenersCreateOrUpdateResponse as any as S.Schema<GetAvailabilityGroupListenerResponse>;
 
 export interface GetSqlVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -879,9 +860,8 @@ export const SQLStorageSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Logical Unit Numbers for the disks. */
 export type SQLTempDbSettingsLunsList = Array<number>;
-export const SQLTempDbSettingsLunsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SQLTempDbSettingsLunsList>;
+export const SQLTempDbSettingsLunsList =
+  SQLStorageSettingsLunsList as any as S.Schema<SQLTempDbSettingsLunsList>;
 
 /** Set tempDb storage settings for SQL Server. */
 export interface SQLTempDbSettings {
@@ -1245,10 +1225,8 @@ export const GetSqlVirtualMachineGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSqlVirtualMachineGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetSqlVirtualMachineGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetSqlVirtualMachineGroupResponseTagsMap>;
+export const GetSqlVirtualMachineGroupResponseTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<GetSqlVirtualMachineGroupResponseTagsMap>;
 
 /** SQL image sku. */
 export type SqlVmGroupImageSku = "Developer" | "Enterprise";
@@ -1407,17 +1385,8 @@ export interface AvailabilityGroupListener {
   /** Resource properties. */
   properties?: AvailabilityGroupListenerProperties;
 }
-export const AvailabilityGroupListener = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AvailabilityGroupListenerProperties),
-  }),
-).annotate({
-  identifier: "AvailabilityGroupListener",
-}) as any as S.Schema<AvailabilityGroupListener>;
+export const AvailabilityGroupListener =
+  AvailabilityGroupListenersCreateOrUpdateResponse as any as S.Schema<AvailabilityGroupListener>;
 
 /** The AvailabilityGroupListener items on this page */
 export type AvailabilityGroupListenerListResultValueList = Array<AvailabilityGroupListener>;
@@ -1548,10 +1517,8 @@ export const ListSqlVirtualMachineByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type SqlVirtualMachineTagsMap = { [key: string]: string | undefined };
-export const SqlVirtualMachineTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlVirtualMachineTagsMap>;
+export const SqlVirtualMachineTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachineTagsMap>;
 
 /** A SQL virtual machine. */
 export interface SqlVirtualMachine {
@@ -1656,10 +1623,8 @@ export const ListSqlVirtualMachineGroupByResourceGroupRequest = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type SqlVirtualMachineGroupTagsMap = { [key: string]: string | undefined };
-export const SqlVirtualMachineGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlVirtualMachineGroupTagsMap>;
+export const SqlVirtualMachineGroupTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachineGroupTagsMap>;
 
 /** A SQL virtual machine group. */
 export interface SqlVirtualMachineGroup {
@@ -1776,20 +1741,15 @@ export const RedeploySqlVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeploySqlVirtualMachineRequest>;
 
 export interface RedeploySqlVirtualMachineResponse {}
-export const RedeploySqlVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RedeploySqlVirtualMachineResponse",
-}) as any as S.Schema<RedeploySqlVirtualMachineResponse>;
+export const RedeploySqlVirtualMachineResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<RedeploySqlVirtualMachineResponse>;
 
 /** Resource tags. */
 export type SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap>;
+export const SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap>;
 
 /** The properties of a SQL virtual machine group. */
 export interface SqlVirtualMachineGroupPropertiesInput {
@@ -1848,10 +1808,8 @@ export const SqlVirtualMachineGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 export type SqlVirtualMachineGroupsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlVirtualMachineGroupsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponseTagsMap>;
+export const SqlVirtualMachineGroupsCreateOrUpdateResponseTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponseTagsMap>;
 
 export interface SqlVirtualMachineGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1869,26 +1827,13 @@ export interface SqlVirtualMachineGroupsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: SqlVirtualMachineGroupProperties;
 }
-export const SqlVirtualMachineGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlVirtualMachineGroupsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlVirtualMachineGroupProperties),
-  }),
-).annotate({
-  identifier: "SqlVirtualMachineGroupsCreateOrUpdateResponse",
-}) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponse>;
+export const SqlVirtualMachineGroupsCreateOrUpdateResponse =
+  GetSqlVirtualMachineGroupResponse as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type SqlVirtualMachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SqlVirtualMachinesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateRequestTagsMap>;
+export const SqlVirtualMachinesCreateOrUpdateRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachinesCreateOrUpdateRequestTagsMap>;
 
 /** SQL IaaS Agent least privilege mode. */
 export type SqlVirtualMachinePropertiesInputLeastPrivilegeMode = "Enabled" | "NotSet";
@@ -2005,10 +1950,8 @@ export const SqlVirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type SqlVirtualMachinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SqlVirtualMachinesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponseTagsMap>;
+export const SqlVirtualMachinesCreateOrUpdateResponseTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponseTagsMap>;
 
 export interface SqlVirtualMachinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2028,20 +1971,8 @@ export interface SqlVirtualMachinesCreateOrUpdateResponse {
   /** DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server. */
   identity?: ResourceIdentity;
 }
-export const SqlVirtualMachinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlVirtualMachinesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlVirtualMachineProperties),
-    identity: S.optional(ResourceIdentity),
-  }),
-).annotate({
-  identifier: "SqlVirtualMachinesCreateOrUpdateResponse",
-}) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponse>;
+export const SqlVirtualMachinesCreateOrUpdateResponse =
+  GetSqlVirtualMachineResponse as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponse>;
 
 /** SQL VM troubleshooting scenario. */
 export type SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario =
@@ -2142,18 +2073,13 @@ export const StartSqlVirtualMachineAssessmentRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<StartSqlVirtualMachineAssessmentRequest>;
 
 export interface StartSqlVirtualMachineAssessmentResponse {}
-export const StartSqlVirtualMachineAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StartSqlVirtualMachineAssessmentResponse",
-}) as any as S.Schema<StartSqlVirtualMachineAssessmentResponse>;
+export const StartSqlVirtualMachineAssessmentResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<StartSqlVirtualMachineAssessmentResponse>;
 
 /** Resource tags. */
 export type UpdateSqlVirtualMachineRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlVirtualMachineRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlVirtualMachineRequestTagsMap>;
+export const UpdateSqlVirtualMachineRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<UpdateSqlVirtualMachineRequestTagsMap>;
 
 export interface UpdateSqlVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -2185,10 +2111,8 @@ export const UpdateSqlVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlVirtualMachineResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlVirtualMachineResponseTagsMap>;
+export const UpdateSqlVirtualMachineResponseTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<UpdateSqlVirtualMachineResponseTagsMap>;
 
 export interface UpdateSqlVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2208,27 +2132,13 @@ export interface UpdateSqlVirtualMachineResponse {
   /** DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server. */
   identity?: ResourceIdentity;
 }
-export const UpdateSqlVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlVirtualMachineResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlVirtualMachineProperties),
-    identity: S.optional(ResourceIdentity),
-  }),
-).annotate({
-  identifier: "UpdateSqlVirtualMachineResponse",
-}) as any as S.Schema<UpdateSqlVirtualMachineResponse>;
+export const UpdateSqlVirtualMachineResponse =
+  GetSqlVirtualMachineResponse as any as S.Schema<UpdateSqlVirtualMachineResponse>;
 
 /** Resource tags. */
 export type UpdateSqlVirtualMachineGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlVirtualMachineGroupRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlVirtualMachineGroupRequestTagsMap>;
+export const UpdateSqlVirtualMachineGroupRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<UpdateSqlVirtualMachineGroupRequestTagsMap>;
 
 export interface UpdateSqlVirtualMachineGroupRequest {
   /** The ID of the target subscription. */
@@ -2260,10 +2170,8 @@ export const UpdateSqlVirtualMachineGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSqlVirtualMachineGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSqlVirtualMachineGroupResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateSqlVirtualMachineGroupResponseTagsMap>;
+export const UpdateSqlVirtualMachineGroupResponseTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<UpdateSqlVirtualMachineGroupResponseTagsMap>;
 
 export interface UpdateSqlVirtualMachineGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2281,19 +2189,8 @@ export interface UpdateSqlVirtualMachineGroupResponse {
   /** Resource properties. */
   properties?: SqlVirtualMachineGroupProperties;
 }
-export const UpdateSqlVirtualMachineGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateSqlVirtualMachineGroupResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlVirtualMachineGroupProperties),
-  }),
-).annotate({
-  identifier: "UpdateSqlVirtualMachineGroupResponse",
-}) as any as S.Schema<UpdateSqlVirtualMachineGroupResponse>;
+export const UpdateSqlVirtualMachineGroupResponse =
+  GetSqlVirtualMachineGroupResponse as any as S.Schema<UpdateSqlVirtualMachineGroupResponse>;
 
 export type AvailabilityGroupListenersCreateOrUpdateError = AzureOpError;
 /** Creates or updates an availability group listener. */

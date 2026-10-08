@@ -248,19 +248,8 @@ export interface CopyDestinationImageSetProperties {
   updatedAt?: Date;
   imageSetArn?: string;
 }
-export const CopyDestinationImageSetProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageSetId: S.String,
-    latestVersionId: S.String,
-    imageSetState: S.optional(ImageSetState),
-    imageSetWorkflowStatus: S.optional(ImageSetWorkflowStatus),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    imageSetArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CopyDestinationImageSetProperties",
-}) as any as S.Schema<CopyDestinationImageSetProperties>;
+export const CopyDestinationImageSetProperties =
+  CopySourceImageSetProperties as any as S.Schema<CopyDestinationImageSetProperties>;
 export interface CopyImageSetResponse {
   datastoreId: string;
   sourceImageSetProperties: CopySourceImageSetProperties;
@@ -337,9 +326,8 @@ export interface DeleteDatastoreResponse {
   datastoreId: string;
   datastoreStatus: DatastoreStatus;
 }
-export const DeleteDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datastoreId: S.String, datastoreStatus: DatastoreStatus }),
-).annotate({ identifier: "DeleteDatastoreResponse" }) as any as S.Schema<DeleteDatastoreResponse>;
+export const DeleteDatastoreResponse =
+  CreateDatastoreResponse as any as S.Schema<DeleteDatastoreResponse>;
 export interface DeleteImageSetRequest {
   datastoreId: string;
   imageSetId: string;
@@ -1185,9 +1173,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type DICOMAttribute = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface DICOMUpdates {
   removableAttributes?: Uint8Array | redacted.Redacted<Uint8Array>;

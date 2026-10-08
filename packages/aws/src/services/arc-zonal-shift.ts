@@ -206,7 +206,7 @@ export type BlockedWindows = string[];
 export const BlockedWindows = /*@__PURE__*/ S.Array(S.String);
 export type BlockedDate = string;
 export type BlockedDates = string[];
-export const BlockedDates = /*@__PURE__*/ S.Array(S.String);
+export const BlockedDates = BlockedWindows as any as S.Schema<BlockedDates>;
 export type ControlConditionType = "CLOUDWATCH" | (string & {});
 export const ControlConditionType = S.String;
 
@@ -222,9 +222,9 @@ export type BlockingAlarms = ControlCondition[];
 export const BlockingAlarms = /*@__PURE__*/ S.Array(ControlCondition);
 export type AllowedWindow = string;
 export type AllowedWindows = string[];
-export const AllowedWindows = /*@__PURE__*/ S.Array(S.String);
+export const AllowedWindows = BlockedWindows as any as S.Schema<AllowedWindows>;
 export type OutcomeAlarms = ControlCondition[];
-export const OutcomeAlarms = /*@__PURE__*/ S.Array(ControlCondition);
+export const OutcomeAlarms = BlockingAlarms as any as S.Schema<OutcomeAlarms>;
 export interface CreatePracticeRunConfigurationRequest {
   resourceIdentifier: string;
   blockedWindows?: string[];
@@ -495,7 +495,7 @@ export const ListManagedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedResourcesRequest",
 }) as any as S.Schema<ListManagedResourcesRequest>;
 export type AvailabilityZones = string[];
-export const AvailabilityZones = /*@__PURE__*/ S.Array(S.String);
+export const AvailabilityZones = BlockedWindows as any as S.Schema<AvailabilityZones>;
 export interface ManagedResourceSummary {
   arn?: string;
   name?: string;
@@ -595,17 +595,7 @@ export interface StartPracticeRunResponse {
   status: ZonalShiftStatus;
   comment: string;
 }
-export const StartPracticeRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zonalShiftId: S.String,
-    resourceIdentifier: S.String,
-    awayFrom: S.String,
-    expiryTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: ZonalShiftStatus,
-    comment: S.String,
-  }),
-).annotate({ identifier: "StartPracticeRunResponse" }) as any as S.Schema<StartPracticeRunResponse>;
+export const StartPracticeRunResponse = ZonalShift as any as S.Schema<StartPracticeRunResponse>;
 export type ExpiresIn = string;
 export interface StartZonalShiftRequest {
   resourceIdentifier: string;
@@ -641,11 +631,8 @@ export const UpdateAutoshiftObserverNotificationStatusRequest = /*@__PURE__*/ S.
 export interface UpdateAutoshiftObserverNotificationStatusResponse {
   status: AutoshiftObserverNotificationStatus;
 }
-export const UpdateAutoshiftObserverNotificationStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: AutoshiftObserverNotificationStatus }),
-).annotate({
-  identifier: "UpdateAutoshiftObserverNotificationStatusResponse",
-}) as any as S.Schema<UpdateAutoshiftObserverNotificationStatusResponse>;
+export const UpdateAutoshiftObserverNotificationStatusResponse =
+  GetAutoshiftObserverNotificationStatusResponse as any as S.Schema<UpdateAutoshiftObserverNotificationStatusResponse>;
 export interface UpdatePracticeRunConfigurationRequest {
   resourceIdentifier: string;
   blockedWindows?: string[];
@@ -681,16 +668,8 @@ export interface UpdatePracticeRunConfigurationResponse {
   zonalAutoshiftStatus: ZonalAutoshiftStatus;
   practiceRunConfiguration: PracticeRunConfiguration;
 }
-export const UpdatePracticeRunConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.String,
-    zonalAutoshiftStatus: ZonalAutoshiftStatus,
-    practiceRunConfiguration: PracticeRunConfiguration,
-  }),
-).annotate({
-  identifier: "UpdatePracticeRunConfigurationResponse",
-}) as any as S.Schema<UpdatePracticeRunConfigurationResponse>;
+export const UpdatePracticeRunConfigurationResponse =
+  CreatePracticeRunConfigurationResponse as any as S.Schema<UpdatePracticeRunConfigurationResponse>;
 export interface UpdateZonalAutoshiftConfigurationRequest {
   resourceIdentifier: string;
   zonalAutoshiftStatus: ZonalAutoshiftStatus;

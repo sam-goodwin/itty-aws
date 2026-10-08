@@ -599,7 +599,7 @@ export const CreateS3DataAccessFromS3BucketRequestDetails = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateS3DataAccessFromS3BucketRequestDetails>;
 export type AwsAccountId = string;
 export type ListOfLFTagValues = string[];
-export const ListOfLFTagValues = /*@__PURE__*/ S.Array(S.String);
+export const ListOfLFTagValues = ListOf__string as any as S.Schema<ListOfLFTagValues>;
 export interface LFTag {
   TagKey: string;
   TagValues: string[];
@@ -611,7 +611,8 @@ export type ListOfLFTags = LFTag[];
 export const ListOfLFTags = /*@__PURE__*/ S.Array(LFTag);
 export type DatabaseLFTagPolicyPermission = string;
 export type ListOfDatabaseLFTagPolicyPermissions = string[];
-export const ListOfDatabaseLFTagPolicyPermissions = /*@__PURE__*/ S.Array(S.String);
+export const ListOfDatabaseLFTagPolicyPermissions =
+  ListOf__string as any as S.Schema<ListOfDatabaseLFTagPolicyPermissions>;
 export interface DatabaseLFTagPolicyAndPermissions {
   Expression: LFTag[];
   Permissions: string[];
@@ -623,16 +624,14 @@ export const DatabaseLFTagPolicyAndPermissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseLFTagPolicyAndPermissions>;
 export type TableTagPolicyLFPermission = string;
 export type ListOfTableTagPolicyLFPermissions = string[];
-export const ListOfTableTagPolicyLFPermissions = /*@__PURE__*/ S.Array(S.String);
+export const ListOfTableTagPolicyLFPermissions =
+  ListOf__string as any as S.Schema<ListOfTableTagPolicyLFPermissions>;
 export interface TableLFTagPolicyAndPermissions {
   Expression: LFTag[];
   Permissions: string[];
 }
-export const TableLFTagPolicyAndPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Expression: ListOfLFTags, Permissions: ListOfTableTagPolicyLFPermissions }),
-).annotate({
-  identifier: "TableLFTagPolicyAndPermissions",
-}) as any as S.Schema<TableLFTagPolicyAndPermissions>;
+export const TableLFTagPolicyAndPermissions =
+  DatabaseLFTagPolicyAndPermissions as any as S.Schema<TableLFTagPolicyAndPermissions>;
 export type RoleArn = string;
 export interface ImportAssetsFromLakeFormationTagPolicyRequestDetails {
   CatalogId: string;
@@ -719,16 +718,8 @@ export interface ExportAssetsToS3ResponseDetails {
   Encryption?: ExportServerSideEncryption;
   RevisionId: string;
 }
-export const ExportAssetsToS3ResponseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssetDestinations: ListOfAssetDestinationEntry,
-    DataSetId: S.String,
-    Encryption: S.optional(ExportServerSideEncryption),
-    RevisionId: S.String,
-  }),
-).annotate({
-  identifier: "ExportAssetsToS3ResponseDetails",
-}) as any as S.Schema<ExportAssetsToS3ResponseDetails>;
+export const ExportAssetsToS3ResponseDetails =
+  ExportAssetsToS3RequestDetails as any as S.Schema<ExportAssetsToS3ResponseDetails>;
 export interface ExportRevisionsToS3ResponseDetails {
   DataSetId: string;
   Encryption?: ExportServerSideEncryption;
@@ -770,25 +761,15 @@ export interface ImportAssetsFromS3ResponseDetails {
   DataSetId: string;
   RevisionId: string;
 }
-export const ImportAssetsFromS3ResponseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AssetSources: ListOfAssetSourceEntry, DataSetId: S.String, RevisionId: S.String }),
-).annotate({
-  identifier: "ImportAssetsFromS3ResponseDetails",
-}) as any as S.Schema<ImportAssetsFromS3ResponseDetails>;
+export const ImportAssetsFromS3ResponseDetails =
+  ImportAssetsFromS3RequestDetails as any as S.Schema<ImportAssetsFromS3ResponseDetails>;
 export interface ImportAssetsFromRedshiftDataSharesResponseDetails {
   AssetSources: RedshiftDataShareAssetSourceEntry[];
   DataSetId: string;
   RevisionId: string;
 }
-export const ImportAssetsFromRedshiftDataSharesResponseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssetSources: ListOfRedshiftDataShareAssetSourceEntry,
-    DataSetId: S.String,
-    RevisionId: S.String,
-  }),
-).annotate({
-  identifier: "ImportAssetsFromRedshiftDataSharesResponseDetails",
-}) as any as S.Schema<ImportAssetsFromRedshiftDataSharesResponseDetails>;
+export const ImportAssetsFromRedshiftDataSharesResponseDetails =
+  ImportAssetsFromRedshiftDataSharesRequestDetails as any as S.Schema<ImportAssetsFromRedshiftDataSharesResponseDetails>;
 export interface ImportAssetFromApiGatewayApiResponseDetails {
   ApiDescription?: string;
   ApiId: string;
@@ -824,15 +805,8 @@ export interface CreateS3DataAccessFromS3BucketResponseDetails {
   DataSetId: string;
   RevisionId: string;
 }
-export const CreateS3DataAccessFromS3BucketResponseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AssetSource: S3DataAccessAssetSourceEntry,
-    DataSetId: S.String,
-    RevisionId: S.String,
-  }),
-).annotate({
-  identifier: "CreateS3DataAccessFromS3BucketResponseDetails",
-}) as any as S.Schema<CreateS3DataAccessFromS3BucketResponseDetails>;
+export const CreateS3DataAccessFromS3BucketResponseDetails =
+  CreateS3DataAccessFromS3BucketRequestDetails as any as S.Schema<CreateS3DataAccessFromS3BucketResponseDetails>;
 export interface ImportAssetsFromLakeFormationTagPolicyResponseDetails {
   CatalogId: string;
   Database?: DatabaseLFTagPolicyAndPermissions;
@@ -841,18 +815,8 @@ export interface ImportAssetsFromLakeFormationTagPolicyResponseDetails {
   DataSetId: string;
   RevisionId: string;
 }
-export const ImportAssetsFromLakeFormationTagPolicyResponseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CatalogId: S.String,
-    Database: S.optional(DatabaseLFTagPolicyAndPermissions),
-    Table: S.optional(TableLFTagPolicyAndPermissions),
-    RoleArn: S.String,
-    DataSetId: S.String,
-    RevisionId: S.String,
-  }),
-).annotate({
-  identifier: "ImportAssetsFromLakeFormationTagPolicyResponseDetails",
-}) as any as S.Schema<ImportAssetsFromLakeFormationTagPolicyResponseDetails>;
+export const ImportAssetsFromLakeFormationTagPolicyResponseDetails =
+  ImportAssetsFromLakeFormationTagPolicyRequestDetails as any as S.Schema<ImportAssetsFromLakeFormationTagPolicyResponseDetails>;
 export interface ResponseDetails {
   ExportAssetToSignedUrl?: ExportAssetToSignedUrlResponseDetails;
   ExportAssetsToS3?: ExportAssetsToS3ResponseDetails;
@@ -1027,9 +991,7 @@ export const DeleteAssetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteAssetRequest" }) as any as S.Schema<DeleteAssetRequest>;
 export interface DeleteAssetResponse {}
-export const DeleteAssetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAssetResponse",
-}) as any as S.Schema<DeleteAssetResponse>;
+export const DeleteAssetResponse = CancelJobResponse as any as S.Schema<DeleteAssetResponse>;
 export type DataGrantId = string;
 export interface DeleteDataGrantRequest {
   DataGrantId: string;
@@ -1047,9 +1009,8 @@ export const DeleteDataGrantRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDataGrantRequest" }) as any as S.Schema<DeleteDataGrantRequest>;
 export interface DeleteDataGrantResponse {}
-export const DeleteDataGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataGrantResponse",
-}) as any as S.Schema<DeleteDataGrantResponse>;
+export const DeleteDataGrantResponse =
+  CancelJobResponse as any as S.Schema<DeleteDataGrantResponse>;
 export interface DeleteDataSetRequest {
   DataSetId: string;
 }
@@ -1066,9 +1027,7 @@ export const DeleteDataSetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDataSetRequest" }) as any as S.Schema<DeleteDataSetRequest>;
 export interface DeleteDataSetResponse {}
-export const DeleteDataSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataSetResponse",
-}) as any as S.Schema<DeleteDataSetResponse>;
+export const DeleteDataSetResponse = CancelJobResponse as any as S.Schema<DeleteDataSetResponse>;
 export interface DeleteEventActionRequest {
   EventActionId: string;
 }
@@ -1085,9 +1044,8 @@ export const DeleteEventActionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEventActionRequest" }) as any as S.Schema<DeleteEventActionRequest>;
 export interface DeleteEventActionResponse {}
-export const DeleteEventActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventActionResponse",
-}) as any as S.Schema<DeleteEventActionResponse>;
+export const DeleteEventActionResponse =
+  CancelJobResponse as any as S.Schema<DeleteEventActionResponse>;
 export interface DeleteRevisionRequest {
   DataSetId: string;
   RevisionId: string;
@@ -1108,9 +1066,7 @@ export const DeleteRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRevisionRequest" }) as any as S.Schema<DeleteRevisionRequest>;
 export interface DeleteRevisionResponse {}
-export const DeleteRevisionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRevisionResponse",
-}) as any as S.Schema<DeleteRevisionResponse>;
+export const DeleteRevisionResponse = CancelJobResponse as any as S.Schema<DeleteRevisionResponse>;
 export interface GetAssetRequest {
   AssetId: string;
   DataSetId: string;
@@ -1202,9 +1158,7 @@ export const DatabaseLFTagPolicy = /*@__PURE__*/ S.suspend(() =>
 export interface TableLFTagPolicy {
   Expression: LFTag[];
 }
-export const TableLFTagPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Expression: ListOfLFTags }),
-).annotate({ identifier: "TableLFTagPolicy" }) as any as S.Schema<TableLFTagPolicy>;
+export const TableLFTagPolicy = DatabaseLFTagPolicy as any as S.Schema<TableLFTagPolicy>;
 export interface LFResourceDetails {
   Database?: DatabaseLFTagPolicy;
   Table?: TableLFTagPolicy;
@@ -1231,7 +1185,7 @@ export const LakeFormationDataPermissionDetails = /*@__PURE__*/ S.suspend(() =>
 export type LakeFormationDataPermissionType = string;
 export type LFPermission = string;
 export type ListOfLFPermissions = string[];
-export const ListOfLFPermissions = /*@__PURE__*/ S.Array(S.String);
+export const ListOfLFPermissions = ListOf__string as any as S.Schema<ListOfLFPermissions>;
 export interface LakeFormationDataPermissionAsset {
   LakeFormationDataPermissionDetails: LakeFormationDataPermissionDetails;
   LakeFormationDataPermissionType: string;
@@ -1324,25 +1278,8 @@ export interface GetDataGrantResponse {
   UpdatedAt: Date;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetDataGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    SenderPrincipal: S.String,
-    ReceiverPrincipal: S.String,
-    Description: S.optional(S.String),
-    AcceptanceState: S.String,
-    AcceptedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    GrantDistributionScope: S.String,
-    DataSetId: S.String,
-    SourceDataSetId: S.String,
-    Id: S.String,
-    Arn: S.String,
-    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    Tags: S.optional(MapOf__string),
-  }),
-).annotate({ identifier: "GetDataGrantResponse" }) as any as S.Schema<GetDataGrantResponse>;
+export const GetDataGrantResponse =
+  CreateDataGrantResponse as any as S.Schema<GetDataGrantResponse>;
 export interface GetDataSetRequest {
   DataSetId: string;
 }
@@ -1371,21 +1308,7 @@ export interface GetDataSetResponse {
   Tags?: { [key: string]: string | undefined };
   UpdatedAt?: Date;
 }
-export const GetDataSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AssetType: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Description: S.optional(S.String),
-    Id: S.optional(S.String),
-    Name: S.optional(S.String),
-    Origin: S.optional(S.String),
-    OriginDetails: S.optional(OriginDetails),
-    SourceId: S.optional(S.String),
-    Tags: S.optional(MapOf__string),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "GetDataSetResponse" }) as any as S.Schema<GetDataSetResponse>;
+export const GetDataSetResponse = CreateDataSetResponse as any as S.Schema<GetDataSetResponse>;
 export interface GetEventActionRequest {
   EventActionId: string;
 }
@@ -1440,19 +1363,7 @@ export interface GetJobResponse {
   Type?: string;
   UpdatedAt?: Date;
 }
-export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    AssetConfiguration: S.optional(AssetConfiguration),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    Details: S.optional(ResponseDetails),
-    Errors: S.optional(ListOfJobError),
-    Id: S.optional(S.String),
-    State: S.optional(S.String),
-    Type: S.optional(S.String),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
+export const GetJobResponse = CreateJobResponse as any as S.Schema<GetJobResponse>;
 export interface GetReceivedDataGrantRequest {
   DataGrantArn: string;
 }
@@ -1537,22 +1448,7 @@ export interface GetRevisionResponse {
   Revoked?: boolean;
   RevokedAt?: Date;
 }
-export const GetRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Comment: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DataSetId: S.optional(S.String),
-    Finalized: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    SourceId: S.optional(S.String),
-    Tags: S.optional(MapOf__string),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    RevocationComment: S.optional(S.String),
-    Revoked: S.optional(S.Boolean),
-    RevokedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "GetRevisionResponse" }) as any as S.Schema<GetRevisionResponse>;
+export const GetRevisionResponse = CreateRevisionResponse as any as S.Schema<GetRevisionResponse>;
 export type MaxResults = number;
 export interface ListDataGrantsRequest {
   MaxResults?: number;
@@ -1804,7 +1700,8 @@ export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJobsResponse" }) as any as S.Schema<ListJobsResponse>;
 export type AcceptanceStateFilterValue = string;
 export type AcceptanceStateFilterValues = string[];
-export const AcceptanceStateFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const AcceptanceStateFilterValues =
+  ListOf__string as any as S.Schema<AcceptanceStateFilterValues>;
 export interface ListReceivedDataGrantsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2176,9 +2073,7 @@ export const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartJobRequest" }) as any as S.Schema<StartJobRequest>;
 export interface StartJobResponse {}
-export const StartJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartJobResponse",
-}) as any as S.Schema<StartJobResponse>;
+export const StartJobResponse = CancelJobResponse as any as S.Schema<StartJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -2191,9 +2086,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = CancelJobResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2207,9 +2100,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = CancelJobResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAssetRequest {
   AssetId: string;
   DataSetId: string;
@@ -2384,21 +2275,8 @@ export interface UpdateRevisionResponse {
   Revoked?: boolean;
   RevokedAt?: Date;
 }
-export const UpdateRevisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Comment: S.optional(S.String),
-    CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    DataSetId: S.optional(S.String),
-    Finalized: S.optional(S.Boolean),
-    Id: S.optional(S.String),
-    SourceId: S.optional(S.String),
-    UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    RevocationComment: S.optional(S.String),
-    Revoked: S.optional(S.Boolean),
-    RevokedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "UpdateRevisionResponse" }) as any as S.Schema<UpdateRevisionResponse>;
+export const UpdateRevisionResponse =
+  RevokeRevisionResponse as any as S.Schema<UpdateRevisionResponse>;
 export type ResourceType = string;
 export type ExceptionCause = string;
 export type LimitName = string;

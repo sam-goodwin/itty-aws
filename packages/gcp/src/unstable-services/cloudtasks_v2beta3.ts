@@ -1225,9 +1225,7 @@ export const PatchProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for PauseQueue. */
 export interface PauseQueueRequest {}
-export const PauseQueueRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PauseQueueRequest",
-}) as any as S.Schema<PauseQueueRequest>;
+export const PauseQueueRequest = Empty as any as S.Schema<PauseQueueRequest>;
 
 export interface PauseProjectsLocationsQueuesRequest {
   /** Required. The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID` */
@@ -1406,13 +1404,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateCmekConfigProjectsLocationsRequest {
   /** Output only. The config resource name which includes the project and location and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig` */

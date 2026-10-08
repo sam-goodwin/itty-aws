@@ -1284,11 +1284,8 @@ export const RemoveNetworkCustomersPoliciesNetworksRequest = /*@__PURE__*/ S.sus
 
 /** Response object for removing a network. */
 export interface GoogleChromePolicyVersionsV1RemoveNetworkResponse {}
-export const GoogleChromePolicyVersionsV1RemoveNetworkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleChromePolicyVersionsV1RemoveNetworkResponse",
-}) as any as S.Schema<GoogleChromePolicyVersionsV1RemoveNetworkResponse>;
+export const GoogleChromePolicyVersionsV1RemoveNetworkResponse =
+  GoogleChromePolicyVersionsV1RemoveCertificateResponse as any as S.Schema<GoogleChromePolicyVersionsV1RemoveNetworkResponse>;
 
 /** Request message for getting the resolved policy value for a specific target. */
 export interface GoogleChromePolicyVersionsV1ResolveRequest {

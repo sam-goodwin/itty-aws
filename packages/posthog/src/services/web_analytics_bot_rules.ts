@@ -64,9 +64,8 @@ export const CreateWebAnalyticsBotRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions of this rule. Each one reads a single event property. */
 export type WebAnalyticsBotRuleItemsList = Array<WebAnalyticsBotCondition>;
-export const WebAnalyticsBotRuleItemsList = /*@__PURE__*/ S.Array(
-  WebAnalyticsBotCondition,
-) as any as S.Schema<WebAnalyticsBotRuleItemsList>;
+export const WebAnalyticsBotRuleItemsList =
+  CreateWebAnalyticsBotRuleRequestItemsList as any as S.Schema<WebAnalyticsBotRuleItemsList>;
 
 export interface WebAnalyticsBotRule {
   /** Stable id for the rule. Pass it to the delete endpoint. */

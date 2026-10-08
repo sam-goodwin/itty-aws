@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type BackupStateEnum = "STATE_UNSPECIFIED" | "READY" | "CREATING" | "FAILED" | "DELETING";
 export const BackupStateEnum = S.String;
@@ -895,11 +893,7 @@ export interface DataplexConfig {
   /** Dataplex is enabled by default for resources such as clusters and instances. This flag controls the integration of AlloyDB PG resources (like databases, schemas, and tables) with Dataplex." */
   enabled?: boolean;
 }
-export const DataplexConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DataplexConfig" }) as any as S.Schema<DataplexConfig>;
+export const DataplexConfig = ExpressConfig as any as S.Schema<DataplexConfig>;
 
 /** A cluster is a collection of regional AlloyDB resources. It can include a primary instance and one or more read pool instances. All cluster resources share a storage layer, which scales as needed. */
 export interface Cluster {

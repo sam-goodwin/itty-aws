@@ -18,14 +18,12 @@ export const EmailTemplateDesignBodyRowsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EmailTemplateDesignBodyRowsList>;
 
 export type EmailTemplateDesignBodyHeadersList = Array<unknown>;
-export const EmailTemplateDesignBodyHeadersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EmailTemplateDesignBodyHeadersList>;
+export const EmailTemplateDesignBodyHeadersList =
+  EmailTemplateDesignBodyRowsList as any as S.Schema<EmailTemplateDesignBodyHeadersList>;
 
 export type EmailTemplateDesignBodyFootersList = Array<unknown>;
-export const EmailTemplateDesignBodyFootersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EmailTemplateDesignBodyFootersList>;
+export const EmailTemplateDesignBodyFootersList =
+  EmailTemplateDesignBodyRowsList as any as S.Schema<EmailTemplateDesignBodyFootersList>;
 
 export interface EmailTemplateDesignBody {
   /** Any unique string. */

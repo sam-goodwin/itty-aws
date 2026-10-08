@@ -175,7 +175,7 @@ export type SensitiveString = string | redacted.Redacted<string>;
 export type Position = number[];
 export const Position = /*@__PURE__*/ S.Array(S.Number);
 export type BoundingBox = number[];
-export const BoundingBox = /*@__PURE__*/ S.Array(S.Number);
+export const BoundingBox = Position as any as S.Schema<BoundingBox>;
 export type DistanceMeters = number;
 export interface FilterCircle {
   Center: number[];
@@ -305,9 +305,7 @@ export interface SubRegion {
   Code?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
 }
-export const SubRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(SensitiveString), Name: S.optional(SensitiveString) }),
-).annotate({ identifier: "SubRegion" }) as any as S.Schema<SubRegion>;
+export const SubRegion = Region as any as S.Schema<SubRegion>;
 export type IntersectionStreet = string;
 export type IntersectionStreetList = string[];
 export const IntersectionStreetList = /*@__PURE__*/ S.Array(S.String);
@@ -413,16 +411,12 @@ export interface RegionHighlights {
   Code?: Highlight[];
   Name?: Highlight[];
 }
-export const RegionHighlights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(HighlightList), Name: S.optional(HighlightList) }),
-).annotate({ identifier: "RegionHighlights" }) as any as S.Schema<RegionHighlights>;
+export const RegionHighlights = CountryHighlights as any as S.Schema<RegionHighlights>;
 export interface SubRegionHighlights {
   Code?: Highlight[];
   Name?: Highlight[];
 }
-export const SubRegionHighlights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Code: S.optional(HighlightList), Name: S.optional(HighlightList) }),
-).annotate({ identifier: "SubRegionHighlights" }) as any as S.Schema<SubRegionHighlights>;
+export const SubRegionHighlights = CountryHighlights as any as S.Schema<SubRegionHighlights>;
 export type IntersectionHighlightsList = Highlight[][];
 export const IntersectionHighlightsList = /*@__PURE__*/ S.Array(HighlightList);
 export interface AutocompleteAddressHighlights {
@@ -735,7 +729,7 @@ export const TimeZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 export type MatchScore = number;
 export type MatchScoreList = number[];
-export const MatchScoreList = /*@__PURE__*/ S.Array(S.Number);
+export const MatchScoreList = Position as any as S.Schema<MatchScoreList>;
 export interface SecondaryAddressComponentMatchScore {
   Number?: number;
 }
@@ -1119,7 +1113,7 @@ export const Contacts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contacts" }) as any as S.Schema<Contacts>;
 export type OpeningHoursDisplay = string | redacted.Redacted<string>;
 export type OpeningHoursDisplayList = (string | redacted.Redacted<string>)[];
-export const OpeningHoursDisplayList = /*@__PURE__*/ S.Array(SensitiveString);
+export const OpeningHoursDisplayList = CountryCodeList as any as S.Schema<OpeningHoursDisplayList>;
 export interface OpeningHoursComponents {
   OpenTime?: string | redacted.Redacted<string>;
   OpenDuration?: string | redacted.Redacted<string>;
@@ -1402,11 +1396,11 @@ export const ReverseGeocodeResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReverseGeocodeResponse" }) as any as S.Schema<ReverseGeocodeResponse>;
 export type FilterCategoryList = (string | redacted.Redacted<string>)[];
-export const FilterCategoryList = /*@__PURE__*/ S.Array(SensitiveString);
+export const FilterCategoryList = CountryCodeList as any as S.Schema<FilterCategoryList>;
 export type FilterBusinessChainList = (string | redacted.Redacted<string>)[];
-export const FilterBusinessChainList = /*@__PURE__*/ S.Array(SensitiveString);
+export const FilterBusinessChainList = CountryCodeList as any as S.Schema<FilterBusinessChainList>;
 export type FilterFoodTypeList = (string | redacted.Redacted<string>)[];
-export const FilterFoodTypeList = /*@__PURE__*/ S.Array(SensitiveString);
+export const FilterFoodTypeList = CountryCodeList as any as S.Schema<FilterFoodTypeList>;
 export interface SearchNearbyFilter {
   BoundingBox?: number[];
   IncludeCountries?: (string | redacted.Redacted<string>)[];
@@ -1615,56 +1609,22 @@ export interface SearchTextResultItem {
   PlaceAttributes?: PlaceAttribute[];
   CrossReferences?: CrossReference[];
 }
-export const SearchTextResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PlaceId: SensitiveString,
-    PlaceType: PlaceType,
-    Title: SensitiveString,
-    Address: S.optional(Address),
-    AddressNumberCorrected: S.optional(S.Boolean),
-    Position: S.optional(Position),
-    Distance: S.optional(S.Number),
-    MapView: S.optional(BoundingBox),
-    Categories: S.optional(CategoryList),
-    FoodTypes: S.optional(FoodTypeList),
-    BusinessChains: S.optional(BusinessChainList),
-    Contacts: S.optional(Contacts),
-    OpeningHours: S.optional(OpeningHoursList),
-    AccessPoints: S.optional(AccessPointList),
-    AccessRestrictions: S.optional(AccessRestrictionList),
-    TimeZone: S.optional(TimeZone),
-    PoliticalView: S.optional(SensitiveString),
-    Phonemes: S.optional(PhonemeDetails),
-    PlaceAttributes: S.optional(PlaceAttributeList),
-    CrossReferences: S.optional(CrossReferenceList),
-  }),
-).annotate({ identifier: "SearchTextResultItem" }) as any as S.Schema<SearchTextResultItem>;
+export const SearchTextResultItem = SearchNearbyResultItem as any as S.Schema<SearchTextResultItem>;
 export type SearchTextResultItemList = SearchTextResultItem[];
-export const SearchTextResultItemList = /*@__PURE__*/ S.Array(SearchTextResultItem);
+export const SearchTextResultItemList =
+  SearchNearbyResultItemList as any as S.Schema<SearchTextResultItemList>;
 export interface SearchTextResponse {
   PricingBucket: string;
   ResultItems?: SearchTextResultItem[];
   NextToken?: string;
 }
-export const SearchTextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-    ResultItems: S.optional(SearchTextResultItemList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "SearchTextResponse" }) as any as S.Schema<SearchTextResponse>;
+export const SearchTextResponse = SearchNearbyResponse as any as S.Schema<SearchTextResponse>;
 export interface SuggestFilter {
   BoundingBox?: number[];
   Circle?: FilterCircle;
   IncludeCountries?: (string | redacted.Redacted<string>)[];
 }
-export const SuggestFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BoundingBox: S.optional(BoundingBox),
-    Circle: S.optional(FilterCircle),
-    IncludeCountries: S.optional(CountryCodeList),
-  }),
-).annotate({ identifier: "SuggestFilter" }) as any as S.Schema<SuggestFilter>;
+export const SuggestFilter = SearchTextFilter as any as S.Schema<SuggestFilter>;
 export type SuggestAdditionalFeature =
   | "Core"
   | "TimeZone"

@@ -146,10 +146,8 @@ export const CreateMcpServerInstallationsCallToolRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateMcpServerInstallationsCallToolRequest>;
 
 export type CallToolResponseContentItemMap = { [key: string]: unknown | undefined };
-export const CallToolResponseContentItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CallToolResponseContentItemMap>;
+export const CallToolResponseContentItemMap =
+  CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<CallToolResponseContentItemMap>;
 
 /** MCP content blocks the tool returned, in upstream order. */
 export type CallToolResponseContentList = Array<CallToolResponseContentItemMap>;
@@ -159,10 +157,8 @@ export const CallToolResponseContentList = /*@__PURE__*/ S.Array(
 
 /** Structured result the tool returned alongside `content`, when it provides one. */
 export type CallToolResponseStructuredContentMap = { [key: string]: unknown | undefined };
-export const CallToolResponseStructuredContentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CallToolResponseStructuredContentMap>;
+export const CallToolResponseStructuredContentMap =
+  CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<CallToolResponseStructuredContentMap>;
 
 export interface CallToolResponse {
   /** MCP content blocks the tool returned, in upstream order. */
@@ -278,17 +274,13 @@ export const GetMcpServerInstallationsAvailableToolRequest = /*@__PURE__*/ S.sus
 
 /** JSON Schema for the tool's arguments. */
 export type AvailableToolInputSchemaMap = { [key: string]: unknown | undefined };
-export const AvailableToolInputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AvailableToolInputSchemaMap>;
+export const AvailableToolInputSchemaMap =
+  CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<AvailableToolInputSchemaMap>;
 
 /** MCP tool annotations the upstream server declared (destructiveHint, readOnlyHint, ...). Advisory only -- policy may escalate them, never loosen them. */
 export type AvailableToolAnnotationsMap = { [key: string]: unknown | undefined };
-export const AvailableToolAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AvailableToolAnnotationsMap>;
+export const AvailableToolAnnotationsMap =
+  CreateMcpServerInstallationsCallToolRequestArgumentsMap as any as S.Schema<AvailableToolAnnotationsMap>;
 
 /** * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
 export type MCPToolApprovalStateEnum = "approved" | "needs_approval" | "do_not_use";
@@ -523,11 +515,8 @@ export const McpServerInstallationsAuthorizeRetrieveRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<McpServerInstallationsAuthorizeRetrieveRequest>;
 
 export interface McpServerInstallationsAuthorizeRetrieveResponse {}
-export const McpServerInstallationsAuthorizeRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "McpServerInstallationsAuthorizeRetrieveResponse",
-}) as any as S.Schema<McpServerInstallationsAuthorizeRetrieveResponse>;
+export const McpServerInstallationsAuthorizeRetrieveResponse =
+  CreateMcpServerInstallationsProxyResponse as any as S.Schema<McpServerInstallationsAuthorizeRetrieveResponse>;
 
 export interface McpServerInstallationsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -551,11 +540,8 @@ export const McpServerInstallationsDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<McpServerInstallationsDestroyRequest>;
 
 export interface McpServerInstallationsDestroyResponse {}
-export const McpServerInstallationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "McpServerInstallationsDestroyResponse",
-}) as any as S.Schema<McpServerInstallationsDestroyResponse>;
+export const McpServerInstallationsDestroyResponse =
+  CreateMcpServerInstallationsProxyResponse as any as S.Schema<McpServerInstallationsDestroyResponse>;
 
 /** * `api_key` - api_key * `oauth` - oauth */
 export type InstallCustomAuthTypeEnum = "api_key" | "oauth";

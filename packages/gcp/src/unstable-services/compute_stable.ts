@@ -1061,13 +1061,8 @@ export interface TargetPoolsAddInstanceRequest {
   /** A full or partial URL to an instance to add to this target pool. This can be a full or partial URL. For example, the following are valid URLs: - https://www.googleapis.com/compute/v1/projects/project-id/zones/zone/instances/instance-name - projects/project-id/zones/zone/instances/instance-name - zones/zone/instances/instance-name */
   instances?: InstanceReferenceList;
 }
-export const TargetPoolsAddInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(InstanceReferenceList),
-  }),
-).annotate({
-  identifier: "TargetPoolsAddInstanceRequest",
-}) as any as S.Schema<TargetPoolsAddInstanceRequest>;
+export const TargetPoolsAddInstanceRequest =
+  InstanceGroupsAddInstancesRequest as any as S.Schema<TargetPoolsAddInstanceRequest>;
 
 export interface AddInstanceTargetPoolsRequest {
   /** Name of the TargetPool resource to add instances to. */
@@ -1761,13 +1756,8 @@ export interface InstancesAddResourcePoliciesRequest {
   /** Resource policies to be added to this instance. */
   resourcePolicies?: StringList;
 }
-export const InstancesAddResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourcePolicies: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InstancesAddResourcePoliciesRequest",
-}) as any as S.Schema<InstancesAddResourcePoliciesRequest>;
+export const InstancesAddResourcePoliciesRequest =
+  DisksAddResourcePoliciesRequest as any as S.Schema<InstancesAddResourcePoliciesRequest>;
 
 export interface AddResourcePoliciesInstancesRequest {
   /** The instance name for this request. */
@@ -1803,13 +1793,8 @@ export interface RegionDisksAddResourcePoliciesRequest {
   /** Resource policies to be added to this disk. */
   resourcePolicies?: StringList;
 }
-export const RegionDisksAddResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourcePolicies: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "RegionDisksAddResourcePoliciesRequest",
-}) as any as S.Schema<RegionDisksAddResourcePoliciesRequest>;
+export const RegionDisksAddResourcePoliciesRequest =
+  DisksAddResourcePoliciesRequest as any as S.Schema<RegionDisksAddResourcePoliciesRequest>;
 
 export interface AddResourcePoliciesRegionDisksRequest {
   /** The disk name for this request. */
@@ -2766,9 +2751,8 @@ export const AcceleratorTypesScopedListWarningDataItem =
 
 export type AcceleratorTypesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const AcceleratorTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<AcceleratorTypesScopedListWarningDataItemList>;
+export const AcceleratorTypesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<AcceleratorTypesScopedListWarningDataItemList>;
 
 export interface AcceleratorTypesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -2882,9 +2866,8 @@ export const AddressesScopedListWarningDataItem = AcceleratorTypeAggregatedListW
 
 export type AddressesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const AddressesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<AddressesScopedListWarningDataItemList>;
+export const AddressesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<AddressesScopedListWarningDataItemList>;
 
 export type AddressesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -3096,9 +3079,8 @@ export const AddressAggregatedListWarningDataItem = AcceleratorTypeAggregatedLis
 
 export type AddressAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const AddressAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<AddressAggregatedListWarningDataItemList>;
+export const AddressAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<AddressAggregatedListWarningDataItemList>;
 
 export interface AddressAggregatedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -3219,9 +3201,8 @@ export const AutoscalerAggregatedListWarningDataItem = AcceleratorTypeAggregated
 
 export type AutoscalerAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const AutoscalerAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<AutoscalerAggregatedListWarningDataItemList>;
+export const AutoscalerAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<AutoscalerAggregatedListWarningDataItemList>;
 
 export interface AutoscalerAggregatedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -3583,9 +3564,8 @@ export type AutoscalersScopedListWarningDataItem = OperationWarningsItemDataItem
 export const AutoscalersScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type AutoscalersScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const AutoscalersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<AutoscalersScopedListWarningDataItemList>;
+export const AutoscalersScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<AutoscalersScopedListWarningDataItemList>;
 
 export interface AutoscalersScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -3724,9 +3704,8 @@ export type BackendBucketAggregatedListWarningDataItem = OperationWarningsItemDa
 export const BackendBucketAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type BackendBucketAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const BackendBucketAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<BackendBucketAggregatedListWarningDataItemList>;
+export const BackendBucketAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<BackendBucketAggregatedListWarningDataItemList>;
 
 export interface BackendBucketAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -3782,9 +3761,8 @@ export type BackendBucketsScopedListWarningDataItem = OperationWarningsItemDataI
 export const BackendBucketsScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type BackendBucketsScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const BackendBucketsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<BackendBucketsScopedListWarningDataItemList>;
+export const BackendBucketsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<BackendBucketsScopedListWarningDataItemList>;
 
 export interface BackendBucketsScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -4123,9 +4101,8 @@ export type BackendServiceAggregatedListWarningDataItem = OperationWarningsItemD
 export const BackendServiceAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type BackendServiceAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const BackendServiceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<BackendServiceAggregatedListWarningDataItemList>;
+export const BackendServiceAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<BackendServiceAggregatedListWarningDataItemList>;
 
 export interface BackendServiceAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -4183,9 +4160,8 @@ export const BackendServicesScopedListWarningDataItem =
 
 export type BackendServicesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const BackendServicesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<BackendServicesScopedListWarningDataItemList>;
+export const BackendServicesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<BackendServicesScopedListWarningDataItemList>;
 
 export interface BackendServicesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -4417,16 +4393,11 @@ export interface BackendServiceUsedBy {
   /** Output only. [Output Only] Server-defined URL for resources referencing given BackendService like UrlMaps, TargetTcpProxies, TargetSslProxies and ForwardingRule. */
   reference?: string;
 }
-export const BackendServiceUsedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reference: S.optional(S.String),
-  }),
-).annotate({ identifier: "BackendServiceUsedBy" }) as any as S.Schema<BackendServiceUsedBy>;
+export const BackendServiceUsedBy = BackendBucketUsedBy as any as S.Schema<BackendServiceUsedBy>;
 
 export type BackendServiceUsedByList = Array<BackendServiceUsedBy>;
-export const BackendServiceUsedByList = /*@__PURE__*/ S.Array(
-  BackendServiceUsedBy,
-) as any as S.Schema<BackendServiceUsedByList>;
+export const BackendServiceUsedByList =
+  BackendBucketUsedByList as any as S.Schema<BackendServiceUsedByList>;
 
 /** A message containing information about the resource or system that manages the backend service. */
 export interface BackendServiceOrchestrationInfo {
@@ -4483,13 +4454,8 @@ export interface BackendBackendOrchestrationInfo {
   /** The URI of the resource or system that manages the backend. */
   resourceUri?: string;
 }
-export const BackendBackendOrchestrationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackendBackendOrchestrationInfo",
-}) as any as S.Schema<BackendBackendOrchestrationInfo>;
+export const BackendBackendOrchestrationInfo =
+  BackendServiceOrchestrationInfo as any as S.Schema<BackendBackendOrchestrationInfo>;
 
 export type BackendPreferenceEnum = "DEFAULT" | "PREFERENCE_UNSPECIFIED" | "PREFERRED";
 export const BackendPreferenceEnum = S.String;
@@ -4731,19 +4697,13 @@ export interface BackendServiceLogConfigLoggingHttpHeader {
   /** The name of the header to be logged. */
   headerName?: string;
 }
-export const BackendServiceLogConfigLoggingHttpHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headerName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackendServiceLogConfigLoggingHttpHeader",
-}) as any as S.Schema<BackendServiceLogConfigLoggingHttpHeader>;
+export const BackendServiceLogConfigLoggingHttpHeader =
+  BackendBucketCdnPolicyBypassCacheOnRequestHeader as any as S.Schema<BackendServiceLogConfigLoggingHttpHeader>;
 
 export type BackendServiceLogConfigLoggingHttpHeaderList =
   Array<BackendServiceLogConfigLoggingHttpHeader>;
-export const BackendServiceLogConfigLoggingHttpHeaderList = /*@__PURE__*/ S.Array(
-  BackendServiceLogConfigLoggingHttpHeader,
-) as any as S.Schema<BackendServiceLogConfigLoggingHttpHeaderList>;
+export const BackendServiceLogConfigLoggingHttpHeaderList =
+  BackendBucketCdnPolicyBypassCacheOnRequestHeaderList as any as S.Schema<BackendServiceLogConfigLoggingHttpHeaderList>;
 
 export type BackendServiceLogConfigOptionalModeEnum =
   | "CUSTOM"
@@ -4885,9 +4845,8 @@ export const BackendServiceCdnPolicyBypassCacheOnRequestHeader =
 
 export type BackendServiceCdnPolicyBypassCacheOnRequestHeaderList =
   Array<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
-export const BackendServiceCdnPolicyBypassCacheOnRequestHeaderList = /*@__PURE__*/ S.Array(
-  BackendBucketCdnPolicyBypassCacheOnRequestHeader,
-) as any as S.Schema<BackendServiceCdnPolicyBypassCacheOnRequestHeaderList>;
+export const BackendServiceCdnPolicyBypassCacheOnRequestHeaderList =
+  BackendBucketCdnPolicyBypassCacheOnRequestHeaderList as any as S.Schema<BackendServiceCdnPolicyBypassCacheOnRequestHeaderList>;
 
 /** Specify CDN TTLs for response error codes. */
 export interface BackendServiceCdnPolicyNegativeCachingPolicy {
@@ -5353,9 +5312,8 @@ export const DiskAggregatedListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type DiskAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const DiskAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<DiskAggregatedListWarningDataItemList>;
+export const DiskAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<DiskAggregatedListWarningDataItemList>;
 
 export interface DiskAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -5411,9 +5369,8 @@ export type DisksScopedListWarningDataItem = OperationWarningsItemDataItem;
 export const DisksScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type DisksScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const DisksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<DisksScopedListWarningDataItemList>;
+export const DisksScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<DisksScopedListWarningDataItemList>;
 
 export interface DisksScopedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -5458,11 +5415,7 @@ export interface DiskParams {
   /** Input only. Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const DiskParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "DiskParams" }) as any as S.Schema<DiskParams>;
+export const DiskParams = BackendBucketParams as any as S.Schema<DiskParams>;
 
 export type GuestOsFeatureTypeEnum =
   | "BARE_METAL_LINUX_COMPATIBLE"
@@ -5838,9 +5791,8 @@ export type DiskTypeAggregatedListWarningDataItem = OperationWarningsItemDataIte
 export const DiskTypeAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type DiskTypeAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const DiskTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<DiskTypeAggregatedListWarningDataItemList>;
+export const DiskTypeAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<DiskTypeAggregatedListWarningDataItemList>;
 
 export type DiskTypeAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -5940,9 +5892,8 @@ export type DiskTypesScopedListWarningDataItem = OperationWarningsItemDataItem;
 export const DiskTypesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type DiskTypesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const DiskTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<DiskTypesScopedListWarningDataItemList>;
+export const DiskTypesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<DiskTypesScopedListWarningDataItemList>;
 
 export type DiskTypesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -6113,9 +6064,8 @@ export type ForwardingRuleAggregatedListWarningDataItem = OperationWarningsItemD
 export const ForwardingRuleAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ForwardingRuleAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ForwardingRuleAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ForwardingRuleAggregatedListWarningDataItemList>;
+export const ForwardingRuleAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ForwardingRuleAggregatedListWarningDataItemList>;
 
 export interface ForwardingRuleAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -6400,9 +6350,8 @@ export type ForwardingRulesScopedListWarningDataItem = OperationWarningsItemData
 export const ForwardingRulesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ForwardingRulesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ForwardingRulesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ForwardingRulesScopedListWarningDataItemList>;
+export const ForwardingRulesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ForwardingRulesScopedListWarningDataItemList>;
 
 export type ForwardingRulesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -6580,9 +6529,8 @@ export const FutureReservationsScopedListWarningDataItem =
 
 export type FutureReservationsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const FutureReservationsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<FutureReservationsScopedListWarningDataItemList>;
+export const FutureReservationsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<FutureReservationsScopedListWarningDataItemList>;
 
 export interface FutureReservationsScopedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -6941,11 +6889,8 @@ export interface FutureReservationParams {
   /** Input only. Resource manager tags to be bound to the future reservation. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const FutureReservationParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "FutureReservationParams" }) as any as S.Schema<FutureReservationParams>;
+export const FutureReservationParams =
+  BackendBucketParams as any as S.Schema<FutureReservationParams>;
 
 export type FutureReservationDeploymentTypeEnum = "DENSE" | "DEPLOYMENT_TYPE_UNSPECIFIED";
 export const FutureReservationDeploymentTypeEnum = S.String;
@@ -7245,9 +7190,8 @@ export const FutureReservationsAggregatedListResponseWarningDataItem =
 
 export type FutureReservationsAggregatedListResponseWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const FutureReservationsAggregatedListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<FutureReservationsAggregatedListResponseWarningDataItemList>;
+export const FutureReservationsAggregatedListResponseWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<FutureReservationsAggregatedListResponseWarningDataItemList>;
 
 export type FutureReservationsAggregatedListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -7375,9 +7319,8 @@ export type OperationsScopedListWarningDataItem = OperationWarningsItemDataItem;
 export const OperationsScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type OperationsScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const OperationsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<OperationsScopedListWarningDataItemList>;
+export const OperationsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<OperationsScopedListWarningDataItemList>;
 
 export type OperationsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -7485,9 +7428,8 @@ export const OperationAggregatedListWarningDataItem = AcceleratorTypeAggregatedL
 
 export type OperationAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const OperationAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<OperationAggregatedListWarningDataItemList>;
+export const OperationAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<OperationAggregatedListWarningDataItemList>;
 
 export interface OperationAggregatedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -7688,9 +7630,8 @@ export type VmExtensionPoliciesScopedListWarningDataItem = OperationWarningsItem
 export const VmExtensionPoliciesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type VmExtensionPoliciesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const VmExtensionPoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<VmExtensionPoliciesScopedListWarningDataItemList>;
+export const VmExtensionPoliciesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<VmExtensionPoliciesScopedListWarningDataItemList>;
 
 export type VmExtensionPoliciesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -7804,9 +7745,8 @@ export const VmExtensionPolicyAggregatedListResponseWarningDataItem =
 
 export type VmExtensionPolicyAggregatedListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const VmExtensionPolicyAggregatedListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<VmExtensionPolicyAggregatedListResponseWarningDataItemList>;
+export const VmExtensionPolicyAggregatedListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<VmExtensionPolicyAggregatedListResponseWarningDataItemList>;
 
 export interface VmExtensionPolicyAggregatedListResponseWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -7931,9 +7871,8 @@ export type HealthChecksScopedListWarningDataItem = OperationWarningsItemDataIte
 export const HealthChecksScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type HealthChecksScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const HealthChecksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthChecksScopedListWarningDataItemList>;
+export const HealthChecksScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthChecksScopedListWarningDataItemList>;
 
 export interface HealthChecksScopedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -8293,9 +8232,8 @@ export type HealthChecksAggregatedListWarningDataItem = OperationWarningsItemDat
 export const HealthChecksAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type HealthChecksAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const HealthChecksAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthChecksAggregatedListWarningDataItemList>;
+export const HealthChecksAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthChecksAggregatedListWarningDataItemList>;
 
 export type HealthChecksAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -8420,9 +8358,8 @@ export const InstanceGroupManagerAggregatedListWarningDataItem =
 
 export type InstanceGroupManagerAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstanceGroupManagerAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstanceGroupManagerAggregatedListWarningDataItemList>;
+export const InstanceGroupManagerAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstanceGroupManagerAggregatedListWarningDataItemList>;
 
 export type InstanceGroupManagerAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -8970,9 +8907,7 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
 export type InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList =
   Array<OperationErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList =
-  /*@__PURE__*/ S.Array(
-    OperationErrorErrorsItemErrorDetailsItem,
-  ) as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList>;
+  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItemList as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList>;
 
 export interface InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem {
   /** [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED. */
@@ -9604,9 +9539,8 @@ export const InstanceGroupManagersScopedListWarningDataItem = OperationWarningsI
 
 export type InstanceGroupManagersScopedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const InstanceGroupManagersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstanceGroupManagersScopedListWarningDataItemList>;
+export const InstanceGroupManagersScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstanceGroupManagersScopedListWarningDataItemList>;
 
 export type InstanceGroupManagersScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -9786,9 +9720,8 @@ export const InstanceGroupAggregatedListWarningDataItem =
 
 export type InstanceGroupAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstanceGroupAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstanceGroupAggregatedListWarningDataItemList>;
+export const InstanceGroupAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstanceGroupAggregatedListWarningDataItemList>;
 
 export interface InstanceGroupAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -9813,9 +9746,8 @@ export const InstanceGroupsScopedListWarningDataItem = AcceleratorTypeAggregated
 
 export type InstanceGroupsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstanceGroupsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstanceGroupsScopedListWarningDataItemList>;
+export const InstanceGroupsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstanceGroupsScopedListWarningDataItemList>;
 
 export type InstanceGroupsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -10040,9 +9972,8 @@ export type InstancesScopedListWarningDataItem = OperationWarningsItemDataItem;
 export const InstancesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InstancesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InstancesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstancesScopedListWarningDataItemList>;
+export const InstancesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstancesScopedListWarningDataItemList>;
 
 export interface InstancesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -10893,9 +10824,8 @@ export const InstanceAggregatedListWarningDataItem = AcceleratorTypeAggregatedLi
 
 export type InstanceAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstanceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstanceAggregatedListWarningDataItemList>;
+export const InstanceAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstanceAggregatedListWarningDataItemList>;
 
 export interface InstanceAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -11018,9 +10948,8 @@ export const InstanceTemplatesScopedListWarningDataItem =
 
 export type InstanceTemplatesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstanceTemplatesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstanceTemplatesScopedListWarningDataItemList>;
+export const InstanceTemplatesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstanceTemplatesScopedListWarningDataItemList>;
 
 export interface InstanceTemplatesScopedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -11252,9 +11181,8 @@ export const InstanceTemplateAggregatedListWarningDataItem =
 
 export type InstanceTemplateAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstanceTemplateAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstanceTemplateAggregatedListWarningDataItemList>;
+export const InstanceTemplateAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstanceTemplateAggregatedListWarningDataItemList>;
 
 export type InstanceTemplateAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -11398,11 +11326,7 @@ export interface InstantSnapshotParams {
   /** Input only. Resource manager tags to be bound to the instant snapshot. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const InstantSnapshotParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "InstantSnapshotParams" }) as any as S.Schema<InstantSnapshotParams>;
+export const InstantSnapshotParams = BackendBucketParams as any as S.Schema<InstantSnapshotParams>;
 
 /** Represents a InstantSnapshot resource. You can use instant snapshots to create disk rollback points quickly.. */
 export interface InstantSnapshot {
@@ -11522,9 +11446,8 @@ export const InstantSnapshotsScopedListWarningDataItem =
 
 export type InstantSnapshotsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstantSnapshotsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstantSnapshotsScopedListWarningDataItemList>;
+export const InstantSnapshotsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstantSnapshotsScopedListWarningDataItemList>;
 
 export interface InstantSnapshotsScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -11571,9 +11494,8 @@ export type InstantSnapshotAggregatedListWarningDataItem = OperationWarningsItem
 export const InstantSnapshotAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InstantSnapshotAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InstantSnapshotAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstantSnapshotAggregatedListWarningDataItemList>;
+export const InstantSnapshotAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstantSnapshotAggregatedListWarningDataItemList>;
 
 export type InstantSnapshotAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -12109,9 +12031,8 @@ export const InterconnectAttachmentsScopedListWarningDataItem = OperationWarning
 
 export type InterconnectAttachmentsScopedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const InterconnectAttachmentsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InterconnectAttachmentsScopedListWarningDataItemList>;
+export const InterconnectAttachmentsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InterconnectAttachmentsScopedListWarningDataItemList>;
 
 export interface InterconnectAttachmentsScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -12161,9 +12082,8 @@ export const InterconnectAttachmentAggregatedListWarningDataItem =
 
 export type InterconnectAttachmentAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InterconnectAttachmentAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InterconnectAttachmentAggregatedListWarningDataItemList>;
+export const InterconnectAttachmentAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InterconnectAttachmentAggregatedListWarningDataItemList>;
 
 export type InterconnectAttachmentAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -12287,9 +12207,8 @@ export const MachineTypeAggregatedListWarningDataItem =
 
 export type MachineTypeAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const MachineTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<MachineTypeAggregatedListWarningDataItemList>;
+export const MachineTypeAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<MachineTypeAggregatedListWarningDataItemList>;
 
 export type MachineTypeAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -12446,9 +12365,8 @@ export const MachineTypesScopedListWarningDataItem = AcceleratorTypeAggregatedLi
 
 export type MachineTypesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const MachineTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<MachineTypesScopedListWarningDataItemList>;
+export const MachineTypesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<MachineTypesScopedListWarningDataItemList>;
 
 export type MachineTypesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -12624,9 +12542,8 @@ export const NetworkAttachmentAggregatedListWarningDataItem =
 
 export type NetworkAttachmentAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NetworkAttachmentAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NetworkAttachmentAggregatedListWarningDataItemList>;
+export const NetworkAttachmentAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NetworkAttachmentAggregatedListWarningDataItemList>;
 
 export interface NetworkAttachmentAggregatedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -12764,9 +12681,8 @@ export const NetworkAttachmentsScopedListWarningDataItem =
 
 export type NetworkAttachmentsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NetworkAttachmentsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NetworkAttachmentsScopedListWarningDataItemList>;
+export const NetworkAttachmentsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NetworkAttachmentsScopedListWarningDataItemList>;
 
 export type NetworkAttachmentsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -12954,9 +12870,8 @@ export const NetworkEdgeSecurityServicesScopedListWarningDataItem = OperationWar
 
 export type NetworkEdgeSecurityServicesScopedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const NetworkEdgeSecurityServicesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NetworkEdgeSecurityServicesScopedListWarningDataItemList>;
+export const NetworkEdgeSecurityServicesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NetworkEdgeSecurityServicesScopedListWarningDataItemList>;
 
 export type NetworkEdgeSecurityServicesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -13070,9 +12985,8 @@ export const NetworkEdgeSecurityServiceAggregatedListWarningDataItem =
 
 export type NetworkEdgeSecurityServiceAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NetworkEdgeSecurityServiceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NetworkEdgeSecurityServiceAggregatedListWarningDataItemList>;
+export const NetworkEdgeSecurityServiceAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NetworkEdgeSecurityServiceAggregatedListWarningDataItemList>;
 
 export interface NetworkEdgeSecurityServiceAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -13165,9 +13079,8 @@ export const NetworkEndpointGroupsScopedListWarningDataItem = OperationWarningsI
 
 export type NetworkEndpointGroupsScopedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const NetworkEndpointGroupsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NetworkEndpointGroupsScopedListWarningDataItemList>;
+export const NetworkEndpointGroupsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NetworkEndpointGroupsScopedListWarningDataItemList>;
 
 export type NetworkEndpointGroupsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -13414,9 +13327,8 @@ export const NetworkEndpointGroupAggregatedListWarningDataItem = OperationWarnin
 
 export type NetworkEndpointGroupAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const NetworkEndpointGroupAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NetworkEndpointGroupAggregatedListWarningDataItemList>;
+export const NetworkEndpointGroupAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NetworkEndpointGroupAggregatedListWarningDataItemList>;
 
 export type NetworkEndpointGroupAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -13615,9 +13527,8 @@ export type FirewallPoliciesScopedListWarningDataItem = OperationWarningsItemDat
 export const FirewallPoliciesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type FirewallPoliciesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const FirewallPoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<FirewallPoliciesScopedListWarningDataItemList>;
+export const FirewallPoliciesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<FirewallPoliciesScopedListWarningDataItemList>;
 
 export type FirewallPoliciesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -13697,9 +13608,8 @@ export const NetworkFirewallPolicyAggregatedListWarningDataItem = OperationWarni
 
 export type NetworkFirewallPolicyAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const NetworkFirewallPolicyAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NetworkFirewallPolicyAggregatedListWarningDataItemList>;
+export const NetworkFirewallPolicyAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NetworkFirewallPolicyAggregatedListWarningDataItemList>;
 
 export type NetworkFirewallPolicyAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -13821,9 +13731,8 @@ export type NodeGroupAggregatedListWarningDataItem = OperationWarningsItemDataIt
 export const NodeGroupAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NodeGroupAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NodeGroupAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NodeGroupAggregatedListWarningDataItemList>;
+export const NodeGroupAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NodeGroupAggregatedListWarningDataItemList>;
 
 export type NodeGroupAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -13993,9 +13902,8 @@ export const NodeGroupsScopedListWarningDataItem = AcceleratorTypeAggregatedList
 
 export type NodeGroupsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NodeGroupsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NodeGroupsScopedListWarningDataItemList>;
+export const NodeGroupsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NodeGroupsScopedListWarningDataItemList>;
 
 export type NodeGroupsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -14167,9 +14075,8 @@ export const NodeTemplatesScopedListWarningDataItem = AcceleratorTypeAggregatedL
 
 export type NodeTemplatesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NodeTemplatesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NodeTemplatesScopedListWarningDataItemList>;
+export const NodeTemplatesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NodeTemplatesScopedListWarningDataItemList>;
 
 export interface NodeTemplatesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -14329,9 +14236,8 @@ export type NodeTemplateAggregatedListWarningDataItem = OperationWarningsItemDat
 export const NodeTemplateAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NodeTemplateAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NodeTemplateAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NodeTemplateAggregatedListWarningDataItemList>;
+export const NodeTemplateAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NodeTemplateAggregatedListWarningDataItemList>;
 
 export type NodeTemplateAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -14535,9 +14441,8 @@ export type NodeTypesScopedListWarningDataItem = OperationWarningsItemDataItem;
 export const NodeTypesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NodeTypesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NodeTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NodeTypesScopedListWarningDataItemList>;
+export const NodeTypesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NodeTypesScopedListWarningDataItemList>;
 
 export interface NodeTypesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -14581,9 +14486,8 @@ export const NodeTypeAggregatedListWarningDataItem = AcceleratorTypeAggregatedLi
 
 export type NodeTypeAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NodeTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NodeTypeAggregatedListWarningDataItemList>;
+export const NodeTypeAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NodeTypeAggregatedListWarningDataItemList>;
 
 export type NodeTypeAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -14706,9 +14610,8 @@ export const PacketMirroringsScopedListWarningDataItem =
 
 export type PacketMirroringsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const PacketMirroringsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<PacketMirroringsScopedListWarningDataItemList>;
+export const PacketMirroringsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<PacketMirroringsScopedListWarningDataItemList>;
 
 export type PacketMirroringsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -14818,14 +14721,8 @@ export interface PacketMirroringMirroredResourceInfoInstanceInfo {
   /** Resource URL to the virtual machine instance which is being mirrored. */
   url?: string;
 }
-export const PacketMirroringMirroredResourceInfoInstanceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    canonicalUrl: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PacketMirroringMirroredResourceInfoInstanceInfo",
-}) as any as S.Schema<PacketMirroringMirroredResourceInfoInstanceInfo>;
+export const PacketMirroringMirroredResourceInfoInstanceInfo =
+  PacketMirroringForwardingRuleInfo as any as S.Schema<PacketMirroringMirroredResourceInfoInstanceInfo>;
 
 export type PacketMirroringMirroredResourceInfoInstanceInfoList =
   Array<PacketMirroringMirroredResourceInfoInstanceInfo>;
@@ -14839,14 +14736,8 @@ export interface PacketMirroringMirroredResourceInfoSubnetInfo {
   /** Output only. [Output Only] Unique identifier for the subnetwork; defined by the server. */
   canonicalUrl?: string;
 }
-export const PacketMirroringMirroredResourceInfoSubnetInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    canonicalUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PacketMirroringMirroredResourceInfoSubnetInfo",
-}) as any as S.Schema<PacketMirroringMirroredResourceInfoSubnetInfo>;
+export const PacketMirroringMirroredResourceInfoSubnetInfo =
+  PacketMirroringNetworkInfo as any as S.Schema<PacketMirroringMirroredResourceInfoSubnetInfo>;
 
 export type PacketMirroringMirroredResourceInfoSubnetInfoList =
   Array<PacketMirroringMirroredResourceInfoSubnetInfo>;
@@ -14954,9 +14845,8 @@ export const PacketMirroringAggregatedListWarningDataItem =
 
 export type PacketMirroringAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const PacketMirroringAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<PacketMirroringAggregatedListWarningDataItemList>;
+export const PacketMirroringAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<PacketMirroringAggregatedListWarningDataItemList>;
 
 export type PacketMirroringAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -15114,9 +15004,8 @@ export const PublicDelegatedPrefixAggregatedListWarningDataItem =
 
 export type PublicDelegatedPrefixAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const PublicDelegatedPrefixAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<PublicDelegatedPrefixAggregatedListWarningDataItemList>;
+export const PublicDelegatedPrefixAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<PublicDelegatedPrefixAggregatedListWarningDataItemList>;
 
 export interface PublicDelegatedPrefixAggregatedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -15143,9 +15032,8 @@ export const PublicDelegatedPrefixesScopedListWarningDataItem =
 
 export type PublicDelegatedPrefixesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const PublicDelegatedPrefixesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<PublicDelegatedPrefixesScopedListWarningDataItemList>;
+export const PublicDelegatedPrefixesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<PublicDelegatedPrefixesScopedListWarningDataItemList>;
 
 export type PublicDelegatedPrefixesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -15477,9 +15365,8 @@ export const CommitmentAggregatedListWarningDataItem = AcceleratorTypeAggregated
 
 export type CommitmentAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const CommitmentAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<CommitmentAggregatedListWarningDataItemList>;
+export const CommitmentAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<CommitmentAggregatedListWarningDataItemList>;
 
 export interface CommitmentAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -15574,11 +15461,7 @@ export interface CommitmentParams {
   /** Input only. Resource manager tags to be bound to the commitment. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const CommitmentParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "CommitmentParams" }) as any as S.Schema<CommitmentParams>;
+export const CommitmentParams = BackendBucketParams as any as S.Schema<CommitmentParams>;
 
 export type CommitmentCategoryEnum = "CATEGORY_UNSPECIFIED" | "LICENSE" | "MACHINE";
 export const CommitmentCategoryEnum = S.String;
@@ -15775,11 +15658,7 @@ export interface ReservationParams {
   /** Input only. Resource manager tags to be bound to the reservation. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const ReservationParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "ReservationParams" }) as any as S.Schema<ReservationParams>;
+export const ReservationParams = BackendBucketParams as any as S.Schema<ReservationParams>;
 
 export type ReservationAdvancedDeploymentControlReservationOperationalModeEnum =
   | "ALL_CAPACITY"
@@ -16026,9 +15905,8 @@ export const CommitmentsScopedListWarningDataItem = AcceleratorTypeAggregatedLis
 
 export type CommitmentsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const CommitmentsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<CommitmentsScopedListWarningDataItemList>;
+export const CommitmentsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<CommitmentsScopedListWarningDataItemList>;
 
 export type CommitmentsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -16200,9 +16078,8 @@ export const CompositeHealthCheckAggregatedListWarningDataItem = OperationWarnin
 
 export type CompositeHealthCheckAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const CompositeHealthCheckAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<CompositeHealthCheckAggregatedListWarningDataItemList>;
+export const CompositeHealthCheckAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<CompositeHealthCheckAggregatedListWarningDataItemList>;
 
 export interface CompositeHealthCheckAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -16259,9 +16136,8 @@ export const CompositeHealthChecksScopedListWarningDataItem = OperationWarningsI
 
 export type CompositeHealthChecksScopedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const CompositeHealthChecksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<CompositeHealthChecksScopedListWarningDataItemList>;
+export const CompositeHealthChecksScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<CompositeHealthChecksScopedListWarningDataItemList>;
 
 export interface CompositeHealthChecksScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -16422,9 +16298,8 @@ export const HealthAggregationPolicyAggregatedListWarningDataItem = OperationWar
 
 export type HealthAggregationPolicyAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const HealthAggregationPolicyAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthAggregationPolicyAggregatedListWarningDataItemList>;
+export const HealthAggregationPolicyAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthAggregationPolicyAggregatedListWarningDataItemList>;
 
 export type HealthAggregationPolicyAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -16535,9 +16410,8 @@ export const HealthAggregationPoliciesScopedListWarningDataItem = OperationWarni
 
 export type HealthAggregationPoliciesScopedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const HealthAggregationPoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthAggregationPoliciesScopedListWarningDataItemList>;
+export const HealthAggregationPoliciesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthAggregationPoliciesScopedListWarningDataItemList>;
 
 export type HealthAggregationPoliciesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -16772,9 +16646,8 @@ export const HealthCheckServicesScopedListWarningDataItem =
 
 export type HealthCheckServicesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const HealthCheckServicesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<HealthCheckServicesScopedListWarningDataItemList>;
+export const HealthCheckServicesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<HealthCheckServicesScopedListWarningDataItemList>;
 
 export interface HealthCheckServicesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -16854,9 +16727,8 @@ export const HealthCheckServiceAggregatedListWarningDataItem = OperationWarnings
 
 export type HealthCheckServiceAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const HealthCheckServiceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthCheckServiceAggregatedListWarningDataItemList>;
+export const HealthCheckServiceAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthCheckServiceAggregatedListWarningDataItemList>;
 
 export interface HealthCheckServiceAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -17031,9 +16903,8 @@ export type HealthSourcesScopedListWarningDataItem = OperationWarningsItemDataIt
 export const HealthSourcesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type HealthSourcesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const HealthSourcesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthSourcesScopedListWarningDataItemList>;
+export const HealthSourcesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthSourcesScopedListWarningDataItemList>;
 
 export interface HealthSourcesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -17108,9 +16979,8 @@ export type HealthSourceAggregatedListWarningDataItem = OperationWarningsItemDat
 export const HealthSourceAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type HealthSourceAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const HealthSourceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthSourceAggregatedListWarningDataItemList>;
+export const HealthSourceAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthSourceAggregatedListWarningDataItemList>;
 
 export interface HealthSourceAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -17236,9 +17106,8 @@ export const NotificationEndpointAggregatedListWarningDataItem =
 
 export type NotificationEndpointAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NotificationEndpointAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NotificationEndpointAggregatedListWarningDataItemList>;
+export const NotificationEndpointAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NotificationEndpointAggregatedListWarningDataItemList>;
 
 export interface NotificationEndpointAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -17295,9 +17164,8 @@ export const NotificationEndpointsScopedListWarningDataItem = OperationWarningsI
 
 export type NotificationEndpointsScopedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const NotificationEndpointsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NotificationEndpointsScopedListWarningDataItemList>;
+export const NotificationEndpointsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NotificationEndpointsScopedListWarningDataItemList>;
 
 export interface NotificationEndpointsScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -17505,9 +17373,8 @@ export type ReservationsScopedListWarningDataItem = OperationWarningsItemDataIte
 export const ReservationsScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ReservationsScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ReservationsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ReservationsScopedListWarningDataItemList>;
+export const ReservationsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ReservationsScopedListWarningDataItemList>;
 
 export interface ReservationsScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -17582,9 +17449,8 @@ export type ReservationAggregatedListWarningDataItem = OperationWarningsItemData
 export const ReservationAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ReservationAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ReservationAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ReservationAggregatedListWarningDataItemList>;
+export const ReservationAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ReservationAggregatedListWarningDataItemList>;
 
 export interface ReservationAggregatedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -17675,9 +17541,8 @@ export type ResourcePolicyAggregatedListWarningDataItem = OperationWarningsItemD
 export const ResourcePolicyAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ResourcePolicyAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ResourcePolicyAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ResourcePolicyAggregatedListWarningDataItemList>;
+export const ResourcePolicyAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ResourcePolicyAggregatedListWarningDataItemList>;
 
 export type ResourcePolicyAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -18137,9 +18002,8 @@ export const ResourcePoliciesScopedListWarningDataItem =
 
 export type ResourcePoliciesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ResourcePoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ResourcePoliciesScopedListWarningDataItemList>;
+export const ResourcePoliciesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ResourcePoliciesScopedListWarningDataItemList>;
 
 export interface ResourcePoliciesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -18749,11 +18613,7 @@ export interface RouterParams {
   /** Tag keys/values directly bound to this resource. The field is allowed for INSERT only. The keys/values to set on the resource should be specified in either ID { : } or Namespaced format { : }. For example the following are valid inputs: * {"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"} * {"123/environment" : "production", "345/abc" : "xyz"} Note: * Invalid combinations of ID & namespaced format is not supported. For instance: {"123/environment" : "tagValues/444"} is invalid. * Inconsistent format is not supported. For instance: {"tagKeys/333" : "tagValues/444", "123/env" : "prod"} is invalid. */
   resourceManagerTags?: StringMap;
 }
-export const RouterParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "RouterParams" }) as any as S.Schema<RouterParams>;
+export const RouterParams = BackendBucketParams as any as S.Schema<RouterParams>;
 
 /** Represents a Cloud Router resource. For more information about Cloud Router, read theCloud Router overview. */
 export interface Router {
@@ -18818,9 +18678,8 @@ export type RoutersScopedListWarningDataItem = OperationWarningsItemDataItem;
 export const RoutersScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type RoutersScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const RoutersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<RoutersScopedListWarningDataItemList>;
+export const RoutersScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<RoutersScopedListWarningDataItemList>;
 
 export type RoutersScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -18894,9 +18753,8 @@ export const RouterAggregatedListWarningDataItem = AcceleratorTypeAggregatedList
 
 export type RouterAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RouterAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RouterAggregatedListWarningDataItemList>;
+export const RouterAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RouterAggregatedListWarningDataItemList>;
 
 export type RouterAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -19052,9 +18910,8 @@ export const SecurityPoliciesAggregatedListWarningDataItem =
 
 export type SecurityPoliciesAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const SecurityPoliciesAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<SecurityPoliciesAggregatedListWarningDataItemList>;
+export const SecurityPoliciesAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<SecurityPoliciesAggregatedListWarningDataItemList>;
 
 export interface SecurityPoliciesAggregatedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -19406,9 +19263,8 @@ export type SecurityPoliciesScopedListWarningDataItem = OperationWarningsItemDat
 export const SecurityPoliciesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SecurityPoliciesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SecurityPoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SecurityPoliciesScopedListWarningDataItemList>;
+export const SecurityPoliciesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SecurityPoliciesScopedListWarningDataItemList>;
 
 export type SecurityPoliciesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -19588,9 +19444,8 @@ export const ServiceAttachmentAggregatedListWarningDataItem = OperationWarningsI
 
 export type ServiceAttachmentAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const ServiceAttachmentAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ServiceAttachmentAggregatedListWarningDataItemList>;
+export const ServiceAttachmentAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ServiceAttachmentAggregatedListWarningDataItemList>;
 
 export interface ServiceAttachmentAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -19814,9 +19669,8 @@ export type ServiceAttachmentsScopedListWarningDataItem = OperationWarningsItemD
 export const ServiceAttachmentsScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ServiceAttachmentsScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ServiceAttachmentsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ServiceAttachmentsScopedListWarningDataItemList>;
+export const ServiceAttachmentsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ServiceAttachmentsScopedListWarningDataItemList>;
 
 export interface ServiceAttachmentsScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -19965,9 +19819,8 @@ export const SslCertificateAggregatedListWarningDataItem =
 
 export type SslCertificateAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const SslCertificateAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<SslCertificateAggregatedListWarningDataItemList>;
+export const SslCertificateAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<SslCertificateAggregatedListWarningDataItemList>;
 
 export interface SslCertificateAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -20114,9 +19967,8 @@ export type SslCertificatesScopedListWarningDataItem = OperationWarningsItemData
 export const SslCertificatesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SslCertificatesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SslCertificatesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SslCertificatesScopedListWarningDataItemList>;
+export const SslCertificatesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SslCertificatesScopedListWarningDataItemList>;
 
 export type SslCertificatesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -20262,9 +20114,8 @@ export type SslPolicyWarningsItemDataItem = AcceleratorTypeAggregatedListWarning
 export const SslPolicyWarningsItemDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type SslPolicyWarningsItemDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const SslPolicyWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<SslPolicyWarningsItemDataItemList>;
+export const SslPolicyWarningsItemDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<SslPolicyWarningsItemDataItemList>;
 
 export type SslPolicyWarningsItemCodeEnum =
   | "CLEANUP_FAILED"
@@ -20387,9 +20238,8 @@ export type SslPoliciesScopedListWarningDataItem = OperationWarningsItemDataItem
 export const SslPoliciesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SslPoliciesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SslPoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SslPoliciesScopedListWarningDataItemList>;
+export const SslPoliciesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SslPoliciesScopedListWarningDataItemList>;
 
 export type SslPoliciesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -20496,9 +20346,8 @@ export type SslPoliciesAggregatedListWarningDataItem = OperationWarningsItemData
 export const SslPoliciesAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SslPoliciesAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SslPoliciesAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SslPoliciesAggregatedListWarningDataItemList>;
+export const SslPoliciesAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SslPoliciesAggregatedListWarningDataItemList>;
 
 export interface SslPoliciesAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -20591,9 +20440,8 @@ export const StoragePoolsScopedListWarningDataItem = AcceleratorTypeAggregatedLi
 
 export type StoragePoolsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const StoragePoolsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<StoragePoolsScopedListWarningDataItemList>;
+export const StoragePoolsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<StoragePoolsScopedListWarningDataItemList>;
 
 export type StoragePoolsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -20707,10 +20555,8 @@ export const StoragePoolShareSettingsProjectConfig = ShareSettingsProjectConfig;
 export type StoragePoolShareSettingsProjectConfigMap = {
   [key: string]: ShareSettingsProjectConfig | undefined;
 };
-export const StoragePoolShareSettingsProjectConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ShareSettingsProjectConfig,
-) as any as S.Schema<StoragePoolShareSettingsProjectConfigMap>;
+export const StoragePoolShareSettingsProjectConfigMap =
+  ShareSettingsProjectConfigMap as any as S.Schema<StoragePoolShareSettingsProjectConfigMap>;
 
 /** Share settings for the storage pool. */
 export interface StoragePoolShareSettings {
@@ -20728,11 +20574,7 @@ export interface StoragePoolParams {
   /** Input only. Resource manager tags to be bound to the storage pool. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const StoragePoolParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "StoragePoolParams" }) as any as S.Schema<StoragePoolParams>;
+export const StoragePoolParams = BackendBucketParams as any as S.Schema<StoragePoolParams>;
 
 export type StoragePoolCapacityProvisioningTypeEnum = "ADVANCED" | "STANDARD" | "UNSPECIFIED";
 export const StoragePoolCapacityProvisioningTypeEnum = S.String;
@@ -20842,9 +20684,8 @@ export type StoragePoolAggregatedListWarningDataItem = OperationWarningsItemData
 export const StoragePoolAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type StoragePoolAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const StoragePoolAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<StoragePoolAggregatedListWarningDataItemList>;
+export const StoragePoolAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<StoragePoolAggregatedListWarningDataItemList>;
 
 export type StoragePoolAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -21063,9 +20904,8 @@ export type StoragePoolTypesScopedListWarningDataItem = OperationWarningsItemDat
 export const StoragePoolTypesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type StoragePoolTypesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const StoragePoolTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<StoragePoolTypesScopedListWarningDataItemList>;
+export const StoragePoolTypesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<StoragePoolTypesScopedListWarningDataItemList>;
 
 export interface StoragePoolTypesScopedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -21112,9 +20952,8 @@ export type StoragePoolTypeAggregatedListWarningDataItem = OperationWarningsItem
 export const StoragePoolTypeAggregatedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type StoragePoolTypeAggregatedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const StoragePoolTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<StoragePoolTypeAggregatedListWarningDataItemList>;
+export const StoragePoolTypeAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<StoragePoolTypeAggregatedListWarningDataItemList>;
 
 export type StoragePoolTypeAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -21279,9 +21118,8 @@ export const SubnetworkAggregatedListWarningDataItem = AcceleratorTypeAggregated
 
 export type SubnetworkAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const SubnetworkAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<SubnetworkAggregatedListWarningDataItemList>;
+export const SubnetworkAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<SubnetworkAggregatedListWarningDataItemList>;
 
 export interface SubnetworkAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -21337,9 +21175,8 @@ export type SubnetworksScopedListWarningDataItem = OperationWarningsItemDataItem
 export const SubnetworksScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SubnetworksScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SubnetworksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SubnetworksScopedListWarningDataItemList>;
+export const SubnetworksScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SubnetworksScopedListWarningDataItemList>;
 
 export interface SubnetworksScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -21779,9 +21616,8 @@ export const TargetHttpProxiesScopedListWarningDataItem =
 
 export type TargetHttpProxiesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetHttpProxiesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetHttpProxiesScopedListWarningDataItemList>;
+export const TargetHttpProxiesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetHttpProxiesScopedListWarningDataItemList>;
 
 export type TargetHttpProxiesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -22000,9 +21836,8 @@ export type TargetHttpsProxiesScopedListWarningDataItem = OperationWarningsItemD
 export const TargetHttpsProxiesScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type TargetHttpsProxiesScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const TargetHttpsProxiesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetHttpsProxiesScopedListWarningDataItemList>;
+export const TargetHttpsProxiesScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetHttpsProxiesScopedListWarningDataItemList>;
 
 export type TargetHttpsProxiesScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -22082,9 +21917,8 @@ export const TargetHttpsProxyAggregatedListWarningDataItem = OperationWarningsIt
 
 export type TargetHttpsProxyAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const TargetHttpsProxyAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetHttpsProxyAggregatedListWarningDataItemList>;
+export const TargetHttpsProxyAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetHttpsProxyAggregatedListWarningDataItemList>;
 
 export type TargetHttpsProxyAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -22240,9 +22074,8 @@ export const TargetInstancesScopedListWarningDataItem =
 
 export type TargetInstancesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetInstancesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetInstancesScopedListWarningDataItemList>;
+export const TargetInstancesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetInstancesScopedListWarningDataItemList>;
 
 export interface TargetInstancesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -22339,9 +22172,8 @@ export const TargetInstanceAggregatedListWarningDataItem =
 
 export type TargetInstanceAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetInstanceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetInstanceAggregatedListWarningDataItemList>;
+export const TargetInstanceAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetInstanceAggregatedListWarningDataItemList>;
 
 export type TargetInstanceAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -22463,9 +22295,8 @@ export type TargetPoolsScopedListWarningDataItem = OperationWarningsItemDataItem
 export const TargetPoolsScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type TargetPoolsScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const TargetPoolsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetPoolsScopedListWarningDataItemList>;
+export const TargetPoolsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetPoolsScopedListWarningDataItemList>;
 
 export type TargetPoolsScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -22605,9 +22436,8 @@ export const TargetPoolAggregatedListWarningDataItem = AcceleratorTypeAggregated
 
 export type TargetPoolAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetPoolAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetPoolAggregatedListWarningDataItemList>;
+export const TargetPoolAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetPoolAggregatedListWarningDataItemList>;
 
 export type TargetPoolAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -22762,9 +22592,8 @@ export const TargetTcpProxiesScopedListWarningDataItem =
 
 export type TargetTcpProxiesScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetTcpProxiesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetTcpProxiesScopedListWarningDataItemList>;
+export const TargetTcpProxiesScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetTcpProxiesScopedListWarningDataItemList>;
 
 export interface TargetTcpProxiesScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -22870,9 +22699,8 @@ export const TargetTcpProxyAggregatedListWarningDataItem =
 
 export type TargetTcpProxyAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetTcpProxyAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetTcpProxyAggregatedListWarningDataItemList>;
+export const TargetTcpProxyAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetTcpProxyAggregatedListWarningDataItemList>;
 
 export type TargetTcpProxyAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -23027,9 +22855,8 @@ export const TargetVpnGatewayAggregatedListWarningDataItem = OperationWarningsIt
 
 export type TargetVpnGatewayAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const TargetVpnGatewayAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetVpnGatewayAggregatedListWarningDataItemList>;
+export const TargetVpnGatewayAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetVpnGatewayAggregatedListWarningDataItemList>;
 
 export interface TargetVpnGatewayAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -23114,9 +22941,8 @@ export type TargetVpnGatewaysScopedListWarningDataItem = OperationWarningsItemDa
 export const TargetVpnGatewaysScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type TargetVpnGatewaysScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const TargetVpnGatewaysScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetVpnGatewaysScopedListWarningDataItemList>;
+export const TargetVpnGatewaysScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetVpnGatewaysScopedListWarningDataItemList>;
 
 export type TargetVpnGatewaysScopedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -23294,9 +23120,8 @@ export const UrlMapsAggregatedListWarningDataItem = AcceleratorTypeAggregatedLis
 
 export type UrlMapsAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const UrlMapsAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<UrlMapsAggregatedListWarningDataItemList>;
+export const UrlMapsAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<UrlMapsAggregatedListWarningDataItemList>;
 
 export interface UrlMapsAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -24107,9 +23932,8 @@ export const UrlMapsScopedListWarningDataItem = AcceleratorTypeAggregatedListWar
 
 export type UrlMapsScopedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const UrlMapsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<UrlMapsScopedListWarningDataItemList>;
+export const UrlMapsScopedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<UrlMapsScopedListWarningDataItemList>;
 
 export interface UrlMapsScopedListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -24247,9 +24071,8 @@ export const VpnGatewayAggregatedListWarningDataItem = AcceleratorTypeAggregated
 
 export type VpnGatewayAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const VpnGatewayAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<VpnGatewayAggregatedListWarningDataItemList>;
+export const VpnGatewayAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<VpnGatewayAggregatedListWarningDataItemList>;
 
 export interface VpnGatewayAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -24305,9 +24128,8 @@ export type VpnGatewaysScopedListWarningDataItem = OperationWarningsItemDataItem
 export const VpnGatewaysScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type VpnGatewaysScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const VpnGatewaysScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<VpnGatewaysScopedListWarningDataItemList>;
+export const VpnGatewaysScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<VpnGatewaysScopedListWarningDataItemList>;
 
 export interface VpnGatewaysScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -24506,9 +24328,8 @@ export const VpnTunnelAggregatedListWarningDataItem = AcceleratorTypeAggregatedL
 
 export type VpnTunnelAggregatedListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const VpnTunnelAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<VpnTunnelAggregatedListWarningDataItemList>;
+export const VpnTunnelAggregatedListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<VpnTunnelAggregatedListWarningDataItemList>;
 
 export type VpnTunnelAggregatedListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -24747,9 +24568,8 @@ export type VpnTunnelsScopedListWarningDataItem = OperationWarningsItemDataItem;
 export const VpnTunnelsScopedListWarningDataItem = OperationWarningsItemDataItem;
 
 export type VpnTunnelsScopedListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const VpnTunnelsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<VpnTunnelsScopedListWarningDataItemList>;
+export const VpnTunnelsScopedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<VpnTunnelsScopedListWarningDataItemList>;
 
 export interface VpnTunnelsScopedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -25293,18 +25113,12 @@ export interface LocationPolicyZoneConfiguration {
   /** The URL of the zone. The zone must exist in the region where the request is called. Zones must be represented as valid partial URLs, such as zones/us-central1-a. */
   zone?: string;
 }
-export const LocationPolicyZoneConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LocationPolicyZoneConfiguration",
-}) as any as S.Schema<LocationPolicyZoneConfiguration>;
+export const LocationPolicyZoneConfiguration =
+  DistributionPolicyZoneConfiguration as any as S.Schema<LocationPolicyZoneConfiguration>;
 
 export type LocationPolicyZoneConfigurationList = Array<LocationPolicyZoneConfiguration>;
-export const LocationPolicyZoneConfigurationList = /*@__PURE__*/ S.Array(
-  LocationPolicyZoneConfiguration,
-) as any as S.Schema<LocationPolicyZoneConfigurationList>;
+export const LocationPolicyZoneConfigurationList =
+  DistributionPolicyZoneConfigurationList as any as S.Schema<LocationPolicyZoneConfigurationList>;
 
 /** Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region). */
 export interface LocationPolicy {
@@ -25967,13 +25781,8 @@ export interface NetworksCancelRequestRemovePeeringRequest {
   /** Name of the peering, which should conform to RFC1035. */
   name?: string;
 }
-export const NetworksCancelRequestRemovePeeringRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworksCancelRequestRemovePeeringRequest",
-}) as any as S.Schema<NetworksCancelRequestRemovePeeringRequest>;
+export const NetworksCancelRequestRemovePeeringRequest =
+  RouterNatSubnetworkToNat64 as any as S.Schema<NetworksCancelRequestRemovePeeringRequest>;
 
 export interface CancelRequestRemovePeeringNetworksRequest {
   /** Project ID for this request. */
@@ -27006,11 +26815,7 @@ export interface SnapshotParams {
   /** Input only. Resource manager tags to be bound to the snapshot. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const SnapshotParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "SnapshotParams" }) as any as S.Schema<SnapshotParams>;
+export const SnapshotParams = BackendBucketParams as any as S.Schema<SnapshotParams>;
 
 export type SnapshotSnapshotTypeEnum = "ARCHIVE" | "STANDARD";
 export const SnapshotSnapshotTypeEnum = S.String;
@@ -27633,11 +27438,8 @@ export const DeleteGlobalOrganizationOperationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteGlobalOrganizationOperationsRequest>;
 
 export interface DeleteGlobalOrganizationOperationsResponse {}
-export const DeleteGlobalOrganizationOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGlobalOrganizationOperationsResponse",
-}) as any as S.Schema<DeleteGlobalOrganizationOperationsResponse>;
+export const DeleteGlobalOrganizationOperationsResponse =
+  ResourcePolicyDiskConsistencyGroupPolicy as any as S.Schema<DeleteGlobalOrganizationOperationsResponse>;
 
 export interface DeleteGlobalPublicDelegatedPrefixesRequest {
   /** Name of the PublicDelegatedPrefix resource to delete. */
@@ -29192,9 +28994,8 @@ export const DeleteRegionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegionOperationsRequest>;
 
 export interface DeleteRegionOperationsResponse {}
-export const DeleteRegionOperationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegionOperationsResponse",
-}) as any as S.Schema<DeleteRegionOperationsResponse>;
+export const DeleteRegionOperationsResponse =
+  DeleteGlobalOperationsResponse as any as S.Schema<DeleteRegionOperationsResponse>;
 
 export interface DeleteRegionSecurityPoliciesRequest {
   /** Name of the security policy to delete. */
@@ -30134,9 +29935,8 @@ export const DeleteZoneOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteZoneOperationsRequest>;
 
 export interface DeleteZoneOperationsResponse {}
-export const DeleteZoneOperationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteZoneOperationsResponse",
-}) as any as S.Schema<DeleteZoneOperationsResponse>;
+export const DeleteZoneOperationsResponse =
+  DeleteGlobalOperationsResponse as any as S.Schema<DeleteZoneOperationsResponse>;
 
 export interface DeleteZoneVmExtensionPoliciesRequest {
   /** Project ID for this request. */
@@ -30224,13 +30024,8 @@ export interface GlobalNetworkEndpointGroupsDetachEndpointsRequest {
   /** The list of network endpoints to be detached. */
   networkEndpoints?: NetworkEndpointList;
 }
-export const GlobalNetworkEndpointGroupsDetachEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkEndpoints: S.optional(NetworkEndpointList),
-  }),
-).annotate({
-  identifier: "GlobalNetworkEndpointGroupsDetachEndpointsRequest",
-}) as any as S.Schema<GlobalNetworkEndpointGroupsDetachEndpointsRequest>;
+export const GlobalNetworkEndpointGroupsDetachEndpointsRequest =
+  GlobalNetworkEndpointGroupsAttachEndpointsRequest as any as S.Schema<GlobalNetworkEndpointGroupsDetachEndpointsRequest>;
 
 export interface DetachNetworkEndpointsGlobalNetworkEndpointGroupsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -31032,9 +30827,8 @@ export type FirewallDeniedItem = FirewallAllowedItem;
 export const FirewallDeniedItem = FirewallAllowedItem;
 
 export type FirewallDeniedItemList = Array<FirewallAllowedItem>;
-export const FirewallDeniedItemList = /*@__PURE__*/ S.Array(
-  FirewallAllowedItem,
-) as any as S.Schema<FirewallDeniedItemList>;
+export const FirewallDeniedItemList =
+  FirewallAllowedItemList as any as S.Schema<FirewallDeniedItemList>;
 
 export type FirewallLogConfigMetadataEnum = "EXCLUDE_ALL_METADATA" | "INCLUDE_ALL_METADATA";
 export const FirewallLogConfigMetadataEnum = S.String;
@@ -31379,11 +31173,8 @@ export const GetEffectiveSecurityPoliciesBackendServicesRequest = /*@__PURE__*/ 
 }) as any as S.Schema<GetEffectiveSecurityPoliciesBackendServicesRequest>;
 
 export interface GetEffectiveSecurityPoliciesBackendServicesResponse {}
-export const GetEffectiveSecurityPoliciesBackendServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEffectiveSecurityPoliciesBackendServicesResponse",
-}) as any as S.Schema<GetEffectiveSecurityPoliciesBackendServicesResponse>;
+export const GetEffectiveSecurityPoliciesBackendServicesResponse =
+  ResourcePolicyDiskConsistencyGroupPolicy as any as S.Schema<GetEffectiveSecurityPoliciesBackendServicesResponse>;
 
 export interface GetExternalVpnGatewaysRequest {
   /** Project ID for this request. */
@@ -31575,11 +31366,7 @@ export interface ImageParams {
   /** Input only. Resource manager tags to be bound to the image. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const ImageParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "ImageParams" }) as any as S.Schema<ImageParams>;
+export const ImageParams = BackendBucketParams as any as S.Schema<ImageParams>;
 
 export type ImageSourceTypeEnum = "RAW";
 export const ImageSourceTypeEnum = S.String;
@@ -31953,32 +31740,21 @@ export interface GlobalVmExtensionPolicyLabelSelector {
   /** Optional. Labels as key value pairs. A VM should contain all the pairs specified in this map to be selected; Labels within the LabelSelector are OR'ed. */
   inclusionLabels?: StringMap;
 }
-export const GlobalVmExtensionPolicyLabelSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inclusionLabels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "GlobalVmExtensionPolicyLabelSelector",
-}) as any as S.Schema<GlobalVmExtensionPolicyLabelSelector>;
+export const GlobalVmExtensionPolicyLabelSelector =
+  VmExtensionPolicyLabelSelector as any as S.Schema<GlobalVmExtensionPolicyLabelSelector>;
 
 /** Selector to target VMs for a zone VM extension policy. */
 export interface GlobalVmExtensionPolicyInstanceSelector {
   /** Optional. Labels within the LabelSelector are OR'd. */
   labelSelector?: GlobalVmExtensionPolicyLabelSelector;
 }
-export const GlobalVmExtensionPolicyInstanceSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelSelector: S.optional(GlobalVmExtensionPolicyLabelSelector),
-  }),
-).annotate({
-  identifier: "GlobalVmExtensionPolicyInstanceSelector",
-}) as any as S.Schema<GlobalVmExtensionPolicyInstanceSelector>;
+export const GlobalVmExtensionPolicyInstanceSelector =
+  VmExtensionPolicyInstanceSelector as any as S.Schema<GlobalVmExtensionPolicyInstanceSelector>;
 
 export type GlobalVmExtensionPolicyInstanceSelectorList =
   Array<GlobalVmExtensionPolicyInstanceSelector>;
-export const GlobalVmExtensionPolicyInstanceSelectorList = /*@__PURE__*/ S.Array(
-  GlobalVmExtensionPolicyInstanceSelector,
-) as any as S.Schema<GlobalVmExtensionPolicyInstanceSelectorList>;
+export const GlobalVmExtensionPolicyInstanceSelectorList =
+  VmExtensionPolicyInstanceSelectorList as any as S.Schema<GlobalVmExtensionPolicyInstanceSelectorList>;
 
 export type GlobalVmExtensionPolicyScopedResourceStatusEnum =
   | "SCOPED_RESOURCE_STATUS_DELETING"
@@ -32112,22 +31888,14 @@ export interface GlobalVmExtensionPolicyExtensionPolicy {
   /** Optional. String configuration. Any string payload that the extension understands. */
   stringConfig?: string;
 }
-export const GlobalVmExtensionPolicyExtensionPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pinnedVersion: S.optional(S.String),
-    stringConfig: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GlobalVmExtensionPolicyExtensionPolicy",
-}) as any as S.Schema<GlobalVmExtensionPolicyExtensionPolicy>;
+export const GlobalVmExtensionPolicyExtensionPolicy =
+  VmExtensionPolicyExtensionPolicy as any as S.Schema<GlobalVmExtensionPolicyExtensionPolicy>;
 
 export type GlobalVmExtensionPolicyExtensionPolicyMap = {
   [key: string]: GlobalVmExtensionPolicyExtensionPolicy | undefined;
 };
-export const GlobalVmExtensionPolicyExtensionPolicyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GlobalVmExtensionPolicyExtensionPolicy,
-) as any as S.Schema<GlobalVmExtensionPolicyExtensionPolicyMap>;
+export const GlobalVmExtensionPolicyExtensionPolicyMap =
+  VmExtensionPolicyExtensionPolicyMap as any as S.Schema<GlobalVmExtensionPolicyExtensionPolicyMap>;
 
 /** Message describing GlobalVmExtensionPolicy object. */
 export interface GlobalVmExtensionPolicy {
@@ -33915,11 +33683,7 @@ export interface ImageView {
   /** The Image resource. */
   image?: Image;
 }
-export const ImageView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(Image),
-  }),
-).annotate({ identifier: "ImageView" }) as any as S.Schema<ImageView>;
+export const ImageView = ImageFamilyView as any as S.Schema<ImageView>;
 
 export interface GetInstanceGroupManagerResizeRequestsRequest {
   /** Name of the href="/compute/docs/regions-zones/#available">zone scoping this request. Name should conform to RFC1035. */
@@ -35894,11 +35658,7 @@ export interface LicenseParams {
   /** Input only. Resource manager tags to be bound to the license. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const LicenseParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "LicenseParams" }) as any as S.Schema<LicenseParams>;
+export const LicenseParams = BackendBucketParams as any as S.Schema<LicenseParams>;
 
 export interface LicenseResourceRequirements {
   /** [Input Only] Deprecated. This field no longer reflects the minimum number of guest cpus required to use the Instance. */
@@ -36187,11 +35947,7 @@ export interface MachineImageParams {
   /** Input only. Resource manager tags to be bound to the machine image. Tag keys and values have the same definition as resource manager tags. Keys and values can be either in numeric format, such as `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as `{org_id|project_id}/{tag_key_short_name}` and `{tag_value_short_name}`. The field is ignored (both PUT & PATCH) when empty. */
   resourceManagerTags?: StringMap;
 }
-export const MachineImageParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceManagerTags: S.optional(StringMap),
-  }),
-).annotate({ identifier: "MachineImageParams" }) as any as S.Schema<MachineImageParams>;
+export const MachineImageParams = BackendBucketParams as any as S.Schema<MachineImageParams>;
 
 export interface SourceDiskEncryptionKey {
   /** URL of the disk attached to the source instance. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk */
@@ -36662,9 +36418,8 @@ export type VmEndpointNatMappingsListWarningDataItem = OperationWarningsItemData
 export const VmEndpointNatMappingsListWarningDataItem = OperationWarningsItemDataItem;
 
 export type VmEndpointNatMappingsListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const VmEndpointNatMappingsListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<VmEndpointNatMappingsListWarningDataItemList>;
+export const VmEndpointNatMappingsListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<VmEndpointNatMappingsListWarningDataItemList>;
 
 export interface VmEndpointNatMappingsListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -39069,9 +38824,8 @@ export type RegionQuotaStatusWarningDataItem = OperationWarningsItemDataItem;
 export const RegionQuotaStatusWarningDataItem = OperationWarningsItemDataItem;
 
 export type RegionQuotaStatusWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const RegionQuotaStatusWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<RegionQuotaStatusWarningDataItemList>;
+export const RegionQuotaStatusWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<RegionQuotaStatusWarningDataItemList>;
 
 export interface RegionQuotaStatusWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -40906,9 +40660,8 @@ export type RouteWarningsItemDataItem = AcceleratorTypeAggregatedListWarningData
 export const RouteWarningsItemDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type RouteWarningsItemDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RouteWarningsItemDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RouteWarningsItemDataItemList>;
+export const RouteWarningsItemDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RouteWarningsItemDataItemList>;
 
 export type RouteWarningsItemCodeEnum =
   | "CLEANUP_FAILED"
@@ -45464,9 +45217,8 @@ export type AcceleratorTypeListWarningDataItem = OperationWarningsItemDataItem;
 export const AcceleratorTypeListWarningDataItem = OperationWarningsItemDataItem;
 
 export type AcceleratorTypeListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const AcceleratorTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<AcceleratorTypeListWarningDataItemList>;
+export const AcceleratorTypeListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<AcceleratorTypeListWarningDataItemList>;
 
 export interface AcceleratorTypeListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -45547,9 +45299,8 @@ export type AddressListWarningDataItem = OperationWarningsItemDataItem;
 export const AddressListWarningDataItem = OperationWarningsItemDataItem;
 
 export type AddressListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const AddressListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<AddressListWarningDataItemList>;
+export const AddressListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<AddressListWarningDataItemList>;
 
 export type AddressListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -45729,9 +45480,8 @@ export type AutoscalerListWarningDataItem = OperationWarningsItemDataItem;
 export const AutoscalerListWarningDataItem = OperationWarningsItemDataItem;
 
 export type AutoscalerListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const AutoscalerListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<AutoscalerListWarningDataItemList>;
+export const AutoscalerListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<AutoscalerListWarningDataItemList>;
 
 export type AutoscalerListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -45948,9 +45698,8 @@ export const BackendBucketListWarningDataItem = AcceleratorTypeAggregatedListWar
 
 export type BackendBucketListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const BackendBucketListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<BackendBucketListWarningDataItemList>;
+export const BackendBucketListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<BackendBucketListWarningDataItemList>;
 
 export interface BackendBucketListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -46028,9 +45777,8 @@ export type BackendServiceListWarningDataItem = OperationWarningsItemDataItem;
 export const BackendServiceListWarningDataItem = OperationWarningsItemDataItem;
 
 export type BackendServiceListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const BackendServiceListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<BackendServiceListWarningDataItemList>;
+export const BackendServiceListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<BackendServiceListWarningDataItemList>;
 
 export type BackendServiceListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -46238,9 +45986,8 @@ export const RoutersListBgpRoutesWarningDataItem = AcceleratorTypeAggregatedList
 
 export type RoutersListBgpRoutesWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RoutersListBgpRoutesWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RoutersListBgpRoutesWarningDataItemList>;
+export const RoutersListBgpRoutesWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RoutersListBgpRoutesWarningDataItemList>;
 
 export type RoutersListBgpRoutesWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -46361,9 +46108,8 @@ export type CrossSiteNetworkListWarningDataItem = OperationWarningsItemDataItem;
 export const CrossSiteNetworkListWarningDataItem = OperationWarningsItemDataItem;
 
 export type CrossSiteNetworkListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const CrossSiteNetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<CrossSiteNetworkListWarningDataItemList>;
+export const CrossSiteNetworkListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<CrossSiteNetworkListWarningDataItemList>;
 
 export type CrossSiteNetworkListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -46513,9 +46259,8 @@ export type DiskListWarningDataItem = OperationWarningsItemDataItem;
 export const DiskListWarningDataItem = OperationWarningsItemDataItem;
 
 export type DiskListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const DiskListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<DiskListWarningDataItemList>;
+export const DiskListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<DiskListWarningDataItemList>;
 
 export interface DiskListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -46653,9 +46398,8 @@ export type StoragePoolListDisksWarningDataItem = OperationWarningsItemDataItem;
 export const StoragePoolListDisksWarningDataItem = OperationWarningsItemDataItem;
 
 export type StoragePoolListDisksWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const StoragePoolListDisksWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<StoragePoolListDisksWarningDataItemList>;
+export const StoragePoolListDisksWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<StoragePoolListDisksWarningDataItemList>;
 
 export type StoragePoolListDisksWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -46772,9 +46516,8 @@ export type DiskTypeListWarningDataItem = AcceleratorTypeAggregatedListWarningDa
 export const DiskTypeListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type DiskTypeListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const DiskTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<DiskTypeListWarningDataItemList>;
+export const DiskTypeListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<DiskTypeListWarningDataItemList>;
 
 export type DiskTypeListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -47028,14 +46771,8 @@ export interface RegionInstanceGroupManagersListErrorsResponse {
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
 }
-export const RegionInstanceGroupManagersListErrorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: InstanceManagedByIgmErrorList,
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegionInstanceGroupManagersListErrorsResponse",
-}) as any as S.Schema<RegionInstanceGroupManagersListErrorsResponse>;
+export const RegionInstanceGroupManagersListErrorsResponse =
+  InstanceGroupManagersListErrorsResponse as any as S.Schema<RegionInstanceGroupManagersListErrorsResponse>;
 
 export interface ListExternalVpnGatewaysRequest {
   /** The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) */
@@ -47108,9 +46845,8 @@ export type ExternalVpnGatewayListWarningDataItem = OperationWarningsItemDataIte
 export const ExternalVpnGatewayListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ExternalVpnGatewayListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ExternalVpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ExternalVpnGatewayListWarningDataItemList>;
+export const ExternalVpnGatewayListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ExternalVpnGatewayListWarningDataItemList>;
 
 export interface ExternalVpnGatewayListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -47225,9 +46961,8 @@ export const FirewallPolicyListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type FirewallPolicyListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const FirewallPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<FirewallPolicyListWarningDataItemList>;
+export const FirewallPolicyListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<FirewallPolicyListWarningDataItemList>;
 
 export interface FirewallPolicyListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -47301,9 +47036,8 @@ export type FirewallListWarningDataItem = AcceleratorTypeAggregatedListWarningDa
 export const FirewallListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type FirewallListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const FirewallListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<FirewallListWarningDataItemList>;
+export const FirewallListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<FirewallListWarningDataItemList>;
 
 export type FirewallListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -47448,9 +47182,8 @@ export type ForwardingRuleListWarningDataItem = OperationWarningsItemDataItem;
 export const ForwardingRuleListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ForwardingRuleListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ForwardingRuleListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ForwardingRuleListWarningDataItemList>;
+export const ForwardingRuleListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ForwardingRuleListWarningDataItemList>;
 
 export interface ForwardingRuleListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -47534,9 +47267,8 @@ export const FutureReservationsListResponseWarningDataItem = OperationWarningsIt
 
 export type FutureReservationsListResponseWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const FutureReservationsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<FutureReservationsListResponseWarningDataItemList>;
+export const FutureReservationsListResponseWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<FutureReservationsListResponseWarningDataItemList>;
 
 export type FutureReservationsListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -47746,9 +47478,8 @@ export type NetworkEndpointGroupListWarningDataItem = OperationWarningsItemDataI
 export const NetworkEndpointGroupListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NetworkEndpointGroupListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NetworkEndpointGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NetworkEndpointGroupListWarningDataItemList>;
+export const NetworkEndpointGroupListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NetworkEndpointGroupListWarningDataItemList>;
 
 export interface NetworkEndpointGroupListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -47859,9 +47590,8 @@ export type OperationListWarningDataItem = AcceleratorTypeAggregatedListWarningD
 export const OperationListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type OperationListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const OperationListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<OperationListWarningDataItemList>;
+export const OperationListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<OperationListWarningDataItemList>;
 
 export interface OperationListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -48003,9 +47733,8 @@ export const PublicDelegatedPrefixListWarningDataItem =
 
 export type PublicDelegatedPrefixListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const PublicDelegatedPrefixListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<PublicDelegatedPrefixListWarningDataItemList>;
+export const PublicDelegatedPrefixListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<PublicDelegatedPrefixListWarningDataItemList>;
 
 export interface PublicDelegatedPrefixListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -48091,9 +47820,8 @@ export type GlobalVmExtensionPolicyListWarningDataItem = OperationWarningsItemDa
 export const GlobalVmExtensionPolicyListWarningDataItem = OperationWarningsItemDataItem;
 
 export type GlobalVmExtensionPolicyListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const GlobalVmExtensionPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<GlobalVmExtensionPolicyListWarningDataItemList>;
+export const GlobalVmExtensionPolicyListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<GlobalVmExtensionPolicyListWarningDataItemList>;
 
 export type GlobalVmExtensionPolicyListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -48210,9 +47938,8 @@ export type HealthCheckListWarningDataItem = OperationWarningsItemDataItem;
 export const HealthCheckListWarningDataItem = OperationWarningsItemDataItem;
 
 export type HealthCheckListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const HealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthCheckListWarningDataItemList>;
+export const HealthCheckListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthCheckListWarningDataItemList>;
 
 export type HealthCheckListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -48327,9 +48054,8 @@ export const HostsListResponseWarningDataItem = AcceleratorTypeAggregatedListWar
 
 export type HostsListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const HostsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<HostsListResponseWarningDataItemList>;
+export const HostsListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<HostsListResponseWarningDataItemList>;
 
 export type HostsListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -48447,9 +48173,8 @@ export const HttpHealthCheckListWarningDataItem = AcceleratorTypeAggregatedListW
 
 export type HttpHealthCheckListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const HttpHealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<HttpHealthCheckListWarningDataItemList>;
+export const HttpHealthCheckListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<HttpHealthCheckListWarningDataItemList>;
 
 export type HttpHealthCheckListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -48604,9 +48329,8 @@ export const HttpsHealthCheckListWarningDataItem = AcceleratorTypeAggregatedList
 
 export type HttpsHealthCheckListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const HttpsHealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<HttpsHealthCheckListWarningDataItemList>;
+export const HttpsHealthCheckListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<HttpsHealthCheckListWarningDataItemList>;
 
 export interface HttpsHealthCheckListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -48716,9 +48440,8 @@ export type ImageListWarningDataItem = OperationWarningsItemDataItem;
 export const ImageListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ImageListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ImageListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ImageListWarningDataItemList>;
+export const ImageListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ImageListWarningDataItemList>;
 
 export interface ImageListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -48800,9 +48523,8 @@ export type ImageViewsListResponseWarningDataItem = OperationWarningsItemDataIte
 export const ImageViewsListResponseWarningDataItem = OperationWarningsItemDataItem;
 
 export type ImageViewsListResponseWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ImageViewsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ImageViewsListResponseWarningDataItemList>;
+export const ImageViewsListResponseWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ImageViewsListResponseWarningDataItemList>;
 
 export type ImageViewsListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -49055,9 +48777,8 @@ export type InstanceGroupManagerListWarningDataItem = OperationWarningsItemDataI
 export const InstanceGroupManagerListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InstanceGroupManagerListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InstanceGroupManagerListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstanceGroupManagerListWarningDataItemList>;
+export const InstanceGroupManagerListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstanceGroupManagerListWarningDataItemList>;
 
 export type InstanceGroupManagerListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -49172,9 +48893,8 @@ export type InstanceGroupListWarningDataItem = OperationWarningsItemDataItem;
 export const InstanceGroupListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InstanceGroupListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InstanceGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstanceGroupListWarningDataItemList>;
+export const InstanceGroupListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstanceGroupListWarningDataItemList>;
 
 export type InstanceGroupListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -49285,9 +49005,8 @@ export type InstanceListWarningDataItem = OperationWarningsItemDataItem;
 export const InstanceListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InstanceListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InstanceListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstanceListWarningDataItemList>;
+export const InstanceListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstanceListWarningDataItemList>;
 
 export type InstanceListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -49456,9 +49175,8 @@ export const InstanceGroupsListInstancesWarningDataItem =
 
 export type InstanceGroupsListInstancesWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstanceGroupsListInstancesWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstanceGroupsListInstancesWarningDataItemList>;
+export const InstanceGroupsListInstancesWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstanceGroupsListInstancesWarningDataItemList>;
 
 export interface InstanceGroupsListInstancesWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -49603,9 +49321,8 @@ export const RegionInstanceGroupsListInstancesWarningDataItem = OperationWarning
 
 export type RegionInstanceGroupsListInstancesWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const RegionInstanceGroupsListInstancesWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<RegionInstanceGroupsListInstancesWarningDataItemList>;
+export const RegionInstanceGroupsListInstancesWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<RegionInstanceGroupsListInstancesWarningDataItemList>;
 
 export type RegionInstanceGroupsListInstancesWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -49750,9 +49467,8 @@ export type InstanceTemplateListWarningDataItem = OperationWarningsItemDataItem;
 export const InstanceTemplateListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InstanceTemplateListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InstanceTemplateListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstanceTemplateListWarningDataItemList>;
+export const InstanceTemplateListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstanceTemplateListWarningDataItemList>;
 
 export interface InstanceTemplateListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -49869,9 +49585,8 @@ export const ListInstantSnapshotGroupsWarningDataItem =
 
 export type ListInstantSnapshotGroupsWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ListInstantSnapshotGroupsWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ListInstantSnapshotGroupsWarningDataItemList>;
+export const ListInstantSnapshotGroupsWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ListInstantSnapshotGroupsWarningDataItemList>;
 
 export interface ListInstantSnapshotGroupsWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -49967,9 +49682,8 @@ export const InstantSnapshotListWarningDataItem = AcceleratorTypeAggregatedListW
 
 export type InstantSnapshotListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InstantSnapshotListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InstantSnapshotListWarningDataItemList>;
+export const InstantSnapshotListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InstantSnapshotListWarningDataItemList>;
 
 export type InstantSnapshotListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -50083,9 +49797,8 @@ export const InterconnectAttachmentGroupsListResponseWarningDataItem =
 
 export type InterconnectAttachmentGroupsListResponseWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const InterconnectAttachmentGroupsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InterconnectAttachmentGroupsListResponseWarningDataItemList>;
+export const InterconnectAttachmentGroupsListResponseWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InterconnectAttachmentGroupsListResponseWarningDataItemList>;
 
 export type InterconnectAttachmentGroupsListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -50242,9 +49955,8 @@ export type InterconnectAttachmentListWarningDataItem = OperationWarningsItemDat
 export const InterconnectAttachmentListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InterconnectAttachmentListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InterconnectAttachmentListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InterconnectAttachmentListWarningDataItemList>;
+export const InterconnectAttachmentListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InterconnectAttachmentListWarningDataItemList>;
 
 export interface InterconnectAttachmentListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -50364,9 +50076,8 @@ export const InterconnectGroupsListResponseWarningDataItem = OperationWarningsIt
 
 export type InterconnectGroupsListResponseWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const InterconnectGroupsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InterconnectGroupsListResponseWarningDataItemList>;
+export const InterconnectGroupsListResponseWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InterconnectGroupsListResponseWarningDataItemList>;
 
 export interface InterconnectGroupsListResponseWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -50451,9 +50162,8 @@ export type InterconnectLocationListWarningDataItem = OperationWarningsItemDataI
 export const InterconnectLocationListWarningDataItem = OperationWarningsItemDataItem;
 
 export type InterconnectLocationListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InterconnectLocationListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InterconnectLocationListWarningDataItemList>;
+export const InterconnectLocationListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InterconnectLocationListWarningDataItemList>;
 
 export type InterconnectLocationListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -50610,9 +50320,8 @@ export const InterconnectRemoteLocationListWarningDataItem =
 
 export type InterconnectRemoteLocationListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InterconnectRemoteLocationListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InterconnectRemoteLocationListWarningDataItemList>;
+export const InterconnectRemoteLocationListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InterconnectRemoteLocationListWarningDataItemList>;
 
 export interface InterconnectRemoteLocationListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -50725,9 +50434,8 @@ export const InterconnectListWarningDataItem = AcceleratorTypeAggregatedListWarn
 
 export type InterconnectListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const InterconnectListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<InterconnectListWarningDataItemList>;
+export const InterconnectListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<InterconnectListWarningDataItemList>;
 
 export interface InterconnectListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -50809,9 +50517,8 @@ export const LicensesListResponseWarningDataItem = AcceleratorTypeAggregatedList
 
 export type LicensesListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const LicensesListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<LicensesListResponseWarningDataItemList>;
+export const LicensesListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<LicensesListResponseWarningDataItemList>;
 
 export type LicensesListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -50920,9 +50627,8 @@ export type MachineImageListWarningDataItem = OperationWarningsItemDataItem;
 export const MachineImageListWarningDataItem = OperationWarningsItemDataItem;
 
 export type MachineImageListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const MachineImageListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<MachineImageListWarningDataItemList>;
+export const MachineImageListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<MachineImageListWarningDataItemList>;
 
 export type MachineImageListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -51039,9 +50745,8 @@ export const MachineTypeListWarningDataItem = AcceleratorTypeAggregatedListWarni
 
 export type MachineTypeListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const MachineTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<MachineTypeListWarningDataItemList>;
+export const MachineTypeListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<MachineTypeListWarningDataItemList>;
 
 export type MachineTypeListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -51276,9 +50981,8 @@ export const ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem =
 
 export type ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList =
   Array<OperationErrorErrorsItemErrorDetailsItem>;
-export const ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList = /*@__PURE__*/ S.Array(
-  OperationErrorErrorsItemErrorDetailsItem,
-) as any as S.Schema<ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList>;
+export const ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList =
+  OperationErrorErrorsItemErrorDetailsItemList as any as S.Schema<ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList>;
 
 export interface ManagedInstanceLastAttemptErrorsErrorsItem {
   /** [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED. */
@@ -51518,9 +51222,8 @@ export type ManagedRulesetListWarningDataItem = OperationWarningsItemDataItem;
 export const ManagedRulesetListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ManagedRulesetListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ManagedRulesetListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ManagedRulesetListWarningDataItemList>;
+export const ManagedRulesetListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ManagedRulesetListWarningDataItemList>;
 
 export interface ManagedRulesetListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -51634,9 +51337,8 @@ export const RoutersListNamedSetsWarningDataItem = AcceleratorTypeAggregatedList
 
 export type RoutersListNamedSetsWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RoutersListNamedSetsWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RoutersListNamedSetsWarningDataItemList>;
+export const RoutersListNamedSetsWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RoutersListNamedSetsWarningDataItemList>;
 
 export interface RoutersListNamedSetsWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -51758,9 +51460,8 @@ export type NetworkAttachmentListWarningDataItem = OperationWarningsItemDataItem
 export const NetworkAttachmentListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NetworkAttachmentListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NetworkAttachmentListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NetworkAttachmentListWarningDataItemList>;
+export const NetworkAttachmentListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NetworkAttachmentListWarningDataItemList>;
 
 export interface NetworkAttachmentListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -52005,9 +51706,8 @@ export const NetworkEndpointGroupsListNetworkEndpointsWarningDataItem =
 
 export type NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList>;
+export const NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList>;
 
 export interface NetworkEndpointGroupsListNetworkEndpointsWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -52205,9 +51905,8 @@ export type NetworkProfilesListResponseWarningDataItem = OperationWarningsItemDa
 export const NetworkProfilesListResponseWarningDataItem = OperationWarningsItemDataItem;
 
 export type NetworkProfilesListResponseWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NetworkProfilesListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NetworkProfilesListResponseWarningDataItemList>;
+export const NetworkProfilesListResponseWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NetworkProfilesListResponseWarningDataItemList>;
 
 export type NetworkProfilesListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -52361,9 +52060,8 @@ export type NetworkListWarningDataItem = AcceleratorTypeAggregatedListWarningDat
 export const NetworkListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type NetworkListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const NetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<NetworkListWarningDataItemList>;
+export const NetworkListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<NetworkListWarningDataItemList>;
 
 export interface NetworkListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -52477,9 +52175,8 @@ export type NodeGroupListWarningDataItem = OperationWarningsItemDataItem;
 export const NodeGroupListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NodeGroupListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NodeGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NodeGroupListWarningDataItemList>;
+export const NodeGroupListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NodeGroupListWarningDataItemList>;
 
 export interface NodeGroupListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -52662,9 +52359,8 @@ export type NodeGroupsListNodesWarningDataItem = OperationWarningsItemDataItem;
 export const NodeGroupsListNodesWarningDataItem = OperationWarningsItemDataItem;
 
 export type NodeGroupsListNodesWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NodeGroupsListNodesWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NodeGroupsListNodesWarningDataItemList>;
+export const NodeGroupsListNodesWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NodeGroupsListNodesWarningDataItemList>;
 
 export type NodeGroupsListNodesWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -52776,9 +52472,8 @@ export type NodeTemplateListWarningDataItem = OperationWarningsItemDataItem;
 export const NodeTemplateListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NodeTemplateListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NodeTemplateListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NodeTemplateListWarningDataItemList>;
+export const NodeTemplateListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NodeTemplateListWarningDataItemList>;
 
 export type NodeTemplateListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -52889,9 +52584,8 @@ export type NodeTypeListWarningDataItem = OperationWarningsItemDataItem;
 export const NodeTypeListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NodeTypeListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NodeTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NodeTypeListWarningDataItemList>;
+export const NodeTypeListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NodeTypeListWarningDataItemList>;
 
 export type NodeTypeListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -53001,9 +52695,8 @@ export type SecurityPolicyListWarningDataItem = OperationWarningsItemDataItem;
 export const SecurityPolicyListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SecurityPolicyListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SecurityPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SecurityPolicyListWarningDataItemList>;
+export const SecurityPolicyListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SecurityPolicyListWarningDataItemList>;
 
 export type SecurityPolicyListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -53114,9 +52807,8 @@ export type PacketMirroringListWarningDataItem = OperationWarningsItemDataItem;
 export const PacketMirroringListWarningDataItem = OperationWarningsItemDataItem;
 
 export type PacketMirroringListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const PacketMirroringListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<PacketMirroringListWarningDataItemList>;
+export const PacketMirroringListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<PacketMirroringListWarningDataItemList>;
 
 export type PacketMirroringListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -53311,9 +53003,8 @@ export const ExchangedPeeringRoutesListWarningDataItem =
 
 export type ExchangedPeeringRoutesListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ExchangedPeeringRoutesListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ExchangedPeeringRoutesListWarningDataItemList>;
+export const ExchangedPeeringRoutesListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ExchangedPeeringRoutesListWarningDataItemList>;
 
 export interface ExchangedPeeringRoutesListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -53404,9 +53095,7 @@ export const InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem =
 export type InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
 export const InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList =
-  /*@__PURE__*/ S.Array(
-    OperationWarningsItemDataItem,
-  ) as any as S.Schema<InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList>;
+  InstanceGroupManagerResizeRequestsListResponseWarningDataItemList as any as S.Schema<InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList>;
 
 export type InstanceGroupManagersListPerInstanceConfigsRespWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -53762,9 +53451,8 @@ export type PreviewFeatureListWarningDataItem = OperationWarningsItemDataItem;
 export const PreviewFeatureListWarningDataItem = OperationWarningsItemDataItem;
 
 export type PreviewFeatureListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const PreviewFeatureListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<PreviewFeatureListWarningDataItemList>;
+export const PreviewFeatureListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<PreviewFeatureListWarningDataItemList>;
 
 export type PreviewFeatureListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -53917,9 +53605,8 @@ export const PublicAdvertisedPrefixListWarningDataItem =
 
 export type PublicAdvertisedPrefixListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const PublicAdvertisedPrefixListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<PublicAdvertisedPrefixListWarningDataItemList>;
+export const PublicAdvertisedPrefixListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<PublicAdvertisedPrefixListWarningDataItemList>;
 
 export interface PublicAdvertisedPrefixListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -54099,9 +53786,8 @@ export type InstanceListReferrersWarningDataItem = OperationWarningsItemDataItem
 export const InstanceListReferrersWarningDataItem = OperationWarningsItemDataItem;
 
 export type InstanceListReferrersWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const InstanceListReferrersWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<InstanceListReferrersWarningDataItemList>;
+export const InstanceListReferrersWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<InstanceListReferrersWarningDataItemList>;
 
 export interface InstanceListReferrersWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -54185,9 +53871,8 @@ export const RegionAutoscalerListWarningDataItem = AcceleratorTypeAggregatedList
 
 export type RegionAutoscalerListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RegionAutoscalerListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RegionAutoscalerListWarningDataItemList>;
+export const RegionAutoscalerListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RegionAutoscalerListWarningDataItemList>;
 
 export type RegionAutoscalerListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -54368,9 +54053,8 @@ export type CommitmentListWarningDataItem = OperationWarningsItemDataItem;
 export const CommitmentListWarningDataItem = OperationWarningsItemDataItem;
 
 export type CommitmentListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const CommitmentListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<CommitmentListWarningDataItemList>;
+export const CommitmentListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<CommitmentListWarningDataItemList>;
 
 export type CommitmentListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -54515,9 +54199,8 @@ export type CompositeHealthCheckListWarningDataItem = OperationWarningsItemDataI
 export const CompositeHealthCheckListWarningDataItem = OperationWarningsItemDataItem;
 
 export type CompositeHealthCheckListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const CompositeHealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<CompositeHealthCheckListWarningDataItemList>;
+export const CompositeHealthCheckListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<CompositeHealthCheckListWarningDataItemList>;
 
 export interface CompositeHealthCheckListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -54631,9 +54314,8 @@ export const RegionDiskTypeListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type RegionDiskTypeListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RegionDiskTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RegionDiskTypeListWarningDataItemList>;
+export const RegionDiskTypeListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RegionDiskTypeListWarningDataItemList>;
 
 export type RegionDiskTypeListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -54782,9 +54464,8 @@ export const HealthAggregationPolicyListWarningDataItem =
 
 export type HealthAggregationPolicyListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const HealthAggregationPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<HealthAggregationPolicyListWarningDataItemList>;
+export const HealthAggregationPolicyListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<HealthAggregationPolicyListWarningDataItemList>;
 
 export interface HealthAggregationPolicyListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -54933,9 +54614,8 @@ export type HealthCheckServicesListWarningDataItem = OperationWarningsItemDataIt
 export const HealthCheckServicesListWarningDataItem = OperationWarningsItemDataItem;
 
 export type HealthCheckServicesListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const HealthCheckServicesListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<HealthCheckServicesListWarningDataItemList>;
+export const HealthCheckServicesListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<HealthCheckServicesListWarningDataItemList>;
 
 export interface HealthCheckServicesListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -55050,9 +54730,8 @@ export const HealthSourceListWarningDataItem = AcceleratorTypeAggregatedListWarn
 
 export type HealthSourceListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const HealthSourceListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<HealthSourceListWarningDataItemList>;
+export const HealthSourceListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<HealthSourceListWarningDataItemList>;
 
 export interface HealthSourceListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -55171,9 +54850,7 @@ export const RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem
 export type RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
 export const RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
-  /*@__PURE__*/ S.Array(
-    AcceleratorTypeAggregatedListWarningDataItem,
-  ) as any as S.Schema<RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList>;
+  RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItemList as any as S.Schema<RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList>;
 
 export interface RegionInstanceGroupManagerResizeRequestsListResponseWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -55264,9 +54941,8 @@ export const RegionInstanceGroupManagerListWarningDataItem = OperationWarningsIt
 
 export type RegionInstanceGroupManagerListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const RegionInstanceGroupManagerListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<RegionInstanceGroupManagerListWarningDataItemList>;
+export const RegionInstanceGroupManagerListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<RegionInstanceGroupManagerListWarningDataItemList>;
 
 export type RegionInstanceGroupManagerListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -55383,9 +55059,8 @@ export type RegionInstanceGroupListWarningDataItem = OperationWarningsItemDataIt
 export const RegionInstanceGroupListWarningDataItem = OperationWarningsItemDataItem;
 
 export type RegionInstanceGroupListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const RegionInstanceGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<RegionInstanceGroupListWarningDataItemList>;
+export const RegionInstanceGroupListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<RegionInstanceGroupListWarningDataItemList>;
 
 export type RegionInstanceGroupListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -55665,9 +55340,8 @@ export type NotificationEndpointListWarningDataItem = OperationWarningsItemDataI
 export const NotificationEndpointListWarningDataItem = OperationWarningsItemDataItem;
 
 export type NotificationEndpointListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const NotificationEndpointListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<NotificationEndpointListWarningDataItemList>;
+export const NotificationEndpointListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<NotificationEndpointListWarningDataItemList>;
 
 export type NotificationEndpointListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -55844,9 +55518,8 @@ export type RegionListWarningDataItem = OperationWarningsItemDataItem;
 export const RegionListWarningDataItem = OperationWarningsItemDataItem;
 
 export type RegionListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const RegionListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<RegionListWarningDataItemList>;
+export const RegionListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<RegionListWarningDataItemList>;
 
 export interface RegionListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -55963,9 +55636,8 @@ export type SnapshotListWarningDataItem = OperationWarningsItemDataItem;
 export const SnapshotListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SnapshotListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SnapshotListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SnapshotListWarningDataItemList>;
+export const SnapshotListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SnapshotListWarningDataItemList>;
 
 export type SnapshotListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -56111,9 +55783,8 @@ export const SslCertificateListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type SslCertificateListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const SslCertificateListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<SslCertificateListWarningDataItemList>;
+export const SslCertificateListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<SslCertificateListWarningDataItemList>;
 
 export interface SslCertificateListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -56197,9 +55868,8 @@ export const SslPoliciesListWarningDataItem = AcceleratorTypeAggregatedListWarni
 
 export type SslPoliciesListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const SslPoliciesListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<SslPoliciesListWarningDataItemList>;
+export const SslPoliciesListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<SslPoliciesListWarningDataItemList>;
 
 export type SslPoliciesListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -56311,9 +55981,8 @@ export type TargetHttpProxyListWarningDataItem = OperationWarningsItemDataItem;
 export const TargetHttpProxyListWarningDataItem = OperationWarningsItemDataItem;
 
 export type TargetHttpProxyListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const TargetHttpProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetHttpProxyListWarningDataItemList>;
+export const TargetHttpProxyListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetHttpProxyListWarningDataItemList>;
 
 export type TargetHttpProxyListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -56460,9 +56129,8 @@ export type TargetHttpsProxyListWarningDataItem = OperationWarningsItemDataItem;
 export const TargetHttpsProxyListWarningDataItem = OperationWarningsItemDataItem;
 
 export type TargetHttpsProxyListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const TargetHttpsProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetHttpsProxyListWarningDataItemList>;
+export const TargetHttpsProxyListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetHttpsProxyListWarningDataItemList>;
 
 export interface TargetHttpsProxyListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -56578,9 +56246,8 @@ export const TargetTcpProxyListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type TargetTcpProxyListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetTcpProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetTcpProxyListWarningDataItemList>;
+export const TargetTcpProxyListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetTcpProxyListWarningDataItemList>;
 
 export interface TargetTcpProxyListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -56661,9 +56328,8 @@ export type UrlMapListWarningDataItem = OperationWarningsItemDataItem;
 export const UrlMapListWarningDataItem = OperationWarningsItemDataItem;
 
 export type UrlMapListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const UrlMapListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<UrlMapListWarningDataItemList>;
+export const UrlMapListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<UrlMapListWarningDataItemList>;
 
 export type UrlMapListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -56777,9 +56443,8 @@ export type ZoneListWarningDataItem = AcceleratorTypeAggregatedListWarningDataIt
 export const ZoneListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type ZoneListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ZoneListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ZoneListWarningDataItemList>;
+export const ZoneListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ZoneListWarningDataItemList>;
 
 export type ZoneListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -56929,9 +56594,8 @@ export const ReliabilityRisksListResponseWarningDataItem =
 
 export type ReliabilityRisksListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ReliabilityRisksListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ReliabilityRisksListResponseWarningDataItemList>;
+export const ReliabilityRisksListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ReliabilityRisksListResponseWarningDataItemList>;
 
 export interface ReliabilityRisksListResponseWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -57062,9 +56726,8 @@ export const ReservationBlocksListResponseWarningDataItem =
 
 export type ReservationBlocksListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ReservationBlocksListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ReservationBlocksListResponseWarningDataItemList>;
+export const ReservationBlocksListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ReservationBlocksListResponseWarningDataItemList>;
 
 export interface ReservationBlocksListResponseWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -57179,9 +56842,8 @@ export type ReservationListWarningDataItem = OperationWarningsItemDataItem;
 export const ReservationListWarningDataItem = OperationWarningsItemDataItem;
 
 export type ReservationListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const ReservationListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ReservationListWarningDataItemList>;
+export const ReservationListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ReservationListWarningDataItemList>;
 
 export interface ReservationListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -57272,9 +56934,8 @@ export const ReservationSlotsListResponseWarningDataItem =
 
 export type ReservationSlotsListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ReservationSlotsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ReservationSlotsListResponseWarningDataItemList>;
+export const ReservationSlotsListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ReservationSlotsListResponseWarningDataItemList>;
 
 export type ReservationSlotsListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -57427,9 +57088,8 @@ export const ReservationSubBlocksListResponseWarningDataItem = OperationWarnings
 
 export type ReservationSubBlocksListResponseWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const ReservationSubBlocksListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<ReservationSubBlocksListResponseWarningDataItemList>;
+export const ReservationSubBlocksListResponseWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<ReservationSubBlocksListResponseWarningDataItemList>;
 
 export interface ReservationSubBlocksListResponseWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -57552,9 +57212,8 @@ export const ResourcePolicyListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type ResourcePolicyListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ResourcePolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ResourcePolicyListWarningDataItemList>;
+export const ResourcePolicyListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ResourcePolicyListWarningDataItemList>;
 
 export interface ResourcePolicyListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -57671,9 +57330,8 @@ export const RolloutPlansListResponseWarningDataItem = AcceleratorTypeAggregated
 
 export type RolloutPlansListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RolloutPlansListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RolloutPlansListResponseWarningDataItemList>;
+export const RolloutPlansListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RolloutPlansListResponseWarningDataItemList>;
 
 export interface RolloutPlansListResponseWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -57757,9 +57415,8 @@ export const RolloutsListResponseWarningDataItem = AcceleratorTypeAggregatedList
 
 export type RolloutsListResponseWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RolloutsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RolloutsListResponseWarningDataItemList>;
+export const RolloutsListResponseWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RolloutsListResponseWarningDataItemList>;
 
 export type RolloutsListResponseWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -57879,9 +57536,8 @@ export const RoutersListRoutePoliciesWarningDataItem = AcceleratorTypeAggregated
 
 export type RoutersListRoutePoliciesWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RoutersListRoutePoliciesWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RoutersListRoutePoliciesWarningDataItemList>;
+export const RoutersListRoutePoliciesWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RoutersListRoutePoliciesWarningDataItemList>;
 
 export type RoutersListRoutePoliciesWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -58035,9 +57691,8 @@ export type RouterListWarningDataItem = AcceleratorTypeAggregatedListWarningData
 export const RouterListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type RouterListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const RouterListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<RouterListWarningDataItemList>;
+export const RouterListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<RouterListWarningDataItemList>;
 
 export interface RouterListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -58145,9 +57800,8 @@ export type RouteListWarningDataItem = OperationWarningsItemDataItem;
 export const RouteListWarningDataItem = OperationWarningsItemDataItem;
 
 export type RouteListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const RouteListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<RouteListWarningDataItemList>;
+export const RouteListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<RouteListWarningDataItemList>;
 
 export interface RouteListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -58259,9 +57913,8 @@ export const ServiceAttachmentListWarningDataItem = AcceleratorTypeAggregatedLis
 
 export type ServiceAttachmentListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const ServiceAttachmentListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<ServiceAttachmentListWarningDataItemList>;
+export const ServiceAttachmentListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<ServiceAttachmentListWarningDataItemList>;
 
 export type ServiceAttachmentListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -58460,9 +58113,8 @@ export const StoragePoolListWarningDataItem = AcceleratorTypeAggregatedListWarni
 
 export type StoragePoolListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const StoragePoolListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<StoragePoolListWarningDataItemList>;
+export const StoragePoolListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<StoragePoolListWarningDataItemList>;
 
 export type StoragePoolListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -58613,9 +58265,8 @@ export const StoragePoolTypeListWarningDataItem = AcceleratorTypeAggregatedListW
 
 export type StoragePoolTypeListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const StoragePoolTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<StoragePoolTypeListWarningDataItemList>;
+export const StoragePoolTypeListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<StoragePoolTypeListWarningDataItemList>;
 
 export interface StoragePoolTypeListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -58707,9 +58358,8 @@ export type SubnetworkListWarningDataItem = OperationWarningsItemDataItem;
 export const SubnetworkListWarningDataItem = OperationWarningsItemDataItem;
 
 export type SubnetworkListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SubnetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SubnetworkListWarningDataItemList>;
+export const SubnetworkListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SubnetworkListWarningDataItemList>;
 
 export type SubnetworkListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -58819,9 +58469,8 @@ export type TargetGrpcProxyListWarningDataItem = OperationWarningsItemDataItem;
 export const TargetGrpcProxyListWarningDataItem = OperationWarningsItemDataItem;
 
 export type TargetGrpcProxyListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const TargetGrpcProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<TargetGrpcProxyListWarningDataItemList>;
+export const TargetGrpcProxyListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<TargetGrpcProxyListWarningDataItemList>;
 
 export type TargetGrpcProxyListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -59033,9 +58682,8 @@ export const TargetInstanceListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type TargetInstanceListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetInstanceListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetInstanceListWarningDataItemList>;
+export const TargetInstanceListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetInstanceListWarningDataItemList>;
 
 export interface TargetInstanceListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -59116,9 +58764,8 @@ export type TargetPoolListWarningDataItem = AcceleratorTypeAggregatedListWarning
 export const TargetPoolListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type TargetPoolListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetPoolListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetPoolListWarningDataItemList>;
+export const TargetPoolListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetPoolListWarningDataItemList>;
 
 export type TargetPoolListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -59261,9 +58908,8 @@ export const TargetSslProxyListWarningDataItem = AcceleratorTypeAggregatedListWa
 
 export type TargetSslProxyListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetSslProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetSslProxyListWarningDataItemList>;
+export const TargetSslProxyListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetSslProxyListWarningDataItemList>;
 
 export interface TargetSslProxyListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -59382,9 +59028,8 @@ export const TargetVpnGatewayListWarningDataItem = AcceleratorTypeAggregatedList
 
 export type TargetVpnGatewayListWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const TargetVpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<TargetVpnGatewayListWarningDataItemList>;
+export const TargetVpnGatewayListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<TargetVpnGatewayListWarningDataItemList>;
 
 export type TargetVpnGatewayListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -59557,9 +59202,8 @@ export const BackendBucketListUsableWarningDataItem = AcceleratorTypeAggregatedL
 
 export type BackendBucketListUsableWarningDataItemList =
   Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const BackendBucketListUsableWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<BackendBucketListUsableWarningDataItemList>;
+export const BackendBucketListUsableWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<BackendBucketListUsableWarningDataItemList>;
 
 export interface BackendBucketListUsableWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -59638,9 +59282,8 @@ export type BackendServiceListUsableWarningDataItem = OperationWarningsItemDataI
 export const BackendServiceListUsableWarningDataItem = OperationWarningsItemDataItem;
 
 export type BackendServiceListUsableWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const BackendServiceListUsableWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<BackendServiceListUsableWarningDataItemList>;
+export const BackendServiceListUsableWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<BackendServiceListUsableWarningDataItemList>;
 
 export type BackendServiceListUsableWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -59936,9 +59579,8 @@ export type SubnetworksScopedWarningWarningDataItem = OperationWarningsItemDataI
 export const SubnetworksScopedWarningWarningDataItem = OperationWarningsItemDataItem;
 
 export type SubnetworksScopedWarningWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const SubnetworksScopedWarningWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<SubnetworksScopedWarningWarningDataItemList>;
+export const SubnetworksScopedWarningWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<SubnetworksScopedWarningWarningDataItemList>;
 
 export interface SubnetworksScopedWarningWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -60013,9 +59655,8 @@ export const UsableSubnetworksAggregatedListWarningDataItem = OperationWarningsI
 
 export type UsableSubnetworksAggregatedListWarningDataItemList =
   Array<OperationWarningsItemDataItem>;
-export const UsableSubnetworksAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<UsableSubnetworksAggregatedListWarningDataItemList>;
+export const UsableSubnetworksAggregatedListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<UsableSubnetworksAggregatedListWarningDataItemList>;
 
 export interface UsableSubnetworksAggregatedListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -60103,9 +59744,8 @@ export type VpnGatewayListWarningDataItem = AcceleratorTypeAggregatedListWarning
 export const VpnGatewayListWarningDataItem = AcceleratorTypeAggregatedListWarningDataItem;
 
 export type VpnGatewayListWarningDataItemList = Array<AcceleratorTypeAggregatedListWarningDataItem>;
-export const VpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
-  AcceleratorTypeAggregatedListWarningDataItem,
-) as any as S.Schema<VpnGatewayListWarningDataItemList>;
+export const VpnGatewayListWarningDataItemList =
+  AcceleratorTypeAggregatedListWarningDataItemList as any as S.Schema<VpnGatewayListWarningDataItemList>;
 
 export type VpnGatewayListWarningCodeEnum =
   | "CLEANUP_FAILED"
@@ -60248,9 +59888,8 @@ export type VpnTunnelListWarningDataItem = OperationWarningsItemDataItem;
 export const VpnTunnelListWarningDataItem = OperationWarningsItemDataItem;
 
 export type VpnTunnelListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const VpnTunnelListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<VpnTunnelListWarningDataItemList>;
+export const VpnTunnelListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<VpnTunnelListWarningDataItemList>;
 
 export interface VpnTunnelListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -60363,9 +60002,8 @@ export type WireGroupListWarningDataItem = OperationWarningsItemDataItem;
 export const WireGroupListWarningDataItem = OperationWarningsItemDataItem;
 
 export type WireGroupListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const WireGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<WireGroupListWarningDataItemList>;
+export const WireGroupListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<WireGroupListWarningDataItemList>;
 
 export interface WireGroupListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -60495,9 +60133,8 @@ export type XpnHostListWarningDataItem = OperationWarningsItemDataItem;
 export const XpnHostListWarningDataItem = OperationWarningsItemDataItem;
 
 export type XpnHostListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const XpnHostListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<XpnHostListWarningDataItemList>;
+export const XpnHostListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<XpnHostListWarningDataItemList>;
 
 export interface XpnHostListWarning {
   /** [Output Only] A human-readable description of the warning code. */
@@ -60673,9 +60310,8 @@ export type VmExtensionPolicyListWarningDataItem = OperationWarningsItemDataItem
 export const VmExtensionPolicyListWarningDataItem = OperationWarningsItemDataItem;
 
 export type VmExtensionPolicyListWarningDataItemList = Array<OperationWarningsItemDataItem>;
-export const VmExtensionPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
-  OperationWarningsItemDataItem,
-) as any as S.Schema<VmExtensionPolicyListWarningDataItemList>;
+export const VmExtensionPolicyListWarningDataItemList =
+  OperationWarningsItemDataItemList as any as S.Schema<VmExtensionPolicyListWarningDataItemList>;
 
 export interface VmExtensionPolicyListWarning {
   /** [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response. */
@@ -63207,13 +62843,8 @@ export interface InstanceGroupManagersRecreateInstancesRequest {
   /** The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
   instances?: StringList;
 }
-export const InstanceGroupManagersRecreateInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InstanceGroupManagersRecreateInstancesRequest",
-}) as any as S.Schema<InstanceGroupManagersRecreateInstancesRequest>;
+export const InstanceGroupManagersRecreateInstancesRequest =
+  InstanceGroupManagersAbandonInstancesRequest as any as S.Schema<InstanceGroupManagersRecreateInstancesRequest>;
 
 export interface RecreateInstancesInstanceGroupManagersRequest {
   /** The name of the managed instance group. */
@@ -63395,13 +63026,8 @@ export interface TargetPoolsRemoveHealthCheckRequest {
   /** Health check URL to be removed. This can be a full or valid partial URL. For example, the following are valid URLs: - https://www.googleapis.com/compute/beta/projects/project/global/httpHealthChecks/health-check - projects/project/global/httpHealthChecks/health-check - global/httpHealthChecks/health-check */
   healthChecks?: HealthCheckReferenceList;
 }
-export const TargetPoolsRemoveHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthChecks: S.optional(HealthCheckReferenceList),
-  }),
-).annotate({
-  identifier: "TargetPoolsRemoveHealthCheckRequest",
-}) as any as S.Schema<TargetPoolsRemoveHealthCheckRequest>;
+export const TargetPoolsRemoveHealthCheckRequest =
+  TargetPoolsAddHealthCheckRequest as any as S.Schema<TargetPoolsRemoveHealthCheckRequest>;
 
 export interface RemoveHealthCheckTargetPoolsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -63437,13 +63063,8 @@ export interface InstanceGroupsRemoveInstancesRequest {
   /** The list of instances to remove from the instance group. */
   instances?: InstanceReferenceList;
 }
-export const InstanceGroupsRemoveInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(InstanceReferenceList),
-  }),
-).annotate({
-  identifier: "InstanceGroupsRemoveInstancesRequest",
-}) as any as S.Schema<InstanceGroupsRemoveInstancesRequest>;
+export const InstanceGroupsRemoveInstancesRequest =
+  InstanceGroupsAddInstancesRequest as any as S.Schema<InstanceGroupsRemoveInstancesRequest>;
 
 export interface RemoveInstancesInstanceGroupsRequest {
   /** The name of the zone where the instance group is located. */
@@ -63479,13 +63100,8 @@ export interface TargetPoolsRemoveInstanceRequest {
   /** URLs of the instances to be removed from target pool. */
   instances?: InstanceReferenceList;
 }
-export const TargetPoolsRemoveInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(InstanceReferenceList),
-  }),
-).annotate({
-  identifier: "TargetPoolsRemoveInstanceRequest",
-}) as any as S.Schema<TargetPoolsRemoveInstanceRequest>;
+export const TargetPoolsRemoveInstanceRequest =
+  InstanceGroupsAddInstancesRequest as any as S.Schema<TargetPoolsRemoveInstanceRequest>;
 
 export interface RemoveInstanceTargetPoolsRequest {
   /** Name of the TargetPool resource to remove instances from. */
@@ -63578,13 +63194,8 @@ export interface DisksRemoveResourcePoliciesRequest {
   /** Resource policies to be removed from this disk. */
   resourcePolicies?: StringList;
 }
-export const DisksRemoveResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourcePolicies: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "DisksRemoveResourcePoliciesRequest",
-}) as any as S.Schema<DisksRemoveResourcePoliciesRequest>;
+export const DisksRemoveResourcePoliciesRequest =
+  DisksAddResourcePoliciesRequest as any as S.Schema<DisksRemoveResourcePoliciesRequest>;
 
 export interface RemoveResourcePoliciesDisksRequest {
   /** The name of the zone for this request. */
@@ -63620,13 +63231,8 @@ export interface InstancesRemoveResourcePoliciesRequest {
   /** Resource policies to be removed from this instance. */
   resourcePolicies?: StringList;
 }
-export const InstancesRemoveResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourcePolicies: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InstancesRemoveResourcePoliciesRequest",
-}) as any as S.Schema<InstancesRemoveResourcePoliciesRequest>;
+export const InstancesRemoveResourcePoliciesRequest =
+  DisksAddResourcePoliciesRequest as any as S.Schema<InstancesRemoveResourcePoliciesRequest>;
 
 export interface RemoveResourcePoliciesInstancesRequest {
   /** The instance name for this request. */
@@ -64148,11 +63754,8 @@ export interface RegionDisksResizeRequest {
   /** The new size of the regional persistent disk, which is specified in GB. */
   sizeGb?: string;
 }
-export const RegionDisksResizeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sizeGb: S.optional(S.String),
-  }),
-).annotate({ identifier: "RegionDisksResizeRequest" }) as any as S.Schema<RegionDisksResizeRequest>;
+export const RegionDisksResizeRequest =
+  DisksResizeRequest as any as S.Schema<RegionDisksResizeRequest>;
 
 export interface ResizeRegionDisksRequest {
   /** The project ID for this request. */
@@ -64283,13 +63886,8 @@ export interface InstanceGroupManagersResumeInstancesRequest {
   /** The URLs of one or more instances to resume. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
   instances?: StringList;
 }
-export const InstanceGroupManagersResumeInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InstanceGroupManagersResumeInstancesRequest",
-}) as any as S.Schema<InstanceGroupManagersResumeInstancesRequest>;
+export const InstanceGroupManagersResumeInstancesRequest =
+  InstanceGroupManagersAbandonInstancesRequest as any as S.Schema<InstanceGroupManagersResumeInstancesRequest>;
 
 export interface ResumeInstancesInstanceGroupManagersRequest {
   /** The name of the managed instance group. */
@@ -64406,11 +64004,8 @@ export const SendDiagnosticInterruptInstancesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SendDiagnosticInterruptInstancesRequest>;
 
 export interface SendDiagnosticInterruptInstancesResponse {}
-export const SendDiagnosticInterruptInstancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendDiagnosticInterruptInstancesResponse",
-}) as any as S.Schema<SendDiagnosticInterruptInstancesResponse>;
+export const SendDiagnosticInterruptInstancesResponse =
+  ResourcePolicyDiskConsistencyGroupPolicy as any as S.Schema<SendDiagnosticInterruptInstancesResponse>;
 
 export interface TargetSslProxiesSetBackendServiceRequest {
   /** The URL of the new BackendService resource for the targetSslProxy. */
@@ -64455,13 +64050,8 @@ export interface TargetTcpProxiesSetBackendServiceRequest {
   /** The URL of the new BackendService resource for the targetTcpProxy. */
   service?: string;
 }
-export const TargetTcpProxiesSetBackendServiceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TargetTcpProxiesSetBackendServiceRequest",
-}) as any as S.Schema<TargetTcpProxiesSetBackendServiceRequest>;
+export const TargetTcpProxiesSetBackendServiceRequest =
+  TargetSslProxiesSetBackendServiceRequest as any as S.Schema<TargetTcpProxiesSetBackendServiceRequest>;
 
 export interface SetBackendServiceTargetTcpProxiesRequest {
   /** Name of the TargetTcpProxy resource whose BackendService resource is to be set. */
@@ -64575,13 +64165,8 @@ export interface TargetSslProxiesSetCertificateMapRequest {
   /** URL of the Certificate Map to associate with this TargetSslProxy. Accepted format is//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}. */
   certificateMap?: string;
 }
-export const TargetSslProxiesSetCertificateMapRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateMap: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TargetSslProxiesSetCertificateMapRequest",
-}) as any as S.Schema<TargetSslProxiesSetCertificateMapRequest>;
+export const TargetSslProxiesSetCertificateMapRequest =
+  TargetHttpsProxiesSetCertificateMapRequest as any as S.Schema<TargetSslProxiesSetCertificateMapRequest>;
 
 export interface SetCertificateMapTargetSslProxiesRequest {
   /** Name of the TargetSslProxy resource whose CertificateMap is to be set. The name must be 1-63 characters long, and comply with RFC1035. */
@@ -65816,13 +65401,8 @@ export interface RegionInstanceGroupManagersSetTemplateRequest {
   /** URL of the InstanceTemplate resource from which all new instances will be created. */
   instanceTemplate?: string;
 }
-export const RegionInstanceGroupManagersSetTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceTemplate: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegionInstanceGroupManagersSetTemplateRequest",
-}) as any as S.Schema<RegionInstanceGroupManagersSetTemplateRequest>;
+export const RegionInstanceGroupManagersSetTemplateRequest =
+  InstanceGroupManagersSetInstanceTemplateRequest as any as S.Schema<RegionInstanceGroupManagersSetTemplateRequest>;
 
 export interface SetInstanceTemplateRegionInstanceGroupManagersRequest {
   /** Project ID for this request. */
@@ -65860,12 +65440,8 @@ export interface RegionSetLabelsRequest {
   /** The fingerprint of the previous set of labels for this resource, used to detect conflicts. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. Make a get() request to the resource to get the latest fingerprint. */
   labelFingerprint?: string;
 }
-export const RegionSetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    labelFingerprint: S.optional(S.String),
-  }),
-).annotate({ identifier: "RegionSetLabelsRequest" }) as any as S.Schema<RegionSetLabelsRequest>;
+export const RegionSetLabelsRequest =
+  BulkSetLabelsRequest as any as S.Schema<RegionSetLabelsRequest>;
 
 export interface SetLabelsAddressesRequest {
   /** Project ID for this request. */
@@ -65934,12 +65510,8 @@ export interface GlobalSetLabelsRequest {
   /** The fingerprint of the previous set of labels for this resource, used to detect conflicts. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash when updating or changing labels, otherwise the request will fail with error412 conditionNotMet. Make a get() request to the resource to get the latest fingerprint. */
   labelFingerprint?: string;
 }
-export const GlobalSetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labels: S.optional(StringMap),
-    labelFingerprint: S.optional(S.String),
-  }),
-).annotate({ identifier: "GlobalSetLabelsRequest" }) as any as S.Schema<GlobalSetLabelsRequest>;
+export const GlobalSetLabelsRequest =
+  BulkSetLabelsRequest as any as S.Schema<GlobalSetLabelsRequest>;
 
 export interface SetLabelsExternalVpnGatewaysRequest {
   /** Project ID for this request. */
@@ -67318,13 +66890,8 @@ export interface TargetHttpsProxiesSetSslCertificatesRequest {
   /** New set of SslCertificate resources to associate with this TargetHttpsProxy resource. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. */
   sslCertificates?: StringList;
 }
-export const TargetHttpsProxiesSetSslCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sslCertificates: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TargetHttpsProxiesSetSslCertificatesRequest",
-}) as any as S.Schema<TargetHttpsProxiesSetSslCertificatesRequest>;
+export const TargetHttpsProxiesSetSslCertificatesRequest =
+  RegionTargetHttpsProxiesSetSslCertificatesRequest as any as S.Schema<TargetHttpsProxiesSetSslCertificatesRequest>;
 
 export interface SetSslCertificatesTargetHttpsProxiesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -67357,13 +66924,8 @@ export interface TargetSslProxiesSetSslCertificatesRequest {
   /** New set of URLs to SslCertificate resources to associate with this TargetSslProxy. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. */
   sslCertificates?: StringList;
 }
-export const TargetSslProxiesSetSslCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sslCertificates: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TargetSslProxiesSetSslCertificatesRequest",
-}) as any as S.Schema<TargetSslProxiesSetSslCertificatesRequest>;
+export const TargetSslProxiesSetSslCertificatesRequest =
+  RegionTargetHttpsProxiesSetSslCertificatesRequest as any as S.Schema<TargetSslProxiesSetSslCertificatesRequest>;
 
 export interface SetSslCertificatesTargetSslProxiesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -67591,14 +67153,8 @@ export interface RegionInstanceGroupManagersSetTargetPoolsRequest {
   /** Fingerprint of the target pools information, which is a hash of the contents. This field is used for optimistic locking when you update the target pool entries. This field is optional. */
   fingerprint?: string;
 }
-export const RegionInstanceGroupManagersSetTargetPoolsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetPools: S.optional(StringList),
-    fingerprint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegionInstanceGroupManagersSetTargetPoolsRequest",
-}) as any as S.Schema<RegionInstanceGroupManagersSetTargetPoolsRequest>;
+export const RegionInstanceGroupManagersSetTargetPoolsRequest =
+  InstanceGroupManagersSetTargetPoolsRequest as any as S.Schema<RegionInstanceGroupManagersSetTargetPoolsRequest>;
 
 export interface SetTargetPoolsRegionInstanceGroupManagersRequest {
   /** Project ID for this request. */
@@ -67811,13 +67367,8 @@ export interface NodeGroupsSimulateMaintenanceEventRequest {
   /** Names of the nodes to go under maintenance simulation. */
   nodes?: StringList;
 }
-export const NodeGroupsSimulateMaintenanceEventRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "NodeGroupsSimulateMaintenanceEventRequest",
-}) as any as S.Schema<NodeGroupsSimulateMaintenanceEventRequest>;
+export const NodeGroupsSimulateMaintenanceEventRequest =
+  NodeGroupsDeleteNodesRequest as any as S.Schema<NodeGroupsSimulateMaintenanceEventRequest>;
 
 export interface SimulateMaintenanceEventNodeGroupsRequest {
   /** The name of the zone for this request. */
@@ -67953,13 +67504,8 @@ export interface InstanceGroupManagersStartInstancesRequest {
   /** The URLs of one or more instances to start. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
   instances?: StringList;
 }
-export const InstanceGroupManagersStartInstancesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instances: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "InstanceGroupManagersStartInstancesRequest",
-}) as any as S.Schema<InstanceGroupManagersStartInstancesRequest>;
+export const InstanceGroupManagersStartInstancesRequest =
+  InstanceGroupManagersAbandonInstancesRequest as any as S.Schema<InstanceGroupManagersStartInstancesRequest>;
 
 export interface StartInstancesInstanceGroupManagersRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -68499,11 +68045,8 @@ export interface TestPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({ identifier: "TestPermissionsResponse" }) as any as S.Schema<TestPermissionsResponse>;
+export const TestPermissionsResponse =
+  TestPermissionsRequest as any as S.Schema<TestPermissionsResponse>;
 
 export interface TestIamPermissionsAutoscalersRequest {
   /** Project ID for this request. */
@@ -70519,13 +70062,8 @@ export interface SnapshotUpdateKmsKeyRequest {
   /** Optional. The new KMS key to replace the current one on the snapshot. If empty, the snapshot will be re-encrypted using the primary version of the snapshot's current KMS key. The KMS key can be provided in the following formats: - projects/project_id/locations/region/keyRings/key_ring/cryptoKeys/key */
   kmsKeyName?: string;
 }
-export const SnapshotUpdateKmsKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kmsKeyName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SnapshotUpdateKmsKeyRequest",
-}) as any as S.Schema<SnapshotUpdateKmsKeyRequest>;
+export const SnapshotUpdateKmsKeyRequest =
+  RegionSnapshotUpdateKmsKeyRequest as any as S.Schema<SnapshotUpdateKmsKeyRequest>;
 
 export interface UpdateKmsKeySnapshotsRequest {
   /** Name of the snapshot resource to update. Should conform to RFC1035. */

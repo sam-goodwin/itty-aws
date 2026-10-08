@@ -83,9 +83,8 @@ export type DeleteNotificationsRequestMention = "all" | "participating" | "menti
 export const DeleteNotificationsRequestMention = S.String;
 
 export type DeleteNotificationsRequestDiscussionIdsList = Array<string>;
-export const DeleteNotificationsRequestDiscussionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteNotificationsRequestDiscussionIdsList>;
+export const DeleteNotificationsRequestDiscussionIdsList =
+  ChangeReadStatusRequestDiscussionIdsList as any as S.Schema<DeleteNotificationsRequestDiscussionIdsList>;
 
 export interface DeleteNotificationsRequest {
   p?: number;
@@ -119,9 +118,8 @@ export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
-export const DeleteNotificationsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNotificationsResponse",
-}) as any as S.Schema<DeleteNotificationsResponse>;
+export const DeleteNotificationsResponse =
+  ChangeReadStatusResponse as any as S.Schema<DeleteNotificationsResponse>;
 
 export type ListNotificationsRequestReadStatus = "all" | "unread";
 export const ListNotificationsRequestReadStatus = S.String;
@@ -269,9 +267,7 @@ export const ListNotificationsResponseNotificationsItemCase1DiscussionParticipat
 export type ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList =
   Array<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
 export const ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList =
-  /*@__PURE__*/ S.Array(
-    ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem,
-  ) as any as S.Schema<ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList>;
+  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList as any as S.Schema<ListNotificationsResponseNotificationsItemCase1DiscussionParticipatingList>;
 
 export interface ListNotificationsResponseNotificationsItemCase1Discussion {
   num: number;
@@ -325,9 +321,7 @@ export const ListNotificationsResponseNotificationsItemCase2PostParticipatingIte
 export type ListNotificationsResponseNotificationsItemCase2PostParticipatingList =
   Array<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
 export const ListNotificationsResponseNotificationsItemCase2PostParticipatingList =
-  /*@__PURE__*/ S.Array(
-    ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem,
-  ) as any as S.Schema<ListNotificationsResponseNotificationsItemCase2PostParticipatingList>;
+  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList as any as S.Schema<ListNotificationsResponseNotificationsItemCase2PostParticipatingList>;
 
 export interface ListNotificationsResponseNotificationsItemCase2Post {
   id: string;
@@ -375,9 +369,7 @@ export const ListNotificationsResponseNotificationsItemCase3BlogParticipatingIte
 export type ListNotificationsResponseNotificationsItemCase3BlogParticipatingList =
   Array<ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem>;
 export const ListNotificationsResponseNotificationsItemCase3BlogParticipatingList =
-  /*@__PURE__*/ S.Array(
-    ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingItem,
-  ) as any as S.Schema<ListNotificationsResponseNotificationsItemCase3BlogParticipatingList>;
+  ListNotificationsResponseNotificationsItemCase0PaperDiscussionParticipatingList as any as S.Schema<ListNotificationsResponseNotificationsItemCase3BlogParticipatingList>;
 
 export interface ListNotificationsResponseNotificationsItemCase3Blog {
   id: string;
@@ -603,9 +595,8 @@ export const UpdateWatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWatchSettingsRequest>;
 
 export interface UpdateWatchSettingsResponse {}
-export const UpdateWatchSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWatchSettingsResponse",
-}) as any as S.Schema<UpdateWatchSettingsResponse>;
+export const UpdateWatchSettingsResponse =
+  ChangeReadStatusResponse as any as S.Schema<UpdateWatchSettingsResponse>;
 
 export type ChangeReadStatusError = HuggingFaceOpError;
 /** Change read status Mark discussions as read or unread. If `applyToAll` is true, all notifications for the user matching the search parameters will be marked as read or unread. */

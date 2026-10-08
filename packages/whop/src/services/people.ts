@@ -46,9 +46,8 @@ export const GetPersonResponseAudienceIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetPersonResponseAudienceIdsList>;
 
 export type GetPersonResponseCustomEventNamesList = Array<string>;
-export const GetPersonResponseCustomEventNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPersonResponseCustomEventNamesList>;
+export const GetPersonResponseCustomEventNamesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseCustomEventNamesList>;
 
 export interface GetPersonResponseDevice {
   browser?: string | null;
@@ -65,14 +64,12 @@ export const GetPersonResponseDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** Every linked email, primary first. */
 export type GetPersonResponseEmailsList = Array<string>;
-export const GetPersonResponseEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPersonResponseEmailsList>;
+export const GetPersonResponseEmailsList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseEmailsList>;
 
 export type GetPersonResponseEventNamesList = Array<string>;
-export const GetPersonResponseEventNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPersonResponseEventNamesList>;
+export const GetPersonResponseEventNamesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseEventNamesList>;
 
 export interface GetPersonResponseFirstSourceAd {
   id: string;
@@ -205,15 +202,13 @@ export const GetPersonResponseMember = /*@__PURE__*/ S.suspend(() =>
 
 /** Every name the person's linked identities carried, primary first. */
 export type GetPersonResponseNamesList = Array<string>;
-export const GetPersonResponseNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPersonResponseNamesList>;
+export const GetPersonResponseNamesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseNamesList>;
 
 /** Every linked phone, primary first. */
 export type GetPersonResponsePhonesList = Array<string>;
-export const GetPersonResponsePhonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPersonResponsePhonesList>;
+export const GetPersonResponsePhonesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponsePhonesList>;
 
 export interface GetPersonResponsePurchasesItem {
   event_id: string;
@@ -236,9 +231,8 @@ export const GetPersonResponsePurchasesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetPersonResponsePurchasesList>;
 
 export type GetPersonResponseRolesList = Array<string>;
-export const GetPersonResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPersonResponseRolesList>;
+export const GetPersonResponseRolesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseRolesList>;
 
 export type GetPersonResponseSourcesItemAd = GetPersonResponseFirstSourceAd;
 export const GetPersonResponseSourcesItemAd = GetPersonResponseFirstSourceAd;
@@ -311,57 +305,50 @@ export type GetPersonResponseUsageCityItem = GetPersonResponseUsageBrowserItem;
 export const GetPersonResponseUsageCityItem = GetPersonResponseUsageBrowserItem;
 
 export type GetPersonResponseUsageCityList = Array<GetPersonResponseUsageBrowserItem>;
-export const GetPersonResponseUsageCityList = /*@__PURE__*/ S.Array(
-  GetPersonResponseUsageBrowserItem,
-) as any as S.Schema<GetPersonResponseUsageCityList>;
+export const GetPersonResponseUsageCityList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageCityList>;
 
 export type GetPersonResponseUsageCountryItem = GetPersonResponseUsageBrowserItem;
 export const GetPersonResponseUsageCountryItem = GetPersonResponseUsageBrowserItem;
 
 export type GetPersonResponseUsageCountryList = Array<GetPersonResponseUsageBrowserItem>;
-export const GetPersonResponseUsageCountryList = /*@__PURE__*/ S.Array(
-  GetPersonResponseUsageBrowserItem,
-) as any as S.Schema<GetPersonResponseUsageCountryList>;
+export const GetPersonResponseUsageCountryList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageCountryList>;
 
 export type GetPersonResponseUsageDeviceItem = GetPersonResponseUsageBrowserItem;
 export const GetPersonResponseUsageDeviceItem = GetPersonResponseUsageBrowserItem;
 
 export type GetPersonResponseUsageDeviceList = Array<GetPersonResponseUsageBrowserItem>;
-export const GetPersonResponseUsageDeviceList = /*@__PURE__*/ S.Array(
-  GetPersonResponseUsageBrowserItem,
-) as any as S.Schema<GetPersonResponseUsageDeviceList>;
+export const GetPersonResponseUsageDeviceList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageDeviceList>;
 
 export type GetPersonResponseUsageIpItem = GetPersonResponseUsageBrowserItem;
 export const GetPersonResponseUsageIpItem = GetPersonResponseUsageBrowserItem;
 
 export type GetPersonResponseUsageIpList = Array<GetPersonResponseUsageBrowserItem>;
-export const GetPersonResponseUsageIpList = /*@__PURE__*/ S.Array(
-  GetPersonResponseUsageBrowserItem,
-) as any as S.Schema<GetPersonResponseUsageIpList>;
+export const GetPersonResponseUsageIpList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageIpList>;
 
 export type GetPersonResponseUsageOsItem = GetPersonResponseUsageBrowserItem;
 export const GetPersonResponseUsageOsItem = GetPersonResponseUsageBrowserItem;
 
 export type GetPersonResponseUsageOsList = Array<GetPersonResponseUsageBrowserItem>;
-export const GetPersonResponseUsageOsList = /*@__PURE__*/ S.Array(
-  GetPersonResponseUsageBrowserItem,
-) as any as S.Schema<GetPersonResponseUsageOsList>;
+export const GetPersonResponseUsageOsList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageOsList>;
 
 export type GetPersonResponseUsageReferrerItem = GetPersonResponseUsageBrowserItem;
 export const GetPersonResponseUsageReferrerItem = GetPersonResponseUsageBrowserItem;
 
 export type GetPersonResponseUsageReferrerList = Array<GetPersonResponseUsageBrowserItem>;
-export const GetPersonResponseUsageReferrerList = /*@__PURE__*/ S.Array(
-  GetPersonResponseUsageBrowserItem,
-) as any as S.Schema<GetPersonResponseUsageReferrerList>;
+export const GetPersonResponseUsageReferrerList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageReferrerList>;
 
 export type GetPersonResponseUsageTimezoneItem = GetPersonResponseUsageBrowserItem;
 export const GetPersonResponseUsageTimezoneItem = GetPersonResponseUsageBrowserItem;
 
 export type GetPersonResponseUsageTimezoneList = Array<GetPersonResponseUsageBrowserItem>;
-export const GetPersonResponseUsageTimezoneList = /*@__PURE__*/ S.Array(
-  GetPersonResponseUsageBrowserItem,
-) as any as S.Schema<GetPersonResponseUsageTimezoneList>;
+export const GetPersonResponseUsageTimezoneList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageTimezoneList>;
 
 /** Exact usage breakdowns for the person's browser traffic (distinct events per value). */
 export interface GetPersonResponseUsage {
@@ -405,9 +392,8 @@ export const GetPersonResponseUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Every linked whop account, the most used one first. */
 export type GetPersonResponseUserIdsList = Array<string>;
-export const GetPersonResponseUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPersonResponseUserIdsList>;
+export const GetPersonResponseUserIdsList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseUserIdsList>;
 
 export interface GetPersonResponse {
   account_id: string;
@@ -494,17 +480,15 @@ export const GetPersonResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPersonResponse" }) as any as S.Schema<GetPersonResponse>;
 
 export type ListPeopleRequestSourceList = Array<string>;
-export const ListPeopleRequestSourceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPeopleRequestSourceList>;
+export const ListPeopleRequestSourceList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<ListPeopleRequestSourceList>;
 
 export type ListPeopleRequestAttributionModel = "last_touch" | "first_touch";
 export const ListPeopleRequestAttributionModel = S.String;
 
 export type ListPeopleRequestEventNameList = Array<string>;
-export const ListPeopleRequestEventNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPeopleRequestEventNameList>;
+export const ListPeopleRequestEventNameList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<ListPeopleRequestEventNameList>;
 
 export type ListPeopleRequestOrder =
   | "first_seen_at"

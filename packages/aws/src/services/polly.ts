@@ -682,9 +682,7 @@ export const PutLexiconInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutLexiconInput" }) as any as S.Schema<PutLexiconInput>;
 export interface PutLexiconOutput {}
-export const PutLexiconOutput = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "PutLexiconOutput",
-}) as any as S.Schema<PutLexiconOutput>;
+export const PutLexiconOutput = DeleteLexiconOutput as any as S.Schema<PutLexiconOutput>;
 export type Text = string;
 export type Force = boolean;
 export interface FlushStreamConfiguration {
@@ -922,11 +920,8 @@ export const StartSpeechSynthesisTaskInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartSpeechSynthesisTaskOutput {
   SynthesisTask?: SynthesisTask;
 }
-export const StartSpeechSynthesisTaskOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SynthesisTask: S.optional(SynthesisTask) }).pipe(ns),
-).annotate({
-  identifier: "StartSpeechSynthesisTaskOutput",
-}) as any as S.Schema<StartSpeechSynthesisTaskOutput>;
+export const StartSpeechSynthesisTaskOutput =
+  GetSpeechSynthesisTaskOutput as any as S.Schema<StartSpeechSynthesisTaskOutput>;
 export interface SynthesizeSpeechInput {
   Engine?: Engine;
   LanguageCode?: LanguageCode;

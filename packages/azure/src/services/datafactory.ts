@@ -131,20 +131,15 @@ export const DatasetParametersMap = /*@__PURE__*/ S.Record(
 
 /** List of tags that can be used for describing the Dataset. */
 export type DatasetAnnotationsList = Array<unknown>;
-export const DatasetAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatasetAnnotationsList>;
+export const DatasetAnnotationsList =
+  DataFlowAnnotationsList as any as S.Schema<DatasetAnnotationsList>;
 
 /** The folder that this Dataset is in. If not specified, Dataset will appear at the root level. */
 export interface DatasetFolder {
   /** The name of the folder that this Dataset is in. */
   name?: string;
 }
-export const DatasetFolder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "DatasetFolder" }) as any as S.Schema<DatasetFolder>;
+export const DatasetFolder = DataFlowFolder as any as S.Schema<DatasetFolder>;
 
 /** The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents. */
 export interface Dataset {
@@ -207,10 +202,8 @@ export const IntegrationRuntimeReferenceType = S.String;
 
 /** Arguments for integration runtime. */
 export type IntegrationRuntimeReferenceParametersMap = { [key: string]: unknown | undefined };
-export const IntegrationRuntimeReferenceParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IntegrationRuntimeReferenceParametersMap>;
+export const IntegrationRuntimeReferenceParametersMap =
+  LinkedServiceReferenceParametersMap as any as S.Schema<IntegrationRuntimeReferenceParametersMap>;
 
 /** Integration runtime reference type. */
 export interface IntegrationRuntimeReference {
@@ -233,16 +226,13 @@ export const IntegrationRuntimeReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters for linked service. */
 export type LinkedServiceParametersMap = { [key: string]: ParameterSpecification | undefined };
-export const LinkedServiceParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ParameterSpecification,
-) as any as S.Schema<LinkedServiceParametersMap>;
+export const LinkedServiceParametersMap =
+  DatasetParametersMap as any as S.Schema<LinkedServiceParametersMap>;
 
 /** List of tags that can be used for describing the linked service. */
 export type LinkedServiceAnnotationsList = Array<unknown>;
-export const LinkedServiceAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkedServiceAnnotationsList>;
+export const LinkedServiceAnnotationsList =
+  DataFlowAnnotationsList as any as S.Schema<LinkedServiceAnnotationsList>;
 
 /** The nested object which contains the information and credential which can be used to connect with related store or compute resource. */
 export interface LinkedService {
@@ -332,10 +322,8 @@ export const DataFlowDebugPackageDebugSettingsSourceSettingsList = /*@__PURE__*/
 
 /** Data flow parameters. */
 export type DataFlowDebugPackageDebugSettingsParametersMap = { [key: string]: unknown | undefined };
-export const DataFlowDebugPackageDebugSettingsParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataFlowDebugPackageDebugSettingsParametersMap>;
+export const DataFlowDebugPackageDebugSettingsParametersMap =
+  LinkedServiceReferenceParametersMap as any as S.Schema<DataFlowDebugPackageDebugSettingsParametersMap>;
 
 /** Data flow debug settings. */
 export interface DataFlowDebugPackageDebugSettings {
@@ -476,20 +464,15 @@ export const CancelTriggerRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelTriggerRunRequest" }) as any as S.Schema<CancelTriggerRunRequest>;
 
 export interface CancelTriggerRunResponse {}
-export const CancelTriggerRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelTriggerRunResponse",
-}) as any as S.Schema<CancelTriggerRunResponse>;
+export const CancelTriggerRunResponse =
+  CancelPipelineRunResponse as any as S.Schema<CancelTriggerRunResponse>;
 
 /** The folder that this CDC is in. If not specified, CDC will appear at the root level. */
 export interface ChangeDataCaptureFolder {
   /** The name of the folder that this CDC is in. */
   name?: string;
 }
-export const ChangeDataCaptureFolder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChangeDataCaptureFolder" }) as any as S.Schema<ChangeDataCaptureFolder>;
+export const ChangeDataCaptureFolder = DataFlowFolder as any as S.Schema<ChangeDataCaptureFolder>;
 
 /** Schema of a CDC table in terms of column names and their corresponding data types. */
 export interface MapperTableSchema {
@@ -573,9 +556,8 @@ export const ConnectionType = S.String;
 
 /** List of name/value pairs for connection properties. */
 export type MapperConnectionCommonDslConnectorPropertiesList = Array<MapperDslConnectorProperties>;
-export const MapperConnectionCommonDslConnectorPropertiesList = /*@__PURE__*/ S.Array(
-  MapperDslConnectorProperties,
-) as any as S.Schema<MapperConnectionCommonDslConnectorPropertiesList>;
+export const MapperConnectionCommonDslConnectorPropertiesList =
+  MapperTablePropertiesDslConnectorPropertiesList as any as S.Schema<MapperConnectionCommonDslConnectorPropertiesList>;
 
 /** Source connection details. */
 export interface MapperConnection {
@@ -624,9 +606,8 @@ export const ChangeDataCaptureSourceConnectionsInfoList = /*@__PURE__*/ S.Array(
 
 /** List of source tables for a target connection. */
 export type MapperTargetConnectionsInfoTargetEntitiesList = Array<MapperTable>;
-export const MapperTargetConnectionsInfoTargetEntitiesList = /*@__PURE__*/ S.Array(
-  MapperTable,
-) as any as S.Schema<MapperTargetConnectionsInfoTargetEntitiesList>;
+export const MapperTargetConnectionsInfoTargetEntitiesList =
+  MapperSourceConnectionsInfoSourceEntitiesList as any as S.Schema<MapperTargetConnectionsInfoTargetEntitiesList>;
 
 /** Source or target connection reference details. */
 export interface MapperConnectionReference {
@@ -745,9 +726,8 @@ export const MapperTargetConnectionsInfoDataMapperMappingsList = /*@__PURE__*/ S
 
 /** List of relationship info among the tables. */
 export type MapperTargetConnectionsInfoRelationshipsList = Array<unknown>;
-export const MapperTargetConnectionsInfoRelationshipsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<MapperTargetConnectionsInfoRelationshipsList>;
+export const MapperTargetConnectionsInfoRelationshipsList =
+  DataFlowAnnotationsList as any as S.Schema<MapperTargetConnectionsInfoRelationshipsList>;
 
 /** A object which contains list of tables and connection details for a target connection. */
 export interface MapperTargetConnectionsInfo {
@@ -1143,10 +1123,8 @@ export const IntegrationRuntimeStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationRuntimeStatusResponse>;
 
 export type CreatePipelineRunRequestBodyMap = { [key: string]: unknown | undefined };
-export const CreatePipelineRunRequestBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreatePipelineRunRequestBodyMap>;
+export const CreatePipelineRunRequestBodyMap =
+  LinkedServiceReferenceParametersMap as any as S.Schema<CreatePipelineRunRequestBodyMap>;
 
 export interface CreatePipelineRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1201,9 +1179,8 @@ export const CreateRunResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tags that can be used for describing the Credential. */
 export type CredentialAnnotationsList = Array<unknown>;
-export const CredentialAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CredentialAnnotationsList>;
+export const CredentialAnnotationsList =
+  DataFlowAnnotationsList as any as S.Schema<CredentialAnnotationsList>;
 
 /** The Azure Data Factory nested object which contains the information and credential which can be used to connect with related store or compute resource. */
 export interface Credential {
@@ -1576,9 +1553,8 @@ export const DeleteDataFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDataFlowRequest" }) as any as S.Schema<DeleteDataFlowRequest>;
 
 export interface DeleteDataFlowResponse {}
-export const DeleteDataFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataFlowResponse",
-}) as any as S.Schema<DeleteDataFlowResponse>;
+export const DeleteDataFlowResponse =
+  CancelPipelineRunResponse as any as S.Schema<DeleteDataFlowResponse>;
 
 export interface DeleteDataFlowDebugSessionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1609,11 +1585,8 @@ export const DeleteDataFlowDebugSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataFlowDebugSessionRequest>;
 
 export interface DeleteDataFlowDebugSessionResponse {}
-export const DeleteDataFlowDebugSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDataFlowDebugSessionResponse",
-}) as any as S.Schema<DeleteDataFlowDebugSessionResponse>;
+export const DeleteDataFlowDebugSessionResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<DeleteDataFlowDebugSessionResponse>;
 
 export interface DeleteDatasetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1642,9 +1615,8 @@ export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatasetRequest" }) as any as S.Schema<DeleteDatasetRequest>;
 
 export interface DeleteDatasetResponse {}
-export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatasetResponse",
-}) as any as S.Schema<DeleteDatasetResponse>;
+export const DeleteDatasetResponse =
+  CancelPipelineRunResponse as any as S.Schema<DeleteDatasetResponse>;
 
 export interface DeleteFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1670,9 +1642,8 @@ export const DeleteFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFactoryRequest" }) as any as S.Schema<DeleteFactoryRequest>;
 
 export interface DeleteFactoryResponse {}
-export const DeleteFactoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFactoryResponse",
-}) as any as S.Schema<DeleteFactoryResponse>;
+export const DeleteFactoryResponse =
+  CancelPipelineRunResponse as any as S.Schema<DeleteFactoryResponse>;
 
 export interface DeleteGlobalParameterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1703,9 +1674,8 @@ export const DeleteGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalParameterRequest>;
 
 export interface DeleteGlobalParameterResponse {}
-export const DeleteGlobalParameterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGlobalParameterResponse",
-}) as any as S.Schema<DeleteGlobalParameterResponse>;
+export const DeleteGlobalParameterResponse =
+  CancelPipelineRunResponse as any as S.Schema<DeleteGlobalParameterResponse>;
 
 export interface DeleteIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1736,11 +1706,8 @@ export const DeleteIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationRuntimeRequest>;
 
 export interface DeleteIntegrationRuntimeResponse {}
-export const DeleteIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationRuntimeResponse",
-}) as any as S.Schema<DeleteIntegrationRuntimeResponse>;
+export const DeleteIntegrationRuntimeResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<DeleteIntegrationRuntimeResponse>;
 
 export interface DeleteIntegrationRuntimeNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1772,11 +1739,8 @@ export const DeleteIntegrationRuntimeNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationRuntimeNodeRequest>;
 
 export interface DeleteIntegrationRuntimeNodeResponse {}
-export const DeleteIntegrationRuntimeNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationRuntimeNodeResponse",
-}) as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>;
+export const DeleteIntegrationRuntimeNodeResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>;
 
 export interface DeleteLinkedServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1807,9 +1771,8 @@ export const DeleteLinkedServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLinkedServiceRequest>;
 
 export interface DeleteLinkedServiceResponse {}
-export const DeleteLinkedServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLinkedServiceResponse",
-}) as any as S.Schema<DeleteLinkedServiceResponse>;
+export const DeleteLinkedServiceResponse =
+  CancelPipelineRunResponse as any as S.Schema<DeleteLinkedServiceResponse>;
 
 export interface DeleteManagedPrivateEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1843,11 +1806,8 @@ export const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedPrivateEndpointRequest>;
 
 export interface DeleteManagedPrivateEndpointResponse {}
-export const DeleteManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteManagedPrivateEndpointResponse",
-}) as any as S.Schema<DeleteManagedPrivateEndpointResponse>;
+export const DeleteManagedPrivateEndpointResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<DeleteManagedPrivateEndpointResponse>;
 
 export interface DeletePipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1876,9 +1836,8 @@ export const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePipelineRequest" }) as any as S.Schema<DeletePipelineRequest>;
 
 export interface DeletePipelineResponse {}
-export const DeletePipelineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePipelineResponse",
-}) as any as S.Schema<DeletePipelineResponse>;
+export const DeletePipelineResponse =
+  CancelPipelineRunResponse as any as S.Schema<DeletePipelineResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1909,11 +1868,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1942,9 +1898,8 @@ export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTriggerRequest" }) as any as S.Schema<DeleteTriggerRequest>;
 
 export interface DeleteTriggerResponse {}
-export const DeleteTriggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTriggerResponse",
-}) as any as S.Schema<DeleteTriggerResponse>;
+export const DeleteTriggerResponse =
+  CancelPipelineRunResponse as any as S.Schema<DeleteTriggerResponse>;
 
 export interface DisableIntegrationRuntimeInteractiveQueryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2046,18 +2001,8 @@ export interface EnableIntegrationRuntimeInteractiveQueryResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const EnableIntegrationRuntimeInteractiveQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: IntegrationRuntime,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnableIntegrationRuntimeInteractiveQueryResponse",
-}) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>;
+export const EnableIntegrationRuntimeInteractiveQueryResponse =
+  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>;
 
 /** The command type. */
 export type DataFlowDebugCommandType =
@@ -2399,10 +2344,8 @@ export const FactoryIdentityType = S.String;
 
 /** List of user assigned identities for the factory. */
 export type FactoryIdentityUserAssignedIdentitiesMap = { [key: string]: unknown | undefined };
-export const FactoryIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FactoryIdentityUserAssignedIdentitiesMap>;
+export const FactoryIdentityUserAssignedIdentitiesMap =
+  LinkedServiceReferenceParametersMap as any as S.Schema<FactoryIdentityUserAssignedIdentitiesMap>;
 
 /** Identity properties of the factory resource. */
 export interface FactoryIdentity {
@@ -2471,10 +2414,8 @@ export const FactoriesConfigureFactoryRepoResponse = /*@__PURE__*/ S.suspend(() 
 export type FactoryPropertiesInputGlobalParametersMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const FactoryPropertiesInputGlobalParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GlobalParameterSpecification,
-) as any as S.Schema<FactoryPropertiesInputGlobalParametersMap>;
+export const FactoryPropertiesInputGlobalParametersMap =
+  FactoryPropertiesGlobalParametersMap as any as S.Schema<FactoryPropertiesInputGlobalParametersMap>;
 
 /** Factory resource properties. */
 export interface FactoryPropertiesInput {
@@ -2501,10 +2442,8 @@ export const FactoryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type FactoriesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FactoriesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FactoriesCreateOrUpdateRequestTagsMap>;
+export const FactoriesCreateOrUpdateRequestTagsMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<FactoriesCreateOrUpdateRequestTagsMap>;
 
 export interface FactoriesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2545,10 +2484,8 @@ export const FactoriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type FactoriesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FactoriesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FactoriesCreateOrUpdateResponseTagsMap>;
+export const FactoriesCreateOrUpdateResponseTagsMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<FactoriesCreateOrUpdateResponseTagsMap>;
 
 export interface FactoriesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2570,21 +2507,8 @@ export interface FactoriesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const FactoriesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FactoryProperties),
-    identity: S.optional(FactoryIdentity),
-    location: S.optional(S.String),
-    tags: S.optional(FactoriesCreateOrUpdateResponseTagsMap),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FactoriesCreateOrUpdateResponse",
-}) as any as S.Schema<FactoriesCreateOrUpdateResponse>;
+export const FactoriesCreateOrUpdateResponse =
+  FactoriesConfigureFactoryRepoResponse as any as S.Schema<FactoriesCreateOrUpdateResponse>;
 
 export interface GetChangeDataCaptureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2628,18 +2552,8 @@ export interface GetChangeDataCaptureResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetChangeDataCaptureResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ChangeDataCapture,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetChangeDataCaptureResponse",
-}) as any as S.Schema<GetChangeDataCaptureResponse>;
+export const GetChangeDataCaptureResponse =
+  ChangeDataCaptureCreateOrUpdateResponse as any as S.Schema<GetChangeDataCaptureResponse>;
 
 export interface GetCredentialOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2683,18 +2597,8 @@ export interface GetCredentialOperationResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetCredentialOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: Credential,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetCredentialOperationResponse",
-}) as any as S.Schema<GetCredentialOperationResponse>;
+export const GetCredentialOperationResponse =
+  CredentialOperationsCreateOrUpdateResponse as any as S.Schema<GetCredentialOperationResponse>;
 
 export interface GetDataFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2882,10 +2786,8 @@ export const GetFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetFactoryResponseTagsMap = { [key: string]: string | undefined };
-export const GetFactoryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFactoryResponseTagsMap>;
+export const GetFactoryResponseTagsMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<GetFactoryResponseTagsMap>;
 
 export interface GetFactoryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3097,10 +2999,8 @@ export const GetGlobalParameterRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetGlobalParameterResponsePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GetGlobalParameterResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GlobalParameterSpecification,
-) as any as S.Schema<GetGlobalParameterResponsePropertiesMap>;
+export const GetGlobalParameterResponsePropertiesMap =
+  FactoryPropertiesGlobalParametersMap as any as S.Schema<GetGlobalParameterResponsePropertiesMap>;
 
 export interface GetGlobalParameterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3171,18 +3071,8 @@ export interface GetIntegrationRuntimeResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: IntegrationRuntime,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetIntegrationRuntimeResponse",
-}) as any as S.Schema<GetIntegrationRuntimeResponse>;
+export const GetIntegrationRuntimeResponse =
+  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<GetIntegrationRuntimeResponse>;
 
 export interface GetIntegrationRuntimeConnectionInfoRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3366,10 +3256,8 @@ export const SelfHostedIntegrationRuntimeNodeStatus = S.String;
 
 /** The integration runtime capabilities dictionary */
 export type SelfHostedIntegrationRuntimeNodeCapabilitiesMap = { [key: string]: string | undefined };
-export const SelfHostedIntegrationRuntimeNodeCapabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SelfHostedIntegrationRuntimeNodeCapabilitiesMap>;
+export const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<SelfHostedIntegrationRuntimeNodeCapabilitiesMap>;
 
 /** The result of the last integration runtime node update. */
 export type IntegrationRuntimeUpdateResult = "None" | "Succeed" | "Fail";
@@ -3689,9 +3577,8 @@ export const ConnectionStateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Fully qualified domain names */
 export type ManagedPrivateEndpointFqdnsList = Array<string>;
-export const ManagedPrivateEndpointFqdnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ManagedPrivateEndpointFqdnsList>;
+export const ManagedPrivateEndpointFqdnsList =
+  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<ManagedPrivateEndpointFqdnsList>;
 
 /** Properties of a managed private endpoint */
 export interface ManagedPrivateEndpoint {
@@ -3959,10 +3846,7 @@ export const PipelineActivitiesList = /*@__PURE__*/ S.Array(
 
 /** List of parameters for pipeline. */
 export type PipelineParametersMap = { [key: string]: ParameterSpecification | undefined };
-export const PipelineParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ParameterSpecification,
-) as any as S.Schema<PipelineParametersMap>;
+export const PipelineParametersMap = DatasetParametersMap as any as S.Schema<PipelineParametersMap>;
 
 /** Variable type. */
 export type VariableType = "String" | "Bool" | "Array";
@@ -3991,27 +3875,20 @@ export const PipelineVariablesMap = /*@__PURE__*/ S.Record(
 
 /** List of tags that can be used for describing the Pipeline. */
 export type PipelineAnnotationsList = Array<unknown>;
-export const PipelineAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PipelineAnnotationsList>;
+export const PipelineAnnotationsList =
+  DataFlowAnnotationsList as any as S.Schema<PipelineAnnotationsList>;
 
 /** Dimensions emitted by Pipeline. */
 export type PipelineRunDimensionsMap = { [key: string]: unknown | undefined };
-export const PipelineRunDimensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PipelineRunDimensionsMap>;
+export const PipelineRunDimensionsMap =
+  LinkedServiceReferenceParametersMap as any as S.Schema<PipelineRunDimensionsMap>;
 
 /** The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level. */
 export interface PipelineFolder {
   /** The name of the folder that this Pipeline is in. */
   name?: string;
 }
-export const PipelineFolder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "PipelineFolder" }) as any as S.Schema<PipelineFolder>;
+export const PipelineFolder = DataFlowFolder as any as S.Schema<PipelineFolder>;
 
 /** Pipeline ElapsedTime Metric Policy. */
 export interface PipelineElapsedTimeMetricPolicy {
@@ -4124,17 +4001,13 @@ export const GetPipelineRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The full or partial list of parameter name, value pair used in the pipeline run. */
 export type PipelineRunParametersMap = { [key: string]: string | undefined };
-export const PipelineRunParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PipelineRunParametersMap>;
+export const PipelineRunParametersMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<PipelineRunParametersMap>;
 
 /** Run dimensions emitted by Pipeline run. */
 export type PipelineRunRunDimensionsMap = { [key: string]: string | undefined };
-export const PipelineRunRunDimensionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PipelineRunRunDimensionsMap>;
+export const PipelineRunRunDimensionsMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<PipelineRunRunDimensionsMap>;
 
 /** Provides entity name and id that started the pipeline run. */
 export interface PipelineRunInvokedBy {
@@ -4335,15 +4208,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** RequiredMembers of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** RequiredZoneNames of a private link resource */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource */
 export interface PrivateLinkResourceProperties {
@@ -4436,9 +4307,8 @@ export const TriggerRuntimeState = S.String;
 
 /** List of tags that can be used for describing the trigger. */
 export type TriggerAnnotationsList = Array<unknown>;
-export const TriggerAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TriggerAnnotationsList>;
+export const TriggerAnnotationsList =
+  DataFlowAnnotationsList as any as S.Schema<TriggerAnnotationsList>;
 
 /** Azure data factory nested object which contains information about creating pipeline run */
 export interface Trigger {
@@ -4551,10 +4421,8 @@ export const TriggerSubscriptionOperationStatus = /*@__PURE__*/ S.suspend(() =>
 export type GlobalParametersCreateOrUpdateRequestPropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GlobalParametersCreateOrUpdateRequestPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GlobalParameterSpecification,
-) as any as S.Schema<GlobalParametersCreateOrUpdateRequestPropertiesMap>;
+export const GlobalParametersCreateOrUpdateRequestPropertiesMap =
+  FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParametersCreateOrUpdateRequestPropertiesMap>;
 
 export interface GlobalParametersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4591,10 +4459,8 @@ export const GlobalParametersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 export type GlobalParametersCreateOrUpdateResponsePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GlobalParametersCreateOrUpdateResponsePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GlobalParameterSpecification,
-) as any as S.Schema<GlobalParametersCreateOrUpdateResponsePropertiesMap>;
+export const GlobalParametersCreateOrUpdateResponsePropertiesMap =
+  FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParametersCreateOrUpdateResponsePropertiesMap>;
 
 export interface GlobalParametersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4610,18 +4476,8 @@ export interface GlobalParametersCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GlobalParametersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: GlobalParametersCreateOrUpdateResponsePropertiesMap,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GlobalParametersCreateOrUpdateResponse",
-}) as any as S.Schema<GlobalParametersCreateOrUpdateResponse>;
+export const GlobalParametersCreateOrUpdateResponse =
+  GetGlobalParameterResponse as any as S.Schema<GlobalParametersCreateOrUpdateResponse>;
 
 export interface IntegrationRuntimesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4668,18 +4524,8 @@ export interface IntegrationRuntimesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const IntegrationRuntimesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: IntegrationRuntime,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IntegrationRuntimesCreateOrUpdateResponse",
-}) as any as S.Schema<IntegrationRuntimesCreateOrUpdateResponse>;
+export const IntegrationRuntimesCreateOrUpdateResponse =
+  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<IntegrationRuntimesCreateOrUpdateResponse>;
 
 export interface IntegrationRuntimesUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4710,11 +4556,8 @@ export const IntegrationRuntimesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationRuntimesUpgradeRequest>;
 
 export interface IntegrationRuntimesUpgradeResponse {}
-export const IntegrationRuntimesUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IntegrationRuntimesUpgradeResponse",
-}) as any as S.Schema<IntegrationRuntimesUpgradeResponse>;
+export const IntegrationRuntimesUpgradeResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<IntegrationRuntimesUpgradeResponse>;
 
 export interface LinkedServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4814,18 +4657,8 @@ export interface ChangeDataCaptureResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ChangeDataCaptureResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ChangeDataCapture,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChangeDataCaptureResource",
-}) as any as S.Schema<ChangeDataCaptureResource>;
+export const ChangeDataCaptureResource =
+  ChangeDataCaptureCreateOrUpdateResponse as any as S.Schema<ChangeDataCaptureResource>;
 
 /** The ChangeDataCaptureResource items on this page */
 export type ChangeDataCaptureListResponseValueList = Array<ChangeDataCaptureResource>;
@@ -4960,16 +4793,7 @@ export interface DataFlowResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const DataFlowResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: DataFlow,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataFlowResource" }) as any as S.Schema<DataFlowResource>;
+export const DataFlowResource = GetDataFlowResponse as any as S.Schema<DataFlowResource>;
 
 /** The DataFlowResource items on this page */
 export type DataFlowListResponseValueList = Array<DataFlowResource>;
@@ -5031,16 +4855,7 @@ export interface DatasetResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const DatasetResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: Dataset,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "DatasetResource" }) as any as S.Schema<DatasetResource>;
+export const DatasetResource = GetDatasetResponse as any as S.Schema<DatasetResource>;
 
 /** The DatasetResource items on this page */
 export type DatasetListResponseValueList = Array<DatasetResource>;
@@ -5081,10 +4896,8 @@ export const ListFactoriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type FactoryTagsMap = { [key: string]: string | undefined };
-export const FactoryTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FactoryTagsMap>;
+export const FactoryTagsMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<FactoryTagsMap>;
 
 /** Factory resource type. */
 export interface Factory {
@@ -5107,19 +4920,7 @@ export interface Factory {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const Factory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FactoryProperties),
-    identity: S.optional(FactoryIdentity),
-    location: S.optional(S.String),
-    tags: S.optional(FactoryTagsMap),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Factory" }) as any as S.Schema<Factory>;
+export const Factory = GetFactoryResponse as any as S.Schema<Factory>;
 
 /** The Factory items on this page */
 export type FactoryListResponseValueList = Array<Factory>;
@@ -5192,10 +4993,8 @@ export const ListGlobalParameterByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 export type GlobalParameterResourcePropertiesMap = {
   [key: string]: GlobalParameterSpecification | undefined;
 };
-export const GlobalParameterResourcePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GlobalParameterSpecification,
-) as any as S.Schema<GlobalParameterResourcePropertiesMap>;
+export const GlobalParameterResourcePropertiesMap =
+  FactoryPropertiesGlobalParametersMap as any as S.Schema<GlobalParameterResourcePropertiesMap>;
 
 /** Global parameters resource type. */
 export interface GlobalParameterResource {
@@ -5329,18 +5128,8 @@ export interface IntegrationRuntimeResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const IntegrationRuntimeResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: IntegrationRuntime,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IntegrationRuntimeResource",
-}) as any as S.Schema<IntegrationRuntimeResource>;
+export const IntegrationRuntimeResource =
+  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<IntegrationRuntimeResource>;
 
 /** The IntegrationRuntimeResource items on this page */
 export type IntegrationRuntimeListResponseValueList = Array<IntegrationRuntimeResource>;
@@ -5522,16 +5311,8 @@ export interface LinkedServiceResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const LinkedServiceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkedService,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "LinkedServiceResource" }) as any as S.Schema<LinkedServiceResource>;
+export const LinkedServiceResource =
+  GetLinkedServiceResponse as any as S.Schema<LinkedServiceResource>;
 
 /** The LinkedServiceResource items on this page */
 export type LinkedServiceListResponseValueList = Array<LinkedServiceResource>;
@@ -5598,18 +5379,8 @@ export interface ManagedPrivateEndpointResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedPrivateEndpointResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ManagedPrivateEndpoint,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedPrivateEndpointResource",
-}) as any as S.Schema<ManagedPrivateEndpointResource>;
+export const ManagedPrivateEndpointResource =
+  GetManagedPrivateEndpointResponse as any as S.Schema<ManagedPrivateEndpointResource>;
 
 /** The ManagedPrivateEndpointResource items on this page */
 export type ManagedPrivateEndpointListResponseValueList = Array<ManagedPrivateEndpointResource>;
@@ -5673,18 +5444,8 @@ export interface ManagedVirtualNetworkResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedVirtualNetworkResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ManagedVirtualNetwork,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedVirtualNetworkResource",
-}) as any as S.Schema<ManagedVirtualNetworkResource>;
+export const ManagedVirtualNetworkResource =
+  GetManagedVirtualNetworkResponse as any as S.Schema<ManagedVirtualNetworkResource>;
 
 /** The ManagedVirtualNetworkResource items on this page */
 export type ManagedVirtualNetworkListResponseValueList = Array<ManagedVirtualNetworkResource>;
@@ -5964,16 +5725,7 @@ export interface PipelineResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const PipelineResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: Pipeline,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "PipelineResource" }) as any as S.Schema<PipelineResource>;
+export const PipelineResource = GetPipelineResponse as any as S.Schema<PipelineResource>;
 
 /** The PipelineResource items on this page */
 export type PipelineListResponseValueList = Array<PipelineResource>;
@@ -6035,18 +5787,8 @@ export interface PrivateEndpointConnectionResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemotePrivateEndpointConnection),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionResource",
-}) as any as S.Schema<PrivateEndpointConnectionResource>;
+export const PrivateEndpointConnectionResource =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionResource>;
 
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionListResponseValueList =
@@ -6111,16 +5853,7 @@ export interface TriggerResource {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const TriggerResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: Trigger,
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "TriggerResource" }) as any as S.Schema<TriggerResource>;
+export const TriggerResource = GetTriggerResponse as any as S.Schema<TriggerResource>;
 
 /** The TriggerResource items on this page */
 export type TriggerListResponseValueList = Array<TriggerResource>;
@@ -6144,15 +5877,13 @@ export const TriggerListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The connection state of a managed private endpoint */
 export interface ConnectionStatePropertiesInput {}
-export const ConnectionStatePropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ConnectionStatePropertiesInput",
-}) as any as S.Schema<ConnectionStatePropertiesInput>;
+export const ConnectionStatePropertiesInput =
+  CancelPipelineRunResponse as any as S.Schema<ConnectionStatePropertiesInput>;
 
 /** Fully qualified domain names */
 export type ManagedPrivateEndpointInputFqdnsList = Array<string>;
-export const ManagedPrivateEndpointInputFqdnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ManagedPrivateEndpointInputFqdnsList>;
+export const ManagedPrivateEndpointInputFqdnsList =
+  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<ManagedPrivateEndpointInputFqdnsList>;
 
 /** Properties of a managed private endpoint */
 export interface ManagedPrivateEndpointInput {
@@ -6224,18 +5955,8 @@ export interface ManagedPrivateEndpointsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedPrivateEndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ManagedPrivateEndpoint,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedPrivateEndpointsCreateOrUpdateResponse",
-}) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>;
+export const ManagedPrivateEndpointsCreateOrUpdateResponse =
+  GetManagedPrivateEndpointResponse as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>;
 
 /** A managed Virtual Network associated with the Azure Data Factory */
 export type ManagedVirtualNetworkInput = ConnectionStatePropertiesInput;
@@ -6286,18 +6007,8 @@ export interface ManagedVirtualNetworksCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ManagedVirtualNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ManagedVirtualNetwork,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedVirtualNetworksCreateOrUpdateResponse",
-}) as any as S.Schema<ManagedVirtualNetworksCreateOrUpdateResponse>;
+export const ManagedVirtualNetworksCreateOrUpdateResponse =
+  GetManagedVirtualNetworkResponse as any as S.Schema<ManagedVirtualNetworksCreateOrUpdateResponse>;
 
 /** Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status. */
 export type RunQueryFilterOperand =
@@ -6321,9 +6032,8 @@ export const RunQueryFilterOperator = S.String;
 
 /** List of filter values. */
 export type RunQueryFilterValuesList = Array<string>;
-export const RunQueryFilterValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunQueryFilterValuesList>;
+export const RunQueryFilterValuesList =
+  DataFlowDebugCommandPayloadColumnsList as any as S.Schema<RunQueryFilterValuesList>;
 
 /** Query filter option for listing runs. */
 export interface RunQueryFilter {
@@ -6510,11 +6220,7 @@ export interface PrivateEndpoint {
   /** The resource Id for private endpoint */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "PrivateEndpoint" }) as any as S.Schema<PrivateEndpoint>;
+export const PrivateEndpoint = ArmIdWrapper as any as S.Schema<PrivateEndpoint>;
 
 /** A request to approve or reject a private endpoint connection */
 export interface PrivateLinkConnectionApprovalRequest {
@@ -6577,18 +6283,8 @@ export interface PrivateEndpointConnectionCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const PrivateEndpointConnectionCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RemotePrivateEndpointConnection),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateResponse>;
 
 export interface RefreshIntegrationRuntimeObjectMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6704,23 +6400,18 @@ export const RemoveIntegrationRuntimeLinksRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveIntegrationRuntimeLinksRequest>;
 
 export interface RemoveIntegrationRuntimeLinksResponse {}
-export const RemoveIntegrationRuntimeLinksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveIntegrationRuntimeLinksResponse",
-}) as any as S.Schema<RemoveIntegrationRuntimeLinksResponse>;
+export const RemoveIntegrationRuntimeLinksResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<RemoveIntegrationRuntimeLinksResponse>;
 
 /** List of filters. */
 export type RunActivityRunsQueryByPipelineRequestFiltersList = Array<RunQueryFilter>;
-export const RunActivityRunsQueryByPipelineRequestFiltersList = /*@__PURE__*/ S.Array(
-  RunQueryFilter,
-) as any as S.Schema<RunActivityRunsQueryByPipelineRequestFiltersList>;
+export const RunActivityRunsQueryByPipelineRequestFiltersList =
+  PipelineRunsQueryByFactoryRequestFiltersList as any as S.Schema<RunActivityRunsQueryByPipelineRequestFiltersList>;
 
 /** List of OrderBy option. */
 export type RunActivityRunsQueryByPipelineRequestOrderByList = Array<RunQueryOrderBy>;
-export const RunActivityRunsQueryByPipelineRequestOrderByList = /*@__PURE__*/ S.Array(
-  RunQueryOrderBy,
-) as any as S.Schema<RunActivityRunsQueryByPipelineRequestOrderByList>;
+export const RunActivityRunsQueryByPipelineRequestOrderByList =
+  PipelineRunsQueryByFactoryRequestOrderByList as any as S.Schema<RunActivityRunsQueryByPipelineRequestOrderByList>;
 
 export interface RunActivityRunsQueryByPipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6862,9 +6553,8 @@ export const StartChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartChangeDataCaptureRequest>;
 
 export interface StartChangeDataCaptureResponse {}
-export const StartChangeDataCaptureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartChangeDataCaptureResponse",
-}) as any as S.Schema<StartChangeDataCaptureResponse>;
+export const StartChangeDataCaptureResponse =
+  CancelPipelineRunResponse as any as S.Schema<StartChangeDataCaptureResponse>;
 
 export interface StartIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6921,9 +6611,8 @@ export const StartTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartTriggerRequest" }) as any as S.Schema<StartTriggerRequest>;
 
 export interface StartTriggerResponse {}
-export const StartTriggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartTriggerResponse",
-}) as any as S.Schema<StartTriggerResponse>;
+export const StartTriggerResponse =
+  CancelPipelineRunResponse as any as S.Schema<StartTriggerResponse>;
 
 export interface StopChangeDataCaptureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6954,9 +6643,8 @@ export const StopChangeDataCaptureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopChangeDataCaptureRequest>;
 
 export interface StopChangeDataCaptureResponse {}
-export const StopChangeDataCaptureResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopChangeDataCaptureResponse",
-}) as any as S.Schema<StopChangeDataCaptureResponse>;
+export const StopChangeDataCaptureResponse =
+  CancelPipelineRunResponse as any as S.Schema<StopChangeDataCaptureResponse>;
 
 export interface StopIntegrationRuntimeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6987,9 +6675,8 @@ export const StopIntegrationRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopIntegrationRuntimeRequest>;
 
 export interface StopIntegrationRuntimeResponse {}
-export const StopIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopIntegrationRuntimeResponse",
-}) as any as S.Schema<StopIntegrationRuntimeResponse>;
+export const StopIntegrationRuntimeResponse =
+  CancelPipelineRunResponse as any as S.Schema<StopIntegrationRuntimeResponse>;
 
 export interface StopTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7018,9 +6705,8 @@ export const StopTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopTriggerRequest" }) as any as S.Schema<StopTriggerRequest>;
 
 export interface StopTriggerResponse {}
-export const StopTriggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopTriggerResponse",
-}) as any as S.Schema<StopTriggerResponse>;
+export const StopTriggerResponse =
+  CancelPipelineRunResponse as any as S.Schema<StopTriggerResponse>;
 
 export interface SubscribeTriggerToEventsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7079,23 +6765,18 @@ export const SyncIntegrationRuntimeCredentialsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SyncIntegrationRuntimeCredentialsRequest>;
 
 export interface SyncIntegrationRuntimeCredentialsResponse {}
-export const SyncIntegrationRuntimeCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SyncIntegrationRuntimeCredentialsResponse",
-}) as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>;
+export const SyncIntegrationRuntimeCredentialsResponse =
+  DeleteCredentialOperationResponse as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>;
 
 /** List of filters. */
 export type TriggerRunsQueryByFactoryRequestFiltersList = Array<RunQueryFilter>;
-export const TriggerRunsQueryByFactoryRequestFiltersList = /*@__PURE__*/ S.Array(
-  RunQueryFilter,
-) as any as S.Schema<TriggerRunsQueryByFactoryRequestFiltersList>;
+export const TriggerRunsQueryByFactoryRequestFiltersList =
+  PipelineRunsQueryByFactoryRequestFiltersList as any as S.Schema<TriggerRunsQueryByFactoryRequestFiltersList>;
 
 /** List of OrderBy option. */
 export type TriggerRunsQueryByFactoryRequestOrderByList = Array<RunQueryOrderBy>;
-export const TriggerRunsQueryByFactoryRequestOrderByList = /*@__PURE__*/ S.Array(
-  RunQueryOrderBy,
-) as any as S.Schema<TriggerRunsQueryByFactoryRequestOrderByList>;
+export const TriggerRunsQueryByFactoryRequestOrderByList =
+  PipelineRunsQueryByFactoryRequestOrderByList as any as S.Schema<TriggerRunsQueryByFactoryRequestOrderByList>;
 
 export interface TriggerRunsQueryByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7143,31 +6824,23 @@ export const TriggerRunStatus = S.String;
 
 /** List of property name and value related to trigger run. Name, value pair depends on type of trigger. */
 export type TriggerRunPropertiesMap = { [key: string]: string | undefined };
-export const TriggerRunPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TriggerRunPropertiesMap>;
+export const TriggerRunPropertiesMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunPropertiesMap>;
 
 /** List of pipeline name and run Id triggered by the trigger run. */
 export type TriggerRunTriggeredPipelinesMap = { [key: string]: string | undefined };
-export const TriggerRunTriggeredPipelinesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TriggerRunTriggeredPipelinesMap>;
+export const TriggerRunTriggeredPipelinesMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunTriggeredPipelinesMap>;
 
 /** Run dimension for which trigger was fired. */
 export type TriggerRunRunDimensionMap = { [key: string]: string | undefined };
-export const TriggerRunRunDimensionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TriggerRunRunDimensionMap>;
+export const TriggerRunRunDimensionMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<TriggerRunRunDimensionMap>;
 
 /** Status of the upstream pipelines. */
 export type TriggerRunDependencyStatusMap = { [key: string]: unknown | undefined };
-export const TriggerRunDependencyStatusMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TriggerRunDependencyStatusMap>;
+export const TriggerRunDependencyStatusMap =
+  LinkedServiceReferenceParametersMap as any as S.Schema<TriggerRunDependencyStatusMap>;
 
 /** Trigger runs. */
 export interface TriggerRun {
@@ -7255,9 +6928,8 @@ export const TriggerRunsRerunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerRunsRerunRequest" }) as any as S.Schema<TriggerRunsRerunRequest>;
 
 export interface TriggerRunsRerunResponse {}
-export const TriggerRunsRerunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TriggerRunsRerunResponse",
-}) as any as S.Schema<TriggerRunsRerunResponse>;
+export const TriggerRunsRerunResponse =
+  CancelPipelineRunResponse as any as S.Schema<TriggerRunsRerunResponse>;
 
 export interface TriggersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7350,9 +7022,8 @@ export const TriggersQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of triggers. */
 export type TriggerQueryResponseValueList = Array<TriggerResource>;
-export const TriggerQueryResponseValueList = /*@__PURE__*/ S.Array(
-  TriggerResource,
-) as any as S.Schema<TriggerQueryResponseValueList>;
+export const TriggerQueryResponseValueList =
+  TriggerListResponseValueList as any as S.Schema<TriggerQueryResponseValueList>;
 
 /** A query of triggers. */
 export interface TriggerQueryResponse {
@@ -7398,10 +7069,8 @@ export const UnsubscribeTriggerFromEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateFactoryRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFactoryRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFactoryRequestTagsMap>;
+export const UpdateFactoryRequestTagsMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<UpdateFactoryRequestTagsMap>;
 
 /** Factory update resource properties. */
 export interface FactoryUpdateProperties {
@@ -7448,10 +7117,8 @@ export const UpdateFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateFactoryResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFactoryResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFactoryResponseTagsMap>;
+export const UpdateFactoryResponseTagsMap =
+  FactoriesConfigureFactoryRepoResponseTagsMap as any as S.Schema<UpdateFactoryResponseTagsMap>;
 
 export interface UpdateFactoryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7473,19 +7140,7 @@ export interface UpdateFactoryResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateFactoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FactoryProperties),
-    identity: S.optional(FactoryIdentity),
-    location: S.optional(S.String),
-    tags: S.optional(UpdateFactoryResponseTagsMap),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateFactoryResponse" }) as any as S.Schema<UpdateFactoryResponse>;
+export const UpdateFactoryResponse = GetFactoryResponse as any as S.Schema<UpdateFactoryResponse>;
 
 /** The state of integration runtime auto update. */
 export type IntegrationRuntimeAutoUpdate = "On" | "Off";
@@ -7539,18 +7194,8 @@ export interface UpdateIntegrationRuntimeResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const UpdateIntegrationRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: IntegrationRuntime,
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateIntegrationRuntimeResponse",
-}) as any as S.Schema<UpdateIntegrationRuntimeResponse>;
+export const UpdateIntegrationRuntimeResponse =
+  DisableIntegrationRuntimeInteractiveQueryResponse as any as S.Schema<UpdateIntegrationRuntimeResponse>;
 
 export interface UpdateIntegrationRuntimeNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */

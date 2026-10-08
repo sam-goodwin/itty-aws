@@ -323,9 +323,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  DeleteDeviceResponse as any as S.Schema<DeleteEnvironmentResponse>;
 export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED" | (string & {});
 export const TargetDeviceStatus = S.String;
 
@@ -344,9 +343,8 @@ export const DeregisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeregisterDeviceRequest" }) as any as S.Schema<DeregisterDeviceRequest>;
 export interface DeregisterDeviceResponse {}
-export const DeregisterDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeregisterDeviceResponse",
-}) as any as S.Schema<DeregisterDeviceResponse>;
+export const DeregisterDeviceResponse =
+  DeleteDeviceResponse as any as S.Schema<DeregisterDeviceResponse>;
 export interface GetDeviceRequest {
   id: string;
 }
@@ -683,9 +681,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteDeviceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
 export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -701,9 +697,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteDeviceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeviceRequest {
   id: string;
   name?: string | redacted.Redacted<string>;
@@ -754,11 +748,8 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEnvironmentResponse {
   environment?: EnvironmentSummary;
 }
-export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environment: S.optional(EnvironmentSummary) }),
-).annotate({
-  identifier: "UpdateEnvironmentResponse",
-}) as any as S.Schema<UpdateEnvironmentResponse>;
+export const UpdateEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<UpdateEnvironmentResponse>;
 export interface UpdateSoftwareSetRequest {
   id: string;
   validationStatus: SoftwareSetValidationStatus;
@@ -772,9 +763,8 @@ export const UpdateSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateSoftwareSetRequest" }) as any as S.Schema<UpdateSoftwareSetRequest>;
 export interface UpdateSoftwareSetResponse {}
-export const UpdateSoftwareSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSoftwareSetResponse",
-}) as any as S.Schema<UpdateSoftwareSetResponse>;
+export const UpdateSoftwareSetResponse =
+  DeleteDeviceResponse as any as S.Schema<UpdateSoftwareSetResponse>;
 export type ExceptionMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;

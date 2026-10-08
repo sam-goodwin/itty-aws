@@ -188,11 +188,8 @@ export const AssociateDelegationSignerToDomainRequest = /*@__PURE__*/ S.suspend(
 export interface AssociateDelegationSignerToDomainResponse {
   OperationId?: string;
 }
-export const AssociateDelegationSignerToDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "AssociateDelegationSignerToDomainResponse",
-}) as any as S.Schema<AssociateDelegationSignerToDomainResponse>;
+export const AssociateDelegationSignerToDomainResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<AssociateDelegationSignerToDomainResponse>;
 export interface CancelDomainTransferToAnotherAwsAccountRequest {
   DomainName: string;
 }
@@ -206,11 +203,8 @@ export const CancelDomainTransferToAnotherAwsAccountRequest = /*@__PURE__*/ S.su
 export interface CancelDomainTransferToAnotherAwsAccountResponse {
   OperationId?: string;
 }
-export const CancelDomainTransferToAnotherAwsAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "CancelDomainTransferToAnotherAwsAccountResponse",
-}) as any as S.Schema<CancelDomainTransferToAnotherAwsAccountResponse>;
+export const CancelDomainTransferToAnotherAwsAccountResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<CancelDomainTransferToAnotherAwsAccountResponse>;
 export type LangCode = string;
 export interface CheckDomainAvailabilityRequest {
   DomainName: string;
@@ -331,11 +325,8 @@ export const DisableDomainAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableDomainAutoRenewRequest",
 }) as any as S.Schema<DisableDomainAutoRenewRequest>;
 export interface DisableDomainAutoRenewResponse {}
-export const DisableDomainAutoRenewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisableDomainAutoRenewResponse",
-}) as any as S.Schema<DisableDomainAutoRenewResponse>;
+export const DisableDomainAutoRenewResponse =
+  DeleteTagsForDomainResponse as any as S.Schema<DisableDomainAutoRenewResponse>;
 export interface DisableDomainTransferLockRequest {
   DomainName: string;
 }
@@ -349,11 +340,8 @@ export const DisableDomainTransferLockRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisableDomainTransferLockResponse {
   OperationId?: string;
 }
-export const DisableDomainTransferLockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DisableDomainTransferLockResponse",
-}) as any as S.Schema<DisableDomainTransferLockResponse>;
+export const DisableDomainTransferLockResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<DisableDomainTransferLockResponse>;
 export interface DisassociateDelegationSignerFromDomainRequest {
   DomainName: string;
   Id: string;
@@ -368,11 +356,8 @@ export const DisassociateDelegationSignerFromDomainRequest = /*@__PURE__*/ S.sus
 export interface DisassociateDelegationSignerFromDomainResponse {
   OperationId?: string;
 }
-export const DisassociateDelegationSignerFromDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "DisassociateDelegationSignerFromDomainResponse",
-}) as any as S.Schema<DisassociateDelegationSignerFromDomainResponse>;
+export const DisassociateDelegationSignerFromDomainResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<DisassociateDelegationSignerFromDomainResponse>;
 export interface EnableDomainAutoRenewRequest {
   DomainName: string;
 }
@@ -384,11 +369,8 @@ export const EnableDomainAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableDomainAutoRenewRequest",
 }) as any as S.Schema<EnableDomainAutoRenewRequest>;
 export interface EnableDomainAutoRenewResponse {}
-export const EnableDomainAutoRenewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "EnableDomainAutoRenewResponse",
-}) as any as S.Schema<EnableDomainAutoRenewResponse>;
+export const EnableDomainAutoRenewResponse =
+  DeleteTagsForDomainResponse as any as S.Schema<EnableDomainAutoRenewResponse>;
 export interface EnableDomainTransferLockRequest {
   DomainName: string;
 }
@@ -402,11 +384,8 @@ export const EnableDomainTransferLockRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnableDomainTransferLockResponse {
   OperationId?: string;
 }
-export const EnableDomainTransferLockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "EnableDomainTransferLockResponse",
-}) as any as S.Schema<EnableDomainTransferLockResponse>;
+export const EnableDomainTransferLockResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<EnableDomainTransferLockResponse>;
 export interface GetContactReachabilityStatusRequest {
   domainName?: string;
 }
@@ -440,7 +419,7 @@ export const GetDomainDetailRequest = /*@__PURE__*/ S.suspend(() =>
 export type HostName = string;
 export type GlueIp = string;
 export type GlueIpList = string[];
-export const GlueIpList = /*@__PURE__*/ S.Array(S.String);
+export const GlueIpList = TagKeyList as any as S.Schema<GlueIpList>;
 export interface Nameserver {
   Name: string;
   GlueIps?: string[];
@@ -811,7 +790,7 @@ export type Reseller = string;
 export type DNSSec = string;
 export type DomainStatus = string;
 export type DomainStatusList = string[];
-export const DomainStatusList = /*@__PURE__*/ S.Array(S.String);
+export const DomainStatusList = TagKeyList as any as S.Schema<DomainStatusList>;
 export interface DnssecKey {
   Algorithm?: number;
   Flags?: number;
@@ -1003,7 +982,7 @@ export const Operator = S.String;
 
 export type Value = string;
 export type Values = string[];
-export const Values = /*@__PURE__*/ S.Array(S.String);
+export const Values = TagKeyList as any as S.Schema<Values>;
 export interface FilterCondition {
   Name: ListDomainsAttributeName;
   Operator: Operator;
@@ -1251,9 +1230,8 @@ export const RegisterDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterDomainResponse {
   OperationId?: string;
 }
-export const RegisterDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "RegisterDomainResponse" }) as any as S.Schema<RegisterDomainResponse>;
+export const RegisterDomainResponse =
+  DeleteDomainResponse as any as S.Schema<RegisterDomainResponse>;
 export interface RejectDomainTransferFromAnotherAwsAccountRequest {
   DomainName: string;
 }
@@ -1267,11 +1245,8 @@ export const RejectDomainTransferFromAnotherAwsAccountRequest = /*@__PURE__*/ S.
 export interface RejectDomainTransferFromAnotherAwsAccountResponse {
   OperationId?: string;
 }
-export const RejectDomainTransferFromAnotherAwsAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "RejectDomainTransferFromAnotherAwsAccountResponse",
-}) as any as S.Schema<RejectDomainTransferFromAnotherAwsAccountResponse>;
+export const RejectDomainTransferFromAnotherAwsAccountResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<RejectDomainTransferFromAnotherAwsAccountResponse>;
 export type CurrentExpiryYear = number;
 export interface RenewDomainRequest {
   DomainName: string;
@@ -1288,9 +1263,7 @@ export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RenewDomainResponse {
   OperationId?: string;
 }
-export const RenewDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "RenewDomainResponse" }) as any as S.Schema<RenewDomainResponse>;
+export const RenewDomainResponse = DeleteDomainResponse as any as S.Schema<RenewDomainResponse>;
 export interface ResendContactReachabilityEmailRequest {
   domainName?: string;
 }
@@ -1326,11 +1299,8 @@ export const ResendOperationAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResendOperationAuthorizationRequest",
 }) as any as S.Schema<ResendOperationAuthorizationRequest>;
 export interface ResendOperationAuthorizationResponse {}
-export const ResendOperationAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ResendOperationAuthorizationResponse",
-}) as any as S.Schema<ResendOperationAuthorizationResponse>;
+export const ResendOperationAuthorizationResponse =
+  DeleteTagsForDomainResponse as any as S.Schema<ResendOperationAuthorizationResponse>;
 export interface RetrieveDomainAuthCodeRequest {
   DomainName: string;
 }
@@ -1386,9 +1356,8 @@ export const TransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransferDomainResponse {
   OperationId?: string;
 }
-export const TransferDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "TransferDomainResponse" }) as any as S.Schema<TransferDomainResponse>;
+export const TransferDomainResponse =
+  DeleteDomainResponse as any as S.Schema<TransferDomainResponse>;
 export type AccountId = string;
 export interface TransferDomainToAnotherAwsAccountRequest {
   DomainName: string;
@@ -1440,11 +1409,8 @@ export const UpdateDomainContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainContactResponse {
   OperationId?: string;
 }
-export const UpdateDomainContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateDomainContactResponse",
-}) as any as S.Schema<UpdateDomainContactResponse>;
+export const UpdateDomainContactResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<UpdateDomainContactResponse>;
 export interface UpdateDomainContactPrivacyRequest {
   DomainName: string;
   AdminPrivacy?: boolean;
@@ -1466,11 +1432,8 @@ export const UpdateDomainContactPrivacyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainContactPrivacyResponse {
   OperationId?: string;
 }
-export const UpdateDomainContactPrivacyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateDomainContactPrivacyResponse",
-}) as any as S.Schema<UpdateDomainContactPrivacyResponse>;
+export const UpdateDomainContactPrivacyResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<UpdateDomainContactPrivacyResponse>;
 export type FIAuthKey = string | redacted.Redacted<string>;
 export interface UpdateDomainNameserversRequest {
   DomainName: string;
@@ -1489,11 +1452,8 @@ export const UpdateDomainNameserversRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainNameserversResponse {
   OperationId?: string;
 }
-export const UpdateDomainNameserversResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "UpdateDomainNameserversResponse",
-}) as any as S.Schema<UpdateDomainNameserversResponse>;
+export const UpdateDomainNameserversResponse =
+  AcceptDomainTransferFromAnotherAwsAccountResponse as any as S.Schema<UpdateDomainNameserversResponse>;
 export interface UpdateTagsForDomainRequest {
   DomainName: string;
   TagsToUpdate?: Tag[];
@@ -1506,11 +1466,8 @@ export const UpdateTagsForDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTagsForDomainRequest",
 }) as any as S.Schema<UpdateTagsForDomainRequest>;
 export interface UpdateTagsForDomainResponse {}
-export const UpdateTagsForDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateTagsForDomainResponse",
-}) as any as S.Schema<UpdateTagsForDomainResponse>;
+export const UpdateTagsForDomainResponse =
+  DeleteTagsForDomainResponse as any as S.Schema<UpdateTagsForDomainResponse>;
 export interface ViewBillingRequest {
   Start?: Date;
   End?: Date;

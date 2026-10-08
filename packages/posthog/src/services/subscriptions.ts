@@ -245,9 +245,8 @@ export const SubscriptionResourceTypeEnum = S.String;
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type SubscriptionOutputDashboardExportInsightsList = Array<number>;
-export const SubscriptionOutputDashboardExportInsightsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SubscriptionOutputDashboardExportInsightsList>;
+export const SubscriptionOutputDashboardExportInsightsList =
+  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<SubscriptionOutputDashboardExportInsightsList>;
 
 export interface SubscriptionDashboardContext {
   /** Dashboard ID used to open the context dashboard. */
@@ -528,9 +527,8 @@ export const GetSubscriptionsDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ExportedAsset ids generated for this send. */
 export type SubscriptionDeliveryExportedAssetIdsList = Array<number>;
-export const SubscriptionDeliveryExportedAssetIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SubscriptionDeliveryExportedAssetIdsList>;
+export const SubscriptionDeliveryExportedAssetIdsList =
+  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<SubscriptionDeliveryExportedAssetIdsList>;
 
 /** * `starting` - Starting * `completed` - Completed * `failed` - Failed * `skipped` - Skipped */
 export type SubscriptionDeliveryStatusEnum = "starting" | "completed" | "failed" | "skipped";
@@ -843,9 +841,8 @@ export const SubscriptionsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Stru
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type UpdateSubscriptionRequestDashboardExportInsightsList = Array<number>;
-export const UpdateSubscriptionRequestDashboardExportInsightsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateSubscriptionRequestDashboardExportInsightsList>;
+export const UpdateSubscriptionRequestDashboardExportInsightsList =
+  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<UpdateSubscriptionRequestDashboardExportInsightsList>;
 
 export type UpdateSubscriptionRequestContextsItemCase0 = CreateSubscriptionRequestContextsItemCase0;
 export const UpdateSubscriptionRequestContextsItemCase0 =
@@ -977,9 +974,8 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type UpdateSubscriptionsPartialRequestDashboardExportInsightsList = Array<number>;
-export const UpdateSubscriptionsPartialRequestDashboardExportInsightsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateSubscriptionsPartialRequestDashboardExportInsightsList>;
+export const UpdateSubscriptionsPartialRequestDashboardExportInsightsList =
+  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<UpdateSubscriptionsPartialRequestDashboardExportInsightsList>;
 
 export type UpdateSubscriptionsPartialRequestContextsItemCase0 =
   CreateSubscriptionRequestContextsItemCase0;

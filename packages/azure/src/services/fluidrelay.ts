@@ -172,11 +172,8 @@ export type IdentityInputType =
 export const IdentityInputType = S.String;
 
 export interface IdentityInputUserAssignedIdentitiesValue {}
-export const IdentityInputUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IdentityInputUserAssignedIdentitiesValue",
-}) as any as S.Schema<IdentityInputUserAssignedIdentitiesValue>;
+export const IdentityInputUserAssignedIdentitiesValue =
+  DeleteFluidRelayContainerResponse as any as S.Schema<IdentityInputUserAssignedIdentitiesValue>;
 
 /** The list of user identities associated with the resource. */
 export type IdentityInputUserAssignedIdentitiesMap = {
@@ -240,10 +237,8 @@ export const FluidRelayServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type FluidRelayServersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FluidRelayServersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FluidRelayServersCreateOrUpdateResponseTagsMap>;
+export const FluidRelayServersCreateOrUpdateResponseTagsMap =
+  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<FluidRelayServersCreateOrUpdateResponseTagsMap>;
 
 /** The Fluid Relay Orderer endpoints. */
 export type FluidRelayEndpointsOrdererEndpointsList = Array<string>;
@@ -253,15 +248,13 @@ export const FluidRelayEndpointsOrdererEndpointsList = /*@__PURE__*/ S.Array(
 
 /** The Fluid Relay storage endpoints. */
 export type FluidRelayEndpointsStorageEndpointsList = Array<string>;
-export const FluidRelayEndpointsStorageEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FluidRelayEndpointsStorageEndpointsList>;
+export const FluidRelayEndpointsStorageEndpointsList =
+  FluidRelayEndpointsOrdererEndpointsList as any as S.Schema<FluidRelayEndpointsStorageEndpointsList>;
 
 /** The Fluid Relay service endpoints. */
 export type FluidRelayEndpointsServiceEndpointsList = Array<string>;
-export const FluidRelayEndpointsServiceEndpointsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FluidRelayEndpointsServiceEndpointsList>;
+export const FluidRelayEndpointsServiceEndpointsList =
+  FluidRelayEndpointsOrdererEndpointsList as any as S.Schema<FluidRelayEndpointsServiceEndpointsList>;
 
 /** The Fluid Relay endpoints for this server */
 export interface FluidRelayEndpoints {
@@ -596,10 +589,8 @@ export const GetFluidRelayServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFluidRelayServerResponseTagsMap = { [key: string]: string | undefined };
-export const GetFluidRelayServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetFluidRelayServerResponseTagsMap>;
+export const GetFluidRelayServerResponseTagsMap =
+  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<GetFluidRelayServerResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type GetFluidRelayServerResponseSystemDataCreatedByType =
@@ -885,10 +876,8 @@ export const ListFluidRelayServerByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type FluidRelayServerTagsMap = { [key: string]: string | undefined };
-export const FluidRelayServerTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FluidRelayServerTagsMap>;
+export const FluidRelayServerTagsMap =
+  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<FluidRelayServerTagsMap>;
 
 /** The type of identity that created the resource. */
 export type FluidRelayServerSystemDataCreatedByType =
@@ -1091,10 +1080,8 @@ export const FluidRelayServerUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFluidRelayServerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFluidRelayServerRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFluidRelayServerRequestTagsMap>;
+export const UpdateFluidRelayServerRequestTagsMap =
+  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFluidRelayServerRequestTagsMap>;
 
 export interface UpdateFluidRelayServerRequest {
   /** The subscription id (GUID) for this resource. */
@@ -1135,10 +1122,8 @@ export const UpdateFluidRelayServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFluidRelayServerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFluidRelayServerResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateFluidRelayServerResponseTagsMap>;
+export const UpdateFluidRelayServerResponseTagsMap =
+  FluidRelayServersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFluidRelayServerResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateFluidRelayServerResponseSystemDataCreatedByType =

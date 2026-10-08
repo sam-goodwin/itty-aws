@@ -154,9 +154,8 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNamespaceRequest" }) as any as S.Schema<DeleteNamespaceRequest>;
 
 export interface DeleteNamespaceResponse {}
-export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNamespaceResponse",
-}) as any as S.Schema<DeleteNamespaceResponse>;
+export const DeleteNamespaceResponse =
+  DeleteHybridConnectionResponse as any as S.Schema<DeleteNamespaceResponse>;
 
 export interface DeleteNamespaceAuthorizationRuleRequest {
   /** The ID of the target subscription. */
@@ -187,11 +186,8 @@ export const DeleteNamespaceAuthorizationRuleRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>;
 
 export interface DeleteNamespaceAuthorizationRuleResponse {}
-export const DeleteNamespaceAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteNamespaceAuthorizationRuleResponse",
-}) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>;
+export const DeleteNamespaceAuthorizationRuleResponse =
+  DeleteHybridConnectionAuthorizationRuleResponse as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
@@ -222,11 +218,8 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeletePrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+export const DeletePrivateEndpointConnectionResponse =
+  DeleteHybridConnectionAuthorizationRuleResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteWCFRelayRequest {
   /** The ID of the target subscription. */
@@ -255,9 +248,8 @@ export const DeleteWCFRelayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWCFRelayRequest" }) as any as S.Schema<DeleteWCFRelayRequest>;
 
 export interface DeleteWCFRelayResponse {}
-export const DeleteWCFRelayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWCFRelayResponse",
-}) as any as S.Schema<DeleteWCFRelayResponse>;
+export const DeleteWCFRelayResponse =
+  DeleteHybridConnectionResponse as any as S.Schema<DeleteWCFRelayResponse>;
 
 export interface DeleteWCFRelayAuthorizationRuleRequest {
   /** The ID of the target subscription. */
@@ -291,11 +283,8 @@ export const DeleteWCFRelayAuthorizationRuleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWCFRelayAuthorizationRuleRequest>;
 
 export interface DeleteWCFRelayAuthorizationRuleResponse {}
-export const DeleteWCFRelayAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWCFRelayAuthorizationRuleResponse",
-}) as any as S.Schema<DeleteWCFRelayAuthorizationRuleResponse>;
+export const DeleteWCFRelayAuthorizationRuleResponse =
+  DeleteHybridConnectionAuthorizationRuleResponse as any as S.Schema<DeleteWCFRelayAuthorizationRuleResponse>;
 
 export interface GetHybridConnectionRequest {
   /** The ID of the target subscription. */
@@ -755,18 +744,8 @@ export interface GetNamespaceAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetNamespaceAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetNamespaceAuthorizationRuleResponse",
-}) as any as S.Schema<GetNamespaceAuthorizationRuleResponse>;
+export const GetNamespaceAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<GetNamespaceAuthorizationRuleResponse>;
 
 export interface GetNamespaceNetworkRuleSetRequest {
   /** The ID of the target subscription. */
@@ -911,18 +890,8 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+export const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. */
@@ -960,9 +929,8 @@ export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of PrivateLinkResource */
 export interface PrivateLinkResourceProperties {
@@ -1139,18 +1107,8 @@ export interface GetWCFRelayAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const GetWCFRelayAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWCFRelayAuthorizationRuleResponse",
-}) as any as S.Schema<GetWCFRelayAuthorizationRuleResponse>;
+export const GetWCFRelayAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<GetWCFRelayAuthorizationRuleResponse>;
 
 /** Properties of the HybridConnection. */
 export interface HybridConnectionPropertiesInput {
@@ -1213,18 +1171,8 @@ export interface HybridConnectionsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const HybridConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HybridConnectionProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HybridConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<HybridConnectionsCreateOrUpdateResponse>;
+export const HybridConnectionsCreateOrUpdateResponse =
+  GetHybridConnectionResponse as any as S.Schema<HybridConnectionsCreateOrUpdateResponse>;
 
 export interface HybridConnectionsCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. */
@@ -1540,10 +1488,8 @@ export const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RelayNamespaceTagsMap = { [key: string]: string | undefined };
-export const RelayNamespaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<RelayNamespaceTagsMap>;
+export const RelayNamespaceTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<RelayNamespaceTagsMap>;
 
 /** Description of a namespace resource. */
 export interface RelayNamespace {
@@ -1564,18 +1510,7 @@ export interface RelayNamespace {
   /** SKU of the namespace. */
   sku?: Sku;
 }
-export const RelayNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(RelayNamespaceTagsMap),
-    location: S.String,
-    properties: S.optional(RelayNamespaceProperties),
-    sku: S.optional(Sku),
-  }),
-).annotate({ identifier: "RelayNamespace" }) as any as S.Schema<RelayNamespace>;
+export const RelayNamespace = GetNamespaceResponse as any as S.Schema<RelayNamespace>;
 
 /** The RelayNamespace items on this page */
 export type RelayNamespaceListResultValueList = Array<RelayNamespace>;
@@ -1749,9 +1684,8 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+export const PrivateEndpointConnectionListResultValueList =
+  RelayNamespacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
@@ -1907,16 +1841,7 @@ export interface WcfRelay {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const WcfRelay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(WcfRelayProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "WcfRelay" }) as any as S.Schema<WcfRelay>;
+export const WcfRelay = GetWCFRelayResponse as any as S.Schema<WcfRelay>;
 
 /** The WcfRelay items on this page */
 export type WcfRelaysListResultValueList = Array<WcfRelay>;
@@ -1969,10 +1894,8 @@ export const ListWCFRelayKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
+export const NamespacesCreateOrUpdateRequestTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 /** Properties of the PrivateEndpointConnection. */
 export interface PrivateEndpointConnectionInput {
@@ -2061,10 +1984,8 @@ export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+export const NamespacesCreateOrUpdateResponseTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
 
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2144,18 +2065,8 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const NamespacesCreateOrUpdateAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateAuthorizationRuleResponse",
-}) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
+export const NamespacesCreateOrUpdateAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
 
 export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
   /** The ID of the target subscription. */
@@ -2197,17 +2108,8 @@ export interface NamespacesCreateOrUpdateNetworkRuleSetResponse {
   /** NetworkRuleSet properties */
   properties?: NetworkRuleSetProperties;
 }
-export const NamespacesCreateOrUpdateNetworkRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NetworkRuleSetProperties),
-  }),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateNetworkRuleSetResponse",
-}) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>;
+export const NamespacesCreateOrUpdateNetworkRuleSetResponse =
+  GetNamespaceNetworkRuleSetResponse as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>;
 
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2254,18 +2156,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 /** The access key to regenerate. */
 export type KeyType = "PrimaryKey" | "SecondaryKey";
@@ -2381,10 +2273,8 @@ export const RegenerateWCFRelayKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceRequestTagsMap>;
+export const UpdateNamespaceRequestTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
 
 export interface UpdateNamespaceRequest {
   /** The ID of the target subscription. */
@@ -2420,10 +2310,8 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateNamespaceResponseTagsMap>;
+export const UpdateNamespaceResponseTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<UpdateNamespaceResponseTagsMap>;
 
 export interface UpdateNamespaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2443,18 +2331,8 @@ export interface UpdateNamespaceResponse {
   /** SKU of the namespace. */
   sku?: Sku;
 }
-export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateNamespaceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(RelayNamespaceProperties),
-    sku: S.optional(Sku),
-  }),
-).annotate({ identifier: "UpdateNamespaceResponse" }) as any as S.Schema<UpdateNamespaceResponse>;
+export const UpdateNamespaceResponse =
+  GetNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
 
 /** Properties of the WCF relay. */
 export interface WcfRelayPropertiesInput {
@@ -2582,18 +2460,8 @@ export interface WCFRelaysCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-export const WCFRelaysCreateOrUpdateAuthorizationRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizationRuleProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WCFRelaysCreateOrUpdateAuthorizationRuleResponse",
-}) as any as S.Schema<WCFRelaysCreateOrUpdateAuthorizationRuleResponse>;
+export const WCFRelaysCreateOrUpdateAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<WCFRelaysCreateOrUpdateAuthorizationRuleResponse>;
 
 export type CheckNamespaceNameAvailabilityError = AzureOpError;
 /** Check the specified namespace name availability. */

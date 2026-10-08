@@ -1578,13 +1578,7 @@ export interface GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker 
   modelName?: string;
 }
 export const GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker>;
+  GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode as any as S.Schema<GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingLlmRanker>;
 
 /** Config for Rank Service. */
 export interface GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService {
@@ -1592,13 +1586,7 @@ export interface GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankServic
   modelName?: string;
 }
 export const GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService",
-  }) as any as S.Schema<GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService>;
+  GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode as any as S.Schema<GoogleCloudAiplatformV1beta1RagRetrievalConfigRankingRankService>;
 
 /** Config for ranking and reranking. */
 export interface GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking {
@@ -2684,7 +2672,7 @@ export type DoubleList = Array<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+export const IntegerList = DoubleList as any as S.Schema<IntegerList>;
 
 /** A collection of supporting references for a segment or part of the model's response. */
 export interface GoogleCloudAiplatformV1beta1GroundingSupport {

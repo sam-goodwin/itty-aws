@@ -561,11 +561,8 @@ export const AdminAddUserToGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminAddUserToGroupRequest",
 }) as any as S.Schema<AdminAddUserToGroupRequest>;
 export interface AdminAddUserToGroupResponse {}
-export const AdminAddUserToGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminAddUserToGroupResponse",
-}) as any as S.Schema<AdminAddUserToGroupResponse>;
+export const AdminAddUserToGroupResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminAddUserToGroupResponse>;
 export type ClientMetadataType = { [key: string]: string | undefined };
 export const ClientMetadataType = /*@__PURE__*/ S.Record(
   S.String,
@@ -586,11 +583,8 @@ export const AdminConfirmSignUpRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminConfirmSignUpRequest",
 }) as any as S.Schema<AdminConfirmSignUpRequest>;
 export interface AdminConfirmSignUpResponse {}
-export const AdminConfirmSignUpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminConfirmSignUpResponse",
-}) as any as S.Schema<AdminConfirmSignUpResponse>;
+export const AdminConfirmSignUpResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminConfirmSignUpResponse>;
 export type AttributeNameType = string;
 export type AttributeValueType = string | redacted.Redacted<string>;
 export interface AttributeType {
@@ -695,11 +689,8 @@ export const AdminDeleteSoftwareTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminDeleteSoftwareTokenRequest",
 }) as any as S.Schema<AdminDeleteSoftwareTokenRequest>;
 export interface AdminDeleteSoftwareTokenResponse {}
-export const AdminDeleteSoftwareTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminDeleteSoftwareTokenResponse",
-}) as any as S.Schema<AdminDeleteSoftwareTokenResponse>;
+export const AdminDeleteSoftwareTokenResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminDeleteSoftwareTokenResponse>;
 export interface AdminDeleteUserRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -730,11 +721,8 @@ export const AdminDeleteUserAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminDeleteUserAttributesRequest",
 }) as any as S.Schema<AdminDeleteUserAttributesRequest>;
 export interface AdminDeleteUserAttributesResponse {}
-export const AdminDeleteUserAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminDeleteUserAttributesResponse",
-}) as any as S.Schema<AdminDeleteUserAttributesResponse>;
+export const AdminDeleteUserAttributesResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminDeleteUserAttributesResponse>;
 export type ProviderNameType = string;
 export interface ProviderUserIdentifierType {
   ProviderName?: string;
@@ -762,11 +750,8 @@ export const AdminDisableProviderForUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminDisableProviderForUserRequest",
 }) as any as S.Schema<AdminDisableProviderForUserRequest>;
 export interface AdminDisableProviderForUserResponse {}
-export const AdminDisableProviderForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminDisableProviderForUserResponse",
-}) as any as S.Schema<AdminDisableProviderForUserResponse>;
+export const AdminDisableProviderForUserResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminDisableProviderForUserResponse>;
 export interface AdminDisableUserRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -777,9 +762,8 @@ export const AdminDisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AdminDisableUserRequest" }) as any as S.Schema<AdminDisableUserRequest>;
 export interface AdminDisableUserResponse {}
-export const AdminDisableUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "AdminDisableUserResponse" }) as any as S.Schema<AdminDisableUserResponse>;
+export const AdminDisableUserResponse =
+  AdminDeleteUserResponse as any as S.Schema<AdminDisableUserResponse>;
 export interface AdminEnableUserRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -790,9 +774,8 @@ export const AdminEnableUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AdminEnableUserRequest" }) as any as S.Schema<AdminEnableUserRequest>;
 export interface AdminEnableUserResponse {}
-export const AdminEnableUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "AdminEnableUserResponse" }) as any as S.Schema<AdminEnableUserResponse>;
+export const AdminEnableUserResponse =
+  AdminDeleteUserResponse as any as S.Schema<AdminEnableUserResponse>;
 export type DeviceKeyType = string;
 export interface AdminForgetDeviceRequest {
   UserPoolId: string;
@@ -805,11 +788,8 @@ export const AdminForgetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AdminForgetDeviceRequest" }) as any as S.Schema<AdminForgetDeviceRequest>;
 export interface AdminForgetDeviceResponse {}
-export const AdminForgetDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminForgetDeviceResponse",
-}) as any as S.Schema<AdminForgetDeviceResponse>;
+export const AdminForgetDeviceResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminForgetDeviceResponse>;
 export interface AdminGetDeviceRequest {
   DeviceKey: string;
   UserPoolId: string;
@@ -852,7 +832,8 @@ export const AdminGetUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AdminGetUserRequest" }) as any as S.Schema<AdminGetUserRequest>;
 export type UserMFASettingListType = string[];
-export const UserMFASettingListType = /*@__PURE__*/ S.Array(S.String);
+export const UserMFASettingListType =
+  AttributeNameListType as any as S.Schema<UserMFASettingListType>;
 export interface AdminGetUserResponse {
   Username: string | redacted.Redacted<string>;
   UserAttributes?: AttributeType[];
@@ -928,10 +909,7 @@ export type AuthFlowType =
 export const AuthFlowType = S.String;
 
 export type AuthParametersType = { [key: string]: string | undefined };
-export const AuthParametersType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AuthParametersType = ClientMetadataType as any as S.Schema<AuthParametersType>;
 export interface AnalyticsMetadataType {
   AnalyticsEndpointId?: string;
 }
@@ -1007,10 +985,8 @@ export type ChallengeNameType =
 export const ChallengeNameType = S.String;
 
 export type ChallengeParametersType = { [key: string]: string | undefined };
-export const ChallengeParametersType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ChallengeParametersType =
+  ClientMetadataType as any as S.Schema<ChallengeParametersType>;
 export type TokenModelType = string | redacted.Redacted<string>;
 export type IntegerType = number;
 export interface NewDeviceMetadataType {
@@ -1073,11 +1049,8 @@ export const AdminLinkProviderForUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminLinkProviderForUserRequest",
 }) as any as S.Schema<AdminLinkProviderForUserRequest>;
 export interface AdminLinkProviderForUserResponse {}
-export const AdminLinkProviderForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminLinkProviderForUserResponse",
-}) as any as S.Schema<AdminLinkProviderForUserResponse>;
+export const AdminLinkProviderForUserResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminLinkProviderForUserResponse>;
 export type QueryLimitType = number;
 export type SearchPaginationTokenType = string;
 export interface AdminListDevicesRequest {
@@ -1296,11 +1269,8 @@ export const AdminRemoveUserFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminRemoveUserFromGroupRequest",
 }) as any as S.Schema<AdminRemoveUserFromGroupRequest>;
 export interface AdminRemoveUserFromGroupResponse {}
-export const AdminRemoveUserFromGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminRemoveUserFromGroupResponse",
-}) as any as S.Schema<AdminRemoveUserFromGroupResponse>;
+export const AdminRemoveUserFromGroupResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminRemoveUserFromGroupResponse>;
 export interface AdminResetUserPasswordRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1316,16 +1286,10 @@ export const AdminResetUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminResetUserPasswordRequest",
 }) as any as S.Schema<AdminResetUserPasswordRequest>;
 export interface AdminResetUserPasswordResponse {}
-export const AdminResetUserPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminResetUserPasswordResponse",
-}) as any as S.Schema<AdminResetUserPasswordResponse>;
+export const AdminResetUserPasswordResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminResetUserPasswordResponse>;
 export type ChallengeResponsesType = { [key: string]: string | undefined };
-export const ChallengeResponsesType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ChallengeResponsesType = ClientMetadataType as any as S.Schema<ChallengeResponsesType>;
 export interface AdminRespondToAuthChallengeRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -1357,17 +1321,8 @@ export interface AdminRespondToAuthChallengeResponse {
   AuthenticationResult?: AuthenticationResultType;
   AvailableChallenges?: ChallengeNameType[];
 }
-export const AdminRespondToAuthChallengeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChallengeName: S.optional(ChallengeNameType),
-    Session: S.optional(SensitiveString),
-    ChallengeParameters: S.optional(ChallengeParametersType),
-    AuthenticationResult: S.optional(AuthenticationResultType),
-    AvailableChallenges: S.optional(AvailableChallengeListType),
-  }).pipe(ns),
-).annotate({
-  identifier: "AdminRespondToAuthChallengeResponse",
-}) as any as S.Schema<AdminRespondToAuthChallengeResponse>;
+export const AdminRespondToAuthChallengeResponse =
+  AdminInitiateAuthResponse as any as S.Schema<AdminRespondToAuthChallengeResponse>;
 export interface SMSMfaSettingsType {
   Enabled?: boolean;
   PreferredMfa?: boolean;
@@ -1388,9 +1343,7 @@ export interface EmailMfaSettingsType {
   Enabled?: boolean;
   PreferredMfa?: boolean;
 }
-export const EmailMfaSettingsType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean), PreferredMfa: S.optional(S.Boolean) }),
-).annotate({ identifier: "EmailMfaSettingsType" }) as any as S.Schema<EmailMfaSettingsType>;
+export const EmailMfaSettingsType = SMSMfaSettingsType as any as S.Schema<EmailMfaSettingsType>;
 export interface WebAuthnMfaSettingsType {
   Enabled?: boolean;
 }
@@ -1418,11 +1371,8 @@ export const AdminSetUserMFAPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminSetUserMFAPreferenceRequest",
 }) as any as S.Schema<AdminSetUserMFAPreferenceRequest>;
 export interface AdminSetUserMFAPreferenceResponse {}
-export const AdminSetUserMFAPreferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminSetUserMFAPreferenceResponse",
-}) as any as S.Schema<AdminSetUserMFAPreferenceResponse>;
+export const AdminSetUserMFAPreferenceResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminSetUserMFAPreferenceResponse>;
 export interface AdminSetUserPasswordRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1440,11 +1390,8 @@ export const AdminSetUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminSetUserPasswordRequest",
 }) as any as S.Schema<AdminSetUserPasswordRequest>;
 export interface AdminSetUserPasswordResponse {}
-export const AdminSetUserPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminSetUserPasswordResponse",
-}) as any as S.Schema<AdminSetUserPasswordResponse>;
+export const AdminSetUserPasswordResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminSetUserPasswordResponse>;
 export interface AdminSetUserSettingsRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1458,11 +1405,8 @@ export const AdminSetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminSetUserSettingsRequest",
 }) as any as S.Schema<AdminSetUserSettingsRequest>;
 export interface AdminSetUserSettingsResponse {}
-export const AdminSetUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminSetUserSettingsResponse",
-}) as any as S.Schema<AdminSetUserSettingsResponse>;
+export const AdminSetUserSettingsResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminSetUserSettingsResponse>;
 export type EventIdType = string;
 export interface AdminUpdateAuthEventFeedbackRequest {
   UserPoolId: string;
@@ -1481,11 +1425,8 @@ export const AdminUpdateAuthEventFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminUpdateAuthEventFeedbackRequest",
 }) as any as S.Schema<AdminUpdateAuthEventFeedbackRequest>;
 export interface AdminUpdateAuthEventFeedbackResponse {}
-export const AdminUpdateAuthEventFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminUpdateAuthEventFeedbackResponse",
-}) as any as S.Schema<AdminUpdateAuthEventFeedbackResponse>;
+export const AdminUpdateAuthEventFeedbackResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminUpdateAuthEventFeedbackResponse>;
 export type DeviceRememberedStatusType = "remembered" | "not_remembered" | (string & {});
 export const DeviceRememberedStatusType = S.String;
 
@@ -1506,11 +1447,8 @@ export const AdminUpdateDeviceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminUpdateDeviceStatusRequest",
 }) as any as S.Schema<AdminUpdateDeviceStatusRequest>;
 export interface AdminUpdateDeviceStatusResponse {}
-export const AdminUpdateDeviceStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminUpdateDeviceStatusResponse",
-}) as any as S.Schema<AdminUpdateDeviceStatusResponse>;
+export const AdminUpdateDeviceStatusResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminUpdateDeviceStatusResponse>;
 export interface AdminUpdateUserAttributesRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1528,11 +1466,8 @@ export const AdminUpdateUserAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminUpdateUserAttributesRequest",
 }) as any as S.Schema<AdminUpdateUserAttributesRequest>;
 export interface AdminUpdateUserAttributesResponse {}
-export const AdminUpdateUserAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminUpdateUserAttributesResponse",
-}) as any as S.Schema<AdminUpdateUserAttributesResponse>;
+export const AdminUpdateUserAttributesResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminUpdateUserAttributesResponse>;
 export interface AdminUserGlobalSignOutRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1545,11 +1480,8 @@ export const AdminUserGlobalSignOutRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminUserGlobalSignOutRequest",
 }) as any as S.Schema<AdminUserGlobalSignOutRequest>;
 export interface AdminUserGlobalSignOutResponse {}
-export const AdminUserGlobalSignOutResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "AdminUserGlobalSignOutResponse",
-}) as any as S.Schema<AdminUserGlobalSignOutResponse>;
+export const AdminUserGlobalSignOutResponse =
+  AddCustomAttributesResponse as any as S.Schema<AdminUserGlobalSignOutResponse>;
 export interface AssociateSoftwareTokenRequest {
   AccessToken?: string | redacted.Redacted<string>;
   Session?: string | redacted.Redacted<string>;
@@ -1602,11 +1534,8 @@ export const CompleteWebAuthnRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompleteWebAuthnRegistrationRequest",
 }) as any as S.Schema<CompleteWebAuthnRegistrationRequest>;
 export interface CompleteWebAuthnRegistrationResponse {}
-export const CompleteWebAuthnRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CompleteWebAuthnRegistrationResponse",
-}) as any as S.Schema<CompleteWebAuthnRegistrationResponse>;
+export const CompleteWebAuthnRegistrationResponse =
+  AddCustomAttributesResponse as any as S.Schema<CompleteWebAuthnRegistrationResponse>;
 export interface DeviceSecretVerifierConfigType {
   PasswordVerifier?: string;
   Salt?: string;
@@ -1671,11 +1600,8 @@ export const ConfirmForgotPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfirmForgotPasswordRequest",
 }) as any as S.Schema<ConfirmForgotPasswordRequest>;
 export interface ConfirmForgotPasswordResponse {}
-export const ConfirmForgotPasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ConfirmForgotPasswordResponse",
-}) as any as S.Schema<ConfirmForgotPasswordResponse>;
+export const ConfirmForgotPasswordResponse =
+  AddCustomAttributesResponse as any as S.Schema<ConfirmForgotPasswordResponse>;
 export interface ConfirmSignUpRequest {
   ClientId: string | redacted.Redacted<string>;
   SecretHash?: string | redacted.Redacted<string>;
@@ -1740,26 +1666,18 @@ export type IdentityProviderTypeType =
 export const IdentityProviderTypeType = S.String;
 
 export type ProviderDetailsType = { [key: string]: string | undefined };
-export const ProviderDetailsType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ProviderDetailsType = ClientMetadataType as any as S.Schema<ProviderDetailsType>;
 export type AttributeMappingKeyType = string;
 export type AttributeMappingType = { [key: string]: string | undefined };
-export const AttributeMappingType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AttributeMappingType = ClientMetadataType as any as S.Schema<AttributeMappingType>;
 export type IdpIdentifierType = string;
 export type IdpIdentifiersListType = string[];
-export const IdpIdentifiersListType = /*@__PURE__*/ S.Array(S.String);
+export const IdpIdentifiersListType =
+  AttributeNameListType as any as S.Schema<IdpIdentifiersListType>;
 export type AcrMappingKeyType = string;
 export type AcrValueType = string;
 export type AcrMappingType = { [key: string]: string | undefined };
-export const AcrMappingType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const AcrMappingType = ClientMetadataType as any as S.Schema<AcrMappingType>;
 export interface CreateIdentityProviderRequest {
   UserPoolId: string;
   ProviderName: string;
@@ -2125,7 +2043,8 @@ export const PasswordPolicyType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PasswordPolicyType" }) as any as S.Schema<PasswordPolicyType>;
 export type AllowedFirstAuthFactorsListType = AuthFactorType[];
-export const AllowedFirstAuthFactorsListType = /*@__PURE__*/ S.Array(AuthFactorType);
+export const AllowedFirstAuthFactorsListType =
+  ConfiguredUserAuthFactorsListType as any as S.Schema<AllowedFirstAuthFactorsListType>;
 export interface SignInPolicyType {
   AllowedFirstAuthFactors?: AuthFactorType[];
 }
@@ -2277,7 +2196,7 @@ export const UserPoolMfaType = S.String;
 
 export type AttributesRequireVerificationBeforeUpdateType = VerifiedAttributeType[];
 export const AttributesRequireVerificationBeforeUpdateType =
-  /*@__PURE__*/ S.Array(VerifiedAttributeType);
+  VerifiedAttributesListType as any as S.Schema<AttributesRequireVerificationBeforeUpdateType>;
 export interface UserAttributeUpdateSettingsType {
   AttributesRequireVerificationBeforeUpdate?: VerifiedAttributeType[];
 }
@@ -2360,10 +2279,7 @@ export const SmsConfigurationType = /*@__PURE__*/ S.suspend(() =>
 export type TagKeysType = string;
 export type TagValueType = string;
 export type UserPoolTagsType = { [key: string]: string | undefined };
-export const UserPoolTagsType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const UserPoolTagsType = ClientMetadataType as any as S.Schema<UserPoolTagsType>;
 export type AdminCreateUserUnusedAccountValidityDaysType = number;
 export type SmsInviteMessageType = string;
 export type EmailInviteMessageType = string;
@@ -2394,7 +2310,8 @@ export const AdminCreateUserConfigType = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdminCreateUserConfigType",
 }) as any as S.Schema<AdminCreateUserConfigType>;
 export type SchemaAttributesListType = SchemaAttributeType[];
-export const SchemaAttributesListType = /*@__PURE__*/ S.Array(SchemaAttributeType);
+export const SchemaAttributesListType =
+  CustomAttributesListType as any as S.Schema<SchemaAttributesListType>;
 export type AdvancedSecurityModeType = "OFF" | "AUDIT" | "ENFORCED" | (string & {});
 export const AdvancedSecurityModeType = S.String;
 
@@ -2659,7 +2576,8 @@ export const TokenValidityUnitsType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TokenValidityUnitsType" }) as any as S.Schema<TokenValidityUnitsType>;
 export type ClientPermissionType = string;
 export type ClientPermissionListType = string[];
-export const ClientPermissionListType = /*@__PURE__*/ S.Array(S.String);
+export const ClientPermissionListType =
+  AttributeNameListType as any as S.Schema<ClientPermissionListType>;
 export type ExplicitAuthFlowsType =
   | "ADMIN_NO_SRP_AUTH"
   | "CUSTOM_AUTH_FLOW_ONLY"
@@ -2676,12 +2594,13 @@ export const ExplicitAuthFlowsType = S.String;
 export type ExplicitAuthFlowsListType = ExplicitAuthFlowsType[];
 export const ExplicitAuthFlowsListType = /*@__PURE__*/ S.Array(ExplicitAuthFlowsType);
 export type SupportedIdentityProvidersListType = string[];
-export const SupportedIdentityProvidersListType = /*@__PURE__*/ S.Array(S.String);
+export const SupportedIdentityProvidersListType =
+  AttributeNameListType as any as S.Schema<SupportedIdentityProvidersListType>;
 export type RedirectUrlType = string;
 export type CallbackURLsListType = string[];
-export const CallbackURLsListType = /*@__PURE__*/ S.Array(S.String);
+export const CallbackURLsListType = AttributeNameListType as any as S.Schema<CallbackURLsListType>;
 export type LogoutURLsListType = string[];
-export const LogoutURLsListType = /*@__PURE__*/ S.Array(S.String);
+export const LogoutURLsListType = AttributeNameListType as any as S.Schema<LogoutURLsListType>;
 export type OAuthFlowType = "code" | "implicit" | "client_credentials" | (string & {});
 export const OAuthFlowType = S.String;
 
@@ -2689,7 +2608,7 @@ export type OAuthFlowsType = OAuthFlowType[];
 export const OAuthFlowsType = /*@__PURE__*/ S.Array(OAuthFlowType);
 export type ScopeType = string;
 export type ScopeListType = string[];
-export const ScopeListType = /*@__PURE__*/ S.Array(S.String);
+export const ScopeListType = AttributeNameListType as any as S.Schema<ScopeListType>;
 export type HexStringType = string;
 export interface AnalyticsConfigurationType {
   ApplicationId?: string;
@@ -2971,11 +2890,8 @@ export const DeleteIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIdentityProviderRequest",
 }) as any as S.Schema<DeleteIdentityProviderRequest>;
 export interface DeleteIdentityProviderResponse {}
-export const DeleteIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteIdentityProviderResponse",
-}) as any as S.Schema<DeleteIdentityProviderResponse>;
+export const DeleteIdentityProviderResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteIdentityProviderResponse>;
 export interface DeleteManagedLoginBrandingRequest {
   ManagedLoginBrandingId: string;
   UserPoolId: string;
@@ -2988,11 +2904,8 @@ export const DeleteManagedLoginBrandingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteManagedLoginBrandingRequest",
 }) as any as S.Schema<DeleteManagedLoginBrandingRequest>;
 export interface DeleteManagedLoginBrandingResponse {}
-export const DeleteManagedLoginBrandingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteManagedLoginBrandingResponse",
-}) as any as S.Schema<DeleteManagedLoginBrandingResponse>;
+export const DeleteManagedLoginBrandingResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteManagedLoginBrandingResponse>;
 export interface DeleteResourceServerRequest {
   UserPoolId: string;
   Identifier: string;
@@ -3005,11 +2918,8 @@ export const DeleteResourceServerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceServerRequest",
 }) as any as S.Schema<DeleteResourceServerRequest>;
 export interface DeleteResourceServerResponse {}
-export const DeleteResourceServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourceServerResponse",
-}) as any as S.Schema<DeleteResourceServerResponse>;
+export const DeleteResourceServerResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteResourceServerResponse>;
 export interface DeleteTermsRequest {
   TermsId: string;
   UserPoolId: string;
@@ -3020,9 +2930,7 @@ export const DeleteTermsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTermsRequest" }) as any as S.Schema<DeleteTermsRequest>;
 export interface DeleteTermsResponse {}
-export const DeleteTermsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteTermsResponse",
-}) as any as S.Schema<DeleteTermsResponse>;
+export const DeleteTermsResponse = DeleteGroupResponse as any as S.Schema<DeleteTermsResponse>;
 export interface DeleteUserRequest {
   AccessToken: string | redacted.Redacted<string>;
 }
@@ -3032,9 +2940,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = DeleteGroupResponse as any as S.Schema<DeleteUserResponse>;
 export interface DeleteUserAttributesRequest {
   UserAttributeNames: string[];
   AccessToken: string | redacted.Redacted<string>;
@@ -3047,11 +2953,8 @@ export const DeleteUserAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserAttributesRequest",
 }) as any as S.Schema<DeleteUserAttributesRequest>;
 export interface DeleteUserAttributesResponse {}
-export const DeleteUserAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteUserAttributesResponse",
-}) as any as S.Schema<DeleteUserAttributesResponse>;
+export const DeleteUserAttributesResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteUserAttributesResponse>;
 export interface DeleteUserPoolRequest {
   UserPoolId: string;
 }
@@ -3061,9 +2964,8 @@ export const DeleteUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserPoolRequest" }) as any as S.Schema<DeleteUserPoolRequest>;
 export interface DeleteUserPoolResponse {}
-export const DeleteUserPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "DeleteUserPoolResponse" },
-) as any as S.Schema<DeleteUserPoolResponse>;
+export const DeleteUserPoolResponse =
+  ChangePasswordResponse as any as S.Schema<DeleteUserPoolResponse>;
 export interface DeleteUserPoolClientRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -3076,11 +2978,8 @@ export const DeleteUserPoolClientRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserPoolClientRequest",
 }) as any as S.Schema<DeleteUserPoolClientRequest>;
 export interface DeleteUserPoolClientResponse {}
-export const DeleteUserPoolClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteUserPoolClientResponse",
-}) as any as S.Schema<DeleteUserPoolClientResponse>;
+export const DeleteUserPoolClientResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteUserPoolClientResponse>;
 export interface DeleteUserPoolClientSecretRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -3094,11 +2993,8 @@ export const DeleteUserPoolClientSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserPoolClientSecretRequest",
 }) as any as S.Schema<DeleteUserPoolClientSecretRequest>;
 export interface DeleteUserPoolClientSecretResponse {}
-export const DeleteUserPoolClientSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteUserPoolClientSecretResponse",
-}) as any as S.Schema<DeleteUserPoolClientSecretResponse>;
+export const DeleteUserPoolClientSecretResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteUserPoolClientSecretResponse>;
 export interface DeleteUserPoolDomainRequest {
   Domain: string;
   UserPoolId: string;
@@ -3111,11 +3007,8 @@ export const DeleteUserPoolDomainRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserPoolDomainRequest",
 }) as any as S.Schema<DeleteUserPoolDomainRequest>;
 export interface DeleteUserPoolDomainResponse {}
-export const DeleteUserPoolDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteUserPoolDomainResponse",
-}) as any as S.Schema<DeleteUserPoolDomainResponse>;
+export const DeleteUserPoolDomainResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteUserPoolDomainResponse>;
 export interface DeleteUserPoolReplicaRequest {
   UserPoolId: string;
   RegionName: string;
@@ -3130,11 +3023,8 @@ export const DeleteUserPoolReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteUserPoolReplicaResponse {
   UserPoolReplica?: UserPoolReplicaType;
 }
-export const DeleteUserPoolReplicaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserPoolReplica: S.optional(UserPoolReplicaType) }).pipe(ns),
-).annotate({
-  identifier: "DeleteUserPoolReplicaResponse",
-}) as any as S.Schema<DeleteUserPoolReplicaResponse>;
+export const DeleteUserPoolReplicaResponse =
+  CreateUserPoolReplicaResponse as any as S.Schema<DeleteUserPoolReplicaResponse>;
 export interface DeleteWebAuthnCredentialRequest {
   AccessToken: string | redacted.Redacted<string>;
   CredentialId: string;
@@ -3147,11 +3037,8 @@ export const DeleteWebAuthnCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebAuthnCredentialRequest",
 }) as any as S.Schema<DeleteWebAuthnCredentialRequest>;
 export interface DeleteWebAuthnCredentialResponse {}
-export const DeleteWebAuthnCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteWebAuthnCredentialResponse",
-}) as any as S.Schema<DeleteWebAuthnCredentialResponse>;
+export const DeleteWebAuthnCredentialResponse =
+  AddCustomAttributesResponse as any as S.Schema<DeleteWebAuthnCredentialResponse>;
 export interface DescribeIdentityProviderRequest {
   UserPoolId: string;
   ProviderName: string;
@@ -3166,11 +3053,8 @@ export const DescribeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeIdentityProviderResponse {
   IdentityProvider: IdentityProviderType;
 }
-export const DescribeIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityProvider: IdentityProviderType }).pipe(ns),
-).annotate({
-  identifier: "DescribeIdentityProviderResponse",
-}) as any as S.Schema<DescribeIdentityProviderResponse>;
+export const DescribeIdentityProviderResponse =
+  CreateIdentityProviderResponse as any as S.Schema<DescribeIdentityProviderResponse>;
 export interface DescribeManagedLoginBrandingRequest {
   UserPoolId: string;
   ManagedLoginBrandingId: string;
@@ -3188,11 +3072,8 @@ export const DescribeManagedLoginBrandingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeManagedLoginBrandingResponse {
   ManagedLoginBranding?: ManagedLoginBrandingType;
 }
-export const DescribeManagedLoginBrandingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManagedLoginBranding: S.optional(ManagedLoginBrandingType) }).pipe(ns),
-).annotate({
-  identifier: "DescribeManagedLoginBrandingResponse",
-}) as any as S.Schema<DescribeManagedLoginBrandingResponse>;
+export const DescribeManagedLoginBrandingResponse =
+  CreateManagedLoginBrandingResponse as any as S.Schema<DescribeManagedLoginBrandingResponse>;
 export interface DescribeManagedLoginBrandingByClientRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -3210,11 +3091,8 @@ export const DescribeManagedLoginBrandingByClientRequest = /*@__PURE__*/ S.suspe
 export interface DescribeManagedLoginBrandingByClientResponse {
   ManagedLoginBranding?: ManagedLoginBrandingType;
 }
-export const DescribeManagedLoginBrandingByClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManagedLoginBranding: S.optional(ManagedLoginBrandingType) }).pipe(ns),
-).annotate({
-  identifier: "DescribeManagedLoginBrandingByClientResponse",
-}) as any as S.Schema<DescribeManagedLoginBrandingByClientResponse>;
+export const DescribeManagedLoginBrandingByClientResponse =
+  CreateManagedLoginBrandingResponse as any as S.Schema<DescribeManagedLoginBrandingByClientResponse>;
 export interface DescribeResourceServerRequest {
   UserPoolId: string;
   Identifier: string;
@@ -3229,11 +3107,8 @@ export const DescribeResourceServerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeResourceServerResponse {
   ResourceServer: ResourceServerType;
 }
-export const DescribeResourceServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceServer: ResourceServerType }).pipe(ns),
-).annotate({
-  identifier: "DescribeResourceServerResponse",
-}) as any as S.Schema<DescribeResourceServerResponse>;
+export const DescribeResourceServerResponse =
+  CreateResourceServerResponse as any as S.Schema<DescribeResourceServerResponse>;
 export interface DescribeRiskConfigurationRequest {
   UserPoolId: string;
   ClientId?: string | redacted.Redacted<string>;
@@ -3346,9 +3221,11 @@ export const AccountTakeoverRiskConfigurationType = /*@__PURE__*/ S.suspend(() =
   identifier: "AccountTakeoverRiskConfigurationType",
 }) as any as S.Schema<AccountTakeoverRiskConfigurationType>;
 export type BlockedIPRangeListType = string[];
-export const BlockedIPRangeListType = /*@__PURE__*/ S.Array(S.String);
+export const BlockedIPRangeListType =
+  AttributeNameListType as any as S.Schema<BlockedIPRangeListType>;
 export type SkippedIPRangeListType = string[];
-export const SkippedIPRangeListType = /*@__PURE__*/ S.Array(S.String);
+export const SkippedIPRangeListType =
+  AttributeNameListType as any as S.Schema<SkippedIPRangeListType>;
 export interface RiskExceptionConfigurationType {
   BlockedIPRangeList?: string[];
   SkippedIPRangeList?: string[];
@@ -3401,9 +3278,7 @@ export const DescribeTermsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeTermsResponse {
   Terms?: TermsType;
 }
-export const DescribeTermsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Terms: S.optional(TermsType) }).pipe(ns),
-).annotate({ identifier: "DescribeTermsResponse" }) as any as S.Schema<DescribeTermsResponse>;
+export const DescribeTermsResponse = CreateTermsResponse as any as S.Schema<DescribeTermsResponse>;
 export interface DescribeTermsByClientRequest {
   ClientId: string | redacted.Redacted<string>;
   UserPoolId: string;
@@ -3438,11 +3313,8 @@ export const DescribeUserImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeUserImportJobResponse {
   UserImportJob?: UserImportJobType;
 }
-export const DescribeUserImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserImportJob: S.optional(UserImportJobType) }).pipe(ns),
-).annotate({
-  identifier: "DescribeUserImportJobResponse",
-}) as any as S.Schema<DescribeUserImportJobResponse>;
+export const DescribeUserImportJobResponse =
+  CreateUserImportJobResponse as any as S.Schema<DescribeUserImportJobResponse>;
 export interface DescribeUserPoolRequest {
   UserPoolId: string;
 }
@@ -3454,9 +3326,8 @@ export const DescribeUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeUserPoolResponse {
   UserPool?: UserPoolType;
 }
-export const DescribeUserPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserPool: S.optional(UserPoolType) }).pipe(ns),
-).annotate({ identifier: "DescribeUserPoolResponse" }) as any as S.Schema<DescribeUserPoolResponse>;
+export const DescribeUserPoolResponse =
+  CreateUserPoolResponse as any as S.Schema<DescribeUserPoolResponse>;
 export interface DescribeUserPoolClientRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -3471,11 +3342,8 @@ export const DescribeUserPoolClientRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeUserPoolClientResponse {
   UserPoolClient?: UserPoolClientType;
 }
-export const DescribeUserPoolClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserPoolClient: S.optional(UserPoolClientType) }).pipe(ns),
-).annotate({
-  identifier: "DescribeUserPoolClientResponse",
-}) as any as S.Schema<DescribeUserPoolClientResponse>;
+export const DescribeUserPoolClientResponse =
+  CreateUserPoolClientResponse as any as S.Schema<DescribeUserPoolClientResponse>;
 export interface DescribeUserPoolDomainRequest {
   Domain: string;
 }
@@ -3542,9 +3410,7 @@ export const ForgetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ForgetDeviceRequest" }) as any as S.Schema<ForgetDeviceRequest>;
 export interface ForgetDeviceResponse {}
-export const ForgetDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "ForgetDeviceResponse",
-}) as any as S.Schema<ForgetDeviceResponse>;
+export const ForgetDeviceResponse = DeleteGroupResponse as any as S.Schema<ForgetDeviceResponse>;
 export interface ForgotPasswordRequest {
   ClientId: string | redacted.Redacted<string>;
   SecretHash?: string | redacted.Redacted<string>;
@@ -3624,7 +3490,7 @@ export const GetCSVHeaderRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetCSVHeaderRequest" }) as any as S.Schema<GetCSVHeaderRequest>;
 export type ListOfStringTypes = string[];
-export const ListOfStringTypes = /*@__PURE__*/ S.Array(S.String);
+export const ListOfStringTypes = AttributeNameListType as any as S.Schema<ListOfStringTypes>;
 export interface GetCSVHeaderResponse {
   UserPoolId?: string;
   CSVHeader?: string[];
@@ -3644,9 +3510,7 @@ export const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDeviceResponse {
   Device: DeviceType;
 }
-export const GetDeviceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Device: DeviceType }).pipe(ns),
-).annotate({ identifier: "GetDeviceResponse" }) as any as S.Schema<GetDeviceResponse>;
+export const GetDeviceResponse = AdminGetDeviceResponse as any as S.Schema<GetDeviceResponse>;
 export interface GetGroupRequest {
   GroupName: string;
   UserPoolId: string;
@@ -3659,9 +3523,7 @@ export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupResponse {
   Group?: GroupType;
 }
-export const GetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(GroupType) }).pipe(ns),
-).annotate({ identifier: "GetGroupResponse" }) as any as S.Schema<GetGroupResponse>;
+export const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
 export interface GetIdentityProviderByIdentifierRequest {
   UserPoolId: string;
   IdpIdentifier: string;
@@ -3676,11 +3538,8 @@ export const GetIdentityProviderByIdentifierRequest = /*@__PURE__*/ S.suspend(()
 export interface GetIdentityProviderByIdentifierResponse {
   IdentityProvider: IdentityProviderType;
 }
-export const GetIdentityProviderByIdentifierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityProvider: IdentityProviderType }).pipe(ns),
-).annotate({
-  identifier: "GetIdentityProviderByIdentifierResponse",
-}) as any as S.Schema<GetIdentityProviderByIdentifierResponse>;
+export const GetIdentityProviderByIdentifierResponse =
+  CreateIdentityProviderResponse as any as S.Schema<GetIdentityProviderByIdentifierResponse>;
 export interface GetLogDeliveryConfigurationRequest {
   UserPoolId: string;
 }
@@ -3759,10 +3618,7 @@ export type LimitClass = "API_CATEGORY" | (string & {});
 export const LimitClass = S.String;
 
 export type StringToStringMapType = { [key: string]: string | undefined };
-export const StringToStringMapType = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const StringToStringMapType = ClientMetadataType as any as S.Schema<StringToStringMapType>;
 export interface LimitDefinitionType {
   LimitClass: LimitClass;
   Attributes: { [key: string]: string | undefined };
@@ -3948,16 +3804,8 @@ export interface GetUserAuthFactorsResponse {
   UserMFASettingList?: string[];
   ConfiguredUserAuthFactors?: AuthFactorType[];
 }
-export const GetUserAuthFactorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Username: SensitiveString,
-    PreferredMfaSetting: S.optional(S.String),
-    UserMFASettingList: S.optional(UserMFASettingListType),
-    ConfiguredUserAuthFactors: S.optional(ConfiguredUserAuthFactorsListType),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetUserAuthFactorsResponse",
-}) as any as S.Schema<GetUserAuthFactorsResponse>;
+export const GetUserAuthFactorsResponse =
+  AdminGetUserAuthFactorsResponse as any as S.Schema<GetUserAuthFactorsResponse>;
 export interface GetUserPoolMfaConfigRequest {
   UserPoolId: string;
 }
@@ -4046,9 +3894,7 @@ export const GlobalSignOutRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GlobalSignOutRequest" }) as any as S.Schema<GlobalSignOutRequest>;
 export interface GlobalSignOutResponse {}
-export const GlobalSignOutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "GlobalSignOutResponse",
-}) as any as S.Schema<GlobalSignOutResponse>;
+export const GlobalSignOutResponse = DeleteGroupResponse as any as S.Schema<GlobalSignOutResponse>;
 export interface InitiateAuthRequest {
   AuthFlow: AuthFlowType;
   AuthParameters?: { [key: string]: string | undefined };
@@ -4101,9 +3947,7 @@ export interface ListDevicesResponse {
   Devices?: DeviceType[];
   PaginationToken?: string;
 }
-export const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Devices: S.optional(DeviceListType), PaginationToken: S.optional(S.String) }).pipe(ns),
-).annotate({ identifier: "ListDevicesResponse" }) as any as S.Schema<ListDevicesResponse>;
+export const ListDevicesResponse = AdminListDevicesResponse as any as S.Schema<ListDevicesResponse>;
 export interface ListGroupsRequest {
   UserPoolId: string;
   Limit?: number;
@@ -4381,7 +4225,7 @@ export const ListUserPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListUserPoolsRequest" }) as any as S.Schema<ListUserPoolsRequest>;
 export type ReplicaRegionsType = string[];
-export const ReplicaRegionsType = /*@__PURE__*/ S.Array(S.String);
+export const ReplicaRegionsType = AttributeNameListType as any as S.Schema<ReplicaRegionsType>;
 export interface UserPoolDescriptionType {
   Id?: string;
   Name?: string;
@@ -4412,7 +4256,8 @@ export const ListUserPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserPools: S.optional(UserPoolListType), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListUserPoolsResponse" }) as any as S.Schema<ListUserPoolsResponse>;
 export type SearchedAttributeNamesListType = string[];
-export const SearchedAttributeNamesListType = /*@__PURE__*/ S.Array(S.String);
+export const SearchedAttributeNamesListType =
+  AttributeNameListType as any as S.Schema<SearchedAttributeNamesListType>;
 export type UserFilterType = string;
 export interface ListUsersRequest {
   UserPoolId: string;
@@ -4478,7 +4323,8 @@ export const ListWebAuthnCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export type WebAuthnAuthenticatorAttachmentType = string;
 export type WebAuthnAuthenticatorTransportType = string;
 export type WebAuthnAuthenticatorTransportsList = string[];
-export const WebAuthnAuthenticatorTransportsList = /*@__PURE__*/ S.Array(S.String);
+export const WebAuthnAuthenticatorTransportsList =
+  AttributeNameListType as any as S.Schema<WebAuthnAuthenticatorTransportsList>;
 export interface WebAuthnCredentialDescription {
   CredentialId: string;
   FriendlyCredentialName: string;
@@ -4538,11 +4384,8 @@ export const ResendConfirmationCodeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResendConfirmationCodeResponse {
   CodeDeliveryDetails?: CodeDeliveryDetailsType;
 }
-export const ResendConfirmationCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CodeDeliveryDetails: S.optional(CodeDeliveryDetailsType) }).pipe(ns),
-).annotate({
-  identifier: "ResendConfirmationCodeResponse",
-}) as any as S.Schema<ResendConfirmationCodeResponse>;
+export const ResendConfirmationCodeResponse =
+  GetUserAttributeVerificationCodeResponse as any as S.Schema<ResendConfirmationCodeResponse>;
 export interface RespondToAuthChallengeRequest {
   ClientId: string | redacted.Redacted<string>;
   ChallengeName: ChallengeNameType;
@@ -4572,17 +4415,8 @@ export interface RespondToAuthChallengeResponse {
   AuthenticationResult?: AuthenticationResultType;
   AvailableChallenges?: ChallengeNameType[];
 }
-export const RespondToAuthChallengeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ChallengeName: S.optional(ChallengeNameType),
-    Session: S.optional(SensitiveString),
-    ChallengeParameters: S.optional(ChallengeParametersType),
-    AuthenticationResult: S.optional(AuthenticationResultType),
-    AvailableChallenges: S.optional(AvailableChallengeListType),
-  }).pipe(ns),
-).annotate({
-  identifier: "RespondToAuthChallengeResponse",
-}) as any as S.Schema<RespondToAuthChallengeResponse>;
+export const RespondToAuthChallengeResponse =
+  AdminInitiateAuthResponse as any as S.Schema<RespondToAuthChallengeResponse>;
 export interface RevokeTokenRequest {
   Token: string | redacted.Redacted<string>;
   ClientId: string | redacted.Redacted<string>;
@@ -4596,9 +4430,7 @@ export const RevokeTokenRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "RevokeTokenRequest" }) as any as S.Schema<RevokeTokenRequest>;
 export interface RevokeTokenResponse {}
-export const RevokeTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RevokeTokenResponse",
-}) as any as S.Schema<RevokeTokenResponse>;
+export const RevokeTokenResponse = DeleteGroupResponse as any as S.Schema<RevokeTokenResponse>;
 export interface SetLogDeliveryConfigurationRequest {
   UserPoolId: string;
   LogConfigurations: LogConfigurationType[];
@@ -4613,11 +4445,8 @@ export const SetLogDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetLogDeliveryConfigurationResponse {
   LogDeliveryConfiguration?: LogDeliveryConfigurationType;
 }
-export const SetLogDeliveryConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LogDeliveryConfiguration: S.optional(LogDeliveryConfigurationType) }).pipe(ns),
-).annotate({
-  identifier: "SetLogDeliveryConfigurationResponse",
-}) as any as S.Schema<SetLogDeliveryConfigurationResponse>;
+export const SetLogDeliveryConfigurationResponse =
+  GetLogDeliveryConfigurationResponse as any as S.Schema<SetLogDeliveryConfigurationResponse>;
 export interface SetRiskConfigurationRequest {
   UserPoolId: string;
   ClientId?: string | redacted.Redacted<string>;
@@ -4641,11 +4470,8 @@ export const SetRiskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetRiskConfigurationResponse {
   RiskConfiguration: RiskConfigurationType;
 }
-export const SetRiskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RiskConfiguration: RiskConfigurationType }).pipe(ns),
-).annotate({
-  identifier: "SetRiskConfigurationResponse",
-}) as any as S.Schema<SetRiskConfigurationResponse>;
+export const SetRiskConfigurationResponse =
+  DescribeRiskConfigurationResponse as any as S.Schema<SetRiskConfigurationResponse>;
 export type ImageFileType = Uint8Array;
 export interface SetUICustomizationRequest {
   UserPoolId: string;
@@ -4666,11 +4492,8 @@ export const SetUICustomizationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetUICustomizationResponse {
   UICustomization: UICustomizationType;
 }
-export const SetUICustomizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UICustomization: UICustomizationType }).pipe(ns),
-).annotate({
-  identifier: "SetUICustomizationResponse",
-}) as any as S.Schema<SetUICustomizationResponse>;
+export const SetUICustomizationResponse =
+  GetUICustomizationResponse as any as S.Schema<SetUICustomizationResponse>;
 export interface SetUserMFAPreferenceRequest {
   SMSMfaSettings?: SMSMfaSettingsType;
   SoftwareTokenMfaSettings?: SoftwareTokenMfaSettingsType;
@@ -4690,11 +4513,8 @@ export const SetUserMFAPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetUserMFAPreferenceRequest",
 }) as any as S.Schema<SetUserMFAPreferenceRequest>;
 export interface SetUserMFAPreferenceResponse {}
-export const SetUserMFAPreferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetUserMFAPreferenceResponse",
-}) as any as S.Schema<SetUserMFAPreferenceResponse>;
+export const SetUserMFAPreferenceResponse =
+  AddCustomAttributesResponse as any as S.Schema<SetUserMFAPreferenceResponse>;
 export interface SetUserPoolMfaConfigRequest {
   UserPoolId: string;
   SmsMfaConfiguration?: SmsMfaConfigType;
@@ -4722,17 +4542,8 @@ export interface SetUserPoolMfaConfigResponse {
   MfaConfiguration?: UserPoolMfaType;
   WebAuthnConfiguration?: WebAuthnConfigurationType;
 }
-export const SetUserPoolMfaConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SmsMfaConfiguration: S.optional(SmsMfaConfigType),
-    SoftwareTokenMfaConfiguration: S.optional(SoftwareTokenMfaConfigType),
-    EmailMfaConfiguration: S.optional(EmailMfaConfigType),
-    MfaConfiguration: S.optional(UserPoolMfaType),
-    WebAuthnConfiguration: S.optional(WebAuthnConfigurationType),
-  }).pipe(ns),
-).annotate({
-  identifier: "SetUserPoolMfaConfigResponse",
-}) as any as S.Schema<SetUserPoolMfaConfigResponse>;
+export const SetUserPoolMfaConfigResponse =
+  GetUserPoolMfaConfigResponse as any as S.Schema<SetUserPoolMfaConfigResponse>;
 export interface SetUserSettingsRequest {
   AccessToken: string | redacted.Redacted<string>;
   MFAOptions: MFAOptionType[];
@@ -4743,9 +4554,8 @@ export const SetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SetUserSettingsRequest" }) as any as S.Schema<SetUserSettingsRequest>;
 export interface SetUserSettingsResponse {}
-export const SetUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "SetUserSettingsResponse" }) as any as S.Schema<SetUserSettingsResponse>;
+export const SetUserSettingsResponse =
+  AdminDeleteUserResponse as any as S.Schema<SetUserSettingsResponse>;
 export interface SignUpRequest {
   ClientId: string | redacted.Redacted<string>;
   SecretHash?: string | redacted.Redacted<string>;
@@ -4798,11 +4608,8 @@ export const StartUserImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartUserImportJobResponse {
   UserImportJob?: UserImportJobType;
 }
-export const StartUserImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserImportJob: S.optional(UserImportJobType) }).pipe(ns),
-).annotate({
-  identifier: "StartUserImportJobResponse",
-}) as any as S.Schema<StartUserImportJobResponse>;
+export const StartUserImportJobResponse =
+  CreateUserImportJobResponse as any as S.Schema<StartUserImportJobResponse>;
 export interface StartWebAuthnRegistrationRequest {
   AccessToken: string | redacted.Redacted<string>;
 }
@@ -4833,11 +4640,8 @@ export const StopUserImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopUserImportJobResponse {
   UserImportJob?: UserImportJobType;
 }
-export const StopUserImportJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserImportJob: S.optional(UserImportJobType) }).pipe(ns),
-).annotate({
-  identifier: "StopUserImportJobResponse",
-}) as any as S.Schema<StopUserImportJobResponse>;
+export const StopUserImportJobResponse =
+  CreateUserImportJobResponse as any as S.Schema<StopUserImportJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -4848,11 +4652,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteGroupResponse as any as S.Schema<TagResourceResponse>;
 export type UserPoolTagsListType = string[];
-export const UserPoolTagsListType = /*@__PURE__*/ S.Array(S.String);
+export const UserPoolTagsListType = AttributeNameListType as any as S.Schema<UserPoolTagsListType>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -4863,9 +4665,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteGroupResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAuthEventFeedbackRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -4885,11 +4685,8 @@ export const UpdateAuthEventFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAuthEventFeedbackRequest",
 }) as any as S.Schema<UpdateAuthEventFeedbackRequest>;
 export interface UpdateAuthEventFeedbackResponse {}
-export const UpdateAuthEventFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateAuthEventFeedbackResponse",
-}) as any as S.Schema<UpdateAuthEventFeedbackResponse>;
+export const UpdateAuthEventFeedbackResponse =
+  AddCustomAttributesResponse as any as S.Schema<UpdateAuthEventFeedbackResponse>;
 export interface UpdateDeviceStatusRequest {
   AccessToken: string | redacted.Redacted<string>;
   DeviceKey: string;
@@ -4905,11 +4702,8 @@ export const UpdateDeviceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDeviceStatusRequest",
 }) as any as S.Schema<UpdateDeviceStatusRequest>;
 export interface UpdateDeviceStatusResponse {}
-export const UpdateDeviceStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateDeviceStatusResponse",
-}) as any as S.Schema<UpdateDeviceStatusResponse>;
+export const UpdateDeviceStatusResponse =
+  AddCustomAttributesResponse as any as S.Schema<UpdateDeviceStatusResponse>;
 export interface UpdateGroupRequest {
   GroupName: string;
   UserPoolId: string;
@@ -4929,9 +4723,7 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGroupResponse {
   Group?: GroupType;
 }
-export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(GroupType) }).pipe(ns),
-).annotate({ identifier: "UpdateGroupResponse" }) as any as S.Schema<UpdateGroupResponse>;
+export const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
 export interface UpdateIdentityProviderRequest {
   UserPoolId: string;
   ProviderName: string;
@@ -4955,11 +4747,8 @@ export const UpdateIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateIdentityProviderResponse {
   IdentityProvider: IdentityProviderType;
 }
-export const UpdateIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityProvider: IdentityProviderType }).pipe(ns),
-).annotate({
-  identifier: "UpdateIdentityProviderResponse",
-}) as any as S.Schema<UpdateIdentityProviderResponse>;
+export const UpdateIdentityProviderResponse =
+  CreateIdentityProviderResponse as any as S.Schema<UpdateIdentityProviderResponse>;
 export interface UpdateManagedLoginBrandingRequest {
   UserPoolId?: string;
   ManagedLoginBrandingId?: string;
@@ -4981,11 +4770,8 @@ export const UpdateManagedLoginBrandingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateManagedLoginBrandingResponse {
   ManagedLoginBranding?: ManagedLoginBrandingType;
 }
-export const UpdateManagedLoginBrandingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManagedLoginBranding: S.optional(ManagedLoginBrandingType) }).pipe(ns),
-).annotate({
-  identifier: "UpdateManagedLoginBrandingResponse",
-}) as any as S.Schema<UpdateManagedLoginBrandingResponse>;
+export const UpdateManagedLoginBrandingResponse =
+  CreateManagedLoginBrandingResponse as any as S.Schema<UpdateManagedLoginBrandingResponse>;
 export interface UpdateProvisionedLimitRequest {
   LimitDefinition: LimitDefinitionType;
   RequestedLimitValue: number;
@@ -5000,11 +4786,8 @@ export const UpdateProvisionedLimitRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProvisionedLimitResponse {
   Limit: LimitType;
 }
-export const UpdateProvisionedLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Limit: LimitType }).pipe(ns),
-).annotate({
-  identifier: "UpdateProvisionedLimitResponse",
-}) as any as S.Schema<UpdateProvisionedLimitResponse>;
+export const UpdateProvisionedLimitResponse =
+  GetProvisionedLimitResponse as any as S.Schema<UpdateProvisionedLimitResponse>;
 export interface UpdateResourceServerRequest {
   UserPoolId: string;
   Identifier: string;
@@ -5024,11 +4807,8 @@ export const UpdateResourceServerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResourceServerResponse {
   ResourceServer: ResourceServerType;
 }
-export const UpdateResourceServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceServer: ResourceServerType }).pipe(ns),
-).annotate({
-  identifier: "UpdateResourceServerResponse",
-}) as any as S.Schema<UpdateResourceServerResponse>;
+export const UpdateResourceServerResponse =
+  CreateResourceServerResponse as any as S.Schema<UpdateResourceServerResponse>;
 export interface UpdateTermsRequest {
   TermsId: string;
   UserPoolId: string;
@@ -5050,9 +4830,7 @@ export const UpdateTermsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTermsResponse {
   Terms?: TermsType;
 }
-export const UpdateTermsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Terms: S.optional(TermsType) }).pipe(ns),
-).annotate({ identifier: "UpdateTermsResponse" }) as any as S.Schema<UpdateTermsResponse>;
+export const UpdateTermsResponse = CreateTermsResponse as any as S.Schema<UpdateTermsResponse>;
 export interface UpdateUserAttributesRequest {
   UserAttributes: AttributeType[];
   AccessToken: string | redacted.Redacted<string>;
@@ -5132,9 +4910,8 @@ export const UpdateUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateUserPoolRequest" }) as any as S.Schema<UpdateUserPoolRequest>;
 export interface UpdateUserPoolResponse {}
-export const UpdateUserPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "UpdateUserPoolResponse" },
-) as any as S.Schema<UpdateUserPoolResponse>;
+export const UpdateUserPoolResponse =
+  ChangePasswordResponse as any as S.Schema<UpdateUserPoolResponse>;
 export interface UpdateUserPoolClientRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -5192,11 +4969,8 @@ export const UpdateUserPoolClientRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUserPoolClientResponse {
   UserPoolClient?: UserPoolClientType;
 }
-export const UpdateUserPoolClientResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserPoolClient: S.optional(UserPoolClientType) }).pipe(ns),
-).annotate({
-  identifier: "UpdateUserPoolClientResponse",
-}) as any as S.Schema<UpdateUserPoolClientResponse>;
+export const UpdateUserPoolClientResponse =
+  CreateUserPoolClientResponse as any as S.Schema<UpdateUserPoolClientResponse>;
 export interface UpdateUserPoolDomainRequest {
   Domain: string;
   UserPoolId: string;
@@ -5220,15 +4994,8 @@ export interface UpdateUserPoolDomainResponse {
   CloudFrontDomain?: string;
   Routing?: RoutingType;
 }
-export const UpdateUserPoolDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedLoginVersion: S.optional(S.Number),
-    CloudFrontDomain: S.optional(S.String),
-    Routing: S.optional(RoutingType),
-  }).pipe(ns),
-).annotate({
-  identifier: "UpdateUserPoolDomainResponse",
-}) as any as S.Schema<UpdateUserPoolDomainResponse>;
+export const UpdateUserPoolDomainResponse =
+  CreateUserPoolDomainResponse as any as S.Schema<UpdateUserPoolDomainResponse>;
 export type UpdateReplicaStatusType = "ACTIVE" | "INACTIVE" | (string & {});
 export const UpdateReplicaStatusType = S.String;
 
@@ -5247,11 +5014,8 @@ export const UpdateUserPoolReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUserPoolReplicaResponse {
   UserPoolReplica?: UserPoolReplicaType;
 }
-export const UpdateUserPoolReplicaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UserPoolReplica: S.optional(UserPoolReplicaType) }).pipe(ns),
-).annotate({
-  identifier: "UpdateUserPoolReplicaResponse",
-}) as any as S.Schema<UpdateUserPoolReplicaResponse>;
+export const UpdateUserPoolReplicaResponse =
+  CreateUserPoolReplicaResponse as any as S.Schema<UpdateUserPoolReplicaResponse>;
 export type SoftwareTokenMFAUserCodeType = string | redacted.Redacted<string>;
 export interface VerifySoftwareTokenRequest {
   AccessToken?: string | redacted.Redacted<string>;
@@ -5297,11 +5061,8 @@ export const VerifyUserAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyUserAttributeRequest",
 }) as any as S.Schema<VerifyUserAttributeRequest>;
 export interface VerifyUserAttributeResponse {}
-export const VerifyUserAttributeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "VerifyUserAttributeResponse",
-}) as any as S.Schema<VerifyUserAttributeResponse>;
+export const VerifyUserAttributeResponse =
+  AddCustomAttributesResponse as any as S.Schema<VerifyUserAttributeResponse>;
 export type MessageType = string;
 export type InvalidParameterExceptionReasonCodeType = string;
 export type AddCustomAttributesError =

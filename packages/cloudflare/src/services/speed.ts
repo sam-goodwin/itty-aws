@@ -752,11 +752,8 @@ export interface DeleteScheduleResponse {
   /** Number of items affected. */
   count?: number | null;
 }
-export const DeleteScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.NullOr(S.Number)),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteScheduleResponse" }) as any as S.Schema<DeleteScheduleResponse>;
+export const DeleteScheduleResponse =
+  DeletePageTestResponse as any as S.Schema<DeleteScheduleResponse>;
 
 export interface GetPageTestRequest {
   /** Identifier. */
@@ -2082,39 +2079,32 @@ export const PagesTrendResponseClsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PagesTrendResponseClsList>;
 
 export type PagesTrendResponseFcpList = Array<number>;
-export const PagesTrendResponseFcpList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PagesTrendResponseFcpList>;
+export const PagesTrendResponseFcpList =
+  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseFcpList>;
 
 export type PagesTrendResponseLcpList = Array<number>;
-export const PagesTrendResponseLcpList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PagesTrendResponseLcpList>;
+export const PagesTrendResponseLcpList =
+  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseLcpList>;
 
 export type PagesTrendResponsePerformanceScoreList = Array<number>;
-export const PagesTrendResponsePerformanceScoreList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PagesTrendResponsePerformanceScoreList>;
+export const PagesTrendResponsePerformanceScoreList =
+  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponsePerformanceScoreList>;
 
 export type PagesTrendResponseSiList = Array<number>;
-export const PagesTrendResponseSiList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PagesTrendResponseSiList>;
+export const PagesTrendResponseSiList =
+  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseSiList>;
 
 export type PagesTrendResponseTbtList = Array<number>;
-export const PagesTrendResponseTbtList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PagesTrendResponseTbtList>;
+export const PagesTrendResponseTbtList =
+  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseTbtList>;
 
 export type PagesTrendResponseTtfbList = Array<number>;
-export const PagesTrendResponseTtfbList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PagesTrendResponseTtfbList>;
+export const PagesTrendResponseTtfbList =
+  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseTtfbList>;
 
 export type PagesTrendResponseTtiList = Array<number>;
-export const PagesTrendResponseTtiList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PagesTrendResponseTtiList>;
+export const PagesTrendResponseTtiList =
+  PagesTrendResponseClsList as any as S.Schema<PagesTrendResponseTtiList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TrendPageResponse {

@@ -145,11 +145,8 @@ export const DeleteWebPubSubCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebPubSubCustomDomainRequest>;
 
 export interface DeleteWebPubSubCustomDomainResponse {}
-export const DeleteWebPubSubCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebPubSubCustomDomainResponse",
-}) as any as S.Schema<DeleteWebPubSubCustomDomainResponse>;
+export const DeleteWebPubSubCustomDomainResponse =
+  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<DeleteWebPubSubCustomDomainResponse>;
 
 export interface DeleteWebPubSubHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -180,9 +177,8 @@ export const DeleteWebPubSubHubRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebPubSubHubRequest>;
 
 export interface DeleteWebPubSubHubResponse {}
-export const DeleteWebPubSubHubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebPubSubHubResponse",
-}) as any as S.Schema<DeleteWebPubSubHubResponse>;
+export const DeleteWebPubSubHubResponse =
+  DeleteWebPubSubResponse as any as S.Schema<DeleteWebPubSubHubResponse>;
 
 export interface DeleteWebPubSubPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -213,11 +209,8 @@ export const DeleteWebPubSubPrivateEndpointConnectionRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionRequest>;
 
 export interface DeleteWebPubSubPrivateEndpointConnectionResponse {}
-export const DeleteWebPubSubPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebPubSubPrivateEndpointConnectionResponse",
-}) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionResponse>;
+export const DeleteWebPubSubPrivateEndpointConnectionResponse =
+  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionResponse>;
 
 export interface DeleteWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -281,11 +274,8 @@ export const DeleteWebPubSubSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceRequest>;
 
 export interface DeleteWebPubSubSharedPrivateLinkResourceResponse {}
-export const DeleteWebPubSubSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebPubSubSharedPrivateLinkResourceResponse",
-}) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceResponse>;
+export const DeleteWebPubSubSharedPrivateLinkResourceResponse =
+  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceResponse>;
 
 export interface GetWebPubSubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -596,18 +586,12 @@ export interface ResourceLogCategory {
   /** Indicates whether or the resource log category is enabled. Available values: true, false. Case insensitive. */
   enabled?: string;
 }
-export const ResourceLogCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    enabled: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceLogCategory" }) as any as S.Schema<ResourceLogCategory>;
+export const ResourceLogCategory = LiveTraceCategory as any as S.Schema<ResourceLogCategory>;
 
 /** Gets or sets the list of category configurations. */
 export type ResourceLogConfigurationCategoriesList = Array<ResourceLogCategory>;
-export const ResourceLogConfigurationCategoriesList = /*@__PURE__*/ S.Array(
-  ResourceLogCategory,
-) as any as S.Schema<ResourceLogConfigurationCategoriesList>;
+export const ResourceLogConfigurationCategoriesList =
+  LiveTraceConfigurationCategoriesList as any as S.Schema<ResourceLogConfigurationCategoriesList>;
 
 /** Resource log configuration of a Microsoft.SignalRService resource. */
 export interface ResourceLogConfiguration {
@@ -636,9 +620,7 @@ export const NetworkACLAllowList = /*@__PURE__*/ S.Array(
 
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type NetworkACLDenyList = Array<WebPubSubRequestType | (string & {})>;
-export const NetworkACLDenyList = /*@__PURE__*/ S.Array(
-  WebPubSubRequestType,
-) as any as S.Schema<NetworkACLDenyList>;
+export const NetworkACLDenyList = NetworkACLAllowList as any as S.Schema<NetworkACLDenyList>;
 
 /** Network ACL */
 export interface NetworkACL {
@@ -656,15 +638,13 @@ export const NetworkACL = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type PrivateEndpointACLAllowList = Array<WebPubSubRequestType | (string & {})>;
-export const PrivateEndpointACLAllowList = /*@__PURE__*/ S.Array(
-  WebPubSubRequestType,
-) as any as S.Schema<PrivateEndpointACLAllowList>;
+export const PrivateEndpointACLAllowList =
+  NetworkACLAllowList as any as S.Schema<PrivateEndpointACLAllowList>;
 
 /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
 export type PrivateEndpointACLDenyList = Array<WebPubSubRequestType | (string & {})>;
-export const PrivateEndpointACLDenyList = /*@__PURE__*/ S.Array(
-  WebPubSubRequestType,
-) as any as S.Schema<PrivateEndpointACLDenyList>;
+export const PrivateEndpointACLDenyList =
+  NetworkACLAllowList as any as S.Schema<PrivateEndpointACLDenyList>;
 
 /** ACL for a private endpoint */
 export interface PrivateEndpointACL {
@@ -988,11 +968,7 @@ export interface ResourceReference {
   /** Resource ID. */
   id?: string;
 }
-export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceReference" }) as any as S.Schema<ResourceReference>;
+export const ResourceReference = PrivateEndpoint as any as S.Schema<ResourceReference>;
 
 /** Properties of a custom domain. */
 export interface CustomDomainProperties {
@@ -1060,9 +1036,8 @@ export const GetWebPubSubHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of system events. */
 export type EventHandlerSystemEventsList = Array<string>;
-export const EventHandlerSystemEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventHandlerSystemEventsList>;
+export const EventHandlerSystemEventsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<EventHandlerSystemEventsList>;
 
 /** Upstream auth type enum. */
 export type UpstreamAuthType = "None" | "ManagedIdentity";
@@ -1252,17 +1227,8 @@ export interface GetWebPubSubPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetWebPubSubPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "GetWebPubSubPrivateEndpointConnectionResponse",
-}) as any as S.Schema<GetWebPubSubPrivateEndpointConnectionResponse>;
+export const GetWebPubSubPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetWebPubSubPrivateEndpointConnectionResponse>;
 
 export interface GetWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1294,10 +1260,8 @@ export const GetWebPubSubReplicasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWebPubSubReplicasResponseTagsMap = { [key: string]: string | undefined };
-export const GetWebPubSubReplicasResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebPubSubReplicasResponseTagsMap>;
+export const GetWebPubSubReplicasResponseTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<GetWebPubSubReplicasResponseTagsMap>;
 
 export interface ReplicaProperties {
   provisioningState?: ProvisioningState;
@@ -1387,17 +1351,8 @@ export interface GetWebPubSubReplicaSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const GetWebPubSubReplicaSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SharedPrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "GetWebPubSubReplicaSharedPrivateLinkResourceResponse",
-}) as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceResponse>;
+export const GetWebPubSubReplicaSharedPrivateLinkResourceResponse =
+  SharedPrivateLinkResource as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceResponse>;
 
 export interface GetWebPubSubSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1438,17 +1393,8 @@ export interface GetWebPubSubSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const GetWebPubSubSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SharedPrivateLinkResourceProperties),
-  }),
-).annotate({
-  identifier: "GetWebPubSubSharedPrivateLinkResourceResponse",
-}) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceResponse>;
+export const GetWebPubSubSharedPrivateLinkResourceResponse =
+  SharedPrivateLinkResource as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceResponse>;
 
 export interface ListOperationsRequest {}
 export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1731,10 +1677,8 @@ export const ListWebPubSubByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebPubSubResourceTagsMap = { [key: string]: string | undefined };
-export const WebPubSubResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebPubSubResourceTagsMap>;
+export const WebPubSubResourceTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubResourceTagsMap>;
 
 /** A class represent a resource. */
 export interface WebPubSubResource {
@@ -1755,20 +1699,7 @@ export interface WebPubSubResource {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-export const WebPubSubResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebPubSubResourceTagsMap),
-    location: S.String,
-    sku: S.optional(ResourceSku),
-    properties: S.optional(WebPubSubProperties),
-    kind: S.optional(ServiceKind),
-    identity: S.optional(ManagedIdentity),
-  }),
-).annotate({ identifier: "WebPubSubResource" }) as any as S.Schema<WebPubSubResource>;
+export const WebPubSubResource = GetWebPubSubResponse as any as S.Schema<WebPubSubResource>;
 
 /** List of the resources */
 export type WebPubSubResourceListValueList = Array<WebPubSubResource>;
@@ -1978,15 +1909,7 @@ export interface WebPubSubHub {
   systemData?: SystemData;
   properties: WebPubSubHubProperties;
 }
-export const WebPubSubHub = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: WebPubSubHubProperties,
-  }),
-).annotate({ identifier: "WebPubSubHub" }) as any as S.Schema<WebPubSubHub>;
+export const WebPubSubHub = GetWebPubSubHubResponse as any as S.Schema<WebPubSubHub>;
 
 /** List of hub settings to this resource. */
 export type WebPubSubHubListValueList = Array<WebPubSubHub>;
@@ -2078,9 +2001,8 @@ export const ListWebPubSubPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.su
 
 /** The list of the private endpoint connections */
 export type PrivateEndpointConnectionListValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
-  PrivateEndpointConnection,
-) as any as S.Schema<PrivateEndpointConnectionListValueList>;
+export const PrivateEndpointConnectionListValueList =
+  WebPubSubPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListValueList>;
 
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionList {
@@ -2125,15 +2047,13 @@ export const ListWebPubSubPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(
 
 /** Required members of the private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+export const PrivateLinkResourcePropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required private DNS zone names */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Describes the properties of a resource type that has been onboarded to private link service */
 export interface ShareablePrivateLinkResourceProperties {
@@ -2270,10 +2190,7 @@ export const ListWebPubSubReplicasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReplicaTagsMap = { [key: string]: string | undefined };
-export const ReplicaTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReplicaTagsMap>;
+export const ReplicaTagsMap = GetWebPubSubResponseTagsMap as any as S.Schema<ReplicaTagsMap>;
 
 /** A class represent a replica resource. */
 export interface Replica {
@@ -2354,9 +2271,8 @@ export const ListWebPubSubReplicaSharedPrivateLinkResourcesRequest = /*@__PURE__
 
 /** The list of the shared private link resources */
 export type SharedPrivateLinkResourceListValueList = Array<SharedPrivateLinkResource>;
-export const SharedPrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
-  SharedPrivateLinkResource,
-) as any as S.Schema<SharedPrivateLinkResourceListValueList>;
+export const SharedPrivateLinkResourceListValueList =
+  WebPubSubPropertiesSharedPrivateLinkResourcesList as any as S.Schema<SharedPrivateLinkResourceListValueList>;
 
 /** A list of shared private link resources */
 export interface SharedPrivateLinkResourceList {
@@ -2570,9 +2486,8 @@ export const RestartWebPubSubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartWebPubSubRequest" }) as any as S.Schema<RestartWebPubSubRequest>;
 
 export interface RestartWebPubSubResponse {}
-export const RestartWebPubSubResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RestartWebPubSubResponse",
-}) as any as S.Schema<RestartWebPubSubResponse>;
+export const RestartWebPubSubResponse =
+  DeleteWebPubSubResponse as any as S.Schema<RestartWebPubSubResponse>;
 
 export interface RestartWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2603,18 +2518,13 @@ export const RestartWebPubSubReplicasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartWebPubSubReplicasRequest>;
 
 export interface RestartWebPubSubReplicasResponse {}
-export const RestartWebPubSubReplicasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RestartWebPubSubReplicasResponse",
-}) as any as S.Schema<RestartWebPubSubReplicasResponse>;
+export const RestartWebPubSubReplicasResponse =
+  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<RestartWebPubSubReplicasResponse>;
 
 /** Resource tags. */
 export type UpdateWebPubSubRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWebPubSubRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebPubSubRequestTagsMap>;
+export const UpdateWebPubSubRequestTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<UpdateWebPubSubRequestTagsMap>;
 
 /** The billing information of the resource. */
 export interface ResourceSkuInput {
@@ -2667,11 +2577,8 @@ export const WebPubSubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of user assigned identity. */
 export interface UserAssignedIdentityPropertyInput {}
-export const UserAssignedIdentityPropertyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityPropertyInput",
-}) as any as S.Schema<UserAssignedIdentityPropertyInput>;
+export const UserAssignedIdentityPropertyInput =
+  DeleteWebPubSubCustomCertificateResponse as any as S.Schema<UserAssignedIdentityPropertyInput>;
 
 /** Get or set the user assigned identities */
 export type ManagedIdentityInputUserAssignedIdentitiesMap = {
@@ -2734,10 +2641,8 @@ export const UpdateWebPubSubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWebPubSubResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWebPubSubResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebPubSubResponseTagsMap>;
+export const UpdateWebPubSubResponseTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<UpdateWebPubSubResponseTagsMap>;
 
 export interface UpdateWebPubSubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2757,20 +2662,8 @@ export interface UpdateWebPubSubResponse {
   kind?: ServiceKind;
   identity?: ManagedIdentity;
 }
-export const UpdateWebPubSubResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateWebPubSubResponseTagsMap),
-    location: S.String,
-    sku: S.optional(ResourceSku),
-    properties: S.optional(WebPubSubProperties),
-    kind: S.optional(ServiceKind),
-    identity: S.optional(ManagedIdentity),
-  }),
-).annotate({ identifier: "UpdateWebPubSubResponse" }) as any as S.Schema<UpdateWebPubSubResponse>;
+export const UpdateWebPubSubResponse =
+  GetWebPubSubResponse as any as S.Schema<UpdateWebPubSubResponse>;
 
 /** Private endpoint connection properties */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -2827,24 +2720,13 @@ export interface UpdateWebPubSubPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdateWebPubSubPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebPubSubPrivateEndpointConnectionResponse",
-}) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionResponse>;
+export const UpdateWebPubSubPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionResponse>;
 
 /** Resource tags. */
 export type UpdateWebPubSubReplicasRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWebPubSubReplicasRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebPubSubReplicasRequestTagsMap>;
+export const UpdateWebPubSubReplicasRequestTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<UpdateWebPubSubReplicasRequestTagsMap>;
 
 export interface ReplicaPropertiesInput {
   /** Enable or disable the regional endpoint. Default to "Enabled". When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected. */
@@ -2899,10 +2781,8 @@ export const UpdateWebPubSubReplicasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWebPubSubReplicasResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWebPubSubReplicasResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebPubSubReplicasResponseTagsMap>;
+export const UpdateWebPubSubReplicasResponseTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<UpdateWebPubSubReplicasResponseTagsMap>;
 
 export interface UpdateWebPubSubReplicasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2920,27 +2800,13 @@ export interface UpdateWebPubSubReplicasResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-export const UpdateWebPubSubReplicasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateWebPubSubReplicasResponseTagsMap),
-    location: S.String,
-    sku: S.optional(ResourceSku),
-    properties: S.optional(ReplicaProperties),
-  }),
-).annotate({
-  identifier: "UpdateWebPubSubReplicasResponse",
-}) as any as S.Schema<UpdateWebPubSubReplicasResponse>;
+export const UpdateWebPubSubReplicasResponse =
+  GetWebPubSubReplicasResponse as any as S.Schema<UpdateWebPubSubReplicasResponse>;
 
 /** Resource tags. */
 export type WebPubSubCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WebPubSubCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebPubSubCreateOrUpdateRequestTagsMap>;
+export const WebPubSubCreateOrUpdateRequestTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubCreateOrUpdateRequestTagsMap>;
 
 export interface WebPubSubCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2983,10 +2849,8 @@ export const WebPubSubCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebPubSubCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WebPubSubCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebPubSubCreateOrUpdateResponseTagsMap>;
+export const WebPubSubCreateOrUpdateResponseTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubCreateOrUpdateResponseTagsMap>;
 
 export interface WebPubSubCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3083,17 +2947,8 @@ export interface WebPubSubCustomCertificatesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: CustomCertificateProperties;
 }
-export const WebPubSubCustomCertificatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CustomCertificateProperties,
-  }),
-).annotate({
-  identifier: "WebPubSubCustomCertificatesCreateOrUpdateResponse",
-}) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateResponse>;
+export const WebPubSubCustomCertificatesCreateOrUpdateResponse =
+  GetWebPubSubCustomCertificateResponse as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateResponse>;
 
 /** Properties of a custom domain. */
 export interface CustomDomainPropertiesInput {
@@ -3151,17 +3006,8 @@ export interface WebPubSubCustomDomainsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: CustomDomainProperties;
 }
-export const WebPubSubCustomDomainsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CustomDomainProperties,
-  }),
-).annotate({
-  identifier: "WebPubSubCustomDomainsCreateOrUpdateResponse",
-}) as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateResponse>;
+export const WebPubSubCustomDomainsCreateOrUpdateResponse =
+  GetWebPubSubCustomDomainResponse as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateResponse>;
 
 export interface WebPubSubHubsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3218,10 +3064,8 @@ export const WebPubSubHubsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WebPubSubReplicasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WebPubSubReplicasCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebPubSubReplicasCreateOrUpdateRequestTagsMap>;
+export const WebPubSubReplicasCreateOrUpdateRequestTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubReplicasCreateOrUpdateRequestTagsMap>;
 
 export interface WebPubSubReplicasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3263,10 +3107,8 @@ export const WebPubSubReplicasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type WebPubSubReplicasCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WebPubSubReplicasCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponseTagsMap>;
+export const WebPubSubReplicasCreateOrUpdateResponseTagsMap =
+  GetWebPubSubResponseTagsMap as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponseTagsMap>;
 
 export interface WebPubSubReplicasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3284,20 +3126,8 @@ export interface WebPubSubReplicasCreateOrUpdateResponse {
   sku?: ResourceSku;
   properties?: ReplicaProperties;
 }
-export const WebPubSubReplicasCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(WebPubSubReplicasCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    sku: S.optional(ResourceSku),
-    properties: S.optional(ReplicaProperties),
-  }),
-).annotate({
-  identifier: "WebPubSubReplicasCreateOrUpdateResponse",
-}) as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponse>;
+export const WebPubSubReplicasCreateOrUpdateResponse =
+  GetWebPubSubReplicasResponse as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponse>;
 
 /** Describes the properties of an existing Shared Private Link Resource */
 export interface SharedPrivateLinkResourcePropertiesInput {

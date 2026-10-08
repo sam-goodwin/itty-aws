@@ -429,11 +429,8 @@ export const CreateAccountLinkInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAccountLinkInvitationResult {
   AccountLink?: AccountLink;
 }
-export const CreateAccountLinkInvitationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountLink: S.optional(AccountLink) }).pipe(ns),
-).annotate({
-  identifier: "CreateAccountLinkInvitationResult",
-}) as any as S.Schema<CreateAccountLinkInvitationResult>;
+export const CreateAccountLinkInvitationResult =
+  AcceptAccountLinkInvitationResult as any as S.Schema<CreateAccountLinkInvitationResult>;
 export type AddInName = string;
 export type AddInUrl = string;
 export interface CreateConnectClientAddInRequest {
@@ -691,9 +688,7 @@ export const UserStorage = /*@__PURE__*/ S.suspend(() => S.Struct({ Capacity: S.
 export interface RootStorage {
   Capacity: string;
 }
-export const RootStorage = /*@__PURE__*/ S.suspend(() => S.Struct({ Capacity: S.String })).annotate(
-  { identifier: "RootStorage" },
-) as any as S.Schema<RootStorage>;
+export const RootStorage = UserStorage as any as S.Schema<RootStorage>;
 export interface CreateWorkspaceBundleRequest {
   BundleName: string;
   BundleDescription: string;
@@ -1298,11 +1293,8 @@ export const DeleteAccountLinkInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAccountLinkInvitationResult {
   AccountLink?: AccountLink;
 }
-export const DeleteAccountLinkInvitationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountLink: S.optional(AccountLink) }).pipe(ns),
-).annotate({
-  identifier: "DeleteAccountLinkInvitationResult",
-}) as any as S.Schema<DeleteAccountLinkInvitationResult>;
+export const DeleteAccountLinkInvitationResult =
+  AcceptAccountLinkInvitationResult as any as S.Schema<DeleteAccountLinkInvitationResult>;
 export type ClientDeviceType =
   | "DeviceTypeWindows"
   | "DeviceTypeOsx"
@@ -1344,11 +1336,8 @@ export const DeleteConnectClientAddInRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConnectClientAddInRequest",
 }) as any as S.Schema<DeleteConnectClientAddInRequest>;
 export interface DeleteConnectClientAddInResult {}
-export const DeleteConnectClientAddInResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConnectClientAddInResult",
-}) as any as S.Schema<DeleteConnectClientAddInResult>;
+export const DeleteConnectClientAddInResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteConnectClientAddInResult>;
 export interface DeleteConnectionAliasRequest {
   AliasId: string;
 }
@@ -1360,11 +1349,8 @@ export const DeleteConnectionAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConnectionAliasRequest",
 }) as any as S.Schema<DeleteConnectionAliasRequest>;
 export interface DeleteConnectionAliasResult {}
-export const DeleteConnectionAliasResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConnectionAliasResult",
-}) as any as S.Schema<DeleteConnectionAliasResult>;
+export const DeleteConnectionAliasResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteConnectionAliasResult>;
 export interface DeleteIpGroupRequest {
   GroupId: string;
 }
@@ -1374,11 +1360,9 @@ export const DeleteIpGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteIpGroupRequest" }) as any as S.Schema<DeleteIpGroupRequest>;
 export interface DeleteIpGroupResult {}
-export const DeleteIpGroupResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteIpGroupResult",
-}) as any as S.Schema<DeleteIpGroupResult>;
+export const DeleteIpGroupResult = CreateTagsResult as any as S.Schema<DeleteIpGroupResult>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = IpGroupIdList as any as S.Schema<TagKeyList>;
 export interface DeleteTagsRequest {
   ResourceId: string;
   TagKeys: string[];
@@ -1389,9 +1373,7 @@ export const DeleteTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTagsRequest" }) as any as S.Schema<DeleteTagsRequest>;
 export interface DeleteTagsResult {}
-export const DeleteTagsResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteTagsResult",
-}) as any as S.Schema<DeleteTagsResult>;
+export const DeleteTagsResult = CreateTagsResult as any as S.Schema<DeleteTagsResult>;
 export interface DeleteWorkspaceBundleRequest {
   BundleId?: string;
 }
@@ -1403,11 +1385,8 @@ export const DeleteWorkspaceBundleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkspaceBundleRequest",
 }) as any as S.Schema<DeleteWorkspaceBundleRequest>;
 export interface DeleteWorkspaceBundleResult {}
-export const DeleteWorkspaceBundleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteWorkspaceBundleResult",
-}) as any as S.Schema<DeleteWorkspaceBundleResult>;
+export const DeleteWorkspaceBundleResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteWorkspaceBundleResult>;
 export interface DeleteWorkspaceImageRequest {
   ImageId: string;
 }
@@ -1419,11 +1398,8 @@ export const DeleteWorkspaceImageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWorkspaceImageRequest",
 }) as any as S.Schema<DeleteWorkspaceImageRequest>;
 export interface DeleteWorkspaceImageResult {}
-export const DeleteWorkspaceImageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteWorkspaceImageResult",
-}) as any as S.Schema<DeleteWorkspaceImageResult>;
+export const DeleteWorkspaceImageResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteWorkspaceImageResult>;
 export interface DeployWorkspaceApplicationsRequest {
   WorkspaceId: string;
   Force?: boolean;
@@ -1464,11 +1440,8 @@ export const DeregisterWorkspaceDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterWorkspaceDirectoryRequest",
 }) as any as S.Schema<DeregisterWorkspaceDirectoryRequest>;
 export interface DeregisterWorkspaceDirectoryResult {}
-export const DeregisterWorkspaceDirectoryResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeregisterWorkspaceDirectoryResult",
-}) as any as S.Schema<DeregisterWorkspaceDirectoryResult>;
+export const DeregisterWorkspaceDirectoryResult =
+  DeleteClientBrandingResult as any as S.Schema<DeregisterWorkspaceDirectoryResult>;
 export interface DescribeAccountRequest {}
 export const DescribeAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1608,7 +1581,8 @@ export const DescribeApplicationAssociationsResult = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeApplicationAssociationsResult",
 }) as any as S.Schema<DescribeApplicationAssociationsResult>;
 export type WorkSpaceApplicationIdList = string[];
-export const WorkSpaceApplicationIdList = /*@__PURE__*/ S.Array(S.String);
+export const WorkSpaceApplicationIdList =
+  IpGroupIdList as any as S.Schema<WorkSpaceApplicationIdList>;
 export type ComputeList = Compute[];
 export const ComputeList = /*@__PURE__*/ S.Array(Compute);
 export type WorkSpaceApplicationLicenseType = "LICENSED" | "UNLICENSED" | (string & {});
@@ -1813,7 +1787,7 @@ export const DescribeClientBrandingResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeClientBrandingResult",
 }) as any as S.Schema<DescribeClientBrandingResult>;
 export type ResourceIdList = string[];
-export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceIdList = IpGroupIdList as any as S.Schema<ResourceIdList>;
 export interface DescribeClientPropertiesRequest {
   ResourceIds: string[];
 }
@@ -1902,7 +1876,7 @@ export const DescribeConnectClientAddInsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConnectClientAddInsResult",
 }) as any as S.Schema<DescribeConnectClientAddInsResult>;
 export type ConnectionAliasIdList = string[];
-export const ConnectionAliasIdList = /*@__PURE__*/ S.Array(S.String);
+export const ConnectionAliasIdList = IpGroupIdList as any as S.Schema<ConnectionAliasIdList>;
 export interface DescribeConnectionAliasesRequest {
   AliasIds?: string[];
   ResourceId?: string;
@@ -2226,7 +2200,7 @@ export const DescribeWorkspaceAssociationsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeWorkspaceAssociationsResult",
 }) as any as S.Schema<DescribeWorkspaceAssociationsResult>;
 export type BundleIdList = string[];
-export const BundleIdList = /*@__PURE__*/ S.Array(S.String);
+export const BundleIdList = IpGroupIdList as any as S.Schema<BundleIdList>;
 export interface DescribeWorkspaceBundlesRequest {
   BundleIds?: string[];
   Owner?: string;
@@ -2253,10 +2227,11 @@ export const DescribeWorkspaceBundlesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeWorkspaceBundlesResult",
 }) as any as S.Schema<DescribeWorkspaceBundlesResult>;
 export type DirectoryIdList = string[];
-export const DirectoryIdList = /*@__PURE__*/ S.Array(S.String);
+export const DirectoryIdList = IpGroupIdList as any as S.Schema<DirectoryIdList>;
 export type WorkspaceDirectoryName = string;
 export type WorkspaceDirectoryNameList = string[];
-export const WorkspaceDirectoryNameList = /*@__PURE__*/ S.Array(S.String);
+export const WorkspaceDirectoryNameList =
+  IpGroupIdList as any as S.Schema<WorkspaceDirectoryNameList>;
 export type DescribeWorkspaceDirectoriesFilterName =
   | "USER_IDENTITY_TYPE"
   | "WORKSPACE_TYPE"
@@ -2265,7 +2240,8 @@ export const DescribeWorkspaceDirectoriesFilterName = S.String;
 
 export type DescribeWorkspaceDirectoriesFilterValue = string;
 export type DescribeWorkspaceDirectoriesFilterValues = string[];
-export const DescribeWorkspaceDirectoriesFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DescribeWorkspaceDirectoriesFilterValues =
+  IpGroupIdList as any as S.Schema<DescribeWorkspaceDirectoriesFilterValues>;
 export interface DescribeWorkspaceDirectoriesFilter {
   Name: DescribeWorkspaceDirectoriesFilterName;
   Values: string[];
@@ -2304,11 +2280,11 @@ export type Alias = string;
 export type DirectoryName = string;
 export type RegistrationCode = string;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = IpGroupIdList as any as S.Schema<SubnetIds>;
 export type DnsIpAddresses = string[];
-export const DnsIpAddresses = /*@__PURE__*/ S.Array(S.String);
+export const DnsIpAddresses = IpGroupIdList as any as S.Schema<DnsIpAddresses>;
 export type DnsIpv6Addresses = string[];
-export const DnsIpv6Addresses = /*@__PURE__*/ S.Array(S.String);
+export const DnsIpv6Addresses = IpGroupIdList as any as S.Schema<DnsIpv6Addresses>;
 export type WorkspaceDirectoryType =
   | "SIMPLE_AD"
   | "AD_CONNECTOR"
@@ -2691,7 +2667,7 @@ export const DescribeWorkspaceImagePermissionsResult = /*@__PURE__*/ S.suspend((
   identifier: "DescribeWorkspaceImagePermissionsResult",
 }) as any as S.Schema<DescribeWorkspaceImagePermissionsResult>;
 export type WorkspaceImageIdList = string[];
-export const WorkspaceImageIdList = /*@__PURE__*/ S.Array(S.String);
+export const WorkspaceImageIdList = IpGroupIdList as any as S.Schema<WorkspaceImageIdList>;
 export type ImageType = "OWNED" | "SHARED" | (string & {});
 export const ImageType = S.String;
 
@@ -2825,7 +2801,7 @@ export const DescribeWorkspaceImagesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeWorkspaceImagesResult",
 }) as any as S.Schema<DescribeWorkspaceImagesResult>;
 export type WorkspaceIdList = string[];
-export const WorkspaceIdList = /*@__PURE__*/ S.Array(S.String);
+export const WorkspaceIdList = IpGroupIdList as any as S.Schema<WorkspaceIdList>;
 export interface DescribeWorkspacesRequest {
   WorkspaceIds?: string[];
   DirectoryId?: string;
@@ -2930,13 +2906,14 @@ export const DescribeWorkspaceSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeWorkspaceSnapshotsResult",
 }) as any as S.Schema<DescribeWorkspaceSnapshotsResult>;
 export type WorkspacesPoolIds = string[];
-export const WorkspacesPoolIds = /*@__PURE__*/ S.Array(S.String);
+export const WorkspacesPoolIds = IpGroupIdList as any as S.Schema<WorkspacesPoolIds>;
 export type DescribeWorkspacesPoolsFilterName = "PoolName" | (string & {});
 export const DescribeWorkspacesPoolsFilterName = S.String;
 
 export type DescribeWorkspacesPoolsFilterValue = string;
 export type DescribeWorkspacesPoolsFilterValues = string[];
-export const DescribeWorkspacesPoolsFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DescribeWorkspacesPoolsFilterValues =
+  IpGroupIdList as any as S.Schema<DescribeWorkspacesPoolsFilterValues>;
 export type DescribeWorkspacesPoolsFilterOperator =
   | "EQUALS"
   | "NOTEQUALS"
@@ -3072,11 +3049,8 @@ export const DisassociateConnectionAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateConnectionAliasRequest",
 }) as any as S.Schema<DisassociateConnectionAliasRequest>;
 export interface DisassociateConnectionAliasResult {}
-export const DisassociateConnectionAliasResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisassociateConnectionAliasResult",
-}) as any as S.Schema<DisassociateConnectionAliasResult>;
+export const DisassociateConnectionAliasResult =
+  DeleteClientBrandingResult as any as S.Schema<DisassociateConnectionAliasResult>;
 export interface DisassociateIpGroupsRequest {
   DirectoryId: string;
   GroupIds: string[];
@@ -3089,11 +3063,8 @@ export const DisassociateIpGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateIpGroupsRequest",
 }) as any as S.Schema<DisassociateIpGroupsRequest>;
 export interface DisassociateIpGroupsResult {}
-export const DisassociateIpGroupsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DisassociateIpGroupsResult",
-}) as any as S.Schema<DisassociateIpGroupsResult>;
+export const DisassociateIpGroupsResult =
+  DeleteClientBrandingResult as any as S.Schema<DisassociateIpGroupsResult>;
 export interface DisassociateWorkspaceApplicationRequest {
   WorkspaceId: string;
   ApplicationId: string;
@@ -3108,11 +3079,8 @@ export const DisassociateWorkspaceApplicationRequest = /*@__PURE__*/ S.suspend((
 export interface DisassociateWorkspaceApplicationResult {
   Association?: WorkspaceResourceAssociation;
 }
-export const DisassociateWorkspaceApplicationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Association: S.optional(WorkspaceResourceAssociation) }).pipe(ns),
-).annotate({
-  identifier: "DisassociateWorkspaceApplicationResult",
-}) as any as S.Schema<DisassociateWorkspaceApplicationResult>;
+export const DisassociateWorkspaceApplicationResult =
+  AssociateWorkspaceApplicationResult as any as S.Schema<DisassociateWorkspaceApplicationResult>;
 export interface GetAccountLinkRequest {
   LinkId?: string;
   LinkedAccountId?: string;
@@ -3202,18 +3170,8 @@ export interface ImportClientBrandingResult {
   DeviceTypeLinux?: DefaultClientBrandingAttributes;
   DeviceTypeWeb?: DefaultClientBrandingAttributes;
 }
-export const ImportClientBrandingResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeviceTypeWindows: S.optional(DefaultClientBrandingAttributes),
-    DeviceTypeOsx: S.optional(DefaultClientBrandingAttributes),
-    DeviceTypeAndroid: S.optional(DefaultClientBrandingAttributes),
-    DeviceTypeIos: S.optional(IosClientBrandingAttributes),
-    DeviceTypeLinux: S.optional(DefaultClientBrandingAttributes),
-    DeviceTypeWeb: S.optional(DefaultClientBrandingAttributes),
-  }).pipe(ns),
-).annotate({
-  identifier: "ImportClientBrandingResult",
-}) as any as S.Schema<ImportClientBrandingResult>;
+export const ImportClientBrandingResult =
+  DescribeClientBrandingResult as any as S.Schema<ImportClientBrandingResult>;
 export type ImageComputeType =
   | "BASE"
   | "GRAPHICS_G4DN"
@@ -3309,11 +3267,8 @@ export const ImportWorkspaceImageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportWorkspaceImageResult {
   ImageId?: string;
 }
-export const ImportWorkspaceImageResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ImageId: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "ImportWorkspaceImageResult",
-}) as any as S.Schema<ImportWorkspaceImageResult>;
+export const ImportWorkspaceImageResult =
+  CreateUpdatedWorkspaceImageResult as any as S.Schema<ImportWorkspaceImageResult>;
 export type LinkStatusFilterList = AccountLinkStatusEnum[];
 export const LinkStatusFilterList = /*@__PURE__*/ S.Array(AccountLinkStatusEnum);
 export interface ListAccountLinksRequest {
@@ -3354,7 +3309,8 @@ export const ListAvailableManagementCidrRangesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAvailableManagementCidrRangesRequest",
 }) as any as S.Schema<ListAvailableManagementCidrRangesRequest>;
 export type DedicatedTenancyCidrRangeList = string[];
-export const DedicatedTenancyCidrRangeList = /*@__PURE__*/ S.Array(S.String);
+export const DedicatedTenancyCidrRangeList =
+  IpGroupIdList as any as S.Schema<DedicatedTenancyCidrRangeList>;
 export interface ListAvailableManagementCidrRangesResult {
   ManagementCidrRanges?: string[];
   NextToken?: string;
@@ -3429,11 +3385,8 @@ export const ModifyCertificateBasedAuthPropertiesRequest = /*@__PURE__*/ S.suspe
   identifier: "ModifyCertificateBasedAuthPropertiesRequest",
 }) as any as S.Schema<ModifyCertificateBasedAuthPropertiesRequest>;
 export interface ModifyCertificateBasedAuthPropertiesResult {}
-export const ModifyCertificateBasedAuthPropertiesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyCertificateBasedAuthPropertiesResult",
-}) as any as S.Schema<ModifyCertificateBasedAuthPropertiesResult>;
+export const ModifyCertificateBasedAuthPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyCertificateBasedAuthPropertiesResult>;
 export interface ModifyClientPropertiesRequest {
   ResourceId: string;
   ClientProperties: ClientProperties;
@@ -3446,11 +3399,8 @@ export const ModifyClientPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyClientPropertiesRequest",
 }) as any as S.Schema<ModifyClientPropertiesRequest>;
 export interface ModifyClientPropertiesResult {}
-export const ModifyClientPropertiesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyClientPropertiesResult",
-}) as any as S.Schema<ModifyClientPropertiesResult>;
+export const ModifyClientPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyClientPropertiesResult>;
 export interface ModifyEndpointEncryptionModeRequest {
   DirectoryId: string;
   EndpointEncryptionMode: EndpointEncryptionMode;
@@ -3463,11 +3413,8 @@ export const ModifyEndpointEncryptionModeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyEndpointEncryptionModeRequest",
 }) as any as S.Schema<ModifyEndpointEncryptionModeRequest>;
 export interface ModifyEndpointEncryptionModeResponse {}
-export const ModifyEndpointEncryptionModeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyEndpointEncryptionModeResponse",
-}) as any as S.Schema<ModifyEndpointEncryptionModeResponse>;
+export const ModifyEndpointEncryptionModeResponse =
+  DeleteClientBrandingResult as any as S.Schema<ModifyEndpointEncryptionModeResponse>;
 export type DeletableSamlProperty =
   | "SAML_PROPERTIES_USER_ACCESS_URL"
   | "SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME"
@@ -3491,11 +3438,8 @@ export const ModifySamlPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifySamlPropertiesRequest",
 }) as any as S.Schema<ModifySamlPropertiesRequest>;
 export interface ModifySamlPropertiesResult {}
-export const ModifySamlPropertiesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifySamlPropertiesResult",
-}) as any as S.Schema<ModifySamlPropertiesResult>;
+export const ModifySamlPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifySamlPropertiesResult>;
 export interface ModifySelfservicePermissionsRequest {
   ResourceId: string;
   SelfservicePermissions: SelfservicePermissions;
@@ -3508,11 +3452,8 @@ export const ModifySelfservicePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifySelfservicePermissionsRequest",
 }) as any as S.Schema<ModifySelfservicePermissionsRequest>;
 export interface ModifySelfservicePermissionsResult {}
-export const ModifySelfservicePermissionsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifySelfservicePermissionsResult",
-}) as any as S.Schema<ModifySelfservicePermissionsResult>;
+export const ModifySelfservicePermissionsResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifySelfservicePermissionsResult>;
 export interface ModifyStreamingPropertiesRequest {
   ResourceId: string;
   StreamingProperties?: StreamingProperties;
@@ -3525,11 +3466,8 @@ export const ModifyStreamingPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyStreamingPropertiesRequest",
 }) as any as S.Schema<ModifyStreamingPropertiesRequest>;
 export interface ModifyStreamingPropertiesResult {}
-export const ModifyStreamingPropertiesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyStreamingPropertiesResult",
-}) as any as S.Schema<ModifyStreamingPropertiesResult>;
+export const ModifyStreamingPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyStreamingPropertiesResult>;
 export interface ModifyWorkspaceAccessPropertiesRequest {
   ResourceId: string;
   WorkspaceAccessProperties: WorkspaceAccessProperties;
@@ -3542,11 +3480,8 @@ export const ModifyWorkspaceAccessPropertiesRequest = /*@__PURE__*/ S.suspend(()
   identifier: "ModifyWorkspaceAccessPropertiesRequest",
 }) as any as S.Schema<ModifyWorkspaceAccessPropertiesRequest>;
 export interface ModifyWorkspaceAccessPropertiesResult {}
-export const ModifyWorkspaceAccessPropertiesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyWorkspaceAccessPropertiesResult",
-}) as any as S.Schema<ModifyWorkspaceAccessPropertiesResult>;
+export const ModifyWorkspaceAccessPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspaceAccessPropertiesResult>;
 export interface WorkspaceCreationProperties {
   EnableInternetAccess?: boolean;
   DefaultOu?: string;
@@ -3555,18 +3490,8 @@ export interface WorkspaceCreationProperties {
   EnableMaintenanceMode?: boolean;
   InstanceIamRoleArn?: string;
 }
-export const WorkspaceCreationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnableInternetAccess: S.optional(S.Boolean),
-    DefaultOu: S.optional(S.String),
-    CustomSecurityGroupId: S.optional(S.String),
-    UserEnabledAsLocalAdministrator: S.optional(S.Boolean),
-    EnableMaintenanceMode: S.optional(S.Boolean),
-    InstanceIamRoleArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkspaceCreationProperties",
-}) as any as S.Schema<WorkspaceCreationProperties>;
+export const WorkspaceCreationProperties =
+  DefaultWorkspaceCreationProperties as any as S.Schema<WorkspaceCreationProperties>;
 export interface ModifyWorkspaceCreationPropertiesRequest {
   ResourceId: string;
   WorkspaceCreationProperties: WorkspaceCreationProperties;
@@ -3579,11 +3504,8 @@ export const ModifyWorkspaceCreationPropertiesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ModifyWorkspaceCreationPropertiesRequest",
 }) as any as S.Schema<ModifyWorkspaceCreationPropertiesRequest>;
 export interface ModifyWorkspaceCreationPropertiesResult {}
-export const ModifyWorkspaceCreationPropertiesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyWorkspaceCreationPropertiesResult",
-}) as any as S.Schema<ModifyWorkspaceCreationPropertiesResult>;
+export const ModifyWorkspaceCreationPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspaceCreationPropertiesResult>;
 export interface ModifyWorkspacePropertiesRequest {
   WorkspaceId: string;
   WorkspaceProperties?: WorkspaceProperties;
@@ -3599,11 +3521,8 @@ export const ModifyWorkspacePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyWorkspacePropertiesRequest",
 }) as any as S.Schema<ModifyWorkspacePropertiesRequest>;
 export interface ModifyWorkspacePropertiesResult {}
-export const ModifyWorkspacePropertiesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyWorkspacePropertiesResult",
-}) as any as S.Schema<ModifyWorkspacePropertiesResult>;
+export const ModifyWorkspacePropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspacePropertiesResult>;
 export type TargetWorkspaceState = "AVAILABLE" | "ADMIN_MAINTENANCE" | (string & {});
 export const TargetWorkspaceState = S.String;
 
@@ -3619,11 +3538,8 @@ export const ModifyWorkspaceStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModifyWorkspaceStateRequest",
 }) as any as S.Schema<ModifyWorkspaceStateRequest>;
 export interface ModifyWorkspaceStateResult {}
-export const ModifyWorkspaceStateResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "ModifyWorkspaceStateResult",
-}) as any as S.Schema<ModifyWorkspaceStateResult>;
+export const ModifyWorkspaceStateResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspaceStateResult>;
 export interface RebootRequest {
   WorkspaceId: string;
 }
@@ -3665,11 +3581,10 @@ export const RebootWorkspacesResult = /*@__PURE__*/ S.suspend(() =>
 export interface RebuildRequest {
   WorkspaceId: string;
 }
-export const RebuildRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceId: S.String }),
-).annotate({ identifier: "RebuildRequest" }) as any as S.Schema<RebuildRequest>;
+export const RebuildRequest = RebootRequest as any as S.Schema<RebuildRequest>;
 export type RebuildWorkspaceRequests = RebuildRequest[];
-export const RebuildWorkspaceRequests = /*@__PURE__*/ S.Array(RebuildRequest);
+export const RebuildWorkspaceRequests =
+  RebootWorkspaceRequests as any as S.Schema<RebuildWorkspaceRequests>;
 export interface RebuildWorkspacesRequest {
   RebuildWorkspaceRequests: RebuildRequest[];
 }
@@ -3679,13 +3594,13 @@ export const RebuildWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RebuildWorkspacesRequest" }) as any as S.Schema<RebuildWorkspacesRequest>;
 export type FailedRebuildWorkspaceRequests = FailedWorkspaceChangeRequest[];
-export const FailedRebuildWorkspaceRequests = /*@__PURE__*/ S.Array(FailedWorkspaceChangeRequest);
+export const FailedRebuildWorkspaceRequests =
+  FailedRebootWorkspaceRequests as any as S.Schema<FailedRebuildWorkspaceRequests>;
 export interface RebuildWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
-export const RebuildWorkspacesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FailedRequests: S.optional(FailedRebuildWorkspaceRequests) }).pipe(ns),
-).annotate({ identifier: "RebuildWorkspacesResult" }) as any as S.Schema<RebuildWorkspacesResult>;
+export const RebuildWorkspacesResult =
+  RebootWorkspacesResult as any as S.Schema<RebuildWorkspacesResult>;
 export interface RegisterWorkspaceDirectoryRequest {
   DirectoryId?: string;
   SubnetIds?: string[];
@@ -3743,11 +3658,8 @@ export const RejectAccountLinkInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RejectAccountLinkInvitationResult {
   AccountLink?: AccountLink;
 }
-export const RejectAccountLinkInvitationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountLink: S.optional(AccountLink) }).pipe(ns),
-).annotate({
-  identifier: "RejectAccountLinkInvitationResult",
-}) as any as S.Schema<RejectAccountLinkInvitationResult>;
+export const RejectAccountLinkInvitationResult =
+  AcceptAccountLinkInvitationResult as any as S.Schema<RejectAccountLinkInvitationResult>;
 export interface RestoreWorkspaceRequest {
   WorkspaceId: string;
 }
@@ -3757,11 +3669,10 @@ export const RestoreWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RestoreWorkspaceRequest" }) as any as S.Schema<RestoreWorkspaceRequest>;
 export interface RestoreWorkspaceResult {}
-export const RestoreWorkspaceResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "RestoreWorkspaceResult" },
-) as any as S.Schema<RestoreWorkspaceResult>;
+export const RestoreWorkspaceResult =
+  AuthorizeIpRulesResult as any as S.Schema<RestoreWorkspaceResult>;
 export type IpRevokedRuleList = string[];
-export const IpRevokedRuleList = /*@__PURE__*/ S.Array(S.String);
+export const IpRevokedRuleList = IpGroupIdList as any as S.Schema<IpRevokedRuleList>;
 export interface RevokeIpRulesRequest {
   GroupId: string;
   UserRules: string[];
@@ -3772,9 +3683,7 @@ export const RevokeIpRulesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevokeIpRulesRequest" }) as any as S.Schema<RevokeIpRulesRequest>;
 export interface RevokeIpRulesResult {}
-export const RevokeIpRulesResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RevokeIpRulesResult",
-}) as any as S.Schema<RevokeIpRulesResult>;
+export const RevokeIpRulesResult = CreateTagsResult as any as S.Schema<RevokeIpRulesResult>;
 export interface StartRequest {
   WorkspaceId?: string;
 }
@@ -3792,13 +3701,13 @@ export const StartWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StartWorkspacesRequest" }) as any as S.Schema<StartWorkspacesRequest>;
 export type FailedStartWorkspaceRequests = FailedWorkspaceChangeRequest[];
-export const FailedStartWorkspaceRequests = /*@__PURE__*/ S.Array(FailedWorkspaceChangeRequest);
+export const FailedStartWorkspaceRequests =
+  FailedRebootWorkspaceRequests as any as S.Schema<FailedStartWorkspaceRequests>;
 export interface StartWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
-export const StartWorkspacesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FailedRequests: S.optional(FailedStartWorkspaceRequests) }).pipe(ns),
-).annotate({ identifier: "StartWorkspacesResult" }) as any as S.Schema<StartWorkspacesResult>;
+export const StartWorkspacesResult =
+  RebootWorkspacesResult as any as S.Schema<StartWorkspacesResult>;
 export interface StartWorkspacesPoolRequest {
   PoolId: string;
 }
@@ -3810,19 +3719,15 @@ export const StartWorkspacesPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartWorkspacesPoolRequest",
 }) as any as S.Schema<StartWorkspacesPoolRequest>;
 export interface StartWorkspacesPoolResult {}
-export const StartWorkspacesPoolResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StartWorkspacesPoolResult",
-}) as any as S.Schema<StartWorkspacesPoolResult>;
+export const StartWorkspacesPoolResult =
+  DeleteClientBrandingResult as any as S.Schema<StartWorkspacesPoolResult>;
 export interface StopRequest {
   WorkspaceId?: string;
 }
-export const StopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceId: S.optional(S.String) }),
-).annotate({ identifier: "StopRequest" }) as any as S.Schema<StopRequest>;
+export const StopRequest = StartRequest as any as S.Schema<StopRequest>;
 export type StopWorkspaceRequests = StopRequest[];
-export const StopWorkspaceRequests = /*@__PURE__*/ S.Array(StopRequest);
+export const StopWorkspaceRequests =
+  StartWorkspaceRequests as any as S.Schema<StopWorkspaceRequests>;
 export interface StopWorkspacesRequest {
   StopWorkspaceRequests: StopRequest[];
 }
@@ -3832,13 +3737,12 @@ export const StopWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopWorkspacesRequest" }) as any as S.Schema<StopWorkspacesRequest>;
 export type FailedStopWorkspaceRequests = FailedWorkspaceChangeRequest[];
-export const FailedStopWorkspaceRequests = /*@__PURE__*/ S.Array(FailedWorkspaceChangeRequest);
+export const FailedStopWorkspaceRequests =
+  FailedRebootWorkspaceRequests as any as S.Schema<FailedStopWorkspaceRequests>;
 export interface StopWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
-export const StopWorkspacesResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ FailedRequests: S.optional(FailedStopWorkspaceRequests) }).pipe(ns),
-).annotate({ identifier: "StopWorkspacesResult" }) as any as S.Schema<StopWorkspacesResult>;
+export const StopWorkspacesResult = RebootWorkspacesResult as any as S.Schema<StopWorkspacesResult>;
 export interface StopWorkspacesPoolRequest {
   PoolId: string;
 }
@@ -3850,17 +3754,15 @@ export const StopWorkspacesPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopWorkspacesPoolRequest",
 }) as any as S.Schema<StopWorkspacesPoolRequest>;
 export interface StopWorkspacesPoolResult {}
-export const StopWorkspacesPoolResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "StopWorkspacesPoolResult" }) as any as S.Schema<StopWorkspacesPoolResult>;
+export const StopWorkspacesPoolResult =
+  AssociateIpGroupsResult as any as S.Schema<StopWorkspacesPoolResult>;
 export interface TerminateRequest {
   WorkspaceId: string;
 }
-export const TerminateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspaceId: S.String }),
-).annotate({ identifier: "TerminateRequest" }) as any as S.Schema<TerminateRequest>;
+export const TerminateRequest = RebootRequest as any as S.Schema<TerminateRequest>;
 export type TerminateWorkspaceRequests = TerminateRequest[];
-export const TerminateWorkspaceRequests = /*@__PURE__*/ S.Array(TerminateRequest);
+export const TerminateWorkspaceRequests =
+  RebootWorkspaceRequests as any as S.Schema<TerminateWorkspaceRequests>;
 export interface TerminateWorkspacesRequest {
   TerminateWorkspaceRequests: TerminateRequest[];
 }
@@ -3872,7 +3774,8 @@ export const TerminateWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateWorkspacesRequest",
 }) as any as S.Schema<TerminateWorkspacesRequest>;
 export type FailedTerminateWorkspaceRequests = FailedWorkspaceChangeRequest[];
-export const FailedTerminateWorkspaceRequests = /*@__PURE__*/ S.Array(FailedWorkspaceChangeRequest);
+export const FailedTerminateWorkspaceRequests =
+  FailedRebootWorkspaceRequests as any as S.Schema<FailedTerminateWorkspaceRequests>;
 export interface TerminateWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
@@ -3892,11 +3795,8 @@ export const TerminateWorkspacesPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateWorkspacesPoolRequest",
 }) as any as S.Schema<TerminateWorkspacesPoolRequest>;
 export interface TerminateWorkspacesPoolResult {}
-export const TerminateWorkspacesPoolResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "TerminateWorkspacesPoolResult",
-}) as any as S.Schema<TerminateWorkspacesPoolResult>;
+export const TerminateWorkspacesPoolResult =
+  DeleteClientBrandingResult as any as S.Schema<TerminateWorkspacesPoolResult>;
 export interface TerminateWorkspacesPoolSessionRequest {
   SessionId: string;
 }
@@ -3908,11 +3808,8 @@ export const TerminateWorkspacesPoolSessionRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "TerminateWorkspacesPoolSessionRequest",
 }) as any as S.Schema<TerminateWorkspacesPoolSessionRequest>;
 export interface TerminateWorkspacesPoolSessionResult {}
-export const TerminateWorkspacesPoolSessionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "TerminateWorkspacesPoolSessionResult",
-}) as any as S.Schema<TerminateWorkspacesPoolSessionResult>;
+export const TerminateWorkspacesPoolSessionResult =
+  DeleteClientBrandingResult as any as S.Schema<TerminateWorkspacesPoolSessionResult>;
 export interface UpdateConnectClientAddInRequest {
   AddInId: string;
   ResourceId: string;
@@ -3930,11 +3827,8 @@ export const UpdateConnectClientAddInRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateConnectClientAddInRequest",
 }) as any as S.Schema<UpdateConnectClientAddInRequest>;
 export interface UpdateConnectClientAddInResult {}
-export const UpdateConnectClientAddInResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateConnectClientAddInResult",
-}) as any as S.Schema<UpdateConnectClientAddInResult>;
+export const UpdateConnectClientAddInResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateConnectClientAddInResult>;
 export interface UpdateConnectionAliasPermissionRequest {
   AliasId: string;
   ConnectionAliasPermission: ConnectionAliasPermission;
@@ -3947,11 +3841,8 @@ export const UpdateConnectionAliasPermissionRequest = /*@__PURE__*/ S.suspend(()
   identifier: "UpdateConnectionAliasPermissionRequest",
 }) as any as S.Schema<UpdateConnectionAliasPermissionRequest>;
 export interface UpdateConnectionAliasPermissionResult {}
-export const UpdateConnectionAliasPermissionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateConnectionAliasPermissionResult",
-}) as any as S.Schema<UpdateConnectionAliasPermissionResult>;
+export const UpdateConnectionAliasPermissionResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateConnectionAliasPermissionResult>;
 export interface UpdateRulesOfIpGroupRequest {
   GroupId: string;
   UserRules: IpRuleItem[];
@@ -3964,11 +3855,8 @@ export const UpdateRulesOfIpGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRulesOfIpGroupRequest",
 }) as any as S.Schema<UpdateRulesOfIpGroupRequest>;
 export interface UpdateRulesOfIpGroupResult {}
-export const UpdateRulesOfIpGroupResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateRulesOfIpGroupResult",
-}) as any as S.Schema<UpdateRulesOfIpGroupResult>;
+export const UpdateRulesOfIpGroupResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateRulesOfIpGroupResult>;
 export interface UpdateWorkspaceBundleRequest {
   BundleId?: string;
   ImageId?: string;
@@ -3981,11 +3869,8 @@ export const UpdateWorkspaceBundleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateWorkspaceBundleRequest",
 }) as any as S.Schema<UpdateWorkspaceBundleRequest>;
 export interface UpdateWorkspaceBundleResult {}
-export const UpdateWorkspaceBundleResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateWorkspaceBundleResult",
-}) as any as S.Schema<UpdateWorkspaceBundleResult>;
+export const UpdateWorkspaceBundleResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateWorkspaceBundleResult>;
 export interface UpdateWorkspaceImagePermissionRequest {
   ImageId: string;
   AllowCopyImage: boolean;
@@ -3999,11 +3884,8 @@ export const UpdateWorkspaceImagePermissionRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "UpdateWorkspaceImagePermissionRequest",
 }) as any as S.Schema<UpdateWorkspaceImagePermissionRequest>;
 export interface UpdateWorkspaceImagePermissionResult {}
-export const UpdateWorkspaceImagePermissionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UpdateWorkspaceImagePermissionResult",
-}) as any as S.Schema<UpdateWorkspaceImagePermissionResult>;
+export const UpdateWorkspaceImagePermissionResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateWorkspaceImagePermissionResult>;
 export interface UpdateWorkspacesPoolRequest {
   PoolId: string;
   Description?: string;
@@ -4031,11 +3913,8 @@ export const UpdateWorkspacesPoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWorkspacesPoolResult {
   WorkspacesPool?: WorkspacesPool;
 }
-export const UpdateWorkspacesPoolResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ WorkspacesPool: S.optional(WorkspacesPool) }).pipe(ns),
-).annotate({
-  identifier: "UpdateWorkspacesPoolResult",
-}) as any as S.Schema<UpdateWorkspacesPoolResult>;
+export const UpdateWorkspacesPoolResult =
+  CreateWorkspacesPoolResult as any as S.Schema<UpdateWorkspacesPoolResult>;
 export type ExceptionMessage = string;
 export type ExceptionErrorCode = string;
 export type AcceptAccountLinkInvitationError =

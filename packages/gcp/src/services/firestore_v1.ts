@@ -2835,13 +2835,7 @@ export interface DocumentRemove {
   /** The resource name of the Document that has gone out of view. */
   document?: string;
 }
-export const DocumentRemove = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    removedTargetIds: S.optional(IntegerList),
-    readTime: S.optional(S.String),
-    document: S.optional(S.String),
-  }),
-).annotate({ identifier: "DocumentRemove" }) as any as S.Schema<DocumentRemove>;
+export const DocumentRemove = DocumentDelete as any as S.Schema<DocumentRemove>;
 
 /** The response for Firestore.Listen. */
 export interface ListenResponse {

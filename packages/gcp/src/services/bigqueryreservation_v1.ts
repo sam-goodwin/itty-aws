@@ -1324,14 +1324,8 @@ export interface SearchAssignmentsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const SearchAssignmentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignments: S.optional(AssignmentList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchAssignmentsResponse",
-}) as any as S.Schema<SearchAssignmentsResponse>;
+export const SearchAssignmentsResponse =
+  SearchAllAssignmentsResponse as any as S.Schema<SearchAssignmentsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -1479,13 +1473,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

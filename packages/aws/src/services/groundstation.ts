@@ -206,9 +206,7 @@ export const DemodulationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface DecodeConfig {
   unvalidatedJSON: string;
 }
-export const DecodeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ unvalidatedJSON: S.String }),
-).annotate({ identifier: "DecodeConfig" }) as any as S.Schema<DecodeConfig>;
+export const DecodeConfig = DemodulationConfig as any as S.Schema<DecodeConfig>;
 export interface AntennaDownlinkDemodDecodeConfig {
   spectrumConfig: SpectrumConfig;
   demodulationConfig: DemodulationConfig;
@@ -423,7 +421,7 @@ export const ConfigIdResponse = /*@__PURE__*/ S.suspend(() =>
 export type SubnetList = string[];
 export const SubnetList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIdList = SubnetList as any as S.Schema<SecurityGroupIdList>;
 export interface SecurityDetails {
   subnetIds: string[];
   securityGroupIds: string[];
@@ -707,11 +705,8 @@ export const CreateDataflowEndpointGroupV2Request = /*@__PURE__*/ S.suspend(() =
 export interface CreateDataflowEndpointGroupV2Response {
   dataflowEndpointGroupId?: string;
 }
-export const CreateDataflowEndpointGroupV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dataflowEndpointGroupId: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateDataflowEndpointGroupV2Response",
-}) as any as S.Schema<CreateDataflowEndpointGroupV2Response>;
+export const CreateDataflowEndpointGroupV2Response =
+  DataflowEndpointGroupIdResponse as any as S.Schema<CreateDataflowEndpointGroupV2Response>;
 export type CustomerEphemerisPriority = number;
 export type KeyArn = string;
 export type S3BucketName = string;
@@ -865,7 +860,7 @@ export const EphemerisIdResponse = /*@__PURE__*/ S.suspend(() =>
 export type DurationInSeconds = number;
 export type PositiveDurationInSeconds = number;
 export type DataflowEdge = string[];
-export const DataflowEdge = /*@__PURE__*/ S.Array(S.String);
+export const DataflowEdge = SubnetList as any as S.Schema<DataflowEdge>;
 export type DataflowEdgeList = string[][];
 export const DataflowEdgeList = /*@__PURE__*/ S.Array(DataflowEdge);
 export type KeyAliasArn = string;
@@ -1102,15 +1097,13 @@ export const AzElProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
 export interface OemProgramTrackSettings {
   ephemerisId: string;
 }
-export const OemProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ephemerisId: S.String }),
-).annotate({ identifier: "OemProgramTrackSettings" }) as any as S.Schema<OemProgramTrackSettings>;
+export const OemProgramTrackSettings =
+  AzElProgramTrackSettings as any as S.Schema<OemProgramTrackSettings>;
 export interface TleProgramTrackSettings {
   ephemerisId: string;
 }
-export const TleProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ephemerisId: S.String }),
-).annotate({ identifier: "TleProgramTrackSettings" }) as any as S.Schema<TleProgramTrackSettings>;
+export const TleProgramTrackSettings =
+  AzElProgramTrackSettings as any as S.Schema<TleProgramTrackSettings>;
 export type ProgramTrackSettings =
   | { azEl: AzElProgramTrackSettings; oem?: never; tle?: never }
   | { azEl?: never; oem: OemProgramTrackSettings; tle?: never }
@@ -1640,7 +1633,7 @@ export const GetSatelliteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSatelliteRequest" }) as any as S.Schema<GetSatelliteRequest>;
 export type NoradSatelliteID = number;
 export type GroundStationIdList = string[];
-export const GroundStationIdList = /*@__PURE__*/ S.Array(S.String);
+export const GroundStationIdList = SubnetList as any as S.Schema<GroundStationIdList>;
 export type EphemerisSource = "CUSTOMER_PROVIDED" | "SPACE_TRACK" | (string & {});
 export const EphemerisSource = S.String;
 
@@ -2143,15 +2136,7 @@ export interface SatelliteListItem {
   groundStations?: string[];
   currentEphemeris?: EphemerisMetaData;
 }
-export const SatelliteListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    satelliteId: S.optional(S.String),
-    satelliteArn: S.optional(S.String),
-    noradSatelliteID: S.optional(S.Number),
-    groundStations: S.optional(GroundStationIdList),
-    currentEphemeris: S.optional(EphemerisMetaData),
-  }),
-).annotate({ identifier: "SatelliteListItem" }) as any as S.Schema<SatelliteListItem>;
+export const SatelliteListItem = GetSatelliteResponse as any as S.Schema<SatelliteListItem>;
 export type SatelliteList = SatelliteListItem[];
 export const SatelliteList = /*@__PURE__*/ S.Array(SatelliteListItem);
 export interface ListSatellitesResponse {
@@ -2181,10 +2166,10 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type IpAddressList = string[];
-export const IpAddressList = /*@__PURE__*/ S.Array(S.String);
+export const IpAddressList = SubnetList as any as S.Schema<IpAddressList>;
 export type CapabilityArn = string;
 export type CapabilityArnList = string[];
-export const CapabilityArnList = /*@__PURE__*/ S.Array(S.String);
+export const CapabilityArnList = SubnetList as any as S.Schema<CapabilityArnList>;
 export interface DiscoveryData {
   publicIpAddresses: string[];
   privateIpAddresses: string[];
@@ -2204,7 +2189,7 @@ export type AgentCpuCoresList = number[];
 export const AgentCpuCoresList = /*@__PURE__*/ S.Array(S.Number);
 export type ComponentTypeString = string;
 export type VersionStringList = string[];
-export const VersionStringList = /*@__PURE__*/ S.Array(S.String);
+export const VersionStringList = SubnetList as any as S.Schema<VersionStringList>;
 export interface ComponentVersion {
   componentType: string;
   versions: string[];
@@ -2284,7 +2269,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = SubnetList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2298,9 +2283,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type SignatureMap = { [key: string]: boolean | undefined };
 export const SignatureMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2408,9 +2391,7 @@ export interface UpdateContactResponse {
   contactId?: string;
   versionId?: number;
 }
-export const UpdateContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ contactId: S.optional(S.String), versionId: S.optional(S.Number) }),
-).annotate({ identifier: "UpdateContactResponse" }) as any as S.Schema<UpdateContactResponse>;
+export const UpdateContactResponse = ContactIdResponse as any as S.Schema<UpdateContactResponse>;
 export interface UpdateEphemerisRequest {
   ephemerisId: string;
   enabled: boolean;

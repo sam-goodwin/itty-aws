@@ -177,10 +177,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAutoScaleVCoreResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAutoScaleVCoreResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAutoScaleVCoreResponseTagsMap>;
+export const CreateAutoScaleVCoreResponseTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<CreateAutoScaleVCoreResponseTagsMap>;
 
 export interface CreateAutoScaleVCoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -217,10 +215,8 @@ export const CreateAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCapacityRequestTagsMap = { [key: string]: string | undefined };
-export const CreateCapacityRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCapacityRequestTagsMap>;
+export const CreateCapacityRequestTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<CreateCapacityRequestTagsMap>;
 
 /** An array of administrator user identities. */
 export type DedicatedCapacityAdministratorsMembersList = Array<string>;
@@ -319,10 +315,8 @@ export const CreateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCapacityResponseTagsMap = { [key: string]: string | undefined };
-export const CreateCapacityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateCapacityResponseTagsMap>;
+export const CreateCapacityResponseTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<CreateCapacityResponseTagsMap>;
 
 /** The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning. */
 export type State =
@@ -469,9 +463,8 @@ export const DeleteCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCapacityRequest" }) as any as S.Schema<DeleteCapacityRequest>;
 
 export interface DeleteCapacityResponse {}
-export const DeleteCapacityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCapacityResponse",
-}) as any as S.Schema<DeleteCapacityResponse>;
+export const DeleteCapacityResponse =
+  DeleteAutoScaleVCoreResponse as any as S.Schema<DeleteCapacityResponse>;
 
 export interface GetAutoScaleVCoreRequest {
   /** The ID of the target subscription. */
@@ -498,10 +491,8 @@ export const GetAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAutoScaleVCoreResponseTagsMap = { [key: string]: string | undefined };
-export const GetAutoScaleVCoreResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetAutoScaleVCoreResponseTagsMap>;
+export const GetAutoScaleVCoreResponseTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<GetAutoScaleVCoreResponseTagsMap>;
 
 export interface GetAutoScaleVCoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -521,20 +512,8 @@ export interface GetAutoScaleVCoreResponse {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const GetAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(GetAutoScaleVCoreResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutoScaleVCoreProperties),
-    sku: AutoScaleVCoreSku,
-  }),
-).annotate({
-  identifier: "GetAutoScaleVCoreResponse",
-}) as any as S.Schema<GetAutoScaleVCoreResponse>;
+export const GetAutoScaleVCoreResponse =
+  CreateAutoScaleVCoreResponse as any as S.Schema<GetAutoScaleVCoreResponse>;
 
 export interface GetCapacityDetailsRequest {
   /** The ID of the target subscription. */
@@ -563,10 +542,8 @@ export const GetCapacityDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCapacityDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const GetCapacityDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetCapacityDetailsResponseTagsMap>;
+export const GetCapacityDetailsResponseTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<GetCapacityDetailsResponseTagsMap>;
 
 export interface GetCapacityDetailsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -625,10 +602,8 @@ export const ListAutoScaleVCoreByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type AutoScaleVCoreTagsMap = { [key: string]: string | undefined };
-export const AutoScaleVCoreTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoScaleVCoreTagsMap>;
+export const AutoScaleVCoreTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<AutoScaleVCoreTagsMap>;
 
 /** Represents an instance of an auto scale v-core resource. */
 export interface AutoScaleVCore {
@@ -719,10 +694,8 @@ export const ListCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DedicatedCapacityTagsMap = { [key: string]: string | undefined };
-export const DedicatedCapacityTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DedicatedCapacityTagsMap>;
+export const DedicatedCapacityTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<DedicatedCapacityTagsMap>;
 
 /** Represents an instance of a Dedicated Capacity resource. */
 export interface DedicatedCapacity {
@@ -743,18 +716,7 @@ export interface DedicatedCapacity {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const DedicatedCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DedicatedCapacityTagsMap),
-    location: S.String,
-    properties: S.optional(DedicatedCapacityProperties),
-    sku: CapacitySku,
-  }),
-).annotate({ identifier: "DedicatedCapacity" }) as any as S.Schema<DedicatedCapacity>;
+export const DedicatedCapacity = CreateCapacityResponse as any as S.Schema<DedicatedCapacity>;
 
 /** An array of Dedicated capacities resources. */
 export type DedicatedCapacitiesValueList = Array<DedicatedCapacity>;
@@ -1094,9 +1056,8 @@ export const ResumeCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeCapacityRequest" }) as any as S.Schema<ResumeCapacityRequest>;
 
 export interface ResumeCapacityResponse {}
-export const ResumeCapacityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ResumeCapacityResponse",
-}) as any as S.Schema<ResumeCapacityResponse>;
+export const ResumeCapacityResponse =
+  DeleteAutoScaleVCoreResponse as any as S.Schema<ResumeCapacityResponse>;
 
 export interface SuspendCapacityRequest {
   /** The ID of the target subscription. */
@@ -1122,16 +1083,13 @@ export const SuspendCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendCapacityRequest" }) as any as S.Schema<SuspendCapacityRequest>;
 
 export interface SuspendCapacityResponse {}
-export const SuspendCapacityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SuspendCapacityResponse",
-}) as any as S.Schema<SuspendCapacityResponse>;
+export const SuspendCapacityResponse =
+  DeleteAutoScaleVCoreResponse as any as S.Schema<SuspendCapacityResponse>;
 
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateAutoScaleVCoreRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoScaleVCoreRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAutoScaleVCoreRequestTagsMap>;
+export const UpdateAutoScaleVCoreRequestTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateAutoScaleVCoreRequestTagsMap>;
 
 /** An object that represents a set of mutable auto scale v-core resource properties. */
 export interface AutoScaleVCoreMutableProperties {
@@ -1182,10 +1140,8 @@ export const UpdateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAutoScaleVCoreResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoScaleVCoreResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateAutoScaleVCoreResponseTagsMap>;
+export const UpdateAutoScaleVCoreResponseTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateAutoScaleVCoreResponseTagsMap>;
 
 export interface UpdateAutoScaleVCoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1205,27 +1161,13 @@ export interface UpdateAutoScaleVCoreResponse {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const UpdateAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateAutoScaleVCoreResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutoScaleVCoreProperties),
-    sku: AutoScaleVCoreSku,
-  }),
-).annotate({
-  identifier: "UpdateAutoScaleVCoreResponse",
-}) as any as S.Schema<UpdateAutoScaleVCoreResponse>;
+export const UpdateAutoScaleVCoreResponse =
+  CreateAutoScaleVCoreResponse as any as S.Schema<UpdateAutoScaleVCoreResponse>;
 
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateCapacityRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCapacityRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCapacityRequestTagsMap>;
+export const UpdateCapacityRequestTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateCapacityRequestTagsMap>;
 
 /** An object that represents a set of mutable Dedicated capacity resource properties. */
 export type DedicatedCapacityMutablePropertiesInput = DedicatedCapacityPropertiesInput;
@@ -1265,10 +1207,8 @@ export const UpdateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCapacityResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCapacityResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateCapacityResponseTagsMap>;
+export const UpdateCapacityResponseTagsMap =
+  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateCapacityResponseTagsMap>;
 
 export interface UpdateCapacityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1288,18 +1228,8 @@ export interface UpdateCapacityResponse {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const UpdateCapacityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateCapacityResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DedicatedCapacityProperties),
-    sku: CapacitySku,
-  }),
-).annotate({ identifier: "UpdateCapacityResponse" }) as any as S.Schema<UpdateCapacityResponse>;
+export const UpdateCapacityResponse =
+  CreateCapacityResponse as any as S.Schema<UpdateCapacityResponse>;
 
 export type CheckCapacityNameAvailabilityError = AzureOpError;
 /** Check the name availability in the target location. */

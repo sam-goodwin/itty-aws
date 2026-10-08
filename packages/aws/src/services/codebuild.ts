@@ -127,7 +127,7 @@ export const BatchDeleteBuildsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ buildsDeleted: S.optional(BuildIds), buildsNotDeleted: S.optional(BuildsNotDeleted) }),
 ).annotate({ identifier: "BatchDeleteBuildsOutput" }) as any as S.Schema<BatchDeleteBuildsOutput>;
 export type BuildBatchIds = string[];
-export const BuildBatchIds = /*@__PURE__*/ S.Array(S.String);
+export const BuildBatchIds = BuildIds as any as S.Schema<BuildBatchIds>;
 export interface BatchGetBuildBatchesInput {
   ids: string[];
 }
@@ -401,7 +401,7 @@ export type ImagePullCredentialsType = "CODEBUILD" | "SERVICE_ROLE" | (string & 
 export const ImagePullCredentialsType = S.String;
 
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = BuildIds as any as S.Schema<SecurityGroupIds>;
 export interface DockerServerStatus {
   status?: string;
   message?: string;
@@ -495,7 +495,7 @@ export const LogsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cloudWatchLogs: S.optional(CloudWatchLogsConfig), s3Logs: S.optional(S3LogsConfig) }),
 ).annotate({ identifier: "LogsConfig" }) as any as S.Schema<LogsConfig>;
 export type Subnets = string[];
-export const Subnets = /*@__PURE__*/ S.Array(S.String);
+export const Subnets = BuildIds as any as S.Schema<Subnets>;
 export interface VpcConfig {
   vpcId?: string;
   subnets?: string[];
@@ -532,9 +532,9 @@ export const ProjectFileSystemLocation = /*@__PURE__*/ S.suspend(() =>
 export type ProjectFileSystemLocations = ProjectFileSystemLocation[];
 export const ProjectFileSystemLocations = /*@__PURE__*/ S.Array(ProjectFileSystemLocation);
 export type ComputeTypesAllowed = string[];
-export const ComputeTypesAllowed = /*@__PURE__*/ S.Array(S.String);
+export const ComputeTypesAllowed = BuildIds as any as S.Schema<ComputeTypesAllowed>;
 export type FleetsAllowed = string[];
-export const FleetsAllowed = /*@__PURE__*/ S.Array(S.String);
+export const FleetsAllowed = BuildIds as any as S.Schema<FleetsAllowed>;
 export interface BatchRestrictions {
   maximumBuildsAllowed?: number;
   computeTypesAllowed?: string[];
@@ -570,7 +570,7 @@ export const ProjectBuildBatchConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProjectBuildBatchConfig" }) as any as S.Schema<ProjectBuildBatchConfig>;
 export type Identifiers = string[];
-export const Identifiers = /*@__PURE__*/ S.Array(S.String);
+export const Identifiers = BuildIds as any as S.Schema<Identifiers>;
 export type ArtifactsType = "CODEPIPELINE" | "S3" | "NO_ARTIFACTS" | (string & {});
 export const ArtifactsType = S.String;
 
@@ -625,7 +625,7 @@ export const BuildGroup = /*@__PURE__*/ S.suspend(() =>
 export type BuildGroups = BuildGroup[];
 export const BuildGroups = /*@__PURE__*/ S.Array(BuildGroup);
 export type BuildReportArns = string[];
-export const BuildReportArns = /*@__PURE__*/ S.Array(S.String);
+export const BuildReportArns = BuildIds as any as S.Schema<BuildReportArns>;
 export interface BuildBatch {
   id?: string;
   arn?: string;
@@ -894,7 +894,7 @@ export const BatchGetBuildsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ builds: S.optional(Builds), buildsNotFound: S.optional(BuildIds) }),
 ).annotate({ identifier: "BatchGetBuildsOutput" }) as any as S.Schema<BatchGetBuildsOutput>;
 export type CommandExecutionIds = string[];
-export const CommandExecutionIds = /*@__PURE__*/ S.Array(S.String);
+export const CommandExecutionIds = BuildIds as any as S.Schema<CommandExecutionIds>;
 export interface BatchGetCommandExecutionsInput {
   sandboxId: string;
   commandExecutionIds: string[];
@@ -957,7 +957,7 @@ export const BatchGetCommandExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetCommandExecutionsOutput",
 }) as any as S.Schema<BatchGetCommandExecutionsOutput>;
 export type FleetNames = string[];
-export const FleetNames = /*@__PURE__*/ S.Array(S.String);
+export const FleetNames = BuildIds as any as S.Schema<FleetNames>;
 export interface BatchGetFleetsInput {
   names: string[];
 }
@@ -1049,7 +1049,7 @@ export type FleetProxyRuleEffectType = "ALLOW" | "DENY" | (string & {});
 export const FleetProxyRuleEffectType = S.String;
 
 export type FleetProxyRuleEntities = string[];
-export const FleetProxyRuleEntities = /*@__PURE__*/ S.Array(S.String);
+export const FleetProxyRuleEntities = BuildIds as any as S.Schema<FleetProxyRuleEntities>;
 export interface FleetProxyRule {
   type: FleetProxyRuleType;
   effect: FleetProxyRuleEffectType;
@@ -1135,7 +1135,7 @@ export const BatchGetFleetsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fleets: S.optional(Fleets), fleetsNotFound: S.optional(FleetNames) }),
 ).annotate({ identifier: "BatchGetFleetsOutput" }) as any as S.Schema<BatchGetFleetsOutput>;
 export type ProjectNames = string[];
-export const ProjectNames = /*@__PURE__*/ S.Array(S.String);
+export const ProjectNames = BuildIds as any as S.Schema<ProjectNames>;
 export interface BatchGetProjectsInput {
   names: string[];
 }
@@ -1385,7 +1385,7 @@ export const BatchGetProjectsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ projects: S.optional(Projects), projectsNotFound: S.optional(ProjectNames) }),
 ).annotate({ identifier: "BatchGetProjectsOutput" }) as any as S.Schema<BatchGetProjectsOutput>;
 export type ReportGroupArns = string[];
-export const ReportGroupArns = /*@__PURE__*/ S.Array(S.String);
+export const ReportGroupArns = BuildIds as any as S.Schema<ReportGroupArns>;
 export interface BatchGetReportGroupsInput {
   reportGroupArns: string[];
 }
@@ -1474,7 +1474,7 @@ export const BatchGetReportGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetReportGroupsOutput",
 }) as any as S.Schema<BatchGetReportGroupsOutput>;
 export type ReportArns = string[];
-export const ReportArns = /*@__PURE__*/ S.Array(S.String);
+export const ReportArns = BuildIds as any as S.Schema<ReportArns>;
 export interface BatchGetReportsInput {
   reportArns: string[];
 }
@@ -1567,7 +1567,7 @@ export const BatchGetReportsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reports: S.optional(Reports), reportsNotFound: S.optional(ReportArns) }),
 ).annotate({ identifier: "BatchGetReportsOutput" }) as any as S.Schema<BatchGetReportsOutput>;
 export type SandboxIds = string[];
-export const SandboxIds = /*@__PURE__*/ S.Array(S.String);
+export const SandboxIds = BuildIds as any as S.Schema<SandboxIds>;
 export interface BatchGetSandboxesInput {
   ids: string[];
 }
@@ -1868,9 +1868,7 @@ export const DeleteProjectInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProjectInput" }) as any as S.Schema<DeleteProjectInput>;
 export interface DeleteProjectOutput {}
-export const DeleteProjectOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectOutput",
-}) as any as S.Schema<DeleteProjectOutput>;
+export const DeleteProjectOutput = DeleteFleetOutput as any as S.Schema<DeleteProjectOutput>;
 export interface DeleteReportInput {
   arn: string;
 }
@@ -1880,9 +1878,7 @@ export const DeleteReportInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteReportInput" }) as any as S.Schema<DeleteReportInput>;
 export interface DeleteReportOutput {}
-export const DeleteReportOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReportOutput",
-}) as any as S.Schema<DeleteReportOutput>;
+export const DeleteReportOutput = DeleteFleetOutput as any as S.Schema<DeleteReportOutput>;
 export interface DeleteReportGroupInput {
   arn: string;
   deleteReports?: boolean;
@@ -1893,9 +1889,8 @@ export const DeleteReportGroupInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteReportGroupInput" }) as any as S.Schema<DeleteReportGroupInput>;
 export interface DeleteReportGroupOutput {}
-export const DeleteReportGroupOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReportGroupOutput",
-}) as any as S.Schema<DeleteReportGroupOutput>;
+export const DeleteReportGroupOutput =
+  DeleteFleetOutput as any as S.Schema<DeleteReportGroupOutput>;
 export interface DeleteResourcePolicyInput {
   resourceArn: string;
 }
@@ -1907,9 +1902,8 @@ export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyInput",
 }) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyOutput {}
-export const DeleteResourcePolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourcePolicyOutput",
-}) as any as S.Schema<DeleteResourcePolicyOutput>;
+export const DeleteResourcePolicyOutput =
+  DeleteFleetOutput as any as S.Schema<DeleteResourcePolicyOutput>;
 export interface DeleteSourceCredentialsInput {
   arn: string;
 }
@@ -1937,9 +1931,7 @@ export const DeleteWebhookInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWebhookInput" }) as any as S.Schema<DeleteWebhookInput>;
 export interface DeleteWebhookOutput {}
-export const DeleteWebhookOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookOutput",
-}) as any as S.Schema<DeleteWebhookOutput>;
+export const DeleteWebhookOutput = DeleteFleetOutput as any as S.Schema<DeleteWebhookOutput>;
 export type PageSize = number;
 export type SortOrderType = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrderType = S.String;
@@ -2167,11 +2159,8 @@ export const ImportSourceCredentialsInput = /*@__PURE__*/ S.suspend(() =>
 export interface ImportSourceCredentialsOutput {
   arn?: string;
 }
-export const ImportSourceCredentialsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.optional(S.String) }),
-).annotate({
-  identifier: "ImportSourceCredentialsOutput",
-}) as any as S.Schema<ImportSourceCredentialsOutput>;
+export const ImportSourceCredentialsOutput =
+  DeleteSourceCredentialsOutput as any as S.Schema<ImportSourceCredentialsOutput>;
 export interface InvalidateProjectCacheInput {
   projectName: string;
 }
@@ -2183,9 +2172,8 @@ export const InvalidateProjectCacheInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvalidateProjectCacheInput",
 }) as any as S.Schema<InvalidateProjectCacheInput>;
 export interface InvalidateProjectCacheOutput {}
-export const InvalidateProjectCacheOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InvalidateProjectCacheOutput",
-}) as any as S.Schema<InvalidateProjectCacheOutput>;
+export const InvalidateProjectCacheOutput =
+  DeleteFleetOutput as any as S.Schema<InvalidateProjectCacheOutput>;
 export interface BuildBatchFilter {
   status?: StatusType;
 }
@@ -2253,9 +2241,7 @@ export interface ListBuildsOutput {
   ids?: string[];
   nextToken?: string;
 }
-export const ListBuildsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: S.optional(BuildIds), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListBuildsOutput" }) as any as S.Schema<ListBuildsOutput>;
+export const ListBuildsOutput = ListBuildBatchesOutput as any as S.Schema<ListBuildsOutput>;
 export interface ListBuildsForProjectInput {
   projectName: string;
   sortOrder?: SortOrderType;
@@ -2274,11 +2260,8 @@ export interface ListBuildsForProjectOutput {
   ids?: string[];
   nextToken?: string;
 }
-export const ListBuildsForProjectOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: S.optional(BuildIds), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListBuildsForProjectOutput",
-}) as any as S.Schema<ListBuildsForProjectOutput>;
+export const ListBuildsForProjectOutput =
+  ListBuildBatchesForProjectOutput as any as S.Schema<ListBuildsForProjectOutput>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface ListCommandExecutionsForSandboxInput {
   sandboxId: string;
@@ -2329,7 +2312,7 @@ export type LanguageType =
 export const LanguageType = S.String;
 
 export type ImageVersions = string[];
-export const ImageVersions = /*@__PURE__*/ S.Array(S.String);
+export const ImageVersions = BuildIds as any as S.Schema<ImageVersions>;
 export interface EnvironmentImage {
   name?: string;
   description?: string;
@@ -2388,7 +2371,7 @@ export const ListFleetsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListFleetsInput" }) as any as S.Schema<ListFleetsInput>;
 export type FleetArns = string[];
-export const FleetArns = /*@__PURE__*/ S.Array(S.String);
+export const FleetArns = BuildIds as any as S.Schema<FleetArns>;
 export interface ListFleetsOutput {
   nextToken?: string;
   fleets?: string[];
@@ -2512,9 +2495,7 @@ export interface ListSandboxesOutput {
   ids?: string[];
   nextToken?: string;
 }
-export const ListSandboxesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: S.optional(SandboxIds), nextToken: S.optional(S.String) }),
-).annotate({ identifier: "ListSandboxesOutput" }) as any as S.Schema<ListSandboxesOutput>;
+export const ListSandboxesOutput = ListBuildBatchesOutput as any as S.Schema<ListSandboxesOutput>;
 export interface ListSandboxesForProjectInput {
   projectName: string;
   maxResults?: number;
@@ -2535,11 +2516,8 @@ export interface ListSandboxesForProjectOutput {
   ids?: string[];
   nextToken?: string;
 }
-export const ListSandboxesForProjectOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ids: S.optional(SandboxIds), nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListSandboxesForProjectOutput",
-}) as any as S.Schema<ListSandboxesForProjectOutput>;
+export const ListSandboxesForProjectOutput =
+  ListBuildBatchesForProjectOutput as any as S.Schema<ListSandboxesForProjectOutput>;
 export type SharedResourceSortByType = "ARN" | "MODIFIED_TIME" | (string & {});
 export const SharedResourceSortByType = S.String;
 
@@ -2558,14 +2536,13 @@ export const ListSharedProjectsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListSharedProjectsInput" }) as any as S.Schema<ListSharedProjectsInput>;
 export type ProjectArns = string[];
-export const ProjectArns = /*@__PURE__*/ S.Array(S.String);
+export const ProjectArns = BuildIds as any as S.Schema<ProjectArns>;
 export interface ListSharedProjectsOutput {
   nextToken?: string;
   projects?: string[];
 }
-export const ListSharedProjectsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), projects: S.optional(ProjectArns) }),
-).annotate({ identifier: "ListSharedProjectsOutput" }) as any as S.Schema<ListSharedProjectsOutput>;
+export const ListSharedProjectsOutput =
+  ListProjectsOutput as any as S.Schema<ListSharedProjectsOutput>;
 export interface ListSharedReportGroupsInput {
   sortOrder?: SortOrderType;
   sortBy?: SharedResourceSortByType;
@@ -2749,9 +2726,7 @@ export const StartBuildInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartBuildOutput {
   build?: Build;
 }
-export const StartBuildOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ build: S.optional(Build) }),
-).annotate({ identifier: "StartBuildOutput" }) as any as S.Schema<StartBuildOutput>;
+export const StartBuildOutput = RetryBuildOutput as any as S.Schema<StartBuildOutput>;
 export interface StartBuildBatchInput {
   projectName: string;
   secondarySourcesOverride?: ProjectSource[];
@@ -2823,9 +2798,8 @@ export const StartBuildBatchInput = /*@__PURE__*/ S.suspend(() =>
 export interface StartBuildBatchOutput {
   buildBatch?: BuildBatch;
 }
-export const StartBuildBatchOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ buildBatch: S.optional(BuildBatch) }),
-).annotate({ identifier: "StartBuildBatchOutput" }) as any as S.Schema<StartBuildBatchOutput>;
+export const StartBuildBatchOutput =
+  RetryBuildBatchOutput as any as S.Schema<StartBuildBatchOutput>;
 export interface StartCommandExecutionInput {
   sandboxId: string;
   command: string | redacted.Redacted<string>;
@@ -2903,9 +2877,7 @@ export const StopBuildInput = /*@__PURE__*/ S.suspend(() =>
 export interface StopBuildOutput {
   build?: Build;
 }
-export const StopBuildOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ build: S.optional(Build) }),
-).annotate({ identifier: "StopBuildOutput" }) as any as S.Schema<StopBuildOutput>;
+export const StopBuildOutput = RetryBuildOutput as any as S.Schema<StopBuildOutput>;
 export interface StopBuildBatchInput {
   id: string;
 }
@@ -2917,9 +2889,7 @@ export const StopBuildBatchInput = /*@__PURE__*/ S.suspend(() =>
 export interface StopBuildBatchOutput {
   buildBatch?: BuildBatch;
 }
-export const StopBuildBatchOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ buildBatch: S.optional(BuildBatch) }),
-).annotate({ identifier: "StopBuildBatchOutput" }) as any as S.Schema<StopBuildBatchOutput>;
+export const StopBuildBatchOutput = RetryBuildBatchOutput as any as S.Schema<StopBuildBatchOutput>;
 export interface StopSandboxInput {
   id: string;
 }
@@ -2931,9 +2901,7 @@ export const StopSandboxInput = /*@__PURE__*/ S.suspend(() =>
 export interface StopSandboxOutput {
   sandbox?: Sandbox;
 }
-export const StopSandboxOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sandbox: S.optional(Sandbox) }),
-).annotate({ identifier: "StopSandboxOutput" }) as any as S.Schema<StopSandboxOutput>;
+export const StopSandboxOutput = StartSandboxOutput as any as S.Schema<StopSandboxOutput>;
 export interface UpdateFleetInput {
   arn: string;
   baseCapacity?: number;
@@ -2967,9 +2935,7 @@ export const UpdateFleetInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFleetOutput {
   fleet?: Fleet;
 }
-export const UpdateFleetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fleet: S.optional(Fleet) }),
-).annotate({ identifier: "UpdateFleetOutput" }) as any as S.Schema<UpdateFleetOutput>;
+export const UpdateFleetOutput = CreateFleetOutput as any as S.Schema<UpdateFleetOutput>;
 export interface UpdateProjectInput {
   name: string;
   description?: string;
@@ -3023,9 +2989,7 @@ export const UpdateProjectInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProjectOutput {
   project?: Project;
 }
-export const UpdateProjectOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ project: S.optional(Project) }),
-).annotate({ identifier: "UpdateProjectOutput" }) as any as S.Schema<UpdateProjectOutput>;
+export const UpdateProjectOutput = CreateProjectOutput as any as S.Schema<UpdateProjectOutput>;
 export interface UpdateProjectVisibilityInput {
   projectArn: string;
   projectVisibility: ProjectVisibilityType;
@@ -3069,9 +3033,8 @@ export const UpdateReportGroupInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateReportGroupOutput {
   reportGroup?: ReportGroup;
 }
-export const UpdateReportGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reportGroup: S.optional(ReportGroup) }),
-).annotate({ identifier: "UpdateReportGroupOutput" }) as any as S.Schema<UpdateReportGroupOutput>;
+export const UpdateReportGroupOutput =
+  CreateReportGroupOutput as any as S.Schema<UpdateReportGroupOutput>;
 export interface UpdateWebhookInput {
   projectName: string;
   branchFilter?: string;
@@ -3093,9 +3056,7 @@ export const UpdateWebhookInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWebhookOutput {
   webhook?: Webhook;
 }
-export const UpdateWebhookOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ webhook: S.optional(Webhook) }),
-).annotate({ identifier: "UpdateWebhookOutput" }) as any as S.Schema<UpdateWebhookOutput>;
+export const UpdateWebhookOutput = CreateWebhookOutput as any as S.Schema<UpdateWebhookOutput>;
 export type BatchDeleteBuildsError = InvalidInputException | CommonErrors;
 /**
  * Deletes one or more builds.

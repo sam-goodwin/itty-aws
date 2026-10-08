@@ -443,18 +443,8 @@ export interface ApplyReplicationProtectedItemRecoveryPointResponse {
   /** Resource Location */
   location?: string;
 }
-export const ApplyReplicationProtectedItemRecoveryPointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplyReplicationProtectedItemRecoveryPointResponse",
-}) as any as S.Schema<ApplyReplicationProtectedItemRecoveryPointResponse>;
+export const ApplyReplicationProtectedItemRecoveryPointResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<ApplyReplicationProtectedItemRecoveryPointResponse>;
 
 /** The list of individual node recovery points. */
 export type ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList =
@@ -528,28 +518,23 @@ export const ApplyReplicationProtectionClusterRecoveryPointRequest = /*@__PURE__
 
 /** The allowed operations on the Replication protection cluster. */
 export type ReplicationProtectionClusterPropertiesAllowedOperationsList = Array<string>;
-export const ReplicationProtectionClusterPropertiesAllowedOperationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplicationProtectionClusterPropertiesAllowedOperationsList>;
+export const ReplicationProtectionClusterPropertiesAllowedOperationsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<ReplicationProtectionClusterPropertiesAllowedOperationsList>;
 
 /** List of health errors. */
 export type ReplicationProtectionClusterPropertiesHealthErrorsList = Array<HealthError>;
-export const ReplicationProtectionClusterPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<ReplicationProtectionClusterPropertiesHealthErrorsList>;
+export const ReplicationProtectionClusterPropertiesHealthErrorsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<ReplicationProtectionClusterPropertiesHealthErrorsList>;
 
 /** The List of cluster Node FQDNs. */
 export type ReplicationProtectionClusterPropertiesClusterNodeFqdnsList = Array<string>;
-export const ReplicationProtectionClusterPropertiesClusterNodeFqdnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReplicationProtectionClusterPropertiesClusterNodeFqdnsList>;
+export const ReplicationProtectionClusterPropertiesClusterNodeFqdnsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<ReplicationProtectionClusterPropertiesClusterNodeFqdnsList>;
 
 /** The List of Protected Item Id's. */
 export type ReplicationProtectionClusterPropertiesClusterProtectedItemIdsList = Array<string>;
 export const ReplicationProtectionClusterPropertiesClusterProtectedItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplicationProtectionClusterPropertiesClusterProtectedItemIdsList>;
+  ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList as any as S.Schema<ReplicationProtectionClusterPropertiesClusterProtectedItemIdsList>;
 
 /** Extended location of the resource. */
 export interface RegisteredClusterNodes {
@@ -581,28 +566,21 @@ export const ReplicationProtectionClusterPropertiesClusterRegisteredNodesList =
 
 /** The allowed operations on the Replication protected item. */
 export type SharedDiskReplicationItemPropertiesAllowedOperationsList = Array<string>;
-export const SharedDiskReplicationItemPropertiesAllowedOperationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SharedDiskReplicationItemPropertiesAllowedOperationsList>;
+export const SharedDiskReplicationItemPropertiesAllowedOperationsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<SharedDiskReplicationItemPropertiesAllowedOperationsList>;
 
 /** List of health errors. */
 export type SharedDiskReplicationItemPropertiesHealthErrorsList = Array<HealthError>;
-export const SharedDiskReplicationItemPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<SharedDiskReplicationItemPropertiesHealthErrorsList>;
+export const SharedDiskReplicationItemPropertiesHealthErrorsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<SharedDiskReplicationItemPropertiesHealthErrorsList>;
 
 /** Replication provider specific settings. */
 export interface SharedDiskReplicationProviderSpecificSettings {
   /** Gets the Instance type. */
   instanceType: string;
 }
-export const SharedDiskReplicationProviderSpecificSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "SharedDiskReplicationProviderSpecificSettings",
-}) as any as S.Schema<SharedDiskReplicationProviderSpecificSettings>;
+export const SharedDiskReplicationProviderSpecificSettings =
+  AddDisksProviderSpecificInput as any as S.Schema<SharedDiskReplicationProviderSpecificSettings>;
 
 /** Shared Disk Replication item custom data details. */
 export interface SharedDiskReplicationItemProperties {
@@ -796,9 +774,8 @@ export const CancelReplicationJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state/actions applicable on this task. */
 export type ASRTaskAllowedActionsList = Array<string>;
-export const ASRTaskAllowedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ASRTaskAllowedActionsList>;
+export const ASRTaskAllowedActionsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<ASRTaskAllowedActionsList>;
 
 /** Task details based on specific task type. */
 export interface TaskTypeDetails {
@@ -958,15 +935,13 @@ export const JobPropertiesTasksList = /*@__PURE__*/ S.Array(
 
 /** The errors. */
 export type JobPropertiesErrorsList = Array<JobErrorDetails>;
-export const JobPropertiesErrorsList = /*@__PURE__*/ S.Array(
-  JobErrorDetails,
-) as any as S.Schema<JobPropertiesErrorsList>;
+export const JobPropertiesErrorsList =
+  ASRTaskErrorsList as any as S.Schema<JobPropertiesErrorsList>;
 
 /** The Allowed action the job. */
 export type JobPropertiesAllowedActionsList = Array<string>;
-export const JobPropertiesAllowedActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobPropertiesAllowedActionsList>;
+export const JobPropertiesAllowedActionsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<JobPropertiesAllowedActionsList>;
 
 /** The affected object properties like source server, source cloud, target server, target cloud etc. based on the workflow object details. */
 export type JobDetailsAffectedObjectDetailsMap = { [key: string]: string | undefined };
@@ -1114,18 +1089,8 @@ export interface CancelReplicationProtectedItemsFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const CancelReplicationProtectedItemsFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancelReplicationProtectedItemsFailoverResponse",
-}) as any as S.Schema<CancelReplicationProtectedItemsFailoverResponse>;
+export const CancelReplicationProtectedItemsFailoverResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<CancelReplicationProtectedItemsFailoverResponse>;
 
 export interface CancelReplicationRecoveryPlansFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1157,15 +1122,13 @@ export const CancelReplicationRecoveryPlansFailoverRequest = /*@__PURE__*/ S.sus
 
 /** The list of replication providers. */
 export type RecoveryPlanPropertiesReplicationProvidersList = Array<string>;
-export const RecoveryPlanPropertiesReplicationProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecoveryPlanPropertiesReplicationProvidersList>;
+export const RecoveryPlanPropertiesReplicationProvidersList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<RecoveryPlanPropertiesReplicationProvidersList>;
 
 /** The list of allowed operations. */
 export type RecoveryPlanPropertiesAllowedOperationsList = Array<string>;
-export const RecoveryPlanPropertiesAllowedOperationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecoveryPlanPropertiesAllowedOperationsList>;
+export const RecoveryPlanPropertiesAllowedOperationsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<RecoveryPlanPropertiesAllowedOperationsList>;
 
 /** The group type. */
 export type RecoveryPlanGroupType = "Shutdown" | "Boot" | "Failover";
@@ -1259,9 +1222,8 @@ export const RecoveryPlanGroupStartGroupActionsList = /*@__PURE__*/ S.Array(
 
 /** The end group actions. */
 export type RecoveryPlanGroupEndGroupActionsList = Array<RecoveryPlanAction>;
-export const RecoveryPlanGroupEndGroupActionsList = /*@__PURE__*/ S.Array(
-  RecoveryPlanAction,
-) as any as S.Schema<RecoveryPlanGroupEndGroupActionsList>;
+export const RecoveryPlanGroupEndGroupActionsList =
+  RecoveryPlanGroupStartGroupActionsList as any as S.Schema<RecoveryPlanGroupEndGroupActionsList>;
 
 /** Recovery plan group details. */
 export interface RecoveryPlanGroup {
@@ -1419,9 +1381,8 @@ export const EncryptionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Fabric health error details. */
 export type FabricPropertiesHealthErrorDetailsList = Array<HealthError>;
-export const FabricPropertiesHealthErrorDetailsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<FabricPropertiesHealthErrorDetailsList>;
+export const FabricPropertiesHealthErrorDetailsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<FabricPropertiesHealthErrorDetailsList>;
 
 /** Fabric properties. */
 export interface FabricProperties {
@@ -1530,18 +1491,8 @@ export interface CommitReplicationProtectedItemsFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const CommitReplicationProtectedItemsFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CommitReplicationProtectedItemsFailoverResponse",
-}) as any as S.Schema<CommitReplicationProtectedItemsFailoverResponse>;
+export const CommitReplicationProtectedItemsFailoverResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<CommitReplicationProtectedItemsFailoverResponse>;
 
 export interface CommitReplicationProtectionClustersFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1589,17 +1540,8 @@ export interface CommitReplicationProtectionClustersFailoverResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const CommitReplicationProtectionClustersFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "CommitReplicationProtectionClustersFailoverResponse",
-}) as any as S.Schema<CommitReplicationProtectionClustersFailoverResponse>;
+export const CommitReplicationProtectionClustersFailoverResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<CommitReplicationProtectionClustersFailoverResponse>;
 
 export interface CommitReplicationRecoveryPlansFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1643,24 +1585,13 @@ export interface CommitReplicationRecoveryPlansFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const CommitReplicationRecoveryPlansFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CommitReplicationRecoveryPlansFailoverResponse",
-}) as any as S.Schema<CommitReplicationRecoveryPlansFailoverResponse>;
+export const CommitReplicationRecoveryPlansFailoverResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<CommitReplicationRecoveryPlansFailoverResponse>;
 
 /** The custom email address for sending emails. */
 export type ConfigureAlertRequestPropertiesCustomEmailAddressesList = Array<string>;
-export const ConfigureAlertRequestPropertiesCustomEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigureAlertRequestPropertiesCustomEmailAddressesList>;
+export const ConfigureAlertRequestPropertiesCustomEmailAddressesList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<ConfigureAlertRequestPropertiesCustomEmailAddressesList>;
 
 /** Properties of a configure alert request. */
 export interface ConfigureAlertRequestProperties {
@@ -1714,9 +1645,8 @@ export const CreateReplicationAlertSettingsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The custom email address for sending emails. */
 export type AlertPropertiesCustomEmailAddressesList = Array<string>;
-export const AlertPropertiesCustomEmailAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertPropertiesCustomEmailAddressesList>;
+export const AlertPropertiesCustomEmailAddressesList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<AlertPropertiesCustomEmailAddressesList>;
 
 /** The properties of an alert. */
 export interface AlertProperties {
@@ -1820,18 +1750,8 @@ export interface CreateReplicationFabricResponse {
   /** Resource Location */
   location?: string;
 }
-export const CreateReplicationFabricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FabricProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateReplicationFabricResponse",
-}) as any as S.Schema<CreateReplicationFabricResponse>;
+export const CreateReplicationFabricResponse =
+  CheckReplicationFabricConsistencyResponse as any as S.Schema<CreateReplicationFabricResponse>;
 
 /** Enable migration provider specific input. */
 export type EnableMigrationProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -1928,9 +1848,8 @@ export const ProtectionHealth = S.String;
 
 /** The list of health errors. */
 export type MigrationItemPropertiesHealthErrorsList = Array<HealthError>;
-export const MigrationItemPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<MigrationItemPropertiesHealthErrorsList>;
+export const MigrationItemPropertiesHealthErrorsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<MigrationItemPropertiesHealthErrorsList>;
 
 /** The allowed operations on the migration item based on the current migration state of the item. */
 export type MigrationItemOperation =
@@ -1999,13 +1918,8 @@ export interface MigrationProviderSpecificSettings {
   /** Gets the instance type. */
   instanceType: string;
 }
-export const MigrationProviderSpecificSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "MigrationProviderSpecificSettings",
-}) as any as S.Schema<MigrationProviderSpecificSettings>;
+export const MigrationProviderSpecificSettings =
+  AddDisksProviderSpecificInput as any as S.Schema<MigrationProviderSpecificSettings>;
 
 /** Migration item properties. */
 export interface MigrationItemProperties {
@@ -2375,53 +2289,34 @@ export interface CreateReplicationProtectedItemResponse {
   /** Resource Location */
   location?: string;
 }
-export const CreateReplicationProtectedItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateReplicationProtectedItemResponse",
-}) as any as S.Schema<CreateReplicationProtectedItemResponse>;
+export const CreateReplicationProtectedItemResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<CreateReplicationProtectedItemResponse>;
 
 /** The allowed operations on the Replication protection cluster. */
 export type ReplicationProtectionClusterPropertiesInputAllowedOperationsList = Array<string>;
 export const ReplicationProtectionClusterPropertiesInputAllowedOperationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplicationProtectionClusterPropertiesInputAllowedOperationsList>;
+  ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList as any as S.Schema<ReplicationProtectionClusterPropertiesInputAllowedOperationsList>;
 
 /** List of health errors. */
 export type ReplicationProtectionClusterPropertiesInputHealthErrorsList = Array<HealthError>;
-export const ReplicationProtectionClusterPropertiesInputHealthErrorsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<ReplicationProtectionClusterPropertiesInputHealthErrorsList>;
+export const ReplicationProtectionClusterPropertiesInputHealthErrorsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<ReplicationProtectionClusterPropertiesInputHealthErrorsList>;
 
 /** The List of cluster Node FQDNs. */
 export type ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList = Array<string>;
 export const ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList>;
+  ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList as any as S.Schema<ReplicationProtectionClusterPropertiesInputClusterNodeFqdnsList>;
 
 /** The List of Protected Item Id's. */
 export type ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList = Array<string>;
 export const ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList>;
+  ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList as any as S.Schema<ReplicationProtectionClusterPropertiesInputClusterProtectedItemIdsList>;
 
 /** The registered node details. */
 export type ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList =
   Array<RegisteredClusterNodes>;
 export const ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList =
-  /*@__PURE__*/ S.Array(
-    RegisteredClusterNodes,
-  ) as any as S.Schema<ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList>;
+  ReplicationProtectionClusterPropertiesClusterRegisteredNodesList as any as S.Schema<ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList>;
 
 /** Replication protection cluster custom data details. */
 export interface ReplicationProtectionClusterPropertiesInput {
@@ -2573,30 +2468,16 @@ export interface CreateReplicationProtectionClusterResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const CreateReplicationProtectionClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "CreateReplicationProtectionClusterResponse",
-}) as any as S.Schema<CreateReplicationProtectionClusterResponse>;
+export const CreateReplicationProtectionClusterResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<CreateReplicationProtectionClusterResponse>;
 
 /** Create protection container input properties. */
 export interface CreateProtectionContainerInputProperties {
   /** Provider specific inputs for container creation. Polymorphic on `instanceType` (list of provider-specific objects, e.g. `[{ instanceType: "A2A", ... }]`). */
   providerSpecificInput?: unknown;
 }
-export const CreateProtectionContainerInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificInput: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "CreateProtectionContainerInputProperties",
-}) as any as S.Schema<CreateProtectionContainerInputProperties>;
+export const CreateProtectionContainerInputProperties =
+  CreatePolicyInputProperties as any as S.Schema<CreateProtectionContainerInputProperties>;
 
 export interface CreateReplicationProtectionContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2748,9 +2629,8 @@ export const CreateReplicationProtectionContainerMappingRequest = /*@__PURE__*/ 
 
 /** Health error. */
 export type ProtectionContainerMappingPropertiesHealthErrorDetailsList = Array<HealthError>;
-export const ProtectionContainerMappingPropertiesHealthErrorDetailsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<ProtectionContainerMappingPropertiesHealthErrorDetailsList>;
+export const ProtectionContainerMappingPropertiesHealthErrorDetailsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<ProtectionContainerMappingPropertiesHealthErrorDetailsList>;
 
 /** Protection container mapping properties. */
 export interface ProtectionContainerMappingProperties {
@@ -2937,9 +2817,8 @@ export const FailoverDeploymentModel = S.String;
 
 /** The recovery plan groups. */
 export type CreateRecoveryPlanInputPropertiesGroupsList = Array<RecoveryPlanGroup>;
-export const CreateRecoveryPlanInputPropertiesGroupsList = /*@__PURE__*/ S.Array(
-  RecoveryPlanGroup,
-) as any as S.Schema<CreateRecoveryPlanInputPropertiesGroupsList>;
+export const CreateRecoveryPlanInputPropertiesGroupsList =
+  RecoveryPlanPropertiesGroupsList as any as S.Schema<CreateRecoveryPlanInputPropertiesGroupsList>;
 
 /** Recovery plan creation properties. */
 export interface CreateRecoveryPlanInputProperties {
@@ -3011,18 +2890,8 @@ export interface CreateReplicationRecoveryPlanResponse {
   /** Resource Location */
   location?: string;
 }
-export const CreateReplicationRecoveryPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateReplicationRecoveryPlanResponse",
-}) as any as S.Schema<CreateReplicationRecoveryPlanResponse>;
+export const CreateReplicationRecoveryPlanResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<CreateReplicationRecoveryPlanResponse>;
 
 /** Identity provider input. */
 export interface IdentityProviderInput {
@@ -3111,15 +2980,13 @@ export const CreateReplicationRecoveryServicesProviderRequest = /*@__PURE__*/ S.
 
 /** The scenarios allowed on this provider. */
 export type RecoveryServicesProviderPropertiesAllowedScenariosList = Array<string>;
-export const RecoveryServicesProviderPropertiesAllowedScenariosList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RecoveryServicesProviderPropertiesAllowedScenariosList>;
+export const RecoveryServicesProviderPropertiesAllowedScenariosList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<RecoveryServicesProviderPropertiesAllowedScenariosList>;
 
 /** The recovery services provider health error details. */
 export type RecoveryServicesProviderPropertiesHealthErrorDetailsList = Array<HealthError>;
-export const RecoveryServicesProviderPropertiesHealthErrorDetailsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<RecoveryServicesProviderPropertiesHealthErrorDetailsList>;
+export const RecoveryServicesProviderPropertiesHealthErrorDetailsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<RecoveryServicesProviderPropertiesHealthErrorDetailsList>;
 
 /** Identity provider details. */
 export interface IdentityProviderDetails {
@@ -3322,13 +3189,8 @@ export interface StorageClassificationMappingProperties {
   /** Target storage object Id. */
   targetStorageClassificationId?: string;
 }
-export const StorageClassificationMappingProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetStorageClassificationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageClassificationMappingProperties",
-}) as any as S.Schema<StorageClassificationMappingProperties>;
+export const StorageClassificationMappingProperties =
+  StorageMappingInputProperties as any as S.Schema<StorageClassificationMappingProperties>;
 
 export interface CreateReplicationStorageClassificationMappingResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3506,9 +3368,8 @@ export const CreateReplicationvCenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The health errors for this VCenter. */
 export type VCenterPropertiesHealthErrorsList = Array<HealthError>;
-export const VCenterPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<VCenterPropertiesHealthErrorsList>;
+export const VCenterPropertiesHealthErrorsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<VCenterPropertiesHealthErrorsList>;
 
 /** vCenter properties. */
 export interface VCenterProperties {
@@ -3690,11 +3551,8 @@ export const DeleteReplicationNetworkMappingRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteReplicationNetworkMappingRequest>;
 
 export interface DeleteReplicationNetworkMappingResponse {}
-export const DeleteReplicationNetworkMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationNetworkMappingResponse",
-}) as any as S.Schema<DeleteReplicationNetworkMappingResponse>;
+export const DeleteReplicationNetworkMappingResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationNetworkMappingResponse>;
 
 export interface DeleteReplicationPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3725,9 +3583,8 @@ export const DeleteReplicationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReplicationPolicyRequest>;
 
 export interface DeleteReplicationPolicyResponse {}
-export const DeleteReplicationPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteReplicationPolicyResponse" },
-) as any as S.Schema<DeleteReplicationPolicyResponse>;
+export const DeleteReplicationPolicyResponse =
+  DeleteReplicationFabricResponse as any as S.Schema<DeleteReplicationPolicyResponse>;
 
 /** Disable protection reason. It can have values NotSpecified/MigrationComplete. */
 export type DisableProtectionReason = "NotSpecified" | "MigrationComplete";
@@ -3787,11 +3644,8 @@ export const DeleteReplicationProtectedItemRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteReplicationProtectedItemRequest>;
 
 export interface DeleteReplicationProtectedItemResponse {}
-export const DeleteReplicationProtectedItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationProtectedItemResponse",
-}) as any as S.Schema<DeleteReplicationProtectedItemResponse>;
+export const DeleteReplicationProtectedItemResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationProtectedItemResponse>;
 
 export interface DeleteReplicationProtectionContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3825,24 +3679,16 @@ export const DeleteReplicationProtectionContainerRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteReplicationProtectionContainerRequest>;
 
 export interface DeleteReplicationProtectionContainerResponse {}
-export const DeleteReplicationProtectionContainerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationProtectionContainerResponse",
-}) as any as S.Schema<DeleteReplicationProtectionContainerResponse>;
+export const DeleteReplicationProtectionContainerResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationProtectionContainerResponse>;
 
 /** Unpairing input properties. */
 export interface RemoveProtectionContainerMappingInputProperties {
   /** Provider specific input for unpairing. Polymorphic on `instanceType` (e.g. `{ instanceType: "A2A", ... }`). */
   providerSpecificInput?: unknown;
 }
-export const RemoveProtectionContainerMappingInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificInput: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "RemoveProtectionContainerMappingInputProperties",
-}) as any as S.Schema<RemoveProtectionContainerMappingInputProperties>;
+export const RemoveProtectionContainerMappingInputProperties =
+  CreatePolicyInputProperties as any as S.Schema<RemoveProtectionContainerMappingInputProperties>;
 
 export interface DeleteReplicationProtectionContainerMappingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3882,11 +3728,8 @@ export const DeleteReplicationProtectionContainerMappingRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteReplicationProtectionContainerMappingRequest>;
 
 export interface DeleteReplicationProtectionContainerMappingResponse {}
-export const DeleteReplicationProtectionContainerMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationProtectionContainerMappingResponse",
-}) as any as S.Schema<DeleteReplicationProtectionContainerMappingResponse>;
+export const DeleteReplicationProtectionContainerMappingResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationProtectionContainerMappingResponse>;
 
 export interface DeleteReplicationRecoveryPlanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3917,11 +3760,8 @@ export const DeleteReplicationRecoveryPlanRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteReplicationRecoveryPlanRequest>;
 
 export interface DeleteReplicationRecoveryPlanResponse {}
-export const DeleteReplicationRecoveryPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationRecoveryPlanResponse",
-}) as any as S.Schema<DeleteReplicationRecoveryPlanResponse>;
+export const DeleteReplicationRecoveryPlanResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationRecoveryPlanResponse>;
 
 export interface DeleteReplicationRecoveryServicesProviderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3955,11 +3795,8 @@ export const DeleteReplicationRecoveryServicesProviderRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteReplicationRecoveryServicesProviderRequest>;
 
 export interface DeleteReplicationRecoveryServicesProviderResponse {}
-export const DeleteReplicationRecoveryServicesProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationRecoveryServicesProviderResponse",
-}) as any as S.Schema<DeleteReplicationRecoveryServicesProviderResponse>;
+export const DeleteReplicationRecoveryServicesProviderResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationRecoveryServicesProviderResponse>;
 
 export interface DeleteReplicationStorageClassificationMappingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3996,11 +3833,8 @@ export const DeleteReplicationStorageClassificationMappingRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteReplicationStorageClassificationMappingRequest>;
 
 export interface DeleteReplicationStorageClassificationMappingResponse {}
-export const DeleteReplicationStorageClassificationMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationStorageClassificationMappingResponse",
-}) as any as S.Schema<DeleteReplicationStorageClassificationMappingResponse>;
+export const DeleteReplicationStorageClassificationMappingResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationStorageClassificationMappingResponse>;
 
 export interface DeleteReplicationvCenterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4034,11 +3868,8 @@ export const DeleteReplicationvCenterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReplicationvCenterRequest>;
 
 export interface DeleteReplicationvCenterResponse {}
-export const DeleteReplicationvCenterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReplicationvCenterResponse",
-}) as any as S.Schema<DeleteReplicationvCenterResponse>;
+export const DeleteReplicationvCenterResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<DeleteReplicationvCenterResponse>;
 
 /** The output type of the jobs. */
 export type ExportJobOutputSerializationType = "Json" | "Xml" | "Excel";
@@ -4107,18 +3938,8 @@ export interface ExportReplicationJobResponse {
   /** Resource Location */
   location?: string;
 }
-export const ExportReplicationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportReplicationJobResponse",
-}) as any as S.Schema<ExportReplicationJobResponse>;
+export const ExportReplicationJobResponse =
+  CancelReplicationJobResponse as any as S.Schema<ExportReplicationJobResponse>;
 
 export interface GetClusterRecoveryPointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4166,13 +3987,8 @@ export interface ClusterProviderSpecificRecoveryPointDetails {
   /** Gets the provider type. */
   instanceType: string;
 }
-export const ClusterProviderSpecificRecoveryPointDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "ClusterProviderSpecificRecoveryPointDetails",
-}) as any as S.Schema<ClusterProviderSpecificRecoveryPointDetails>;
+export const ClusterProviderSpecificRecoveryPointDetails =
+  AddDisksProviderSpecificInput as any as S.Schema<ClusterProviderSpecificRecoveryPointDetails>;
 
 /** Cluster recovery point properties. */
 export interface ClusterRecoveryPointProperties {
@@ -4423,18 +4239,8 @@ export interface GetReplicationAlertSettingsResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationAlertSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AlertProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationAlertSettingsResponse",
-}) as any as S.Schema<GetReplicationAlertSettingsResponse>;
+export const GetReplicationAlertSettingsResponse =
+  CreateReplicationAlertSettingsResponse as any as S.Schema<GetReplicationAlertSettingsResponse>;
 
 export interface GetReplicationEligibilityResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4566,13 +4372,8 @@ export interface EventProviderSpecificDetails {
   /** Gets the class type. Overridden in derived classes. */
   instanceType: string;
 }
-export const EventProviderSpecificDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "EventProviderSpecificDetails",
-}) as any as S.Schema<EventProviderSpecificDetails>;
+export const EventProviderSpecificDetails =
+  AddDisksProviderSpecificInput as any as S.Schema<EventProviderSpecificDetails>;
 
 /** Model class for event specific details for an event. */
 export type EventSpecificDetails = EventProviderSpecificDetails;
@@ -4580,9 +4381,8 @@ export const EventSpecificDetails = EventProviderSpecificDetails;
 
 /** The list of errors / warnings capturing details associated with the issue(s). */
 export type EventPropertiesHealthErrorsList = Array<HealthError>;
-export const EventPropertiesHealthErrorsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<EventPropertiesHealthErrorsList>;
+export const EventPropertiesHealthErrorsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<EventPropertiesHealthErrorsList>;
 
 /** The properties of a monitoring event. */
 export interface EventProperties {
@@ -4697,18 +4497,8 @@ export interface GetReplicationFabricResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationFabricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FabricProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationFabricResponse",
-}) as any as S.Schema<GetReplicationFabricResponse>;
+export const GetReplicationFabricResponse =
+  CheckReplicationFabricConsistencyResponse as any as S.Schema<GetReplicationFabricResponse>;
 
 export interface GetReplicationJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4750,18 +4540,8 @@ export interface GetReplicationJobResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationJobResponse",
-}) as any as S.Schema<GetReplicationJobResponse>;
+export const GetReplicationJobResponse =
+  CancelReplicationJobResponse as any as S.Schema<GetReplicationJobResponse>;
 
 export interface GetReplicationLogicalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4889,18 +4669,8 @@ export interface GetReplicationMigrationItemResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationMigrationItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationMigrationItemResponse",
-}) as any as S.Schema<GetReplicationMigrationItemResponse>;
+export const GetReplicationMigrationItemResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<GetReplicationMigrationItemResponse>;
 
 export interface GetReplicationNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4935,9 +4705,8 @@ export const GetReplicationNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of addresses for the subnet. */
 export type SubnetAddressListList = Array<string>;
-export const SubnetAddressListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubnetAddressListList>;
+export const SubnetAddressListList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<SubnetAddressListList>;
 
 /** Subnets of the network. */
 export interface Subnet {
@@ -5057,18 +4826,8 @@ export interface GetReplicationNetworkMappingResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationNetworkMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NetworkMappingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationNetworkMappingResponse",
-}) as any as S.Schema<GetReplicationNetworkMappingResponse>;
+export const GetReplicationNetworkMappingResponse =
+  CreateReplicationNetworkMappingResponse as any as S.Schema<GetReplicationNetworkMappingResponse>;
 
 export interface GetReplicationPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5112,18 +4871,8 @@ export interface GetReplicationPolicyResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PolicyProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationPolicyResponse",
-}) as any as S.Schema<GetReplicationPolicyResponse>;
+export const GetReplicationPolicyResponse =
+  CreateReplicationPolicyResponse as any as S.Schema<GetReplicationPolicyResponse>;
 
 export interface GetReplicationProtectableItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5161,15 +4910,13 @@ export const GetReplicationProtectableItemRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The Current protection readiness errors. */
 export type ProtectableItemPropertiesProtectionReadinessErrorsList = Array<string>;
-export const ProtectableItemPropertiesProtectionReadinessErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProtectableItemPropertiesProtectionReadinessErrorsList>;
+export const ProtectableItemPropertiesProtectionReadinessErrorsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<ProtectableItemPropertiesProtectionReadinessErrorsList>;
 
 /** The list of replication providers supported for the protectable item. */
 export type ProtectableItemPropertiesSupportedReplicationProvidersList = Array<string>;
-export const ProtectableItemPropertiesSupportedReplicationProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProtectableItemPropertiesSupportedReplicationProvidersList>;
+export const ProtectableItemPropertiesSupportedReplicationProvidersList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<ProtectableItemPropertiesSupportedReplicationProvidersList>;
 
 /** Replication provider specific settings. */
 export type ConfigurationSettings = EventProviderSpecificDetails;
@@ -5283,18 +5030,8 @@ export interface GetReplicationProtectedItemResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationProtectedItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationProtectedItemResponse",
-}) as any as S.Schema<GetReplicationProtectedItemResponse>;
+export const GetReplicationProtectedItemResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<GetReplicationProtectedItemResponse>;
 
 export interface GetReplicationProtectionClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5342,17 +5079,8 @@ export interface GetReplicationProtectionClusterResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const GetReplicationProtectionClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "GetReplicationProtectionClusterResponse",
-}) as any as S.Schema<GetReplicationProtectionClusterResponse>;
+export const GetReplicationProtectionClusterResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<GetReplicationProtectionClusterResponse>;
 
 export interface GetReplicationProtectionClusterOperationResultsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5403,17 +5131,8 @@ export interface GetReplicationProtectionClusterOperationResultsResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const GetReplicationProtectionClusterOperationResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "GetReplicationProtectionClusterOperationResultsResponse",
-}) as any as S.Schema<GetReplicationProtectionClusterOperationResultsResponse>;
+export const GetReplicationProtectionClusterOperationResultsResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<GetReplicationProtectionClusterOperationResultsResponse>;
 
 export interface GetReplicationProtectionContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5460,18 +5179,8 @@ export interface GetReplicationProtectionContainerResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationProtectionContainerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProtectionContainerProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationProtectionContainerResponse",
-}) as any as S.Schema<GetReplicationProtectionContainerResponse>;
+export const GetReplicationProtectionContainerResponse =
+  CreateReplicationProtectionContainerResponse as any as S.Schema<GetReplicationProtectionContainerResponse>;
 
 export interface GetReplicationProtectionContainerMappingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5521,18 +5230,8 @@ export interface GetReplicationProtectionContainerMappingResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationProtectionContainerMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProtectionContainerMappingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationProtectionContainerMappingResponse",
-}) as any as S.Schema<GetReplicationProtectionContainerMappingResponse>;
+export const GetReplicationProtectionContainerMappingResponse =
+  CreateReplicationProtectionContainerMappingResponse as any as S.Schema<GetReplicationProtectionContainerMappingResponse>;
 
 export interface GetReplicationProtectionIntentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5576,18 +5275,8 @@ export interface GetReplicationProtectionIntentResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationProtectionIntentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionIntentProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationProtectionIntentResponse",
-}) as any as S.Schema<GetReplicationProtectionIntentResponse>;
+export const GetReplicationProtectionIntentResponse =
+  CreateReplicationProtectionIntentResponse as any as S.Schema<GetReplicationProtectionIntentResponse>;
 
 export interface GetReplicationRecoveryPlanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5631,18 +5320,8 @@ export interface GetReplicationRecoveryPlanResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationRecoveryPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationRecoveryPlanResponse",
-}) as any as S.Schema<GetReplicationRecoveryPlanResponse>;
+export const GetReplicationRecoveryPlanResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<GetReplicationRecoveryPlanResponse>;
 
 export interface GetReplicationRecoveryServicesProviderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5689,18 +5368,8 @@ export interface GetReplicationRecoveryServicesProviderResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationRecoveryServicesProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryServicesProviderProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationRecoveryServicesProviderResponse",
-}) as any as S.Schema<GetReplicationRecoveryServicesProviderResponse>;
+export const GetReplicationRecoveryServicesProviderResponse =
+  CreateReplicationRecoveryServicesProviderResponse as any as S.Schema<GetReplicationRecoveryServicesProviderResponse>;
 
 export interface GetReplicationStorageClassificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5821,18 +5490,8 @@ export interface GetReplicationStorageClassificationMappingResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationStorageClassificationMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StorageClassificationMappingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationStorageClassificationMappingResponse",
-}) as any as S.Schema<GetReplicationStorageClassificationMappingResponse>;
+export const GetReplicationStorageClassificationMappingResponse =
+  CreateReplicationStorageClassificationMappingResponse as any as S.Schema<GetReplicationStorageClassificationMappingResponse>;
 
 export interface GetReplicationVaultHealthRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5861,9 +5520,8 @@ export const GetReplicationVaultHealthRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of errors on the vault. */
 export type VaultHealthPropertiesVaultErrorsList = Array<HealthError>;
-export const VaultHealthPropertiesVaultErrorsList = /*@__PURE__*/ S.Array(
-  HealthError,
-) as any as S.Schema<VaultHealthPropertiesVaultErrorsList>;
+export const VaultHealthPropertiesVaultErrorsList =
+  ReplicationProtectedItemPropertiesHealthErrorsList as any as S.Schema<VaultHealthPropertiesVaultErrorsList>;
 
 /** The category of the health error. */
 export type HealthErrorCategory =
@@ -5886,9 +5544,8 @@ export const Severity = S.String;
 
 /** The list of affected resource correlation Ids. This can be used to uniquely identify the count of items affected by a specific category and severity as well as count of item affected by an specific issue. */
 export type HealthErrorSummaryAffectedResourceCorrelationIdsList = Array<string>;
-export const HealthErrorSummaryAffectedResourceCorrelationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HealthErrorSummaryAffectedResourceCorrelationIdsList>;
+export const HealthErrorSummaryAffectedResourceCorrelationIdsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<HealthErrorSummaryAffectedResourceCorrelationIdsList>;
 
 /** class to define the summary of the health error details. */
 export interface HealthErrorSummary {
@@ -6042,18 +5699,8 @@ export interface GetReplicationVaultSettingResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationVaultSettingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VaultSettingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationVaultSettingResponse",
-}) as any as S.Schema<GetReplicationVaultSettingResponse>;
+export const GetReplicationVaultSettingResponse =
+  CreateReplicationVaultSettingResponse as any as S.Schema<GetReplicationVaultSettingResponse>;
 
 export interface GetReplicationvCenterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6100,18 +5747,8 @@ export interface GetReplicationvCenterResponse {
   /** Resource Location */
   location?: string;
 }
-export const GetReplicationvCenterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VCenterProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetReplicationvCenterResponse",
-}) as any as S.Schema<GetReplicationvCenterResponse>;
+export const GetReplicationvCenterResponse =
+  CreateReplicationvCenterResponse as any as S.Schema<GetReplicationvCenterResponse>;
 
 export interface GetSupportedOperatingSystemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6513,16 +6150,7 @@ export interface RecoveryPoint {
   /** Resource Location */
   location?: string;
 }
-export const RecoveryPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPointProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "RecoveryPoint" }) as any as S.Schema<RecoveryPoint>;
+export const RecoveryPoint = GetRecoveryPointResponse as any as S.Schema<RecoveryPoint>;
 
 /** The RecoveryPoint items on this page */
 export type RecoveryPointCollectionValueList = Array<RecoveryPoint>;
@@ -6652,13 +6280,8 @@ export interface ReplicationApplianceProperties {
   /** Provider specific settings. */
   providerSpecificDetails?: EventProviderSpecificDetails;
 }
-export const ReplicationApplianceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificDetails: S.optional(EventProviderSpecificDetails),
-  }),
-).annotate({
-  identifier: "ReplicationApplianceProperties",
-}) as any as S.Schema<ReplicationApplianceProperties>;
+export const ReplicationApplianceProperties =
+  CreateProtectionIntentProperties as any as S.Schema<ReplicationApplianceProperties>;
 
 /** Replication appliance definition. */
 export interface ReplicationAppliance {
@@ -6729,17 +6352,8 @@ export interface ReplicationEligibilityResults {
   /** Gets properties model for replication eligibility results API. */
   properties?: ReplicationEligibilityResultsProperties;
 }
-export const ReplicationEligibilityResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationEligibilityResultsProperties),
-  }),
-).annotate({
-  identifier: "ReplicationEligibilityResults",
-}) as any as S.Schema<ReplicationEligibilityResults>;
+export const ReplicationEligibilityResults =
+  GetReplicationEligibilityResultResponse as any as S.Schema<ReplicationEligibilityResults>;
 
 /** The replication eligibility results details. */
 export type ReplicationEligibilityResultsCollectionValueList = Array<ReplicationEligibilityResults>;
@@ -7693,17 +7307,8 @@ export interface ReplicationProtectionCluster {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const ReplicationProtectionCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "ReplicationProtectionCluster",
-}) as any as S.Schema<ReplicationProtectionCluster>;
+export const ReplicationProtectionCluster =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<ReplicationProtectionCluster>;
 
 /** The ReplicationProtectionCluster items on this page */
 export type ReplicationProtectionClusterCollectionValueList = Array<ReplicationProtectionCluster>;
@@ -7882,18 +7487,8 @@ export interface ProtectionContainerMapping {
   /** Resource Location */
   location?: string;
 }
-export const ProtectionContainerMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProtectionContainerMappingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProtectionContainerMapping",
-}) as any as S.Schema<ProtectionContainerMapping>;
+export const ProtectionContainerMapping =
+  CreateReplicationProtectionContainerMappingResponse as any as S.Schema<ProtectionContainerMapping>;
 
 /** The ProtectionContainerMapping items on this page */
 export type ProtectionContainerMappingCollectionValueList = Array<ProtectionContainerMapping>;
@@ -8013,18 +7608,8 @@ export interface ReplicationProtectionIntent {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectionIntent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionIntentProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectionIntent",
-}) as any as S.Schema<ReplicationProtectionIntent>;
+export const ReplicationProtectionIntent =
+  CreateReplicationProtectionIntentResponse as any as S.Schema<ReplicationProtectionIntent>;
 
 /** The ReplicationProtectionIntent items on this page */
 export type ReplicationProtectionIntentCollectionValueList = Array<ReplicationProtectionIntent>;
@@ -8346,18 +7931,8 @@ export interface StorageClassificationMapping {
   /** Resource Location */
   location?: string;
 }
-export const StorageClassificationMapping = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(StorageClassificationMappingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageClassificationMapping",
-}) as any as S.Schema<StorageClassificationMapping>;
+export const StorageClassificationMapping =
+  CreateReplicationStorageClassificationMappingResponse as any as S.Schema<StorageClassificationMapping>;
 
 /** The StorageClassificationMapping items on this page */
 export type StorageClassificationMappingCollectionValueList = Array<StorageClassificationMapping>;
@@ -8657,9 +8232,8 @@ export const TargetComputeSizePropertiesErrorsList = /*@__PURE__*/ S.Array(
 
 /** The supported HyperV Generations. */
 export type TargetComputeSizePropertiesHyperVGenerationsList = Array<string>;
-export const TargetComputeSizePropertiesHyperVGenerationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TargetComputeSizePropertiesHyperVGenerationsList>;
+export const TargetComputeSizePropertiesHyperVGenerationsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<TargetComputeSizePropertiesHyperVGenerationsList>;
 
 /** Represents applicable recovery vm sizes properties. */
 export interface TargetComputeSizeProperties {
@@ -8772,11 +8346,8 @@ export const MigrateReplicationFabricToAadRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<MigrateReplicationFabricToAadRequest>;
 
 export interface MigrateReplicationFabricToAadResponse {}
-export const MigrateReplicationFabricToAadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrateReplicationFabricToAadResponse",
-}) as any as S.Schema<MigrateReplicationFabricToAadResponse>;
+export const MigrateReplicationFabricToAadResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<MigrateReplicationFabricToAadResponse>;
 
 /** Migrate provider specific input. */
 export type MigrateProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -8787,11 +8358,8 @@ export interface MigrateInputProperties {
   /** The provider specific details. */
   providerSpecificDetails: AddDisksProviderSpecificInput;
 }
-export const MigrateInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificDetails: AddDisksProviderSpecificInput,
-  }),
-).annotate({ identifier: "MigrateInputProperties" }) as any as S.Schema<MigrateInputProperties>;
+export const MigrateInputProperties =
+  AddDisksInputProperties as any as S.Schema<MigrateInputProperties>;
 
 export interface MigrateReplicationMigrationItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8844,18 +8412,8 @@ export interface MigrateReplicationMigrationItemResponse {
   /** Resource Location */
   location?: string;
 }
-export const MigrateReplicationMigrationItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MigrateReplicationMigrationItemResponse",
-}) as any as S.Schema<MigrateReplicationMigrationItemResponse>;
+export const MigrateReplicationMigrationItemResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<MigrateReplicationMigrationItemResponse>;
 
 /** Test migrate provider specific input. */
 export type TestMigrateProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -8916,18 +8474,8 @@ export interface MigrateReplicationMigrationItemsTestResponse {
   /** Resource Location */
   location?: string;
 }
-export const MigrateReplicationMigrationItemsTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MigrateReplicationMigrationItemsTestResponse",
-}) as any as S.Schema<MigrateReplicationMigrationItemsTestResponse>;
+export const MigrateReplicationMigrationItemsTestResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<MigrateReplicationMigrationItemsTestResponse>;
 
 /** Pause replication input properties. */
 export type PauseReplicationInputProperties = AddDisksProviderSpecificInput;
@@ -8984,18 +8532,8 @@ export interface PauseReplicationMigrationItemReplicationResponse {
   /** Resource Location */
   location?: string;
 }
-export const PauseReplicationMigrationItemReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PauseReplicationMigrationItemReplicationResponse",
-}) as any as S.Schema<PauseReplicationMigrationItemReplicationResponse>;
+export const PauseReplicationMigrationItemReplicationResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<PauseReplicationMigrationItemReplicationResponse>;
 
 export interface PurgeReplicationFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9065,11 +8603,8 @@ export const PurgeReplicationProtectedItemRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PurgeReplicationProtectedItemRequest>;
 
 export interface PurgeReplicationProtectedItemResponse {}
-export const PurgeReplicationProtectedItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PurgeReplicationProtectedItemResponse",
-}) as any as S.Schema<PurgeReplicationProtectedItemResponse>;
+export const PurgeReplicationProtectedItemResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<PurgeReplicationProtectedItemResponse>;
 
 export interface PurgeReplicationProtectionClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9106,11 +8641,8 @@ export const PurgeReplicationProtectionClusterRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PurgeReplicationProtectionClusterRequest>;
 
 export interface PurgeReplicationProtectionClusterResponse {}
-export const PurgeReplicationProtectionClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PurgeReplicationProtectionClusterResponse",
-}) as any as S.Schema<PurgeReplicationProtectionClusterResponse>;
+export const PurgeReplicationProtectionClusterResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<PurgeReplicationProtectionClusterResponse>;
 
 export interface PurgeReplicationProtectionContainerMappingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9147,11 +8679,8 @@ export const PurgeReplicationProtectionContainerMappingRequest = /*@__PURE__*/ S
 }) as any as S.Schema<PurgeReplicationProtectionContainerMappingRequest>;
 
 export interface PurgeReplicationProtectionContainerMappingResponse {}
-export const PurgeReplicationProtectionContainerMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PurgeReplicationProtectionContainerMappingResponse",
-}) as any as S.Schema<PurgeReplicationProtectionContainerMappingResponse>;
+export const PurgeReplicationProtectionContainerMappingResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<PurgeReplicationProtectionContainerMappingResponse>;
 
 export interface PurgeReplicationRecoveryServicesProviderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9185,11 +8714,8 @@ export const PurgeReplicationRecoveryServicesProviderRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PurgeReplicationRecoveryServicesProviderRequest>;
 
 export interface PurgeReplicationRecoveryServicesProviderResponse {}
-export const PurgeReplicationRecoveryServicesProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PurgeReplicationRecoveryServicesProviderResponse",
-}) as any as S.Schema<PurgeReplicationRecoveryServicesProviderResponse>;
+export const PurgeReplicationRecoveryServicesProviderResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<PurgeReplicationRecoveryServicesProviderResponse>;
 
 export interface RefreshReplicationRecoveryServicesProviderProviderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9290,18 +8816,8 @@ export interface RefreshReplicationVaultHealthResponse {
   /** Resource Location */
   location?: string;
 }
-export const RefreshReplicationVaultHealthResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VaultHealthProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RefreshReplicationVaultHealthResponse",
-}) as any as S.Schema<RefreshReplicationVaultHealthResponse>;
+export const RefreshReplicationVaultHealthResponse =
+  GetReplicationVaultHealthResponse as any as S.Schema<RefreshReplicationVaultHealthResponse>;
 
 export interface RemoveReplicationFabricInfraRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9332,11 +8848,8 @@ export const RemoveReplicationFabricInfraRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveReplicationFabricInfraRequest>;
 
 export interface RemoveReplicationFabricInfraResponse {}
-export const RemoveReplicationFabricInfraResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveReplicationFabricInfraResponse",
-}) as any as S.Schema<RemoveReplicationFabricInfraResponse>;
+export const RemoveReplicationFabricInfraResponse =
+  DeleteReplicationMigrationItemResponse as any as S.Schema<RemoveReplicationFabricInfraResponse>;
 
 /** Remove Disk provider specific input. */
 export type RemoveDisksProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -9347,13 +8860,8 @@ export interface RemoveDisksInputProperties {
   /** The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null. */
   providerSpecificDetails?: AddDisksProviderSpecificInput;
 }
-export const RemoveDisksInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificDetails: S.optional(AddDisksProviderSpecificInput),
-  }),
-).annotate({
-  identifier: "RemoveDisksInputProperties",
-}) as any as S.Schema<RemoveDisksInputProperties>;
+export const RemoveDisksInputProperties =
+  CreateProtectionIntentProperties as any as S.Schema<RemoveDisksInputProperties>;
 
 export interface RemoveReplicationProtectedItemDisksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9406,18 +8914,8 @@ export interface RemoveReplicationProtectedItemDisksResponse {
   /** Resource Location */
   location?: string;
 }
-export const RemoveReplicationProtectedItemDisksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RemoveReplicationProtectedItemDisksResponse",
-}) as any as S.Schema<RemoveReplicationProtectedItemDisksResponse>;
+export const RemoveReplicationProtectedItemDisksResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<RemoveReplicationProtectedItemDisksResponse>;
 
 /** Renew Certificate input properties. */
 export interface RenewCertificateInputProperties {
@@ -9477,24 +8975,13 @@ export interface RenewReplicationFabricCertificateResponse {
   /** Resource Location */
   location?: string;
 }
-export const RenewReplicationFabricCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FabricProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RenewReplicationFabricCertificateResponse",
-}) as any as S.Schema<RenewReplicationFabricCertificateResponse>;
+export const RenewReplicationFabricCertificateResponse =
+  CheckReplicationFabricConsistencyResponse as any as S.Schema<RenewReplicationFabricCertificateResponse>;
 
 /** The VMS to migrate. */
 export type FailoverProcessServerRequestPropertiesVmsToMigrateList = Array<string>;
-export const FailoverProcessServerRequestPropertiesVmsToMigrateList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FailoverProcessServerRequestPropertiesVmsToMigrateList>;
+export const FailoverProcessServerRequestPropertiesVmsToMigrateList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<FailoverProcessServerRequestPropertiesVmsToMigrateList>;
 
 /** The properties of the Failover Process Server request. */
 export interface FailoverProcessServerRequestProperties {
@@ -9566,18 +9053,8 @@ export interface ReplicationFabricsReassociateGatewayResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationFabricsReassociateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FabricProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationFabricsReassociateGatewayResponse",
-}) as any as S.Schema<ReplicationFabricsReassociateGatewayResponse>;
+export const ReplicationFabricsReassociateGatewayResponse =
+  CheckReplicationFabricConsistencyResponse as any as S.Schema<ReplicationFabricsReassociateGatewayResponse>;
 
 /** Resync provider specific input. */
 export type ResyncProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -9638,18 +9115,8 @@ export interface ReplicationMigrationItemsResyncResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationMigrationItemsResyncResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationMigrationItemsResyncResponse",
-}) as any as S.Schema<ReplicationMigrationItemsResyncResponse>;
+export const ReplicationMigrationItemsResyncResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<ReplicationMigrationItemsResyncResponse>;
 
 /** Test migrate cleanup input properties. */
 export interface TestMigrateCleanupInputProperties {
@@ -9715,18 +9182,8 @@ export interface ReplicationMigrationItemsTestMigrateCleanupResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationMigrationItemsTestMigrateCleanupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationMigrationItemsTestMigrateCleanupResponse",
-}) as any as S.Schema<ReplicationMigrationItemsTestMigrateCleanupResponse>;
+export const ReplicationMigrationItemsTestMigrateCleanupResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<ReplicationMigrationItemsTestMigrateCleanupResponse>;
 
 /** Provider specific failover input. */
 export type PlannedFailoverProviderSpecificFailoverInput = AddDisksProviderSpecificInput;
@@ -9799,18 +9256,8 @@ export interface ReplicationProtectedItemsPlannedFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectedItemsPlannedFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectedItemsPlannedFailoverResponse",
-}) as any as S.Schema<ReplicationProtectedItemsPlannedFailoverResponse>;
+export const ReplicationProtectedItemsPlannedFailoverResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<ReplicationProtectedItemsPlannedFailoverResponse>;
 
 /** The properties of an update mobility service request. */
 export interface ReinstallMobilityServiceRequestProperties {
@@ -9939,18 +9386,8 @@ export interface ReplicationProtectedItemsRepairReplicationResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectedItemsRepairReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectedItemsRepairReplicationResponse",
-}) as any as S.Schema<ReplicationProtectedItemsRepairReplicationResponse>;
+export const ReplicationProtectedItemsRepairReplicationResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<ReplicationProtectedItemsRepairReplicationResponse>;
 
 /** Provider specific reverse replication input. */
 export type ReverseReplicationProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -9963,14 +9400,8 @@ export interface ReverseReplicationInputProperties {
   /** Provider specific reverse replication input. */
   providerSpecificDetails?: AddDisksProviderSpecificInput;
 }
-export const ReverseReplicationInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverDirection: S.optional(S.String),
-    providerSpecificDetails: S.optional(AddDisksProviderSpecificInput),
-  }),
-).annotate({
-  identifier: "ReverseReplicationInputProperties",
-}) as any as S.Schema<ReverseReplicationInputProperties>;
+export const ReverseReplicationInputProperties =
+  PlannedFailoverInputProperties as any as S.Schema<ReverseReplicationInputProperties>;
 
 export interface ReplicationProtectedItemsReprotectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10023,18 +9454,8 @@ export interface ReplicationProtectedItemsReprotectResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectedItemsReprotectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectedItemsReprotectResponse",
-}) as any as S.Schema<ReplicationProtectedItemsReprotectResponse>;
+export const ReplicationProtectedItemsReprotectResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<ReplicationProtectedItemsReprotectResponse>;
 
 /** Resolve health errors input properties. */
 export interface ResolveHealthError {
@@ -10117,18 +9538,8 @@ export interface ReplicationProtectedItemsResolveHealthErrorsResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectedItemsResolveHealthErrorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectedItemsResolveHealthErrorsResponse",
-}) as any as S.Schema<ReplicationProtectedItemsResolveHealthErrorsResponse>;
+export const ReplicationProtectedItemsResolveHealthErrorsResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<ReplicationProtectedItemsResolveHealthErrorsResponse>;
 
 /** Provider specific switch provider input. */
 export type SwitchProviderProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -10201,18 +9612,8 @@ export interface ReplicationProtectedItemsSwitchProviderResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectedItemsSwitchProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectedItemsSwitchProviderResponse",
-}) as any as S.Schema<ReplicationProtectedItemsSwitchProviderResponse>;
+export const ReplicationProtectedItemsSwitchProviderResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<ReplicationProtectedItemsSwitchProviderResponse>;
 
 /** Provider specific unplanned failover input. */
 export type UnplannedFailoverProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -10288,18 +9689,8 @@ export interface ReplicationProtectedItemsUnplannedFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectedItemsUnplannedFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectedItemsUnplannedFailoverResponse",
-}) as any as S.Schema<ReplicationProtectedItemsUnplannedFailoverResponse>;
+export const ReplicationProtectedItemsUnplannedFailoverResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<ReplicationProtectedItemsUnplannedFailoverResponse>;
 
 export interface ReplicationProtectionClustersRepairReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10347,17 +9738,8 @@ export interface ReplicationProtectionClustersRepairReplicationResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const ReplicationProtectionClustersRepairReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "ReplicationProtectionClustersRepairReplicationResponse",
-}) as any as S.Schema<ReplicationProtectionClustersRepairReplicationResponse>;
+export const ReplicationProtectionClustersRepairReplicationResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<ReplicationProtectionClustersRepairReplicationResponse>;
 
 /** Provider specific unplanned cluster failover input. */
 export type ClusterUnplannedFailoverProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -10416,17 +9798,8 @@ export interface ReplicationProtectionClustersUnplannedFailoverResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const ReplicationProtectionClustersUnplannedFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "ReplicationProtectionClustersUnplannedFailoverResponse",
-}) as any as S.Schema<ReplicationProtectionClustersUnplannedFailoverResponse>;
+export const ReplicationProtectionClustersUnplannedFailoverResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<ReplicationProtectionClustersUnplannedFailoverResponse>;
 
 /** Discover protectable item properties. */
 export interface DiscoverProtectableItemRequestProperties {
@@ -10582,18 +9955,7 @@ export interface ReplicationProtectionContainersSwitchClusterProtectionResponse 
   location?: string;
 }
 export const ReplicationProtectionContainersSwitchClusterProtectionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ProtectionContainerProperties),
-      location: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ReplicationProtectionContainersSwitchClusterProtectionResponse",
-  }) as any as S.Schema<ReplicationProtectionContainersSwitchClusterProtectionResponse>;
+  ReplicationProtectionContainersDiscoverProtectableItemResponse as any as S.Schema<ReplicationProtectionContainersSwitchClusterProtectionResponse>;
 
 /** Provider specific switch protection input. */
 export type SwitchProtectionProviderSpecificInput = SharedDiskReplicationProviderSpecificSettings;
@@ -10663,18 +10025,8 @@ export interface ReplicationProtectionContainersSwitchProtectionResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationProtectionContainersSwitchProtectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProtectionContainerProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationProtectionContainersSwitchProtectionResponse",
-}) as any as S.Schema<ReplicationProtectionContainersSwitchProtectionResponse>;
+export const ReplicationProtectionContainersSwitchProtectionResponse =
+  CreateReplicationProtectionContainerResponse as any as S.Schema<ReplicationProtectionContainersSwitchProtectionResponse>;
 
 /** Recovery plan provider specific failover input. */
 export type RecoveryPlanProviderSpecificFailoverInput = AddDisksProviderSpecificInput;
@@ -10751,18 +10103,8 @@ export interface ReplicationRecoveryPlansPlannedFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationRecoveryPlansPlannedFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationRecoveryPlansPlannedFailoverResponse",
-}) as any as S.Schema<ReplicationRecoveryPlansPlannedFailoverResponse>;
+export const ReplicationRecoveryPlansPlannedFailoverResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<ReplicationRecoveryPlansPlannedFailoverResponse>;
 
 export interface ReplicationRecoveryPlansReprotectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10806,18 +10148,8 @@ export interface ReplicationRecoveryPlansReprotectResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationRecoveryPlansReprotectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationRecoveryPlansReprotectResponse",
-}) as any as S.Schema<ReplicationRecoveryPlansReprotectResponse>;
+export const ReplicationRecoveryPlansReprotectResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<ReplicationRecoveryPlansReprotectResponse>;
 
 /** A value indicating whether source site operations are required. */
 export type SourceSiteOperations = "Required" | "NotRequired";
@@ -10827,9 +10159,7 @@ export const SourceSiteOperations = S.String;
 export type RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList =
   Array<AddDisksProviderSpecificInput>;
 export const RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList =
-  /*@__PURE__*/ S.Array(
-    AddDisksProviderSpecificInput,
-  ) as any as S.Schema<RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList>;
+  RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList as any as S.Schema<RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList>;
 
 /** Recovery plan unplanned failover input properties. */
 export interface RecoveryPlanUnplannedFailoverInputProperties {
@@ -10897,18 +10227,8 @@ export interface ReplicationRecoveryPlansUnplannedFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const ReplicationRecoveryPlansUnplannedFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReplicationRecoveryPlansUnplannedFailoverResponse",
-}) as any as S.Schema<ReplicationRecoveryPlansUnplannedFailoverResponse>;
+export const ReplicationRecoveryPlansUnplannedFailoverResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<ReplicationRecoveryPlansUnplannedFailoverResponse>;
 
 export interface RestartReplicationJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10952,31 +10272,16 @@ export interface RestartReplicationJobResponse {
   /** Resource Location */
   location?: string;
 }
-export const RestartReplicationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestartReplicationJobResponse",
-}) as any as S.Schema<RestartReplicationJobResponse>;
+export const RestartReplicationJobResponse =
+  CancelReplicationJobResponse as any as S.Schema<RestartReplicationJobResponse>;
 
 /** Resume job properties. */
 export interface ResumeJobParamsProperties {
   /** Resume job comments. */
   comments?: string;
 }
-export const ResumeJobParamsProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comments: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResumeJobParamsProperties",
-}) as any as S.Schema<ResumeJobParamsProperties>;
+export const ResumeJobParamsProperties =
+  TestMigrateCleanupInputProperties as any as S.Schema<ResumeJobParamsProperties>;
 
 export interface ResumeReplicationJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11023,18 +10328,8 @@ export interface ResumeReplicationJobResponse {
   /** Resource Location */
   location?: string;
 }
-export const ResumeReplicationJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResumeReplicationJobResponse",
-}) as any as S.Schema<ResumeReplicationJobResponse>;
+export const ResumeReplicationJobResponse =
+  CancelReplicationJobResponse as any as S.Schema<ResumeReplicationJobResponse>;
 
 /** Resume replication provider specific input. */
 export type ResumeReplicationProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -11104,18 +10399,8 @@ export interface ResumeReplicationMigrationItemReplicationResponse {
   /** Resource Location */
   location?: string;
 }
-export const ResumeReplicationMigrationItemReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResumeReplicationMigrationItemReplicationResponse",
-}) as any as S.Schema<ResumeReplicationMigrationItemReplicationResponse>;
+export const ResumeReplicationMigrationItemReplicationResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<ResumeReplicationMigrationItemReplicationResponse>;
 
 /** Provider specific test failover input. */
 export type TestFailoverProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -11194,31 +10479,16 @@ export interface TestReplicationProtectedItemFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const TestReplicationProtectedItemFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TestReplicationProtectedItemFailoverResponse",
-}) as any as S.Schema<TestReplicationProtectedItemFailoverResponse>;
+export const TestReplicationProtectedItemFailoverResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<TestReplicationProtectedItemFailoverResponse>;
 
 /** Input definition for test failover cleanup input properties. */
 export interface TestFailoverCleanupInputProperties {
   /** Test failover cleanup comments. */
   comments?: string;
 }
-export const TestFailoverCleanupInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comments: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TestFailoverCleanupInputProperties",
-}) as any as S.Schema<TestFailoverCleanupInputProperties>;
+export const TestFailoverCleanupInputProperties =
+  TestMigrateCleanupInputProperties as any as S.Schema<TestFailoverCleanupInputProperties>;
 
 export interface TestReplicationProtectedItemFailoverCleanupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11271,18 +10541,8 @@ export interface TestReplicationProtectedItemFailoverCleanupResponse {
   /** Resource Location */
   location?: string;
 }
-export const TestReplicationProtectedItemFailoverCleanupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TestReplicationProtectedItemFailoverCleanupResponse",
-}) as any as S.Schema<TestReplicationProtectedItemFailoverCleanupResponse>;
+export const TestReplicationProtectedItemFailoverCleanupResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<TestReplicationProtectedItemFailoverCleanupResponse>;
 
 /** Failover direction. */
 export type FailoverDirection = "PrimaryToRecovery" | "RecoveryToPrimary";
@@ -11363,17 +10623,8 @@ export interface TestReplicationProtectionClusterFailoverResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const TestReplicationProtectionClusterFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "TestReplicationProtectionClusterFailoverResponse",
-}) as any as S.Schema<TestReplicationProtectionClusterFailoverResponse>;
+export const TestReplicationProtectionClusterFailoverResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<TestReplicationProtectionClusterFailoverResponse>;
 
 /** Input definition for test failover cleanup input properties. */
 export type ClusterTestFailoverCleanupInputProperties = TestFailoverCleanupInputProperties;
@@ -11428,25 +10679,14 @@ export interface TestReplicationProtectionClusterFailoverCleanupResponse {
   /** The custom data. */
   properties?: ReplicationProtectionClusterProperties;
 }
-export const TestReplicationProtectionClusterFailoverCleanupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectionClusterProperties),
-  }),
-).annotate({
-  identifier: "TestReplicationProtectionClusterFailoverCleanupResponse",
-}) as any as S.Schema<TestReplicationProtectionClusterFailoverCleanupResponse>;
+export const TestReplicationProtectionClusterFailoverCleanupResponse =
+  ApplyReplicationProtectionClusterRecoveryPointResponse as any as S.Schema<TestReplicationProtectionClusterFailoverCleanupResponse>;
 
 /** The provider specific properties. */
 export type RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList =
   Array<AddDisksProviderSpecificInput>;
 export const RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList =
-  /*@__PURE__*/ S.Array(
-    AddDisksProviderSpecificInput,
-  ) as any as S.Schema<RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList>;
+  RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList as any as S.Schema<RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList>;
 
 /** Recovery plan test failover input properties. */
 export interface RecoveryPlanTestFailoverInputProperties {
@@ -11517,31 +10757,16 @@ export interface TestReplicationRecoveryPlanFailoverResponse {
   /** Resource Location */
   location?: string;
 }
-export const TestReplicationRecoveryPlanFailoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TestReplicationRecoveryPlanFailoverResponse",
-}) as any as S.Schema<TestReplicationRecoveryPlanFailoverResponse>;
+export const TestReplicationRecoveryPlanFailoverResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<TestReplicationRecoveryPlanFailoverResponse>;
 
 /** Recovery plan test failover cleanup input properties. */
 export interface RecoveryPlanTestFailoverCleanupInputProperties {
   /** The test failover cleanup comments. */
   comments?: string;
 }
-export const RecoveryPlanTestFailoverCleanupInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comments: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecoveryPlanTestFailoverCleanupInputProperties",
-}) as any as S.Schema<RecoveryPlanTestFailoverCleanupInputProperties>;
+export const RecoveryPlanTestFailoverCleanupInputProperties =
+  TestMigrateCleanupInputProperties as any as S.Schema<RecoveryPlanTestFailoverCleanupInputProperties>;
 
 export interface TestReplicationRecoveryPlanFailoverCleanupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11588,18 +10813,8 @@ export interface TestReplicationRecoveryPlanFailoverCleanupResponse {
   /** Resource Location */
   location?: string;
 }
-export const TestReplicationRecoveryPlanFailoverCleanupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TestReplicationRecoveryPlanFailoverCleanupResponse",
-}) as any as S.Schema<TestReplicationRecoveryPlanFailoverCleanupResponse>;
+export const TestReplicationRecoveryPlanFailoverCleanupResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<TestReplicationRecoveryPlanFailoverCleanupResponse>;
 
 /** Update migration item provider specific input. */
 export type UpdateMigrationItemProviderSpecificInput = AddDisksProviderSpecificInput;
@@ -11610,13 +10825,8 @@ export interface UpdateMigrationItemInputProperties {
   /** The provider specific input to update migration item. */
   providerSpecificDetails: AddDisksProviderSpecificInput;
 }
-export const UpdateMigrationItemInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificDetails: AddDisksProviderSpecificInput,
-  }),
-).annotate({
-  identifier: "UpdateMigrationItemInputProperties",
-}) as any as S.Schema<UpdateMigrationItemInputProperties>;
+export const UpdateMigrationItemInputProperties =
+  ResumeReplicationInputProperties as any as S.Schema<UpdateMigrationItemInputProperties>;
 
 export interface UpdateReplicationMigrationItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11669,18 +10879,8 @@ export interface UpdateReplicationMigrationItemResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationMigrationItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MigrationItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationMigrationItemResponse",
-}) as any as S.Schema<UpdateReplicationMigrationItemResponse>;
+export const UpdateReplicationMigrationItemResponse =
+  CreateReplicationMigrationItemResponse as any as S.Schema<UpdateReplicationMigrationItemResponse>;
 
 /** Common input details for network mapping operation. */
 export interface UpdateNetworkMappingInputProperties {
@@ -11752,18 +10952,8 @@ export interface UpdateReplicationNetworkMappingResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationNetworkMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NetworkMappingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationNetworkMappingResponse",
-}) as any as S.Schema<UpdateReplicationNetworkMappingResponse>;
+export const UpdateReplicationNetworkMappingResponse =
+  CreateReplicationNetworkMappingResponse as any as S.Schema<UpdateReplicationNetworkMappingResponse>;
 
 /** Policy update properties. */
 export interface UpdatePolicyInputProperties {
@@ -11823,28 +11013,16 @@ export interface UpdateReplicationPolicyResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(PolicyProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationPolicyResponse",
-}) as any as S.Schema<UpdateReplicationPolicyResponse>;
+export const UpdateReplicationPolicyResponse =
+  CreateReplicationPolicyResponse as any as S.Schema<UpdateReplicationPolicyResponse>;
 
 export type IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList = Array<string>;
-export const IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList>;
+export const IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<IPConfigInputDetailsRecoveryLBBackendAddressPoolIdsList>;
 
 export type IPConfigInputDetailsTfoLBBackendAddressPoolIdsList = Array<string>;
-export const IPConfigInputDetailsTfoLBBackendAddressPoolIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IPConfigInputDetailsTfoLBBackendAddressPoolIdsList>;
+export const IPConfigInputDetailsTfoLBBackendAddressPoolIdsList =
+  ReplicationProtectedItemPropertiesAllowedOperationsList as any as S.Schema<IPConfigInputDetailsTfoLBBackendAddressPoolIdsList>;
 
 export interface IPConfigInputDetails {
   ipConfigName?: string;
@@ -12034,18 +11212,8 @@ export interface UpdateReplicationProtectedItemResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationProtectedItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationProtectedItemResponse",
-}) as any as S.Schema<UpdateReplicationProtectedItemResponse>;
+export const UpdateReplicationProtectedItemResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<UpdateReplicationProtectedItemResponse>;
 
 /** Update replication protected item provider specific input. */
 export type UpdateApplianceForReplicationProtectedItemProviderSpecificInput =
@@ -12121,18 +11289,8 @@ export interface UpdateReplicationProtectedItemApplianceResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationProtectedItemApplianceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationProtectedItemApplianceResponse",
-}) as any as S.Schema<UpdateReplicationProtectedItemApplianceResponse>;
+export const UpdateReplicationProtectedItemApplianceResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<UpdateReplicationProtectedItemApplianceResponse>;
 
 /** The properties of an update mobility service request. */
 export type UpdateMobilityServiceRequestProperties = ReinstallMobilityServiceRequestProperties;
@@ -12189,31 +11347,16 @@ export interface UpdateReplicationProtectedItemMobilityServiceResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationProtectedItemMobilityServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReplicationProtectedItemProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationProtectedItemMobilityServiceResponse",
-}) as any as S.Schema<UpdateReplicationProtectedItemMobilityServiceResponse>;
+export const UpdateReplicationProtectedItemMobilityServiceResponse =
+  AddReplicationProtectedItemDisksResponse as any as S.Schema<UpdateReplicationProtectedItemMobilityServiceResponse>;
 
 /** Container pairing update input. */
 export interface UpdateProtectionContainerMappingInputProperties {
   /** Provider specific input for updating protection container mapping. Polymorphic on `instanceType` (e.g. `{ instanceType: "A2A", ... }`). */
   providerSpecificInput?: unknown;
 }
-export const UpdateProtectionContainerMappingInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificInput: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "UpdateProtectionContainerMappingInputProperties",
-}) as any as S.Schema<UpdateProtectionContainerMappingInputProperties>;
+export const UpdateProtectionContainerMappingInputProperties =
+  CreatePolicyInputProperties as any as S.Schema<UpdateProtectionContainerMappingInputProperties>;
 
 export interface UpdateReplicationProtectionContainerMappingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12266,24 +11409,13 @@ export interface UpdateReplicationProtectionContainerMappingResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationProtectionContainerMappingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProtectionContainerMappingProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationProtectionContainerMappingResponse",
-}) as any as S.Schema<UpdateReplicationProtectionContainerMappingResponse>;
+export const UpdateReplicationProtectionContainerMappingResponse =
+  CreateReplicationProtectionContainerMappingResponse as any as S.Schema<UpdateReplicationProtectionContainerMappingResponse>;
 
 /** The recovery plan groups. */
 export type UpdateRecoveryPlanInputPropertiesGroupsList = Array<RecoveryPlanGroup>;
-export const UpdateRecoveryPlanInputPropertiesGroupsList = /*@__PURE__*/ S.Array(
-  RecoveryPlanGroup,
-) as any as S.Schema<UpdateRecoveryPlanInputPropertiesGroupsList>;
+export const UpdateRecoveryPlanInputPropertiesGroupsList =
+  RecoveryPlanPropertiesGroupsList as any as S.Schema<UpdateRecoveryPlanInputPropertiesGroupsList>;
 
 /** Recovery plan update properties. */
 export interface UpdateRecoveryPlanInputProperties {
@@ -12343,18 +11475,8 @@ export interface UpdateReplicationRecoveryPlanResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationRecoveryPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPlanProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationRecoveryPlanResponse",
-}) as any as S.Schema<UpdateReplicationRecoveryPlanResponse>;
+export const UpdateReplicationRecoveryPlanResponse =
+  CancelReplicationRecoveryPlansFailoverResponse as any as S.Schema<UpdateReplicationRecoveryPlanResponse>;
 
 /** The properties of an update vCenter request. */
 export interface UpdateVCenterRequestProperties {
@@ -12369,17 +11491,8 @@ export interface UpdateVCenterRequestProperties {
   /** The CS account Id which has privileges to update the vCenter. */
   runAsAccountId?: string;
 }
-export const UpdateVCenterRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    friendlyName: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    processServerId: S.optional(S.String),
-    port: S.optional(S.String),
-    runAsAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVCenterRequestProperties",
-}) as any as S.Schema<UpdateVCenterRequestProperties>;
+export const UpdateVCenterRequestProperties =
+  AddVCenterRequestProperties as any as S.Schema<UpdateVCenterRequestProperties>;
 
 export interface UpdateReplicationvCenterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12429,18 +11542,8 @@ export interface UpdateReplicationvCenterResponse {
   /** Resource Location */
   location?: string;
 }
-export const UpdateReplicationvCenterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(VCenterProperties),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateReplicationvCenterResponse",
-}) as any as S.Schema<UpdateReplicationvCenterResponse>;
+export const UpdateReplicationvCenterResponse =
+  CreateReplicationvCenterResponse as any as S.Schema<UpdateReplicationvCenterResponse>;
 
 export type AddReplicationProtectedItemDisksError = AzureOpError;
 /** Add disk(s) for protection. Operation to add disks(s) to the replication protected item. */

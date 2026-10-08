@@ -736,13 +736,8 @@ export const CreateWebInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateWebInsightsToggleResponse {
   value: boolean;
 }
-export const CreateWebInsightsToggleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Boolean,
-  }),
-).annotate({
-  identifier: "CreateWebInsightsToggleResponse",
-}) as any as S.Schema<CreateWebInsightsToggleResponse>;
+export const CreateWebInsightsToggleResponse =
+  CreateSpeedInsightsToggleResponse as any as S.Schema<CreateWebInsightsToggleResponse>;
 
 export type AggregateEventsError =
   | BadRequest

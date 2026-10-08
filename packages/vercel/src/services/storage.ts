@@ -124,9 +124,8 @@ export const CreateStorageStoresBlobResponseStoreProjectFilterGitProviders =
   S.Unknown as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitProviders>;
 
 export type CreateStorageStoresBlobResponseStoreProjectFilterGitReposList = Array<string>;
-export const CreateStorageStoresBlobResponseStoreProjectFilterGitReposList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitReposList>;
+export const CreateStorageStoresBlobResponseStoreProjectFilterGitReposList =
+  CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectFilterGitReposList>;
 
 export interface CreateStorageStoresBlobResponseStoreProjectFilterGit {
   owners?: CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList;
@@ -200,16 +199,12 @@ export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList =
   Array<string>;
 export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList>;
+  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentsList>;
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
 export const CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
+  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<CreateStorageStoresBlobResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
 
 export type CreateStorageStoresBlobResponseStoreProjectsMetadataItemFramework =
   | "actix-web"
@@ -450,9 +445,8 @@ export const GetStorageStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStorageStoreRequest" }) as any as S.Schema<GetStorageStoreRequest>;
 
 export type GetStorageStoreResponseStoreProjectFilterGitOwnersList = Array<string>;
-export const GetStorageStoreResponseStoreProjectFilterGitOwnersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitOwnersList>;
+export const GetStorageStoreResponseStoreProjectFilterGitOwnersList =
+  CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitOwnersList>;
 
 export type GetStorageStoreResponseStoreProjectFilterGitProvidersCase0Item =
   | "bitbucket"
@@ -476,9 +470,8 @@ export const GetStorageStoreResponseStoreProjectFilterGitProviders =
   S.Unknown as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitProviders>;
 
 export type GetStorageStoreResponseStoreProjectFilterGitReposList = Array<string>;
-export const GetStorageStoreResponseStoreProjectFilterGitReposList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitReposList>;
+export const GetStorageStoreResponseStoreProjectFilterGitReposList =
+  CreateStorageStoresBlobResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetStorageStoreResponseStoreProjectFilterGitReposList>;
 
 export interface GetStorageStoreResponseStoreProjectFilterGit {
   owners?: GetStorageStoreResponseStoreProjectFilterGitOwnersList;
@@ -509,31 +502,19 @@ export const GetStorageStoreResponseStoreProjectFilter = /*@__PURE__*/ S.suspend
 export type GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
 export const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
+  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
 
 export interface GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem {
   environments: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList;
   slug: string;
 }
 export const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environments:
-        GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList,
-      slug: S.String,
-    }),
-  ).annotate({
-    identifier: "GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem",
-  }) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
+  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList =
   Array<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
 export const GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList =
-  /*@__PURE__*/ S.Array(
-    GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsItem,
-  ) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList>;
+  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList>;
 
 export interface GetStorageStoreResponseStoreProjectsMetadataItemDeployments {
   actions: GetStorageStoreResponseStoreProjectsMetadataItemDeploymentsActionsList;
@@ -551,16 +532,12 @@ export const GetStorageStoreResponseStoreProjectsMetadataItemDeployments = /*@__
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList = Array<string>;
 export const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList>;
+  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentsList>;
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
 export const GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
+  CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList as any as S.Schema<GetStorageStoreResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
 
 export type GetStorageStoreResponseStoreProjectsMetadataItemFramework =
   | "actix-web"

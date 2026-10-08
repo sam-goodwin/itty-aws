@@ -198,15 +198,13 @@ export const CreateActionModuleResponseContentSecretsList = /*@__PURE__*/ S.Arra
 
 /** The npm dependencies from this version. */
 export type ActionModuleVersionReferenceDependenciesList = Array<ActionModuleDependency>;
-export const ActionModuleVersionReferenceDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<ActionModuleVersionReferenceDependenciesList>;
+export const ActionModuleVersionReferenceDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<ActionModuleVersionReferenceDependenciesList>;
 
 /** The secrets from this version (names and timestamps only, values never returned). */
 export type ActionModuleVersionReferenceSecretsList = Array<ActionModuleSecret>;
-export const ActionModuleVersionReferenceSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<ActionModuleVersionReferenceSecretsList>;
+export const ActionModuleVersionReferenceSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<ActionModuleVersionReferenceSecretsList>;
 
 /** The latest published version as a reference object. Omitted if no versions have been published. */
 export interface ActionModuleVersionReference {
@@ -294,15 +292,13 @@ export const CreateActionModuleRollbackRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The npm dependencies from the module's draft version. */
 export type RollbackActionModuleResponseContentDependenciesList = Array<ActionModuleDependency>;
-export const RollbackActionModuleResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<RollbackActionModuleResponseContentDependenciesList>;
+export const RollbackActionModuleResponseContentDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<RollbackActionModuleResponseContentDependenciesList>;
 
 /** The secrets from the module's draft version (names and timestamps only, values never returned). */
 export type RollbackActionModuleResponseContentSecretsList = Array<ActionModuleSecret>;
-export const RollbackActionModuleResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<RollbackActionModuleResponseContentSecretsList>;
+export const RollbackActionModuleResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<RollbackActionModuleResponseContentSecretsList>;
 
 export interface RollbackActionModuleResponseContent {
   /** The unique ID of the module. */
@@ -327,23 +323,8 @@ export interface RollbackActionModuleResponseContent {
   updated_at?: string;
   latest_version?: ActionModuleVersionReference;
 }
-export const RollbackActionModuleResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    code: S.optional(S.String),
-    dependencies: S.optional(RollbackActionModuleResponseContentDependenciesList),
-    secrets: S.optional(RollbackActionModuleResponseContentSecretsList),
-    actions_using_module_total: S.optional(S.Number),
-    all_changes_published: S.optional(S.Boolean),
-    latest_version_number: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    latest_version: S.optional(ActionModuleVersionReference),
-  }),
-).annotate({
-  identifier: "RollbackActionModuleResponseContent",
-}) as any as S.Schema<RollbackActionModuleResponseContent>;
+export const RollbackActionModuleResponseContent =
+  CreateActionModuleResponseContent as any as S.Schema<RollbackActionModuleResponseContent>;
 
 export interface CreateActionModuleVersionRequest {
   /** The ID of the action module to create a version for. */
@@ -359,16 +340,14 @@ export const CreateActionModuleVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Secrets available to this version (name and updated_at only, values never returned). */
 export type CreateActionModuleVersionResponseContentSecretsList = Array<ActionModuleSecret>;
-export const CreateActionModuleVersionResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<CreateActionModuleVersionResponseContentSecretsList>;
+export const CreateActionModuleVersionResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<CreateActionModuleVersionResponseContentSecretsList>;
 
 /** Dependencies locked to this version. */
 export type CreateActionModuleVersionResponseContentDependenciesList =
   Array<ActionModuleDependency>;
-export const CreateActionModuleVersionResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<CreateActionModuleVersionResponseContentDependenciesList>;
+export const CreateActionModuleVersionResponseContentDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<CreateActionModuleVersionResponseContentDependenciesList>;
 
 export interface CreateActionModuleVersionResponseContent {
   /** The unique ID for this version. */
@@ -582,14 +561,8 @@ export interface BrandingThemeFontButtonsText {
   /** Buttons text size */
   size: number;
 }
-export const BrandingThemeFontButtonsText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bold: S.Boolean,
-    size: S.Number,
-  }),
-).annotate({
-  identifier: "BrandingThemeFontButtonsText",
-}) as any as S.Schema<BrandingThemeFontButtonsText>;
+export const BrandingThemeFontButtonsText =
+  BrandingThemeFontBodyText as any as S.Schema<BrandingThemeFontButtonsText>;
 
 /** Input Labels */
 export interface BrandingThemeFontInputLabels {
@@ -598,14 +571,8 @@ export interface BrandingThemeFontInputLabels {
   /** Input Labels size */
   size: number;
 }
-export const BrandingThemeFontInputLabels = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bold: S.Boolean,
-    size: S.Number,
-  }),
-).annotate({
-  identifier: "BrandingThemeFontInputLabels",
-}) as any as S.Schema<BrandingThemeFontInputLabels>;
+export const BrandingThemeFontInputLabels =
+  BrandingThemeFontBodyText as any as S.Schema<BrandingThemeFontInputLabels>;
 
 /** Links */
 export interface BrandingThemeFontLinks {
@@ -632,14 +599,8 @@ export interface BrandingThemeFontSubtitle {
   /** Subtitle size */
   size: number;
 }
-export const BrandingThemeFontSubtitle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bold: S.Boolean,
-    size: S.Number,
-  }),
-).annotate({
-  identifier: "BrandingThemeFontSubtitle",
-}) as any as S.Schema<BrandingThemeFontSubtitle>;
+export const BrandingThemeFontSubtitle =
+  BrandingThemeFontBodyText as any as S.Schema<BrandingThemeFontSubtitle>;
 
 /** Title */
 export interface BrandingThemeFontTitle {
@@ -648,12 +609,8 @@ export interface BrandingThemeFontTitle {
   /** Title size */
   size: number;
 }
-export const BrandingThemeFontTitle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bold: S.Boolean,
-    size: S.Number,
-  }),
-).annotate({ identifier: "BrandingThemeFontTitle" }) as any as S.Schema<BrandingThemeFontTitle>;
+export const BrandingThemeFontTitle =
+  BrandingThemeFontLinks as any as S.Schema<BrandingThemeFontTitle>;
 
 export interface BrandingThemeFonts {
   body_text: BrandingThemeFontBodyText;
@@ -836,9 +793,8 @@ export const CreateClientRequestCallbacksList = /*@__PURE__*/ S.Array(
 
 /** Comma-separated list of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed. */
 export type ClientOIDCBackchannelLogoutSettingsBackchannelLogoutUrlsList = Array<string>;
-export const ClientOIDCBackchannelLogoutSettingsBackchannelLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientOIDCBackchannelLogoutSettingsBackchannelLogoutUrlsList>;
+export const ClientOIDCBackchannelLogoutSettingsBackchannelLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientOIDCBackchannelLogoutSettingsBackchannelLogoutUrlsList>;
 
 /** The `mode` property determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the selected_initiators array, `all` enables all current and future initiators. */
 export type ClientOIDCBackchannelLogoutInitiatorsModeEnum = "custom" | "all";
@@ -981,39 +937,33 @@ export const ClientSessionTransferConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of URLs allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if necessary. You can also use wildcards at the subdomain level (e.g., https://*.contoso.com). Query strings and hash information are not taken into account when validating these URLs. */
 export type CreateClientRequestAllowedOriginsList = Array<string>;
-export const CreateClientRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientRequestAllowedOriginsList>;
+export const CreateClientRequestAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientRequestAllowedOriginsList>;
 
 /** Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>. */
 export type CreateClientRequestWebOriginsList = Array<string>;
-export const CreateClientRequestWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientRequestWebOriginsList>;
+export const CreateClientRequestWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientRequestWebOriginsList>;
 
 /** List of audiences/realms for SAML protocol. Used by the wsfed addon. */
 export type CreateClientRequestClientAliasesList = Array<string>;
-export const CreateClientRequestClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientRequestClientAliasesList>;
+export const CreateClientRequestClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientRequestClientAliasesList>;
 
 /** List of allow clients and API ids that are allowed to make delegation requests. Empty means all all your clients are allowed. */
 export type CreateClientRequestAllowedClientsList = Array<string>;
-export const CreateClientRequestAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientRequestAllowedClientsList>;
+export const CreateClientRequestAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientRequestAllowedClientsList>;
 
 /** Comma-separated list of URLs that are valid to redirect to after logout from Auth0. Wildcards are allowed for subdomains. */
 export type CreateClientRequestAllowedLogoutUrlsList = Array<string>;
-export const CreateClientRequestAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientRequestAllowedLogoutUrlsList>;
+export const CreateClientRequestAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientRequestAllowedLogoutUrlsList>;
 
 /** List of grant types supported for this application. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type CreateClientRequestGrantTypesList = Array<string>;
-export const CreateClientRequestGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientRequestGrantTypesList>;
+export const CreateClientRequestGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientRequestGrantTypesList>;
 
 /** Defines the requested authentication method for the token endpoint. Can be `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), or `client_secret_basic` (client uses HTTP Basic). */
 export type ClientTokenEndpointAuthMethodEnum =
@@ -1053,10 +1003,8 @@ export const ClientAppTypeEnum = S.String;
 
 /** Configuration related to id token claims for the client. */
 export type ClientJwtConfigurationScopes = { [key: string]: unknown | undefined };
-export const ClientJwtConfigurationScopes = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientJwtConfigurationScopes>;
+export const ClientJwtConfigurationScopes =
+  AgentMetadata as any as S.Schema<ClientJwtConfigurationScopes>;
 
 /** Algorithm used to sign JWTs. Can be `HS256` (default) or `RS256`. `PS256` available via addon. */
 export type SigningAlgorithmEnum = "HS256" | "RS256" | "RS512" | "PS256";
@@ -1200,11 +1148,7 @@ export interface ClientAddonMSCRM {
   /** Microsoft Dynamics CRM application URL. */
   url: string;
 }
-export const ClientAddonMSCRM = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({ identifier: "ClientAddonMSCRM" }) as any as S.Schema<ClientAddonMSCRM>;
+export const ClientAddonMSCRM = ClientAddonRMS as any as S.Schema<ClientAddonMSCRM>;
 
 /** Slack team or workspace name usually first segment in your Slack URL. e.g. `https://acme-org.slack.com` would be `acme-org`. */
 export interface ClientAddonSlack {
@@ -1233,31 +1177,19 @@ export const ClientAddonSentry = /*@__PURE__*/ S.suspend(() =>
 
 /** Box SSO indicator (no configuration settings needed for Box SSO). */
 export type ClientAddonBox = { [key: string]: unknown | undefined };
-export const ClientAddonBox = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientAddonBox>;
+export const ClientAddonBox = AgentMetadata as any as S.Schema<ClientAddonBox>;
 
 /** CloudBees SSO indicator (no configuration settings needed for CloudBees SSO). */
 export type ClientAddonCloudBees = { [key: string]: unknown | undefined };
-export const ClientAddonCloudBees = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientAddonCloudBees>;
+export const ClientAddonCloudBees = AgentMetadata as any as S.Schema<ClientAddonCloudBees>;
 
 /** Concur SSO indicator (no configuration settings needed for Concur SSO). */
 export type ClientAddonConcur = { [key: string]: unknown | undefined };
-export const ClientAddonConcur = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientAddonConcur>;
+export const ClientAddonConcur = AgentMetadata as any as S.Schema<ClientAddonConcur>;
 
 /** Dropbox SSO indicator (no configuration settings needed for Dropbox SSO). */
 export type ClientAddonDropbox = { [key: string]: unknown | undefined };
-export const ClientAddonDropbox = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientAddonDropbox>;
+export const ClientAddonDropbox = AgentMetadata as any as S.Schema<ClientAddonDropbox>;
 
 /** Adobe EchoSign SSO configuration. */
 export interface ClientAddonEchoSign {
@@ -1275,11 +1207,7 @@ export interface ClientAddonEgnyte {
   /** Your custom domain found in your Egnyte URL. e.g. `https://acme-org.egnyte.com` would be `acme-org`. */
   domain?: string;
 }
-export const ClientAddonEgnyte = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClientAddonEgnyte" }) as any as S.Schema<ClientAddonEgnyte>;
+export const ClientAddonEgnyte = ClientAddonEchoSign as any as S.Schema<ClientAddonEgnyte>;
 
 /** Google Firebase addon configuration. */
 export interface ClientAddonFirebase {
@@ -1365,15 +1293,11 @@ export type ClientAddonSalesforceSandboxAPI = ClientAddonSalesforceAPI;
 export const ClientAddonSalesforceSandboxAPI = ClientAddonSalesforceAPI;
 
 export type ClientAddonSAMLMapping = { [key: string]: unknown | undefined };
-export const ClientAddonSAMLMapping = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientAddonSAMLMapping>;
+export const ClientAddonSAMLMapping = AgentMetadata as any as S.Schema<ClientAddonSAMLMapping>;
 
 export type ClientAddonSAMLNameIdentifierProbesList = Array<string>;
-export const ClientAddonSAMLNameIdentifierProbesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientAddonSAMLNameIdentifierProbesList>;
+export const ClientAddonSAMLNameIdentifierProbesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientAddonSAMLNameIdentifierProbesList>;
 
 /** SAML2 addon indicator (no configuration settings needed for SAML2 addon). */
 export interface ClientAddonSAML {
@@ -1465,9 +1389,8 @@ export const ClientAddonSAPAPI = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientAddonSAPAPI" }) as any as S.Schema<ClientAddonSAPAPI>;
 
 export type ClientAddonSharePointExternalURLCase0List = Array<string>;
-export const ClientAddonSharePointExternalURLCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientAddonSharePointExternalURLCase0List>;
+export const ClientAddonSharePointExternalURLCase0List =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientAddonSharePointExternalURLCase0List>;
 
 /** External SharePoint application URLs if exposed to the Internet. */
 export type ClientAddonSharePointExternalURL = ClientAddonSharePointExternalURLCase0List | string;
@@ -1511,10 +1434,7 @@ export const ClientAddonWAMS = /*@__PURE__*/ S.suspend(() =>
 
 /** WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client. */
 export type ClientAddonWSFed = { [key: string]: unknown | undefined };
-export const ClientAddonWSFed = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientAddonWSFed>;
+export const ClientAddonWSFed = AgentMetadata as any as S.Schema<ClientAddonWSFed>;
 
 /** Zendesk SSO configuration. */
 export interface ClientAddonZendesk {
@@ -1532,11 +1452,7 @@ export interface ClientAddonZoom {
   /** Zoom account name usually first segment of your Zoom URL, e.g. `https://acme-org.zoom.us` would be `acme-org`. */
   account?: string;
 }
-export const ClientAddonZoom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClientAddonZoom" }) as any as S.Schema<ClientAddonZoom>;
+export const ClientAddonZoom = ClientAddonNewRelic as any as S.Schema<ClientAddonZoom>;
 
 export interface ClientAddonSSOIntegration {
   /** SSO integration name */
@@ -1623,16 +1539,12 @@ export const ClientAddons = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: :,-+=_*?"/\()<>@ [Tab] [Space] */
 export type ClientMetadata = { [key: string]: unknown | undefined };
-export const ClientMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClientMetadata>;
+export const ClientMetadata = AgentMetadata as any as S.Schema<ClientMetadata>;
 
 /** SHA256 fingerprints of the app's signing certificate. Multiple fingerprints can be used to support different versions of your app, such as debug and production builds. */
 export type ClientMobileAndroidSha256CertFingerprintsList = Array<string>;
-export const ClientMobileAndroidSha256CertFingerprintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientMobileAndroidSha256CertFingerprintsList>;
+export const ClientMobileAndroidSha256CertFingerprintsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientMobileAndroidSha256CertFingerprintsList>;
 
 /** Android native app configuration. */
 export interface ClientMobileAndroid {
@@ -1703,11 +1615,8 @@ export interface NativeSocialLoginGoogle {
   /** Determine whether or not to allow signing in natively using a Google ID token */
   enabled?: boolean;
 }
-export const NativeSocialLoginGoogle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "NativeSocialLoginGoogle" }) as any as S.Schema<NativeSocialLoginGoogle>;
+export const NativeSocialLoginGoogle =
+  NativeSocialLoginApple as any as S.Schema<NativeSocialLoginGoogle>;
 
 /** Configure native social settings */
 export interface NativeSocialLogin {
@@ -1754,9 +1663,8 @@ export const RefreshTokenExpirationTypeEnum = S.String;
 
 /** The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used */
 export type ClientRefreshTokenPolicyScopeList = Array<string>;
-export const ClientRefreshTokenPolicyScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientRefreshTokenPolicyScopeList>;
+export const ClientRefreshTokenPolicyScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientRefreshTokenPolicyScopeList>;
 
 export interface ClientRefreshTokenPolicy {
   /** The identifier of the resource server to which the Multi Resource Refresh Token Policy applies */
@@ -2012,9 +1920,8 @@ export const ClientCreateAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientCreateAuthenticationMethod>;
 
 export type ClientSignedRequestObjectWithPublicKeyCredentialsList = Array<PublicKeyCredential>;
-export const ClientSignedRequestObjectWithPublicKeyCredentialsList = /*@__PURE__*/ S.Array(
-  PublicKeyCredential,
-) as any as S.Schema<ClientSignedRequestObjectWithPublicKeyCredentialsList>;
+export const ClientSignedRequestObjectWithPublicKeyCredentialsList =
+  ClientCreateAuthenticationMethodPrivateKeyJWTCredentials as any as S.Schema<ClientSignedRequestObjectWithPublicKeyCredentialsList>;
 
 /** JWT-secured Authorization Requests (JAR) settings. */
 export interface ClientSignedRequestObjectWithPublicKey {
@@ -2033,19 +1940,16 @@ export const ClientSignedRequestObjectWithPublicKey = /*@__PURE__*/ S.suspend(()
 
 export type ClientTokenVaultPrivilegedAccessWithPublicKeyCredentialsList =
   Array<PublicKeyCredential>;
-export const ClientTokenVaultPrivilegedAccessWithPublicKeyCredentialsList = /*@__PURE__*/ S.Array(
-  PublicKeyCredential,
-) as any as S.Schema<ClientTokenVaultPrivilegedAccessWithPublicKeyCredentialsList>;
+export const ClientTokenVaultPrivilegedAccessWithPublicKeyCredentialsList =
+  ClientCreateAuthenticationMethodPrivateKeyJWTCredentials as any as S.Schema<ClientTokenVaultPrivilegedAccessWithPublicKeyCredentialsList>;
 
 export type ClientTokenVaultPrivilegedAccessWithPublicKeyIpAllowlistList = Array<string>;
-export const ClientTokenVaultPrivilegedAccessWithPublicKeyIpAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientTokenVaultPrivilegedAccessWithPublicKeyIpAllowlistList>;
+export const ClientTokenVaultPrivilegedAccessWithPublicKeyIpAllowlistList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientTokenVaultPrivilegedAccessWithPublicKeyIpAllowlistList>;
 
 export type TokenVaultPrivilegedAccessGrantScopesList = Array<string>;
-export const TokenVaultPrivilegedAccessGrantScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokenVaultPrivilegedAccessGrantScopesList>;
+export const TokenVaultPrivilegedAccessGrantScopesList =
+  CreateClientRequestCallbacksList as any as S.Schema<TokenVaultPrivilegedAccessGrantScopesList>;
 
 export interface TokenVaultPrivilegedAccessGrant {
   connection: string;
@@ -2238,9 +2142,8 @@ export const ExpressConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SSO profile IDs linked to this B2B integration client. Maximum 1 entry. */
 export type B2bIntegrationConfigurationSsoProfilesList = Array<string>;
-export const B2bIntegrationConfigurationSsoProfilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<B2bIntegrationConfigurationSsoProfilesList>;
+export const B2bIntegrationConfigurationSsoProfilesList =
+  CreateClientRequestCallbacksList as any as S.Schema<B2bIntegrationConfigurationSsoProfilesList>;
 
 /** The type of integration used to connect to this B2B integration client. Must be one of `custom_auth_server`, `third_party`, or `application`. */
 export type B2bIntegrationConfigurationIntegrationTypeEnum =
@@ -2554,45 +2457,38 @@ export const CreateClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of URLs whitelisted for Auth0 to use as a callback to the client after authentication. */
 export type CreateClientResponseContentCallbacksList = Array<string>;
-export const CreateClientResponseContentCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientResponseContentCallbacksList>;
+export const CreateClientResponseContentCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientResponseContentCallbacksList>;
 
 /** Comma-separated list of URLs allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if necessary. You can also use wildcards at the subdomain level (e.g., https://*.contoso.com). Query strings and hash information are not taken into account when validating these URLs. */
 export type CreateClientResponseContentAllowedOriginsList = Array<string>;
-export const CreateClientResponseContentAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientResponseContentAllowedOriginsList>;
+export const CreateClientResponseContentAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientResponseContentAllowedOriginsList>;
 
 /** Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>. */
 export type CreateClientResponseContentWebOriginsList = Array<string>;
-export const CreateClientResponseContentWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientResponseContentWebOriginsList>;
+export const CreateClientResponseContentWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientResponseContentWebOriginsList>;
 
 /** List of audiences/realms for SAML protocol. Used by the wsfed addon. */
 export type CreateClientResponseContentClientAliasesList = Array<string>;
-export const CreateClientResponseContentClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientResponseContentClientAliasesList>;
+export const CreateClientResponseContentClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientResponseContentClientAliasesList>;
 
 /** List of allow clients and API ids that are allowed to make delegation requests. Empty means all all your clients are allowed. */
 export type CreateClientResponseContentAllowedClientsList = Array<string>;
-export const CreateClientResponseContentAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientResponseContentAllowedClientsList>;
+export const CreateClientResponseContentAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientResponseContentAllowedClientsList>;
 
 /** Comma-separated list of URLs that are valid to redirect to after logout from Auth0. Wildcards are allowed for subdomains. */
 export type CreateClientResponseContentAllowedLogoutUrlsList = Array<string>;
-export const CreateClientResponseContentAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientResponseContentAllowedLogoutUrlsList>;
+export const CreateClientResponseContentAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientResponseContentAllowedLogoutUrlsList>;
 
 /** List of grant types supported for this application. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type CreateClientResponseContentGrantTypesList = Array<string>;
-export const CreateClientResponseContentGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientResponseContentGrantTypesList>;
+export const CreateClientResponseContentGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientResponseContentGrantTypesList>;
 
 export interface ClientSigningKey {
   /** Signing certificate public key and chain in PKCS#7 (.P7B) format. */
@@ -2619,9 +2515,8 @@ export const ClientSigningKeys = /*@__PURE__*/ S.Array(
 /** Defines the available methods for organization discovery during the `pre_login_prompt`. Users can discover their organization either by `email`, `organization_name` or both. */
 export type CreateClientResponseContentOrganizationDiscoveryMethodsList =
   Array<ClientOrganizationDiscoveryEnum>;
-export const CreateClientResponseContentOrganizationDiscoveryMethodsList = /*@__PURE__*/ S.Array(
-  ClientOrganizationDiscoveryEnum,
-) as any as S.Schema<CreateClientResponseContentOrganizationDiscoveryMethodsList>;
+export const CreateClientResponseContentOrganizationDiscoveryMethodsList =
+  CreateClientRequestOrganizationDiscoveryMethodsList as any as S.Schema<CreateClientResponseContentOrganizationDiscoveryMethodsList>;
 
 export interface CredentialId {
   /** Credential ID */
@@ -2653,39 +2548,27 @@ export const ClientAuthenticationMethodPrivateKeyJWT = /*@__PURE__*/ S.suspend((
 
 /** A list of unique and previously created credential IDs enabled on the client for CA-based mTLS authentication. */
 export type ClientAuthenticationMethodTLSClientAuthCredentials = Array<CredentialId>;
-export const ClientAuthenticationMethodTLSClientAuthCredentials = /*@__PURE__*/ S.Array(
-  CredentialId,
-) as any as S.Schema<ClientAuthenticationMethodTLSClientAuthCredentials>;
+export const ClientAuthenticationMethodTLSClientAuthCredentials =
+  ClientAuthenticationMethodPrivateKeyJWTCredentials as any as S.Schema<ClientAuthenticationMethodTLSClientAuthCredentials>;
 
 /** Defines `tls_client_auth` client authentication method. If the property is defined, the client is configured to use CA-based mTLS authentication method. */
 export interface ClientAuthenticationMethodTLSClientAuth {
   credentials: ClientAuthenticationMethodTLSClientAuthCredentials;
 }
-export const ClientAuthenticationMethodTLSClientAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: ClientAuthenticationMethodTLSClientAuthCredentials,
-  }),
-).annotate({
-  identifier: "ClientAuthenticationMethodTLSClientAuth",
-}) as any as S.Schema<ClientAuthenticationMethodTLSClientAuth>;
+export const ClientAuthenticationMethodTLSClientAuth =
+  ClientAuthenticationMethodPrivateKeyJWT as any as S.Schema<ClientAuthenticationMethodTLSClientAuth>;
 
 /** A list of unique and previously created credential IDs enabled on the client for mTLS authentication utilizing self-signed certificate. */
 export type ClientAuthenticationMethodSelfSignedTLSClientAuthCredentials = Array<CredentialId>;
-export const ClientAuthenticationMethodSelfSignedTLSClientAuthCredentials = /*@__PURE__*/ S.Array(
-  CredentialId,
-) as any as S.Schema<ClientAuthenticationMethodSelfSignedTLSClientAuthCredentials>;
+export const ClientAuthenticationMethodSelfSignedTLSClientAuthCredentials =
+  ClientAuthenticationMethodPrivateKeyJWTCredentials as any as S.Schema<ClientAuthenticationMethodSelfSignedTLSClientAuthCredentials>;
 
 /** Defines `self_signed_tls_client_auth` client authentication method. If the property is defined, the client is configured to use mTLS authentication method utilizing self-signed certificate. */
 export interface ClientAuthenticationMethodSelfSignedTLSClientAuth {
   credentials: ClientAuthenticationMethodSelfSignedTLSClientAuthCredentials;
 }
-export const ClientAuthenticationMethodSelfSignedTLSClientAuth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: ClientAuthenticationMethodSelfSignedTLSClientAuthCredentials,
-  }),
-).annotate({
-  identifier: "ClientAuthenticationMethodSelfSignedTLSClientAuth",
-}) as any as S.Schema<ClientAuthenticationMethodSelfSignedTLSClientAuth>;
+export const ClientAuthenticationMethodSelfSignedTLSClientAuth =
+  ClientAuthenticationMethodPrivateKeyJWT as any as S.Schema<ClientAuthenticationMethodSelfSignedTLSClientAuth>;
 
 /** Defines client authentication methods. */
 export interface ClientAuthenticationMethod {
@@ -2704,9 +2587,8 @@ export const ClientAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientAuthenticationMethod>;
 
 export type ClientSignedRequestObjectWithCredentialIdCredentialsList = Array<CredentialId>;
-export const ClientSignedRequestObjectWithCredentialIdCredentialsList = /*@__PURE__*/ S.Array(
-  CredentialId,
-) as any as S.Schema<ClientSignedRequestObjectWithCredentialIdCredentialsList>;
+export const ClientSignedRequestObjectWithCredentialIdCredentialsList =
+  ClientAuthenticationMethodPrivateKeyJWTCredentials as any as S.Schema<ClientSignedRequestObjectWithCredentialIdCredentialsList>;
 
 /** JWT-secured Authorization Requests (JAR) settings. */
 export interface ClientSignedRequestObjectWithCredentialId {
@@ -2737,9 +2619,8 @@ export const ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList =
 
 export type ClientTokenVaultPrivilegedAccessWithCredentialIdGrantsList =
   Array<TokenVaultPrivilegedAccessGrant>;
-export const ClientTokenVaultPrivilegedAccessWithCredentialIdGrantsList = /*@__PURE__*/ S.Array(
-  TokenVaultPrivilegedAccessGrant,
-) as any as S.Schema<ClientTokenVaultPrivilegedAccessWithCredentialIdGrantsList>;
+export const ClientTokenVaultPrivilegedAccessWithCredentialIdGrantsList =
+  ClientTokenVaultPrivilegedAccessWithPublicKeyGrantsList as any as S.Schema<ClientTokenVaultPrivilegedAccessWithCredentialIdGrantsList>;
 
 /** Settings for Token Vault Privileged Access. */
 export interface ClientTokenVaultPrivilegedAccessWithCredentialId {
@@ -2763,9 +2644,8 @@ export const TokenQuota = CreateTokenQuota;
 /** The allowed connection strategies for the My Organization Configuration. */
 export type ClientMyOrganizationResponseConfigurationAllowedStrategiesList =
   Array<ClientMyOrganizationConfigurationAllowedStrategiesEnum>;
-export const ClientMyOrganizationResponseConfigurationAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  ClientMyOrganizationConfigurationAllowedStrategiesEnum,
-) as any as S.Schema<ClientMyOrganizationResponseConfigurationAllowedStrategiesList>;
+export const ClientMyOrganizationResponseConfigurationAllowedStrategiesList =
+  ClientMyOrganizationPostConfigurationAllowedStrategiesList as any as S.Schema<ClientMyOrganizationResponseConfigurationAllowedStrategiesList>;
 
 /** Configuration related to the My Organization Configuration for the client. */
 export interface ClientMyOrganizationResponseConfiguration {
@@ -2784,20 +2664,8 @@ export interface ClientMyOrganizationResponseConfiguration {
   /** When true, prevents organization admins from assigning permissions to themselves. */
   enforce_self_assignment_restriction?: boolean;
 }
-export const ClientMyOrganizationResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_profile_id: S.optional(S.String),
-    user_attribute_profile_id: S.optional(S.String),
-    allowed_strategies: ClientMyOrganizationResponseConfigurationAllowedStrategiesList,
-    third_party_client_access: S.optional(ClientMyOrganizationThirdPartyClientAccessConfiguration),
-    connection_deletion_behavior: ClientMyOrganizationDeletionBehaviorEnum,
-    invitation_landing_client_id: S.optional(S.String),
-    enforce_permission_ceiling: S.optional(S.Boolean),
-    enforce_self_assignment_restriction: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClientMyOrganizationResponseConfiguration",
-}) as any as S.Schema<ClientMyOrganizationResponseConfiguration>;
+export const ClientMyOrganizationResponseConfiguration =
+  ClientMyOrganizationPostConfiguration as any as S.Schema<ClientMyOrganizationResponseConfiguration>;
 
 /** Configuration on the use of ID-JAGs for Cross App Access. */
 export type IdentityAssertionAuthorizationGrant = CreateIdentityAssertionAuthorizationGrant;
@@ -3014,9 +2882,8 @@ export const ClientGrantOrganizationUsageEnum = S.String;
 
 /** Scopes allowed for this client grant. */
 export type CreateClientGrantRequestScopeList = Array<string>;
-export const CreateClientGrantRequestScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientGrantRequestScopeList>;
+export const CreateClientGrantRequestScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientGrantRequestScopeList>;
 
 /** The type of application access the client grant allows. */
 export type ClientGrantSubjectTypeEnum = "client" | "user" | "anonymous_user";
@@ -3024,9 +2891,8 @@ export const ClientGrantSubjectTypeEnum = S.String;
 
 /** Types of authorization_details allowed for this client grant. */
 export type CreateClientGrantRequestAuthorizationDetailsTypesList = Array<string>;
-export const CreateClientGrantRequestAuthorizationDetailsTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientGrantRequestAuthorizationDetailsTypesList>;
+export const CreateClientGrantRequestAuthorizationDetailsTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientGrantRequestAuthorizationDetailsTypesList>;
 
 export interface CreateClientGrantRequest {
   /** ID of the client. */
@@ -3061,15 +2927,13 @@ export const CreateClientGrantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes allowed for this client grant. */
 export type CreateClientGrantResponseContentScopeList = Array<string>;
-export const CreateClientGrantResponseContentScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientGrantResponseContentScopeList>;
+export const CreateClientGrantResponseContentScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientGrantResponseContentScopeList>;
 
 /** Types of authorization_details allowed for this client grant. */
 export type CreateClientGrantResponseContentAuthorizationDetailsTypesList = Array<string>;
-export const CreateClientGrantResponseContentAuthorizationDetailsTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateClientGrantResponseContentAuthorizationDetailsTypesList>;
+export const CreateClientGrantResponseContentAuthorizationDetailsTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateClientGrantResponseContentAuthorizationDetailsTypesList>;
 
 export interface CreateClientGrantResponseContent {
   /** ID of the client grant. */
@@ -3126,21 +2990,18 @@ export const CreateClientsCimdPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of retrieval errors (populated when the metadata document could not be fetched). When present, validation is omitted. */
 export type PreviewCimdMetadataResponseContentErrorsList = Array<string>;
-export const PreviewCimdMetadataResponseContentErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PreviewCimdMetadataResponseContentErrorsList>;
+export const PreviewCimdMetadataResponseContentErrorsList =
+  CreateClientRequestCallbacksList as any as S.Schema<PreviewCimdMetadataResponseContentErrorsList>;
 
 /** Array of validation violation messages (if any) */
 export type CimdValidationResultViolationsList = Array<string>;
-export const CimdValidationResultViolationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CimdValidationResultViolationsList>;
+export const CimdValidationResultViolationsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CimdValidationResultViolationsList>;
 
 /** Array of warning messages (if any) */
 export type CimdValidationResultWarningsList = Array<string>;
-export const CimdValidationResultWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CimdValidationResultWarningsList>;
+export const CimdValidationResultWarningsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CimdValidationResultWarningsList>;
 
 /** Validation result for the Client ID Metadata Document */
 export interface CimdValidationResult {
@@ -3161,15 +3022,13 @@ export const CimdValidationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Callback URLs */
 export type CimdMappedClientFieldsCallbacksList = Array<string>;
-export const CimdMappedClientFieldsCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CimdMappedClientFieldsCallbacksList>;
+export const CimdMappedClientFieldsCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<CimdMappedClientFieldsCallbacksList>;
 
 /** List of grant types */
 export type CimdMappedClientFieldsGrantTypesList = Array<string>;
-export const CimdMappedClientFieldsGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CimdMappedClientFieldsGrantTypesList>;
+export const CimdMappedClientFieldsGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CimdMappedClientFieldsGrantTypesList>;
 
 export interface CimdMappedPrivateKeyJwtCredential {
   /** Type of credential (e.g., public_key) */
@@ -3402,9 +3261,8 @@ export const ConnectionValidationOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of user fields that should not be stored in the Auth0 database (https://auth0.com/docs/security/data-security/denylist) */
 export type ConnectionPropertiesOptionsNonPersistentAttrsList = Array<string>;
-export const ConnectionPropertiesOptionsNonPersistentAttrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionPropertiesOptionsNonPersistentAttrsList>;
+export const ConnectionPropertiesOptionsNonPersistentAttrsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionPropertiesOptionsNonPersistentAttrsList>;
 
 /** Order of precedence for attribute types */
 export type ConnectionIdentifierPrecedenceEnum = "email" | "phone_number" | "username";
@@ -3654,39 +3512,24 @@ export interface ConnectionPasskeyAuthenticationMethod {
   /** Determines whether passkeys are enabled */
   enabled?: boolean;
 }
-export const ConnectionPasskeyAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConnectionPasskeyAuthenticationMethod",
-}) as any as S.Schema<ConnectionPasskeyAuthenticationMethod>;
+export const ConnectionPasskeyAuthenticationMethod =
+  NativeSocialLoginFacebook as any as S.Schema<ConnectionPasskeyAuthenticationMethod>;
 
 /** Email OTP authentication enablement */
 export interface ConnectionEmailOtpAuthenticationMethod {
   /** Determines whether email OTP is enabled */
   enabled?: boolean;
 }
-export const ConnectionEmailOtpAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConnectionEmailOtpAuthenticationMethod",
-}) as any as S.Schema<ConnectionEmailOtpAuthenticationMethod>;
+export const ConnectionEmailOtpAuthenticationMethod =
+  NativeSocialLoginFacebook as any as S.Schema<ConnectionEmailOtpAuthenticationMethod>;
 
 /** Phone OTP authentication enablement */
 export interface ConnectionPhoneOtpAuthenticationMethod {
   /** Determines whether phone OTP is enabled */
   enabled?: boolean;
 }
-export const ConnectionPhoneOtpAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConnectionPhoneOtpAuthenticationMethod",
-}) as any as S.Schema<ConnectionPhoneOtpAuthenticationMethod>;
+export const ConnectionPhoneOtpAuthenticationMethod =
+  NativeSocialLoginFacebook as any as S.Schema<ConnectionPhoneOtpAuthenticationMethod>;
 
 /** Options for enabling authentication methods. */
 export interface ConnectionAuthenticationMethods {
@@ -3771,9 +3614,8 @@ export const ConnectionPasswordNoPersonalInfoOptions = /*@__PURE__*/ S.suspend((
 
 /** Custom Password Dictionary. An array of up to 200 entries. */
 export type ConnectionPasswordDictionaryOptionsDictionaryList = Array<string>;
-export const ConnectionPasswordDictionaryOptionsDictionaryList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionPasswordDictionaryOptionsDictionaryList>;
+export const ConnectionPasswordDictionaryOptionsDictionaryList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionPasswordDictionaryOptionsDictionaryList>;
 
 /** Options for password dictionary policy */
 export interface ConnectionPasswordDictionaryOptions {
@@ -3923,9 +3765,8 @@ export const ConnectionPasswordOptionsComplexity = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of custom words to block in passwords. Maximum 200 items, each up to 50 characters */
 export type ConnectionPasswordOptionsDictionaryCustomList = Array<string>;
-export const ConnectionPasswordOptionsDictionaryCustomList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionPasswordOptionsDictionaryCustomList>;
+export const ConnectionPasswordOptionsDictionaryCustomList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionPasswordOptionsDictionaryCustomList>;
 
 /** Default dictionary to use for password validation. Options: "en_10k" (10,000 common words) or "en_100k" (100,000 common words) */
 export type PasswordDefaultDictionariesEnum = "en_10k" | "en_100k";
@@ -3967,9 +3808,8 @@ export const ConnectionPasswordOptionsHistory = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked profile fields. An array of up to 12 entries. */
 export type ConnectionPasswordOptionsProfileDataBlockedFieldsList = Array<string>;
-export const ConnectionPasswordOptionsProfileDataBlockedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionPasswordOptionsProfileDataBlockedFieldsList>;
+export const ConnectionPasswordOptionsProfileDataBlockedFieldsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionPasswordOptionsProfileDataBlockedFieldsList>;
 
 /** Personal information restriction policy to prevent use of profile data in passwords */
 export interface ConnectionPasswordOptionsProfileData {
@@ -4011,9 +3851,8 @@ export const ConnectionAssertionDecryptionAlgorithmProfileEnum = S.String;
 
 /** A list of insecure algorithms to allow for SAML assertion decryption. */
 export type ConnectionAssertionDecryptionSettingsAlgorithmExceptionsList = Array<string>;
-export const ConnectionAssertionDecryptionSettingsAlgorithmExceptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionAssertionDecryptionSettingsAlgorithmExceptionsList>;
+export const ConnectionAssertionDecryptionSettingsAlgorithmExceptionsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionAssertionDecryptionSettingsAlgorithmExceptionsList>;
 
 /** Settings for SAML assertion decryption. */
 export interface ConnectionAssertionDecryptionSettings {
@@ -4074,147 +3913,118 @@ export const ConnectionTokenEndpointJwtcaAudFormatEnumOIDC = S.String;
 
 /** A list of the OAuth 2.0 [RFC6749] scope values that this server supports. The server MUST support the openid scope value. Servers MAY choose not to advertise some supported scope values even when this parameter is used, although those defined in [OpenID.Core] SHOULD be listed, if supported. RECOMMENDED but not REQUIRED */
 export type ConnectionsOIDCMetadataScopesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataScopesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataScopesSupportedList>;
+export const ConnectionsOIDCMetadataScopesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataScopesSupportedList>;
 
 /** A list of the OAuth 2.0 response_mode values that this OP supports. If omitted, the default for Dynamic OpenID Providers is ["query", "fragment"] */
 export type ConnectionsOIDCMetadataResponseModesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataResponseModesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataResponseModesSupportedList>;
+export const ConnectionsOIDCMetadataResponseModesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataResponseModesSupportedList>;
 
 /** A list of the OAuth 2.0 response_type values that this OP supports. Dynamic OpenID Providers MUST support the code, id_token, and the token id_token Response Type values */
 export type ConnectionsOIDCMetadataResponseTypesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataResponseTypesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataResponseTypesSupportedList>;
+export const ConnectionsOIDCMetadataResponseTypesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataResponseTypesSupportedList>;
 
 /** A list of the OAuth 2.0 Grant Type values that this OP supports. Dynamic OpenID Providers MUST support the authorization_code and implicit Grant Type values and MAY support other Grant Types. If omitted, the default value is ["authorization_code", "implicit"]. */
 export type ConnectionsOIDCMetadataGrantTypesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataGrantTypesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataGrantTypesSupportedList>;
+export const ConnectionsOIDCMetadataGrantTypesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataGrantTypesSupportedList>;
 
 /** A list of the Authentication Context Class References that this OP supports */
 export type ConnectionsOIDCMetadataAcrValuesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataAcrValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataAcrValuesSupportedList>;
+export const ConnectionsOIDCMetadataAcrValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataAcrValuesSupportedList>;
 
 /** A list of the Subject Identifier types that this OP supports. Valid types include pairwise and public */
 export type ConnectionsOIDCMetadataSubjectTypesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataSubjectTypesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataSubjectTypesSupportedList>;
+export const ConnectionsOIDCMetadataSubjectTypesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataSubjectTypesSupportedList>;
 
 /** A list of the JWS signing algorithms (alg values) supported by the OP for the ID Token to encode the Claims in a JWT. The algorithm RS256 MUST be included. The value none MAY be supported, but MUST NOT be used unless the Response Type used returns no ID Token from the Authorization Endpoint (such as when using the Authorization Code Flow). https://datatracker.ietf.org/doc/html/rfc7518 */
 export type ConnectionsOIDCMetadataIdTokenSigningAlgValuesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataIdTokenSigningAlgValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataIdTokenSigningAlgValuesSupportedList>;
+export const ConnectionsOIDCMetadataIdTokenSigningAlgValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataIdTokenSigningAlgValuesSupportedList>;
 
 /** JSON array containing a list of the JWE encryption algorithms (alg values) supported by the OP for the ID Token to encode the Claims in a JWT */
 export type ConnectionsOIDCMetadataIdTokenEncryptionAlgValuesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataIdTokenEncryptionAlgValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataIdTokenEncryptionAlgValuesSupportedList>;
+export const ConnectionsOIDCMetadataIdTokenEncryptionAlgValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataIdTokenEncryptionAlgValuesSupportedList>;
 
 /** JSON array containing a list of the JWE encryption algorithms (enc values) supported by the OP for the ID Token to encode the Claims in a JWT [JWT]. */
 export type ConnectionsOIDCMetadataIdTokenEncryptionEncValuesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataIdTokenEncryptionEncValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataIdTokenEncryptionEncValuesSupportedList>;
+export const ConnectionsOIDCMetadataIdTokenEncryptionEncValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataIdTokenEncryptionEncValuesSupportedList>;
 
 /** JSON array containing a list of the JWS [JWS] signing algorithms (alg values) [JWA] supported by the UserInfo Endpoint to encode the Claims in a JWT [JWT]. The value none MAY be included. */
 export type ConnectionsOIDCMetadataUserinfoSigningAlgValuesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataUserinfoSigningAlgValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataUserinfoSigningAlgValuesSupportedList>;
+export const ConnectionsOIDCMetadataUserinfoSigningAlgValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataUserinfoSigningAlgValuesSupportedList>;
 
 /** JSON array containing a list of the JWE [JWE] encryption algorithms (alg values) [JWA] supported by the UserInfo Endpoint to encode the Claims in a JWT [JWT]. */
 export type ConnectionsOIDCMetadataUserinfoEncryptionAlgValuesSupportedList = Array<string>;
 export const ConnectionsOIDCMetadataUserinfoEncryptionAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectionsOIDCMetadataUserinfoEncryptionAlgValuesSupportedList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<ConnectionsOIDCMetadataUserinfoEncryptionAlgValuesSupportedList>;
 
 /** JSON array containing a list of the JWE encryption algorithms (enc values) [JWA] supported by the UserInfo Endpoint to encode the Claims in a JWT [JWT]. */
 export type ConnectionsOIDCMetadataUserinfoEncryptionEncValuesSupportedList = Array<string>;
 export const ConnectionsOIDCMetadataUserinfoEncryptionEncValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectionsOIDCMetadataUserinfoEncryptionEncValuesSupportedList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<ConnectionsOIDCMetadataUserinfoEncryptionEncValuesSupportedList>;
 
 /** JSON array containing a list of the JWS signing algorithms (alg values) supported by the OP for Request Objects, which are described in Section 6.1 of OpenID Connect Core 1.0 [OpenID.Core]. These algorithms are used both when the Request Object is passed by value (using the request parameter) and when it is passed by reference (using the request_uri parameter). Servers SHOULD support none and RS256. */
 export type ConnectionsOIDCMetadataRequestObjectSigningAlgValuesSupportedList = Array<string>;
 export const ConnectionsOIDCMetadataRequestObjectSigningAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectionsOIDCMetadataRequestObjectSigningAlgValuesSupportedList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<ConnectionsOIDCMetadataRequestObjectSigningAlgValuesSupportedList>;
 
 /** JSON array containing a list of the JWE encryption algorithms (alg values) supported by the OP for Request Objects. These algorithms are used both when the Request Object is passed by value and when it is passed by reference. */
 export type ConnectionsOIDCMetadataRequestObjectEncryptionAlgValuesSupportedList = Array<string>;
 export const ConnectionsOIDCMetadataRequestObjectEncryptionAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectionsOIDCMetadataRequestObjectEncryptionAlgValuesSupportedList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<ConnectionsOIDCMetadataRequestObjectEncryptionAlgValuesSupportedList>;
 
 /** JSON array containing a list of the JWE encryption algorithms (enc values) supported by the OP for Request Objects. These algorithms are used both when the Request Object is passed by value and when it is passed by reference. */
 export type ConnectionsOIDCMetadataRequestObjectEncryptionEncValuesSupportedList = Array<string>;
 export const ConnectionsOIDCMetadataRequestObjectEncryptionEncValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectionsOIDCMetadataRequestObjectEncryptionEncValuesSupportedList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<ConnectionsOIDCMetadataRequestObjectEncryptionEncValuesSupportedList>;
 
 /** JSON array containing a list of Client Authentication methods supported by this Token Endpoint. The options are client_secret_post, client_secret_basic, client_secret_jwt, and private_key_jwt, as described in Section 9 of OpenID Connect Core 1.0 [OpenID.Core]. Other authentication methods MAY be defined by extensions. If omitted, the default is client_secret_basic -- the HTTP Basic Authentication Scheme specified in Section 2.3.1 of OAuth 2.0 [RFC6749]. */
 export type ConnectionsOIDCMetadataTokenEndpointAuthMethodsSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataTokenEndpointAuthMethodsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataTokenEndpointAuthMethodsSupportedList>;
+export const ConnectionsOIDCMetadataTokenEndpointAuthMethodsSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataTokenEndpointAuthMethodsSupportedList>;
 
 /** JSON array containing a list of the JWS signing algorithms (alg values) supported by the Token Endpoint for the signature on the JWT [JWT] used to authenticate the Client at the Token Endpoint for the private_key_jwt and client_secret_jwt authentication methods. Servers SHOULD support RS256. The value none MUST NOT be used. */
 export type ConnectionsOIDCMetadataTokenEndpointAuthSigningAlgValuesSupportedList = Array<string>;
 export const ConnectionsOIDCMetadataTokenEndpointAuthSigningAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectionsOIDCMetadataTokenEndpointAuthSigningAlgValuesSupportedList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<ConnectionsOIDCMetadataTokenEndpointAuthSigningAlgValuesSupportedList>;
 
 /** JSON array containing a list of the display parameter values that the OpenID Provider supports. These values are described in Section 3.1.2.1 of OpenID Connect Core 1.0 [OpenID.Core] */
 export type ConnectionsOIDCMetadataDisplayValuesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataDisplayValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataDisplayValuesSupportedList>;
+export const ConnectionsOIDCMetadataDisplayValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataDisplayValuesSupportedList>;
 
 /** JSON array containing a list of the Claim Types that the OpenID Provider supports. These Claim Types are described in Section 5.6 of OpenID Connect Core 1.0 [OpenID.Core]. If omitted, the implementation supports only normal Claims. */
 export type ConnectionsOIDCMetadataClaimTypesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataClaimTypesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataClaimTypesSupportedList>;
+export const ConnectionsOIDCMetadataClaimTypesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataClaimTypesSupportedList>;
 
 /** JSON array containing a list of the Claim Names of the Claims that the OpenID Provider MAY be able to supply values for. Note that for privacy or other reasons, this might not be an exhaustive list. */
 export type ConnectionsOIDCMetadataClaimsSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataClaimsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataClaimsSupportedList>;
+export const ConnectionsOIDCMetadataClaimsSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataClaimsSupportedList>;
 
 /** Languages and scripts supported for values in Claims being returned, represented as a JSON array of BCP47 [RFC5646] language tag values. Not all languages and scripts are necessarily supported for all Claim values. */
 export type ConnectionsOIDCMetadataClaimsLocalesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataClaimsLocalesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataClaimsLocalesSupportedList>;
+export const ConnectionsOIDCMetadataClaimsLocalesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataClaimsLocalesSupportedList>;
 
 /** Languages and scripts supported for the user interface, represented as a JSON array of BCP47 [RFC5646] language tag values. */
 export type ConnectionsOIDCMetadataUiLocalesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataUiLocalesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataUiLocalesSupportedList>;
+export const ConnectionsOIDCMetadataUiLocalesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataUiLocalesSupportedList>;
 
 /** JSON array containing a list of the JWS signing algorithms (alg values) supported for DPoP proof JWT signing. */
 export type ConnectionsOIDCMetadataDpopSigningAlgValuesSupportedList = Array<string>;
-export const ConnectionsOIDCMetadataDpopSigningAlgValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsOIDCMetadataDpopSigningAlgValuesSupportedList>;
+export const ConnectionsOIDCMetadataDpopSigningAlgValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionsOIDCMetadataDpopSigningAlgValuesSupportedList>;
 
 /** Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. */
 export interface ConnectionsOIDCMetadata {
@@ -4367,15 +4177,13 @@ export const ConnectionsOIDCMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of certificate thumbprints (SHA-128 hex hashes) for validating SAML signatures. Used with WS-Federation protocol. Maximum 20 thumbprints. Each thumbprint must be a hexadecimal string. */
 export type ConnectionThumbprints = Array<string>;
-export const ConnectionThumbprints = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionThumbprints>;
+export const ConnectionThumbprints =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionThumbprints>;
 
 /** Array of certificate thumbprints (SHA-384 hex hashes) for validating SAML signatures. Used with WS-Federation protocol. Maximum 20 thumbprints. Each thumbprint must be a 96-character hexadecimal string. */
 export type ConnectionThumbprintsSha384 = Array<string>;
-export const ConnectionThumbprintsSha384 = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionThumbprintsSha384>;
+export const ConnectionThumbprintsSha384 =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionThumbprintsSha384>;
 
 /** The connection's options (depend on the connection strategy) */
 export interface ConnectionPropertiesOptions {
@@ -4488,34 +4296,25 @@ export const ConnectionPropertiesOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Use of this property is NOT RECOMMENDED. Use the PATCH /v2/connections/{id}/clients endpoint to enable the connection for a set of clients. */
 export type CreateConnectionRequestEnabledClientsList = Array<string>;
-export const CreateConnectionRequestEnabledClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectionRequestEnabledClientsList>;
+export const CreateConnectionRequestEnabledClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateConnectionRequestEnabledClientsList>;
 
 /** Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. */
 export type CreateConnectionRequestRealmsList = Array<string>;
-export const CreateConnectionRequestRealmsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectionRequestRealmsList>;
+export const CreateConnectionRequestRealmsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateConnectionRequestRealmsList>;
 
 /** Metadata associated with the connection in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. */
 export type ConnectionsMetadata = { [key: string]: string | null | undefined };
-export const ConnectionsMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<ConnectionsMetadata>;
+export const ConnectionsMetadata =
+  ConnectionPropertiesOptionsConfigurationMap as any as S.Schema<ConnectionsMetadata>;
 
 /** Configure the purpose of a connection to be used for authentication during login. */
 export interface ConnectionAuthenticationPurpose {
   active: boolean;
 }
-export const ConnectionAuthenticationPurpose = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "ConnectionAuthenticationPurpose",
-}) as any as S.Schema<ConnectionAuthenticationPurpose>;
+export const ConnectionAuthenticationPurpose =
+  CreateIdentityAssertionAuthorizationGrant as any as S.Schema<ConnectionAuthenticationPurpose>;
 
 /** Configure the purpose of a connection to be used for connected accounts and Token Vault. */
 export interface ConnectionConnectedAccountsPurpose {
@@ -4539,13 +4338,8 @@ export interface CrossAppAccessRequestingApp {
   /** Set to `true` to enable the connection as a Requesting Application for Cross App Access. On `oidc` connections this requires `options.type` to be `back_channel`. Setting `false` is always accepted, so the role can be turned off even if the tenant or connection no longer supports it. */
   active: boolean;
 }
-export const CrossAppAccessRequestingApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "CrossAppAccessRequestingApp",
-}) as any as S.Schema<CrossAppAccessRequestingApp>;
+export const CrossAppAccessRequestingApp =
+  CreateIdentityAssertionAuthorizationGrant as any as S.Schema<CrossAppAccessRequestingApp>;
 
 /** Set to `enabled` to accept ID-JAGs from this connection's identity provider to issue access tokens to other connected applications. */
 export type CrossAppAccessResourceAppStatusEnum = "enabled" | "disabled";
@@ -4604,34 +4398,24 @@ export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** In order to return options in the response, the `read:connections_options` scope must be present */
 export type ConnectionOptions = { [key: string]: unknown | undefined };
-export const ConnectionOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectionOptions>;
+export const ConnectionOptions = AgentMetadata as any as S.Schema<ConnectionOptions>;
 
 /** Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. */
 export type CreateConnectionResponseContentRealmsList = Array<string>;
-export const CreateConnectionResponseContentRealmsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectionResponseContentRealmsList>;
+export const CreateConnectionResponseContentRealmsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateConnectionResponseContentRealmsList>;
 
 /** DEPRECATED property. Use the GET /connections/:id/clients endpoint to get the ids of the clients for which the connection is enabled */
 export type CreateConnectionResponseContentEnabledClientsList = Array<string>;
-export const CreateConnectionResponseContentEnabledClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectionResponseContentEnabledClientsList>;
+export const CreateConnectionResponseContentEnabledClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateConnectionResponseContentEnabledClientsList>;
 
 /** Cross App Access - Resource App settings that apply to this connection. */
 export interface CrossAppAccessResourceApp {
   status: CrossAppAccessResourceAppStatusEnum;
 }
-export const CrossAppAccessResourceApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: CrossAppAccessResourceAppStatusEnum,
-  }),
-).annotate({
-  identifier: "CrossAppAccessResourceApp",
-}) as any as S.Schema<CrossAppAccessResourceApp>;
+export const CrossAppAccessResourceApp =
+  CreateCrossAppAccessResourceApp as any as S.Schema<CrossAppAccessResourceApp>;
 
 export interface CreateConnectionResponseContent {
   /** The name of the connection */
@@ -4721,9 +4505,8 @@ export const ConnectionProfileEnabledFeatures = /*@__PURE__*/ S.Array(
 export type ConnectionProfileStrategyOverridesEnabledFeatures = Array<
   EnabledFeaturesEnum | (string & {})
 >;
-export const ConnectionProfileStrategyOverridesEnabledFeatures = /*@__PURE__*/ S.Array(
-  EnabledFeaturesEnum,
-) as any as S.Schema<ConnectionProfileStrategyOverridesEnabledFeatures>;
+export const ConnectionProfileStrategyOverridesEnabledFeatures =
+  ConnectionProfileEnabledFeatures as any as S.Schema<ConnectionProfileStrategyOverridesEnabledFeatures>;
 
 /** A SCIM token scope. */
 export type ConnectionProfileProvisioningScimTokenScopeEnum =
@@ -4948,10 +4731,8 @@ export const CustomDomainCustomClientIpHeaderEnum = S.String;
 
 /** Domain metadata associated with the custom domain, in the form of an object with string values (max 255 chars). Maximum of 10 domain metadata properties allowed. */
 export type DomainMetadata = { [key: string]: string | null | undefined };
-export const DomainMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<DomainMetadata>;
+export const DomainMetadata =
+  ConnectionPropertiesOptionsConfigurationMap as any as S.Schema<DomainMetadata>;
 
 export interface CreateCustomDomainRequest {
   /** Domain name. */
@@ -5366,9 +5147,8 @@ export const CreateEventStreamWebHookRequestContent = /*@__PURE__*/ S.suspend(()
 /** List of event types subscribed to in this stream. */
 export type CreateEventStreamEventBridgeRequestContentSubscriptionsList =
   Array<EventStreamSubscription>;
-export const CreateEventStreamEventBridgeRequestContentSubscriptionsList = /*@__PURE__*/ S.Array(
-  EventStreamSubscription,
-) as any as S.Schema<CreateEventStreamEventBridgeRequestContentSubscriptionsList>;
+export const CreateEventStreamEventBridgeRequestContentSubscriptionsList =
+  CreateEventStreamWebHookRequestContentSubscriptionsList as any as S.Schema<CreateEventStreamEventBridgeRequestContentSubscriptionsList>;
 
 export type EventStreamEventBridgeDestinationTypeEnum = "eventbridge";
 export const EventStreamEventBridgeDestinationTypeEnum = S.String;
@@ -5465,9 +5245,8 @@ export const CreateEventStreamEventBridgeRequestContent = /*@__PURE__*/ S.suspen
 
 /** List of event types subscribed to in this stream. */
 export type CreateEventStreamActionRequestContentSubscriptionsList = Array<EventStreamSubscription>;
-export const CreateEventStreamActionRequestContentSubscriptionsList = /*@__PURE__*/ S.Array(
-  EventStreamSubscription,
-) as any as S.Schema<CreateEventStreamActionRequestContentSubscriptionsList>;
+export const CreateEventStreamActionRequestContentSubscriptionsList =
+  CreateEventStreamWebHookRequestContentSubscriptionsList as any as S.Schema<CreateEventStreamActionRequestContentSubscriptionsList>;
 
 export type EventStreamActionDestinationTypeEnum = "action";
 export const EventStreamActionDestinationTypeEnum = S.String;
@@ -5535,9 +5314,8 @@ export const CreateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of event types subscribed to in this stream. */
 export type EventStreamWebhookResponseContentSubscriptionsList = Array<EventStreamSubscription>;
-export const EventStreamWebhookResponseContentSubscriptionsList = /*@__PURE__*/ S.Array(
-  EventStreamSubscription,
-) as any as S.Schema<EventStreamWebhookResponseContentSubscriptionsList>;
+export const EventStreamWebhookResponseContentSubscriptionsList =
+  CreateEventStreamWebHookRequestContentSubscriptionsList as any as S.Schema<EventStreamWebhookResponseContentSubscriptionsList>;
 
 export interface EventStreamWebhookResponseContent {
   /** Unique identifier for the event stream. */
@@ -5569,9 +5347,8 @@ export const EventStreamWebhookResponseContent = /*@__PURE__*/ S.suspend(() =>
 
 /** List of event types subscribed to in this stream. */
 export type EventStreamEventBridgeResponseContentSubscriptionsList = Array<EventStreamSubscription>;
-export const EventStreamEventBridgeResponseContentSubscriptionsList = /*@__PURE__*/ S.Array(
-  EventStreamSubscription,
-) as any as S.Schema<EventStreamEventBridgeResponseContentSubscriptionsList>;
+export const EventStreamEventBridgeResponseContentSubscriptionsList =
+  CreateEventStreamWebHookRequestContentSubscriptionsList as any as S.Schema<EventStreamEventBridgeResponseContentSubscriptionsList>;
 
 export interface EventStreamEventBridgeResponseContent {
   /** Unique identifier for the event stream. */
@@ -5603,9 +5380,8 @@ export const EventStreamEventBridgeResponseContent = /*@__PURE__*/ S.suspend(() 
 
 /** List of event types subscribed to in this stream. */
 export type EventStreamActionResponseContentSubscriptionsList = Array<EventStreamSubscription>;
-export const EventStreamActionResponseContentSubscriptionsList = /*@__PURE__*/ S.Array(
-  EventStreamSubscription,
-) as any as S.Schema<EventStreamActionResponseContentSubscriptionsList>;
+export const EventStreamActionResponseContentSubscriptionsList =
+  CreateEventStreamWebHookRequestContentSubscriptionsList as any as S.Schema<EventStreamActionResponseContentSubscriptionsList>;
 
 export interface EventStreamActionResponseContent {
   /** Unique identifier for the event stream. */
@@ -5740,22 +5516,16 @@ export const ExperimentStatusEnum = S.String;
 export type CreateExperimentResponseContentFeatureFlagSnapshotMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExperimentResponseContentFeatureFlagSnapshotMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateExperimentResponseContentFeatureFlagSnapshotMap>;
+export const CreateExperimentResponseContentFeatureFlagSnapshotMap =
+  AgentMetadata as any as S.Schema<CreateExperimentResponseContentFeatureFlagSnapshotMap>;
 
 export type AllocationItemVariationSnapshotMap = { [key: string]: unknown | undefined };
-export const AllocationItemVariationSnapshotMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AllocationItemVariationSnapshotMap>;
+export const AllocationItemVariationSnapshotMap =
+  AgentMetadata as any as S.Schema<AllocationItemVariationSnapshotMap>;
 
 export type AllocationItemSegmentSnapshotMap = { [key: string]: unknown | undefined };
-export const AllocationItemSegmentSnapshotMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AllocationItemSegmentSnapshotMap>;
+export const AllocationItemSegmentSnapshotMap =
+  AgentMetadata as any as S.Schema<AllocationItemSegmentSnapshotMap>;
 
 export interface AllocationItem {
   variation_id?: string;
@@ -5791,15 +5561,13 @@ export const CreateExperimentResponseContentAllocationsList = /*@__PURE__*/ S.Ar
 
 /** Fields that may be mutated given the experiment's current status. Computed at response time; always current with the API's enforcement logic. */
 export type CreateExperimentResponseContentEditableFieldsList = Array<string>;
-export const CreateExperimentResponseContentEditableFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateExperimentResponseContentEditableFieldsList>;
+export const CreateExperimentResponseContentEditableFieldsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateExperimentResponseContentEditableFieldsList>;
 
 /** Ramp experiment levels configuration. */
 export type CreateExperimentResponseContentLevelsList = Array<number>;
-export const CreateExperimentResponseContentLevelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateExperimentResponseContentLevelsList>;
+export const CreateExperimentResponseContentLevelsList =
+  CreateExperimentRequestLevelsList as any as S.Schema<CreateExperimentResponseContentLevelsList>;
 
 export interface CreateExperimentResponseContent {
   id: string;
@@ -5904,10 +5672,8 @@ export const FeatureFlagStatusEnum = S.String;
 
 /** Configuration parameters for this feature flag */
 export type FeatureFlagConfigParams = { [key: string]: FeatureFlagConfigParam | undefined };
-export const FeatureFlagConfigParams = /*@__PURE__*/ S.Record(
-  S.String,
-  FeatureFlagConfigParam,
-) as any as S.Schema<FeatureFlagConfigParams>;
+export const FeatureFlagConfigParams =
+  CreateFeatureFlagParameters as any as S.Schema<FeatureFlagConfigParams>;
 
 export interface CreateFeatureFlagResponseContent {
   id: string;
@@ -5985,10 +5751,8 @@ export const FlowActionActivecampaignUpsertContactAction = S.String;
 export type FlowActionActivecampaignUpsertContactParamsCustomFields = {
   [key: string]: unknown | undefined;
 };
-export const FlowActionActivecampaignUpsertContactParamsCustomFields = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionActivecampaignUpsertContactParamsCustomFields>;
+export const FlowActionActivecampaignUpsertContactParamsCustomFields =
+  AgentMetadata as any as S.Schema<FlowActionActivecampaignUpsertContactParamsCustomFields>;
 
 export interface FlowActionActivecampaignUpsertContactParams {
   connection_id: string;
@@ -6046,10 +5810,8 @@ export type FlowActionAirtableCreateRecordAction = "CREATE_RECORD";
 export const FlowActionAirtableCreateRecordAction = S.String;
 
 export type FlowActionAirtableCreateRecordParamsFields = { [key: string]: unknown | undefined };
-export const FlowActionAirtableCreateRecordParamsFields = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAirtableCreateRecordParamsFields>;
+export const FlowActionAirtableCreateRecordParamsFields =
+  AgentMetadata as any as S.Schema<FlowActionAirtableCreateRecordParamsFields>;
 
 export interface FlowActionAirtableCreateRecordParams {
   connection_id: string;
@@ -6146,10 +5908,8 @@ export type FlowActionAirtableUpdateRecordAction = "UPDATE_RECORD";
 export const FlowActionAirtableUpdateRecordAction = S.String;
 
 export type FlowActionAirtableUpdateRecordParamsFields = { [key: string]: unknown | undefined };
-export const FlowActionAirtableUpdateRecordParamsFields = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAirtableUpdateRecordParamsFields>;
+export const FlowActionAirtableUpdateRecordParamsFields =
+  AgentMetadata as any as S.Schema<FlowActionAirtableUpdateRecordParamsFields>;
 
 export interface FlowActionAirtableUpdateRecordParams {
   connection_id: string;
@@ -6206,10 +5966,8 @@ export type FlowActionAuth0CreateUserAction = "CREATE_USER";
 export const FlowActionAuth0CreateUserAction = S.String;
 
 export type FlowActionAuth0CreateUserParamsPayload = { [key: string]: unknown | undefined };
-export const FlowActionAuth0CreateUserParamsPayload = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAuth0CreateUserParamsPayload>;
+export const FlowActionAuth0CreateUserParamsPayload =
+  AgentMetadata as any as S.Schema<FlowActionAuth0CreateUserParamsPayload>;
 
 export interface FlowActionAuth0CreateUserParams {
   connection_id: string;
@@ -6294,10 +6052,8 @@ export type FlowActionAuth0UpdateUserAction = "UPDATE_USER";
 export const FlowActionAuth0UpdateUserAction = S.String;
 
 export type FlowActionAuth0UpdateUserParamsChanges = { [key: string]: unknown | undefined };
-export const FlowActionAuth0UpdateUserParamsChanges = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAuth0UpdateUserParamsChanges>;
+export const FlowActionAuth0UpdateUserParamsChanges =
+  AgentMetadata as any as S.Schema<FlowActionAuth0UpdateUserParamsChanges>;
 
 export interface FlowActionAuth0UpdateUserParams {
   connection_id: string;
@@ -6347,10 +6103,8 @@ export type FlowActionAuth0SendRequestParamsMethod = "GET" | "POST" | "PUT" | "P
 export const FlowActionAuth0SendRequestParamsMethod = S.String;
 
 export type FlowActionAuth0SendRequestParamsHeaders = { [key: string]: unknown | undefined };
-export const FlowActionAuth0SendRequestParamsHeaders = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAuth0SendRequestParamsHeaders>;
+export const FlowActionAuth0SendRequestParamsHeaders =
+  AgentMetadata as any as S.Schema<FlowActionAuth0SendRequestParamsHeaders>;
 
 export type FlowActionAuth0SendRequestParamsQueryParamsValue = number | string;
 export const FlowActionAuth0SendRequestParamsQueryParamsValue =
@@ -6370,10 +6124,8 @@ export const FlowActionAuth0SendRequestParamsPayloadCase1List = /*@__PURE__*/ S.
 ) as any as S.Schema<FlowActionAuth0SendRequestParamsPayloadCase1List>;
 
 export type FlowActionAuth0SendRequestParamsPayloadObject = { [key: string]: unknown | undefined };
-export const FlowActionAuth0SendRequestParamsPayloadObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAuth0SendRequestParamsPayloadObject>;
+export const FlowActionAuth0SendRequestParamsPayloadObject =
+  AgentMetadata as any as S.Schema<FlowActionAuth0SendRequestParamsPayloadObject>;
 
 export type FlowActionAuth0SendRequestParamsPayload =
   | string
@@ -6446,10 +6198,8 @@ export const FlowActionAuth0SendEmailParamsFrom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowActionAuth0SendEmailParamsFrom>;
 
 export type FlowActionAuth0SendRequestParamsCustomVars = { [key: string]: unknown | undefined };
-export const FlowActionAuth0SendRequestParamsCustomVars = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAuth0SendRequestParamsCustomVars>;
+export const FlowActionAuth0SendRequestParamsCustomVars =
+  AgentMetadata as any as S.Schema<FlowActionAuth0SendRequestParamsCustomVars>;
 
 export interface FlowActionAuth0SendEmailParams {
   from?: FlowActionAuth0SendEmailParamsFrom;
@@ -6498,10 +6248,8 @@ export type FlowActionAuth0SendSmsAction = "SEND_SMS";
 export const FlowActionAuth0SendSmsAction = S.String;
 
 export type FlowActionAuth0SendSmsParamsCustomVars = { [key: string]: unknown | undefined };
-export const FlowActionAuth0SendSmsParamsCustomVars = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAuth0SendSmsParamsCustomVars>;
+export const FlowActionAuth0SendSmsParamsCustomVars =
+  AgentMetadata as any as S.Schema<FlowActionAuth0SendSmsParamsCustomVars>;
 
 export interface FlowActionAuth0SendSmsParams {
   from?: string;
@@ -6548,10 +6296,8 @@ export type FlowActionAuth0MakeCallAction = "MAKE_CALL";
 export const FlowActionAuth0MakeCallAction = S.String;
 
 export type FlowActionAuth0MakeCallParamsCustomVars = { [key: string]: unknown | undefined };
-export const FlowActionAuth0MakeCallParamsCustomVars = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionAuth0MakeCallParamsCustomVars>;
+export const FlowActionAuth0MakeCallParamsCustomVars =
+  AgentMetadata as any as S.Schema<FlowActionAuth0MakeCallParamsCustomVars>;
 
 export interface FlowActionAuth0MakeCallParams {
   from?: string;
@@ -6559,16 +6305,8 @@ export interface FlowActionAuth0MakeCallParams {
   message: string;
   custom_vars?: FlowActionAuth0MakeCallParamsCustomVars;
 }
-export const FlowActionAuth0MakeCallParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.optional(S.String),
-    to: S.String,
-    message: S.String,
-    custom_vars: S.optional(FlowActionAuth0MakeCallParamsCustomVars),
-  }),
-).annotate({
-  identifier: "FlowActionAuth0MakeCallParams",
-}) as any as S.Schema<FlowActionAuth0MakeCallParams>;
+export const FlowActionAuth0MakeCallParams =
+  FlowActionAuth0SendSmsParams as any as S.Schema<FlowActionAuth0MakeCallParams>;
 
 export interface FlowActionAuth0MakeCall {
   id: string;
@@ -6608,10 +6346,8 @@ export type FlowActionBigqueryInsertRowsAction = "INSERT_ROWS";
 export const FlowActionBigqueryInsertRowsAction = S.String;
 
 export type FlowActionBigqueryInsertRowsParamsData = { [key: string]: unknown | undefined };
-export const FlowActionBigqueryInsertRowsParamsData = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionBigqueryInsertRowsParamsData>;
+export const FlowActionBigqueryInsertRowsParamsData =
+  AgentMetadata as any as S.Schema<FlowActionBigqueryInsertRowsParamsData>;
 
 export interface FlowActionBigqueryInsertRowsParams {
   connection_id: string;
@@ -6737,14 +6473,12 @@ export type FlowActionEmailVerifyEmailAction = "VERIFY_EMAIL";
 export const FlowActionEmailVerifyEmailAction = S.String;
 
 export type FlowActionEmailVerifyEmailParamsRulesBlocklistList = Array<string>;
-export const FlowActionEmailVerifyEmailParamsRulesBlocklistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlowActionEmailVerifyEmailParamsRulesBlocklistList>;
+export const FlowActionEmailVerifyEmailParamsRulesBlocklistList =
+  CreateClientRequestCallbacksList as any as S.Schema<FlowActionEmailVerifyEmailParamsRulesBlocklistList>;
 
 export type FlowActionEmailVerifyEmailParamsRulesAllowlistList = Array<string>;
-export const FlowActionEmailVerifyEmailParamsRulesAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlowActionEmailVerifyEmailParamsRulesAllowlistList>;
+export const FlowActionEmailVerifyEmailParamsRulesAllowlistList =
+  CreateClientRequestCallbacksList as any as S.Schema<FlowActionEmailVerifyEmailParamsRulesAllowlistList>;
 
 export interface FlowActionEmailVerifyEmailParamsRules {
   require_mx_record?: boolean;
@@ -6815,9 +6549,8 @@ export const FlowActionFlowBooleanConditionParamsThenList = /*@__PURE__*/ S.Arra
 ) as any as S.Schema<FlowActionFlowBooleanConditionParamsThenList>;
 
 export type FlowActionFlowBooleanConditionParamsElseList = Array<FlowAction>;
-export const FlowActionFlowBooleanConditionParamsElseList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => FlowAction),
-) as any as S.Schema<FlowActionFlowBooleanConditionParamsElseList>;
+export const FlowActionFlowBooleanConditionParamsElseList =
+  FlowActionFlowBooleanConditionParamsThenList as any as S.Schema<FlowActionFlowBooleanConditionParamsElseList>;
 
 export interface FlowActionFlowBooleanConditionParams {
   if: unknown;
@@ -6982,21 +6715,16 @@ export const FlowActionFlowMapValueParamsInput =
   S.Unknown as any as S.Schema<FlowActionFlowMapValueParamsInput>;
 
 export type FlowActionFlowMapValueParamsCases = { [key: string]: unknown | undefined };
-export const FlowActionFlowMapValueParamsCases = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionFlowMapValueParamsCases>;
+export const FlowActionFlowMapValueParamsCases =
+  AgentMetadata as any as S.Schema<FlowActionFlowMapValueParamsCases>;
 
 export type FlowActionFlowMapValueParamsFallbackObject = { [key: string]: unknown | undefined };
-export const FlowActionFlowMapValueParamsFallbackObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionFlowMapValueParamsFallbackObject>;
+export const FlowActionFlowMapValueParamsFallbackObject =
+  AgentMetadata as any as S.Schema<FlowActionFlowMapValueParamsFallbackObject>;
 
 export type FlowActionFlowMapValueParamsFallbackCase3List = Array<unknown>;
-export const FlowActionFlowMapValueParamsFallbackCase3List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FlowActionFlowMapValueParamsFallbackCase3List>;
+export const FlowActionFlowMapValueParamsFallbackCase3List =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<FlowActionFlowMapValueParamsFallbackCase3List>;
 
 export type FlowActionFlowMapValueParamsFallback =
   | string
@@ -7049,10 +6777,8 @@ export type FlowActionFlowReturnJsonAction = "RETURN_JSON";
 export const FlowActionFlowReturnJsonAction = S.String;
 
 export type FlowActionFlowReturnJsonParamsPayloadObject = { [key: string]: unknown | undefined };
-export const FlowActionFlowReturnJsonParamsPayloadObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionFlowReturnJsonParamsPayloadObject>;
+export const FlowActionFlowReturnJsonParamsPayloadObject =
+  AgentMetadata as any as S.Schema<FlowActionFlowReturnJsonParamsPayloadObject>;
 
 export type FlowActionFlowReturnJsonParamsPayload =
   | FlowActionFlowReturnJsonParamsPayloadObject
@@ -7099,10 +6825,8 @@ export type FlowActionFlowStoreVarsAction = "STORE_VARS";
 export const FlowActionFlowStoreVarsAction = S.String;
 
 export type FlowActionFlowStoreVarsParamsVars = { [key: string]: unknown | undefined };
-export const FlowActionFlowStoreVarsParamsVars = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionFlowStoreVarsParamsVars>;
+export const FlowActionFlowStoreVarsParamsVars =
+  AgentMetadata as any as S.Schema<FlowActionFlowStoreVarsParamsVars>;
 
 export interface FlowActionFlowStoreVarsParams {
   vars: FlowActionFlowStoreVarsParamsVars;
@@ -7211,10 +6935,8 @@ export type FlowActionHttpSendRequestParamsMethod = "GET" | "POST" | "PUT" | "PA
 export const FlowActionHttpSendRequestParamsMethod = S.String;
 
 export type FlowActionHttpSendRequestParamsHeaders = { [key: string]: unknown | undefined };
-export const FlowActionHttpSendRequestParamsHeaders = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionHttpSendRequestParamsHeaders>;
+export const FlowActionHttpSendRequestParamsHeaders =
+  AgentMetadata as any as S.Schema<FlowActionHttpSendRequestParamsHeaders>;
 
 export interface FlowActionHttpSendRequestParamsBasicAuth {
   username?: string;
@@ -7242,15 +6964,12 @@ export const FlowActionHttpSendRequestParamsQueryParams = /*@__PURE__*/ S.Record
 ) as any as S.Schema<FlowActionHttpSendRequestParamsQueryParams>;
 
 export type FlowActionHttpSendRequestParamsPayloadCase1List = Array<unknown>;
-export const FlowActionHttpSendRequestParamsPayloadCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FlowActionHttpSendRequestParamsPayloadCase1List>;
+export const FlowActionHttpSendRequestParamsPayloadCase1List =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<FlowActionHttpSendRequestParamsPayloadCase1List>;
 
 export type FlowActionHttpSendRequestParamsPayloadObject = { [key: string]: unknown | undefined };
-export const FlowActionHttpSendRequestParamsPayloadObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionHttpSendRequestParamsPayloadObject>;
+export const FlowActionHttpSendRequestParamsPayloadObject =
+  AgentMetadata as any as S.Schema<FlowActionHttpSendRequestParamsPayloadObject>;
 
 export type FlowActionHttpSendRequestParamsPayload =
   | string
@@ -7466,10 +7185,8 @@ export type FlowActionJsonCreateJsonAction = "CREATE_JSON";
 export const FlowActionJsonCreateJsonAction = S.String;
 
 export type FlowActionJsonCreateJsonParamsObject = { [key: string]: unknown | undefined };
-export const FlowActionJsonCreateJsonParamsObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionJsonCreateJsonParamsObject>;
+export const FlowActionJsonCreateJsonParamsObject =
+  AgentMetadata as any as S.Schema<FlowActionJsonCreateJsonParamsObject>;
 
 export interface FlowActionJsonCreateJsonParams {
   object: FlowActionJsonCreateJsonParamsObject;
@@ -7548,10 +7265,8 @@ export type FlowActionJsonSerializeJsonAction = "SERIALIZE_JSON";
 export const FlowActionJsonSerializeJsonAction = S.String;
 
 export type FlowActionJsonSerializeJsonParamsObjectObject = { [key: string]: unknown | undefined };
-export const FlowActionJsonSerializeJsonParamsObjectObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionJsonSerializeJsonParamsObjectObject>;
+export const FlowActionJsonSerializeJsonParamsObjectObject =
+  AgentMetadata as any as S.Schema<FlowActionJsonSerializeJsonParamsObjectObject>;
 
 export type FlowActionJsonSerializeJsonParamsObject =
   | string
@@ -7644,10 +7359,8 @@ export type FlowActionJwtSignJwtAction = "SIGN_JWT";
 export const FlowActionJwtSignJwtAction = S.String;
 
 export type FlowActionJwtSignJwtParamsPayload = { [key: string]: unknown | undefined };
-export const FlowActionJwtSignJwtParamsPayload = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionJwtSignJwtParamsPayload>;
+export const FlowActionJwtSignJwtParamsPayload =
+  AgentMetadata as any as S.Schema<FlowActionJwtSignJwtParamsPayload>;
 
 export interface FlowActionJwtSignJwtParams {
   connection_id: string;
@@ -7747,10 +7460,8 @@ export const FlowActionMailchimpUpsertMemberAction = S.String;
 export type FlowActionMailchimpUpsertMemberParamsMemberMergeFields = {
   [key: string]: unknown | undefined;
 };
-export const FlowActionMailchimpUpsertMemberParamsMemberMergeFields = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionMailchimpUpsertMemberParamsMemberMergeFields>;
+export const FlowActionMailchimpUpsertMemberParamsMemberMergeFields =
+  AgentMetadata as any as S.Schema<FlowActionMailchimpUpsertMemberParamsMemberMergeFields>;
 
 export interface FlowActionMailchimpUpsertMemberParamsMember {
   email_address: string;
@@ -7825,10 +7536,8 @@ export const FlowActionMailjetSendEmailParamsCase0 = /*@__PURE__*/ S.suspend(() 
 export type FlowActionMailjetSendEmailParamsCase1VariablesMap = {
   [key: string]: unknown | undefined;
 };
-export const FlowActionMailjetSendEmailParamsCase1VariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionMailjetSendEmailParamsCase1VariablesMap>;
+export const FlowActionMailjetSendEmailParamsCase1VariablesMap =
+  AgentMetadata as any as S.Schema<FlowActionMailjetSendEmailParamsCase1VariablesMap>;
 
 export interface FlowActionMailjetSendEmailParamsCase1 {
   template_id: number;
@@ -7984,10 +7693,8 @@ export const FlowActionPipedriveAddDealParamsStageId =
   S.Unknown as any as S.Schema<FlowActionPipedriveAddDealParamsStageId>;
 
 export type FlowActionPipedriveAddDealParamsFields = { [key: string]: unknown | undefined };
-export const FlowActionPipedriveAddDealParamsFields = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionPipedriveAddDealParamsFields>;
+export const FlowActionPipedriveAddDealParamsFields =
+  AgentMetadata as any as S.Schema<FlowActionPipedriveAddDealParamsFields>;
 
 export interface FlowActionPipedriveAddDealParams {
   connection_id: string;
@@ -8048,10 +7755,8 @@ export const FlowActionPipedriveAddOrganizationParamsOwnerId =
   S.Unknown as any as S.Schema<FlowActionPipedriveAddOrganizationParamsOwnerId>;
 
 export type FlowActionPipedriveAddOrganizationParamsFields = { [key: string]: unknown | undefined };
-export const FlowActionPipedriveAddOrganizationParamsFields = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionPipedriveAddOrganizationParamsFields>;
+export const FlowActionPipedriveAddOrganizationParamsFields =
+  AgentMetadata as any as S.Schema<FlowActionPipedriveAddOrganizationParamsFields>;
 
 export interface FlowActionPipedriveAddOrganizationParams {
   connection_id: string;
@@ -8108,10 +7813,8 @@ export const FlowActionPipedriveAddPersonParamsOrganizationId =
   S.Unknown as any as S.Schema<FlowActionPipedriveAddPersonParamsOrganizationId>;
 
 export type FlowActionPipedriveAddPersonParamsFields = { [key: string]: unknown | undefined };
-export const FlowActionPipedriveAddPersonParamsFields = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionPipedriveAddPersonParamsFields>;
+export const FlowActionPipedriveAddPersonParamsFields =
+  AgentMetadata as any as S.Schema<FlowActionPipedriveAddPersonParamsFields>;
 
 export interface FlowActionPipedriveAddPersonParams {
   connection_id: string;
@@ -8172,10 +7875,8 @@ export type FlowActionSalesforceCreateLeadAction = "CREATE_LEAD";
 export const FlowActionSalesforceCreateLeadAction = S.String;
 
 export type FlowActionSalesforceCreateLeadParamsPayload = { [key: string]: unknown | undefined };
-export const FlowActionSalesforceCreateLeadParamsPayload = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionSalesforceCreateLeadParamsPayload>;
+export const FlowActionSalesforceCreateLeadParamsPayload =
+  AgentMetadata as any as S.Schema<FlowActionSalesforceCreateLeadParamsPayload>;
 
 export interface FlowActionSalesforceCreateLeadParams {
   connection_id: string;
@@ -8275,9 +7976,8 @@ export type FlowActionSalesforceSearchLeadsParamsSearchField = "email" | "name" 
 export const FlowActionSalesforceSearchLeadsParamsSearchField = S.String;
 
 export type FlowActionSalesforceSearchLeadsParamsLeadFieldsList = Array<string>;
-export const FlowActionSalesforceSearchLeadsParamsLeadFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FlowActionSalesforceSearchLeadsParamsLeadFieldsList>;
+export const FlowActionSalesforceSearchLeadsParamsLeadFieldsList =
+  CreateClientRequestCallbacksList as any as S.Schema<FlowActionSalesforceSearchLeadsParamsLeadFieldsList>;
 
 export interface FlowActionSalesforceSearchLeadsParams {
   connection_id: string;
@@ -8326,10 +8026,8 @@ export type FlowActionSalesforceUpdateLeadAction = "UPDATE_LEAD";
 export const FlowActionSalesforceUpdateLeadAction = S.String;
 
 export type FlowActionSalesforceUpdateLeadParamsPayload = { [key: string]: unknown | undefined };
-export const FlowActionSalesforceUpdateLeadParamsPayload = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionSalesforceUpdateLeadParamsPayload>;
+export const FlowActionSalesforceUpdateLeadParamsPayload =
+  AgentMetadata as any as S.Schema<FlowActionSalesforceUpdateLeadParamsPayload>;
 
 export interface FlowActionSalesforceUpdateLeadParams {
   connection_id: string;
@@ -8386,9 +8084,8 @@ export type FlowActionSendgridSendEmailParamsPerson = FlowActionAuth0SendEmailPa
 export const FlowActionSendgridSendEmailParamsPerson = FlowActionAuth0SendEmailParamsFrom;
 
 export type FlowActionSendgridSendEmailParamsPersonalizationsList = Array<unknown>;
-export const FlowActionSendgridSendEmailParamsPersonalizationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FlowActionSendgridSendEmailParamsPersonalizationsList>;
+export const FlowActionSendgridSendEmailParamsPersonalizationsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<FlowActionSendgridSendEmailParamsPersonalizationsList>;
 
 export interface FlowActionSendgridSendEmailParams {
   connection_id: string;
@@ -9039,10 +8736,8 @@ export const FlowActionWhatsappSendMessageParamsType = S.String;
 export type FlowActionWhatsappSendMessageParamsPayloadObject = {
   [key: string]: unknown | undefined;
 };
-export const FlowActionWhatsappSendMessageParamsPayloadObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionWhatsappSendMessageParamsPayloadObject>;
+export const FlowActionWhatsappSendMessageParamsPayloadObject =
+  AgentMetadata as any as S.Schema<FlowActionWhatsappSendMessageParamsPayloadObject>;
 
 export type FlowActionWhatsappSendMessageParamsPayload =
   | FlowActionWhatsappSendMessageParamsPayloadObject
@@ -9137,10 +8832,8 @@ export type FlowActionXmlSerializeXmlAction = "SERIALIZE_XML";
 export const FlowActionXmlSerializeXmlAction = S.String;
 
 export type FlowActionXmlSerializeXmlParamsObjectObject = { [key: string]: unknown | undefined };
-export const FlowActionXmlSerializeXmlParamsObjectObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowActionXmlSerializeXmlParamsObjectObject>;
+export const FlowActionXmlSerializeXmlParamsObjectObject =
+  AgentMetadata as any as S.Schema<FlowActionXmlSerializeXmlParamsObjectObject>;
 
 export type FlowActionXmlSerializeXmlParamsObject =
   | string
@@ -9275,9 +8968,8 @@ export const CreateFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFlowRequest" }) as any as S.Schema<CreateFlowRequest>;
 
 export type CreateFlowResponseContentActionsList = Array<FlowAction>;
-export const CreateFlowResponseContentActionsList = /*@__PURE__*/ S.Array(
-  FlowAction,
-) as any as S.Schema<CreateFlowResponseContentActionsList>;
+export const CreateFlowResponseContentActionsList =
+  CreateFlowRequestActionsList as any as S.Schema<CreateFlowResponseContentActionsList>;
 
 export interface CreateFlowResponseContent {
   id: string;
@@ -10647,16 +10339,10 @@ export const CreateFlowsVaultConnectionResponseContent = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateFlowsVaultConnectionResponseContent>;
 
 export type FormMessagesError = { [key: string]: string | undefined };
-export const FormMessagesError = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FormMessagesError>;
+export const FormMessagesError = FlowActionStripeMetadata as any as S.Schema<FormMessagesError>;
 
 export type FormMessagesCustom = { [key: string]: string | undefined };
-export const FormMessagesCustom = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FormMessagesCustom>;
+export const FormMessagesCustom = FlowActionStripeMetadata as any as S.Schema<FormMessagesCustom>;
 
 export interface FormMessages {
   errors?: FormMessagesError;
@@ -10681,10 +10367,7 @@ export const FormLanguages = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FormLanguages" }) as any as S.Schema<FormLanguages>;
 
 export type FormTranslationsValueMap = { [key: string]: unknown | undefined };
-export const FormTranslationsValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FormTranslationsValueMap>;
+export const FormTranslationsValueMap = AgentMetadata as any as S.Schema<FormTranslationsValueMap>;
 
 export type FormTranslations = { [key: string]: FormTranslationsValueMap | undefined };
 export const FormTranslations = /*@__PURE__*/ S.Record(
@@ -11383,16 +11066,12 @@ export type FormFieldTypeCustomConst = "CUSTOM";
 export const FormFieldTypeCustomConst = S.String;
 
 export type FormFieldCustomConfigSchema = { [key: string]: unknown | undefined };
-export const FormFieldCustomConfigSchema = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FormFieldCustomConfigSchema>;
+export const FormFieldCustomConfigSchema =
+  AgentMetadata as any as S.Schema<FormFieldCustomConfigSchema>;
 
 export type FormFieldCustomConfigParams = { [key: string]: string | undefined };
-export const FormFieldCustomConfigParams = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FormFieldCustomConfigParams>;
+export const FormFieldCustomConfigParams =
+  FlowActionStripeMetadata as any as S.Schema<FormFieldCustomConfigParams>;
 
 export interface FormFieldCustomConfig {
   schema: FormFieldCustomConfigSchema;
@@ -11479,9 +11158,8 @@ export type FormFieldDropdownConfigOption = FormFieldChoiceConfigOption;
 export const FormFieldDropdownConfigOption = FormFieldChoiceConfigOption;
 
 export type FormFieldDropdownConfigOptionsList = Array<FormFieldChoiceConfigOption>;
-export const FormFieldDropdownConfigOptionsList = /*@__PURE__*/ S.Array(
-  FormFieldChoiceConfigOption,
-) as any as S.Schema<FormFieldDropdownConfigOptionsList>;
+export const FormFieldDropdownConfigOptionsList =
+  FormFieldChoiceConfigOptionsList as any as S.Schema<FormFieldDropdownConfigOptionsList>;
 
 export interface FormFieldDropdownConfig {
   multiple?: boolean;
@@ -11586,9 +11264,8 @@ export const FormFieldFileConfigCategoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FormFieldFileConfigCategoriesList>;
 
 export type FormFieldFileConfigExtensionsList = Array<string>;
-export const FormFieldFileConfigExtensionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FormFieldFileConfigExtensionsList>;
+export const FormFieldFileConfigExtensionsList =
+  CreateClientRequestCallbacksList as any as S.Schema<FormFieldFileConfigExtensionsList>;
 
 export interface FormFieldFileConfig {
   multiple?: boolean;
@@ -11807,10 +11484,8 @@ export type FormFieldPaymentConfigChargeTypeSubscriptionConst = "SUBSCRIPTION";
 export const FormFieldPaymentConfigChargeTypeSubscriptionConst = S.String;
 
 export type FormFieldPaymentConfigSubscription = { [key: string]: unknown | undefined };
-export const FormFieldPaymentConfigSubscription = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FormFieldPaymentConfigSubscription>;
+export const FormFieldPaymentConfigSubscription =
+  AgentMetadata as any as S.Schema<FormFieldPaymentConfigSubscription>;
 
 export interface FormFieldPaymentConfigChargeCase1 {
   type: FormFieldPaymentConfigChargeTypeSubscriptionConst;
@@ -11845,10 +11520,8 @@ export const FormFieldPaymentConfigCredentials = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FormFieldPaymentConfigCredentials>;
 
 export type FormFieldPaymentConfigCustomer = { [key: string]: unknown | undefined };
-export const FormFieldPaymentConfigCustomer = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FormFieldPaymentConfigCustomer>;
+export const FormFieldPaymentConfigCustomer =
+  AgentMetadata as any as S.Schema<FormFieldPaymentConfigCustomer>;
 
 export interface FormFieldPaymentConfigFieldProperties {
   label?: string;
@@ -12272,9 +11945,8 @@ export const CreateFormResponseContent = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of role IDs to assign to the group. */
 export type CreateGroupRoleRequestRolesList = Array<string>;
-export const CreateGroupRoleRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGroupRoleRequestRolesList>;
+export const CreateGroupRoleRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateGroupRoleRequestRolesList>;
 
 export interface CreateGroupRoleRequest {
   /** Unique identifier for the group (service-generated). */
@@ -12296,10 +11968,7 @@ export const CreateGroupRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}
 
 /** Dependencies of this hook used by webtask server. */
 export type HookDependencies = { [key: string]: string | undefined };
-export const HookDependencies = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HookDependencies>;
+export const HookDependencies = FlowActionStripeMetadata as any as S.Schema<HookDependencies>;
 
 /** Retrieves hooks that match the trigger */
 export type HookTriggerIdEnum =
@@ -12561,9 +12230,8 @@ export const LogStreamEventBridgeEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type CreateLogStreamEventBridgeRequestBodyFiltersList = Array<LogStreamFilter>;
-export const CreateLogStreamEventBridgeRequestBodyFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<CreateLogStreamEventBridgeRequestBodyFiltersList>;
+export const CreateLogStreamEventBridgeRequestBodyFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<CreateLogStreamEventBridgeRequestBodyFiltersList>;
 
 /** The region in which the EventBridge event source will be created */
 export type LogStreamEventBridgeSinkRegionEnum =
@@ -12652,9 +12320,8 @@ export const LogStreamEventGridEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type CreateLogStreamEventGridRequestBodyFiltersList = Array<LogStreamFilter>;
-export const CreateLogStreamEventGridRequestBodyFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<CreateLogStreamEventGridRequestBodyFiltersList>;
+export const CreateLogStreamEventGridRequestBodyFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<CreateLogStreamEventGridRequestBodyFiltersList>;
 
 /** Azure Region Name */
 export type LogStreamEventGridRegionEnum =
@@ -12744,9 +12411,8 @@ export const LogStreamDatadogEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type CreateLogStreamDatadogRequestBodyFiltersList = Array<LogStreamFilter>;
-export const CreateLogStreamDatadogRequestBodyFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<CreateLogStreamDatadogRequestBodyFiltersList>;
+export const CreateLogStreamDatadogRequestBodyFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<CreateLogStreamDatadogRequestBodyFiltersList>;
 
 /** Datadog region */
 export type LogStreamDatadogRegionEnum = "us" | "eu" | "us3" | "us5";
@@ -12796,9 +12462,8 @@ export const LogStreamSplunkEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type CreateLogStreamSplunkRequestBodyFiltersList = Array<LogStreamFilter>;
-export const CreateLogStreamSplunkRequestBodyFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<CreateLogStreamSplunkRequestBodyFiltersList>;
+export const CreateLogStreamSplunkRequestBodyFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<CreateLogStreamSplunkRequestBodyFiltersList>;
 
 export interface LogStreamSplunkSink {
   /** Splunk URL Endpoint */
@@ -12851,9 +12516,8 @@ export const LogStreamSumoEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type CreateLogStreamSumoRequestBodyFiltersList = Array<LogStreamFilter>;
-export const CreateLogStreamSumoRequestBodyFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<CreateLogStreamSumoRequestBodyFiltersList>;
+export const CreateLogStreamSumoRequestBodyFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<CreateLogStreamSumoRequestBodyFiltersList>;
 
 export interface LogStreamSumoSink {
   /** HTTP Source Address */
@@ -12897,9 +12561,8 @@ export const LogStreamSegmentEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type CreateLogStreamSegmentRequestBodyFiltersList = Array<LogStreamFilter>;
-export const CreateLogStreamSegmentRequestBodyFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<CreateLogStreamSegmentRequestBodyFiltersList>;
+export const CreateLogStreamSegmentRequestBodyFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<CreateLogStreamSegmentRequestBodyFiltersList>;
 
 export interface LogStreamSegmentSinkWriteKey {
   /** Segment write key */
@@ -12945,9 +12608,8 @@ export const LogStreamMixpanelEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type CreateLogStreamMixpanelRequestBodyFiltersList = Array<LogStreamFilter>;
-export const CreateLogStreamMixpanelRequestBodyFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<CreateLogStreamMixpanelRequestBodyFiltersList>;
+export const CreateLogStreamMixpanelRequestBodyFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<CreateLogStreamMixpanelRequestBodyFiltersList>;
 
 /** Mixpanel Region */
 export type LogStreamMixpanelRegionEnum = "us" | "eu";
@@ -13025,9 +12687,8 @@ export const LogStreamStatusEnum = S.String;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamHttpResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamHttpResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamHttpResponseSchemaFiltersList>;
+export const LogStreamHttpResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamHttpResponseSchemaFiltersList>;
 
 export interface LogStreamHttpResponseSchema {
   /** The id of the log stream */
@@ -13060,9 +12721,8 @@ export const LogStreamHttpResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamEventBridgeResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamEventBridgeResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamEventBridgeResponseSchemaFiltersList>;
+export const LogStreamEventBridgeResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamEventBridgeResponseSchemaFiltersList>;
 
 export interface LogStreamEventBridgeResponseSchema {
   /** The id of the log stream */
@@ -13095,9 +12755,8 @@ export const LogStreamEventBridgeResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamEventGridResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamEventGridResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamEventGridResponseSchemaFiltersList>;
+export const LogStreamEventGridResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamEventGridResponseSchemaFiltersList>;
 
 export interface LogStreamEventGridResponseSchema {
   /** The id of the log stream */
@@ -13130,9 +12789,8 @@ export const LogStreamEventGridResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamDatadogResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamDatadogResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamDatadogResponseSchemaFiltersList>;
+export const LogStreamDatadogResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamDatadogResponseSchemaFiltersList>;
 
 export interface LogStreamDatadogResponseSchema {
   /** The id of the log stream */
@@ -13165,9 +12823,8 @@ export const LogStreamDatadogResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamSplunkResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamSplunkResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamSplunkResponseSchemaFiltersList>;
+export const LogStreamSplunkResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamSplunkResponseSchemaFiltersList>;
 
 export interface LogStreamSplunkResponseSchema {
   /** The id of the log stream */
@@ -13200,9 +12857,8 @@ export const LogStreamSplunkResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamSumoResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamSumoResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamSumoResponseSchemaFiltersList>;
+export const LogStreamSumoResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamSumoResponseSchemaFiltersList>;
 
 export interface LogStreamSumoResponseSchema {
   /** The id of the log stream */
@@ -13235,9 +12891,8 @@ export const LogStreamSumoResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamSegmentResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamSegmentResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamSegmentResponseSchemaFiltersList>;
+export const LogStreamSegmentResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamSegmentResponseSchemaFiltersList>;
 
 export interface LogStreamSegmentResponseSchema {
   /** The id of the log stream */
@@ -13270,9 +12925,8 @@ export const LogStreamSegmentResponseSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type LogStreamMixpanelResponseSchemaFiltersList = Array<LogStreamFilter>;
-export const LogStreamMixpanelResponseSchemaFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<LogStreamMixpanelResponseSchemaFiltersList>;
+export const LogStreamMixpanelResponseSchemaFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<LogStreamMixpanelResponseSchemaFiltersList>;
 
 export interface LogStreamMixpanelResponseSchema {
   /** The id of the log stream */
@@ -13339,76 +12993,59 @@ export const NetworkAclAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkAclAction" }) as any as S.Schema<NetworkAclAction>;
 
 export type NetworkAclMatchAsnsList = Array<number>;
-export const NetworkAclMatchAsnsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<NetworkAclMatchAsnsList>;
+export const NetworkAclMatchAsnsList =
+  CreateExperimentRequestLevelsList as any as S.Schema<NetworkAclMatchAsnsList>;
 
 export type NetworkAclMatchAuth0ManagedList = Array<string>;
-export const NetworkAclMatchAuth0ManagedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchAuth0ManagedList>;
+export const NetworkAclMatchAuth0ManagedList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchAuth0ManagedList>;
 
 export type NetworkAclMatchGeoCountryCodesList = Array<string>;
-export const NetworkAclMatchGeoCountryCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchGeoCountryCodesList>;
+export const NetworkAclMatchGeoCountryCodesList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchGeoCountryCodesList>;
 
 export type NetworkAclMatchGeoSubdivisionCodesList = Array<string>;
-export const NetworkAclMatchGeoSubdivisionCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchGeoSubdivisionCodesList>;
+export const NetworkAclMatchGeoSubdivisionCodesList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchGeoSubdivisionCodesList>;
 
 export type NetworkAclMatchIpv4CidrsList = Array<string>;
-export const NetworkAclMatchIpv4CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchIpv4CidrsList>;
+export const NetworkAclMatchIpv4CidrsList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchIpv4CidrsList>;
 
 export type NetworkAclMatchIpv6CidrsList = Array<string>;
-export const NetworkAclMatchIpv6CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchIpv6CidrsList>;
+export const NetworkAclMatchIpv6CidrsList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchIpv6CidrsList>;
 
 export type NetworkAclMatchJa3FingerprintsList = Array<string>;
-export const NetworkAclMatchJa3FingerprintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchJa3FingerprintsList>;
+export const NetworkAclMatchJa3FingerprintsList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchJa3FingerprintsList>;
 
 export type NetworkAclMatchJa4FingerprintsList = Array<string>;
-export const NetworkAclMatchJa4FingerprintsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchJa4FingerprintsList>;
+export const NetworkAclMatchJa4FingerprintsList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchJa4FingerprintsList>;
 
 export type NetworkAclMatchUserAgentsList = Array<string>;
-export const NetworkAclMatchUserAgentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchUserAgentsList>;
+export const NetworkAclMatchUserAgentsList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchUserAgentsList>;
 
 export type NetworkAclMatchHostnamesList = Array<string>;
-export const NetworkAclMatchHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchHostnamesList>;
+export const NetworkAclMatchHostnamesList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchHostnamesList>;
 
 export type NetworkAclMatchConnectingIpv4CidrsList = Array<string>;
-export const NetworkAclMatchConnectingIpv4CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchConnectingIpv4CidrsList>;
+export const NetworkAclMatchConnectingIpv4CidrsList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchConnectingIpv4CidrsList>;
 
 export type NetworkAclMatchConnectingIpv6CidrsList = Array<string>;
-export const NetworkAclMatchConnectingIpv6CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NetworkAclMatchConnectingIpv6CidrsList>;
+export const NetworkAclMatchConnectingIpv6CidrsList =
+  CreateClientRequestCallbacksList as any as S.Schema<NetworkAclMatchConnectingIpv6CidrsList>;
 
 export interface NetworkAclHttpMessageSignatureKey {
   /** Auth0-generated identifier for the key, as returned by `POST /api/v2/keys/network-acls`. */
   id: string;
 }
-export const NetworkAclHttpMessageSignatureKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "NetworkAclHttpMessageSignatureKey",
-}) as any as S.Schema<NetworkAclHttpMessageSignatureKey>;
+export const NetworkAclHttpMessageSignatureKey =
+  CreatePublicKeyDeviceCredentialResponseContent as any as S.Schema<NetworkAclHttpMessageSignatureKey>;
 
 /** The keys whose signatures satisfy this rule. Each id references a key that was already created via `POST /api/v2/keys/network-acls`. */
 export type NetworkAclHttpMessageSignatureKeys = Array<NetworkAclHttpMessageSignatureKey>;
@@ -13504,9 +13141,8 @@ export const CreateNetworkAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateNetworkAclRequest" }) as any as S.Schema<CreateNetworkAclRequest>;
 
 export interface CreateNetworkAclResponse {}
-export const CreateNetworkAclResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateNetworkAclResponse",
-}) as any as S.Schema<CreateNetworkAclResponse>;
+export const CreateNetworkAclResponse =
+  CreateGroupRoleResponse as any as S.Schema<CreateNetworkAclResponse>;
 
 /** Color scheme used to customize the login pages. */
 export interface OrganizationBrandingColors {
@@ -13539,10 +13175,8 @@ export const OrganizationBranding = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata associated with the organization, in the form of an object with string values (max 255 chars). Maximum of 25 metadata properties allowed. */
 export type OrganizationMetadata = { [key: string]: string | null | undefined };
-export const OrganizationMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<OrganizationMetadata>;
+export const OrganizationMetadata =
+  ConnectionPropertiesOptionsConfigurationMap as any as S.Schema<OrganizationMetadata>;
 
 /** Connection to be added to the organization. */
 export interface ConnectionForOrganization {
@@ -13733,9 +13367,8 @@ export const CreateOrganizationClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The grant types enabled for the client. */
 export type OrganizationClientMetadataGrantTypesList = Array<string>;
-export const OrganizationClientMetadataGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationClientMetadataGrantTypesList>;
+export const OrganizationClientMetadataGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<OrganizationClientMetadataGrantTypesList>;
 
 /** Whether organizations may be used with the client. */
 export type OrganizationClientMetadataOrganizationUsageEnum = "deny" | "allow" | "require";
@@ -13812,9 +13445,8 @@ export const CreateOrganizationClientGrantsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Scopes allowed for this client grant. */
 export type AssociateOrganizationClientGrantResponseContentScopeList = Array<string>;
-export const AssociateOrganizationClientGrantResponseContentScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssociateOrganizationClientGrantResponseContentScopeList>;
+export const AssociateOrganizationClientGrantResponseContentScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<AssociateOrganizationClientGrantResponseContentScopeList>;
 
 /** Defines whether organizations can be used with client credentials exchanges for this grant. */
 export type OrganizationUsageEnum = "deny" | "allow" | "require";
@@ -13923,9 +13555,8 @@ export const CreateOrganizationAllConnectionResponseContent = /*@__PURE__*/ S.su
 
 /** Array of role IDs to assign to organization group. */
 export type CreateOrganizationGroupRoleRequestRolesList = Array<string>;
-export const CreateOrganizationGroupRoleRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationGroupRoleRequestRolesList>;
+export const CreateOrganizationGroupRoleRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateOrganizationGroupRoleRequestRolesList>;
 
 export interface CreateOrganizationGroupRoleRequest {
   /** ID of the organization */
@@ -13960,9 +13591,8 @@ export const CreateOrganizationGroupRoleResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles IDs to associated with the user. */
 export type CreateOrganizationMemberRoleRequestRolesList = Array<string>;
-export const CreateOrganizationMemberRoleRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationMemberRoleRequestRolesList>;
+export const CreateOrganizationMemberRoleRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateOrganizationMemberRoleRequestRolesList>;
 
 export interface CreateOrganizationMemberRoleRequest {
   /** Organization identifier. */
@@ -13985,11 +13615,8 @@ export const CreateOrganizationMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrganizationMemberRoleRequest>;
 
 export interface CreateOrganizationMemberRoleResponse {}
-export const CreateOrganizationMemberRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateOrganizationMemberRoleResponse",
-}) as any as S.Schema<CreateOrganizationMemberRoleResponse>;
+export const CreateOrganizationMemberRoleResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<CreateOrganizationMemberRoleResponse>;
 
 /** Name of the phone notification provider */
 export type PhoneProviderNameEnum = "twilio" | "custom";
@@ -14427,9 +14054,8 @@ export type ResourceServerConsentPolicyEnum = "transactional-authorization-with-
 export const ResourceServerConsentPolicyEnum = S.String;
 
 export type CreateResourceServerRequestAuthorizationDetailsList = Array<unknown>;
-export const CreateResourceServerRequestAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateResourceServerRequestAuthorizationDetailsList>;
+export const CreateResourceServerRequestAuthorizationDetailsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<CreateResourceServerRequestAuthorizationDetailsList>;
 
 /** Intended mechanism for Proof-of-Possession */
 export type ResourceServerProofOfPossessionMechanismEnum = "mtls" | "dpop";
@@ -14607,9 +14233,8 @@ export const CreateResourceServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of permissions (scopes) that this API uses. */
 export type CreateResourceServerResponseContentScopesList = Array<ResourceServerScope>;
-export const CreateResourceServerResponseContentScopesList = /*@__PURE__*/ S.Array(
-  ResourceServerScope,
-) as any as S.Schema<CreateResourceServerResponseContentScopesList>;
+export const CreateResourceServerResponseContentScopesList =
+  CreateResourceServerRequestScopesList as any as S.Schema<CreateResourceServerResponseContentScopesList>;
 
 /** Dialect of access tokens that should be issued. `access_token` is a JWT containing standard Auth0 claims; `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` and `rfc9068_profile_authz` additionally include RBAC permissions claims. */
 export type ResourceServerTokenDialectResponseEnum =
@@ -14620,9 +14245,8 @@ export type ResourceServerTokenDialectResponseEnum =
 export const ResourceServerTokenDialectResponseEnum = S.String;
 
 export type CreateResourceServerResponseContentAuthorizationDetailsList = Array<unknown>;
-export const CreateResourceServerResponseContentAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateResourceServerResponseContentAuthorizationDetailsList>;
+export const CreateResourceServerResponseContentAuthorizationDetailsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<CreateResourceServerResponseContentAuthorizationDetailsList>;
 
 export interface CreateResourceServerResponseContent {
   /** ID of the API (resource server). */
@@ -14749,9 +14373,8 @@ export const CreateRoleResponseContent = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of group IDs to assign to the role. */
 export type CreateRoleGroupRequestGroupsList = Array<string>;
-export const CreateRoleGroupRequestGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRoleGroupRequestGroupsList>;
+export const CreateRoleGroupRequestGroupsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateRoleGroupRequestGroupsList>;
 
 export interface CreateRoleGroupRequest {
   /** Unique identifier for the role (service-generated). */
@@ -14767,15 +14390,13 @@ export const CreateRoleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRoleGroupRequest" }) as any as S.Schema<CreateRoleGroupRequest>;
 
 export interface CreateRoleGroupResponse {}
-export const CreateRoleGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateRoleGroupResponse",
-}) as any as S.Schema<CreateRoleGroupResponse>;
+export const CreateRoleGroupResponse =
+  CreateGroupRoleResponse as any as S.Schema<CreateRoleGroupResponse>;
 
 /** user_id's of the users to assign the role to. */
 export type CreateRoleUserRequestUsersList = Array<string>;
-export const CreateRoleUserRequestUsersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateRoleUserRequestUsersList>;
+export const CreateRoleUserRequestUsersList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateRoleUserRequestUsersList>;
 
 export interface CreateRoleUserRequest {
   /** ID of the role to assign users to. */
@@ -14791,9 +14412,8 @@ export const CreateRoleUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRoleUserRequest" }) as any as S.Schema<CreateRoleUserRequest>;
 
 export interface CreateRoleUserResponse {}
-export const CreateRoleUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateRoleUserResponse",
-}) as any as S.Schema<CreateRoleUserResponse>;
+export const CreateRoleUserResponse =
+  CreateGroupRoleResponse as any as S.Schema<CreateRoleUserResponse>;
 
 export interface CreateRuleRequest {
   /** Name of this rule. */
@@ -14842,14 +14462,12 @@ export const CreateRuleResponseContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRuleResponseContent>;
 
 export type SegmentMatchExpressionCase0List = Array<string>;
-export const SegmentMatchExpressionCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentMatchExpressionCase0List>;
+export const SegmentMatchExpressionCase0List =
+  CreateClientRequestCallbacksList as any as S.Schema<SegmentMatchExpressionCase0List>;
 
 export type SegmentContainsExpressionContainsList = Array<string>;
-export const SegmentContainsExpressionContainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentContainsExpressionContainsList>;
+export const SegmentContainsExpressionContainsList =
+  CreateClientRequestCallbacksList as any as S.Schema<SegmentContainsExpressionContainsList>;
 
 export interface SegmentContainsExpression {
   contains: SegmentContainsExpressionContainsList;
@@ -14863,9 +14481,8 @@ export const SegmentContainsExpression = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SegmentContainsExpression>;
 
 export type SegmentStartsWithExpressionStartsWithList = Array<string>;
-export const SegmentStartsWithExpressionStartsWithList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentStartsWithExpressionStartsWithList>;
+export const SegmentStartsWithExpressionStartsWithList =
+  CreateClientRequestCallbacksList as any as S.Schema<SegmentStartsWithExpressionStartsWithList>;
 
 export interface SegmentStartsWithExpression {
   starts_with: SegmentStartsWithExpressionStartsWithList;
@@ -14879,9 +14496,8 @@ export const SegmentStartsWithExpression = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SegmentStartsWithExpression>;
 
 export type SegmentEndsWithExpressionEndsWithList = Array<string>;
-export const SegmentEndsWithExpressionEndsWithList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SegmentEndsWithExpressionEndsWithList>;
+export const SegmentEndsWithExpressionEndsWithList =
+  CreateClientRequestCallbacksList as any as S.Schema<SegmentEndsWithExpressionEndsWithList>;
 
 export interface SegmentEndsWithExpression {
   ends_with: SegmentEndsWithExpressionEndsWithList;
@@ -14982,9 +14598,8 @@ export type SegmentTypeEnum = "self" | "auth0";
 export const SegmentTypeEnum = S.String;
 
 export type CreateSegmentResponseContentRulesList = Array<SegmentRule>;
-export const CreateSegmentResponseContentRulesList = /*@__PURE__*/ S.Array(
-  SegmentRule,
-) as any as S.Schema<CreateSegmentResponseContentRulesList>;
+export const CreateSegmentResponseContentRulesList =
+  CreateSegmentRequestRulesList as any as S.Schema<CreateSegmentResponseContentRulesList>;
 
 export interface CreateSegmentResponseContent {
   id: string;
@@ -15108,16 +14723,14 @@ export const CreateSelfServiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of attributes to be mapped that will be shown to the user during the Self-Service Enterprise Configuration flow. */
 export type CreateSelfServiceProfileResponseContentUserAttributesList =
   Array<SelfServiceProfileUserAttribute>;
-export const CreateSelfServiceProfileResponseContentUserAttributesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileUserAttribute,
-) as any as S.Schema<CreateSelfServiceProfileResponseContentUserAttributesList>;
+export const CreateSelfServiceProfileResponseContentUserAttributesList =
+  CreateSelfServiceProfileRequestUserAttributesList as any as S.Schema<CreateSelfServiceProfileResponseContentUserAttributesList>;
 
 /** List of IdP strategies that will be shown to users during the Self-Service Enterprise Configuration flow. Possible values: [`oidc`, `samlp`, `waad`, `google-apps`, `adfs`, `okta`, `auth0-samlp`, `okta-samlp`, `keycloak-samlp`, `pingfederate`] */
 export type CreateSelfServiceProfileResponseContentAllowedStrategiesList =
   Array<SelfServiceProfileAllowedStrategyEnum>;
-export const CreateSelfServiceProfileResponseContentAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileAllowedStrategyEnum,
-) as any as S.Schema<CreateSelfServiceProfileResponseContentAllowedStrategiesList>;
+export const CreateSelfServiceProfileResponseContentAllowedStrategiesList =
+  CreateSelfServiceProfileRequestAllowedStrategiesList as any as S.Schema<CreateSelfServiceProfileResponseContentAllowedStrategiesList>;
 
 export interface CreateSelfServiceProfileResponseContent {
   /** The unique ID of the self-service Profile. */
@@ -15209,17 +14822,11 @@ export const CreateTokenExchangeProfileResponseContent = /*@__PURE__*/ S.suspend
 
 /** Data related to the user that does not affect the application's core functionality. */
 export type UserMetadata = { [key: string]: unknown | undefined };
-export const UserMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserMetadata>;
+export const UserMetadata = AgentMetadata as any as S.Schema<UserMetadata>;
 
 /** Data related to the user that does affect the application's core functionality. */
 export type AppMetadata = { [key: string]: unknown | undefined };
-export const AppMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AppMetadata>;
+export const AppMetadata = AgentMetadata as any as S.Schema<AppMetadata>;
 
 export interface CreateUserRequest {
   /** The user's email. */
@@ -15407,23 +15014,16 @@ export const CreateUserResponseContentIdentitiesList = /*@__PURE__*/ S.Array(
 
 /** User metadata to which this user has read-only access. */
 export type UserAppMetadataSchema = { [key: string]: unknown | undefined };
-export const UserAppMetadataSchema = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserAppMetadataSchema>;
+export const UserAppMetadataSchema = AgentMetadata as any as S.Schema<UserAppMetadataSchema>;
 
 /** User metadata to which this user has read/write access. */
 export type UserMetadataSchema = { [key: string]: unknown | undefined };
-export const UserMetadataSchema = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserMetadataSchema>;
+export const UserMetadataSchema = AgentMetadata as any as S.Schema<UserMetadataSchema>;
 
 /** List of multi-factor authentication providers with which this user has enrolled. */
 export type CreateUserResponseContentMultifactorList = Array<string>;
-export const CreateUserResponseContentMultifactorList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserResponseContentMultifactorList>;
+export const CreateUserResponseContentMultifactorList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateUserResponseContentMultifactorList>;
 
 export interface CreateUserResponseContent {
   /** ID of the user which can be used when interacting with other APIs. */
@@ -15507,9 +15107,8 @@ export const UserAttributeProfileUserIdOidcMappingEnum = S.String;
 
 /** SAML mapping for user ID */
 export type UserAttributeProfileUserIdSamlMapping = Array<string>;
-export const UserAttributeProfileUserIdSamlMapping = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserAttributeProfileUserIdSamlMapping>;
+export const UserAttributeProfileUserIdSamlMapping =
+  CreateClientRequestCallbacksList as any as S.Schema<UserAttributeProfileUserIdSamlMapping>;
 
 /** OIDC mapping override for this strategy */
 export type UserAttributeProfileUserIdOidcStrategyOverrideMapping = "sub" | "oid" | "email";
@@ -15517,9 +15116,8 @@ export const UserAttributeProfileUserIdOidcStrategyOverrideMapping = S.String;
 
 /** SAML mapping override for this strategy */
 export type UserAttributeProfileSamlMapping = Array<string>;
-export const UserAttributeProfileSamlMapping = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserAttributeProfileSamlMapping>;
+export const UserAttributeProfileSamlMapping =
+  CreateClientRequestCallbacksList as any as S.Schema<UserAttributeProfileSamlMapping>;
 
 export interface UserAttributeProfileStrategyOverridesUserIdMapping {
   oidc_mapping?: UserAttributeProfileUserIdOidcStrategyOverrideMapping | (string & {});
@@ -15719,9 +15317,8 @@ export const CreateUserAttributeProfileResponseContent = /*@__PURE__*/ S.suspend
 
 /** List of roles IDs to associated with the user. */
 export type CreateUserRoleRequestRolesList = Array<string>;
-export const CreateUserRoleRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserRoleRequestRolesList>;
+export const CreateUserRoleRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateUserRoleRequestRolesList>;
 
 export interface CreateUserRoleRequest {
   /** ID of the user to associate roles with. */
@@ -15737,16 +15334,12 @@ export const CreateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUserRoleRequest" }) as any as S.Schema<CreateUserRoleRequest>;
 
 export interface CreateUserRoleResponse {}
-export const CreateUserRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateUserRoleResponse",
-}) as any as S.Schema<CreateUserRoleResponse>;
+export const CreateUserRoleResponse =
+  CreateGroupRoleResponse as any as S.Schema<CreateUserRoleResponse>;
 
 /** Configuration overrides for this variation */
 export type VariationOverridesMap = { [key: string]: unknown | undefined };
-export const VariationOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<VariationOverridesMap>;
+export const VariationOverridesMap = AgentMetadata as any as S.Schema<VariationOverridesMap>;
 
 export interface CreateVariationRequest {
   /** The ID of the parent feature flag. */
@@ -15806,9 +15399,8 @@ export const DeleteActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteActionRequest" }) as any as S.Schema<DeleteActionRequest>;
 
 export interface DeleteActionResponse {}
-export const DeleteActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteActionResponse",
-}) as any as S.Schema<DeleteActionResponse>;
+export const DeleteActionResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteActionResponse>;
 
 export interface DeleteActionModuleRequest {
   /** The ID of the Actions Module to delete. */
@@ -15823,9 +15415,8 @@ export const DeleteActionModuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteActionModuleRequest>;
 
 export interface DeleteActionModuleResponse {}
-export const DeleteActionModuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteActionModuleResponse",
-}) as any as S.Schema<DeleteActionModuleResponse>;
+export const DeleteActionModuleResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteActionModuleResponse>;
 
 export interface DeleteAgentRequest {
   /** The agent ID */
@@ -15838,9 +15429,7 @@ export const DeleteAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentRequest" }) as any as S.Schema<DeleteAgentRequest>;
 
 export interface DeleteAgentResponse {}
-export const DeleteAgentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAgentResponse",
-}) as any as S.Schema<DeleteAgentResponse>;
+export const DeleteAgentResponse = CreateGroupRoleResponse as any as S.Schema<DeleteAgentResponse>;
 
 export interface DeleteAuthenticationMethodsRequest {
   /** The ID of the user in question. */
@@ -15855,11 +15444,8 @@ export const DeleteAuthenticationMethodsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthenticationMethodsRequest>;
 
 export interface DeleteAuthenticationMethodsResponse {}
-export const DeleteAuthenticationMethodsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthenticationMethodsResponse",
-}) as any as S.Schema<DeleteAuthenticationMethodsResponse>;
+export const DeleteAuthenticationMethodsResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteAuthenticationMethodsResponse>;
 
 export interface DeleteAuthenticationMethodsByAuthenticationMethodIdRequest {
   /** The ID of the user in question. */
@@ -15903,9 +15489,8 @@ export const DeleteAuthenticatorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthenticatorsRequest>;
 
 export interface DeleteAuthenticatorsResponse {}
-export const DeleteAuthenticatorsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAuthenticatorsResponse",
-}) as any as S.Schema<DeleteAuthenticatorsResponse>;
+export const DeleteAuthenticatorsResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteAuthenticatorsResponse>;
 
 export interface DeleteBrandingThemeRequest {
   /** The ID of the theme */
@@ -15920,9 +15505,8 @@ export const DeleteBrandingThemeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBrandingThemeRequest>;
 
 export interface DeleteBrandingThemeResponse {}
-export const DeleteBrandingThemeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBrandingThemeResponse",
-}) as any as S.Schema<DeleteBrandingThemeResponse>;
+export const DeleteBrandingThemeResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteBrandingThemeResponse>;
 
 export interface DeleteClientRequest {
   /** ID of the client to delete. */
@@ -15935,9 +15519,8 @@ export const DeleteClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClientRequest" }) as any as S.Schema<DeleteClientRequest>;
 
 export interface DeleteClientResponse {}
-export const DeleteClientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClientResponse",
-}) as any as S.Schema<DeleteClientResponse>;
+export const DeleteClientResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteClientResponse>;
 
 export interface DeleteClientGrantRequest {
   /** ID of the client grant to delete. */
@@ -15950,9 +15533,8 @@ export const DeleteClientGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClientGrantRequest" }) as any as S.Schema<DeleteClientGrantRequest>;
 
 export interface DeleteClientGrantResponse {}
-export const DeleteClientGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteClientGrantResponse",
-}) as any as S.Schema<DeleteClientGrantResponse>;
+export const DeleteClientGrantResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteClientGrantResponse>;
 
 export interface DeleteClientGrantsByGrantIdRequest {
   /** Organization identifier. */
@@ -15972,11 +15554,8 @@ export const DeleteClientGrantsByGrantIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteClientGrantsByGrantIdRequest>;
 
 export interface DeleteClientGrantsByGrantIdResponse {}
-export const DeleteClientGrantsByGrantIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteClientGrantsByGrantIdResponse",
-}) as any as S.Schema<DeleteClientGrantsByGrantIdResponse>;
+export const DeleteClientGrantsByGrantIdResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteClientGrantsByGrantIdResponse>;
 
 export interface DeleteConnectionRequest {
   /** The id of the connection to delete */
@@ -15989,9 +15568,8 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectionResponse",
-}) as any as S.Schema<DeleteConnectionResponse>;
+export const DeleteConnectionResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteConnectionResponse>;
 
 export interface DeleteConnectionProfileRequest {
   /** ID of the connection-profile to delete. */
@@ -16032,11 +15610,8 @@ export const DeleteCredentialsByCredentialIdRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteCredentialsByCredentialIdRequest>;
 
 export interface DeleteCredentialsByCredentialIdResponse {}
-export const DeleteCredentialsByCredentialIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCredentialsByCredentialIdResponse",
-}) as any as S.Schema<DeleteCredentialsByCredentialIdResponse>;
+export const DeleteCredentialsByCredentialIdResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteCredentialsByCredentialIdResponse>;
 
 export interface DeleteCustomDomainRequest {
   /** ID of the custom domain to delete. */
@@ -16051,9 +15626,8 @@ export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomDomainRequest>;
 
 export interface DeleteCustomDomainResponse {}
-export const DeleteCustomDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCustomDomainResponse",
-}) as any as S.Schema<DeleteCustomDomainResponse>;
+export const DeleteCustomDomainResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteCustomDomainResponse>;
 
 export interface DeleteCustomSigningKeysRequest {}
 export const DeleteCustomSigningKeysRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16063,9 +15637,8 @@ export const DeleteCustomSigningKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomSigningKeysRequest>;
 
 export interface DeleteCustomSigningKeysResponse {}
-export const DeleteCustomSigningKeysResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteCustomSigningKeysResponse" },
-) as any as S.Schema<DeleteCustomSigningKeysResponse>;
+export const DeleteCustomSigningKeysResponse =
+  DeleteConnectionProfileResponse as any as S.Schema<DeleteCustomSigningKeysResponse>;
 
 export interface DeleteDeviceCredentialsRequest {
   /** ID of the credential to delete. */
@@ -16080,9 +15653,8 @@ export const DeleteDeviceCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDeviceCredentialsRequest>;
 
 export interface DeleteDeviceCredentialsResponse {}
-export const DeleteDeviceCredentialsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteDeviceCredentialsResponse" },
-) as any as S.Schema<DeleteDeviceCredentialsResponse>;
+export const DeleteDeviceCredentialsResponse =
+  DeleteConnectionProfileResponse as any as S.Schema<DeleteDeviceCredentialsResponse>;
 
 export interface DeleteDirectoryProvisioningRequest {
   /** The id of the connection to delete its directory provisioning configuration */
@@ -16097,11 +15669,8 @@ export const DeleteDirectoryProvisioningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDirectoryProvisioningRequest>;
 
 export interface DeleteDirectoryProvisioningResponse {}
-export const DeleteDirectoryProvisioningResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDirectoryProvisioningResponse",
-}) as any as S.Schema<DeleteDirectoryProvisioningResponse>;
+export const DeleteDirectoryProvisioningResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteDirectoryProvisioningResponse>;
 
 export interface DeleteDiscoveryDomainsByDiscoveryDomainIdRequest {
   /** ID of the organization. */
@@ -16125,11 +15694,8 @@ export const DeleteDiscoveryDomainsByDiscoveryDomainIdRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteDiscoveryDomainsByDiscoveryDomainIdRequest>;
 
 export interface DeleteDiscoveryDomainsByDiscoveryDomainIdResponse {}
-export const DeleteDiscoveryDomainsByDiscoveryDomainIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDiscoveryDomainsByDiscoveryDomainIdResponse",
-}) as any as S.Schema<DeleteDiscoveryDomainsByDiscoveryDomainIdResponse>;
+export const DeleteDiscoveryDomainsByDiscoveryDomainIdResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteDiscoveryDomainsByDiscoveryDomainIdResponse>;
 
 export interface DeleteEnabledConnectionsByConnectionIdRequest {
   /** Organization identifier. */
@@ -16153,11 +15719,8 @@ export const DeleteEnabledConnectionsByConnectionIdRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteEnabledConnectionsByConnectionIdRequest>;
 
 export interface DeleteEnabledConnectionsByConnectionIdResponse {}
-export const DeleteEnabledConnectionsByConnectionIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEnabledConnectionsByConnectionIdResponse",
-}) as any as S.Schema<DeleteEnabledConnectionsByConnectionIdResponse>;
+export const DeleteEnabledConnectionsByConnectionIdResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteEnabledConnectionsByConnectionIdResponse>;
 
 export interface DeleteEncryptionKeyRequest {
   /** Encryption key ID */
@@ -16172,9 +15735,8 @@ export const DeleteEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEncryptionKeyRequest>;
 
 export interface DeleteEncryptionKeyResponse {}
-export const DeleteEncryptionKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEncryptionKeyResponse",
-}) as any as S.Schema<DeleteEncryptionKeyResponse>;
+export const DeleteEncryptionKeyResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteEncryptionKeyResponse>;
 
 export interface DeleteEnrollmentsByIdRequest {
   /** ID of the enrollment to be deleted. */
@@ -16189,9 +15751,8 @@ export const DeleteEnrollmentsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnrollmentsByIdRequest>;
 
 export interface DeleteEnrollmentsByIdResponse {}
-export const DeleteEnrollmentsByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEnrollmentsByIdResponse",
-}) as any as S.Schema<DeleteEnrollmentsByIdResponse>;
+export const DeleteEnrollmentsByIdResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteEnrollmentsByIdResponse>;
 
 export interface DeleteEventStreamRequest {
   /** Unique identifier for the event stream. */
@@ -16204,9 +15765,8 @@ export const DeleteEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEventStreamRequest" }) as any as S.Schema<DeleteEventStreamRequest>;
 
 export interface DeleteEventStreamResponse {}
-export const DeleteEventStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEventStreamResponse",
-}) as any as S.Schema<DeleteEventStreamResponse>;
+export const DeleteEventStreamResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteEventStreamResponse>;
 
 export interface DeleteExperimentRequest {
   /** The ID of the experiment to delete. */
@@ -16219,9 +15779,8 @@ export const DeleteExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExperimentRequest" }) as any as S.Schema<DeleteExperimentRequest>;
 
 export interface DeleteExperimentResponse {}
-export const DeleteExperimentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteExperimentResponse",
-}) as any as S.Schema<DeleteExperimentResponse>;
+export const DeleteExperimentResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteExperimentResponse>;
 
 export interface DeleteFeatureFlagRequest {
   /** The ID of the feature flag to delete. */
@@ -16234,9 +15793,8 @@ export const DeleteFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFeatureFlagRequest" }) as any as S.Schema<DeleteFeatureFlagRequest>;
 
 export interface DeleteFeatureFlagResponse {}
-export const DeleteFeatureFlagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFeatureFlagResponse",
-}) as any as S.Schema<DeleteFeatureFlagResponse>;
+export const DeleteFeatureFlagResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteFeatureFlagResponse>;
 
 export interface DeleteFlowRequest {
   /** Flow id */
@@ -16249,9 +15807,7 @@ export const DeleteFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFlowRequest" }) as any as S.Schema<DeleteFlowRequest>;
 
 export interface DeleteFlowResponse {}
-export const DeleteFlowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFlowResponse",
-}) as any as S.Schema<DeleteFlowResponse>;
+export const DeleteFlowResponse = CreateGroupRoleResponse as any as S.Schema<DeleteFlowResponse>;
 
 export interface DeleteFlowsExecutionRequest {
   /** Flows id */
@@ -16271,9 +15827,8 @@ export const DeleteFlowsExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFlowsExecutionRequest>;
 
 export interface DeleteFlowsExecutionResponse {}
-export const DeleteFlowsExecutionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFlowsExecutionResponse",
-}) as any as S.Schema<DeleteFlowsExecutionResponse>;
+export const DeleteFlowsExecutionResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteFlowsExecutionResponse>;
 
 export interface DeleteFlowsVaultConnectionRequest {
   /** Vault connection id */
@@ -16288,11 +15843,8 @@ export const DeleteFlowsVaultConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFlowsVaultConnectionRequest>;
 
 export interface DeleteFlowsVaultConnectionResponse {}
-export const DeleteFlowsVaultConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFlowsVaultConnectionResponse",
-}) as any as S.Schema<DeleteFlowsVaultConnectionResponse>;
+export const DeleteFlowsVaultConnectionResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteFlowsVaultConnectionResponse>;
 
 export interface DeleteFormRequest {
   /** The ID of the form to delete. */
@@ -16305,9 +15857,7 @@ export const DeleteFormRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFormRequest" }) as any as S.Schema<DeleteFormRequest>;
 
 export interface DeleteFormResponse {}
-export const DeleteFormResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFormResponse",
-}) as any as S.Schema<DeleteFormResponse>;
+export const DeleteFormResponse = CreateGroupRoleResponse as any as S.Schema<DeleteFormResponse>;
 
 export interface DeleteGrantRequest {
   /** ID of the grant to delete. */
@@ -16320,9 +15870,7 @@ export const DeleteGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGrantRequest" }) as any as S.Schema<DeleteGrantRequest>;
 
 export interface DeleteGrantResponse {}
-export const DeleteGrantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGrantResponse",
-}) as any as S.Schema<DeleteGrantResponse>;
+export const DeleteGrantResponse = CreateGroupRoleResponse as any as S.Schema<DeleteGrantResponse>;
 
 export interface DeleteGrantsByUserIdRequest {
   /** user_id of the grant to delete. */
@@ -16337,9 +15885,8 @@ export const DeleteGrantsByUserIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGrantsByUserIdRequest>;
 
 export interface DeleteGrantsByUserIdResponse {}
-export const DeleteGrantsByUserIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGrantsByUserIdResponse",
-}) as any as S.Schema<DeleteGrantsByUserIdResponse>;
+export const DeleteGrantsByUserIdResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteGrantsByUserIdResponse>;
 
 export interface DeleteGroupRequest {
   /** Unique identifier for the group (service-generated). */
@@ -16352,15 +15899,12 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
+export const DeleteGroupResponse = CreateGroupRoleResponse as any as S.Schema<DeleteGroupResponse>;
 
 /** Array of role IDs to remove from the group. */
 export type DeleteGroupRolesRequestRolesList = Array<string>;
-export const DeleteGroupRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteGroupRolesRequestRolesList>;
+export const DeleteGroupRolesRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteGroupRolesRequestRolesList>;
 
 export interface DeleteGroupRolesRequest {
   /** Unique identifier for the group (service-generated). */
@@ -16376,9 +15920,8 @@ export const DeleteGroupRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupRolesRequest" }) as any as S.Schema<DeleteGroupRolesRequest>;
 
 export interface DeleteGroupRolesResponse {}
-export const DeleteGroupRolesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteGroupRolesResponse",
-}) as any as S.Schema<DeleteGroupRolesResponse>;
+export const DeleteGroupRolesResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteGroupRolesResponse>;
 
 export interface DeleteHookRequest {
   /** ID of the hook to delete. */
@@ -16391,9 +15934,7 @@ export const DeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHookRequest" }) as any as S.Schema<DeleteHookRequest>;
 
 export interface DeleteHookResponse {}
-export const DeleteHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteHookResponse",
-}) as any as S.Schema<DeleteHookResponse>;
+export const DeleteHookResponse = CreateGroupRoleResponse as any as S.Schema<DeleteHookResponse>;
 
 export interface DeleteInvitationsByInvitationIdRequest {
   /** Organization identifier. */
@@ -16413,11 +15954,8 @@ export const DeleteInvitationsByInvitationIdRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteInvitationsByInvitationIdRequest>;
 
 export interface DeleteInvitationsByInvitationIdResponse {}
-export const DeleteInvitationsByInvitationIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInvitationsByInvitationIdResponse",
-}) as any as S.Schema<DeleteInvitationsByInvitationIdResponse>;
+export const DeleteInvitationsByInvitationIdResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteInvitationsByInvitationIdResponse>;
 
 export interface DeleteIpsByIdRequest {
   /** IP address to unblock. */
@@ -16430,9 +15968,8 @@ export const DeleteIpsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIpsByIdRequest" }) as any as S.Schema<DeleteIpsByIdRequest>;
 
 export interface DeleteIpsByIdResponse {}
-export const DeleteIpsByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIpsByIdResponse",
-}) as any as S.Schema<DeleteIpsByIdResponse>;
+export const DeleteIpsByIdResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteIpsByIdResponse>;
 
 export interface DeleteKeysNetworkAclsRequest {
   /** ID of the Network ACL Key to delete. */
@@ -16447,9 +15984,8 @@ export const DeleteKeysNetworkAclsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKeysNetworkAclsRequest>;
 
 export interface DeleteKeysNetworkAclsResponse {}
-export const DeleteKeysNetworkAclsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKeysNetworkAclsResponse",
-}) as any as S.Schema<DeleteKeysNetworkAclsResponse>;
+export const DeleteKeysNetworkAclsResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteKeysNetworkAclsResponse>;
 
 export interface DeleteLogStreamRequest {
   /** The id of the log stream to delete */
@@ -16462,15 +15998,13 @@ export const DeleteLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLogStreamRequest" }) as any as S.Schema<DeleteLogStreamRequest>;
 
 export interface DeleteLogStreamResponse {}
-export const DeleteLogStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLogStreamResponse",
-}) as any as S.Schema<DeleteLogStreamResponse>;
+export const DeleteLogStreamResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteLogStreamResponse>;
 
 /** List of user IDs to remove from the organization. */
 export type DeleteMembersRequestMembersList = Array<string>;
-export const DeleteMembersRequestMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteMembersRequestMembersList>;
+export const DeleteMembersRequestMembersList =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteMembersRequestMembersList>;
 
 export interface DeleteMembersRequest {
   /** Organization identifier. */
@@ -16486,9 +16020,8 @@ export const DeleteMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMembersRequest" }) as any as S.Schema<DeleteMembersRequest>;
 
 export interface DeleteMembersResponse {}
-export const DeleteMembersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMembersResponse",
-}) as any as S.Schema<DeleteMembersResponse>;
+export const DeleteMembersResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteMembersResponse>;
 
 /** The multi-factor provider. Supported values 'duo' or 'google-authenticator' */
 export type DeleteMultifactorByProviderRequestProvider = "duo" | "google-authenticator";
@@ -16510,11 +16043,8 @@ export const DeleteMultifactorByProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMultifactorByProviderRequest>;
 
 export interface DeleteMultifactorByProviderResponse {}
-export const DeleteMultifactorByProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMultifactorByProviderResponse",
-}) as any as S.Schema<DeleteMultifactorByProviderResponse>;
+export const DeleteMultifactorByProviderResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteMultifactorByProviderResponse>;
 
 export interface DeleteNetworkAclRequest {
   /** The id of the ACL to delete */
@@ -16527,9 +16057,8 @@ export const DeleteNetworkAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNetworkAclRequest" }) as any as S.Schema<DeleteNetworkAclRequest>;
 
 export interface DeleteNetworkAclResponse {}
-export const DeleteNetworkAclResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNetworkAclResponse",
-}) as any as S.Schema<DeleteNetworkAclResponse>;
+export const DeleteNetworkAclResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteNetworkAclResponse>;
 
 export interface DeleteOrganizationRequest {
   /** Organization identifier. */
@@ -16544,15 +16073,13 @@ export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationRequest>;
 
 export interface DeleteOrganizationResponse {}
-export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteOrganizationResponse",
-}) as any as S.Schema<DeleteOrganizationResponse>;
+export const DeleteOrganizationResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteOrganizationResponse>;
 
 /** List of client IDs to disassociate from the organization. */
 export type DeleteOrganizationClientsRequestClientsList = Array<string>;
-export const DeleteOrganizationClientsRequestClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationClientsRequestClientsList>;
+export const DeleteOrganizationClientsRequestClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteOrganizationClientsRequestClientsList>;
 
 export interface DeleteOrganizationClientsRequest {
   /** ID of the organization. */
@@ -16570,11 +16097,8 @@ export const DeleteOrganizationClientsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationClientsRequest>;
 
 export interface DeleteOrganizationClientsResponse {}
-export const DeleteOrganizationClientsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationClientsResponse",
-}) as any as S.Schema<DeleteOrganizationClientsResponse>;
+export const DeleteOrganizationClientsResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteOrganizationClientsResponse>;
 
 export interface DeleteOrganizationConnectionRequest {
   /** Organization identifier. */
@@ -16594,17 +16118,13 @@ export const DeleteOrganizationConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationConnectionRequest>;
 
 export interface DeleteOrganizationConnectionResponse {}
-export const DeleteOrganizationConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationConnectionResponse",
-}) as any as S.Schema<DeleteOrganizationConnectionResponse>;
+export const DeleteOrganizationConnectionResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteOrganizationConnectionResponse>;
 
 /** Array of role IDs to delete from organization group. */
 export type DeleteOrganizationGroupRolesRequestRolesList = Array<string>;
-export const DeleteOrganizationGroupRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationGroupRolesRequestRolesList>;
+export const DeleteOrganizationGroupRolesRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteOrganizationGroupRolesRequestRolesList>;
 
 export interface DeleteOrganizationGroupRolesRequest {
   /** ID of the organization */
@@ -16631,17 +16151,13 @@ export const DeleteOrganizationGroupRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationGroupRolesRequest>;
 
 export interface DeleteOrganizationGroupRolesResponse {}
-export const DeleteOrganizationGroupRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationGroupRolesResponse",
-}) as any as S.Schema<DeleteOrganizationGroupRolesResponse>;
+export const DeleteOrganizationGroupRolesResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteOrganizationGroupRolesResponse>;
 
 /** List of roles IDs associated with the organization member to remove. */
 export type DeleteOrganizationMemberRolesRequestRolesList = Array<string>;
-export const DeleteOrganizationMemberRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteOrganizationMemberRolesRequestRolesList>;
+export const DeleteOrganizationMemberRolesRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteOrganizationMemberRolesRequestRolesList>;
 
 export interface DeleteOrganizationMemberRolesRequest {
   /** Organization identifier. */
@@ -16664,11 +16180,8 @@ export const DeleteOrganizationMemberRolesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteOrganizationMemberRolesRequest>;
 
 export interface DeleteOrganizationMemberRolesResponse {}
-export const DeleteOrganizationMemberRolesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationMemberRolesResponse",
-}) as any as S.Schema<DeleteOrganizationMemberRolesResponse>;
+export const DeleteOrganizationMemberRolesResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteOrganizationMemberRolesResponse>;
 
 export interface PermissionRequestPayload {
   /** Resource server (API) identifier that this permission is for. */
@@ -16703,9 +16216,8 @@ export const DeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePermissionsRequest" }) as any as S.Schema<DeletePermissionsRequest>;
 
 export interface DeletePermissionsResponse {}
-export const DeletePermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePermissionsResponse",
-}) as any as S.Schema<DeletePermissionsResponse>;
+export const DeletePermissionsResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeletePermissionsResponse>;
 
 export interface DeletePhoneProviderRequest {
   id: string;
@@ -16719,9 +16231,8 @@ export const DeletePhoneProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePhoneProviderRequest>;
 
 export interface DeletePhoneProviderResponse {}
-export const DeletePhoneProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePhoneProviderResponse",
-}) as any as S.Schema<DeletePhoneProviderResponse>;
+export const DeletePhoneProviderResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeletePhoneProviderResponse>;
 
 export interface DeletePhoneTemplateRequest {
   id: string;
@@ -16735,9 +16246,8 @@ export const DeletePhoneTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePhoneTemplateRequest>;
 
 export interface DeletePhoneTemplateResponse {}
-export const DeletePhoneTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePhoneTemplateResponse",
-}) as any as S.Schema<DeletePhoneTemplateResponse>;
+export const DeletePhoneTemplateResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeletePhoneTemplateResponse>;
 
 export interface DeleteProviderRequest {}
 export const DeleteProviderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -16745,9 +16255,8 @@ export const DeleteProviderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProviderRequest" }) as any as S.Schema<DeleteProviderRequest>;
 
 export interface DeleteProviderResponse {}
-export const DeleteProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProviderResponse",
-}) as any as S.Schema<DeleteProviderResponse>;
+export const DeleteProviderResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteProviderResponse>;
 
 export interface DeleteRateLimitPolicyRequest {
   /** Unique identifier for the Rate Limit Policy. */
@@ -16762,9 +16271,8 @@ export const DeleteRateLimitPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRateLimitPolicyRequest>;
 
 export interface DeleteRateLimitPolicyResponse {}
-export const DeleteRateLimitPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRateLimitPolicyResponse",
-}) as any as S.Schema<DeleteRateLimitPolicyResponse>;
+export const DeleteRateLimitPolicyResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteRateLimitPolicyResponse>;
 
 export interface DeleteRefreshTokenRequest {
   /** ID of the refresh token to delete. */
@@ -16779,9 +16287,8 @@ export const DeleteRefreshTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRefreshTokenRequest>;
 
 export interface DeleteRefreshTokenResponse {}
-export const DeleteRefreshTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRefreshTokenResponse",
-}) as any as S.Schema<DeleteRefreshTokenResponse>;
+export const DeleteRefreshTokenResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteRefreshTokenResponse>;
 
 export interface DeleteRefreshTokensForUserRequest {
   /** ID of the user to get remove refresh tokens for */
@@ -16796,11 +16303,8 @@ export const DeleteRefreshTokensForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRefreshTokensForUserRequest>;
 
 export interface DeleteRefreshTokensForUserResponse {}
-export const DeleteRefreshTokensForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRefreshTokensForUserResponse",
-}) as any as S.Schema<DeleteRefreshTokensForUserResponse>;
+export const DeleteRefreshTokensForUserResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteRefreshTokensForUserResponse>;
 
 export interface DeleteResourceServerRequest {
   /** ID or the audience of the resource server to delete. */
@@ -16815,9 +16319,8 @@ export const DeleteResourceServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceServerRequest>;
 
 export interface DeleteResourceServerResponse {}
-export const DeleteResourceServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResourceServerResponse",
-}) as any as S.Schema<DeleteResourceServerResponse>;
+export const DeleteResourceServerResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteResourceServerResponse>;
 
 export interface DeleteRoleRequest {
   /** ID of the role to delete. */
@@ -16830,15 +16333,12 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoleRequest" }) as any as S.Schema<DeleteRoleRequest>;
 
 export interface DeleteRoleResponse {}
-export const DeleteRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleResponse",
-}) as any as S.Schema<DeleteRoleResponse>;
+export const DeleteRoleResponse = CreateGroupRoleResponse as any as S.Schema<DeleteRoleResponse>;
 
 /** Array of group IDs to remove from the role. */
 export type DeleteRoleGroupsRequestGroupsList = Array<string>;
-export const DeleteRoleGroupsRequestGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteRoleGroupsRequestGroupsList>;
+export const DeleteRoleGroupsRequestGroupsList =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteRoleGroupsRequestGroupsList>;
 
 export interface DeleteRoleGroupsRequest {
   /** Unique identifier for the role (service-generated). */
@@ -16854,15 +16354,13 @@ export const DeleteRoleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoleGroupsRequest" }) as any as S.Schema<DeleteRoleGroupsRequest>;
 
 export interface DeleteRoleGroupsResponse {}
-export const DeleteRoleGroupsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRoleGroupsResponse",
-}) as any as S.Schema<DeleteRoleGroupsResponse>;
+export const DeleteRoleGroupsResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteRoleGroupsResponse>;
 
 /** array of resource_server_identifier, permission_name pairs. */
 export type DeleteRolePermissionAssignmentRequestPermissionsList = Array<PermissionRequestPayload>;
-export const DeleteRolePermissionAssignmentRequestPermissionsList = /*@__PURE__*/ S.Array(
-  PermissionRequestPayload,
-) as any as S.Schema<DeleteRolePermissionAssignmentRequestPermissionsList>;
+export const DeleteRolePermissionAssignmentRequestPermissionsList =
+  DeletePermissionsRequestPermissionsList as any as S.Schema<DeleteRolePermissionAssignmentRequestPermissionsList>;
 
 export interface DeleteRolePermissionAssignmentRequest {
   /** ID of the role to remove permissions from. */
@@ -16880,11 +16378,8 @@ export const DeleteRolePermissionAssignmentRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteRolePermissionAssignmentRequest>;
 
 export interface DeleteRolePermissionAssignmentResponse {}
-export const DeleteRolePermissionAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRolePermissionAssignmentResponse",
-}) as any as S.Schema<DeleteRolePermissionAssignmentResponse>;
+export const DeleteRolePermissionAssignmentResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteRolePermissionAssignmentResponse>;
 
 export interface DeleteRuleRequest {
   /** ID of the rule to delete. */
@@ -16897,9 +16392,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 
 export interface DeleteRuleResponse {}
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRuleResponse",
-}) as any as S.Schema<DeleteRuleResponse>;
+export const DeleteRuleResponse = CreateGroupRoleResponse as any as S.Schema<DeleteRuleResponse>;
 
 export interface DeleteRulesConfigRequest {
   /** Key of the rules config variable to delete. */
@@ -16912,9 +16405,8 @@ export const DeleteRulesConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRulesConfigRequest" }) as any as S.Schema<DeleteRulesConfigRequest>;
 
 export interface DeleteRulesConfigResponse {}
-export const DeleteRulesConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRulesConfigResponse",
-}) as any as S.Schema<DeleteRulesConfigResponse>;
+export const DeleteRulesConfigResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteRulesConfigResponse>;
 
 export interface DeleteScimConfigurationRequest {
   /** The id of the connection to delete its SCIM configuration */
@@ -16929,15 +16421,13 @@ export const DeleteScimConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScimConfigurationRequest>;
 
 export interface DeleteScimConfigurationResponse {}
-export const DeleteScimConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteScimConfigurationResponse" },
-) as any as S.Schema<DeleteScimConfigurationResponse>;
+export const DeleteScimConfigurationResponse =
+  DeleteConnectionProfileResponse as any as S.Schema<DeleteScimConfigurationResponse>;
 
 /** Array of secret names to delete. */
 export type DeleteHookSecretRequestContent = Array<string>;
-export const DeleteHookSecretRequestContent = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteHookSecretRequestContent>;
+export const DeleteHookSecretRequestContent =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteHookSecretRequestContent>;
 
 export interface DeleteSecretsRequest {
   /** ID of the hook whose secrets to delete. */
@@ -16952,9 +16442,8 @@ export const DeleteSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretsRequest" }) as any as S.Schema<DeleteSecretsRequest>;
 
 export interface DeleteSecretsResponse {}
-export const DeleteSecretsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSecretsResponse",
-}) as any as S.Schema<DeleteSecretsResponse>;
+export const DeleteSecretsResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteSecretsResponse>;
 
 export interface DeleteSegmentRequest {
   /** The ID of the segment to delete. */
@@ -16967,9 +16456,8 @@ export const DeleteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSegmentRequest" }) as any as S.Schema<DeleteSegmentRequest>;
 
 export interface DeleteSegmentResponse {}
-export const DeleteSegmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSegmentResponse",
-}) as any as S.Schema<DeleteSegmentResponse>;
+export const DeleteSegmentResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteSegmentResponse>;
 
 export interface DeleteSelfServiceProfileRequest {
   /** The id of the self-service profile to delete */
@@ -16984,11 +16472,8 @@ export const DeleteSelfServiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSelfServiceProfileRequest>;
 
 export interface DeleteSelfServiceProfileResponse {}
-export const DeleteSelfServiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSelfServiceProfileResponse",
-}) as any as S.Schema<DeleteSelfServiceProfileResponse>;
+export const DeleteSelfServiceProfileResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteSelfServiceProfileResponse>;
 
 export interface DeleteSessionRequest {
   /** ID of the session to delete. */
@@ -17001,9 +16486,8 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSessionResponse",
-}) as any as S.Schema<DeleteSessionResponse>;
+export const DeleteSessionResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteSessionResponse>;
 
 export interface DeleteSessionsForUserRequest {
   /** ID of the user to get sessions for */
@@ -17018,27 +16502,20 @@ export const DeleteSessionsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSessionsForUserRequest>;
 
 export interface DeleteSessionsForUserResponse {}
-export const DeleteSessionsForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSessionsForUserResponse",
-}) as any as S.Schema<DeleteSessionsForUserResponse>;
+export const DeleteSessionsForUserResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteSessionsForUserResponse>;
 
 export interface SynchronizedGroupSelectionId {
   /** Google Workspace Directory group ID. */
   id: string;
 }
-export const SynchronizedGroupSelectionId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "SynchronizedGroupSelectionId",
-}) as any as S.Schema<SynchronizedGroupSelectionId>;
+export const SynchronizedGroupSelectionId =
+  CreatePublicKeyDeviceCredentialResponseContent as any as S.Schema<SynchronizedGroupSelectionId>;
 
 /** Array of groups to remove from the selection set. */
 export type DeleteSynchronizedGroupsRequestGroupsList = Array<SynchronizedGroupSelectionId>;
-export const DeleteSynchronizedGroupsRequestGroupsList = /*@__PURE__*/ S.Array(
-  SynchronizedGroupSelectionId,
-) as any as S.Schema<DeleteSynchronizedGroupsRequestGroupsList>;
+export const DeleteSynchronizedGroupsRequestGroupsList =
+  NetworkAclHttpMessageSignatureKeys as any as S.Schema<DeleteSynchronizedGroupsRequestGroupsList>;
 
 export interface DeleteSynchronizedGroupsRequest {
   /** The id of the connection to delete synchronized group selections for */
@@ -17062,11 +16539,8 @@ export const DeleteSynchronizedGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSynchronizedGroupsRequest>;
 
 export interface DeleteSynchronizedGroupsResponse {}
-export const DeleteSynchronizedGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSynchronizedGroupsResponse",
-}) as any as S.Schema<DeleteSynchronizedGroupsResponse>;
+export const DeleteSynchronizedGroupsResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteSynchronizedGroupsResponse>;
 
 export interface DeleteTokenExchangeProfileRequest {
   /** ID of the Token Exchange Profile to delete. */
@@ -17081,11 +16555,8 @@ export const DeleteTokenExchangeProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTokenExchangeProfileRequest>;
 
 export interface DeleteTokenExchangeProfileResponse {}
-export const DeleteTokenExchangeProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTokenExchangeProfileResponse",
-}) as any as S.Schema<DeleteTokenExchangeProfileResponse>;
+export const DeleteTokenExchangeProfileResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteTokenExchangeProfileResponse>;
 
 export interface DeleteTokensByTokenIdRequest {
   /** The connection id that owns the SCIM token to delete */
@@ -17109,9 +16580,8 @@ export const DeleteTokensByTokenIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTokensByTokenIdRequest>;
 
 export interface DeleteTokensByTokenIdResponse {}
-export const DeleteTokensByTokenIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTokensByTokenIdResponse",
-}) as any as S.Schema<DeleteTokensByTokenIdResponse>;
+export const DeleteTokensByTokenIdResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteTokensByTokenIdResponse>;
 
 export interface DeleteUniversalLoginRequest {}
 export const DeleteUniversalLoginRequest = /*@__PURE__*/ S.suspend(() =>
@@ -17123,9 +16593,8 @@ export const DeleteUniversalLoginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUniversalLoginRequest>;
 
 export interface DeleteUniversalLoginResponse {}
-export const DeleteUniversalLoginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUniversalLoginResponse",
-}) as any as S.Schema<DeleteUniversalLoginResponse>;
+export const DeleteUniversalLoginResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteUniversalLoginResponse>;
 
 export interface DeleteUserRequest {
   /** ID of the user to delete. */
@@ -17138,9 +16607,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+export const DeleteUserResponse = CreateGroupRoleResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface DeleteUserAttributeProfileRequest {
   /** ID of the user-attribute-profile to delete. */
@@ -17155,11 +16622,8 @@ export const DeleteUserAttributeProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUserAttributeProfileRequest>;
 
 export interface DeleteUserAttributeProfileResponse {}
-export const DeleteUserAttributeProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUserAttributeProfileResponse",
-}) as any as S.Schema<DeleteUserAttributeProfileResponse>;
+export const DeleteUserAttributeProfileResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<DeleteUserAttributeProfileResponse>;
 
 export interface DeleteUserBlockRequest {
   /** The user_id of the user to update. */
@@ -17172,9 +16636,8 @@ export const DeleteUserBlockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserBlockRequest" }) as any as S.Schema<DeleteUserBlockRequest>;
 
 export interface DeleteUserBlockResponse {}
-export const DeleteUserBlockResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserBlockResponse",
-}) as any as S.Schema<DeleteUserBlockResponse>;
+export const DeleteUserBlockResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteUserBlockResponse>;
 
 export interface DeleteUserBlocksRequest {
   /** Should be any of a username, phone number, or email. */
@@ -17187,9 +16650,8 @@ export const DeleteUserBlocksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserBlocksRequest" }) as any as S.Schema<DeleteUserBlocksRequest>;
 
 export interface DeleteUserBlocksResponse {}
-export const DeleteUserBlocksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserBlocksResponse",
-}) as any as S.Schema<DeleteUserBlocksResponse>;
+export const DeleteUserBlocksResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteUserBlocksResponse>;
 
 /** The type of identity provider */
 export type DeleteUserIdentityRequestProvider =
@@ -17317,9 +16779,8 @@ export const DeleteUserIdentityResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles IDs to remove from the user. */
 export type DeleteUserRolesRequestRolesList = Array<string>;
-export const DeleteUserRolesRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteUserRolesRequestRolesList>;
+export const DeleteUserRolesRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<DeleteUserRolesRequestRolesList>;
 
 export interface DeleteUserRolesRequest {
   /** ID of the user to remove roles from. */
@@ -17335,9 +16796,8 @@ export const DeleteUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRolesRequest" }) as any as S.Schema<DeleteUserRolesRequest>;
 
 export interface DeleteUserRolesResponse {}
-export const DeleteUserRolesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUserRolesResponse",
-}) as any as S.Schema<DeleteUserRolesResponse>;
+export const DeleteUserRolesResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteUserRolesResponse>;
 
 export interface DeleteUsersByEmailRequest {
   /** The id of the connection (currently only database connections are supported) */
@@ -17355,9 +16815,8 @@ export const DeleteUsersByEmailRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersByEmailRequest>;
 
 export interface DeleteUsersByEmailResponse {}
-export const DeleteUsersByEmailResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersByEmailResponse",
-}) as any as S.Schema<DeleteUsersByEmailResponse>;
+export const DeleteUsersByEmailResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteUsersByEmailResponse>;
 
 export interface DeleteVariationRequest {
   /** The ID of the parent feature flag. */
@@ -17379,9 +16838,8 @@ export const DeleteVariationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVariationRequest" }) as any as S.Schema<DeleteVariationRequest>;
 
 export interface DeleteVariationResponse {}
-export const DeleteVariationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVariationResponse",
-}) as any as S.Schema<DeleteVariationResponse>;
+export const DeleteVariationResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteVariationResponse>;
 
 export interface DeleteVcTemplatesByIdRequest {
   /** ID of the template to retrieve. */
@@ -17402,9 +16860,8 @@ export const DeleteVcTemplatesByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVcTemplatesByIdRequest>;
 
 export interface DeleteVcTemplatesByIdResponse {}
-export const DeleteVcTemplatesByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVcTemplatesByIdResponse",
-}) as any as S.Schema<DeleteVcTemplatesByIdResponse>;
+export const DeleteVcTemplatesByIdResponse =
+  CreateGroupRoleResponse as any as S.Schema<DeleteVcTemplatesByIdResponse>;
 
 export interface GetActionRequest {
   /** The ID of the action to retrieve. */
@@ -17437,9 +16894,8 @@ export const ActionTriggerTypeEnum = S.String;
 
 /** runtimes supported by this trigger. */
 export type ActionTriggerRuntimesList = Array<string>;
-export const ActionTriggerRuntimesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionTriggerRuntimesList>;
+export const ActionTriggerRuntimesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ActionTriggerRuntimesList>;
 
 export interface ActionTriggerCompatibleTrigger {
   id: ActionTriggerTypeEnum | (string & {});
@@ -17526,30 +16982,22 @@ export interface ActionSecretResponse {
   /** The time when the secret was last updated. */
   updated_at?: string;
 }
-export const ActionSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({ identifier: "ActionSecretResponse" }) as any as S.Schema<ActionSecretResponse>;
+export const ActionSecretResponse = ActionModuleSecret as any as S.Schema<ActionSecretResponse>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type GetActionResponseContentSecretsList = Array<ActionSecretResponse>;
-export const GetActionResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretResponse,
-) as any as S.Schema<GetActionResponseContentSecretsList>;
+export const GetActionResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<GetActionResponseContentSecretsList>;
 
 /** The list of third party npm modules, and their versions, that this specific version depends on. */
 export type ActionDeployedVersionDependenciesList = Array<ActionVersionDependency>;
-export const ActionDeployedVersionDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<ActionDeployedVersionDependenciesList>;
+export const ActionDeployedVersionDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<ActionDeployedVersionDependenciesList>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type ActionDeployedVersionSecretsList = Array<ActionSecretResponse>;
-export const ActionDeployedVersionSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretResponse,
-) as any as S.Schema<ActionDeployedVersionSecretsList>;
+export const ActionDeployedVersionSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<ActionDeployedVersionSecretsList>;
 
 /** The build status of this specific version. */
 export type ActionVersionBuildStatusEnum =
@@ -17583,9 +17031,8 @@ export const ActionDeployedVersionErrorsList = /*@__PURE__*/ S.Array(
 
 /** The list of triggers that this action supports. At this time, an action can only target a single trigger at a time. */
 export type ActionBaseSupportedTriggersList = Array<ActionTrigger>;
-export const ActionBaseSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<ActionBaseSupportedTriggersList>;
+export const ActionBaseSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<ActionBaseSupportedTriggersList>;
 
 /** The action to which this version belongs. */
 export interface ActionBase {
@@ -17615,9 +17062,8 @@ export const ActionBase = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of triggers that this version supports. At this time, a version can only target a single trigger at a time. */
 export type ActionDeployedVersionSupportedTriggersList = Array<ActionTrigger>;
-export const ActionDeployedVersionSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<ActionDeployedVersionSupportedTriggersList>;
+export const ActionDeployedVersionSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<ActionDeployedVersionSupportedTriggersList>;
 
 /** Reference to a module and its version used by an action. */
 export interface ActionModuleReference {
@@ -17789,9 +17235,8 @@ export const IntegrationReleaseRequiredSecretsList = /*@__PURE__*/ S.Array(
 
 /** required_configuration declares all the necessary configuration fields for an integration to work. */
 export type IntegrationReleaseRequiredConfigurationList = Array<IntegrationRequiredParam>;
-export const IntegrationReleaseRequiredConfigurationList = /*@__PURE__*/ S.Array(
-  IntegrationRequiredParam,
-) as any as S.Schema<IntegrationReleaseRequiredConfigurationList>;
+export const IntegrationReleaseRequiredConfigurationList =
+  IntegrationReleaseRequiredSecretsList as any as S.Schema<IntegrationReleaseRequiredConfigurationList>;
 
 export interface IntegrationRelease {
   /** The id of the associated IntegrationRelease */
@@ -17870,9 +17315,8 @@ export const ActionBuildStatusEnum = S.String;
 
 /** The list of action modules and their versions used by this action. */
 export type GetActionResponseContentModulesList = Array<ActionModuleReference>;
-export const GetActionResponseContentModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<GetActionResponseContentModulesList>;
+export const GetActionResponseContentModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<GetActionResponseContentModulesList>;
 
 export interface GetActionResponseContent {
   /** The unique ID of the action. */
@@ -17941,15 +17385,13 @@ export const GetActionModuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The npm dependencies from the module's draft version. */
 export type GetActionModuleResponseContentDependenciesList = Array<ActionModuleDependency>;
-export const GetActionModuleResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<GetActionModuleResponseContentDependenciesList>;
+export const GetActionModuleResponseContentDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<GetActionModuleResponseContentDependenciesList>;
 
 /** The secrets from the module's draft version (names and timestamps only, values never returned). */
 export type GetActionModuleResponseContentSecretsList = Array<ActionModuleSecret>;
-export const GetActionModuleResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<GetActionModuleResponseContentSecretsList>;
+export const GetActionModuleResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<GetActionModuleResponseContentSecretsList>;
 
 export interface GetActionModuleResponseContent {
   /** The unique ID of the module. */
@@ -17974,23 +17416,8 @@ export interface GetActionModuleResponseContent {
   updated_at?: string;
   latest_version?: ActionModuleVersionReference;
 }
-export const GetActionModuleResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    code: S.optional(S.String),
-    dependencies: S.optional(GetActionModuleResponseContentDependenciesList),
-    secrets: S.optional(GetActionModuleResponseContentSecretsList),
-    actions_using_module_total: S.optional(S.Number),
-    all_changes_published: S.optional(S.Boolean),
-    latest_version_number: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    latest_version: S.optional(ActionModuleVersionReference),
-  }),
-).annotate({
-  identifier: "GetActionModuleResponseContent",
-}) as any as S.Schema<GetActionModuleResponseContent>;
+export const GetActionModuleResponseContent =
+  CreateActionModuleResponseContent as any as S.Schema<GetActionModuleResponseContent>;
 
 export interface GetActionModuleActionsRequest {
   /** The unique ID of the module. */
@@ -18012,9 +17439,8 @@ export const GetActionModuleActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The triggers that this action supports. */
 export type ActionModuleActionSupportedTriggersList = Array<ActionTrigger>;
-export const ActionModuleActionSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<ActionModuleActionSupportedTriggersList>;
+export const ActionModuleActionSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<ActionModuleActionSupportedTriggersList>;
 
 export interface ActionModuleAction {
   /** The unique ID of the action. */
@@ -18080,15 +17506,13 @@ export const GetActionModulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The npm dependencies from the module's draft version. */
 export type ActionModuleListItemDependenciesList = Array<ActionModuleDependency>;
-export const ActionModuleListItemDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<ActionModuleListItemDependenciesList>;
+export const ActionModuleListItemDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<ActionModuleListItemDependenciesList>;
 
 /** The secrets from the module's draft version (names and timestamps only, values never returned). */
 export type ActionModuleListItemSecretsList = Array<ActionModuleSecret>;
-export const ActionModuleListItemSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<ActionModuleListItemSecretsList>;
+export const ActionModuleListItemSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<ActionModuleListItemSecretsList>;
 
 export interface ActionModuleListItem {
   /** The unique ID of the module. */
@@ -18171,15 +17595,13 @@ export const GetActionModuleVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Secrets available to this version (name and updated_at only, values never returned). */
 export type GetActionModuleVersionResponseContentSecretsList = Array<ActionModuleSecret>;
-export const GetActionModuleVersionResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<GetActionModuleVersionResponseContentSecretsList>;
+export const GetActionModuleVersionResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<GetActionModuleVersionResponseContentSecretsList>;
 
 /** Dependencies locked to this version. */
 export type GetActionModuleVersionResponseContentDependenciesList = Array<ActionModuleDependency>;
-export const GetActionModuleVersionResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<GetActionModuleVersionResponseContentDependenciesList>;
+export const GetActionModuleVersionResponseContentDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<GetActionModuleVersionResponseContentDependenciesList>;
 
 export interface GetActionModuleVersionResponseContent {
   /** The unique ID for this version. */
@@ -18197,19 +17619,8 @@ export interface GetActionModuleVersionResponseContent {
   /** The timestamp when this version was created. */
   created_at?: string;
 }
-export const GetActionModuleVersionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    module_id: S.optional(S.String),
-    version_number: S.optional(S.Number),
-    code: S.optional(S.String),
-    secrets: S.optional(GetActionModuleVersionResponseContentSecretsList),
-    dependencies: S.optional(GetActionModuleVersionResponseContentDependenciesList),
-    created_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetActionModuleVersionResponseContent",
-}) as any as S.Schema<GetActionModuleVersionResponseContent>;
+export const GetActionModuleVersionResponseContent =
+  CreateActionModuleVersionResponseContent as any as S.Schema<GetActionModuleVersionResponseContent>;
 
 export interface GetActionModuleVersionsRequest {
   /** The unique ID of the module. */
@@ -18231,15 +17642,13 @@ export const GetActionModuleVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Secrets available to this version (name and updated_at only, values never returned). */
 export type ActionModuleVersionSecretsList = Array<ActionModuleSecret>;
-export const ActionModuleVersionSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<ActionModuleVersionSecretsList>;
+export const ActionModuleVersionSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<ActionModuleVersionSecretsList>;
 
 /** Dependencies locked to this version. */
 export type ActionModuleVersionDependenciesList = Array<ActionModuleDependency>;
-export const ActionModuleVersionDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<ActionModuleVersionDependenciesList>;
+export const ActionModuleVersionDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<ActionModuleVersionDependenciesList>;
 
 export interface ActionModuleVersion {
   /** The unique ID for this version. */
@@ -18323,27 +17732,23 @@ export const GetActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of triggers that this action supports. At this time, an action can only target a single trigger at a time. */
 export type ActionSupportedTriggersList = Array<ActionTrigger>;
-export const ActionSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<ActionSupportedTriggersList>;
+export const ActionSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<ActionSupportedTriggersList>;
 
 /** The list of third party npm modules, and their versions, that this action depends on. */
 export type ActionDependenciesList = Array<ActionVersionDependency>;
-export const ActionDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<ActionDependenciesList>;
+export const ActionDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<ActionDependenciesList>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type ActionSecretsList = Array<ActionSecretResponse>;
-export const ActionSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretResponse,
-) as any as S.Schema<ActionSecretsList>;
+export const ActionSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<ActionSecretsList>;
 
 /** The list of action modules and their versions used by this action. */
 export type ActionModulesList = Array<ActionModuleReference>;
-export const ActionModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<ActionModulesList>;
+export const ActionModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<ActionModulesList>;
 
 export interface Action {
   /** The unique ID of the action. */
@@ -18378,27 +17783,7 @@ export interface Action {
   /** The list of action modules and their versions used by this action. */
   modules?: ActionModulesList;
 }
-export const Action = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    supported_triggers: S.optional(ActionSupportedTriggersList),
-    all_changes_deployed: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    code: S.optional(S.String),
-    dependencies: S.optional(ActionDependenciesList),
-    runtime: S.optional(S.String),
-    secrets: S.optional(ActionSecretsList),
-    deployed_version: S.optional(ActionDeployedVersion),
-    installed_integration_id: S.optional(S.String),
-    integration: S.optional(Integration),
-    status: S.optional(ActionBuildStatusEnum),
-    built_at: S.optional(S.String),
-    deploy: S.optional(S.Boolean),
-    modules: S.optional(ActionModulesList),
-  }),
-).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
+export const Action = GetActionResponseContent as any as S.Schema<Action>;
 
 /** The list of actions. */
 export type ListActionsPaginatedResponseContentActionsList = Array<Action>;
@@ -18442,33 +17827,28 @@ export const GetActionVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of third party npm modules, and their versions, that this specific version depends on. */
 export type GetActionVersionResponseContentDependenciesList = Array<ActionVersionDependency>;
-export const GetActionVersionResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<GetActionVersionResponseContentDependenciesList>;
+export const GetActionVersionResponseContentDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<GetActionVersionResponseContentDependenciesList>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type GetActionVersionResponseContentSecretsList = Array<ActionSecretResponse>;
-export const GetActionVersionResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretResponse,
-) as any as S.Schema<GetActionVersionResponseContentSecretsList>;
+export const GetActionVersionResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<GetActionVersionResponseContentSecretsList>;
 
 /** Any errors that occurred while the version was being built. */
 export type GetActionVersionResponseContentErrorsList = Array<ActionError>;
-export const GetActionVersionResponseContentErrorsList = /*@__PURE__*/ S.Array(
-  ActionError,
-) as any as S.Schema<GetActionVersionResponseContentErrorsList>;
+export const GetActionVersionResponseContentErrorsList =
+  ActionDeployedVersionErrorsList as any as S.Schema<GetActionVersionResponseContentErrorsList>;
 
 /** The list of triggers that this version supports. At this time, a version can only target a single trigger at a time. */
 export type GetActionVersionResponseContentSupportedTriggersList = Array<ActionTrigger>;
-export const GetActionVersionResponseContentSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<GetActionVersionResponseContentSupportedTriggersList>;
+export const GetActionVersionResponseContentSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<GetActionVersionResponseContentSupportedTriggersList>;
 
 /** The list of action modules and their versions used by this action version. */
 export type GetActionVersionResponseContentModulesList = Array<ActionModuleReference>;
-export const GetActionVersionResponseContentModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<GetActionVersionResponseContentModulesList>;
+export const GetActionVersionResponseContentModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<GetActionVersionResponseContentModulesList>;
 
 export interface GetActionVersionResponseContent {
   /** The unique id of an action version. */
@@ -18543,33 +17923,28 @@ export const GetActionVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of third party npm modules, and their versions, that this specific version depends on. */
 export type ActionVersionDependenciesList = Array<ActionVersionDependency>;
-export const ActionVersionDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<ActionVersionDependenciesList>;
+export const ActionVersionDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<ActionVersionDependenciesList>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type ActionVersionSecretsList = Array<ActionSecretResponse>;
-export const ActionVersionSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretResponse,
-) as any as S.Schema<ActionVersionSecretsList>;
+export const ActionVersionSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<ActionVersionSecretsList>;
 
 /** Any errors that occurred while the version was being built. */
 export type ActionVersionErrorsList = Array<ActionError>;
-export const ActionVersionErrorsList = /*@__PURE__*/ S.Array(
-  ActionError,
-) as any as S.Schema<ActionVersionErrorsList>;
+export const ActionVersionErrorsList =
+  ActionDeployedVersionErrorsList as any as S.Schema<ActionVersionErrorsList>;
 
 /** The list of triggers that this version supports. At this time, a version can only target a single trigger at a time. */
 export type ActionVersionSupportedTriggersList = Array<ActionTrigger>;
-export const ActionVersionSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<ActionVersionSupportedTriggersList>;
+export const ActionVersionSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<ActionVersionSupportedTriggersList>;
 
 /** The list of action modules and their versions used by this action version. */
 export type ActionVersionModulesList = Array<ActionModuleReference>;
-export const ActionVersionModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<ActionVersionModulesList>;
+export const ActionVersionModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<ActionVersionModulesList>;
 
 export interface ActionVersion {
   /** The unique id of an action version. */
@@ -18603,26 +17978,7 @@ export interface ActionVersion {
   /** The list of action modules and their versions used by this action version. */
   modules?: ActionVersionModulesList;
 }
-export const ActionVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    action_id: S.optional(S.String),
-    code: S.optional(S.String),
-    dependencies: S.optional(ActionVersionDependenciesList),
-    deployed: S.optional(S.Boolean),
-    runtime: S.optional(S.String),
-    secrets: S.optional(ActionVersionSecretsList),
-    status: S.optional(ActionVersionBuildStatusEnum),
-    number: S.optional(S.Number),
-    errors: S.optional(ActionVersionErrorsList),
-    action: S.optional(ActionBase),
-    built_at: S.optional(S.String),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    supported_triggers: S.optional(ActionVersionSupportedTriggersList),
-    modules: S.optional(ActionVersionModulesList),
-  }),
-).annotate({ identifier: "ActionVersion" }) as any as S.Schema<ActionVersion>;
+export const ActionVersion = ActionDeployedVersion as any as S.Schema<ActionVersion>;
 
 export type ListActionVersionsPaginatedResponseContentVersionsList = Array<ActionVersion>;
 export const ListActionVersionsPaginatedResponseContentVersionsList = /*@__PURE__*/ S.Array(
@@ -18820,10 +18176,7 @@ export const AculContextConfiguration = /*@__PURE__*/ S.Array(
 
 /** Attributes of the HTML tag. See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes"> MDN documentation</a> for valid attributes. */
 export type AculHeadTagAttributes = { [key: string]: unknown | undefined };
-export const AculHeadTagAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AculHeadTagAttributes>;
+export const AculHeadTagAttributes = AgentMetadata as any as S.Schema<AculHeadTagAttributes>;
 
 export interface AculHeadTag {
   /** Any HTML element valid for use in the head tag */
@@ -18853,18 +18206,11 @@ export interface AculClientFilterById {
   /** Client ID */
   id: string;
 }
-export const AculClientFilterById = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "AculClientFilterById" }) as any as S.Schema<AculClientFilterById>;
+export const AculClientFilterById = CredentialId as any as S.Schema<AculClientFilterById>;
 
 /** Client metadata key/value pairs */
 export type AculClientMetadata = { [key: string]: unknown | undefined };
-export const AculClientMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AculClientMetadata>;
+export const AculClientMetadata = AgentMetadata as any as S.Schema<AculClientMetadata>;
 
 export interface AculClientFilterByMetadata {
   metadata: AculClientMetadata;
@@ -18891,31 +18237,18 @@ export interface AculOrganizationFilterById {
   /** Organization ID */
   id: string;
 }
-export const AculOrganizationFilterById = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "AculOrganizationFilterById",
-}) as any as S.Schema<AculOrganizationFilterById>;
+export const AculOrganizationFilterById =
+  CreatePublicKeyDeviceCredentialResponseContent as any as S.Schema<AculOrganizationFilterById>;
 
 /** Organization metadata key/value pairs */
 export type AculOrganizationMetadata = { [key: string]: unknown | undefined };
-export const AculOrganizationMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AculOrganizationMetadata>;
+export const AculOrganizationMetadata = AgentMetadata as any as S.Schema<AculOrganizationMetadata>;
 
 export interface AculOrganizationFilterByMetadata {
   metadata: AculOrganizationMetadata;
 }
-export const AculOrganizationFilterByMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: AculOrganizationMetadata,
-  }),
-).annotate({
-  identifier: "AculOrganizationFilterByMetadata",
-}) as any as S.Schema<AculOrganizationFilterByMetadata>;
+export const AculOrganizationFilterByMetadata =
+  AculClientFilterByMetadata as any as S.Schema<AculOrganizationFilterByMetadata>;
 
 /** Organizations array filter items */
 export type AculOrganizationFilter = AculOrganizationFilterById | AculOrganizationFilterByMetadata;
@@ -18931,29 +18264,17 @@ export interface AculDomainFilterById {
   /** Domain ID */
   id: string;
 }
-export const AculDomainFilterById = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "AculDomainFilterById" }) as any as S.Schema<AculDomainFilterById>;
+export const AculDomainFilterById = CredentialId as any as S.Schema<AculDomainFilterById>;
 
 /** Domain metadata key/value pairs */
 export type AculDomainMetadata = { [key: string]: unknown | undefined };
-export const AculDomainMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AculDomainMetadata>;
+export const AculDomainMetadata = AgentMetadata as any as S.Schema<AculDomainMetadata>;
 
 export interface AculDomainFilterByMetadata {
   metadata: AculDomainMetadata;
 }
-export const AculDomainFilterByMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: AculDomainMetadata,
-  }),
-).annotate({
-  identifier: "AculDomainFilterByMetadata",
-}) as any as S.Schema<AculDomainFilterByMetadata>;
+export const AculDomainFilterByMetadata =
+  AculClientFilterByMetadata as any as S.Schema<AculDomainFilterByMetadata>;
 
 /** Domains array filter items */
 export type AculDomainFilter = AculDomainFilterById | AculDomainFilterByMetadata;
@@ -19025,9 +18346,8 @@ export const ListAculsResponseContentCase0List = /*@__PURE__*/ S.Array(
 
 export type ListAculsOffsetPaginatedResponseContentConfigsList =
   Array<ListAculsResponseContentItem>;
-export const ListAculsOffsetPaginatedResponseContentConfigsList = /*@__PURE__*/ S.Array(
-  ListAculsResponseContentItem,
-) as any as S.Schema<ListAculsOffsetPaginatedResponseContentConfigsList>;
+export const ListAculsOffsetPaginatedResponseContentConfigsList =
+  ListAculsResponseContentCase0List as any as S.Schema<ListAculsOffsetPaginatedResponseContentConfigsList>;
 
 export interface ListAculsOffsetPaginatedResponseContent {
   configs?: ListAculsOffsetPaginatedResponseContentConfigsList;
@@ -19144,9 +18464,8 @@ export const PreferredAuthenticationMethodEnum = S.String;
 
 /** Applies to passkeys only. The transports used by clients to communicate with the authenticator. */
 export type UserAuthenticationMethodTransportsList = Array<string>;
-export const UserAuthenticationMethodTransportsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserAuthenticationMethodTransportsList>;
+export const UserAuthenticationMethodTransportsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UserAuthenticationMethodTransportsList>;
 
 export interface UserAuthenticationMethod {
   /** The ID of the authentication method (auto generated) */
@@ -19299,9 +18618,8 @@ export const GetUserAuthenticationMethodResponseContentAuthenticationMethodsList
 
 /** Applies to passkeys only. The transports used by clients to communicate with the authenticator. */
 export type GetUserAuthenticationMethodResponseContentTransportsList = Array<string>;
-export const GetUserAuthenticationMethodResponseContentTransportsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserAuthenticationMethodResponseContentTransportsList>;
+export const GetUserAuthenticationMethodResponseContentTransportsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetUserAuthenticationMethodResponseContentTransportsList>;
 
 export interface GetUserAuthenticationMethodResponseContent {
   /** The ID of the authentication method (auto generated) */
@@ -19486,9 +18804,8 @@ export const BotDetectionChallengePolicyPasswordResetFlowEnum = S.String;
 
 /** List of IP addresses or CIDR blocks to allowlist */
 export type BotDetectionAllowlist = Array<string>;
-export const BotDetectionAllowlist = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotDetectionAllowlist>;
+export const BotDetectionAllowlist =
+  CreateClientRequestCallbacksList as any as S.Schema<BotDetectionAllowlist>;
 
 export interface GetBotDetectionSettingsResponseContent {
   bot_detection_level: BotDetectionLevelEnum;
@@ -19517,10 +18834,8 @@ export const GetBrandingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBrandingRequest" }) as any as S.Schema<GetBrandingRequest>;
 
 export type BrandingPageBackgroundCase1Map = { [key: string]: unknown | undefined };
-export const BrandingPageBackgroundCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<BrandingPageBackgroundCase1Map>;
+export const BrandingPageBackgroundCase1Map =
+  AgentMetadata as any as S.Schema<BrandingPageBackgroundCase1Map>;
 
 /** Page Background Color or Gradient. Property contains either `null` to unset, a solid color as a string value `#FFFFFF`, or a gradient as an object. ```js { type: 'linear-gradient', start: '#FFFFFF', end: '#000000', angle_deg: 35 } ``` */
 export type BrandingPageBackground = string | BrandingPageBackgroundCase1Map;
@@ -19596,20 +18911,8 @@ export interface PhoneProviderSchemaMasked {
   /** The date and time of the last update to the provider in ISO 8601 format */
   updated_at?: string;
 }
-export const PhoneProviderSchemaMasked = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tenant: S.optional(S.String),
-    name: PhoneProviderNameEnum,
-    channel: S.optional(PhoneProviderChannelEnum),
-    disabled: S.optional(S.Boolean),
-    configuration: S.optional(PhoneProviderConfiguration),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PhoneProviderSchemaMasked",
-}) as any as S.Schema<PhoneProviderSchemaMasked>;
+export const PhoneProviderSchemaMasked =
+  CreateBrandingPhoneProviderResponseContent as any as S.Schema<PhoneProviderSchemaMasked>;
 
 export type ListBrandingPhoneProvidersResponseContentProvidersList =
   Array<PhoneProviderSchemaMasked>;
@@ -19650,20 +18953,8 @@ export interface GetBrandingThemeResponseContent {
   themeId: string;
   widget: BrandingThemeWidget;
 }
-export const GetBrandingThemeResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    borders: BrandingThemeBorders,
-    colors: BrandingThemeColors,
-    displayName: S.String,
-    fonts: BrandingThemeFonts,
-    identifiers: S.optional(BrandingThemeIdentifiers),
-    page_background: BrandingThemePageBackground,
-    themeId: S.String,
-    widget: BrandingThemeWidget,
-  }),
-).annotate({
-  identifier: "GetBrandingThemeResponseContent",
-}) as any as S.Schema<GetBrandingThemeResponseContent>;
+export const GetBrandingThemeResponseContent =
+  CreateBrandingThemeResponseContent as any as S.Schema<GetBrandingThemeResponseContent>;
 
 export interface GetBreachedPasswordDetectionRequest {}
 export const GetBreachedPasswordDetectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -19816,9 +19107,8 @@ export const GetBruteForceSettingsResponseContentShieldsList = /*@__PURE__*/ S.A
 
 /** List of trusted IP addresses that will not have attack protection enforced against them. */
 export type GetBruteForceSettingsResponseContentAllowlistList = Array<string>;
-export const GetBruteForceSettingsResponseContentAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetBruteForceSettingsResponseContentAllowlistList>;
+export const GetBruteForceSettingsResponseContentAllowlistList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetBruteForceSettingsResponseContentAllowlistList>;
 
 /** Account Lockout: Determines whether or not IP address is used when counting failed attempts. Possible values: <code>count_per_identifier_and_ip</code>, <code>count_per_identifier</code>. */
 export type BruteForceProtectionModeEnum = "count_per_identifier_and_ip" | "count_per_identifier";
@@ -19907,13 +19197,8 @@ export interface AttackProtectionCaptchaFriendlyCaptchaResponseContent {
   /** The site key for the Friendly Captcha provider. */
   site_key?: string;
 }
-export const AttackProtectionCaptchaFriendlyCaptchaResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    site_key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AttackProtectionCaptchaFriendlyCaptchaResponseContent",
-}) as any as S.Schema<AttackProtectionCaptchaFriendlyCaptchaResponseContent>;
+export const AttackProtectionCaptchaFriendlyCaptchaResponseContent =
+  AttackProtectionCaptchaHcaptchaResponseContent as any as S.Schema<AttackProtectionCaptchaFriendlyCaptchaResponseContent>;
 
 export interface AttackProtectionCaptchaRecaptchaEnterpriseResponseContent {
   /** The site key for the reCAPTCHA Enterprise provider. */
@@ -19935,21 +19220,14 @@ export interface AttackProtectionCaptchaRecaptchaV2ResponseContent {
   /** The site key for the reCAPTCHA v2 provider. */
   site_key?: string;
 }
-export const AttackProtectionCaptchaRecaptchaV2ResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    site_key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AttackProtectionCaptchaRecaptchaV2ResponseContent",
-}) as any as S.Schema<AttackProtectionCaptchaRecaptchaV2ResponseContent>;
+export const AttackProtectionCaptchaRecaptchaV2ResponseContent =
+  AttackProtectionCaptchaHcaptchaResponseContent as any as S.Schema<AttackProtectionCaptchaRecaptchaV2ResponseContent>;
 
 export type AttackProtectionCaptchaSimpleCaptchaResponseContent = {
   [key: string]: unknown | undefined;
 };
-export const AttackProtectionCaptchaSimpleCaptchaResponseContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AttackProtectionCaptchaSimpleCaptchaResponseContent>;
+export const AttackProtectionCaptchaSimpleCaptchaResponseContent =
+  AgentMetadata as any as S.Schema<AttackProtectionCaptchaSimpleCaptchaResponseContent>;
 
 export interface GetAttackProtectionCaptchaResponseContent {
   active_provider_id?: string;
@@ -19994,52 +19272,44 @@ export const GetClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of URLs whitelisted for Auth0 to use as a callback to the client after authentication. */
 export type GetClientResponseContentCallbacksList = Array<string>;
-export const GetClientResponseContentCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientResponseContentCallbacksList>;
+export const GetClientResponseContentCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientResponseContentCallbacksList>;
 
 /** Comma-separated list of URLs allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if necessary. You can also use wildcards at the subdomain level (e.g., https://*.contoso.com). Query strings and hash information are not taken into account when validating these URLs. */
 export type GetClientResponseContentAllowedOriginsList = Array<string>;
-export const GetClientResponseContentAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientResponseContentAllowedOriginsList>;
+export const GetClientResponseContentAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientResponseContentAllowedOriginsList>;
 
 /** Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>. */
 export type GetClientResponseContentWebOriginsList = Array<string>;
-export const GetClientResponseContentWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientResponseContentWebOriginsList>;
+export const GetClientResponseContentWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientResponseContentWebOriginsList>;
 
 /** List of audiences/realms for SAML protocol. Used by the wsfed addon. */
 export type GetClientResponseContentClientAliasesList = Array<string>;
-export const GetClientResponseContentClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientResponseContentClientAliasesList>;
+export const GetClientResponseContentClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientResponseContentClientAliasesList>;
 
 /** List of allow clients and API ids that are allowed to make delegation requests. Empty means all all your clients are allowed. */
 export type GetClientResponseContentAllowedClientsList = Array<string>;
-export const GetClientResponseContentAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientResponseContentAllowedClientsList>;
+export const GetClientResponseContentAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientResponseContentAllowedClientsList>;
 
 /** Comma-separated list of URLs that are valid to redirect to after logout from Auth0. Wildcards are allowed for subdomains. */
 export type GetClientResponseContentAllowedLogoutUrlsList = Array<string>;
-export const GetClientResponseContentAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientResponseContentAllowedLogoutUrlsList>;
+export const GetClientResponseContentAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientResponseContentAllowedLogoutUrlsList>;
 
 /** List of grant types supported for this application. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type GetClientResponseContentGrantTypesList = Array<string>;
-export const GetClientResponseContentGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientResponseContentGrantTypesList>;
+export const GetClientResponseContentGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientResponseContentGrantTypesList>;
 
 /** Defines the available methods for organization discovery during the `pre_login_prompt`. Users can discover their organization either by `email`, `organization_name` or both. */
 export type GetClientResponseContentOrganizationDiscoveryMethodsList =
   Array<ClientOrganizationDiscoveryEnum>;
-export const GetClientResponseContentOrganizationDiscoveryMethodsList = /*@__PURE__*/ S.Array(
-  ClientOrganizationDiscoveryEnum,
-) as any as S.Schema<GetClientResponseContentOrganizationDiscoveryMethodsList>;
+export const GetClientResponseContentOrganizationDiscoveryMethodsList =
+  CreateClientRequestOrganizationDiscoveryMethodsList as any as S.Schema<GetClientResponseContentOrganizationDiscoveryMethodsList>;
 
 export interface GetClientResponseContent {
   /** ID of this client. */
@@ -20330,9 +19600,8 @@ export const GetClientConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. */
 export type ConnectionForListRealmsList = Array<string>;
-export const ConnectionForListRealmsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionForListRealmsList>;
+export const ConnectionForListRealmsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectionForListRealmsList>;
 
 export interface ConnectionForList {
   /** The name of the connection */
@@ -20405,15 +19674,13 @@ export const GetClientGrantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes allowed for this client grant. */
 export type GetClientGrantResponseContentScopeList = Array<string>;
-export const GetClientGrantResponseContentScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientGrantResponseContentScopeList>;
+export const GetClientGrantResponseContentScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientGrantResponseContentScopeList>;
 
 /** Types of authorization_details allowed for this client grant. */
 export type GetClientGrantResponseContentAuthorizationDetailsTypesList = Array<string>;
-export const GetClientGrantResponseContentAuthorizationDetailsTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetClientGrantResponseContentAuthorizationDetailsTypesList>;
+export const GetClientGrantResponseContentAuthorizationDetailsTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetClientGrantResponseContentAuthorizationDetailsTypesList>;
 
 export interface GetClientGrantResponseContent {
   /** ID of the client grant. */
@@ -20436,25 +19703,8 @@ export interface GetClientGrantResponseContent {
   /** If enabled, all scopes configured on the resource server are allowed for this grant. */
   allow_all_scopes?: boolean;
 }
-export const GetClientGrantResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    client_id: S.optional(S.String),
-    audience: S.optional(S.String),
-    scope: S.optional(GetClientGrantResponseContentScopeList),
-    organization_usage: S.optional(ClientGrantOrganizationUsageEnum),
-    allow_any_organization: S.optional(S.Boolean),
-    default_for: S.optional(ClientGrantDefaultForEnum),
-    is_system: S.optional(S.Boolean),
-    subject_type: S.optional(ClientGrantSubjectTypeEnum),
-    authorization_details_types: S.optional(
-      GetClientGrantResponseContentAuthorizationDetailsTypesList,
-    ),
-    allow_all_scopes: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetClientGrantResponseContent",
-}) as any as S.Schema<GetClientGrantResponseContent>;
+export const GetClientGrantResponseContent =
+  CreateClientGrantResponseContent as any as S.Schema<GetClientGrantResponseContent>;
 
 export interface GetClientGrantOrganizationsRequest {
   /** ID of the client grant */
@@ -20547,9 +19797,7 @@ export const ListClientGrantOrganizationsOffsetPaginatedResponseContent = /*@__P
 export type ListClientGrantOrganizationsPaginatedResponseContentOrganizationsList =
   Array<Organization>;
 export const ListClientGrantOrganizationsPaginatedResponseContentOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    Organization,
-  ) as any as S.Schema<ListClientGrantOrganizationsPaginatedResponseContentOrganizationsList>;
+  ListClientGrantOrganizationsOffsetPaginatedResponseContentOrganizationsList as any as S.Schema<ListClientGrantOrganizationsPaginatedResponseContentOrganizationsList>;
 
 export interface ListClientGrantOrganizationsPaginatedResponseContent {
   /** Opaque identifier for use with the <i>from</i> query parameter for the next page of results.<br/>This identifier is valid for 24 hours. */
@@ -20620,15 +19868,13 @@ export const GetClientGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes allowed for this client grant. */
 export type ClientGrantResponseContentScopeList = Array<string>;
-export const ClientGrantResponseContentScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientGrantResponseContentScopeList>;
+export const ClientGrantResponseContentScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientGrantResponseContentScopeList>;
 
 /** Types of authorization_details allowed for this client grant. */
 export type ClientGrantResponseContentAuthorizationDetailsTypesList = Array<string>;
-export const ClientGrantResponseContentAuthorizationDetailsTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientGrantResponseContentAuthorizationDetailsTypesList>;
+export const ClientGrantResponseContentAuthorizationDetailsTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientGrantResponseContentAuthorizationDetailsTypesList>;
 
 export interface ClientGrantResponseContent {
   /** ID of the client grant. */
@@ -20651,25 +19897,8 @@ export interface ClientGrantResponseContent {
   /** If enabled, all scopes configured on the resource server are allowed for this grant. */
   allow_all_scopes?: boolean;
 }
-export const ClientGrantResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    client_id: S.optional(S.String),
-    audience: S.optional(S.String),
-    scope: S.optional(ClientGrantResponseContentScopeList),
-    organization_usage: S.optional(ClientGrantOrganizationUsageEnum),
-    allow_any_organization: S.optional(S.Boolean),
-    default_for: S.optional(ClientGrantDefaultForEnum),
-    is_system: S.optional(S.Boolean),
-    subject_type: S.optional(ClientGrantSubjectTypeEnum),
-    authorization_details_types: S.optional(
-      ClientGrantResponseContentAuthorizationDetailsTypesList,
-    ),
-    allow_all_scopes: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClientGrantResponseContent",
-}) as any as S.Schema<ClientGrantResponseContent>;
+export const ClientGrantResponseContent =
+  CreateClientGrantResponseContent as any as S.Schema<ClientGrantResponseContent>;
 
 export type ListClientGrantResponseContentCase0List = Array<ClientGrantResponseContent>;
 export const ListClientGrantResponseContentCase0List = /*@__PURE__*/ S.Array(
@@ -20678,9 +19907,8 @@ export const ListClientGrantResponseContentCase0List = /*@__PURE__*/ S.Array(
 
 export type ListClientGrantOffsetPaginatedResponseContentClientGrantsList =
   Array<ClientGrantResponseContent>;
-export const ListClientGrantOffsetPaginatedResponseContentClientGrantsList = /*@__PURE__*/ S.Array(
-  ClientGrantResponseContent,
-) as any as S.Schema<ListClientGrantOffsetPaginatedResponseContentClientGrantsList>;
+export const ListClientGrantOffsetPaginatedResponseContentClientGrantsList =
+  ListClientGrantResponseContentCase0List as any as S.Schema<ListClientGrantOffsetPaginatedResponseContentClientGrantsList>;
 
 export interface ListClientGrantOffsetPaginatedResponseContent {
   start?: number;
@@ -20701,9 +19929,8 @@ export const ListClientGrantOffsetPaginatedResponseContent = /*@__PURE__*/ S.sus
 
 export type ListClientGrantPaginatedResponseContentClientGrantsList =
   Array<ClientGrantResponseContent>;
-export const ListClientGrantPaginatedResponseContentClientGrantsList = /*@__PURE__*/ S.Array(
-  ClientGrantResponseContent,
-) as any as S.Schema<ListClientGrantPaginatedResponseContentClientGrantsList>;
+export const ListClientGrantPaginatedResponseContentClientGrantsList =
+  ListClientGrantResponseContentCase0List as any as S.Schema<ListClientGrantPaginatedResponseContentClientGrantsList>;
 
 export interface ListClientGrantPaginatedResponseContent {
   /** Opaque identifier for use with the <i>from</i> query parameter for the next page of results.<br/>This identifier is valid for 24 hours. */
@@ -20776,51 +20003,43 @@ export const GetClientsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of URLs whitelisted for Auth0 to use as a callback to the client after authentication. */
 export type ClientCallbacksList = Array<string>;
-export const ClientCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientCallbacksList>;
+export const ClientCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientCallbacksList>;
 
 /** Comma-separated list of URLs allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if necessary. You can also use wildcards at the subdomain level (e.g., https://*.contoso.com). Query strings and hash information are not taken into account when validating these URLs. */
 export type ClientAllowedOriginsList = Array<string>;
-export const ClientAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientAllowedOriginsList>;
+export const ClientAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientAllowedOriginsList>;
 
 /** Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>. */
 export type ClientWebOriginsList = Array<string>;
-export const ClientWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientWebOriginsList>;
+export const ClientWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientWebOriginsList>;
 
 /** List of audiences/realms for SAML protocol. Used by the wsfed addon. */
 export type ClientClientAliasesList = Array<string>;
-export const ClientClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientClientAliasesList>;
+export const ClientClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientClientAliasesList>;
 
 /** List of allow clients and API ids that are allowed to make delegation requests. Empty means all all your clients are allowed. */
 export type ClientAllowedClientsList = Array<string>;
-export const ClientAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientAllowedClientsList>;
+export const ClientAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientAllowedClientsList>;
 
 /** Comma-separated list of URLs that are valid to redirect to after logout from Auth0. Wildcards are allowed for subdomains. */
 export type ClientAllowedLogoutUrlsList = Array<string>;
-export const ClientAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientAllowedLogoutUrlsList>;
+export const ClientAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientAllowedLogoutUrlsList>;
 
 /** List of grant types supported for this application. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type ClientGrantTypesList = Array<string>;
-export const ClientGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientGrantTypesList>;
+export const ClientGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientGrantTypesList>;
 
 /** Defines the available methods for organization discovery during the `pre_login_prompt`. Users can discover their organization either by `email`, `organization_name` or both. */
 export type ClientOrganizationDiscoveryMethodsList = Array<ClientOrganizationDiscoveryEnum>;
-export const ClientOrganizationDiscoveryMethodsList = /*@__PURE__*/ S.Array(
-  ClientOrganizationDiscoveryEnum,
-) as any as S.Schema<ClientOrganizationDiscoveryMethodsList>;
+export const ClientOrganizationDiscoveryMethodsList =
+  CreateClientRequestOrganizationDiscoveryMethodsList as any as S.Schema<ClientOrganizationDiscoveryMethodsList>;
 
 export interface Client {
   /** ID of this client. */
@@ -21013,9 +20232,8 @@ export const GetClientsResponseBodyCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetClientsResponseBodyCase0List>;
 
 export type ListClientsOffsetPaginatedResponseContentClientsList = Array<Client>;
-export const ListClientsOffsetPaginatedResponseContentClientsList = /*@__PURE__*/ S.Array(
-  Client,
-) as any as S.Schema<ListClientsOffsetPaginatedResponseContentClientsList>;
+export const ListClientsOffsetPaginatedResponseContentClientsList =
+  GetClientsResponseBodyCase0List as any as S.Schema<ListClientsOffsetPaginatedResponseContentClientsList>;
 
 export interface ListClientsOffsetPaginatedResponseContent {
   start?: number;
@@ -21035,9 +20253,8 @@ export const ListClientsOffsetPaginatedResponseContent = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListClientsOffsetPaginatedResponseContent>;
 
 export type ListClientsPaginatedResponseContentClientsList = Array<Client>;
-export const ListClientsPaginatedResponseContentClientsList = /*@__PURE__*/ S.Array(
-  Client,
-) as any as S.Schema<ListClientsPaginatedResponseContentClientsList>;
+export const ListClientsPaginatedResponseContentClientsList =
+  GetClientsResponseBodyCase0List as any as S.Schema<ListClientsPaginatedResponseContentClientsList>;
 
 export interface ListClientsPaginatedResponseContent {
   /** Opaque identifier for use with the <i>from</i> query parameter for the next page of results.<br/>This identifier is valid for 24 hours. */
@@ -21102,52 +20319,44 @@ export const GetClientsSearchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of URLs whitelisted for Auth0 to use as a callback to the client after authentication. */
 export type ClientSearchResponseCallbacksList = Array<string>;
-export const ClientSearchResponseCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSearchResponseCallbacksList>;
+export const ClientSearchResponseCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientSearchResponseCallbacksList>;
 
 /** Comma-separated list of URLs allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if necessary. You can also use wildcards at the subdomain level (e.g., https://*.contoso.com). Query strings and hash information are not taken into account when validating these URLs. */
 export type ClientSearchResponseAllowedOriginsList = Array<string>;
-export const ClientSearchResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSearchResponseAllowedOriginsList>;
+export const ClientSearchResponseAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientSearchResponseAllowedOriginsList>;
 
 /** Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>. */
 export type ClientSearchResponseWebOriginsList = Array<string>;
-export const ClientSearchResponseWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSearchResponseWebOriginsList>;
+export const ClientSearchResponseWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientSearchResponseWebOriginsList>;
 
 /** List of audiences/realms for SAML protocol. Used by the wsfed addon. */
 export type ClientSearchResponseClientAliasesList = Array<string>;
-export const ClientSearchResponseClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSearchResponseClientAliasesList>;
+export const ClientSearchResponseClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientSearchResponseClientAliasesList>;
 
 /** List of allow clients and API ids that are allowed to make delegation requests. Empty means all all your clients are allowed. */
 export type ClientSearchResponseAllowedClientsList = Array<string>;
-export const ClientSearchResponseAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSearchResponseAllowedClientsList>;
+export const ClientSearchResponseAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientSearchResponseAllowedClientsList>;
 
 /** Comma-separated list of URLs that are valid to redirect to after logout from Auth0. Wildcards are allowed for subdomains. */
 export type ClientSearchResponseAllowedLogoutUrlsList = Array<string>;
-export const ClientSearchResponseAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSearchResponseAllowedLogoutUrlsList>;
+export const ClientSearchResponseAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientSearchResponseAllowedLogoutUrlsList>;
 
 /** List of grant types supported for this application. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type ClientSearchResponseGrantTypesList = Array<string>;
-export const ClientSearchResponseGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClientSearchResponseGrantTypesList>;
+export const ClientSearchResponseGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ClientSearchResponseGrantTypesList>;
 
 /** Defines the available methods for organization discovery during the `pre_login_prompt`. Users can discover their organization either by `email`, `organization_name` or both. */
 export type ClientSearchResponseOrganizationDiscoveryMethodsList =
   Array<ClientOrganizationDiscoveryEnum>;
-export const ClientSearchResponseOrganizationDiscoveryMethodsList = /*@__PURE__*/ S.Array(
-  ClientOrganizationDiscoveryEnum,
-) as any as S.Schema<ClientSearchResponseOrganizationDiscoveryMethodsList>;
+export const ClientSearchResponseOrganizationDiscoveryMethodsList =
+  CreateClientRequestOrganizationDiscoveryMethodsList as any as S.Schema<ClientSearchResponseOrganizationDiscoveryMethodsList>;
 
 export interface ClientSearchResponse {
   /** ID of this client. */
@@ -21372,9 +20581,8 @@ export const ConnectedAccountAccessTypeEnum = S.String;
 
 /** The scopes granted for this connected account. */
 export type ConnectedAccountScopesList = Array<string>;
-export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedAccountScopesList>;
+export const ConnectedAccountScopesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ConnectedAccountScopesList>;
 
 export interface ConnectedAccount {
   /** The unique identifier for the connected account. */
@@ -21446,15 +20654,13 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. */
 export type GetConnectionResponseContentRealmsList = Array<string>;
-export const GetConnectionResponseContentRealmsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConnectionResponseContentRealmsList>;
+export const GetConnectionResponseContentRealmsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetConnectionResponseContentRealmsList>;
 
 /** DEPRECATED property. Use the GET /connections/:id/clients endpoint to get the ids of the clients for which the connection is enabled */
 export type GetConnectionResponseContentEnabledClientsList = Array<string>;
-export const GetConnectionResponseContentEnabledClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConnectionResponseContentEnabledClientsList>;
+export const GetConnectionResponseContentEnabledClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetConnectionResponseContentEnabledClientsList>;
 
 export interface GetConnectionResponseContent {
   /** The name of the connection */
@@ -21480,26 +20686,8 @@ export interface GetConnectionResponseContent {
   cross_app_access_requesting_app?: CrossAppAccessRequestingApp;
   cross_app_access_resource_app?: CrossAppAccessResourceApp;
 }
-export const GetConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    display_name: S.optional(S.String),
-    options: S.optional(ConnectionOptions),
-    id: S.optional(S.String),
-    strategy: S.optional(S.String),
-    realms: S.optional(GetConnectionResponseContentRealmsList),
-    enabled_clients: S.optional(GetConnectionResponseContentEnabledClientsList),
-    is_domain_connection: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    metadata: S.optional(ConnectionsMetadata),
-    authentication: S.optional(ConnectionAuthenticationPurpose),
-    connected_accounts: S.optional(ConnectionConnectedAccountsPurpose),
-    cross_app_access_requesting_app: S.optional(CrossAppAccessRequestingApp),
-    cross_app_access_resource_app: S.optional(CrossAppAccessResourceApp),
-  }),
-).annotate({
-  identifier: "GetConnectionResponseContent",
-}) as any as S.Schema<GetConnectionResponseContent>;
+export const GetConnectionResponseContent =
+  CreateConnectionResponseContent as any as S.Schema<GetConnectionResponseContent>;
 
 export interface GetConnectionClientsRequest {
   /** The id of the connection for which enabled clients are to be retrieved */
@@ -21573,21 +20761,8 @@ export interface GetConnectionProfileResponseContent {
   provisioning?: ConnectionProfileStrategyOverridesProvisioning;
   cross_app_access_resource_app?: ConnectionProfileCrossAppAccessResourceApp;
 }
-export const GetConnectionProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    organization: S.optional(ConnectionProfileOrganization),
-    connection_name_prefix_template: S.optional(S.String),
-    enabled_features: S.optional(ConnectionProfileEnabledFeatures),
-    connection_config: S.optional(S.Unknown),
-    strategy_overrides: S.optional(ConnectionProfileStrategyOverrides),
-    provisioning: S.optional(ConnectionProfileStrategyOverridesProvisioning),
-    cross_app_access_resource_app: S.optional(ConnectionProfileCrossAppAccessResourceApp),
-  }),
-).annotate({
-  identifier: "GetConnectionProfileResponseContent",
-}) as any as S.Schema<GetConnectionProfileResponseContent>;
+export const GetConnectionProfileResponseContent =
+  CreateConnectionProfileResponseContent as any as S.Schema<GetConnectionProfileResponseContent>;
 
 export interface GetConnectionProfilesRequest {
   /** Optional Id from which to start selection. */
@@ -21719,15 +20894,8 @@ export interface ConnectionProfileTemplateItem {
   display_name?: string;
   template?: ConnectionProfileTemplate;
 }
-export const ConnectionProfileTemplateItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    display_name: S.optional(S.String),
-    template: S.optional(ConnectionProfileTemplate),
-  }),
-).annotate({
-  identifier: "ConnectionProfileTemplateItem",
-}) as any as S.Schema<ConnectionProfileTemplateItem>;
+export const ConnectionProfileTemplateItem =
+  GetConnectionProfileTemplateResponseContent as any as S.Schema<ConnectionProfileTemplateItem>;
 
 export type ListConnectionProfileTemplateResponseContentConnectionProfileTemplatesList =
   Array<ConnectionProfileTemplateItem>;
@@ -21750,9 +20918,8 @@ export const ListConnectionProfileTemplateResponseContent = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListConnectionProfileTemplateResponseContent>;
 
 export type GetConnectionsRequestStrategyList = Array<ConnectionStrategyEnum | (string & {})>;
-export const GetConnectionsRequestStrategyList = /*@__PURE__*/ S.Array(
-  ConnectionStrategyEnum,
-) as any as S.Schema<GetConnectionsRequestStrategyList>;
+export const GetConnectionsRequestStrategyList =
+  GetClientConnectionsRequestStrategyList as any as S.Schema<GetConnectionsRequestStrategyList>;
 
 export interface GetConnectionsRequest {
   /** The amount of entries per page. Defaults to 100 if not provided */
@@ -21789,14 +20956,12 @@ export const GetConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConnectionsRequest" }) as any as S.Schema<GetConnectionsRequest>;
 
 export type ListConnectionsResponseContentCase0List = Array<ConnectionForList>;
-export const ListConnectionsResponseContentCase0List = /*@__PURE__*/ S.Array(
-  ConnectionForList,
-) as any as S.Schema<ListConnectionsResponseContentCase0List>;
+export const ListConnectionsResponseContentCase0List =
+  ListClientConnectionsResponseContentConnectionsList as any as S.Schema<ListConnectionsResponseContentCase0List>;
 
 export type ListConnectionsOffsetPaginatedResponseContentConnectionsList = Array<ConnectionForList>;
-export const ListConnectionsOffsetPaginatedResponseContentConnectionsList = /*@__PURE__*/ S.Array(
-  ConnectionForList,
-) as any as S.Schema<ListConnectionsOffsetPaginatedResponseContentConnectionsList>;
+export const ListConnectionsOffsetPaginatedResponseContentConnectionsList =
+  ListClientConnectionsResponseContentConnectionsList as any as S.Schema<ListConnectionsOffsetPaginatedResponseContentConnectionsList>;
 
 export interface ListConnectionsOffsetPaginatedResponseContent {
   start?: number;
@@ -22278,9 +21443,8 @@ export const ListCustomDomainsResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListCustomDomainsResponseContentCase0List>;
 
 export type ListCustomDomainsPaginatedResponseContentCustomDomainsList = Array<CustomDomain>;
-export const ListCustomDomainsPaginatedResponseContentCustomDomainsList = /*@__PURE__*/ S.Array(
-  CustomDomain,
-) as any as S.Schema<ListCustomDomainsPaginatedResponseContentCustomDomainsList>;
+export const ListCustomDomainsPaginatedResponseContentCustomDomainsList =
+  ListCustomDomainsResponseContentCase0List as any as S.Schema<ListCustomDomainsPaginatedResponseContentCustomDomainsList>;
 
 export interface ListCustomDomainsPaginatedResponseContent {
   custom_domains: ListCustomDomainsPaginatedResponseContentCustomDomainsList;
@@ -22350,9 +21514,8 @@ export const CustomSigningKeyCurveEnum = S.String;
 
 /** X.509 certificate chain */
 export type CustomSigningKeyJWKX5cList = Array<string>;
-export const CustomSigningKeyJWKX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomSigningKeyJWKX5cList>;
+export const CustomSigningKeyJWKX5cList =
+  CreateClientRequestCallbacksList as any as S.Schema<CustomSigningKeyJWKX5cList>;
 
 /** JWK representing a custom public signing key. */
 export interface CustomSigningKeyJWK {
@@ -22563,10 +21726,8 @@ export const GetCustomTextByLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An object containing custom dictionaries for a group of screens. */
 export type GetCustomTextsByLanguageResponseContent = { [key: string]: unknown | undefined };
-export const GetCustomTextsByLanguageResponseContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetCustomTextsByLanguageResponseContent>;
+export const GetCustomTextsByLanguageResponseContent =
+  AgentMetadata as any as S.Schema<GetCustomTextsByLanguageResponseContent>;
 
 export type GetCustomTextByLanguageResponse = GetCustomTextsByLanguageResponseContent;
 export const GetCustomTextByLanguageResponse = /*@__PURE__*/ S.suspend(() =>
@@ -22673,20 +21834,8 @@ export interface GetBrandingDefaultThemeResponseContent {
   themeId: string;
   widget: BrandingThemeWidget;
 }
-export const GetBrandingDefaultThemeResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    borders: BrandingThemeBorders,
-    colors: BrandingThemeColors,
-    displayName: S.String,
-    fonts: BrandingThemeFonts,
-    identifiers: S.optional(BrandingThemeIdentifiers),
-    page_background: BrandingThemePageBackground,
-    themeId: S.String,
-    widget: BrandingThemeWidget,
-  }),
-).annotate({
-  identifier: "GetBrandingDefaultThemeResponseContent",
-}) as any as S.Schema<GetBrandingDefaultThemeResponseContent>;
+export const GetBrandingDefaultThemeResponseContent =
+  CreateBrandingThemeResponseContent as any as S.Schema<GetBrandingDefaultThemeResponseContent>;
 
 export interface GetDefaultMappingRequest {
   /** The id of the connection to retrieve its default SCIM mapping */
@@ -22706,9 +21855,8 @@ export const GetDefaultMappingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The mapping between auth0 and SCIM */
 export type GetScimConfigurationDefaultMappingResponseContentMappingList = Array<ScimMappingItem>;
-export const GetScimConfigurationDefaultMappingResponseContentMappingList = /*@__PURE__*/ S.Array(
-  ScimMappingItem,
-) as any as S.Schema<GetScimConfigurationDefaultMappingResponseContentMappingList>;
+export const GetScimConfigurationDefaultMappingResponseContentMappingList =
+  ScimConfigurationMappingList as any as S.Schema<GetScimConfigurationDefaultMappingResponseContentMappingList>;
 
 export interface GetScimConfigurationDefaultMappingResponseContent {
   /** The mapping between auth0 and SCIM */
@@ -22799,10 +21947,8 @@ export const GetEventStreamDeliveryHistoryResponseContentAttemptsList = /*@__PUR
 
 /** Event contents. */
 export type EventStreamCloudEventData = { [key: string]: unknown | undefined };
-export const EventStreamCloudEventData = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EventStreamCloudEventData>;
+export const EventStreamCloudEventData =
+  AgentMetadata as any as S.Schema<EventStreamCloudEventData>;
 
 /** Event content. This will only be set if delivery failed. */
 export interface EventStreamCloudEvent {
@@ -22975,9 +22121,8 @@ export const GetDirectoryProvisioningRequest = /*@__PURE__*/ S.suspend(() =>
 /** The mapping between Auth0 and IDP user attributes */
 export type GetDirectoryProvisioningResponseContentMappingList =
   Array<DirectoryProvisioningMappingItem>;
-export const GetDirectoryProvisioningResponseContentMappingList = /*@__PURE__*/ S.Array(
-  DirectoryProvisioningMappingItem,
-) as any as S.Schema<GetDirectoryProvisioningResponseContentMappingList>;
+export const GetDirectoryProvisioningResponseContentMappingList =
+  DirectoryProvisioningMappingList as any as S.Schema<GetDirectoryProvisioningResponseContentMappingList>;
 
 export interface GetDirectoryProvisioningResponseContent {
   /** The connection's identifier */
@@ -23159,18 +22304,8 @@ export interface GetOrganizationDiscoveryDomainResponseContent {
   /** The full domain where the TXT record should be added. */
   verification_host: string;
 }
-export const GetOrganizationDiscoveryDomainResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domain: S.String,
-    status: OrganizationDiscoveryDomainStatus,
-    use_for_organization_discovery: S.optional(S.Boolean),
-    verification_txt: S.String,
-    verification_host: S.String,
-  }),
-).annotate({
-  identifier: "GetOrganizationDiscoveryDomainResponseContent",
-}) as any as S.Schema<GetOrganizationDiscoveryDomainResponseContent>;
+export const GetOrganizationDiscoveryDomainResponseContent =
+  OrganizationDiscoveryDomain as any as S.Schema<GetOrganizationDiscoveryDomainResponseContent>;
 
 export interface GetEmailFactorSettingsRequest {}
 export const GetEmailFactorSettingsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -23283,9 +22418,8 @@ export const OrganizationConnection = OrganizationEnabledConnection;
 
 export type ListOrganizationConnectionsResponseContentCase0List =
   Array<OrganizationEnabledConnection>;
-export const ListOrganizationConnectionsResponseContentCase0List = /*@__PURE__*/ S.Array(
-  OrganizationEnabledConnection,
-) as any as S.Schema<ListOrganizationConnectionsResponseContentCase0List>;
+export const ListOrganizationConnectionsResponseContentCase0List =
+  CreateOrganizationResponseContentEnabledConnectionsList as any as S.Schema<ListOrganizationConnectionsResponseContentCase0List>;
 
 export type ListOrganizationConnectionsOffsetPaginatedResponseContentEnabledConnectionsList =
   Array<OrganizationEnabledConnection>;
@@ -23359,17 +22493,8 @@ export interface GetOrganizationConnectionResponseContent {
   is_signup_enabled?: boolean;
   connection?: OrganizationConnectionInformation;
 }
-export const GetOrganizationConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_id: S.optional(S.String),
-    assign_membership_on_login: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    is_signup_enabled: S.optional(S.Boolean),
-    connection: S.optional(OrganizationConnectionInformation),
-  }),
-).annotate({
-  identifier: "GetOrganizationConnectionResponseContent",
-}) as any as S.Schema<GetOrganizationConnectionResponseContent>;
+export const GetOrganizationConnectionResponseContent =
+  OrganizationEnabledConnection as any as S.Schema<GetOrganizationConnectionResponseContent>;
 
 export interface GetEncryptionKeyRequest {
   /** Encryption key ID */
@@ -23473,9 +22598,8 @@ export const ListEncryptionKeysResponseContentCase0List = /*@__PURE__*/ S.Array(
 
 /** Encryption keys. */
 export type ListEncryptionKeyOffsetPaginatedResponseContentKeysList = Array<EncryptionKey>;
-export const ListEncryptionKeyOffsetPaginatedResponseContentKeysList = /*@__PURE__*/ S.Array(
-  EncryptionKey,
-) as any as S.Schema<ListEncryptionKeyOffsetPaginatedResponseContentKeysList>;
+export const ListEncryptionKeyOffsetPaginatedResponseContentKeysList =
+  ListEncryptionKeysResponseContentCase0List as any as S.Schema<ListEncryptionKeyOffsetPaginatedResponseContentKeysList>;
 
 export interface ListEncryptionKeyOffsetPaginatedResponseContent {
   /** Page index of the results to return. First page is 0. */
@@ -23631,10 +22755,7 @@ export const GetErrorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User, as provided in the import file */
 export type GetJobUserError = { [key: string]: unknown | undefined };
-export const GetJobUserError = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetJobUserError>;
+export const GetJobUserError = AgentMetadata as any as S.Schema<GetJobUserError>;
 
 export interface GetJobImportUserError {
   /** Error code. */
@@ -23746,9 +22867,8 @@ export const GetEventDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of delivery attempts */
 export type EventStreamDeliveryAttemptsList = Array<EventStreamDeliveryAttempt>;
-export const EventStreamDeliveryAttemptsList = /*@__PURE__*/ S.Array(
-  EventStreamDeliveryAttempt,
-) as any as S.Schema<EventStreamDeliveryAttemptsList>;
+export const EventStreamDeliveryAttemptsList =
+  GetEventStreamDeliveryHistoryResponseContentAttemptsList as any as S.Schema<EventStreamDeliveryAttemptsList>;
 
 /** Metadata about a specific attempt to deliver an event */
 export interface EventStreamDelivery {
@@ -23936,27 +23056,22 @@ export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetExperimentResponseContentFeatureFlagSnapshotMap = {
   [key: string]: unknown | undefined;
 };
-export const GetExperimentResponseContentFeatureFlagSnapshotMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetExperimentResponseContentFeatureFlagSnapshotMap>;
+export const GetExperimentResponseContentFeatureFlagSnapshotMap =
+  AgentMetadata as any as S.Schema<GetExperimentResponseContentFeatureFlagSnapshotMap>;
 
 export type GetExperimentResponseContentAllocationsList = Array<AllocationItem>;
-export const GetExperimentResponseContentAllocationsList = /*@__PURE__*/ S.Array(
-  AllocationItem,
-) as any as S.Schema<GetExperimentResponseContentAllocationsList>;
+export const GetExperimentResponseContentAllocationsList =
+  CreateExperimentResponseContentAllocationsList as any as S.Schema<GetExperimentResponseContentAllocationsList>;
 
 /** Fields that may be mutated given the experiment's current status. Computed at response time; always current with the API's enforcement logic. */
 export type GetExperimentResponseContentEditableFieldsList = Array<string>;
-export const GetExperimentResponseContentEditableFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetExperimentResponseContentEditableFieldsList>;
+export const GetExperimentResponseContentEditableFieldsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetExperimentResponseContentEditableFieldsList>;
 
 /** Ramp experiment levels configuration. */
 export type GetExperimentResponseContentLevelsList = Array<number>;
-export const GetExperimentResponseContentLevelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetExperimentResponseContentLevelsList>;
+export const GetExperimentResponseContentLevelsList =
+  CreateExperimentRequestLevelsList as any as S.Schema<GetExperimentResponseContentLevelsList>;
 
 export interface GetExperimentResponseContent {
   id: string;
@@ -24031,27 +23146,22 @@ export const GetExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetExperimentsRequest" }) as any as S.Schema<GetExperimentsRequest>;
 
 export type ExperimentListItemFeatureFlagSnapshotMap = { [key: string]: unknown | undefined };
-export const ExperimentListItemFeatureFlagSnapshotMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExperimentListItemFeatureFlagSnapshotMap>;
+export const ExperimentListItemFeatureFlagSnapshotMap =
+  AgentMetadata as any as S.Schema<ExperimentListItemFeatureFlagSnapshotMap>;
 
 export type ExperimentListItemAllocationsList = Array<AllocationItem>;
-export const ExperimentListItemAllocationsList = /*@__PURE__*/ S.Array(
-  AllocationItem,
-) as any as S.Schema<ExperimentListItemAllocationsList>;
+export const ExperimentListItemAllocationsList =
+  CreateExperimentResponseContentAllocationsList as any as S.Schema<ExperimentListItemAllocationsList>;
 
 /** Fields that may be mutated given the experiment's current status. Computed at response time; always current with the API's enforcement logic. */
 export type ExperimentListItemEditableFieldsList = Array<string>;
-export const ExperimentListItemEditableFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentListItemEditableFieldsList>;
+export const ExperimentListItemEditableFieldsList =
+  CreateClientRequestCallbacksList as any as S.Schema<ExperimentListItemEditableFieldsList>;
 
 /** Ramp experiment levels configuration. */
 export type ExperimentListItemLevelsList = Array<number>;
-export const ExperimentListItemLevelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ExperimentListItemLevelsList>;
+export const ExperimentListItemLevelsList =
+  CreateExperimentRequestLevelsList as any as S.Schema<ExperimentListItemLevelsList>;
 
 export interface ExperimentListItem {
   id: string;
@@ -24235,14 +23345,8 @@ export interface GetGuardianFactorSmsTemplatesResponseContent {
   /** Message sent to the user when they are prompted to verify their account. */
   verification_message: string;
 }
-export const GetGuardianFactorSmsTemplatesResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enrollment_message: S.String,
-    verification_message: S.String,
-  }),
-).annotate({
-  identifier: "GetGuardianFactorSmsTemplatesResponseContent",
-}) as any as S.Schema<GetGuardianFactorSmsTemplatesResponseContent>;
+export const GetGuardianFactorSmsTemplatesResponseContent =
+  GetGuardianFactorPhoneTemplatesResponseContent as any as S.Schema<GetGuardianFactorSmsTemplatesResponseContent>;
 
 export interface GetFeatureFlagRequest {
   /** The ID of the feature flag to retrieve. */
@@ -24264,20 +23368,8 @@ export interface GetFeatureFlagResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const GetFeatureFlagResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: FeatureFlagTypeEnum,
-    status: FeatureFlagStatusEnum,
-    parameters: S.optional(FeatureFlagConfigParams),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "GetFeatureFlagResponseContent",
-}) as any as S.Schema<GetFeatureFlagResponseContent>;
+export const GetFeatureFlagResponseContent =
+  CreateFeatureFlagResponseContent as any as S.Schema<GetFeatureFlagResponseContent>;
 
 export interface GetFeatureFlagsRequest {
   /** Optional Id from which to start selection. */
@@ -24362,9 +23454,8 @@ export const GetFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFlowRequest" }) as any as S.Schema<GetFlowRequest>;
 
 export type GetFlowResponseContentActionsList = Array<FlowAction>;
-export const GetFlowResponseContentActionsList = /*@__PURE__*/ S.Array(
-  FlowAction,
-) as any as S.Schema<GetFlowResponseContentActionsList>;
+export const GetFlowResponseContentActionsList =
+  CreateFlowRequestActionsList as any as S.Schema<GetFlowResponseContentActionsList>;
 
 export interface GetFlowResponseContent {
   id: string;
@@ -24440,9 +23531,8 @@ export const ListFlowsResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListFlowsResponseContentCase0List>;
 
 export type ListFlowsOffsetPaginatedResponseContentFlowsList = Array<FlowSummary>;
-export const ListFlowsOffsetPaginatedResponseContentFlowsList = /*@__PURE__*/ S.Array(
-  FlowSummary,
-) as any as S.Schema<ListFlowsOffsetPaginatedResponseContentFlowsList>;
+export const ListFlowsOffsetPaginatedResponseContentFlowsList =
+  ListFlowsResponseContentCase0List as any as S.Schema<ListFlowsOffsetPaginatedResponseContentFlowsList>;
 
 export interface ListFlowsOffsetPaginatedResponseContent {
   start?: number;
@@ -24499,10 +23589,7 @@ export const GetFlowsExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Flow execution debug. */
 export type FlowExecutionDebug = { [key: string]: unknown | undefined };
-export const FlowExecutionDebug = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<FlowExecutionDebug>;
+export const FlowExecutionDebug = AgentMetadata as any as S.Schema<FlowExecutionDebug>;
 
 export interface GetFlowExecutionResponseContent {
   /** Flow execution identifier */
@@ -24604,9 +23691,8 @@ export const ListFlowExecutionsResponseContent = /*@__PURE__*/ S.Array(
 
 export type ListFlowExecutionsOffsetPaginatedResponseContentExecutionsList =
   Array<FlowExecutionSummary>;
-export const ListFlowExecutionsOffsetPaginatedResponseContentExecutionsList = /*@__PURE__*/ S.Array(
-  FlowExecutionSummary,
-) as any as S.Schema<ListFlowExecutionsOffsetPaginatedResponseContentExecutionsList>;
+export const ListFlowExecutionsOffsetPaginatedResponseContentExecutionsList =
+  ListFlowExecutionsResponseContent as any as S.Schema<ListFlowExecutionsOffsetPaginatedResponseContentExecutionsList>;
 
 export interface ListFlowExecutionsOffsetPaginatedResponseContent {
   start?: number;
@@ -24626,9 +23712,8 @@ export const ListFlowExecutionsOffsetPaginatedResponseContent = /*@__PURE__*/ S.
 }) as any as S.Schema<ListFlowExecutionsOffsetPaginatedResponseContent>;
 
 export type ListFlowExecutionsPaginatedResponseContentExecutionsList = Array<FlowExecutionSummary>;
-export const ListFlowExecutionsPaginatedResponseContentExecutionsList = /*@__PURE__*/ S.Array(
-  FlowExecutionSummary,
-) as any as S.Schema<ListFlowExecutionsPaginatedResponseContentExecutionsList>;
+export const ListFlowExecutionsPaginatedResponseContentExecutionsList =
+  ListFlowExecutionsResponseContent as any as S.Schema<ListFlowExecutionsPaginatedResponseContentExecutionsList>;
 
 export interface ListFlowExecutionsPaginatedResponseContent {
   /** Opaque identifier for use with the <i>from</i> query parameter for the next page of results.<br/>This identifier is valid for 24 hours. */
@@ -24691,22 +23776,8 @@ export interface GetFlowsVaultConnectionResponseContent {
   refreshed_at?: string;
   fingerprint: string;
 }
-export const GetFlowsVaultConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    app_id: S.String,
-    environment: S.optional(S.String),
-    name: S.String,
-    account_name: S.optional(S.String),
-    ready: S.Boolean,
-    created_at: S.String,
-    updated_at: S.String,
-    refreshed_at: S.optional(S.String),
-    fingerprint: S.String,
-  }),
-).annotate({
-  identifier: "GetFlowsVaultConnectionResponseContent",
-}) as any as S.Schema<GetFlowsVaultConnectionResponseContent>;
+export const GetFlowsVaultConnectionResponseContent =
+  CreateFlowsVaultConnectionResponseContent as any as S.Schema<GetFlowsVaultConnectionResponseContent>;
 
 export interface GetFlowsVaultConnectionsRequest {
   /** Page index of the results to return. First page is 0. */
@@ -24858,9 +23929,8 @@ export const GetFormResponseContent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFormResponseContent" }) as any as S.Schema<GetFormResponseContent>;
 
 export type GetFormsRequestHydrateList = Array<FormsRequestParametersHydrateEnum | (string & {})>;
-export const GetFormsRequestHydrateList = /*@__PURE__*/ S.Array(
-  FormsRequestParametersHydrateEnum,
-) as any as S.Schema<GetFormsRequestHydrateList>;
+export const GetFormsRequestHydrateList =
+  GetFormRequestHydrateList as any as S.Schema<GetFormsRequestHydrateList>;
 
 export interface GetFormsRequest {
   /** Page index of the results to return. First page is 0. */
@@ -24906,9 +23976,8 @@ export const ListFormsResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListFormsResponseContentCase0List>;
 
 export type ListFormsOffsetPaginatedResponseContentFormsList = Array<FormSummary>;
-export const ListFormsOffsetPaginatedResponseContentFormsList = /*@__PURE__*/ S.Array(
-  FormSummary,
-) as any as S.Schema<ListFormsOffsetPaginatedResponseContentFormsList>;
+export const ListFormsOffsetPaginatedResponseContentFormsList =
+  ListFormsResponseContentCase0List as any as S.Schema<ListFormsOffsetPaginatedResponseContentFormsList>;
 
 export interface ListFormsOffsetPaginatedResponseContent {
   start?: number;
@@ -24964,9 +24033,8 @@ export const GetGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes included in this grant. */
 export type UserGrantScopeList = Array<string>;
-export const UserGrantScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserGrantScopeList>;
+export const UserGrantScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<UserGrantScopeList>;
 
 export interface UserGrant {
   /** ID of the grant. */
@@ -24999,9 +24067,8 @@ export const ListUserGrantsResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListUserGrantsResponseContentCase0List>;
 
 export type ListUserGrantsOffsetPaginatedResponseContentGrantsList = Array<UserGrant>;
-export const ListUserGrantsOffsetPaginatedResponseContentGrantsList = /*@__PURE__*/ S.Array(
-  UserGrant,
-) as any as S.Schema<ListUserGrantsOffsetPaginatedResponseContentGrantsList>;
+export const ListUserGrantsOffsetPaginatedResponseContentGrantsList =
+  ListUserGrantsResponseContentCase0List as any as S.Schema<ListUserGrantsOffsetPaginatedResponseContentGrantsList>;
 
 export interface ListUserGrantsOffsetPaginatedResponseContent {
   start?: number;
@@ -25271,9 +24338,8 @@ export const ListGroupsResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListGroupsResponseContentCase0List>;
 
 export type ListGroupsPaginatedResponseContentGroupsList = Array<Group>;
-export const ListGroupsPaginatedResponseContentGroupsList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListGroupsPaginatedResponseContentGroupsList>;
+export const ListGroupsPaginatedResponseContentGroupsList =
+  ListGroupsResponseContentCase0List as any as S.Schema<ListGroupsPaginatedResponseContentGroupsList>;
 
 export interface ListGroupsPaginatedResponseContent {
   groups: ListGroupsPaginatedResponseContentGroupsList;
@@ -25431,16 +24497,7 @@ export interface Hook {
   script?: string;
   dependencies?: HookDependencies;
 }
-export const Hook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggerId: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    script: S.optional(S.String),
-    dependencies: S.optional(HookDependencies),
-  }),
-).annotate({ identifier: "Hook" }) as any as S.Schema<Hook>;
+export const Hook = GetHookResponseContent as any as S.Schema<Hook>;
 
 export type ListHooksResponseContentCase0List = Array<Hook>;
 export const ListHooksResponseContentCase0List = /*@__PURE__*/ S.Array(
@@ -25448,9 +24505,8 @@ export const ListHooksResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListHooksResponseContentCase0List>;
 
 export type ListHooksOffsetPaginatedResponseContentHooksList = Array<Hook>;
-export const ListHooksOffsetPaginatedResponseContentHooksList = /*@__PURE__*/ S.Array(
-  Hook,
-) as any as S.Schema<ListHooksOffsetPaginatedResponseContentHooksList>;
+export const ListHooksOffsetPaginatedResponseContentHooksList =
+  ListHooksResponseContentCase0List as any as S.Schema<ListHooksOffsetPaginatedResponseContentHooksList>;
 
 export interface ListHooksOffsetPaginatedResponseContent {
   start?: number;
@@ -25533,9 +24589,8 @@ export const OrganizationInvitationInvitee = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles IDs to associated with the user. */
 export type OrganizationInvitationRolesList = Array<string>;
-export const OrganizationInvitationRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationInvitationRolesList>;
+export const OrganizationInvitationRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<OrganizationInvitationRolesList>;
 
 export interface OrganizationInvitation {
   /** The id of the user invitation. */
@@ -25645,9 +24700,8 @@ export const GetInvitationsByInvitationIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles IDs to associated with the user. */
 export type GetOrganizationInvitationResponseContentRolesList = Array<string>;
-export const GetOrganizationInvitationResponseContentRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationInvitationResponseContentRolesList>;
+export const GetOrganizationInvitationResponseContentRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetOrganizationInvitationResponseContentRolesList>;
 
 export interface GetOrganizationInvitationResponseContent {
   /** The id of the user invitation. */
@@ -25704,9 +24758,7 @@ export const GetIpsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIpsByIdRequest" }) as any as S.Schema<GetIpsByIdRequest>;
 
 export interface GetIpsByIdResponse {}
-export const GetIpsByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetIpsByIdResponse",
-}) as any as S.Schema<GetIpsByIdResponse>;
+export const GetIpsByIdResponse = CreateGroupRoleResponse as any as S.Schema<GetIpsByIdResponse>;
 
 export interface GetJobRequest {
   /** ID of the job. */
@@ -25869,20 +24921,14 @@ export const GetLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Date when the event occurred in ISO 8601 format. */
 export type LogDateObject = { [key: string]: unknown | undefined };
-export const LogDateObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogDateObject>;
+export const LogDateObject = AgentMetadata as any as S.Schema<LogDateObject>;
 
 export type LogDate = string | LogDateObject;
 export const LogDate = S.Unknown as any as S.Schema<LogDate>;
 
 /** Additional useful details about this event (structure is dependent upon event type). */
 export type LogDetails = { [key: string]: unknown | undefined };
-export const LogDetails = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogDetails>;
+export const LogDetails = AgentMetadata as any as S.Schema<LogDetails>;
 
 /** Information about security-related signals. */
 export interface LogSecurityContext {
@@ -26070,31 +25116,7 @@ export interface Log {
   security_context?: LogSecurityContext;
   location_info?: LogLocationInfo;
 }
-export const Log = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.optional(LogDate),
-    type: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    connection: S.optional(S.String),
-    connection_id: S.optional(S.String),
-    client_id: S.optional(S.String),
-    client_name: S.optional(S.String),
-    ip: S.optional(S.String),
-    hostname: S.optional(S.String),
-    user_id: S.optional(S.String),
-    user_name: S.optional(S.String),
-    audience: S.optional(S.String),
-    scope: S.optional(S.String),
-    strategy: S.optional(S.String),
-    strategy_type: S.optional(S.String),
-    log_id: S.optional(S.String),
-    isMobile: S.optional(S.Boolean),
-    details: S.optional(LogDetails),
-    user_agent: S.optional(S.String),
-    security_context: S.optional(LogSecurityContext),
-    location_info: S.optional(LogLocationInfo),
-  }),
-).annotate({ identifier: "Log" }) as any as S.Schema<Log>;
+export const Log = GetLogResponseContent as any as S.Schema<Log>;
 
 export type ListLogResponseContentCase0List = Array<Log>;
 export const ListLogResponseContentCase0List = /*@__PURE__*/ S.Array(
@@ -26102,9 +25124,8 @@ export const ListLogResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListLogResponseContentCase0List>;
 
 export type ListLogOffsetPaginatedResponseContentLogsList = Array<Log>;
-export const ListLogOffsetPaginatedResponseContentLogsList = /*@__PURE__*/ S.Array(
-  Log,
-) as any as S.Schema<ListLogOffsetPaginatedResponseContentLogsList>;
+export const ListLogOffsetPaginatedResponseContentLogsList =
+  ListLogResponseContentCase0List as any as S.Schema<ListLogOffsetPaginatedResponseContentLogsList>;
 
 export interface ListLogOffsetPaginatedResponseContent {
   start?: number;
@@ -26158,14 +25179,12 @@ export const GetLogsByUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogsByUserRequest" }) as any as S.Schema<GetLogsByUserRequest>;
 
 export type UserListLogResponseContentCase0List = Array<Log>;
-export const UserListLogResponseContentCase0List = /*@__PURE__*/ S.Array(
-  Log,
-) as any as S.Schema<UserListLogResponseContentCase0List>;
+export const UserListLogResponseContentCase0List =
+  ListLogResponseContentCase0List as any as S.Schema<UserListLogResponseContentCase0List>;
 
 export type UserListLogOffsetPaginatedResponseContentLogsList = Array<Log>;
-export const UserListLogOffsetPaginatedResponseContentLogsList = /*@__PURE__*/ S.Array(
-  Log,
-) as any as S.Schema<UserListLogOffsetPaginatedResponseContentLogsList>;
+export const UserListLogOffsetPaginatedResponseContentLogsList =
+  ListLogResponseContentCase0List as any as S.Schema<UserListLogOffsetPaginatedResponseContentLogsList>;
 
 export interface UserListLogOffsetPaginatedResponseContent {
   start?: number;
@@ -26174,17 +25193,8 @@ export interface UserListLogOffsetPaginatedResponseContent {
   total?: number;
   logs?: UserListLogOffsetPaginatedResponseContentLogsList;
 }
-export const UserListLogOffsetPaginatedResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    length: S.optional(S.Number),
-    total: S.optional(S.Number),
-    logs: S.optional(UserListLogOffsetPaginatedResponseContentLogsList),
-  }),
-).annotate({
-  identifier: "UserListLogOffsetPaginatedResponseContent",
-}) as any as S.Schema<UserListLogOffsetPaginatedResponseContent>;
+export const UserListLogOffsetPaginatedResponseContent =
+  ListLogOffsetPaginatedResponseContent as any as S.Schema<UserListLogOffsetPaginatedResponseContent>;
 
 export type UserListLogResponseContent =
   | UserListLogResponseContentCase0List
@@ -26313,18 +25323,8 @@ export interface GetOrganizationDiscoveryDomainByNameResponseContent {
   /** The full domain where the TXT record should be added. */
   verification_host: string;
 }
-export const GetOrganizationDiscoveryDomainByNameResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domain: S.String,
-    status: OrganizationDiscoveryDomainStatus,
-    use_for_organization_discovery: S.optional(S.Boolean),
-    verification_txt: S.String,
-    verification_host: S.String,
-  }),
-).annotate({
-  identifier: "GetOrganizationDiscoveryDomainByNameResponseContent",
-}) as any as S.Schema<GetOrganizationDiscoveryDomainByNameResponseContent>;
+export const GetOrganizationDiscoveryDomainByNameResponseContent =
+  OrganizationDiscoveryDomain as any as S.Schema<GetOrganizationDiscoveryDomainByNameResponseContent>;
 
 export interface GetNameByNameRequest {
   /** name of the organization to retrieve. */
@@ -26429,19 +25429,8 @@ export interface NetworkAclsResponseContent {
   /** The timestamp when the Network ACL Configuration was last updated */
   updated_at?: string;
 }
-export const NetworkAclsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    active: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    rule: S.optional(NetworkAclRule),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkAclsResponseContent",
-}) as any as S.Schema<NetworkAclsResponseContent>;
+export const NetworkAclsResponseContent =
+  GetNetworkAclsResponseContent as any as S.Schema<NetworkAclsResponseContent>;
 
 export type ListNetworkAclsOffsetPaginatedResponseContentNetworkAclsList =
   Array<NetworkAclsResponseContent>;
@@ -26467,9 +25456,8 @@ export const ListNetworkAclsOffsetPaginatedResponseContent = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListNetworkAclsOffsetPaginatedResponseContent>;
 
 export type ListNetworkAclsResponseContentCase1List = Array<NetworkAclsResponseContent>;
-export const ListNetworkAclsResponseContentCase1List = /*@__PURE__*/ S.Array(
-  NetworkAclsResponseContent,
-) as any as S.Schema<ListNetworkAclsResponseContentCase1List>;
+export const ListNetworkAclsResponseContentCase1List =
+  ListNetworkAclsOffsetPaginatedResponseContentNetworkAclsList as any as S.Schema<ListNetworkAclsResponseContentCase1List>;
 
 export type ListNetworkAclsResponseContent =
   | ListNetworkAclsOffsetPaginatedResponseContent
@@ -26526,21 +25514,8 @@ export interface GetOrganizationResponseContent {
   is_app_entitlement_active?: boolean;
   client?: OrganizationClientAssociation;
 }
-export const GetOrganizationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    display_name: S.optional(S.String),
-    branding: S.optional(OrganizationBranding),
-    metadata: S.optional(OrganizationMetadata),
-    token_quota: S.optional(CreateTokenQuota),
-    third_party_client_access: S.optional(OrganizationThirdPartyClientAccessEnum),
-    is_app_entitlement_active: S.optional(S.Boolean),
-    client: S.optional(OrganizationClientAssociation),
-  }),
-).annotate({
-  identifier: "GetOrganizationResponseContent",
-}) as any as S.Schema<GetOrganizationResponseContent>;
+export const GetOrganizationResponseContent =
+  GetOrganizationByNameResponseContent as any as S.Schema<GetOrganizationResponseContent>;
 
 export interface GetOrganizationClientRequest {
   /** ID of the organization. */
@@ -26575,9 +25550,8 @@ export const GetOrganizationClientResponseContent = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetOrganizationClientResponseContent>;
 
 export type GetOrganizationClientGrantsRequestGrantIdsList = Array<string>;
-export const GetOrganizationClientGrantsRequestGrantIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetOrganizationClientGrantsRequestGrantIdsList>;
+export const GetOrganizationClientGrantsRequestGrantIdsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetOrganizationClientGrantsRequestGrantIdsList>;
 
 export interface GetOrganizationClientGrantsRequest {
   /** Organization identifier. */
@@ -26611,9 +25585,8 @@ export const GetOrganizationClientGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes allowed for this client grant. */
 export type OrganizationClientGrantScopeList = Array<string>;
-export const OrganizationClientGrantScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationClientGrantScopeList>;
+export const OrganizationClientGrantScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<OrganizationClientGrantScopeList>;
 
 export interface OrganizationClientGrant {
   /** ID of the client grant. */
@@ -26704,9 +25677,8 @@ export const GetOrganizationClientsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of clients associated with the organization. */
 export type ListOrganizationClientsResponseContentClientsList = Array<OrganizationClient>;
-export const ListOrganizationClientsResponseContentClientsList = /*@__PURE__*/ S.Array(
-  OrganizationClient,
-) as any as S.Schema<ListOrganizationClientsResponseContentClientsList>;
+export const ListOrganizationClientsResponseContentClientsList =
+  CreateOrganizationClientsResponseContent as any as S.Schema<ListOrganizationClientsResponseContentClientsList>;
 
 export interface ListOrganizationClientsResponseContent {
   /** The list of clients associated with the organization. */
@@ -26757,21 +25729,8 @@ export interface GetOrganizationAllConnectionResponseContent {
   connection_id: string;
   connection?: OrganizationConnectionInformation;
 }
-export const GetOrganizationAllConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_connection_name: S.optional(S.String),
-    assign_membership_on_login: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    is_signup_enabled: S.optional(S.Boolean),
-    organization_access_level: S.optional(OrganizationAccessLevelEnum),
-    organization_member_access_level: S.optional(OrganizationMemberAccessLevelEnum),
-    is_enabled: S.optional(S.Boolean),
-    connection_id: S.String,
-    connection: S.optional(OrganizationConnectionInformation),
-  }),
-).annotate({
-  identifier: "GetOrganizationAllConnectionResponseContent",
-}) as any as S.Schema<GetOrganizationAllConnectionResponseContent>;
+export const GetOrganizationAllConnectionResponseContent =
+  CreateOrganizationAllConnectionResponseContent as any as S.Schema<GetOrganizationAllConnectionResponseContent>;
 
 export interface GetOrganizationConnectionsRequest {
   /** Organization identifier. */
@@ -26814,21 +25773,8 @@ export interface OrganizationAllConnectionPost {
   connection_id: string;
   connection?: OrganizationConnectionInformation;
 }
-export const OrganizationAllConnectionPost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_connection_name: S.optional(S.String),
-    assign_membership_on_login: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    is_signup_enabled: S.optional(S.Boolean),
-    organization_access_level: S.optional(OrganizationAccessLevelEnum),
-    organization_member_access_level: S.optional(OrganizationMemberAccessLevelEnum),
-    is_enabled: S.optional(S.Boolean),
-    connection_id: S.String,
-    connection: S.optional(OrganizationConnectionInformation),
-  }),
-).annotate({
-  identifier: "OrganizationAllConnectionPost",
-}) as any as S.Schema<OrganizationAllConnectionPost>;
+export const OrganizationAllConnectionPost =
+  CreateOrganizationAllConnectionResponseContent as any as S.Schema<OrganizationAllConnectionPost>;
 
 export type ListOrganizationAllConnectionsResponseContentCase0List =
   Array<OrganizationAllConnectionPost>;
@@ -26904,23 +25850,16 @@ export const GetOrganizationGroupRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationGroupRolesRequest>;
 
 export type ListOrganizationGroupRolesResponseContentRolesList = Array<Role>;
-export const ListOrganizationGroupRolesResponseContentRolesList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<ListOrganizationGroupRolesResponseContentRolesList>;
+export const ListOrganizationGroupRolesResponseContentRolesList =
+  ListGroupRolesResponseContentRolesList as any as S.Schema<ListOrganizationGroupRolesResponseContentRolesList>;
 
 export interface ListOrganizationGroupRolesResponseContent {
   roles: ListOrganizationGroupRolesResponseContentRolesList;
   /** A cursor to be used as the "from" query parameter for the next page of results. */
   next?: string;
 }
-export const ListOrganizationGroupRolesResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roles: ListOrganizationGroupRolesResponseContentRolesList,
-    next: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOrganizationGroupRolesResponseContent",
-}) as any as S.Schema<ListOrganizationGroupRolesResponseContent>;
+export const ListOrganizationGroupRolesResponseContent =
+  ListGroupRolesResponseContent as any as S.Schema<ListOrganizationGroupRolesResponseContent>;
 
 export interface GetOrganizationGroupsRequest {
   /** ID of the organization */
@@ -26941,9 +25880,8 @@ export const GetOrganizationGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationGroupsRequest>;
 
 export type ListOrganizationGroupsResponseContentGroupsList = Array<Group>;
-export const ListOrganizationGroupsResponseContentGroupsList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListOrganizationGroupsResponseContentGroupsList>;
+export const ListOrganizationGroupsResponseContentGroupsList =
+  ListGroupsResponseContentCase0List as any as S.Schema<ListOrganizationGroupsResponseContentGroupsList>;
 
 export interface ListOrganizationGroupsResponseContent {
   groups: ListOrganizationGroupsResponseContentGroupsList;
@@ -27062,9 +26000,8 @@ export const GetOrganizationMemberRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationMemberRolesRequest>;
 
 export type ListOrganizationMemberRolesResponseContentCase0List = Array<Role>;
-export const ListOrganizationMemberRolesResponseContentCase0List = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<ListOrganizationMemberRolesResponseContentCase0List>;
+export const ListOrganizationMemberRolesResponseContentCase0List =
+  ListGroupRolesResponseContentRolesList as any as S.Schema<ListOrganizationMemberRolesResponseContentCase0List>;
 
 export type ListOrganizationMemberRolesOffsetPaginatedResponseContentRolesList = Array<Role>;
 export const ListOrganizationMemberRolesOffsetPaginatedResponseContentRolesList =
@@ -27255,9 +26192,8 @@ export const ListOrganizationMembersOffsetPaginatedResponseContent = /*@__PURE__
 }) as any as S.Schema<ListOrganizationMembersOffsetPaginatedResponseContent>;
 
 export type ListOrganizationMembersPaginatedResponseContentMembersList = Array<OrganizationMember>;
-export const ListOrganizationMembersPaginatedResponseContentMembersList = /*@__PURE__*/ S.Array(
-  OrganizationMember,
-) as any as S.Schema<ListOrganizationMembersPaginatedResponseContentMembersList>;
+export const ListOrganizationMembersPaginatedResponseContentMembersList =
+  ListOrganizationMembersResponseContentCase0List as any as S.Schema<ListOrganizationMembersPaginatedResponseContentMembersList>;
 
 export interface ListOrganizationMembersPaginatedResponseContent {
   next?: string;
@@ -27464,15 +26400,12 @@ export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrganizationsRequest" }) as any as S.Schema<GetOrganizationsRequest>;
 
 export type ListOrganizationsResponseContentCase0List = Array<Organization>;
-export const ListOrganizationsResponseContentCase0List = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<ListOrganizationsResponseContentCase0List>;
+export const ListOrganizationsResponseContentCase0List =
+  ListClientGrantOrganizationsResponseContentCase0List as any as S.Schema<ListOrganizationsResponseContentCase0List>;
 
 export type ListOrganizationsOffsetPaginatedResponseContentOrganizationsList = Array<Organization>;
 export const ListOrganizationsOffsetPaginatedResponseContentOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    Organization,
-  ) as any as S.Schema<ListOrganizationsOffsetPaginatedResponseContentOrganizationsList>;
+  ListClientGrantOrganizationsOffsetPaginatedResponseContentOrganizationsList as any as S.Schema<ListOrganizationsOffsetPaginatedResponseContentOrganizationsList>;
 
 export interface ListOrganizationsOffsetPaginatedResponseContent {
   start?: number;
@@ -27492,9 +26425,8 @@ export const ListOrganizationsOffsetPaginatedResponseContent = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListOrganizationsOffsetPaginatedResponseContent>;
 
 export type ListOrganizationsPaginatedResponseContentOrganizationsList = Array<Organization>;
-export const ListOrganizationsPaginatedResponseContentOrganizationsList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<ListOrganizationsPaginatedResponseContentOrganizationsList>;
+export const ListOrganizationsPaginatedResponseContentOrganizationsList =
+  ListClientGrantOrganizationsResponseContentCase0List as any as S.Schema<ListOrganizationsPaginatedResponseContentOrganizationsList>;
 
 export interface ListOrganizationsPaginatedResponseContent {
   next?: string;
@@ -27547,10 +26479,8 @@ export const GetPartialsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An object containing template partials for a group of screens. */
 export type GetPartialsResponseContent = { [key: string]: unknown | undefined };
-export const GetPartialsResponseContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetPartialsResponseContent>;
+export const GetPartialsResponseContent =
+  AgentMetadata as any as S.Schema<GetPartialsResponseContent>;
 
 export type GetPartialsResponse = GetPartialsResponseContent;
 export const GetPartialsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -27650,14 +26580,8 @@ export interface GetPhoneFactorSettingsResponseContent {
   /** The OTP expiration time in seconds. */
   otp_expiration_time: number;
 }
-export const GetPhoneFactorSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    otp_length: S.Number,
-    otp_expiration_time: S.Number,
-  }),
-).annotate({
-  identifier: "GetPhoneFactorSettingsResponseContent",
-}) as any as S.Schema<GetPhoneFactorSettingsResponseContent>;
+export const GetPhoneFactorSettingsResponseContent =
+  GetEmailFactorSettingsResponseContent as any as S.Schema<GetPhoneFactorSettingsResponseContent>;
 
 export interface GetPhoneProviderRequest {
   id: string;
@@ -27683,20 +26607,8 @@ export interface GetBrandingPhoneProviderResponseContent {
   /** The date and time of the last update to the provider in ISO 8601 format */
   updated_at?: string;
 }
-export const GetBrandingPhoneProviderResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tenant: S.optional(S.String),
-    name: PhoneProviderNameEnum,
-    channel: S.optional(PhoneProviderChannelEnum),
-    disabled: S.optional(S.Boolean),
-    configuration: S.optional(PhoneProviderConfiguration),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetBrandingPhoneProviderResponseContent",
-}) as any as S.Schema<GetBrandingPhoneProviderResponseContent>;
+export const GetBrandingPhoneProviderResponseContent =
+  CreateBrandingPhoneProviderResponseContent as any as S.Schema<GetBrandingPhoneProviderResponseContent>;
 
 export interface GetPhoneProviderProtectionRequest {}
 export const GetPhoneProviderProtectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -27741,19 +26653,8 @@ export interface GetPhoneTemplateResponseContent {
   /** Whether the template is enabled (false) or disabled (true). */
   disabled: boolean;
 }
-export const GetPhoneTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    channel: S.optional(S.String),
-    customizable: S.optional(S.Boolean),
-    tenant: S.optional(S.String),
-    content: PhoneTemplateContent,
-    type: PhoneTemplateNotificationTypeEnum,
-    disabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetPhoneTemplateResponseContent",
-}) as any as S.Schema<GetPhoneTemplateResponseContent>;
+export const GetPhoneTemplateResponseContent =
+  CreatePhoneTemplateResponseContent as any as S.Schema<GetPhoneTemplateResponseContent>;
 
 export interface GetPhoneTemplatesRequest {
   /** Whether the template is enabled (false) or disabled (true). */
@@ -27942,10 +26843,7 @@ export const EmailProviderCredentials = /*@__PURE__*/ S.suspend(() =>
 
 /** Specific provider setting */
 export type EmailProviderSettings = { [key: string]: unknown | undefined };
-export const EmailProviderSettings = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EmailProviderSettings>;
+export const EmailProviderSettings = AgentMetadata as any as S.Schema<EmailProviderSettings>;
 
 export interface GetEmailProviderResponseContent {
   /** Name of the email provider. Can be `mailgun`, `mandrill`, `sendgrid`, `resend`, `ses`, `sparkpost`, `smtp`, `azure_cs`, `ms365`, or `custom`. */
@@ -28066,19 +26964,8 @@ export interface GetRateLimitPolicyResponseContent {
   /** The date and time when the rate limit policy was last updated. */
   updated_at?: string;
 }
-export const GetRateLimitPolicyResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    resource: RateLimitPolicyResourceEnum,
-    consumer: RateLimitPolicyConsumerEnum,
-    consumer_selector: S.String,
-    configuration: RateLimitPolicyConfiguration,
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetRateLimitPolicyResponseContent",
-}) as any as S.Schema<GetRateLimitPolicyResponseContent>;
+export const GetRateLimitPolicyResponseContent =
+  CreateRateLimitPolicyResponseContent as any as S.Schema<GetRateLimitPolicyResponseContent>;
 
 export interface GetRefreshTokenRequest {
   /** ID refresh token to retrieve */
@@ -28092,10 +26979,7 @@ export const GetRefreshTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The date and time when the refresh token was created */
 export type RefreshTokenDateObject = { [key: string]: unknown | undefined };
-export const RefreshTokenDateObject = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RefreshTokenDateObject>;
+export const RefreshTokenDateObject = AgentMetadata as any as S.Schema<RefreshTokenDateObject>;
 
 export type RefreshTokenDate = string | RefreshTokenDateObject;
 export const RefreshTokenDate = S.Unknown as any as S.Schema<RefreshTokenDate>;
@@ -28149,10 +27033,7 @@ export const GetRefreshTokenResponseContentResourceServersList = /*@__PURE__*/ S
 
 /** Metadata associated with the refresh token, in the form of an object with string values (max 255 chars). Maximum of 25 metadata properties allowed. */
 export type RefreshTokenMetadata = { [key: string]: unknown | undefined };
-export const RefreshTokenMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RefreshTokenMetadata>;
+export const RefreshTokenMetadata = AgentMetadata as any as S.Schema<RefreshTokenMetadata>;
 
 export interface GetRefreshTokenResponseContent {
   /** The ID of the refresh token */
@@ -28219,9 +27100,8 @@ export const GetRefreshTokensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the resource server IDs associated to this refresh-token and their granted scopes */
 export type RefreshTokenResponseContentResourceServersList = Array<RefreshTokenResourceServer>;
-export const RefreshTokenResponseContentResourceServersList = /*@__PURE__*/ S.Array(
-  RefreshTokenResourceServer,
-) as any as S.Schema<RefreshTokenResponseContentResourceServersList>;
+export const RefreshTokenResponseContentResourceServersList =
+  GetRefreshTokenResponseContentResourceServersList as any as S.Schema<RefreshTokenResponseContentResourceServersList>;
 
 export interface RefreshTokenResponseContent {
   /** The ID of the refresh token */
@@ -28242,24 +27122,8 @@ export interface RefreshTokenResponseContent {
   refresh_token_metadata?: RefreshTokenMetadata | null;
   last_exchanged_at?: RefreshTokenDate | null;
 }
-export const RefreshTokenResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    user_id: S.optional(S.String),
-    created_at: S.optional(S.NullOr(RefreshTokenDate)),
-    idle_expires_at: S.optional(S.NullOr(RefreshTokenDate)),
-    expires_at: S.optional(S.NullOr(RefreshTokenDate)),
-    device: S.optional(RefreshTokenDevice),
-    client_id: S.optional(S.String),
-    session_id: S.optional(S.NullOr(S.String)),
-    rotating: S.optional(S.Boolean),
-    resource_servers: S.optional(RefreshTokenResponseContentResourceServersList),
-    refresh_token_metadata: S.optional(S.NullOr(RefreshTokenMetadata)),
-    last_exchanged_at: S.optional(S.NullOr(RefreshTokenDate)),
-  }),
-).annotate({
-  identifier: "RefreshTokenResponseContent",
-}) as any as S.Schema<RefreshTokenResponseContent>;
+export const RefreshTokenResponseContent =
+  GetRefreshTokenResponseContent as any as S.Schema<RefreshTokenResponseContent>;
 
 export type GetRefreshTokensPaginatedResponseContentRefreshTokensList =
   Array<RefreshTokenResponseContent>;
@@ -28304,9 +27168,8 @@ export const GetRefreshTokensForUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListRefreshTokensPaginatedResponseContentTokensList =
   Array<RefreshTokenResponseContent>;
-export const ListRefreshTokensPaginatedResponseContentTokensList = /*@__PURE__*/ S.Array(
-  RefreshTokenResponseContent,
-) as any as S.Schema<ListRefreshTokensPaginatedResponseContentTokensList>;
+export const ListRefreshTokensPaginatedResponseContentTokensList =
+  GetRefreshTokensPaginatedResponseContentRefreshTokensList as any as S.Schema<ListRefreshTokensPaginatedResponseContentTokensList>;
 
 export interface ListRefreshTokensPaginatedResponseContent {
   tokens?: ListRefreshTokensPaginatedResponseContentTokensList;
@@ -28473,9 +27336,8 @@ export const GetRenderingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of head tags */
 export type GetAculResponseContentHeadTagsList = Array<AculHeadTag>;
-export const GetAculResponseContentHeadTagsList = /*@__PURE__*/ S.Array(
-  AculHeadTag,
-) as any as S.Schema<GetAculResponseContentHeadTagsList>;
+export const GetAculResponseContentHeadTagsList =
+  ListAculsResponseContentItemHeadTagsList as any as S.Schema<GetAculResponseContentHeadTagsList>;
 
 export interface GetAculResponseContent {
   /** Tenant ID */
@@ -28524,14 +27386,12 @@ export const GetResourceServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of permissions (scopes) that this API uses. */
 export type GetResourceServerResponseContentScopesList = Array<ResourceServerScope>;
-export const GetResourceServerResponseContentScopesList = /*@__PURE__*/ S.Array(
-  ResourceServerScope,
-) as any as S.Schema<GetResourceServerResponseContentScopesList>;
+export const GetResourceServerResponseContentScopesList =
+  CreateResourceServerRequestScopesList as any as S.Schema<GetResourceServerResponseContentScopesList>;
 
 export type GetResourceServerResponseContentAuthorizationDetailsList = Array<unknown>;
-export const GetResourceServerResponseContentAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetResourceServerResponseContentAuthorizationDetailsList>;
+export const GetResourceServerResponseContentAuthorizationDetailsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<GetResourceServerResponseContentAuthorizationDetailsList>;
 
 export interface GetResourceServerResponseContent {
   /** ID of the API (resource server). */
@@ -28576,44 +27436,12 @@ export interface GetResourceServerResponseContent {
   /** The client ID of the client that this resource server is linked to */
   client_id?: string;
 }
-export const GetResourceServerResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    is_system: S.optional(S.Boolean),
-    identifier: S.optional(S.String),
-    scopes: S.optional(GetResourceServerResponseContentScopesList),
-    signing_alg: S.optional(SigningAlgorithmEnum),
-    signing_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    allow_offline_access: S.optional(S.Boolean),
-    allow_online_access: S.optional(S.Boolean),
-    allow_online_access_with_ephemeral_sessions: S.optional(S.Boolean),
-    skip_consent_for_verifiable_first_party_clients: S.optional(S.Boolean),
-    token_lifetime: S.optional(S.Number),
-    token_lifetime_for_web: S.optional(S.Number),
-    enforce_policies: S.optional(S.Boolean),
-    token_lifetime_for_anonymous_access_tokens: S.optional(S.Number),
-    token_dialect: S.optional(ResourceServerTokenDialectResponseEnum),
-    access_token: S.optional(S.NullOr(ResourceServerAccessToken)),
-    token_encryption: S.optional(S.NullOr(ResourceServerTokenEncryption)),
-    consent_policy: S.optional(S.NullOr(ResourceServerConsentPolicyEnum)),
-    require_consent_non_repudiation: S.optional(S.Boolean),
-    authorization_details: S.optional(
-      S.NullOr(GetResourceServerResponseContentAuthorizationDetailsList),
-    ),
-    proof_of_possession: S.optional(S.NullOr(ResourceServerProofOfPossession)),
-    subject_type_authorization: S.optional(ResourceServerSubjectTypeAuthorization),
-    authorization_policy: S.optional(S.NullOr(ResourceServerAuthorizationPolicy)),
-    client_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetResourceServerResponseContent",
-}) as any as S.Schema<GetResourceServerResponseContent>;
+export const GetResourceServerResponseContent =
+  CreateResourceServerResponseContent as any as S.Schema<GetResourceServerResponseContent>;
 
 export type GetResourceServersRequestIdentifiersList = Array<string>;
-export const GetResourceServersRequestIdentifiersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResourceServersRequestIdentifiersList>;
+export const GetResourceServersRequestIdentifiersList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetResourceServersRequestIdentifiersList>;
 
 export interface GetResourceServersRequest {
   /** An optional filter on the resource server identifier. Must be URL encoded and may be specified multiple times (max 10).<br /><b>e.g.</b> <i>../resource-servers?identifiers=id1&identifiers=id2</i> */
@@ -28641,14 +27469,12 @@ export const GetResourceServersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of permissions (scopes) that this API uses. */
 export type ResourceServerScopesList = Array<ResourceServerScope>;
-export const ResourceServerScopesList = /*@__PURE__*/ S.Array(
-  ResourceServerScope,
-) as any as S.Schema<ResourceServerScopesList>;
+export const ResourceServerScopesList =
+  CreateResourceServerRequestScopesList as any as S.Schema<ResourceServerScopesList>;
 
 export type ResourceServerAuthorizationDetailsList = Array<unknown>;
-export const ResourceServerAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ResourceServerAuthorizationDetailsList>;
+export const ResourceServerAuthorizationDetailsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<ResourceServerAuthorizationDetailsList>;
 
 export interface ResourceServer {
   /** ID of the API (resource server). */
@@ -28803,14 +27629,12 @@ export const GetResourceServersSearchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of permissions (scopes) that this API uses. */
 export type ResourceServerSearchResponseScopesList = Array<ResourceServerScope>;
-export const ResourceServerSearchResponseScopesList = /*@__PURE__*/ S.Array(
-  ResourceServerScope,
-) as any as S.Schema<ResourceServerSearchResponseScopesList>;
+export const ResourceServerSearchResponseScopesList =
+  CreateResourceServerRequestScopesList as any as S.Schema<ResourceServerSearchResponseScopesList>;
 
 export type ResourceServerSearchResponseAuthorizationDetailsList = Array<unknown>;
-export const ResourceServerSearchResponseAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ResourceServerSearchResponseAuthorizationDetailsList>;
+export const ResourceServerSearchResponseAuthorizationDetailsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<ResourceServerSearchResponseAuthorizationDetailsList>;
 
 export interface ResourceServerSearchResponse {
   /** ID of the API (resource server). */
@@ -28948,15 +27772,7 @@ export interface GetRoleResponseContent {
   /** The id of the entity that owns this role, such as an organization id. */
   owner_id?: string;
 }
-export const GetRoleResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    type: S.optional(RoleTypeEnum),
-    owner_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetRoleResponseContent" }) as any as S.Schema<GetRoleResponseContent>;
+export const GetRoleResponseContent = Role as any as S.Schema<GetRoleResponseContent>;
 
 export interface GetRoleGroupsRequest {
   /** Unique identifier for the role (service-generated). */
@@ -28975,23 +27791,16 @@ export const GetRoleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRoleGroupsRequest" }) as any as S.Schema<GetRoleGroupsRequest>;
 
 export type ListRoleGroupsResponseContentGroupsList = Array<Group>;
-export const ListRoleGroupsResponseContentGroupsList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListRoleGroupsResponseContentGroupsList>;
+export const ListRoleGroupsResponseContentGroupsList =
+  ListGroupsResponseContentCase0List as any as S.Schema<ListRoleGroupsResponseContentGroupsList>;
 
 export interface ListRoleGroupsResponseContent {
   groups: ListRoleGroupsResponseContentGroupsList;
   /** A cursor to be used as the "from" query parameter for the next page of results. */
   next?: string;
 }
-export const ListRoleGroupsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: ListRoleGroupsResponseContentGroupsList,
-    next: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRoleGroupsResponseContent",
-}) as any as S.Schema<ListRoleGroupsResponseContent>;
+export const ListRoleGroupsResponseContent =
+  ListOrganizationGroupsResponseContent as any as S.Schema<ListRoleGroupsResponseContent>;
 
 export interface GetRolePermissionRequest {
   /** ID of the role to list granted permissions. */
@@ -29107,14 +27916,12 @@ export const GetRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRolesRequest" }) as any as S.Schema<GetRolesRequest>;
 
 export type ListRolesResponseContentCase0List = Array<Role>;
-export const ListRolesResponseContentCase0List = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<ListRolesResponseContentCase0List>;
+export const ListRolesResponseContentCase0List =
+  ListGroupRolesResponseContentRolesList as any as S.Schema<ListRolesResponseContentCase0List>;
 
 export type ListRolesOffsetPaginatedResponseContentRolesList = Array<Role>;
-export const ListRolesOffsetPaginatedResponseContentRolesList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<ListRolesOffsetPaginatedResponseContentRolesList>;
+export const ListRolesOffsetPaginatedResponseContentRolesList =
+  ListGroupRolesResponseContentRolesList as any as S.Schema<ListRolesOffsetPaginatedResponseContentRolesList>;
 
 export interface ListRolesOffsetPaginatedResponseContent {
   start: number;
@@ -29134,9 +27941,8 @@ export const ListRolesOffsetPaginatedResponseContent = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListRolesOffsetPaginatedResponseContent>;
 
 export type ListRolesCheckpointPaginatedResponseContentRolesList = Array<Role>;
-export const ListRolesCheckpointPaginatedResponseContentRolesList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<ListRolesCheckpointPaginatedResponseContentRolesList>;
+export const ListRolesCheckpointPaginatedResponseContentRolesList =
+  ListGroupRolesResponseContentRolesList as any as S.Schema<ListRolesCheckpointPaginatedResponseContentRolesList>;
 
 export interface ListRolesCheckpointPaginatedResponseContent {
   next?: string;
@@ -29191,14 +27997,12 @@ export type RoleUser = RoleMember;
 export const RoleUser = RoleMember;
 
 export type ListRoleUsersResponseContentCase0List = Array<RoleMember>;
-export const ListRoleUsersResponseContentCase0List = /*@__PURE__*/ S.Array(
-  RoleMember,
-) as any as S.Schema<ListRoleUsersResponseContentCase0List>;
+export const ListRoleUsersResponseContentCase0List =
+  ListOrganizationRoleMembersResponseContentMembersList as any as S.Schema<ListRoleUsersResponseContentCase0List>;
 
 export type ListRoleUsersOffsetPaginatedResponseContentUsersList = Array<RoleMember>;
-export const ListRoleUsersOffsetPaginatedResponseContentUsersList = /*@__PURE__*/ S.Array(
-  RoleMember,
-) as any as S.Schema<ListRoleUsersOffsetPaginatedResponseContentUsersList>;
+export const ListRoleUsersOffsetPaginatedResponseContentUsersList =
+  ListOrganizationRoleMembersResponseContentMembersList as any as S.Schema<ListRoleUsersOffsetPaginatedResponseContentUsersList>;
 
 export interface ListRoleUsersOffsetPaginatedResponseContent {
   start?: number;
@@ -29218,9 +28022,8 @@ export const ListRoleUsersOffsetPaginatedResponseContent = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListRoleUsersOffsetPaginatedResponseContent>;
 
 export type ListRoleUsersPaginatedResponseContentUsersList = Array<RoleMember>;
-export const ListRoleUsersPaginatedResponseContentUsersList = /*@__PURE__*/ S.Array(
-  RoleMember,
-) as any as S.Schema<ListRoleUsersPaginatedResponseContentUsersList>;
+export const ListRoleUsersPaginatedResponseContentUsersList =
+  ListOrganizationRoleMembersResponseContentMembersList as any as S.Schema<ListRoleUsersPaginatedResponseContentUsersList>;
 
 export interface ListRoleUsersPaginatedResponseContent {
   next?: string;
@@ -29327,16 +28130,7 @@ export interface Rule {
   /** Execution stage of this rule. Can be `login_success`, `login_failure`, or `pre_authorize`. */
   stage?: string;
 }
-export const Rule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    script: S.optional(S.String),
-    order: S.optional(S.Number),
-    stage: S.optional(S.String),
-  }),
-).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
+export const Rule = GetRuleResponseContent as any as S.Schema<Rule>;
 
 export type ListRulesResponseContentCase0List = Array<Rule>;
 export const ListRulesResponseContentCase0List = /*@__PURE__*/ S.Array(
@@ -29344,9 +28138,8 @@ export const ListRulesResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListRulesResponseContentCase0List>;
 
 export type ListRulesOffsetPaginatedResponseContentRulesList = Array<Rule>;
-export const ListRulesOffsetPaginatedResponseContentRulesList = /*@__PURE__*/ S.Array(
-  Rule,
-) as any as S.Schema<ListRulesOffsetPaginatedResponseContentRulesList>;
+export const ListRulesOffsetPaginatedResponseContentRulesList =
+  ListRulesResponseContentCase0List as any as S.Schema<ListRulesOffsetPaginatedResponseContentRulesList>;
 
 export interface ListRulesOffsetPaginatedResponseContent {
   start?: number;
@@ -29414,9 +28207,8 @@ export const GetScimConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The mapping between auth0 and SCIM */
 export type GetScimConfigurationResponseContentMappingList = Array<ScimMappingItem>;
-export const GetScimConfigurationResponseContentMappingList = /*@__PURE__*/ S.Array(
-  ScimMappingItem,
-) as any as S.Schema<GetScimConfigurationResponseContentMappingList>;
+export const GetScimConfigurationResponseContentMappingList =
+  ScimConfigurationMappingList as any as S.Schema<GetScimConfigurationResponseContentMappingList>;
 
 export interface GetScimConfigurationResponseContent {
   /** The connection's identifier */
@@ -29463,9 +28255,8 @@ export const GetScimTokensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes of the scim token */
 export type ScimTokenItemScopesList = Array<string>;
-export const ScimTokenItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScimTokenItemScopesList>;
+export const ScimTokenItemScopesList =
+  CreateClientRequestCallbacksList as any as S.Schema<ScimTokenItemScopesList>;
 
 export interface ScimTokenItem {
   /** The token's identifier */
@@ -29560,9 +28351,8 @@ export const SearchOrganizationsResponseContentCase0List = /*@__PURE__*/ S.Array
 
 export type SearchOrganizationsPaginatedResponseContentOrganizationsList =
   Array<SearchOrganization>;
-export const SearchOrganizationsPaginatedResponseContentOrganizationsList = /*@__PURE__*/ S.Array(
-  SearchOrganization,
-) as any as S.Schema<SearchOrganizationsPaginatedResponseContentOrganizationsList>;
+export const SearchOrganizationsPaginatedResponseContentOrganizationsList =
+  SearchOrganizationsResponseContentCase0List as any as S.Schema<SearchOrganizationsPaginatedResponseContentOrganizationsList>;
 
 export interface SearchOrganizationsPaginatedResponseContent {
   organizations: SearchOrganizationsPaginatedResponseContentOrganizationsList;
@@ -29601,10 +28391,8 @@ export const GetSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Hashmap of key-value pairs where the value must be a string. */
 export type GetHookSecretResponseContent = { [key: string]: string | undefined };
-export const GetHookSecretResponseContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetHookSecretResponseContent>;
+export const GetHookSecretResponseContent =
+  FlowActionStripeMetadata as any as S.Schema<GetHookSecretResponseContent>;
 
 export type GetSecretsResponse = GetHookSecretResponseContent;
 export const GetSecretsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -29622,9 +28410,8 @@ export const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSegmentRequest" }) as any as S.Schema<GetSegmentRequest>;
 
 export type GetSegmentResponseContentRulesList = Array<SegmentRule>;
-export const GetSegmentResponseContentRulesList = /*@__PURE__*/ S.Array(
-  SegmentRule,
-) as any as S.Schema<GetSegmentResponseContentRulesList>;
+export const GetSegmentResponseContentRulesList =
+  CreateSegmentRequestRulesList as any as S.Schema<GetSegmentResponseContentRulesList>;
 
 export interface GetSegmentResponseContent {
   id: string;
@@ -29635,19 +28422,8 @@ export interface GetSegmentResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const GetSegmentResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: SegmentTypeEnum,
-    rules: GetSegmentResponseContentRulesList,
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "GetSegmentResponseContent",
-}) as any as S.Schema<GetSegmentResponseContent>;
+export const GetSegmentResponseContent =
+  CreateSegmentResponseContent as any as S.Schema<GetSegmentResponseContent>;
 
 /** Filter by type. Exact match. */
 export type SegmentTypeFilterEnum = "auth0" | "self";
@@ -29670,9 +28446,7 @@ export const GetSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSegmentsRequest" }) as any as S.Schema<GetSegmentsRequest>;
 
 export type SegmentRulesList = Array<SegmentRule>;
-export const SegmentRulesList = /*@__PURE__*/ S.Array(
-  SegmentRule,
-) as any as S.Schema<SegmentRulesList>;
+export const SegmentRulesList = CreateSegmentRequestRulesList as any as S.Schema<SegmentRulesList>;
 
 export interface Segment {
   id: string;
@@ -29729,16 +28503,14 @@ export const GetSelfServiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of attributes to be mapped that will be shown to the user during the Self-Service Enterprise Configuration flow. */
 export type GetSelfServiceProfileResponseContentUserAttributesList =
   Array<SelfServiceProfileUserAttribute>;
-export const GetSelfServiceProfileResponseContentUserAttributesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileUserAttribute,
-) as any as S.Schema<GetSelfServiceProfileResponseContentUserAttributesList>;
+export const GetSelfServiceProfileResponseContentUserAttributesList =
+  CreateSelfServiceProfileRequestUserAttributesList as any as S.Schema<GetSelfServiceProfileResponseContentUserAttributesList>;
 
 /** List of IdP strategies that will be shown to users during the Self-Service Enterprise Configuration flow. Possible values: [`oidc`, `samlp`, `waad`, `google-apps`, `adfs`, `okta`, `auth0-samlp`, `okta-samlp`, `keycloak-samlp`, `pingfederate`] */
 export type GetSelfServiceProfileResponseContentAllowedStrategiesList =
   Array<SelfServiceProfileAllowedStrategyEnum>;
-export const GetSelfServiceProfileResponseContentAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileAllowedStrategyEnum,
-) as any as S.Schema<GetSelfServiceProfileResponseContentAllowedStrategiesList>;
+export const GetSelfServiceProfileResponseContentAllowedStrategiesList =
+  CreateSelfServiceProfileRequestAllowedStrategiesList as any as S.Schema<GetSelfServiceProfileResponseContentAllowedStrategiesList>;
 
 export interface GetSelfServiceProfileResponseContent {
   /** The unique ID of the self-service Profile. */
@@ -29759,21 +28531,8 @@ export interface GetSelfServiceProfileResponseContent {
   /** ID of the user-attribute-profile to associate with this self-service profile. */
   user_attribute_profile_id?: string;
 }
-export const GetSelfServiceProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    user_attributes: S.optional(GetSelfServiceProfileResponseContentUserAttributesList),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    branding: S.optional(SelfServiceProfileBrandingProperties),
-    allowed_strategies: S.optional(GetSelfServiceProfileResponseContentAllowedStrategiesList),
-    user_attribute_profile_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetSelfServiceProfileResponseContent",
-}) as any as S.Schema<GetSelfServiceProfileResponseContent>;
+export const GetSelfServiceProfileResponseContent =
+  CreateSelfServiceProfileResponseContent as any as S.Schema<GetSelfServiceProfileResponseContent>;
 
 /** The language of the custom text. */
 export type GetSelfServiceProfileCustomTextRequestLanguage = "en";
@@ -29809,10 +28568,8 @@ export const GetSelfServiceProfileCustomTextRequest = /*@__PURE__*/ S.suspend(()
 
 /** The list of custom text keys and values. */
 export type ListSelfServiceProfileCustomTextResponseContent = { [key: string]: string | undefined };
-export const ListSelfServiceProfileCustomTextResponseContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListSelfServiceProfileCustomTextResponseContent>;
+export const ListSelfServiceProfileCustomTextResponseContent =
+  FlowActionStripeMetadata as any as S.Schema<ListSelfServiceProfileCustomTextResponseContent>;
 
 export type GetSelfServiceProfileCustomTextResponse =
   ListSelfServiceProfileCustomTextResponseContent;
@@ -29842,15 +28599,13 @@ export const GetSelfServiceProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of attributes to be mapped that will be shown to the user during the Self-Service Enterprise Configuration flow. */
 export type SelfServiceProfileUserAttributesList = Array<SelfServiceProfileUserAttribute>;
-export const SelfServiceProfileUserAttributesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileUserAttribute,
-) as any as S.Schema<SelfServiceProfileUserAttributesList>;
+export const SelfServiceProfileUserAttributesList =
+  CreateSelfServiceProfileRequestUserAttributesList as any as S.Schema<SelfServiceProfileUserAttributesList>;
 
 /** List of IdP strategies that will be shown to users during the Self-Service Enterprise Configuration flow. Possible values: [`oidc`, `samlp`, `waad`, `google-apps`, `adfs`, `okta`, `auth0-samlp`, `okta-samlp`, `keycloak-samlp`, `pingfederate`] */
 export type SelfServiceProfileAllowedStrategiesList = Array<SelfServiceProfileAllowedStrategyEnum>;
-export const SelfServiceProfileAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileAllowedStrategyEnum,
-) as any as S.Schema<SelfServiceProfileAllowedStrategiesList>;
+export const SelfServiceProfileAllowedStrategiesList =
+  CreateSelfServiceProfileRequestAllowedStrategiesList as any as S.Schema<SelfServiceProfileAllowedStrategiesList>;
 
 export interface SelfServiceProfile {
   /** The unique ID of the self-service Profile. */
@@ -29941,10 +28696,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The date and time when the session was created */
 export type SessionDateCase1Map = { [key: string]: unknown | undefined };
-export const SessionDateCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SessionDateCase1Map>;
+export const SessionDateCase1Map = AgentMetadata as any as S.Schema<SessionDateCase1Map>;
 
 export type SessionDate = string | SessionDateCase1Map;
 export const SessionDate = S.Unknown as any as S.Schema<SessionDate>;
@@ -30043,10 +28795,7 @@ export const SessionCookieMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata associated with the session, in the form of an object with string values (max 255 chars). Maximum of 25 metadata properties allowed. */
 export type SessionMetadata = { [key: string]: unknown | undefined };
-export const SessionMetadata = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SessionMetadata>;
+export const SessionMetadata = AgentMetadata as any as S.Schema<SessionMetadata>;
 
 /** The identity of the delegating party/session actor for delegated sessions. Present only on delegated sessions. Contains "sub" and up to 5 additional primitive claims. */
 export interface SessionActorMetadata {
@@ -30122,9 +28871,8 @@ export const GetSessionsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of client details for the session */
 export type SessionResponseContentClientsList = Array<SessionClientMetadata>;
-export const SessionResponseContentClientsList = /*@__PURE__*/ S.Array(
-  SessionClientMetadata,
-) as any as S.Schema<SessionResponseContentClientsList>;
+export const SessionResponseContentClientsList =
+  GetSessionResponseContentClientsList as any as S.Schema<SessionResponseContentClientsList>;
 
 export interface SessionResponseContent {
   /** The ID of the session */
@@ -30195,10 +28943,7 @@ export const GetSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The date and time when the key became the current key */
 export type SigningKeysDateCase1Map = { [key: string]: unknown | undefined };
-export const SigningKeysDateCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SigningKeysDateCase1Map>;
+export const SigningKeysDateCase1Map = AgentMetadata as any as S.Schema<SigningKeysDateCase1Map>;
 
 export type SigningKeysDate = string | SigningKeysDateCase1Map;
 export const SigningKeysDate = S.Unknown as any as S.Schema<SigningKeysDate>;
@@ -30310,13 +29055,8 @@ export const GetSmsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGuardianFactorsProviderSmsResponseContent {
   provider?: GuardianFactorsProviderSmsProviderEnum;
 }
-export const GetGuardianFactorsProviderSmsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(GuardianFactorsProviderSmsProviderEnum),
-  }),
-).annotate({
-  identifier: "GetGuardianFactorsProviderSmsResponseContent",
-}) as any as S.Schema<GetGuardianFactorsProviderSmsResponseContent>;
+export const GetGuardianFactorsProviderSmsResponseContent =
+  GetGuardianFactorsProviderPhoneResponseContent as any as S.Schema<GetGuardianFactorsProviderSmsResponseContent>;
 
 export interface GetSmsTwilioFactorProviderRequest {}
 export const GetSmsTwilioFactorProviderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -30337,16 +29077,8 @@ export interface GetGuardianFactorsProviderSmsTwilioResponseContent {
   /** Twilio SID */
   sid?: string | null;
 }
-export const GetGuardianFactorsProviderSmsTwilioResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.optional(S.NullOr(S.String)),
-    messaging_service_sid: S.optional(S.NullOr(S.String)),
-    auth_token: S.optional(S.NullOr(S.String)),
-    sid: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GetGuardianFactorsProviderSmsTwilioResponseContent",
-}) as any as S.Schema<GetGuardianFactorsProviderSmsTwilioResponseContent>;
+export const GetGuardianFactorsProviderSmsTwilioResponseContent =
+  GetGuardianFactorsProviderPhoneTwilioResponseContent as any as S.Schema<GetGuardianFactorsProviderSmsTwilioResponseContent>;
 
 export interface GetSnsRequest {}
 export const GetSnsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -30385,9 +29117,7 @@ export const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStatusRequest" }) as any as S.Schema<GetStatusRequest>;
 
 export interface GetStatusResponse {}
-export const GetStatusResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetStatusResponse",
-}) as any as S.Schema<GetStatusResponse>;
+export const GetStatusResponse = CreateGroupRoleResponse as any as S.Schema<GetStatusResponse>;
 
 export interface GetSupplementalSignalsRequest {}
 export const GetSupplementalSignalsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -30429,9 +29159,8 @@ export const GetSuspiciousIPThrottlingSettingsResponseContentShieldsList = /*@__
 
 /** List of trusted IP addresses that will not have attack protection enforced against them. */
 export type SuspiciousIPThrottlingAllowlist = Array<string>;
-export const SuspiciousIPThrottlingAllowlist = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SuspiciousIPThrottlingAllowlist>;
+export const SuspiciousIPThrottlingAllowlist =
+  CreateClientRequestCallbacksList as any as S.Schema<SuspiciousIPThrottlingAllowlist>;
 
 /** Configuration options that apply before every login attempt. */
 export interface SuspiciousIPThrottlingPreLoginStage {
@@ -30456,14 +29185,8 @@ export interface SuspiciousIPThrottlingPreUserRegistrationStage {
   /** Interval of time, given in milliseconds, at which new attempts are granted. */
   rate?: number;
 }
-export const SuspiciousIPThrottlingPreUserRegistrationStage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_attempts: S.optional(S.Number),
-    rate: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SuspiciousIPThrottlingPreUserRegistrationStage",
-}) as any as S.Schema<SuspiciousIPThrottlingPreUserRegistrationStage>;
+export const SuspiciousIPThrottlingPreUserRegistrationStage =
+  SuspiciousIPThrottlingPreLoginStage as any as S.Schema<SuspiciousIPThrottlingPreUserRegistrationStage>;
 
 /** Configuration options that apply before every custom token exchange attempt. */
 export type SuspiciousIPThrottlingPreCustomTokenExchangeStage =
@@ -30604,19 +29327,8 @@ export interface GetTokenExchangeProfileResponseContent {
   /** The time when this profile was updated. */
   updated_at?: string;
 }
-export const GetTokenExchangeProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    subject_token_type: S.optional(S.String),
-    action_id: S.optional(S.String),
-    type: S.optional(TokenExchangeProfileTypeEnum),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTokenExchangeProfileResponseContent",
-}) as any as S.Schema<GetTokenExchangeProfileResponseContent>;
+export const GetTokenExchangeProfileResponseContent =
+  CreateTokenExchangeProfileResponseContent as any as S.Schema<GetTokenExchangeProfileResponseContent>;
 
 export interface GetTokenExchangeProfilesRequest {
   /** Optional Id from which to start selection. */
@@ -30648,19 +29360,8 @@ export interface TokenExchangeProfileResponseContent {
   /** The time when this profile was updated. */
   updated_at?: string;
 }
-export const TokenExchangeProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    subject_token_type: S.optional(S.String),
-    action_id: S.optional(S.String),
-    type: S.optional(TokenExchangeProfileTypeEnum),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TokenExchangeProfileResponseContent",
-}) as any as S.Schema<TokenExchangeProfileResponseContent>;
+export const TokenExchangeProfileResponseContent =
+  CreateTokenExchangeProfileResponseContent as any as S.Schema<TokenExchangeProfileResponseContent>;
 
 export type ListTokenExchangeProfileResponseContentTokenExchangeProfilesList =
   Array<TokenExchangeProfileResponseContent>;
@@ -30691,9 +29392,8 @@ export const GetTriggersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTriggersRequest" }) as any as S.Schema<GetTriggersRequest>;
 
 export type ListActionTriggersResponseContentTriggersList = Array<ActionTrigger>;
-export const ListActionTriggersResponseContentTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<ListActionTriggersResponseContentTriggersList>;
+export const ListActionTriggersResponseContentTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<ListActionTriggersResponseContentTriggersList>;
 
 export interface ListActionTriggersResponseContent {
   triggers?: ListActionTriggersResponseContentTriggersList;
@@ -30754,15 +29454,13 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user identity objects when accounts are linked. */
 export type GetUserResponseContentIdentitiesList = Array<UserIdentitySchema>;
-export const GetUserResponseContentIdentitiesList = /*@__PURE__*/ S.Array(
-  UserIdentitySchema,
-) as any as S.Schema<GetUserResponseContentIdentitiesList>;
+export const GetUserResponseContentIdentitiesList =
+  CreateUserResponseContentIdentitiesList as any as S.Schema<GetUserResponseContentIdentitiesList>;
 
 /** List of multi-factor authentication providers with which this user has enrolled. */
 export type GetUserResponseContentMultifactorList = Array<string>;
-export const GetUserResponseContentMultifactorList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetUserResponseContentMultifactorList>;
+export const GetUserResponseContentMultifactorList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetUserResponseContentMultifactorList>;
 
 export interface GetUserResponseContent {
   /** ID of the user which can be used when interacting with other APIs. */
@@ -30856,16 +29554,8 @@ export interface GetUserAttributeProfileResponseContent {
   user_id?: UserAttributeProfileUserId;
   user_attributes?: UserAttributeProfileUserAttributes;
 }
-export const GetUserAttributeProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    user_id: S.optional(UserAttributeProfileUserId),
-    user_attributes: S.optional(UserAttributeProfileUserAttributes),
-  }),
-).annotate({
-  identifier: "GetUserAttributeProfileResponseContent",
-}) as any as S.Schema<GetUserAttributeProfileResponseContent>;
+export const GetUserAttributeProfileResponseContent =
+  CreateUserAttributeProfileResponseContent as any as S.Schema<GetUserAttributeProfileResponseContent>;
 
 export interface GetUserAttributeProfilesRequest {
   /** Optional Id from which to start selection. */
@@ -30981,15 +29671,8 @@ export interface UserAttributeProfileTemplateItem {
   display_name?: string;
   template?: UserAttributeProfileTemplate;
 }
-export const UserAttributeProfileTemplateItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    display_name: S.optional(S.String),
-    template: S.optional(UserAttributeProfileTemplate),
-  }),
-).annotate({
-  identifier: "UserAttributeProfileTemplateItem",
-}) as any as S.Schema<UserAttributeProfileTemplateItem>;
+export const UserAttributeProfileTemplateItem =
+  GetUserAttributeProfileTemplateResponseContent as any as S.Schema<UserAttributeProfileTemplateItem>;
 
 export type ListUserAttributeProfileTemplateResponseContentUserAttributeProfileTemplatesList =
   Array<UserAttributeProfileTemplateItem>;
@@ -31073,21 +29756,15 @@ export const GetUserBlocksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of identifier + IP address pairs. IP address is optional, and may be omitted in certain circumstances (such as Account Lockout mode). */
 export type ListUserBlocksByIdentifierResponseContentBlockedForList = Array<UserBlockIdentifier>;
-export const ListUserBlocksByIdentifierResponseContentBlockedForList = /*@__PURE__*/ S.Array(
-  UserBlockIdentifier,
-) as any as S.Schema<ListUserBlocksByIdentifierResponseContentBlockedForList>;
+export const ListUserBlocksByIdentifierResponseContentBlockedForList =
+  ListUserBlocksResponseContentBlockedForList as any as S.Schema<ListUserBlocksByIdentifierResponseContentBlockedForList>;
 
 export interface ListUserBlocksByIdentifierResponseContent {
   /** Array of identifier + IP address pairs. IP address is optional, and may be omitted in certain circumstances (such as Account Lockout mode). */
   blocked_for?: ListUserBlocksByIdentifierResponseContentBlockedForList;
 }
-export const ListUserBlocksByIdentifierResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocked_for: S.optional(ListUserBlocksByIdentifierResponseContentBlockedForList),
-  }),
-).annotate({
-  identifier: "ListUserBlocksByIdentifierResponseContent",
-}) as any as S.Schema<ListUserBlocksByIdentifierResponseContent>;
+export const ListUserBlocksByIdentifierResponseContent =
+  ListUserBlocksResponseContent as any as S.Schema<ListUserBlocksByIdentifierResponseContent>;
 
 export interface GetUserEffectivePermissionRoleSourcesRequest {
   /** ID of the user to retrieve the permissions for. */
@@ -31389,9 +30066,8 @@ export const GetUserGroupsResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetUserGroupsResponseContentCase0List>;
 
 export type GetUserGroupsPaginatedResponseContentGroupsList = Array<UserGroupsResponseSchema>;
-export const GetUserGroupsPaginatedResponseContentGroupsList = /*@__PURE__*/ S.Array(
-  UserGroupsResponseSchema,
-) as any as S.Schema<GetUserGroupsPaginatedResponseContentGroupsList>;
+export const GetUserGroupsPaginatedResponseContentGroupsList =
+  GetUserGroupsResponseContentCase0List as any as S.Schema<GetUserGroupsPaginatedResponseContentGroupsList>;
 
 export interface GetUserGroupsPaginatedResponseContent {
   groups: GetUserGroupsPaginatedResponseContentGroupsList;
@@ -31452,16 +30128,13 @@ export const GetUserOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserOrganizationsRequest>;
 
 export type ListUserOrganizationsResponseContentCase0List = Array<Organization>;
-export const ListUserOrganizationsResponseContentCase0List = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<ListUserOrganizationsResponseContentCase0List>;
+export const ListUserOrganizationsResponseContentCase0List =
+  ListClientGrantOrganizationsResponseContentCase0List as any as S.Schema<ListUserOrganizationsResponseContentCase0List>;
 
 export type ListUserOrganizationsOffsetPaginatedResponseContentOrganizationsList =
   Array<Organization>;
 export const ListUserOrganizationsOffsetPaginatedResponseContentOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    Organization,
-  ) as any as S.Schema<ListUserOrganizationsOffsetPaginatedResponseContentOrganizationsList>;
+  ListClientGrantOrganizationsOffsetPaginatedResponseContentOrganizationsList as any as S.Schema<ListUserOrganizationsOffsetPaginatedResponseContentOrganizationsList>;
 
 export interface ListUserOrganizationsOffsetPaginatedResponseContent {
   start?: number;
@@ -31469,35 +30142,20 @@ export interface ListUserOrganizationsOffsetPaginatedResponseContent {
   total?: number;
   organizations?: ListUserOrganizationsOffsetPaginatedResponseContentOrganizationsList;
 }
-export const ListUserOrganizationsOffsetPaginatedResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    total: S.optional(S.Number),
-    organizations: S.optional(ListUserOrganizationsOffsetPaginatedResponseContentOrganizationsList),
-  }),
-).annotate({
-  identifier: "ListUserOrganizationsOffsetPaginatedResponseContent",
-}) as any as S.Schema<ListUserOrganizationsOffsetPaginatedResponseContent>;
+export const ListUserOrganizationsOffsetPaginatedResponseContent =
+  ListOrganizationsOffsetPaginatedResponseContent as any as S.Schema<ListUserOrganizationsOffsetPaginatedResponseContent>;
 
 export type ListUserOrganizationsPaginatedResponseContentOrganizationsList = Array<Organization>;
-export const ListUserOrganizationsPaginatedResponseContentOrganizationsList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<ListUserOrganizationsPaginatedResponseContentOrganizationsList>;
+export const ListUserOrganizationsPaginatedResponseContentOrganizationsList =
+  ListClientGrantOrganizationsResponseContentCase0List as any as S.Schema<ListUserOrganizationsPaginatedResponseContentOrganizationsList>;
 
 export interface ListUserOrganizationsPaginatedResponseContent {
   /** Opaque identifier for use with the <i>from</i> query parameter for the next page of results.<br/>This identifier is valid for 24 hours. */
   next?: string;
   organizations?: ListUserOrganizationsPaginatedResponseContentOrganizationsList;
 }
-export const ListUserOrganizationsPaginatedResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    next: S.optional(S.String),
-    organizations: S.optional(ListUserOrganizationsPaginatedResponseContentOrganizationsList),
-  }),
-).annotate({
-  identifier: "ListUserOrganizationsPaginatedResponseContent",
-}) as any as S.Schema<ListUserOrganizationsPaginatedResponseContent>;
+export const ListUserOrganizationsPaginatedResponseContent =
+  ListOrganizationsPaginatedResponseContent as any as S.Schema<ListUserOrganizationsPaginatedResponseContent>;
 
 export type ListUserOrganizationsResponseContent =
   | ListUserOrganizationsResponseContentCase0List
@@ -31533,14 +30191,12 @@ export const GetUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRolesRequest" }) as any as S.Schema<GetUserRolesRequest>;
 
 export type ListUserRolesResponseContentCase0List = Array<Role>;
-export const ListUserRolesResponseContentCase0List = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<ListUserRolesResponseContentCase0List>;
+export const ListUserRolesResponseContentCase0List =
+  ListGroupRolesResponseContentRolesList as any as S.Schema<ListUserRolesResponseContentCase0List>;
 
 export type ListUserRolesOffsetPaginatedResponseContentRolesList = Array<Role>;
-export const ListUserRolesOffsetPaginatedResponseContentRolesList = /*@__PURE__*/ S.Array(
-  Role,
-) as any as S.Schema<ListUserRolesOffsetPaginatedResponseContentRolesList>;
+export const ListUserRolesOffsetPaginatedResponseContentRolesList =
+  ListGroupRolesResponseContentRolesList as any as S.Schema<ListUserRolesOffsetPaginatedResponseContentRolesList>;
 
 export interface ListUserRolesOffsetPaginatedResponseContent {
   start?: number;
@@ -31592,23 +30248,16 @@ export const GetUserRoleSourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserRoleSourceGroupsRequest>;
 
 export type ListUserRoleSourceGroupsResponseContentGroupsList = Array<Group>;
-export const ListUserRoleSourceGroupsResponseContentGroupsList = /*@__PURE__*/ S.Array(
-  Group,
-) as any as S.Schema<ListUserRoleSourceGroupsResponseContentGroupsList>;
+export const ListUserRoleSourceGroupsResponseContentGroupsList =
+  ListGroupsResponseContentCase0List as any as S.Schema<ListUserRoleSourceGroupsResponseContentGroupsList>;
 
 export interface ListUserRoleSourceGroupsResponseContent {
   groups: ListUserRoleSourceGroupsResponseContentGroupsList;
   /** A cursor to be used as the "from" query parameter for the next page of results. */
   next?: string;
 }
-export const ListUserRoleSourceGroupsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: ListUserRoleSourceGroupsResponseContentGroupsList,
-    next: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListUserRoleSourceGroupsResponseContent",
-}) as any as S.Schema<ListUserRoleSourceGroupsResponseContent>;
+export const ListUserRoleSourceGroupsResponseContent =
+  ListOrganizationGroupsResponseContent as any as S.Schema<ListUserRoleSourceGroupsResponseContent>;
 
 /** The version of the search engine */
 export type SearchEngineVersionsEnum = "v1" | "v2" | "v3";
@@ -31653,15 +30302,13 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user identity objects when accounts are linked. */
 export type UserResponseSchemaIdentitiesList = Array<UserIdentitySchema>;
-export const UserResponseSchemaIdentitiesList = /*@__PURE__*/ S.Array(
-  UserIdentitySchema,
-) as any as S.Schema<UserResponseSchemaIdentitiesList>;
+export const UserResponseSchemaIdentitiesList =
+  CreateUserResponseContentIdentitiesList as any as S.Schema<UserResponseSchemaIdentitiesList>;
 
 /** List of multi-factor authentication providers with which this user has enrolled. */
 export type UserResponseSchemaMultifactorList = Array<string>;
-export const UserResponseSchemaMultifactorList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserResponseSchemaMultifactorList>;
+export const UserResponseSchemaMultifactorList =
+  CreateClientRequestCallbacksList as any as S.Schema<UserResponseSchemaMultifactorList>;
 
 export interface UserResponseSchema {
   /** ID of the user which can be used when interacting with other APIs. */
@@ -31709,33 +30356,7 @@ export interface UserResponseSchema {
   /** Family name/last name/surname of this user. */
   family_name?: string;
 }
-export const UserResponseSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_id: S.optional(S.String),
-    email: S.optional(S.String),
-    email_verified: S.optional(S.Boolean),
-    username: S.optional(S.String),
-    phone_number: S.optional(S.String),
-    phone_verified: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    identities: S.optional(UserResponseSchemaIdentitiesList),
-    app_metadata: S.optional(UserAppMetadataSchema),
-    user_metadata: S.optional(UserMetadataSchema),
-    picture: S.optional(S.String),
-    name: S.optional(S.String),
-    nickname: S.optional(S.String),
-    multifactor: S.optional(UserResponseSchemaMultifactorList),
-    multifactor_last_modified: S.optional(S.String),
-    last_ip: S.optional(S.String),
-    last_login: S.optional(S.String),
-    last_password_reset: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    logins_count: S.optional(S.Number),
-    blocked: S.optional(S.Boolean),
-    given_name: S.optional(S.String),
-    family_name: S.optional(S.String),
-  }),
-).annotate({ identifier: "UserResponseSchema" }) as any as S.Schema<UserResponseSchema>;
+export const UserResponseSchema = GetUserResponseContent as any as S.Schema<UserResponseSchema>;
 
 export type ListUsersResponseContentCase0List = Array<UserResponseSchema>;
 export const ListUsersResponseContentCase0List = /*@__PURE__*/ S.Array(
@@ -31743,9 +30364,8 @@ export const ListUsersResponseContentCase0List = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListUsersResponseContentCase0List>;
 
 export type ListUsersOffsetPaginatedResponseContentUsersList = Array<UserResponseSchema>;
-export const ListUsersOffsetPaginatedResponseContentUsersList = /*@__PURE__*/ S.Array(
-  UserResponseSchema,
-) as any as S.Schema<ListUsersOffsetPaginatedResponseContentUsersList>;
+export const ListUsersOffsetPaginatedResponseContentUsersList =
+  ListUsersResponseContentCase0List as any as S.Schema<ListUsersOffsetPaginatedResponseContentUsersList>;
 
 export interface ListUsersOffsetPaginatedResponseContent {
   start?: number;
@@ -31793,9 +30413,8 @@ export const GetUsersByEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUsersByEmailRequest" }) as any as S.Schema<GetUsersByEmailRequest>;
 
 export type GetUsersByEmailResponseBodyList = Array<UserResponseSchema>;
-export const GetUsersByEmailResponseBodyList = /*@__PURE__*/ S.Array(
-  UserResponseSchema,
-) as any as S.Schema<GetUsersByEmailResponseBodyList>;
+export const GetUsersByEmailResponseBodyList =
+  ListUsersResponseContentCase0List as any as S.Schema<GetUsersByEmailResponseBodyList>;
 
 export type GetUsersByEmailResponse = GetUsersByEmailResponseBodyList;
 export const GetUsersByEmailResponse = /*@__PURE__*/ S.suspend(() =>
@@ -31830,19 +30449,8 @@ export interface GetVariationResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const GetVariationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    feature_flag_id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    overrides: VariationOverridesMap,
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "GetVariationResponseContent",
-}) as any as S.Schema<GetVariationResponseContent>;
+export const GetVariationResponseContent =
+  CreateVariationResponseContent as any as S.Schema<GetVariationResponseContent>;
 
 export interface GetVariationsRequest {
   /** The ID of the parent feature flag. */
@@ -32095,33 +30703,18 @@ export interface GetVerifiableCredentialTemplateResponseContent {
   /** The date and time the template was created. */
   updated_at?: string;
 }
-export const GetVerifiableCredentialTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    dialect: S.optional(S.String),
-    presentation: S.optional(MdlPresentationRequest),
-    custom_certificate_authority: S.optional(S.NullOr(S.String)),
-    well_known_trusted_issuers: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetVerifiableCredentialTemplateResponseContent",
-}) as any as S.Schema<GetVerifiableCredentialTemplateResponseContent>;
+export const GetVerifiableCredentialTemplateResponseContent =
+  VerifiableCredentialTemplateResponse as any as S.Schema<GetVerifiableCredentialTemplateResponseContent>;
 
 /** The list of triggers that this action supports. At this time, an action can only target a single trigger at a time. */
 export type PatchActionRequestSupportedTriggersList = Array<ActionTrigger>;
-export const PatchActionRequestSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<PatchActionRequestSupportedTriggersList>;
+export const PatchActionRequestSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<PatchActionRequestSupportedTriggersList>;
 
 /** The list of third party npm modules, and their versions, that this action depends on. */
 export type PatchActionRequestDependenciesList = Array<ActionVersionDependency>;
-export const PatchActionRequestDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<PatchActionRequestDependenciesList>;
+export const PatchActionRequestDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<PatchActionRequestDependenciesList>;
 
 export interface ActionSecretRequest {
   /** The name of the particular secret, e.g. API_KEY. */
@@ -32144,9 +30737,8 @@ export const PatchActionRequestSecretsList = /*@__PURE__*/ S.Array(
 
 /** The list of action modules and their versions used by this action. */
 export type PatchActionRequestModulesList = Array<ActionModuleReference>;
-export const PatchActionRequestModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<PatchActionRequestModulesList>;
+export const PatchActionRequestModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<PatchActionRequestModulesList>;
 
 export interface PatchActionRequest {
   /** The id of the action to update. */
@@ -32181,27 +30773,23 @@ export const PatchActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of triggers that this action supports. At this time, an action can only target a single trigger at a time. */
 export type UpdateActionResponseContentSupportedTriggersList = Array<ActionTrigger>;
-export const UpdateActionResponseContentSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<UpdateActionResponseContentSupportedTriggersList>;
+export const UpdateActionResponseContentSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<UpdateActionResponseContentSupportedTriggersList>;
 
 /** The list of third party npm modules, and their versions, that this action depends on. */
 export type UpdateActionResponseContentDependenciesList = Array<ActionVersionDependency>;
-export const UpdateActionResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<UpdateActionResponseContentDependenciesList>;
+export const UpdateActionResponseContentDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<UpdateActionResponseContentDependenciesList>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type UpdateActionResponseContentSecretsList = Array<ActionSecretResponse>;
-export const UpdateActionResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretResponse,
-) as any as S.Schema<UpdateActionResponseContentSecretsList>;
+export const UpdateActionResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<UpdateActionResponseContentSecretsList>;
 
 /** The list of action modules and their versions used by this action. */
 export type UpdateActionResponseContentModulesList = Array<ActionModuleReference>;
-export const UpdateActionResponseContentModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<UpdateActionResponseContentModulesList>;
+export const UpdateActionResponseContentModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<UpdateActionResponseContentModulesList>;
 
 export interface UpdateActionResponseContent {
   /** The unique ID of the action. */
@@ -32327,9 +30915,7 @@ export const CreatedAuthenticationMethodTypeEnum = S.String;
 export type UpdateUserAuthenticationMethodResponseContentAuthenticationMethodsList =
   Array<UserAuthenticationMethodProperties>;
 export const UpdateUserAuthenticationMethodResponseContentAuthenticationMethodsList =
-  /*@__PURE__*/ S.Array(
-    UserAuthenticationMethodProperties,
-  ) as any as S.Schema<UpdateUserAuthenticationMethodResponseContentAuthenticationMethodsList>;
+  GetUserAuthenticationMethodResponseContentAuthenticationMethodsList as any as S.Schema<UpdateUserAuthenticationMethodResponseContentAuthenticationMethodsList>;
 
 /** The successfully created authentication method. */
 export interface UpdateUserAuthenticationMethodResponseContent {
@@ -32420,9 +31006,8 @@ export const ActionBindingRef = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type ActionBindingWithRefSecretsList = Array<ActionSecretRequest>;
-export const ActionBindingWithRefSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretRequest,
-) as any as S.Schema<ActionBindingWithRefSecretsList>;
+export const ActionBindingWithRefSecretsList =
+  PatchActionRequestSecretsList as any as S.Schema<ActionBindingWithRefSecretsList>;
 
 export interface ActionBindingWithRef {
   ref: ActionBindingRef;
@@ -32459,9 +31044,8 @@ export const PatchBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchBindingsRequest" }) as any as S.Schema<PatchBindingsRequest>;
 
 export type UpdateActionBindingsResponseContentBindingsList = Array<ActionBinding>;
-export const UpdateActionBindingsResponseContentBindingsList = /*@__PURE__*/ S.Array(
-  ActionBinding,
-) as any as S.Schema<UpdateActionBindingsResponseContentBindingsList>;
+export const UpdateActionBindingsResponseContentBindingsList =
+  ListActionBindingsPaginatedResponseContentBindingsList as any as S.Schema<UpdateActionBindingsResponseContentBindingsList>;
 
 export interface UpdateActionBindingsResponseContent {
   bindings?: UpdateActionBindingsResponseContentBindingsList;
@@ -32520,18 +31104,15 @@ export const UpdateBotDetectionSettingsResponseContent = /*@__PURE__*/ S.suspend
 export type PatchBreachedPasswordDetectionRequestShieldsList = Array<
   BreachedPasswordDetectionShieldsEnum | (string & {})
 >;
-export const PatchBreachedPasswordDetectionRequestShieldsList = /*@__PURE__*/ S.Array(
-  BreachedPasswordDetectionShieldsEnum,
-) as any as S.Schema<PatchBreachedPasswordDetectionRequestShieldsList>;
+export const PatchBreachedPasswordDetectionRequestShieldsList =
+  GetBreachedPasswordDetectionSettingsResponseContentShieldsList as any as S.Schema<PatchBreachedPasswordDetectionRequestShieldsList>;
 
 /** When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: <code>immediately</code>, <code>daily</code>, <code>weekly</code>, <code>monthly</code>. */
 export type PatchBreachedPasswordDetectionRequestAdminNotificationFrequencyList = Array<
   BreachedPasswordDetectionAdminNotificationFrequencyEnum | (string & {})
 >;
 export const PatchBreachedPasswordDetectionRequestAdminNotificationFrequencyList =
-  /*@__PURE__*/ S.Array(
-    BreachedPasswordDetectionAdminNotificationFrequencyEnum,
-  ) as any as S.Schema<PatchBreachedPasswordDetectionRequestAdminNotificationFrequencyList>;
+  GetBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList as any as S.Schema<PatchBreachedPasswordDetectionRequestAdminNotificationFrequencyList>;
 
 export interface PatchBreachedPasswordDetectionRequest {
   /** Whether or not breached password detection is active. */
@@ -32571,9 +31152,7 @@ export const UpdateBreachedPasswordDetectionSettingsResponseContentShieldsList =
 export type UpdateBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList =
   Array<BreachedPasswordDetectionAdminNotificationFrequencyEnum>;
 export const UpdateBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList =
-  /*@__PURE__*/ S.Array(
-    BreachedPasswordDetectionAdminNotificationFrequencyEnum,
-  ) as any as S.Schema<UpdateBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList>;
+  GetBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList as any as S.Schema<UpdateBreachedPasswordDetectionSettingsResponseContentAdminNotificationFrequencyList>;
 
 export interface UpdateBreachedPasswordDetectionSettingsResponseContent {
   /** Whether or not breached password detection is active. */
@@ -32603,15 +31182,13 @@ export const UpdateBreachedPasswordDetectionSettingsResponseContent = /*@__PURE_
 export type PatchBruteForceProtectionRequestShieldsList = Array<
   BruteForceProtectionShieldsEnum | (string & {})
 >;
-export const PatchBruteForceProtectionRequestShieldsList = /*@__PURE__*/ S.Array(
-  BruteForceProtectionShieldsEnum,
-) as any as S.Schema<PatchBruteForceProtectionRequestShieldsList>;
+export const PatchBruteForceProtectionRequestShieldsList =
+  GetBruteForceSettingsResponseContentShieldsList as any as S.Schema<PatchBruteForceProtectionRequestShieldsList>;
 
 /** List of trusted IP addresses that will not have attack protection enforced against them. */
 export type PatchBruteForceProtectionRequestAllowlistList = Array<string>;
-export const PatchBruteForceProtectionRequestAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchBruteForceProtectionRequestAllowlistList>;
+export const PatchBruteForceProtectionRequestAllowlistList =
+  CreateClientRequestCallbacksList as any as S.Schema<PatchBruteForceProtectionRequestAllowlistList>;
 
 export interface PatchBruteForceProtectionRequest {
   /** Whether or not brute force attack protections are active. */
@@ -32641,15 +31218,13 @@ export const PatchBruteForceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 /** Action to take when a brute force protection threshold is violated. Possible values: <code>block</code>, <code>user_notification</code>. */
 export type UpdateBruteForceSettingsResponseContentShieldsList =
   Array<BruteForceProtectionShieldsEnum>;
-export const UpdateBruteForceSettingsResponseContentShieldsList = /*@__PURE__*/ S.Array(
-  BruteForceProtectionShieldsEnum,
-) as any as S.Schema<UpdateBruteForceSettingsResponseContentShieldsList>;
+export const UpdateBruteForceSettingsResponseContentShieldsList =
+  GetBruteForceSettingsResponseContentShieldsList as any as S.Schema<UpdateBruteForceSettingsResponseContentShieldsList>;
 
 /** List of trusted IP addresses that will not have attack protection enforced against them. */
 export type UpdateBruteForceSettingsResponseContentAllowlistList = Array<string>;
-export const UpdateBruteForceSettingsResponseContentAllowlistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBruteForceSettingsResponseContentAllowlistList>;
+export const UpdateBruteForceSettingsResponseContentAllowlistList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateBruteForceSettingsResponseContentAllowlistList>;
 
 export interface UpdateBruteForceSettingsResponseContent {
   /** Whether or not brute force attack protections are active. */
@@ -32663,18 +31238,8 @@ export interface UpdateBruteForceSettingsResponseContent {
   max_attempts?: number;
   form_submission_mode?: BruteForceProtectionFormSubmissionModeEnum;
 }
-export const UpdateBruteForceSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    shields: S.optional(UpdateBruteForceSettingsResponseContentShieldsList),
-    allowlist: S.optional(UpdateBruteForceSettingsResponseContentAllowlistList),
-    mode: S.optional(BruteForceProtectionModeEnum),
-    max_attempts: S.optional(S.Number),
-    form_submission_mode: S.optional(BruteForceProtectionFormSubmissionModeEnum),
-  }),
-).annotate({
-  identifier: "UpdateBruteForceSettingsResponseContent",
-}) as any as S.Schema<UpdateBruteForceSettingsResponseContent>;
+export const UpdateBruteForceSettingsResponseContent =
+  GetBruteForceSettingsResponseContent as any as S.Schema<UpdateBruteForceSettingsResponseContent>;
 
 /** Name of the prompt */
 export type PromptGroupNameEnum =
@@ -32814,9 +31379,8 @@ export const ScreenGroupNameEnum = S.String;
 
 /** An array of head tags */
 export type AculConfigsItemHeadTagsList = Array<AculHeadTag>;
-export const AculConfigsItemHeadTagsList = /*@__PURE__*/ S.Array(
-  AculHeadTag,
-) as any as S.Schema<AculConfigsItemHeadTagsList>;
+export const AculConfigsItemHeadTagsList =
+  ListAculsResponseContentItemHeadTagsList as any as S.Schema<AculConfigsItemHeadTagsList>;
 
 export interface AculConfigsItem {
   prompt: PromptGroupNameEnum | (string & {});
@@ -32939,14 +31503,8 @@ export interface AttackProtectionUpdateCaptchaFriendlyCaptcha {
   /** The secret key for the Friendly Captcha provider. */
   secret: string | Redacted.Redacted<string>;
 }
-export const AttackProtectionUpdateCaptchaFriendlyCaptcha = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    site_key: S.String,
-    secret: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({
-  identifier: "AttackProtectionUpdateCaptchaFriendlyCaptcha",
-}) as any as S.Schema<AttackProtectionUpdateCaptchaFriendlyCaptcha>;
+export const AttackProtectionUpdateCaptchaFriendlyCaptcha =
+  AttackProtectionUpdateCaptchaHcaptcha as any as S.Schema<AttackProtectionUpdateCaptchaFriendlyCaptcha>;
 
 export interface AttackProtectionUpdateCaptchaRecaptchaEnterprise {
   /** The site key for the reCAPTCHA Enterprise provider. */
@@ -32972,14 +31530,8 @@ export interface AttackProtectionUpdateCaptchaRecaptchaV2 {
   /** The secret key for the reCAPTCHA v2 provider. */
   secret: string | Redacted.Redacted<string>;
 }
-export const AttackProtectionUpdateCaptchaRecaptchaV2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    site_key: S.String,
-    secret: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({
-  identifier: "AttackProtectionUpdateCaptchaRecaptchaV2",
-}) as any as S.Schema<AttackProtectionUpdateCaptchaRecaptchaV2>;
+export const AttackProtectionUpdateCaptchaRecaptchaV2 =
+  AttackProtectionUpdateCaptchaHcaptcha as any as S.Schema<AttackProtectionUpdateCaptchaRecaptchaV2>;
 
 export interface PatchCaptchaRequest {
   active_provider_id?: AttackProtectionCaptchaProviderId | (string & {});
@@ -33014,20 +31566,8 @@ export interface UpdateAttackProtectionCaptchaResponseContent {
   recaptcha_v2?: AttackProtectionCaptchaRecaptchaV2ResponseContent;
   simple_captcha?: AttackProtectionCaptchaSimpleCaptchaResponseContent;
 }
-export const UpdateAttackProtectionCaptchaResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active_provider_id: S.optional(S.String),
-    arkose: S.optional(AttackProtectionCaptchaArkoseResponseContent),
-    auth_challenge: S.optional(AttackProtectionCaptchaAuthChallengeResponseContent),
-    hcaptcha: S.optional(AttackProtectionCaptchaHcaptchaResponseContent),
-    friendly_captcha: S.optional(AttackProtectionCaptchaFriendlyCaptchaResponseContent),
-    recaptcha_enterprise: S.optional(AttackProtectionCaptchaRecaptchaEnterpriseResponseContent),
-    recaptcha_v2: S.optional(AttackProtectionCaptchaRecaptchaV2ResponseContent),
-    simple_captcha: S.optional(AttackProtectionCaptchaSimpleCaptchaResponseContent),
-  }),
-).annotate({
-  identifier: "UpdateAttackProtectionCaptchaResponseContent",
-}) as any as S.Schema<UpdateAttackProtectionCaptchaResponseContent>;
+export const UpdateAttackProtectionCaptchaResponseContent =
+  GetAttackProtectionCaptchaResponseContent as any as S.Schema<UpdateAttackProtectionCaptchaResponseContent>;
 
 export interface UpdateEnabledClientConnectionsRequestContentItem {
   /** The client_id of the client whose status will be changed. Note that the limit per PATCH request is 50 clients. */
@@ -33063,9 +31603,8 @@ export const PatchClientsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchClientsRequest" }) as any as S.Schema<PatchClientsRequest>;
 
 export interface PatchClientsResponse {}
-export const PatchClientsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchClientsResponse",
-}) as any as S.Schema<PatchClientsResponse>;
+export const PatchClientsResponse =
+  CreateGroupRoleResponse as any as S.Schema<PatchClientsResponse>;
 
 export interface PatchCredentialsByCredentialIdRequest {
   /** ID of the client. */
@@ -33107,22 +31646,8 @@ export interface PatchClientCredentialResponseContent {
   /** The ISO 8601 formatted date representing the expiration of the credential. */
   expires_at?: string;
 }
-export const PatchClientCredentialResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kid: S.optional(S.String),
-    alg: S.optional(ClientCredentialAlgorithmEnum),
-    credential_type: S.optional(ClientCredentialTypeEnum),
-    subject_dn: S.optional(S.String),
-    thumbprint_sha256: S.optional(S.String),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PatchClientCredentialResponseContent",
-}) as any as S.Schema<PatchClientCredentialResponseContent>;
+export const PatchClientCredentialResponseContent =
+  GetClientCredentialResponseContent as any as S.Schema<PatchClientCredentialResponseContent>;
 
 export interface PatchDefaultRequest {
   /** The domain to set as the default custom domain. Must be a verified custom domain or the canonical domain. */
@@ -33153,9 +31678,8 @@ export const PatchDefaultResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The mapping between Auth0 and IDP user attributes */
 export type PatchDirectoryProvisioningRequestMappingList = Array<DirectoryProvisioningMappingItem>;
-export const PatchDirectoryProvisioningRequestMappingList = /*@__PURE__*/ S.Array(
-  DirectoryProvisioningMappingItem,
-) as any as S.Schema<PatchDirectoryProvisioningRequestMappingList>;
+export const PatchDirectoryProvisioningRequestMappingList =
+  DirectoryProvisioningMappingList as any as S.Schema<PatchDirectoryProvisioningRequestMappingList>;
 
 export interface PatchDirectoryProvisioningRequest {
   /** The id of the connection to create its directory provisioning configuration */
@@ -33180,9 +31704,8 @@ export const PatchDirectoryProvisioningRequest = /*@__PURE__*/ S.suspend(() =>
 /** The mapping between Auth0 and IDP user attributes */
 export type UpdateDirectoryProvisioningResponseContentMappingList =
   Array<DirectoryProvisioningMappingItem>;
-export const UpdateDirectoryProvisioningResponseContentMappingList = /*@__PURE__*/ S.Array(
-  DirectoryProvisioningMappingItem,
-) as any as S.Schema<UpdateDirectoryProvisioningResponseContentMappingList>;
+export const UpdateDirectoryProvisioningResponseContentMappingList =
+  DirectoryProvisioningMappingList as any as S.Schema<UpdateDirectoryProvisioningResponseContentMappingList>;
 
 export interface UpdateDirectoryProvisioningResponseContent {
   /** The connection's identifier */
@@ -33207,23 +31730,8 @@ export interface UpdateDirectoryProvisioningResponseContent {
   /** The error message of the last synchronization, if any */
   last_synchronization_error?: string;
 }
-export const UpdateDirectoryProvisioningResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_id: S.String,
-    connection_name: S.String,
-    strategy: S.String,
-    mapping: UpdateDirectoryProvisioningResponseContentMappingList,
-    synchronize_automatically: S.Boolean,
-    synchronize_groups: S.optional(SynchronizeGroupsEnum),
-    created_at: S.String,
-    updated_at: S.String,
-    last_synchronization_at: S.optional(S.String),
-    last_synchronization_status: S.optional(S.String),
-    last_synchronization_error: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDirectoryProvisioningResponseContent",
-}) as any as S.Schema<UpdateDirectoryProvisioningResponseContent>;
+export const UpdateDirectoryProvisioningResponseContent =
+  GetDirectoryProvisioningResponseContent as any as S.Schema<UpdateDirectoryProvisioningResponseContent>;
 
 export interface PatchDiscoveryDomainsByDiscoveryDomainIdRequest {
   /** ID of the organization. */
@@ -33264,18 +31772,8 @@ export interface UpdateOrganizationDiscoveryDomainResponseContent {
   /** The full domain where the TXT record should be added. */
   verification_host: string;
 }
-export const UpdateOrganizationDiscoveryDomainResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domain: S.String,
-    status: OrganizationDiscoveryDomainStatus,
-    use_for_organization_discovery: S.optional(S.Boolean),
-    verification_txt: S.String,
-    verification_host: S.String,
-  }),
-).annotate({
-  identifier: "UpdateOrganizationDiscoveryDomainResponseContent",
-}) as any as S.Schema<UpdateOrganizationDiscoveryDomainResponseContent>;
+export const UpdateOrganizationDiscoveryDomainResponseContent =
+  OrganizationDiscoveryDomain as any as S.Schema<UpdateOrganizationDiscoveryDomainResponseContent>;
 
 export interface PatchEnabledConnectionsByConnectionIdRequest {
   /** Organization identifier. */
@@ -33318,17 +31816,8 @@ export interface UpdateOrganizationConnectionResponseContent {
   is_signup_enabled?: boolean;
   connection?: OrganizationConnectionInformation;
 }
-export const UpdateOrganizationConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_id: S.optional(S.String),
-    assign_membership_on_login: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    is_signup_enabled: S.optional(S.Boolean),
-    connection: S.optional(OrganizationConnectionInformation),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationConnectionResponseContent",
-}) as any as S.Schema<UpdateOrganizationConnectionResponseContent>;
+export const UpdateOrganizationConnectionResponseContent =
+  OrganizationEnabledConnection as any as S.Schema<UpdateOrganizationConnectionResponseContent>;
 
 export interface PatchFactorDuoSettingsRequest {
   ikey?: string;
@@ -33350,15 +31839,8 @@ export interface UpdateGuardianFactorDuoSettingsResponseContent {
   skey?: string;
   host?: string;
 }
-export const UpdateGuardianFactorDuoSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ikey: S.optional(S.String),
-    skey: S.optional(S.String),
-    host: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateGuardianFactorDuoSettingsResponseContent",
-}) as any as S.Schema<UpdateGuardianFactorDuoSettingsResponseContent>;
+export const UpdateGuardianFactorDuoSettingsResponseContent =
+  GetGuardianFactorDuoSettingsResponseContent as any as S.Schema<UpdateGuardianFactorDuoSettingsResponseContent>;
 
 export interface PatchFcmRequest {
   server_key?: string | null;
@@ -33408,15 +31890,10 @@ export type UpdateGuardianFactorsProviderPushNotificationFcmv1ResponseContent = 
   [key: string]: unknown | undefined;
 };
 export const UpdateGuardianFactorsProviderPushNotificationFcmv1ResponseContent =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateGuardianFactorsProviderPushNotificationFcmv1ResponseContent>;
+  UpdateGuardianFactorsProviderPushNotificationFcmResponseContent as any as S.Schema<UpdateGuardianFactorsProviderPushNotificationFcmv1ResponseContent>;
 
 export type PatchFcmv1Response = UpdateGuardianFactorsProviderPushNotificationFcmv1ResponseContent;
-export const PatchFcmv1Response = /*@__PURE__*/ S.suspend(() =>
-  UpdateGuardianFactorsProviderPushNotificationFcmv1ResponseContent.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PatchFcmv1Response" }) as any as S.Schema<PatchFcmv1Response>;
+export const PatchFcmv1Response = PatchFcmResponse as any as S.Schema<PatchFcmv1Response>;
 
 export interface PatchNewDeviceRequest {
   /** Length of time to remember devices for, in days. */
@@ -33432,13 +31909,8 @@ export interface UpdateRiskAssessmentsSettingsNewDeviceResponseContent {
   /** Length of time to remember devices for, in days. */
   remember_for: number;
 }
-export const UpdateRiskAssessmentsSettingsNewDeviceResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remember_for: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateRiskAssessmentsSettingsNewDeviceResponseContent",
-}) as any as S.Schema<UpdateRiskAssessmentsSettingsNewDeviceResponseContent>;
+export const UpdateRiskAssessmentsSettingsNewDeviceResponseContent =
+  GetRiskAssessmentsSettingsNewDeviceResponseContent as any as S.Schema<UpdateRiskAssessmentsSettingsNewDeviceResponseContent>;
 
 export interface PatchPhoneProviderProtectionRequest {
   type: PhoneProviderProtectionBackoffStrategyEnum | (string & {});
@@ -33456,13 +31928,8 @@ export const PatchPhoneProviderProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchPhoneProviderProtectionResponseContent {
   type: PhoneProviderProtectionBackoffStrategyEnum;
 }
-export const PatchPhoneProviderProtectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PhoneProviderProtectionBackoffStrategyEnum,
-  }),
-).annotate({
-  identifier: "PatchPhoneProviderProtectionResponseContent",
-}) as any as S.Schema<PatchPhoneProviderProtectionResponseContent>;
+export const PatchPhoneProviderProtectionResponseContent =
+  GetPhoneProviderProtectionResponseContent as any as S.Schema<PatchPhoneProviderProtectionResponseContent>;
 
 /** Name of the email provider. Can be `mailgun`, `mandrill`, `sendgrid`, `resend`, `ses`, `sparkpost`, `smtp`, `azure_cs`, `ms365`, or `custom`. */
 export type EmailProviderNameEnum =
@@ -33614,10 +32081,8 @@ export const EmailProviderCredentialsSchema =
 export type EmailSpecificProviderSettingsWithAdditionalProperties = {
   [key: string]: unknown | undefined;
 };
-export const EmailSpecificProviderSettingsWithAdditionalProperties = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EmailSpecificProviderSettingsWithAdditionalProperties>;
+export const EmailSpecificProviderSettingsWithAdditionalProperties =
+  AgentMetadata as any as S.Schema<EmailSpecificProviderSettingsWithAdditionalProperties>;
 
 export interface PatchProviderRequest {
   name?: EmailProviderNameEnum | (string & {});
@@ -33648,17 +32113,8 @@ export interface UpdateEmailProviderResponseContent {
   credentials?: EmailProviderCredentials;
   settings?: EmailProviderSettings;
 }
-export const UpdateEmailProviderResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    default_from_address: S.optional(S.String),
-    credentials: S.optional(EmailProviderCredentials),
-    settings: S.optional(EmailProviderSettings),
-  }),
-).annotate({
-  identifier: "UpdateEmailProviderResponseContent",
-}) as any as S.Schema<UpdateEmailProviderResponseContent>;
+export const UpdateEmailProviderResponseContent =
+  GetEmailProviderResponseContent as any as S.Schema<UpdateEmailProviderResponseContent>;
 
 /** Name of the prompt */
 export type PatchRenderingRequestPrompt =
@@ -33798,9 +32254,8 @@ export const PatchRenderingRequestScreen = S.String;
 
 /** An array of head tags */
 export type PatchRenderingRequestHeadTagsList = Array<AculHeadTag>;
-export const PatchRenderingRequestHeadTagsList = /*@__PURE__*/ S.Array(
-  AculHeadTag,
-) as any as S.Schema<PatchRenderingRequestHeadTagsList>;
+export const PatchRenderingRequestHeadTagsList =
+  ListAculsResponseContentItemHeadTagsList as any as S.Schema<PatchRenderingRequestHeadTagsList>;
 
 export interface PatchRenderingRequest {
   /** Name of the prompt */
@@ -33835,9 +32290,8 @@ export const PatchRenderingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of head tags */
 export type UpdateAculResponseContentHeadTagsList = Array<AculHeadTag>;
-export const UpdateAculResponseContentHeadTagsList = /*@__PURE__*/ S.Array(
-  AculHeadTag,
-) as any as S.Schema<UpdateAculResponseContentHeadTagsList>;
+export const UpdateAculResponseContentHeadTagsList =
+  ListAculsResponseContentItemHeadTagsList as any as S.Schema<UpdateAculResponseContentHeadTagsList>;
 
 export interface UpdateAculResponseContent {
   /** Rendering mode */
@@ -33866,9 +32320,8 @@ export const UpdateAculResponseContent = /*@__PURE__*/ S.suspend(() =>
 
 /** The mapping between auth0 and SCIM */
 export type PatchScimConfigurationRequestMappingList = Array<ScimMappingItem>;
-export const PatchScimConfigurationRequestMappingList = /*@__PURE__*/ S.Array(
-  ScimMappingItem,
-) as any as S.Schema<PatchScimConfigurationRequestMappingList>;
+export const PatchScimConfigurationRequestMappingList =
+  ScimConfigurationMappingList as any as S.Schema<PatchScimConfigurationRequestMappingList>;
 
 export interface PatchScimConfigurationRequest {
   /** The id of the connection to update its SCIM configuration */
@@ -33890,9 +32343,8 @@ export const PatchScimConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The mapping between auth0 and SCIM */
 export type UpdateScimConfigurationResponseContentMappingList = Array<ScimMappingItem>;
-export const UpdateScimConfigurationResponseContentMappingList = /*@__PURE__*/ S.Array(
-  ScimMappingItem,
-) as any as S.Schema<UpdateScimConfigurationResponseContentMappingList>;
+export const UpdateScimConfigurationResponseContentMappingList =
+  ScimConfigurationMappingList as any as S.Schema<UpdateScimConfigurationResponseContentMappingList>;
 
 export interface UpdateScimConfigurationResponseContent {
   /** The connection's identifier */
@@ -33912,27 +32364,13 @@ export interface UpdateScimConfigurationResponseContent {
   /** The ISO 8601 date and time the SCIM configuration was last updated on */
   updated_on: string;
 }
-export const UpdateScimConfigurationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_id: S.String,
-    connection_name: S.String,
-    strategy: S.String,
-    tenant_name: S.String,
-    user_id_attribute: S.String,
-    mapping: UpdateScimConfigurationResponseContentMappingList,
-    created_at: S.String,
-    updated_on: S.String,
-  }),
-).annotate({
-  identifier: "UpdateScimConfigurationResponseContent",
-}) as any as S.Schema<UpdateScimConfigurationResponseContent>;
+export const UpdateScimConfigurationResponseContent =
+  GetScimConfigurationResponseContent as any as S.Schema<UpdateScimConfigurationResponseContent>;
 
 /** Hashmap of key-value pairs where the value must be a string. */
 export type UpdateHookSecretRequestContent = { [key: string]: string | undefined };
-export const UpdateHookSecretRequestContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateHookSecretRequestContent>;
+export const UpdateHookSecretRequestContent =
+  FlowActionStripeMetadata as any as S.Schema<UpdateHookSecretRequestContent>;
 
 export interface PatchSecretsRequest {
   /** ID of the hook whose secrets to update. */
@@ -33947,9 +32385,8 @@ export const PatchSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchSecretsRequest" }) as any as S.Schema<PatchSecretsRequest>;
 
 export interface PatchSecretsResponse {}
-export const PatchSecretsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchSecretsResponse",
-}) as any as S.Schema<PatchSecretsResponse>;
+export const PatchSecretsResponse =
+  CreateGroupRoleResponse as any as S.Schema<PatchSecretsResponse>;
 
 /** Change Password page customization. */
 export interface TenantSettingsPasswordPage {
@@ -33991,14 +32428,8 @@ export interface TenantSettingsGuardianPage {
   /** Custom Guardian HTML (<a href='https://github.com/Shopify/liquid/wiki/Liquid-for-Designers'>Liquid syntax</a> is supported). */
   html?: string;
 }
-export const TenantSettingsGuardianPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    html: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TenantSettingsGuardianPage",
-}) as any as S.Schema<TenantSettingsGuardianPage>;
+export const TenantSettingsGuardianPage =
+  TenantSettingsPasswordPage as any as S.Schema<TenantSettingsGuardianPage>;
 
 /** Error page customization. */
 export interface TenantSettingsErrorPage {
@@ -34132,9 +32563,8 @@ export const TenantSettingsFlags = /*@__PURE__*/ S.suspend(() =>
 
 /** URLs that are valid to redirect to after logout from Auth0. */
 export type PatchSettingsRequestAllowedLogoutUrlsList = Array<string>;
-export const PatchSettingsRequestAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchSettingsRequestAllowedLogoutUrlsList>;
+export const PatchSettingsRequestAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<PatchSettingsRequestAllowedLogoutUrlsList>;
 
 export type TenantSettingsSupportedLocalesEnum =
   | "am"
@@ -34234,9 +32664,8 @@ export type CspPolicyMode = "enforcing" | "reporting";
 export const CspPolicyMode = S.String;
 
 export type CspDirectivesValueList = Array<string>;
-export const CspDirectivesValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CspDirectivesValueList>;
+export const CspDirectivesValueList =
+  CreateClientRequestCallbacksList as any as S.Schema<CspDirectivesValueList>;
 
 /** CSP directives map. Keys are directive names, values are arrays of directive values. */
 export type CspDirectives = { [key: string]: CspDirectivesValueList | undefined };
@@ -34291,11 +32720,7 @@ export interface CspReportToEndpoint {
   /** HTTPS URL for the reporting endpoint. */
   url?: string;
 }
-export const CspReportToEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "CspReportToEndpoint" }) as any as S.Schema<CspReportToEndpoint>;
+export const CspReportToEndpoint = BrandingFont as any as S.Schema<CspReportToEndpoint>;
 
 /** Array of reporting endpoints. */
 export type CspReportToEndpoints = Array<CspReportToEndpoint>;
@@ -34321,10 +32746,8 @@ export const CspReportTo = /*@__PURE__*/ S.suspend(() =>
 
 /** Reporting-Endpoints header configuration (key-value pairs). */
 export type CspReportingEndpoints = { [key: string]: string | undefined };
-export const CspReportingEndpoints = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CspReportingEndpoints>;
+export const CspReportingEndpoints =
+  FlowActionStripeMetadata as any as S.Schema<CspReportingEndpoints>;
 
 /** Global reporting infrastructure configuration. */
 export interface CspReportingInfrastructure {
@@ -34447,9 +32870,8 @@ export const TenantOIDCLogoutSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported ACR values */
 export type PatchSettingsRequestAcrValuesSupportedList = Array<string>;
-export const PatchSettingsRequestAcrValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PatchSettingsRequestAcrValuesSupportedList>;
+export const PatchSettingsRequestAcrValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<PatchSettingsRequestAcrValuesSupportedList>;
 
 /** mTLS configuration. */
 export interface TenantSettingsMTLS {
@@ -34472,9 +32894,8 @@ export const TenantSettingsDynamicClientRegistrationSecurityMode = S.String;
 
 /** Array of ISO 3166-1 alpha-2 country codes. */
 export type TenantSettingsCountryCodesListList = Array<string>;
-export const TenantSettingsCountryCodesListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TenantSettingsCountryCodesListList>;
+export const TenantSettingsCountryCodesListList =
+  CreateClientRequestCallbacksList as any as S.Schema<TenantSettingsCountryCodesListList>;
 
 /** Whether the list is an allowlist or denylist. */
 export type TenantSettingsCountryCodesMode = "allow" | "deny";
@@ -34629,16 +33050,13 @@ export const PatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** URLs that are valid to redirect to after logout from Auth0. */
 export type UpdateTenantSettingsResponseContentAllowedLogoutUrlsList = Array<string>;
-export const UpdateTenantSettingsResponseContentAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTenantSettingsResponseContentAllowedLogoutUrlsList>;
+export const UpdateTenantSettingsResponseContentAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateTenantSettingsResponseContentAllowedLogoutUrlsList>;
 
 /** Available sandbox versions for the extensibility environment. */
 export type UpdateTenantSettingsResponseContentSandboxVersionsAvailableList = Array<string>;
 export const UpdateTenantSettingsResponseContentSandboxVersionsAvailableList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateTenantSettingsResponseContentSandboxVersionsAvailableList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<UpdateTenantSettingsResponseContentSandboxVersionsAvailableList>;
 
 export type SupportedLocales =
   | "am"
@@ -34733,15 +33151,13 @@ export const UpdateTenantSettingsResponseContentEnabledLocalesList = /*@__PURE__
 
 /** Supported ACR values */
 export type UpdateTenantSettingsResponseContentAcrValuesSupportedList = Array<string>;
-export const UpdateTenantSettingsResponseContentAcrValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateTenantSettingsResponseContentAcrValuesSupportedList>;
+export const UpdateTenantSettingsResponseContentAcrValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateTenantSettingsResponseContentAcrValuesSupportedList>;
 
 /** Array of ISO 3166-1 alpha-2 country codes. */
 export type TenantSettingsCountryCodesResponseListList = Array<string>;
-export const TenantSettingsCountryCodesResponseListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TenantSettingsCountryCodesResponseListList>;
+export const TenantSettingsCountryCodesResponseListList =
+  CreateClientRequestCallbacksList as any as S.Schema<TenantSettingsCountryCodesResponseListList>;
 
 /** Whether the list is an allowlist or denylist. */
 export type TenantSettingsCountryCodesModeResponse = "allow" | "deny";
@@ -34935,9 +33351,8 @@ export const UpdateGuardianFactorsProviderPushNotificationSnsResponseContent =
 export type PatchSuspiciousIpThrottlingRequestShieldsList = Array<
   SuspiciousIPThrottlingShieldsEnum | (string & {})
 >;
-export const PatchSuspiciousIpThrottlingRequestShieldsList = /*@__PURE__*/ S.Array(
-  SuspiciousIPThrottlingShieldsEnum,
-) as any as S.Schema<PatchSuspiciousIpThrottlingRequestShieldsList>;
+export const PatchSuspiciousIpThrottlingRequestShieldsList =
+  GetSuspiciousIPThrottlingSettingsResponseContentShieldsList as any as S.Schema<PatchSuspiciousIpThrottlingRequestShieldsList>;
 
 export interface PatchSuspiciousIpThrottlingRequest {
   /** Whether or not suspicious IP throttling attack protections are active. */
@@ -34963,9 +33378,8 @@ export const PatchSuspiciousIpThrottlingRequest = /*@__PURE__*/ S.suspend(() =>
 /** Action to take when a suspicious IP throttling threshold is violated. Possible values: <code>block</code>, <code>admin_notification</code>. */
 export type UpdateSuspiciousIPThrottlingSettingsResponseContentShieldsList =
   Array<SuspiciousIPThrottlingShieldsEnum>;
-export const UpdateSuspiciousIPThrottlingSettingsResponseContentShieldsList = /*@__PURE__*/ S.Array(
-  SuspiciousIPThrottlingShieldsEnum,
-) as any as S.Schema<UpdateSuspiciousIPThrottlingSettingsResponseContentShieldsList>;
+export const UpdateSuspiciousIPThrottlingSettingsResponseContentShieldsList =
+  GetSuspiciousIPThrottlingSettingsResponseContentShieldsList as any as S.Schema<UpdateSuspiciousIPThrottlingSettingsResponseContentShieldsList>;
 
 export interface UpdateSuspiciousIPThrottlingSettingsResponseContent {
   /** Whether or not suspicious IP throttling attack protections are active. */
@@ -34975,16 +33389,8 @@ export interface UpdateSuspiciousIPThrottlingSettingsResponseContent {
   allowlist?: SuspiciousIPThrottlingAllowlist;
   stage?: SuspiciousIPThrottlingStage;
 }
-export const UpdateSuspiciousIPThrottlingSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    shields: S.optional(UpdateSuspiciousIPThrottlingSettingsResponseContentShieldsList),
-    allowlist: S.optional(SuspiciousIPThrottlingAllowlist),
-    stage: S.optional(SuspiciousIPThrottlingStage),
-  }),
-).annotate({
-  identifier: "UpdateSuspiciousIPThrottlingSettingsResponseContent",
-}) as any as S.Schema<UpdateSuspiciousIPThrottlingSettingsResponseContent>;
+export const UpdateSuspiciousIPThrottlingSettingsResponseContent =
+  GetSuspiciousIPThrottlingSettingsResponseContent as any as S.Schema<UpdateSuspiciousIPThrottlingSettingsResponseContent>;
 
 export interface PatchVcTemplatesByIdRequest {
   /** ID of the template to retrieve. */
@@ -35035,45 +33441,28 @@ export interface UpdateVerifiableCredentialTemplateResponseContent {
   /** The date and time the template was created. */
   updated_at?: string;
 }
-export const UpdateVerifiableCredentialTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    dialect: S.optional(S.String),
-    presentation: S.optional(MdlPresentationRequest),
-    custom_certificate_authority: S.optional(S.NullOr(S.String)),
-    well_known_trusted_issuers: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVerifiableCredentialTemplateResponseContent",
-}) as any as S.Schema<UpdateVerifiableCredentialTemplateResponseContent>;
+export const UpdateVerifiableCredentialTemplateResponseContent =
+  VerifiableCredentialTemplateResponse as any as S.Schema<UpdateVerifiableCredentialTemplateResponseContent>;
 
 /** The list of triggers that this action supports. At this time, an action can only target a single trigger at a time. */
 export type PostActionRequestSupportedTriggersList = Array<ActionTrigger>;
-export const PostActionRequestSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<PostActionRequestSupportedTriggersList>;
+export const PostActionRequestSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<PostActionRequestSupportedTriggersList>;
 
 /** The list of third party npm modules, and their versions, that this action depends on. */
 export type PostActionRequestDependenciesList = Array<ActionVersionDependency>;
-export const PostActionRequestDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<PostActionRequestDependenciesList>;
+export const PostActionRequestDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<PostActionRequestDependenciesList>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type PostActionRequestSecretsList = Array<ActionSecretRequest>;
-export const PostActionRequestSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretRequest,
-) as any as S.Schema<PostActionRequestSecretsList>;
+export const PostActionRequestSecretsList =
+  PatchActionRequestSecretsList as any as S.Schema<PostActionRequestSecretsList>;
 
 /** The list of action modules and their versions used by this action. */
 export type PostActionRequestModulesList = Array<ActionModuleReference>;
-export const PostActionRequestModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<PostActionRequestModulesList>;
+export const PostActionRequestModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<PostActionRequestModulesList>;
 
 export interface PostActionRequest {
   /** The name of an action. */
@@ -35108,27 +33497,23 @@ export const PostActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of triggers that this action supports. At this time, an action can only target a single trigger at a time. */
 export type CreateActionResponseContentSupportedTriggersList = Array<ActionTrigger>;
-export const CreateActionResponseContentSupportedTriggersList = /*@__PURE__*/ S.Array(
-  ActionTrigger,
-) as any as S.Schema<CreateActionResponseContentSupportedTriggersList>;
+export const CreateActionResponseContentSupportedTriggersList =
+  GetActionResponseContentSupportedTriggersList as any as S.Schema<CreateActionResponseContentSupportedTriggersList>;
 
 /** The list of third party npm modules, and their versions, that this action depends on. */
 export type CreateActionResponseContentDependenciesList = Array<ActionVersionDependency>;
-export const CreateActionResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionVersionDependency,
-) as any as S.Schema<CreateActionResponseContentDependenciesList>;
+export const CreateActionResponseContentDependenciesList =
+  GetActionResponseContentDependenciesList as any as S.Schema<CreateActionResponseContentDependenciesList>;
 
 /** The list of secrets that are included in an action or a version of an action. */
 export type CreateActionResponseContentSecretsList = Array<ActionSecretResponse>;
-export const CreateActionResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionSecretResponse,
-) as any as S.Schema<CreateActionResponseContentSecretsList>;
+export const CreateActionResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<CreateActionResponseContentSecretsList>;
 
 /** The list of action modules and their versions used by this action. */
 export type CreateActionResponseContentModulesList = Array<ActionModuleReference>;
-export const CreateActionResponseContentModulesList = /*@__PURE__*/ S.Array(
-  ActionModuleReference,
-) as any as S.Schema<CreateActionResponseContentModulesList>;
+export const CreateActionResponseContentModulesList =
+  ActionDeployedVersionModulesList as any as S.Schema<CreateActionResponseContentModulesList>;
 
 export interface CreateActionResponseContent {
   /** The unique ID of the action. */
@@ -35163,29 +33548,8 @@ export interface CreateActionResponseContent {
   /** The list of action modules and their versions used by this action. */
   modules?: CreateActionResponseContentModulesList;
 }
-export const CreateActionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    supported_triggers: S.optional(CreateActionResponseContentSupportedTriggersList),
-    all_changes_deployed: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    code: S.optional(S.String),
-    dependencies: S.optional(CreateActionResponseContentDependenciesList),
-    runtime: S.optional(S.String),
-    secrets: S.optional(CreateActionResponseContentSecretsList),
-    deployed_version: S.optional(ActionDeployedVersion),
-    installed_integration_id: S.optional(S.String),
-    integration: S.optional(Integration),
-    status: S.optional(ActionBuildStatusEnum),
-    built_at: S.optional(S.String),
-    deploy: S.optional(S.Boolean),
-    modules: S.optional(CreateActionResponseContentModulesList),
-  }),
-).annotate({
-  identifier: "CreateActionResponseContent",
-}) as any as S.Schema<CreateActionResponseContent>;
+export const CreateActionResponseContent =
+  UpdateActionResponseContent as any as S.Schema<CreateActionResponseContent>;
 
 export type CreatedUserAuthenticationMethodTypeEnum =
   | "phone"
@@ -35201,9 +33565,8 @@ export const CredentialDeviceTypeEnum = S.String;
 
 /** Applies to passkeys only. The transports used by clients to communicate with the authenticator. */
 export type PostAuthenticationMethodsRequestTransportsList = Array<string>;
-export const PostAuthenticationMethodsRequestTransportsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostAuthenticationMethodsRequestTransportsList>;
+export const PostAuthenticationMethodsRequestTransportsList =
+  CreateClientRequestCallbacksList as any as S.Schema<PostAuthenticationMethodsRequestTransportsList>;
 
 export interface PostAuthenticationMethodsRequest {
   /** The ID of the user to whom the new authentication method will be assigned. */
@@ -35265,15 +33628,12 @@ export const PostAuthenticationMethodsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateUserAuthenticationMethodResponseContentAuthenticationMethodsList =
   Array<UserAuthenticationMethodProperties>;
 export const CreateUserAuthenticationMethodResponseContentAuthenticationMethodsList =
-  /*@__PURE__*/ S.Array(
-    UserAuthenticationMethodProperties,
-  ) as any as S.Schema<CreateUserAuthenticationMethodResponseContentAuthenticationMethodsList>;
+  GetUserAuthenticationMethodResponseContentAuthenticationMethodsList as any as S.Schema<CreateUserAuthenticationMethodResponseContentAuthenticationMethodsList>;
 
 /** Applies to passkeys only. The transports used by clients to communicate with the authenticator. */
 export type CreateUserAuthenticationMethodResponseContentTransportsList = Array<string>;
-export const CreateUserAuthenticationMethodResponseContentTransportsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserAuthenticationMethodResponseContentTransportsList>;
+export const CreateUserAuthenticationMethodResponseContentTransportsList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateUserAuthenticationMethodResponseContentTransportsList>;
 
 /** The successfully created authentication method. */
 export interface CreateUserAuthenticationMethodResponseContent {
@@ -35370,9 +33730,8 @@ export const PostClearAssessorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostClearAssessorsRequest>;
 
 export interface PostClearAssessorsResponse {}
-export const PostClearAssessorsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostClearAssessorsResponse",
-}) as any as S.Schema<PostClearAssessorsResponse>;
+export const PostClearAssessorsResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostClearAssessorsResponse>;
 
 export interface PostCredentialsRequest {
   /** ID of the client. */
@@ -35426,22 +33785,8 @@ export interface PostClientCredentialResponseContent {
   /** The ISO 8601 formatted date representing the expiration of the credential. */
   expires_at?: string;
 }
-export const PostClientCredentialResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    kid: S.optional(S.String),
-    alg: S.optional(ClientCredentialAlgorithmEnum),
-    credential_type: S.optional(ClientCredentialTypeEnum),
-    subject_dn: S.optional(S.String),
-    thumbprint_sha256: S.optional(S.String),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostClientCredentialResponseContent",
-}) as any as S.Schema<PostClientCredentialResponseContent>;
+export const PostClientCredentialResponseContent =
+  GetClientCredentialResponseContent as any as S.Schema<PostClientCredentialResponseContent>;
 
 export interface PostDeployActionRequest {
   /** The ID of an action. */
@@ -35454,9 +33799,8 @@ export const PostDeployActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostDeployActionRequest" }) as any as S.Schema<PostDeployActionRequest>;
 
 export interface PostDeployActionResponse {}
-export const PostDeployActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostDeployActionResponse",
-}) as any as S.Schema<PostDeployActionResponse>;
+export const PostDeployActionResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostDeployActionResponse>;
 
 export interface PostDeployDraftVersionRequest {
   /** The ID of an action. */
@@ -35479,15 +33823,13 @@ export const PostDeployDraftVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDeployDraftVersionRequest>;
 
 export interface PostDeployDraftVersionResponse {}
-export const PostDeployDraftVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostDeployDraftVersionResponse",
-}) as any as S.Schema<PostDeployDraftVersionResponse>;
+export const PostDeployDraftVersionResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostDeployDraftVersionResponse>;
 
 /** The mapping between Auth0 and IDP user attributes */
 export type PostDirectoryProvisioningRequestMappingList = Array<DirectoryProvisioningMappingItem>;
-export const PostDirectoryProvisioningRequestMappingList = /*@__PURE__*/ S.Array(
-  DirectoryProvisioningMappingItem,
-) as any as S.Schema<PostDirectoryProvisioningRequestMappingList>;
+export const PostDirectoryProvisioningRequestMappingList =
+  DirectoryProvisioningMappingList as any as S.Schema<PostDirectoryProvisioningRequestMappingList>;
 
 export interface PostDirectoryProvisioningRequest {
   /** The id of the connection to create its directory provisioning configuration */
@@ -35512,9 +33854,8 @@ export const PostDirectoryProvisioningRequest = /*@__PURE__*/ S.suspend(() =>
 /** The mapping between Auth0 and IDP user attributes */
 export type CreateDirectoryProvisioningResponseContentMappingList =
   Array<DirectoryProvisioningMappingItem>;
-export const CreateDirectoryProvisioningResponseContentMappingList = /*@__PURE__*/ S.Array(
-  DirectoryProvisioningMappingItem,
-) as any as S.Schema<CreateDirectoryProvisioningResponseContentMappingList>;
+export const CreateDirectoryProvisioningResponseContentMappingList =
+  DirectoryProvisioningMappingList as any as S.Schema<CreateDirectoryProvisioningResponseContentMappingList>;
 
 export interface CreateDirectoryProvisioningResponseContent {
   /** The connection's identifier */
@@ -35539,23 +33880,8 @@ export interface CreateDirectoryProvisioningResponseContent {
   /** The error message of the last synchronization, if any */
   last_synchronization_error?: string;
 }
-export const CreateDirectoryProvisioningResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_id: S.String,
-    connection_name: S.String,
-    strategy: S.String,
-    mapping: CreateDirectoryProvisioningResponseContentMappingList,
-    synchronize_automatically: S.Boolean,
-    synchronize_groups: S.optional(SynchronizeGroupsEnum),
-    created_at: S.String,
-    updated_at: S.String,
-    last_synchronization_at: S.optional(S.String),
-    last_synchronization_status: S.optional(S.String),
-    last_synchronization_error: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDirectoryProvisioningResponseContent",
-}) as any as S.Schema<CreateDirectoryProvisioningResponseContent>;
+export const CreateDirectoryProvisioningResponseContent =
+  GetDirectoryProvisioningResponseContent as any as S.Schema<CreateDirectoryProvisioningResponseContent>;
 
 export interface PostDiscoveryDomainsRequest {
   /** ID of the organization. */
@@ -35590,18 +33916,8 @@ export interface CreateOrganizationDiscoveryDomainResponseContent {
   /** The full domain where the TXT record should be added. */
   verification_host: string;
 }
-export const CreateOrganizationDiscoveryDomainResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    domain: S.String,
-    status: OrganizationDiscoveryDomainStatus,
-    use_for_organization_discovery: S.optional(S.Boolean),
-    verification_txt: S.String,
-    verification_host: S.String,
-  }),
-).annotate({
-  identifier: "CreateOrganizationDiscoveryDomainResponseContent",
-}) as any as S.Schema<CreateOrganizationDiscoveryDomainResponseContent>;
+export const CreateOrganizationDiscoveryDomainResponseContent =
+  OrganizationDiscoveryDomain as any as S.Schema<CreateOrganizationDiscoveryDomainResponseContent>;
 
 /** Identity provider name of the identity (e.g. `google-oauth2`). */
 export type IdentityProviderEnum =
@@ -35754,17 +34070,8 @@ export interface AddOrganizationConnectionResponseContent {
   is_signup_enabled?: boolean;
   connection?: OrganizationConnectionInformation;
 }
-export const AddOrganizationConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_id: S.optional(S.String),
-    assign_membership_on_login: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    is_signup_enabled: S.optional(S.Boolean),
-    connection: S.optional(OrganizationConnectionInformation),
-  }),
-).annotate({
-  identifier: "AddOrganizationConnectionResponseContent",
-}) as any as S.Schema<AddOrganizationConnectionResponseContent>;
+export const AddOrganizationConnectionResponseContent =
+  OrganizationEnabledConnection as any as S.Schema<AddOrganizationConnectionResponseContent>;
 
 /** Type of the encryption key to be created. */
 export type CreateEncryptionKeyType = "customer-provided-root-key" | "tenant-encryption-key";
@@ -35794,19 +34101,8 @@ export interface CreateEncryptionKeyResponseContent {
   /** Public key in PEM format */
   public_key?: string | null;
 }
-export const CreateEncryptionKeyResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    type: EncryptionKeyType,
-    state: EncryptionKeyState,
-    created_at: S.String,
-    updated_at: S.String,
-    parent_kid: S.optional(S.NullOr(S.String)),
-    public_key: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateEncryptionKeyResponseContent",
-}) as any as S.Schema<CreateEncryptionKeyResponseContent>;
+export const CreateEncryptionKeyResponseContent =
+  GetEncryptionKeyResponseContent as any as S.Schema<CreateEncryptionKeyResponseContent>;
 
 export interface PostEncryptionKeyRequest {
   /** Encryption key ID */
@@ -35836,19 +34132,8 @@ export interface ImportEncryptionKeyResponseContent {
   /** Public key in PEM format */
   public_key?: string | null;
 }
-export const ImportEncryptionKeyResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    type: EncryptionKeyType,
-    state: EncryptionKeyState,
-    created_at: S.String,
-    updated_at: S.String,
-    parent_kid: S.optional(S.NullOr(S.String)),
-    public_key: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ImportEncryptionKeyResponseContent",
-}) as any as S.Schema<ImportEncryptionKeyResponseContent>;
+export const ImportEncryptionKeyResponseContent =
+  GetEncryptionKeyResponseContent as any as S.Schema<ImportEncryptionKeyResponseContent>;
 
 export interface PostEncryptionRekeyRequest {}
 export const PostEncryptionRekeyRequest = /*@__PURE__*/ S.suspend(() =>
@@ -35858,9 +34143,8 @@ export const PostEncryptionRekeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostEncryptionRekeyRequest>;
 
 export interface PostEncryptionRekeyResponse {}
-export const PostEncryptionRekeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostEncryptionRekeyResponse",
-}) as any as S.Schema<PostEncryptionRekeyResponse>;
+export const PostEncryptionRekeyResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostEncryptionRekeyResponse>;
 
 export interface PostEncryptionWrappingKeyRequest {
   /** Encryption key ID */
@@ -35974,17 +34258,13 @@ export const PostInvalidateRememberBrowserRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PostInvalidateRememberBrowserRequest>;
 
 export interface PostInvalidateRememberBrowserResponse {}
-export const PostInvalidateRememberBrowserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostInvalidateRememberBrowserResponse",
-}) as any as S.Schema<PostInvalidateRememberBrowserResponse>;
+export const PostInvalidateRememberBrowserResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<PostInvalidateRememberBrowserResponse>;
 
 /** List of roles IDs to associated with the user. */
 export type PostInvitationsRequestRolesList = Array<string>;
-export const PostInvitationsRequestRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostInvitationsRequestRolesList>;
+export const PostInvitationsRequestRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<PostInvitationsRequestRolesList>;
 
 export interface PostInvitationsRequest {
   /** Organization identifier. */
@@ -36021,9 +34301,8 @@ export const PostInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles IDs to associated with the user. */
 export type CreateOrganizationInvitationResponseContentRolesList = Array<string>;
-export const CreateOrganizationInvitationResponseContentRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationInvitationResponseContentRolesList>;
+export const CreateOrganizationInvitationResponseContentRolesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateOrganizationInvitationResponseContentRolesList>;
 
 export interface CreateOrganizationInvitationResponseContent {
   /** The id of the user invitation. */
@@ -36049,25 +34328,8 @@ export interface CreateOrganizationInvitationResponseContent {
   /** The id of the invitation ticket */
   ticket_id?: string;
 }
-export const CreateOrganizationInvitationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    organization_id: S.optional(S.String),
-    inviter: S.optional(OrganizationInvitationInviter),
-    invitee: S.optional(OrganizationInvitationInvitee),
-    invitation_url: S.optional(S.String),
-    created_at: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    client_id: S.optional(S.String),
-    connection_id: S.optional(S.String),
-    app_metadata: S.optional(AppMetadata),
-    user_metadata: S.optional(UserMetadata),
-    roles: S.optional(CreateOrganizationInvitationResponseContentRolesList),
-    ticket_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOrganizationInvitationResponseContent",
-}) as any as S.Schema<CreateOrganizationInvitationResponseContent>;
+export const CreateOrganizationInvitationResponseContent =
+  GetOrganizationInvitationResponseContent as any as S.Schema<CreateOrganizationInvitationResponseContent>;
 
 /** Selected Signing Algorithm */
 export type PostConnectionKeysAlgEnum =
@@ -36144,9 +34406,8 @@ export const PostKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs to add to the organization as members. */
 export type PostMembersRequestMembersList = Array<string>;
-export const PostMembersRequestMembersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostMembersRequestMembersList>;
+export const PostMembersRequestMembersList =
+  CreateClientRequestCallbacksList as any as S.Schema<PostMembersRequestMembersList>;
 
 export interface PostMembersRequest {
   /** Organization identifier. */
@@ -36162,9 +34423,7 @@ export const PostMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostMembersRequest" }) as any as S.Schema<PostMembersRequest>;
 
 export interface PostMembersResponse {}
-export const PostMembersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostMembersResponse",
-}) as any as S.Schema<PostMembersResponse>;
+export const PostMembersResponse = CreateGroupRoleResponse as any as S.Schema<PostMembersResponse>;
 
 /** Identity provider name of the identity. Only `auth0` is supported */
 export type IdentityProviderOnlyAuth0Enum = "auth0";
@@ -36230,19 +34489,13 @@ export interface ChangePasswordTicketResponseContent {
   /** URL representing the ticket. */
   ticket: string;
 }
-export const ChangePasswordTicketResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ticket: S.String,
-  }),
-).annotate({
-  identifier: "ChangePasswordTicketResponseContent",
-}) as any as S.Schema<ChangePasswordTicketResponseContent>;
+export const ChangePasswordTicketResponseContent =
+  VerifyEmailTicketResponseContent as any as S.Schema<ChangePasswordTicketResponseContent>;
 
 /** List of permissions to add to this user. */
 export type PostPermissionsRequestPermissionsList = Array<PermissionRequestPayload>;
-export const PostPermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
-  PermissionRequestPayload,
-) as any as S.Schema<PostPermissionsRequestPermissionsList>;
+export const PostPermissionsRequestPermissionsList =
+  DeletePermissionsRequestPermissionsList as any as S.Schema<PostPermissionsRequestPermissionsList>;
 
 export interface PostPermissionsRequest {
   /** ID of the user to assign permissions to. */
@@ -36258,9 +34511,8 @@ export const PostPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostPermissionsRequest" }) as any as S.Schema<PostPermissionsRequest>;
 
 export interface PostPermissionsResponse {}
-export const PostPermissionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostPermissionsResponse",
-}) as any as S.Schema<PostPermissionsResponse>;
+export const PostPermissionsResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostPermissionsResponse>;
 
 export interface PostProviderRequest {
   name: EmailProviderNameEnum | (string & {});
@@ -36291,17 +34543,8 @@ export interface CreateEmailProviderResponseContent {
   credentials?: EmailProviderCredentials;
   settings?: EmailProviderSettings;
 }
-export const CreateEmailProviderResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    default_from_address: S.optional(S.String),
-    credentials: S.optional(EmailProviderCredentials),
-    settings: S.optional(EmailProviderSettings),
-  }),
-).annotate({
-  identifier: "CreateEmailProviderResponseContent",
-}) as any as S.Schema<CreateEmailProviderResponseContent>;
+export const CreateEmailProviderResponseContent =
+  GetEmailProviderResponseContent as any as S.Schema<CreateEmailProviderResponseContent>;
 
 export interface PostRecoveryCodeRegenerationRequest {
   /** ID of the user to regenerate a multi-factor authentication recovery code for. */
@@ -36390,9 +34633,8 @@ export const PostRedeliverRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostRedeliverRequest" }) as any as S.Schema<PostRedeliverRequest>;
 
 export interface PostRedeliverResponse {}
-export const PostRedeliverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostRedeliverResponse",
-}) as any as S.Schema<PostRedeliverResponse>;
+export const PostRedeliverResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostRedeliverResponse>;
 
 export interface PostRedeliverByEventIdRequest {
   /** Unique identifier for the event stream. */
@@ -36410,9 +34652,8 @@ export const PostRedeliverByEventIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRedeliverByEventIdRequest>;
 
 export interface PostRedeliverByEventIdResponse {}
-export const PostRedeliverByEventIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostRedeliverByEventIdResponse",
-}) as any as S.Schema<PostRedeliverByEventIdResponse>;
+export const PostRedeliverByEventIdResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostRedeliverByEventIdResponse>;
 
 export interface PostRevokeRequest {
   /** The id of the self-service profile */
@@ -36434,15 +34675,12 @@ export const PostRevokeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostRevokeRequest" }) as any as S.Schema<PostRevokeRequest>;
 
 export interface PostRevokeResponse {}
-export const PostRevokeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostRevokeResponse",
-}) as any as S.Schema<PostRevokeResponse>;
+export const PostRevokeResponse = CreateGroupRoleResponse as any as S.Schema<PostRevokeResponse>;
 
 /** array of resource_server_identifier, permission_name pairs. */
 export type PostRolePermissionAssignmentRequestPermissionsList = Array<PermissionRequestPayload>;
-export const PostRolePermissionAssignmentRequestPermissionsList = /*@__PURE__*/ S.Array(
-  PermissionRequestPayload,
-) as any as S.Schema<PostRolePermissionAssignmentRequestPermissionsList>;
+export const PostRolePermissionAssignmentRequestPermissionsList =
+  DeletePermissionsRequestPermissionsList as any as S.Schema<PostRolePermissionAssignmentRequestPermissionsList>;
 
 export interface PostRolePermissionAssignmentRequest {
   /** ID of the role to add permissions to. */
@@ -36460,11 +34698,8 @@ export const PostRolePermissionAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRolePermissionAssignmentRequest>;
 
 export interface PostRolePermissionAssignmentResponse {}
-export const PostRolePermissionAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostRolePermissionAssignmentResponse",
-}) as any as S.Schema<PostRolePermissionAssignmentResponse>;
+export const PostRolePermissionAssignmentResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<PostRolePermissionAssignmentResponse>;
 
 /** Selected Signing Algorithm */
 export type RotateConnectionKeysSigningAlgEnum =
@@ -36535,45 +34770,38 @@ export const PostRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of URLs whitelisted for Auth0 to use as a callback to the client after authentication. */
 export type RotateClientSecretResponseContentCallbacksList = Array<string>;
-export const RotateClientSecretResponseContentCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClientSecretResponseContentCallbacksList>;
+export const RotateClientSecretResponseContentCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<RotateClientSecretResponseContentCallbacksList>;
 
 /** Comma-separated list of URLs allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if necessary. You can also use wildcards at the subdomain level (e.g., https://*.contoso.com). Query strings and hash information are not taken into account when validating these URLs. */
 export type RotateClientSecretResponseContentAllowedOriginsList = Array<string>;
-export const RotateClientSecretResponseContentAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClientSecretResponseContentAllowedOriginsList>;
+export const RotateClientSecretResponseContentAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<RotateClientSecretResponseContentAllowedOriginsList>;
 
 /** Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>. */
 export type RotateClientSecretResponseContentWebOriginsList = Array<string>;
-export const RotateClientSecretResponseContentWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClientSecretResponseContentWebOriginsList>;
+export const RotateClientSecretResponseContentWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<RotateClientSecretResponseContentWebOriginsList>;
 
 /** List of audiences/realms for SAML protocol. Used by the wsfed addon. */
 export type RotateClientSecretResponseContentClientAliasesList = Array<string>;
-export const RotateClientSecretResponseContentClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClientSecretResponseContentClientAliasesList>;
+export const RotateClientSecretResponseContentClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<RotateClientSecretResponseContentClientAliasesList>;
 
 /** List of allow clients and API ids that are allowed to make delegation requests. Empty means all all your clients are allowed. */
 export type RotateClientSecretResponseContentAllowedClientsList = Array<string>;
-export const RotateClientSecretResponseContentAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClientSecretResponseContentAllowedClientsList>;
+export const RotateClientSecretResponseContentAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<RotateClientSecretResponseContentAllowedClientsList>;
 
 /** Comma-separated list of URLs that are valid to redirect to after logout from Auth0. Wildcards are allowed for subdomains. */
 export type RotateClientSecretResponseContentAllowedLogoutUrlsList = Array<string>;
-export const RotateClientSecretResponseContentAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClientSecretResponseContentAllowedLogoutUrlsList>;
+export const RotateClientSecretResponseContentAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<RotateClientSecretResponseContentAllowedLogoutUrlsList>;
 
 /** List of grant types supported for this application. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type RotateClientSecretResponseContentGrantTypesList = Array<string>;
-export const RotateClientSecretResponseContentGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RotateClientSecretResponseContentGrantTypesList>;
+export const RotateClientSecretResponseContentGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<RotateClientSecretResponseContentGrantTypesList>;
 
 /** Defines the available methods for organization discovery during the `pre_login_prompt`. Users can discover their organization either by `email`, `organization_name` or both. */
 export type RotateClientSecretResponseContentOrganizationDiscoveryMethodsList =
@@ -36774,9 +35002,8 @@ export const RotateClientSecretResponseContent = /*@__PURE__*/ S.suspend(() =>
 
 /** The mapping between auth0 and SCIM */
 export type PostScimConfigurationRequestMappingList = Array<ScimMappingItem>;
-export const PostScimConfigurationRequestMappingList = /*@__PURE__*/ S.Array(
-  ScimMappingItem,
-) as any as S.Schema<PostScimConfigurationRequestMappingList>;
+export const PostScimConfigurationRequestMappingList =
+  ScimConfigurationMappingList as any as S.Schema<PostScimConfigurationRequestMappingList>;
 
 export interface PostScimConfigurationRequest {
   /** The id of the connection to create its SCIM configuration */
@@ -36798,9 +35025,8 @@ export const PostScimConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The mapping between auth0 and SCIM */
 export type CreateScimConfigurationResponseContentMappingList = Array<ScimMappingItem>;
-export const CreateScimConfigurationResponseContentMappingList = /*@__PURE__*/ S.Array(
-  ScimMappingItem,
-) as any as S.Schema<CreateScimConfigurationResponseContentMappingList>;
+export const CreateScimConfigurationResponseContentMappingList =
+  ScimConfigurationMappingList as any as S.Schema<CreateScimConfigurationResponseContentMappingList>;
 
 export interface CreateScimConfigurationResponseContent {
   /** The connection's identifier */
@@ -36820,26 +35046,13 @@ export interface CreateScimConfigurationResponseContent {
   /** The ISO 8601 date and time the SCIM configuration was last updated on */
   updated_on: string;
 }
-export const CreateScimConfigurationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_id: S.String,
-    connection_name: S.String,
-    strategy: S.String,
-    tenant_name: S.String,
-    user_id_attribute: S.String,
-    mapping: CreateScimConfigurationResponseContentMappingList,
-    created_at: S.String,
-    updated_on: S.String,
-  }),
-).annotate({
-  identifier: "CreateScimConfigurationResponseContent",
-}) as any as S.Schema<CreateScimConfigurationResponseContent>;
+export const CreateScimConfigurationResponseContent =
+  GetScimConfigurationResponseContent as any as S.Schema<CreateScimConfigurationResponseContent>;
 
 /** The scopes of the scim token */
 export type PostScimTokenRequestScopesList = Array<string>;
-export const PostScimTokenRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostScimTokenRequestScopesList>;
+export const PostScimTokenRequestScopesList =
+  CreateClientRequestCallbacksList as any as S.Schema<PostScimTokenRequestScopesList>;
 
 export interface PostScimTokenRequest {
   /** The id of the connection to create its SCIM token */
@@ -36861,9 +35074,8 @@ export const PostScimTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes of the scim token */
 export type CreateScimTokenResponseContentScopesList = Array<string>;
-export const CreateScimTokenResponseContentScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateScimTokenResponseContentScopesList>;
+export const CreateScimTokenResponseContentScopesList =
+  CreateClientRequestCallbacksList as any as S.Schema<CreateScimTokenResponseContentScopesList>;
 
 export interface CreateScimTokenResponseContent {
   /** The token's identifier */
@@ -36891,10 +35103,8 @@ export const CreateScimTokenResponseContent = /*@__PURE__*/ S.suspend(() =>
 
 /** Hashmap of key-value pairs where the value must be a string. */
 export type CreateHookSecretRequestContent = { [key: string]: string | undefined };
-export const CreateHookSecretRequestContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateHookSecretRequestContent>;
+export const CreateHookSecretRequestContent =
+  FlowActionStripeMetadata as any as S.Schema<CreateHookSecretRequestContent>;
 
 export interface PostSecretsRequest {
   /** The id of the hook to retrieve */
@@ -36909,9 +35119,7 @@ export const PostSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostSecretsRequest" }) as any as S.Schema<PostSecretsRequest>;
 
 export interface PostSecretsResponse {}
-export const PostSecretsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostSecretsResponse",
-}) as any as S.Schema<PostSecretsResponse>;
+export const PostSecretsResponse = CreateGroupRoleResponse as any as S.Schema<PostSecretsResponse>;
 
 export interface PostSigningKeysRequest {}
 export const PostSigningKeysRequest = /*@__PURE__*/ S.suspend(() =>
@@ -36935,9 +35143,8 @@ export const RotateSigningKeysResponseContent = /*@__PURE__*/ S.suspend(() =>
 
 /** List of domain_aliases that can be authenticated in the Identity Provider */
 export type SelfServiceProfileSsoTicketConnectionOptionsDomainAliasesList = Array<string>;
-export const SelfServiceProfileSsoTicketConnectionOptionsDomainAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SelfServiceProfileSsoTicketConnectionOptionsDomainAliasesList>;
+export const SelfServiceProfileSsoTicketConnectionOptionsDomainAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<SelfServiceProfileSsoTicketConnectionOptionsDomainAliasesList>;
 
 /** The protocol used to connect to the the default application */
 export type SelfServiceProfileSsoTicketIdpInitiatedClientProtocolEnum =
@@ -37015,9 +35222,8 @@ export const SelfServiceProfileSsoTicketConnectionConfig = /*@__PURE__*/ S.suspe
 
 /** List of client_ids that the connection will be enabled for. */
 export type PostSsoTicketRequestEnabledClientsList = Array<string>;
-export const PostSsoTicketRequestEnabledClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PostSsoTicketRequestEnabledClientsList>;
+export const PostSsoTicketRequestEnabledClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<PostSsoTicketRequestEnabledClientsList>;
 
 export interface SelfServiceProfileSsoTicketEnabledOrganization {
   /** Organization identifier. */
@@ -37051,9 +35257,7 @@ export const SelfServiceProfileSsoTicketDomainVerificationEnum = S.String;
 /** List of domains that will be submitted for verification during the Self-Service Enterprise Configuration flow. */
 export type SelfServiceProfileSsoTicketDomainAliasesConfigPendingDomainsList = Array<string>;
 export const SelfServiceProfileSsoTicketDomainAliasesConfigPendingDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SelfServiceProfileSsoTicketDomainAliasesConfigPendingDomainsList>;
+  ClientTokenVaultPrivilegedAccessWithCredentialIdIpAllowlistList as any as S.Schema<SelfServiceProfileSsoTicketDomainAliasesConfigPendingDomainsList>;
 
 /** Configuration for the setup of the connection's domain_aliases in the Self-Service Enterprise Configuration flow. */
 export interface SelfServiceProfileSsoTicketDomainAliasesConfig {
@@ -37242,9 +35446,8 @@ export const CreateDirectorySynchronizationResponseContent = /*@__PURE__*/ S.sus
 
 /** Array of Google Workspace Directory group objects to synchronize. */
 export type PostSynchronizedGroupsRequestGroupsList = Array<SynchronizedGroupPayload>;
-export const PostSynchronizedGroupsRequestGroupsList = /*@__PURE__*/ S.Array(
-  SynchronizedGroupPayload,
-) as any as S.Schema<PostSynchronizedGroupsRequestGroupsList>;
+export const PostSynchronizedGroupsRequestGroupsList =
+  ListSynchronizedGroupsResponseContentGroupsList as any as S.Schema<PostSynchronizedGroupsRequestGroupsList>;
 
 export interface PostSynchronizedGroupsRequest {
   /** The id of the connection to add synchronized groups to */
@@ -37268,16 +35471,12 @@ export const PostSynchronizedGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostSynchronizedGroupsRequest>;
 
 export interface PostSynchronizedGroupsResponse {}
-export const PostSynchronizedGroupsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostSynchronizedGroupsResponse",
-}) as any as S.Schema<PostSynchronizedGroupsResponse>;
+export const PostSynchronizedGroupsResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostSynchronizedGroupsResponse>;
 
 /** The payload for the action. */
 export type TestActionPayload = { [key: string]: unknown | undefined };
-export const TestActionPayload = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestActionPayload>;
+export const TestActionPayload = AgentMetadata as any as S.Schema<TestActionPayload>;
 
 export interface PostTestActionRequest {
   /** The id of the action to test. */
@@ -37293,10 +35492,7 @@ export const PostTestActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resulting payload after an action was executed. */
 export type TestActionResultPayload = { [key: string]: unknown | undefined };
-export const TestActionResultPayload = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestActionResultPayload>;
+export const TestActionResultPayload = AgentMetadata as any as S.Schema<TestActionResultPayload>;
 
 export interface TestActionResponseContent {
   payload?: TestActionResultPayload;
@@ -37365,10 +35561,7 @@ export const EventStreamTestEventTypeEnum = S.String;
 
 /** The raw payload of the test event. */
 export type TestEventDataContent = { [key: string]: unknown | undefined };
-export const TestEventDataContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TestEventDataContent>;
+export const TestEventDataContent = AgentMetadata as any as S.Schema<TestEventDataContent>;
 
 export interface PostTestEventRequest {
   /** Unique identifier for the event stream. */
@@ -37385,9 +35578,8 @@ export const PostTestEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostTestEventRequest" }) as any as S.Schema<PostTestEventRequest>;
 
 export interface PostTestEventResponse {}
-export const PostTestEventResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostTestEventResponse",
-}) as any as S.Schema<PostTestEventResponse>;
+export const PostTestEventResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostTestEventResponse>;
 
 /** Optional. Specifies which factor the user must enroll with.<br />Note: Parameter can only be used with Universal Login; it cannot be used with Classic Login or custom MFA pages. */
 export type GuardianEnrollmentFactorEnum =
@@ -37477,9 +35669,8 @@ export const PostUsersExportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of fields to be included in the CSV. Defaults to a predefined set of fields. */
 export type CreateExportUsersResponseContentFieldsList = Array<CreateExportUsersFields>;
-export const CreateExportUsersResponseContentFieldsList = /*@__PURE__*/ S.Array(
-  CreateExportUsersFields,
-) as any as S.Schema<CreateExportUsersResponseContentFieldsList>;
+export const CreateExportUsersResponseContentFieldsList =
+  PostUsersExportsRequestFieldsList as any as S.Schema<CreateExportUsersResponseContentFieldsList>;
 
 export interface CreateExportUsersResponseContent {
   /** Status of this job. */
@@ -37537,9 +35728,8 @@ export const PostUsersImportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostUsersImportsRequest" }) as any as S.Schema<PostUsersImportsRequest>;
 
 export interface PostUsersImportsResponse {}
-export const PostUsersImportsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PostUsersImportsResponse",
-}) as any as S.Schema<PostUsersImportsResponse>;
+export const PostUsersImportsResponse =
+  CreateGroupRoleResponse as any as S.Schema<PostUsersImportsResponse>;
 
 export interface PostVcTemplatesRequest {
   name: string;
@@ -37581,21 +35771,8 @@ export interface CreateVerifiableCredentialTemplateResponseContent {
   /** The date and time the template was created. */
   updated_at?: string;
 }
-export const CreateVerifiableCredentialTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    dialect: S.optional(S.String),
-    presentation: S.optional(MdlPresentationRequest),
-    custom_certificate_authority: S.optional(S.NullOr(S.String)),
-    well_known_trusted_issuers: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateVerifiableCredentialTemplateResponseContent",
-}) as any as S.Schema<CreateVerifiableCredentialTemplateResponseContent>;
+export const CreateVerifiableCredentialTemplateResponseContent =
+  VerifiableCredentialTemplateResponse as any as S.Schema<CreateVerifiableCredentialTemplateResponseContent>;
 
 export interface PostVerificationEmailRequest {
   /** user_id of the user to send the verification email to. */
@@ -37708,14 +35885,7 @@ export interface SetGuardianFactorsProviderPushNotificationApnsResponseContent {
   bundle_id?: string | null;
 }
 export const SetGuardianFactorsProviderPushNotificationApnsResponseContent =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sandbox: S.optional(S.Boolean),
-      bundle_id: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "SetGuardianFactorsProviderPushNotificationApnsResponseContent",
-  }) as any as S.Schema<SetGuardianFactorsProviderPushNotificationApnsResponseContent>;
+  UpdateGuardianFactorsProviderPushNotificationApnsResponseContent as any as S.Schema<SetGuardianFactorsProviderPushNotificationApnsResponseContent>;
 
 export type AuthenticationTypeEnum = "phone" | "email" | "totp";
 export const AuthenticationTypeEnum = S.String;
@@ -37767,9 +35937,7 @@ export const PutAuthenticationMethodsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SetUserAuthenticationMethodResponseContentAuthenticationMethodsList =
   Array<UserAuthenticationMethodProperties>;
 export const SetUserAuthenticationMethodResponseContentAuthenticationMethodsList =
-  /*@__PURE__*/ S.Array(
-    UserAuthenticationMethodProperties,
-  ) as any as S.Schema<SetUserAuthenticationMethodResponseContentAuthenticationMethodsList>;
+  GetUserAuthenticationMethodResponseContentAuthenticationMethodsList as any as S.Schema<SetUserAuthenticationMethodResponseContentAuthenticationMethodsList>;
 
 /** The successfully created authentication method. */
 export interface SetUserAuthenticationMethodResponseContent {
@@ -37835,9 +36003,8 @@ export const PutAuthenticationMethodsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of custom public signing keys. */
 export type PutCustomSigningKeysRequestKeysList = Array<CustomSigningKeyJWK>;
-export const PutCustomSigningKeysRequestKeysList = /*@__PURE__*/ S.Array(
-  CustomSigningKeyJWK,
-) as any as S.Schema<PutCustomSigningKeysRequestKeysList>;
+export const PutCustomSigningKeysRequestKeysList =
+  GetCustomSigningKeysResponseContentKeysList as any as S.Schema<PutCustomSigningKeysRequestKeysList>;
 
 export interface PutCustomSigningKeysRequest {
   /** An array of custom public signing keys. */
@@ -37853,22 +36020,16 @@ export const PutCustomSigningKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of custom public signing keys. */
 export type SetCustomSigningKeysResponseContentKeysList = Array<CustomSigningKeyJWK>;
-export const SetCustomSigningKeysResponseContentKeysList = /*@__PURE__*/ S.Array(
-  CustomSigningKeyJWK,
-) as any as S.Schema<SetCustomSigningKeysResponseContentKeysList>;
+export const SetCustomSigningKeysResponseContentKeysList =
+  GetCustomSigningKeysResponseContentKeysList as any as S.Schema<SetCustomSigningKeysResponseContentKeysList>;
 
 /** JWKS representing an array of custom public signing keys. */
 export interface SetCustomSigningKeysResponseContent {
   /** An array of custom public signing keys. */
   keys?: SetCustomSigningKeysResponseContentKeysList;
 }
-export const SetCustomSigningKeysResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: S.optional(SetCustomSigningKeysResponseContentKeysList),
-  }),
-).annotate({
-  identifier: "SetCustomSigningKeysResponseContent",
-}) as any as S.Schema<SetCustomSigningKeysResponseContent>;
+export const SetCustomSigningKeysResponseContent =
+  GetCustomSigningKeysResponseContent as any as S.Schema<SetCustomSigningKeysResponseContent>;
 
 /** Name of the prompt */
 export type PutCustomTextByLanguageRequestPrompt =
@@ -37999,10 +36160,8 @@ export const PutCustomTextByLanguageRequestLanguage = S.String;
 
 /** An object containing custom dictionaries for a group of screens. */
 export type SetsCustomTextsByLanguageRequestContent = { [key: string]: unknown | undefined };
-export const SetsCustomTextsByLanguageRequestContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SetsCustomTextsByLanguageRequestContent>;
+export const SetsCustomTextsByLanguageRequestContent =
+  AgentMetadata as any as S.Schema<SetsCustomTextsByLanguageRequestContent>;
 
 export interface PutCustomTextByLanguageRequest {
   /** Name of the prompt. */
@@ -38022,9 +36181,8 @@ export const PutCustomTextByLanguageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCustomTextByLanguageRequest>;
 
 export interface PutCustomTextByLanguageResponse {}
-export const PutCustomTextByLanguageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutCustomTextByLanguageResponse" },
-) as any as S.Schema<PutCustomTextByLanguageResponse>;
+export const PutCustomTextByLanguageResponse =
+  DeleteConnectionProfileResponse as any as S.Schema<PutCustomTextByLanguageResponse>;
 
 /** Template name. Can be `verify_email`, `verify_email_by_code`, `auth_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `async_approval`, `change_password` (legacy), or `password_reset` (legacy). */
 export type PutEmailTemplateRequestTemplateName =
@@ -38099,21 +36257,8 @@ export interface SetEmailTemplateResponseContent {
   /** Whether the template is enabled (true) or disabled (false). */
   enabled: boolean | null;
 }
-export const SetEmailTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    template: EmailTemplateNameEnum,
-    body: S.NullOr(S.String),
-    from: S.NullOr(S.String),
-    resultUrl: S.optional(S.NullOr(S.String)),
-    subject: S.NullOr(S.String),
-    syntax: S.NullOr(S.String),
-    urlLifetimeInSeconds: S.optional(S.NullOr(S.Number)),
-    includeEmailInRedirect: S.optional(S.Boolean),
-    enabled: S.NullOr(S.Boolean),
-  }),
-).annotate({
-  identifier: "SetEmailTemplateResponseContent",
-}) as any as S.Schema<SetEmailTemplateResponseContent>;
+export const SetEmailTemplateResponseContent =
+  CreateEmailTemplateResponseContent as any as S.Schema<SetEmailTemplateResponseContent>;
 
 export interface PutFactorDuoSettingsRequest {
   ikey?: string;
@@ -38135,15 +36280,8 @@ export interface SetGuardianFactorDuoSettingsResponseContent {
   skey?: string;
   host?: string;
 }
-export const SetGuardianFactorDuoSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ikey: S.optional(S.String),
-    skey: S.optional(S.String),
-    host: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetGuardianFactorDuoSettingsResponseContent",
-}) as any as S.Schema<SetGuardianFactorDuoSettingsResponseContent>;
+export const SetGuardianFactorDuoSettingsResponseContent =
+  GetGuardianFactorDuoSettingsResponseContent as any as S.Schema<SetGuardianFactorDuoSettingsResponseContent>;
 
 export interface PutFactorPhoneTemplatesRequest {
   /** Message sent to the user when they are invited to enroll with a phone number. */
@@ -38166,14 +36304,8 @@ export interface SetGuardianFactorPhoneTemplatesResponseContent {
   /** Message sent to the user when they are prompted to verify their account. */
   verification_message: string;
 }
-export const SetGuardianFactorPhoneTemplatesResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enrollment_message: S.String,
-    verification_message: S.String,
-  }),
-).annotate({
-  identifier: "SetGuardianFactorPhoneTemplatesResponseContent",
-}) as any as S.Schema<SetGuardianFactorPhoneTemplatesResponseContent>;
+export const SetGuardianFactorPhoneTemplatesResponseContent =
+  GetGuardianFactorPhoneTemplatesResponseContent as any as S.Schema<SetGuardianFactorPhoneTemplatesResponseContent>;
 
 /** Factor name. Can be `sms`, `push-notification`, `email`, `duo` `otp` `webauthn-roaming`, `webauthn-platform`, or `recovery-code`. */
 export type PutFactorsByNameRequestName =
@@ -38204,13 +36336,8 @@ export interface SetGuardianFactorResponseContent {
   /** Whether this factor is enabled (true) or disabled (false). */
   enabled: boolean;
 }
-export const SetGuardianFactorResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "SetGuardianFactorResponseContent",
-}) as any as S.Schema<SetGuardianFactorResponseContent>;
+export const SetGuardianFactorResponseContent =
+  GetRiskAssessmentsSettingsResponseContent as any as S.Schema<SetGuardianFactorResponseContent>;
 
 export interface PutFactorSmsTemplatesRequest {
   /** Message sent to the user when they are invited to enroll with a phone number. */
@@ -38233,14 +36360,8 @@ export interface SetGuardianFactorSmsTemplatesResponseContent {
   /** Message sent to the user when they are prompted to verify their account. */
   verification_message: string;
 }
-export const SetGuardianFactorSmsTemplatesResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enrollment_message: S.String,
-    verification_message: S.String,
-  }),
-).annotate({
-  identifier: "SetGuardianFactorSmsTemplatesResponseContent",
-}) as any as S.Schema<SetGuardianFactorSmsTemplatesResponseContent>;
+export const SetGuardianFactorSmsTemplatesResponseContent =
+  GetGuardianFactorPhoneTemplatesResponseContent as any as S.Schema<SetGuardianFactorSmsTemplatesResponseContent>;
 
 export interface PutFcmRequest {
   server_key?: string | null;
@@ -38256,15 +36377,11 @@ export const PutFcmRequest = /*@__PURE__*/ S.suspend(() =>
 export type SetGuardianFactorsProviderPushNotificationFcmResponseContent = {
   [key: string]: unknown | undefined;
 };
-export const SetGuardianFactorsProviderPushNotificationFcmResponseContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SetGuardianFactorsProviderPushNotificationFcmResponseContent>;
+export const SetGuardianFactorsProviderPushNotificationFcmResponseContent =
+  AgentMetadata as any as S.Schema<SetGuardianFactorsProviderPushNotificationFcmResponseContent>;
 
 export type PutFcmResponse = SetGuardianFactorsProviderPushNotificationFcmResponseContent;
-export const PutFcmResponse = /*@__PURE__*/ S.suspend(() =>
-  SetGuardianFactorsProviderPushNotificationFcmResponseContent.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PutFcmResponse" }) as any as S.Schema<PutFcmResponse>;
+export const PutFcmResponse = GetPartialsResponse as any as S.Schema<PutFcmResponse>;
 
 export interface PutFcmv1Request {
   server_credentials?: string | null;
@@ -38285,15 +36402,10 @@ export type SetGuardianFactorsProviderPushNotificationFcmv1ResponseContent = {
   [key: string]: unknown | undefined;
 };
 export const SetGuardianFactorsProviderPushNotificationFcmv1ResponseContent =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SetGuardianFactorsProviderPushNotificationFcmv1ResponseContent>;
+  UpdateGuardianFactorsProviderPushNotificationFcmResponseContent as any as S.Schema<SetGuardianFactorsProviderPushNotificationFcmv1ResponseContent>;
 
 export type PutFcmv1Response = SetGuardianFactorsProviderPushNotificationFcmv1ResponseContent;
-export const PutFcmv1Response = /*@__PURE__*/ S.suspend(() =>
-  SetGuardianFactorsProviderPushNotificationFcmv1ResponseContent.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PutFcmv1Response" }) as any as S.Schema<PutFcmv1Response>;
+export const PutFcmv1Response = PatchFcmResponse as any as S.Schema<PutFcmv1Response>;
 
 /** The list of phone factors to enable on the tenant. Can include `sms` and `voice`. */
 export type PutMessageTypesRequestMessageTypesList = Array<
@@ -38317,21 +36429,14 @@ export const PutMessageTypesRequest = /*@__PURE__*/ S.suspend(() =>
 export type SetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList =
   Array<GuardianFactorPhoneFactorMessageTypeEnum>;
 export const SetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList =
-  /*@__PURE__*/ S.Array(
-    GuardianFactorPhoneFactorMessageTypeEnum,
-  ) as any as S.Schema<SetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList>;
+  GetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList as any as S.Schema<SetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList>;
 
 export interface SetGuardianFactorPhoneMessageTypesResponseContent {
   /** The list of phone factors to enable on the tenant. Can include `sms` and `voice`. */
   message_types?: SetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList;
 }
-export const SetGuardianFactorPhoneMessageTypesResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message_types: S.optional(SetGuardianFactorPhoneMessageTypesResponseContentMessageTypesList),
-  }),
-).annotate({
-  identifier: "SetGuardianFactorPhoneMessageTypesResponseContent",
-}) as any as S.Schema<SetGuardianFactorPhoneMessageTypesResponseContent>;
+export const SetGuardianFactorPhoneMessageTypesResponseContent =
+  GetGuardianFactorPhoneMessageTypesResponseContent as any as S.Schema<SetGuardianFactorPhoneMessageTypesResponseContent>;
 
 export interface PutNetworkAclRequest {
   /** The id of the ACL to update. */
@@ -38364,19 +36469,8 @@ export interface SetNetworkAclsResponseContent {
   /** The timestamp when the Network ACL Configuration was last updated */
   updated_at?: string;
 }
-export const SetNetworkAclsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    active: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    rule: S.optional(NetworkAclRule),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SetNetworkAclsResponseContent",
-}) as any as S.Schema<SetNetworkAclsResponseContent>;
+export const SetNetworkAclsResponseContent =
+  GetNetworkAclsResponseContent as any as S.Schema<SetNetworkAclsResponseContent>;
 
 /** Name of the prompt. */
 export type PutPartialsRequestPrompt =
@@ -38394,10 +36488,8 @@ export const PutPartialsRequestPrompt = S.String;
 
 /** An object containing template partials for a group of screens. */
 export type SetPartialsRequestContent = { [key: string]: unknown | undefined };
-export const SetPartialsRequestContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SetPartialsRequestContent>;
+export const SetPartialsRequestContent =
+  AgentMetadata as any as S.Schema<SetPartialsRequestContent>;
 
 export interface PutPartialsRequest {
   /** Name of the prompt. */
@@ -38412,9 +36504,7 @@ export const PutPartialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutPartialsRequest" }) as any as S.Schema<PutPartialsRequest>;
 
 export interface PutPartialsResponse {}
-export const PutPartialsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutPartialsResponse",
-}) as any as S.Schema<PutPartialsResponse>;
+export const PutPartialsResponse = CreateGroupRoleResponse as any as S.Schema<PutPartialsResponse>;
 
 export interface PutPhoneProvidersRequest {
   provider: GuardianFactorsProviderSmsProviderEnum | (string & {});
@@ -38428,13 +36518,8 @@ export const PutPhoneProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetGuardianFactorsProviderPhoneResponseContent {
   provider?: GuardianFactorsProviderSmsProviderEnum;
 }
-export const SetGuardianFactorsProviderPhoneResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(GuardianFactorsProviderSmsProviderEnum),
-  }),
-).annotate({
-  identifier: "SetGuardianFactorsProviderPhoneResponseContent",
-}) as any as S.Schema<SetGuardianFactorsProviderPhoneResponseContent>;
+export const SetGuardianFactorsProviderPhoneResponseContent =
+  GetGuardianFactorsProviderPhoneResponseContent as any as S.Schema<SetGuardianFactorsProviderPhoneResponseContent>;
 
 export interface PutPnProvidersRequest {
   provider: GuardianFactorsProviderPushNotificationProviderDataEnum | (string & {});
@@ -38454,19 +36539,12 @@ export const PutPnProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetGuardianFactorsProviderPushNotificationResponseContent {
   provider?: GuardianFactorsProviderPushNotificationProviderDataEnum;
 }
-export const SetGuardianFactorsProviderPushNotificationResponseContent = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      provider: S.optional(GuardianFactorsProviderPushNotificationProviderDataEnum),
-    }),
-).annotate({
-  identifier: "SetGuardianFactorsProviderPushNotificationResponseContent",
-}) as any as S.Schema<SetGuardianFactorsProviderPushNotificationResponseContent>;
+export const SetGuardianFactorsProviderPushNotificationResponseContent =
+  GetGuardianFactorsProviderPushNotificationResponseContent as any as S.Schema<SetGuardianFactorsProviderPushNotificationResponseContent>;
 
 export type SetGuardianPoliciesRequestContent = Array<MFAPolicyEnum | (string & {})>;
-export const SetGuardianPoliciesRequestContent = /*@__PURE__*/ S.Array(
-  MFAPolicyEnum,
-) as any as S.Schema<SetGuardianPoliciesRequestContent>;
+export const SetGuardianPoliciesRequestContent =
+  ListGuardianPoliciesResponseContent as any as S.Schema<SetGuardianPoliciesRequestContent>;
 
 export interface PutPoliciesRequest {
   body?: SetGuardianPoliciesRequestContent;
@@ -38478,14 +36556,11 @@ export const PutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutPoliciesRequest" }) as any as S.Schema<PutPoliciesRequest>;
 
 export type SetGuardianPoliciesResponseContent = Array<MFAPolicyEnum>;
-export const SetGuardianPoliciesResponseContent = /*@__PURE__*/ S.Array(
-  MFAPolicyEnum,
-) as any as S.Schema<SetGuardianPoliciesResponseContent>;
+export const SetGuardianPoliciesResponseContent =
+  ListGuardianPoliciesResponseContent as any as S.Schema<SetGuardianPoliciesResponseContent>;
 
 export type PutPoliciesResponse = SetGuardianPoliciesResponseContent;
-export const PutPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  SetGuardianPoliciesResponseContent.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "PutPoliciesResponse" }) as any as S.Schema<PutPoliciesResponse>;
+export const PutPoliciesResponse = GetPoliciesResponse as any as S.Schema<PutPoliciesResponse>;
 
 export interface PutRulesConfigRequest {
   /** Key of the rules config variable to set (max length: 127 characters). */
@@ -38525,10 +36600,8 @@ export const PutSelfServiceProfileCustomTextRequestPage = S.String;
 
 /** The list of text keys and values to customize the Self-Service Enterprise Configuration flow page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks. */
 export type SetSelfServiceProfileCustomTextRequestContent = { [key: string]: string | undefined };
-export const SetSelfServiceProfileCustomTextRequestContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SetSelfServiceProfileCustomTextRequestContent>;
+export const SetSelfServiceProfileCustomTextRequestContent =
+  FlowActionStripeMetadata as any as S.Schema<SetSelfServiceProfileCustomTextRequestContent>;
 
 export interface PutSelfServiceProfileCustomTextRequest {
   /** The id of the self-service profile. */
@@ -38558,18 +36631,13 @@ export const PutSelfServiceProfileCustomTextRequest = /*@__PURE__*/ S.suspend(()
 
 /** The resulting list of custom text keys and values. */
 export type SetSelfServiceProfileCustomTextResponseContent = { [key: string]: string | undefined };
-export const SetSelfServiceProfileCustomTextResponseContent = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SetSelfServiceProfileCustomTextResponseContent>;
+export const SetSelfServiceProfileCustomTextResponseContent =
+  FlowActionStripeMetadata as any as S.Schema<SetSelfServiceProfileCustomTextResponseContent>;
 
 export type PutSelfServiceProfileCustomTextResponse =
   SetSelfServiceProfileCustomTextResponseContent;
-export const PutSelfServiceProfileCustomTextResponse = /*@__PURE__*/ S.suspend(() =>
-  SetSelfServiceProfileCustomTextResponseContent.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PutSelfServiceProfileCustomTextResponse",
-}) as any as S.Schema<PutSelfServiceProfileCustomTextResponse>;
+export const PutSelfServiceProfileCustomTextResponse =
+  GetSelfServiceProfileCustomTextResponse as any as S.Schema<PutSelfServiceProfileCustomTextResponse>;
 
 export interface PutSigningKeysRequest {
   /** Key id of the key to revoke */
@@ -38587,14 +36655,8 @@ export interface RevokedSigningKeysResponseContent {
   /** Revoked key id */
   kid: string;
 }
-export const RevokedSigningKeysResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cert: S.String,
-    kid: S.String,
-  }),
-).annotate({
-  identifier: "RevokedSigningKeysResponseContent",
-}) as any as S.Schema<RevokedSigningKeysResponseContent>;
+export const RevokedSigningKeysResponseContent =
+  RotateSigningKeysResponseContent as any as S.Schema<RevokedSigningKeysResponseContent>;
 
 export interface PutSmsProvidersRequest {
   provider: GuardianFactorsProviderSmsProviderEnum | (string & {});
@@ -38608,13 +36670,8 @@ export const PutSmsProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetGuardianFactorsProviderSmsResponseContent {
   provider?: GuardianFactorsProviderSmsProviderEnum;
 }
-export const SetGuardianFactorsProviderSmsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(GuardianFactorsProviderSmsProviderEnum),
-  }),
-).annotate({
-  identifier: "SetGuardianFactorsProviderSmsResponseContent",
-}) as any as S.Schema<SetGuardianFactorsProviderSmsResponseContent>;
+export const SetGuardianFactorsProviderSmsResponseContent =
+  GetGuardianFactorsProviderPhoneResponseContent as any as S.Schema<SetGuardianFactorsProviderSmsResponseContent>;
 
 export interface PutSmsTwilioFactorProviderRequest {
   /** From number */
@@ -38647,16 +36704,8 @@ export interface SetGuardianFactorsProviderSmsTwilioResponseContent {
   /** Twilio SID */
   sid?: string | null;
 }
-export const SetGuardianFactorsProviderSmsTwilioResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.optional(S.NullOr(S.String)),
-    messaging_service_sid: S.optional(S.NullOr(S.String)),
-    auth_token: S.optional(S.NullOr(S.String)),
-    sid: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SetGuardianFactorsProviderSmsTwilioResponseContent",
-}) as any as S.Schema<SetGuardianFactorsProviderSmsTwilioResponseContent>;
+export const SetGuardianFactorsProviderSmsTwilioResponseContent =
+  GetGuardianFactorsProviderPhoneTwilioResponseContent as any as S.Schema<SetGuardianFactorsProviderSmsTwilioResponseContent>;
 
 export interface PutSnsRequest {
   aws_access_key_id?: string | null;
@@ -38699,9 +36748,8 @@ export const SetGuardianFactorsProviderPushNotificationSnsResponseContent = /*@_
 
 /** Array of Google Workspace Directory group objects to synchronize. */
 export type PutSynchronizedGroupsRequestGroupsList = Array<SynchronizedGroupPayload>;
-export const PutSynchronizedGroupsRequestGroupsList = /*@__PURE__*/ S.Array(
-  SynchronizedGroupPayload,
-) as any as S.Schema<PutSynchronizedGroupsRequestGroupsList>;
+export const PutSynchronizedGroupsRequestGroupsList =
+  ListSynchronizedGroupsResponseContentGroupsList as any as S.Schema<PutSynchronizedGroupsRequestGroupsList>;
 
 export interface PutSynchronizedGroupsRequest {
   /** The id of the connection to create or replace synchronized groups for */
@@ -38725,9 +36773,8 @@ export const PutSynchronizedGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutSynchronizedGroupsRequest>;
 
 export interface PutSynchronizedGroupsResponse {}
-export const PutSynchronizedGroupsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutSynchronizedGroupsResponse",
-}) as any as S.Schema<PutSynchronizedGroupsResponse>;
+export const PutSynchronizedGroupsResponse =
+  CreateGroupRoleResponse as any as S.Schema<PutSynchronizedGroupsResponse>;
 
 export interface PutTwilioRequest {
   /** From number */
@@ -38758,16 +36805,8 @@ export interface SetGuardianFactorsProviderPhoneTwilioResponseContent {
   /** Twilio SID */
   sid?: string | null;
 }
-export const SetGuardianFactorsProviderPhoneTwilioResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.optional(S.NullOr(S.String)),
-    messaging_service_sid: S.optional(S.NullOr(S.String)),
-    auth_token: S.optional(S.NullOr(S.String)),
-    sid: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SetGuardianFactorsProviderPhoneTwilioResponseContent",
-}) as any as S.Schema<SetGuardianFactorsProviderPhoneTwilioResponseContent>;
+export const SetGuardianFactorsProviderPhoneTwilioResponseContent =
+  GetGuardianFactorsProviderPhoneTwilioResponseContent as any as S.Schema<SetGuardianFactorsProviderPhoneTwilioResponseContent>;
 
 export interface UpdateUniversalLoginTemplateRequestContentCase1 {
   template: string;
@@ -38796,9 +36835,8 @@ export const PutUniversalLoginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutUniversalLoginRequest" }) as any as S.Schema<PutUniversalLoginRequest>;
 
 export interface PutUniversalLoginResponse {}
-export const PutUniversalLoginResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutUniversalLoginResponse",
-}) as any as S.Schema<PutUniversalLoginResponse>;
+export const PutUniversalLoginResponse =
+  CreateGroupRoleResponse as any as S.Schema<PutUniversalLoginResponse>;
 
 export interface ResetPhoneTemplateRequest {
   id: string;
@@ -38821,25 +36859,13 @@ export interface ResetPhoneTemplateResponseContent {
   /** Whether the template is enabled (false) or disabled (true). */
   disabled: boolean;
 }
-export const ResetPhoneTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    channel: S.optional(S.String),
-    customizable: S.optional(S.Boolean),
-    tenant: S.optional(S.String),
-    content: PhoneTemplateContent,
-    type: PhoneTemplateNotificationTypeEnum,
-    disabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "ResetPhoneTemplateResponseContent",
-}) as any as S.Schema<ResetPhoneTemplateResponseContent>;
+export const ResetPhoneTemplateResponseContent =
+  CreatePhoneTemplateResponseContent as any as S.Schema<ResetPhoneTemplateResponseContent>;
 
 /** Array of refresh token IDs to revoke. Limited to 100 at a time. */
 export type RevokeRefreshTokensRequestIdsList = Array<string>;
-export const RevokeRefreshTokensRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RevokeRefreshTokensRequestIdsList>;
+export const RevokeRefreshTokensRequestIdsList =
+  CreateClientRequestCallbacksList as any as S.Schema<RevokeRefreshTokensRequestIdsList>;
 
 export interface RevokeRefreshTokensRequest {
   /** Array of refresh token IDs to revoke. Limited to 100 at a time. */
@@ -38863,9 +36889,8 @@ export const RevokeRefreshTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeRefreshTokensRequest>;
 
 export interface RevokeRefreshTokensResponse {}
-export const RevokeRefreshTokensResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeRefreshTokensResponse",
-}) as any as S.Schema<RevokeRefreshTokensResponse>;
+export const RevokeRefreshTokensResponse =
+  CreateGroupRoleResponse as any as S.Schema<RevokeRefreshTokensResponse>;
 
 export interface RevokeSessionRequest {
   /** ID of the session to revoke. */
@@ -38878,9 +36903,8 @@ export const RevokeSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeSessionRequest" }) as any as S.Schema<RevokeSessionRequest>;
 
 export interface RevokeSessionResponse {}
-export const RevokeSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeSessionResponse",
-}) as any as S.Schema<RevokeSessionResponse>;
+export const RevokeSessionResponse =
+  CreateGroupRoleResponse as any as S.Schema<RevokeSessionResponse>;
 
 export interface RevokeUserAccessRequest {
   /** ID of the user. */
@@ -38899,9 +36923,8 @@ export const RevokeUserAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeUserAccessRequest" }) as any as S.Schema<RevokeUserAccessRequest>;
 
 export interface RevokeUserAccessResponse {}
-export const RevokeUserAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeUserAccessResponse",
-}) as any as S.Schema<RevokeUserAccessResponse>;
+export const RevokeUserAccessResponse =
+  CreateGroupRoleResponse as any as S.Schema<RevokeUserAccessResponse>;
 
 export interface SetEmailFactorSettingsRequest {
   /** The length of the OTP code. */
@@ -38924,14 +36947,8 @@ export interface SetEmailFactorSettingsResponseContent {
   /** The OTP expiration time in seconds. */
   otp_expiration_time: number;
 }
-export const SetEmailFactorSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    otp_length: S.Number,
-    otp_expiration_time: S.Number,
-  }),
-).annotate({
-  identifier: "SetEmailFactorSettingsResponseContent",
-}) as any as S.Schema<SetEmailFactorSettingsResponseContent>;
+export const SetEmailFactorSettingsResponseContent =
+  GetEmailFactorSettingsResponseContent as any as S.Schema<SetEmailFactorSettingsResponseContent>;
 
 export interface SetGuardianSettingsRequest {
   /** Determines whether to display the "Remember Me" checkbox on the MFA prompt in Universal Login. */
@@ -38964,16 +36981,8 @@ export interface SetGuardianSettingsResponseContent {
   /** Maximum duration after which the user will be prompted for MFA regardless of activity. Represented as seconds. Minimum duration is 1 hour, maximum is 90 days. */
   mfa_session_overall_timeout: number;
 }
-export const SetGuardianSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    display_remember_me_checkbox: S.Boolean,
-    remember_me_default_value: S.Boolean,
-    mfa_session_inactivity_timeout: S.Number,
-    mfa_session_overall_timeout: S.Number,
-  }),
-).annotate({
-  identifier: "SetGuardianSettingsResponseContent",
-}) as any as S.Schema<SetGuardianSettingsResponseContent>;
+export const SetGuardianSettingsResponseContent =
+  GetGuardianSettingsResponseContent as any as S.Schema<SetGuardianSettingsResponseContent>;
 
 export interface SetPhoneFactorSettingsRequest {
   /** The length of the OTP code. */
@@ -38996,14 +37005,8 @@ export interface SetPhoneFactorSettingsResponseContent {
   /** The OTP expiration time in seconds. */
   otp_expiration_time: number;
 }
-export const SetPhoneFactorSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    otp_length: S.Number,
-    otp_expiration_time: S.Number,
-  }),
-).annotate({
-  identifier: "SetPhoneFactorSettingsResponseContent",
-}) as any as S.Schema<SetPhoneFactorSettingsResponseContent>;
+export const SetPhoneFactorSettingsResponseContent =
+  GetEmailFactorSettingsResponseContent as any as S.Schema<SetPhoneFactorSettingsResponseContent>;
 
 export type EventStreamSubscribeEventsEventTypeEnum =
   | "connection.created"
@@ -39058,9 +37061,8 @@ export const SubscribeEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscribeEventsRequest" }) as any as S.Schema<SubscribeEventsRequest>;
 
 export interface SubscribeEventsResponse {}
-export const SubscribeEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscribeEventsResponse",
-}) as any as S.Schema<SubscribeEventsResponse>;
+export const SubscribeEventsResponse =
+  CreateGroupRoleResponse as any as S.Schema<SubscribeEventsResponse>;
 
 export interface TenantSettingsRouteRequest {
   /** Comma-separated list of fields to include or exclude (based on value provided for include_fields) in the result. Leave empty to retrieve all fields. */
@@ -39079,27 +37081,23 @@ export const TenantSettingsRouteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** URLs that are valid to redirect to after logout from Auth0. */
 export type GetTenantSettingsResponseContentAllowedLogoutUrlsList = Array<string>;
-export const GetTenantSettingsResponseContentAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTenantSettingsResponseContentAllowedLogoutUrlsList>;
+export const GetTenantSettingsResponseContentAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetTenantSettingsResponseContentAllowedLogoutUrlsList>;
 
 /** Available sandbox versions for the extensibility environment. */
 export type GetTenantSettingsResponseContentSandboxVersionsAvailableList = Array<string>;
-export const GetTenantSettingsResponseContentSandboxVersionsAvailableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTenantSettingsResponseContentSandboxVersionsAvailableList>;
+export const GetTenantSettingsResponseContentSandboxVersionsAvailableList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetTenantSettingsResponseContentSandboxVersionsAvailableList>;
 
 /** Supported locales for the user interface. */
 export type GetTenantSettingsResponseContentEnabledLocalesList = Array<SupportedLocales>;
-export const GetTenantSettingsResponseContentEnabledLocalesList = /*@__PURE__*/ S.Array(
-  SupportedLocales,
-) as any as S.Schema<GetTenantSettingsResponseContentEnabledLocalesList>;
+export const GetTenantSettingsResponseContentEnabledLocalesList =
+  UpdateTenantSettingsResponseContentEnabledLocalesList as any as S.Schema<GetTenantSettingsResponseContentEnabledLocalesList>;
 
 /** Supported ACR values */
 export type GetTenantSettingsResponseContentAcrValuesSupportedList = Array<string>;
-export const GetTenantSettingsResponseContentAcrValuesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTenantSettingsResponseContentAcrValuesSupportedList>;
+export const GetTenantSettingsResponseContentAcrValuesSupportedList =
+  CreateClientRequestCallbacksList as any as S.Schema<GetTenantSettingsResponseContentAcrValuesSupportedList>;
 
 export interface GetTenantSettingsResponseContent {
   change_password?: TenantSettingsPasswordPage | null;
@@ -39246,9 +37244,8 @@ export const TryPhoneProviderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TryPhoneProviderRequest" }) as any as S.Schema<TryPhoneProviderRequest>;
 
 export interface TryPhoneProviderResponse {}
-export const TryPhoneProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TryPhoneProviderResponse",
-}) as any as S.Schema<TryPhoneProviderResponse>;
+export const TryPhoneProviderResponse =
+  CreateGroupRoleResponse as any as S.Schema<TryPhoneProviderResponse>;
 
 export interface TryPhoneTemplateRequest {
   id: string;
@@ -39266,21 +37263,18 @@ export const TryPhoneTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TryPhoneTemplateRequest" }) as any as S.Schema<TryPhoneTemplateRequest>;
 
 export interface TryPhoneTemplateResponse {}
-export const TryPhoneTemplateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TryPhoneTemplateResponse",
-}) as any as S.Schema<TryPhoneTemplateResponse>;
+export const TryPhoneTemplateResponse =
+  CreateGroupRoleResponse as any as S.Schema<TryPhoneTemplateResponse>;
 
 /** The secrets to associate with the action module. */
 export type UpdateActionModuleRequestSecretsList = Array<ActionModuleSecretRequest>;
-export const UpdateActionModuleRequestSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecretRequest,
-) as any as S.Schema<UpdateActionModuleRequestSecretsList>;
+export const UpdateActionModuleRequestSecretsList =
+  CreateActionModuleRequestSecretsList as any as S.Schema<UpdateActionModuleRequestSecretsList>;
 
 /** The npm dependencies of the action module. */
 export type UpdateActionModuleRequestDependenciesList = Array<ActionModuleDependencyRequest>;
-export const UpdateActionModuleRequestDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependencyRequest,
-) as any as S.Schema<UpdateActionModuleRequestDependenciesList>;
+export const UpdateActionModuleRequestDependenciesList =
+  CreateActionModuleRequestDependenciesList as any as S.Schema<UpdateActionModuleRequestDependenciesList>;
 
 export interface UpdateActionModuleRequest {
   /** The ID of the action module to update. */
@@ -39305,15 +37299,13 @@ export const UpdateActionModuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The npm dependencies from the module's draft version. */
 export type UpdateActionModuleResponseContentDependenciesList = Array<ActionModuleDependency>;
-export const UpdateActionModuleResponseContentDependenciesList = /*@__PURE__*/ S.Array(
-  ActionModuleDependency,
-) as any as S.Schema<UpdateActionModuleResponseContentDependenciesList>;
+export const UpdateActionModuleResponseContentDependenciesList =
+  CreateActionModuleResponseContentDependenciesList as any as S.Schema<UpdateActionModuleResponseContentDependenciesList>;
 
 /** The secrets from the module's draft version (names and timestamps only, values never returned). */
 export type UpdateActionModuleResponseContentSecretsList = Array<ActionModuleSecret>;
-export const UpdateActionModuleResponseContentSecretsList = /*@__PURE__*/ S.Array(
-  ActionModuleSecret,
-) as any as S.Schema<UpdateActionModuleResponseContentSecretsList>;
+export const UpdateActionModuleResponseContentSecretsList =
+  CreateActionModuleResponseContentSecretsList as any as S.Schema<UpdateActionModuleResponseContentSecretsList>;
 
 export interface UpdateActionModuleResponseContent {
   /** The unique ID of the module. */
@@ -39338,30 +37330,13 @@ export interface UpdateActionModuleResponseContent {
   updated_at?: string;
   latest_version?: ActionModuleVersionReference;
 }
-export const UpdateActionModuleResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    code: S.optional(S.String),
-    dependencies: S.optional(UpdateActionModuleResponseContentDependenciesList),
-    secrets: S.optional(UpdateActionModuleResponseContentSecretsList),
-    actions_using_module_total: S.optional(S.Number),
-    all_changes_published: S.optional(S.Boolean),
-    latest_version_number: S.optional(S.Number),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    latest_version: S.optional(ActionModuleVersionReference),
-  }),
-).annotate({
-  identifier: "UpdateActionModuleResponseContent",
-}) as any as S.Schema<UpdateActionModuleResponseContent>;
+export const UpdateActionModuleResponseContent =
+  CreateActionModuleResponseContent as any as S.Schema<UpdateActionModuleResponseContent>;
 
 /** Arbitrary key-value metadata for the agent. Pass null to clear all metadata. */
 export type UpdateAgentRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateAgentRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateAgentRequestMetadataMap>;
+export const UpdateAgentRequestMetadataMap =
+  AgentMetadata as any as S.Schema<UpdateAgentRequestMetadataMap>;
 
 export interface UpdateAgentRequest {
   /** The agent ID */
@@ -39380,10 +37355,8 @@ export const UpdateAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAgentRequest" }) as any as S.Schema<UpdateAgentRequest>;
 
 export type UpdateBrandingPageBackgroundCase1Map = { [key: string]: unknown | undefined };
-export const UpdateBrandingPageBackgroundCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateBrandingPageBackgroundCase1Map>;
+export const UpdateBrandingPageBackgroundCase1Map =
+  AgentMetadata as any as S.Schema<UpdateBrandingPageBackgroundCase1Map>;
 
 /** Page Background Color or Gradient. Property contains either `null` to unset, a solid color as a string value `#FFFFFF`, or a gradient as an object. ```js { type: 'linear-gradient', start: '#FFFFFF', end: '#000000', angle_deg: 35 } ``` */
 export type UpdateBrandingPageBackground = string | UpdateBrandingPageBackgroundCase1Map;
@@ -39439,16 +37412,8 @@ export interface UpdateBrandingResponseContent {
   logo_url?: string;
   font?: BrandingFont;
 }
-export const UpdateBrandingResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    colors: S.optional(BrandingColors),
-    favicon_url: S.optional(S.String),
-    logo_url: S.optional(S.String),
-    font: S.optional(BrandingFont),
-  }),
-).annotate({
-  identifier: "UpdateBrandingResponseContent",
-}) as any as S.Schema<UpdateBrandingResponseContent>;
+export const UpdateBrandingResponseContent =
+  GetBrandingResponseContent as any as S.Schema<UpdateBrandingResponseContent>;
 
 export interface UpdateBrandingThemeRequest {
   /** The ID of the theme */
@@ -39489,62 +37454,43 @@ export interface UpdateBrandingThemeResponseContent {
   themeId: string;
   widget: BrandingThemeWidget;
 }
-export const UpdateBrandingThemeResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    borders: BrandingThemeBorders,
-    colors: BrandingThemeColors,
-    displayName: S.String,
-    fonts: BrandingThemeFonts,
-    identifiers: S.optional(BrandingThemeIdentifiers),
-    page_background: BrandingThemePageBackground,
-    themeId: S.String,
-    widget: BrandingThemeWidget,
-  }),
-).annotate({
-  identifier: "UpdateBrandingThemeResponseContent",
-}) as any as S.Schema<UpdateBrandingThemeResponseContent>;
+export const UpdateBrandingThemeResponseContent =
+  CreateBrandingThemeResponseContent as any as S.Schema<UpdateBrandingThemeResponseContent>;
 
 /** A set of URLs that are valid to call back from Auth0 when authenticating users */
 export type UpdateClientRequestCallbacksList = Array<string>;
-export const UpdateClientRequestCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientRequestCallbacksList>;
+export const UpdateClientRequestCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientRequestCallbacksList>;
 
 /** A set of URLs that represents valid origins for CORS */
 export type UpdateClientRequestAllowedOriginsList = Array<string>;
-export const UpdateClientRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientRequestAllowedOriginsList>;
+export const UpdateClientRequestAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientRequestAllowedOriginsList>;
 
 /** A set of URLs that represents valid web origins for use with web message response mode */
 export type UpdateClientRequestWebOriginsList = Array<string>;
-export const UpdateClientRequestWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientRequestWebOriginsList>;
+export const UpdateClientRequestWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientRequestWebOriginsList>;
 
 /** A set of grant types that the client is authorized to use. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type UpdateClientRequestGrantTypesList = Array<string>;
-export const UpdateClientRequestGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientRequestGrantTypesList>;
+export const UpdateClientRequestGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientRequestGrantTypesList>;
 
 /** List of audiences for SAML protocol */
 export type UpdateClientRequestClientAliasesList = Array<string>;
-export const UpdateClientRequestClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientRequestClientAliasesList>;
+export const UpdateClientRequestClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientRequestClientAliasesList>;
 
 /** Ids of clients that will be allowed to perform delegation requests. Clients that will be allowed to make delegation request. By default, all your clients will be allowed. This field allows you to specify specific clients */
 export type UpdateClientRequestAllowedClientsList = Array<string>;
-export const UpdateClientRequestAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientRequestAllowedClientsList>;
+export const UpdateClientRequestAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientRequestAllowedClientsList>;
 
 /** URLs that are valid to redirect to after logout from Auth0 */
 export type UpdateClientRequestAllowedLogoutUrlsList = Array<string>;
-export const UpdateClientRequestAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientRequestAllowedLogoutUrlsList>;
+export const UpdateClientRequestAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientRequestAllowedLogoutUrlsList>;
 
 /** Defines the requested authentication method for the token endpoint. Can be `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), or `client_secret_basic` (client uses HTTP Basic). */
 export type ClientTokenEndpointAuthMethodOrNullEnum =
@@ -39619,9 +37565,8 @@ export const ClientOrganizationRequireBehaviorPatchEnum = S.String;
 export type UpdateClientRequestOrganizationDiscoveryMethodsList = Array<
   ClientOrganizationDiscoveryEnum | (string & {})
 >;
-export const UpdateClientRequestOrganizationDiscoveryMethodsList = /*@__PURE__*/ S.Array(
-  ClientOrganizationDiscoveryEnum,
-) as any as S.Schema<UpdateClientRequestOrganizationDiscoveryMethodsList>;
+export const UpdateClientRequestOrganizationDiscoveryMethodsList =
+  CreateClientRequestOrganizationDiscoveryMethodsList as any as S.Schema<UpdateClientRequestOrganizationDiscoveryMethodsList>;
 
 /** List the enabled token exchange types for this client. */
 export type ClientTokenExchangeConfigurationOrNullAllowAnyProfileOfTypeList = Array<
@@ -39649,9 +37594,8 @@ export const ClientTokenExchangeConfigurationOrNull = /*@__PURE__*/ S.suspend(()
 
 /** List of client IDs that are linked to this express configuration (e.g. web or mobile clients). */
 export type ExpressConfigurationOrNullLinkedClientsList = Array<LinkedClientConfiguration>;
-export const ExpressConfigurationOrNullLinkedClientsList = /*@__PURE__*/ S.Array(
-  LinkedClientConfiguration,
-) as any as S.Schema<ExpressConfigurationOrNullLinkedClientsList>;
+export const ExpressConfigurationOrNullLinkedClientsList =
+  ExpressConfigurationLinkedClientsList as any as S.Schema<ExpressConfigurationOrNullLinkedClientsList>;
 
 /** Application specific configuration for use with the OIN Express Configuration feature. */
 export interface ExpressConfigurationOrNull {
@@ -39694,9 +37638,8 @@ export const ExpressConfigurationOrNull = /*@__PURE__*/ S.suspend(() =>
 export type ClientMyOrganizationPatchConfigurationAllowedStrategiesList = Array<
   ClientMyOrganizationConfigurationAllowedStrategiesEnum | (string & {})
 >;
-export const ClientMyOrganizationPatchConfigurationAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  ClientMyOrganizationConfigurationAllowedStrategiesEnum,
-) as any as S.Schema<ClientMyOrganizationPatchConfigurationAllowedStrategiesList>;
+export const ClientMyOrganizationPatchConfigurationAllowedStrategiesList =
+  ClientMyOrganizationPostConfigurationAllowedStrategiesList as any as S.Schema<ClientMyOrganizationPatchConfigurationAllowedStrategiesList>;
 
 /** Configuration related to the My Organization Configuration for the client. */
 export interface ClientMyOrganizationPatchConfiguration {
@@ -39715,35 +37658,21 @@ export interface ClientMyOrganizationPatchConfiguration {
   /** When true, prevents organization admins from assigning permissions to themselves. */
   enforce_self_assignment_restriction?: boolean;
 }
-export const ClientMyOrganizationPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection_profile_id: S.optional(S.String),
-    user_attribute_profile_id: S.optional(S.String),
-    allowed_strategies: ClientMyOrganizationPatchConfigurationAllowedStrategiesList,
-    third_party_client_access: S.optional(ClientMyOrganizationThirdPartyClientAccessConfiguration),
-    connection_deletion_behavior: ClientMyOrganizationDeletionBehaviorEnum,
-    invitation_landing_client_id: S.optional(S.String),
-    enforce_permission_ceiling: S.optional(S.Boolean),
-    enforce_self_assignment_restriction: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClientMyOrganizationPatchConfiguration",
-}) as any as S.Schema<ClientMyOrganizationPatchConfiguration>;
+export const ClientMyOrganizationPatchConfiguration =
+  ClientMyOrganizationPostConfiguration as any as S.Schema<ClientMyOrganizationPatchConfiguration>;
 
 /** Array of notification channels for contacting the user when their approval is required. Valid values are `guardian-push`, `email`, `my-account`. */
 export type ClientAsyncApprovalNotificationsChannelsAPIPatchConfiguration = Array<
   AsyncApprovalNotificationsChannelsEnum | (string & {})
 >;
-export const ClientAsyncApprovalNotificationsChannelsAPIPatchConfiguration = /*@__PURE__*/ S.Array(
-  AsyncApprovalNotificationsChannelsEnum,
-) as any as S.Schema<ClientAsyncApprovalNotificationsChannelsAPIPatchConfiguration>;
+export const ClientAsyncApprovalNotificationsChannelsAPIPatchConfiguration =
+  ClientAsyncApprovalNotificationsChannelsAPIPostConfiguration as any as S.Schema<ClientAsyncApprovalNotificationsChannelsAPIPatchConfiguration>;
 
 export type ClientOidcSupportPatchAllowedScopesList = Array<
   ClientOidcSupportAllowedScopesEnum | (string & {})
 >;
-export const ClientOidcSupportPatchAllowedScopesList = /*@__PURE__*/ S.Array(
-  ClientOidcSupportAllowedScopesEnum,
-) as any as S.Schema<ClientOidcSupportPatchAllowedScopesList>;
+export const ClientOidcSupportPatchAllowedScopesList =
+  ClientOidcSupportPostAllowedScopesList as any as S.Schema<ClientOidcSupportPatchAllowedScopesList>;
 
 /** OIDC support configuration for a client. Replaces the stored object entirely; send null to unset it. */
 export interface ClientOidcSupportPatch {
@@ -39751,13 +37680,8 @@ export interface ClientOidcSupportPatch {
   allow_all_scopes?: boolean;
   allowed_scopes?: ClientOidcSupportPatchAllowedScopesList;
 }
-export const ClientOidcSupportPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    is_allowed: S.Boolean,
-    allow_all_scopes: S.optional(S.Boolean),
-    allowed_scopes: S.optional(ClientOidcSupportPatchAllowedScopesList),
-  }),
-).annotate({ identifier: "ClientOidcSupportPatch" }) as any as S.Schema<ClientOidcSupportPatch>;
+export const ClientOidcSupportPatch =
+  ClientOidcSupportPost as any as S.Schema<ClientOidcSupportPatch>;
 
 export interface UpdateClientRequest {
   /** ID of the client to update. */
@@ -39932,52 +37856,44 @@ export const UpdateClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Comma-separated list of URLs whitelisted for Auth0 to use as a callback to the client after authentication. */
 export type UpdateClientResponseContentCallbacksList = Array<string>;
-export const UpdateClientResponseContentCallbacksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientResponseContentCallbacksList>;
+export const UpdateClientResponseContentCallbacksList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientResponseContentCallbacksList>;
 
 /** Comma-separated list of URLs allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if necessary. You can also use wildcards at the subdomain level (e.g., https://*.contoso.com). Query strings and hash information are not taken into account when validating these URLs. */
 export type UpdateClientResponseContentAllowedOriginsList = Array<string>;
-export const UpdateClientResponseContentAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientResponseContentAllowedOriginsList>;
+export const UpdateClientResponseContentAllowedOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientResponseContentAllowedOriginsList>;
 
 /** Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>. */
 export type UpdateClientResponseContentWebOriginsList = Array<string>;
-export const UpdateClientResponseContentWebOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientResponseContentWebOriginsList>;
+export const UpdateClientResponseContentWebOriginsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientResponseContentWebOriginsList>;
 
 /** List of audiences/realms for SAML protocol. Used by the wsfed addon. */
 export type UpdateClientResponseContentClientAliasesList = Array<string>;
-export const UpdateClientResponseContentClientAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientResponseContentClientAliasesList>;
+export const UpdateClientResponseContentClientAliasesList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientResponseContentClientAliasesList>;
 
 /** List of allow clients and API ids that are allowed to make delegation requests. Empty means all all your clients are allowed. */
 export type UpdateClientResponseContentAllowedClientsList = Array<string>;
-export const UpdateClientResponseContentAllowedClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientResponseContentAllowedClientsList>;
+export const UpdateClientResponseContentAllowedClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientResponseContentAllowedClientsList>;
 
 /** Comma-separated list of URLs that are valid to redirect to after logout from Auth0. Wildcards are allowed for subdomains. */
 export type UpdateClientResponseContentAllowedLogoutUrlsList = Array<string>;
-export const UpdateClientResponseContentAllowedLogoutUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientResponseContentAllowedLogoutUrlsList>;
+export const UpdateClientResponseContentAllowedLogoutUrlsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientResponseContentAllowedLogoutUrlsList>;
 
 /** List of grant types supported for this application. Can include `authorization_code`, `implicit`, `refresh_token`, `client_credentials`, `password`, `http://auth0.com/oauth/grant-type/password-realm`, `http://auth0.com/oauth/grant-type/mfa-oob`, `http://auth0.com/oauth/grant-type/mfa-otp`, `http://auth0.com/oauth/grant-type/mfa-recovery-code`, `urn:openid:params:grant-type:ciba`, `urn:ietf:params:oauth:grant-type:device_code`, and `urn:auth0:params:oauth:grant-type:token-exchange:federated-connection-access-token`. */
 export type UpdateClientResponseContentGrantTypesList = Array<string>;
-export const UpdateClientResponseContentGrantTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientResponseContentGrantTypesList>;
+export const UpdateClientResponseContentGrantTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientResponseContentGrantTypesList>;
 
 /** Defines the available methods for organization discovery during the `pre_login_prompt`. Users can discover their organization either by `email`, `organization_name` or both. */
 export type UpdateClientResponseContentOrganizationDiscoveryMethodsList =
   Array<ClientOrganizationDiscoveryEnum>;
-export const UpdateClientResponseContentOrganizationDiscoveryMethodsList = /*@__PURE__*/ S.Array(
-  ClientOrganizationDiscoveryEnum,
-) as any as S.Schema<UpdateClientResponseContentOrganizationDiscoveryMethodsList>;
+export const UpdateClientResponseContentOrganizationDiscoveryMethodsList =
+  CreateClientRequestOrganizationDiscoveryMethodsList as any as S.Schema<UpdateClientResponseContentOrganizationDiscoveryMethodsList>;
 
 export interface UpdateClientResponseContent {
   /** ID of this client. */
@@ -40086,93 +38002,13 @@ export interface UpdateClientResponseContent {
   /** URL for the JSON Web Key Set (JWKS) containing the public keys used for private_key_jwt authentication. Only present for CIMD clients using private_key_jwt authentication. */
   jwks_uri?: string;
 }
-export const UpdateClientResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.optional(S.String),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    tenant: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    global: S.optional(S.Boolean),
-    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    app_type: S.optional(ClientAppTypeEnum),
-    logo_uri: S.optional(S.String),
-    is_first_party: S.optional(S.Boolean),
-    oidc_conformant: S.optional(S.Boolean),
-    callbacks: S.optional(UpdateClientResponseContentCallbacksList),
-    allowed_origins: S.optional(UpdateClientResponseContentAllowedOriginsList),
-    web_origins: S.optional(UpdateClientResponseContentWebOriginsList),
-    client_aliases: S.optional(UpdateClientResponseContentClientAliasesList),
-    allowed_clients: S.optional(UpdateClientResponseContentAllowedClientsList),
-    allowed_logout_urls: S.optional(UpdateClientResponseContentAllowedLogoutUrlsList),
-    session_transfer: S.optional(S.NullOr(ClientSessionTransferConfiguration)),
-    oidc_logout: S.optional(ClientOIDCBackchannelLogoutSettings),
-    grant_types: S.optional(UpdateClientResponseContentGrantTypesList),
-    jwt_configuration: S.optional(ClientJwtConfiguration),
-    signing_keys: S.optional(S.NullOr(ClientSigningKeys)),
-    encryption_key: S.optional(S.NullOr(ClientEncryptionKey)),
-    sso: S.optional(S.Boolean),
-    sso_disabled: S.optional(S.Boolean),
-    cross_origin_authentication: S.optional(S.Boolean),
-    cross_origin_loc: S.optional(S.String),
-    custom_login_page_on: S.optional(S.Boolean),
-    custom_login_page: S.optional(S.String),
-    custom_login_page_preview: S.optional(S.String),
-    form_template: S.optional(S.String),
-    addons: S.optional(ClientAddons),
-    token_endpoint_auth_method: S.optional(ClientTokenEndpointAuthMethodEnum),
-    is_token_endpoint_ip_header_trusted: S.optional(S.Boolean),
-    client_metadata: S.optional(ClientMetadata),
-    mobile: S.optional(ClientMobile),
-    initiate_login_uri: S.optional(S.String),
-    native_social_login: S.optional(NativeSocialLogin),
-    fedcm_login: S.optional(FedCMLogin),
-    refresh_token: S.optional(S.NullOr(ClientRefreshTokenConfiguration)),
-    default_organization: S.optional(S.NullOr(ClientDefaultOrganization)),
-    organization_usage: S.optional(ClientOrganizationUsageEnum),
-    organization_require_behavior: S.optional(ClientOrganizationRequireBehaviorEnum),
-    organization_discovery_methods: S.optional(
-      UpdateClientResponseContentOrganizationDiscoveryMethodsList,
-    ),
-    client_authentication_methods: S.optional(S.NullOr(ClientAuthenticationMethod)),
-    require_pushed_authorization_requests: S.optional(S.Boolean),
-    require_proof_of_possession: S.optional(S.Boolean),
-    signed_request_object: S.optional(ClientSignedRequestObjectWithCredentialId),
-    token_vault_privileged_access: S.optional(ClientTokenVaultPrivilegedAccessWithCredentialId),
-    compliance_level: S.optional(S.NullOr(ClientComplianceLevelEnum)),
-    skip_non_verifiable_callback_uri_confirmation_prompt: S.optional(S.Boolean),
-    token_exchange: S.optional(ClientTokenExchangeConfiguration),
-    par_request_expiry: S.optional(S.NullOr(S.Number)),
-    token_quota: S.optional(CreateTokenQuota),
-    express_configuration: S.optional(ExpressConfiguration),
-    b2b_integration_configuration: S.optional(B2bIntegrationConfiguration),
-    my_organization_configuration: S.optional(ClientMyOrganizationResponseConfiguration),
-    identity_assertion_authorization_grant: S.optional(CreateIdentityAssertionAuthorizationGrant),
-    anonymous_sessions: S.optional(CreateAnonymousSessions),
-    enforce_anon_session_transfer_network_binding: S.optional(
-      ClientAnonymousSessionTransferNetworkBindingEnum,
-    ),
-    third_party_security_mode: S.optional(ClientThirdPartySecurityModeEnum),
-    redirection_policy: S.optional(ClientRedirectionPolicyEnum),
-    resource_server_identifier: S.optional(S.String),
-    async_approval_notification_channels: S.optional(
-      ClientAsyncApprovalNotificationsChannelsAPIPostConfiguration,
-    ),
-    external_metadata_type: S.optional(ClientExternalMetadataTypeEnum),
-    external_metadata_created_by: S.optional(ClientExternalMetadataCreatedByEnum),
-    external_client_id: S.optional(S.String),
-    jwks_uri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateClientResponseContent",
-}) as any as S.Schema<UpdateClientResponseContent>;
+export const UpdateClientResponseContent =
+  CreateClientResponseContent as any as S.Schema<UpdateClientResponseContent>;
 
 /** Scopes allowed for this client grant. */
 export type UpdateClientGrantRequestScopeList = Array<string>;
-export const UpdateClientGrantRequestScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientGrantRequestScopeList>;
+export const UpdateClientGrantRequestScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientGrantRequestScopeList>;
 
 /** Controls how organizations may be used with this grant */
 export type ClientGrantOrganizationNullableUsageEnum = "deny" | "allow" | "require";
@@ -40180,9 +38016,8 @@ export const ClientGrantOrganizationNullableUsageEnum = S.String;
 
 /** Types of authorization_details allowed for this client grant. */
 export type UpdateClientGrantRequestAuthorizationDetailsTypesList = Array<string>;
-export const UpdateClientGrantRequestAuthorizationDetailsTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientGrantRequestAuthorizationDetailsTypesList>;
+export const UpdateClientGrantRequestAuthorizationDetailsTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientGrantRequestAuthorizationDetailsTypesList>;
 
 export interface UpdateClientGrantRequest {
   /** ID of the client grant to update. */
@@ -40210,15 +38045,13 @@ export const UpdateClientGrantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scopes allowed for this client grant. */
 export type UpdateClientGrantResponseContentScopeList = Array<string>;
-export const UpdateClientGrantResponseContentScopeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientGrantResponseContentScopeList>;
+export const UpdateClientGrantResponseContentScopeList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientGrantResponseContentScopeList>;
 
 /** Types of authorization_details allowed for this client grant. */
 export type UpdateClientGrantResponseContentAuthorizationDetailsTypesList = Array<string>;
-export const UpdateClientGrantResponseContentAuthorizationDetailsTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateClientGrantResponseContentAuthorizationDetailsTypesList>;
+export const UpdateClientGrantResponseContentAuthorizationDetailsTypesList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateClientGrantResponseContentAuthorizationDetailsTypesList>;
 
 export interface UpdateClientGrantResponseContent {
   /** ID of the client grant. */
@@ -40241,46 +38074,25 @@ export interface UpdateClientGrantResponseContent {
   /** If enabled, all scopes configured on the resource server are allowed for this grant. */
   allow_all_scopes?: boolean;
 }
-export const UpdateClientGrantResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    client_id: S.optional(S.String),
-    audience: S.optional(S.String),
-    scope: S.optional(UpdateClientGrantResponseContentScopeList),
-    organization_usage: S.optional(ClientGrantOrganizationUsageEnum),
-    allow_any_organization: S.optional(S.Boolean),
-    default_for: S.optional(ClientGrantDefaultForEnum),
-    is_system: S.optional(S.Boolean),
-    subject_type: S.optional(ClientGrantSubjectTypeEnum),
-    authorization_details_types: S.optional(
-      UpdateClientGrantResponseContentAuthorizationDetailsTypesList,
-    ),
-    allow_all_scopes: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateClientGrantResponseContent",
-}) as any as S.Schema<UpdateClientGrantResponseContent>;
+export const UpdateClientGrantResponseContent =
+  CreateClientGrantResponseContent as any as S.Schema<UpdateClientGrantResponseContent>;
 
 /** An array of user fields that should not be stored in the Auth0 database (https://auth0.com/docs/security/data-security/denylist) */
 export type UpdateConnectionOptionsNonPersistentAttrsList = Array<string>;
-export const UpdateConnectionOptionsNonPersistentAttrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConnectionOptionsNonPersistentAttrsList>;
+export const UpdateConnectionOptionsNonPersistentAttrsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateConnectionOptionsNonPersistentAttrsList>;
 
 /** Order of precedence for attribute types. If the property is not specified, the default precedence of attributes will be used. */
 export type UpdateConnectionOptionsPrecedenceList = Array<
   ConnectionIdentifierPrecedenceEnum | (string & {})
 >;
-export const UpdateConnectionOptionsPrecedenceList = /*@__PURE__*/ S.Array(
-  ConnectionIdentifierPrecedenceEnum,
-) as any as S.Schema<UpdateConnectionOptionsPrecedenceList>;
+export const UpdateConnectionOptionsPrecedenceList =
+  ConnectionPropertiesOptionsPrecedenceList as any as S.Schema<UpdateConnectionOptionsPrecedenceList>;
 
 /** Stores encrypted string only configurations for connections */
 export type UpdateConnectionOptionsConfigurationMap = { [key: string]: string | null | undefined };
-export const UpdateConnectionOptionsConfigurationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.NullOr(S.String),
-) as any as S.Schema<UpdateConnectionOptionsConfigurationMap>;
+export const UpdateConnectionOptionsConfigurationMap =
+  ConnectionPropertiesOptionsConfigurationMap as any as S.Schema<UpdateConnectionOptionsConfigurationMap>;
 
 /** The connection's options (depend on the connection strategy). To update these options, the `update:connections_options` scope must be present. To verify your changes, also include the `read:connections_options` scope. If this scope is not specified, you will not be able to review the updated object. */
 export interface UpdateConnectionOptions {
@@ -40391,15 +38203,13 @@ export const UpdateConnectionOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** DEPRECATED property. Use the PATCH /v2/connections/{id}/clients endpoint to enable or disable the connection for any clients. */
 export type UpdateConnectionRequestEnabledClientsList = Array<string>;
-export const UpdateConnectionRequestEnabledClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConnectionRequestEnabledClientsList>;
+export const UpdateConnectionRequestEnabledClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateConnectionRequestEnabledClientsList>;
 
 /** Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. */
 export type UpdateConnectionRequestRealmsList = Array<string>;
-export const UpdateConnectionRequestRealmsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConnectionRequestRealmsList>;
+export const UpdateConnectionRequestRealmsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateConnectionRequestRealmsList>;
 
 /** Cross App Access - Resource App settings that apply to this connection. */
 export type UpdateCrossAppAccessResourceApp = CreateCrossAppAccessResourceApp;
@@ -40444,15 +38254,13 @@ export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. */
 export type UpdateConnectionResponseContentRealmsList = Array<string>;
-export const UpdateConnectionResponseContentRealmsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConnectionResponseContentRealmsList>;
+export const UpdateConnectionResponseContentRealmsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateConnectionResponseContentRealmsList>;
 
 /** DEPRECATED property. Use the GET /connections/:id/clients endpoint to get the ids of the clients for which the connection is enabled */
 export type UpdateConnectionResponseContentEnabledClientsList = Array<string>;
-export const UpdateConnectionResponseContentEnabledClientsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConnectionResponseContentEnabledClientsList>;
+export const UpdateConnectionResponseContentEnabledClientsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateConnectionResponseContentEnabledClientsList>;
 
 export interface UpdateConnectionResponseContent {
   /** The name of the connection */
@@ -40478,26 +38286,8 @@ export interface UpdateConnectionResponseContent {
   cross_app_access_requesting_app?: CrossAppAccessRequestingApp;
   cross_app_access_resource_app?: CrossAppAccessResourceApp;
 }
-export const UpdateConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    display_name: S.optional(S.String),
-    options: S.optional(ConnectionOptions),
-    id: S.optional(S.String),
-    strategy: S.optional(S.String),
-    realms: S.optional(UpdateConnectionResponseContentRealmsList),
-    enabled_clients: S.optional(UpdateConnectionResponseContentEnabledClientsList),
-    is_domain_connection: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    metadata: S.optional(ConnectionsMetadata),
-    authentication: S.optional(ConnectionAuthenticationPurpose),
-    connected_accounts: S.optional(ConnectionConnectedAccountsPurpose),
-    cross_app_access_requesting_app: S.optional(CrossAppAccessRequestingApp),
-    cross_app_access_resource_app: S.optional(CrossAppAccessResourceApp),
-  }),
-).annotate({
-  identifier: "UpdateConnectionResponseContent",
-}) as any as S.Schema<UpdateConnectionResponseContent>;
+export const UpdateConnectionResponseContent =
+  CreateConnectionResponseContent as any as S.Schema<UpdateConnectionResponseContent>;
 
 export interface UpdateConnectionProfileRequest {
   /** ID of the connection profile to update. */
@@ -40538,21 +38328,8 @@ export interface UpdateConnectionProfileResponseContent {
   provisioning?: ConnectionProfileStrategyOverridesProvisioning;
   cross_app_access_resource_app?: ConnectionProfileCrossAppAccessResourceApp;
 }
-export const UpdateConnectionProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    organization: S.optional(ConnectionProfileOrganization),
-    connection_name_prefix_template: S.optional(S.String),
-    enabled_features: S.optional(ConnectionProfileEnabledFeatures),
-    connection_config: S.optional(S.Unknown),
-    strategy_overrides: S.optional(ConnectionProfileStrategyOverrides),
-    provisioning: S.optional(ConnectionProfileStrategyOverridesProvisioning),
-    cross_app_access_resource_app: S.optional(ConnectionProfileCrossAppAccessResourceApp),
-  }),
-).annotate({
-  identifier: "UpdateConnectionProfileResponseContent",
-}) as any as S.Schema<UpdateConnectionProfileResponseContent>;
+export const UpdateConnectionProfileResponseContent =
+  CreateConnectionProfileResponseContent as any as S.Schema<UpdateConnectionProfileResponseContent>;
 
 export interface UpdateCustomDomainRequest {
   /** The id of the custom domain to update */
@@ -40597,24 +38374,8 @@ export interface UpdateCustomDomainResponseContent {
   /** Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not present, the full domain will be used. */
   relying_party_identifier?: string;
 }
-export const UpdateCustomDomainResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    custom_domain_id: S.String,
-    domain: S.String,
-    primary: S.Boolean,
-    is_default: S.optional(S.Boolean),
-    status: CustomDomainStatusFilterEnum,
-    type: CustomDomainTypeEnum,
-    verification: DomainVerification,
-    custom_client_ip_header: S.optional(S.NullOr(S.String)),
-    tls_policy: S.optional(S.String),
-    domain_metadata: S.optional(DomainMetadata),
-    certificate: S.optional(DomainCertificate),
-    relying_party_identifier: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCustomDomainResponseContent",
-}) as any as S.Schema<UpdateCustomDomainResponseContent>;
+export const UpdateCustomDomainResponseContent =
+  CreateCustomDomainResponseContent as any as S.Schema<UpdateCustomDomainResponseContent>;
 
 /** Template name. Can be `verify_email`, `verify_email_by_code`, `auth_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `async_approval`, `change_password` (legacy), or `password_reset` (legacy). */
 export type UpdateEmailTemplateRequestTemplateName =
@@ -40691,27 +38452,13 @@ export interface UpdateEmailTemplateResponseContent {
   /** Whether the template is enabled (true) or disabled (false). */
   enabled?: boolean | null;
 }
-export const UpdateEmailTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    template: S.optional(EmailTemplateNameEnum),
-    body: S.optional(S.NullOr(S.String)),
-    from: S.optional(S.NullOr(S.String)),
-    resultUrl: S.optional(S.NullOr(S.String)),
-    subject: S.optional(S.NullOr(S.String)),
-    syntax: S.optional(S.NullOr(S.String)),
-    urlLifetimeInSeconds: S.optional(S.NullOr(S.Number)),
-    includeEmailInRedirect: S.optional(S.Boolean),
-    enabled: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "UpdateEmailTemplateResponseContent",
-}) as any as S.Schema<UpdateEmailTemplateResponseContent>;
+export const UpdateEmailTemplateResponseContent =
+  GetEmailTemplateResponseContent as any as S.Schema<UpdateEmailTemplateResponseContent>;
 
 /** List of event types subscribed to in this stream. */
 export type UpdateEventStreamRequestSubscriptionsList = Array<EventStreamSubscription>;
-export const UpdateEventStreamRequestSubscriptionsList = /*@__PURE__*/ S.Array(
-  EventStreamSubscription,
-) as any as S.Schema<UpdateEventStreamRequestSubscriptionsList>;
+export const UpdateEventStreamRequestSubscriptionsList =
+  CreateEventStreamWebHookRequestContentSubscriptionsList as any as S.Schema<UpdateEventStreamRequestSubscriptionsList>;
 
 export type EventStreamDestinationPatch =
   | EventStreamWebhookDestination
@@ -40755,15 +38502,13 @@ export const UpdateEventStreamResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replaces all traffic allocations. Cannot be modified while the experiment is active. */
 export type UpdateExperimentRequestAllocationsList = Array<AllocationRequestItem>;
-export const UpdateExperimentRequestAllocationsList = /*@__PURE__*/ S.Array(
-  AllocationRequestItem,
-) as any as S.Schema<UpdateExperimentRequestAllocationsList>;
+export const UpdateExperimentRequestAllocationsList =
+  CreateExperimentRequestAllocationsList as any as S.Schema<UpdateExperimentRequestAllocationsList>;
 
 /** Ramp experiment levels configuration. A strictly-increasing sequence of exposure percentages, each an integer in [0, 100]. Can only be modified on draft experiments. */
 export type UpdateExperimentRequestLevelsList = Array<number>;
-export const UpdateExperimentRequestLevelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateExperimentRequestLevelsList>;
+export const UpdateExperimentRequestLevelsList =
+  CreateExperimentRequestLevelsList as any as S.Schema<UpdateExperimentRequestLevelsList>;
 
 export interface UpdateExperimentRequest {
   /** The ID of the experiment to update. */
@@ -40796,27 +38541,22 @@ export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateExperimentResponseContentFeatureFlagSnapshotMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateExperimentResponseContentFeatureFlagSnapshotMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentResponseContentFeatureFlagSnapshotMap>;
+export const UpdateExperimentResponseContentFeatureFlagSnapshotMap =
+  AgentMetadata as any as S.Schema<UpdateExperimentResponseContentFeatureFlagSnapshotMap>;
 
 export type UpdateExperimentResponseContentAllocationsList = Array<AllocationItem>;
-export const UpdateExperimentResponseContentAllocationsList = /*@__PURE__*/ S.Array(
-  AllocationItem,
-) as any as S.Schema<UpdateExperimentResponseContentAllocationsList>;
+export const UpdateExperimentResponseContentAllocationsList =
+  CreateExperimentResponseContentAllocationsList as any as S.Schema<UpdateExperimentResponseContentAllocationsList>;
 
 /** Fields that may be mutated given the experiment's current status. Computed at response time; always current with the API's enforcement logic. */
 export type UpdateExperimentResponseContentEditableFieldsList = Array<string>;
-export const UpdateExperimentResponseContentEditableFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentResponseContentEditableFieldsList>;
+export const UpdateExperimentResponseContentEditableFieldsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateExperimentResponseContentEditableFieldsList>;
 
 /** Ramp experiment levels configuration. */
 export type UpdateExperimentResponseContentLevelsList = Array<number>;
-export const UpdateExperimentResponseContentLevelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateExperimentResponseContentLevelsList>;
+export const UpdateExperimentResponseContentLevelsList =
+  CreateExperimentRequestLevelsList as any as S.Schema<UpdateExperimentResponseContentLevelsList>;
 
 export interface UpdateExperimentResponseContent {
   id: string;
@@ -40842,33 +38582,8 @@ export interface UpdateExperimentResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const UpdateExperimentResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    feature_flag_id: S.String,
-    feature_flag_name: S.optional(S.String),
-    authentication_flow: S.String,
-    allocation_strategy: AllocationStrategyEnum,
-    status: ExperimentStatusEnum,
-    is_valid: S.Boolean,
-    default_config: S.optional(DefaultConfigEnum),
-    feature_flag_snapshot: S.optional(
-      S.NullOr(UpdateExperimentResponseContentFeatureFlagSnapshotMap),
-    ),
-    allocations: UpdateExperimentResponseContentAllocationsList,
-    editable_fields: UpdateExperimentResponseContentEditableFieldsList,
-    levels: S.optional(UpdateExperimentResponseContentLevelsList),
-    current_level: S.optional(S.NullOr(S.Number)),
-    started_at: S.optional(S.String),
-    ended_at: S.optional(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "UpdateExperimentResponseContent",
-}) as any as S.Schema<UpdateExperimentResponseContent>;
+export const UpdateExperimentResponseContent =
+  CreateExperimentResponseContent as any as S.Schema<UpdateExperimentResponseContent>;
 
 /** The target status to transition the experiment to. */
 export type ExperimentTransitionStatusEnum = "active" | "paused" | "completed" | "archived";
@@ -40891,27 +38606,22 @@ export const UpdateExperimentStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateExperimentStatusResponseContentFeatureFlagSnapshotMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateExperimentStatusResponseContentFeatureFlagSnapshotMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateExperimentStatusResponseContentFeatureFlagSnapshotMap>;
+export const UpdateExperimentStatusResponseContentFeatureFlagSnapshotMap =
+  AgentMetadata as any as S.Schema<UpdateExperimentStatusResponseContentFeatureFlagSnapshotMap>;
 
 export type UpdateExperimentStatusResponseContentAllocationsList = Array<AllocationItem>;
-export const UpdateExperimentStatusResponseContentAllocationsList = /*@__PURE__*/ S.Array(
-  AllocationItem,
-) as any as S.Schema<UpdateExperimentStatusResponseContentAllocationsList>;
+export const UpdateExperimentStatusResponseContentAllocationsList =
+  CreateExperimentResponseContentAllocationsList as any as S.Schema<UpdateExperimentStatusResponseContentAllocationsList>;
 
 /** Fields that may be mutated given the experiment's current status. Computed at response time; always current with the API's enforcement logic. */
 export type UpdateExperimentStatusResponseContentEditableFieldsList = Array<string>;
-export const UpdateExperimentStatusResponseContentEditableFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateExperimentStatusResponseContentEditableFieldsList>;
+export const UpdateExperimentStatusResponseContentEditableFieldsList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateExperimentStatusResponseContentEditableFieldsList>;
 
 /** Ramp experiment levels configuration. */
 export type UpdateExperimentStatusResponseContentLevelsList = Array<number>;
-export const UpdateExperimentStatusResponseContentLevelsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateExperimentStatusResponseContentLevelsList>;
+export const UpdateExperimentStatusResponseContentLevelsList =
+  CreateExperimentRequestLevelsList as any as S.Schema<UpdateExperimentStatusResponseContentLevelsList>;
 
 export interface UpdateExperimentStatusResponseContent {
   id: string;
@@ -40937,40 +38647,13 @@ export interface UpdateExperimentStatusResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const UpdateExperimentStatusResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    feature_flag_id: S.String,
-    feature_flag_name: S.optional(S.String),
-    authentication_flow: S.String,
-    allocation_strategy: AllocationStrategyEnum,
-    status: ExperimentStatusEnum,
-    is_valid: S.Boolean,
-    default_config: S.optional(DefaultConfigEnum),
-    feature_flag_snapshot: S.optional(
-      S.NullOr(UpdateExperimentStatusResponseContentFeatureFlagSnapshotMap),
-    ),
-    allocations: UpdateExperimentStatusResponseContentAllocationsList,
-    editable_fields: UpdateExperimentStatusResponseContentEditableFieldsList,
-    levels: S.optional(UpdateExperimentStatusResponseContentLevelsList),
-    current_level: S.optional(S.NullOr(S.Number)),
-    started_at: S.optional(S.String),
-    ended_at: S.optional(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "UpdateExperimentStatusResponseContent",
-}) as any as S.Schema<UpdateExperimentStatusResponseContent>;
+export const UpdateExperimentStatusResponseContent =
+  CreateExperimentResponseContent as any as S.Schema<UpdateExperimentStatusResponseContent>;
 
 /** Configuration parameters for this feature flag */
 export type UpdateFeatureFlagParameters = { [key: string]: FeatureFlagConfigParam | undefined };
-export const UpdateFeatureFlagParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  FeatureFlagConfigParam,
-) as any as S.Schema<UpdateFeatureFlagParameters>;
+export const UpdateFeatureFlagParameters =
+  CreateFeatureFlagParameters as any as S.Schema<UpdateFeatureFlagParameters>;
 
 export interface UpdateFeatureFlagRequest {
   /** The ID of the feature flag to update. */
@@ -41000,20 +38683,8 @@ export interface UpdateFeatureFlagResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const UpdateFeatureFlagResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: FeatureFlagTypeEnum,
-    status: FeatureFlagStatusEnum,
-    parameters: S.optional(FeatureFlagConfigParams),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "UpdateFeatureFlagResponseContent",
-}) as any as S.Schema<UpdateFeatureFlagResponseContent>;
+export const UpdateFeatureFlagResponseContent =
+  CreateFeatureFlagResponseContent as any as S.Schema<UpdateFeatureFlagResponseContent>;
 
 export interface UpdateFeatureFlagStatusRequest {
   /** The ID of the feature flag to transition. */
@@ -41040,25 +38711,12 @@ export interface UpdateFeatureFlagStatusResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const UpdateFeatureFlagStatusResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: FeatureFlagTypeEnum,
-    status: FeatureFlagStatusEnum,
-    parameters: S.optional(FeatureFlagConfigParams),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "UpdateFeatureFlagStatusResponseContent",
-}) as any as S.Schema<UpdateFeatureFlagStatusResponseContent>;
+export const UpdateFeatureFlagStatusResponseContent =
+  CreateFeatureFlagResponseContent as any as S.Schema<UpdateFeatureFlagStatusResponseContent>;
 
 export type UpdateFlowRequestActionsList = Array<FlowAction>;
-export const UpdateFlowRequestActionsList = /*@__PURE__*/ S.Array(
-  FlowAction,
-) as any as S.Schema<UpdateFlowRequestActionsList>;
+export const UpdateFlowRequestActionsList =
+  CreateFlowRequestActionsList as any as S.Schema<UpdateFlowRequestActionsList>;
 
 export interface UpdateFlowRequest {
   /** Flow identifier */
@@ -41075,9 +38733,8 @@ export const UpdateFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateFlowRequest" }) as any as S.Schema<UpdateFlowRequest>;
 
 export type UpdateFlowResponseContentActionsList = Array<FlowAction>;
-export const UpdateFlowResponseContentActionsList = /*@__PURE__*/ S.Array(
-  FlowAction,
-) as any as S.Schema<UpdateFlowResponseContentActionsList>;
+export const UpdateFlowResponseContentActionsList =
+  CreateFlowRequestActionsList as any as S.Schema<UpdateFlowResponseContentActionsList>;
 
 export interface UpdateFlowResponseContent {
   id: string;
@@ -41087,18 +38744,8 @@ export interface UpdateFlowResponseContent {
   updated_at: string;
   executed_at?: string;
 }
-export const UpdateFlowResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    actions: S.optional(UpdateFlowResponseContentActionsList),
-    created_at: S.String,
-    updated_at: S.String,
-    executed_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFlowResponseContent",
-}) as any as S.Schema<UpdateFlowResponseContent>;
+export const UpdateFlowResponseContent =
+  CreateFlowResponseContent as any as S.Schema<UpdateFlowResponseContent>;
 
 /** Flows Vault Connection configuration. */
 export type UpdateFlowsVaultConnectionSetup =
@@ -41159,22 +38806,8 @@ export interface UpdateFlowsVaultConnectionResponseContent {
   refreshed_at?: string;
   fingerprint: string;
 }
-export const UpdateFlowsVaultConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    app_id: S.String,
-    environment: S.optional(S.String),
-    name: S.String,
-    account_name: S.optional(S.String),
-    ready: S.Boolean,
-    created_at: S.String,
-    updated_at: S.String,
-    refreshed_at: S.optional(S.String),
-    fingerprint: S.String,
-  }),
-).annotate({
-  identifier: "UpdateFlowsVaultConnectionResponseContent",
-}) as any as S.Schema<UpdateFlowsVaultConnectionResponseContent>;
+export const UpdateFlowsVaultConnectionResponseContent =
+  CreateFlowsVaultConnectionResponseContent as any as S.Schema<UpdateFlowsVaultConnectionResponseContent>;
 
 export interface UpdateFormRequest {
   /** The ID of the form to update. */
@@ -41217,25 +38850,8 @@ export interface UpdateFormResponseContent {
   embedded_at?: string;
   submitted_at?: string;
 }
-export const UpdateFormResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    messages: S.optional(FormMessages),
-    languages: S.optional(FormLanguages),
-    translations: S.optional(FormTranslations),
-    nodes: S.optional(FormNodeList),
-    start: S.optional(FormStartNode),
-    ending: S.optional(FormEndingNode),
-    style: S.optional(FormStyle),
-    created_at: S.String,
-    updated_at: S.String,
-    embedded_at: S.optional(S.String),
-    submitted_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFormResponseContent",
-}) as any as S.Schema<UpdateFormResponseContent>;
+export const UpdateFormResponseContent =
+  CreateFormResponseContent as any as S.Schema<UpdateFormResponseContent>;
 
 export interface UpdateHookRequest {
   /** ID of the hook to update. */
@@ -41271,24 +38887,13 @@ export interface UpdateHookResponseContent {
   script?: string;
   dependencies?: HookDependencies;
 }
-export const UpdateHookResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggerId: S.optional(S.String),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    script: S.optional(S.String),
-    dependencies: S.optional(HookDependencies),
-  }),
-).annotate({
-  identifier: "UpdateHookResponseContent",
-}) as any as S.Schema<UpdateHookResponseContent>;
+export const UpdateHookResponseContent =
+  CreateHookResponseContent as any as S.Schema<UpdateHookResponseContent>;
 
 /** Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. */
 export type UpdateLogStreamRequestFiltersList = Array<LogStreamFilter>;
-export const UpdateLogStreamRequestFiltersList = /*@__PURE__*/ S.Array(
-  LogStreamFilter,
-) as any as S.Schema<UpdateLogStreamRequestFiltersList>;
+export const UpdateLogStreamRequestFiltersList =
+  CreateLogStreamHttpRequestBodyFiltersList as any as S.Schema<UpdateLogStreamRequestFiltersList>;
 
 export interface LogStreamSegmentSink {
   /** Segment write key */
@@ -41402,19 +39007,8 @@ export interface UpdateNetworkAclResponseContent {
   /** The timestamp when the Network ACL Configuration was last updated */
   updated_at?: string;
 }
-export const UpdateNetworkAclResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    active: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    rule: S.optional(NetworkAclRule),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateNetworkAclResponseContent",
-}) as any as S.Schema<UpdateNetworkAclResponseContent>;
+export const UpdateNetworkAclResponseContent =
+  GetNetworkAclsResponseContent as any as S.Schema<UpdateNetworkAclResponseContent>;
 
 export interface UpdateOrganizationRequest {
   /** ID of the organization to update. */
@@ -41460,21 +39054,8 @@ export interface UpdateOrganizationResponseContent {
   is_app_entitlement_active?: boolean;
   client?: OrganizationClientAssociation;
 }
-export const UpdateOrganizationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    display_name: S.optional(S.String),
-    branding: S.optional(OrganizationBranding),
-    metadata: S.optional(OrganizationMetadata),
-    token_quota: S.optional(CreateTokenQuota),
-    third_party_client_access: S.optional(OrganizationThirdPartyClientAccessEnum),
-    is_app_entitlement_active: S.optional(S.Boolean),
-    client: S.optional(OrganizationClientAssociation),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationResponseContent",
-}) as any as S.Schema<UpdateOrganizationResponseContent>;
+export const UpdateOrganizationResponseContent =
+  GetOrganizationByNameResponseContent as any as S.Schema<UpdateOrganizationResponseContent>;
 
 export interface UpdateOrganizationClientRequest {
   /** ID of the organization. */
@@ -41577,21 +39158,8 @@ export interface UpdateOrganizationAllConnectionResponseContent {
   connection_id: string;
   connection?: OrganizationConnectionInformation;
 }
-export const UpdateOrganizationAllConnectionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_connection_name: S.optional(S.String),
-    assign_membership_on_login: S.optional(S.Boolean),
-    show_as_button: S.optional(S.Boolean),
-    is_signup_enabled: S.optional(S.Boolean),
-    organization_access_level: S.optional(OrganizationAccessLevelEnum),
-    organization_member_access_level: S.optional(OrganizationMemberAccessLevelEnum),
-    is_enabled: S.optional(S.Boolean),
-    connection_id: S.String,
-    connection: S.optional(OrganizationConnectionInformation),
-  }),
-).annotate({
-  identifier: "UpdateOrganizationAllConnectionResponseContent",
-}) as any as S.Schema<UpdateOrganizationAllConnectionResponseContent>;
+export const UpdateOrganizationAllConnectionResponseContent =
+  CreateOrganizationAllConnectionResponseContent as any as S.Schema<UpdateOrganizationAllConnectionResponseContent>;
 
 export interface UpdatePhoneProviderRequest {
   id: string;
@@ -41628,20 +39196,8 @@ export interface UpdateBrandingPhoneProviderResponseContent {
   /** The date and time of the last update to the provider in ISO 8601 format */
   updated_at?: string;
 }
-export const UpdateBrandingPhoneProviderResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    tenant: S.optional(S.String),
-    name: PhoneProviderNameEnum,
-    channel: S.optional(PhoneProviderChannelEnum),
-    disabled: S.optional(S.Boolean),
-    configuration: S.optional(PhoneProviderConfiguration),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateBrandingPhoneProviderResponseContent",
-}) as any as S.Schema<UpdateBrandingPhoneProviderResponseContent>;
+export const UpdateBrandingPhoneProviderResponseContent =
+  CreateBrandingPhoneProviderResponseContent as any as S.Schema<UpdateBrandingPhoneProviderResponseContent>;
 
 export interface PartialPhoneTemplateContent {
   /** Default phone number to be used as 'from' when sending a phone notification */
@@ -41683,19 +39239,8 @@ export interface UpdatePhoneTemplateResponseContent {
   /** Whether the template is enabled (false) or disabled (true). */
   disabled: boolean;
 }
-export const UpdatePhoneTemplateResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    channel: S.optional(S.String),
-    customizable: S.optional(S.Boolean),
-    tenant: S.optional(S.String),
-    content: PhoneTemplateContent,
-    type: PhoneTemplateNotificationTypeEnum,
-    disabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdatePhoneTemplateResponseContent",
-}) as any as S.Schema<UpdatePhoneTemplateResponseContent>;
+export const UpdatePhoneTemplateResponseContent =
+  CreatePhoneTemplateResponseContent as any as S.Schema<UpdatePhoneTemplateResponseContent>;
 
 export interface UpdatePromptsRequest {
   universal_login_experience?: UniversalLoginExperienceEnum | (string & {});
@@ -41719,15 +39264,8 @@ export interface UpdateSettingsResponseContent {
   /** Use WebAuthn with Device Biometrics as the first authentication factor */
   webauthn_platform_first_factor?: boolean;
 }
-export const UpdateSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    universal_login_experience: S.optional(UniversalLoginExperienceEnum),
-    identifier_first: S.optional(S.Boolean),
-    webauthn_platform_first_factor: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateSettingsResponseContent",
-}) as any as S.Schema<UpdateSettingsResponseContent>;
+export const UpdateSettingsResponseContent =
+  GetSettingsResponseContent as any as S.Schema<UpdateSettingsResponseContent>;
 
 /** Determines the action to take when the rate limit is exceeded. */
 export type PatchRateLimitPolicyConfigurationRequestContentCase0Action = "allow";
@@ -41820,19 +39358,8 @@ export interface UpdateRateLimitPolicyResponseContent {
   /** The date and time when the rate limit policy was last updated. */
   updated_at?: string;
 }
-export const UpdateRateLimitPolicyResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    resource: RateLimitPolicyResourceEnum,
-    consumer: RateLimitPolicyConsumerEnum,
-    consumer_selector: S.String,
-    configuration: RateLimitPolicyConfiguration,
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRateLimitPolicyResponseContent",
-}) as any as S.Schema<UpdateRateLimitPolicyResponseContent>;
+export const UpdateRateLimitPolicyResponseContent =
+  CreateRateLimitPolicyResponseContent as any as S.Schema<UpdateRateLimitPolicyResponseContent>;
 
 export interface UpdateRefreshTokenRequest {
   /** ID of the refresh token to update. */
@@ -41852,9 +39379,8 @@ export const UpdateRefreshTokenRequest = /*@__PURE__*/ S.suspend(() =>
 /** A list of the resource server IDs associated to this refresh-token and their granted scopes */
 export type UpdateRefreshTokenResponseContentResourceServersList =
   Array<RefreshTokenResourceServer>;
-export const UpdateRefreshTokenResponseContentResourceServersList = /*@__PURE__*/ S.Array(
-  RefreshTokenResourceServer,
-) as any as S.Schema<UpdateRefreshTokenResponseContentResourceServersList>;
+export const UpdateRefreshTokenResponseContentResourceServersList =
+  GetRefreshTokenResponseContentResourceServersList as any as S.Schema<UpdateRefreshTokenResponseContentResourceServersList>;
 
 export interface UpdateRefreshTokenResponseContent {
   /** The ID of the refresh token */
@@ -41875,35 +39401,17 @@ export interface UpdateRefreshTokenResponseContent {
   refresh_token_metadata?: RefreshTokenMetadata | null;
   last_exchanged_at?: RefreshTokenDate | null;
 }
-export const UpdateRefreshTokenResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    user_id: S.optional(S.String),
-    created_at: S.optional(S.NullOr(RefreshTokenDate)),
-    idle_expires_at: S.optional(S.NullOr(RefreshTokenDate)),
-    expires_at: S.optional(S.NullOr(RefreshTokenDate)),
-    device: S.optional(RefreshTokenDevice),
-    client_id: S.optional(S.String),
-    session_id: S.optional(S.NullOr(S.String)),
-    rotating: S.optional(S.Boolean),
-    resource_servers: S.optional(UpdateRefreshTokenResponseContentResourceServersList),
-    refresh_token_metadata: S.optional(S.NullOr(RefreshTokenMetadata)),
-    last_exchanged_at: S.optional(S.NullOr(RefreshTokenDate)),
-  }),
-).annotate({
-  identifier: "UpdateRefreshTokenResponseContent",
-}) as any as S.Schema<UpdateRefreshTokenResponseContent>;
+export const UpdateRefreshTokenResponseContent =
+  GetRefreshTokenResponseContent as any as S.Schema<UpdateRefreshTokenResponseContent>;
 
 /** List of permissions (scopes) that this API uses. */
 export type UpdateResourceServerRequestScopesList = Array<ResourceServerScope>;
-export const UpdateResourceServerRequestScopesList = /*@__PURE__*/ S.Array(
-  ResourceServerScope,
-) as any as S.Schema<UpdateResourceServerRequestScopesList>;
+export const UpdateResourceServerRequestScopesList =
+  CreateResourceServerRequestScopesList as any as S.Schema<UpdateResourceServerRequestScopesList>;
 
 export type UpdateResourceServerRequestAuthorizationDetailsList = Array<unknown>;
-export const UpdateResourceServerRequestAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateResourceServerRequestAuthorizationDetailsList>;
+export const UpdateResourceServerRequestAuthorizationDetailsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<UpdateResourceServerRequestAuthorizationDetailsList>;
 
 export interface UpdateResourceServerRequest {
   /** ID or audience of the resource server to update. */
@@ -41972,14 +39480,12 @@ export const UpdateResourceServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of permissions (scopes) that this API uses. */
 export type UpdateResourceServerResponseContentScopesList = Array<ResourceServerScope>;
-export const UpdateResourceServerResponseContentScopesList = /*@__PURE__*/ S.Array(
-  ResourceServerScope,
-) as any as S.Schema<UpdateResourceServerResponseContentScopesList>;
+export const UpdateResourceServerResponseContentScopesList =
+  CreateResourceServerRequestScopesList as any as S.Schema<UpdateResourceServerResponseContentScopesList>;
 
 export type UpdateResourceServerResponseContentAuthorizationDetailsList = Array<unknown>;
-export const UpdateResourceServerResponseContentAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateResourceServerResponseContentAuthorizationDetailsList>;
+export const UpdateResourceServerResponseContentAuthorizationDetailsList =
+  FlowActionAuth0SendRequestParamsPayloadCase1List as any as S.Schema<UpdateResourceServerResponseContentAuthorizationDetailsList>;
 
 export interface UpdateResourceServerResponseContent {
   /** ID of the API (resource server). */
@@ -42024,39 +39530,8 @@ export interface UpdateResourceServerResponseContent {
   /** The client ID of the client that this resource server is linked to */
   client_id?: string;
 }
-export const UpdateResourceServerResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    is_system: S.optional(S.Boolean),
-    identifier: S.optional(S.String),
-    scopes: S.optional(UpdateResourceServerResponseContentScopesList),
-    signing_alg: S.optional(SigningAlgorithmEnum),
-    signing_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    allow_offline_access: S.optional(S.Boolean),
-    allow_online_access: S.optional(S.Boolean),
-    allow_online_access_with_ephemeral_sessions: S.optional(S.Boolean),
-    skip_consent_for_verifiable_first_party_clients: S.optional(S.Boolean),
-    token_lifetime: S.optional(S.Number),
-    token_lifetime_for_web: S.optional(S.Number),
-    enforce_policies: S.optional(S.Boolean),
-    token_lifetime_for_anonymous_access_tokens: S.optional(S.Number),
-    token_dialect: S.optional(ResourceServerTokenDialectResponseEnum),
-    access_token: S.optional(S.NullOr(ResourceServerAccessToken)),
-    token_encryption: S.optional(S.NullOr(ResourceServerTokenEncryption)),
-    consent_policy: S.optional(S.NullOr(ResourceServerConsentPolicyEnum)),
-    require_consent_non_repudiation: S.optional(S.Boolean),
-    authorization_details: S.optional(
-      S.NullOr(UpdateResourceServerResponseContentAuthorizationDetailsList),
-    ),
-    proof_of_possession: S.optional(S.NullOr(ResourceServerProofOfPossession)),
-    subject_type_authorization: S.optional(ResourceServerSubjectTypeAuthorization),
-    authorization_policy: S.optional(S.NullOr(ResourceServerAuthorizationPolicy)),
-    client_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateResourceServerResponseContent",
-}) as any as S.Schema<UpdateResourceServerResponseContent>;
+export const UpdateResourceServerResponseContent =
+  CreateResourceServerResponseContent as any as S.Schema<UpdateResourceServerResponseContent>;
 
 export interface UpdateRiskAssessmentsSettingsRequest {
   /** Whether or not risk assessment is enabled. */
@@ -42074,13 +39549,8 @@ export interface UpdateRiskAssessmentsSettingsResponseContent {
   /** Whether or not risk assessment is enabled. */
   enabled: boolean;
 }
-export const UpdateRiskAssessmentsSettingsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "UpdateRiskAssessmentsSettingsResponseContent",
-}) as any as S.Schema<UpdateRiskAssessmentsSettingsResponseContent>;
+export const UpdateRiskAssessmentsSettingsResponseContent =
+  GetRiskAssessmentsSettingsResponseContent as any as S.Schema<UpdateRiskAssessmentsSettingsResponseContent>;
 
 export interface UpdateRoleRequest {
   /** ID of the role to update. */
@@ -42109,17 +39579,8 @@ export interface UpdateRoleResponseContent {
   /** The id of the entity that owns this role, such as an organization id. */
   owner_id?: string;
 }
-export const UpdateRoleResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    type: S.optional(RoleTypeEnum),
-    owner_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRoleResponseContent",
-}) as any as S.Schema<UpdateRoleResponseContent>;
+export const UpdateRoleResponseContent =
+  CreateRoleResponseContent as any as S.Schema<UpdateRoleResponseContent>;
 
 export interface UpdateRuleRequest {
   /** ID of the rule to retrieve. */
@@ -42157,24 +39618,13 @@ export interface UpdateRuleResponseContent {
   /** Execution stage of this rule. Can be `login_success`, `login_failure`, or `pre_authorize`. */
   stage?: string;
 }
-export const UpdateRuleResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    id: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    script: S.optional(S.String),
-    order: S.optional(S.Number),
-    stage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateRuleResponseContent",
-}) as any as S.Schema<UpdateRuleResponseContent>;
+export const UpdateRuleResponseContent =
+  CreateRuleResponseContent as any as S.Schema<UpdateRuleResponseContent>;
 
 /** Replaces the entire rules array. Each rule is limited to 4KB and the whole segment to 10KB (serialized). */
 export type UpdateSegmentRequestRulesList = Array<SegmentRule>;
-export const UpdateSegmentRequestRulesList = /*@__PURE__*/ S.Array(
-  SegmentRule,
-) as any as S.Schema<UpdateSegmentRequestRulesList>;
+export const UpdateSegmentRequestRulesList =
+  CreateSegmentRequestRulesList as any as S.Schema<UpdateSegmentRequestRulesList>;
 
 export interface UpdateSegmentRequest {
   /** The ID of the segment to update. */
@@ -42196,9 +39646,8 @@ export const UpdateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSegmentRequest" }) as any as S.Schema<UpdateSegmentRequest>;
 
 export type UpdateSegmentResponseContentRulesList = Array<SegmentRule>;
-export const UpdateSegmentResponseContentRulesList = /*@__PURE__*/ S.Array(
-  SegmentRule,
-) as any as S.Schema<UpdateSegmentResponseContentRulesList>;
+export const UpdateSegmentResponseContentRulesList =
+  CreateSegmentRequestRulesList as any as S.Schema<UpdateSegmentResponseContentRulesList>;
 
 export interface UpdateSegmentResponseContent {
   id: string;
@@ -42209,33 +39658,20 @@ export interface UpdateSegmentResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const UpdateSegmentResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: SegmentTypeEnum,
-    rules: UpdateSegmentResponseContentRulesList,
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "UpdateSegmentResponseContent",
-}) as any as S.Schema<UpdateSegmentResponseContent>;
+export const UpdateSegmentResponseContent =
+  CreateSegmentResponseContent as any as S.Schema<UpdateSegmentResponseContent>;
 
 /** List of IdP strategies that will be shown to users during the Self-Service Enterprise Configuration flow. Possible values: [`oidc`, `samlp`, `waad`, `google-apps`, `adfs`, `okta`, `auth0-samlp`, `okta-samlp`, `keycloak-samlp`, `pingfederate`] */
 export type UpdateSelfServiceProfileRequestAllowedStrategiesList = Array<
   SelfServiceProfileAllowedStrategyEnum | (string & {})
 >;
-export const UpdateSelfServiceProfileRequestAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileAllowedStrategyEnum,
-) as any as S.Schema<UpdateSelfServiceProfileRequestAllowedStrategiesList>;
+export const UpdateSelfServiceProfileRequestAllowedStrategiesList =
+  CreateSelfServiceProfileRequestAllowedStrategiesList as any as S.Schema<UpdateSelfServiceProfileRequestAllowedStrategiesList>;
 
 /** List of attributes to be mapped that will be shown to the user during the Self-Service Enterprise Configuration flow. */
 export type SelfServiceProfileUserAttributes = Array<SelfServiceProfileUserAttribute>;
-export const SelfServiceProfileUserAttributes = /*@__PURE__*/ S.Array(
-  SelfServiceProfileUserAttribute,
-) as any as S.Schema<SelfServiceProfileUserAttributes>;
+export const SelfServiceProfileUserAttributes =
+  CreateSelfServiceProfileRequestUserAttributesList as any as S.Schema<SelfServiceProfileUserAttributes>;
 
 export interface UpdateSelfServiceProfileRequest {
   /** The id of the self-service profile to update */
@@ -42267,16 +39703,14 @@ export const UpdateSelfServiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of attributes to be mapped that will be shown to the user during the Self-Service Enterprise Configuration flow. */
 export type UpdateSelfServiceProfileResponseContentUserAttributesList =
   Array<SelfServiceProfileUserAttribute>;
-export const UpdateSelfServiceProfileResponseContentUserAttributesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileUserAttribute,
-) as any as S.Schema<UpdateSelfServiceProfileResponseContentUserAttributesList>;
+export const UpdateSelfServiceProfileResponseContentUserAttributesList =
+  CreateSelfServiceProfileRequestUserAttributesList as any as S.Schema<UpdateSelfServiceProfileResponseContentUserAttributesList>;
 
 /** List of IdP strategies that will be shown to users during the Self-Service Enterprise Configuration flow. Possible values: [`oidc`, `samlp`, `waad`, `google-apps`, `adfs`, `okta`, `auth0-samlp`, `okta-samlp`, `keycloak-samlp`, `pingfederate`] */
 export type UpdateSelfServiceProfileResponseContentAllowedStrategiesList =
   Array<SelfServiceProfileAllowedStrategyEnum>;
-export const UpdateSelfServiceProfileResponseContentAllowedStrategiesList = /*@__PURE__*/ S.Array(
-  SelfServiceProfileAllowedStrategyEnum,
-) as any as S.Schema<UpdateSelfServiceProfileResponseContentAllowedStrategiesList>;
+export const UpdateSelfServiceProfileResponseContentAllowedStrategiesList =
+  CreateSelfServiceProfileRequestAllowedStrategiesList as any as S.Schema<UpdateSelfServiceProfileResponseContentAllowedStrategiesList>;
 
 export interface UpdateSelfServiceProfileResponseContent {
   /** The unique ID of the self-service Profile. */
@@ -42297,21 +39731,8 @@ export interface UpdateSelfServiceProfileResponseContent {
   /** ID of the user-attribute-profile to associate with this self-service profile. */
   user_attribute_profile_id?: string;
 }
-export const UpdateSelfServiceProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    user_attributes: S.optional(UpdateSelfServiceProfileResponseContentUserAttributesList),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    branding: S.optional(SelfServiceProfileBrandingProperties),
-    allowed_strategies: S.optional(UpdateSelfServiceProfileResponseContentAllowedStrategiesList),
-    user_attribute_profile_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateSelfServiceProfileResponseContent",
-}) as any as S.Schema<UpdateSelfServiceProfileResponseContent>;
+export const UpdateSelfServiceProfileResponseContent =
+  CreateSelfServiceProfileResponseContent as any as S.Schema<UpdateSelfServiceProfileResponseContent>;
 
 export interface UpdateSessionRequest {
   /** ID of the session to update. */
@@ -42328,9 +39749,8 @@ export const UpdateSessionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of client details for the session */
 export type UpdateSessionResponseContentClientsList = Array<SessionClientMetadata>;
-export const UpdateSessionResponseContentClientsList = /*@__PURE__*/ S.Array(
-  SessionClientMetadata,
-) as any as S.Schema<UpdateSessionResponseContentClientsList>;
+export const UpdateSessionResponseContentClientsList =
+  GetSessionResponseContentClientsList as any as S.Schema<UpdateSessionResponseContentClientsList>;
 
 export interface UpdateSessionResponseContent {
   /** The ID of the session */
@@ -42351,26 +39771,8 @@ export interface UpdateSessionResponseContent {
   session_metadata?: SessionMetadata | null;
   actor?: SessionActorMetadata;
 }
-export const UpdateSessionResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    user_id: S.optional(S.String),
-    created_at: S.optional(S.NullOr(SessionDate)),
-    updated_at: S.optional(S.NullOr(SessionDate)),
-    authenticated_at: S.optional(S.NullOr(SessionDate)),
-    idle_expires_at: S.optional(S.NullOr(SessionDate)),
-    expires_at: S.optional(S.NullOr(SessionDate)),
-    last_interacted_at: S.optional(S.NullOr(SessionDate)),
-    device: S.optional(SessionDeviceMetadata),
-    clients: S.optional(UpdateSessionResponseContentClientsList),
-    authentication: S.optional(SessionAuthenticationSignals),
-    cookie: S.optional(SessionCookieMetadata),
-    session_metadata: S.optional(S.NullOr(SessionMetadata)),
-    actor: S.optional(SessionActorMetadata),
-  }),
-).annotate({
-  identifier: "UpdateSessionResponseContent",
-}) as any as S.Schema<UpdateSessionResponseContent>;
+export const UpdateSessionResponseContent =
+  GetSessionResponseContent as any as S.Schema<UpdateSessionResponseContent>;
 
 export interface UpdateSupplementalSignalsRequest {
   /** Indicates if incoming Akamai Headers should be processed */
@@ -42388,13 +39790,8 @@ export interface PatchSupplementalSignalsResponseContent {
   /** Indicates if incoming Akamai Headers should be processed */
   akamai_enabled?: boolean;
 }
-export const PatchSupplementalSignalsResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    akamai_enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PatchSupplementalSignalsResponseContent",
-}) as any as S.Schema<PatchSupplementalSignalsResponseContent>;
+export const PatchSupplementalSignalsResponseContent =
+  GetSupplementalSignalsResponseContent as any as S.Schema<PatchSupplementalSignalsResponseContent>;
 
 export interface UpdateTokenExchangeProfileRequest {
   /** ID of the Token Exchange Profile to update. */
@@ -42415,11 +39812,8 @@ export const UpdateTokenExchangeProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTokenExchangeProfileRequest>;
 
 export interface UpdateTokenExchangeProfileResponse {}
-export const UpdateTokenExchangeProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateTokenExchangeProfileResponse",
-}) as any as S.Schema<UpdateTokenExchangeProfileResponse>;
+export const UpdateTokenExchangeProfileResponse =
+  CreateOrganizationGroupRoleResponse as any as S.Schema<UpdateTokenExchangeProfileResponse>;
 
 export interface UpdateUserRequest {
   /** ID of the user to update. */
@@ -42487,15 +39881,13 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user identity objects when accounts are linked. */
 export type UpdateUserResponseContentIdentitiesList = Array<UserIdentitySchema>;
-export const UpdateUserResponseContentIdentitiesList = /*@__PURE__*/ S.Array(
-  UserIdentitySchema,
-) as any as S.Schema<UpdateUserResponseContentIdentitiesList>;
+export const UpdateUserResponseContentIdentitiesList =
+  CreateUserResponseContentIdentitiesList as any as S.Schema<UpdateUserResponseContentIdentitiesList>;
 
 /** List of multi-factor authentication providers with which this user has enrolled. */
 export type UpdateUserResponseContentMultifactorList = Array<string>;
-export const UpdateUserResponseContentMultifactorList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUserResponseContentMultifactorList>;
+export const UpdateUserResponseContentMultifactorList =
+  CreateClientRequestCallbacksList as any as S.Schema<UpdateUserResponseContentMultifactorList>;
 
 export interface UpdateUserResponseContent {
   /** ID of the user which can be used when interacting with other APIs. */
@@ -42543,35 +39935,8 @@ export interface UpdateUserResponseContent {
   /** Family name/last name/surname of this user. */
   family_name?: string;
 }
-export const UpdateUserResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_id: S.optional(S.String),
-    email: S.optional(S.String),
-    email_verified: S.optional(S.Boolean),
-    username: S.optional(S.String),
-    phone_number: S.optional(S.String),
-    phone_verified: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    identities: S.optional(UpdateUserResponseContentIdentitiesList),
-    app_metadata: S.optional(UserAppMetadataSchema),
-    user_metadata: S.optional(UserMetadataSchema),
-    picture: S.optional(S.String),
-    name: S.optional(S.String),
-    nickname: S.optional(S.String),
-    multifactor: S.optional(UpdateUserResponseContentMultifactorList),
-    multifactor_last_modified: S.optional(S.String),
-    last_ip: S.optional(S.String),
-    last_login: S.optional(S.String),
-    last_password_reset: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    logins_count: S.optional(S.Number),
-    blocked: S.optional(S.Boolean),
-    given_name: S.optional(S.String),
-    family_name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateUserResponseContent",
-}) as any as S.Schema<UpdateUserResponseContent>;
+export const UpdateUserResponseContent =
+  CreateUserResponseContent as any as S.Schema<UpdateUserResponseContent>;
 
 export interface UpdateUserAttributeProfileRequest {
   /** ID of the user attribute profile to update. */
@@ -42597,23 +39962,13 @@ export interface UpdateUserAttributeProfileResponseContent {
   user_id?: UserAttributeProfileUserId;
   user_attributes?: UserAttributeProfileUserAttributes;
 }
-export const UpdateUserAttributeProfileResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    user_id: S.optional(UserAttributeProfileUserId),
-    user_attributes: S.optional(UserAttributeProfileUserAttributes),
-  }),
-).annotate({
-  identifier: "UpdateUserAttributeProfileResponseContent",
-}) as any as S.Schema<UpdateUserAttributeProfileResponseContent>;
+export const UpdateUserAttributeProfileResponseContent =
+  CreateUserAttributeProfileResponseContent as any as S.Schema<UpdateUserAttributeProfileResponseContent>;
 
 /** Configuration overrides for this variation; keys must exist in the parent flag parameters. Empty {} is the baseline (control) variation that overrides nothing. */
 export type UpdateVariationOverridesMap = { [key: string]: unknown | undefined };
-export const UpdateVariationOverridesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateVariationOverridesMap>;
+export const UpdateVariationOverridesMap =
+  AgentMetadata as any as S.Schema<UpdateVariationOverridesMap>;
 
 export interface UpdateVariationRequest {
   /** The ID of the parent feature flag. */
@@ -42651,19 +40006,8 @@ export interface UpdateVariationResponseContent {
   created_at: string;
   updated_at: string;
 }
-export const UpdateVariationResponseContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    feature_flag_id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    overrides: VariationOverridesMap,
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "UpdateVariationResponseContent",
-}) as any as S.Schema<UpdateVariationResponseContent>;
+export const UpdateVariationResponseContent =
+  CreateVariationResponseContent as any as S.Schema<UpdateVariationResponseContent>;
 
 export interface ValidateExperimentRequest {
   /** The ID of the experiment to validate. */

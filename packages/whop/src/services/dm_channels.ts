@@ -143,14 +143,7 @@ export interface DmChannelListItem {
   /** A custom display name assigned to this channel by the user. Null if no custom name has been set. */
   name: string | null;
 }
-export const DmChannelListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.String,
-    id: S.String,
-    last_message_at: S.NullOr(S.String),
-    name: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "DmChannelListItem" }) as any as S.Schema<DmChannelListItem>;
+export const DmChannelListItem = DmChannel as any as S.Schema<DmChannelListItem>;
 
 /** A list of nodes. */
 export type ListDmChannelResponseDataList = Array<DmChannelListItem>;

@@ -108,9 +108,8 @@ export const AssignUserToOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignUserToOrgRoleRequest>;
 
 export interface AssignUserToOrgRoleResponse {}
-export const AssignUserToOrgRoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssignUserToOrgRoleResponse",
-}) as any as S.Schema<AssignUserToOrgRoleResponse>;
+export const AssignUserToOrgRoleResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<AssignUserToOrgRoleResponse>;
 
 export interface BlockUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -126,9 +125,7 @@ export const BlockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlockUserRequest" }) as any as S.Schema<BlockUserRequest>;
 
 export interface BlockUserResponse {}
-export const BlockUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BlockUserResponse",
-}) as any as S.Schema<BlockUserResponse>;
+export const BlockUserResponse = AssignTeamToOrgRoleResponse as any as S.Schema<BlockUserResponse>;
 
 /** Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values. */
 export type BulkReviewPatGrantRequestsInRequestPatRequestIdsList = Array<number>;
@@ -182,9 +179,8 @@ export const CancelInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelInvitationRequest" }) as any as S.Schema<CancelInvitationRequest>;
 
 export interface CancelInvitationResponse {}
-export const CancelInvitationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelInvitationResponse",
-}) as any as S.Schema<CancelInvitationResponse>;
+export const CancelInvitationResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<CancelInvitationResponse>;
 
 export interface CheckBlockedUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -200,9 +196,8 @@ export const CheckBlockedUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckBlockedUserRequest" }) as any as S.Schema<CheckBlockedUserRequest>;
 
 export interface CheckBlockedUserResponse {}
-export const CheckBlockedUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CheckBlockedUserResponse",
-}) as any as S.Schema<CheckBlockedUserResponse>;
+export const CheckBlockedUserResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<CheckBlockedUserResponse>;
 
 export interface CheckMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -220,9 +215,8 @@ export const CheckMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckMembershipForUserRequest>;
 
 export interface CheckMembershipForUserResponse {}
-export const CheckMembershipForUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CheckMembershipForUserResponse",
-}) as any as S.Schema<CheckMembershipForUserResponse>;
+export const CheckMembershipForUserResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<CheckMembershipForUserResponse>;
 
 export interface CheckPublicMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -240,11 +234,8 @@ export const CheckPublicMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckPublicMembershipForUserRequest>;
 
 export interface CheckPublicMembershipForUserResponse {}
-export const CheckPublicMembershipForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CheckPublicMembershipForUserResponse",
-}) as any as S.Schema<CheckPublicMembershipForUserResponse>;
+export const CheckPublicMembershipForUserResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<CheckPublicMembershipForUserResponse>;
 
 export interface ConvertMemberToOutsideCollaboratorRequest {
   /** The organization name. The name is not case sensitive. */
@@ -267,11 +258,8 @@ export const ConvertMemberToOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ConvertMemberToOutsideCollaboratorRequest>;
 
 export interface ConvertMemberToOutsideCollaboratorResponse {}
-export const ConvertMemberToOutsideCollaboratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConvertMemberToOutsideCollaboratorResponse",
-}) as any as S.Schema<ConvertMemberToOutsideCollaboratorResponse>;
+export const ConvertMemberToOutsideCollaboratorResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<ConvertMemberToOutsideCollaboratorResponse>;
 
 /** The status of the artifact. Can be either deployed or decommissioned. */
 export type CreateArtifactDeploymentRecordRequestStatus = "deployed" | "decommissioned";
@@ -350,10 +338,8 @@ export const CreateArtifactDeploymentRecordRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateArtifactDeploymentRecordRequest>;
 
 export type ArtifactDeploymentRecordTagsMap = { [key: string]: string | undefined };
-export const ArtifactDeploymentRecordTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ArtifactDeploymentRecordTagsMap>;
+export const ArtifactDeploymentRecordTagsMap =
+  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<ArtifactDeploymentRecordTagsMap>;
 
 export type ArtifactDeploymentRecordRuntimeRisksItem =
   | "critical-resource"
@@ -620,11 +606,8 @@ export const CreateClusterDeploymentRecordsJobRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateClusterDeploymentRecordsJobRequest>;
 
 export interface CreateClusterDeploymentRecordsJobResponse {}
-export const CreateClusterDeploymentRecordsJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateClusterDeploymentRecordsJobResponse",
-}) as any as S.Schema<CreateClusterDeploymentRecordsJobResponse>;
+export const CreateClusterDeploymentRecordsJobResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<CreateClusterDeploymentRecordsJobResponse>;
 
 /** The role for the new member. * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams. * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation. * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization. */
 export type CreateInvitationRequestRole =
@@ -636,9 +619,8 @@ export const CreateInvitationRequestRole = S.String;
 
 /** Specify IDs for the teams you want to invite new members to. */
 export type CreateInvitationRequestTeamIdsList = Array<number>;
-export const CreateInvitationRequestTeamIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateInvitationRequestTeamIdsList>;
+export const CreateInvitationRequestTeamIdsList =
+  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<CreateInvitationRequestTeamIdsList>;
 
 export interface CreateInvitationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1044,9 +1026,8 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateWebhookRequest" }) as any as S.Schema<CreateWebhookRequest>;
 
 export type OrgHookEventsList = Array<string>;
-export const OrgHookEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgHookEventsList>;
+export const OrgHookEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<OrgHookEventsList>;
 
 export interface OrgHookConfig {
   url?: string;
@@ -1121,9 +1102,7 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList =
   Array<string>;
 export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList>;
 
 /** Who can edit the values of the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
@@ -1204,9 +1183,8 @@ export type CustomPropertyValueType =
 export const CustomPropertyValueType = S.String;
 
 export type CustomPropertyDefaultValueCase1List = Array<string>;
-export const CustomPropertyDefaultValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomPropertyDefaultValueCase1List>;
+export const CustomPropertyDefaultValueCase1List =
+  CreateWebhookRequestEventsList as any as S.Schema<CustomPropertyDefaultValueCase1List>;
 
 /** Default value of the property */
 export type CustomPropertyDefaultValue = string | CustomPropertyDefaultValueCase1List;
@@ -1214,9 +1192,8 @@ export const CustomPropertyDefaultValue = S.Unknown as any as S.Schema<CustomPro
 
 /** An ordered list of the allowed values of the property. The property can have up to 200 allowed values. */
 export type CustomPropertyAllowedValuesList = Array<string>;
-export const CustomPropertyAllowedValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomPropertyAllowedValuesList>;
+export const CustomPropertyAllowedValuesList =
+  CreateWebhookRequestEventsList as any as S.Schema<CustomPropertyAllowedValuesList>;
 
 /** Who can edit the values of the property */
 export type CustomPropertyValuesEditableBy = "org_actors" | "org_and_repo_actors";
@@ -1288,9 +1265,7 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsReques
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList =
   Array<CustomProperty>;
 export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CustomProperty,
-  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList>;
 
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList;
@@ -1307,14 +1282,11 @@ export const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRespon
 export type CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   Array<string>;
 export const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
 
 export type CustomPropertyValueValueCase1List = Array<string>;
-export const CustomPropertyValueValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomPropertyValueValueCase1List>;
+export const CustomPropertyValueValueCase1List =
+  CreateWebhookRequestEventsList as any as S.Schema<CustomPropertyValueValueCase1List>;
 
 /** The value assigned to the property */
 export type CustomPropertyValueValue = string | CustomPropertyValueValueCase1List;
@@ -1435,9 +1407,7 @@ export const CustomPropertiesForReposGetOrganizationDefinitionsRequest = /*@__PU
 export type CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
   Array<CustomProperty>;
 export const CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    CustomProperty,
-  ) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList>;
 
 export type CustomPropertiesForReposGetOrganizationDefinitionsResponse =
   CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList;
@@ -1519,15 +1489,12 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteResponse",
-}) as any as S.Schema<DeleteResponse>;
+export const DeleteResponse = AssignTeamToOrgRoleResponse as any as S.Schema<DeleteResponse>;
 
 /** List of subject digests associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList = Array<string>;
-export const DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList>;
+export const DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList =
+  CreateWebhookRequestEventsList as any as S.Schema<DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList>;
 
 export interface DeleteAttestationsBulkRequestBodyCase0 {
   /** List of subject digests associated with the artifact attestations to delete. */
@@ -1543,9 +1510,8 @@ export const DeleteAttestationsBulkRequestBodyCase0 = /*@__PURE__*/ S.suspend(()
 
 /** List of unique IDs associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase1AttestationIdsList = Array<number>;
-export const DeleteAttestationsBulkRequestBodyCase1AttestationIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DeleteAttestationsBulkRequestBodyCase1AttestationIdsList>;
+export const DeleteAttestationsBulkRequestBodyCase1AttestationIdsList =
+  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<DeleteAttestationsBulkRequestBodyCase1AttestationIdsList>;
 
 export interface DeleteAttestationsBulkRequestBodyCase1 {
   /** List of unique IDs associated with the artifact attestations to delete. */
@@ -1581,9 +1547,8 @@ export const DeleteAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttestationsBulkRequest>;
 
 export interface DeleteAttestationsBulkResponse {}
-export const DeleteAttestationsBulkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAttestationsBulkResponse",
-}) as any as S.Schema<DeleteAttestationsBulkResponse>;
+export const DeleteAttestationsBulkResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteAttestationsBulkResponse>;
 
 export interface DeleteAttestationsByIdRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1603,9 +1568,8 @@ export const DeleteAttestationsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAttestationsByIdRequest>;
 
 export interface DeleteAttestationsByIdResponse {}
-export const DeleteAttestationsByIdResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAttestationsByIdResponse",
-}) as any as S.Schema<DeleteAttestationsByIdResponse>;
+export const DeleteAttestationsByIdResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteAttestationsByIdResponse>;
 
 export interface DeleteAttestationsBySubjectDigestRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1629,11 +1593,8 @@ export const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>;
 
 export interface DeleteAttestationsBySubjectDigestResponse {}
-export const DeleteAttestationsBySubjectDigestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAttestationsBySubjectDigestResponse",
-}) as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>;
+export const DeleteAttestationsBySubjectDigestResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>;
 
 export interface DeleteIssueFieldRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1651,9 +1612,8 @@ export const DeleteIssueFieldRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIssueFieldRequest" }) as any as S.Schema<DeleteIssueFieldRequest>;
 
 export interface DeleteIssueFieldResponse {}
-export const DeleteIssueFieldResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIssueFieldResponse",
-}) as any as S.Schema<DeleteIssueFieldResponse>;
+export const DeleteIssueFieldResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteIssueFieldResponse>;
 
 export interface DeleteIssueTypeRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1669,9 +1629,8 @@ export const DeleteIssueTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIssueTypeRequest" }) as any as S.Schema<DeleteIssueTypeRequest>;
 
 export interface DeleteIssueTypeResponse {}
-export const DeleteIssueTypeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteIssueTypeResponse",
-}) as any as S.Schema<DeleteIssueTypeResponse>;
+export const DeleteIssueTypeResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteIssueTypeResponse>;
 
 export interface DeleteWebhookRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1687,9 +1646,8 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteWebhookResponse",
-}) as any as S.Schema<DeleteWebhookResponse>;
+export const DeleteWebhookResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DisableSelectedRepositoryImmutableReleasesOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1715,9 +1673,7 @@ export const DisableSelectedRepositoryImmutableReleasesOrganizationRequest =
 
 export interface DisableSelectedRepositoryImmutableReleasesOrganizationResponse {}
 export const DisableSelectedRepositoryImmutableReleasesOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisableSelectedRepositoryImmutableReleasesOrganizationResponse",
-  }) as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationResponse>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationResponse>;
 
 export interface EnableSelectedRepositoryImmutableReleasesOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1743,25 +1699,19 @@ export const EnableSelectedRepositoryImmutableReleasesOrganizationRequest = /*@_
 
 export interface EnableSelectedRepositoryImmutableReleasesOrganizationResponse {}
 export const EnableSelectedRepositoryImmutableReleasesOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "EnableSelectedRepositoryImmutableReleasesOrganizationResponse",
-  }) as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationResponse>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationResponse>;
 
 /** The names of repositories that the external custom property values will be applied to. */
 export type ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   Array<string>;
 export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
 
 /** List of external custom property names and associated values to apply to the repositories. */
 export type ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
   Array<CustomPropertyValue>;
 export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
-  /*@__PURE__*/ S.Array(
-    CustomPropertyValue,
-  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList>;
 
 export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1787,9 +1737,7 @@ export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest =
 
 export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse {}
 export const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse",
-  }) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse>;
 
 /** Repository name and associated external custom property value */
 export interface RepositoryExternalPropertyPayload {
@@ -1843,9 +1791,7 @@ export const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationProper
 
 export interface ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse {}
 export const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse",
-  }) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse>;
+  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse>;
 
 export interface ExternalPropertiesForReposDeleteOrganizationValuesRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1870,11 +1816,8 @@ export const ExternalPropertiesForReposDeleteOrganizationValuesRequest = /*@__PU
 }) as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesRequest>;
 
 export interface ExternalPropertiesForReposDeleteOrganizationValuesResponse {}
-export const ExternalPropertiesForReposDeleteOrganizationValuesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ExternalPropertiesForReposDeleteOrganizationValuesResponse",
-}) as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesResponse>;
+export const ExternalPropertiesForReposDeleteOrganizationValuesResponse =
+  CustomPropertiesForReposDeleteOrganizationDefinitionResponse as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesResponse>;
 
 export interface ExternalPropertiesForReposGetOrganizationAppInstallationsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2560,11 +2503,8 @@ export const GetApiInsightTimeStatsByActorRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetApiInsightTimeStatsByActorRequest>;
 
 export type GetApiInsightTimeStatsByActorResponse = ApiInsightsTimeStats;
-export const GetApiInsightTimeStatsByActorResponse = /*@__PURE__*/ S.suspend(() =>
-  ApiInsightsTimeStats.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetApiInsightTimeStatsByActorResponse",
-}) as any as S.Schema<GetApiInsightTimeStatsByActorResponse>;
+export const GetApiInsightTimeStatsByActorResponse =
+  GetApiInsightTimeStatsResponse as any as S.Schema<GetApiInsightTimeStatsByActorResponse>;
 
 export interface GetApiInsightTimeStatsByUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2597,11 +2537,8 @@ export const GetApiInsightTimeStatsByUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApiInsightTimeStatsByUserRequest>;
 
 export type GetApiInsightTimeStatsByUserResponse = ApiInsightsTimeStats;
-export const GetApiInsightTimeStatsByUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ApiInsightsTimeStats.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetApiInsightTimeStatsByUserResponse",
-}) as any as S.Schema<GetApiInsightTimeStatsByUserResponse>;
+export const GetApiInsightTimeStatsByUserResponse =
+  GetApiInsightTimeStatsResponse as any as S.Schema<GetApiInsightTimeStatsByUserResponse>;
 
 export type GetApiInsightUserStatsRequestDirection = "asc" | "desc";
 export const GetApiInsightUserStatsRequestDirection = S.String;
@@ -2816,9 +2753,8 @@ export const GetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
+export const MinimalRepositoryTopicsList =
+  CreateWebhookRequestEventsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
@@ -3337,9 +3273,8 @@ export const OrgMembershipRole = S.String;
 
 /** The slugs of the enterprise teams providing the user with indirect membership in the organization. A limit of 100 enterprise team slugs is returned. */
 export type OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList = Array<string>;
-export const OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList>;
+export const OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList =
+  CreateWebhookRequestEventsList as any as S.Schema<OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList>;
 
 /** A GitHub organization. */
 export interface OrganizationSimple {
@@ -3456,9 +3391,8 @@ export const OrganizationRoleSource = S.String;
 
 /** A list of permissions included in this role. */
 export type OrganizationRolePermissionsList = Array<string>;
-export const OrganizationRolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationRolePermissionsList>;
+export const OrganizationRolePermissionsList =
+  CreateWebhookRequestEventsList as any as S.Schema<OrganizationRolePermissionsList>;
 
 /** Organization roles */
 export interface OrganizationRole {
@@ -3672,17 +3606,13 @@ export const GetWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryRequestHeadersMap>;
+export const HookDeliveryRequestHeadersMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestHeadersMap>;
 
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryRequestPayloadMap>;
+export const HookDeliveryRequestPayloadMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
 
 export interface HookDeliveryRequest {
   /** The request headers sent with the webhook delivery. */
@@ -3699,17 +3629,13 @@ export const HookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryResponseHeadersMap>;
+export const HookDeliveryResponseHeadersMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponseHeadersMap>;
 
 /** The response payload received. */
 export type HookDeliveryResponsePayloadMap = { [key: string]: unknown | undefined };
-export const HookDeliveryResponsePayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HookDeliveryResponsePayloadMap>;
+export const HookDeliveryResponsePayloadMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryResponsePayloadMap>;
 
 export interface HookDeliveryResponse {
   /** The response headers received when the delivery was made. */
@@ -3717,12 +3643,7 @@ export interface HookDeliveryResponse {
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-export const HookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.NullOr(HookDeliveryResponseHeadersMap),
-    payload: S.NullOr(HookDeliveryResponsePayloadMap),
-  }),
-).annotate({ identifier: "HookDeliveryResponse" }) as any as S.Schema<HookDeliveryResponse>;
+export const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
 
 /** Delivery made by a webhook. */
 export interface HookDelivery {
@@ -4265,14 +4186,12 @@ export const AppPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppPermissions" }) as any as S.Schema<AppPermissions>;
 
 export type InstallationEventsList = Array<string>;
-export const InstallationEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstallationEventsList>;
+export const InstallationEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<InstallationEventsList>;
 
 export type InstallationSingleFilePathsList = Array<string>;
-export const InstallationSingleFilePathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstallationSingleFilePathsList>;
+export const InstallationSingleFilePathsList =
+  CreateWebhookRequestEventsList as any as S.Schema<InstallationSingleFilePathsList>;
 
 /** Installation */
 export interface Installation {
@@ -4368,9 +4287,8 @@ export const ListArtifactDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =
 
 export type ListArtifactDeploymentRecordsResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
-export const ListArtifactDeploymentRecordsResponseDeploymentRecordsList = /*@__PURE__*/ S.Array(
-  ArtifactDeploymentRecord,
-) as any as S.Schema<ListArtifactDeploymentRecordsResponseDeploymentRecordsList>;
+export const ListArtifactDeploymentRecordsResponseDeploymentRecordsList =
+  CreateArtifactDeploymentRecordResponseDeploymentRecordsList as any as S.Schema<ListArtifactDeploymentRecordsResponseDeploymentRecordsList>;
 
 export interface ListArtifactDeploymentRecordsResponse {
   /** The number of deployment records for this digest and organization */
@@ -4541,10 +4459,8 @@ export const ListAttestationsResponseAttestationsItemBundleVerificationMaterialM
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
+export const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
+  MinimalRepositoryCustomPropertiesMap as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
 
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
 export interface ListAttestationsResponseAttestationsItemBundle {
@@ -4599,9 +4515,8 @@ export const ListAttestationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subject digests to fetch attestations for. */
 export type ListAttestationsBulkRequestSubjectDigestsList = Array<string>;
-export const ListAttestationsBulkRequestSubjectDigestsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAttestationsBulkRequestSubjectDigestsList>;
+export const ListAttestationsBulkRequestSubjectDigestsList =
+  CreateWebhookRequestEventsList as any as S.Schema<ListAttestationsBulkRequestSubjectDigestsList>;
 
 export interface ListAttestationsBulkRequest {
   /** The organization name. The name is not case sensitive. */
@@ -4633,19 +4548,13 @@ export const ListAttestationsBulkRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
   { [key: string]: unknown | undefined };
 export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap>;
+  ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap>;
 
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
 export const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap>;
+  ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap>;
 
 /** The bundle of the attestation. */
 export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle {
@@ -4812,9 +4721,8 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseBodyList = Array<OrganizationSimple>;
-export const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
-  OrganizationSimple,
-) as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
+export const ListForAuthenticatedUserResponseBodyList =
+  ListResponseBodyList as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
 
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
 export const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4840,14 +4748,11 @@ export const ListForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForUserRequest" }) as any as S.Schema<ListForUserRequest>;
 
 export type ListForUserResponseBodyList = Array<OrganizationSimple>;
-export const ListForUserResponseBodyList = /*@__PURE__*/ S.Array(
-  OrganizationSimple,
-) as any as S.Schema<ListForUserResponseBodyList>;
+export const ListForUserResponseBodyList =
+  ListResponseBodyList as any as S.Schema<ListForUserResponseBodyList>;
 
 export type ListForUserResponse = ListForUserResponseBodyList;
-export const ListForUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListForUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListForUserResponse" }) as any as S.Schema<ListForUserResponse>;
+export const ListForUserResponse = ListResponse as any as S.Schema<ListForUserResponse>;
 
 export interface ListInvitationTeamsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5081,14 +4986,11 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type ListMembersResponseBodyList = Array<SimpleUser>;
-export const ListMembersResponseBodyList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<ListMembersResponseBodyList>;
+export const ListMembersResponseBodyList =
+  ListBlockedUsersResponseBodyList as any as S.Schema<ListMembersResponseBodyList>;
 
 export type ListMembersResponse = ListMembersResponseBodyList;
-export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMembersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMembersResponse" }) as any as S.Schema<ListMembersResponse>;
+export const ListMembersResponse = ListBlockedUsersResponse as any as S.Schema<ListMembersResponse>;
 
 export type ListMembershipsForAuthenticatedUserRequestState = "active" | "pending";
 export const ListMembershipsForAuthenticatedUserRequestState = S.String;
@@ -5424,9 +5326,8 @@ export const ListOutsideCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOutsideCollaboratorsRequest>;
 
 export type ListOutsideCollaboratorsResponseBodyList = Array<SimpleUser>;
-export const ListOutsideCollaboratorsResponseBodyList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<ListOutsideCollaboratorsResponseBodyList>;
+export const ListOutsideCollaboratorsResponseBodyList =
+  ListBlockedUsersResponseBodyList as any as S.Schema<ListOutsideCollaboratorsResponseBodyList>;
 
 export type ListOutsideCollaboratorsResponse = ListOutsideCollaboratorsResponseBodyList;
 export const ListOutsideCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5502,17 +5403,13 @@ export const ListPatGrantRequestRepositoriesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListPatGrantRequestRepositoriesRequest>;
 
 export type ListPatGrantRequestRepositoriesResponseBodyList = Array<MinimalRepository>;
-export const ListPatGrantRequestRepositoriesResponseBodyList = /*@__PURE__*/ S.Array(
-  MinimalRepository,
-) as any as S.Schema<ListPatGrantRequestRepositoriesResponseBodyList>;
+export const ListPatGrantRequestRepositoriesResponseBodyList =
+  ListPatGrantRepositoriesResponseBodyList as any as S.Schema<ListPatGrantRequestRepositoriesResponseBodyList>;
 
 export type ListPatGrantRequestRepositoriesResponse =
   ListPatGrantRequestRepositoriesResponseBodyList;
-export const ListPatGrantRequestRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPatGrantRequestRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPatGrantRequestRepositoriesResponse",
-}) as any as S.Schema<ListPatGrantRequestRepositoriesResponse>;
+export const ListPatGrantRequestRepositoriesResponse =
+  ListPatGrantRepositoriesResponse as any as S.Schema<ListPatGrantRequestRepositoriesResponse>;
 
 export type ListPatGrantRequestsRequestSort = "created_at";
 export const ListPatGrantRequestsRequestSort = S.String;
@@ -5521,14 +5418,12 @@ export type ListPatGrantRequestsRequestDirection = "asc" | "desc";
 export const ListPatGrantRequestsRequestDirection = S.String;
 
 export type ListPatGrantRequestsRequestOwnerList = Array<string>;
-export const ListPatGrantRequestsRequestOwnerList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPatGrantRequestsRequestOwnerList>;
+export const ListPatGrantRequestsRequestOwnerList =
+  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantRequestsRequestOwnerList>;
 
 export type ListPatGrantRequestsRequestTokenIdList = Array<string>;
-export const ListPatGrantRequestsRequestTokenIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPatGrantRequestsRequestTokenIdList>;
+export const ListPatGrantRequestsRequestTokenIdList =
+  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantRequestsRequestTokenIdList>;
 
 export interface ListPatGrantRequestsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5583,27 +5478,19 @@ export type OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap
   [key: string]: string | undefined;
 };
 export const OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap>;
+  CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap>;
 
 export type OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap = {
   [key: string]: string | undefined;
 };
 export const OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap>;
+  CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap>;
 
 export type OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap>;
+export const OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap =
+  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap>;
 
 /** Permissions requested, categorized by type of permission. */
 export interface OrganizationProgrammaticAccessGrantRequestPermissions {
@@ -5686,14 +5573,12 @@ export type ListPatGrantsRequestDirection = "asc" | "desc";
 export const ListPatGrantsRequestDirection = S.String;
 
 export type ListPatGrantsRequestOwnerList = Array<string>;
-export const ListPatGrantsRequestOwnerList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPatGrantsRequestOwnerList>;
+export const ListPatGrantsRequestOwnerList =
+  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantsRequestOwnerList>;
 
 export type ListPatGrantsRequestTokenIdList = Array<string>;
-export const ListPatGrantsRequestTokenIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListPatGrantsRequestTokenIdList>;
+export const ListPatGrantsRequestTokenIdList =
+  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantsRequestTokenIdList>;
 
 export interface ListPatGrantsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5742,26 +5627,20 @@ export const OrganizationProgrammaticAccessGrantRepositorySelection = S.String;
 export type OrganizationProgrammaticAccessGrantPermissionsOrganizationMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantPermissionsOrganizationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOrganizationMap>;
+export const OrganizationProgrammaticAccessGrantPermissionsOrganizationMap =
+  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOrganizationMap>;
 
 export type OrganizationProgrammaticAccessGrantPermissionsRepositoryMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantPermissionsRepositoryMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsRepositoryMap>;
+export const OrganizationProgrammaticAccessGrantPermissionsRepositoryMap =
+  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsRepositoryMap>;
 
 export type OrganizationProgrammaticAccessGrantPermissionsOtherMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationProgrammaticAccessGrantPermissionsOtherMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOtherMap>;
+export const OrganizationProgrammaticAccessGrantPermissionsOtherMap =
+  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOtherMap>;
 
 /** Permissions requested, categorized by type of permission. */
 export interface OrganizationProgrammaticAccessGrantPermissions {
@@ -5867,16 +5746,12 @@ export const ListPendingInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPendingInvitationsRequest>;
 
 export type ListPendingInvitationsResponseBodyList = Array<OrganizationInvitation>;
-export const ListPendingInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
-  OrganizationInvitation,
-) as any as S.Schema<ListPendingInvitationsResponseBodyList>;
+export const ListPendingInvitationsResponseBodyList =
+  ListFailedInvitationsResponseBodyList as any as S.Schema<ListPendingInvitationsResponseBodyList>;
 
 export type ListPendingInvitationsResponse = ListPendingInvitationsResponseBodyList;
-export const ListPendingInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPendingInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPendingInvitationsResponse",
-}) as any as S.Schema<ListPendingInvitationsResponse>;
+export const ListPendingInvitationsResponse =
+  ListFailedInvitationsResponse as any as S.Schema<ListPendingInvitationsResponse>;
 
 export interface ListPublicMembersRequest {
   /** The organization name. The name is not case sensitive. */
@@ -5895,16 +5770,12 @@ export const ListPublicMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPublicMembersRequest" }) as any as S.Schema<ListPublicMembersRequest>;
 
 export type ListPublicMembersResponseBodyList = Array<SimpleUser>;
-export const ListPublicMembersResponseBodyList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<ListPublicMembersResponseBodyList>;
+export const ListPublicMembersResponseBodyList =
+  ListBlockedUsersResponseBodyList as any as S.Schema<ListPublicMembersResponseBodyList>;
 
 export type ListPublicMembersResponse = ListPublicMembersResponseBodyList;
-export const ListPublicMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  ListPublicMembersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListPublicMembersResponse",
-}) as any as S.Schema<ListPublicMembersResponse>;
+export const ListPublicMembersResponse =
+  ListOutsideCollaboratorsResponse as any as S.Schema<ListPublicMembersResponse>;
 
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
 export const ListWebhookDeliveriesRequestStatus = S.String;
@@ -6029,9 +5900,8 @@ export const PingWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PingWebhookRequest" }) as any as S.Schema<PingWebhookRequest>;
 
 export interface PingWebhookResponse {}
-export const PingWebhookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PingWebhookResponse",
-}) as any as S.Schema<PingWebhookResponse>;
+export const PingWebhookResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<PingWebhookResponse>;
 
 export interface RedeliverWebhookDeliveryRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6057,11 +5927,8 @@ export const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
 
 export interface RedeliverWebhookDeliveryResponse {}
-export const RedeliverWebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RedeliverWebhookDeliveryResponse",
-}) as any as S.Schema<RedeliverWebhookDeliveryResponse>;
+export const RedeliverWebhookDeliveryResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
 
 export interface RemoveMemberRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6077,9 +5944,8 @@ export const RemoveMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveMemberRequest" }) as any as S.Schema<RemoveMemberRequest>;
 
 export interface RemoveMemberResponse {}
-export const RemoveMemberResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RemoveMemberResponse",
-}) as any as S.Schema<RemoveMemberResponse>;
+export const RemoveMemberResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<RemoveMemberResponse>;
 
 export interface RemoveMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6119,11 +5985,8 @@ export const RemoveOutsideCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveOutsideCollaboratorRequest>;
 
 export interface RemoveOutsideCollaboratorResponse {}
-export const RemoveOutsideCollaboratorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveOutsideCollaboratorResponse",
-}) as any as S.Schema<RemoveOutsideCollaboratorResponse>;
+export const RemoveOutsideCollaboratorResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<RemoveOutsideCollaboratorResponse>;
 
 export interface RemovePublicMembershipForAuthenticatedUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6141,11 +6004,8 @@ export const RemovePublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S
 }) as any as S.Schema<RemovePublicMembershipForAuthenticatedUserRequest>;
 
 export interface RemovePublicMembershipForAuthenticatedUserResponse {}
-export const RemovePublicMembershipForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemovePublicMembershipForAuthenticatedUserResponse",
-}) as any as S.Schema<RemovePublicMembershipForAuthenticatedUserResponse>;
+export const RemovePublicMembershipForAuthenticatedUserResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<RemovePublicMembershipForAuthenticatedUserResponse>;
 
 /** Action to apply to the request. */
 export type ReviewPatGrantRequestRequestAction = "approve" | "deny";
@@ -6179,9 +6039,8 @@ export const ReviewPatGrantRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewPatGrantRequestRequest>;
 
 export interface ReviewPatGrantRequestResponse {}
-export const ReviewPatGrantRequestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReviewPatGrantRequestResponse",
-}) as any as S.Schema<ReviewPatGrantRequestResponse>;
+export const ReviewPatGrantRequestResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<ReviewPatGrantRequestResponse>;
 
 export interface RevokeAllOrgRolesTeamRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6205,9 +6064,8 @@ export const RevokeAllOrgRolesTeamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeAllOrgRolesTeamRequest>;
 
 export interface RevokeAllOrgRolesTeamResponse {}
-export const RevokeAllOrgRolesTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeAllOrgRolesTeamResponse",
-}) as any as S.Schema<RevokeAllOrgRolesTeamResponse>;
+export const RevokeAllOrgRolesTeamResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeAllOrgRolesTeamResponse>;
 
 export interface RevokeAllOrgRolesUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6227,9 +6085,8 @@ export const RevokeAllOrgRolesUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeAllOrgRolesUserRequest>;
 
 export interface RevokeAllOrgRolesUserResponse {}
-export const RevokeAllOrgRolesUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeAllOrgRolesUserResponse",
-}) as any as S.Schema<RevokeAllOrgRolesUserResponse>;
+export const RevokeAllOrgRolesUserResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeAllOrgRolesUserResponse>;
 
 export interface RevokeOrgRoleTeamRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6254,9 +6111,8 @@ export const RevokeOrgRoleTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeOrgRoleTeamRequest" }) as any as S.Schema<RevokeOrgRoleTeamRequest>;
 
 export interface RevokeOrgRoleTeamResponse {}
-export const RevokeOrgRoleTeamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeOrgRoleTeamResponse",
-}) as any as S.Schema<RevokeOrgRoleTeamResponse>;
+export const RevokeOrgRoleTeamResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeOrgRoleTeamResponse>;
 
 export interface RevokeOrgRoleUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6281,9 +6137,8 @@ export const RevokeOrgRoleUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeOrgRoleUserRequest" }) as any as S.Schema<RevokeOrgRoleUserRequest>;
 
 export interface RevokeOrgRoleUserResponse {}
-export const RevokeOrgRoleUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RevokeOrgRoleUserResponse",
-}) as any as S.Schema<RevokeOrgRoleUserResponse>;
+export const RevokeOrgRoleUserResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeOrgRoleUserResponse>;
 
 /** The deployment status of the artifact. */
 export type SetClusterDeploymentRecordsRequestDeploymentsItemStatus = "deployed" | "decommissioned";
@@ -6293,10 +6148,8 @@ export const SetClusterDeploymentRecordsRequestDeploymentsItemStatus = S.String;
 export type SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap = {
   [key: string]: string | undefined;
 };
-export const SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap>;
+export const SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap =
+  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap>;
 
 export type SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem =
   | "critical-resource"
@@ -6392,23 +6245,16 @@ export const SetClusterDeploymentRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SetClusterDeploymentRecordsResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
-export const SetClusterDeploymentRecordsResponseDeploymentRecordsList = /*@__PURE__*/ S.Array(
-  ArtifactDeploymentRecord,
-) as any as S.Schema<SetClusterDeploymentRecordsResponseDeploymentRecordsList>;
+export const SetClusterDeploymentRecordsResponseDeploymentRecordsList =
+  CreateArtifactDeploymentRecordResponseDeploymentRecordsList as any as S.Schema<SetClusterDeploymentRecordsResponseDeploymentRecordsList>;
 
 export interface SetClusterDeploymentRecordsResponse {
   /** The number of deployment records created */
   total_count: number;
   deployment_records?: SetClusterDeploymentRecordsResponseDeploymentRecordsList;
 }
-export const SetClusterDeploymentRecordsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_count: S.Number,
-    deployment_records: S.optional(SetClusterDeploymentRecordsResponseDeploymentRecordsList),
-  }),
-).annotate({
-  identifier: "SetClusterDeploymentRecordsResponse",
-}) as any as S.Schema<SetClusterDeploymentRecordsResponse>;
+export const SetClusterDeploymentRecordsResponse =
+  CreateArtifactDeploymentRecordResponse as any as S.Schema<SetClusterDeploymentRecordsResponse>;
 
 /** The policy that controls how immutable releases are enforced in the organization. */
 export type SetImmutableReleasesSettingsRequestEnforcedRepositories = "all" | "none" | "selected";
@@ -6416,9 +6262,8 @@ export const SetImmutableReleasesSettingsRequestEnforcedRepositories = S.String;
 
 /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
 export type SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList = Array<number>;
-export const SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList>;
+export const SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList =
+  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList>;
 
 export interface SetImmutableReleasesSettingsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6441,11 +6286,8 @@ export const SetImmutableReleasesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetImmutableReleasesSettingsRequest>;
 
 export interface SetImmutableReleasesSettingsResponse {}
-export const SetImmutableReleasesSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetImmutableReleasesSettingsResponse",
-}) as any as S.Schema<SetImmutableReleasesSettingsResponse>;
+export const SetImmutableReleasesSettingsResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetImmutableReleasesSettingsResponse>;
 
 /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
 export type SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList =
@@ -6478,11 +6320,8 @@ export const SetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesRequest>;
 
 export interface SetImmutableReleasesSettingsRepositoriesResponse {}
-export const SetImmutableReleasesSettingsRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetImmutableReleasesSettingsRepositoriesResponse",
-}) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesResponse>;
+export const SetImmutableReleasesSettingsRepositoriesResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetImmutableReleasesSettingsRepositoriesResponse>;
 
 /** The role to give the user in the organization. Can be one of: * `admin` - The user will become an owner of the organization. * `member` - The user will become a non-owner member of the organization. */
 export type SetMembershipForUserRequestRole = "admin" | "member";
@@ -6522,11 +6361,8 @@ export const SetPublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<SetPublicMembershipForAuthenticatedUserRequest>;
 
 export interface SetPublicMembershipForAuthenticatedUserResponse {}
-export const SetPublicMembershipForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetPublicMembershipForAuthenticatedUserResponse",
-}) as any as S.Schema<SetPublicMembershipForAuthenticatedUserResponse>;
+export const SetPublicMembershipForAuthenticatedUserResponse =
+  BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetPublicMembershipForAuthenticatedUserResponse>;
 
 export interface UnblockUserRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6542,9 +6378,8 @@ export const UnblockUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnblockUserRequest" }) as any as S.Schema<UnblockUserRequest>;
 
 export interface UnblockUserResponse {}
-export const UnblockUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnblockUserResponse",
-}) as any as S.Schema<UnblockUserResponse>;
+export const UnblockUserResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<UnblockUserResponse>;
 
 /** Default permission level members have for organization repositories. */
 export type UpdateRequestDefaultRepositoryPermission = "read" | "write" | "admin" | "none";
@@ -6807,9 +6642,8 @@ export const UpdatePatAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePatAccessRequest" }) as any as S.Schema<UpdatePatAccessRequest>;
 
 export interface UpdatePatAccessResponse {}
-export const UpdatePatAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePatAccessResponse",
-}) as any as S.Schema<UpdatePatAccessResponse>;
+export const UpdatePatAccessResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<UpdatePatAccessResponse>;
 
 /** Action to apply to the fine-grained personal access token. */
 export type UpdatePatAccessesRequestAction = "revoke";
@@ -6817,9 +6651,8 @@ export const UpdatePatAccessesRequestAction = S.String;
 
 /** The IDs of the fine-grained personal access tokens. */
 export type UpdatePatAccessesRequestPatIdsList = Array<number>;
-export const UpdatePatAccessesRequestPatIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdatePatAccessesRequestPatIdsList>;
+export const UpdatePatAccessesRequestPatIdsList =
+  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<UpdatePatAccessesRequestPatIdsList>;
 
 export interface UpdatePatAccessesRequest {
   /** The organization name. The name is not case sensitive. */
@@ -6838,9 +6671,8 @@ export const UpdatePatAccessesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePatAccessesRequest" }) as any as S.Schema<UpdatePatAccessesRequest>;
 
 export interface UpdatePatAccessesResponse {}
-export const UpdatePatAccessesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdatePatAccessesResponse",
-}) as any as S.Schema<UpdatePatAccessesResponse>;
+export const UpdatePatAccessesResponse =
+  AssignTeamToOrgRoleResponse as any as S.Schema<UpdatePatAccessesResponse>;
 
 /** Key/value pairs to provide settings for this webhook. */
 export interface UpdateWebhookRequestConfig {
@@ -6862,9 +6694,8 @@ export const UpdateWebhookRequestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestEventsList>;
+export const UpdateWebhookRequestEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 export interface UpdateWebhookRequest {
   /** The organization name. The name is not case sensitive. */

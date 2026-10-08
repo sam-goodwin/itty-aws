@@ -186,9 +186,8 @@ export const ChangeZoneProtectionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeZoneProtectionResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-export const ChangeZoneProtectionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  ChangeZonePrimaryNameserversResponseActionResourcesItem,
-) as any as S.Schema<ChangeZoneProtectionResponseActionResourcesList>;
+export const ChangeZoneProtectionResponseActionResourcesList =
+  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ChangeZoneProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneProtectionResponseActionError =
@@ -265,9 +264,8 @@ export const ChangeZoneTtlResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ChangeZoneTtlResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-export const ChangeZoneTtlResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  ChangeZonePrimaryNameserversResponseActionResourcesItem,
-) as any as S.Schema<ChangeZoneTtlResponseActionResourcesList>;
+export const ChangeZoneTtlResponseActionResourcesList =
+  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ChangeZoneTtlResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneTtlResponseActionError = ChangeZonePrimaryNameserversResponseActionError;
@@ -337,9 +335,8 @@ export const GetZonesActionResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type GetZonesActionResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-export const GetZonesActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  ChangeZonePrimaryNameserversResponseActionResourcesItem,
-) as any as S.Schema<GetZonesActionResponseActionResourcesList>;
+export const GetZonesActionResponseActionResourcesList =
+  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<GetZonesActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetZonesActionResponseActionError = ChangeZonePrimaryNameserversResponseActionError;
@@ -416,9 +413,8 @@ export const ImportZoneZonefileResponseActionResourcesItem =
 /** Resources the Action relates to. */
 export type ImportZoneZonefileResponseActionResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-export const ImportZoneZonefileResponseActionResourcesList = /*@__PURE__*/ S.Array(
-  ChangeZonePrimaryNameserversResponseActionResourcesItem,
-) as any as S.Schema<ImportZoneZonefileResponseActionResourcesList>;
+export const ImportZoneZonefileResponseActionResourcesList =
+  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ImportZoneZonefileResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ImportZoneZonefileResponseActionError = ChangeZonePrimaryNameserversResponseActionError;
@@ -537,9 +533,8 @@ export const ListZoneActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListZoneActionsResponseActionsItemResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-export const ListZoneActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ChangeZonePrimaryNameserversResponseActionResourcesItem,
-) as any as S.Schema<ListZoneActionsResponseActionsItemResourcesList>;
+export const ListZoneActionsResponseActionsItemResourcesList =
+  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ListZoneActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListZoneActionsResponseActionsItemError =
@@ -711,9 +706,8 @@ export const ListZonesActionsResponseActionsItemResourcesItem =
 /** Resources the Action relates to. */
 export type ListZonesActionsResponseActionsItemResourcesList =
   Array<ChangeZonePrimaryNameserversResponseActionResourcesItem>;
-export const ListZonesActionsResponseActionsItemResourcesList = /*@__PURE__*/ S.Array(
-  ChangeZonePrimaryNameserversResponseActionResourcesItem,
-) as any as S.Schema<ListZonesActionsResponseActionsItemResourcesList>;
+export const ListZonesActionsResponseActionsItemResourcesList =
+  ChangeZonePrimaryNameserversResponseActionResourcesList as any as S.Schema<ListZonesActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListZonesActionsResponseActionsItemError =

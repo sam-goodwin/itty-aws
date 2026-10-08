@@ -342,9 +342,8 @@ export const ProviderOptionsProductMetaActionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProviderOptionsProductMetaActionsList>;
 
 export type ProviderOptionsProductMetaTypesList = Array<string>;
-export const ProviderOptionsProductMetaTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderOptionsProductMetaTypesList>;
+export const ProviderOptionsProductMetaTypesList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsProductMetaTypesList>;
 
 export interface ProviderOptionsProductMeta {
   actions: ProviderOptionsProductMetaActionsList;
@@ -368,14 +367,12 @@ export const ProviderOptionsResponseProductMetaMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProviderOptionsResponseProductMetaMap>;
 
 export type ProviderOptionsResponseProductsList = Array<string>;
-export const ProviderOptionsResponseProductsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderOptionsResponseProductsList>;
+export const ProviderOptionsResponseProductsList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsResponseProductsList>;
 
 export type ProviderOptionsResponseTypesList = Array<string>;
-export const ProviderOptionsResponseTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderOptionsResponseTypesList>;
+export const ProviderOptionsResponseTypesList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsResponseTypesList>;
 
 export interface ProviderOptionsResponse {
   productMeta: ProviderOptionsResponseProductMetaMap;
@@ -459,9 +456,8 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type ListRulesResponseErrorsList = Array<string>;
-export const ListRulesResponseErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRulesResponseErrorsList>;
+export const ListRulesResponseErrorsList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ListRulesResponseErrorsList>;
 
 export type ListRulesResponseRulesList = Array<RuleResponse>;
 export const ListRulesResponseRulesList = /*@__PURE__*/ S.Array(
@@ -527,11 +523,7 @@ export interface UpdateRuleResponse {
   /** Represents the uuid of the updated rule */
   refId?: string;
 }
-export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refId: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateRuleResponse" }) as any as S.Schema<UpdateRuleResponse>;
+export const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
 
 export type CreateRuleError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Create rule for a project Returns the created rule for a specific project */

@@ -313,9 +313,8 @@ export const PropertyDefinitionsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>;
 
 export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkUpdateTagsItemTagsList>;
+export const BulkUpdateTagsItemTagsList =
+  PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList as any as S.Schema<BulkUpdateTagsItemTagsList>;
 
 export interface BulkUpdateTagsItem {
   id?: number;
@@ -382,16 +381,12 @@ export const PropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyDefinitionsDestroyRequest>;
 
 export interface PropertyDefinitionsDestroyResponse {}
-export const PropertyDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PropertyDefinitionsDestroyResponse",
-}) as any as S.Schema<PropertyDefinitionsDestroyResponse>;
+export const PropertyDefinitionsDestroyResponse =
+  GetPropertyDefinitionsSeenTogetherResponse as any as S.Schema<PropertyDefinitionsDestroyResponse>;
 
 export type UpdatePropertyDefinitionRequestTagsList = Array<unknown>;
-export const UpdatePropertyDefinitionRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdatePropertyDefinitionRequestTagsList>;
+export const UpdatePropertyDefinitionRequestTagsList =
+  EnterprisePropertyDefinitionTagsList as any as S.Schema<UpdatePropertyDefinitionRequestTagsList>;
 
 export type UpdatePropertyDefinitionRequestPropertyType = PropertyTypeEnum | BlankEnum;
 export const UpdatePropertyDefinitionRequestPropertyType =
@@ -429,9 +424,8 @@ export const UpdatePropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePropertyDefinitionRequest>;
 
 export type UpdatePropertyDefinitionsPartialRequestTagsList = Array<unknown>;
-export const UpdatePropertyDefinitionsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdatePropertyDefinitionsPartialRequestTagsList>;
+export const UpdatePropertyDefinitionsPartialRequestTagsList =
+  EnterprisePropertyDefinitionTagsList as any as S.Schema<UpdatePropertyDefinitionsPartialRequestTagsList>;
 
 export type UpdatePropertyDefinitionsPartialRequestPropertyType = PropertyTypeEnum | BlankEnum;
 export const UpdatePropertyDefinitionsPartialRequestPropertyType =

@@ -3748,14 +3748,8 @@ export interface ProductUnitPricingMeasure {
   /** The unit of the measure. */
   unit?: string;
 }
-export const ProductUnitPricingMeasure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductUnitPricingMeasure",
-}) as any as S.Schema<ProductUnitPricingMeasure>;
+export const ProductUnitPricingMeasure =
+  ProductDimension as any as S.Schema<ProductUnitPricingMeasure>;
 
 /** Structured title, for algorithmically (AI)-generated titles. See [title](https://support.google.com/merchants/answer/6324415#Whentouse) for more information. */
 export interface ProductStructuredTitle {
@@ -3873,14 +3867,8 @@ export interface ProductShippingDimension {
   /** The unit of value. */
   unit?: string;
 }
-export const ProductShippingDimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductShippingDimension",
-}) as any as S.Schema<ProductShippingDimension>;
+export const ProductShippingDimension =
+  ProductDimension as any as S.Schema<ProductShippingDimension>;
 
 export interface ProductShippingWeight {
   /** The unit of value. */
@@ -3904,14 +3892,8 @@ export interface ProductStructuredDescription {
   /** Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`" */
   digitalSourceType?: string;
 }
-export const ProductStructuredDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    digitalSourceType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProductStructuredDescription",
-}) as any as S.Schema<ProductStructuredDescription>;
+export const ProductStructuredDescription =
+  ProductStructuredTitle as any as S.Schema<ProductStructuredDescription>;
 
 export interface ProductTax {
   /** Should be set to true if tax is charged on shipping. */
@@ -5150,12 +5132,7 @@ export interface Distance {
   /** The distance unit. Acceptable values are `None`, `Miles`, and `Kilometers`. */
   unit?: string;
 }
-export const Distance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "Distance" }) as any as S.Schema<Distance>;
+export const Distance = Weight as any as S.Schema<Distance>;
 
 /** Stores that provide local delivery. Only valid with local delivery fulfillment. */
 export interface ServiceStoreConfig {
@@ -5620,9 +5597,8 @@ export const DeleteAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccountsLabelsRequest>;
 
 export interface DeleteAccountsLabelsResponse {}
-export const DeleteAccountsLabelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAccountsLabelsResponse",
-}) as any as S.Schema<DeleteAccountsLabelsResponse>;
+export const DeleteAccountsLabelsResponse =
+  DeleteAccountsResponse as any as S.Schema<DeleteAccountsLabelsResponse>;
 
 export interface DeleteAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
@@ -5674,9 +5650,8 @@ export const DeleteCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCollectionsRequest>;
 
 export interface DeleteCollectionsResponse {}
-export const DeleteCollectionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCollectionsResponse",
-}) as any as S.Schema<DeleteCollectionsResponse>;
+export const DeleteCollectionsResponse =
+  DeleteAccountsResponse as any as S.Schema<DeleteCollectionsResponse>;
 
 export interface DeleteConversionsourcesRequest {
   /** Required. The ID of the conversion source to be deleted. */
@@ -5728,9 +5703,8 @@ export const DeleteDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatafeedsRequest>;
 
 export interface DeleteDatafeedsResponse {}
-export const DeleteDatafeedsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatafeedsResponse",
-}) as any as S.Schema<DeleteDatafeedsResponse>;
+export const DeleteDatafeedsResponse =
+  DeleteAccountsResponse as any as S.Schema<DeleteDatafeedsResponse>;
 
 export interface DeleteFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
@@ -5751,11 +5725,8 @@ export const DeleteFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>;
 
 export interface DeleteFreelistingsprogramCheckoutsettingsResponse {}
-export const DeleteFreelistingsprogramCheckoutsettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFreelistingsprogramCheckoutsettingsResponse",
-}) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>;
+export const DeleteFreelistingsprogramCheckoutsettingsResponse =
+  DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>;
 
 export interface DeletePosRequest {
   /** The ID of the POS or inventory data provider. */
@@ -5782,9 +5753,7 @@ export const DeletePosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePosRequest>;
 
 export interface DeletePosResponse {}
-export const DeletePosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePosResponse",
-}) as any as S.Schema<DeletePosResponse>;
+export const DeletePosResponse = DeleteAccountsResponse as any as S.Schema<DeletePosResponse>;
 
 export interface DeleteProductdeliverytimeRequest {
   /** Required. The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -5808,11 +5777,8 @@ export const DeleteProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductdeliverytimeRequest>;
 
 export interface DeleteProductdeliverytimeResponse {}
-export const DeleteProductdeliverytimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProductdeliverytimeResponse",
-}) as any as S.Schema<DeleteProductdeliverytimeResponse>;
+export const DeleteProductdeliverytimeResponse =
+  DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteProductdeliverytimeResponse>;
 
 export interface DeleteProductsRequest {
   /** The REST ID of the product. */
@@ -5839,9 +5805,8 @@ export const DeleteProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductsRequest>;
 
 export interface DeleteProductsResponse {}
-export const DeleteProductsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductsResponse",
-}) as any as S.Schema<DeleteProductsResponse>;
+export const DeleteProductsResponse =
+  DeleteAccountsResponse as any as S.Schema<DeleteProductsResponse>;
 
 export interface DeleteRegionsRequest {
   /** Required. The id of the region to delete. */
@@ -5865,9 +5830,8 @@ export const DeleteRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegionsRequest>;
 
 export interface DeleteRegionsResponse {}
-export const DeleteRegionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegionsResponse",
-}) as any as S.Schema<DeleteRegionsResponse>;
+export const DeleteRegionsResponse =
+  DeleteAccountsResponse as any as S.Schema<DeleteRegionsResponse>;
 
 export interface DeleteReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
@@ -5891,11 +5855,8 @@ export const DeleteReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReturnpolicyonlineRequest>;
 
 export interface DeleteReturnpolicyonlineResponse {}
-export const DeleteReturnpolicyonlineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteReturnpolicyonlineResponse",
-}) as any as S.Schema<DeleteReturnpolicyonlineResponse>;
+export const DeleteReturnpolicyonlineResponse =
+  DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteReturnpolicyonlineResponse>;
 
 export interface FetchnowDatafeedsRequest {
   /** The ID of the datafeed to be fetched. */
@@ -5922,13 +5883,8 @@ export interface DatafeedsFetchNowResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsFetchNowResponse`". */
   kind?: string;
 }
-export const DatafeedsFetchNowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatafeedsFetchNowResponse",
-}) as any as S.Schema<DatafeedsFetchNowResponse>;
+export const DatafeedsFetchNowResponse =
+  AccountsClaimWebsiteResponse as any as S.Schema<DatafeedsFetchNowResponse>;
 
 export interface GenerateRecommendationsRequest {
   /** Optional. Language code of the client. If not set, the result will be in default language (English). This language code affects all fields prefixed with "localized". This should be set to ISO 639-1 country code. List of currently verified supported language code: en, fr, cs, da, de, es, it, nl, no, pl, pt, pt, fi, sv, vi, tr, th, ko, zh-CN, zh-TW, ja, id, hi */
@@ -7578,13 +7534,8 @@ export interface AccountsLinkResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsLinkResponse`". */
   kind?: string;
 }
-export const AccountsLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsLinkResponse",
-}) as any as S.Schema<AccountsLinkResponse>;
+export const AccountsLinkResponse =
+  AccountsClaimWebsiteResponse as any as S.Schema<AccountsLinkResponse>;
 
 export type ListAccountsViewEnum = "MERCHANT" | "CSS";
 export const ListAccountsViewEnum = /*@__PURE__*/ S.String;
@@ -8979,9 +8930,8 @@ export const InputFieldChoiceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Checkbox input allows merchants to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). If merchant checks the box, the input value for the field is `true`, otherwise it is `false`. This type of input is often used as a confirmation that the merchant completed required steps before they are allowed to start the action. In such a case, the input field is marked as required and the button to trigger the action should stay disabled until the merchant checks the box. */
 export interface InputFieldCheckboxInput {}
-export const InputFieldCheckboxInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "InputFieldCheckboxInput",
-}) as any as S.Schema<InputFieldCheckboxInput>;
+export const InputFieldCheckboxInput =
+  DeleteAccountsResponse as any as S.Schema<InputFieldCheckboxInput>;
 
 /** Input field that needs to be available to the merchant. If the field is marked as required, then a value needs to be provided for a successful processing of the request. */
 export interface InputField {
@@ -9400,11 +9350,8 @@ export const ReportInteractionRecommendationsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ReportInteractionRecommendationsRequest>;
 
 export interface ReportInteractionRecommendationsResponse {}
-export const ReportInteractionRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReportInteractionRecommendationsResponse",
-}) as any as S.Schema<ReportInteractionRecommendationsResponse>;
+export const ReportInteractionRecommendationsResponse =
+  DeleteAccountsReturncarrierResponse as any as S.Schema<ReportInteractionRecommendationsResponse>;
 
 export interface RequestgmbaccessLiasettingsRequest {
   /** The email of the Business Profile. */
@@ -9434,13 +9381,8 @@ export interface LiasettingsRequestGmbAccessResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestGmbAccessResponse`". */
   kind?: string;
 }
-export const LiasettingsRequestGmbAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiasettingsRequestGmbAccessResponse",
-}) as any as S.Schema<LiasettingsRequestGmbAccessResponse>;
+export const LiasettingsRequestGmbAccessResponse =
+  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsRequestGmbAccessResponse>;
 
 export interface RequestinventoryverificationLiasettingsRequest {
   /** The country for which inventory validation is requested. */
@@ -9470,13 +9412,8 @@ export interface LiasettingsRequestInventoryVerificationResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestInventoryVerificationResponse`". */
   kind?: string;
 }
-export const LiasettingsRequestInventoryVerificationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiasettingsRequestInventoryVerificationResponse",
-}) as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>;
+export const LiasettingsRequestInventoryVerificationResponse =
+  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>;
 
 export type RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
@@ -9580,11 +9517,8 @@ export const RequestreviewFreelistingsprogramRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RequestreviewFreelistingsprogramRequest>;
 
 export interface RequestreviewFreelistingsprogramResponse {}
-export const RequestreviewFreelistingsprogramResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RequestreviewFreelistingsprogramResponse",
-}) as any as S.Schema<RequestreviewFreelistingsprogramResponse>;
+export const RequestreviewFreelistingsprogramResponse =
+  DeleteAccountsReturncarrierResponse as any as S.Schema<RequestreviewFreelistingsprogramResponse>;
 
 /** Request message for the RequestReviewShoppingAds program method. */
 export type RequestReviewShoppingAdsRequest = RequestReviewFreeListingsRequest;
@@ -9612,11 +9546,8 @@ export const RequestreviewShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RequestreviewShoppingadsprogramRequest>;
 
 export interface RequestreviewShoppingadsprogramResponse {}
-export const RequestreviewShoppingadsprogramResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RequestreviewShoppingadsprogramResponse",
-}) as any as S.Schema<RequestreviewShoppingadsprogramResponse>;
+export const RequestreviewShoppingadsprogramResponse =
+  DeleteAccountsReturncarrierResponse as any as S.Schema<RequestreviewShoppingadsprogramResponse>;
 
 export interface PosSaleRequest {
   /** Global Trade Item Number. */
@@ -10506,13 +10437,8 @@ export interface LiasettingsSetInventoryVerificationContactResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetInventoryVerificationContactResponse`". */
   kind?: string;
 }
-export const LiasettingsSetInventoryVerificationContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiasettingsSetInventoryVerificationContactResponse",
-}) as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>;
+export const LiasettingsSetInventoryVerificationContactResponse =
+  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>;
 
 export interface SetomnichannelexperienceLiasettingsRequest {
   /** The ID of the account for which to retrieve accessible Business Profiles. */
@@ -10578,13 +10504,8 @@ export interface LiasettingsSetPosDataProviderResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetPosDataProviderResponse`". */
   kind?: string;
 }
-export const LiasettingsSetPosDataProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiasettingsSetPosDataProviderResponse",
-}) as any as S.Schema<LiasettingsSetPosDataProviderResponse>;
+export const LiasettingsSetPosDataProviderResponse =
+  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsSetPosDataProviderResponse>;
 
 /** Value for choice input field. */
 export interface InputValueChoiceInputValue {
@@ -10744,11 +10665,8 @@ export const UndeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UndeleteConversionsourcesRequest>;
 
 export interface UndeleteConversionsourcesResponse {}
-export const UndeleteConversionsourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UndeleteConversionsourcesResponse",
-}) as any as S.Schema<UndeleteConversionsourcesResponse>;
+export const UndeleteConversionsourcesResponse =
+  DeleteAccountsReturncarrierResponse as any as S.Schema<UndeleteConversionsourcesResponse>;
 
 export interface UpdateAccountsRequest {
   /** The ID of the account. */
@@ -10862,13 +10780,8 @@ export interface AccountsUpdateLabelsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsUpdateLabelsResponse`". */
   kind?: string;
 }
-export const AccountsUpdateLabelsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsUpdateLabelsResponse",
-}) as any as S.Schema<AccountsUpdateLabelsResponse>;
+export const AccountsUpdateLabelsResponse =
+  AccountsClaimWebsiteResponse as any as S.Schema<AccountsUpdateLabelsResponse>;
 
 /** The IDs of labels that should be assigned to the CSS domain. */
 export interface LabelIds {

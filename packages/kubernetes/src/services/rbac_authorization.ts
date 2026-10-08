@@ -123,10 +123,8 @@ export const IoK8sApiRbacV1AggregationRule = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
+  IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
@@ -138,10 +136,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -273,33 +269,28 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 
 /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups. */
 export type IoK8sApiRbacV1PolicyRuleApiGroupsList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleApiGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiRbacV1PolicyRuleApiGroupsList>;
+export const IoK8sApiRbacV1PolicyRuleApiGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleApiGroupsList>;
 
 /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both. */
 export type IoK8sApiRbacV1PolicyRuleNonResourceURLsList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleNonResourceURLsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiRbacV1PolicyRuleNonResourceURLsList>;
+export const IoK8sApiRbacV1PolicyRuleNonResourceURLsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleNonResourceURLsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiRbacV1PolicyRuleResourceNamesList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleResourceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourceNamesList>;
+export const IoK8sApiRbacV1PolicyRuleResourceNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. '*' represents all resources. */
 export type IoK8sApiRbacV1PolicyRuleResourcesList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourcesList>;
+export const IoK8sApiRbacV1PolicyRuleResourcesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourcesList>;
 
 /** verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
 export type IoK8sApiRbacV1PolicyRuleVerbsList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiRbacV1PolicyRuleVerbsList>;
+export const IoK8sApiRbacV1PolicyRuleVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleVerbsList>;
 
 /** PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to. */
 export interface IoK8sApiRbacV1PolicyRule {
@@ -370,9 +361,8 @@ export const CreateRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspe
 
 /** rules holds all the PolicyRules for this ClusterRole */
 export type IoK8sApiRbacV1ClusterRoleRulesList = Array<IoK8sApiRbacV1PolicyRule>;
-export const IoK8sApiRbacV1ClusterRoleRulesList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1PolicyRule,
-) as any as S.Schema<IoK8sApiRbacV1ClusterRoleRulesList>;
+export const IoK8sApiRbacV1ClusterRoleRulesList =
+  CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<IoK8sApiRbacV1ClusterRoleRulesList>;
 
 /** ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. */
 export interface IoK8sApiRbacV1ClusterRole {
@@ -487,9 +477,8 @@ export const CreateRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ 
 
 /** subjects holds references to the objects the role applies to. */
 export type IoK8sApiRbacV1ClusterRoleBindingSubjectsList = Array<IoK8sApiRbacV1Subject>;
-export const IoK8sApiRbacV1ClusterRoleBindingSubjectsList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1Subject,
-) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBindingSubjectsList>;
+export const IoK8sApiRbacV1ClusterRoleBindingSubjectsList =
+  CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList as any as S.Schema<IoK8sApiRbacV1ClusterRoleBindingSubjectsList>;
 
 /** ClusterRoleBinding references a ClusterRole, but not contain it. It can reference a ClusterRole in the global namespace, and adds who information via Subject. */
 export interface IoK8sApiRbacV1ClusterRoleBinding {
@@ -519,9 +508,8 @@ export const IoK8sApiRbacV1ClusterRoleBinding = /*@__PURE__*/ S.suspend(() =>
 /** rules holds all the PolicyRules for this Role */
 export type CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
-export const CreateRbacAuthorizationV1NamespacedRoleRequestRulesList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1PolicyRule,
-) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleRequestRulesList>;
+export const CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
+  CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleRequestRulesList>;
 
 export interface CreateRbacAuthorizationV1NamespacedRoleRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -567,9 +555,8 @@ export const CreateRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.su
 
 /** rules holds all the PolicyRules for this Role */
 export type IoK8sApiRbacV1RoleRulesList = Array<IoK8sApiRbacV1PolicyRule>;
-export const IoK8sApiRbacV1RoleRulesList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1PolicyRule,
-) as any as S.Schema<IoK8sApiRbacV1RoleRulesList>;
+export const IoK8sApiRbacV1RoleRulesList =
+  CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<IoK8sApiRbacV1RoleRulesList>;
 
 /** Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding. */
 export interface IoK8sApiRbacV1Role {
@@ -646,9 +633,8 @@ export const CreateRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__
 
 /** subjects holds references to the objects the role applies to. */
 export type IoK8sApiRbacV1RoleBindingSubjectsList = Array<IoK8sApiRbacV1Subject>;
-export const IoK8sApiRbacV1RoleBindingSubjectsList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1Subject,
-) as any as S.Schema<IoK8sApiRbacV1RoleBindingSubjectsList>;
+export const IoK8sApiRbacV1RoleBindingSubjectsList =
+  CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList as any as S.Schema<IoK8sApiRbacV1RoleBindingSubjectsList>;
 
 /** RoleBinding references a role, but does not contain it. It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in. RoleBindings in a given namespace only have effect in that namespace. */
 export interface IoK8sApiRbacV1RoleBinding {
@@ -663,17 +649,8 @@ export interface IoK8sApiRbacV1RoleBinding {
   /** subjects holds references to the objects the role applies to. */
   subjects?: IoK8sApiRbacV1RoleBindingSubjectsList;
 }
-export const IoK8sApiRbacV1RoleBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    roleRef: IoK8sApiRbacV1RoleRef,
-    subjects: S.optional(IoK8sApiRbacV1RoleBindingSubjectsList),
-  }),
-).annotate({
-  identifier: "IoK8sApiRbacV1RoleBinding",
-}) as any as S.Schema<IoK8sApiRbacV1RoleBinding>;
+export const IoK8sApiRbacV1RoleBinding =
+  IoK8sApiRbacV1ClusterRoleBinding as any as S.Schema<IoK8sApiRbacV1RoleBinding>;
 
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
@@ -1379,21 +1356,18 @@ export const GetRbacAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -1754,9 +1728,8 @@ export const ListRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/
 
 /** Items is a list of RoleBindings */
 export type IoK8sApiRbacV1RoleBindingListItemsList = Array<IoK8sApiRbacV1RoleBinding>;
-export const IoK8sApiRbacV1RoleBindingListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1RoleBinding,
-) as any as S.Schema<IoK8sApiRbacV1RoleBindingListItemsList>;
+export const IoK8sApiRbacV1RoleBindingListItemsList =
+  IoK8sApiRbacV1ClusterRoleBindingListItemsList as any as S.Schema<IoK8sApiRbacV1RoleBindingListItemsList>;
 
 /** RoleBindingList is a collection of RoleBindings */
 export interface IoK8sApiRbacV1RoleBindingList {
@@ -1769,16 +1742,8 @@ export interface IoK8sApiRbacV1RoleBindingList {
   /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiRbacV1RoleBindingList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiRbacV1RoleBindingListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiRbacV1RoleBindingList",
-}) as any as S.Schema<IoK8sApiRbacV1RoleBindingList>;
+export const IoK8sApiRbacV1RoleBindingList =
+  IoK8sApiRbacV1ClusterRoleBindingList as any as S.Schema<IoK8sApiRbacV1RoleBindingList>;
 
 export interface ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -2103,9 +2068,8 @@ export const ReadRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/
 
 /** rules holds all the PolicyRules for this ClusterRole */
 export type ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList = Array<IoK8sApiRbacV1PolicyRule>;
-export const ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1PolicyRule,
-) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList>;
+export const ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList =
+  CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList>;
 
 export interface ReplaceRbacAuthorizationV1ClusterRoleRequest {
   /** name of the ClusterRole */
@@ -2156,9 +2120,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.susp
 export type ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiRbacV1Subject,
-  ) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList>;
+  CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList>;
 
 export interface ReplaceRbacAuthorizationV1ClusterRoleBindingRequest {
   /** name of the ClusterRoleBinding */
@@ -2208,9 +2170,8 @@ export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/
 /** rules holds all the PolicyRules for this Role */
 export type ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
-export const ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList = /*@__PURE__*/ S.Array(
-  IoK8sApiRbacV1PolicyRule,
-) as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList>;
+export const ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
+  CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList>;
 
 export interface ReplaceRbacAuthorizationV1NamespacedRoleRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -2261,9 +2222,7 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.s
 export type ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiRbacV1Subject,
-  ) as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList>;
+  CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList>;
 
 export interface ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** object name and auth scope, such as for teams and projects */

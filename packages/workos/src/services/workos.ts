@@ -229,9 +229,7 @@ export const AddAuthorizationRolePermissionsControllerPermissionResponseType = S
 export type AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList =
   Array<string>;
 export const AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList>;
 
 export interface AddAuthorizationRolePermissionsControllerPermissionResponse {
   /** A unique slug for the role. */
@@ -592,9 +590,8 @@ export const ApiKeyOwner = S.Unknown as any as S.Schema<ApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
 export type ApiKeyPermissionsList = Array<string>;
-export const ApiKeyPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiKeyPermissionsList>;
+export const ApiKeyPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<ApiKeyPermissionsList>;
 
 export interface ApiKey {
   /** Distinguishes the API Key object. */
@@ -647,9 +644,8 @@ export const ApplicationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type ApplicationsControllerFindResponseScopesList = Array<string>;
-export const ApplicationsControllerFindResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApplicationsControllerFindResponseScopesList>;
+export const ApplicationsControllerFindResponseScopesList =
+  AgentTokenPermissionsList as any as S.Schema<ApplicationsControllerFindResponseScopesList>;
 
 export interface ApplicationsControllerFindResponseRedirectUrisItem {
   /** The redirect URI for the application. */
@@ -857,14 +853,8 @@ export interface UserRoleAssignmentSourceGroup {
   /** The name of the Group the role was derived from. */
   name: string;
 }
-export const UserRoleAssignmentSourceGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "UserRoleAssignmentSourceGroup",
-}) as any as S.Schema<UserRoleAssignmentSourceGroup>;
+export const UserRoleAssignmentSourceGroup =
+  ClaimViewResponseOrganizationsItem as any as S.Schema<UserRoleAssignmentSourceGroup>;
 
 /** The origin of the role assignment. */
 export interface UserRoleAssignmentSource {
@@ -916,33 +906,28 @@ export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** List of actions to filter against. */
 export type AuditLogExportsControllerExportsRequestActionsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogExportsControllerExportsRequestActionsList>;
+export const AuditLogExportsControllerExportsRequestActionsList =
+  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActionsList>;
 
 /** Deprecated. Use `actor_names` instead. */
 export type AuditLogExportsControllerExportsRequestActorsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogExportsControllerExportsRequestActorsList>;
+export const AuditLogExportsControllerExportsRequestActorsList =
+  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorsList>;
 
 /** List of actor names to filter against. */
 export type AuditLogExportsControllerExportsRequestActorNamesList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActorNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogExportsControllerExportsRequestActorNamesList>;
+export const AuditLogExportsControllerExportsRequestActorNamesList =
+  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorNamesList>;
 
 /** List of actor IDs to filter against. */
 export type AuditLogExportsControllerExportsRequestActorIdsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestActorIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogExportsControllerExportsRequestActorIdsList>;
+export const AuditLogExportsControllerExportsRequestActorIdsList =
+  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorIdsList>;
 
 /** List of target types to filter against. */
 export type AuditLogExportsControllerExportsRequestTargetsList = Array<string>;
-export const AuditLogExportsControllerExportsRequestTargetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogExportsControllerExportsRequestTargetsList>;
+export const AuditLogExportsControllerExportsRequestTargetsList =
+  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestTargetsList>;
 
 export interface AuditLogExportsControllerExportsRequest {
   /** The unique ID of the Organization. */
@@ -1092,10 +1077,8 @@ export const AuditLogSchemaJsonActor = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional data associated with the event or entity. */
 export type AuditLogSchemaJsonTargetsItemMetadataMap = { [key: string]: unknown | undefined };
-export const AuditLogSchemaJsonTargetsItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AuditLogSchemaJsonTargetsItemMetadataMap>;
+export const AuditLogSchemaJsonTargetsItemMetadataMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<AuditLogSchemaJsonTargetsItemMetadataMap>;
 
 export interface AuditLogSchemaJsonTargetsItem {
   /** The type of the target resource. */
@@ -1120,10 +1103,8 @@ export const AuditLogSchemaJsonTargetsList = /*@__PURE__*/ S.Array(
 
 /** Additional data associated with the event or entity. */
 export type AuditLogSchemaJsonMetadataMap = { [key: string]: unknown | undefined };
-export const AuditLogSchemaJsonMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AuditLogSchemaJsonMetadataMap>;
+export const AuditLogSchemaJsonMetadataMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<AuditLogSchemaJsonMetadataMap>;
 
 export interface AuditLogSchemaJson {
   /** Distinguishes the Audit Log Schema object. */
@@ -1313,17 +1294,14 @@ export const AuthorizationResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizationResource" }) as any as S.Schema<AuthorizationResource>;
 
 export type AuthorizeSsoControllerRequestProviderScopesList = Array<string>;
-export const AuthorizeSsoControllerRequestProviderScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorizeSsoControllerRequestProviderScopesList>;
+export const AuthorizeSsoControllerRequestProviderScopesList =
+  AgentTokenPermissionsList as any as S.Schema<AuthorizeSsoControllerRequestProviderScopesList>;
 
 export type AuthorizeSsoControllerRequestProviderQueryParamsMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizeSsoControllerRequestProviderQueryParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizeSsoControllerRequestProviderQueryParamsMap>;
+export const AuthorizeSsoControllerRequestProviderQueryParamsMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<AuthorizeSsoControllerRequestProviderQueryParamsMap>;
 
 export type AuthorizeSsoControllerRequestProvider =
   | "AppleOAuth"
@@ -1407,15 +1385,12 @@ export const SsoAuthorizeUrlResponse = /*@__PURE__*/ S.suspend(() =>
 export type AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap>;
+export const AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap>;
 
 export type AuthorizeUserlandSsoControllerRequestProviderScopesList = Array<string>;
-export const AuthorizeUserlandSsoControllerRequestProviderScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderScopesList>;
+export const AuthorizeUserlandSsoControllerRequestProviderScopesList =
+  AgentTokenPermissionsList as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderScopesList>;
 
 export type AuthorizeUserlandSsoControllerRequestScreenHint = "sign-up" | "sign-in";
 export const AuthorizeUserlandSsoControllerRequestScreenHint = S.String;
@@ -1575,10 +1550,8 @@ export const ClientApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of key-value pairs to attach to the user. */
 export type UserObjectMetadataMap = { [key: string]: string | undefined };
-export const UserObjectMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserObjectMetadataMap>;
+export const UserObjectMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserObjectMetadataMap>;
 
 export interface UserObject {
   /** Your application's user identifier, which will be stored as an [`external_id`](/authkit/metadata/external-identifiers). Used for upserting and deduplication. */
@@ -1920,22 +1893,18 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment. */
 export type CreateAgentBlueprintsControllerRequestPermissionsList = Array<string>;
-export const CreateAgentBlueprintsControllerRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAgentBlueprintsControllerRequestPermissionsList>;
+export const CreateAgentBlueprintsControllerRequestPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestPermissionsList>;
 
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
 export type CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = Array<string>;
-export const CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList>;
+export const CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList =
+  AgentTokenPermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList>;
 
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
 export type CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList = Array<string>;
 export const CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList>;
 
 /** Who may mint sessions from this blueprint. */
 export interface CreateAgentBlueprintsControllerRequestInvocableBy {
@@ -2030,21 +1999,18 @@ export const CreateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(()
 
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. */
 export type AgentBlueprintPermissionsList = Array<string>;
-export const AgentBlueprintPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentBlueprintPermissionsList>;
+export const AgentBlueprintPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<AgentBlueprintPermissionsList>;
 
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. */
 export type AgentBlueprintInvocableByRoleSlugsList = Array<string>;
-export const AgentBlueprintInvocableByRoleSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentBlueprintInvocableByRoleSlugsList>;
+export const AgentBlueprintInvocableByRoleSlugsList =
+  AgentTokenPermissionsList as any as S.Schema<AgentBlueprintInvocableByRoleSlugsList>;
 
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. */
 export type AgentBlueprintInvocableByOrganizationIdsList = Array<string>;
-export const AgentBlueprintInvocableByOrganizationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentBlueprintInvocableByOrganizationIdsList>;
+export const AgentBlueprintInvocableByOrganizationIdsList =
+  AgentTokenPermissionsList as any as S.Schema<AgentBlueprintInvocableByOrganizationIdsList>;
 
 /** Who may mint sessions from this blueprint. */
 export interface AgentBlueprintInvocableBy {
@@ -2094,15 +2060,8 @@ export interface AgentBlueprintSessionSettings {
   /** Lifetime of each rotated refresh token in seconds. */
   refresh_token_ttl_seconds: number;
 }
-export const AgentBlueprintSessionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_age_seconds: S.Number,
-    access_token_ttl_seconds: S.Number,
-    refresh_token_ttl_seconds: S.Number,
-  }),
-).annotate({
-  identifier: "AgentBlueprintSessionSettings",
-}) as any as S.Schema<AgentBlueprintSessionSettings>;
+export const AgentBlueprintSessionSettings =
+  CreateAgentBlueprintsControllerRequestSessionSettings as any as S.Schema<AgentBlueprintSessionSettings>;
 
 export interface AgentBlueprint {
   /** Distinguishes the agent blueprint object. */
@@ -2185,9 +2144,8 @@ export const NewConnectApplicationSecret = /*@__PURE__*/ S.suspend(() =>
 
 /** The OAuth scopes granted to the application. */
 export type CreateOAuthApplicationDtoScopesList = Array<string>;
-export const CreateOAuthApplicationDtoScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOAuthApplicationDtoScopesList>;
+export const CreateOAuthApplicationDtoScopesList =
+  AgentTokenPermissionsList as any as S.Schema<CreateOAuthApplicationDtoScopesList>;
 
 export interface RedirectUriDto {
   /** The redirect URI. */
@@ -2243,9 +2201,8 @@ export const CreateOAuthApplicationDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The OAuth scopes granted to the application. */
 export type CreateM2MApplicationDtoScopesList = Array<string>;
-export const CreateM2MApplicationDtoScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateM2MApplicationDtoScopesList>;
+export const CreateM2MApplicationDtoScopesList =
+  AgentTokenPermissionsList as any as S.Schema<CreateM2MApplicationDtoScopesList>;
 
 export interface CreateM2MApplicationDto {
   /** The name of the application. */
@@ -2288,9 +2245,8 @@ export const CreateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type CreateApplicationsControllerResponseScopesList = Array<string>;
-export const CreateApplicationsControllerResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateApplicationsControllerResponseScopesList>;
+export const CreateApplicationsControllerResponseScopesList =
+  AgentTokenPermissionsList as any as S.Schema<CreateApplicationsControllerResponseScopesList>;
 
 export type CreateApplicationsControllerResponseRedirectUrisItem =
   ApplicationsControllerFindResponseRedirectUrisItem;
@@ -2300,9 +2256,8 @@ export const CreateApplicationsControllerResponseRedirectUrisItem =
 /** The redirect URIs configured for this application. */
 export type CreateApplicationsControllerResponseRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-export const CreateApplicationsControllerResponseRedirectUrisList = /*@__PURE__*/ S.Array(
-  ApplicationsControllerFindResponseRedirectUrisItem,
-) as any as S.Schema<CreateApplicationsControllerResponseRedirectUrisList>;
+export const CreateApplicationsControllerResponseRedirectUrisList =
+  ApplicationsControllerFindResponseRedirectUrisList as any as S.Schema<CreateApplicationsControllerResponseRedirectUrisList>;
 
 export interface CreateApplicationsControllerResponse {
   /** Distinguishes the connect application object. */
@@ -2334,26 +2289,8 @@ export interface CreateApplicationsControllerResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-export const CreateApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    client_id: S.String,
-    description: S.NullOr(S.String),
-    name: S.String,
-    scopes: CreateApplicationsControllerResponseScopesList,
-    created_at: S.String,
-    updated_at: S.String,
-    application_type: S.optional(S.String),
-    redirect_uris: S.optional(CreateApplicationsControllerResponseRedirectUrisList),
-    uses_pkce: S.optional(S.Boolean),
-    is_first_party: S.optional(S.Boolean),
-    was_dynamically_registered: S.optional(S.Boolean),
-    organization_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateApplicationsControllerResponse",
-}) as any as S.Schema<CreateApplicationsControllerResponse>;
+export const CreateApplicationsControllerResponse =
+  ApplicationsControllerFindResponse as any as S.Schema<CreateApplicationsControllerResponse>;
 
 export interface AuditLogEventActorDto {
   /** Actor identifier. */
@@ -2384,14 +2321,8 @@ export interface AuditLogEventTargetDto {
   /** Additional data associated with the event or entity. */
   metadata?: unknown;
 }
-export const AuditLogEventTargetDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(S.String),
-    name: S.optional(S.String),
-    metadata: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "AuditLogEventTargetDto" }) as any as S.Schema<AuditLogEventTargetDto>;
+export const AuditLogEventTargetDto =
+  AuditLogEventActorDto as any as S.Schema<AuditLogEventTargetDto>;
 
 /** The resources affected by the action. */
 export type AuditLogEventDtoTargetsList = Array<AuditLogEventTargetDto>;
@@ -2763,9 +2694,7 @@ export const CreateAuthorizationOrganizationRolesControllerResponseType = S.Stri
 /** The permission slugs assigned to the role. */
 export type CreateAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
 export const CreateAuthorizationOrganizationRolesControllerResponsePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
 
 export interface CreateAuthorizationOrganizationRolesControllerResponse {
   /** A unique slug for the role. */
@@ -2962,9 +2891,8 @@ export const CreateAuthorizationRolesControllerResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type CreateAuthorizationRolesControllerResponsePermissionsList = Array<string>;
-export const CreateAuthorizationRolesControllerResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAuthorizationRolesControllerResponsePermissionsList>;
+export const CreateAuthorizationRolesControllerResponsePermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<CreateAuthorizationRolesControllerResponsePermissionsList>;
 
 export interface CreateAuthorizationRolesControllerResponse {
   /** A unique slug for the role. */
@@ -3036,10 +2964,8 @@ export const CreateConnectionStandardAttributesDto = /*@__PURE__*/ S.suspend(() 
 export type CreateConnectionAttributeMapsDtoCustomAttributesMap = {
   [key: string]: string | undefined;
 };
-export const CreateConnectionAttributeMapsDtoCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateConnectionAttributeMapsDtoCustomAttributesMap>;
+export const CreateConnectionAttributeMapsDtoCustomAttributesMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateConnectionAttributeMapsDtoCustomAttributesMap>;
 
 export interface CreateConnectionAttributeMapsDto {
   /** How IdP attributes or claims map onto the standard WorkOS profile fields. Provided fields override the defaults for the connection type. */
@@ -3058,9 +2984,8 @@ export const CreateConnectionAttributeMapsDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The X.509 certificates used to verify signed SAML responses from the Identity Provider. Required when configuring the connection with manual IdP fields. */
 export type CreateConnectionSamlOptionsDtoIdpSigningCertsList = Array<string>;
-export const CreateConnectionSamlOptionsDtoIdpSigningCertsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectionSamlOptionsDtoIdpSigningCertsList>;
+export const CreateConnectionSamlOptionsDtoIdpSigningCertsList =
+  AgentTokenPermissionsList as any as S.Schema<CreateConnectionSamlOptionsDtoIdpSigningCertsList>;
 
 export interface CreateConnectionKeyPairDto {
   /** The PEM-encoded private key. */
@@ -3298,9 +3223,8 @@ export const ConnectedAccountWriteResponseConnectionRole = S.String;
 
 /** The OAuth scopes granted for this connection. */
 export type ConnectedAccountWriteResponseScopesList = Array<string>;
-export const ConnectedAccountWriteResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedAccountWriteResponseScopesList>;
+export const ConnectedAccountWriteResponseScopesList =
+  AgentTokenPermissionsList as any as S.Schema<ConnectedAccountWriteResponseScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type ConnectedAccountWriteResponseAuthMethod = "oauth" | "api_key" | "client_credentials";
@@ -3308,10 +3232,8 @@ export const ConnectedAccountWriteResponseAuthMethod = S.String;
 
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountWriteResponseConfigMap = { [key: string]: string | undefined };
-export const ConnectedAccountWriteResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectedAccountWriteResponseConfigMap>;
+export const ConnectedAccountWriteResponseConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ConnectedAccountWriteResponseConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountWriteResponseState =
@@ -3413,10 +3335,7 @@ export type CreateDataIntegrationsControllerClientCredentialsConnectionRequestCo
   [key: string]: string | undefined;
 };
 export const CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap>;
 
 export interface CreateDataIntegrationsControllerClientCredentialsConnectionRequest {
   /** The identifier of the integration. */
@@ -3476,9 +3395,7 @@ export const CreateDataIntegrationsManagementControllerDataIntegrationRequestOwn
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   Array<string>;
 export const CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
 
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem =
   | "oauth"
@@ -3501,10 +3418,7 @@ export type CreateDataIntegrationsManagementControllerDataIntegrationRequestConf
   [key: string]: string | undefined;
 };
 export const CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
 export type DataIntegrationCredentialsDtoType = "custom" | "organization";
@@ -3549,10 +3463,7 @@ export type CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
 export const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
 
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type CustomProviderDefinitionDtoAuthenticateVia = "request_body" | "basic_auth_header";
@@ -3659,9 +3570,8 @@ export type DataIntegrationState = "valid" | "invalid" | "requested";
 export const DataIntegrationState = S.String;
 
 export type DataIntegrationScopesList = Array<string>;
-export const DataIntegrationScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationScopesList>;
+export const DataIntegrationScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationScopesList>;
 
 export type DataIntegrationAuthMethodsItem = "oauth" | "api_key" | "client_credentials";
 export const DataIntegrationAuthMethodsItem = S.String;
@@ -3730,20 +3640,15 @@ export const DataIntegrationInstallation = /*@__PURE__*/ S.suspend(() =>
 
 /** Provider-specific config values set on the Data Integration (e.g. a Snowflake `account`), keyed by config field. Only fields the provider declares are accepted. */
 export type DataIntegrationConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataIntegrationConfigMap>;
+export const DataIntegrationConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationConfigMap>;
 
 /** Additional static query parameters appended to the authorization request. */
 export type DataIntegrationCustomProviderAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
 export const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataIntegrationCustomProviderAdditionalAuthorizationParametersMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationCustomProviderAdditionalAuthorizationParametersMap>;
 
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type DataIntegrationCustomProviderAuthenticateVia = "request_body" | "basic_auth_header";
@@ -3854,9 +3759,7 @@ export const DataIntegration = /*@__PURE__*/ S.suspend(() =>
 export type CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   Array<string>;
 export const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
@@ -3924,9 +3827,7 @@ export const CreateDataIntegrationsOrganizationControllerOrganizationDataInstall
 export type CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   Array<string>;
 export const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
@@ -4006,11 +3907,8 @@ export const CreateFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateFlagTargetsControllerTargetRequest>;
 
 export interface CreateFlagTargetsControllerTargetResponse {}
-export const CreateFlagTargetsControllerTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateFlagTargetsControllerTargetResponse",
-}) as any as S.Schema<CreateFlagTargetsControllerTargetResponse>;
+export const CreateFlagTargetsControllerTargetResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<CreateFlagTargetsControllerTargetResponse>;
 
 export interface CreateGroupsControllerRequest {
   /** The ID of the organization. */
@@ -4073,10 +3971,8 @@ export const ItContact = /*@__PURE__*/ S.suspend(() =>
 export type CreateJumpWireWebDataVaultControllerRequestKeyContextMap = {
   [key: string]: string | undefined;
 };
-export const CreateJumpWireWebDataVaultControllerRequestKeyContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateJumpWireWebDataVaultControllerRequestKeyContextMap>;
+export const CreateJumpWireWebDataVaultControllerRequestKeyContextMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateJumpWireWebDataVaultControllerRequestKeyContextMap>;
 
 export interface CreateJumpWireWebDataVaultControllerRequest {
   /** Map of values used to determine the encryption key. */
@@ -4098,10 +3994,8 @@ export const CreateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ S.suspe
 
 /** Map of values used to determine the encryption key. */
 export type ObjectMetadataContextMap = { [key: string]: string | undefined };
-export const ObjectMetadataContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ObjectMetadataContextMap>;
+export const ObjectMetadataContextMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ObjectMetadataContextMap>;
 
 /** The user or API key that performed an action. */
 export interface Actor {
@@ -4147,9 +4041,8 @@ export const ObjectMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission slugs to assign to the API key. */
 export type CreateOrganizationApiKeysControllerRequestPermissionsList = Array<string>;
-export const CreateOrganizationApiKeysControllerRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationApiKeysControllerRequestPermissionsList>;
+export const CreateOrganizationApiKeysControllerRequestPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<CreateOrganizationApiKeysControllerRequestPermissionsList>;
 
 export interface CreateOrganizationApiKeysControllerRequest {
   /** Unique identifier of the Organization. */
@@ -4178,9 +4071,8 @@ export const OrganizationApiKeyWithValueOwner = ApiKeyOwnerCase0;
 
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyWithValuePermissionsList = Array<string>;
-export const OrganizationApiKeyWithValuePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationApiKeyWithValuePermissionsList>;
+export const OrganizationApiKeyWithValuePermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<OrganizationApiKeyWithValuePermissionsList>;
 
 export interface OrganizationApiKeyWithValue {
   /** Distinguishes the API Key object. */
@@ -4295,9 +4187,8 @@ export const CreateOrganizationDomainsControllerResponse = /*@__PURE__*/ S.suspe
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type CreateOrganizationsControllerRequestDomainsList = Array<string>;
-export const CreateOrganizationsControllerRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOrganizationsControllerRequestDomainsList>;
+export const CreateOrganizationsControllerRequestDomainsList =
+  AgentTokenPermissionsList as any as S.Schema<CreateOrganizationsControllerRequestDomainsList>;
 
 /** The verification state of the domain. */
 export type OrganizationDomainDataDtoState = "pending" | "verified";
@@ -4326,10 +4217,8 @@ export const CreateOrganizationsControllerRequestDomainDataList = /*@__PURE__*/ 
 
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type CreateOrganizationsControllerRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateOrganizationsControllerRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateOrganizationsControllerRequestMetadataMap>;
+export const CreateOrganizationsControllerRequestMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateOrganizationsControllerRequestMetadataMap>;
 
 export interface CreateOrganizationsControllerRequest {
   /** The name of the organization. */
@@ -4416,10 +4305,8 @@ export const OrganizationDomainsList = /*@__PURE__*/ S.Array(
 
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type OrganizationMetadataMap = { [key: string]: string | undefined };
-export const OrganizationMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrganizationMetadataMap>;
+export const OrganizationMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<OrganizationMetadataMap>;
 
 export interface Organization {
   /** Distinguishes the Organization object. */
@@ -4471,9 +4358,8 @@ export const CreatePortalSessionsControllerRequestIntent = S.String;
 
 /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
 export type CreatePortalSessionsControllerRequestItContactEmailsList = Array<string>;
-export const CreatePortalSessionsControllerRequestItContactEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePortalSessionsControllerRequestItContactEmailsList>;
+export const CreatePortalSessionsControllerRequestItContactEmailsList =
+  AgentTokenPermissionsList as any as S.Schema<CreatePortalSessionsControllerRequestItContactEmailsList>;
 
 export interface CreatePortalSessionsControllerRequest {
   /** The URL to go to when an admin clicks on your logo in the Admin Portal. If not specified, the return URL configured on the [Admin Portal](https://dashboard.workos.com/admin-portal) page will be used. */
@@ -4626,18 +4512,8 @@ export interface SamlSpEncryptionCertificate {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-export const SamlSpEncryptionCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    value: S.String,
-    not_before: S.NullOr(S.String),
-    not_after: S.NullOr(S.String),
-    created_at: S.String,
-  }),
-).annotate({
-  identifier: "SamlSpEncryptionCertificate",
-}) as any as S.Schema<SamlSpEncryptionCertificate>;
+export const SamlSpEncryptionCertificate =
+  SamlIdpSigningCertificate as any as S.Schema<SamlSpEncryptionCertificate>;
 
 export interface CreateSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
@@ -4727,9 +4603,8 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission slugs to assign to the API key. Each permission must be enabled for user API keys. */
 export type CreateUserApiKeysControllerRequestPermissionsList = Array<string>;
-export const CreateUserApiKeysControllerRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateUserApiKeysControllerRequestPermissionsList>;
+export const CreateUserApiKeysControllerRequestPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<CreateUserApiKeysControllerRequestPermissionsList>;
 
 export interface CreateUserApiKeysControllerRequest {
   /** Unique identifier of the user. */
@@ -4761,9 +4636,8 @@ export const UserApiKeyWithValueOwner = ApiKeyOwnerCase1;
 
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyWithValuePermissionsList = Array<string>;
-export const UserApiKeyWithValuePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserApiKeyWithValuePermissionsList>;
+export const UserApiKeyWithValuePermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<UserApiKeyWithValuePermissionsList>;
 
 export interface UserApiKeyWithValue {
   /** Distinguishes the API Key object. */
@@ -4985,9 +4859,7 @@ export const UserlandUserInvite = /*@__PURE__*/ S.suspend(() =>
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList = Array<string>;
 export const CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList>;
 
 export interface CreateUserlandUserOrganizationMembershipsControllerRequest {
   /** The ID of the [user](/reference/authkit/user). */
@@ -5041,10 +4913,8 @@ export const CreateUserlandUserOrganizationMembershipsControllerResponseRolesLis
 
 /** Object containing metadata key/value pairs associated with the user. */
 export type UserlandUserMetadataMap = { [key: string]: string | undefined };
-export const UserlandUserMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserlandUserMetadataMap>;
+export const UserlandUserMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUserMetadataMap>;
 
 /** The user object. */
 export interface UserlandUser {
@@ -5151,10 +5021,8 @@ export const CreateUserlandUserOrganizationMembershipsControllerResponse = /*@__
 export type CreateWaitlistsControllerEntryRequestAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-export const CreateWaitlistsControllerEntryRequestAdditionalFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWaitlistsControllerEntryRequestAdditionalFieldsMap>;
+export const CreateWaitlistsControllerEntryRequestAdditionalFieldsMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateWaitlistsControllerEntryRequestAdditionalFieldsMap>;
 
 export interface CreateWaitlistsControllerEntryRequest {
   /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. Use `default` when adding the first entry -- the default waitlist is created automatically. */
@@ -5183,10 +5051,8 @@ export const WaitlistEntryState = S.String;
 
 /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type WaitlistEntryAdditionalFieldsMap = { [key: string]: string | undefined };
-export const WaitlistEntryAdditionalFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WaitlistEntryAdditionalFieldsMap>;
+export const WaitlistEntryAdditionalFieldsMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<WaitlistEntryAdditionalFieldsMap>;
 
 export interface WaitlistEntry {
   /** The unique ID of the waitlist entry. */
@@ -5359,9 +5225,8 @@ export const WebhookEndpointJsonStatus = S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
 export type WebhookEndpointJsonEventsList = Array<string>;
-export const WebhookEndpointJsonEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhookEndpointJsonEventsList>;
+export const WebhookEndpointJsonEventsList =
+  AgentTokenPermissionsList as any as S.Schema<WebhookEndpointJsonEventsList>;
 
 export interface WebhookEndpointJson {
   /** Distinguishes the Webhook Endpoint object. */
@@ -5406,10 +5271,7 @@ export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyC
   [key: string]: string | undefined;
 };
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConfigMap>;
 
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
@@ -5457,10 +5319,7 @@ export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyC
   [key: string]: string | undefined;
 };
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1ConfigMap>;
 
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
@@ -5511,10 +5370,7 @@ export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyC
   [key: string]: string | undefined;
 };
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2ConfigMap>;
 
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
@@ -5627,22 +5483,18 @@ export const DataIntegrationsControllerVendCredentialsRequest = /*@__PURE__*/ S.
 
 /** The scopes granted to the access token. Present for `oauth` and `client_credentials` credentials; absent for `api_key`. */
 export type DataIntegrationVendedCredentialCase0ScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase0ScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationVendedCredentialCase0ScopesList>;
+export const DataIntegrationVendedCredentialCase0ScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase0ScopesList>;
 
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. Present for `oauth` and `client_credentials` credentials; absent for `api_key`. */
 export type DataIntegrationVendedCredentialCase0MissingScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase0MissingScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationVendedCredentialCase0MissingScopesList>;
+export const DataIntegrationVendedCredentialCase0MissingScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase0MissingScopesList>;
 
 /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
 export type DataIntegrationVendedCredentialCase0ConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationVendedCredentialCase0ConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataIntegrationVendedCredentialCase0ConfigMap>;
+export const DataIntegrationVendedCredentialCase0ConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationVendedCredentialCase0ConfigMap>;
 
 export interface DataIntegrationVendedCredentialCase0 {
   /** Distinguishes the credential object. */
@@ -5676,10 +5528,8 @@ export const DataIntegrationVendedCredentialCase0 = /*@__PURE__*/ S.suspend(() =
 
 /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
 export type DataIntegrationVendedCredentialCase1ConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationVendedCredentialCase1ConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataIntegrationVendedCredentialCase1ConfigMap>;
+export const DataIntegrationVendedCredentialCase1ConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationVendedCredentialCase1ConfigMap>;
 
 export interface DataIntegrationVendedCredentialCase1 {
   /** Distinguishes the credential object. */
@@ -5704,31 +5554,25 @@ export const DataIntegrationVendedCredentialCase1 = /*@__PURE__*/ S.suspend(() =
 
 /** The scopes granted to the access token. */
 export type DataIntegrationVendedCredentialCase2ScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase2ScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationVendedCredentialCase2ScopesList>;
+export const DataIntegrationVendedCredentialCase2ScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase2ScopesList>;
 
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. The scopes granted to a client-credentials token are governed by the connected organization's client application, so the integration's configured scopes are requests or defaults rather than guarantees. */
 export type DataIntegrationVendedCredentialCase2MissingScopesList = Array<string>;
-export const DataIntegrationVendedCredentialCase2MissingScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationVendedCredentialCase2MissingScopesList>;
+export const DataIntegrationVendedCredentialCase2MissingScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationVendedCredentialCase2MissingScopesList>;
 
 /** Non-sensitive fields captured from the provider token response (e.g. Salesforce `instance_url`), as configured for the provider. Only present for `client_credentials` credentials. */
 export type DataIntegrationVendedCredentialCase2MetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const DataIntegrationVendedCredentialCase2MetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataIntegrationVendedCredentialCase2MetadataMap>;
+export const DataIntegrationVendedCredentialCase2MetadataMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DataIntegrationVendedCredentialCase2MetadataMap>;
 
 /** Provider-declared, non-secret config from the installation snapshot, with current defaults for unset fields. Includes both integration- and installation-scope fields; omits undeclared fields and fields marked secret. Use these values to address a per-tenant host, such as Snowflake's `account` or Zendesk's `subdomain`. Empty when no values are disclosable. Changes to integration or organization pins require reconnecting or explicitly rebinding the connection. Defaults are live and can differ from a cached token's audience until refresh or re-mint. */
 export type DataIntegrationVendedCredentialCase2ConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationVendedCredentialCase2ConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataIntegrationVendedCredentialCase2ConfigMap>;
+export const DataIntegrationVendedCredentialCase2ConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationVendedCredentialCase2ConfigMap>;
 
 export interface DataIntegrationVendedCredentialCase2 {
   /** Distinguishes the credential object. */
@@ -5850,18 +5694,13 @@ export type DeactivateUserlandUserOrganizationMembershipsControllerResponseCusto
   [key: string]: unknown | undefined;
 };
 export const DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap>;
+  CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap>;
 
 /** The list of roles assigned to the user within the organization. */
 export type DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList =
   Array<SlimRole>;
 export const DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList =
-  /*@__PURE__*/ S.Array(
-    SlimRole,
-  ) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList>;
+  CreateUserlandUserOrganizationMembershipsControllerResponseRolesList as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList>;
 
 export interface DeactivateUserlandUserOrganizationMembershipsControllerResponse {
   /** Distinguishes the organization membership object. */
@@ -5952,11 +5791,8 @@ export const DeleteAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteAgentBlueprintsControllerRequest>;
 
 export interface DeleteAgentBlueprintsControllerResponse {}
-export const DeleteAgentBlueprintsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAgentBlueprintsControllerResponse",
-}) as any as S.Schema<DeleteAgentBlueprintsControllerResponse>;
+export const DeleteAgentBlueprintsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAgentBlueprintsControllerResponse>;
 
 export interface DeleteAgentInstancesControllerRequest {
   /** The unique ID of the agent instance. */
@@ -5971,11 +5807,8 @@ export const DeleteAgentInstancesControllerRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteAgentInstancesControllerRequest>;
 
 export interface DeleteAgentInstancesControllerResponse {}
-export const DeleteAgentInstancesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAgentInstancesControllerResponse",
-}) as any as S.Schema<DeleteAgentInstancesControllerResponse>;
+export const DeleteAgentInstancesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAgentInstancesControllerResponse>;
 
 export interface DeleteApiKeysControllerRequest {
   /** The unique ID of the API key. */
@@ -6007,11 +5840,8 @@ export const DeleteApplicationCredentialsControllerRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteApplicationCredentialsControllerRequest>;
 
 export interface DeleteApplicationCredentialsControllerResponse {}
-export const DeleteApplicationCredentialsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationCredentialsControllerResponse",
-}) as any as S.Schema<DeleteApplicationCredentialsControllerResponse>;
+export const DeleteApplicationCredentialsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteApplicationCredentialsControllerResponse>;
 
 export interface DeleteApplicationsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
@@ -6026,11 +5856,8 @@ export const DeleteApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationsControllerRequest>;
 
 export interface DeleteApplicationsControllerResponse {}
-export const DeleteApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationsControllerResponse",
-}) as any as S.Schema<DeleteApplicationsControllerResponse>;
+export const DeleteApplicationsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteApplicationsControllerResponse>;
 
 export interface DeleteAuthenticationFactorsControllerRequest {
   /** The unique ID of the Factor. */
@@ -6045,11 +5872,8 @@ export const DeleteAuthenticationFactorsControllerRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteAuthenticationFactorsControllerRequest>;
 
 export interface DeleteAuthenticationFactorsControllerResponse {}
-export const DeleteAuthenticationFactorsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthenticationFactorsControllerResponse",
-}) as any as S.Schema<DeleteAuthenticationFactorsControllerResponse>;
+export const DeleteAuthenticationFactorsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthenticationFactorsControllerResponse>;
 
 export interface DeleteAuthkitOauthResourcesControllerRequest {
   /** The ID of the MCP resource indicator to delete. */
@@ -6066,11 +5890,8 @@ export const DeleteAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteAuthkitOauthResourcesControllerRequest>;
 
 export interface DeleteAuthkitOauthResourcesControllerResponse {}
-export const DeleteAuthkitOauthResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthkitOauthResourcesControllerResponse",
-}) as any as S.Schema<DeleteAuthkitOauthResourcesControllerResponse>;
+export const DeleteAuthkitOauthResourcesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthkitOauthResourcesControllerResponse>;
 
 export interface DeleteAuthorizationOrganizationRolesControllerRequest {
   /** The ID of the organization. */
@@ -6094,11 +5915,8 @@ export const DeleteAuthorizationOrganizationRolesControllerRequest = /*@__PURE__
 }) as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerRequest>;
 
 export interface DeleteAuthorizationOrganizationRolesControllerResponse {}
-export const DeleteAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationOrganizationRolesControllerResponse",
-}) as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerResponse>;
+export const DeleteAuthorizationOrganizationRolesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerResponse>;
 
 export interface DeleteAuthorizationPermissionsControllerRequest {
   /** A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks. */
@@ -6113,11 +5931,8 @@ export const DeleteAuthorizationPermissionsControllerRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteAuthorizationPermissionsControllerRequest>;
 
 export interface DeleteAuthorizationPermissionsControllerResponse {}
-export const DeleteAuthorizationPermissionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationPermissionsControllerResponse",
-}) as any as S.Schema<DeleteAuthorizationPermissionsControllerResponse>;
+export const DeleteAuthorizationPermissionsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationPermissionsControllerResponse>;
 
 export interface DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest {
   /** The ID of the organization that owns the resource. */
@@ -6169,11 +5984,8 @@ export const DeleteAuthorizationResourcesControllerRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteAuthorizationResourcesControllerRequest>;
 
 export interface DeleteAuthorizationResourcesControllerResponse {}
-export const DeleteAuthorizationResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizationResourcesControllerResponse",
-}) as any as S.Schema<DeleteAuthorizationResourcesControllerResponse>;
+export const DeleteAuthorizationResourcesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationResourcesControllerResponse>;
 
 export interface DeleteAuthorizedApplicationsControllerRequest {
   /** The ID of the user. */
@@ -6197,11 +6009,8 @@ export const DeleteAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteAuthorizedApplicationsControllerRequest>;
 
 export interface DeleteAuthorizedApplicationsControllerResponse {}
-export const DeleteAuthorizedApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAuthorizedApplicationsControllerResponse",
-}) as any as S.Schema<DeleteAuthorizedApplicationsControllerResponse>;
+export const DeleteAuthorizedApplicationsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizedApplicationsControllerResponse>;
 
 export interface DeleteConnectionsControllerRequest {
   /** Unique identifier for the Connection. */
@@ -6216,11 +6025,8 @@ export const DeleteConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectionsControllerRequest>;
 
 export interface DeleteConnectionsControllerResponse {}
-export const DeleteConnectionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConnectionsControllerResponse",
-}) as any as S.Schema<DeleteConnectionsControllerResponse>;
+export const DeleteConnectionsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteConnectionsControllerResponse>;
 
 export interface DeleteDataIntegrationsManagementControllerDataIntegrationRequest {
   /** The slug identifier of the data integration. */
@@ -6237,9 +6043,7 @@ export const DeleteDataIntegrationsManagementControllerDataIntegrationRequest =
 
 export interface DeleteDataIntegrationsManagementControllerDataIntegrationResponse {}
 export const DeleteDataIntegrationsManagementControllerDataIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDataIntegrationsManagementControllerDataIntegrationResponse",
-  }) as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationResponse>;
+  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationResponse>;
 
 export interface DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
   /** The slug identifier of the data integration. */
@@ -6256,9 +6060,7 @@ export const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrati
 
 export interface DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse {}
 export const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse",
-  }) as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse>;
+  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse>;
 
 export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
   /** An [Organization](/reference/organization) identifier. */
@@ -6290,9 +6092,7 @@ export const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstall
 
 export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse {}
 export const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse",
-  }) as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse>;
+  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse>;
 
 export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
@@ -6327,9 +6127,7 @@ export const DeleteDataIntegrationsUserManagementControllerUserDataInstallationR
 
 export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse {}
 export const DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse",
-  }) as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse>;
+  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse>;
 
 export interface DeleteDirectoriesControllerDirectoryRequest {
   /** Unique identifier for the Directory. */
@@ -6344,11 +6142,8 @@ export const DeleteDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteDirectoriesControllerDirectoryRequest>;
 
 export interface DeleteDirectoriesControllerDirectoryResponse {}
-export const DeleteDirectoriesControllerDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDirectoriesControllerDirectoryResponse",
-}) as any as S.Schema<DeleteDirectoriesControllerDirectoryResponse>;
+export const DeleteDirectoriesControllerDirectoryResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteDirectoriesControllerDirectoryResponse>;
 
 export interface DeleteFlagTargetsControllerTargetRequest {
   /** The unique slug identifier of the feature flag. */
@@ -6368,11 +6163,8 @@ export const DeleteFlagTargetsControllerTargetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteFlagTargetsControllerTargetRequest>;
 
 export interface DeleteFlagTargetsControllerTargetResponse {}
-export const DeleteFlagTargetsControllerTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFlagTargetsControllerTargetResponse",
-}) as any as S.Schema<DeleteFlagTargetsControllerTargetResponse>;
+export const DeleteFlagTargetsControllerTargetResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteFlagTargetsControllerTargetResponse>;
 
 export interface DeleteGroupsControllerRequest {
   /** The ID of the organization. */
@@ -6422,11 +6214,8 @@ export const DeleteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteItContactsControllerRequest>;
 
 export interface DeleteItContactsControllerResponse {}
-export const DeleteItContactsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteItContactsControllerResponse",
-}) as any as S.Schema<DeleteItContactsControllerResponse>;
+export const DeleteItContactsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteItContactsControllerResponse>;
 
 export interface DeleteJumpWireWebDataVaultControllerRequest {
   /** Unique identifier of the object. */
@@ -6469,11 +6258,8 @@ export const DeleteOrganizationDomainsControllerRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteOrganizationDomainsControllerRequest>;
 
 export interface DeleteOrganizationDomainsControllerResponse {}
-export const DeleteOrganizationDomainsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationDomainsControllerResponse",
-}) as any as S.Schema<DeleteOrganizationDomainsControllerResponse>;
+export const DeleteOrganizationDomainsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteOrganizationDomainsControllerResponse>;
 
 export interface DeleteOrganizationsControllerOrganizationRequest {
   /** Unique identifier of the Organization. */
@@ -6488,11 +6274,8 @@ export const DeleteOrganizationsControllerOrganizationRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteOrganizationsControllerOrganizationRequest>;
 
 export interface DeleteOrganizationsControllerOrganizationResponse {}
-export const DeleteOrganizationsControllerOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOrganizationsControllerOrganizationResponse",
-}) as any as S.Schema<DeleteOrganizationsControllerOrganizationResponse>;
+export const DeleteOrganizationsControllerOrganizationResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteOrganizationsControllerOrganizationResponse>;
 
 export interface DeleteRedirectUrisControllerRequest {
   /** The ID of the redirect URI to delete. */
@@ -6507,11 +6290,8 @@ export const DeleteRedirectUrisControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRedirectUrisControllerRequest>;
 
 export interface DeleteRedirectUrisControllerResponse {}
-export const DeleteRedirectUrisControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRedirectUrisControllerResponse",
-}) as any as S.Schema<DeleteRedirectUrisControllerResponse>;
+export const DeleteRedirectUrisControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteRedirectUrisControllerResponse>;
 
 export interface DeleteSamlIdpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
@@ -6535,11 +6315,8 @@ export const DeleteSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerRequest>;
 
 export interface DeleteSamlIdpSigningCertificatesControllerResponse {}
-export const DeleteSamlIdpSigningCertificatesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSamlIdpSigningCertificatesControllerResponse",
-}) as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerResponse>;
+export const DeleteSamlIdpSigningCertificatesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerResponse>;
 
 export interface DeleteSamlSpEncryptionCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
@@ -6563,11 +6340,8 @@ export const DeleteSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/
 }) as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerRequest>;
 
 export interface DeleteSamlSpEncryptionCertificatesControllerResponse {}
-export const DeleteSamlSpEncryptionCertificatesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSamlSpEncryptionCertificatesControllerResponse",
-}) as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerResponse>;
+export const DeleteSamlSpEncryptionCertificatesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerResponse>;
 
 export interface DeleteSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
@@ -6591,11 +6365,8 @@ export const DeleteSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteSamlSpSigningCertificatesControllerRequest>;
 
 export interface DeleteSamlSpSigningCertificatesControllerResponse {}
-export const DeleteSamlSpSigningCertificatesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSamlSpSigningCertificatesControllerResponse",
-}) as any as S.Schema<DeleteSamlSpSigningCertificatesControllerResponse>;
+export const DeleteSamlSpSigningCertificatesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlSpSigningCertificatesControllerResponse>;
 
 export interface DeleteUserlandUserOrganizationMembershipsControllerRequest {
   /** The unique ID of the organization membership. */
@@ -6636,11 +6407,8 @@ export const DeleteWaitlistEntriesControllerRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWaitlistEntriesControllerRequest>;
 
 export interface DeleteWaitlistEntriesControllerResponse {}
-export const DeleteWaitlistEntriesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWaitlistEntriesControllerResponse",
-}) as any as S.Schema<DeleteWaitlistEntriesControllerResponse>;
+export const DeleteWaitlistEntriesControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteWaitlistEntriesControllerResponse>;
 
 export interface DeleteWebhookEndpointsControllerRequest {
   /** Unique identifier of the Webhook Endpoint. */
@@ -6655,11 +6423,8 @@ export const DeleteWebhookEndpointsControllerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteWebhookEndpointsControllerRequest>;
 
 export interface DeleteWebhookEndpointsControllerResponse {}
-export const DeleteWebhookEndpointsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebhookEndpointsControllerResponse",
-}) as any as S.Schema<DeleteWebhookEndpointsControllerResponse>;
+export const DeleteWebhookEndpointsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteWebhookEndpointsControllerResponse>;
 
 export interface DescribeJumpWireWebDataVaultControllerRequest {
   /** Unique identifier of the object. */
@@ -6817,10 +6582,8 @@ export const DirectoryGroupsControllerFindRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The raw attributes received from the directory provider. */
 export type DirectoryGroupRawAttributesMap = { [key: string]: unknown | undefined };
-export const DirectoryGroupRawAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DirectoryGroupRawAttributesMap>;
+export const DirectoryGroupRawAttributesMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryGroupRawAttributesMap>;
 
 export interface DirectoryGroup {
   /** Distinguishes the Directory Group object. */
@@ -6898,17 +6661,13 @@ export const DirectoryUserWithGroupsState = S.String;
 
 /** The raw attributes received from the directory provider. */
 export type DirectoryUserWithGroupsRawAttributesMap = { [key: string]: unknown | undefined };
-export const DirectoryUserWithGroupsRawAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DirectoryUserWithGroupsRawAttributesMap>;
+export const DirectoryUserWithGroupsRawAttributesMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryUserWithGroupsRawAttributesMap>;
 
 /** An object containing the custom attribute mapping for the Directory Provider. */
 export type DirectoryUserWithGroupsCustomAttributesMap = { [key: string]: unknown | undefined };
-export const DirectoryUserWithGroupsCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DirectoryUserWithGroupsCustomAttributesMap>;
+export const DirectoryUserWithGroupsCustomAttributesMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryUserWithGroupsCustomAttributesMap>;
 
 /** All roles assigned to the user. */
 export type DirectoryUserWithGroupsRolesList = Array<SlimRole>;
@@ -7020,9 +6779,8 @@ export const DisableFeatureFlagsControllerFlagResponseOwner = /*@__PURE__*/ S.su
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type DisableFeatureFlagsControllerFlagResponseTagsList = Array<string>;
-export const DisableFeatureFlagsControllerFlagResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DisableFeatureFlagsControllerFlagResponseTagsList>;
+export const DisableFeatureFlagsControllerFlagResponseTagsList =
+  AgentTokenPermissionsList as any as S.Schema<DisableFeatureFlagsControllerFlagResponseTagsList>;
 
 export interface DisableFeatureFlagsControllerFlagResponse {
   /** Distinguishes the Feature Flag object. */
@@ -7085,9 +6843,8 @@ export const EnableFeatureFlagsControllerFlagResponseOwner =
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type EnableFeatureFlagsControllerFlagResponseTagsList = Array<string>;
-export const EnableFeatureFlagsControllerFlagResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableFeatureFlagsControllerFlagResponseTagsList>;
+export const EnableFeatureFlagsControllerFlagResponseTagsList =
+  AgentTokenPermissionsList as any as S.Schema<EnableFeatureFlagsControllerFlagResponseTagsList>;
 
 export interface EnableFeatureFlagsControllerFlagResponse {
   /** Distinguishes the Feature Flag object. */
@@ -7113,23 +6870,8 @@ export interface EnableFeatureFlagsControllerFlagResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const EnableFeatureFlagsControllerFlagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    owner: S.NullOr(DisableFeatureFlagsControllerFlagResponseOwner),
-    tags: EnableFeatureFlagsControllerFlagResponseTagsList,
-    enabled: S.Boolean,
-    default_value: S.Boolean,
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "EnableFeatureFlagsControllerFlagResponse",
-}) as any as S.Schema<EnableFeatureFlagsControllerFlagResponse>;
+export const EnableFeatureFlagsControllerFlagResponse =
+  DisableFeatureFlagsControllerFlagResponse as any as S.Schema<EnableFeatureFlagsControllerFlagResponse>;
 
 export interface ExportAuditLogExportsControllerRequest {
   /** The unique ID of the Audit Log Export. */
@@ -7545,9 +7287,7 @@ export const GetAuthorizationOrganizationRolesControllerResponseType = S.String;
 /** The permission slugs assigned to the role. */
 export type GetAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
 export const GetAuthorizationOrganizationRolesControllerResponsePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAuthorizationOrganizationRolesControllerResponsePermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<GetAuthorizationOrganizationRolesControllerResponsePermissionsList>;
 
 export interface GetAuthorizationOrganizationRolesControllerResponse {
   /** A unique slug for the role. */
@@ -7631,9 +7371,8 @@ export const RoleType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type RolePermissionsList = Array<string>;
-export const RolePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RolePermissionsList>;
+export const RolePermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<RolePermissionsList>;
 
 export interface Role {
   /** A unique slug for the role. */
@@ -7711,16 +7450,13 @@ export const GetDataIntegrationsControllerUserlandUserTokenRequest = /*@__PURE__
 
 /** The scopes granted to the access token. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenScopesList = Array<string>;
-export const DataIntegrationAccessTokenResponseCase0AccessTokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationAccessTokenResponseCase0AccessTokenScopesList>;
+export const DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationAccessTokenResponseCase0AccessTokenScopesList>;
 
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList = Array<string>;
 export const DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList>;
 
 /** The [access token](/reference/pipes/access-token) object, present when `active` is `true`. */
 export interface DataIntegrationAccessTokenResponseCase0AccessToken {
@@ -7857,9 +7593,8 @@ export const ConnectedAccountConnectionRole = S.String;
 
 /** The OAuth scopes granted for this connection. */
 export type ConnectedAccountScopesList = Array<string>;
-export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedAccountScopesList>;
+export const ConnectedAccountScopesList =
+  AgentTokenPermissionsList as any as S.Schema<ConnectedAccountScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type ConnectedAccountAuthMethod = "oauth" | "api_key" | "client_credentials";
@@ -7867,10 +7602,8 @@ export const ConnectedAccountAuthMethod = S.String;
 
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountConfigMap = { [key: string]: string | undefined };
-export const ConnectedAccountConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectedAccountConfigMap>;
+export const ConnectedAccountConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ConnectedAccountConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountState = "connected" | "needs_reauthorization" | "disconnected";
@@ -7950,9 +7683,8 @@ export const GetDataIntegrationsOrganizationControllerOrganizationDataIntegratio
   }) as any as S.Schema<GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest>;
 
 export type DataIntegrationsListResponseDataItemScopesList = Array<string>;
-export const DataIntegrationsListResponseDataItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationsListResponseDataItemScopesList>;
+export const DataIntegrationsListResponseDataItemScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemScopesList>;
 
 export type DataIntegrationsListResponseDataItemAuthMethodsItem =
   | "oauth"
@@ -7983,9 +7715,8 @@ export const DataIntegrationsListResponseDataItemConnectedAccountConnectionRole 
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountScopesList = Array<string>;
-export const DataIntegrationsListResponseDataItemConnectedAccountScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountScopesList>;
+export const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
@@ -7998,10 +7729,8 @@ export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod = S.
 export type DataIntegrationsListResponseDataItemConnectedAccountConfigMap = {
   [key: string]: string | undefined;
 };
-export const DataIntegrationsListResponseDataItemConnectedAccountConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountConfigMap>;
+export const DataIntegrationsListResponseDataItemConnectedAccountConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type DataIntegrationsListResponseDataItemConnectedAccountState =
@@ -8088,9 +7817,7 @@ export const DataIntegrationsListResponseDataItemConnectedAccountsItemConnection
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList = Array<string>;
 export const DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList>;
 
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod =
@@ -8104,10 +7831,7 @@ export type DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap =
   [key: string]: string | undefined;
 };
 export const DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap>;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemState =
@@ -8648,29 +8372,22 @@ export type ProfileConnectionType =
 export const ProfileConnectionType = S.String;
 
 export type ProfileRolesList = Array<SlimRole>;
-export const ProfileRolesList = /*@__PURE__*/ S.Array(
-  SlimRole,
-) as any as S.Schema<ProfileRolesList>;
+export const ProfileRolesList =
+  DirectoryUserWithGroupsRolesList as any as S.Schema<ProfileRolesList>;
 
 /** The groups the user belongs to, as returned by the identity provider. */
 export type ProfileGroupsList = Array<string>;
-export const ProfileGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProfileGroupsList>;
+export const ProfileGroupsList = AgentTokenPermissionsList as any as S.Schema<ProfileGroupsList>;
 
 /** Custom attribute mappings defined for the connection, returned as key-value pairs. */
 export type ProfileCustomAttributesMap = { [key: string]: unknown | undefined };
-export const ProfileCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProfileCustomAttributesMap>;
+export const ProfileCustomAttributesMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<ProfileCustomAttributesMap>;
 
 /** The complete set of raw attributes returned by the identity provider. */
 export type ProfileRawAttributesMap = { [key: string]: unknown | undefined };
-export const ProfileRawAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ProfileRawAttributesMap>;
+export const ProfileRawAttributesMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<ProfileRawAttributesMap>;
 
 export interface Profile {
   /** Distinguishes the profile object. */
@@ -8888,16 +8605,13 @@ export const UserlandUserOrganizationMembershipStatus = S.String;
 export type UserlandUserOrganizationMembershipCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const UserlandUserOrganizationMembershipCustomAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserlandUserOrganizationMembershipCustomAttributesMap>;
+export const UserlandUserOrganizationMembershipCustomAttributesMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<UserlandUserOrganizationMembershipCustomAttributesMap>;
 
 /** The list of roles assigned to the user within the organization. */
 export type UserlandUserOrganizationMembershipRolesList = Array<SlimRole>;
-export const UserlandUserOrganizationMembershipRolesList = /*@__PURE__*/ S.Array(
-  SlimRole,
-) as any as S.Schema<UserlandUserOrganizationMembershipRolesList>;
+export const UserlandUserOrganizationMembershipRolesList =
+  DirectoryUserWithGroupsRolesList as any as S.Schema<UserlandUserOrganizationMembershipRolesList>;
 
 export interface UserlandUserOrganizationMembership {
   /** Distinguishes the organization membership object. */
@@ -8991,18 +8705,7 @@ export interface EmailVerification {
   /** The code used to verify the email. */
   code?: string;
 }
-export const EmailVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    user_id: S.optional(S.String),
-    email: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    code: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmailVerification" }) as any as S.Schema<EmailVerification>;
+export const EmailVerification = MagicAuth as any as S.Schema<EmailVerification>;
 
 export type InviteItContactsControllerRequestIntentsItem =
   | "sso"
@@ -9045,11 +8748,8 @@ export const InviteItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteItContactsControllerRequest>;
 
 export interface InviteItContactsControllerResponse {}
-export const InviteItContactsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InviteItContactsControllerResponse",
-}) as any as S.Schema<InviteItContactsControllerResponse>;
+export const InviteItContactsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<InviteItContactsControllerResponse>;
 
 export type JumpWireWebDataVaultControllerIndexRequestOrder = "asc" | "desc";
 export const JumpWireWebDataVaultControllerIndexRequestOrder = S.String;
@@ -9230,10 +8930,8 @@ export const VersionListResponse = /*@__PURE__*/ S.suspend(() =>
 export type JumpWireWebKeyControllerCreateDataKeyRequestContextMap = {
   [key: string]: string | undefined;
 };
-export const JumpWireWebKeyControllerCreateDataKeyRequestContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JumpWireWebKeyControllerCreateDataKeyRequestContextMap>;
+export const JumpWireWebKeyControllerCreateDataKeyRequestContextMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<JumpWireWebKeyControllerCreateDataKeyRequestContextMap>;
 
 export interface JumpWireWebKeyControllerCreateDataKeyRequest {
   /** Map of values used to determine the encryption key. */
@@ -9249,10 +8947,8 @@ export const JumpWireWebKeyControllerCreateDataKeyRequest = /*@__PURE__*/ S.susp
 
 /** Map of values used to determine the encryption key. */
 export type CreateDataKeyResponseContextMap = { [key: string]: string | undefined };
-export const CreateDataKeyResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDataKeyResponseContextMap>;
+export const CreateDataKeyResponseContextMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateDataKeyResponseContextMap>;
 
 export interface CreateDataKeyResponse {
   /** Map of values used to determine the encryption key. */
@@ -9275,10 +8971,8 @@ export const CreateDataKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of values used to determine the new encryption key. */
 export type JumpWireWebKeyControllerRekeyRequestContextMap = { [key: string]: string | undefined };
-export const JumpWireWebKeyControllerRekeyRequestContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<JumpWireWebKeyControllerRekeyRequestContextMap>;
+export const JumpWireWebKeyControllerRekeyRequestContextMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<JumpWireWebKeyControllerRekeyRequestContextMap>;
 
 export interface JumpWireWebKeyControllerRekeyRequest {
   /** Map of values used to determine the new encryption key. */
@@ -9557,9 +9251,8 @@ export const ListApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type ConnectApplicationScopesList = Array<string>;
-export const ConnectApplicationScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectApplicationScopesList>;
+export const ConnectApplicationScopesList =
+  AgentTokenPermissionsList as any as S.Schema<ConnectApplicationScopesList>;
 
 export type ConnectApplicationRedirectUrisItem = ApplicationsControllerFindResponseRedirectUrisItem;
 export const ConnectApplicationRedirectUrisItem =
@@ -9568,9 +9261,8 @@ export const ConnectApplicationRedirectUrisItem =
 /** The redirect URIs configured for this application. */
 export type ConnectApplicationRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-export const ConnectApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
-  ApplicationsControllerFindResponseRedirectUrisItem,
-) as any as S.Schema<ConnectApplicationRedirectUrisList>;
+export const ConnectApplicationRedirectUrisList =
+  ApplicationsControllerFindResponseRedirectUrisList as any as S.Schema<ConnectApplicationRedirectUrisList>;
 
 export interface ConnectApplication {
   /** Distinguishes the connect application object. */
@@ -10123,10 +9815,7 @@ export type UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap = 
   [key: string]: unknown | undefined;
 };
 export const UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap>;
+  CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap>;
 
 export interface UserlandUserOrganizationMembershipBaseWithUser {
   /** Distinguishes the organization membership object. */
@@ -10473,9 +10162,8 @@ export const ListAuthorizedApplicationsControllerRequest = /*@__PURE__*/ S.suspe
 
 /** The scopes granted by the user to the application. */
 export type AuthorizedConnectApplicationListDataItemGrantedScopesList = Array<string>;
-export const AuthorizedConnectApplicationListDataItemGrantedScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthorizedConnectApplicationListDataItemGrantedScopesList>;
+export const AuthorizedConnectApplicationListDataItemGrantedScopesList =
+  AgentTokenPermissionsList as any as S.Schema<AuthorizedConnectApplicationListDataItemGrantedScopesList>;
 
 export interface AuthorizedConnectApplicationListDataItem {
   /** Distinguishes the authorized connect application object. */
@@ -10842,9 +10530,8 @@ export const ListDirectoryGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The list of records for the current page. */
 export type DirectoryGroupListDataList = Array<DirectoryGroup>;
-export const DirectoryGroupListDataList = /*@__PURE__*/ S.Array(
-  DirectoryGroup,
-) as any as S.Schema<DirectoryGroupListDataList>;
+export const DirectoryGroupListDataList =
+  DirectoryUserWithGroupsGroupsList as any as S.Schema<DirectoryGroupListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
 export type DirectoryGroupListListMetadata =
@@ -10930,9 +10617,8 @@ export const DirectoryUserList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DirectoryUserList" }) as any as S.Schema<DirectoryUserList>;
 
 export type ListEventsControllerRequestEventsList = Array<string>;
-export const ListEventsControllerRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEventsControllerRequestEventsList>;
+export const ListEventsControllerRequestEventsList =
+  AgentTokenPermissionsList as any as S.Schema<ListEventsControllerRequestEventsList>;
 
 export interface ListEventsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
@@ -10969,17 +10655,13 @@ export const ListEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The event payload. */
 export type EventSchemaDataMap = { [key: string]: unknown | undefined };
-export const EventSchemaDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EventSchemaDataMap>;
+export const EventSchemaDataMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<EventSchemaDataMap>;
 
 /** Additional context about the event. */
 export type EventSchemaContextMap = { [key: string]: unknown | undefined };
-export const EventSchemaContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EventSchemaContextMap>;
+export const EventSchemaContextMap =
+  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<EventSchemaContextMap>;
 
 /** An event emitted by WorkOS. */
 export interface EventSchema {
@@ -11130,10 +10812,7 @@ export type UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMa
   [key: string]: unknown | undefined;
 };
 export const UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap>;
+  CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap>;
 
 export interface UserlandUserOrganizationMembershipBaseListDataItem {
   /** Distinguishes the organization membership object. */
@@ -11330,9 +11009,8 @@ export const OrganizationApiKeyOwner = ApiKeyOwnerCase0;
 
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyPermissionsList = Array<string>;
-export const OrganizationApiKeyPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationApiKeyPermissionsList>;
+export const OrganizationApiKeyPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<OrganizationApiKeyPermissionsList>;
 
 export interface OrganizationApiKey {
   /** Distinguishes the API Key object. */
@@ -11432,9 +11110,7 @@ export const ListOrganizationAuthorizedApplicationsControllerRequest = /*@__PURE
 /** The scopes granted by the user to the application. */
 export type OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList = Array<string>;
 export const OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList>;
 
 export interface OrganizationAuthorizedConnectApplicationListDataItem {
   /** Distinguishes the authorized connect application object. */
@@ -11550,9 +11226,8 @@ export const ListOrganizationMembershipGroupsControllerGroupsRequest = /*@__PURE
 }) as any as S.Schema<ListOrganizationMembershipGroupsControllerGroupsRequest>;
 
 export type ListOrganizationsControllerRequestDomainsList = Array<string>;
-export const ListOrganizationsControllerRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListOrganizationsControllerRequestDomainsList>;
+export const ListOrganizationsControllerRequestDomainsList =
+  AgentTokenPermissionsList as any as S.Schema<ListOrganizationsControllerRequestDomainsList>;
 
 export interface ListOrganizationsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
@@ -11628,16 +11303,13 @@ export const ListProviderControllerForOrganizationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProviderControllerForOrganizationRequest>;
 
 export type DataIntegrationConfigurationResponseScopesList = Array<string>;
-export const DataIntegrationConfigurationResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationConfigurationResponseScopesList>;
+export const DataIntegrationConfigurationResponseScopesList =
+  AgentTokenPermissionsList as any as S.Schema<DataIntegrationConfigurationResponseScopesList>;
 
 /** The provider-specific config values in effect for this organization, keyed by config field. Reflects the organization override for organization-credential providers, otherwise the provider root. Empty when none are configured. */
 export type DataIntegrationConfigurationResponseConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationConfigurationResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataIntegrationConfigurationResponseConfigMap>;
+export const DataIntegrationConfigurationResponseConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationConfigurationResponseConfigMap>;
 
 /** The credentials type for this integration (e.g., `shared`, `custom`, or `organization`). */
 export type DataIntegrationCredentialsCredentialsType = "shared" | "custom" | "organization";
@@ -11836,23 +11508,16 @@ export const ListSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ S
 
 /** Every Service Provider encryption certificate on the Connection, including expired ones. */
 export type SamlSpEncryptionCertificateListDataList = Array<SamlSpEncryptionCertificate>;
-export const SamlSpEncryptionCertificateListDataList = /*@__PURE__*/ S.Array(
-  SamlSpEncryptionCertificate,
-) as any as S.Schema<SamlSpEncryptionCertificateListDataList>;
+export const SamlSpEncryptionCertificateListDataList =
+  SamlIdpSigningCertificateListDataList as any as S.Schema<SamlSpEncryptionCertificateListDataList>;
 
 export interface SamlSpEncryptionCertificateList {
   object: string;
   /** Every Service Provider encryption certificate on the Connection, including expired ones. */
   data: SamlSpEncryptionCertificateListDataList;
 }
-export const SamlSpEncryptionCertificateList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    data: SamlSpEncryptionCertificateListDataList,
-  }),
-).annotate({
-  identifier: "SamlSpEncryptionCertificateList",
-}) as any as S.Schema<SamlSpEncryptionCertificateList>;
+export const SamlSpEncryptionCertificateList =
+  SamlIdpSigningCertificateList as any as S.Schema<SamlSpEncryptionCertificateList>;
 
 export interface ListUserApiKeysControllerRequest {
   /** Unique identifier of the user. */
@@ -11887,9 +11552,8 @@ export const UserApiKeyOwner = ApiKeyOwnerCase1;
 
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyPermissionsList = Array<string>;
-export const UserApiKeyPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserApiKeyPermissionsList>;
+export const UserApiKeyPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<UserApiKeyPermissionsList>;
 
 export interface UserApiKey {
   /** Distinguishes the API Key object. */
@@ -12437,9 +12101,8 @@ export const LogoutSsoControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogoutSsoControllerRequest>;
 
 export interface LogoutSsoControllerResponse {}
-export const LogoutSsoControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "LogoutSsoControllerResponse",
-}) as any as S.Schema<LogoutSsoControllerResponse>;
+export const LogoutSsoControllerResponse =
+  DeleteGroupsControllerResponse as any as S.Schema<LogoutSsoControllerResponse>;
 
 export interface LogoutUserlandSessionsControllerRequest {
   /** The ID of the session. This can be extracted from the `sid` claim of the access token. */
@@ -12457,11 +12120,8 @@ export const LogoutUserlandSessionsControllerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<LogoutUserlandSessionsControllerRequest>;
 
 export interface LogoutUserlandSessionsControllerResponse {}
-export const LogoutUserlandSessionsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LogoutUserlandSessionsControllerResponse",
-}) as any as S.Schema<LogoutUserlandSessionsControllerResponse>;
+export const LogoutUserlandSessionsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<LogoutUserlandSessionsControllerResponse>;
 
 export interface OrganizationsControllerFindRequest {
   /** Unique identifier of the Organization. */
@@ -12489,18 +12149,8 @@ export interface PatchConnectionStandardAttributesDto {
   /** The IdP attribute or claim the profile's `name` is mapped from. Set to `null` to unset the mapping. */
   name?: string | null;
 }
-export const PatchConnectionStandardAttributesDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idp_id: S.optional(S.String),
-    email: S.optional(S.String),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    groups: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PatchConnectionStandardAttributesDto",
-}) as any as S.Schema<PatchConnectionStandardAttributesDto>;
+export const PatchConnectionStandardAttributesDto =
+  CreateConnectionStandardAttributesDto as any as S.Schema<PatchConnectionStandardAttributesDto>;
 
 /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. Only the provided keys are updated; a `null` value unsets that mapping. */
 export type PatchConnectionAttributeMapsDtoCustomAttributesMap = {
@@ -12644,16 +12294,13 @@ export const PatchConnectionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchConnectionsControllerRequest>;
 
 export type ProviderControllerConfigureRequestScopesList = Array<string>;
-export const ProviderControllerConfigureRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderControllerConfigureRequestScopesList>;
+export const ProviderControllerConfigureRequestScopesList =
+  AgentTokenPermissionsList as any as S.Schema<ProviderControllerConfigureRequestScopesList>;
 
 /** Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field's pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected. */
 export type ProviderControllerConfigureRequestConfigMap = { [key: string]: string | undefined };
-export const ProviderControllerConfigureRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProviderControllerConfigureRequestConfigMap>;
+export const ProviderControllerConfigureRequestConfigMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ProviderControllerConfigureRequestConfigMap>;
 
 export interface ProviderControllerConfigureRequest {
   /** An [Organization](/reference/organization) identifier to configure the provider for. */
@@ -12814,11 +12461,8 @@ export const RadarStandaloneControllerDeleteRadarListEntryRequest = /*@__PURE__*
 }) as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryRequest>;
 
 export interface RadarStandaloneControllerDeleteRadarListEntryResponse {}
-export const RadarStandaloneControllerDeleteRadarListEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RadarStandaloneControllerDeleteRadarListEntryResponse",
-}) as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryResponse>;
+export const RadarStandaloneControllerDeleteRadarListEntryResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryResponse>;
 
 export type RadarStandaloneControllerUpdateRadarListRequestType =
   | "ip_address"
@@ -12887,9 +12531,7 @@ export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmen
 
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse {}
 export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse",
-  }) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse>;
+  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse>;
 
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest {
   /** The ID of the group. */
@@ -12924,9 +12566,7 @@ export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmen
 
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse {}
 export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse",
-  }) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse>;
+  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse>;
 
 export interface RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest {
   /** The ID of the organization. */
@@ -12986,9 +12626,7 @@ export const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest =
 
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse {}
 export const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse",
-  }) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse>;
+  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse>;
 
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest {
   /** The ID of the organization membership. */
@@ -13013,11 +12651,8 @@ export const RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest = /*@__
 }) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest>;
 
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse {}
-export const RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse",
-}) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse>;
+export const RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse =
+  DeleteUserlandUserOrganizationMembershipsControllerResponse as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse>;
 
 export interface RemoveGroupMembershipsControllerMemberRequest {
   /** Unique identifier of the Organization. */
@@ -13044,11 +12679,8 @@ export const RemoveGroupMembershipsControllerMemberRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<RemoveGroupMembershipsControllerMemberRequest>;
 
 export interface RemoveGroupMembershipsControllerMemberResponse {}
-export const RemoveGroupMembershipsControllerMemberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveGroupMembershipsControllerMemberResponse",
-}) as any as S.Schema<RemoveGroupMembershipsControllerMemberResponse>;
+export const RemoveGroupMembershipsControllerMemberResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RemoveGroupMembershipsControllerMemberResponse>;
 
 export interface ReplaceGroupRoleAssignmentEntryDto {
   /** The slug of the role to assign to the group. */
@@ -13276,11 +12908,8 @@ export const RevokeItContactsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeItContactsControllerRequest>;
 
 export interface RevokeItContactsControllerResponse {}
-export const RevokeItContactsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeItContactsControllerResponse",
-}) as any as S.Schema<RevokeItContactsControllerResponse>;
+export const RevokeItContactsControllerResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RevokeItContactsControllerResponse>;
 
 export interface RevokeUserlandSessionsControllerSessionRequest {
   /** The ID of the session to revoke. This can be extracted from the `sid` claim of the access token. */
@@ -13295,11 +12924,8 @@ export const RevokeUserlandSessionsControllerSessionRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<RevokeUserlandSessionsControllerSessionRequest>;
 
 export interface RevokeUserlandSessionsControllerSessionResponse {}
-export const RevokeUserlandSessionsControllerSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeUserlandSessionsControllerSessionResponse",
-}) as any as S.Schema<RevokeUserlandSessionsControllerSessionResponse>;
+export const RevokeUserlandSessionsControllerSessionResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RevokeUserlandSessionsControllerSessionResponse>;
 
 export interface RevokeUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
@@ -13487,9 +13113,7 @@ export const SendVerificationEmailResponse = /*@__PURE__*/ S.suspend(() =>
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList =
   Array<string>;
 export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList>;
 
 export interface SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest {
   /** The ID of the organization. */
@@ -13529,9 +13153,7 @@ export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRes
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList =
   Array<string>;
 export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList>;
 
 export interface SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse {
   /** A unique slug for the role. */
@@ -13578,9 +13200,7 @@ export const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRes
 export type SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList =
   Array<string>;
 export const SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList>;
 
 export interface SetAuthorizationRolePermissionsControllerPermissionsRequest {
   /** The slug of the environment role. */
@@ -13610,9 +13230,7 @@ export const SetAuthorizationRolePermissionsControllerPermissionsResponseType = 
 export type SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList =
   Array<string>;
 export const SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList>;
 
 export interface SetAuthorizationRolePermissionsControllerPermissionsResponse {
   /** A unique slug for the role. */
@@ -13668,9 +13286,8 @@ export const SsoControllerJsonWebKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** X.509 certificate chain. */
 export type JwksResponseKeysItemX5cList = Array<string>;
-export const JwksResponseKeysItemX5cList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JwksResponseKeysItemX5cList>;
+export const JwksResponseKeysItemX5cList =
+  AgentTokenPermissionsList as any as S.Schema<JwksResponseKeysItemX5cList>;
 
 export interface JwksResponseKeysItem {
   /** Algorithm. */
@@ -13786,9 +13403,8 @@ export const SsoControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of OAuth scopes for which the access token is authorized. */
 export type SsoTokenResponseOauthTokensScopesList = Array<string>;
-export const SsoTokenResponseOauthTokensScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SsoTokenResponseOauthTokensScopesList>;
+export const SsoTokenResponseOauthTokensScopesList =
+  AgentTokenPermissionsList as any as S.Schema<SsoTokenResponseOauthTokensScopesList>;
 
 /** OAuth tokens issued by the identity provider, if available. */
 export interface SsoTokenResponseOauthTokens {
@@ -13850,30 +13466,23 @@ export const SyncDirectoriesControllerDirectoryRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<SyncDirectoriesControllerDirectoryRequest>;
 
 export interface SyncDirectoriesControllerDirectoryResponse {}
-export const SyncDirectoriesControllerDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SyncDirectoriesControllerDirectoryResponse",
-}) as any as S.Schema<SyncDirectoriesControllerDirectoryResponse>;
+export const SyncDirectoriesControllerDirectoryResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<SyncDirectoriesControllerDirectoryResponse>;
 
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment. */
 export type UpdateAgentBlueprintsControllerRequestPermissionsList = Array<string>;
-export const UpdateAgentBlueprintsControllerRequestPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAgentBlueprintsControllerRequestPermissionsList>;
+export const UpdateAgentBlueprintsControllerRequestPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<UpdateAgentBlueprintsControllerRequestPermissionsList>;
 
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
 export type UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = Array<string>;
-export const UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList>;
+export const UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList =
+  AgentTokenPermissionsList as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList>;
 
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
 export type UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList = Array<string>;
 export const UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList>;
 
 /** Who may mint sessions from this blueprint. Omitted lists are left unchanged. */
 export interface UpdateAgentBlueprintsControllerRequestInvocableBy {
@@ -13882,16 +13491,8 @@ export interface UpdateAgentBlueprintsControllerRequestInvocableBy {
   /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
   organization_ids?: UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList;
 }
-export const UpdateAgentBlueprintsControllerRequestInvocableBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role_slugs: S.optional(UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList),
-    organization_ids: S.optional(
-      UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateAgentBlueprintsControllerRequestInvocableBy",
-}) as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableBy>;
+export const UpdateAgentBlueprintsControllerRequestInvocableBy =
+  CreateAgentBlueprintsControllerRequestInvocableBy as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableBy>;
 
 export type UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem =
   | "delegated"
@@ -13971,15 +13572,13 @@ export const UpdateAgentBlueprintsControllerRequest = /*@__PURE__*/ S.suspend(()
 
 /** The OAuth scopes granted to the application. */
 export type UpdateApplicationsControllerRequestScopesList = Array<string>;
-export const UpdateApplicationsControllerRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApplicationsControllerRequestScopesList>;
+export const UpdateApplicationsControllerRequestScopesList =
+  AgentTokenPermissionsList as any as S.Schema<UpdateApplicationsControllerRequestScopesList>;
 
 /** Updated redirect URIs for the application. OAuth applications only. */
 export type UpdateApplicationsControllerRequestRedirectUrisList = Array<RedirectUriDto>;
-export const UpdateApplicationsControllerRequestRedirectUrisList = /*@__PURE__*/ S.Array(
-  RedirectUriDto,
-) as any as S.Schema<UpdateApplicationsControllerRequestRedirectUrisList>;
+export const UpdateApplicationsControllerRequestRedirectUrisList =
+  CreateOAuthApplicationDtoRedirectUrisList as any as S.Schema<UpdateApplicationsControllerRequestRedirectUrisList>;
 
 export interface UpdateApplicationsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
@@ -14007,9 +13606,8 @@ export const UpdateApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The scopes available for this application. */
 export type UpdateApplicationsControllerResponseScopesList = Array<string>;
-export const UpdateApplicationsControllerResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApplicationsControllerResponseScopesList>;
+export const UpdateApplicationsControllerResponseScopesList =
+  AgentTokenPermissionsList as any as S.Schema<UpdateApplicationsControllerResponseScopesList>;
 
 export type UpdateApplicationsControllerResponseRedirectUrisItem =
   ApplicationsControllerFindResponseRedirectUrisItem;
@@ -14019,9 +13617,8 @@ export const UpdateApplicationsControllerResponseRedirectUrisItem =
 /** The redirect URIs configured for this application. */
 export type UpdateApplicationsControllerResponseRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-export const UpdateApplicationsControllerResponseRedirectUrisList = /*@__PURE__*/ S.Array(
-  ApplicationsControllerFindResponseRedirectUrisItem,
-) as any as S.Schema<UpdateApplicationsControllerResponseRedirectUrisList>;
+export const UpdateApplicationsControllerResponseRedirectUrisList =
+  ApplicationsControllerFindResponseRedirectUrisList as any as S.Schema<UpdateApplicationsControllerResponseRedirectUrisList>;
 
 export interface UpdateApplicationsControllerResponse {
   /** Distinguishes the connect application object. */
@@ -14053,26 +13650,8 @@ export interface UpdateApplicationsControllerResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-export const UpdateApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    client_id: S.String,
-    description: S.NullOr(S.String),
-    name: S.String,
-    scopes: UpdateApplicationsControllerResponseScopesList,
-    created_at: S.String,
-    updated_at: S.String,
-    application_type: S.optional(S.String),
-    redirect_uris: S.optional(UpdateApplicationsControllerResponseRedirectUrisList),
-    uses_pkce: S.optional(S.Boolean),
-    is_first_party: S.optional(S.Boolean),
-    was_dynamically_registered: S.optional(S.Boolean),
-    organization_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateApplicationsControllerResponse",
-}) as any as S.Schema<UpdateApplicationsControllerResponse>;
+export const UpdateApplicationsControllerResponse =
+  ApplicationsControllerFindResponse as any as S.Schema<UpdateApplicationsControllerResponse>;
 
 /** The period Audit Log events will be retained. Valid values are `1_MONTH` through `11_MONTHS` in one-month increments and `1_YEAR` through `10_YEARS` in one-year increments. Mutually exclusive with `retention_period_in_days`. */
 export type UpdateAuditLogsRetentionDtoCase0RetentionPeriod =
@@ -14180,9 +13759,7 @@ export const UpdateAuthorizationOrganizationRolesControllerResponseType = S.Stri
 /** The permission slugs assigned to the role. */
 export type UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
 export const UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
 
 export interface UpdateAuthorizationOrganizationRolesControllerResponse {
   /** A unique slug for the role. */
@@ -14370,22 +13947,8 @@ export interface UpdateAuthorizationResourcesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UpdateAuthorizationResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    organization_id: S.String,
-    parent_resource_id: S.NullOr(S.String),
-    id: S.String,
-    external_id: S.String,
-    resource_type_slug: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "UpdateAuthorizationResourcesControllerResponse",
-}) as any as S.Schema<UpdateAuthorizationResourcesControllerResponse>;
+export const UpdateAuthorizationResourcesControllerResponse =
+  CreateAuthorizationResourcesControllerResponse as any as S.Schema<UpdateAuthorizationResourcesControllerResponse>;
 
 export interface UpdateAuthorizationRolesControllerRequest {
   /** The slug of the environment role. */
@@ -14411,9 +13974,8 @@ export const UpdateAuthorizationRolesControllerResponseType = S.String;
 
 /** The permission slugs assigned to the role. */
 export type UpdateAuthorizationRolesControllerResponsePermissionsList = Array<string>;
-export const UpdateAuthorizationRolesControllerResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateAuthorizationRolesControllerResponsePermissionsList>;
+export const UpdateAuthorizationRolesControllerResponsePermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<UpdateAuthorizationRolesControllerResponsePermissionsList>;
 
 export interface UpdateAuthorizationRolesControllerResponse {
   /** A unique slug for the role. */
@@ -14458,19 +14020,14 @@ export const UpdateAuthorizationRolesControllerResponse = /*@__PURE__*/ S.suspen
 export type UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   Array<string>;
 export const UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
 
 /** Additional static query parameters appended to the authorization request. */
 export type UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
 export const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
 
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type UpdateCustomProviderDefinitionDtoAuthenticateVia = "request_body" | "basic_auth_header";
@@ -14557,9 +14114,7 @@ export const UpdateDataIntegrationsManagementControllerDataIntegrationRequest =
 export type UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList =
   Array<string>;
 export const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList>;
 
 export interface UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
   /** The slug identifier of the data integration. */
@@ -14600,9 +14155,7 @@ export const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrati
 export type UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   Array<string>;
 export const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
@@ -14676,9 +14229,7 @@ export const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstall
 export type UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   Array<string>;
 export const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
+  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
@@ -14803,25 +14354,21 @@ export const UpdateJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ S.su
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type UpdateOrganizationsControllerOrganizationRequestDomainsList = Array<string>;
-export const UpdateOrganizationsControllerOrganizationRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainsList>;
+export const UpdateOrganizationsControllerOrganizationRequestDomainsList =
+  AgentTokenPermissionsList as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainsList>;
 
 /** The domains associated with the organization, including verification state. */
 export type UpdateOrganizationsControllerOrganizationRequestDomainDataList =
   Array<OrganizationDomainDataDto>;
-export const UpdateOrganizationsControllerOrganizationRequestDomainDataList = /*@__PURE__*/ S.Array(
-  OrganizationDomainDataDto,
-) as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainDataList>;
+export const UpdateOrganizationsControllerOrganizationRequestDomainDataList =
+  CreateOrganizationsControllerRequestDomainDataList as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainDataList>;
 
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type UpdateOrganizationsControllerOrganizationRequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UpdateOrganizationsControllerOrganizationRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestMetadataMap>;
+export const UpdateOrganizationsControllerOrganizationRequestMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestMetadataMap>;
 
 export interface UpdateOrganizationsControllerOrganizationRequest {
   /** Unique identifier of the Organization. */
@@ -14875,11 +14422,8 @@ export const UpdateRadarStandaloneControllerRadarAttemptRequest = /*@__PURE__*/ 
 }) as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptRequest>;
 
 export interface UpdateRadarStandaloneControllerRadarAttemptResponse {}
-export const UpdateRadarStandaloneControllerRadarAttemptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRadarStandaloneControllerRadarAttemptResponse",
-}) as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptResponse>;
+export const UpdateRadarStandaloneControllerRadarAttemptResponse =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptResponse>;
 
 export interface UpdateUserlandUserOrganizationMembershipDtoCase1 {
   /** A single role identifier. Defaults to `member` or the explicit default role. Mutually exclusive with `role_slugs`. */
@@ -14895,9 +14439,8 @@ export const UpdateUserlandUserOrganizationMembershipDtoCase1 = /*@__PURE__*/ S.
 
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList = Array<string>;
-export const UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList>;
+export const UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList =
+  AgentTokenPermissionsList as any as S.Schema<UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList>;
 
 export interface UpdateUserlandUserOrganizationMembershipDtoCase2 {
   /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
@@ -15229,10 +14772,7 @@ export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0Con
   [key: string]: string | undefined;
 };
 export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConfigMap>;
 
 export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
@@ -15286,10 +14826,7 @@ export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1Con
   [key: string]: string | undefined;
 };
 export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1ConfigMap>;
 
 export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
@@ -15349,10 +14886,7 @@ export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2Con
   [key: string]: string | undefined;
 };
 export const UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConfigMap>;
+  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2ConfigMap>;
 
 export interface UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2 {
   /** A mutable, non-unique label. Omit to preserve an existing label; null clears it. Labels are never account identifiers. */
@@ -15928,9 +15462,8 @@ export const UserlandAuthenticateResponseImpersonator =
 
 /** A list of OAuth scopes for which the access token is authorized. */
 export type UserlandAuthenticateResponseOauthTokensScopesList = Array<string>;
-export const UserlandAuthenticateResponseOauthTokensScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserlandAuthenticateResponseOauthTokensScopesList>;
+export const UserlandAuthenticateResponseOauthTokensScopesList =
+  AgentTokenPermissionsList as any as S.Schema<UserlandAuthenticateResponseOauthTokensScopesList>;
 
 /** The OAuth tokens from the identity provider, if applicable. */
 export interface UserlandAuthenticateResponseOauthTokens {
@@ -15945,17 +15478,8 @@ export interface UserlandAuthenticateResponseOauthTokens {
   /** A list of OAuth scopes for which the access token is authorized. */
   scopes: UserlandAuthenticateResponseOauthTokensScopesList;
 }
-export const UserlandAuthenticateResponseOauthTokens = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.String,
-    refresh_token: S.String.pipe(T.SensitiveValue({})),
-    access_token: S.String.pipe(T.SensitiveValue({})),
-    expires_at: S.Number,
-    scopes: UserlandAuthenticateResponseOauthTokensScopesList,
-  }),
-).annotate({
-  identifier: "UserlandAuthenticateResponseOauthTokens",
-}) as any as S.Schema<UserlandAuthenticateResponseOauthTokens>;
+export const UserlandAuthenticateResponseOauthTokens =
+  SsoTokenResponseOauthTokens as any as S.Schema<UserlandAuthenticateResponseOauthTokens>;
 
 export interface UserlandAuthenticateResponse {
   /** The corresponding [user](/reference/authkit/user) object. */
@@ -16158,10 +15682,8 @@ export const UserlandUserOrganizationMembershipsControllerReactivateRequest =
 export type UserlandUsersControllerCreate0RequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UserlandUsersControllerCreate0RequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserlandUsersControllerCreate0RequestMetadataMap>;
+export const UserlandUsersControllerCreate0RequestMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerCreate0RequestMetadataMap>;
 
 /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerCreate0RequestPasswordHashType =
@@ -16235,10 +15757,8 @@ export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(() 
 export type UserlandUsersControllerCreate0ResponseMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UserlandUsersControllerCreate0ResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserlandUsersControllerCreate0ResponseMetadataMap>;
+export const UserlandUsersControllerCreate0ResponseMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerCreate0ResponseMetadataMap>;
 
 export interface UserlandUsersControllerCreate0Response {
   /** Distinguishes the user object. */
@@ -16350,11 +15870,8 @@ export const UserlandUsersControllerDelete0Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UserlandUsersControllerDelete0Request>;
 
 export interface UserlandUsersControllerDelete0Response {}
-export const UserlandUsersControllerDelete0Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserlandUsersControllerDelete0Response",
-}) as any as S.Schema<UserlandUsersControllerDelete0Response>;
+export const UserlandUsersControllerDelete0Response =
+  AuthorizeUserlandSsoControllerResponse as any as S.Schema<UserlandUsersControllerDelete0Response>;
 
 export interface UserlandUsersControllerEmailVerification0Request {
   /** The ID of the user. */
@@ -16381,11 +15898,7 @@ export interface VerifyEmailResponse {
   /** The user whose email was verified. */
   user?: UserlandUser;
 }
-export const VerifyEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(UserlandUser),
-  }),
-).annotate({ identifier: "VerifyEmailResponse" }) as any as S.Schema<VerifyEmailResponse>;
+export const VerifyEmailResponse = ResetPasswordResponse as any as S.Schema<VerifyEmailResponse>;
 
 export interface UserlandUsersControllerGet0Request {
   /** The unique ID of the user. */
@@ -16473,10 +15986,8 @@ export const UserlandUserList = /*@__PURE__*/ S.suspend(() =>
 export type UserlandUsersControllerUpdate0RequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const UserlandUsersControllerUpdate0RequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UserlandUsersControllerUpdate0RequestMetadataMap>;
+export const UserlandUsersControllerUpdate0RequestMetadataMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerUpdate0RequestMetadataMap>;
 
 /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerUpdate0RequestPasswordHashType =
@@ -16635,9 +16146,8 @@ export const ValidateAgentBlueprintsTokenControllerTokenRequest = /*@__PURE__*/ 
 
 /** The effective permission slugs carried by the token. */
 export type AgentTokenValidationPermissionsList = Array<string>;
-export const AgentTokenValidationPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AgentTokenValidationPermissionsList>;
+export const AgentTokenValidationPermissionsList =
+  AgentTokenPermissionsList as any as S.Schema<AgentTokenValidationPermissionsList>;
 
 export interface AgentTokenValidation {
   /** Always `true`: an invalid token is reported as an error with a stable code, never as a `200`. */
@@ -16758,10 +16268,8 @@ export const WaitlistEntriesControllerDenyResponseState = S.String;
 export type WaitlistEntriesControllerDenyResponseAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-export const WaitlistEntriesControllerDenyResponseAdditionalFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WaitlistEntriesControllerDenyResponseAdditionalFieldsMap>;
+export const WaitlistEntriesControllerDenyResponseAdditionalFieldsMap =
+  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<WaitlistEntriesControllerDenyResponseAdditionalFieldsMap>;
 
 export interface WaitlistEntriesControllerDenyResponse {
   /** The unique ID of the waitlist entry. */

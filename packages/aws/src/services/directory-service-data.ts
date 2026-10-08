@@ -296,9 +296,7 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResult {}
-export const DeleteGroupResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteGroupResult",
-}) as any as S.Schema<DeleteGroupResult>;
+export const DeleteGroupResult = AddGroupMemberResult as any as S.Schema<DeleteGroupResult>;
 export interface DeleteUserRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -314,9 +312,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResult {}
-export const DeleteUserResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteUserResult",
-}) as any as S.Schema<DeleteUserResult>;
+export const DeleteUserResult = AddGroupMemberResult as any as S.Schema<DeleteUserResult>;
 export type LdapDisplayNameList = string[];
 export const LdapDisplayNameList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeGroupRequest {
@@ -426,9 +422,7 @@ export const DisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisableUserRequest" }) as any as S.Schema<DisableUserRequest>;
 export interface DisableUserResult {}
-export const DisableUserResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DisableUserResult",
-}) as any as S.Schema<DisableUserResult>;
+export const DisableUserResult = AddGroupMemberResult as any as S.Schema<DisableUserResult>;
 export type NextToken = string | redacted.Redacted<string>;
 export type MaxResults = number;
 export interface ListGroupMembersRequest {
@@ -809,9 +803,7 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateGroupRequest" }) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResult {}
-export const UpdateGroupResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateGroupResult",
-}) as any as S.Schema<UpdateGroupResult>;
+export const UpdateGroupResult = AddGroupMemberResult as any as S.Schema<UpdateGroupResult>;
 export interface UpdateUserRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -837,9 +829,7 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResult {}
-export const UpdateUserResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UpdateUserResult",
-}) as any as S.Schema<UpdateUserResult>;
+export const UpdateUserResult = AddGroupMemberResult as any as S.Schema<UpdateUserResult>;
 export type ExceptionMessage = string;
 export type AccessDeniedReason = "IAM_AUTH" | "DIRECTORY_AUTH" | "DATA_DISABLED" | (string & {});
 export const AccessDeniedReason = S.String;

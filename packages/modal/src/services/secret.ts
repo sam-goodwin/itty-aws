@@ -210,9 +210,7 @@ export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSecretRequest" }) as any as S.Schema<UpdateSecretRequest>;
 
 export interface UpdateSecretResponse {}
-export const UpdateSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateSecretResponse",
-}) as any as S.Schema<UpdateSecretResponse>;
+export const UpdateSecretResponse = DeleteSecretResponse as any as S.Schema<UpdateSecretResponse>;
 
 export type DeleteSecretError = ModalOpError;
 /** Secrets */

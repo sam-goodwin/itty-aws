@@ -204,9 +204,8 @@ export const UpdateRewardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/update-reward" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateRewardRequest" }) as any as S.Schema<UpdateRewardRequest>;
 export interface UpdateRewardResponse {}
-export const UpdateRewardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateRewardResponse",
-}) as any as S.Schema<UpdateRewardResponse>;
+export const UpdateRewardResponse =
+  CompleteRolloutResponse as any as S.Schema<UpdateRewardResponse>;
 export type FailureReason = string;
 export type CompleteRolloutError =
   | AccessDeniedException

@@ -706,13 +706,8 @@ export interface RenderProductIssuesResponse {
   /** List of issues for a given product. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
   renderedIssues?: RenderedIssueList;
 }
-export const RenderProductIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renderedIssues: S.optional(RenderedIssueList),
-  }),
-).annotate({
-  identifier: "RenderProductIssuesResponse",
-}) as any as S.Schema<RenderProductIssuesResponse>;
+export const RenderProductIssuesResponse =
+  RenderAccountIssuesResponse as any as S.Schema<RenderProductIssuesResponse>;
 
 /** Value for choice input field. */
 export interface ChoiceInputValue {

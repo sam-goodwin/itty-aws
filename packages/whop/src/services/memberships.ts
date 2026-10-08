@@ -238,10 +238,8 @@ export const LegacyMembershipMetadataMap = /*@__PURE__*/ S.Record(
 
 /** Custom key-value pairs stored on the plan. Included in webhook payloads for payment and membership events. Max 50 keys, 100 chars per key, 500 chars per string value. The reserved keys `custom_cta` and `custom_cta_url`, when set, override the product's checkout call to action for this plan. */
 export type LegacyMembershipPlanMetadataMap = { [key: string]: unknown | undefined };
-export const LegacyMembershipPlanMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LegacyMembershipPlanMetadataMap>;
+export const LegacyMembershipPlanMetadataMap =
+  LegacyMembershipMetadataMap as any as S.Schema<LegacyMembershipPlanMetadataMap>;
 
 /** The plan the customer purchased to create this membership. */
 export interface LegacyMembershipPlan {
@@ -259,10 +257,8 @@ export const LegacyMembershipPlan = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom key-value pairs stored on the product and included in payment and membership webhook payloads. Max 50 keys, 100 characters per key, 500 characters per string value. */
 export type LegacyMembershipProductMetadataMap = { [key: string]: unknown | undefined };
-export const LegacyMembershipProductMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LegacyMembershipProductMetadataMap>;
+export const LegacyMembershipProductMetadataMap =
+  LegacyMembershipMetadataMap as any as S.Schema<LegacyMembershipProductMetadataMap>;
 
 /** The product this membership grants access to. */
 export interface LegacyMembershipProduct {

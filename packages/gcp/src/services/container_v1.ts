@@ -90,13 +90,8 @@ export interface RayClusterMonitoringConfig {
   /** Enable metrics collection for Ray clusters. */
   enabled?: boolean;
 }
-export const RayClusterMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RayClusterMonitoringConfig",
-}) as any as S.Schema<RayClusterMonitoringConfig>;
+export const RayClusterMonitoringConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<RayClusterMonitoringConfig>;
 
 /** Configuration options for the Ray Operator add-on. */
 export interface RayOperatorConfig {
@@ -131,112 +126,75 @@ export interface SlurmOperatorConfig {
   /** When enabled, it runs a Slurm Operator that manages the set of compute pods for Slurm Cluster. */
   enabled?: boolean;
 }
-export const SlurmOperatorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SlurmOperatorConfig" }) as any as S.Schema<SlurmOperatorConfig>;
+export const SlurmOperatorConfig = RayClusterLoggingConfig as any as S.Schema<SlurmOperatorConfig>;
 
 /** Configuration for the Stateful HA add-on. */
 export interface StatefulHAConfig {
   /** Whether the Stateful HA add-on is enabled for this cluster. */
   enabled?: boolean;
 }
-export const StatefulHAConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "StatefulHAConfig" }) as any as S.Schema<StatefulHAConfig>;
+export const StatefulHAConfig = RayClusterLoggingConfig as any as S.Schema<StatefulHAConfig>;
 
 /** Configuration for the Backup for GKE Agent. */
 export interface GkeBackupAgentConfig {
   /** Whether the Backup for GKE agent is enabled for this cluster. */
   enabled?: boolean;
 }
-export const GkeBackupAgentConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GkeBackupAgentConfig" }) as any as S.Schema<GkeBackupAgentConfig>;
+export const GkeBackupAgentConfig =
+  RayClusterLoggingConfig as any as S.Schema<GkeBackupAgentConfig>;
 
 /** Configuration options for the Config Connector add-on. */
 export interface ConfigConnectorConfig {
   /** Whether Cloud Connector is enabled for this cluster. */
   enabled?: boolean;
 }
-export const ConfigConnectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ConfigConnectorConfig" }) as any as S.Schema<ConfigConnectorConfig>;
+export const ConfigConnectorConfig =
+  RayClusterLoggingConfig as any as S.Schema<ConfigConnectorConfig>;
 
 /** Deprecated: The Parallelstore CSI driver is no longer supported. Configuration for the Cloud Storage Parallelstore CSI driver. */
 export interface ParallelstoreCsiDriverConfig {
   /** Whether the Cloud Storage Parallelstore CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
-export const ParallelstoreCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ParallelstoreCsiDriverConfig",
-}) as any as S.Schema<ParallelstoreCsiDriverConfig>;
+export const ParallelstoreCsiDriverConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<ParallelstoreCsiDriverConfig>;
 
 /** Configuration for the Cloud Storage Fuse CSI driver. */
 export interface GcsFuseCsiDriverConfig {
   /** Whether the Cloud Storage Fuse CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
-export const GcsFuseCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GcsFuseCsiDriverConfig" }) as any as S.Schema<GcsFuseCsiDriverConfig>;
+export const GcsFuseCsiDriverConfig =
+  RayClusterLoggingConfig as any as S.Schema<GcsFuseCsiDriverConfig>;
 
 /** Configuration for the Kubernetes Dashboard. */
 export interface KubernetesDashboard {
   /** Whether the Kubernetes Dashboard is enabled for this cluster. */
   disabled?: boolean;
 }
-export const KubernetesDashboard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "KubernetesDashboard" }) as any as S.Schema<KubernetesDashboard>;
+export const KubernetesDashboard = NetworkPolicyConfig as any as S.Schema<KubernetesDashboard>;
 
 /** Configuration options for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. */
 export interface HttpLoadBalancing {
   /** Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers. */
   disabled?: boolean;
 }
-export const HttpLoadBalancing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "HttpLoadBalancing" }) as any as S.Schema<HttpLoadBalancing>;
+export const HttpLoadBalancing = NetworkPolicyConfig as any as S.Schema<HttpLoadBalancing>;
 
 /** Configuration for the Slice Controller. */
 export interface SliceControllerConfig {
   /** Optional. Indicates whether Slice Controller is enabled in the cluster. */
   enabled?: boolean;
 }
-export const SliceControllerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "SliceControllerConfig" }) as any as S.Schema<SliceControllerConfig>;
+export const SliceControllerConfig =
+  RayClusterLoggingConfig as any as S.Schema<SliceControllerConfig>;
 
 /** Configuration for the AgentSandbox addon. */
 export interface AgentSandboxConfig {
   /** Optional. Whether AgentSandbox is enabled for this cluster. */
   enabled?: boolean;
 }
-export const AgentSandboxConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AgentSandboxConfig" }) as any as S.Schema<AgentSandboxConfig>;
+export const AgentSandboxConfig = RayClusterLoggingConfig as any as S.Schema<AgentSandboxConfig>;
 
 /** Configuration for the Lustre CSI driver. */
 export interface LustreCsiDriverConfig {
@@ -260,57 +218,37 @@ export interface PodSnapshotConfig {
   /** Whether or not the Pod Snapshots feature is enabled. */
   enabled?: boolean;
 }
-export const PodSnapshotConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PodSnapshotConfig" }) as any as S.Schema<PodSnapshotConfig>;
+export const PodSnapshotConfig = RayClusterLoggingConfig as any as S.Schema<PodSnapshotConfig>;
 
 /** Configuration for NodeLocal DNSCache */
 export interface DnsCacheConfig {
   /** Whether NodeLocal DNSCache is enabled for this cluster. */
   enabled?: boolean;
 }
-export const DnsCacheConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DnsCacheConfig" }) as any as S.Schema<DnsCacheConfig>;
+export const DnsCacheConfig = RayClusterLoggingConfig as any as S.Schema<DnsCacheConfig>;
 
 /** Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. */
 export interface HorizontalPodAutoscaling {
   /** Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring. */
   disabled?: boolean;
 }
-export const HorizontalPodAutoscaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "HorizontalPodAutoscaling" }) as any as S.Schema<HorizontalPodAutoscaling>;
+export const HorizontalPodAutoscaling =
+  NetworkPolicyConfig as any as S.Schema<HorizontalPodAutoscaling>;
 
 /** Configuration for the Filestore CSI driver. */
 export interface GcpFilestoreCsiDriverConfig {
   /** Whether the Filestore CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
-export const GcpFilestoreCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GcpFilestoreCsiDriverConfig",
-}) as any as S.Schema<GcpFilestoreCsiDriverConfig>;
+export const GcpFilestoreCsiDriverConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<GcpFilestoreCsiDriverConfig>;
 
 /** Configuration for the GKE Node Readiness Controller. */
 export interface NodeReadinessConfig {
   /** Optional. Whether the GKE Node Readiness Controller is enabled for this cluster. */
   enabled?: boolean;
 }
-export const NodeReadinessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "NodeReadinessConfig" }) as any as S.Schema<NodeReadinessConfig>;
+export const NodeReadinessConfig = RayClusterLoggingConfig as any as S.Schema<NodeReadinessConfig>;
 
 export type CloudRunConfigLoadBalancerTypeEnum =
   | "LOAD_BALANCER_TYPE_UNSPECIFIED"
@@ -337,13 +275,8 @@ export interface GcePersistentDiskCsiDriverConfig {
   /** Whether the Compute Engine PD CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
-export const GcePersistentDiskCsiDriverConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GcePersistentDiskCsiDriverConfig",
-}) as any as S.Schema<GcePersistentDiskCsiDriverConfig>;
+export const GcePersistentDiskCsiDriverConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<GcePersistentDiskCsiDriverConfig>;
 
 /** Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality. */
 export interface AddonsConfig {
@@ -1060,9 +993,8 @@ export const CompleteIpRotationProjectsZonesClustersRequest = /*@__PURE__*/ S.su
 
 /** CompleteNodePoolUpgradeRequest sets the name of target node pool to complete upgrade. */
 export interface CompleteNodePoolUpgradeRequest {}
-export const CompleteNodePoolUpgradeRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CompleteNodePoolUpgradeRequest",
-}) as any as S.Schema<CompleteNodePoolUpgradeRequest>;
+export const CompleteNodePoolUpgradeRequest =
+  Empty as any as S.Schema<CompleteNodePoolUpgradeRequest>;
 
 export interface CompleteUpgradeProjectsLocationsClustersNodePoolsRequest {
   /** The name (project, location, cluster, node pool id) of the node pool to complete upgrade. Specified in the format `projects/*\/locations/*\/clusters/*\/nodePools/*`. */
@@ -1290,11 +1222,7 @@ export interface QueuedProvisioning {
   /** Denotes that this node pool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API. */
   enabled?: boolean;
 }
-export const QueuedProvisioning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "QueuedProvisioning" }) as any as S.Schema<QueuedProvisioning>;
+export const QueuedProvisioning = RayClusterLoggingConfig as any as S.Schema<QueuedProvisioning>;
 
 /** Defines the maintenance exclusion for the node pool. */
 export interface ExclusionUntilEndOfSupport {
@@ -1333,11 +1261,7 @@ export interface AutopilotConfig {
   /** Denotes that nodes belonging to this node pool are Autopilot nodes. */
   enabled?: boolean;
 }
-export const AutopilotConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AutopilotConfig" }) as any as S.Schema<AutopilotConfig>;
+export const AutopilotConfig = RayClusterLoggingConfig as any as S.Schema<AutopilotConfig>;
 
 /** AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message */
 export interface AdditionalNodeNetworkConfig {
@@ -1971,11 +1895,7 @@ export interface VirtualNIC {
   /** Whether gVNIC features are enabled in the node pool. */
   enabled?: boolean;
 }
-export const VirtualNIC = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VirtualNIC" }) as any as S.Schema<VirtualNIC>;
+export const VirtualNIC = RayClusterLoggingConfig as any as S.Schema<VirtualNIC>;
 
 export type SecondaryBootDiskModeEnum = "MODE_UNSPECIFIED" | "CONTAINER_IMAGE_CACHE";
 export const SecondaryBootDiskModeEnum = S.String;
@@ -2004,11 +1924,7 @@ export interface GcfsConfig {
   /** Whether to use GCFS. */
   enabled?: boolean;
 }
-export const GcfsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GcfsConfig" }) as any as S.Schema<GcfsConfig>;
+export const GcfsConfig = RayClusterLoggingConfig as any as S.Schema<GcfsConfig>;
 
 /** RegistryHeader configures headers for the registry. */
 export interface RegistryHeader {
@@ -2134,11 +2050,7 @@ export interface WritableCgroups {
   /** Optional. Whether writable cgroups is enabled. */
   enabled?: boolean;
 }
-export const WritableCgroups = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "WritableCgroups" }) as any as S.Schema<WritableCgroups>;
+export const WritableCgroups = RayClusterLoggingConfig as any as S.Schema<WritableCgroups>;
 
 /** GCPSecretManagerCertificateConfig configures a secret from [Secret Manager](https://cloud.google.com/secret-manager). */
 export interface GCPSecretManagerCertificateConfig {
@@ -2346,11 +2258,7 @@ export interface EncryptionConfig {
   /** Optional. If true, swap space will not be encrypted. Defaults to false (encrypted). */
   disabled?: boolean;
 }
-export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
+export const EncryptionConfig = NetworkPolicyConfig as any as S.Schema<EncryptionConfig>;
 
 /** Provisions a new, separate local NVMe SSD exclusively for swap. */
 export interface DedicatedLocalSsdProfile {
@@ -2370,12 +2278,7 @@ export interface BootDiskProfile {
   /** Specifies the size of the swap space as a percentage of the boot disk size. */
   swapSizePercent?: number;
 }
-export const BootDiskProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    swapSizeGib: S.optional(S.String),
-    swapSizePercent: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BootDiskProfile" }) as any as S.Schema<BootDiskProfile>;
+export const BootDiskProfile = EphemeralLocalSsdProfile as any as S.Schema<BootDiskProfile>;
 
 /** Configuration for swap memory on a node pool. */
 export interface SwapConfig {
@@ -2594,11 +2497,7 @@ export interface FastSocket {
   /** Whether Fast Socket features are enabled in the node pool. */
   enabled?: boolean;
 }
-export const FastSocket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FastSocket" }) as any as S.Schema<FastSocket>;
+export const FastSocket = RayClusterLoggingConfig as any as S.Schema<FastSocket>;
 
 export type WorkloadMetadataConfigModeEnum = "MODE_UNSPECIFIED" | "GCE_METADATA" | "GKE_METADATA";
 export const WorkloadMetadataConfigModeEnum = S.String;
@@ -3051,11 +2950,7 @@ export interface LegacyAbac {
   /** Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM. */
   enabled?: boolean;
 }
-export const LegacyAbac = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "LegacyAbac" }) as any as S.Schema<LegacyAbac>;
+export const LegacyAbac = RayClusterLoggingConfig as any as S.Schema<LegacyAbac>;
 
 /** RollbackSafeUpgrade is the configuration for the rollback safe upgrade. */
 export interface RollbackSafeUpgrade {
@@ -3168,11 +3063,8 @@ export interface CostManagementConfig {
   /** Whether the feature is enabled or not. */
   enabled?: boolean;
 }
-export const CostManagementConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CostManagementConfig" }) as any as S.Schema<CostManagementConfig>;
+export const CostManagementConfig =
+  RayClusterLoggingConfig as any as S.Schema<CostManagementConfig>;
 
 export type DatabaseEncryptionCurrentStateEnum =
   | "CURRENT_STATE_UNSPECIFIED"
@@ -3260,24 +3152,16 @@ export interface ScheduleUpgradeConfig {
   /** Optional. Whether or not scheduled upgrades are enabled. */
   enabled?: boolean;
 }
-export const ScheduleUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ScheduleUpgradeConfig" }) as any as S.Schema<ScheduleUpgradeConfig>;
+export const ScheduleUpgradeConfig =
+  RayClusterLoggingConfig as any as S.Schema<ScheduleUpgradeConfig>;
 
 /** ManagedMachineLearningDiagnosticsConfig is the configuration for the GKE Managed Machine Learning Diagnostics pipeline. */
 export interface ManagedMachineLearningDiagnosticsConfig {
   /** Enable/Disable Managed Machine Learning Diagnostics. */
   enabled?: boolean;
 }
-export const ManagedMachineLearningDiagnosticsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ManagedMachineLearningDiagnosticsConfig",
-}) as any as S.Schema<ManagedMachineLearningDiagnosticsConfig>;
+export const ManagedMachineLearningDiagnosticsConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<ManagedMachineLearningDiagnosticsConfig>;
 
 /** Describes the configuration of a DNS endpoint. */
 export interface DNSEndpointConfig {
@@ -3793,13 +3677,8 @@ export interface PrivateClusterMasterGlobalAccessConfig {
   /** Whenever master is accessible globally or not. */
   enabled?: boolean;
 }
-export const PrivateClusterMasterGlobalAccessConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PrivateClusterMasterGlobalAccessConfig",
-}) as any as S.Schema<PrivateClusterMasterGlobalAccessConfig>;
+export const PrivateClusterMasterGlobalAccessConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<PrivateClusterMasterGlobalAccessConfig>;
 
 /** Configuration options for private clusters. */
 export interface PrivateClusterConfig {
@@ -3871,11 +3750,8 @@ export interface VerticalPodAutoscaling {
   /** Enables vertical pod autoscaling. */
   enabled?: boolean;
 }
-export const VerticalPodAutoscaling = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VerticalPodAutoscaling" }) as any as S.Schema<VerticalPodAutoscaling>;
+export const VerticalPodAutoscaling =
+  RayClusterLoggingConfig as any as S.Schema<VerticalPodAutoscaling>;
 
 /** K8sBetaAPIConfig , configuration for beta APIs */
 export interface K8sBetaAPIConfig {
@@ -3904,13 +3780,8 @@ export interface ConsumptionMeteringConfig {
   /** Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records. */
   enabled?: boolean;
 }
-export const ConsumptionMeteringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConsumptionMeteringConfig",
-}) as any as S.Schema<ConsumptionMeteringConfig>;
+export const ConsumptionMeteringConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<ConsumptionMeteringConfig>;
 
 /** Configuration for exporting cluster resource usages. */
 export interface ResourceUsageExportConfig {
@@ -3936,11 +3807,7 @@ export interface ShieldedNodes {
   /** Whether Shielded Nodes features are enabled on all nodes in this cluster. */
   enabled?: boolean;
 }
-export const ShieldedNodes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ShieldedNodes" }) as any as S.Schema<ShieldedNodes>;
+export const ShieldedNodes = RayClusterLoggingConfig as any as S.Schema<ShieldedNodes>;
 
 /** Configuration for issuance of mTLS keys and certificates to Kubernetes pods. */
 export interface MeshCertificates {
@@ -3967,11 +3834,7 @@ export interface AutoIpamConfig {
   /** The flag that enables Auto IPAM on this cluster */
   enabled?: boolean;
 }
-export const AutoIpamConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AutoIpamConfig" }) as any as S.Schema<AutoIpamConfig>;
+export const AutoIpamConfig = RayClusterLoggingConfig as any as S.Schema<AutoIpamConfig>;
 
 export type AdditionalIPRangesConfigStatusEnum = "STATUS_UNSPECIFIED" | "ACTIVE" | "DRAINING";
 export const AdditionalIPRangesConfigStatusEnum = S.String;
@@ -4259,11 +4122,7 @@ export interface DefaultSnatStatus {
   /** Disables cluster default sNAT rules. */
   disabled?: boolean;
 }
-export const DefaultSnatStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "DefaultSnatStatus" }) as any as S.Schema<DefaultSnatStatus>;
+export const DefaultSnatStatus = NetworkPolicyConfig as any as S.Schema<DefaultSnatStatus>;
 
 export type DNSConfigClusterDnsScopeEnum = "DNS_SCOPE_UNSPECIFIED" | "CLUSTER_SCOPE" | "VPC_SCOPE";
 export const DNSConfigClusterDnsScopeEnum = S.String;
@@ -4300,11 +4159,8 @@ export interface ServiceExternalIPsConfig {
   /** Whether Services with ExternalIPs field are allowed or not. */
   enabled?: boolean;
 }
-export const ServiceExternalIPsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ServiceExternalIPsConfig" }) as any as S.Schema<ServiceExternalIPsConfig>;
+export const ServiceExternalIPsConfig =
+  RayClusterLoggingConfig as any as S.Schema<ServiceExternalIPsConfig>;
 
 export type NetworkConfigDatapathProviderEnum =
   | "DATAPATH_PROVIDER_UNSPECIFIED"
@@ -4528,11 +4384,8 @@ export interface IdentityServiceConfig {
   /** Whether to enable the Identity Service component */
   enabled?: boolean;
 }
-export const IdentityServiceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "IdentityServiceConfig" }) as any as S.Schema<IdentityServiceConfig>;
+export const IdentityServiceConfig =
+  RayClusterLoggingConfig as any as S.Schema<IdentityServiceConfig>;
 
 export type ClusterAutoscalingAutoscalingProfileEnum =
   | "PROFILE_UNSPECIFIED"
@@ -4594,13 +4447,8 @@ export interface DefaultComputeClassConfig {
   /** Enables default compute class. */
   enabled?: boolean;
 }
-export const DefaultComputeClassConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultComputeClassConfig",
-}) as any as S.Schema<DefaultComputeClassConfig>;
+export const DefaultComputeClassConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<DefaultComputeClassConfig>;
 
 /** Contains information about amount of some resource in the cluster. For memory, value should be in GB. */
 export interface ResourceLimit {
@@ -7202,13 +7050,8 @@ export interface IntraNodeVisibilityConfig {
   /** Enables intra node visibility for this cluster. */
   enabled?: boolean;
 }
-export const IntraNodeVisibilityConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "IntraNodeVisibilityConfig",
-}) as any as S.Schema<IntraNodeVisibilityConfig>;
+export const IntraNodeVisibilityConfig =
+  HighScaleCheckpointingConfig as any as S.Schema<IntraNodeVisibilityConfig>;
 
 export type DesiredEnterpriseConfigDesiredTierEnum =
   | "CLUSTER_TIER_UNSPECIFIED"
@@ -7232,11 +7075,7 @@ export interface ILBSubsettingConfig {
   /** Enables l4 ILB subsetting for this cluster. */
   enabled?: boolean;
 }
-export const ILBSubsettingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ILBSubsettingConfig" }) as any as S.Schema<ILBSubsettingConfig>;
+export const ILBSubsettingConfig = RayClusterLoggingConfig as any as S.Schema<ILBSubsettingConfig>;
 
 export type ClusterUpdateDesiredStackTypeEnum = "STACK_TYPE_UNSPECIFIED" | "IPV4" | "IPV4_IPV6";
 export const ClusterUpdateDesiredStackTypeEnum = S.String;

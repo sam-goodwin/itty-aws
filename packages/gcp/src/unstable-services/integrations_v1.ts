@@ -1142,13 +1142,8 @@ export const GoogleCloudIntegrationsV1alphaIntegrationVersionDatabasePersistence
 export interface EnterpriseCrmEventbusProtoBooleanParameterArray {
   booleanValues?: BooleanList;
 }
-export const EnterpriseCrmEventbusProtoBooleanParameterArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    booleanValues: S.optional(BooleanList),
-  }),
-).annotate({
-  identifier: "EnterpriseCrmEventbusProtoBooleanParameterArray",
-}) as any as S.Schema<EnterpriseCrmEventbusProtoBooleanParameterArray>;
+export const EnterpriseCrmEventbusProtoBooleanParameterArray =
+  GoogleCloudIntegrationsV1alphaBooleanParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoBooleanParameterArray>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -1175,35 +1170,20 @@ export const EnterpriseCrmEventbusProtoProtoParameterArray = /*@__PURE__*/ S.sus
 export interface EnterpriseCrmEventbusProtoDoubleParameterArray {
   doubleValues?: DoubleList;
 }
-export const EnterpriseCrmEventbusProtoDoubleParameterArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    doubleValues: S.optional(DoubleList),
-  }),
-).annotate({
-  identifier: "EnterpriseCrmEventbusProtoDoubleParameterArray",
-}) as any as S.Schema<EnterpriseCrmEventbusProtoDoubleParameterArray>;
+export const EnterpriseCrmEventbusProtoDoubleParameterArray =
+  GoogleCloudIntegrationsV1alphaDoubleParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoDoubleParameterArray>;
 
 export interface EnterpriseCrmEventbusProtoStringParameterArray {
   stringValues?: StringList;
 }
-export const EnterpriseCrmEventbusProtoStringParameterArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stringValues: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "EnterpriseCrmEventbusProtoStringParameterArray",
-}) as any as S.Schema<EnterpriseCrmEventbusProtoStringParameterArray>;
+export const EnterpriseCrmEventbusProtoStringParameterArray =
+  GoogleCloudIntegrationsV1alphaStringParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoStringParameterArray>;
 
 export interface EnterpriseCrmEventbusProtoIntParameterArray {
   intValues?: StringList;
 }
-export const EnterpriseCrmEventbusProtoIntParameterArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intValues: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "EnterpriseCrmEventbusProtoIntParameterArray",
-}) as any as S.Schema<EnterpriseCrmEventbusProtoIntParameterArray>;
+export const EnterpriseCrmEventbusProtoIntParameterArray =
+  GoogleCloudIntegrationsV1alphaIntParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoIntParameterArray>;
 
 export interface EnterpriseCrmEventbusProtoSerializedObjectParameter {
   objectValue?: string;
@@ -1614,14 +1594,8 @@ export interface EnterpriseCrmEventbusProtoCoordinate {
   x?: number;
   y?: number;
 }
-export const EnterpriseCrmEventbusProtoCoordinate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EnterpriseCrmEventbusProtoCoordinate",
-}) as any as S.Schema<EnterpriseCrmEventbusProtoCoordinate>;
+export const EnterpriseCrmEventbusProtoCoordinate =
+  GoogleCloudIntegrationsV1alphaCoordinate as any as S.Schema<EnterpriseCrmEventbusProtoCoordinate>;
 
 export type EnterpriseCrmEventbusProtoConditionOperatorEnum =
   | "UNSET"
@@ -4817,13 +4791,8 @@ export interface GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse {
   /** String representation of the test case. */
   content?: string;
 }
-export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse>;
+export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse =
+  GoogleCloudIntegrationsV1alphaDownloadExecutionResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse>;
 
 export interface DownloadProjectsLocationsProductsIntegrationsExecutionsRequest {
   /** Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id} */
@@ -4925,13 +4894,8 @@ export interface GoogleCloudIntegrationsV1alphaDownloadTemplateResponse {
   /** String representation of the template. */
   content?: string;
 }
-export const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaDownloadTemplateResponse",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse>;
+export const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse =
+  GoogleCloudIntegrationsV1alphaDownloadExecutionResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse>;
 
 export interface EnumerateConnectorPlatformRegionsRequest {}
 export const EnumerateConnectorPlatformRegionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -6512,14 +6476,8 @@ export interface GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse {
   /** The id of the linked Apps Script project. */
   scriptId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scriptId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse>;
+export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse =
+  GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest as any as S.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse>;
 
 export interface ListProjectsLocationsAuthConfigsRequest {
   /** The token returned in the previous response. */
@@ -7338,14 +7296,8 @@ export interface GoogleCloudConnectorsV1ResourceRequests {
   /** Output only. Memory request. */
   memory?: string;
 }
-export const GoogleCloudConnectorsV1ResourceRequests = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpu: S.optional(S.String),
-    memory: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudConnectorsV1ResourceRequests",
-}) as any as S.Schema<GoogleCloudConnectorsV1ResourceRequests>;
+export const GoogleCloudConnectorsV1ResourceRequests =
+  GoogleCloudConnectorsV1ResourceLimits as any as S.Schema<GoogleCloudConnectorsV1ResourceRequests>;
 
 export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
@@ -9747,9 +9699,7 @@ export const PublishProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/
 /** Response for PublishIntegrationVersion. */
 export interface GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse {}
 export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse>;
+  GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse>;
 
 export interface PublishProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Required. The version to publish. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
@@ -9915,11 +9865,8 @@ export const ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
 
 /** Response for Suspensions.ResolveSuspensions. */
 export interface GoogleCloudIntegrationsV1alphaResolveSuspensionResponse {}
-export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaResolveSuspensionResponse",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse>;
+export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse =
+  GoogleCloudIntegrationsV1alphaDeprovisionClientRequest as any as S.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse>;
 
 export interface ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest {
   /** Required. projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_name}/executions/{execution_name}/suspensions/{suspension_id} */
@@ -10182,14 +10129,8 @@ export interface GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
   /** The token used to retrieve the next page results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templates: S.optional(GoogleCloudIntegrationsV1alphaTemplateList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaSearchTemplatesResponse",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse>;
+export const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse =
+  GoogleCloudIntegrationsV1alphaListTemplatesResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse>;
 
 /** Request to Share template */
 export interface GoogleCloudIntegrationsV1alphaShareTemplateRequest {
@@ -10631,13 +10572,8 @@ export interface GoogleCloudIntegrationsV1alphaUnshareTemplateRequest {
   /** Optional. Project name resources to unshare the template. The project names is expected in resource format Ex: projects/{project-number} */
   resourceNames?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaUnshareTemplateRequest",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaUnshareTemplateRequest>;
+export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest =
+  GoogleCloudIntegrationsV1alphaShareTemplateRequest as any as S.Schema<GoogleCloudIntegrationsV1alphaUnshareTemplateRequest>;
 
 export interface UnshareProjectsLocationsTemplatesRequest {
   /** Required. The name that is associated with the Template. */
@@ -10912,14 +10848,8 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateResponse {
   /** IntegrationVersion which is created. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const GoogleCloudIntegrationsV1alphaUseTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subIntegrationVersions: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersionList),
-    integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
-  }),
-).annotate({
-  identifier: "GoogleCloudIntegrationsV1alphaUseTemplateResponse",
-}) as any as S.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse>;
+export const GoogleCloudIntegrationsV1alphaUseTemplateResponse =
+  GoogleCloudIntegrationsV1alphaImportTemplateResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse>;
 
 export type CancelProjectsLocationsIntegrationsExecutionsError =
   | NotFound

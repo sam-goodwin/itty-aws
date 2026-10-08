@@ -383,9 +383,7 @@ export const DeleteResourceInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-export const DeleteResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
-).annotate({ identifier: "DeleteResourceOutput" }) as any as S.Schema<DeleteResourceOutput>;
+export const DeleteResourceOutput = CreateResourceOutput as any as S.Schema<DeleteResourceOutput>;
 export interface GetResourceInput {
   TypeName: string;
   TypeVersionId?: string;
@@ -472,7 +470,7 @@ export type NextToken = string;
 export type Operations = string[];
 export const Operations = /*@__PURE__*/ S.Array(S.String);
 export type OperationStatuses = string[];
-export const OperationStatuses = /*@__PURE__*/ S.Array(S.String);
+export const OperationStatuses = Operations as any as S.Schema<OperationStatuses>;
 export interface ResourceRequestStatusFilter {
   Operations?: string[];
   OperationStatuses?: string[];
@@ -568,9 +566,7 @@ export const UpdateResourceInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-export const UpdateResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ProgressEvent: S.optional(ProgressEvent) }),
-).annotate({ identifier: "UpdateResourceOutput" }) as any as S.Schema<UpdateResourceOutput>;
+export const UpdateResourceOutput = CreateResourceOutput as any as S.Schema<UpdateResourceOutput>;
 export type ErrorMessage = string;
 export type CancelResourceRequestError =
   | ConcurrentModificationException

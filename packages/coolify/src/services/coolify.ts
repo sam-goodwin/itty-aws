@@ -207,9 +207,8 @@ export const CloneServiceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloneServiceByUuidRequest>;
 
 export interface CloneServiceByUuidResponse {}
-export const CloneServiceByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CloneServiceByUuidResponse",
-}) as any as S.Schema<CloneServiceByUuidResponse>;
+export const CloneServiceByUuidResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CloneServiceByUuidResponse>;
 
 export interface ConfigureApplicationSecretManagerRequest {
   uuid: string;
@@ -227,11 +226,8 @@ export const ConfigureApplicationSecretManagerRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigureApplicationSecretManagerRequest>;
 
 export interface ConfigureApplicationSecretManagerResponse {}
-export const ConfigureApplicationSecretManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConfigureApplicationSecretManagerResponse",
-}) as any as S.Schema<ConfigureApplicationSecretManagerResponse>;
+export const ConfigureApplicationSecretManagerResponse =
+  AddApplicationDestinationResponse as any as S.Schema<ConfigureApplicationSecretManagerResponse>;
 
 export interface CreateCloudInitScriptRequest {
   name: string;
@@ -248,9 +244,8 @@ export const CreateCloudInitScriptRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudInitScriptRequest>;
 
 export interface CreateCloudInitScriptResponse {}
-export const CreateCloudInitScriptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateCloudInitScriptResponse",
-}) as any as S.Schema<CreateCloudInitScriptResponse>;
+export const CreateCloudInitScriptResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateCloudInitScriptResponse>;
 
 /** The cloud provider. */
 export type CreateCloudTokenRequestProvider = "hetzner" | "digitalocean" | "vultr";
@@ -343,14 +338,8 @@ export interface CreateDatabaseBackupResponse {
   uuid?: string;
   message?: string;
 }
-export const CreateDatabaseBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDatabaseBackupResponse",
-}) as any as S.Schema<CreateDatabaseBackupResponse>;
+export const CreateDatabaseBackupResponse =
+  CloneApplicationByUuidResponse as any as S.Schema<CreateDatabaseBackupResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseClickhouseRequestTagsList = Array<string>;
@@ -434,17 +423,13 @@ export const CreateDatabaseClickhouseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseClickhouseRequest>;
 
 export interface CreateDatabaseClickhouseResponse {}
-export const CreateDatabaseClickhouseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatabaseClickhouseResponse",
-}) as any as S.Schema<CreateDatabaseClickhouseResponse>;
+export const CreateDatabaseClickhouseResponse =
+  AddApplicationDestinationResponse as any as S.Schema<CreateDatabaseClickhouseResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseDragonflyRequestTagsList = Array<string>;
-export const CreateDatabaseDragonflyRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseDragonflyRequestTagsList>;
+export const CreateDatabaseDragonflyRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabaseDragonflyRequestTagsList>;
 
 export interface CreateDatabaseDragonflyRequest {
   /** UUID of the server */
@@ -636,15 +621,13 @@ export const CreateDatabaseImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseImportRequest>;
 
 export interface CreateDatabaseImportResponse {}
-export const CreateDatabaseImportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseImportResponse",
-}) as any as S.Schema<CreateDatabaseImportResponse>;
+export const CreateDatabaseImportResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateDatabaseImportResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseKeydbRequestTagsList = Array<string>;
-export const CreateDatabaseKeydbRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseKeydbRequestTagsList>;
+export const CreateDatabaseKeydbRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabaseKeydbRequestTagsList>;
 
 export interface CreateDatabaseKeydbRequest {
   /** UUID of the server */
@@ -722,15 +705,13 @@ export const CreateDatabaseKeydbRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseKeydbRequest>;
 
 export interface CreateDatabaseKeydbResponse {}
-export const CreateDatabaseKeydbResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseKeydbResponse",
-}) as any as S.Schema<CreateDatabaseKeydbResponse>;
+export const CreateDatabaseKeydbResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateDatabaseKeydbResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseMariadbRequestTagsList = Array<string>;
-export const CreateDatabaseMariadbRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseMariadbRequestTagsList>;
+export const CreateDatabaseMariadbRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabaseMariadbRequestTagsList>;
 
 export interface CreateDatabaseMariadbRequest {
   /** UUID of the server */
@@ -817,15 +798,13 @@ export const CreateDatabaseMariadbRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseMariadbRequest>;
 
 export interface CreateDatabaseMariadbResponse {}
-export const CreateDatabaseMariadbResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseMariadbResponse",
-}) as any as S.Schema<CreateDatabaseMariadbResponse>;
+export const CreateDatabaseMariadbResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateDatabaseMariadbResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseMongodbRequestTagsList = Array<string>;
-export const CreateDatabaseMongodbRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseMongodbRequestTagsList>;
+export const CreateDatabaseMongodbRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabaseMongodbRequestTagsList>;
 
 export interface CreateDatabaseMongodbRequest {
   /** UUID of the server */
@@ -903,15 +882,13 @@ export const CreateDatabaseMongodbRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseMongodbRequest>;
 
 export interface CreateDatabaseMongodbResponse {}
-export const CreateDatabaseMongodbResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseMongodbResponse",
-}) as any as S.Schema<CreateDatabaseMongodbResponse>;
+export const CreateDatabaseMongodbResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateDatabaseMongodbResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseMysqlRequestTagsList = Array<string>;
-export const CreateDatabaseMysqlRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseMysqlRequestTagsList>;
+export const CreateDatabaseMysqlRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabaseMysqlRequestTagsList>;
 
 export interface CreateDatabaseMysqlRequest {
   /** UUID of the server */
@@ -998,15 +975,13 @@ export const CreateDatabaseMysqlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseMysqlRequest>;
 
 export interface CreateDatabaseMysqlResponse {}
-export const CreateDatabaseMysqlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseMysqlResponse",
-}) as any as S.Schema<CreateDatabaseMysqlResponse>;
+export const CreateDatabaseMysqlResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateDatabaseMysqlResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabasePostgresqlRequestTagsList = Array<string>;
-export const CreateDatabasePostgresqlRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabasePostgresqlRequestTagsList>;
+export const CreateDatabasePostgresqlRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabasePostgresqlRequestTagsList>;
 
 export interface CreateDatabasePostgresqlRequest {
   /** UUID of the server */
@@ -1096,17 +1071,13 @@ export const CreateDatabasePostgresqlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabasePostgresqlRequest>;
 
 export interface CreateDatabasePostgresqlResponse {}
-export const CreateDatabasePostgresqlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDatabasePostgresqlResponse",
-}) as any as S.Schema<CreateDatabasePostgresqlResponse>;
+export const CreateDatabasePostgresqlResponse =
+  AddApplicationDestinationResponse as any as S.Schema<CreateDatabasePostgresqlResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseRedisRequestTagsList = Array<string>;
-export const CreateDatabaseRedisRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseRedisRequestTagsList>;
+export const CreateDatabaseRedisRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabaseRedisRequestTagsList>;
 
 export interface CreateDatabaseRedisRequest {
   /** UUID of the server */
@@ -1184,15 +1155,13 @@ export const CreateDatabaseRedisRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseRedisRequest>;
 
 export interface CreateDatabaseRedisResponse {}
-export const CreateDatabaseRedisResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseRedisResponse",
-}) as any as S.Schema<CreateDatabaseRedisResponse>;
+export const CreateDatabaseRedisResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateDatabaseRedisResponse>;
 
 /** Tags to assign to the database. */
 export type CreateDatabaseSqliteRequestTagsList = Array<string>;
-export const CreateDatabaseSqliteRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseSqliteRequestTagsList>;
+export const CreateDatabaseSqliteRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDatabaseSqliteRequestTagsList>;
 
 export interface CreateDatabaseSqliteRequest {
   /** UUID of the server */
@@ -1258,9 +1227,8 @@ export const CreateDatabaseSqliteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseSqliteRequest>;
 
 export interface CreateDatabaseSqliteResponse {}
-export const CreateDatabaseSqliteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateDatabaseSqliteResponse",
-}) as any as S.Schema<CreateDatabaseSqliteResponse>;
+export const CreateDatabaseSqliteResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateDatabaseSqliteResponse>;
 
 export interface CreateDigitaloceanServerRequest {}
 export const CreateDigitaloceanServerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1270,11 +1238,8 @@ export const CreateDigitaloceanServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDigitaloceanServerRequest>;
 
 export interface CreateDigitaloceanServerResponse {}
-export const CreateDigitaloceanServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateDigitaloceanServerResponse",
-}) as any as S.Schema<CreateDigitaloceanServerResponse>;
+export const CreateDigitaloceanServerResponse =
+  AddApplicationDestinationResponse as any as S.Schema<CreateDigitaloceanServerResponse>;
 
 /** The build pack type. */
 export type CreateDockerfileApplicationRequestBuildPack = "dockerfile";
@@ -1282,9 +1247,8 @@ export const CreateDockerfileApplicationRequestBuildPack = S.String;
 
 /** The subset of the application domains served with an X-Robots-Tag: noindex, nofollow response header, keeping them out of search engines. Entries that are not among the application domains are ignored. */
 export type CreateDockerfileApplicationRequestNoindexDomainsList = Array<string>;
-export const CreateDockerfileApplicationRequestNoindexDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDockerfileApplicationRequestNoindexDomainsList>;
+export const CreateDockerfileApplicationRequestNoindexDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDockerfileApplicationRequestNoindexDomainsList>;
 
 /** How to set redirect with Traefik / Caddy. www<->non-www. */
 export type CreateDockerfileApplicationRequestRedirect = "www" | "non-www" | "both";
@@ -1292,9 +1256,8 @@ export const CreateDockerfileApplicationRequestRedirect = S.String;
 
 /** Tags to assign to the application. */
 export type CreateDockerfileApplicationRequestTagsList = Array<string>;
-export const CreateDockerfileApplicationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDockerfileApplicationRequestTagsList>;
+export const CreateDockerfileApplicationRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDockerfileApplicationRequestTagsList>;
 
 export interface CreateDockerfileApplicationRequest {
   /** The project UUID. */
@@ -1567,9 +1530,8 @@ export const CreateDockerfileApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The subset of the application domains served with an X-Robots-Tag: noindex, nofollow response header, keeping them out of search engines. Entries that are not among the application domains are ignored. */
 export type CreateDockerimageApplicationRequestNoindexDomainsList = Array<string>;
-export const CreateDockerimageApplicationRequestNoindexDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDockerimageApplicationRequestNoindexDomainsList>;
+export const CreateDockerimageApplicationRequestNoindexDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDockerimageApplicationRequestNoindexDomainsList>;
 
 /** How to set redirect with Traefik / Caddy. www<->non-www. */
 export type CreateDockerimageApplicationRequestRedirect = "www" | "non-www" | "both";
@@ -1577,9 +1539,8 @@ export const CreateDockerimageApplicationRequestRedirect = S.String;
 
 /** Tags to assign to the application. */
 export type CreateDockerimageApplicationRequestTagsList = Array<string>;
-export const CreateDockerimageApplicationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDockerimageApplicationRequestTagsList>;
+export const CreateDockerimageApplicationRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateDockerimageApplicationRequestTagsList>;
 
 export interface CreateDockerimageApplicationRequest {
   /** The project UUID. */
@@ -1833,13 +1794,8 @@ export const CreateDockerimageApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDockerimageApplicationResponse {
   uuid?: string;
 }
-export const CreateDockerimageApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDockerimageApplicationResponse",
-}) as any as S.Schema<CreateDockerimageApplicationResponse>;
+export const CreateDockerimageApplicationResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreateDockerimageApplicationResponse>;
 
 export interface CreateEnvByApplicationUuidRequest {
   /** UUID of the application. */
@@ -1874,13 +1830,8 @@ export const CreateEnvByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEnvByApplicationUuidResponse {
   uuid?: string;
 }
-export const CreateEnvByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateEnvByApplicationUuidResponse",
-}) as any as S.Schema<CreateEnvByApplicationUuidResponse>;
+export const CreateEnvByApplicationUuidResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreateEnvByApplicationUuidResponse>;
 
 export interface CreateEnvByDatabaseUuidRequest {
   /** UUID of the database. */
@@ -1912,13 +1863,8 @@ export const CreateEnvByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEnvByDatabaseUuidResponse {
   uuid?: string;
 }
-export const CreateEnvByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateEnvByDatabaseUuidResponse",
-}) as any as S.Schema<CreateEnvByDatabaseUuidResponse>;
+export const CreateEnvByDatabaseUuidResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreateEnvByDatabaseUuidResponse>;
 
 export interface CreateEnvByServiceUuidRequest {
   /** UUID of the service. */
@@ -1953,13 +1899,8 @@ export const CreateEnvByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEnvByServiceUuidResponse {
   uuid?: string;
 }
-export const CreateEnvByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateEnvByServiceUuidResponse",
-}) as any as S.Schema<CreateEnvByServiceUuidResponse>;
+export const CreateEnvByServiceUuidResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreateEnvByServiceUuidResponse>;
 
 export interface CreateEnvironmentRequest {
   /** Project UUID */
@@ -1978,13 +1919,8 @@ export interface CreateEnvironmentResponse {
   /** The UUID of the environment. */
   uuid?: string;
 }
-export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateEnvironmentResponse",
-}) as any as S.Schema<CreateEnvironmentResponse>;
+export const CreateEnvironmentResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreateEnvironmentResponse>;
 
 export interface CreateEnvironmentSharedEnvRequest {
   /** Project UUID */
@@ -2008,11 +1944,8 @@ export const CreateEnvironmentSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnvironmentSharedEnvRequest>;
 
 export interface CreateEnvironmentSharedEnvResponse {}
-export const CreateEnvironmentSharedEnvResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateEnvironmentSharedEnvResponse",
-}) as any as S.Schema<CreateEnvironmentSharedEnvResponse>;
+export const CreateEnvironmentSharedEnvResponse =
+  AddApplicationDestinationResponse as any as S.Schema<CreateEnvironmentSharedEnvResponse>;
 
 export interface CreateGithubAppRequest {
   /** Name of the GitHub app. */
@@ -2174,15 +2107,13 @@ export const CreateHetznerServerRequestHetznerSshKeyIdsList = /*@__PURE__*/ S.Ar
 
 /** Existing Hetzner firewall IDs to apply during server creation */
 export type CreateHetznerServerRequestHetznerFirewallIdsList = Array<number>;
-export const CreateHetznerServerRequestHetznerFirewallIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateHetznerServerRequestHetznerFirewallIdsList>;
+export const CreateHetznerServerRequestHetznerFirewallIdsList =
+  CreateHetznerServerRequestHetznerSshKeyIdsList as any as S.Schema<CreateHetznerServerRequestHetznerFirewallIdsList>;
 
 /** Existing Hetzner network IDs to attach during server creation */
 export type CreateHetznerServerRequestHetznerNetworkIdsList = Array<number>;
-export const CreateHetznerServerRequestHetznerNetworkIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateHetznerServerRequestHetznerNetworkIdsList>;
+export const CreateHetznerServerRequestHetznerNetworkIdsList =
+  CreateHetznerServerRequestHetznerSshKeyIdsList as any as S.Schema<CreateHetznerServerRequestHetznerNetworkIdsList>;
 
 export interface CreateHetznerServerRequest {
   /** Cloud provider token UUID. Required if cloud_provider_token_id is not provided. */
@@ -2373,9 +2304,8 @@ export const CreatePrivateDeployKeyApplicationRequestBuildPack = S.String;
 
 /** The subset of the application domains served with an X-Robots-Tag: noindex, nofollow response header, keeping them out of search engines. Entries that are not among the application domains are ignored. */
 export type CreatePrivateDeployKeyApplicationRequestNoindexDomainsList = Array<string>;
-export const CreatePrivateDeployKeyApplicationRequestNoindexDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePrivateDeployKeyApplicationRequestNoindexDomainsList>;
+export const CreatePrivateDeployKeyApplicationRequestNoindexDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreatePrivateDeployKeyApplicationRequestNoindexDomainsList>;
 
 /** The static image. */
 export type CreatePrivateDeployKeyApplicationRequestStaticImage = "nginx:alpine";
@@ -2426,9 +2356,8 @@ export const CreatePrivateDeployKeyApplicationRequestDockerComposeDomainsList =
 
 /** Tags to assign to the application. */
 export type CreatePrivateDeployKeyApplicationRequestTagsList = Array<string>;
-export const CreatePrivateDeployKeyApplicationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePrivateDeployKeyApplicationRequestTagsList>;
+export const CreatePrivateDeployKeyApplicationRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreatePrivateDeployKeyApplicationRequestTagsList>;
 
 export interface CreatePrivateDeployKeyApplicationRequest {
   /** The project UUID. */
@@ -2750,13 +2679,8 @@ export const CreatePrivateDeployKeyApplicationRequest = /*@__PURE__*/ S.suspend(
 export interface CreatePrivateDeployKeyApplicationResponse {
   uuid?: string;
 }
-export const CreatePrivateDeployKeyApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreatePrivateDeployKeyApplicationResponse",
-}) as any as S.Schema<CreatePrivateDeployKeyApplicationResponse>;
+export const CreatePrivateDeployKeyApplicationResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreatePrivateDeployKeyApplicationResponse>;
 
 /** The build pack type. */
 export type CreatePrivateGithubAppApplicationRequestBuildPack =
@@ -2769,9 +2693,8 @@ export const CreatePrivateGithubAppApplicationRequestBuildPack = S.String;
 
 /** The subset of the application domains served with an X-Robots-Tag: noindex, nofollow response header, keeping them out of search engines. Entries that are not among the application domains are ignored. */
 export type CreatePrivateGithubAppApplicationRequestNoindexDomainsList = Array<string>;
-export const CreatePrivateGithubAppApplicationRequestNoindexDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePrivateGithubAppApplicationRequestNoindexDomainsList>;
+export const CreatePrivateGithubAppApplicationRequestNoindexDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreatePrivateGithubAppApplicationRequestNoindexDomainsList>;
 
 /** The static image. */
 export type CreatePrivateGithubAppApplicationRequestStaticImage = "nginx:alpine";
@@ -2822,9 +2745,8 @@ export const CreatePrivateGithubAppApplicationRequestDockerComposeDomainsList =
 
 /** Tags to assign to the application. */
 export type CreatePrivateGithubAppApplicationRequestTagsList = Array<string>;
-export const CreatePrivateGithubAppApplicationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePrivateGithubAppApplicationRequestTagsList>;
+export const CreatePrivateGithubAppApplicationRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreatePrivateGithubAppApplicationRequestTagsList>;
 
 export interface CreatePrivateGithubAppApplicationRequest {
   /** The project UUID. */
@@ -3146,13 +3068,8 @@ export const CreatePrivateGithubAppApplicationRequest = /*@__PURE__*/ S.suspend(
 export interface CreatePrivateGithubAppApplicationResponse {
   uuid?: string;
 }
-export const CreatePrivateGithubAppApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreatePrivateGithubAppApplicationResponse",
-}) as any as S.Schema<CreatePrivateGithubAppApplicationResponse>;
+export const CreatePrivateGithubAppApplicationResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreatePrivateGithubAppApplicationResponse>;
 
 export interface CreatePrivateKeyRequest {
   name?: string;
@@ -3170,11 +3087,8 @@ export const CreatePrivateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePrivateKeyResponse {
   uuid?: string;
 }
-export const CreatePrivateKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreatePrivateKeyResponse" }) as any as S.Schema<CreatePrivateKeyResponse>;
+export const CreatePrivateKeyResponse =
+  CreateCloudTokenResponse as any as S.Schema<CreatePrivateKeyResponse>;
 
 export interface CreateProjectRequest {
   /** The name of the project. */
@@ -3193,11 +3107,8 @@ export interface CreateProjectResponse {
   /** The UUID of the project. */
   uuid?: string;
 }
-export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateProjectResponse" }) as any as S.Schema<CreateProjectResponse>;
+export const CreateProjectResponse =
+  CreateCloudTokenResponse as any as S.Schema<CreateProjectResponse>;
 
 export interface CreateProjectSharedEnvRequest {
   /** Project UUID */
@@ -3212,9 +3123,8 @@ export const CreateProjectSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectSharedEnvRequest>;
 
 export interface CreateProjectSharedEnvResponse {}
-export const CreateProjectSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateProjectSharedEnvResponse",
-}) as any as S.Schema<CreateProjectSharedEnvResponse>;
+export const CreateProjectSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateProjectSharedEnvResponse>;
 
 /** The build pack type. */
 export type CreatePublicApplicationRequestBuildPack =
@@ -3227,9 +3137,8 @@ export const CreatePublicApplicationRequestBuildPack = S.String;
 
 /** The subset of the application domains served with an X-Robots-Tag: noindex, nofollow response header, keeping them out of search engines. Entries that are not among the application domains are ignored. */
 export type CreatePublicApplicationRequestNoindexDomainsList = Array<string>;
-export const CreatePublicApplicationRequestNoindexDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePublicApplicationRequestNoindexDomainsList>;
+export const CreatePublicApplicationRequestNoindexDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreatePublicApplicationRequestNoindexDomainsList>;
 
 /** The static image. */
 export type CreatePublicApplicationRequestStaticImage = "nginx:alpine";
@@ -3273,9 +3182,8 @@ export const CreatePublicApplicationRequestDockerComposeDomainsList = /*@__PURE_
 
 /** Tags to assign to the application. */
 export type CreatePublicApplicationRequestTagsList = Array<string>;
-export const CreatePublicApplicationRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePublicApplicationRequestTagsList>;
+export const CreatePublicApplicationRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreatePublicApplicationRequestTagsList>;
 
 export interface CreatePublicApplicationRequest {
   /** The project UUID. */
@@ -3592,13 +3500,8 @@ export const CreatePublicApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePublicApplicationResponse {
   uuid?: string;
 }
-export const CreatePublicApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreatePublicApplicationResponse",
-}) as any as S.Schema<CreatePublicApplicationResponse>;
+export const CreatePublicApplicationResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<CreatePublicApplicationResponse>;
 
 export interface CreateS3StorageRequest {
   /** A friendly name for the storage. */
@@ -3635,11 +3538,8 @@ export interface CreateS3StorageResponse {
   /** The UUID of the S3 storage. */
   uuid?: string;
 }
-export const CreateS3StorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateS3StorageResponse" }) as any as S.Schema<CreateS3StorageResponse>;
+export const CreateS3StorageResponse =
+  CreateCloudTokenResponse as any as S.Schema<CreateS3StorageResponse>;
 
 export interface CreateScheduledTaskByApplicationUuidRequest {
   /** UUID of the application. */
@@ -3760,11 +3660,8 @@ export const CreateSecretManagerIntegrationTokenRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateSecretManagerIntegrationTokenRequest>;
 
 export interface CreateSecretManagerIntegrationTokenResponse {}
-export const CreateSecretManagerIntegrationTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateSecretManagerIntegrationTokenResponse",
-}) as any as S.Schema<CreateSecretManagerIntegrationTokenResponse>;
+export const CreateSecretManagerIntegrationTokenResponse =
+  AddApplicationDestinationResponse as any as S.Schema<CreateSecretManagerIntegrationTokenResponse>;
 
 /** Server role. */
 export type CreateServerRequestServerRole = "deployment" | "build" | "both";
@@ -3815,11 +3712,8 @@ export interface CreateServerResponse {
   /** The UUID of the server. */
   uuid?: string;
 }
-export const CreateServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateServerResponse" }) as any as S.Schema<CreateServerResponse>;
+export const CreateServerResponse =
+  CreateCloudTokenResponse as any as S.Schema<CreateServerResponse>;
 
 export type CreateServerDestinationRequestType = "standalone" | "swarm";
 export const CreateServerDestinationRequestType = S.String;
@@ -3880,9 +3774,8 @@ export const CreateServerSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServerSharedEnvRequest>;
 
 export interface CreateServerSharedEnvResponse {}
-export const CreateServerSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateServerSharedEnvResponse",
-}) as any as S.Schema<CreateServerSharedEnvResponse>;
+export const CreateServerSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateServerSharedEnvResponse>;
 
 export interface CreateServiceRequestUrlsItem {
   /** The service name as defined in docker-compose. */
@@ -3907,9 +3800,8 @@ export const CreateServiceRequestUrlsList = /*@__PURE__*/ S.Array(
 
 /** Tags to assign to the service. */
 export type CreateServiceRequestTagsList = Array<string>;
-export const CreateServiceRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateServiceRequestTagsList>;
+export const CreateServiceRequestTagsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateServiceRequestTagsList>;
 
 export interface CreateServiceRequest {
   /** The one-click service type (e.g. "actualbudget", "calibre-web", "gitea-with-mysql" ...) */
@@ -3962,9 +3854,8 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Service domains. */
 export type CreateServiceResponseDomainsList = Array<string>;
-export const CreateServiceResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateServiceResponseDomainsList>;
+export const CreateServiceResponseDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateServiceResponseDomainsList>;
 
 export interface CreateServiceResponse {
   /** Service UUID. */
@@ -4003,11 +3894,8 @@ export const CreateServiceDatabaseImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceDatabaseImportRequest>;
 
 export interface CreateServiceDatabaseImportResponse {}
-export const CreateServiceDatabaseImportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateServiceDatabaseImportResponse",
-}) as any as S.Schema<CreateServiceDatabaseImportResponse>;
+export const CreateServiceDatabaseImportResponse =
+  AddApplicationDestinationResponse as any as S.Schema<CreateServiceDatabaseImportResponse>;
 
 /** The type of storage. */
 export type CreateStorageByApplicationUuidRequestType = "persistent" | "file";
@@ -4085,11 +3973,8 @@ export const CreateStorageByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStorageByDatabaseUuidRequest>;
 
 export type CreateStorageByDatabaseUuidResponse = unknown;
-export const CreateStorageByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateStorageByDatabaseUuidResponse",
-}) as any as S.Schema<CreateStorageByDatabaseUuidResponse>;
+export const CreateStorageByDatabaseUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<CreateStorageByDatabaseUuidResponse>;
 
 /** The type of storage. */
 export type CreateStorageByServiceUuidRequestType = "persistent" | "file";
@@ -4129,11 +4014,8 @@ export const CreateStorageByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStorageByServiceUuidRequest>;
 
 export type CreateStorageByServiceUuidResponse = unknown;
-export const CreateStorageByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateStorageByServiceUuidResponse",
-}) as any as S.Schema<CreateStorageByServiceUuidResponse>;
+export const CreateStorageByServiceUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<CreateStorageByServiceUuidResponse>;
 
 export interface CreateTagRequest {
   name: string;
@@ -4162,9 +4044,8 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of tag names (each min 2 characters). Required if tag_name is not provided. */
 export type CreateTagByApplicationUuidRequestTagNamesList = Array<string>;
-export const CreateTagByApplicationUuidRequestTagNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTagByApplicationUuidRequestTagNamesList>;
+export const CreateTagByApplicationUuidRequestTagNamesList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateTagByApplicationUuidRequestTagNamesList>;
 
 export interface CreateTagByApplicationUuidRequest {
   /** UUID of the application. */
@@ -4198,9 +4079,8 @@ export const CreateTagByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of tag names (each min 2 characters). Required if tag_name is not provided. */
 export type CreateTagByDatabaseUuidRequestTagNamesList = Array<string>;
-export const CreateTagByDatabaseUuidRequestTagNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTagByDatabaseUuidRequestTagNamesList>;
+export const CreateTagByDatabaseUuidRequestTagNamesList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateTagByDatabaseUuidRequestTagNamesList>;
 
 export interface CreateTagByDatabaseUuidRequest {
   /** UUID of the database. */
@@ -4221,22 +4101,17 @@ export const CreateTagByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTagByDatabaseUuidRequest>;
 
 export type CreateTagByDatabaseUuidResponseBodyList = Array<Tag>;
-export const CreateTagByDatabaseUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<CreateTagByDatabaseUuidResponseBodyList>;
+export const CreateTagByDatabaseUuidResponseBodyList =
+  CreateTagByApplicationUuidResponseBodyList as any as S.Schema<CreateTagByDatabaseUuidResponseBodyList>;
 
 export type CreateTagByDatabaseUuidResponse = CreateTagByDatabaseUuidResponseBodyList;
-export const CreateTagByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  CreateTagByDatabaseUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateTagByDatabaseUuidResponse",
-}) as any as S.Schema<CreateTagByDatabaseUuidResponse>;
+export const CreateTagByDatabaseUuidResponse =
+  CreateTagByApplicationUuidResponse as any as S.Schema<CreateTagByDatabaseUuidResponse>;
 
 /** Array of tag names (each min 2 characters). Required if tag_name is not provided. */
 export type CreateTagByServiceUuidRequestTagNamesList = Array<string>;
-export const CreateTagByServiceUuidRequestTagNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateTagByServiceUuidRequestTagNamesList>;
+export const CreateTagByServiceUuidRequestTagNamesList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<CreateTagByServiceUuidRequestTagNamesList>;
 
 export interface CreateTagByServiceUuidRequest {
   /** UUID of the service. */
@@ -4257,16 +4132,12 @@ export const CreateTagByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTagByServiceUuidRequest>;
 
 export type CreateTagByServiceUuidResponseBodyList = Array<Tag>;
-export const CreateTagByServiceUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<CreateTagByServiceUuidResponseBodyList>;
+export const CreateTagByServiceUuidResponseBodyList =
+  CreateTagByApplicationUuidResponseBodyList as any as S.Schema<CreateTagByServiceUuidResponseBodyList>;
 
 export type CreateTagByServiceUuidResponse = CreateTagByServiceUuidResponseBodyList;
-export const CreateTagByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  CreateTagByServiceUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateTagByServiceUuidResponse",
-}) as any as S.Schema<CreateTagByServiceUuidResponse>;
+export const CreateTagByServiceUuidResponse =
+  CreateTagByApplicationUuidResponse as any as S.Schema<CreateTagByServiceUuidResponse>;
 
 export interface CreateTeamSharedEnvRequest {
   key: string;
@@ -4291,9 +4162,8 @@ export const CreateTeamSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTeamSharedEnvRequest>;
 
 export interface CreateTeamSharedEnvResponse {}
-export const CreateTeamSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateTeamSharedEnvResponse",
-}) as any as S.Schema<CreateTeamSharedEnvResponse>;
+export const CreateTeamSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateTeamSharedEnvResponse>;
 
 export interface CreateVultrServerRequest {}
 export const CreateVultrServerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4301,9 +4171,8 @@ export const CreateVultrServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVultrServerRequest" }) as any as S.Schema<CreateVultrServerRequest>;
 
 export interface CreateVultrServerResponse {}
-export const CreateVultrServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateVultrServerResponse",
-}) as any as S.Schema<CreateVultrServerResponse>;
+export const CreateVultrServerResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<CreateVultrServerResponse>;
 
 export interface DeleteApplicationRequest {
   /** UUID of the application. */
@@ -4330,13 +4199,8 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteApplicationResponse {
   message?: string;
 }
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
+export const DeleteApplicationResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteApplicationResponse>;
 
 export interface DeleteApplicationStorageBackupScheduleRequest {
   uuid: string;
@@ -4358,11 +4222,8 @@ export const DeleteApplicationStorageBackupScheduleRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteApplicationStorageBackupScheduleRequest>;
 
 export interface DeleteApplicationStorageBackupScheduleResponse {}
-export const DeleteApplicationStorageBackupScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationStorageBackupScheduleResponse",
-}) as any as S.Schema<DeleteApplicationStorageBackupScheduleResponse>;
+export const DeleteApplicationStorageBackupScheduleResponse =
+  AddApplicationDestinationResponse as any as S.Schema<DeleteApplicationStorageBackupScheduleResponse>;
 
 export interface DeleteBackupConfigurationByUuidRequest {
   /** UUID of the database */
@@ -4391,13 +4252,8 @@ export const DeleteBackupConfigurationByUuidRequest = /*@__PURE__*/ S.suspend(()
 export interface DeleteBackupConfigurationByUuidResponse {
   message?: string;
 }
-export const DeleteBackupConfigurationByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteBackupConfigurationByUuidResponse",
-}) as any as S.Schema<DeleteBackupConfigurationByUuidResponse>;
+export const DeleteBackupConfigurationByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteBackupConfigurationByUuidResponse>;
 
 export interface DeleteBackupExecutionByUuidRequest {
   /** UUID of the database */
@@ -4429,13 +4285,8 @@ export const DeleteBackupExecutionByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBackupExecutionByUuidResponse {
   message?: string;
 }
-export const DeleteBackupExecutionByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteBackupExecutionByUuidResponse",
-}) as any as S.Schema<DeleteBackupExecutionByUuidResponse>;
+export const DeleteBackupExecutionByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteBackupExecutionByUuidResponse>;
 
 export interface DeleteCloudInitScriptRequest {
   uuid: string;
@@ -4449,9 +4300,8 @@ export const DeleteCloudInitScriptRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudInitScriptRequest>;
 
 export interface DeleteCloudInitScriptResponse {}
-export const DeleteCloudInitScriptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCloudInitScriptResponse",
-}) as any as S.Schema<DeleteCloudInitScriptResponse>;
+export const DeleteCloudInitScriptResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<DeleteCloudInitScriptResponse>;
 
 export interface DeleteCloudTokenRequest {
   /** UUID of the cloud provider token. */
@@ -4497,11 +4347,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatabaseResponse {
   message?: string;
 }
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteDatabaseResponse" }) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  DeleteCloudTokenResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteDatabaseStorageBackupScheduleRequest {
   uuid: string;
@@ -4523,11 +4370,8 @@ export const DeleteDatabaseStorageBackupScheduleRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteDatabaseStorageBackupScheduleRequest>;
 
 export interface DeleteDatabaseStorageBackupScheduleResponse {}
-export const DeleteDatabaseStorageBackupScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabaseStorageBackupScheduleResponse",
-}) as any as S.Schema<DeleteDatabaseStorageBackupScheduleResponse>;
+export const DeleteDatabaseStorageBackupScheduleResponse =
+  AddApplicationDestinationResponse as any as S.Schema<DeleteDatabaseStorageBackupScheduleResponse>;
 
 export interface DeleteDestinationRequest {
   /** Destination UUID */
@@ -4542,13 +4386,8 @@ export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDestinationResponse {
   message?: string;
 }
-export const DeleteDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteDestinationResponse",
-}) as any as S.Schema<DeleteDestinationResponse>;
+export const DeleteDestinationResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteDestinationResponse>;
 
 export interface DeleteEnvByApplicationUuidRequest {
   /** UUID of the application. */
@@ -4568,13 +4407,8 @@ export const DeleteEnvByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEnvByApplicationUuidResponse {
   message?: string;
 }
-export const DeleteEnvByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteEnvByApplicationUuidResponse",
-}) as any as S.Schema<DeleteEnvByApplicationUuidResponse>;
+export const DeleteEnvByApplicationUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteEnvByApplicationUuidResponse>;
 
 export interface DeleteEnvByDatabaseUuidRequest {
   /** UUID of the database. */
@@ -4594,13 +4428,8 @@ export const DeleteEnvByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEnvByDatabaseUuidResponse {
   message?: string;
 }
-export const DeleteEnvByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteEnvByDatabaseUuidResponse",
-}) as any as S.Schema<DeleteEnvByDatabaseUuidResponse>;
+export const DeleteEnvByDatabaseUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteEnvByDatabaseUuidResponse>;
 
 export interface DeleteEnvByServiceUuidRequest {
   /** UUID of the service. */
@@ -4620,13 +4449,8 @@ export const DeleteEnvByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEnvByServiceUuidResponse {
   message?: string;
 }
-export const DeleteEnvByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteEnvByServiceUuidResponse",
-}) as any as S.Schema<DeleteEnvByServiceUuidResponse>;
+export const DeleteEnvByServiceUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteEnvByServiceUuidResponse>;
 
 export interface DeleteEnvironmentRequest {
   /** Project UUID */
@@ -4650,13 +4474,8 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEnvironmentResponse {
   message?: string;
 }
-export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteEnvironmentResponse",
-}) as any as S.Schema<DeleteEnvironmentResponse>;
+export const DeleteEnvironmentResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteEnvironmentSharedEnvRequest {
   /** Project UUID */
@@ -4683,11 +4502,8 @@ export const DeleteEnvironmentSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvironmentSharedEnvRequest>;
 
 export interface DeleteEnvironmentSharedEnvResponse {}
-export const DeleteEnvironmentSharedEnvResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEnvironmentSharedEnvResponse",
-}) as any as S.Schema<DeleteEnvironmentSharedEnvResponse>;
+export const DeleteEnvironmentSharedEnvResponse =
+  AddApplicationDestinationResponse as any as S.Schema<DeleteEnvironmentSharedEnvResponse>;
 
 export interface DeleteGithubAppRequest {
   /** GitHub App ID */
@@ -4702,11 +4518,8 @@ export const DeleteGithubAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGithubAppResponse {
   message?: string;
 }
-export const DeleteGithubAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteGithubAppResponse" }) as any as S.Schema<DeleteGithubAppResponse>;
+export const DeleteGithubAppResponse =
+  DeleteCloudTokenResponse as any as S.Schema<DeleteGithubAppResponse>;
 
 export interface DeleteGitlabAppRequest {
   /** GitLab App ID */
@@ -4721,11 +4534,8 @@ export const DeleteGitlabAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGitlabAppResponse {
   message?: string;
 }
-export const DeleteGitlabAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteGitlabAppResponse" }) as any as S.Schema<DeleteGitlabAppResponse>;
+export const DeleteGitlabAppResponse =
+  DeleteCloudTokenResponse as any as S.Schema<DeleteGitlabAppResponse>;
 
 export interface DeletePreviewDeploymentByPullRequestIdRequest {
   /** UUID of the application. */
@@ -4747,13 +4557,8 @@ export const DeletePreviewDeploymentByPullRequestIdRequest = /*@__PURE__*/ S.sus
 export interface DeletePreviewDeploymentByPullRequestIdResponse {
   message?: string;
 }
-export const DeletePreviewDeploymentByPullRequestIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePreviewDeploymentByPullRequestIdResponse",
-}) as any as S.Schema<DeletePreviewDeploymentByPullRequestIdResponse>;
+export const DeletePreviewDeploymentByPullRequestIdResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeletePreviewDeploymentByPullRequestIdResponse>;
 
 export interface DeletePrivateKeyByUuidRequest {
   /** Private Key UUID */
@@ -4770,13 +4575,8 @@ export const DeletePrivateKeyByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePrivateKeyByUuidResponse {
   message?: string;
 }
-export const DeletePrivateKeyByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePrivateKeyByUuidResponse",
-}) as any as S.Schema<DeletePrivateKeyByUuidResponse>;
+export const DeletePrivateKeyByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeletePrivateKeyByUuidResponse>;
 
 export interface DeleteProjectRequest {
   /** UUID of the application. */
@@ -4791,11 +4591,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteProjectResponse {
   message?: string;
 }
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteProjectResponse" }) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  DeleteCloudTokenResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectSharedEnvRequest {
   /** Project UUID */
@@ -4813,9 +4610,8 @@ export const DeleteProjectSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectSharedEnvRequest>;
 
 export interface DeleteProjectSharedEnvResponse {}
-export const DeleteProjectSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectSharedEnvResponse",
-}) as any as S.Schema<DeleteProjectSharedEnvResponse>;
+export const DeleteProjectSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<DeleteProjectSharedEnvResponse>;
 
 export interface DeleteS3StorageRequest {
   /** UUID of the S3 storage. */
@@ -4830,11 +4626,8 @@ export const DeleteS3StorageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteS3StorageResponse {
   message?: string;
 }
-export const DeleteS3StorageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteS3StorageResponse" }) as any as S.Schema<DeleteS3StorageResponse>;
+export const DeleteS3StorageResponse =
+  DeleteCloudTokenResponse as any as S.Schema<DeleteS3StorageResponse>;
 
 export interface DeleteScheduledTaskByApplicationUuidRequest {
   /** UUID of the application. */
@@ -4860,13 +4653,8 @@ export const DeleteScheduledTaskByApplicationUuidRequest = /*@__PURE__*/ S.suspe
 export interface DeleteScheduledTaskByApplicationUuidResponse {
   message?: string;
 }
-export const DeleteScheduledTaskByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteScheduledTaskByApplicationUuidResponse",
-}) as any as S.Schema<DeleteScheduledTaskByApplicationUuidResponse>;
+export const DeleteScheduledTaskByApplicationUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteScheduledTaskByApplicationUuidResponse>;
 
 export interface DeleteScheduledTaskByServiceUuidRequest {
   /** UUID of the service. */
@@ -4888,13 +4676,8 @@ export const DeleteScheduledTaskByServiceUuidRequest = /*@__PURE__*/ S.suspend((
 export interface DeleteScheduledTaskByServiceUuidResponse {
   message?: string;
 }
-export const DeleteScheduledTaskByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteScheduledTaskByServiceUuidResponse",
-}) as any as S.Schema<DeleteScheduledTaskByServiceUuidResponse>;
+export const DeleteScheduledTaskByServiceUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteScheduledTaskByServiceUuidResponse>;
 
 export interface DeleteServerRequest {
   /** UUID of the server. */
@@ -4915,11 +4698,8 @@ export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteServerResponse {
   message?: string;
 }
-export const DeleteServerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteServerResponse" }) as any as S.Schema<DeleteServerResponse>;
+export const DeleteServerResponse =
+  DeleteCloudTokenResponse as any as S.Schema<DeleteServerResponse>;
 
 export interface DeleteServerSharedEnvRequest {
   /** Server UUID */
@@ -4937,9 +4717,8 @@ export const DeleteServerSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServerSharedEnvRequest>;
 
 export interface DeleteServerSharedEnvResponse {}
-export const DeleteServerSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteServerSharedEnvResponse",
-}) as any as S.Schema<DeleteServerSharedEnvResponse>;
+export const DeleteServerSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<DeleteServerSharedEnvResponse>;
 
 export interface DeleteServiceRequest {
   /** Service UUID */
@@ -4969,11 +4748,8 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteServiceResponse {
   message?: string;
 }
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteServiceResponse" }) as any as S.Schema<DeleteServiceResponse>;
+export const DeleteServiceResponse =
+  DeleteCloudTokenResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteServiceStorageBackupScheduleRequest {
   uuid: string;
@@ -4995,11 +4771,8 @@ export const DeleteServiceStorageBackupScheduleRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteServiceStorageBackupScheduleRequest>;
 
 export interface DeleteServiceStorageBackupScheduleResponse {}
-export const DeleteServiceStorageBackupScheduleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceStorageBackupScheduleResponse",
-}) as any as S.Schema<DeleteServiceStorageBackupScheduleResponse>;
+export const DeleteServiceStorageBackupScheduleResponse =
+  AddApplicationDestinationResponse as any as S.Schema<DeleteServiceStorageBackupScheduleResponse>;
 
 export interface DeleteStorageByApplicationUuidRequest {
   /** UUID of the application. */
@@ -5021,13 +4794,8 @@ export const DeleteStorageByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() 
 export interface DeleteStorageByApplicationUuidResponse {
   message?: string;
 }
-export const DeleteStorageByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteStorageByApplicationUuidResponse",
-}) as any as S.Schema<DeleteStorageByApplicationUuidResponse>;
+export const DeleteStorageByApplicationUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteStorageByApplicationUuidResponse>;
 
 export interface DeleteStorageByDatabaseUuidRequest {
   /** UUID of the database. */
@@ -5049,13 +4817,8 @@ export const DeleteStorageByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteStorageByDatabaseUuidResponse {
   message?: string;
 }
-export const DeleteStorageByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteStorageByDatabaseUuidResponse",
-}) as any as S.Schema<DeleteStorageByDatabaseUuidResponse>;
+export const DeleteStorageByDatabaseUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteStorageByDatabaseUuidResponse>;
 
 export interface DeleteStorageByServiceUuidRequest {
   /** UUID of the service. */
@@ -5075,13 +4838,8 @@ export const DeleteStorageByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteStorageByServiceUuidResponse {
   message?: string;
 }
-export const DeleteStorageByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteStorageByServiceUuidResponse",
-}) as any as S.Schema<DeleteStorageByServiceUuidResponse>;
+export const DeleteStorageByServiceUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<DeleteStorageByServiceUuidResponse>;
 
 export interface DeleteTagRequest {
   /** Tag UUID */
@@ -5096,11 +4854,7 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTagResponse {
   message?: string;
 }
-export const DeleteTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteTagResponse" }) as any as S.Schema<DeleteTagResponse>;
+export const DeleteTagResponse = DeleteCloudTokenResponse as any as S.Schema<DeleteTagResponse>;
 
 export interface DeleteTagByApplicationUuidRequest {
   /** UUID of the application. */
@@ -5118,11 +4872,8 @@ export const DeleteTagByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTagByApplicationUuidRequest>;
 
 export interface DeleteTagByApplicationUuidResponse {}
-export const DeleteTagByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTagByApplicationUuidResponse",
-}) as any as S.Schema<DeleteTagByApplicationUuidResponse>;
+export const DeleteTagByApplicationUuidResponse =
+  AddApplicationDestinationResponse as any as S.Schema<DeleteTagByApplicationUuidResponse>;
 
 export interface DeleteTagByDatabaseUuidRequest {
   /** UUID of the database. */
@@ -5140,9 +4891,8 @@ export const DeleteTagByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTagByDatabaseUuidRequest>;
 
 export interface DeleteTagByDatabaseUuidResponse {}
-export const DeleteTagByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteTagByDatabaseUuidResponse" },
-) as any as S.Schema<DeleteTagByDatabaseUuidResponse>;
+export const DeleteTagByDatabaseUuidResponse =
+  CreateDatabaseDragonflyResponse as any as S.Schema<DeleteTagByDatabaseUuidResponse>;
 
 export interface DeleteTagByServiceUuidRequest {
   /** UUID of the service. */
@@ -5160,9 +4910,8 @@ export const DeleteTagByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTagByServiceUuidRequest>;
 
 export interface DeleteTagByServiceUuidResponse {}
-export const DeleteTagByServiceUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagByServiceUuidResponse",
-}) as any as S.Schema<DeleteTagByServiceUuidResponse>;
+export const DeleteTagByServiceUuidResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<DeleteTagByServiceUuidResponse>;
 
 export interface DeleteTeamSharedEnvRequest {
   /** Shared env id (integer). */
@@ -5177,9 +4926,8 @@ export const DeleteTeamSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTeamSharedEnvRequest>;
 
 export interface DeleteTeamSharedEnvResponse {}
-export const DeleteTeamSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTeamSharedEnvResponse",
-}) as any as S.Schema<DeleteTeamSharedEnvResponse>;
+export const DeleteTeamSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<DeleteTeamSharedEnvResponse>;
 
 export interface DeployByTagOrUuidRequest {
   /** Tag name(s). Comma separated list is also accepted. */
@@ -5246,11 +4994,7 @@ export const DisableApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisableApiResponse {
   message?: string;
 }
-export const DisableApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DisableApiResponse" }) as any as S.Schema<DisableApiResponse>;
+export const DisableApiResponse = DeleteCloudTokenResponse as any as S.Schema<DisableApiResponse>;
 
 export interface DisableMcpRequest {}
 export const DisableMcpRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5260,11 +5004,7 @@ export const DisableMcpRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisableMcpResponse {
   message?: string;
 }
-export const DisableMcpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "DisableMcpResponse" }) as any as S.Schema<DisableMcpResponse>;
+export const DisableMcpResponse = DeleteCloudTokenResponse as any as S.Schema<DisableMcpResponse>;
 
 export interface DisableServerCloudflareTunnelRequest {
   /** Server UUID */
@@ -5279,11 +5019,8 @@ export const DisableServerCloudflareTunnelRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DisableServerCloudflareTunnelRequest>;
 
 export interface DisableServerCloudflareTunnelResponse {}
-export const DisableServerCloudflareTunnelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableServerCloudflareTunnelResponse",
-}) as any as S.Schema<DisableServerCloudflareTunnelResponse>;
+export const DisableServerCloudflareTunnelResponse =
+  AddApplicationDestinationResponse as any as S.Schema<DisableServerCloudflareTunnelResponse>;
 
 export interface EnableApiRequest {}
 export const EnableApiRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5293,11 +5030,7 @@ export const EnableApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnableApiResponse {
   message?: string;
 }
-export const EnableApiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnableApiResponse" }) as any as S.Schema<EnableApiResponse>;
+export const EnableApiResponse = DeleteCloudTokenResponse as any as S.Schema<EnableApiResponse>;
 
 export interface EnableMcpRequest {}
 export const EnableMcpRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5307,11 +5040,7 @@ export const EnableMcpRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnableMcpResponse {
   message?: string;
 }
-export const EnableMcpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "EnableMcpResponse" }) as any as S.Schema<EnableMcpResponse>;
+export const EnableMcpResponse = DeleteCloudTokenResponse as any as S.Schema<EnableMcpResponse>;
 
 export interface EnableServerCloudflareTunnelRequest {
   /** Server UUID */
@@ -5326,11 +5055,8 @@ export const EnableServerCloudflareTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableServerCloudflareTunnelRequest>;
 
 export interface EnableServerCloudflareTunnelResponse {}
-export const EnableServerCloudflareTunnelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableServerCloudflareTunnelResponse",
-}) as any as S.Schema<EnableServerCloudflareTunnelResponse>;
+export const EnableServerCloudflareTunnelResponse =
+  AddApplicationDestinationResponse as any as S.Schema<EnableServerCloudflareTunnelResponse>;
 
 export interface ExecuteScheduledTaskByApplicationUuidRequest {
   /** UUID of the application. */
@@ -5354,11 +5080,8 @@ export const ExecuteScheduledTaskByApplicationUuidRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ExecuteScheduledTaskByApplicationUuidRequest>;
 
 export interface ExecuteScheduledTaskByApplicationUuidResponse {}
-export const ExecuteScheduledTaskByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExecuteScheduledTaskByApplicationUuidResponse",
-}) as any as S.Schema<ExecuteScheduledTaskByApplicationUuidResponse>;
+export const ExecuteScheduledTaskByApplicationUuidResponse =
+  AddApplicationDestinationResponse as any as S.Schema<ExecuteScheduledTaskByApplicationUuidResponse>;
 
 export interface ExecuteScheduledTaskByServiceUuidRequest {
   /** UUID of the service. */
@@ -5382,11 +5105,8 @@ export const ExecuteScheduledTaskByServiceUuidRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExecuteScheduledTaskByServiceUuidRequest>;
 
 export interface ExecuteScheduledTaskByServiceUuidResponse {}
-export const ExecuteScheduledTaskByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExecuteScheduledTaskByServiceUuidResponse",
-}) as any as S.Schema<ExecuteScheduledTaskByServiceUuidResponse>;
+export const ExecuteScheduledTaskByServiceUuidResponse =
+  AddApplicationDestinationResponse as any as S.Schema<ExecuteScheduledTaskByServiceUuidResponse>;
 
 export interface GetApplicationRequest {
   /** UUID of the application. */
@@ -5400,9 +5120,8 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The subset of the application domains served with an X-Robots-Tag: noindex, nofollow response header. */
 export type ApplicationNoindexDomainsList = Array<string>;
-export const ApplicationNoindexDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApplicationNoindexDomainsList>;
+export const ApplicationNoindexDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<ApplicationNoindexDomainsList>;
 
 /** Build pack. */
 export type ApplicationBuildPack =
@@ -5819,9 +5538,8 @@ export const GetCloudInitScriptRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCloudInitScriptRequest>;
 
 export interface GetCloudInitScriptResponse {}
-export const GetCloudInitScriptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetCloudInitScriptResponse",
-}) as any as S.Schema<GetCloudInitScriptResponse>;
+export const GetCloudInitScriptResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetCloudInitScriptResponse>;
 
 export interface GetCloudTokenRequest {
   /** Token UUID */
@@ -5862,11 +5580,8 @@ export const GetCurrentTeamDiscordNotificationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetCurrentTeamDiscordNotificationsRequest>;
 
 export interface GetCurrentTeamDiscordNotificationsResponse {}
-export const GetCurrentTeamDiscordNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCurrentTeamDiscordNotificationsResponse",
-}) as any as S.Schema<GetCurrentTeamDiscordNotificationsResponse>;
+export const GetCurrentTeamDiscordNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetCurrentTeamDiscordNotificationsResponse>;
 
 export interface GetCurrentTeamEmailNotificationsRequest {}
 export const GetCurrentTeamEmailNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5876,11 +5591,8 @@ export const GetCurrentTeamEmailNotificationsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetCurrentTeamEmailNotificationsRequest>;
 
 export interface GetCurrentTeamEmailNotificationsResponse {}
-export const GetCurrentTeamEmailNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCurrentTeamEmailNotificationsResponse",
-}) as any as S.Schema<GetCurrentTeamEmailNotificationsResponse>;
+export const GetCurrentTeamEmailNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetCurrentTeamEmailNotificationsResponse>;
 
 export interface GetCurrentTeamPushoverNotificationsRequest {}
 export const GetCurrentTeamPushoverNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5890,11 +5602,8 @@ export const GetCurrentTeamPushoverNotificationsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetCurrentTeamPushoverNotificationsRequest>;
 
 export interface GetCurrentTeamPushoverNotificationsResponse {}
-export const GetCurrentTeamPushoverNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCurrentTeamPushoverNotificationsResponse",
-}) as any as S.Schema<GetCurrentTeamPushoverNotificationsResponse>;
+export const GetCurrentTeamPushoverNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetCurrentTeamPushoverNotificationsResponse>;
 
 export interface GetCurrentTeamSlackNotificationsRequest {}
 export const GetCurrentTeamSlackNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5904,11 +5613,8 @@ export const GetCurrentTeamSlackNotificationsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetCurrentTeamSlackNotificationsRequest>;
 
 export interface GetCurrentTeamSlackNotificationsResponse {}
-export const GetCurrentTeamSlackNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCurrentTeamSlackNotificationsResponse",
-}) as any as S.Schema<GetCurrentTeamSlackNotificationsResponse>;
+export const GetCurrentTeamSlackNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetCurrentTeamSlackNotificationsResponse>;
 
 export interface GetCurrentTeamTelegramNotificationsRequest {}
 export const GetCurrentTeamTelegramNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5918,11 +5624,8 @@ export const GetCurrentTeamTelegramNotificationsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetCurrentTeamTelegramNotificationsRequest>;
 
 export interface GetCurrentTeamTelegramNotificationsResponse {}
-export const GetCurrentTeamTelegramNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCurrentTeamTelegramNotificationsResponse",
-}) as any as S.Schema<GetCurrentTeamTelegramNotificationsResponse>;
+export const GetCurrentTeamTelegramNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetCurrentTeamTelegramNotificationsResponse>;
 
 export interface GetCurrentTeamWebhookNotificationsRequest {}
 export const GetCurrentTeamWebhookNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5932,11 +5635,8 @@ export const GetCurrentTeamWebhookNotificationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetCurrentTeamWebhookNotificationsRequest>;
 
 export interface GetCurrentTeamWebhookNotificationsResponse {}
-export const GetCurrentTeamWebhookNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetCurrentTeamWebhookNotificationsResponse",
-}) as any as S.Schema<GetCurrentTeamWebhookNotificationsResponse>;
+export const GetCurrentTeamWebhookNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetCurrentTeamWebhookNotificationsResponse>;
 
 export interface GetDatabaseRequest {
   /** UUID of the database. */
@@ -6044,13 +5744,8 @@ export const GetDatabaseLogsByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseLogsByUuidResponse {
   logs?: string;
 }
-export const GetDatabaseLogsByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logs: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDatabaseLogsByUuidResponse",
-}) as any as S.Schema<GetDatabaseLogsByUuidResponse>;
+export const GetDatabaseLogsByUuidResponse =
+  GetApplicationLogsByUuidResponse as any as S.Schema<GetDatabaseLogsByUuidResponse>;
 
 export interface GetDeploymentRequest {
   /** Deployment UUID */
@@ -6152,9 +5847,8 @@ export const GetDigitaloceanImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDigitaloceanImagesRequest>;
 
 export interface GetDigitaloceanImagesResponse {}
-export const GetDigitaloceanImagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDigitaloceanImagesResponse",
-}) as any as S.Schema<GetDigitaloceanImagesResponse>;
+export const GetDigitaloceanImagesResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetDigitaloceanImagesResponse>;
 
 export interface GetDigitaloceanRegionsRequest {
   cloud_provider_token_uuid?: string;
@@ -6170,9 +5864,8 @@ export const GetDigitaloceanRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDigitaloceanRegionsRequest>;
 
 export interface GetDigitaloceanRegionsResponse {}
-export const GetDigitaloceanRegionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDigitaloceanRegionsResponse",
-}) as any as S.Schema<GetDigitaloceanRegionsResponse>;
+export const GetDigitaloceanRegionsResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetDigitaloceanRegionsResponse>;
 
 export interface GetDigitaloceanSizesRequest {
   cloud_provider_token_uuid?: string;
@@ -6188,9 +5881,8 @@ export const GetDigitaloceanSizesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDigitaloceanSizesRequest>;
 
 export interface GetDigitaloceanSizesResponse {}
-export const GetDigitaloceanSizesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDigitaloceanSizesResponse",
-}) as any as S.Schema<GetDigitaloceanSizesResponse>;
+export const GetDigitaloceanSizesResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetDigitaloceanSizesResponse>;
 
 export interface GetDigitaloceanSshKeysRequest {
   cloud_provider_token_uuid?: string;
@@ -6206,9 +5898,8 @@ export const GetDigitaloceanSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDigitaloceanSshKeysRequest>;
 
 export interface GetDigitaloceanSshKeysResponse {}
-export const GetDigitaloceanSshKeysResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetDigitaloceanSshKeysResponse",
-}) as any as S.Schema<GetDigitaloceanSshKeysResponse>;
+export const GetDigitaloceanSshKeysResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetDigitaloceanSshKeysResponse>;
 
 export interface GetDomainsByServerUuidRequest {
   /** Server's UUID */
@@ -6223,9 +5914,8 @@ export const GetDomainsByServerUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDomainsByServerUuidRequest>;
 
 export type GetDomainsByServerUuidResponseBodyItemDomainsList = Array<string>;
-export const GetDomainsByServerUuidResponseBodyItemDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainsByServerUuidResponseBodyItemDomainsList>;
+export const GetDomainsByServerUuidResponseBodyItemDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<GetDomainsByServerUuidResponseBodyItemDomainsList>;
 
 export interface GetDomainsByServerUuidResponseBodyItem {
   ip?: string;
@@ -6626,11 +6316,8 @@ export const GetInstanceEmailSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInstanceEmailSettingsRequest>;
 
 export interface GetInstanceEmailSettingsResponse {}
-export const GetInstanceEmailSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetInstanceEmailSettingsResponse",
-}) as any as S.Schema<GetInstanceEmailSettingsResponse>;
+export const GetInstanceEmailSettingsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetInstanceEmailSettingsResponse>;
 
 export interface GetMembersByTeamIdRequest {
   /** Team ID */
@@ -6733,13 +6420,8 @@ export const GetPreviewApplicationLogsByPullRequestIdRequest = /*@__PURE__*/ S.s
 export interface GetPreviewApplicationLogsByPullRequestIdResponse {
   logs?: string;
 }
-export const GetPreviewApplicationLogsByPullRequestIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logs: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPreviewApplicationLogsByPullRequestIdResponse",
-}) as any as S.Schema<GetPreviewApplicationLogsByPullRequestIdResponse>;
+export const GetPreviewApplicationLogsByPullRequestIdResponse =
+  GetApplicationLogsByUuidResponse as any as S.Schema<GetPreviewApplicationLogsByPullRequestIdResponse>;
 
 export interface GetPreviewDeploymentByPullRequestIdRequest {
   /** UUID of the application. */
@@ -7381,11 +7063,8 @@ export const GetServiceApplicationByServiceAndAppUuidRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetServiceApplicationByServiceAndAppUuidRequest>;
 
 export type GetServiceApplicationByServiceAndAppUuidResponse = unknown;
-export const GetServiceApplicationByServiceAndAppUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetServiceApplicationByServiceAndAppUuidResponse",
-}) as any as S.Schema<GetServiceApplicationByServiceAndAppUuidResponse>;
+export const GetServiceApplicationByServiceAndAppUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<GetServiceApplicationByServiceAndAppUuidResponse>;
 
 export type GetServiceApplicationLogsByServiceAndAppUuidRequestLinesCase1 = "all";
 export const GetServiceApplicationLogsByServiceAndAppUuidRequestLinesCase1 = S.String;
@@ -7419,13 +7098,8 @@ export const GetServiceApplicationLogsByServiceAndAppUuidRequest = /*@__PURE__*/
 export interface GetServiceApplicationLogsByServiceAndAppUuidResponse {
   logs?: string;
 }
-export const GetServiceApplicationLogsByServiceAndAppUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logs: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetServiceApplicationLogsByServiceAndAppUuidResponse",
-}) as any as S.Schema<GetServiceApplicationLogsByServiceAndAppUuidResponse>;
+export const GetServiceApplicationLogsByServiceAndAppUuidResponse =
+  GetApplicationLogsByUuidResponse as any as S.Schema<GetServiceApplicationLogsByServiceAndAppUuidResponse>;
 
 export interface GetServiceDatabaseByServiceAndDatabaseUuidRequest {
   /** Service UUID. */
@@ -7443,11 +7117,8 @@ export const GetServiceDatabaseByServiceAndDatabaseUuidRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetServiceDatabaseByServiceAndDatabaseUuidRequest>;
 
 export type GetServiceDatabaseByServiceAndDatabaseUuidResponse = unknown;
-export const GetServiceDatabaseByServiceAndDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetServiceDatabaseByServiceAndDatabaseUuidResponse",
-}) as any as S.Schema<GetServiceDatabaseByServiceAndDatabaseUuidResponse>;
+export const GetServiceDatabaseByServiceAndDatabaseUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<GetServiceDatabaseByServiceAndDatabaseUuidResponse>;
 
 export interface GetServiceDatabaseImportRequest {
   /** Service UUID. */
@@ -7503,13 +7174,8 @@ export const GetServiceDatabaseLogsByServiceAndDatabaseUuidRequest = /*@__PURE__
 export interface GetServiceDatabaseLogsByServiceAndDatabaseUuidResponse {
   logs?: string;
 }
-export const GetServiceDatabaseLogsByServiceAndDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logs: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetServiceDatabaseLogsByServiceAndDatabaseUuidResponse",
-}) as any as S.Schema<GetServiceDatabaseLogsByServiceAndDatabaseUuidResponse>;
+export const GetServiceDatabaseLogsByServiceAndDatabaseUuidResponse =
+  GetApplicationLogsByUuidResponse as any as S.Schema<GetServiceDatabaseLogsByServiceAndDatabaseUuidResponse>;
 
 export type GetServiceLogsByUuidRequestLinesCase1 = "all";
 export const GetServiceLogsByUuidRequestLinesCase1 = S.String;
@@ -7542,13 +7208,8 @@ export const GetServiceLogsByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetServiceLogsByUuidResponse {
   logs?: string;
 }
-export const GetServiceLogsByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logs: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetServiceLogsByUuidResponse",
-}) as any as S.Schema<GetServiceLogsByUuidResponse>;
+export const GetServiceLogsByUuidResponse =
+  GetApplicationLogsByUuidResponse as any as S.Schema<GetServiceLogsByUuidResponse>;
 
 export interface GetTeamRequest {
   /** Team ID */
@@ -7615,16 +7276,12 @@ export const GetTokenTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTokenTeamMembersRequest>;
 
 export type GetTokenTeamMembersResponseBodyList = Array<User>;
-export const GetTokenTeamMembersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<GetTokenTeamMembersResponseBodyList>;
+export const GetTokenTeamMembersResponseBodyList =
+  GetMembersByTeamIdResponseBodyList as any as S.Schema<GetTokenTeamMembersResponseBodyList>;
 
 export type GetTokenTeamMembersResponse = GetTokenTeamMembersResponseBodyList;
-export const GetTokenTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
-  GetTokenTeamMembersResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetTokenTeamMembersResponse",
-}) as any as S.Schema<GetTokenTeamMembersResponse>;
+export const GetTokenTeamMembersResponse =
+  GetMembersByTeamIdResponse as any as S.Schema<GetTokenTeamMembersResponse>;
 
 export interface GetVultrOperatingSystemsRequest {}
 export const GetVultrOperatingSystemsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7634,11 +7291,8 @@ export const GetVultrOperatingSystemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetVultrOperatingSystemsRequest>;
 
 export interface GetVultrOperatingSystemsResponse {}
-export const GetVultrOperatingSystemsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetVultrOperatingSystemsResponse",
-}) as any as S.Schema<GetVultrOperatingSystemsResponse>;
+export const GetVultrOperatingSystemsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<GetVultrOperatingSystemsResponse>;
 
 export interface GetVultrPlansRequest {}
 export const GetVultrPlansRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7646,9 +7300,8 @@ export const GetVultrPlansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVultrPlansRequest" }) as any as S.Schema<GetVultrPlansRequest>;
 
 export interface GetVultrPlansResponse {}
-export const GetVultrPlansResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetVultrPlansResponse",
-}) as any as S.Schema<GetVultrPlansResponse>;
+export const GetVultrPlansResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetVultrPlansResponse>;
 
 export interface GetVultrRegionsRequest {}
 export const GetVultrRegionsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7656,9 +7309,8 @@ export const GetVultrRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVultrRegionsRequest" }) as any as S.Schema<GetVultrRegionsRequest>;
 
 export interface GetVultrRegionsResponse {}
-export const GetVultrRegionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetVultrRegionsResponse",
-}) as any as S.Schema<GetVultrRegionsResponse>;
+export const GetVultrRegionsResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetVultrRegionsResponse>;
 
 export interface GetVultrSshKeysRequest {}
 export const GetVultrSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7666,9 +7318,8 @@ export const GetVultrSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVultrSshKeysRequest" }) as any as S.Schema<GetVultrSshKeysRequest>;
 
 export interface GetVultrSshKeysResponse {}
-export const GetVultrSshKeysResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetVultrSshKeysResponse",
-}) as any as S.Schema<GetVultrSshKeysResponse>;
+export const GetVultrSshKeysResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<GetVultrSshKeysResponse>;
 
 export interface HealthcheckRequest {}
 export const HealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7676,9 +7327,8 @@ export const HealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthcheckRequest" }) as any as S.Schema<HealthcheckRequest>;
 
 export interface HealthcheckResponse {}
-export const HealthcheckResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "HealthcheckResponse",
-}) as any as S.Schema<HealthcheckResponse>;
+export const HealthcheckResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<HealthcheckResponse>;
 
 export interface ListApplicationDestinationsRequest {
   /** UUID of the application. */
@@ -7693,11 +7343,8 @@ export const ListApplicationDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApplicationDestinationsRequest>;
 
 export interface ListApplicationDestinationsResponse {}
-export const ListApplicationDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ListApplicationDestinationsResponse",
-}) as any as S.Schema<ListApplicationDestinationsResponse>;
+export const ListApplicationDestinationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<ListApplicationDestinationsResponse>;
 
 export interface ListApplicationRollbackImagesRequest {
   /** UUID of the application. */
@@ -7923,9 +7570,8 @@ export const ListCloudInitScriptsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCloudInitScriptsRequest>;
 
 export interface ListCloudInitScriptsResponse {}
-export const ListCloudInitScriptsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListCloudInitScriptsResponse",
-}) as any as S.Schema<ListCloudInitScriptsResponse>;
+export const ListCloudInitScriptsResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<ListCloudInitScriptsResponse>;
 
 export interface ListCloudTokensRequest {}
 export const ListCloudTokensRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7974,9 +7620,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatabasesRequest" }) as any as S.Schema<ListDatabasesRequest>;
 
 export type ListDatabasesResponse = string;
-export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListDatabasesResponse" }) as any as S.Schema<ListDatabasesResponse>;
+export const ListDatabasesResponse = GetDatabaseResponse as any as S.Schema<ListDatabasesResponse>;
 
 export interface ListDeploymentsRequest {}
 export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8012,9 +7656,8 @@ export const ListDeploymentsByAppUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDeploymentsByAppUuidRequest>;
 
 export type ListDeploymentsByAppUuidResponseBodyList = Array<Application>;
-export const ListDeploymentsByAppUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  Application,
-) as any as S.Schema<ListDeploymentsByAppUuidResponseBodyList>;
+export const ListDeploymentsByAppUuidResponseBodyList =
+  ListApplicationsResponseBodyList as any as S.Schema<ListDeploymentsByAppUuidResponseBodyList>;
 
 export type ListDeploymentsByAppUuidResponse = ListDeploymentsByAppUuidResponseBodyList;
 export const ListDeploymentsByAppUuidResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8060,11 +7703,8 @@ export const ListEnvironmentSharedEnvsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnvironmentSharedEnvsRequest>;
 
 export interface ListEnvironmentSharedEnvsResponse {}
-export const ListEnvironmentSharedEnvsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ListEnvironmentSharedEnvsResponse",
-}) as any as S.Schema<ListEnvironmentSharedEnvsResponse>;
+export const ListEnvironmentSharedEnvsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<ListEnvironmentSharedEnvsResponse>;
 
 export interface ListEnvsByApplicationUuidRequest {
   /** UUID of the application. */
@@ -8148,16 +7788,12 @@ export const ListEnvsByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnvsByDatabaseUuidRequest>;
 
 export type ListEnvsByDatabaseUuidResponseBodyList = Array<EnvironmentVariable>;
-export const ListEnvsByDatabaseUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<ListEnvsByDatabaseUuidResponseBodyList>;
+export const ListEnvsByDatabaseUuidResponseBodyList =
+  ListEnvsByApplicationUuidResponseBodyList as any as S.Schema<ListEnvsByDatabaseUuidResponseBodyList>;
 
 export type ListEnvsByDatabaseUuidResponse = ListEnvsByDatabaseUuidResponseBodyList;
-export const ListEnvsByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEnvsByDatabaseUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEnvsByDatabaseUuidResponse",
-}) as any as S.Schema<ListEnvsByDatabaseUuidResponse>;
+export const ListEnvsByDatabaseUuidResponse =
+  ListEnvsByApplicationUuidResponse as any as S.Schema<ListEnvsByDatabaseUuidResponse>;
 
 export interface ListEnvsByServiceUuidRequest {
   /** UUID of the service. */
@@ -8172,16 +7808,12 @@ export const ListEnvsByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnvsByServiceUuidRequest>;
 
 export type ListEnvsByServiceUuidResponseBodyList = Array<EnvironmentVariable>;
-export const ListEnvsByServiceUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<ListEnvsByServiceUuidResponseBodyList>;
+export const ListEnvsByServiceUuidResponseBodyList =
+  ListEnvsByApplicationUuidResponseBodyList as any as S.Schema<ListEnvsByServiceUuidResponseBodyList>;
 
 export type ListEnvsByServiceUuidResponse = ListEnvsByServiceUuidResponseBodyList;
-export const ListEnvsByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEnvsByServiceUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEnvsByServiceUuidResponse",
-}) as any as S.Schema<ListEnvsByServiceUuidResponse>;
+export const ListEnvsByServiceUuidResponse =
+  ListEnvsByApplicationUuidResponse as any as S.Schema<ListEnvsByServiceUuidResponse>;
 
 export interface ListGithubAppsRequest {}
 export const ListGithubAppsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8357,9 +7989,8 @@ export const ListProjectSharedEnvsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectSharedEnvsRequest>;
 
 export interface ListProjectSharedEnvsResponse {}
-export const ListProjectSharedEnvsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListProjectSharedEnvsResponse",
-}) as any as S.Schema<ListProjectSharedEnvsResponse>;
+export const ListProjectSharedEnvsResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<ListProjectSharedEnvsResponse>;
 
 export interface ListResourcesRequest {}
 export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8367,9 +7998,7 @@ export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourcesRequest" }) as any as S.Schema<ListResourcesRequest>;
 
 export type ListResourcesResponse = string;
-export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListResourcesResponse" }) as any as S.Schema<ListResourcesResponse>;
+export const ListResourcesResponse = GetDatabaseResponse as any as S.Schema<ListResourcesResponse>;
 
 export interface ListS3StoragesRequest {}
 export const ListS3StoragesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8512,17 +8141,13 @@ export const ListScheduledTaskExecutionsByServiceUuidRequest = /*@__PURE__*/ S.s
 
 export type ListScheduledTaskExecutionsByServiceUuidResponseBodyList =
   Array<ScheduledTaskExecution>;
-export const ListScheduledTaskExecutionsByServiceUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  ScheduledTaskExecution,
-) as any as S.Schema<ListScheduledTaskExecutionsByServiceUuidResponseBodyList>;
+export const ListScheduledTaskExecutionsByServiceUuidResponseBodyList =
+  ListScheduledTaskExecutionsByApplicationUuidResponseBodyList as any as S.Schema<ListScheduledTaskExecutionsByServiceUuidResponseBodyList>;
 
 export type ListScheduledTaskExecutionsByServiceUuidResponse =
   ListScheduledTaskExecutionsByServiceUuidResponseBodyList;
-export const ListScheduledTaskExecutionsByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListScheduledTaskExecutionsByServiceUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListScheduledTaskExecutionsByServiceUuidResponse",
-}) as any as S.Schema<ListScheduledTaskExecutionsByServiceUuidResponse>;
+export const ListScheduledTaskExecutionsByServiceUuidResponse =
+  ListScheduledTaskExecutionsByApplicationUuidResponse as any as S.Schema<ListScheduledTaskExecutionsByServiceUuidResponse>;
 
 export interface ListScheduledTasksByApplicationUuidRequest {
   /** UUID of the application. */
@@ -8562,17 +8187,13 @@ export const ListScheduledTasksByServiceUuidRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListScheduledTasksByServiceUuidRequest>;
 
 export type ListScheduledTasksByServiceUuidResponseBodyList = Array<ScheduledTask>;
-export const ListScheduledTasksByServiceUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  ScheduledTask,
-) as any as S.Schema<ListScheduledTasksByServiceUuidResponseBodyList>;
+export const ListScheduledTasksByServiceUuidResponseBodyList =
+  ListScheduledTasksByApplicationUuidResponseBodyList as any as S.Schema<ListScheduledTasksByServiceUuidResponseBodyList>;
 
 export type ListScheduledTasksByServiceUuidResponse =
   ListScheduledTasksByServiceUuidResponseBodyList;
-export const ListScheduledTasksByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListScheduledTasksByServiceUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListScheduledTasksByServiceUuidResponse",
-}) as any as S.Schema<ListScheduledTasksByServiceUuidResponse>;
+export const ListScheduledTasksByServiceUuidResponse =
+  ListScheduledTasksByApplicationUuidResponse as any as S.Schema<ListScheduledTasksByServiceUuidResponse>;
 
 export interface ListServerDestinationsRequest {
   /** Server UUID */
@@ -8587,9 +8208,8 @@ export const ListServerDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServerDestinationsRequest>;
 
 export type ListServerDestinationsResponseBodyList = Array<Destination>;
-export const ListServerDestinationsResponseBodyList = /*@__PURE__*/ S.Array(
-  Destination,
-) as any as S.Schema<ListServerDestinationsResponseBodyList>;
+export const ListServerDestinationsResponseBodyList =
+  ListDestinationsResponseBodyList as any as S.Schema<ListServerDestinationsResponseBodyList>;
 
 export type ListServerDestinationsResponse = ListServerDestinationsResponseBodyList;
 export const ListServerDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8750,9 +8370,8 @@ export const ListServerSharedEnvsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServerSharedEnvsRequest>;
 
 export interface ListServerSharedEnvsResponse {}
-export const ListServerSharedEnvsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListServerSharedEnvsResponse",
-}) as any as S.Schema<ListServerSharedEnvsResponse>;
+export const ListServerSharedEnvsResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<ListServerSharedEnvsResponse>;
 
 export interface ListServiceApplicationsByServiceUuidRequest {
   /** Service UUID. */
@@ -8792,17 +8411,13 @@ export const ListServiceDatabasesByServiceUuidRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListServiceDatabasesByServiceUuidRequest>;
 
 export type ListServiceDatabasesByServiceUuidResponseBodyList = Array<unknown>;
-export const ListServiceDatabasesByServiceUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListServiceDatabasesByServiceUuidResponseBodyList>;
+export const ListServiceDatabasesByServiceUuidResponseBodyList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<ListServiceDatabasesByServiceUuidResponseBodyList>;
 
 export type ListServiceDatabasesByServiceUuidResponse =
   ListServiceDatabasesByServiceUuidResponseBodyList;
-export const ListServiceDatabasesByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListServiceDatabasesByServiceUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListServiceDatabasesByServiceUuidResponse",
-}) as any as S.Schema<ListServiceDatabasesByServiceUuidResponse>;
+export const ListServiceDatabasesByServiceUuidResponse =
+  ListServiceApplicationsByServiceUuidResponse as any as S.Schema<ListServiceDatabasesByServiceUuidResponse>;
 
 export interface ListServicesRequest {}
 export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8832,14 +8447,12 @@ export const ListStoragesByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListStoragesByApplicationUuidRequest>;
 
 export type ListStoragesByApplicationUuidResponsePersistentStoragesList = Array<unknown>;
-export const ListStoragesByApplicationUuidResponsePersistentStoragesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListStoragesByApplicationUuidResponsePersistentStoragesList>;
+export const ListStoragesByApplicationUuidResponsePersistentStoragesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<ListStoragesByApplicationUuidResponsePersistentStoragesList>;
 
 export type ListStoragesByApplicationUuidResponseFileStoragesList = Array<unknown>;
-export const ListStoragesByApplicationUuidResponseFileStoragesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListStoragesByApplicationUuidResponseFileStoragesList>;
+export const ListStoragesByApplicationUuidResponseFileStoragesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<ListStoragesByApplicationUuidResponseFileStoragesList>;
 
 export interface ListStoragesByApplicationUuidResponse {
   persistent_storages?: ListStoragesByApplicationUuidResponsePersistentStoragesList;
@@ -8867,27 +8480,19 @@ export const ListStoragesByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStoragesByDatabaseUuidRequest>;
 
 export type ListStoragesByDatabaseUuidResponsePersistentStoragesList = Array<unknown>;
-export const ListStoragesByDatabaseUuidResponsePersistentStoragesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListStoragesByDatabaseUuidResponsePersistentStoragesList>;
+export const ListStoragesByDatabaseUuidResponsePersistentStoragesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<ListStoragesByDatabaseUuidResponsePersistentStoragesList>;
 
 export type ListStoragesByDatabaseUuidResponseFileStoragesList = Array<unknown>;
-export const ListStoragesByDatabaseUuidResponseFileStoragesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListStoragesByDatabaseUuidResponseFileStoragesList>;
+export const ListStoragesByDatabaseUuidResponseFileStoragesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<ListStoragesByDatabaseUuidResponseFileStoragesList>;
 
 export interface ListStoragesByDatabaseUuidResponse {
   persistent_storages?: ListStoragesByDatabaseUuidResponsePersistentStoragesList;
   file_storages?: ListStoragesByDatabaseUuidResponseFileStoragesList;
 }
-export const ListStoragesByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    persistent_storages: S.optional(ListStoragesByDatabaseUuidResponsePersistentStoragesList),
-    file_storages: S.optional(ListStoragesByDatabaseUuidResponseFileStoragesList),
-  }),
-).annotate({
-  identifier: "ListStoragesByDatabaseUuidResponse",
-}) as any as S.Schema<ListStoragesByDatabaseUuidResponse>;
+export const ListStoragesByDatabaseUuidResponse =
+  ListStoragesByApplicationUuidResponse as any as S.Schema<ListStoragesByDatabaseUuidResponse>;
 
 export interface ListStoragesByServiceUuidRequest {
   /** UUID of the service. */
@@ -8902,27 +8507,19 @@ export const ListStoragesByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStoragesByServiceUuidRequest>;
 
 export type ListStoragesByServiceUuidResponsePersistentStoragesList = Array<unknown>;
-export const ListStoragesByServiceUuidResponsePersistentStoragesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListStoragesByServiceUuidResponsePersistentStoragesList>;
+export const ListStoragesByServiceUuidResponsePersistentStoragesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<ListStoragesByServiceUuidResponsePersistentStoragesList>;
 
 export type ListStoragesByServiceUuidResponseFileStoragesList = Array<unknown>;
-export const ListStoragesByServiceUuidResponseFileStoragesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ListStoragesByServiceUuidResponseFileStoragesList>;
+export const ListStoragesByServiceUuidResponseFileStoragesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<ListStoragesByServiceUuidResponseFileStoragesList>;
 
 export interface ListStoragesByServiceUuidResponse {
   persistent_storages?: ListStoragesByServiceUuidResponsePersistentStoragesList;
   file_storages?: ListStoragesByServiceUuidResponseFileStoragesList;
 }
-export const ListStoragesByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    persistent_storages: S.optional(ListStoragesByServiceUuidResponsePersistentStoragesList),
-    file_storages: S.optional(ListStoragesByServiceUuidResponseFileStoragesList),
-  }),
-).annotate({
-  identifier: "ListStoragesByServiceUuidResponse",
-}) as any as S.Schema<ListStoragesByServiceUuidResponse>;
+export const ListStoragesByServiceUuidResponse =
+  ListStoragesByApplicationUuidResponse as any as S.Schema<ListStoragesByServiceUuidResponse>;
 
 export interface ListTagsRequest {}
 export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8930,9 +8527,8 @@ export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTagsRequest" }) as any as S.Schema<ListTagsRequest>;
 
 export type ListTagsResponseBodyList = Array<Tag>;
-export const ListTagsResponseBodyList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<ListTagsResponseBodyList>;
+export const ListTagsResponseBodyList =
+  CreateTagByApplicationUuidResponseBodyList as any as S.Schema<ListTagsResponseBodyList>;
 
 export type ListTagsResponse = ListTagsResponseBodyList;
 export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -8952,16 +8548,12 @@ export const ListTagsByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsByApplicationUuidRequest>;
 
 export type ListTagsByApplicationUuidResponseBodyList = Array<Tag>;
-export const ListTagsByApplicationUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<ListTagsByApplicationUuidResponseBodyList>;
+export const ListTagsByApplicationUuidResponseBodyList =
+  CreateTagByApplicationUuidResponseBodyList as any as S.Schema<ListTagsByApplicationUuidResponseBodyList>;
 
 export type ListTagsByApplicationUuidResponse = ListTagsByApplicationUuidResponseBodyList;
-export const ListTagsByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListTagsByApplicationUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListTagsByApplicationUuidResponse",
-}) as any as S.Schema<ListTagsByApplicationUuidResponse>;
+export const ListTagsByApplicationUuidResponse =
+  CreateTagByApplicationUuidResponse as any as S.Schema<ListTagsByApplicationUuidResponse>;
 
 export interface ListTagsByDatabaseUuidRequest {
   /** UUID of the database. */
@@ -8976,16 +8568,12 @@ export const ListTagsByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsByDatabaseUuidRequest>;
 
 export type ListTagsByDatabaseUuidResponseBodyList = Array<Tag>;
-export const ListTagsByDatabaseUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<ListTagsByDatabaseUuidResponseBodyList>;
+export const ListTagsByDatabaseUuidResponseBodyList =
+  CreateTagByApplicationUuidResponseBodyList as any as S.Schema<ListTagsByDatabaseUuidResponseBodyList>;
 
 export type ListTagsByDatabaseUuidResponse = ListTagsByDatabaseUuidResponseBodyList;
-export const ListTagsByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListTagsByDatabaseUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListTagsByDatabaseUuidResponse",
-}) as any as S.Schema<ListTagsByDatabaseUuidResponse>;
+export const ListTagsByDatabaseUuidResponse =
+  CreateTagByApplicationUuidResponse as any as S.Schema<ListTagsByDatabaseUuidResponse>;
 
 export interface ListTagsByServiceUuidRequest {
   /** UUID of the service. */
@@ -9000,16 +8588,12 @@ export const ListTagsByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsByServiceUuidRequest>;
 
 export type ListTagsByServiceUuidResponseBodyList = Array<Tag>;
-export const ListTagsByServiceUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<ListTagsByServiceUuidResponseBodyList>;
+export const ListTagsByServiceUuidResponseBodyList =
+  CreateTagByApplicationUuidResponseBodyList as any as S.Schema<ListTagsByServiceUuidResponseBodyList>;
 
 export type ListTagsByServiceUuidResponse = ListTagsByServiceUuidResponseBodyList;
-export const ListTagsByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  ListTagsByServiceUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListTagsByServiceUuidResponse",
-}) as any as S.Schema<ListTagsByServiceUuidResponse>;
+export const ListTagsByServiceUuidResponse =
+  CreateTagByApplicationUuidResponse as any as S.Schema<ListTagsByServiceUuidResponse>;
 
 export interface ListTeamsRequest {}
 export const ListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9034,9 +8618,8 @@ export const ListTeamSharedEnvsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTeamSharedEnvsRequest>;
 
 export interface ListTeamSharedEnvsResponse {}
-export const ListTeamSharedEnvsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ListTeamSharedEnvsResponse",
-}) as any as S.Schema<ListTeamSharedEnvsResponse>;
+export const ListTeamSharedEnvsResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<ListTeamSharedEnvsResponse>;
 
 export interface LoadBranchesRequest {
   /** GitHub App ID */
@@ -9061,9 +8644,8 @@ export const LoadBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadBranchesRequest" }) as any as S.Schema<LoadBranchesRequest>;
 
 export type LoadBranchesResponseBranchesList = Array<unknown>;
-export const LoadBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LoadBranchesResponseBranchesList>;
+export const LoadBranchesResponseBranchesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<LoadBranchesResponseBranchesList>;
 
 export interface LoadBranchesResponse {
   branches?: LoadBranchesResponseBranchesList;
@@ -9085,9 +8667,8 @@ export const LoadRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadRepositoriesRequest" }) as any as S.Schema<LoadRepositoriesRequest>;
 
 export type LoadRepositoriesResponseRepositoriesList = Array<unknown>;
-export const LoadRepositoriesResponseRepositoriesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LoadRepositoriesResponseRepositoriesList>;
+export const LoadRepositoriesResponseRepositoriesList =
+  ListServiceApplicationsByServiceUuidResponseBodyList as any as S.Schema<LoadRepositoriesResponseRepositoriesList>;
 
 export interface LoadRepositoriesResponse {
   repositories?: LoadRepositoriesResponseRepositoriesList;
@@ -9121,13 +8702,8 @@ export const LoginServerRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LoginServerRegistryResponse {
   message?: string;
 }
-export const LoginServerRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LoginServerRegistryResponse",
-}) as any as S.Schema<LoginServerRegistryResponse>;
+export const LoginServerRegistryResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<LoginServerRegistryResponse>;
 
 export interface LogoutServerRegistryRequest {
   /** Server UUID */
@@ -9147,13 +8723,8 @@ export const LogoutServerRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LogoutServerRegistryResponse {
   message?: string;
 }
-export const LogoutServerRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LogoutServerRegistryResponse",
-}) as any as S.Schema<LogoutServerRegistryResponse>;
+export const LogoutServerRegistryResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<LogoutServerRegistryResponse>;
 
 export interface MigrateApplicationByUuidRequest {
   /** UUID of the application. */
@@ -9174,11 +8745,8 @@ export const MigrateApplicationByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateApplicationByUuidRequest>;
 
 export interface MigrateApplicationByUuidResponse {}
-export const MigrateApplicationByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrateApplicationByUuidResponse",
-}) as any as S.Schema<MigrateApplicationByUuidResponse>;
+export const MigrateApplicationByUuidResponse =
+  AddApplicationDestinationResponse as any as S.Schema<MigrateApplicationByUuidResponse>;
 
 export interface MigrateDatabaseByUuidRequest {
   /** UUID of the database. */
@@ -9199,9 +8767,8 @@ export const MigrateDatabaseByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateDatabaseByUuidRequest>;
 
 export interface MigrateDatabaseByUuidResponse {}
-export const MigrateDatabaseByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MigrateDatabaseByUuidResponse",
-}) as any as S.Schema<MigrateDatabaseByUuidResponse>;
+export const MigrateDatabaseByUuidResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<MigrateDatabaseByUuidResponse>;
 
 export interface MigrateServiceByUuidRequest {
   /** UUID of the service. */
@@ -9222,9 +8789,8 @@ export const MigrateServiceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateServiceByUuidRequest>;
 
 export interface MigrateServiceByUuidResponse {}
-export const MigrateServiceByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MigrateServiceByUuidResponse",
-}) as any as S.Schema<MigrateServiceByUuidResponse>;
+export const MigrateServiceByUuidResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<MigrateServiceByUuidResponse>;
 
 export interface MoveApplicationByUuidRequest {
   /** UUID of the application. */
@@ -9279,16 +8845,8 @@ export interface MoveDatabaseByUuidResponse {
   project_uuid?: string;
   environment_uuid?: string;
 }
-export const MoveDatabaseByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    uuid: S.optional(S.String),
-    project_uuid: S.optional(S.String),
-    environment_uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveDatabaseByUuidResponse",
-}) as any as S.Schema<MoveDatabaseByUuidResponse>;
+export const MoveDatabaseByUuidResponse =
+  MoveApplicationByUuidResponse as any as S.Schema<MoveDatabaseByUuidResponse>;
 
 export interface MoveServiceByUuidRequest {
   /** UUID of the service. */
@@ -9309,16 +8867,8 @@ export interface MoveServiceByUuidResponse {
   project_uuid?: string;
   environment_uuid?: string;
 }
-export const MoveServiceByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    uuid: S.optional(S.String),
-    project_uuid: S.optional(S.String),
-    environment_uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveServiceByUuidResponse",
-}) as any as S.Schema<MoveServiceByUuidResponse>;
+export const MoveServiceByUuidResponse =
+  MoveApplicationByUuidResponse as any as S.Schema<MoveServiceByUuidResponse>;
 
 /** The subset of the service application domains served with an X-Robots-Tag: noindex, nofollow response header, keeping them out of search engines. Entries that are not among the domains are ignored. */
 export type PatchServiceApplicationByServiceAndAppUuidRequestNoindexDomainsList = Array<string>;
@@ -9373,11 +8923,8 @@ export const PatchServiceApplicationByServiceAndAppUuidRequest = /*@__PURE__*/ S
 }) as any as S.Schema<PatchServiceApplicationByServiceAndAppUuidRequest>;
 
 export type PatchServiceApplicationByServiceAndAppUuidResponse = unknown;
-export const PatchServiceApplicationByServiceAndAppUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PatchServiceApplicationByServiceAndAppUuidResponse",
-}) as any as S.Schema<PatchServiceApplicationByServiceAndAppUuidResponse>;
+export const PatchServiceApplicationByServiceAndAppUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<PatchServiceApplicationByServiceAndAppUuidResponse>;
 
 export interface PatchServiceDatabaseByServiceAndDatabaseUuidRequest {
   /** Service UUID. */
@@ -9413,11 +8960,8 @@ export const PatchServiceDatabaseByServiceAndDatabaseUuidRequest = /*@__PURE__*/
 }) as any as S.Schema<PatchServiceDatabaseByServiceAndDatabaseUuidRequest>;
 
 export type PatchServiceDatabaseByServiceAndDatabaseUuidResponse = unknown;
-export const PatchServiceDatabaseByServiceAndDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PatchServiceDatabaseByServiceAndDatabaseUuidResponse",
-}) as any as S.Schema<PatchServiceDatabaseByServiceAndDatabaseUuidResponse>;
+export const PatchServiceDatabaseByServiceAndDatabaseUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<PatchServiceDatabaseByServiceAndDatabaseUuidResponse>;
 
 export interface PostRestartServiceApplicationByServiceAndAppUuidRequest {
   uuid: string;
@@ -9476,13 +9020,8 @@ export const PostServiceApplicationLogsByServiceAndAppUuidRequest = /*@__PURE__*
 export interface PostServiceApplicationLogsByServiceAndAppUuidResponse {
   logs?: string;
 }
-export const PostServiceApplicationLogsByServiceAndAppUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logs: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostServiceApplicationLogsByServiceAndAppUuidResponse",
-}) as any as S.Schema<PostServiceApplicationLogsByServiceAndAppUuidResponse>;
+export const PostServiceApplicationLogsByServiceAndAppUuidResponse =
+  GetApplicationLogsByUuidResponse as any as S.Schema<PostServiceApplicationLogsByServiceAndAppUuidResponse>;
 
 export interface PostStartServiceApplicationByServiceAndAppUuidRequest {
   uuid: string;
@@ -9506,13 +9045,8 @@ export const PostStartServiceApplicationByServiceAndAppUuidRequest = /*@__PURE__
 export interface PostStartServiceApplicationByServiceAndAppUuidResponse {
   message?: string;
 }
-export const PostStartServiceApplicationByServiceAndAppUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostStartServiceApplicationByServiceAndAppUuidResponse",
-}) as any as S.Schema<PostStartServiceApplicationByServiceAndAppUuidResponse>;
+export const PostStartServiceApplicationByServiceAndAppUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<PostStartServiceApplicationByServiceAndAppUuidResponse>;
 
 export interface PostStopServiceApplicationByServiceAndAppUuidRequest {
   uuid: string;
@@ -9532,13 +9066,8 @@ export const PostStopServiceApplicationByServiceAndAppUuidRequest = /*@__PURE__*
 export interface PostStopServiceApplicationByServiceAndAppUuidResponse {
   message?: string;
 }
-export const PostStopServiceApplicationByServiceAndAppUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostStopServiceApplicationByServiceAndAppUuidResponse",
-}) as any as S.Schema<PostStopServiceApplicationByServiceAndAppUuidResponse>;
+export const PostStopServiceApplicationByServiceAndAppUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<PostStopServiceApplicationByServiceAndAppUuidResponse>;
 
 export interface RemoveApplicationDestinationRequest {
   /** UUID of the application. */
@@ -9562,11 +9091,8 @@ export const RemoveApplicationDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveApplicationDestinationRequest>;
 
 export interface RemoveApplicationDestinationResponse {}
-export const RemoveApplicationDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveApplicationDestinationResponse",
-}) as any as S.Schema<RemoveApplicationDestinationResponse>;
+export const RemoveApplicationDestinationResponse =
+  AddApplicationDestinationResponse as any as S.Schema<RemoveApplicationDestinationResponse>;
 
 export interface RestartApplicationByUuidRequest {
   /** UUID of the application. */
@@ -9609,13 +9135,8 @@ export const RestartDatabaseByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestartDatabaseByUuidResponse {
   message?: string;
 }
-export const RestartDatabaseByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestartDatabaseByUuidResponse",
-}) as any as S.Schema<RestartDatabaseByUuidResponse>;
+export const RestartDatabaseByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<RestartDatabaseByUuidResponse>;
 
 export interface RestartServerProxyRequest {
   /** Server UUID */
@@ -9632,13 +9153,8 @@ export const RestartServerProxyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestartServerProxyResponse {
   message?: string;
 }
-export const RestartServerProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestartServerProxyResponse",
-}) as any as S.Schema<RestartServerProxyResponse>;
+export const RestartServerProxyResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<RestartServerProxyResponse>;
 
 export interface RestartServiceByUuidRequest {
   /** UUID of the service. */
@@ -9658,13 +9174,8 @@ export const RestartServiceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestartServiceByUuidResponse {
   message?: string;
 }
-export const RestartServiceByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestartServiceByUuidResponse",
-}) as any as S.Schema<RestartServiceByUuidResponse>;
+export const RestartServiceByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<RestartServiceByUuidResponse>;
 
 export interface RestartServiceDatabaseByServiceAndDatabaseUuidRequest {
   uuid: string;
@@ -9688,13 +9199,8 @@ export const RestartServiceDatabaseByServiceAndDatabaseUuidRequest = /*@__PURE__
 export interface RestartServiceDatabaseByServiceAndDatabaseUuidResponse {
   message?: string;
 }
-export const RestartServiceDatabaseByServiceAndDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestartServiceDatabaseByServiceAndDatabaseUuidResponse",
-}) as any as S.Schema<RestartServiceDatabaseByServiceAndDatabaseUuidResponse>;
+export const RestartServiceDatabaseByServiceAndDatabaseUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<RestartServiceDatabaseByServiceAndDatabaseUuidResponse>;
 
 export interface RollbackApplicationByUuidRequest {
   /** UUID of the application. */
@@ -9715,14 +9221,8 @@ export interface RollbackApplicationByUuidResponse {
   message?: string;
   deployment_uuid?: string;
 }
-export const RollbackApplicationByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    deployment_uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RollbackApplicationByUuidResponse",
-}) as any as S.Schema<RollbackApplicationByUuidResponse>;
+export const RollbackApplicationByUuidResponse =
+  RestartApplicationByUuidResponse as any as S.Schema<RollbackApplicationByUuidResponse>;
 
 export interface RunApplicationStorageBackupRequest {
   uuid: string;
@@ -9744,11 +9244,8 @@ export const RunApplicationStorageBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunApplicationStorageBackupRequest>;
 
 export interface RunApplicationStorageBackupResponse {}
-export const RunApplicationStorageBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunApplicationStorageBackupResponse",
-}) as any as S.Schema<RunApplicationStorageBackupResponse>;
+export const RunApplicationStorageBackupResponse =
+  AddApplicationDestinationResponse as any as S.Schema<RunApplicationStorageBackupResponse>;
 
 export interface RunDatabaseStorageBackupRequest {
   uuid: string;
@@ -9770,11 +9267,8 @@ export const RunDatabaseStorageBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunDatabaseStorageBackupRequest>;
 
 export interface RunDatabaseStorageBackupResponse {}
-export const RunDatabaseStorageBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RunDatabaseStorageBackupResponse",
-}) as any as S.Schema<RunDatabaseStorageBackupResponse>;
+export const RunDatabaseStorageBackupResponse =
+  AddApplicationDestinationResponse as any as S.Schema<RunDatabaseStorageBackupResponse>;
 
 export interface RunServerDockerCleanupRequest {
   /** Server UUID */
@@ -9795,13 +9289,8 @@ export const RunServerDockerCleanupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RunServerDockerCleanupResponse {
   message?: string;
 }
-export const RunServerDockerCleanupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunServerDockerCleanupResponse",
-}) as any as S.Schema<RunServerDockerCleanupResponse>;
+export const RunServerDockerCleanupResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<RunServerDockerCleanupResponse>;
 
 export interface RunServiceStorageBackupRequest {
   uuid: string;
@@ -9823,9 +9312,8 @@ export const RunServiceStorageBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunServiceStorageBackupRequest>;
 
 export interface RunServiceStorageBackupResponse {}
-export const RunServiceStorageBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RunServiceStorageBackupResponse" },
-) as any as S.Schema<RunServiceStorageBackupResponse>;
+export const RunServiceStorageBackupResponse =
+  CreateDatabaseDragonflyResponse as any as S.Schema<RunServiceStorageBackupResponse>;
 
 export interface SaveServerProxyConfigurationRequest {
   /** Server UUID */
@@ -10068,14 +9556,8 @@ export interface StartApplicationByUuidResponse {
   /** UUID of the deployment. */
   deployment_uuid?: string;
 }
-export const StartApplicationByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    deployment_uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartApplicationByUuidResponse",
-}) as any as S.Schema<StartApplicationByUuidResponse>;
+export const StartApplicationByUuidResponse =
+  RestartApplicationByUuidResponse as any as S.Schema<StartApplicationByUuidResponse>;
 
 export interface StartDatabaseByUuidRequest {
   /** UUID of the database. */
@@ -10092,13 +9574,8 @@ export const StartDatabaseByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartDatabaseByUuidResponse {
   message?: string;
 }
-export const StartDatabaseByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartDatabaseByUuidResponse",
-}) as any as S.Schema<StartDatabaseByUuidResponse>;
+export const StartDatabaseByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<StartDatabaseByUuidResponse>;
 
 export interface StartServiceByUuidRequest {
   /** UUID of the service. */
@@ -10115,13 +9592,8 @@ export const StartServiceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartServiceByUuidResponse {
   message?: string;
 }
-export const StartServiceByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartServiceByUuidResponse",
-}) as any as S.Schema<StartServiceByUuidResponse>;
+export const StartServiceByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<StartServiceByUuidResponse>;
 
 export interface StartServiceDatabaseByServiceAndDatabaseUuidRequest {
   uuid: string;
@@ -10145,13 +9617,8 @@ export const StartServiceDatabaseByServiceAndDatabaseUuidRequest = /*@__PURE__*/
 export interface StartServiceDatabaseByServiceAndDatabaseUuidResponse {
   message?: string;
 }
-export const StartServiceDatabaseByServiceAndDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StartServiceDatabaseByServiceAndDatabaseUuidResponse",
-}) as any as S.Schema<StartServiceDatabaseByServiceAndDatabaseUuidResponse>;
+export const StartServiceDatabaseByServiceAndDatabaseUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<StartServiceDatabaseByServiceAndDatabaseUuidResponse>;
 
 export interface StopApplicationByUuidRequest {
   /** UUID of the application. */
@@ -10171,13 +9638,8 @@ export const StopApplicationByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopApplicationByUuidResponse {
   message?: string;
 }
-export const StopApplicationByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopApplicationByUuidResponse",
-}) as any as S.Schema<StopApplicationByUuidResponse>;
+export const StopApplicationByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<StopApplicationByUuidResponse>;
 
 export interface StopDatabaseByUuidRequest {
   /** UUID of the database. */
@@ -10197,13 +9659,8 @@ export const StopDatabaseByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopDatabaseByUuidResponse {
   message?: string;
 }
-export const StopDatabaseByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopDatabaseByUuidResponse",
-}) as any as S.Schema<StopDatabaseByUuidResponse>;
+export const StopDatabaseByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<StopDatabaseByUuidResponse>;
 
 export interface StopServiceByUuidRequest {
   /** UUID of the service. */
@@ -10221,13 +9678,8 @@ export const StopServiceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopServiceByUuidResponse {
   message?: string;
 }
-export const StopServiceByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopServiceByUuidResponse",
-}) as any as S.Schema<StopServiceByUuidResponse>;
+export const StopServiceByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<StopServiceByUuidResponse>;
 
 export interface StopServiceDatabaseByServiceAndDatabaseUuidRequest {
   uuid: string;
@@ -10247,13 +9699,8 @@ export const StopServiceDatabaseByServiceAndDatabaseUuidRequest = /*@__PURE__*/ 
 export interface StopServiceDatabaseByServiceAndDatabaseUuidResponse {
   message?: string;
 }
-export const StopServiceDatabaseByServiceAndDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StopServiceDatabaseByServiceAndDatabaseUuidResponse",
-}) as any as S.Schema<StopServiceDatabaseByServiceAndDatabaseUuidResponse>;
+export const StopServiceDatabaseByServiceAndDatabaseUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<StopServiceDatabaseByServiceAndDatabaseUuidResponse>;
 
 /** The build pack type. */
 export type UpdateApplicationByUuidRequestBuildPack =
@@ -10266,9 +9713,8 @@ export const UpdateApplicationByUuidRequestBuildPack = S.String;
 
 /** The subset of the application domains served with an X-Robots-Tag: noindex, nofollow response header, keeping them out of search engines. Entries that are not among the application domains are ignored. */
 export type UpdateApplicationByUuidRequestNoindexDomainsList = Array<string>;
-export const UpdateApplicationByUuidRequestNoindexDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateApplicationByUuidRequestNoindexDomainsList>;
+export const UpdateApplicationByUuidRequestNoindexDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<UpdateApplicationByUuidRequestNoindexDomainsList>;
 
 /** How to set redirect with Traefik / Caddy. www<->non-www. */
 export type UpdateApplicationByUuidRequestRedirect = "www" | "non-www" | "both";
@@ -10606,13 +10052,8 @@ export const UpdateApplicationByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApplicationByUuidResponse {
   uuid?: string;
 }
-export const UpdateApplicationByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateApplicationByUuidResponse",
-}) as any as S.Schema<UpdateApplicationByUuidResponse>;
+export const UpdateApplicationByUuidResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<UpdateApplicationByUuidResponse>;
 
 export interface UpdateCloudInitScriptByUuidRequest {
   uuid: string;
@@ -10630,11 +10071,8 @@ export const UpdateCloudInitScriptByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCloudInitScriptByUuidRequest>;
 
 export interface UpdateCloudInitScriptByUuidResponse {}
-export const UpdateCloudInitScriptByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCloudInitScriptByUuidResponse",
-}) as any as S.Schema<UpdateCloudInitScriptByUuidResponse>;
+export const UpdateCloudInitScriptByUuidResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateCloudInitScriptByUuidResponse>;
 
 export interface UpdateCloudTokenByUuidRequest {
   /** Token UUID */
@@ -10654,13 +10092,8 @@ export const UpdateCloudTokenByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCloudTokenByUuidResponse {
   uuid?: string;
 }
-export const UpdateCloudTokenByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateCloudTokenByUuidResponse",
-}) as any as S.Schema<UpdateCloudTokenByUuidResponse>;
+export const UpdateCloudTokenByUuidResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<UpdateCloudTokenByUuidResponse>;
 
 export interface UpdateCurrentTeamDiscordNotificationsRequest {}
 export const UpdateCurrentTeamDiscordNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10670,11 +10103,8 @@ export const UpdateCurrentTeamDiscordNotificationsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<UpdateCurrentTeamDiscordNotificationsRequest>;
 
 export interface UpdateCurrentTeamDiscordNotificationsResponse {}
-export const UpdateCurrentTeamDiscordNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCurrentTeamDiscordNotificationsResponse",
-}) as any as S.Schema<UpdateCurrentTeamDiscordNotificationsResponse>;
+export const UpdateCurrentTeamDiscordNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateCurrentTeamDiscordNotificationsResponse>;
 
 export interface UpdateCurrentTeamEmailNotificationsRequest {}
 export const UpdateCurrentTeamEmailNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10684,11 +10114,8 @@ export const UpdateCurrentTeamEmailNotificationsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateCurrentTeamEmailNotificationsRequest>;
 
 export interface UpdateCurrentTeamEmailNotificationsResponse {}
-export const UpdateCurrentTeamEmailNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCurrentTeamEmailNotificationsResponse",
-}) as any as S.Schema<UpdateCurrentTeamEmailNotificationsResponse>;
+export const UpdateCurrentTeamEmailNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateCurrentTeamEmailNotificationsResponse>;
 
 export interface UpdateCurrentTeamPushoverNotificationsRequest {}
 export const UpdateCurrentTeamPushoverNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10698,11 +10125,8 @@ export const UpdateCurrentTeamPushoverNotificationsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<UpdateCurrentTeamPushoverNotificationsRequest>;
 
 export interface UpdateCurrentTeamPushoverNotificationsResponse {}
-export const UpdateCurrentTeamPushoverNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCurrentTeamPushoverNotificationsResponse",
-}) as any as S.Schema<UpdateCurrentTeamPushoverNotificationsResponse>;
+export const UpdateCurrentTeamPushoverNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateCurrentTeamPushoverNotificationsResponse>;
 
 export interface UpdateCurrentTeamSlackNotificationsRequest {}
 export const UpdateCurrentTeamSlackNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10712,11 +10136,8 @@ export const UpdateCurrentTeamSlackNotificationsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateCurrentTeamSlackNotificationsRequest>;
 
 export interface UpdateCurrentTeamSlackNotificationsResponse {}
-export const UpdateCurrentTeamSlackNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCurrentTeamSlackNotificationsResponse",
-}) as any as S.Schema<UpdateCurrentTeamSlackNotificationsResponse>;
+export const UpdateCurrentTeamSlackNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateCurrentTeamSlackNotificationsResponse>;
 
 export interface UpdateCurrentTeamTelegramNotificationsRequest {}
 export const UpdateCurrentTeamTelegramNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10726,11 +10147,8 @@ export const UpdateCurrentTeamTelegramNotificationsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<UpdateCurrentTeamTelegramNotificationsRequest>;
 
 export interface UpdateCurrentTeamTelegramNotificationsResponse {}
-export const UpdateCurrentTeamTelegramNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCurrentTeamTelegramNotificationsResponse",
-}) as any as S.Schema<UpdateCurrentTeamTelegramNotificationsResponse>;
+export const UpdateCurrentTeamTelegramNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateCurrentTeamTelegramNotificationsResponse>;
 
 export interface UpdateCurrentTeamWebhookNotificationsRequest {}
 export const UpdateCurrentTeamWebhookNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10740,11 +10158,8 @@ export const UpdateCurrentTeamWebhookNotificationsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<UpdateCurrentTeamWebhookNotificationsRequest>;
 
 export interface UpdateCurrentTeamWebhookNotificationsResponse {}
-export const UpdateCurrentTeamWebhookNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCurrentTeamWebhookNotificationsResponse",
-}) as any as S.Schema<UpdateCurrentTeamWebhookNotificationsResponse>;
+export const UpdateCurrentTeamWebhookNotificationsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateCurrentTeamWebhookNotificationsResponse>;
 
 export interface UpdateDatabaseBackupRequest {
   /** UUID of the database. */
@@ -10813,9 +10228,8 @@ export const UpdateDatabaseBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseBackupRequest>;
 
 export interface UpdateDatabaseBackupResponse {}
-export const UpdateDatabaseBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatabaseBackupResponse",
-}) as any as S.Schema<UpdateDatabaseBackupResponse>;
+export const UpdateDatabaseBackupResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UpdateDatabaseBackupResponse>;
 
 export interface UpdateDatabaseByUuidRequest {
   /** UUID of the database. */
@@ -10968,9 +10382,8 @@ export const UpdateDatabaseByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseByUuidRequest>;
 
 export interface UpdateDatabaseByUuidResponse {}
-export const UpdateDatabaseByUuidResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatabaseByUuidResponse",
-}) as any as S.Schema<UpdateDatabaseByUuidResponse>;
+export const UpdateDatabaseByUuidResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UpdateDatabaseByUuidResponse>;
 
 export interface UpdateDestinationByUuidRequest {
   /** Destination UUID */
@@ -11138,11 +10551,8 @@ export const UpdateEnvironmentSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvironmentSharedEnvRequest>;
 
 export interface UpdateEnvironmentSharedEnvResponse {}
-export const UpdateEnvironmentSharedEnvResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEnvironmentSharedEnvResponse",
-}) as any as S.Schema<UpdateEnvironmentSharedEnvResponse>;
+export const UpdateEnvironmentSharedEnvResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateEnvironmentSharedEnvResponse>;
 
 export interface UpdateEnvsByApplicationUuidRequestDataItem {
   /** The key of the environment variable. */
@@ -11192,16 +10602,12 @@ export const UpdateEnvsByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvsByApplicationUuidRequest>;
 
 export type UpdateEnvsByApplicationUuidResponseBodyList = Array<EnvironmentVariable>;
-export const UpdateEnvsByApplicationUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<UpdateEnvsByApplicationUuidResponseBodyList>;
+export const UpdateEnvsByApplicationUuidResponseBodyList =
+  ListEnvsByApplicationUuidResponseBodyList as any as S.Schema<UpdateEnvsByApplicationUuidResponseBodyList>;
 
 export type UpdateEnvsByApplicationUuidResponse = UpdateEnvsByApplicationUuidResponseBodyList;
-export const UpdateEnvsByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateEnvsByApplicationUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateEnvsByApplicationUuidResponse",
-}) as any as S.Schema<UpdateEnvsByApplicationUuidResponse>;
+export const UpdateEnvsByApplicationUuidResponse =
+  ListEnvsByApplicationUuidResponse as any as S.Schema<UpdateEnvsByApplicationUuidResponse>;
 
 export interface UpdateEnvsByDatabaseUuidRequestDataItem {
   /** The key of the environment variable. */
@@ -11248,25 +10654,20 @@ export const UpdateEnvsByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvsByDatabaseUuidRequest>;
 
 export type UpdateEnvsByDatabaseUuidResponseBodyList = Array<EnvironmentVariable>;
-export const UpdateEnvsByDatabaseUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<UpdateEnvsByDatabaseUuidResponseBodyList>;
+export const UpdateEnvsByDatabaseUuidResponseBodyList =
+  ListEnvsByApplicationUuidResponseBodyList as any as S.Schema<UpdateEnvsByDatabaseUuidResponseBodyList>;
 
 export type UpdateEnvsByDatabaseUuidResponse = UpdateEnvsByDatabaseUuidResponseBodyList;
-export const UpdateEnvsByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateEnvsByDatabaseUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateEnvsByDatabaseUuidResponse",
-}) as any as S.Schema<UpdateEnvsByDatabaseUuidResponse>;
+export const UpdateEnvsByDatabaseUuidResponse =
+  ListEnvsByApplicationUuidResponse as any as S.Schema<UpdateEnvsByDatabaseUuidResponse>;
 
 export type UpdateEnvsByServiceUuidRequestDataItem = UpdateEnvsByApplicationUuidRequestDataItem;
 export const UpdateEnvsByServiceUuidRequestDataItem = UpdateEnvsByApplicationUuidRequestDataItem;
 
 export type UpdateEnvsByServiceUuidRequestDataList =
   Array<UpdateEnvsByApplicationUuidRequestDataItem>;
-export const UpdateEnvsByServiceUuidRequestDataList = /*@__PURE__*/ S.Array(
-  UpdateEnvsByApplicationUuidRequestDataItem,
-) as any as S.Schema<UpdateEnvsByServiceUuidRequestDataList>;
+export const UpdateEnvsByServiceUuidRequestDataList =
+  UpdateEnvsByApplicationUuidRequestDataList as any as S.Schema<UpdateEnvsByServiceUuidRequestDataList>;
 
 export interface UpdateEnvsByServiceUuidRequest {
   /** UUID of the service. */
@@ -11283,16 +10684,12 @@ export const UpdateEnvsByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvsByServiceUuidRequest>;
 
 export type UpdateEnvsByServiceUuidResponseBodyList = Array<EnvironmentVariable>;
-export const UpdateEnvsByServiceUuidResponseBodyList = /*@__PURE__*/ S.Array(
-  EnvironmentVariable,
-) as any as S.Schema<UpdateEnvsByServiceUuidResponseBodyList>;
+export const UpdateEnvsByServiceUuidResponseBodyList =
+  ListEnvsByApplicationUuidResponseBodyList as any as S.Schema<UpdateEnvsByServiceUuidResponseBodyList>;
 
 export type UpdateEnvsByServiceUuidResponse = UpdateEnvsByServiceUuidResponseBodyList;
-export const UpdateEnvsByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  UpdateEnvsByServiceUuidResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateEnvsByServiceUuidResponse",
-}) as any as S.Schema<UpdateEnvsByServiceUuidResponse>;
+export const UpdateEnvsByServiceUuidResponse =
+  ListEnvsByApplicationUuidResponse as any as S.Schema<UpdateEnvsByServiceUuidResponse>;
 
 export interface UpdateGithubAppRequest {
   /** GitHub App ID */
@@ -11403,12 +10800,8 @@ export interface UpdateGitlabAppResponse {
   /** Updated GitLab app data */
   data?: unknown;
 }
-export const UpdateGitlabAppResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    data: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "UpdateGitlabAppResponse" }) as any as S.Schema<UpdateGitlabAppResponse>;
+export const UpdateGitlabAppResponse =
+  UpdateGithubAppResponse as any as S.Schema<UpdateGitlabAppResponse>;
 
 export interface UpdateInstanceEmailSettingsRequest {}
 export const UpdateInstanceEmailSettingsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11418,11 +10811,8 @@ export const UpdateInstanceEmailSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateInstanceEmailSettingsRequest>;
 
 export interface UpdateInstanceEmailSettingsResponse {}
-export const UpdateInstanceEmailSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateInstanceEmailSettingsResponse",
-}) as any as S.Schema<UpdateInstanceEmailSettingsResponse>;
+export const UpdateInstanceEmailSettingsResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateInstanceEmailSettingsResponse>;
 
 export type UpdatePreviewDomainsByPullRequestIdRequestDockerComposeDomainsItemRedirect =
   | "www"
@@ -11482,11 +10872,8 @@ export const UpdatePreviewDomainsByPullRequestIdRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdatePreviewDomainsByPullRequestIdRequest>;
 
 export interface UpdatePreviewDomainsByPullRequestIdResponse {}
-export const UpdatePreviewDomainsByPullRequestIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdatePreviewDomainsByPullRequestIdResponse",
-}) as any as S.Schema<UpdatePreviewDomainsByPullRequestIdResponse>;
+export const UpdatePreviewDomainsByPullRequestIdResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdatePreviewDomainsByPullRequestIdResponse>;
 
 export interface UpdatePrivateKeyRequest {
   /** Private Key UUID */
@@ -11507,11 +10894,8 @@ export const UpdatePrivateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePrivateKeyResponse {
   uuid?: string;
 }
-export const UpdatePrivateKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdatePrivateKeyResponse" }) as any as S.Schema<UpdatePrivateKeyResponse>;
+export const UpdatePrivateKeyResponse =
+  CreateCloudTokenResponse as any as S.Schema<UpdatePrivateKeyResponse>;
 
 export interface UpdateProjectByUuidRequest {
   /** UUID of the project. */
@@ -11536,15 +10920,8 @@ export interface UpdateProjectByUuidResponse {
   name?: string;
   description?: string;
 }
-export const UpdateProjectByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProjectByUuidResponse",
-}) as any as S.Schema<UpdateProjectByUuidResponse>;
+export const UpdateProjectByUuidResponse =
+  UpdateEnvironmentResponse as any as S.Schema<UpdateProjectByUuidResponse>;
 
 export interface UpdateProjectSharedEnvRequest {
   /** Project UUID */
@@ -11562,9 +10939,8 @@ export const UpdateProjectSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProjectSharedEnvRequest>;
 
 export interface UpdateProjectSharedEnvResponse {}
-export const UpdateProjectSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateProjectSharedEnvResponse",
-}) as any as S.Schema<UpdateProjectSharedEnvResponse>;
+export const UpdateProjectSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UpdateProjectSharedEnvResponse>;
 
 export interface UpdateS3StorageByUuidRequest {
   /** S3 Storage UUID */
@@ -11605,13 +10981,8 @@ export const UpdateS3StorageByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateS3StorageByUuidResponse {
   uuid?: string;
 }
-export const UpdateS3StorageByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateS3StorageByUuidResponse",
-}) as any as S.Schema<UpdateS3StorageByUuidResponse>;
+export const UpdateS3StorageByUuidResponse =
+  CreateDockerfileApplicationResponse as any as S.Schema<UpdateS3StorageByUuidResponse>;
 
 export interface UpdateScheduledTaskByApplicationUuidRequest {
   /** UUID of the application. */
@@ -11769,11 +11140,8 @@ export const UpdateServerCloudflareTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateServerCloudflareTunnelRequest>;
 
 export interface UpdateServerCloudflareTunnelResponse {}
-export const UpdateServerCloudflareTunnelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateServerCloudflareTunnelResponse",
-}) as any as S.Schema<UpdateServerCloudflareTunnelResponse>;
+export const UpdateServerCloudflareTunnelResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UpdateServerCloudflareTunnelResponse>;
 
 export interface UpdateServerDockerCleanupRequest {
   /** Server UUID */
@@ -11808,18 +11176,8 @@ export interface UpdateServerDockerCleanupResponse {
   delete_unused_networks?: boolean;
   disable_application_image_retention?: boolean;
 }
-export const UpdateServerDockerCleanupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    docker_cleanup_frequency: S.optional(S.String),
-    docker_cleanup_threshold: S.optional(S.Number),
-    force_docker_cleanup: S.optional(S.Boolean),
-    delete_unused_volumes: S.optional(S.Boolean),
-    delete_unused_networks: S.optional(S.Boolean),
-    disable_application_image_retention: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateServerDockerCleanupResponse",
-}) as any as S.Schema<UpdateServerDockerCleanupResponse>;
+export const UpdateServerDockerCleanupResponse =
+  GetServerDockerCleanupResponse as any as S.Schema<UpdateServerDockerCleanupResponse>;
 
 export interface UpdateServerLogDrainsRequest {
   /** Server UUID */
@@ -11852,9 +11210,8 @@ export const UpdateServerLogDrainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateServerLogDrainsRequest>;
 
 export interface UpdateServerLogDrainsResponse {}
-export const UpdateServerLogDrainsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateServerLogDrainsResponse",
-}) as any as S.Schema<UpdateServerLogDrainsResponse>;
+export const UpdateServerLogDrainsResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UpdateServerLogDrainsResponse>;
 
 /** Proxy type (case-insensitive). */
 export type UpdateServerProxyRequestProxyType = "traefik" | "caddy" | "nginx" | "none";
@@ -11942,9 +11299,8 @@ export const UpdateServerSentinelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateServerSentinelRequest>;
 
 export interface UpdateServerSentinelResponse {}
-export const UpdateServerSentinelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateServerSentinelResponse",
-}) as any as S.Schema<UpdateServerSentinelResponse>;
+export const UpdateServerSentinelResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UpdateServerSentinelResponse>;
 
 export interface UpdateServerSharedEnvRequest {
   /** Server UUID */
@@ -11962,18 +11318,16 @@ export const UpdateServerSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateServerSharedEnvRequest>;
 
 export interface UpdateServerSharedEnvResponse {}
-export const UpdateServerSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateServerSharedEnvResponse",
-}) as any as S.Schema<UpdateServerSharedEnvResponse>;
+export const UpdateServerSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UpdateServerSharedEnvResponse>;
 
 export type UpdateServiceByUuidRequestUrlsItem = CreateServiceRequestUrlsItem;
 export const UpdateServiceByUuidRequestUrlsItem = CreateServiceRequestUrlsItem;
 
 /** Array of URLs to be applied to containers of a service. */
 export type UpdateServiceByUuidRequestUrlsList = Array<CreateServiceRequestUrlsItem>;
-export const UpdateServiceByUuidRequestUrlsList = /*@__PURE__*/ S.Array(
-  CreateServiceRequestUrlsItem,
-) as any as S.Schema<UpdateServiceByUuidRequestUrlsList>;
+export const UpdateServiceByUuidRequestUrlsList =
+  CreateServiceRequestUrlsList as any as S.Schema<UpdateServiceByUuidRequestUrlsList>;
 
 export interface UpdateServiceByUuidRequest {
   /** UUID of the service. */
@@ -12013,9 +11367,8 @@ export const UpdateServiceByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Service domains. */
 export type UpdateServiceByUuidResponseDomainsList = Array<string>;
-export const UpdateServiceByUuidResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateServiceByUuidResponseDomainsList>;
+export const UpdateServiceByUuidResponseDomainsList =
+  CreateDatabaseClickhouseRequestTagsList as any as S.Schema<UpdateServiceByUuidResponseDomainsList>;
 
 export interface UpdateServiceByUuidResponse {
   /** Service UUID. */
@@ -12067,11 +11420,8 @@ export const UpdateStorageByApplicationUuidRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateStorageByApplicationUuidRequest>;
 
 export type UpdateStorageByApplicationUuidResponse = unknown;
-export const UpdateStorageByApplicationUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateStorageByApplicationUuidResponse",
-}) as any as S.Schema<UpdateStorageByApplicationUuidResponse>;
+export const UpdateStorageByApplicationUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<UpdateStorageByApplicationUuidResponse>;
 
 /** The type of storage: persistent or file. */
 export type UpdateStorageByDatabaseUuidRequestType = "persistent" | "file";
@@ -12108,11 +11458,8 @@ export const UpdateStorageByDatabaseUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateStorageByDatabaseUuidRequest>;
 
 export type UpdateStorageByDatabaseUuidResponse = unknown;
-export const UpdateStorageByDatabaseUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateStorageByDatabaseUuidResponse",
-}) as any as S.Schema<UpdateStorageByDatabaseUuidResponse>;
+export const UpdateStorageByDatabaseUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<UpdateStorageByDatabaseUuidResponse>;
 
 /** The type of storage: persistent or file. */
 export type UpdateStorageByServiceUuidRequestType = "persistent" | "file";
@@ -12149,11 +11496,8 @@ export const UpdateStorageByServiceUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateStorageByServiceUuidRequest>;
 
 export type UpdateStorageByServiceUuidResponse = unknown;
-export const UpdateStorageByServiceUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "UpdateStorageByServiceUuidResponse",
-}) as any as S.Schema<UpdateStorageByServiceUuidResponse>;
+export const UpdateStorageByServiceUuidResponse =
+  CreateStorageByApplicationUuidResponse as any as S.Schema<UpdateStorageByServiceUuidResponse>;
 
 export interface UpdateTagByUuidRequest {
   /** Tag UUID */
@@ -12180,9 +11524,8 @@ export const UpdateTeamSharedEnvRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTeamSharedEnvRequest>;
 
 export interface UpdateTeamSharedEnvResponse {}
-export const UpdateTeamSharedEnvResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateTeamSharedEnvResponse",
-}) as any as S.Schema<UpdateTeamSharedEnvResponse>;
+export const UpdateTeamSharedEnvResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UpdateTeamSharedEnvResponse>;
 
 export interface UpdateTokenTeamRequest {
   /** Whether deployments can fall back to the deployment server when no usable dedicated build server is available. */
@@ -12207,9 +11550,8 @@ export const UploadDatabaseImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadDatabaseImportRequest>;
 
 export interface UploadDatabaseImportResponse {}
-export const UploadDatabaseImportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadDatabaseImportResponse",
-}) as any as S.Schema<UploadDatabaseImportResponse>;
+export const UploadDatabaseImportResponse =
+  CloneDatabaseByUuidResponse as any as S.Schema<UploadDatabaseImportResponse>;
 
 export interface UploadServiceDatabaseImportRequest {
   /** Service UUID. */
@@ -12233,11 +11575,8 @@ export const UploadServiceDatabaseImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadServiceDatabaseImportRequest>;
 
 export interface UploadServiceDatabaseImportResponse {}
-export const UploadServiceDatabaseImportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadServiceDatabaseImportResponse",
-}) as any as S.Schema<UploadServiceDatabaseImportResponse>;
+export const UploadServiceDatabaseImportResponse =
+  AddApplicationDestinationResponse as any as S.Schema<UploadServiceDatabaseImportResponse>;
 
 export interface ValidateCloudTokenByUuidRequest {
   /** Token UUID */
@@ -12280,14 +11619,8 @@ export interface ValidateS3StorageByUuidResponse {
   valid?: boolean;
   message?: string;
 }
-export const ValidateS3StorageByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    valid: S.optional(S.Boolean),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ValidateS3StorageByUuidResponse",
-}) as any as S.Schema<ValidateS3StorageByUuidResponse>;
+export const ValidateS3StorageByUuidResponse =
+  ValidateCloudTokenByUuidResponse as any as S.Schema<ValidateS3StorageByUuidResponse>;
 
 export interface ValidateServerByUuidRequest {
   /** Server UUID */
@@ -12307,13 +11640,8 @@ export const ValidateServerByUuidRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ValidateServerByUuidResponse {
   message?: string;
 }
-export const ValidateServerByUuidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ValidateServerByUuidResponse",
-}) as any as S.Schema<ValidateServerByUuidResponse>;
+export const ValidateServerByUuidResponse =
+  CheckServerRegistryLoginResponse as any as S.Schema<ValidateServerByUuidResponse>;
 
 export interface VersionRequest {}
 export const VersionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12321,9 +11649,7 @@ export const VersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionRequest" }) as any as S.Schema<VersionRequest>;
 
 export interface VersionResponse {}
-export const VersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VersionResponse",
-}) as any as S.Schema<VersionResponse>;
+export const VersionResponse = CloneDatabaseByUuidResponse as any as S.Schema<VersionResponse>;
 
 export type AddApplicationDestinationError =
   | BadRequest

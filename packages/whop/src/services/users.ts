@@ -127,9 +127,8 @@ export const CreateOauthGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateOauthGrantRequest" }) as any as S.Schema<CreateOauthGrantRequest>;
 
 export type OauthGrantScopesList = Array<string>;
-export const OauthGrantScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OauthGrantScopesList>;
+export const OauthGrantScopesList =
+  CreateOauthGrantRequestRequestedScopesList as any as S.Schema<OauthGrantScopesList>;
 
 export interface OauthGrant {
   /** The account the grant is scoped to, prefixed `biz_`. `null` when the user authorized the app for themselves rather than for one of their accounts. */
@@ -562,11 +561,7 @@ export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({ identifier: "UserProfilePicture" }) as any as S.Schema<UserProfilePicture>;
+export const UserProfilePicture = UserBanner as any as S.Schema<UserProfilePicture>;
 
 /** The platform the parent social account exists on. */
 export type SocialAccountParentPlatform =
@@ -623,9 +618,8 @@ export type SocialAccountPlatform =
 export const SocialAccountPlatform = S.String;
 
 export type SocialAccountScopesList = Array<string>;
-export const SocialAccountScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SocialAccountScopesList>;
+export const SocialAccountScopesList =
+  CreateOauthGrantRequestRequestedScopesList as any as S.Schema<SocialAccountScopesList>;
 
 export interface SocialAccount {
   /** Why this social account currently can't be used for advertising -- a failed share or a Meta-side restriction. Null when the account is healthy. */
@@ -1426,9 +1420,8 @@ export type UserRecommendedActionAction =
 export const UserRecommendedActionAction = S.String;
 
 export type UserRecommendedActionBlockedCapabilitiesList = Array<string>;
-export const UserRecommendedActionBlockedCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserRecommendedActionBlockedCapabilitiesList>;
+export const UserRecommendedActionBlockedCapabilitiesList =
+  CreateOauthGrantRequestRequestedScopesList as any as S.Schema<UserRecommendedActionBlockedCapabilitiesList>;
 
 /** Always optional -- never blocking */
 export type UserRecommendedActionStatus = "optional";

@@ -235,9 +235,8 @@ export const BatchCreateCategoryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "BatchCreateCategoryInput" }) as any as S.Schema<BatchCreateCategoryInput>;
 export interface BatchCreateCategoryResponse {}
-export const BatchCreateCategoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchCreateCategoryResponse",
-}) as any as S.Schema<BatchCreateCategoryResponse>;
+export const BatchCreateCategoryResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<BatchCreateCategoryResponse>;
 export type DeleteCategoryInputList = string[];
 export const DeleteCategoryInputList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteCategoryInput {
@@ -260,9 +259,8 @@ export const BatchDeleteCategoryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "BatchDeleteCategoryInput" }) as any as S.Schema<BatchDeleteCategoryInput>;
 export interface BatchDeleteCategoryResponse {}
-export const BatchDeleteCategoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchDeleteCategoryResponse",
-}) as any as S.Schema<BatchDeleteCategoryResponse>;
+export const BatchDeleteCategoryResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<BatchDeleteCategoryResponse>;
 export interface CategoryInput {
   id: string;
   title: string;
@@ -293,12 +291,11 @@ export const BatchUpdateCategoryInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "BatchUpdateCategoryInput" }) as any as S.Schema<BatchUpdateCategoryInput>;
 export interface BatchUpdateCategoryResponse {}
-export const BatchUpdateCategoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "BatchUpdateCategoryResponse",
-}) as any as S.Schema<BatchUpdateCategoryResponse>;
+export const BatchUpdateCategoryResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<BatchUpdateCategoryResponse>;
 export type AppVersion = number;
 export type CategoryIdList = string[];
-export const CategoryIdList = /*@__PURE__*/ S.Array(S.String);
+export const CategoryIdList = DeleteCategoryInputList as any as S.Schema<CategoryIdList>;
 export interface CreateLibraryItemInput {
   instanceId: string;
   appId: string;
@@ -433,7 +430,8 @@ export type DocumentAttributeKey = string;
 export type DocumentAttributeStringValue = string;
 export type PlatoString = string;
 export type DocumentAttributeStringListValue = string[];
-export const DocumentAttributeStringListValue = /*@__PURE__*/ S.Array(S.String);
+export const DocumentAttributeStringListValue =
+  DeleteCategoryInputList as any as S.Schema<DocumentAttributeStringListValue>;
 export type DocumentAttributeValue =
   | { stringValue: string; stringListValue?: never; longValue?: never; dateValue?: never }
   | { stringValue?: never; stringListValue: string[]; longValue?: never; dateValue?: never }
@@ -698,9 +696,8 @@ export const DeleteLibraryItemInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteLibraryItemInput" }) as any as S.Schema<DeleteLibraryItemInput>;
 export interface DeleteLibraryItemResponse {}
-export const DeleteLibraryItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLibraryItemResponse",
-}) as any as S.Schema<DeleteLibraryItemResponse>;
+export const DeleteLibraryItemResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<DeleteLibraryItemResponse>;
 export interface DeleteQAppInput {
   instanceId: string;
   appId: string;
@@ -711,9 +708,8 @@ export const DeleteQAppInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteQAppInput" }) as any as S.Schema<DeleteQAppInput>;
 export interface DeleteQAppResponse {}
-export const DeleteQAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteQAppResponse",
-}) as any as S.Schema<DeleteQAppResponse>;
+export const DeleteQAppResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<DeleteQAppResponse>;
 export interface DescribeQAppPermissionsInput {
   instanceId: string;
   appId: string;
@@ -798,11 +794,8 @@ export const DisassociateLibraryItemReviewInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateLibraryItemReviewInput",
 }) as any as S.Schema<DisassociateLibraryItemReviewInput>;
 export interface DisassociateLibraryItemReviewResponse {}
-export const DisassociateLibraryItemReviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateLibraryItemReviewResponse",
-}) as any as S.Schema<DisassociateLibraryItemReviewResponse>;
+export const DisassociateLibraryItemReviewResponse =
+  AssociateLibraryItemReviewResponse as any as S.Schema<DisassociateLibraryItemReviewResponse>;
 export interface DisassociateQAppFromUserInput {
   instanceId: string;
   appId: string;
@@ -815,11 +808,8 @@ export const DisassociateQAppFromUserInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateQAppFromUserInput",
 }) as any as S.Schema<DisassociateQAppFromUserInput>;
 export interface DisassociateQAppFromUserResponse {}
-export const DisassociateQAppFromUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateQAppFromUserResponse",
-}) as any as S.Schema<DisassociateQAppFromUserResponse>;
+export const DisassociateQAppFromUserResponse =
+  AssociateLibraryItemReviewResponse as any as S.Schema<DisassociateQAppFromUserResponse>;
 export interface ExportQAppSessionDataInput {
   instanceId: string;
   sessionId: string;
@@ -925,7 +915,7 @@ export const GetQAppInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/apps.get" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetQAppInput" }) as any as S.Schema<GetQAppInput>;
 export type DependencyList = string[];
-export const DependencyList = /*@__PURE__*/ S.Array(S.String);
+export const DependencyList = DeleteCategoryInputList as any as S.Schema<DependencyList>;
 export interface TextInputCard {
   id: string;
   title: string;
@@ -945,7 +935,7 @@ export const TextInputCard = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextInputCard" }) as any as S.Schema<TextInputCard>;
 export type MemoryReferenceList = string[];
-export const MemoryReferenceList = /*@__PURE__*/ S.Array(S.String);
+export const MemoryReferenceList = DeleteCategoryInputList as any as S.Schema<MemoryReferenceList>;
 export interface QQueryCard {
   id: string;
   title: string;
@@ -1299,7 +1289,7 @@ export const ListCategoriesInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListCategoriesInput" }) as any as S.Schema<ListCategoriesInput>;
 export type CategoriesList = Category[];
-export const CategoriesList = /*@__PURE__*/ S.Array(Category);
+export const CategoriesList = CategoryList as any as S.Schema<CategoriesList>;
 export interface ListCategoriesOutput {
   categories?: Category[];
 }
@@ -1337,23 +1327,7 @@ export interface LibraryItemMember {
   userCount?: number;
   isVerified?: boolean;
 }
-export const LibraryItemMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    libraryItemId: S.String,
-    appId: S.String,
-    appVersion: S.Number,
-    categories: CategoryList,
-    status: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedBy: S.optional(S.String),
-    ratingCount: S.Number,
-    isRatedByUser: S.optional(S.Boolean),
-    userCount: S.optional(S.Number),
-    isVerified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "LibraryItemMember" }) as any as S.Schema<LibraryItemMember>;
+export const LibraryItemMember = GetLibraryItemOutput as any as S.Schema<LibraryItemMember>;
 export type LibraryItemList = LibraryItemMember[];
 export const LibraryItemList = /*@__PURE__*/ S.Array(LibraryItemMember);
 export interface ListLibraryItemsOutput {
@@ -1480,7 +1454,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Tags = TagMap as any as S.Schema<Tags>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
@@ -1614,9 +1588,8 @@ export const StopQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopQAppSessionInput" }) as any as S.Schema<StopQAppSessionInput>;
 export interface StopQAppSessionResponse {}
-export const StopQAppSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopQAppSessionResponse",
-}) as any as S.Schema<StopQAppSessionResponse>;
+export const StopQAppSessionResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<StopQAppSessionResponse>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: { [key: string]: string | undefined };
@@ -1627,11 +1600,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = DeleteCategoryInputList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
@@ -1645,9 +1617,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  AssociateQAppWithUserResponse as any as S.Schema<UntagResourceResponse>;
 export type LibraryItemStatus = "PUBLISHED" | "DISABLED" | (string & {});
 export const LibraryItemStatus = S.String;
 
@@ -1682,23 +1653,8 @@ export interface UpdateLibraryItemOutput {
   userCount?: number;
   isVerified?: boolean;
 }
-export const UpdateLibraryItemOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    libraryItemId: S.String,
-    appId: S.String,
-    appVersion: S.Number,
-    categories: CategoryList,
-    status: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    updatedBy: S.optional(S.String),
-    ratingCount: S.Number,
-    isRatedByUser: S.optional(S.Boolean),
-    userCount: S.optional(S.Number),
-    isVerified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateLibraryItemOutput" }) as any as S.Schema<UpdateLibraryItemOutput>;
+export const UpdateLibraryItemOutput =
+  GetLibraryItemOutput as any as S.Schema<UpdateLibraryItemOutput>;
 export interface UpdateLibraryItemMetadataInput {
   instanceId: string;
   libraryItemId: string;
@@ -1723,11 +1679,8 @@ export const UpdateLibraryItemMetadataInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLibraryItemMetadataInput",
 }) as any as S.Schema<UpdateLibraryItemMetadataInput>;
 export interface UpdateLibraryItemMetadataResponse {}
-export const UpdateLibraryItemMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateLibraryItemMetadataResponse",
-}) as any as S.Schema<UpdateLibraryItemMetadataResponse>;
+export const UpdateLibraryItemMetadataResponse =
+  AssociateLibraryItemReviewResponse as any as S.Schema<UpdateLibraryItemMetadataResponse>;
 export interface UpdateQAppInput {
   instanceId: string;
   appId: string;
@@ -1758,22 +1711,7 @@ export interface UpdateQAppOutput {
   updatedBy: string;
   requiredCapabilities?: AppRequiredCapability[];
 }
-export const UpdateQAppOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    appArn: S.String,
-    title: S.String,
-    description: S.optional(S.String),
-    initialPrompt: S.optional(S.String),
-    appVersion: S.Number,
-    status: AppStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    createdBy: S.String,
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedBy: S.String,
-    requiredCapabilities: S.optional(AppRequiredCapabilities),
-  }),
-).annotate({ identifier: "UpdateQAppOutput" }) as any as S.Schema<UpdateQAppOutput>;
+export const UpdateQAppOutput = CreateQAppOutput as any as S.Schema<UpdateQAppOutput>;
 export interface PermissionInput {
   action: Action;
   principal: string;
@@ -1813,15 +1751,8 @@ export interface UpdateQAppPermissionsOutput {
   appId?: string;
   permissions?: PermissionOutput[];
 }
-export const UpdateQAppPermissionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.optional(S.String),
-    appId: S.optional(S.String),
-    permissions: S.optional(PermissionsOutputList),
-  }),
-).annotate({
-  identifier: "UpdateQAppPermissionsOutput",
-}) as any as S.Schema<UpdateQAppPermissionsOutput>;
+export const UpdateQAppPermissionsOutput =
+  DescribeQAppPermissionsOutput as any as S.Schema<UpdateQAppPermissionsOutput>;
 export interface UpdateQAppSessionInput {
   instanceId: string;
   sessionId: string;
@@ -1847,9 +1778,8 @@ export interface UpdateQAppSessionOutput {
   sessionId: string;
   sessionArn: string;
 }
-export const UpdateQAppSessionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String, sessionArn: S.String }),
-).annotate({ identifier: "UpdateQAppSessionOutput" }) as any as S.Schema<UpdateQAppSessionOutput>;
+export const UpdateQAppSessionOutput =
+  StartQAppSessionOutput as any as S.Schema<UpdateQAppSessionOutput>;
 export interface UpdateQAppSessionMetadataInput {
   instanceId: string;
   sessionId: string;

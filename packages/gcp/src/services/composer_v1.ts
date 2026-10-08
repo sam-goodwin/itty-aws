@@ -888,12 +888,7 @@ export interface UserWorkloadsSecret {
   /** Optional. The "data" field of Kubernetes Secret, organized in key-value pairs, which can contain sensitive values such as a password, a token, or a key. The values for all keys have to be base64-encoded strings. For details see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: { "example": "ZXhhbXBsZV92YWx1ZQ==", "another-example": "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" } */
   data?: StringMap;
 }
-export const UserWorkloadsSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    data: S.optional(StringMap),
-  }),
-).annotate({ identifier: "UserWorkloadsSecret" }) as any as S.Schema<UserWorkloadsSecret>;
+export const UserWorkloadsSecret = UserWorkloadsConfigMap as any as S.Schema<UserWorkloadsSecret>;
 
 export interface CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The environment name to create a Secret for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
@@ -975,9 +970,7 @@ export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = DatabaseFailoverRequest as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The Secret to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
@@ -1282,9 +1275,8 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest = /*@_
 }) as any as S.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export type UserWorkloadsSecretList = Array<UserWorkloadsSecret>;
-export const UserWorkloadsSecretList = /*@__PURE__*/ S.Array(
-  UserWorkloadsSecret,
-) as any as S.Schema<UserWorkloadsSecretList>;
+export const UserWorkloadsSecretList =
+  UserWorkloadsConfigMapList as any as S.Schema<UserWorkloadsSecretList>;
 
 /** The user workloads Secrets for a given environment. */
 export interface ListUserWorkloadsSecretsResponse {

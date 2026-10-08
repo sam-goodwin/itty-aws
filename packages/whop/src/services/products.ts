@@ -262,9 +262,8 @@ export type ProductGlobalAffiliateStatus = "enabled" | "disabled";
 export const ProductGlobalAffiliateStatus = S.String;
 
 export type ProductLabelsList = Array<string>;
-export const ProductLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductLabelsList>;
+export const ProductLabelsList =
+  CreateProductRequestLabelsList as any as S.Schema<ProductLabelsList>;
 
 /** Listing state on the whop.com marketplace. `pending_review` means submitted and awaiting review; `live_marketplace` means approved and discoverable. */
 export type ProductMarketplaceStatus = "not_available" | "pending_review" | "live_marketplace";
@@ -613,19 +612,16 @@ export const ListProductsRequestPlanTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListProductsRequestPlanTypesList>;
 
 export type ListProductsRequestVisibilitiesList = Array<string>;
-export const ListProductsRequestVisibilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProductsRequestVisibilitiesList>;
+export const ListProductsRequestVisibilitiesList =
+  CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestVisibilitiesList>;
 
 export type ListProductsRequestAccessPassTypesList = Array<string>;
-export const ListProductsRequestAccessPassTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProductsRequestAccessPassTypesList>;
+export const ListProductsRequestAccessPassTypesList =
+  CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestAccessPassTypesList>;
 
 export type ListProductsRequestLabelsList = Array<string>;
-export const ListProductsRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListProductsRequestLabelsList>;
+export const ListProductsRequestLabelsList =
+  CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestLabelsList>;
 
 export type ListProductsRequestDirection = "asc" | "desc";
 export const ListProductsRequestDirection = S.String;
@@ -689,14 +685,12 @@ export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProductsRequest" }) as any as S.Schema<ListProductsRequest>;
 
 export type ProductListItemGalleryImagesList = Array<ProductGalleryImage>;
-export const ProductListItemGalleryImagesList = /*@__PURE__*/ S.Array(
-  ProductGalleryImage,
-) as any as S.Schema<ProductListItemGalleryImagesList>;
+export const ProductListItemGalleryImagesList =
+  ProductGalleryImagesList as any as S.Schema<ProductListItemGalleryImagesList>;
 
 export type ProductListItemLabelsList = Array<string>;
-export const ProductListItemLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductListItemLabelsList>;
+export const ProductListItemLabelsList =
+  CreateProductRequestLabelsList as any as S.Schema<ProductListItemLabelsList>;
 
 export interface ProductListItem {
   /** Account that sells this product. */
@@ -826,29 +820,21 @@ export interface UpdateProductRequestBannerImage {
   /** The tag of an already-uploaded attachment. */
   id?: string;
 }
-export const UpdateProductRequestBannerImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direct_upload_id: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateProductRequestBannerImage",
-}) as any as S.Schema<UpdateProductRequestBannerImage>;
+export const UpdateProductRequestBannerImage =
+  CreateProductRequestGalleryImagesItem as any as S.Schema<UpdateProductRequestBannerImage>;
 
 export type UpdateProductRequestGalleryImagesItem = CreateProductRequestGalleryImagesItem;
 export const UpdateProductRequestGalleryImagesItem = CreateProductRequestGalleryImagesItem;
 
 /** Images or videos displayed in the product gallery, in display order. Replaces the existing gallery. Send an empty array to clear it; omit or pass null to leave it unchanged. A banner image does not populate the gallery. */
 export type UpdateProductRequestGalleryImagesList = Array<CreateProductRequestGalleryImagesItem>;
-export const UpdateProductRequestGalleryImagesList = /*@__PURE__*/ S.Array(
-  CreateProductRequestGalleryImagesItem,
-) as any as S.Schema<UpdateProductRequestGalleryImagesList>;
+export const UpdateProductRequestGalleryImagesList =
+  CreateProductRequestGalleryImagesList as any as S.Schema<UpdateProductRequestGalleryImagesList>;
 
 /** Labels used to group products into collections. Replaces the existing labels. Send an empty array to clear them. */
 export type UpdateProductRequestLabelsList = Array<string>;
-export const UpdateProductRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProductRequestLabelsList>;
+export const UpdateProductRequestLabelsList =
+  CreateProductRequestLabelsList as any as S.Schema<UpdateProductRequestLabelsList>;
 
 export interface UpdateProductRequest {
   /** The unique identifier of the product. */

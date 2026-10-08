@@ -572,11 +572,7 @@ export interface AkriServiceStatus {
   /** The health state of the AkriService. */
   healthState?: ResourceHealthStatus;
 }
-export const AkriServiceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthState: S.optional(ResourceHealthStatus),
-  }),
-).annotate({ identifier: "AkriServiceStatus" }) as any as S.Schema<AkriServiceStatus>;
+export const AkriServiceStatus = AkriConnectorStatus as any as S.Schema<AkriServiceStatus>;
 
 /** AkriService properties. */
 export interface AkriServiceProperties {
@@ -699,10 +695,8 @@ export const BrokerAuthenticatorMethodSat = /*@__PURE__*/ S.suspend(() =>
 export type BrokerAuthenticatorMethodX509AttributesAttributesMap = {
   [key: string]: string | undefined;
 };
-export const BrokerAuthenticatorMethodX509AttributesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BrokerAuthenticatorMethodX509AttributesAttributesMap>;
+export const BrokerAuthenticatorMethodX509AttributesAttributesMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<BrokerAuthenticatorMethodX509AttributesAttributesMap>;
 
 /** BrokerAuthenticatorMethodX509Attributes properties. */
 export interface BrokerAuthenticatorMethodX509Attributes {
@@ -834,9 +828,8 @@ export const BrokerAuthenticationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
 export type BrokerAuthenticationPropertiesAuthenticationMethodsList =
   Array<BrokerAuthenticatorMethods>;
-export const BrokerAuthenticationPropertiesAuthenticationMethodsList = /*@__PURE__*/ S.Array(
-  BrokerAuthenticatorMethods,
-) as any as S.Schema<BrokerAuthenticationPropertiesAuthenticationMethodsList>;
+export const BrokerAuthenticationPropertiesAuthenticationMethodsList =
+  BrokerAuthenticationPropertiesInputAuthenticationMethodsList as any as S.Schema<BrokerAuthenticationPropertiesAuthenticationMethodsList>;
 
 /** The health state of the resource. */
 export type BrokerAuthenticationPropertiesHealthState =
@@ -902,15 +895,13 @@ export const BrokerResourceDefinitionMethods = S.String;
 
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect. */
 export type BrokerResourceRuleClientIdsList = Array<string>;
-export const BrokerResourceRuleClientIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BrokerResourceRuleClientIdsList>;
+export const BrokerResourceRuleClientIdsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<BrokerResourceRuleClientIdsList>;
 
 /** A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe. */
 export type BrokerResourceRuleTopicsList = Array<string>;
-export const BrokerResourceRuleTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BrokerResourceRuleTopicsList>;
+export const BrokerResourceRuleTopicsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<BrokerResourceRuleTopicsList>;
 
 /** Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc. */
 export interface BrokerResourceRule {
@@ -936,10 +927,8 @@ export const AuthorizationRuleBrokerResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AuthorizationRuleBrokerResourcesList>;
 
 export type PrincipalDefinitionAttributesItemMap = { [key: string]: string | undefined };
-export const PrincipalDefinitionAttributesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PrincipalDefinitionAttributesItemMap>;
+export const PrincipalDefinitionAttributesItemMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<PrincipalDefinitionAttributesItemMap>;
 
 /** A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication. */
 export type PrincipalDefinitionAttributesList = Array<PrincipalDefinitionAttributesItemMap>;
@@ -949,15 +938,13 @@ export const PrincipalDefinitionAttributesList = /*@__PURE__*/ S.Array(
 
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. */
 export type PrincipalDefinitionClientIdsList = Array<string>;
-export const PrincipalDefinitionClientIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrincipalDefinitionClientIdsList>;
+export const PrincipalDefinitionClientIdsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<PrincipalDefinitionClientIdsList>;
 
 /** A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication. */
 export type PrincipalDefinitionUsernamesList = Array<string>;
-export const PrincipalDefinitionUsernamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PrincipalDefinitionUsernamesList>;
+export const PrincipalDefinitionUsernamesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<PrincipalDefinitionUsernamesList>;
 
 /** PrincipalDefinition properties of Rule */
 export interface PrincipalDefinition {
@@ -982,9 +969,8 @@ export const StateStoreResourceKeyTypes = S.String;
 
 /** Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*'). */
 export type StateStoreResourceRuleKeysList = Array<string>;
-export const StateStoreResourceRuleKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StateStoreResourceRuleKeysList>;
+export const StateStoreResourceRuleKeysList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<StateStoreResourceRuleKeysList>;
 
 /** StateStoreResourceDefinitionMethods methods allowed */
 export type StateStoreResourceDefinitionMethods = "Read" | "Write" | "ReadWrite";
@@ -1410,9 +1396,8 @@ export const BrokerDiagnostics = /*@__PURE__*/ S.suspend(() =>
 
 /** AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
 export type VolumeClaimSpecAccessModesList = Array<string>;
-export const VolumeClaimSpecAccessModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeClaimSpecAccessModesList>;
+export const VolumeClaimSpecAccessModesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<VolumeClaimSpecAccessModesList>;
 
 /** Kubernetes reference */
 export interface LocalKubernetesReference {
@@ -1453,17 +1438,13 @@ export const KubernetesReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type VolumeClaimResourceRequirementsLimitsMap = { [key: string]: string | undefined };
-export const VolumeClaimResourceRequirementsLimitsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeClaimResourceRequirementsLimitsMap>;
+export const VolumeClaimResourceRequirementsLimitsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<VolumeClaimResourceRequirementsLimitsMap>;
 
 /** Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type VolumeClaimResourceRequirementsRequestsMap = { [key: string]: string | undefined };
-export const VolumeClaimResourceRequirementsRequestsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeClaimResourceRequirementsRequestsMap>;
+export const VolumeClaimResourceRequirementsRequestsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<VolumeClaimResourceRequirementsRequestsMap>;
 
 /** VolumeClaimResourceRequirementsClaims properties. */
 export interface VolumeClaimResourceRequirementsClaims {
@@ -1510,9 +1491,8 @@ export const OperatorValues = S.String;
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type VolumeClaimSpecSelectorMatchExpressionsValuesList = Array<string>;
-export const VolumeClaimSpecSelectorMatchExpressionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeClaimSpecSelectorMatchExpressionsValuesList>;
+export const VolumeClaimSpecSelectorMatchExpressionsValuesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<VolumeClaimSpecSelectorMatchExpressionsValuesList>;
 
 /** VolumeClaimSpecSelectorMatchExpressions properties */
 export interface VolumeClaimSpecSelectorMatchExpressions {
@@ -1542,10 +1522,8 @@ export const VolumeClaimSpecSelectorMatchExpressionsList = /*@__PURE__*/ S.Array
 
 /** MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type VolumeClaimSpecSelectorMatchLabelsMap = { [key: string]: string | undefined };
-export const VolumeClaimSpecSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<VolumeClaimSpecSelectorMatchLabelsMap>;
+export const VolumeClaimSpecSelectorMatchLabelsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<VolumeClaimSpecSelectorMatchLabelsMap>;
 
 /** VolumeClaimSpecSelector properties */
 export interface VolumeClaimSpecSelector {
@@ -1803,11 +1781,7 @@ export interface BrokerStatus {
   /** The health state of the Broker. */
   healthState?: ResourceHealthStatus;
 }
-export const BrokerStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthState: S.optional(ResourceHealthStatus),
-  }),
-).annotate({ identifier: "BrokerStatus" }) as any as S.Schema<BrokerStatus>;
+export const BrokerStatus = AkriConnectorStatus as any as S.Schema<BrokerStatus>;
 
 /** The health state of the resource. */
 export type BrokerPropertiesHealthState = "Available" | "Degraded" | "Unavailable" | "Unknown";
@@ -1912,15 +1886,13 @@ export const CertManagerIssuerRef = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS SANs. */
 export type SanForCertDnsList = Array<string>;
-export const SanForCertDnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SanForCertDnsList>;
+export const SanForCertDnsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<SanForCertDnsList>;
 
 /** IP address SANs. */
 export type SanForCertIpList = Array<string>;
-export const SanForCertIpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SanForCertIpList>;
+export const SanForCertIpList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<SanForCertIpList>;
 
 /** Subject Alternative Names (SANs) for certificate. */
 export interface SanForCert {
@@ -2075,9 +2047,8 @@ export const BrokerListenerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ports on which this listener accepts client connections. */
 export type BrokerListenerPropertiesPortsList = Array<ListenerPort>;
-export const BrokerListenerPropertiesPortsList = /*@__PURE__*/ S.Array(
-  ListenerPort,
-) as any as S.Schema<BrokerListenerPropertiesPortsList>;
+export const BrokerListenerPropertiesPortsList =
+  BrokerListenerPropertiesInputPortsList as any as S.Schema<BrokerListenerPropertiesPortsList>;
 
 /** Kubernetes Service type of this listener. */
 export type BrokerListenerPropertiesServiceType = "ClusterIp" | "LoadBalancer" | "NodePort";
@@ -2155,9 +2126,8 @@ export const DataflowSourceOperationSettingsSerializationFormat = S.String;
 
 /** List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +. */
 export type DataflowSourceOperationSettingsDataSourcesList = Array<string>;
-export const DataflowSourceOperationSettingsDataSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataflowSourceOperationSettingsDataSourcesList>;
+export const DataflowSourceOperationSettingsDataSourcesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowSourceOperationSettingsDataSourcesList>;
 
 /** Dataflow Source Operation properties */
 export interface DataflowSourceOperationSettings {
@@ -2190,9 +2160,8 @@ export const DataflowBuiltInTransformationSettingsSerializationFormat = S.String
 
 /** List of fields for enriching from the Broker State Store. */
 export type DataflowBuiltInTransformationDatasetInputsList = Array<string>;
-export const DataflowBuiltInTransformationDatasetInputsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataflowBuiltInTransformationDatasetInputsList>;
+export const DataflowBuiltInTransformationDatasetInputsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowBuiltInTransformationDatasetInputsList>;
 
 /** Dataflow BuiltIn Transformation dataset properties */
 export interface DataflowBuiltInTransformationDataset {
@@ -2232,9 +2201,8 @@ export const DataflowBuiltInTransformationFilterType = S.String;
 
 /** List of fields for filtering in JSON path expression. */
 export type DataflowBuiltInTransformationFilterInputsList = Array<string>;
-export const DataflowBuiltInTransformationFilterInputsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataflowBuiltInTransformationFilterInputsList>;
+export const DataflowBuiltInTransformationFilterInputsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowBuiltInTransformationFilterInputsList>;
 
 /** Dataflow BuiltIn Transformation filter properties */
 export interface DataflowBuiltInTransformationFilter {
@@ -2276,9 +2244,8 @@ export const DataflowMappingType = S.String;
 
 /** List of fields for mapping in JSON path expression. */
 export type DataflowBuiltInTransformationMapInputsList = Array<string>;
-export const DataflowBuiltInTransformationMapInputsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataflowBuiltInTransformationMapInputsList>;
+export const DataflowBuiltInTransformationMapInputsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowBuiltInTransformationMapInputsList>;
 
 /** Dataflow BuiltIn Transformation map properties */
 export interface DataflowBuiltInTransformationMap {
@@ -2474,20 +2441,15 @@ export const DataflowPropertiesMode = S.String;
 
 /** List of operations including source and destination references as well as transformation. */
 export type DataflowPropertiesOperationsList = Array<DataflowOperation>;
-export const DataflowPropertiesOperationsList = /*@__PURE__*/ S.Array(
-  DataflowOperation,
-) as any as S.Schema<DataflowPropertiesOperationsList>;
+export const DataflowPropertiesOperationsList =
+  DataflowPropertiesInputOperationsList as any as S.Schema<DataflowPropertiesOperationsList>;
 
 /** DataflowStatus status. */
 export interface DataflowStatus {
   /** The health state of the Dataflow. */
   healthState?: ResourceHealthStatus;
 }
-export const DataflowStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthState: S.optional(ResourceHealthStatus),
-  }),
-).annotate({ identifier: "DataflowStatus" }) as any as S.Schema<DataflowStatus>;
+export const DataflowStatus = AkriConnectorStatus as any as S.Schema<DataflowStatus>;
 
 /** The health state of the resource. */
 export type DataflowPropertiesHealthState = "Available" | "Degraded" | "Unavailable" | "Unknown";
@@ -2814,13 +2776,8 @@ export interface DataflowEndpointAuthenticationX509 {
   /** Secret reference of the X.509 certificate. */
   secretRef: string;
 }
-export const DataflowEndpointAuthenticationX509 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secretRef: S.String,
-  }),
-).annotate({
-  identifier: "DataflowEndpointAuthenticationX509",
-}) as any as S.Schema<DataflowEndpointAuthenticationX509>;
+export const DataflowEndpointAuthenticationX509 =
+  DataflowEndpointAuthenticationAccessToken as any as S.Schema<DataflowEndpointAuthenticationX509>;
 
 /** Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry */
 export interface DataflowEndpointKafkaAuthentication {
@@ -3330,13 +3287,8 @@ export interface DataflowGraphConnectionOutput {
   /** Name of the destination node. */
   name: string;
 }
-export const DataflowGraphConnectionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "DataflowGraphConnectionOutput",
-}) as any as S.Schema<DataflowGraphConnectionOutput>;
+export const DataflowGraphConnectionOutput =
+  VolumeClaimResourceRequirementsClaims as any as S.Schema<DataflowGraphConnectionOutput>;
 
 /** DataflowGraph DataflowGraphNode Connection. */
 export interface DataflowGraphNodeConnection {
@@ -3425,26 +3377,20 @@ export const DataflowGraphPropertiesMode = S.String;
 
 /** List of nodes in the dataflow graph. */
 export type DataflowGraphPropertiesNodesList = Array<DataflowGraphNode>;
-export const DataflowGraphPropertiesNodesList = /*@__PURE__*/ S.Array(
-  DataflowGraphNode,
-) as any as S.Schema<DataflowGraphPropertiesNodesList>;
+export const DataflowGraphPropertiesNodesList =
+  DataflowGraphPropertiesInputNodesList as any as S.Schema<DataflowGraphPropertiesNodesList>;
 
 /** List of connections between nodes in the dataflow graph. */
 export type DataflowGraphPropertiesNodeConnectionsList = Array<DataflowGraphNodeConnection>;
-export const DataflowGraphPropertiesNodeConnectionsList = /*@__PURE__*/ S.Array(
-  DataflowGraphNodeConnection,
-) as any as S.Schema<DataflowGraphPropertiesNodeConnectionsList>;
+export const DataflowGraphPropertiesNodeConnectionsList =
+  DataflowGraphPropertiesInputNodeConnectionsList as any as S.Schema<DataflowGraphPropertiesNodeConnectionsList>;
 
 /** DataflowGraph status. */
 export interface DataflowGraphStatus {
   /** The health state of the DataflowGraph. */
   healthState?: ResourceHealthStatus;
 }
-export const DataflowGraphStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthState: S.optional(ResourceHealthStatus),
-  }),
-).annotate({ identifier: "DataflowGraphStatus" }) as any as S.Schema<DataflowGraphStatus>;
+export const DataflowGraphStatus = AkriConnectorStatus as any as S.Schema<DataflowGraphStatus>;
 
 /** The health state of the resource. */
 export type DataflowGraphPropertiesHealthState =
@@ -3579,11 +3525,7 @@ export interface DataflowProfileStatus {
   /** The health state of the DataflowProfile. */
   healthState?: ResourceHealthStatus;
 }
-export const DataflowProfileStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthState: S.optional(ResourceHealthStatus),
-  }),
-).annotate({ identifier: "DataflowProfileStatus" }) as any as S.Schema<DataflowProfileStatus>;
+export const DataflowProfileStatus = AkriConnectorStatus as any as S.Schema<DataflowProfileStatus>;
 
 /** The health state of the resource. */
 export type DataflowProfilePropertiesHealthState =
@@ -3677,9 +3619,8 @@ export const DeleteAkriConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAkriConnectorRequest>;
 
 export interface DeleteAkriConnectorResponse {}
-export const DeleteAkriConnectorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAkriConnectorResponse",
-}) as any as S.Schema<DeleteAkriConnectorResponse>;
+export const DeleteAkriConnectorResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteAkriConnectorResponse>;
 
 export interface DeleteAkriConnectorTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3743,9 +3684,8 @@ export const DeleteAkriServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAkriServiceRequest" }) as any as S.Schema<DeleteAkriServiceRequest>;
 
 export interface DeleteAkriServiceResponse {}
-export const DeleteAkriServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAkriServiceResponse",
-}) as any as S.Schema<DeleteAkriServiceResponse>;
+export const DeleteAkriServiceResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteAkriServiceResponse>;
 
 export interface DeleteBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3774,9 +3714,8 @@ export const DeleteBrokerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBrokerRequest" }) as any as S.Schema<DeleteBrokerRequest>;
 
 export interface DeleteBrokerResponse {}
-export const DeleteBrokerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBrokerResponse",
-}) as any as S.Schema<DeleteBrokerResponse>;
+export const DeleteBrokerResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteBrokerResponse>;
 
 export interface DeleteBrokerAuthenticationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3810,11 +3749,8 @@ export const DeleteBrokerAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBrokerAuthenticationRequest>;
 
 export interface DeleteBrokerAuthenticationResponse {}
-export const DeleteBrokerAuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBrokerAuthenticationResponse",
-}) as any as S.Schema<DeleteBrokerAuthenticationResponse>;
+export const DeleteBrokerAuthenticationResponse =
+  DeleteAkriConnectorTemplateResponse as any as S.Schema<DeleteBrokerAuthenticationResponse>;
 
 export interface DeleteBrokerAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3848,11 +3784,8 @@ export const DeleteBrokerAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBrokerAuthorizationRequest>;
 
 export interface DeleteBrokerAuthorizationResponse {}
-export const DeleteBrokerAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteBrokerAuthorizationResponse",
-}) as any as S.Schema<DeleteBrokerAuthorizationResponse>;
+export const DeleteBrokerAuthorizationResponse =
+  DeleteAkriConnectorTemplateResponse as any as S.Schema<DeleteBrokerAuthorizationResponse>;
 
 export interface DeleteBrokerListenerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3886,9 +3819,8 @@ export const DeleteBrokerListenerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBrokerListenerRequest>;
 
 export interface DeleteBrokerListenerResponse {}
-export const DeleteBrokerListenerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteBrokerListenerResponse",
-}) as any as S.Schema<DeleteBrokerListenerResponse>;
+export const DeleteBrokerListenerResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteBrokerListenerResponse>;
 
 export interface DeleteDataflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3920,9 +3852,8 @@ export const DeleteDataflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDataflowRequest" }) as any as S.Schema<DeleteDataflowRequest>;
 
 export interface DeleteDataflowResponse {}
-export const DeleteDataflowResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataflowResponse",
-}) as any as S.Schema<DeleteDataflowResponse>;
+export const DeleteDataflowResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowResponse>;
 
 export interface DeleteDataflowEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3953,9 +3884,8 @@ export const DeleteDataflowEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataflowEndpointRequest>;
 
 export interface DeleteDataflowEndpointResponse {}
-export const DeleteDataflowEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataflowEndpointResponse",
-}) as any as S.Schema<DeleteDataflowEndpointResponse>;
+export const DeleteDataflowEndpointResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowEndpointResponse>;
 
 export interface DeleteDataflowGraphRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3989,9 +3919,8 @@ export const DeleteDataflowGraphRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataflowGraphRequest>;
 
 export interface DeleteDataflowGraphResponse {}
-export const DeleteDataflowGraphResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataflowGraphResponse",
-}) as any as S.Schema<DeleteDataflowGraphResponse>;
+export const DeleteDataflowGraphResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowGraphResponse>;
 
 export interface DeleteDataflowProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4022,9 +3951,8 @@ export const DeleteDataflowProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataflowProfileRequest>;
 
 export interface DeleteDataflowProfileResponse {}
-export const DeleteDataflowProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDataflowProfileResponse",
-}) as any as S.Schema<DeleteDataflowProfileResponse>;
+export const DeleteDataflowProfileResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowProfileResponse>;
 
 export interface DeleteInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4050,9 +3978,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DeleteRegistryEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4083,9 +4010,8 @@ export const DeleteRegistryEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistryEndpointRequest>;
 
 export interface DeleteRegistryEndpointResponse {}
-export const DeleteRegistryEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegistryEndpointResponse",
-}) as any as S.Schema<DeleteRegistryEndpointResponse>;
+export const DeleteRegistryEndpointResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteRegistryEndpointResponse>;
 
 export interface GetAkriConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4183,18 +4109,8 @@ export interface GetAkriConnectorTemplateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const GetAkriConnectorTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AkriConnectorTemplateProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "GetAkriConnectorTemplateResponse",
-}) as any as S.Schema<GetAkriConnectorTemplateResponse>;
+export const GetAkriConnectorTemplateResponse =
+  AkriConnectorTemplateCreateOrUpdateResponse as any as S.Schema<GetAkriConnectorTemplateResponse>;
 
 export interface GetAkriServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4343,18 +4259,8 @@ export interface GetBrokerAuthenticationResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const GetBrokerAuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BrokerAuthenticationProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "GetBrokerAuthenticationResponse",
-}) as any as S.Schema<GetBrokerAuthenticationResponse>;
+export const GetBrokerAuthenticationResponse =
+  BrokerAuthenticationCreateOrUpdateResponse as any as S.Schema<GetBrokerAuthenticationResponse>;
 
 export interface GetBrokerAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4401,18 +4307,8 @@ export interface GetBrokerAuthorizationResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const GetBrokerAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BrokerAuthorizationProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "GetBrokerAuthorizationResponse",
-}) as any as S.Schema<GetBrokerAuthorizationResponse>;
+export const GetBrokerAuthorizationResponse =
+  BrokerAuthorizationCreateOrUpdateResponse as any as S.Schema<GetBrokerAuthorizationResponse>;
 
 export interface GetBrokerListenerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4457,18 +4353,8 @@ export interface GetBrokerListenerResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const GetBrokerListenerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BrokerListenerProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "GetBrokerListenerResponse",
-}) as any as S.Schema<GetBrokerListenerResponse>;
+export const GetBrokerListenerResponse =
+  BrokerListenerCreateOrUpdateResponse as any as S.Schema<GetBrokerListenerResponse>;
 
 export interface GetDataflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4566,18 +4452,8 @@ export interface GetDataflowEndpointResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const GetDataflowEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DataflowEndpointProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "GetDataflowEndpointResponse",
-}) as any as S.Schema<GetDataflowEndpointResponse>;
+export const GetDataflowEndpointResponse =
+  DataflowEndpointCreateOrUpdateResponse as any as S.Schema<GetDataflowEndpointResponse>;
 
 export interface GetDataflowGraphRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4675,18 +4551,8 @@ export interface GetDataflowProfileResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const GetDataflowProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DataflowProfileProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "GetDataflowProfileResponse",
-}) as any as S.Schema<GetDataflowProfileResponse>;
+export const GetDataflowProfileResponse =
+  DataflowProfileCreateOrUpdateResponse as any as S.Schema<GetDataflowProfileResponse>;
 
 export interface GetInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4713,10 +4579,8 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetInstanceResponseTagsMap>;
+export const GetInstanceResponseTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<GetInstanceResponseTagsMap>;
 
 /** The reference to the Schema Registry for this AIO Instance. */
 export interface SchemaRegistryRef {
@@ -4734,11 +4598,7 @@ export interface SecretProviderClassRef {
   /** The resource ID of the AIO Secret provider class. */
   resourceId: string;
 }
-export const SecretProviderClassRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.String,
-  }),
-).annotate({ identifier: "SecretProviderClassRef" }) as any as S.Schema<SecretProviderClassRef>;
+export const SecretProviderClassRef = SchemaRegistryRef as any as S.Schema<SecretProviderClassRef>;
 
 /** The enum defining mode of a feature. */
 export type InstanceFeatureMode = "Stable" | "Preview" | "Disabled";
@@ -5076,17 +4936,13 @@ export const GetRegistryEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstanceCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const InstanceCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InstanceCreateOrUpdateRequestTagsMap>;
+export const InstanceCreateOrUpdateRequestTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<InstanceCreateOrUpdateRequestTagsMap>;
 
 /** The features of the AIO Instance. */
 export type InstancePropertiesInputFeaturesMap = { [key: string]: InstanceFeature | undefined };
-export const InstancePropertiesInputFeaturesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InstanceFeature,
-) as any as S.Schema<InstancePropertiesInputFeaturesMap>;
+export const InstancePropertiesInputFeaturesMap =
+  InstancePropertiesFeaturesMap as any as S.Schema<InstancePropertiesInputFeaturesMap>;
 
 /** The properties of the Instance resource. */
 export interface InstancePropertiesInput {
@@ -5183,10 +5039,8 @@ export const InstanceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstanceCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const InstanceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InstanceCreateOrUpdateResponseTagsMap>;
+export const InstanceCreateOrUpdateResponseTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<InstanceCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstanceCreateOrUpdateResponseIdentity = GetInstanceResponseIdentity;
@@ -5274,16 +5128,8 @@ export interface AkriConnectorResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const AkriConnectorResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AkriConnectorProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({ identifier: "AkriConnectorResource" }) as any as S.Schema<AkriConnectorResource>;
+export const AkriConnectorResource =
+  GetAkriConnectorResponse as any as S.Schema<AkriConnectorResource>;
 
 /** The AkriConnectorResource items on this page */
 export type AkriConnectorResourceListResultValueList = Array<AkriConnectorResource>;
@@ -5347,18 +5193,8 @@ export interface AkriConnectorTemplateResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const AkriConnectorTemplateResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AkriConnectorTemplateProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "AkriConnectorTemplateResource",
-}) as any as S.Schema<AkriConnectorTemplateResource>;
+export const AkriConnectorTemplateResource =
+  AkriConnectorTemplateCreateOrUpdateResponse as any as S.Schema<AkriConnectorTemplateResource>;
 
 /** The AkriConnectorTemplateResource items on this page */
 export type AkriConnectorTemplateResourceListResultValueList = Array<AkriConnectorTemplateResource>;
@@ -5422,16 +5258,7 @@ export interface AkriServiceResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const AkriServiceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AkriServiceProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({ identifier: "AkriServiceResource" }) as any as S.Schema<AkriServiceResource>;
+export const AkriServiceResource = GetAkriServiceResponse as any as S.Schema<AkriServiceResource>;
 
 /** The AkriServiceResource items on this page */
 export type AkriServiceResourceListResultValueList = Array<AkriServiceResource>;
@@ -5498,18 +5325,8 @@ export interface BrokerAuthenticationResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const BrokerAuthenticationResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BrokerAuthenticationProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "BrokerAuthenticationResource",
-}) as any as S.Schema<BrokerAuthenticationResource>;
+export const BrokerAuthenticationResource =
+  BrokerAuthenticationCreateOrUpdateResponse as any as S.Schema<BrokerAuthenticationResource>;
 
 /** The BrokerAuthenticationResource items on this page */
 export type BrokerAuthenticationResourceListResultValueList = Array<BrokerAuthenticationResource>;
@@ -5576,18 +5393,8 @@ export interface BrokerAuthorizationResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const BrokerAuthorizationResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BrokerAuthorizationProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "BrokerAuthorizationResource",
-}) as any as S.Schema<BrokerAuthorizationResource>;
+export const BrokerAuthorizationResource =
+  BrokerAuthorizationCreateOrUpdateResponse as any as S.Schema<BrokerAuthorizationResource>;
 
 /** The BrokerAuthorizationResource items on this page */
 export type BrokerAuthorizationResourceListResultValueList = Array<BrokerAuthorizationResource>;
@@ -5651,16 +5458,7 @@ export interface BrokerResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const BrokerResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BrokerProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({ identifier: "BrokerResource" }) as any as S.Schema<BrokerResource>;
+export const BrokerResource = GetBrokerResponse as any as S.Schema<BrokerResource>;
 
 /** The BrokerResource items on this page */
 export type BrokerResourceListResultValueList = Array<BrokerResource>;
@@ -5801,16 +5599,7 @@ export interface DataflowResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const DataflowResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DataflowProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({ identifier: "DataflowResource" }) as any as S.Schema<DataflowResource>;
+export const DataflowResource = GetDataflowResponse as any as S.Schema<DataflowResource>;
 
 /** The DataflowResource items on this page */
 export type DataflowResourceListResultValueList = Array<DataflowResource>;
@@ -5950,16 +5739,8 @@ export interface DataflowGraphResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const DataflowGraphResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DataflowGraphProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({ identifier: "DataflowGraphResource" }) as any as S.Schema<DataflowGraphResource>;
+export const DataflowGraphResource =
+  GetDataflowGraphResponse as any as S.Schema<DataflowGraphResource>;
 
 /** The DataflowGraphResource items on this page */
 export type DataflowGraphResourceListResultValueList = Array<DataflowGraphResource>;
@@ -6080,10 +5861,8 @@ export const ListInstanceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type InstanceResourceTagsMap = { [key: string]: string | undefined };
-export const InstanceResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<InstanceResourceTagsMap>;
+export const InstanceResourceTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<InstanceResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstanceResourceIdentity = GetInstanceResponseIdentity;
@@ -6112,20 +5891,7 @@ export interface InstanceResource {
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
 }
-export const InstanceResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(InstanceResourceTagsMap),
-    location: S.String,
-    properties: S.optional(InstanceProperties),
-    extendedLocation: ExtendedLocation,
-    identity: S.optional(GetInstanceResponseIdentity),
-    sku: S.optional(InstanceSku),
-  }),
-).annotate({ identifier: "InstanceResource" }) as any as S.Schema<InstanceResource>;
+export const InstanceResource = GetInstanceResponse as any as S.Schema<InstanceResource>;
 
 /** The InstanceResource items on this page */
 export type InstanceResourceListResultValueList = Array<InstanceResource>;
@@ -6326,9 +6092,8 @@ export const RegistryEndpointResourceListResult = /*@__PURE__*/ S.suspend(() =>
 /** The signing certificate authorities used by artifacts in the registry endpoint */
 export type RegistryEndpointPropertiesInputCodeSigningCasList =
   Array<RegistryEndpointTrustedSigningKey>;
-export const RegistryEndpointPropertiesInputCodeSigningCasList = /*@__PURE__*/ S.Array(
-  RegistryEndpointTrustedSigningKey,
-) as any as S.Schema<RegistryEndpointPropertiesInputCodeSigningCasList>;
+export const RegistryEndpointPropertiesInputCodeSigningCasList =
+  RegistryEndpointPropertiesCodeSigningCasList as any as S.Schema<RegistryEndpointPropertiesInputCodeSigningCasList>;
 
 /** RegistryEndpoint properties */
 export interface RegistryEndpointPropertiesInput {
@@ -6397,25 +6162,13 @@ export interface RegistryEndpointCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
-export const RegistryEndpointCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RegistryEndpointProperties),
-    extendedLocation: S.optional(ExtendedLocation),
-  }),
-).annotate({
-  identifier: "RegistryEndpointCreateOrUpdateResponse",
-}) as any as S.Schema<RegistryEndpointCreateOrUpdateResponse>;
+export const RegistryEndpointCreateOrUpdateResponse =
+  GetRegistryEndpointResponse as any as S.Schema<RegistryEndpointCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateInstanceRequestTagsMap>;
+export const UpdateInstanceRequestTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<UpdateInstanceRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateInstanceRequestIdentity = InstanceCreateOrUpdateRequestIdentity;
@@ -6452,10 +6205,8 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateInstanceResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateInstanceResponseTagsMap>;
+export const UpdateInstanceResponseTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<UpdateInstanceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateInstanceResponseIdentity = GetInstanceResponseIdentity;
@@ -6483,20 +6234,8 @@ export interface UpdateInstanceResponse {
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
 }
-export const UpdateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateInstanceResponseTagsMap),
-    location: S.String,
-    properties: S.optional(InstanceProperties),
-    extendedLocation: ExtendedLocation,
-    identity: S.optional(GetInstanceResponseIdentity),
-    sku: S.optional(InstanceSku),
-  }),
-).annotate({ identifier: "UpdateInstanceResponse" }) as any as S.Schema<UpdateInstanceResponse>;
+export const UpdateInstanceResponse =
+  GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export type AkriConnectorCreateOrUpdateError = AzureOpError;
 /** Create a AkriConnectorResource */

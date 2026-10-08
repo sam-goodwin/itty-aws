@@ -200,14 +200,12 @@ export const ConnectionsGetResponseMaliciousDomainCategoriesList = /*@__PURE__*/
 ) as any as S.Schema<ConnectionsGetResponseMaliciousDomainCategoriesList>;
 
 export type ConnectionsGetResponseMaliciousUrlCategoriesList = Array<string>;
-export const ConnectionsGetResponseMaliciousUrlCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsGetResponseMaliciousUrlCategoriesList>;
+export const ConnectionsGetResponseMaliciousUrlCategoriesList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsGetResponseMaliciousUrlCategoriesList>;
 
 export type ConnectionsGetResponsePageUrlsList = Array<string>;
-export const ConnectionsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsGetResponsePageUrlsList>;
+export const ConnectionsGetResponsePageUrlsList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsGetResponsePageUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConnectionResponse {
@@ -275,9 +273,8 @@ export type CookiesGetResponseType = "first_party" | "unknown";
 export const CookiesGetResponseType = S.String;
 
 export type CookiesGetResponsePageUrlsList = Array<string>;
-export const CookiesGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CookiesGetResponsePageUrlsList>;
+export const CookiesGetResponsePageUrlsList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<CookiesGetResponsePageUrlsList>;
 
 export type CookiesGetResponseSameSiteAttribute = "lax" | "strict" | "none";
 export const CookiesGetResponseSameSiteAttribute = S.String;
@@ -421,19 +418,16 @@ export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScriptRequest" }) as any as S.Schema<GetScriptRequest>;
 
 export type ScriptsGetResponseMaliciousDomainCategoriesList = Array<string>;
-export const ScriptsGetResponseMaliciousDomainCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsGetResponseMaliciousDomainCategoriesList>;
+export const ScriptsGetResponseMaliciousDomainCategoriesList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponseMaliciousDomainCategoriesList>;
 
 export type ScriptsGetResponseMaliciousUrlCategoriesList = Array<string>;
-export const ScriptsGetResponseMaliciousUrlCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsGetResponseMaliciousUrlCategoriesList>;
+export const ScriptsGetResponseMaliciousUrlCategoriesList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponseMaliciousUrlCategoriesList>;
 
 export type ScriptsGetResponsePageUrlsList = Array<string>;
-export const ScriptsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsGetResponsePageUrlsList>;
+export const ScriptsGetResponsePageUrlsList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponsePageUrlsList>;
 
 export interface ScriptsGetResponseVersionsItem {
   /** The cryptomining score of the JavaScript content. */
@@ -602,19 +596,16 @@ export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListConnectionsRequest" }) as any as S.Schema<ListConnectionsRequest>;
 
 export type ConnectionsListResultItemMaliciousDomainCategoriesList = Array<string>;
-export const ConnectionsListResultItemMaliciousDomainCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsListResultItemMaliciousDomainCategoriesList>;
+export const ConnectionsListResultItemMaliciousDomainCategoriesList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemMaliciousDomainCategoriesList>;
 
 export type ConnectionsListResultItemMaliciousUrlCategoriesList = Array<string>;
-export const ConnectionsListResultItemMaliciousUrlCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsListResultItemMaliciousUrlCategoriesList>;
+export const ConnectionsListResultItemMaliciousUrlCategoriesList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemMaliciousUrlCategoriesList>;
 
 export type ConnectionsListResultItemPageUrlsList = Array<string>;
-export const ConnectionsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionsListResultItemPageUrlsList>;
+export const ConnectionsListResultItemPageUrlsList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemPageUrlsList>;
 
 export interface ConnectionsListResultItem {
   /** Identifier */
@@ -753,9 +744,8 @@ export type CookiesListResultItemType = "first_party" | "unknown";
 export const CookiesListResultItemType = S.String;
 
 export type CookiesListResultItemPageUrlsList = Array<string>;
-export const CookiesListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CookiesListResultItemPageUrlsList>;
+export const CookiesListResultItemPageUrlsList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<CookiesListResultItemPageUrlsList>;
 
 export type CookiesListResultItemSameSiteAttribute = "lax" | "strict" | "none";
 export const CookiesListResultItemSameSiteAttribute = S.String;
@@ -935,19 +925,16 @@ export const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListScriptsRequest" }) as any as S.Schema<ListScriptsRequest>;
 
 export type ScriptsListResultItemMaliciousDomainCategoriesList = Array<string>;
-export const ScriptsListResultItemMaliciousDomainCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemMaliciousDomainCategoriesList>;
+export const ScriptsListResultItemMaliciousDomainCategoriesList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemMaliciousDomainCategoriesList>;
 
 export type ScriptsListResultItemMaliciousUrlCategoriesList = Array<string>;
-export const ScriptsListResultItemMaliciousUrlCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemMaliciousUrlCategoriesList>;
+export const ScriptsListResultItemMaliciousUrlCategoriesList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemMaliciousUrlCategoriesList>;
 
 export type ScriptsListResultItemPageUrlsList = Array<string>;
-export const ScriptsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsListResultItemPageUrlsList>;
+export const ScriptsListResultItemPageUrlsList =
+  ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemPageUrlsList>;
 
 export interface ScriptsListResultItem {
   /** Identifier */
@@ -1069,14 +1056,8 @@ export interface PutPageShieldResponse {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
 }
-export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    useCloudflareReportingEndpoint: S.Boolean.pipe(T.Body("use_cloudflare_reporting_endpoint")),
-    useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "PutPageShieldResponse" }) as any as S.Schema<PutPageShieldResponse>;
+export const PutPageShieldResponse =
+  GetPageShieldResponse as any as S.Schema<PutPageShieldResponse>;
 
 export type PoliciesUpdateRequestAction = "allow" | "log" | "add_reporting_directives";
 export const PoliciesUpdateRequestAction = S.String;

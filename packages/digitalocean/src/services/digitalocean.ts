@@ -414,9 +414,8 @@ export const AddFirewallRulesRequestInboundRulesItemAction = S.String;
 
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestInboundRulesItemSourcesAddressesList = Array<string>;
-export const AddFirewallRulesRequestInboundRulesItemSourcesAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddFirewallRulesRequestInboundRulesItemSourcesAddressesList>;
+export const AddFirewallRulesRequestInboundRulesItemSourcesAddressesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddFirewallRulesRequestInboundRulesItemSourcesAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList = Array<number>;
@@ -434,15 +433,12 @@ export const AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList = Array<string>;
 export const AddFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<AddFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestInboundRulesItemSourcesTagsList = Array<string>;
-export const AddFirewallRulesRequestInboundRulesItemSourcesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddFirewallRulesRequestInboundRulesItemSourcesTagsList>;
+export const AddFirewallRulesRequestInboundRulesItemSourcesTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddFirewallRulesRequestInboundRulesItemSourcesTagsList>;
 
 export interface AddFirewallRulesRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -507,9 +503,7 @@ export const AddFirewallRulesRequestOutboundRulesItemAction = S.String;
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestOutboundRulesItemDestinationsAddressesList = Array<string>;
 export const AddFirewallRulesRequestOutboundRulesItemDestinationsAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsAddressesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList = Array<number>;
@@ -522,22 +516,17 @@ export const AddFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList 
 export type AddFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList =
   Array<string>;
 export const AddFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList = Array<string>;
 export const AddFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type AddFirewallRulesRequestOutboundRulesItemDestinationsTagsList = Array<string>;
-export const AddFirewallRulesRequestOutboundRulesItemDestinationsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsTagsList>;
+export const AddFirewallRulesRequestOutboundRulesItemDestinationsTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddFirewallRulesRequestOutboundRulesItemDestinationsTagsList>;
 
 export interface AddFirewallRulesRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -614,9 +603,8 @@ export const AddFirewallRulesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({
 
 /** An array containing the names of the Tags to be assigned to the firewall. */
 export type AddFirewallTagsRequestTagsList = Array<string>;
-export const AddFirewallTagsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddFirewallTagsRequestTagsList>;
+export const AddFirewallTagsRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddFirewallTagsRequestTagsList>;
 
 export interface AddFirewallTagsRequest {
   /** A unique ID that can be used to identify and reference a firewall. */
@@ -632,15 +620,13 @@ export const AddFirewallTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddFirewallTagsRequest" }) as any as S.Schema<AddFirewallTagsRequest>;
 
 export interface AddFirewallTagsResponse {}
-export const AddFirewallTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddFirewallTagsResponse",
-}) as any as S.Schema<AddFirewallTagsResponse>;
+export const AddFirewallTagsResponse =
+  AddFirewallRulesResponse as any as S.Schema<AddFirewallTagsResponse>;
 
 /** An array containing the tags applied to the node pool. All node pools are automatically tagged `k8s`, `k8s-worker`, and `k8s:$K8S_CLUSTER_ID`. <br><br>Requires `tag:read` scope. */
 export type AddKubernetesNodePoolRequestTagsList = Array<string>;
-export const AddKubernetesNodePoolRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddKubernetesNodePoolRequestTagsList>;
+export const AddKubernetesNodePoolRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddKubernetesNodePoolRequestTagsList>;
 
 /** How the node reacts to pods that it won't tolerate. Available effect values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. */
 export type KubernetesNodePoolTaintEffect = "NoSchedule" | "PreferNoSchedule" | "NoExecute";
@@ -720,15 +706,13 @@ export const AddKubernetesNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the tags applied to the node pool. All node pools are automatically tagged `k8s`, `k8s-worker`, and `k8s:$K8S_CLUSTER_ID`. <br><br>Requires `tag:read` scope. */
 export type KubernetesNodePoolTagsList = Array<string>;
-export const KubernetesNodePoolTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KubernetesNodePoolTagsList>;
+export const KubernetesNodePoolTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<KubernetesNodePoolTagsList>;
 
 /** An array of taints to apply to all nodes in a pool. Taints will automatically be applied to all existing nodes and any subsequent nodes added to the pool. When a taint is removed, it is deleted from all nodes in the pool. */
 export type KubernetesNodePoolTaintsList = Array<KubernetesNodePoolTaint>;
-export const KubernetesNodePoolTaintsList = /*@__PURE__*/ S.Array(
-  KubernetesNodePoolTaint,
-) as any as S.Schema<KubernetesNodePoolTaintsList>;
+export const KubernetesNodePoolTaintsList =
+  AddKubernetesNodePoolRequestTaintsList as any as S.Schema<KubernetesNodePoolTaintsList>;
 
 /** A string indicating the current status of the node. */
 export type NodeStatusState = "provisioning" | "running" | "draining" | "deleting";
@@ -838,15 +822,13 @@ export const AddKubernetesNodePoolResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the UUIDs of Kubernetes clusters. */
 export type AddKubernetesRegistriesRequestClusterUuidsList = Array<string>;
-export const AddKubernetesRegistriesRequestClusterUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddKubernetesRegistriesRequestClusterUuidsList>;
+export const AddKubernetesRegistriesRequestClusterUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddKubernetesRegistriesRequestClusterUuidsList>;
 
 /** An array containing the registry names. */
 export type AddKubernetesRegistriesRequestRegistriesList = Array<string>;
-export const AddKubernetesRegistriesRequestRegistriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddKubernetesRegistriesRequestRegistriesList>;
+export const AddKubernetesRegistriesRequestRegistriesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddKubernetesRegistriesRequestRegistriesList>;
 
 export interface AddKubernetesRegistriesRequest {
   /** An array containing the UUIDs of Kubernetes clusters. */
@@ -870,9 +852,8 @@ export const AddKubernetesRegistriesResponse = /*@__PURE__*/ S.suspend(() => S.S
 
 /** An array containing the UUIDs of Kubernetes clusters. */
 export type AddKubernetesRegistryRequestClusterUuidsList = Array<string>;
-export const AddKubernetesRegistryRequestClusterUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddKubernetesRegistryRequestClusterUuidsList>;
+export const AddKubernetesRegistryRequestClusterUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddKubernetesRegistryRequestClusterUuidsList>;
 
 export interface AddKubernetesRegistryRequest {
   /** An array containing the UUIDs of Kubernetes clusters. */
@@ -887,15 +868,13 @@ export const AddKubernetesRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddKubernetesRegistryRequest>;
 
 export interface AddKubernetesRegistryResponse {}
-export const AddKubernetesRegistryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AddKubernetesRegistryResponse",
-}) as any as S.Schema<AddKubernetesRegistryResponse>;
+export const AddKubernetesRegistryResponse =
+  AddFirewallRulesResponse as any as S.Schema<AddKubernetesRegistryResponse>;
 
 /** An array containing the IDs of the Droplets assigned to the load balancer. */
 export type AddLoadBalancerDropletsRequestDropletIdsList = Array<number>;
-export const AddLoadBalancerDropletsRequestDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AddLoadBalancerDropletsRequestDropletIdsList>;
+export const AddLoadBalancerDropletsRequestDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<AddLoadBalancerDropletsRequestDropletIdsList>;
 
 export interface AddLoadBalancerDropletsRequest {
   /** A unique identifier for a load balancer. */
@@ -913,9 +892,8 @@ export const AddLoadBalancerDropletsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddLoadBalancerDropletsRequest>;
 
 export interface AddLoadBalancerDropletsResponse {}
-export const AddLoadBalancerDropletsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "AddLoadBalancerDropletsResponse" },
-) as any as S.Schema<AddLoadBalancerDropletsResponse>;
+export const AddLoadBalancerDropletsResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<AddLoadBalancerDropletsResponse>;
 
 /** The protocol used for traffic to the load balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`. If you set the `entry_protocol` to `udp`, the `target_protocol` must be set to `udp`. When using UDP, the load balancer requires that you set up a health check with a port that uses TCP, HTTP, or HTTPS to work properly. */
 export type ForwardingRuleEntryProtocol = "http" | "https" | "http2" | "http3" | "tcp" | "udp";
@@ -973,17 +951,13 @@ export const AddLoadBalancerForwardingRulesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AddLoadBalancerForwardingRulesRequest>;
 
 export interface AddLoadBalancerForwardingRulesResponse {}
-export const AddLoadBalancerForwardingRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddLoadBalancerForwardingRulesResponse",
-}) as any as S.Schema<AddLoadBalancerForwardingRulesResponse>;
+export const AddLoadBalancerForwardingRulesResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<AddLoadBalancerForwardingRulesResponse>;
 
 /** Tool slugs (`<provider>_<name>`) to add or remove, each optionally pinned as `<tool_slug>@<version>`. At least one is required. When adding, a pin must equal the tool's current released version. */
 export type AddToolbeltToolsRequestToolsList = Array<string>;
-export const AddToolbeltToolsRequestToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddToolbeltToolsRequestToolsList>;
+export const AddToolbeltToolsRequestToolsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddToolbeltToolsRequestToolsList>;
 
 export interface AddToolbeltToolsRequest {
   /** Toolbelt name, from the path. */
@@ -1002,9 +976,8 @@ export const AddToolbeltToolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Members, sorted, each as `<tool_slug>@<version>`: the tool and the version this toolbelt version pins. */
 export type ToolbeltToolsList = Array<string>;
-export const ToolbeltToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ToolbeltToolsList>;
+export const ToolbeltToolsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ToolbeltToolsList>;
 
 /** active, or deprecated once the toolbelt is deleted. */
 export type ToolbeltStatus = "active" | "deprecated";
@@ -1235,9 +1208,8 @@ export const AppsDeploymentProgressStepsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AppsDeploymentProgressStepsList>;
 
 export type AppsDeploymentProgressSummaryStepsList = Array<AppsDeploymentProgressStep>;
-export const AppsDeploymentProgressSummaryStepsList = /*@__PURE__*/ S.Array(
-  AppsDeploymentProgressStep,
-) as any as S.Schema<AppsDeploymentProgressSummaryStepsList>;
+export const AppsDeploymentProgressSummaryStepsList =
+  AppsDeploymentProgressStepsList as any as S.Schema<AppsDeploymentProgressSummaryStepsList>;
 
 export interface AppsDeploymentProgress {
   error_steps?: number;
@@ -1264,9 +1236,8 @@ export type AppsDeploymentService = AppsDeploymentJob;
 export const AppsDeploymentService = AppsDeploymentJob;
 
 export type AppsDeploymentServicesList = Array<AppsDeploymentJob>;
-export const AppsDeploymentServicesList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppsDeploymentServicesList>;
+export const AppsDeploymentServicesList =
+  AppsDeploymentJobsList as any as S.Schema<AppsDeploymentServicesList>;
 
 /** The slug form of the geographical origin of the app. Default: `nearest available` */
 export type AppSpecRegion =
@@ -1639,21 +1610,18 @@ export const AppServiceSpecCorsAllowOriginsList = /*@__PURE__*/ S.Array(
 
 /** The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header. */
 export type AppServiceSpecCorsAllowMethodsList = Array<string>;
-export const AppServiceSpecCorsAllowMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppServiceSpecCorsAllowMethodsList>;
+export const AppServiceSpecCorsAllowMethodsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppServiceSpecCorsAllowMethodsList>;
 
 /** The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header. */
 export type AppServiceSpecCorsAllowHeadersList = Array<string>;
-export const AppServiceSpecCorsAllowHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppServiceSpecCorsAllowHeadersList>;
+export const AppServiceSpecCorsAllowHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppServiceSpecCorsAllowHeadersList>;
 
 /** The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header. */
 export type AppServiceSpecCorsExposeHeadersList = Array<string>;
-export const AppServiceSpecCorsExposeHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppServiceSpecCorsExposeHeadersList>;
+export const AppServiceSpecCorsExposeHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppServiceSpecCorsExposeHeadersList>;
 
 export interface AppServiceSpecCors {
   /** The set of allowed CORS origins. */
@@ -1744,9 +1712,8 @@ export const AppServiceSpecProtocol = S.String;
 
 /** The ports on which this service will listen for internal traffic. */
 export type AppServiceSpecInternalPortsList = Array<number>;
-export const AppServiceSpecInternalPortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AppServiceSpecInternalPortsList>;
+export const AppServiceSpecInternalPortsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<AppServiceSpecInternalPortsList>;
 
 export interface AppRouteSpec {
   /** (Deprecated - Use Ingress Rules instead). An HTTP path prefix. Paths must start with / and must be unique across all components within an app. */
@@ -1859,39 +1826,33 @@ export const AppSpecServicesList = /*@__PURE__*/ S.Array(
 
 /** A list of environment variables made available to the component. */
 export type AppStaticSiteSpecEnvsList = Array<AppVariableDefinition>;
-export const AppStaticSiteSpecEnvsList = /*@__PURE__*/ S.Array(
-  AppVariableDefinition,
-) as any as S.Schema<AppStaticSiteSpecEnvsList>;
+export const AppStaticSiteSpecEnvsList =
+  AppServiceSpecEnvsList as any as S.Schema<AppStaticSiteSpecEnvsList>;
 
 /** A list of configured log forwarding destinations. */
 export type AppStaticSiteSpecLogDestinationsList = Array<AppLogDestinationDefinition>;
-export const AppStaticSiteSpecLogDestinationsList = /*@__PURE__*/ S.Array(
-  AppLogDestinationDefinition,
-) as any as S.Schema<AppStaticSiteSpecLogDestinationsList>;
+export const AppStaticSiteSpecLogDestinationsList =
+  AppServiceSpecLogDestinationsList as any as S.Schema<AppStaticSiteSpecLogDestinationsList>;
 
 /** The set of allowed CORS origins. */
 export type AppStaticSiteSpecCorsAllowOriginsList = Array<AppsStringMatch>;
-export const AppStaticSiteSpecCorsAllowOriginsList = /*@__PURE__*/ S.Array(
-  AppsStringMatch,
-) as any as S.Schema<AppStaticSiteSpecCorsAllowOriginsList>;
+export const AppStaticSiteSpecCorsAllowOriginsList =
+  AppServiceSpecCorsAllowOriginsList as any as S.Schema<AppStaticSiteSpecCorsAllowOriginsList>;
 
 /** The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header. */
 export type AppStaticSiteSpecCorsAllowMethodsList = Array<string>;
-export const AppStaticSiteSpecCorsAllowMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppStaticSiteSpecCorsAllowMethodsList>;
+export const AppStaticSiteSpecCorsAllowMethodsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppStaticSiteSpecCorsAllowMethodsList>;
 
 /** The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header. */
 export type AppStaticSiteSpecCorsAllowHeadersList = Array<string>;
-export const AppStaticSiteSpecCorsAllowHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppStaticSiteSpecCorsAllowHeadersList>;
+export const AppStaticSiteSpecCorsAllowHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppStaticSiteSpecCorsAllowHeadersList>;
 
 /** The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header. */
 export type AppStaticSiteSpecCorsExposeHeadersList = Array<string>;
-export const AppStaticSiteSpecCorsExposeHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppStaticSiteSpecCorsExposeHeadersList>;
+export const AppStaticSiteSpecCorsExposeHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppStaticSiteSpecCorsExposeHeadersList>;
 
 export interface AppStaticSiteSpecCors {
   /** The set of allowed CORS origins. */
@@ -1907,22 +1868,12 @@ export interface AppStaticSiteSpecCors {
   /** Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
   allow_credentials?: boolean;
 }
-export const AppStaticSiteSpecCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow_origins: S.optional(AppStaticSiteSpecCorsAllowOriginsList),
-    allow_methods: S.optional(AppStaticSiteSpecCorsAllowMethodsList),
-    allow_headers: S.optional(AppStaticSiteSpecCorsAllowHeadersList),
-    expose_headers: S.optional(AppStaticSiteSpecCorsExposeHeadersList),
-    max_age: S.optional(S.String),
-    allow_credentials: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AppStaticSiteSpecCors" }) as any as S.Schema<AppStaticSiteSpecCors>;
+export const AppStaticSiteSpecCors = AppServiceSpecCors as any as S.Schema<AppStaticSiteSpecCors>;
 
 /** (Deprecated - Use Ingress Rules instead). A list of HTTP routes that should be routed to this component. */
 export type AppStaticSiteSpecRoutesList = Array<AppRouteSpec>;
-export const AppStaticSiteSpecRoutesList = /*@__PURE__*/ S.Array(
-  AppRouteSpec,
-) as any as S.Schema<AppStaticSiteSpecRoutesList>;
+export const AppStaticSiteSpecRoutesList =
+  AppServiceSpecRoutesList as any as S.Schema<AppStaticSiteSpecRoutesList>;
 
 export interface AppStaticSiteSpec {
   /** The name. Must be unique across all components within the same app. */
@@ -1990,15 +1941,12 @@ export const AppSpecStaticSitesList = /*@__PURE__*/ S.Array(
 
 /** A list of environment variables made available to the component. */
 export type AppJobSpecEnvsList = Array<AppVariableDefinition>;
-export const AppJobSpecEnvsList = /*@__PURE__*/ S.Array(
-  AppVariableDefinition,
-) as any as S.Schema<AppJobSpecEnvsList>;
+export const AppJobSpecEnvsList = AppServiceSpecEnvsList as any as S.Schema<AppJobSpecEnvsList>;
 
 /** A list of configured log forwarding destinations. */
 export type AppJobSpecLogDestinationsList = Array<AppLogDestinationDefinition>;
-export const AppJobSpecLogDestinationsList = /*@__PURE__*/ S.Array(
-  AppLogDestinationDefinition,
-) as any as S.Schema<AppJobSpecLogDestinationsList>;
+export const AppJobSpecLogDestinationsList =
+  AppServiceSpecLogDestinationsList as any as S.Schema<AppJobSpecLogDestinationsList>;
 
 export type AppJobSpecInstanceSizeSlugCase0 =
   | "apps-s-1vcpu-0.5gb"
@@ -2111,15 +2059,13 @@ export const AppSpecJobsList = /*@__PURE__*/ S.Array(
 
 /** A list of environment variables made available to the component. */
 export type AppWorkerSpecEnvsList = Array<AppVariableDefinition>;
-export const AppWorkerSpecEnvsList = /*@__PURE__*/ S.Array(
-  AppVariableDefinition,
-) as any as S.Schema<AppWorkerSpecEnvsList>;
+export const AppWorkerSpecEnvsList =
+  AppServiceSpecEnvsList as any as S.Schema<AppWorkerSpecEnvsList>;
 
 /** A list of configured log forwarding destinations. */
 export type AppWorkerSpecLogDestinationsList = Array<AppLogDestinationDefinition>;
-export const AppWorkerSpecLogDestinationsList = /*@__PURE__*/ S.Array(
-  AppLogDestinationDefinition,
-) as any as S.Schema<AppWorkerSpecLogDestinationsList>;
+export const AppWorkerSpecLogDestinationsList =
+  AppServiceSpecLogDestinationsList as any as S.Schema<AppWorkerSpecLogDestinationsList>;
 
 export type AppWorkerSpecInstanceSizeSlugCase0 =
   | "apps-s-1vcpu-0.5gb"
@@ -2235,27 +2181,23 @@ export const AppSpecWorkersList = /*@__PURE__*/ S.Array(
 
 /** The set of allowed CORS origins. */
 export type AppFunctionsSpecCorsAllowOriginsList = Array<AppsStringMatch>;
-export const AppFunctionsSpecCorsAllowOriginsList = /*@__PURE__*/ S.Array(
-  AppsStringMatch,
-) as any as S.Schema<AppFunctionsSpecCorsAllowOriginsList>;
+export const AppFunctionsSpecCorsAllowOriginsList =
+  AppServiceSpecCorsAllowOriginsList as any as S.Schema<AppFunctionsSpecCorsAllowOriginsList>;
 
 /** The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header. */
 export type AppFunctionsSpecCorsAllowMethodsList = Array<string>;
-export const AppFunctionsSpecCorsAllowMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppFunctionsSpecCorsAllowMethodsList>;
+export const AppFunctionsSpecCorsAllowMethodsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppFunctionsSpecCorsAllowMethodsList>;
 
 /** The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header. */
 export type AppFunctionsSpecCorsAllowHeadersList = Array<string>;
-export const AppFunctionsSpecCorsAllowHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppFunctionsSpecCorsAllowHeadersList>;
+export const AppFunctionsSpecCorsAllowHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppFunctionsSpecCorsAllowHeadersList>;
 
 /** The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header. */
 export type AppFunctionsSpecCorsExposeHeadersList = Array<string>;
-export const AppFunctionsSpecCorsExposeHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppFunctionsSpecCorsExposeHeadersList>;
+export const AppFunctionsSpecCorsExposeHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppFunctionsSpecCorsExposeHeadersList>;
 
 export interface AppFunctionsSpecCors {
   /** The set of allowed CORS origins. */
@@ -2271,22 +2213,12 @@ export interface AppFunctionsSpecCors {
   /** Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
   allow_credentials?: boolean;
 }
-export const AppFunctionsSpecCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow_origins: S.optional(AppFunctionsSpecCorsAllowOriginsList),
-    allow_methods: S.optional(AppFunctionsSpecCorsAllowMethodsList),
-    allow_headers: S.optional(AppFunctionsSpecCorsAllowHeadersList),
-    expose_headers: S.optional(AppFunctionsSpecCorsExposeHeadersList),
-    max_age: S.optional(S.String),
-    allow_credentials: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AppFunctionsSpecCors" }) as any as S.Schema<AppFunctionsSpecCors>;
+export const AppFunctionsSpecCors = AppServiceSpecCors as any as S.Schema<AppFunctionsSpecCors>;
 
 /** (Deprecated - Use Ingress Rules instead). A list of HTTP routes that should be routed to this component. */
 export type AppFunctionsSpecRoutesList = Array<AppRouteSpec>;
-export const AppFunctionsSpecRoutesList = /*@__PURE__*/ S.Array(
-  AppRouteSpec,
-) as any as S.Schema<AppFunctionsSpecRoutesList>;
+export const AppFunctionsSpecRoutesList =
+  AppServiceSpecRoutesList as any as S.Schema<AppFunctionsSpecRoutesList>;
 
 export type AppAlertSpecRule =
   | "UNSPECIFIED_RULE"
@@ -2346,15 +2278,13 @@ export const AppFunctionsSpecAlertsList = /*@__PURE__*/ S.Array(
 
 /** A list of environment variables made available to the component. */
 export type AppFunctionsSpecEnvsList = Array<AppVariableDefinition>;
-export const AppFunctionsSpecEnvsList = /*@__PURE__*/ S.Array(
-  AppVariableDefinition,
-) as any as S.Schema<AppFunctionsSpecEnvsList>;
+export const AppFunctionsSpecEnvsList =
+  AppServiceSpecEnvsList as any as S.Schema<AppFunctionsSpecEnvsList>;
 
 /** A list of configured log forwarding destinations. */
 export type AppFunctionsSpecLogDestinationsList = Array<AppLogDestinationDefinition>;
-export const AppFunctionsSpecLogDestinationsList = /*@__PURE__*/ S.Array(
-  AppLogDestinationDefinition,
-) as any as S.Schema<AppFunctionsSpecLogDestinationsList>;
+export const AppFunctionsSpecLogDestinationsList =
+  AppServiceSpecLogDestinationsList as any as S.Schema<AppFunctionsSpecLogDestinationsList>;
 
 export interface AppFunctionsSpec {
   cors?: AppFunctionsSpecCors;
@@ -2482,27 +2412,23 @@ export const AppIngressSpecRuleMatch = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of allowed CORS origins. */
 export type AppsCorsPolicyAllowOriginsList = Array<AppsStringMatch>;
-export const AppsCorsPolicyAllowOriginsList = /*@__PURE__*/ S.Array(
-  AppsStringMatch,
-) as any as S.Schema<AppsCorsPolicyAllowOriginsList>;
+export const AppsCorsPolicyAllowOriginsList =
+  AppServiceSpecCorsAllowOriginsList as any as S.Schema<AppsCorsPolicyAllowOriginsList>;
 
 /** The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header. */
 export type AppsCorsPolicyAllowMethodsList = Array<string>;
-export const AppsCorsPolicyAllowMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCorsPolicyAllowMethodsList>;
+export const AppsCorsPolicyAllowMethodsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppsCorsPolicyAllowMethodsList>;
 
 /** The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header. */
 export type AppsCorsPolicyAllowHeadersList = Array<string>;
-export const AppsCorsPolicyAllowHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCorsPolicyAllowHeadersList>;
+export const AppsCorsPolicyAllowHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppsCorsPolicyAllowHeadersList>;
 
 /** The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header. */
 export type AppsCorsPolicyExposeHeadersList = Array<string>;
-export const AppsCorsPolicyExposeHeadersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCorsPolicyExposeHeadersList>;
+export const AppsCorsPolicyExposeHeadersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppsCorsPolicyExposeHeadersList>;
 
 export interface AppsCorsPolicy {
   /** The set of allowed CORS origins. */
@@ -2518,16 +2444,7 @@ export interface AppsCorsPolicy {
   /** Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is include. This configures the `Access-Control-Allow-Credentials` header. */
   allow_credentials?: boolean;
 }
-export const AppsCorsPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow_origins: S.optional(AppsCorsPolicyAllowOriginsList),
-    allow_methods: S.optional(AppsCorsPolicyAllowMethodsList),
-    allow_headers: S.optional(AppsCorsPolicyAllowHeadersList),
-    expose_headers: S.optional(AppsCorsPolicyExposeHeadersList),
-    max_age: S.optional(S.String),
-    allow_credentials: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AppsCorsPolicy" }) as any as S.Schema<AppsCorsPolicy>;
+export const AppsCorsPolicy = AppServiceSpecCors as any as S.Schema<AppsCorsPolicy>;
 
 /** The component to route to. Only one of `component` or `redirect` may be set. */
 export interface AppIngressSpecRuleRoutingComponent {
@@ -2719,17 +2636,15 @@ export type AppsDeploymentStaticSite = AppsDeploymentJob;
 export const AppsDeploymentStaticSite = AppsDeploymentJob;
 
 export type AppsDeploymentStaticSitesList = Array<AppsDeploymentJob>;
-export const AppsDeploymentStaticSitesList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppsDeploymentStaticSitesList>;
+export const AppsDeploymentStaticSitesList =
+  AppsDeploymentJobsList as any as S.Schema<AppsDeploymentStaticSitesList>;
 
 export type AppsDeploymentWorker = AppsDeploymentJob;
 export const AppsDeploymentWorker = AppsDeploymentJob;
 
 export type AppsDeploymentWorkersList = Array<AppsDeploymentJob>;
-export const AppsDeploymentWorkersList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppsDeploymentWorkersList>;
+export const AppsDeploymentWorkersList =
+  AppsDeploymentJobsList as any as S.Schema<AppsDeploymentWorkersList>;
 
 export interface AppsDeployment {
   cause?: string;
@@ -2778,9 +2693,8 @@ export const AppsDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppsDeploymentResponse" }) as any as S.Schema<AppsDeploymentResponse>;
 
 export type AssignAppAlertDestinationsRequestEmailsList = Array<string>;
-export const AssignAppAlertDestinationsRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssignAppAlertDestinationsRequestEmailsList>;
+export const AssignAppAlertDestinationsRequestEmailsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AssignAppAlertDestinationsRequestEmailsList>;
 
 export interface AppAlertSlackWebhook {
   url?: string;
@@ -2820,14 +2734,12 @@ export const AssignAppAlertDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignAppAlertDestinationsRequest>;
 
 export type AppAlertEmailsList = Array<string>;
-export const AppAlertEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppAlertEmailsList>;
+export const AppAlertEmailsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppAlertEmailsList>;
 
 export type AppAlertSlackWebhooksList = Array<AppAlertSlackWebhook>;
-export const AppAlertSlackWebhooksList = /*@__PURE__*/ S.Array(
-  AppAlertSlackWebhook,
-) as any as S.Schema<AppAlertSlackWebhooksList>;
+export const AppAlertSlackWebhooksList =
+  AssignAppAlertDestinationsRequestSlackWebhooksList as any as S.Schema<AppAlertSlackWebhooksList>;
 
 export type AppAlertPhase = "UNKNOWN" | "PENDING" | "CONFIGURING" | "ACTIVE" | "ERROR";
 export const AppAlertPhase = S.String;
@@ -2901,9 +2813,8 @@ export const AppsAlertResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the IDs of the Droplets to be assigned to the firewall. */
 export type AssignFirewallDropletsRequestDropletIdsList = Array<number>;
-export const AssignFirewallDropletsRequestDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AssignFirewallDropletsRequestDropletIdsList>;
+export const AssignFirewallDropletsRequestDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<AssignFirewallDropletsRequestDropletIdsList>;
 
 export interface AssignFirewallDropletsRequest {
   /** A unique ID that can be used to identify and reference a firewall. */
@@ -2921,15 +2832,13 @@ export const AssignFirewallDropletsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignFirewallDropletsRequest>;
 
 export interface AssignFirewallDropletsResponse {}
-export const AssignFirewallDropletsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssignFirewallDropletsResponse",
-}) as any as S.Schema<AssignFirewallDropletsResponse>;
+export const AssignFirewallDropletsResponse =
+  AddFirewallRulesResponse as any as S.Schema<AssignFirewallDropletsResponse>;
 
 /** A list of uniform resource names (URNs) to be added to a project. Only resources that you are authorized to see will be returned. */
 export type AssignProjectResourcesRequestResourcesList = Array<string>;
-export const AssignProjectResourcesRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssignProjectResourcesRequestResourcesList>;
+export const AssignProjectResourcesRequestResourcesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AssignProjectResourcesRequestResourcesList>;
 
 export interface AssignProjectResourcesRequest {
   /** A unique identifier for a project. */
@@ -2999,9 +2908,8 @@ export const AssignProjectResourcesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of uniform resource names (URNs) to be added to a project. Only resources that you are authorized to see will be returned. */
 export type AssignProjectResourcesDefaultRequestResourcesList = Array<string>;
-export const AssignProjectResourcesDefaultRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AssignProjectResourcesDefaultRequestResourcesList>;
+export const AssignProjectResourcesDefaultRequestResourcesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AssignProjectResourcesDefaultRequestResourcesList>;
 
 export interface AssignProjectResourcesDefaultRequest {
   /** A list of uniform resource names (URNs) to be added to a project. Only resources that you are authorized to see will be returned. */
@@ -3017,21 +2925,15 @@ export const AssignProjectResourcesDefaultRequest = /*@__PURE__*/ S.suspend(() =
 
 /** All resources, including the ones added in the request, that are assigned to the project. Only resources that you are authorized to see will be returned. */
 export type AssignProjectResourcesDefaultResponseResourcesList = Array<Resource>;
-export const AssignProjectResourcesDefaultResponseResourcesList = /*@__PURE__*/ S.Array(
-  Resource,
-) as any as S.Schema<AssignProjectResourcesDefaultResponseResourcesList>;
+export const AssignProjectResourcesDefaultResponseResourcesList =
+  AssignProjectResourcesResponseResourcesList as any as S.Schema<AssignProjectResourcesDefaultResponseResourcesList>;
 
 export interface AssignProjectResourcesDefaultResponse {
   /** All resources, including the ones added in the request, that are assigned to the project. Only resources that you are authorized to see will be returned. */
   resources?: AssignProjectResourcesDefaultResponseResourcesList;
 }
-export const AssignProjectResourcesDefaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(AssignProjectResourcesDefaultResponseResourcesList),
-  }),
-).annotate({
-  identifier: "AssignProjectResourcesDefaultResponse",
-}) as any as S.Schema<AssignProjectResourcesDefaultResponse>;
+export const AssignProjectResourcesDefaultResponse =
+  AssignProjectResourcesResponse as any as S.Schema<AssignProjectResourcesDefaultResponse>;
 
 /** The type of the resource. */
 export type AssignTagResourcesRequestResourcesItemResourceType =
@@ -3078,9 +2980,8 @@ export const AssignTagResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignTagResourcesRequest>;
 
 export interface AssignTagResourcesResponse {}
-export const AssignTagResourcesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AssignTagResourcesResponse",
-}) as any as S.Schema<AssignTagResourcesResponse>;
+export const AssignTagResourcesResponse =
+  AddFirewallRulesResponse as any as S.Schema<AssignTagResourcesResponse>;
 
 export interface AttachGenaiAgentRequest {
   /** A unique identifier for the parent agent. */
@@ -3225,9 +3126,8 @@ export const ApiAgentApiKeysList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApiAgentApiKeysList>;
 
 export type ApiChatbotAllowedDomainsList = Array<string>;
-export const ApiChatbotAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiChatbotAllowedDomainsList>;
+export const ApiChatbotAllowedDomainsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiChatbotAllowedDomainsList>;
 
 /** A Chatbot */
 export interface ApiChatbot {
@@ -3483,9 +3383,8 @@ export const ApiIndexingJobDataSourceJobsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApiIndexingJobDataSourceJobsList>;
 
 export type ApiIndexingJobDataSourceUuidsList = Array<string>;
-export const ApiIndexingJobDataSourceUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiIndexingJobDataSourceUuidsList>;
+export const ApiIndexingJobDataSourceUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiIndexingJobDataSourceUuidsList>;
 
 export type ApiBatchJobPhase =
   | "BATCH_JOB_PHASE_UNKNOWN"
@@ -3574,9 +3473,8 @@ export const ApiRerankingConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to organize related resources */
 export type ApiKnowledgeBaseTagsList = Array<string>;
-export const ApiKnowledgeBaseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiKnowledgeBaseTagsList>;
+export const ApiKnowledgeBaseTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiKnowledgeBaseTagsList>;
 
 /** Knowledgebase Description */
 export interface ApiKnowledgeBase {
@@ -3656,9 +3554,8 @@ export const ApiAgentLoggingConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional list of allowed tool names to expose from this server */
 export type ApiMcpServerAllowedToolsList = Array<string>;
-export const ApiMcpServerAllowedToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiMcpServerAllowedToolsList>;
+export const ApiMcpServerAllowedToolsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiMcpServerAllowedToolsList>;
 
 /** Optional additional headers to send to the MCP server */
 export type ApiMcpServerHeadersMap = { [key: string]: string | undefined };
@@ -3714,15 +3611,13 @@ export const ApiAgreement = /*@__PURE__*/ S.suspend(() =>
 
 /** High-level capabilities (e.g. tool_calling, vision, streaming) */
 export type ApiModelCapabilitiesList = Array<string>;
-export const ApiModelCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelCapabilitiesList>;
+export const ApiModelCapabilitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelCapabilitiesList>;
 
 /** Capabilities supported by this endpoint (e.g. input_text, output_text, input_image) */
 export type ApiModelEndpointCapabilitiesList = Array<string>;
-export const ApiModelEndpointCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelEndpointCapabilitiesList>;
+export const ApiModelEndpointCapabilitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelEndpointCapabilitiesList>;
 
 /** An available endpoint for a model and its capabilities */
 export interface ApiModelEndpoint {
@@ -3745,14 +3640,12 @@ export const ApiModelEndpointsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApiModelEndpointsList>;
 
 export type ApiModelModalitiesInputList = Array<string>;
-export const ApiModelModalitiesInputList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelModalitiesInputList>;
+export const ApiModelModalitiesInputList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelModalitiesInputList>;
 
 export type ApiModelModalitiesOutputList = Array<string>;
-export const ApiModelModalitiesOutputList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelModalitiesOutputList>;
+export const ApiModelModalitiesOutputList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelModalitiesOutputList>;
 
 /** Input/output modalities */
 export interface ApiModelModalities {
@@ -3774,15 +3667,13 @@ export const ApiModelProvider = S.String;
 
 /** Available reasoning efforts for this model */
 export type ApiModelReasoningEffortsList = Array<string>;
-export const ApiModelReasoningEffortsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelReasoningEffortsList>;
+export const ApiModelReasoningEffortsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelReasoningEffortsList>;
 
 /** Allowed values for dropdown selections (for type="dropdown") */
 export type ApiModelSettingOptionsList = Array<string>;
-export const ApiModelSettingOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelSettingOptionsList>;
+export const ApiModelSettingOptionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelSettingOptionsList>;
 
 /** A configurable setting for a model in the playground */
 export interface ApiModelSetting {
@@ -3990,9 +3881,8 @@ export const ApiModelProviderKeyInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Router-level fallback models */
 export type ApiModelRouterConfigFallbackModelsList = Array<string>;
-export const ApiModelRouterConfigFallbackModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelRouterConfigFallbackModelsList>;
+export const ApiModelRouterConfigFallbackModelsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelRouterConfigFallbackModelsList>;
 
 /** Task definition embedded in a model router config. */
 export interface ApiModelRouterTaskDetails {
@@ -4012,9 +3902,8 @@ export const ApiModelRouterTaskDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Models assigned to the task */
 export type ApiModelRouterTaskPolicyModelsList = Array<string>;
-export const ApiModelRouterTaskPolicyModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelRouterTaskPolicyModelsList>;
+export const ApiModelRouterTaskPolicyModelsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelRouterTaskPolicyModelsList>;
 
 /** Selection policy preference for choosing among assigned models. */
 export interface ApiModelRouterSelectionPolicy {
@@ -4068,9 +3957,8 @@ export const ApiModelRouterConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Target regions for the router */
 export type ApiModelRouterRegionsList = Array<string>;
-export const ApiModelRouterRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelRouterRegionsList>;
+export const ApiModelRouterRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelRouterRegionsList>;
 
 /** Model router */
 export interface ApiModelRouter {
@@ -4102,9 +3990,8 @@ export const ApiModelRouter = /*@__PURE__*/ S.suspend(() =>
 
 /** Models supported by the openAI api key */
 export type ApiOpenAIAPIKeyInfoModelsList = Array<ApiModel>;
-export const ApiOpenAIAPIKeyInfoModelsList = /*@__PURE__*/ S.Array(
-  ApiModel,
-) as any as S.Schema<ApiOpenAIAPIKeyInfoModelsList>;
+export const ApiOpenAIAPIKeyInfoModelsList =
+  ApiModelProviderKeyInfoModelsList as any as S.Schema<ApiOpenAIAPIKeyInfoModelsList>;
 
 /** OpenAI API Key Info */
 export interface ApiOpenAIAPIKeyInfo {
@@ -4137,9 +4024,8 @@ export const ApiOpenAIAPIKeyInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Parent agents */
 export type ApiAgentParentAgentsList = Array<ApiAgent>;
-export const ApiAgentParentAgentsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ApiAgent),
-) as any as S.Schema<ApiAgentParentAgentsList>;
+export const ApiAgentParentAgentsList =
+  ApiAgentChildAgentsList as any as S.Schema<ApiAgentParentAgentsList>;
 
 /** - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries - RETRIEVAL_METHOD_NONE: The retrieval method is none */
 export type ApiRetrievalMethod =
@@ -4152,9 +4038,8 @@ export const ApiRetrievalMethod = S.String;
 
 /** Agent tag to organize related resources */
 export type ApiAgentTagsList = Array<string>;
-export const ApiAgentTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiAgentTagsList>;
+export const ApiAgentTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiAgentTagsList>;
 
 export interface ApiAgentTemplateGuardrail {
   /** Priority of the guardrail */
@@ -4179,15 +4064,13 @@ export const ApiAgentTemplateGuardrailsList = /*@__PURE__*/ S.Array(
 
 /** List of knowledge bases associated with the agent template */
 export type ApiAgentTemplateKnowledgeBasesList = Array<ApiKnowledgeBase>;
-export const ApiAgentTemplateKnowledgeBasesList = /*@__PURE__*/ S.Array(
-  ApiKnowledgeBase,
-) as any as S.Schema<ApiAgentTemplateKnowledgeBasesList>;
+export const ApiAgentTemplateKnowledgeBasesList =
+  ApiAgentKnowledgeBasesList as any as S.Schema<ApiAgentTemplateKnowledgeBasesList>;
 
 /** List of tags associated with the agent template */
 export type ApiAgentTemplateTagsList = Array<string>;
-export const ApiAgentTemplateTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiAgentTemplateTagsList>;
+export const ApiAgentTemplateTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiAgentTemplateTagsList>;
 
 /** - AGENT_TEMPLATE_TYPE_STANDARD: The standard agent template - AGENT_TEMPLATE_TYPE_ONE_CLICK: The one click agent template */
 export type ApiAgentTemplateType = "AGENT_TEMPLATE_TYPE_STANDARD" | "AGENT_TEMPLATE_TYPE_ONE_CLICK";
@@ -4255,15 +4138,13 @@ export const ApiAgentTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** VPC Egress IPs */
 export type ApiAgentVpcEgressIpsList = Array<string>;
-export const ApiAgentVpcEgressIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiAgentVpcEgressIpsList>;
+export const ApiAgentVpcEgressIpsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiAgentVpcEgressIpsList>;
 
 /** Agents */
 export type ApiWorkspaceAgentsList = Array<ApiAgent>;
-export const ApiWorkspaceAgentsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ApiAgent),
-) as any as S.Schema<ApiWorkspaceAgentsList>;
+export const ApiWorkspaceAgentsList =
+  ApiAgentChildAgentsList as any as S.Schema<ApiWorkspaceAgentsList>;
 
 /** EvaluationDatasetParadigm is the row/content shape of a dataset, orthogonal to the surface in EvaluationDatasetType (e.g. a model dataset can be single- or multi-turn). */
 export type ApiEvaluationDatasetParadigm =
@@ -4724,13 +4605,8 @@ export const AttachGenaiAgentGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiLinkAgentGuardrailOutput {
   agent?: ApiAgent;
 }
-export const ApiLinkAgentGuardrailOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({
-  identifier: "ApiLinkAgentGuardrailOutput",
-}) as any as S.Schema<ApiLinkAgentGuardrailOutput>;
+export const ApiLinkAgentGuardrailOutput =
+  ApiLinkAgentFunctionOutput as any as S.Schema<ApiLinkAgentGuardrailOutput>;
 
 export interface AttachGenaiKnowledgeBaseRequest {
   /** A unique identifier for an agent. */
@@ -4757,13 +4633,8 @@ export const AttachGenaiKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiLinkKnowledgeBaseOutput {
   agent?: ApiAgent;
 }
-export const ApiLinkKnowledgeBaseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({
-  identifier: "ApiLinkKnowledgeBaseOutput",
-}) as any as S.Schema<ApiLinkKnowledgeBaseOutput>;
+export const ApiLinkKnowledgeBaseOutput =
+  ApiLinkAgentFunctionOutput as any as S.Schema<ApiLinkKnowledgeBaseOutput>;
 
 export interface AttachGenaiKnowledgeBasesRequest {
   /** A unique identifier for an agent. */
@@ -5215,10 +5086,7 @@ export const BatchRequestCounts = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata attached at creation. */
 export type BatchMetadataMap = { [key: string]: string | undefined };
-export const BatchMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BatchMetadataMap>;
+export const BatchMetadataMap = ApiMcpServerHeadersMap as any as S.Schema<BatchMetadataMap>;
 
 export interface BatchErrorsItem {
   code?: string;
@@ -5308,9 +5176,8 @@ export const CommitAppRollbackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitAppRollbackRequest" }) as any as S.Schema<CommitAppRollbackRequest>;
 
 export interface CommitAppRollbackResponse {}
-export const CommitAppRollbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CommitAppRollbackResponse",
-}) as any as S.Schema<CommitAppRollbackResponse>;
+export const CommitAppRollbackResponse =
+  AddFirewallRulesResponse as any as S.Schema<CommitAppRollbackResponse>;
 
 /** The value to be set for the metadata item, which can be a string or boolean. */
 export type AddonsResourceMetadataValue = string | boolean;
@@ -5375,9 +5242,8 @@ export const AddonsResourceState = S.String;
 
 /** Metadata associated with the resource, set by the user. */
 export type AddonsResourceMetadataList = Array<AddonsResourceMetadata>;
-export const AddonsResourceMetadataList = /*@__PURE__*/ S.Array(
-  AddonsResourceMetadata,
-) as any as S.Schema<AddonsResourceMetadataList>;
+export const AddonsResourceMetadataList =
+  CreateAddonRequestMetadataList as any as S.Schema<AddonsResourceMetadataList>;
 
 export interface AddonsResource {
   /** The unique identifier for the addon resource. */
@@ -5594,9 +5460,8 @@ export const CreateAgentInferenceChatCompletionRequestToolChoice =
   S.Unknown as any as S.Schema<CreateAgentInferenceChatCompletionRequestToolChoice>;
 
 export type CreateAgentInferenceChatCompletionRequestStopCase1List = Array<string>;
-export const CreateAgentInferenceChatCompletionRequestStopCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateAgentInferenceChatCompletionRequestStopCase1List>;
+export const CreateAgentInferenceChatCompletionRequestStopCase1List =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateAgentInferenceChatCompletionRequestStopCase1List>;
 
 /** Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence. */
 export type CreateAgentInferenceChatCompletionRequestStop =
@@ -5641,10 +5506,8 @@ export const CreateAgentInferenceChatCompletionRequestReasoningEffort = S.String
 export type CreateAgentInferenceChatCompletionRequestMetadataMap = {
   [key: string]: string | undefined;
 };
-export const CreateAgentInferenceChatCompletionRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateAgentInferenceChatCompletionRequestMetadataMap>;
+export const CreateAgentInferenceChatCompletionRequestMetadataMap =
+  ApiMcpServerHeadersMap as any as S.Schema<CreateAgentInferenceChatCompletionRequestMetadataMap>;
 
 export interface CreateAgentInferenceChatCompletionRequest {
   /** Must be set to true for agent-based completion behavior. */
@@ -5809,14 +5672,12 @@ export const ChatCompletionResponseChoicesItemMessage = /*@__PURE__*/ S.suspend(
 
 /** A list of integers representing the UTF-8 bytes representation of the token. Can be null if there is no bytes representation for the token. */
 export type ChatCompletionTokenLogprobBytesList = Array<number>;
-export const ChatCompletionTokenLogprobBytesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ChatCompletionTokenLogprobBytesList>;
+export const ChatCompletionTokenLogprobBytesList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<ChatCompletionTokenLogprobBytesList>;
 
 export type ChatCompletionTopLogprobItemBytesList = Array<number>;
-export const ChatCompletionTopLogprobItemBytesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ChatCompletionTopLogprobItemBytesList>;
+export const ChatCompletionTopLogprobItemBytesList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<ChatCompletionTopLogprobItemBytesList>;
 
 export interface ChatCompletionTopLogprobItem {
   /** The token. */
@@ -5872,9 +5733,8 @@ export const ChatCompletionResponseChoicesItemLogprobsContentList = /*@__PURE__*
 /** A list of message refusal tokens with log probability information. */
 export type ChatCompletionResponseChoicesItemLogprobsRefusalList =
   Array<ChatCompletionTokenLogprob>;
-export const ChatCompletionResponseChoicesItemLogprobsRefusalList = /*@__PURE__*/ S.Array(
-  ChatCompletionTokenLogprob,
-) as any as S.Schema<ChatCompletionResponseChoicesItemLogprobsRefusalList>;
+export const ChatCompletionResponseChoicesItemLogprobsRefusalList =
+  ChatCompletionResponseChoicesItemLogprobsContentList as any as S.Schema<ChatCompletionResponseChoicesItemLogprobsRefusalList>;
 
 /** Log probability information for the choice. */
 export interface ChatCompletionResponseChoicesItemLogprobs {
@@ -6006,45 +5866,37 @@ export const AppSpecInputRegion = S.String;
 
 /** A set of hostnames where the application will be available. */
 export type AppSpecInputDomainsList = Array<AppDomainSpec>;
-export const AppSpecInputDomainsList = /*@__PURE__*/ S.Array(
-  AppDomainSpec,
-) as any as S.Schema<AppSpecInputDomainsList>;
+export const AppSpecInputDomainsList =
+  AppSpecDomainsList as any as S.Schema<AppSpecInputDomainsList>;
 
 /** Workloads which expose publicly-accessible HTTP services. */
 export type AppSpecInputServicesList = Array<AppServiceSpec>;
-export const AppSpecInputServicesList = /*@__PURE__*/ S.Array(
-  AppServiceSpec,
-) as any as S.Schema<AppSpecInputServicesList>;
+export const AppSpecInputServicesList =
+  AppSpecServicesList as any as S.Schema<AppSpecInputServicesList>;
 
 /** Content which can be rendered to static web assets. */
 export type AppSpecInputStaticSitesList = Array<AppStaticSiteSpec>;
-export const AppSpecInputStaticSitesList = /*@__PURE__*/ S.Array(
-  AppStaticSiteSpec,
-) as any as S.Schema<AppSpecInputStaticSitesList>;
+export const AppSpecInputStaticSitesList =
+  AppSpecStaticSitesList as any as S.Schema<AppSpecInputStaticSitesList>;
 
 /** Pre and post deployment workloads which do not expose publicly-accessible HTTP routes. */
 export type AppSpecInputJobsList = Array<AppJobSpec>;
-export const AppSpecInputJobsList = /*@__PURE__*/ S.Array(
-  AppJobSpec,
-) as any as S.Schema<AppSpecInputJobsList>;
+export const AppSpecInputJobsList = AppSpecJobsList as any as S.Schema<AppSpecInputJobsList>;
 
 /** Workloads which do not expose publicly-accessible HTTP services. */
 export type AppSpecInputWorkersList = Array<AppWorkerSpec>;
-export const AppSpecInputWorkersList = /*@__PURE__*/ S.Array(
-  AppWorkerSpec,
-) as any as S.Schema<AppSpecInputWorkersList>;
+export const AppSpecInputWorkersList =
+  AppSpecWorkersList as any as S.Schema<AppSpecInputWorkersList>;
 
 /** Workloads which expose publicly-accessible HTTP services via Functions Components. */
 export type AppSpecInputFunctionsList = Array<AppFunctionsSpec>;
-export const AppSpecInputFunctionsList = /*@__PURE__*/ S.Array(
-  AppFunctionsSpec,
-) as any as S.Schema<AppSpecInputFunctionsList>;
+export const AppSpecInputFunctionsList =
+  AppSpecFunctionsList as any as S.Schema<AppSpecInputFunctionsList>;
 
 /** Database instances which can provide persistence to workloads within the application. */
 export type AppSpecInputDatabasesList = Array<AppDatabaseSpec>;
-export const AppSpecInputDatabasesList = /*@__PURE__*/ S.Array(
-  AppDatabaseSpec,
-) as any as S.Schema<AppSpecInputDatabasesList>;
+export const AppSpecInputDatabasesList =
+  AppSpecDatabasesList as any as S.Schema<AppSpecInputDatabasesList>;
 
 /** The desired configuration of an application. */
 export interface AppSpecInput {
@@ -6112,9 +5964,8 @@ export type AppsDomainPhase = "UNKNOWN" | "PENDING" | "CONFIGURING" | "ACTIVE" |
 export const AppsDomainPhase = S.String;
 
 export type AppsDomainProgressStepsList = Array<unknown>;
-export const AppsDomainProgressStepsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AppsDomainProgressStepsList>;
+export const AppsDomainProgressStepsList =
+  AppsDeploymentProgressStepStepsList as any as S.Schema<AppsDomainProgressStepsList>;
 
 export interface AppsDomainProgress {
   steps?: AppsDomainProgressStepsList;
@@ -6166,29 +6017,24 @@ export type AppDomainsList = Array<AppsDomain>;
 export const AppDomainsList = /*@__PURE__*/ S.Array(AppsDomain) as any as S.Schema<AppDomainsList>;
 
 export type AppPendingDeploymentJobsList = Array<AppsDeploymentJob>;
-export const AppPendingDeploymentJobsList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPendingDeploymentJobsList>;
+export const AppPendingDeploymentJobsList =
+  AppsDeploymentJobsList as any as S.Schema<AppPendingDeploymentJobsList>;
 
 export type AppPendingDeploymentFunctionsList = Array<AppsDeploymentFunctions>;
-export const AppPendingDeploymentFunctionsList = /*@__PURE__*/ S.Array(
-  AppsDeploymentFunctions,
-) as any as S.Schema<AppPendingDeploymentFunctionsList>;
+export const AppPendingDeploymentFunctionsList =
+  AppsDeploymentFunctionsList as any as S.Schema<AppPendingDeploymentFunctionsList>;
 
 export type AppPendingDeploymentServicesList = Array<AppsDeploymentJob>;
-export const AppPendingDeploymentServicesList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPendingDeploymentServicesList>;
+export const AppPendingDeploymentServicesList =
+  AppsDeploymentJobsList as any as S.Schema<AppPendingDeploymentServicesList>;
 
 export type AppPendingDeploymentStaticSitesList = Array<AppsDeploymentJob>;
-export const AppPendingDeploymentStaticSitesList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPendingDeploymentStaticSitesList>;
+export const AppPendingDeploymentStaticSitesList =
+  AppsDeploymentJobsList as any as S.Schema<AppPendingDeploymentStaticSitesList>;
 
 export type AppPendingDeploymentWorkersList = Array<AppsDeploymentJob>;
-export const AppPendingDeploymentWorkersList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPendingDeploymentWorkersList>;
+export const AppPendingDeploymentWorkersList =
+  AppsDeploymentJobsList as any as S.Schema<AppPendingDeploymentWorkersList>;
 
 export interface AppPendingDeployment {
   cause?: string;
@@ -6207,30 +6053,11 @@ export interface AppPendingDeployment {
   updated_at?: string;
   workers?: AppPendingDeploymentWorkersList;
 }
-export const AppPendingDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cause: S.optional(S.String),
-    cloned_from: S.optional(S.String),
-    created_at: S.optional(S.String),
-    id: S.optional(S.String),
-    jobs: S.optional(AppPendingDeploymentJobsList),
-    functions: S.optional(AppPendingDeploymentFunctionsList),
-    phase: S.optional(AppsDeploymentPhase),
-    phase_last_updated_at: S.optional(S.String),
-    progress: S.optional(AppsDeploymentProgress),
-    services: S.optional(AppPendingDeploymentServicesList),
-    spec: S.optional(AppSpec),
-    static_sites: S.optional(AppPendingDeploymentStaticSitesList),
-    tier_slug: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    workers: S.optional(AppPendingDeploymentWorkersList),
-  }),
-).annotate({ identifier: "AppPendingDeployment" }) as any as S.Schema<AppPendingDeployment>;
+export const AppPendingDeployment = AppsDeployment as any as S.Schema<AppPendingDeployment>;
 
 export type AppsRegionDataCentersList = Array<string>;
-export const AppsRegionDataCentersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsRegionDataCentersList>;
+export const AppsRegionDataCentersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppsRegionDataCentersList>;
 
 export interface AppsRegion {
   continent?: string;
@@ -6257,29 +6084,24 @@ export const AppsRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppsRegion" }) as any as S.Schema<AppsRegion>;
 
 export type AppPinnedDeploymentJobsList = Array<AppsDeploymentJob>;
-export const AppPinnedDeploymentJobsList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPinnedDeploymentJobsList>;
+export const AppPinnedDeploymentJobsList =
+  AppsDeploymentJobsList as any as S.Schema<AppPinnedDeploymentJobsList>;
 
 export type AppPinnedDeploymentFunctionsList = Array<AppsDeploymentFunctions>;
-export const AppPinnedDeploymentFunctionsList = /*@__PURE__*/ S.Array(
-  AppsDeploymentFunctions,
-) as any as S.Schema<AppPinnedDeploymentFunctionsList>;
+export const AppPinnedDeploymentFunctionsList =
+  AppsDeploymentFunctionsList as any as S.Schema<AppPinnedDeploymentFunctionsList>;
 
 export type AppPinnedDeploymentServicesList = Array<AppsDeploymentJob>;
-export const AppPinnedDeploymentServicesList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPinnedDeploymentServicesList>;
+export const AppPinnedDeploymentServicesList =
+  AppsDeploymentJobsList as any as S.Schema<AppPinnedDeploymentServicesList>;
 
 export type AppPinnedDeploymentStaticSitesList = Array<AppsDeploymentJob>;
-export const AppPinnedDeploymentStaticSitesList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPinnedDeploymentStaticSitesList>;
+export const AppPinnedDeploymentStaticSitesList =
+  AppsDeploymentJobsList as any as S.Schema<AppPinnedDeploymentStaticSitesList>;
 
 export type AppPinnedDeploymentWorkersList = Array<AppsDeploymentJob>;
-export const AppPinnedDeploymentWorkersList = /*@__PURE__*/ S.Array(
-  AppsDeploymentJob,
-) as any as S.Schema<AppPinnedDeploymentWorkersList>;
+export const AppPinnedDeploymentWorkersList =
+  AppsDeploymentJobsList as any as S.Schema<AppPinnedDeploymentWorkersList>;
 
 export interface AppPinnedDeployment {
   cause?: string;
@@ -6298,25 +6120,7 @@ export interface AppPinnedDeployment {
   updated_at?: string;
   workers?: AppPinnedDeploymentWorkersList;
 }
-export const AppPinnedDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cause: S.optional(S.String),
-    cloned_from: S.optional(S.String),
-    created_at: S.optional(S.String),
-    id: S.optional(S.String),
-    jobs: S.optional(AppPinnedDeploymentJobsList),
-    functions: S.optional(AppPinnedDeploymentFunctionsList),
-    phase: S.optional(AppsDeploymentPhase),
-    phase_last_updated_at: S.optional(S.String),
-    progress: S.optional(AppsDeploymentProgress),
-    services: S.optional(AppPinnedDeploymentServicesList),
-    spec: S.optional(AppSpec),
-    static_sites: S.optional(AppPinnedDeploymentStaticSitesList),
-    tier_slug: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    workers: S.optional(AppPinnedDeploymentWorkersList),
-  }),
-).annotate({ identifier: "AppPinnedDeployment" }) as any as S.Schema<AppPinnedDeployment>;
+export const AppPinnedDeployment = AppsDeployment as any as S.Schema<AppPinnedDeployment>;
 
 export type AppsDedicatedEgressIpStatus = "UNKNOWN" | "ASSIGNING" | "ASSIGNED" | "REMOVED";
 export const AppsDedicatedEgressIpStatus = S.String;
@@ -6490,15 +6294,13 @@ export const AutoscalePoolDropletTemplateRegion = S.String;
 
 /** The SSH keys to be installed on the Droplets in the autoscale pool. You can either specify the key ID or the fingerprint. Requires `ssh_key:read` scope. */
 export type AutoscalePoolDropletTemplateSshKeysList = Array<string>;
-export const AutoscalePoolDropletTemplateSshKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoscalePoolDropletTemplateSshKeysList>;
+export const AutoscalePoolDropletTemplateSshKeysList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AutoscalePoolDropletTemplateSshKeysList>;
 
 /** The tags to apply to each of the Droplets in the autoscale pool. Requires `tag:read` scope. */
 export type AutoscalePoolDropletTemplateTagsList = Array<string>;
-export const AutoscalePoolDropletTemplateTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoscalePoolDropletTemplateTagsList>;
+export const AutoscalePoolDropletTemplateTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AutoscalePoolDropletTemplateTagsList>;
 
 export interface AutoscalePoolDropletTemplate {
   /** The name(s) to be applied to all Droplets in the autoscale pool. */
@@ -6732,9 +6534,8 @@ export const CertificateRequestLetsEncryptType = S.String;
 
 /** An array of fully qualified domain names (FQDNs) for which the certificate was issued. A certificate covering all subdomains can be issued using a wildcard (e.g. `*.example.com`). */
 export type CertificateRequestLetsEncryptDnsNamesList = Array<string>;
-export const CertificateRequestLetsEncryptDnsNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateRequestLetsEncryptDnsNamesList>;
+export const CertificateRequestLetsEncryptDnsNamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CertificateRequestLetsEncryptDnsNamesList>;
 
 export interface CertificateRequestLetsEncrypt {
   /** A unique human-readable name referring to a certificate. */
@@ -6795,9 +6596,8 @@ export const CreateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of fully qualified domain names (FQDNs) for which the certificate was issued. */
 export type CertificateDnsNamesList = Array<string>;
-export const CertificateDnsNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CertificateDnsNamesList>;
+export const CertificateDnsNamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CertificateDnsNamesList>;
 
 /** A string representing the current state of the certificate. It may be `pending`, `verified`, or `error`. */
 export type CertificateState = "pending" | "verified" | "error";
@@ -6851,9 +6651,8 @@ export const CreateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional OAuth scopes to request. Defaults to every scope the provider offers; scopes outside that set are rejected. Ignored for API-key credentials. */
 export type CreateConnectionRequestScopesList = Array<string>;
-export const CreateConnectionRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectionRequestScopesList>;
+export const CreateConnectionRequestScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateConnectionRequestScopesList>;
 
 /** Use one of your team's provider credentials. */
 export interface CreateConnectionRequestCredentialTeamCredential {
@@ -6887,9 +6686,7 @@ export const CreateConnectionRequestCredential = /*@__PURE__*/ S.suspend(() =>
 /** Optional CIDR ranges; when set, every address the host resolves to must fall within one of them. */
 export type CreateConnectionRequestNetworkVpcDestinationsItemAllowedIpCidrsList = Array<string>;
 export const CreateConnectionRequestNetworkVpcDestinationsItemAllowedIpCidrsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateConnectionRequestNetworkVpcDestinationsItemAllowedIpCidrsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<CreateConnectionRequestNetworkVpcDestinationsItemAllowedIpCidrsList>;
 
 export interface CreateConnectionRequestNetworkVpcDestinationsItem {
   /** Host name or IP address. It must resolve only to private addresses. */
@@ -6982,9 +6779,8 @@ export const ConnectionCredentialKind = S.String;
 
 /** Optional CIDR ranges; when set, every address the host resolves to must fall within one of them. */
 export type ConnectionNetworkVpcDestinationsItemAllowedIpCidrsList = Array<string>;
-export const ConnectionNetworkVpcDestinationsItemAllowedIpCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionNetworkVpcDestinationsItemAllowedIpCidrsList>;
+export const ConnectionNetworkVpcDestinationsItemAllowedIpCidrsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ConnectionNetworkVpcDestinationsItemAllowedIpCidrsList>;
 
 export interface ConnectionNetworkVpcDestinationsItem {
   /** Host name or IP address. It must resolve only to private addresses. */
@@ -7040,9 +6836,8 @@ export const ConnectionNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** Provider scopes granted, or requested while pending. */
 export type ConnectionOauthScopesList = Array<string>;
-export const ConnectionOauthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionOauthScopesList>;
+export const ConnectionOauthScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ConnectionOauthScopesList>;
 
 /** Set for `digitalocean_oauth` and `private_oauth` connections. */
 export interface ConnectionOauth {
@@ -7060,9 +6855,8 @@ export const ConnectionOauth = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: read `oauth.scopes`. Duplicated here so a reader of the pre-union shape keeps working; empty for a kind with no OAuth grant. */
 export type ConnectionScopesList = Array<string>;
-export const ConnectionScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionScopesList>;
+export const ConnectionScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ConnectionScopesList>;
 
 /** One connection of any kind. Everything every kind has stays on the envelope, so a reader takes an ID, a status or a provider without first asking what kind it is; only the members a kind alone has move into details. */
 export interface Connection {
@@ -7176,9 +6970,8 @@ export const CreateDatabaseClusterRequestEngine = S.String;
 
 /** An array of tags (as strings) to apply to the database cluster. <br><br>Requires `tag:create` scope. */
 export type CreateDatabaseClusterRequestTagsList = Array<string>;
-export const CreateDatabaseClusterRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseClusterRequestTagsList>;
+export const CreateDatabaseClusterRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateDatabaseClusterRequestTagsList>;
 
 /** The connection details for OpenSearch dashboard. */
 export type CreateDatabaseClusterRequestUiConnection = AddDatabaseConnectionPoolRequestConnection;
@@ -7281,9 +7074,8 @@ export const DatabaseAutoscaleParams = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
 export type CreateDatabaseClusterRequestDoSettingsServiceCnamesList = Array<string>;
-export const CreateDatabaseClusterRequestDoSettingsServiceCnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseClusterRequestDoSettingsServiceCnamesList>;
+export const CreateDatabaseClusterRequestDoSettingsServiceCnamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateDatabaseClusterRequestDoSettingsServiceCnamesList>;
 
 export interface CreateDatabaseClusterRequestDoSettings {
   /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
@@ -7398,15 +7190,13 @@ export const DatabaseClusterReadStatus = S.String;
 
 /** An array of tags that have been applied to the database cluster. <br><br>Requires `tag:read` scope. */
 export type DatabaseClusterReadTagsList = Array<string>;
-export const DatabaseClusterReadTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseClusterReadTagsList>;
+export const DatabaseClusterReadTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DatabaseClusterReadTagsList>;
 
 /** An array of strings containing the names of databases created in the database cluster. */
 export type DatabaseClusterReadDbNamesList = Array<string>;
-export const DatabaseClusterReadDbNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseClusterReadDbNamesList>;
+export const DatabaseClusterReadDbNamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DatabaseClusterReadDbNamesList>;
 
 /** The connection details for OpenSearch dashboard. */
 export interface DatabaseClusterReadUiConnection {
@@ -7451,18 +7241,8 @@ export interface DatabaseClusterReadSchemaRegistryConnection {
   /** A boolean value indicating if the connection should be made over SSL. */
   ssl?: boolean;
 }
-export const DatabaseClusterReadSchemaRegistryConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    host: S.optional(S.String),
-    port: S.optional(S.Number),
-    user: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    ssl: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DatabaseClusterReadSchemaRegistryConnection",
-}) as any as S.Schema<DatabaseClusterReadSchemaRegistryConnection>;
+export const DatabaseClusterReadSchemaRegistryConnection =
+  DatabaseClusterReadUiConnection as any as S.Schema<DatabaseClusterReadSchemaRegistryConnection>;
 
 export type DatabaseClusterReadConnection = ConnectionPoolConnection;
 export const DatabaseClusterReadConnection = ConnectionPoolConnection;
@@ -7483,9 +7263,8 @@ export const DatabaseClusterReadUsersList = /*@__PURE__*/ S.Array(
 
 /** A list of strings, each containing information about a pending maintenance update. */
 export type DatabaseClusterReadMaintenanceWindowDescriptionList = Array<string>;
-export const DatabaseClusterReadMaintenanceWindowDescriptionList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseClusterReadMaintenanceWindowDescriptionList>;
+export const DatabaseClusterReadMaintenanceWindowDescriptionList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DatabaseClusterReadMaintenanceWindowDescriptionList>;
 
 export interface DatabaseClusterReadMaintenanceWindow {
   /** The day of the week on which to apply maintenance updates. */
@@ -7563,21 +7342,15 @@ export const DatabaseClusterReadMetricsEndpointsList = /*@__PURE__*/ S.Array(
 
 /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
 export type DatabaseClusterReadDoSettingsServiceCnamesList = Array<string>;
-export const DatabaseClusterReadDoSettingsServiceCnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseClusterReadDoSettingsServiceCnamesList>;
+export const DatabaseClusterReadDoSettingsServiceCnamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DatabaseClusterReadDoSettingsServiceCnamesList>;
 
 export interface DatabaseClusterReadDoSettings {
   /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
   service_cnames?: DatabaseClusterReadDoSettingsServiceCnamesList;
 }
-export const DatabaseClusterReadDoSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service_cnames: S.optional(DatabaseClusterReadDoSettingsServiceCnamesList),
-  }),
-).annotate({
-  identifier: "DatabaseClusterReadDoSettings",
-}) as any as S.Schema<DatabaseClusterReadDoSettings>;
+export const DatabaseClusterReadDoSettings =
+  CreateDatabaseClusterRequestDoSettings as any as S.Schema<DatabaseClusterReadDoSettings>;
 
 export interface DatabaseClusterRead {
   /** A unique ID that can be used to identify and reference a database cluster. */
@@ -8048,15 +7821,7 @@ export interface OpensearchLogsink {
   /** PEM encoded CA certificate */
   ca?: string;
 }
-export const OpensearchLogsink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    index_prefix: S.String,
-    index_days_max: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    ca: S.optional(S.String),
-  }),
-).annotate({ identifier: "OpensearchLogsink" }) as any as S.Schema<OpensearchLogsink>;
+export const OpensearchLogsink = ElasticsearchLogsink as any as S.Schema<OpensearchLogsink>;
 
 /** Configuration for Datadog integration **applicable only to MongoDB clusters**. */
 export interface DatadogLogsink {
@@ -8142,9 +7907,8 @@ export const CreateDatabaseLogsinkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A flat array of tag names as strings to apply to the read-only replica after it is created. Tag names can either be existing or new tags. <br><br>Requires `tag:create` scope. */
 export type CreateDatabaseReplicaRequestTagsList = Array<string>;
-export const CreateDatabaseReplicaRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseReplicaRequestTagsList>;
+export const CreateDatabaseReplicaRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateDatabaseReplicaRequestTagsList>;
 
 export type CreateDatabaseReplicaRequestConnection = AddDatabaseConnectionPoolRequestConnection;
 export const CreateDatabaseReplicaRequestConnection = AddDatabaseConnectionPoolRequestConnection;
@@ -8156,21 +7920,15 @@ export const CreateDatabaseReplicaRequestPrivateConnection =
 
 /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
 export type CreateDatabaseReplicaRequestDoSettingsServiceCnamesList = Array<string>;
-export const CreateDatabaseReplicaRequestDoSettingsServiceCnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDatabaseReplicaRequestDoSettingsServiceCnamesList>;
+export const CreateDatabaseReplicaRequestDoSettingsServiceCnamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateDatabaseReplicaRequestDoSettingsServiceCnamesList>;
 
 export interface CreateDatabaseReplicaRequestDoSettings {
   /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
   service_cnames?: CreateDatabaseReplicaRequestDoSettingsServiceCnamesList;
 }
-export const CreateDatabaseReplicaRequestDoSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service_cnames: S.optional(CreateDatabaseReplicaRequestDoSettingsServiceCnamesList),
-  }),
-).annotate({
-  identifier: "CreateDatabaseReplicaRequestDoSettings",
-}) as any as S.Schema<CreateDatabaseReplicaRequestDoSettings>;
+export const CreateDatabaseReplicaRequestDoSettings =
+  CreateDatabaseClusterRequestDoSettings as any as S.Schema<CreateDatabaseReplicaRequestDoSettings>;
 
 export interface CreateDatabaseReplicaRequest {
   /** A unique identifier for a database cluster. */
@@ -8221,9 +7979,8 @@ export const DatabaseReplicaReadStatus = S.String;
 
 /** A flat array of tag names as strings applied to the read-only replica.<br><br>Requires `tag:read` scope. */
 export type DatabaseReplicaReadTagsList = Array<string>;
-export const DatabaseReplicaReadTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseReplicaReadTagsList>;
+export const DatabaseReplicaReadTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DatabaseReplicaReadTagsList>;
 
 export type DatabaseReplicaReadConnection = ConnectionPoolConnection;
 export const DatabaseReplicaReadConnection = ConnectionPoolConnection;
@@ -8233,21 +7990,15 @@ export const DatabaseReplicaReadPrivateConnection = ConnectionPoolConnection;
 
 /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
 export type DatabaseReplicaReadDoSettingsServiceCnamesList = Array<string>;
-export const DatabaseReplicaReadDoSettingsServiceCnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseReplicaReadDoSettingsServiceCnamesList>;
+export const DatabaseReplicaReadDoSettingsServiceCnamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DatabaseReplicaReadDoSettingsServiceCnamesList>;
 
 export interface DatabaseReplicaReadDoSettings {
   /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
   service_cnames?: DatabaseReplicaReadDoSettingsServiceCnamesList;
 }
-export const DatabaseReplicaReadDoSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service_cnames: S.optional(DatabaseReplicaReadDoSettingsServiceCnamesList),
-  }),
-).annotate({
-  identifier: "DatabaseReplicaReadDoSettings",
-}) as any as S.Schema<DatabaseReplicaReadDoSettings>;
+export const DatabaseReplicaReadDoSettings =
+  CreateDatabaseClusterRequestDoSettings as any as S.Schema<DatabaseReplicaReadDoSettings>;
 
 export interface DatabaseReplicaRead {
   /** A unique ID that can be used to identify and reference a database replica. */
@@ -8402,10 +8153,8 @@ export const DedicatedInferenceSpecInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs for provider tokens (e.g. Hugging Face). */
 export type CreateDedicatedInferenceRequestAccessTokensMap = { [key: string]: string | undefined };
-export const CreateDedicatedInferenceRequestAccessTokensMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDedicatedInferenceRequestAccessTokensMap>;
+export const CreateDedicatedInferenceRequestAccessTokensMap =
+  ApiMcpServerHeadersMap as any as S.Schema<CreateDedicatedInferenceRequestAccessTokensMap>;
 
 export interface CreateDedicatedInferenceRequest {
   spec: DedicatedInferenceSpecInput;
@@ -8533,9 +8282,8 @@ export const PendingDeploymentSpecVpc = DedicatedInferenceSpecInputVpc;
 
 /** At least one model deployment is required. */
 export type PendingDeploymentSpecModelDeploymentsList = Array<ModelDeploymentSpec>;
-export const PendingDeploymentSpecModelDeploymentsList = /*@__PURE__*/ S.Array(
-  ModelDeploymentSpec,
-) as any as S.Schema<PendingDeploymentSpecModelDeploymentsList>;
+export const PendingDeploymentSpecModelDeploymentsList =
+  DedicatedInferenceSpecModelDeploymentsList as any as S.Schema<PendingDeploymentSpecModelDeploymentsList>;
 
 /** Pending deployment when status is provisioning or updating. */
 export interface PendingDeploymentSpec {
@@ -9033,15 +8781,13 @@ export const DropletSingleCreateInputBackupPolicy = /*@__PURE__*/ S.suspend(() =
 
 /** A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.<br>Requires `tag:create` scope. */
 export type DropletSingleCreateInputTagsList = Array<string>;
-export const DropletSingleCreateInputTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletSingleCreateInputTagsList>;
+export const DropletSingleCreateInputTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletSingleCreateInputTagsList>;
 
 /** An array of IDs for block storage volumes that will be attached to the Droplet once created. The volumes must not already be attached to an existing Droplet.<br>Requires `block_storage:read` scpoe. */
 export type DropletSingleCreateInputVolumesList = Array<string>;
-export const DropletSingleCreateInputVolumesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletSingleCreateInputVolumesList>;
+export const DropletSingleCreateInputVolumesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletSingleCreateInputVolumesList>;
 
 export interface DropletSingleCreateInput {
   /** The human-readable string you wish to use when displaying the Droplet name. The name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. The name set during creation will also determine the hostname for the Droplet in its internal configuration. */
@@ -9102,9 +8848,8 @@ export const DropletSingleCreateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of human human-readable strings you wish to use when displaying the Droplet name. Each name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. Each name set during creation will also determine the hostname for the Droplet in its internal configuration. */
 export type DropletMultiCreateInputNamesList = Array<string>;
-export const DropletMultiCreateInputNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletMultiCreateInputNamesList>;
+export const DropletMultiCreateInputNamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletMultiCreateInputNamesList>;
 
 /** The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope. */
 export type DropletMultiCreateInputImage = string | number;
@@ -9160,15 +8905,13 @@ export const DropletMultiCreateInputBackupPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** A flat array of tag names as strings to apply to the Droplet after it is created. Tag names can either be existing or new tags.<br>Requires `tag:create` scope. */
 export type DropletMultiCreateInputTagsList = Array<string>;
-export const DropletMultiCreateInputTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletMultiCreateInputTagsList>;
+export const DropletMultiCreateInputTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletMultiCreateInputTagsList>;
 
 /** An array of IDs for block storage volumes that will be attached to the Droplet once created. The volumes must not already be attached to an existing Droplet.<br>Requires `block_storage:read` scpoe. */
 export type DropletMultiCreateInputVolumesList = Array<string>;
-export const DropletMultiCreateInputVolumesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletMultiCreateInputVolumesList>;
+export const DropletMultiCreateInputVolumesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletMultiCreateInputVolumesList>;
 
 export interface DropletMultiCreateInput {
   /** An array of human human-readable strings you wish to use when displaying the Droplet name. Each name, if set to a domain name managed in the DigitalOcean DNS management system, will configure a PTR record for the Droplet. Each name set during creation will also determine the hostname for the Droplet in its internal configuration. */
@@ -9297,15 +9040,13 @@ export const Kernel = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of features enabled on this Droplet. */
 export type DropletFeaturesList = Array<string>;
-export const DropletFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletFeaturesList>;
+export const DropletFeaturesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletFeaturesList>;
 
 /** An array of backup IDs of any backups that have been taken of the Droplet instance. Droplet backups are enabled at the time of the instance creation.<br>Requires `image:read` scope. */
 export type DropletBackupIdsList = Array<number>;
-export const DropletBackupIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DropletBackupIdsList>;
+export const DropletBackupIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<DropletBackupIdsList>;
 
 export interface DropletNextBackupWindow {
   /** A time value given in ISO8601 combined date and time format specifying the start of the Droplet's backup window. */
@@ -9322,9 +9063,8 @@ export const DropletNextBackupWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of snapshot IDs of any snapshots created from the Droplet instance.<br>Requires `image:read` scope. */
 export type DropletSnapshotIdsList = Array<number>;
-export const DropletSnapshotIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DropletSnapshotIdsList>;
+export const DropletSnapshotIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<DropletSnapshotIdsList>;
 
 /** Describes the kind of image. It may be one of `base`, `snapshot`, `backup`, `custom`, or `admin`. Respectively, this specifies whether an image is a DigitalOcean base OS image, user-generated Droplet snapshot, automatically created Droplet backup, user-provided virtual machine image, or an image used for DigitalOcean managed resources (e.g. DOKS worker nodes). */
 export type DropletImageType = "base" | "snapshot" | "backup" | "custom" | "admin";
@@ -9424,19 +9164,16 @@ export const DropletImage = /*@__PURE__*/ S.suspend(() =>
 
 /** A flat array including the unique identifier for each Block Storage volume attached to the Droplet.<br>Requires `block_storage:read` scope. */
 export type DropletVolumeIdsList = Array<string>;
-export const DropletVolumeIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletVolumeIdsList>;
+export const DropletVolumeIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletVolumeIdsList>;
 
 /** An array containing the region slugs where this size is available for Droplet creates. */
 export type SizeRegionsList = Array<string>;
-export const SizeRegionsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<SizeRegionsList>;
+export const SizeRegionsList = TagsArray as any as S.Schema<SizeRegionsList>;
 
 /** An array of objects containing information about the disks available to Droplets created with this size. */
 export type SizeDiskInfoList = Array<DiskInfo>;
-export const SizeDiskInfoList = /*@__PURE__*/ S.Array(
-  DiskInfo,
-) as any as S.Schema<SizeDiskInfoList>;
+export const SizeDiskInfoList = DropletDiskInfoList as any as S.Schema<SizeDiskInfoList>;
 
 export interface GpuInfoVram {
   /** The amount of VRAM allocated to the GPU. */
@@ -9444,12 +9181,7 @@ export interface GpuInfoVram {
   /** The unit of measure for the VRAM. */
   unit?: string;
 }
-export const GpuInfoVram = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "GpuInfoVram" }) as any as S.Schema<GpuInfoVram>;
+export const GpuInfoVram = DiskInfoSize as any as S.Schema<GpuInfoVram>;
 
 /** An object containing information about the GPU capabilities of Droplets created with this size. */
 export interface GpuInfo {
@@ -9579,13 +9311,12 @@ export const DropletNetworks = /*@__PURE__*/ S.suspend(() =>
 
 /** This attribute is set to an array which contains features available in this region */
 export type RegionFeaturesList = Array<string>;
-export const RegionFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RegionFeaturesList>;
+export const RegionFeaturesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RegionFeaturesList>;
 
 /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
 export type RegionSizesList = Array<string>;
-export const RegionSizesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<RegionSizesList>;
+export const RegionSizesList = TagsArray as any as S.Schema<RegionSizesList>;
 
 export interface Region {
   /** The display name of the region. This will be a full name that is used in the control panel and other interfaces. */
@@ -9611,7 +9342,7 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Tags the Droplet has been tagged with.<br>Requires `tag:read` scope. */
 export type DropletTagsList = Array<string>;
-export const DropletTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DropletTagsList>;
+export const DropletTagsList = TagsArray as any as S.Schema<DropletTagsList>;
 
 export interface Droplet {
   /** A unique identifier for each Droplet instance. This is automatically generated upon Droplet creation. */
@@ -9739,15 +9470,13 @@ export const CreateDropletResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
 export type CreateFirewallRequestDropletIdsList = Array<number>;
-export const CreateFirewallRequestDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateFirewallRequestDropletIdsList>;
+export const CreateFirewallRequestDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<CreateFirewallRequestDropletIdsList>;
 
 /** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
 export type CreateFirewallRequestTagsList = Array<string>;
-export const CreateFirewallRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFirewallRequestTagsList>;
+export const CreateFirewallRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateFirewallRequestTagsList>;
 
 /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
 export type CreateFirewallRequestInboundRulesItemProtocol = "tcp" | "udp" | "icmp";
@@ -9759,34 +9488,28 @@ export const CreateFirewallRequestInboundRulesItemAction = S.String;
 
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type CreateFirewallRequestInboundRulesItemSourcesAddressesList = Array<string>;
-export const CreateFirewallRequestInboundRulesItemSourcesAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesAddressesList>;
+export const CreateFirewallRequestInboundRulesItemSourcesAddressesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type CreateFirewallRequestInboundRulesItemSourcesDropletIdsList = Array<number>;
-export const CreateFirewallRequestInboundRulesItemSourcesDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesDropletIdsList>;
+export const CreateFirewallRequestInboundRulesItemSourcesDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type CreateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList = Array<string>;
 export const CreateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type CreateFirewallRequestInboundRulesItemSourcesKubernetesIdsList = Array<string>;
-export const CreateFirewallRequestInboundRulesItemSourcesKubernetesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesKubernetesIdsList>;
+export const CreateFirewallRequestInboundRulesItemSourcesKubernetesIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type CreateFirewallRequestInboundRulesItemSourcesTagsList = Array<string>;
-export const CreateFirewallRequestInboundRulesItemSourcesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesTagsList>;
+export const CreateFirewallRequestInboundRulesItemSourcesTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateFirewallRequestInboundRulesItemSourcesTagsList>;
 
 export interface CreateFirewallRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -9850,36 +9573,27 @@ export const CreateFirewallRequestOutboundRulesItemAction = S.String;
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type CreateFirewallRequestOutboundRulesItemDestinationsAddressesList = Array<string>;
 export const CreateFirewallRequestOutboundRulesItemDestinationsAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsAddressesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type CreateFirewallRequestOutboundRulesItemDestinationsDropletIdsList = Array<number>;
 export const CreateFirewallRequestOutboundRulesItemDestinationsDropletIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsDropletIdsList>;
+  AddFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type CreateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList = Array<string>;
 export const CreateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type CreateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList = Array<string>;
 export const CreateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type CreateFirewallRequestOutboundRulesItemDestinationsTagsList = Array<string>;
-export const CreateFirewallRequestOutboundRulesItemDestinationsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsTagsList>;
+export const CreateFirewallRequestOutboundRulesItemDestinationsTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateFirewallRequestOutboundRulesItemDestinationsTagsList>;
 
 export interface CreateFirewallRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -9979,15 +9693,13 @@ export const FirewallPendingChangesList = /*@__PURE__*/ S.Array(
 
 /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
 export type FirewallDropletIdsList = Array<number>;
-export const FirewallDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FirewallDropletIdsList>;
+export const FirewallDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<FirewallDropletIdsList>;
 
 /** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
 export type FirewallTagsList = Array<string>;
-export const FirewallTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallTagsList>;
+export const FirewallTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallTagsList>;
 
 /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
 export type FirewallInboundRulesItemProtocol = "tcp" | "udp" | "icmp";
@@ -9999,33 +9711,28 @@ export const FirewallInboundRulesItemAction = S.String;
 
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type FirewallInboundRulesItemSourcesAddressesList = Array<string>;
-export const FirewallInboundRulesItemSourcesAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallInboundRulesItemSourcesAddressesList>;
+export const FirewallInboundRulesItemSourcesAddressesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallInboundRulesItemSourcesAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type FirewallInboundRulesItemSourcesDropletIdsList = Array<number>;
-export const FirewallInboundRulesItemSourcesDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FirewallInboundRulesItemSourcesDropletIdsList>;
+export const FirewallInboundRulesItemSourcesDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<FirewallInboundRulesItemSourcesDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type FirewallInboundRulesItemSourcesLoadBalancerUidsList = Array<string>;
-export const FirewallInboundRulesItemSourcesLoadBalancerUidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallInboundRulesItemSourcesLoadBalancerUidsList>;
+export const FirewallInboundRulesItemSourcesLoadBalancerUidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallInboundRulesItemSourcesLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type FirewallInboundRulesItemSourcesKubernetesIdsList = Array<string>;
-export const FirewallInboundRulesItemSourcesKubernetesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallInboundRulesItemSourcesKubernetesIdsList>;
+export const FirewallInboundRulesItemSourcesKubernetesIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallInboundRulesItemSourcesKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type FirewallInboundRulesItemSourcesTagsList = Array<string>;
-export const FirewallInboundRulesItemSourcesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallInboundRulesItemSourcesTagsList>;
+export const FirewallInboundRulesItemSourcesTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallInboundRulesItemSourcesTagsList>;
 
 export interface FirewallInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -10084,33 +9791,28 @@ export const FirewallOutboundRulesItemAction = S.String;
 
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type FirewallOutboundRulesItemDestinationsAddressesList = Array<string>;
-export const FirewallOutboundRulesItemDestinationsAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallOutboundRulesItemDestinationsAddressesList>;
+export const FirewallOutboundRulesItemDestinationsAddressesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallOutboundRulesItemDestinationsAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type FirewallOutboundRulesItemDestinationsDropletIdsList = Array<number>;
-export const FirewallOutboundRulesItemDestinationsDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FirewallOutboundRulesItemDestinationsDropletIdsList>;
+export const FirewallOutboundRulesItemDestinationsDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<FirewallOutboundRulesItemDestinationsDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type FirewallOutboundRulesItemDestinationsLoadBalancerUidsList = Array<string>;
-export const FirewallOutboundRulesItemDestinationsLoadBalancerUidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallOutboundRulesItemDestinationsLoadBalancerUidsList>;
+export const FirewallOutboundRulesItemDestinationsLoadBalancerUidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallOutboundRulesItemDestinationsLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type FirewallOutboundRulesItemDestinationsKubernetesIdsList = Array<string>;
-export const FirewallOutboundRulesItemDestinationsKubernetesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallOutboundRulesItemDestinationsKubernetesIdsList>;
+export const FirewallOutboundRulesItemDestinationsKubernetesIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallOutboundRulesItemDestinationsKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type FirewallOutboundRulesItemDestinationsTagsList = Array<string>;
-export const FirewallOutboundRulesItemDestinationsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FirewallOutboundRulesItemDestinationsTagsList>;
+export const FirewallOutboundRulesItemDestinationsTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FirewallOutboundRulesItemDestinationsTagsList>;
 
 export interface FirewallOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -10124,17 +9826,8 @@ export interface FirewallOutboundRulesItemDestinations {
   /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
   tags?: FirewallOutboundRulesItemDestinationsTagsList | null;
 }
-export const FirewallOutboundRulesItemDestinations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addresses: S.optional(FirewallOutboundRulesItemDestinationsAddressesList),
-    droplet_ids: S.optional(FirewallOutboundRulesItemDestinationsDropletIdsList),
-    load_balancer_uids: S.optional(FirewallOutboundRulesItemDestinationsLoadBalancerUidsList),
-    kubernetes_ids: S.optional(FirewallOutboundRulesItemDestinationsKubernetesIdsList),
-    tags: S.optional(S.NullOr(FirewallOutboundRulesItemDestinationsTagsList)),
-  }),
-).annotate({
-  identifier: "FirewallOutboundRulesItemDestinations",
-}) as any as S.Schema<FirewallOutboundRulesItemDestinations>;
+export const FirewallOutboundRulesItemDestinations =
+  FirewallInboundRulesItemSources as any as S.Schema<FirewallOutboundRulesItemDestinations>;
 
 export interface FirewallOutboundRulesItem {
   /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
@@ -10239,15 +9932,13 @@ export const CreateFloatingIPRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This attribute is set to an array which contains features available in this region */
 export type FloatingIpRegionFeaturesList = Array<string>;
-export const FloatingIpRegionFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FloatingIpRegionFeaturesList>;
+export const FloatingIpRegionFeaturesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FloatingIpRegionFeaturesList>;
 
 /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
 export type FloatingIpRegionSizesList = Array<string>;
-export const FloatingIpRegionSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FloatingIpRegionSizesList>;
+export const FloatingIpRegionSizesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<FloatingIpRegionSizesList>;
 
 export interface FloatingIpRegion {
   /** The display name of the region. This will be a full name that is used in the control panel and other interfaces. */
@@ -10297,14 +9988,12 @@ export const FloatingIp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FloatingIp" }) as any as S.Schema<FloatingIp>;
 
 export type CreateFloatingIPResponseLinksDropletsList = Array<ActionLink>;
-export const CreateFloatingIPResponseLinksDropletsList = /*@__PURE__*/ S.Array(
-  ActionLink,
-) as any as S.Schema<CreateFloatingIPResponseLinksDropletsList>;
+export const CreateFloatingIPResponseLinksDropletsList =
+  CreateDropletResponseLinksActionsList as any as S.Schema<CreateFloatingIPResponseLinksDropletsList>;
 
 export type CreateFloatingIPResponseLinksActionsList = Array<ActionLink>;
-export const CreateFloatingIPResponseLinksActionsList = /*@__PURE__*/ S.Array(
-  ActionLink,
-) as any as S.Schema<CreateFloatingIPResponseLinksActionsList>;
+export const CreateFloatingIPResponseLinksActionsList =
+  CreateDropletResponseLinksActionsList as any as S.Schema<CreateFloatingIPResponseLinksActionsList>;
 
 export interface CreateFloatingIPResponseLinks {
   droplets?: CreateFloatingIPResponseLinksDropletsList;
@@ -10445,21 +10134,18 @@ export const CreateFunctionsAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of the knowledge base(s) to attach to the agent */
 export type CreateGenaiAgentRequestKnowledgeBaseUuidList = Array<string>;
-export const CreateGenaiAgentRequestKnowledgeBaseUuidList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiAgentRequestKnowledgeBaseUuidList>;
+export const CreateGenaiAgentRequestKnowledgeBaseUuidList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiAgentRequestKnowledgeBaseUuidList>;
 
 /** MCP (Model Context Protocol) servers to attach to the agent */
 export type CreateGenaiAgentRequestMcpServersList = Array<ApiMcpServer>;
-export const CreateGenaiAgentRequestMcpServersList = /*@__PURE__*/ S.Array(
-  ApiMcpServer,
-) as any as S.Schema<CreateGenaiAgentRequestMcpServersList>;
+export const CreateGenaiAgentRequestMcpServersList =
+  ApiAgentMcpServersList as any as S.Schema<CreateGenaiAgentRequestMcpServersList>;
 
 /** Agent tag to organize related resources */
 export type CreateGenaiAgentRequestTagsList = Array<string>;
-export const CreateGenaiAgentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiAgentRequestTagsList>;
+export const CreateGenaiAgentRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiAgentRequestTagsList>;
 
 export interface CreateGenaiAgentRequest {
   /** Optional Anthropic API key ID to use with Anthropic models */
@@ -10659,9 +10345,8 @@ export const ApiCreateEvaluationDatasetOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Full metric list to use for evaluation test case. */
 export type CreateGenaiEvaluationTestCaseRequestMetricsList = Array<string>;
-export const CreateGenaiEvaluationTestCaseRequestMetricsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiEvaluationTestCaseRequestMetricsList>;
+export const CreateGenaiEvaluationTestCaseRequestMetricsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiEvaluationTestCaseRequestMetricsList>;
 
 export interface CreateGenaiEvaluationTestCaseRequest {
   agent_workspace_name?: string;
@@ -10816,9 +10501,8 @@ export const ApiGenerateScenarioSetOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of data source ids to index, if none are provided, all data sources will be indexed */
 export type CreateGenaiIndexingJobRequestDataSourceUuidsList = Array<string>;
-export const CreateGenaiIndexingJobRequestDataSourceUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiIndexingJobRequestDataSourceUuidsList>;
+export const CreateGenaiIndexingJobRequestDataSourceUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiIndexingJobRequestDataSourceUuidsList>;
 
 export interface CreateGenaiIndexingJobRequest {
   /** List of data source ids to index, if none are provided, all data sources will be indexed */
@@ -10839,13 +10523,8 @@ export const CreateGenaiIndexingJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiStartKnowledgeBaseIndexingJobOutput {
   job?: ApiIndexingJob;
 }
-export const ApiStartKnowledgeBaseIndexingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job: S.optional(ApiIndexingJob),
-  }),
-).annotate({
-  identifier: "ApiStartKnowledgeBaseIndexingJobOutput",
-}) as any as S.Schema<ApiStartKnowledgeBaseIndexingJobOutput>;
+export const ApiStartKnowledgeBaseIndexingJobOutput =
+  ApiCancelKnowledgeBaseIndexingJobOutput as any as S.Schema<ApiStartKnowledgeBaseIndexingJobOutput>;
 
 /** AWS S3 Data Source */
 export interface ApiAWSDataSource {
@@ -10943,9 +10622,8 @@ export const ApiCrawlingOption = S.String;
 
 /** Declaring which tags to exclude in web pages while webcrawling */
 export type ApiWebCrawlerDataSourceExcludeTagsList = Array<string>;
-export const ApiWebCrawlerDataSourceExcludeTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiWebCrawlerDataSourceExcludeTagsList>;
+export const ApiWebCrawlerDataSourceExcludeTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiWebCrawlerDataSourceExcludeTagsList>;
 
 /** WebCrawlerDataSource */
 export interface ApiWebCrawlerDataSource {
@@ -11013,9 +10691,8 @@ export const ApiOpenSearchPlanSize = S.String;
 
 /** Tags to organize your knowledge base. */
 export type CreateGenaiKnowledgeBaseRequestTagsList = Array<string>;
-export const CreateGenaiKnowledgeBaseRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiKnowledgeBaseRequestTagsList>;
+export const CreateGenaiKnowledgeBaseRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiKnowledgeBaseRequestTagsList>;
 
 export interface CreateGenaiKnowledgeBaseRequest {
   /** Identifier of the DigitalOcean OpenSearch database this knowledge base will use, optional. If not provided, we create a new database for the knowledge base in the same region as the knowledge base. */
@@ -11206,9 +10883,8 @@ export const ApiCandidateInferenceConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** UUIDs of metrics to evaluate (selected from ListModelEvaluationMetrics). */
 export type CreateGenaiModelEvaluationRunRequestMetricUuidsList = Array<string>;
-export const CreateGenaiModelEvaluationRunRequestMetricUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiModelEvaluationRunRequestMetricUuidsList>;
+export const CreateGenaiModelEvaluationRunRequestMetricUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiModelEvaluationRunRequestMetricUuidsList>;
 
 /** Sections of an inline evaluation config that can be persisted as a reusable preset. Each value names a self-contained group of fields; selecting a section saves exactly the fields it owns and leaves the rest of the preset empty so it can be merged with inline values on a future run. - PRESET_SAVE_SECTION_CANDIDATE: Candidate model identity (`candidate_model_uuid`, `candidate_model_source`, `candidate_model_name`) and the non-prompt inference params (`max_tokens`, `temperature`, `stop_token`). - PRESET_SAVE_SECTION_METRICS: The selected `metric_uuids` and the optional `star_metric`. - PRESET_SAVE_SECTION_JUDGE: The `judge_model_uuid`. - PRESET_SAVE_SECTION_DATASET: The `dataset_uuid`. - PRESET_SAVE_SECTION_SYSTEM_PROMPT: The candidate's `system_prompt` only. Independent of CANDIDATE so the model + params and the prompt can be saved/replayed separately. */
 export type ApiPresetSaveSection =
@@ -11290,21 +10966,18 @@ export const ApiCreateModelEvaluationRunOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** At least one fallback model is required; order defines failover priority */
 export type CreateGenaiModelRouterRequestFallbackModelsList = Array<string>;
-export const CreateGenaiModelRouterRequestFallbackModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiModelRouterRequestFallbackModelsList>;
+export const CreateGenaiModelRouterRequestFallbackModelsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiModelRouterRequestFallbackModelsList>;
 
 /** Router policies */
 export type CreateGenaiModelRouterRequestPoliciesList = Array<ApiModelRouterTaskPolicy>;
-export const CreateGenaiModelRouterRequestPoliciesList = /*@__PURE__*/ S.Array(
-  ApiModelRouterTaskPolicy,
-) as any as S.Schema<CreateGenaiModelRouterRequestPoliciesList>;
+export const CreateGenaiModelRouterRequestPoliciesList =
+  ApiModelRouterConfigPoliciesList as any as S.Schema<CreateGenaiModelRouterRequestPoliciesList>;
 
 /** DEPRECATED: this field does not affect deployment and model routers are always deployed to all regions. Must be omitted or set to ["all"]. */
 export type CreateGenaiModelRouterRequestRegionsList = Array<string>;
-export const CreateGenaiModelRouterRequestRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiModelRouterRequestRegionsList>;
+export const CreateGenaiModelRouterRequestRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiModelRouterRequestRegionsList>;
 
 export interface CreateGenaiModelRouterRequest {
   /** Model router description */
@@ -11402,9 +11075,8 @@ export const ApiCreateOpenAIAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Judge stopping criteria. Required; must contain at least one entry. */
 export type ApiScenarioStoppingCriteriaList = Array<string>;
-export const ApiScenarioStoppingCriteriaList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiScenarioStoppingCriteriaList>;
+export const ApiScenarioStoppingCriteriaList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiScenarioStoppingCriteriaList>;
 
 /** A single test case in a scenario set. */
 export interface ApiScenario {
@@ -11463,13 +11135,8 @@ export const CreateGenaiScenarioSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiCreateScenarioSetOutput {
   scenario_set?: ApiScenarioSet;
 }
-export const ApiCreateScenarioSetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scenario_set: S.optional(ApiScenarioSet),
-  }),
-).annotate({
-  identifier: "ApiCreateScenarioSetOutput",
-}) as any as S.Schema<ApiCreateScenarioSetOutput>;
+export const ApiCreateScenarioSetOutput =
+  ApiGenerateScenarioSetOutput as any as S.Schema<ApiCreateScenarioSetOutput>;
 
 export interface CreateGenaiScenarioSetFromLibraryRequest {
   /** UUID of the library entry to copy. */
@@ -11496,19 +11163,13 @@ export const CreateGenaiScenarioSetFromLibraryRequest = /*@__PURE__*/ S.suspend(
 export interface ApiCreateScenarioSetFromLibraryOutput {
   scenario_set?: ApiScenarioSet;
 }
-export const ApiCreateScenarioSetFromLibraryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scenario_set: S.optional(ApiScenarioSet),
-  }),
-).annotate({
-  identifier: "ApiCreateScenarioSetFromLibraryOutput",
-}) as any as S.Schema<ApiCreateScenarioSetFromLibraryOutput>;
+export const ApiCreateScenarioSetFromLibraryOutput =
+  ApiGenerateScenarioSetOutput as any as S.Schema<ApiCreateScenarioSetFromLibraryOutput>;
 
 /** Days for execution (day is represented same as in a cron expression, e.g. Monday begins with 1 ) */
 export type CreateGenaiScheduledIndexingRequestDaysList = Array<number>;
-export const CreateGenaiScheduledIndexingRequestDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateGenaiScheduledIndexingRequestDaysList>;
+export const CreateGenaiScheduledIndexingRequestDaysList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<CreateGenaiScheduledIndexingRequestDaysList>;
 
 export interface CreateGenaiScheduledIndexingRequest {
   /** Days for execution (day is represented same as in a cron expression, e.g. Monday begins with 1 ) */
@@ -11530,9 +11191,8 @@ export const CreateGenaiScheduledIndexingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Days for execution (day is represented same as in a cron expression, e.g. Monday begins with 1 ) */
 export type ApiScheduledIndexingInfoDaysList = Array<number>;
-export const ApiScheduledIndexingInfoDaysList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ApiScheduledIndexingInfoDaysList>;
+export const ApiScheduledIndexingInfoDaysList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<ApiScheduledIndexingInfoDaysList>;
 
 /** Metadata for scheduled indexing entries */
 export interface ApiScheduledIndexingInfo {
@@ -11602,9 +11262,8 @@ export const ApiCandidateAgentConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Evaluation metric UUIDs (from the evaluation metrics catalog). Must be simulation-eligible (multi-turn) metrics; the create request is rejected if any UUID is unknown or ineligible. */
 export type ApiSimulationEvaluationConfigMetricUuidsList = Array<string>;
-export const ApiSimulationEvaluationConfigMetricUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiSimulationEvaluationConfigMetricUuidsList>;
+export const ApiSimulationEvaluationConfigMetricUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiSimulationEvaluationConfigMetricUuidsList>;
 
 /** Optional configuration that opts a simulation run into an evaluation. When included on the create-run request, the platform reserves a model_evaluation_run linked to this simulation run and dispatches the evaluation automatically after the simulation finishes. The evaluation reuses the simulation run's judge_model_uuid. */
 export interface ApiSimulationEvaluationConfig {
@@ -11817,9 +11476,8 @@ export const ApiCreateSimulationRunOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of the agents(s) to attach to the workspace */
 export type CreateGenaiWorkspaceRequestAgentUuidsList = Array<string>;
-export const CreateGenaiWorkspaceRequestAgentUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGenaiWorkspaceRequestAgentUuidsList>;
+export const CreateGenaiWorkspaceRequestAgentUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateGenaiWorkspaceRequestAgentUuidsList>;
 
 export interface CreateGenaiWorkspaceRequest {
   /** Ids of the agents(s) to attach to the workspace */
@@ -11945,10 +11603,8 @@ export const CreateInferenceBatchRequestCompletionWindow = S.String;
 
 /** Optional string-valued metadata to attach to the job. */
 export type CreateInferenceBatchRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateInferenceBatchRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateInferenceBatchRequestMetadataMap>;
+export const CreateInferenceBatchRequestMetadataMap =
+  ApiMcpServerHeadersMap as any as S.Schema<CreateInferenceBatchRequestMetadataMap>;
 
 export interface CreateInferenceBatchRequest {
   /** The `file_id` returned by `POST /v1/batches/files`. */
@@ -12008,15 +11664,13 @@ export const BatchFileCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of messages comprising the conversation so far. */
 export type CreateInferenceChatCompletionRequestMessagesList = Array<ChatMessage>;
-export const CreateInferenceChatCompletionRequestMessagesList = /*@__PURE__*/ S.Array(
-  ChatMessage,
-) as any as S.Schema<CreateInferenceChatCompletionRequestMessagesList>;
+export const CreateInferenceChatCompletionRequestMessagesList =
+  CreateAgentInferenceChatCompletionRequestMessagesList as any as S.Schema<CreateInferenceChatCompletionRequestMessagesList>;
 
 /** A list of tools the model may call. Currently, only functions are supported as a tool. */
 export type CreateInferenceChatCompletionRequestToolsList = Array<ChatCompletionTool>;
-export const CreateInferenceChatCompletionRequestToolsList = /*@__PURE__*/ S.Array(
-  ChatCompletionTool,
-) as any as S.Schema<CreateInferenceChatCompletionRequestToolsList>;
+export const CreateInferenceChatCompletionRequestToolsList =
+  CreateAgentInferenceChatCompletionRequestToolsList as any as S.Schema<CreateInferenceChatCompletionRequestToolsList>;
 
 export type CreateInferenceChatCompletionRequestToolChoiceCase0 = "none" | "auto" | "required";
 export const CreateInferenceChatCompletionRequestToolChoiceCase0 = S.String;
@@ -12051,9 +11705,8 @@ export const CreateInferenceChatCompletionRequestToolChoice =
   S.Unknown as any as S.Schema<CreateInferenceChatCompletionRequestToolChoice>;
 
 export type CreateInferenceChatCompletionRequestStopCase1List = Array<string>;
-export const CreateInferenceChatCompletionRequestStopCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInferenceChatCompletionRequestStopCase1List>;
+export const CreateInferenceChatCompletionRequestStopCase1List =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateInferenceChatCompletionRequestStopCase1List>;
 
 /** Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence. */
 export type CreateInferenceChatCompletionRequestStop =
@@ -12066,10 +11719,8 @@ export const CreateInferenceChatCompletionRequestStop =
 export type CreateInferenceChatCompletionRequestLogitBiasMap = {
   [key: string]: number | undefined;
 };
-export const CreateInferenceChatCompletionRequestLogitBiasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<CreateInferenceChatCompletionRequestLogitBiasMap>;
+export const CreateInferenceChatCompletionRequestLogitBiasMap =
+  CreateAgentInferenceChatCompletionRequestLogitBiasMap as any as S.Schema<CreateInferenceChatCompletionRequestLogitBiasMap>;
 
 /** Options for streaming response. Only set this when you set stream to true. */
 export type CreateInferenceChatCompletionRequestStreamOptions =
@@ -12089,10 +11740,8 @@ export const CreateInferenceChatCompletionRequestReasoningEffort = S.String;
 
 /** Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys are strings with a maximum length of 64 characters. Values are strings with a maximum length of 512 characters. */
 export type CreateInferenceChatCompletionRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateInferenceChatCompletionRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateInferenceChatCompletionRequestMetadataMap>;
+export const CreateInferenceChatCompletionRequestMetadataMap =
+  ApiMcpServerHeadersMap as any as S.Schema<CreateInferenceChatCompletionRequestMetadataMap>;
 
 export interface CreateInferenceChatCompletionRequest {
   /** A list of messages comprising the conversation so far. */
@@ -12167,9 +11816,8 @@ export const CreateInferenceChatCompletionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateInferenceChatCompletionRequest>;
 
 export type CreateInferenceEmbeddingRequestInputCase1List = Array<string>;
-export const CreateInferenceEmbeddingRequestInputCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInferenceEmbeddingRequestInputCase1List>;
+export const CreateInferenceEmbeddingRequestInputCase1List =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateInferenceEmbeddingRequestInputCase1List>;
 
 /** A single string or 1-2048 strings; each string produces one row in `data`, in order. */
 export type CreateInferenceEmbeddingRequestInput =
@@ -12213,9 +11861,8 @@ export const EmbeddingDataItemObject = S.String;
 
 /** Float vector when encoding_format is float or omitted. */
 export type EmbeddingDataItemEmbeddingCase0List = Array<number>;
-export const EmbeddingDataItemEmbeddingCase0List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<EmbeddingDataItemEmbeddingCase0List>;
+export const EmbeddingDataItemEmbeddingCase0List =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<EmbeddingDataItemEmbeddingCase0List>;
 
 /** The embedding vector, or a base64-encoded string when the request set encoding_format to base64. */
 export type EmbeddingDataItemEmbedding = EmbeddingDataItemEmbeddingCase0List | string;
@@ -12472,10 +12119,8 @@ export const MessagesToolUseBlockParamType = S.String;
 
 /** JSON object matching the tool's `input_schema`. */
 export type MessagesToolUseBlockParamInputMap = { [key: string]: unknown | undefined };
-export const MessagesToolUseBlockParamInputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MessagesToolUseBlockParamInputMap>;
+export const MessagesToolUseBlockParamInputMap =
+  FunctionObjectParametersMap as any as S.Schema<MessagesToolUseBlockParamInputMap>;
 
 /** Tool invocation block in a request message (from the model or a prior turn). */
 export interface MessagesToolUseBlockParam {
@@ -12502,10 +12147,8 @@ export const MessagesToolResultBlockParamType = S.String;
 export type MessagesToolResultBlockParamContentCase1ItemMap = {
   [key: string]: unknown | undefined;
 };
-export const MessagesToolResultBlockParamContentCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MessagesToolResultBlockParamContentCase1ItemMap>;
+export const MessagesToolResultBlockParamContentCase1ItemMap =
+  FunctionObjectParametersMap as any as S.Schema<MessagesToolResultBlockParamContentCase1ItemMap>;
 
 export type MessagesToolResultBlockParamContentCase1List =
   Array<MessagesToolResultBlockParamContentCase1ItemMap>;
@@ -12590,16 +12233,13 @@ export const CreateInferenceMessagesRequestSystem =
 
 /** Custom strings that stop generation when produced. */
 export type CreateInferenceMessagesRequestStopSequencesList = Array<string>;
-export const CreateInferenceMessagesRequestStopSequencesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInferenceMessagesRequestStopSequencesList>;
+export const CreateInferenceMessagesRequestStopSequencesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateInferenceMessagesRequestStopSequencesList>;
 
 /** JSON Schema (draft 2020-12 style) describing the tool input object. */
 export type MessagesToolDefinitionParamInputSchemaMap = { [key: string]: unknown | undefined };
-export const MessagesToolDefinitionParamInputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MessagesToolDefinitionParamInputSchemaMap>;
+export const MessagesToolDefinitionParamInputSchemaMap =
+  FunctionObjectParametersMap as any as S.Schema<MessagesToolDefinitionParamInputSchemaMap>;
 
 /** Tool definition the model may call (`name`, JSON Schema for `input`). */
 export interface MessagesToolDefinitionParam {
@@ -12772,10 +12412,8 @@ export const MessagesResponseToolUseBlockType = S.String;
 
 /** Arguments for the tool invocation. */
 export type MessagesResponseToolUseBlockInputMap = { [key: string]: unknown | undefined };
-export const MessagesResponseToolUseBlockInputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MessagesResponseToolUseBlockInputMap>;
+export const MessagesResponseToolUseBlockInputMap =
+  FunctionObjectParametersMap as any as S.Schema<MessagesResponseToolUseBlockInputMap>;
 
 /** Tool call emitted by the assistant in the response. */
 export interface MessagesResponseToolUseBlock {
@@ -12916,13 +12554,8 @@ export interface CreateInferenceResponseRequestStreamOptions {
   /** If set, an additional chunk will be streamed before the data: [DONE] message with token usage statistics for the entire request. */
   include_usage?: boolean;
 }
-export const CreateInferenceResponseRequestStreamOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    include_usage: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateInferenceResponseRequestStreamOptions",
-}) as any as S.Schema<CreateInferenceResponseRequestStreamOptions>;
+export const CreateInferenceResponseRequestStreamOptions =
+  CreateAgentInferenceChatCompletionRequestStreamOptions as any as S.Schema<CreateInferenceResponseRequestStreamOptions>;
 
 /** The type of the tool. */
 export type CreateInferenceResponseRequestToolsItemType = "function";
@@ -12932,10 +12565,8 @@ export const CreateInferenceResponseRequestToolsItemType = S.String;
 export type CreateInferenceResponseRequestToolsItemParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateInferenceResponseRequestToolsItemParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateInferenceResponseRequestToolsItemParametersMap>;
+export const CreateInferenceResponseRequestToolsItemParametersMap =
+  FunctionObjectParametersMap as any as S.Schema<CreateInferenceResponseRequestToolsItemParametersMap>;
 
 export interface CreateInferenceResponseRequestToolsItem {
   /** The type of the tool. */
@@ -12997,9 +12628,8 @@ export const CreateInferenceResponseRequestToolChoice =
   S.Unknown as any as S.Schema<CreateInferenceResponseRequestToolChoice>;
 
 export type CreateInferenceResponseRequestStopCase1List = Array<string>;
-export const CreateInferenceResponseRequestStopCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateInferenceResponseRequestStopCase1List>;
+export const CreateInferenceResponseRequestStopCase1List =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateInferenceResponseRequestStopCase1List>;
 
 /** Up to 4 sequences where the API will stop generating further tokens. */
 export type CreateInferenceResponseRequestStop =
@@ -13010,10 +12640,8 @@ export const CreateInferenceResponseRequestStop =
 
 /** Set of key-value pairs that can be attached to the request. */
 export type CreateInferenceResponseRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateInferenceResponseRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateInferenceResponseRequestMetadataMap>;
+export const CreateInferenceResponseRequestMetadataMap =
+  ApiMcpServerHeadersMap as any as S.Schema<CreateInferenceResponseRequestMetadataMap>;
 
 export interface CreateInferenceResponseRequest {
   /** The model ID of the model you want to use. Get the model ID using `/v1/models` or on the available models page. */
@@ -13194,10 +12822,8 @@ export const CreateResponseResponseToolsItemType = S.String;
 
 /** The parameters the function accepts. */
 export type CreateResponseResponseToolsItemParametersMap = { [key: string]: unknown | undefined };
-export const CreateResponseResponseToolsItemParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateResponseResponseToolsItemParametersMap>;
+export const CreateResponseResponseToolsItemParametersMap =
+  FunctionObjectParametersMap as any as S.Schema<CreateResponseResponseToolsItemParametersMap>;
 
 export interface CreateResponseResponseToolsItem {
   /** The type of the tool. */
@@ -13280,15 +12906,12 @@ export type SystemoneQuestionType = "noul" | "choice" | "score";
 export const SystemoneQuestionType = S.String;
 
 export type SystemoneQuestionCriteriaCase0Map = { [key: string]: string | undefined };
-export const SystemoneQuestionCriteriaCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SystemoneQuestionCriteriaCase0Map>;
+export const SystemoneQuestionCriteriaCase0Map =
+  ApiMcpServerHeadersMap as any as S.Schema<SystemoneQuestionCriteriaCase0Map>;
 
 export type SystemoneQuestionCriteriaCase1List = Array<string>;
-export const SystemoneQuestionCriteriaCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SystemoneQuestionCriteriaCase1List>;
+export const SystemoneQuestionCriteriaCase1List =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<SystemoneQuestionCriteriaCase1List>;
 
 /** Optional criteria payload. The expected shape depends on `type`: for `noul`, an optional object describing the true/false semantics; for `choice`, an object mapping each option name to a description of that option (minimum 2 options, maximum 255 options); for `score`, an ordered array of descriptive rubric levels (minimum 2, maximum 10 levels). Score levels must be descriptive labels, such as `["poor", "average", "excellent"]`, not numeric values. */
 export type SystemoneQuestionCriteria =
@@ -13346,17 +12969,13 @@ export const SystemoneAnswerType = S.String;
 
 /** Present when the question type is `score`. Maps rubric levels to their corresponding numeric positions. */
 export type SystemoneAnswerLegendMap = { [key: string]: unknown | undefined };
-export const SystemoneAnswerLegendMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SystemoneAnswerLegendMap>;
+export const SystemoneAnswerLegendMap =
+  FunctionObjectParametersMap as any as S.Schema<SystemoneAnswerLegendMap>;
 
 /** Calibrated probability for each possible answer value. */
 export type SystemoneAnswerProbabilitiesMap = { [key: string]: number | undefined };
-export const SystemoneAnswerProbabilitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<SystemoneAnswerProbabilitiesMap>;
+export const SystemoneAnswerProbabilitiesMap =
+  CreateAgentInferenceChatCompletionRequestLogitBiasMap as any as S.Schema<SystemoneAnswerProbabilitiesMap>;
 
 /** The evaluated answer for a single question. The fields that are populated depend on the corresponding question's `type`. */
 export interface SystemoneAnswer {
@@ -13459,15 +13078,13 @@ export const MetricsQueryFiltersList = /*@__PURE__*/ S.Array(
 
 /** Optional list of DigitalOcean resource URNs the rule applies to. Empty or omitted means the rule is not scoped to specific resources. */
 export type MetricsQueryResourceUrnsList = Array<string>;
-export const MetricsQueryResourceUrnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsQueryResourceUrnsList>;
+export const MetricsQueryResourceUrnsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<MetricsQueryResourceUrnsList>;
 
 /** Optional resource tags used to select matching resources. */
 export type MetricsQueryTagsList = Array<string>;
-export const MetricsQueryTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricsQueryTagsList>;
+export const MetricsQueryTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<MetricsQueryTagsList>;
 
 /** Metrics query that the alert rule evaluates. `metric` must be a dotted OpenTelemetry name (for example `do.droplets.cpu_utilization`). Underscored Prometheus-style names are rejected. When `resource_urns` is omitted or empty, the rule is not scoped to specific resources. */
 export interface MetricsQuery {
@@ -13683,10 +13300,8 @@ export const WebhookBearerToken = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional custom HTTP headers to include on webhook deliveries. At most 20 headers are allowed. Reserved header names such as `host`, `content-type`, and `proxy-*` are rejected. */
 export type WebhookNotificationConfigHeadersMap = { [key: string]: string | undefined };
-export const WebhookNotificationConfigHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<WebhookNotificationConfigHeadersMap>;
+export const WebhookNotificationConfigHeadersMap =
+  ApiMcpServerHeadersMap as any as S.Schema<WebhookNotificationConfigHeadersMap>;
 
 /** Optional HMAC signature configuration. `secret` is write-only: full value on create/update; masked (`********`) on read. Omit on update to keep the existing secret. */
 export interface WebhookSignatureConfig {
@@ -13801,21 +13416,18 @@ export const CreateInsightNotificationChannelResponse = /*@__PURE__*/ S.suspend(
 
 /** An array of tags to apply to the Kubernetes cluster. All clusters are automatically tagged `k8s` and `k8s:$K8S_CLUSTER_ID`. <br><br>Requires `tag:read` and `tag:create` scope, as well as `tag:delete` if existing tags are getting removed. */
 export type CreateKubernetesClusterRequestTagsList = Array<string>;
-export const CreateKubernetesClusterRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateKubernetesClusterRequestTagsList>;
+export const CreateKubernetesClusterRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateKubernetesClusterRequestTagsList>;
 
 /** An array containing the tags applied to the node pool. All node pools are automatically tagged `k8s`, `k8s-worker`, and `k8s:$K8S_CLUSTER_ID`. <br><br>Requires `tag:read` scope. */
 export type KubernetesNodePoolInputTagsList = Array<string>;
-export const KubernetesNodePoolInputTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KubernetesNodePoolInputTagsList>;
+export const KubernetesNodePoolInputTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<KubernetesNodePoolInputTagsList>;
 
 /** An array of taints to apply to all nodes in a pool. Taints will automatically be applied to all existing nodes and any subsequent nodes added to the pool. When a taint is removed, it is deleted from all nodes in the pool. */
 export type KubernetesNodePoolInputTaintsList = Array<KubernetesNodePoolTaint>;
-export const KubernetesNodePoolInputTaintsList = /*@__PURE__*/ S.Array(
-  KubernetesNodePoolTaint,
-) as any as S.Schema<KubernetesNodePoolInputTaintsList>;
+export const KubernetesNodePoolInputTaintsList =
+  AddKubernetesNodePoolRequestTaintsList as any as S.Schema<KubernetesNodePoolInputTaintsList>;
 
 /** The AMD GPU partition mode for this node pool. Only applicable to AMD GPU sizes that support partitioning. Immutable after the node pool is created. When omitted, the GPUs in the pool are left unpartitioned. */
 export type KubernetesNodePoolInputGpuPartitionMode =
@@ -13894,9 +13506,8 @@ export const MaintenancePolicyInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of public addresses (IPv4 or CIDR) allowed to access the control plane. */
 export type ControlPlaneFirewallAllowedAddressesList = Array<string>;
-export const ControlPlaneFirewallAllowedAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ControlPlaneFirewallAllowedAddressesList>;
+export const ControlPlaneFirewallAllowedAddressesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ControlPlaneFirewallAllowedAddressesList>;
 
 /** An object specifying the control plane firewall for the Kubernetes cluster. Control plane firewall is in early availability (invite only). */
 export interface ControlPlaneFirewall {
@@ -13978,101 +13589,64 @@ export interface P2pOciRegistryPlugin {
   /** Indicates whether the Peer-to-peer OCI registry component is enabled. */
   enabled?: boolean;
 }
-export const P2pOciRegistryPlugin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "P2pOciRegistryPlugin" }) as any as S.Schema<P2pOciRegistryPlugin>;
+export const P2pOciRegistryPlugin = RoutingAgent as any as S.Schema<P2pOciRegistryPlugin>;
 
 /** An object specifying whether the NFS CSI plugin should be enabled for the Kubernetes cluster. */
 export interface NfsCsiPlugin {
   /** Indicates whether the NFS CSI plugin is enabled. */
   enabled?: boolean;
 }
-export const NfsCsiPlugin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "NfsCsiPlugin" }) as any as S.Schema<NfsCsiPlugin>;
+export const NfsCsiPlugin = RoutingAgent as any as S.Schema<NfsCsiPlugin>;
 
 /** An object specifying whether the AMD GPU Device Plugin should be enabled in the Kubernetes cluster. It's enabled by default for clusters with an AMD GPU node pool. */
 export interface AmdGpuDevicePlugin {
   /** Indicates whether the AMD GPU Device Plugin is enabled. */
   enabled?: boolean;
 }
-export const AmdGpuDevicePlugin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AmdGpuDevicePlugin" }) as any as S.Schema<AmdGpuDevicePlugin>;
+export const AmdGpuDevicePlugin = RoutingAgent as any as S.Schema<AmdGpuDevicePlugin>;
 
 /** An object specifying whether the AMD Device Metrics Exporter should be enabled in the Kubernetes cluster. */
 export interface AmdGpuDeviceMetricsExporterPlugin {
   /** Indicates whether the AMD Device Metrics Exporter is enabled. */
   enabled?: boolean;
 }
-export const AmdGpuDeviceMetricsExporterPlugin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AmdGpuDeviceMetricsExporterPlugin",
-}) as any as S.Schema<AmdGpuDeviceMetricsExporterPlugin>;
+export const AmdGpuDeviceMetricsExporterPlugin =
+  AppsImageSourceSpecDeployOnPush as any as S.Schema<AmdGpuDeviceMetricsExporterPlugin>;
 
 /** An object specifying whether the Nvidia GPU Device Plugin should be enabled in the Kubernetes cluster. It's enabled by default for clusters with an Nvidia GPU node pool. */
 export interface NvidiaGpuDevicePlugin {
   /** Indicates whether the Nvidia GPU Device Plugin is enabled. */
   enabled?: boolean;
 }
-export const NvidiaGpuDevicePlugin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "NvidiaGpuDevicePlugin" }) as any as S.Schema<NvidiaGpuDevicePlugin>;
+export const NvidiaGpuDevicePlugin = RoutingAgent as any as S.Schema<NvidiaGpuDevicePlugin>;
 
 /** An object specifying whether the NVIDIA GPU DRA Driver should be enabled in the Kubernetes cluster. Mutually exclusive with `nvidia_gpu_device_plugin`. */
 export interface NvidiaGpuDraDriver {
   /** Indicates whether the NVIDIA GPU DRA Driver is enabled. */
   enabled?: boolean;
 }
-export const NvidiaGpuDraDriver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "NvidiaGpuDraDriver" }) as any as S.Schema<NvidiaGpuDraDriver>;
+export const NvidiaGpuDraDriver = RoutingAgent as any as S.Schema<NvidiaGpuDraDriver>;
 
 /** An object specifying whether the AMD GPU DRA Driver should be enabled in the Kubernetes cluster. Mutually exclusive with `amd_gpu_device_plugin`. */
 export interface AmdGpuDraDriver {
   /** Indicates whether the AMD GPU DRA Driver is enabled. */
   enabled?: boolean;
 }
-export const AmdGpuDraDriver = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AmdGpuDraDriver" }) as any as S.Schema<AmdGpuDraDriver>;
+export const AmdGpuDraDriver = RoutingAgent as any as S.Schema<AmdGpuDraDriver>;
 
 /** An object specifying whether the RDMA shared device plugin should be enabled in the Kubernetes cluster. */
 export interface RdmaSharedDevPlugin {
   /** Indicates whether the RDMA shared device plugin is enabled. */
   enabled?: boolean;
 }
-export const RdmaSharedDevPlugin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "RdmaSharedDevPlugin" }) as any as S.Schema<RdmaSharedDevPlugin>;
+export const RdmaSharedDevPlugin = RoutingAgent as any as S.Schema<RdmaSharedDevPlugin>;
 
 /** An object specifying whether the Cluster Proportional Autoscaler (CPA) add-on for CoreDNS should be enabled for the Kubernetes cluster. */
 export interface CorednsAutoscaler {
   /** Indicates whether the CoreDNS Cluster Proportional Autoscaler add-on is enabled. */
   enabled?: boolean;
 }
-export const CorednsAutoscaler = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CorednsAutoscaler" }) as any as S.Schema<CorednsAutoscaler>;
+export const CorednsAutoscaler = RoutingAgent as any as S.Schema<CorednsAutoscaler>;
 
 export interface CreateKubernetesClusterRequest {
   /** A human-readable name for a Kubernetes cluster. */
@@ -14152,7 +13726,7 @@ export const CreateKubernetesClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of tags to apply to the Kubernetes cluster. All clusters are automatically tagged `k8s` and `k8s:$K8S_CLUSTER_ID`. <br><br>Requires `tag:read` and `tag:create` scope, as well as `tag:delete` if existing tags are getting removed. */
 export type ClusterTagsList = Array<string>;
-export const ClusterTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ClusterTagsList>;
+export const ClusterTagsList = TagsArray as any as S.Schema<ClusterTagsList>;
 
 /** An object specifying the details of the worker nodes available to the Kubernetes cluster. */
 export type ClusterNodePoolsList = Array<KubernetesNodePool>;
@@ -14322,9 +13896,8 @@ export const CreateKubernetesClusterResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the IDs of the Droplets assigned to the load balancer. */
 export type LoadBalancerCreateInputCase0DropletIdsList = Array<number>;
-export const LoadBalancerCreateInputCase0DropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<LoadBalancerCreateInputCase0DropletIdsList>;
+export const LoadBalancerCreateInputCase0DropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<LoadBalancerCreateInputCase0DropletIdsList>;
 
 /** This field has been replaced by the `size_unit` field for all regions except in AMS2, NYC2, and SFO1. Each available load balancer size now equates to the load balancer having a set number of nodes. * `lb-small` = 1 node * `lb-medium` = 3 nodes * `lb-large` = 6 nodes You can resize load balancers after creation up to once per hour. You cannot resize a load balancer within the first hour of its creation. */
 export type LoadBalancerCreateInputCase0Size = "lb-small" | "lb-medium" | "lb-large";
@@ -14336,9 +13909,8 @@ export const LoadBalancerCreateInputCase0Algorithm = S.String;
 
 /** An array of objects specifying the forwarding rules for a load balancer. */
 export type LoadBalancerCreateInputCase0ForwardingRulesList = Array<ForwardingRule>;
-export const LoadBalancerCreateInputCase0ForwardingRulesList = /*@__PURE__*/ S.Array(
-  ForwardingRule,
-) as any as S.Schema<LoadBalancerCreateInputCase0ForwardingRulesList>;
+export const LoadBalancerCreateInputCase0ForwardingRulesList =
+  AddLoadBalancerForwardingRulesRequestForwardingRulesList as any as S.Schema<LoadBalancerCreateInputCase0ForwardingRulesList>;
 
 /** The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https`, or `tcp`. */
 export type HealthCheckProtocol = "http" | "https" | "tcp";
@@ -14396,15 +13968,13 @@ export const StickySessions = /*@__PURE__*/ S.suspend(() =>
 
 /** the rules for denying traffic to the load balancer (in the form 'ip:1.2.3.4' or 'cidr:1.2.0.0/16') */
 export type LbFirewallDenyList = Array<string>;
-export const LbFirewallDenyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LbFirewallDenyList>;
+export const LbFirewallDenyList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LbFirewallDenyList>;
 
 /** the rules for allowing traffic to the load balancer (in the form 'ip:1.2.3.4' or 'cidr:1.2.0.0/16') */
 export type LbFirewallAllowList = Array<string>;
-export const LbFirewallAllowList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LbFirewallAllowList>;
+export const LbFirewallAllowList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LbFirewallAllowList>;
 
 /** An object specifying allow and deny rules to control traffic to the load balancer. */
 export interface LbFirewall {
@@ -14472,10 +14042,8 @@ export const GlbSettingsCdn = /*@__PURE__*/ S.suspend(() =>
 
 /** A map of region string to an integer priority value indicating preference for which regional target a Global load balancer will forward traffic to. A lower value indicates a higher priority. */
 export type GlbSettingsRegionPrioritiesMap = { [key: string]: number | undefined };
-export const GlbSettingsRegionPrioritiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<GlbSettingsRegionPrioritiesMap>;
+export const GlbSettingsRegionPrioritiesMap =
+  CreateAgentInferenceChatCompletionRequestLogitBiasMap as any as S.Schema<GlbSettingsRegionPrioritiesMap>;
 
 /** An object specifying forwarding configurations for a Global load balancer. */
 export interface GlbSettings {
@@ -14502,9 +14070,8 @@ export const GlbSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the UUIDs of the Regional load balancers to be used as target backends for a Global load balancer. */
 export type LoadBalancerCreateInputCase0TargetLoadBalancerIdsList = Array<string>;
-export const LoadBalancerCreateInputCase0TargetLoadBalancerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerCreateInputCase0TargetLoadBalancerIdsList>;
+export const LoadBalancerCreateInputCase0TargetLoadBalancerIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LoadBalancerCreateInputCase0TargetLoadBalancerIdsList>;
 
 /** A string indicating the policy for the TLS cipher suites used by the load balancer. The possible values are `DEFAULT` or `STRONG`. The default value is `DEFAULT`. */
 export type LoadBalancerCreateInputCase0TlsCipherPolicy = "DEFAULT" | "STRONG";
@@ -14602,9 +14169,8 @@ export const LoadBalancerCreateInputCase1Algorithm = S.String;
 
 /** An array of objects specifying the forwarding rules for a load balancer. */
 export type LoadBalancerCreateInputCase1ForwardingRulesList = Array<ForwardingRule>;
-export const LoadBalancerCreateInputCase1ForwardingRulesList = /*@__PURE__*/ S.Array(
-  ForwardingRule,
-) as any as S.Schema<LoadBalancerCreateInputCase1ForwardingRulesList>;
+export const LoadBalancerCreateInputCase1ForwardingRulesList =
+  AddLoadBalancerForwardingRulesRequestForwardingRulesList as any as S.Schema<LoadBalancerCreateInputCase1ForwardingRulesList>;
 
 /** A string indicating whether the load balancer should be external or internal. Internal load balancers have no public IPs and are only accessible to resources on the same VPC network. This property cannot be updated after creating the load balancer. */
 export type LoadBalancerCreateInputCase1Network = "EXTERNAL" | "INTERNAL";
@@ -14620,15 +14186,13 @@ export const LoadBalancerCreateInputCase1Type = S.String;
 
 /** An array of objects specifying the domain configurations for a Global load balancer. */
 export type LoadBalancerCreateInputCase1DomainsList = Array<Domains>;
-export const LoadBalancerCreateInputCase1DomainsList = /*@__PURE__*/ S.Array(
-  Domains,
-) as any as S.Schema<LoadBalancerCreateInputCase1DomainsList>;
+export const LoadBalancerCreateInputCase1DomainsList =
+  LoadBalancerCreateInputCase0DomainsList as any as S.Schema<LoadBalancerCreateInputCase1DomainsList>;
 
 /** An array containing the UUIDs of the Regional load balancers to be used as target backends for a Global load balancer. */
 export type LoadBalancerCreateInputCase1TargetLoadBalancerIdsList = Array<string>;
-export const LoadBalancerCreateInputCase1TargetLoadBalancerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerCreateInputCase1TargetLoadBalancerIdsList>;
+export const LoadBalancerCreateInputCase1TargetLoadBalancerIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LoadBalancerCreateInputCase1TargetLoadBalancerIdsList>;
 
 /** A string indicating the policy for the TLS cipher suites used by the load balancer. The possible values are `DEFAULT` or `STRONG`. The default value is `DEFAULT`. */
 export type LoadBalancerCreateInputCase1TlsCipherPolicy = "DEFAULT" | "STRONG";
@@ -14745,9 +14309,8 @@ export const LoadBalancerStatus = S.String;
 
 /** An array of objects specifying the forwarding rules for a load balancer. */
 export type LoadBalancerForwardingRulesList = Array<ForwardingRule>;
-export const LoadBalancerForwardingRulesList = /*@__PURE__*/ S.Array(
-  ForwardingRule,
-) as any as S.Schema<LoadBalancerForwardingRulesList>;
+export const LoadBalancerForwardingRulesList =
+  AddLoadBalancerForwardingRulesRequestForwardingRulesList as any as S.Schema<LoadBalancerForwardingRulesList>;
 
 /** A string indicating whether the load balancer should be external or internal. Internal load balancers have no public IPs and are only accessible to resources on the same VPC network. This property cannot be updated after creating the load balancer. */
 export type LoadBalancerNetwork = "EXTERNAL" | "INTERNAL";
@@ -14763,15 +14326,13 @@ export const LoadBalancerType = S.String;
 
 /** An array of objects specifying the domain configurations for a Global load balancer. */
 export type LoadBalancerDomainsList = Array<Domains>;
-export const LoadBalancerDomainsList = /*@__PURE__*/ S.Array(
-  Domains,
-) as any as S.Schema<LoadBalancerDomainsList>;
+export const LoadBalancerDomainsList =
+  LoadBalancerCreateInputCase0DomainsList as any as S.Schema<LoadBalancerDomainsList>;
 
 /** An array containing the UUIDs of the Regional load balancers to be used as target backends for a Global load balancer. */
 export type LoadBalancerTargetLoadBalancerIdsList = Array<string>;
-export const LoadBalancerTargetLoadBalancerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerTargetLoadBalancerIdsList>;
+export const LoadBalancerTargetLoadBalancerIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LoadBalancerTargetLoadBalancerIdsList>;
 
 /** A string indicating the policy for the TLS cipher suites used by the load balancer. The possible values are `DEFAULT` or `STRONG`. The default value is `DEFAULT`. */
 export type LoadBalancerTlsCipherPolicy = "DEFAULT" | "STRONG";
@@ -14779,15 +14340,13 @@ export const LoadBalancerTlsCipherPolicy = S.String;
 
 /** This attribute is set to an array which contains features available in this region */
 export type LoadBalancerRegionFeaturesList = Array<string>;
-export const LoadBalancerRegionFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerRegionFeaturesList>;
+export const LoadBalancerRegionFeaturesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LoadBalancerRegionFeaturesList>;
 
 /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
 export type LoadBalancerRegionSizesList = Array<string>;
-export const LoadBalancerRegionSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerRegionSizesList>;
+export const LoadBalancerRegionSizesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LoadBalancerRegionSizesList>;
 
 export interface LoadBalancerRegion {
   /** The display name of the region. This will be a full name that is used in the control panel and other interfaces. */
@@ -14801,21 +14360,12 @@ export interface LoadBalancerRegion {
   /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
   sizes: LoadBalancerRegionSizesList;
 }
-export const LoadBalancerRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    slug: S.String,
-    features: LoadBalancerRegionFeaturesList,
-    available: S.Boolean,
-    sizes: LoadBalancerRegionSizesList,
-  }),
-).annotate({ identifier: "LoadBalancerRegion" }) as any as S.Schema<LoadBalancerRegion>;
+export const LoadBalancerRegion = FloatingIpRegion as any as S.Schema<LoadBalancerRegion>;
 
 /** An array containing the IDs of the Droplets assigned to the load balancer. */
 export type LoadBalancerDropletIdsList = Array<number>;
-export const LoadBalancerDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<LoadBalancerDropletIdsList>;
+export const LoadBalancerDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<LoadBalancerDropletIdsList>;
 
 export interface LoadBalancer {
   /** A unique ID that can be used to identify and reference a load balancer. */
@@ -14933,9 +14483,8 @@ export const CreateMcpServerRequestCredentialRefSource = S.String;
 
 /** Required for `credentialRefSource` connection: the scopes to request from each user, 1 to 64 of them. */
 export type CreateMcpServerRequestOauthScopesList = Array<string>;
-export const CreateMcpServerRequestOauthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMcpServerRequestOauthScopesList>;
+export const CreateMcpServerRequestOauthScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateMcpServerRequestOauthScopesList>;
 
 export interface CreateMcpServerRequest {
   /** Identifier for the server, unique within your team. Must match `^`[a-z]``[a-z0-9-]`{0,63}$`. */
@@ -14997,9 +14546,8 @@ export const McpServerSyncStatus = S.String;
 
 /** OAuth scopes requested from each user. Set only when `credentialRefSource` is connection. */
 export type McpServerOauthScopesList = Array<string>;
-export const McpServerOauthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<McpServerOauthScopesList>;
+export const McpServerOauthScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<McpServerOauthScopesList>;
 
 /** MCP server registered by your team. It never contains secret material. */
 export interface McpServer {
@@ -15070,7 +14618,7 @@ export const McpServerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An email to notify on an alert trigger. */
 export type AlertsEmailList = Array<string>;
-export const AlertsEmailList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<AlertsEmailList>;
+export const AlertsEmailList = TagsArray as any as S.Schema<AlertsEmailList>;
 
 export interface SlackDetails {
   /** Slack channel to notify of an alert trigger. */
@@ -15108,14 +14656,12 @@ export type CreateMonitoringAlertPolicyRequestCompare = "GreaterThan" | "LessTha
 export const CreateMonitoringAlertPolicyRequestCompare = S.String;
 
 export type CreateMonitoringAlertPolicyRequestEntitiesList = Array<string>;
-export const CreateMonitoringAlertPolicyRequestEntitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMonitoringAlertPolicyRequestEntitiesList>;
+export const CreateMonitoringAlertPolicyRequestEntitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateMonitoringAlertPolicyRequestEntitiesList>;
 
 export type CreateMonitoringAlertPolicyRequestTagsList = Array<string>;
-export const CreateMonitoringAlertPolicyRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMonitoringAlertPolicyRequestTagsList>;
+export const CreateMonitoringAlertPolicyRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateMonitoringAlertPolicyRequestTagsList>;
 
 export type CreateMonitoringAlertPolicyRequestType =
   | "v1/insights/droplet/load_1"
@@ -15190,14 +14736,12 @@ export type AlertPolicyCompare = "GreaterThan" | "LessThan";
 export const AlertPolicyCompare = S.String;
 
 export type AlertPolicyEntitiesList = Array<string>;
-export const AlertPolicyEntitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertPolicyEntitiesList>;
+export const AlertPolicyEntitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AlertPolicyEntitiesList>;
 
 export type AlertPolicyTagsList = Array<string>;
-export const AlertPolicyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AlertPolicyTagsList>;
+export const AlertPolicyTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AlertPolicyTagsList>;
 
 export type AlertPolicyType =
   | "v1/insights/droplet/load_1"
@@ -15437,15 +14981,13 @@ export const CreateMonitoringSinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMonitoringSinkRequest>;
 
 export interface CreateMonitoringSinkResponse {}
-export const CreateMonitoringSinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMonitoringSinkResponse",
-}) as any as S.Schema<CreateMonitoringSinkResponse>;
+export const CreateMonitoringSinkResponse =
+  AddFirewallRulesResponse as any as S.Schema<CreateMonitoringSinkResponse>;
 
 /** List of VPC IDs that should be able to access the share. */
 export type CreateNfsRequestVpcIdsList = Array<string>;
-export const CreateNfsRequestVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateNfsRequestVpcIdsList>;
+export const CreateNfsRequestVpcIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateNfsRequestVpcIdsList>;
 
 export interface CreateNfsRequest {
   /** The human-readable name of the share. */
@@ -15475,9 +15017,8 @@ export const NfsResponseStatus = S.String;
 
 /** List of VPC IDs that should be able to access the share. */
 export type NfsResponseVpcIdsList = Array<string>;
-export const NfsResponseVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NfsResponseVpcIdsList>;
+export const NfsResponseVpcIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<NfsResponseVpcIdsList>;
 
 /** The current lifecycle status of an access point. There is no ACCESS_POINT_DELETING state: DELETE soft-deletes the access point synchronously (mirroring share deletion); the response of a delete request returns the access point already in ACCESS_POINT_DELETED. */
 export type AccessPointResponseStatus =
@@ -15738,11 +15279,7 @@ export interface NfsActionSnapshotParams {
   /** Snapshot name of the NFS share */
   name: string;
 }
-export const NfsActionSnapshotParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "NfsActionSnapshotParams" }) as any as S.Schema<NfsActionSnapshotParams>;
+export const NfsActionSnapshotParams = Database as any as S.Schema<NfsActionSnapshotParams>;
 
 export interface NfsActionSnapshot {
   /** The type of action to initiate for the NFS share (such as resize or snapshot). */
@@ -15808,11 +15345,8 @@ export interface NfsActionDetachParams {
   /** The ID of the VPC from which the NFS share will be detached */
   vpc_id: string;
 }
-export const NfsActionDetachParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc_id: S.String,
-  }),
-).annotate({ identifier: "NfsActionDetachParams" }) as any as S.Schema<NfsActionDetachParams>;
+export const NfsActionDetachParams =
+  NfsActionAttachParams as any as S.Schema<NfsActionDetachParams>;
 
 export interface NfsActionDetach {
   /** The type of action to initiate for the NFS share (such as resize or snapshot). */
@@ -16035,9 +15569,8 @@ export const CreateOrganizationTeamResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Output paths to keep, 1 to 64 of them. Each is a dotted path of up to 8 segments made of `[A-Za-z0-9_-]`, and must be declared by the tool's output schema; arrays are traversed element-wise. Paths may not repeat or be a prefix of one another. The tool version must declare an object output schema. */
 export type CreateOutputViewRequestFieldsList = Array<string>;
-export const CreateOutputViewRequestFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateOutputViewRequestFieldsList>;
+export const CreateOutputViewRequestFieldsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateOutputViewRequestFieldsList>;
 
 export interface CreateOutputViewRequest {
   /** Exactly one of tool or `tool_id` selects the tool version. tool is a provider-qualified slug, optionally pinned as `<tool>@<version>`. You can bind only the released version your catalog exposes: an unpinned slug resolves it and the response echoes it as version; a pin must equal it, and a `tool_id` (the opaque identity from tool search) must be that version. Any other version returns 404. */
@@ -16067,9 +15600,8 @@ export const OutputViewKind = S.String;
 
 /** The dotted output paths a projection keeps; arrays are traversed element-wise. Empty for a transform. */
 export type OutputViewFieldsList = Array<string>;
-export const OutputViewFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OutputViewFieldsList>;
+export const OutputViewFieldsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OutputViewFieldsList>;
 
 /** Null on a preview, which stores nothing. */
 export interface OutputViewAudit {
@@ -16150,9 +15682,8 @@ export const CreatePartnerAttachmentRequestRegion = S.String;
 
 /** An array of VPCs IDs. */
 export type CreatePartnerAttachmentRequestVpcIdsList = Array<string>;
-export const CreatePartnerAttachmentRequestVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePartnerAttachmentRequestVpcIdsList>;
+export const CreatePartnerAttachmentRequestVpcIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreatePartnerAttachmentRequestVpcIdsList>;
 
 /** Optional BGP configurations */
 export interface CreatePartnerAttachmentRequestBgp {
@@ -16216,9 +15747,8 @@ export const CreatePartnerAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of VPC network IDs. */
 export type PartnerAttachmentVpcIdsList = Array<string>;
-export const PartnerAttachmentVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartnerAttachmentVpcIdsList>;
+export const PartnerAttachmentVpcIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<PartnerAttachmentVpcIdsList>;
 
 /** The BGP configuration for the partner attachment. */
 export interface PartnerAttachmentBgp {
@@ -16242,9 +15772,8 @@ export const PartnerAttachmentBgp = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of associated partner attachment UUIDs. */
 export type PartnerAttachmentChildrenList = Array<string>;
-export const PartnerAttachmentChildrenList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartnerAttachmentChildrenList>;
+export const PartnerAttachmentChildrenList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<PartnerAttachmentChildrenList>;
 
 export interface PartnerAttachment {
   /** A unique ID that can be used to identify and reference the partner attachment. */
@@ -16462,11 +15991,8 @@ export interface ReservedIpCreateCase0 {
   /** The ID of the Droplet that the reserved IP will be assigned to. */
   droplet_id: number;
 }
-export const ReservedIpCreateCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    droplet_id: S.Number,
-  }),
-).annotate({ identifier: "ReservedIpCreateCase0" }) as any as S.Schema<ReservedIpCreateCase0>;
+export const ReservedIpCreateCase0 =
+  FloatingIpCreateCase0 as any as S.Schema<ReservedIpCreateCase0>;
 
 export interface ReservedIpCreateCase1 {
   /** The slug identifier for the region the reserved IP will be reserved to. */
@@ -16474,12 +16000,8 @@ export interface ReservedIpCreateCase1 {
   /** The UUID of the project to which the reserved IP will be assigned. */
   project_id?: string;
 }
-export const ReservedIpCreateCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String,
-    project_id: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReservedIpCreateCase1" }) as any as S.Schema<ReservedIpCreateCase1>;
+export const ReservedIpCreateCase1 =
+  FloatingIpCreateCase1 as any as S.Schema<ReservedIpCreateCase1>;
 
 export type ReservedIpCreate = ReservedIpCreateCase0 | ReservedIpCreateCase1;
 export const ReservedIpCreate = S.Unknown as any as S.Schema<ReservedIpCreate>;
@@ -16495,15 +16017,13 @@ export const CreateReservedIPRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This attribute is set to an array which contains features available in this region */
 export type ReservedIpRegionFeaturesList = Array<string>;
-export const ReservedIpRegionFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservedIpRegionFeaturesList>;
+export const ReservedIpRegionFeaturesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ReservedIpRegionFeaturesList>;
 
 /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
 export type ReservedIpRegionSizesList = Array<string>;
-export const ReservedIpRegionSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservedIpRegionSizesList>;
+export const ReservedIpRegionSizesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ReservedIpRegionSizesList>;
 
 export interface ReservedIpRegion {
   /** The display name of the region. This will be a full name that is used in the control panel and other interfaces. */
@@ -16517,15 +16037,7 @@ export interface ReservedIpRegion {
   /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
   sizes: ReservedIpRegionSizesList;
 }
-export const ReservedIpRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    slug: S.String,
-    features: ReservedIpRegionFeaturesList,
-    available: S.Boolean,
-    sizes: ReservedIpRegionSizesList,
-  }),
-).annotate({ identifier: "ReservedIpRegion" }) as any as S.Schema<ReservedIpRegion>;
+export const ReservedIpRegion = FloatingIpRegion as any as S.Schema<ReservedIpRegion>;
 
 /** The Droplet that the reserved IP has been assigned to. When you query a reserved IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null.<br><br>Requires `droplet:read` scope. */
 export type ReservedIpDroplet = unknown | Droplet;
@@ -16553,27 +16065,19 @@ export const ReservedIp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReservedIp" }) as any as S.Schema<ReservedIp>;
 
 export type CreateReservedIPResponseLinksDropletsList = Array<ActionLink>;
-export const CreateReservedIPResponseLinksDropletsList = /*@__PURE__*/ S.Array(
-  ActionLink,
-) as any as S.Schema<CreateReservedIPResponseLinksDropletsList>;
+export const CreateReservedIPResponseLinksDropletsList =
+  CreateDropletResponseLinksActionsList as any as S.Schema<CreateReservedIPResponseLinksDropletsList>;
 
 export type CreateReservedIPResponseLinksActionsList = Array<ActionLink>;
-export const CreateReservedIPResponseLinksActionsList = /*@__PURE__*/ S.Array(
-  ActionLink,
-) as any as S.Schema<CreateReservedIPResponseLinksActionsList>;
+export const CreateReservedIPResponseLinksActionsList =
+  CreateDropletResponseLinksActionsList as any as S.Schema<CreateReservedIPResponseLinksActionsList>;
 
 export interface CreateReservedIPResponseLinks {
   droplets?: CreateReservedIPResponseLinksDropletsList;
   actions?: CreateReservedIPResponseLinksActionsList;
 }
-export const CreateReservedIPResponseLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    droplets: S.optional(CreateReservedIPResponseLinksDropletsList),
-    actions: S.optional(CreateReservedIPResponseLinksActionsList),
-  }),
-).annotate({
-  identifier: "CreateReservedIPResponseLinks",
-}) as any as S.Schema<CreateReservedIPResponseLinks>;
+export const CreateReservedIPResponseLinks =
+  CreateFloatingIPResponseLinks as any as S.Schema<CreateReservedIPResponseLinks>;
 
 export interface CreateReservedIPResponse {
   reserved_ip?: ReservedIp;
@@ -16749,15 +16253,13 @@ export const CreateSecurityScanRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSecurityScanRuleRequest>;
 
 export interface CreateSecurityScanRuleResponse {}
-export const CreateSecurityScanRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateSecurityScanRuleResponse",
-}) as any as S.Schema<CreateSecurityScanRuleResponse>;
+export const CreateSecurityScanRuleResponse =
+  AddFirewallRulesResponse as any as S.Schema<CreateSecurityScanRuleResponse>;
 
 /** The URNs of resources to suppress for the rule. */
 export type CreateSecuritySuppressionRequestResourcesList = Array<string>;
-export const CreateSecuritySuppressionRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSecuritySuppressionRequestResourcesList>;
+export const CreateSecuritySuppressionRequestResourcesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateSecuritySuppressionRequestResourcesList>;
 
 export interface CreateSecuritySuppressionRequest {
   /** The rule UUID to suppress for the listed resources. */
@@ -16863,10 +16365,8 @@ export const SessionPolicyDefaultAction = S.String;
 
 /** Optional argument conditions, keyed by argument name; the rule applies only to calls whose arguments match. */
 export type SessionPolicyRulesItemMatchMap = { [key: string]: string | undefined };
-export const SessionPolicyRulesItemMatchMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SessionPolicyRulesItemMatchMap>;
+export const SessionPolicyRulesItemMatchMap =
+  ApiMcpServerHeadersMap as any as S.Schema<SessionPolicyRulesItemMatchMap>;
 
 /** Required: allow, ask, or deny. */
 export type SessionPolicyRulesItemAction = "allow" | "ask" | "deny";
@@ -16910,9 +16410,8 @@ export const SessionPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Omitted enables every tool. An explicit empty array enables no tools. Direct tools may be `<tool>` or `<tool>@<version>`, using provider-qualified tool slugs, and a pinned version must be the released one; toolbelt references must be version-pinned as `toolbelt:<belt-name>@<version>`. */
 export type CreateSessionRequestToolsList = Array<string>;
-export const CreateSessionRequestToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSessionRequestToolsList>;
+export const CreateSessionRequestToolsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateSessionRequestToolsList>;
 
 /** Attaches a session to a VPC. */
 export interface SessionNetwork {
@@ -17060,9 +16559,8 @@ export const Session = /*@__PURE__*/ S.suspend(() =>
 
 /** Canonical, version-pinned selected tool references. Empty when the session exposes every tool. */
 export type CreateSessionResponseToolsList = Array<string>;
-export const CreateSessionResponseToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateSessionResponseToolsList>;
+export const CreateSessionResponseToolsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateSessionResponseToolsList>;
 
 /** Returns the created session. */
 export interface CreateSessionResponse {
@@ -17115,9 +16613,8 @@ export const CreateSpacesKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of permissions for the access key. */
 export type KeyCreateResponseGrantsList = Array<Grant>;
-export const KeyCreateResponseGrantsList = /*@__PURE__*/ S.Array(
-  Grant,
-) as any as S.Schema<KeyCreateResponseGrantsList>;
+export const KeyCreateResponseGrantsList =
+  CreateSpacesKeyRequestGrantsList as any as S.Schema<KeyCreateResponseGrantsList>;
 
 export interface KeyCreateResponse {
   /** The secret key used to access the bucket. We return secret keys only once upon creation. Make sure to copy the key and securely store it. */
@@ -17271,9 +16768,8 @@ export const CreateTagResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional initial members, as catalog tool slugs (`<provider>_<name>`). Each may be pinned as `<tool_slug>@<version>`; a pin must equal the tool's current released version, and an unpinned tool is pinned to that version. Every tool must be an active catalog tool. Duplicates are merged; at most 500 tools. Empty creates a toolbelt with no tools. */
 export type CreateToolbeltRequestToolsList = Array<string>;
-export const CreateToolbeltRequestToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateToolbeltRequestToolsList>;
+export const CreateToolbeltRequestToolsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateToolbeltRequestToolsList>;
 
 export interface CreateToolbeltRequest {
   /** Toolbelt name, unique among your team's active toolbelts. Must match `^`[a-z]``[a-z0-9_-]`{0,63}$`; `search` is reserved. */
@@ -17302,11 +16798,7 @@ export interface ToolbeltResponse {
   /** The first version of the new toolbelt. */
   toolbelt?: Toolbelt;
 }
-export const ToolbeltResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    toolbelt: S.optional(Toolbelt),
-  }),
-).annotate({ identifier: "ToolbeltResponse" }) as any as S.Schema<ToolbeltResponse>;
+export const ToolbeltResponse = ToolbeltUpdateResponse as any as S.Schema<ToolbeltResponse>;
 
 /** The type of alert. */
 export type CreateUptimeAlertRequestType = "latency" | "down" | "down_global" | "ssl_expiry";
@@ -17318,18 +16810,15 @@ export const CreateUptimeAlertRequestComparison = S.String;
 
 /** An email to notify on an alert trigger. The Email has to be one that is verified on that DigitalOcean account. */
 export type NotificationEmailList = Array<string>;
-export const NotificationEmailList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationEmailList>;
+export const NotificationEmailList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<NotificationEmailList>;
 
 export type NotificationSlackItem = SlackDetails;
 export const NotificationSlackItem = SlackDetails;
 
 /** Slack integration details. */
 export type NotificationSlackList = Array<SlackDetails>;
-export const NotificationSlackList = /*@__PURE__*/ S.Array(
-  SlackDetails,
-) as any as S.Schema<NotificationSlackList>;
+export const NotificationSlackList = AlertsSlackList as any as S.Schema<NotificationSlackList>;
 
 /** The notification settings for a trigger alert. */
 export interface Notification {
@@ -17514,9 +17003,8 @@ export const CreateUptimeCheckResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of arbitrary tags to organize your vector database */
 export type CreateVectorDatabaseRequestTagsList = Array<string>;
-export const CreateVectorDatabaseRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVectorDatabaseRequestTagsList>;
+export const CreateVectorDatabaseRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateVectorDatabaseRequestTagsList>;
 
 export interface CreateVectorDatabaseRequest {
   /** Required. Human-readable name for the database. */
@@ -17575,9 +17063,8 @@ export const VectordbVectorDBEndpoints = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VectordbVectorDBEndpoints>;
 
 export type VectordbVectorDBTagsList = Array<string>;
-export const VectordbVectorDBTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VectordbVectorDBTagsList>;
+export const VectordbVectorDBTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<VectordbVectorDBTagsList>;
 
 /** VectorDB represents a provisioned vector database instance. */
 export interface VectordbVectorDB {
@@ -17676,25 +17163,22 @@ export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the IDs of the Droplets the volume is attached to. Note that at this time, a volume can only be attached to a single Droplet. */
 export type VolumeFullDropletIdsList = Array<number>;
-export const VolumeFullDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<VolumeFullDropletIdsList>;
+export const VolumeFullDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<VolumeFullDropletIdsList>;
 
 /** A flat array of tag names as strings applied to the resource. <br><br>Requires `tag:read` scope. */
 export type TagsArrayRead = Array<string>;
-export const TagsArrayRead = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TagsArrayRead>;
+export const TagsArrayRead = TagsArray as any as S.Schema<TagsArrayRead>;
 
 /** This attribute is set to an array which contains features available in this region */
 export type VolumeFullRegionFeaturesList = Array<string>;
-export const VolumeFullRegionFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeFullRegionFeaturesList>;
+export const VolumeFullRegionFeaturesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<VolumeFullRegionFeaturesList>;
 
 /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
 export type VolumeFullRegionSizesList = Array<string>;
-export const VolumeFullRegionSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VolumeFullRegionSizesList>;
+export const VolumeFullRegionSizesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<VolumeFullRegionSizesList>;
 
 export interface VolumeFullRegion {
   /** The display name of the region. This will be a full name that is used in the control panel and other interfaces. */
@@ -17708,15 +17192,7 @@ export interface VolumeFullRegion {
   /** This attribute is set to an array which contains the identifying slugs for the sizes available in this region. sizes:read is required to view. */
   sizes: VolumeFullRegionSizesList;
 }
-export const VolumeFullRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    slug: S.String,
-    features: VolumeFullRegionFeaturesList,
-    available: S.Boolean,
-    sizes: VolumeFullRegionSizesList,
-  }),
-).annotate({ identifier: "VolumeFullRegion" }) as any as S.Schema<VolumeFullRegion>;
+export const VolumeFullRegion = FloatingIpRegion as any as S.Schema<VolumeFullRegion>;
 
 export interface VolumeFull {
   /** The unique identifier for the block storage volume. */
@@ -17781,9 +17257,8 @@ export const CreateVolumeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the regions that the snapshot is available in. The regions are represented by their identifying slug values. */
 export type SnapshotsRegionsList = Array<string>;
-export const SnapshotsRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SnapshotsRegionsList>;
+export const SnapshotsRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<SnapshotsRegionsList>;
 
 /** The type of resource that the snapshot originated from. */
 export type SnapshotsResourceType = "droplet" | "volume";
@@ -17791,9 +17266,8 @@ export const SnapshotsResourceType = S.String;
 
 /** An array of Tags the snapshot has been tagged with.<br><br>Requires `tag:read` scope. */
 export type SnapshotsTagsList = Array<string>;
-export const SnapshotsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SnapshotsTagsList>;
+export const SnapshotsTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<SnapshotsTagsList>;
 
 export interface Snapshots {
   /** The unique identifier for the snapshot. */
@@ -18045,9 +17519,8 @@ export const VpcNatGatewayCreateVpcsItem = CreateVpcnatgatewayRequestVpcsItem;
 
 /** An array of VPCs associated with the VPC NAT gateway. */
 export type VpcNatGatewayCreateVpcsList = Array<CreateVpcnatgatewayRequestVpcsItem>;
-export const VpcNatGatewayCreateVpcsList = /*@__PURE__*/ S.Array(
-  CreateVpcnatgatewayRequestVpcsItem,
-) as any as S.Schema<VpcNatGatewayCreateVpcsList>;
+export const VpcNatGatewayCreateVpcsList =
+  CreateVpcnatgatewayRequestVpcsList as any as S.Schema<VpcNatGatewayCreateVpcsList>;
 
 /** Specify the address using either `ip` or `ipv4`. Both fields accept the same value and `ip` takes precedence if both are provided. The assigned address is returned in the `ipv4` field of GET and list responses. */
 export type VpcNatGatewayCreateEgressesPublicGatewaysItem =
@@ -18058,22 +17531,16 @@ export const VpcNatGatewayCreateEgressesPublicGatewaysItem =
 /** An array containing a single public gateway object that sets the gateway's public egress IP address. */
 export type VpcNatGatewayCreateEgressesPublicGatewaysList =
   Array<CreateVpcnatgatewayRequestEgressesPublicGatewaysItem>;
-export const VpcNatGatewayCreateEgressesPublicGatewaysList = /*@__PURE__*/ S.Array(
-  CreateVpcnatgatewayRequestEgressesPublicGatewaysItem,
-) as any as S.Schema<VpcNatGatewayCreateEgressesPublicGatewaysList>;
+export const VpcNatGatewayCreateEgressesPublicGatewaysList =
+  CreateVpcnatgatewayRequestEgressesPublicGatewaysList as any as S.Schema<VpcNatGatewayCreateEgressesPublicGatewaysList>;
 
 /** An optional object specifying the public egress IP address to assign to the VPC NAT gateway. Provide this only to use a specific address. If omitted, DigitalOcean allocates a public IP address automatically. */
 export interface VpcNatGatewayCreateEgresses {
   /** An array containing a single public gateway object that sets the gateway's public egress IP address. */
   public_gateways?: VpcNatGatewayCreateEgressesPublicGatewaysList;
 }
-export const VpcNatGatewayCreateEgresses = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    public_gateways: S.optional(VpcNatGatewayCreateEgressesPublicGatewaysList),
-  }),
-).annotate({
-  identifier: "VpcNatGatewayCreateEgresses",
-}) as any as S.Schema<VpcNatGatewayCreateEgresses>;
+export const VpcNatGatewayCreateEgresses =
+  CreateVpcnatgatewayRequestEgresses as any as S.Schema<VpcNatGatewayCreateEgresses>;
 
 export interface VpcNatGatewayCreate {
   /** The human-readable name of the VPC NAT gateway. */
@@ -18122,9 +17589,8 @@ export const CreateVpcnatgatewayResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the two peered VPCs IDs. */
 export type CreateVpcPeeringRequestVpcIdsList = Array<string>;
-export const CreateVpcPeeringRequestVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVpcPeeringRequestVpcIdsList>;
+export const CreateVpcPeeringRequestVpcIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateVpcPeeringRequestVpcIdsList>;
 
 export interface CreateVpcPeeringRequest {
   /** The name of the VPC peering. Must be unique within the team and may only contain alphanumeric characters and dashes. */
@@ -18145,9 +17611,8 @@ export const VpcPeeringStatus = S.String;
 
 /** An array of the two peered VPCs IDs. */
 export type VpcPeeringVpcIdsList = Array<string>;
-export const VpcPeeringVpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<VpcPeeringVpcIdsList>;
+export const VpcPeeringVpcIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<VpcPeeringVpcIdsList>;
 
 export interface VpcPeering {
   /** A unique ID that can be used to identify and reference the VPC peering. */
@@ -18226,10 +17691,8 @@ export const VpcSubnetType = S.String;
 
 /** The number of members grouped by resource type. */
 export type VpcSubnetStatisticsResourcesMap = { [key: string]: number | undefined };
-export const VpcSubnetStatisticsResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<VpcSubnetStatisticsResourcesMap>;
+export const VpcSubnetStatisticsResourcesMap =
+  CreateAgentInferenceChatCompletionRequestLogitBiasMap as any as S.Schema<VpcSubnetStatisticsResourcesMap>;
 
 /** Member statistics, excluding resources the caller is not permitted to read. */
 export interface VpcSubnetStatistics {
@@ -18299,9 +17762,8 @@ export const CreateVpcSubnetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The URNs of supported next-hop resources. Droplet targets must use a numeric ID in the format `do:droplet:<id>`. VPC NAT Gateway targets use a UUID in the format `do:nat_gateway:<uuid>`. */
 export type CreateVpcSubnetRouteRequestTargetUrnsList = Array<string>;
-export const CreateVpcSubnetRouteRequestTargetUrnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateVpcSubnetRouteRequestTargetUrnsList>;
+export const CreateVpcSubnetRouteRequestTargetUrnsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CreateVpcSubnetRouteRequestTargetUrnsList>;
 
 export interface CreateVpcSubnetRouteRequest {
   /** The unique identifier of the VPC. */
@@ -18332,9 +17794,8 @@ export const RouteType = S.String;
 
 /** The URNs of resources that act as next hops for the route. Supported next hops are Droplets, using a numeric ID in the format `do:droplet:<id>`, and VPC NAT Gateways, using a UUID in the format `do:nat_gateway:<uuid>`. */
 export type RouteTargetUrnsList = Array<string>;
-export const RouteTargetUrnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RouteTargetUrnsList>;
+export const RouteTargetUrnsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RouteTargetUrnsList>;
 
 export interface Route {
   /** The unique identifier of the route. */
@@ -18394,11 +17855,8 @@ export const DatabasesDeleteOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DatabasesDeleteOpensearchIndexRequest>;
 
 export interface DatabasesDeleteOpensearchIndexResponse {}
-export const DatabasesDeleteOpensearchIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DatabasesDeleteOpensearchIndexResponse",
-}) as any as S.Schema<DatabasesDeleteOpensearchIndexResponse>;
+export const DatabasesDeleteOpensearchIndexResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DatabasesDeleteOpensearchIndexResponse>;
 
 export interface DatabasesDestroyClusterRequest {
   /** A unique identifier for a database cluster. */
@@ -18413,9 +17871,8 @@ export const DatabasesDestroyClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesDestroyClusterRequest>;
 
 export interface DatabasesDestroyClusterResponse {}
-export const DatabasesDestroyClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DatabasesDestroyClusterResponse" },
-) as any as S.Schema<DatabasesDestroyClusterResponse>;
+export const DatabasesDestroyClusterResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<DatabasesDestroyClusterResponse>;
 
 export interface DatabasesDestroyReplicaRequest {
   /** A unique identifier for a database cluster. */
@@ -18439,9 +17896,8 @@ export const DatabasesDestroyReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesDestroyReplicaRequest>;
 
 export interface DatabasesDestroyReplicaResponse {}
-export const DatabasesDestroyReplicaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DatabasesDestroyReplicaResponse" },
-) as any as S.Schema<DatabasesDestroyReplicaResponse>;
+export const DatabasesDestroyReplicaResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<DatabasesDestroyReplicaResponse>;
 
 export interface DatabasesInstallUpdateRequest {
   /** A unique identifier for a database cluster. */
@@ -18462,9 +17918,8 @@ export const DatabasesInstallUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesInstallUpdateRequest>;
 
 export interface DatabasesInstallUpdateResponse {}
-export const DatabasesInstallUpdateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DatabasesInstallUpdateResponse",
-}) as any as S.Schema<DatabasesInstallUpdateResponse>;
+export const DatabasesInstallUpdateResponse =
+  AddFirewallRulesResponse as any as S.Schema<DatabasesInstallUpdateResponse>;
 
 export type LimitCategory =
   | "LIMIT_CATEGORY_WEB_SEARCH_REQUESTS_PER_MINUTE"
@@ -18510,9 +17965,7 @@ export const DeleteAddonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAddonRequest" }) as any as S.Schema<DeleteAddonRequest>;
 
 export interface DeleteAddonResponse {}
-export const DeleteAddonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAddonResponse",
-}) as any as S.Schema<DeleteAddonResponse>;
+export const DeleteAddonResponse = AddFirewallRulesResponse as any as S.Schema<DeleteAddonResponse>;
 
 export interface DeleteAppRequest {
   /** The ID of the app */
@@ -18548,9 +18001,8 @@ export const DeleteAutoscalepoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutoscalepoolRequest>;
 
 export interface DeleteAutoscalepoolResponse {}
-export const DeleteAutoscalepoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAutoscalepoolResponse",
-}) as any as S.Schema<DeleteAutoscalepoolResponse>;
+export const DeleteAutoscalepoolResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteAutoscalepoolResponse>;
 
 export interface DeleteAutoscalepoolDangerousRequest {
   /** A unique identifier for an autoscale pool. */
@@ -18571,11 +18023,8 @@ export const DeleteAutoscalepoolDangerousRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutoscalepoolDangerousRequest>;
 
 export interface DeleteAutoscalepoolDangerousResponse {}
-export const DeleteAutoscalepoolDangerousResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAutoscalepoolDangerousResponse",
-}) as any as S.Schema<DeleteAutoscalepoolDangerousResponse>;
+export const DeleteAutoscalepoolDangerousResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteAutoscalepoolDangerousResponse>;
 
 export interface DeleteByoipPrefixRequest {
   /** The unique identifier for the BYOIP Prefix. */
@@ -18588,9 +18037,8 @@ export const DeleteByoipPrefixRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteByoipPrefixRequest" }) as any as S.Schema<DeleteByoipPrefixRequest>;
 
 export interface DeleteByoipPrefixResponse {}
-export const DeleteByoipPrefixResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteByoipPrefixResponse",
-}) as any as S.Schema<DeleteByoipPrefixResponse>;
+export const DeleteByoipPrefixResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteByoipPrefixResponse>;
 
 export interface DeleteCdnEndpointRequest {
   /** A unique identifier for a CDN endpoint. */
@@ -18603,9 +18051,8 @@ export const DeleteCdnEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCdnEndpointRequest" }) as any as S.Schema<DeleteCdnEndpointRequest>;
 
 export interface DeleteCdnEndpointResponse {}
-export const DeleteCdnEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCdnEndpointResponse",
-}) as any as S.Schema<DeleteCdnEndpointResponse>;
+export const DeleteCdnEndpointResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteCdnEndpointResponse>;
 
 export interface DeleteCertificateRequest {
   /** A unique identifier for a certificate. */
@@ -18618,9 +18065,8 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCertificateResponse",
-}) as any as S.Schema<DeleteCertificateResponse>;
+export const DeleteCertificateResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteCertificateResponse>;
 
 export interface DeleteConnectionRequest {
   /** Connection ID. */
@@ -18663,9 +18109,8 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseResponse",
-}) as any as S.Schema<DeleteDatabaseResponse>;
+export const DeleteDatabaseResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteDatabaseConnectionPoolRequest {
   /** A unique identifier for a database cluster. */
@@ -18689,11 +18134,8 @@ export const DeleteDatabaseConnectionPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatabaseConnectionPoolRequest>;
 
 export interface DeleteDatabaseConnectionPoolResponse {}
-export const DeleteDatabaseConnectionPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabaseConnectionPoolResponse",
-}) as any as S.Schema<DeleteDatabaseConnectionPoolResponse>;
+export const DeleteDatabaseConnectionPoolResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteDatabaseConnectionPoolResponse>;
 
 export interface DeleteDatabaseKafkaSchemaRequest {
   /** A unique identifier for a database cluster. */
@@ -18717,11 +18159,8 @@ export const DeleteDatabaseKafkaSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatabaseKafkaSchemaRequest>;
 
 export interface DeleteDatabaseKafkaSchemaResponse {}
-export const DeleteDatabaseKafkaSchemaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabaseKafkaSchemaResponse",
-}) as any as S.Schema<DeleteDatabaseKafkaSchemaResponse>;
+export const DeleteDatabaseKafkaSchemaResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteDatabaseKafkaSchemaResponse>;
 
 export interface DeleteDatabaseKafkaTopicRequest {
   /** A unique identifier for a database cluster. */
@@ -18745,11 +18184,8 @@ export const DeleteDatabaseKafkaTopicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatabaseKafkaTopicRequest>;
 
 export interface DeleteDatabaseKafkaTopicResponse {}
-export const DeleteDatabaseKafkaTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabaseKafkaTopicResponse",
-}) as any as S.Schema<DeleteDatabaseKafkaTopicResponse>;
+export const DeleteDatabaseKafkaTopicResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteDatabaseKafkaTopicResponse>;
 
 export interface DeleteDatabaseLogsinkRequest {
   /** A unique identifier for a database cluster. */
@@ -18773,9 +18209,8 @@ export const DeleteDatabaseLogsinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatabaseLogsinkRequest>;
 
 export interface DeleteDatabaseLogsinkResponse {}
-export const DeleteDatabaseLogsinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseLogsinkResponse",
-}) as any as S.Schema<DeleteDatabaseLogsinkResponse>;
+export const DeleteDatabaseLogsinkResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteDatabaseLogsinkResponse>;
 
 export interface DeleteDatabaseOnlineMigrationRequest {
   /** A unique identifier for a database cluster. */
@@ -18799,11 +18234,8 @@ export const DeleteDatabaseOnlineMigrationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteDatabaseOnlineMigrationRequest>;
 
 export interface DeleteDatabaseOnlineMigrationResponse {}
-export const DeleteDatabaseOnlineMigrationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDatabaseOnlineMigrationResponse",
-}) as any as S.Schema<DeleteDatabaseOnlineMigrationResponse>;
+export const DeleteDatabaseOnlineMigrationResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteDatabaseOnlineMigrationResponse>;
 
 export interface DeleteDatabaseUserRequest {
   /** A unique identifier for a database cluster. */
@@ -18827,9 +18259,8 @@ export const DeleteDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatabaseUserRequest>;
 
 export interface DeleteDatabaseUserResponse {}
-export const DeleteDatabaseUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDatabaseUserResponse",
-}) as any as S.Schema<DeleteDatabaseUserResponse>;
+export const DeleteDatabaseUserResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteDatabaseUserResponse>;
 
 export interface DeleteDedicatedInferenceRequest {
   /** A unique identifier for a Dedicated Inference instance. */
@@ -18850,11 +18281,8 @@ export const DeleteDedicatedInferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedInferenceRequest>;
 
 export interface DeleteDedicatedInferenceResponse {}
-export const DeleteDedicatedInferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDedicatedInferenceResponse",
-}) as any as S.Schema<DeleteDedicatedInferenceResponse>;
+export const DeleteDedicatedInferenceResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteDedicatedInferenceResponse>;
 
 export interface DeleteDedicatedInferenceTokensRequest {
   /** A unique identifier for a Dedicated Inference instance. */
@@ -18878,11 +18306,8 @@ export const DeleteDedicatedInferenceTokensRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteDedicatedInferenceTokensRequest>;
 
 export interface DeleteDedicatedInferenceTokensResponse {}
-export const DeleteDedicatedInferenceTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDedicatedInferenceTokensResponse",
-}) as any as S.Schema<DeleteDedicatedInferenceTokensResponse>;
+export const DeleteDedicatedInferenceTokensResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteDedicatedInferenceTokensResponse>;
 
 export interface DeleteDomainRequest {
   /** The name of the domain itself. */
@@ -18895,9 +18320,8 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainResponse",
-}) as any as S.Schema<DeleteDomainResponse>;
+export const DeleteDomainResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteDomainResponse>;
 
 export interface DeleteDomainRecordRequest {
   /** The name of the domain itself. */
@@ -18921,9 +18345,8 @@ export const DeleteDomainRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDomainRecordRequest>;
 
 export interface DeleteDomainRecordResponse {}
-export const DeleteDomainRecordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDomainRecordResponse",
-}) as any as S.Schema<DeleteDomainRecordResponse>;
+export const DeleteDomainRecordResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteDomainRecordResponse>;
 
 export interface DeleteFirewallRequest {
   /** A unique ID that can be used to identify and reference a firewall. */
@@ -18936,15 +18359,13 @@ export const DeleteFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFirewallRequest" }) as any as S.Schema<DeleteFirewallRequest>;
 
 export interface DeleteFirewallResponse {}
-export const DeleteFirewallResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallResponse",
-}) as any as S.Schema<DeleteFirewallResponse>;
+export const DeleteFirewallResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteFirewallResponse>;
 
 /** An array containing the IDs of the Droplets to be removed from the firewall. */
 export type DeleteFirewallDropletsRequestDropletIdsList = Array<number>;
-export const DeleteFirewallDropletsRequestDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<DeleteFirewallDropletsRequestDropletIdsList>;
+export const DeleteFirewallDropletsRequestDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<DeleteFirewallDropletsRequestDropletIdsList>;
 
 export interface DeleteFirewallDropletsRequest {
   /** A unique ID that can be used to identify and reference a firewall. */
@@ -18962,9 +18383,8 @@ export const DeleteFirewallDropletsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallDropletsRequest>;
 
 export interface DeleteFirewallDropletsResponse {}
-export const DeleteFirewallDropletsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallDropletsResponse",
-}) as any as S.Schema<DeleteFirewallDropletsResponse>;
+export const DeleteFirewallDropletsResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteFirewallDropletsResponse>;
 
 /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
 export type DeleteFirewallRulesRequestInboundRulesItemProtocol = "tcp" | "udp" | "icmp";
@@ -18976,36 +18396,28 @@ export const DeleteFirewallRulesRequestInboundRulesItemAction = S.String;
 
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestInboundRulesItemSourcesAddressesList = Array<string>;
-export const DeleteFirewallRulesRequestInboundRulesItemSourcesAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesAddressesList>;
+export const DeleteFirewallRulesRequestInboundRulesItemSourcesAddressesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestInboundRulesItemSourcesDropletIdsList = Array<number>;
 export const DeleteFirewallRulesRequestInboundRulesItemSourcesDropletIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesDropletIdsList>;
+  AddFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList = Array<string>;
 export const DeleteFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList = Array<string>;
 export const DeleteFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestInboundRulesItemSourcesTagsList = Array<string>;
-export const DeleteFirewallRulesRequestInboundRulesItemSourcesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesTagsList>;
+export const DeleteFirewallRulesRequestInboundRulesItemSourcesTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DeleteFirewallRulesRequestInboundRulesItemSourcesTagsList>;
 
 export interface DeleteFirewallRulesRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -19070,39 +18482,29 @@ export const DeleteFirewallRulesRequestOutboundRulesItemAction = S.String;
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestOutboundRulesItemDestinationsAddressesList = Array<string>;
 export const DeleteFirewallRulesRequestOutboundRulesItemDestinationsAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsAddressesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList = Array<number>;
 export const DeleteFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList>;
+  AddFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList =
   Array<string>;
 export const DeleteFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList =
   Array<string>;
 export const DeleteFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type DeleteFirewallRulesRequestOutboundRulesItemDestinationsTagsList = Array<string>;
 export const DeleteFirewallRulesRequestOutboundRulesItemDestinationsTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsTagsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DeleteFirewallRulesRequestOutboundRulesItemDestinationsTagsList>;
 
 export interface DeleteFirewallRulesRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -19175,15 +18577,13 @@ export const DeleteFirewallRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRulesRequest>;
 
 export interface DeleteFirewallRulesResponse {}
-export const DeleteFirewallRulesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallRulesResponse",
-}) as any as S.Schema<DeleteFirewallRulesResponse>;
+export const DeleteFirewallRulesResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteFirewallRulesResponse>;
 
 /** An array containing the names of the Tags to be removed from the firewall. */
 export type DeleteFirewallTagsRequestTagsList = Array<string>;
-export const DeleteFirewallTagsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteFirewallTagsRequestTagsList>;
+export const DeleteFirewallTagsRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DeleteFirewallTagsRequestTagsList>;
 
 export interface DeleteFirewallTagsRequest {
   /** A unique ID that can be used to identify and reference a firewall. */
@@ -19201,9 +18601,8 @@ export const DeleteFirewallTagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallTagsRequest>;
 
 export interface DeleteFirewallTagsResponse {}
-export const DeleteFirewallTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFirewallTagsResponse",
-}) as any as S.Schema<DeleteFirewallTagsResponse>;
+export const DeleteFirewallTagsResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteFirewallTagsResponse>;
 
 export interface DeleteFloatingIPRequest {
   /** A floating IP address. */
@@ -19216,9 +18615,8 @@ export const DeleteFloatingIPRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFloatingIPRequest" }) as any as S.Schema<DeleteFloatingIPRequest>;
 
 export interface DeleteFloatingIPResponse {}
-export const DeleteFloatingIPResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteFloatingIPResponse",
-}) as any as S.Schema<DeleteFloatingIPResponse>;
+export const DeleteFloatingIPResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteFloatingIPResponse>;
 
 export interface DeleteFunctionNamespaceRequest {
   /** The ID of the namespace to be managed. */
@@ -19233,9 +18631,8 @@ export const DeleteFunctionNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFunctionNamespaceRequest>;
 
 export interface DeleteFunctionNamespaceResponse {}
-export const DeleteFunctionNamespaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteFunctionNamespaceResponse" },
-) as any as S.Schema<DeleteFunctionNamespaceResponse>;
+export const DeleteFunctionNamespaceResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<DeleteFunctionNamespaceResponse>;
 
 export interface DeleteFunctionsAccessKeyRequest {
   /** The ID of the namespace to be managed. */
@@ -19259,11 +18656,8 @@ export const DeleteFunctionsAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFunctionsAccessKeyRequest>;
 
 export type DeleteFunctionsAccessKeyResponse = unknown;
-export const DeleteFunctionsAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteFunctionsAccessKeyResponse",
-}) as any as S.Schema<DeleteFunctionsAccessKeyResponse>;
+export const DeleteFunctionsAccessKeyResponse =
+  CreatePartnerAttachmentServiceKeyResponse as any as S.Schema<DeleteFunctionsAccessKeyResponse>;
 
 export interface DeleteGenaiAgentRequest {
   /** Unique agent id */
@@ -19279,11 +18673,7 @@ export const DeleteGenaiAgentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiDeleteAgentOutput {
   agent?: ApiAgent;
 }
-export const ApiDeleteAgentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({ identifier: "ApiDeleteAgentOutput" }) as any as S.Schema<ApiDeleteAgentOutput>;
+export const ApiDeleteAgentOutput = ApiCreateAgentOutput as any as S.Schema<ApiDeleteAgentOutput>;
 
 export interface DeleteGenaiAgentApiKeyRequest {
   /** A unique identifier for your agent. */
@@ -19309,13 +18699,8 @@ export const DeleteGenaiAgentApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiDeleteAgentAPIKeyOutput {
   api_key_info?: ApiAgentAPIKeyInfo;
 }
-export const ApiDeleteAgentAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAgentAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiDeleteAgentAPIKeyOutput",
-}) as any as S.Schema<ApiDeleteAgentAPIKeyOutput>;
+export const ApiDeleteAgentAPIKeyOutput =
+  ApiCreateAgentAPIKeyOutput as any as S.Schema<ApiDeleteAgentAPIKeyOutput>;
 
 export interface DeleteGenaiAnthropicApiKeyRequest {
   /** API key ID */
@@ -19333,13 +18718,8 @@ export const DeleteGenaiAnthropicApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiDeleteAnthropicAPIKeyOutput {
   api_key_info?: ApiAnthropicAPIKeyInfo;
 }
-export const ApiDeleteAnthropicAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAnthropicAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiDeleteAnthropicAPIKeyOutput",
-}) as any as S.Schema<ApiDeleteAnthropicAPIKeyOutput>;
+export const ApiDeleteAnthropicAPIKeyOutput =
+  ApiCreateAnthropicAPIKeyOutput as any as S.Schema<ApiDeleteAnthropicAPIKeyOutput>;
 
 export interface DeleteGenaiCustomEvaluationMetricRequest {
   /** UUID of the custom metric to delete. */
@@ -19360,11 +18740,8 @@ export const DeleteGenaiCustomEvaluationMetricRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteGenaiCustomEvaluationMetricRequest>;
 
 export type DeleteGenaiCustomEvaluationMetricResponse = unknown;
-export const DeleteGenaiCustomEvaluationMetricResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteGenaiCustomEvaluationMetricResponse",
-}) as any as S.Schema<DeleteGenaiCustomEvaluationMetricResponse>;
+export const DeleteGenaiCustomEvaluationMetricResponse =
+  CreatePartnerAttachmentServiceKeyResponse as any as S.Schema<DeleteGenaiCustomEvaluationMetricResponse>;
 
 export interface DeleteGenaiCustomModelRequest {
   /** UUID of the custom model to delete */
@@ -19415,11 +18792,8 @@ export const DeleteGenaiEvaluationDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGenaiEvaluationDatasetRequest>;
 
 export type DeleteGenaiEvaluationDatasetResponse = unknown;
-export const DeleteGenaiEvaluationDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteGenaiEvaluationDatasetResponse",
-}) as any as S.Schema<DeleteGenaiEvaluationDatasetResponse>;
+export const DeleteGenaiEvaluationDatasetResponse =
+  CreatePartnerAttachmentServiceKeyResponse as any as S.Schema<DeleteGenaiEvaluationDatasetResponse>;
 
 export interface DeleteGenaiKnowledgeBaseRequest {
   /** Knowledge base id */
@@ -19504,13 +18878,8 @@ export const ApiModelAPIKeyInfo = ApiAgentAPIKeyInfo;
 export interface ApiDeleteModelAPIKeyOutput {
   api_key_info?: ApiAgentAPIKeyInfo;
 }
-export const ApiDeleteModelAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAgentAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiDeleteModelAPIKeyOutput",
-}) as any as S.Schema<ApiDeleteModelAPIKeyOutput>;
+export const ApiDeleteModelAPIKeyOutput =
+  ApiCreateAgentAPIKeyOutput as any as S.Schema<ApiDeleteModelAPIKeyOutput>;
 
 export interface DeleteGenaiModelEvaluationPresetRequest {
   /** UUID of the evaluation preset to delete. */
@@ -19531,11 +18900,8 @@ export const DeleteGenaiModelEvaluationPresetRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteGenaiModelEvaluationPresetRequest>;
 
 export type DeleteGenaiModelEvaluationPresetResponse = unknown;
-export const DeleteGenaiModelEvaluationPresetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DeleteGenaiModelEvaluationPresetResponse",
-}) as any as S.Schema<DeleteGenaiModelEvaluationPresetResponse>;
+export const DeleteGenaiModelEvaluationPresetResponse =
+  CreatePartnerAttachmentServiceKeyResponse as any as S.Schema<DeleteGenaiModelEvaluationPresetResponse>;
 
 export interface DeleteGenaiModelEvaluationRunRequest {
   /** UUID of the model evaluation run to delete. The run must be in a terminal status (`successful`, `partially_successful`, `failed`, or `cancelled`). For runs still in progress, either wait for the run to finish or cancel it, then retry the delete. */
@@ -19593,13 +18959,8 @@ export interface ApiDeleteModelRouterOutput {
   /** The id of the deleted model router */
   uuid?: string;
 }
-export const ApiDeleteModelRouterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiDeleteModelRouterOutput",
-}) as any as S.Schema<ApiDeleteModelRouterOutput>;
+export const ApiDeleteModelRouterOutput =
+  ApiDeleteKnowledgeBaseOutput as any as S.Schema<ApiDeleteModelRouterOutput>;
 
 export interface DeleteGenaiOpenaiApiKeyRequest {
   /** API key ID */
@@ -19617,13 +18978,8 @@ export const DeleteGenaiOpenaiApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiDeleteOpenAIAPIKeyOutput {
   api_key_info?: ApiOpenAIAPIKeyInfo;
 }
-export const ApiDeleteOpenAIAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiOpenAIAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiDeleteOpenAIAPIKeyOutput",
-}) as any as S.Schema<ApiDeleteOpenAIAPIKeyOutput>;
+export const ApiDeleteOpenAIAPIKeyOutput =
+  ApiCreateOpenAIAPIKeyOutput as any as S.Schema<ApiDeleteOpenAIAPIKeyOutput>;
 
 export interface DeleteGenaiScenarioSetRequest {
   /** UUID of the scenario set to delete. Returned by `CreateScenarioSet` and listed via `ListScenarioSets`. A set still referenced by a simulation run cannot be deleted. */
@@ -19667,13 +19023,8 @@ export const DeleteGenaiScheduledIndexingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiDeleteScheduledIndexingOutput {
   indexing_info?: ApiScheduledIndexingInfo;
 }
-export const ApiDeleteScheduledIndexingOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexing_info: S.optional(ApiScheduledIndexingInfo),
-  }),
-).annotate({
-  identifier: "ApiDeleteScheduledIndexingOutput",
-}) as any as S.Schema<ApiDeleteScheduledIndexingOutput>;
+export const ApiDeleteScheduledIndexingOutput =
+  ApiCreateScheduledIndexingOutput as any as S.Schema<ApiDeleteScheduledIndexingOutput>;
 
 export interface DeleteGenaiSimulationRunRequest {
   /** UUID of the simulation run to delete. The run must be in a terminal status. For runs still in progress, cancel the run first, then retry the delete. */
@@ -19733,9 +19084,7 @@ export const DeleteImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteImageRequest" }) as any as S.Schema<DeleteImageRequest>;
 
 export interface DeleteImageResponse {}
-export const DeleteImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteImageResponse",
-}) as any as S.Schema<DeleteImageResponse>;
+export const DeleteImageResponse = AddFirewallRulesResponse as any as S.Schema<DeleteImageResponse>;
 
 export interface DeleteInsightAlertRuleRequest {
   /** A unique identifier for an alert rule. */
@@ -19750,9 +19099,8 @@ export const DeleteInsightAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInsightAlertRuleRequest>;
 
 export interface DeleteInsightAlertRuleResponse {}
-export const DeleteInsightAlertRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInsightAlertRuleResponse",
-}) as any as S.Schema<DeleteInsightAlertRuleResponse>;
+export const DeleteInsightAlertRuleResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteInsightAlertRuleResponse>;
 
 export interface DeleteInsightNotificationChannelRequest {
   /** A unique identifier for a notification channel. */
@@ -19767,11 +19115,8 @@ export const DeleteInsightNotificationChannelRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteInsightNotificationChannelRequest>;
 
 export interface DeleteInsightNotificationChannelResponse {}
-export const DeleteInsightNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInsightNotificationChannelResponse",
-}) as any as S.Schema<DeleteInsightNotificationChannelResponse>;
+export const DeleteInsightNotificationChannelResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteInsightNotificationChannelResponse>;
 
 export interface DeleteKubernetesClusterRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -19786,9 +19131,8 @@ export const DeleteKubernetesClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKubernetesClusterRequest>;
 
 export interface DeleteKubernetesClusterResponse {}
-export const DeleteKubernetesClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteKubernetesClusterResponse" },
-) as any as S.Schema<DeleteKubernetesClusterResponse>;
+export const DeleteKubernetesClusterResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<DeleteKubernetesClusterResponse>;
 
 export interface DeleteKubernetesNodeRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -19821,9 +19165,8 @@ export const DeleteKubernetesNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKubernetesNodeRequest>;
 
 export interface DeleteKubernetesNodeResponse {}
-export const DeleteKubernetesNodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteKubernetesNodeResponse",
-}) as any as S.Schema<DeleteKubernetesNodeResponse>;
+export const DeleteKubernetesNodeResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteKubernetesNodeResponse>;
 
 export interface DeleteKubernetesNodePoolRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -19847,11 +19190,8 @@ export const DeleteKubernetesNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKubernetesNodePoolRequest>;
 
 export interface DeleteKubernetesNodePoolResponse {}
-export const DeleteKubernetesNodePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteKubernetesNodePoolResponse",
-}) as any as S.Schema<DeleteKubernetesNodePoolResponse>;
+export const DeleteKubernetesNodePoolResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteKubernetesNodePoolResponse>;
 
 export interface DeleteLoadBalancerRequest {
   /** A unique identifier for a load balancer. */
@@ -19866,9 +19206,8 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 export interface DeleteLoadBalancerResponse {}
-export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLoadBalancerResponse",
-}) as any as S.Schema<DeleteLoadBalancerResponse>;
+export const DeleteLoadBalancerResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteLoadBalancerResponse>;
 
 export interface DeleteLoadBalancerCacheRequest {
   /** A unique identifier for a load balancer. */
@@ -19883,9 +19222,8 @@ export const DeleteLoadBalancerCacheRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerCacheRequest>;
 
 export interface DeleteLoadBalancerCacheResponse {}
-export const DeleteLoadBalancerCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteLoadBalancerCacheResponse" },
-) as any as S.Schema<DeleteLoadBalancerCacheResponse>;
+export const DeleteLoadBalancerCacheResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<DeleteLoadBalancerCacheResponse>;
 
 export interface DeleteMcpServerRequest {
   /** Server identifier (`serverRef`) of one of your team's MCP servers. */
@@ -19912,11 +19250,8 @@ export const DeleteMonitoringAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMonitoringAlertPolicyRequest>;
 
 export interface DeleteMonitoringAlertPolicyResponse {}
-export const DeleteMonitoringAlertPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMonitoringAlertPolicyResponse",
-}) as any as S.Schema<DeleteMonitoringAlertPolicyResponse>;
+export const DeleteMonitoringAlertPolicyResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteMonitoringAlertPolicyResponse>;
 
 export interface DeleteMonitoringDestinationRequest {
   /** A unique identifier for a destination. */
@@ -19937,11 +19272,8 @@ export const DeleteMonitoringDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMonitoringDestinationRequest>;
 
 export interface DeleteMonitoringDestinationResponse {}
-export const DeleteMonitoringDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMonitoringDestinationResponse",
-}) as any as S.Schema<DeleteMonitoringDestinationResponse>;
+export const DeleteMonitoringDestinationResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteMonitoringDestinationResponse>;
 
 export interface DeleteMonitoringSinkRequest {
   /** A unique identifier for a sink. */
@@ -19956,9 +19288,8 @@ export const DeleteMonitoringSinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMonitoringSinkRequest>;
 
 export interface DeleteMonitoringSinkResponse {}
-export const DeleteMonitoringSinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMonitoringSinkResponse",
-}) as any as S.Schema<DeleteMonitoringSinkResponse>;
+export const DeleteMonitoringSinkResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteMonitoringSinkResponse>;
 
 export interface DeleteNfsRequest {
   /** The unique ID of the NFS share */
@@ -19974,9 +19305,7 @@ export const DeleteNfsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNfsRequest" }) as any as S.Schema<DeleteNfsRequest>;
 
 export interface DeleteNfsResponse {}
-export const DeleteNfsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNfsResponse",
-}) as any as S.Schema<DeleteNfsResponse>;
+export const DeleteNfsResponse = AddFirewallRulesResponse as any as S.Schema<DeleteNfsResponse>;
 
 export interface DeleteNfsAccessPointRequest {
   /** The unique identifier of the NFS access point. */
@@ -20004,9 +19333,8 @@ export const DeleteNfsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNfsSnapshotRequest" }) as any as S.Schema<DeleteNfsSnapshotRequest>;
 
 export interface DeleteNfsSnapshotResponse {}
-export const DeleteNfsSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNfsSnapshotResponse",
-}) as any as S.Schema<DeleteNfsSnapshotResponse>;
+export const DeleteNfsSnapshotResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteNfsSnapshotResponse>;
 
 export interface DeleteOutputViewRequest {
   /** Output view ID. */
@@ -20037,13 +19365,8 @@ export const DeletePartnerAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePartnerAttachmentResponse {
   partner_attachment?: PartnerAttachment;
 }
-export const DeletePartnerAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partner_attachment: S.optional(PartnerAttachment),
-  }),
-).annotate({
-  identifier: "DeletePartnerAttachmentResponse",
-}) as any as S.Schema<DeletePartnerAttachmentResponse>;
+export const DeletePartnerAttachmentResponse =
+  CreatePartnerAttachmentResponse as any as S.Schema<DeletePartnerAttachmentResponse>;
 
 export interface DeleteProjectRequest {
   /** A unique identifier for a project. */
@@ -20056,9 +19379,8 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteRegistryRequest {
   /** The name of a container registry. */
@@ -20071,9 +19393,8 @@ export const DeleteRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRegistryRequest" }) as any as S.Schema<DeleteRegistryRequest>;
 
 export interface DeleteRegistryResponse {}
-export const DeleteRegistryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRegistryResponse",
-}) as any as S.Schema<DeleteRegistryResponse>;
+export const DeleteRegistryResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteRegistryResponse>;
 
 export interface DeleteRegistryRepositoryRequest {
   /** The name of a container registry. */
@@ -20097,11 +19418,8 @@ export const DeleteRegistryRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistryRepositoryRequest>;
 
 export interface DeleteRegistryRepositoryResponse {}
-export const DeleteRegistryRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRegistryRepositoryResponse",
-}) as any as S.Schema<DeleteRegistryRepositoryResponse>;
+export const DeleteRegistryRepositoryResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteRegistryRepositoryResponse>;
 
 export interface DeleteRegistryRepositoryManifestRequest {
   /** The name of a container registry. */
@@ -20128,11 +19446,8 @@ export const DeleteRegistryRepositoryManifestRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteRegistryRepositoryManifestRequest>;
 
 export interface DeleteRegistryRepositoryManifestResponse {}
-export const DeleteRegistryRepositoryManifestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRegistryRepositoryManifestResponse",
-}) as any as S.Schema<DeleteRegistryRepositoryManifestResponse>;
+export const DeleteRegistryRepositoryManifestResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteRegistryRepositoryManifestResponse>;
 
 export interface DeleteRegistryRepositoryTagRequest {
   /** The name of a container registry. */
@@ -20159,11 +19474,8 @@ export const DeleteRegistryRepositoryTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistryRepositoryTagRequest>;
 
 export interface DeleteRegistryRepositoryTagResponse {}
-export const DeleteRegistryRepositoryTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRegistryRepositoryTagResponse",
-}) as any as S.Schema<DeleteRegistryRepositoryTagResponse>;
+export const DeleteRegistryRepositoryTagResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteRegistryRepositoryTagResponse>;
 
 export interface DeleteReservedIPRequest {
   /** A reserved IP address. */
@@ -20176,9 +19488,8 @@ export const DeleteReservedIPRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReservedIPRequest" }) as any as S.Schema<DeleteReservedIPRequest>;
 
 export interface DeleteReservedIPResponse {}
-export const DeleteReservedIPResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReservedIPResponse",
-}) as any as S.Schema<DeleteReservedIPResponse>;
+export const DeleteReservedIPResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteReservedIPResponse>;
 
 export interface DeleteReservedIPv6Request {
   /** A reserved IPv6 address. */
@@ -20193,9 +19504,8 @@ export const DeleteReservedIPv6Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReservedIPv6Request>;
 
 export interface DeleteReservedIPv6Response {}
-export const DeleteReservedIPv6Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteReservedIPv6Response",
-}) as any as S.Schema<DeleteReservedIPv6Response>;
+export const DeleteReservedIPv6Response =
+  AddFirewallRulesResponse as any as S.Schema<DeleteReservedIPv6Response>;
 
 export interface DeleteSecuritySuppressionRequest {
   /** The suppression UUID to remove. */
@@ -20216,11 +19526,8 @@ export const DeleteSecuritySuppressionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSecuritySuppressionRequest>;
 
 export interface DeleteSecuritySuppressionResponse {}
-export const DeleteSecuritySuppressionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteSecuritySuppressionResponse",
-}) as any as S.Schema<DeleteSecuritySuppressionResponse>;
+export const DeleteSecuritySuppressionResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteSecuritySuppressionResponse>;
 
 export interface DeleteSessionRequest {
   /** URN of the session, for example `do:managed_agent_session:<uuid>`. */
@@ -20235,9 +19542,8 @@ export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export type DeleteSessionResponse = unknown;
-export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "DeleteSessionResponse" }) as any as S.Schema<DeleteSessionResponse>;
+export const DeleteSessionResponse =
+  DeleteActorLimitResponse as any as S.Schema<DeleteSessionResponse>;
 
 export interface DeleteSnapshotRequest {
   /** Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot. */
@@ -20250,9 +19556,8 @@ export const DeleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSnapshotRequest" }) as any as S.Schema<DeleteSnapshotRequest>;
 
 export interface DeleteSnapshotResponse {}
-export const DeleteSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSnapshotResponse",
-}) as any as S.Schema<DeleteSnapshotResponse>;
+export const DeleteSnapshotResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteSnapshotResponse>;
 
 export interface DeleteSpacesKeyRequest {
   /** The access key's ID. */
@@ -20265,9 +19570,8 @@ export const DeleteSpacesKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSpacesKeyRequest" }) as any as S.Schema<DeleteSpacesKeyRequest>;
 
 export interface DeleteSpacesKeyResponse {}
-export const DeleteSpacesKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSpacesKeyResponse",
-}) as any as S.Schema<DeleteSpacesKeyResponse>;
+export const DeleteSpacesKeyResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteSpacesKeyResponse>;
 
 export interface DeleteSshKeyRequest {
   /** Either the ID or the fingerprint of an existing SSH key. */
@@ -20280,9 +19584,8 @@ export const DeleteSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSshKeyRequest" }) as any as S.Schema<DeleteSshKeyRequest>;
 
 export interface DeleteSshKeyResponse {}
-export const DeleteSshKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSshKeyResponse",
-}) as any as S.Schema<DeleteSshKeyResponse>;
+export const DeleteSshKeyResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteSshKeyResponse>;
 
 export interface DeleteTagRequest {
   /** The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag. */
@@ -20295,9 +19598,7 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRequest" }) as any as S.Schema<DeleteTagRequest>;
 
 export interface DeleteTagResponse {}
-export const DeleteTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTagResponse",
-}) as any as S.Schema<DeleteTagResponse>;
+export const DeleteTagResponse = AddFirewallRulesResponse as any as S.Schema<DeleteTagResponse>;
 
 export interface DeleteToolbeltRequest {
   /** Toolbelt name. */
@@ -20311,9 +19612,8 @@ export const DeleteToolbeltRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tool slugs (`<provider>_<name>`) to add or remove, each optionally pinned as `<tool_slug>@<version>`. At least one is required. When adding, a pin must equal the tool's current released version. */
 export type DeleteToolbeltToolsRequestToolsList = Array<string>;
-export const DeleteToolbeltToolsRequestToolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteToolbeltToolsRequestToolsList>;
+export const DeleteToolbeltToolsRequestToolsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DeleteToolbeltToolsRequestToolsList>;
 
 export interface DeleteToolbeltToolsRequest {
   /** Toolbelt name, from the path. */
@@ -20348,9 +19648,8 @@ export const DeleteUptimeAlertRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUptimeAlertRequest" }) as any as S.Schema<DeleteUptimeAlertRequest>;
 
 export interface DeleteUptimeAlertResponse {}
-export const DeleteUptimeAlertResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUptimeAlertResponse",
-}) as any as S.Schema<DeleteUptimeAlertResponse>;
+export const DeleteUptimeAlertResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteUptimeAlertResponse>;
 
 export interface DeleteUptimeCheckRequest {
   /** A unique identifier for a check. */
@@ -20363,9 +19662,8 @@ export const DeleteUptimeCheckRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUptimeCheckRequest" }) as any as S.Schema<DeleteUptimeCheckRequest>;
 
 export interface DeleteUptimeCheckResponse {}
-export const DeleteUptimeCheckResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUptimeCheckResponse",
-}) as any as S.Schema<DeleteUptimeCheckResponse>;
+export const DeleteUptimeCheckResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteUptimeCheckResponse>;
 
 export interface DeleteVectorDatabaseRequest {
   /** ID of the vector database. */
@@ -20380,9 +19678,8 @@ export const DeleteVectorDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVectorDatabaseRequest>;
 
 export interface DeleteVectorDatabaseResponse {}
-export const DeleteVectorDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVectorDatabaseResponse",
-}) as any as S.Schema<DeleteVectorDatabaseResponse>;
+export const DeleteVectorDatabaseResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteVectorDatabaseResponse>;
 
 export interface DeleteVolumeRequest {
   /** The ID of the block storage volume. */
@@ -20395,9 +19692,8 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeResponse",
-}) as any as S.Schema<DeleteVolumeResponse>;
+export const DeleteVolumeResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteVolumeResponse>;
 
 export interface DeleteVolumeByNameRequest {
   /** The block storage volume's name. */
@@ -20415,9 +19711,8 @@ export const DeleteVolumeByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeByNameRequest>;
 
 export interface DeleteVolumeByNameResponse {}
-export const DeleteVolumeByNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVolumeByNameResponse",
-}) as any as S.Schema<DeleteVolumeByNameResponse>;
+export const DeleteVolumeByNameResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteVolumeByNameResponse>;
 
 export interface DeleteVolumeSnapshotByIdRequest {
   /** The unique identifier for the snapshot. */
@@ -20432,11 +19727,8 @@ export const DeleteVolumeSnapshotByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeSnapshotByIdRequest>;
 
 export interface DeleteVolumeSnapshotByIdResponse {}
-export const DeleteVolumeSnapshotByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteVolumeSnapshotByIdResponse",
-}) as any as S.Schema<DeleteVolumeSnapshotByIdResponse>;
+export const DeleteVolumeSnapshotByIdResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DeleteVolumeSnapshotByIdResponse>;
 
 export interface DeleteVpcRequest {
   /** A unique identifier for a VPC. */
@@ -20449,9 +19741,7 @@ export const DeleteVpcRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVpcRequest" }) as any as S.Schema<DeleteVpcRequest>;
 
 export interface DeleteVpcResponse {}
-export const DeleteVpcResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVpcResponse",
-}) as any as S.Schema<DeleteVpcResponse>;
+export const DeleteVpcResponse = AddFirewallRulesResponse as any as S.Schema<DeleteVpcResponse>;
 
 export interface DeleteVpcnatgatewayRequest {
   /** The unique identifier of the VPC NAT gateway. */
@@ -20466,9 +19756,8 @@ export const DeleteVpcnatgatewayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVpcnatgatewayRequest>;
 
 export interface DeleteVpcnatgatewayResponse {}
-export const DeleteVpcnatgatewayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVpcnatgatewayResponse",
-}) as any as S.Schema<DeleteVpcnatgatewayResponse>;
+export const DeleteVpcnatgatewayResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteVpcnatgatewayResponse>;
 
 export interface DeleteVpcPeeringRequest {
   /** A unique identifier for a VPC peering. */
@@ -20483,11 +19772,8 @@ export const DeleteVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVpcPeeringResponse {
   vpc_peering?: VpcPeering;
 }
-export const DeleteVpcPeeringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc_peering: S.optional(VpcPeering),
-  }),
-).annotate({ identifier: "DeleteVpcPeeringResponse" }) as any as S.Schema<DeleteVpcPeeringResponse>;
+export const DeleteVpcPeeringResponse =
+  CreateVpcPeeringResponse as any as S.Schema<DeleteVpcPeeringResponse>;
 
 export interface DeleteVpcSubnetRequest {
   /** The unique identifier of the VPC to which the subnet belongs. */
@@ -20505,9 +19791,8 @@ export const DeleteVpcSubnetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVpcSubnetRequest" }) as any as S.Schema<DeleteVpcSubnetRequest>;
 
 export interface DeleteVpcSubnetResponse {}
-export const DeleteVpcSubnetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVpcSubnetResponse",
-}) as any as S.Schema<DeleteVpcSubnetResponse>;
+export const DeleteVpcSubnetResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteVpcSubnetResponse>;
 
 export interface DeleteVpcSubnetRouteRequest {
   /** The unique identifier of the VPC. */
@@ -20534,9 +19819,8 @@ export const DeleteVpcSubnetRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVpcSubnetRouteRequest>;
 
 export interface DeleteVpcSubnetRouteResponse {}
-export const DeleteVpcSubnetRouteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVpcSubnetRouteResponse",
-}) as any as S.Schema<DeleteVpcSubnetRouteResponse>;
+export const DeleteVpcSubnetRouteResponse =
+  AddFirewallRulesResponse as any as S.Schema<DeleteVpcSubnetRouteResponse>;
 
 export interface DetachGenaiAgentRequest {
   /** Pagent agent id */
@@ -20564,12 +19848,7 @@ export interface ApiUnlinkAgentOutput {
   /** Pagent agent id */
   parent_agent_uuid?: string;
 }
-export const ApiUnlinkAgentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    child_agent_uuid: S.optional(S.String),
-    parent_agent_uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "ApiUnlinkAgentOutput" }) as any as S.Schema<ApiUnlinkAgentOutput>;
+export const ApiUnlinkAgentOutput = ApiLinkAgentOutput as any as S.Schema<ApiUnlinkAgentOutput>;
 
 export interface DetachGenaiAgentFunctionRequest {
   /** The id of the agent the function route belongs to. */
@@ -20596,13 +19875,8 @@ export const DetachGenaiAgentFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUnlinkAgentFunctionOutput {
   agent?: ApiAgent;
 }
-export const ApiUnlinkAgentFunctionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({
-  identifier: "ApiUnlinkAgentFunctionOutput",
-}) as any as S.Schema<ApiUnlinkAgentFunctionOutput>;
+export const ApiUnlinkAgentFunctionOutput =
+  ApiLinkAgentFunctionOutput as any as S.Schema<ApiUnlinkAgentFunctionOutput>;
 
 export interface DetachGenaiAgentGuardrailRequest {
   /** The UUID of the agent. */
@@ -20629,13 +19903,8 @@ export const DetachGenaiAgentGuardrailRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUnlinkAgentGuardrailOutput {
   agent?: ApiAgent;
 }
-export const ApiUnlinkAgentGuardrailOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({
-  identifier: "ApiUnlinkAgentGuardrailOutput",
-}) as any as S.Schema<ApiUnlinkAgentGuardrailOutput>;
+export const ApiUnlinkAgentGuardrailOutput =
+  ApiLinkAgentFunctionOutput as any as S.Schema<ApiUnlinkAgentGuardrailOutput>;
 
 export interface DetachGenaiKnowledgeBaseRequest {
   /** Agent id */
@@ -20662,13 +19931,8 @@ export const DetachGenaiKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUnlinkKnowledgeBaseOutput {
   agent?: ApiAgent;
 }
-export const ApiUnlinkKnowledgeBaseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({
-  identifier: "ApiUnlinkKnowledgeBaseOutput",
-}) as any as S.Schema<ApiUnlinkKnowledgeBaseOutput>;
+export const ApiUnlinkKnowledgeBaseOutput =
+  ApiLinkAgentFunctionOutput as any as S.Schema<ApiUnlinkKnowledgeBaseOutput>;
 
 export interface DropletsDestroyRequest {
   /** A unique identifier for a Droplet instance. */
@@ -20681,9 +19945,8 @@ export const DropletsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DropletsDestroyRequest" }) as any as S.Schema<DropletsDestroyRequest>;
 
 export interface DropletsDestroyResponse {}
-export const DropletsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DropletsDestroyResponse",
-}) as any as S.Schema<DropletsDestroyResponse>;
+export const DropletsDestroyResponse =
+  AddFirewallRulesResponse as any as S.Schema<DropletsDestroyResponse>;
 
 export interface DropletsDestroyByTagRequest {
   /** Specifies Droplets to be deleted by tag. */
@@ -20698,9 +19961,8 @@ export const DropletsDestroyByTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DropletsDestroyByTagRequest>;
 
 export interface DropletsDestroyByTagResponse {}
-export const DropletsDestroyByTagResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DropletsDestroyByTagResponse",
-}) as any as S.Schema<DropletsDestroyByTagResponse>;
+export const DropletsDestroyByTagResponse =
+  AddFirewallRulesResponse as any as S.Schema<DropletsDestroyByTagResponse>;
 
 export interface DropletsDestroyWithAssociatedResourcesDangerousRequest {
   /** A unique identifier for a Droplet instance. */
@@ -20721,47 +19983,34 @@ export const DropletsDestroyWithAssociatedResourcesDangerousRequest = /*@__PURE_
 }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesDangerousRequest>;
 
 export interface DropletsDestroyWithAssociatedResourcesDangerousResponse {}
-export const DropletsDestroyWithAssociatedResourcesDangerousResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DropletsDestroyWithAssociatedResourcesDangerousResponse",
-}) as any as S.Schema<DropletsDestroyWithAssociatedResourcesDangerousResponse>;
+export const DropletsDestroyWithAssociatedResourcesDangerousResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DropletsDestroyWithAssociatedResourcesDangerousResponse>;
 
 /** An array of unique identifiers for the floating IPs to be scheduled for deletion. */
 export type DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList = Array<string>;
 export const DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList>;
 
 /** An array of unique identifiers for the reserved IPs to be scheduled for deletion. */
 export type DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList = Array<string>;
 export const DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList>;
 
 /** An array of unique identifiers for the snapshots to be scheduled for deletion. */
 export type DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList = Array<string>;
 export const DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList>;
 
 /** An array of unique identifiers for the volumes to be scheduled for deletion. */
 export type DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList = Array<string>;
 export const DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList>;
 
 /** An array of unique identifiers for the volume snapshots to be scheduled for deletion. */
 export type DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList =
   Array<string>;
 export const DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList>;
 
 export interface DropletsDestroyWithAssociatedResourcesSelectiveRequest {
   /** A unique identifier for a Droplet instance. */
@@ -20799,11 +20048,8 @@ export const DropletsDestroyWithAssociatedResourcesSelectiveRequest = /*@__PURE_
 }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequest>;
 
 export interface DropletsDestroyWithAssociatedResourcesSelectiveResponse {}
-export const DropletsDestroyWithAssociatedResourcesSelectiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DropletsDestroyWithAssociatedResourcesSelectiveResponse",
-}) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveResponse>;
+export const DropletsDestroyWithAssociatedResourcesSelectiveResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveResponse>;
 
 /** Optional data to be sent to function while triggering the function. */
 export interface ScheduledDetailsBody {
@@ -20935,9 +20181,8 @@ export const FunctionsDeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionsDeleteTriggerRequest>;
 
 export interface FunctionsDeleteTriggerResponse {}
-export const FunctionsDeleteTriggerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FunctionsDeleteTriggerResponse",
-}) as any as S.Schema<FunctionsDeleteTriggerResponse>;
+export const FunctionsDeleteTriggerResponse =
+  AddFirewallRulesResponse as any as S.Schema<FunctionsDeleteTriggerResponse>;
 
 export interface FunctionsGetTriggerRequest {
   /** The ID of the namespace to be managed. */
@@ -20963,13 +20208,8 @@ export const FunctionsGetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionsGetTriggerResponse {
   trigger?: TriggerInfo;
 }
-export const FunctionsGetTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: S.optional(TriggerInfo),
-  }),
-).annotate({
-  identifier: "FunctionsGetTriggerResponse",
-}) as any as S.Schema<FunctionsGetTriggerResponse>;
+export const FunctionsGetTriggerResponse =
+  FunctionsCreateTriggerResponse as any as S.Schema<FunctionsGetTriggerResponse>;
 
 export interface FunctionsUpdateTriggerRequest {
   /** The ID of the namespace to be managed. */
@@ -21000,13 +20240,8 @@ export const FunctionsUpdateTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionsUpdateTriggerResponse {
   trigger?: TriggerInfo;
 }
-export const FunctionsUpdateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: S.optional(TriggerInfo),
-  }),
-).annotate({
-  identifier: "FunctionsUpdateTriggerResponse",
-}) as any as S.Schema<FunctionsUpdateTriggerResponse>;
+export const FunctionsUpdateTriggerResponse =
+  FunctionsCreateTriggerResponse as any as S.Schema<FunctionsUpdateTriggerResponse>;
 
 /** A single file's metadata in the request. */
 export interface ApiPresignedUrlFile {
@@ -21114,13 +20349,8 @@ export const GenaiCreateDuplicateScenarioSetRequest = /*@__PURE__*/ S.suspend(()
 export interface ApiDuplicateScenarioSetOutput {
   scenario_set?: ApiScenarioSet;
 }
-export const ApiDuplicateScenarioSetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scenario_set: S.optional(ApiScenarioSet),
-  }),
-).annotate({
-  identifier: "ApiDuplicateScenarioSetOutput",
-}) as any as S.Schema<ApiDuplicateScenarioSetOutput>;
+export const ApiDuplicateScenarioSetOutput =
+  ApiGenerateScenarioSetOutput as any as S.Schema<ApiDuplicateScenarioSetOutput>;
 
 /** A list of files to generate presigned URLs for. */
 export type GenaiCreateEvaluationDatasetFileUploadPresignedUrlsRequestFilesList =
@@ -21152,9 +20382,8 @@ export const GenaiCreateEvaluationDatasetFileUploadPresignedUrlsRequest = /*@__P
 /** A list of files to generate presigned URLs for. */
 export type GenaiCreateModelEvalDatasetUploadPresignedUrlsRequestFilesList =
   Array<ApiPresignedUrlFile>;
-export const GenaiCreateModelEvalDatasetUploadPresignedUrlsRequestFilesList = /*@__PURE__*/ S.Array(
-  ApiPresignedUrlFile,
-) as any as S.Schema<GenaiCreateModelEvalDatasetUploadPresignedUrlsRequestFilesList>;
+export const GenaiCreateModelEvalDatasetUploadPresignedUrlsRequestFilesList =
+  GenaiCreateDataSourceFileUploadPresignedUrlsRequestFilesList as any as S.Schema<GenaiCreateModelEvalDatasetUploadPresignedUrlsRequestFilesList>;
 
 export interface GenaiCreateModelEvalDatasetUploadPresignedUrlsRequest {
   /** A list of files to generate presigned URLs for. */
@@ -21176,9 +20405,8 @@ export const GenaiCreateModelEvalDatasetUploadPresignedUrlsRequest = /*@__PURE__
 
 /** A list of files to generate presigned URLs for. */
 export type GenaiCreateScenarioSetUploadPresignedUrlsRequestFilesList = Array<ApiPresignedUrlFile>;
-export const GenaiCreateScenarioSetUploadPresignedUrlsRequestFilesList = /*@__PURE__*/ S.Array(
-  ApiPresignedUrlFile,
-) as any as S.Schema<GenaiCreateScenarioSetUploadPresignedUrlsRequestFilesList>;
+export const GenaiCreateScenarioSetUploadPresignedUrlsRequestFilesList =
+  GenaiCreateDataSourceFileUploadPresignedUrlsRequestFilesList as any as S.Schema<GenaiCreateScenarioSetUploadPresignedUrlsRequestFilesList>;
 
 export interface GenaiCreateScenarioSetUploadPresignedUrlsRequest {
   /** A list of files to generate presigned URLs for. */
@@ -21257,14 +20485,8 @@ export interface ApiGetModelEvaluationRunResultsDownloadURLOutput {
   /** The time the URL expires at. */
   expires_at?: string;
 }
-export const ApiGetModelEvaluationRunResultsDownloadURLOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    download_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiGetModelEvaluationRunResultsDownloadURLOutput",
-}) as any as S.Schema<ApiGetModelEvaluationRunResultsDownloadURLOutput>;
+export const ApiGetModelEvaluationRunResultsDownloadURLOutput =
+  ApiGetEvaluationDatasetDownloadURLOutput as any as S.Schema<ApiGetModelEvaluationRunResultsDownloadURLOutput>;
 
 export interface GenaiGetScenarioSetDownloadUrlRequest {
   /** UUID of the scenario set. */
@@ -21291,14 +20513,8 @@ export interface ApiGetScenarioSetDownloadURLOutput {
   /** The time the URL expires at. */
   expires_at?: string;
 }
-export const ApiGetScenarioSetDownloadURLOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    download_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiGetScenarioSetDownloadURLOutput",
-}) as any as S.Schema<ApiGetScenarioSetDownloadURLOutput>;
+export const ApiGetScenarioSetDownloadURLOutput =
+  ApiGetEvaluationDatasetDownloadURLOutput as any as S.Schema<ApiGetScenarioSetDownloadURLOutput>;
 
 export interface GenaiPatchCancelSimulationRunRequest {
   /** UUID of the simulation run to cancel. Returned by `CreateSimulationRun` and listed via `ListSimulationRuns`. The run must be in a non-terminal status; already-terminal runs return an error. */
@@ -21318,13 +20534,8 @@ export const GenaiPatchCancelSimulationRunRequest = /*@__PURE__*/ S.suspend(() =
 export interface ApiCancelSimulationRunOutput {
   simulation_run?: ApiSimulationRun;
 }
-export const ApiCancelSimulationRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    simulation_run: S.optional(ApiSimulationRun),
-  }),
-).annotate({
-  identifier: "ApiCancelSimulationRunOutput",
-}) as any as S.Schema<ApiCancelSimulationRunOutput>;
+export const ApiCancelSimulationRunOutput =
+  ApiCreateSimulationRunOutput as any as S.Schema<ApiCancelSimulationRunOutput>;
 
 export interface GenaiRollbackToAgentVersionRequest {
   /** Agent unique identifier */
@@ -21576,11 +20787,7 @@ export const GetAddonRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAddonResponse {
   resource?: AddonsResource;
 }
-export const GetAddonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(AddonsResource),
-  }),
-).annotate({ identifier: "GetAddonResponse" }) as any as S.Schema<GetAddonResponse>;
+export const GetAddonResponse = CreateAddonResponse as any as S.Schema<GetAddonResponse>;
 
 export interface GetAddonAppRequest {}
 export const GetAddonAppRequest = /*@__PURE__*/ S.suspend(() =>
@@ -21809,9 +21016,8 @@ export type AddonsAppMetadataType = "string" | "boolean";
 export const AddonsAppMetadataType = S.String;
 
 export type AddonsAppMetadataOptionsList = Array<string>;
-export const AddonsAppMetadataOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AddonsAppMetadataOptionsList>;
+export const AddonsAppMetadataOptionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AddonsAppMetadataOptionsList>;
 
 export interface AddonsAppMetadata {
   /** Unique identifier for the addon metadata item. */
@@ -21897,11 +21103,7 @@ export const GetAppEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAppEventResponse {
   event?: AppEvent;
 }
-export const GetAppEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.optional(AppEvent),
-  }),
-).annotate({ identifier: "GetAppEventResponse" }) as any as S.Schema<GetAppEventResponse>;
+export const GetAppEventResponse = CancelAppEventResponse as any as S.Schema<GetAppEventResponse>;
 
 export type GetAppEventLogsRequestType =
   | "UNSPECIFIED"
@@ -21935,9 +21137,8 @@ export const GetAppEventLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAppEventLogsRequest" }) as any as S.Schema<GetAppEventLogsRequest>;
 
 export type AppsGetLogsResponseHistoricUrlsList = Array<string>;
-export const AppsGetLogsResponseHistoricUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsGetLogsResponseHistoricUrlsList>;
+export const AppsGetLogsResponseHistoricUrlsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppsGetLogsResponseHistoricUrlsList>;
 
 export interface AppsGetLogsResponse {
   historic_urls?: AppsGetLogsResponseHistoricUrlsList;
@@ -22592,12 +21793,7 @@ export interface GetConnectionResponse {
   /** Present only while the connection is pending and you created it. */
   authorization?: ConnectionAuthorization | null;
 }
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connection: S.optional(Connection),
-    authorization: S.optional(S.NullOr(ConnectionAuthorization)),
-  }),
-).annotate({ identifier: "GetConnectionResponse" }) as any as S.Schema<GetConnectionResponse>;
+export const GetConnectionResponse = ConnectionResponse as any as S.Schema<GetConnectionResponse>;
 
 export interface GetDatabaseRequest {
   /** A unique identifier for a database cluster. */
@@ -22621,11 +21817,7 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseResponse {
   db: Database;
 }
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    db: Database,
-  }),
-).annotate({ identifier: "GetDatabaseResponse" }) as any as S.Schema<GetDatabaseResponse>;
+export const GetDatabaseResponse = AddDatabaseResponse as any as S.Schema<GetDatabaseResponse>;
 
 export interface GetDatabaseAutoscaleRequest {
   /** A unique identifier for a database cluster. */
@@ -22696,13 +21888,8 @@ export const GetDatabaseClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseClusterResponse {
   database: DatabaseClusterRead;
 }
-export const GetDatabaseClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: DatabaseClusterRead,
-  }),
-).annotate({
-  identifier: "GetDatabaseClusterResponse",
-}) as any as S.Schema<GetDatabaseClusterResponse>;
+export const GetDatabaseClusterResponse =
+  CreateDatabaseClusterResponse as any as S.Schema<GetDatabaseClusterResponse>;
 
 export interface GetDatabaseClusterMetricsCredentialsRequest {}
 export const GetDatabaseClusterMetricsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -23527,9 +22714,8 @@ export const KafkaAdvancedConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart. */
 export type OpensearchAdvancedConfigReindexRemoteWhitelistList = Array<string>;
-export const OpensearchAdvancedConfigReindexRemoteWhitelistList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OpensearchAdvancedConfigReindexRemoteWhitelistList>;
+export const OpensearchAdvancedConfigReindexRemoteWhitelistList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OpensearchAdvancedConfigReindexRemoteWhitelistList>;
 
 export interface OpensearchAdvancedConfig {
   /** Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. */
@@ -23733,13 +22919,8 @@ export const GetDatabaseConnectionPoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseConnectionPoolResponse {
   pool: ConnectionPool;
 }
-export const GetDatabaseConnectionPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pool: ConnectionPool,
-  }),
-).annotate({
-  identifier: "GetDatabaseConnectionPoolResponse",
-}) as any as S.Schema<GetDatabaseConnectionPoolResponse>;
+export const GetDatabaseConnectionPoolResponse =
+  AddDatabaseConnectionPoolResponse as any as S.Schema<GetDatabaseConnectionPoolResponse>;
 
 export interface GetDatabaseDoSettingsRequest {
   /** A unique identifier for a database cluster. */
@@ -23757,9 +22938,8 @@ export const GetDatabaseDoSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of custom CNAMEs for the database cluster. Each CNAME must be a valid RFC 1123 hostname (e.g., "db.example.com"). Maximum of 16 CNAMEs allowed, each up to 253 characters. */
 export type DoSettingsServiceCnamesList = Array<string>;
-export const DoSettingsServiceCnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DoSettingsServiceCnamesList>;
+export const DoSettingsServiceCnamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DoSettingsServiceCnamesList>;
 
 /** DigitalOcean-specific settings for the database cluster. */
 export interface DoSettings {
@@ -24025,13 +23205,8 @@ export const GetDatabaseKafkaTopicRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseKafkaTopicResponse {
   topic?: KafkaTopicVerbose;
 }
-export const GetDatabaseKafkaTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(KafkaTopicVerbose),
-  }),
-).annotate({
-  identifier: "GetDatabaseKafkaTopicResponse",
-}) as any as S.Schema<GetDatabaseKafkaTopicResponse>;
+export const GetDatabaseKafkaTopicResponse =
+  CreateDatabaseKafkaTopicResponse as any as S.Schema<GetDatabaseKafkaTopicResponse>;
 
 export interface GetDatabaseLogsinkRequest {
   /** A unique identifier for a database cluster. */
@@ -24146,13 +23321,8 @@ export const GetDatabaseReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseReplicaResponse {
   replica?: DatabaseReplicaRead;
 }
-export const GetDatabaseReplicaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replica: S.optional(DatabaseReplicaRead),
-  }),
-).annotate({
-  identifier: "GetDatabaseReplicaResponse",
-}) as any as S.Schema<GetDatabaseReplicaResponse>;
+export const GetDatabaseReplicaResponse =
+  CreateDatabaseReplicaResponse as any as S.Schema<GetDatabaseReplicaResponse>;
 
 export interface GetDatabaseSqlModeRequest {
   /** A unique identifier for a database cluster. */
@@ -24200,11 +23370,8 @@ export const GetDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDatabaseUserResponse {
   user: DatabaseUser;
 }
-export const GetDatabaseUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: DatabaseUser,
-  }),
-).annotate({ identifier: "GetDatabaseUserResponse" }) as any as S.Schema<GetDatabaseUserResponse>;
+export const GetDatabaseUserResponse =
+  AddDatabaseUserResponse as any as S.Schema<GetDatabaseUserResponse>;
 
 export interface GetDedicatedInferenceRequest {
   /** A unique identifier for a Dedicated Inference instance. */
@@ -24319,9 +23486,8 @@ export const GetDedicatedInferenceGpuModelConfigRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetDedicatedInferenceGpuModelConfigRequest>;
 
 export type DedicatedInferenceGpuModelConfigGpuSlugsList = Array<string>;
-export const DedicatedInferenceGpuModelConfigGpuSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedInferenceGpuModelConfigGpuSlugsList>;
+export const DedicatedInferenceGpuModelConfigGpuSlugsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DedicatedInferenceGpuModelConfigGpuSlugsList>;
 
 export interface DedicatedInferenceGpuModelConfig {
   gpu_slugs?: DedicatedInferenceGpuModelConfigGpuSlugsList;
@@ -24372,11 +23538,7 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainResponse {
   domain?: DomainOutput;
 }
-export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(DomainOutput),
-  }),
-).annotate({ identifier: "GetDomainResponse" }) as any as S.Schema<GetDomainResponse>;
+export const GetDomainResponse = CreateDomainResponse as any as S.Schema<GetDomainResponse>;
 
 export interface GetDomainRecordRequest {
   /** The name of the domain itself. */
@@ -24443,11 +23605,8 @@ export const GetDropletActionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDropletActionResponse {
   action: Action;
 }
-export const GetDropletActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: Action,
-  }),
-).annotate({ identifier: "GetDropletActionResponse" }) as any as S.Schema<GetDropletActionResponse>;
+export const GetDropletActionResponse =
+  GetActionResponse as any as S.Schema<GetDropletActionResponse>;
 
 export interface GetDropletBackupPolicyRequest {
   /** A unique identifier for a Droplet instance. */
@@ -24583,25 +23742,21 @@ export const AssociatedResourceStatusResourcesReservedIpsList = /*@__PURE__*/ S.
 ) as any as S.Schema<AssociatedResourceStatusResourcesReservedIpsList>;
 
 export type AssociatedResourceStatusResourcesFloatingIpsList = Array<DestroyedAssociatedResource>;
-export const AssociatedResourceStatusResourcesFloatingIpsList = /*@__PURE__*/ S.Array(
-  DestroyedAssociatedResource,
-) as any as S.Schema<AssociatedResourceStatusResourcesFloatingIpsList>;
+export const AssociatedResourceStatusResourcesFloatingIpsList =
+  AssociatedResourceStatusResourcesReservedIpsList as any as S.Schema<AssociatedResourceStatusResourcesFloatingIpsList>;
 
 export type AssociatedResourceStatusResourcesSnapshotsList = Array<DestroyedAssociatedResource>;
-export const AssociatedResourceStatusResourcesSnapshotsList = /*@__PURE__*/ S.Array(
-  DestroyedAssociatedResource,
-) as any as S.Schema<AssociatedResourceStatusResourcesSnapshotsList>;
+export const AssociatedResourceStatusResourcesSnapshotsList =
+  AssociatedResourceStatusResourcesReservedIpsList as any as S.Schema<AssociatedResourceStatusResourcesSnapshotsList>;
 
 export type AssociatedResourceStatusResourcesVolumesList = Array<DestroyedAssociatedResource>;
-export const AssociatedResourceStatusResourcesVolumesList = /*@__PURE__*/ S.Array(
-  DestroyedAssociatedResource,
-) as any as S.Schema<AssociatedResourceStatusResourcesVolumesList>;
+export const AssociatedResourceStatusResourcesVolumesList =
+  AssociatedResourceStatusResourcesReservedIpsList as any as S.Schema<AssociatedResourceStatusResourcesVolumesList>;
 
 export type AssociatedResourceStatusResourcesVolumeSnapshotsList =
   Array<DestroyedAssociatedResource>;
-export const AssociatedResourceStatusResourcesVolumeSnapshotsList = /*@__PURE__*/ S.Array(
-  DestroyedAssociatedResource,
-) as any as S.Schema<AssociatedResourceStatusResourcesVolumeSnapshotsList>;
+export const AssociatedResourceStatusResourcesVolumeSnapshotsList =
+  AssociatedResourceStatusResourcesReservedIpsList as any as S.Schema<AssociatedResourceStatusResourcesVolumeSnapshotsList>;
 
 /** An object containing additional information about resource related to a Droplet requested to be destroyed. */
 export interface AssociatedResourceStatusResources {
@@ -24655,11 +23810,7 @@ export const GetFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFirewallResponse {
   firewall: Firewall;
 }
-export const GetFirewallResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firewall: Firewall,
-  }),
-).annotate({ identifier: "GetFirewallResponse" }) as any as S.Schema<GetFirewallResponse>;
+export const GetFirewallResponse = CreateFirewallResponse as any as S.Schema<GetFirewallResponse>;
 
 export interface GetFloatingIPRequest {
   /** A floating IP address. */
@@ -24765,13 +23916,8 @@ export const GetFunctionNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFunctionNamespaceResponse {
   namespace?: NamespaceInfo;
 }
-export const GetFunctionNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: S.optional(NamespaceInfo),
-  }),
-).annotate({
-  identifier: "GetFunctionNamespaceResponse",
-}) as any as S.Schema<GetFunctionNamespaceResponse>;
+export const GetFunctionNamespaceResponse =
+  CreateFunctionNamespaceResponse as any as S.Schema<GetFunctionNamespaceResponse>;
 
 export interface GetGenaiAgentRequest {
   /** Unique agent id */
@@ -24787,11 +23933,7 @@ export const GetGenaiAgentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiGetAgentOutput {
   agent?: ApiAgent;
 }
-export const ApiGetAgentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({ identifier: "ApiGetAgentOutput" }) as any as S.Schema<ApiGetAgentOutput>;
+export const ApiGetAgentOutput = ApiCreateAgentOutput as any as S.Schema<ApiGetAgentOutput>;
 
 export interface GetGenaiAgentChildrenRequest {
   /** Agent id */
@@ -24900,13 +24042,8 @@ export const GetGenaiAnthropicApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiGetAnthropicAPIKeyOutput {
   api_key_info?: ApiAnthropicAPIKeyInfo;
 }
-export const ApiGetAnthropicAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAnthropicAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiGetAnthropicAPIKeyOutput",
-}) as any as S.Schema<ApiGetAnthropicAPIKeyOutput>;
+export const ApiGetAnthropicAPIKeyOutput =
+  ApiCreateAnthropicAPIKeyOutput as any as S.Schema<ApiGetAnthropicAPIKeyOutput>;
 
 export interface GetGenaiCustomModelRequest {
   /** UUID of the custom model to retrieve */
@@ -24974,15 +24111,13 @@ export const ApiCustomModelActiveDeploymentsList = /*@__PURE__*/ S.Array(
 
 /** Input modalities supported (e.g., text, image) */
 export type ApiCustomModelInputModalitiesList = Array<string>;
-export const ApiCustomModelInputModalitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiCustomModelInputModalitiesList>;
+export const ApiCustomModelInputModalitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiCustomModelInputModalitiesList>;
 
 /** Output modalities supported (e.g., text, image) */
 export type ApiCustomModelOutputModalitiesList = Array<string>;
-export const ApiCustomModelOutputModalitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiCustomModelOutputModalitiesList>;
+export const ApiCustomModelOutputModalitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiCustomModelOutputModalitiesList>;
 
 /** Access level required for the model repository */
 export type SourceRefAccessType =
@@ -25040,9 +24175,8 @@ export const ApiCustomModelStatus = S.String;
 
 /** List of tag strings */
 export type CustomModelTagsTagsList = Array<string>;
-export const CustomModelTagsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CustomModelTagsTagsList>;
+export const CustomModelTagsTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<CustomModelTagsTagsList>;
 
 /** User-defined tags for organizing models */
 export interface CustomModelTags {
@@ -25344,9 +24478,8 @@ export const ApiEvaluationTraceSpanRetrieverChunksList = /*@__PURE__*/ S.Array(
 
 /** The span-level metric results. */
 export type ApiEvaluationTraceSpanSpanLevelMetricResultsList = Array<ApiEvaluationMetricResult>;
-export const ApiEvaluationTraceSpanSpanLevelMetricResultsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetricResult,
-) as any as S.Schema<ApiEvaluationTraceSpanSpanLevelMetricResultsList>;
+export const ApiEvaluationTraceSpanSpanLevelMetricResultsList =
+  ApiEvaluationRunRunLevelMetricResultsList as any as S.Schema<ApiEvaluationTraceSpanSpanLevelMetricResultsList>;
 
 /** Agent span */
 export type ApiAgentType =
@@ -25363,16 +24496,13 @@ export const ApiAgentType = S.String;
 
 /** Arbitrary structured metadata */
 export type ApiSpanCommonMetadataMap = { [key: string]: string | undefined };
-export const ApiSpanCommonMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ApiSpanCommonMetadataMap>;
+export const ApiSpanCommonMetadataMap =
+  ApiMcpServerHeadersMap as any as S.Schema<ApiSpanCommonMetadataMap>;
 
 /** Free-form tags for filtering/grouping */
 export type ApiSpanCommonTagsList = Array<string>;
-export const ApiSpanCommonTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiSpanCommonTagsList>;
+export const ApiSpanCommonTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiSpanCommonTagsList>;
 
 /** Common optional fields shared by all span types */
 export interface ApiSpanCommon {
@@ -25420,9 +24550,8 @@ export const ApiAgentSpan = /*@__PURE__*/ S.suspend(() =>
 
 /** Tool definitions passed to the model */
 export type ApiLLMSpanToolsList = Array<unknown>;
-export const ApiLLMSpanToolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ApiLLMSpanToolsList>;
+export const ApiLLMSpanToolsList =
+  AppsDeploymentProgressStepStepsList as any as S.Schema<ApiLLMSpanToolsList>;
 
 /** LLM span */
 export interface ApiLLMSpan {
@@ -25483,9 +24612,8 @@ export const ApiTraceSpanType = S.String;
 
 /** Child spans - must contain between 1 and 999 spans Allowed types: agent, llm, tool, retriever (not workflow) */
 export type ApiWorkflowSpanSpansList = Array<ApiTraceSpan>;
-export const ApiWorkflowSpanSpansList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => ApiTraceSpan),
-) as any as S.Schema<ApiWorkflowSpanSpansList>;
+export const ApiWorkflowSpanSpansList =
+  ApiAgentSpanSpansList as any as S.Schema<ApiWorkflowSpanSpansList>;
 
 /** Workflow span - can contain child spans (agent, llm, tool, retriever) */
 export interface ApiWorkflowSpan {
@@ -25577,15 +24705,13 @@ export const ApiPromptEvaluationTraceSpansList = /*@__PURE__*/ S.Array(
 
 /** The list of prompt chunks. */
 export type ApiPromptPromptChunksList = Array<ApiPromptChunk>;
-export const ApiPromptPromptChunksList = /*@__PURE__*/ S.Array(
-  ApiPromptChunk,
-) as any as S.Schema<ApiPromptPromptChunksList>;
+export const ApiPromptPromptChunksList =
+  ApiEvaluationTraceSpanRetrieverChunksList as any as S.Schema<ApiPromptPromptChunksList>;
 
 /** The metric results for the prompt. */
 export type ApiPromptPromptLevelMetricResultsList = Array<ApiEvaluationMetricResult>;
-export const ApiPromptPromptLevelMetricResultsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetricResult,
-) as any as S.Schema<ApiPromptPromptLevelMetricResultsList>;
+export const ApiPromptPromptLevelMetricResultsList =
+  ApiEvaluationRunRunLevelMetricResultsList as any as S.Schema<ApiPromptPromptLevelMetricResultsList>;
 
 export interface ApiPrompt {
   /** The evaluated trace spans. */
@@ -25773,13 +24899,8 @@ export const GetGenaiIndexingJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiGetKnowledgeBaseIndexingJobOutput {
   job?: ApiIndexingJob;
 }
-export const ApiGetKnowledgeBaseIndexingJobOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job: S.optional(ApiIndexingJob),
-  }),
-).annotate({
-  identifier: "ApiGetKnowledgeBaseIndexingJobOutput",
-}) as any as S.Schema<ApiGetKnowledgeBaseIndexingJobOutput>;
+export const ApiGetKnowledgeBaseIndexingJobOutput =
+  ApiCancelKnowledgeBaseIndexingJobOutput as any as S.Schema<ApiGetKnowledgeBaseIndexingJobOutput>;
 
 export interface GetGenaiIndexingJobDetailsSignedUrlRequest {
   /** The uuid of the indexing job */
@@ -25868,20 +24989,17 @@ export const GetGenaiModelCatalogCardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGenaiModelCatalogCardRequest>;
 
 export type ApiModelCatalogCardAvailabilityList = Array<string>;
-export const ApiModelCatalogCardAvailabilityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelCatalogCardAvailabilityList>;
+export const ApiModelCatalogCardAvailabilityList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelCatalogCardAvailabilityList>;
 
 /** Badges for models */
 export type ApiModelCatalogCardBadgesList = Array<string>;
-export const ApiModelCatalogCardBadgesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelCatalogCardBadgesList>;
+export const ApiModelCatalogCardBadgesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelCatalogCardBadgesList>;
 
 export type ApiModelCatalogCardCapabilitiesList = Array<string>;
-export const ApiModelCatalogCardCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelCatalogCardCapabilitiesList>;
+export const ApiModelCatalogCardCapabilitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelCatalogCardCapabilitiesList>;
 
 /** Code examples for using the model */
 export interface ApiCodeSnippets {
@@ -26133,15 +25251,13 @@ export const GetGenaiModelEvaluationPresetRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Metrics selected for this preset. Empty when the METRICS section was not saved. */
 export type ApiModelEvaluationPresetMetricsList = Array<ApiEvaluationMetric>;
-export const ApiModelEvaluationPresetMetricsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetric,
-) as any as S.Schema<ApiModelEvaluationPresetMetricsList>;
+export const ApiModelEvaluationPresetMetricsList =
+  ApiEvaluationTestCaseMetricsList as any as S.Schema<ApiModelEvaluationPresetMetricsList>;
 
 /** Sections of the inline evaluation config that were persisted when this preset was created. Use this to tell "section was saved with an empty value" apart from "section was not saved" -- scalar fields like `dataset_uuid` or `candidate_system_prompt` are always emitted as the empty string when the section was not saved. */
 export type ApiModelEvaluationPresetSavedSectionsList = Array<ApiPresetSaveSection>;
-export const ApiModelEvaluationPresetSavedSectionsList = /*@__PURE__*/ S.Array(
-  ApiPresetSaveSection,
-) as any as S.Schema<ApiModelEvaluationPresetSavedSectionsList>;
+export const ApiModelEvaluationPresetSavedSectionsList =
+  CreateGenaiModelEvaluationRunRequestPresetSaveSectionsList as any as S.Schema<ApiModelEvaluationPresetSavedSectionsList>;
 
 /** Model Evaluation Preset - a saved, reusable configuration for model evaluation runs. Each section (dataset, judge, metrics, candidate, system prompt) is independent and may be empty; sections the preset omits must be supplied inline on the run that references it. Use `saved_sections` to tell "section saved with empty value" apart from "section not saved at all" -- each section's scalar fields are left empty when the section was not saved. */
 export interface ApiModelEvaluationPreset {
@@ -26226,9 +25342,8 @@ export const GetGenaiModelEvaluationRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-metric scores and judge reasoning for this specific pass. */
 export type ApiModelEvaluationEpochAttemptMetricResultsList = Array<ApiEvaluationMetricResult>;
-export const ApiModelEvaluationEpochAttemptMetricResultsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetricResult,
-) as any as S.Schema<ApiModelEvaluationEpochAttemptMetricResultsList>;
+export const ApiModelEvaluationEpochAttemptMetricResultsList =
+  ApiEvaluationRunRunLevelMetricResultsList as any as S.Schema<ApiModelEvaluationEpochAttemptMetricResultsList>;
 
 /** ModelEvaluationEpochAttempt is one epoch's attempt at a dataset row, nested under ModelEvaluationResult.epoch_results for multi-epoch runs. Carries only the fields that vary per pass -- row-identifying fields (input/ground_truth/row_number) and candidate_model_name/uuid live once on the parent ModelEvaluationResult and aren't repeated here. */
 export interface ApiModelEvaluationEpochAttempt {
@@ -26259,9 +25374,8 @@ export const ApiModelEvaluationResultEpochResultsMap = /*@__PURE__*/ S.Record(
 
 /** Per-metric scores and judge reasoning for this prompt. */
 export type ApiModelEvaluationResultMetricResultsList = Array<ApiEvaluationMetricResult>;
-export const ApiModelEvaluationResultMetricResultsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetricResult,
-) as any as S.Schema<ApiModelEvaluationResultMetricResultsList>;
+export const ApiModelEvaluationResultMetricResultsList =
+  ApiEvaluationRunRunLevelMetricResultsList as any as S.Schema<ApiModelEvaluationResultMetricResultsList>;
 
 /** Result for a single prompt in a model evaluation run. */
 export interface ApiModelEvaluationResult {
@@ -26305,9 +25419,8 @@ export const ApiGetModelEvaluationRunOutputResultsList = /*@__PURE__*/ S.Array(
 
 /** Metrics selected for this evaluation. */
 export type ApiModelEvaluationRunDetailMetricsList = Array<ApiEvaluationMetric>;
-export const ApiModelEvaluationRunDetailMetricsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetric,
-) as any as S.Schema<ApiModelEvaluationRunDetailMetricsList>;
+export const ApiModelEvaluationRunDetailMetricsList =
+  ApiEvaluationTestCaseMetricsList as any as S.Schema<ApiModelEvaluationRunDetailMetricsList>;
 
 /** One epoch's standalone score, computed the same way overall_score_percent is computed today (flat pass rate over that epoch's rows). */
 export interface ApiPerEpochResultSummary {
@@ -26407,9 +25520,8 @@ export const ApiModelEvaluationRunResultSummaryMetricSummariesList = /*@__PURE__
 
 /** Pass/fail rate for each metric, computed over only the prompts routed to this model. */
 export type ApiPerModelResultSummaryMetricSummariesList = Array<ApiMetricResultSummary>;
-export const ApiPerModelResultSummaryMetricSummariesList = /*@__PURE__*/ S.Array(
-  ApiMetricResultSummary,
-) as any as S.Schema<ApiPerModelResultSummaryMetricSummariesList>;
+export const ApiPerModelResultSummaryMetricSummariesList =
+  ApiModelEvaluationRunResultSummaryMetricSummariesList as any as S.Schema<ApiPerModelResultSummaryMetricSummariesList>;
 
 /** Latency metrics for candidate model invocations (in milliseconds). */
 export interface ApiLatencyMetrics {
@@ -26508,9 +25620,8 @@ export const ApiPerModelResultSummaries = /*@__PURE__*/ S.suspend(() =>
 
 /** Pass/fail rate for each metric, computed over only the prompts in this task category. */
 export type ApiPerTaskResultSummaryMetricSummariesList = Array<ApiMetricResultSummary>;
-export const ApiPerTaskResultSummaryMetricSummariesList = /*@__PURE__*/ S.Array(
-  ApiMetricResultSummary,
-) as any as S.Schema<ApiPerTaskResultSummaryMetricSummariesList>;
+export const ApiPerTaskResultSummaryMetricSummariesList =
+  ApiModelEvaluationRunResultSummaryMetricSummariesList as any as S.Schema<ApiPerTaskResultSummaryMetricSummariesList>;
 
 /** Aggregated evaluation results for a single routing task category in a router evaluation run. */
 export interface ApiPerTaskResultSummary {
@@ -26857,13 +25968,8 @@ export const GetGenaiScheduledIndexingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiGetScheduledIndexingOutput {
   indexing_info?: ApiScheduledIndexingInfo;
 }
-export const ApiGetScheduledIndexingOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexing_info: S.optional(ApiScheduledIndexingInfo),
-  }),
-).annotate({
-  identifier: "ApiGetScheduledIndexingOutput",
-}) as any as S.Schema<ApiGetScheduledIndexingOutput>;
+export const ApiGetScheduledIndexingOutput =
+  ApiCreateScheduledIndexingOutput as any as S.Schema<ApiGetScheduledIndexingOutput>;
 
 export interface GetGenaiSimulationJourneyRequest {
   /** UUID of the run the journey belongs to. */
@@ -26991,9 +26097,8 @@ export const GetGenaiSimulationJourneyTrajectoryRequest = /*@__PURE__*/ S.suspen
 
 /** Per-metric scores and judge reasoning for this trajectory. Empty when the simulation run has no associated evaluation. */
 export type ApiSimulationTrajectoryEvaluationMetricsList = Array<ApiEvaluationMetricResult>;
-export const ApiSimulationTrajectoryEvaluationMetricsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetricResult,
-) as any as S.Schema<ApiSimulationTrajectoryEvaluationMetricsList>;
+export const ApiSimulationTrajectoryEvaluationMetricsList =
+  ApiEvaluationRunRunLevelMetricResultsList as any as S.Schema<ApiSimulationTrajectoryEvaluationMetricsList>;
 
 /** Per-criterion judge evaluation recorded in the trajectory JSON. */
 export interface ApiSimulationTrajectoryJudgeCriterion {
@@ -27206,14 +26311,8 @@ export interface ApiGetSimulationJourneyTrajectoryURLOutput {
   /** The time the URL expires at. */
   expires_at?: string;
 }
-export const ApiGetSimulationJourneyTrajectoryURLOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    download_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiGetSimulationJourneyTrajectoryURLOutput",
-}) as any as S.Schema<ApiGetSimulationJourneyTrajectoryURLOutput>;
+export const ApiGetSimulationJourneyTrajectoryURLOutput =
+  ApiGetEvaluationDatasetDownloadURLOutput as any as S.Schema<ApiGetSimulationJourneyTrajectoryURLOutput>;
 
 export interface GetGenaiSimulationRunRequest {
   /** UUID of the simulation run. */
@@ -27282,11 +26381,8 @@ export const GetGenaiWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiGetWorkspaceOutput {
   workspace?: ApiWorkspace;
 }
-export const ApiGetWorkspaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workspace: S.optional(ApiWorkspace),
-  }),
-).annotate({ identifier: "ApiGetWorkspaceOutput" }) as any as S.Schema<ApiGetWorkspaceOutput>;
+export const ApiGetWorkspaceOutput =
+  ApiCreateWorkspaceOutput as any as S.Schema<ApiGetWorkspaceOutput>;
 
 export interface GetImageRequest {
   /** A unique number (id) or string (slug) used to identify and reference a specific image. **Public** images can be identified by image `id` or `slug`. **Private** images *must* be identified by image `id`. */
@@ -27448,13 +26544,8 @@ export const GetInsightAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetInsightAlertRuleResponse {
   alert_rule: AlertRule;
 }
-export const GetInsightAlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert_rule: AlertRule,
-  }),
-).annotate({
-  identifier: "GetInsightAlertRuleResponse",
-}) as any as S.Schema<GetInsightAlertRuleResponse>;
+export const GetInsightAlertRuleResponse =
+  CreateInsightAlertRuleResponse as any as S.Schema<GetInsightAlertRuleResponse>;
 
 export interface GetInsightNotificationChannelRequest {
   /** A unique identifier for a notification channel. */
@@ -27471,18 +26562,12 @@ export const GetInsightNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =
 export interface GetInsightNotificationChannelResponse {
   notification_channel: NotificationChannel;
 }
-export const GetInsightNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notification_channel: NotificationChannel,
-  }),
-).annotate({
-  identifier: "GetInsightNotificationChannelResponse",
-}) as any as S.Schema<GetInsightNotificationChannelResponse>;
+export const GetInsightNotificationChannelResponse =
+  CreateInsightNotificationChannelResponse as any as S.Schema<GetInsightNotificationChannelResponse>;
 
 export type GetInsightPromLabelsRequestMatchList = Array<string>;
-export const GetInsightPromLabelsRequestMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetInsightPromLabelsRequestMatchList>;
+export const GetInsightPromLabelsRequestMatchList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<GetInsightPromLabelsRequestMatchList>;
 
 export interface GetInsightPromLabelsRequest {
   /** The datacenter region slug for the query. */
@@ -27511,9 +26596,8 @@ export type PromStringListResponseStatus = "success";
 export const PromStringListResponseStatus = S.String;
 
 export type PromStringListResponseDataList = Array<string>;
-export const PromStringListResponseDataList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PromStringListResponseDataList>;
+export const PromStringListResponseDataList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<PromStringListResponseDataList>;
 
 export interface PromStringListResponse {
   status: PromStringListResponseStatus;
@@ -27527,9 +26611,8 @@ export const PromStringListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PromStringListResponse" }) as any as S.Schema<PromStringListResponse>;
 
 export type GetInsightPromLabelValuesRequestMatchList = Array<string>;
-export const GetInsightPromLabelValuesRequestMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetInsightPromLabelValuesRequestMatchList>;
+export const GetInsightPromLabelValuesRequestMatchList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<GetInsightPromLabelValuesRequestMatchList>;
 
 export interface GetInsightPromLabelValuesRequest {
   /** The datacenter region slug for the query. */
@@ -27592,10 +26675,7 @@ export const PromQueryDataResultType = S.String;
 
 /** Metric labels as key/value pairs. By default, metric names in responses use Prometheus underscored spelling (for example `do_droplets_cpu_time`), even when the request used a dotted selector (for example `do.droplets.cpu_time`). */
 export type PromMetricLabels = { [key: string]: string | undefined };
-export const PromMetricLabels = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PromMetricLabels>;
+export const PromMetricLabels = ApiMcpServerHeadersMap as any as S.Schema<PromMetricLabels>;
 
 export type PromSampleItem = number | string;
 export const PromSampleItem = S.Unknown as any as S.Schema<PromSampleItem>;
@@ -27712,9 +26792,8 @@ export const PromMatrixDataResultType = S.String;
 
 /** One entry per matching series, each carrying the samples evaluated at every step across the requested range. */
 export type PromMatrixDataResultList = Array<PromMatrixSample>;
-export const PromMatrixDataResultList = /*@__PURE__*/ S.Array(
-  PromMatrixSample,
-) as any as S.Schema<PromMatrixDataResultList>;
+export const PromMatrixDataResultList =
+  PromQueryDataResultCase1List as any as S.Schema<PromMatrixDataResultList>;
 
 export interface PromMatrixData {
   resultType: PromMatrixDataResultType;
@@ -27740,9 +26819,8 @@ export const PromQueryRangeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PromQueryRangeResponse" }) as any as S.Schema<PromQueryRangeResponse>;
 
 export type GetInsightPromSeriesRequestMatchList = Array<string>;
-export const GetInsightPromSeriesRequestMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetInsightPromSeriesRequestMatchList>;
+export const GetInsightPromSeriesRequestMatchList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<GetInsightPromSeriesRequestMatchList>;
 
 export interface GetInsightPromSeriesRequest {
   /** The datacenter region slug for the query. */
@@ -27925,9 +27003,8 @@ export const GetInvoiceCsvByUUIDRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvoiceCsvByUUIDRequest>;
 
 export interface GetInvoiceCsvByUUIDResponse {}
-export const GetInvoiceCsvByUUIDResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetInvoiceCsvByUUIDResponse",
-}) as any as S.Schema<GetInvoiceCsvByUUIDResponse>;
+export const GetInvoiceCsvByUUIDResponse =
+  AddFirewallRulesResponse as any as S.Schema<GetInvoiceCsvByUUIDResponse>;
 
 export interface GetInvoicePdfByUUIDRequest {
   /** UUID of the invoice */
@@ -27944,9 +27021,8 @@ export const GetInvoicePdfByUUIDRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvoicePdfByUUIDRequest>;
 
 export interface GetInvoicePdfByUUIDResponse {}
-export const GetInvoicePdfByUUIDResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetInvoicePdfByUUIDResponse",
-}) as any as S.Schema<GetInvoicePdfByUUIDResponse>;
+export const GetInvoicePdfByUUIDResponse =
+  AddFirewallRulesResponse as any as S.Schema<GetInvoicePdfByUUIDResponse>;
 
 export interface GetInvoiceSummaryByUUIDRequest {
   /** UUID of the invoice */
@@ -28108,9 +27184,8 @@ export const GetKubernetesAvailableUpgradesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The features available with the version of Kubernetes provided by a given slug. */
 export type KubernetesVersionSupportedFeaturesList = Array<string>;
-export const KubernetesVersionSupportedFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<KubernetesVersionSupportedFeaturesList>;
+export const KubernetesVersionSupportedFeaturesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<KubernetesVersionSupportedFeaturesList>;
 
 export interface KubernetesVersion {
   /** The slug identifier for an available version of Kubernetes for use when creating or updating a cluster. The string contains both the upstream version of Kubernetes as well as the DigitalOcean revision. */
@@ -28162,15 +27237,13 @@ export const GetKubernetesClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of tags applied to the Kubernetes cluster. All clusters are automatically tagged `k8s` and `k8s:$K8S_CLUSTER_ID`. <br><br>Requires `tag:read` scope. */
 export type ClusterReadTagsList = Array<string>;
-export const ClusterReadTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterReadTagsList>;
+export const ClusterReadTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ClusterReadTagsList>;
 
 /** An object specifying the details of the worker nodes available to the Kubernetes cluster. */
 export type ClusterReadNodePoolsList = Array<KubernetesNodePool>;
-export const ClusterReadNodePoolsList = /*@__PURE__*/ S.Array(
-  KubernetesNodePool,
-) as any as S.Schema<ClusterReadNodePoolsList>;
+export const ClusterReadNodePoolsList =
+  ClusterNodePoolsList as any as S.Schema<ClusterReadNodePoolsList>;
 
 /** A string indicating the current status of the cluster. */
 export type ClusterReadStatusState =
@@ -28199,9 +27272,8 @@ export const ClusterReadStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of integrated DOCR registries. */
 export type ClusterReadRegistriesList = Array<string>;
-export const ClusterReadRegistriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterReadRegistriesList>;
+export const ClusterReadRegistriesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ClusterReadRegistriesList>;
 
 export interface ClusterRead {
   /** A unique ID that can be used to identify and reference a Kubernetes cluster. */
@@ -28408,9 +27480,8 @@ export const GetKubernetesClusterUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of in-cluster groups that the user belongs to. */
 export type User2KubernetesClusterUserGroupsList = Array<string>;
-export const User2KubernetesClusterUserGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<User2KubernetesClusterUserGroupsList>;
+export const User2KubernetesClusterUserGroupsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<User2KubernetesClusterUserGroupsList>;
 
 export interface User2KubernetesClusterUser {
   /** The username for the cluster admin user. */
@@ -28502,9 +27573,8 @@ export const GetKubernetesKubeconfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetKubernetesKubeconfigRequest>;
 
 export interface GetKubernetesKubeconfigResponse {}
-export const GetKubernetesKubeconfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetKubernetesKubeconfigResponse" },
-) as any as S.Schema<GetKubernetesKubeconfigResponse>;
+export const GetKubernetesKubeconfigResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<GetKubernetesKubeconfigResponse>;
 
 export interface GetKubernetesNodePoolRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -28530,13 +27600,8 @@ export const GetKubernetesNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetKubernetesNodePoolResponse {
   node_pool?: KubernetesNodePool;
 }
-export const GetKubernetesNodePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    node_pool: S.optional(KubernetesNodePool),
-  }),
-).annotate({
-  identifier: "GetKubernetesNodePoolResponse",
-}) as any as S.Schema<GetKubernetesNodePoolResponse>;
+export const GetKubernetesNodePoolResponse =
+  AddKubernetesNodePoolResponse as any as S.Schema<GetKubernetesNodePoolResponse>;
 
 export interface GetKubernetesStatusMessagesRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -28632,13 +27697,8 @@ export const GetMonitoringAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMonitoringAlertPolicyResponse {
   policy?: AlertPolicy;
 }
-export const GetMonitoringAlertPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(AlertPolicy),
-  }),
-).annotate({
-  identifier: "GetMonitoringAlertPolicyResponse",
-}) as any as S.Schema<GetMonitoringAlertPolicyResponse>;
+export const GetMonitoringAlertPolicyResponse =
+  CreateMonitoringAlertPolicyResponse as any as S.Schema<GetMonitoringAlertPolicyResponse>;
 
 export interface GetMonitoringAppCPUPercentageMetricsRequest {
   /** The app UUID. */
@@ -28663,10 +27723,8 @@ export const GetMonitoringAppCPUPercentageMetricsRequest = /*@__PURE__*/ S.suspe
 
 /** An object containing the metric's labels. These labels are key/value pairs that vary depending on the metric being queried. For example, load balancer metrics contain a `lb_id` label, while Droplet metrics contain a `host_id` label, and App Platform metrics contain a `app_component` label. */
 export type MetricsResultMetricMap = { [key: string]: string | undefined };
-export const MetricsResultMetricMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MetricsResultMetricMap>;
+export const MetricsResultMetricMap =
+  ApiMcpServerHeadersMap as any as S.Schema<MetricsResultMetricMap>;
 
 export type MetricsResultValuesItemItem = number | string;
 export const MetricsResultValuesItemItem =
@@ -29059,13 +28117,8 @@ export const GetMonitoringDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMonitoringDestinationResponse {
   destination?: DestinationOmitCredentials;
 }
-export const GetMonitoringDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.optional(DestinationOmitCredentials),
-  }),
-).annotate({
-  identifier: "GetMonitoringDestinationResponse",
-}) as any as S.Schema<GetMonitoringDestinationResponse>;
+export const GetMonitoringDestinationResponse =
+  CreateMonitoringDestinationResponse as any as S.Schema<GetMonitoringDestinationResponse>;
 
 export interface GetMonitoringDropletAutoscaleCurrentCpuUtilizationYmlRequest {
   /** A unique identifier for an autoscale pool. */
@@ -30148,9 +29201,8 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources identified by their URNs. */
 export type SinksResponseResourcesList = Array<SinkResource>;
-export const SinksResponseResourcesList = /*@__PURE__*/ S.Array(
-  SinkResource,
-) as any as S.Schema<SinksResponseResourcesList>;
+export const SinksResponseResourcesList =
+  CreateMonitoringSinkRequestResourcesList as any as S.Schema<SinksResponseResourcesList>;
 
 export interface SinksResponse {
   destination?: Destination;
@@ -30191,11 +29243,7 @@ export const GetNfsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface NfsGetResponse {
   share?: NfsResponse;
 }
-export const NfsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    share: S.optional(NfsResponse),
-  }),
-).annotate({ identifier: "NfsGetResponse" }) as any as S.Schema<NfsGetResponse>;
+export const NfsGetResponse = NfsCreateResponse as any as S.Schema<NfsGetResponse>;
 
 export interface GetNfsAccessPointRequest {
   /** The unique identifier of the NFS access point. */
@@ -30299,13 +29347,8 @@ export const GetPartnerAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPartnerAttachmentResponse {
   partner_attachment?: PartnerAttachment;
 }
-export const GetPartnerAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partner_attachment: S.optional(PartnerAttachment),
-  }),
-).annotate({
-  identifier: "GetPartnerAttachmentResponse",
-}) as any as S.Schema<GetPartnerAttachmentResponse>;
+export const GetPartnerAttachmentResponse =
+  CreatePartnerAttachmentResponse as any as S.Schema<GetPartnerAttachmentResponse>;
 
 export interface GetPartnerAttachmentBgpAuthKeyRequest {
   /** A unique identifier for a partner attachment. */
@@ -30463,11 +29506,7 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetProjectResponse {
   project?: Project;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.optional(Project),
-  }),
-).annotate({ identifier: "GetProjectResponse" }) as any as S.Schema<GetProjectResponse>;
+export const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
 
 export interface GetProjectDefaultRequest {}
 export const GetProjectDefaultRequest = /*@__PURE__*/ S.suspend(() =>
@@ -30498,11 +29537,7 @@ export const GetRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRegistryResponse {
   registry?: RegistryBase;
 }
-export const GetRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registry: S.optional(RegistryBase),
-  }),
-).annotate({ identifier: "GetRegistryResponse" }) as any as S.Schema<GetRegistryResponse>;
+export const GetRegistryResponse = CreateRegistryResponse as any as S.Schema<GetRegistryResponse>;
 
 export interface GetRegistryDockerCredentialsRequest {
   /** The name of a container registry. */
@@ -30623,9 +29658,8 @@ export const GetRegistryOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRegistryOptionsRequest>;
 
 export type GetRegistryOptionsResponseOptionsAvailableRegionsList = Array<string>;
-export const GetRegistryOptionsResponseOptionsAvailableRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetRegistryOptionsResponseOptionsAvailableRegionsList>;
+export const GetRegistryOptionsResponseOptionsAvailableRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<GetRegistryOptionsResponseOptionsAvailableRegionsList>;
 
 export type GetRegistryOptionsResponseOptionsSubscriptionTiersItemEligibilityReasonsItem =
   | "OverRepositoryLimit"
@@ -30932,13 +29966,8 @@ export const GetSecurityLatestScanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecurityLatestScanResponse {
   scan?: Scan;
 }
-export const GetSecurityLatestScanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scan: S.optional(Scan),
-  }),
-).annotate({
-  identifier: "GetSecurityLatestScanResponse",
-}) as any as S.Schema<GetSecurityLatestScanResponse>;
+export const GetSecurityLatestScanResponse =
+  CreateSecurityScanResponse as any as S.Schema<GetSecurityLatestScanResponse>;
 
 export type GetSecurityScanRequestSeverity = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
 export const GetSecurityScanRequestSeverity = S.String;
@@ -31053,11 +30082,7 @@ export const GetSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSshKeyResponse {
   ssh_key: SshKeys;
 }
-export const GetSshKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ssh_key: SshKeys,
-  }),
-).annotate({ identifier: "GetSshKeyResponse" }) as any as S.Schema<GetSshKeyResponse>;
+export const GetSshKeyResponse = CreateSshKeyResponse as any as S.Schema<GetSshKeyResponse>;
 
 export interface GetTagRequest {
   /** The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag. */
@@ -31072,11 +30097,7 @@ export const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTagResponse {
   tag?: Tags;
 }
-export const GetTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag: S.optional(Tags),
-  }),
-).annotate({ identifier: "GetTagResponse" }) as any as S.Schema<GetTagResponse>;
+export const GetTagResponse = CreateTagResponse as any as S.Schema<GetTagResponse>;
 
 export interface GetToolbeltRequest {
   /** Toolbelt name. */
@@ -31449,9 +30470,8 @@ export const UserSessionsList = /*@__PURE__*/ S.Array(
 
 /** Provider scopes granted, or requested while pending. */
 export type UserConnectionsItemScopesList = Array<string>;
-export const UserConnectionsItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserConnectionsItemScopesList>;
+export const UserConnectionsItemScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UserConnectionsItemScopesList>;
 
 /** pending, active, revoked, or expired. */
 export type UserConnectionsItemStatus = "pending" | "active" | "revoked" | "expired";
@@ -31563,13 +30583,8 @@ export const GetVectorDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VectordbGetVectorDBResponse {
   vector_db?: VectordbVectorDB;
 }
-export const VectordbGetVectorDBResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vector_db: S.optional(VectordbVectorDB),
-  }),
-).annotate({
-  identifier: "VectordbGetVectorDBResponse",
-}) as any as S.Schema<VectordbGetVectorDBResponse>;
+export const VectordbGetVectorDBResponse =
+  VectordbCreateVectorDBResponse as any as S.Schema<VectordbGetVectorDBResponse>;
 
 export interface GetVectorDatabaseCredentialsRequest {
   /** ID of the vector database. */
@@ -31611,11 +30626,7 @@ export const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVolumeResponse {
   volume?: VolumeFull;
 }
-export const GetVolumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volume: S.optional(VolumeFull),
-  }),
-).annotate({ identifier: "GetVolumeResponse" }) as any as S.Schema<GetVolumeResponse>;
+export const GetVolumeResponse = CreateVolumeResponse as any as S.Schema<GetVolumeResponse>;
 
 export interface GetVolumeActionRequest {
   /** The ID of the block storage volume. */
@@ -31696,13 +30707,8 @@ export const GetVolumeSnapshotByIdRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVolumeSnapshotByIdResponse {
   snapshot?: Snapshots;
 }
-export const GetVolumeSnapshotByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snapshot: S.optional(Snapshots),
-  }),
-).annotate({
-  identifier: "GetVolumeSnapshotByIdResponse",
-}) as any as S.Schema<GetVolumeSnapshotByIdResponse>;
+export const GetVolumeSnapshotByIdResponse =
+  CreateVolumeSnapshotResponse as any as S.Schema<GetVolumeSnapshotByIdResponse>;
 
 export interface GetVpcRequest {
   /** A unique identifier for a VPC. */
@@ -31717,11 +30723,7 @@ export const GetVpcRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVpcResponse {
   vpc?: Vpc;
 }
-export const GetVpcResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc: S.optional(Vpc),
-  }),
-).annotate({ identifier: "GetVpcResponse" }) as any as S.Schema<GetVpcResponse>;
+export const GetVpcResponse = CreateVpcResponse as any as S.Schema<GetVpcResponse>;
 
 export interface GetVpcnatgatewayRequest {
   /** The unique identifier of the VPC NAT gateway. */
@@ -31886,11 +30888,8 @@ export const GetVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVpcPeeringResponse {
   vpc_peering?: VpcPeering;
 }
-export const GetVpcPeeringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc_peering: S.optional(VpcPeering),
-  }),
-).annotate({ identifier: "GetVpcPeeringResponse" }) as any as S.Schema<GetVpcPeeringResponse>;
+export const GetVpcPeeringResponse =
+  CreateVpcPeeringResponse as any as S.Schema<GetVpcPeeringResponse>;
 
 export interface GetVpcSubnetRequest {
   /** The unique identifier of the VPC to which the subnet belongs. */
@@ -31908,11 +30907,8 @@ export const GetVpcSubnetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVpcSubnetResponse {
   vpc_subnet?: VpcSubnet;
 }
-export const GetVpcSubnetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc_subnet: S.optional(VpcSubnet),
-  }),
-).annotate({ identifier: "GetVpcSubnetResponse" }) as any as S.Schema<GetVpcSubnetResponse>;
+export const GetVpcSubnetResponse =
+  CreateVpcSubnetResponse as any as S.Schema<GetVpcSubnetResponse>;
 
 export interface ImagesPostAccountTransferAcceptRequest {
   /** A unique number that can be used to identify and reference a specific image. */
@@ -31935,11 +30931,8 @@ export const ImagesPostAccountTransferAcceptRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ImagesPostAccountTransferAcceptRequest>;
 
 export interface ImagesPostAccountTransferAcceptResponse {}
-export const ImagesPostAccountTransferAcceptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ImagesPostAccountTransferAcceptResponse",
-}) as any as S.Schema<ImagesPostAccountTransferAcceptResponse>;
+export const ImagesPostAccountTransferAcceptResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<ImagesPostAccountTransferAcceptResponse>;
 
 export interface ImagesPostAccountTransferCancelRequest {
   /** A unique number that can be used to identify and reference a specific image. */
@@ -31959,11 +30952,8 @@ export const ImagesPostAccountTransferCancelRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ImagesPostAccountTransferCancelRequest>;
 
 export interface ImagesPostAccountTransferCancelResponse {}
-export const ImagesPostAccountTransferCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ImagesPostAccountTransferCancelResponse",
-}) as any as S.Schema<ImagesPostAccountTransferCancelResponse>;
+export const ImagesPostAccountTransferCancelResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<ImagesPostAccountTransferCancelResponse>;
 
 export interface ImagesPostAccountTransferCreateCase0 {
   /** The email address of the user account that the image will be transferred to. */
@@ -32213,10 +31203,8 @@ export const AsyncInvokeResponseStatus = S.String;
 
 /** The output of the invocation. Null while the job is queued or in progress. Contains the result once completed. */
 export type AsyncInvokeResponseOutputMap = { [key: string]: unknown | undefined };
-export const AsyncInvokeResponseOutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AsyncInvokeResponseOutputMap>;
+export const AsyncInvokeResponseOutputMap =
+  FunctionObjectParametersMap as any as S.Schema<AsyncInvokeResponseOutputMap>;
 
 /** Response returned when an asynchronous invocation request is accepted. The job status is QUEUED initially. Use the request_id to poll for the result. */
 export interface AsyncInvokeResponse {
@@ -32308,9 +31296,8 @@ export type LogsFilterConditionOperator =
 export const LogsFilterConditionOperator = S.String;
 
 export type LogsFilterValueStringArrayValueValuesList = Array<string>;
-export const LogsFilterValueStringArrayValueValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsFilterValueStringArrayValueValuesList>;
+export const LogsFilterValueStringArrayValueValuesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LogsFilterValueStringArrayValueValuesList>;
 
 export interface LogsFilterValueStringArrayValue {
   values: LogsFilterValueStringArrayValueValuesList;
@@ -32324,9 +31311,8 @@ export const LogsFilterValueStringArrayValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogsFilterValueStringArrayValue>;
 
 export type LogsFilterValueNumberArrayValueValuesList = Array<number>;
-export const LogsFilterValueNumberArrayValueValuesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<LogsFilterValueNumberArrayValueValuesList>;
+export const LogsFilterValueNumberArrayValueValuesList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<LogsFilterValueNumberArrayValueValuesList>;
 
 export interface LogsFilterValueNumberArrayValue {
   values: LogsFilterValueNumberArrayValueValuesList;
@@ -32387,18 +31373,14 @@ export const LogsFilterExpressionAnd = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsFilterExpressionAnd" }) as any as S.Schema<LogsFilterExpressionAnd>;
 
 export type LogsFilterExpressionOrExpressionsList = Array<LogsFilterExpression>;
-export const LogsFilterExpressionOrExpressionsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => LogsFilterExpression),
-) as any as S.Schema<LogsFilterExpressionOrExpressionsList>;
+export const LogsFilterExpressionOrExpressionsList =
+  LogsFilterExpressionAndExpressionsList as any as S.Schema<LogsFilterExpressionOrExpressionsList>;
 
 export interface LogsFilterExpressionOr {
   expressions: LogsFilterExpressionOrExpressionsList;
 }
-export const LogsFilterExpressionOr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expressions: LogsFilterExpressionOrExpressionsList,
-  }),
-).annotate({ identifier: "LogsFilterExpressionOr" }) as any as S.Schema<LogsFilterExpressionOr>;
+export const LogsFilterExpressionOr =
+  LogsFilterExpressionAnd as any as S.Schema<LogsFilterExpressionOr>;
 
 /** A substring search across the log body, service name, and resource URN. */
 export interface LogsFilterExpressionTextSearch {
@@ -32492,17 +31474,13 @@ export const InsightsPostLogsSearchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource attributes associated with the log. */
 export type LogsLogRecordResourceMap = { [key: string]: string | undefined };
-export const LogsLogRecordResourceMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogsLogRecordResourceMap>;
+export const LogsLogRecordResourceMap =
+  ApiMcpServerHeadersMap as any as S.Schema<LogsLogRecordResourceMap>;
 
 /** Log attributes. */
 export type LogsLogRecordAttributesMap = { [key: string]: string | undefined };
-export const LogsLogRecordAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<LogsLogRecordAttributesMap>;
+export const LogsLogRecordAttributesMap =
+  ApiMcpServerHeadersMap as any as S.Schema<LogsLogRecordAttributesMap>;
 
 /** A single log record returned by a logs search. */
 export interface LogsLogRecord {
@@ -32574,9 +31552,8 @@ export const LogsSearchResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of 1-Click Application slugs to be installed to the Kubernetes cluster. */
 export type InstallOneClickKubernetesRequestAddonSlugsList = Array<string>;
-export const InstallOneClickKubernetesRequestAddonSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstallOneClickKubernetesRequestAddonSlugsList>;
+export const InstallOneClickKubernetesRequestAddonSlugsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<InstallOneClickKubernetesRequestAddonSlugsList>;
 
 export interface InstallOneClickKubernetesRequest {
   /** An array of 1-Click Application slugs to be installed to the Kubernetes cluster. */
@@ -32624,32 +31601,23 @@ export const KubernetesDestroyAssociatedResourcesDangerousRequest = /*@__PURE__*
 }) as any as S.Schema<KubernetesDestroyAssociatedResourcesDangerousRequest>;
 
 export interface KubernetesDestroyAssociatedResourcesDangerousResponse {}
-export const KubernetesDestroyAssociatedResourcesDangerousResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KubernetesDestroyAssociatedResourcesDangerousResponse",
-}) as any as S.Schema<KubernetesDestroyAssociatedResourcesDangerousResponse>;
+export const KubernetesDestroyAssociatedResourcesDangerousResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<KubernetesDestroyAssociatedResourcesDangerousResponse>;
 
 /** A list of IDs for associated load balancers to destroy along with the cluster. */
 export type KubernetesDestroyAssociatedResourcesSelectiveRequestLoadBalancersList = Array<string>;
 export const KubernetesDestroyAssociatedResourcesSelectiveRequestLoadBalancersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveRequestLoadBalancersList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveRequestLoadBalancersList>;
 
 /** A list of IDs for associated volumes to destroy along with the cluster. */
 export type KubernetesDestroyAssociatedResourcesSelectiveRequestVolumesList = Array<string>;
 export const KubernetesDestroyAssociatedResourcesSelectiveRequestVolumesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveRequestVolumesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveRequestVolumesList>;
 
 /** A list of IDs for associated volume snapshots to destroy along with the cluster. */
 export type KubernetesDestroyAssociatedResourcesSelectiveRequestVolumeSnapshotsList = Array<string>;
 export const KubernetesDestroyAssociatedResourcesSelectiveRequestVolumeSnapshotsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveRequestVolumeSnapshotsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveRequestVolumeSnapshotsList>;
 
 export interface KubernetesDestroyAssociatedResourcesSelectiveRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -32683,11 +31651,8 @@ export const KubernetesDestroyAssociatedResourcesSelectiveRequest = /*@__PURE__*
 }) as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveRequest>;
 
 export interface KubernetesDestroyAssociatedResourcesSelectiveResponse {}
-export const KubernetesDestroyAssociatedResourcesSelectiveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KubernetesDestroyAssociatedResourcesSelectiveResponse",
-}) as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveResponse>;
+export const KubernetesDestroyAssociatedResourcesSelectiveResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<KubernetesDestroyAssociatedResourcesSelectiveResponse>;
 
 export interface KubernetesUpgradeClusterRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -32707,11 +31672,8 @@ export const KubernetesUpgradeClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesUpgradeClusterRequest>;
 
 export interface KubernetesUpgradeClusterResponse {}
-export const KubernetesUpgradeClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KubernetesUpgradeClusterResponse",
-}) as any as S.Schema<KubernetesUpgradeClusterResponse>;
+export const KubernetesUpgradeClusterResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<KubernetesUpgradeClusterResponse>;
 
 export interface ListActionsRequest {
   /** Number of items returned per page */
@@ -32922,9 +31884,8 @@ export const AppsListInstanceSizesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppsListInstanceSizesResponse>;
 
 export type ListAppJobInvocationsRequestJobNamesList = Array<string>;
-export const ListAppJobInvocationsRequestJobNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAppJobInvocationsRequestJobNamesList>;
+export const ListAppJobInvocationsRequestJobNamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ListAppJobInvocationsRequestJobNamesList>;
 
 export interface ListAppJobInvocationsRequest {
   /** The app ID */
@@ -32970,9 +31931,8 @@ export const ListAppJobInvocationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of app IDs to query bandwidth metrics for. */
 export type ListAppMetricsBandwidthDailyRequestAppIdsList = Array<string>;
-export const ListAppMetricsBandwidthDailyRequestAppIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAppMetricsBandwidthDailyRequestAppIdsList>;
+export const ListAppMetricsBandwidthDailyRequestAppIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ListAppMetricsBandwidthDailyRequestAppIdsList>;
 
 export interface ListAppMetricsBandwidthDailyRequest {
   /** A list of app IDs to query bandwidth metrics for. */
@@ -33158,12 +32118,8 @@ export interface MemberCurrentUtilization {
   /** The CPU utilization average of the individual Droplet. */
   cpu?: number;
 }
-export const MemberCurrentUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memory: S.optional(S.Number),
-    cpu: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MemberCurrentUtilization" }) as any as S.Schema<MemberCurrentUtilization>;
+export const MemberCurrentUtilization =
+  CurrentUtilization as any as S.Schema<MemberCurrentUtilization>;
 
 export interface Member {
   /** The unique identifier of the Droplet. */
@@ -33862,9 +32818,8 @@ export const ListDatabaseFirewallRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabaseFirewallRulesRequest>;
 
 export type ListDatabaseFirewallRulesResponseRulesList = Array<FirewallRule>;
-export const ListDatabaseFirewallRulesResponseRulesList = /*@__PURE__*/ S.Array(
-  FirewallRule,
-) as any as S.Schema<ListDatabaseFirewallRulesResponseRulesList>;
+export const ListDatabaseFirewallRulesResponseRulesList =
+  DatabaseClusterReadRulesList as any as S.Schema<ListDatabaseFirewallRulesResponseRulesList>;
 
 export interface ListDatabaseFirewallRulesResponse {
   rules?: ListDatabaseFirewallRulesResponseRulesList;
@@ -34092,21 +33047,18 @@ export const ListDatabaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsKafkaRegionsList = Array<string>;
-export const OptionsOptionsKafkaRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsKafkaRegionsList>;
+export const OptionsOptionsKafkaRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsKafkaRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsKafkaVersionsList = Array<string>;
-export const OptionsOptionsKafkaVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsKafkaVersionsList>;
+export const OptionsOptionsKafkaVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsKafkaVersionsList>;
 
 /** An array of objects containing the slugs available with various node counts */
 export type DatabaseLayoutOptionSizesList = Array<string>;
-export const DatabaseLayoutOptionSizesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseLayoutOptionSizesList>;
+export const DatabaseLayoutOptionSizesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DatabaseLayoutOptionSizesList>;
 
 export interface DatabaseLayoutOption {
   num_nodes?: number;
@@ -34144,21 +33096,18 @@ export const OptionsOptionsKafka = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsMongodbRegionsList = Array<string>;
-export const OptionsOptionsMongodbRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsMongodbRegionsList>;
+export const OptionsOptionsMongodbRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsMongodbRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsMongodbVersionsList = Array<string>;
-export const OptionsOptionsMongodbVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsMongodbVersionsList>;
+export const OptionsOptionsMongodbVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsMongodbVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsMongodbLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsMongodbLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsMongodbLayoutsList>;
+export const OptionsOptionsMongodbLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsMongodbLayoutsList>;
 
 export interface OptionsOptionsMongodb {
   /** An array of strings containing the names of available regions */
@@ -34168,31 +33117,22 @@ export interface OptionsOptionsMongodb {
   /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
   layouts?: OptionsOptionsMongodbLayoutsList;
 }
-export const OptionsOptionsMongodb = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(OptionsOptionsMongodbRegionsList),
-    versions: S.optional(OptionsOptionsMongodbVersionsList),
-    layouts: S.optional(OptionsOptionsMongodbLayoutsList),
-  }),
-).annotate({ identifier: "OptionsOptionsMongodb" }) as any as S.Schema<OptionsOptionsMongodb>;
+export const OptionsOptionsMongodb = OptionsOptionsKafka as any as S.Schema<OptionsOptionsMongodb>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsPgRegionsList = Array<string>;
-export const OptionsOptionsPgRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsPgRegionsList>;
+export const OptionsOptionsPgRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsPgRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsPgVersionsList = Array<string>;
-export const OptionsOptionsPgVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsPgVersionsList>;
+export const OptionsOptionsPgVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsPgVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsPgLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsPgLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsPgLayoutsList>;
+export const OptionsOptionsPgLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsPgLayoutsList>;
 
 export interface OptionsOptionsPg {
   /** An array of strings containing the names of available regions */
@@ -34202,31 +33142,22 @@ export interface OptionsOptionsPg {
   /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
   layouts?: OptionsOptionsPgLayoutsList;
 }
-export const OptionsOptionsPg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(OptionsOptionsPgRegionsList),
-    versions: S.optional(OptionsOptionsPgVersionsList),
-    layouts: S.optional(OptionsOptionsPgLayoutsList),
-  }),
-).annotate({ identifier: "OptionsOptionsPg" }) as any as S.Schema<OptionsOptionsPg>;
+export const OptionsOptionsPg = OptionsOptionsKafka as any as S.Schema<OptionsOptionsPg>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsMysqlRegionsList = Array<string>;
-export const OptionsOptionsMysqlRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsMysqlRegionsList>;
+export const OptionsOptionsMysqlRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsMysqlRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsMysqlVersionsList = Array<string>;
-export const OptionsOptionsMysqlVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsMysqlVersionsList>;
+export const OptionsOptionsMysqlVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsMysqlVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsMysqlLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsMysqlLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsMysqlLayoutsList>;
+export const OptionsOptionsMysqlLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsMysqlLayoutsList>;
 
 export interface OptionsOptionsMysql {
   /** An array of strings containing the names of available regions */
@@ -34236,31 +33167,22 @@ export interface OptionsOptionsMysql {
   /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
   layouts?: OptionsOptionsMysqlLayoutsList;
 }
-export const OptionsOptionsMysql = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(OptionsOptionsMysqlRegionsList),
-    versions: S.optional(OptionsOptionsMysqlVersionsList),
-    layouts: S.optional(OptionsOptionsMysqlLayoutsList),
-  }),
-).annotate({ identifier: "OptionsOptionsMysql" }) as any as S.Schema<OptionsOptionsMysql>;
+export const OptionsOptionsMysql = OptionsOptionsKafka as any as S.Schema<OptionsOptionsMysql>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsRedisRegionsList = Array<string>;
-export const OptionsOptionsRedisRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsRedisRegionsList>;
+export const OptionsOptionsRedisRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsRedisRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsRedisVersionsList = Array<string>;
-export const OptionsOptionsRedisVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsRedisVersionsList>;
+export const OptionsOptionsRedisVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsRedisVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsRedisLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsRedisLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsRedisLayoutsList>;
+export const OptionsOptionsRedisLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsRedisLayoutsList>;
 
 export interface OptionsOptionsRedis {
   /** An array of strings containing the names of available regions */
@@ -34270,31 +33192,22 @@ export interface OptionsOptionsRedis {
   /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
   layouts?: OptionsOptionsRedisLayoutsList;
 }
-export const OptionsOptionsRedis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(OptionsOptionsRedisRegionsList),
-    versions: S.optional(OptionsOptionsRedisVersionsList),
-    layouts: S.optional(OptionsOptionsRedisLayoutsList),
-  }),
-).annotate({ identifier: "OptionsOptionsRedis" }) as any as S.Schema<OptionsOptionsRedis>;
+export const OptionsOptionsRedis = OptionsOptionsKafka as any as S.Schema<OptionsOptionsRedis>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsValkeyRegionsList = Array<string>;
-export const OptionsOptionsValkeyRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsValkeyRegionsList>;
+export const OptionsOptionsValkeyRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsValkeyRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsValkeyVersionsList = Array<string>;
-export const OptionsOptionsValkeyVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsValkeyVersionsList>;
+export const OptionsOptionsValkeyVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsValkeyVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsValkeyLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsValkeyLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsValkeyLayoutsList>;
+export const OptionsOptionsValkeyLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsValkeyLayoutsList>;
 
 export interface OptionsOptionsValkey {
   /** An array of strings containing the names of available regions */
@@ -34304,31 +33217,22 @@ export interface OptionsOptionsValkey {
   /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
   layouts?: OptionsOptionsValkeyLayoutsList;
 }
-export const OptionsOptionsValkey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(OptionsOptionsValkeyRegionsList),
-    versions: S.optional(OptionsOptionsValkeyVersionsList),
-    layouts: S.optional(OptionsOptionsValkeyLayoutsList),
-  }),
-).annotate({ identifier: "OptionsOptionsValkey" }) as any as S.Schema<OptionsOptionsValkey>;
+export const OptionsOptionsValkey = OptionsOptionsKafka as any as S.Schema<OptionsOptionsValkey>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsOpensearchRegionsList = Array<string>;
-export const OptionsOptionsOpensearchRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsOpensearchRegionsList>;
+export const OptionsOptionsOpensearchRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsOpensearchRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsOpensearchVersionsList = Array<string>;
-export const OptionsOptionsOpensearchVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsOpensearchVersionsList>;
+export const OptionsOptionsOpensearchVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsOpensearchVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsOpensearchLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsOpensearchLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsOpensearchLayoutsList>;
+export const OptionsOptionsOpensearchLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsOpensearchLayoutsList>;
 
 export interface OptionsOptionsOpensearch {
   /** An array of strings containing the names of available regions */
@@ -34338,31 +33242,23 @@ export interface OptionsOptionsOpensearch {
   /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
   layouts?: OptionsOptionsOpensearchLayoutsList;
 }
-export const OptionsOptionsOpensearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(OptionsOptionsOpensearchRegionsList),
-    versions: S.optional(OptionsOptionsOpensearchVersionsList),
-    layouts: S.optional(OptionsOptionsOpensearchLayoutsList),
-  }),
-).annotate({ identifier: "OptionsOptionsOpensearch" }) as any as S.Schema<OptionsOptionsOpensearch>;
+export const OptionsOptionsOpensearch =
+  OptionsOptionsKafka as any as S.Schema<OptionsOptionsOpensearch>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsAdvancedPgRegionsList = Array<string>;
-export const OptionsOptionsAdvancedPgRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsAdvancedPgRegionsList>;
+export const OptionsOptionsAdvancedPgRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsAdvancedPgRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsAdvancedPgVersionsList = Array<string>;
-export const OptionsOptionsAdvancedPgVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsAdvancedPgVersionsList>;
+export const OptionsOptionsAdvancedPgVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsAdvancedPgVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsAdvancedPgLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsAdvancedPgLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsAdvancedPgLayoutsList>;
+export const OptionsOptionsAdvancedPgLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsAdvancedPgLayoutsList>;
 
 export interface OptionsOptionsAdvancedPg {
   /** An array of strings containing the names of available regions */
@@ -34372,31 +33268,23 @@ export interface OptionsOptionsAdvancedPg {
   /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
   layouts?: OptionsOptionsAdvancedPgLayoutsList;
 }
-export const OptionsOptionsAdvancedPg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(OptionsOptionsAdvancedPgRegionsList),
-    versions: S.optional(OptionsOptionsAdvancedPgVersionsList),
-    layouts: S.optional(OptionsOptionsAdvancedPgLayoutsList),
-  }),
-).annotate({ identifier: "OptionsOptionsAdvancedPg" }) as any as S.Schema<OptionsOptionsAdvancedPg>;
+export const OptionsOptionsAdvancedPg =
+  OptionsOptionsKafka as any as S.Schema<OptionsOptionsAdvancedPg>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsAdvancedMysqlRegionsList = Array<string>;
-export const OptionsOptionsAdvancedMysqlRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsAdvancedMysqlRegionsList>;
+export const OptionsOptionsAdvancedMysqlRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsAdvancedMysqlRegionsList>;
 
 /** An array of strings containing the names of available regions */
 export type OptionsOptionsAdvancedMysqlVersionsList = Array<string>;
-export const OptionsOptionsAdvancedMysqlVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OptionsOptionsAdvancedMysqlVersionsList>;
+export const OptionsOptionsAdvancedMysqlVersionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<OptionsOptionsAdvancedMysqlVersionsList>;
 
 /** An array of objects, each indicating the node sizes (otherwise referred to as slugs) that are available with various numbers of nodes in the database cluster. Each slugs denotes the node's identifier, CPU, and RAM (in that order). */
 export type OptionsOptionsAdvancedMysqlLayoutsList = Array<DatabaseLayoutOption>;
-export const OptionsOptionsAdvancedMysqlLayoutsList = /*@__PURE__*/ S.Array(
-  DatabaseLayoutOption,
-) as any as S.Schema<OptionsOptionsAdvancedMysqlLayoutsList>;
+export const OptionsOptionsAdvancedMysqlLayoutsList =
+  OptionsOptionsKafkaLayoutsList as any as S.Schema<OptionsOptionsAdvancedMysqlLayoutsList>;
 
 export interface OptionsOptionsAdvancedMysql {
   /** An array of strings containing the names of available regions */
@@ -34568,9 +33456,8 @@ export const ListDatabaseUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatabaseUsersRequest" }) as any as S.Schema<ListDatabaseUsersRequest>;
 
 export type ListDatabaseUsersResponseUsersList = Array<DatabaseUser>;
-export const ListDatabaseUsersResponseUsersList = /*@__PURE__*/ S.Array(
-  DatabaseUser,
-) as any as S.Schema<ListDatabaseUsersResponseUsersList>;
+export const ListDatabaseUsersResponseUsersList =
+  DatabaseClusterReadUsersList as any as S.Schema<ListDatabaseUsersResponseUsersList>;
 
 export interface ListDatabaseUsersResponse {
   users?: ListDatabaseUsersResponseUsersList;
@@ -34663,10 +33550,8 @@ export const ListDedicatedInferencesResponseDedicatedInferencesList = /*@__PURE_
 
 /** Pagination links (first, prev, next, last). */
 export type ListDedicatedInferencesResponseLinksPagesMap = { [key: string]: string | undefined };
-export const ListDedicatedInferencesResponseLinksPagesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListDedicatedInferencesResponseLinksPagesMap>;
+export const ListDedicatedInferencesResponseLinksPagesMap =
+  ApiMcpServerHeadersMap as any as S.Schema<ListDedicatedInferencesResponseLinksPagesMap>;
 
 export interface ListDedicatedInferencesResponseLinks {
   /** Pagination links (first, prev, next, last). */
@@ -34684,13 +33569,8 @@ export interface ListDedicatedInferencesResponseMeta {
   /** Total number of results. */
   total: number;
 }
-export const ListDedicatedInferencesResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.Number,
-  }),
-).annotate({
-  identifier: "ListDedicatedInferencesResponseMeta",
-}) as any as S.Schema<ListDedicatedInferencesResponseMeta>;
+export const ListDedicatedInferencesResponseMeta =
+  GetInvoiceByUUIDResponseMeta as any as S.Schema<ListDedicatedInferencesResponseMeta>;
 
 export interface ListDedicatedInferencesResponse {
   /** Array of Dedicated Inference instances. */
@@ -34717,9 +33597,8 @@ export const ListDedicatedInferenceSizesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Regions where Dedicated Inference is available. */
 export type DedicatedInferenceSizesResponseEnabledRegionsList = Array<string>;
-export const DedicatedInferenceSizesResponseEnabledRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DedicatedInferenceSizesResponseEnabledRegionsList>;
+export const DedicatedInferenceSizesResponseEnabledRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DedicatedInferenceSizesResponseEnabledRegionsList>;
 
 export interface DedicatedInferenceSize {
   gpu_slug?: string;
@@ -34915,9 +33794,8 @@ export const ListDropletActionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDropletActionsRequest>;
 
 export type ListDropletActionsResponseActionsList = Array<Action>;
-export const ListDropletActionsResponseActionsList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<ListDropletActionsResponseActionsList>;
+export const ListDropletActionsResponseActionsList =
+  ListActionsResponseActionsList as any as S.Schema<ListDropletActionsResponseActionsList>;
 
 export type ListDropletActionsResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListDropletActionsResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -34980,27 +33858,23 @@ export const ListDropletAssociatedResourcesResponseReservedIpsList = /*@__PURE__
 
 /** Floating IPs that are associated with this Droplet.<br>Requires `reserved_ip:read` scope. */
 export type ListDropletAssociatedResourcesResponseFloatingIpsList = Array<AssociatedResource>;
-export const ListDropletAssociatedResourcesResponseFloatingIpsList = /*@__PURE__*/ S.Array(
-  AssociatedResource,
-) as any as S.Schema<ListDropletAssociatedResourcesResponseFloatingIpsList>;
+export const ListDropletAssociatedResourcesResponseFloatingIpsList =
+  ListDropletAssociatedResourcesResponseReservedIpsList as any as S.Schema<ListDropletAssociatedResourcesResponseFloatingIpsList>;
 
 /** Snapshots that are associated with this Droplet.<br>Requires `image:read` scope. */
 export type ListDropletAssociatedResourcesResponseSnapshotsList = Array<AssociatedResource>;
-export const ListDropletAssociatedResourcesResponseSnapshotsList = /*@__PURE__*/ S.Array(
-  AssociatedResource,
-) as any as S.Schema<ListDropletAssociatedResourcesResponseSnapshotsList>;
+export const ListDropletAssociatedResourcesResponseSnapshotsList =
+  ListDropletAssociatedResourcesResponseReservedIpsList as any as S.Schema<ListDropletAssociatedResourcesResponseSnapshotsList>;
 
 /** Volumes that are associated with this Droplet.<br>Requires `block_storage:read` scope. */
 export type ListDropletAssociatedResourcesResponseVolumesList = Array<AssociatedResource>;
-export const ListDropletAssociatedResourcesResponseVolumesList = /*@__PURE__*/ S.Array(
-  AssociatedResource,
-) as any as S.Schema<ListDropletAssociatedResourcesResponseVolumesList>;
+export const ListDropletAssociatedResourcesResponseVolumesList =
+  ListDropletAssociatedResourcesResponseReservedIpsList as any as S.Schema<ListDropletAssociatedResourcesResponseVolumesList>;
 
 /** Volume Snapshots that are associated with this Droplet.<br>Requires `block_storage_snapshot:read` scope. */
 export type ListDropletAssociatedResourcesResponseVolumeSnapshotsList = Array<AssociatedResource>;
-export const ListDropletAssociatedResourcesResponseVolumeSnapshotsList = /*@__PURE__*/ S.Array(
-  AssociatedResource,
-) as any as S.Schema<ListDropletAssociatedResourcesResponseVolumeSnapshotsList>;
+export const ListDropletAssociatedResourcesResponseVolumeSnapshotsList =
+  ListDropletAssociatedResourcesResponseReservedIpsList as any as S.Schema<ListDropletAssociatedResourcesResponseVolumeSnapshotsList>;
 
 export interface ListDropletAssociatedResourcesResponse {
   /** Reserved IPs that are associated with this Droplet.<br>Requires `reserved_ip:read` scope. */
@@ -35089,9 +33963,8 @@ export const ListDropletBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the regions that the snapshot is available in. The regions are represented by their identifying slug values. */
 export type DropletSnapshotRegionsList = Array<string>;
-export const DropletSnapshotRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DropletSnapshotRegionsList>;
+export const DropletSnapshotRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<DropletSnapshotRegionsList>;
 
 /** Describes the kind of image. It may be one of `snapshot` or `backup`. This specifies whether an image is a user-generated Droplet snapshot or automatically created Droplet backup. */
 export type DropletSnapshotType = "snapshot" | "backup";
@@ -35243,9 +34116,8 @@ export const ListDropletNeighborsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDropletNeighborsRequest>;
 
 export type ListDropletNeighborsResponseDropletsList = Array<Droplet>;
-export const ListDropletNeighborsResponseDropletsList = /*@__PURE__*/ S.Array(
-  Droplet,
-) as any as S.Schema<ListDropletNeighborsResponseDropletsList>;
+export const ListDropletNeighborsResponseDropletsList =
+  CreateDropletResponseDropletsList as any as S.Schema<ListDropletNeighborsResponseDropletsList>;
 
 export interface ListDropletNeighborsResponse {
   droplets?: ListDropletNeighborsResponseDropletsList;
@@ -35266,9 +34138,8 @@ export const ListDropletNeighborsIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDropletNeighborsIdsRequest>;
 
 export type NeighborIdsNeighborIdsItemList = Array<number>;
-export const NeighborIdsNeighborIdsItemList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<NeighborIdsNeighborIdsItemList>;
+export const NeighborIdsNeighborIdsItemList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<NeighborIdsNeighborIdsItemList>;
 
 /** An array of arrays. Each array will contain a set of Droplet IDs for Droplets that share a physical server. */
 export type NeighborIdsNeighborIdsList = Array<NeighborIdsNeighborIdsItemList>;
@@ -35312,9 +34183,8 @@ export const ListDropletsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDropletsRequest" }) as any as S.Schema<ListDropletsRequest>;
 
 export type ListDropletsResponseDropletsList = Array<Droplet>;
-export const ListDropletsResponseDropletsList = /*@__PURE__*/ S.Array(
-  Droplet,
-) as any as S.Schema<ListDropletsResponseDropletsList>;
+export const ListDropletsResponseDropletsList =
+  CreateDropletResponseDropletsList as any as S.Schema<ListDropletsResponseDropletsList>;
 
 export type ListDropletsResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListDropletsResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -35351,9 +34221,8 @@ export const ListDropletSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDropletSnapshotsRequest>;
 
 export type ListDropletSnapshotsResponseSnapshotsList = Array<DropletSnapshot>;
-export const ListDropletSnapshotsResponseSnapshotsList = /*@__PURE__*/ S.Array(
-  DropletSnapshot,
-) as any as S.Schema<ListDropletSnapshotsResponseSnapshotsList>;
+export const ListDropletSnapshotsResponseSnapshotsList =
+  ListDropletBackupsResponseBackupsList as any as S.Schema<ListDropletSnapshotsResponseSnapshotsList>;
 
 export type ListDropletSnapshotsResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListDropletSnapshotsResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -35384,15 +34253,13 @@ export const ListDropletSupportedBackupPoliciesRequest = /*@__PURE__*/ S.suspend
 
 /** An array of integers representing the hours of the day that a backup can start. */
 export type SupportedDropletBackupPolicyPossibleWindowStartsList = Array<number>;
-export const SupportedDropletBackupPolicyPossibleWindowStartsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SupportedDropletBackupPolicyPossibleWindowStartsList>;
+export const SupportedDropletBackupPolicyPossibleWindowStartsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<SupportedDropletBackupPolicyPossibleWindowStartsList>;
 
 /** The day of the week the backup will occur. */
 export type SupportedDropletBackupPolicyPossibleDaysList = Array<string>;
-export const SupportedDropletBackupPolicyPossibleDaysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SupportedDropletBackupPolicyPossibleDaysList>;
+export const SupportedDropletBackupPolicyPossibleDaysList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<SupportedDropletBackupPolicyPossibleDaysList>;
 
 export interface SupportedDropletBackupPolicy {
   /** The name of the Droplet backup plan. */
@@ -35450,9 +34317,8 @@ export const ListFirewallsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFirewallsRequest" }) as any as S.Schema<ListFirewallsRequest>;
 
 export type ListFirewallsResponseFirewallsList = Array<Firewall>;
-export const ListFirewallsResponseFirewallsList = /*@__PURE__*/ S.Array(
-  Firewall,
-) as any as S.Schema<ListFirewallsResponseFirewallsList>;
+export const ListFirewallsResponseFirewallsList =
+  ListDropletFirewallsResponseFirewallsList as any as S.Schema<ListFirewallsResponseFirewallsList>;
 
 export type ListFirewallsResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListFirewallsResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -35517,9 +34383,8 @@ export const ListFloatingIPsActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFloatingIPsActionRequest>;
 
 export type ListFloatingIPsActionResponseActionsList = Array<Action>;
-export const ListFloatingIPsActionResponseActionsList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<ListFloatingIPsActionResponseActionsList>;
+export const ListFloatingIPsActionResponseActionsList =
+  ListActionsResponseActionsList as any as S.Schema<ListFloatingIPsActionResponseActionsList>;
 
 export type ListFloatingIPsActionResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListFloatingIPsActionResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -35529,15 +34394,8 @@ export interface ListFloatingIPsActionResponse {
   links?: PageLinks;
   meta: GetInvoiceByUUIDResponseMeta;
 }
-export const ListFloatingIPsActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actions: S.optional(ListFloatingIPsActionResponseActionsList),
-    links: S.optional(PageLinks),
-    meta: GetInvoiceByUUIDResponseMeta,
-  }),
-).annotate({
-  identifier: "ListFloatingIPsActionResponse",
-}) as any as S.Schema<ListFloatingIPsActionResponse>;
+export const ListFloatingIPsActionResponse =
+  ListDropletActionsResponse as any as S.Schema<ListFloatingIPsActionResponse>;
 
 export interface ListFunctionNamespacesRequest {}
 export const ListFunctionNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -35667,9 +34525,8 @@ export const ListGenaiAgentApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Api key infos */
 export type ApiListAgentAPIKeysOutputApiKeyInfosList = Array<ApiAgentAPIKeyInfo>;
-export const ApiListAgentAPIKeysOutputApiKeyInfosList = /*@__PURE__*/ S.Array(
-  ApiAgentAPIKeyInfo,
-) as any as S.Schema<ApiListAgentAPIKeysOutputApiKeyInfosList>;
+export const ApiListAgentAPIKeysOutputApiKeyInfosList =
+  ApiAgentApiKeyInfosList as any as S.Schema<ApiListAgentAPIKeysOutputApiKeyInfosList>;
 
 export interface ApiListAgentAPIKeysOutput {
   /** Api key infos */
@@ -35705,21 +34562,18 @@ export const ListGenaiAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Chatbot identifiers */
 export type ApiAgentPublicChatbotIdentifiersList = Array<ApiAgentChatbotIdentifier>;
-export const ApiAgentPublicChatbotIdentifiersList = /*@__PURE__*/ S.Array(
-  ApiAgentChatbotIdentifier,
-) as any as S.Schema<ApiAgentPublicChatbotIdentifiersList>;
+export const ApiAgentPublicChatbotIdentifiersList =
+  ApiAgentChatbotIdentifiersList as any as S.Schema<ApiAgentPublicChatbotIdentifiersList>;
 
 /** MCP (Model Context Protocol) servers attached to this agent */
 export type ApiAgentPublicMcpServersList = Array<ApiMcpServer>;
-export const ApiAgentPublicMcpServersList = /*@__PURE__*/ S.Array(
-  ApiMcpServer,
-) as any as S.Schema<ApiAgentPublicMcpServersList>;
+export const ApiAgentPublicMcpServersList =
+  ApiAgentMcpServersList as any as S.Schema<ApiAgentPublicMcpServersList>;
 
 /** A set of abitrary tags to organize your agent */
 export type ApiAgentPublicTagsList = Array<string>;
-export const ApiAgentPublicTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiAgentPublicTagsList>;
+export const ApiAgentPublicTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiAgentPublicTagsList>;
 
 /** A GenAI Agent's configuration */
 export interface ApiAgentPublic {
@@ -35867,9 +34721,8 @@ export const ListGenaiAgentsByAnthropicKeyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListGenaiAgentsByAnthropicKeyRequest>;
 
 export type ApiListAgentsByAnthropicKeyOutputAgentsList = Array<ApiAgent>;
-export const ApiListAgentsByAnthropicKeyOutputAgentsList = /*@__PURE__*/ S.Array(
-  ApiAgent,
-) as any as S.Schema<ApiListAgentsByAnthropicKeyOutputAgentsList>;
+export const ApiListAgentsByAnthropicKeyOutputAgentsList =
+  ApiGetChildrenOutputChildrenList as any as S.Schema<ApiListAgentsByAnthropicKeyOutputAgentsList>;
 
 /** List of Agents that linked to a specific Anthropic Key */
 export interface ApiListAgentsByAnthropicKeyOutput {
@@ -35906,9 +34759,8 @@ export const ListGenaiAgentsByOpenaiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGenaiAgentsByOpenaiKeyRequest>;
 
 export type ApiListAgentsByOpenAIKeyOutputAgentsList = Array<ApiAgent>;
-export const ApiListAgentsByOpenAIKeyOutputAgentsList = /*@__PURE__*/ S.Array(
-  ApiAgent,
-) as any as S.Schema<ApiListAgentsByOpenAIKeyOutputAgentsList>;
+export const ApiListAgentsByOpenAIKeyOutputAgentsList =
+  ApiGetChildrenOutputChildrenList as any as S.Schema<ApiListAgentsByOpenAIKeyOutputAgentsList>;
 
 /** List of Agents that are linked to a specific OpenAI Key */
 export interface ApiListAgentsByOpenAIKeyOutput {
@@ -35916,15 +34768,8 @@ export interface ApiListAgentsByOpenAIKeyOutput {
   links?: ApiLinks;
   meta?: ApiMeta;
 }
-export const ApiListAgentsByOpenAIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agents: S.optional(ApiListAgentsByOpenAIKeyOutputAgentsList),
-    links: S.optional(ApiLinks),
-    meta: S.optional(ApiMeta),
-  }),
-).annotate({
-  identifier: "ApiListAgentsByOpenAIKeyOutput",
-}) as any as S.Schema<ApiListAgentsByOpenAIKeyOutput>;
+export const ApiListAgentsByOpenAIKeyOutput =
+  ApiListAgentsByAnthropicKeyOutput as any as S.Schema<ApiListAgentsByOpenAIKeyOutput>;
 
 export interface ListGenaiAgentsByWorkspaceRequest {
   /** Workspace UUID. */
@@ -35950,24 +34795,16 @@ export const ListGenaiAgentsByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGenaiAgentsByWorkspaceRequest>;
 
 export type ApiListAgentsByWorkspaceOutputAgentsList = Array<ApiAgent>;
-export const ApiListAgentsByWorkspaceOutputAgentsList = /*@__PURE__*/ S.Array(
-  ApiAgent,
-) as any as S.Schema<ApiListAgentsByWorkspaceOutputAgentsList>;
+export const ApiListAgentsByWorkspaceOutputAgentsList =
+  ApiGetChildrenOutputChildrenList as any as S.Schema<ApiListAgentsByWorkspaceOutputAgentsList>;
 
 export interface ApiListAgentsByWorkspaceOutput {
   agents?: ApiListAgentsByWorkspaceOutputAgentsList;
   links?: ApiLinks;
   meta?: ApiMeta;
 }
-export const ApiListAgentsByWorkspaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agents: S.optional(ApiListAgentsByWorkspaceOutputAgentsList),
-    links: S.optional(ApiLinks),
-    meta: S.optional(ApiMeta),
-  }),
-).annotate({
-  identifier: "ApiListAgentsByWorkspaceOutput",
-}) as any as S.Schema<ApiListAgentsByWorkspaceOutput>;
+export const ApiListAgentsByWorkspaceOutput =
+  ApiListAgentsByAnthropicKeyOutput as any as S.Schema<ApiListAgentsByWorkspaceOutput>;
 
 export interface ListGenaiAgentVersionsRequest {
   /** Agent uuid */
@@ -36098,9 +34935,8 @@ export const ApiAgentVersionAttachedKnowledgebasesList = /*@__PURE__*/ S.Array(
 
 /** Tags associated with the agent */
 export type ApiAgentVersionTagsList = Array<string>;
-export const ApiAgentVersionTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiAgentVersionTagsList>;
+export const ApiAgentVersionTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiAgentVersionTagsList>;
 
 /** Represents an AgentVersion entity */
 export interface ApiAgentVersion {
@@ -36396,9 +35232,8 @@ export const ListGenaiEvaluationMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGenaiEvaluationMetricsRequest>;
 
 export type ApiListEvaluationMetricsOutputMetricsList = Array<ApiEvaluationMetric>;
-export const ApiListEvaluationMetricsOutputMetricsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetric,
-) as any as S.Schema<ApiListEvaluationMetricsOutputMetricsList>;
+export const ApiListEvaluationMetricsOutputMetricsList =
+  ApiEvaluationTestCaseMetricsList as any as S.Schema<ApiListEvaluationMetricsOutputMetricsList>;
 
 export interface ApiListEvaluationMetricsOutput {
   metrics?: ApiListEvaluationMetricsOutputMetricsList;
@@ -36459,9 +35294,8 @@ export const ListGenaiEvaluationTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Alternative way of authentication for internal usage only - should not be exposed to public api */
 export type ApiListEvaluationTestCasesOutputEvaluationTestCasesList = Array<ApiEvaluationTestCase>;
-export const ApiListEvaluationTestCasesOutputEvaluationTestCasesList = /*@__PURE__*/ S.Array(
-  ApiEvaluationTestCase,
-) as any as S.Schema<ApiListEvaluationTestCasesOutputEvaluationTestCasesList>;
+export const ApiListEvaluationTestCasesOutputEvaluationTestCasesList =
+  ApiWorkspaceEvaluationTestCasesList as any as S.Schema<ApiListEvaluationTestCasesOutputEvaluationTestCasesList>;
 
 export interface ApiListEvaluationTestCasesOutput {
   /** Alternative way of authentication for internal usage only - should not be exposed to public api */
@@ -36532,9 +35366,8 @@ export const ListGenaiIndexingJobDataSourcesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListGenaiIndexingJobDataSourcesRequest>;
 
 export type ApiListIndexingJobDataSourcesOutputIndexedDataSourcesList = Array<ApiIndexedDataSource>;
-export const ApiListIndexingJobDataSourcesOutputIndexedDataSourcesList = /*@__PURE__*/ S.Array(
-  ApiIndexedDataSource,
-) as any as S.Schema<ApiListIndexingJobDataSourcesOutputIndexedDataSourcesList>;
+export const ApiListIndexingJobDataSourcesOutputIndexedDataSourcesList =
+  ApiIndexingJobDataSourceJobsList as any as S.Schema<ApiListIndexingJobDataSourcesOutputIndexedDataSourcesList>;
 
 export interface ApiListIndexingJobDataSourcesOutput {
   indexed_data_sources?: ApiListIndexingJobDataSourcesOutputIndexedDataSourcesList;
@@ -36671,9 +35504,8 @@ export const ListGenaiKnowledgeBasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The knowledge bases */
 export type ApiListKnowledgeBasesOutputKnowledgeBasesList = Array<ApiKnowledgeBase>;
-export const ApiListKnowledgeBasesOutputKnowledgeBasesList = /*@__PURE__*/ S.Array(
-  ApiKnowledgeBase,
-) as any as S.Schema<ApiListKnowledgeBasesOutputKnowledgeBasesList>;
+export const ApiListKnowledgeBasesOutputKnowledgeBasesList =
+  ApiAgentKnowledgeBasesList as any as S.Schema<ApiListKnowledgeBasesOutputKnowledgeBasesList>;
 
 /** List of knowledge bases */
 export interface ApiListKnowledgeBasesOutput {
@@ -36709,9 +35541,8 @@ export const ListGenaiModelApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Api key infos */
 export type ApiListModelAPIKeysOutputApiKeyInfosList = Array<ApiAgentAPIKeyInfo>;
-export const ApiListModelAPIKeysOutputApiKeyInfosList = /*@__PURE__*/ S.Array(
-  ApiAgentAPIKeyInfo,
-) as any as S.Schema<ApiListModelAPIKeysOutputApiKeyInfosList>;
+export const ApiListModelAPIKeysOutputApiKeyInfosList =
+  ApiAgentApiKeyInfosList as any as S.Schema<ApiListModelAPIKeysOutputApiKeyInfosList>;
 
 export interface ApiListModelAPIKeysOutput {
   /** Api key infos */
@@ -36719,35 +35550,24 @@ export interface ApiListModelAPIKeysOutput {
   links?: ApiLinks;
   meta?: ApiMeta;
 }
-export const ApiListModelAPIKeysOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_infos: S.optional(ApiListModelAPIKeysOutputApiKeyInfosList),
-    links: S.optional(ApiLinks),
-    meta: S.optional(ApiMeta),
-  }),
-).annotate({
-  identifier: "ApiListModelAPIKeysOutput",
-}) as any as S.Schema<ApiListModelAPIKeysOutput>;
+export const ApiListModelAPIKeysOutput =
+  ApiListAgentAPIKeysOutput as any as S.Schema<ApiListModelAPIKeysOutput>;
 
 export type ListGenaiModelCatalogRequestModelTypeList = Array<string>;
-export const ListGenaiModelCatalogRequestModelTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGenaiModelCatalogRequestModelTypeList>;
+export const ListGenaiModelCatalogRequestModelTypeList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ListGenaiModelCatalogRequestModelTypeList>;
 
 export type ListGenaiModelCatalogRequestProviderList = Array<string>;
-export const ListGenaiModelCatalogRequestProviderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGenaiModelCatalogRequestProviderList>;
+export const ListGenaiModelCatalogRequestProviderList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ListGenaiModelCatalogRequestProviderList>;
 
 export type ListGenaiModelCatalogRequestAvailabilityList = Array<string>;
-export const ListGenaiModelCatalogRequestAvailabilityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGenaiModelCatalogRequestAvailabilityList>;
+export const ListGenaiModelCatalogRequestAvailabilityList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ListGenaiModelCatalogRequestAvailabilityList>;
 
 export type ListGenaiModelCatalogRequestBadgesList = Array<string>;
-export const ListGenaiModelCatalogRequestBadgesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListGenaiModelCatalogRequestBadgesList>;
+export const ListGenaiModelCatalogRequestBadgesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ListGenaiModelCatalogRequestBadgesList>;
 
 export type ListGenaiModelCatalogRequestSortBy =
   | "MODEL_CATALOG_SORT_BY_CREATED_AT"
@@ -36815,27 +35635,23 @@ export const ListGenaiModelCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All deployment availability values the client can offer in the availability filter UI. */
 export type ApiListModelCatalogOutputAvailableAvailabilityList = Array<string>;
-export const ApiListModelCatalogOutputAvailableAvailabilityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiListModelCatalogOutputAvailableAvailabilityList>;
+export const ApiListModelCatalogOutputAvailableAvailabilityList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiListModelCatalogOutputAvailableAvailabilityList>;
 
 /** All badge values the client can offer in the badges filter UI. */
 export type ApiListModelCatalogOutputAvailableBadgesList = Array<string>;
-export const ApiListModelCatalogOutputAvailableBadgesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiListModelCatalogOutputAvailableBadgesList>;
+export const ApiListModelCatalogOutputAvailableBadgesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiListModelCatalogOutputAvailableBadgesList>;
 
 /** All model type values the client can offer in the type filter UI. */
 export type ApiListModelCatalogOutputAvailableModelTypesList = Array<string>;
-export const ApiListModelCatalogOutputAvailableModelTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiListModelCatalogOutputAvailableModelTypesList>;
+export const ApiListModelCatalogOutputAvailableModelTypesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiListModelCatalogOutputAvailableModelTypesList>;
 
 /** All provider values the client can offer in the provider filter UI. */
 export type ApiListModelCatalogOutputAvailableProvidersList = Array<string>;
-export const ApiListModelCatalogOutputAvailableProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiListModelCatalogOutputAvailableProvidersList>;
+export const ApiListModelCatalogOutputAvailableProvidersList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiListModelCatalogOutputAvailableProvidersList>;
 
 /** Field on which to sort model catalog results. - MODEL_CATALOG_SORT_BY_CREATED_AT: Default: sort by creation date. - MODEL_CATALOG_SORT_BY_NAME: Sort by the model's display name (case-insensitive). - MODEL_CATALOG_SORT_BY_PRICE: Sort by input token price. */
 export type ApiModelCatalogSortBy =
@@ -36864,20 +35680,17 @@ export const ApiListModelCatalogOutputAvailableSortDirectionsList = /*@__PURE__*
 ) as any as S.Schema<ApiListModelCatalogOutputAvailableSortDirectionsList>;
 
 export type ApiModelCatalogEntryAvailabilityList = Array<string>;
-export const ApiModelCatalogEntryAvailabilityList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelCatalogEntryAvailabilityList>;
+export const ApiModelCatalogEntryAvailabilityList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelCatalogEntryAvailabilityList>;
 
 /** Badges for models */
 export type ApiModelCatalogEntryBadgesList = Array<string>;
-export const ApiModelCatalogEntryBadgesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelCatalogEntryBadgesList>;
+export const ApiModelCatalogEntryBadgesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelCatalogEntryBadgesList>;
 
 export type ApiModelCatalogEntryCapabilitiesList = Array<string>;
-export const ApiModelCatalogEntryCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelCatalogEntryCapabilitiesList>;
+export const ApiModelCatalogEntryCapabilitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelCatalogEntryCapabilitiesList>;
 
 /** List item for ListModelCatalog */
 export interface ApiModelCatalogEntry {
@@ -36980,21 +35793,15 @@ export const ListGenaiModelEvaluationMetricsRequest = /*@__PURE__*/ S.suspend(()
 
 /** List of model evaluation metrics */
 export type ApiListModelEvaluationMetricsOutputMetricsList = Array<ApiEvaluationMetric>;
-export const ApiListModelEvaluationMetricsOutputMetricsList = /*@__PURE__*/ S.Array(
-  ApiEvaluationMetric,
-) as any as S.Schema<ApiListModelEvaluationMetricsOutputMetricsList>;
+export const ApiListModelEvaluationMetricsOutputMetricsList =
+  ApiEvaluationTestCaseMetricsList as any as S.Schema<ApiListModelEvaluationMetricsOutputMetricsList>;
 
 export interface ApiListModelEvaluationMetricsOutput {
   /** List of model evaluation metrics */
   metrics?: ApiListModelEvaluationMetricsOutputMetricsList;
 }
-export const ApiListModelEvaluationMetricsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metrics: S.optional(ApiListModelEvaluationMetricsOutputMetricsList),
-  }),
-).annotate({
-  identifier: "ApiListModelEvaluationMetricsOutput",
-}) as any as S.Schema<ApiListModelEvaluationMetricsOutput>;
+export const ApiListModelEvaluationMetricsOutput =
+  ApiListEvaluationMetricsOutput as any as S.Schema<ApiListModelEvaluationMetricsOutput>;
 
 export interface ListGenaiModelEvaluationPresetsRequest {}
 export const ListGenaiModelEvaluationPresetsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -37276,15 +36083,13 @@ export const ListGenaiModelRouterTaskPresetsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Default models assigned to this task */
 export type ApiModelRouterTaskPresetModelsList = Array<string>;
-export const ApiModelRouterTaskPresetModelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelRouterTaskPresetModelsList>;
+export const ApiModelRouterTaskPresetModelsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelRouterTaskPresetModelsList>;
 
 /** Lightweight labels for filtering */
 export type ApiModelRouterTaskPresetTagsList = Array<string>;
-export const ApiModelRouterTaskPresetTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelRouterTaskPresetTagsList>;
+export const ApiModelRouterTaskPresetTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelRouterTaskPresetTagsList>;
 
 /** Task preset that can be referenced by slug in model router policies. */
 export interface ApiModelRouterTaskPreset {
@@ -37375,27 +36180,23 @@ export const ListGenaiModelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Model capabilities (inference, reasoning, vectorization, etc.) */
 export type ApiModelPublicCapabilitiesList = Array<string>;
-export const ApiModelPublicCapabilitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelPublicCapabilitiesList>;
+export const ApiModelPublicCapabilitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelPublicCapabilitiesList>;
 
 /** Available endpoints and their capabilities */
 export type ApiModelPublicEndpointsList = Array<ApiModelEndpoint>;
-export const ApiModelPublicEndpointsList = /*@__PURE__*/ S.Array(
-  ApiModelEndpoint,
-) as any as S.Schema<ApiModelPublicEndpointsList>;
+export const ApiModelPublicEndpointsList =
+  ApiModelEndpointsList as any as S.Schema<ApiModelPublicEndpointsList>;
 
 /** Available reasoning efforts for this model */
 export type ApiModelPublicReasoningEffortsList = Array<string>;
-export const ApiModelPublicReasoningEffortsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiModelPublicReasoningEffortsList>;
+export const ApiModelPublicReasoningEffortsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiModelPublicReasoningEffortsList>;
 
 /** Playground settings derived from model metadata */
 export type ApiModelPublicSettingsList = Array<ApiModelSetting>;
-export const ApiModelPublicSettingsList = /*@__PURE__*/ S.Array(
-  ApiModelSetting,
-) as any as S.Schema<ApiModelPublicSettingsList>;
+export const ApiModelPublicSettingsList =
+  ApiModelSettingsList as any as S.Schema<ApiModelPublicSettingsList>;
 
 /** A machine learning model stored on the GenAI platform */
 export interface ApiModelPublic {
@@ -37589,9 +36390,8 @@ export const ListGenaiScenarioLibraryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Categories currently in use, for filtering library results. */
 export type ApiListScenarioLibraryOutputAvailableCategoriesList = Array<string>;
-export const ApiListScenarioLibraryOutputAvailableCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiListScenarioLibraryOutputAvailableCategoriesList>;
+export const ApiListScenarioLibraryOutputAvailableCategoriesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiListScenarioLibraryOutputAvailableCategoriesList>;
 
 /** Sortable fields for listing the scenario library. - SCENARIO_LIBRARY_SORT_FIELD_NAME: Sort by customer-facing name (case-insensitive). Default. - SCENARIO_LIBRARY_SORT_FIELD_CREATED_AT: Sort by creation date. */
 export type ApiScenarioLibrarySortField =
@@ -37608,9 +36408,8 @@ export const ApiListScenarioLibraryOutputAvailableSortByList = /*@__PURE__*/ S.A
 
 /** Sort-direction values available for this list request. */
 export type ApiListScenarioLibraryOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
-export const ApiListScenarioLibraryOutputAvailableSortDirectionsList = /*@__PURE__*/ S.Array(
-  ApiSortDirection,
-) as any as S.Schema<ApiListScenarioLibraryOutputAvailableSortDirectionsList>;
+export const ApiListScenarioLibraryOutputAvailableSortDirectionsList =
+  ApiListModelCatalogOutputAvailableSortDirectionsList as any as S.Schema<ApiListScenarioLibraryOutputAvailableSortDirectionsList>;
 
 /** Lifecycle status of a Common Scenario & Goal Library entry. - SCENARIO_LIBRARY_ENTRY_STATUS_ACTIVE: Visible in the library and available to copy into a scenario set. - SCENARIO_LIBRARY_ENTRY_STATUS_ARCHIVED: Hidden from the library catalog. Existing scenario sets created from this entry keep their provenance. */
 export type ApiScenarioLibraryEntryStatus =
@@ -37749,15 +36548,13 @@ export const ApiListScenariosOutputAvailableSortByList = /*@__PURE__*/ S.Array(
 
 /** Sort-direction values available for this list request. */
 export type ApiListScenariosOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
-export const ApiListScenariosOutputAvailableSortDirectionsList = /*@__PURE__*/ S.Array(
-  ApiSortDirection,
-) as any as S.Schema<ApiListScenariosOutputAvailableSortDirectionsList>;
+export const ApiListScenariosOutputAvailableSortDirectionsList =
+  ApiListModelCatalogOutputAvailableSortDirectionsList as any as S.Schema<ApiListScenariosOutputAvailableSortDirectionsList>;
 
 /** The scenarios for the current page. */
 export type ApiListScenariosOutputScenariosList = Array<ApiScenario>;
-export const ApiListScenariosOutputScenariosList = /*@__PURE__*/ S.Array(
-  ApiScenario,
-) as any as S.Schema<ApiListScenariosOutputScenariosList>;
+export const ApiListScenariosOutputScenariosList =
+  CreateGenaiScenarioSetRequestScenariosList as any as S.Schema<ApiListScenariosOutputScenariosList>;
 
 /** Output for listing the scenarios in a scenario set. */
 export interface ApiListScenariosOutput {
@@ -37919,9 +36716,8 @@ export const ApiListScenarioSetsOutputAvailableSortByList = /*@__PURE__*/ S.Arra
 
 /** Sort-direction values available for this list request. */
 export type ApiListScenarioSetsOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
-export const ApiListScenarioSetsOutputAvailableSortDirectionsList = /*@__PURE__*/ S.Array(
-  ApiSortDirection,
-) as any as S.Schema<ApiListScenarioSetsOutputAvailableSortDirectionsList>;
+export const ApiListScenarioSetsOutputAvailableSortDirectionsList =
+  ApiListModelCatalogOutputAvailableSortDirectionsList as any as S.Schema<ApiListScenarioSetsOutputAvailableSortDirectionsList>;
 
 /** Source kinds available for filtering this list request. */
 export type ApiListScenarioSetsOutputAvailableSourceKindsList = Array<ApiScenarioSetSourceKind>;
@@ -38069,9 +36865,8 @@ export const ApiListSimulationJourneysOutputAvailableSortByList = /*@__PURE__*/ 
 
 /** Sort-direction values available for this list request. */
 export type ApiListSimulationJourneysOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
-export const ApiListSimulationJourneysOutputAvailableSortDirectionsList = /*@__PURE__*/ S.Array(
-  ApiSortDirection,
-) as any as S.Schema<ApiListSimulationJourneysOutputAvailableSortDirectionsList>;
+export const ApiListSimulationJourneysOutputAvailableSortDirectionsList =
+  ApiListModelCatalogOutputAvailableSortDirectionsList as any as S.Schema<ApiListSimulationJourneysOutputAvailableSortDirectionsList>;
 
 /** Statuses available for filtering this list request. */
 export type ApiListSimulationJourneysOutputAvailableStatusesList =
@@ -38203,9 +36998,8 @@ export const ApiListSimulationRunsOutputAvailableSortByList = /*@__PURE__*/ S.Ar
 
 /** Sort-direction values available for this list request. */
 export type ApiListSimulationRunsOutputAvailableSortDirectionsList = Array<ApiSortDirection>;
-export const ApiListSimulationRunsOutputAvailableSortDirectionsList = /*@__PURE__*/ S.Array(
-  ApiSortDirection,
-) as any as S.Schema<ApiListSimulationRunsOutputAvailableSortDirectionsList>;
+export const ApiListSimulationRunsOutputAvailableSortDirectionsList =
+  ApiListModelCatalogOutputAvailableSortDirectionsList as any as S.Schema<ApiListSimulationRunsOutputAvailableSortDirectionsList>;
 
 /** Statuses available for filtering this list request. */
 export type ApiListSimulationRunsOutputAvailableStatusesList = Array<ApiSimulationRunStatus>;
@@ -38279,9 +37073,8 @@ export const ListImageActionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListImageActionsRequest" }) as any as S.Schema<ListImageActionsRequest>;
 
 export type ListImageActionsResponseActionsList = Array<Action>;
-export const ListImageActionsResponseActionsList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<ListImageActionsResponseActionsList>;
+export const ListImageActionsResponseActionsList =
+  ListActionsResponseActionsList as any as S.Schema<ListImageActionsResponseActionsList>;
 
 export type ListImageActionsResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListImageActionsResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -38291,13 +37084,8 @@ export interface ListImageActionsResponse {
   links?: PageLinks;
   meta: GetInvoiceByUUIDResponseMeta;
 }
-export const ListImageActionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actions: S.optional(ListImageActionsResponseActionsList),
-    links: S.optional(PageLinks),
-    meta: GetInvoiceByUUIDResponseMeta,
-  }),
-).annotate({ identifier: "ListImageActionsResponse" }) as any as S.Schema<ListImageActionsResponse>;
+export const ListImageActionsResponse =
+  ListActionsResponse as any as S.Schema<ListImageActionsResponse>;
 
 export type ListImagesRequestType = "application" | "distribution";
 export const ListImagesRequestType = S.String;
@@ -38693,15 +37481,13 @@ export const AssociatedKubernetesResourcesLoadBalancersList = /*@__PURE__*/ S.Ar
 
 /** A list of names and IDs for associated volumes that can be destroyed along with the cluster. */
 export type AssociatedKubernetesResourcesVolumesList = Array<AssociatedKubernetesResource>;
-export const AssociatedKubernetesResourcesVolumesList = /*@__PURE__*/ S.Array(
-  AssociatedKubernetesResource,
-) as any as S.Schema<AssociatedKubernetesResourcesVolumesList>;
+export const AssociatedKubernetesResourcesVolumesList =
+  AssociatedKubernetesResourcesLoadBalancersList as any as S.Schema<AssociatedKubernetesResourcesVolumesList>;
 
 /** A list of names and IDs for associated volume snapshots that can be destroyed along with the cluster. */
 export type AssociatedKubernetesResourcesVolumeSnapshotsList = Array<AssociatedKubernetesResource>;
-export const AssociatedKubernetesResourcesVolumeSnapshotsList = /*@__PURE__*/ S.Array(
-  AssociatedKubernetesResource,
-) as any as S.Schema<AssociatedKubernetesResourcesVolumeSnapshotsList>;
+export const AssociatedKubernetesResourcesVolumeSnapshotsList =
+  AssociatedKubernetesResourcesLoadBalancersList as any as S.Schema<AssociatedKubernetesResourcesVolumeSnapshotsList>;
 
 /** An object containing the IDs of resources associated with a Kubernetes cluster. */
 export interface AssociatedKubernetesResources {
@@ -38775,9 +37561,8 @@ export const ListKubernetesNodePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKubernetesNodePoolsRequest>;
 
 export type ListKubernetesNodePoolsResponseNodePoolsList = Array<KubernetesNodePool>;
-export const ListKubernetesNodePoolsResponseNodePoolsList = /*@__PURE__*/ S.Array(
-  KubernetesNodePool,
-) as any as S.Schema<ListKubernetesNodePoolsResponseNodePoolsList>;
+export const ListKubernetesNodePoolsResponseNodePoolsList =
+  ClusterNodePoolsList as any as S.Schema<ListKubernetesNodePoolsResponseNodePoolsList>;
 
 export interface ListKubernetesNodePoolsResponse {
   node_pools?: ListKubernetesNodePoolsResponseNodePoolsList;
@@ -38826,17 +37611,11 @@ export interface KubernetesSize {
   /** The identifier for a size for use when creating a new cluster. */
   slug?: string;
 }
-export const KubernetesSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    slug: S.optional(S.String),
-  }),
-).annotate({ identifier: "KubernetesSize" }) as any as S.Schema<KubernetesSize>;
+export const KubernetesSize = KubernetesRegion as any as S.Schema<KubernetesSize>;
 
 export type KubernetesOptionsOptionsSizesList = Array<KubernetesSize>;
-export const KubernetesOptionsOptionsSizesList = /*@__PURE__*/ S.Array(
-  KubernetesSize,
-) as any as S.Schema<KubernetesOptionsOptionsSizesList>;
+export const KubernetesOptionsOptionsSizesList =
+  KubernetesOptionsOptionsRegionsList as any as S.Schema<KubernetesOptionsOptionsSizesList>;
 
 export interface KubernetesOptionsOptions {
   regions?: KubernetesOptionsOptionsRegionsList;
@@ -39116,9 +37895,8 @@ export const ListNfsAccessPointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of access point objects. */
 export type AccessPointListResponseAccessPointsList = Array<AccessPointResponse>;
-export const AccessPointListResponseAccessPointsList = /*@__PURE__*/ S.Array(
-  AccessPointResponse,
-) as any as S.Schema<AccessPointListResponseAccessPointsList>;
+export const AccessPointListResponseAccessPointsList =
+  NfsResponseAccessPointsList as any as S.Schema<AccessPointListResponseAccessPointsList>;
 
 /** Response containing a list of access points. */
 export interface AccessPointListResponse {
@@ -39423,9 +38201,8 @@ export const ListProjectResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resources that are assigned to this project. Only resources that you are authorized to see will be returned. */
 export type ListProjectResourcesResponseResourcesList = Array<Resource>;
-export const ListProjectResourcesResponseResourcesList = /*@__PURE__*/ S.Array(
-  Resource,
-) as any as S.Schema<ListProjectResourcesResponseResourcesList>;
+export const ListProjectResourcesResponseResourcesList =
+  AssignProjectResourcesResponseResourcesList as any as S.Schema<ListProjectResourcesResponseResourcesList>;
 
 export type ListProjectResourcesResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListProjectResourcesResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -39455,9 +38232,8 @@ export const ListProjectResourcesDefaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resources that are assigned to this project. Only resources that you are authorized to see will be returned. */
 export type ListProjectResourcesDefaultResponseResourcesList = Array<Resource>;
-export const ListProjectResourcesDefaultResponseResourcesList = /*@__PURE__*/ S.Array(
-  Resource,
-) as any as S.Schema<ListProjectResourcesDefaultResponseResourcesList>;
+export const ListProjectResourcesDefaultResponseResourcesList =
+  AssignProjectResourcesResponseResourcesList as any as S.Schema<ListProjectResourcesDefaultResponseResourcesList>;
 
 export type ListProjectResourcesDefaultResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListProjectResourcesDefaultResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -39468,15 +38244,8 @@ export interface ListProjectResourcesDefaultResponse {
   links?: PageLinks;
   meta: GetInvoiceByUUIDResponseMeta;
 }
-export const ListProjectResourcesDefaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(ListProjectResourcesDefaultResponseResourcesList),
-    links: S.optional(PageLinks),
-    meta: GetInvoiceByUUIDResponseMeta,
-  }),
-).annotate({
-  identifier: "ListProjectResourcesDefaultResponse",
-}) as any as S.Schema<ListProjectResourcesDefaultResponse>;
+export const ListProjectResourcesDefaultResponse =
+  ListProjectResourcesResponse as any as S.Schema<ListProjectResourcesDefaultResponse>;
 
 export interface ListProjectsRequest {
   /** Number of items returned per page */
@@ -39653,9 +38422,8 @@ export const ListRegistryRepositoriesV2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** All tags associated with this manifest */
 export type RepositoryManifestTagsList = Array<string>;
-export const RepositoryManifestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryManifestTagsList>;
+export const RepositoryManifestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RepositoryManifestTagsList>;
 
 export interface RepositoryBlob {
   /** The digest of the blob */
@@ -39926,9 +38694,8 @@ export const ListReservedIPsActionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReservedIPsActionsRequest>;
 
 export type ListReservedIPsActionsResponseActionsList = Array<Action>;
-export const ListReservedIPsActionsResponseActionsList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<ListReservedIPsActionsResponseActionsList>;
+export const ListReservedIPsActionsResponseActionsList =
+  ListActionsResponseActionsList as any as S.Schema<ListReservedIPsActionsResponseActionsList>;
 
 export type ListReservedIPsActionsResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListReservedIPsActionsResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -39938,15 +38705,8 @@ export interface ListReservedIPsActionsResponse {
   links?: PageLinks;
   meta: GetInvoiceByUUIDResponseMeta;
 }
-export const ListReservedIPsActionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actions: S.optional(ListReservedIPsActionsResponseActionsList),
-    links: S.optional(PageLinks),
-    meta: GetInvoiceByUUIDResponseMeta,
-  }),
-).annotate({
-  identifier: "ListReservedIPsActionsResponse",
-}) as any as S.Schema<ListReservedIPsActionsResponse>;
+export const ListReservedIPsActionsResponse =
+  ListDropletActionsResponse as any as S.Schema<ListReservedIPsActionsResponse>;
 
 export interface ListReservedIPv6Request {
   /** Number of items returned per page */
@@ -40132,14 +38892,12 @@ export const SettingsSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SettingsSettings" }) as any as S.Schema<SettingsSettings>;
 
 export type SettingsTierCoverageValueResourcesList = Array<string>;
-export const SettingsTierCoverageValueResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsTierCoverageValueResourcesList>;
+export const SettingsTierCoverageValueResourcesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<SettingsTierCoverageValueResourcesList>;
 
 export type SettingsTierCoverageValueTagsList = Array<string>;
-export const SettingsTierCoverageValueTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsTierCoverageValueTagsList>;
+export const SettingsTierCoverageValueTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<SettingsTierCoverageValueTagsList>;
 
 export interface SettingsTierCoverageValue {
   resources?: SettingsTierCoverageValueResourcesList;
@@ -40162,9 +38920,8 @@ export const SettingsTierCoverageMap = /*@__PURE__*/ S.Record(
 
 /** URNs of resources that will be downgraded. */
 export type PlanDowngradesResourcesList = Array<string>;
-export const PlanDowngradesResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PlanDowngradesResourcesList>;
+export const PlanDowngradesResourcesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<PlanDowngradesResourcesList>;
 
 /** Resources moving to a tier at a given effective time. */
 export interface PlanDowngrades {
@@ -40338,9 +39095,8 @@ export const ListSpacesKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSpacesKeyRequest" }) as any as S.Schema<ListSpacesKeyRequest>;
 
 export type ListSpacesKeyResponseKeysList = Array<Key>;
-export const ListSpacesKeyResponseKeysList = /*@__PURE__*/ S.Array(
-  Key,
-) as any as S.Schema<ListSpacesKeyResponseKeysList>;
+export const ListSpacesKeyResponseKeysList =
+  GetSpacesKeyResponseKeysList as any as S.Schema<ListSpacesKeyResponseKeysList>;
 
 export type ListSpacesKeyResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListSpacesKeyResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -40454,9 +39210,8 @@ export const ListToolbeltProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The distinct tool categories among this toolbelt's members for the provider (sorted). Empty for `_legacy` or when no member has a category. */
 export type ToolbeltProviderSummaryCategoriesList = Array<string>;
-export const ToolbeltProviderSummaryCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ToolbeltProviderSummaryCategoriesList>;
+export const ToolbeltProviderSummaryCategoriesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ToolbeltProviderSummaryCategoriesList>;
 
 /** One provider represented in a toolbelt's membership. Its provider fields (ID, name, description, `created_at`) match the toolkit entries of `GET /v2/action-gateway/tools/toolkits`, so a client can render the same provider card without a second request. */
 export interface ToolbeltProviderSummary {
@@ -40547,9 +39302,8 @@ export const ListToolbeltProviderToolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Members sorted by tool slug. */
 export type ListToolbeltProviderToolsResponseToolsList = Array<ToolbeltToolDetail>;
-export const ListToolbeltProviderToolsResponseToolsList = /*@__PURE__*/ S.Array(
-  ToolbeltToolDetail,
-) as any as S.Schema<ListToolbeltProviderToolsResponseToolsList>;
+export const ListToolbeltProviderToolsResponseToolsList =
+  GetToolbeltResponseToolDetailsList as any as S.Schema<ListToolbeltProviderToolsResponseToolsList>;
 
 /** One page of a toolbelt's members from one provider. */
 export interface ListToolbeltProviderToolsResponse {
@@ -40770,15 +39524,13 @@ export const ListToolProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Credential kinds the provider accepts, sorted: none|oauth|`shared_api_key`|unknown|`user_oauth_app`|`user_token`. `none` means the provider needs no credential. `oauth` means users can connect through DigitalOcean's shared OAuth application. `user_oauth_app` means users can connect through an OAuth client your team registers as a provider credential; without `oauth` alongside it, that is the only way to connect. `shared_api_key` means DigitalOcean supplies the key. `user_token` means your team or its users supply a key or token. `unknown` means the provider declares no kind this API recognizes, including an OAuth provider whose shared application is not available. It is never paired with another kind. */
 export type ProviderSummaryAuthTypesList = Array<string>;
-export const ProviderSummaryAuthTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderSummaryAuthTypesList>;
+export const ProviderSummaryAuthTypesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ProviderSummaryAuthTypesList>;
 
 /** The OAuth scopes a connection may request; a connection that requests none gets all of them. Set only when `auth_types` contains `oauth` or `user_oauth_app`. */
 export type ProviderSummaryScopesList = Array<string>;
-export const ProviderSummaryScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProviderSummaryScopesList>;
+export const ProviderSummaryScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ProviderSummaryScopesList>;
 
 /** How the value is entered: string, `https_origin`, or enum. */
 export type ConnectionParameterSpecInputKind = "string" | "https_origin" | "enum";
@@ -40786,15 +39538,13 @@ export const ConnectionParameterSpecInputKind = S.String;
 
 /** For enum inputs, the accepted values. */
 export type ConnectionParameterSpecAllowedValuesList = Array<string>;
-export const ConnectionParameterSpecAllowedValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionParameterSpecAllowedValuesList>;
+export const ConnectionParameterSpecAllowedValuesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ConnectionParameterSpecAllowedValuesList>;
 
 /** For `https_origin` inputs, the host suffixes the origin's host must match. */
 export type ConnectionParameterSpecAllowedHostSuffixesList = Array<string>;
-export const ConnectionParameterSpecAllowedHostSuffixesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionParameterSpecAllowedHostSuffixesList>;
+export const ConnectionParameterSpecAllowedHostSuffixesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ConnectionParameterSpecAllowedHostSuffixesList>;
 
 /** Describes one non-sensitive value collected while configuring a provider connection. Clients can render these specifications generically. */
 export interface ConnectionParameterSpec {
@@ -40842,9 +39592,8 @@ export const ProviderSummaryConnectionParametersList = /*@__PURE__*/ S.Array(
 
 /** Non-secret values collected when registering an API key provider credential. They are validated against the provider's declaration and used to derive the credential's `base_url`; callers cannot supply header names or arbitrary destinations. */
 export type ProviderSummaryCredentialParametersList = Array<ConnectionParameterSpec>;
-export const ProviderSummaryCredentialParametersList = /*@__PURE__*/ S.Array(
-  ConnectionParameterSpec,
-) as any as S.Schema<ProviderSummaryCredentialParametersList>;
+export const ProviderSummaryCredentialParametersList =
+  ProviderSummaryConnectionParametersList as any as S.Schema<ProviderSummaryCredentialParametersList>;
 
 /** Describes a catalog provider and how to authenticate to it. */
 export interface ProviderSummary {
@@ -40989,15 +39738,13 @@ export const ListToolsResponseToolsList = /*@__PURE__*/ S.Array(
 
 /** Lists how the tool authenticates: oauth (a user connection), `user_token` (a key your team supplies), `shared_key` (a key DigitalOcean supplies), or none. */
 export type ToolDefinitionAuthModesList = Array<string>;
-export const ToolDefinitionAuthModesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ToolDefinitionAuthModesList>;
+export const ToolDefinitionAuthModesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ToolDefinitionAuthModesList>;
 
 /** The provider permissions the tool requests. */
 export type ToolDefinitionAuthScopesList = Array<string>;
-export const ToolDefinitionAuthScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ToolDefinitionAuthScopesList>;
+export const ToolDefinitionAuthScopesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ToolDefinitionAuthScopesList>;
 
 /** Names the provider account the tool acts through and the scopes it requests. */
 export interface ToolDefinitionAuth {
@@ -41093,9 +39840,8 @@ export const ListToolToolkitsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Distinct categories of the provider's released tools, sorted. */
 export type ToolkitCategoriesList = Array<string>;
-export const ToolkitCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ToolkitCategoriesList>;
+export const ToolkitCategoriesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ToolkitCategoriesList>;
 
 /** Provider of tools. */
 export interface Toolkit {
@@ -41244,9 +39990,8 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs on this page. */
 export type ListUsersResponseUserIdsList = Array<string>;
-export const ListUsersResponseUserIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListUsersResponseUserIdsList>;
+export const ListUsersResponseUserIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ListUsersResponseUserIdsList>;
 
 /** One page of user IDs. */
 export interface ListUsersResponse {
@@ -41443,9 +40188,8 @@ export const ListVolumeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVolumeSnapshotsRequest>;
 
 export type ListVolumeSnapshotsResponseSnapshotsList = Array<Snapshots>;
-export const ListVolumeSnapshotsResponseSnapshotsList = /*@__PURE__*/ S.Array(
-  Snapshots,
-) as any as S.Schema<ListVolumeSnapshotsResponseSnapshotsList>;
+export const ListVolumeSnapshotsResponseSnapshotsList =
+  ListSnapshotsResponseSnapshotsList as any as S.Schema<ListVolumeSnapshotsResponseSnapshotsList>;
 
 export type ListVolumeSnapshotsResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListVolumeSnapshotsResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -41664,9 +40408,8 @@ export const ListVpcPeeringsRequest2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpcPeeringsRequest2" }) as any as S.Schema<ListVpcPeeringsRequest2>;
 
 export type ListVpcPeeringsResponseVpcPeeringsList = Array<VpcPeering>;
-export const ListVpcPeeringsResponseVpcPeeringsList = /*@__PURE__*/ S.Array(
-  VpcPeering,
-) as any as S.Schema<ListVpcPeeringsResponseVpcPeeringsList>;
+export const ListVpcPeeringsResponseVpcPeeringsList =
+  ListVpcPeeringsResponsePeeringsList as any as S.Schema<ListVpcPeeringsResponseVpcPeeringsList>;
 
 export type ListVpcPeeringsResponseMeta2 = GetInvoiceByUUIDResponseMeta;
 export const ListVpcPeeringsResponseMeta2 = GetInvoiceByUUIDResponseMeta;
@@ -41792,9 +40535,8 @@ export const ListVpcSubnetMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpcSubnetMembersRequest>;
 
 export type ListVpcSubnetMembersResponseMembersList = Array<VpcMember>;
-export const ListVpcSubnetMembersResponseMembersList = /*@__PURE__*/ S.Array(
-  VpcMember,
-) as any as S.Schema<ListVpcSubnetMembersResponseMembersList>;
+export const ListVpcSubnetMembersResponseMembersList =
+  ListVpcMembersResponseMembersList as any as S.Schema<ListVpcSubnetMembersResponseMembersList>;
 
 export type ListVpcSubnetMembersResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListVpcSubnetMembersResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -41838,9 +40580,8 @@ export const ListVpcSubnetRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpcSubnetRoutesRequest>;
 
 export type ListVpcSubnetRoutesResponseRoutesList = Array<Route>;
-export const ListVpcSubnetRoutesResponseRoutesList = /*@__PURE__*/ S.Array(
-  Route,
-) as any as S.Schema<ListVpcSubnetRoutesResponseRoutesList>;
+export const ListVpcSubnetRoutesResponseRoutesList =
+  ListVpcRoutesResponseRoutesList as any as S.Schema<ListVpcSubnetRoutesResponseRoutesList>;
 
 export type ListVpcSubnetRoutesResponseMeta = GetInvoiceByUUIDResponseMeta;
 export const ListVpcSubnetRoutesResponseMeta = GetInvoiceByUUIDResponseMeta;
@@ -41958,11 +40699,7 @@ export const PatchAddonRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchAddonResponse {
   resource?: AddonsResource;
 }
-export const PatchAddonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(AddonsResource),
-  }),
-).annotate({ identifier: "PatchAddonResponse" }) as any as S.Schema<PatchAddonResponse>;
+export const PatchAddonResponse = CreateAddonResponse as any as S.Schema<PatchAddonResponse>;
 
 export interface PatchAddonPlanRequest {
   /** The UUID of the add-on resource to update. */
@@ -41980,11 +40717,8 @@ export const PatchAddonPlanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchAddonPlanResponse {
   resource?: AddonsResource;
 }
-export const PatchAddonPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(AddonsResource),
-  }),
-).annotate({ identifier: "PatchAddonPlanResponse" }) as any as S.Schema<PatchAddonPlanResponse>;
+export const PatchAddonPlanResponse =
+  CreateAddonResponse as any as S.Schema<PatchAddonPlanResponse>;
 
 export interface PatchByoipPrefixRequest {
   /** A unique identifier for a BYOIP prefix. */
@@ -42002,11 +40736,8 @@ export const PatchByoipPrefixRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchByoipPrefixResponse {
   byoip_prefix?: ByoipPrefix;
 }
-export const PatchByoipPrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    byoip_prefix: S.optional(ByoipPrefix),
-  }),
-).annotate({ identifier: "PatchByoipPrefixResponse" }) as any as S.Schema<PatchByoipPrefixResponse>;
+export const PatchByoipPrefixResponse =
+  GetByoipPrefixResponse as any as S.Schema<PatchByoipPrefixResponse>;
 
 export type PatchDatabaseConfigRequestConfig =
   | MysqlAdvancedConfig
@@ -42036,9 +40767,8 @@ export const PatchDatabaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchDatabaseConfigRequest>;
 
 export interface PatchDatabaseConfigResponse {}
-export const PatchDatabaseConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PatchDatabaseConfigResponse",
-}) as any as S.Schema<PatchDatabaseConfigResponse>;
+export const PatchDatabaseConfigResponse =
+  AddFirewallRulesResponse as any as S.Schema<PatchDatabaseConfigResponse>;
 
 /** Provider tokens for model access (e.g. gated Hugging Face models). */
 export interface PatchDedicatedInferenceRequestAccessTokens {
@@ -42079,13 +40809,8 @@ export const PatchDedicatedInferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchDedicatedInferenceResponse {
   dedicated_inference?: DedicatedInference;
 }
-export const PatchDedicatedInferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dedicated_inference: S.optional(DedicatedInference),
-  }),
-).annotate({
-  identifier: "PatchDedicatedInferenceResponse",
-}) as any as S.Schema<PatchDedicatedInferenceResponse>;
+export const PatchDedicatedInferenceResponse =
+  GetDedicatedInferenceResponse as any as S.Schema<PatchDedicatedInferenceResponse>;
 
 export interface PatchDomainRecordRequest {
   /** The name of the domain itself. */
@@ -42136,13 +40861,8 @@ export const PatchDomainRecordRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchDomainRecordResponse {
   domain_record?: DomainRecord;
 }
-export const PatchDomainRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain_record: S.optional(DomainRecord),
-  }),
-).annotate({
-  identifier: "PatchDomainRecordResponse",
-}) as any as S.Schema<PatchDomainRecordResponse>;
+export const PatchDomainRecordResponse =
+  CreateDomainRecordResponse as any as S.Schema<PatchDomainRecordResponse>;
 
 export interface PatchMcpServerRequest {
   /** Server identifier (`serverRef`) of one of your team's MCP servers. */
@@ -42173,9 +40893,8 @@ export const PartnerAttachmentUpdatableCase0 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of VPCs IDs. */
 export type PartnerAttachmentUpdatableCase1VpcIdsList = Array<string>;
-export const PartnerAttachmentUpdatableCase1VpcIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PartnerAttachmentUpdatableCase1VpcIdsList>;
+export const PartnerAttachmentUpdatableCase1VpcIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<PartnerAttachmentUpdatableCase1VpcIdsList>;
 
 export interface PartnerAttachmentUpdatableCase1 {
   /** An array of VPCs IDs. */
@@ -42200,16 +40919,8 @@ export interface PartnerAttachmentUpdatableCase2Bgp {
   /** BGP Auth Key */
   auth_key: string;
 }
-export const PartnerAttachmentUpdatableCase2Bgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    local_router_ip: S.String,
-    peer_router_ip: S.String,
-    peer_router_asn: S.Number,
-    auth_key: S.String,
-  }),
-).annotate({
-  identifier: "PartnerAttachmentUpdatableCase2Bgp",
-}) as any as S.Schema<PartnerAttachmentUpdatableCase2Bgp>;
+export const PartnerAttachmentUpdatableCase2Bgp =
+  CreatePartnerAttachmentRequestBgp as any as S.Schema<PartnerAttachmentUpdatableCase2Bgp>;
 
 export interface PartnerAttachmentUpdatableCase2 {
   /** BGP configurations */
@@ -42248,13 +40959,8 @@ export const PatchPartnerAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchPartnerAttachmentResponse {
   partner_attachment?: PartnerAttachment;
 }
-export const PatchPartnerAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partner_attachment: S.optional(PartnerAttachment),
-  }),
-).annotate({
-  identifier: "PatchPartnerAttachmentResponse",
-}) as any as S.Schema<PatchPartnerAttachmentResponse>;
+export const PatchPartnerAttachmentResponse =
+  CreatePartnerAttachmentResponse as any as S.Schema<PatchPartnerAttachmentResponse>;
 
 /** The environment of the project's resources. */
 export type PatchProjectRequestEnvironment = "Development" | "Staging" | "Production";
@@ -42288,11 +40994,7 @@ export const PatchProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchProjectResponse {
   project?: Project;
 }
-export const PatchProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.optional(Project),
-  }),
-).annotate({ identifier: "PatchProjectResponse" }) as any as S.Schema<PatchProjectResponse>;
+export const PatchProjectResponse = CreateProjectResponse as any as S.Schema<PatchProjectResponse>;
 
 /** The environment of the project's resources. */
 export type PatchProjectDefaultRequestEnvironment = "Development" | "Staging" | "Production";
@@ -42325,19 +41027,13 @@ export const PatchProjectDefaultRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchProjectDefaultResponse {
   project?: Project;
 }
-export const PatchProjectDefaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.optional(Project),
-  }),
-).annotate({
-  identifier: "PatchProjectDefaultResponse",
-}) as any as S.Schema<PatchProjectDefaultResponse>;
+export const PatchProjectDefaultResponse =
+  GetProjectDefaultResponse as any as S.Schema<PatchProjectDefaultResponse>;
 
 /** The list of permissions for the access key. */
 export type PatchSpacesKeyRequestGrantsList = Array<Grant>;
-export const PatchSpacesKeyRequestGrantsList = /*@__PURE__*/ S.Array(
-  Grant,
-) as any as S.Schema<PatchSpacesKeyRequestGrantsList>;
+export const PatchSpacesKeyRequestGrantsList =
+  CreateSpacesKeyRequestGrantsList as any as S.Schema<PatchSpacesKeyRequestGrantsList>;
 
 export interface PatchSpacesKeyRequest {
   /** The access key's ID. */
@@ -42386,11 +41082,7 @@ export const PatchVpcRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchVpcResponse {
   vpc?: Vpc;
 }
-export const PatchVpcResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc: S.optional(Vpc),
-  }),
-).annotate({ identifier: "PatchVpcResponse" }) as any as S.Schema<PatchVpcResponse>;
+export const PatchVpcResponse = CreateVpcResponse as any as S.Schema<PatchVpcResponse>;
 
 export interface PatchVpcPeeringRequest {
   /** A unique identifier for a VPC peering. */
@@ -42408,11 +41100,8 @@ export const PatchVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchVpcPeeringResponse {
   vpc_peering?: VpcPeering;
 }
-export const PatchVpcPeeringResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc_peering: S.optional(VpcPeering),
-  }),
-).annotate({ identifier: "PatchVpcPeeringResponse" }) as any as S.Schema<PatchVpcPeeringResponse>;
+export const PatchVpcPeeringResponse =
+  CreateVpcPeeringResponse as any as S.Schema<PatchVpcPeeringResponse>;
 
 export interface PatchVpcPeeringsRequest {
   /** A unique identifier for a VPC. */
@@ -42867,9 +41556,8 @@ export const PostDropletActionByTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDropletActionByTagRequest>;
 
 export type PostDropletActionByTagResponseActionsList = Array<Action>;
-export const PostDropletActionByTagResponseActionsList = /*@__PURE__*/ S.Array(
-  Action,
-) as any as S.Schema<PostDropletActionByTagResponseActionsList>;
+export const PostDropletActionByTagResponseActionsList =
+  ListActionsResponseActionsList as any as S.Schema<PostDropletActionByTagResponseActionsList>;
 
 export interface PostDropletActionByTagResponse {
   actions?: PostDropletActionByTagResponseActionsList;
@@ -43002,11 +41690,8 @@ export const PostImageAccountTransferDeclineRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PostImageAccountTransferDeclineRequest>;
 
 export interface PostImageAccountTransferDeclineResponse {}
-export const PostImageAccountTransferDeclineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PostImageAccountTransferDeclineResponse",
-}) as any as S.Schema<PostImageAccountTransferDeclineResponse>;
+export const PostImageAccountTransferDeclineResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<PostImageAccountTransferDeclineResponse>;
 
 /** The action to be taken on the image. Can be either `convert` or `transfer`. */
 export type ImageActionBaseType = "convert" | "transfer";
@@ -43318,11 +42003,8 @@ export const PostVolumeActionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PostVolumeActionResponse {
   action?: VolumeAction;
 }
-export const PostVolumeActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(VolumeAction),
-  }),
-).annotate({ identifier: "PostVolumeActionResponse" }) as any as S.Schema<PostVolumeActionResponse>;
+export const PostVolumeActionResponse =
+  GetVolumeActionResponse as any as S.Schema<PostVolumeActionResponse>;
 
 /** The volume action to initiate. */
 export type VolumeActionPostResizeType = "attach" | "detach" | "resize";
@@ -43403,15 +42085,13 @@ export const PromoteDatabaseReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PromoteDatabaseReplicaRequest>;
 
 export interface PromoteDatabaseReplicaResponse {}
-export const PromoteDatabaseReplicaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PromoteDatabaseReplicaResponse",
-}) as any as S.Schema<PromoteDatabaseReplicaResponse>;
+export const PromoteDatabaseReplicaResponse =
+  AddFirewallRulesResponse as any as S.Schema<PromoteDatabaseReplicaResponse>;
 
 /** An array of strings containing the path to the content to be purged from the CDN cache. */
 export type PurgeCdnCacheRequestFilesList = Array<string>;
-export const PurgeCdnCacheRequestFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PurgeCdnCacheRequestFilesList>;
+export const PurgeCdnCacheRequestFilesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<PurgeCdnCacheRequestFilesList>;
 
 export interface PurgeCdnCacheRequest {
   /** A unique identifier for a CDN endpoint. */
@@ -43427,9 +42107,8 @@ export const PurgeCdnCacheRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PurgeCdnCacheRequest" }) as any as S.Schema<PurgeCdnCacheRequest>;
 
 export interface PurgeCdnCacheResponse {}
-export const PurgeCdnCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PurgeCdnCacheResponse",
-}) as any as S.Schema<PurgeCdnCacheResponse>;
+export const PurgeCdnCacheResponse =
+  AddFirewallRulesResponse as any as S.Schema<PurgeCdnCacheResponse>;
 
 export interface RegenerateGenaiAgentApiKeyRequest {
   /** Agent id */
@@ -43455,13 +42134,8 @@ export const RegenerateGenaiAgentApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiRegenerateAgentAPIKeyOutput {
   api_key_info?: ApiAgentAPIKeyInfo;
 }
-export const ApiRegenerateAgentAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAgentAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiRegenerateAgentAPIKeyOutput",
-}) as any as S.Schema<ApiRegenerateAgentAPIKeyOutput>;
+export const ApiRegenerateAgentAPIKeyOutput =
+  ApiCreateAgentAPIKeyOutput as any as S.Schema<ApiRegenerateAgentAPIKeyOutput>;
 
 export interface RegenerateGenaiModelApiKeyRequest {
   /** API key ID */
@@ -43484,25 +42158,18 @@ export const RegenerateGenaiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiRegenerateModelAPIKeyOutput {
   api_key_info?: ApiAgentAPIKeyInfo;
 }
-export const ApiRegenerateModelAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAgentAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiRegenerateModelAPIKeyOutput",
-}) as any as S.Schema<ApiRegenerateModelAPIKeyOutput>;
+export const ApiRegenerateModelAPIKeyOutput =
+  ApiCreateAgentAPIKeyOutput as any as S.Schema<ApiRegenerateModelAPIKeyOutput>;
 
 /** An array containing the UUIDs of Kubernetes clusters. */
 export type RemoveKubernetesRegistriesRequestClusterUuidsList = Array<string>;
-export const RemoveKubernetesRegistriesRequestClusterUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveKubernetesRegistriesRequestClusterUuidsList>;
+export const RemoveKubernetesRegistriesRequestClusterUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RemoveKubernetesRegistriesRequestClusterUuidsList>;
 
 /** An array containing the registry names. */
 export type RemoveKubernetesRegistriesRequestRegistriesList = Array<string>;
-export const RemoveKubernetesRegistriesRequestRegistriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveKubernetesRegistriesRequestRegistriesList>;
+export const RemoveKubernetesRegistriesRequestRegistriesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RemoveKubernetesRegistriesRequestRegistriesList>;
 
 export interface RemoveKubernetesRegistriesRequest {
   /** An array containing the UUIDs of Kubernetes clusters. */
@@ -43520,17 +42187,13 @@ export const RemoveKubernetesRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveKubernetesRegistriesRequest>;
 
 export interface RemoveKubernetesRegistriesResponse {}
-export const RemoveKubernetesRegistriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveKubernetesRegistriesResponse",
-}) as any as S.Schema<RemoveKubernetesRegistriesResponse>;
+export const RemoveKubernetesRegistriesResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<RemoveKubernetesRegistriesResponse>;
 
 /** An array containing the UUIDs of Kubernetes clusters. */
 export type RemoveKubernetesRegistryRequestClusterUuidsList = Array<string>;
-export const RemoveKubernetesRegistryRequestClusterUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RemoveKubernetesRegistryRequestClusterUuidsList>;
+export const RemoveKubernetesRegistryRequestClusterUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RemoveKubernetesRegistryRequestClusterUuidsList>;
 
 export interface RemoveKubernetesRegistryRequest {
   /** An array containing the UUIDs of Kubernetes clusters. */
@@ -43545,17 +42208,13 @@ export const RemoveKubernetesRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveKubernetesRegistryRequest>;
 
 export interface RemoveKubernetesRegistryResponse {}
-export const RemoveKubernetesRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveKubernetesRegistryResponse",
-}) as any as S.Schema<RemoveKubernetesRegistryResponse>;
+export const RemoveKubernetesRegistryResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<RemoveKubernetesRegistryResponse>;
 
 /** An array containing the IDs of the Droplets assigned to the load balancer. */
 export type RemoveLoadBalancerDropletsRequestDropletIdsList = Array<number>;
-export const RemoveLoadBalancerDropletsRequestDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<RemoveLoadBalancerDropletsRequestDropletIdsList>;
+export const RemoveLoadBalancerDropletsRequestDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<RemoveLoadBalancerDropletsRequestDropletIdsList>;
 
 export interface RemoveLoadBalancerDropletsRequest {
   /** A unique identifier for a load balancer. */
@@ -43573,16 +42232,12 @@ export const RemoveLoadBalancerDropletsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveLoadBalancerDropletsRequest>;
 
 export interface RemoveLoadBalancerDropletsResponse {}
-export const RemoveLoadBalancerDropletsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveLoadBalancerDropletsResponse",
-}) as any as S.Schema<RemoveLoadBalancerDropletsResponse>;
+export const RemoveLoadBalancerDropletsResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<RemoveLoadBalancerDropletsResponse>;
 
 export type RemoveLoadBalancerForwardingRulesRequestForwardingRulesList = Array<ForwardingRule>;
-export const RemoveLoadBalancerForwardingRulesRequestForwardingRulesList = /*@__PURE__*/ S.Array(
-  ForwardingRule,
-) as any as S.Schema<RemoveLoadBalancerForwardingRulesRequestForwardingRulesList>;
+export const RemoveLoadBalancerForwardingRulesRequestForwardingRulesList =
+  AddLoadBalancerForwardingRulesRequestForwardingRulesList as any as S.Schema<RemoveLoadBalancerForwardingRulesRequestForwardingRulesList>;
 
 export interface RemoveLoadBalancerForwardingRulesRequest {
   /** A unique identifier for a load balancer. */
@@ -43601,11 +42256,8 @@ export const RemoveLoadBalancerForwardingRulesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemoveLoadBalancerForwardingRulesRequest>;
 
 export interface RemoveLoadBalancerForwardingRulesResponse {}
-export const RemoveLoadBalancerForwardingRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoveLoadBalancerForwardingRulesResponse",
-}) as any as S.Schema<RemoveLoadBalancerForwardingRulesResponse>;
+export const RemoveLoadBalancerForwardingRulesResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<RemoveLoadBalancerForwardingRulesResponse>;
 
 export interface ResetDatabaseAuthRequest {
   /** A unique identifier for a database cluster. */
@@ -43640,9 +42292,8 @@ export const ResetDatabaseAuthResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetDatabaseAuthResponse>;
 
 export type RestartAppRequestComponentsList = Array<string>;
-export const RestartAppRequestComponentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestartAppRequestComponentsList>;
+export const RestartAppRequestComponentsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RestartAppRequestComponentsList>;
 
 export interface RestartAppRequest {
   /** The app ID */
@@ -43675,23 +42326,18 @@ export const RetryDropletsDestroyWithAssociatedResourcesRequest = /*@__PURE__*/ 
 }) as any as S.Schema<RetryDropletsDestroyWithAssociatedResourcesRequest>;
 
 export interface RetryDropletsDestroyWithAssociatedResourcesResponse {}
-export const RetryDropletsDestroyWithAssociatedResourcesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RetryDropletsDestroyWithAssociatedResourcesResponse",
-}) as any as S.Schema<RetryDropletsDestroyWithAssociatedResourcesResponse>;
+export const RetryDropletsDestroyWithAssociatedResourcesResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<RetryDropletsDestroyWithAssociatedResourcesResponse>;
 
 /** Agent deployment names to run the test case against. */
 export type RunGenaiEvaluationTestCaseRequestAgentDeploymentNamesList = Array<string>;
-export const RunGenaiEvaluationTestCaseRequestAgentDeploymentNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunGenaiEvaluationTestCaseRequestAgentDeploymentNamesList>;
+export const RunGenaiEvaluationTestCaseRequestAgentDeploymentNamesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RunGenaiEvaluationTestCaseRequestAgentDeploymentNamesList>;
 
 /** Agent UUIDs to run the test case against (legacy agents). */
 export type RunGenaiEvaluationTestCaseRequestAgentUuidsList = Array<string>;
-export const RunGenaiEvaluationTestCaseRequestAgentUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunGenaiEvaluationTestCaseRequestAgentUuidsList>;
+export const RunGenaiEvaluationTestCaseRequestAgentUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RunGenaiEvaluationTestCaseRequestAgentUuidsList>;
 
 export interface RunGenaiEvaluationTestCaseRequest {
   /** Agent deployment names to run the test case against. */
@@ -43715,9 +42361,8 @@ export const RunGenaiEvaluationTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunGenaiEvaluationTestCaseRequest>;
 
 export type ApiRunEvaluationTestCaseOutputEvaluationRunUuidsList = Array<string>;
-export const ApiRunEvaluationTestCaseOutputEvaluationRunUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiRunEvaluationTestCaseOutputEvaluationRunUuidsList>;
+export const ApiRunEvaluationTestCaseOutputEvaluationRunUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiRunEvaluationTestCaseOutputEvaluationRunUuidsList>;
 
 export interface ApiRunEvaluationTestCaseOutput {
   evaluation_run_uuids?: ApiRunEvaluationTestCaseOutputEvaluationRunUuidsList;
@@ -43732,27 +42377,23 @@ export const ApiRunEvaluationTestCaseOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of check groups that will be run when clusterlint executes checks. */
 export type RunKubernetesClusterLintRequestIncludeGroupsList = Array<string>;
-export const RunKubernetesClusterLintRequestIncludeGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunKubernetesClusterLintRequestIncludeGroupsList>;
+export const RunKubernetesClusterLintRequestIncludeGroupsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RunKubernetesClusterLintRequestIncludeGroupsList>;
 
 /** An array of checks that will be run when clusterlint executes checks. */
 export type RunKubernetesClusterLintRequestIncludeChecksList = Array<string>;
-export const RunKubernetesClusterLintRequestIncludeChecksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunKubernetesClusterLintRequestIncludeChecksList>;
+export const RunKubernetesClusterLintRequestIncludeChecksList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RunKubernetesClusterLintRequestIncludeChecksList>;
 
 /** An array of check groups that will be omitted when clusterlint executes checks. */
 export type RunKubernetesClusterLintRequestExcludeGroupsList = Array<string>;
-export const RunKubernetesClusterLintRequestExcludeGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunKubernetesClusterLintRequestExcludeGroupsList>;
+export const RunKubernetesClusterLintRequestExcludeGroupsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RunKubernetesClusterLintRequestExcludeGroupsList>;
 
 /** An array of checks that will be run when clusterlint executes checks. */
 export type RunKubernetesClusterLintRequestExcludeChecksList = Array<string>;
-export const RunKubernetesClusterLintRequestExcludeChecksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RunKubernetesClusterLintRequestExcludeChecksList>;
+export const RunKubernetesClusterLintRequestExcludeChecksList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<RunKubernetesClusterLintRequestExcludeChecksList>;
 
 export interface RunKubernetesClusterLintRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -43815,9 +42456,8 @@ export const RunMcpServerResyncRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Every tool discovered on the server when discovery finished in time; empty when pending is true. */
 export type ResyncMcpServerResponseToolsList = Array<McpServerTool>;
-export const ResyncMcpServerResponseToolsList = /*@__PURE__*/ S.Array(
-  McpServerTool,
-) as any as S.Schema<ResyncMcpServerResponseToolsList>;
+export const ResyncMcpServerResponseToolsList =
+  ListMcpServerToolsResponseToolsList as any as S.Schema<ResyncMcpServerResponseToolsList>;
 
 /** Reports the result of a discovery. */
 export interface ResyncMcpServerResponse {
@@ -43856,13 +42496,8 @@ export const RunRegistryGarbageCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RunRegistryGarbageCollectionResponse {
   garbage_collection?: GarbageCollection;
 }
-export const RunRegistryGarbageCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    garbage_collection: S.optional(GarbageCollection),
-  }),
-).annotate({
-  identifier: "RunRegistryGarbageCollectionResponse",
-}) as any as S.Schema<RunRegistryGarbageCollectionResponse>;
+export const RunRegistryGarbageCollectionResponse =
+  GetRegistryGarbageCollectionResponse as any as S.Schema<RunRegistryGarbageCollectionResponse>;
 
 export interface SessionsListSearchRequest {
   /** Matched case-insensitively as a substring of name, `actor_id`, `session_urn`, or `agentName`. Empty matches every session you can see. Results are ordered by match quality (an exact name, `session_urn`, or `actor_id` match, then a prefix, then a substring), then by name, across the whole result set, so a client must not re-sort a page to rank it. */
@@ -43887,9 +42522,8 @@ export const SessionsListSearchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching sessions in rank order. */
 export type SearchSessionsResponseSessionsList = Array<Session>;
-export const SearchSessionsResponseSessionsList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<SearchSessionsResponseSessionsList>;
+export const SearchSessionsResponseSessionsList =
+  ListSessionsResponseSessionsList as any as S.Schema<SearchSessionsResponseSessionsList>;
 
 /** One page of matching sessions. */
 export interface SearchSessionsResponse {
@@ -43931,9 +42565,8 @@ export const ToolbeltsListSearchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching toolbelts sorted by name. */
 export type SearchToolbeltsResponseToolbeltsList = Array<ToolbeltSummary>;
-export const SearchToolbeltsResponseToolbeltsList = /*@__PURE__*/ S.Array(
-  ToolbeltSummary,
-) as any as S.Schema<SearchToolbeltsResponseToolbeltsList>;
+export const SearchToolbeltsResponseToolbeltsList =
+  ToolbeltsResponseToolbeltsList as any as S.Schema<SearchToolbeltsResponseToolbeltsList>;
 
 /** One page of matching toolbelts. */
 export interface SearchToolbeltsResponse {
@@ -43950,9 +42583,8 @@ export const SearchToolbeltsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchToolbeltsResponse" }) as any as S.Schema<SearchToolbeltsResponse>;
 
 export type ToolsListSearchRequestProviderList = Array<string>;
-export const ToolsListSearchRequestProviderList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ToolsListSearchRequestProviderList>;
+export const ToolsListSearchRequestProviderList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ToolsListSearchRequestProviderList>;
 
 export interface ToolsListSearchRequest {
   /** Matched case- and accent-insensitively as a substring of the tool's name, title, description, category, provider ID, or tool slug. Empty matches every tool your team can use. */
@@ -43993,23 +42625,12 @@ export interface ToolSearchResult {
   /** The released version number of the tool, for example 3. */
   version?: number;
 }
-export const ToolSearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tool_slug: S.optional(S.String),
-    name: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    provider: S.optional(S.String),
-    category: S.optional(S.String),
-    version: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ToolSearchResult" }) as any as S.Schema<ToolSearchResult>;
+export const ToolSearchResult = ToolbeltToolDetail as any as S.Schema<ToolSearchResult>;
 
 /** Ordered by descending match quality, then by provider and name. The ordering is applied across the whole result set rather than within a page, so a client must not re-sort a page to rank it. */
 export type SearchToolsResponseToolsList = Array<ToolSearchResult>;
-export const SearchToolsResponseToolsList = /*@__PURE__*/ S.Array(
-  ToolSearchResult,
-) as any as S.Schema<SearchToolsResponseToolsList>;
+export const SearchToolsResponseToolsList =
+  GetToolbeltResponseToolDetailsList as any as S.Schema<SearchToolsResponseToolsList>;
 
 /** One page of matching tools. */
 export interface SearchToolsResponse {
@@ -44045,9 +42666,8 @@ export const ToolsListSearchProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching providers sorted by name. */
 export type SearchProvidersResponseProvidersList = Array<ProviderSummary>;
-export const SearchProvidersResponseProvidersList = /*@__PURE__*/ S.Array(
-  ProviderSummary,
-) as any as S.Schema<SearchProvidersResponseProvidersList>;
+export const SearchProvidersResponseProvidersList =
+  ListProvidersResponseProvidersList as any as S.Schema<SearchProvidersResponseProvidersList>;
 
 /** One page of matching providers. */
 export interface SearchProvidersResponse {
@@ -44109,15 +42729,13 @@ export const UnassignTagResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnassignTagResourcesRequest>;
 
 export interface UnassignTagResourcesResponse {}
-export const UnassignTagResourcesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnassignTagResourcesResponse",
-}) as any as S.Schema<UnassignTagResourcesResponse>;
+export const UnassignTagResourcesResponse =
+  AddFirewallRulesResponse as any as S.Schema<UnassignTagResourcesResponse>;
 
 /** Required. Limits to set, at most one per category. */
 export type UpdateActorLimitRequestOverridesList = Array<LimitOverride>;
-export const UpdateActorLimitRequestOverridesList = /*@__PURE__*/ S.Array(
-  LimitOverride,
-) as any as S.Schema<UpdateActorLimitRequestOverridesList>;
+export const UpdateActorLimitRequestOverridesList =
+  GetActorLimitsResponseConfiguredLimitsList as any as S.Schema<UpdateActorLimitRequestOverridesList>;
 
 export interface UpdateActorLimitRequest {
   /** Actor ID: a session `actor_id` or a connection `user_id`, 1 to 64 characters from `[A-Za-z0-9._-]`. */
@@ -44135,9 +42753,8 @@ export const UpdateActorLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateActorLimitRequest" }) as any as S.Schema<UpdateActorLimitRequest>;
 
 export type UpdateActorLimitResponse = unknown;
-export const UpdateActorLimitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "UpdateActorLimitResponse" }) as any as S.Schema<UpdateActorLimitResponse>;
+export const UpdateActorLimitResponse =
+  DeleteActorLimitResponse as any as S.Schema<UpdateActorLimitResponse>;
 
 export interface UpdateAppRequest {
   /** The ID of the app */
@@ -44184,13 +42801,8 @@ export const UpdateAutoscalepoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAutoscalepoolResponse {
   autoscale_pool?: AutoscalePool;
 }
-export const UpdateAutoscalepoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscale_pool: S.optional(AutoscalePool),
-  }),
-).annotate({
-  identifier: "UpdateAutoscalepoolResponse",
-}) as any as S.Schema<UpdateAutoscalepoolResponse>;
+export const UpdateAutoscalepoolResponse =
+  CreateAutoscalepoolResponse as any as S.Schema<UpdateAutoscalepoolResponse>;
 
 /** The amount of time the content is cached by the CDN's edge servers in seconds. TTL must be one of 60, 600, 3600, 86400, or 604800. Defaults to 3600 (one hour) when excluded. */
 export type UpdateCdnEndpointsRequestTtl = 60 | 600 | 3600 | 86400 | 604800;
@@ -44220,13 +42832,8 @@ export const UpdateCdnEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCdnEndpointsResponse {
   endpoint?: CdnEndpoint;
 }
-export const UpdateCdnEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.optional(CdnEndpoint),
-  }),
-).annotate({
-  identifier: "UpdateCdnEndpointsResponse",
-}) as any as S.Schema<UpdateCdnEndpointsResponse>;
+export const UpdateCdnEndpointsResponse =
+  CreateCdnEndpointResponse as any as S.Schema<UpdateCdnEndpointsResponse>;
 
 export type UpdateDatabaseAutoscaleRequestStorage = DatabaseAutoscaleParamsStorage;
 export const UpdateDatabaseAutoscaleRequestStorage = DatabaseAutoscaleParamsStorage;
@@ -44248,9 +42855,8 @@ export const UpdateDatabaseAutoscaleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseAutoscaleRequest>;
 
 export interface UpdateDatabaseAutoscaleResponse {}
-export const UpdateDatabaseAutoscaleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateDatabaseAutoscaleResponse" },
-) as any as S.Schema<UpdateDatabaseAutoscaleResponse>;
+export const UpdateDatabaseAutoscaleResponse =
+  AddKubernetesRegistriesResponse as any as S.Schema<UpdateDatabaseAutoscaleResponse>;
 
 export interface UpdateDatabaseClusterMetricsCredentialsRequest {
   credentials?: DatabasesBasicAuthCredentials;
@@ -44264,11 +42870,8 @@ export const UpdateDatabaseClusterMetricsCredentialsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<UpdateDatabaseClusterMetricsCredentialsRequest>;
 
 export interface UpdateDatabaseClusterMetricsCredentialsResponse {}
-export const UpdateDatabaseClusterMetricsCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseClusterMetricsCredentialsResponse",
-}) as any as S.Schema<UpdateDatabaseClusterMetricsCredentialsResponse>;
+export const UpdateDatabaseClusterMetricsCredentialsResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseClusterMetricsCredentialsResponse>;
 
 export interface UpdateDatabaseClusterSizeRequest {
   /** A unique identifier for a database cluster. */
@@ -44294,11 +42897,8 @@ export const UpdateDatabaseClusterSizeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseClusterSizeRequest>;
 
 export interface UpdateDatabaseClusterSizeResponse {}
-export const UpdateDatabaseClusterSizeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseClusterSizeResponse",
-}) as any as S.Schema<UpdateDatabaseClusterSizeResponse>;
+export const UpdateDatabaseClusterSizeResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseClusterSizeResponse>;
 
 export interface UpdateDatabaseConnectionPoolRequest {
   /** A unique identifier for a database cluster. */
@@ -44334,11 +42934,8 @@ export const UpdateDatabaseConnectionPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseConnectionPoolRequest>;
 
 export interface UpdateDatabaseConnectionPoolResponse {}
-export const UpdateDatabaseConnectionPoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseConnectionPoolResponse",
-}) as any as S.Schema<UpdateDatabaseConnectionPoolResponse>;
+export const UpdateDatabaseConnectionPoolResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseConnectionPoolResponse>;
 
 export interface UpdateDatabaseDoSettingsRequest {
   /** A unique identifier for a database cluster. */
@@ -44357,11 +42954,8 @@ export const UpdateDatabaseDoSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseDoSettingsRequest>;
 
 export interface UpdateDatabaseDoSettingsResponse {}
-export const UpdateDatabaseDoSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseDoSettingsResponse",
-}) as any as S.Schema<UpdateDatabaseDoSettingsResponse>;
+export const UpdateDatabaseDoSettingsResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseDoSettingsResponse>;
 
 export interface UpdateDatabaseEvictionPolicyRequest {
   /** A unique identifier for a database cluster. */
@@ -44384,16 +42978,12 @@ export const UpdateDatabaseEvictionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseEvictionPolicyRequest>;
 
 export interface UpdateDatabaseEvictionPolicyResponse {}
-export const UpdateDatabaseEvictionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseEvictionPolicyResponse",
-}) as any as S.Schema<UpdateDatabaseEvictionPolicyResponse>;
+export const UpdateDatabaseEvictionPolicyResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseEvictionPolicyResponse>;
 
 export type UpdateDatabaseFirewallRulesRequestRulesList = Array<FirewallRuleInput>;
-export const UpdateDatabaseFirewallRulesRequestRulesList = /*@__PURE__*/ S.Array(
-  FirewallRuleInput,
-) as any as S.Schema<UpdateDatabaseFirewallRulesRequestRulesList>;
+export const UpdateDatabaseFirewallRulesRequestRulesList =
+  CreateDatabaseClusterRequestRulesList as any as S.Schema<UpdateDatabaseFirewallRulesRequestRulesList>;
 
 export interface UpdateDatabaseFirewallRulesRequest {
   /** A unique identifier for a database cluster. */
@@ -44412,11 +43002,8 @@ export const UpdateDatabaseFirewallRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseFirewallRulesRequest>;
 
 export interface UpdateDatabaseFirewallRulesResponse {}
-export const UpdateDatabaseFirewallRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseFirewallRulesResponse",
-}) as any as S.Schema<UpdateDatabaseFirewallRulesResponse>;
+export const UpdateDatabaseFirewallRulesResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseFirewallRulesResponse>;
 
 /** The compatibility level of the schema registry. */
 export type UpdateDatabaseKafkaSchemaConfigRequestCompatibilityLevel =
@@ -44568,13 +43155,8 @@ export const UpdateDatabaseKafkaTopicRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDatabaseKafkaTopicResponse {
   topic?: KafkaTopicVerbose;
 }
-export const UpdateDatabaseKafkaTopicResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(KafkaTopicVerbose),
-  }),
-).annotate({
-  identifier: "UpdateDatabaseKafkaTopicResponse",
-}) as any as S.Schema<UpdateDatabaseKafkaTopicResponse>;
+export const UpdateDatabaseKafkaTopicResponse =
+  CreateDatabaseKafkaTopicResponse as any as S.Schema<UpdateDatabaseKafkaTopicResponse>;
 
 export type UpdateDatabaseLogsinkRequestConfig =
   | RsyslogLogsink
@@ -44608,9 +43190,8 @@ export const UpdateDatabaseLogsinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseLogsinkRequest>;
 
 export interface UpdateDatabaseLogsinkResponse {}
-export const UpdateDatabaseLogsinkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatabaseLogsinkResponse",
-}) as any as S.Schema<UpdateDatabaseLogsinkResponse>;
+export const UpdateDatabaseLogsinkResponse =
+  AddFirewallRulesResponse as any as S.Schema<UpdateDatabaseLogsinkResponse>;
 
 export interface UpdateDatabaseMaintenanceWindowRequest {
   /** A unique identifier for a database cluster. */
@@ -44633,11 +43214,8 @@ export const UpdateDatabaseMaintenanceWindowRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateDatabaseMaintenanceWindowRequest>;
 
 export interface UpdateDatabaseMaintenanceWindowResponse {}
-export const UpdateDatabaseMaintenanceWindowResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseMaintenanceWindowResponse",
-}) as any as S.Schema<UpdateDatabaseMaintenanceWindowResponse>;
+export const UpdateDatabaseMaintenanceWindowResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseMaintenanceWindowResponse>;
 
 export interface UpdateDatabaseMajorVersionRequest {
   /** A unique identifier for a database cluster. */
@@ -44656,11 +43234,8 @@ export const UpdateDatabaseMajorVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseMajorVersionRequest>;
 
 export interface UpdateDatabaseMajorVersionResponse {}
-export const UpdateDatabaseMajorVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDatabaseMajorVersionResponse",
-}) as any as S.Schema<UpdateDatabaseMajorVersionResponse>;
+export const UpdateDatabaseMajorVersionResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateDatabaseMajorVersionResponse>;
 
 export interface UpdateDatabaseOnlineMigrationRequestSource {
   /** The FQDN pointing to the database cluster's current primary node. */
@@ -44688,9 +43263,8 @@ export const UpdateDatabaseOnlineMigrationRequestSource = /*@__PURE__*/ S.suspen
 
 /** List of databases that should be ignored during migration. */
 export type UpdateDatabaseOnlineMigrationRequestIgnoreDbsList = Array<string>;
-export const UpdateDatabaseOnlineMigrationRequestIgnoreDbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDatabaseOnlineMigrationRequestIgnoreDbsList>;
+export const UpdateDatabaseOnlineMigrationRequestIgnoreDbsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateDatabaseOnlineMigrationRequestIgnoreDbsList>;
 
 export interface UpdateDatabaseOnlineMigrationRequest {
   /** A unique identifier for a database cluster. */
@@ -44736,9 +43310,8 @@ export const UpdateDatabaseRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseRegionRequest>;
 
 export interface UpdateDatabaseRegionResponse {}
-export const UpdateDatabaseRegionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatabaseRegionResponse",
-}) as any as S.Schema<UpdateDatabaseRegionResponse>;
+export const UpdateDatabaseRegionResponse =
+  AddFirewallRulesResponse as any as S.Schema<UpdateDatabaseRegionResponse>;
 
 export interface UpdateDatabaseSqlModeRequest {
   /** A unique identifier for a database cluster. */
@@ -44758,9 +43331,8 @@ export const UpdateDatabaseSqlModeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDatabaseSqlModeRequest>;
 
 export interface UpdateDatabaseSqlModeResponse {}
-export const UpdateDatabaseSqlModeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateDatabaseSqlModeResponse",
-}) as any as S.Schema<UpdateDatabaseSqlModeResponse>;
+export const UpdateDatabaseSqlModeResponse =
+  AddFirewallRulesResponse as any as S.Schema<UpdateDatabaseSqlModeResponse>;
 
 /** Permission set applied to the ACL. 'read' allows user to read from the index. 'write' allows for user to write to the index. 'readwrite' allows for both 'read' and 'write' permission. 'deny'(default) restricts user from performing any operation over an index. 'admin' allows for 'readwrite' as well as any operations to administer the index. */
 export type UserSettingsUpdateOpensearchAclItemPermission =
@@ -44867,13 +43439,8 @@ export const UpdateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDatabaseUserResponse {
   user: DatabaseUser;
 }
-export const UpdateDatabaseUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: DatabaseUser,
-  }),
-).annotate({
-  identifier: "UpdateDatabaseUserResponse",
-}) as any as S.Schema<UpdateDatabaseUserResponse>;
+export const UpdateDatabaseUserResponse =
+  ResetDatabaseAuthResponse as any as S.Schema<UpdateDatabaseUserResponse>;
 
 export interface UpdateDomainRecordRequest {
   /** The name of the domain itself. */
@@ -44926,25 +43493,18 @@ export const UpdateDomainRecordRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainRecordResponse {
   domain_record?: DomainRecord;
 }
-export const UpdateDomainRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain_record: S.optional(DomainRecord),
-  }),
-).annotate({
-  identifier: "UpdateDomainRecordResponse",
-}) as any as S.Schema<UpdateDomainRecordResponse>;
+export const UpdateDomainRecordResponse =
+  CreateDomainRecordResponse as any as S.Schema<UpdateDomainRecordResponse>;
 
 /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
 export type UpdateFirewallRequestDropletIdsList = Array<number>;
-export const UpdateFirewallRequestDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateFirewallRequestDropletIdsList>;
+export const UpdateFirewallRequestDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<UpdateFirewallRequestDropletIdsList>;
 
 /** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
 export type UpdateFirewallRequestTagsList = Array<string>;
-export const UpdateFirewallRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFirewallRequestTagsList>;
+export const UpdateFirewallRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateFirewallRequestTagsList>;
 
 /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
 export type UpdateFirewallRequestInboundRulesItemProtocol = "tcp" | "udp" | "icmp";
@@ -44956,34 +43516,28 @@ export const UpdateFirewallRequestInboundRulesItemAction = S.String;
 
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type UpdateFirewallRequestInboundRulesItemSourcesAddressesList = Array<string>;
-export const UpdateFirewallRequestInboundRulesItemSourcesAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesAddressesList>;
+export const UpdateFirewallRequestInboundRulesItemSourcesAddressesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type UpdateFirewallRequestInboundRulesItemSourcesDropletIdsList = Array<number>;
-export const UpdateFirewallRequestInboundRulesItemSourcesDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesDropletIdsList>;
+export const UpdateFirewallRequestInboundRulesItemSourcesDropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type UpdateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList = Array<string>;
 export const UpdateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type UpdateFirewallRequestInboundRulesItemSourcesKubernetesIdsList = Array<string>;
-export const UpdateFirewallRequestInboundRulesItemSourcesKubernetesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesKubernetesIdsList>;
+export const UpdateFirewallRequestInboundRulesItemSourcesKubernetesIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type UpdateFirewallRequestInboundRulesItemSourcesTagsList = Array<string>;
-export const UpdateFirewallRequestInboundRulesItemSourcesTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesTagsList>;
+export const UpdateFirewallRequestInboundRulesItemSourcesTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateFirewallRequestInboundRulesItemSourcesTagsList>;
 
 export interface UpdateFirewallRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -44997,19 +43551,8 @@ export interface UpdateFirewallRequestInboundRulesItemSources {
   /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
   tags?: UpdateFirewallRequestInboundRulesItemSourcesTagsList | null;
 }
-export const UpdateFirewallRequestInboundRulesItemSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addresses: S.optional(UpdateFirewallRequestInboundRulesItemSourcesAddressesList),
-    droplet_ids: S.optional(UpdateFirewallRequestInboundRulesItemSourcesDropletIdsList),
-    load_balancer_uids: S.optional(
-      UpdateFirewallRequestInboundRulesItemSourcesLoadBalancerUidsList,
-    ),
-    kubernetes_ids: S.optional(UpdateFirewallRequestInboundRulesItemSourcesKubernetesIdsList),
-    tags: S.optional(S.NullOr(UpdateFirewallRequestInboundRulesItemSourcesTagsList)),
-  }),
-).annotate({
-  identifier: "UpdateFirewallRequestInboundRulesItemSources",
-}) as any as S.Schema<UpdateFirewallRequestInboundRulesItemSources>;
+export const UpdateFirewallRequestInboundRulesItemSources =
+  CreateFirewallRequestInboundRulesItemSources as any as S.Schema<UpdateFirewallRequestInboundRulesItemSources>;
 
 export interface UpdateFirewallRequestInboundRulesItem {
   /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
@@ -45047,36 +43590,27 @@ export const UpdateFirewallRequestOutboundRulesItemAction = S.String;
 /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
 export type UpdateFirewallRequestOutboundRulesItemDestinationsAddressesList = Array<string>;
 export const UpdateFirewallRequestOutboundRulesItemDestinationsAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsAddressesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsAddressesList>;
 
 /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
 export type UpdateFirewallRequestOutboundRulesItemDestinationsDropletIdsList = Array<number>;
 export const UpdateFirewallRequestOutboundRulesItemDestinationsDropletIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsDropletIdsList>;
+  AddFirewallRulesRequestOutboundRulesItemDestinationsDropletIdsList as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsDropletIdsList>;
 
 /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
 export type UpdateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList = Array<string>;
 export const UpdateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList>;
 
 /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
 export type UpdateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList = Array<string>;
 export const UpdateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
 /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
 export type UpdateFirewallRequestOutboundRulesItemDestinationsTagsList = Array<string>;
-export const UpdateFirewallRequestOutboundRulesItemDestinationsTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsTagsList>;
+export const UpdateFirewallRequestOutboundRulesItemDestinationsTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinationsTagsList>;
 
 export interface UpdateFirewallRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
@@ -45090,19 +43624,8 @@ export interface UpdateFirewallRequestOutboundRulesItemDestinations {
   /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
   tags?: UpdateFirewallRequestOutboundRulesItemDestinationsTagsList | null;
 }
-export const UpdateFirewallRequestOutboundRulesItemDestinations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addresses: S.optional(UpdateFirewallRequestOutboundRulesItemDestinationsAddressesList),
-    droplet_ids: S.optional(UpdateFirewallRequestOutboundRulesItemDestinationsDropletIdsList),
-    load_balancer_uids: S.optional(
-      UpdateFirewallRequestOutboundRulesItemDestinationsLoadBalancerUidsList,
-    ),
-    kubernetes_ids: S.optional(UpdateFirewallRequestOutboundRulesItemDestinationsKubernetesIdsList),
-    tags: S.optional(S.NullOr(UpdateFirewallRequestOutboundRulesItemDestinationsTagsList)),
-  }),
-).annotate({
-  identifier: "UpdateFirewallRequestOutboundRulesItemDestinations",
-}) as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinations>;
+export const UpdateFirewallRequestOutboundRulesItemDestinations =
+  CreateFirewallRequestOutboundRulesItemDestinations as any as S.Schema<UpdateFirewallRequestOutboundRulesItemDestinations>;
 
 export interface UpdateFirewallRequestOutboundRulesItem {
   /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
@@ -45155,11 +43678,8 @@ export const UpdateFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFirewallResponse {
   firewall: Firewall;
 }
-export const UpdateFirewallResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firewall: Firewall,
-  }),
-).annotate({ identifier: "UpdateFirewallResponse" }) as any as S.Schema<UpdateFirewallResponse>;
+export const UpdateFirewallResponse =
+  CreateFirewallResponse as any as S.Schema<UpdateFirewallResponse>;
 
 export interface UpdateFunctionsAccessKeyRequest {
   /** The ID of the namespace to be managed. */
@@ -45198,21 +43718,18 @@ export const UpdateFunctionsAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional list of allowed domains for the chatbot - Must use fully qualified domain name (FQDN) such as https://example.com */
 export type UpdateGenaiAgentRequestAllowedDomainsList = Array<string>;
-export const UpdateGenaiAgentRequestAllowedDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGenaiAgentRequestAllowedDomainsList>;
+export const UpdateGenaiAgentRequestAllowedDomainsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateGenaiAgentRequestAllowedDomainsList>;
 
 /** MCP (Model Context Protocol) servers to attach to the agent */
 export type UpdateGenaiAgentRequestMcpServersList = Array<ApiMcpServer>;
-export const UpdateGenaiAgentRequestMcpServersList = /*@__PURE__*/ S.Array(
-  ApiMcpServer,
-) as any as S.Schema<UpdateGenaiAgentRequestMcpServersList>;
+export const UpdateGenaiAgentRequestMcpServersList =
+  ApiAgentMcpServersList as any as S.Schema<UpdateGenaiAgentRequestMcpServersList>;
 
 /** A set of abitrary tags to organize your agent */
 export type UpdateGenaiAgentRequestTagsList = Array<string>;
-export const UpdateGenaiAgentRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGenaiAgentRequestTagsList>;
+export const UpdateGenaiAgentRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateGenaiAgentRequestTagsList>;
 
 export interface UpdateGenaiAgentRequest {
   /** Unique agent id */
@@ -45299,11 +43816,7 @@ export const UpdateGenaiAgentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateAgentOutput {
   agent?: ApiAgent;
 }
-export const ApiUpdateAgentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({ identifier: "ApiUpdateAgentOutput" }) as any as S.Schema<ApiUpdateAgentOutput>;
+export const ApiUpdateAgentOutput = ApiCreateAgentOutput as any as S.Schema<ApiUpdateAgentOutput>;
 
 export interface UpdateGenaiAgentApiKeyRequest {
   /** Agent id */
@@ -45332,13 +43845,8 @@ export const UpdateGenaiAgentApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateAgentAPIKeyOutput {
   api_key_info?: ApiAgentAPIKeyInfo;
 }
-export const ApiUpdateAgentAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAgentAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiUpdateAgentAPIKeyOutput",
-}) as any as S.Schema<ApiUpdateAgentAPIKeyOutput>;
+export const ApiUpdateAgentAPIKeyOutput =
+  ApiCreateAgentAPIKeyOutput as any as S.Schema<ApiUpdateAgentAPIKeyOutput>;
 
 export interface UpdateGenaiAgentDeploymentVisibilityRequest {
   /** Unique id */
@@ -45360,13 +43868,8 @@ export const UpdateGenaiAgentDeploymentVisibilityRequest = /*@__PURE__*/ S.suspe
 export interface ApiUpdateAgentDeploymentVisbilityOutput {
   agent?: ApiAgent;
 }
-export const ApiUpdateAgentDeploymentVisbilityOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({
-  identifier: "ApiUpdateAgentDeploymentVisbilityOutput",
-}) as any as S.Schema<ApiUpdateAgentDeploymentVisbilityOutput>;
+export const ApiUpdateAgentDeploymentVisbilityOutput =
+  ApiLinkAgentFunctionOutput as any as S.Schema<ApiUpdateAgentDeploymentVisbilityOutput>;
 
 export interface UpdateGenaiAgentFunctionRequest {
   /** Agent id */
@@ -45411,19 +43914,13 @@ export const UpdateGenaiAgentFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateAgentFunctionOutput {
   agent?: ApiAgent;
 }
-export const ApiUpdateAgentFunctionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agent: S.optional(ApiAgent),
-  }),
-).annotate({
-  identifier: "ApiUpdateAgentFunctionOutput",
-}) as any as S.Schema<ApiUpdateAgentFunctionOutput>;
+export const ApiUpdateAgentFunctionOutput =
+  ApiLinkAgentFunctionOutput as any as S.Schema<ApiUpdateAgentFunctionOutput>;
 
 /** Agent uuids */
 export type UpdateGenaiAgentsWorkspaceRequestAgentUuidsList = Array<string>;
-export const UpdateGenaiAgentsWorkspaceRequestAgentUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGenaiAgentsWorkspaceRequestAgentUuidsList>;
+export const UpdateGenaiAgentsWorkspaceRequestAgentUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateGenaiAgentsWorkspaceRequestAgentUuidsList>;
 
 export interface UpdateGenaiAgentsWorkspaceRequest {
   /** Workspace uuid to move agents to */
@@ -45475,13 +43972,8 @@ export const UpdateGenaiAnthropicApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateAnthropicAPIKeyOutput {
   api_key_info?: ApiAnthropicAPIKeyInfo;
 }
-export const ApiUpdateAnthropicAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAnthropicAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiUpdateAnthropicAPIKeyOutput",
-}) as any as S.Schema<ApiUpdateAnthropicAPIKeyOutput>;
+export const ApiUpdateAnthropicAPIKeyOutput =
+  ApiCreateAnthropicAPIKeyOutput as any as S.Schema<ApiUpdateAnthropicAPIKeyOutput>;
 
 export interface UpdateGenaiAttachedAgentRequest {
   /** A unique identifier for the parent agent. */
@@ -45557,25 +44049,18 @@ export const UpdateGenaiCustomEvaluationMetricRequest = /*@__PURE__*/ S.suspend(
 export interface ApiUpdateCustomEvaluationMetricOutput {
   metric?: ApiEvaluationMetric;
 }
-export const ApiUpdateCustomEvaluationMetricOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metric: S.optional(ApiEvaluationMetric),
-  }),
-).annotate({
-  identifier: "ApiUpdateCustomEvaluationMetricOutput",
-}) as any as S.Schema<ApiUpdateCustomEvaluationMetricOutput>;
+export const ApiUpdateCustomEvaluationMetricOutput =
+  ApiCreateCustomEvaluationMetricOutput as any as S.Schema<ApiUpdateCustomEvaluationMetricOutput>;
 
 /** Optional new input modalities for the model (replaces existing list when non-empty). Spaces-imported models only. */
 export type UpdateGenaiCustomModelMetadataRequestInputModalitiesList = Array<string>;
-export const UpdateGenaiCustomModelMetadataRequestInputModalitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGenaiCustomModelMetadataRequestInputModalitiesList>;
+export const UpdateGenaiCustomModelMetadataRequestInputModalitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateGenaiCustomModelMetadataRequestInputModalitiesList>;
 
 /** Optional new output modalities for the model (replaces existing list when non-empty). Spaces-imported models only. */
 export type UpdateGenaiCustomModelMetadataRequestOutputModalitiesList = Array<string>;
-export const UpdateGenaiCustomModelMetadataRequestOutputModalitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGenaiCustomModelMetadataRequestOutputModalitiesList>;
+export const UpdateGenaiCustomModelMetadataRequestOutputModalitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateGenaiCustomModelMetadataRequestOutputModalitiesList>;
 
 export interface UpdateGenaiCustomModelMetadataRequest {
   /** UUID of the custom model to update */
@@ -45609,18 +44094,12 @@ export const UpdateGenaiCustomModelMetadataRequest = /*@__PURE__*/ S.suspend(() 
 export interface ApiUpdateCustomModelMetadataOutputPublic {
   model?: ApiCustomModel;
 }
-export const ApiUpdateCustomModelMetadataOutputPublic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    model: S.optional(ApiCustomModel),
-  }),
-).annotate({
-  identifier: "ApiUpdateCustomModelMetadataOutputPublic",
-}) as any as S.Schema<ApiUpdateCustomModelMetadataOutputPublic>;
+export const ApiUpdateCustomModelMetadataOutputPublic =
+  ApiGetCustomModelOutputPublic as any as S.Schema<ApiUpdateCustomModelMetadataOutputPublic>;
 
 export type ApiEvaluationTestCaseMetricListMetricUuidsList = Array<string>;
-export const ApiEvaluationTestCaseMetricListMetricUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApiEvaluationTestCaseMetricListMetricUuidsList>;
+export const ApiEvaluationTestCaseMetricListMetricUuidsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ApiEvaluationTestCaseMetricListMetricUuidsList>;
 
 export interface ApiEvaluationTestCaseMetricList {
   metric_uuids?: ApiEvaluationTestCaseMetricListMetricUuidsList;
@@ -45676,9 +44155,8 @@ export const ApiUpdateEvaluationTestCaseOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to organize your knowledge base. */
 export type UpdateGenaiKnowledgeBaseRequestTagsList = Array<string>;
-export const UpdateGenaiKnowledgeBaseRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGenaiKnowledgeBaseRequestTagsList>;
+export const UpdateGenaiKnowledgeBaseRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateGenaiKnowledgeBaseRequestTagsList>;
 
 export interface UpdateGenaiKnowledgeBaseRequest {
   /** Knowledge base id */
@@ -45710,13 +44188,8 @@ export const UpdateGenaiKnowledgeBaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateKnowledgeBaseOutput {
   knowledge_base?: ApiKnowledgeBase;
 }
-export const ApiUpdateKnowledgeBaseOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    knowledge_base: S.optional(ApiKnowledgeBase),
-  }),
-).annotate({
-  identifier: "ApiUpdateKnowledgeBaseOutput",
-}) as any as S.Schema<ApiUpdateKnowledgeBaseOutput>;
+export const ApiUpdateKnowledgeBaseOutput =
+  ApiCreateKnowledgeBaseOutput as any as S.Schema<ApiUpdateKnowledgeBaseOutput>;
 
 export interface UpdateGenaiKnowledgeBaseDataSourceRequest {
   /** Knowledge Base ID (Path Parameter) */
@@ -45747,13 +44220,8 @@ export const UpdateGenaiKnowledgeBaseDataSourceRequest = /*@__PURE__*/ S.suspend
 export interface ApiUpdateKnowledgeBaseDataSourceOutput {
   knowledge_base_data_source?: ApiKnowledgeBaseDataSource;
 }
-export const ApiUpdateKnowledgeBaseDataSourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    knowledge_base_data_source: S.optional(ApiKnowledgeBaseDataSource),
-  }),
-).annotate({
-  identifier: "ApiUpdateKnowledgeBaseDataSourceOutput",
-}) as any as S.Schema<ApiUpdateKnowledgeBaseDataSourceOutput>;
+export const ApiUpdateKnowledgeBaseDataSourceOutput =
+  ApiCreateKnowledgeBaseDataSourceOutput as any as S.Schema<ApiUpdateKnowledgeBaseDataSourceOutput>;
 
 export interface UpdateGenaiModelApiKeyRequest {
   /** API key ID */
@@ -45773,13 +44241,8 @@ export const UpdateGenaiModelApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateModelAPIKeyOutput {
   api_key_info?: ApiAgentAPIKeyInfo;
 }
-export const ApiUpdateModelAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiAgentAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiUpdateModelAPIKeyOutput",
-}) as any as S.Schema<ApiUpdateModelAPIKeyOutput>;
+export const ApiUpdateModelAPIKeyOutput =
+  ApiCreateAgentAPIKeyOutput as any as S.Schema<ApiUpdateModelAPIKeyOutput>;
 
 export interface UpdateGenaiModelEvaluationRunRequest {
   /** UUID of the model evaluation run to update. Returned by `CreateModelEvaluationRun` and listed via `ListModelEvaluationRuns`. */
@@ -45801,30 +44264,22 @@ export const UpdateGenaiModelEvaluationRunRequest = /*@__PURE__*/ S.suspend(() =
 export interface ApiUpdateModelEvaluationRunOutput {
   run?: ApiModelEvaluationRunSummary;
 }
-export const ApiUpdateModelEvaluationRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    run: S.optional(ApiModelEvaluationRunSummary),
-  }),
-).annotate({
-  identifier: "ApiUpdateModelEvaluationRunOutput",
-}) as any as S.Schema<ApiUpdateModelEvaluationRunOutput>;
+export const ApiUpdateModelEvaluationRunOutput =
+  ApiCancelModelEvaluationRunOutput as any as S.Schema<ApiUpdateModelEvaluationRunOutput>;
 
 export type UpdateGenaiModelRouterRequestFallbackModelsList = Array<unknown>;
-export const UpdateGenaiModelRouterRequestFallbackModelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateGenaiModelRouterRequestFallbackModelsList>;
+export const UpdateGenaiModelRouterRequestFallbackModelsList =
+  AppsDeploymentProgressStepStepsList as any as S.Schema<UpdateGenaiModelRouterRequestFallbackModelsList>;
 
 /** Router policies */
 export type UpdateGenaiModelRouterRequestPoliciesList = Array<ApiModelRouterTaskPolicy>;
-export const UpdateGenaiModelRouterRequestPoliciesList = /*@__PURE__*/ S.Array(
-  ApiModelRouterTaskPolicy,
-) as any as S.Schema<UpdateGenaiModelRouterRequestPoliciesList>;
+export const UpdateGenaiModelRouterRequestPoliciesList =
+  ApiModelRouterConfigPoliciesList as any as S.Schema<UpdateGenaiModelRouterRequestPoliciesList>;
 
 /** DEPRECATED: this field does not affect deployment and model routers are always deployed to all regions. Must be omitted or set to ["all"]. */
 export type UpdateGenaiModelRouterRequestRegionsList = Array<string>;
-export const UpdateGenaiModelRouterRequestRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateGenaiModelRouterRequestRegionsList>;
+export const UpdateGenaiModelRouterRequestRegionsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateGenaiModelRouterRequestRegionsList>;
 
 export interface UpdateGenaiModelRouterRequest {
   /** Model router id */
@@ -45856,13 +44311,8 @@ export const UpdateGenaiModelRouterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateModelRouterOutput {
   model_router?: ApiModelRouter;
 }
-export const ApiUpdateModelRouterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    model_router: S.optional(ApiModelRouter),
-  }),
-).annotate({
-  identifier: "ApiUpdateModelRouterOutput",
-}) as any as S.Schema<ApiUpdateModelRouterOutput>;
+export const ApiUpdateModelRouterOutput =
+  ApiCreateModelRouterOutput as any as S.Schema<ApiUpdateModelRouterOutput>;
 
 export interface UpdateGenaiOpenaiApiKeyRequest {
   /** API key ID */
@@ -45886,19 +44336,13 @@ export const UpdateGenaiOpenaiApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateOpenAIAPIKeyOutput {
   api_key_info?: ApiOpenAIAPIKeyInfo;
 }
-export const ApiUpdateOpenAIAPIKeyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    api_key_info: S.optional(ApiOpenAIAPIKeyInfo),
-  }),
-).annotate({
-  identifier: "ApiUpdateOpenAIAPIKeyOutput",
-}) as any as S.Schema<ApiUpdateOpenAIAPIKeyOutput>;
+export const ApiUpdateOpenAIAPIKeyOutput =
+  ApiCreateOpenAIAPIKeyOutput as any as S.Schema<ApiUpdateOpenAIAPIKeyOutput>;
 
 /** Optional inline scenarios to replace the set contents. At least one of name or scenarios is required. */
 export type UpdateGenaiScenarioSetRequestScenariosList = Array<ApiScenario>;
-export const UpdateGenaiScenarioSetRequestScenariosList = /*@__PURE__*/ S.Array(
-  ApiScenario,
-) as any as S.Schema<UpdateGenaiScenarioSetRequestScenariosList>;
+export const UpdateGenaiScenarioSetRequestScenariosList =
+  CreateGenaiScenarioSetRequestScenariosList as any as S.Schema<UpdateGenaiScenarioSetRequestScenariosList>;
 
 export interface UpdateGenaiScenarioSetRequest {
   /** UUID of the scenario set to update. Returned by `CreateScenarioSet` and listed via `ListScenarioSets`. */
@@ -45924,13 +44368,8 @@ export const UpdateGenaiScenarioSetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateScenarioSetOutput {
   scenario_set?: ApiScenarioSet;
 }
-export const ApiUpdateScenarioSetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scenario_set: S.optional(ApiScenarioSet),
-  }),
-).annotate({
-  identifier: "ApiUpdateScenarioSetOutput",
-}) as any as S.Schema<ApiUpdateScenarioSetOutput>;
+export const ApiUpdateScenarioSetOutput =
+  ApiGenerateScenarioSetOutput as any as S.Schema<ApiUpdateScenarioSetOutput>;
 
 export interface UpdateGenaiSimulationRunRequest {
   /** UUID of the simulation run to update. Returned by `CreateSimulationRun` and listed via `ListSimulationRuns`. */
@@ -45951,13 +44390,8 @@ export const UpdateGenaiSimulationRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateSimulationRunOutput {
   simulation_run?: ApiSimulationRun;
 }
-export const ApiUpdateSimulationRunOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    simulation_run: S.optional(ApiSimulationRun),
-  }),
-).annotate({
-  identifier: "ApiUpdateSimulationRunOutput",
-}) as any as S.Schema<ApiUpdateSimulationRunOutput>;
+export const ApiUpdateSimulationRunOutput =
+  ApiCreateSimulationRunOutput as any as S.Schema<ApiUpdateSimulationRunOutput>;
 
 export interface UpdateGenaiWorkspaceRequest {
   /** Workspace UUID. */
@@ -45980,11 +44414,8 @@ export const UpdateGenaiWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiUpdateWorkspaceOutput {
   workspace?: ApiWorkspace;
 }
-export const ApiUpdateWorkspaceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workspace: S.optional(ApiWorkspace),
-  }),
-).annotate({ identifier: "ApiUpdateWorkspaceOutput" }) as any as S.Schema<ApiUpdateWorkspaceOutput>;
+export const ApiUpdateWorkspaceOutput =
+  ApiCreateWorkspaceOutput as any as S.Schema<ApiUpdateWorkspaceOutput>;
 
 export interface UpdateImageRequest {
   /** A unique number that can be used to identify and reference a specific image. */
@@ -46005,11 +44436,7 @@ export const UpdateImageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateImageResponse {
   image: Image;
 }
-export const UpdateImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: Image,
-  }),
-).annotate({ identifier: "UpdateImageResponse" }) as any as S.Schema<UpdateImageResponse>;
+export const UpdateImageResponse = GetImageResponse as any as S.Schema<UpdateImageResponse>;
 
 /** Desired alert rule status. Allowed values: - `ALERT_RULE_STATUS_ACTIVE` = active - `ALERT_RULE_STATUS_PAUSED` = paused */
 export type UpdateInsightAlertRuleRequestStatus =
@@ -46037,13 +44464,8 @@ export const UpdateInsightAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInsightAlertRuleResponse {
   alert_rule: AlertRule;
 }
-export const UpdateInsightAlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert_rule: AlertRule,
-  }),
-).annotate({
-  identifier: "UpdateInsightAlertRuleResponse",
-}) as any as S.Schema<UpdateInsightAlertRuleResponse>;
+export const UpdateInsightAlertRuleResponse =
+  CreateInsightAlertRuleResponse as any as S.Schema<UpdateInsightAlertRuleResponse>;
 
 export interface UpdateInsightNotificationChannelRequest {
   /** A unique identifier for a notification channel. */
@@ -46069,19 +44491,13 @@ export const UpdateInsightNotificationChannelRequest = /*@__PURE__*/ S.suspend((
 export interface UpdateInsightNotificationChannelResponse {
   notification_channel: NotificationChannel;
 }
-export const UpdateInsightNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notification_channel: NotificationChannel,
-  }),
-).annotate({
-  identifier: "UpdateInsightNotificationChannelResponse",
-}) as any as S.Schema<UpdateInsightNotificationChannelResponse>;
+export const UpdateInsightNotificationChannelResponse =
+  CreateInsightNotificationChannelResponse as any as S.Schema<UpdateInsightNotificationChannelResponse>;
 
 /** An array of tags applied to the Kubernetes cluster. All clusters are automatically tagged `k8s` and `k8s:$K8S_CLUSTER_ID`. */
 export type UpdateKubernetesClusterRequestTagsList = Array<string>;
-export const UpdateKubernetesClusterRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateKubernetesClusterRequestTagsList>;
+export const UpdateKubernetesClusterRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateKubernetesClusterRequestTagsList>;
 
 export interface UpdateKubernetesClusterRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -46141,25 +44557,18 @@ export const UpdateKubernetesClusterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateKubernetesClusterResponse {
   kubernetes_cluster?: Cluster;
 }
-export const UpdateKubernetesClusterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kubernetes_cluster: S.optional(Cluster),
-  }),
-).annotate({
-  identifier: "UpdateKubernetesClusterResponse",
-}) as any as S.Schema<UpdateKubernetesClusterResponse>;
+export const UpdateKubernetesClusterResponse =
+  CreateKubernetesClusterResponse as any as S.Schema<UpdateKubernetesClusterResponse>;
 
 /** An array containing the tags applied to the node pool. All node pools are automatically tagged `k8s`, `k8s-worker`, and `k8s:$K8S_CLUSTER_ID`. <br><br>Requires `tag:read` scope. */
 export type UpdateKubernetesNodePoolRequestTagsList = Array<string>;
-export const UpdateKubernetesNodePoolRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateKubernetesNodePoolRequestTagsList>;
+export const UpdateKubernetesNodePoolRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateKubernetesNodePoolRequestTagsList>;
 
 /** An array of taints to apply to all nodes in a pool. Taints will automatically be applied to all existing nodes and any subsequent nodes added to the pool. When a taint is removed, it is deleted from all nodes in the pool. */
 export type UpdateKubernetesNodePoolRequestTaintsList = Array<KubernetesNodePoolTaint>;
-export const UpdateKubernetesNodePoolRequestTaintsList = /*@__PURE__*/ S.Array(
-  KubernetesNodePoolTaint,
-) as any as S.Schema<UpdateKubernetesNodePoolRequestTaintsList>;
+export const UpdateKubernetesNodePoolRequestTaintsList =
+  AddKubernetesNodePoolRequestTaintsList as any as S.Schema<UpdateKubernetesNodePoolRequestTaintsList>;
 
 export interface UpdateKubernetesNodePoolRequest {
   /** A unique ID that can be used to reference a Kubernetes cluster. */
@@ -46209,19 +44618,13 @@ export const UpdateKubernetesNodePoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateKubernetesNodePoolResponse {
   node_pool?: KubernetesNodePool;
 }
-export const UpdateKubernetesNodePoolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    node_pool: S.optional(KubernetesNodePool),
-  }),
-).annotate({
-  identifier: "UpdateKubernetesNodePoolResponse",
-}) as any as S.Schema<UpdateKubernetesNodePoolResponse>;
+export const UpdateKubernetesNodePoolResponse =
+  AddKubernetesNodePoolResponse as any as S.Schema<UpdateKubernetesNodePoolResponse>;
 
 /** An array containing the IDs of the Droplets assigned to the load balancer. */
 export type LoadBalancerUpdateInputCase0DropletIdsList = Array<number>;
-export const LoadBalancerUpdateInputCase0DropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<LoadBalancerUpdateInputCase0DropletIdsList>;
+export const LoadBalancerUpdateInputCase0DropletIdsList =
+  AddFirewallRulesRequestInboundRulesItemSourcesDropletIdsList as any as S.Schema<LoadBalancerUpdateInputCase0DropletIdsList>;
 
 /** This field has been replaced by the `size_unit` field for all regions except in AMS2, NYC2, and SFO1. Each available load balancer size now equates to the load balancer having a set number of nodes. * `lb-small` = 1 node * `lb-medium` = 3 nodes * `lb-large` = 6 nodes You can resize load balancers after creation up to once per hour. You cannot resize a load balancer within the first hour of its creation. */
 export type LoadBalancerUpdateInputCase0Size = "lb-small" | "lb-medium" | "lb-large";
@@ -46233,9 +44636,8 @@ export const LoadBalancerUpdateInputCase0Algorithm = S.String;
 
 /** An array of objects specifying the forwarding rules for a load balancer. */
 export type LoadBalancerUpdateInputCase0ForwardingRulesList = Array<ForwardingRule>;
-export const LoadBalancerUpdateInputCase0ForwardingRulesList = /*@__PURE__*/ S.Array(
-  ForwardingRule,
-) as any as S.Schema<LoadBalancerUpdateInputCase0ForwardingRulesList>;
+export const LoadBalancerUpdateInputCase0ForwardingRulesList =
+  AddLoadBalancerForwardingRulesRequestForwardingRulesList as any as S.Schema<LoadBalancerUpdateInputCase0ForwardingRulesList>;
 
 /** A string indicating whether the load balancer should be external or internal. Internal load balancers have no public IPs and are only accessible to resources on the same VPC network. This property cannot be updated after creating the load balancer. */
 export type LoadBalancerUpdateInputCase0Network = "EXTERNAL" | "INTERNAL";
@@ -46251,15 +44653,13 @@ export const LoadBalancerUpdateInputCase0Type = S.String;
 
 /** An array of objects specifying the domain configurations for a Global load balancer. */
 export type LoadBalancerUpdateInputCase0DomainsList = Array<Domains>;
-export const LoadBalancerUpdateInputCase0DomainsList = /*@__PURE__*/ S.Array(
-  Domains,
-) as any as S.Schema<LoadBalancerUpdateInputCase0DomainsList>;
+export const LoadBalancerUpdateInputCase0DomainsList =
+  LoadBalancerCreateInputCase0DomainsList as any as S.Schema<LoadBalancerUpdateInputCase0DomainsList>;
 
 /** An array containing the UUIDs of the Regional load balancers to be used as target backends for a Global load balancer. */
 export type LoadBalancerUpdateInputCase0TargetLoadBalancerIdsList = Array<string>;
-export const LoadBalancerUpdateInputCase0TargetLoadBalancerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerUpdateInputCase0TargetLoadBalancerIdsList>;
+export const LoadBalancerUpdateInputCase0TargetLoadBalancerIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LoadBalancerUpdateInputCase0TargetLoadBalancerIdsList>;
 
 /** A string indicating the policy for the TLS cipher suites used by the load balancer. The possible values are `DEFAULT` or `STRONG`. The default value is `DEFAULT`. */
 export type LoadBalancerUpdateInputCase0TlsCipherPolicy = "DEFAULT" | "STRONG";
@@ -46354,9 +44754,8 @@ export const LoadBalancerUpdateInputCase1Algorithm = S.String;
 
 /** An array of objects specifying the forwarding rules for a load balancer. */
 export type LoadBalancerUpdateInputCase1ForwardingRulesList = Array<ForwardingRule>;
-export const LoadBalancerUpdateInputCase1ForwardingRulesList = /*@__PURE__*/ S.Array(
-  ForwardingRule,
-) as any as S.Schema<LoadBalancerUpdateInputCase1ForwardingRulesList>;
+export const LoadBalancerUpdateInputCase1ForwardingRulesList =
+  AddLoadBalancerForwardingRulesRequestForwardingRulesList as any as S.Schema<LoadBalancerUpdateInputCase1ForwardingRulesList>;
 
 /** A string indicating whether the load balancer should be external or internal. Internal load balancers have no public IPs and are only accessible to resources on the same VPC network. This property cannot be updated after creating the load balancer. */
 export type LoadBalancerUpdateInputCase1Network = "EXTERNAL" | "INTERNAL";
@@ -46372,15 +44771,13 @@ export const LoadBalancerUpdateInputCase1Type = S.String;
 
 /** An array of objects specifying the domain configurations for a Global load balancer. */
 export type LoadBalancerUpdateInputCase1DomainsList = Array<Domains>;
-export const LoadBalancerUpdateInputCase1DomainsList = /*@__PURE__*/ S.Array(
-  Domains,
-) as any as S.Schema<LoadBalancerUpdateInputCase1DomainsList>;
+export const LoadBalancerUpdateInputCase1DomainsList =
+  LoadBalancerCreateInputCase0DomainsList as any as S.Schema<LoadBalancerUpdateInputCase1DomainsList>;
 
 /** An array containing the UUIDs of the Regional load balancers to be used as target backends for a Global load balancer. */
 export type LoadBalancerUpdateInputCase1TargetLoadBalancerIdsList = Array<string>;
-export const LoadBalancerUpdateInputCase1TargetLoadBalancerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LoadBalancerUpdateInputCase1TargetLoadBalancerIdsList>;
+export const LoadBalancerUpdateInputCase1TargetLoadBalancerIdsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<LoadBalancerUpdateInputCase1TargetLoadBalancerIdsList>;
 
 /** A string indicating the policy for the TLS cipher suites used by the load balancer. The possible values are `DEFAULT` or `STRONG`. The default value is `DEFAULT`. */
 export type LoadBalancerUpdateInputCase1TlsCipherPolicy = "DEFAULT" | "STRONG";
@@ -46485,19 +44882,13 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLoadBalancerResponse {
   load_balancer?: LoadBalancer;
 }
-export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    load_balancer: S.optional(LoadBalancer),
-  }),
-).annotate({
-  identifier: "UpdateLoadBalancerResponse",
-}) as any as S.Schema<UpdateLoadBalancerResponse>;
+export const UpdateLoadBalancerResponse =
+  CreateLoadBalancerResponse as any as S.Schema<UpdateLoadBalancerResponse>;
 
 /** The complete set of tool slugs (`<server_ref>_<name>`) to enable; every other tool of the server is disabled. Empty disables every tool. */
 export type UpdateMcpServerToolsRequestEnabledToolSlugsList = Array<string>;
-export const UpdateMcpServerToolsRequestEnabledToolSlugsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMcpServerToolsRequestEnabledToolSlugsList>;
+export const UpdateMcpServerToolsRequestEnabledToolSlugsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateMcpServerToolsRequestEnabledToolSlugsList>;
 
 export interface UpdateMcpServerToolsRequest {
   /** Server identifier (`serverRef`) of one of your team's MCP servers. */
@@ -46523,14 +44914,12 @@ export type UpdateMonitoringAlertPolicyRequestCompare = "GreaterThan" | "LessTha
 export const UpdateMonitoringAlertPolicyRequestCompare = S.String;
 
 export type UpdateMonitoringAlertPolicyRequestEntitiesList = Array<string>;
-export const UpdateMonitoringAlertPolicyRequestEntitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMonitoringAlertPolicyRequestEntitiesList>;
+export const UpdateMonitoringAlertPolicyRequestEntitiesList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateMonitoringAlertPolicyRequestEntitiesList>;
 
 export type UpdateMonitoringAlertPolicyRequestTagsList = Array<string>;
-export const UpdateMonitoringAlertPolicyRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateMonitoringAlertPolicyRequestTagsList>;
+export const UpdateMonitoringAlertPolicyRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateMonitoringAlertPolicyRequestTagsList>;
 
 export type UpdateMonitoringAlertPolicyRequestType =
   | "v1/insights/droplet/load_1"
@@ -46607,13 +44996,8 @@ export const UpdateMonitoringAlertPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateMonitoringAlertPolicyResponse {
   policy?: AlertPolicy;
 }
-export const UpdateMonitoringAlertPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(AlertPolicy),
-  }),
-).annotate({
-  identifier: "UpdateMonitoringAlertPolicyResponse",
-}) as any as S.Schema<UpdateMonitoringAlertPolicyResponse>;
+export const UpdateMonitoringAlertPolicyResponse =
+  CreateMonitoringAlertPolicyResponse as any as S.Schema<UpdateMonitoringAlertPolicyResponse>;
 
 /** The destination type. `opensearch_dbaas` for a DigitalOcean managed OpenSearch cluster or `opensearch_ext` for an externally managed one. */
 export type UpdateMonitoringDestinationRequestType = "opensearch_dbaas" | "opensearch_ext";
@@ -46646,11 +45030,8 @@ export const UpdateMonitoringDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMonitoringDestinationRequest>;
 
 export interface UpdateMonitoringDestinationResponse {}
-export const UpdateMonitoringDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateMonitoringDestinationResponse",
-}) as any as S.Schema<UpdateMonitoringDestinationResponse>;
+export const UpdateMonitoringDestinationResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UpdateMonitoringDestinationResponse>;
 
 /** The environment of the project's resources. */
 export type UpdateProjectRequestEnvironment = "Development" | "Staging" | "Production";
@@ -46684,11 +45065,8 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProjectResponse {
   project?: Project;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.optional(Project),
-  }),
-).annotate({ identifier: "UpdateProjectResponse" }) as any as S.Schema<UpdateProjectResponse>;
+export const UpdateProjectResponse =
+  CreateProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** The environment of the project's resources. */
 export type UpdateProjectDefaultRequestEnvironment = "Development" | "Staging" | "Production";
@@ -46721,13 +45099,8 @@ export const UpdateProjectDefaultRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProjectDefaultResponse {
   project?: Project;
 }
-export const UpdateProjectDefaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project: S.optional(Project),
-  }),
-).annotate({
-  identifier: "UpdateProjectDefaultResponse",
-}) as any as S.Schema<UpdateProjectDefaultResponse>;
+export const UpdateProjectDefaultResponse =
+  GetProjectDefaultResponse as any as S.Schema<UpdateProjectDefaultResponse>;
 
 export interface UpdateRegistryGarbageCollectionRequest {
   /** The name of a container registry. */
@@ -46756,13 +45129,8 @@ export const UpdateRegistryGarbageCollectionRequest = /*@__PURE__*/ S.suspend(()
 export interface UpdateRegistryGarbageCollectionResponse {
   garbage_collection?: GarbageCollection;
 }
-export const UpdateRegistryGarbageCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    garbage_collection: S.optional(GarbageCollection),
-  }),
-).annotate({
-  identifier: "UpdateRegistryGarbageCollectionResponse",
-}) as any as S.Schema<UpdateRegistryGarbageCollectionResponse>;
+export const UpdateRegistryGarbageCollectionResponse =
+  GetRegistryGarbageCollectionResponse as any as S.Schema<UpdateRegistryGarbageCollectionResponse>;
 
 /** The slug of the subscription tier to sign up for. */
 export type UpdateRegistrySubscriptionRequestTierSlug = "starter" | "basic" | "professional";
@@ -46783,26 +45151,18 @@ export const UpdateRegistrySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRegistrySubscriptionResponse {
   subscription?: Subscription;
 }
-export const UpdateRegistrySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: S.optional(Subscription),
-  }),
-).annotate({
-  identifier: "UpdateRegistrySubscriptionResponse",
-}) as any as S.Schema<UpdateRegistrySubscriptionResponse>;
+export const UpdateRegistrySubscriptionResponse =
+  GetRegistrySubscriptionResponse as any as S.Schema<UpdateRegistrySubscriptionResponse>;
 
 /** The URNs of resources to scan for the tier. */
 export type UpdateSecuritySettingsPlanRequestTierCoverageValueResourcesList = Array<string>;
 export const UpdateSecuritySettingsPlanRequestTierCoverageValueResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateSecuritySettingsPlanRequestTierCoverageValueResourcesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<UpdateSecuritySettingsPlanRequestTierCoverageValueResourcesList>;
 
 /** Resource tags to scan for the tier. */
 export type UpdateSecuritySettingsPlanRequestTierCoverageValueTagsList = Array<string>;
-export const UpdateSecuritySettingsPlanRequestTierCoverageValueTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSecuritySettingsPlanRequestTierCoverageValueTagsList>;
+export const UpdateSecuritySettingsPlanRequestTierCoverageValueTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateSecuritySettingsPlanRequestTierCoverageValueTagsList>;
 
 export interface UpdateSecuritySettingsPlanRequestTierCoverageValue {
   /** The URNs of resources to scan for the tier. */
@@ -46842,35 +45202,24 @@ export const UpdateSecuritySettingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateSecuritySettingsPlanResponseTierCoverageValueResourcesList = Array<string>;
 export const UpdateSecuritySettingsPlanResponseTierCoverageValueResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageValueResourcesList>;
+  AddFirewallRulesRequestInboundRulesItemSourcesLoadBalancerUidsList as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageValueResourcesList>;
 
 export type UpdateSecuritySettingsPlanResponseTierCoverageValueTagsList = Array<string>;
-export const UpdateSecuritySettingsPlanResponseTierCoverageValueTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageValueTagsList>;
+export const UpdateSecuritySettingsPlanResponseTierCoverageValueTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageValueTagsList>;
 
 export interface UpdateSecuritySettingsPlanResponseTierCoverageValue {
   resources?: UpdateSecuritySettingsPlanResponseTierCoverageValueResourcesList;
   tags?: UpdateSecuritySettingsPlanResponseTierCoverageValueTagsList;
 }
-export const UpdateSecuritySettingsPlanResponseTierCoverageValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resources: S.optional(UpdateSecuritySettingsPlanResponseTierCoverageValueResourcesList),
-    tags: S.optional(UpdateSecuritySettingsPlanResponseTierCoverageValueTagsList),
-  }),
-).annotate({
-  identifier: "UpdateSecuritySettingsPlanResponseTierCoverageValue",
-}) as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageValue>;
+export const UpdateSecuritySettingsPlanResponseTierCoverageValue =
+  UpdateSecuritySettingsPlanRequestTierCoverageValue as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageValue>;
 
 export type UpdateSecuritySettingsPlanResponseTierCoverageMap = {
   [key: string]: UpdateSecuritySettingsPlanResponseTierCoverageValue | undefined;
 };
-export const UpdateSecuritySettingsPlanResponseTierCoverageMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateSecuritySettingsPlanResponseTierCoverageValue,
-) as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageMap>;
+export const UpdateSecuritySettingsPlanResponseTierCoverageMap =
+  UpdateSecuritySettingsPlanRequestTierCoverageMap as any as S.Schema<UpdateSecuritySettingsPlanResponseTierCoverageMap>;
 
 export interface UpdateSecuritySettingsPlanResponse {
   tier_coverage?: UpdateSecuritySettingsPlanResponseTierCoverageMap;
@@ -46885,9 +45234,8 @@ export const UpdateSecuritySettingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of permissions for the access key. */
 export type UpdateSpacesKeyRequestGrantsList = Array<Grant>;
-export const UpdateSpacesKeyRequestGrantsList = /*@__PURE__*/ S.Array(
-  Grant,
-) as any as S.Schema<UpdateSpacesKeyRequestGrantsList>;
+export const UpdateSpacesKeyRequestGrantsList =
+  CreateSpacesKeyRequestGrantsList as any as S.Schema<UpdateSpacesKeyRequestGrantsList>;
 
 export interface UpdateSpacesKeyRequest {
   /** The access key's ID. */
@@ -46908,11 +45256,8 @@ export const UpdateSpacesKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSpacesKeyResponse {
   key?: Key;
 }
-export const UpdateSpacesKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(Key),
-  }),
-).annotate({ identifier: "UpdateSpacesKeyResponse" }) as any as S.Schema<UpdateSpacesKeyResponse>;
+export const UpdateSpacesKeyResponse =
+  PatchSpacesKeyResponse as any as S.Schema<UpdateSpacesKeyResponse>;
 
 export interface UpdateSshKeyRequest {
   /** Either the ID or the fingerprint of an existing SSH key. */
@@ -46929,11 +45274,7 @@ export const UpdateSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSshKeyResponse {
   ssh_key: SshKeys;
 }
-export const UpdateSshKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ssh_key: SshKeys,
-  }),
-).annotate({ identifier: "UpdateSshKeyResponse" }) as any as S.Schema<UpdateSshKeyResponse>;
+export const UpdateSshKeyResponse = CreateSshKeyResponse as any as S.Schema<UpdateSshKeyResponse>;
 
 /** The type of alert. */
 export type UpdateUptimeAlertRequestType = "latency" | "down" | "down_global" | "ssl_expiry";
@@ -46982,13 +45323,8 @@ export const UpdateUptimeAlertRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUptimeAlertResponse {
   alert?: Alert;
 }
-export const UpdateUptimeAlertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert: S.optional(Alert),
-  }),
-).annotate({
-  identifier: "UpdateUptimeAlertResponse",
-}) as any as S.Schema<UpdateUptimeAlertResponse>;
+export const UpdateUptimeAlertResponse =
+  CreateUptimeAlertResponse as any as S.Schema<UpdateUptimeAlertResponse>;
 
 /** The type of health check to perform. */
 export type UpdateUptimeCheckRequestType = "ping" | "http" | "https";
@@ -47033,13 +45369,8 @@ export const UpdateUptimeCheckRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUptimeCheckResponse {
   check?: Check;
 }
-export const UpdateUptimeCheckResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    check: S.optional(Check),
-  }),
-).annotate({
-  identifier: "UpdateUptimeCheckResponse",
-}) as any as S.Schema<UpdateUptimeCheckResponse>;
+export const UpdateUptimeCheckResponse =
+  CreateUptimeCheckResponse as any as S.Schema<UpdateUptimeCheckResponse>;
 
 export interface UpdateVectorDatabaseRequest {
   /** ID of the vector database. */
@@ -47061,19 +45392,13 @@ export const UpdateVectorDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VectordbUpdateVectorDBResponse {
   vector_db?: VectordbVectorDB;
 }
-export const VectordbUpdateVectorDBResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vector_db: S.optional(VectordbVectorDB),
-  }),
-).annotate({
-  identifier: "VectordbUpdateVectorDBResponse",
-}) as any as S.Schema<VectordbUpdateVectorDBResponse>;
+export const VectordbUpdateVectorDBResponse =
+  VectordbCreateVectorDBResponse as any as S.Schema<VectordbUpdateVectorDBResponse>;
 
 /** Tags to set on the vector database. Replaces all existing tags. */
 export type UpdateVectorDatabaseTagsRequestTagsList = Array<string>;
-export const UpdateVectorDatabaseTagsRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVectorDatabaseTagsRequestTagsList>;
+export const UpdateVectorDatabaseTagsRequestTagsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateVectorDatabaseTagsRequestTagsList>;
 
 export interface UpdateVectorDatabaseTagsRequest {
   /** Required. ID of the vector database to update tags for. */
@@ -47093,13 +45418,8 @@ export const UpdateVectorDatabaseTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VectordbUpdateVectorDBTagsResponse {
   vector_db?: VectordbVectorDB;
 }
-export const VectordbUpdateVectorDBTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vector_db: S.optional(VectordbVectorDB),
-  }),
-).annotate({
-  identifier: "VectordbUpdateVectorDBTagsResponse",
-}) as any as S.Schema<VectordbUpdateVectorDBTagsResponse>;
+export const VectordbUpdateVectorDBTagsResponse =
+  VectordbCreateVectorDBResponse as any as S.Schema<VectordbUpdateVectorDBTagsResponse>;
 
 export interface UpdateVpcRequest {
   /** A unique identifier for a VPC. */
@@ -47123,11 +45443,7 @@ export const UpdateVpcRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcResponse {
   vpc?: Vpc;
 }
-export const UpdateVpcResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc: S.optional(Vpc),
-  }),
-).annotate({ identifier: "UpdateVpcResponse" }) as any as S.Schema<UpdateVpcResponse>;
+export const UpdateVpcResponse = CreateVpcResponse as any as S.Schema<UpdateVpcResponse>;
 
 export interface UpdateVpcnatgatewayRequestVpcsItem {
   /** The unique identifier of the VPC to which the NAT gateway is attached. */
@@ -47188,9 +45504,8 @@ export const VpcNatGatewayUpdateVpcsItem = UpdateVpcnatgatewayRequestVpcsItem;
 
 /** An array of VPCs associated with the VPC NAT gateway. */
 export type VpcNatGatewayUpdateVpcsList = Array<UpdateVpcnatgatewayRequestVpcsItem>;
-export const VpcNatGatewayUpdateVpcsList = /*@__PURE__*/ S.Array(
-  UpdateVpcnatgatewayRequestVpcsItem,
-) as any as S.Schema<VpcNatGatewayUpdateVpcsList>;
+export const VpcNatGatewayUpdateVpcsList =
+  UpdateVpcnatgatewayRequestVpcsList as any as S.Schema<VpcNatGatewayUpdateVpcsList>;
 
 export interface VpcNatGatewayUpdate {
   /** The human-readable name of the VPC NAT gateway. */
@@ -47247,17 +45562,13 @@ export const UpdateVpcSubnetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcSubnetResponse {
   vpc_subnet?: VpcSubnet;
 }
-export const UpdateVpcSubnetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vpc_subnet: S.optional(VpcSubnet),
-  }),
-).annotate({ identifier: "UpdateVpcSubnetResponse" }) as any as S.Schema<UpdateVpcSubnetResponse>;
+export const UpdateVpcSubnetResponse =
+  CreateVpcSubnetResponse as any as S.Schema<UpdateVpcSubnetResponse>;
 
 /** The URNs of supported next-hop resources. Droplet targets must use a numeric ID in the format `do:droplet:<id>`. VPC NAT Gateway targets use a UUID in the format `do:nat_gateway:<uuid>`. */
 export type UpdateVpcSubnetRouteRequestTargetUrnsList = Array<string>;
-export const UpdateVpcSubnetRouteRequestTargetUrnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateVpcSubnetRouteRequestTargetUrnsList>;
+export const UpdateVpcSubnetRouteRequestTargetUrnsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<UpdateVpcSubnetRouteRequestTargetUrnsList>;
 
 export interface UpdateVpcSubnetRouteRequest {
   /** The unique identifier of the VPC. */
@@ -47289,13 +45600,8 @@ export const UpdateVpcSubnetRouteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcSubnetRouteResponse {
   route?: Route;
 }
-export const UpdateVpcSubnetRouteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    route: S.optional(Route),
-  }),
-).annotate({
-  identifier: "UpdateVpcSubnetRouteResponse",
-}) as any as S.Schema<UpdateVpcSubnetRouteResponse>;
+export const UpdateVpcSubnetRouteResponse =
+  CreateVpcSubnetRouteResponse as any as S.Schema<UpdateVpcSubnetRouteResponse>;
 
 export interface UploadInferenceBatchFileRequest {}
 export const UploadInferenceBatchFileRequest = /*@__PURE__*/ S.suspend(() =>
@@ -47305,11 +45611,8 @@ export const UploadInferenceBatchFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadInferenceBatchFileRequest>;
 
 export interface UploadInferenceBatchFileResponse {}
-export const UploadInferenceBatchFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UploadInferenceBatchFileResponse",
-}) as any as S.Schema<UploadInferenceBatchFileResponse>;
+export const UploadInferenceBatchFileResponse =
+  AddDatabaseConnectionPoolRequestConnection as any as S.Schema<UploadInferenceBatchFileResponse>;
 
 export interface ValidateAppAppSpecRequest {
   spec: AppSpecInput;
@@ -47383,9 +45686,8 @@ export type ValidateAppRollbackResponseErrorCode =
 export const ValidateAppRollbackResponseErrorCode = S.String;
 
 export type ValidateAppRollbackResponseErrorComponentsList = Array<string>;
-export const ValidateAppRollbackResponseErrorComponentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateAppRollbackResponseErrorComponentsList>;
+export const ValidateAppRollbackResponseErrorComponentsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ValidateAppRollbackResponseErrorComponentsList>;
 
 export interface ValidateAppRollbackResponseError {
   /** A code identifier that represents the failing condition. Failing conditions: - `incompatible_phase` - indicates that the deployment's phase is not suitable for rollback. - `incompatible_result` - indicates that the deployment's result is not suitable for rollback. - `exceeded_revision_limit` - indicates that the app has exceeded the rollback revision limits for its tier. - `app_pinned` - indicates that there is already a rollback in progress and the app is pinned. - `database_config_conflict` - indicates that the deployment's database config is different than the current config. - `region_conflict` - indicates that the deployment's region differs from the current app region. Warning conditions: - `static_site_requires_rebuild` - indicates that the deployment contains at least one static site that will require a rebuild. - `image_source_missing_digest` - indicates that the deployment contains at least one component with an image source that is missing a digest. */
@@ -47417,9 +45719,8 @@ export type AppRollbackValidationConditionCode =
 export const AppRollbackValidationConditionCode = S.String;
 
 export type AppRollbackValidationConditionComponentsList = Array<string>;
-export const AppRollbackValidationConditionComponentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppRollbackValidationConditionComponentsList>;
+export const AppRollbackValidationConditionComponentsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<AppRollbackValidationConditionComponentsList>;
 
 export interface AppRollbackValidationCondition {
   /** A code identifier that represents the failing condition. Failing conditions: - `incompatible_phase` - indicates that the deployment's phase is not suitable for rollback. - `incompatible_result` - indicates that the deployment's result is not suitable for rollback. - `exceeded_revision_limit` - indicates that the app has exceeded the rollback revision limits for its tier. - `app_pinned` - indicates that there is already a rollback in progress and the app is pinned. - `database_config_conflict` - indicates that the deployment's database config is different than the current config. - `region_conflict` - indicates that the deployment's region differs from the current app region. Warning conditions: - `static_site_requires_rebuild` - indicates that the deployment contains at least one static site that will require a rebuild. - `image_source_missing_digest` - indicates that the deployment contains at least one component with an image source that is missing a digest. */
@@ -47463,9 +45764,8 @@ export const ValidateAppRollbackResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Output paths to keep; as on create. */
 export type ValidateOutputViewRequestFieldsList = Array<string>;
-export const ValidateOutputViewRequestFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ValidateOutputViewRequestFieldsList>;
+export const ValidateOutputViewRequestFieldsList =
+  UserSettingsMongoUserSettingsDatabasesList as any as S.Schema<ValidateOutputViewRequestFieldsList>;
 
 export interface ValidateOutputViewRequest {
   /** Tool slug, optionally pinned; as on create. */
@@ -47504,9 +45804,8 @@ export const ValidateRegistryNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateRegistryNameRequest>;
 
 export interface ValidateRegistryNameResponse {}
-export const ValidateRegistryNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ValidateRegistryNameResponse",
-}) as any as S.Schema<ValidateRegistryNameResponse>;
+export const ValidateRegistryNameResponse =
+  AddFirewallRulesResponse as any as S.Schema<ValidateRegistryNameResponse>;
 
 export interface VectorDatabasesGetRestoreStatusRequest {
   /** Required. ID of the vector database. */
@@ -47565,13 +45864,8 @@ export const VectorDatabasesPostResizeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VectordbResizeVectorDBResponse {
   vector_db?: VectordbVectorDB;
 }
-export const VectordbResizeVectorDBResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vector_db: S.optional(VectordbVectorDB),
-  }),
-).annotate({
-  identifier: "VectordbResizeVectorDBResponse",
-}) as any as S.Schema<VectordbResizeVectorDBResponse>;
+export const VectordbResizeVectorDBResponse =
+  VectordbCreateVectorDBResponse as any as S.Schema<VectordbResizeVectorDBResponse>;
 
 export interface VectorDatabasesPostRestoreBackupRequest {
   /** Required. ID of the vector database. */

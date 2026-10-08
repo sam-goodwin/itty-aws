@@ -53,11 +53,8 @@ export const FlashSetTargetSlotsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlashSetTargetSlotsMetricsRequest>;
 
 export interface FlashSetTargetSlotsMetricsResponse {}
-export const FlashSetTargetSlotsMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FlashSetTargetSlotsMetricsResponse",
-}) as any as S.Schema<FlashSetTargetSlotsMetricsResponse>;
+export const FlashSetTargetSlotsMetricsResponse =
+  FlashContainerDeregisterResponse as any as S.Schema<FlashSetTargetSlotsMetricsResponse>;
 
 export interface ListFlashContainerRequest {
   functionId?: string;

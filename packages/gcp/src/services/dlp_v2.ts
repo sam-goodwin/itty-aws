@@ -310,26 +310,16 @@ export interface GooglePrivacyDlpV2CategoricalStatsConfig {
   /** Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data. */
   field?: GooglePrivacyDlpV2FieldId;
 }
-export const GooglePrivacyDlpV2CategoricalStatsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(GooglePrivacyDlpV2FieldId),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2CategoricalStatsConfig",
-}) as any as S.Schema<GooglePrivacyDlpV2CategoricalStatsConfig>;
+export const GooglePrivacyDlpV2CategoricalStatsConfig =
+  GooglePrivacyDlpV2EntityId as any as S.Schema<GooglePrivacyDlpV2CategoricalStatsConfig>;
 
 /** Compute numerical stats over an individual column, including min, max, and quantiles. */
 export interface GooglePrivacyDlpV2NumericalStatsConfig {
   /** Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time. */
   field?: GooglePrivacyDlpV2FieldId;
 }
-export const GooglePrivacyDlpV2NumericalStatsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(GooglePrivacyDlpV2FieldId),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2NumericalStatsConfig",
-}) as any as S.Schema<GooglePrivacyDlpV2NumericalStatsConfig>;
+export const GooglePrivacyDlpV2NumericalStatsConfig =
+  GooglePrivacyDlpV2EntityId as any as S.Schema<GooglePrivacyDlpV2NumericalStatsConfig>;
 
 /** A column with a semantic tag attached. */
 export interface GooglePrivacyDlpV2QuasiId {
@@ -365,20 +355,13 @@ export interface GooglePrivacyDlpV2QuasiIdentifierField {
   /** A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column. */
   customTag?: string;
 }
-export const GooglePrivacyDlpV2QuasiIdentifierField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    field: S.optional(GooglePrivacyDlpV2FieldId),
-    customTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2QuasiIdentifierField",
-}) as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierField>;
+export const GooglePrivacyDlpV2QuasiIdentifierField =
+  GooglePrivacyDlpV2QuasiIdField as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierField>;
 
 export type GooglePrivacyDlpV2QuasiIdentifierFieldList =
   Array<GooglePrivacyDlpV2QuasiIdentifierField>;
-export const GooglePrivacyDlpV2QuasiIdentifierFieldList = /*@__PURE__*/ S.Array(
-  GooglePrivacyDlpV2QuasiIdentifierField,
-) as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierFieldList>;
+export const GooglePrivacyDlpV2QuasiIdentifierFieldList =
+  GooglePrivacyDlpV2QuasiIdFieldList as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierFieldList>;
 
 /** An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable). */
 export interface GooglePrivacyDlpV2StatisticalTable {
@@ -1257,13 +1240,8 @@ export interface GooglePrivacyDlpV2TransientCryptoKey {
   /** Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated). */
   name?: string;
 }
-export const GooglePrivacyDlpV2TransientCryptoKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2TransientCryptoKey",
-}) as any as S.Schema<GooglePrivacyDlpV2TransientCryptoKey>;
+export const GooglePrivacyDlpV2TransientCryptoKey =
+  GooglePrivacyDlpV2FieldId as any as S.Schema<GooglePrivacyDlpV2TransientCryptoKey>;
 
 /** Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. */
 export interface GooglePrivacyDlpV2UnwrappedCryptoKey {
@@ -2294,13 +2272,8 @@ export interface GooglePrivacyDlpV2ExcludeInfoTypes {
   /** InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and `exclusion_rule` containing `exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address. */
   infoTypes?: GooglePrivacyDlpV2InfoTypeList;
 }
-export const GooglePrivacyDlpV2ExcludeInfoTypes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infoTypes: S.optional(GooglePrivacyDlpV2InfoTypeList),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2ExcludeInfoTypes",
-}) as any as S.Schema<GooglePrivacyDlpV2ExcludeInfoTypes>;
+export const GooglePrivacyDlpV2ExcludeInfoTypes =
+  GooglePrivacyDlpV2SelectedInfoTypes as any as S.Schema<GooglePrivacyDlpV2ExcludeInfoTypes>;
 
 /** The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern. */
 export interface GooglePrivacyDlpV2ExcludeByHotword {
@@ -2789,13 +2762,8 @@ export interface GooglePrivacyDlpV2KindExpression {
   /** The name of the kind. */
   name?: string;
 }
-export const GooglePrivacyDlpV2KindExpression = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2KindExpression",
-}) as any as S.Schema<GooglePrivacyDlpV2KindExpression>;
+export const GooglePrivacyDlpV2KindExpression =
+  GooglePrivacyDlpV2FieldId as any as S.Schema<GooglePrivacyDlpV2KindExpression>;
 
 /** Options defining a data set within Google Cloud Datastore. */
 export interface GooglePrivacyDlpV2DatastoreOptions {
@@ -6096,13 +6064,8 @@ export interface GooglePrivacyDlpV2SensitivityLabelMetadata {
   /** Required. The GUID of the sensitivity label. */
   guid?: string;
 }
-export const GooglePrivacyDlpV2SensitivityLabelMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    guid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2SensitivityLabelMetadata",
-}) as any as S.Schema<GooglePrivacyDlpV2SensitivityLabelMetadata>;
+export const GooglePrivacyDlpV2SensitivityLabelMetadata =
+  GooglePrivacyDlpV2SensitivityLabel as any as S.Schema<GooglePrivacyDlpV2SensitivityLabelMetadata>;
 
 /** Represents a file label. */
 export interface GooglePrivacyDlpV2FileLabel {
@@ -7945,11 +7908,8 @@ export const HybridInspectProjectsLocationsDlpJobsRequest = /*@__PURE__*/ S.susp
 
 /** Quota exceeded errors will be thrown once quota has been met. */
 export interface GooglePrivacyDlpV2HybridInspectResponse {}
-export const GooglePrivacyDlpV2HybridInspectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GooglePrivacyDlpV2HybridInspectResponse",
-}) as any as S.Schema<GooglePrivacyDlpV2HybridInspectResponse>;
+export const GooglePrivacyDlpV2HybridInspectResponse =
+  GooglePrivacyDlpV2ActivateJobTriggerRequest as any as S.Schema<GooglePrivacyDlpV2HybridInspectResponse>;
 
 /** Request to search for potentially sensitive info in a custom location. */
 export type GooglePrivacyDlpV2HybridInspectJobTriggerRequest =
@@ -8260,26 +8220,16 @@ export interface GooglePrivacyDlpV2StorageMetadataLabel {
   /** Label name. */
   key?: string;
 }
-export const GooglePrivacyDlpV2StorageMetadataLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2StorageMetadataLabel",
-}) as any as S.Schema<GooglePrivacyDlpV2StorageMetadataLabel>;
+export const GooglePrivacyDlpV2StorageMetadataLabel =
+  GooglePrivacyDlpV2UnwrappedCryptoKey as any as S.Schema<GooglePrivacyDlpV2StorageMetadataLabel>;
 
 /** The metadata key that contains a finding. */
 export interface GooglePrivacyDlpV2KeyValueMetadataLabel {
   /** The metadata key. The format depends on the source of the metadata. Example: - `MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Enabled` (a Microsoft Purview Information Protection key example) */
   key?: string;
 }
-export const GooglePrivacyDlpV2KeyValueMetadataLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2KeyValueMetadataLabel",
-}) as any as S.Schema<GooglePrivacyDlpV2KeyValueMetadataLabel>;
+export const GooglePrivacyDlpV2KeyValueMetadataLabel =
+  GooglePrivacyDlpV2UnwrappedCryptoKey as any as S.Schema<GooglePrivacyDlpV2KeyValueMetadataLabel>;
 
 /** Metadata Location */
 export interface GooglePrivacyDlpV2MetadataLocation {
@@ -10724,14 +10674,8 @@ export interface GooglePrivacyDlpV2SearchConnectionsResponse {
   /** List of connections that match the search query. Note that only a subset of the fields will be populated, and only "name" is guaranteed to be set. For full details of a Connection, call GetConnection with the name. */
   connections?: GooglePrivacyDlpV2ConnectionList;
 }
-export const GooglePrivacyDlpV2SearchConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextPageToken: S.optional(S.String),
-    connections: S.optional(GooglePrivacyDlpV2ConnectionList),
-  }),
-).annotate({
-  identifier: "GooglePrivacyDlpV2SearchConnectionsResponse",
-}) as any as S.Schema<GooglePrivacyDlpV2SearchConnectionsResponse>;
+export const GooglePrivacyDlpV2SearchConnectionsResponse =
+  GooglePrivacyDlpV2ListConnectionsResponse as any as S.Schema<GooglePrivacyDlpV2SearchConnectionsResponse>;
 
 export interface SearchProjectsLocationsConnectionsRequest {
   /** Optional. Page token from a previous page to return the next set of results. If set, all other request fields must match the original request. */

@@ -204,9 +204,8 @@ export const ListEntryRequestProductIdsList = /*@__PURE__*/ S.Array(
 
 /** Filter entries to only those for specific plans. */
 export type ListEntryRequestPlanIdsList = Array<string>;
-export const ListEntryRequestPlanIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEntryRequestPlanIdsList>;
+export const ListEntryRequestPlanIdsList =
+  ListEntryRequestProductIdsList as any as S.Schema<ListEntryRequestPlanIdsList>;
 
 /** Filter entries by their current status. */
 export type ListEntryRequestStatusesList = Array<EntryStatus | (string & {})>;

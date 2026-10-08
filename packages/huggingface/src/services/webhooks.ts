@@ -47,9 +47,8 @@ export const CreateWebhookRequestJobCase0ArgumentsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateWebhookRequestJobCase0ArgumentsList>;
 
 export type CreateWebhookRequestJobCase0CommandList = Array<string>;
-export const CreateWebhookRequestJobCase0CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase0CommandList>;
+export const CreateWebhookRequestJobCase0CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookRequestJobCase0CommandList>;
 
 export type CreateWebhookRequestJobCase0EnvironmentMap = { [key: string]: string | undefined };
 export const CreateWebhookRequestJobCase0EnvironmentMap = /*@__PURE__*/ S.Record(
@@ -58,10 +57,8 @@ export const CreateWebhookRequestJobCase0EnvironmentMap = /*@__PURE__*/ S.Record
 ) as any as S.Schema<CreateWebhookRequestJobCase0EnvironmentMap>;
 
 export type CreateWebhookRequestJobCase0SecretsMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestJobCase0SecretsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase0SecretsMap>;
+export const CreateWebhookRequestJobCase0SecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookRequestJobCase0SecretsMap>;
 
 export type CreateWebhookRequestJobCase0Flavor =
   | "cpu-basic"
@@ -100,10 +97,8 @@ export const CreateWebhookRequestJobCase0Arch = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type CreateWebhookRequestJobCase0LabelsMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestJobCase0LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase0LabelsMap>;
+export const CreateWebhookRequestJobCase0LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookRequestJobCase0LabelsMap>;
 
 export type CreateWebhookRequestJobCase0VolumesItemType = "bucket" | "model" | "dataset" | "space";
 export const CreateWebhookRequestJobCase0VolumesItemType = S.String;
@@ -148,9 +143,8 @@ export const CreateWebhookRequestJobCase0ExposePortsList = /*@__PURE__*/ S.Array
 
 /** Subset of `ports` reachable without any authentication. */
 export type CreateWebhookRequestJobCase0ExposePortsPublicList = Array<number>;
-export const CreateWebhookRequestJobCase0ExposePortsPublicList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateWebhookRequestJobCase0ExposePortsPublicList>;
+export const CreateWebhookRequestJobCase0ExposePortsPublicList =
+  CreateWebhookRequestJobCase0ExposePortsList as any as S.Schema<CreateWebhookRequestJobCase0ExposePortsPublicList>;
 
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
 export interface CreateWebhookRequestJobCase0Expose {
@@ -181,9 +175,8 @@ export const CreateWebhookRequestJobCase0Ssh = /*@__PURE__*/ S.suspend(() =>
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type CreateWebhookRequestJobCase0NetworkAliasesList = Array<string>;
-export const CreateWebhookRequestJobCase0NetworkAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase0NetworkAliasesList>;
+export const CreateWebhookRequestJobCase0NetworkAliasesList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookRequestJobCase0NetworkAliasesList>;
 
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface CreateWebhookRequestJobCase0Network {
@@ -249,26 +242,20 @@ export const CreateWebhookRequestJobCase0 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWebhookRequestJobCase0>;
 
 export type CreateWebhookRequestJobCase1ArgumentsList = Array<string>;
-export const CreateWebhookRequestJobCase1ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase1ArgumentsList>;
+export const CreateWebhookRequestJobCase1ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookRequestJobCase1ArgumentsList>;
 
 export type CreateWebhookRequestJobCase1CommandList = Array<string>;
-export const CreateWebhookRequestJobCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase1CommandList>;
+export const CreateWebhookRequestJobCase1CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookRequestJobCase1CommandList>;
 
 export type CreateWebhookRequestJobCase1EnvironmentMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestJobCase1EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase1EnvironmentMap>;
+export const CreateWebhookRequestJobCase1EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookRequestJobCase1EnvironmentMap>;
 
 export type CreateWebhookRequestJobCase1SecretsMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestJobCase1SecretsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase1SecretsMap>;
+export const CreateWebhookRequestJobCase1SecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookRequestJobCase1SecretsMap>;
 
 export type CreateWebhookRequestJobCase1Flavor =
   | "cpu-basic"
@@ -307,10 +294,8 @@ export const CreateWebhookRequestJobCase1Arch = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type CreateWebhookRequestJobCase1LabelsMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestJobCase1LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase1LabelsMap>;
+export const CreateWebhookRequestJobCase1LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookRequestJobCase1LabelsMap>;
 
 export type CreateWebhookRequestJobCase1VolumesItemType = "bucket" | "model" | "dataset" | "space";
 export const CreateWebhookRequestJobCase1VolumesItemType = S.String;
@@ -349,15 +334,13 @@ export const CreateWebhookRequestJobCase1VolumesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateWebhookRequestJobCase1VolumesList>;
 
 export type CreateWebhookRequestJobCase1ExposePortsList = Array<number>;
-export const CreateWebhookRequestJobCase1ExposePortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateWebhookRequestJobCase1ExposePortsList>;
+export const CreateWebhookRequestJobCase1ExposePortsList =
+  CreateWebhookRequestJobCase0ExposePortsList as any as S.Schema<CreateWebhookRequestJobCase1ExposePortsList>;
 
 /** Subset of `ports` reachable without any authentication. */
 export type CreateWebhookRequestJobCase1ExposePortsPublicList = Array<number>;
-export const CreateWebhookRequestJobCase1ExposePortsPublicList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateWebhookRequestJobCase1ExposePortsPublicList>;
+export const CreateWebhookRequestJobCase1ExposePortsPublicList =
+  CreateWebhookRequestJobCase0ExposePortsList as any as S.Schema<CreateWebhookRequestJobCase1ExposePortsPublicList>;
 
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
 export interface CreateWebhookRequestJobCase1Expose {
@@ -365,14 +348,8 @@ export interface CreateWebhookRequestJobCase1Expose {
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: CreateWebhookRequestJobCase1ExposePortsPublicList;
 }
-export const CreateWebhookRequestJobCase1Expose = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ports: CreateWebhookRequestJobCase1ExposePortsList,
-    portsPublic: S.optional(CreateWebhookRequestJobCase1ExposePortsPublicList),
-  }),
-).annotate({
-  identifier: "CreateWebhookRequestJobCase1Expose",
-}) as any as S.Schema<CreateWebhookRequestJobCase1Expose>;
+export const CreateWebhookRequestJobCase1Expose =
+  CreateWebhookRequestJobCase0Expose as any as S.Schema<CreateWebhookRequestJobCase1Expose>;
 
 /** When `enabled`, the job's container is reachable over SSH at `ssh <job_id>@ssh.hf.jobs`. Only the job's owner is allowed in, authenticated by an SSH public key registered on the Hub. */
 export type CreateWebhookRequestJobCase1Ssh = CreateWebhookRequestJobCase0Ssh;
@@ -380,9 +357,8 @@ export const CreateWebhookRequestJobCase1Ssh = CreateWebhookRequestJobCase0Ssh;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type CreateWebhookRequestJobCase1NetworkAliasesList = Array<string>;
-export const CreateWebhookRequestJobCase1NetworkAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestJobCase1NetworkAliasesList>;
+export const CreateWebhookRequestJobCase1NetworkAliasesList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookRequestJobCase1NetworkAliasesList>;
 
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface CreateWebhookRequestJobCase1Network {
@@ -391,14 +367,8 @@ export interface CreateWebhookRequestJobCase1Network {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases?: CreateWebhookRequestJobCase1NetworkAliasesList;
 }
-export const CreateWebhookRequestJobCase1Network = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.String,
-    aliases: S.optional(CreateWebhookRequestJobCase1NetworkAliasesList),
-  }),
-).annotate({
-  identifier: "CreateWebhookRequestJobCase1Network",
-}) as any as S.Schema<CreateWebhookRequestJobCase1Network>;
+export const CreateWebhookRequestJobCase1Network =
+  CreateWebhookRequestJobCase0Network as any as S.Schema<CreateWebhookRequestJobCase1Network>;
 
 export interface CreateWebhookRequestJobCase1 {
   spaceId?: string;
@@ -452,10 +422,8 @@ export const CreateWebhookRequestJob = S.Unknown as any as S.Schema<CreateWebhoo
 
 /** Secrets of the job started by the webhook, used together with `jobSourceId`: the source job's own secrets are never copied. On update, listed keys are replaced, an empty value removes a secret, and omitted keys keep their stored value. */
 export type CreateWebhookRequestSecretsMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestSecretsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookRequestSecretsMap>;
+export const CreateWebhookRequestSecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookRequestSecretsMap>;
 
 export type CreateWebhookRequestDomainsItem = "repo" | "discussion";
 export const CreateWebhookRequestDomainsItem = S.String;
@@ -492,20 +460,16 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateWebhookResponseWebhookJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const CreateWebhookResponseWebhookJobCase0EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase0EnvironmentMap>;
+export const CreateWebhookResponseWebhookJobCase0EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookResponseWebhookJobCase0EnvironmentMap>;
 
 export type CreateWebhookResponseWebhookJobCase0ArgumentsList = Array<string>;
-export const CreateWebhookResponseWebhookJobCase0ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase0ArgumentsList>;
+export const CreateWebhookResponseWebhookJobCase0ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookResponseWebhookJobCase0ArgumentsList>;
 
 export type CreateWebhookResponseWebhookJobCase0CommandList = Array<string>;
-export const CreateWebhookResponseWebhookJobCase0CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase0CommandList>;
+export const CreateWebhookResponseWebhookJobCase0CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookResponseWebhookJobCase0CommandList>;
 
 export type CreateWebhookResponseWebhookJobCase0Flavor =
   | "cpu-basic"
@@ -541,15 +505,12 @@ export const CreateWebhookResponseWebhookJobCase0Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type CreateWebhookResponseWebhookJobCase0LabelsMap = { [key: string]: string | undefined };
-export const CreateWebhookResponseWebhookJobCase0LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase0LabelsMap>;
+export const CreateWebhookResponseWebhookJobCase0LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookResponseWebhookJobCase0LabelsMap>;
 
 export type CreateWebhookResponseWebhookJobCase0SecretsList = Array<string>;
-export const CreateWebhookResponseWebhookJobCase0SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase0SecretsList>;
+export const CreateWebhookResponseWebhookJobCase0SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookResponseWebhookJobCase0SecretsList>;
 
 export interface CreateWebhookResponseWebhookJobCase0 {
   dockerImage?: string;
@@ -582,20 +543,16 @@ export const CreateWebhookResponseWebhookJobCase0 = /*@__PURE__*/ S.suspend(() =
 export type CreateWebhookResponseWebhookJobCase1EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const CreateWebhookResponseWebhookJobCase1EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase1EnvironmentMap>;
+export const CreateWebhookResponseWebhookJobCase1EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookResponseWebhookJobCase1EnvironmentMap>;
 
 export type CreateWebhookResponseWebhookJobCase1ArgumentsList = Array<string>;
-export const CreateWebhookResponseWebhookJobCase1ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase1ArgumentsList>;
+export const CreateWebhookResponseWebhookJobCase1ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookResponseWebhookJobCase1ArgumentsList>;
 
 export type CreateWebhookResponseWebhookJobCase1CommandList = Array<string>;
-export const CreateWebhookResponseWebhookJobCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase1CommandList>;
+export const CreateWebhookResponseWebhookJobCase1CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookResponseWebhookJobCase1CommandList>;
 
 export type CreateWebhookResponseWebhookJobCase1Flavor =
   | "cpu-basic"
@@ -631,15 +588,12 @@ export const CreateWebhookResponseWebhookJobCase1Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type CreateWebhookResponseWebhookJobCase1LabelsMap = { [key: string]: string | undefined };
-export const CreateWebhookResponseWebhookJobCase1LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase1LabelsMap>;
+export const CreateWebhookResponseWebhookJobCase1LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookResponseWebhookJobCase1LabelsMap>;
 
 export type CreateWebhookResponseWebhookJobCase1SecretsList = Array<string>;
-export const CreateWebhookResponseWebhookJobCase1SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookResponseWebhookJobCase1SecretsList>;
+export const CreateWebhookResponseWebhookJobCase1SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<CreateWebhookResponseWebhookJobCase1SecretsList>;
 
 export interface CreateWebhookResponseWebhookJobCase1 {
   dockerImage: unknown;
@@ -793,20 +747,16 @@ export const EnableDisableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export type EnableDisableWebhookResponseWebhookJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const EnableDisableWebhookResponseWebhookJobCase0EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0EnvironmentMap>;
+export const EnableDisableWebhookResponseWebhookJobCase0EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0EnvironmentMap>;
 
 export type EnableDisableWebhookResponseWebhookJobCase0ArgumentsList = Array<string>;
-export const EnableDisableWebhookResponseWebhookJobCase0ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0ArgumentsList>;
+export const EnableDisableWebhookResponseWebhookJobCase0ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0ArgumentsList>;
 
 export type EnableDisableWebhookResponseWebhookJobCase0CommandList = Array<string>;
-export const EnableDisableWebhookResponseWebhookJobCase0CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0CommandList>;
+export const EnableDisableWebhookResponseWebhookJobCase0CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0CommandList>;
 
 export type EnableDisableWebhookResponseWebhookJobCase0Flavor =
   | "cpu-basic"
@@ -844,15 +794,12 @@ export const EnableDisableWebhookResponseWebhookJobCase0Flavor = S.String;
 export type EnableDisableWebhookResponseWebhookJobCase0LabelsMap = {
   [key: string]: string | undefined;
 };
-export const EnableDisableWebhookResponseWebhookJobCase0LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0LabelsMap>;
+export const EnableDisableWebhookResponseWebhookJobCase0LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0LabelsMap>;
 
 export type EnableDisableWebhookResponseWebhookJobCase0SecretsList = Array<string>;
-export const EnableDisableWebhookResponseWebhookJobCase0SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0SecretsList>;
+export const EnableDisableWebhookResponseWebhookJobCase0SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase0SecretsList>;
 
 export interface EnableDisableWebhookResponseWebhookJobCase0 {
   dockerImage?: string;
@@ -885,20 +832,16 @@ export const EnableDisableWebhookResponseWebhookJobCase0 = /*@__PURE__*/ S.suspe
 export type EnableDisableWebhookResponseWebhookJobCase1EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const EnableDisableWebhookResponseWebhookJobCase1EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1EnvironmentMap>;
+export const EnableDisableWebhookResponseWebhookJobCase1EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1EnvironmentMap>;
 
 export type EnableDisableWebhookResponseWebhookJobCase1ArgumentsList = Array<string>;
-export const EnableDisableWebhookResponseWebhookJobCase1ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1ArgumentsList>;
+export const EnableDisableWebhookResponseWebhookJobCase1ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1ArgumentsList>;
 
 export type EnableDisableWebhookResponseWebhookJobCase1CommandList = Array<string>;
-export const EnableDisableWebhookResponseWebhookJobCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1CommandList>;
+export const EnableDisableWebhookResponseWebhookJobCase1CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1CommandList>;
 
 export type EnableDisableWebhookResponseWebhookJobCase1Flavor =
   | "cpu-basic"
@@ -936,15 +879,12 @@ export const EnableDisableWebhookResponseWebhookJobCase1Flavor = S.String;
 export type EnableDisableWebhookResponseWebhookJobCase1LabelsMap = {
   [key: string]: string | undefined;
 };
-export const EnableDisableWebhookResponseWebhookJobCase1LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1LabelsMap>;
+export const EnableDisableWebhookResponseWebhookJobCase1LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1LabelsMap>;
 
 export type EnableDisableWebhookResponseWebhookJobCase1SecretsList = Array<string>;
-export const EnableDisableWebhookResponseWebhookJobCase1SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1SecretsList>;
+export const EnableDisableWebhookResponseWebhookJobCase1SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<EnableDisableWebhookResponseWebhookJobCase1SecretsList>;
 
 export interface EnableDisableWebhookResponseWebhookJobCase1 {
   dockerImage: unknown;
@@ -1077,20 +1017,16 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWebhookRequest" }) as any as S.Schema<GetWebhookRequest>;
 
 export type GetWebhookResponseWebhookJobCase0EnvironmentMap = { [key: string]: string | undefined };
-export const GetWebhookResponseWebhookJobCase0EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase0EnvironmentMap>;
+export const GetWebhookResponseWebhookJobCase0EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<GetWebhookResponseWebhookJobCase0EnvironmentMap>;
 
 export type GetWebhookResponseWebhookJobCase0ArgumentsList = Array<string>;
-export const GetWebhookResponseWebhookJobCase0ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase0ArgumentsList>;
+export const GetWebhookResponseWebhookJobCase0ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<GetWebhookResponseWebhookJobCase0ArgumentsList>;
 
 export type GetWebhookResponseWebhookJobCase0CommandList = Array<string>;
-export const GetWebhookResponseWebhookJobCase0CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase0CommandList>;
+export const GetWebhookResponseWebhookJobCase0CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<GetWebhookResponseWebhookJobCase0CommandList>;
 
 export type GetWebhookResponseWebhookJobCase0Flavor =
   | "cpu-basic"
@@ -1126,15 +1062,12 @@ export const GetWebhookResponseWebhookJobCase0Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type GetWebhookResponseWebhookJobCase0LabelsMap = { [key: string]: string | undefined };
-export const GetWebhookResponseWebhookJobCase0LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase0LabelsMap>;
+export const GetWebhookResponseWebhookJobCase0LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<GetWebhookResponseWebhookJobCase0LabelsMap>;
 
 export type GetWebhookResponseWebhookJobCase0SecretsList = Array<string>;
-export const GetWebhookResponseWebhookJobCase0SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase0SecretsList>;
+export const GetWebhookResponseWebhookJobCase0SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<GetWebhookResponseWebhookJobCase0SecretsList>;
 
 export interface GetWebhookResponseWebhookJobCase0 {
   dockerImage?: string;
@@ -1165,20 +1098,16 @@ export const GetWebhookResponseWebhookJobCase0 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebhookResponseWebhookJobCase0>;
 
 export type GetWebhookResponseWebhookJobCase1EnvironmentMap = { [key: string]: string | undefined };
-export const GetWebhookResponseWebhookJobCase1EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase1EnvironmentMap>;
+export const GetWebhookResponseWebhookJobCase1EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<GetWebhookResponseWebhookJobCase1EnvironmentMap>;
 
 export type GetWebhookResponseWebhookJobCase1ArgumentsList = Array<string>;
-export const GetWebhookResponseWebhookJobCase1ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase1ArgumentsList>;
+export const GetWebhookResponseWebhookJobCase1ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<GetWebhookResponseWebhookJobCase1ArgumentsList>;
 
 export type GetWebhookResponseWebhookJobCase1CommandList = Array<string>;
-export const GetWebhookResponseWebhookJobCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase1CommandList>;
+export const GetWebhookResponseWebhookJobCase1CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<GetWebhookResponseWebhookJobCase1CommandList>;
 
 export type GetWebhookResponseWebhookJobCase1Flavor =
   | "cpu-basic"
@@ -1214,15 +1143,12 @@ export const GetWebhookResponseWebhookJobCase1Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type GetWebhookResponseWebhookJobCase1LabelsMap = { [key: string]: string | undefined };
-export const GetWebhookResponseWebhookJobCase1LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase1LabelsMap>;
+export const GetWebhookResponseWebhookJobCase1LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<GetWebhookResponseWebhookJobCase1LabelsMap>;
 
 export type GetWebhookResponseWebhookJobCase1SecretsList = Array<string>;
-export const GetWebhookResponseWebhookJobCase1SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetWebhookResponseWebhookJobCase1SecretsList>;
+export const GetWebhookResponseWebhookJobCase1SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<GetWebhookResponseWebhookJobCase1SecretsList>;
 
 export interface GetWebhookResponseWebhookJobCase1 {
   dockerImage: unknown;
@@ -1349,20 +1275,16 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListWebhooksResponseBodyItemJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const ListWebhooksResponseBodyItemJobCase0EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase0EnvironmentMap>;
+export const ListWebhooksResponseBodyItemJobCase0EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<ListWebhooksResponseBodyItemJobCase0EnvironmentMap>;
 
 export type ListWebhooksResponseBodyItemJobCase0ArgumentsList = Array<string>;
-export const ListWebhooksResponseBodyItemJobCase0ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase0ArgumentsList>;
+export const ListWebhooksResponseBodyItemJobCase0ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<ListWebhooksResponseBodyItemJobCase0ArgumentsList>;
 
 export type ListWebhooksResponseBodyItemJobCase0CommandList = Array<string>;
-export const ListWebhooksResponseBodyItemJobCase0CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase0CommandList>;
+export const ListWebhooksResponseBodyItemJobCase0CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<ListWebhooksResponseBodyItemJobCase0CommandList>;
 
 export type ListWebhooksResponseBodyItemJobCase0Flavor =
   | "cpu-basic"
@@ -1398,15 +1320,12 @@ export const ListWebhooksResponseBodyItemJobCase0Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type ListWebhooksResponseBodyItemJobCase0LabelsMap = { [key: string]: string | undefined };
-export const ListWebhooksResponseBodyItemJobCase0LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase0LabelsMap>;
+export const ListWebhooksResponseBodyItemJobCase0LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<ListWebhooksResponseBodyItemJobCase0LabelsMap>;
 
 export type ListWebhooksResponseBodyItemJobCase0SecretsList = Array<string>;
-export const ListWebhooksResponseBodyItemJobCase0SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase0SecretsList>;
+export const ListWebhooksResponseBodyItemJobCase0SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<ListWebhooksResponseBodyItemJobCase0SecretsList>;
 
 export interface ListWebhooksResponseBodyItemJobCase0 {
   dockerImage?: string;
@@ -1439,20 +1358,16 @@ export const ListWebhooksResponseBodyItemJobCase0 = /*@__PURE__*/ S.suspend(() =
 export type ListWebhooksResponseBodyItemJobCase1EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const ListWebhooksResponseBodyItemJobCase1EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase1EnvironmentMap>;
+export const ListWebhooksResponseBodyItemJobCase1EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<ListWebhooksResponseBodyItemJobCase1EnvironmentMap>;
 
 export type ListWebhooksResponseBodyItemJobCase1ArgumentsList = Array<string>;
-export const ListWebhooksResponseBodyItemJobCase1ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase1ArgumentsList>;
+export const ListWebhooksResponseBodyItemJobCase1ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<ListWebhooksResponseBodyItemJobCase1ArgumentsList>;
 
 export type ListWebhooksResponseBodyItemJobCase1CommandList = Array<string>;
-export const ListWebhooksResponseBodyItemJobCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase1CommandList>;
+export const ListWebhooksResponseBodyItemJobCase1CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<ListWebhooksResponseBodyItemJobCase1CommandList>;
 
 export type ListWebhooksResponseBodyItemJobCase1Flavor =
   | "cpu-basic"
@@ -1488,15 +1403,12 @@ export const ListWebhooksResponseBodyItemJobCase1Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type ListWebhooksResponseBodyItemJobCase1LabelsMap = { [key: string]: string | undefined };
-export const ListWebhooksResponseBodyItemJobCase1LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase1LabelsMap>;
+export const ListWebhooksResponseBodyItemJobCase1LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<ListWebhooksResponseBodyItemJobCase1LabelsMap>;
 
 export type ListWebhooksResponseBodyItemJobCase1SecretsList = Array<string>;
-export const ListWebhooksResponseBodyItemJobCase1SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListWebhooksResponseBodyItemJobCase1SecretsList>;
+export const ListWebhooksResponseBodyItemJobCase1SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<ListWebhooksResponseBodyItemJobCase1SecretsList>;
 
 export interface ListWebhooksResponseBodyItemJobCase1 {
   dockerImage: unknown;
@@ -1669,26 +1581,20 @@ export const UpdateWebhookRequestWatchedList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateWebhookRequestWatchedList>;
 
 export type UpdateWebhookRequestJobCase0ArgumentsList = Array<string>;
-export const UpdateWebhookRequestJobCase0ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase0ArgumentsList>;
+export const UpdateWebhookRequestJobCase0ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookRequestJobCase0ArgumentsList>;
 
 export type UpdateWebhookRequestJobCase0CommandList = Array<string>;
-export const UpdateWebhookRequestJobCase0CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase0CommandList>;
+export const UpdateWebhookRequestJobCase0CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookRequestJobCase0CommandList>;
 
 export type UpdateWebhookRequestJobCase0EnvironmentMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestJobCase0EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase0EnvironmentMap>;
+export const UpdateWebhookRequestJobCase0EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestJobCase0EnvironmentMap>;
 
 export type UpdateWebhookRequestJobCase0SecretsMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestJobCase0SecretsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase0SecretsMap>;
+export const UpdateWebhookRequestJobCase0SecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestJobCase0SecretsMap>;
 
 export type UpdateWebhookRequestJobCase0Flavor =
   | "cpu-basic"
@@ -1727,10 +1633,8 @@ export const UpdateWebhookRequestJobCase0Arch = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type UpdateWebhookRequestJobCase0LabelsMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestJobCase0LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase0LabelsMap>;
+export const UpdateWebhookRequestJobCase0LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestJobCase0LabelsMap>;
 
 export type UpdateWebhookRequestJobCase0VolumesItemType = "bucket" | "model" | "dataset" | "space";
 export const UpdateWebhookRequestJobCase0VolumesItemType = S.String;
@@ -1769,15 +1673,13 @@ export const UpdateWebhookRequestJobCase0VolumesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateWebhookRequestJobCase0VolumesList>;
 
 export type UpdateWebhookRequestJobCase0ExposePortsList = Array<number>;
-export const UpdateWebhookRequestJobCase0ExposePortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateWebhookRequestJobCase0ExposePortsList>;
+export const UpdateWebhookRequestJobCase0ExposePortsList =
+  CreateWebhookRequestJobCase0ExposePortsList as any as S.Schema<UpdateWebhookRequestJobCase0ExposePortsList>;
 
 /** Subset of `ports` reachable without any authentication. */
 export type UpdateWebhookRequestJobCase0ExposePortsPublicList = Array<number>;
-export const UpdateWebhookRequestJobCase0ExposePortsPublicList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateWebhookRequestJobCase0ExposePortsPublicList>;
+export const UpdateWebhookRequestJobCase0ExposePortsPublicList =
+  CreateWebhookRequestJobCase0ExposePortsList as any as S.Schema<UpdateWebhookRequestJobCase0ExposePortsPublicList>;
 
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
 export interface UpdateWebhookRequestJobCase0Expose {
@@ -1785,14 +1687,8 @@ export interface UpdateWebhookRequestJobCase0Expose {
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: UpdateWebhookRequestJobCase0ExposePortsPublicList;
 }
-export const UpdateWebhookRequestJobCase0Expose = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ports: UpdateWebhookRequestJobCase0ExposePortsList,
-    portsPublic: S.optional(UpdateWebhookRequestJobCase0ExposePortsPublicList),
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestJobCase0Expose",
-}) as any as S.Schema<UpdateWebhookRequestJobCase0Expose>;
+export const UpdateWebhookRequestJobCase0Expose =
+  CreateWebhookRequestJobCase0Expose as any as S.Schema<UpdateWebhookRequestJobCase0Expose>;
 
 /** When `enabled`, the job's container is reachable over SSH at `ssh <job_id>@ssh.hf.jobs`. Only the job's owner is allowed in, authenticated by an SSH public key registered on the Hub. */
 export type UpdateWebhookRequestJobCase0Ssh = CreateWebhookRequestJobCase0Ssh;
@@ -1800,9 +1696,8 @@ export const UpdateWebhookRequestJobCase0Ssh = CreateWebhookRequestJobCase0Ssh;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type UpdateWebhookRequestJobCase0NetworkAliasesList = Array<string>;
-export const UpdateWebhookRequestJobCase0NetworkAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase0NetworkAliasesList>;
+export const UpdateWebhookRequestJobCase0NetworkAliasesList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookRequestJobCase0NetworkAliasesList>;
 
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface UpdateWebhookRequestJobCase0Network {
@@ -1811,14 +1706,8 @@ export interface UpdateWebhookRequestJobCase0Network {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases?: UpdateWebhookRequestJobCase0NetworkAliasesList;
 }
-export const UpdateWebhookRequestJobCase0Network = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.String,
-    aliases: S.optional(UpdateWebhookRequestJobCase0NetworkAliasesList),
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestJobCase0Network",
-}) as any as S.Schema<UpdateWebhookRequestJobCase0Network>;
+export const UpdateWebhookRequestJobCase0Network =
+  CreateWebhookRequestJobCase0Network as any as S.Schema<UpdateWebhookRequestJobCase0Network>;
 
 export interface UpdateWebhookRequestJobCase0 {
   spaceId: unknown;
@@ -1868,26 +1757,20 @@ export const UpdateWebhookRequestJobCase0 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWebhookRequestJobCase0>;
 
 export type UpdateWebhookRequestJobCase1ArgumentsList = Array<string>;
-export const UpdateWebhookRequestJobCase1ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase1ArgumentsList>;
+export const UpdateWebhookRequestJobCase1ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookRequestJobCase1ArgumentsList>;
 
 export type UpdateWebhookRequestJobCase1CommandList = Array<string>;
-export const UpdateWebhookRequestJobCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase1CommandList>;
+export const UpdateWebhookRequestJobCase1CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookRequestJobCase1CommandList>;
 
 export type UpdateWebhookRequestJobCase1EnvironmentMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestJobCase1EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase1EnvironmentMap>;
+export const UpdateWebhookRequestJobCase1EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestJobCase1EnvironmentMap>;
 
 export type UpdateWebhookRequestJobCase1SecretsMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestJobCase1SecretsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase1SecretsMap>;
+export const UpdateWebhookRequestJobCase1SecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestJobCase1SecretsMap>;
 
 export type UpdateWebhookRequestJobCase1Flavor =
   | "cpu-basic"
@@ -1926,10 +1809,8 @@ export const UpdateWebhookRequestJobCase1Arch = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type UpdateWebhookRequestJobCase1LabelsMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestJobCase1LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase1LabelsMap>;
+export const UpdateWebhookRequestJobCase1LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestJobCase1LabelsMap>;
 
 export type UpdateWebhookRequestJobCase1VolumesItemType = "bucket" | "model" | "dataset" | "space";
 export const UpdateWebhookRequestJobCase1VolumesItemType = S.String;
@@ -1968,15 +1849,13 @@ export const UpdateWebhookRequestJobCase1VolumesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateWebhookRequestJobCase1VolumesList>;
 
 export type UpdateWebhookRequestJobCase1ExposePortsList = Array<number>;
-export const UpdateWebhookRequestJobCase1ExposePortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateWebhookRequestJobCase1ExposePortsList>;
+export const UpdateWebhookRequestJobCase1ExposePortsList =
+  CreateWebhookRequestJobCase0ExposePortsList as any as S.Schema<UpdateWebhookRequestJobCase1ExposePortsList>;
 
 /** Subset of `ports` reachable without any authentication. */
 export type UpdateWebhookRequestJobCase1ExposePortsPublicList = Array<number>;
-export const UpdateWebhookRequestJobCase1ExposePortsPublicList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<UpdateWebhookRequestJobCase1ExposePortsPublicList>;
+export const UpdateWebhookRequestJobCase1ExposePortsPublicList =
+  CreateWebhookRequestJobCase0ExposePortsList as any as S.Schema<UpdateWebhookRequestJobCase1ExposePortsPublicList>;
 
 /** Ports to expose publicly through the jobs proxy. Each port is reachable at `https://<job_id>--<port>.<jobs-public-domain>`. Access requires a HF token with read access to the job's namespace, except for ports also listed in `portsPublic`. */
 export interface UpdateWebhookRequestJobCase1Expose {
@@ -1984,14 +1863,8 @@ export interface UpdateWebhookRequestJobCase1Expose {
   /** Subset of `ports` reachable without any authentication. */
   portsPublic?: UpdateWebhookRequestJobCase1ExposePortsPublicList;
 }
-export const UpdateWebhookRequestJobCase1Expose = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ports: UpdateWebhookRequestJobCase1ExposePortsList,
-    portsPublic: S.optional(UpdateWebhookRequestJobCase1ExposePortsPublicList),
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestJobCase1Expose",
-}) as any as S.Schema<UpdateWebhookRequestJobCase1Expose>;
+export const UpdateWebhookRequestJobCase1Expose =
+  CreateWebhookRequestJobCase0Expose as any as S.Schema<UpdateWebhookRequestJobCase1Expose>;
 
 /** When `enabled`, the job's container is reachable over SSH at `ssh <job_id>@ssh.hf.jobs`. Only the job's owner is allowed in, authenticated by an SSH public key registered on the Hub. */
 export type UpdateWebhookRequestJobCase1Ssh = CreateWebhookRequestJobCase0Ssh;
@@ -1999,9 +1872,8 @@ export const UpdateWebhookRequestJobCase1Ssh = CreateWebhookRequestJobCase0Ssh;
 
 /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
 export type UpdateWebhookRequestJobCase1NetworkAliasesList = Array<string>;
-export const UpdateWebhookRequestJobCase1NetworkAliasesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestJobCase1NetworkAliasesList>;
+export const UpdateWebhookRequestJobCase1NetworkAliasesList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookRequestJobCase1NetworkAliasesList>;
 
 /** Opt-in network group. Jobs of the same owner and resource group sharing a group are placed together and reach each other on every port. Two environment variables are set in the container: `HF_NETWORK_GROUP_HOSTNAME`, a hostname resolving to every member of the group, and `HF_NETWORK_GROUP_PREFIX`, to which an alias is appended to get that alias' hostname. */
 export interface UpdateWebhookRequestJobCase1Network {
@@ -2010,14 +1882,8 @@ export interface UpdateWebhookRequestJobCase1Network {
   /** Roles this job answers to. An alias names a role, not a job: several members may claim the same alias, which then resolves to all of them, and a member may claim several. Peers get the hostname by appending the alias to the `HF_NETWORK_GROUP_PREFIX` environment variable, which already ends with a separator. */
   aliases?: UpdateWebhookRequestJobCase1NetworkAliasesList;
 }
-export const UpdateWebhookRequestJobCase1Network = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group: S.String,
-    aliases: S.optional(UpdateWebhookRequestJobCase1NetworkAliasesList),
-  }),
-).annotate({
-  identifier: "UpdateWebhookRequestJobCase1Network",
-}) as any as S.Schema<UpdateWebhookRequestJobCase1Network>;
+export const UpdateWebhookRequestJobCase1Network =
+  CreateWebhookRequestJobCase0Network as any as S.Schema<UpdateWebhookRequestJobCase1Network>;
 
 export interface UpdateWebhookRequestJobCase1 {
   spaceId?: string;
@@ -2071,10 +1937,8 @@ export const UpdateWebhookRequestJob = S.Unknown as any as S.Schema<UpdateWebhoo
 
 /** Secrets of the job started by the webhook, used together with `jobSourceId`: the source job's own secrets are never copied. On update, listed keys are replaced, an empty value removes a secret, and omitted keys keep their stored value. */
 export type UpdateWebhookRequestSecretsMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestSecretsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestSecretsMap>;
+export const UpdateWebhookRequestSecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestSecretsMap>;
 
 export type UpdateWebhookRequestDomainsItem = "repo" | "discussion";
 export const UpdateWebhookRequestDomainsItem = S.String;
@@ -2113,20 +1977,16 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateWebhookResponseWebhookJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const UpdateWebhookResponseWebhookJobCase0EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase0EnvironmentMap>;
+export const UpdateWebhookResponseWebhookJobCase0EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookResponseWebhookJobCase0EnvironmentMap>;
 
 export type UpdateWebhookResponseWebhookJobCase0ArgumentsList = Array<string>;
-export const UpdateWebhookResponseWebhookJobCase0ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase0ArgumentsList>;
+export const UpdateWebhookResponseWebhookJobCase0ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookResponseWebhookJobCase0ArgumentsList>;
 
 export type UpdateWebhookResponseWebhookJobCase0CommandList = Array<string>;
-export const UpdateWebhookResponseWebhookJobCase0CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase0CommandList>;
+export const UpdateWebhookResponseWebhookJobCase0CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookResponseWebhookJobCase0CommandList>;
 
 export type UpdateWebhookResponseWebhookJobCase0Flavor =
   | "cpu-basic"
@@ -2162,15 +2022,12 @@ export const UpdateWebhookResponseWebhookJobCase0Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type UpdateWebhookResponseWebhookJobCase0LabelsMap = { [key: string]: string | undefined };
-export const UpdateWebhookResponseWebhookJobCase0LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase0LabelsMap>;
+export const UpdateWebhookResponseWebhookJobCase0LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookResponseWebhookJobCase0LabelsMap>;
 
 export type UpdateWebhookResponseWebhookJobCase0SecretsList = Array<string>;
-export const UpdateWebhookResponseWebhookJobCase0SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase0SecretsList>;
+export const UpdateWebhookResponseWebhookJobCase0SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookResponseWebhookJobCase0SecretsList>;
 
 export interface UpdateWebhookResponseWebhookJobCase0 {
   dockerImage?: string;
@@ -2203,20 +2060,16 @@ export const UpdateWebhookResponseWebhookJobCase0 = /*@__PURE__*/ S.suspend(() =
 export type UpdateWebhookResponseWebhookJobCase1EnvironmentMap = {
   [key: string]: string | undefined;
 };
-export const UpdateWebhookResponseWebhookJobCase1EnvironmentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase1EnvironmentMap>;
+export const UpdateWebhookResponseWebhookJobCase1EnvironmentMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookResponseWebhookJobCase1EnvironmentMap>;
 
 export type UpdateWebhookResponseWebhookJobCase1ArgumentsList = Array<string>;
-export const UpdateWebhookResponseWebhookJobCase1ArgumentsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase1ArgumentsList>;
+export const UpdateWebhookResponseWebhookJobCase1ArgumentsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookResponseWebhookJobCase1ArgumentsList>;
 
 export type UpdateWebhookResponseWebhookJobCase1CommandList = Array<string>;
-export const UpdateWebhookResponseWebhookJobCase1CommandList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase1CommandList>;
+export const UpdateWebhookResponseWebhookJobCase1CommandList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookResponseWebhookJobCase1CommandList>;
 
 export type UpdateWebhookResponseWebhookJobCase1Flavor =
   | "cpu-basic"
@@ -2252,15 +2105,12 @@ export const UpdateWebhookResponseWebhookJobCase1Flavor = S.String;
 
 /** Labels for the job as key-value pairs. Both keys and values must be max 100 characters and contain only alphanumeric characters, dashes, and underscores. */
 export type UpdateWebhookResponseWebhookJobCase1LabelsMap = { [key: string]: string | undefined };
-export const UpdateWebhookResponseWebhookJobCase1LabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase1LabelsMap>;
+export const UpdateWebhookResponseWebhookJobCase1LabelsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookResponseWebhookJobCase1LabelsMap>;
 
 export type UpdateWebhookResponseWebhookJobCase1SecretsList = Array<string>;
-export const UpdateWebhookResponseWebhookJobCase1SecretsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookResponseWebhookJobCase1SecretsList>;
+export const UpdateWebhookResponseWebhookJobCase1SecretsList =
+  CreateWebhookRequestJobCase0ArgumentsList as any as S.Schema<UpdateWebhookResponseWebhookJobCase1SecretsList>;
 
 export interface UpdateWebhookResponseWebhookJobCase1 {
   dockerImage: unknown;

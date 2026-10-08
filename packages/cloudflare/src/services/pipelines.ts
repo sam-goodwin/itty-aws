@@ -490,9 +490,7 @@ export const CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSour
 export type CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
 export const CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList as any as S.Schema<CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
 
 export interface CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
@@ -2217,9 +2215,8 @@ export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateStreamRequest" }) as any as S.Schema<CreateStreamRequest>;
 
 export type StreamsCreateResponseHttpCorsOriginsList = Array<string>;
-export const StreamsCreateResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsCreateResponseHttpCorsOriginsList>;
+export const StreamsCreateResponseHttpCorsOriginsList =
+  StreamsCreateRequestHttpCorsOriginsList as any as S.Schema<StreamsCreateResponseHttpCorsOriginsList>;
 
 export interface StreamsCreateResponseHttpCors {
   origins?: StreamsCreateResponseHttpCorsOriginsList | null;
@@ -2789,9 +2786,7 @@ export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteStreamRequest" }) as any as S.Schema<DeleteStreamRequest>;
 
 export type DeleteStreamResponse = unknown;
-export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteStreamResponse" }) as any as S.Schema<DeleteStreamResponse>;
+export const DeleteStreamResponse = DeleteSinkResponse as any as S.Schema<DeleteStreamResponse>;
 
 export interface DeleteV1PipelineRequest {
   /** Specifies the public ID of the account. */
@@ -2815,9 +2810,8 @@ export const DeleteV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteV1PipelineRequest" }) as any as S.Schema<DeleteV1PipelineRequest>;
 
 export type DeleteV1PipelineResponse = unknown;
-export const DeleteV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({ identifier: "DeleteV1PipelineResponse" }) as any as S.Schema<DeleteV1PipelineResponse>;
+export const DeleteV1PipelineResponse =
+  DeleteSinkResponse as any as S.Schema<DeleteV1PipelineResponse>;
 
 export interface GetPipelineRequest {
   /** Specifies the public ID of the account. */
@@ -2888,9 +2882,7 @@ export const GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceF
 export type GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
 export const GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList as any as S.Schema<GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
 
 export interface GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
@@ -3570,20 +3562,14 @@ export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetStreamRequest" }) as any as S.Schema<GetStreamRequest>;
 
 export type StreamsGetResponseHttpCorsOriginsList = Array<string>;
-export const StreamsGetResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsGetResponseHttpCorsOriginsList>;
+export const StreamsGetResponseHttpCorsOriginsList =
+  StreamsCreateRequestHttpCorsOriginsList as any as S.Schema<StreamsGetResponseHttpCorsOriginsList>;
 
 export interface StreamsGetResponseHttpCors {
   origins?: StreamsGetResponseHttpCorsOriginsList | null;
 }
-export const StreamsGetResponseHttpCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(S.NullOr(StreamsGetResponseHttpCorsOriginsList)),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseHttpCors",
-}) as any as S.Schema<StreamsGetResponseHttpCors>;
+export const StreamsGetResponseHttpCors =
+  StreamsCreateResponseHttpCors as any as S.Schema<StreamsGetResponseHttpCors>;
 
 export interface StreamsGetResponseHttp {
   /** Indicates that authentication is required for the HTTP endpoint. */
@@ -4178,9 +4164,7 @@ export const ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipeline
 export type ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
 export const ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList as any as S.Schema<ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
 
 export interface ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
@@ -4884,20 +4868,14 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStreamsRequest" }) as any as S.Schema<ListStreamsRequest>;
 
 export type StreamsListResultItemHttpCorsOriginsList = Array<string>;
-export const StreamsListResultItemHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsListResultItemHttpCorsOriginsList>;
+export const StreamsListResultItemHttpCorsOriginsList =
+  StreamsCreateRequestHttpCorsOriginsList as any as S.Schema<StreamsListResultItemHttpCorsOriginsList>;
 
 export interface StreamsListResultItemHttpCors {
   origins?: StreamsListResultItemHttpCorsOriginsList | null;
 }
-export const StreamsListResultItemHttpCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(S.NullOr(StreamsListResultItemHttpCorsOriginsList)),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemHttpCors",
-}) as any as S.Schema<StreamsListResultItemHttpCors>;
+export const StreamsListResultItemHttpCors =
+  StreamsCreateResponseHttpCors as any as S.Schema<StreamsListResultItemHttpCors>;
 
 export interface StreamsListResultItemHttp {
   /** Indicates that authentication is required for the HTTP endpoint. */
@@ -4907,15 +4885,8 @@ export interface StreamsListResultItemHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsListResultItemHttpCors | null;
 }
-export const StreamsListResultItemHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authentication: S.Boolean,
-    enabled: S.Boolean,
-    cors: S.optional(S.NullOr(StreamsListResultItemHttpCors)),
-  }),
-).annotate({
-  identifier: "StreamsListResultItemHttp",
-}) as any as S.Schema<StreamsListResultItemHttp>;
+export const StreamsListResultItemHttp =
+  StreamsCreateResponseHttp as any as S.Schema<StreamsListResultItemHttp>;
 
 export type StreamsListResultItemWorkerBinding = StreamsCreateRequestWorkerBinding;
 export const StreamsListResultItemWorkerBinding = StreamsCreateRequestWorkerBinding;
@@ -5418,20 +5389,14 @@ export const ListV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV1PipelineResponse" }) as any as S.Schema<ListV1PipelineResponse>;
 
 export type StreamsUpdateRequestHttpCorsOriginsList = Array<string>;
-export const StreamsUpdateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsUpdateRequestHttpCorsOriginsList>;
+export const StreamsUpdateRequestHttpCorsOriginsList =
+  StreamsCreateRequestHttpCorsOriginsList as any as S.Schema<StreamsUpdateRequestHttpCorsOriginsList>;
 
 export interface StreamsUpdateRequestHttpCors {
   origins?: StreamsUpdateRequestHttpCorsOriginsList;
 }
-export const StreamsUpdateRequestHttpCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(StreamsUpdateRequestHttpCorsOriginsList),
-  }),
-).annotate({
-  identifier: "StreamsUpdateRequestHttpCors",
-}) as any as S.Schema<StreamsUpdateRequestHttpCors>;
+export const StreamsUpdateRequestHttpCors =
+  StreamsCreateRequestHttpCors as any as S.Schema<StreamsUpdateRequestHttpCors>;
 
 export interface StreamsUpdateRequestHttp {
   /** Indicates that authentication is required for the HTTP endpoint. */
@@ -5441,13 +5406,8 @@ export interface StreamsUpdateRequestHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsUpdateRequestHttpCors;
 }
-export const StreamsUpdateRequestHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authentication: S.Boolean,
-    enabled: S.Boolean,
-    cors: S.optional(StreamsUpdateRequestHttpCors),
-  }),
-).annotate({ identifier: "StreamsUpdateRequestHttp" }) as any as S.Schema<StreamsUpdateRequestHttp>;
+export const StreamsUpdateRequestHttp =
+  StreamsCreateRequestHttp as any as S.Schema<StreamsUpdateRequestHttp>;
 
 export type StreamsUpdateRequestWorkerBinding = StreamsCreateRequestWorkerBinding;
 export const StreamsUpdateRequestWorkerBinding = StreamsCreateRequestWorkerBinding;
@@ -5478,20 +5438,14 @@ export const PatchStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchStreamRequest" }) as any as S.Schema<PatchStreamRequest>;
 
 export type StreamsUpdateResponseHttpCorsOriginsList = Array<string>;
-export const StreamsUpdateResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsUpdateResponseHttpCorsOriginsList>;
+export const StreamsUpdateResponseHttpCorsOriginsList =
+  StreamsCreateRequestHttpCorsOriginsList as any as S.Schema<StreamsUpdateResponseHttpCorsOriginsList>;
 
 export interface StreamsUpdateResponseHttpCors {
   origins?: StreamsUpdateResponseHttpCorsOriginsList | null;
 }
-export const StreamsUpdateResponseHttpCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(S.NullOr(StreamsUpdateResponseHttpCorsOriginsList)),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseHttpCors",
-}) as any as S.Schema<StreamsUpdateResponseHttpCors>;
+export const StreamsUpdateResponseHttpCors =
+  StreamsCreateResponseHttpCors as any as S.Schema<StreamsUpdateResponseHttpCors>;
 
 export interface StreamsUpdateResponseHttp {
   /** Indicates that authentication is required for the HTTP endpoint. */
@@ -5501,15 +5455,8 @@ export interface StreamsUpdateResponseHttp {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: StreamsUpdateResponseHttpCors | null;
 }
-export const StreamsUpdateResponseHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authentication: S.Boolean,
-    enabled: S.Boolean,
-    cors: S.optional(S.NullOr(StreamsUpdateResponseHttpCors)),
-  }),
-).annotate({
-  identifier: "StreamsUpdateResponseHttp",
-}) as any as S.Schema<StreamsUpdateResponseHttp>;
+export const StreamsUpdateResponseHttp =
+  StreamsCreateResponseHttp as any as S.Schema<StreamsUpdateResponseHttp>;
 
 export type StreamsUpdateResponseWorkerBinding = StreamsCreateRequestWorkerBinding;
 export const StreamsUpdateResponseWorkerBinding = StreamsCreateRequestWorkerBinding;
@@ -6021,24 +5968,14 @@ export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourc
 export type UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
 export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList as any as S.Schema<UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
 
 export interface UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
   origins?: UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList;
 }
 export const UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      origins: S.optional(
-        UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors",
-  }) as any as S.Schema<UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors as any as S.Schema<UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors>;
 
 export interface UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource {
   /** Specifies the format of source data. */
@@ -6172,26 +6109,14 @@ export const UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSour
 export type UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
   Array<string>;
 export const UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
+  CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList as any as S.Schema<UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList>;
 
 export interface UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
   origins?: UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList | null;
 }
 export const UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      origins: S.optional(
-        S.NullOr(
-          UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors",
-  }) as any as S.Schema<UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors>;
+  CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors as any as S.Schema<UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors>;
 
 export interface UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource {
   /** Specifies the format of source data. */

@@ -470,7 +470,7 @@ export type CheckArn = string;
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = RecommendationAwsServiceList as any as S.Schema<StringList>;
 export interface CheckSummary {
   id: string;
   arn: string;
@@ -1061,11 +1061,8 @@ export const UpdateRecommendationLifecycleRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "UpdateRecommendationLifecycleRequest",
 }) as any as S.Schema<UpdateRecommendationLifecycleRequest>;
 export interface UpdateRecommendationLifecycleResponse {}
-export const UpdateRecommendationLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateRecommendationLifecycleResponse",
-}) as any as S.Schema<UpdateRecommendationLifecycleResponse>;
+export const UpdateRecommendationLifecycleResponse =
+  UpdateOrganizationRecommendationLifecycleResponse as any as S.Schema<UpdateRecommendationLifecycleResponse>;
 export type BatchUpdateRecommendationResourceExclusionError =
   | AccessDeniedException
   | ConflictException

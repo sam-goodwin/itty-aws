@@ -738,13 +738,8 @@ export interface EntitleSubscriptionResponse {
   /** The subscription that has user linked to it. */
   subscription?: Subscription;
 }
-export const EntitleSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: S.optional(Subscription),
-  }),
-).annotate({
-  identifier: "EntitleSubscriptionResponse",
-}) as any as S.Schema<EntitleSubscriptionResponse>;
+export const EntitleSubscriptionResponse =
+  CancelSubscriptionResponse as any as S.Schema<EntitleSubscriptionResponse>;
 
 /** Describes the details of an extension request. */
 export interface Extension {
@@ -1385,13 +1380,8 @@ export interface ResumeSubscriptionResponse {
   /** The resumed subscription resource. */
   subscription?: Subscription;
 }
-export const ResumeSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: S.optional(Subscription),
-  }),
-).annotate({
-  identifier: "ResumeSubscriptionResponse",
-}) as any as S.Schema<ResumeSubscriptionResponse>;
+export const ResumeSubscriptionResponse =
+  CancelSubscriptionResponse as any as S.Schema<ResumeSubscriptionResponse>;
 
 export type SuspendSubscriptionRequestSuspendModeEnum =
   | "SUSPEND_MODE_UNSPECIFIED"
@@ -1438,13 +1428,8 @@ export interface SuspendSubscriptionResponse {
   /** The suspended subscription resource. */
   subscription?: Subscription;
 }
-export const SuspendSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: S.optional(Subscription),
-  }),
-).annotate({
-  identifier: "SuspendSubscriptionResponse",
-}) as any as S.Schema<SuspendSubscriptionResponse>;
+export const SuspendSubscriptionResponse =
+  CancelSubscriptionResponse as any as S.Schema<SuspendSubscriptionResponse>;
 
 /** Request to revoke a cancellation request. */
 export interface UndoCancelSubscriptionRequest {}
@@ -1478,13 +1463,8 @@ export interface UndoCancelSubscriptionResponse {
   /** The updated subscription resource. */
   subscription?: Subscription;
 }
-export const UndoCancelSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscription: S.optional(Subscription),
-  }),
-).annotate({
-  identifier: "UndoCancelSubscriptionResponse",
-}) as any as S.Schema<UndoCancelSubscriptionResponse>;
+export const UndoCancelSubscriptionResponse =
+  CancelSubscriptionResponse as any as S.Schema<UndoCancelSubscriptionResponse>;
 
 export type CancelPartnersSubscriptionsError =
   | NotFound

@@ -146,7 +146,7 @@ export const TagKeyBoundaries = /*@__PURE__*/ S.Array(S.String);
 export type SNSTopicArn = string;
 export type ChatConfigurationArn = string;
 export type ChatConfigurationArns = string[];
-export const ChatConfigurationArns = /*@__PURE__*/ S.Array(S.String);
+export const ChatConfigurationArns = TagKeyBoundaries as any as S.Schema<ChatConfigurationArns>;
 export type ChatbotNotificationChannel = { [key: string]: string[] | undefined };
 export const ChatbotNotificationChannel = /*@__PURE__*/ S.Record(
   S.String,
@@ -241,11 +241,8 @@ export const DeleteInvestigationGroupPolicyRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteInvestigationGroupPolicyRequest",
 }) as any as S.Schema<DeleteInvestigationGroupPolicyRequest>;
 export interface DeleteInvestigationGroupPolicyOutput {}
-export const DeleteInvestigationGroupPolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteInvestigationGroupPolicyOutput",
-}) as any as S.Schema<DeleteInvestigationGroupPolicyOutput>;
+export const DeleteInvestigationGroupPolicyOutput =
+  DeleteInvestigationGroupResponse as any as S.Schema<DeleteInvestigationGroupPolicyOutput>;
 export interface GetInvestigationGroupRequest {
   identifier: string;
 }
@@ -421,7 +418,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).a
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = TagKeyBoundaries as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -435,9 +432,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateInvestigationGroupRequest {
   identifier: string;
   roleArn?: string;
@@ -470,9 +465,8 @@ export const UpdateInvestigationGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateInvestigationGroupRequest",
 }) as any as S.Schema<UpdateInvestigationGroupRequest>;
 export interface UpdateInvestigationGroupOutput {}
-export const UpdateInvestigationGroupOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInvestigationGroupOutput",
-}) as any as S.Schema<UpdateInvestigationGroupOutput>;
+export const UpdateInvestigationGroupOutput =
+  TagResourceResponse as any as S.Schema<UpdateInvestigationGroupOutput>;
 export type CreateInvestigationGroupError =
   | AccessDeniedException
   | ConflictException

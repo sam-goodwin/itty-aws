@@ -77,16 +77,14 @@ export const AdjustInventoryStockLevelsRequestDecrementOperationsList = /*@__PUR
 /** Optional; array of objects. Increments stock quantity for InventoryItems. */
 export type AdjustInventoryStockLevelsRequestIncrementOperationsList =
   Array<InventoryQuantityExpression>;
-export const AdjustInventoryStockLevelsRequestIncrementOperationsList = /*@__PURE__*/ S.Array(
-  InventoryQuantityExpression,
-) as any as S.Schema<AdjustInventoryStockLevelsRequestIncrementOperationsList>;
+export const AdjustInventoryStockLevelsRequestIncrementOperationsList =
+  AdjustInventoryStockLevelsRequestDecrementOperationsList as any as S.Schema<AdjustInventoryStockLevelsRequestIncrementOperationsList>;
 
 /** Optional; array of objects. Sets the exact stock quantity for InventoryItems. */
 export type AdjustInventoryStockLevelsRequestSetFiniteOperationsList =
   Array<InventoryQuantityExpression>;
-export const AdjustInventoryStockLevelsRequestSetFiniteOperationsList = /*@__PURE__*/ S.Array(
-  InventoryQuantityExpression,
-) as any as S.Schema<AdjustInventoryStockLevelsRequestSetFiniteOperationsList>;
+export const AdjustInventoryStockLevelsRequestSetFiniteOperationsList =
+  AdjustInventoryStockLevelsRequestDecrementOperationsList as any as S.Schema<AdjustInventoryStockLevelsRequestSetFiniteOperationsList>;
 
 /** Optional; array of InventoryItem ids. Marks stock quantity as "unlimited" for the given InventoryItems. */
 export type AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList = Array<string>;
@@ -159,11 +157,8 @@ export const AssociateProductVariantImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateProductVariantImageRequest>;
 
 export interface AssociateProductVariantImageResponse {}
-export const AssociateProductVariantImageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssociateProductVariantImageResponse",
-}) as any as S.Schema<AssociateProductVariantImageResponse>;
+export const AssociateProductVariantImageResponse =
+  AdjustInventoryStockLevelsResponse as any as S.Schema<AssociateProductVariantImageResponse>;
 
 /** ISO 3166 alpha-2 country code string. */
 export type ContactAddressCountryCode =
@@ -616,9 +611,8 @@ export const BuyXGetYCriteriaCriteriaAppliesTo = S.String;
 
 /** Product ids the cart must contain. Required if criteriaAppliesTo=PRODUCT. */
 export type BuyXGetYCriteriaCriteriaProductIdsList = Array<string>;
-export const BuyXGetYCriteriaCriteriaProductIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuyXGetYCriteriaCriteriaProductIdsList>;
+export const BuyXGetYCriteriaCriteriaProductIdsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<BuyXGetYCriteriaCriteriaProductIdsList>;
 
 /** Specifies the possible targets for a BuyXGetYCriteria reward-side. */
 export type BuyXGetYCriteriaRewardAppliesTo = "PRODUCT";
@@ -626,9 +620,8 @@ export const BuyXGetYCriteriaRewardAppliesTo = S.String;
 
 /** Product ids eligible for the reward. Required if rewardAppliesTo=PRODUCT. */
 export type BuyXGetYCriteriaRewardProductIdsList = Array<string>;
-export const BuyXGetYCriteriaRewardProductIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BuyXGetYCriteriaRewardProductIdsList>;
+export const BuyXGetYCriteriaRewardProductIdsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<BuyXGetYCriteriaRewardProductIdsList>;
 
 /** Discount applies when the cart contains a required quantity of qualifying items (buy side), granting a discount on a quantity of eligible items (reward side). */
 export interface BuyXGetYCriteria {
@@ -1263,19 +1256,7 @@ export interface Address {
   /** State or province */
   state?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address1: S.optional(S.String),
-    address2: S.optional(S.String),
-    city: S.optional(S.String),
-    countryCode: S.optional(S.String),
-    firstName: S.optional(S.String),
-    lastName: S.optional(S.String),
-    phone: S.optional(S.String),
-    postalCode: S.optional(S.String),
-    state: S.optional(S.String),
-  }),
-).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
+export const Address = AddressRequest as any as S.Schema<Address>;
 
 /** Array of discount line items; describes the promotions redeemed during checkout. */
 export interface DiscountLine {
@@ -1374,9 +1355,8 @@ export const OrderInternalNotesList = /*@__PURE__*/ S.Array(
 
 /** Array of form data submitted via a product's custom form prior to being added to the cart. */
 export type LineItemCustomizationsList = Array<FormItem>;
-export const LineItemCustomizationsList = /*@__PURE__*/ S.Array(
-  FormItem,
-) as any as S.Schema<LineItemCustomizationsList>;
+export const LineItemCustomizationsList =
+  OrderFormSubmissionList as any as S.Schema<LineItemCustomizationsList>;
 
 /** Array of variant options; represents variant choices made by the customer. Null for download and gift card products. */
 export interface VariantOption {
@@ -1614,9 +1594,8 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type CreateGiftCardProductRequestTagsList = Array<string>;
-export const CreateGiftCardProductRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateGiftCardProductRequestTagsList>;
+export const CreateGiftCardProductRequestTagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreateGiftCardProductRequestTagsList>;
 
 export interface SimpleProductPricing {
   basePrice?: MonetaryAmount;
@@ -1672,14 +1651,12 @@ export const CreateGiftCardProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGiftCardProductRequest>;
 
 export type CreatePhysicalProductRequestTagsList = Array<string>;
-export const CreatePhysicalProductRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePhysicalProductRequestTagsList>;
+export const CreatePhysicalProductRequestTagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreatePhysicalProductRequestTagsList>;
 
 export type CreatePhysicalProductRequestVariantAttributesList = Array<string>;
-export const CreatePhysicalProductRequestVariantAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreatePhysicalProductRequestVariantAttributesList>;
+export const CreatePhysicalProductRequestVariantAttributesList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreatePhysicalProductRequestVariantAttributesList>;
 
 export type CreatePhysicalProductVariantRequestAttributesMap = {
   [key: string]: string | undefined;
@@ -1827,20 +1804,16 @@ export const CreatePhysicalProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePhysicalProductRequest>;
 
 export type CreateServiceProductRequestTagsList = Array<string>;
-export const CreateServiceProductRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateServiceProductRequestTagsList>;
+export const CreateServiceProductRequestTagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreateServiceProductRequestTagsList>;
 
 export type CreateServiceProductRequestVariantAttributesList = Array<string>;
-export const CreateServiceProductRequestVariantAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateServiceProductRequestVariantAttributesList>;
+export const CreateServiceProductRequestVariantAttributesList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<CreateServiceProductRequestVariantAttributesList>;
 
 export type CreateServiceProductVariantRequestAttributesMap = { [key: string]: string | undefined };
-export const CreateServiceProductVariantRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateServiceProductVariantRequestAttributesMap>;
+export const CreateServiceProductVariantRequestAttributesMap =
+  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<CreateServiceProductVariantRequestAttributesMap>;
 
 export interface CreateServiceProductVariantRequest {
   attributes?: CreateServiceProductVariantRequestAttributesMap;
@@ -1909,9 +1882,8 @@ export const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Available image sizes. Use with `images.url` and a `format` query parameter to retrieve the image at a particular width. */
 export type ProductImageAvailableFormatsList = Array<string>;
-export const ProductImageAvailableFormatsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductImageAvailableFormatsList>;
+export const ProductImageAvailableFormatsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ProductImageAvailableFormatsList>;
 
 /** Product image assigned to the variant. */
 export interface ProductImage {
@@ -1957,9 +1929,8 @@ export const SeoOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SeoOptions" }) as any as S.Schema<SeoOptions>;
 
 export type ProductV2TagsList = Array<string>;
-export const ProductV2TagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductV2TagsList>;
+export const ProductV2TagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ProductV2TagsList>;
 
 export type ProductTypeV2 = "PHYSICAL" | "SERVICE" | "GIFT_CARD" | "DIGITAL";
 export const ProductTypeV2 = S.String;
@@ -1999,10 +1970,8 @@ export const ProductV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies attribute-value pairs for the variant. 100 char limit per key and per value with no more than six key-value pairs. Supported for PHYSICAL products only. */
 export type CreateProductVariantRequestAttributesMap = { [key: string]: string | undefined };
-export const CreateProductVariantRequestAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateProductVariantRequestAttributesMap>;
+export const CreateProductVariantRequestAttributesMap =
+  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<CreateProductVariantRequestAttributesMap>;
 
 /** Present for DIGITAL products only. Digital products don't have variants, so pricing is at the product level. */
 export interface ProductPricing {
@@ -2011,13 +1980,7 @@ export interface ProductPricing {
   onSale?: boolean;
   salePrice?: MonetaryAmount;
 }
-export const ProductPricing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    basePrice: S.optional(MonetaryAmount),
-    onSale: S.optional(S.Boolean),
-    salePrice: S.optional(MonetaryAmount),
-  }),
-).annotate({ identifier: "ProductPricing" }) as any as S.Schema<ProductPricing>;
+export const ProductPricing = FullProductPricing as any as S.Schema<ProductPricing>;
 
 export interface CreateProductVariantRequest {
   productId: string;
@@ -2049,10 +2012,8 @@ export const CreateProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProductVariantRequest>;
 
 export type PhysicalProductVariantAttributesMap = { [key: string]: string | undefined };
-export const PhysicalProductVariantAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PhysicalProductVariantAttributesMap>;
+export const PhysicalProductVariantAttributesMap =
+  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<PhysicalProductVariantAttributesMap>;
 
 /** A variant of a PHYSICAL product. */
 export interface PhysicalProductVariant {
@@ -2097,10 +2058,8 @@ export const GiftCardProductVariant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GiftCardProductVariant" }) as any as S.Schema<GiftCardProductVariant>;
 
 export type ServiceProductVariantAttributesMap = { [key: string]: string | undefined };
-export const ServiceProductVariantAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceProductVariantAttributesMap>;
+export const ServiceProductVariantAttributesMap =
+  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<ServiceProductVariantAttributesMap>;
 
 /** A variant of a SERVICE product. */
 export interface ServiceProductVariant {
@@ -2255,9 +2214,8 @@ export const DeleteContactRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContactRequest" }) as any as S.Schema<DeleteContactRequest>;
 
 export interface DeleteContactResponse {}
-export const DeleteContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteContactResponse",
-}) as any as S.Schema<DeleteContactResponse>;
+export const DeleteContactResponse =
+  DeleteAddressBookEntryResponse as any as S.Schema<DeleteContactResponse>;
 
 export interface DeleteDiscountRequest {
   /** The discount's ID. */
@@ -2270,9 +2228,8 @@ export const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiscountRequest" }) as any as S.Schema<DeleteDiscountRequest>;
 
 export interface DeleteDiscountResponse {}
-export const DeleteDiscountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteDiscountResponse",
-}) as any as S.Schema<DeleteDiscountResponse>;
+export const DeleteDiscountResponse =
+  DeleteAddressBookEntryResponse as any as S.Schema<DeleteDiscountResponse>;
 
 export interface DeleteProductRequest {
   productId: string;
@@ -2284,9 +2241,8 @@ export const DeleteProductRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProductRequest" }) as any as S.Schema<DeleteProductRequest>;
 
 export interface DeleteProductResponse {}
-export const DeleteProductResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductResponse",
-}) as any as S.Schema<DeleteProductResponse>;
+export const DeleteProductResponse =
+  DeleteAddressBookEntryResponse as any as S.Schema<DeleteProductResponse>;
 
 export interface DeleteProductImageRequest {
   productId: string;
@@ -2308,9 +2264,8 @@ export const DeleteProductImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductImageRequest>;
 
 export interface DeleteProductImageResponse {}
-export const DeleteProductImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductImageResponse",
-}) as any as S.Schema<DeleteProductImageResponse>;
+export const DeleteProductImageResponse =
+  DeleteAddressBookEntryResponse as any as S.Schema<DeleteProductImageResponse>;
 
 export interface DeleteProductVariantRequest {
   productId: string;
@@ -2332,9 +2287,8 @@ export const DeleteProductVariantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductVariantRequest>;
 
 export interface DeleteProductVariantResponse {}
-export const DeleteProductVariantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProductVariantResponse",
-}) as any as S.Schema<DeleteProductVariantResponse>;
+export const DeleteProductVariantResponse =
+  DeleteAddressBookEntryResponse as any as S.Schema<DeleteProductVariantResponse>;
 
 export interface DeleteWebhookSubscriptionRequest {
   /** Specifies the Webhook Subscription to delete. */
@@ -2351,17 +2305,13 @@ export const DeleteWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebhookSubscriptionRequest>;
 
 export interface DeleteWebhookSubscriptionResponse {}
-export const DeleteWebhookSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWebhookSubscriptionResponse",
-}) as any as S.Schema<DeleteWebhookSubscriptionResponse>;
+export const DeleteWebhookSubscriptionResponse =
+  AdjustInventoryStockLevelsResponse as any as S.Schema<DeleteWebhookSubscriptionResponse>;
 
 /** Array of shipment data. */
 export type FulfillOrderRequestShipmentsList = Array<CreateOrderShipmentRequest>;
-export const FulfillOrderRequestShipmentsList = /*@__PURE__*/ S.Array(
-  CreateOrderShipmentRequest,
-) as any as S.Schema<FulfillOrderRequestShipmentsList>;
+export const FulfillOrderRequestShipmentsList =
+  CreateOrderRequestFulfillmentsList as any as S.Schema<FulfillOrderRequestShipmentsList>;
 
 export interface FulfillOrderRequest {
   /** Specifies the Order to update. */
@@ -2380,9 +2330,8 @@ export const FulfillOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FulfillOrderRequest" }) as any as S.Schema<FulfillOrderRequest>;
 
 export interface FulfillOrderResponse {}
-export const FulfillOrderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FulfillOrderResponse",
-}) as any as S.Schema<FulfillOrderResponse>;
+export const FulfillOrderResponse =
+  DeleteAddressBookEntryResponse as any as S.Schema<FulfillOrderResponse>;
 
 export interface GetAddressBookRequest {
   /** The contact's ID. */
@@ -2468,13 +2417,8 @@ export const GetAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAddressBookEntryResponse {
   addressBookEntry?: AddressBookEntry;
 }
-export const GetAddressBookEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addressBookEntry: S.optional(AddressBookEntry),
-  }),
-).annotate({
-  identifier: "GetAddressBookEntryResponse",
-}) as any as S.Schema<GetAddressBookEntryResponse>;
+export const GetAddressBookEntryResponse =
+  CreateAddressBookEntryResponse as any as S.Schema<GetAddressBookEntryResponse>;
 
 export interface GetContactRequest {
   /** The contact's ID. */
@@ -2489,11 +2433,7 @@ export const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetContactResponse {
   contact?: Contact;
 }
-export const GetContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact: S.optional(Contact),
-  }),
-).annotate({ identifier: "GetContactResponse" }) as any as S.Schema<GetContactResponse>;
+export const GetContactResponse = CreateContactResponse as any as S.Schema<GetContactResponse>;
 
 export interface GetContactsRequest {
   /** number of contacts to retrieve per request */
@@ -2798,9 +2738,8 @@ export const TransactionDocumentSalesLineItemsList = /*@__PURE__*/ S.Array(
 
 /** Array of taxes for the shipping line item. */
 export type TransactionShippingLineItemTaxesList = Array<TransactionTax>;
-export const TransactionShippingLineItemTaxesList = /*@__PURE__*/ S.Array(
-  TransactionTax,
-) as any as S.Schema<TransactionShippingLineItemTaxesList>;
+export const TransactionShippingLineItemTaxesList =
+  TransactionSalesLineItemTaxesList as any as S.Schema<TransactionShippingLineItemTaxesList>;
 
 /** Array of shipping line items. */
 export interface TransactionShippingLineItem {
@@ -2923,9 +2862,8 @@ export const GetDocumentsByUpdatedOnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Document resources. If the merchant site doesn't have any payment transactions for orders or donations, this array is empty. */
 export type PaginatedTransactionListResponseDocumentsList = Array<TransactionDocument>;
-export const PaginatedTransactionListResponseDocumentsList = /*@__PURE__*/ S.Array(
-  TransactionDocument,
-) as any as S.Schema<PaginatedTransactionListResponseDocumentsList>;
+export const PaginatedTransactionListResponseDocumentsList =
+  TransactionListResponseDocumentsList as any as S.Schema<PaginatedTransactionListResponseDocumentsList>;
 
 export type PaginatedTransactionListResponsePagination = PaginationDetails;
 export const PaginatedTransactionListResponsePagination = PaginationDetails;
@@ -3184,9 +3122,8 @@ export const ProductImageProcessingStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductImageProcessingStatus>;
 
 export type GetProductsRequestTypeList = Array<string>;
-export const GetProductsRequestTypeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetProductsRequestTypeList>;
+export const GetProductsRequestTypeList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<GetProductsRequestTypeList>;
 
 export interface GetProductsRequest {
   modifiedAfter?: string;
@@ -3209,14 +3146,12 @@ export type PaginatedProductListResponseV2Pagination = PaginationDetails;
 export const PaginatedProductListResponseV2Pagination = PaginationDetails;
 
 export type DigitalProductImagesList = Array<ProductImage>;
-export const DigitalProductImagesList = /*@__PURE__*/ S.Array(
-  ProductImage,
-) as any as S.Schema<DigitalProductImagesList>;
+export const DigitalProductImagesList =
+  ProductV2ImagesList as any as S.Schema<DigitalProductImagesList>;
 
 export type DigitalProductTagsList = Array<string>;
-export const DigitalProductTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DigitalProductTagsList>;
+export const DigitalProductTagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<DigitalProductTagsList>;
 
 /** Present for DIGITAL products only. */
 export interface DigitalGood {
@@ -3271,14 +3206,12 @@ export const DigitalProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DigitalProduct" }) as any as S.Schema<DigitalProduct>;
 
 export type GiftCardProductImagesList = Array<ProductImage>;
-export const GiftCardProductImagesList = /*@__PURE__*/ S.Array(
-  ProductImage,
-) as any as S.Schema<GiftCardProductImagesList>;
+export const GiftCardProductImagesList =
+  ProductV2ImagesList as any as S.Schema<GiftCardProductImagesList>;
 
 export type GiftCardProductTagsList = Array<string>;
-export const GiftCardProductTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GiftCardProductTagsList>;
+export const GiftCardProductTagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<GiftCardProductTagsList>;
 
 export type GiftCardProductVariantsList = Array<GiftCardProductVariant>;
 export const GiftCardProductVariantsList = /*@__PURE__*/ S.Array(
@@ -3322,19 +3255,16 @@ export const GiftCardProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GiftCardProduct" }) as any as S.Schema<GiftCardProduct>;
 
 export type PhysicalProductImagesList = Array<ProductImage>;
-export const PhysicalProductImagesList = /*@__PURE__*/ S.Array(
-  ProductImage,
-) as any as S.Schema<PhysicalProductImagesList>;
+export const PhysicalProductImagesList =
+  ProductV2ImagesList as any as S.Schema<PhysicalProductImagesList>;
 
 export type PhysicalProductTagsList = Array<string>;
-export const PhysicalProductTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PhysicalProductTagsList>;
+export const PhysicalProductTagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<PhysicalProductTagsList>;
 
 export type PhysicalProductVariantAttributesList = Array<string>;
-export const PhysicalProductVariantAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PhysicalProductVariantAttributesList>;
+export const PhysicalProductVariantAttributesList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<PhysicalProductVariantAttributesList>;
 
 export type PhysicalProductVariantsList = Array<PhysicalProductVariant>;
 export const PhysicalProductVariantsList = /*@__PURE__*/ S.Array(
@@ -3380,19 +3310,16 @@ export const PhysicalProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhysicalProduct" }) as any as S.Schema<PhysicalProduct>;
 
 export type ServiceProductImagesList = Array<ProductImage>;
-export const ServiceProductImagesList = /*@__PURE__*/ S.Array(
-  ProductImage,
-) as any as S.Schema<ServiceProductImagesList>;
+export const ServiceProductImagesList =
+  ProductV2ImagesList as any as S.Schema<ServiceProductImagesList>;
 
 export type ServiceProductTagsList = Array<string>;
-export const ServiceProductTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceProductTagsList>;
+export const ServiceProductTagsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ServiceProductTagsList>;
 
 export type ServiceProductVariantAttributesList = Array<string>;
-export const ServiceProductVariantAttributesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceProductVariantAttributesList>;
+export const ServiceProductVariantAttributesList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ServiceProductVariantAttributesList>;
 
 export type ServiceProductVariantsList = Array<ServiceProductVariant>;
 export const ServiceProductVariantsList = /*@__PURE__*/ S.Array(
@@ -3588,9 +3515,8 @@ export const GetSpecificInventoryItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of InventoryItem resources. If the merchant site doesn't have any physical or service products, this array is empty. */
 export type InventoryItemListResponseInventoryList = Array<InventoryItem>;
-export const InventoryItemListResponseInventoryList = /*@__PURE__*/ S.Array(
-  InventoryItem,
-) as any as S.Schema<InventoryItemListResponseInventoryList>;
+export const InventoryItemListResponseInventoryList =
+  PaginatedInventoryItemListResponseInventoryList as any as S.Schema<InventoryItemListResponseInventoryList>;
 
 export interface InventoryItemListResponse {
   /** Array of InventoryItem resources. If the merchant site doesn't have any physical or service products, this array is empty. */
@@ -3650,9 +3576,8 @@ export const GetSpecificProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSpecificProfilesRequest>;
 
 export type ProfileListResponseProfilesList = Array<Profile>;
-export const ProfileListResponseProfilesList = /*@__PURE__*/ S.Array(
-  Profile,
-) as any as S.Schema<ProfileListResponseProfilesList>;
+export const ProfileListResponseProfilesList =
+  PaginatedProfileListResponseProfilesList as any as S.Schema<ProfileListResponseProfilesList>;
 
 export interface ProfileListResponse {
   profiles?: ProfileListResponseProfilesList;
@@ -3709,9 +3634,8 @@ export const PaginatedStorePagesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedStorePagesResponse>;
 
 export type GetTransactionsSummariesRequestContactIdsList = Array<string>;
-export const GetTransactionsSummariesRequestContactIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetTransactionsSummariesRequestContactIdsList>;
+export const GetTransactionsSummariesRequestContactIdsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<GetTransactionsSummariesRequestContactIdsList>;
 
 /** Field to group results by, should be a contactId */
 export type GetTransactionsSummariesRequestGroupBy = "contactId";
@@ -3782,9 +3706,8 @@ export const GetWebhookSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of event topics that trigger a webhook notification. Possible values include: extension.uninstall, order.create, order.update. */
 export type ExternalWebhookSubscriptionResponseTopicsList = Array<string>;
-export const ExternalWebhookSubscriptionResponseTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExternalWebhookSubscriptionResponseTopicsList>;
+export const ExternalWebhookSubscriptionResponseTopicsList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ExternalWebhookSubscriptionResponseTopicsList>;
 
 export interface ExternalWebhookSubscriptionResponse {
   /** Third-party client id. */
@@ -4095,9 +4018,8 @@ export const QueryContactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** paginated list of contacts retrieved */
 export type PaginatedQueryContactsResponseContactsList = Array<Contact>;
-export const PaginatedQueryContactsResponseContactsList = /*@__PURE__*/ S.Array(
-  Contact,
-) as any as S.Schema<PaginatedQueryContactsResponseContactsList>;
+export const PaginatedQueryContactsResponseContactsList =
+  PaginatedGetContactsResponseContactsList as any as S.Schema<PaginatedQueryContactsResponseContactsList>;
 
 export type PaginatedQueryContactsResponsePagination = PaginationDetails;
 export const PaginatedQueryContactsResponsePagination = PaginationDetails;
@@ -4107,14 +4029,8 @@ export interface PaginatedQueryContactsResponse {
   contacts: PaginatedQueryContactsResponseContactsList;
   pagination?: PaginationDetails;
 }
-export const PaginatedQueryContactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contacts: PaginatedQueryContactsResponseContactsList,
-    pagination: S.optional(PaginationDetails),
-  }),
-).annotate({
-  identifier: "PaginatedQueryContactsResponse",
-}) as any as S.Schema<PaginatedQueryContactsResponse>;
+export const PaginatedQueryContactsResponse =
+  PaginatedGetContactsResponse as any as S.Schema<PaginatedQueryContactsResponse>;
 
 export interface RotateSubscriptionSecretRequest {
   /** Specifies the Webhook Subscription to update. */
@@ -4208,13 +4124,8 @@ export const UpdateAddressBookEntryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAddressBookEntryResponse {
   addressBookEntry?: AddressBookEntry;
 }
-export const UpdateAddressBookEntryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addressBookEntry: S.optional(AddressBookEntry),
-  }),
-).annotate({
-  identifier: "UpdateAddressBookEntryResponse",
-}) as any as S.Schema<UpdateAddressBookEntryResponse>;
+export const UpdateAddressBookEntryResponse =
+  CreateAddressBookEntryResponse as any as S.Schema<UpdateAddressBookEntryResponse>;
 
 export interface UpdateContactRequest {
   /** The contact's ID. */
@@ -4229,11 +4140,7 @@ export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchContactResponse {
   contact?: Contact;
 }
-export const PatchContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact: S.optional(Contact),
-  }),
-).annotate({ identifier: "PatchContactResponse" }) as any as S.Schema<PatchContactResponse>;
+export const PatchContactResponse = CreateContactResponse as any as S.Schema<PatchContactResponse>;
 
 export type UpdateDiscountRequestCriteria =
   | AnyOrderCriteria
@@ -4344,9 +4251,8 @@ export const ChangeUpdateProductPricing = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeUpdateProductPricing>;
 
 export type ChangeListStringValueList = Array<string>;
-export const ChangeListStringValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChangeListStringValueList>;
+export const ChangeListStringValueList =
+  AdjustInventoryStockLevelsRequestSetUnlimitedOperationsList as any as S.Schema<ChangeListStringValueList>;
 
 /** Optional; list of event topics that trigger a webhook notification. Possible values include: extension.uninstall, order.create, order.update. */
 export interface ChangeListString {
@@ -4445,10 +4351,8 @@ export const UpdateProductImageOrderResponse = /*@__PURE__*/ S.suspend(() => S.S
 ) as any as S.Schema<UpdateProductImageOrderResponse>;
 
 export type ChangeMapStringStringValueMap = { [key: string]: string | undefined };
-export const ChangeMapStringStringValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ChangeMapStringStringValueMap>;
+export const ChangeMapStringStringValueMap =
+  CreatePhysicalProductVariantRequestAttributesMap as any as S.Schema<ChangeMapStringStringValueMap>;
 
 /** Specifies attribute-value pairs for the variant. Supported for PHYSICAL products only. */
 export interface ChangeMapStringString {
@@ -4579,9 +4483,8 @@ export const UploadProductImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadProductImageRequest>;
 
 export interface UploadProductImageResponse {}
-export const UploadProductImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UploadProductImageResponse",
-}) as any as S.Schema<UploadProductImageResponse>;
+export const UploadProductImageResponse =
+  DeleteAddressBookEntryResponse as any as S.Schema<UploadProductImageResponse>;
 
 export type AdjustInventoryStockLevelsError = BadRequest | NotFound | Conflict | SquarespaceOpError;
 /** Adjust stock quantities Adjusts stock quantities for product variants. Stock quantities can be added or subtracted, set with a given number, or marked as "unlimited". All quantity information is stored in InventoryItems. */

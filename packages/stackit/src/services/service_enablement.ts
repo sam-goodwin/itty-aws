@@ -86,9 +86,8 @@ export const EnableServiceRegionalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableServiceRegionalRequest>;
 
 export interface EnableServiceRegionalResponse {}
-export const EnableServiceRegionalResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableServiceRegionalResponse",
-}) as any as S.Schema<EnableServiceRegionalResponse>;
+export const EnableServiceRegionalResponse =
+  DisableServiceRegionalResponse as any as S.Schema<EnableServiceRegionalResponse>;
 
 export interface GetServiceStatusRegionalRequest {
   projectId: string;
@@ -120,9 +119,7 @@ export const DependenciesHardList = /*@__PURE__*/ S.Array(
 
 /** a list of service IDs which this service depend on. When they are disabled a notification is sent. */
 export type DependenciesSoftList = Array<string>;
-export const DependenciesSoftList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DependenciesSoftList>;
+export const DependenciesSoftList = DependenciesHardList as any as S.Schema<DependenciesSoftList>;
 
 export interface Dependencies {
   /** a list of service IDs which this service depend on. If the service is enabled, those service are enabled as well automatically. */

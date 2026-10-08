@@ -540,14 +540,12 @@ export const ListCardTransactionsRequestTransactionIdsList = /*@__PURE__*/ S.Arr
 ) as any as S.Schema<ListCardTransactionsRequestTransactionIdsList>;
 
 export type ListCardTransactionsRequestCardIdList = Array<string>;
-export const ListCardTransactionsRequestCardIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCardTransactionsRequestCardIdList>;
+export const ListCardTransactionsRequestCardIdList =
+  ListCardTransactionsRequestTransactionIdsList as any as S.Schema<ListCardTransactionsRequestCardIdList>;
 
 export type ListCardTransactionsRequestCardholderIdList = Array<string>;
-export const ListCardTransactionsRequestCardholderIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListCardTransactionsRequestCardholderIdList>;
+export const ListCardTransactionsRequestCardholderIdList =
+  ListCardTransactionsRequestTransactionIdsList as any as S.Schema<ListCardTransactionsRequestCardholderIdList>;
 
 export type ListCardTransactionsRequestStatus = "pending" | "completed" | "reversed" | "declined";
 export const ListCardTransactionsRequestStatus = S.String;

@@ -222,7 +222,7 @@ export const Dimension = S.String;
 
 export type Value = string;
 export type Values = string[];
-export const Values = /*@__PURE__*/ S.Array(S.String);
+export const Values = BillingViewSourceViewsList as any as S.Schema<Values>;
 export interface DimensionValues {
   key: Dimension;
   values: string[];
@@ -243,9 +243,7 @@ export interface CostCategoryValues {
   key: string;
   values: string[];
 }
-export const CostCategoryValues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, values: Values }),
-).annotate({ identifier: "CostCategoryValues" }) as any as S.Schema<CostCategoryValues>;
+export const CostCategoryValues = TagValues as any as S.Schema<CostCategoryValues>;
 export interface TimeRange {
   beginDateInclusive?: Date;
   endDateInclusive?: Date;
@@ -327,11 +325,8 @@ export const DeleteBillingViewRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBillingViewResponse {
   arn: string;
 }
-export const DeleteBillingViewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String }),
-).annotate({
-  identifier: "DeleteBillingViewResponse",
-}) as any as S.Schema<DeleteBillingViewResponse>;
+export const DeleteBillingViewResponse =
+  AssociateSourceViewsResponse as any as S.Schema<DeleteBillingViewResponse>;
 export interface DisassociateSourceViewsRequest {
   arn: string;
   sourceViews: string[];
@@ -346,11 +341,8 @@ export const DisassociateSourceViewsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateSourceViewsResponse {
   arn: string;
 }
-export const DisassociateSourceViewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String }),
-).annotate({
-  identifier: "DisassociateSourceViewsResponse",
-}) as any as S.Schema<DisassociateSourceViewsResponse>;
+export const DisassociateSourceViewsResponse =
+  AssociateSourceViewsResponse as any as S.Schema<DisassociateSourceViewsResponse>;
 export type PageToken = string;
 export type BillingFeature =
   | "RI_SHARING"
@@ -370,7 +362,8 @@ export const BillingFeatureFilterName = S.String;
 
 export type BillingFeatureFilterValue = string;
 export type BillingFeatureFilterValues = string[];
-export const BillingFeatureFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const BillingFeatureFilterValues =
+  BillingViewSourceViewsList as any as S.Schema<BillingFeatureFilterValues>;
 export interface BillingFeatureFilter {
   name?: BillingFeatureFilterName;
   value?: string[];
@@ -581,7 +574,7 @@ export const CreditAllocationHistoryEntry = /*@__PURE__*/ S.suspend(() =>
 export type CreditAllocationHistoryList = CreditAllocationHistoryEntry[];
 export const CreditAllocationHistoryList = /*@__PURE__*/ S.Array(CreditAllocationHistoryEntry);
 export type FailedMonthsList = string[];
-export const FailedMonthsList = /*@__PURE__*/ S.Array(S.String);
+export const FailedMonthsList = BillingViewSourceViewsList as any as S.Schema<FailedMonthsList>;
 export interface GetCreditAllocationHistoryResponse {
   creditAllocationHistoryList?: CreditAllocationHistoryEntry[];
   partialResults: boolean;
@@ -614,12 +607,13 @@ export const GetCreditsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCreditsRequest" }) as any as S.Schema<GetCreditsRequest>;
 export type ProductName = string;
 export type ProductNames = string[];
-export const ProductNames = /*@__PURE__*/ S.Array(S.String);
+export const ProductNames = BillingViewSourceViewsList as any as S.Schema<ProductNames>;
 export type ApplicationType = "BEFORE_CROSS_SERVICE_DISCOUNTS" | "AFTER_DISCOUNTS" | (string & {});
 export const ApplicationType = S.String;
 
 export type ShareableAccountIds = string[];
-export const ShareableAccountIds = /*@__PURE__*/ S.Array(S.String);
+export const ShareableAccountIds =
+  BillingViewSourceViewsList as any as S.Schema<ShareableAccountIds>;
 export type CreditSharingType =
   | "DEFAULT"
   | "DISABLED"
@@ -633,7 +627,8 @@ export const CreditStatus = S.String;
 
 export type PurchaseType = string;
 export type PurchaseTypeApplications = string[];
-export const PurchaseTypeApplications = /*@__PURE__*/ S.Array(S.String);
+export const PurchaseTypeApplications =
+  BillingViewSourceViewsList as any as S.Schema<PurchaseTypeApplications>;
 export interface CreditData {
   creditId: string;
   accountId: string;
@@ -897,7 +892,7 @@ export const ActiveTimeRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActiveTimeRange" }) as any as S.Schema<ActiveTimeRange>;
 export type BillingViewArnList = string[];
-export const BillingViewArnList = /*@__PURE__*/ S.Array(S.String);
+export const BillingViewArnList = BillingViewSourceViewsList as any as S.Schema<BillingViewArnList>;
 export type BillingViewTypeList = BillingViewType[];
 export const BillingViewTypeList = /*@__PURE__*/ S.Array(BillingViewType);
 export type SearchOption = "STARTS_WITH" | (string & {});
@@ -1340,11 +1335,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = RedeemCreditsResponse as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
-export const ResourceTagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTagKeyList = BillingViewSourceViewsList as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   resourceTagKeys: string[];
@@ -1355,9 +1348,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  RedeemCreditsResponse as any as S.Schema<UntagResourceResponse>;
 export interface BillingPreferenceForKey {
   key: string;
   value: PreferenceValue;

@@ -3311,20 +3311,13 @@ export interface GoogleCloudChannelV1TransferableOffer {
   /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
   priceReferenceId?: string;
 }
-export const GoogleCloudChannelV1TransferableOffer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offer: S.optional(GoogleCloudChannelV1Offer),
-    priceReferenceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudChannelV1TransferableOffer",
-}) as any as S.Schema<GoogleCloudChannelV1TransferableOffer>;
+export const GoogleCloudChannelV1TransferableOffer =
+  GoogleCloudChannelV1PurchasableOffer as any as S.Schema<GoogleCloudChannelV1TransferableOffer>;
 
 export type GoogleCloudChannelV1TransferableOfferList =
   Array<GoogleCloudChannelV1TransferableOffer>;
-export const GoogleCloudChannelV1TransferableOfferList = /*@__PURE__*/ S.Array(
-  GoogleCloudChannelV1TransferableOffer,
-) as any as S.Schema<GoogleCloudChannelV1TransferableOfferList>;
+export const GoogleCloudChannelV1TransferableOfferList =
+  GoogleCloudChannelV1PurchasableOfferList as any as S.Schema<GoogleCloudChannelV1TransferableOfferList>;
 
 /** Response message for CloudChannelService.ListTransferableOffers. */
 export interface GoogleCloudChannelV1ListTransferableOffersResponse {
@@ -4035,13 +4028,8 @@ export interface GoogleCloudChannelV1UnregisterSubscriberResponse {
   /** Name of the topic the service account subscriber access was removed from. */
   topic?: string;
 }
-export const GoogleCloudChannelV1UnregisterSubscriberResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    topic: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudChannelV1UnregisterSubscriberResponse",
-}) as any as S.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse>;
+export const GoogleCloudChannelV1UnregisterSubscriberResponse =
+  GoogleCloudChannelV1RegisterSubscriberResponse as any as S.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse>;
 
 export interface UnregisterSubscriberIntegratorsRequest {
   /** Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. */

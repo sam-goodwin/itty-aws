@@ -85,9 +85,8 @@ export const CreateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEventDefinitionRequest>;
 
 export type EnterpriseEventDefinitionTagsList = Array<unknown>;
-export const EnterpriseEventDefinitionTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EnterpriseEventDefinitionTagsList>;
+export const EnterpriseEventDefinitionTagsList =
+  CreateEventDefinitionRequestTagsList as any as S.Schema<EnterpriseEventDefinitionTagsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -141,14 +140,12 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type EnterpriseEventDefinitionDefaultColumnsList = Array<string>;
-export const EnterpriseEventDefinitionDefaultColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnterpriseEventDefinitionDefaultColumnsList>;
+export const EnterpriseEventDefinitionDefaultColumnsList =
+  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EnterpriseEventDefinitionDefaultColumnsList>;
 
 export type EnterpriseEventDefinitionMediaPreviewUrlsList = Array<string>;
-export const EnterpriseEventDefinitionMediaPreviewUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EnterpriseEventDefinitionMediaPreviewUrlsList>;
+export const EnterpriseEventDefinitionMediaPreviewUrlsList =
+  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EnterpriseEventDefinitionMediaPreviewUrlsList>;
 
 /** Serializer mixin that handles tags for objects. */
 export interface EnterpriseEventDefinition {
@@ -211,9 +208,8 @@ export const EnterpriseEventDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of event definition UUIDs to update. */
 export type EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList = Array<string>;
-export const EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList>;
+export const EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList =
+  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList>;
 
 export interface EventDefinitionsBulkUpdateVerifiedCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -360,9 +356,8 @@ export const GetEventDefinitionsByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventDefinitionsByNameRequest>;
 
 export type EventDefinitionRecordTagsList = Array<unknown>;
-export const EventDefinitionRecordTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EventDefinitionRecordTagsList>;
+export const EventDefinitionRecordTagsList =
+  CreateEventDefinitionRequestTagsList as any as S.Schema<EventDefinitionRecordTagsList>;
 
 /** Serializer mixin that handles tags for objects. */
 export interface EventDefinitionRecord {
@@ -427,9 +422,8 @@ export const GetEventDefinitionsGolangResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventDefinitionsGolangResponse>;
 
 export type GetEventDefinitionsPrimaryPropertyRequestNamesList = Array<string>;
-export const GetEventDefinitionsPrimaryPropertyRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequestNamesList>;
+export const GetEventDefinitionsPrimaryPropertyRequestNamesList =
+  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequestNamesList>;
 
 export interface GetEventDefinitionsPrimaryPropertyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -490,11 +484,8 @@ export const GetEventDefinitionsPythonRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventDefinitionsPythonRequest>;
 
 export interface GetEventDefinitionsPythonResponse {}
-export const GetEventDefinitionsPythonResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEventDefinitionsPythonResponse",
-}) as any as S.Schema<GetEventDefinitionsPythonResponse>;
+export const GetEventDefinitionsPythonResponse =
+  GetEventDefinitionsGolangResponse as any as S.Schema<GetEventDefinitionsPythonResponse>;
 
 export interface GetEventDefinitionsTypescriptRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -515,19 +506,15 @@ export const GetEventDefinitionsTypescriptRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetEventDefinitionsTypescriptRequest>;
 
 export interface GetEventDefinitionsTypescriptResponse {}
-export const GetEventDefinitionsTypescriptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GetEventDefinitionsTypescriptResponse",
-}) as any as S.Schema<GetEventDefinitionsTypescriptResponse>;
+export const GetEventDefinitionsTypescriptResponse =
+  GetEventDefinitionsGolangResponse as any as S.Schema<GetEventDefinitionsTypescriptResponse>;
 
 export type ListEventDefinitionsRequestEventType = "event" | "event_custom" | "event_posthog";
 export const ListEventDefinitionsRequestEventType = S.String;
 
 export type ListEventDefinitionsRequestNamesList = Array<string>;
-export const ListEventDefinitionsRequestNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEventDefinitionsRequestNamesList>;
+export const ListEventDefinitionsRequestNamesList =
+  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<ListEventDefinitionsRequestNamesList>;
 
 export type ListEventDefinitionsRequestOrderingItem =
   | "-created_at"
@@ -622,14 +609,12 @@ export const PaginatedEnterpriseEventDefinitionList = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>;
 
 export type UpdateEventDefinitionRequestTagsList = Array<unknown>;
-export const UpdateEventDefinitionRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateEventDefinitionRequestTagsList>;
+export const UpdateEventDefinitionRequestTagsList =
+  CreateEventDefinitionRequestTagsList as any as S.Schema<UpdateEventDefinitionRequestTagsList>;
 
 export type UpdateEventDefinitionRequestDefaultColumnsList = Array<string>;
-export const UpdateEventDefinitionRequestDefaultColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEventDefinitionRequestDefaultColumnsList>;
+export const UpdateEventDefinitionRequestDefaultColumnsList =
+  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<UpdateEventDefinitionRequestDefaultColumnsList>;
 
 export interface UpdateEventDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -670,14 +655,12 @@ export const UpdateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEventDefinitionRequest>;
 
 export type UpdateEventDefinitionsPartialRequestTagsList = Array<unknown>;
-export const UpdateEventDefinitionsPartialRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateEventDefinitionsPartialRequestTagsList>;
+export const UpdateEventDefinitionsPartialRequestTagsList =
+  CreateEventDefinitionRequestTagsList as any as S.Schema<UpdateEventDefinitionsPartialRequestTagsList>;
 
 export type UpdateEventDefinitionsPartialRequestDefaultColumnsList = Array<string>;
-export const UpdateEventDefinitionsPartialRequestDefaultColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateEventDefinitionsPartialRequestDefaultColumnsList>;
+export const UpdateEventDefinitionsPartialRequestDefaultColumnsList =
+  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<UpdateEventDefinitionsPartialRequestDefaultColumnsList>;
 
 export interface UpdateEventDefinitionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

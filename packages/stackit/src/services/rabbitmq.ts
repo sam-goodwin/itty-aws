@@ -125,14 +125,11 @@ export const CredentialsHostsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CredentialsHostsList>;
 
 export type CredentialsHttpApiUrisList = Array<string>;
-export const CredentialsHttpApiUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CredentialsHttpApiUrisList>;
+export const CredentialsHttpApiUrisList =
+  CredentialsHostsList as any as S.Schema<CredentialsHttpApiUrisList>;
 
 export type CredentialsUrisList = Array<string>;
-export const CredentialsUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CredentialsUrisList>;
+export const CredentialsUrisList = CredentialsHostsList as any as S.Schema<CredentialsUrisList>;
 
 export interface Credentials {
   host: string;
@@ -207,20 +204,17 @@ export const InstanceParametersPluginsList = /*@__PURE__*/ S.Array(
 
 /** This property is deprecated and will be removed in a future release. */
 export type InstanceParametersRolesList = Array<string>;
-export const InstanceParametersRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceParametersRolesList>;
+export const InstanceParametersRolesList =
+  CredentialsHostsList as any as S.Schema<InstanceParametersRolesList>;
 
 export type InstanceParametersSyslogList = Array<string>;
-export const InstanceParametersSyslogList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceParametersSyslogList>;
+export const InstanceParametersSyslogList =
+  CredentialsHostsList as any as S.Schema<InstanceParametersSyslogList>;
 
 /** This property is deprecated and will be removed in a future release. */
 export type InstanceParametersTlsCiphersList = Array<string>;
-export const InstanceParametersTlsCiphersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InstanceParametersTlsCiphersList>;
+export const InstanceParametersTlsCiphersList =
+  CredentialsHostsList as any as S.Schema<InstanceParametersTlsCiphersList>;
 
 export type InstanceParametersTlsProtocolsItem = "tlsv1.2" | "tlsv1.3";
 export const InstanceParametersTlsProtocolsItem = S.String;
@@ -365,9 +359,8 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteInstanceResponse",
-}) as any as S.Schema<DeleteInstanceResponse>;
+export const DeleteInstanceResponse =
+  DeleteCredentialsResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DownloadBackupRequest {
   /** Project id on which user has permissions */
@@ -396,9 +389,8 @@ export const DownloadBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadBackupRequest" }) as any as S.Schema<DownloadBackupRequest>;
 
 export interface DownloadBackupResponse {}
-export const DownloadBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadBackupResponse",
-}) as any as S.Schema<DownloadBackupResponse>;
+export const DownloadBackupResponse =
+  DeleteCredentialsResponse as any as S.Schema<DownloadBackupResponse>;
 
 export interface GetCredentialsRequest {
   /** Project id on which user has permissions */
@@ -901,9 +893,8 @@ export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateInstanceRequest>;
 
 export interface PartialUpdateInstanceResponse {}
-export const PartialUpdateInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PartialUpdateInstanceResponse",
-}) as any as S.Schema<PartialUpdateInstanceResponse>;
+export const PartialUpdateInstanceResponse =
+  DeleteCredentialsResponse as any as S.Schema<PartialUpdateInstanceResponse>;
 
 export interface TriggerRecreateRequest {
   /** Project id on which user has permissions */

@@ -161,14 +161,12 @@ export const CaptureSpecImu = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CaptureSpecImu" }) as any as S.Schema<CaptureSpecImu>;
 
 export type CaptureSpecRequiredMetadataFieldsList = Array<string>;
-export const CaptureSpecRequiredMetadataFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CaptureSpecRequiredMetadataFieldsList>;
+export const CaptureSpecRequiredMetadataFieldsList =
+  BountyAllowedCountryCodesList as any as S.Schema<CaptureSpecRequiredMetadataFieldsList>;
 
 export type CaptureSpecVideoCodecsList = Array<string>;
-export const CaptureSpecVideoCodecsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CaptureSpecVideoCodecsList>;
+export const CaptureSpecVideoCodecsList =
+  BountyAllowedCountryCodesList as any as S.Schema<CaptureSpecVideoCodecsList>;
 
 /** How the client must configure video stabilization: `off` disables EIS so raw motion is preserved for pose extraction, `on` requires it, `any` leaves the device default. */
 export type CaptureSpecVideoStabilizationMode = "off" | "on" | "any";
@@ -500,9 +498,8 @@ export const Bounty = /*@__PURE__*/ S.suspend(() =>
 
 /** Countries whose residents can work the bounty, as ISO 3166 alpha-2 codes. Empty means worldwide. */
 export type CreateBountyRequestAllowedCountryCodesList = Array<string>;
-export const CreateBountyRequestAllowedCountryCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateBountyRequestAllowedCountryCodesList>;
+export const CreateBountyRequestAllowedCountryCodesList =
+  BountyAllowedCountryCodesList as any as S.Schema<CreateBountyRequestAllowedCountryCodesList>;
 
 /** What the poster wants the work to achieve, declared once here. */
 export type CreateBountyRequestBusinessGoalType =
@@ -792,9 +789,8 @@ export const BountyListItemAcceptedDeliverableTypesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BountyListItemAcceptedDeliverableTypesList>;
 
 export type BountyListItemAllowedCountryCodesList = Array<string>;
-export const BountyListItemAllowedCountryCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BountyListItemAllowedCountryCodesList>;
+export const BountyListItemAllowedCountryCodesList =
+  BountyAllowedCountryCodesList as any as S.Schema<BountyListItemAllowedCountryCodesList>;
 
 /** What the poster wants the work to achieve, declared once at create. `null` for bounties created before the taxonomy rolled out. */
 export type BountyListItemBusinessGoalType =
@@ -1023,9 +1019,8 @@ export const ListPublicBountySubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replace the countries whose residents can work the bounty, as ISO 3166 alpha-2 codes. Empty means worldwide. */
 export type UpdateBountyRequestAllowedCountryCodesList = Array<string>;
-export const UpdateBountyRequestAllowedCountryCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateBountyRequestAllowedCountryCodesList>;
+export const UpdateBountyRequestAllowedCountryCodesList =
+  BountyAllowedCountryCodesList as any as S.Schema<UpdateBountyRequestAllowedCountryCodesList>;
 
 /** What the poster wants the work to achieve, declared once here. */
 export type UpdateBountyRequestBusinessGoalType =

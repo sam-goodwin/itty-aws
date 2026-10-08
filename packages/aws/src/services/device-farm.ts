@@ -355,10 +355,10 @@ export const CreateNetworkProfileResult = /*@__PURE__*/ S.suspend(() =>
 export type JobTimeoutMinutes = number;
 export type SecurityGroupId = string;
 export type VpcSecurityGroupIds = string[];
-export const VpcSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const VpcSecurityGroupIds = PackageIds as any as S.Schema<VpcSecurityGroupIds>;
 export type SubnetId = string;
 export type VpcSubnetIds = string[];
-export const VpcSubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const VpcSubnetIds = PackageIds as any as S.Schema<VpcSubnetIds>;
 export type NonEmptyString = string;
 export interface VpcConfig {
   securityGroupIds: string[];
@@ -423,12 +423,12 @@ export const CreateProjectResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ project: S.optional(Project) }).pipe(ns),
 ).annotate({ identifier: "CreateProjectResult" }) as any as S.Schema<CreateProjectResult>;
 export type AuxiliaryAppArnList = string[];
-export const AuxiliaryAppArnList = /*@__PURE__*/ S.Array(S.String);
+export const AuxiliaryAppArnList = PackageIds as any as S.Schema<AuxiliaryAppArnList>;
 export type BillingMethod = "METERED" | "UNMETERED" | (string & {});
 export const BillingMethod = S.String;
 
 export type AmazonResourceNames = string[];
-export const AmazonResourceNames = /*@__PURE__*/ S.Array(S.String);
+export const AmazonResourceNames = PackageIds as any as S.Schema<AmazonResourceNames>;
 export type DeviceProxyHost = string;
 export type DeviceProxyPort = number;
 export interface DeviceProxy {
@@ -540,7 +540,7 @@ export const Resolution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ width: S.optional(S.Number), height: S.optional(S.Number) }),
 ).annotate({ identifier: "Resolution" }) as any as S.Schema<Resolution>;
 export type InstanceLabels = string[];
-export const InstanceLabels = /*@__PURE__*/ S.Array(S.String);
+export const InstanceLabels = PackageIds as any as S.Schema<InstanceLabels>;
 export type InstanceStatus = "IN_USE" | "PREPARING" | "AVAILABLE" | "NOT_AVAILABLE" | (string & {});
 export const InstanceStatus = S.String;
 
@@ -701,17 +701,15 @@ export const CreateRemoteAccessSessionResult = /*@__PURE__*/ S.suspend(() =>
 export type ResourceName = string;
 export type ResourceDescription = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export const SecurityGroupIds = PackageIds as any as S.Schema<SecurityGroupIds>;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export const SubnetIds = PackageIds as any as S.Schema<SubnetIds>;
 export interface TestGridVpcConfig {
   securityGroupIds: string[];
   subnetIds: string[];
   vpcId: string;
 }
-export const TestGridVpcConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ securityGroupIds: SecurityGroupIds, subnetIds: SubnetIds, vpcId: S.String }),
-).annotate({ identifier: "TestGridVpcConfig" }) as any as S.Schema<TestGridVpcConfig>;
+export const TestGridVpcConfig = VpcConfig as any as S.Schema<TestGridVpcConfig>;
 export interface CreateTestGridProjectRequest {
   name: string;
   description?: string;
@@ -945,11 +943,8 @@ export const DeleteNetworkProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteNetworkProfileRequest",
 }) as any as S.Schema<DeleteNetworkProfileRequest>;
 export interface DeleteNetworkProfileResult {}
-export const DeleteNetworkProfileResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteNetworkProfileResult",
-}) as any as S.Schema<DeleteNetworkProfileResult>;
+export const DeleteNetworkProfileResult =
+  DeleteInstanceProfileResult as any as S.Schema<DeleteNetworkProfileResult>;
 export interface DeleteProjectRequest {
   arn: string;
 }
@@ -973,11 +968,8 @@ export const DeleteRemoteAccessSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRemoteAccessSessionRequest",
 }) as any as S.Schema<DeleteRemoteAccessSessionRequest>;
 export interface DeleteRemoteAccessSessionResult {}
-export const DeleteRemoteAccessSessionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteRemoteAccessSessionResult",
-}) as any as S.Schema<DeleteRemoteAccessSessionResult>;
+export const DeleteRemoteAccessSessionResult =
+  DeleteInstanceProfileResult as any as S.Schema<DeleteRemoteAccessSessionResult>;
 export interface DeleteRunRequest {
   arn: string;
 }
@@ -987,9 +979,7 @@ export const DeleteRunRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRunRequest" }) as any as S.Schema<DeleteRunRequest>;
 export interface DeleteRunResult {}
-export const DeleteRunResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteRunResult",
-}) as any as S.Schema<DeleteRunResult>;
+export const DeleteRunResult = DeleteProjectResult as any as S.Schema<DeleteRunResult>;
 export interface DeleteTestGridProjectRequest {
   projectArn: string;
 }
@@ -1001,11 +991,8 @@ export const DeleteTestGridProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTestGridProjectRequest",
 }) as any as S.Schema<DeleteTestGridProjectRequest>;
 export interface DeleteTestGridProjectResult {}
-export const DeleteTestGridProjectResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteTestGridProjectResult",
-}) as any as S.Schema<DeleteTestGridProjectResult>;
+export const DeleteTestGridProjectResult =
+  DeleteInstanceProfileResult as any as S.Schema<DeleteTestGridProjectResult>;
 export interface DeleteUploadRequest {
   arn: string;
 }
@@ -1015,9 +1002,7 @@ export const DeleteUploadRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteUploadRequest" }) as any as S.Schema<DeleteUploadRequest>;
 export interface DeleteUploadResult {}
-export const DeleteUploadResult = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteUploadResult",
-}) as any as S.Schema<DeleteUploadResult>;
+export const DeleteUploadResult = DeleteProjectResult as any as S.Schema<DeleteUploadResult>;
 export interface DeleteVPCEConfigurationRequest {
   arn: string;
 }
@@ -1029,11 +1014,8 @@ export const DeleteVPCEConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVPCEConfigurationRequest",
 }) as any as S.Schema<DeleteVPCEConfigurationRequest>;
 export interface DeleteVPCEConfigurationResult {}
-export const DeleteVPCEConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteVPCEConfigurationResult",
-}) as any as S.Schema<DeleteVPCEConfigurationResult>;
+export const DeleteVPCEConfigurationResult =
+  DeleteInstanceProfileResult as any as S.Schema<DeleteVPCEConfigurationResult>;
 export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1122,9 +1104,7 @@ export const GetDevicePoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDevicePoolResult {
   devicePool?: DevicePool;
 }
-export const GetDevicePoolResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ devicePool: S.optional(DevicePool) }).pipe(ns),
-).annotate({ identifier: "GetDevicePoolResult" }) as any as S.Schema<GetDevicePoolResult>;
+export const GetDevicePoolResult = CreateDevicePoolResult as any as S.Schema<GetDevicePoolResult>;
 export type TestType =
   | "BUILTIN_FUZZ"
   | "APPIUM_JAVA_JUNIT"
@@ -1145,10 +1125,7 @@ export const TestType = S.String;
 
 export type Filter = string;
 export type TestParameters = { [key: string]: string | undefined };
-export const TestParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const TestParameters = RemoteAccessParameters as any as S.Schema<TestParameters>;
 export interface ScheduleRunTest {
   type: TestType;
   testPackageArn?: string;
@@ -1173,11 +1150,11 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ latitude: S.Number, longitude: S.Number }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 export type IosPaths = string[];
-export const IosPaths = /*@__PURE__*/ S.Array(S.String);
+export const IosPaths = PackageIds as any as S.Schema<IosPaths>;
 export type AndroidPaths = string[];
-export const AndroidPaths = /*@__PURE__*/ S.Array(S.String);
+export const AndroidPaths = PackageIds as any as S.Schema<AndroidPaths>;
 export type DeviceHostPaths = string[];
-export const DeviceHostPaths = /*@__PURE__*/ S.Array(S.String);
+export const DeviceHostPaths = PackageIds as any as S.Schema<DeviceHostPaths>;
 export interface CustomerArtifactPaths {
   iosPaths?: string[];
   androidPaths?: string[];
@@ -1550,9 +1527,7 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetProjectResult {
   project?: Project;
 }
-export const GetProjectResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ project: S.optional(Project) }).pipe(ns),
-).annotate({ identifier: "GetProjectResult" }) as any as S.Schema<GetProjectResult>;
+export const GetProjectResult = CreateProjectResult as any as S.Schema<GetProjectResult>;
 export interface GetRemoteAccessSessionRequest {
   arn: string;
 }
@@ -1566,11 +1541,8 @@ export const GetRemoteAccessSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRemoteAccessSessionResult {
   remoteAccessSession?: RemoteAccessSession;
 }
-export const GetRemoteAccessSessionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ remoteAccessSession: S.optional(RemoteAccessSession) }).pipe(ns),
-).annotate({
-  identifier: "GetRemoteAccessSessionResult",
-}) as any as S.Schema<GetRemoteAccessSessionResult>;
+export const GetRemoteAccessSessionResult =
+  CreateRemoteAccessSessionResult as any as S.Schema<GetRemoteAccessSessionResult>;
 export interface GetRunRequest {
   arn: string;
 }
@@ -1599,7 +1571,7 @@ export type DeviceFilterAttribute =
 export const DeviceFilterAttribute = S.String;
 
 export type DeviceFilterValues = string[];
-export const DeviceFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DeviceFilterValues = PackageIds as any as S.Schema<DeviceFilterValues>;
 export interface DeviceFilter {
   attribute: DeviceFilterAttribute;
   operator: RuleOperator;
@@ -1820,21 +1792,7 @@ export interface Test {
   message?: string;
   deviceMinutes?: DeviceMinutes;
 }
-export const Test = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(TestType),
-    created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    status: S.optional(ExecutionStatus),
-    result: S.optional(ExecutionResult),
-    started: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stopped: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    counters: S.optional(Counters),
-    message: S.optional(S.String),
-    deviceMinutes: S.optional(DeviceMinutes),
-  }),
-).annotate({ identifier: "Test" }) as any as S.Schema<Test>;
+export const Test = Suite as any as S.Schema<Test>;
 export interface GetTestResult {
   test?: Test;
 }
@@ -1910,9 +1868,7 @@ export const GetUploadRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUploadResult {
   upload?: Upload;
 }
-export const GetUploadResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ upload: S.optional(Upload) }).pipe(ns),
-).annotate({ identifier: "GetUploadResult" }) as any as S.Schema<GetUploadResult>;
+export const GetUploadResult = CreateUploadResult as any as S.Schema<GetUploadResult>;
 export interface GetVPCEConfigurationRequest {
   arn: string;
 }
@@ -1926,11 +1882,8 @@ export const GetVPCEConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVPCEConfigurationResult {
   vpceConfiguration?: VPCEConfiguration;
 }
-export const GetVPCEConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vpceConfiguration: S.optional(VPCEConfiguration) }).pipe(ns),
-).annotate({
-  identifier: "GetVPCEConfigurationResult",
-}) as any as S.Schema<GetVPCEConfigurationResult>;
+export const GetVPCEConfigurationResult =
+  CreateVPCEConfigurationResult as any as S.Schema<GetVPCEConfigurationResult>;
 export interface InstallToRemoteAccessSessionRequest {
   remoteAccessSessionArn: string;
   appArn: string;
@@ -2565,7 +2518,7 @@ export const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListTestsRequest" }) as any as S.Schema<ListTestsRequest>;
 export type Tests = Test[];
-export const Tests = /*@__PURE__*/ S.Array(Test);
+export const Tests = Suites as any as S.Schema<Tests>;
 export interface ListTestsResult {
   tests?: Test[];
   nextToken?: string;
@@ -2711,9 +2664,7 @@ export const RenewOfferingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RenewOfferingResult {
   offeringTransaction?: OfferingTransaction;
 }
-export const RenewOfferingResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ offeringTransaction: S.optional(OfferingTransaction) }).pipe(ns),
-).annotate({ identifier: "RenewOfferingResult" }) as any as S.Schema<RenewOfferingResult>;
+export const RenewOfferingResult = PurchaseOfferingResult as any as S.Schema<RenewOfferingResult>;
 export interface DeviceSelectionConfiguration {
   filters: DeviceFilter[];
   maxDevices: number;
@@ -2766,9 +2717,7 @@ export const ScheduleRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ScheduleRunResult {
   run?: Run;
 }
-export const ScheduleRunResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ run: S.optional(Run) }).pipe(ns),
-).annotate({ identifier: "ScheduleRunResult" }) as any as S.Schema<ScheduleRunResult>;
+export const ScheduleRunResult = GetRunResult as any as S.Schema<ScheduleRunResult>;
 export interface StopJobRequest {
   arn: string;
 }
@@ -2780,9 +2729,7 @@ export const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopJobResult {
   job?: Job;
 }
-export const StopJobResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ job: S.optional(Job) }).pipe(ns),
-).annotate({ identifier: "StopJobResult" }) as any as S.Schema<StopJobResult>;
+export const StopJobResult = GetJobResult as any as S.Schema<StopJobResult>;
 export interface StopRemoteAccessSessionRequest {
   arn: string;
 }
@@ -2796,11 +2743,8 @@ export const StopRemoteAccessSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopRemoteAccessSessionResult {
   remoteAccessSession?: RemoteAccessSession;
 }
-export const StopRemoteAccessSessionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ remoteAccessSession: S.optional(RemoteAccessSession) }).pipe(ns),
-).annotate({
-  identifier: "StopRemoteAccessSessionResult",
-}) as any as S.Schema<StopRemoteAccessSessionResult>;
+export const StopRemoteAccessSessionResult =
+  CreateRemoteAccessSessionResult as any as S.Schema<StopRemoteAccessSessionResult>;
 export interface StopRunRequest {
   arn: string;
 }
@@ -2812,9 +2756,7 @@ export const StopRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopRunResult {
   run?: Run;
 }
-export const StopRunResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ run: S.optional(Run) }).pipe(ns),
-).annotate({ identifier: "StopRunResult" }) as any as S.Schema<StopRunResult>;
+export const StopRunResult = GetRunResult as any as S.Schema<StopRunResult>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -2825,11 +2767,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteProjectResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = PackageIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
@@ -2840,9 +2780,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteProjectResult as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeviceInstanceRequest {
   arn: string;
   profileArn?: string;
@@ -2886,9 +2824,8 @@ export const UpdateDevicePoolRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDevicePoolResult {
   devicePool?: DevicePool;
 }
-export const UpdateDevicePoolResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ devicePool: S.optional(DevicePool) }).pipe(ns),
-).annotate({ identifier: "UpdateDevicePoolResult" }) as any as S.Schema<UpdateDevicePoolResult>;
+export const UpdateDevicePoolResult =
+  CreateDevicePoolResult as any as S.Schema<UpdateDevicePoolResult>;
 export interface UpdateInstanceProfileRequest {
   arn: string;
   name?: string;
@@ -2912,11 +2849,8 @@ export const UpdateInstanceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInstanceProfileResult {
   instanceProfile?: InstanceProfile;
 }
-export const UpdateInstanceProfileResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceProfile: S.optional(InstanceProfile) }).pipe(ns),
-).annotate({
-  identifier: "UpdateInstanceProfileResult",
-}) as any as S.Schema<UpdateInstanceProfileResult>;
+export const UpdateInstanceProfileResult =
+  CreateInstanceProfileResult as any as S.Schema<UpdateInstanceProfileResult>;
 export interface UpdateNetworkProfileRequest {
   arn: string;
   name?: string;
@@ -2952,11 +2886,8 @@ export const UpdateNetworkProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateNetworkProfileResult {
   networkProfile?: NetworkProfile;
 }
-export const UpdateNetworkProfileResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ networkProfile: S.optional(NetworkProfile) }).pipe(ns),
-).annotate({
-  identifier: "UpdateNetworkProfileResult",
-}) as any as S.Schema<UpdateNetworkProfileResult>;
+export const UpdateNetworkProfileResult =
+  CreateNetworkProfileResult as any as S.Schema<UpdateNetworkProfileResult>;
 export interface UpdateProjectRequest {
   arn: string;
   name?: string;
@@ -2978,9 +2909,7 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateProjectResult {
   project?: Project;
 }
-export const UpdateProjectResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ project: S.optional(Project) }).pipe(ns),
-).annotate({ identifier: "UpdateProjectResult" }) as any as S.Schema<UpdateProjectResult>;
+export const UpdateProjectResult = CreateProjectResult as any as S.Schema<UpdateProjectResult>;
 export interface UpdateTestGridProjectRequest {
   projectArn: string;
   name?: string;
@@ -3000,11 +2929,8 @@ export const UpdateTestGridProjectRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTestGridProjectResult {
   testGridProject?: TestGridProject;
 }
-export const UpdateTestGridProjectResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ testGridProject: S.optional(TestGridProject) }).pipe(ns),
-).annotate({
-  identifier: "UpdateTestGridProjectResult",
-}) as any as S.Schema<UpdateTestGridProjectResult>;
+export const UpdateTestGridProjectResult =
+  CreateTestGridProjectResult as any as S.Schema<UpdateTestGridProjectResult>;
 export interface UpdateUploadRequest {
   arn: string;
   name?: string;
@@ -3022,9 +2948,7 @@ export const UpdateUploadRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUploadResult {
   upload?: Upload;
 }
-export const UpdateUploadResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ upload: S.optional(Upload) }).pipe(ns),
-).annotate({ identifier: "UpdateUploadResult" }) as any as S.Schema<UpdateUploadResult>;
+export const UpdateUploadResult = CreateUploadResult as any as S.Schema<UpdateUploadResult>;
 export interface UpdateVPCEConfigurationRequest {
   arn: string;
   vpceConfigurationName?: string;
@@ -3046,11 +2970,8 @@ export const UpdateVPCEConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVPCEConfigurationResult {
   vpceConfiguration?: VPCEConfiguration;
 }
-export const UpdateVPCEConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ vpceConfiguration: S.optional(VPCEConfiguration) }).pipe(ns),
-).annotate({
-  identifier: "UpdateVPCEConfigurationResult",
-}) as any as S.Schema<UpdateVPCEConfigurationResult>;
+export const UpdateVPCEConfigurationResult =
+  CreateVPCEConfigurationResult as any as S.Schema<UpdateVPCEConfigurationResult>;
 export type ExceptionMessage = string;
 export type CreateDevicePoolError =
   | ArgumentException

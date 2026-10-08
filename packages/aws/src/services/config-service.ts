@@ -942,7 +942,8 @@ export const RecordingFrequency = S.String;
 
 export type Description = string;
 export type RecordingModeResourceTypesList = ResourceType[];
-export const RecordingModeResourceTypesList = /*@__PURE__*/ S.Array(ResourceType);
+export const RecordingModeResourceTypesList =
+  ResourceTypeList as any as S.Schema<RecordingModeResourceTypesList>;
 export interface RecordingModeOverride {
   description?: string;
   resourceTypes: ResourceType[];
@@ -977,7 +978,7 @@ export type ScopeValues = string[];
 export const ScopeValues = /*@__PURE__*/ S.Array(S.String);
 export type ThirdPartyCloudRegion = string;
 export type IncludedRegions = string[];
-export const IncludedRegions = /*@__PURE__*/ S.Array(S.String);
+export const IncludedRegions = ScopeValues as any as S.Schema<IncludedRegions>;
 export interface ScopeConfiguration {
   scopeType: string;
   scopeValues?: string[];
@@ -1126,7 +1127,8 @@ export const BaseConfigurationItem = /*@__PURE__*/ S.suspend(() =>
 export type BaseConfigurationItems = BaseConfigurationItem[];
 export const BaseConfigurationItems = /*@__PURE__*/ S.Array(BaseConfigurationItem);
 export type UnprocessedResourceIdentifierList = AggregateResourceIdentifier[];
-export const UnprocessedResourceIdentifierList = /*@__PURE__*/ S.Array(AggregateResourceIdentifier);
+export const UnprocessedResourceIdentifierList =
+  ResourceIdentifiersList as any as S.Schema<UnprocessedResourceIdentifierList>;
 export interface BatchGetAggregateResourceConfigResponse {
   BaseConfigurationItems?: BaseConfigurationItem[];
   UnprocessedResourceIdentifiers?: AggregateResourceIdentifier[];
@@ -1211,11 +1213,8 @@ export const DeleteConfigurationAggregatorRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteConfigurationAggregatorRequest",
 }) as any as S.Schema<DeleteConfigurationAggregatorRequest>;
 export interface DeleteConfigurationAggregatorResponse {}
-export const DeleteConfigurationAggregatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConfigurationAggregatorResponse",
-}) as any as S.Schema<DeleteConfigurationAggregatorResponse>;
+export const DeleteConfigurationAggregatorResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteConfigurationAggregatorResponse>;
 export interface DeleteConfigurationRecorderRequest {
   ConfigurationRecorderName: string;
 }
@@ -1227,11 +1226,8 @@ export const DeleteConfigurationRecorderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConfigurationRecorderRequest",
 }) as any as S.Schema<DeleteConfigurationRecorderRequest>;
 export interface DeleteConfigurationRecorderResponse {}
-export const DeleteConfigurationRecorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConfigurationRecorderResponse",
-}) as any as S.Schema<DeleteConfigurationRecorderResponse>;
+export const DeleteConfigurationRecorderResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteConfigurationRecorderResponse>;
 export type ConformancePackName = string;
 export interface DeleteConformancePackRequest {
   ConformancePackName: string;
@@ -1244,11 +1240,8 @@ export const DeleteConformancePackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConformancePackRequest",
 }) as any as S.Schema<DeleteConformancePackRequest>;
 export interface DeleteConformancePackResponse {}
-export const DeleteConformancePackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteConformancePackResponse",
-}) as any as S.Schema<DeleteConformancePackResponse>;
+export const DeleteConformancePackResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteConformancePackResponse>;
 export interface DeleteConnectorRequest {
   Arn: string;
 }
@@ -1258,9 +1251,8 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
 export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "DeleteConnectorResponse" }) as any as S.Schema<DeleteConnectorResponse>;
+export const DeleteConnectorResponse =
+  DeleteConfigRuleResponse as any as S.Schema<DeleteConnectorResponse>;
 export type ChannelName = string;
 export interface DeleteDeliveryChannelRequest {
   DeliveryChannelName: string;
@@ -1273,11 +1265,8 @@ export const DeleteDeliveryChannelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDeliveryChannelRequest",
 }) as any as S.Schema<DeleteDeliveryChannelRequest>;
 export interface DeleteDeliveryChannelResponse {}
-export const DeleteDeliveryChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteDeliveryChannelResponse",
-}) as any as S.Schema<DeleteDeliveryChannelResponse>;
+export const DeleteDeliveryChannelResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteDeliveryChannelResponse>;
 export type StringWithCharLimit64 = string;
 export interface DeleteEvaluationResultsRequest {
   ConfigRuleName: string;
@@ -1290,11 +1279,8 @@ export const DeleteEvaluationResultsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEvaluationResultsRequest",
 }) as any as S.Schema<DeleteEvaluationResultsRequest>;
 export interface DeleteEvaluationResultsResponse {}
-export const DeleteEvaluationResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteEvaluationResultsResponse",
-}) as any as S.Schema<DeleteEvaluationResultsResponse>;
+export const DeleteEvaluationResultsResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteEvaluationResultsResponse>;
 export type OrganizationConfigRuleName = string;
 export interface DeleteOrganizationConfigRuleRequest {
   OrganizationConfigRuleName: string;
@@ -1307,11 +1293,8 @@ export const DeleteOrganizationConfigRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOrganizationConfigRuleRequest",
 }) as any as S.Schema<DeleteOrganizationConfigRuleRequest>;
 export interface DeleteOrganizationConfigRuleResponse {}
-export const DeleteOrganizationConfigRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteOrganizationConfigRuleResponse",
-}) as any as S.Schema<DeleteOrganizationConfigRuleResponse>;
+export const DeleteOrganizationConfigRuleResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteOrganizationConfigRuleResponse>;
 export type OrganizationConformancePackName = string;
 export interface DeleteOrganizationConformancePackRequest {
   OrganizationConformancePackName: string;
@@ -1324,11 +1307,8 @@ export const DeleteOrganizationConformancePackRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteOrganizationConformancePackRequest",
 }) as any as S.Schema<DeleteOrganizationConformancePackRequest>;
 export interface DeleteOrganizationConformancePackResponse {}
-export const DeleteOrganizationConformancePackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteOrganizationConformancePackResponse",
-}) as any as S.Schema<DeleteOrganizationConformancePackResponse>;
+export const DeleteOrganizationConformancePackResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteOrganizationConformancePackResponse>;
 export interface DeletePendingAggregationRequestRequest {
   RequesterAccountId: string;
   RequesterAwsRegion: string;
@@ -1341,11 +1321,8 @@ export const DeletePendingAggregationRequestRequest = /*@__PURE__*/ S.suspend(()
   identifier: "DeletePendingAggregationRequestRequest",
 }) as any as S.Schema<DeletePendingAggregationRequestRequest>;
 export interface DeletePendingAggregationRequestResponse {}
-export const DeletePendingAggregationRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeletePendingAggregationRequestResponse",
-}) as any as S.Schema<DeletePendingAggregationRequestResponse>;
+export const DeletePendingAggregationRequestResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeletePendingAggregationRequestResponse>;
 export interface DeleteRemediationConfigurationRequest {
   ConfigRuleName: string;
   ResourceType?: string;
@@ -1358,11 +1335,8 @@ export const DeleteRemediationConfigurationRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteRemediationConfigurationRequest",
 }) as any as S.Schema<DeleteRemediationConfigurationRequest>;
 export interface DeleteRemediationConfigurationResponse {}
-export const DeleteRemediationConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteRemediationConfigurationResponse",
-}) as any as S.Schema<DeleteRemediationConfigurationResponse>;
+export const DeleteRemediationConfigurationResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteRemediationConfigurationResponse>;
 export type StringWithCharLimit256 = string;
 export type StringWithCharLimit1024 = string;
 export interface RemediationExceptionResourceKey {
@@ -1426,11 +1400,8 @@ export const DeleteResourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceConfigRequest",
 }) as any as S.Schema<DeleteResourceConfigRequest>;
 export interface DeleteResourceConfigResponse {}
-export const DeleteResourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteResourceConfigResponse",
-}) as any as S.Schema<DeleteResourceConfigResponse>;
+export const DeleteResourceConfigResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteResourceConfigResponse>;
 export type RetentionConfigurationName = string;
 export interface DeleteRetentionConfigurationRequest {
   RetentionConfigurationName: string;
@@ -1443,11 +1414,8 @@ export const DeleteRetentionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRetentionConfigurationRequest",
 }) as any as S.Schema<DeleteRetentionConfigurationRequest>;
 export interface DeleteRetentionConfigurationResponse {}
-export const DeleteRetentionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteRetentionConfigurationResponse",
-}) as any as S.Schema<DeleteRetentionConfigurationResponse>;
+export const DeleteRetentionConfigurationResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteRetentionConfigurationResponse>;
 export interface DeleteServiceLinkedConfigurationRecorderRequest {
   ServicePrincipal?: string;
   Arn?: string;
@@ -1478,11 +1446,8 @@ export const DeleteStoredQueryRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStoredQueryRequest" }) as any as S.Schema<DeleteStoredQueryRequest>;
 export interface DeleteStoredQueryResponse {}
-export const DeleteStoredQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteStoredQueryResponse",
-}) as any as S.Schema<DeleteStoredQueryResponse>;
+export const DeleteStoredQueryResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<DeleteStoredQueryResponse>;
 export interface DeliverConfigSnapshotRequest {
   deliveryChannelName: string;
 }
@@ -1722,7 +1687,7 @@ export const DescribeAggregationAuthorizationsResponse = /*@__PURE__*/ S.suspend
   identifier: "DescribeAggregationAuthorizationsResponse",
 }) as any as S.Schema<DescribeAggregationAuthorizationsResponse>;
 export type ConfigRuleNames = string[];
-export const ConfigRuleNames = /*@__PURE__*/ S.Array(S.String);
+export const ConfigRuleNames = ScopeValues as any as S.Schema<ConfigRuleNames>;
 export type ComplianceTypes = ComplianceType[];
 export const ComplianceTypes = /*@__PURE__*/ S.Array(ComplianceType);
 export interface DescribeComplianceByConfigRuleRequest {
@@ -1906,10 +1871,10 @@ export const DescribeConfigRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeConfigRulesRequest>;
 export type EmptiableStringWithCharLimit256 = string;
 export type ComplianceResourceTypes = string[];
-export const ComplianceResourceTypes = /*@__PURE__*/ S.Array(S.String);
+export const ComplianceResourceTypes = ScopeValues as any as S.Schema<ComplianceResourceTypes>;
 export type StringWithCharLimit128 = string;
 export type ServicePrincipals = string[];
-export const ServicePrincipals = /*@__PURE__*/ S.Array(S.String);
+export const ServicePrincipals = ScopeValues as any as S.Schema<ServicePrincipals>;
 export interface Scope {
   ComplianceResourceTypes?: string[];
   TagKey?: string;
@@ -2051,7 +2016,8 @@ export const DescribeConfigRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConfigRulesResponse",
 }) as any as S.Schema<DescribeConfigRulesResponse>;
 export type ConfigurationAggregatorNameList = string[];
-export const ConfigurationAggregatorNameList = /*@__PURE__*/ S.Array(S.String);
+export const ConfigurationAggregatorNameList =
+  ScopeValues as any as S.Schema<ConfigurationAggregatorNameList>;
 export interface DescribeConfigurationAggregatorsRequest {
   ConfigurationAggregatorNames?: string[];
   NextToken?: string;
@@ -2068,9 +2034,10 @@ export const DescribeConfigurationAggregatorsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DescribeConfigurationAggregatorsRequest>;
 export type ConfigurationAggregatorArn = string;
 export type AccountAggregationSourceAccountList = string[];
-export const AccountAggregationSourceAccountList = /*@__PURE__*/ S.Array(S.String);
+export const AccountAggregationSourceAccountList =
+  ScopeValues as any as S.Schema<AccountAggregationSourceAccountList>;
 export type AggregatorRegionList = string[];
-export const AggregatorRegionList = /*@__PURE__*/ S.Array(S.String);
+export const AggregatorRegionList = ScopeValues as any as S.Schema<AggregatorRegionList>;
 export interface AccountAggregationSource {
   AccountIds: string[];
   AllAwsRegions?: boolean;
@@ -2104,7 +2071,7 @@ export const AggregatorFilterType = S.String;
 
 export type ResourceTypeValue = string;
 export type ResourceTypeValueList = string[];
-export const ResourceTypeValueList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypeValueList = ScopeValues as any as S.Schema<ResourceTypeValueList>;
 export interface AggregatorFilterResourceType {
   Type?: AggregatorFilterType;
   Value?: string[];
@@ -2116,7 +2083,7 @@ export const AggregatorFilterResourceType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatorFilterResourceType>;
 export type ServicePrincipalValue = string;
 export type ServicePrincipalValueList = string[];
-export const ServicePrincipalValueList = /*@__PURE__*/ S.Array(S.String);
+export const ServicePrincipalValueList = ScopeValues as any as S.Schema<ServicePrincipalValueList>;
 export interface AggregatorFilterServicePrincipal {
   Type?: AggregatorFilterType;
   Value?: string[];
@@ -2234,7 +2201,8 @@ export const DescribeConfigurationAggregatorSourcesStatusResponse = /*@__PURE__*
   identifier: "DescribeConfigurationAggregatorSourcesStatusResponse",
 }) as any as S.Schema<DescribeConfigurationAggregatorSourcesStatusResponse>;
 export type ConfigurationRecorderNameList = string[];
-export const ConfigurationRecorderNameList = /*@__PURE__*/ S.Array(S.String);
+export const ConfigurationRecorderNameList =
+  ScopeValues as any as S.Schema<ConfigurationRecorderNameList>;
 export interface DescribeConfigurationRecordersRequest {
   ConfigurationRecorderNames?: string[];
   ServicePrincipal?: string;
@@ -2315,7 +2283,8 @@ export const DescribeConfigurationRecorderStatusResponse = /*@__PURE__*/ S.suspe
   identifier: "DescribeConfigurationRecorderStatusResponse",
 }) as any as S.Schema<DescribeConfigurationRecorderStatusResponse>;
 export type ConformancePackConfigRuleNames = string[];
-export const ConformancePackConfigRuleNames = /*@__PURE__*/ S.Array(S.String);
+export const ConformancePackConfigRuleNames =
+  ScopeValues as any as S.Schema<ConformancePackConfigRuleNames>;
 export interface ConformancePackComplianceFilters {
   ConfigRuleNames?: string[];
   ComplianceType?: ConformancePackComplianceType;
@@ -2346,7 +2315,7 @@ export const DescribeConformancePackComplianceRequest = /*@__PURE__*/ S.suspend(
   identifier: "DescribeConformancePackComplianceRequest",
 }) as any as S.Schema<DescribeConformancePackComplianceRequest>;
 export type ControlsList = string[];
-export const ControlsList = /*@__PURE__*/ S.Array(S.String);
+export const ControlsList = ScopeValues as any as S.Schema<ControlsList>;
 export interface ConformancePackRuleCompliance {
   ConfigRuleName?: string;
   ComplianceType?: ConformancePackComplianceType;
@@ -2380,7 +2349,7 @@ export const DescribeConformancePackComplianceResponse = /*@__PURE__*/ S.suspend
   identifier: "DescribeConformancePackComplianceResponse",
 }) as any as S.Schema<DescribeConformancePackComplianceResponse>;
 export type ConformancePackNamesList = string[];
-export const ConformancePackNamesList = /*@__PURE__*/ S.Array(S.String);
+export const ConformancePackNamesList = ScopeValues as any as S.Schema<ConformancePackNamesList>;
 export type PageSizeLimit = number;
 export interface DescribeConformancePacksRequest {
   ConformancePackNames?: string[];
@@ -2526,7 +2495,7 @@ export const DescribeConformancePackStatusResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeConformancePackStatusResponse",
 }) as any as S.Schema<DescribeConformancePackStatusResponse>;
 export type DeliveryChannelNameList = string[];
-export const DeliveryChannelNameList = /*@__PURE__*/ S.Array(S.String);
+export const DeliveryChannelNameList = ScopeValues as any as S.Schema<DeliveryChannelNameList>;
 export interface DescribeDeliveryChannelsRequest {
   DeliveryChannelNames?: string[];
 }
@@ -2643,7 +2612,8 @@ export const DescribeDeliveryChannelStatusResponse = /*@__PURE__*/ S.suspend(() 
   identifier: "DescribeDeliveryChannelStatusResponse",
 }) as any as S.Schema<DescribeDeliveryChannelStatusResponse>;
 export type OrganizationConfigRuleNames = string[];
-export const OrganizationConfigRuleNames = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationConfigRuleNames =
+  ScopeValues as any as S.Schema<OrganizationConfigRuleNames>;
 export type CosmosPageLimit = number;
 export interface DescribeOrganizationConfigRulesRequest {
   OrganizationConfigRuleNames?: string[];
@@ -2661,7 +2631,7 @@ export const DescribeOrganizationConfigRulesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DescribeOrganizationConfigRulesRequest>;
 export type StringWithCharLimit256Min0 = string;
 export type ResourceTypesScope = string[];
-export const ResourceTypesScope = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypesScope = ScopeValues as any as S.Schema<ResourceTypesScope>;
 export type StringWithCharLimit768 = string;
 export interface OrganizationManagedRuleMetadata {
   Description?: string;
@@ -2725,7 +2695,7 @@ export const OrganizationCustomRuleMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationCustomRuleMetadata",
 }) as any as S.Schema<OrganizationCustomRuleMetadata>;
 export type ExcludedAccounts = string[];
-export const ExcludedAccounts = /*@__PURE__*/ S.Array(S.String);
+export const ExcludedAccounts = ScopeValues as any as S.Schema<ExcludedAccounts>;
 export type OrganizationConfigRuleTriggerTypeNoSN =
   | "ConfigurationItemChangeNotification"
   | "OversizedConfigurationItemChangeNotification"
@@ -2737,7 +2707,7 @@ export const OrganizationConfigRuleTriggerTypeNoSNs = /*@__PURE__*/ S.Array(
   OrganizationConfigRuleTriggerTypeNoSN,
 );
 export type DebugLogDeliveryAccounts = string[];
-export const DebugLogDeliveryAccounts = /*@__PURE__*/ S.Array(S.String);
+export const DebugLogDeliveryAccounts = ScopeValues as any as S.Schema<DebugLogDeliveryAccounts>;
 export interface OrganizationCustomPolicyRuleMetadataNoPolicy {
   Description?: string;
   OrganizationConfigRuleTriggerTypes?: OrganizationConfigRuleTriggerTypeNoSN[];
@@ -2860,7 +2830,8 @@ export const DescribeOrganizationConfigRuleStatusesResponse = /*@__PURE__*/ S.su
   identifier: "DescribeOrganizationConfigRuleStatusesResponse",
 }) as any as S.Schema<DescribeOrganizationConfigRuleStatusesResponse>;
 export type OrganizationConformancePackNames = string[];
-export const OrganizationConformancePackNames = /*@__PURE__*/ S.Array(S.String);
+export const OrganizationConformancePackNames =
+  ScopeValues as any as S.Schema<OrganizationConformancePackNames>;
 export interface DescribeOrganizationConformancePacksRequest {
   OrganizationConformancePackNames?: string[];
   Limit?: number;
@@ -3030,7 +3001,7 @@ export const ResourceValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: ResourceValueType }),
 ).annotate({ identifier: "ResourceValue" }) as any as S.Schema<ResourceValue>;
 export type StaticParameterValues = string[];
-export const StaticParameterValues = /*@__PURE__*/ S.Array(S.String);
+export const StaticParameterValues = ScopeValues as any as S.Schema<StaticParameterValues>;
 export interface StaticValue {
   Values: string[];
 }
@@ -3242,7 +3213,8 @@ export const DescribeRemediationExecutionStatusResponse = /*@__PURE__*/ S.suspen
   identifier: "DescribeRemediationExecutionStatusResponse",
 }) as any as S.Schema<DescribeRemediationExecutionStatusResponse>;
 export type RetentionConfigurationNameList = string[];
-export const RetentionConfigurationNameList = /*@__PURE__*/ S.Array(S.String);
+export const RetentionConfigurationNameList =
+  ScopeValues as any as S.Schema<RetentionConfigurationNameList>;
 export interface DescribeRetentionConfigurationsRequest {
   RetentionConfigurationNames?: string[];
   NextToken?: string;
@@ -3291,11 +3263,8 @@ export const DisassociateResourceTypesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateResourceTypesResponse {
   ConfigurationRecorder: ConfigurationRecorder;
 }
-export const DisassociateResourceTypesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConfigurationRecorder: ConfigurationRecorder }).pipe(ns),
-).annotate({
-  identifier: "DisassociateResourceTypesResponse",
-}) as any as S.Schema<DisassociateResourceTypesResponse>;
+export const DisassociateResourceTypesResponse =
+  AssociateResourceTypesResponse as any as S.Schema<DisassociateResourceTypesResponse>;
 export interface GetAggregateComplianceDetailsByConfigRuleRequest {
   ConfigurationAggregatorName: string;
   ConfigRuleName: string;
@@ -3454,11 +3423,8 @@ export interface AggregateConformancePackComplianceSummaryFilters {
   AccountId?: string;
   AwsRegion?: string;
 }
-export const AggregateConformancePackComplianceSummaryFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AccountId: S.optional(S.String), AwsRegion: S.optional(S.String) }),
-).annotate({
-  identifier: "AggregateConformancePackComplianceSummaryFilters",
-}) as any as S.Schema<AggregateConformancePackComplianceSummaryFilters>;
+export const AggregateConformancePackComplianceSummaryFilters =
+  ConfigRuleComplianceSummaryFilters as any as S.Schema<AggregateConformancePackComplianceSummaryFilters>;
 export type AggregateConformancePackComplianceSummaryGroupKey =
   | "ACCOUNT_ID"
   | "AWS_REGION"
@@ -3605,7 +3571,7 @@ export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type RelatedEvent = string;
 export type RelatedEventList = string[];
-export const RelatedEventList = /*@__PURE__*/ S.Array(S.String);
+export const RelatedEventList = ScopeValues as any as S.Schema<RelatedEventList>;
 export type RelationshipName = string;
 export interface Relationship {
   resourceType?: ResourceType;
@@ -3747,14 +3713,8 @@ export interface GetComplianceDetailsByResourceResponse {
   EvaluationResults?: EvaluationResult[];
   NextToken?: string;
 }
-export const GetComplianceDetailsByResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EvaluationResults: S.optional(EvaluationResults),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "GetComplianceDetailsByResourceResponse",
-}) as any as S.Schema<GetComplianceDetailsByResourceResponse>;
+export const GetComplianceDetailsByResourceResponse =
+  GetComplianceDetailsByConfigRuleResponse as any as S.Schema<GetComplianceDetailsByResourceResponse>;
 export interface GetComplianceSummaryByConfigRuleRequest {}
 export const GetComplianceSummaryByConfigRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3770,7 +3730,7 @@ export const GetComplianceSummaryByConfigRuleResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetComplianceSummaryByConfigRuleResponse",
 }) as any as S.Schema<GetComplianceSummaryByConfigRuleResponse>;
 export type ResourceTypes = string[];
-export const ResourceTypes = /*@__PURE__*/ S.Array(S.String);
+export const ResourceTypes = ScopeValues as any as S.Schema<ResourceTypes>;
 export interface GetComplianceSummaryByResourceTypeRequest {
   ResourceTypes?: string[];
 }
@@ -3808,7 +3768,8 @@ export const GetComplianceSummaryByResourceTypeResponse = /*@__PURE__*/ S.suspen
   identifier: "GetComplianceSummaryByResourceTypeResponse",
 }) as any as S.Schema<GetComplianceSummaryByResourceTypeResponse>;
 export type ConformancePackComplianceResourceIds = string[];
-export const ConformancePackComplianceResourceIds = /*@__PURE__*/ S.Array(S.String);
+export const ConformancePackComplianceResourceIds =
+  ScopeValues as any as S.Schema<ConformancePackComplianceResourceIds>;
 export interface ConformancePackEvaluationFilters {
   ConfigRuleNames?: string[];
   ComplianceType?: ConformancePackComplianceType;
@@ -3880,7 +3841,8 @@ export const GetConformancePackComplianceDetailsResponse = /*@__PURE__*/ S.suspe
   identifier: "GetConformancePackComplianceDetailsResponse",
 }) as any as S.Schema<GetConformancePackComplianceDetailsResponse>;
 export type ConformancePackNamesToSummarizeList = string[];
-export const ConformancePackNamesToSummarizeList = /*@__PURE__*/ S.Array(S.String);
+export const ConformancePackNamesToSummarizeList =
+  ScopeValues as any as S.Schema<ConformancePackNamesToSummarizeList>;
 export interface GetConformancePackComplianceSummaryRequest {
   ConformancePackNames: string[];
   Limit?: number;
@@ -4188,11 +4150,8 @@ export const GetOrganizationCustomRulePolicyRequest = /*@__PURE__*/ S.suspend(()
 export interface GetOrganizationCustomRulePolicyResponse {
   PolicyText?: string;
 }
-export const GetOrganizationCustomRulePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PolicyText: S.optional(S.String) }).pipe(ns),
-).annotate({
-  identifier: "GetOrganizationCustomRulePolicyResponse",
-}) as any as S.Schema<GetOrganizationCustomRulePolicyResponse>;
+export const GetOrganizationCustomRulePolicyResponse =
+  GetCustomRulePolicyResponse as any as S.Schema<GetOrganizationCustomRulePolicyResponse>;
 export type LaterTime = Date;
 export type EarlierTime = Date;
 export type ChronologicalOrder = "Reverse" | "Forward" | (string & {});
@@ -4368,7 +4327,8 @@ export const ListAggregateDiscoveredResourcesRequest = /*@__PURE__*/ S.suspend((
   identifier: "ListAggregateDiscoveredResourcesRequest",
 }) as any as S.Schema<ListAggregateDiscoveredResourcesRequest>;
 export type DiscoveredResourceIdentifierList = AggregateResourceIdentifier[];
-export const DiscoveredResourceIdentifierList = /*@__PURE__*/ S.Array(AggregateResourceIdentifier);
+export const DiscoveredResourceIdentifierList =
+  ResourceIdentifiersList as any as S.Schema<DiscoveredResourceIdentifierList>;
 export interface ListAggregateDiscoveredResourcesResponse {
   ResourceIdentifiers?: AggregateResourceIdentifier[];
   NextToken?: string;
@@ -4386,7 +4346,8 @@ export const ConfigurationRecorderFilterName = S.String;
 
 export type ConfigurationRecorderFilterValue = string;
 export type ConfigurationRecorderFilterValues = string[];
-export const ConfigurationRecorderFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const ConfigurationRecorderFilterValues =
+  ScopeValues as any as S.Schema<ConfigurationRecorderFilterValues>;
 export interface ConfigurationRecorderFilter {
   filterName?: ConfigurationRecorderFilterName;
   filterValue?: string[];
@@ -4452,7 +4413,7 @@ export const ListConfigurationRecordersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConfigurationRecordersResponse",
 }) as any as S.Schema<ListConfigurationRecordersResponse>;
 export type ConformancePackNameFilter = string[];
-export const ConformancePackNameFilter = /*@__PURE__*/ S.Array(S.String);
+export const ConformancePackNameFilter = ScopeValues as any as S.Schema<ConformancePackNameFilter>;
 export interface ConformancePackComplianceScoresFilters {
   ConformancePackNames: string[];
 }
@@ -4522,7 +4483,7 @@ export type ConnectorFilterName = "provider" | (string & {});
 export const ConnectorFilterName = S.String;
 
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
+export const FilterValueList = ScopeValues as any as S.Schema<FilterValueList>;
 export interface ConnectorFilter {
   filterName?: ConnectorFilterName;
   filterValues?: string[];
@@ -4573,7 +4534,7 @@ export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectorSummaries: ConnectorSummaries, NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListConnectorsResponse" }) as any as S.Schema<ListConnectorsResponse>;
 export type ResourceIdList = string[];
-export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
+export const ResourceIdList = ScopeValues as any as S.Schema<ResourceIdList>;
 export interface ListDiscoveredResourcesRequest {
   resourceType: ResourceType;
   resourceIds?: string[];
@@ -4760,7 +4721,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type TagsList = Tag[];
-export const TagsList = /*@__PURE__*/ S.Array(Tag);
+export const TagsList = TagList as any as S.Schema<TagsList>;
 export interface PutAggregationAuthorizationRequest {
   AuthorizedAccountId: string;
   AuthorizedAwsRegion: string;
@@ -4834,11 +4795,8 @@ export const PutConfigurationRecorderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigurationRecorderRequest",
 }) as any as S.Schema<PutConfigurationRecorderRequest>;
 export interface PutConfigurationRecorderResponse {}
-export const PutConfigurationRecorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutConfigurationRecorderResponse",
-}) as any as S.Schema<PutConfigurationRecorderResponse>;
+export const PutConfigurationRecorderResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<PutConfigurationRecorderResponse>;
 export type TemplateS3Uri = string;
 export type TemplateBody = string;
 export interface PutConformancePackRequest {
@@ -4899,11 +4857,8 @@ export const PutDeliveryChannelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutDeliveryChannelRequest",
 }) as any as S.Schema<PutDeliveryChannelRequest>;
 export interface PutDeliveryChannelResponse {}
-export const PutDeliveryChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutDeliveryChannelResponse",
-}) as any as S.Schema<PutDeliveryChannelResponse>;
+export const PutDeliveryChannelResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<PutDeliveryChannelResponse>;
 export type OrderingTimestamp = Date;
 export interface Evaluation {
   ComplianceResourceType: string;
@@ -4948,15 +4903,7 @@ export interface ExternalEvaluation {
   Annotation?: string;
   OrderingTimestamp: Date;
 }
-export const ExternalEvaluation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ComplianceResourceType: S.String,
-    ComplianceResourceId: S.String,
-    ComplianceType: ComplianceType,
-    Annotation: S.optional(S.String),
-    OrderingTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "ExternalEvaluation" }) as any as S.Schema<ExternalEvaluation>;
+export const ExternalEvaluation = Evaluation as any as S.Schema<ExternalEvaluation>;
 export interface PutExternalEvaluationRequest {
   ConfigRuleName: string;
   ExternalEvaluation: ExternalEvaluation;
@@ -4969,11 +4916,8 @@ export const PutExternalEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutExternalEvaluationRequest",
 }) as any as S.Schema<PutExternalEvaluationRequest>;
 export interface PutExternalEvaluationResponse {}
-export const PutExternalEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutExternalEvaluationResponse",
-}) as any as S.Schema<PutExternalEvaluationResponse>;
+export const PutExternalEvaluationResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<PutExternalEvaluationResponse>;
 export interface OrganizationCustomPolicyRuleMetadata {
   Description?: string;
   OrganizationConfigRuleTriggerTypes?: OrganizationConfigRuleTriggerTypeNoSN[];
@@ -5154,11 +5098,8 @@ export const PutResourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "PutResourceConfigRequest" }) as any as S.Schema<PutResourceConfigRequest>;
 export interface PutResourceConfigResponse {}
-export const PutResourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "PutResourceConfigResponse",
-}) as any as S.Schema<PutResourceConfigResponse>;
+export const PutResourceConfigResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<PutResourceConfigResponse>;
 export interface PutRetentionConfigurationRequest {
   RetentionPeriodInDays: number;
 }
@@ -5232,11 +5173,8 @@ export interface PutThirdPartyServiceLinkedConfigurationRecorderResponse {
   Arn: string;
   Name: string;
 }
-export const PutThirdPartyServiceLinkedConfigurationRecorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, Name: S.String }).pipe(ns),
-).annotate({
-  identifier: "PutThirdPartyServiceLinkedConfigurationRecorderResponse",
-}) as any as S.Schema<PutThirdPartyServiceLinkedConfigurationRecorderResponse>;
+export const PutThirdPartyServiceLinkedConfigurationRecorderResponse =
+  DeleteServiceLinkedConfigurationRecorderResponse as any as S.Schema<PutThirdPartyServiceLinkedConfigurationRecorderResponse>;
 export type Expression = string;
 export interface SelectAggregateResourceConfigRequest {
   Expression: string;
@@ -5257,7 +5195,7 @@ export const SelectAggregateResourceConfigRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "SelectAggregateResourceConfigRequest",
 }) as any as S.Schema<SelectAggregateResourceConfigRequest>;
 export type Results = string[];
-export const Results = /*@__PURE__*/ S.Array(S.String);
+export const Results = ScopeValues as any as S.Schema<Results>;
 export type FieldName = string;
 export interface FieldInfo {
   Name?: string;
@@ -5306,17 +5244,10 @@ export interface SelectResourceConfigResponse {
   QueryInfo?: QueryInfo;
   NextToken?: string;
 }
-export const SelectResourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Results: S.optional(Results),
-    QueryInfo: S.optional(QueryInfo),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "SelectResourceConfigResponse",
-}) as any as S.Schema<SelectResourceConfigResponse>;
+export const SelectResourceConfigResponse =
+  SelectAggregateResourceConfigResponse as any as S.Schema<SelectResourceConfigResponse>;
 export type ReevaluateConfigRuleNames = string[];
-export const ReevaluateConfigRuleNames = /*@__PURE__*/ S.Array(S.String);
+export const ReevaluateConfigRuleNames = ScopeValues as any as S.Schema<ReevaluateConfigRuleNames>;
 export interface StartConfigRulesEvaluationRequest {
   ConfigRuleNames?: string[];
 }
@@ -5328,11 +5259,8 @@ export const StartConfigRulesEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartConfigRulesEvaluationRequest",
 }) as any as S.Schema<StartConfigRulesEvaluationRequest>;
 export interface StartConfigRulesEvaluationResponse {}
-export const StartConfigRulesEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StartConfigRulesEvaluationResponse",
-}) as any as S.Schema<StartConfigRulesEvaluationResponse>;
+export const StartConfigRulesEvaluationResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<StartConfigRulesEvaluationResponse>;
 export interface StartConfigurationRecorderRequest {
   ConfigurationRecorderName: string;
 }
@@ -5344,11 +5272,8 @@ export const StartConfigurationRecorderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartConfigurationRecorderRequest",
 }) as any as S.Schema<StartConfigurationRecorderRequest>;
 export interface StartConfigurationRecorderResponse {}
-export const StartConfigurationRecorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StartConfigurationRecorderResponse",
-}) as any as S.Schema<StartConfigurationRecorderResponse>;
+export const StartConfigurationRecorderResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<StartConfigurationRecorderResponse>;
 export interface StartRemediationExecutionRequest {
   ConfigRuleName: string;
   ResourceKeys: ResourceKey[];
@@ -5410,11 +5335,8 @@ export const StopConfigurationRecorderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopConfigurationRecorderRequest",
 }) as any as S.Schema<StopConfigurationRecorderRequest>;
 export interface StopConfigurationRecorderResponse {}
-export const StopConfigurationRecorderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "StopConfigurationRecorderResponse",
-}) as any as S.Schema<StopConfigurationRecorderResponse>;
+export const StopConfigurationRecorderResponse =
+  DeleteAggregationAuthorizationResponse as any as S.Schema<StopConfigurationRecorderResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -5425,11 +5347,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = PutConfigRuleResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ScopeValues as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -5440,9 +5360,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  PutConfigRuleResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type AssociateResourceTypesError =
   | ConflictException

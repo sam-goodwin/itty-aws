@@ -485,14 +485,7 @@ export interface GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase2 
   id: string;
 }
 export const GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase2",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase2>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase0 as any as S.Schema<GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase2>;
 
 export interface GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase3 {
   /** Always `workspace` */
@@ -512,13 +505,7 @@ export interface GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase4 
   type: string;
 }
 export const GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase4",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase4>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase3 as any as S.Schema<GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase4>;
 
 export type GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList =
   Array<string>;
@@ -550,13 +537,7 @@ export interface GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6 
   type: string;
 }
 export const GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase3 as any as S.Schema<GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6>;
 
 export type GetAgentResponseConnectionsItemCase0PermissionsItemTarget =
   | GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase0
@@ -640,40 +621,21 @@ export interface GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase0 
   id: string;
 }
 export const GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase0",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase0>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase0 as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase0>;
 
 export interface GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase1 {
   /** Always `slack_all_public_channels` */
   type: string;
 }
 export const GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase1",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase1>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase3 as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase1>;
 
 export interface GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase2 {
   /** Always `slack_all_channels` */
   type: string;
 }
 export const GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase2",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase2>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase3 as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase2>;
 
 export type GetAgentResponseConnectionsItemCase1PermissionsItemTarget =
   | GetAgentResponseConnectionsItemCase1PermissionsItemTargetCase0
@@ -684,9 +646,8 @@ export const GetAgentResponseConnectionsItemCase1PermissionsItemTarget =
 
 /** Slack verbs granted on this target ("read" | "write" | "reply_in_thread" | "react"). */
 export type GetAgentResponseConnectionsItemCase1PermissionsItemScopesList = Array<string>;
-export const GetAgentResponseConnectionsItemCase1PermissionsItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemScopesList>;
+export const GetAgentResponseConnectionsItemCase1PermissionsItemScopesList =
+  GetAgentResponseConnectionsItemCase0PermissionsItemScopesList as any as S.Schema<GetAgentResponseConnectionsItemCase1PermissionsItemScopesList>;
 
 export interface GetAgentResponseConnectionsItemCase1PermissionsItem {
   target: GetAgentResponseConnectionsItemCase1PermissionsItemTarget;
@@ -754,27 +715,14 @@ export interface GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase0 
   id: string;
 }
 export const GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase0",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase0>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase0 as any as S.Schema<GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase0>;
 
 export interface GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase1 {
   /** Always `discord_all_channels` */
   type: string;
 }
 export const GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase1",
-  }) as any as S.Schema<GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase1>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase3 as any as S.Schema<GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase1>;
 
 export type GetAgentResponseConnectionsItemCase2PermissionsItemTarget =
   | GetAgentResponseConnectionsItemCase2PermissionsItemTargetCase0
@@ -784,9 +732,8 @@ export const GetAgentResponseConnectionsItemCase2PermissionsItemTarget =
 
 /** Discord verbs granted on this target ("read" | "write" | "reply_in_thread" | "react"). */
 export type GetAgentResponseConnectionsItemCase2PermissionsItemScopesList = Array<string>;
-export const GetAgentResponseConnectionsItemCase2PermissionsItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAgentResponseConnectionsItemCase2PermissionsItemScopesList>;
+export const GetAgentResponseConnectionsItemCase2PermissionsItemScopesList =
+  GetAgentResponseConnectionsItemCase0PermissionsItemScopesList as any as S.Schema<GetAgentResponseConnectionsItemCase2PermissionsItemScopesList>;
 
 export interface GetAgentResponseConnectionsItemCase2PermissionsItem {
   target: GetAgentResponseConnectionsItemCase2PermissionsItemTarget;
@@ -935,9 +882,8 @@ export const GetAgentResponseConnectionsItemCase4EnabledToolsCase0Item =
 
 export type GetAgentResponseConnectionsItemCase4EnabledToolsCase0List =
   Array<GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item>;
-export const GetAgentResponseConnectionsItemCase4EnabledToolsCase0List = /*@__PURE__*/ S.Array(
-  GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item,
-) as any as S.Schema<GetAgentResponseConnectionsItemCase4EnabledToolsCase0List>;
+export const GetAgentResponseConnectionsItemCase4EnabledToolsCase0List =
+  GetAgentResponseConnectionsItemCase3EnabledToolsCase0List as any as S.Schema<GetAgentResponseConnectionsItemCase4EnabledToolsCase0List>;
 
 /** The tools the agent may call, null when all tools are enabled (including any the server adds later), or "hidden" when the caller lacks edit access to the agent. */
 export type GetAgentResponseConnectionsItemCase4EnabledTools =
@@ -1033,9 +979,8 @@ export const GetAgentResponseConnectionsItemCase5PermissionsItemTarget = /*@__PU
 
 /** The scopes granted on this target. */
 export type GetAgentResponseConnectionsItemCase5PermissionsItemScopesList = Array<string>;
-export const GetAgentResponseConnectionsItemCase5PermissionsItemScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAgentResponseConnectionsItemCase5PermissionsItemScopesList>;
+export const GetAgentResponseConnectionsItemCase5PermissionsItemScopesList =
+  GetAgentResponseConnectionsItemCase0PermissionsItemScopesList as any as S.Schema<GetAgentResponseConnectionsItemCase5PermissionsItemScopesList>;
 
 export interface GetAgentResponseConnectionsItemCase5PermissionsItem {
   target: GetAgentResponseConnectionsItemCase5PermissionsItemTarget;
@@ -1165,9 +1110,8 @@ export const GetAgentResponseCreditLimit =
 
 /** Days of the week the schedule runs (e.g. "monday"). Present for weekly cadences and monthly weekday restrictions. */
 export type GetAgentResponseTriggersItemScheduleWeekdaysList = Array<string>;
-export const GetAgentResponseTriggersItemScheduleWeekdaysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetAgentResponseTriggersItemScheduleWeekdaysList>;
+export const GetAgentResponseTriggersItemScheduleWeekdaysList =
+  GetAgentResponseConnectionsItemCase0PermissionsItemScopesList as any as S.Schema<GetAgentResponseTriggersItemScheduleWeekdaysList>;
 
 /** Days of the month the schedule runs. Present for monthly monthday restrictions. */
 export type GetAgentResponseTriggersItemScheduleMonthdaysList = Array<number>;
@@ -1177,9 +1121,8 @@ export const GetAgentResponseTriggersItemScheduleMonthdaysList = /*@__PURE__*/ S
 
 /** Week-of-month ordinals for a monthly weekday restriction (e.g. [2, 3] for the 2nd and 3rd occurrence); -1 means the last week. */
 export type GetAgentResponseTriggersItemScheduleWeekNumbersList = Array<number>;
-export const GetAgentResponseTriggersItemScheduleWeekNumbersList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<GetAgentResponseTriggersItemScheduleWeekNumbersList>;
+export const GetAgentResponseTriggersItemScheduleWeekNumbersList =
+  GetAgentResponseTriggersItemScheduleMonthdaysList as any as S.Schema<GetAgentResponseTriggersItemScheduleWeekNumbersList>;
 
 export interface GetAgentResponseTriggersItemScheduleEndCase0 {
   /** Always `date` */
@@ -3079,9 +3022,7 @@ export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsI
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList>;
 
 export interface QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5 {
   /** Always `web_search` */
@@ -3090,16 +3031,7 @@ export interface QueryAgentsResponseResultsItemCase0ConnectionsItemCase0Permissi
   allowed_domains: QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList | null;
 }
 export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      allowed_domains: S.NullOr(
-        QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5",
-  }) as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5 as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase5>;
 
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTargetCase6 =
   GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6;
@@ -3121,9 +3053,7 @@ export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsI
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItem {
   target: QueryAgentsResponseResultsItemCase0ConnectionsItemCase0PermissionsItemTarget;
@@ -3203,9 +3133,7 @@ export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase1PermissionsI
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase1PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase1PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase1PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase1PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase0ConnectionsItemCase1PermissionsItem {
   target: QueryAgentsResponseResultsItemCase0ConnectionsItemCase1PermissionsItemTarget;
@@ -3280,9 +3208,7 @@ export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase2PermissionsI
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase2PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase2PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase2PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase2PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase0ConnectionsItemCase2PermissionsItem {
   target: QueryAgentsResponseResultsItemCase0ConnectionsItemCase2PermissionsItemTarget;
@@ -3405,9 +3331,7 @@ export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase4EnabledTools
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase4EnabledToolsCase0List =
   Array<GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item>;
 export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase4EnabledToolsCase0List =
-  /*@__PURE__*/ S.Array(
-    GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase4EnabledToolsCase0List>;
+  QueryAgentsResponseResultsItemCase0ConnectionsItemCase3EnabledToolsCase0List as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase4EnabledToolsCase0List>;
 
 /** The tools the agent may call, null when all tools are enabled (including any the server adds later), or "hidden" when the caller lacks edit access to the agent. */
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase4EnabledTools =
@@ -3496,9 +3420,7 @@ export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsI
 export type QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsItem {
   target: GetAgentResponseConnectionsItemCase5PermissionsItemTarget;
@@ -3612,9 +3534,7 @@ export const QueryAgentsResponseResultsItemCase0CreditLimit =
 /** Days of the week the schedule runs (e.g. "monday"). Present for weekly cadences and monthly weekday restrictions. */
 export type QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekdaysList = Array<string>;
 export const QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekdaysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekdaysList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekdaysList>;
 
 /** Days of the month the schedule runs. Present for monthly monthday restrictions. */
 export type QueryAgentsResponseResultsItemCase0TriggersItemScheduleMonthdaysList = Array<number>;
@@ -3626,9 +3546,7 @@ export const QueryAgentsResponseResultsItemCase0TriggersItemScheduleMonthdaysLis
 /** Week-of-month ordinals for a monthly weekday restriction (e.g. [2, 3] for the 2nd and 3rd occurrence); -1 means the last week. */
 export type QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekNumbersList = Array<number>;
 export const QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekNumbersList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekNumbersList>;
+  QueryAgentsResponseResultsItemCase0TriggersItemScheduleMonthdaysList as any as S.Schema<QueryAgentsResponseResultsItemCase0TriggersItemScheduleWeekNumbersList>;
 
 export type QueryAgentsResponseResultsItemCase0TriggersItemScheduleEndCase0 =
   GetAgentResponseTriggersItemScheduleEndCase0;
@@ -3693,10 +3611,8 @@ export const QueryAgentsResponseResultsItemCase0TriggersItemSchedule = /*@__PURE
 export type QueryAgentsResponseResultsItemCase0TriggersItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const QueryAgentsResponseResultsItemCase0TriggersItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryAgentsResponseResultsItemCase0TriggersItemConfigMap>;
+export const QueryAgentsResponseResultsItemCase0TriggersItemConfigMap =
+  GetAgentResponseTriggersItemConfigMap as any as S.Schema<QueryAgentsResponseResultsItemCase0TriggersItemConfigMap>;
 
 export interface QueryAgentsResponseResultsItemCase0TriggersItem {
   /** Machine trigger type (e.g. "notion.agent.mentioned", "recurrence", "slack.reaction.added"). */
@@ -3838,9 +3754,7 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsI
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList>;
 
 export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5 {
   /** Always `web_search` */
@@ -3849,16 +3763,7 @@ export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase0Permissi
   allowed_domains: QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList | null;
 }
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      allowed_domains: S.NullOr(
-        QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5",
-  }) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5 as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase5>;
 
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTargetCase6 =
   GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6;
@@ -3880,9 +3785,7 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsI
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItem {
   target: QueryAgentsResponseResultsItemCase1ConnectionsItemCase0PermissionsItemTarget;
@@ -3962,9 +3865,7 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase1PermissionsI
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase1PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase1PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase1PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase1PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase1PermissionsItem {
   target: QueryAgentsResponseResultsItemCase1ConnectionsItemCase1PermissionsItemTarget;
@@ -4039,9 +3940,7 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase2PermissionsI
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase2PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase2PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase2PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase2PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase2PermissionsItem {
   target: QueryAgentsResponseResultsItemCase1ConnectionsItemCase2PermissionsItemTarget;
@@ -4104,9 +4003,7 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase3EnabledTools
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase3EnabledToolsCase0List =
   Array<GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase3EnabledToolsCase0List =
-  /*@__PURE__*/ S.Array(
-    GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase3EnabledToolsCase0List>;
+  QueryAgentsResponseResultsItemCase0ConnectionsItemCase3EnabledToolsCase0List as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase3EnabledToolsCase0List>;
 
 /** The tools the agent may call, null when all tools are enabled (including any the server adds later), or "hidden" when the caller lacks edit access to the agent. */
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase3EnabledTools =
@@ -4164,9 +4061,7 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase4EnabledTools
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase4EnabledToolsCase0List =
   Array<GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase4EnabledToolsCase0List =
-  /*@__PURE__*/ S.Array(
-    GetAgentResponseConnectionsItemCase3EnabledToolsCase0Item,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase4EnabledToolsCase0List>;
+  QueryAgentsResponseResultsItemCase0ConnectionsItemCase3EnabledToolsCase0List as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase4EnabledToolsCase0List>;
 
 /** The tools the agent may call, null when all tools are enabled (including any the server adds later), or "hidden" when the caller lacks edit access to the agent. */
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase4EnabledTools =
@@ -4255,9 +4150,7 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsI
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItemScopesList =
   Array<string>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItemScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItemScopesList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItemScopesList>;
 
 export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItem {
   target: GetAgentResponseConnectionsItemCase5PermissionsItemTarget;
@@ -4265,21 +4158,12 @@ export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase5Permissi
   scopes: QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItemScopesList;
 }
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      target: GetAgentResponseConnectionsItemCase5PermissionsItemTarget,
-      scopes: QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItemScopesList,
-    }),
-  ).annotate({
-    identifier: "QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItem",
-  }) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItem>;
+  QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsItem as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItem>;
 
 export type QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsList =
   Array<QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItem>;
 export const QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsList =
-  /*@__PURE__*/ S.Array(
-    QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsItem,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsList>;
+  QueryAgentsResponseResultsItemCase0ConnectionsItemCase5PermissionsList as any as S.Schema<QueryAgentsResponseResultsItemCase1ConnectionsItemCase5PermissionsList>;
 
 export interface QueryAgentsResponseResultsItemCase1ConnectionsItemCase5 {
   /** The connector's machine name (e.g. "github", "google_drive"). */
@@ -4319,23 +4203,17 @@ export const QueryAgentsResponseResultsItemCase1ConnectionsList = /*@__PURE__*/ 
 /** Days of the week the schedule runs (e.g. "monday"). Present for weekly cadences and monthly weekday restrictions. */
 export type QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekdaysList = Array<string>;
 export const QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekdaysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekdaysList>;
+  GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase5AllowedDomainsList as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekdaysList>;
 
 /** Days of the month the schedule runs. Present for monthly monthday restrictions. */
 export type QueryAgentsResponseResultsItemCase1TriggersItemScheduleMonthdaysList = Array<number>;
 export const QueryAgentsResponseResultsItemCase1TriggersItemScheduleMonthdaysList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemScheduleMonthdaysList>;
+  QueryAgentsResponseResultsItemCase0TriggersItemScheduleMonthdaysList as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemScheduleMonthdaysList>;
 
 /** Week-of-month ordinals for a monthly weekday restriction (e.g. [2, 3] for the 2nd and 3rd occurrence); -1 means the last week. */
 export type QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekNumbersList = Array<number>;
 export const QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekNumbersList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekNumbersList>;
+  QueryAgentsResponseResultsItemCase0TriggersItemScheduleMonthdaysList as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemScheduleWeekNumbersList>;
 
 export type QueryAgentsResponseResultsItemCase1TriggersItemScheduleEndCase0 =
   GetAgentResponseTriggersItemScheduleEndCase0;
@@ -4400,10 +4278,8 @@ export const QueryAgentsResponseResultsItemCase1TriggersItemSchedule = /*@__PURE
 export type QueryAgentsResponseResultsItemCase1TriggersItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const QueryAgentsResponseResultsItemCase1TriggersItemConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemConfigMap>;
+export const QueryAgentsResponseResultsItemCase1TriggersItemConfigMap =
+  GetAgentResponseTriggersItemConfigMap as any as S.Schema<QueryAgentsResponseResultsItemCase1TriggersItemConfigMap>;
 
 export interface QueryAgentsResponseResultsItemCase1TriggersItem {
   /** Machine trigger type (e.g. "notion.agent.mentioned", "recurrence", "slack.reaction.added"). */

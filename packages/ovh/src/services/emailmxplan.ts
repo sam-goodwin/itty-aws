@@ -888,15 +888,8 @@ export interface EmailMxplanAccountSendOnBehalfTo {
   /** Pending task id */
   taskPendingId?: number;
 }
-export const EmailMxplanAccountSendOnBehalfTo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedAccountId: S.optional(S.Number),
-    creationDate: S.optional(S.String),
-    taskPendingId: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EmailMxplanAccountSendOnBehalfTo",
-}) as any as S.Schema<EmailMxplanAccountSendOnBehalfTo>;
+export const EmailMxplanAccountSendOnBehalfTo =
+  EmailMxplanAccountFullAccess as any as S.Schema<EmailMxplanAccountSendOnBehalfTo>;
 
 export interface GetEmailMxplanAccountTaskRequest {
   /** The internal name of your mxplan organization */
@@ -941,21 +934,18 @@ export const EmailMxplanDomainDomainAliasesList = /*@__PURE__*/ S.Array(
 
 /** Expected MX record(s) on this domain */
 export type EmailMxplanDomainExpectedMXList = Array<string>;
-export const EmailMxplanDomainExpectedMXList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmailMxplanDomainExpectedMXList>;
+export const EmailMxplanDomainExpectedMXList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<EmailMxplanDomainExpectedMXList>;
 
 /** Domain MX record configured in DNS */
 export type EmailMxplanDomainMxRecordList = Array<string>;
-export const EmailMxplanDomainMxRecordList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmailMxplanDomainMxRecordList>;
+export const EmailMxplanDomainMxRecordList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<EmailMxplanDomainMxRecordList>;
 
 /** Domain SRV record configured in DNS */
 export type EmailMxplanDomainSrvRecordList = Array<string>;
-export const EmailMxplanDomainSrvRecordList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EmailMxplanDomainSrvRecordList>;
+export const EmailMxplanDomainSrvRecordList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<EmailMxplanDomainSrvRecordList>;
 
 /** Domain type */
 export type EmailProDomainTypeEnum = "authoritative" | "nonAuthoritative";
@@ -1218,9 +1208,8 @@ export const ListEmailMxplanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEmailMxplanRequest" }) as any as S.Schema<ListEmailMxplanRequest>;
 
 export type ListEmailMxplanResponseBodyList = Array<string>;
-export const ListEmailMxplanResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailMxplanResponseBodyList>;
+export const ListEmailMxplanResponseBodyList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<ListEmailMxplanResponseBodyList>;
 
 export type ListEmailMxplanResponse = ListEmailMxplanResponseBodyList;
 export const ListEmailMxplanResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1246,9 +1235,8 @@ export const ListEmailMxplanAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailMxplanAccountRequest>;
 
 export type ListEmailMxplanAccountResponseBodyList = Array<string>;
-export const ListEmailMxplanAccountResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailMxplanAccountResponseBodyList>;
+export const ListEmailMxplanAccountResponseBodyList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<ListEmailMxplanAccountResponseBodyList>;
 
 export type ListEmailMxplanAccountResponse = ListEmailMxplanAccountResponseBodyList;
 export const ListEmailMxplanAccountResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1275,16 +1263,12 @@ export const ListEmailMxplanAccountAliasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailMxplanAccountAliasRequest>;
 
 export type ListEmailMxplanAccountAliasResponseBodyList = Array<string>;
-export const ListEmailMxplanAccountAliasResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailMxplanAccountAliasResponseBodyList>;
+export const ListEmailMxplanAccountAliasResponseBodyList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<ListEmailMxplanAccountAliasResponseBodyList>;
 
 export type ListEmailMxplanAccountAliasResponse = ListEmailMxplanAccountAliasResponseBodyList;
-export const ListEmailMxplanAccountAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailMxplanAccountAliasResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailMxplanAccountAliasResponse",
-}) as any as S.Schema<ListEmailMxplanAccountAliasResponse>;
+export const ListEmailMxplanAccountAliasResponse =
+  ListEmailMxplanAccountResponse as any as S.Schema<ListEmailMxplanAccountAliasResponse>;
 
 export interface ListEmailMxplanAccountCapabilitiesRequest {
   /** The internal name of your mxplan organization */
@@ -1344,9 +1328,8 @@ export const ListEmailMxplanAccountFullAccessRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListEmailMxplanAccountFullAccessRequest>;
 
 export type ListEmailMxplanAccountFullAccessResponseBodyList = Array<number>;
-export const ListEmailMxplanAccountFullAccessResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailMxplanAccountFullAccessResponseBodyList>;
+export const ListEmailMxplanAccountFullAccessResponseBodyList =
+  EmailMxplanAccountCapabilitiesQuotasList as any as S.Schema<ListEmailMxplanAccountFullAccessResponseBodyList>;
 
 export type ListEmailMxplanAccountFullAccessResponse =
   ListEmailMxplanAccountFullAccessResponseBodyList;
@@ -1374,16 +1357,12 @@ export const ListEmailMxplanAccountSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailMxplanAccountSendAsRequest>;
 
 export type ListEmailMxplanAccountSendAsResponseBodyList = Array<number>;
-export const ListEmailMxplanAccountSendAsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailMxplanAccountSendAsResponseBodyList>;
+export const ListEmailMxplanAccountSendAsResponseBodyList =
+  EmailMxplanAccountCapabilitiesQuotasList as any as S.Schema<ListEmailMxplanAccountSendAsResponseBodyList>;
 
 export type ListEmailMxplanAccountSendAsResponse = ListEmailMxplanAccountSendAsResponseBodyList;
-export const ListEmailMxplanAccountSendAsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailMxplanAccountSendAsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailMxplanAccountSendAsResponse",
-}) as any as S.Schema<ListEmailMxplanAccountSendAsResponse>;
+export const ListEmailMxplanAccountSendAsResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanAccountSendAsResponse>;
 
 export interface ListEmailMxplanAccountSendOnBehalfToRequest {
   /** The internal name of your mxplan organization */
@@ -1407,17 +1386,13 @@ export const ListEmailMxplanAccountSendOnBehalfToRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToRequest>;
 
 export type ListEmailMxplanAccountSendOnBehalfToResponseBodyList = Array<number>;
-export const ListEmailMxplanAccountSendOnBehalfToResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToResponseBodyList>;
+export const ListEmailMxplanAccountSendOnBehalfToResponseBodyList =
+  EmailMxplanAccountCapabilitiesQuotasList as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToResponseBodyList>;
 
 export type ListEmailMxplanAccountSendOnBehalfToResponse =
   ListEmailMxplanAccountSendOnBehalfToResponseBodyList;
-export const ListEmailMxplanAccountSendOnBehalfToResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailMxplanAccountSendOnBehalfToResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailMxplanAccountSendOnBehalfToResponse",
-}) as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToResponse>;
+export const ListEmailMxplanAccountSendOnBehalfToResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToResponse>;
 
 export interface ListEmailMxplanAccountTaskRequest {
   /** The internal name of your mxplan organization */
@@ -1437,16 +1412,12 @@ export const ListEmailMxplanAccountTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailMxplanAccountTaskRequest>;
 
 export type ListEmailMxplanAccountTaskResponseBodyList = Array<number>;
-export const ListEmailMxplanAccountTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailMxplanAccountTaskResponseBodyList>;
+export const ListEmailMxplanAccountTaskResponseBodyList =
+  EmailMxplanAccountCapabilitiesQuotasList as any as S.Schema<ListEmailMxplanAccountTaskResponseBodyList>;
 
 export type ListEmailMxplanAccountTaskResponse = ListEmailMxplanAccountTaskResponseBodyList;
-export const ListEmailMxplanAccountTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailMxplanAccountTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailMxplanAccountTaskResponse",
-}) as any as S.Schema<ListEmailMxplanAccountTaskResponse>;
+export const ListEmailMxplanAccountTaskResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanAccountTaskResponse>;
 
 export interface ListEmailMxplanDomainRequest {
   /** The internal name of your mxplan organization */
@@ -1464,16 +1435,12 @@ export const ListEmailMxplanDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailMxplanDomainRequest>;
 
 export type ListEmailMxplanDomainResponseBodyList = Array<string>;
-export const ListEmailMxplanDomainResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailMxplanDomainResponseBodyList>;
+export const ListEmailMxplanDomainResponseBodyList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<ListEmailMxplanDomainResponseBodyList>;
 
 export type ListEmailMxplanDomainResponse = ListEmailMxplanDomainResponseBodyList;
-export const ListEmailMxplanDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailMxplanDomainResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailMxplanDomainResponse",
-}) as any as S.Schema<ListEmailMxplanDomainResponse>;
+export const ListEmailMxplanDomainResponse =
+  ListEmailMxplanAccountResponse as any as S.Schema<ListEmailMxplanDomainResponse>;
 
 export interface ListEmailMxplanDomainDisclaimerAttributeRequest {
   /** The internal name of your mxplan organization */
@@ -1567,16 +1534,12 @@ export const ListEmailMxplanExternalContactRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEmailMxplanExternalContactRequest>;
 
 export type ListEmailMxplanExternalContactResponseBodyList = Array<string>;
-export const ListEmailMxplanExternalContactResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListEmailMxplanExternalContactResponseBodyList>;
+export const ListEmailMxplanExternalContactResponseBodyList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<ListEmailMxplanExternalContactResponseBodyList>;
 
 export type ListEmailMxplanExternalContactResponse = ListEmailMxplanExternalContactResponseBodyList;
-export const ListEmailMxplanExternalContactResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailMxplanExternalContactResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailMxplanExternalContactResponse",
-}) as any as S.Schema<ListEmailMxplanExternalContactResponse>;
+export const ListEmailMxplanExternalContactResponse =
+  ListEmailMxplanAccountResponse as any as S.Schema<ListEmailMxplanExternalContactResponse>;
 
 export interface ListEmailMxplanTaskRequest {
   /** The internal name of your mxplan organization */
@@ -1591,16 +1554,12 @@ export const ListEmailMxplanTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailMxplanTaskRequest>;
 
 export type ListEmailMxplanTaskResponseBodyList = Array<number>;
-export const ListEmailMxplanTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListEmailMxplanTaskResponseBodyList>;
+export const ListEmailMxplanTaskResponseBodyList =
+  EmailMxplanAccountCapabilitiesQuotasList as any as S.Schema<ListEmailMxplanTaskResponseBodyList>;
 
 export type ListEmailMxplanTaskResponse = ListEmailMxplanTaskResponseBodyList;
-export const ListEmailMxplanTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListEmailMxplanTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListEmailMxplanTaskResponse",
-}) as any as S.Schema<ListEmailMxplanTaskResponse>;
+export const ListEmailMxplanTaskResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanTaskResponse>;
 
 export interface PutEmailMxplanRequest {
   /** The internal name of your mxplan organization */
@@ -1646,17 +1605,15 @@ export const PutEmailMxplanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutEmailMxplanRequest" }) as any as S.Schema<PutEmailMxplanRequest>;
 
 export interface PutEmailMxplanResponse {}
-export const PutEmailMxplanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmailMxplanResponse",
-}) as any as S.Schema<PutEmailMxplanResponse>;
+export const PutEmailMxplanResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailMxplanResponse>;
 
 /** Enable or disable anti-virus and anti-spam */
 export type PutEmailMxplanAccountRequestMailingFilterList = Array<
   EmailProMailingFilterEnum | (string & {})
 >;
-export const PutEmailMxplanAccountRequestMailingFilterList = /*@__PURE__*/ S.Array(
-  EmailProMailingFilterEnum,
-) as any as S.Schema<PutEmailMxplanAccountRequestMailingFilterList>;
+export const PutEmailMxplanAccountRequestMailingFilterList =
+  EmailMxplanAccountMailingFilterList as any as S.Schema<PutEmailMxplanAccountRequestMailingFilterList>;
 
 export interface PutEmailMxplanAccountRequest {
   /** The internal name of your mxplan organization */
@@ -1710,9 +1667,8 @@ export const PutEmailMxplanAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailMxplanAccountRequest>;
 
 export interface PutEmailMxplanAccountResponse {}
-export const PutEmailMxplanAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmailMxplanAccountResponse",
-}) as any as S.Schema<PutEmailMxplanAccountResponse>;
+export const PutEmailMxplanAccountResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailMxplanAccountResponse>;
 
 export interface PutEmailMxplanDomainRequest {
   /** The internal name of your mxplan organization */
@@ -1736,9 +1692,8 @@ export const PutEmailMxplanDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutEmailMxplanDomainRequest>;
 
 export interface PutEmailMxplanDomainResponse {}
-export const PutEmailMxplanDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutEmailMxplanDomainResponse",
-}) as any as S.Schema<PutEmailMxplanDomainResponse>;
+export const PutEmailMxplanDomainResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailMxplanDomainResponse>;
 
 export interface PutEmailMxplanDomainDisclaimerRequest {
   /** The internal name of your mxplan organization */
@@ -1811,11 +1766,8 @@ export const PutEmailMxplanExternalContactRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutEmailMxplanExternalContactRequest>;
 
 export interface PutEmailMxplanExternalContactResponse {}
-export const PutEmailMxplanExternalContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutEmailMxplanExternalContactResponse",
-}) as any as S.Schema<PutEmailMxplanExternalContactResponse>;
+export const PutEmailMxplanExternalContactResponse =
+  PutEmailMxplanDomainDisclaimerResponse as any as S.Schema<PutEmailMxplanExternalContactResponse>;
 
 export interface SendEmailMxplanAccountAsRequest {
   /** The internal name of your mxplan organization */
@@ -1876,11 +1828,8 @@ export const UpdateEmailMxplanFlagsOnAllAccountsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateEmailMxplanFlagsOnAllAccountsRequest>;
 
 export interface UpdateEmailMxplanFlagsOnAllAccountsResponse {}
-export const UpdateEmailMxplanFlagsOnAllAccountsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEmailMxplanFlagsOnAllAccountsResponse",
-}) as any as S.Schema<UpdateEmailMxplanFlagsOnAllAccountsResponse>;
+export const UpdateEmailMxplanFlagsOnAllAccountsResponse =
+  PutEmailMxplanDomainDisclaimerResponse as any as S.Schema<UpdateEmailMxplanFlagsOnAllAccountsResponse>;
 
 export type CreateEmailMxplanAccountAliasError = OvhOpError;
 /** Create new alias */

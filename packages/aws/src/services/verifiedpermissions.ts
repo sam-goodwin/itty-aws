@@ -635,12 +635,7 @@ export const ActionIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actionType: SensitiveString, actionId: SensitiveString }),
 ).annotate({ identifier: "ActionIdentifier" }) as any as S.Schema<ActionIdentifier>;
 export type ContextMap = { [key: string]: AttributeValue | undefined };
-export const ContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => AttributeValue)
-    .annotate({ identifier: "AttributeValue" })
-    .pipe(S.optional),
-);
+export const ContextMap = EntityAttributes as any as S.Schema<ContextMap>;
 export type ContextDefinition =
   | { contextMap: { [key: string]: AttributeValue | undefined }; cedarJson?: never }
   | { contextMap?: never; cedarJson: string | redacted.Redacted<string> };
@@ -933,15 +928,8 @@ export interface TemplateLinkedPolicyDefinition {
   principal?: EntityIdentifier;
   resource?: EntityIdentifier;
 }
-export const TemplateLinkedPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyTemplateId: S.String,
-    principal: S.optional(EntityIdentifier),
-    resource: S.optional(EntityIdentifier),
-  }),
-).annotate({
-  identifier: "TemplateLinkedPolicyDefinition",
-}) as any as S.Schema<TemplateLinkedPolicyDefinition>;
+export const TemplateLinkedPolicyDefinition =
+  TemplateLinkedPolicyDefinitionDetail as any as S.Schema<TemplateLinkedPolicyDefinition>;
 export type PolicyDefinition =
   | { static: StaticPolicyDefinition; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinition };
@@ -1153,9 +1141,7 @@ export const DeletePolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePolicyInput" }) as any as S.Schema<DeletePolicyInput>;
 export interface DeletePolicyOutput {}
-export const DeletePolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyOutput",
-}) as any as S.Schema<DeletePolicyOutput>;
+export const DeletePolicyOutput = DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyOutput>;
 export interface DeletePolicyStoreInput {
   policyStoreId: string;
 }
@@ -1165,9 +1151,8 @@ export const DeletePolicyStoreInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePolicyStoreInput" }) as any as S.Schema<DeletePolicyStoreInput>;
 export interface DeletePolicyStoreOutput {}
-export const DeletePolicyStoreOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyStoreOutput",
-}) as any as S.Schema<DeletePolicyStoreOutput>;
+export const DeletePolicyStoreOutput =
+  DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyStoreOutput>;
 export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
 export const DeletionMode = S.String;
 
@@ -1183,9 +1168,8 @@ export const DeletePolicyStoreAliasInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePolicyStoreAliasInput",
 }) as any as S.Schema<DeletePolicyStoreAliasInput>;
 export interface DeletePolicyStoreAliasOutput {}
-export const DeletePolicyStoreAliasOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyStoreAliasOutput",
-}) as any as S.Schema<DeletePolicyStoreAliasOutput>;
+export const DeletePolicyStoreAliasOutput =
+  DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyStoreAliasOutput>;
 export interface DeletePolicyTemplateInput {
   policyStoreId: string;
   policyTemplateId: string;
@@ -1198,9 +1182,8 @@ export const DeletePolicyTemplateInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePolicyTemplateInput",
 }) as any as S.Schema<DeletePolicyTemplateInput>;
 export interface DeletePolicyTemplateOutput {}
-export const DeletePolicyTemplateOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePolicyTemplateOutput",
-}) as any as S.Schema<DeletePolicyTemplateOutput>;
+export const DeletePolicyTemplateOutput =
+  DeleteIdentitySourceOutput as any as S.Schema<DeletePolicyTemplateOutput>;
 export interface GetIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
@@ -1256,52 +1239,33 @@ export interface OpenIdConnectGroupConfigurationDetail {
   groupClaim: string | redacted.Redacted<string>;
   groupEntityType: string | redacted.Redacted<string>;
 }
-export const OpenIdConnectGroupConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupClaim: SensitiveString, groupEntityType: SensitiveString }),
-).annotate({
-  identifier: "OpenIdConnectGroupConfigurationDetail",
-}) as any as S.Schema<OpenIdConnectGroupConfigurationDetail>;
+export const OpenIdConnectGroupConfigurationDetail =
+  OpenIdConnectGroupConfiguration as any as S.Schema<OpenIdConnectGroupConfigurationDetail>;
 export interface OpenIdConnectAccessTokenConfigurationDetail {
   principalIdClaim?: string | redacted.Redacted<string>;
   audiences?: string[];
 }
-export const OpenIdConnectAccessTokenConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), audiences: S.optional(Audiences) }),
-).annotate({
-  identifier: "OpenIdConnectAccessTokenConfigurationDetail",
-}) as any as S.Schema<OpenIdConnectAccessTokenConfigurationDetail>;
+export const OpenIdConnectAccessTokenConfigurationDetail =
+  OpenIdConnectAccessTokenConfiguration as any as S.Schema<OpenIdConnectAccessTokenConfigurationDetail>;
 export interface OpenIdConnectIdentityTokenConfigurationDetail {
   principalIdClaim?: string | redacted.Redacted<string>;
   clientIds?: (string | redacted.Redacted<string>)[];
 }
-export const OpenIdConnectIdentityTokenConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), clientIds: S.optional(ClientIds) }),
-).annotate({
-  identifier: "OpenIdConnectIdentityTokenConfigurationDetail",
-}) as any as S.Schema<OpenIdConnectIdentityTokenConfigurationDetail>;
+export const OpenIdConnectIdentityTokenConfigurationDetail =
+  OpenIdConnectIdentityTokenConfiguration as any as S.Schema<OpenIdConnectIdentityTokenConfigurationDetail>;
 export type OpenIdConnectTokenSelectionDetail =
   | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail };
-export const OpenIdConnectTokenSelectionDetail = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail }),
-  /*@__PURE__*/ S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail }),
-]);
+export const OpenIdConnectTokenSelectionDetail =
+  OpenIdConnectTokenSelection as any as S.Schema<OpenIdConnectTokenSelectionDetail>;
 export interface OpenIdConnectConfigurationDetail {
   issuer: string;
   entityIdPrefix?: string | redacted.Redacted<string>;
   groupConfiguration?: OpenIdConnectGroupConfigurationDetail;
   tokenSelection: OpenIdConnectTokenSelectionDetail;
 }
-export const OpenIdConnectConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuer: S.String,
-    entityIdPrefix: S.optional(SensitiveString),
-    groupConfiguration: S.optional(OpenIdConnectGroupConfigurationDetail),
-    tokenSelection: OpenIdConnectTokenSelectionDetail,
-  }),
-).annotate({
-  identifier: "OpenIdConnectConfigurationDetail",
-}) as any as S.Schema<OpenIdConnectConfigurationDetail>;
+export const OpenIdConnectConfigurationDetail =
+  OpenIdConnectConfiguration as any as S.Schema<OpenIdConnectConfigurationDetail>;
 export type ConfigurationDetail =
   | {
       cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail;
@@ -1493,7 +1457,7 @@ export const GetSchemaInput = /*@__PURE__*/ S.suspend(() =>
 export type SchemaJson = string | redacted.Redacted<string>;
 export type Namespace = string | redacted.Redacted<string>;
 export type NamespaceList = (string | redacted.Redacted<string>)[];
-export const NamespaceList = /*@__PURE__*/ S.Array(SensitiveString);
+export const NamespaceList = ClientIds as any as S.Schema<NamespaceList>;
 export interface GetSchemaOutput {
   policyStoreId: string;
   schema: string | redacted.Redacted<string>;
@@ -1621,77 +1585,47 @@ export const IdentitySourceItemDetails = /*@__PURE__*/ S.suspend(() =>
 export interface CognitoGroupConfigurationItem {
   groupEntityType?: string | redacted.Redacted<string>;
 }
-export const CognitoGroupConfigurationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupEntityType: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "CognitoGroupConfigurationItem",
-}) as any as S.Schema<CognitoGroupConfigurationItem>;
+export const CognitoGroupConfigurationItem =
+  CognitoGroupConfigurationDetail as any as S.Schema<CognitoGroupConfigurationItem>;
 export interface CognitoUserPoolConfigurationItem {
   userPoolArn: string;
   clientIds: (string | redacted.Redacted<string>)[];
   issuer: string;
   groupConfiguration?: CognitoGroupConfigurationItem;
 }
-export const CognitoUserPoolConfigurationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userPoolArn: S.String,
-    clientIds: ClientIds,
-    issuer: S.String,
-    groupConfiguration: S.optional(CognitoGroupConfigurationItem),
-  }),
-).annotate({
-  identifier: "CognitoUserPoolConfigurationItem",
-}) as any as S.Schema<CognitoUserPoolConfigurationItem>;
+export const CognitoUserPoolConfigurationItem =
+  CognitoUserPoolConfigurationDetail as any as S.Schema<CognitoUserPoolConfigurationItem>;
 export interface OpenIdConnectGroupConfigurationItem {
   groupClaim: string | redacted.Redacted<string>;
   groupEntityType: string | redacted.Redacted<string>;
 }
-export const OpenIdConnectGroupConfigurationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupClaim: SensitiveString, groupEntityType: SensitiveString }),
-).annotate({
-  identifier: "OpenIdConnectGroupConfigurationItem",
-}) as any as S.Schema<OpenIdConnectGroupConfigurationItem>;
+export const OpenIdConnectGroupConfigurationItem =
+  OpenIdConnectGroupConfiguration as any as S.Schema<OpenIdConnectGroupConfigurationItem>;
 export interface OpenIdConnectAccessTokenConfigurationItem {
   principalIdClaim?: string | redacted.Redacted<string>;
   audiences?: string[];
 }
-export const OpenIdConnectAccessTokenConfigurationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), audiences: S.optional(Audiences) }),
-).annotate({
-  identifier: "OpenIdConnectAccessTokenConfigurationItem",
-}) as any as S.Schema<OpenIdConnectAccessTokenConfigurationItem>;
+export const OpenIdConnectAccessTokenConfigurationItem =
+  OpenIdConnectAccessTokenConfiguration as any as S.Schema<OpenIdConnectAccessTokenConfigurationItem>;
 export interface OpenIdConnectIdentityTokenConfigurationItem {
   principalIdClaim?: string | redacted.Redacted<string>;
   clientIds?: (string | redacted.Redacted<string>)[];
 }
-export const OpenIdConnectIdentityTokenConfigurationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), clientIds: S.optional(ClientIds) }),
-).annotate({
-  identifier: "OpenIdConnectIdentityTokenConfigurationItem",
-}) as any as S.Schema<OpenIdConnectIdentityTokenConfigurationItem>;
+export const OpenIdConnectIdentityTokenConfigurationItem =
+  OpenIdConnectIdentityTokenConfiguration as any as S.Schema<OpenIdConnectIdentityTokenConfigurationItem>;
 export type OpenIdConnectTokenSelectionItem =
   | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem };
-export const OpenIdConnectTokenSelectionItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem }),
-  /*@__PURE__*/ S.Struct({ identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem }),
-]);
+export const OpenIdConnectTokenSelectionItem =
+  OpenIdConnectTokenSelection as any as S.Schema<OpenIdConnectTokenSelectionItem>;
 export interface OpenIdConnectConfigurationItem {
   issuer: string;
   entityIdPrefix?: string | redacted.Redacted<string>;
   groupConfiguration?: OpenIdConnectGroupConfigurationItem;
   tokenSelection: OpenIdConnectTokenSelectionItem;
 }
-export const OpenIdConnectConfigurationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuer: S.String,
-    entityIdPrefix: S.optional(SensitiveString),
-    groupConfiguration: S.optional(OpenIdConnectGroupConfigurationItem),
-    tokenSelection: OpenIdConnectTokenSelectionItem,
-  }),
-).annotate({
-  identifier: "OpenIdConnectConfigurationItem",
-}) as any as S.Schema<OpenIdConnectConfigurationItem>;
+export const OpenIdConnectConfigurationItem =
+  OpenIdConnectConfiguration as any as S.Schema<OpenIdConnectConfigurationItem>;
 export type ConfigurationItem =
   | {
       cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem;
@@ -1701,10 +1635,7 @@ export type ConfigurationItem =
       cognitoUserPoolConfiguration?: never;
       openIdConnectConfiguration: OpenIdConnectConfigurationItem;
     };
-export const ConfigurationItem = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem }),
-  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: OpenIdConnectConfigurationItem }),
-]);
+export const ConfigurationItem = ConfigurationDetail as any as S.Schema<ConfigurationItem>;
 export interface IdentitySourceItem {
   createdDate: Date;
   details?: IdentitySourceItemDetails;
@@ -1785,15 +1716,8 @@ export interface TemplateLinkedPolicyDefinitionItem {
   principal?: EntityIdentifier;
   resource?: EntityIdentifier;
 }
-export const TemplateLinkedPolicyDefinitionItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyTemplateId: S.String,
-    principal: S.optional(EntityIdentifier),
-    resource: S.optional(EntityIdentifier),
-  }),
-).annotate({
-  identifier: "TemplateLinkedPolicyDefinitionItem",
-}) as any as S.Schema<TemplateLinkedPolicyDefinitionItem>;
+export const TemplateLinkedPolicyDefinitionItem =
+  TemplateLinkedPolicyDefinitionDetail as any as S.Schema<TemplateLinkedPolicyDefinitionItem>;
 export type PolicyDefinitionItem =
   | { static: StaticPolicyDefinitionItem; templateLinked?: never }
   | { static?: never; templateLinked: TemplateLinkedPolicyDefinitionItem };
@@ -2014,11 +1938,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteIdentitySourceOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = Audiences as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -2029,81 +1951,51 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput =
+  DeleteIdentitySourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateCognitoGroupConfiguration {
   groupEntityType: string | redacted.Redacted<string>;
 }
-export const UpdateCognitoGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupEntityType: SensitiveString }),
-).annotate({
-  identifier: "UpdateCognitoGroupConfiguration",
-}) as any as S.Schema<UpdateCognitoGroupConfiguration>;
+export const UpdateCognitoGroupConfiguration =
+  CognitoGroupConfiguration as any as S.Schema<UpdateCognitoGroupConfiguration>;
 export interface UpdateCognitoUserPoolConfiguration {
   userPoolArn: string;
   clientIds?: (string | redacted.Redacted<string>)[];
   groupConfiguration?: UpdateCognitoGroupConfiguration;
 }
-export const UpdateCognitoUserPoolConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userPoolArn: S.String,
-    clientIds: S.optional(ClientIds),
-    groupConfiguration: S.optional(UpdateCognitoGroupConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateCognitoUserPoolConfiguration",
-}) as any as S.Schema<UpdateCognitoUserPoolConfiguration>;
+export const UpdateCognitoUserPoolConfiguration =
+  CognitoUserPoolConfiguration as any as S.Schema<UpdateCognitoUserPoolConfiguration>;
 export interface UpdateOpenIdConnectGroupConfiguration {
   groupClaim: string | redacted.Redacted<string>;
   groupEntityType: string | redacted.Redacted<string>;
 }
-export const UpdateOpenIdConnectGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ groupClaim: SensitiveString, groupEntityType: SensitiveString }),
-).annotate({
-  identifier: "UpdateOpenIdConnectGroupConfiguration",
-}) as any as S.Schema<UpdateOpenIdConnectGroupConfiguration>;
+export const UpdateOpenIdConnectGroupConfiguration =
+  OpenIdConnectGroupConfiguration as any as S.Schema<UpdateOpenIdConnectGroupConfiguration>;
 export interface UpdateOpenIdConnectAccessTokenConfiguration {
   principalIdClaim?: string | redacted.Redacted<string>;
   audiences?: string[];
 }
-export const UpdateOpenIdConnectAccessTokenConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), audiences: S.optional(Audiences) }),
-).annotate({
-  identifier: "UpdateOpenIdConnectAccessTokenConfiguration",
-}) as any as S.Schema<UpdateOpenIdConnectAccessTokenConfiguration>;
+export const UpdateOpenIdConnectAccessTokenConfiguration =
+  OpenIdConnectAccessTokenConfiguration as any as S.Schema<UpdateOpenIdConnectAccessTokenConfiguration>;
 export interface UpdateOpenIdConnectIdentityTokenConfiguration {
   principalIdClaim?: string | redacted.Redacted<string>;
   clientIds?: (string | redacted.Redacted<string>)[];
 }
-export const UpdateOpenIdConnectIdentityTokenConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ principalIdClaim: S.optional(SensitiveString), clientIds: S.optional(ClientIds) }),
-).annotate({
-  identifier: "UpdateOpenIdConnectIdentityTokenConfiguration",
-}) as any as S.Schema<UpdateOpenIdConnectIdentityTokenConfiguration>;
+export const UpdateOpenIdConnectIdentityTokenConfiguration =
+  OpenIdConnectIdentityTokenConfiguration as any as S.Schema<UpdateOpenIdConnectIdentityTokenConfiguration>;
 export type UpdateOpenIdConnectTokenSelection =
   | { accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration; identityTokenOnly?: never }
   | { accessTokenOnly?: never; identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration };
-export const UpdateOpenIdConnectTokenSelection = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration }),
-  /*@__PURE__*/ S.Struct({ identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration }),
-]);
+export const UpdateOpenIdConnectTokenSelection =
+  OpenIdConnectTokenSelection as any as S.Schema<UpdateOpenIdConnectTokenSelection>;
 export interface UpdateOpenIdConnectConfiguration {
   issuer: string;
   entityIdPrefix?: string | redacted.Redacted<string>;
   groupConfiguration?: UpdateOpenIdConnectGroupConfiguration;
   tokenSelection: UpdateOpenIdConnectTokenSelection;
 }
-export const UpdateOpenIdConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuer: S.String,
-    entityIdPrefix: S.optional(SensitiveString),
-    groupConfiguration: S.optional(UpdateOpenIdConnectGroupConfiguration),
-    tokenSelection: UpdateOpenIdConnectTokenSelection,
-  }),
-).annotate({
-  identifier: "UpdateOpenIdConnectConfiguration",
-}) as any as S.Schema<UpdateOpenIdConnectConfiguration>;
+export const UpdateOpenIdConnectConfiguration =
+  OpenIdConnectConfiguration as any as S.Schema<UpdateOpenIdConnectConfiguration>;
 export type UpdateConfiguration =
   | {
       cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration;
@@ -2113,10 +2005,7 @@ export type UpdateConfiguration =
       cognitoUserPoolConfiguration?: never;
       openIdConnectConfiguration: UpdateOpenIdConnectConfiguration;
     };
-export const UpdateConfiguration = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration }),
-  /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: UpdateOpenIdConnectConfiguration }),
-]);
+export const UpdateConfiguration = Configuration as any as S.Schema<UpdateConfiguration>;
 export interface UpdateIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
@@ -2139,25 +2028,14 @@ export interface UpdateIdentitySourceOutput {
   lastUpdatedDate: Date;
   policyStoreId: string;
 }
-export const UpdateIdentitySourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    identitySourceId: S.String,
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyStoreId: S.String,
-  }),
-).annotate({
-  identifier: "UpdateIdentitySourceOutput",
-}) as any as S.Schema<UpdateIdentitySourceOutput>;
+export const UpdateIdentitySourceOutput =
+  CreateIdentitySourceOutput as any as S.Schema<UpdateIdentitySourceOutput>;
 export interface UpdateStaticPolicyDefinition {
   description?: string | redacted.Redacted<string>;
   statement: string | redacted.Redacted<string>;
 }
-export const UpdateStaticPolicyDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
-).annotate({
-  identifier: "UpdateStaticPolicyDefinition",
-}) as any as S.Schema<UpdateStaticPolicyDefinition>;
+export const UpdateStaticPolicyDefinition =
+  StaticPolicyDefinitionDetail as any as S.Schema<UpdateStaticPolicyDefinition>;
 export type UpdatePolicyDefinition = { static: UpdateStaticPolicyDefinition };
 export const UpdatePolicyDefinition = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ static: UpdateStaticPolicyDefinition }),
@@ -2187,19 +2065,7 @@ export interface UpdatePolicyOutput {
   lastUpdatedDate: Date;
   effect?: PolicyEffect;
 }
-export const UpdatePolicyOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyId: S.String,
-    policyType: PolicyType,
-    principal: S.optional(EntityIdentifier),
-    resource: S.optional(EntityIdentifier),
-    actions: S.optional(ActionIdentifierList),
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    effect: S.optional(PolicyEffect),
-  }),
-).annotate({ identifier: "UpdatePolicyOutput" }) as any as S.Schema<UpdatePolicyOutput>;
+export const UpdatePolicyOutput = CreatePolicyOutput as any as S.Schema<UpdatePolicyOutput>;
 export interface UpdatePolicyStoreInput {
   policyStoreId: string;
   validationSettings: ValidationSettings;
@@ -2220,14 +2086,8 @@ export interface UpdatePolicyStoreOutput {
   createdDate: Date;
   lastUpdatedDate: Date;
 }
-export const UpdatePolicyStoreOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    arn: S.String,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "UpdatePolicyStoreOutput" }) as any as S.Schema<UpdatePolicyStoreOutput>;
+export const UpdatePolicyStoreOutput =
+  CreatePolicyStoreOutput as any as S.Schema<UpdatePolicyStoreOutput>;
 export interface UpdatePolicyTemplateInput {
   policyStoreId: string;
   policyTemplateId: string;
@@ -2252,16 +2112,8 @@ export interface UpdatePolicyTemplateOutput {
   createdDate: Date;
   lastUpdatedDate: Date;
 }
-export const UpdatePolicyTemplateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyStoreId: S.String,
-    policyTemplateId: S.String,
-    createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdatePolicyTemplateOutput",
-}) as any as S.Schema<UpdatePolicyTemplateOutput>;
+export const UpdatePolicyTemplateOutput =
+  CreatePolicyTemplateOutput as any as S.Schema<UpdatePolicyTemplateOutput>;
 export type ResourceType =
   | "IDENTITY_SOURCE"
   | "POLICY_STORE"

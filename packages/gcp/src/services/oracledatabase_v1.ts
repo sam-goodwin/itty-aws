@@ -104,9 +104,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** The request for `CloudExadataInfrastructure.ConfigureExascale`. */
 export interface ConfigureExascaleCloudExadataInfrastructureRequest {
@@ -2744,14 +2742,8 @@ export interface GoldengateGoogleCloudStorageConnectionProperties {
   /** Optional. The base64 encoded content of the service account key file containing the credentials required to use Google Cloud Storage. */
   serviceAccountKeyFile?: string;
 }
-export const GoldengateGoogleCloudStorageConnectionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    technologyType: S.optional(S.String),
-    serviceAccountKeyFile: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoldengateGoogleCloudStorageConnectionProperties",
-}) as any as S.Schema<GoldengateGoogleCloudStorageConnectionProperties>;
+export const GoldengateGoogleCloudStorageConnectionProperties =
+  GoldengateGoogleBigQueryConnectionProperties as any as S.Schema<GoldengateGoogleCloudStorageConnectionProperties>;
 
 export type GoldengateAzureDataLakeStorageConnectionPropertiesAuthenticationTypeEnum =
   | "AUTHENTICATION_TYPE_UNSPECIFIED"
@@ -8225,13 +8217,8 @@ export interface SwitchoverAutonomousDatabaseRequest {
   /** Optional. The peer database name to switch over to. Required for cross-region standby, and must be omitted for in-region Data Guard. */
   peerAutonomousDatabase?: string;
 }
-export const SwitchoverAutonomousDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    peerAutonomousDatabase: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SwitchoverAutonomousDatabaseRequest",
-}) as any as S.Schema<SwitchoverAutonomousDatabaseRequest>;
+export const SwitchoverAutonomousDatabaseRequest =
+  FailoverAutonomousDatabaseRequest as any as S.Schema<SwitchoverAutonomousDatabaseRequest>;
 
 export interface SwitchoverProjectsLocationsAutonomousDatabasesRequest {
   /** Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. */

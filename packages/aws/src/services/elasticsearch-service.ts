@@ -622,7 +622,7 @@ export const SnapshotOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AutomatedSnapshotStartHour: S.optional(S.Number) }),
 ).annotate({ identifier: "SnapshotOptions" }) as any as S.Schema<SnapshotOptions>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
+export const StringList = GUIDList as any as S.Schema<StringList>;
 export interface VPCOptions {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -910,10 +910,7 @@ export const CreateElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainId = string;
 export type ServiceUrl = string;
 export type EndpointsMap = { [key: string]: string | undefined };
-export const EndpointsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const EndpointsMap = AdvancedOptions as any as S.Schema<EndpointsMap>;
 export interface VPCDerivedInfo {
   VPCId?: string;
   SubnetIds?: string[];
@@ -1366,11 +1363,8 @@ export const DeleteElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteElasticsearchDomainResponse {
   DomainStatus?: ElasticsearchDomainStatus;
 }
-export const DeleteElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ DomainStatus: S.optional(ElasticsearchDomainStatus) }).pipe(ns),
-).annotate({
-  identifier: "DeleteElasticsearchDomainResponse",
-}) as any as S.Schema<DeleteElasticsearchDomainResponse>;
+export const DeleteElasticsearchDomainResponse =
+  CreateElasticsearchDomainResponse as any as S.Schema<DeleteElasticsearchDomainResponse>;
 export interface DeleteElasticsearchServiceRoleRequest {}
 export const DeleteElasticsearchServiceRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1419,13 +1413,8 @@ export const DeleteInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.
 export interface DeleteInboundCrossClusterSearchConnectionResponse {
   CrossClusterSearchConnection?: InboundCrossClusterSearchConnection;
 }
-export const DeleteInboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CrossClusterSearchConnection: S.optional(InboundCrossClusterSearchConnection) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "DeleteInboundCrossClusterSearchConnectionResponse",
-}) as any as S.Schema<DeleteInboundCrossClusterSearchConnectionResponse>;
+export const DeleteInboundCrossClusterSearchConnectionResponse =
+  AcceptInboundCrossClusterSearchConnectionResponse as any as S.Schema<DeleteInboundCrossClusterSearchConnectionResponse>;
 export interface DeleteOutboundCrossClusterSearchConnectionRequest {
   CrossClusterSearchConnectionId: string;
 }
@@ -1496,9 +1485,8 @@ export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePackageResponse {
   PackageDetails?: PackageDetails;
 }
-export const DeletePackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PackageDetails: S.optional(PackageDetails) }).pipe(ns),
-).annotate({ identifier: "DeletePackageResponse" }) as any as S.Schema<DeletePackageResponse>;
+export const DeletePackageResponse =
+  CreatePackageResponse as any as S.Schema<DeletePackageResponse>;
 export interface DeleteVpcEndpointRequest {
   VpcEndpointId: string;
 }
@@ -1997,7 +1985,7 @@ export const DescribeElasticsearchDomainConfigResponse = /*@__PURE__*/ S.suspend
   identifier: "DescribeElasticsearchDomainConfigResponse",
 }) as any as S.Schema<DescribeElasticsearchDomainConfigResponse>;
 export type DomainNameList = string[];
-export const DomainNameList = /*@__PURE__*/ S.Array(S.String);
+export const DomainNameList = GUIDList as any as S.Schema<DomainNameList>;
 export interface DescribeElasticsearchDomainsRequest {
   DomainNames: string[];
 }
@@ -2059,7 +2047,7 @@ export type StorageSubTypeName = string;
 export type LimitName = string;
 export type LimitValue = string;
 export type LimitValueList = string[];
-export const LimitValueList = /*@__PURE__*/ S.Array(S.String);
+export const LimitValueList = GUIDList as any as S.Schema<LimitValueList>;
 export interface StorageTypeLimit {
   LimitName?: string;
   LimitValues?: string[];
@@ -2105,11 +2093,9 @@ export interface AdditionalLimit {
   LimitName?: string;
   LimitValues?: string[];
 }
-export const AdditionalLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LimitName: S.optional(S.String), LimitValues: S.optional(LimitValueList) }),
-).annotate({ identifier: "AdditionalLimit" }) as any as S.Schema<AdditionalLimit>;
+export const AdditionalLimit = StorageTypeLimit as any as S.Schema<AdditionalLimit>;
 export type AdditionalLimitList = AdditionalLimit[];
-export const AdditionalLimitList = /*@__PURE__*/ S.Array(AdditionalLimit);
+export const AdditionalLimitList = StorageTypeLimitList as any as S.Schema<AdditionalLimitList>;
 export interface Limits {
   StorageTypes?: StorageType[];
   InstanceLimits?: InstanceLimits;
@@ -2134,7 +2120,7 @@ export const DescribeElasticsearchInstanceTypeLimitsResponse = /*@__PURE__*/ S.s
 }) as any as S.Schema<DescribeElasticsearchInstanceTypeLimitsResponse>;
 export type NonEmptyString = string;
 export type ValueStringList = string[];
-export const ValueStringList = /*@__PURE__*/ S.Array(S.String);
+export const ValueStringList = GUIDList as any as S.Schema<ValueStringList>;
 export interface Filter {
   Name?: string;
   Values?: string[];
@@ -2233,7 +2219,8 @@ export const DescribePackagesFilterName = S.String;
 
 export type DescribePackagesFilterValue = string;
 export type DescribePackagesFilterValues = string[];
-export const DescribePackagesFilterValues = /*@__PURE__*/ S.Array(S.String);
+export const DescribePackagesFilterValues =
+  GUIDList as any as S.Schema<DescribePackagesFilterValues>;
 export interface DescribePackagesFilter {
   Name?: DescribePackagesFilterName;
   Value?: string[];
@@ -2445,7 +2432,7 @@ export const DescribeReservedElasticsearchInstancesResponse = /*@__PURE__*/ S.su
   identifier: "DescribeReservedElasticsearchInstancesResponse",
 }) as any as S.Schema<DescribeReservedElasticsearchInstancesResponse>;
 export type VpcEndpointIdList = string[];
-export const VpcEndpointIdList = /*@__PURE__*/ S.Array(S.String);
+export const VpcEndpointIdList = GUIDList as any as S.Schema<VpcEndpointIdList>;
 export interface DescribeVpcEndpointsRequest {
   VpcEndpointIds: string[];
 }
@@ -2539,7 +2526,7 @@ export const GetCompatibleElasticsearchVersionsRequest = /*@__PURE__*/ S.suspend
   identifier: "GetCompatibleElasticsearchVersionsRequest",
 }) as any as S.Schema<GetCompatibleElasticsearchVersionsRequest>;
 export type ElasticsearchVersionList = string[];
-export const ElasticsearchVersionList = /*@__PURE__*/ S.Array(S.String);
+export const ElasticsearchVersionList = GUIDList as any as S.Schema<ElasticsearchVersionList>;
 export interface CompatibleVersionsMap {
   SourceVersion?: string;
   TargetVersions?: string[];
@@ -2652,7 +2639,7 @@ export const UpgradeStep = S.String;
 
 export type Issue = string;
 export type Issues = string[];
-export const Issues = /*@__PURE__*/ S.Array(S.String);
+export const Issues = GUIDList as any as S.Schema<Issues>;
 export interface UpgradeStepItem {
   UpgradeStep?: UpgradeStep;
   UpgradeStepStatus?: UpgradeStatus;
@@ -2891,14 +2878,8 @@ export interface ListPackagesForDomainResponse {
   DomainPackageDetailsList?: DomainPackageDetails[];
   NextToken?: string;
 }
-export const ListPackagesForDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DomainPackageDetailsList: S.optional(DomainPackageDetailsList),
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListPackagesForDomainResponse",
-}) as any as S.Schema<ListPackagesForDomainResponse>;
+export const ListPackagesForDomainResponse =
+  ListDomainsForPackageResponse as any as S.Schema<ListPackagesForDomainResponse>;
 export interface ListTagsRequest {
   ARN: string;
 }
@@ -3065,13 +3046,8 @@ export const RejectInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.
 export interface RejectInboundCrossClusterSearchConnectionResponse {
   CrossClusterSearchConnection?: InboundCrossClusterSearchConnection;
 }
-export const RejectInboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ CrossClusterSearchConnection: S.optional(InboundCrossClusterSearchConnection) }).pipe(
-    ns,
-  ),
-).annotate({
-  identifier: "RejectInboundCrossClusterSearchConnectionResponse",
-}) as any as S.Schema<RejectInboundCrossClusterSearchConnectionResponse>;
+export const RejectInboundCrossClusterSearchConnectionResponse =
+  AcceptInboundCrossClusterSearchConnectionResponse as any as S.Schema<RejectInboundCrossClusterSearchConnectionResponse>;
 export interface RemoveTagsRequest {
   ARN: string;
   TagKeys: string[];
@@ -3090,9 +3066,7 @@ export const RemoveTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveTagsRequest" }) as any as S.Schema<RemoveTagsRequest>;
 export interface RemoveTagsResponse {}
-export const RemoveTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "RemoveTagsResponse",
-}) as any as S.Schema<RemoveTagsResponse>;
+export const RemoveTagsResponse = AddTagsResponse as any as S.Schema<RemoveTagsResponse>;
 export interface RevokeVpcEndpointAccessRequest {
   DomainName: string;
   Account: string;
@@ -3113,11 +3087,8 @@ export const RevokeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeVpcEndpointAccessRequest",
 }) as any as S.Schema<RevokeVpcEndpointAccessRequest>;
 export interface RevokeVpcEndpointAccessResponse {}
-export const RevokeVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RevokeVpcEndpointAccessResponse",
-}) as any as S.Schema<RevokeVpcEndpointAccessResponse>;
+export const RevokeVpcEndpointAccessResponse =
+  DeleteElasticsearchServiceRoleResponse as any as S.Schema<RevokeVpcEndpointAccessResponse>;
 export interface StartElasticsearchServiceSoftwareUpdateRequest {
   DomainName: string;
 }
@@ -3139,11 +3110,8 @@ export const StartElasticsearchServiceSoftwareUpdateRequest = /*@__PURE__*/ S.su
 export interface StartElasticsearchServiceSoftwareUpdateResponse {
   ServiceSoftwareOptions?: ServiceSoftwareOptions;
 }
-export const StartElasticsearchServiceSoftwareUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ServiceSoftwareOptions: S.optional(ServiceSoftwareOptions) }).pipe(ns),
-).annotate({
-  identifier: "StartElasticsearchServiceSoftwareUpdateResponse",
-}) as any as S.Schema<StartElasticsearchServiceSoftwareUpdateResponse>;
+export const StartElasticsearchServiceSoftwareUpdateResponse =
+  CancelElasticsearchServiceSoftwareUpdateResponse as any as S.Schema<StartElasticsearchServiceSoftwareUpdateResponse>;
 export interface UpdateElasticsearchDomainConfigRequest {
   DomainName: string;
   ElasticsearchClusterConfig?: ElasticsearchClusterConfig;
@@ -3247,9 +3215,8 @@ export const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePackageResponse {
   PackageDetails?: PackageDetails;
 }
-export const UpdatePackageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PackageDetails: S.optional(PackageDetails) }).pipe(ns),
-).annotate({ identifier: "UpdatePackageResponse" }) as any as S.Schema<UpdatePackageResponse>;
+export const UpdatePackageResponse =
+  CreatePackageResponse as any as S.Schema<UpdatePackageResponse>;
 export interface UpdateVpcEndpointRequest {
   VpcEndpointId: string;
   VpcOptions: VPCOptions;
@@ -3270,11 +3237,8 @@ export const UpdateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcEndpointResponse {
   VpcEndpoint: VpcEndpoint;
 }
-export const UpdateVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ VpcEndpoint: VpcEndpoint }).pipe(ns),
-).annotate({
-  identifier: "UpdateVpcEndpointResponse",
-}) as any as S.Schema<UpdateVpcEndpointResponse>;
+export const UpdateVpcEndpointResponse =
+  CreateVpcEndpointResponse as any as S.Schema<UpdateVpcEndpointResponse>;
 export interface UpgradeElasticsearchDomainRequest {
   DomainName: string;
   TargetVersion: string;

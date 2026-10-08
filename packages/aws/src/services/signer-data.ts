@@ -112,7 +112,7 @@ export const GetRevocationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRevocationStatusRequest>;
 export type RevokedEntity = string;
 export type RevokedEntities = string[];
-export const RevokedEntities = /*@__PURE__*/ S.Array(S.String);
+export const RevokedEntities = CertificateHashes as any as S.Schema<RevokedEntities>;
 export interface GetRevocationStatusResponse {
   revokedEntities?: string[];
 }

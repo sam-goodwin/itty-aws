@@ -327,9 +327,8 @@ export const ConnectionStatus = S.String;
 
 /** List of job definitions associated with this connection. */
 export type ConnectionPropertiesJobListList = Array<string>;
-export const ConnectionPropertiesJobListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionPropertiesJobListList>;
+export const ConnectionPropertiesJobListList =
+  ConnectionPropertiesInputJobListList as any as S.Schema<ConnectionPropertiesJobListList>;
 
 /** Properties of the Connection resource. */
 export interface ConnectionProperties {
@@ -442,9 +441,8 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteConnectionResponse",
-}) as any as S.Schema<DeleteConnectionResponse>;
+export const DeleteConnectionResponse =
+  DeleteAgentResponse as any as S.Schema<DeleteConnectionResponse>;
 
 export interface DeleteEndpointRequest {
   /** The ID of the target subscription. */
@@ -473,9 +471,8 @@ export const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEndpointRequest" }) as any as S.Schema<DeleteEndpointRequest>;
 
 export interface DeleteEndpointResponse {}
-export const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteEndpointResponse",
-}) as any as S.Schema<DeleteEndpointResponse>;
+export const DeleteEndpointResponse =
+  DeleteAgentResponse as any as S.Schema<DeleteEndpointResponse>;
 
 export interface DeleteJobDefinitionRequest {
   /** The ID of the target subscription. */
@@ -509,9 +506,8 @@ export const DeleteJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteJobDefinitionRequest>;
 
 export interface DeleteJobDefinitionResponse {}
-export const DeleteJobDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteJobDefinitionResponse",
-}) as any as S.Schema<DeleteJobDefinitionResponse>;
+export const DeleteJobDefinitionResponse =
+  DeleteAgentResponse as any as S.Schema<DeleteJobDefinitionResponse>;
 
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
@@ -540,9 +536,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteProjectResponse",
-}) as any as S.Schema<DeleteProjectResponse>;
+export const DeleteProjectResponse = DeleteAgentResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteStorageMoverRequest {
   /** The ID of the target subscription. */
@@ -570,9 +564,8 @@ export const DeleteStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageMoverRequest>;
 
 export interface DeleteStorageMoverResponse {}
-export const DeleteStorageMoverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStorageMoverResponse",
-}) as any as S.Schema<DeleteStorageMoverResponse>;
+export const DeleteStorageMoverResponse =
+  DeleteAgentResponse as any as S.Schema<DeleteStorageMoverResponse>;
 
 /** The Endpoint resource type. */
 export type EndpointType =
@@ -663,9 +656,8 @@ export const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export const UserAssignedIdentityInput =
+  DeleteAgentResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
@@ -1148,9 +1140,8 @@ export const JobDefinitionPropertiesSourceTargetMap = /*@__PURE__*/ S.suspend(()
 
 /** List of connections associated to this job */
 export type JobDefinitionPropertiesConnectionsList = Array<string>;
-export const JobDefinitionPropertiesConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobDefinitionPropertiesConnectionsList>;
+export const JobDefinitionPropertiesConnectionsList =
+  ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionPropertiesConnectionsList>;
 
 /** Type of schedule -- Monthly, Weekly, or Daily */
 export type Frequency = "Monthly" | "Weekly" | "Daily" | "Onetime" | "None" | "Hourly";
@@ -1176,9 +1167,8 @@ export const SchedulerTime = /*@__PURE__*/ S.suspend(() =>
 
 /** Days of the week for weekly schedules */
 export type ScheduleInfoDaysOfWeekList = Array<string>;
-export const ScheduleInfoDaysOfWeekList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScheduleInfoDaysOfWeekList>;
+export const ScheduleInfoDaysOfWeekList =
+  ConnectionPropertiesInputJobListList as any as S.Schema<ScheduleInfoDaysOfWeekList>;
 
 /** Days of the month for monthly schedules */
 export type ScheduleInfoDaysOfMonthList = Array<number>;
@@ -1399,13 +1389,7 @@ export interface JobRunWarning {
   /** Target of the given error entry. */
   target?: string;
 }
-export const JobRunWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-  }),
-).annotate({ identifier: "JobRunWarning" }) as any as S.Schema<JobRunWarning>;
+export const JobRunWarning = JobRunError as any as S.Schema<JobRunWarning>;
 
 /** Warning details. */
 export type JobRunPropertiesWarningsList = Array<JobRunWarning>;
@@ -1635,12 +1619,7 @@ export interface StorageMoverProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-export const StorageMoverProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({ identifier: "StorageMoverProperties" }) as any as S.Schema<StorageMoverProperties>;
+export const StorageMoverProperties = ProjectProperties as any as S.Schema<StorageMoverProperties>;
 
 export interface GetStorageMoverResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1683,9 +1662,8 @@ export const JobDefinitionPropertiesInputSourceTargetMap = UserAssignedIdentityI
 
 /** List of connections associated to this job */
 export type JobDefinitionPropertiesInputConnectionsList = Array<string>;
-export const JobDefinitionPropertiesInputConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobDefinitionPropertiesInputConnectionsList>;
+export const JobDefinitionPropertiesInputConnectionsList =
+  ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionPropertiesInputConnectionsList>;
 
 /** The checksum validation mode for the job definition. */
 export type JobDefinitionPropertiesInputDataIntegrityValidation =
@@ -1893,15 +1871,7 @@ export interface Agent {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-export const Agent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AgentProperties,
-  }),
-).annotate({ identifier: "Agent" }) as any as S.Schema<Agent>;
+export const Agent = GetAgentResponse as any as S.Schema<Agent>;
 
 /** The Agent items on this page */
 export type AgentListValueList = Array<Agent>;
@@ -1959,15 +1929,7 @@ export interface Connection {
   /** Connection properties. */
   properties: ConnectionProperties;
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: ConnectionProperties,
-  }),
-).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
+export const Connection = GetConnectionResponse as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
 export type ConnectionListValueList = Array<Connection>;
@@ -2031,16 +1993,7 @@ export interface Endpoint {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: EndpointBaseProperties,
-    identity: S.optional(EndpointsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
+export const Endpoint = GetEndpointResponse as any as S.Schema<Endpoint>;
 
 /** The Endpoint items on this page */
 export type EndpointListValueList = Array<Endpoint>;
@@ -2103,15 +2056,7 @@ export interface JobDefinition {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-export const JobDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: JobDefinitionProperties,
-  }),
-).annotate({ identifier: "JobDefinition" }) as any as S.Schema<JobDefinition>;
+export const JobDefinition = GetJobDefinitionResponse as any as S.Schema<JobDefinition>;
 
 /** The JobDefinition items on this page */
 export type JobDefinitionListValueList = Array<JobDefinition>;
@@ -2175,15 +2120,7 @@ export interface JobRun {
   /** Job run properties. */
   properties?: JobRunProperties;
 }
-export const JobRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobRunProperties),
-  }),
-).annotate({ identifier: "JobRun" }) as any as S.Schema<JobRun>;
+export const JobRun = GetJobRunResponse as any as S.Schema<JobRun>;
 
 /** The JobRun items on this page */
 export type JobRunListValueList = Array<JobRun>;
@@ -2323,15 +2260,7 @@ export interface Project {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectProperties),
-  }),
-).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
+export const Project = GetProjectResponse as any as S.Schema<Project>;
 
 /** The Project items on this page */
 export type ProjectListValueList = Array<Project>;
@@ -2374,10 +2303,8 @@ export const ListStorageMoverBySubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type StorageMoverTagsMap = { [key: string]: string | undefined };
-export const StorageMoverTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageMoverTagsMap>;
+export const StorageMoverTagsMap =
+  GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoverTagsMap>;
 
 /** The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints. */
 export interface StorageMover {
@@ -2396,17 +2323,7 @@ export interface StorageMover {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-export const StorageMover = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(StorageMoverTagsMap),
-    location: S.String,
-    properties: S.optional(StorageMoverProperties),
-  }),
-).annotate({ identifier: "StorageMover" }) as any as S.Schema<StorageMover>;
+export const StorageMover = GetStorageMoverResponse as any as S.Schema<StorageMover>;
 
 /** The StorageMover items on this page */
 export type StorageMoverListValueList = Array<StorageMover>;
@@ -2578,10 +2495,8 @@ export const StopJobDefinitionJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StorageMoversCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const StorageMoversCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageMoversCreateOrUpdateRequestTagsMap>;
+export const StorageMoversCreateOrUpdateRequestTagsMap =
+  GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoversCreateOrUpdateRequestTagsMap>;
 
 /** The resource specific properties for the Storage Mover resource. */
 export interface StorageMoverPropertiesInput {
@@ -2632,10 +2547,8 @@ export const StorageMoversCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StorageMoversCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const StorageMoversCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageMoversCreateOrUpdateResponseTagsMap>;
+export const StorageMoversCreateOrUpdateResponseTagsMap =
+  GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoversCreateOrUpdateResponseTagsMap>;
 
 export interface StorageMoversCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2719,15 +2632,7 @@ export interface UpdateAgentResponse {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-export const UpdateAgentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: AgentProperties,
-  }),
-).annotate({ identifier: "UpdateAgentResponse" }) as any as S.Schema<UpdateAgentResponse>;
+export const UpdateAgentResponse = GetAgentResponse as any as S.Schema<UpdateAgentResponse>;
 
 /** The Endpoint resource, which contains information about file sources and targets. */
 export interface EndpointBaseUpdateProperties {
@@ -2808,22 +2713,13 @@ export interface UpdateEndpointResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-export const UpdateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: EndpointBaseProperties,
-    identity: S.optional(EndpointsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({ identifier: "UpdateEndpointResponse" }) as any as S.Schema<UpdateEndpointResponse>;
+export const UpdateEndpointResponse =
+  GetEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
 
 /** List of connections associated to this job */
 export type JobDefinitionUpdatePropertiesConnectionsList = Array<string>;
-export const JobDefinitionUpdatePropertiesConnectionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JobDefinitionUpdatePropertiesConnectionsList>;
+export const JobDefinitionUpdatePropertiesConnectionsList =
+  ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionUpdatePropertiesConnectionsList>;
 
 /** The Data integrity validation mode. */
 export type DataIntegrityValidation = "SaveVerifyFileMD5" | "SaveFileMD5" | "None";
@@ -2909,17 +2805,8 @@ export interface UpdateJobDefinitionResponse {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-export const UpdateJobDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: JobDefinitionProperties,
-  }),
-).annotate({
-  identifier: "UpdateJobDefinitionResponse",
-}) as any as S.Schema<UpdateJobDefinitionResponse>;
+export const UpdateJobDefinitionResponse =
+  JobDefinitionsCreateOrUpdateResponse as any as S.Schema<UpdateJobDefinitionResponse>;
 
 /** Project properties. */
 export type ProjectUpdateProperties = ProjectPropertiesInput;
@@ -2966,15 +2853,7 @@ export interface UpdateProjectResponse {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProjectProperties),
-  }),
-).annotate({ identifier: "UpdateProjectResponse" }) as any as S.Schema<UpdateProjectResponse>;
+export const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** The resource specific properties for the Storage Mover resource. */
 export type StorageMoverUpdateProperties = StorageMoverPropertiesInput;
@@ -2982,10 +2861,8 @@ export const StorageMoverUpdateProperties = StorageMoverPropertiesInput;
 
 /** Resource tags. */
 export type UpdateStorageMoverRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageMoverRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStorageMoverRequestTagsMap>;
+export const UpdateStorageMoverRequestTagsMap =
+  GetStorageMoverResponseTagsMap as any as S.Schema<UpdateStorageMoverRequestTagsMap>;
 
 export interface UpdateStorageMoverRequest {
   /** The ID of the target subscription. */
@@ -3020,10 +2897,8 @@ export const UpdateStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageMoverResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageMoverResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateStorageMoverResponseTagsMap>;
+export const UpdateStorageMoverResponseTagsMap =
+  GetStorageMoverResponseTagsMap as any as S.Schema<UpdateStorageMoverResponseTagsMap>;
 
 export interface UpdateStorageMoverResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3041,19 +2916,8 @@ export interface UpdateStorageMoverResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-export const UpdateStorageMoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(UpdateStorageMoverResponseTagsMap),
-    location: S.String,
-    properties: S.optional(StorageMoverProperties),
-  }),
-).annotate({
-  identifier: "UpdateStorageMoverResponse",
-}) as any as S.Schema<UpdateStorageMoverResponse>;
+export const UpdateStorageMoverResponse =
+  StorageMoversCreateOrUpdateResponse as any as S.Schema<UpdateStorageMoverResponse>;
 
 export type AgentsCreateOrUpdateError = AzureOpError;
 /** Creates or updates an Agent resource, which references a hybrid compute machine that can run jobs. */

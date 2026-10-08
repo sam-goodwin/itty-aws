@@ -456,19 +456,16 @@ export type GetSubmittedResponseType =
 export const GetSubmittedResponseType = S.String;
 
 export type GetSubmittedResponseUrlsList = Array<string>;
-export const GetSubmittedResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSubmittedResponseUrlsList>;
+export const GetSubmittedResponseUrlsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseUrlsList>;
 
 export type GetSubmittedResponseDestinationIpsList = Array<string>;
-export const GetSubmittedResponseDestinationIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSubmittedResponseDestinationIpsList>;
+export const GetSubmittedResponseDestinationIpsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseDestinationIpsList>;
 
 export type GetSubmittedResponsePortsProtocolsList = Array<string>;
-export const GetSubmittedResponsePortsProtocolsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSubmittedResponsePortsProtocolsList>;
+export const GetSubmittedResponsePortsProtocolsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponsePortsProtocolsList>;
 
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestType = "disclosure" | "invalid_whois";
 export const GetSubmittedResponseRegWhoRequestRegWhoRequestType = S.String;
@@ -548,17 +545,15 @@ export const GetSubmittedResponseRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubmittedResponseRegWhoRequest>;
 
 export type GetSubmittedResponseSourceIpsList = Array<string>;
-export const GetSubmittedResponseSourceIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSubmittedResponseSourceIpsList>;
+export const GetSubmittedResponseSourceIpsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseSourceIpsList>;
 
 export type GetSubmittedResponseSubmitter = GetResponseSubmitter;
 export const GetSubmittedResponseSubmitter = GetResponseSubmitter;
 
 export type GetSubmittedResponseSubtypesList = Array<string>;
-export const GetSubmittedResponseSubtypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetSubmittedResponseSubtypesList>;
+export const GetSubmittedResponseSubtypesList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseSubtypesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubmittedResponse {
@@ -743,9 +738,8 @@ export type ListResponseReportsItemSubmitter = GetResponseSubmitter;
 export const ListResponseReportsItemSubmitter = GetResponseSubmitter;
 
 export type ListResponseReportsItemUrlsList = Array<string>;
-export const ListResponseReportsItemUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResponseReportsItemUrlsList>;
+export const ListResponseReportsItemUrlsList =
+  GetResponseUrlsList as any as S.Schema<ListResponseReportsItemUrlsList>;
 
 export interface ListResponseReportsItem {
   /** Public facing ID of abuse report, aka abuse_rand. */
@@ -924,9 +918,8 @@ export const ListMitigationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMitigationsResponse" }) as any as S.Schema<ListMitigationsResponse>;
 
 export type ListSubmittedRequestDomainList = Array<string>;
-export const ListSubmittedRequestDomainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListSubmittedRequestDomainList>;
+export const ListSubmittedRequestDomainList =
+  GetResponseUrlsList as any as S.Schema<ListSubmittedRequestDomainList>;
 
 export type ListSubmittedRequestStatus = "submitted" | "accepted" | "denied";
 export const ListSubmittedRequestStatus = S.String;
@@ -1164,9 +1157,8 @@ export const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MitigationsReviewRequestAppealsList>;
 
 export type MitigationsReviewRequestDataUrlsList = Array<string>;
-export const MitigationsReviewRequestDataUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MitigationsReviewRequestDataUrlsList>;
+export const MitigationsReviewRequestDataUrlsList =
+  GetResponseUrlsList as any as S.Schema<MitigationsReviewRequestDataUrlsList>;
 
 export interface MitigationsReviewRequestData {
   city: string;

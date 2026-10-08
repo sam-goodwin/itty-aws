@@ -4224,11 +4224,7 @@ export interface DefaultApplication {
   /** Required. The package name that should be set as the default application. The policy is rejected if the package name is invalid. */
   packageName?: string;
 }
-export const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageName: S.optional(S.String),
-  }),
-).annotate({ identifier: "DefaultApplication" }) as any as S.Schema<DefaultApplication>;
+export const DefaultApplication = LaunchAppAction as any as S.Schema<DefaultApplication>;
 
 export type DefaultApplicationList = Array<DefaultApplication>;
 export const DefaultApplicationList = /*@__PURE__*/ S.Array(
@@ -4876,11 +4872,7 @@ export interface RemoveEsimParams {
   /** Required. ICC ID of the eSIM profile to be deleted. */
   iccId?: string;
 }
-export const RemoveEsimParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iccId: S.optional(S.String),
-  }),
-).annotate({ identifier: "RemoveEsimParams" }) as any as S.Schema<RemoveEsimParams>;
+export const RemoveEsimParams = EsimInfo as any as S.Schema<RemoveEsimParams>;
 
 export type WipeParamsWipeDataFlagsItemEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
@@ -4912,9 +4904,7 @@ export const WipeParams = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters associated with the STOP_LOST_MODE command to take the device out of lost mode. */
 export interface StopLostModeParams {}
-export const StopLostModeParams = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopLostModeParams",
-}) as any as S.Schema<StopLostModeParams>;
+export const StopLostModeParams = Empty as any as S.Schema<StopLostModeParams>;
 
 export type StartLostModeStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -4940,11 +4930,7 @@ export interface ClearAppsDataParams {
   /** The package names of the apps whose data will be cleared when the command is executed. */
   packageNames?: StringList;
 }
-export const ClearAppsDataParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    packageNames: S.optional(StringList),
-  }),
-).annotate({ identifier: "ClearAppsDataParams" }) as any as S.Schema<ClearAppsDataParams>;
+export const ClearAppsDataParams = PackageNameList as any as S.Schema<ClearAppsDataParams>;
 
 export type CommandTypeEnum =
   | "COMMAND_TYPE_UNSPECIFIED"
@@ -4974,11 +4960,7 @@ export interface Eid {
   /** Output only. The EID */
   eid?: string;
 }
-export const Eid = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eid: S.optional(S.String),
-  }),
-).annotate({ identifier: "Eid" }) as any as S.Schema<Eid>;
+export const Eid = EuiccChipInfo as any as S.Schema<Eid>;
 
 export type EidList = Array<Eid>;
 export const EidList = /*@__PURE__*/ S.Array(Eid) as any as S.Schema<EidList>;
@@ -5635,13 +5617,8 @@ export interface RemovePolicyApplicationsResponse {
   /** The updated policy after ApplicationPolicy objects have been removed. */
   policy?: Policy;
 }
-export const RemovePolicyApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(Policy),
-  }),
-).annotate({
-  identifier: "RemovePolicyApplicationsResponse",
-}) as any as S.Schema<RemovePolicyApplicationsResponse>;
+export const RemovePolicyApplicationsResponse =
+  ModifyPolicyApplicationsResponse as any as S.Schema<RemovePolicyApplicationsResponse>;
 
 export type CancelEnterprisesDevicesOperationsError =
   | NotFound

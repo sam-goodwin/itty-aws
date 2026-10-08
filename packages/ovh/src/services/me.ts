@@ -139,9 +139,8 @@ export const CancelMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelMeTaskDnsRequest" }) as any as S.Schema<CancelMeTaskDnsRequest>;
 
 export interface CancelMeTaskDnsResponse {}
-export const CancelMeTaskDnsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelMeTaskDnsResponse",
-}) as any as S.Schema<CancelMeTaskDnsResponse>;
+export const CancelMeTaskDnsResponse =
+  ApplyMeSlaResponse as any as S.Schema<CancelMeTaskDnsResponse>;
 
 export interface CancelMeTaskDomainRequest {
   /** Id */
@@ -156,9 +155,8 @@ export const CancelMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelMeTaskDomainRequest>;
 
 export interface CancelMeTaskDomainResponse {}
-export const CancelMeTaskDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CancelMeTaskDomainResponse",
-}) as any as S.Schema<CancelMeTaskDomainResponse>;
+export const CancelMeTaskDomainResponse =
+  ApplyMeSlaResponse as any as S.Schema<CancelMeTaskDomainResponse>;
 
 export interface CheckMeVoucherValidityRequest {
   /** Voucher value */
@@ -230,11 +228,8 @@ export const CreateMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeAccessRestrictionIpRequest>;
 
 export interface CreateMeAccessRestrictionIpResponse {}
-export const CreateMeAccessRestrictionIpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeAccessRestrictionIpResponse",
-}) as any as S.Schema<CreateMeAccessRestrictionIpResponse>;
+export const CreateMeAccessRestrictionIpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeAccessRestrictionIpResponse>;
 
 export interface CreateMeAccessRestrictionSmsRequest {
   /** Cell phone number to register */
@@ -864,9 +859,8 @@ export const CreateMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeAutorenewRequest" }) as any as S.Schema<CreateMeAutorenewRequest>;
 
 export interface CreateMeAutorenewResponse {}
-export const CreateMeAutorenewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeAutorenewResponse",
-}) as any as S.Schema<CreateMeAutorenewResponse>;
+export const CreateMeAutorenewResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeAutorenewResponse>;
 
 export interface CreateMeBillDebtPayRequest {
   billId: string;
@@ -880,9 +874,8 @@ export const CreateMeBillDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeBillDebtPayRequest>;
 
 export type BillingOrderMetadatasList = Array<string>;
-export const BillingOrderMetadatasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingOrderMetadatasList>;
+export const BillingOrderMetadatasList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<BillingOrderMetadatasList>;
 
 /** Currency code */
 export type OrderCurrencyCodeEnum =
@@ -1041,11 +1034,8 @@ export const CreateMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateMeBillingInvoicesByPostalMailRequest>;
 
 export interface CreateMeBillingInvoicesByPostalMailResponse {}
-export const CreateMeBillingInvoicesByPostalMailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeBillingInvoicesByPostalMailResponse",
-}) as any as S.Schema<CreateMeBillingInvoicesByPostalMailResponse>;
+export const CreateMeBillingInvoicesByPostalMailResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeBillingInvoicesByPostalMailResponse>;
 
 /** Type of a purchase order */
 export type MeBillingPurchaseOrderPurchaseOrderTypeEnum = "PURCHASE_ORDER" | "REFERENCE_ORDER";
@@ -1227,9 +1217,8 @@ export const CreateMeChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeChangePasswordRequest>;
 
 export interface CreateMeChangePasswordResponse {}
-export const CreateMeChangePasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeChangePasswordResponse",
-}) as any as S.Schema<CreateMeChangePasswordResponse>;
+export const CreateMeChangePasswordResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeChangePasswordResponse>;
 
 /** Representation of a Contact */
 export interface MeContactAddress {
@@ -1646,9 +1635,8 @@ export const CreateMeDocumentCorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeDocumentCorsRequest>;
 
 export interface CreateMeDocumentCorsResponse {}
-export const CreateMeDocumentCorsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeDocumentCorsResponse",
-}) as any as S.Schema<CreateMeDocumentCorsResponse>;
+export const CreateMeDocumentCorsResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeDocumentCorsResponse>;
 
 export interface CreateMeDownPaymentInvoiceDebtPayRequest {
   downPaymentInvoiceId: string;
@@ -1708,9 +1696,8 @@ export const CreateMeFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeFeedbackRequest" }) as any as S.Schema<CreateMeFeedbackRequest>;
 
 export interface CreateMeFeedbackResponse {}
-export const CreateMeFeedbackResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeFeedbackResponse",
-}) as any as S.Schema<CreateMeFeedbackResponse>;
+export const CreateMeFeedbackResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeFeedbackResponse>;
 
 export interface CreateMeFidelityAccountCreditOrderRequest {
   /** The amount of points you want to credit your fidelity account of */
@@ -2092,17 +2079,13 @@ export const CreateMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeIdentityGroupUserRequest>;
 
 export interface CreateMeIdentityGroupUserResponse {}
-export const CreateMeIdentityGroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeIdentityGroupUserResponse",
-}) as any as S.Schema<CreateMeIdentityGroupUserResponse>;
+export const CreateMeIdentityGroupUserResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeIdentityGroupUserResponse>;
 
 /** List of AttributeValues allowed for this RequestedAttribute */
 export type AuthProviderRequestedAttributesValuesList = Array<string>;
-export const AuthProviderRequestedAttributesValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthProviderRequestedAttributesValuesList>;
+export const AuthProviderRequestedAttributesValuesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthProviderRequestedAttributesValuesList>;
 
 /** A SAML 2.0 requested attribute that should be added to SAML requests when using this provider */
 export interface AuthProviderRequestedAttributes {
@@ -2257,9 +2240,8 @@ export const CreateMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeIdentityUserRequest>;
 
 export interface CreateMeIdentityUserResponse {}
-export const CreateMeIdentityUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeIdentityUserResponse",
-}) as any as S.Schema<CreateMeIdentityUserResponse>;
+export const CreateMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeIdentityUserResponse>;
 
 export interface CreateMeIdentityUserTokenRequest {
   /** User */
@@ -2347,9 +2329,8 @@ export const CreateMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeIpOrganisationRequest>;
 
 export interface CreateMeIpOrganisationResponse {}
-export const CreateMeIpOrganisationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeIpOrganisationResponse",
-}) as any as S.Schema<CreateMeIpOrganisationResponse>;
+export const CreateMeIpOrganisationResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeIpOrganisationResponse>;
 
 export interface CreateMeLogAuditLogSubscriptionRequest {
   /** Log kind name to subscribe to */
@@ -2443,17 +2424,13 @@ export const CreateMeManualDomainPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeManualDomainPaymentRequest>;
 
 export interface CreateMeManualDomainPaymentResponse {}
-export const CreateMeManualDomainPaymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeManualDomainPaymentResponse",
-}) as any as S.Schema<CreateMeManualDomainPaymentResponse>;
+export const CreateMeManualDomainPaymentResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeManualDomainPaymentResponse>;
 
 /** allowed callback urls */
 export type CreateMeOauth2ClientRequestCallbackUrlsList = Array<string>;
-export const CreateMeOauth2ClientRequestCallbackUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateMeOauth2ClientRequestCallbackUrlsList>;
+export const CreateMeOauth2ClientRequestCallbackUrlsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<CreateMeOauth2ClientRequestCallbackUrlsList>;
 
 /** oAuth2 Flow */
 export type Oauth2ClientFlowEnum = "AUTHORIZATION_CODE" | "CLIENT_CREDENTIALS";
@@ -2559,9 +2536,8 @@ export const CreateMeOrderPayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeOrderPayRequest" }) as any as S.Schema<CreateMeOrderPayRequest>;
 
 export interface CreateMeOrderPayResponse {}
-export const CreateMeOrderPayResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeOrderPayResponse",
-}) as any as S.Schema<CreateMeOrderPayResponse>;
+export const CreateMeOrderPayResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeOrderPayResponse>;
 
 /** Reusable payment mean type */
 export type BillingReusablePaymentMeanEnum =
@@ -2602,11 +2578,8 @@ export const CreateMeOrderPayWithRegisteredPaymentMeanRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanRequest>;
 
 export interface CreateMeOrderPayWithRegisteredPaymentMeanResponse {}
-export const CreateMeOrderPayWithRegisteredPaymentMeanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeOrderPayWithRegisteredPaymentMeanResponse",
-}) as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanResponse>;
+export const CreateMeOrderPayWithRegisteredPaymentMeanResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanResponse>;
 
 /** Retraction reason type */
 export type BillingOrderRetractionReasonEnum =
@@ -2637,9 +2610,8 @@ export const CreateMeOrderRetractionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeOrderRetractionRequest>;
 
 export interface CreateMeOrderRetractionResponse {}
-export const CreateMeOrderRetractionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateMeOrderRetractionResponse" },
-) as any as S.Schema<CreateMeOrderRetractionResponse>;
+export const CreateMeOrderRetractionResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMeOrderRetractionResponse>;
 
 export interface CreateMeOrderWaiveRetractionRequest {
   orderId: number;
@@ -2653,11 +2625,8 @@ export const CreateMeOrderWaiveRetractionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeOrderWaiveRetractionRequest>;
 
 export interface CreateMeOrderWaiveRetractionResponse {}
-export const CreateMeOrderWaiveRetractionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeOrderWaiveRetractionResponse",
-}) as any as S.Schema<CreateMeOrderWaiveRetractionResponse>;
+export const CreateMeOrderWaiveRetractionResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOrderWaiveRetractionResponse>;
 
 export interface CreateMeOvhAccountCreditOrderRequest {
   ovhAccountId: string;
@@ -2696,11 +2665,8 @@ export const CreateMeOvhAccountMovementRequestRefundRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateMeOvhAccountMovementRequestRefundRequest>;
 
 export interface CreateMeOvhAccountMovementRequestRefundResponse {}
-export const CreateMeOvhAccountMovementRequestRefundResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeOvhAccountMovementRequestRefundResponse",
-}) as any as S.Schema<CreateMeOvhAccountMovementRequestRefundResponse>;
+export const CreateMeOvhAccountMovementRequestRefundResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOvhAccountMovementRequestRefundResponse>;
 
 export interface CreateMePasswordRecoverRequest {
   /** Company of your OVH Account Id */
@@ -2718,9 +2684,8 @@ export const CreateMePasswordRecoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMePasswordRecoverRequest>;
 
 export interface CreateMePasswordRecoverResponse {}
-export const CreateMePasswordRecoverResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateMePasswordRecoverResponse" },
-) as any as S.Schema<CreateMePasswordRecoverResponse>;
+export const CreateMePasswordRecoverResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMePasswordRecoverResponse>;
 
 export interface CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest {
   /** Id */
@@ -2872,11 +2837,8 @@ export const CreateMePaymentMethodChallengeRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateMePaymentMethodChallengeRequest>;
 
 export interface CreateMePaymentMethodChallengeResponse {}
-export const CreateMePaymentMethodChallengeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMePaymentMethodChallengeResponse",
-}) as any as S.Schema<CreateMePaymentMethodChallengeResponse>;
+export const CreateMePaymentMethodChallengeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMePaymentMethodChallengeResponse>;
 
 export interface CreateMePaymentMethodDetailRequest {
   /** Payment method ID */
@@ -2914,11 +2876,8 @@ export const CreateMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMePreferenceManagerRequest>;
 
 export interface CreateMePreferenceManagerResponse {}
-export const CreateMePreferenceManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMePreferenceManagerResponse",
-}) as any as S.Schema<CreateMePreferenceManagerResponse>;
+export const CreateMePreferenceManagerResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMePreferenceManagerResponse>;
 
 export interface CreateMeSshKeyRequest {
   /** ASCII encoded public SSH key to add */
@@ -2934,9 +2893,7 @@ export const CreateMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeSshKeyRequest" }) as any as S.Schema<CreateMeSshKeyRequest>;
 
 export interface CreateMeSshKeyResponse {}
-export const CreateMeSshKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeSshKeyResponse",
-}) as any as S.Schema<CreateMeSshKeyResponse>;
+export const CreateMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeSshKeyResponse>;
 
 export interface CreateMeSubAccountRequest {
   /** Description of the new sub-account */
@@ -3065,11 +3022,8 @@ export const CreateMeTaskContactChangeRefuseRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateMeTaskContactChangeRefuseRequest>;
 
 export interface CreateMeTaskContactChangeRefuseResponse {}
-export const CreateMeTaskContactChangeRefuseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeTaskContactChangeRefuseResponse",
-}) as any as S.Schema<CreateMeTaskContactChangeRefuseResponse>;
+export const CreateMeTaskContactChangeRefuseResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskContactChangeRefuseResponse>;
 
 export interface CreateMeTaskDnsAccelerateRequest {
   /** Id */
@@ -3084,11 +3038,8 @@ export const CreateMeTaskDnsAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDnsAccelerateRequest>;
 
 export interface CreateMeTaskDnsAccelerateResponse {}
-export const CreateMeTaskDnsAccelerateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeTaskDnsAccelerateResponse",
-}) as any as S.Schema<CreateMeTaskDnsAccelerateResponse>;
+export const CreateMeTaskDnsAccelerateResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDnsAccelerateResponse>;
 
 export interface CreateMeTaskDnsRelaunchRequest {
   /** Id */
@@ -3103,9 +3054,8 @@ export const CreateMeTaskDnsRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDnsRelaunchRequest>;
 
 export interface CreateMeTaskDnsRelaunchResponse {}
-export const CreateMeTaskDnsRelaunchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateMeTaskDnsRelaunchResponse" },
-) as any as S.Schema<CreateMeTaskDnsRelaunchResponse>;
+export const CreateMeTaskDnsRelaunchResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMeTaskDnsRelaunchResponse>;
 
 export interface CreateMeTaskDomainAccelerateRequest {
   /** Id */
@@ -3120,11 +3070,8 @@ export const CreateMeTaskDomainAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDomainAccelerateRequest>;
 
 export interface CreateMeTaskDomainAccelerateResponse {}
-export const CreateMeTaskDomainAccelerateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeTaskDomainAccelerateResponse",
-}) as any as S.Schema<CreateMeTaskDomainAccelerateResponse>;
+export const CreateMeTaskDomainAccelerateResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDomainAccelerateResponse>;
 
 export interface CreateMeTaskDomainRelaunchRequest {
   /** Id */
@@ -3139,11 +3086,8 @@ export const CreateMeTaskDomainRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDomainRelaunchRequest>;
 
 export interface CreateMeTaskDomainRelaunchResponse {}
-export const CreateMeTaskDomainRelaunchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeTaskDomainRelaunchResponse",
-}) as any as S.Schema<CreateMeTaskDomainRelaunchResponse>;
+export const CreateMeTaskDomainRelaunchResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDomainRelaunchResponse>;
 
 export interface CreateMeTaskEmailChangeRefuseRequest {
   id: number;
@@ -3160,11 +3104,8 @@ export const CreateMeTaskEmailChangeRefuseRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateMeTaskEmailChangeRefuseRequest>;
 
 export interface CreateMeTaskEmailChangeRefuseResponse {}
-export const CreateMeTaskEmailChangeRefuseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeTaskEmailChangeRefuseResponse",
-}) as any as S.Schema<CreateMeTaskEmailChangeRefuseResponse>;
+export const CreateMeTaskEmailChangeRefuseResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskEmailChangeRefuseResponse>;
 
 /** Phone protocol */
 export type TelephonyProtocolEnum = "mgcp" | "sip";
@@ -3257,11 +3198,8 @@ export const CreateMeTelephonySettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTelephonySettingsRequest>;
 
 export interface CreateMeTelephonySettingsResponse {}
-export const CreateMeTelephonySettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateMeTelephonySettingsResponse",
-}) as any as S.Schema<CreateMeTelephonySettingsResponse>;
+export const CreateMeTelephonySettingsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTelephonySettingsResponse>;
 
 export interface CreateMeXdslSettingRequest {
   /** Send the modem as soon as possible, do not wait the xdsl line to be active */
@@ -3279,9 +3217,8 @@ export const CreateMeXdslSettingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeXdslSettingRequest>;
 
 export interface CreateMeXdslSettingResponse {}
-export const CreateMeXdslSettingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "CreateMeXdslSettingResponse",
-}) as any as S.Schema<CreateMeXdslSettingResponse>;
+export const CreateMeXdslSettingResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeXdslSettingResponse>;
 
 export interface DeleteMeAccessRestrictionBackupCodeRequest {}
 export const DeleteMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3293,11 +3230,8 @@ export const DeleteMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteMeAccessRestrictionBackupCodeRequest>;
 
 export interface DeleteMeAccessRestrictionBackupCodeResponse {}
-export const DeleteMeAccessRestrictionBackupCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeAccessRestrictionBackupCodeResponse",
-}) as any as S.Schema<DeleteMeAccessRestrictionBackupCodeResponse>;
+export const DeleteMeAccessRestrictionBackupCodeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionBackupCodeResponse>;
 
 export interface DeleteMeAccessRestrictionIpRequest {
   /** The Id of the restriction */
@@ -3312,11 +3246,8 @@ export const DeleteMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeAccessRestrictionIpRequest>;
 
 export interface DeleteMeAccessRestrictionIpResponse {}
-export const DeleteMeAccessRestrictionIpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeAccessRestrictionIpResponse",
-}) as any as S.Schema<DeleteMeAccessRestrictionIpResponse>;
+export const DeleteMeAccessRestrictionIpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionIpResponse>;
 
 export interface DeleteMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
@@ -3331,11 +3262,8 @@ export const DeleteMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeAccessRestrictionSmsRequest>;
 
 export interface DeleteMeAccessRestrictionSmsResponse {}
-export const DeleteMeAccessRestrictionSmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeAccessRestrictionSmsResponse",
-}) as any as S.Schema<DeleteMeAccessRestrictionSmsResponse>;
+export const DeleteMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionSmsResponse>;
 
 export interface DeleteMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
@@ -3350,11 +3278,8 @@ export const DeleteMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteMeAccessRestrictionTotpRequest>;
 
 export interface DeleteMeAccessRestrictionTotpResponse {}
-export const DeleteMeAccessRestrictionTotpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeAccessRestrictionTotpResponse",
-}) as any as S.Schema<DeleteMeAccessRestrictionTotpResponse>;
+export const DeleteMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionTotpResponse>;
 
 export interface DeleteMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
@@ -3369,11 +3294,8 @@ export const DeleteMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeAccessRestrictionU2fRequest>;
 
 export interface DeleteMeAccessRestrictionU2fResponse {}
-export const DeleteMeAccessRestrictionU2fResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeAccessRestrictionU2fResponse",
-}) as any as S.Schema<DeleteMeAccessRestrictionU2fResponse>;
+export const DeleteMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionU2fResponse>;
 
 export interface DeleteMeApplicationRequest {
   /** Application ID */
@@ -3388,9 +3310,8 @@ export const DeleteMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeApplicationRequest>;
 
 export interface DeleteMeApplicationResponse {}
-export const DeleteMeApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeApplicationResponse",
-}) as any as S.Schema<DeleteMeApplicationResponse>;
+export const DeleteMeApplicationResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeApplicationResponse>;
 
 export interface DeleteMeBillingGroupRequest {
   /** Group ID */
@@ -3405,9 +3326,8 @@ export const DeleteMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeBillingGroupRequest>;
 
 export interface DeleteMeBillingGroupResponse {}
-export const DeleteMeBillingGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeBillingGroupResponse",
-}) as any as S.Schema<DeleteMeBillingGroupResponse>;
+export const DeleteMeBillingGroupResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeBillingGroupResponse>;
 
 export interface DeleteMeBillingGroupServiceRequest {
   /** Group ID */
@@ -3427,11 +3347,8 @@ export const DeleteMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeBillingGroupServiceRequest>;
 
 export interface DeleteMeBillingGroupServiceResponse {}
-export const DeleteMeBillingGroupServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeBillingGroupServiceResponse",
-}) as any as S.Schema<DeleteMeBillingGroupServiceResponse>;
+export const DeleteMeBillingGroupServiceResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeBillingGroupServiceResponse>;
 
 export interface DeleteMeBillingPurchaseOrderRequest {
   /** Id */
@@ -3446,11 +3363,8 @@ export const DeleteMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeBillingPurchaseOrderRequest>;
 
 export interface DeleteMeBillingPurchaseOrderResponse {}
-export const DeleteMeBillingPurchaseOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeBillingPurchaseOrderResponse",
-}) as any as S.Schema<DeleteMeBillingPurchaseOrderResponse>;
+export const DeleteMeBillingPurchaseOrderResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeBillingPurchaseOrderResponse>;
 
 export interface DeleteMeCredentialRequest {
   /** Credential ID */
@@ -3465,9 +3379,8 @@ export const DeleteMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeCredentialRequest>;
 
 export interface DeleteMeCredentialResponse {}
-export const DeleteMeCredentialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeCredentialResponse",
-}) as any as S.Schema<DeleteMeCredentialResponse>;
+export const DeleteMeCredentialResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeCredentialResponse>;
 
 export interface DeleteMeDocumentRequest {
   /** Document id */
@@ -3480,9 +3393,8 @@ export const DeleteMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMeDocumentRequest" }) as any as S.Schema<DeleteMeDocumentRequest>;
 
 export interface DeleteMeDocumentResponse {}
-export const DeleteMeDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeDocumentResponse",
-}) as any as S.Schema<DeleteMeDocumentResponse>;
+export const DeleteMeDocumentResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeDocumentResponse>;
 
 export interface DeleteMeFaxCustomDomainRequest {
   id: number;
@@ -3496,9 +3408,8 @@ export const DeleteMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeFaxCustomDomainRequest>;
 
 export interface DeleteMeFaxCustomDomainResponse {}
-export const DeleteMeFaxCustomDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteMeFaxCustomDomainResponse" },
-) as any as S.Schema<DeleteMeFaxCustomDomainResponse>;
+export const DeleteMeFaxCustomDomainResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<DeleteMeFaxCustomDomainResponse>;
 
 export interface DeleteMeIdentityGroupRequest {
   /** Group */
@@ -3513,9 +3424,8 @@ export const DeleteMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityGroupRequest>;
 
 export interface DeleteMeIdentityGroupResponse {}
-export const DeleteMeIdentityGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeIdentityGroupResponse",
-}) as any as S.Schema<DeleteMeIdentityGroupResponse>;
+export const DeleteMeIdentityGroupResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeIdentityGroupResponse>;
 
 export interface DeleteMeIdentityGroupUserRequest {
   /** Group */
@@ -3533,11 +3443,8 @@ export const DeleteMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityGroupUserRequest>;
 
 export interface DeleteMeIdentityGroupUserResponse {}
-export const DeleteMeIdentityGroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeIdentityGroupUserResponse",
-}) as any as S.Schema<DeleteMeIdentityGroupUserResponse>;
+export const DeleteMeIdentityGroupUserResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityGroupUserResponse>;
 
 export interface DeleteMeIdentityProviderRequest {}
 export const DeleteMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3547,11 +3454,8 @@ export const DeleteMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityProviderRequest>;
 
 export interface DeleteMeIdentityProviderResponse {}
-export const DeleteMeIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeIdentityProviderResponse",
-}) as any as S.Schema<DeleteMeIdentityProviderResponse>;
+export const DeleteMeIdentityProviderResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityProviderResponse>;
 
 export interface DeleteMeIdentityUserRequest {
   /** User */
@@ -3566,9 +3470,8 @@ export const DeleteMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityUserRequest>;
 
 export interface DeleteMeIdentityUserResponse {}
-export const DeleteMeIdentityUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeIdentityUserResponse",
-}) as any as S.Schema<DeleteMeIdentityUserResponse>;
+export const DeleteMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeIdentityUserResponse>;
 
 export interface DeleteMeIdentityUserTokenRequest {
   /** User */
@@ -3586,11 +3489,8 @@ export const DeleteMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityUserTokenRequest>;
 
 export interface DeleteMeIdentityUserTokenResponse {}
-export const DeleteMeIdentityUserTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeIdentityUserTokenResponse",
-}) as any as S.Schema<DeleteMeIdentityUserTokenResponse>;
+export const DeleteMeIdentityUserTokenResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityUserTokenResponse>;
 
 export interface DeleteMeIpOrganisationRequest {
   organisationId: string;
@@ -3604,9 +3504,8 @@ export const DeleteMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIpOrganisationRequest>;
 
 export interface DeleteMeIpOrganisationResponse {}
-export const DeleteMeIpOrganisationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeIpOrganisationResponse",
-}) as any as S.Schema<DeleteMeIpOrganisationResponse>;
+export const DeleteMeIpOrganisationResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeIpOrganisationResponse>;
 
 export interface DeleteMeLogAuditLogSubscriptionRequest {
   /** Subscription ID */
@@ -3653,9 +3552,8 @@ export const DeleteMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeOauth2ClientRequest>;
 
 export interface DeleteMeOauth2ClientResponse {}
-export const DeleteMeOauth2ClientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeOauth2ClientResponse",
-}) as any as S.Schema<DeleteMeOauth2ClientResponse>;
+export const DeleteMeOauth2ClientResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeOauth2ClientResponse>;
 
 export interface DeleteMeOauth2TokenRequest {
   /** Id */
@@ -3670,9 +3568,8 @@ export const DeleteMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeOauth2TokenRequest>;
 
 export interface DeleteMeOauth2TokenResponse {}
-export const DeleteMeOauth2TokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeOauth2TokenResponse",
-}) as any as S.Schema<DeleteMeOauth2TokenResponse>;
+export const DeleteMeOauth2TokenResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeOauth2TokenResponse>;
 
 export interface DeleteMeOrderBalanceRequest {
   orderId: number;
@@ -3691,9 +3588,8 @@ export const DeleteMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeOrderBalanceRequest>;
 
 export interface DeleteMeOrderBalanceResponse {}
-export const DeleteMeOrderBalanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeOrderBalanceResponse",
-}) as any as S.Schema<DeleteMeOrderBalanceResponse>;
+export const DeleteMeOrderBalanceResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeOrderBalanceResponse>;
 
 export interface DeleteMePaymentMethodRequest {
   /** Payment method ID */
@@ -3833,11 +3729,8 @@ export const DeleteMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMePreferenceManagerRequest>;
 
 export interface DeleteMePreferenceManagerResponse {}
-export const DeleteMePreferenceManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMePreferenceManagerResponse",
-}) as any as S.Schema<DeleteMePreferenceManagerResponse>;
+export const DeleteMePreferenceManagerResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMePreferenceManagerResponse>;
 
 export interface DeleteMeSshKeyRequest {
   /** Name of this public SSH key */
@@ -3850,9 +3743,7 @@ export const DeleteMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMeSshKeyRequest" }) as any as S.Schema<DeleteMeSshKeyRequest>;
 
 export interface DeleteMeSshKeyResponse {}
-export const DeleteMeSshKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMeSshKeyResponse",
-}) as any as S.Schema<DeleteMeSshKeyResponse>;
+export const DeleteMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<DeleteMeSshKeyResponse>;
 
 export interface DeleteMeTagRequest {
   /** Tag */
@@ -3876,11 +3767,8 @@ export const DeleteMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionRequest>;
 
 export interface DeleteMeTelephonyDefaultIpRestrictionResponse {}
-export const DeleteMeTelephonyDefaultIpRestrictionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteMeTelephonyDefaultIpRestrictionResponse",
-}) as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionResponse>;
+export const DeleteMeTelephonyDefaultIpRestrictionResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionResponse>;
 
 export interface DisableMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
@@ -3895,11 +3783,8 @@ export const DisableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DisableMeAccessRestrictionBackupCodeRequest>;
 
 export interface DisableMeAccessRestrictionBackupCodeResponse {}
-export const DisableMeAccessRestrictionBackupCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableMeAccessRestrictionBackupCodeResponse",
-}) as any as S.Schema<DisableMeAccessRestrictionBackupCodeResponse>;
+export const DisableMeAccessRestrictionBackupCodeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionBackupCodeResponse>;
 
 export interface DisableMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
@@ -3917,11 +3802,8 @@ export const DisableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DisableMeAccessRestrictionSmsRequest>;
 
 export interface DisableMeAccessRestrictionSmsResponse {}
-export const DisableMeAccessRestrictionSmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableMeAccessRestrictionSmsResponse",
-}) as any as S.Schema<DisableMeAccessRestrictionSmsResponse>;
+export const DisableMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionSmsResponse>;
 
 export interface DisableMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
@@ -3939,11 +3821,8 @@ export const DisableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DisableMeAccessRestrictionTotpRequest>;
 
 export interface DisableMeAccessRestrictionTotpResponse {}
-export const DisableMeAccessRestrictionTotpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableMeAccessRestrictionTotpResponse",
-}) as any as S.Schema<DisableMeAccessRestrictionTotpResponse>;
+export const DisableMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionTotpResponse>;
 
 export interface DisableMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
@@ -3958,11 +3837,8 @@ export const DisableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DisableMeAccessRestrictionU2fRequest>;
 
 export interface DisableMeAccessRestrictionU2fResponse {}
-export const DisableMeAccessRestrictionU2fResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisableMeAccessRestrictionU2fResponse",
-}) as any as S.Schema<DisableMeAccessRestrictionU2fResponse>;
+export const DisableMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionU2fResponse>;
 
 export interface DisableMeIdentityUserRequest {
   /** User */
@@ -3977,9 +3853,8 @@ export const DisableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableMeIdentityUserRequest>;
 
 export interface DisableMeIdentityUserResponse {}
-export const DisableMeIdentityUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableMeIdentityUserResponse",
-}) as any as S.Schema<DisableMeIdentityUserResponse>;
+export const DisableMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<DisableMeIdentityUserResponse>;
 
 export interface EditAccountDetailsRequest {
   /** Address of nichandle */
@@ -4068,9 +3943,8 @@ export const EditAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditAccountDetailsRequest>;
 
 export interface EditAccountDetailsResponse {}
-export const EditAccountDetailsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EditAccountDetailsResponse",
-}) as any as S.Schema<EditAccountDetailsResponse>;
+export const EditAccountDetailsResponse =
+  ApplyMeSlaResponse as any as S.Schema<EditAccountDetailsResponse>;
 
 export interface EnableMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
@@ -4085,11 +3959,8 @@ export const EnableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<EnableMeAccessRestrictionBackupCodeRequest>;
 
 export interface EnableMeAccessRestrictionBackupCodeResponse {}
-export const EnableMeAccessRestrictionBackupCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableMeAccessRestrictionBackupCodeResponse",
-}) as any as S.Schema<EnableMeAccessRestrictionBackupCodeResponse>;
+export const EnableMeAccessRestrictionBackupCodeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionBackupCodeResponse>;
 
 export interface EnableMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
@@ -4107,11 +3978,8 @@ export const EnableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableMeAccessRestrictionSmsRequest>;
 
 export interface EnableMeAccessRestrictionSmsResponse {}
-export const EnableMeAccessRestrictionSmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableMeAccessRestrictionSmsResponse",
-}) as any as S.Schema<EnableMeAccessRestrictionSmsResponse>;
+export const EnableMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionSmsResponse>;
 
 export interface EnableMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
@@ -4129,11 +3997,8 @@ export const EnableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<EnableMeAccessRestrictionTotpRequest>;
 
 export interface EnableMeAccessRestrictionTotpResponse {}
-export const EnableMeAccessRestrictionTotpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableMeAccessRestrictionTotpResponse",
-}) as any as S.Schema<EnableMeAccessRestrictionTotpResponse>;
+export const EnableMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionTotpResponse>;
 
 export interface EnableMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
@@ -4148,11 +4013,8 @@ export const EnableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableMeAccessRestrictionU2fRequest>;
 
 export interface EnableMeAccessRestrictionU2fResponse {}
-export const EnableMeAccessRestrictionU2fResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnableMeAccessRestrictionU2fResponse",
-}) as any as S.Schema<EnableMeAccessRestrictionU2fResponse>;
+export const EnableMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionU2fResponse>;
 
 export interface EnableMeIdentityUserRequest {
   /** User */
@@ -4167,9 +4029,8 @@ export const EnableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableMeIdentityUserRequest>;
 
 export interface EnableMeIdentityUserResponse {}
-export const EnableMeIdentityUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "EnableMeIdentityUserResponse",
-}) as any as S.Schema<EnableMeIdentityUserResponse>;
+export const EnableMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<EnableMeIdentityUserResponse>;
 
 /** List of available archive types */
 export type BillingArchiveTypeEnum = "csv" | "zip";
@@ -4177,9 +4038,8 @@ export const BillingArchiveTypeEnum = S.String;
 
 /** A list of ids to export */
 export type ExportMeBillRequestIdsList = Array<string>;
-export const ExportMeBillRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportMeBillRequestIdsList>;
+export const ExportMeBillRequestIdsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ExportMeBillRequestIdsList>;
 
 export interface ExportMeBillRequest {
   /** The file type of the archive */
@@ -4201,15 +4061,12 @@ export const ExportMeBillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportMeBillRequest" }) as any as S.Schema<ExportMeBillRequest>;
 
 export interface ExportMeBillResponse {}
-export const ExportMeBillResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportMeBillResponse",
-}) as any as S.Schema<ExportMeBillResponse>;
+export const ExportMeBillResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeBillResponse>;
 
 /** A list of ids to export */
 export type ExportMeRefundRequestIdsList = Array<string>;
-export const ExportMeRefundRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExportMeRefundRequestIdsList>;
+export const ExportMeRefundRequestIdsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ExportMeRefundRequestIdsList>;
 
 export interface ExportMeRefundRequest {
   /** The file type of the archive */
@@ -4231,9 +4088,7 @@ export const ExportMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportMeRefundRequest" }) as any as S.Schema<ExportMeRefundRequest>;
 
 export interface ExportMeRefundResponse {}
-export const ExportMeRefundResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ExportMeRefundResponse",
-}) as any as S.Schema<ExportMeRefundResponse>;
+export const ExportMeRefundResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeRefundResponse>;
 
 export interface FinalizeMePaymentMethodRequest {
   /** Payment method ID */
@@ -4277,9 +4132,8 @@ export const GetCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCertificatesRequest" }) as any as S.Schema<GetCertificatesRequest>;
 
 export type GetCertificatesResponseBodyList = Array<string>;
-export const GetCertificatesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetCertificatesResponseBodyList>;
+export const GetCertificatesResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<GetCertificatesResponseBodyList>;
 
 export type GetCertificatesResponse = GetCertificatesResponseBodyList;
 export const GetCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5290,20 +5144,13 @@ export interface MeBillingTasksTaskMetadatum {
   /** Metadatum value */
   value?: string;
 }
-export const MeBillingTasksTaskMetadatum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MeBillingTasksTaskMetadatum",
-}) as any as S.Schema<MeBillingTasksTaskMetadatum>;
+export const MeBillingTasksTaskMetadatum =
+  ComplexTypeSafeKeyValueString as any as S.Schema<MeBillingTasksTaskMetadatum>;
 
 /** Metadata linked to the Task. Will help you determine which object it relates to */
 export type MeBillingTasksTaskMetadataList = Array<MeBillingTasksTaskMetadatum>;
-export const MeBillingTasksTaskMetadataList = /*@__PURE__*/ S.Array(
-  MeBillingTasksTaskMetadatum,
-) as any as S.Schema<MeBillingTasksTaskMetadataList>;
+export const MeBillingTasksTaskMetadataList =
+  NichandleDocumentDocumentTagsList as any as S.Schema<MeBillingTasksTaskMetadataList>;
 
 /** Billing tasks names */
 export type MeBillingTasksTaskNameEnum = "contact/change";
@@ -5398,11 +5245,8 @@ export const GetMeBringYourOwnIpTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeBringYourOwnIpTokenRequest>;
 
 export type GetMeBringYourOwnIpTokenResponse = string;
-export const GetMeBringYourOwnIpTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetMeBringYourOwnIpTokenResponse",
-}) as any as S.Schema<GetMeBringYourOwnIpTokenResponse>;
+export const GetMeBringYourOwnIpTokenResponse =
+  AcceptMeAgreementResponse as any as S.Schema<GetMeBringYourOwnIpTokenResponse>;
 
 export interface GetMeCarbonCalculatorHasInvoiceRequest {
   /** Month of the requested invoice (day is ignored) */
@@ -5674,9 +5518,8 @@ export const GetMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If defined, list of ip blocks which are allowed to call API with this credential */
 export type AuthApiCredentialAllowedIPsList = Array<string>;
-export const AuthApiCredentialAllowedIPsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthApiCredentialAllowedIPsList>;
+export const AuthApiCredentialAllowedIPsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthApiCredentialAllowedIPsList>;
 
 /** All HTTP methods available */
 export type AuthHTTPMethodEnum = "DELETE" | "GET" | "PATCH" | "POST" | "PUT";
@@ -5853,9 +5696,8 @@ export const MeCreditBalanceBookedList = /*@__PURE__*/ S.Array(
 
 /** Movement expiring soon */
 export type MeCreditBalanceExpiringList = Array<MeCreditBalanceExpiringMovement>;
-export const MeCreditBalanceExpiringList = /*@__PURE__*/ S.Array(
-  MeCreditBalanceExpiringMovement,
-) as any as S.Schema<MeCreditBalanceExpiringList>;
+export const MeCreditBalanceExpiringList =
+  MeCreditBalanceBalanceDetailsExpiringList as any as S.Schema<MeCreditBalanceExpiringList>;
 
 /** Balance type */
 export type MeCreditBalanceTypeEnum = "BONUS" | "DEPOSIT" | "PREPAID_ACCOUNT" | "VOUCHER";
@@ -6491,9 +6333,8 @@ export const GetMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User's groups */
 export type AuthUserGroupsList = Array<string>;
-export const AuthUserGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuthUserGroupsList>;
+export const AuthUserGroupsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthUserGroupsList>;
 
 /** Status of a User */
 export type AuthUserStatusEnum = "DISABLED" | "OK" | "PASSWORD_CHANGE_REQUIRED";
@@ -6655,9 +6496,8 @@ export const GetMeLogAuditLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-export const DbaasLogsLogKindAdditionalReturnedFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
+export const DbaasLogsLogKindAdditionalReturnedFieldsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
 
 /** Log kind */
 export interface DbaasLogsLogKind {
@@ -7140,9 +6980,8 @@ export const GetMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** allowed callback urls */
 export type Oauth2ClientCallbackUrlsList = Array<string>;
-export const Oauth2ClientCallbackUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2ClientCallbackUrlsList>;
+export const Oauth2ClientCallbackUrlsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2ClientCallbackUrlsList>;
 
 /** An oAuth2 Client */
 export interface Oauth2Client {
@@ -7185,9 +7024,8 @@ export const GetMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** list of scopes the token has */
 export type Oauth2AccessTokenScopesList = Array<string>;
-export const Oauth2AccessTokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2AccessTokenScopesList>;
+export const Oauth2AccessTokenScopesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2AccessTokenScopesList>;
 
 /** An oAuth2 accesss token details */
 export interface Oauth2AccessToken {
@@ -7217,15 +7055,13 @@ export const Oauth2TokenAccessTokensList = /*@__PURE__*/ S.Array(
 
 /** list of identities that the token is associated with */
 export type Oauth2TokenIdentitiesList = Array<string>;
-export const Oauth2TokenIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2TokenIdentitiesList>;
+export const Oauth2TokenIdentitiesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2TokenIdentitiesList>;
 
 /** list of scopes the token has */
 export type Oauth2TokenScopesList = Array<string>;
-export const Oauth2TokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<Oauth2TokenScopesList>;
+export const Oauth2TokenScopesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2TokenScopesList>;
 
 /** An oAuth2 refresh token details */
 export interface Oauth2Token {
@@ -7916,14 +7752,8 @@ export interface NichandleManagerPreference {
   /** This preference value */
   value?: string;
 }
-export const NichandleManagerPreference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NichandleManagerPreference",
-}) as any as S.Schema<NichandleManagerPreference>;
+export const NichandleManagerPreference =
+  ComplexTypeSafeKeyValueString as any as S.Schema<NichandleManagerPreference>;
 
 export interface GetMeRefundRequest {
   refundId: string;
@@ -8150,11 +7980,8 @@ export const GetMeSlaCanBeAppliedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeSlaCanBeAppliedRequest>;
 
 export type GetMeSlaCanBeAppliedResponse = boolean;
-export const GetMeSlaCanBeAppliedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "GetMeSlaCanBeAppliedResponse",
-}) as any as S.Schema<GetMeSlaCanBeAppliedResponse>;
+export const GetMeSlaCanBeAppliedResponse =
+  GetMeBillingInvoicesByPostalMailResponse as any as S.Schema<GetMeSlaCanBeAppliedResponse>;
 
 export interface GetMeSlaStatusRequest {
   /** Id of the object */
@@ -8505,9 +8332,8 @@ export const NichandleDomainTaskArgumentAcceptedFormatsList = /*@__PURE__*/ S.Ar
 
 /** List of accepted values */
 export type NichandleDomainTaskArgumentAcceptedValuesList = Array<string>;
-export const NichandleDomainTaskArgumentAcceptedValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NichandleDomainTaskArgumentAcceptedValuesList>;
+export const NichandleDomainTaskArgumentAcceptedValuesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<NichandleDomainTaskArgumentAcceptedValuesList>;
 
 /** Available contact fields */
 export type XanderContactFieldEnum =
@@ -8912,14 +8738,11 @@ export const ListMeAbuseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeAbuseRequest" }) as any as S.Schema<ListMeAbuseRequest>;
 
 export type ListMeAbuseResponseBodyList = Array<string>;
-export const ListMeAbuseResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeAbuseResponseBodyList>;
+export const ListMeAbuseResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeAbuseResponseBodyList>;
 
 export type ListMeAbuseResponse = ListMeAbuseResponseBodyList;
-export const ListMeAbuseResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeAbuseResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeAbuseResponse" }) as any as S.Schema<ListMeAbuseResponse>;
+export const ListMeAbuseResponse = GetCertificatesResponse as any as S.Schema<ListMeAbuseResponse>;
 
 export interface ListMeAccessRestrictionIpRequest {}
 export const ListMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8948,16 +8771,12 @@ export const ListMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeAccessRestrictionSmsRequest>;
 
 export type ListMeAccessRestrictionSmsResponseBodyList = Array<number>;
-export const ListMeAccessRestrictionSmsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeAccessRestrictionSmsResponseBodyList>;
+export const ListMeAccessRestrictionSmsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAccessRestrictionSmsResponseBodyList>;
 
 export type ListMeAccessRestrictionSmsResponse = ListMeAccessRestrictionSmsResponseBodyList;
-export const ListMeAccessRestrictionSmsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeAccessRestrictionSmsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeAccessRestrictionSmsResponse",
-}) as any as S.Schema<ListMeAccessRestrictionSmsResponse>;
+export const ListMeAccessRestrictionSmsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionSmsResponse>;
 
 export interface ListMeAccessRestrictionTotpRequest {}
 export const ListMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8967,16 +8786,12 @@ export const ListMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeAccessRestrictionTotpRequest>;
 
 export type ListMeAccessRestrictionTotpResponseBodyList = Array<number>;
-export const ListMeAccessRestrictionTotpResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeAccessRestrictionTotpResponseBodyList>;
+export const ListMeAccessRestrictionTotpResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAccessRestrictionTotpResponseBodyList>;
 
 export type ListMeAccessRestrictionTotpResponse = ListMeAccessRestrictionTotpResponseBodyList;
-export const ListMeAccessRestrictionTotpResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeAccessRestrictionTotpResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeAccessRestrictionTotpResponse",
-}) as any as S.Schema<ListMeAccessRestrictionTotpResponse>;
+export const ListMeAccessRestrictionTotpResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionTotpResponse>;
 
 export interface ListMeAccessRestrictionU2fRequest {}
 export const ListMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8986,16 +8801,12 @@ export const ListMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeAccessRestrictionU2fRequest>;
 
 export type ListMeAccessRestrictionU2fResponseBodyList = Array<number>;
-export const ListMeAccessRestrictionU2fResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeAccessRestrictionU2fResponseBodyList>;
+export const ListMeAccessRestrictionU2fResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAccessRestrictionU2fResponseBodyList>;
 
 export type ListMeAccessRestrictionU2fResponse = ListMeAccessRestrictionU2fResponseBodyList;
-export const ListMeAccessRestrictionU2fResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeAccessRestrictionU2fResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeAccessRestrictionU2fResponse",
-}) as any as S.Schema<ListMeAccessRestrictionU2fResponse>;
+export const ListMeAccessRestrictionU2fResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionU2fResponse>;
 
 export interface ListMeAgreementsRequest {
   /** Filter the value of agreed property (like) */
@@ -9011,9 +8822,8 @@ export const ListMeAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeAgreementsRequest" }) as any as S.Schema<ListMeAgreementsRequest>;
 
 export type ListMeAgreementsResponseBodyList = Array<number>;
-export const ListMeAgreementsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeAgreementsResponseBodyList>;
+export const ListMeAgreementsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAgreementsResponseBodyList>;
 
 export type ListMeAgreementsResponse = ListMeAgreementsResponseBodyList;
 export const ListMeAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9026,16 +8836,12 @@ export const ListMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeApplicationRequest" }) as any as S.Schema<ListMeApplicationRequest>;
 
 export type ListMeApplicationResponseBodyList = Array<number>;
-export const ListMeApplicationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeApplicationResponseBodyList>;
+export const ListMeApplicationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeApplicationResponseBodyList>;
 
 export type ListMeApplicationResponse = ListMeApplicationResponseBodyList;
-export const ListMeApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeApplicationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeApplicationResponse",
-}) as any as S.Schema<ListMeApplicationResponse>;
+export const ListMeApplicationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeApplicationResponse>;
 
 export interface ListMeBillRequest {
   /** Filter the value of category property (=) */
@@ -9057,14 +8863,11 @@ export const ListMeBillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeBillRequest" }) as any as S.Schema<ListMeBillRequest>;
 
 export type ListMeBillResponseBodyList = Array<string>;
-export const ListMeBillResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeBillResponseBodyList>;
+export const ListMeBillResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeBillResponseBodyList>;
 
 export type ListMeBillResponse = ListMeBillResponseBodyList;
-export const ListMeBillResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeBillResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeBillResponse" }) as any as S.Schema<ListMeBillResponse>;
+export const ListMeBillResponse = GetCertificatesResponse as any as S.Schema<ListMeBillResponse>;
 
 export interface ListMeBillDebtOperationRequest {
   billId: string;
@@ -9081,16 +8884,12 @@ export const ListMeBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillDebtOperationRequest>;
 
 export type ListMeBillDebtOperationResponseBodyList = Array<number>;
-export const ListMeBillDebtOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeBillDebtOperationResponseBodyList>;
+export const ListMeBillDebtOperationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillDebtOperationResponseBodyList>;
 
 export type ListMeBillDebtOperationResponse = ListMeBillDebtOperationResponseBodyList;
-export const ListMeBillDebtOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeBillDebtOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeBillDebtOperationResponse",
-}) as any as S.Schema<ListMeBillDebtOperationResponse>;
+export const ListMeBillDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillDebtOperationResponse>;
 
 export interface ListMeBillDetailsRequest {
   billId: string;
@@ -9102,9 +8901,8 @@ export const ListMeBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeBillDetailsRequest" }) as any as S.Schema<ListMeBillDetailsRequest>;
 
 export type ListMeBillDetailsResponseBodyList = Array<string>;
-export const ListMeBillDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeBillDetailsResponseBodyList>;
+export const ListMeBillDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeBillDetailsResponseBodyList>;
 
 export type ListMeBillDetailsResponse = ListMeBillDetailsResponseBodyList;
 export const ListMeBillDetailsResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9129,16 +8927,12 @@ export const ListMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillingGroupRequest>;
 
 export type ListMeBillingGroupResponseBodyList = Array<number>;
-export const ListMeBillingGroupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeBillingGroupResponseBodyList>;
+export const ListMeBillingGroupResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingGroupResponseBodyList>;
 
 export type ListMeBillingGroupResponse = ListMeBillingGroupResponseBodyList;
-export const ListMeBillingGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeBillingGroupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeBillingGroupResponse",
-}) as any as S.Schema<ListMeBillingGroupResponse>;
+export const ListMeBillingGroupResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingGroupResponse>;
 
 export interface ListMeBillingGroupServiceRequest {
   /** Group ID */
@@ -9153,16 +8947,12 @@ export const ListMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillingGroupServiceRequest>;
 
 export type ListMeBillingGroupServiceResponseBodyList = Array<number>;
-export const ListMeBillingGroupServiceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeBillingGroupServiceResponseBodyList>;
+export const ListMeBillingGroupServiceResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingGroupServiceResponseBodyList>;
 
 export type ListMeBillingGroupServiceResponse = ListMeBillingGroupServiceResponseBodyList;
-export const ListMeBillingGroupServiceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeBillingGroupServiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeBillingGroupServiceResponse",
-}) as any as S.Schema<ListMeBillingGroupServiceResponse>;
+export const ListMeBillingGroupServiceResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingGroupServiceResponse>;
 
 export interface ListMeBillingPurchaseOrderRequest {
   /** Billing Group Identifier */
@@ -9177,16 +8967,12 @@ export const ListMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillingPurchaseOrderRequest>;
 
 export type ListMeBillingPurchaseOrderResponseBodyList = Array<number>;
-export const ListMeBillingPurchaseOrderResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeBillingPurchaseOrderResponseBodyList>;
+export const ListMeBillingPurchaseOrderResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingPurchaseOrderResponseBodyList>;
 
 export type ListMeBillingPurchaseOrderResponse = ListMeBillingPurchaseOrderResponseBodyList;
-export const ListMeBillingPurchaseOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeBillingPurchaseOrderResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeBillingPurchaseOrderResponse",
-}) as any as S.Schema<ListMeBillingPurchaseOrderResponse>;
+export const ListMeBillingPurchaseOrderResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingPurchaseOrderResponse>;
 
 export interface ListMeBillingReportConsumptionRequest {}
 export const ListMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9196,16 +8982,12 @@ export const ListMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeBillingReportConsumptionRequest>;
 
 export type ListMeBillingReportConsumptionResponseBodyList = Array<string>;
-export const ListMeBillingReportConsumptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeBillingReportConsumptionResponseBodyList>;
+export const ListMeBillingReportConsumptionResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeBillingReportConsumptionResponseBodyList>;
 
 export type ListMeBillingReportConsumptionResponse = ListMeBillingReportConsumptionResponseBodyList;
-export const ListMeBillingReportConsumptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeBillingReportConsumptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeBillingReportConsumptionResponse",
-}) as any as S.Schema<ListMeBillingReportConsumptionResponse>;
+export const ListMeBillingReportConsumptionResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeBillingReportConsumptionResponse>;
 
 export interface ListMeBillingTaskRequest {
   /** Filter tasks by name */
@@ -9221,16 +9003,12 @@ export const ListMeBillingTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeBillingTaskRequest" }) as any as S.Schema<ListMeBillingTaskRequest>;
 
 export type ListMeBillingTaskResponseBodyList = Array<number>;
-export const ListMeBillingTaskResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeBillingTaskResponseBodyList>;
+export const ListMeBillingTaskResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingTaskResponseBodyList>;
 
 export type ListMeBillingTaskResponse = ListMeBillingTaskResponseBodyList;
-export const ListMeBillingTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeBillingTaskResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeBillingTaskResponse",
-}) as any as S.Schema<ListMeBillingTaskResponse>;
+export const ListMeBillingTaskResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingTaskResponse>;
 
 export interface ListMeCarbonCalculatorTaskRequest {}
 export const ListMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9450,16 +9228,12 @@ export const ListMeConsumptionUsageForecastRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeConsumptionUsageForecastRequest>;
 
 export type ListMeConsumptionUsageForecastResponseBodyList = Array<MeConsumptionTransaction>;
-export const ListMeConsumptionUsageForecastResponseBodyList = /*@__PURE__*/ S.Array(
-  MeConsumptionTransaction,
-) as any as S.Schema<ListMeConsumptionUsageForecastResponseBodyList>;
+export const ListMeConsumptionUsageForecastResponseBodyList =
+  ListMeConsumptionUsageCurrentResponseBodyList as any as S.Schema<ListMeConsumptionUsageForecastResponseBodyList>;
 
 export type ListMeConsumptionUsageForecastResponse = ListMeConsumptionUsageForecastResponseBodyList;
-export const ListMeConsumptionUsageForecastResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeConsumptionUsageForecastResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeConsumptionUsageForecastResponse",
-}) as any as S.Schema<ListMeConsumptionUsageForecastResponse>;
+export const ListMeConsumptionUsageForecastResponse =
+  ListMeConsumptionUsageCurrentResponse as any as S.Schema<ListMeConsumptionUsageForecastResponse>;
 
 export interface ListMeConsumptionUsageHistoryRequest {
   /** Begin date */
@@ -9477,16 +9251,12 @@ export const ListMeConsumptionUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListMeConsumptionUsageHistoryRequest>;
 
 export type ListMeConsumptionUsageHistoryResponseBodyList = Array<MeConsumptionTransaction>;
-export const ListMeConsumptionUsageHistoryResponseBodyList = /*@__PURE__*/ S.Array(
-  MeConsumptionTransaction,
-) as any as S.Schema<ListMeConsumptionUsageHistoryResponseBodyList>;
+export const ListMeConsumptionUsageHistoryResponseBodyList =
+  ListMeConsumptionUsageCurrentResponseBodyList as any as S.Schema<ListMeConsumptionUsageHistoryResponseBodyList>;
 
 export type ListMeConsumptionUsageHistoryResponse = ListMeConsumptionUsageHistoryResponseBodyList;
-export const ListMeConsumptionUsageHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeConsumptionUsageHistoryResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeConsumptionUsageHistoryResponse",
-}) as any as S.Schema<ListMeConsumptionUsageHistoryResponse>;
+export const ListMeConsumptionUsageHistoryResponse =
+  ListMeConsumptionUsageCurrentResponse as any as S.Schema<ListMeConsumptionUsageHistoryResponse>;
 
 export interface ListMeContactRequest {}
 export const ListMeContactRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9494,14 +9264,12 @@ export const ListMeContactRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeContactRequest" }) as any as S.Schema<ListMeContactRequest>;
 
 export type ListMeContactResponseBodyList = Array<number>;
-export const ListMeContactResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeContactResponseBodyList>;
+export const ListMeContactResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeContactResponseBodyList>;
 
 export type ListMeContactResponse = ListMeContactResponseBodyList;
-export const ListMeContactResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeContactResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeContactResponse" }) as any as S.Schema<ListMeContactResponse>;
+export const ListMeContactResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeContactResponse>;
 
 export interface ListMeContactFieldsRequest {
   /** Contact ID */
@@ -9568,16 +9336,12 @@ export const ListMeCorrectiveInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeCorrectiveInvoiceRequest>;
 
 export type ListMeCorrectiveInvoiceResponseBodyList = Array<string>;
-export const ListMeCorrectiveInvoiceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeCorrectiveInvoiceResponseBodyList>;
+export const ListMeCorrectiveInvoiceResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeCorrectiveInvoiceResponseBodyList>;
 
 export type ListMeCorrectiveInvoiceResponse = ListMeCorrectiveInvoiceResponseBodyList;
-export const ListMeCorrectiveInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeCorrectiveInvoiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeCorrectiveInvoiceResponse",
-}) as any as S.Schema<ListMeCorrectiveInvoiceResponse>;
+export const ListMeCorrectiveInvoiceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeCorrectiveInvoiceResponse>;
 
 export interface ListMeCorrectiveInvoiceDebtOperationRequest {
   correctiveInvoiceId: string;
@@ -9600,17 +9364,13 @@ export const ListMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationRequest>;
 
 export type ListMeCorrectiveInvoiceDebtOperationResponseBodyList = Array<number>;
-export const ListMeCorrectiveInvoiceDebtOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponseBodyList>;
+export const ListMeCorrectiveInvoiceDebtOperationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponseBodyList>;
 
 export type ListMeCorrectiveInvoiceDebtOperationResponse =
   ListMeCorrectiveInvoiceDebtOperationResponseBodyList;
-export const ListMeCorrectiveInvoiceDebtOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeCorrectiveInvoiceDebtOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeCorrectiveInvoiceDebtOperationResponse",
-}) as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponse>;
+export const ListMeCorrectiveInvoiceDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponse>;
 
 export interface ListMeCorrectiveInvoiceDetailsRequest {
   correctiveInvoiceId: string;
@@ -9630,16 +9390,12 @@ export const ListMeCorrectiveInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeCorrectiveInvoiceDetailsRequest>;
 
 export type ListMeCorrectiveInvoiceDetailsResponseBodyList = Array<string>;
-export const ListMeCorrectiveInvoiceDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponseBodyList>;
+export const ListMeCorrectiveInvoiceDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponseBodyList>;
 
 export type ListMeCorrectiveInvoiceDetailsResponse = ListMeCorrectiveInvoiceDetailsResponseBodyList;
-export const ListMeCorrectiveInvoiceDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeCorrectiveInvoiceDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeCorrectiveInvoiceDetailsResponse",
-}) as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponse>;
+export const ListMeCorrectiveInvoiceDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponse>;
 
 export interface ListMeCredentialRequest {
   /** Filter by applicationId */
@@ -9655,14 +9411,12 @@ export const ListMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeCredentialRequest" }) as any as S.Schema<ListMeCredentialRequest>;
 
 export type ListMeCredentialResponseBodyList = Array<number>;
-export const ListMeCredentialResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeCredentialResponseBodyList>;
+export const ListMeCredentialResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeCredentialResponseBodyList>;
 
 export type ListMeCredentialResponse = ListMeCredentialResponseBodyList;
-export const ListMeCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeCredentialResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeCredentialResponse" }) as any as S.Schema<ListMeCredentialResponse>;
+export const ListMeCredentialResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeCredentialResponse>;
 
 export interface ListMeCreditBalanceRequest {
   /** Filter by balance type */
@@ -9677,16 +9431,12 @@ export const ListMeCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeCreditBalanceRequest>;
 
 export type ListMeCreditBalanceResponseBodyList = Array<string>;
-export const ListMeCreditBalanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeCreditBalanceResponseBodyList>;
+export const ListMeCreditBalanceResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeCreditBalanceResponseBodyList>;
 
 export type ListMeCreditBalanceResponse = ListMeCreditBalanceResponseBodyList;
-export const ListMeCreditBalanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeCreditBalanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeCreditBalanceResponse",
-}) as any as S.Schema<ListMeCreditBalanceResponse>;
+export const ListMeCreditBalanceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeCreditBalanceResponse>;
 
 export interface ListMeCreditBalanceMovementRequest {
   /** Balance name */
@@ -9701,16 +9451,12 @@ export const ListMeCreditBalanceMovementRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeCreditBalanceMovementRequest>;
 
 export type ListMeCreditBalanceMovementResponseBodyList = Array<number>;
-export const ListMeCreditBalanceMovementResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeCreditBalanceMovementResponseBodyList>;
+export const ListMeCreditBalanceMovementResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeCreditBalanceMovementResponseBodyList>;
 
 export type ListMeCreditBalanceMovementResponse = ListMeCreditBalanceMovementResponseBodyList;
-export const ListMeCreditBalanceMovementResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeCreditBalanceMovementResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeCreditBalanceMovementResponse",
-}) as any as S.Schema<ListMeCreditBalanceMovementResponse>;
+export const ListMeCreditBalanceMovementResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeCreditBalanceMovementResponse>;
 
 export interface ListMeDebtAccountDebtRequest {}
 export const ListMeDebtAccountDebtRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9720,16 +9466,12 @@ export const ListMeDebtAccountDebtRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDebtAccountDebtRequest>;
 
 export type ListMeDebtAccountDebtResponseBodyList = Array<number>;
-export const ListMeDebtAccountDebtResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeDebtAccountDebtResponseBodyList>;
+export const ListMeDebtAccountDebtResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDebtAccountDebtResponseBodyList>;
 
 export type ListMeDebtAccountDebtResponse = ListMeDebtAccountDebtResponseBodyList;
-export const ListMeDebtAccountDebtResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDebtAccountDebtResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDebtAccountDebtResponse",
-}) as any as S.Schema<ListMeDebtAccountDebtResponse>;
+export const ListMeDebtAccountDebtResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDebtAccountDebtResponse>;
 
 export interface ListMeDebtAccountDebtOperationRequest {
   debtId: number;
@@ -9746,16 +9488,12 @@ export const ListMeDebtAccountDebtOperationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeDebtAccountDebtOperationRequest>;
 
 export type ListMeDebtAccountDebtOperationResponseBodyList = Array<number>;
-export const ListMeDebtAccountDebtOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeDebtAccountDebtOperationResponseBodyList>;
+export const ListMeDebtAccountDebtOperationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDebtAccountDebtOperationResponseBodyList>;
 
 export type ListMeDebtAccountDebtOperationResponse = ListMeDebtAccountDebtOperationResponseBodyList;
-export const ListMeDebtAccountDebtOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDebtAccountDebtOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDebtAccountDebtOperationResponse",
-}) as any as S.Schema<ListMeDebtAccountDebtOperationResponse>;
+export const ListMeDebtAccountDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDebtAccountDebtOperationResponse>;
 
 export interface ListMeDepositRequest {
   /** Filter the value of date property (>=) */
@@ -9774,14 +9512,12 @@ export const ListMeDepositRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeDepositRequest" }) as any as S.Schema<ListMeDepositRequest>;
 
 export type ListMeDepositResponseBodyList = Array<string>;
-export const ListMeDepositResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeDepositResponseBodyList>;
+export const ListMeDepositResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositResponseBodyList>;
 
 export type ListMeDepositResponse = ListMeDepositResponseBodyList;
-export const ListMeDepositResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDepositResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeDepositResponse" }) as any as S.Schema<ListMeDepositResponse>;
+export const ListMeDepositResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeDepositResponse>;
 
 export interface ListMeDepositDetailsRequest {
   depositId: string;
@@ -9795,16 +9531,12 @@ export const ListMeDepositDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDepositDetailsRequest>;
 
 export type ListMeDepositDetailsResponseBodyList = Array<string>;
-export const ListMeDepositDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeDepositDetailsResponseBodyList>;
+export const ListMeDepositDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositDetailsResponseBodyList>;
 
 export type ListMeDepositDetailsResponse = ListMeDepositDetailsResponseBodyList;
-export const ListMeDepositDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDepositDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDepositDetailsResponse",
-}) as any as S.Schema<ListMeDepositDetailsResponse>;
+export const ListMeDepositDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDepositDetailsResponse>;
 
 export interface ListMeDepositPaidBillDebtOperationRequest {
   depositId: string;
@@ -9829,17 +9561,13 @@ export const ListMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListMeDepositPaidBillDebtOperationRequest>;
 
 export type ListMeDepositPaidBillDebtOperationResponseBodyList = Array<number>;
-export const ListMeDepositPaidBillDebtOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeDepositPaidBillDebtOperationResponseBodyList>;
+export const ListMeDepositPaidBillDebtOperationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDepositPaidBillDebtOperationResponseBodyList>;
 
 export type ListMeDepositPaidBillDebtOperationResponse =
   ListMeDepositPaidBillDebtOperationResponseBodyList;
-export const ListMeDepositPaidBillDebtOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDepositPaidBillDebtOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDepositPaidBillDebtOperationResponse",
-}) as any as S.Schema<ListMeDepositPaidBillDebtOperationResponse>;
+export const ListMeDepositPaidBillDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDepositPaidBillDebtOperationResponse>;
 
 export interface ListMeDepositPaidBillDetailsRequest {
   depositId: string;
@@ -9857,16 +9585,12 @@ export const ListMeDepositPaidBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDepositPaidBillDetailsRequest>;
 
 export type ListMeDepositPaidBillDetailsResponseBodyList = Array<string>;
-export const ListMeDepositPaidBillDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeDepositPaidBillDetailsResponseBodyList>;
+export const ListMeDepositPaidBillDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositPaidBillDetailsResponseBodyList>;
 
 export type ListMeDepositPaidBillDetailsResponse = ListMeDepositPaidBillDetailsResponseBodyList;
-export const ListMeDepositPaidBillDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDepositPaidBillDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDepositPaidBillDetailsResponse",
-}) as any as S.Schema<ListMeDepositPaidBillDetailsResponse>;
+export const ListMeDepositPaidBillDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDepositPaidBillDetailsResponse>;
 
 export interface ListMeDepositPaidBillsRequest {
   depositId: string;
@@ -9880,16 +9604,12 @@ export const ListMeDepositPaidBillsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDepositPaidBillsRequest>;
 
 export type ListMeDepositPaidBillsResponseBodyList = Array<string>;
-export const ListMeDepositPaidBillsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeDepositPaidBillsResponseBodyList>;
+export const ListMeDepositPaidBillsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositPaidBillsResponseBodyList>;
 
 export type ListMeDepositPaidBillsResponse = ListMeDepositPaidBillsResponseBodyList;
-export const ListMeDepositPaidBillsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDepositPaidBillsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDepositPaidBillsResponse",
-}) as any as S.Schema<ListMeDepositPaidBillsResponse>;
+export const ListMeDepositPaidBillsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDepositPaidBillsResponse>;
 
 export interface ListMeDocumentRequest {}
 export const ListMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
@@ -9897,14 +9617,12 @@ export const ListMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeDocumentRequest" }) as any as S.Schema<ListMeDocumentRequest>;
 
 export type ListMeDocumentResponseBodyList = Array<string>;
-export const ListMeDocumentResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeDocumentResponseBodyList>;
+export const ListMeDocumentResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDocumentResponseBodyList>;
 
 export type ListMeDocumentResponse = ListMeDocumentResponseBodyList;
-export const ListMeDocumentResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDocumentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeDocumentResponse" }) as any as S.Schema<ListMeDocumentResponse>;
+export const ListMeDocumentResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeDocumentResponse>;
 
 export interface ListMeDownPaymentInvoiceRequest {
   /** Filter the value of category property (=) */
@@ -9928,16 +9646,12 @@ export const ListMeDownPaymentInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDownPaymentInvoiceRequest>;
 
 export type ListMeDownPaymentInvoiceResponseBodyList = Array<string>;
-export const ListMeDownPaymentInvoiceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeDownPaymentInvoiceResponseBodyList>;
+export const ListMeDownPaymentInvoiceResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDownPaymentInvoiceResponseBodyList>;
 
 export type ListMeDownPaymentInvoiceResponse = ListMeDownPaymentInvoiceResponseBodyList;
-export const ListMeDownPaymentInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDownPaymentInvoiceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDownPaymentInvoiceResponse",
-}) as any as S.Schema<ListMeDownPaymentInvoiceResponse>;
+export const ListMeDownPaymentInvoiceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDownPaymentInvoiceResponse>;
 
 export interface ListMeDownPaymentInvoiceDebtOperationRequest {
   downPaymentInvoiceId: string;
@@ -9960,17 +9674,13 @@ export const ListMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationRequest>;
 
 export type ListMeDownPaymentInvoiceDebtOperationResponseBodyList = Array<number>;
-export const ListMeDownPaymentInvoiceDebtOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponseBodyList>;
+export const ListMeDownPaymentInvoiceDebtOperationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponseBodyList>;
 
 export type ListMeDownPaymentInvoiceDebtOperationResponse =
   ListMeDownPaymentInvoiceDebtOperationResponseBodyList;
-export const ListMeDownPaymentInvoiceDebtOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDownPaymentInvoiceDebtOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDownPaymentInvoiceDebtOperationResponse",
-}) as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponse>;
+export const ListMeDownPaymentInvoiceDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponse>;
 
 export interface ListMeDownPaymentInvoiceDetailsRequest {
   downPaymentInvoiceId: string;
@@ -9990,17 +9700,13 @@ export const ListMeDownPaymentInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListMeDownPaymentInvoiceDetailsRequest>;
 
 export type ListMeDownPaymentInvoiceDetailsResponseBodyList = Array<string>;
-export const ListMeDownPaymentInvoiceDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponseBodyList>;
+export const ListMeDownPaymentInvoiceDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponseBodyList>;
 
 export type ListMeDownPaymentInvoiceDetailsResponse =
   ListMeDownPaymentInvoiceDetailsResponseBodyList;
-export const ListMeDownPaymentInvoiceDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeDownPaymentInvoiceDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeDownPaymentInvoiceDetailsResponse",
-}) as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponse>;
+export const ListMeDownPaymentInvoiceDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponse>;
 
 export interface ListMeFaxCustomDomainsRequest {}
 export const ListMeFaxCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10010,16 +9716,12 @@ export const ListMeFaxCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeFaxCustomDomainsRequest>;
 
 export type ListMeFaxCustomDomainsResponseBodyList = Array<number>;
-export const ListMeFaxCustomDomainsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeFaxCustomDomainsResponseBodyList>;
+export const ListMeFaxCustomDomainsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeFaxCustomDomainsResponseBodyList>;
 
 export type ListMeFaxCustomDomainsResponse = ListMeFaxCustomDomainsResponseBodyList;
-export const ListMeFaxCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeFaxCustomDomainsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeFaxCustomDomainsResponse",
-}) as any as S.Schema<ListMeFaxCustomDomainsResponse>;
+export const ListMeFaxCustomDomainsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeFaxCustomDomainsResponse>;
 
 export interface ListMeFidelityAccountMovementsRequest {
   /** Filter the value of date property (>=) */
@@ -10037,16 +9739,12 @@ export const ListMeFidelityAccountMovementsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeFidelityAccountMovementsRequest>;
 
 export type ListMeFidelityAccountMovementsResponseBodyList = Array<number>;
-export const ListMeFidelityAccountMovementsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeFidelityAccountMovementsResponseBodyList>;
+export const ListMeFidelityAccountMovementsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeFidelityAccountMovementsResponseBodyList>;
 
 export type ListMeFidelityAccountMovementsResponse = ListMeFidelityAccountMovementsResponseBodyList;
-export const ListMeFidelityAccountMovementsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeFidelityAccountMovementsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeFidelityAccountMovementsResponse",
-}) as any as S.Schema<ListMeFidelityAccountMovementsResponse>;
+export const ListMeFidelityAccountMovementsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeFidelityAccountMovementsResponse>;
 
 export interface ListMeIdentityGroupRequest {}
 export const ListMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10056,16 +9754,12 @@ export const ListMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeIdentityGroupRequest>;
 
 export type ListMeIdentityGroupResponseBodyList = Array<string>;
-export const ListMeIdentityGroupResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeIdentityGroupResponseBodyList>;
+export const ListMeIdentityGroupResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityGroupResponseBodyList>;
 
 export type ListMeIdentityGroupResponse = ListMeIdentityGroupResponseBodyList;
-export const ListMeIdentityGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeIdentityGroupResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeIdentityGroupResponse",
-}) as any as S.Schema<ListMeIdentityGroupResponse>;
+export const ListMeIdentityGroupResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityGroupResponse>;
 
 export interface ListMeIdentityGroupUserRequest {
   /** Group */
@@ -10080,16 +9774,12 @@ export const ListMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeIdentityGroupUserRequest>;
 
 export type ListMeIdentityGroupUserResponseBodyList = Array<string>;
-export const ListMeIdentityGroupUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeIdentityGroupUserResponseBodyList>;
+export const ListMeIdentityGroupUserResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityGroupUserResponseBodyList>;
 
 export type ListMeIdentityGroupUserResponse = ListMeIdentityGroupUserResponseBodyList;
-export const ListMeIdentityGroupUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeIdentityGroupUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeIdentityGroupUserResponse",
-}) as any as S.Schema<ListMeIdentityGroupUserResponse>;
+export const ListMeIdentityGroupUserResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityGroupUserResponse>;
 
 export interface ListMeIdentityUserRequest {}
 export const ListMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10099,16 +9789,12 @@ export const ListMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeIdentityUserRequest>;
 
 export type ListMeIdentityUserResponseBodyList = Array<string>;
-export const ListMeIdentityUserResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeIdentityUserResponseBodyList>;
+export const ListMeIdentityUserResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityUserResponseBodyList>;
 
 export type ListMeIdentityUserResponse = ListMeIdentityUserResponseBodyList;
-export const ListMeIdentityUserResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeIdentityUserResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeIdentityUserResponse",
-}) as any as S.Schema<ListMeIdentityUserResponse>;
+export const ListMeIdentityUserResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityUserResponse>;
 
 export interface ListMeIdentityUserTokenRequest {
   /** User */
@@ -10123,16 +9809,12 @@ export const ListMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeIdentityUserTokenRequest>;
 
 export type ListMeIdentityUserTokenResponseBodyList = Array<string>;
-export const ListMeIdentityUserTokenResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeIdentityUserTokenResponseBodyList>;
+export const ListMeIdentityUserTokenResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityUserTokenResponseBodyList>;
 
 export type ListMeIdentityUserTokenResponse = ListMeIdentityUserTokenResponseBodyList;
-export const ListMeIdentityUserTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeIdentityUserTokenResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeIdentityUserTokenResponse",
-}) as any as S.Schema<ListMeIdentityUserTokenResponse>;
+export const ListMeIdentityUserTokenResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityUserTokenResponse>;
 
 export interface ListMeIncidentSbgMigrateServicesRequest {}
 export const ListMeIncidentSbgMigrateServicesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10315,9 +9997,8 @@ export const MeIncidentProposedOffer = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional information on the service */
 export type MeIncidentServiceToMigrateMetadataList = Array<ComplexTypeSafeKeyValueString>;
-export const MeIncidentServiceToMigrateMetadataList = /*@__PURE__*/ S.Array(
-  ComplexTypeSafeKeyValueString,
-) as any as S.Schema<MeIncidentServiceToMigrateMetadataList>;
+export const MeIncidentServiceToMigrateMetadataList =
+  NichandleDocumentDocumentTagsList as any as S.Schema<MeIncidentServiceToMigrateMetadataList>;
 
 /** Original service that can be migrated */
 export interface MeIncidentServiceToMigrate {
@@ -10387,16 +10068,12 @@ export const ListMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeIpOrganisationRequest>;
 
 export type ListMeIpOrganisationResponseBodyList = Array<string>;
-export const ListMeIpOrganisationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeIpOrganisationResponseBodyList>;
+export const ListMeIpOrganisationResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIpOrganisationResponseBodyList>;
 
 export type ListMeIpOrganisationResponse = ListMeIpOrganisationResponseBodyList;
-export const ListMeIpOrganisationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeIpOrganisationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeIpOrganisationResponse",
-}) as any as S.Schema<ListMeIpOrganisationResponse>;
+export const ListMeIpOrganisationResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIpOrganisationResponse>;
 
 export interface ListMeLogAuditRequest {}
 export const ListMeLogAuditRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10529,15 +10206,13 @@ export const AuditLogLoginSuccessDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Identities changed on the policy */
 export type AuditLogPolicyChangesIdentitiesList = Array<string>;
-export const AuditLogPolicyChangesIdentitiesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogPolicyChangesIdentitiesList>;
+export const AuditLogPolicyChangesIdentitiesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogPolicyChangesIdentitiesList>;
 
 /** Resources changed on the policy */
 export type AuditLogPolicyChangesResourcesList = Array<string>;
-export const AuditLogPolicyChangesResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogPolicyChangesResourcesList>;
+export const AuditLogPolicyChangesResourcesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogPolicyChangesResourcesList>;
 
 /** Changed fields for POLICY events */
 export interface AuditLogPolicyChanges {
@@ -10712,9 +10387,8 @@ export const AuditLogProviderModifiedDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Resources changed on the resource group */
 export type AuditLogResourceGroupChangesResourcesList = Array<string>;
-export const AuditLogResourceGroupChangesResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AuditLogResourceGroupChangesResourcesList>;
+export const AuditLogResourceGroupChangesResourcesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogResourceGroupChangesResourcesList>;
 
 /** Changed fields for RESOURCE_GROUP events */
 export interface AuditLogResourceGroupChanges {
@@ -11122,16 +10796,12 @@ export const ListMeLogAuditLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeLogAuditLogKindRequest>;
 
 export type ListMeLogAuditLogKindResponseBodyList = Array<string>;
-export const ListMeLogAuditLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeLogAuditLogKindResponseBodyList>;
+export const ListMeLogAuditLogKindResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogAuditLogKindResponseBodyList>;
 
 export type ListMeLogAuditLogKindResponse = ListMeLogAuditLogKindResponseBodyList;
-export const ListMeLogAuditLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeLogAuditLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeLogAuditLogKindResponse",
-}) as any as S.Schema<ListMeLogAuditLogKindResponse>;
+export const ListMeLogAuditLogKindResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeLogAuditLogKindResponse>;
 
 export interface ListMeLogAuditLogSubscriptionRequest {
   /** Filter on a specific kind (e.g., audit) */
@@ -11146,16 +10816,12 @@ export const ListMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListMeLogAuditLogSubscriptionRequest>;
 
 export type ListMeLogAuditLogSubscriptionResponseBodyList = Array<string>;
-export const ListMeLogAuditLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeLogAuditLogSubscriptionResponseBodyList>;
+export const ListMeLogAuditLogSubscriptionResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogAuditLogSubscriptionResponseBodyList>;
 
 export type ListMeLogAuditLogSubscriptionResponse = ListMeLogAuditLogSubscriptionResponseBodyList;
-export const ListMeLogAuditLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeLogAuditLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeLogAuditLogSubscriptionResponse",
-}) as any as S.Schema<ListMeLogAuditLogSubscriptionResponse>;
+export const ListMeLogAuditLogSubscriptionResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeLogAuditLogSubscriptionResponse>;
 
 export interface ListMeLogKindRequest {}
 export const ListMeLogKindRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11163,14 +10829,12 @@ export const ListMeLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeLogKindRequest" }) as any as S.Schema<ListMeLogKindRequest>;
 
 export type ListMeLogKindResponseBodyList = Array<string>;
-export const ListMeLogKindResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeLogKindResponseBodyList>;
+export const ListMeLogKindResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogKindResponseBodyList>;
 
 export type ListMeLogKindResponse = ListMeLogKindResponseBodyList;
-export const ListMeLogKindResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeLogKindResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeLogKindResponse" }) as any as S.Schema<ListMeLogKindResponse>;
+export const ListMeLogKindResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeLogKindResponse>;
 
 export interface ListMeLogSelfRequest {}
 export const ListMeLogSelfRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11178,14 +10842,12 @@ export const ListMeLogSelfRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeLogSelfRequest" }) as any as S.Schema<ListMeLogSelfRequest>;
 
 export type ListMeLogSelfResponseBodyList = Array<number>;
-export const ListMeLogSelfResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeLogSelfResponseBodyList>;
+export const ListMeLogSelfResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeLogSelfResponseBodyList>;
 
 export type ListMeLogSelfResponse = ListMeLogSelfResponseBodyList;
-export const ListMeLogSelfResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeLogSelfResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeLogSelfResponse" }) as any as S.Schema<ListMeLogSelfResponse>;
+export const ListMeLogSelfResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeLogSelfResponse>;
 
 export interface ListMeLogServicesRequest {}
 export const ListMeLogServicesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11193,16 +10855,12 @@ export const ListMeLogServicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeLogServicesRequest" }) as any as S.Schema<ListMeLogServicesRequest>;
 
 export type ListMeLogServicesResponseBodyList = Array<number>;
-export const ListMeLogServicesResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeLogServicesResponseBodyList>;
+export const ListMeLogServicesResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeLogServicesResponseBodyList>;
 
 export type ListMeLogServicesResponse = ListMeLogServicesResponseBodyList;
-export const ListMeLogServicesResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeLogServicesResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeLogServicesResponse",
-}) as any as S.Schema<ListMeLogServicesResponse>;
+export const ListMeLogServicesResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeLogServicesResponse>;
 
 export interface ListMeLogSubscriptionRequest {
   /** Filter on a specific kind (e.g., audit) */
@@ -11217,16 +10875,12 @@ export const ListMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeLogSubscriptionRequest>;
 
 export type ListMeLogSubscriptionResponseBodyList = Array<string>;
-export const ListMeLogSubscriptionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeLogSubscriptionResponseBodyList>;
+export const ListMeLogSubscriptionResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogSubscriptionResponseBodyList>;
 
 export type ListMeLogSubscriptionResponse = ListMeLogSubscriptionResponseBodyList;
-export const ListMeLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeLogSubscriptionResponse",
-}) as any as S.Schema<ListMeLogSubscriptionResponse>;
+export const ListMeLogSubscriptionResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeLogSubscriptionResponse>;
 
 export interface ListMeMailingListAvailableListsRequest {}
 export const ListMeMailingListAvailableListsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11236,17 +10890,13 @@ export const ListMeMailingListAvailableListsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListMeMailingListAvailableListsRequest>;
 
 export type ListMeMailingListAvailableListsResponseBodyList = Array<string>;
-export const ListMeMailingListAvailableListsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeMailingListAvailableListsResponseBodyList>;
+export const ListMeMailingListAvailableListsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeMailingListAvailableListsResponseBodyList>;
 
 export type ListMeMailingListAvailableListsResponse =
   ListMeMailingListAvailableListsResponseBodyList;
-export const ListMeMailingListAvailableListsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeMailingListAvailableListsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeMailingListAvailableListsResponse",
-}) as any as S.Schema<ListMeMailingListAvailableListsResponse>;
+export const ListMeMailingListAvailableListsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeMailingListAvailableListsResponse>;
 
 export interface ListMeMigrationRequest {}
 export const ListMeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11254,14 +10904,12 @@ export const ListMeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeMigrationRequest" }) as any as S.Schema<ListMeMigrationRequest>;
 
 export type ListMeMigrationResponseBodyList = Array<number>;
-export const ListMeMigrationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeMigrationResponseBodyList>;
+export const ListMeMigrationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeMigrationResponseBodyList>;
 
 export type ListMeMigrationResponse = ListMeMigrationResponseBodyList;
-export const ListMeMigrationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeMigrationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeMigrationResponse" }) as any as S.Schema<ListMeMigrationResponse>;
+export const ListMeMigrationResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeMigrationResponse>;
 
 export interface ListMeMigrationContractRequest {
   /** Migration ID */
@@ -11276,16 +10924,12 @@ export const ListMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeMigrationContractRequest>;
 
 export type ListMeMigrationContractResponseBodyList = Array<number>;
-export const ListMeMigrationContractResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeMigrationContractResponseBodyList>;
+export const ListMeMigrationContractResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeMigrationContractResponseBodyList>;
 
 export type ListMeMigrationContractResponse = ListMeMigrationContractResponseBodyList;
-export const ListMeMigrationContractResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeMigrationContractResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeMigrationContractResponse",
-}) as any as S.Schema<ListMeMigrationContractResponse>;
+export const ListMeMigrationContractResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeMigrationContractResponse>;
 
 export interface ListMeNotificationEmailHistoryRequest {}
 export const ListMeNotificationEmailHistoryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11295,16 +10939,12 @@ export const ListMeNotificationEmailHistoryRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeNotificationEmailHistoryRequest>;
 
 export type ListMeNotificationEmailHistoryResponseBodyList = Array<number>;
-export const ListMeNotificationEmailHistoryResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeNotificationEmailHistoryResponseBodyList>;
+export const ListMeNotificationEmailHistoryResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeNotificationEmailHistoryResponseBodyList>;
 
 export type ListMeNotificationEmailHistoryResponse = ListMeNotificationEmailHistoryResponseBodyList;
-export const ListMeNotificationEmailHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeNotificationEmailHistoryResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeNotificationEmailHistoryResponse",
-}) as any as S.Schema<ListMeNotificationEmailHistoryResponse>;
+export const ListMeNotificationEmailHistoryResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeNotificationEmailHistoryResponse>;
 
 export interface ListMeOauth2ClientRequest {}
 export const ListMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11314,16 +10954,12 @@ export const ListMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOauth2ClientRequest>;
 
 export type ListMeOauth2ClientResponseBodyList = Array<string>;
-export const ListMeOauth2ClientResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeOauth2ClientResponseBodyList>;
+export const ListMeOauth2ClientResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOauth2ClientResponseBodyList>;
 
 export type ListMeOauth2ClientResponse = ListMeOauth2ClientResponseBodyList;
-export const ListMeOauth2ClientResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOauth2ClientResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeOauth2ClientResponse",
-}) as any as S.Schema<ListMeOauth2ClientResponse>;
+export const ListMeOauth2ClientResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeOauth2ClientResponse>;
 
 export interface ListMeOauth2TokenRequest {}
 export const ListMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11331,16 +10967,12 @@ export const ListMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeOauth2TokenRequest" }) as any as S.Schema<ListMeOauth2TokenRequest>;
 
 export type ListMeOauth2TokenResponseBodyList = Array<string>;
-export const ListMeOauth2TokenResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeOauth2TokenResponseBodyList>;
+export const ListMeOauth2TokenResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOauth2TokenResponseBodyList>;
 
 export type ListMeOauth2TokenResponse = ListMeOauth2TokenResponseBodyList;
-export const ListMeOauth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOauth2TokenResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeOauth2TokenResponse",
-}) as any as S.Schema<ListMeOauth2TokenResponse>;
+export const ListMeOauth2TokenResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeOauth2TokenResponse>;
 
 export interface ListMeOrderRequest {
   /** Filter the value of date property (>=) */
@@ -11356,14 +10988,11 @@ export const ListMeOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeOrderRequest" }) as any as S.Schema<ListMeOrderRequest>;
 
 export type ListMeOrderResponseBodyList = Array<number>;
-export const ListMeOrderResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeOrderResponseBodyList>;
+export const ListMeOrderResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOrderResponseBodyList>;
 
 export type ListMeOrderResponse = ListMeOrderResponseBodyList;
-export const ListMeOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOrderResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeOrderResponse" }) as any as S.Schema<ListMeOrderResponse>;
+export const ListMeOrderResponse = ListMeAgreementsResponse as any as S.Schema<ListMeOrderResponse>;
 
 export interface ListMeOrderAvailablePaymentMeanRequest {
   orderId: number;
@@ -11377,9 +11006,8 @@ export const ListMeOrderAvailablePaymentMeanRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListMeOrderAvailablePaymentMeanRequest>;
 
 export type BillingOrderAvailablePaymentMeanFieldOptionsList = Array<string>;
-export const BillingOrderAvailablePaymentMeanFieldOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BillingOrderAvailablePaymentMeanFieldOptionsList>;
+export const BillingOrderAvailablePaymentMeanFieldOptionsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<BillingOrderAvailablePaymentMeanFieldOptionsList>;
 
 /** Field type of a payment mean */
 export type BillingOrderPaymentMeanFieldTypeEnum = "hidden" | "select" | "text";
@@ -11496,16 +11124,12 @@ export const ListMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOrderBalanceRequest>;
 
 export type ListMeOrderBalanceResponseBodyList = Array<string>;
-export const ListMeOrderBalanceResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeOrderBalanceResponseBodyList>;
+export const ListMeOrderBalanceResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOrderBalanceResponseBodyList>;
 
 export type ListMeOrderBalanceResponse = ListMeOrderBalanceResponseBodyList;
-export const ListMeOrderBalanceResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOrderBalanceResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeOrderBalanceResponse",
-}) as any as S.Schema<ListMeOrderBalanceResponse>;
+export const ListMeOrderBalanceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeOrderBalanceResponse>;
 
 export interface ListMeOrderDebtOperationRequest {
   orderId: number;
@@ -11522,16 +11146,12 @@ export const ListMeOrderDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOrderDebtOperationRequest>;
 
 export type ListMeOrderDebtOperationResponseBodyList = Array<number>;
-export const ListMeOrderDebtOperationResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeOrderDebtOperationResponseBodyList>;
+export const ListMeOrderDebtOperationResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOrderDebtOperationResponseBodyList>;
 
 export type ListMeOrderDebtOperationResponse = ListMeOrderDebtOperationResponseBodyList;
-export const ListMeOrderDebtOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOrderDebtOperationResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeOrderDebtOperationResponse",
-}) as any as S.Schema<ListMeOrderDebtOperationResponse>;
+export const ListMeOrderDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOrderDebtOperationResponse>;
 
 export interface ListMeOrderDetailsRequest {
   orderId: number;
@@ -11545,16 +11165,12 @@ export const ListMeOrderDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOrderDetailsRequest>;
 
 export type ListMeOrderDetailsResponseBodyList = Array<number>;
-export const ListMeOrderDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeOrderDetailsResponseBodyList>;
+export const ListMeOrderDetailsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOrderDetailsResponseBodyList>;
 
 export type ListMeOrderDetailsResponse = ListMeOrderDetailsResponseBodyList;
-export const ListMeOrderDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOrderDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeOrderDetailsResponse",
-}) as any as S.Schema<ListMeOrderDetailsResponse>;
+export const ListMeOrderDetailsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOrderDetailsResponse>;
 
 export interface ListMeOrderFollowUpRequest {
   orderId: number;
@@ -11662,20 +11278,13 @@ export interface BillingOrderPaymentMeanHttpParameterChoice {
   name?: string;
   value?: string;
 }
-export const BillingOrderPaymentMeanHttpParameterChoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingOrderPaymentMeanHttpParameterChoice",
-}) as any as S.Schema<BillingOrderPaymentMeanHttpParameterChoice>;
+export const BillingOrderPaymentMeanHttpParameterChoice =
+  MeIncidentProposedOfferConfiguration as any as S.Schema<BillingOrderPaymentMeanHttpParameterChoice>;
 
 export type BillingOrderPaymentMeanHttpParameterChoiceList =
   Array<BillingOrderPaymentMeanHttpParameterChoice>;
-export const BillingOrderPaymentMeanHttpParameterChoiceList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMeanHttpParameterChoice,
-) as any as S.Schema<BillingOrderPaymentMeanHttpParameterChoiceList>;
+export const BillingOrderPaymentMeanHttpParameterChoiceList =
+  MeIncidentProposedOfferConfigurationsList as any as S.Schema<BillingOrderPaymentMeanHttpParameterChoiceList>;
 
 /** Parameter to give to a payment page */
 export interface BillingOrderPaymentMeanHttpParameter {
@@ -11726,39 +11335,32 @@ export const BillingOrderPaymentMeansCreditCardList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BillingOrderPaymentMeansCreditCardList>;
 
 export type BillingOrderPaymentMeansEdinarList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansEdinarList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMean,
-) as any as S.Schema<BillingOrderPaymentMeansEdinarList>;
+export const BillingOrderPaymentMeansEdinarList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansEdinarList>;
 
 export type BillingOrderPaymentMeansFidelityPointsList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansFidelityPointsList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMean,
-) as any as S.Schema<BillingOrderPaymentMeansFidelityPointsList>;
+export const BillingOrderPaymentMeansFidelityPointsList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansFidelityPointsList>;
 
 export type BillingOrderPaymentMeansIdealList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansIdealList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMean,
-) as any as S.Schema<BillingOrderPaymentMeansIdealList>;
+export const BillingOrderPaymentMeansIdealList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansIdealList>;
 
 export type BillingOrderPaymentMeansMultibancoList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansMultibancoList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMean,
-) as any as S.Schema<BillingOrderPaymentMeansMultibancoList>;
+export const BillingOrderPaymentMeansMultibancoList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansMultibancoList>;
 
 export type BillingOrderPaymentMeansOvhAccountList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansOvhAccountList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMean,
-) as any as S.Schema<BillingOrderPaymentMeansOvhAccountList>;
+export const BillingOrderPaymentMeansOvhAccountList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansOvhAccountList>;
 
 export type BillingOrderPaymentMeansPaypalList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansPaypalList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMean,
-) as any as S.Schema<BillingOrderPaymentMeansPaypalList>;
+export const BillingOrderPaymentMeansPaypalList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansPaypalList>;
 
 export type BillingOrderPaymentMeansPromotionList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansPromotionList = /*@__PURE__*/ S.Array(
-  BillingOrderPaymentMean,
-) as any as S.Schema<BillingOrderPaymentMeansPromotionList>;
+export const BillingOrderPaymentMeansPromotionList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansPromotionList>;
 
 /** TODO */
 export interface BillingOrderPaymentMeans {
@@ -11804,13 +11406,7 @@ export interface PaymentMethodIcon {
   /** Icon URL */
   url?: string | null;
 }
-export const PaymentMethodIcon = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "PaymentMethodIcon" }) as any as S.Schema<PaymentMethodIcon>;
+export const PaymentMethodIcon = MePaymentMeanIconData as any as S.Schema<PaymentMethodIcon>;
 
 /** Payment method integration type */
 export type PaymentMethodIntegrationType =
@@ -11976,9 +11572,8 @@ export const BillingOrderPaymentMethodsPaymentMethodsList = /*@__PURE__*/ S.Arra
 
 /** IDs of registered payment method usable on this order */
 export type BillingOrderPaymentMethodsRegisteredList = Array<number>;
-export const BillingOrderPaymentMethodsRegisteredList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BillingOrderPaymentMethodsRegisteredList>;
+export const BillingOrderPaymentMethodsRegisteredList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<BillingOrderPaymentMethodsRegisteredList>;
 
 /** Payment methods */
 export interface BillingOrderPaymentMethods {
@@ -12005,14 +11600,12 @@ export const ListMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeOvhAccountRequest" }) as any as S.Schema<ListMeOvhAccountRequest>;
 
 export type ListMeOvhAccountResponseBodyList = Array<string>;
-export const ListMeOvhAccountResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeOvhAccountResponseBodyList>;
+export const ListMeOvhAccountResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOvhAccountResponseBodyList>;
 
 export type ListMeOvhAccountResponse = ListMeOvhAccountResponseBodyList;
-export const ListMeOvhAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOvhAccountResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeOvhAccountResponse" }) as any as S.Schema<ListMeOvhAccountResponse>;
+export const ListMeOvhAccountResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeOvhAccountResponse>;
 
 export interface ListMeOvhAccountMovementsRequest {
   ovhAccountId: string;
@@ -12032,16 +11625,12 @@ export const ListMeOvhAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOvhAccountMovementsRequest>;
 
 export type ListMeOvhAccountMovementsResponseBodyList = Array<number>;
-export const ListMeOvhAccountMovementsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeOvhAccountMovementsResponseBodyList>;
+export const ListMeOvhAccountMovementsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOvhAccountMovementsResponseBodyList>;
 
 export type ListMeOvhAccountMovementsResponse = ListMeOvhAccountMovementsResponseBodyList;
-export const ListMeOvhAccountMovementsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeOvhAccountMovementsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeOvhAccountMovementsResponse",
-}) as any as S.Schema<ListMeOvhAccountMovementsResponse>;
+export const ListMeOvhAccountMovementsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOvhAccountMovementsResponse>;
 
 export interface ListMePaymentAvailableMethodsRequest {}
 export const ListMePaymentAvailableMethodsRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12112,17 +11701,13 @@ export const ListMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountRequest>;
 
 export type ListMePaymentMeanDeferredPaymentAccountResponseBodyList = Array<number>;
-export const ListMePaymentMeanDeferredPaymentAccountResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponseBodyList>;
+export const ListMePaymentMeanDeferredPaymentAccountResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponseBodyList>;
 
 export type ListMePaymentMeanDeferredPaymentAccountResponse =
   ListMePaymentMeanDeferredPaymentAccountResponseBodyList;
-export const ListMePaymentMeanDeferredPaymentAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMePaymentMeanDeferredPaymentAccountResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMePaymentMeanDeferredPaymentAccountResponse",
-}) as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponse>;
+export const ListMePaymentMeanDeferredPaymentAccountResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponse>;
 
 export interface ListMePaymentMethodRequest {
   /** Filter on 'default' property */
@@ -12143,16 +11728,12 @@ export const ListMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMePaymentMethodRequest>;
 
 export type ListMePaymentMethodResponseBodyList = Array<number>;
-export const ListMePaymentMethodResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMePaymentMethodResponseBodyList>;
+export const ListMePaymentMethodResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMePaymentMethodResponseBodyList>;
 
 export type ListMePaymentMethodResponse = ListMePaymentMethodResponseBodyList;
-export const ListMePaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMePaymentMethodResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMePaymentMethodResponse",
-}) as any as S.Schema<ListMePaymentMethodResponse>;
+export const ListMePaymentMethodResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentMethodResponse>;
 
 export interface ListMePaymentTransactionRequest {
   /** Payment method ID */
@@ -12170,16 +11751,12 @@ export const ListMePaymentTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMePaymentTransactionRequest>;
 
 export type ListMePaymentTransactionResponseBodyList = Array<number>;
-export const ListMePaymentTransactionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMePaymentTransactionResponseBodyList>;
+export const ListMePaymentTransactionResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMePaymentTransactionResponseBodyList>;
 
 export type ListMePaymentTransactionResponse = ListMePaymentTransactionResponseBodyList;
-export const ListMePaymentTransactionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMePaymentTransactionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMePaymentTransactionResponse",
-}) as any as S.Schema<ListMePaymentTransactionResponse>;
+export const ListMePaymentTransactionResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentTransactionResponse>;
 
 export interface ListMePreferenceManagerRequest {}
 export const ListMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12189,16 +11766,12 @@ export const ListMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMePreferenceManagerRequest>;
 
 export type ListMePreferenceManagerResponseBodyList = Array<string>;
-export const ListMePreferenceManagerResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMePreferenceManagerResponseBodyList>;
+export const ListMePreferenceManagerResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMePreferenceManagerResponseBodyList>;
 
 export type ListMePreferenceManagerResponse = ListMePreferenceManagerResponseBodyList;
-export const ListMePreferenceManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMePreferenceManagerResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMePreferenceManagerResponse",
-}) as any as S.Schema<ListMePreferenceManagerResponse>;
+export const ListMePreferenceManagerResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMePreferenceManagerResponse>;
 
 /** Recommendations product ranges */
 export type RecommendationsProductRangesEnum =
@@ -12311,14 +11884,12 @@ export const ListMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeRefundRequest" }) as any as S.Schema<ListMeRefundRequest>;
 
 export type ListMeRefundResponseBodyList = Array<string>;
-export const ListMeRefundResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeRefundResponseBodyList>;
+export const ListMeRefundResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeRefundResponseBodyList>;
 
 export type ListMeRefundResponse = ListMeRefundResponseBodyList;
-export const ListMeRefundResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeRefundResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeRefundResponse" }) as any as S.Schema<ListMeRefundResponse>;
+export const ListMeRefundResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeRefundResponse>;
 
 export interface ListMeRefundDetailsRequest {
   refundId: string;
@@ -12332,16 +11903,12 @@ export const ListMeRefundDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeRefundDetailsRequest>;
 
 export type ListMeRefundDetailsResponseBodyList = Array<string>;
-export const ListMeRefundDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeRefundDetailsResponseBodyList>;
+export const ListMeRefundDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeRefundDetailsResponseBodyList>;
 
 export type ListMeRefundDetailsResponse = ListMeRefundDetailsResponseBodyList;
-export const ListMeRefundDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeRefundDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeRefundDetailsResponse",
-}) as any as S.Schema<ListMeRefundDetailsResponse>;
+export const ListMeRefundDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeRefundDetailsResponse>;
 
 export interface ListMeRepricingFall22Request {}
 export const ListMeRepricingFall22Request = /*@__PURE__*/ S.suspend(() =>
@@ -12358,9 +11925,8 @@ export const MeRepricingServiceAddonsList = /*@__PURE__*/ S.Array(
 
 /** Variables to use in the path */
 export type ServicesExpandedRouteVarsList = Array<ComplexTypeSafeKeyValueString>;
-export const ServicesExpandedRouteVarsList = /*@__PURE__*/ S.Array(
-  ComplexTypeSafeKeyValueString,
-) as any as S.Schema<ServicesExpandedRouteVarsList>;
+export const ServicesExpandedRouteVarsList =
+  NichandleDocumentDocumentTagsList as any as S.Schema<ServicesExpandedRouteVarsList>;
 
 /** Route of the service */
 export interface ServicesExpandedRoute {
@@ -12464,16 +12030,12 @@ export const ListMeReverseBillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeReverseBillRequest" }) as any as S.Schema<ListMeReverseBillRequest>;
 
 export type ListMeReverseBillResponseBodyList = Array<string>;
-export const ListMeReverseBillResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeReverseBillResponseBodyList>;
+export const ListMeReverseBillResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeReverseBillResponseBodyList>;
 
 export type ListMeReverseBillResponse = ListMeReverseBillResponseBodyList;
-export const ListMeReverseBillResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeReverseBillResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeReverseBillResponse",
-}) as any as S.Schema<ListMeReverseBillResponse>;
+export const ListMeReverseBillResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeReverseBillResponse>;
 
 export interface ListMeReverseBillDetailsRequest {
   reverseBillId: string;
@@ -12487,16 +12049,12 @@ export const ListMeReverseBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeReverseBillDetailsRequest>;
 
 export type ListMeReverseBillDetailsResponseBodyList = Array<string>;
-export const ListMeReverseBillDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeReverseBillDetailsResponseBodyList>;
+export const ListMeReverseBillDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeReverseBillDetailsResponseBodyList>;
 
 export type ListMeReverseBillDetailsResponse = ListMeReverseBillDetailsResponseBodyList;
-export const ListMeReverseBillDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeReverseBillDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeReverseBillDetailsResponse",
-}) as any as S.Schema<ListMeReverseBillDetailsResponse>;
+export const ListMeReverseBillDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeReverseBillDetailsResponse>;
 
 export interface ListMeSlaRequest {}
 export const ListMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12504,14 +12062,11 @@ export const ListMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeSlaRequest" }) as any as S.Schema<ListMeSlaRequest>;
 
 export type ListMeSlaResponseBodyList = Array<number>;
-export const ListMeSlaResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeSlaResponseBodyList>;
+export const ListMeSlaResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeSlaResponseBodyList>;
 
 export type ListMeSlaResponse = ListMeSlaResponseBodyList;
-export const ListMeSlaResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeSlaResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeSlaResponse" }) as any as S.Schema<ListMeSlaResponse>;
+export const ListMeSlaResponse = ListMeAgreementsResponse as any as S.Schema<ListMeSlaResponse>;
 
 export interface ListMeSlaServicesRequest {
   /** Id of the object */
@@ -12563,14 +12118,12 @@ export const ListMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeSshKeyRequest" }) as any as S.Schema<ListMeSshKeyRequest>;
 
 export type ListMeSshKeyResponseBodyList = Array<string>;
-export const ListMeSshKeyResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeSshKeyResponseBodyList>;
+export const ListMeSshKeyResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeSshKeyResponseBodyList>;
 
 export type ListMeSshKeyResponse = ListMeSshKeyResponseBodyList;
-export const ListMeSshKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeSshKeyResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeSshKeyResponse" }) as any as S.Schema<ListMeSshKeyResponse>;
+export const ListMeSshKeyResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeSshKeyResponse>;
 
 export interface ListMeSubAccountRequest {}
 export const ListMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12578,14 +12131,12 @@ export const ListMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeSubAccountRequest" }) as any as S.Schema<ListMeSubAccountRequest>;
 
 export type ListMeSubAccountResponseBodyList = Array<number>;
-export const ListMeSubAccountResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeSubAccountResponseBodyList>;
+export const ListMeSubAccountResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeSubAccountResponseBodyList>;
 
 export type ListMeSubAccountResponse = ListMeSubAccountResponseBodyList;
-export const ListMeSubAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeSubAccountResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeSubAccountResponse" }) as any as S.Schema<ListMeSubAccountResponse>;
+export const ListMeSubAccountResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeSubAccountResponse>;
 
 export interface ListMeTagRequest {}
 export const ListMeTagRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12593,14 +12144,11 @@ export const ListMeTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeTagRequest" }) as any as S.Schema<ListMeTagRequest>;
 
 export type ListMeTagResponseBodyList = Array<string>;
-export const ListMeTagResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeTagResponseBodyList>;
+export const ListMeTagResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeTagResponseBodyList>;
 
 export type ListMeTagResponse = ListMeTagResponseBodyList;
-export const ListMeTagResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeTagResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeTagResponse" }) as any as S.Schema<ListMeTagResponse>;
+export const ListMeTagResponse = GetCertificatesResponse as any as S.Schema<ListMeTagResponse>;
 
 export interface ListMeTagAvailableRequest {}
 export const ListMeTagAvailableRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12611,9 +12159,8 @@ export const ListMeTagAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Enum values */
 export type MeTagTagKeyEnumList = Array<string>;
-export const MeTagTagKeyEnumList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MeTagTagKeyEnumList>;
+export const MeTagTagKeyEnumList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<MeTagTagKeyEnumList>;
 
 /** Tag key type */
 export type MeTagTagKeyTypeEnum = "ARRAY" | "DATE" | "ENUM" | "INTEGER" | "TEXT" | "VARCHAR";
@@ -12699,16 +12246,12 @@ export const ListMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeTaskContactChangeRequest>;
 
 export type ListMeTaskContactChangeResponseBodyList = Array<number>;
-export const ListMeTaskContactChangeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeTaskContactChangeResponseBodyList>;
+export const ListMeTaskContactChangeResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskContactChangeResponseBodyList>;
 
 export type ListMeTaskContactChangeResponse = ListMeTaskContactChangeResponseBodyList;
-export const ListMeTaskContactChangeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeTaskContactChangeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeTaskContactChangeResponse",
-}) as any as S.Schema<ListMeTaskContactChangeResponse>;
+export const ListMeTaskContactChangeResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTaskContactChangeResponse>;
 
 export interface ListMeTaskDnsRequest {
   function?: DomainTaskFunctionEnum | (string & {});
@@ -12724,14 +12267,12 @@ export const ListMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeTaskDnsRequest" }) as any as S.Schema<ListMeTaskDnsRequest>;
 
 export type ListMeTaskDnsResponseBodyList = Array<number>;
-export const ListMeTaskDnsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeTaskDnsResponseBodyList>;
+export const ListMeTaskDnsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskDnsResponseBodyList>;
 
 export type ListMeTaskDnsResponse = ListMeTaskDnsResponseBodyList;
-export const ListMeTaskDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeTaskDnsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeTaskDnsResponse" }) as any as S.Schema<ListMeTaskDnsResponse>;
+export const ListMeTaskDnsResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeTaskDnsResponse>;
 
 /** Operation functions */
 export type DomainOperationFunctionEnum =
@@ -12793,14 +12334,12 @@ export const ListMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeTaskDomainRequest" }) as any as S.Schema<ListMeTaskDomainRequest>;
 
 export type ListMeTaskDomainResponseBodyList = Array<number>;
-export const ListMeTaskDomainResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeTaskDomainResponseBodyList>;
+export const ListMeTaskDomainResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskDomainResponseBodyList>;
 
 export type ListMeTaskDomainResponse = ListMeTaskDomainResponseBodyList;
-export const ListMeTaskDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeTaskDomainResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeTaskDomainResponse" }) as any as S.Schema<ListMeTaskDomainResponse>;
+export const ListMeTaskDomainResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeTaskDomainResponse>;
 
 export interface ListMeTaskDomainArgumentRequest {
   /** Id */
@@ -12815,16 +12354,12 @@ export const ListMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeTaskDomainArgumentRequest>;
 
 export type ListMeTaskDomainArgumentResponseBodyList = Array<string>;
-export const ListMeTaskDomainArgumentResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeTaskDomainArgumentResponseBodyList>;
+export const ListMeTaskDomainArgumentResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeTaskDomainArgumentResponseBodyList>;
 
 export type ListMeTaskDomainArgumentResponse = ListMeTaskDomainArgumentResponseBodyList;
-export const ListMeTaskDomainArgumentResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeTaskDomainArgumentResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeTaskDomainArgumentResponse",
-}) as any as S.Schema<ListMeTaskDomainArgumentResponse>;
+export const ListMeTaskDomainArgumentResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeTaskDomainArgumentResponse>;
 
 export interface ListMeTaskEmailChangeRequest {
   /** Filter the value of state property (like) */
@@ -12839,16 +12374,12 @@ export const ListMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeTaskEmailChangeRequest>;
 
 export type ListMeTaskEmailChangeResponseBodyList = Array<number>;
-export const ListMeTaskEmailChangeResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeTaskEmailChangeResponseBodyList>;
+export const ListMeTaskEmailChangeResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskEmailChangeResponseBodyList>;
 
 export type ListMeTaskEmailChangeResponse = ListMeTaskEmailChangeResponseBodyList;
-export const ListMeTaskEmailChangeResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeTaskEmailChangeResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeTaskEmailChangeResponse",
-}) as any as S.Schema<ListMeTaskEmailChangeResponse>;
+export const ListMeTaskEmailChangeResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTaskEmailChangeResponse>;
 
 export interface ListMeTelephonyDefaultIpRestrictionRequest {}
 export const ListMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12860,17 +12391,13 @@ export const ListMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListMeTelephonyDefaultIpRestrictionRequest>;
 
 export type ListMeTelephonyDefaultIpRestrictionResponseBodyList = Array<number>;
-export const ListMeTelephonyDefaultIpRestrictionResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponseBodyList>;
+export const ListMeTelephonyDefaultIpRestrictionResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponseBodyList>;
 
 export type ListMeTelephonyDefaultIpRestrictionResponse =
   ListMeTelephonyDefaultIpRestrictionResponseBodyList;
-export const ListMeTelephonyDefaultIpRestrictionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeTelephonyDefaultIpRestrictionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeTelephonyDefaultIpRestrictionResponse",
-}) as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponse>;
+export const ListMeTelephonyDefaultIpRestrictionResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponse>;
 
 export interface ListMeVoucherAccountRequest {}
 export const ListMeVoucherAccountRequest = /*@__PURE__*/ S.suspend(() =>
@@ -12880,16 +12407,12 @@ export const ListMeVoucherAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeVoucherAccountRequest>;
 
 export type ListMeVoucherAccountResponseBodyList = Array<string>;
-export const ListMeVoucherAccountResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeVoucherAccountResponseBodyList>;
+export const ListMeVoucherAccountResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeVoucherAccountResponseBodyList>;
 
 export type ListMeVoucherAccountResponse = ListMeVoucherAccountResponseBodyList;
-export const ListMeVoucherAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeVoucherAccountResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeVoucherAccountResponse",
-}) as any as S.Schema<ListMeVoucherAccountResponse>;
+export const ListMeVoucherAccountResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeVoucherAccountResponse>;
 
 export interface ListMeVoucherAccountMovementsRequest {
   voucherAccountId: string;
@@ -12911,16 +12434,12 @@ export const ListMeVoucherAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListMeVoucherAccountMovementsRequest>;
 
 export type ListMeVoucherAccountMovementsResponseBodyList = Array<number>;
-export const ListMeVoucherAccountMovementsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ListMeVoucherAccountMovementsResponseBodyList>;
+export const ListMeVoucherAccountMovementsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeVoucherAccountMovementsResponseBodyList>;
 
 export type ListMeVoucherAccountMovementsResponse = ListMeVoucherAccountMovementsResponseBodyList;
-export const ListMeVoucherAccountMovementsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeVoucherAccountMovementsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeVoucherAccountMovementsResponse",
-}) as any as S.Schema<ListMeVoucherAccountMovementsResponse>;
+export const ListMeVoucherAccountMovementsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeVoucherAccountMovementsResponse>;
 
 export interface ListMeWithdrawalRequest {
   /** Filter the value of date property (>=) */
@@ -12939,14 +12458,12 @@ export const ListMeWithdrawalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeWithdrawalRequest" }) as any as S.Schema<ListMeWithdrawalRequest>;
 
 export type ListMeWithdrawalResponseBodyList = Array<string>;
-export const ListMeWithdrawalResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeWithdrawalResponseBodyList>;
+export const ListMeWithdrawalResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeWithdrawalResponseBodyList>;
 
 export type ListMeWithdrawalResponse = ListMeWithdrawalResponseBodyList;
-export const ListMeWithdrawalResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeWithdrawalResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "ListMeWithdrawalResponse" }) as any as S.Schema<ListMeWithdrawalResponse>;
+export const ListMeWithdrawalResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeWithdrawalResponse>;
 
 export interface ListMeWithdrawalDetailsRequest {
   withdrawalId: string;
@@ -12960,22 +12477,17 @@ export const ListMeWithdrawalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeWithdrawalDetailsRequest>;
 
 export type ListMeWithdrawalDetailsResponseBodyList = Array<string>;
-export const ListMeWithdrawalDetailsResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMeWithdrawalDetailsResponseBodyList>;
+export const ListMeWithdrawalDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeWithdrawalDetailsResponseBodyList>;
 
 export type ListMeWithdrawalDetailsResponse = ListMeWithdrawalDetailsResponseBodyList;
-export const ListMeWithdrawalDetailsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListMeWithdrawalDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListMeWithdrawalDetailsResponse",
-}) as any as S.Schema<ListMeWithdrawalDetailsResponse>;
+export const ListMeWithdrawalDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeWithdrawalDetailsResponse>;
 
 /** IDs of the services to migrate */
 export type MigrateMeIncidentSbgServicesRequestServiceIdsList = Array<number>;
-export const MigrateMeIncidentSbgServicesRequestServiceIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MigrateMeIncidentSbgServicesRequestServiceIdsList>;
+export const MigrateMeIncidentSbgServicesRequestServiceIdsList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<MigrateMeIncidentSbgServicesRequestServiceIdsList>;
 
 export interface MigrateMeIncidentSbgServicesRequest {
   /** If false, the order will be registered; if true, the order will be returned but not registered. Useful to compute prices */
@@ -13169,11 +12681,8 @@ export const PutMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutMeAccessRestrictionDeveloperModeRequest>;
 
 export interface PutMeAccessRestrictionDeveloperModeResponse {}
-export const PutMeAccessRestrictionDeveloperModeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMeAccessRestrictionDeveloperModeResponse",
-}) as any as S.Schema<PutMeAccessRestrictionDeveloperModeResponse>;
+export const PutMeAccessRestrictionDeveloperModeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionDeveloperModeResponse>;
 
 export interface PutMeAccessRestrictionIpRequest {
   /** The Id of the restriction */
@@ -13194,11 +12703,8 @@ export const PutMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionIpRequest>;
 
 export interface PutMeAccessRestrictionIpResponse {}
-export const PutMeAccessRestrictionIpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMeAccessRestrictionIpResponse",
-}) as any as S.Schema<PutMeAccessRestrictionIpResponse>;
+export const PutMeAccessRestrictionIpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionIpResponse>;
 
 export interface PutMeAccessRestrictionIpDefaultRuleRequest {
   /** Accept or deny access */
@@ -13216,11 +12722,8 @@ export const PutMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleRequest>;
 
 export interface PutMeAccessRestrictionIpDefaultRuleResponse {}
-export const PutMeAccessRestrictionIpDefaultRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMeAccessRestrictionIpDefaultRuleResponse",
-}) as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleResponse>;
+export const PutMeAccessRestrictionIpDefaultRuleResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleResponse>;
 
 export interface PutMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
@@ -13238,11 +12741,8 @@ export const PutMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionSmsRequest>;
 
 export interface PutMeAccessRestrictionSmsResponse {}
-export const PutMeAccessRestrictionSmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMeAccessRestrictionSmsResponse",
-}) as any as S.Schema<PutMeAccessRestrictionSmsResponse>;
+export const PutMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionSmsResponse>;
 
 export interface PutMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
@@ -13260,11 +12760,8 @@ export const PutMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionTotpRequest>;
 
 export interface PutMeAccessRestrictionTotpResponse {}
-export const PutMeAccessRestrictionTotpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMeAccessRestrictionTotpResponse",
-}) as any as S.Schema<PutMeAccessRestrictionTotpResponse>;
+export const PutMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionTotpResponse>;
 
 export interface PutMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
@@ -13282,11 +12779,8 @@ export const PutMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionU2fRequest>;
 
 export interface PutMeAccessRestrictionU2fResponse {}
-export const PutMeAccessRestrictionU2fResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMeAccessRestrictionU2fResponse",
-}) as any as S.Schema<PutMeAccessRestrictionU2fResponse>;
+export const PutMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionU2fResponse>;
 
 export interface PutMeAutorenewRequest {
   /** Renewal active or not */
@@ -13302,9 +12796,7 @@ export const PutMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeAutorenewRequest" }) as any as S.Schema<PutMeAutorenewRequest>;
 
 export interface PutMeAutorenewResponse {}
-export const PutMeAutorenewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeAutorenewResponse",
-}) as any as S.Schema<PutMeAutorenewResponse>;
+export const PutMeAutorenewResponse = ApplyMeSlaResponse as any as S.Schema<PutMeAutorenewResponse>;
 
 export interface PutMeBillingGroupRequest {
   /** Group ID */
@@ -13326,9 +12818,8 @@ export const PutMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeBillingGroupRequest" }) as any as S.Schema<PutMeBillingGroupRequest>;
 
 export interface PutMeBillingGroupResponse {}
-export const PutMeBillingGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeBillingGroupResponse",
-}) as any as S.Schema<PutMeBillingGroupResponse>;
+export const PutMeBillingGroupResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeBillingGroupResponse>;
 
 export interface PutMeBillingPurchaseOrderRequest {
   /** Id */
@@ -13364,11 +12855,8 @@ export const PutMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeBillingPurchaseOrderRequest>;
 
 export interface PutMeBillingPurchaseOrderResponse {}
-export const PutMeBillingPurchaseOrderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMeBillingPurchaseOrderResponse",
-}) as any as S.Schema<PutMeBillingPurchaseOrderResponse>;
+export const PutMeBillingPurchaseOrderResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeBillingPurchaseOrderResponse>;
 
 export interface PutMeConsentDecisionRequest {
   /** Campaign name */
@@ -13386,9 +12874,8 @@ export const PutMeConsentDecisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeConsentDecisionRequest>;
 
 export interface PutMeConsentDecisionResponse {}
-export const PutMeConsentDecisionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeConsentDecisionResponse",
-}) as any as S.Schema<PutMeConsentDecisionResponse>;
+export const PutMeConsentDecisionResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeConsentDecisionResponse>;
 
 export interface PutMeContactRequest {
   /** Contact ID */
@@ -13465,9 +12952,8 @@ export const PutMeContactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If defined, list of ip blocks which are allowed to call API with this credential */
 export type PutMeCredentialRequestAllowedIPsList = Array<string>;
-export const PutMeCredentialRequestAllowedIPsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutMeCredentialRequestAllowedIPsList>;
+export const PutMeCredentialRequestAllowedIPsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<PutMeCredentialRequestAllowedIPsList>;
 
 export interface PutMeCredentialRequest {
   /** Credential ID */
@@ -13483,9 +12969,8 @@ export const PutMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeCredentialRequest" }) as any as S.Schema<PutMeCredentialRequest>;
 
 export interface PutMeCredentialResponse {}
-export const PutMeCredentialResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeCredentialResponse",
-}) as any as S.Schema<PutMeCredentialResponse>;
+export const PutMeCredentialResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeCredentialResponse>;
 
 export interface PutMeDocumentRequest {
   /** Document id */
@@ -13501,9 +12986,7 @@ export const PutMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeDocumentRequest" }) as any as S.Schema<PutMeDocumentRequest>;
 
 export interface PutMeDocumentResponse {}
-export const PutMeDocumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeDocumentResponse",
-}) as any as S.Schema<PutMeDocumentResponse>;
+export const PutMeDocumentResponse = ApplyMeSlaResponse as any as S.Schema<PutMeDocumentResponse>;
 
 export interface PutMeFidelityAccountRequest {
   alertThreshold?: number | null;
@@ -13517,9 +13000,8 @@ export const PutMeFidelityAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeFidelityAccountRequest>;
 
 export interface PutMeFidelityAccountResponse {}
-export const PutMeFidelityAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeFidelityAccountResponse",
-}) as any as S.Schema<PutMeFidelityAccountResponse>;
+export const PutMeFidelityAccountResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeFidelityAccountResponse>;
 
 export interface PutMeIdentityGroupRequest {
   /** Group */
@@ -13540,9 +13022,8 @@ export const PutMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeIdentityGroupRequest>;
 
 export interface PutMeIdentityGroupResponse {}
-export const PutMeIdentityGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeIdentityGroupResponse",
-}) as any as S.Schema<PutMeIdentityGroupResponse>;
+export const PutMeIdentityGroupResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeIdentityGroupResponse>;
 
 export interface PutMeIdentityProviderRequest {
   /** Whether account users should still be usable as a login method or not */
@@ -13569,9 +13050,8 @@ export const PutMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeIdentityProviderRequest>;
 
 export interface PutMeIdentityProviderResponse {}
-export const PutMeIdentityProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeIdentityProviderResponse",
-}) as any as S.Schema<PutMeIdentityProviderResponse>;
+export const PutMeIdentityProviderResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeIdentityProviderResponse>;
 
 export interface PutMeIdentityUserRequest {
   /** User */
@@ -13593,9 +13073,8 @@ export const PutMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeIdentityUserRequest" }) as any as S.Schema<PutMeIdentityUserRequest>;
 
 export interface PutMeIdentityUserResponse {}
-export const PutMeIdentityUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeIdentityUserResponse",
-}) as any as S.Schema<PutMeIdentityUserResponse>;
+export const PutMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeIdentityUserResponse>;
 
 export interface PutMeIdentityUserTokenRequest {
   /** User */
@@ -13651,9 +13130,8 @@ export const PutMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeIpOrganisationRequest>;
 
 export interface PutMeIpOrganisationResponse {}
-export const PutMeIpOrganisationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeIpOrganisationResponse",
-}) as any as S.Schema<PutMeIpOrganisationResponse>;
+export const PutMeIpOrganisationResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeIpOrganisationResponse>;
 
 export interface PutMeMarketingRequest {
   /** Details for call marketing communication */
@@ -13679,9 +13157,8 @@ export const PutMeMarketingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** allowed callback urls */
 export type PutMeOauth2ClientRequestCallbackUrlsList = Array<string>;
-export const PutMeOauth2ClientRequestCallbackUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PutMeOauth2ClientRequestCallbackUrlsList>;
+export const PutMeOauth2ClientRequestCallbackUrlsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<PutMeOauth2ClientRequestCallbackUrlsList>;
 
 export interface PutMeOauth2ClientRequest {
   /** Client ID */
@@ -13703,9 +13180,8 @@ export const PutMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeOauth2ClientRequest" }) as any as S.Schema<PutMeOauth2ClientRequest>;
 
 export interface PutMeOauth2ClientResponse {}
-export const PutMeOauth2ClientResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeOauth2ClientResponse",
-}) as any as S.Schema<PutMeOauth2ClientResponse>;
+export const PutMeOauth2ClientResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeOauth2ClientResponse>;
 
 export interface PutMeOvhAccountRequest {
   ovhAccountId: string;
@@ -13719,9 +13195,8 @@ export const PutMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeOvhAccountRequest" }) as any as S.Schema<PutMeOvhAccountRequest>;
 
 export interface PutMeOvhAccountResponse {}
-export const PutMeOvhAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeOvhAccountResponse",
-}) as any as S.Schema<PutMeOvhAccountResponse>;
+export const PutMeOvhAccountResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeOvhAccountResponse>;
 
 export interface PutMePaymentMeanDeferredPaymentAccountRequest {
   /** Id */
@@ -13739,11 +13214,8 @@ export const PutMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountRequest>;
 
 export interface PutMePaymentMeanDeferredPaymentAccountResponse {}
-export const PutMePaymentMeanDeferredPaymentAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMePaymentMeanDeferredPaymentAccountResponse",
-}) as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountResponse>;
+export const PutMePaymentMeanDeferredPaymentAccountResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountResponse>;
 
 export interface PutMePaymentMethodRequest {
   /** Payment method ID */
@@ -13779,9 +13251,8 @@ export const PutMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMePreferenceManagerRequest>;
 
 export interface PutMePreferenceManagerResponse {}
-export const PutMePreferenceManagerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMePreferenceManagerResponse",
-}) as any as S.Schema<PutMePreferenceManagerResponse>;
+export const PutMePreferenceManagerResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMePreferenceManagerResponse>;
 
 export interface PutMeSubAccountRequest {
   /** Id of the object */
@@ -13797,9 +13268,8 @@ export const PutMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeSubAccountRequest" }) as any as S.Schema<PutMeSubAccountRequest>;
 
 export interface PutMeSubAccountResponse {}
-export const PutMeSubAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutMeSubAccountResponse",
-}) as any as S.Schema<PutMeSubAccountResponse>;
+export const PutMeSubAccountResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeSubAccountResponse>;
 
 export interface PutMeTaskDomainArgumentRequest {
   /** Id */
@@ -13820,9 +13290,8 @@ export const PutMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeTaskDomainArgumentRequest>;
 
 export interface PutMeTaskDomainArgumentResponse {}
-export const PutMeTaskDomainArgumentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutMeTaskDomainArgumentResponse" },
-) as any as S.Schema<PutMeTaskDomainArgumentResponse>;
+export const PutMeTaskDomainArgumentResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<PutMeTaskDomainArgumentResponse>;
 
 export interface ResendMeTaskContactChangeEmailRequest {
   id: number;
@@ -13836,11 +13305,8 @@ export const ResendMeTaskContactChangeEmailRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ResendMeTaskContactChangeEmailRequest>;
 
 export interface ResendMeTaskContactChangeEmailResponse {}
-export const ResendMeTaskContactChangeEmailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResendMeTaskContactChangeEmailResponse",
-}) as any as S.Schema<ResendMeTaskContactChangeEmailResponse>;
+export const ResendMeTaskContactChangeEmailResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ResendMeTaskContactChangeEmailResponse>;
 
 export interface SendMeAccessRestrictionSmsCodeRequest {
   /** The Id of the restriction */
@@ -13882,9 +13348,8 @@ export const SubscribeMeMailingListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscribeMeMailingListRequest>;
 
 export interface SubscribeMeMailingListResponse {}
-export const SubscribeMeMailingListResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubscribeMeMailingListResponse",
-}) as any as S.Schema<SubscribeMeMailingListResponse>;
+export const SubscribeMeMailingListResponse =
+  ApplyMeSlaResponse as any as S.Schema<SubscribeMeMailingListResponse>;
 
 export interface ValidateMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
@@ -13926,11 +13391,8 @@ export const ValidateMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ValidateMeAccessRestrictionSmsRequest>;
 
 export interface ValidateMeAccessRestrictionSmsResponse {}
-export const ValidateMeAccessRestrictionSmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ValidateMeAccessRestrictionSmsResponse",
-}) as any as S.Schema<ValidateMeAccessRestrictionSmsResponse>;
+export const ValidateMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionSmsResponse>;
 
 export interface ValidateMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
@@ -13948,11 +13410,8 @@ export const ValidateMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ValidateMeAccessRestrictionTotpRequest>;
 
 export interface ValidateMeAccessRestrictionTotpResponse {}
-export const ValidateMeAccessRestrictionTotpResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ValidateMeAccessRestrictionTotpResponse",
-}) as any as S.Schema<ValidateMeAccessRestrictionTotpResponse>;
+export const ValidateMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionTotpResponse>;
 
 export interface ValidateMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
@@ -13973,11 +13432,8 @@ export const ValidateMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ValidateMeAccessRestrictionU2fRequest>;
 
 export interface ValidateMeAccessRestrictionU2fResponse {}
-export const ValidateMeAccessRestrictionU2fResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ValidateMeAccessRestrictionU2fResponse",
-}) as any as S.Schema<ValidateMeAccessRestrictionU2fResponse>;
+export const ValidateMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionU2fResponse>;
 
 export type AcceptMeAgreementError = OvhOpError;
 /** Accept this contract */

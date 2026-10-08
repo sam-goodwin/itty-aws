@@ -15,9 +15,8 @@ export const CreateFeatureRequestRequestProductAreaIdsList = /*@__PURE__*/ S.Arr
 
 /** Uploaded image IDs from this project to attach in display order. */
 export type FeatureRequestEvidencePayloadImageIdsList = Array<string>;
-export const FeatureRequestEvidencePayloadImageIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRequestEvidencePayloadImageIdsList>;
+export const FeatureRequestEvidencePayloadImageIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestEvidencePayloadImageIdsList>;
 
 export interface FeatureRequestEvidencePayload {
   /** Internal summary of this account's request evidence. */
@@ -106,9 +105,8 @@ export const FeatureRequestAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Uploaded image IDs attached to this evidence item, in display order. */
 export type FeatureRequestEvidenceImageIdsList = Array<string>;
-export const FeatureRequestEvidenceImageIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRequestEvidenceImageIdsList>;
+export const FeatureRequestEvidenceImageIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestEvidenceImageIdsList>;
 
 export interface FeatureRequestEvidence {
   /** Stable evidence ID. */
@@ -404,9 +402,8 @@ export const FeatureRequestsAddAccountCreateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Uploaded image IDs from this project to attach in display order. */
 export type FeatureRequestsAddEvidenceCreateRequestImageIdsList = Array<string>;
-export const FeatureRequestsAddEvidenceCreateRequestImageIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRequestsAddEvidenceCreateRequestImageIdsList>;
+export const FeatureRequestsAddEvidenceCreateRequestImageIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestsAddEvidenceCreateRequestImageIdsList>;
 
 export interface FeatureRequestsAddEvidenceCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -572,9 +569,8 @@ export const FeatureRequestsUnlinkGithubCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** Uploaded image IDs from this project to attach in display order. */
 export type FeatureRequestsUpdateEvidenceCreateRequestImageIdsList = Array<string>;
-export const FeatureRequestsUpdateEvidenceCreateRequestImageIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRequestsUpdateEvidenceCreateRequestImageIdsList>;
+export const FeatureRequestsUpdateEvidenceCreateRequestImageIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestsUpdateEvidenceCreateRequestImageIdsList>;
 
 export interface FeatureRequestsUpdateEvidenceCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -635,9 +631,8 @@ export const GetFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFeatureRequestRequest" }) as any as S.Schema<GetFeatureRequestRequest>;
 
 export type ListFeatureRequestsRequestAccountIdsList = Array<string>;
-export const ListFeatureRequestsRequestAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListFeatureRequestsRequestAccountIdsList>;
+export const ListFeatureRequestsRequestAccountIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<ListFeatureRequestsRequestAccountIdsList>;
 
 export type ListFeatureRequestsRequestArchiveState = "active" | "archived" | "all";
 export const ListFeatureRequestsRequestArchiveState = S.String;
@@ -659,9 +654,8 @@ export const ListFeatureRequestsRequestPrioritiesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListFeatureRequestsRequestPrioritiesList>;
 
 export type ListFeatureRequestsRequestProductAreaIdsList = Array<string>;
-export const ListFeatureRequestsRequestProductAreaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListFeatureRequestsRequestProductAreaIdsList>;
+export const ListFeatureRequestsRequestProductAreaIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<ListFeatureRequestsRequestProductAreaIdsList>;
 
 export type ListFeatureRequestsRequestRequestOrdering =
   | "-updated_at"
@@ -862,9 +856,8 @@ export const FeatureRequestHistoryChangeBeforeCase5Account =
   FeatureRequestHistoryChangeBeforeCase4Item;
 
 export type FeatureRequestHistoryChangeBeforeCase5ImageIdsList = Array<string>;
-export const FeatureRequestHistoryChangeBeforeCase5ImageIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRequestHistoryChangeBeforeCase5ImageIdsList>;
+export const FeatureRequestHistoryChangeBeforeCase5ImageIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestHistoryChangeBeforeCase5ImageIdsList>;
 
 export interface FeatureRequestHistoryChangeBeforeCase5 {
   id: string;
@@ -936,9 +929,8 @@ export const FeatureRequestHistoryChangeAfterCase4Item = FeatureRequestHistoryCh
 
 export type FeatureRequestHistoryChangeAfterCase4List =
   Array<FeatureRequestHistoryChangeBeforeCase4Item>;
-export const FeatureRequestHistoryChangeAfterCase4List = /*@__PURE__*/ S.Array(
-  FeatureRequestHistoryChangeBeforeCase4Item,
-) as any as S.Schema<FeatureRequestHistoryChangeAfterCase4List>;
+export const FeatureRequestHistoryChangeAfterCase4List =
+  FeatureRequestHistoryChangeBeforeCase4List as any as S.Schema<FeatureRequestHistoryChangeAfterCase4List>;
 
 export type FeatureRequestHistoryChangeAfterCase5Account =
   FeatureRequestHistoryChangeBeforeCase4Item;
@@ -946,9 +938,8 @@ export const FeatureRequestHistoryChangeAfterCase5Account =
   FeatureRequestHistoryChangeBeforeCase4Item;
 
 export type FeatureRequestHistoryChangeAfterCase5ImageIdsList = Array<string>;
-export const FeatureRequestHistoryChangeAfterCase5ImageIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureRequestHistoryChangeAfterCase5ImageIdsList>;
+export const FeatureRequestHistoryChangeAfterCase5ImageIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestHistoryChangeAfterCase5ImageIdsList>;
 
 export interface FeatureRequestHistoryChangeAfterCase5 {
   id: string;
@@ -960,20 +951,8 @@ export interface FeatureRequestHistoryChangeAfterCase5 {
   requested_on: string | null;
   image_ids?: FeatureRequestHistoryChangeAfterCase5ImageIdsList;
 }
-export const FeatureRequestHistoryChangeAfterCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    account: FeatureRequestHistoryChangeBeforeCase4Item,
-    summary: S.String,
-    customer_quote: S.String,
-    source: S.String,
-    source_url: S.String,
-    requested_on: S.NullOr(S.String),
-    image_ids: S.optional(FeatureRequestHistoryChangeAfterCase5ImageIdsList),
-  }),
-).annotate({
-  identifier: "FeatureRequestHistoryChangeAfterCase5",
-}) as any as S.Schema<FeatureRequestHistoryChangeAfterCase5>;
+export const FeatureRequestHistoryChangeAfterCase5 =
+  FeatureRequestHistoryChangeBeforeCase5 as any as S.Schema<FeatureRequestHistoryChangeAfterCase5>;
 
 /** Value after the update, including relation snapshots. */
 export type FeatureRequestHistoryChangeAfter =
@@ -1119,15 +1098,13 @@ export const ListFeatureRequestsStatusHistoryResponse = /*@__PURE__*/ S.suspend(
 
 /** One or more affected account IDs. Removed accounts are unlinked without deleting their evidence. */
 export type UpdateFeatureRequestRequestAccountIdsList = Array<string>;
-export const UpdateFeatureRequestRequestAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureRequestRequestAccountIdsList>;
+export const UpdateFeatureRequestRequestAccountIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestRequestAccountIdsList>;
 
 /** One or more product area IDs. Existing inactive areas can remain linked. */
 export type UpdateFeatureRequestRequestProductAreaIdsList = Array<string>;
-export const UpdateFeatureRequestRequestProductAreaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureRequestRequestProductAreaIdsList>;
+export const UpdateFeatureRequestRequestProductAreaIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestRequestProductAreaIdsList>;
 
 export interface UpdateFeatureRequestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1171,15 +1148,13 @@ export const UpdateFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more affected account IDs. Removed accounts are unlinked without deleting their evidence. */
 export type UpdateFeatureRequestsPartialRequestAccountIdsList = Array<string>;
-export const UpdateFeatureRequestsPartialRequestAccountIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureRequestsPartialRequestAccountIdsList>;
+export const UpdateFeatureRequestsPartialRequestAccountIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestsPartialRequestAccountIdsList>;
 
 /** One or more product area IDs. Existing inactive areas can remain linked. */
 export type UpdateFeatureRequestsPartialRequestProductAreaIdsList = Array<string>;
-export const UpdateFeatureRequestsPartialRequestProductAreaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateFeatureRequestsPartialRequestProductAreaIdsList>;
+export const UpdateFeatureRequestsPartialRequestProductAreaIdsList =
+  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestsPartialRequestProductAreaIdsList>;
 
 export interface UpdateFeatureRequestsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

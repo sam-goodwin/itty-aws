@@ -190,11 +190,8 @@ export const BatchModifyUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchModifyUsersMessagesRequest>;
 
 export interface BatchModifyUsersMessagesResponse {}
-export const BatchModifyUsersMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BatchModifyUsersMessagesResponse",
-}) as any as S.Schema<BatchModifyUsersMessagesResponse>;
+export const BatchModifyUsersMessagesResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<BatchModifyUsersMessagesResponse>;
 
 export interface MessagePartHeader {
   /** The value of the header after the `:` separator. For example, `someuser@example.com`. */
@@ -876,9 +873,8 @@ export const DeleteUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersLabelsRequest" }) as any as S.Schema<DeleteUsersLabelsRequest>;
 
 export interface DeleteUsersLabelsResponse {}
-export const DeleteUsersLabelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersLabelsResponse",
-}) as any as S.Schema<DeleteUsersLabelsResponse>;
+export const DeleteUsersLabelsResponse =
+  DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersLabelsResponse>;
 
 export interface DeleteUsersMessagesRequest {
   /** The ID of the message to delete. */
@@ -902,9 +898,8 @@ export const DeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersMessagesRequest>;
 
 export interface DeleteUsersMessagesResponse {}
-export const DeleteUsersMessagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersMessagesResponse",
-}) as any as S.Schema<DeleteUsersMessagesResponse>;
+export const DeleteUsersMessagesResponse =
+  DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersMessagesResponse>;
 
 export interface DeleteUsersSettingsCseIdentitiesRequest {
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
@@ -928,11 +923,8 @@ export const DeleteUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteUsersSettingsCseIdentitiesRequest>;
 
 export interface DeleteUsersSettingsCseIdentitiesResponse {}
-export const DeleteUsersSettingsCseIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersSettingsCseIdentitiesResponse",
-}) as any as S.Schema<DeleteUsersSettingsCseIdentitiesResponse>;
+export const DeleteUsersSettingsCseIdentitiesResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsCseIdentitiesResponse>;
 
 export interface DeleteUsersSettingsDelegatesRequest {
   /** The email address of the user to be removed as a delegate. */
@@ -956,11 +948,8 @@ export const DeleteUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSettingsDelegatesRequest>;
 
 export interface DeleteUsersSettingsDelegatesResponse {}
-export const DeleteUsersSettingsDelegatesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersSettingsDelegatesResponse",
-}) as any as S.Schema<DeleteUsersSettingsDelegatesResponse>;
+export const DeleteUsersSettingsDelegatesResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsDelegatesResponse>;
 
 export interface DeleteUsersSettingsFiltersRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
@@ -984,11 +973,8 @@ export const DeleteUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSettingsFiltersRequest>;
 
 export interface DeleteUsersSettingsFiltersResponse {}
-export const DeleteUsersSettingsFiltersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersSettingsFiltersResponse",
-}) as any as S.Schema<DeleteUsersSettingsFiltersResponse>;
+export const DeleteUsersSettingsFiltersResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsFiltersResponse>;
 
 export interface DeleteUsersSettingsForwardingAddressesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
@@ -1012,11 +998,8 @@ export const DeleteUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteUsersSettingsForwardingAddressesRequest>;
 
 export interface DeleteUsersSettingsForwardingAddressesResponse {}
-export const DeleteUsersSettingsForwardingAddressesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersSettingsForwardingAddressesResponse",
-}) as any as S.Schema<DeleteUsersSettingsForwardingAddressesResponse>;
+export const DeleteUsersSettingsForwardingAddressesResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsForwardingAddressesResponse>;
 
 export interface DeleteUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
@@ -1040,11 +1023,8 @@ export const DeleteUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSettingsSendAsRequest>;
 
 export interface DeleteUsersSettingsSendAsResponse {}
-export const DeleteUsersSettingsSendAsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersSettingsSendAsResponse",
-}) as any as S.Schema<DeleteUsersSettingsSendAsResponse>;
+export const DeleteUsersSettingsSendAsResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsSendAsResponse>;
 
 export interface DeleteUsersSettingsSendAsSmimeInfoRequest {
   /** The immutable ID for the SmimeInfo. */
@@ -1071,11 +1051,8 @@ export const DeleteUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoRequest>;
 
 export interface DeleteUsersSettingsSendAsSmimeInfoResponse {}
-export const DeleteUsersSettingsSendAsSmimeInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersSettingsSendAsSmimeInfoResponse",
-}) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>;
+export const DeleteUsersSettingsSendAsSmimeInfoResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>;
 
 export interface DeleteUsersThreadsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -1099,15 +1076,13 @@ export const DeleteUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersThreadsRequest>;
 
 export interface DeleteUsersThreadsResponse {}
-export const DeleteUsersThreadsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteUsersThreadsResponse",
-}) as any as S.Schema<DeleteUsersThreadsResponse>;
+export const DeleteUsersThreadsResponse =
+  DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersThreadsResponse>;
 
 /** Requests to turn off a client-side encryption key pair. */
 export interface DisableCseKeyPairRequest {}
-export const DisableCseKeyPairRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableCseKeyPairRequest",
-}) as any as S.Schema<DisableCseKeyPairRequest>;
+export const DisableCseKeyPairRequest =
+  DeleteUsersDraftsResponse as any as S.Schema<DisableCseKeyPairRequest>;
 
 export interface DisableUsersSettingsCseKeypairsRequest {
   /** The identifier of the key pair to turn off. */
@@ -1954,9 +1929,8 @@ export type HistoryMessageDeleted = HistoryMessageAdded;
 export const HistoryMessageDeleted = HistoryMessageAdded;
 
 export type HistoryMessageDeletedList = Array<HistoryMessageAdded>;
-export const HistoryMessageDeletedList = /*@__PURE__*/ S.Array(
-  HistoryMessageAdded,
-) as any as S.Schema<HistoryMessageDeletedList>;
+export const HistoryMessageDeletedList =
+  HistoryMessageAddedList as any as S.Schema<HistoryMessageDeletedList>;
 
 export interface HistoryLabelRemoved {
   message?: Message;
@@ -2505,11 +2479,8 @@ export const ObliterateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ObliterateUsersSettingsCseKeypairsRequest>;
 
 export interface ObliterateUsersSettingsCseKeypairsResponse {}
-export const ObliterateUsersSettingsCseKeypairsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ObliterateUsersSettingsCseKeypairsResponse",
-}) as any as S.Schema<ObliterateUsersSettingsCseKeypairsResponse>;
+export const ObliterateUsersSettingsCseKeypairsResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<ObliterateUsersSettingsCseKeypairsResponse>;
 
 export interface PatchUsersLabelsRequest {
   /** The ID of the label to update. */
@@ -2644,11 +2615,8 @@ export const SetDefaultUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoRequest>;
 
 export interface SetDefaultUsersSettingsSendAsSmimeInfoResponse {}
-export const SetDefaultUsersSettingsSendAsSmimeInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetDefaultUsersSettingsSendAsSmimeInfoResponse",
-}) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
+export const SetDefaultUsersSettingsSendAsSmimeInfoResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
 
 export interface StopUsersRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -2667,9 +2635,7 @@ export const StopUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopUsersRequest" }) as any as S.Schema<StopUsersRequest>;
 
 export interface StopUsersResponse {}
-export const StopUsersResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopUsersResponse",
-}) as any as S.Schema<StopUsersResponse>;
+export const StopUsersResponse = DeleteUsersDraftsResponse as any as S.Schema<StopUsersResponse>;
 
 export interface TrashUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -2948,11 +2914,8 @@ export const VerifyUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifyUsersSettingsSendAsRequest>;
 
 export interface VerifyUsersSettingsSendAsResponse {}
-export const VerifyUsersSettingsSendAsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VerifyUsersSettingsSendAsResponse",
-}) as any as S.Schema<VerifyUsersSettingsSendAsResponse>;
+export const VerifyUsersSettingsSendAsResponse =
+  BatchDeleteUsersMessagesResponse as any as S.Schema<VerifyUsersSettingsSendAsResponse>;
 
 export type WatchRequestLabelFilterBehaviorEnum = "include" | "exclude";
 export const WatchRequestLabelFilterBehaviorEnum = S.String;

@@ -523,12 +523,13 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export type BranchArn = string;
 export type CustomDomain = string;
 export type CustomDomains = string[];
-export const CustomDomains = /*@__PURE__*/ S.Array(S.String);
+export const CustomDomains = AutoBranchCreationPatterns as any as S.Schema<CustomDomains>;
 export type ActiveJobId = string;
 export type TotalNumberOfJobs = string;
 export type AssociatedResource = string;
 export type AssociatedResources = string[];
-export const AssociatedResources = /*@__PURE__*/ S.Array(S.String);
+export const AssociatedResources =
+  AutoBranchCreationPatterns as any as S.Schema<AssociatedResources>;
 export interface Branch {
   branchArn: string;
   branchName: string;
@@ -604,7 +605,7 @@ export const CreateBranchResult = /*@__PURE__*/ S.suspend(() =>
 export type FileName = string;
 export type MD5Hash = string;
 export type FileMap = { [key: string]: string | undefined };
-export const FileMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const FileMap = TagMap as any as S.Schema<FileMap>;
 export interface CreateDeploymentRequest {
   appId: string;
   branchName: string;
@@ -630,10 +631,7 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 export type JobId = string;
 export type UploadUrl = string;
 export type FileUploadUrls = { [key: string]: string | undefined };
-export const FileUploadUrls = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const FileUploadUrls = EnvironmentVariables as any as S.Schema<FileUploadUrls>;
 export interface CreateDeploymentResult {
   jobId?: string;
   fileUploadUrls?: { [key: string]: string | undefined };
@@ -660,7 +658,8 @@ export type SubDomainSettings = SubDomainSetting[];
 export const SubDomainSettings = /*@__PURE__*/ S.Array(SubDomainSetting);
 export type AutoSubDomainCreationPattern = string;
 export type AutoSubDomainCreationPatterns = string[];
-export const AutoSubDomainCreationPatterns = /*@__PURE__*/ S.Array(S.String);
+export const AutoSubDomainCreationPatterns =
+  AutoBranchCreationPatterns as any as S.Schema<AutoSubDomainCreationPatterns>;
 export type AutoSubDomainIAMRole = string;
 export type CertificateType = "AMPLIFY_MANAGED" | "CUSTOM" | (string & {});
 export const CertificateType = S.String;
@@ -856,9 +855,7 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAppResult {
   app: App;
 }
-export const DeleteAppResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ app: App }).pipe(ns),
-).annotate({ identifier: "DeleteAppResult" }) as any as S.Schema<DeleteAppResult>;
+export const DeleteAppResult = CreateAppResult as any as S.Schema<DeleteAppResult>;
 export interface DeleteBackendEnvironmentRequest {
   appId: string;
   environmentName: string;
@@ -884,11 +881,8 @@ export const DeleteBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const DeleteBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
-).annotate({
-  identifier: "DeleteBackendEnvironmentResult",
-}) as any as S.Schema<DeleteBackendEnvironmentResult>;
+export const DeleteBackendEnvironmentResult =
+  CreateBackendEnvironmentResult as any as S.Schema<DeleteBackendEnvironmentResult>;
 export interface DeleteBranchRequest {
   appId: string;
   branchName: string;
@@ -912,9 +906,7 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBranchResult {
   branch: Branch;
 }
-export const DeleteBranchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ branch: Branch }).pipe(ns),
-).annotate({ identifier: "DeleteBranchResult" }) as any as S.Schema<DeleteBranchResult>;
+export const DeleteBranchResult = CreateBranchResult as any as S.Schema<DeleteBranchResult>;
 export interface DeleteDomainAssociationRequest {
   appId: string;
   domainName: string;
@@ -940,11 +932,8 @@ export const DeleteDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const DeleteDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
-).annotate({
-  identifier: "DeleteDomainAssociationResult",
-}) as any as S.Schema<DeleteDomainAssociationResult>;
+export const DeleteDomainAssociationResult =
+  CreateDomainAssociationResult as any as S.Schema<DeleteDomainAssociationResult>;
 export interface DeleteJobRequest {
   appId: string;
   branchName: string;
@@ -1045,9 +1034,7 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWebhookResult {
   webhook: Webhook;
 }
-export const DeleteWebhookResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ webhook: Webhook }).pipe(ns),
-).annotate({ identifier: "DeleteWebhookResult" }) as any as S.Schema<DeleteWebhookResult>;
+export const DeleteWebhookResult = CreateWebhookResult as any as S.Schema<DeleteWebhookResult>;
 export interface GenerateAccessLogsRequest {
   startTime?: Date;
   endTime?: Date;
@@ -1145,11 +1132,8 @@ export const GetBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const GetBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
-).annotate({
-  identifier: "GetBackendEnvironmentResult",
-}) as any as S.Schema<GetBackendEnvironmentResult>;
+export const GetBackendEnvironmentResult =
+  CreateBackendEnvironmentResult as any as S.Schema<GetBackendEnvironmentResult>;
 export interface GetBranchRequest {
   appId: string;
   branchName: string;
@@ -1173,9 +1157,7 @@ export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetBranchResult {
   branch: Branch;
 }
-export const GetBranchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ branch: Branch }).pipe(ns),
-).annotate({ identifier: "GetBranchResult" }) as any as S.Schema<GetBranchResult>;
+export const GetBranchResult = CreateBranchResult as any as S.Schema<GetBranchResult>;
 export interface GetDomainAssociationRequest {
   appId: string;
   domainName: string;
@@ -1201,11 +1183,8 @@ export const GetDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const GetDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
-).annotate({
-  identifier: "GetDomainAssociationResult",
-}) as any as S.Schema<GetDomainAssociationResult>;
+export const GetDomainAssociationResult =
+  CreateDomainAssociationResult as any as S.Schema<GetDomainAssociationResult>;
 export interface GetJobRequest {
   appId: string;
   branchName: string;
@@ -1234,10 +1213,7 @@ export type TestArtifactsUrl = string;
 export type TestConfigUrl = string;
 export type ThumbnailName = string;
 export type Screenshots = { [key: string]: string | undefined };
-export const Screenshots = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const Screenshots = EnvironmentVariables as any as S.Schema<Screenshots>;
 export type Context = string;
 export interface Step {
   stepName: string;
@@ -1301,9 +1277,7 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetWebhookResult {
   webhook: Webhook;
 }
-export const GetWebhookResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ webhook: Webhook }).pipe(ns),
-).annotate({ identifier: "GetWebhookResult" }) as any as S.Schema<GetWebhookResult>;
+export const GetWebhookResult = CreateWebhookResult as any as S.Schema<GetWebhookResult>;
 export type NextToken = string;
 export type MaxResultsForListApps = number;
 export interface ListAppsRequest {
@@ -1584,9 +1558,7 @@ export const StartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartDeploymentResult {
   jobSummary: JobSummary;
 }
-export const StartDeploymentResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobSummary: JobSummary }).pipe(ns),
-).annotate({ identifier: "StartDeploymentResult" }) as any as S.Schema<StartDeploymentResult>;
+export const StartDeploymentResult = DeleteJobResult as any as S.Schema<StartDeploymentResult>;
 export type JobReason = string;
 export interface StartJobRequest {
   appId: string;
@@ -1623,9 +1595,7 @@ export const StartJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartJobResult {
   jobSummary: JobSummary;
 }
-export const StartJobResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobSummary: JobSummary }).pipe(ns),
-).annotate({ identifier: "StartJobResult" }) as any as S.Schema<StartJobResult>;
+export const StartJobResult = DeleteJobResult as any as S.Schema<StartJobResult>;
 export interface StopJobRequest {
   appId: string;
   branchName: string;
@@ -1651,9 +1621,7 @@ export const StopJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopJobResult {
   jobSummary: JobSummary;
 }
-export const StopJobResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ jobSummary: JobSummary }).pipe(ns),
-).annotate({ identifier: "StopJobResult" }) as any as S.Schema<StopJobResult>;
+export const StopJobResult = DeleteJobResult as any as S.Schema<StopJobResult>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1668,7 +1636,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pi
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = AutoBranchCreationPatterns as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -1690,9 +1658,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAppRequest {
   appId: string;
   name?: string;
@@ -1748,9 +1714,7 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAppResult {
   app: App;
 }
-export const UpdateAppResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ app: App }).pipe(ns),
-).annotate({ identifier: "UpdateAppResult" }) as any as S.Schema<UpdateAppResult>;
+export const UpdateAppResult = CreateAppResult as any as S.Schema<UpdateAppResult>;
 export interface UpdateBranchRequest {
   appId: string;
   branchName: string;
@@ -1810,9 +1774,7 @@ export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBranchResult {
   branch: Branch;
 }
-export const UpdateBranchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ branch: Branch }).pipe(ns),
-).annotate({ identifier: "UpdateBranchResult" }) as any as S.Schema<UpdateBranchResult>;
+export const UpdateBranchResult = CreateBranchResult as any as S.Schema<UpdateBranchResult>;
 export interface UpdateDomainAssociationRequest {
   appId: string;
   domainName: string;
@@ -1848,11 +1810,8 @@ export const UpdateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const UpdateDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
-).annotate({
-  identifier: "UpdateDomainAssociationResult",
-}) as any as S.Schema<UpdateDomainAssociationResult>;
+export const UpdateDomainAssociationResult =
+  CreateDomainAssociationResult as any as S.Schema<UpdateDomainAssociationResult>;
 export interface UpdateWebhookRequest {
   webhookId: string;
   branchName?: string;
@@ -1878,9 +1837,7 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWebhookResult {
   webhook: Webhook;
 }
-export const UpdateWebhookResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ webhook: Webhook }).pipe(ns),
-).annotate({ identifier: "UpdateWebhookResult" }) as any as S.Schema<UpdateWebhookResult>;
+export const UpdateWebhookResult = CreateWebhookResult as any as S.Schema<UpdateWebhookResult>;
 export type ErrorMessage = string;
 export type Code = string;
 export type CreateAppError =

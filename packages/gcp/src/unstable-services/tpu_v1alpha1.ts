@@ -766,9 +766,7 @@ export const ReimageProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. Request for StartNode. */
 export interface StartNodeRequest {}
-export const StartNodeRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StartNodeRequest",
-}) as any as S.Schema<StartNodeRequest>;
+export const StartNodeRequest = Empty as any as S.Schema<StartNodeRequest>;
 
 export interface StartProjectsLocationsNodesRequest {
   /** The resource name. */

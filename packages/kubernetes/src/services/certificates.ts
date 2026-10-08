@@ -59,10 +59,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
@@ -476,15 +474,13 @@ export const IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraMap = /*@__
 
 /** groups contains group membership of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable. */
 export type IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList = Array<string>;
-export const IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList>;
+export const IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList>;
 
 /** usages specifies a set of key usages requested in the issued certificate. Requests for TLS client certificates typically request: "digital signature", "client auth". Requests for TLS serving certificates typically request: "digital signature", "server auth". Valid values are: "signing", "digital signature", "content commitment", "key encipherment", "key agreement", "data encipherment", "cert sign", "crl sign", "encipher only", "decipher only", "any", "server auth", "client auth", "code signing", "email protection", "s/mime", "ipsec end system", "ipsec tunnel", "ipsec user", "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc" When request contains a x509 certificate signing request signed with an ML-DSA key, usages must contain at least one of "digital signature", "content commitment", "cert sign", or "crl sign" and must not contain "key encipherment", "key agreement", "data encipherment", "encipher only", or "decipher only". */
 export type IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList = Array<string>;
-export const IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList>;
+export const IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList>;
 
 /** CertificateSigningRequestSpec contains the certificate request. */
 export interface IoK8sApiCertificatesV1CertificateSigningRequestSpec {
@@ -692,26 +688,15 @@ export interface IoK8sApiCertificatesV1ClusterTrustBundle {
   /** spec contains the signer (if any) and trust anchors. */
   spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
 }
-export const IoK8sApiCertificatesV1ClusterTrustBundle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec,
-  }),
-).annotate({
-  identifier: "IoK8sApiCertificatesV1ClusterTrustBundle",
-}) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundle>;
+export const IoK8sApiCertificatesV1ClusterTrustBundle =
+  IoK8sApiCertificatesV1beta1ClusterTrustBundle as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundle>;
 
 /** unverifiedUserAnnotations allow pod authors to pass additional information to the signer implementation. Kubernetes does not restrict or validate this metadata in any way. Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field. Signers should document the keys and values they support. Signers should deny requests that contain keys they do not recognize. */
 export type IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap = {
   [key: string]: string | undefined;
 };
 export const IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap>;
+  IoK8sApiCertificatesV1beta1PodCertificateRequestSpecUnverifiedUserAnnotationsMap as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap>;
 
 /** PodCertificateRequestSpec describes the certificate request. All fields are immutable after creation. */
 export interface IoK8sApiCertificatesV1PodCertificateRequestSpec {
@@ -759,9 +744,7 @@ export const IoK8sApiCertificatesV1PodCertificateRequestSpec = /*@__PURE__*/ S.s
 export type IoK8sApiCertificatesV1PodCertificateRequestStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
 export const IoK8sApiCertificatesV1PodCertificateRequestStatusConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1Condition,
-  ) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestStatusConditionsList>;
+  IoK8sApiCertificatesV1beta1PodCertificateRequestStatusConditionsList as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestStatusConditionsList>;
 
 /** PodCertificateRequestStatus describes the status of the request, and holds the certificate data if the request is issued. */
 export interface IoK8sApiCertificatesV1PodCertificateRequestStatus {
@@ -776,17 +759,8 @@ export interface IoK8sApiCertificatesV1PodCertificateRequestStatus {
   /** notBefore is the time at which the certificate becomes valid. The value must be the same as the notBefore value in the leaf certificate in certificateChain. This field is set via the /status subresource. Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain. */
   notBefore?: string;
 }
-export const IoK8sApiCertificatesV1PodCertificateRequestStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    beginRefreshAt: S.optional(S.String),
-    certificateChain: S.optional(S.String),
-    conditions: S.optional(IoK8sApiCertificatesV1PodCertificateRequestStatusConditionsList),
-    notAfter: S.optional(S.String),
-    notBefore: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IoK8sApiCertificatesV1PodCertificateRequestStatus",
-}) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestStatus>;
+export const IoK8sApiCertificatesV1PodCertificateRequestStatus =
+  IoK8sApiCertificatesV1beta1PodCertificateRequestStatus as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestStatus>;
 
 export interface CreateCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1682,21 +1656,18 @@ export const GetCertificatesV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
@@ -2121,9 +2092,8 @@ export const ListCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ S.suspe
 /** items is a collection of ClusterTrustBundle objects */
 export type IoK8sApiCertificatesV1ClusterTrustBundleListItemsList =
   Array<IoK8sApiCertificatesV1ClusterTrustBundle>;
-export const IoK8sApiCertificatesV1ClusterTrustBundleListItemsList = /*@__PURE__*/ S.Array(
-  IoK8sApiCertificatesV1ClusterTrustBundle,
-) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundleListItemsList>;
+export const IoK8sApiCertificatesV1ClusterTrustBundleListItemsList =
+  IoK8sApiCertificatesV1beta1ClusterTrustBundleListItemsList as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundleListItemsList>;
 
 /** ClusterTrustBundleList is a collection of ClusterTrustBundle objects */
 export interface IoK8sApiCertificatesV1ClusterTrustBundleList {
@@ -2136,16 +2106,8 @@ export interface IoK8sApiCertificatesV1ClusterTrustBundleList {
   /** metadata contains the list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiCertificatesV1ClusterTrustBundleList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiVersion: S.optional(S.String),
-    items: IoK8sApiCertificatesV1ClusterTrustBundleListItemsList,
-    kind: S.optional(S.String),
-    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-  }),
-).annotate({
-  identifier: "IoK8sApiCertificatesV1ClusterTrustBundleList",
-}) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundleList>;
+export const IoK8sApiCertificatesV1ClusterTrustBundleList =
+  IoK8sApiCertificatesV1beta1ClusterTrustBundleList as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundleList>;
 
 export interface ListCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */

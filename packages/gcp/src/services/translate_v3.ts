@@ -537,9 +537,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** An Adaptive MT Dataset. */
 export interface AdaptiveMtDataset {
@@ -680,11 +678,7 @@ export interface GlossaryInputConfig {
   /** Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): Two column file, tab- or comma-separated. The first column is source text. The second column is target text. No headers in this file. The first row contains data and not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary). */
   gcsSource?: GcsSource;
 }
-export const GlossaryInputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsSource: S.optional(GcsSource),
-  }),
-).annotate({ identifier: "GlossaryInputConfig" }) as any as S.Schema<GlossaryInputConfig>;
+export const GlossaryInputConfig = BatchDocumentInputConfig as any as S.Schema<GlossaryInputConfig>;
 
 /** Represents a glossary built from user-provided data. */
 export interface Glossary {
@@ -1103,22 +1097,14 @@ export interface GcsOutputDestination {
   /** Required. Google Cloud Storage URI to output directory. For example, `gs://bucket/directory`. The requesting user must have write permission to the bucket. The directory will be created if it doesn't exist. */
   outputUriPrefix?: string;
 }
-export const GcsOutputDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outputUriPrefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "GcsOutputDestination" }) as any as S.Schema<GcsOutputDestination>;
+export const GcsOutputDestination = GcsDestination as any as S.Schema<GcsOutputDestination>;
 
 /** Output configuration for datasets. */
 export interface DatasetOutputConfig {
   /** Google Cloud Storage destination to write the output. */
   gcsDestination?: GcsOutputDestination;
 }
-export const DatasetOutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsDestination: S.optional(GcsOutputDestination),
-  }),
-).annotate({ identifier: "DatasetOutputConfig" }) as any as S.Schema<DatasetOutputConfig>;
+export const DatasetOutputConfig = OutputConfig as any as S.Schema<DatasetOutputConfig>;
 
 /** Request message for ExportData. */
 export interface ExportDataRequest {

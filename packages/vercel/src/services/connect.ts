@@ -112,25 +112,19 @@ export const ConnectConnectorCreateDataCase0ServerConfigJwks = /*@__PURE__*/ S.s
 /** OAuth response types supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigResponseTypesSupportedList = Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigResponseTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigResponseTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigResponseTypesSupportedList>;
 
 /** Token endpoint client authentication methods supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList>;
 
 /** Signing algorithms supported for token endpoint authentication. */
 export type ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList>;
 
 /** OAuth scopes supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList = Array<string>;
@@ -141,99 +135,74 @@ export const ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList = /*
 /** OAuth grant types supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigGrantTypesSupportedList = Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigGrantTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigGrantTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigGrantTypesSupportedList>;
 
 /** Supported authorization grant profiles. urn:ietf:params:oauth:grant-profile:id-jag advertises XAA resource support. */
 export type ConnectConnectorCreateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList>;
 
 /** Token types supported for identity chaining. urn:ietf:params:oauth:token-type:id-jag advertises XAA IdP support. */
 export type ConnectConnectorCreateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList>;
 
 /** OAuth response modes supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigResponseModesSupportedList = Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigResponseModesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigResponseModesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigResponseModesSupportedList>;
 
 /** OpenID Connect subject identifier types supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigSubjectTypesSupportedList = Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigSubjectTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigSubjectTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigSubjectTypesSupportedList>;
 
 /** Signing algorithms supported for ID tokens. */
 export type ConnectConnectorCreateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList>;
 
 /** Key management algorithms supported for encrypted ID tokens. */
 export type ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList>;
 
 /** Content encryption algorithms supported for encrypted ID tokens. */
 export type ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList>;
 
 /** OpenID Connect claim value types supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigClaimTypesSupportedList = Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigClaimTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigClaimTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigClaimTypesSupportedList>;
 
 /** Claims that the authorization server can return. */
 export type ConnectConnectorCreateDataCase0ServerConfigClaimsSupportedList = Array<string>;
-export const ConnectConnectorCreateDataCase0ServerConfigClaimsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigClaimsSupportedList>;
+export const ConnectConnectorCreateDataCase0ServerConfigClaimsSupportedList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigClaimsSupportedList>;
 
 /** PKCE code challenge methods supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigCodeChallengeMethodsSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigCodeChallengeMethodsSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigCodeChallengeMethodsSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigCodeChallengeMethodsSupportedList>;
 
 /** Authorization prompt values supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigPromptValuesSupportedList = Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigPromptValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigPromptValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigPromptValuesSupportedList>;
 
 /** OAuth authorization-detail types supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList =
   Array<string>;
 export const ConnectConnectorCreateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList>;
 
 /** Authorization server metadata. Values override discovered metadata. Empty known string fields remove their stored overrides. */
 export interface ConnectConnectorCreateDataCase0ServerConfig {
@@ -388,9 +357,8 @@ export const ConnectConnectorCreateDataCase0ServerConfig = /*@__PURE__*/ S.suspe
 
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorCreateDataCase0UserAuthorizationScopesList = Array<string>;
-export const ConnectConnectorCreateDataCase0UserAuthorizationScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase0UserAuthorizationScopesList>;
+export const ConnectConnectorCreateDataCase0UserAuthorizationScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase0UserAuthorizationScopesList>;
 
 /** User authorization grant settings. */
 export interface ConnectConnectorCreateDataCase0UserAuthorization {
@@ -423,9 +391,8 @@ export const ConnectConnectorCreateDataCase0RefreshTokens = /*@__PURE__*/ S.susp
 
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorCreateDataCase0ClientCredentialsScopesList = Array<string>;
-export const ConnectConnectorCreateDataCase0ClientCredentialsScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase0ClientCredentialsScopesList>;
+export const ConnectConnectorCreateDataCase0ClientCredentialsScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase0ClientCredentialsScopesList>;
 
 /** Client credentials grant settings. */
 export interface ConnectConnectorCreateDataCase0ClientCredentials {
@@ -434,20 +401,13 @@ export interface ConnectConnectorCreateDataCase0ClientCredentials {
   /** Default scopes to request when token params specify scopes: [\"*\"]. */
   scopes?: ConnectConnectorCreateDataCase0ClientCredentialsScopesList;
 }
-export const ConnectConnectorCreateDataCase0ClientCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    scopes: S.optional(ConnectConnectorCreateDataCase0ClientCredentialsScopesList),
-  }),
-).annotate({
-  identifier: "ConnectConnectorCreateDataCase0ClientCredentials",
-}) as any as S.Schema<ConnectConnectorCreateDataCase0ClientCredentials>;
+export const ConnectConnectorCreateDataCase0ClientCredentials =
+  ConnectConnectorCreateDataCase0UserAuthorization as any as S.Schema<ConnectConnectorCreateDataCase0ClientCredentials>;
 
 /** ID token claim names that Connect can expose. */
 export type ConnectConnectorCreateDataCase0ForwardedClaimsIdTokenList = Array<string>;
-export const ConnectConnectorCreateDataCase0ForwardedClaimsIdTokenList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase0ForwardedClaimsIdTokenList>;
+export const ConnectConnectorCreateDataCase0ForwardedClaimsIdTokenList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase0ForwardedClaimsIdTokenList>;
 
 /** Allow-list of extra claims to propagate, keyed by source (idToken). Only claims named here and present in that source are exposed. */
 export interface ConnectConnectorCreateDataCase0ForwardedClaims {
@@ -473,9 +433,8 @@ export const ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap = /*@__PUR
 
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorCreateDataCase0JwtBearerScopesList = Array<string>;
-export const ConnectConnectorCreateDataCase0JwtBearerScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase0JwtBearerScopesList>;
+export const ConnectConnectorCreateDataCase0JwtBearerScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase0JwtBearerScopesList>;
 
 /** Additional claims included in generated JWT assertions. */
 export type ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap = {
@@ -524,10 +483,8 @@ export const ConnectConnectorCreateDataCase0JwtBearer = /*@__PURE__*/ S.suspend(
 export type ConnectConnectorCreateDataCase0ClientAssertionClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const ConnectConnectorCreateDataCase0ClientAssertionClaimsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorCreateDataCase0ClientAssertionClaimsMap>;
+export const ConnectConnectorCreateDataCase0ClientAssertionClaimsMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorCreateDataCase0ClientAssertionClaimsMap>;
 
 /** `private_key_jwt` client assertion settings. */
 export interface ConnectConnectorCreateDataCase0ClientAssertion {
@@ -645,9 +602,8 @@ export const ConnectConnectorCreateDataCase1ValuesList = /*@__PURE__*/ S.Array(
 
 /** The HTTPS resources the API key authenticates against. */
 export type ConnectConnectorCreateDataCase1ServiceUrlsList = Array<string>;
-export const ConnectConnectorCreateDataCase1ServiceUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase1ServiceUrlsList>;
+export const ConnectConnectorCreateDataCase1ServiceUrlsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase1ServiceUrlsList>;
 
 export interface ConnectConnectorCreateDataCase1 {
   /** Which subject the connector issues tokens for. Defaults to \"app\" (connector-level keys). \"user\" connectors store no connector-level values; each user supplies their own key during authorization. */
@@ -702,10 +658,8 @@ export const ConnectConnectorCreateDataCase2Owner = /*@__PURE__*/ S.suspend(() =
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorCreateDataCase2ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorCreateDataCase2ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorCreateDataCase2ExtrasMap>;
+export const ConnectConnectorCreateDataCase2ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorCreateDataCase2ExtrasMap>;
 
 export interface ConnectConnectorCreateDataCase2 {
   /** GitHub App numeric ID. */
@@ -745,15 +699,13 @@ export const ConnectConnectorCreateDataCase2 = /*@__PURE__*/ S.suspend(() =>
 
 /** OAuth scopes requested for Linear application tokens. */
 export type ConnectConnectorCreateDataCase3AppScopesList = Array<string>;
-export const ConnectConnectorCreateDataCase3AppScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase3AppScopesList>;
+export const ConnectConnectorCreateDataCase3AppScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase3AppScopesList>;
 
 /** OAuth scopes requested for Linear user tokens. */
 export type ConnectConnectorCreateDataCase3UserScopesList = Array<string>;
-export const ConnectConnectorCreateDataCase3UserScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase3UserScopesList>;
+export const ConnectConnectorCreateDataCase3UserScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase3UserScopesList>;
 
 /** Linear organization that owns the OAuth application. */
 export interface ConnectConnectorCreateDataCase3OwnerOrganization {
@@ -779,16 +731,13 @@ export const ConnectConnectorCreateDataCase3OwnerOrganization = /*@__PURE__*/ S.
 
 /** Registered redirect URIs for the Linear OAuth application. */
 export type ConnectConnectorCreateDataCase3ApplicationRedirectUrisList = Array<string>;
-export const ConnectConnectorCreateDataCase3ApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase3ApplicationRedirectUrisList>;
+export const ConnectConnectorCreateDataCase3ApplicationRedirectUrisList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase3ApplicationRedirectUrisList>;
 
 /** Linear resource types delivered to the webhook. */
 export type ConnectConnectorCreateDataCase3ApplicationWebhookResourceTypesList = Array<string>;
 export const ConnectConnectorCreateDataCase3ApplicationWebhookResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateDataCase3ApplicationWebhookResourceTypesList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateDataCase3ApplicationWebhookResourceTypesList>;
 
 /** Linear OAuth application metadata. */
 export interface ConnectConnectorCreateDataCase3Application {
@@ -846,10 +795,8 @@ export const ConnectConnectorCreateDataCase3Application = /*@__PURE__*/ S.suspen
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorCreateDataCase3ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorCreateDataCase3ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorCreateDataCase3ExtrasMap>;
+export const ConnectConnectorCreateDataCase3ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorCreateDataCase3ExtrasMap>;
 
 export interface ConnectConnectorCreateDataCase3 {
   /** Linear application ID. */
@@ -891,9 +838,8 @@ export const ConnectConnectorCreateDataCase3 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectConnectorCreateDataCase3>;
 
 export type ConnectConnectorCreateDataCase4PhoneNumbersList = Array<string>;
-export const ConnectConnectorCreateDataCase4PhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase4PhoneNumbersList>;
+export const ConnectConnectorCreateDataCase4PhoneNumbersList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase4PhoneNumbersList>;
 
 export interface ConnectConnectorCreateDataCase4 {
   /** Linq partner API token for the shared line. */
@@ -929,9 +875,8 @@ export const ConnectConnectorCreateDataCase5 = /*@__PURE__*/ S.suspend(() =>
 
 /** E.164 Sendblue lines this connector sends and receives on. Used as the connector's display name, and the only lines its webhooks are registered for; an empty array clears them, which also removes the webhook subscription. */
 export type ConnectConnectorCreateDataCase6PhoneNumbersList = Array<string>;
-export const ConnectConnectorCreateDataCase6PhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase6PhoneNumbersList>;
+export const ConnectConnectorCreateDataCase6PhoneNumbersList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase6PhoneNumbersList>;
 
 export interface ConnectConnectorCreateDataCase6 {
   /** Sendblue API key id (`sb-api-key-id`). */
@@ -972,15 +917,13 @@ export const ConnectConnectorCreateDataCase7SlackTeam = /*@__PURE__*/ S.suspend(
 
 /** OAuth scopes requested for Slack bot tokens. */
 export type ConnectConnectorCreateDataCase7BotScopesList = Array<string>;
-export const ConnectConnectorCreateDataCase7BotScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase7BotScopesList>;
+export const ConnectConnectorCreateDataCase7BotScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase7BotScopesList>;
 
 /** OAuth scopes requested for Slack user tokens. */
 export type ConnectConnectorCreateDataCase7UserScopesList = Array<string>;
-export const ConnectConnectorCreateDataCase7UserScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateDataCase7UserScopesList>;
+export const ConnectConnectorCreateDataCase7UserScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateDataCase7UserScopesList>;
 
 export interface ConnectConnectorCreateDataCase7SlashCommandsItem {
   /** Slash command including its leading slash. */
@@ -1044,10 +987,8 @@ export const ConnectConnectorCreateDataCase7ShortcutsList = /*@__PURE__*/ S.Arra
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorCreateDataCase7ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorCreateDataCase7ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorCreateDataCase7ExtrasMap>;
+export const ConnectConnectorCreateDataCase7ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorCreateDataCase7ExtrasMap>;
 
 export interface ConnectConnectorCreateDataCase7 {
   /** Slack app ID. */
@@ -1096,10 +1037,8 @@ export const ConnectConnectorCreateDataCase7 = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorCreateDataCase8ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorCreateDataCase8ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorCreateDataCase8ExtrasMap>;
+export const ConnectConnectorCreateDataCase8ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorCreateDataCase8ExtrasMap>;
 
 export interface ConnectConnectorCreateDataCase8 {
   /** Snowflake OAuth client name. */
@@ -1124,10 +1063,8 @@ export const ConnectConnectorCreateDataCase8 = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorCreateDataCase9ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorCreateDataCase9ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorCreateDataCase9ExtrasMap>;
+export const ConnectConnectorCreateDataCase9ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorCreateDataCase9ExtrasMap>;
 
 export interface ConnectConnectorCreateDataCase9 {
   /** Snowflake client name. */
@@ -1166,10 +1103,8 @@ export const ConnectConnectorCreateDataCase10 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectConnectorCreateDataCase10>;
 
 export type ConnectConnectorCreateDataCase11Map = { [key: string]: unknown | undefined };
-export const ConnectConnectorCreateDataCase11Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorCreateDataCase11Map>;
+export const ConnectConnectorCreateDataCase11Map =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorCreateDataCase11Map>;
 
 /** Provider configuration. With type, provide the complete configuration for that type. With service and connectionMethod, provide only credentials and preferences; Connect supplies the type, endpoints, templates, and defaults. Other connector types accept an arbitrary object. */
 export type ConnectConnectorCreateData =
@@ -1189,10 +1124,8 @@ export const ConnectConnectorCreateData = S.Unknown as any as S.Schema<ConnectCo
 
 /** Values for the selected connection method's template fields. Requires connectionMethod. */
 export type CreateConnectorRequestParamsMap = { [key: string]: string | undefined };
-export const CreateConnectorRequestParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateConnectorRequestParamsMap>;
+export const CreateConnectorRequestParamsMap =
+  ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap as any as S.Schema<CreateConnectorRequestParamsMap>;
 
 export type CreateConnectorRequestEnvironmentsItemCase0 = "development" | "preview" | "production";
 export const CreateConnectorRequestEnvironmentsItemCase0 = S.String;
@@ -1212,10 +1145,8 @@ export const CreateConnectorRequestEnvironmentsList = /*@__PURE__*/ S.Array(
 
 /** Trigger configuration, validated and encrypted by the trigger driver. An empty object applies driver defaults. */
 export type CreateConnectorRequestTriggerDataMap = { [key: string]: unknown | undefined };
-export const CreateConnectorRequestTriggerDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateConnectorRequestTriggerDataMap>;
+export const CreateConnectorRequestTriggerDataMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<CreateConnectorRequestTriggerDataMap>;
 
 export interface CreateConnectorRequestTriggerDestinationCase0 {
   /** Project that receives triggers. During connector creation, omit it to use the top-level projectId. */
@@ -1278,9 +1209,8 @@ export const CreateConnectorRequestTriggerDestination =
 
 /** Default trigger events for this connector. */
 export type CreateConnectorRequestEventsList = Array<string>;
-export const CreateConnectorRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectorRequestEventsList>;
+export const CreateConnectorRequestEventsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorRequestEventsList>;
 
 export interface CreateConnectorRequest {
   /** The team ID that scopes the request. Do not send it with slug. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
@@ -1351,16 +1281,13 @@ export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is the connector's enabled `clientCredentials.scopes` configuration. */
 export type ConnectConnectorCreateResultAppTokensScopesList = Array<string>;
-export const ConnectConnectorCreateResultAppTokensScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateResultAppTokensScopesList>;
+export const ConnectConnectorCreateResultAppTokensScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultAppTokensScopesList>;
 
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList = Array<string>;
 export const ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList>;
 
 /** App-token capabilities and known grants for the connector. */
 export interface ConnectConnectorCreateResultAppTokens {
@@ -1464,9 +1391,8 @@ export const ConnectConnectorCreateResultCreationMode = S.String;
 
 /** Known events this connector subscribes to (e.g. Slack bot events, GitHub webhook events). Names are type-specific and validated by the managed-create flow when forwarded to the third-party service. */
 export type ConnectConnectorCreateResultEventsList = Array<string>;
-export const ConnectConnectorCreateResultEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateResultEventsList>;
+export const ConnectConnectorCreateResultEventsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultEventsList>;
 
 /** Managed connector metadata exposed without leaking the manager connector or installation identifiers. */
 export interface ConnectConnectorCreateResultManaged {
@@ -1483,9 +1409,8 @@ export const ConnectConnectorCreateResultManaged = /*@__PURE__*/ S.suspend(() =>
 
 /** Token subject types supported by the connector. */
 export type ConnectConnectorCreateResultSupportedSubjectTypesList = Array<string>;
-export const ConnectConnectorCreateResultSupportedSubjectTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateResultSupportedSubjectTypesList>;
+export const ConnectConnectorCreateResultSupportedSubjectTypesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultSupportedSubjectTypesList>;
 
 /** Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. */
 export interface ConnectTriggerDestination {
@@ -1520,13 +1445,8 @@ export interface ConnectTriggerConfiguration {
   /** Whether incoming triggers are enabled for the connector. */
   enabled: boolean;
 }
-export const ConnectTriggerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "ConnectTriggerConfiguration",
-}) as any as S.Schema<ConnectTriggerConfiguration>;
+export const ConnectTriggerConfiguration =
+  ConnectConnectorCreateDataCase0RefreshTokens as any as S.Schema<ConnectTriggerConfiguration>;
 
 /** Connector implementation type. */
 export type ConnectConnectorCreateResultType =
@@ -1613,16 +1533,13 @@ export const ConnectConnectorCreateResultUpdatedBy =
 
 /** Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is the connector's enabled `userAuthorization.scopes` configuration. */
 export type ConnectConnectorCreateResultUserTokensScopesList = Array<string>;
-export const ConnectConnectorCreateResultUserTokensScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorCreateResultUserTokensScopesList>;
+export const ConnectConnectorCreateResultUserTokensScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultUserTokensScopesList>;
 
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList = Array<string>;
 export const ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList>;
 
 /** User-token capabilities and known grants for the connector. */
 export interface ConnectConnectorCreateResultUserTokens {
@@ -1880,19 +1797,16 @@ export const CreateConnectorAuthorizationRequestRequestSubject =
   S.Unknown as any as S.Schema<CreateConnectorAuthorizationRequestRequestSubject>;
 
 export type CreateConnectorAuthorizationRequestRequestAudienceList = Array<string>;
-export const CreateConnectorAuthorizationRequestRequestAudienceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectorAuthorizationRequestRequestAudienceList>;
+export const CreateConnectorAuthorizationRequestRequestAudienceList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorAuthorizationRequestRequestAudienceList>;
 
 export type CreateConnectorAuthorizationRequestRequestScopesList = Array<string>;
-export const CreateConnectorAuthorizationRequestRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectorAuthorizationRequestRequestScopesList>;
+export const CreateConnectorAuthorizationRequestRequestScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorAuthorizationRequestRequestScopesList>;
 
 export type CreateConnectorAuthorizationRequestRequestResourcesList = Array<string>;
-export const CreateConnectorAuthorizationRequestRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateConnectorAuthorizationRequestRequestResourcesList>;
+export const CreateConnectorAuthorizationRequestRequestResourcesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorAuthorizationRequestRequestResourcesList>;
 
 export interface CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem {
   type?: string;
@@ -1916,10 +1830,8 @@ export const CreateConnectorAuthorizationRequestRequestAuthorizationDetailsList 
 export type CreateConnectorAuthorizationRequestRequestAdditionalParamsMap = {
   [key: string]: string | undefined;
 };
-export const CreateConnectorAuthorizationRequestRequestAdditionalParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateConnectorAuthorizationRequestRequestAdditionalParamsMap>;
+export const CreateConnectorAuthorizationRequestRequestAdditionalParamsMap =
+  ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap as any as S.Schema<CreateConnectorAuthorizationRequestRequestAdditionalParamsMap>;
 
 export interface CreateConnectorAuthorizationRequestRequest {
   connector: string;
@@ -2084,15 +1996,13 @@ export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is the connector's enabled `clientCredentials.scopes` configuration. */
 export type ConnectConnectorAppTokensScopesList = Array<string>;
-export const ConnectConnectorAppTokensScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorAppTokensScopesList>;
+export const ConnectConnectorAppTokensScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorAppTokensScopesList>;
 
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorAppTokensSupportedAuthorizationDetailsList = Array<string>;
-export const ConnectConnectorAppTokensSupportedAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorAppTokensSupportedAuthorizationDetailsList>;
+export const ConnectConnectorAppTokensSupportedAuthorizationDetailsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorAppTokensSupportedAuthorizationDetailsList>;
 
 /** App-token capabilities and known grants for the connector. */
 export interface ConnectConnectorAppTokens {
@@ -2195,9 +2105,8 @@ export const ConnectConnectorCreationMode = S.String;
 
 /** Known events this connector subscribes to (e.g. Slack bot events, GitHub webhook events). Names are type-specific and validated by the managed-create flow when forwarded to the third-party service. */
 export type ConnectConnectorEventsList = Array<string>;
-export const ConnectConnectorEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorEventsList>;
+export const ConnectConnectorEventsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorEventsList>;
 
 /** Managed connector metadata exposed without leaking the manager connector or installation identifiers. */
 export type ConnectConnectorManaged = ConnectConnectorCreateResultManaged;
@@ -2205,15 +2114,13 @@ export const ConnectConnectorManaged = ConnectConnectorCreateResultManaged;
 
 /** Token subject types supported by the connector. */
 export type ConnectConnectorSupportedSubjectTypesList = Array<string>;
-export const ConnectConnectorSupportedSubjectTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorSupportedSubjectTypesList>;
+export const ConnectConnectorSupportedSubjectTypesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorSupportedSubjectTypesList>;
 
 /** Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. */
 export type ConnectConnectorTriggerDestinationsList = Array<ConnectTriggerDestination>;
-export const ConnectConnectorTriggerDestinationsList = /*@__PURE__*/ S.Array(
-  ConnectTriggerDestination,
-) as any as S.Schema<ConnectConnectorTriggerDestinationsList>;
+export const ConnectConnectorTriggerDestinationsList =
+  ConnectConnectorCreateResultTriggerDestinationsList as any as S.Schema<ConnectConnectorTriggerDestinationsList>;
 
 /** Connector implementation type. */
 export type ConnectConnectorType =
@@ -2299,15 +2206,13 @@ export const ConnectConnectorUpdatedBy = S.Unknown as any as S.Schema<ConnectCon
 
 /** Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is the connector's enabled `userAuthorization.scopes` configuration. */
 export type ConnectConnectorUserTokensScopesList = Array<string>;
-export const ConnectConnectorUserTokensScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUserTokensScopesList>;
+export const ConnectConnectorUserTokensScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUserTokensScopesList>;
 
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorUserTokensSupportedAuthorizationDetailsList = Array<string>;
-export const ConnectConnectorUserTokensSupportedAuthorizationDetailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUserTokensSupportedAuthorizationDetailsList>;
+export const ConnectConnectorUserTokensSupportedAuthorizationDetailsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUserTokensSupportedAuthorizationDetailsList>;
 
 /** User-token capabilities and known grants for the connector. */
 export interface ConnectConnectorUserTokens {
@@ -2610,10 +2515,8 @@ export const GetConnectorTokenRequestSubjectCase2Type = S.String;
 export type GetConnectorTokenRequestSubjectCase2AdditionalClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetConnectorTokenRequestSubjectCase2AdditionalClaimsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetConnectorTokenRequestSubjectCase2AdditionalClaimsMap>;
+export const GetConnectorTokenRequestSubjectCase2AdditionalClaimsMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<GetConnectorTokenRequestSubjectCase2AdditionalClaimsMap>;
 
 export interface GetConnectorTokenRequestSubjectCase2 {
   type: GetConnectorTokenRequestSubjectCase2Type;
@@ -2665,19 +2568,16 @@ export const GetConnectorTokenRequestSubject =
   S.Unknown as any as S.Schema<GetConnectorTokenRequestSubject>;
 
 export type GetConnectorTokenRequestAudienceList = Array<string>;
-export const GetConnectorTokenRequestAudienceList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConnectorTokenRequestAudienceList>;
+export const GetConnectorTokenRequestAudienceList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<GetConnectorTokenRequestAudienceList>;
 
 export type GetConnectorTokenRequestScopesList = Array<string>;
-export const GetConnectorTokenRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConnectorTokenRequestScopesList>;
+export const GetConnectorTokenRequestScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<GetConnectorTokenRequestScopesList>;
 
 export type GetConnectorTokenRequestResourcesList = Array<string>;
-export const GetConnectorTokenRequestResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetConnectorTokenRequestResourcesList>;
+export const GetConnectorTokenRequestResourcesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<GetConnectorTokenRequestResourcesList>;
 
 export type GetConnectorTokenRequestAuthorizationDetailsItem =
   CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem;
@@ -2715,10 +2615,8 @@ export const GetConnectorTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Claims extracted from the provider's tokens per the connector's `ForwardedClaims` allow-list. Currently sourced from the OIDC id_token only. */
 export type GetConnectorTokenResponseClaimsMap = { [key: string]: unknown | undefined };
-export const GetConnectorTokenResponseClaimsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetConnectorTokenResponseClaimsMap>;
+export const GetConnectorTokenResponseClaimsMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<GetConnectorTokenResponseClaimsMap>;
 
 export interface GetConnectorTokenResponseConnector {
   id: string;
@@ -2737,10 +2635,8 @@ export const GetConnectorTokenResponseConnector = /*@__PURE__*/ S.suspend(() =>
 
 /** Driver-specific metadata (e.g., botUserId for Slack). */
 export type GetConnectorTokenResponseMetadataMap = { [key: string]: unknown | undefined };
-export const GetConnectorTokenResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetConnectorTokenResponseMetadataMap>;
+export const GetConnectorTokenResponseMetadataMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<GetConnectorTokenResponseMetadataMap>;
 
 export interface GetConnectorTokenResponse {
   /** Stable id correlating all tokens (including refreshes) back to the original authorization. */
@@ -2920,9 +2816,8 @@ export const ListProjectConnectorConnectionsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Connector connections in this page. */
 export type ConnectProjectConnectorConnectionListConnectorsList = Array<ConnectProjectConnection>;
-export const ConnectProjectConnectorConnectionListConnectorsList = /*@__PURE__*/ S.Array(
-  ConnectProjectConnection,
-) as any as S.Schema<ConnectProjectConnectorConnectionListConnectorsList>;
+export const ConnectProjectConnectorConnectionListConnectorsList =
+  ConnectConnectorProjectConnectionListProjectsList as any as S.Schema<ConnectProjectConnectorConnectionListConnectorsList>;
 
 /** Page of connectors connected to a project. */
 export interface ConnectProjectConnectorConnectionList {
@@ -3035,16 +2930,13 @@ export const ReplaceConnectorTriggerDestinationsRequest = /*@__PURE__*/ S.suspen
 
 /** Trigger configuration, validated and encrypted by the trigger driver. An empty object applies driver defaults. */
 export type UpdateConnectorRequestTriggerDataMap = { [key: string]: unknown | undefined };
-export const UpdateConnectorRequestTriggerDataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateConnectorRequestTriggerDataMap>;
+export const UpdateConnectorRequestTriggerDataMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<UpdateConnectorRequestTriggerDataMap>;
 
 /** Default trigger events for this connector. */
 export type UpdateConnectorRequestEventsList = Array<string>;
-export const UpdateConnectorRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateConnectorRequestEventsList>;
+export const UpdateConnectorRequestEventsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<UpdateConnectorRequestEventsList>;
 
 /** Intended key use: signing or encryption. */
 export type ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItemUse = "sig" | "enc";
@@ -3053,9 +2945,7 @@ export const ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItemUse = S.Stri
 /** Operations permitted for this key. */
 export type ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItemKeyOpsList = Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItemKeyOpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItemKeyOpsList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItemKeyOpsList>;
 
 export interface ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItem {
   /** JSON Web Key type. */
@@ -3104,128 +2994,96 @@ export const ConnectConnectorUpdateDataCase0ServerConfigJwks = /*@__PURE__*/ S.s
 /** OAuth response types supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigResponseTypesSupportedList = Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigResponseTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigResponseTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigResponseTypesSupportedList>;
 
 /** Token endpoint client authentication methods supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthMethodsSupportedList>;
 
 /** Signing algorithms supported for token endpoint authentication. */
 export type ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigTokenEndpointAuthSigningAlgValuesSupportedList>;
 
 /** OAuth scopes supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigScopesSupportedList = Array<string>;
-export const ConnectConnectorUpdateDataCase0ServerConfigScopesSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigScopesSupportedList>;
+export const ConnectConnectorUpdateDataCase0ServerConfigScopesSupportedList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigScopesSupportedList>;
 
 /** OAuth grant types supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigGrantTypesSupportedList = Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigGrantTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigGrantTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigGrantTypesSupportedList>;
 
 /** Supported authorization grant profiles. urn:ietf:params:oauth:grant-profile:id-jag advertises XAA resource support. */
 export type ConnectConnectorUpdateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigAuthorizationGrantProfilesSupportedList>;
 
 /** Token types supported for identity chaining. urn:ietf:params:oauth:token-type:id-jag advertises XAA IdP support. */
 export type ConnectConnectorUpdateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdentityChainingRequestedTokenTypesSupportedList>;
 
 /** OAuth response modes supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigResponseModesSupportedList = Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigResponseModesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigResponseModesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigResponseModesSupportedList>;
 
 /** OpenID Connect subject identifier types supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigSubjectTypesSupportedList = Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigSubjectTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigSubjectTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigSubjectTypesSupportedList>;
 
 /** Signing algorithms supported for ID tokens. */
 export type ConnectConnectorUpdateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdTokenSigningAlgValuesSupportedList>;
 
 /** Key management algorithms supported for encrypted ID tokens. */
 export type ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionAlgValuesSupportedList>;
 
 /** Content encryption algorithms supported for encrypted ID tokens. */
 export type ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigIdTokenEncryptionEncValuesSupportedList>;
 
 /** OpenID Connect claim value types supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigClaimTypesSupportedList = Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigClaimTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigClaimTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigClaimTypesSupportedList>;
 
 /** Claims that the authorization server can return. */
 export type ConnectConnectorUpdateDataCase0ServerConfigClaimsSupportedList = Array<string>;
-export const ConnectConnectorUpdateDataCase0ServerConfigClaimsSupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigClaimsSupportedList>;
+export const ConnectConnectorUpdateDataCase0ServerConfigClaimsSupportedList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigClaimsSupportedList>;
 
 /** PKCE code challenge methods supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigCodeChallengeMethodsSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigCodeChallengeMethodsSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigCodeChallengeMethodsSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigCodeChallengeMethodsSupportedList>;
 
 /** Authorization prompt values supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigPromptValuesSupportedList = Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigPromptValuesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigPromptValuesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigPromptValuesSupportedList>;
 
 /** OAuth authorization-detail types supported by the server. */
 export type ConnectConnectorUpdateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList =
   Array<string>;
 export const ConnectConnectorUpdateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase0ServerConfigAuthorizationDetailsTypesSupportedList>;
 
 /** Authorization server metadata. Values override discovered metadata. Empty known string fields remove their stored overrides. */
 export interface ConnectConnectorUpdateDataCase0ServerConfig {
@@ -3380,9 +3238,8 @@ export const ConnectConnectorUpdateDataCase0ServerConfig = /*@__PURE__*/ S.suspe
 
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorUpdateDataCase0UserAuthorizationScopesList = Array<string>;
-export const ConnectConnectorUpdateDataCase0UserAuthorizationScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0UserAuthorizationScopesList>;
+export const ConnectConnectorUpdateDataCase0UserAuthorizationScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase0UserAuthorizationScopesList>;
 
 /** User authorization grant settings. */
 export interface ConnectConnectorUpdateDataCase0UserAuthorization {
@@ -3391,14 +3248,8 @@ export interface ConnectConnectorUpdateDataCase0UserAuthorization {
   /** Default scopes to request when token params specify scopes: [\"*\"]. */
   scopes?: ConnectConnectorUpdateDataCase0UserAuthorizationScopesList;
 }
-export const ConnectConnectorUpdateDataCase0UserAuthorization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    scopes: S.optional(ConnectConnectorUpdateDataCase0UserAuthorizationScopesList),
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase0UserAuthorization",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase0UserAuthorization>;
+export const ConnectConnectorUpdateDataCase0UserAuthorization =
+  ConnectConnectorCreateDataCase0UserAuthorization as any as S.Schema<ConnectConnectorUpdateDataCase0UserAuthorization>;
 
 /** Refresh token settings. */
 export type ConnectConnectorUpdateDataCase0RefreshTokens =
@@ -3408,9 +3259,8 @@ export const ConnectConnectorUpdateDataCase0RefreshTokens =
 
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorUpdateDataCase0ClientCredentialsScopesList = Array<string>;
-export const ConnectConnectorUpdateDataCase0ClientCredentialsScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0ClientCredentialsScopesList>;
+export const ConnectConnectorUpdateDataCase0ClientCredentialsScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase0ClientCredentialsScopesList>;
 
 /** Client credentials grant settings. */
 export interface ConnectConnectorUpdateDataCase0ClientCredentials {
@@ -3419,57 +3269,40 @@ export interface ConnectConnectorUpdateDataCase0ClientCredentials {
   /** Default scopes to request when token params specify scopes: [\"*\"]. */
   scopes?: ConnectConnectorUpdateDataCase0ClientCredentialsScopesList;
 }
-export const ConnectConnectorUpdateDataCase0ClientCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    scopes: S.optional(ConnectConnectorUpdateDataCase0ClientCredentialsScopesList),
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase0ClientCredentials",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase0ClientCredentials>;
+export const ConnectConnectorUpdateDataCase0ClientCredentials =
+  ConnectConnectorCreateDataCase0UserAuthorization as any as S.Schema<ConnectConnectorUpdateDataCase0ClientCredentials>;
 
 /** ID token claim names that Connect can expose. */
 export type ConnectConnectorUpdateDataCase0ForwardedClaimsIdTokenList = Array<string>;
-export const ConnectConnectorUpdateDataCase0ForwardedClaimsIdTokenList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0ForwardedClaimsIdTokenList>;
+export const ConnectConnectorUpdateDataCase0ForwardedClaimsIdTokenList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase0ForwardedClaimsIdTokenList>;
 
 /** Allow-list of extra claims to propagate, keyed by source (idToken). Only claims named here and present in that source are exposed. */
 export interface ConnectConnectorUpdateDataCase0ForwardedClaims {
   /** ID token claim names that Connect can expose. */
   idToken?: ConnectConnectorUpdateDataCase0ForwardedClaimsIdTokenList;
 }
-export const ConnectConnectorUpdateDataCase0ForwardedClaims = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idToken: S.optional(ConnectConnectorUpdateDataCase0ForwardedClaimsIdTokenList),
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase0ForwardedClaims",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase0ForwardedClaims>;
+export const ConnectConnectorUpdateDataCase0ForwardedClaims =
+  ConnectConnectorCreateDataCase0ForwardedClaims as any as S.Schema<ConnectConnectorUpdateDataCase0ForwardedClaims>;
 
 /** Extra query parameters added to authorization URLs. */
 export type ConnectConnectorUpdateDataCase0AuthorizationUrlParamsMap = {
   [key: string]: string | undefined;
 };
-export const ConnectConnectorUpdateDataCase0AuthorizationUrlParamsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0AuthorizationUrlParamsMap>;
+export const ConnectConnectorUpdateDataCase0AuthorizationUrlParamsMap =
+  ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap as any as S.Schema<ConnectConnectorUpdateDataCase0AuthorizationUrlParamsMap>;
 
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorUpdateDataCase0JwtBearerScopesList = Array<string>;
-export const ConnectConnectorUpdateDataCase0JwtBearerScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0JwtBearerScopesList>;
+export const ConnectConnectorUpdateDataCase0JwtBearerScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase0JwtBearerScopesList>;
 
 /** Additional claims included in generated JWT assertions. */
 export type ConnectConnectorUpdateDataCase0JwtBearerAdditionalClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const ConnectConnectorUpdateDataCase0JwtBearerAdditionalClaimsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0JwtBearerAdditionalClaimsMap>;
+export const ConnectConnectorUpdateDataCase0JwtBearerAdditionalClaimsMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorUpdateDataCase0JwtBearerAdditionalClaimsMap>;
 
 /** JWT bearer grant settings. */
 export interface ConnectConnectorUpdateDataCase0JwtBearer {
@@ -3490,29 +3323,15 @@ export interface ConnectConnectorUpdateDataCase0JwtBearer {
   /** Whether JWT bearer requests also use client credentials. */
   useClientCredentials?: boolean;
 }
-export const ConnectConnectorUpdateDataCase0JwtBearer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    scopes: S.optional(ConnectConnectorUpdateDataCase0JwtBearerScopesList),
-    sub: S.optional(S.String),
-    iss: S.optional(S.String),
-    aud: S.optional(S.String),
-    additionalClaims: S.optional(ConnectConnectorUpdateDataCase0JwtBearerAdditionalClaimsMap),
-    ttl: S.optional(S.Number),
-    useClientCredentials: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase0JwtBearer",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase0JwtBearer>;
+export const ConnectConnectorUpdateDataCase0JwtBearer =
+  ConnectConnectorCreateDataCase0JwtBearer as any as S.Schema<ConnectConnectorUpdateDataCase0JwtBearer>;
 
 /** Additional claims included in the client assertion. */
 export type ConnectConnectorUpdateDataCase0ClientAssertionClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const ConnectConnectorUpdateDataCase0ClientAssertionClaimsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorUpdateDataCase0ClientAssertionClaimsMap>;
+export const ConnectConnectorUpdateDataCase0ClientAssertionClaimsMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorUpdateDataCase0ClientAssertionClaimsMap>;
 
 /** `private_key_jwt` client assertion settings. */
 export interface ConnectConnectorUpdateDataCase0ClientAssertion {
@@ -3523,15 +3342,8 @@ export interface ConnectConnectorUpdateDataCase0ClientAssertion {
   /** Additional claims included in the client assertion. */
   claims?: ConnectConnectorUpdateDataCase0ClientAssertionClaimsMap;
 }
-export const ConnectConnectorUpdateDataCase0ClientAssertion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    claims: S.optional(ConnectConnectorUpdateDataCase0ClientAssertionClaimsMap),
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase0ClientAssertion",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase0ClientAssertion>;
+export const ConnectConnectorUpdateDataCase0ClientAssertion =
+  ConnectConnectorCreateDataCase0ClientAssertion as any as S.Schema<ConnectConnectorUpdateDataCase0ClientAssertion>;
 
 export interface ConnectConnectorUpdateDataCase0 {
   /** Authorization server base URL used for discovery. */
@@ -3601,9 +3413,8 @@ export const ConnectConnectorUpdateDataCase0 = /*@__PURE__*/ S.suspend(() =>
 
 /** Stored API key value IDs to delete. */
 export type ConnectConnectorUpdateDataCase1ToDeleteList = Array<string>;
-export const ConnectConnectorUpdateDataCase1ToDeleteList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase1ToDeleteList>;
+export const ConnectConnectorUpdateDataCase1ToDeleteList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase1ToDeleteList>;
 
 export type ConnectConnectorUpdateDataCase1ToAddItem = ConnectConnectorCreateDataCase1ValuesItem;
 export const ConnectConnectorUpdateDataCase1ToAddItem = ConnectConnectorCreateDataCase1ValuesItem;
@@ -3611,9 +3422,8 @@ export const ConnectConnectorUpdateDataCase1ToAddItem = ConnectConnectorCreateDa
 /** API key values to add. */
 export type ConnectConnectorUpdateDataCase1ToAddList =
   Array<ConnectConnectorCreateDataCase1ValuesItem>;
-export const ConnectConnectorUpdateDataCase1ToAddList = /*@__PURE__*/ S.Array(
-  ConnectConnectorCreateDataCase1ValuesItem,
-) as any as S.Schema<ConnectConnectorUpdateDataCase1ToAddList>;
+export const ConnectConnectorUpdateDataCase1ToAddList =
+  ConnectConnectorCreateDataCase1ValuesList as any as S.Schema<ConnectConnectorUpdateDataCase1ToAddList>;
 
 /** The timestamp when the API key value expires in milliseconds. */
 export type ConnectConnectorUpdateDataCase1ToUpdateItemExpiresAt = number | string;
@@ -3701,10 +3511,8 @@ export const ConnectConnectorUpdateDataCase2Owner = /*@__PURE__*/ S.suspend(() =
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorUpdateDataCase2ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorUpdateDataCase2ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorUpdateDataCase2ExtrasMap>;
+export const ConnectConnectorUpdateDataCase2ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorUpdateDataCase2ExtrasMap>;
 
 export interface ConnectConnectorUpdateDataCase2 {
   /** GitHub App numeric ID. */
@@ -3744,15 +3552,13 @@ export const ConnectConnectorUpdateDataCase2 = /*@__PURE__*/ S.suspend(() =>
 
 /** OAuth scopes requested for Linear application tokens. */
 export type ConnectConnectorUpdateDataCase3AppScopesList = Array<string>;
-export const ConnectConnectorUpdateDataCase3AppScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase3AppScopesList>;
+export const ConnectConnectorUpdateDataCase3AppScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase3AppScopesList>;
 
 /** OAuth scopes requested for Linear user tokens. */
 export type ConnectConnectorUpdateDataCase3UserScopesList = Array<string>;
-export const ConnectConnectorUpdateDataCase3UserScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase3UserScopesList>;
+export const ConnectConnectorUpdateDataCase3UserScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase3UserScopesList>;
 
 /** Linear organization that owns the OAuth application. */
 export type ConnectConnectorUpdateDataCase3OwnerOrganization =
@@ -3762,16 +3568,13 @@ export const ConnectConnectorUpdateDataCase3OwnerOrganization =
 
 /** Registered redirect URIs for the Linear OAuth application. */
 export type ConnectConnectorUpdateDataCase3ApplicationRedirectUrisList = Array<string>;
-export const ConnectConnectorUpdateDataCase3ApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase3ApplicationRedirectUrisList>;
+export const ConnectConnectorUpdateDataCase3ApplicationRedirectUrisList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase3ApplicationRedirectUrisList>;
 
 /** Linear resource types delivered to the webhook. */
 export type ConnectConnectorUpdateDataCase3ApplicationWebhookResourceTypesList = Array<string>;
 export const ConnectConnectorUpdateDataCase3ApplicationWebhookResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectConnectorUpdateDataCase3ApplicationWebhookResourceTypesList>;
+  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorUpdateDataCase3ApplicationWebhookResourceTypesList>;
 
 /** Linear OAuth application metadata. */
 export interface ConnectConnectorUpdateDataCase3Application {
@@ -3804,35 +3607,13 @@ export interface ConnectConnectorUpdateDataCase3Application {
   /** Linear OAuth application update timestamp. */
   updatedAt?: string;
 }
-export const ConnectConnectorUpdateDataCase3Application = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientId: S.String,
-    name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    developer: S.optional(S.NullOr(S.String)),
-    developerUrl: S.optional(S.NullOr(S.String)),
-    imageUrl: S.optional(S.NullOr(S.String)),
-    redirectUris: S.optional(ConnectConnectorUpdateDataCase3ApplicationRedirectUrisList),
-    distribution: S.optional(S.NullOr(S.String)),
-    webhookResourceTypes: S.optional(
-      ConnectConnectorUpdateDataCase3ApplicationWebhookResourceTypesList,
-    ),
-    webhookUrl: S.optional(S.NullOr(S.String)),
-    webhookEnabled: S.optional(S.Boolean),
-    createdAt: S.optional(S.String),
-    updatedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectConnectorUpdateDataCase3Application",
-}) as any as S.Schema<ConnectConnectorUpdateDataCase3Application>;
+export const ConnectConnectorUpdateDataCase3Application =
+  ConnectConnectorCreateDataCase3Application as any as S.Schema<ConnectConnectorUpdateDataCase3Application>;
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorUpdateDataCase3ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorUpdateDataCase3ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorUpdateDataCase3ExtrasMap>;
+export const ConnectConnectorUpdateDataCase3ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorUpdateDataCase3ExtrasMap>;
 
 export interface ConnectConnectorUpdateDataCase3 {
   /** Linear application ID. */
@@ -3897,15 +3678,13 @@ export const ConnectConnectorUpdateDataCase5SlackTeam = ConnectConnectorCreateDa
 
 /** OAuth scopes requested for Slack bot tokens. */
 export type ConnectConnectorUpdateDataCase5BotScopesList = Array<string>;
-export const ConnectConnectorUpdateDataCase5BotScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase5BotScopesList>;
+export const ConnectConnectorUpdateDataCase5BotScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase5BotScopesList>;
 
 /** OAuth scopes requested for Slack user tokens. */
 export type ConnectConnectorUpdateDataCase5UserScopesList = Array<string>;
-export const ConnectConnectorUpdateDataCase5UserScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase5UserScopesList>;
+export const ConnectConnectorUpdateDataCase5UserScopesList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase5UserScopesList>;
 
 export type ConnectConnectorUpdateDataCase5SlashCommandsItem =
   ConnectConnectorCreateDataCase7SlashCommandsItem;
@@ -3915,9 +3694,8 @@ export const ConnectConnectorUpdateDataCase5SlashCommandsItem =
 /** Slash commands configured for the managed Slack app. */
 export type ConnectConnectorUpdateDataCase5SlashCommandsList =
   Array<ConnectConnectorCreateDataCase7SlashCommandsItem>;
-export const ConnectConnectorUpdateDataCase5SlashCommandsList = /*@__PURE__*/ S.Array(
-  ConnectConnectorCreateDataCase7SlashCommandsItem,
-) as any as S.Schema<ConnectConnectorUpdateDataCase5SlashCommandsList>;
+export const ConnectConnectorUpdateDataCase5SlashCommandsList =
+  ConnectConnectorCreateDataCase7SlashCommandsList as any as S.Schema<ConnectConnectorUpdateDataCase5SlashCommandsList>;
 
 /** Where Slack exposes the shortcut. */
 export type ConnectConnectorUpdateDataCase5ShortcutsItemType = "global" | "message";
@@ -3953,10 +3731,8 @@ export const ConnectConnectorUpdateDataCase5ShortcutsList = /*@__PURE__*/ S.Arra
 
 /** Additional provider metadata stored with the connector. */
 export type ConnectConnectorUpdateDataCase5ExtrasMap = { [key: string]: unknown | undefined };
-export const ConnectConnectorUpdateDataCase5ExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorUpdateDataCase5ExtrasMap>;
+export const ConnectConnectorUpdateDataCase5ExtrasMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorUpdateDataCase5ExtrasMap>;
 
 export interface ConnectConnectorUpdateDataCase5 {
   /** Slack app ID. */
@@ -4031,9 +3807,8 @@ export const ConnectConnectorUpdateDataCase7 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectConnectorUpdateDataCase7>;
 
 export type ConnectConnectorUpdateDataCase8PhoneNumbersList = Array<string>;
-export const ConnectConnectorUpdateDataCase8PhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase8PhoneNumbersList>;
+export const ConnectConnectorUpdateDataCase8PhoneNumbersList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase8PhoneNumbersList>;
 
 export interface ConnectConnectorUpdateDataCase8 {
   /** Linq partner API token for the shared line. */
@@ -4051,9 +3826,8 @@ export const ConnectConnectorUpdateDataCase8 = /*@__PURE__*/ S.suspend(() =>
 
 /** E.164 Sendblue lines this connector sends and receives on. Used as the connector's display name, and the only lines its webhooks are registered for; an empty array clears them, which also removes the webhook subscription. */
 export type ConnectConnectorUpdateDataCase9PhoneNumbersList = Array<string>;
-export const ConnectConnectorUpdateDataCase9PhoneNumbersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectConnectorUpdateDataCase9PhoneNumbersList>;
+export const ConnectConnectorUpdateDataCase9PhoneNumbersList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUpdateDataCase9PhoneNumbersList>;
 
 export interface ConnectConnectorUpdateDataCase9 {
   /** Sendblue API key id (`sb-api-key-id`). */
@@ -4092,10 +3866,8 @@ export const ConnectConnectorUpdateDataCase10 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectConnectorUpdateDataCase10>;
 
 export type ConnectConnectorUpdateDataCase11Map = { [key: string]: unknown | undefined };
-export const ConnectConnectorUpdateDataCase11Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectConnectorUpdateDataCase11Map>;
+export const ConnectConnectorUpdateDataCase11Map =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectConnectorUpdateDataCase11Map>;
 
 /** Provider configuration fields for the connector type. */
 export type ConnectConnectorUpdateData =
@@ -4171,16 +3943,13 @@ export const ConnectReconsent = /*@__PURE__*/ S.suspend(() =>
 
 /** Connector fields that caused the synchronization error. */
 export type ConnectServiceSyncErrorFieldsList = Array<string>;
-export const ConnectServiceSyncErrorFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectServiceSyncErrorFieldsList>;
+export const ConnectServiceSyncErrorFieldsList =
+  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectServiceSyncErrorFieldsList>;
 
 /** Provider-specific error details that are safe to expose. */
 export type ConnectServiceSyncErrorVendorMap = { [key: string]: unknown | undefined };
-export const ConnectServiceSyncErrorVendorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConnectServiceSyncErrorVendorMap>;
+export const ConnectServiceSyncErrorVendorMap =
+  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectServiceSyncErrorVendorMap>;
 
 /** Provider synchronization errors, when synchronization is required. */
 export interface ConnectServiceSyncError {

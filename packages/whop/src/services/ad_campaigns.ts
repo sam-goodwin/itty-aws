@@ -598,9 +598,8 @@ export const ListAdCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAdCampaignsRequest" }) as any as S.Schema<ListAdCampaignsRequest>;
 
 export type ListAdCampaignsResponseDataList = Array<AdCampaign>;
-export const ListAdCampaignsResponseDataList = /*@__PURE__*/ S.Array(
-  AdCampaign,
-) as any as S.Schema<ListAdCampaignsResponseDataList>;
+export const ListAdCampaignsResponseDataList =
+  DuplicateAdCampaignResponseDataList as any as S.Schema<ListAdCampaignsResponseDataList>;
 
 export interface ListAdCampaignsResponsePageInfo {
   end_cursor: string | null;

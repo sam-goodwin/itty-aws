@@ -922,9 +922,8 @@ export const FirstPartyDetails = /*@__PURE__*/ S.suspend(() =>
 export type RestApiIntegrationRestEndpointFeaturesEnumList = Array<
   RestEndpointFeaturesEnum | (string & {})
 >;
-export const RestApiIntegrationRestEndpointFeaturesEnumList = /*@__PURE__*/ S.Array(
-  RestEndpointFeaturesEnum,
-) as any as S.Schema<RestApiIntegrationRestEndpointFeaturesEnumList>;
+export const RestApiIntegrationRestEndpointFeaturesEnumList =
+  RestEndpointFeaturesEnumList as any as S.Schema<RestApiIntegrationRestEndpointFeaturesEnumList>;
 
 /** Signup Mode to be used for sellers for third party integration. */
 export type SignupMode = "VERIFY_WITH_PAYPAL";
@@ -1288,9 +1287,8 @@ export const ReadPartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The HATEOAS links. */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<LinkDescriptionList>;
+export const LinkDescriptionList =
+  DefinitionsLinkDescriptionList as any as S.Schema<LinkDescriptionList>;
 
 export interface PersonDocument {
   /** The encrypted identifier for the document. */
@@ -1589,9 +1587,8 @@ export const ReferralData = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/overview/#hateoas-links). */
 export type ReferralDataResponseDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const ReferralDataResponseDefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
-  LinkDescription,
-) as any as S.Schema<ReferralDataResponseDefinitionsLinkDescriptionList>;
+export const ReferralDataResponseDefinitionsLinkDescriptionList =
+  DefinitionsLinkDescriptionList as any as S.Schema<ReferralDataResponseDefinitionsLinkDescriptionList>;
 
 /** The share referral data response. */
 export interface ReferralDataResponse {

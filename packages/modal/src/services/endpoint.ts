@@ -459,9 +459,7 @@ export const StopEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopEndpointRequest" }) as any as S.Schema<StopEndpointRequest>;
 
 export interface StopEndpointResponse {}
-export const StopEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopEndpointResponse",
-}) as any as S.Schema<StopEndpointResponse>;
+export const StopEndpointResponse = GoogleProtobufEmpty as any as S.Schema<StopEndpointResponse>;
 
 export type CreateEndpointError = ModalOpError;
 /** Endpoints */

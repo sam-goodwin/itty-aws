@@ -348,9 +348,9 @@ export const CreateTokenWithIAMResponse = /*@__PURE__*/ S.suspend(() =>
 export type ClientName = string;
 export type ClientType = string;
 export type RedirectUris = string[];
-export const RedirectUris = /*@__PURE__*/ S.Array(S.String);
+export const RedirectUris = Scopes as any as S.Schema<RedirectUris>;
 export type GrantTypes = string[];
-export const GrantTypes = /*@__PURE__*/ S.Array(S.String);
+export const GrantTypes = Scopes as any as S.Schema<GrantTypes>;
 export type ArnType = string;
 export interface RegisterClientRequest {
   clientName: string;

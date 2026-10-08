@@ -204,9 +204,8 @@ export const BulkDomainCheckDomainResponseDomainsMap = /*@__PURE__*/ S.Record(
 
 /** The registry did not answer for these. NOT a statement of availability - retry them. */
 export type BulkDomainCheckDomainResponseUnresolvedList = Array<string>;
-export const BulkDomainCheckDomainResponseUnresolvedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BulkDomainCheckDomainResponseUnresolvedList>;
+export const BulkDomainCheckDomainResponseUnresolvedList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<BulkDomainCheckDomainResponseUnresolvedList>;
 
 /** Entries that could not be checked, each with a reason */
 export type BulkDomainCheckDomainResponseInvalidList = Array<unknown>;
@@ -351,11 +350,8 @@ export const CloudflareDeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareDeleteRecordRequest>;
 
 export type CloudflareDeleteRecordResponse = unknown;
-export const CloudflareDeleteRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareDeleteRecordResponse",
-}) as any as S.Schema<CloudflareDeleteRecordResponse>;
+export const CloudflareDeleteRecordResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareDeleteRecordResponse>;
 
 export interface CloudflareEditRecordRequest {
   domain: string;
@@ -398,11 +394,8 @@ export const CloudflareEditRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareEditRecordRequest>;
 
 export type CloudflareEditRecordResponse = unknown;
-export const CloudflareEditRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareEditRecordResponse",
-}) as any as S.Schema<CloudflareEditRecordResponse>;
+export const CloudflareEditRecordResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareEditRecordResponse>;
 
 export interface CloudflareGetConnectionRequest {}
 export const CloudflareGetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
@@ -412,11 +405,8 @@ export const CloudflareGetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareGetConnectionRequest>;
 
 export type CloudflareGetConnectionResponse = unknown;
-export const CloudflareGetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareGetConnectionResponse",
-}) as any as S.Schema<CloudflareGetConnectionResponse>;
+export const CloudflareGetConnectionResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetConnectionResponse>;
 
 export interface CloudflareGetQueueRequest {}
 export const CloudflareGetQueueRequest = /*@__PURE__*/ S.suspend(() =>
@@ -426,11 +416,8 @@ export const CloudflareGetQueueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareGetQueueRequest>;
 
 export type CloudflareGetQueueResponse = unknown;
-export const CloudflareGetQueueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareGetQueueResponse",
-}) as any as S.Schema<CloudflareGetQueueResponse>;
+export const CloudflareGetQueueResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetQueueResponse>;
 
 export interface CloudflareGetRecordsRequest {
   domain: string;
@@ -444,11 +431,8 @@ export const CloudflareGetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareGetRecordsRequest>;
 
 export type CloudflareGetRecordsResponse = unknown;
-export const CloudflareGetRecordsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareGetRecordsResponse",
-}) as any as S.Schema<CloudflareGetRecordsResponse>;
+export const CloudflareGetRecordsResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetRecordsResponse>;
 
 export interface CloudflareGetZoneRequest {
   domain: string;
@@ -460,11 +444,8 @@ export const CloudflareGetZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudflareGetZoneRequest" }) as any as S.Schema<CloudflareGetZoneRequest>;
 
 export type CloudflareGetZoneResponse = unknown;
-export const CloudflareGetZoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareGetZoneResponse",
-}) as any as S.Schema<CloudflareGetZoneResponse>;
+export const CloudflareGetZoneResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetZoneResponse>;
 
 export interface CloudflareGetZoneSettingsRequest {
   domain: string;
@@ -478,11 +459,8 @@ export const CloudflareGetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareGetZoneSettingsRequest>;
 
 export type CloudflareGetZoneSettingsResponse = unknown;
-export const CloudflareGetZoneSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareGetZoneSettingsResponse",
-}) as any as S.Schema<CloudflareGetZoneSettingsResponse>;
+export const CloudflareGetZoneSettingsResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareGetZoneSettingsResponse>;
 
 export interface CloudflareInventoryRequest {}
 export const CloudflareInventoryRequest = /*@__PURE__*/ S.suspend(() =>
@@ -492,11 +470,8 @@ export const CloudflareInventoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareInventoryRequest>;
 
 export type CloudflareInventoryResponse = unknown;
-export const CloudflareInventoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareInventoryResponse",
-}) as any as S.Schema<CloudflareInventoryResponse>;
+export const CloudflareInventoryResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareInventoryResponse>;
 
 export interface CloudflareRollbackRequest {
   domain: string;
@@ -510,17 +485,13 @@ export const CloudflareRollbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareRollbackRequest>;
 
 export type CloudflareRollbackResponse = unknown;
-export const CloudflareRollbackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareRollbackResponse",
-}) as any as S.Schema<CloudflareRollbackResponse>;
+export const CloudflareRollbackResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareRollbackResponse>;
 
 /** Optional. Limit to these names; "@" = apex, bare labels are expanded. */
 export type CloudflareSetProxyRequestRecordsList = Array<string>;
-export const CloudflareSetProxyRequestRecordsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CloudflareSetProxyRequestRecordsList>;
+export const CloudflareSetProxyRequestRecordsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<CloudflareSetProxyRequestRecordsList>;
 
 export interface CloudflareSetProxyRequest {
   domain: string;
@@ -542,11 +513,8 @@ export const CloudflareSetProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareSetProxyRequest>;
 
 export type CloudflareSetProxyResponse = unknown;
-export const CloudflareSetProxyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareSetProxyResponse",
-}) as any as S.Schema<CloudflareSetProxyResponse>;
+export const CloudflareSetProxyResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareSetProxyResponse>;
 
 export type CloudflareSetZoneSettingsRequestSsl = "off" | "flexible" | "full" | "strict";
 export const CloudflareSetZoneSettingsRequestSsl = S.String;
@@ -592,17 +560,13 @@ export const CloudflareSetZoneSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudflareSetZoneSettingsRequest>;
 
 export type CloudflareSetZoneSettingsResponse = unknown;
-export const CloudflareSetZoneSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CloudflareSetZoneSettingsResponse",
-}) as any as S.Schema<CloudflareSetZoneSettingsResponse>;
+export const CloudflareSetZoneSettingsResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<CloudflareSetZoneSettingsResponse>;
 
 /** Domain names to move. A comma-separated string is also accepted. */
 export type ConnectCloudflareRequestDomainsList = Array<string>;
-export const ConnectCloudflareRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectCloudflareRequestDomainsList>;
+export const ConnectCloudflareRequestDomainsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ConnectCloudflareRequestDomainsList>;
 
 export interface ConnectCloudflareRequest {
   /** Domain names to move. A comma-separated string is also accepted. */
@@ -618,11 +582,8 @@ export const ConnectCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectCloudflareRequest" }) as any as S.Schema<ConnectCloudflareRequest>;
 
 export type ConnectCloudflareResponse = unknown;
-export const ConnectCloudflareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ConnectCloudflareResponse",
-}) as any as S.Schema<ConnectCloudflareResponse>;
+export const ConnectCloudflareResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<ConnectCloudflareResponse>;
 
 export interface CreateAccountInviteRequest {
   /** Email address to pre-fill on the registration form (optional) */
@@ -708,9 +669,8 @@ export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Advisory, and present only when there is something to say. It never means the call failed. The one to handle: a DNS write is accepted and stored even when the domain is NOT delegated to our nameservers -- we keep the zone ready in case the delegation comes back -- so the write changed nothing that resolves, and this field says so. Show these to the user as written. */
 export type DnsWriteWarnings = Array<string>;
-export const DnsWriteWarnings = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DnsWriteWarnings>;
+export const DnsWriteWarnings =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DnsWriteWarnings>;
 
 export interface CreateDnsResponse {
   status?: string;
@@ -792,16 +752,8 @@ export interface CreateDomainResponseLimitsSuccess {
   used?: number;
   naturalLanguage?: string;
 }
-export const CreateDomainResponseLimitsSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TTL: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    used: S.optional(S.Number),
-    naturalLanguage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDomainResponseLimitsSuccess",
-}) as any as S.Schema<CreateDomainResponseLimitsSuccess>;
+export const CreateDomainResponseLimitsSuccess =
+  CreateDomainResponseLimitsAttempts as any as S.Schema<CreateDomainResponseLimitsSuccess>;
 
 /** Current rate limit state for both attempt and success limits */
 export interface CreateDomainResponseLimits {
@@ -1025,9 +977,8 @@ export const CreateHostingResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Event types to subscribe to. Omit, or pass ["*"], for all events. Prefix wildcards like "dns.*" are allowed. */
 export type CreateWebhookRequestEventsList = Array<string>;
-export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateWebhookRequestEventsList>;
+export const CreateWebhookRequestEventsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<CreateWebhookRequestEventsList>;
 
 export interface CreateWebhookRequest {
   /** HTTPS endpoint that receives the signed POST. Port 443 only, and the hostname must resolve to a public internet address -- private/loopback/reserved targets are refused. */
@@ -1044,9 +995,8 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscribed event types, or ["*"] for all. */
 export type WebhookEndpointEventsList = Array<string>;
-export const WebhookEndpointEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhookEndpointEventsList>;
+export const WebhookEndpointEventsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<WebhookEndpointEventsList>;
 
 /** ACTIVE or DISABLED. */
 export type WebhookEndpointStatus = "ACTIVE" | "DISABLED";
@@ -1193,9 +1143,8 @@ export const DeployHostingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployHostingRequest" }) as any as S.Schema<DeployHostingRequest>;
 
 export type DeployHostingResponseDeployedList = Array<string>;
-export const DeployHostingResponseDeployedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeployHostingResponseDeployedList>;
+export const DeployHostingResponseDeployedList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DeployHostingResponseDeployedList>;
 
 export interface DeployHostingResponseSkippedItem {
   path?: string;
@@ -1236,11 +1185,8 @@ export const DisconnectCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisconnectCloudflareRequest>;
 
 export type DisconnectCloudflareResponse = unknown;
-export const DisconnectCloudflareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "DisconnectCloudflareResponse",
-}) as any as S.Schema<DisconnectCloudflareResponse>;
+export const DisconnectCloudflareResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<DisconnectCloudflareResponse>;
 
 export interface DnsCreateDnssecRecordRequest {
   domain: string;
@@ -1386,9 +1332,8 @@ export const DnsDiffResponseMissingList = /*@__PURE__*/ S.Array(
 
 /** Live, not in the restore point. A restore leaves these alone unless prune is true. */
 export type DnsDiffResponseExtraList = Array<DnsHistoryRecord>;
-export const DnsDiffResponseExtraList = /*@__PURE__*/ S.Array(
-  DnsHistoryRecord,
-) as any as S.Schema<DnsDiffResponseExtraList>;
+export const DnsDiffResponseExtraList =
+  DnsDiffResponseMissingList as any as S.Schema<DnsDiffResponseExtraList>;
 
 export interface DnsDiffResponse {
   status?: string;
@@ -1569,15 +1514,13 @@ export const DnsPreflightRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Check ids that will break something. Read these first. */
 export type DnsPreflightResponseBlockersList = Array<string>;
-export const DnsPreflightResponseBlockersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DnsPreflightResponseBlockersList>;
+export const DnsPreflightResponseBlockersList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DnsPreflightResponseBlockersList>;
 
 /** Will not break outright, but usually what the customer asks about next. */
 export type DnsPreflightResponseWarningsList = Array<string>;
-export const DnsPreflightResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DnsPreflightResponseWarningsList>;
+export const DnsPreflightResponseWarningsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DnsPreflightResponseWarningsList>;
 
 export type DnsPreflightResponseChecksItemSeverity = "blocker" | "warning" | "info";
 export const DnsPreflightResponseChecksItemSeverity = S.String;
@@ -1744,20 +1687,11 @@ export interface DnsRecordInput {
   /** Priority, for MX and SRV. */
   prio?: number | null;
 }
-export const DnsRecordInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    content: S.optional(S.String),
-    ttl: S.optional(S.Number),
-    prio: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "DnsRecordInput" }) as any as S.Schema<DnsRecordInput>;
+export const DnsRecordInput = DnsHistoryRecord as any as S.Schema<DnsRecordInput>;
 
 export type DnsScanResponseRecordsList = Array<DnsRecordInput>;
-export const DnsScanResponseRecordsList = /*@__PURE__*/ S.Array(
-  DnsRecordInput,
-) as any as S.Schema<DnsScanResponseRecordsList>;
+export const DnsScanResponseRecordsList =
+  DnsDiffResponseMissingList as any as S.Schema<DnsScanResponseRecordsList>;
 
 export interface DnsScanResponse {
   status?: string;
@@ -1963,16 +1897,8 @@ export interface CheckDomainResponseLimits {
   /** Human-readable rate limit summary */
   naturalLanguage?: string;
 }
-export const CheckDomainResponseLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TTL: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    used: S.optional(S.Number),
-    naturalLanguage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckDomainResponseLimits",
-}) as any as S.Schema<CheckDomainResponseLimits>;
+export const CheckDomainResponseLimits =
+  CreateDomainResponseLimitsAttempts as any as S.Schema<CheckDomainResponseLimits>;
 
 export interface CheckDomainResponse {
   status: string;
@@ -1993,9 +1919,8 @@ export const CheckDomainResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP addresses (IPv4 and/or IPv6) to associate with the host record */
 export type DomainCreateGlueRequestIpsList = Array<string>;
-export const DomainCreateGlueRequestIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainCreateGlueRequestIpsList>;
+export const DomainCreateGlueRequestIpsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainCreateGlueRequestIpsList>;
 
 export interface DomainCreateGlueRequest {
   domain: string;
@@ -2127,9 +2052,8 @@ export const DomainGetGlueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Two-element array: [0] full hostname string, [1] IP addresses object */
 export type DomainGetGlueResponseHostsItemList = Array<unknown>;
-export const DomainGetGlueResponseHostsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DomainGetGlueResponseHostsItemList>;
+export const DomainGetGlueResponseHostsItemList =
+  BulkDomainCheckDomainResponseInvalidList as any as S.Schema<DomainGetGlueResponseHostsItemList>;
 
 /** Array of [hostname, ipAddresses] tuples. Each element is a two-item array: index 0 is the full hostname (string), index 1 is an object with `v4` (array of IPv4 strings) and `v6` (array of IPv6 strings). Example: `["ns1.example.com", {"v4": ["1.2.3.4"], "v6": []}]` */
 export type DomainGetGlueResponseHostsList = Array<DomainGetGlueResponseHostsItemList>;
@@ -2159,9 +2083,8 @@ export const DomainGetNsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainGetNsRequest" }) as any as S.Schema<DomainGetNsRequest>;
 
 export type DomainGetNsResponseNsList = Array<string>;
-export const DomainGetNsResponseNsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainGetNsResponseNsList>;
+export const DomainGetNsResponseNsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainGetNsResponseNsList>;
 
 export interface DomainGetNsResponse {
   status?: string;
@@ -2237,9 +2160,8 @@ export const DomainGetTransferSetupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainGetTransferSetupRequest>;
 
 export type DomainGetTransferSetupResponsePorkbunNameserversList = Array<string>;
-export const DomainGetTransferSetupResponsePorkbunNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainGetTransferSetupResponsePorkbunNameserversList>;
+export const DomainGetTransferSetupResponsePorkbunNameserversList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainGetTransferSetupResponsePorkbunNameserversList>;
 
 export interface DomainGetTransferSetupResponse {
   status?: string;
@@ -2374,9 +2296,8 @@ export const DomainUpdateAutoRenewRequestStatus = S.String;
 
 /** Array of additional domain names to update. Combined with the domain in the URL path if provided. */
 export type DomainUpdateAutoRenewRequestDomainsList = Array<string>;
-export const DomainUpdateAutoRenewRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainUpdateAutoRenewRequestDomainsList>;
+export const DomainUpdateAutoRenewRequestDomainsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainUpdateAutoRenewRequestDomainsList>;
 
 export interface DomainUpdateAutoRenewRequest {
   /** Optional single domain in URL. Omit or use `/domain/updateAutoRenew/` (without trailing domain) when using the `domains` body array instead. */
@@ -2482,9 +2403,8 @@ export const DomainUpdateContactsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of IP addresses (IPv4 and/or IPv6) to associate with the host record */
 export type DomainUpdateGlueRequestIpsList = Array<string>;
-export const DomainUpdateGlueRequestIpsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainUpdateGlueRequestIpsList>;
+export const DomainUpdateGlueRequestIpsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainUpdateGlueRequestIpsList>;
 
 export interface DomainUpdateGlueRequest {
   domain: string;
@@ -2502,9 +2422,8 @@ export const DomainUpdateGlueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered array of nameserver hostnames */
 export type DomainUpdateNsRequestNsList = Array<string>;
-export const DomainUpdateNsRequestNsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DomainUpdateNsRequestNsList>;
+export const DomainUpdateNsRequestNsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<DomainUpdateNsRequestNsList>;
 
 export interface DomainUpdateNsRequest {
   domain: string;
@@ -2789,9 +2708,8 @@ export const GetAutoTopupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Advisory. Present when the settings cannot do anything as they stand, e.g. no payment method is saved. */
 export type AutoTopupResponseWarningsList = Array<string>;
-export const AutoTopupResponseWarningsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AutoTopupResponseWarningsList>;
+export const AutoTopupResponseWarningsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<AutoTopupResponseWarningsList>;
 
 export interface AutoTopupResponse {
   status?: string;
@@ -3015,10 +2933,8 @@ export const GetDnssecRecordsResponseRecordsValue = DnsGetDnssecRecordsResponseR
 export type GetDnssecRecordsResponseRecordsMap = {
   [key: string]: DnsGetDnssecRecordsResponseRecordsValue | undefined;
 };
-export const GetDnssecRecordsResponseRecordsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DnsGetDnssecRecordsResponseRecordsValue,
-) as any as S.Schema<GetDnssecRecordsResponseRecordsMap>;
+export const GetDnssecRecordsResponseRecordsMap =
+  DnsGetDnssecRecordsResponseRecordsMap as any as S.Schema<GetDnssecRecordsResponseRecordsMap>;
 
 export interface GetDnssecRecordsResponse {
   status?: string;
@@ -3097,27 +3013,21 @@ export const GetDomainGlueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Two-element array: [0] full hostname string, [1] IP addresses object */
 export type GetDomainGlueResponseHostsItemList = Array<unknown>;
-export const GetDomainGlueResponseHostsItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GetDomainGlueResponseHostsItemList>;
+export const GetDomainGlueResponseHostsItemList =
+  BulkDomainCheckDomainResponseInvalidList as any as S.Schema<GetDomainGlueResponseHostsItemList>;
 
 /** Array of [hostname, ipAddresses] tuples. Each element is a two-item array: index 0 is the full hostname (string), index 1 is an object with `v4` (array of IPv4 strings) and `v6` (array of IPv6 strings). Example: `["ns1.example.com", {"v4": ["1.2.3.4"], "v6": []}]` */
 export type GetDomainGlueResponseHostsList = Array<GetDomainGlueResponseHostsItemList>;
-export const GetDomainGlueResponseHostsList = /*@__PURE__*/ S.Array(
-  GetDomainGlueResponseHostsItemList,
-) as any as S.Schema<GetDomainGlueResponseHostsList>;
+export const GetDomainGlueResponseHostsList =
+  DomainGetGlueResponseHostsList as any as S.Schema<GetDomainGlueResponseHostsList>;
 
 export interface GetDomainGlueResponse {
   status?: string;
   /** Array of [hostname, ipAddresses] tuples. Each element is a two-item array: index 0 is the full hostname (string), index 1 is an object with `v4` (array of IPv4 strings) and `v6` (array of IPv6 strings). Example: `["ns1.example.com", {"v4": ["1.2.3.4"], "v6": []}]` */
   hosts?: GetDomainGlueResponseHostsList;
 }
-export const GetDomainGlueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    hosts: S.optional(GetDomainGlueResponseHostsList),
-  }),
-).annotate({ identifier: "GetDomainGlueResponse" }) as any as S.Schema<GetDomainGlueResponse>;
+export const GetDomainGlueResponse =
+  DomainGetGlueResponse as any as S.Schema<GetDomainGlueResponse>;
 
 export interface GetDomainNsRequest {
   domain: string;
@@ -3129,28 +3039,21 @@ export const GetDomainNsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDomainNsRequest" }) as any as S.Schema<GetDomainNsRequest>;
 
 export type GetDomainNsResponseNsList = Array<string>;
-export const GetDomainNsResponseNsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainNsResponseNsList>;
+export const GetDomainNsResponseNsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetDomainNsResponseNsList>;
 
 export interface GetDomainNsResponse {
   status?: string;
   ns?: GetDomainNsResponseNsList;
 }
-export const GetDomainNsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    ns: S.optional(GetDomainNsResponseNsList),
-  }),
-).annotate({ identifier: "GetDomainNsResponse" }) as any as S.Schema<GetDomainNsResponse>;
+export const GetDomainNsResponse = DomainGetNsResponse as any as S.Schema<GetDomainNsResponse>;
 
 export type GetDomainsRequestIncludeLabels = "yes" | "no";
 export const GetDomainsRequestIncludeLabels = S.String;
 
 export type GetDomainsRequestTldsList = Array<string>;
-export const GetDomainsRequestTldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDomainsRequestTldsList>;
+export const GetDomainsRequestTldsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetDomainsRequestTldsList>;
 
 export type GetDomainsRequestAutoRenew = "yes" | "no";
 export const GetDomainsRequestAutoRenew = S.String;
@@ -3372,9 +3275,8 @@ export const GetInvoiceResponseInvoiceBillTo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInvoiceResponseInvoiceBillTo>;
 
 export type GetInvoiceResponseInvoicePaymentMethodsList = Array<string>;
-export const GetInvoiceResponseInvoicePaymentMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetInvoiceResponseInvoicePaymentMethodsList>;
+export const GetInvoiceResponseInvoicePaymentMethodsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetInvoiceResponseInvoicePaymentMethodsList>;
 
 export type GetInvoiceResponseInvoiceItemsItemStatus =
   | "SUCCESS"
@@ -3385,9 +3287,8 @@ export type GetInvoiceResponseInvoiceItemsItemStatus =
 export const GetInvoiceResponseInvoiceItemsItemStatus = S.String;
 
 export type GetInvoiceResponseInvoiceItemsItemTagsList = Array<string>;
-export const GetInvoiceResponseInvoiceItemsItemTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetInvoiceResponseInvoiceItemsItemTagsList>;
+export const GetInvoiceResponseInvoiceItemsItemTagsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetInvoiceResponseInvoiceItemsItemTagsList>;
 
 export interface GetInvoiceResponseInvoiceItemsItem {
   domain?: string;
@@ -3552,9 +3453,8 @@ export const GetPingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPingResponse" }) as any as S.Schema<GetPingResponse>;
 
 export type GetPricingRequestTldsCase0List = Array<string>;
-export const GetPricingRequestTldsCase0List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPricingRequestTldsCase0List>;
+export const GetPricingRequestTldsCase0List =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetPricingRequestTldsCase0List>;
 
 /** Optional TLDs to price: an array, or a comma-separated string. If neither `tld` nor `tlds` is given (or both are empty), all supported TLDs are returned. */
 export type GetPricingRequestTlds = GetPricingRequestTldsCase0List | string;
@@ -3575,9 +3475,8 @@ export const GetPricingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Present only when a filter named TLDs Porkbun does not sell: those names, as sent. They are not in `pricing`. */
 export type GetPricingResponseUnsupportedList = Array<string>;
-export const GetPricingResponseUnsupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPricingResponseUnsupportedList>;
+export const GetPricingResponseUnsupportedList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetPricingResponseUnsupportedList>;
 
 export type GetPricingResponsePricingValueCouponsValueFirstYearOnly = "yes" | "no";
 export const GetPricingResponsePricingValueCouponsValueFirstYearOnly = S.String;
@@ -3670,9 +3569,8 @@ export const GetPricingGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Present only when a filter named TLDs Porkbun does not sell: those names, as sent. They are not in `pricing`. */
 export type GetPricingGetResponseUnsupportedList = Array<string>;
-export const GetPricingGetResponseUnsupportedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetPricingGetResponseUnsupportedList>;
+export const GetPricingGetResponseUnsupportedList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<GetPricingGetResponseUnsupportedList>;
 
 export type GetPricingGetResponsePricingValueCouponsValueFirstYearOnly = "yes" | "no";
 export const GetPricingGetResponsePricingValueCouponsValueFirstYearOnly = S.String;
@@ -3795,14 +3693,7 @@ export interface GetSslRetrieveResponse {
   /** The PEM-encoded public key */
   publickey?: string;
 }
-export const GetSslRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    certificatechain: S.optional(S.String),
-    privatekey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    publickey: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetSslRetrieveResponse" }) as any as S.Schema<GetSslRetrieveResponse>;
+export const GetSslRetrieveResponse = GetSslResponse as any as S.Schema<GetSslRetrieveResponse>;
 
 export interface GetTransferGetRequest {
   /** The domain name (e.g. `example.com`). */
@@ -4003,9 +3894,8 @@ export const HostingFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostingFilesRequest" }) as any as S.Schema<HostingFilesRequest>;
 
 export type HostingFilesResponseFilesList = Array<string>;
-export const HostingFilesResponseFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HostingFilesResponseFilesList>;
+export const HostingFilesResponseFilesList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<HostingFilesResponseFilesList>;
 
 export interface HostingFilesResponse {
   status?: string;
@@ -4034,9 +3924,8 @@ export const HostingGetWpCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostingGetWpCredentialsRequest>;
 
 export type HostingGetWpCredentialsResponseCredentialsList = Array<unknown>;
-export const HostingGetWpCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<HostingGetWpCredentialsResponseCredentialsList>;
+export const HostingGetWpCredentialsResponseCredentialsList =
+  BulkDomainCheckDomainResponseInvalidList as any as S.Schema<HostingGetWpCredentialsResponseCredentialsList>;
 
 export interface HostingGetWpCredentialsResponse {
   status?: string;
@@ -4126,9 +4015,8 @@ export const HostingPlansResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Records to create. Omit to import what a scan discovers. NS and SOA entries are ignored -- they describe the delegation, not the zone contents. */
 export type ImportDnsRequestRecordsList = Array<DnsRecordInput>;
-export const ImportDnsRequestRecordsList = /*@__PURE__*/ S.Array(
-  DnsRecordInput,
-) as any as S.Schema<ImportDnsRequestRecordsList>;
+export const ImportDnsRequestRecordsList =
+  DnsDiffResponseMissingList as any as S.Schema<ImportDnsRequestRecordsList>;
 
 export interface ImportDnsRequest {
   domain: string;
@@ -4143,9 +4031,8 @@ export const ImportDnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDnsRequest" }) as any as S.Schema<ImportDnsRequest>;
 
 export type ImportDnsResponseFailuresList = Array<unknown>;
-export const ImportDnsResponseFailuresList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ImportDnsResponseFailuresList>;
+export const ImportDnsResponseFailuresList =
+  BulkDomainCheckDomainResponseInvalidList as any as S.Schema<ImportDnsResponseFailuresList>;
 
 export interface ImportDnsResponse {
   status?: string;
@@ -4175,9 +4062,8 @@ export const ListDomainsRequestIncludeLabels = S.String;
 
 /** Limit to these TLDs (without leading dot). */
 export type ListDomainsRequestTldsList = Array<string>;
-export const ListDomainsRequestTldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListDomainsRequestTldsList>;
+export const ListDomainsRequestTldsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListDomainsRequestTldsList>;
 
 /** Filter to domains with auto-renew on or off. */
 export type ListDomainsRequestAutoRenew = "yes" | "no";
@@ -4256,9 +4142,8 @@ export const ListInvoicesResponseInvoicesItemState = S.String;
 
 /** Up to 10 domains on the invoice. */
 export type ListInvoicesResponseInvoicesItemDomainsList = Array<string>;
-export const ListInvoicesResponseInvoicesItemDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListInvoicesResponseInvoicesItemDomainsList>;
+export const ListInvoicesResponseInvoicesItemDomainsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListInvoicesResponseInvoicesItemDomainsList>;
 
 export interface ListInvoicesResponseInvoicesItem {
   id?: number;
@@ -4321,9 +4206,8 @@ export const ListInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter to listings under these TLDs (without the leading dot). */
 export type ListMarketplaceListingsRequestTldsList = Array<string>;
-export const ListMarketplaceListingsRequestTldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMarketplaceListingsRequestTldsList>;
+export const ListMarketplaceListingsRequestTldsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListMarketplaceListingsRequestTldsList>;
 
 /** Field to sort filtered results by. Default `sld_length` ascending when `query` is set, otherwise `create_date` descending. */
 export type ListMarketplaceListingsRequestSortName = "domain" | "tld" | "price" | "sld_length";
@@ -4414,9 +4298,8 @@ export const ListMarketplaceListingsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMarketplaceListingsResponse>;
 
 export type ListMarketplaceListingsGetRequestTldsList = Array<string>;
-export const ListMarketplaceListingsGetRequestTldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListMarketplaceListingsGetRequestTldsList>;
+export const ListMarketplaceListingsGetRequestTldsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<ListMarketplaceListingsGetRequestTldsList>;
 
 export type ListMarketplaceListingsGetRequestSortName = "domain" | "tld" | "price" | "sld_length";
 export const ListMarketplaceListingsGetRequestSortName = S.String;
@@ -4464,23 +4347,13 @@ export interface ListMarketplaceListingsGetResponseDomainsItem {
   sld_length?: number;
   price?: number;
 }
-export const ListMarketplaceListingsGetResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    create_date: S.optional(S.String),
-    domain: S.optional(S.String),
-    tld: S.optional(S.String),
-    sld_length: S.optional(S.Number),
-    price: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListMarketplaceListingsGetResponseDomainsItem",
-}) as any as S.Schema<ListMarketplaceListingsGetResponseDomainsItem>;
+export const ListMarketplaceListingsGetResponseDomainsItem =
+  ListMarketplaceListingsResponseDomainsItem as any as S.Schema<ListMarketplaceListingsGetResponseDomainsItem>;
 
 export type ListMarketplaceListingsGetResponseDomainsList =
   Array<ListMarketplaceListingsGetResponseDomainsItem>;
-export const ListMarketplaceListingsGetResponseDomainsList = /*@__PURE__*/ S.Array(
-  ListMarketplaceListingsGetResponseDomainsItem,
-) as any as S.Schema<ListMarketplaceListingsGetResponseDomainsList>;
+export const ListMarketplaceListingsGetResponseDomainsList =
+  ListMarketplaceListingsResponseDomainsList as any as S.Schema<ListMarketplaceListingsGetResponseDomainsList>;
 
 export interface ListMarketplaceListingsGetResponse {
   status?: string;
@@ -4488,16 +4361,8 @@ export interface ListMarketplaceListingsGetResponse {
   filtered?: boolean;
   domains?: ListMarketplaceListingsGetResponseDomainsList;
 }
-export const ListMarketplaceListingsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    count: S.optional(S.Number),
-    filtered: S.optional(S.Boolean),
-    domains: S.optional(ListMarketplaceListingsGetResponseDomainsList),
-  }),
-).annotate({
-  identifier: "ListMarketplaceListingsGetResponse",
-}) as any as S.Schema<ListMarketplaceListingsGetResponse>;
+export const ListMarketplaceListingsGetResponse =
+  ListMarketplaceListingsResponse as any as S.Schema<ListMarketplaceListingsGetResponse>;
 
 export interface ListTransfersGetRequest {}
 export const ListTransfersGetRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4632,9 +4497,7 @@ export const MockEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MockEndpointRequest" }) as any as S.Schema<MockEndpointRequest>;
 
 export type MockEndpointResponse = unknown;
-export const MockEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "MockEndpointResponse" }) as any as S.Schema<MockEndpointResponse>;
+export const MockEndpointResponse = GetCloudflareResponse as any as S.Schema<MockEndpointResponse>;
 
 export interface PingRequest {}
 export const PingRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4650,14 +4513,7 @@ export interface PingResponse {
   /** Present and true when valid credentials were supplied */
   credentialsValid?: boolean;
 }
-export const PingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    yourIp: S.String,
-    xForwardedFor: S.optional(S.String),
-    credentialsValid: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PingResponse" }) as any as S.Schema<PingResponse>;
+export const PingResponse = GetPingResponse as any as S.Schema<PingResponse>;
 
 export interface PostIpRequest {}
 export const PostIpRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4674,11 +4530,8 @@ export const PreviewCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PreviewCloudflareRequest" }) as any as S.Schema<PreviewCloudflareRequest>;
 
 export type PreviewCloudflareResponse = unknown;
-export const PreviewCloudflareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "PreviewCloudflareResponse",
-}) as any as S.Schema<PreviewCloudflareResponse>;
+export const PreviewCloudflareResponse =
+  CloudflareCreateRecordResponse as any as S.Schema<PreviewCloudflareResponse>;
 
 /** Optional. `"usdc"` pays for this purchase directly in USDC on Base over x402 instead of from account credit. The first call answers HTTP 402 (`PAYMENT_REQUIRED`) with Coinbase's terms in the `PAYMENT-REQUIRED` header and charges nothing; an x402 client pays and repeats the same request with a `PAYMENT-SIGNATURE` header, and the purchase completes in that call. If it then fails, the payment stays on the account as account credit; it is not sent back to the wallet. If your wallet pays URLs itself instead, pay the 402's `x402Url` (or have a person pay `payUrl`) and repeat the request with `usdcCheckoutId`. See the guide: https://porkbun.com/llms/guides/pay-with-usdc-x402 */
 export type RenewDomainRequestPayWith = "usdc";
@@ -4716,14 +4569,8 @@ export interface RenewDomainResponseLimits {
   attempts?: CreateDomainResponseLimitsAttempts;
   success?: CreateDomainResponseLimitsSuccess;
 }
-export const RenewDomainResponseLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempts: S.optional(CreateDomainResponseLimitsAttempts),
-    success: S.optional(CreateDomainResponseLimitsSuccess),
-  }),
-).annotate({
-  identifier: "RenewDomainResponseLimits",
-}) as any as S.Schema<RenewDomainResponseLimits>;
+export const RenewDomainResponseLimits =
+  CreateDomainResponseLimits as any as S.Schema<RenewDomainResponseLimits>;
 
 export interface RenewDomainResponse {
   status: string;
@@ -4937,9 +4784,8 @@ export const RetryCloudflareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RetryCloudflareRequest" }) as any as S.Schema<RetryCloudflareRequest>;
 
 export type RetryCloudflareResponse = unknown;
-export const RetryCloudflareResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "RetryCloudflareResponse" }) as any as S.Schema<RetryCloudflareResponse>;
+export const RetryCloudflareResponse =
+  GetCloudflareResponse as any as S.Schema<RetryCloudflareResponse>;
 
 export interface SandboxTopupRequest {
   /** Fake credit to add in US cents (default 100000; max 1000000). */
@@ -5273,9 +5119,8 @@ export const TopupMppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopupMppRequest" }) as any as S.Schema<TopupMppRequest>;
 
 export type TopupMppResponseMethodsList = Array<string>;
-export const TopupMppResponseMethodsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TopupMppResponseMethodsList>;
+export const TopupMppResponseMethodsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<TopupMppResponseMethodsList>;
 
 export interface TopupMppResponse {
   status?: string;
@@ -5395,9 +5240,8 @@ export const TransferDomainPrepareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferDomainPrepareRequest>;
 
 export type TransferDomainPrepareResponsePorkbunNameserversList = Array<string>;
-export const TransferDomainPrepareResponsePorkbunNameserversList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TransferDomainPrepareResponsePorkbunNameserversList>;
+export const TransferDomainPrepareResponsePorkbunNameserversList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<TransferDomainPrepareResponsePorkbunNameserversList>;
 
 export interface TransferDomainPrepareResponse {
   status?: string;
@@ -5422,9 +5266,8 @@ export const TransferDomainPrepareResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replacement event subscription list (optional). */
 export type UpdateWebhookRequestEventsList = Array<string>;
-export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateWebhookRequestEventsList>;
+export const UpdateWebhookRequestEventsList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 /** Set ACTIVE to resume (also clears the failure counter) or DISABLED to pause (optional). */
 export type UpdateWebhookRequestStatus = "ACTIVE" | "DISABLED";
@@ -5528,9 +5371,8 @@ export const WebhookEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookEventTypesRequest" }) as any as S.Schema<WebhookEventTypesRequest>;
 
 export type WebhookEventTypesResponseEventTypesList = Array<string>;
-export const WebhookEventTypesResponseEventTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WebhookEventTypesResponseEventTypesList>;
+export const WebhookEventTypesResponseEventTypesList =
+  BulkDomainCheckDomainRequestDomainsList as any as S.Schema<WebhookEventTypesResponseEventTypesList>;
 
 export interface WebhookEventTypesResponse {
   status?: string;

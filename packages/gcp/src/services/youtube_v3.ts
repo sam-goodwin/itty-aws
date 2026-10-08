@@ -666,9 +666,8 @@ export const DeleteChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteChannelSectionsRequest>;
 
 export interface DeleteChannelSectionsResponse {}
-export const DeleteChannelSectionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteChannelSectionsResponse",
-}) as any as S.Schema<DeleteChannelSectionsResponse>;
+export const DeleteChannelSectionsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteChannelSectionsResponse>;
 
 export interface DeleteCommentsRequest {
   id: string;
@@ -686,9 +685,8 @@ export const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommentsRequest" }) as any as S.Schema<DeleteCommentsRequest>;
 
 export interface DeleteCommentsResponse {}
-export const DeleteCommentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteCommentsResponse",
-}) as any as S.Schema<DeleteCommentsResponse>;
+export const DeleteCommentsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteCommentsResponse>;
 
 export interface DeleteLiveBroadcastsRequest {
   /** This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel. */
@@ -715,9 +713,8 @@ export const DeleteLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveBroadcastsRequest>;
 
 export interface DeleteLiveBroadcastsResponse {}
-export const DeleteLiveBroadcastsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLiveBroadcastsResponse",
-}) as any as S.Schema<DeleteLiveBroadcastsResponse>;
+export const DeleteLiveBroadcastsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteLiveBroadcastsResponse>;
 
 export interface DeleteLiveChatBansRequest {
   id: string;
@@ -737,9 +734,8 @@ export const DeleteLiveChatBansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveChatBansRequest>;
 
 export interface DeleteLiveChatBansResponse {}
-export const DeleteLiveChatBansResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLiveChatBansResponse",
-}) as any as S.Schema<DeleteLiveChatBansResponse>;
+export const DeleteLiveChatBansResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteLiveChatBansResponse>;
 
 export interface DeleteLiveChatMessagesRequest {
   id: string;
@@ -759,9 +755,8 @@ export const DeleteLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLiveChatMessagesRequest>;
 
 export interface DeleteLiveChatMessagesResponse {}
-export const DeleteLiveChatMessagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLiveChatMessagesResponse",
-}) as any as S.Schema<DeleteLiveChatMessagesResponse>;
+export const DeleteLiveChatMessagesResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteLiveChatMessagesResponse>;
 
 export interface DeleteLiveChatModeratorsRequest {
   id: string;
@@ -809,9 +804,8 @@ export const DeleteLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLiveStreamsRequest" }) as any as S.Schema<DeleteLiveStreamsRequest>;
 
 export interface DeleteLiveStreamsResponse {}
-export const DeleteLiveStreamsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteLiveStreamsResponse",
-}) as any as S.Schema<DeleteLiveStreamsResponse>;
+export const DeleteLiveStreamsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteLiveStreamsResponse>;
 
 export interface DeletePlaylistImagesRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
@@ -835,9 +829,8 @@ export const DeletePlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlaylistImagesRequest>;
 
 export interface DeletePlaylistImagesResponse {}
-export const DeletePlaylistImagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePlaylistImagesResponse",
-}) as any as S.Schema<DeletePlaylistImagesResponse>;
+export const DeletePlaylistImagesResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeletePlaylistImagesResponse>;
 
 export interface DeletePlaylistItemsRequest {
   id: string;
@@ -860,9 +853,8 @@ export const DeletePlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlaylistItemsRequest>;
 
 export interface DeletePlaylistItemsResponse {}
-export const DeletePlaylistItemsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePlaylistItemsResponse",
-}) as any as S.Schema<DeletePlaylistItemsResponse>;
+export const DeletePlaylistItemsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeletePlaylistItemsResponse>;
 
 export interface DeletePlaylistsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
@@ -883,9 +875,8 @@ export const DeletePlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePlaylistsRequest" }) as any as S.Schema<DeletePlaylistsRequest>;
 
 export interface DeletePlaylistsResponse {}
-export const DeletePlaylistsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePlaylistsResponse",
-}) as any as S.Schema<DeletePlaylistsResponse>;
+export const DeletePlaylistsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeletePlaylistsResponse>;
 
 export interface DeleteSubscriptionsRequest {
   id: string;
@@ -905,9 +896,8 @@ export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
-export const DeleteSubscriptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteSubscriptionsResponse",
-}) as any as S.Schema<DeleteSubscriptionsResponse>;
+export const DeleteSubscriptionsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteSubscriptionsResponse>;
 
 export type DeleteThirdPartyLinksTypeEnum =
   | "linkUnspecified"
@@ -943,9 +933,8 @@ export const DeleteThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThirdPartyLinksRequest>;
 
 export interface DeleteThirdPartyLinksResponse {}
-export const DeleteThirdPartyLinksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteThirdPartyLinksResponse",
-}) as any as S.Schema<DeleteThirdPartyLinksResponse>;
+export const DeleteThirdPartyLinksResponse =
+  DeleteCaptionsResponse as any as S.Schema<DeleteThirdPartyLinksResponse>;
 
 export interface DeleteVideosRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner. */
@@ -966,9 +955,7 @@ export const DeleteVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVideosRequest" }) as any as S.Schema<DeleteVideosRequest>;
 
 export interface DeleteVideosResponse {}
-export const DeleteVideosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVideosResponse",
-}) as any as S.Schema<DeleteVideosResponse>;
+export const DeleteVideosResponse = DeleteCaptionsResponse as any as S.Schema<DeleteVideosResponse>;
 
 export interface DownloadCaptionsRequest {
   /** Convert the captions into this format. Supported options are sbv, srt, and vtt. */
@@ -999,9 +986,8 @@ export const DownloadCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadCaptionsRequest" }) as any as S.Schema<DownloadCaptionsRequest>;
 
 export interface DownloadCaptionsResponse {}
-export const DownloadCaptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DownloadCaptionsResponse",
-}) as any as S.Schema<DownloadCaptionsResponse>;
+export const DownloadCaptionsResponse =
+  DeleteCaptionsResponse as any as S.Schema<DownloadCaptionsResponse>;
 
 export interface GetRatingVideosRequest {
   id: StringList;
@@ -3104,9 +3090,8 @@ export const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsertSubscriptionsRequest>;
 
 export interface TestItemTestItemSnippet {}
-export const TestItemTestItemSnippet = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TestItemTestItemSnippet",
-}) as any as S.Schema<TestItemTestItemSnippet>;
+export const TestItemTestItemSnippet =
+  DeleteCaptionsResponse as any as S.Schema<TestItemTestItemSnippet>;
 
 export interface TestItem {
   id?: string;
@@ -3409,12 +3394,7 @@ export interface VideoLocalization {
   /** Localized version of the video's description. */
   description?: string;
 }
-export const VideoLocalization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "VideoLocalization" }) as any as S.Schema<VideoLocalization>;
+export const VideoLocalization = PlaylistLocalization as any as S.Schema<VideoLocalization>;
 
 export type VideoSnippetLiveBroadcastContentEnum = "none" | "upcoming" | "live" | "completed";
 export const VideoSnippetLiveBroadcastContentEnum = S.String;
@@ -3638,10 +3618,8 @@ export const VideoLiveStreamingDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoLiveStreamingDetails>;
 
 export type VideoLocalizationMap = { [key: string]: VideoLocalization | undefined };
-export const VideoLocalizationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  VideoLocalization,
-) as any as S.Schema<VideoLocalizationMap>;
+export const VideoLocalizationMap =
+  PlaylistLocalizationMap as any as S.Schema<VideoLocalizationMap>;
 
 /** Details about paid content, such as paid product placement, sponsorships or endorsement, contained in a YouTube video and a method to inform viewers of paid promotion. This data can only be retrieved by the video owner. */
 export interface VideoPaidProductPlacementDetails {
@@ -5205,26 +5183,16 @@ export interface ActivityContentDetailsChannelItem {
   /** The `resourceId` object contains information that identifies the resource that was added to the channel. */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsChannelItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(ResourceId),
-  }),
-).annotate({
-  identifier: "ActivityContentDetailsChannelItem",
-}) as any as S.Schema<ActivityContentDetailsChannelItem>;
+export const ActivityContentDetailsChannelItem =
+  ActivityContentDetailsComment as any as S.Schema<ActivityContentDetailsChannelItem>;
 
 /** Information about a channel that a user subscribed to. */
 export interface ActivityContentDetailsSubscription {
   /** The `resourceId` object contains information that identifies the resource that the user subscribed to. */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsSubscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(ResourceId),
-  }),
-).annotate({
-  identifier: "ActivityContentDetailsSubscription",
-}) as any as S.Schema<ActivityContentDetailsSubscription>;
+export const ActivityContentDetailsSubscription =
+  ActivityContentDetailsComment as any as S.Schema<ActivityContentDetailsSubscription>;
 
 export type ActivityContentDetailsPromotedItemCtaTypeEnum =
   | "ctaTypeUnspecified"
@@ -5289,13 +5257,8 @@ export interface ActivityContentDetailsBulletin {
   /** The `resourceId` object contains information that identifies the resource associated with a bulletin post. @mutable youtube.activities.insert */
   resourceId?: ResourceId;
 }
-export const ActivityContentDetailsBulletin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(ResourceId),
-  }),
-).annotate({
-  identifier: "ActivityContentDetailsBulletin",
-}) as any as S.Schema<ActivityContentDetailsBulletin>;
+export const ActivityContentDetailsBulletin =
+  ActivityContentDetailsComment as any as S.Schema<ActivityContentDetailsBulletin>;
 
 /** Information about a new playlist item. */
 export interface ActivityContentDetailsPlaylistItem {
@@ -5681,18 +5644,11 @@ export interface ChannelLocalization {
   /** The localized strings for channel's description. */
   description?: string;
 }
-export const ChannelLocalization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChannelLocalization" }) as any as S.Schema<ChannelLocalization>;
+export const ChannelLocalization = PlaylistLocalization as any as S.Schema<ChannelLocalization>;
 
 export type ChannelLocalizationMap = { [key: string]: ChannelLocalization | undefined };
-export const ChannelLocalizationMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ChannelLocalization,
-) as any as S.Schema<ChannelLocalizationMap>;
+export const ChannelLocalizationMap =
+  PlaylistLocalizationMap as any as S.Schema<ChannelLocalizationMap>;
 
 /** A pair Property / Value. */
 export interface PropertyValue {
@@ -8125,9 +8081,8 @@ export const MarkAsSpamCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkAsSpamCommentsRequest>;
 
 export interface MarkAsSpamCommentsResponse {}
-export const MarkAsSpamCommentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "MarkAsSpamCommentsResponse",
-}) as any as S.Schema<MarkAsSpamCommentsResponse>;
+export const MarkAsSpamCommentsResponse =
+  DeleteCaptionsResponse as any as S.Schema<MarkAsSpamCommentsResponse>;
 
 export type RateVideosRatingEnum = "none" | "like" | "dislike";
 export const RateVideosRatingEnum = S.String;
@@ -8150,9 +8105,7 @@ export const RateVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RateVideosRequest" }) as any as S.Schema<RateVideosRequest>;
 
 export interface RateVideosResponse {}
-export const RateVideosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RateVideosResponse",
-}) as any as S.Schema<RateVideosResponse>;
+export const RateVideosResponse = DeleteCaptionsResponse as any as S.Schema<RateVideosResponse>;
 
 export interface VideoAbuseReport {
   /** The specific, or secondary, reason that this content is abusive (if available). The value is an abuse report reason ID that is a valid secondary reason for the primary reason. */
@@ -8196,9 +8149,8 @@ export const ReportAbuseVideosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportAbuseVideosRequest" }) as any as S.Schema<ReportAbuseVideosRequest>;
 
 export interface ReportAbuseVideosResponse {}
-export const ReportAbuseVideosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "ReportAbuseVideosResponse",
-}) as any as S.Schema<ReportAbuseVideosResponse>;
+export const ReportAbuseVideosResponse =
+  DeleteCaptionsResponse as any as S.Schema<ReportAbuseVideosResponse>;
 
 export type SetModerationStatusCommentsModerationStatusEnum =
   | "published"
@@ -8232,11 +8184,8 @@ export const SetModerationStatusCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetModerationStatusCommentsRequest>;
 
 export interface SetModerationStatusCommentsResponse {}
-export const SetModerationStatusCommentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SetModerationStatusCommentsResponse",
-}) as any as S.Schema<SetModerationStatusCommentsResponse>;
+export const SetModerationStatusCommentsResponse =
+  DeleteLiveChatModeratorsResponse as any as S.Schema<SetModerationStatusCommentsResponse>;
 
 export interface SetThumbnailsRequest {
   /** Returns the Thumbnail with the given video IDs for Stubby or Apiary. */
@@ -8373,9 +8322,8 @@ export const SetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetWatermarksRequest" }) as any as S.Schema<SetWatermarksRequest>;
 
 export interface SetWatermarksResponse {}
-export const SetWatermarksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SetWatermarksResponse",
-}) as any as S.Schema<SetWatermarksResponse>;
+export const SetWatermarksResponse =
+  DeleteCaptionsResponse as any as S.Schema<SetWatermarksResponse>;
 
 export interface StreamYoutubeV3LiveChatMessagesRequest {
   /** The *part* parameter specifies the liveChatComment resource parts that the API response will include. Supported values are id, snippet, and authorDetails. */
@@ -8490,9 +8438,8 @@ export const UnsetWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnsetWatermarksRequest" }) as any as S.Schema<UnsetWatermarksRequest>;
 
 export interface UnsetWatermarksResponse {}
-export const UnsetWatermarksResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UnsetWatermarksResponse",
-}) as any as S.Schema<UnsetWatermarksResponse>;
+export const UnsetWatermarksResponse =
+  DeleteCaptionsResponse as any as S.Schema<UnsetWatermarksResponse>;
 
 export interface UpdateCaptionsRequest {
   /** *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner. */

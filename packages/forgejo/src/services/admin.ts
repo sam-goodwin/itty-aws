@@ -96,11 +96,8 @@ export const AdminAddUserToQuotaGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminAddUserToQuotaGroupRequest>;
 
 export interface AdminAddUserToQuotaGroupResponse {}
-export const AdminAddUserToQuotaGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AdminAddUserToQuotaGroupResponse",
-}) as any as S.Schema<AdminAddUserToQuotaGroupResponse>;
+export const AdminAddUserToQuotaGroupResponse =
+  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminAddUserToQuotaGroupResponse>;
 
 export interface AdminAdoptRepositoryRequest {
   /** owner of the repo */
@@ -169,10 +166,7 @@ export const AdminCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-export const HookConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<HookConfigMap>;
+export const HookConfigMap = CreateHookOptionConfig as any as S.Schema<HookConfigMap>;
 
 export type HookEventsList = Array<string>;
 export const HookEventsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HookEventsList>;
@@ -399,9 +393,8 @@ export const PublicKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The subjects affected by the rule */
 export type CreateQuotaRuleOptionsSubjectsList = Array<string>;
-export const CreateQuotaRuleOptionsSubjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateQuotaRuleOptionsSubjectsList>;
+export const CreateQuotaRuleOptionsSubjectsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<CreateQuotaRuleOptionsSubjectsList>;
 
 /** CreateQuotaRuleOptions represents the options for creating a quota rule */
 export interface CreateQuotaRuleOptions {
@@ -443,9 +436,8 @@ export const AdminCreateQuotaGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Subjects the rule affects */
 export type QuotaRuleInfoSubjectsList = Array<string>;
-export const QuotaRuleInfoSubjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuotaRuleInfoSubjectsList>;
+export const QuotaRuleInfoSubjectsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<QuotaRuleInfoSubjectsList>;
 
 /** QuotaRuleInfo contains information about a quota rule */
 export interface QuotaRuleInfo {
@@ -456,19 +448,12 @@ export interface QuotaRuleInfo {
   /** Subjects the rule affects */
   subjects?: QuotaRuleInfoSubjectsList;
 }
-export const QuotaRuleInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.optional(S.Number),
-    name: S.optional(S.String),
-    subjects: S.optional(QuotaRuleInfoSubjectsList),
-  }),
-).annotate({ identifier: "QuotaRuleInfo" }) as any as S.Schema<QuotaRuleInfo>;
+export const QuotaRuleInfo = CreateQuotaRuleOptions as any as S.Schema<QuotaRuleInfo>;
 
 /** Rules associated with the group */
 export type QuotaGroupRulesList = Array<QuotaRuleInfo>;
-export const QuotaGroupRulesList = /*@__PURE__*/ S.Array(
-  QuotaRuleInfo,
-) as any as S.Schema<QuotaGroupRulesList>;
+export const QuotaGroupRulesList =
+  AdminCreateQuotaGroupRequestRulesList as any as S.Schema<QuotaGroupRulesList>;
 
 /** QuotaGroup represents a quota group */
 export interface QuotaGroup {
@@ -486,9 +471,8 @@ export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The subjects affected by the rule */
 export type AdminCreateQuotaRuleRequestSubjectsList = Array<string>;
-export const AdminCreateQuotaRuleRequestSubjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdminCreateQuotaRuleRequestSubjectsList>;
+export const AdminCreateQuotaRuleRequestSubjectsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<AdminCreateQuotaRuleRequestSubjectsList>;
 
 export interface AdminCreateQuotaRuleRequest {
   /** The limit set by the rule */
@@ -636,13 +620,10 @@ export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
 export const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
+export const TeamUnitsList = HookEventsList as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TeamUnitsMapMap>;
+export const TeamUnitsMapMap = CreateHookOptionConfig as any as S.Schema<TeamUnitsMapMap>;
 
 /** Team represents a team in an organization */
 export interface Team {
@@ -690,9 +671,8 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RepositoryTopicsList>;
+export const RepositoryTopicsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<RepositoryTopicsList>;
 
 /** Repository represents a repository */
 export interface Repository {
@@ -887,9 +867,8 @@ export const AdminCreateUserAccessTokenRequestRepositoriesList = /*@__PURE__*/ S
 ) as any as S.Schema<AdminCreateUserAccessTokenRequestRepositoriesList>;
 
 export type AdminCreateUserAccessTokenRequestScopesList = Array<string>;
-export const AdminCreateUserAccessTokenRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdminCreateUserAccessTokenRequestScopesList>;
+export const AdminCreateUserAccessTokenRequestScopesList =
+  AdminCreateHookRequestEventsList as any as S.Schema<AdminCreateUserAccessTokenRequestScopesList>;
 
 export interface AdminCreateUserAccessTokenRequest {
   /** username of user */
@@ -933,9 +912,8 @@ export const AccessTokenRepositoriesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AccessTokenRepositoriesList>;
 
 export type AccessTokenScopesList = Array<string>;
-export const AccessTokenScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessTokenScopesList>;
+export const AccessTokenScopesList =
+  AdminCreateHookRequestEventsList as any as S.Schema<AccessTokenScopesList>;
 
 export interface AccessToken {
   created_at: string;
@@ -970,9 +948,8 @@ export const AdminDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdminDeleteHookRequest" }) as any as S.Schema<AdminDeleteHookRequest>;
 
 export interface AdminDeleteHookResponse {}
-export const AdminDeleteHookResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AdminDeleteHookResponse",
-}) as any as S.Schema<AdminDeleteHookResponse>;
+export const AdminDeleteHookResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteHookResponse>;
 
 export interface AdminDeleteQuotaGroupRequest {
   /** quota group to delete */
@@ -987,9 +964,8 @@ export const AdminDeleteQuotaGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminDeleteQuotaGroupRequest>;
 
 export interface AdminDeleteQuotaGroupResponse {}
-export const AdminDeleteQuotaGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AdminDeleteQuotaGroupResponse",
-}) as any as S.Schema<AdminDeleteQuotaGroupResponse>;
+export const AdminDeleteQuotaGroupResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteQuotaGroupResponse>;
 
 export interface AdminDeleteQuotaRuleRequest {
   /** quota rule to delete */
@@ -1004,9 +980,8 @@ export const AdminDeleteQuotaRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminDeleteQuotaRuleRequest>;
 
 export interface AdminDeleteQuotaRuleResponse {}
-export const AdminDeleteQuotaRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AdminDeleteQuotaRuleResponse",
-}) as any as S.Schema<AdminDeleteQuotaRuleResponse>;
+export const AdminDeleteQuotaRuleResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteQuotaRuleResponse>;
 
 export interface AdminDeleteUnadoptedRepositoryRequest {
   /** owner of the repo */
@@ -1024,11 +999,8 @@ export const AdminDeleteUnadoptedRepositoryRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AdminDeleteUnadoptedRepositoryRequest>;
 
 export interface AdminDeleteUnadoptedRepositoryResponse {}
-export const AdminDeleteUnadoptedRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AdminDeleteUnadoptedRepositoryResponse",
-}) as any as S.Schema<AdminDeleteUnadoptedRepositoryResponse>;
+export const AdminDeleteUnadoptedRepositoryResponse =
+  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminDeleteUnadoptedRepositoryResponse>;
 
 export interface AdminDeleteUserRequest {
   /** username of user to delete */
@@ -1044,9 +1016,8 @@ export const AdminDeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdminDeleteUserRequest" }) as any as S.Schema<AdminDeleteUserRequest>;
 
 export interface AdminDeleteUserResponse {}
-export const AdminDeleteUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AdminDeleteUserResponse",
-}) as any as S.Schema<AdminDeleteUserResponse>;
+export const AdminDeleteUserResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteUserResponse>;
 
 export interface AdminDeleteUserAccessTokenRequest {
   /** username of user */
@@ -1064,17 +1035,13 @@ export const AdminDeleteUserAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminDeleteUserAccessTokenRequest>;
 
 export interface AdminDeleteUserAccessTokenResponse {}
-export const AdminDeleteUserAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AdminDeleteUserAccessTokenResponse",
-}) as any as S.Schema<AdminDeleteUserAccessTokenResponse>;
+export const AdminDeleteUserAccessTokenResponse =
+  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminDeleteUserAccessTokenResponse>;
 
 /** email addresses to delete */
 export type AdminDeleteUserEmailsRequestEmailsList = Array<string>;
-export const AdminDeleteUserEmailsRequestEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdminDeleteUserEmailsRequestEmailsList>;
+export const AdminDeleteUserEmailsRequestEmailsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<AdminDeleteUserEmailsRequestEmailsList>;
 
 export interface AdminDeleteUserEmailsRequest {
   /** username of user to delete email addresses from */
@@ -1092,9 +1059,8 @@ export const AdminDeleteUserEmailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminDeleteUserEmailsRequest>;
 
 export interface AdminDeleteUserEmailsResponse {}
-export const AdminDeleteUserEmailsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AdminDeleteUserEmailsResponse",
-}) as any as S.Schema<AdminDeleteUserEmailsResponse>;
+export const AdminDeleteUserEmailsResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<AdminDeleteUserEmailsResponse>;
 
 export interface AdminDeleteUserPublicKeyRequest {
   /** username of user */
@@ -1112,22 +1078,16 @@ export const AdminDeleteUserPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminDeleteUserPublicKeyRequest>;
 
 export interface AdminDeleteUserPublicKeyResponse {}
-export const AdminDeleteUserPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AdminDeleteUserPublicKeyResponse",
-}) as any as S.Schema<AdminDeleteUserPublicKeyResponse>;
+export const AdminDeleteUserPublicKeyResponse =
+  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminDeleteUserPublicKeyResponse>;
 
 export type AdminEditHookRequestConfigMap = { [key: string]: string | undefined };
-export const AdminEditHookRequestConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AdminEditHookRequestConfigMap>;
+export const AdminEditHookRequestConfigMap =
+  CreateHookOptionConfig as any as S.Schema<AdminEditHookRequestConfigMap>;
 
 export type AdminEditHookRequestEventsList = Array<string>;
-export const AdminEditHookRequestEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdminEditHookRequestEventsList>;
+export const AdminEditHookRequestEventsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<AdminEditHookRequestEventsList>;
 
 export interface AdminEditHookRequest {
   /** id of the hook to update */
@@ -1151,9 +1111,8 @@ export const AdminEditHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The subjects affected by the rule */
 export type AdminEditQuotaRuleRequestSubjectsList = Array<string>;
-export const AdminEditQuotaRuleRequestSubjectsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdminEditQuotaRuleRequestSubjectsList>;
+export const AdminEditQuotaRuleRequestSubjectsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<AdminEditQuotaRuleRequestSubjectsList>;
 
 export interface AdminEditQuotaRuleRequest {
   /** Quota rule to change */
@@ -1237,15 +1196,13 @@ export const AdminGetActionRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-export const ActionRunJobNeedsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobNeedsList>;
+export const ActionRunJobNeedsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<ActionRunJobNeedsList>;
 
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-export const ActionRunJobRunsOnList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunJobRunsOnList>;
+export const ActionRunJobRunsOnList =
+  AdminCreateHookRequestEventsList as any as S.Schema<ActionRunJobRunsOnList>;
 
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
@@ -1562,9 +1519,8 @@ export const AdminListQuotaRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminListQuotaRulesRequest>;
 
 export type AdminListQuotaRulesResponseBodyList = Array<QuotaRuleInfo>;
-export const AdminListQuotaRulesResponseBodyList = /*@__PURE__*/ S.Array(
-  QuotaRuleInfo,
-) as any as S.Schema<AdminListQuotaRulesResponseBodyList>;
+export const AdminListQuotaRulesResponseBodyList =
+  AdminCreateQuotaGroupRequestRulesList as any as S.Schema<AdminListQuotaRulesResponseBodyList>;
 
 export type AdminListQuotaRulesResponse = AdminListQuotaRulesResponseBodyList;
 export const AdminListQuotaRulesResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1616,16 +1572,12 @@ export const AdminListUserEmailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminListUserEmailsRequest>;
 
 export type AdminListUserEmailsResponseBodyList = Array<Email>;
-export const AdminListUserEmailsResponseBodyList = /*@__PURE__*/ S.Array(
-  Email,
-) as any as S.Schema<AdminListUserEmailsResponseBodyList>;
+export const AdminListUserEmailsResponseBodyList =
+  AdminGetAllEmailsResponseBodyList as any as S.Schema<AdminListUserEmailsResponseBodyList>;
 
 export type AdminListUserEmailsResponse = AdminListUserEmailsResponseBodyList;
-export const AdminListUserEmailsResponse = /*@__PURE__*/ S.suspend(() =>
-  AdminListUserEmailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "AdminListUserEmailsResponse",
-}) as any as S.Schema<AdminListUserEmailsResponse>;
+export const AdminListUserEmailsResponse =
+  AdminGetAllEmailsResponse as any as S.Schema<AdminListUserEmailsResponse>;
 
 export interface AdminListUsersInQuotaGroupRequest {
   /** quota group to list members of */
@@ -1673,11 +1625,8 @@ export const AdminRemoveRuleFromQuotaGroupRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AdminRemoveRuleFromQuotaGroupRequest>;
 
 export interface AdminRemoveRuleFromQuotaGroupResponse {}
-export const AdminRemoveRuleFromQuotaGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AdminRemoveRuleFromQuotaGroupResponse",
-}) as any as S.Schema<AdminRemoveRuleFromQuotaGroupResponse>;
+export const AdminRemoveRuleFromQuotaGroupResponse =
+  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminRemoveRuleFromQuotaGroupResponse>;
 
 export interface AdminRemoveUserFromQuotaGroupRequest {
   /** quota group to remove a user from */
@@ -1701,11 +1650,8 @@ export const AdminRemoveUserFromQuotaGroupRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AdminRemoveUserFromQuotaGroupRequest>;
 
 export interface AdminRemoveUserFromQuotaGroupResponse {}
-export const AdminRemoveUserFromQuotaGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AdminRemoveUserFromQuotaGroupResponse",
-}) as any as S.Schema<AdminRemoveUserFromQuotaGroupResponse>;
+export const AdminRemoveUserFromQuotaGroupResponse =
+  AdminAddRuleToQuotaGroupResponse as any as S.Schema<AdminRemoveUserFromQuotaGroupResponse>;
 
 export interface AdminRenameUserRequest {
   /** existing username of user */
@@ -1721,9 +1667,8 @@ export const AdminRenameUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdminRenameUserRequest" }) as any as S.Schema<AdminRenameUserRequest>;
 
 export interface AdminRenameUserResponse {}
-export const AdminRenameUserResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "AdminRenameUserResponse",
-}) as any as S.Schema<AdminRenameUserResponse>;
+export const AdminRenameUserResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<AdminRenameUserResponse>;
 
 export interface AdminSearchEmailsRequest {
   /** keyword */
@@ -1742,16 +1687,12 @@ export const AdminSearchEmailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdminSearchEmailsRequest" }) as any as S.Schema<AdminSearchEmailsRequest>;
 
 export type AdminSearchEmailsResponseBodyList = Array<Email>;
-export const AdminSearchEmailsResponseBodyList = /*@__PURE__*/ S.Array(
-  Email,
-) as any as S.Schema<AdminSearchEmailsResponseBodyList>;
+export const AdminSearchEmailsResponseBodyList =
+  AdminGetAllEmailsResponseBodyList as any as S.Schema<AdminSearchEmailsResponseBodyList>;
 
 export type AdminSearchEmailsResponse = AdminSearchEmailsResponseBodyList;
-export const AdminSearchEmailsResponse = /*@__PURE__*/ S.suspend(() =>
-  AdminSearchEmailsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "AdminSearchEmailsResponse",
-}) as any as S.Schema<AdminSearchEmailsResponse>;
+export const AdminSearchEmailsResponse =
+  AdminGetAllEmailsResponse as any as S.Schema<AdminSearchEmailsResponse>;
 
 export type AdminSearchUsersRequestSort =
   | "oldest"
@@ -1788,9 +1729,8 @@ export const AdminSearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdminSearchUsersRequest" }) as any as S.Schema<AdminSearchUsersRequest>;
 
 export type AdminSearchUsersResponseBodyList = Array<User>;
-export const AdminSearchUsersResponseBodyList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<AdminSearchUsersResponseBodyList>;
+export const AdminSearchUsersResponseBodyList =
+  AdminListUsersInQuotaGroupResponseBodyList as any as S.Schema<AdminSearchUsersResponseBodyList>;
 
 export type AdminSearchUsersResponse = AdminSearchUsersResponseBodyList;
 export const AdminSearchUsersResponse = /*@__PURE__*/ S.suspend(() =>
@@ -1799,9 +1739,8 @@ export const AdminSearchUsersResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Quota groups the user shall have */
 export type AdminSetUserQuotaGroupsRequestGroupsList = Array<string>;
-export const AdminSetUserQuotaGroupsRequestGroupsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AdminSetUserQuotaGroupsRequestGroupsList>;
+export const AdminSetUserQuotaGroupsRequestGroupsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<AdminSetUserQuotaGroupsRequestGroupsList>;
 
 export interface AdminSetUserQuotaGroupsRequest {
   /** username of the user to modify the quota groups from */
@@ -1834,9 +1773,8 @@ export const DeleteAdminRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAdminRunnerRequest" }) as any as S.Schema<DeleteAdminRunnerRequest>;
 
 export interface DeleteAdminRunnerResponse {}
-export const DeleteAdminRunnerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteAdminRunnerResponse",
-}) as any as S.Schema<DeleteAdminRunnerResponse>;
+export const DeleteAdminRunnerResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<DeleteAdminRunnerResponse>;
 
 export interface GetAdminRunnerRequest {
   /** ID of the runner */
@@ -1850,9 +1788,8 @@ export const GetAdminRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
-export const ActionRunnerLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActionRunnerLabelsList>;
+export const ActionRunnerLabelsList =
+  AdminCreateHookRequestEventsList as any as S.Schema<ActionRunnerLabelsList>;
 
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
@@ -1982,9 +1919,8 @@ export const ListAdminUnadoptedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdminUnadoptedRequest>;
 
 export type ListAdminUnadoptedResponseBodyList = Array<string>;
-export const ListAdminUnadoptedResponseBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListAdminUnadoptedResponseBodyList>;
+export const ListAdminUnadoptedResponseBodyList =
+  AdminCreateHookRequestEventsList as any as S.Schema<ListAdminUnadoptedResponseBodyList>;
 
 export type ListAdminUnadoptedResponse = ListAdminUnadoptedResponseBodyList;
 export const ListAdminUnadoptedResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2035,9 +1971,8 @@ export const RunAdminCronRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunAdminCronRequest" }) as any as S.Schema<RunAdminCronRequest>;
 
 export interface RunAdminCronResponse {}
-export const RunAdminCronResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RunAdminCronResponse",
-}) as any as S.Schema<RunAdminCronResponse>;
+export const RunAdminCronResponse =
+  AdminAdoptRepositoryResponse as any as S.Schema<RunAdminCronResponse>;
 
 export type AdminAddRuleToQuotaGroupError =
   | BadRequest

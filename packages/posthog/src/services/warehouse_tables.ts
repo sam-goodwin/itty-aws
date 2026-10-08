@@ -98,10 +98,8 @@ export const CreateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWarehouseTableRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -174,10 +172,8 @@ export const CredentialOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CredentialOutput" }) as any as S.Schema<CredentialOutput>;
 
 export type TableOutputColumnsItemMap = { [key: string]: unknown | undefined };
-export const TableOutputColumnsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TableOutputColumnsItemMap>;
+export const TableOutputColumnsItemMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputColumnsItemMap>;
 
 export type TableOutputColumnsList = Array<TableOutputColumnsItemMap>;
 export const TableOutputColumnsList = /*@__PURE__*/ S.Array(
@@ -1563,17 +1559,13 @@ export const SimpleExternalDataSourceSerializers = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SimpleExternalDataSourceSerializers>;
 
 export type TableOutputExternalSchemaMap = { [key: string]: unknown | undefined };
-export const TableOutputExternalSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TableOutputExternalSchemaMap>;
+export const TableOutputExternalSchemaMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputExternalSchemaMap>;
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type TableOutputOptionsMap = { [key: string]: unknown | undefined };
-export const TableOutputOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TableOutputOptionsMap>;
+export const TableOutputOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputOptionsMap>;
 
 /** Mixin for serializers to add user access control fields */
 export interface TableOutput {
@@ -1623,10 +1615,8 @@ export const TableOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type CreateWarehouseTablesFileRequestOptionsMap = { [key: string]: unknown | undefined };
-export const CreateWarehouseTablesFileRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateWarehouseTablesFileRequestOptionsMap>;
+export const CreateWarehouseTablesFileRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<CreateWarehouseTablesFileRequestOptionsMap>;
 
 export interface CreateWarehouseTablesFileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1731,10 +1721,8 @@ export const PaginatedTableListOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type UpdateWarehouseTableRequestOptionsMap = { [key: string]: unknown | undefined };
-export const UpdateWarehouseTableRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateWarehouseTableRequestOptionsMap>;
+export const UpdateWarehouseTableRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<UpdateWarehouseTableRequestOptionsMap>;
 
 export interface UpdateWarehouseTableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1772,10 +1760,8 @@ export const UpdateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type UpdateWarehouseTablesPartialRequestOptionsMap = { [key: string]: unknown | undefined };
-export const UpdateWarehouseTablesPartialRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateWarehouseTablesPartialRequestOptionsMap>;
+export const UpdateWarehouseTablesPartialRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<UpdateWarehouseTablesPartialRequestOptionsMap>;
 
 export interface UpdateWarehouseTablesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1897,20 +1883,15 @@ export const WarehouseTablesRefreshSchemaCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<WarehouseTablesRefreshSchemaCreateRequest>;
 
 export interface WarehouseTablesRefreshSchemaCreateResponse {}
-export const WarehouseTablesRefreshSchemaCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WarehouseTablesRefreshSchemaCreateResponse",
-}) as any as S.Schema<WarehouseTablesRefreshSchemaCreateResponse>;
+export const WarehouseTablesRefreshSchemaCreateResponse =
+  CreateWarehouseTablesFileResponse as any as S.Schema<WarehouseTablesRefreshSchemaCreateResponse>;
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type WarehouseTablesUpdateSchemaCreateRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const WarehouseTablesUpdateSchemaCreateRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequestOptionsMap>;
+export const WarehouseTablesUpdateSchemaCreateRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequestOptionsMap>;
 
 export interface WarehouseTablesUpdateSchemaCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1951,11 +1932,8 @@ export const WarehouseTablesUpdateSchemaCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequest>;
 
 export interface WarehouseTablesUpdateSchemaCreateResponse {}
-export const WarehouseTablesUpdateSchemaCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WarehouseTablesUpdateSchemaCreateResponse",
-}) as any as S.Schema<WarehouseTablesUpdateSchemaCreateResponse>;
+export const WarehouseTablesUpdateSchemaCreateResponse =
+  CreateWarehouseTablesFileResponse as any as S.Schema<WarehouseTablesUpdateSchemaCreateResponse>;
 
 /** How the file will be read when the table is created. */
 export type WarehouseTablesUploadFileCreateRequestFileFormat = "csv" | "json" | "parquet";

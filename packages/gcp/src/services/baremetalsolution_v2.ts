@@ -854,9 +854,7 @@ export const DetachLunProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspen
 
 /** Message requesting to perform disable hyperthreading operation on a server. */
 export interface DisableHyperthreadingRequest {}
-export const DisableHyperthreadingRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisableHyperthreadingRequest",
-}) as any as S.Schema<DisableHyperthreadingRequest>;
+export const DisableHyperthreadingRequest = Empty as any as S.Schema<DisableHyperthreadingRequest>;
 
 export interface DisableHyperthreadingProjectsLocationsInstancesRequest {
   /** Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} */

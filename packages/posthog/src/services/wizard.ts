@@ -129,15 +129,13 @@ export const WizardProgramCommandList = /*@__PURE__*/ S.Array(
 
 /** Labels that categorize the program. */
 export type WizardProgramTagsList = Array<string>;
-export const WizardProgramTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WizardProgramTagsList>;
+export const WizardProgramTagsList =
+  WizardProgramCommandList as any as S.Schema<WizardProgramTagsList>;
 
 /** Programs that should run before this program. */
 export type WizardProgramRequiredProgramsList = Array<string>;
-export const WizardProgramRequiredProgramsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WizardProgramRequiredProgramsList>;
+export const WizardProgramRequiredProgramsList =
+  WizardProgramCommandList as any as S.Schema<WizardProgramRequiredProgramsList>;
 
 /** Environments where the program can run. */
 export type WizardProgramSupportedEnvironmentsList = Array<RunEnvironmentEnum>;
@@ -246,9 +244,8 @@ export const WizardRun = /*@__PURE__*/ S.suspend(() =>
 
 /** The question text shown to the user. Always empty for sensitive questions. */
 export type PendingInputPromptsList = Array<string>;
-export const PendingInputPromptsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PendingInputPromptsList>;
+export const PendingInputPromptsList =
+  WizardProgramCommandList as any as S.Schema<PendingInputPromptsList>;
 
 /** The in-flight `wizard_ask` question. Typed rather than a free-form dict so the shape the widget renders is enforced at the edge instead of trusted from the producer. */
 export interface PendingInput {
@@ -313,10 +310,8 @@ export const CreateWizardSessionRequestEventPlanMap = /*@__PURE__*/ S.Record(
 
 /** Populated when run_phase='error'. Shape: { type: string, message: string }. */
 export type CreateWizardSessionRequestErrorMap = { [key: string]: unknown | undefined };
-export const CreateWizardSessionRequestErrorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateWizardSessionRequestErrorMap>;
+export const CreateWizardSessionRequestErrorMap =
+  CreateWizardSessionRequestEventPlanMap as any as S.Schema<CreateWizardSessionRequestErrorMap>;
 
 export interface CreateWizardSessionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -362,21 +357,16 @@ export const CreateWizardSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWizardSessionRequest>;
 
 export type WizardSessionDTOTasksList = Array<WizardTaskDTO>;
-export const WizardSessionDTOTasksList = /*@__PURE__*/ S.Array(
-  WizardTaskDTO,
-) as any as S.Schema<WizardSessionDTOTasksList>;
+export const WizardSessionDTOTasksList =
+  CreateWizardSessionRequestTasksList as any as S.Schema<WizardSessionDTOTasksList>;
 
 export type WizardSessionDTOEventPlanMap = { [key: string]: unknown | undefined };
-export const WizardSessionDTOEventPlanMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WizardSessionDTOEventPlanMap>;
+export const WizardSessionDTOEventPlanMap =
+  CreateWizardSessionRequestEventPlanMap as any as S.Schema<WizardSessionDTOEventPlanMap>;
 
 export type WizardSessionDTOErrorMap = { [key: string]: unknown | undefined };
-export const WizardSessionDTOErrorMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WizardSessionDTOErrorMap>;
+export const WizardSessionDTOErrorMap =
+  CreateWizardSessionRequestEventPlanMap as any as S.Schema<WizardSessionDTOErrorMap>;
 
 export interface WizardSessionUserDTO {
   id: number;
@@ -973,9 +963,8 @@ export const UpdateWizardRunsTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWizardRunsTaskRequest>;
 
 export interface UpdateWizardRunsTaskResponse {}
-export const UpdateWizardRunsTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateWizardRunsTaskResponse",
-}) as any as S.Schema<UpdateWizardRunsTaskResponse>;
+export const UpdateWizardRunsTaskResponse =
+  GetWizardRunsStreamResponse as any as S.Schema<UpdateWizardRunsTaskResponse>;
 
 export type CreateWizardRunError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create a local or cloud Wizard run for a project workspace. */

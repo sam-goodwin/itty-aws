@@ -166,9 +166,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 
 /** The request sent to the [google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.GetAncestry] method. */
 export interface GetAncestryRequest {}
-export const GetAncestryRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "GetAncestryRequest",
-}) as any as S.Schema<GetAncestryRequest>;
+export const GetAncestryRequest = Empty as any as S.Schema<GetAncestryRequest>;
 
 export interface GetAncestryProjectsRequest {
   /** Required. The Project ID (for example, `my-project-123`). */
@@ -640,13 +638,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

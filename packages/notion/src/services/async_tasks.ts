@@ -186,9 +186,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase0 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase1AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase1AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase1AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase1AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase1AdditionalDataValue =
   | string
@@ -225,9 +223,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase1 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase2AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase2AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase2AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase2AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase2AdditionalDataValue =
   | string
@@ -264,9 +260,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase2 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase3AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase3AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase3AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase3AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase3AdditionalDataValue =
   | string
@@ -303,9 +297,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase3 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase4AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase4AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase4AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase4AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase4AdditionalDataValue =
   | string
@@ -342,9 +334,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase4 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase5AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase5AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase5AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase5AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase5AdditionalDataValue =
   | string
@@ -381,9 +371,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase5 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase6AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase6AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase6AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase6AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase6AdditionalDataValue =
   | string
@@ -420,9 +408,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase6 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase7AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase7AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase7AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase7AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase7AdditionalDataValue =
   | string
@@ -459,9 +445,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase7 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase8AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase8AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase8AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase8AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase8AdditionalDataValue =
   | string
@@ -498,9 +482,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase8 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase9AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase9AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase9AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase9AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase9AdditionalDataValue =
   | string
@@ -537,9 +519,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase9 = /*@__PURE__*/ S.suspend((
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase10AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase10AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase10AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase10AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase10AdditionalDataValue =
   | string
@@ -576,9 +556,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase10 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase11AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase11AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase11AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase11AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase11AdditionalDataValue =
   | string
@@ -615,9 +593,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase11 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase12AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase12AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase12AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase12AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase12AdditionalDataValue =
   | string
@@ -654,9 +630,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase12 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase13AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase13AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase13AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase13AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase13AdditionalDataValue =
   | string
@@ -693,9 +667,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase13 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase14AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase14AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase14AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase14AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase14AdditionalDataValue =
   | string
@@ -732,9 +704,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase14 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase15AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase15AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase15AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase15AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase15AdditionalDataValue =
   | string
@@ -771,9 +741,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase15 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase16AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase16AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase16AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase16AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase16AdditionalDataValue =
   | string
@@ -810,9 +778,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase16 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase17AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase17AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase17AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase17AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase17AdditionalDataValue =
   | string
@@ -849,9 +815,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase17 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase18AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase18AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase18AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase18AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase18AdditionalDataValue =
   | string
@@ -888,9 +852,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase18 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase19AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase19AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase19AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase19AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase19AdditionalDataValue =
   | string
@@ -927,9 +889,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase19 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase20AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase20AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase20AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase20AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase20AdditionalDataValue =
   | string
@@ -966,9 +926,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase20 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase21AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase21AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase21AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase21AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase21AdditionalDataValue =
   | string
@@ -1005,9 +963,7 @@ export const GetAsyncTaskResponseBodyCase2ErrorCase21 = /*@__PURE__*/ S.suspend(
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase22AdditionalDataValueCase1List = Array<string>;
 export const GetAsyncTaskResponseBodyCase2ErrorCase22AdditionalDataValueCase1List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase22AdditionalDataValueCase1List>;
+  GetAsyncTaskResponseBodyCase2ErrorCase0AdditionalDataValueCase1List as any as S.Schema<GetAsyncTaskResponseBodyCase2ErrorCase22AdditionalDataValueCase1List>;
 
 export type GetAsyncTaskResponseBodyCase2ErrorCase22AdditionalDataValue =
   | string

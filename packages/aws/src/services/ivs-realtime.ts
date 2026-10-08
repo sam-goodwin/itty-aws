@@ -498,10 +498,8 @@ export type StageArn = string;
 export type ParticipantTokenDurationMinutes = number;
 export type ParticipantTokenUserId = string;
 export type ParticipantTokenAttributes = { [key: string]: string | undefined };
-export const ParticipantTokenAttributes = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const ParticipantTokenAttributes =
+  ParticipantAttributes as any as S.Schema<ParticipantTokenAttributes>;
 export type ParticipantTokenCapability = string;
 export type ParticipantTokenCapabilities = string[];
 export const ParticipantTokenCapabilities = /*@__PURE__*/ S.Array(S.String);
@@ -786,11 +784,8 @@ export const DeleteIngestConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIngestConfigurationRequest",
 }) as any as S.Schema<DeleteIngestConfigurationRequest>;
 export interface DeleteIngestConfigurationResponse {}
-export const DeleteIngestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIngestConfigurationResponse",
-}) as any as S.Schema<DeleteIngestConfigurationResponse>;
+export const DeleteIngestConfigurationResponse =
+  DeleteEncoderConfigurationResponse as any as S.Schema<DeleteIngestConfigurationResponse>;
 export type PublicKeyArn = string;
 export interface DeletePublicKeyRequest {
   arn: string;
@@ -813,9 +808,7 @@ export const DeleteStageRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStageRequest" }) as any as S.Schema<DeleteStageRequest>;
 export interface DeleteStageResponse {}
-export const DeleteStageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteStageResponse",
-}) as any as S.Schema<DeleteStageResponse>;
+export const DeleteStageResponse = DeletePublicKeyResponse as any as S.Schema<DeleteStageResponse>;
 export interface DeleteStorageConfigurationRequest {
   arn: string;
 }
@@ -834,11 +827,8 @@ export const DeleteStorageConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStorageConfigurationRequest",
 }) as any as S.Schema<DeleteStorageConfigurationRequest>;
 export interface DeleteStorageConfigurationResponse {}
-export const DeleteStorageConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStorageConfigurationResponse",
-}) as any as S.Schema<DeleteStorageConfigurationResponse>;
+export const DeleteStorageConfigurationResponse =
+  DeleteEncoderConfigurationResponse as any as S.Schema<DeleteStorageConfigurationResponse>;
 export type DisconnectParticipantReason = string;
 export interface DisconnectParticipantRequest {
   stageArn: string;
@@ -853,9 +843,8 @@ export const DisconnectParticipantRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisconnectParticipantRequest",
 }) as any as S.Schema<DisconnectParticipantRequest>;
 export interface DisconnectParticipantResponse {}
-export const DisconnectParticipantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DisconnectParticipantResponse",
-}) as any as S.Schema<DisconnectParticipantResponse>;
+export const DisconnectParticipantResponse =
+  DeletePublicKeyResponse as any as S.Schema<DisconnectParticipantResponse>;
 export type CompositionArn = string;
 export interface GetCompositionRequest {
   arn: string;
@@ -950,16 +939,14 @@ export const ChannelDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChannelDestinationConfiguration",
 }) as any as S.Schema<ChannelDestinationConfiguration>;
 export type EncoderConfigurationArnList = string[];
-export const EncoderConfigurationArnList = /*@__PURE__*/ S.Array(S.String);
+export const EncoderConfigurationArnList =
+  ParticipantTokenCapabilities as any as S.Schema<EncoderConfigurationArnList>;
 export type CompositionRecordingTargetSegmentDurationSeconds = number;
 export interface CompositionRecordingHlsConfiguration {
   targetSegmentDurationSeconds?: number;
 }
-export const CompositionRecordingHlsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targetSegmentDurationSeconds: S.optional(S.Number) }),
-).annotate({
-  identifier: "CompositionRecordingHlsConfiguration",
-}) as any as S.Schema<CompositionRecordingHlsConfiguration>;
+export const CompositionRecordingHlsConfiguration =
+  ParticipantRecordingHlsConfiguration as any as S.Schema<CompositionRecordingHlsConfiguration>;
 export type RecordingConfigurationFormat = string;
 export interface RecordingConfiguration {
   hlsConfiguration?: CompositionRecordingHlsConfiguration;
@@ -1095,11 +1082,8 @@ export const GetEncoderConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetEncoderConfigurationResponse {
   encoderConfiguration?: EncoderConfiguration;
 }
-export const GetEncoderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ encoderConfiguration: S.optional(EncoderConfiguration) }),
-).annotate({
-  identifier: "GetEncoderConfigurationResponse",
-}) as any as S.Schema<GetEncoderConfigurationResponse>;
+export const GetEncoderConfigurationResponse =
+  CreateEncoderConfigurationResponse as any as S.Schema<GetEncoderConfigurationResponse>;
 export interface GetIngestConfigurationRequest {
   arn: string;
 }
@@ -1289,11 +1273,8 @@ export const GetStorageConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetStorageConfigurationResponse {
   storageConfiguration?: StorageConfiguration;
 }
-export const GetStorageConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ storageConfiguration: S.optional(StorageConfiguration) }),
-).annotate({
-  identifier: "GetStorageConfigurationResponse",
-}) as any as S.Schema<GetStorageConfigurationResponse>;
+export const GetStorageConfigurationResponse =
+  CreateStorageConfigurationResponse as any as S.Schema<GetStorageConfigurationResponse>;
 export interface ImportPublicKeyRequest {
   publicKeyMaterial: string;
   name?: string;
@@ -1309,9 +1290,8 @@ export const ImportPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportPublicKeyResponse {
   publicKey?: PublicKey;
 }
-export const ImportPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ publicKey: S.optional(PublicKey) }),
-).annotate({ identifier: "ImportPublicKeyResponse" }) as any as S.Schema<ImportPublicKeyResponse>;
+export const ImportPublicKeyResponse =
+  GetPublicKeyResponse as any as S.Schema<ImportPublicKeyResponse>;
 export type PaginationToken = string;
 export type MaxCompositionResults = number;
 export interface ListCompositionsRequest {
@@ -1773,13 +1753,7 @@ export interface StageSessionSummary {
   startTime?: Date;
   endTime?: Date;
 }
-export const StageSessionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.optional(S.String),
-    startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-  }),
-).annotate({ identifier: "StageSessionSummary" }) as any as S.Schema<StageSessionSummary>;
+export const StageSessionSummary = StageSession as any as S.Schema<StageSessionSummary>;
 export type StageSessionList = StageSessionSummary[];
 export const StageSessionList = /*@__PURE__*/ S.Array(StageSessionSummary);
 export interface ListStageSessionsResponse {
@@ -1883,9 +1857,8 @@ export const StartCompositionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartCompositionResponse {
   composition?: Composition;
 }
-export const StartCompositionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ composition: S.optional(Composition) }),
-).annotate({ identifier: "StartCompositionResponse" }) as any as S.Schema<StartCompositionResponse>;
+export const StartCompositionResponse =
+  GetCompositionResponse as any as S.Schema<StartCompositionResponse>;
 export type ReconnectWindowSeconds = number;
 export interface StartParticipantReplicationRequest {
   sourceStageArn: string;
@@ -1949,9 +1922,8 @@ export const StopCompositionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "StopCompositionRequest" }) as any as S.Schema<StopCompositionRequest>;
 export interface StopCompositionResponse {}
-export const StopCompositionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "StopCompositionResponse",
-}) as any as S.Schema<StopCompositionResponse>;
+export const StopCompositionResponse =
+  DeletePublicKeyResponse as any as S.Schema<StopCompositionResponse>;
 export interface StopParticipantReplicationRequest {
   sourceStageArn: string;
   destinationStageArn: string;
@@ -1984,23 +1956,8 @@ export interface StopParticipantReplicationResponse {
   xContentTypeOptions?: string;
   xFrameOptions?: string;
 }
-export const StopParticipantReplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(T.HttpHeader("Content-Security-Policy")),
-    strictTransportSecurity: S.optional(S.String).pipe(T.HttpHeader("Strict-Transport-Security")),
-    xContentTypeOptions: S.optional(S.String).pipe(T.HttpHeader("X-Content-Type-Options")),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-  }),
-).annotate({
-  identifier: "StopParticipantReplicationResponse",
-}) as any as S.Schema<StopParticipantReplicationResponse>;
+export const StopParticipantReplicationResponse =
+  StartParticipantReplicationResponse as any as S.Schema<StopParticipantReplicationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -2011,11 +1968,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeletePublicKeyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ParticipantTokenCapabilities as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
@@ -2029,9 +1984,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  DeletePublicKeyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateIngestConfigurationRequest {
   arn: string;
   stageArn?: string;
@@ -2065,24 +2019,8 @@ export interface UpdateIngestConfigurationResponse {
   xFrameOptions?: string;
   ingestConfiguration?: IngestConfiguration;
 }
-export const UpdateIngestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(T.HttpHeader("Content-Security-Policy")),
-    strictTransportSecurity: S.optional(S.String).pipe(T.HttpHeader("Strict-Transport-Security")),
-    xContentTypeOptions: S.optional(S.String).pipe(T.HttpHeader("X-Content-Type-Options")),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    ingestConfiguration: S.optional(IngestConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateIngestConfigurationResponse",
-}) as any as S.Schema<UpdateIngestConfigurationResponse>;
+export const UpdateIngestConfigurationResponse =
+  CreateIngestConfigurationResponse as any as S.Schema<UpdateIngestConfigurationResponse>;
 export interface UpdateStageRequest {
   arn: string;
   name?: string;
@@ -2098,9 +2036,7 @@ export const UpdateStageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateStageResponse {
   stage?: Stage;
 }
-export const UpdateStageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ stage: S.optional(Stage) }),
-).annotate({ identifier: "UpdateStageResponse" }) as any as S.Schema<UpdateStageResponse>;
+export const UpdateStageResponse = GetStageResponse as any as S.Schema<UpdateStageResponse>;
 export type ErrorMessage = string;
 export type CreateEncoderConfigurationError =
   | AccessDeniedException

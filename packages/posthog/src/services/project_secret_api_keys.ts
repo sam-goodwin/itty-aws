@@ -117,9 +117,8 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
 export type ProjectSecretAPIKeyScopesList = Array<string>;
-export const ProjectSecretAPIKeyScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProjectSecretAPIKeyScopesList>;
+export const ProjectSecretAPIKeyScopesList =
+  CreateProjectSecretApiKeyRequestScopesList as any as S.Schema<ProjectSecretAPIKeyScopesList>;
 
 export interface ProjectSecretAPIKey {
   id?: string;
@@ -265,9 +264,8 @@ export const ProjectSecretApiKeysDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
 export type UpdateProjectSecretApiKeyRequestScopesList = Array<string>;
-export const UpdateProjectSecretApiKeyRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectSecretApiKeyRequestScopesList>;
+export const UpdateProjectSecretApiKeyRequestScopesList =
+  CreateProjectSecretApiKeyRequestScopesList as any as S.Schema<UpdateProjectSecretApiKeyRequestScopesList>;
 
 export interface UpdateProjectSecretApiKeyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -297,9 +295,8 @@ export const UpdateProjectSecretApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
 export type UpdateProjectSecretApiKeysPartialRequestScopesList = Array<string>;
-export const UpdateProjectSecretApiKeysPartialRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateProjectSecretApiKeysPartialRequestScopesList>;
+export const UpdateProjectSecretApiKeysPartialRequestScopesList =
+  CreateProjectSecretApiKeyRequestScopesList as any as S.Schema<UpdateProjectSecretApiKeysPartialRequestScopesList>;
 
 export interface UpdateProjectSecretApiKeysPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

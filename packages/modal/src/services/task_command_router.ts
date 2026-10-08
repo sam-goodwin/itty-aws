@@ -448,9 +448,8 @@ export const TaskExecStartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskExecStartRequest" }) as any as S.Schema<TaskExecStartRequest>;
 
 export interface TaskExecStartResponse {}
-export const TaskExecStartResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskExecStartResponse",
-}) as any as S.Schema<TaskExecStartResponse>;
+export const TaskExecStartResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TaskExecStartResponse>;
 
 export interface TaskExecStdinStatusRequest {
   /** The ID of the task running the exec'd command. */
@@ -518,9 +517,8 @@ export const TaskExecStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskExecStdinWriteRequest>;
 
 export interface TaskExecStdinWriteResponse {}
-export const TaskExecStdinWriteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskExecStdinWriteResponse",
-}) as any as S.Schema<TaskExecStdinWriteResponse>;
+export const TaskExecStdinWriteResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TaskExecStdinWriteResponse>;
 
 export interface TaskExecWaitRequest {
   /** The ID of the task running the exec'd command. */
@@ -547,12 +545,7 @@ export interface TaskExecWaitResponse {
   /** The signal that terminated the command. */
   signal?: number;
 }
-export const TaskExecWaitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    signal: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TaskExecWaitResponse" }) as any as S.Schema<TaskExecWaitResponse>;
+export const TaskExecWaitResponse = TaskExecPollResponse as any as S.Schema<TaskExecWaitResponse>;
 
 export interface TaskMountDirectoryRequest {
   taskId?: string;
@@ -582,9 +575,8 @@ export const TaskMountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskMountDirectoryRequest>;
 
 export interface TaskMountDirectoryResponse {}
-export const TaskMountDirectoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskMountDirectoryResponse",
-}) as any as S.Schema<TaskMountDirectoryResponse>;
+export const TaskMountDirectoryResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TaskMountDirectoryResponse>;
 
 export interface TaskReloadVolumesRequest {
   taskId?: string;
@@ -605,9 +597,8 @@ export const TaskReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskReloadVolumesRequest" }) as any as S.Schema<TaskReloadVolumesRequest>;
 
 export interface TaskReloadVolumesResponse {}
-export const TaskReloadVolumesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskReloadVolumesResponse",
-}) as any as S.Schema<TaskReloadVolumesResponse>;
+export const TaskReloadVolumesResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TaskReloadVolumesResponse>;
 
 export interface TaskSetNetworkAccessRequest {
   taskId?: string;
@@ -630,9 +621,8 @@ export const TaskSetNetworkAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskSetNetworkAccessRequest>;
 
 export interface TaskSetNetworkAccessResponse {}
-export const TaskSetNetworkAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskSetNetworkAccessResponse",
-}) as any as S.Schema<TaskSetNetworkAccessResponse>;
+export const TaskSetNetworkAccessResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TaskSetNetworkAccessResponse>;
 
 export interface OutboundPolicyHeaderReplacement {
   /** Domain that the header replacements are scoped to. Supports wildcards in subdomain positions. */
@@ -689,9 +679,8 @@ export const TaskSetOutboundPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskSetOutboundPolicyRequest>;
 
 export interface TaskSetOutboundPolicyResponse {}
-export const TaskSetOutboundPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskSetOutboundPolicyResponse",
-}) as any as S.Schema<TaskSetOutboundPolicyResponse>;
+export const TaskSetOutboundPolicyResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TaskSetOutboundPolicyResponse>;
 
 export interface TaskSnapshotDirectoryRequest {
   taskId?: string;
@@ -767,13 +756,8 @@ export const TaskSnapshotFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TaskSnapshotFilesystemResponse {
   imageId?: string;
 }
-export const TaskSnapshotFilesystemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TaskSnapshotFilesystemResponse",
-}) as any as S.Schema<TaskSnapshotFilesystemResponse>;
+export const TaskSnapshotFilesystemResponse =
+  TaskSnapshotDirectoryResponse as any as S.Schema<TaskSnapshotFilesystemResponse>;
 
 export interface TaskSnapshotMemoryRequest {
   taskId?: string;
@@ -828,9 +812,8 @@ export const TaskUnmountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskUnmountDirectoryRequest>;
 
 export interface TaskUnmountDirectoryResponse {}
-export const TaskUnmountDirectoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TaskUnmountDirectoryResponse",
-}) as any as S.Schema<TaskUnmountDirectoryResponse>;
+export const TaskUnmountDirectoryResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TaskUnmountDirectoryResponse>;
 
 export interface TerminateTaskContainerRequest {
   taskId?: string;
@@ -852,9 +835,8 @@ export const TerminateTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateTaskContainerRequest>;
 
 export interface TerminateTaskContainerResponse {}
-export const TerminateTaskContainerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TerminateTaskContainerResponse",
-}) as any as S.Schema<TerminateTaskContainerResponse>;
+export const TerminateTaskContainerResponse =
+  SandboxStdinWriteV2Response as any as S.Schema<TerminateTaskContainerResponse>;
 
 export interface WaitTaskContainerRequest {
   taskId?: string;

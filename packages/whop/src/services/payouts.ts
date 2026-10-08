@@ -248,10 +248,8 @@ export const CancelPayoutResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value data to attach to the payout, echoed on every read and in webhook payloads. At most 50 keys, key names up to 40 characters, string values up to 500 characters. Never store secrets or regulated personal data here -- webhook bodies are retained for delivery inspection. */
 export type CreatePayoutRequestMetadataMap = { [key: string]: string | undefined };
-export const CreatePayoutRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePayoutRequestMetadataMap>;
+export const CreatePayoutRequestMetadataMap =
+  CancelPayoutResponseMetadataMap as any as S.Schema<CreatePayoutRequestMetadataMap>;
 
 /** How fast the funds should arrive. `instant` is only accepted when the account and payout method are eligible; otherwise the payout is rejected. */
 export type CreatePayoutRequestSpeed = "standard" | "instant";
@@ -313,10 +311,8 @@ export const CreatePayoutResponseFeePaidBy = S.String;
 
 /** Key-value data attached at creation and echoed on every read. At most 50 keys, key names up to 40 characters, string values up to 500 characters. */
 export type CreatePayoutResponseMetadataMap = { [key: string]: string | undefined };
-export const CreatePayoutResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePayoutResponseMetadataMap>;
+export const CreatePayoutResponseMetadataMap =
+  CancelPayoutResponseMetadataMap as any as S.Schema<CreatePayoutResponseMetadataMap>;
 
 export type CreatePayoutResponseObject = "payout";
 export const CreatePayoutResponseObject = S.String;
@@ -472,10 +468,8 @@ export const CreatePayoutResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The supported payout method's required field values, keyed by field id -- list them with `GET /payouts/supported_methods?supported_payout_method_id=...`. Field ids are stable `fld_` identifiers you may hardcode; they never change for a given field. A Basis Theory token id may be passed in place of a raw value. For a U.S. bank routing-number field, a raw nine-digit value must also pass the ABA checksum. A validation failure returns the method's full required_fields schema alongside the error. Required whenever the account details are supplied directly. */
 export type CreatePayoutMethodRequestFieldsMap = { [key: string]: string | undefined };
-export const CreatePayoutMethodRequestFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreatePayoutMethodRequestFieldsMap>;
+export const CreatePayoutMethodRequestFieldsMap =
+  CancelPayoutResponseMetadataMap as any as S.Schema<CreatePayoutMethodRequestFieldsMap>;
 
 export interface CreatePayoutMethodRequest {
   /** The account to add the payout method for, prefixed `biz_`. Provide this or `user_id`. */
@@ -782,10 +776,8 @@ export const GetPayoutResponseFeePaidBy = S.String;
 
 /** Key-value data attached at creation and echoed on every read. At most 50 keys, key names up to 40 characters, string values up to 500 characters. */
 export type GetPayoutResponseMetadataMap = { [key: string]: string | undefined };
-export const GetPayoutResponseMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetPayoutResponseMetadataMap>;
+export const GetPayoutResponseMetadataMap =
+  CancelPayoutResponseMetadataMap as any as S.Schema<GetPayoutResponseMetadataMap>;
 
 export type GetPayoutResponseObject = "payout";
 export const GetPayoutResponseObject = S.String;
@@ -1407,10 +1399,8 @@ export const ListPayoutsResponseDataItemFeePaidBy = S.String;
 
 /** Key-value data attached at creation and echoed on every read. At most 50 keys, key names up to 40 characters, string values up to 500 characters. */
 export type ListPayoutsResponseDataItemMetadataMap = { [key: string]: string | undefined };
-export const ListPayoutsResponseDataItemMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ListPayoutsResponseDataItemMetadataMap>;
+export const ListPayoutsResponseDataItemMetadataMap =
+  CancelPayoutResponseMetadataMap as any as S.Schema<ListPayoutsResponseDataItemMetadataMap>;
 
 export type ListPayoutsResponseDataItemObject = "payout";
 export const ListPayoutsResponseDataItemObject = S.String;

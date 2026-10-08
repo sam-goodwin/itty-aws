@@ -90,9 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** The target of the Binding. */
 export interface Target {
@@ -110,11 +108,7 @@ export interface Source {
   /** The identifier of the source Agent. Format: * `urn:agent:{publisher}:{namespace}:{name}` */
   identifier?: string;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.optional(S.String),
-  }),
-).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
+export const Source = Target as any as S.Schema<Source>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
@@ -2014,12 +2008,8 @@ export interface SearchMcpServersResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const SearchMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mcpServers: S.optional(McpServerList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "SearchMcpServersResponse" }) as any as S.Schema<SearchMcpServersResponse>;
+export const SearchMcpServersResponse =
+  ListMcpServersResponse as any as S.Schema<SearchMcpServersResponse>;
 
 export type SearchProjectsLocationsSkillsSearchTypeEnum =
   | "SEARCH_TYPE_UNSPECIFIED"
@@ -2172,13 +2162,8 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GoogleIamV1TestIamPermissionsResponse",
-}) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsSkillsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */

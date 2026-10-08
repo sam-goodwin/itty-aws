@@ -126,21 +126,18 @@ export const ReviewPerspectiveSelectionRosterList = /*@__PURE__*/ S.Array(
 
 /** The chunk's files, from the turn's chunk set. */
 export type ReviewSelectionChunkFilesList = Array<string>;
-export const ReviewSelectionChunkFilesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReviewSelectionChunkFilesList>;
+export const ReviewSelectionChunkFilesList =
+  ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkFilesList>;
 
 /** Perspectives the selector ran on this chunk, in pass order. */
 export type ReviewSelectionChunkPerspectivesList = Array<string>;
-export const ReviewSelectionChunkPerspectivesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReviewSelectionChunkPerspectivesList>;
+export const ReviewSelectionChunkPerspectivesList =
+  ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkPerspectivesList>;
 
 /** Roster perspectives the selector skipped on this chunk, in pass order. */
 export type ReviewSelectionChunkSkippedList = Array<string>;
-export const ReviewSelectionChunkSkippedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReviewSelectionChunkSkippedList>;
+export const ReviewSelectionChunkSkippedList =
+  ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkSkippedList>;
 
 export interface ReviewSelectionChunk {
   /** The chunk this row describes, as numbered by the chunker. */
@@ -269,9 +266,8 @@ export const ReviewDetailFindingsList = /*@__PURE__*/ S.Array(
 
 /** The latest turn's findings the validator dismissed, with its reasoning. */
 export type ReviewDetailDismissedFindingsList = Array<ReviewFinding>;
-export const ReviewDetailDismissedFindingsList = /*@__PURE__*/ S.Array(
-  ReviewFinding,
-) as any as S.Schema<ReviewDetailDismissedFindingsList>;
+export const ReviewDetailDismissedFindingsList =
+  ReviewDetailFindingsList as any as S.Schema<ReviewDetailDismissedFindingsList>;
 
 export interface ReviewDetail {
   /** The review report's id, for fetching the review's detail. */
@@ -558,26 +554,16 @@ export interface ReviewResolutionConfig {
   /** The resolution skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-export const ReviewResolutionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skill_name: S.String,
-    active: S.Boolean,
-    description: S.String,
-    body: S.String,
-  }),
-).annotate({ identifier: "ReviewResolutionConfig" }) as any as S.Schema<ReviewResolutionConfig>;
+export const ReviewResolutionConfig =
+  ReviewBlindSpotsConfig as any as S.Schema<ReviewResolutionConfig>;
 
 export type ListReviewHogResolutionResponseBodyList = Array<ReviewResolutionConfig>;
-export const ListReviewHogResolutionResponseBodyList = /*@__PURE__*/ S.Array(
-  ReviewResolutionConfig,
-) as any as S.Schema<ListReviewHogResolutionResponseBodyList>;
+export const ListReviewHogResolutionResponseBodyList =
+  ListReviewHogBlindSpotsResponseBodyList as any as S.Schema<ListReviewHogResolutionResponseBodyList>;
 
 export type ListReviewHogResolutionResponse = ListReviewHogResolutionResponseBodyList;
-export const ListReviewHogResolutionResponse = /*@__PURE__*/ S.suspend(() =>
-  ListReviewHogResolutionResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListReviewHogResolutionResponse",
-}) as any as S.Schema<ListReviewHogResolutionResponse>;
+export const ListReviewHogResolutionResponse =
+  ListReviewHogBlindSpotsResponse as any as S.Schema<ListReviewHogResolutionResponse>;
 
 export type ListReviewHogReviewsRequestScope = "mine" | "everyone";
 export const ListReviewHogReviewsRequestScope = S.String;
@@ -730,26 +716,16 @@ export interface ReviewValidatorConfig {
   /** The validator skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-export const ReviewValidatorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skill_name: S.String,
-    active: S.Boolean,
-    description: S.String,
-    body: S.String,
-  }),
-).annotate({ identifier: "ReviewValidatorConfig" }) as any as S.Schema<ReviewValidatorConfig>;
+export const ReviewValidatorConfig =
+  ReviewBlindSpotsConfig as any as S.Schema<ReviewValidatorConfig>;
 
 export type ListReviewHogValidatorsResponseBodyList = Array<ReviewValidatorConfig>;
-export const ListReviewHogValidatorsResponseBodyList = /*@__PURE__*/ S.Array(
-  ReviewValidatorConfig,
-) as any as S.Schema<ListReviewHogValidatorsResponseBodyList>;
+export const ListReviewHogValidatorsResponseBodyList =
+  ListReviewHogBlindSpotsResponseBodyList as any as S.Schema<ListReviewHogValidatorsResponseBodyList>;
 
 export type ListReviewHogValidatorsResponse = ListReviewHogValidatorsResponseBodyList;
-export const ListReviewHogValidatorsResponse = /*@__PURE__*/ S.suspend(() =>
-  ListReviewHogValidatorsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "ListReviewHogValidatorsResponse",
-}) as any as S.Schema<ListReviewHogValidatorsResponse>;
+export const ListReviewHogValidatorsResponse =
+  ListReviewHogBlindSpotsResponse as any as S.Schema<ListReviewHogValidatorsResponse>;
 
 /** * `review` - review * `review_only` - review_only * `resolve_only` - resolve_only * `flash` - flash */
 export type ReviewTriggerRequestRunModeEnum = "review" | "review_only" | "resolve_only" | "flash";

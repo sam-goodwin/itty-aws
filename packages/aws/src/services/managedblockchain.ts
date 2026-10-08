@@ -531,9 +531,7 @@ export const DeleteMemberInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMemberInput" }) as any as S.Schema<DeleteMemberInput>;
 export interface DeleteMemberOutput {}
-export const DeleteMemberOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMemberOutput",
-}) as any as S.Schema<DeleteMemberOutput>;
+export const DeleteMemberOutput = DeleteAccessorOutput as any as S.Schema<DeleteMemberOutput>;
 export interface DeleteNodeInput {
   NetworkId: string;
   MemberId?: string;
@@ -556,9 +554,7 @@ export const DeleteNodeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteNodeInput" }) as any as S.Schema<DeleteNodeInput>;
 export interface DeleteNodeOutput {}
-export const DeleteNodeOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteNodeOutput",
-}) as any as S.Schema<DeleteNodeOutput>;
+export const DeleteNodeOutput = DeleteAccessorOutput as any as S.Schema<DeleteNodeOutput>;
 export interface GetAccessorInput {
   AccessorId: string;
 }
@@ -571,10 +567,7 @@ export type AccessorStatus = "AVAILABLE" | "PENDING_DELETION" | "DELETED" | (str
 export const AccessorStatus = S.String;
 
 export type OutputTagMap = { [key: string]: string | undefined };
-export const OutputTagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const OutputTagMap = InputTagMap as any as S.Schema<OutputTagMap>;
 export interface Accessor {
   Id?: string;
   Type?: AccessorType;
@@ -1307,9 +1300,8 @@ export const RejectInvitationInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RejectInvitationInput" }) as any as S.Schema<RejectInvitationInput>;
 export interface RejectInvitationOutput {}
-export const RejectInvitationOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "RejectInvitationOutput",
-}) as any as S.Schema<RejectInvitationOutput>;
+export const RejectInvitationOutput =
+  DeleteAccessorOutput as any as S.Schema<RejectInvitationOutput>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -1320,9 +1312,7 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteAccessorOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -1338,9 +1328,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteAccessorOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateMemberInput {
   NetworkId: string;
   MemberId: string;
@@ -1363,9 +1351,7 @@ export const UpdateMemberInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateMemberInput" }) as any as S.Schema<UpdateMemberInput>;
 export interface UpdateMemberOutput {}
-export const UpdateMemberOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateMemberOutput",
-}) as any as S.Schema<UpdateMemberOutput>;
+export const UpdateMemberOutput = DeleteAccessorOutput as any as S.Schema<UpdateMemberOutput>;
 export interface UpdateNodeInput {
   NetworkId: string;
   MemberId?: string;
@@ -1390,9 +1376,7 @@ export const UpdateNodeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateNodeInput" }) as any as S.Schema<UpdateNodeInput>;
 export interface UpdateNodeOutput {}
-export const UpdateNodeOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateNodeOutput",
-}) as any as S.Schema<UpdateNodeOutput>;
+export const UpdateNodeOutput = DeleteAccessorOutput as any as S.Schema<UpdateNodeOutput>;
 export interface VoteOnProposalInput {
   NetworkId: string;
   ProposalId: string;
@@ -1417,9 +1401,7 @@ export const VoteOnProposalInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "VoteOnProposalInput" }) as any as S.Schema<VoteOnProposalInput>;
 export interface VoteOnProposalOutput {}
-export const VoteOnProposalOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "VoteOnProposalOutput",
-}) as any as S.Schema<VoteOnProposalOutput>;
+export const VoteOnProposalOutput = DeleteAccessorOutput as any as S.Schema<VoteOnProposalOutput>;
 export type ExceptionMessage = string;
 export type CreateAccessorError =
   | AccessDeniedException

@@ -208,9 +208,8 @@ export const DeleteVectorBucketInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVectorBucketInput" }) as any as S.Schema<DeleteVectorBucketInput>;
 export interface DeleteVectorBucketOutput {}
-export const DeleteVectorBucketOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVectorBucketOutput",
-}) as any as S.Schema<DeleteVectorBucketOutput>;
+export const DeleteVectorBucketOutput =
+  DeleteIndexOutput as any as S.Schema<DeleteVectorBucketOutput>;
 export interface DeleteVectorBucketPolicyInput {
   vectorBucketName?: string;
   vectorBucketArn?: string;
@@ -230,12 +229,12 @@ export const DeleteVectorBucketPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVectorBucketPolicyInput",
 }) as any as S.Schema<DeleteVectorBucketPolicyInput>;
 export interface DeleteVectorBucketPolicyOutput {}
-export const DeleteVectorBucketPolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVectorBucketPolicyOutput",
-}) as any as S.Schema<DeleteVectorBucketPolicyOutput>;
+export const DeleteVectorBucketPolicyOutput =
+  DeleteIndexOutput as any as S.Schema<DeleteVectorBucketPolicyOutput>;
 export type VectorKey = string;
 export type DeleteVectorsInputList = string[];
-export const DeleteVectorsInputList = /*@__PURE__*/ S.Array(S.String);
+export const DeleteVectorsInputList =
+  NonFilterableMetadataKeys as any as S.Schema<DeleteVectorsInputList>;
 export interface DeleteVectorsInput {
   vectorBucketName?: string;
   indexName?: string;
@@ -251,9 +250,7 @@ export const DeleteVectorsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/DeleteVectors" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteVectorsInput" }) as any as S.Schema<DeleteVectorsInput>;
 export interface DeleteVectorsOutput {}
-export const DeleteVectorsOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteVectorsOutput",
-}) as any as S.Schema<DeleteVectorsOutput>;
+export const DeleteVectorsOutput = DeleteIndexOutput as any as S.Schema<DeleteVectorsOutput>;
 export interface GetIndexInput {
   vectorBucketName?: string;
   indexName?: string;
@@ -353,7 +350,8 @@ export const GetVectorBucketPolicyOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetVectorBucketPolicyOutput",
 }) as any as S.Schema<GetVectorBucketPolicyOutput>;
 export type GetVectorsInputList = string[];
-export const GetVectorsInputList = /*@__PURE__*/ S.Array(S.String);
+export const GetVectorsInputList =
+  NonFilterableMetadataKeys as any as S.Schema<GetVectorsInputList>;
 export interface GetVectorsInput {
   vectorBucketName?: string;
   indexName?: string;
@@ -525,11 +523,9 @@ export interface ListOutputVector {
   data?: VectorData;
   metadata?: any;
 }
-export const ListOutputVector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, data: S.optional(VectorData), metadata: S.optional(S.Any) }),
-).annotate({ identifier: "ListOutputVector" }) as any as S.Schema<ListOutputVector>;
+export const ListOutputVector = GetOutputVector as any as S.Schema<ListOutputVector>;
 export type ListVectorsOutputList = ListOutputVector[];
-export const ListVectorsOutputList = /*@__PURE__*/ S.Array(ListOutputVector);
+export const ListVectorsOutputList = GetVectorsOutputList as any as S.Schema<ListVectorsOutputList>;
 export interface ListVectorsOutput {
   nextToken?: string;
   vectors: ListOutputVector[];
@@ -583,9 +579,8 @@ export const PutVectorBucketPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutVectorBucketPolicyInput",
 }) as any as S.Schema<PutVectorBucketPolicyInput>;
 export interface PutVectorBucketPolicyOutput {}
-export const PutVectorBucketPolicyOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVectorBucketPolicyOutput",
-}) as any as S.Schema<PutVectorBucketPolicyOutput>;
+export const PutVectorBucketPolicyOutput =
+  DeleteIndexOutput as any as S.Schema<PutVectorBucketPolicyOutput>;
 export interface PutInputVector {
   key: string;
   data: VectorData;
@@ -611,9 +606,7 @@ export const PutVectorsInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/PutVectors" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "PutVectorsInput" }) as any as S.Schema<PutVectorsInput>;
 export interface PutVectorsOutput {}
-export const PutVectorsOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PutVectorsOutput",
-}) as any as S.Schema<PutVectorsOutput>;
+export const PutVectorsOutput = DeleteIndexOutput as any as S.Schema<PutVectorsOutput>;
 export type TopK = number;
 export type QueryVectorsNextToken = string;
 export interface QueryVectorsInput {
@@ -674,11 +667,9 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
+export const TagResourceOutput = DeleteIndexOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = NonFilterableMetadataKeys as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -692,9 +683,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = DeleteIndexOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateIndexModeInput {
   vectorBucketName?: string;
   indexName?: string;
@@ -710,9 +699,7 @@ export const UpdateIndexModeInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/UpdateIndexMode" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateIndexModeInput" }) as any as S.Schema<UpdateIndexModeInput>;
 export interface UpdateIndexModeOutput {}
-export const UpdateIndexModeOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateIndexModeOutput",
-}) as any as S.Schema<UpdateIndexModeOutput>;
+export const UpdateIndexModeOutput = DeleteIndexOutput as any as S.Schema<UpdateIndexModeOutput>;
 export type ExceptionMessage = string;
 export type CreateIndexError =
   | ConflictException

@@ -536,9 +536,7 @@ export const BatchDeleteAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
+export const Empty = ApproveAccountServiceRequest as any as S.Schema<Empty>;
 
 /** Request message for the `UpdateRegion` method. */
 export interface UpdateRegionRequest {
@@ -598,13 +596,8 @@ export interface BatchUpdateRegionsResponse {
   /** The updated region(s). */
   regions?: RegionList;
 }
-export const BatchUpdateRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regions: S.optional(RegionList),
-  }),
-).annotate({
-  identifier: "BatchUpdateRegionsResponse",
-}) as any as S.Schema<BatchUpdateRegionsResponse>;
+export const BatchUpdateRegionsResponse =
+  BatchCreateRegionsResponse as any as S.Schema<BatchUpdateRegionsResponse>;
 
 /** Request message for the `ClaimHomepage` method. */
 export interface ClaimHomepageRequest {
@@ -3223,11 +3216,8 @@ export interface LinkLfpProviderResponse {
   /** Empty response. */
   response?: Empty;
 }
-export const LinkLfpProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.optional(Empty),
-  }),
-).annotate({ identifier: "LinkLfpProviderResponse" }) as any as S.Schema<LinkLfpProviderResponse>;
+export const LinkLfpProviderResponse =
+  LinkGbpAccountResponse as any as S.Schema<LinkLfpProviderResponse>;
 
 export interface ListAccountsRequest {
   /** Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 250 accounts are returned. The maximum value is 500; values above 500 are coerced to 500. */

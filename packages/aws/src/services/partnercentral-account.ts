@@ -168,9 +168,7 @@ export interface SellerProfileSummary {
   Id: string;
   Name: string;
 }
-export const SellerProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String, Name: S.String }),
-).annotate({ identifier: "SellerProfileSummary" }) as any as S.Schema<SellerProfileSummary>;
+export const SellerProfileSummary = PartnerProfileSummary as any as S.Schema<SellerProfileSummary>;
 export interface AccountSummary {
   Name: string;
 }
@@ -287,16 +285,7 @@ export interface CancelConnectionResponse {
   UpdatedAt: Date;
   ConnectionTypes: { [key: string]: ConnectionTypeDetail | undefined };
 }
-export const CancelConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.String,
-    Arn: S.String,
-    OtherParticipantAccountId: S.String,
-    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ConnectionTypes: ConnectionTypeDetailMap,
-  }),
-).annotate({ identifier: "CancelConnectionResponse" }) as any as S.Schema<CancelConnectionResponse>;
+export const CancelConnectionResponse = Connection as any as S.Schema<CancelConnectionResponse>;
 export interface CancelConnectionInvitationRequest {
   Catalog: string;
   Identifier: string;
@@ -577,26 +566,8 @@ export interface CreateConnectionInvitationResponse {
   InviterEmail: string;
   InviterName: string | redacted.Redacted<string>;
 }
-export const CreateConnectionInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.String,
-    Arn: S.String,
-    ConnectionId: S.optional(S.String),
-    ConnectionType: ConnectionType,
-    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    OtherParticipantIdentifier: S.String,
-    ParticipantType: ParticipantType,
-    Status: InvitationStatus,
-    InvitationMessage: S.String,
-    InviterEmail: S.String,
-    InviterName: SensitiveString,
-  }),
-).annotate({
-  identifier: "CreateConnectionInvitationResponse",
-}) as any as S.Schema<CreateConnectionInvitationResponse>;
+export const CreateConnectionInvitationResponse =
+  CancelConnectionInvitationResponse as any as S.Schema<CreateConnectionInvitationResponse>;
 export interface AllianceLeadContact {
   FirstName: string | redacted.Redacted<string>;
   LastName: string | redacted.Redacted<string>;
@@ -720,11 +691,8 @@ export const DisassociateAwsTrainingCertificationEmailDomainRequest = /*@__PURE_
   identifier: "DisassociateAwsTrainingCertificationEmailDomainRequest",
 }) as any as S.Schema<DisassociateAwsTrainingCertificationEmailDomainRequest>;
 export interface DisassociateAwsTrainingCertificationEmailDomainResponse {}
-export const DisassociateAwsTrainingCertificationEmailDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateAwsTrainingCertificationEmailDomainResponse",
-}) as any as S.Schema<DisassociateAwsTrainingCertificationEmailDomainResponse>;
+export const DisassociateAwsTrainingCertificationEmailDomainResponse =
+  AssociateAwsTrainingCertificationEmailDomainResponse as any as S.Schema<DisassociateAwsTrainingCertificationEmailDomainResponse>;
 export interface GetAllianceLeadContactRequest {
   Catalog: string;
   Identifier: string;
@@ -769,16 +737,7 @@ export interface GetConnectionResponse {
   UpdatedAt: Date;
   ConnectionTypes: { [key: string]: ConnectionTypeDetail | undefined };
 }
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.String,
-    Arn: S.String,
-    OtherParticipantAccountId: S.String,
-    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ConnectionTypes: ConnectionTypeDetailMap,
-  }),
-).annotate({ identifier: "GetConnectionResponse" }) as any as S.Schema<GetConnectionResponse>;
+export const GetConnectionResponse = Connection as any as S.Schema<GetConnectionResponse>;
 export interface GetConnectionInvitationRequest {
   Catalog: string;
   Identifier: string;
@@ -806,26 +765,8 @@ export interface GetConnectionInvitationResponse {
   InviterEmail: string;
   InviterName: string | redacted.Redacted<string>;
 }
-export const GetConnectionInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.String,
-    Arn: S.String,
-    ConnectionId: S.optional(S.String),
-    ConnectionType: ConnectionType,
-    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    OtherParticipantIdentifier: S.String,
-    ParticipantType: ParticipantType,
-    Status: InvitationStatus,
-    InvitationMessage: S.String,
-    InviterEmail: S.String,
-    InviterName: SensitiveString,
-  }),
-).annotate({
-  identifier: "GetConnectionInvitationResponse",
-}) as any as S.Schema<GetConnectionInvitationResponse>;
+export const GetConnectionInvitationResponse =
+  CancelConnectionInvitationResponse as any as S.Schema<GetConnectionInvitationResponse>;
 export interface GetConnectionPreferencesRequest {
   Catalog: string;
 }
@@ -914,21 +855,8 @@ export interface GetProfileUpdateTaskResponse {
   EndedAt?: Date;
   ErrorDetailList?: ErrorDetail[];
 }
-export const GetProfileUpdateTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Arn: S.String,
-    Id: S.String,
-    TaskId: S.String,
-    TaskDetails: TaskDetails,
-    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    Status: ProfileTaskStatus,
-    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ErrorDetailList: S.optional(ErrorDetailList),
-  }),
-).annotate({
-  identifier: "GetProfileUpdateTaskResponse",
-}) as any as S.Schema<GetProfileUpdateTaskResponse>;
+export const GetProfileUpdateTaskResponse =
+  CancelProfileUpdateTaskResponse as any as S.Schema<GetProfileUpdateTaskResponse>;
 export interface GetProfileVisibilityRequest {
   Catalog: string;
   Identifier: string;
@@ -1384,16 +1312,8 @@ export interface PutAllianceLeadContactResponse {
   Id: string;
   AllianceLeadContact: AllianceLeadContact;
 }
-export const PutAllianceLeadContactResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Arn: S.String,
-    Id: S.String,
-    AllianceLeadContact: AllianceLeadContact,
-  }),
-).annotate({
-  identifier: "PutAllianceLeadContactResponse",
-}) as any as S.Schema<PutAllianceLeadContactResponse>;
+export const PutAllianceLeadContactResponse =
+  GetAllianceLeadContactResponse as any as S.Schema<PutAllianceLeadContactResponse>;
 export interface PutProfileVisibilityRequest {
   Catalog: string;
   Identifier: string;
@@ -1413,17 +1333,8 @@ export interface PutProfileVisibilityResponse {
   Visibility: ProfileVisibility;
   ProfileId: string;
 }
-export const PutProfileVisibilityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Arn: S.String,
-    Id: S.String,
-    Visibility: ProfileVisibility,
-    ProfileId: S.String,
-  }),
-).annotate({
-  identifier: "PutProfileVisibilityResponse",
-}) as any as S.Schema<PutProfileVisibilityResponse>;
+export const PutProfileVisibilityResponse =
+  GetProfileVisibilityResponse as any as S.Schema<PutProfileVisibilityResponse>;
 export interface RejectConnectionInvitationRequest {
   Catalog: string;
   Identifier: string;
@@ -1456,26 +1367,8 @@ export interface RejectConnectionInvitationResponse {
   InviterEmail: string;
   InviterName: string | redacted.Redacted<string>;
 }
-export const RejectConnectionInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Id: S.String,
-    Arn: S.String,
-    ConnectionId: S.optional(S.String),
-    ConnectionType: ConnectionType,
-    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    OtherParticipantIdentifier: S.String,
-    ParticipantType: ParticipantType,
-    Status: InvitationStatus,
-    InvitationMessage: S.String,
-    InviterEmail: S.String,
-    InviterName: SensitiveString,
-  }),
-).annotate({
-  identifier: "RejectConnectionInvitationResponse",
-}) as any as S.Schema<RejectConnectionInvitationResponse>;
+export const RejectConnectionInvitationResponse =
+  CancelConnectionInvitationResponse as any as S.Schema<RejectConnectionInvitationResponse>;
 export interface SendEmailVerificationCodeRequest {
   Catalog: string;
   Email: string;
@@ -1488,11 +1381,8 @@ export const SendEmailVerificationCodeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendEmailVerificationCodeRequest",
 }) as any as S.Schema<SendEmailVerificationCodeRequest>;
 export interface SendEmailVerificationCodeResponse {}
-export const SendEmailVerificationCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SendEmailVerificationCodeResponse",
-}) as any as S.Schema<SendEmailVerificationCodeResponse>;
+export const SendEmailVerificationCodeResponse =
+  AssociateAwsTrainingCertificationEmailDomainResponse as any as S.Schema<SendEmailVerificationCodeResponse>;
 export interface StartProfileUpdateTaskRequest {
   Catalog: string;
   Identifier: string;
@@ -1520,21 +1410,8 @@ export interface StartProfileUpdateTaskResponse {
   EndedAt?: Date;
   ErrorDetailList?: ErrorDetail[];
 }
-export const StartProfileUpdateTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Arn: S.String,
-    Id: S.String,
-    TaskId: S.String,
-    TaskDetails: TaskDetails,
-    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    Status: ProfileTaskStatus,
-    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ErrorDetailList: S.optional(ErrorDetailList),
-  }),
-).annotate({
-  identifier: "StartProfileUpdateTaskResponse",
-}) as any as S.Schema<StartProfileUpdateTaskResponse>;
+export const StartProfileUpdateTaskResponse =
+  CancelProfileUpdateTaskResponse as any as S.Schema<StartProfileUpdateTaskResponse>;
 export interface StartQualificationsAssociationTaskRequest {
   Catalog: string;
   Identifier: string;
@@ -1668,11 +1545,10 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse =
+  RegistrantVerificationDetails as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = ParticipantIdentifierList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -1683,9 +1559,8 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse =
+  RegistrantVerificationDetails as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectionPreferencesRequest {
   Catalog: string;
   Revision: number;
@@ -1710,18 +1585,8 @@ export interface UpdateConnectionPreferencesResponse {
   UpdatedAt: Date;
   Revision: number;
 }
-export const UpdateConnectionPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Catalog: S.String,
-    Arn: S.String,
-    AccessType: AccessType,
-    ExcludedParticipantIds: S.optional(ParticipantIdentifierList),
-    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    Revision: S.Number,
-  }),
-).annotate({
-  identifier: "UpdateConnectionPreferencesResponse",
-}) as any as S.Schema<UpdateConnectionPreferencesResponse>;
+export const UpdateConnectionPreferencesResponse =
+  GetConnectionPreferencesResponse as any as S.Schema<UpdateConnectionPreferencesResponse>;
 export type AccessDeniedExceptionReason =
   | "ACCESS_DENIED"
   | "INCOMPATIBLE_BENEFIT_AWS_PARTNER_STATE"

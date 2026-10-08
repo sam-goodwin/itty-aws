@@ -715,9 +715,7 @@ export const QueueStateEnum = S.String;
 
 /** Pull target. */
 export interface PullTarget {}
-export const PullTarget = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "PullTarget",
-}) as any as S.Schema<PullTarget>;
+export const PullTarget = Empty as any as S.Schema<PullTarget>;
 
 /** Statistics for a queue. */
 export interface QueueStats {
@@ -1570,13 +1568,8 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateApiQueueRequest {
   /** Required. The App ID is supplied as an HTTP parameter. Unlike internal usage of App ID, it does not include a region prefix. Rather, the App ID represents the Project ID against which to make the request. */

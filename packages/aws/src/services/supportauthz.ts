@@ -132,7 +132,7 @@ export const ActionSet = /*@__PURE__*/ S.Union([
 ]);
 export type Resource = string;
 export type Resources = string[];
-export const Resources = /*@__PURE__*/ S.Array(S.String);
+export const Resources = Actions as any as S.Schema<Resources>;
 export type ResourceSet =
   | { allResourcesInRegion: Record<string, never>; resources?: never }
   | { allResourcesInRegion?: never; resources: string[] };
@@ -338,9 +338,7 @@ export interface ActionSummary {
   service: string;
   description: string;
 }
-export const ActionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ action: S.String, service: S.String, description: S.String }),
-).annotate({ identifier: "ActionSummary" }) as any as S.Schema<ActionSummary>;
+export const ActionSummary = GetActionOutput as any as S.Schema<ActionSummary>;
 export type ActionSummaries = ActionSummary[];
 export const ActionSummaries = /*@__PURE__*/ S.Array(ActionSummary);
 export interface ListActionsOutput {
@@ -504,7 +502,7 @@ export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).ann
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = Actions as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
@@ -518,9 +516,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
+export const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;

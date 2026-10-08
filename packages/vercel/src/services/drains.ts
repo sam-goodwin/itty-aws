@@ -54,9 +54,8 @@ export const CreateDrainRequestProjectIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateDrainRequestProjectIdsList>;
 
 export type CreateDrainRequestFilterFilterCase0ProjectIdsList = Array<string>;
-export const CreateDrainRequestFilterFilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDrainRequestFilterFilterCase0ProjectIdsList>;
+export const CreateDrainRequestFilterFilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<CreateDrainRequestFilterFilterCase0ProjectIdsList>;
 
 export interface CreateDrainRequestFilterFilterCase0Project {
   ids?: CreateDrainRequestFilterFilterCase0ProjectIdsList;
@@ -234,10 +233,8 @@ export type CreateDrainRequestDeliveryCase1Encoding = "proto" | "json";
 export const CreateDrainRequestDeliveryCase1Encoding = S.String;
 
 export type CreateDrainRequestDeliveryCase1HeadersMap = { [key: string]: string | undefined };
-export const CreateDrainRequestDeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDrainRequestDeliveryCase1HeadersMap>;
+export const CreateDrainRequestDeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<CreateDrainRequestDeliveryCase1HeadersMap>;
 
 export interface CreateDrainRequestDeliveryCase1 {
   type: string;
@@ -449,10 +446,8 @@ export const CreateDrainResponseBodyCase0DeliveryCase0Encoding = S.String;
 export type CreateDrainResponseBodyCase0DeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateDrainResponseBodyCase0DeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase0DeliveryCase0HeadersMap>;
+export const CreateDrainResponseBodyCase0DeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<CreateDrainResponseBodyCase0DeliveryCase0HeadersMap>;
 
 export type CreateDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const CreateDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = S.String;
@@ -509,10 +504,8 @@ export const CreateDrainResponseBodyCase0DeliveryCase1Endpoint =
 export type CreateDrainResponseBodyCase0DeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateDrainResponseBodyCase0DeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase0DeliveryCase1HeadersMap>;
+export const CreateDrainResponseBodyCase0DeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<CreateDrainResponseBodyCase0DeliveryCase1HeadersMap>;
 
 export type CreateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const CreateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = S.String;
@@ -666,9 +659,8 @@ export type CreateDrainResponseBodyCase0DisabledReason =
 export const CreateDrainResponseBodyCase0DisabledReason = S.String;
 
 export type CreateDrainResponseBodyCase0ProjectIdsList = Array<string>;
-export const CreateDrainResponseBodyCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase0ProjectIdsList>;
+export const CreateDrainResponseBodyCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<CreateDrainResponseBodyCase0ProjectIdsList>;
 
 export type CreateDrainResponseBodyCase0SamplingItemEnv = "preview" | "production";
 export const CreateDrainResponseBodyCase0SamplingItemEnv = S.String;
@@ -830,20 +822,14 @@ export const CreateDrainResponseBodyCase0FilterV2FilterCase0Log = /*@__PURE__*/ 
 }) as any as S.Schema<CreateDrainResponseBodyCase0FilterV2FilterCase0Log>;
 
 export type CreateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = Array<string>;
-export const CreateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList>;
+export const CreateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<CreateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList>;
 
 export interface CreateDrainResponseBodyCase0FilterV2FilterCase0Project {
   ids?: CreateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList;
 }
-export const CreateDrainResponseBodyCase0FilterV2FilterCase0Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(CreateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList),
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase0FilterV2FilterCase0Project",
-}) as any as S.Schema<CreateDrainResponseBodyCase0FilterV2FilterCase0Project>;
+export const CreateDrainResponseBodyCase0FilterV2FilterCase0Project =
+  CreateDrainRequestFilterFilterCase0Project as any as S.Schema<CreateDrainResponseBodyCase0FilterV2FilterCase0Project>;
 
 export type CreateDrainResponseBodyCase0FilterV2FilterCase0Type = "basic";
 export const CreateDrainResponseBodyCase0FilterV2FilterCase0Type = S.String;
@@ -955,10 +941,8 @@ export const CreateDrainResponseBodyCase1DeliveryCase0Encoding = S.String;
 export type CreateDrainResponseBodyCase1DeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateDrainResponseBodyCase1DeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase0HeadersMap>;
+export const CreateDrainResponseBodyCase1DeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase0HeadersMap>;
 
 export type CreateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const CreateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = S.String;
@@ -1015,10 +999,8 @@ export const CreateDrainResponseBodyCase1DeliveryCase1Endpoint =
 export type CreateDrainResponseBodyCase1DeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateDrainResponseBodyCase1DeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase1HeadersMap>;
+export const CreateDrainResponseBodyCase1DeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<CreateDrainResponseBodyCase1DeliveryCase1HeadersMap>;
 
 export type CreateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const CreateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = S.String;
@@ -1172,9 +1154,8 @@ export type CreateDrainResponseBodyCase1DisabledReason =
 export const CreateDrainResponseBodyCase1DisabledReason = S.String;
 
 export type CreateDrainResponseBodyCase1ProjectIdsList = Array<string>;
-export const CreateDrainResponseBodyCase1ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase1ProjectIdsList>;
+export const CreateDrainResponseBodyCase1ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<CreateDrainResponseBodyCase1ProjectIdsList>;
 
 export type CreateDrainResponseBodyCase1SamplingItemEnv = "preview" | "production";
 export const CreateDrainResponseBodyCase1SamplingItemEnv = S.String;
@@ -1316,20 +1297,14 @@ export const CreateDrainResponseBodyCase1FilterV2FilterCase0Log = /*@__PURE__*/ 
 }) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0Log>;
 
 export type CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = Array<string>;
-export const CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList>;
+export const CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList>;
 
 export interface CreateDrainResponseBodyCase1FilterV2FilterCase0Project {
   ids?: CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList;
 }
-export const CreateDrainResponseBodyCase1FilterV2FilterCase0Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(CreateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList),
-  }),
-).annotate({
-  identifier: "CreateDrainResponseBodyCase1FilterV2FilterCase0Project",
-}) as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0Project>;
+export const CreateDrainResponseBodyCase1FilterV2FilterCase0Project =
+  CreateDrainRequestFilterFilterCase0Project as any as S.Schema<CreateDrainResponseBodyCase1FilterV2FilterCase0Project>;
 
 export type CreateDrainResponseBodyCase1FilterV2FilterCase0Type = "basic";
 export const CreateDrainResponseBodyCase1FilterV2FilterCase0Type = S.String;
@@ -1412,9 +1387,8 @@ export type CreateDrainResponseBodyCase1ProjectAccessCase1Access = "some";
 export const CreateDrainResponseBodyCase1ProjectAccessCase1Access = S.String;
 
 export type CreateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList = Array<string>;
-export const CreateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList>;
+export const CreateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<CreateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList>;
 
 export type CreateDrainResponseBodyCase1ProjectAccessCase1ManagedBy = "drain" | "integration";
 export const CreateDrainResponseBodyCase1ProjectAccessCase1ManagedBy = S.String;
@@ -1543,10 +1517,8 @@ export const GetDrainResponseBodyCase0DeliveryCase0Encoding = S.String;
 export type GetDrainResponseBodyCase0DeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainResponseBodyCase0DeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase0HeadersMap>;
+export const GetDrainResponseBodyCase0DeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase0HeadersMap>;
 
 export type GetDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = S.String;
@@ -1603,10 +1575,8 @@ export const GetDrainResponseBodyCase0DeliveryCase1Endpoint =
 export type GetDrainResponseBodyCase0DeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainResponseBodyCase0DeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase1HeadersMap>;
+export const GetDrainResponseBodyCase0DeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainResponseBodyCase0DeliveryCase1HeadersMap>;
 
 export type GetDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = S.String;
@@ -1760,9 +1730,8 @@ export type GetDrainResponseBodyCase0DisabledReason =
 export const GetDrainResponseBodyCase0DisabledReason = S.String;
 
 export type GetDrainResponseBodyCase0ProjectIdsList = Array<string>;
-export const GetDrainResponseBodyCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase0ProjectIdsList>;
+export const GetDrainResponseBodyCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<GetDrainResponseBodyCase0ProjectIdsList>;
 
 export type GetDrainResponseBodyCase0SamplingItemEnv = "preview" | "production";
 export const GetDrainResponseBodyCase0SamplingItemEnv = S.String;
@@ -1902,20 +1871,14 @@ export const GetDrainResponseBodyCase0FilterV2FilterCase0Log = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0Log>;
 
 export type GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = Array<string>;
-export const GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList>;
+export const GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList>;
 
 export interface GetDrainResponseBodyCase0FilterV2FilterCase0Project {
   ids?: GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList;
 }
-export const GetDrainResponseBodyCase0FilterV2FilterCase0Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(GetDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList),
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase0FilterV2FilterCase0Project",
-}) as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0Project>;
+export const GetDrainResponseBodyCase0FilterV2FilterCase0Project =
+  CreateDrainRequestFilterFilterCase0Project as any as S.Schema<GetDrainResponseBodyCase0FilterV2FilterCase0Project>;
 
 export type GetDrainResponseBodyCase0FilterV2FilterCase0Type = "basic";
 export const GetDrainResponseBodyCase0FilterV2FilterCase0Type = S.String;
@@ -2027,10 +1990,8 @@ export const GetDrainResponseBodyCase1DeliveryCase0Encoding = S.String;
 export type GetDrainResponseBodyCase1DeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainResponseBodyCase1DeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase0HeadersMap>;
+export const GetDrainResponseBodyCase1DeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase0HeadersMap>;
 
 export type GetDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = S.String;
@@ -2087,10 +2048,8 @@ export const GetDrainResponseBodyCase1DeliveryCase1Endpoint =
 export type GetDrainResponseBodyCase1DeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainResponseBodyCase1DeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase1HeadersMap>;
+export const GetDrainResponseBodyCase1DeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainResponseBodyCase1DeliveryCase1HeadersMap>;
 
 export type GetDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = S.String;
@@ -2244,9 +2203,8 @@ export type GetDrainResponseBodyCase1DisabledReason =
 export const GetDrainResponseBodyCase1DisabledReason = S.String;
 
 export type GetDrainResponseBodyCase1ProjectIdsList = Array<string>;
-export const GetDrainResponseBodyCase1ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase1ProjectIdsList>;
+export const GetDrainResponseBodyCase1ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<GetDrainResponseBodyCase1ProjectIdsList>;
 
 export type GetDrainResponseBodyCase1SamplingItemEnv = "preview" | "production";
 export const GetDrainResponseBodyCase1SamplingItemEnv = S.String;
@@ -2386,20 +2344,14 @@ export const GetDrainResponseBodyCase1FilterV2FilterCase0Log = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0Log>;
 
 export type GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = Array<string>;
-export const GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList>;
+export const GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList>;
 
 export interface GetDrainResponseBodyCase1FilterV2FilterCase0Project {
   ids?: GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList;
 }
-export const GetDrainResponseBodyCase1FilterV2FilterCase0Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(GetDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList),
-  }),
-).annotate({
-  identifier: "GetDrainResponseBodyCase1FilterV2FilterCase0Project",
-}) as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0Project>;
+export const GetDrainResponseBodyCase1FilterV2FilterCase0Project =
+  CreateDrainRequestFilterFilterCase0Project as any as S.Schema<GetDrainResponseBodyCase1FilterV2FilterCase0Project>;
 
 export type GetDrainResponseBodyCase1FilterV2FilterCase0Type = "basic";
 export const GetDrainResponseBodyCase1FilterV2FilterCase0Type = S.String;
@@ -2482,9 +2434,8 @@ export type GetDrainResponseBodyCase1ProjectAccessCase1Access = "some";
 export const GetDrainResponseBodyCase1ProjectAccessCase1Access = S.String;
 
 export type GetDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList = Array<string>;
-export const GetDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList>;
+export const GetDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<GetDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList>;
 
 export type GetDrainResponseBodyCase1ProjectAccessCase1ManagedBy = "drain" | "integration";
 export const GetDrainResponseBodyCase1ProjectAccessCase1ManagedBy = S.String;
@@ -2595,10 +2546,8 @@ export const GetDrainsResponseDrainsCase0ItemDeliveryCase0Encoding = S.String;
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainsResponseDrainsCase0ItemDeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase0HeadersMap>;
+export const GetDrainsResponseDrainsCase0ItemDeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase0HeadersMap>;
 
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainsResponseDrainsCase0ItemDeliveryCase0SecretCase1Kind = S.String;
@@ -2656,10 +2605,8 @@ export const GetDrainsResponseDrainsCase0ItemDeliveryCase1Endpoint =
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainsResponseDrainsCase0ItemDeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase1HeadersMap>;
+export const GetDrainsResponseDrainsCase0ItemDeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainsResponseDrainsCase0ItemDeliveryCase1HeadersMap>;
 
 export type GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainsResponseDrainsCase0ItemDeliveryCase1SecretCase1Kind = S.String;
@@ -2816,9 +2763,8 @@ export type GetDrainsResponseDrainsCase0ItemDisabledReason =
 export const GetDrainsResponseDrainsCase0ItemDisabledReason = S.String;
 
 export type GetDrainsResponseDrainsCase0ItemProjectIdsList = Array<string>;
-export const GetDrainsResponseDrainsCase0ItemProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDrainsResponseDrainsCase0ItemProjectIdsList>;
+export const GetDrainsResponseDrainsCase0ItemProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<GetDrainsResponseDrainsCase0ItemProjectIdsList>;
 
 export type GetDrainsResponseDrainsCase0ItemSamplingItemEnv = "preview" | "production";
 export const GetDrainsResponseDrainsCase0ItemSamplingItemEnv = S.String;
@@ -3094,10 +3040,8 @@ export const GetDrainsResponseDrainsCase1ItemDeliveryCase0Encoding = S.String;
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainsResponseDrainsCase1ItemDeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase0HeadersMap>;
+export const GetDrainsResponseDrainsCase1ItemDeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase0HeadersMap>;
 
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainsResponseDrainsCase1ItemDeliveryCase0SecretCase1Kind = S.String;
@@ -3155,10 +3099,8 @@ export const GetDrainsResponseDrainsCase1ItemDeliveryCase1Endpoint =
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDrainsResponseDrainsCase1ItemDeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase1HeadersMap>;
+export const GetDrainsResponseDrainsCase1ItemDeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<GetDrainsResponseDrainsCase1ItemDeliveryCase1HeadersMap>;
 
 export type GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const GetDrainsResponseDrainsCase1ItemDeliveryCase1SecretCase1Kind = S.String;
@@ -3315,9 +3257,8 @@ export type GetDrainsResponseDrainsCase1ItemDisabledReason =
 export const GetDrainsResponseDrainsCase1ItemDisabledReason = S.String;
 
 export type GetDrainsResponseDrainsCase1ItemProjectIdsList = Array<string>;
-export const GetDrainsResponseDrainsCase1ItemProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetDrainsResponseDrainsCase1ItemProjectIdsList>;
+export const GetDrainsResponseDrainsCase1ItemProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<GetDrainsResponseDrainsCase1ItemProjectIdsList>;
 
 export type GetDrainsResponseDrainsCase1ItemSamplingItemEnv = "preview" | "production";
 export const GetDrainsResponseDrainsCase1ItemSamplingItemEnv = S.String;
@@ -3462,21 +3403,13 @@ export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Log = /*@__PURE_
 
 export type GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList = Array<string>;
 export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList>;
+  GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0ProjectIdsList as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList>;
 
 export interface GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Project {
   ids?: GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList;
 }
-export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Project = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ids: S.optional(GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0ProjectIdsList),
-    }),
-).annotate({
-  identifier: "GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Project",
-}) as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Project>;
+export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Project =
+  GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0Project as any as S.Schema<GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Project>;
 
 export type GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Type = "basic";
 export const GetDrainsResponseDrainsCase1ItemFilterV2FilterCase0Type = S.String;
@@ -3560,9 +3493,7 @@ export const GetDrainsResponseDrainsCase1ItemProjectAccessCase1Access = S.String
 
 export type GetDrainsResponseDrainsCase1ItemProjectAccessCase1ProjectIdsList = Array<string>;
 export const GetDrainsResponseDrainsCase1ItemProjectAccessCase1ProjectIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetDrainsResponseDrainsCase1ItemProjectAccessCase1ProjectIdsList>;
+  GetDrainsResponseDrainsCase0ItemFilterV2FilterCase0ProjectIdsList as any as S.Schema<GetDrainsResponseDrainsCase1ItemProjectAccessCase1ProjectIdsList>;
 
 export type GetDrainsResponseDrainsCase1ItemProjectAccessCase1ManagedBy = "drain" | "integration";
 export const GetDrainsResponseDrainsCase1ItemProjectAccessCase1ManagedBy = S.String;
@@ -3664,10 +3595,8 @@ export const TestDrainRequestSchemasValue = CreateDrainRequestSchemasValue;
 export type TestDrainRequestSchemasMap = {
   [key: string]: CreateDrainRequestSchemasValue | undefined;
 };
-export const TestDrainRequestSchemasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateDrainRequestSchemasValue,
-) as any as S.Schema<TestDrainRequestSchemasMap>;
+export const TestDrainRequestSchemasMap =
+  CreateDrainRequestSchemasMap as any as S.Schema<TestDrainRequestSchemasMap>;
 
 export type TestDrainRequestDeliveryCase0Compression = "gzip" | "none";
 export const TestDrainRequestDeliveryCase0Compression = S.String;
@@ -3676,10 +3605,8 @@ export type TestDrainRequestDeliveryCase0Encoding = "json" | "ndjson";
 export const TestDrainRequestDeliveryCase0Encoding = S.String;
 
 export type TestDrainRequestDeliveryCase0HeadersMap = { [key: string]: string | undefined };
-export const TestDrainRequestDeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TestDrainRequestDeliveryCase0HeadersMap>;
+export const TestDrainRequestDeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<TestDrainRequestDeliveryCase0HeadersMap>;
 
 export interface TestDrainRequestDeliveryCase0 {
   type: string;
@@ -3709,10 +3636,8 @@ export type TestDrainRequestDeliveryCase1Encoding = "proto" | "json";
 export const TestDrainRequestDeliveryCase1Encoding = S.String;
 
 export type TestDrainRequestDeliveryCase1HeadersMap = { [key: string]: string | undefined };
-export const TestDrainRequestDeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<TestDrainRequestDeliveryCase1HeadersMap>;
+export const TestDrainRequestDeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<TestDrainRequestDeliveryCase1HeadersMap>;
 
 export interface TestDrainRequestDeliveryCase1 {
   type: string;
@@ -3831,25 +3756,18 @@ export type UpdateDrainRequestProjects = "some" | "all";
 export const UpdateDrainRequestProjects = S.String;
 
 export type UpdateDrainRequestProjectIdsList = Array<string>;
-export const UpdateDrainRequestProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDrainRequestProjectIdsList>;
+export const UpdateDrainRequestProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainRequestProjectIdsList>;
 
 export type UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList = Array<string>;
-export const UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList>;
+export const UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList>;
 
 export interface UpdateDrainRequestFilterCase1FilterCase0Project {
   ids?: UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList;
 }
-export const UpdateDrainRequestFilterCase1FilterCase0Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(UpdateDrainRequestFilterCase1FilterCase0ProjectIdsList),
-  }),
-).annotate({
-  identifier: "UpdateDrainRequestFilterCase1FilterCase0Project",
-}) as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0Project>;
+export const UpdateDrainRequestFilterCase1FilterCase0Project =
+  CreateDrainRequestFilterFilterCase0Project as any as S.Schema<UpdateDrainRequestFilterCase1FilterCase0Project>;
 
 export type UpdateDrainRequestFilterCase1FilterCase0LogSourcesItem =
   | "build"
@@ -3951,10 +3869,8 @@ export const UpdateDrainRequestSchemasValue = CreateDrainRequestSchemasValue;
 export type UpdateDrainRequestSchemasMap = {
   [key: string]: CreateDrainRequestSchemasValue | undefined;
 };
-export const UpdateDrainRequestSchemasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateDrainRequestSchemasValue,
-) as any as S.Schema<UpdateDrainRequestSchemasMap>;
+export const UpdateDrainRequestSchemasMap =
+  CreateDrainRequestSchemasMap as any as S.Schema<UpdateDrainRequestSchemasMap>;
 
 export type UpdateDrainRequestDeliveryCase0Compression = "gzip" | "none";
 export const UpdateDrainRequestDeliveryCase0Compression = S.String;
@@ -3963,10 +3879,8 @@ export type UpdateDrainRequestDeliveryCase0Encoding = "json" | "ndjson";
 export const UpdateDrainRequestDeliveryCase0Encoding = S.String;
 
 export type UpdateDrainRequestDeliveryCase0HeadersMap = { [key: string]: string | undefined };
-export const UpdateDrainRequestDeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDrainRequestDeliveryCase0HeadersMap>;
+export const UpdateDrainRequestDeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<UpdateDrainRequestDeliveryCase0HeadersMap>;
 
 export interface UpdateDrainRequestDeliveryCase0 {
   type: string;
@@ -3996,10 +3910,8 @@ export type UpdateDrainRequestDeliveryCase1Encoding = "proto" | "json";
 export const UpdateDrainRequestDeliveryCase1Encoding = S.String;
 
 export type UpdateDrainRequestDeliveryCase1HeadersMap = { [key: string]: string | undefined };
-export const UpdateDrainRequestDeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDrainRequestDeliveryCase1HeadersMap>;
+export const UpdateDrainRequestDeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<UpdateDrainRequestDeliveryCase1HeadersMap>;
 
 export interface UpdateDrainRequestDeliveryCase1 {
   type: string;
@@ -4107,9 +4019,8 @@ export type UpdateDrainRequestTransformsItem = CreateDrainRequestTransformsItem;
 export const UpdateDrainRequestTransformsItem = CreateDrainRequestTransformsItem;
 
 export type UpdateDrainRequestTransformsList = Array<CreateDrainRequestTransformsItem>;
-export const UpdateDrainRequestTransformsList = /*@__PURE__*/ S.Array(
-  CreateDrainRequestTransformsItem,
-) as any as S.Schema<UpdateDrainRequestTransformsList>;
+export const UpdateDrainRequestTransformsList =
+  CreateDrainRequestTransformsList as any as S.Schema<UpdateDrainRequestTransformsList>;
 
 export type UpdateDrainRequestStatus = "enabled" | "disabled";
 export const UpdateDrainRequestStatus = S.String;
@@ -4182,10 +4093,8 @@ export const UpdateDrainResponseBodyCase0DeliveryCase0Encoding = S.String;
 export type UpdateDrainResponseBodyCase0DeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateDrainResponseBodyCase0DeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase0HeadersMap>;
+export const UpdateDrainResponseBodyCase0DeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase0HeadersMap>;
 
 export type UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const UpdateDrainResponseBodyCase0DeliveryCase0SecretCase1Kind = S.String;
@@ -4242,10 +4151,8 @@ export const UpdateDrainResponseBodyCase0DeliveryCase1Endpoint =
 export type UpdateDrainResponseBodyCase0DeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateDrainResponseBodyCase0DeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase1HeadersMap>;
+export const UpdateDrainResponseBodyCase0DeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<UpdateDrainResponseBodyCase0DeliveryCase1HeadersMap>;
 
 export type UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const UpdateDrainResponseBodyCase0DeliveryCase1SecretCase1Kind = S.String;
@@ -4399,9 +4306,8 @@ export type UpdateDrainResponseBodyCase0DisabledReason =
 export const UpdateDrainResponseBodyCase0DisabledReason = S.String;
 
 export type UpdateDrainResponseBodyCase0ProjectIdsList = Array<string>;
-export const UpdateDrainResponseBodyCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase0ProjectIdsList>;
+export const UpdateDrainResponseBodyCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainResponseBodyCase0ProjectIdsList>;
 
 export type UpdateDrainResponseBodyCase0SamplingItemEnv = "preview" | "production";
 export const UpdateDrainResponseBodyCase0SamplingItemEnv = S.String;
@@ -4543,20 +4449,14 @@ export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Log = /*@__PURE__*/ 
 }) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0Log>;
 
 export type UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = Array<string>;
-export const UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList>;
+export const UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList>;
 
 export interface UpdateDrainResponseBodyCase0FilterV2FilterCase0Project {
   ids?: UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList;
 }
-export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(UpdateDrainResponseBodyCase0FilterV2FilterCase0ProjectIdsList),
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase0FilterV2FilterCase0Project",
-}) as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0Project>;
+export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Project =
+  CreateDrainRequestFilterFilterCase0Project as any as S.Schema<UpdateDrainResponseBodyCase0FilterV2FilterCase0Project>;
 
 export type UpdateDrainResponseBodyCase0FilterV2FilterCase0Type = "basic";
 export const UpdateDrainResponseBodyCase0FilterV2FilterCase0Type = S.String;
@@ -4668,10 +4568,8 @@ export const UpdateDrainResponseBodyCase1DeliveryCase0Encoding = S.String;
 export type UpdateDrainResponseBodyCase1DeliveryCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateDrainResponseBodyCase1DeliveryCase0HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase0HeadersMap>;
+export const UpdateDrainResponseBodyCase1DeliveryCase0HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase0HeadersMap>;
 
 export type UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = "INTEGRATION_SECRET";
 export const UpdateDrainResponseBodyCase1DeliveryCase0SecretCase1Kind = S.String;
@@ -4728,10 +4626,8 @@ export const UpdateDrainResponseBodyCase1DeliveryCase1Endpoint =
 export type UpdateDrainResponseBodyCase1DeliveryCase1HeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateDrainResponseBodyCase1DeliveryCase1HeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase1HeadersMap>;
+export const UpdateDrainResponseBodyCase1DeliveryCase1HeadersMap =
+  CreateDrainRequestDeliveryCase0HeadersMap as any as S.Schema<UpdateDrainResponseBodyCase1DeliveryCase1HeadersMap>;
 
 export type UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = "INTEGRATION_SECRET";
 export const UpdateDrainResponseBodyCase1DeliveryCase1SecretCase1Kind = S.String;
@@ -4885,9 +4781,8 @@ export type UpdateDrainResponseBodyCase1DisabledReason =
 export const UpdateDrainResponseBodyCase1DisabledReason = S.String;
 
 export type UpdateDrainResponseBodyCase1ProjectIdsList = Array<string>;
-export const UpdateDrainResponseBodyCase1ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase1ProjectIdsList>;
+export const UpdateDrainResponseBodyCase1ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainResponseBodyCase1ProjectIdsList>;
 
 export type UpdateDrainResponseBodyCase1SamplingItemEnv = "preview" | "production";
 export const UpdateDrainResponseBodyCase1SamplingItemEnv = S.String;
@@ -5029,20 +4924,14 @@ export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Log = /*@__PURE__*/ 
 }) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0Log>;
 
 export type UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = Array<string>;
-export const UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList>;
+export const UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList>;
 
 export interface UpdateDrainResponseBodyCase1FilterV2FilterCase0Project {
   ids?: UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList;
 }
-export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: S.optional(UpdateDrainResponseBodyCase1FilterV2FilterCase0ProjectIdsList),
-  }),
-).annotate({
-  identifier: "UpdateDrainResponseBodyCase1FilterV2FilterCase0Project",
-}) as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0Project>;
+export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Project =
+  CreateDrainRequestFilterFilterCase0Project as any as S.Schema<UpdateDrainResponseBodyCase1FilterV2FilterCase0Project>;
 
 export type UpdateDrainResponseBodyCase1FilterV2FilterCase0Type = "basic";
 export const UpdateDrainResponseBodyCase1FilterV2FilterCase0Type = S.String;
@@ -5125,9 +5014,8 @@ export type UpdateDrainResponseBodyCase1ProjectAccessCase1Access = "some";
 export const UpdateDrainResponseBodyCase1ProjectAccessCase1Access = S.String;
 
 export type UpdateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList = Array<string>;
-export const UpdateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList>;
+export const UpdateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList =
+  CreateDrainRequestProjectIdsList as any as S.Schema<UpdateDrainResponseBodyCase1ProjectAccessCase1ProjectIdsList>;
 
 export type UpdateDrainResponseBodyCase1ProjectAccessCase1ManagedBy = "drain" | "integration";
 export const UpdateDrainResponseBodyCase1ProjectAccessCase1ManagedBy = S.String;

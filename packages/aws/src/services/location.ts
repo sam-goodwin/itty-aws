@@ -199,7 +199,7 @@ export const BatchDeleteDevicePositionHistoryResponse = /*@__PURE__*/ S.suspend(
   identifier: "BatchDeleteDevicePositionHistoryResponse",
 }) as any as S.Schema<BatchDeleteDevicePositionHistoryResponse>;
 export type IdList = string[];
-export const IdList = /*@__PURE__*/ S.Array(S.String);
+export const IdList = DeviceIdsList as any as S.Schema<IdList>;
 export interface BatchDeleteGeofenceRequest {
   CollectionName: string;
   GeofenceIds: string[];
@@ -407,10 +407,7 @@ export const GeofenceGeometry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GeofenceGeometry" }) as any as S.Schema<GeofenceGeometry>;
 export type PropertyMap = { [key: string]: string | undefined };
-export const PropertyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+export const PropertyMap = PositionPropertyMap as any as S.Schema<PropertyMap>;
 export interface BatchPutGeofenceRequestEntry {
   GeofenceId: string;
   Geometry: GeofenceGeometry;
@@ -524,7 +521,7 @@ export const BatchUpdateDevicePositionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdateDevicePositionResponse",
 }) as any as S.Schema<BatchUpdateDevicePositionResponse>;
 export type WaypointPositionList = number[][];
-export const WaypointPositionList = /*@__PURE__*/ S.Array(Position);
+export const WaypointPositionList = LinearRing as any as S.Schema<WaypointPositionList>;
 export type TravelMode = string;
 export type SensitiveBoolean = boolean;
 export type DistanceUnit = string;
@@ -622,7 +619,7 @@ export const CalculateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CalculateRouteRequest" }) as any as S.Schema<CalculateRouteRequest>;
 export type LineString = number[][];
-export const LineString = /*@__PURE__*/ S.Array(Position);
+export const LineString = LinearRing as any as S.Schema<LineString>;
 export interface LegGeometry {
   LineString?: number[][];
 }
@@ -668,7 +665,7 @@ export const Leg = /*@__PURE__*/ S.suspend(() =>
 export type LegList = Leg[];
 export const LegList = /*@__PURE__*/ S.Array(Leg);
 export type BoundingBox = number[];
-export const BoundingBox = /*@__PURE__*/ S.Array(S.Number);
+export const BoundingBox = Position as any as S.Schema<BoundingBox>;
 export interface CalculateRouteSummary {
   RouteBBox: number[];
   DataSource: string;
@@ -693,7 +690,7 @@ export const CalculateRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Legs: LegList, Summary: CalculateRouteSummary }),
 ).annotate({ identifier: "CalculateRouteResponse" }) as any as S.Schema<CalculateRouteResponse>;
 export type PositionList = number[][];
-export const PositionList = /*@__PURE__*/ S.Array(Position);
+export const PositionList = LinearRing as any as S.Schema<PositionList>;
 export interface CalculateRouteMatrixRequest {
   CalculatorName: string;
   DeparturePositions: number[][];
@@ -868,10 +865,10 @@ export const CreateGeofenceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGeofenceCollectionResponse>;
 export type ApiKeyAction = string;
 export type ApiKeyActionList = string[];
-export const ApiKeyActionList = /*@__PURE__*/ S.Array(S.String);
+export const ApiKeyActionList = DeviceIdsList as any as S.Schema<ApiKeyActionList>;
 export type GeoArnV2 = string;
 export type GeoArnList = string[];
-export const GeoArnList = /*@__PURE__*/ S.Array(S.String);
+export const GeoArnList = DeviceIdsList as any as S.Schema<GeoArnList>;
 export type RefererPattern = string | redacted.Redacted<string>;
 export type RefererPatternList = (string | redacted.Redacted<string>)[];
 export const RefererPatternList = /*@__PURE__*/ S.Array(SensitiveString);
@@ -949,7 +946,7 @@ export type MapStyle = string;
 export type CountryCode3 = string | redacted.Redacted<string>;
 export type CustomLayer = string;
 export type CustomLayerList = string[];
-export const CustomLayerList = /*@__PURE__*/ S.Array(S.String);
+export const CustomLayerList = DeviceIdsList as any as S.Schema<CustomLayerList>;
 export interface MapConfiguration {
   Style: string;
   PoliticalView?: string | redacted.Redacted<string>;
@@ -1120,11 +1117,8 @@ export const DeleteGeofenceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteGeofenceCollectionRequest",
 }) as any as S.Schema<DeleteGeofenceCollectionRequest>;
 export interface DeleteGeofenceCollectionResponse {}
-export const DeleteGeofenceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGeofenceCollectionResponse",
-}) as any as S.Schema<DeleteGeofenceCollectionResponse>;
+export const DeleteGeofenceCollectionResponse =
+  AssociateTrackerConsumerResponse as any as S.Schema<DeleteGeofenceCollectionResponse>;
 export interface DeleteKeyRequest {
   KeyName: string;
   ForceDelete?: boolean;
@@ -1164,9 +1158,7 @@ export const DeleteMapRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMapRequest" }) as any as S.Schema<DeleteMapRequest>;
 export interface DeleteMapResponse {}
-export const DeleteMapResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteMapResponse",
-}) as any as S.Schema<DeleteMapResponse>;
+export const DeleteMapResponse = DeleteKeyResponse as any as S.Schema<DeleteMapResponse>;
 export interface DeletePlaceIndexRequest {
   IndexName: string;
 }
@@ -1183,9 +1175,8 @@ export const DeletePlaceIndexRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeletePlaceIndexRequest" }) as any as S.Schema<DeletePlaceIndexRequest>;
 export interface DeletePlaceIndexResponse {}
-export const DeletePlaceIndexResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeletePlaceIndexResponse",
-}) as any as S.Schema<DeletePlaceIndexResponse>;
+export const DeletePlaceIndexResponse =
+  DeleteKeyResponse as any as S.Schema<DeletePlaceIndexResponse>;
 export interface DeleteRouteCalculatorRequest {
   CalculatorName: string;
 }
@@ -1204,9 +1195,8 @@ export const DeleteRouteCalculatorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRouteCalculatorRequest",
 }) as any as S.Schema<DeleteRouteCalculatorRequest>;
 export interface DeleteRouteCalculatorResponse {}
-export const DeleteRouteCalculatorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteRouteCalculatorResponse",
-}) as any as S.Schema<DeleteRouteCalculatorResponse>;
+export const DeleteRouteCalculatorResponse =
+  DeleteKeyResponse as any as S.Schema<DeleteRouteCalculatorResponse>;
 export interface DeleteTrackerRequest {
   TrackerName: string;
 }
@@ -1223,9 +1213,7 @@ export const DeleteTrackerRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTrackerRequest" }) as any as S.Schema<DeleteTrackerRequest>;
 export interface DeleteTrackerResponse {}
-export const DeleteTrackerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "DeleteTrackerResponse",
-}) as any as S.Schema<DeleteTrackerResponse>;
+export const DeleteTrackerResponse = DeleteKeyResponse as any as S.Schema<DeleteTrackerResponse>;
 export interface DescribeGeofenceCollectionRequest {
   CollectionName: string;
 }
@@ -1496,11 +1484,8 @@ export const DisassociateTrackerConsumerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateTrackerConsumerRequest",
 }) as any as S.Schema<DisassociateTrackerConsumerRequest>;
 export interface DisassociateTrackerConsumerResponse {}
-export const DisassociateTrackerConsumerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DisassociateTrackerConsumerResponse",
-}) as any as S.Schema<DisassociateTrackerConsumerResponse>;
+export const DisassociateTrackerConsumerResponse =
+  AssociateTrackerConsumerResponse as any as S.Schema<DisassociateTrackerConsumerResponse>;
 export interface ForecastGeofenceEventsDeviceState {
   Position: number[];
   Speed?: number;
@@ -1729,7 +1714,8 @@ export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
 export type JobAction = string;
 export type ValidateAddressAdditionalFeature = string;
 export type ValidateAddressAdditionalFeatureList = string[];
-export const ValidateAddressAdditionalFeatureList = /*@__PURE__*/ S.Array(S.String);
+export const ValidateAddressAdditionalFeatureList =
+  DeviceIdsList as any as S.Schema<ValidateAddressAdditionalFeatureList>;
 export interface ValidateAddressActionOptions {
   AdditionalFeatures?: string[];
 }
@@ -1747,7 +1733,7 @@ export const JobActionOptions = /*@__PURE__*/ S.suspend(() =>
 export type JobErrorCode = string;
 export type JobErrorMessage = string;
 export type JobErrorMessagesList = string[];
-export const JobErrorMessagesList = /*@__PURE__*/ S.Array(S.String);
+export const JobErrorMessagesList = DeviceIdsList as any as S.Schema<JobErrorMessagesList>;
 export interface JobError {
   Code: string;
   Messages?: string[];
@@ -1872,13 +1858,7 @@ export interface GetMapSpritesResponse {
   ContentType?: string;
   CacheControl?: string;
 }
-export const GetMapSpritesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-  }),
-).annotate({ identifier: "GetMapSpritesResponse" }) as any as S.Schema<GetMapSpritesResponse>;
+export const GetMapSpritesResponse = GetMapGlyphsResponse as any as S.Schema<GetMapSpritesResponse>;
 export interface GetMapStyleDescriptorRequest {
   MapName: string;
   Key?: string | redacted.Redacted<string>;
@@ -1945,13 +1925,7 @@ export interface GetMapTileResponse {
   ContentType?: string;
   CacheControl?: string;
 }
-export const GetMapTileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-  }),
-).annotate({ identifier: "GetMapTileResponse" }) as any as S.Schema<GetMapTileResponse>;
+export const GetMapTileResponse = GetMapGlyphsResponse as any as S.Schema<GetMapTileResponse>;
 export type PlaceId = string | redacted.Redacted<string>;
 export type LanguageTag = string;
 export interface GetPlaceRequest {
@@ -1993,10 +1967,11 @@ export const TimeZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 export type PlaceCategory = string | redacted.Redacted<string>;
 export type PlaceCategoryList = (string | redacted.Redacted<string>)[];
-export const PlaceCategoryList = /*@__PURE__*/ S.Array(SensitiveString);
+export const PlaceCategoryList = RefererPatternList as any as S.Schema<PlaceCategoryList>;
 export type PlaceSupplementalCategory = string | redacted.Redacted<string>;
 export type PlaceSupplementalCategoryList = (string | redacted.Redacted<string>)[];
-export const PlaceSupplementalCategoryList = /*@__PURE__*/ S.Array(SensitiveString);
+export const PlaceSupplementalCategoryList =
+  RefererPatternList as any as S.Schema<PlaceSupplementalCategoryList>;
 export interface Place {
   Label?: string | redacted.Redacted<string>;
   Geometry: PlaceGeometry;
@@ -2491,7 +2466,7 @@ export const ListTrackerConsumersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTrackerConsumersRequest",
 }) as any as S.Schema<ListTrackerConsumersRequest>;
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export const ArnList = DeviceIdsList as any as S.Schema<ArnList>;
 export interface ListTrackerConsumersResponse {
   ConsumerArns: string[];
   NextToken?: string;
@@ -2577,13 +2552,7 @@ export interface PutGeofenceResponse {
   CreateTime: Date;
   UpdateTime: Date;
 }
-export const PutGeofenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GeofenceId: S.String,
-    CreateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    UpdateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({ identifier: "PutGeofenceResponse" }) as any as S.Schema<PutGeofenceResponse>;
+export const PutGeofenceResponse = BatchPutGeofenceSuccess as any as S.Schema<PutGeofenceResponse>;
 export type PlaceIndexSearchResultLimit = number;
 export interface SearchPlaceIndexForPositionRequest {
   IndexName: string;
@@ -2648,9 +2617,10 @@ export const SearchPlaceIndexForPositionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchPlaceIndexForPositionResponse",
 }) as any as S.Schema<SearchPlaceIndexForPositionResponse>;
 export type CountryCodeList = (string | redacted.Redacted<string>)[];
-export const CountryCodeList = /*@__PURE__*/ S.Array(SensitiveString);
+export const CountryCodeList = RefererPatternList as any as S.Schema<CountryCodeList>;
 export type FilterPlaceCategoryList = (string | redacted.Redacted<string>)[];
-export const FilterPlaceCategoryList = /*@__PURE__*/ S.Array(SensitiveString);
+export const FilterPlaceCategoryList =
+  RefererPatternList as any as S.Schema<FilterPlaceCategoryList>;
 export interface SearchPlaceIndexForSuggestionsRequest {
   IndexName: string;
   Text: string | redacted.Redacted<string>;
@@ -2875,11 +2845,9 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
+export const TagResourceResponse = DeleteKeyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export const TagKeys = DeviceIdsList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
@@ -2893,9 +2861,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export const UntagResourceResponse = DeleteKeyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateGeofenceCollectionRequest {
   CollectionName: string;
   PricingPlan?: string;

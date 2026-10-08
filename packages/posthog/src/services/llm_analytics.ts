@@ -79,17 +79,14 @@ export const AnalysisLevelEnum = S.String;
 export type CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
+export const CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
 
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type CreateLlmAnalyticsClusteringJobRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
-export const CreateLlmAnalyticsClusteringJobRequestEventFiltersList = /*@__PURE__*/ S.Array(
-  CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap,
-) as any as S.Schema<CreateLlmAnalyticsClusteringJobRequestEventFiltersList>;
+export const CreateLlmAnalyticsClusteringJobRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<CreateLlmAnalyticsClusteringJobRequestEventFiltersList>;
 
 export interface CreateLlmAnalyticsClusteringJobRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -119,16 +116,13 @@ export const CreateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateLlmAnalyticsClusteringJobRequest>;
 
 export type ClusteringJobEventFiltersItemMap = { [key: string]: unknown | undefined };
-export const ClusteringJobEventFiltersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClusteringJobEventFiltersItemMap>;
+export const ClusteringJobEventFiltersItemMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<ClusteringJobEventFiltersItemMap>;
 
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type ClusteringJobEventFiltersList = Array<ClusteringJobEventFiltersItemMap>;
-export const ClusteringJobEventFiltersList = /*@__PURE__*/ S.Array(
-  ClusteringJobEventFiltersItemMap,
-) as any as S.Schema<ClusteringJobEventFiltersList>;
+export const ClusteringJobEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<ClusteringJobEventFiltersList>;
 
 export interface ClusteringJob {
   id?: string;
@@ -171,17 +165,14 @@ export const VisualizationMethodEnum = S.String;
 export type CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap>;
+export const CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap>;
 
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type CreateLlmAnalyticsClusteringRunRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap>;
-export const CreateLlmAnalyticsClusteringRunRequestEventFiltersList = /*@__PURE__*/ S.Array(
-  CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap,
-) as any as S.Schema<CreateLlmAnalyticsClusteringRunRequestEventFiltersList>;
+export const CreateLlmAnalyticsClusteringRunRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<CreateLlmAnalyticsClusteringRunRequestEventFiltersList>;
 
 export interface CreateLlmAnalyticsClusteringRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -244,16 +235,13 @@ export const CreateLlmAnalyticsClusteringRunRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateLlmAnalyticsClusteringRunRequest>;
 
 export type ClusteringRunRequestEventFiltersItemMap = { [key: string]: unknown | undefined };
-export const ClusteringRunRequestEventFiltersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ClusteringRunRequestEventFiltersItemMap>;
+export const ClusteringRunRequestEventFiltersItemMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<ClusteringRunRequestEventFiltersItemMap>;
 
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type ClusteringRunRequestEventFiltersList = Array<ClusteringRunRequestEventFiltersItemMap>;
-export const ClusteringRunRequestEventFiltersList = /*@__PURE__*/ S.Array(
-  ClusteringRunRequestEventFiltersItemMap,
-) as any as S.Schema<ClusteringRunRequestEventFiltersList>;
+export const ClusteringRunRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<ClusteringRunRequestEventFiltersList>;
 
 /** Serializer for clustering workflow request parameters. */
 export interface ClusteringRunRequest {
@@ -346,10 +334,8 @@ export type LLMProviderKeyStateEnum = "unknown" | "ok" | "invalid" | "error";
 export const LLMProviderKeyStateEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
+export const UserBasicHedgehogConfigMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -668,10 +654,8 @@ export const CreateLlmAnalyticsProviderKeyValidationRequest = /*@__PURE__*/ S.su
 export type CreateLlmAnalyticsProviderKeyValidationResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLlmAnalyticsProviderKeyValidationResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationResponseBodyMap>;
+export const CreateLlmAnalyticsProviderKeyValidationResponseBodyMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationResponseBodyMap>;
 
 export type CreateLlmAnalyticsProviderKeyValidationResponse =
   CreateLlmAnalyticsProviderKeyValidationResponseBodyMap;
@@ -1011,9 +995,8 @@ export const CreateLlmAnalyticsScoreDefinitionsNewVersionRequest = /*@__PURE__*/
 
 /** Categorical option keys selected for this score. */
 export type TraceReviewScoreWriteCategoricalValuesList = Array<string>;
-export const TraceReviewScoreWriteCategoricalValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TraceReviewScoreWriteCategoricalValuesList>;
+export const TraceReviewScoreWriteCategoricalValuesList =
+  CategoricalScorePassingRuleCategoriesList as any as S.Schema<TraceReviewScoreWriteCategoricalValuesList>;
 
 export interface TraceReviewScoreWrite {
   /** Stable scorer definition ID. */
@@ -1075,9 +1058,8 @@ export const CreateLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Categorical option keys selected for this score. */
 export type TraceReviewScoreCategoricalValuesList = Array<string>;
-export const TraceReviewScoreCategoricalValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TraceReviewScoreCategoricalValuesList>;
+export const TraceReviewScoreCategoricalValuesList =
+  CategoricalScorePassingRuleCategoriesList as any as S.Schema<TraceReviewScoreCategoricalValuesList>;
 
 export interface TraceReviewScore {
   id?: string;
@@ -1183,17 +1165,12 @@ export const CreateLlmAnalyticsTranslateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLlmAnalyticsTranslateRequest>;
 
 export type CreateLlmAnalyticsTranslateResponseBodyMap = { [key: string]: unknown | undefined };
-export const CreateLlmAnalyticsTranslateResponseBodyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateLlmAnalyticsTranslateResponseBodyMap>;
+export const CreateLlmAnalyticsTranslateResponseBodyMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsTranslateResponseBodyMap>;
 
 export type CreateLlmAnalyticsTranslateResponse = CreateLlmAnalyticsTranslateResponseBodyMap;
-export const CreateLlmAnalyticsTranslateResponse = /*@__PURE__*/ S.suspend(() =>
-  CreateLlmAnalyticsTranslateResponseBodyMap.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "CreateLlmAnalyticsTranslateResponse",
-}) as any as S.Schema<CreateLlmAnalyticsTranslateResponse>;
+export const CreateLlmAnalyticsTranslateResponse =
+  CreateLlmAnalyticsProviderKeyValidationResponse as any as S.Schema<CreateLlmAnalyticsTranslateResponse>;
 
 export interface GetLlmAnalyticsClusteringJobRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1852,24 +1829,18 @@ export const EvaluationReportMetricsResultCountsMap = /*@__PURE__*/ S.Record(
 
 /** Percentage by output-specific result label, from 0 to 100. */
 export type EvaluationReportMetricsResultRatesMap = { [key: string]: number | undefined };
-export const EvaluationReportMetricsResultRatesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<EvaluationReportMetricsResultRatesMap>;
+export const EvaluationReportMetricsResultRatesMap =
+  EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsResultRatesMap>;
 
 /** Count by result label for the previous period, or null when unavailable. */
 export type EvaluationReportMetricsPreviousResultCountsMap = { [key: string]: number | undefined };
-export const EvaluationReportMetricsPreviousResultCountsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<EvaluationReportMetricsPreviousResultCountsMap>;
+export const EvaluationReportMetricsPreviousResultCountsMap =
+  EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsPreviousResultCountsMap>;
 
 /** Percentage by result label for the previous period, or null when unavailable. */
 export type EvaluationReportMetricsPreviousResultRatesMap = { [key: string]: number | undefined };
-export const EvaluationReportMetricsPreviousResultRatesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number,
-) as any as S.Schema<EvaluationReportMetricsPreviousResultRatesMap>;
+export const EvaluationReportMetricsPreviousResultRatesMap =
+  EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsPreviousResultRatesMap>;
 
 export interface EvaluationReportMetrics {
   /** Output configuration and passing rule used for both report periods. */
@@ -1952,9 +1923,8 @@ export const EvaluationReportRunDeliveryStatusEnum = S.String;
 
 /** Delivery error messages. Empty when all configured deliveries succeeded. */
 export type EvaluationReportRunDeliveryErrorsList = Array<string>;
-export const EvaluationReportRunDeliveryErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvaluationReportRunDeliveryErrorsList>;
+export const EvaluationReportRunDeliveryErrorsList =
+  CategoricalScorePassingRuleCategoriesList as any as S.Schema<EvaluationReportRunDeliveryErrorsList>;
 
 export interface EvaluationReportRun {
   /** UUID of this report run. */
@@ -2438,11 +2408,8 @@ export const LlmAnalyticsEvaluationReportsDestroyRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyRequest>;
 
 export interface LlmAnalyticsEvaluationReportsDestroyResponse {}
-export const LlmAnalyticsEvaluationReportsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LlmAnalyticsEvaluationReportsDestroyResponse",
-}) as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyResponse>;
+export const LlmAnalyticsEvaluationReportsDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyResponse>;
 
 export interface LlmAnalyticsEvaluationReportsGenerateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2466,11 +2433,8 @@ export const LlmAnalyticsEvaluationReportsGenerateCreateRequest = /*@__PURE__*/ 
 }) as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateRequest>;
 
 export interface LlmAnalyticsEvaluationReportsGenerateCreateResponse {}
-export const LlmAnalyticsEvaluationReportsGenerateCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LlmAnalyticsEvaluationReportsGenerateCreateResponse",
-}) as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateResponse>;
+export const LlmAnalyticsEvaluationReportsGenerateCreateResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateResponse>;
 
 export interface LlmAnalyticsParserRecipesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2494,11 +2458,8 @@ export const LlmAnalyticsParserRecipesDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<LlmAnalyticsParserRecipesDestroyRequest>;
 
 export interface LlmAnalyticsParserRecipesDestroyResponse {}
-export const LlmAnalyticsParserRecipesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LlmAnalyticsParserRecipesDestroyResponse",
-}) as any as S.Schema<LlmAnalyticsParserRecipesDestroyResponse>;
+export const LlmAnalyticsParserRecipesDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsParserRecipesDestroyResponse>;
 
 export interface LlmAnalyticsProviderKeysDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2522,11 +2483,8 @@ export const LlmAnalyticsProviderKeysDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<LlmAnalyticsProviderKeysDestroyRequest>;
 
 export interface LlmAnalyticsProviderKeysDestroyResponse {}
-export const LlmAnalyticsProviderKeysDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LlmAnalyticsProviderKeysDestroyResponse",
-}) as any as S.Schema<LlmAnalyticsProviderKeysDestroyResponse>;
+export const LlmAnalyticsProviderKeysDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsProviderKeysDestroyResponse>;
 
 export interface LlmAnalyticsProviderKeysValidateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2591,11 +2549,8 @@ export const LlmAnalyticsTraceReviewsDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<LlmAnalyticsTraceReviewsDestroyRequest>;
 
 export interface LlmAnalyticsTraceReviewsDestroyResponse {}
-export const LlmAnalyticsTraceReviewsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LlmAnalyticsTraceReviewsDestroyResponse",
-}) as any as S.Schema<LlmAnalyticsTraceReviewsDestroyResponse>;
+export const LlmAnalyticsTraceReviewsDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsTraceReviewsDestroyResponse>;
 
 export interface ReviewLlmAnalyticsQueueItemsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2619,11 +2574,8 @@ export const ReviewLlmAnalyticsQueueItemsDestroyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyRequest>;
 
 export interface ReviewLlmAnalyticsQueueItemsDestroyResponse {}
-export const ReviewLlmAnalyticsQueueItemsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReviewLlmAnalyticsQueueItemsDestroyResponse",
-}) as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyResponse>;
+export const ReviewLlmAnalyticsQueueItemsDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyResponse>;
 
 export interface ReviewLlmAnalyticsQueuesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2647,26 +2599,20 @@ export const ReviewLlmAnalyticsQueuesDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyRequest>;
 
 export interface ReviewLlmAnalyticsQueuesDestroyResponse {}
-export const ReviewLlmAnalyticsQueuesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReviewLlmAnalyticsQueuesDestroyResponse",
-}) as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyResponse>;
+export const ReviewLlmAnalyticsQueuesDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyResponse>;
 
 export type UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
+export const UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
 
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type UpdateLlmAnalyticsClusteringJobRequestEventFiltersList =
   Array<UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
-export const UpdateLlmAnalyticsClusteringJobRequestEventFiltersList = /*@__PURE__*/ S.Array(
-  UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap,
-) as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequestEventFiltersList>;
+export const UpdateLlmAnalyticsClusteringJobRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequestEventFiltersList>;
 
 export interface UpdateLlmAnalyticsClusteringJobRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2702,10 +2648,7 @@ export type UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap = 
   [key: string]: unknown | undefined;
 };
 export const UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap>;
+  CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap>;
 
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList =
@@ -3091,9 +3034,8 @@ export const UpdateLlmAnalyticsScoreDefinitionsPartialRequest = /*@__PURE__*/ S.
 
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList = Array<TraceReviewScoreWrite>;
-export const UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList = /*@__PURE__*/ S.Array(
-  TraceReviewScoreWrite,
-) as any as S.Schema<UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList>;
+export const UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList =
+  CreateLlmAnalyticsTraceReviewRequestScoresList as any as S.Schema<UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList>;
 
 export interface UpdateLlmAnalyticsTraceReviewsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */

@@ -241,11 +241,8 @@ export const DeleteIntegrationResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIntegrationResourceRequest>;
 
 export interface DeleteIntegrationResourceResponse {}
-export const DeleteIntegrationResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteIntegrationResourceResponse",
-}) as any as S.Schema<DeleteIntegrationResourceResponse>;
+export const DeleteIntegrationResourceResponse =
+  DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<DeleteIntegrationResourceResponse>;
 
 export interface FinalizeInstallationRequest {
   integrationConfigurationId: string;
@@ -265,9 +262,8 @@ export const FinalizeInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinalizeInstallationRequest>;
 
 export interface FinalizeInstallationResponse {}
-export const FinalizeInstallationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "FinalizeInstallationResponse",
-}) as any as S.Schema<FinalizeInstallationResponse>;
+export const FinalizeInstallationResponse =
+  CreateEventResponse as any as S.Schema<FinalizeInstallationResponse>;
 
 export interface GetAccountInfoRequest {
   integrationConfigurationId: string;
@@ -434,9 +430,7 @@ export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnviron
 
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
 export const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList>;
+  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList>;
 
 export interface GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen {
   environment?: GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList;
@@ -497,9 +491,8 @@ export const GetIntegrationResourceResponseCustomClaims = /*@__PURE__*/ S.suspen
 
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourceResponseMetadataValueCase2List = Array<string>;
-export const GetIntegrationResourceResponseMetadataValueCase2List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetIntegrationResourceResponseMetadataValueCase2List>;
+export const GetIntegrationResourceResponseMetadataValueCase2List =
+  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<GetIntegrationResourceResponseMetadataValueCase2List>;
 
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourceResponseMetadataValueCase3List = Array<number>;
@@ -684,9 +677,7 @@ export const GetIntegrationResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List = Array<string>;
 export const GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List>;
+  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List>;
 
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourcesResponseResourcesItemMetadataValueCase3List = Array<number>;
@@ -1180,9 +1171,8 @@ export const ImportResourceRequestBillingPlanHighlightedDetailsItem =
 
 export type ImportResourceRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const ImportResourceRequestBillingPlanHighlightedDetailsList = /*@__PURE__*/ S.Array(
-  ImportResourceRequestBillingPlanDetailsItem,
-) as any as S.Schema<ImportResourceRequestBillingPlanHighlightedDetailsList>;
+export const ImportResourceRequestBillingPlanHighlightedDetailsList =
+  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<ImportResourceRequestBillingPlanHighlightedDetailsList>;
 
 export interface ImportResourceRequestBillingPlan {
   id: string;
@@ -1232,10 +1222,8 @@ export const ImportResourceRequestNotification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportResourceRequestNotification>;
 
 export type ImportResourceRequestExtrasMap = { [key: string]: unknown | undefined };
-export const ImportResourceRequestExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ImportResourceRequestExtrasMap>;
+export const ImportResourceRequestExtrasMap =
+  ImportResourceRequestMetadataMap as any as S.Schema<ImportResourceRequestExtrasMap>;
 
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export interface ImportResourceRequestSecretsItemEnvironmentOverrides {
@@ -1281,22 +1269,18 @@ export const ImportResourceRequestSecretsList = /*@__PURE__*/ S.Array(
 
 /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
 export type ImportResourceRequestCustomClaimsRolesList = Array<string>;
-export const ImportResourceRequestCustomClaimsRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportResourceRequestCustomClaimsRolesList>;
+export const ImportResourceRequestCustomClaimsRolesList =
+  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<ImportResourceRequestCustomClaimsRolesList>;
 
 /** Applies only when the token is minted for one of these roles. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
-export const ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList>;
+export const ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList =
+  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList>;
 
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList = Array<string>;
 export const ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList>;
+  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList>;
 
 export interface ImportResourceRequestCustomClaimsClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these roles. */
@@ -1447,10 +1431,7 @@ export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResource
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
   { [key: string]: GlobalConfigItemValue | null | undefined };
 export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(GlobalConfigItemValue),
-  ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap>;
+  GetInstallationResourceExperimentationGlobalConfigResponseItemsMap as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap>;
 
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose =
   | "experimentation"
@@ -1623,9 +1604,8 @@ export const SubmitBillingDataRequestBillingCase1ItemsItem =
 
 export type SubmitBillingDataRequestBillingCase1ItemsList =
   Array<SubmitBillingDataRequestBillingCase0Item>;
-export const SubmitBillingDataRequestBillingCase1ItemsList = /*@__PURE__*/ S.Array(
-  SubmitBillingDataRequestBillingCase0Item,
-) as any as S.Schema<SubmitBillingDataRequestBillingCase1ItemsList>;
+export const SubmitBillingDataRequestBillingCase1ItemsList =
+  SubmitBillingDataRequestBillingCase0List as any as S.Schema<SubmitBillingDataRequestBillingCase1ItemsList>;
 
 export interface SubmitBillingDataRequestBillingCase1DiscountsItem {
   /** Partner's billing plan ID. */
@@ -1752,9 +1732,8 @@ export const SubmitBillingDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubmitBillingDataRequest" }) as any as S.Schema<SubmitBillingDataRequest>;
 
 export interface SubmitBillingDataResponse {}
-export const SubmitBillingDataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "SubmitBillingDataResponse",
-}) as any as S.Schema<SubmitBillingDataResponse>;
+export const SubmitBillingDataResponse =
+  CreateEventResponse as any as S.Schema<SubmitBillingDataResponse>;
 
 /** Subscription period for this billing cycle. */
 export type SubmitInvoiceRequestPeriod = SubmitBillingDataRequestPeriod;
@@ -1886,9 +1865,8 @@ export const SubmitInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubmitInvoiceRequest" }) as any as S.Schema<SubmitInvoiceRequest>;
 
 export type SubmitInvoiceResponseValidationErrorsList = Array<string>;
-export const SubmitInvoiceResponseValidationErrorsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubmitInvoiceResponseValidationErrorsList>;
+export const SubmitInvoiceResponseValidationErrorsList =
+  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<SubmitInvoiceResponseValidationErrorsList>;
 
 export interface SubmitInvoiceResponse {
   invoiceId?: string;
@@ -1954,11 +1932,8 @@ export const SubmitPrepaymentBalancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitPrepaymentBalancesRequest>;
 
 export interface SubmitPrepaymentBalancesResponse {}
-export const SubmitPrepaymentBalancesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubmitPrepaymentBalancesResponse",
-}) as any as S.Schema<SubmitPrepaymentBalancesResponse>;
+export const SubmitPrepaymentBalancesResponse =
+  DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<SubmitPrepaymentBalancesResponse>;
 
 export type UpdateInstallationRequestStatus =
   | "ready"
@@ -1980,9 +1955,8 @@ export const UpdateInstallationRequestBillingPlanDetailsItem =
 
 export type UpdateInstallationRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateInstallationRequestBillingPlanDetailsList = /*@__PURE__*/ S.Array(
-  ImportResourceRequestBillingPlanDetailsItem,
-) as any as S.Schema<UpdateInstallationRequestBillingPlanDetailsList>;
+export const UpdateInstallationRequestBillingPlanDetailsList =
+  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateInstallationRequestBillingPlanDetailsList>;
 
 export type UpdateInstallationRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
@@ -1991,9 +1965,8 @@ export const UpdateInstallationRequestBillingPlanHighlightedDetailsItem =
 
 export type UpdateInstallationRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateInstallationRequestBillingPlanHighlightedDetailsList = /*@__PURE__*/ S.Array(
-  ImportResourceRequestBillingPlanDetailsItem,
-) as any as S.Schema<UpdateInstallationRequestBillingPlanHighlightedDetailsList>;
+export const UpdateInstallationRequestBillingPlanHighlightedDetailsList =
+  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateInstallationRequestBillingPlanHighlightedDetailsList>;
 
 export interface UpdateInstallationRequestBillingPlan {
   id: string;
@@ -2072,9 +2045,8 @@ export const UpdateInstallationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateInstallationRequest>;
 
 export interface UpdateInstallationResponse {}
-export const UpdateInstallationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInstallationResponse",
-}) as any as S.Schema<UpdateInstallationResponse>;
+export const UpdateInstallationResponse =
+  CreateEventResponse as any as S.Schema<UpdateInstallationResponse>;
 
 export type UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestCategory =
   | "experiment"
@@ -2127,10 +2099,7 @@ export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceI
 
 export interface UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse {}
 export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse",
-  }) as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse>;
+  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse>;
 
 export type UpdateInvoiceRequestBodyAction = "refund";
 export const UpdateInvoiceRequestBodyAction = S.String;
@@ -2170,9 +2139,7 @@ export const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInvoiceRequest" }) as any as S.Schema<UpdateInvoiceRequest>;
 
 export interface UpdateInvoiceResponse {}
-export const UpdateInvoiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "UpdateInvoiceResponse",
-}) as any as S.Schema<UpdateInvoiceResponse>;
+export const UpdateInvoiceResponse = CreateEventResponse as any as S.Schema<UpdateInvoiceResponse>;
 
 export type UpdateResourceRequestOwnership = "owned" | "linked" | "sandbox";
 export const UpdateResourceRequestOwnership = S.String;
@@ -2188,10 +2155,8 @@ export type UpdateResourceRequestStatus =
 export const UpdateResourceRequestStatus = S.String;
 
 export type UpdateResourceRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateResourceRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResourceRequestMetadataMap>;
+export const UpdateResourceRequestMetadataMap =
+  ImportResourceRequestMetadataMap as any as S.Schema<UpdateResourceRequestMetadataMap>;
 
 export type UpdateResourceRequestBillingPlanType = "prepayment" | "subscription";
 export const UpdateResourceRequestBillingPlanType = S.String;
@@ -2203,9 +2168,8 @@ export const UpdateResourceRequestBillingPlanDetailsItem =
 
 export type UpdateResourceRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateResourceRequestBillingPlanDetailsList = /*@__PURE__*/ S.Array(
-  ImportResourceRequestBillingPlanDetailsItem,
-) as any as S.Schema<UpdateResourceRequestBillingPlanDetailsList>;
+export const UpdateResourceRequestBillingPlanDetailsList =
+  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateResourceRequestBillingPlanDetailsList>;
 
 export type UpdateResourceRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
@@ -2214,9 +2178,8 @@ export const UpdateResourceRequestBillingPlanHighlightedDetailsItem =
 
 export type UpdateResourceRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-export const UpdateResourceRequestBillingPlanHighlightedDetailsList = /*@__PURE__*/ S.Array(
-  ImportResourceRequestBillingPlanDetailsItem,
-) as any as S.Schema<UpdateResourceRequestBillingPlanHighlightedDetailsList>;
+export const UpdateResourceRequestBillingPlanHighlightedDetailsList =
+  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateResourceRequestBillingPlanHighlightedDetailsList>;
 
 export interface UpdateResourceRequestBillingPlan {
   id: string;
@@ -2270,10 +2233,8 @@ export const UpdateResourceRequestNotification =
   S.Unknown as any as S.Schema<UpdateResourceRequestNotification>;
 
 export type UpdateResourceRequestExtrasMap = { [key: string]: unknown | undefined };
-export const UpdateResourceRequestExtrasMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateResourceRequestExtrasMap>;
+export const UpdateResourceRequestExtrasMap =
+  ImportResourceRequestMetadataMap as any as S.Schema<UpdateResourceRequestExtrasMap>;
 
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceRequestSecretsCase0ItemEnvironmentOverrides =
@@ -2285,9 +2246,8 @@ export type UpdateResourceRequestSecretsCase0Item = ImportResourceRequestSecrets
 export const UpdateResourceRequestSecretsCase0Item = ImportResourceRequestSecretsItem;
 
 export type UpdateResourceRequestSecretsCase0List = Array<ImportResourceRequestSecretsItem>;
-export const UpdateResourceRequestSecretsCase0List = /*@__PURE__*/ S.Array(
-  ImportResourceRequestSecretsItem,
-) as any as S.Schema<UpdateResourceRequestSecretsCase0List>;
+export const UpdateResourceRequestSecretsCase0List =
+  ImportResourceRequestSecretsList as any as S.Schema<UpdateResourceRequestSecretsCase0List>;
 
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceRequestSecretsCase1SecretsItemEnvironmentOverrides =
@@ -2299,9 +2259,8 @@ export type UpdateResourceRequestSecretsCase1SecretsItem = ImportResourceRequest
 export const UpdateResourceRequestSecretsCase1SecretsItem = ImportResourceRequestSecretsItem;
 
 export type UpdateResourceRequestSecretsCase1SecretsList = Array<ImportResourceRequestSecretsItem>;
-export const UpdateResourceRequestSecretsCase1SecretsList = /*@__PURE__*/ S.Array(
-  ImportResourceRequestSecretsItem,
-) as any as S.Schema<UpdateResourceRequestSecretsCase1SecretsList>;
+export const UpdateResourceRequestSecretsCase1SecretsList =
+  ImportResourceRequestSecretsList as any as S.Schema<UpdateResourceRequestSecretsCase1SecretsList>;
 
 export interface UpdateResourceRequestSecretsCase1 {
   secrets: UpdateResourceRequestSecretsCase1SecretsList;
@@ -2325,22 +2284,18 @@ export const UpdateResourceRequestSecrets =
 
 /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
 export type UpdateResourceRequestCustomClaimsRolesList = Array<string>;
-export const UpdateResourceRequestCustomClaimsRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResourceRequestCustomClaimsRolesList>;
+export const UpdateResourceRequestCustomClaimsRolesList =
+  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<UpdateResourceRequestCustomClaimsRolesList>;
 
 /** Applies only when the token is minted for one of these roles. */
 export type UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
-export const UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList>;
+export const UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList =
+  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList>;
 
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
 export type UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList = Array<string>;
 export const UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList>;
+  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList>;
 
 export interface UpdateResourceRequestCustomClaimsClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these roles. */
@@ -2348,14 +2303,8 @@ export interface UpdateResourceRequestCustomClaimsClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
   environment?: UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList;
 }
-export const UpdateResourceRequestCustomClaimsClaimRulesItemWhen = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList),
-    environment: S.optional(UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList),
-  }),
-).annotate({
-  identifier: "UpdateResourceRequestCustomClaimsClaimRulesItemWhen",
-}) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhen>;
+export const UpdateResourceRequestCustomClaimsClaimRulesItemWhen =
+  ImportResourceRequestCustomClaimsClaimRulesItemWhen as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhen>;
 
 export type UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue = string | number | boolean;
 export const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue =
@@ -2449,11 +2398,8 @@ export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResourceResponse {
   name: string;
 }
-export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "UpdateResourceResponse" }) as any as S.Schema<UpdateResourceResponse>;
+export const UpdateResourceResponse =
+  ImportResourceResponse as any as S.Schema<UpdateResourceResponse>;
 
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceSecretsByIdRequestSecretsItemEnvironmentOverrides =
@@ -2465,9 +2411,8 @@ export type UpdateResourceSecretsByIdRequestSecretsItem = ImportResourceRequestS
 export const UpdateResourceSecretsByIdRequestSecretsItem = ImportResourceRequestSecretsItem;
 
 export type UpdateResourceSecretsByIdRequestSecretsList = Array<ImportResourceRequestSecretsItem>;
-export const UpdateResourceSecretsByIdRequestSecretsList = /*@__PURE__*/ S.Array(
-  ImportResourceRequestSecretsItem,
-) as any as S.Schema<UpdateResourceSecretsByIdRequestSecretsList>;
+export const UpdateResourceSecretsByIdRequestSecretsList =
+  ImportResourceRequestSecretsList as any as S.Schema<UpdateResourceSecretsByIdRequestSecretsList>;
 
 export interface UpdateResourceSecretsByIdRequest {
   integrationConfigurationId: string;
@@ -2494,11 +2439,8 @@ export const UpdateResourceSecretsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResourceSecretsByIdRequest>;
 
 export interface UpdateResourceSecretsByIdResponse {}
-export const UpdateResourceSecretsByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateResourceSecretsByIdResponse",
-}) as any as S.Schema<UpdateResourceSecretsByIdResponse>;
+export const UpdateResourceSecretsByIdResponse =
+  DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<UpdateResourceSecretsByIdResponse>;
 
 export type CreateEventError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Create Event Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use `list-resources` and other read APIs to get the new state.<br/> <br/> `resource.updated` event should be dispatched when any state of a resource linked to Vercel is modified by the partner.<br/> `installation.updated` event should be dispatched when an installation's billing plan is changed via the provider instead of Vercel.<br/> <br/> Resource update use cases: <br/> <br/> - The user renames a database in the partner's application. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource in Vercel's datastores.<br/> - A resource has been suspended due to a lack of use. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource's status in Vercel's datastores.<br/> */

@@ -246,9 +246,8 @@ export const AddTagsToVaultInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AddTagsToVaultInput" }) as any as S.Schema<AddTagsToVaultInput>;
 export interface AddTagsToVaultResponse {}
-export const AddTagsToVaultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "AddTagsToVaultResponse" },
-) as any as S.Schema<AddTagsToVaultResponse>;
+export const AddTagsToVaultResponse =
+  AbortVaultLockResponse as any as S.Schema<AddTagsToVaultResponse>;
 export interface CompleteMultipartUploadInput {
   accountId: string;
   vaultName: string;
@@ -315,11 +314,8 @@ export const CompleteVaultLockInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CompleteVaultLockInput" }) as any as S.Schema<CompleteVaultLockInput>;
 export interface CompleteVaultLockResponse {}
-export const CompleteVaultLockResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "CompleteVaultLockResponse",
-}) as any as S.Schema<CompleteVaultLockResponse>;
+export const CompleteVaultLockResponse =
+  AbortMultipartUploadResponse as any as S.Schema<CompleteVaultLockResponse>;
 export interface CreateVaultInput {
   accountId: string;
   vaultName: string;
@@ -393,9 +389,7 @@ export const DeleteVaultInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVaultInput" }) as any as S.Schema<DeleteVaultInput>;
 export interface DeleteVaultResponse {}
-export const DeleteVaultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-  identifier: "DeleteVaultResponse",
-}) as any as S.Schema<DeleteVaultResponse>;
+export const DeleteVaultResponse = DeleteArchiveResponse as any as S.Schema<DeleteVaultResponse>;
 export interface DeleteVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
@@ -419,11 +413,8 @@ export const DeleteVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVaultAccessPolicyInput",
 }) as any as S.Schema<DeleteVaultAccessPolicyInput>;
 export interface DeleteVaultAccessPolicyResponse {}
-export const DeleteVaultAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteVaultAccessPolicyResponse",
-}) as any as S.Schema<DeleteVaultAccessPolicyResponse>;
+export const DeleteVaultAccessPolicyResponse =
+  AbortMultipartUploadResponse as any as S.Schema<DeleteVaultAccessPolicyResponse>;
 export interface DeleteVaultNotificationsInput {
   accountId: string;
   vaultName: string;
@@ -450,11 +441,8 @@ export const DeleteVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVaultNotificationsInput",
 }) as any as S.Schema<DeleteVaultNotificationsInput>;
 export interface DeleteVaultNotificationsResponse {}
-export const DeleteVaultNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "DeleteVaultNotificationsResponse",
-}) as any as S.Schema<DeleteVaultNotificationsResponse>;
+export const DeleteVaultNotificationsResponse =
+  AbortMultipartUploadResponse as any as S.Schema<DeleteVaultNotificationsResponse>;
 export interface DescribeJobInput {
   accountId: string;
   vaultName: string;
@@ -635,7 +623,7 @@ export const Grant = /*@__PURE__*/ S.suspend(() =>
 export type AccessControlPolicyList = Grant[];
 export const AccessControlPolicyList = /*@__PURE__*/ S.Array(Grant);
 export type Hashmap = { [key: string]: string | undefined };
-export const Hashmap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+export const Hashmap = TagMap as any as S.Schema<Hashmap>;
 export type StorageClass = "STANDARD" | "REDUCED_REDUNDANCY" | "STANDARD_IA" | (string & {});
 export const StorageClass = S.String;
 
@@ -1075,9 +1063,7 @@ export const InitiateMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
 export interface VaultLockPolicy {
   Policy?: string;
 }
-export const VaultLockPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Policy: S.optional(S.String) }),
-).annotate({ identifier: "VaultLockPolicy" }) as any as S.Schema<VaultLockPolicy>;
+export const VaultLockPolicy = VaultAccessPolicy as any as S.Schema<VaultLockPolicy>;
 export interface InitiateVaultLockInput {
   accountId: string;
   vaultName: string;
@@ -1374,7 +1360,7 @@ export const PurchaseProvisionedCapacityOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PurchaseProvisionedCapacityOutput",
 }) as any as S.Schema<PurchaseProvisionedCapacityOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export const TagKeyList = NotificationEventList as any as S.Schema<TagKeyList>;
 export interface RemoveTagsFromVaultInput {
   accountId: string;
   vaultName: string;
@@ -1398,11 +1384,8 @@ export const RemoveTagsFromVaultInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveTagsFromVaultInput" }) as any as S.Schema<RemoveTagsFromVaultInput>;
 export interface RemoveTagsFromVaultResponse {}
-export const RemoveTagsFromVaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "RemoveTagsFromVaultResponse",
-}) as any as S.Schema<RemoveTagsFromVaultResponse>;
+export const RemoveTagsFromVaultResponse =
+  AbortMultipartUploadResponse as any as S.Schema<RemoveTagsFromVaultResponse>;
 export interface SetDataRetrievalPolicyInput {
   accountId: string;
   Policy?: DataRetrievalPolicy;
@@ -1426,11 +1409,8 @@ export const SetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetDataRetrievalPolicyInput",
 }) as any as S.Schema<SetDataRetrievalPolicyInput>;
 export interface SetDataRetrievalPolicyResponse {}
-export const SetDataRetrievalPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetDataRetrievalPolicyResponse",
-}) as any as S.Schema<SetDataRetrievalPolicyResponse>;
+export const SetDataRetrievalPolicyResponse =
+  AbortMultipartUploadResponse as any as S.Schema<SetDataRetrievalPolicyResponse>;
 export interface SetVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
@@ -1458,11 +1438,8 @@ export const SetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetVaultAccessPolicyInput",
 }) as any as S.Schema<SetVaultAccessPolicyInput>;
 export interface SetVaultAccessPolicyResponse {}
-export const SetVaultAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetVaultAccessPolicyResponse",
-}) as any as S.Schema<SetVaultAccessPolicyResponse>;
+export const SetVaultAccessPolicyResponse =
+  AbortMultipartUploadResponse as any as S.Schema<SetVaultAccessPolicyResponse>;
 export interface SetVaultNotificationsInput {
   accountId: string;
   vaultName: string;
@@ -1490,11 +1467,8 @@ export const SetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetVaultNotificationsInput",
 }) as any as S.Schema<SetVaultNotificationsInput>;
 export interface SetVaultNotificationsResponse {}
-export const SetVaultNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "SetVaultNotificationsResponse",
-}) as any as S.Schema<SetVaultNotificationsResponse>;
+export const SetVaultNotificationsResponse =
+  AbortMultipartUploadResponse as any as S.Schema<SetVaultNotificationsResponse>;
 export interface UploadArchiveInput {
   vaultName: string;
   accountId: string;
